@@ -333,7 +333,7 @@ export const CMMS_SERVICE_REQUEST_URL  = 'srv-requets';
 export const CMMS_SOLUTION_URL  = 'cmms-solutions';
 export const CMMS_CHARTS_URL           = 'charts';
 export const CMMS_ASSET_TREE           = 'cmms-asset-tree';
-
+export const CMMS_EMPLOYEES_URL           = 'cmms-employees';
 
 // assets
 export const FURNITURE_URL            = 'furniture';

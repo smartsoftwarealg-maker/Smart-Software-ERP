@@ -150,5 +150,6 @@
     "POST_AR":           "Post (Ar)",
     "PERSONAL_INFO":     "معلومات شخصية",
     "ARCHIVE_VIEWER":    "استعراض الأرشيف",
-    "IS_DRIVER":         "سائق"
+    "IS_DRIVER":         "سائق",
+    "CMMS_PERSON":       ""
 }

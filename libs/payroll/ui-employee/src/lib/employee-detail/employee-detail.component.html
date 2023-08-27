@@ -178,7 +178,6 @@
                 </mat-error>
             </mat-form-field>
 
-            <mat-checkbox class="default-25 sm-50"  formControlName="is_driver" translate>PAYROLL_IS_DRIVER</mat-checkbox>
 
         </mat-expansion-panel>
 
@@ -234,17 +233,33 @@
 
         </mat-expansion-panel>
 
-        <mat-expansion-panel *ngIf="id" #activationPanel [class]="getPanelHeaderClass('activation', activationPanel)">
+        <mat-expansion-panel *ngIf="id" #diversePanel [class.b-primary-expansion-panel]="diversePanel.expanded">
+            <mat-expansion-panel-header>
+                <mat-panel-title translate>
+                    COMMON_DIVERSE
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+
+            <mat-checkbox class="default-50 sm-100"  formControlName="is_driver" translate>PAYROLL_IS_DRIVER</mat-checkbox>
+            <mat-checkbox class="default-50 sm-100"  formControlName="cmmsPerson" translate>PAYROLL_CMMS_PERSON</mat-checkbox>
+
+        </mat-expansion-panel>
+
+        <mat-expansion-panel *ngIf="id"
+                             #activationPanel
+                             [class.b-primary-expansion-panel]="activationPanel.expanded"
+                             (afterExpand)="showPanel(ACTIVATION_ROUTE)">
             <mat-expansion-panel-header>
                 <mat-panel-title translate>
                     PAYROLL_EMPLOYEE_ACTIVATION_SUSPENSION
                 </mat-panel-title>
             </mat-expansion-panel-header>
-
-            <ss-emp-act-history [personId]="id" [editable]="isEditable"></ss-emp-act-history>
+            <router-outlet *ngIf="id && activePanel === ACTIVATION_ROUTE"></router-outlet>
+<!--            <ss-emp-act-history [personId]="id" [editable]="isEditable"></ss-emp-act-history>-->
         </mat-expansion-panel>
 
-        <mat-expansion-panel *ngIf="!hrMode" #fixedElementsPanel [class]="getPanelHeaderClass('fixedElemnts', fixedElementsPanel)">
+
+        <mat-expansion-panel *ngIf="!hrMode" #fixedElementsPanel  [class.b-primary-expansion-panel]="fixedElementsPanel.expanded">
             <mat-expansion-panel-header>
                 <mat-panel-title translate>
                     PAYROLL_FIXED_ELEMENTS
@@ -281,104 +296,138 @@
 
         </mat-expansion-panel>
 
-        <mat-expansion-panel *ngIf="id && activePersonnel" #careerPanel [class]="getPanelHeaderClass('career', careerPanel)">
+        <mat-expansion-panel *ngIf="id && activePersonnel"
+                             #careerPanel [class.b-primary-expansion-panel]="careerPanel.expanded"
+                             (afterExpand)="showPanel(CAREER_ROUTE)">
             <mat-expansion-panel-header>
                 <mat-panel-title translate>
                     PAYROLL_CAREER
                 </mat-panel-title>
             </mat-expansion-panel-header>
-
-            <ss-employee-career [personId]="id" [activePersonnel]="activePersonnel" [hrMode]="hrMode"></ss-employee-career>
+            <router-outlet *ngIf="id && activePanel === CAREER_ROUTE"></router-outlet>
+<!--            <ss-employee-career [personId]="id" [activePersonnel]="activePersonnel" [hrMode]="hrMode"></ss-employee-career>-->
         </mat-expansion-panel>
 
-        <mat-expansion-panel *ngIf="id && hrMode && activePersonnel" #oldCareerPanel [class]="getPanelHeaderClass('career', oldCareerPanel)">
+        <mat-expansion-panel *ngIf="id && hrMode && activePersonnel"
+                             #oldCareerPanel
+                             [class.b-primary-expansion-panel]="oldCareerPanel.expanded"
+                             (afterExpand)="showPanel(OLD_CAREER_ROUTE)">
             <mat-expansion-panel-header>
                 <mat-panel-title translate>
                     PAYROLL_OLD_CAREERS
                 </mat-panel-title>
             </mat-expansion-panel-header>
 
-            <ss-employee-old-career-list [personId]="id" [activePersonnel]="activePersonnel" [editable]="isEditable"></ss-employee-old-career-list>
+            <router-outlet *ngIf="id && activePanel === OLD_CAREER_ROUTE"></router-outlet>
+<!--            <ss-employee-old-career-list [personId]="id" [activePersonnel]="activePersonnel" [editable]="isEditable"></ss-employee-old-career-list>-->
         </mat-expansion-panel>
 
-        <mat-expansion-panel *ngIf="id && hrMode && activePersonnel" #contractsPanel [class]="getPanelHeaderClass('contracts', contractsPanel)">
+        <mat-expansion-panel *ngIf="id && hrMode && activePersonnel"
+                             #contractsPanel
+                             [class.b-primary-expansion-panel]="contractsPanel.expanded"
+                             (afterExpand)="showPanel(CONTRACTS_ROUTE)">
             <mat-expansion-panel-header>
                 <mat-panel-title translate>
                     COMMON_CONTRACTS
                 </mat-panel-title>
             </mat-expansion-panel-header>
 
-            <ss-employee-contracts [personId]="id" [activePersonnel]="activePersonnel" [editable]="isEditable"></ss-employee-contracts>
+            <router-outlet *ngIf="id && activePanel === CONTRACTS_ROUTE"></router-outlet>
+<!--            <ss-employee-contracts [personId]="id" [activePersonnel]="activePersonnel" [editable]="isEditable"></ss-employee-contracts>-->
         </mat-expansion-panel>
 
-        <mat-expansion-panel *ngIf="id && hrMode && activePersonnel" #wivesPanel [class]="getPanelHeaderClass('wives', wivesPanel)">
+        <mat-expansion-panel *ngIf="id && hrMode && activePersonnel"
+                             #wivesPanel [class.b-primary-expansion-panel]="wivesPanel.expanded"
+                             (afterExpand)="showPanel(WIVES_ROUTE)">
             <mat-expansion-panel-header>
                 <mat-panel-title translate>
                     PAYROLL_WIVES
                 </mat-panel-title>
             </mat-expansion-panel-header>
 
-            <ss-employee-wives [personId]="id" [activePersonnel]="activePersonnel" [editable]="isEditable"></ss-employee-wives>
+            <router-outlet *ngIf="id && activePanel === WIVES_ROUTE"></router-outlet>
+<!--            <ss-employee-wives [personId]="id" [activePersonnel]="activePersonnel" [editable]="isEditable"></ss-employee-wives>-->
         </mat-expansion-panel>
 
-        <mat-expansion-panel *ngIf="id && hrMode && activePersonnel" #childrenPanel [class]="getPanelHeaderClass('children', childrenPanel)">
+        <mat-expansion-panel *ngIf="id && hrMode && activePersonnel"
+                             #childrenPanel [class.b-primary-expansion-panel]="childrenPanel.expanded"
+                             (afterExpand)="showPanel(CHILDREN_ROUTE)">
             <mat-expansion-panel-header>
                 <mat-panel-title translate>
                     PAYROLL_CHILDREN
                 </mat-panel-title>
             </mat-expansion-panel-header>
 
-            <ss-employee-children [personId]="id" [activePersonnel]="activePersonnel" [editable]="isEditable"></ss-employee-children>
+            <router-outlet *ngIf="id && activePanel === CHILDREN_ROUTE"></router-outlet>
+<!--            <ss-employee-children [personId]="id" [activePersonnel]="activePersonnel" [editable]="isEditable"></ss-employee-children>-->
         </mat-expansion-panel>
 
-        <mat-expansion-panel *ngIf="id && hrMode && activePersonnel" #diplomaPanel [class]="getPanelHeaderClass('diplomas', diplomaPanel)">
+        <mat-expansion-panel *ngIf="id && hrMode && activePersonnel"
+                             #diplomaPanel [class.b-primary-expansion-panel]="diplomaPanel.expanded"
+                             (afterExpand)="showPanel(DIPLOMA_ROUTE)">
             <mat-expansion-panel-header>
                 <mat-panel-title translate>
                     PAYROLL_DIPLOMAS
                 </mat-panel-title>
             </mat-expansion-panel-header>
 
-            <ss-employee-diploma-list [personId]="id" [activePersonnel]="activePersonnel" [editable]="isEditable"></ss-employee-diploma-list>
+            <router-outlet *ngIf="id && activePanel === DIPLOMA_ROUTE"></router-outlet>
+<!--            <ss-employee-diploma-list [personId]="id" [activePersonnel]="activePersonnel" [editable]="isEditable"></ss-employee-diploma-list>-->
         </mat-expansion-panel>
 
-        <mat-expansion-panel *ngIf="id && hrMode && activePersonnel" #trainingPanel [class]="getPanelHeaderClass('training', trainingPanel)">
+        <mat-expansion-panel *ngIf="id && hrMode && activePersonnel"
+                             #trainingPanel
+                             [class.b-primary-expansion-panel]="trainingPanel.expanded"
+                             (afterExpand)="showPanel(TRAINING_ROUTE)">
             <mat-expansion-panel-header>
                 <mat-panel-title translate>
                     PAYROLL_TRAININGS
                 </mat-panel-title>
             </mat-expansion-panel-header>
 
-            <ss-employee-training-list [personId]="id" [activePersonnel]="activePersonnel" [editable]="isEditable"></ss-employee-training-list>
+            <router-outlet *ngIf="id && activePanel === TRAINING_ROUTE"></router-outlet>
+<!--            <ss-employee-training-list [personId]="id" [activePersonnel]="activePersonnel" [editable]="isEditable"></ss-employee-training-list>-->
         </mat-expansion-panel>
 
-        <mat-expansion-panel *ngIf="id && hrMode  && activePersonnel" #languagesPanel [class]="getPanelHeaderClass('languages', languagesPanel)">
+        <mat-expansion-panel *ngIf="id && hrMode  && activePersonnel"
+                             #languagesPanel
+                             [class.b-primary-expansion-panel]="languagesPanel.expanded"
+                             (afterExpand)="showPanel(LANGUAGES_ROUTE)">
             <mat-expansion-panel-header>
                 <mat-panel-title translate>
                     PAYROLL_LANGUAGES
                 </mat-panel-title>
             </mat-expansion-panel-header>
 
-            <ss-employee-languages [personId]="id" [activePersonnel]="activePersonnel" [editable]="isEditable"></ss-employee-languages>
+            <router-outlet *ngIf="id && activePanel === LANGUAGES_ROUTE"></router-outlet>
+<!--            <ss-employee-languages [personId]="id" [activePersonnel]="activePersonnel" [editable]="isEditable"></ss-employee-languages>-->
         </mat-expansion-panel>
 
-        <mat-expansion-panel *ngIf="id && hrMode  && activePersonnel" #punishmentPanel [class]="getPanelHeaderClass('punishment', punishmentPanel)">
+        <mat-expansion-panel *ngIf="id && hrMode  && activePersonnel"
+                             #punishmentPanel
+                             [class.b-primary-expansion-panel]="punishmentPanel.expanded"
+                             (afterExpand)="showPanel(PUNISHMENT_ROUTE)">
             <mat-expansion-panel-header>
                 <mat-panel-title translate>
                     PAYROLL_PUNISHMENTS
                 </mat-panel-title>
             </mat-expansion-panel-header>
 
-            <ss-punishment-list [personId]="id" [activePersonnel]="activePersonnel" [editable]="isEditable"></ss-punishment-list>
+            <router-outlet *ngIf="id && activePanel === PUNISHMENT_ROUTE"></router-outlet>
+<!--            <ss-punishment-list [personId]="id" [activePersonnel]="activePersonnel" [editable]="isEditable"></ss-punishment-list>-->
         </mat-expansion-panel>
 
-        <mat-expansion-panel *ngIf="id && hrMode  && activePersonnel" #decisionsPanel [class]="getPanelHeaderClass('decisions', decisionsPanel)">
+        <mat-expansion-panel *ngIf="id && hrMode  && activePersonnel"
+                             #decisionsPanel [class.b-primary-expansion-panel]="decisionsPanel.expanded"
+                             (afterExpand)="showPanel(DECISION_ROUT)">
             <mat-expansion-panel-header>
                 <mat-panel-title translate>
                     COMMON_DECISIONS
                 </mat-panel-title>
             </mat-expansion-panel-header>
 
-            <ss-employee-decision-list [personId]="id" [editable]="isEditable"></ss-employee-decision-list>
+            <router-outlet *ngIf="id && activePanel === DECISION_ROUT"></router-outlet>
+<!--            <ss-employee-decision-list [personId]="id" [editable]="isEditable"></ss-employee-decision-list>-->
         </mat-expansion-panel>
 
         <mat-expansion-panel *ngIf="!hrMode" #infoPanel [class]="getPanelHeaderClass('infoPanel', infoPanel)">
@@ -391,14 +440,15 @@
         </mat-expansion-panel>
 
         <mat-expansion-panel #archivePanel
-                             (afterExpand)="showArchive()"
-                             [class]="getPanelHeaderClass('archive', archivePanel)">
+                             (afterExpand)="showPanel(ARCHIVE_ROUT)"
+                             [class.b-primary-expansion-panel]="archivePanel.expanded">
             <mat-expansion-panel-header>
                 <mat-panel-title translate>
                     COMMON_ARCHIVE
                 </mat-panel-title>
             </mat-expansion-panel-header>
-            <ss-app-archive-main [id]="id" [appId]="4" *ngIf="id" [editable]="isEditable"></ss-app-archive-main>
+            <router-outlet *ngIf="id && activePanel === ARCHIVE_ROUT"></router-outlet>
+<!--            <ss-app-archive-main [id]="id" [appId]="4" *ngIf="id" [editable]="isEditable"></ss-app-archive-main>-->
         </mat-expansion-panel>
 
     </mat-accordion>

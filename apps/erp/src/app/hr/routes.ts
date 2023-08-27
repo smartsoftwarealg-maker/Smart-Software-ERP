@@ -21,7 +21,7 @@ import {
     HR_DECISION_MOTIVE_URL,
     HR_MOTIVE_URL,
     HR_CONTRACT_MOTIVE_URL, HR_HOLIDAY_REQUEST_URL, COMMON_BLOOD_GROUPS_URL
-} from "../common";
+} from '../common';
 import {
     ABS_INDEX_URL,
     CanDeactivateService,
@@ -65,7 +65,7 @@ import {
     ServiceListComponent,
     SuspensionReasonDetailComponent,
     SuspensionReasonListComponent
-} from "@ss/common/ui-lookup";
+} from '@ss/common/ui-lookup';
 import {
     EmployeeActivationDetailComponent,
     EmployeeCareerDetailComponent,
@@ -80,8 +80,8 @@ import {
     EmployeeLanguagesDetailComponent,
     EmployeeOldCareerDetailComponent,
     EmployeeDecisionDetailComponent,
-    PersonListComponent
-} from '@ss/payroll/ui-employee';
+    PersonListComponent, PunishmentListComponent, EmployeeTrainingListComponent, EmployeeDiplomaListComponent
+} from "@ss/payroll/ui-employee";
 import {
     ACTIVATION_ROUTE_URL,
     CAREER_ROUTE_URL,
@@ -100,6 +100,30 @@ import {DashboardComponent} from '@ss/dashboard';
 import {AppArchiveDetailComponent, AppArchiveListComponent} from '@ss/common/app-archive';
 import {loginGuard} from '../erp-guards';
 import { HolidayRequestDetailComponent, HolidayRequestListComponent } from '@ss/attendance';
+import {
+    EmployeeActivationListComponent
+} from "../../../../../libs/payroll/ui-employee/src/lib/employee-activation/list/employee-activation-list.component";
+import {
+    EmployeeCareerListComponent
+} from "../../../../../libs/payroll/ui-employee/src/lib/employee-career/list/employee-career-list.component";
+import {
+    EmployeeOldCareerListComponent
+} from "../../../../../libs/payroll/ui-employee/src/lib/employee-old-career/list/employee-old-career-list.component";
+import {
+    EmployeeDecisionListComponent
+} from "../../../../../libs/payroll/ui-employee/src/lib/employee-decisions/list/employee-decision-list.component";
+import {
+    EmployeeLanguagesListComponent
+} from "../../../../../libs/payroll/ui-employee/src/lib/employee-languages/list/employee-languages-list.component";
+import {
+    EmployeeChildrenListComponent
+} from "../../../../../libs/payroll/ui-employee/src/lib/employee-children/list/employee-children-list.component";
+import {
+    EmployeeWivesListComponent
+} from "../../../../../libs/payroll/ui-employee/src/lib/employee-wives/list/employee-wives-list.component";
+import {
+    EmployeeContractListComponent
+} from "../../../../../libs/payroll/ui-employee/src/lib/employee-contracts/list/employee-contracts-list.component";
 
 export const hrRoutes: Routes = [
     {
@@ -222,174 +246,96 @@ export const hrRoutes: Routes = [
                                     {path: '', component: AppArchiveListComponent, pathMatch: 'full' },
                                     {path: ':id', component: AppArchiveDetailComponent},
                                 ]
+                            },
+                            {
+                                path: ACTIVATION_ROUTE_URL,
+                                children: [
+                                    { path: '', component: EmployeeActivationListComponent, pathMatch: 'full'},
+                                    { path: ':id', component: EmployeeActivationDetailComponent }
+                                ]
+                            },
+                            {
+                                path: CAREER_ROUTE_URL,
+                                children: [
+                                    { path: '', component: EmployeeCareerListComponent, pathMatch: 'full' },
+                                    { path: ':id', component: EmployeeCareerDetailComponent }
+                                ]
+                            },
+                            {
+                                path: OLD_CAREER_ROUTE_URL,
+                                children: [
+                                    { path: '', component: EmployeeOldCareerListComponent, pathMatch: 'full' },
+                                    { path: ':id', component: EmployeeOldCareerDetailComponent }
+                                ]
+                            },
+                            {
+                                path: CONTRACTS_ROUTE_URL,
+                                children: [
+                                    {
+                                        path: '',
+                                        component: EmployeeContractListComponent,
+                                        pathMatch: 'full'
+                                    },
+                                    {
+                                        path: ':id', component: EmployeeContractsDetailComponent,
+                                    }
+                                ]
+                            },
+                            {
+                                path: WIVES_ROUTE_URL,
+                                children: [
+                                    {
+                                        path: '',
+                                        component: EmployeeWivesListComponent,
+                                        pathMatch: 'full'
+                                    },
+                                    { path: ':id', component: EmployeeWifeDetailComponent }
+                                ]
+                            },
+                            {
+                                path: CHILDREN_ROUTE_URL,
+                                children: [
+                                    { path: '', component: EmployeeChildrenListComponent, pathMatch: 'full' },
+                                    { path: ':id', component: EmployeeChildDetailComponent }
+                                ]
+                            },
+                            {
+                                path: DIPLOMA_ROUTE_URL,
+                                children: [
+                                    { path: '', component: EmployeeDiplomaListComponent, pathMatch: 'full'},
+                                    { path: ':id', component: EmployeeDiplomaDetailComponent }
+                                ]
+                            },
+                            {
+                                path: TRAINING_ROUTE_URL,
+                                children: [
+                                    { path: '', component: EmployeeTrainingListComponent, pathMatch: 'full' },
+                                    { path: ':id', component: EmployeeTrainingDetailComponent }
+                                ]
+                            },
+                            {
+                                path: PUNISHMENT_ROUTE_URL,
+                                children: [
+                                    { path: '', component: PunishmentListComponent, pathMatch: 'full' },
+                                    { path: ':id', component: PunishmentDetailComponent }
+                                ]
+                            },
+                            {
+                                path: LANGUAGES_ROUTE_URL,
+                                children: [
+                                    { path: '', component: EmployeeLanguagesListComponent, pathMatch: 'full' },
+                                    { path: ':id', component: EmployeeLanguagesDetailComponent }
+                                ]
+                            },
+                            {
+                                path: DECISION_ROUTE_URL,
+                                children: [
+                                    { path: '', component: EmployeeDecisionListComponent, pathMatch: 'full' },
+                                    { path: ':id', component: EmployeeDecisionDetailComponent }
+                                ]
                             }
                         ]
                     },
-                    {
-                        path: ACTIVATION_ROUTE_URL,
-                        children: [
-                            {
-                                path: '',
-                                component: RedirectToParentComponent,
-                            },
-                            {
-                                path: ':id',
-                                component: EmployeeActivationDetailComponent,
-                                canActivate: [loginGuard],
-                                canDeactivate: [CanDeactivateService]
-                            }
-                        ]
-                    },
-                    {
-                        path: CAREER_ROUTE_URL,
-                        children: [
-                            {
-                                path: '',
-                                component: RedirectToParentComponent,
-                            },
-                            {
-                                path: ':id',
-                                component: EmployeeCareerDetailComponent,
-                                canActivate: [loginGuard],
-                                canDeactivate: [CanDeactivateService]
-                            }
-                        ]
-                    },
-                    {
-                        path: CONTRACTS_ROUTE_URL,
-                        children: [
-                            {
-                                path: '',
-                                component: RedirectToParentComponent,
-                            },
-                            {
-                                path: ':id',
-                                component: EmployeeContractsDetailComponent,
-                                canActivate: [loginGuard],
-                                canDeactivate: [CanDeactivateService]
-                            }
-                        ]
-                    },
-                    {
-                        path: WIVES_ROUTE_URL,
-                        children: [
-                            {
-                                path: '',
-                                component: RedirectToParentComponent,
-                            },
-                            {
-                                path: ':id',
-                                component: EmployeeWifeDetailComponent,
-                                canActivate: [loginGuard],
-                                canDeactivate: [CanDeactivateService]
-                            }
-                        ]
-                    },
-                    {
-                        path: CHILDREN_ROUTE_URL,
-                        children: [
-                            {
-                                path: '',
-                                component: RedirectToParentComponent,
-                            },
-                            {
-                                path: ':id',
-                                component: EmployeeChildDetailComponent,
-                                canActivate: [loginGuard],
-                                canDeactivate: [CanDeactivateService]
-                            }
-                        ]
-                    },
-                    {
-                        path: DIPLOMA_ROUTE_URL,
-                        children: [
-                            {
-                                path: '',
-                                component: RedirectToParentComponent,
-                            },
-                            {
-                                path: ':id',
-                                component: EmployeeDiplomaDetailComponent,
-                                canActivate: [loginGuard],
-                                canDeactivate: [CanDeactivateService]
-                            }
-                        ]
-                    },
-                    {
-                        path: TRAINING_ROUTE_URL,
-                        children: [
-                            {
-                                path: '',
-                                component: RedirectToParentComponent,
-                            },
-                            {
-                                path: ':id',
-                                component: EmployeeTrainingDetailComponent,
-                                canActivate: [loginGuard],
-                                canDeactivate: [CanDeactivateService]
-                            }
-                        ]
-                    },
-                    {
-                        path: PUNISHMENT_ROUTE_URL,
-                        children: [
-                            {
-                                path: '',
-                                component: RedirectToParentComponent,
-                            },
-                            {
-                                path: ':id',
-                                component: PunishmentDetailComponent,
-                                canActivate: [loginGuard],
-                                canDeactivate: [CanDeactivateService]
-                            }
-                        ]
-                    },
-                    {
-                        path: LANGUAGES_ROUTE_URL,
-                        children: [
-                            {
-                                path: '',
-                                component: RedirectToParentComponent,
-                            },
-                            {
-                                path: ':id',
-                                component: EmployeeLanguagesDetailComponent,
-                                canActivate: [loginGuard],
-                                canDeactivate: [CanDeactivateService]
-                            }
-                        ]
-                    },
-                    {
-                        path: OLD_CAREER_ROUTE_URL,
-                        children: [
-                            {
-                                path: '',
-                                component: RedirectToParentComponent,
-                            },
-                            {
-                                path: ':id',
-                                component: EmployeeOldCareerDetailComponent,
-                                canActivate: [loginGuard],
-                                canDeactivate: [CanDeactivateService]
-                            }
-                        ]
-                    },
-                    {
-                        path: DECISION_ROUTE_URL,
-                        children: [
-                            {
-                                path: '',
-                                component: RedirectToParentComponent,
-                            },
-                            {
-                                path: ':id',
-                                component: EmployeeDecisionDetailComponent,
-                                canActivate: [loginGuard],
-                                canDeactivate: [CanDeactivateService]
-                            }
-                        ]
-                    }
                 ]
             },
             { path: '**', redirectTo: LIST_URL }

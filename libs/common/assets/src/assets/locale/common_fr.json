@@ -299,5 +299,6 @@
     "PENDING":                    "En attente",
     "CMMS":                       "Maintenance",
     "BLOOD_GROUPS":               "Groupes sanguins",
-    "MAINTENANCE":                "Maintenance"
+    "MAINTENANCE":                "Maintenance",
+    "DIVERSE":                    "Divers"
 }

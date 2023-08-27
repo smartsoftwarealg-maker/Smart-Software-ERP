@@ -4,7 +4,7 @@ export interface Training {
     id: number;
     reference?: string;
     ref_date?: Date;
-    employee: number;
+    parentId: number;
     motive?: number;
     from_date?: Date;
     to_date?: Date;

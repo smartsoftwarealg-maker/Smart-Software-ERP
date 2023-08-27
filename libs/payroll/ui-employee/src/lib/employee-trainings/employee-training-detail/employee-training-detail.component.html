@@ -1,3 +1,14 @@
+<div class="button_div size" *ngIf="form">
+    <button mat-mini-fab (click)="save()"
+            color="accent" *ngIf="isEditable">
+        <i class="fas fa-save"></i>
+    </button>
+    <button mat-mini-fab (click)="cancel()"
+            color="warn">
+        <i class="fas fa-redo"></i>
+    </button>
+</div>
+
 <form *ngIf="form" novalidate [formGroup]="form" class="form-container">
 
     <mat-form-field floatLabel="always" class="default-25 sm-50">
@@ -31,7 +42,7 @@
 
 
     <mat-form-field class="default-50 sm-100 auto" >
-        <mat-label translate>PAYROLL_MOTIVE</mat-label>
+        <mat-label translate>COMMON_MOTIVE</mat-label>
         <ss-auto-complete matInput
                           [required]="true"
                           [model]="motiveAutoCompleteModel"

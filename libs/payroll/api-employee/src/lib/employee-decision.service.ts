@@ -10,5 +10,4 @@ export class EmployeeDecisionService extends BaseEntityService<Decision> {
     constructor(protected override httpSrv: HttpService) {
         super(httpSrv, DECISION_CHILD_URL, DECISION_PARENT_URL);
     }
-
 }

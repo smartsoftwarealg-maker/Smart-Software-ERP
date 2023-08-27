@@ -3,7 +3,7 @@ export const PUNISHMENTS_URL = '/punishments';
 export interface Punishment {
     id: number;
     centerId: number;
-    employee: number;
+    parentId: number;
     number: string;
     date: string;
     sanction?: string;

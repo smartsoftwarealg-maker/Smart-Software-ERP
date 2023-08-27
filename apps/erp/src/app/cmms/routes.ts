@@ -27,8 +27,14 @@ import {
     CMMS_PREV_ORDER_URL,
     COMMON_REPORTS_URL,
     FURNITURE_STATUS_URL,
-    CMMS_SERVICE_REQUEST_URL, STOCK_PARTS_REUEST_URL, docInfoRoutes, CMMS_CHARTS_URL, CMMS_ASSET_TREE
-} from '../common';
+    CMMS_SERVICE_REQUEST_URL,
+    STOCK_PARTS_REUEST_URL,
+    docInfoRoutes,
+    CMMS_CHARTS_URL,
+    CMMS_ASSET_TREE,
+    HR_EMPLOYEES_URL,
+    CMMS_EMPLOYEES_URL
+} from "../common";
 import { loginGuard } from '../erp-guards';
 import {
     CmmsFaultCauseDetailComponent,
@@ -82,6 +88,53 @@ import {
     PartsRequestListComponent
 } from '@ss/stock/ui-parts-request';
 import { CMMSChartsComponent } from '@ss/cmms/cmms-charts';
+import {
+    EmployeeActivationDetailComponent,
+    EmployeeCareerDetailComponent,
+    EmployeeChildDetailComponent,
+    EmployeeContractsDetailComponent, EmployeeDecisionDetailComponent,
+    EmployeeDetailComponent,
+    EmployeeDiplomaDetailComponent,
+    EmployeeDiplomaListComponent,
+    EmployeeLanguagesDetailComponent,
+    EmployeeListComponent,
+    EmployeeOldCareerDetailComponent,
+    EmployeeTrainingDetailComponent,
+    EmployeeTrainingListComponent,
+    EmployeeWifeDetailComponent,
+    PunishmentDetailComponent,
+    PunishmentListComponent
+} from "@ss/payroll/ui-employee";
+import {
+    ACTIVATION_ROUTE_URL,
+    CAREER_ROUTE_URL, CHILDREN_ROUTE_URL,
+    CONTRACTS_ROUTE_URL, DECISION_ROUTE_URL, DIPLOMA_ROUTE_URL, LANGUAGES_ROUTE_URL,
+    OLD_CAREER_ROUTE_URL, PUNISHMENT_ROUTE_URL, TRAINING_ROUTE_URL, WIVES_ROUTE_URL
+} from "@ss/payroll/api-employee";
+import {
+    EmployeeActivationListComponent
+} from "../../../../../libs/payroll/ui-employee/src/lib/employee-activation/list/employee-activation-list.component";
+import {
+    EmployeeCareerListComponent
+} from "../../../../../libs/payroll/ui-employee/src/lib/employee-career/list/employee-career-list.component";
+import {
+    EmployeeOldCareerListComponent
+} from "../../../../../libs/payroll/ui-employee/src/lib/employee-old-career/list/employee-old-career-list.component";
+import {
+    EmployeeContractListComponent
+} from "../../../../../libs/payroll/ui-employee/src/lib/employee-contracts/list/employee-contracts-list.component";
+import {
+    EmployeeWivesListComponent
+} from "../../../../../libs/payroll/ui-employee/src/lib/employee-wives/list/employee-wives-list.component";
+import {
+    EmployeeChildrenListComponent
+} from "../../../../../libs/payroll/ui-employee/src/lib/employee-children/list/employee-children-list.component";
+import {
+    EmployeeLanguagesListComponent
+} from "../../../../../libs/payroll/ui-employee/src/lib/employee-languages/list/employee-languages-list.component";
+import {
+    EmployeeDecisionListComponent
+} from "../../../../../libs/payroll/ui-employee/src/lib/employee-decisions/list/employee-decision-list.component";
 
 export const cmmsRoutes: Routes = [
     {
@@ -563,12 +616,44 @@ export const cmmsRoutes: Routes = [
             {path: '**', redirectTo: LIST_URL, pathMatch: 'full'}
         ]
     },
-
     {
         path: CMMS_CHARTS_URL, component: CMMSChartsComponent
     },
     {
         path: CMMS_ASSET_TREE, component: AssetTreeComponent
+    },
+    {
+        path: CMMS_EMPLOYEES_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: EmployeeListComponent,
+                canActivate: [loginGuard],
+                data: { active: true }
+            },
+            {
+                path: ':id',
+                children: [
+                    {
+                        path: '',
+                        component: EmployeeDetailComponent,
+                        canActivate: [loginGuard],
+                        canDeactivate: [CanDeactivateService],
+                        data: { hrMode: true, active: true },
+                        children: [
+                            {
+                                path: 'archive',
+                                children: [
+                                    {path: '', component: AppArchiveListComponent, pathMatch: 'full' },
+                                    {path: ':id', component: AppArchiveDetailComponent},
+                                ]
+                            },
+                        ]
+                    },
+                ]
+            },
+            { path: '**', redirectTo: LIST_URL }
+        ]
     },
 
     { path: '', redirectTo: ABS_INDEX_URL, pathMatch: 'full' },

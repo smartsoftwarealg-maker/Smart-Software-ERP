@@ -3,7 +3,7 @@ export const PERSON_URL = '/persons';
 
 export interface EmployeeDiploma {
     id: number;
-    employee: number;
+    parentId: number;
     diploma?: number;
     subject?: number;
     diploma_year?: string;

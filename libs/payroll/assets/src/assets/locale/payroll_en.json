@@ -150,5 +150,6 @@
     "POST_AR":           "Post (Ar)",
     "PERSONAL_INFO":     "Personal information",
     "ARCHIVE_VIEWER":    "Archive viewer",
-    "IS_DRIVER":         "Driver"
+    "IS_DRIVER":         "Driver",
+    "CMMS_PERSON":       "Maintenance personnel"
 }

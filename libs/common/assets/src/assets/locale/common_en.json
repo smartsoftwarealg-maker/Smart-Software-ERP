@@ -296,5 +296,6 @@
     "CONTRACTS":                 "Contracts",
     "CMMS":                      "CMMS",
     "BLOOD_GROUPS":              "Blood groups",
-    "MAINTENANCE":               "Maintenance"
+    "MAINTENANCE":               "Maintenance",
+    "DIVERSE":                   "Diverse"
 }

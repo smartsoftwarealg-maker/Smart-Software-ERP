@@ -25,9 +25,8 @@ import {
     ABS_CMMS_TRIGGER_URL,
     ABS_CMMS_CHARTS_URL,
     ABS_CMMS_ASSETS_TREE_URL,
-    ABS_ASSET_LOCATIONS,
     ABS_CMMS_LOCATIONS
-} from "../common";
+} from '../common';
 
 export const cmmsNavTree: SideNavNode = {
     name: 'CMMS',

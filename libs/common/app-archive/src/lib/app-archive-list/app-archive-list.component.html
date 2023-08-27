@@ -1,8 +1,8 @@
 <div class="container">
     <div class="content_div" >
-        <div class="tool_bar " *ngIf="entitySrv.editable">
+        <div class="tool_bar " >
 <!--            <mat-label translate>COMMON_ARCHIVE</mat-label>-->
-            <div class="buttons" *ngIf="editable">
+            <div class="buttons" *ngIf="isEditable">
                 <button mat-mini-fab
                         color="primary"
                         (click)="showDetail('0')"

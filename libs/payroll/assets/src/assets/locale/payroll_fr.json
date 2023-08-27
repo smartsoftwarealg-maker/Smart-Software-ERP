@@ -149,5 +149,6 @@
     "POST_AR":           "Poste (Ar)",
     "PERSONAL_INFO":     "Informations personnelles",
     "ARCHIVE_VIEWER":    "Visualisation archives",
-    "IS_DRIVER":         "Conductrice"
+    "IS_DRIVER":         "Conducteur",
+    "CMMS_PERSON":       "Personnel d'entretien?"
 }

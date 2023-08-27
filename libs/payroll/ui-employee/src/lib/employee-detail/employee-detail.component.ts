@@ -16,12 +16,36 @@ import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import {MatExpansionPanel} from '@angular/material/expansion';
 import { DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
 import { Observable, of, switchMap } from 'rxjs';
-import { map, tap } from "rxjs/operators";
+import { map, tap } from 'rxjs/operators';
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { HttpService } from '@ss/common/api-common';
 import { ELine, FixedElementsEntryService } from '@ss/remuneration/elements-entry';
 import { Employee } from '@ss/employee-services/employee-services';
 import { AppArchiveService, EMPLOYEE_ARCHIVES } from '@ss/common/app-archive';
+import {
+    ACTIVATION_ROUTE_URL, ARCHIVE_ROUTE_URL,
+    CAREER_ROUTE_URL,
+    CHILDREN_ROUTE_URL,
+    CONTRACTS_ROUTE_URL,
+    DECISION_ROUTE_URL,
+    DIPLOMA_ROUTE_URL,
+    EmployeeActivationService,
+    EmployeeCareerService,
+    EmployeeChildrenService,
+    EmployeeContractService,
+    EmployeeDecisionService,
+    EmployeeLanguagesService,
+    EmployeeOldCareerService,
+    EmployeeWivesService,
+    LANGUAGES_ROUTE_URL,
+    OLD_CAREER_ROUTE_URL,
+    PUNISHMENT_ROUTE_URL,
+    TRAINING_ROUTE_URL,
+    WIVES_ROUTE_URL
+} from '@ss/payroll/api-employee';
+import { EmployeeDiplomaService } from '../employee-diplomas/employee-diploma.service';
+import { EmployeeTrainingService } from '../employee-trainings/employee-training.service';
+import { PunishmentService } from '../employee-punishments/punishment.service';
 
 @Component({
     selector: 'ss-employee-detail',
@@ -29,10 +53,51 @@ import { AppArchiveService, EMPLOYEE_ARCHIVES } from '@ss/common/app-archive';
     templateUrl: './employee-detail.component.html'
 })
 export class EmployeeDetailComponent extends BaseEntityDetailComponent<Employee> {
+    private decisionSrv = inject(EmployeeDecisionService);
+    private punishmentSrv = inject(PunishmentService);
+    private languageSrv = inject(EmployeeLanguagesService);
+    private trainingSrv = inject(EmployeeTrainingService);
+    private diplomaSrv = inject(EmployeeDiplomaService);
+    private childSrv = inject(EmployeeChildrenService);
+    private spouseSrv = inject(EmployeeWivesService);
+    private contractSrv = inject(EmployeeContractService);
+    private oldCareerSrv = inject(EmployeeOldCareerService);
+    private careerSrv = inject(EmployeeCareerService);
+    private activationSrv = inject(EmployeeActivationService);
     private bloodGroupSrv = inject(BloodGroupService);
     private citySrv = inject(CityService);
     private nationalitySrv = inject(NationalityService);
     private archiveSrv = inject(AppArchiveService);
+    private PANELS = [
+        ACTIVATION_ROUTE_URL, //0
+        CONTRACTS_ROUTE_URL,  //1
+        CAREER_ROUTE_URL,     //2
+        WIVES_ROUTE_URL,      //3
+        CHILDREN_ROUTE_URL,   //4
+        DIPLOMA_ROUTE_URL,    //5
+        TRAINING_ROUTE_URL,   //6
+        PUNISHMENT_ROUTE_URL, //7
+        LANGUAGES_ROUTE_URL,  //8
+        OLD_CAREER_ROUTE_URL, //9
+        DECISION_ROUTE_URL,   //10
+        ARCHIVE_ROUTE_URL     //11
+    ];
+
+    readonly ACTIVATION_ROUTE = 0;
+    readonly CONTRACTS_ROUTE = 1;
+    readonly CAREER_ROUTE = 2;
+    readonly WIVES_ROUTE = 3;
+    readonly CHILDREN_ROUTE = 4;
+    readonly DIPLOMA_ROUTE = 5;
+    readonly TRAINING_ROUTE = 6;
+    readonly PUNISHMENT_ROUTE = 7;
+    readonly LANGUAGES_ROUTE = 8;
+    readonly OLD_CAREER_ROUTE = 9;
+    readonly DECISION_ROUT = 10;
+    readonly ARCHIVE_ROUT = 11;
+
+    activePanel:-1|0|1|2|3|4|5|6|7|8|9|10|11 = -1;
+
     readonly PAYROLL_IEP = 1;
     readonly PAYROLL_OLD_ELEMENTS = 2;
     readonly PAYROLL_RANK = 3;
@@ -67,6 +132,21 @@ export class EmployeeDetailComponent extends BaseEntityDetailComponent<Employee>
         this.imageModel = new ImageModel(this.httpSrv);
     }
 
+    loadEntity(id: number): Observable<Employee> {
+        this.decisionSrv.setParentId(id || 0);
+        this.punishmentSrv.setParentId(id || 0);
+        this.languageSrv.setParentId(id || 0);
+        this.trainingSrv.setParentId(id || 0);
+        this.diplomaSrv.setParentId(id || 0);
+        this.childSrv.setParentId(id || 0);
+        this.spouseSrv.setParentId(id || 0);
+        this.contractSrv.setParentId(id || 0);
+        this.oldCareerSrv.setParentId(id || 0);
+        this.careerSrv.setParentId(id || 0);
+        this.activationSrv.setParentId(id || 0);
+        return super.loadEntity(id);
+    }
+
     public override preload(): Observable<any> {
         this.route.data.subscribe(data => {
             this.hrMode = !!data['hrMode'];
@@ -82,10 +162,10 @@ export class EmployeeDetailComponent extends BaseEntityDetailComponent<Employee>
     public override setupForm(p: Employee) {
         this.archiveSrv.appId = EMPLOYEE_ARCHIVES;
         this.infoSrv.load()
-            .pipe(switchMap(_ => this.infoSrv.get(p.id)))
+            .pipe(switchMap(() => this.infoSrv.get(p.id)))
             .subscribe(res => {
                 const elements = res.elements.length === 0 ?
-                    this.infoSrv.loadDataCols().map(_ => 0.0) :
+                    this.infoSrv.loadDataCols().map(() => 0.0) :
                     res.elements;
 
                 this.elementsForm = this.formBuilder.group({
@@ -123,7 +203,8 @@ export class EmployeeDetailComponent extends BaseEntityDetailComponent<Employee>
             fatherAr:      [p.fatherAr, Validators.maxLength(64)],
             motherAr:      [p.motherAr, Validators.maxLength(64)],
             birthCity:     [p.birthCity],
-            is_driver:     [p.is_driver],
+            is_driver:     [p.is_driver || false, Validators.required],
+            cmmsPerson:    [p.cmmsPerson || false, Validators.required],
             blood_group:   [p.blood_group]
         });
     }
@@ -193,10 +274,6 @@ export class EmployeeDetailComponent extends BaseEntityDetailComponent<Employee>
             return '';
     }
 
-    public override readForm(): Employee {
-        const e: Employee = this.form.value;
-        return e;
-    }
 
     override uploadAttachments(id: number): Observable<any> {
         this.imageModel.setBackendUrl(this.employeeSrv.getPhotoUrl(id));
@@ -253,12 +330,19 @@ export class EmployeeDetailComponent extends BaseEntityDetailComponent<Employee>
             });
     }
 
-    showArchive() {
-        if (this.router.url.indexOf('archive') <0) {
-            this.router.navigate(['archive'], { relativeTo: this.route });
+    // showArchive() {
+    //     if (this.router.url.indexOf('archive') <0) {
+    //         this.router.navigate(['archive'], { relativeTo: this.route });
+    //     }
+    // }
+
+    showPanel(panel: 0|1|2|3|4|5|6|7|8|9|10|11) {
+        this.activePanel = panel;
+        const dest = this.PANELS[panel];
+        if (this.router.url.indexOf(dest) <0) {
+            this.router.navigate([dest], { relativeTo: this.route }).then();
         }
     }
-
 }
 
 class CityLookup extends DefaultAutoCompleteModel<City> {
@@ -269,4 +353,5 @@ class CityLookup extends DefaultAutoCompleteModel<City> {
     override toString = (x: any) => x ? x[this.descriptionField]?.substring(0, 50) +
                                (x.dairaDescription? '/' + x.dairaDescription: '') +
                                (x.wilayaDescription? '/' + x.wilayaDescription: ''): null;
+
 }

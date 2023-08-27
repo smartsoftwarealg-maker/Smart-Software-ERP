@@ -1,0 +1,55 @@
+<div class="button_div size" *ngIf="form">
+    <button mat-mini-fab (click)="save()"
+            color="accent" *ngIf="isEditable">
+        <i class="fas fa-save"></i>
+    </button>
+    <button mat-mini-fab (click)="cancel()"
+            color="warn">
+        <i class="fas fa-redo"></i>
+    </button>
+</div>
+
+<div class="form-container">
+    <form *ngIf="form" novalidate [formGroup]="form" style="min-height: 100%; display: unset">
+
+        <mat-form-field floatLabel="always" class="default-50 sm-100">
+            <mat-label translate>PAYROLL_NAME</mat-label>
+            <input matInput required [maxLength]="64" formControlName="name">
+        </mat-form-field>
+
+        <mat-form-field floatLabel="always" class="default-50 sm-100">
+            <mat-label translate>PAYROLL_FATHER</mat-label>
+            <input matInput [maxLength]="64" formControlName="father">
+        </mat-form-field>
+
+        <mat-form-field floatLabel="always" class="default-50 sm-100">
+            <mat-label translate>PAYROLL_MOTHER</mat-label>
+            <input matInput [maxLength]="64" formControlName="mother">
+        </mat-form-field>
+
+        <mat-form-field floatLabel="always" class="default-50 sm-100">
+            <mat-label translate>PAYROLL_BIRTH_DATE</mat-label>
+            <ss-date-picker formControlName="birthdate"></ss-date-picker>
+        </mat-form-field>
+
+        <mat-form-field floatLabel="always" class="default-50 sm-100">
+            <mat-label translate>PAYROLL_BIRTH_PLACE</mat-label>
+            <input matInput [maxLength]="64" formControlName="birthPlace">
+        </mat-form-field>
+
+        <mat-form-field floatLabel="always" class="default-50 sm-100">
+            <mat-label translate>PAYROLL_NAME_AR</mat-label>
+            <input matInput [maxLength]="64" formControlName="name_ar">
+        </mat-form-field>
+
+        <mat-form-field floatLabel="always" class="default-50 sm-100">
+            <mat-label translate>PAYROLL_FATHER_AR</mat-label>
+            <input matInput [maxLength]="64" formControlName="father_ar">
+        </mat-form-field>
+
+        <mat-form-field floatLabel="always" class="default-50 sm-100">
+            <mat-label translate>PAYROLL_MOTHER_AR</mat-label>
+            <input matInput [maxLength]="64" formControlName="mother_ar">
+        </mat-form-field>
+    </form>
+</div>
