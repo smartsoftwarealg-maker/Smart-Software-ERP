@@ -25,7 +25,7 @@ import {
     ABS_CMMS_TRIGGER_URL,
     ABS_CMMS_CHARTS_URL,
     ABS_CMMS_ASSETS_TREE_URL,
-    ABS_CMMS_LOCATIONS
+    ABS_CMMS_LOCATIONS, ABS_CMMS_EMPLOYEES_URL, ABS_CMMS_FUNCTIONS
 } from '../common';
 
 export const cmmsNavTree: SideNavNode = {
@@ -49,6 +49,12 @@ export const cmmsNavTree: SideNavNode = {
             icon: 'fa-solid fa-rectangle-list',
             route: ABS_CMMS_CLASSES,
             accessRights: 'AssetClass'
+        },
+        {
+            name: 'CMMS_FUNCTION',
+            icon: 'fa-solid fa-function',
+            route: ABS_CMMS_FUNCTIONS,
+            accessRights: 'CMMSFunction'
         },
         {
             name: 'ASSET_SITES',
@@ -122,6 +128,12 @@ export const cmmsNavTree: SideNavNode = {
         //     route: ABS_CMMS_TYPE__URL,
         //     accessRights: 'CMType'
         // },
+        {
+            name: 'PAYROLL_EMPLOYEES',
+            icon: 'fa-solid fa-calendar-users',
+            route: ABS_CMMS_EMPLOYEES_URL,
+            accessRights: 'Person'
+        },
         {
             name: 'CMMS_METERS',
             icon: 'fa-solid fa-meter',

@@ -1,0 +1,33 @@
+.size {
+    width: 90%;
+    max-width: 1400px;
+    margin: 4px auto 0;
+}
+
+.div_table {
+    height: calc(100% - 70px);
+    overflow: auto;
+}
+
+.main-table {
+    width: 100%;
+}
+
+mat-table {
+    min-width: 1200px;
+}
+
+.mat-column-functionDescription,
+.mat-column-reference,
+.mat-column-acquisitionDate,
+.mat-column-serial_no,
+.mat-column-officeDescription,
+.mat-column-className,
+.mat-column-site,
+.mat-column-statusDescription {
+    flex: 1 1 150px;
+}
+
+.mat-column-description {
+    flex: 2 1 280px;
+}

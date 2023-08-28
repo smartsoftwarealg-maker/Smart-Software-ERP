@@ -334,6 +334,7 @@ export const CMMS_SOLUTION_URL  = 'cmms-solutions';
 export const CMMS_CHARTS_URL           = 'charts';
 export const CMMS_ASSET_TREE           = 'cmms-asset-tree';
 export const CMMS_EMPLOYEES_URL           = 'cmms-employees';
+export const CMMS_FUNCTION_URL           = 'cmms-functions';
 
 // assets
 export const FURNITURE_URL            = 'furniture';
@@ -621,6 +622,8 @@ export const ABS_SERVICE_REQUEST_URL = '/' + [MAIN_PAGE_URL, CMMS_APP_URL, CMMS_
 export const ABS_CMMS_PARTS_REQUEST_URL = '/' + [MAIN_PAGE_URL, CMMS_APP_URL, STOCK_PARTS_REUEST_URL].join('/');
 export const ABS_CMMS_CHARTS_URL = '/' + [MAIN_PAGE_URL, CMMS_APP_URL, CMMS_CHARTS_URL].join('/');
 export const ABS_CMMS_LOCATIONS = '/' + [MAIN_PAGE_URL, CMMS_APP_URL, ASSET_LOCATIONS_URL].join('/');
+export const ABS_CMMS_EMPLOYEES_URL = '/' + [MAIN_PAGE_URL, CMMS_APP_URL, CMMS_EMPLOYEES_URL].join('/');
+export const ABS_CMMS_FUNCTIONS = '/' + [MAIN_PAGE_URL, CMMS_APP_URL, CMMS_FUNCTION_URL].join('/');
 
 // Furniture
 export const ABS_FURNITURE_URL            = '/' + [MAIN_PAGE_URL, FURNITURE_APP_URL, FURNITURE_URL].join('/');

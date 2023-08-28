@@ -33,7 +33,7 @@ import {
     CMMS_CHARTS_URL,
     CMMS_ASSET_TREE,
     HR_EMPLOYEES_URL,
-    CMMS_EMPLOYEES_URL
+    CMMS_EMPLOYEES_URL, CMMS_FUNCTION_URL
 } from "../common";
 import { loginGuard } from '../erp-guards';
 import {
@@ -57,8 +57,8 @@ import {
     CMMSSolutionDetailComponent,
     CMMSRoutingPartsListComponent,
     CMMSRoutingPartsDetailComponent,
-    CMMSRoutingArchiveComponent
-} from '@ss/cmms/lookups';
+    CMMSRoutingArchiveComponent, CMMSFunctionListComponent, CMMSFunctionDetailComponent
+} from "@ss/cmms/lookups";
 import { CMMSPlanDetailComponent, CMMSPlanListComponent } from '@ss/cmms/plans';
 import { CmmsAlertListComponent, PMDetailComponent, PmListComponent } from '@ss/cmms/pm';
 import { AssetReadingDetailComponent, AssetReadingListComponent, readingDetailGuard } from '@ss/cmms/asset-readings';
@@ -88,53 +88,13 @@ import {
     PartsRequestListComponent
 } from '@ss/stock/ui-parts-request';
 import { CMMSChartsComponent } from '@ss/cmms/cmms-charts';
+import { CmmsEmployeeDetailComponent, CmmsEmployeeListComponent } from '@ss/cmms/cmms-employees';
 import {
-    EmployeeActivationDetailComponent,
-    EmployeeCareerDetailComponent,
-    EmployeeChildDetailComponent,
-    EmployeeContractsDetailComponent, EmployeeDecisionDetailComponent,
-    EmployeeDetailComponent,
-    EmployeeDiplomaDetailComponent,
-    EmployeeDiplomaListComponent,
-    EmployeeLanguagesDetailComponent,
-    EmployeeListComponent,
-    EmployeeOldCareerDetailComponent,
-    EmployeeTrainingDetailComponent,
-    EmployeeTrainingListComponent,
-    EmployeeWifeDetailComponent,
-    PunishmentDetailComponent,
-    PunishmentListComponent
-} from "@ss/payroll/ui-employee";
+    CmmsAssetListComponent
+} from "../../../../../libs/cmms/cmms-assets/src/lib/cmms-asset-list/cmms-asset-list.component";
 import {
-    ACTIVATION_ROUTE_URL,
-    CAREER_ROUTE_URL, CHILDREN_ROUTE_URL,
-    CONTRACTS_ROUTE_URL, DECISION_ROUTE_URL, DIPLOMA_ROUTE_URL, LANGUAGES_ROUTE_URL,
-    OLD_CAREER_ROUTE_URL, PUNISHMENT_ROUTE_URL, TRAINING_ROUTE_URL, WIVES_ROUTE_URL
-} from "@ss/payroll/api-employee";
-import {
-    EmployeeActivationListComponent
-} from "../../../../../libs/payroll/ui-employee/src/lib/employee-activation/list/employee-activation-list.component";
-import {
-    EmployeeCareerListComponent
-} from "../../../../../libs/payroll/ui-employee/src/lib/employee-career/list/employee-career-list.component";
-import {
-    EmployeeOldCareerListComponent
-} from "../../../../../libs/payroll/ui-employee/src/lib/employee-old-career/list/employee-old-career-list.component";
-import {
-    EmployeeContractListComponent
-} from "../../../../../libs/payroll/ui-employee/src/lib/employee-contracts/list/employee-contracts-list.component";
-import {
-    EmployeeWivesListComponent
-} from "../../../../../libs/payroll/ui-employee/src/lib/employee-wives/list/employee-wives-list.component";
-import {
-    EmployeeChildrenListComponent
-} from "../../../../../libs/payroll/ui-employee/src/lib/employee-children/list/employee-children-list.component";
-import {
-    EmployeeLanguagesListComponent
-} from "../../../../../libs/payroll/ui-employee/src/lib/employee-languages/list/employee-languages-list.component";
-import {
-    EmployeeDecisionListComponent
-} from "../../../../../libs/payroll/ui-employee/src/lib/employee-decisions/list/employee-decision-list.component";
+    CmmsAssetDetailComponent
+} from "../../../../../libs/cmms/cmms-assets/src/lib/cmms-asset-detail/cmms-asset-detail.component";
 
 export const cmmsRoutes: Routes = [
     {
@@ -243,6 +203,22 @@ export const cmmsRoutes: Routes = [
                 path: ':id',
                 component: AssetReadingDetailComponent,
                 canActivate: [loginGuard, readingDetailGuard],
+                canDeactivate: [CanDeactivateService],
+            },
+        ]
+    },
+    {
+        path: CMMS_FUNCTION_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: CMMSFunctionListComponent,
+                canActivate: [loginGuard]
+            },
+            {
+                path: ':id',
+                component: CMMSFunctionDetailComponent,
+                canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService],
             },
         ]
@@ -404,12 +380,12 @@ export const cmmsRoutes: Routes = [
         children: [
             {
                 path: LIST_URL,
-                component: AssetsListComponent,
+                component: CmmsAssetListComponent,
                 canActivate: [loginGuard]
             },
             {
                 path: ':id',
-                component: AssetsDetailComponent,
+                component: CmmsAssetDetailComponent,
                 canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService],
                 children: [
@@ -627,7 +603,7 @@ export const cmmsRoutes: Routes = [
         children: [
             {
                 path: LIST_URL,
-                component: EmployeeListComponent,
+                component: CmmsEmployeeListComponent,
                 canActivate: [loginGuard],
                 data: { active: true }
             },
@@ -636,7 +612,7 @@ export const cmmsRoutes: Routes = [
                 children: [
                     {
                         path: '',
-                        component: EmployeeDetailComponent,
+                        component: CmmsEmployeeDetailComponent,
                         canActivate: [loginGuard],
                         canDeactivate: [CanDeactivateService],
                         data: { hrMode: true, active: true },

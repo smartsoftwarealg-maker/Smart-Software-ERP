@@ -56,5 +56,7 @@
     "PAST_DUE":         "بعد موعد التسليم",
     "READING_DATE":     "تاريخ القراءة",
     "ZONES":            "المناطق",
-    "WORKSHOPS":        "ورشات "
+    "WORKSHOPS":        "ورشات ",
+    "WORKSHOP":         "ورشة ",
+    "FUNCTION":         "وظيفة"
 }

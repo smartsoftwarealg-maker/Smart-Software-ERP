@@ -43,3 +43,6 @@ export * from './lib/services/assets.service';
 export * from './lib/services/assets-building.service';
 export * from './lib/services/asset-location.service';
 export * from './lib/asset-tree/asset-tree.component';
+export * from './lib/services/asset-class.service';
+export * from './lib/asset-search-dialog/asset-search-dialog.component';
+export * from './lib/office-search/office-search.component';

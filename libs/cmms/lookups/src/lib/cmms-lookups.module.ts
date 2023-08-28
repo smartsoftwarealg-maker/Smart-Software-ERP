@@ -32,23 +32,23 @@ import { CMMSSolutionListComponent } from './cmms-solution/cmms-solution-list.co
 import { CMMSSolutionDetailComponent } from './cmms-solution/c-m-m-s-solution-detail.component';
 import { CMMSRoutingPartsDetailComponent } from './cmms-routing-parts-detail/cmms-routing-parts-detail.component';
 import { CMMSRoutingPartsListComponent } from './cmms-routing-parts-list/cmms-routing-parts-list.component';
-import { CommonUiAutoCompleteModule } from "@ss/common/ui-auto-complete";
+import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    CommonUiLangModule,
-    MatSortModule,
-    MatTableModule,
-    UiPaginationModule,
-    MatCardModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MaterialModule,
-    ReactiveFormsModule,
-    RouterOutlet,
-    CommonUiAutoCompleteModule
-  ],
+    imports: [
+        CommonModule,
+        CommonUiLangModule,
+        MatSortModule,
+        MatTableModule,
+        UiPaginationModule,
+        MatCardModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MaterialModule,
+        ReactiveFormsModule,
+        RouterOutlet,
+        CommonUiAutoCompleteModule
+    ],
     declarations: [
         CMMSFaultDetailComponent,
         CMMSFaultListComponent,
