@@ -1,15 +1,10 @@
-import { Component, inject, OnInit } from '@angular/core';
-import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
+import { Component, inject } from '@angular/core';
+import { BaseChildEntityDetailComponent } from '@ss/common/ui-base-entity';
 import {Training} from '../employee-training';
-import {ShellService, SnackBarService} from '@ss/common/ui-shell';
-import {ActivatedRoute} from '@angular/router';
-import {UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
-import {HttpService, LoginService} from '@ss/common/api-common';
-import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import {DiplomaService, LookupsService} from '@ss/common/api-lookup';
-import {JudicialFrameService, MotiveService, SubjectService} from '@ss/payroll/api-employee';
-import {Observable} from 'rxjs';
-import {switchMap} from 'rxjs/operators';
+import { FormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
+import {LoginService} from '@ss/common/api-common';
+import {DiplomaService} from '@ss/common/api-lookup';
+import {JudicialFrameService, MotiveService} from '@ss/payroll/api-employee';
 import {EmployeeTrainingService} from '../employee-training.service';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 
@@ -18,7 +13,8 @@ import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
     templateUrl: './employee-training-detail.component.html',
     styleUrls: ['./employee-training-detail.component.scss']
 })
-export class EmployeeTrainingDetailComponent extends BaseEntityDetailComponent<Training> implements OnInit {
+export class EmployeeTrainingDetailComponent extends BaseChildEntityDetailComponent<Training> {
+    private formBuilder = inject(FormBuilder);
     private motiveSrv =  inject(MotiveService);
     private diplomaSrv =  inject(DiplomaService);
     private loginSrv =  inject(LoginService);
@@ -27,39 +23,15 @@ export class EmployeeTrainingDetailComponent extends BaseEntityDetailComponent<T
     diplomaAutoCompleteModel = new DefaultAutoCompleteModel(this.diplomaSrv);
     judicialFrameAutoCompleteModel = new DefaultAutoCompleteModel(this.judicialSrv);
 
-    constructor(
-        public trainingSrv: EmployeeTrainingService,
-        public override shellSrv: ShellService,
-        public override snackBarSrv: SnackBarService,
-        public override route: ActivatedRoute,
-        public override formBuilder: UntypedFormBuilder,
-        public httpSrv: HttpService,
-        public override confirmationSrv: ConfirmationDialogService,
-        public lookupsSrv: LookupsService,
-        private subjectSrv: SubjectService) {
-        super(trainingSrv,
-            shellSrv,
-            snackBarSrv, route,
-            formBuilder,
-            confirmationSrv,
-            'PAYROLL_TRAINING');
+    constructor(public trainingSrv: EmployeeTrainingService) {
+        super(trainingSrv);
     }
 
-    protected override getRouteParam(): Observable<any> {
-        return this.route.parent.parent.params
-            .pipe(
-                switchMap(p => {
-                    const parentId = +p['id'];
-                    this.trainingSrv.setParentId(parentId);
-                    return super.getRouteParam();
-                })
-            );
-    }
 
     override setupForm(a: Training): UntypedFormGroup {
         return this.form = this.formBuilder.group({
             id: a.id,
-            employee: a.employee || this.trainingSrv.getParentId(),
+            parentId: [a.parentId || this.trainingSrv.getParentId()],
             motive: [a.motive, Validators.required],
             reference: [a.reference],
             ref_date: [a.ref_date],
@@ -74,7 +46,7 @@ export class EmployeeTrainingDetailComponent extends BaseEntityDetailComponent<T
             trn_expenses: a.trn_expenses || 0.0,
             extra_expenses: a.extra_expenses,
             judicial_frame: a.judicial_frame,
-            center: [this.loginSrv.appCtx.center]
+            center: [a.center || this.loginSrv.appCtx.center]
         });
     }
 }

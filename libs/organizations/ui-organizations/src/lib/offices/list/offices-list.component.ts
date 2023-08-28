@@ -19,7 +19,7 @@ export class OfficesListComponent extends BaseEntityListComponent<Office> {
     private locationSrv = inject(AssetLocationService);
     private buildingSrv = inject(AssetsBuildingService);
 
-    locationLookup = new CodeDescriptionAutoCompleteModel(this.locationSrv);
+    locationLookup = new DefaultAutoCompleteModel(this.locationSrv);
     buildingLookup = new DefaultAutoCompleteModel(this.buildingSrv);
 
     locationCtrl = new FormControl<number>(this.buildingSrv.getParentId() || 0);

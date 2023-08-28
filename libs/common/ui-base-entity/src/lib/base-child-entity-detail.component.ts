@@ -40,13 +40,17 @@ export abstract class BaseChildEntityDetailComponent<T extends { id: number, par
         });
     }
 
+    readForm(): T {
+        return this.form.getRawValue();
+    }
+
     save() {
         this.form.markAllAsTouched();
         if (!this.form.valid) {
             this.snackBarSrv.showFailureMessage('COMMON_FORM_NOT_VALID');
             return;
         }
-        const val = this.form.getRawValue();
+        const val = this.readForm();
 
         this.entitySrv.update(val)
             .pipe(tap(i => {

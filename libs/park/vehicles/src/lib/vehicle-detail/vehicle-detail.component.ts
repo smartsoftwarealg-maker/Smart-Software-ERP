@@ -29,7 +29,7 @@ import { VehicleFuelConsumptionService } from '../services/vehicle-fuel-consumpt
 import { VehicleOilChangeService } from '../services/vehicle-oil-change.service';
 import { VehicleInsuranceService } from '../services/vehicle-insurance.service';
 import { VehicleDamageService } from '../services/vehicle-damage.service';
-import { VehicleDriverService } from "../services/vehicle-driver.service";
+import { VehicleDriverService } from '../services/vehicle-driver.service';
 
 @Component({
     selector: 'ss-vehicle-detail',

@@ -70,4 +70,5 @@ export interface Employee {
     is_driver: boolean;
     msDescription?: string;
     blood_group?: number;
+    cmmsPerson: boolean;
 }

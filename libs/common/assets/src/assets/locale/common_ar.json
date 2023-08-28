@@ -295,5 +295,6 @@
     "PENDING":                    "قيد الانتظار",
     "CMMS":                       "الصيانة",
     "BLOOD_GROUPS":               "فصائل الدم",
-    "MAINTENANCE":                "صيانة"
+    "MAINTENANCE":                "صيانة",
+    "DIVERSE":                    "متنوع"
 }

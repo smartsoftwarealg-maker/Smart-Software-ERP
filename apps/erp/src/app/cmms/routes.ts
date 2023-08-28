@@ -27,8 +27,14 @@ import {
     CMMS_PREV_ORDER_URL,
     COMMON_REPORTS_URL,
     FURNITURE_STATUS_URL,
-    CMMS_SERVICE_REQUEST_URL, STOCK_PARTS_REUEST_URL, docInfoRoutes, CMMS_CHARTS_URL, CMMS_ASSET_TREE
-} from '../common';
+    CMMS_SERVICE_REQUEST_URL,
+    STOCK_PARTS_REUEST_URL,
+    docInfoRoutes,
+    CMMS_CHARTS_URL,
+    CMMS_ASSET_TREE,
+    HR_EMPLOYEES_URL,
+    CMMS_EMPLOYEES_URL, CMMS_FUNCTION_URL
+} from "../common";
 import { loginGuard } from '../erp-guards';
 import {
     CmmsFaultCauseDetailComponent,
@@ -51,8 +57,8 @@ import {
     CMMSSolutionDetailComponent,
     CMMSRoutingPartsListComponent,
     CMMSRoutingPartsDetailComponent,
-    CMMSRoutingArchiveComponent
-} from '@ss/cmms/lookups';
+    CMMSRoutingArchiveComponent, CMMSFunctionListComponent, CMMSFunctionDetailComponent
+} from "@ss/cmms/lookups";
 import { CMMSPlanDetailComponent, CMMSPlanListComponent } from '@ss/cmms/plans';
 import { CmmsAlertListComponent, PMDetailComponent, PmListComponent } from '@ss/cmms/pm';
 import { AssetReadingDetailComponent, AssetReadingListComponent, readingDetailGuard } from '@ss/cmms/asset-readings';
@@ -82,6 +88,13 @@ import {
     PartsRequestListComponent
 } from '@ss/stock/ui-parts-request';
 import { CMMSChartsComponent } from '@ss/cmms/cmms-charts';
+import { CmmsEmployeeDetailComponent, CmmsEmployeeListComponent } from '@ss/cmms/cmms-employees';
+import {
+    CmmsAssetListComponent
+} from "../../../../../libs/cmms/cmms-assets/src/lib/cmms-asset-list/cmms-asset-list.component";
+import {
+    CmmsAssetDetailComponent
+} from "../../../../../libs/cmms/cmms-assets/src/lib/cmms-asset-detail/cmms-asset-detail.component";
 
 export const cmmsRoutes: Routes = [
     {
@@ -190,6 +203,22 @@ export const cmmsRoutes: Routes = [
                 path: ':id',
                 component: AssetReadingDetailComponent,
                 canActivate: [loginGuard, readingDetailGuard],
+                canDeactivate: [CanDeactivateService],
+            },
+        ]
+    },
+    {
+        path: CMMS_FUNCTION_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: CMMSFunctionListComponent,
+                canActivate: [loginGuard]
+            },
+            {
+                path: ':id',
+                component: CMMSFunctionDetailComponent,
+                canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService],
             },
         ]
@@ -351,12 +380,12 @@ export const cmmsRoutes: Routes = [
         children: [
             {
                 path: LIST_URL,
-                component: AssetsListComponent,
+                component: CmmsAssetListComponent,
                 canActivate: [loginGuard]
             },
             {
                 path: ':id',
-                component: AssetsDetailComponent,
+                component: CmmsAssetDetailComponent,
                 canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService],
                 children: [
@@ -563,12 +592,44 @@ export const cmmsRoutes: Routes = [
             {path: '**', redirectTo: LIST_URL, pathMatch: 'full'}
         ]
     },
-
     {
         path: CMMS_CHARTS_URL, component: CMMSChartsComponent
     },
     {
         path: CMMS_ASSET_TREE, component: AssetTreeComponent
+    },
+    {
+        path: CMMS_EMPLOYEES_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: CmmsEmployeeListComponent,
+                canActivate: [loginGuard],
+                data: { active: true }
+            },
+            {
+                path: ':id',
+                children: [
+                    {
+                        path: '',
+                        component: CmmsEmployeeDetailComponent,
+                        canActivate: [loginGuard],
+                        canDeactivate: [CanDeactivateService],
+                        data: { hrMode: true, active: true },
+                        children: [
+                            {
+                                path: 'archive',
+                                children: [
+                                    {path: '', component: AppArchiveListComponent, pathMatch: 'full' },
+                                    {path: ':id', component: AppArchiveDetailComponent},
+                                ]
+                            },
+                        ]
+                    },
+                ]
+            },
+            { path: '**', redirectTo: LIST_URL }
+        ]
     },
 
     { path: '', redirectTo: ABS_INDEX_URL, pathMatch: 'full' },

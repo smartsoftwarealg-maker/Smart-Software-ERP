@@ -28,7 +28,7 @@ export const DECISION_CHILD_URL = '/decisions';
 export interface EmployeeActivation {
     id: number;
     centerId: number;
-    empId: number;
+    parentId: number;
     activityStatus: number;
     hireDate: string;
     suspended: boolean;
@@ -37,11 +37,13 @@ export interface EmployeeActivation {
     employmentType: number;
     inConflict: boolean;
     centerName?: string;
+    empTypeDescription?: string;
+    suspendReasonDescription?: string;
 }
 
 export interface Career {
     id: number;
-    employee: number;
+    parentId: number;
     paymonth: number;
     post: number;
     division: number;
@@ -60,6 +62,11 @@ export interface Career {
     profCategory?: string;
     workshop?: number;
     cost_center?: number;
+    divDescription?: string;
+    deptDescription?: string;
+    srvDescription?: string;
+    wrkDescription?: string;
+    postDescription?: string;
     // todo: add these fields
     // motive               ?: number;
     // qualification        ?: number;
@@ -69,7 +76,7 @@ export interface Career {
 export interface Contract {
     id: number;
     centerId: number;
-    employee: number;
+    parentId: number;
     number: string;
     info?: number;
     recordNumber: string;
@@ -92,11 +99,16 @@ export interface Contract {
     project: number;
     trial_period: number;
     confirmed: boolean;
+    srvDescription?: string;
+    deptDescription?: string;
+    divDescription?: string;
+    motiveDescription?: string;
+    postDescription?: string;
 }
 
 export interface Wife {
     id: number;
-    employee: number;
+    parentId: number;
     name: string;
     name_ar?: string;
     birthdate?: string;
@@ -110,7 +122,7 @@ export interface Wife {
 
 export interface Child {
     id: number;
-    employee: number;
+    parentId: number;
     name: string;
     sex: 1 | 2;
     birthDate?: string;
@@ -119,15 +131,18 @@ export interface Child {
 
 export interface EmployeeLanguage {
     id: number;
-    person_id: number;
-    language_id: number;
-    read_level: number;
-    write_level: number;
+    parentId: number;
+    languageId: number;
+    readLevel: number;
+    writeLevel: number;
+    languageDescription?: string;
+    readDescription?: string;
+    writeDescription?: string;
 }
 
 export interface OldCareer {
     id: number;
-    employee: number;
+    parentId: number;
     ctype: 1 | 2; // '1 = In sector, 2 = beyond sector'
     post: string;
     from_date: string;
@@ -138,7 +153,7 @@ export interface OldCareer {
 export interface Decision {
     id: number;
     centerId: number;
-    employee: number;
+    parentId: number;
     dec_reference: string;
     dec_date: string;
     application_date: string;

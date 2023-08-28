@@ -8,17 +8,17 @@ import { map, Observable, of } from "rxjs";
 
 @Directive()
 export class BaseChildEntityListComponent<T extends { id: number }> implements OnInit {
-    private shellSrv  = inject(ShellService);
-    private route  = inject(ActivatedRoute);
-    private router  = inject(Router);
-    private snackBarSrv  = inject(SnackBarService);
-    private confirmationSrv  = inject(ConfirmationDialogService);
+    protected shellSrv  = inject(ShellService);
+    protected confirmationSrv  = inject(ConfirmationDialogService);
+    protected snackBarSrv  = inject(SnackBarService);
+    protected router  = inject(Router);
+    protected route  = inject(ActivatedRoute);
 
     paginator = PaginationModel.newInstance( );
     selectedId = 0;
     data$: Observable<T[]> = of([]);
     displayedColumns = ['id'];
-
+    isEditable = false;
 
     constructor(protected detailSrv: BaseEntityService<T>) {
         this.paginator.onChange = () => this.refresh();
@@ -27,6 +27,8 @@ export class BaseChildEntityListComponent<T extends { id: number }> implements O
 
     ngOnInit(): void {
         this.refresh();
+        const rights = this.shellSrv.getCurrentNodeRights();
+        this.isEditable = rights.edit;
     }
 
     showDetail(id: number) {

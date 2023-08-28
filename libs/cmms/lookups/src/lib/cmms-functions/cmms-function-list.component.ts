@@ -1,0 +1,56 @@
+import { Component } from '@angular/core';
+import { Lookup, MarkService } from '@ss/common/api-lookup';
+import { ShellService, SnackBarService } from '@ss/common/ui-shell';
+import { ActivatedRoute, Router, RouterOutlet } from '@angular/router';
+import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
+import { DefaultReportService } from '@ss/common/ui-default-report-component';
+import { MaterialModule, PaginatorPersistenceService } from '@ss/common/api-common';
+import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
+import { CMMSPriorityService } from '../services/cmms.priority.service';
+import { CommonModule } from '@angular/common';
+import { CommonUiLangModule } from '@ss/common/ui-lang';
+import { MatSortModule } from '@angular/material/sort';
+import { MatTableModule } from '@angular/material/table';
+import { UiPaginationModule } from '@ss/common/ui-pagination';
+import { MatCardModule } from '@angular/material/card';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { ReactiveFormsModule } from '@angular/forms';
+import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
+import { CMMSFunctionService } from '../services/cmms.function.service';
+
+@Component({
+    selector: 'ss-cmms-priority-list',
+    templateUrl: '../list-template/cmms-fault-list.component.html',
+    styleUrls: ['../list-template/cmms-fault-list.component.css'],
+    standalone: true,
+    imports: [
+        CommonModule,
+        CommonUiLangModule,
+        MatSortModule,
+        MatTableModule,
+        UiPaginationModule,
+        MatCardModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MaterialModule,
+        ReactiveFormsModule,
+        RouterOutlet,
+        CommonUiAutoCompleteModule
+    ],
+})
+export class CMMSFunctionListComponent extends BaseEntityListComponent<Lookup> {
+    displayedColumns = ['description', 'descriptionAr'];
+    constructor(
+        public markSrv: CMMSFunctionService,
+        public override shellSrv: ShellService,
+        public override snackBarSrv: SnackBarService,
+        public override route: ActivatedRoute,
+        public override confirmationSrv: ConfirmationDialogService,
+        public override defReportSrv: DefaultReportService,
+        public override router: Router,
+        public override pagPersistSrv: PaginatorPersistenceService) {
+        super(markSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv, 'CMMS_FUNCTION');
+    }
+
+}

@@ -1,7 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, inject, Input, OnInit } from "@angular/core";
 import {ActivatedRoute, Router} from '@angular/router';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import {SnackBarService} from '@ss/common/ui-shell';
+import { ShellService, SnackBarService } from "@ss/common/ui-shell";
 import {ImageUploaderUtil, PaginationModel} from '@ss/common/api-common';
 import {AppArchiveService} from '../app-archive.service';
 import {AppArchive} from '../app-archive-api';
@@ -14,6 +14,8 @@ import { of, switchMap, tap } from "rxjs";
 })
 export class AppArchiveListComponent implements OnInit {
     private _id = 0;
+    private shellSrv = inject(ShellService);
+
     imgSrc: string | null = null;
     selectedId = 0;
     filename: string = null;
@@ -21,8 +23,7 @@ export class AppArchiveListComponent implements OnInit {
     paginator = PaginationModel.newInstance();
     pdfSrc: string = null;
     displayedColumns = ['docDescription', 'filename'];
-
-    @Input() editable = true;
+    isEditable = true;
 
     constructor(public entitySrv: AppArchiveService,
                 private snackBarSrv: SnackBarService,
@@ -67,6 +68,8 @@ export class AppArchiveListComponent implements OnInit {
                 });
             this.refresh();
         });
+        const rights = this.shellSrv.getCurrentNodeRights();
+        this.isEditable = rights.edit;
     }
     // ngOnInit(): void {
     //     this.route.parent.parent.params
@@ -168,7 +171,6 @@ export class AppArchiveListComponent implements OnInit {
         }
     }
 
-
     onClick(e: MouseEvent) {
         this.entitySrv
             .image(this.selectedId)
@@ -177,10 +179,5 @@ export class AppArchiveListComponent implements OnInit {
                 window.open(pdfSrc);
                 window.URL.revokeObjectURL(pdfSrc);
             });
-    }
-
-    setEditable(value: boolean) {
-        this.editable = value;
-        this.entitySrv.editable = value;
     }
 }

@@ -56,6 +56,8 @@
     "PAST_DUE":         "Post dû",
     "READING_DATE":     "Date de lecture",
     "ZONES":            "Zones",
-    "WORKSHOPS":        "Ateliers"
+    "WORKSHOPS":        "Ateliers",
+    "WORKSHOP":         "Atelier",
+    "FUNCTION":         "Fonction"
 }
 

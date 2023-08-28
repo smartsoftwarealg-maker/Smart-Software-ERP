@@ -1,0 +1,19 @@
+
+:host {
+    display: inline-block;
+    width: 100%;
+}
+
+.form-container {
+    display: block;
+    max-width: 800px;
+    margin: auto;
+}
+
+
+.button_div {
+    display: flex;
+    gap: 1em;
+    justify-content: flex-end;
+}
+

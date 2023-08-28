@@ -1,0 +1,74 @@
+<div class="div_table size">
+    <mat-table mat-table [dataSource]="data" class="main-table" matSort (matSortChange)="sort($event)">
+
+        <ng-container matColumnDef="reference">
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_REFERENCE</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.reference}}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="description">
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>ADMINISTRATION_DESCRIPTION</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.description}}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="statusDescription">
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_STATUS</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.statusDescription}}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="officeDescription">
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>CMMS_WORKSHOP</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.officeDescription}}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="site">
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>ASSET_SITES</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.site}}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="serial_no">
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>ASSET_SERIAL_NUMBER</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.serial_no}}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="className">
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_CLASS</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.className}}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="functionDescription">
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>CMMS_FUNCTION</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.functionDescription}}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="acquisitionDate">
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>ASSET_ACQUISITION_DATE</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.acquisitionDate | date: 'dd/MM/yyyy' }}
+            </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+        <mat-row class="selectable" [class.selected]="row.id == selected" (click)="select(row.id)"
+                 *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+</div>
+<div class="size b-b-background">
+    <ss-pagination [paginationModel]="pagination"></ss-pagination>
+</div>

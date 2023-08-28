@@ -1,0 +1,59 @@
+
+
+$table_width: 1000px;
+
+
+.table-container {
+    width: 100%;
+    display: block;
+    margin: auto;
+    max-width: $table_width;
+    overflow: auto;
+    min-height: 300px;
+}
+
+.card-title {
+    display: block;
+    height: 48px;
+    line-height: 48px;
+    padding-right: 16px;
+    padding-left: 16px;
+    font-weight: bold;
+}
+
+.content-div {
+    width: $table_width;
+    min-height: 800px;
+}
+
+
+.mat-column-dec_date,
+.mat-column-application_date,
+.mat-column-application_period {
+    flex: 1 1  90px;
+}
+
+
+.mat-column-motiveName,
+.mat-column-dec_header,
+.mat-column-dec_reference {
+    flex: 1 1 140px;
+}
+
+
+.pagination-container {
+    ss-pagination {
+        left: 0;
+        right: 0;
+        position: sticky;
+        margin: auto;
+    }
+}
+
+.buttons {
+    margin: 8px auto;
+    width: 150px;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+}

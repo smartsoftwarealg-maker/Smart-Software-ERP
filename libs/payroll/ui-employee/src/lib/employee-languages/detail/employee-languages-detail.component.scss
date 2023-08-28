@@ -1,0 +1,19 @@
+
+
+.form-container {
+    display: block;
+    max-width: 350px;
+    margin: auto;
+}
+
+
+.button_div {
+    display: flex;
+    gap: 1em;
+    justify-content: flex-end;
+}
+
+mat-card {
+    padding: 8px;
+    border-radius: 1.4em;
+}

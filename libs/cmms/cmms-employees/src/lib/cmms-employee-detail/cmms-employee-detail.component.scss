@@ -1,0 +1,73 @@
+
+:host {
+    display: block;
+    margin: 0 auto;
+    max-width: 900px;
+    width: 96%;
+    min-width: 320px;
+}
+
+ss-image-input {
+    margin: 16px;
+    flex-grow: 0;
+    flex-shrink: 0;
+}
+
+.birthinfo-card {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: nowrap;
+    overflow: hidden;
+
+    .birthinfo-fields {
+        flex-basis: 100%;
+        flex-grow: 1;
+        flex-shrink: 1;
+    }
+}
+
+.elements {
+    padding: 16px 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: space-between;
+}
+
+//.elements mat-form-field {
+  //    max-width: 150px;
+  //}
+
+mat-expansion-panel {
+    padding-top: 16px;
+}
+
+.ctrl-div {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+}
+.filler {
+    flex: 2 0 auto;
+}
+
+@media (max-width: 600px) {
+    .elements mat-form-field {
+        max-width: 140px;
+    }
+
+}
+
+.main-container {
+    display: flex;
+    flex-direction: column;
+    height: calc(100% - 64px);
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    gap: 5px;
+    padding: 5px;
+}

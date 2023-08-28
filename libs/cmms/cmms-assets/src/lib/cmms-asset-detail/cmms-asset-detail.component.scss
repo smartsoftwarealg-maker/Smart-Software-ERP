@@ -1,0 +1,52 @@
+form {
+    width: 90%;
+    max-width: 1400px;
+    margin: 10px auto;
+}
+
+
+.accountant-div, .fiscal-div {
+    width: 45%;
+    overflow-y: auto;
+}
+.mat-column-year {
+    flex: 1 1 80px;
+
+}
+
+.mat-column-depreciation,
+.mat-column-totalDepreciation,
+.mat-column-remaining {
+    flex: 1 1 100px;
+    justify-content: flex-end;
+}
+
+mat-form-field {
+    width: 100%;
+}
+
+$color: hsl(100, 60%, 50%, .7);
+
+.open-icon:hover {
+    box-shadow: 0 0 4px 0 $color;
+}
+.open-icon {
+    cursor: pointer;
+    margin-left: 16px;
+    padding: 2px;
+}
+
+
+.reception-div {
+    display: flex;
+    gap: 16px;
+}
+
+mat-expansion-panel-header {
+    margin-bottom: 8px;
+}
+
+.count_div {
+    max-width: 200px;
+}
+
