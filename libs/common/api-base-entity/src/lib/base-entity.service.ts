@@ -81,6 +81,12 @@ export class BaseEntityService<T> {
             .pipe(map((res: { count: number }) => res['count']));
     }
 
+    public add2(a: T): Observable<number> {
+        return this.httpSrv
+            .put(this.getUrl(), a)
+            .pipe(map((res: { id: number }) => res['id']));
+    }
+
     setParentId(id: number): void {
         this.parentId = id;
     }

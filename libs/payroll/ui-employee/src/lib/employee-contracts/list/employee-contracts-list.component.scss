@@ -17,7 +17,7 @@ $table_width: 1200px;
     width: 100%;
     display: block;
     margin: auto;
-    max-width: $table_width;
+    min-width: $table_width;
     overflow: auto;
     min-height: 350px;
 }

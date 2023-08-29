@@ -137,11 +137,9 @@ mat-tab-group {
     padding-left: 4px;
 }
 
-.mat-column-fullname,
+.mat-column-fullName,
 .mat-column-post {
-    flex: 1 1 200px;
-    padding-right: 4px;
-    padding-left: 4px;
+    flex: 1 1 150px;
 }
 
 .mat-column-birth {
@@ -155,7 +153,8 @@ mat-tab-group {
 }
 
 .mat-column-msDescription {
-    flex: 0 0 90px;
+    flex: 0 0 120px;
+    justify-content: center;
 }
 
 

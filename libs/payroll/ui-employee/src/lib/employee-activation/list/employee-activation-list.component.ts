@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
 import { EmployeeActivationService, EmployeeActivation } from '@ss/payroll/api-employee';
 import { PaginationModel } from '@ss/common/api-common';
 import { BaseChildEntityListComponent } from '@ss/common/ui-base-entity';
@@ -22,7 +22,6 @@ export class EmployeeActivationListComponent extends BaseChildEntityListComponen
     public data: EmployeeActivation[] = [];
     public selected = 0;
     public employmentTypes: { [id: number]: string; };
-    public suspensionReasons: { [id: number]: string; };
 
     constructor(public entitySrv: EmployeeActivationService) {
         super(entitySrv);

@@ -2,7 +2,6 @@ import { Component, inject } from '@angular/core';
 import {
     EmploymentTypeService,
     LookupsService,
-    SuspensionReason,
     SuspensionReasonService
 } from '@ss/common/api-lookup';
 import { FormBuilder, UntypedFormGroup } from '@angular/forms';
@@ -10,7 +9,6 @@ import { EmployeeActivationService, EmployeeActivation } from '@ss/payroll/api-e
 import { BaseChildEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { LoginService } from '@ss/common/api-common';
 import { map } from 'rxjs/operators';
-
 
 @Component({
     selector: 'ss-emp-active-detail',
@@ -30,8 +28,8 @@ export class EmployeeActivationDetailComponent extends BaseChildEntityDetailComp
     suspensionReasons = this.suspensionReasonSrv.getList(0, 500).pipe(map(res => res.body));
 
     constructor(
-        public employeeActivationSrv: EmployeeActivationService) {
-        super(employeeActivationSrv);
+        public entitySrv: EmployeeActivationService) {
+        super(entitySrv);
     }
 
     override setupForm(a: EmployeeActivation): UntypedFormGroup {

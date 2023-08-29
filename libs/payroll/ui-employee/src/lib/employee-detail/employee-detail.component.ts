@@ -133,6 +133,11 @@ export class EmployeeDetailComponent extends BaseEntityDetailComponent<Employee>
     }
 
     loadEntity(id: number): Observable<Employee> {
+        this.updateChildren(id);
+        return super.loadEntity(id);
+    }
+
+    private updateChildren(id: number) {
         this.decisionSrv.setParentId(id || 0);
         this.punishmentSrv.setParentId(id || 0);
         this.languageSrv.setParentId(id || 0);
@@ -144,7 +149,6 @@ export class EmployeeDetailComponent extends BaseEntityDetailComponent<Employee>
         this.oldCareerSrv.setParentId(id || 0);
         this.careerSrv.setParentId(id || 0);
         this.activationSrv.setParentId(id || 0);
-        return super.loadEntity(id);
     }
 
     public override preload(): Observable<any> {
@@ -297,7 +301,7 @@ export class EmployeeDetailComponent extends BaseEntityDetailComponent<Employee>
         this.infoSrv
             .save(line)
             .subscribe({
-                next: res => this.snackBarSrv.showSuccessMessage(),
+                next: () => this.snackBarSrv.showSuccessMessage(),
                 error: err => {
                     this.snackBarSrv.showFailureMessage();
                     throw err;
@@ -330,17 +334,19 @@ export class EmployeeDetailComponent extends BaseEntityDetailComponent<Employee>
             });
     }
 
-    // showArchive() {
-    //     if (this.router.url.indexOf('archive') <0) {
-    //         this.router.navigate(['archive'], { relativeTo: this.route });
-    //     }
-    // }
-
     showPanel(panel: 0|1|2|3|4|5|6|7|8|9|10|11) {
         this.activePanel = panel;
         const dest = this.PANELS[panel];
         if (this.router.url.indexOf(dest) <0) {
             this.router.navigate([dest], { relativeTo: this.route }).then();
+        }
+    }
+
+    protected goBack() {
+        if (this.form.controls['id'].value > 0) {
+            super.goBack();
+        } else {
+            this.router.navigate(['..', this.queryId], { relativeTo: this.route }).then();
         }
     }
 }

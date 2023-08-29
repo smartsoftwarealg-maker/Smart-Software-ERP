@@ -37,10 +37,10 @@
                     </mat-cell>
                 </ng-container>
 
-                <ng-container matColumnDef="fullname">
+                <ng-container matColumnDef="fullName">
                     <mat-header-cell *matHeaderCellDef mat-sort-header translate>PAYROLL_FULLNAME</mat-header-cell>
                     <mat-cell *matCellDef="let e">
-                        {{e.fullName}}
+                        {{ e.firstName }} {{ e.lastName }}
                     </mat-cell>
                 </ng-container>
 
@@ -54,7 +54,7 @@
                 <ng-container matColumnDef="birth">
                     <mat-header-cell *matHeaderCellDef mat-sort-header translate>PAYROLL_BIRTHINFO</mat-header-cell>
                     <mat-cell *matCellDef="let e">
-                        {{e.birthDate}} / {{e.birthPlace}}
+                        {{e.birthDate | date: 'dd-MM-yyyy' }} / {{e.birthPlace}}
                     </mat-cell>
                 </ng-container>
 

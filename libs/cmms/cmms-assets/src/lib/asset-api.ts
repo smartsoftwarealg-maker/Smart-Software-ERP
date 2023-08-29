@@ -50,4 +50,5 @@ export interface Asset {
     statusDescription?: string;
     function?: number;
     functionDescription?: string;
+    buildingDescription?: string;
 }

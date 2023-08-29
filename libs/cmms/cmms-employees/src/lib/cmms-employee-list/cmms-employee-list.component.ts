@@ -37,7 +37,7 @@ export class CmmsEmployeeListComponent extends BaseEntityListComponent<Employee>
     activePersonnel = true;
     public displayedColumns = [
         'id',
-        'fullname',
+        'fullName',
         'birth',
         'address',
         'msDescription',
