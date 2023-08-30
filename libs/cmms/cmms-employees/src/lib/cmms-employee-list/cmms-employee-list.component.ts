@@ -9,7 +9,7 @@ import { HttpService, MaterialModule, PaginatorPersistenceService } from '@ss/co
 import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { DefaultReportService } from '@ss/common/ui-default-report-component';
 import { Observable, of } from 'rxjs';
-import { CommonUiImageInputModule, ImageModel } from "@ss/common/ui-image-input";
+import { CommonUiImageInputModule, ImageModel } from '@ss/common/ui-image-input';
 import { CommonUiLangModule } from '@ss/common/ui-lang';
 import { UiPaginationModule } from '@ss/common/ui-pagination';
 import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
@@ -73,11 +73,11 @@ export class CmmsEmployeeListComponent extends BaseEntityListComponent<Employee>
     }
 
     override ngOnInit(): void {
-        this.addButton.visible = this.activePersonnel;
+        this.addButton.visible = false;
+        this.deleteButton.visible = false;
         super.ngOnInit();
         this.shellSrv.setGoBackPath('..', this.route);
     }
-
 
     public override processLoadedData(data: Employee[]): Observable<Employee[]> {
         return of(data.map(p => {

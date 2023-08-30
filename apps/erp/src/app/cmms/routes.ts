@@ -32,9 +32,8 @@ import {
     docInfoRoutes,
     CMMS_CHARTS_URL,
     CMMS_ASSET_TREE,
-    HR_EMPLOYEES_URL,
     CMMS_EMPLOYEES_URL, CMMS_FUNCTION_URL
-} from "../common";
+} from '../common';
 import { loginGuard } from '../erp-guards';
 import {
     CmmsFaultCauseDetailComponent,
@@ -58,7 +57,7 @@ import {
     CMMSRoutingPartsListComponent,
     CMMSRoutingPartsDetailComponent,
     CMMSRoutingArchiveComponent, CMMSFunctionListComponent, CMMSFunctionDetailComponent
-} from "@ss/cmms/lookups";
+} from '@ss/cmms/lookups';
 import { CMMSPlanDetailComponent, CMMSPlanListComponent } from '@ss/cmms/plans';
 import { CmmsAlertListComponent, PMDetailComponent, PmListComponent } from '@ss/cmms/pm';
 import { AssetReadingDetailComponent, AssetReadingListComponent, readingDetailGuard } from '@ss/cmms/asset-readings';
@@ -71,8 +70,7 @@ import {
     AssetClassListComponent,
     AssetLocationsDetailComponent,
     AssetLocationsListComponent,
-    AssetsDetailComponent,
-    AssetsListComponent, AssetTreeComponent,
+    AssetTreeComponent,
     EndTypesDetailComponent,
     EndTypesListComponent
 } from '@ss/assets-component';
@@ -80,7 +78,6 @@ import { AppArchiveDetailComponent, AppArchiveListComponent } from '@ss/common/a
 import { FurnitureStatusDetailComponent, FurnitureStatusListComponent } from '@ss/common/ui-lookup';
 import { ReportViewComponent } from '@ss/common/ui-report-param';
 import { OfficeDetailComponent, OfficesListComponent } from '@ss/organizations/ui-organizations';
-import { PrevWorkOrderDetailComponent, PrevWorkOrderListComponent } from '../../../../../libs/cmms/prev-work-order/src';
 import { ServiceRequestDetailComponent, ServiceRequestListComponent } from '@ss/cmms/service-request';
 import {
     PartsRequestDetailComponent, PartsRequestLineDetailComponent,
@@ -91,10 +88,23 @@ import { CMMSChartsComponent } from '@ss/cmms/cmms-charts';
 import { CmmsEmployeeDetailComponent, CmmsEmployeeListComponent } from '@ss/cmms/cmms-employees';
 import {
     CmmsAssetListComponent
-} from "../../../../../libs/cmms/cmms-assets/src/lib/cmms-asset-list/cmms-asset-list.component";
+} from '@ss/cmms/cmms-assets';
 import {
     CmmsAssetDetailComponent
-} from "../../../../../libs/cmms/cmms-assets/src/lib/cmms-asset-detail/cmms-asset-detail.component";
+} from '@ss/cmms/cmms-assets';
+import { PrevWorkOrderDetailComponent, PrevWorkOrderListComponent } from '@ss/cmms/prev-work-order';
+import {
+    PersonFaultListComponent
+} from "../../../../../libs/cmms/cmms-employees/src/lib/person-fault-list/person-fault-list.component";
+import {
+    PersonFaultDetailComponent
+} from "../../../../../libs/cmms/cmms-employees/src/lib/person-fault-detail/person-fault-detail.component";
+import {
+    PersonLocationListComponent
+} from "../../../../../libs/cmms/cmms-employees/src/lib/person-location-list/person-location-list.component";
+import {
+    PersonLocationDetailComponent
+} from "../../../../../libs/cmms/cmms-employees/src/lib/person-location-detail/person-location-detail.component";
 
 export const cmmsRoutes: Routes = [
     {
@@ -114,7 +124,6 @@ export const cmmsRoutes: Routes = [
             { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
         ]
     },
-
     {
         path: CMMS_STATUS_URL,
         children: [
@@ -257,7 +266,6 @@ export const cmmsRoutes: Routes = [
             },
         ]
     },
-
     {
         path: CMMS_SOLUTION_URL,
         children: [
@@ -274,7 +282,6 @@ export const cmmsRoutes: Routes = [
             },
         ]
     },
-
     {
         path: CMMS_PREV_ORDER_URL,
         children: [
@@ -622,6 +629,20 @@ export const cmmsRoutes: Routes = [
                                 children: [
                                     {path: '', component: AppArchiveListComponent, pathMatch: 'full' },
                                     {path: ':id', component: AppArchiveDetailComponent},
+                                ]
+                            },
+                            {
+                                path: 'faults',
+                                children: [
+                                    {path: '', component: PersonFaultListComponent, pathMatch: 'full' },
+                                    {path: ':id', component: PersonFaultDetailComponent},
+                                ]
+                            },
+                            {
+                                path: 'locations',
+                                children: [
+                                    {path: '', component: PersonLocationListComponent, pathMatch: 'full' },
+                                    {path: ':id', component: PersonLocationDetailComponent},
                                 ]
                             },
                         ]

@@ -1,4 +1,7 @@
 import { Lookup } from '@ss/common/api-lookup';
+import { DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
+import { Asset } from '@ss/assets-component';
+import { BaseEntityService } from '@ss/common/api-base-entity';
 
 export const CMMS_ASSET5S_URL = '/assets';
 export const CMMS_PLANS_URL = '/cmmsplans';
@@ -20,9 +23,9 @@ export const CMMS_TRIGGER_TYPES: Lookup[] = [
 ];
 
 export const WORK_TYPES: Lookup[] = [
-    { id: 1, description: 'CMMS_PREVENTIVE'},
-    { id: 2, description: 'CMMS_CURATIVE'},
-    { id: 3, description: 'CMMS_INSPECTION'}
+    { id: 1, description: 'CMMS_PREVENTIVE' },
+    { id: 2, description: 'CMMS_CURATIVE' },
+    { id: 3, description: 'CMMS_INSPECTION' }
 ];
 
 export const CMMS_SERVICE_REQUEST = 10;
@@ -132,4 +135,11 @@ export interface Work {
     creatorId: number;
     validated: boolean;
     sourceId?: number;
+}
+
+export class AssetLookup extends DefaultAutoCompleteModel<Asset> {
+    constructor(public override entitySrv: BaseEntityService<Asset>) {
+        super(entitySrv);
+    }
+    override toString = (x: Asset | null) =>  x ? x.reference + ' ' + x.description?.substring(0, 70) : null;
 }

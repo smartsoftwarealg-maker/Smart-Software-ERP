@@ -1,4 +1,4 @@
-import { RoutingDetail, RoutingPart, Work, WORK_TYPES } from './cmms-api';
+import { AssetLookup, RoutingDetail, RoutingPart, Work, WORK_TYPES } from './cmms-api';
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { Directive, inject } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
@@ -57,13 +57,13 @@ export class CMMSWorkDetail extends BaseEntityDetailComponent<Work> {
     rootCauseLookup = new DefaultAutoCompleteModel(this.rootCauseSrv);
     priorityLookup = new DefaultAutoCompleteModel(this.prioritySrv);
     serviceLookup = new DefaultAutoCompleteModel(this.serviceSrv);
-    assetLookup = new DefaultAutoCompleteModel(this.assetSrv);
+    assetLookup = new AssetLookup(this.assetSrv);
     personLookup = new PersonAutocompleteClass(this.personSrv);
     routingLookup = new DefaultAutoCompleteModel(this.routingSrv);
 
     routingPaginator = PaginationModel.newInstance();
     partPaginator = PaginationModel.newInstance();
-    cmmsTyes = WORK_TYPES.filter(e => this.document == 12? e.id == 1: e.id > 1);
+    cmmsTyes = WORK_TYPES;
 
     data$: Observable<RoutingDetail[]> = of([]);
     partData$: Observable<RoutingPart[]> = of([]);
@@ -85,7 +85,7 @@ export class CMMSWorkDetail extends BaseEntityDetailComponent<Work> {
         this.defaultType = this.document == 12? 1 : 2;
         this.routingPaginator.onChange = () => this.data$ = this.routingDetailSrv.getPage(this.routingPaginator);
         this.partPaginator.onChange = () => this.partData$ = this.routingPartSrv.getPage(this.partPaginator);
-        this.cmmsTyes = WORK_TYPES.filter(e => this.document == 12? e.id == 1: e.id > 1);
+        this.cmmsTyes = WORK_TYPES;
     }
 
     setupForm(e: Work): UntypedFormGroup {

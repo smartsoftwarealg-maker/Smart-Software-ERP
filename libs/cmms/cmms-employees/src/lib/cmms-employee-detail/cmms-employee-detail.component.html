@@ -248,3 +248,37 @@
     </mat-accordion>
 
 </form>
+
+<mat-accordion *ngIf="id">
+
+    <mat-expansion-panel #locationPanel [class.b-primary-expansion-panel]="locationPanel.expanded"
+                         (afterExpand)="showPanel(LOCATION_PANEL)">
+        <mat-expansion-panel-header>
+            <mat-panel-title translate>
+                ASSET_LOCATIONS
+            </mat-panel-title>
+        </mat-expansion-panel-header>
+        <router-outlet *ngIf="activePanel === LOCATION_PANEL"></router-outlet>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel #faultPanel [class.b-primary-expansion-panel]="faultPanel.expanded"
+                         (afterExpand)="showPanel(FAULT_PANEL)">
+        <mat-expansion-panel-header>
+            <mat-panel-title translate>
+                CMMS_EXPERTISE
+            </mat-panel-title>
+        </mat-expansion-panel-header>
+        <router-outlet *ngIf="activePanel === FAULT_PANEL"></router-outlet>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel #archivePanel [class.b-primary-expansion-panel]="archivePanel.expanded"
+                         (afterExpand)="showPanel(ARCHIVE_PANEL)">
+        <mat-expansion-panel-header>
+            <mat-panel-title translate>
+                COMMON_ARCHIVE
+            </mat-panel-title>
+        </mat-expansion-panel-header>
+        <router-outlet *ngIf="activePanel === ARCHIVE_PANEL"></router-outlet>
+    </mat-expansion-panel>
+
+</mat-accordion>

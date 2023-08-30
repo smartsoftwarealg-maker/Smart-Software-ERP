@@ -1,0 +1,27 @@
+.size {
+    width: 96%;
+    max-width: 900px;
+    margin: 4px auto;
+}
+
+.button__div {
+    display: flex;
+    gap: 1em;
+    justify-content: flex-end;
+}
+
+.mat-column-reference {
+    flex: 2 1 120px;
+}
+
+.mat-column-description {
+    flex: 3 1 250px;
+}
+
+.mat-column-qty {
+    flex: 1 1 100px;
+}
+
+.table_div {
+    min-height: 30%;
+}

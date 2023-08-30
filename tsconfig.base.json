@@ -105,6 +105,9 @@
             "@ss/cmms/cmms-employees": [
                 "libs/cmms/cmms-employees/src/index.ts"
             ],
+            "@ss/cmms/prev-work-order": [
+                "libs/cmms/prev-work-order/src/index.ts"
+            ],
             "@ss/cmms/cmms-ui": ["libs/cmms/cmms-ui/src/index.ts"],
             "@ss/cmms/lookups": ["libs/cmms/lookups/src/index.ts"],
             "@ss/cmms/plans": ["libs/cmms/plans/src/index.ts"],

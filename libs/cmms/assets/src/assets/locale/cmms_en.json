@@ -58,5 +58,6 @@
     "ZONES":            "Zones",
     "WORKSHOPS":        "Workshops",
     "WORKSHOP":         "Workshop",
-    "FUNCTION":         "Function"
+    "FUNCTION":         "Function",
+    "EXPERTISE":        "Expertise"
 }
