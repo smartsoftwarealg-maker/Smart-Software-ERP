@@ -2,19 +2,34 @@ import { Component, inject, OnInit } from '@angular/core';
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { AssetTrigger } from '@ss/cmms/cmms-api';
 import { AssetsService } from '@ss/assets-component';
-import { DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
+import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from "@ss/common/ui-auto-complete";
 import { FormControl } from '@angular/forms';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DefaultReportService } from '@ss/common/ui-default-report-component';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
-import { PaginatorPersistenceService } from '@ss/common/api-common';
+import { MaterialModule, PaginatorPersistenceService } from "@ss/common/api-common";
 import { CMMSAssetTriggerService } from '../cmms-asset-trigger.service';
+import { CommonModule } from "@angular/common";
+import { CommonUiLangModule } from "@ss/common/ui-lang";
+import { MatSortModule } from "@angular/material/sort";
+import { MatTableModule } from "@angular/material/table";
+import { UiPaginationModule } from "@ss/common/ui-pagination";
 
 @Component({
     selector: 'ss-asset-trigger-list',
     templateUrl: './asset-trigger-list.component.html',
     styleUrls: ['./asset-trigger-list.component.css'],
+    standalone: true,
+    imports: [
+        CommonModule,
+        CommonUiLangModule,
+        MatSortModule,
+        MatTableModule,
+        UiPaginationModule,
+        MaterialModule,
+        CommonUiAutoCompleteModule
+    ],
 })
 export class AssetTriggerListComponent extends BaseEntityListComponent<AssetTrigger> implements OnInit {
     private assetSrv = inject(AssetsService);
