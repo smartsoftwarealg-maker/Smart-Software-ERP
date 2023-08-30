@@ -7,14 +7,15 @@ import { DefaultReportService } from '@ss/common/ui-default-report-component';
 import { PaginatorPersistenceService } from '@ss/common/api-common';
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { CMMSRoutingService } from '../services/cmms.routing.service';
+import { CMMSRouting } from "./routing-api";
 
 @Component({
     selector: 'ss-cmms-routing-list',
     templateUrl: '../list-template/cmms-fault-list.component.html',
     styleUrls: ['../list-template/cmms-fault-list.component.css'],
 })
-export class CMMSRoutingListComponent extends BaseEntityListComponent<Lookup> {
-    displayedColumns = ['description', 'descriptionAr'];
+export class CMMSRoutingListComponent extends BaseEntityListComponent<CMMSRouting> {
+    displayedColumns = ['description', 'descriptionAr', 'isCheckList'];
     constructor(
         public override entitySrv: CMMSRoutingService,
         public override shellSrv: ShellService,
@@ -26,5 +27,4 @@ export class CMMSRoutingListComponent extends BaseEntityListComponent<Lookup> {
         public override pagPersistSrv: PaginatorPersistenceService) {
         super(entitySrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv, 'CMMS_ROUTING');
     }
-
 }

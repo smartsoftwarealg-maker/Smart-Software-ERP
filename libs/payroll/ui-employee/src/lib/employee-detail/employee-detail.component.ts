@@ -53,6 +53,8 @@ import { PunishmentService } from '../employee-punishments/punishment.service';
     templateUrl: './employee-detail.component.html'
 })
 export class EmployeeDetailComponent extends BaseEntityDetailComponent<Employee> {
+    private lookupsSrv = inject(LookupsService);
+    private router = inject(Router);
     private decisionSrv = inject(EmployeeDecisionService);
     private punishmentSrv = inject(PunishmentService);
     private languageSrv = inject(EmployeeLanguagesService);
@@ -126,8 +128,7 @@ export class EmployeeDetailComponent extends BaseEntityDetailComponent<Employee>
         public employeeSrv: EmployeeService,
         public httpSrv: HttpService,
         public infoSrv: FixedElementsEntryService,
-        private lookupsSrv: LookupsService,
-        private router: Router) {
+        ) {
         super(employeeSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'PAYROLL_EDIT_EMPLOYEE');
         this.imageModel = new ImageModel(this.httpSrv);
     }

@@ -1,4 +1,4 @@
-
+{
     "CUR_WORK_ORDER":   "O.T Curatif",
     "REQUESTER":        "Demandeur",
     "FAULT":            "Défaut",
@@ -58,7 +58,8 @@
     "ZONES":            "Zones",
     "WORKSHOPS":        "Ateliers",
     "WORKSHOP":         "Atelier",
-    "FUNCTION":         "Fonction"
-    "EXPERTISE":        "Compétence"
+    "FUNCTION":         "Fonction",
+    "EXPERTISE":        "Compétence",
+    "CHECKLIST":        "Liste de contrôle"
 }
 

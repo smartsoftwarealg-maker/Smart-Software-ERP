@@ -59,5 +59,6 @@
     "WORKSHOPS":        "Workshops",
     "WORKSHOP":         "Workshop",
     "FUNCTION":         "Function",
-    "EXPERTISE":        "Expertise"
+    "EXPERTISE":        "Expertise",
+    "CHECKLIST":        "Checklist"
 }

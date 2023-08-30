@@ -1,6 +1,6 @@
 .size {
     width: 90%;
-    max-width: 700px;
+    max-width: 900px;
     margin: 0 auto 0;
 }
 
@@ -21,7 +21,13 @@
 
 .mat-column-description,
 .mat-column-descriptionAr {
-    flex: 1 1 250px;
+    flex: 2 1 250px;
+    padding-right: 4px !important;
+    padding-left: 4px !important;
+}
+
+.mat-column-isChecklist {
+    flex: 1 1 90px;
     padding-right: 4px !important;
     padding-left: 4px !important;
 }

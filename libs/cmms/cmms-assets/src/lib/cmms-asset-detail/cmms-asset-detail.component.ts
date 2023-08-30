@@ -3,8 +3,8 @@ import { CommonModule } from '@angular/common';
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { Asset } from '../asset-api';
 import { AGENT_ARCHIVES, AppArchiveModule, AppArchiveService, ASSET_ARCHIVES } from '@ss/common/app-archive';
-import { ActivatedRoute, Router } from '@angular/router';
-import { Agent, AgentService, ConsumerService, CustomerService } from '@ss/logistics/api-agent';
+import { ActivatedRoute, Router, RouterOutlet } from '@angular/router';
+import { ConsumerService, CustomerService } from '@ss/logistics/api-agent';
 import { IsParamService, LoginService } from '@ss/common/api-common';
 import { AssetEndsService } from '@ss/accounting/accounting-api';
 import { MatDialog } from '@angular/material/dialog';
@@ -28,7 +28,7 @@ import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
 import { FormsModule, ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
-import { debounceTime, distinctUntilChanged, map, switchMap, tap } from 'rxjs/operators';
+import { map, switchMap, tap } from 'rxjs/operators';
 import { MatExpansionModule, MatExpansionPanel } from '@angular/material/expansion';
 import { Observable } from 'rxjs';
 import { CmmsAssetService } from '../cmms-asset.service';
@@ -45,20 +45,21 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { QRCodeModule } from 'angularx-qrcode';
 import { CMMSFunctionService } from '@ss/cmms/lookups';
 import { BaseEntityService } from '@ss/common/api-base-entity';
+import { AssetPmService } from '../asset-pm.service';
 
 @Component({
     selector: 'ss-cmms-asset-detail',
     standalone: true,
-    imports: [CommonModule, AppArchiveModule, CommonUiAutoCompleteModule, CommonUiDatepickerModule, CommonUiLangModule, CustomAttributesModule, FormsModule, MatButtonModule, MatExpansionModule, MatFormFieldModule, MatInputModule, MatOptionModule, MatSelectModule, MatTableModule, MatTooltipModule, QRCodeModule, ReactiveFormsModule],
+    imports: [CommonModule, AppArchiveModule, CommonUiAutoCompleteModule, CommonUiDatepickerModule, CommonUiLangModule, CustomAttributesModule, FormsModule, MatButtonModule, MatExpansionModule, MatFormFieldModule, MatInputModule, MatOptionModule, MatSelectModule, MatTableModule, MatTooltipModule, QRCodeModule, ReactiveFormsModule, RouterOutlet],
     templateUrl: './cmms-asset-detail.component.html',
     styleUrls: ['./cmms-asset-detail.component.scss'],
 })
 export class CmmsAssetDetailComponent extends BaseEntityDetailComponent<Asset> implements OnInit {
+    private pmSrv = inject(AssetPmService);
+    private router = inject(Router);
     private functionSrv = inject(CMMSFunctionService);
     private assetSrv = inject(AssetsService);
     private archiveSrv = inject(AppArchiveService);
-    private router = inject(Router);
-    private agentSrv = inject(AgentService);
     private customerSrv = inject(CustomerService);
     private loginSrv = inject(LoginService);
     private endSrv = inject(AssetEndsService);
@@ -77,14 +78,10 @@ export class CmmsAssetDetailComponent extends BaseEntityDetailComponent<Asset> i
 
     // Public
     minLength = 1;
-    depreciationTypes: Lookup[] = [
-        { id: 1, description: 'ASSET_LINEAR' },
-        { id: 2, description: 'ASSET_DECLINING' },
-        { id: 3, description: 'ASSET_ACTIVITY' },
-    ];
-
-    isAQS   = false;
-    isCMMS: boolean = false;
+    activePanel = -1;
+    PANEL_ROUTES = ['pm', 'archive'];
+    readonly PM_PANEL = 0;
+    readonly ARCHIVE_PANEL = 1;
 
     markAutoCompleteModel      = new DefaultAutoCompleteModel(this.markSrv);
     classAutoCompleteModel     = new DefaultAutoCompleteModel(this.classSrv);
@@ -98,7 +95,6 @@ export class CmmsAssetDetailComponent extends BaseEntityDetailComponent<Asset> i
     fiscalDepreciation: Depreciation[] = [];
     assetEnds: Lookup[] = [];
     receptionLookup            = new ReceptionAutoComplete(this.receptionSrv);
-    depreciationColumns = ['year', 'depreciation', 'totalDepreciation', 'remaining'];
     readonly LOCAL_ASSER_ARCHIVE = ASSET_ARCHIVES;
 
     constructor(
@@ -116,7 +112,6 @@ export class CmmsAssetDetailComponent extends BaseEntityDetailComponent<Asset> i
             formBuilder,
             confirmationSrv,
             'ASSETS');
-        this.officeSrv.setParentId(0);
         this.accountAutoCompleteModel.onObjectSelected = a => this.updateAccountDefaults(a);
         this.officeAutoCompleteModel.onObjectSelected = o => this.onOfficeChange(o);
     }
@@ -167,9 +162,6 @@ export class CmmsAssetDetailComponent extends BaseEntityDetailComponent<Asset> i
             isVehicle:      [b.isVehicle || false],
             function:       [b.function]
         });
-        if (!this.isAQS) {
-            form.controls['assetClass'].clearValidators();
-        }
         if (b.id) {
             this.maxReference = b.reference2;
         } else {
@@ -182,7 +174,6 @@ export class CmmsAssetDetailComponent extends BaseEntityDetailComponent<Asset> i
                     form.controls['reference'].setValue(this.maxReference);
                 });
         }
-        this.setClassListener(form);
         return form;
     }
 
@@ -196,33 +187,14 @@ export class CmmsAssetDetailComponent extends BaseEntityDetailComponent<Asset> i
 
     override preload(): Observable<any> {
         return this.isParamSrv.is('ANSEJ')
-            .pipe(switchMap(_ => this.isParamSrv.is('AQS')),
-                tap(res => this.isAQS = res),
-                switchMap(_ => this.endSrv.getList(0, 50)),
-                tap(res => this.assetEnds = res.body),
-                switchMap(() => this.route.data),
-                tap(map => this.isCMMS = map['isCMMS'] === 'true'));
+            .pipe(switchMap(() => this.endSrv.getList(0, 50)),
+                tap(res => this.assetEnds = res.body));
     }
 
     override ngOnInit() {
         this.archiveSrv.appId = AGENT_ARCHIVES;
         super.ngOnInit();
     }
-
-    private setClassListener(form: UntypedFormGroup) {
-        if (this.isAQS) {
-            const subs = form
-                .controls['assetClass']
-                .valueChanges
-                .pipe(
-                    debounceTime(300),
-                    distinctUntilChanged(),
-                    switchMap(res => this.assetSrv.getAQSMaxReference(<number>res))
-                ).subscribe(res => form.controls['reference'].setValue(res.reference));
-            this.subscriptions.push(subs);
-        }
-    }
-
 
     private updateAccountDefaults(a: Account) {
         if (this.form && a) {
@@ -240,7 +212,7 @@ export class CmmsAssetDetailComponent extends BaseEntityDetailComponent<Asset> i
     openSearchDlg() {
         const dialogRef = this.dialog.open(OfficeSearchComponent,
             {
-                data: {id: 0, description: null, cmms: this.isCMMS}
+                data: {id: 0, description: null, cmms: true }
             });
         dialogRef
             .afterClosed()
@@ -250,6 +222,19 @@ export class CmmsAssetDetailComponent extends BaseEntityDetailComponent<Asset> i
             });
     }
 
+    override loadEntity(id: number): Observable<Asset> {
+        this.officeSrv.setParentId(id || 0);
+        this.pmSrv.setParentId(id || 0);
+        return super.loadEntity(id);
+    }
+
+    showPanel(panel: -1|0|1|2|3|4|5) {
+        this.activePanel = panel;
+        const dest = this.PANEL_ROUTES[panel];
+        if (this.router.url.indexOf(dest) <0) {
+            this.router.navigate([dest], { relativeTo: this.route }).then();
+        }
+    }
 }
 
 class ReceptionAutoComplete extends DefaultAutoCompleteModel<AssetReception> {

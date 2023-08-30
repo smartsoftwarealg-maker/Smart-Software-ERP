@@ -16,6 +16,7 @@ export class BaseEntityService<T> {
         return this.getList(pageModel.page - 1, pageModel.pageSize, filter, this._sortColumn, extraPrams)
             .pipe(
                 map(data => {
+                    console.log(data)
                     pageModel.elementCount = data.itemCount;
                     return data.body;
                 })

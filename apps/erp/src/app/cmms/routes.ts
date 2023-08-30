@@ -87,6 +87,8 @@ import {
 import { CMMSChartsComponent } from '@ss/cmms/cmms-charts';
 import { CmmsEmployeeDetailComponent, CmmsEmployeeListComponent } from '@ss/cmms/cmms-employees';
 import {
+    AssetPmDetailComponent,
+    AssetPmListComponent,
     CmmsAssetListComponent
 } from '@ss/cmms/cmms-assets';
 import {
@@ -95,16 +97,16 @@ import {
 import { PrevWorkOrderDetailComponent, PrevWorkOrderListComponent } from '@ss/cmms/prev-work-order';
 import {
     PersonFaultListComponent
-} from "../../../../../libs/cmms/cmms-employees/src/lib/person-fault-list/person-fault-list.component";
+} from '@ss/cmms/cmms-employees';
 import {
     PersonFaultDetailComponent
-} from "../../../../../libs/cmms/cmms-employees/src/lib/person-fault-detail/person-fault-detail.component";
+} from '@ss/cmms/cmms-employees';
 import {
     PersonLocationListComponent
-} from "../../../../../libs/cmms/cmms-employees/src/lib/person-location-list/person-location-list.component";
+} from '@ss/cmms/cmms-employees';
 import {
     PersonLocationDetailComponent
-} from "../../../../../libs/cmms/cmms-employees/src/lib/person-location-detail/person-location-detail.component";
+} from '@ss/cmms/cmms-employees';
 
 export const cmmsRoutes: Routes = [
     {
@@ -396,12 +398,18 @@ export const cmmsRoutes: Routes = [
                 canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService],
                 children: [
-                    { path: '', redirectTo: 'archive', pathMatch: 'full'},
                     {
                         path: 'archive',
                         children: [
                             {path: '', component: AppArchiveListComponent, pathMatch: 'full' },
                             {path: ':id', component: AppArchiveDetailComponent},
+                        ]
+                    },
+                    {
+                        path: 'pm',
+                        children: [
+                            {path: '', component: AssetPmListComponent, pathMatch: 'full' },
+                            {path: ':id', component: AssetPmDetailComponent},
                         ]
                     }
                 ],

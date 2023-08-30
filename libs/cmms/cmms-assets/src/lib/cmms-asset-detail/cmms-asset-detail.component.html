@@ -239,14 +239,31 @@
                            [editable]="isEditable"></ss-child-attributes>
     </mat-expansion-panel>
 
-    <mat-expansion-panel #archives expanded="false" [class]="getPanelHeaderClass('archives', archives)">
+    <mat-expansion-panel #pmPanel
+                         expanded="false"
+                         (afterExpand)="showPanel(PM_PANEL)"
+                         [class.b-primary-expansion-panel]="pmPanel.expanded">
+      <mat-expansion-panel-header>
+        <mat-panel-title translate>
+          CMMS_PM
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+
+      <router-outlet *ngIf="id && activePanel === PM_PANEL"></router-outlet>
+
+    </mat-expansion-panel>
+
+    <mat-expansion-panel #archivePanel
+                         expanded="false"
+                         (afterExpand)="showPanel(ARCHIVE_PANEL)"
+                         [class.b-primary-expansion-panel]="archivePanel.expanded">
       <mat-expansion-panel-header>
         <mat-panel-title translate>
           COMMON_ARCHIVE
         </mat-panel-title>
       </mat-expansion-panel-header>
 
-      <ss-app-archive-main [id]="id" [appId]="LOCAL_ASSER_ARCHIVE" [editable]="isEditable"></ss-app-archive-main>
+      <router-outlet *ngIf="id && activePanel === ARCHIVE_PANEL"></router-outlet>
 
     </mat-expansion-panel>
 
