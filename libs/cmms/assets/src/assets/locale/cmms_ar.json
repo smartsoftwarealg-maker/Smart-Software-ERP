@@ -60,5 +60,11 @@
     "WORKSHOP":         "ورشة ",
     "FUNCTION":         "وظيفة",
     "EXPERTISE":        "خبرة",
-    "CHECKLIST":        "قائمة تدقيق"
+    "CHECKLIST":        "قائمة تدقيق",
+    "PLANNING":         "تخطيط",
+    "SCHEDULING":       "الجدولة",
+    "EXECUTION":        "تنفيذ",
+    "WORKS":            "يعمل",
+    "SCHEDULED_START":  "وقت البدء المقرر",
+    "SCHEDULED_DUE":    "الموعد المحدد"
 }

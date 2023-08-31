@@ -60,5 +60,11 @@
     "WORKSHOP":         "Workshop",
     "FUNCTION":         "Function",
     "EXPERTISE":        "Expertise",
-    "CHECKLIST":        "Checklist"
+    "CHECKLIST":        "Checklist",
+    "PLANNING":         "Planning",
+    "SCHEDULING":       "Scheduling",
+    "EXECUTION":        "Execution",
+    "WORKS":            "Works",
+    "SCHEDULED_START":  "Scheduled start time",
+    "SCHEDULED_DUE":    "Scheduled due time"
 }

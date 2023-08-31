@@ -17,6 +17,7 @@ mat-table {
     flex: 2 1 290px;
 }
 
+.mat-column-statusDescription,
 .mat-column-typeDescription,
 .mat-column-faultDescription,
 .mat-column-description {

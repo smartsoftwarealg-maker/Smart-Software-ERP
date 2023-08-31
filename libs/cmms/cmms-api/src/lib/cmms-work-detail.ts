@@ -106,8 +106,10 @@ export class CMMSWorkDetail extends BaseEntityDetailComponent<Work> {
             wrType:       [{ value: e.wrType || this.defaultType, disabled: this.document == DOC_WORK_REQUEST }, Validators.required],
             priority:     [e.priority, Validators.required],
             plannedStart: [e.plannedStart, Validators.required],
+            scheduledStart: [e.scheduledStart, Validators.required],
             actualStart:  [e.actualStart ],
-            plannedDue:   [e.plannedDue  ],
+            plannedDue:   [{ value: e.plannedDue , disabled: e.validated && typeof e.plannedDue != 'undefined' } ],
+            scheduledDue: [e.scheduledDue  ],
             actualDue:    [{ value: e.actualDue || null, disabled: e.validated && typeof e.actualDue != 'undefined' }],
             fault:        [e.fault       ],
             routingId:    [e.routingId   ],
@@ -123,7 +125,9 @@ export class CMMSWorkDetail extends BaseEntityDetailComponent<Work> {
             memo:         [e.memo        ],
             status:       [e.status      ],
             userId:       [e.centerId    ],
-            sourceId:     [e.sourceId    ]
+            sourceId:     [e.sourceId    ],
+            closureDate:  [e.closureDate],
+            closerDescription: [{ value: e.closerDescription || this.loginSrv.appCtx.fullName, disabled: true }],
         });
     }
 

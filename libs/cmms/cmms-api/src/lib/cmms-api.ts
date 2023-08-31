@@ -121,8 +121,10 @@ export interface Work {
     wrType?: number;
     priority?: number;
     plannedStart?: Date;
+    scheduledStart?: Date;
     actualStart?: Date;
     plannedDue?: Date;
+    scheduledDue?: Date;
     actualDue?: Date;
     routingId: number;
     fault?: number;
@@ -147,6 +149,15 @@ export interface Work {
     creatorId: number;
     validated: boolean;
     sourceId?: number;
+    plannerId?: number;
+    schedulerId?: number;
+    executorId?: number;
+    closerId?: number;
+    closureDate?: Date;
+    plannerDescription?: string;
+    schedulerDescription?: string;
+    executorDescription?: string;
+    closerDescription?: string;
 }
 
 export class AssetLookup extends DefaultAutoCompleteModel<Asset> {

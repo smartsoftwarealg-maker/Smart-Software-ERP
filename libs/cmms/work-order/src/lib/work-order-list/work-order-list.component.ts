@@ -50,8 +50,9 @@ export class WorkOrderListComponent extends BaseEntityListComponent<Work> {
         'requesterDescription',
         'typeDescription',
         'faultDescription',
-        'plannedStart',
-        'plannedDue',
+        'statusDescription',
+        // 'plannedStart',
+        // 'plannedDue',
     ];
 
     constructor(

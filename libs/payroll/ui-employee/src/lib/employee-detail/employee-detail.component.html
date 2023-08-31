@@ -297,7 +297,8 @@
         </mat-expansion-panel>
 
         <mat-expansion-panel *ngIf="id && activePersonnel"
-                             #careerPanel [class.b-primary-expansion-panel]="careerPanel.expanded"
+                             #careerPanel
+                             [class.b-primary-expansion-panel]="careerPanel.expanded"
                              (afterExpand)="showPanel(CAREER_ROUTE)">
             <mat-expansion-panel-header>
                 <mat-panel-title translate>

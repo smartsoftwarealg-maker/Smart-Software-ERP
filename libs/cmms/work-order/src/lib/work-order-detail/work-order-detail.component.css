@@ -1,13 +1,12 @@
-mat-card {
+.size {
     width: 90%;
     max-width: 1000px;
     margin: 16px auto;
     padding: 16px;
-    border-radius: 1.4em;
 }
 
-.separator {
-    height: 8px;
+mat-card {
+    border-radius: 1.4em;
 }
 
 .table_div {
