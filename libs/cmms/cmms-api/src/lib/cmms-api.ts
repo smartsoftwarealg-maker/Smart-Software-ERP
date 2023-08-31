@@ -15,6 +15,9 @@ export const CMMS_READINGS_URL = '/readings';
 export const CMMS_TRIGGERS_URL = '/triggers';
 export const CMMS_ROUTING_URL = '/routing';
 export const CMMS_DETAIL_URL = '/detail';
+export const CMMS_WORKS = '/works';
+export const CMMS_ARTICLES = '/articles';
+
 
 export const CMMS_TRIGGER_TYPES: Lookup[] = [
     { id: 1, description: 'CMMS_TIME'},
@@ -95,6 +98,15 @@ export interface RoutingDetail {
     teamSize?: number;
     hours?: number;
     cost?: number;
+}
+
+export interface WorkArticle {
+    id: number;
+    parentId: number;
+    articleId: number;
+    qty: number;
+    reference: string;
+    description: string;
 }
 
 export interface Work {

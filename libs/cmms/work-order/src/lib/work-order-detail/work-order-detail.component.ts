@@ -1,20 +1,51 @@
 import { Component, inject } from '@angular/core';
 import { CMMSWorkDetail, Work } from '@ss/cmms/cmms-api';
 import { KeepOnToolbar, ShellService, SnackBarService, ToolbarButton } from '@ss/common/ui-shell';
-import { ActivatedRoute, Router } from '@angular/router';
-import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
+import { ActivatedRoute, Router, RouterOutlet } from '@angular/router';
+import { FormsModule, ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { CMMSWorkOrderService } from '../c-m-m-s-work-order.service';
 import { DOC_WORK_ORDER } from '@ss/logistics/api-transaction';
 import { RequestImportComponent } from '@ss/cmms/cmms-ui';
-import { of, switchMap } from 'rxjs';
+import { Observable, of, switchMap } from 'rxjs';
+import { CommonModule } from '@angular/common';
+import { CommonUiLangModule } from '@ss/common/ui-lang';
+import { MatTableModule } from '@angular/material/table';
+import { UiPaginationModule } from '@ss/common/ui-pagination';
+import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatCardModule } from '@angular/material/card';
+import { MatInputModule } from '@angular/material/input';
+import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
+import { MatButtonModule } from '@angular/material/button';
+import { MaterialModule } from '@ss/common/api-common';
+import { MatTabChangeEvent } from '@angular/material/tabs';
+import { CMMSWorkOrderArticleService } from '../c-m-m-s-work-order-article.service';
 
 @Component({
     selector: 'ss-work-order-detail',
     templateUrl: './work-order-detail.component.html',
     styleUrls: ['./work-order-detail.component.css'],
+    standalone: true,
+    imports: [
+        CommonModule,
+        CommonUiLangModule,
+        MatTableModule,
+        UiPaginationModule,
+        CommonUiAutoCompleteModule,
+        FormsModule,
+        MatFormFieldModule,
+        ReactiveFormsModule,
+        MatCardModule,
+        MatInputModule,
+        CommonUiDatepickerModule,
+        MatButtonModule,
+        MaterialModule,
+        RouterOutlet
+    ]
 })
 export class WorkOrderDetailComponent extends CMMSWorkDetail {
+    private articleSrv = inject(CMMSWorkOrderArticleService);
     private router = inject(Router);
     private importBtn: ToolbarButton = {
         disabled: false,
@@ -62,6 +93,11 @@ export class WorkOrderDetailComponent extends CMMSWorkDetail {
                 }
             });
         }
+    }
+
+    override loadEntity(id: number): Observable<Work> {
+        this.articleSrv.setParentId(id);
+        return super.loadEntity(id);
     }
 
     override setupForm(e: Work): UntypedFormGroup {

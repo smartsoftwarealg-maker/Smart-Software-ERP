@@ -5,13 +5,40 @@ import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DefaultReportService } from '@ss/common/ui-default-report-component';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
-import { PaginatorPersistenceService } from '@ss/common/api-common';
+import { MaterialModule, PaginatorPersistenceService } from '@ss/common/api-common';
 import { CMMSWorkOrderService } from '../c-m-m-s-work-order.service';
+import { CommonModule } from '@angular/common';
+import { CommonUiLangModule } from '@ss/common/ui-lang';
+import { MatTableModule } from '@angular/material/table';
+import { UiPaginationModule } from '@ss/common/ui-pagination';
+import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatCardModule } from '@angular/material/card';
+import { MatInputModule } from '@angular/material/input';
+import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
     selector: 'ss-work-order-list',
     templateUrl: './work-order-list.component.html',
     styleUrls: ['./work-order-list.component.css'],
+    standalone: true,
+    imports: [
+        CommonModule,
+        CommonUiLangModule,
+        MatTableModule,
+        UiPaginationModule,
+        CommonUiAutoCompleteModule,
+        FormsModule,
+        MatFormFieldModule,
+        ReactiveFormsModule,
+        MatCardModule,
+        MatInputModule,
+        CommonUiDatepickerModule,
+        MatButtonModule,
+        MaterialModule
+    ],
 })
 export class WorkOrderListComponent extends BaseEntityListComponent<Work> {
     public types = WORK_TYPES;

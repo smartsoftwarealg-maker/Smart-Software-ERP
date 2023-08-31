@@ -62,7 +62,12 @@ import { CMMSPlanDetailComponent, CMMSPlanListComponent } from '@ss/cmms/plans';
 import { CmmsAlertListComponent, PMDetailComponent, PmListComponent } from '@ss/cmms/pm';
 import { AssetReadingDetailComponent, AssetReadingListComponent, readingDetailGuard } from '@ss/cmms/asset-readings';
 import { AssetTriggerDetailComponent, AssetTriggerListComponent, triggerDetailGuard } from '@ss/cmms/asset-triggers';
-import { WorkOrderDetailComponent, WorkOrderListComponent } from '@ss/cmms/work-order';
+import {
+    WorkOrderArticleDetailComponent,
+    WorkOrderArticleListComponent,
+    WorkOrderDetailComponent,
+    WorkOrderListComponent
+} from '@ss/cmms/work-order';
 import {
     AssetBuildingDetailComponent,
     AssetBuildingListComponent,
@@ -329,6 +334,15 @@ export const cmmsRoutes: Routes = [
                 component: WorkOrderDetailComponent,
                 canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService],
+                children: [
+                    { path: '', redirectTo: 'articles', pathMatch: 'full'},
+                    { path: 'articles',
+                        children: [
+                            { path: '', component: WorkOrderArticleListComponent, pathMatch: 'full'},
+                            { path: ':id', component: WorkOrderArticleDetailComponent }
+                        ]
+                    }
+                ]
             },
         ]
     },

@@ -1,6 +1,6 @@
 <mat-card>
     <mat-card-content>
-        <form *ngIf="form !== null" novalidate [formGroup]="form">
+        <form *ngIf="form !== null" novalidate [formGroup]="form" >
 
             <mat-form-field class="default-50">
                 <mat-label translate>CMMS_ASSET</mat-label>
@@ -106,38 +106,40 @@
 
             <mat-tab-group>
                 <mat-tab label="{{ 'LOGISTICS_PARTS' | translate}}">
-                    <div class="table_div size">
-                        <mat-table mat-table [dataSource]="partData$ | async" class="main-table">
+                    <router-outlet *ngIf="id > 0"></router-outlet>
 
-                            <ng-container matColumnDef="reference">
-                                <mat-header-cell *matHeaderCellDef translate>COMMON_REFERENCE</mat-header-cell>
-                                <mat-cell *matCellDef="let e">
-                                    {{e.reference}}
-                                </mat-cell>
-                            </ng-container>
+<!--                    <div class="table_div size">-->
+<!--                        <mat-table mat-table [dataSource]="partData$ | async" class="main-table">-->
 
-                            <ng-container matColumnDef="description">
-                                <mat-header-cell *matHeaderCellDef translate>ADMINISTRATION_DESCRIPTION</mat-header-cell>
-                                <mat-cell *matCellDef="let e">
-                                    {{e.description}}
-                                </mat-cell>
-                            </ng-container>
+<!--                            <ng-container matColumnDef="reference">-->
+<!--                                <mat-header-cell *matHeaderCellDef translate>COMMON_REFERENCE</mat-header-cell>-->
+<!--                                <mat-cell *matCellDef="let e">-->
+<!--                                    {{e.reference}}-->
+<!--                                </mat-cell>-->
+<!--                            </ng-container>-->
 
-                            <ng-container matColumnDef="qty">
-                                <mat-header-cell *matHeaderCellDef translate>COMMON_QTY</mat-header-cell>
-                                <mat-cell *matCellDef="let e">
-                                    {{e.qty | number: '1.2-2' }}
-                                </mat-cell>
-                            </ng-container>
+<!--                            <ng-container matColumnDef="description">-->
+<!--                                <mat-header-cell *matHeaderCellDef translate>ADMINISTRATION_DESCRIPTION</mat-header-cell>-->
+<!--                                <mat-cell *matCellDef="let e">-->
+<!--                                    {{e.description}}-->
+<!--                                </mat-cell>-->
+<!--                            </ng-container>-->
 
-                            <mat-header-row *matHeaderRowDef="partColumns; sticky: true"></mat-header-row>
-                            <mat-row class="selectable" [class.selected]="row.id == selectedPartId" (click)="selectPart(row.id)"
-                                     *matRowDef="let row; columns: partColumns;"></mat-row>
-                        </mat-table>
-                    </div>
-                    <div class="size b-b-background">
-                        <ss-pagination [paginationModel]="partPaginator"></ss-pagination>
-                    </div>
+<!--                            <ng-container matColumnDef="qty">-->
+<!--                                <mat-header-cell *matHeaderCellDef translate>COMMON_QTY</mat-header-cell>-->
+<!--                                <mat-cell *matCellDef="let e">-->
+<!--                                    {{e.qty | number: '1.2-2' }}-->
+<!--                                </mat-cell>-->
+<!--                            </ng-container>-->
+
+<!--                            <mat-header-row *matHeaderRowDef="partColumns; sticky: true"></mat-header-row>-->
+<!--                            <mat-row class="selectable" [class.selected]="row.id == selectedPartId" (click)="selectPart(row.id)"-->
+<!--                                     *matRowDef="let row; columns: partColumns;"></mat-row>-->
+<!--                        </mat-table>-->
+<!--                    </div>-->
+<!--                    <div class="size b-b-background">-->
+<!--                        <ss-pagination [paginationModel]="partPaginator"></ss-pagination>-->
+<!--                    </div>-->
                 </mat-tab>
 
                 <mat-tab label="{{ 'CMMS_ROUTING' | translate}}">
