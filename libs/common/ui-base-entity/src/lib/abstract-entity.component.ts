@@ -30,7 +30,7 @@ export abstract class AbstractEntityComponent<T extends { id: number }> implemen
         this.shellSrv.setLoading(true);
         const obs = val.id === 0 ?
             this.entitySrv
-                .update(val) // REMOVED `.add` TO SOLVE IDIOTS' PROBLEM
+                .add2(val) // REMOVED `.add` TO SOLVE IDIOTS' PROBLEM
                 .pipe(tap(i => {
                     if (!val.id) {
                         this.queryId = i;

@@ -2,18 +2,34 @@ import { Component, inject } from '@angular/core';
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { AssetReading, AssetTrigger } from '@ss/cmms/cmms-api';
 import { CMMSMeterService } from '@ss/cmms/lookups';
-import { DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
+import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from "@ss/common/ui-auto-complete";
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute } from '@angular/router';
 import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { CMMSAssetTriggerService } from '../cmms-asset-trigger.service';
 import { AssetsService } from '@ss/assets-component';
+import { CommonModule } from "@angular/common";
+import { CommonUiLangModule } from "@ss/common/ui-lang";
+import { MatSortModule } from "@angular/material/sort";
+import { MatTableModule } from "@angular/material/table";
+import { UiPaginationModule } from "@ss/common/ui-pagination";
+import { MaterialModule } from "@ss/common/api-common";
 
 @Component({
     selector: 'ss-asset-trigger-detail',
     templateUrl: './asset-trigger-detail.component.html',
     styleUrls: ['./asset-trigger-detail.component.css'],
+    standalone: true,
+    imports: [
+        CommonModule,
+        CommonUiLangModule,
+        MatSortModule,
+        MatTableModule,
+        UiPaginationModule,
+        MaterialModule,
+        CommonUiAutoCompleteModule
+    ],
 })
 export class AssetTriggerDetailComponent extends BaseEntityDetailComponent<AssetTrigger> {
     private assetSrv = inject(AssetsService);

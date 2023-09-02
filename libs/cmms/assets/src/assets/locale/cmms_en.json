@@ -58,5 +58,13 @@
     "ZONES":            "Zones",
     "WORKSHOPS":        "Workshops",
     "WORKSHOP":         "Workshop",
-    "FUNCTION":         "Function"
+    "FUNCTION":         "Function",
+    "EXPERTISE":        "Expertise",
+    "CHECKLIST":        "Checklist",
+    "PLANNING":         "Planning",
+    "SCHEDULING":       "Scheduling",
+    "EXECUTION":        "Execution",
+    "WORKS":            "Works",
+    "SCHEDULED_START":  "Scheduled start time",
+    "SCHEDULED_DUE":    "Scheduled due time"
 }

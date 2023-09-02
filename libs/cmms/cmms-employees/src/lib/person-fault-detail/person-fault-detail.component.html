@@ -1,0 +1,22 @@
+<div class="size button_div size" *ngIf="form">
+  <button mat-mini-fab (click)="save()"
+          color="primary" *ngIf="isEditable">
+    <i class="fas fa-save"></i>
+  </button>
+  <button mat-mini-fab (click)="cancel()"
+          color="warn">
+    <i class="fas fa-redo"></i>
+  </button>
+</div>
+
+<mat-card class="size">
+  <form *ngIf="form !== null" novalidate [formGroup]="form">
+    <mat-form-field class="default-100" autofocus>
+      <mat-label translate>CMMS_FAULTS</mat-label>
+      <ss-auto-complete matInput
+                        formControlName="faultId"
+                        [model]="faultLookup">
+      </ss-auto-complete>
+    </mat-form-field>
+  </form>
+</mat-card>

@@ -39,7 +39,7 @@
         <ng-container matColumnDef="typeDescription">
             <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_TYPE</mat-header-cell>
             <mat-cell *matCellDef="let e">
-                {{ Types[e.wrType - 1]?.description | translate }}
+                {{ types[e.wrType - 1]?.description | translate }}
             </mat-cell>
         </ng-container>
 
@@ -47,6 +47,13 @@
             <mat-header-cell *matHeaderCellDef mat-sort-header translate>CMMS_FAULT</mat-header-cell>
             <mat-cell *matCellDef="let e">
                 {{e.faultDescription}}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="statusDescription">
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_STATUS</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.statusDescription}}
             </mat-cell>
         </ng-container>
 

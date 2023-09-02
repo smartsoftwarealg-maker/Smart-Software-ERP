@@ -58,5 +58,13 @@
     "ZONES":            "المناطق",
     "WORKSHOPS":        "ورشات ",
     "WORKSHOP":         "ورشة ",
-    "FUNCTION":         "وظيفة"
+    "FUNCTION":         "وظيفة",
+    "EXPERTISE":        "خبرة",
+    "CHECKLIST":        "قائمة تدقيق",
+    "PLANNING":         "تخطيط",
+    "SCHEDULING":       "الجدولة",
+    "EXECUTION":        "تنفيذ",
+    "WORKS":            "يعمل",
+    "SCHEDULED_START":  "وقت البدء المقرر",
+    "SCHEDULED_DUE":    "الموعد المحدد"
 }

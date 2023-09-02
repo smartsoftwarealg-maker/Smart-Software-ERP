@@ -9,11 +9,17 @@
             <mat-label translate>ADMINISTRATION_DESCRIPTION_AR</mat-label>
             <input matInput formControlName="descriptionAr" type="text">
         </mat-form-field>
+
+        <div class="default-100 sm-100" >
+            <mat-checkbox formControlName="isChecklist" translate>CMMS_CHECKLIST</mat-checkbox>
+        </div>
+
     </form>
+
 </mat-card>
 <mat-tab-group (selectedIndexChange)="onTabChange($event)" class="size">
     <mat-tab label="{{ 'COMMON_DETAIL' | translate }}" [disabled]="isOnEdit"></mat-tab>
-    <mat-tab label="{{ 'LOGISTICS_ARTICLES' | translate }}" [disabled]="isOnEdit"></mat-tab>
+    <mat-tab label="{{ 'LOGISTICS_ARTICLES' | translate }}" [disabled]="isOnEdit" *ngIf="!isChecklist"></mat-tab>
     <mat-tab label="{{ 'COMMON_ARCHIVE' | translate }}" [disabled]="isOnEdit"></mat-tab>
 </mat-tab-group>
 

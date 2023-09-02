@@ -1,0 +1,10 @@
+.button__div {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.size {
+    width: 90%;
+    max-width: 900px;
+    margin: 4px auto;
+}

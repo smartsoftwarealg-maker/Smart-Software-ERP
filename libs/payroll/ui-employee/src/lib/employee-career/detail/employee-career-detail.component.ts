@@ -95,9 +95,9 @@ export class EmployeeCareerDetailComponent extends BaseChildEntityDetailComponen
     public override readForm(): Career {
         const formVal = this.form.value;
         const val: Career = formVal;
-        val.paymonth = formVal.paymonthY * 100 + formVal.paymonthM;
+        val.paymonth = +(formVal.paymonthY * 100 + formVal.paymonthM);
         delete formVal.paymonthY;
         delete formVal.paymonthM;
-        return formVal;
+        return val;
     }
 }

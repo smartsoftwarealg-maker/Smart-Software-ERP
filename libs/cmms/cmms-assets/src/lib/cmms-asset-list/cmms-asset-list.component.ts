@@ -30,10 +30,10 @@ export class CmmsAssetListComponent extends BaseEntityListComponent<Asset> {
     displayedColumns = [
         'reference',
         'description',
-        'acquisitionDate',
         'serial_no',
         'className',
         'site',
+        'building',
         'officeDescription',
         'statusDescription',
         'functionDescription'
@@ -56,6 +56,6 @@ export class CmmsAssetListComponent extends BaseEntityListComponent<Asset> {
             confirmationSrv,
             defReportSrv,
             pagPersistSrv,
-            'ASSET_ASSETS');
+            'COMMON_ASSETS');
     }
 }

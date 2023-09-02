@@ -1,3 +1,4 @@
-export * from './lib/cmms-work-order.module';
 export * from './lib/work-order-list/work-order-list.component';
 export * from './lib/work-order-detail/work-order-detail.component';
+export * from './lib/work-order-article-list/work-order-article-list.component';
+export * from './lib/work-order-article-detail/work-order-article-detail.component';

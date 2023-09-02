@@ -361,6 +361,22 @@ export const hrRoutes: Routes = [
                         data: { hrMode: true, active: false },
                         children: [
                             {
+                                path: ACTIVATION_ROUTE_URL,
+                                children: [
+                                    {
+                                        path: '',
+                                        component: EmployeeActivationListComponent,
+                                    },
+                                    {
+                                        path: ':id',
+                                        component: EmployeeActivationDetailComponent,
+                                        canActivate: [loginGuard],
+                                        canDeactivate: [CanDeactivateService]
+                                    }
+                                ]
+                            },
+
+                            {
                                 path: 'archive',
                                 children: [
                                     {path: '', component: AppArchiveListComponent, pathMatch: 'full' },
@@ -370,26 +386,11 @@ export const hrRoutes: Routes = [
                         ]
                     },
                     {
-                        path: ACTIVATION_ROUTE_URL,
-                        children: [
-                            {
-                                path: '',
-                                component: RedirectToParentComponent,
-                            },
-                            {
-                                path: ':id',
-                                component: EmployeeActivationDetailComponent,
-                                canActivate: [loginGuard],
-                                canDeactivate: [CanDeactivateService]
-                            }
-                        ]
-                    },
-                    {
                         path: CAREER_ROUTE_URL,
                         children: [
                             {
                                 path: '',
-                                component: RedirectToParentComponent,
+                                component: EmployeeCareerListComponent,
                             },
                             {
                                 path: ':id',
@@ -404,7 +405,7 @@ export const hrRoutes: Routes = [
                         children: [
                             {
                                 path: '',
-                                component: RedirectToParentComponent,
+                                component: EmployeeContractListComponent,
                             },
                             {
                                 path: ':id',
@@ -419,7 +420,7 @@ export const hrRoutes: Routes = [
                         children: [
                             {
                                 path: '',
-                                component: RedirectToParentComponent,
+                                component: EmployeeWivesListComponent,
                             },
                             {
                                 path: ':id',
@@ -434,7 +435,7 @@ export const hrRoutes: Routes = [
                         children: [
                             {
                                 path: '',
-                                component: RedirectToParentComponent,
+                                component: EmployeeChildrenListComponent,
                             },
                             {
                                 path: ':id',
@@ -449,7 +450,7 @@ export const hrRoutes: Routes = [
                         children: [
                             {
                                 path: '',
-                                component: RedirectToParentComponent,
+                                component: EmployeeDiplomaListComponent,
                             },
                             {
                                 path: ':id',
@@ -464,7 +465,7 @@ export const hrRoutes: Routes = [
                         children: [
                             {
                                 path: '',
-                                component: RedirectToParentComponent,
+                                component: EmployeeTrainingListComponent,
                             },
                             {
                                 path: ':id',
@@ -479,7 +480,7 @@ export const hrRoutes: Routes = [
                         children: [
                             {
                                 path: '',
-                                component: RedirectToParentComponent,
+                                component: PunishmentListComponent,
                             },
                             {
                                 path: ':id',
@@ -494,7 +495,7 @@ export const hrRoutes: Routes = [
                         children: [
                             {
                                 path: '',
-                                component: RedirectToParentComponent,
+                                component: EmployeeLanguagesListComponent,
                             },
                             {
                                 path: ':id',
@@ -509,7 +510,7 @@ export const hrRoutes: Routes = [
                         children: [
                             {
                                 path: '',
-                                component: RedirectToParentComponent,
+                                component: EmployeeOldCareerListComponent,
                             },
                             {
                                 path: ':id',
@@ -524,7 +525,7 @@ export const hrRoutes: Routes = [
                         children: [
                             {
                                 path: '',
-                                component: RedirectToParentComponent,
+                                component: EmployeeDecisionListComponent,
                             },
                             {
                                 path: ':id',

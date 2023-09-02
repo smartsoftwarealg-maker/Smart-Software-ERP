@@ -17,7 +17,7 @@ import { LoginService } from '@ss/common/api-common';
     templateUrl: './pm-detail.component.html',
     styleUrls: ['./pm-detail.component.css'],
 })
-export class PMDetailComponent extends BaseEntityDetailComponent<PM>{
+export class PMDetailComponent extends BaseEntityDetailComponent<PM> {
     private faultSrv = inject(CMMSFaultService);
     private causeSrv = inject(CMMSFaultCauseService);
     private routingSrv = inject(CMMSRoutingService);

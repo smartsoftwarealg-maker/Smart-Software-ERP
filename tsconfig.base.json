@@ -109,6 +109,9 @@
             "@ss/cmms/lookups": ["libs/cmms/lookups/src/index.ts"],
             "@ss/cmms/plans": ["libs/cmms/plans/src/index.ts"],
             "@ss/cmms/pm": ["libs/cmms/pm/src/index.ts"],
+            "@ss/cmms/prev-work-order": [
+                "libs/cmms/prev-work-order/src/index.ts"
+            ],
             "@ss/cmms/service-request": [
                 "libs/cmms/service-request/src/index.ts"
             ],

@@ -1,4 +1,4 @@
-import { RoutingDetail, RoutingPart, Work, WORK_TYPES } from './cmms-api';
+import { AssetLookup, RoutingDetail, RoutingPart, Work, WORK_TYPES } from './cmms-api';
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { Directive, inject } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
@@ -57,13 +57,13 @@ export class CMMSWorkDetail extends BaseEntityDetailComponent<Work> {
     rootCauseLookup = new DefaultAutoCompleteModel(this.rootCauseSrv);
     priorityLookup = new DefaultAutoCompleteModel(this.prioritySrv);
     serviceLookup = new DefaultAutoCompleteModel(this.serviceSrv);
-    assetLookup = new DefaultAutoCompleteModel(this.assetSrv);
+    assetLookup = new AssetLookup(this.assetSrv);
     personLookup = new PersonAutocompleteClass(this.personSrv);
     routingLookup = new DefaultAutoCompleteModel(this.routingSrv);
 
     routingPaginator = PaginationModel.newInstance();
     partPaginator = PaginationModel.newInstance();
-    cmmsTyes = WORK_TYPES.filter(e => this.document == 12? e.id == 1: e.id > 1);
+    cmmsTyes = WORK_TYPES;
 
     data$: Observable<RoutingDetail[]> = of([]);
     partData$: Observable<RoutingPart[]> = of([]);
@@ -85,7 +85,7 @@ export class CMMSWorkDetail extends BaseEntityDetailComponent<Work> {
         this.defaultType = this.document == 12? 1 : 2;
         this.routingPaginator.onChange = () => this.data$ = this.routingDetailSrv.getPage(this.routingPaginator);
         this.partPaginator.onChange = () => this.partData$ = this.routingPartSrv.getPage(this.partPaginator);
-        this.cmmsTyes = WORK_TYPES.filter(e => this.document == 12? e.id == 1: e.id > 1);
+        this.cmmsTyes = WORK_TYPES;
     }
 
     setupForm(e: Work): UntypedFormGroup {
@@ -106,8 +106,10 @@ export class CMMSWorkDetail extends BaseEntityDetailComponent<Work> {
             wrType:       [{ value: e.wrType || this.defaultType, disabled: this.document == DOC_WORK_REQUEST }, Validators.required],
             priority:     [e.priority, Validators.required],
             plannedStart: [e.plannedStart, Validators.required],
+            scheduledStart: [e.scheduledStart],
             actualStart:  [e.actualStart ],
-            plannedDue:   [e.plannedDue  ],
+            plannedDue:   [{ value: e.plannedDue , disabled: e.validated && typeof e.plannedDue != 'undefined' }, Validators.required ],
+            scheduledDue: [e.scheduledDue  ],
             actualDue:    [{ value: e.actualDue || null, disabled: e.validated && typeof e.actualDue != 'undefined' }],
             fault:        [e.fault       ],
             routingId:    [e.routingId   ],
@@ -123,7 +125,12 @@ export class CMMSWorkDetail extends BaseEntityDetailComponent<Work> {
             memo:         [e.memo        ],
             status:       [e.status      ],
             userId:       [e.centerId    ],
-            sourceId:     [e.sourceId    ]
+            sourceId:     [e.sourceId    ],
+            closureDate:  [e.closureDate],
+            creatorDescription:  [{ value: e.creatorDescription, disabled: true }],
+            executorDescription:  [{ value: e.executorDescription, disabled: true }],
+            schedulerDescription: [{ value: e.schedulerDescription, disabled: true }],
+            closerDescription:    [{ value: e.closerDescription || this.loginSrv.appCtx.fullName, disabled: true }],
         });
     }
 

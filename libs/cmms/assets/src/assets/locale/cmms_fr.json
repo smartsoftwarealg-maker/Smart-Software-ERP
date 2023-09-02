@@ -58,6 +58,14 @@
     "ZONES":            "Zones",
     "WORKSHOPS":        "Ateliers",
     "WORKSHOP":         "Atelier",
-    "FUNCTION":         "Fonction"
+    "FUNCTION":         "Fonction",
+    "EXPERTISE":        "Compétence",
+    "CHECKLIST":        "Liste de contrôle",
+    "PLANNING":         "Planification",
+    "SCHEDULING":       "Planification",
+    "EXECUTION":        "Exécution",
+    "WORKS":            "Travaux",
+    "SCHEDULED_START":  "Heure de début prévue",
+    "SCHEDULED_DUE":    "Heure prévue"
 }
 

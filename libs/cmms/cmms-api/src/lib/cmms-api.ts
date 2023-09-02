@@ -1,4 +1,7 @@
 import { Lookup } from '@ss/common/api-lookup';
+import { DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
+import { Asset } from '@ss/assets-component';
+import { BaseEntityService } from '@ss/common/api-base-entity';
 
 export const CMMS_ASSET5S_URL = '/assets';
 export const CMMS_PLANS_URL = '/cmmsplans';
@@ -12,6 +15,9 @@ export const CMMS_READINGS_URL = '/readings';
 export const CMMS_TRIGGERS_URL = '/triggers';
 export const CMMS_ROUTING_URL = '/routing';
 export const CMMS_DETAIL_URL = '/detail';
+export const CMMS_WORKS = '/works';
+export const CMMS_ARTICLES = '/articles';
+
 
 export const CMMS_TRIGGER_TYPES: Lookup[] = [
     { id: 1, description: 'CMMS_TIME'},
@@ -20,9 +26,9 @@ export const CMMS_TRIGGER_TYPES: Lookup[] = [
 ];
 
 export const WORK_TYPES: Lookup[] = [
-    { id: 1, description: 'CMMS_PREVENTIVE'},
-    { id: 2, description: 'CMMS_CURATIVE'},
-    { id: 3, description: 'CMMS_INSPECTION'}
+    { id: 1, description: 'CMMS_PREVENTIVE' },
+    { id: 2, description: 'CMMS_CURATIVE' },
+    { id: 3, description: 'CMMS_INSPECTION' }
 ];
 
 export const CMMS_SERVICE_REQUEST = 10;
@@ -94,6 +100,15 @@ export interface RoutingDetail {
     cost?: number;
 }
 
+export interface WorkArticle {
+    id: number;
+    parentId: number;
+    articleId: number;
+    qty: number;
+    reference: string;
+    description: string;
+}
+
 export interface Work {
     id: number;
     centerId: number;
@@ -106,8 +121,10 @@ export interface Work {
     wrType?: number;
     priority?: number;
     plannedStart?: Date;
+    scheduledStart?: Date;
     actualStart?: Date;
     plannedDue?: Date;
+    scheduledDue?: Date;
     actualDue?: Date;
     routingId: number;
     fault?: number;
@@ -132,4 +149,20 @@ export interface Work {
     creatorId: number;
     validated: boolean;
     sourceId?: number;
+    plannerId?: number;
+    schedulerId?: number;
+    executorId?: number;
+    closerId?: number;
+    closureDate?: Date;
+    creatorDescription?: string;
+    schedulerDescription?: string;
+    executorDescription?: string;
+    closerDescription?: string;
+}
+
+export class AssetLookup extends DefaultAutoCompleteModel<Asset> {
+    constructor(public override entitySrv: BaseEntityService<Asset>) {
+        super(entitySrv);
+    }
+    override toString = (x: Asset | null) =>  x ? x.reference + ' ' + x.description?.substring(0, 70) : null;
 }

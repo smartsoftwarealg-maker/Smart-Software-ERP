@@ -5,6 +5,7 @@ import { ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
 import { BaseEntityService } from "@ss/common/api-base-entity";
 import { PaginationModel } from "@ss/common/api-common";
 import { map, Observable, of } from "rxjs";
+import { Sort } from "@angular/material/sort";
 
 @Directive()
 export class BaseChildEntityListComponent<T extends { id: number }> implements OnInit {
@@ -75,5 +76,11 @@ export class BaseChildEntityListComponent<T extends { id: number }> implements O
 
     select(id: number) {
         this.selectedId = id;
+    }
+
+    sort(event: Sort) {
+        // console.log(event);
+        this.detailSrv.sortColumn = event;
+        this.refresh();
     }
 }

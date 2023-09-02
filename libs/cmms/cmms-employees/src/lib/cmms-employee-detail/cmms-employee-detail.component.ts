@@ -1,10 +1,7 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { Employee, EmployeeService } from '@ss/employee-services/employee-services';
-import {
-    EmployeeLanguagesService,
-} from '@ss/payroll/api-employee';
 import {
     BloodGroupService, City,
     CityService,
@@ -16,9 +13,7 @@ import { AppArchiveService, EMPLOYEE_ARCHIVES } from '@ss/common/app-archive';
 import { CommonUiImageInputModule, ImageModel } from '@ss/common/ui-image-input';
 import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
 import {
-    AbstractControl,
     ReactiveFormsModule,
-    UntypedFormArray,
     UntypedFormBuilder,
     UntypedFormGroup,
     Validators
@@ -40,6 +35,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatOptionModule } from '@angular/material/core';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
+import { PersonFaultService } from '../services/person-fault.service';
+import { PersonLocationService } from '../services/person-location.service';
 
 @Component({
     selector: 'ss-cmms-employee-detail',
@@ -48,23 +45,29 @@ import { MatSelectModule } from '@angular/material/select';
     templateUrl: './cmms-employee-detail.component.html',
     styleUrls: ['./cmms-employee-detail.component.scss'],
 })
-export class CmmsEmployeeDetailComponent extends BaseEntityDetailComponent<Employee> {
-    private languageSrv = inject(EmployeeLanguagesService);
+export class CmmsEmployeeDetailComponent extends BaseEntityDetailComponent<Employee> implements OnInit {
+    private faultSrv = inject(PersonFaultService);
+    private locationSrv = inject(PersonLocationService);
     private bloodGroupSrv = inject(BloodGroupService);
     private citySrv = inject(CityService);
     private nationalitySrv = inject(NationalityService);
     private archiveSrv = inject(AppArchiveService);
     private PANELS = [
-        ''
+        'archive',
+        'faults',
+        'locations'
     ];
-
 
     activePanel:-1|0|1|2|3|4|5|6|7|8|9|10|11 = -1;
 
-    readonly PAYROLL_IEP = 1;
-    readonly PAYROLL_OLD_ELEMENTS = 2;
-    readonly PAYROLL_RANK = 3;
-    readonly PAYROLL_POST = 4;
+    readonly ARCHIVE_PANEL = 0;
+    readonly FAULT_PANEL = 1;
+    readonly LOCATION_PANEL = 2;
+
+    // readonly PAYROLL_IEP = 1;
+    // readonly PAYROLL_OLD_ELEMENTS = 2;
+    // readonly PAYROLL_RANK = 3;
+    // readonly PAYROLL_POST = 4;
 
     hrMode = false;
     activePersonnel = true;
@@ -90,7 +93,6 @@ export class CmmsEmployeeDetailComponent extends BaseEntityDetailComponent<Emplo
         super(employeeSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'PAYROLL_EDIT_EMPLOYEE');
         this.imageModel = new ImageModel(this.httpSrv);
     }
-
 
     public override preload(): Observable<any> {
         this.route.data.subscribe(data => {
@@ -154,69 +156,10 @@ export class CmmsEmployeeDetailComponent extends BaseEntityDetailComponent<Emplo
         });
     }
 
-    public isControlValid(c: AbstractControl): boolean {
-        return !c.touched || c.valid;
-    }
-
-    public isBirthInfoValid(): boolean {
-        return this.isControlValid(this.form.controls['firstName']) &&
-            this.isControlValid(this.form.controls['lastName']) &&
-            this.isControlValid(this.form.controls['sex']) &&
-            this.isControlValid(this.form.controls['birthDate']) &&
-            this.isControlValid(this.form.controls['birthPlace']) &&
-            this.isControlValid(this.form.controls['father']) &&
-            this.isControlValid(this.form.controls['mother']) &&
-            this.isControlValid(this.form.controls['nationality']);
-    }
-
-    public issocialInfoPanelValid(): boolean {
-        return this.isControlValid(this.form.controls['address1']) &&
-            this.isControlValid(this.form.controls['email']) &&
-            this.isControlValid(this.form.controls['phone']) &&
-            this.isControlValid(this.form.controls['mobile']) &&
-            this.isControlValid(this.form.controls['ss_Number']) &&
-            this.isControlValid(this.form.controls['maritalStatus']);
-    }
-
-    public isArabicInfoPanelValid(): boolean {
-        return this.isControlValid(this.form.controls['firstNameAr']) &&
-            this.isControlValid(this.form.controls['lastNameAr']) &&
-            this.isControlValid(this.form.controls['birthPlaceAr']) &&
-            this.isControlValid(this.form.controls['fatherAr']) &&
-            this.isControlValid(this.form.controls['motherAr']);
-    }
-
-    public isFixedElementsPanelValid(): boolean {
-        // todo: implement
-        return true;
-    }
-
-    public isSectionValid(section: string): boolean {
-        switch (section) {
-        case 'birthinfo':
-            return this.isBirthInfoValid();
-        case 'socialInfo':
-            return this.issocialInfoPanelValid();
-        case 'arabicInfo':
-            return this.isArabicInfoPanelValid();
-        case 'fixedElemnts':
-            return this.isFixedElementsPanelValid();
-        default:
-            return true;
-        }
-    }
-
-
     override uploadAttachments(id: number): Observable<any> {
         this.imageModel.setBackendUrl(this.employeeSrv.getPhotoUrl(id));
         return this.imageModel.submit('file');
     }
-
-    get elementsFormArray(): UntypedFormArray {
-        return this.elementsForm?.controls['elements'] as UntypedFormArray;
-    }
-
-
 
     showPanel(panel: 0|1|2|3|4|5|6|7|8|9|10|11) {
         this.activePanel = panel;
@@ -224,6 +167,18 @@ export class CmmsEmployeeDetailComponent extends BaseEntityDetailComponent<Emplo
         if (this.router.url.indexOf(dest) <0) {
             this.router.navigate([dest], { relativeTo: this.route }).then();
         }
+    }
+
+    override ngOnInit() {
+        this.saveButton.visible = false;
+        super.ngOnInit();
+    }
+
+    override loadEntity(id: number): Observable<Employee> {
+        this.archiveSrv.setParentId(id || 0);
+        this.faultSrv.setParentId(id || 0);
+        this.locationSrv.setParentId(id || 0);
+        return super.loadEntity(id);
     }
 }
 
