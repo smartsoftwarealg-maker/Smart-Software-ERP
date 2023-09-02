@@ -154,7 +154,7 @@ export interface Work {
     executorId?: number;
     closerId?: number;
     closureDate?: Date;
-    plannerDescription?: string;
+    creatorDescription?: string;
     schedulerDescription?: string;
     executorDescription?: string;
     closerDescription?: string;

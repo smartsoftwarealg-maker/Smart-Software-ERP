@@ -106,9 +106,9 @@ export class CMMSWorkDetail extends BaseEntityDetailComponent<Work> {
             wrType:       [{ value: e.wrType || this.defaultType, disabled: this.document == DOC_WORK_REQUEST }, Validators.required],
             priority:     [e.priority, Validators.required],
             plannedStart: [e.plannedStart, Validators.required],
-            scheduledStart: [e.scheduledStart, Validators.required],
+            scheduledStart: [e.scheduledStart],
             actualStart:  [e.actualStart ],
-            plannedDue:   [{ value: e.plannedDue , disabled: e.validated && typeof e.plannedDue != 'undefined' } ],
+            plannedDue:   [{ value: e.plannedDue , disabled: e.validated && typeof e.plannedDue != 'undefined' }, Validators.required ],
             scheduledDue: [e.scheduledDue  ],
             actualDue:    [{ value: e.actualDue || null, disabled: e.validated && typeof e.actualDue != 'undefined' }],
             fault:        [e.fault       ],
@@ -127,7 +127,10 @@ export class CMMSWorkDetail extends BaseEntityDetailComponent<Work> {
             userId:       [e.centerId    ],
             sourceId:     [e.sourceId    ],
             closureDate:  [e.closureDate],
-            closerDescription: [{ value: e.closerDescription || this.loginSrv.appCtx.fullName, disabled: true }],
+            creatorDescription:  [{ value: e.creatorDescription, disabled: true }],
+            executorDescription:  [{ value: e.executorDescription, disabled: true }],
+            schedulerDescription: [{ value: e.schedulerDescription, disabled: true }],
+            closerDescription:    [{ value: e.closerDescription || this.loginSrv.appCtx.fullName, disabled: true }],
         });
     }
 

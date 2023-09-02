@@ -3,7 +3,7 @@
         <mat-card >
             <mat-card-content>
             <mat-form-field class="default-50">
-                <mat-label translate>CMMS_ASSET</mat-label>
+                <mat-label translate>ASSET</mat-label>
                 <ss-auto-complete matInput
                                   [model]="assetLookup"
                                   formControlName="assetId"
@@ -102,6 +102,11 @@
                     <mat-error *ngIf="form.controls['plannedDue'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
                 </mat-form-field>
 
+                <mat-form-field class="default-50">
+                    <mat-label translate>PAYROLL_FULLNAME</mat-label>
+                    <input matInput formControlName="creatorDescription" type="text">
+                </mat-form-field>
+
             </mat-expansion-panel>
 
             <mat-expansion-panel
@@ -167,6 +172,11 @@
                                       [model]="solutionLookup"
                                       formControlName="solution">
                     </ss-auto-complete>
+                </mat-form-field>
+
+                <mat-form-field class="default-50">
+                    <mat-label translate>PAYROLL_FULLNAME</mat-label>
+                    <input matInput formControlName="executorDescription" type="text">
                 </mat-form-field>
 
                 <mat-form-field id="memo" class="default-100">

@@ -19,7 +19,6 @@ import { MatInputModule } from '@angular/material/input';
 import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
 import { MatButtonModule } from '@angular/material/button';
 import { MaterialModule } from '@ss/common/api-common';
-import { MatTabChangeEvent } from '@angular/material/tabs';
 import { CMMSWorkOrderArticleService } from '../c-m-m-s-work-order-article.service';
 
 @Component({
