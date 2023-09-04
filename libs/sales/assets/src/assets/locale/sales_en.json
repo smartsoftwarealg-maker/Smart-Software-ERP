@@ -21,5 +21,6 @@
     "SALES_COUNT":  "Item count",
     "THANKS":       "Thanks",
     "WILL_SHIP":    "The goods will be shipped upon the receipt of your payment to the following address:",
-    "COUNT":        "Item count"
+    "COUNT":        "Item count",
+    "DUPLICATION":  "Duplication"
 }

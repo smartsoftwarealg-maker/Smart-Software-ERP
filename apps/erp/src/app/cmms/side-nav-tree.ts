@@ -182,17 +182,17 @@ export const cmmsNavTree: SideNavNode = {
             route: ABS_SERVICE_REQUEST_URL,
             accessRights: 'CMMSRequest'
         },
+        // {
+        //     name: 'CMMS_PREV_WORK_ORDER',
+        //     icon: 'fa-solid fa-washing-machine',
+        //     route: ABS_PREV_ORDERS_URL,
+        //     accessRights: 'PREVOrder'
+        // },
         {
-            name: 'CMMS_PREV_WORK_ORDER',
-            icon: 'fa-solid fa-washing-machine',
-            route: ABS_PREV_ORDERS_URL,
-            accessRights: 'PREVOrder'
-        },
-        {
-            name: 'CMMS_CUR_WORK_ORDER',
+            name: 'CMMS_WORK_ORDER',
             icon: 'fa-solid fa-hammer-crash',
             route: ABS_CUR_ORDER_URL,
-            accessRights: 'CUROrder'
+            accessRights: 'WRKROrder'
         },
         {
             name: 'STOCK_PARTS_REQUEST',

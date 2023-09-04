@@ -300,5 +300,9 @@
     "CMMS":                       "Maintenance",
     "BLOOD_GROUPS":               "Groupes sanguins",
     "MAINTENANCE":                "Maintenance",
-    "DIVERSE":                    "Divers"
+    "DIVERSE":                    "Divers",
+    "SELECT_ALL":                 "Tout sélectionner",
+    "DESELECT_ALL":               "Tout déselectionner",
+    "DUPLICATE":                  "Dupliquer",
+    "MONTH":                      "Mois"
 }

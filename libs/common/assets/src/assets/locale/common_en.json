@@ -297,5 +297,9 @@
     "CMMS":                      "CMMS",
     "BLOOD_GROUPS":              "Blood groups",
     "MAINTENANCE":               "Maintenance",
-    "DIVERSE":                   "Diverse"
+    "DIVERSE":                   "Diverse",
+    "SELECT_ALL":                "Select all",
+    "DESELECT_ALL":              "Deselect all",
+    "DUPLICATE":                 "Duplicate",
+    "MONTH":                     "Month"
 }
