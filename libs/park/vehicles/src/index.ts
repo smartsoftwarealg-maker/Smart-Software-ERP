@@ -13,3 +13,5 @@ export * from './lib/vehicle-damage-detail/vehicle-damage-detail.component';
 export * from './lib/vehicle-damage-list/vehicle-damage-list.component';
 export * from './lib/vehicle-driver-list/vehicles-driver-list.component';
 export * from './lib/vehicle-driver-detail/vehicles-driver-detail.component';
+export * from './lib/vehicle-mission-list/vehicle-mission-list.component';
+export * from './lib/vehicle-mission-detail/vehicle-mission-detail.component';

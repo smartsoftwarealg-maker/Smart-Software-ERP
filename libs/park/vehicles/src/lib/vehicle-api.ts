@@ -5,6 +5,8 @@ export const OIL = '/oil';
 export const INSURANCES = '/insurances';
 export const DAMAGES = '/damages';
 export const DRIVERS = '/drivers';
+export const MISSIONS = '/missions';
+export const VEHICLE_STATES = '/lookups/vehicle_states';
 
 export interface Vehicle {
     id: number;
@@ -81,4 +83,35 @@ export interface VehicleDriver {
     fullName?: string;
     description?: string;
     plateNo?: string;
+}
+
+export interface VehicleMission {
+    id: number;
+    parentId: number;
+    centerId: number;
+    number?: string;
+    objective?: string;
+    missionTime?: Date;
+    returnTime?: Date;
+    destination?: number;
+//    driver?: number;
+    departOdometer: number;
+    returnOdometer: number;
+    vehicleState?: number;
+    depVehicleState?: number;
+    retVehicleState?: number;
+    signer?: number;
+    plateNumber?: string;
+    description?: string;
+    firstName?: string;
+    lastName?: string;
+    stateDescription?: string;
+    depStateDescription?: string;
+    resStateDescription?: string;
+    destinationDescription?: string;
+}
+
+export interface VehicleState {
+    id: number;
+    description: string;
 }
