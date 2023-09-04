@@ -10,7 +10,6 @@ import {
     ABS_CMMS_PM_URL,
     ABS_CMMS_PRIORITY__URL,
     ABS_CMMS_READING_URL,
-    ABS_PREV_ORDERS_URL,
     ABS_CMMS_ROOT_CAUSE_URL,
     ABS_CMMS_ROUTING_URL,
     ABS_CMMS_SOLUTION_URL,
@@ -164,12 +163,12 @@ export const cmmsNavTree: SideNavNode = {
             route: ABS_CMMS_ROUTING_URL,
             accessRights: 'CMType'
         },
-        {
-            name: 'CMMS_PM',
-            icon: 'fa-solid fa-hands-bubbles',
-            route: ABS_CMMS_PM_URL,
-            accessRights: 'PM'
-        },
+        // {
+        //     name: 'CMMS_PM',
+        //     icon: 'fa-solid fa-hands-bubbles',
+        //     route: ABS_CMMS_PM_URL,
+        //     accessRights: 'PM'
+        // },
         {
             name: 'CMMS_ALERTS',
             icon: 'fa-solid fa-bells',

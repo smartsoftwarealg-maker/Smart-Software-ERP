@@ -2,7 +2,7 @@ import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BaseChildEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { WorkArticle } from '@ss/cmms/cmms-api';
-import { CMMSWorkOrderArticleService } from '../c-m-m-s-work-order-article.service';
+import { CMMSWorkOrderArticleService } from '../services/c-m-m-s-work-order-article.service';
 import { FormBuilder, FormsModule, ReactiveFormsModule, UntypedFormGroup } from '@angular/forms';
 import { ArticleService } from '@ss/stock/api-article';
 import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';

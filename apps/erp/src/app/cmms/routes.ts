@@ -66,8 +66,8 @@ import {
     WorkOrderArticleDetailComponent,
     WorkOrderArticleListComponent,
     WorkOrderDetailComponent,
-    WorkOrderListComponent
-} from '@ss/cmms/work-order';
+    WorkOrderListComponent, WorkPersonsDetailComponent, WorkPersonsListComponent
+} from "@ss/cmms/work-order";
 import {
     AssetBuildingDetailComponent,
     AssetBuildingListComponent,
@@ -335,11 +335,16 @@ export const cmmsRoutes: Routes = [
                 canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService],
                 children: [
-                    { path: '', redirectTo: 'articles', pathMatch: 'full'},
                     { path: 'articles',
                         children: [
                             { path: '', component: WorkOrderArticleListComponent, pathMatch: 'full'},
                             { path: ':id', component: WorkOrderArticleDetailComponent }
+                        ]
+                    },
+                    { path: 'works',
+                        children: [
+                            { path: '', component: WorkPersonsListComponent, pathMatch: 'full'},
+                            { path: ':id', component: WorkPersonsDetailComponent }
                         ]
                     }
                 ]

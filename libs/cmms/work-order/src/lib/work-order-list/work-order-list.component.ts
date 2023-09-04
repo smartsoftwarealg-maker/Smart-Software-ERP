@@ -6,7 +6,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { DefaultReportService } from '@ss/common/ui-default-report-component';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { MaterialModule, PaginatorPersistenceService } from '@ss/common/api-common';
-import { CMMSWorkOrderService } from '../c-m-m-s-work-order.service';
+import { CMMSWorkOrderService } from '../services/c-m-m-s-work-order.service';
 import { CommonModule } from '@angular/common';
 import { CommonUiLangModule } from '@ss/common/ui-lang';
 import { MatTableModule } from '@angular/material/table';

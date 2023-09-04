@@ -4,7 +4,7 @@ import { KeepOnToolbar, ShellService, SnackBarService, ToolbarButton } from '@ss
 import { ActivatedRoute, Router, RouterOutlet } from '@angular/router';
 import { FormsModule, ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
-import { CMMSWorkOrderService } from '../c-m-m-s-work-order.service';
+import { CMMSWorkOrderService } from '../services/c-m-m-s-work-order.service';
 import { DOC_WORK_ORDER } from '@ss/logistics/api-transaction';
 import { RequestImportComponent } from '@ss/cmms/cmms-ui';
 import { Observable, of, switchMap } from 'rxjs';
@@ -19,7 +19,8 @@ import { MatInputModule } from '@angular/material/input';
 import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
 import { MatButtonModule } from '@angular/material/button';
 import { MaterialModule } from '@ss/common/api-common';
-import { CMMSWorkOrderArticleService } from '../c-m-m-s-work-order-article.service';
+import { CMMSWorkOrderArticleService } from '../services/c-m-m-s-work-order-article.service';
+import { CMMSWorkPersonService } from '../services/c-m-m-s-work-person.service';
 
 @Component({
     selector: 'ss-work-order-detail',
@@ -44,8 +45,10 @@ import { CMMSWorkOrderArticleService } from '../c-m-m-s-work-order-article.servi
     ]
 })
 export class WorkOrderDetailComponent extends CMMSWorkDetail {
+    private workPersonSrv = inject(CMMSWorkPersonService);
     private articleSrv = inject(CMMSWorkOrderArticleService);
     private router = inject(Router);
+
     private importBtn: ToolbarButton = {
         disabled: false,
         icon: 'fas fa-file-import',
@@ -63,6 +66,12 @@ export class WorkOrderDetailComponent extends CMMSWorkDetail {
         visible: true,
         click: () => this.generateRequest(),
     };
+
+    private URLS = ['articles', 'works'];
+    readonly ARTICLE_PANEL = 0;
+    readonly WORK_PANEL = 1;
+
+    activePanel = -1;
 
     constructor(
         public override entitySrv: CMMSWorkOrderService,
@@ -95,6 +104,7 @@ export class WorkOrderDetailComponent extends CMMSWorkDetail {
     }
 
     override loadEntity(id: number): Observable<Work> {
+        this.workPersonSrv.setParentId(id);
         this.articleSrv.setParentId(id);
         return super.loadEntity(id);
     }
@@ -120,5 +130,12 @@ export class WorkOrderDetailComponent extends CMMSWorkDetail {
                 }
             });
     }
-}
 
+    showPanel(index: 0|1) {
+        this.activePanel = index;
+        const url = this.URLS[index];
+        if (this.router.url.indexOf(url) < 0) {
+            this.router.navigate([url], { relativeTo: this.route }).then();
+        }
+    }
+}

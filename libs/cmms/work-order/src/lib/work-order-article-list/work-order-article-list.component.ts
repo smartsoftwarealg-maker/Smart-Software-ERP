@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BaseChildEntityListComponent } from '@ss/common/ui-base-entity';
 import { WorkArticle } from '@ss/cmms/cmms-api';
-import { CMMSWorkOrderArticleService } from '../c-m-m-s-work-order-article.service';
+import { CMMSWorkOrderArticleService } from '../services/c-m-m-s-work-order-article.service';
 import { CommonUiLangModule } from '@ss/common/ui-lang';
 import { MatTableModule } from '@angular/material/table';
 import { UiPaginationModule } from '@ss/common/ui-pagination';

@@ -21,9 +21,9 @@
 
             <mat-form-field class="default-50">
                 <mat-label translate>COMMON_TYPE</mat-label>
-                <select matNativeControl required formControlName="wrType">
-                    <option *ngFor="let t of cmmsTyes" [ngValue]="t.id"> {{ t.description | translate }} </option>
-                </select>
+                <mat-select matNativeControl required formControlName="wrType">
+                    <mat-option *ngFor="let t of cmmsTyes" [value]="t.id"> {{ t.description | translate }} </mat-option>
+                </mat-select>
             </mat-form-field>
 
             <mat-form-field class="default-50">
@@ -215,13 +215,26 @@
 
             <mat-expansion-panel
                 #partsPanel
-                [class.b-primary-expansion-panel]="partsPanel.expanded">
+                [class.b-primary-expansion-panel]="partsPanel.expanded"
+                (afterExpand)="showPanel(ARTICLE_PANEL)">
                 <mat-expansion-panel-header>
                     <mat-panel-title translate>
                         LOGISTICS_PARTS
                     </mat-panel-title>
                 </mat-expansion-panel-header>
-                <router-outlet *ngIf="id > 0"></router-outlet>
+                <router-outlet *ngIf="id > 0 && activePanel === ARTICLE_PANEL"></router-outlet>
+            </mat-expansion-panel>
+
+            <mat-expansion-panel
+                #partsPanel
+                [class.b-primary-expansion-panel]="partsPanel.expanded"
+                (afterExpand)="showPanel(WORK_PANEL)">
+                <mat-expansion-panel-header>
+                    <mat-panel-title translate>
+                        CMMS_WORKS
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <router-outlet *ngIf="id > 0 && activePanel === WORK_PANEL"></router-outlet>
             </mat-expansion-panel>
 
             <mat-expansion-panel
