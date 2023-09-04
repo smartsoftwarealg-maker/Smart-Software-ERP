@@ -1,0 +1,136 @@
+<div class="button_div size" *ngIf="form">
+    <button mat-mini-fab (click)="save()"
+            color="accent" *ngIf="isEditable">
+        <i class="fas fa-save"></i>
+    </button>
+    <button mat-mini-fab (click)="cancel()"
+            color="warn" >
+        <i class="fas fa-redo"></i>
+    </button>
+</div>
+
+<mat-card class="size">
+    <mat-card-content>
+        <form *ngIf="form !== null" novalidate [formGroup]="form">
+
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>PARK_MISSION_NUMBER</mat-label>
+                <input matInput formControlName="number" type="text">
+            </mat-form-field>
+
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>PARK_MISSION_DESCRIPTION</mat-label>
+                <input matInput formControlName="description" type="text">
+            </mat-form-field>
+
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>COMMON_FIRST_NAME</mat-label>
+                <input matInput formControlName="firstName" type="text">
+            </mat-form-field>
+
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>COMMON_LAST_NAME</mat-label>
+                <input matInput formControlName="lastName" type="text">
+            </mat-form-field>
+
+            <mat-form-field class="default-50 sm-100" autofocus>
+                <mat-label translate>PARK_MISSION_DEPART_DATE</mat-label>
+                <ss-date-picker formControlName="missionTime"></ss-date-picker>
+            </mat-form-field>
+
+            <mat-form-field class="default-50 sm-100" autofocus>
+                <mat-label translate>PARK_MISSION_RETURN_DATE</mat-label>
+                <ss-date-picker formControlName="returnTime"></ss-date-picker>
+            </mat-form-field>
+
+            <mat-form-field class="default-50 sm-100" >
+                <mat-label translate>PARK_MISSION_DESTINATION</mat-label>
+                <ss-auto-complete matInput
+                                  [model]="destinationLookup"
+                                  formControlName="destination">
+                </ss-auto-complete>
+            </mat-form-field>
+
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>PARK_MISSION_DESTINATION_DESCRIPTION</mat-label>
+                <input matInput formControlName="destinationDescription" type="text">
+            </mat-form-field>
+
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>PARK_MISSION_OBJECTIVE</mat-label>
+                <input matInput formControlName="objective" type="text">
+            </mat-form-field>
+
+            <mat-form-field class="default-50 sm-100" >
+                <mat-label translate>PARK_MISSION_SIGNER</mat-label>
+                <ss-auto-complete matInput
+                                  [model]="personLookup"
+                                  formControlName="signer">
+                </ss-auto-complete>
+            </mat-form-field>
+
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>PARK_MISSION_DEPART_ODOMETER</mat-label>
+                <input matInput formControlName="departOdometer" type="number">
+            </mat-form-field>
+
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>PARK_MISSION_RETURN_ODOMETER</mat-label>
+                <input matInput formControlName="returnOdometer" type="number">
+            </mat-form-field>
+
+            <mat-form-field class="default-50 sm-100" >
+                <mat-label translate>PARK_VEHICLE_STATE</mat-label>
+                <ss-auto-complete matInput
+                                  [model]="vehicleStatesLookup"
+                                  formControlName="vehicleState">
+                </ss-auto-complete>
+            </mat-form-field>
+
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>PARK_VEHICLE_STATE_DESCRIPTION</mat-label>
+                <input matInput formControlName="stateDescription" type="text">
+            </mat-form-field>
+
+            <mat-form-field class="default-50 sm-100" >
+                <mat-label translate>PARK_VEHICLE_DEPART_STATE</mat-label>
+                <ss-auto-complete matInput
+                                  [model]="depVehicleStatesLookup"
+                                  formControlName="depVehicleState">
+                </ss-auto-complete>
+            </mat-form-field>
+
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>PARK_VEHICLE_DEPART_STATE_DESCRIPTION</mat-label>
+                <input matInput formControlName="depStateDescription" type="text">
+            </mat-form-field>
+
+            <mat-form-field class="default-50 sm-100" >
+                <mat-label translate>PARK_VEHICLE_RETURN_STATE</mat-label>
+                <ss-auto-complete matInput
+                                  [model]="retVehicleStatesLookup"
+                                  formControlName="retVehicleState">
+                </ss-auto-complete>
+            </mat-form-field>
+
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>PARK_VEHICLE_RETURN_STATE_DESCRIPTION</mat-label>
+                <input matInput formControlName="retStateDescription" type="text">
+            </mat-form-field>
+
+
+            <!--mat-form-field class="default-50 sm-100" >
+                <mat-label translate>LOGISTICS_SUPPLIER</mat-label>
+                <ss-auto-complete matInput
+                                  [model]="supplierLookup"
+                                  formControlName="supplier"
+                                  required="true">
+                </ss-auto-complete>
+                <mat-error *ngIf="form.controls['supplier'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
+            </mat-form-field-->
+
+        </form>
+
+    </mat-card-content>
+</mat-card>
+

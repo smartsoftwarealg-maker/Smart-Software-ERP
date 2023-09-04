@@ -16,5 +16,21 @@
     "FUEL_TYPES":         "Fuels",
     "DRIVERS":            "Drivers",
     "DRIVER":             "Driver",
-    "VEHICLES":           "Vehicles"
+    "VEHICLES":           "Vehicles",
+    "MISSIONS":           "Mission",
+    "MISSION_NUMBER":     "Mission No.",
+    "MISSION_DESCRIPTION": "Description",
+    "MISSION_DEPART_DATE": "Depart date",
+    "MISSION_RETURN_DATE": "Return date",
+    "MISSION_DESTINATION": "Destination",
+    "MISSION_DESTINATION_DESCRIPTION": "Destination description",
+    "MISSION_OBJECTIVE": "Objective",
+    "MISSION_DEPART_ODOMETER": "Depart odometer",
+    "MISSION_RETURN_ODOMETER": "Return odometer",
+    "VEHICLE_STATE": "State",
+    "VEHICLE_STATE_DESCRIPTION": "State description",
+    "VEHICLE_DEPART_STATE": "Depart state",
+    "VEHICLE_DEPART_STATE_DESCRIPTION": "D. state description",
+    "VEHICLE_RETURN_STATE": "Return state description",
+    "VEHICLE_RETURN_STATE_DESCRIPTION": "R. state description"
 }

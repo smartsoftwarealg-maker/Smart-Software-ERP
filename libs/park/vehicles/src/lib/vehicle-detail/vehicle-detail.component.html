@@ -130,5 +130,17 @@
         <router-outlet *ngIf="id && detailPanel === DRIVER_PANEL"></router-outlet>
     </mat-expansion-panel>
 
+    <mat-expansion-panel #missionPanel
+                         (afterExpand)="showMissions()"
+                         [class.b-primary-expansion-panel]="missionPanel.expanded"
+                         class="size">
+        <mat-expansion-panel-header>
+            <mat-panel-title translate>
+                PARK_MISSIONS
+            </mat-panel-title>
+        </mat-expansion-panel-header>
+        <router-outlet *ngIf="id && detailPanel === MISSIONS_PANEL"></router-outlet>
+    </mat-expansion-panel>
+
 </mat-accordion>
 

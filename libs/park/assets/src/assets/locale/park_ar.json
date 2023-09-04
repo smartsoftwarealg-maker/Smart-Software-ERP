@@ -15,5 +15,21 @@
     "POLICIES":           "سياسات",
     "FUEL_TYPES":         "الوقود",
     "DRIVERS":            "السائقين",
-    "VEHICLES":           "مركبات"
+    "VEHICLES":           "مركبات",
+    "MISSIONS":           "المهام",
+    "MISSION_NUMBER":     "رقم المهمة",
+    "MISSION_DESCRIPTION": "وصف المهمة",
+    "MISSION_DEPART_DATE": "تاريخ الإنطلاق",
+    "MISSION_RETURN_DATE": "تاريخ العودة",
+    "MISSION_DESTINATION": "الوجهة",
+    "MISSION_DESTINATION_DESCRIPTION": "وصف الوجهة",
+    "MISSION_OBJECTIVE": "الهدف",
+    "MISSION_DEPART_ODOMETER": "عداد الإنطلاق",
+    "MISSION_RETURN_ODOMETER": "عداد الرجوع",
+    "VEHICLE_STATE": "الحالة",
+    "VEHICLE_STATE_DESCRIPTION": "وصف الحالة",
+    "VEHICLE_DEPART_STATE": "حالة الإنطلاق",
+    "VEHICLE_DEPART_STATE_DESCRIPTION": "وصف حالة الإنطلاق",
+    "VEHICLE_RETURN_STATE": "حالة الرجوع",
+    "VEHICLE_RETURN_STATE_DESCRIPTION": "وصف حالة الرجوع"
 }
