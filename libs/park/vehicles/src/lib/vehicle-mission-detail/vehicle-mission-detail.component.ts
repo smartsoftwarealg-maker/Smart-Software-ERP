@@ -42,7 +42,8 @@ export class VehicleMissionDetailComponent extends BaseChildEntityDetailComponen
     vehicleStatesLookup: DefaultAutoCompleteModel<VehicleState> = null;
     depVehicleStatesLookup: DefaultAutoCompleteModel<VehicleState> = null;
     retVehicleStatesLookup: DefaultAutoCompleteModel<VehicleState> = null;
-    personLookup = new PersonAutocompleteClass(this.personSrv);
+    signerLookup = new PersonAutocompleteClass(this.personSrv);
+    driverLookup = new PersonAutocompleteClass(this.personSrv);
     destinationLookup: DefaultAutoCompleteModel<Destination> = null;
 
     constructor(protected override entitySrv: VehicleMissionService) {
@@ -71,6 +72,7 @@ export class VehicleMissionDetailComponent extends BaseChildEntityDetailComponen
             depVehicleState: [e.depVehicleState],
             retVehicleState: [e.retVehicleState],
             signer: [e.signer],
+            driver: [e.driver],
             description: [e.description],
             firstName: [e.firstName],
             lastName: [e.lastName],

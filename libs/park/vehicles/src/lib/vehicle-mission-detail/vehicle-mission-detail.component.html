@@ -23,14 +23,12 @@
                 <input matInput formControlName="description" type="text">
             </mat-form-field>
 
-            <mat-form-field class="default-50 sm-100">
-                <mat-label translate>COMMON_FIRST_NAME</mat-label>
-                <input matInput formControlName="firstName" type="text">
-            </mat-form-field>
-
-            <mat-form-field class="default-50 sm-100">
-                <mat-label translate>COMMON_LAST_NAME</mat-label>
-                <input matInput formControlName="lastName" type="text">
+            <mat-form-field class="default-50 sm-100" >
+                <mat-label translate>PARK_DRIVER</mat-label>
+                <ss-auto-complete matInput
+                                  [model]="driverLookup"
+                                  formControlName="driver">
+                </ss-auto-complete>
             </mat-form-field>
 
             <mat-form-field class="default-50 sm-100" autofocus>
@@ -64,7 +62,7 @@
             <mat-form-field class="default-50 sm-100" >
                 <mat-label translate>PARK_MISSION_SIGNER</mat-label>
                 <ss-auto-complete matInput
-                                  [model]="personLookup"
+                                  [model]="signerLookup"
                                   formControlName="signer">
                 </ss-auto-complete>
             </mat-form-field>
