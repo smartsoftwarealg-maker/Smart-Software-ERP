@@ -17,12 +17,13 @@ export const CMMS_ROUTING_URL = '/routing';
 export const CMMS_DETAIL_URL = '/detail';
 export const CMMS_WORKS = '/works';
 export const CMMS_ARTICLES = '/articles';
+export const CMMS_PERSONS = '/persons';
 
 
 export const CMMS_TRIGGER_TYPES: Lookup[] = [
-    { id: 1, description: 'CMMS_TIME'},
-    { id: 1, description: 'CMMS_READING'},
-    { id: 1, description: 'CMMS_EITHER'}
+    { id: 1, description: 'CMMS_TIME' },
+    { id: 1, description: 'CMMS_READING' },
+    { id: 1, description: 'CMMS_EITHER' }
 ];
 
 export const WORK_TYPES: Lookup[] = [
@@ -160,9 +161,21 @@ export interface Work {
     closerDescription?: string;
 }
 
+export interface WorkPerson {
+    id: number;
+    parentId: number;
+    personId: number;
+    description?: string;
+    from: Date;
+    to: Date;
+    firstName?: string;
+    lastName?: string;
+}
+
 export class AssetLookup extends DefaultAutoCompleteModel<Asset> {
     constructor(public override entitySrv: BaseEntityService<Asset>) {
         super(entitySrv);
     }
-    override toString = (x: Asset | null) =>  x ? x.reference + ' ' + x.description?.substring(0, 70) : null;
+
+    override toString = (x: Asset | null) => x ? x.reference + ' ' + x.description?.substring(0, 70) : null;
 }
