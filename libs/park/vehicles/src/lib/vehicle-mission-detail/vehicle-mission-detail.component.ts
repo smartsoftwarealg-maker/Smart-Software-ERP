@@ -1,6 +1,6 @@
 import { Component, inject } from "@angular/core";
 import { CommonModule } from '@angular/common';
-import { MaterialModule } from '@ss/common/api-common';
+import { MaterialModule, LoginService } from '@ss/common/api-common';
 import { CommonUiLangModule } from '@ss/common/ui-lang';
 import { UiPaginationModule } from '@ss/common/ui-pagination';
 import { CommonUiConfirmationDialogModule } from '@ss/common/ui-confirmation-dialog';
@@ -37,7 +37,8 @@ import { PersonAutocompleteClass, EmployeeService } from '@ss/employee-services/
 export class VehicleMissionDetailComponent extends BaseChildEntityDetailComponent<VehicleMission> {
     private fb = inject(FormBuilder);
     private personSrv = inject(EmployeeService);
-
+    private loginSrv  = inject(LoginService);
+    
     vehicleStatesLookup: DefaultAutoCompleteModel<VehicleState> = null;
     depVehicleStatesLookup: DefaultAutoCompleteModel<VehicleState> = null;
     retVehicleStatesLookup: DefaultAutoCompleteModel<VehicleState> = null;
@@ -58,7 +59,7 @@ export class VehicleMissionDetailComponent extends BaseChildEntityDetailComponen
         return this.fb.group({
             id: [e.id],
             parentId: [e.parentId || this.entitySrv.getParentId()],
-            centerId: [e.centerId || 0], // todo: get default center
+            centerId: [e.centerId || this.loginSrv.appCtx.center],
             number: [e.number],
             objective: [e.objective],
             missionTime: [e.missionTime],
