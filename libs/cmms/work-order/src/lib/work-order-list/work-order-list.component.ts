@@ -72,7 +72,7 @@ export class WorkOrderListComponent extends BaseEntityListComponent<Work> {
             confirmationSrv,
             defReportSrv,
             pagPersistSrv,
-            'CMMS_CUR_WORK_ORDER');
+            'CMMS_WORK_ORDER');
         this.pagination.pageSize = 15;
     }
 }

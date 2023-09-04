@@ -16,7 +16,7 @@ import { Service, ServiceArticleService } from '@ss/service-sales/service-articl
 import { InvoiceLinesService } from '@ss/sales/api-invoice';
 
 @Component({
-    selector: 'ss-service-proforma-line-detail',
+    selector: 'ss-service-invoice-line-detail',
     standalone: true,
     imports: [CommonModule,
         CommonUiAutoCompleteModule,

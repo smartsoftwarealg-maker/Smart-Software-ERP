@@ -21,5 +21,6 @@
     "SALES_COUNT":  "Nombre d'éléments",
     "THANKS":       "Merci",
     "WILL_SHIP":    "La marchandise sera expédiée dès réception de votre paiement à l'adresse suivante :",
-    "COUNT":        "Nombre d'éléments"
+    "COUNT":        "Nombre d'éléments",
+    "DUPLICATION":  "Duplication"
 }

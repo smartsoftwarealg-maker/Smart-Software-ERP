@@ -6,8 +6,13 @@ import {
     COMMON_REPORTS_URL,
     DASHBOARD_URL,
     docInfoRoutes,
-    LOGISTICS_AGENT_URL, SALES_PROFORMA_URL,
-    SALES_SERVICE_ARTICLE_URL, SERVICE_INVOICE_CANCELLATION_URL, SERVICE_INVOICE_URL, SERVICE_ORDER_URL
+    INVOICE_DUPLICATE_URL,
+    LOGISTICS_AGENT_URL,
+    SALES_PROFORMA_URL,
+    SALES_SERVICE_ARTICLE_URL,
+    SERVICE_INVOICE_CANCELLATION_URL,
+    SERVICE_INVOICE_URL,
+    SERVICE_ORDER_URL
 } from '../common';
 import {
     AgentDetailComponent,
@@ -36,7 +41,11 @@ import {
     ServiceProformaLineDetailComponent,
     ServiceProformaLineListComponent
 } from '@ss/service-sales/service-proforma';
-import { ServiceInvoiceLineDetailComponent, ServiceInvoiceLineListComponent } from '@ss/service-sales/service-invoice';
+import {
+    InvoiceDuplicationComponent,
+    ServiceInvoiceLineDetailComponent,
+    ServiceInvoiceLineListComponent
+} from '@ss/service-sales/service-invoice';
 import {
     ServiceCinvoiceLineListComponent
 } from '@ss/service-sales/service-invoice-cancellation';
@@ -205,6 +214,11 @@ export const ssalesRoutes: Routes = [
                 ]
             },
         ]
+    },
+    {
+        path: INVOICE_DUPLICATE_URL,
+        component: InvoiceDuplicationComponent,
+        canActivate: [loginGuard],
     },
     {
         path: DASHBOARD_URL,

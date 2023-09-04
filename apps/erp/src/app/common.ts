@@ -275,6 +275,8 @@ export const SS_PARTNER_SCHEDULE_URL     = 'partner-schedules';
 export const SS_SALES_MODE_URL           = 'sales-modes';
 export const SS_TRUCKS_URL               = 'supplier-trucks';
 export const SERVICE_ORDER_URL = 'service-order';
+export const INVOICE_DUPLICATE_URL = 'service-duplicate';
+
 // Missions
 export const MISSION_PREPARATION_URL = 'missions';
 export const MISSION_TRAJECTORIES = 'trajectories';
@@ -688,6 +690,7 @@ export const ABS_SERVICE_ORDER_URL = '/' + [MAIN_PAGE_URL, SERVICE_APP_URL, SERV
 export const ABS_SERVICE_PROFORMA_URL = '/' + [MAIN_PAGE_URL, SERVICE_APP_URL, SALES_PROFORMA_URL].join('/');
 export const ABS_SERVICE_INVOICE_URL = '/' + [MAIN_PAGE_URL, SERVICE_APP_URL, SERVICE_INVOICE_URL].join('/');
 export const ABS_SERVICE_INVOICE_CANCEL_URL = '/' + [MAIN_PAGE_URL, SERVICE_APP_URL, SERVICE_INVOICE_CANCELLATION_URL].join('/');
+export const ABS_SALES_DUPLICATION_URL = '/' + [MAIN_PAGE_URL, SERVICE_APP_URL, INVOICE_DUPLICATE_URL].join('/');
 
 // Purchace
 export const ABS_PURCHASE_RECEPTION_URL = '/' + [MAIN_PAGE_URL, PURCHASES_APP_URL, PURCHASE_RECEPTION_URL].join('/');
