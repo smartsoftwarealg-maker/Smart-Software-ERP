@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BaseEntityService } from '@ss/common/api-base-entity';
-import { VEHICLE_STATES, VehicleState, VEHICLES } from '../vehicle-api';
+import { VEHICLE_STATES, VehicleState } from '../vehicle-api';
 import { HttpService } from '@ss/common/api-common';
 
 @Injectable({

@@ -63,6 +63,8 @@ export const AGENT_PRICES_URL = '/logistics/prices';
 export const CC_GROUP_URL = '/lookups/ccenter_groups';
 export const LANGUAGES_URL = '/lookups/languages';
 export const LANGUAGE_LEVELS_URL = '/lookups/language_levels';
+export const DESTINATIONS_URL = '/lookups/destinations';
+
 
 export const WORKSHOPS_URL = '/lookups/workshops';
 
@@ -315,3 +317,8 @@ export interface JournalType {
     descriptionAr?: string;
 }
 
+export interface Destination {
+    id: number;
+    description: string;
+    descriptionAr?: string;
+}

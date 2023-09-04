@@ -101,7 +101,6 @@ export interface VehicleMission {
     depVehicleState?: number;
     retVehicleState?: number;
     signer?: number;
-    plateNumber?: string;
     description?: string;
     firstName?: string;
     lastName?: string;

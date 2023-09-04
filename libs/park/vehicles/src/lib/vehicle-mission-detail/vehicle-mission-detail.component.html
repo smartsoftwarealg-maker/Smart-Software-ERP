@@ -43,19 +43,30 @@
                 <ss-date-picker formControlName="returnTime"></ss-date-picker>
             </mat-form-field>
 
-            <mat-form-field class="default-50 sm-100">
+            <mat-form-field class="default-50 sm-100" >
                 <mat-label translate>PARK_MISSION_DESTINATION</mat-label>
-                <input matInput formControlName="destination" type="text">
+                <ss-auto-complete matInput
+                                  [model]="destinationLookup"
+                                  formControlName="destination">
+                </ss-auto-complete>
             </mat-form-field>
 
             <mat-form-field class="default-50 sm-100">
                 <mat-label translate>PARK_MISSION_DESTINATION_DESCRIPTION</mat-label>
-                <input matInput formControlName="destination" type="text">
+                <input matInput formControlName="destinationDescription" type="text">
             </mat-form-field>
 
             <mat-form-field class="default-50 sm-100">
                 <mat-label translate>PARK_MISSION_OBJECTIVE</mat-label>
                 <input matInput formControlName="objective" type="text">
+            </mat-form-field>
+
+            <mat-form-field class="default-50 sm-100" >
+                <mat-label translate>PARK_MISSION_SIGNER</mat-label>
+                <ss-auto-complete matInput
+                                  [model]="personLookup"
+                                  formControlName="signer">
+                </ss-auto-complete>
             </mat-form-field>
 
             <mat-form-field class="default-50 sm-100">
