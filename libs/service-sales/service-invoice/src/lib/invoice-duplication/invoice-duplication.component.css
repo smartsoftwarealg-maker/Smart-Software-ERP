@@ -1,0 +1,36 @@
+.size {
+    width: 90%;
+    max-width: 1000px;
+    margin: 8px auto 0;
+}
+
+form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1em;
+    justify-content: space-between;
+}
+
+mat-card {
+    padding: 16px;
+    border-radius: 1.4em;
+}
+
+.numb,
+.btn {
+    flex: 1 1 60px;
+    align-self: center;
+}
+
+.date {
+    flex: 3 1 150px
+}
+
+.btn__div {
+    display: flex;
+    justify-content: space-between;
+}
+
+button {
+    align-self: center;
+}

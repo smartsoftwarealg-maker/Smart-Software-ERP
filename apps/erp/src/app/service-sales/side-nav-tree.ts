@@ -1,4 +1,3 @@
-
 import {SideNavNode} from '@ss/common/api-common';
 import {
     ABS_ADMINISTRATION_WORKFLOW_INBOX_URL,
@@ -6,14 +5,14 @@ import {
     ABS_FINANCE_CPAYMENTS,
     ABS_SALES_AGENT_URL,
     ABS_SALES_DASHBOARD_URL,
-    ABS_SALES_INVOICE_CANCEL_URL,
-    ABS_SALES_INVOICE_URL,
-    ABS_SALES_PROFORMA_URL,
+    ABS_SALES_DUPLICATION_URL,
     ABS_SALES_REPORTS_URL,
-    ABS_SALES_SERVICE_URL, ABS_SERVICE_INVOICE_CANCEL_URL, ABS_SERVICE_INVOICE_URL,
+    ABS_SALES_SERVICE_URL,
+    ABS_SERVICE_INVOICE_CANCEL_URL,
+    ABS_SERVICE_INVOICE_URL,
     ABS_SERVICE_ORDER_URL,
     ABS_SERVICE_PROFORMA_URL
-} from "../common";
+} from '../common';
 
 export const ssalesNavTree: SideNavNode = {
     name: 'COMMON_SERVICES',
@@ -90,6 +89,12 @@ export const ssalesNavTree: SideNavNode = {
             icon: 'fa-solid fa-envelope',
             route: ABS_ADMINISTRATION_WORKFLOW_INBOX_URL,
             accessRights: 'MailBox'
+        },
+        {
+            name: 'SALES_DUPLICATION',
+            icon: 'fa-solid fa-copy',
+            route: ABS_SALES_DUPLICATION_URL,
+            accessRights: 'Invoice'
         },
         {
             name: 'COMMON_DASHBOARD',

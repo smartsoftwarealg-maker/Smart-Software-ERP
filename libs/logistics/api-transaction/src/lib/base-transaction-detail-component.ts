@@ -90,7 +90,7 @@ export abstract class BaseTransactionDetailComponent extends BaseEntityDetailCom
 
     public override canDeactivate(): Observable<boolean> {
         const parent = +(this.router.getCurrentNavigation().extractedUrl.queryParamMap.get('parent') || '0');
-        return this.id === 0 || parent === this.id || !this.isEditable?
+        return parent === 0 || !this.isEditable?
             of(true) :
             this.entitySrv
                 .get(this.id)

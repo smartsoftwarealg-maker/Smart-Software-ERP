@@ -21,7 +21,7 @@ import { MaterialModule } from '@ss/common/api-common';
 import { InvoiceLinesService } from '@ss/sales/api-invoice';
 
 @Component({
-    selector: 'ss-service-proforma-line-list',
+    selector: 'ss-service-invoice-line-list',
     standalone: true,
     imports: [
         CommonModule,

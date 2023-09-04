@@ -296,5 +296,9 @@
     "CMMS":                       "الصيانة",
     "BLOOD_GROUPS":               "فصائل الدم",
     "MAINTENANCE":                "صيانة",
-    "DIVERSE":                    "متنوع"
+    "DIVERSE":                    "متنوع",
+    "SELECT_ALL":                 "اختر الكل",
+    "DESELECT_ALL":               "الغاء تحديد الكل",
+    "DUPLICATE":                  "ينسخ",
+    "MONTH":                      "شهر"
 }

@@ -71,7 +71,7 @@ export class WorkOrderDetailComponent extends CMMSWorkDetail {
         public override route: ActivatedRoute,
         public override formBuilder: UntypedFormBuilder,
         public override confirmationSrv: ConfirmationDialogService) {
-        super(entitySrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, DOC_WORK_ORDER, 'CMMS_CUR_WORK_ORDER');
+        super(entitySrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, DOC_WORK_ORDER, 'CMMS_WORK_ORDER');
     }
 
     private importDocument() {
