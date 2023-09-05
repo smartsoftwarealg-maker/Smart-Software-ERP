@@ -8,7 +8,7 @@ import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {PaginatorPersistenceService, Person} from '@ss/common/api-common';
 import {PersonShiftService} from '../person-shift.service';
 import {FormControl} from '@angular/forms';
-import { EmployeeService } from '@ss/employee-services/employee-services';
+import { EmployeeService, IEmployee } from "@ss/employee-services/employee-services";
 import {Service, ServiceService} from '@ss/common/api-lookup';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import { PersonAutocompleteClass } from "@ss/employee-services/employee-services";
@@ -60,7 +60,7 @@ export class PersonShiftListComponent extends BaseEntityListComponent<PersonShif
         this.employeeCtrl.setValue(this.entitySrv.getParentId());
     }
 
-    private onEmployee(e: Employee) {
+    private onEmployee(e: IEmployee) {
         this.selectedService = 0;
         this.entitySrv.setParentId(e?.id || 0);
         this.refresh();

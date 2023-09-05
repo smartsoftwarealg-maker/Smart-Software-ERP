@@ -1,11 +1,11 @@
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
-import { EmployeeService } from '@ss/employee-services/employee-services';
-import { Employee } from '@ss/employee-services/employee-services';
+import { IEmployee } from '@ss/employee-services/employee-services';
+import { BaseEntityService } from '@ss/common/api-base-entity';
 
-export class PersonAutocompleteClass extends DefaultAutoCompleteModel<Employee> {
-    constructor(public employeeSrv: EmployeeService) {
+export class PersonAutocompleteClass extends DefaultAutoCompleteModel<IEmployee> {
+    constructor(public employeeSrv: BaseEntityService<IEmployee>) {
         super(employeeSrv, 'id', 'lastName');
     }
 
-    override toString = (x:any) => x ? x['lastName'] + ' ' + x['firstName'] : null;
+    override toString = (x:IEmployee) => x ? x['lastName'] + ' ' + x['firstName'] : null;
 }

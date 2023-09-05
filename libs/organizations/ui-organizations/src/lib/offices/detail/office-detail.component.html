@@ -22,7 +22,7 @@
                    autofocus>
             <mat-error *ngIf="form.controls['description'].hasError('required')" translate>COMMON_FIELD_REQUIRED
             </mat-error>
-            <mat-error *ngIf="form.controls['description'].hasError('maxlength')" [translate]="{ maxLen: 20 }">
+            <mat-error *ngIf="form.controls['description'].hasError('maxlength')" [translate]="{ maxLen: 50 }">
                 COMMON_FIELD_MAX_LENGTH
             </mat-error>
             <mat-error *ngIf="form.controls['description'].hasError('minlength')" [translate]="{ minLen: 3 }">

@@ -16,6 +16,7 @@ import { WorkPerson } from '@ss/cmms/cmms-api';
 import { ArticleService } from '@ss/stock/api-article';
 import { CMMSWorkPersonService } from '../services/c-m-m-s-work-person.service';
 import { EmployeeService, PersonAutocompleteClass } from '@ss/employee-services/employee-services';
+import { CmmsPersonService } from "../../../../cmms-api/src/lib/cmms-person.service";
 
 @Component({
     selector: 'ss-work-persons-detail',
@@ -39,8 +40,7 @@ import { EmployeeService, PersonAutocompleteClass } from '@ss/employee-services/
     styleUrls: ['./work-persons-detail.component.css'],
 })
 export class WorkPersonsDetailComponent extends BaseChildEntityDetailComponent<WorkPerson> {
-    private articleSrv = inject(ArticleService);
-    private personSrv = inject(EmployeeService);
+    private personSrv = inject(CmmsPersonService);
     private fb = inject(FormBuilder);
 
     personLookup = new PersonAutocompleteClass(this.personSrv);
