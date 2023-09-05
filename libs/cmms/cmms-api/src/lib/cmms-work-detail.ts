@@ -23,6 +23,7 @@ import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { WorkflowDialogComponent } from '@ss/workflow';
 import { BaseEntityService } from '@ss/common/api-base-entity';
 import { DOC_WORK_REQUEST } from '@ss/logistics/api-transaction';
+import { CmmsPersonService } from "./cmms-person.service";
 
 @Directive()
 export class CMMSWorkDetail extends BaseEntityDetailComponent<Work> {
@@ -37,7 +38,7 @@ export class CMMSWorkDetail extends BaseEntityDetailComponent<Work> {
     private prioritySrv = inject(CMMSPriorityService);
     private serviceSrv = inject(ServiceService);
     private assetSrv = inject(AssetsService);
-    private personSrv = inject(EmployeeService);
+    private personSrv = inject(CmmsPersonService);
     private validated = false;
     private defaultType = 1;
     private sendBtn: ToolbarButton = {

@@ -614,14 +614,14 @@ export const cmmsRoutes: Routes = [
                 path: LIST_URL,
                 component: OfficesListComponent,
                 canActivate: [loginGuard],
-                data: { title: 'CMMS_WORKSHOPS'}
+                data: { title: 'CMMS_ZONES'}
             },
             {
                 path: ':id',
                 component: OfficeDetailComponent,
                 canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService],
-                data: { title: 'CMMS_WORKSHOPS'}
+                data: { title: 'CMMS_ZONES'}
             },
             {path: '**', redirectTo: LIST_URL, pathMatch: 'full'}
         ]

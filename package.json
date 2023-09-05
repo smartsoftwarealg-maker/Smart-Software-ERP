@@ -1,7 +1,7 @@
 {
   "name": "ss",
-  "version": "1.5.7",
-  "license": "MIT",
+  "version": "1.7.2",
+  "license": "PRIVATE",
   "scripts": {
     "ng": "nx",
     "postinstall": "node ./decorate-angular-cli.js",

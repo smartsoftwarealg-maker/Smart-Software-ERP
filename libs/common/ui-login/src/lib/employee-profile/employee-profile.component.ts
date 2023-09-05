@@ -48,7 +48,7 @@ export class EmployeeProfileComponent {
             this.employee.password = this.pwd1.value;
             this.employeeSrv
                 .updatePassword({ id: 0, agentId: this.loginSrv.appCtx.agentId, password: this.employee.password })
-                .subscribe(res => this.snackBarSrv.showMessage('COMMON_SUCCESS', false, false));
+                .subscribe(() => this.snackBarSrv.showMessage('COMMON_SUCCESS', false, false));
         }
     }
 }

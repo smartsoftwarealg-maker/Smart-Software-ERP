@@ -2,6 +2,7 @@ import { Lookup } from '@ss/common/api-lookup';
 import { DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
 import { Asset } from '@ss/assets-component';
 import { BaseEntityService } from '@ss/common/api-base-entity';
+import { IEmployee } from "@ss/employee-services/employee-services";
 
 export const CMMS_ASSET5S_URL = '/assets';
 export const CMMS_PLANS_URL = '/cmmsplans';
@@ -35,6 +36,7 @@ export const WORK_TYPES: Lookup[] = [
 export const CMMS_SERVICE_REQUEST = 10;
 export const CMMS_PREVENTIVE_ORDER = 12;
 export const CMMS_CURATIVE_ORDER = 15;
+
 
 export interface CMMSPlan {
     id: number;

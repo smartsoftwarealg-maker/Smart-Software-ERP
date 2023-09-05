@@ -21,8 +21,13 @@ export interface PersonSummary {
     categSection: string;
     rank: string;
 }
+export interface IEmployee {
+  id: number;
+  firstName: string;
+  lastName: string;
+}
 
-export interface Employee {
+export interface Employee extends IEmployee {
     id: number;
 
     firstName: string;
