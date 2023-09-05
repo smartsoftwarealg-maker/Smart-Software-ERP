@@ -25,8 +25,7 @@ import {
 import {
     ABS_INDEX_URL,
     CanDeactivateService,
-    LIST_URL,
-    RedirectToParentComponent
+    LIST_URL
 } from '@ss/common/api-common';
 import { Routes } from '@angular/router';
 import {
@@ -81,7 +80,7 @@ import {
     EmployeeOldCareerDetailComponent,
     EmployeeDecisionDetailComponent,
     PersonListComponent, PunishmentListComponent, EmployeeTrainingListComponent, EmployeeDiplomaListComponent
-} from "@ss/payroll/ui-employee";
+} from '@ss/payroll/ui-employee';
 import {
     ACTIVATION_ROUTE_URL,
     CAREER_ROUTE_URL,
@@ -102,28 +101,28 @@ import {loginGuard} from '../erp-guards';
 import { HolidayRequestDetailComponent, HolidayRequestListComponent } from '@ss/attendance';
 import {
     EmployeeActivationListComponent
-} from "../../../../../libs/payroll/ui-employee/src/lib/employee-activation/list/employee-activation-list.component";
+} from '@ss/payroll/ui-employee';
 import {
     EmployeeCareerListComponent
-} from "../../../../../libs/payroll/ui-employee/src/lib/employee-career/list/employee-career-list.component";
+} from '@ss/payroll/ui-employee';
 import {
     EmployeeOldCareerListComponent
-} from "../../../../../libs/payroll/ui-employee/src/lib/employee-old-career/list/employee-old-career-list.component";
+} from '@ss/payroll/ui-employee';
 import {
     EmployeeDecisionListComponent
-} from "../../../../../libs/payroll/ui-employee/src/lib/employee-decisions/list/employee-decision-list.component";
+} from '@ss/payroll/ui-employee';
 import {
     EmployeeLanguagesListComponent
-} from "../../../../../libs/payroll/ui-employee/src/lib/employee-languages/list/employee-languages-list.component";
+} from '@ss/payroll/ui-employee';
 import {
     EmployeeChildrenListComponent
-} from "../../../../../libs/payroll/ui-employee/src/lib/employee-children/list/employee-children-list.component";
+} from '@ss/payroll/ui-employee';
 import {
     EmployeeWivesListComponent
-} from "../../../../../libs/payroll/ui-employee/src/lib/employee-wives/list/employee-wives-list.component";
+} from '@ss/payroll/ui-employee';
 import {
     EmployeeContractListComponent
-} from "../../../../../libs/payroll/ui-employee/src/lib/employee-contracts/list/employee-contracts-list.component";
+} from '@ss/payroll/ui-employee';
 
 export const hrRoutes: Routes = [
     {
@@ -338,7 +337,6 @@ export const hrRoutes: Routes = [
                     },
                 ]
             },
-            { path: '**', redirectTo: LIST_URL }
         ]
     },
     {
@@ -537,7 +535,6 @@ export const hrRoutes: Routes = [
                     }
                 ]
             },
-            { path: '**', redirectTo: LIST_URL }
         ]
     },
     {
