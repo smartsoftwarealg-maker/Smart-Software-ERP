@@ -300,5 +300,6 @@
     "SELECT_ALL":                 "اختر الكل",
     "DESELECT_ALL":               "الغاء تحديد الكل",
     "DUPLICATE":                  "ينسخ",
-    "MONTH":                      "شهر"
+    "MONTH":                      "شهر",
+    "DESTINATIONS":                "الوجهات"
 }

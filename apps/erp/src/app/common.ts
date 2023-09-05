@@ -377,6 +377,7 @@ export const PARK_VEHICLE_STATES_URL = 'vehicle-state';
 export const PARK_FUEL_TYPES_URL = 'fuel-types';
 export const PARK_INSURANCE_POLICIES_URL = 'insurance-policies';
 export const PARK_INSURANCE_AGENCIES_URL = 'insurance-agencies';
+export const PARK_DESTINATION_URL = 'park-destinations';
 // #############
 // # FULL URLS #
 // #############
@@ -646,6 +647,7 @@ export const ABS_PARK_VEHICLE_STATE_URL = '/' + [MAIN_PAGE_URL, PARK_APP_URL, PA
 export const ABS_PARK_FUEL_TYPE_URL = '/' + [MAIN_PAGE_URL, PARK_APP_URL, PARK_FUEL_TYPES_URL].join('/');
 export const ABS_PARK_INSURANCE_AGENCY_URL = '/' + [MAIN_PAGE_URL, PARK_APP_URL, PARK_INSURANCE_AGENCIES_URL].join('/');
 export const ABS_PARK_INSURANCE_POLICY_URL = '/' + [MAIN_PAGE_URL, PARK_APP_URL, PARK_INSURANCE_POLICIES_URL].join('/');
+export const ABS_PARK_DESTINATION_URL = '/' + [MAIN_PAGE_URL, PARK_APP_URL, PARK_DESTINATION_URL].join('/');
 
 // App. Archive viewer
 export const ABS_APP_ARCHIVE_VIEWER_URL      = '/' + [MAIN_PAGE_URL, ARCH_VIEWER_APP_URL, AA_VIEWER].join('/');

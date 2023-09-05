@@ -1,11 +1,14 @@
 
 import {SideNavNode} from '@ss/common/api-common';
 import {
+    ABS_PARK_DESTINATION_URL,
     ABS_PARK_DRIVER_URL,
-    ABS_PARK_FUEL_TYPE_URL, ABS_PARK_INSURANCE_AGENCY_URL, ABS_PARK_INSURANCE_POLICY_URL,
+    ABS_PARK_FUEL_TYPE_URL,
+    ABS_PARK_INSURANCE_AGENCY_URL,
+    ABS_PARK_INSURANCE_POLICY_URL,
     ABS_PARK_VEHICLE_TYPE_URL,
     ABS_PARK_VEHICLE_URL
-} from "../common";
+} from '../common';
 
 export const parkNavTree: SideNavNode = {
     name: 'PARK',
@@ -33,6 +36,12 @@ export const parkNavTree: SideNavNode = {
             name: 'PARK_FUEL_TYPES',
             icon: 'fa-solid fa-gas-pump',
             route: ABS_PARK_FUEL_TYPE_URL,
+            accessRights: 'FuelType'
+        },
+        {
+            name: 'COMMON_DESTINATIONS',
+            icon: 'fa-solid fa-map-location-dot',
+            route: ABS_PARK_DESTINATION_URL,
             accessRights: 'FuelType'
         },
         {

@@ -46,3 +46,4 @@ export * from './lib/components/vehicle-type.component';
 export * from './lib/components/fuel-type.component';
 export * from './lib/components/insurance-policy.component';
 export * from './lib/components/insurance-agency.component';
+export * from './lib/components/destination.component';

@@ -22,7 +22,7 @@ export class VehicleMissionListComponent extends BaseChildEntityListComponent<Ve
         'lastName',
         'missionTime',
         'returnTime',
-        'destination'
+        'destinationDescription'
     ];
 
     constructor(protected override detailSrv: VehicleMissionService) {
