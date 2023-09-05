@@ -15,5 +15,21 @@
     "POLICIES":           "Stratégies",
     "FUEL_TYPES":         "Carburants",
     "DRIVERS":            "Conducteurs",
-    "VEHICLES":           "Véhicules"
+    "VEHICLES":           "Véhicules",
+    "MISSIONS":           "Mission",
+    "MISSION_NUMBER":     "Mission N°",
+    "MISSION_DESCRIPTION": "Description",
+    "MISSION_DEPART_DATE": "Date de départ",
+    "MISSION_RETURN_DATE": "Date de retour",
+    "MISSION_DESTINATION": "Destination",
+    "MISSION_DESTINATION_DESCRIPTION": "Description de la destination",
+    "MISSION_OBJECTIVE": "Objectif",
+    "MISSION_DEPART_ODOMETER": "Compteur départ",
+    "MISSION_RETURN_ODOMETER": "Retour kilométrique",
+    "VEHICLE_STATE": "État",
+    "VEHICLE_STATE_DESCRIPTION": "Description de l'état",
+    "VEHICLE_DEPART_STATE": "État de départ",
+    "VEHICLE_DEPART_STATE_DESCRIPTION": "Description état départ",
+    "VEHICLE_RETURN_STATE": "État de retour",
+    "VEHICLE_RETURN_STATE_DESCRIPTION": "Description État de retour"
 }

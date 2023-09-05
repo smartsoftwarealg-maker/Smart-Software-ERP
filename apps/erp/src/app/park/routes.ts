@@ -12,6 +12,7 @@ import {
 } from '@ss/park/driver';
 import {
     PARK_DRIVER_URL,
+    PARK_MISSION_URL,
     PARK_FUEL_TYPES_URL,
     PARK_INSURANCE_AGENCIES_URL, PARK_INSURANCE_POLICIES_URL,
     PARK_VEHICLE_TYPES_URL,
@@ -46,6 +47,9 @@ import {
 } from '@ss/park/vehicles';
 import {
     VehiclesDriverDetailComponent
+} from '@ss/park/vehicles';
+import {
+    VehicleMissionListComponent, VehicleMissionDetailComponent
 } from '@ss/park/vehicles';
 
 export const parkRoutes: Routes = [
@@ -160,6 +164,13 @@ export const parkRoutes: Routes = [
                                 children: [
                                     { path: '', component: VehicleDriverListComponent, pathMatch: 'full' },
                                     { path: ':id', component: VehiclesDriverDetailComponent },
+                                ]
+                            },
+                            {
+                                path: 'missions',
+                                children: [
+                                    { path: '', component: VehicleMissionListComponent, pathMatch: 'full' },
+                                    { path: ':id', component: VehicleMissionDetailComponent },
                                 ]
                             },
                         ]

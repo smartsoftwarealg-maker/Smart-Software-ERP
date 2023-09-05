@@ -30,6 +30,7 @@ import { VehicleOilChangeService } from '../services/vehicle-oil-change.service'
 import { VehicleInsuranceService } from '../services/vehicle-insurance.service';
 import { VehicleDamageService } from '../services/vehicle-damage.service';
 import { VehicleDriverService } from '../services/vehicle-driver.service';
+import { VehicleMissionService } from '../services/vehicle-mission.service';
 
 @Component({
     selector: 'ss-vehicle-detail',
@@ -59,7 +60,7 @@ import { VehicleDriverService } from '../services/vehicle-driver.service';
 })
 export class VehicleDetailComponent extends BaseEntityDetailComponent<Vehicle> {
     private router = inject(Router);
-    private PANELS = ['archive', 'maintenance', 'fuel', 'oil', 'insurance', 'damages', 'drivers'];
+    private PANELS = ['archive', 'maintenance', 'fuel', 'oil', 'insurance', 'damages', 'drivers', 'missions'];
 
     private archiveSrv = inject(AppArchiveService);
     private typeSrv = inject(VehicleTypeService);
@@ -70,6 +71,7 @@ export class VehicleDetailComponent extends BaseEntityDetailComponent<Vehicle> {
     private insuranceSrv = inject(VehicleInsuranceService);
     private damageSrv = inject(VehicleDamageService);
     private driverSrv = inject(VehicleDriverService);
+    private missionSrv = inject(VehicleMissionService);
 
     readonly ARCHIVE_PANEL = 1;
     readonly MAINTENANCE_PANEL = 2;
@@ -78,6 +80,7 @@ export class VehicleDetailComponent extends BaseEntityDetailComponent<Vehicle> {
     readonly INSURANCE_PANEL = 5;
     readonly DAMAGE_PANEL = 6;
     readonly DRIVER_PANEL = 7;
+    readonly MISSIONS_PANEL = 8;
 
     typeLookup = new DefaultAutoCompleteModel(this.typeSrv);
     detailPanel = 0;
@@ -102,6 +105,7 @@ export class VehicleDetailComponent extends BaseEntityDetailComponent<Vehicle> {
         this.insuranceSrv.setParentId(id || 0);
         this.damageSrv.setParentId(id || 0);
         this.driverSrv.setParentId(id || 0);
+        this.missionSrv.setParentId(id || 0);
         this.oilSrv.setParentId(id || 0);
         return super.loadEntity(id);
     }
@@ -151,5 +155,9 @@ export class VehicleDetailComponent extends BaseEntityDetailComponent<Vehicle> {
 
     showDrivers() {
         this.showPanel(this.DRIVER_PANEL - 1);
+    }
+
+    showMissions() {
+        this.showPanel(this.MISSIONS_PANEL - 1);
     }
 }
