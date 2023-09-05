@@ -1,4 +1,4 @@
-import { Component, inject } from "@angular/core";
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MaterialModule, LoginService } from '@ss/common/api-common';
 import { CommonUiLangModule } from '@ss/common/ui-lang';
@@ -6,15 +6,15 @@ import { UiPaginationModule } from '@ss/common/ui-pagination';
 import { CommonUiConfirmationDialogModule } from '@ss/common/ui-confirmation-dialog';
 import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
 import { RouterModule } from '@angular/router';
-import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from "@ss/common/ui-auto-complete";
+import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
 import { LookupModule, Destination, DestinationService } from '@ss/common/api-lookup';
-import { BaseChildEntityDetailComponent } from "@ss/common/ui-base-entity";
-import { VehicleMission, VehicleState } from "../vehicle-api";
-import { FormBuilder, UntypedFormGroup, Validators } from "@angular/forms";
-import { VehicleMissionService } from "../services/vehicle-mission.service";
-import { Agent, SupplierService } from "@ss/logistics/api-agent";
+import { BaseChildEntityDetailComponent } from '@ss/common/ui-base-entity';
+import { VehicleMission, VehicleState } from '../vehicle-api';
+import { FormBuilder, UntypedFormGroup } from '@angular/forms';
+import { VehicleMissionService } from '../services/vehicle-mission.service';
 import { VehicleStateService } from '../services/vehicle-state.service';
 import { PersonAutocompleteClass, EmployeeService } from '@ss/employee-services/employee-services';
+import { ParkPersonService } from '../services/park-person.service';
 
 @Component({
     selector: 'ss-vehicle-mission-detail',
@@ -36,14 +36,15 @@ import { PersonAutocompleteClass, EmployeeService } from '@ss/employee-services/
 })
 export class VehicleMissionDetailComponent extends BaseChildEntityDetailComponent<VehicleMission> {
     private fb = inject(FormBuilder);
+    private driverSrv = inject(ParkPersonService);
     private personSrv = inject(EmployeeService);
     private loginSrv  = inject(LoginService);
-    
+
     vehicleStatesLookup: DefaultAutoCompleteModel<VehicleState> = null;
     depVehicleStatesLookup: DefaultAutoCompleteModel<VehicleState> = null;
     retVehicleStatesLookup: DefaultAutoCompleteModel<VehicleState> = null;
     signerLookup = new PersonAutocompleteClass(this.personSrv);
-    driverLookup = new PersonAutocompleteClass(this.personSrv);
+    driverLookup = new PersonAutocompleteClass(this.driverSrv);
     destinationLookup: DefaultAutoCompleteModel<Destination> = null;
 
     constructor(protected override entitySrv: VehicleMissionService) {
@@ -76,7 +77,6 @@ export class VehicleMissionDetailComponent extends BaseChildEntityDetailComponen
             description: [e.description],
             firstName: [e.firstName],
             lastName: [e.lastName],
-            stateDescription: [e.stateDescription],
             depStateDescription: [e.depStateDescription],
             retStateDescription: [e.resStateDescription],
             destinationDescription: [e.destinationDescription],

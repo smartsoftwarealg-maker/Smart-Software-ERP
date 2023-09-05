@@ -57,6 +57,7 @@ import { VehicleTypeDetailComponent, VehicleTypeListComponent } from './componen
 import { FuelTypeDetailComponent, FuelTypeListComponent } from './components/fuel-type.component';
 import { InsurancePolicyDetailComponent, InsurancePolicyListComponent } from './components/insurance-policy.component';
 import { InsuranceAgencyDetailComponent, InsuranceAgencyListComponent } from './components/insurance-agency.component';
+import { DestinationDetailComponent, DestinationListComponent } from './components/destination.component';
 
 @NgModule({
     imports: [
@@ -172,7 +173,9 @@ import { InsuranceAgencyDetailComponent, InsuranceAgencyListComponent } from './
         InsurancePolicyListComponent,
         InsurancePolicyDetailComponent,
         InsuranceAgencyListComponent,
-        InsuranceAgencyDetailComponent
+        InsuranceAgencyDetailComponent,
+        DestinationListComponent,
+        DestinationDetailComponent
     ],
     exports: [
         VatListComponent,

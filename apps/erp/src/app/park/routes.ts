@@ -11,8 +11,8 @@ import {
     DriverVehiclesListComponent
 } from '@ss/park/driver';
 import {
+    PARK_DESTINATION_URL,
     PARK_DRIVER_URL,
-    PARK_MISSION_URL,
     PARK_FUEL_TYPES_URL,
     PARK_INSURANCE_AGENCIES_URL, PARK_INSURANCE_POLICIES_URL,
     PARK_VEHICLE_TYPES_URL,
@@ -33,6 +33,8 @@ import {
     VehicleOilChangeListComponent
 } from '@ss/park/vehicles';
 import {
+    DestinationDetailComponent,
+    DestinationListComponent,
     FuelTypeDetailComponent,
     FuelTypeListComponent, InsurancePolicyDetailComponent, InsurancePolicyListComponent,
     VehicleTypeDetailComponent,
@@ -242,6 +244,23 @@ export const parkRoutes: Routes = [
             {
                 path: ':id',
                 component: FuelTypeDetailComponent,
+                canActivate: [loginGuard],
+                canDeactivate: [CanDeactivateService]
+            },
+            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
+        ]
+    },
+    {
+        path: PARK_DESTINATION_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: DestinationListComponent,
+                canActivate: [loginGuard]
+            },
+            {
+                path: ':id',
+                component: DestinationDetailComponent,
                 canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService]
             },

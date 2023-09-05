@@ -304,5 +304,6 @@
     "SELECT_ALL":                 "Tout sélectionner",
     "DESELECT_ALL":               "Tout déselectionner",
     "DUPLICATE":                  "Dupliquer",
-    "MONTH":                      "Mois"
+    "MONTH":                      "Mois",
+    "DESTINATIONS":                "Destinations"
 }
