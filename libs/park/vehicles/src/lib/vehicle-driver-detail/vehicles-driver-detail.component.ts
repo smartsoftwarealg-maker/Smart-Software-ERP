@@ -11,9 +11,10 @@ import { CommonUiConfirmationDialogModule } from '@ss/common/ui-confirmation-dia
 import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
 import { RouterModule } from '@angular/router';
 import { LookupModule } from '@ss/common/api-lookup';
-import { EmployeeService, PersonAutocompleteClass } from '@ss/employee-services/employee-services';
-import { VehicleDriver } from "../vehicle-api";
-import { VehicleDriverService } from "../services/vehicle-driver.service";
+import { PersonAutocompleteClass } from '@ss/employee-services/employee-services';
+import { VehicleDriver } from '../vehicle-api';
+import { VehicleDriverService } from '../services/vehicle-driver.service';
+import { ParkPersonService } from '../services/park-person.service';
 
 @Component({
     selector: 'ss-driver-vehicles-detail',
@@ -34,7 +35,7 @@ import { VehicleDriverService } from "../services/vehicle-driver.service";
     styleUrls: ['./vehicles-driver-detail.component.css']
 })
 export class VehiclesDriverDetailComponent extends BaseChildEntityDetailComponent<VehicleDriver> {
-    private personSrv = inject(EmployeeService);
+    private personSrv = inject(ParkPersonService);
     private vehicleSrv = inject(VehicleService);
     private fb = inject(FormBuilder);
     personLookup = new PersonAutocompleteClass(this.personSrv);
@@ -46,7 +47,6 @@ export class VehiclesDriverDetailComponent extends BaseChildEntityDetailComponen
     vehicleLookup = new DefaultAutoCompleteModel(this.vehicleSrv);
 
     setupForm(e: VehicleDriver): UntypedFormGroup {
-        console.log(e);
         return this.fb.group( {
             id:          [e.id],
             parentId:    [e.parentId  || this.entitySrv.getParentId()],
