@@ -94,7 +94,7 @@ export interface VehicleMission {
     missionTime?: Date;
     returnTime?: Date;
     destination?: number;
-//    driver?: number;
+    driver?: number;
     departOdometer: number;
     returnOdometer: number;
     vehicleState?: number;
