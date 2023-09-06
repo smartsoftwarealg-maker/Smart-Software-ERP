@@ -14,7 +14,7 @@ import {
 import { LoginService, PaginationModel } from '@ss/common/api-common';
 import { ServiceService } from '@ss/common/api-lookup';
 import { AssetsService } from '@ss/assets-component';
-import { EmployeeService, PersonAutocompleteClass } from '@ss/employee-services/employee-services';
+import { PersonAutocompleteClass } from '@ss/employee-services/employee-services';
 import { KeepOnToolbar, ShellService, SnackBarService, ToolbarButton } from '@ss/common/ui-shell';
 import { DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
 import { Observable, of } from 'rxjs';

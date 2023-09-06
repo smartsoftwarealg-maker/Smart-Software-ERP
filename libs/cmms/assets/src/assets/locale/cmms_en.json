@@ -66,5 +66,6 @@
     "EXECUTION":        "Execution",
     "WORKS":            "Works",
     "SCHEDULED_START":  "Scheduled start time",
-    "SCHEDULED_DUE":    "Scheduled due time"
+    "SCHEDULED_DUE":    "Scheduled due time",
+    "HOURLY_RATE":      "Hourly rate"
 }

@@ -1,7 +1,7 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
-import { Employee, EmployeeService } from '@ss/employee-services/employee-services';
+import { Employee } from '@ss/employee-services/employee-services';
 import {
     BloodGroupService, City,
     CityService,
@@ -24,7 +24,7 @@ import { ActivatedRoute, Router, RouterOutlet } from '@angular/router';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { HttpService, MaterialModule } from '@ss/common/api-common';
 import { FixedElementsEntryService } from '@ss/remuneration/elements-entry';
-import { Observable, switchMap } from 'rxjs';
+import { Observable, of, switchMap } from "rxjs";
 import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
 import { CommonUiLangModule } from '@ss/common/ui-lang';
 import { MatButtonModule } from '@angular/material/button';
@@ -37,15 +37,32 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
 import { PersonFaultService } from '../services/person-fault.service';
 import { PersonLocationService } from '../services/person-location.service';
+import { CMMSEmployeeService, CmmsPersonService } from '@ss/cmms/cmms-api';
 
 @Component({
     selector: 'ss-cmms-employee-detail',
     standalone: true,
-    imports: [CommonModule, CommonUiAutoCompleteModule, CommonUiDatepickerModule, CommonUiImageInputModule, CommonUiLangModule, MatButtonModule, MatCheckboxModule, MatExpansionModule, MatFormFieldModule, MatInputModule, MatOptionModule, MatRadioModule, MatSelectModule, MaterialModule, ReactiveFormsModule, RouterOutlet],
+    imports: [CommonModule,
+        CommonUiAutoCompleteModule,
+        CommonUiDatepickerModule,
+        CommonUiImageInputModule,
+        CommonUiLangModule,
+        MatButtonModule,
+        MatCheckboxModule,
+        MatExpansionModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatOptionModule,
+        MatRadioModule,
+        MatSelectModule,
+        MaterialModule,
+        ReactiveFormsModule,
+        RouterOutlet],
     templateUrl: './cmms-employee-detail.component.html',
     styleUrls: ['./cmms-employee-detail.component.scss'],
 })
 export class CmmsEmployeeDetailComponent extends BaseEntityDetailComponent<Employee> implements OnInit {
+    private personSrv = inject(CmmsPersonService);
     private faultSrv = inject(PersonFaultService);
     private locationSrv = inject(PersonLocationService);
     private bloodGroupSrv = inject(BloodGroupService);
@@ -75,7 +92,7 @@ export class CmmsEmployeeDetailComponent extends BaseEntityDetailComponent<Emplo
     cityLookup = new CityLookup(this.citySrv);
 
     nationalityModel = new DefaultAutoCompleteModel(this.nationalitySrv);
-    public maritalStatuses: MaritalStatus[];
+    public maritalStatuses$: Observable<MaritalStatus[]>;
     public elementsForm: UntypedFormGroup = null;
     bloodGroups$ = this.bloodGroupSrv.getList(0, 50).pipe(map(res => res.body));
 
@@ -85,7 +102,7 @@ export class CmmsEmployeeDetailComponent extends BaseEntityDetailComponent<Emplo
         public override route: ActivatedRoute,
         public override formBuilder: UntypedFormBuilder,
         public override confirmationSrv: ConfirmationDialogService,
-        public employeeSrv: EmployeeService,
+        public employeeSrv: CMMSEmployeeService,
         public httpSrv: HttpService,
         public infoSrv: FixedElementsEntryService,
         private lookupsSrv: LookupsService,
@@ -99,11 +116,8 @@ export class CmmsEmployeeDetailComponent extends BaseEntityDetailComponent<Emplo
             this.hrMode = !!data['hrMode'];
             this.activePersonnel = !!data['active'];
         });
-        return this.lookupsSrv
-            .getMaritalStatuses()
-            .pipe(
-                tap((x: MaritalStatus[]) => this.maritalStatuses = x),
-            );
+        this.maritalStatuses$ = this.lookupsSrv.getMaritalStatuses();
+        return of(0);
     }
 
     public override setupForm(p: Employee) {
@@ -125,7 +139,7 @@ export class CmmsEmployeeDetailComponent extends BaseEntityDetailComponent<Emplo
             p.sex = 1;
         }
 
-        return this.formBuilder.group({
+        const form = this.formBuilder.group({
             // birth info
             id:            [p.id],
             firstName:     [p.firstName, Validators.compose([Validators.required, Validators.maxLength(64)])],
@@ -152,8 +166,12 @@ export class CmmsEmployeeDetailComponent extends BaseEntityDetailComponent<Emplo
             birthCity:     [p.birthCity],
             is_driver:     [p.is_driver || false, Validators.required],
             cmmsPerson:    [p.cmmsPerson || true, Validators.required],
-            blood_group:   [p.blood_group]
+            blood_group:   [p.blood_group],
+            hourlyRate:    [p.hourlyRate]
         });
+        form.disable();
+        form.controls['hourlyRate'].enable();
+        return form;
     }
 
     override uploadAttachments(id: number): Observable<any> {
@@ -169,16 +187,13 @@ export class CmmsEmployeeDetailComponent extends BaseEntityDetailComponent<Emplo
         }
     }
 
-    override ngOnInit() {
-        this.saveButton.visible = false;
-        super.ngOnInit();
-    }
 
     override loadEntity(id: number): Observable<Employee> {
         this.archiveSrv.setParentId(id || 0);
         this.faultSrv.setParentId(id || 0);
         this.locationSrv.setParentId(id || 0);
-        return super.loadEntity(id);
+        return this.personSrv.get(id)
+            .pipe(switchMap((res) => super.loadEntity(id).pipe(tap(e => e.hourlyRate = res.hourlyRate))));
     }
 }
 

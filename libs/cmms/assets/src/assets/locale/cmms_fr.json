@@ -66,6 +66,7 @@
     "EXECUTION":        "Exécution",
     "WORKS":            "Main D'oeuvre",
     "SCHEDULED_START":  "Heure de début prévue",
-    "SCHEDULED_DUE":    "Heure prévue"
+    "SCHEDULED_DUE":    "Heure prévue",
+    "HOURLY_RATE":      "Taux horaire"
 }
 
