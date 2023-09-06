@@ -162,16 +162,19 @@ export interface Work {
     executorDescription?: string;
     closerDescription?: string;
 }
+export interface CMMSEmployee extends IEmployee {
+    hourlyRate?: number;
+}
 
-export interface WorkPerson {
+export interface WorkPerson extends IEmployee {
     id: number;
     parentId: number;
     personId: number;
     description?: string;
     from: Date;
     to: Date;
-    firstName?: string;
-    lastName?: string;
+    firstName: string;
+    lastName: string;
 }
 
 export class AssetLookup extends DefaultAutoCompleteModel<Asset> {

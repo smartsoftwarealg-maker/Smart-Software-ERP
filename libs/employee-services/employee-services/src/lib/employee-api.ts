@@ -76,4 +76,5 @@ export interface Employee extends IEmployee {
     msDescription?: string;
     blood_group?: number;
     cmmsPerson: boolean;
+    hourlyRate?: number;
 }

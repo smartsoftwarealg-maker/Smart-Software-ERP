@@ -4,7 +4,7 @@ import { CommonUiLangModule } from '@ss/common/ui-lang';
 import { MatTableModule } from '@angular/material/table';
 import { UiPaginationModule } from '@ss/common/ui-pagination';
 import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
-import { FormBuilder, FormsModule, ReactiveFormsModule, UntypedFormGroup, Validators } from "@angular/forms";
+import { FormBuilder, FormsModule, ReactiveFormsModule, UntypedFormGroup, Validators } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
@@ -13,10 +13,9 @@ import { MatButtonModule } from '@angular/material/button';
 import { MaterialModule } from '@ss/common/api-common';
 import { BaseChildEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { WorkPerson } from '@ss/cmms/cmms-api';
-import { ArticleService } from '@ss/stock/api-article';
 import { CMMSWorkPersonService } from '../services/c-m-m-s-work-person.service';
-import { EmployeeService, PersonAutocompleteClass } from '@ss/employee-services/employee-services';
-import { CmmsPersonService } from "../../../../cmms-api/src/lib/cmms-person.service";
+import { PersonAutocompleteClass } from '@ss/employee-services/employee-services';
+import { CmmsPersonService } from '@ss/cmms/cmms-api';
 
 @Component({
     selector: 'ss-work-persons-detail',

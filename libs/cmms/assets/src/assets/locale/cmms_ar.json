@@ -66,5 +66,6 @@
     "EXECUTION":        "تنفيذ",
     "WORKS":            "يعمل",
     "SCHEDULED_START":  "وقت البدء المقرر",
-    "SCHEDULED_DUE":    "الموعد المحدد"
+    "SCHEDULED_DUE":    "الموعد المحدد",
+    "HOURLY_RATE":      "أجر الساعة"
 }
