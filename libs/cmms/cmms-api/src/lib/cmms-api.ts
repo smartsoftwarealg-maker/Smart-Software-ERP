@@ -2,12 +2,13 @@ import { Lookup } from '@ss/common/api-lookup';
 import { DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
 import { Asset } from '@ss/assets-component';
 import { BaseEntityService } from '@ss/common/api-base-entity';
-import { IEmployee } from "@ss/employee-services/employee-services";
+import { IEmployee } from '@ss/employee-services/employee-services';
 
 export const CMMS_ASSET5S_URL = '/assets';
 export const CMMS_PLANS_URL = '/cmmsplans';
 export const CMMS_PREV_WORK_ORDER_URL = '/prevorders';
 export const CMMS_CUR_WORK_ORDER_URL = '/curorders';
+export const CMMS_INSPECTION_ORDER_URL = '/inspections';
 export const CMMS_SERVICE_REQUEST_URL = '/srvrequests';
 export const CMMS_PENDING_SERVICE_REQUEST_URL = '/cmms/pending';
 export const CMMS_PM_URL = '/cmmspm';
@@ -23,9 +24,13 @@ export const CMMS_PERSONS = '/persons';
 
 export const CMMS_TRIGGER_TYPES: Lookup[] = [
     { id: 1, description: 'CMMS_TIME' },
-    { id: 1, description: 'CMMS_READING' },
-    { id: 1, description: 'CMMS_EITHER' }
+    { id: 2, description: 'CMMS_READING' },
+    { id: 3, description: 'CMMS_EITHER' }
 ];
+
+export const PREVENTIVE = 1;
+export const CURATIVE = 2;
+export const INSPECTION = 3;
 
 export const WORK_TYPES: Lookup[] = [
     { id: 1, description: 'CMMS_PREVENTIVE' },
@@ -101,6 +106,16 @@ export interface RoutingDetail {
     teamSize?: number;
     hours?: number;
     cost?: number;
+}
+
+export interface ChecklistDetail {
+    id: number;
+    parentId: number;
+    order: number;
+    description: string;
+    hours?: number;
+    cost?: number;
+    hasReading: boolean;
 }
 
 export interface WorkArticle {

@@ -1,0 +1,30 @@
+.size {
+    width: 90%;
+    max-width: 900px;
+    margin: 0 auto 0;
+}
+
+.container {
+    min-height: calc(100% - 90px);
+    overflow-y: auto;
+    margin-top: 4px;
+}
+
+.content-div {
+    width: 100%;
+}
+
+.mat-column-description,
+.mat-column-descriptionAr {
+    flex: 2 1 250px;
+    padding-right: 4px !important;
+    padding-left: 4px !important;
+}
+
+
+ss-pagination {
+    left: 0;
+    right: 0;
+    position: sticky;
+    margin: auto;
+}

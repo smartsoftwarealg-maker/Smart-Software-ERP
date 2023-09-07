@@ -32,8 +32,8 @@ import {
     docInfoRoutes,
     CMMS_CHARTS_URL,
     CMMS_ASSET_TREE,
-    CMMS_EMPLOYEES_URL, CMMS_FUNCTION_URL
-} from '../common';
+    CMMS_EMPLOYEES_URL, CMMS_FUNCTION_URL, CMMS_CHECKLIST_URL, CMMS_INSPECTION_ORDER_URL
+} from "../common";
 import { loginGuard } from '../erp-guards';
 import {
     CmmsFaultCauseDetailComponent,
@@ -43,13 +43,9 @@ import {
     CMMSPriorityDetailComponent,
     CMMSPriorityListComponent,
     CMMSRootCauseDetailComponent,
-    CMMSRoutingDetailComponent,
-    CMMSRoutingListComponent,
     CMMSTypeDetailComponent,
     CMMSTypeListComponent,
     CMMSRootCauseListComponent,
-    CMMSRoutingLineListComponent,
-    CMMSRoutingLineDetailComponent,
     CMMSMeterListComponent,
     CMMSMeterDetailComponent,
     CMMSSolutionListComponent,
@@ -63,11 +59,15 @@ import { CmmsAlertListComponent, PMDetailComponent, PmListComponent } from '@ss/
 import { AssetReadingDetailComponent, AssetReadingListComponent, readingDetailGuard } from '@ss/cmms/asset-readings';
 import { AssetTriggerDetailComponent, AssetTriggerListComponent, triggerDetailGuard } from '@ss/cmms/asset-triggers';
 import {
+    InspectionOrderDetailComponent,
+    InspectionOrderListComponent,
     WorkOrderArticleDetailComponent,
     WorkOrderArticleListComponent,
     WorkOrderDetailComponent,
-    WorkOrderListComponent, WorkPersonsDetailComponent, WorkPersonsListComponent
-} from "@ss/cmms/work-order";
+    WorkOrderListComponent,
+    WorkPersonsDetailComponent,
+    WorkPersonsListComponent
+} from '@ss/cmms/work-order';
 import {
     AssetBuildingDetailComponent,
     AssetBuildingListComponent,
@@ -112,6 +112,15 @@ import {
 import {
     PersonLocationDetailComponent
 } from '@ss/cmms/cmms-employees';
+import {
+    CMMSRoutingDetailComponent, CMMSRoutingLineDetailComponent,
+    CMMSRoutingLineListComponent,
+    CMMSRoutingListComponent
+} from '@ss/cmms/cmms-routing';
+import {
+    CMMSChecklistDetailComponent, CmmsChecklistLineDetailComponent, CmmsChecklistLineListComponent,
+    CmmsChecklistListComponent
+} from '@ss/cmms/cmms-checklists';
 
 export const cmmsRoutes: Routes = [
     {
@@ -353,6 +362,31 @@ export const cmmsRoutes: Routes = [
     },
 
     {
+        path: CMMS_INSPECTION_ORDER_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: InspectionOrderListComponent,
+                canActivate: [loginGuard]
+            },
+            {
+                path: ':id',
+                component: InspectionOrderDetailComponent,
+                canActivate: [loginGuard],
+                canDeactivate: [CanDeactivateService],
+                children: [
+                    { path: 'inspections',
+                        children: [
+                            { path: '', component: WorkPersonsListComponent, pathMatch: 'full'},
+                            { path: ':id', component: WorkPersonsDetailComponent }
+                        ]
+                    }
+                ]
+            },
+        ]
+    },
+
+    {
         path: CMMS_ROOT_CAUSE_URL,
         children: [
             {
@@ -465,6 +499,41 @@ export const cmmsRoutes: Routes = [
                         children: [
                             { path: '', component: CMMSRoutingPartsListComponent, pathMatch: 'full' },
                             { path: ':id', component: CMMSRoutingPartsDetailComponent }
+                        ]
+                    },
+                    {   path: 'archive',
+                        component: CMMSRoutingArchiveComponent,
+                        children: [
+                            {path: '',    component: AppArchiveListComponent, pathMatch: 'full' },
+                            {path: ':id', component: AppArchiveDetailComponent},
+                        ]
+                    }
+                ],
+            },
+        ]
+    },
+    {
+        path: CMMS_CHECKLIST_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: CmmsChecklistListComponent,
+                canActivate: [loginGuard]
+            },
+            {
+                path: ':id',
+                component: CMMSChecklistDetailComponent,
+                canActivate: [loginGuard],
+                canDeactivate: [CanDeactivateService],
+                children: [
+                    {   path: '',
+                        redirectTo: 'detail',
+                        pathMatch: 'full',
+                    },
+                    {   path: 'detail',
+                        children: [
+                            { path: '', component: CmmsChecklistLineListComponent, pathMatch: 'full'},
+                            { path: ':id', component: CmmsChecklistLineDetailComponent }
                         ]
                     },
                     {   path: 'archive',
