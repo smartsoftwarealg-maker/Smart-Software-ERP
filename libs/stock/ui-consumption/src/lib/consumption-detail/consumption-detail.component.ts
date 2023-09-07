@@ -32,7 +32,17 @@ export class ConsumptionDetailComponent extends BaseTransactionDetailComponent {
         public override confirmationSrv: ConfirmationDialogService,
         protected override loginSrv: LoginService,
         protected override dialog: MatDialog) {
-        super(consumptionSrv, detailSrv, shellSrv, snackBarSrv, route, router, formBuilder, confirmationSrv, loginSrv, dialog, 'STOCK_EDIT_CONSUMPTION');
+        super(consumptionSrv,
+            detailSrv,
+            shellSrv,
+            snackBarSrv,
+            route,
+            router,
+            formBuilder,
+            confirmationSrv,
+            loginSrv,
+            dialog,
+            "STOCK_EDIT_CONSUMPTION");
     }
 
 
