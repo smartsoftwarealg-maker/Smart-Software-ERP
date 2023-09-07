@@ -13,5 +13,11 @@ export interface PaymentOrder {
     doc_status?: number;
     user_id?: number;
     attached_docs?: string;
+    requesterId?: number;
+    payMode?: number;
+    bankAccount?: number;
+    bankAgency?: number;
+    authorizationNo?: number;
+    authorizationDate?: Date;
     supplierName: string;
 }
