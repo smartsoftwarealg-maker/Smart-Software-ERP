@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { RoutingDetail } from '@ss/cmms/cmms-api';
-import { CMMSRoutingDetailService } from '../services/cmms-routing-detail.service';
+import { CMMSRoutingDetailService } from '@ss/cmms/lookups';
 import { BaseChildEntityListComponent } from '@ss/common/ui-base-entity';
 
 @Component({

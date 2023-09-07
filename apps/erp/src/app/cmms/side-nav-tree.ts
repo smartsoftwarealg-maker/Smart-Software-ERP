@@ -1,4 +1,3 @@
-
 import {SideNavNode} from '@ss/common/api-common';
 import {
     ABS_CMMS_ALERTS_URL,
@@ -7,7 +6,6 @@ import {
     ABS_CMMS_METERS_URL,
     ABS_CUR_ORDER_URL,
     ABS_CMMS_PLANS_URL,
-    ABS_CMMS_PM_URL,
     ABS_CMMS_PRIORITY__URL,
     ABS_CMMS_READING_URL,
     ABS_CMMS_ROOT_CAUSE_URL,
@@ -24,7 +22,11 @@ import {
     ABS_CMMS_TRIGGER_URL,
     ABS_CMMS_CHARTS_URL,
     ABS_CMMS_ASSETS_TREE_URL,
-    ABS_CMMS_LOCATIONS, ABS_CMMS_EMPLOYEES_URL, ABS_CMMS_FUNCTIONS
+    ABS_CMMS_LOCATIONS,
+    ABS_CMMS_EMPLOYEES_URL,
+    ABS_CMMS_FUNCTIONS,
+    ABS_CMMS_CHECKLIST_URL,
+    ABS_INSPECTION_ORDER_URL
 } from '../common';
 
 export const cmmsNavTree: SideNavNode = {
@@ -163,6 +165,12 @@ export const cmmsNavTree: SideNavNode = {
             route: ABS_CMMS_ROUTING_URL,
             accessRights: 'CMType'
         },
+        {
+            name: 'CMMS_CHECKLIST',
+            icon: 'fa-solid fa-ballot-check',
+            route: ABS_CMMS_CHECKLIST_URL,
+            accessRights: 'CMType'
+        },
         // {
         //     name: 'CMMS_PM',
         //     icon: 'fa-solid fa-hands-bubbles',
@@ -192,6 +200,12 @@ export const cmmsNavTree: SideNavNode = {
             icon: 'fa-solid fa-hammer-crash',
             route: ABS_CUR_ORDER_URL,
             accessRights: 'WRKROrder'
+        },
+        {
+            name: 'CMMS_INSPECTION',
+            icon: 'fa-solid fa-microscope',
+            route: ABS_INSPECTION_ORDER_URL,
+            accessRights: 'INSPECROrder'
         },
         {
             name: 'STOCK_PARTS_REQUEST',

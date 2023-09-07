@@ -39,7 +39,7 @@
             <mat-form-field class="default-50">
                 <mat-label translate>CMMS_ROUTING</mat-label>
                 <ss-auto-complete matInput
-                                  [model]="routingLookup"
+                                  [model]="checklistLookup"
                                   formControlName="routingId">
                 </ss-auto-complete>
             </mat-form-field>
@@ -226,8 +226,8 @@
             </mat-expansion-panel>
 
             <mat-expansion-panel
-                #partsPanel
-                [class.b-primary-expansion-panel]="partsPanel.expanded"
+                #workPanel
+                [class.b-primary-expansion-panel]="workPanel.expanded"
                 (afterExpand)="showPanel(WORK_PANEL)">
                 <mat-expansion-panel-header>
                     <mat-panel-title translate>
@@ -238,8 +238,8 @@
             </mat-expansion-panel>
 
             <mat-expansion-panel
-                #reviewPanel
-                [class.b-primary-expansion-panel]="reviewPanel.expanded">
+                #closurePanel
+                [class.b-primary-expansion-panel]="closurePanel.expanded">
                 <mat-expansion-panel-header>
                     <mat-panel-title translate>
                         CMMS_CLOSURE

@@ -4,3 +4,6 @@ export * from './lib/work-order-article-list/work-order-article-list.component';
 export * from './lib/work-order-article-detail/work-order-article-detail.component';
 export * from './lib/work-persons-list/work-persons-list.component';
 export * from './lib/work-persons-detail/work-persons-detail.component';
+export * from './lib/inspection-order-detail/inspection-order-detail.component';
+export * from './lib/inspection-order-list/inspection-order-list.component';
+export * from './lib/services/c-m-m-s-inspection-order.service';

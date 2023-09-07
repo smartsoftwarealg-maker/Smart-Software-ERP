@@ -102,9 +102,13 @@
             "@ss/cmms/cmms-api": ["libs/cmms/cmms-api/src/index.ts"],
             "@ss/cmms/cmms-assets": ["libs/cmms/cmms-assets/src/index.ts"],
             "@ss/cmms/cmms-charts": ["libs/cmms/cmms-charts/src/index.ts"],
+            "@ss/cmms/cmms-checklists": [
+                "libs/cmms/cmms-checklists/src/index.ts"
+            ],
             "@ss/cmms/cmms-employees": [
                 "libs/cmms/cmms-employees/src/index.ts"
             ],
+            "@ss/cmms/cmms-routing": ["libs/cmms/cmms-routing/src/index.ts"],
             "@ss/cmms/cmms-ui": ["libs/cmms/cmms-ui/src/index.ts"],
             "@ss/cmms/lookups": ["libs/cmms/lookups/src/index.ts"],
             "@ss/cmms/plans": ["libs/cmms/plans/src/index.ts"],

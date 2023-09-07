@@ -1,14 +1,14 @@
-import { AssetLookup, RoutingDetail, RoutingPart, Work, WORK_TYPES } from './cmms-api';
+import { AssetLookup, INSPECTION, RoutingDetail, RoutingPart, Work, WORK_TYPES } from './cmms-api';
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { Directive, inject } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import {
+    CmmsChecklistService,
     CMMSFaultCauseService,
     CMMSFaultService, CMMSPriorityService, CMMSRootCauseService,
     CMMSRoutingDetailService,
     CMMSRoutingPartService,
-    CMMSRoutingService,
     CMMSSolutionService
 } from '@ss/cmms/lookups';
 import { LoginService, PaginationModel } from '@ss/common/api-common';
@@ -22,15 +22,14 @@ import { ActivatedRoute } from '@angular/router';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { WorkflowDialogComponent } from '@ss/workflow';
 import { BaseEntityService } from '@ss/common/api-base-entity';
-import { DOC_WORK_REQUEST } from '@ss/logistics/api-transaction';
-import { CmmsPersonService } from "./cmms-person.service";
+import { CmmsPersonService } from './cmms-person.service';
 
 @Directive()
 export class CMMSWorkDetail extends BaseEntityDetailComponent<Work> {
     private routingPartSrv = inject(CMMSRoutingPartService);
     private routingDetailSrv = inject(CMMSRoutingDetailService);
     private loginSrv = inject(LoginService);
-    private routingSrv = inject(CMMSRoutingService);
+    private checklistSrv = inject(CmmsChecklistService);
     private solutionSrv = inject(CMMSSolutionService);
     private faultSrv = inject(CMMSFaultService);
     private causeSrv = inject(CMMSFaultCauseService);
@@ -60,7 +59,7 @@ export class CMMSWorkDetail extends BaseEntityDetailComponent<Work> {
     serviceLookup = new DefaultAutoCompleteModel(this.serviceSrv);
     assetLookup = new AssetLookup(this.assetSrv);
     personLookup = new PersonAutocompleteClass(this.personSrv);
-    routingLookup = new DefaultAutoCompleteModel(this.routingSrv);
+    checklistLookup = new DefaultAutoCompleteModel(this.checklistSrv);
 
     routingPaginator = PaginationModel.newInstance();
     partPaginator = PaginationModel.newInstance();
@@ -104,7 +103,7 @@ export class CMMSWorkDetail extends BaseEntityDetailComponent<Work> {
             description:  [e.description, Validators.required],
             assetId:      [e.assetId, Validators.required],
             requester:    [e.requester   ],
-            wrType:       [{ value: e.wrType || this.defaultType, disabled: this.document == DOC_WORK_REQUEST }, Validators.required],
+            wrType:       [{ value: e.wrType || INSPECTION, disabled: true }, Validators.required],
             priority:     [e.priority, Validators.required],
             plannedStart: [e.plannedStart, Validators.required],
             scheduledStart: [e.scheduledStart],

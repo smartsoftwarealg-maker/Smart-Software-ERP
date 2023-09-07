@@ -1,23 +1,31 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
-import { ActivatedRoute, Router, RouterEvent } from '@angular/router';
+import { ActivatedRoute, Router, RouterEvent, RouterOutlet } from "@angular/router";
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
-import { CMMSRoutingService } from '../services/cmms.routing.service';
-import { LookupsService } from '@ss/common/api-lookup';
-import { CMMSRoutingDetailService } from '../services/cmms-routing-detail.service';
+import { CMMSRoutingService } from '@ss/cmms/lookups';
+import { Lookup, LookupsService } from '@ss/common/api-lookup';
+import { CMMSRoutingDetailService } from '@ss/cmms/lookups';
 import { filter, Observable } from 'rxjs';
-import { CMMSRoutingPartService } from '../services/cmms-routing-parts.service';
+import { CMMSRoutingPartService } from '@ss/cmms/lookups';
 import { AppArchiveService, CMMS_ROUTING_ARCHIVES } from '@ss/common/app-archive';
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
-import { CMMSRouting } from './routing-api';
+import { CommonModule } from '@angular/common';
+import { CommonUiLangModule } from '@ss/common/ui-lang';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatSortModule } from '@angular/material/sort';
+import { MatTableModule } from '@angular/material/table';
+import { UiPaginationModule } from '@ss/common/ui-pagination';
+import { MaterialModule } from '@ss/common/api-common';
 
 @Component({
     selector: 'ss-cmms-routing-detail',
+    standalone: true,
+    imports: [CommonModule, CommonUiLangModule, MatCheckboxModule, MatSortModule, MatTableModule, UiPaginationModule, MaterialModule, RouterOutlet],
     templateUrl: './cmms-routing-detail.component.html',
-    styleUrls: ['../detail-template/cmms-fault-detail.component.css']
+    styleUrls: ['../../../../lookups/src/lib/detail-template/cmms-fault-detail.component.css']
 })
-export class CMMSRoutingDetailComponent extends BaseEntityDetailComponent<CMMSRouting> implements OnInit {
+export class CMMSRoutingDetailComponent extends BaseEntityDetailComponent<Lookup> implements OnInit {
     private router = inject(Router);
     private archiveSrv = inject(AppArchiveService);
     private URLs = ['detail', 'parts', 'archive'];
@@ -45,7 +53,7 @@ export class CMMSRoutingDetailComponent extends BaseEntityDetailComponent<CMMSRo
             'CMMS_ROUTING');
     }
 
-    override loadEntity(id: number): Observable<CMMSRouting> {
+    override loadEntity(id: number): Observable<Lookup> {
         this.subscriptions.push(
             this.router.events.pipe(
                 filter((e: any): e is RouterEvent => e instanceof RouterEvent)
@@ -68,13 +76,11 @@ export class CMMSRoutingDetailComponent extends BaseEntityDetailComponent<CMMSRo
         this.router.navigate([next]).then();
     }
 
-    public override setupForm(e: CMMSRouting): UntypedFormGroup {
-        this.isChecklist = e?.isChecklist || false;
+    public override setupForm(e: Lookup): UntypedFormGroup {
         return this.formBuilder.group({
             id:            [e.id],
             description:   [e.description, Validators.required],
             descriptionAr: [e.descriptionAr],
-            isChecklist:   [e.isChecklist || false, Validators.required]
         });
     }
 }

@@ -1,0 +1,234 @@
+<mat-card-content>
+    <form *ngIf="form !== null" novalidate [formGroup]="form" class="size">
+        <mat-card>
+            <mat-card-content>
+                <mat-form-field class="default-50">
+                    <mat-label translate>ASSET</mat-label>
+                    <ss-auto-complete matInput
+                                      [model]="assetLookup"
+                                      formControlName="assetId"
+                                      required="true">
+                    </ss-auto-complete>
+                    <mat-error *ngIf="form.controls['assetId'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
+                </mat-form-field>
+
+                <mat-form-field class="default-50">
+                    <mat-label translate>COMMON_DESCRIPTION</mat-label>
+                    <input matInput formControlName="description" type="description">
+                    <mat-error *ngIf="form.controls['description'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
+                </mat-form-field>
+
+
+                <mat-form-field class="default-50">
+                    <mat-label translate>COMMON_TYPE</mat-label>
+                    <mat-select matNativeControl required formControlName="wrType">
+                        <mat-option *ngFor="let t of cmmsTyes"
+                                    [value]="t.id"> {{ t.description | translate }} </mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-form-field class="default-50">
+                    <mat-label translate>CMMS_PRIORITY</mat-label>
+                    <ss-auto-complete matInput
+                                      [model]="priorityLookup"
+                                      formControlName="priority"
+                                      required="true">
+                    </ss-auto-complete>
+                    <mat-error *ngIf="form.controls['priority'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
+                </mat-form-field>
+
+                <mat-form-field class="default-50">
+                    <mat-label translate>CMMS_CHECKLIST</mat-label>
+                    <ss-auto-complete matInput
+                                      [model]="checklistLookup"
+                                      formControlName="routingId">
+                    </ss-auto-complete>
+                </mat-form-field>
+
+            </mat-card-content>
+        </mat-card>
+        <mat-accordion class="size">
+            <mat-expansion-panel
+                #planningPanel
+                [class.b-primary-expansion-panel]="planningPanel.expanded">
+                <div class="default-100"></div>
+                <mat-expansion-panel-header>
+                    <mat-panel-title translate>
+                        CMMS_PLANNING
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+
+                <mat-form-field class="default-50">
+                    <mat-label translate>CMMS_REQUESTER</mat-label>
+                    <ss-auto-complete matInput
+                                      [model]="serviceLookup"
+                                      formControlName="requester">
+                    </ss-auto-complete>
+                </mat-form-field>
+
+                <mat-form-field class="default-50">
+                    <mat-label translate>CMMS_PLANNED_START</mat-label>
+                    <ss-date-picker formControlName="plannedStart" required="true" [type]="'datetime'"></ss-date-picker>
+                    <mat-error *ngIf="form.controls['plannedStart'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
+                </mat-form-field>
+
+                <mat-form-field class="default-50">
+                    <mat-label translate>CMMS_PLANNED_DUE</mat-label>
+                    <ss-date-picker formControlName="plannedDue" required="true" [type]="'datetime'"></ss-date-picker>
+                    <mat-error *ngIf="form.controls['plannedDue'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
+                </mat-form-field>
+
+                <mat-form-field class="default-50">
+                    <mat-label translate>PAYROLL_FULLNAME</mat-label>
+                    <input matInput formControlName="creatorDescription" type="text">
+                </mat-form-field>
+
+            </mat-expansion-panel>
+
+            <mat-expansion-panel
+                #scheduledPanel
+                [class.b-primary-expansion-panel]="scheduledPanel.expanded">
+                <mat-expansion-panel-header>
+                    <mat-panel-title translate>
+                        CMMS_SCHEDULING
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+
+                <div class="default-100"></div>
+                <mat-form-field class="default-50">
+                    <mat-label translate>CMMS_SCHEDULED_START</mat-label>
+                    <ss-date-picker formControlName="scheduledStart" [type]="'datetime'"></ss-date-picker>
+                    <mat-error *ngIf="form.controls['scheduledStart'].invalid" translate>COMMON_FIELD_REQUIRED
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field class="default-50">
+                    <mat-label translate>CMMS_SCHEDULED_DUE</mat-label>
+                    <ss-date-picker formControlName="scheduledDue" [type]="'datetime'"></ss-date-picker>
+                    <mat-error *ngIf="form.controls['scheduledDue'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
+                </mat-form-field>
+
+                <mat-form-field class="default-50">
+                    <mat-label translate>CMMS_ASSIGNEE</mat-label>
+                    <ss-auto-complete matInput
+                                      [model]="personLookup"
+                                      formControlName="assignee">
+                    </ss-auto-complete>
+                </mat-form-field>
+
+                <mat-form-field class="default-50">
+                    <mat-label translate>CMMS_TEAM_SIZE</mat-label>
+                    <input matInput formControlName="teamSize" type="number">
+                </mat-form-field>
+
+            </mat-expansion-panel>
+
+            <mat-expansion-panel
+                #executionPanel
+                [class.b-primary-expansion-panel]="executionPanel.expanded">
+                <mat-expansion-panel-header>
+                    <mat-panel-title translate>
+                        CMMS_EXECUTION
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <span class="default-100"></span>
+
+                <mat-form-field class="default-50">
+                    <mat-label translate>CMMS_ACTUAL_START</mat-label>
+                    <ss-date-picker formControlName="actualStart" [type]="'datetime'"></ss-date-picker>
+                </mat-form-field>
+
+                <mat-form-field class="default-50">
+                    <mat-label translate>CMMS_ACTUAL_DUE</mat-label>
+                    <ss-date-picker formControlName="actualDue" [type]="'datetime'"></ss-date-picker>
+                </mat-form-field>
+
+                <mat-form-field class="default-50">
+                    <mat-label translate>CMMS_SOLUTION</mat-label>
+                    <ss-auto-complete matInput
+                                      [model]="solutionLookup"
+                                      formControlName="solution">
+                    </ss-auto-complete>
+                </mat-form-field>
+
+                <mat-form-field class="default-50">
+                    <mat-label translate>PAYROLL_FULLNAME</mat-label>
+                    <input matInput formControlName="executorDescription" type="text">
+                </mat-form-field>
+
+                <mat-form-field id="memo" class="default-100">
+                    <mat-label translate>COMMON_MEMO</mat-label>
+                    <input matInput formControlName="memo" type="text">
+                </mat-form-field>
+
+            </mat-expansion-panel>
+
+            <mat-expansion-panel
+                #costPanel
+                [class.b-primary-expansion-panel]="costPanel.expanded">
+                <span class="default-100"></span>
+                <mat-expansion-panel-header>
+                    <mat-panel-title translate>
+                        CMMS_COSTS
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <mat-form-field class="default-50">
+                    <mat-label translate>CMMS_LABOR_COST</mat-label>
+                    <input matInput formControlName="laborCost" type="number">
+                </mat-form-field>
+                <mat-form-field class="default-50">
+                    <mat-label translate>CMMS_MATERIAL_COST</mat-label>
+                    <input matInput formControlName="materialCost" type="number">
+                </mat-form-field>
+                <mat-form-field class="default-50">
+                    <mat-label translate>CMMS_TRAVEL_COST</mat-label>
+                    <input matInput formControlName="travelCost" type="number">
+                </mat-form-field>
+                <mat-form-field class="default-50">
+                    <mat-label translate>CMMS_OTHER_COST</mat-label>
+                    <input matInput formControlName="otherCost" type="number">
+                </mat-form-field>
+            </mat-expansion-panel>
+
+            <mat-expansion-panel
+                #inspectionPanel
+                [class.b-primary-expansion-panel]="inspectionPanel.expanded"
+                (afterExpand)="showPanel(INSPECTION_PANEL)">
+                <mat-expansion-panel-header>
+                    <mat-panel-title translate>
+                        CMMS_INSPECTION
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <span class="default-100"></span>
+
+
+            </mat-expansion-panel>
+
+            <mat-expansion-panel
+                #closurePanel
+                [class.b-primary-expansion-panel]="closurePanel.expanded">
+                <mat-expansion-panel-header>
+                    <mat-panel-title translate>
+                        CMMS_CLOSURE
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <span class="default-100"></span>
+
+                <mat-form-field class="default-50">
+                    <mat-label translate>CMMS_CLOSURE_DATE</mat-label>
+                    <ss-date-picker formControlName="closureDate" [type]="'datetime'"></ss-date-picker>
+                </mat-form-field>
+
+                <mat-form-field class="default-50">
+                    <mat-label translate>PAYROLL_FULLNAME</mat-label>
+                    <input matInput formControlName="closerDescription" type="text">
+                </mat-form-field>
+
+            </mat-expansion-panel>
+
+
+        </mat-accordion>
+
+    </form>
+
+</mat-card-content>
