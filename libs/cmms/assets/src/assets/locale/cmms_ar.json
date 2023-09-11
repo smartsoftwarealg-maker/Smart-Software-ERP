@@ -67,5 +67,9 @@
     "WORKS":            "يعمل",
     "SCHEDULED_START":  "وقت البدء المقرر",
     "SCHEDULED_DUE":    "الموعد المحدد",
-    "HOURLY_RATE":      "أجر الساعة"
+    "HOURLY_RATE":      "أجر الساعة",
+    "INSPECTION_ORDERS": "أمر التفتيش",
+    "PASSES":                     "جائز",
+    "FAILS":                      "فاشل",
+    "LOAD_CHECKLIST":             "قم بتحميل القائمة المرجعية"
 }

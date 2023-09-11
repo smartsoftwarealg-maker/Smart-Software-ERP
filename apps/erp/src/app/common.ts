@@ -339,6 +339,7 @@ export const CMMS_ASSET_TREE           = 'cmms-asset-tree';
 export const CMMS_EMPLOYEES_URL           = 'cmms-employees';
 export const CMMS_FUNCTION_URL           = 'cmms-functions';
 export const CMMS_CHECKLIST_URL           = 'cmms-checkist';
+export const CMMS_INSPECTION_URL           = 'cmms-inspections';
 
 // assets
 export const FURNITURE_URL            = 'furniture';
@@ -622,6 +623,7 @@ export const ABS_PREV_ORDERS_URL = '/' + [MAIN_PAGE_URL, CMMS_APP_URL, CMMS_PREV
 export const ABS_CMMS_SOLUTION_URL = '/' + [MAIN_PAGE_URL, CMMS_APP_URL, CMMS_SOLUTION_URL].join('/');
 export const ABS_CUR_ORDER_URL = '/' + [MAIN_PAGE_URL, CMMS_APP_URL, CMMS_CUR_WORK_ORDER_URL].join('/');
 export const ABS_INSPECTION_ORDER_URL = '/' + [MAIN_PAGE_URL, CMMS_APP_URL, CMMS_INSPECTION_ORDER_URL].join('/');
+export const ABS_INSPECTION_URL = '/' + [MAIN_PAGE_URL, CMMS_APP_URL, CMMS_INSPECTION_URL].join('/');
 export const ABS_CMMS_END_TYPES = '/' + [MAIN_PAGE_URL, CMMS_APP_URL, ASSET_END_TYPE_URL].join('/');
 export const ABS_CMMS_STATUS_TYPES = '/' + [MAIN_PAGE_URL, CMMS_APP_URL, FURNITURE_STATUS_URL].join('/');
 export const ABS_CMMS_CLASSES = '/' + [MAIN_PAGE_URL, CMMS_APP_URL, ASSET_CLASS_URL].join('/');

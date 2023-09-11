@@ -67,5 +67,9 @@
     "WORKS":            "Works",
     "SCHEDULED_START":  "Scheduled start time",
     "SCHEDULED_DUE":    "Scheduled due time",
-    "HOURLY_RATE":      "Hourly rate"
+    "HOURLY_RATE":      "Hourly rate",
+    "INSPECTION_ORDERS": "Inspection order",
+    "PASSES":                    "Passes",
+    "FAILS":                     "Fails",
+    "LOAD_CHECKLIST":             "Load the checklist"
 }

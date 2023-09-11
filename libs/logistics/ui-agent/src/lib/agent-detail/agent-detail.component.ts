@@ -16,7 +16,7 @@ import {
     LookupsService,
     PayMode
 } from '@ss/common/api-lookup';
-import { Agent, AgentCenter, AgentCenterService, AgentService } from '@ss/logistics/api-agent';
+import { Agent, AgentCenter, AgentCenterService, AgentService, CUSTOMER_URL } from "@ss/logistics/api-agent";
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {MatExpansionPanel} from '@angular/material/expansion';
 import { FormValidators, IsParamService, LoginService, Role } from '@ss/common/api-common';
@@ -27,7 +27,7 @@ import { AGENT_ARCHIVES, AppArchiveService } from '@ss/common/app-archive';
 import { MatSelectionListChange } from '@angular/material/list';
 import { CenterService } from '@ss/administration/api-center';
 import { MatDialog } from '@angular/material/dialog';
-import { AgentImportComponent } from './agent-import/agent-import.component';
+import { AgentImportComponent } from '../agent-import/agent-import.component';
 
 
 @Component({
@@ -87,7 +87,6 @@ export class AgentDetailComponent extends BaseEntityDetailComponent<Agent> imple
         public override confirmationSrv: ConfirmationDialogService,
         public lookupsSrv: LookupsService) {
         super(agentSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'COMMON_AGENT');
-        // this.isSales = this.route.snapshot.data['sales'];
         this.isSales = this.route.snapshot.data['sales'];
         this.centerSrv.setParentId(this.loginSrv.appCtx.company);
     }
@@ -113,7 +112,13 @@ export class AgentDetailComponent extends BaseEntityDetailComponent<Agent> imple
                 switchMap(_ => this.lookupsSrv.getSalesCategories()),
                 tap(x => this.categories = x),
                 switchMap(_ => this.isParamSrv.is('AQS')),
-                tap(res => this.AQS = res)
+                tap(res => this.AQS = res),
+                switchMap(() => this.route.data),
+                tap(res => {
+                    if (res['customer']) {
+                        this.entitySrv.setURL(CUSTOMER_URL);
+                    }
+                })
             );
     }
 

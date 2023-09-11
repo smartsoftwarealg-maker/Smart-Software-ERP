@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { Work, WORK_TYPES } from '@ss/cmms/cmms-api';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
@@ -20,7 +20,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { CMMSInspectionOrderService } from '../services/c-m-m-s-inspection-order.service';
 
 @Component({
-    selector: 'ss-work-order-list',
+    selector: 'ss-inspection-list',
     templateUrl: './inspection-order-list.component.html',
     styleUrls: ['./inspection-order-list.component.css'],
     standalone: true,
@@ -72,5 +72,14 @@ export class InspectionOrderListComponent extends BaseEntityListComponent<Work> 
             pagPersistSrv,
             'CMMS_INSPECTION');
         this.pagination.pageSize = 15;
+    }
+
+    override ngOnInit() {
+        const notInspection = !this.route
+            .snapshot
+            .data['inspection'];
+        this.addButton.visible = notInspection;
+        this.deleteButton.visible = notInspection;
+        super.ngOnInit();
     }
 }

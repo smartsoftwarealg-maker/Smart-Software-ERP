@@ -32,77 +32,92 @@ export const payrollNavTree: SideNavNode = {
         {
             name: 'PAYROLL_SALARY_GRID',
             icon: 'far fa-game-board',
-            route: ABS_SALARY_GRID_URL
+            route: ABS_SALARY_GRID_URL,
+            accessRights: 'Grid'
         },
         {
             name: 'PAYROLL_INACTIVE_EMPLOYEES_LIST',
             icon: 'far fa-users-slash',
-            route: ABS_INACTIVE_HR_EMPLOYEES_URL
+            route: ABS_INACTIVE_HR_EMPLOYEES_URL,
+            accessRights: 'Person'
         },
         {
             name: 'PAYROLL_EMPLOYEES_LIST',
             icon: 'fad fa-users',
-            route: ABS_PAYROLL_EMPLOYEES_URL
+            route: ABS_PAYROLL_EMPLOYEES_URL,
+            accessRights: 'Person'
         },
         {
             name: 'REMUN_MONTH_SELECTION',
             icon: 'fas fa-calendar-check',
             route: ABS_MONTH_SELECTOR_URL,
+            accessRights: 'Month'
         },
         {
             name: 'REMUN_ELEMENTSINFO',
             icon: 'fab fa-elementor',
-            route: ABS_ELEMENTSINFO_URL
+            route: ABS_ELEMENTSINFO_URL,
+            accessRights: 'ElementInfo'
         },
         {
             name: 'REMUN_ELEMENT_TYPES',
             icon: 'fas fa-layer-group',
-            route: ABS_ELEMENT_TYPES_URL
+            route: ABS_ELEMENT_TYPES_URL,
+            accessRights: 'ElementType'
         },
         {
             name: 'REMUN_FORMULAS',
             icon: 'fas fa-function',
-            route: ABS_FORMULAS_URL
+            route: ABS_FORMULAS_URL,
+            accessRights: 'Formula'
         },
         {
             name: 'REMUN_INPUT_FILTERS',
             icon: 'fas fa-filter',
-            route: ABS_INPUT_FILTERS_URL
+            route: ABS_INPUT_FILTERS_URL,
+            accessRights: 'InputFilter'
         },
         {
             name: 'REMUN_SPECIAL_PAYROLLS',
             icon: 'fas fa-comments-alt-dollar',
-            route: ABS_SPECIAL_PAYROLL_URL
+            route: ABS_SPECIAL_PAYROLL_URL,
+            accessRights: 'Element'
         },
         {
             name: 'PAYROLL_FIXED_ELEMENTS',
             icon: 'fas fa-address-card',
-            route: ABS_FIXED_ELEMENTS_URL
+            route: ABS_FIXED_ELEMENTS_URL,
+            accessRights: 'Element'
         },
         {
             name: 'REMUN_ELEMENTS_ENTRY',
             icon: 'fas fa-coins',
-            route: ABS_ELEMENTS_ENTRY_URL
+            route: ABS_ELEMENTS_ENTRY_URL,
+            accessRights: 'Element'
         },
         {
             name: 'REMUN_EXCEL_INJECTION',
             icon: 'fas fa-file-excel',
-            route: ABS_EXCEL_INJECTION_URL
+            route: ABS_EXCEL_INJECTION_URL,
+            accessRights: 'XLSInjection'
         },
         {
             name: 'REMUN_AMENDMENTS',
             icon: 'fas fa-user-edit',
-            route: ABS_AMENDMENT_URL
+            route: ABS_AMENDMENT_URL,
+            accessRights: 'Amendment'
         },
         {
             name: 'PAYROLL_LOANS',
             icon: 'fas fa-user-edit',
-            route: ABS_LOANS_URL
+            route: ABS_LOANS_URL,
+            accessRights: 'Loan'
         },
         {
             name: 'REMUN_EDO',
             icon: 'fa fa-university',
-            route: ABS_EDO_URL
+            route: ABS_EDO_URL,
+            accessRights: 'EDO'
         },
         {
             name: 'REMUN_MONTH_CLOSURE',
@@ -131,22 +146,26 @@ export const payrollNavTree: SideNavNode = {
         {
             name: 'REMUN_DAS',
             icon: 'fas fa-shield-check',
-            route: ABS_DAS_URL
+            route: ABS_DAS_URL,
+            accessRights: 'DAS'
         },
         {
             name: 'PAYROLL_ARCHIVE_VIEWER',
             icon: 'fa-solid fa-box-archive',
-            route: ABS_ARCHIVE_VIEWER_URL
+            route: ABS_ARCHIVE_VIEWER_URL,
+            accessRights: 'HRArchive'
         },
         {
             name: 'REMUN_CACO',
             icon: 'fas fa-cloud-rain',
-            route: ABS_CACO_URL
+            route: ABS_CACO_URL,
+            accessRights: 'CACO'
         },
         {
             name: 'COMMON_DASHBOARD',
             icon: 'fa-solid fa-gauge-min',
             route: ABS_PAYROLL_DASHBOARD_URL,
+            accessRights: 'Dashboard'
         },
 
         {

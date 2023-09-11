@@ -9,6 +9,7 @@ export const CMMS_PLANS_URL = '/cmmsplans';
 export const CMMS_PREV_WORK_ORDER_URL = '/prevorders';
 export const CMMS_CUR_WORK_ORDER_URL = '/curorders';
 export const CMMS_INSPECTION_ORDER_URL = '/inspections';
+export const CMMS_INSPECTION_URL = '/inspections';
 export const CMMS_SERVICE_REQUEST_URL = '/srvrequests';
 export const CMMS_PENDING_SERVICE_REQUEST_URL = '/cmms/pending';
 export const CMMS_PM_URL = '/cmmspm';
@@ -127,6 +128,14 @@ export interface WorkArticle {
     description: string;
 }
 
+export interface Inspection {
+    id: number;
+    parentId: number;
+    checklistId: number;
+    status: number;
+    description?: string;
+}
+
 export interface Work {
     id: number;
     centerId: number;
@@ -177,6 +186,7 @@ export interface Work {
     executorDescription?: string;
     closerDescription?: string;
 }
+
 export interface CMMSEmployee extends IEmployee {
     hourlyRate?: number;
 }

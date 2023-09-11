@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {AgentDetailComponent} from '../agent-detail.component';
+import {AgentDetailComponent} from '../agent-detail/agent-detail.component';
 import {Observable} from 'rxjs';
 import {switchMap, tap} from 'rxjs/operators';
 import {Lookup} from '@ss/common/api-lookup';
