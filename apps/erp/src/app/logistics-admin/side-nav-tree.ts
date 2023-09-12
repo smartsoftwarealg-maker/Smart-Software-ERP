@@ -6,8 +6,8 @@ import {
     ABS_LOGISTICS_OPTIONS,
     ABS_LOGISTICS_AGENT_URL,
     ABS_LOGISTICS_VAT_URL,
-    ABS_LOGISTICS_ARTICLES_URL, ABS_LOGISTICS_CATEGORY, ABS_LOGISTICS_UNITS
-} from '../common';
+    ABS_LOGISTICS_ARTICLES_URL, ABS_LOGISTICS_CATEGORY, ABS_LOGISTICS_UNITS, ABS_LOGISTICS_CUSTOMER_URL
+} from "../common";
 import {SideNavNode} from '@ss/common/api-common';
 
 export const logisticsAdminNavTree: SideNavNode = {
@@ -26,6 +26,12 @@ export const logisticsAdminNavTree: SideNavNode = {
             icon: 'fas fa-user',
             route: ABS_LOGISTICS_AGENT_URL,
             accessRights: 'Agent'
+        },
+        {
+            name: 'LOGISTICS_CUSTOMER',
+            icon: 'fas fa-user',
+            route: ABS_LOGISTICS_CUSTOMER_URL,
+            accessRights: 'Customer'
         },
         {
             name: 'COMMON_VAT',

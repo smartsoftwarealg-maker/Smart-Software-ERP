@@ -58,6 +58,7 @@ export class UiAutoCompleteComponent implements ControlValueAccessor, MatFormFie
     set canAdd(b: boolean) {
         this.allowAdd = b;
     }
+
     @Input()
     set value(selected: Id) {
         this.setValue(selected, true);
@@ -149,7 +150,7 @@ export class UiAutoCompleteComponent implements ControlValueAccessor, MatFormFie
     }
 
     setValue(v: Id, fireOnChange: boolean) {
-        if (!!this.model && !!v) {
+        if (!!this.model && v !== null && v !== undefined) {
             // possibilites:
             // the value is in cache
             // the value is in options
