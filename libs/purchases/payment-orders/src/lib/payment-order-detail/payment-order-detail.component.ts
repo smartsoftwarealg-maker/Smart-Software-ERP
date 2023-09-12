@@ -7,9 +7,10 @@ import {UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import { LookupsService, LotsService, PayModeService, Store } from "@ss/common/api-lookup";
 import {PaymentOrderService} from '../payment-order.service';
-import {LoginService} from '@ss/common/api-common';
+import { IsParamService, LoginService } from "@ss/common/api-common";
 import { Agent, AgentService, ConsumerService } from "@ss/logistics/api-agent";
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
+import { Observable, switchMap, tap } from "rxjs";
 
 @Component({
   selector: 'ss-payment-order-detail',
@@ -17,12 +18,14 @@ import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
   styleUrls: ['./payment-order-detail.component.scss']
 })
 export class PaymentOrderDetailComponent extends BaseEntityDetailComponent<PaymentOrder> {
+    private isParamSrv = inject(IsParamService);
     private supplierSrv  = inject(AgentService);
     private consumerSrv = inject(ConsumerService);
     private storeSrv = inject(LotsService);
     private loginSrv  = inject(LoginService);
     private payModeSrv = inject(PayModeService);
 
+    isBADR = false;
     supplierLookup = new DefaultAutoCompleteModel<Agent>(this.supplierSrv, 'id', 'denomination');
     consumerLookup = new DefaultAutoCompleteModel<Agent>(this.consumerSrv, 'id', 'denomination');
     storeLookup = new DefaultAutoCompleteModel<Store>(this.storeSrv);
@@ -37,6 +40,15 @@ export class PaymentOrderDetailComponent extends BaseEntityDetailComponent<Payme
         public override confirmationSrv: ConfirmationDialogService,
         public lookupsSrv: LookupsService) {
         super(detailSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'LOGISTICS_PAYMENT_ORDERS');
+    }
+
+    override loadEntity(id: number): Observable<PaymentOrder> {
+        return this.isParamSrv
+          .is('BADR')
+          .pipe(
+            tap(b => this.isBADR = b),
+            switchMap(() => super.loadEntity(id))
+          );
     }
 
     setupForm(b: PaymentOrder): UntypedFormGroup {
