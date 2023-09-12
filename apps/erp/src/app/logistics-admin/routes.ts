@@ -9,8 +9,8 @@ import {
     LOGISTICS_CURRENCY_URL,
     LOGISTICS_VAT_URL,
     LOGISTICS_NUMBERING_URL,
-    LOGISTICS_CATEGORY_URL, docInfoRoutes, LOGISTICS_ARTICLES_URL, STOCK_UNITS_URL
-} from '../common';
+    LOGISTICS_CATEGORY_URL, docInfoRoutes, LOGISTICS_ARTICLES_URL, STOCK_UNITS_URL, LOGISTICS_CUSTOMER_URL
+} from "../common";
 import {ABS_INDEX_URL, CanDeactivateService, LIST_URL} from '@ss/common/api-common';
 import {Routes} from '@angular/router';
 import {PayMethodDetailComponent, PayMethodListComponent} from '@ss/logistics/ui-pay-method';
@@ -79,8 +79,40 @@ export const mainRoutes: Routes = [
                     }
                 ]
             },
-            {path: '', redirectTo: LIST_URL, pathMatch: 'full'},
-            {path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full'}
+        ]
+    },
+    {
+        path: LOGISTICS_CUSTOMER_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: AgentListComponent,
+                canActivate: [loginGuard],
+                data: {sales: true, customer: true },
+                children: docInfoRoutes
+            },
+            {
+                path: ':id',
+                children: [
+                    {
+                        path: '',
+                        component: AgentDetailComponent,
+                        canActivate: [loginGuard],
+                        canDeactivate: [CanDeactivateService],
+                        data: {sales: true, customer: true },
+                        children: [
+                            { path: '', redirectTo: 'archive', pathMatch: 'full'},
+                            {
+                                path: 'archive',
+                                children: [
+                                    {path: '', component: AppArchiveListComponent, pathMatch: 'full' },
+                                    {path: ':id', component: AppArchiveDetailComponent},
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
         ]
     },
     {

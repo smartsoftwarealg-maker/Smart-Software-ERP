@@ -32,8 +32,8 @@ import {
     docInfoRoutes,
     CMMS_CHARTS_URL,
     CMMS_ASSET_TREE,
-    CMMS_EMPLOYEES_URL, CMMS_FUNCTION_URL, CMMS_CHECKLIST_URL, CMMS_INSPECTION_ORDER_URL
-} from "../common";
+    CMMS_EMPLOYEES_URL, CMMS_FUNCTION_URL, CMMS_CHECKLIST_URL, CMMS_INSPECTION_ORDER_URL, CMMS_INSPECTION_URL
+} from '../common';
 import { loginGuard } from '../erp-guards';
 import {
     CmmsFaultCauseDetailComponent,
@@ -59,6 +59,7 @@ import { CmmsAlertListComponent, PMDetailComponent, PmListComponent } from '@ss/
 import { AssetReadingDetailComponent, AssetReadingListComponent, readingDetailGuard } from '@ss/cmms/asset-readings';
 import { AssetTriggerDetailComponent, AssetTriggerListComponent, triggerDetailGuard } from '@ss/cmms/asset-triggers';
 import {
+    InspectionDetailComponent,
     InspectionOrderDetailComponent,
     InspectionOrderListComponent,
     WorkOrderArticleDetailComponent,
@@ -67,7 +68,7 @@ import {
     WorkOrderListComponent,
     WorkPersonsDetailComponent,
     WorkPersonsListComponent
-} from '@ss/cmms/work-order';
+} from "@ss/cmms/work-order";
 import {
     AssetBuildingDetailComponent,
     AssetBuildingListComponent,
@@ -374,11 +375,28 @@ export const cmmsRoutes: Routes = [
                 component: InspectionOrderDetailComponent,
                 canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService],
+            },
+        ]
+    },
+
+    {
+        path: CMMS_INSPECTION_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: InspectionOrderListComponent,
+                canActivate: [loginGuard],
+                data: {inspection: 'true'}
+            },
+            {
+                path: ':id',
+                component: InspectionDetailComponent,
+                canActivate: [loginGuard],
+                canDeactivate: [CanDeactivateService],
                 children: [
                     { path: 'inspections',
                         children: [
-                            { path: '', component: WorkPersonsListComponent, pathMatch: 'full'},
-                            { path: ':id', component: WorkPersonsDetailComponent }
+                            // { path: '', component: InspectionListComponent, pathMatch: 'full'},
                         ]
                     }
                 ]

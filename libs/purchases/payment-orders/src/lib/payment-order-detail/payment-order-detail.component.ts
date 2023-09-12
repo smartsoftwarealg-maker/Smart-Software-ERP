@@ -5,10 +5,10 @@ import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
 import {UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import { LookupsService, PayModeService } from "@ss/common/api-lookup";
+import { LookupsService, LotsService, PayModeService, Store } from "@ss/common/api-lookup";
 import {PaymentOrderService} from '../payment-order.service';
 import {LoginService} from '@ss/common/api-common';
-import { Agent, AgentService, ConsumerService, SupplierService } from "@ss/logistics/api-agent";
+import { Agent, AgentService, ConsumerService } from "@ss/logistics/api-agent";
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 
 @Component({
@@ -19,11 +19,13 @@ import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 export class PaymentOrderDetailComponent extends BaseEntityDetailComponent<PaymentOrder> {
     private supplierSrv  = inject(AgentService);
     private consumerSrv = inject(ConsumerService);
+    private storeSrv = inject(LotsService);
     private loginSrv  = inject(LoginService);
     private payModeSrv = inject(PayModeService);
 
     supplierLookup = new DefaultAutoCompleteModel<Agent>(this.supplierSrv, 'id', 'denomination');
     consumerLookup = new DefaultAutoCompleteModel<Agent>(this.consumerSrv, 'id', 'denomination');
+    storeLookup = new DefaultAutoCompleteModel<Store>(this.storeSrv);
     payModeLookup = new DefaultAutoCompleteModel(this.payModeSrv);
 
     constructor(

@@ -26,13 +26,19 @@ import {
     ABS_CMMS_EMPLOYEES_URL,
     ABS_CMMS_FUNCTIONS,
     ABS_CMMS_CHECKLIST_URL,
-    ABS_INSPECTION_ORDER_URL
-} from '../common';
+    ABS_INSPECTION_ORDER_URL, ABS_INSPECTION_URL
+} from "../common";
 
 export const cmmsNavTree: SideNavNode = {
     name: 'CMMS',
     icon: 'fa-solid fa-screwdriver-wrench',
     children: [
+        {
+            name: 'COMMON_HOME',
+            icon: 'fa-solid fa-house-chimney',
+            route: ABS_CMMS_CHARTS_URL,
+            accessRights: 'KPI'
+        },
         {
             name: 'ASSET_END_TYPES',
             icon: 'fa-solid fa-person-walking-dashed-line-arrow-right',
@@ -202,22 +208,22 @@ export const cmmsNavTree: SideNavNode = {
             accessRights: 'WRKROrder'
         },
         {
-            name: 'CMMS_INSPECTION',
+            name: 'CMMS_INSPECTION_ORDERS',
             icon: 'fa-solid fa-microscope',
             route: ABS_INSPECTION_ORDER_URL,
             accessRights: 'INSPECROrder'
+        },
+        {
+            name: 'CMMS_INSPECTION',
+            icon: 'fa-solid fa-magnifying-glass-chart',
+            route: ABS_INSPECTION_URL,
+            accessRights: 'Inspection'
         },
         {
             name: 'STOCK_PARTS_REQUEST',
             icon: 'fa-solid fa-car-battery',
             route: ABS_CMMS_PARTS_REQUEST_URL,
             accessRights: 'PartsRequest'
-        },
-        {
-            name: 'COMMON_CHARTS',
-            icon: 'fa-duotone fa-chart-simple',
-            route: ABS_CMMS_CHARTS_URL,
-            accessRights: 'Chart'
         },
     ],
     accessRights: 'CMMS'

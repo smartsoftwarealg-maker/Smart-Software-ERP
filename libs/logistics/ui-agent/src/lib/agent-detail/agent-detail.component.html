@@ -34,11 +34,10 @@
 
                 <mat-form-field id="agentType" class="default-50 sm-100">
                     <mat-label translate>LOGISTICS_AGENT_TYPE</mat-label>
-                    <mat-select formControlName="agentType" required>
-                        <mat-option *ngFor="let v of agentTypes" [value]="v.id">
-                            {{v ? v.description : ''}}
-                        </mat-option>
-                    </mat-select>
+                    <ss-auto-complete matInput
+                                      formControlName="agentType"
+                                      [model]="agentTypeLookup">
+                    </ss-auto-complete>
                     <mat-error
                         *ngIf="form.controls['agentType'].invalid" translate>COMMON_FIELD_REQUIRED
                     </mat-error>
@@ -46,12 +45,11 @@
 
                 <mat-form-field id="currency" class="default-50 sm-100">
                     <mat-label translate>LOGISTICS_CURRENCY</mat-label>
-                    <mat-select formControlName="currency" required>
-                        <mat-option [value]="null"></mat-option>
-                        <mat-option *ngFor="let v of currencies" [value]="v.id">
-                            {{v ? v.description : ''}}
-                        </mat-option>
-                    </mat-select>
+                    <ss-auto-complete matInput
+                                      formControlName="currency"
+                                      [canAdd] = "true"
+                                      [model]="currencyLookup">
+                    </ss-auto-complete>
                     <mat-error
                         *ngIf="form.controls['currency'].invalid" translate>COMMON_FIELD_REQUIRED
                     </mat-error>
@@ -60,12 +58,10 @@
 
                 <mat-form-field id="price" class="default-50 sm-100">
                     <mat-label translate>LOGISTICS_PRICE</mat-label>
-                    <mat-select formControlName="price" required>
-                        <mat-option [value]="null"></mat-option>
-                        <mat-option *ngFor="let v of prices" [value]="v.id">
-                            {{v ? v.description : ''}}
-                        </mat-option>
-                    </mat-select>
+                    <ss-auto-complete matInput
+                                      formControlName="price"
+                                      [model]="priceLookup">
+                    </ss-auto-complete>
                     <mat-error
                         *ngIf="form.controls['price'].invalid" translate>COMMON_FIELD_REQUIRED
                     </mat-error>
@@ -86,12 +82,10 @@
 
                 <mat-form-field class="default-50 sm-100">
                     <mat-label translate>LOGISTICS_COMPANY_TYPE</mat-label>
-                    <mat-select formControlName="companyType">
-                        <mat-option [value]="null"></mat-option>
-                        <mat-option *ngFor="let v of companyTypes" [value]="v.id">
-                            {{v ? v.description : ''}}
-                        </mat-option>
-                    </mat-select>
+                    <ss-auto-complete matInput
+                                      formControlName="companyType"
+                                      [model]="companyTypeLookup">
+                    </ss-auto-complete>
                 </mat-form-field>
 
                 <mat-form-field *ngIf="AQS" class="default-50 sm-100">
@@ -184,12 +178,10 @@
 
                 <mat-form-field class="default-50 sm-100">
                     <mat-label translate>LOGISTICS_PAY_MODE</mat-label>
-                    <mat-select formControlName="payMode">
-                        <mat-option [value]="null"></mat-option>
-                        <mat-option *ngFor="let v of payModes" [value]="v.id">
-                            {{v ? v.description : ''}}
-                        </mat-option>
-                    </mat-select>
+                    <ss-auto-complete matInput
+                                      formControlName="payMode"
+                                      [model]="payModeLookup">
+                    </ss-auto-complete>
                 </mat-form-field>
 
                 <div class="default-50 sm-100">
@@ -263,22 +255,18 @@
 
                 <mat-form-field class="default-50 sm-100">
                     <mat-label translate>COMMON_CITY</mat-label>
-                    <mat-select formControlName="city">
-                        <mat-option [value]="null"></mat-option>
-                        <mat-option *ngFor="let v of cities" [value]="v.id">
-                            {{v ? v.description : ''}}
-                        </mat-option>
-                    </mat-select>
+                    <ss-auto-complete matInput
+                                      formControlName="city"
+                                      [model]="cityLookup">
+                    </ss-auto-complete>
                 </mat-form-field>
 
                 <mat-form-field class="default-50 sm-100">
                     <mat-label translate>LOGISTICS_COUNTRY</mat-label>
-                    <mat-select formControlName="country">
-                        <mat-option [value]="null"></mat-option>
-                        <mat-option *ngFor="let v of countries" [value]="v.id">
-                            {{v ? v.description : ''}}
-                        </mat-option>
-                    </mat-select>
+                    <ss-auto-complete matInput
+                                      formControlName="country"
+                                      [model]="countryLookup">
+                    </ss-auto-complete>
                 </mat-form-field>
 
 
@@ -363,12 +351,10 @@
 
                 <mat-form-field class="default-50 sm-100">
                     <mat-label translate>LOGISTICS_CATEGORY</mat-label>
-                    <mat-select formControlName="category">
-                        <mat-option [value]="null"></mat-option>
-                        <mat-option *ngFor="let v of categories" [value]="v.id">
-                            {{v ? v.description : ''}}
-                        </mat-option>
-                    </mat-select>
+                    <ss-auto-complete matInput
+                                      formControlName="category"
+                                      [model]="categoryLookup">
+                    </ss-auto-complete>
                 </mat-form-field>
 
                 <mat-form-field class="default-50 sm-100">
@@ -396,11 +382,9 @@
                 </div>
                 <div class="center_ctrl">
                     <button mat-mini-fab color="accent"
-                            [disabled]="roleAC.value == null"
                             (click)="addCenter()">
                         <i class="fas fa-plus-circle"></i>
                     </button>
-
 
                     <mat-form-field >
                         <mat-label translate>ADMINISTRATION_CENTER</mat-label>

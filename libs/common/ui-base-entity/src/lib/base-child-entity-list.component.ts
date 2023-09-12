@@ -70,7 +70,7 @@ export class BaseChildEntityListComponent<T extends { id: number }> implements O
         }
     }
 
-    private refresh() {
+    protected refresh() {
         this.data$ = this.detailSrv.getPage(this.paginator);
     }
 

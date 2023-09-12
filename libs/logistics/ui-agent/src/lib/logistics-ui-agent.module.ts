@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AgentListComponent } from './agent-list.component';
-import { AgentDetailComponent } from './agent-detail.component';
+import { AgentListComponent } from './agent-list/agent-list.component';
+import { AgentDetailComponent } from './agent-detail/agent-detail.component';
 import { MaterialModule } from '@ss/common/api-common';
 import { CommonUiLangModule } from '@ss/common/ui-lang';
 import { UiPaginationModule } from '@ss/common/ui-pagination';

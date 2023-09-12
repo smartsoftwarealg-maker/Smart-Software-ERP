@@ -33,11 +33,11 @@ export class DefaultAutoCompleteModel<T> implements AutoCompleteModel<T> {
     onValueChanged = (e: Id) => {};
     onObjectSelected = (e: T) => {};
 
-    valueOf = (x: any) => x ? x[this.idField] : null;
+    valueOf = (x: T) => x ? x[this.idField] : null;
 
     toString = (x: any) => x ? x[this.descriptionField]?.substring(0, 50) : null;
 
-    getById = (id: Id) => id ? this.entitySrv.get(id) : of(null);
+    getById = (id: Id) => id === null || id === undefined? of(null) : this.entitySrv.get(id);
 
     filter = (filter: string) => this.entitySrv.getList(0, 20, filter, this.descriptionField).pipe(map(x => this.filterLoadedData(x.body)));
 

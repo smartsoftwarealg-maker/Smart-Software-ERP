@@ -1,0 +1,47 @@
+<div class="table_div size">
+    <button mat-raised-button
+            color="primary"
+            (click)="loadChecklist()"
+            *ngIf="paginator.elementCount == 0">
+        <i class="fa-solid fa-truck-ramp-box"></i>
+        <span translate>CMMS_LOAD_CHECKLIST</span>
+    </button>
+    <mat-table #table mat-table [dataSource]="data$ | async" class="main-table" matSort (matSortChange)="sort($event)">
+
+        <ng-container matColumnDef="description">
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_DESCRIPTION</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.description}}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="pass">
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>CMMS_PASSES</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                <mat-checkbox #passCB
+                              [class.mat-checkbox-disabled]="false"
+                              (click)="pass(e, passCB.checked)"
+                              [checked]="e.status === 1">
+                </mat-checkbox>
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="fail">
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>CMMS_FAILS</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                <mat-checkbox #failCB
+                              [class.mat-checkbox-disabled]="false"
+                              (click)="fail(e, failCB.checked)"
+                              [checked]="e.status === 2">
+                </mat-checkbox>
+            </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+        <mat-row class="selectable" [class.selected]="row.id == selectedId" (click)="select(row.id)"
+                 *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+</div>
+<div class="size b-b-background">
+    <ss-pagination [paginationModel]="paginator"></ss-pagination>
+</div>

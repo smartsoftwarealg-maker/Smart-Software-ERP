@@ -1,33 +1,31 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { KeepOnToolbar, ShellService, SnackBarService, ToolbarButton } from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
-import {catchError, switchMap, tap} from 'rxjs/operators';
-import {Observable, of} from 'rxjs';
+import {switchMap, tap} from 'rxjs/operators';
+import { Observable, of } from 'rxjs';
 import { AbstractControl, FormControl, UntypedFormBuilder, UntypedFormControl, Validators } from '@angular/forms';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {
     ActivityService,
-    AgentPrice,
-    AgentType,
-    City,
-    CompanyType,
-    Country,
-    Currency, DepartmentService,
+    AgentTypeService, CategoryService,
+    CityService,
+    CompanyTypeService, CountryService,
+    CurrencyService, DepartmentService, Lookup,
     LookupsService,
-    PayMode
+    PayModeService
 } from '@ss/common/api-lookup';
-import { Agent, AgentCenter, AgentCenterService, AgentService } from '@ss/logistics/api-agent';
+import { Agent, AgentCenter, AgentCenterService, AgentService, CUSTOMER_URL } from '@ss/logistics/api-agent';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {MatExpansionPanel} from '@angular/material/expansion';
 import { FormValidators, IsParamService, LoginService, Role } from '@ss/common/api-common';
 import {BankService} from '@ss/administration/api-bank';
-import { Lookup } from '@ss/logistics/ui-doc-import';
-import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
+import { DefaultAutoCompleteModel, Id } from '@ss/common/ui-auto-complete';
 import { AGENT_ARCHIVES, AppArchiveService } from '@ss/common/app-archive';
 import { MatSelectionListChange } from '@angular/material/list';
 import { CenterService } from '@ss/administration/api-center';
 import { MatDialog } from '@angular/material/dialog';
-import { AgentImportComponent } from './agent-import/agent-import.component';
+import { AgentImportComponent } from '../agent-import/agent-import.component';
+import { AgentPriceService } from '@ss/logistics/api-agent-price';
 
 
 @Component({
@@ -46,6 +44,15 @@ export class AgentDetailComponent extends BaseEntityDetailComponent<Agent> imple
     private activitySrv =  inject(ActivityService);
     private agentCenterSrv = inject(AgentCenterService);
     private centerSrv = inject(CenterService);
+    private payModeSrv = inject(PayModeService);
+    private currencySrv = inject(CurrencyService);
+    private agentTypeSrv = inject(AgentTypeService);
+    private categorySrv = inject(CategoryService);
+    private priceSrv = inject(AgentPriceService);
+    private companyTypeSrv = inject(CompanyTypeService);
+    private citySrv = inject(CityService);
+    private countrySrv = inject(CountryService);
+
 
     private invImportBtn: ToolbarButton = {
         disabled: false,
@@ -58,20 +65,23 @@ export class AgentDetailComponent extends BaseEntityDetailComponent<Agent> imple
 
     public LOCAL_AGENT_ARCHIVES = AGENT_ARCHIVES;
     AQS = false;
+
     departmentLookup = new DefaultAutoCompleteModel(this.departmentSrv);
     activityLookup = new DefaultAutoCompleteModel(this.activitySrv);
     bankLookup     = new DefaultAutoCompleteModel(this.bankSrv);
+    payModeLookup = new DefaultAutoCompleteModel(this.payModeSrv);
+    currencyLookup = new DefaultAutoCompleteModel(this.currencySrv);
+    agentTypeLookup = new DefaultAutoCompleteModel(this.agentTypeSrv);
+    categoryLookup = new DefaultAutoCompleteModel(this.categorySrv);
+    priceLookup = new DefaultAutoCompleteModel(this.priceSrv);
+    companyTypeLookup = new DefaultAutoCompleteModel(this.companyTypeSrv);
+    cityLookup = new DefaultAutoCompleteModel(this.citySrv);
+    countryLookup = new DefaultAutoCompleteModel(this.countrySrv);
+
     isSales = false;
     pwd1 = new UntypedFormControl();
     pwd2 = new UntypedFormControl();
-    agentTypes: AgentType[];
-    companyTypes: CompanyType[] = [];
-    cities: City[] = [];
-    categories: Lookup[] = [];
-    countries: Country[] = [];
-    currencies: Currency[] = [];
-    payModes: PayMode[] = [];
-    prices: AgentPrice[] = [];
+
     selectedCenter = 0;
     agentCenters: AgentCenter[] = [];
 
@@ -87,33 +97,23 @@ export class AgentDetailComponent extends BaseEntityDetailComponent<Agent> imple
         public override confirmationSrv: ConfirmationDialogService,
         public lookupsSrv: LookupsService) {
         super(agentSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'COMMON_AGENT');
-        // this.isSales = this.route.snapshot.data['sales'];
         this.isSales = this.route.snapshot.data['sales'];
         this.centerSrv.setParentId(this.loginSrv.appCtx.company);
     }
 
     public override preload(): Observable<any> {
-        return this.lookupsSrv
-            .getAgentTypes()
+        return this.isParamSrv
+            .is('AQS')
             .pipe(
-                tap(x => this.agentTypes = x),
-                switchMap(() => this.lookupsSrv.getCities()),
-                tap(x => this.cities = x),
-                switchMap(() => this.lookupsSrv.getCountries()),
-                tap(x => this.countries = x),
-                switchMap(() => this.lookupsSrv.getCompanyTypes()),
-                tap(x => this.companyTypes = x),
-                switchMap(() => this.lookupsSrv.getCurrencies()),
-                tap(x => this.currencies = x),
-                switchMap(() => this.lookupsSrv.getPayModes()),
-                tap(x => this.payModes = x),
-                switchMap(() => this.lookupsSrv.getPrices()),
-                catchError(e => of([])),
-                tap(x => this.prices = x),
-                switchMap(_ => this.lookupsSrv.getSalesCategories()),
-                tap(x => this.categories = x),
-                switchMap(_ => this.isParamSrv.is('AQS')),
-                tap(res => this.AQS = res)
+                tap(res => this.AQS = res),
+                switchMap(() => this.route.data),
+                tap(res => {
+                    if (res['customer']) {
+                        this.entitySrv.setURL(CUSTOMER_URL);
+                        this.agentTypeLookup = new CustomerLookup(this.agentTypeSrv);
+                        this.shellSrv.setTitle('LOGISTICS_CUSTOMER');
+                    }
+                })
             );
     }
 
@@ -243,7 +243,6 @@ export class AgentDetailComponent extends BaseEntityDetailComponent<Agent> imple
         const a = super.readForm();
         a.price = a.price || 1;
         a.agentType = a.agentType || 0;
-        a.currency = a.currency || this.currencies[0].id;
         return a;
     }
 
@@ -274,8 +273,9 @@ export class AgentDetailComponent extends BaseEntityDetailComponent<Agent> imple
     override ngOnInit() {
         this.archiveSrv.appId = AGENT_ARCHIVES;
         super.ngOnInit();
-        const idx = this.router.url.indexOf('agents');
-        const url = this.router.url.substring(0, idx) + 'agents';
+        const target = this.router.url.indexOf('agents') < 0? 'customers' : 'agents';
+        const idx = this.router.url.indexOf(target);
+        const url = this.router.url.substring(0, idx) + target;
         this.shellSrv.setGoBackPath(url, this.route);
         this.shellSrv.addButton(this.invImportBtn);
     }
@@ -332,4 +332,12 @@ export class AgentDetailComponent extends BaseEntityDetailComponent<Agent> imple
                 });
         }
     }
+}
+
+class CustomerLookup extends DefaultAutoCompleteModel<Lookup> {
+    constructor(public srv: AgentTypeService) {
+        super(srv);
+    }
+    override filterLoadedData = (x: Lookup[]) => x.filter(e => e && e.id < 2);
+    override getById = (id: Id) => id === null || id === undefined? of(null) : this.entitySrv.get(id);
 }
