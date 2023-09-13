@@ -7,3 +7,5 @@ export * from './lib/work-persons-detail/work-persons-detail.component';
 export * from './lib/inspection-order-detail/inspection-order-detail.component';
 export * from './lib/inspection-order-list/inspection-order-list.component';
 export * from './lib/services/c-m-m-s-inspection-order.service';
+export * from './lib/inspection-detail/inspection-detail.component';
+export * from './lib/inspection-detail-list/inspection-detail-list.component';

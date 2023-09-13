@@ -302,5 +302,6 @@
     "DESELECT_ALL":              "Deselect all",
     "DUPLICATE":                 "Duplicate",
     "MONTH":                     "Month",
-    "DESTINATIONS":              "Destinations"
+    "DESTINATIONS":              "Destinations",
+    "HOME":                      "Home"
 }

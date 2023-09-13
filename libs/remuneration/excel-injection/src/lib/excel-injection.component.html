@@ -16,9 +16,15 @@
                 <i class="fas fa-paperclip"></i>
             </button>
         </div>
+
+
+        <div class="consolidated" >
+            <mat-checkbox #consolidated translate>COMMON_CONSOLIDATED</mat-checkbox>
+        </div>
+
         <button mat-raised-button color="primary"
                 type="button"
-                (click)="onFileSelected(fileUpload.files)"
+                (click)="onFileSelected(fileUpload.files, consolidated.checked)"
                 [disabled]="!fileName">
             <i class="fa-solid fa-upload  icon"></i>
             {{ 'COMMON_UPLOAD' | translate }}

@@ -67,6 +67,10 @@
     "WORKS":            "Main D'oeuvre",
     "SCHEDULED_START":  "Heure de début prévue",
     "SCHEDULED_DUE":    "Heure prévue",
-    "HOURLY_RATE":      "Taux horaire"
+    "HOURLY_RATE":      "Taux horaire",
+    "INSPECTION_ORDERS": "Ordre de visite",
+    "PASSES":                     "Passe",
+    "FAILS":                      "Échoue",
+    "LOAD_CHECKLIST":             "Charger checklist"
 }
 

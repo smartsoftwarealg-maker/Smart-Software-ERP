@@ -43,12 +43,13 @@ export class ExcelInjectionComponent implements OnInit {
         this.fileName = e[0]?.name;
     }
 
-    onFileSelected(files: any) {
+    onFileSelected(files: any, consolidated: boolean) {
         const file:File = files[0];
         if (file) {
             this.fileName = file.name;
             const formData = new FormData();
             formData.append("file", file);
+            formData.append("consolidated", consolidated + '');
 
             this.processing = true;
             this.uploadSub = this.injectSrv

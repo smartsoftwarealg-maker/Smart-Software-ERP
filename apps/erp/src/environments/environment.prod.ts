@@ -41,7 +41,7 @@ import {
     WORK_FLOW_APP_URL,
     BUDGET_APP_URL,
     LTM_APP_URL,
-    FURNITURE_APP_URL, ATTENDANCE_APP_URL, ARCH_VIEWER_URL, CMMS_APP_URL, PARK_APP_URL
+    FURNITURE_APP_URL, ATTENDANCE_APP_URL, ARCH_VIEWER_URL, CMMS_APP_URL, PARK_APP_URL, SERVICE_SALES
 } from '../app/common';
 import {hrLookupNavTree} from '../app/hr-lookups/side-nav-tree';
 import {foodNavTree} from '../app/food/side-nav-tree';
@@ -53,6 +53,7 @@ import {attendanceNavTree} from '../app/attendance/side-nav-tree';
 import { aaNavTree } from '../app/archive-viewer/side-nav-tree';
 import { parkNavTree } from '../app/park/side-nav-tree';
 import { cmmsNavTree } from '../app/cmms/side-nav-tree';
+import { ssalesNavTree } from '../app/service-sales/side-nav-tree';
 
 export const environment = {
     production: true,
@@ -66,6 +67,7 @@ export const navBar = [
     stockNavTree,
     contractsNavTree,
     salesNavTree,
+    ssalesNavTree,
     financeNavTree,
     hrLookupNavTree,
     hrNavTree,
@@ -122,6 +124,10 @@ export const appRoutes: Routes =  [
         path: INDEX_PAGE_URL,
         component: MainPageComponent,
         canActivate: [CanActivateService]
+    },
+    {
+        path: SERVICE_SALES,
+        loadChildren: () => import('../app/service-sales/service-sales.module').then(m => m.ServiceSalesModule)
     },
     {
         path: LTM_APP_URL,
