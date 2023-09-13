@@ -53,22 +53,23 @@ export class PaymentOrderDetailComponent extends BaseEntityDetailComponent<Payme
 
     setupForm(b: PaymentOrder): UntypedFormGroup {
         return this.formBuilder.group({
-            id: [b.id],
-            ord_number: [b.ord_number || 0],
-            description: [b.description, Validators.required],
-            ord_date: [b.ord_date, Validators.required],
-            agent_id: [b.agent_id, Validators.required],
-            vat: [b.vat || 0],
-            amount: [b.amount || 0, Validators.required],
-            invoice_number: [b.invoice_number, Validators.required],
-            invoice_date: [b.invoice_date, Validators.required],
-            center_id: [b.center_id || this.loginSrv.appCtx.center, Validators.required],
-            requesterId: [b.requesterId],
-            payMode: [b.payMode],
-            bankAccount: [b.bankAccount],
-            bankAgency: [b.bankAgency],
-            authorizationNo: [b.authorizationNo],
+            id:                [b.id],
+            ord_number:        [b.ord_number || 0],
+            description:       [b.description, Validators.required],
+            ord_date:          [b.ord_date, Validators.required],
+            agent_id:          [b.agent_id, Validators.required],
+            vat:               [b.vat || 0],
+            amount:            [b.amount || 0, Validators.required],
+            invoice_number:    [b.invoice_number, Validators.required],
+            invoice_date:      [b.invoice_date, Validators.required],
+            center_id:         [b.center_id || this.loginSrv.appCtx.center, Validators.required],
+            requesterId:       [b.requesterId],
+            payMode:           [b.payMode],
+            bankAccount:       [b.bankAccount],
+            bankAgency:        [b.bankAgency],
+            authorizationNo:   [b.authorizationNo],
             authorizationDate: [b.authorizationDate],
+            recordNo:          [b.recordNo]
         });
     }
 

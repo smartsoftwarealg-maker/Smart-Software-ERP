@@ -7,7 +7,7 @@ import { Agent, User } from '../../common/models';
 import { DecService } from './dec.service';
 import { CENTER_SELECT_URL } from '../center-select/center-select-constants';
 import { LOGIN_URL } from './login-constants';
-import { HttpService } from '../../../smart-lib/common/http.service';
+import { HttpService } from "../../common/http.service";
 
 export enum LicenseErrorType {
     UserLicense = 1000,

@@ -20,4 +20,5 @@ export interface PaymentOrder {
     authorizationNo?: number;
     authorizationDate?: Date;
     supplierName: string;
+    recordNo?: string;
 }
