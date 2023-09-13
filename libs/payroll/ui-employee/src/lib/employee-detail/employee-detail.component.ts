@@ -1,9 +1,9 @@
-import { Component, inject } from '@angular/core';
-import { EmployeeService } from '@ss/employee-services/employee-services';
-import { AbstractControl, UntypedFormArray, UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
+import {Component, inject} from '@angular/core';
+import {EmployeeService} from '@ss/employee-services/employee-services';
+import {AbstractControl, UntypedFormArray, UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
-import { ShellService, SnackBarService } from '@ss/common/ui-shell';
-import { ImageModel } from '@ss/common/ui-image-input';
+import {ShellService, SnackBarService} from '@ss/common/ui-shell';
+import {ImageModel} from '@ss/common/ui-image-input';
 import {
     BloodGroupService,
     City,
@@ -12,16 +12,16 @@ import {
     MaritalStatus,
     NationalityService
 } from '@ss/common/api-lookup';
-import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
+import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {MatExpansionPanel} from '@angular/material/expansion';
-import { DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
-import { Observable, of, switchMap } from 'rxjs';
-import { map, tap } from 'rxjs/operators';
-import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
-import { HttpService } from '@ss/common/api-common';
-import { ELine, FixedElementsEntryService } from '@ss/remuneration/elements-entry';
-import { Employee } from '@ss/employee-services/employee-services';
-import { AppArchiveService, EMPLOYEE_ARCHIVES } from '@ss/common/app-archive';
+import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
+import {Observable, of, switchMap} from 'rxjs';
+import {map, tap} from 'rxjs/operators';
+import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
+import {HttpService} from '@ss/common/api-common';
+import {ELine, FixedElementsEntryService} from '@ss/remuneration/elements-entry';
+import {Employee} from '@ss/employee-services/employee-services';
+import {AppArchiveService, EMPLOYEE_ARCHIVES} from '@ss/common/app-archive';
 import {
     ACTIVATION_ROUTE_URL, ARCHIVE_ROUTE_URL,
     CAREER_ROUTE_URL,
@@ -43,9 +43,9 @@ import {
     TRAINING_ROUTE_URL,
     WIVES_ROUTE_URL
 } from '@ss/payroll/api-employee';
-import { EmployeeDiplomaService } from '../employee-diplomas/employee-diploma.service';
-import { EmployeeTrainingService } from '../employee-trainings/employee-training.service';
-import { PunishmentService } from '../employee-punishments/punishment.service';
+import {EmployeeDiplomaService} from '../employee-diplomas/employee-diploma.service';
+import {EmployeeTrainingService} from '../employee-trainings/employee-training.service';
+import {PunishmentService} from '../employee-punishments/punishment.service';
 
 @Component({
     selector: 'ss-employee-detail',
@@ -98,7 +98,7 @@ export class EmployeeDetailComponent extends BaseEntityDetailComponent<Employee>
     readonly DECISION_ROUT = 10;
     readonly ARCHIVE_ROUT = 11;
 
-    activePanel:-1|0|1|2|3|4|5|6|7|8|9|10|11 = -1;
+    activePanel: -1 | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 = -1;
 
     readonly PAYROLL_IEP = 1;
     readonly PAYROLL_OLD_ELEMENTS = 2;
@@ -113,12 +113,13 @@ export class EmployeeDetailComponent extends BaseEntityDetailComponent<Employee>
     public maritalStatuses: MaritalStatus[];
     public elementsForm: UntypedFormGroup = null;
     generationModes = [
-        { id: 1, description: 'PAYROLL_IEP' },
-        { id: 2, description: 'PAYROLL_OLD_ELEMENTS' },
-        { id: 3, description: 'PAYROLL_RANK' },
-        { id: 4, description: 'PAYROLL_POST' },
+        {id: 1, description: 'PAYROLL_IEP'},
+        {id: 2, description: 'PAYROLL_OLD_ELEMENTS'},
+        {id: 3, description: 'PAYROLL_RANK'},
+        {id: 4, description: 'PAYROLL_POST'},
     ];
     bloodGroups$ = this.bloodGroupSrv.getList(0, 50).pipe(map(res => res.body));
+
     constructor(
         public override shellSrv: ShellService,
         public override snackBarSrv: SnackBarService,
@@ -127,8 +128,7 @@ export class EmployeeDetailComponent extends BaseEntityDetailComponent<Employee>
         public override confirmationSrv: ConfirmationDialogService,
         public employeeSrv: EmployeeService,
         public httpSrv: HttpService,
-        public infoSrv: FixedElementsEntryService,
-        ) {
+        public infoSrv: FixedElementsEntryService) {
         super(employeeSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'PAYROLL_EDIT_EMPLOYEE');
         this.imageModel = new ImageModel(this.httpSrv);
     }
@@ -185,32 +185,32 @@ export class EmployeeDetailComponent extends BaseEntityDetailComponent<Employee>
 
         return this.formBuilder.group({
             // birth info
-            id:            [p.id],
-            firstName:     [p.firstName, Validators.compose([Validators.required, Validators.maxLength(64)])],
-            lastName:      [p.lastName, Validators.compose([Validators.required, Validators.maxLength(64)])],
-            sex:           [p.sex, Validators.required],
-            birthDate:     [p.birthDate, Validators.required],
-            birthPlace:    [p.birthPlace, Validators.compose([Validators.required, Validators.maxLength(64)])],
-            father:        [p.father, Validators.maxLength(64)],
-            mother:        [p.mother, Validators.maxLength(64)],
-            nationality:   [p.nationality],
+            id: [p.id],
+            firstName: [p.firstName, Validators.compose([Validators.required, Validators.maxLength(64)])],
+            lastName: [p.lastName, Validators.compose([Validators.required, Validators.maxLength(64)])],
+            sex: [p.sex, Validators.required],
+            birthDate: [p.birthDate, Validators.required],
+            birthPlace: [p.birthPlace, Validators.compose([Validators.required, Validators.maxLength(64)])],
+            father: [p.father, Validators.maxLength(64)],
+            mother: [p.mother, Validators.maxLength(64)],
+            nationality: [p.nationality],
             // social inf  o
-            address1:      [p.address1, Validators.maxLength(128)],
-            email:         [p.email, Validators.maxLength(64)],
-            phone:         [p.phone, Validators.maxLength(32)],
-            mobile:        [p.mobile, Validators.maxLength(32)],
-            ss_Number:     [p.ss_Number],
+            address1: [p.address1, Validators.maxLength(128)],
+            email: [p.email, Validators.maxLength(64)],
+            phone: [p.phone, Validators.maxLength(32)],
+            mobile: [p.mobile, Validators.maxLength(32)],
+            ss_Number: [p.ss_Number],
             maritalStatus: [p.maritalStatus],
             // arabic info
-            firstNameAr:   [p.firstNameAr, Validators.maxLength(64)],
-            lastNameAr:    [p.lastNameAr, Validators.maxLength(64)],
-            birthPlaceAr:  [p.birthPlaceAr, Validators.maxLength(64)],
-            fatherAr:      [p.fatherAr, Validators.maxLength(64)],
-            motherAr:      [p.motherAr, Validators.maxLength(64)],
-            birthCity:     [p.birthCity],
-            is_driver:     [p.is_driver || false, Validators.required],
-            cmmsPerson:    [p.cmmsPerson || false, Validators.required],
-            blood_group:   [p.blood_group]
+            firstNameAr: [p.firstNameAr, Validators.maxLength(64)],
+            lastNameAr: [p.lastNameAr, Validators.maxLength(64)],
+            birthPlaceAr: [p.birthPlaceAr, Validators.maxLength(64)],
+            fatherAr: [p.fatherAr, Validators.maxLength(64)],
+            motherAr: [p.motherAr, Validators.maxLength(64)],
+            birthCity: [p.birthCity],
+            is_driver: [p.is_driver || false, Validators.required],
+            cmmsPerson: [p.cmmsPerson || false, Validators.required],
+            blood_group: [p.blood_group]
         });
     }
 
@@ -253,16 +253,16 @@ export class EmployeeDetailComponent extends BaseEntityDetailComponent<Employee>
 
     public isSectionValid(section: string): boolean {
         switch (section) {
-        case 'birthinfo':
-            return this.isBirthInfoValid();
-        case 'socialInfo':
-            return this.issocialInfoPanelValid();
-        case 'arabicInfo':
-            return this.isArabicInfoPanelValid();
-        case 'fixedElemnts':
-            return this.isFixedElementsPanelValid();
-        default:
-            return true;
+            case 'birthinfo':
+                return this.isBirthInfoValid();
+            case 'socialInfo':
+                return this.issocialInfoPanelValid();
+            case 'arabicInfo':
+                return this.isArabicInfoPanelValid();
+            case 'fixedElemnts':
+                return this.isFixedElementsPanelValid();
+            default:
+                return true;
         }
     }
 
@@ -319,27 +319,27 @@ export class EmployeeDetailComponent extends BaseEntityDetailComponent<Employee>
                     this.infoSrv.generateFromIEP(id) :
                     code === this.PAYROLL_OLD_ELEMENTS ? this.infoSrv.generateFromOldElements(id) :
                         code === this.PAYROLL_RANK ? this.infoSrv.generateFromRank(id) :
-                            code === this.PAYROLL_POST ? this.infoSrv.generateFromPost(id) : of({ count: -1 }) : of({ count: -1 })
+                            code === this.PAYROLL_POST ? this.infoSrv.generateFromPost(id) : of({count: -1}) : of({count: -1})
             )).subscribe({
-                next: res => {
-                    if (res.count >= 0) {
-                        this.snackBarSrv.showSuccessMessage();
-                    } else {
-                        this.snackBarSrv.showMessage('PAYROLL_NO_CHANGES');
-                    }
-                },
-                error: err => {
-                    this.snackBarSrv.showFailureMessage();
-                    throw err;
+            next: res => {
+                if (res.count >= 0) {
+                    this.snackBarSrv.showSuccessMessage();
+                } else {
+                    this.snackBarSrv.showMessage('PAYROLL_NO_CHANGES');
                 }
-            });
+            },
+            error: err => {
+                this.snackBarSrv.showFailureMessage();
+                throw err;
+            }
+        });
     }
 
-    showPanel(panel: 0|1|2|3|4|5|6|7|8|9|10|11) {
+    showPanel(panel: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11) {
         this.activePanel = panel;
         const dest = this.PANELS[panel];
-        if (this.router.url.indexOf(dest) <0) {
-            this.router.navigate([dest], { relativeTo: this.route }).then();
+        if (this.router.url.indexOf(dest) < 0) {
+            this.router.navigate([dest], {relativeTo: this.route}).then();
         }
     }
 
@@ -347,7 +347,7 @@ export class EmployeeDetailComponent extends BaseEntityDetailComponent<Employee>
         if (this.form.controls['id'].value > 0) {
             super.goBack();
         } else {
-            this.router.navigate(['..', this.queryId], { relativeTo: this.route }).then();
+            this.router.navigate(['..', this.queryId], {relativeTo: this.route}).then();
         }
     }
 }
@@ -358,7 +358,7 @@ class CityLookup extends DefaultAutoCompleteModel<City> {
     }
 
     override toString = (x: any) => x ? x[this.descriptionField]?.substring(0, 50) +
-                               (x.dairaDescription? '/' + x.dairaDescription: '') +
-                               (x.wilayaDescription? '/' + x.wilayaDescription: ''): null;
+        (x.dairaDescription ? '/' + x.dairaDescription : '') +
+        (x.wilayaDescription ? '/' + x.wilayaDescription : '') : null;
 
 }

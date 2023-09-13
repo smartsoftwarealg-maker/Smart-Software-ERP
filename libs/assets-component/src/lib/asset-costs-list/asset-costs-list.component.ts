@@ -78,7 +78,7 @@ export class AssetCostsListComponent implements OnInit {
     }
 
     public showDetail(id: number) {
-        this.router.navigate(['costs', id], { relativeTo: this.route })
+        this.router.navigate([id], { relativeTo: this.route })
             .then();
     }
 

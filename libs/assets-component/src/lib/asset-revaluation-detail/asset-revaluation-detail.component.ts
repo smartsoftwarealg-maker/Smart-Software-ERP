@@ -1,46 +1,24 @@
-import { Component, inject, OnInit } from '@angular/core';
-import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
-import {AssetCost, AssetRevaluation} from '../assets-api';
+import {Component, inject, OnInit} from '@angular/core';
+import {BaseChildEntityDetailComponent, BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
+import {AssetRevaluation} from '../assets-api';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
-import {AssetCostsService} from '../services/asset-costs.service';
-import {ShellService, SnackBarService} from '@ss/common/ui-shell';
-import {ActivatedRoute} from '@angular/router';
 import {UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
-import {HttpService} from '@ss/common/api-common';
-import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import {LookupsService} from '@ss/common/api-lookup';
-import {AssetCostsTypeService} from '../services/asset-costs-type.service';
-import {Observable} from 'rxjs';
-import {switchMap} from 'rxjs/operators';
 import {AssetRevaluationService} from '../services/asset-revaluation.service';
 import {AssetRevaluationLookupService} from '../services/asset-revaluation-lookup.service';
 
 @Component({
-  selector: 'ss-asset-revaluation-detail',
-  templateUrl: './asset-revaluation-detail.component.html',
-  styleUrls: ['./asset-revaluation-detail.component.scss']
+    selector: 'ss-asset-revaluation-detail',
+    templateUrl: './asset-revaluation-detail.component.html',
+    styleUrls: ['./asset-revaluation-detail.component.scss']
 })
-export class AssetRevaluationDetailComponent extends  BaseEntityDetailComponent<AssetRevaluation> implements OnInit {
+export class AssetRevaluationDetailComponent extends BaseChildEntityDetailComponent<AssetRevaluation> implements OnInit {
     private revaluationLookupSrv = inject(AssetRevaluationLookupService);
     private parentId = 0;
+    private formBuilder = inject(UntypedFormBuilder);
     revaluationLookup = new DefaultAutoCompleteModel(this.revaluationLookupSrv);
 
-    constructor(
-        public assetRevaluationSrv: AssetRevaluationService,
-        public override shellSrv: ShellService,
-        public override snackBarSrv: SnackBarService,
-        public override route: ActivatedRoute,
-        public override formBuilder: UntypedFormBuilder,
-        public httpSrv: HttpService,
-        public override confirmationSrv: ConfirmationDialogService,
-        public lookupsSrv: LookupsService) {
-        super(assetRevaluationSrv,
-            shellSrv,
-            snackBarSrv,
-            route,
-            formBuilder,
-            confirmationSrv,
-            'ASSET_REVALUATIONS');
+    constructor(public assetRevaluationSrv: AssetRevaluationService) {
+        super(assetRevaluationSrv);
     }
 
     public override setupForm(a: AssetRevaluation): UntypedFormGroup {
@@ -55,22 +33,4 @@ export class AssetRevaluationDetailComponent extends  BaseEntityDetailComponent<
         });
     }
 
-    protected override getRouteParam(): Observable<any> {
-        return this.route
-            .parent
-            .parent.params
-            .pipe(
-                switchMap(p => {
-                    this.parentId = +p['id'] || 0;
-                    this.assetRevaluationSrv.setParentId(this.parentId);
-                    return super.getRouteParam();
-                })
-            );
-    }
-
-
-    override ngOnInit() {
-        super.ngOnInit();
-        this.shellSrv.setGoBackPath('../..', this.route);
-    }
 }

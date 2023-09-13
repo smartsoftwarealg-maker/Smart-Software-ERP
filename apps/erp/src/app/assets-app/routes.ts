@@ -31,7 +31,7 @@ import {
     ASSETS_INJECTION_URL,
     ASSETS_DEPRECIATION_URL,
     COMMON_MARKS_URL, docInfoRoutes, DASHBOARD_URL, ASSET_TRANSFER_URL, CMMS_ASSET_TREE
-} from "../common";
+} from '../common';
 import {
     AssetCostsDetailComponent,
     AssetCostsListComponent,
@@ -67,7 +67,7 @@ import {
     DepreciationRateListComponent,
     DepreciationRateDetailComponent,
     AssetsTransferComponent, AssetTreeComponent
-} from "@ss/assets-component";
+} from '@ss/assets-component';
 import {ReportViewComponent} from '@ss/common/ui-report-param';
 import {ReportCatalogListComponent, ReportCatalogDetailComponent} from '@ss/administration/ui-report-catalog';
 import {OfficeDetailComponent, OfficesListComponent} from '@ss/organizations/ui-organizations';
@@ -108,12 +108,32 @@ export const mainRoutes: Routes = [
                         canActivate: [loginGuard],
                         canDeactivate: [CanDeactivateService],
                         children: [
-                            { path: '', redirectTo: 'archive', pathMatch: 'full'},
                             {
                                 path: 'archive',
                                 children: [
-                                    {path: '', component: AppArchiveListComponent, pathMatch: 'full' },
+                                    {path: '', component: AppArchiveListComponent, pathMatch: 'full'},
                                     {path: ':id', component: AppArchiveDetailComponent},
+                                ]
+                            },
+                            {
+                                path: 'costs',
+                                children: [
+                                    {path: '', component: AssetCostsListComponent, pathMatch: 'full'},
+                                    {path: ':id', component: AssetCostsDetailComponent},
+                                ]
+                            },
+                            {
+                                path: 'revaluations',
+                                children: [
+                                    {path: '', component: AssetRevaluationListComponent, pathMatch: 'full'},
+                                    {path: ':id', component: AssetRevaluationDetailComponent},
+                                ]
+                            },
+                            {
+                                path: 'blockings',
+                                children: [
+                                    {path: '', component: AssetBlockingListComponent, pathMatch: 'full'},
+                                    {path: ':id', component: AssetBlockingDetailComponent},
                                 ]
                             }
                         ]
@@ -447,7 +467,7 @@ export const mainRoutes: Routes = [
                             {
                                 path: 'archive',
                                 children: [
-                                    {path: '', component: AppArchiveListComponent, pathMatch: 'full' },
+                                    {path: '', component: AppArchiveListComponent, pathMatch: 'full'},
                                     {path: ':id', component: AppArchiveDetailComponent},
                                 ]
                             }
@@ -488,7 +508,7 @@ export const mainRoutes: Routes = [
                             {
                                 path: 'archive',
                                 children: [
-                                    {path: '', component: AppArchiveListComponent, pathMatch: 'full' },
+                                    {path: '', component: AppArchiveListComponent, pathMatch: 'full'},
                                     {path: ':id', component: AppArchiveDetailComponent},
                                 ]
                             }
@@ -533,7 +553,7 @@ export const mainRoutes: Routes = [
                 canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService]
             },
-            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
+            {path: '**', redirectTo: LIST_URL, pathMatch: 'full'}
         ]
     },
     {

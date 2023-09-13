@@ -73,7 +73,7 @@ export class AssetRevaluationListComponent implements OnInit {
     }
 
     public showDetail(id: number) {
-        this.router.navigate(['revaluations', id], { relativeTo: this.route }).then();
+        this.router.navigate([id], { relativeTo: this.route }).then();
     }
 
     ngOnDestroy() {
