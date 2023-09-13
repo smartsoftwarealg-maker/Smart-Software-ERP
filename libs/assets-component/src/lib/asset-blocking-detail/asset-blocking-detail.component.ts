@@ -1,5 +1,5 @@
 import { Component, inject, OnInit } from '@angular/core';
-import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
+import {BaseChildEntityDetailComponent, BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {Blocking} from '../assets-api';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
@@ -18,27 +18,15 @@ import {AssetBlockingTypeService} from '../services/asset-blocking-type.service'
     templateUrl: './asset-blocking-detail.component.html',
     styleUrls: ['./asset-blocking-detail.component.scss']
 })
-export class AssetBlockingDetailComponent extends BaseEntityDetailComponent<Blocking> implements OnInit {
+export class AssetBlockingDetailComponent extends BaseChildEntityDetailComponent<Blocking> implements OnInit {
     private typeLookupSrv = inject(AssetBlockingTypeService);
     typeLookup = new DefaultAutoCompleteModel(this.typeLookupSrv);
     private parentId = 0;
+    private formBuilder = inject(UntypedFormBuilder);
 
     constructor(
-        public assetBlockingSrv: AssetBlockingService,
-        public override shellSrv: ShellService,
-        public override snackBarSrv: SnackBarService,
-        public override route: ActivatedRoute,
-        public override formBuilder: UntypedFormBuilder,
-        public httpSrv: HttpService,
-        public override confirmationSrv: ConfirmationDialogService,
-        public lookupsSrv: LookupsService) {
-        super(assetBlockingSrv,
-            shellSrv,
-            snackBarSrv,
-            route,
-            formBuilder,
-            confirmationSrv,
-            'ASSET_BLOCKINGS');
+        public assetBlockingSrv: AssetBlockingService) {
+        super(assetBlockingSrv);
     }
 
     public override setupForm(a: Blocking): UntypedFormGroup {
@@ -54,22 +42,22 @@ export class AssetBlockingDetailComponent extends BaseEntityDetailComponent<Bloc
         });
     }
 
-    protected override getRouteParam(): Observable<any> {
-        return this.route
-            .parent
-            .parent.params
-            .pipe(
-                switchMap(p => {
-                    this.parentId = +p['id'] || 0;
-                    this.assetBlockingSrv.setParentId(this.parentId);
-                    return super.getRouteParam();
-                })
-            );
-    }
+    // protected override getRouteParam(): Observable<any> {
+    //     return this.route
+    //         .parent
+    //         .parent.params
+    //         .pipe(
+    //             switchMap(p => {
+    //                 this.parentId = +p['id'] || 0;
+    //                 this.assetBlockingSrv.setParentId(this.parentId);
+    //                 return super.getRouteParam();
+    //             })
+    //         );
+    // }
 
 
-    override ngOnInit() {
-        super.ngOnInit();
-        this.shellSrv.setGoBackPath('../..', this.route);
-    }
+    // override ngOnInit() {
+    //     super.ngOnInit();
+    //     this.shellSrv.setGoBackPath('..', this.route);
+    // }
 }

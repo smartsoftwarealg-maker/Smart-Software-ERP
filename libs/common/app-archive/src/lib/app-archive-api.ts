@@ -11,6 +11,7 @@ export const CMMS_ROUTING_ARCHIVES     = 8;
 export const PARK_ARCHIVES             = 9;
 
 export const APP_ARCHIVE_URL = '/archives';
+export const ARCHIVE_ROUTE_URL = 'archive';
 
 export interface AppArchive {
     id: number;
