@@ -482,6 +482,17 @@ export const cmmsRoutes: Routes = [
                             {path: '', component: AssetPmListComponent, pathMatch: 'full' },
                             {path: ':id', component: AssetPmDetailComponent},
                         ]
+                    },
+                    {
+                        path: 'inspection',
+                        children: [
+                            {   path: '',
+                                component: AssetPmListComponent,
+                                pathMatch: 'full',
+                                data: { inspection: true }
+                            },
+                            {path: ':id', component: AssetPmDetailComponent, data: { inspection: true } },
+                        ]
                     }
                 ],
                 data: { isCMMS : 'true' }

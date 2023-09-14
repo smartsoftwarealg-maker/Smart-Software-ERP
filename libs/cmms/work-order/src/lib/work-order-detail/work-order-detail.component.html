@@ -57,8 +57,7 @@
                 <mat-label translate>CMMS_FAULT_CAUSE</mat-label>
                 <ss-auto-complete matInput
                                   [model]="causeLookup"
-                                  formControlName="cause"
-                                  required="true">
+                                  formControlName="cause">
                 </ss-auto-complete>
             </mat-form-field>
 
@@ -105,6 +104,11 @@
                 <mat-form-field class="default-50">
                     <mat-label translate>PAYROLL_FULLNAME</mat-label>
                     <input matInput formControlName="creatorDescription" type="text">
+                </mat-form-field>
+
+                <mat-form-field class="default-50">
+                    <mat-label translate>COMMON_STATUS</mat-label>
+                    <input matInput formControlName="statusDescription" type="text">
                 </mat-form-field>
 
             </mat-expansion-panel>

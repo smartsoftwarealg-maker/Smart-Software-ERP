@@ -11,7 +11,13 @@ import { CommonUiLangModule } from '@ss/common/ui-lang';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { CMMSFaultCauseService, CMMSFaultService, CMMSPriorityService, CMMSRoutingService } from '@ss/cmms/lookups';
+import {
+    CmmsChecklistService,
+    CMMSFaultCauseService,
+    CMMSFaultService,
+    CMMSPriorityService,
+    CMMSRoutingService
+} from '@ss/cmms/lookups';
 import { CMMSPlanService } from '@ss/cmms/plans';
 import { AssetsService } from '@ss/assets-component';
 import { MatButtonModule } from '@angular/material/button';
@@ -27,6 +33,7 @@ export class AssetPmDetailComponent extends BaseChildEntityDetailComponent<PM> {
     private faultSrv = inject(CMMSFaultService);
     private causeSrv = inject(CMMSFaultCauseService);
     private routingSrv = inject(CMMSRoutingService);
+    private checklistSrv = inject(CmmsChecklistService);
     private planSrv = inject(CMMSPlanService);
     private assetSrv = inject(AssetsService);
     private prioritySrv = inject(CMMSPriorityService);
@@ -37,11 +44,15 @@ export class AssetPmDetailComponent extends BaseChildEntityDetailComponent<PM> {
     assetLookup = new DefaultAutoCompleteModel(this.assetSrv);
     priorityLookup = new DefaultAutoCompleteModel(this.prioritySrv);
     routingLookup = new DefaultAutoCompleteModel(this.routingSrv);
+    checklistLookup = new DefaultAutoCompleteModel(this.checklistSrv);
     faultLookup = new DefaultAutoCompleteModel(this.faultSrv);
     causeLookup = new DefaultAutoCompleteModel(this.causeSrv);
+    isChecklist = false;
 
     constructor(protected override entitySrv: AssetPmService) {
         super(entitySrv);
+        this.isChecklist = this.route.snapshot.data['inspection'] ?? false;
+        this.entitySrv.inspection = this.isChecklist;
     }
 
     setupForm(b: PM): UntypedFormGroup {
