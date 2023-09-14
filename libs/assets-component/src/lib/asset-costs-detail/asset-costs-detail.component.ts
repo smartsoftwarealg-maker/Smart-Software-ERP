@@ -1,5 +1,5 @@
 import { Component, inject, OnInit } from '@angular/core';
-import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
+import {BaseChildEntityDetailComponent, BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {AssetCost} from '../assets-api';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
@@ -18,28 +18,16 @@ import {AssetCostsTypeService} from '../services/asset-costs-type.service';
     templateUrl: './asset-costs-detail.component.html',
     styleUrls: ['./asset-costs-detail.component.scss']
 })
-export class AssetCostsDetailComponent extends BaseEntityDetailComponent<AssetCost> implements OnInit {
+export class AssetCostsDetailComponent extends BaseChildEntityDetailComponent<AssetCost> implements OnInit {
     private costTypeLookupSrv =  inject(AssetCostsTypeService);
+    private formBuilder = inject(UntypedFormBuilder);
     private parentId = 0;
     costTypeLookup = new DefaultAutoCompleteModel(this.costTypeLookupSrv);
     costTypes = [{ id: 1, description: 'ASSET_ACCOUNTANT'}, {id: 2, description: 'ASSET_FISCAL'}];
 
     constructor(
-        public assetCostSrv: AssetCostsService,
-        public override shellSrv: ShellService,
-        public override snackBarSrv: SnackBarService,
-        public override route: ActivatedRoute,
-        public override formBuilder: UntypedFormBuilder,
-        public httpSrv: HttpService,
-        public override confirmationSrv: ConfirmationDialogService,
-        public lookupsSrv: LookupsService) {
-        super(assetCostSrv,
-            shellSrv,
-            snackBarSrv,
-            route,
-            formBuilder,
-            confirmationSrv,
-            'ASSET_COSTS');
+        public assetCostSrv: AssetCostsService) {
+        super(assetCostSrv);
     }
 
     public override setupForm(a: AssetCost): UntypedFormGroup {
@@ -50,24 +38,5 @@ export class AssetCostsDetailComponent extends BaseEntityDetailComponent<AssetCo
             cost_id: [a.cost_id, Validators.required],
             amount: [a.amount || 0, Validators.required]
         });
-    }
-
-    protected override getRouteParam(): Observable<any> {
-        return this.route
-            .parent
-            .parent.params
-            .pipe(
-                switchMap(p => {
-                    this.parentId = +p['id'] || 0;
-                    this.assetCostSrv.setParentId(this.parentId);
-                    return super.getRouteParam();
-                })
-            );
-    }
-
-
-    override ngOnInit() {
-        super.ngOnInit();
-        this.shellSrv.setGoBackPath('../..', this.route);
     }
 }

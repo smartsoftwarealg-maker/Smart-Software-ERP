@@ -420,33 +420,39 @@
                 </div>
             </div>
         </mat-expansion-panel>
-        <mat-expansion-panel *ngIf="!isCMMS" #costs expanded="false" [class]="getPanelHeaderClass('costs', costs)">
+        <mat-expansion-panel *ngIf="!isCMMS" #costs expanded="false" [class]="getPanelHeaderClass('costs', costs)"
+                             (afterExpand)="showPanel(COSTS_ROUT)">
             <mat-expansion-panel-header>
                 <mat-panel-title translate>
                     ASSET_COSTS
                 </mat-panel-title>
             </mat-expansion-panel-header>
-            <ss-asset-costs-list [assetId]="id" [editable]="isEditable"></ss-asset-costs-list>
+            <router-outlet *ngIf="id && activePanel === COSTS_ROUT"></router-outlet>
+<!--            <ss-asset-costs-list [assetId]="id" [editable]="isEditable"></ss-asset-costs-list>-->
         </mat-expansion-panel>
 
         <mat-expansion-panel *ngIf="!isCMMS" #revaluations expanded="false"
-                             [class]="getPanelHeaderClass('revaluations', revaluations)">
+                             [class]="getPanelHeaderClass('revaluations', revaluations)"
+            (afterExpand)="showPanel(REVALUATIONS_ROUT)">
             <mat-expansion-panel-header>
                 <mat-panel-title translate>
                     ASSET_REVALUATIONS
                 </mat-panel-title>
             </mat-expansion-panel-header>
-            <ss-asset-revaluation-list [assetId]="id" [editable]="isEditable"></ss-asset-revaluation-list>
+            <router-outlet *ngIf="id && activePanel === REVALUATIONS_ROUT"></router-outlet>
+            <!--            <ss-asset-revaluation-list [assetId]="id" [editable]="isEditable"></ss-asset-revaluation-list>-->
         </mat-expansion-panel>
 
         <mat-expansion-panel *ngIf="!isCMMS" #bockings expanded="false"
-                             [class]="getPanelHeaderClass('bockings', bockings)">
+                             [class]="getPanelHeaderClass('blockings', bockings)"
+                             (afterExpand)="showPanel(BLOCKINGS_ROUT)">
             <mat-expansion-panel-header>
                 <mat-panel-title translate>
                     ASSET_BLOCKINGS
                 </mat-panel-title>
             </mat-expansion-panel-header>
-            <ss-asset-blocking-list [assetId]="id" [editable]="isEditable"></ss-asset-blocking-list>
+            <router-outlet *ngIf="id && activePanel === BLOCKINGS_ROUT"></router-outlet>
+<!--            <ss-asset-blocking-list [assetId]="id" [editable]="isEditable"></ss-asset-blocking-list>-->
         </mat-expansion-panel>
 
         <mat-expansion-panel *ngIf="!isCMMS" #appointments expanded="false"
@@ -480,14 +486,15 @@
         </mat-expansion-panel>
 
 
-        <mat-expansion-panel #archives expanded="false" [class]="getPanelHeaderClass('archives', archives)">
+        <mat-expansion-panel #archives expanded="false" [class]="getPanelHeaderClass('archives', archives)" (afterExpand)="showPanel(ARCHIVE_ROUT)">
             <mat-expansion-panel-header>
                 <mat-panel-title translate>
                     COMMON_ARCHIVE
                 </mat-panel-title>
             </mat-expansion-panel-header>
 
-            <ss-app-archive-main [id]="id" [appId]="LOCAL_ASSER_ARCHIVE" [editable]="isEditable"></ss-app-archive-main>
+            <router-outlet *ngIf="id && activePanel === ARCHIVE_ROUT"></router-outlet>
+<!--            <ss-app-archive-main [id]="id" [appId]="LOCAL_ASSER_ARCHIVE" [editable]="isEditable"></ss-app-archive-main>-->
 
         </mat-expansion-panel>
 

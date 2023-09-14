@@ -111,6 +111,8 @@ export interface AssetCost {
     cost_id?: number;
     amount: number;
     typeDescription?: string;
+
+    parentId: number; // Added to allow the usage of BaseChildEntity only.
 }
 
 export interface AssetRevaluation {
@@ -123,6 +125,8 @@ export interface AssetRevaluation {
     amount: number;
     deprec_rate: number;
     typeDescription?: string;
+
+    parentId: number; // Added to allow the usage of BaseChildEntity only.
 }
 
 export interface Blocking {
@@ -134,6 +138,8 @@ export interface Blocking {
     toDate: Date;
     blockingType?: number;
     typeDescription?: string;
+
+    parentId: number; // Added to allow the usage of BaseChildEntity only.
 }
 
 export interface AssetClass {

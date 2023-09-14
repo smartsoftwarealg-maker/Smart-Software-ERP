@@ -1,4 +1,4 @@
-import { Component, inject, Input, OnInit } from "@angular/core";
+import {Component, inject, Input, OnInit} from "@angular/core";
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {Asset, AssetReception, Depreciation, OfficeAutoComplete} from '../assets-api';
 import {KeepOnToolbar, ShellService, SnackBarService, ToolbarButton} from '@ss/common/ui-shell';
@@ -16,7 +16,7 @@ import {
 import {AssetsService} from '../services/assets.service';
 import {IsParamService, LoginService} from '@ss/common/api-common';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
-import { Agent, AgentService, ConsumerService, CustomerService, SupplierService } from "@ss/logistics/api-agent";
+import {Agent, AgentService, ConsumerService, CustomerService, SupplierService} from "@ss/logistics/api-agent";
 import {MatExpansionPanel} from '@angular/material/expansion';
 import {Account, AccountAutocompleteModel, AccountService} from '@ss/accounting/api-accounts';
 import {debounceTime, distinctUntilChanged, map, switchMap, tap} from 'rxjs/operators';
@@ -30,7 +30,15 @@ import {AssetClassService} from '../services/asset-class.service';
 import {BaseEntityService} from '@ss/common/api-base-entity';
 import {OfficeSearchComponent} from '../office-search/office-search.component';
 import {AssetReceptionService} from '../services/asset-reception.service';
-import { AGENT_ARCHIVES, AppArchiveService, ASSET_ARCHIVES } from "@ss/common/app-archive";
+import {
+    AGENT_ARCHIVES,
+    AppArchiveService,
+    ASSET_ARCHIVES,
+    ARCHIVE_ROUTE_URL
+} from "@ss/common/app-archive";
+import {AssetCostsService} from "../services/asset-costs.service";
+import {AssetRevaluationService} from "../services/asset-revaluation.service";
+import {AssetBlockingService} from "../services/asset-blocking.service";
 
 @Component({
     selector: 'ss-assets-detail',
@@ -46,15 +54,18 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> impl
     private loginSrv = inject(LoginService);
     private endSrv = inject(AssetEndsService);
     private dialog = inject(MatDialog);
-    private officeSrv =  inject(OfficeService);
+    private officeSrv = inject(OfficeService);
     private accountSrv = inject(AccountService);
-    private isParamSrv =  inject(IsParamService);
-    private costCenterSrv =  inject(CostCenterService);
-    private classSrv =  inject(AssetClassService);
-    private statusSrv =  inject(FurnitureStatusService);
-    private consumerSrv =  inject(ConsumerService);
-    private markSrv =  inject(MarkService);
-    private receptionSrv =  inject(AssetReceptionService);
+    private isParamSrv = inject(IsParamService);
+    private costCenterSrv = inject(CostCenterService);
+    private classSrv = inject(AssetClassService);
+    private statusSrv = inject(FurnitureStatusService);
+    private consumerSrv = inject(ConsumerService);
+    private markSrv = inject(MarkService);
+    private receptionSrv = inject(AssetReceptionService);
+    private assetCostsSrv = inject(AssetCostsService);
+    private assetRevaluationSrv = inject(AssetRevaluationService);
+    private assetBlockingService = inject(AssetBlockingService);
     private isANSEJ = false;
 
     private importBtn: ToolbarButton = {
@@ -70,30 +81,43 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> impl
     // Public
     minLength = 1;
     depreciationTypes: Lookup[] = [
-        { id: 1, description: 'ASSET_LINEAR' },
-        { id: 2, description: 'ASSET_DECLINING' },
-        { id: 3, description: 'ASSET_ACTIVITY' },
+        {id: 1, description: 'ASSET_LINEAR'},
+        {id: 2, description: 'ASSET_DECLINING'},
+        {id: 3, description: 'ASSET_ACTIVITY'},
     ];
 
-    isAQS   = false;
+    isAQS = false;
     isCMMS: Boolean = false;
 
-    markAutoCompleteModel      = new DefaultAutoCompleteModel(this.markSrv);
-    classAutoCompleteModel     = new DefaultAutoCompleteModel(this.classSrv);
-    statusAutoCompleteModel    = new DefaultAutoCompleteModel(this.statusSrv);
-    accountAutoCompleteModel   = new AccountAutocompleteModel(this.accountSrv);
-    ccAutoCompleteModel        = new DefaultAutoCompleteModel(this.costCenterSrv);
-    officeAutoCompleteModel    = new OfficeAutoComplete(this.officeSrv);
-    requesterLookup            = new DefaultAutoCompleteModel<Agent>(this.consumerSrv, 'id', 'denomination');
-    agentLookup                = new DefaultAutoCompleteModel<Agent>(this.agentSrv, 'id', 'denomination');
-    beneficiaryLookup          = new DefaultAutoCompleteModel<Agent>(this.consumerSrv, 'id', 'denomination');
-    customerAutoCompleteModel  = new DefaultAutoCompleteModel(this.customerSrv, 'id', 'denomination');
-    receptionLookup            = new ReceptionAutoComplete(this.receptionSrv);
+    markAutoCompleteModel = new DefaultAutoCompleteModel(this.markSrv);
+    classAutoCompleteModel = new DefaultAutoCompleteModel(this.classSrv);
+    statusAutoCompleteModel = new DefaultAutoCompleteModel(this.statusSrv);
+    accountAutoCompleteModel = new AccountAutocompleteModel(this.accountSrv);
+    ccAutoCompleteModel = new DefaultAutoCompleteModel(this.costCenterSrv);
+    officeAutoCompleteModel = new OfficeAutoComplete(this.officeSrv);
+    requesterLookup = new DefaultAutoCompleteModel<Agent>(this.consumerSrv, 'id', 'denomination');
+    agentLookup = new DefaultAutoCompleteModel<Agent>(this.agentSrv, 'id', 'denomination');
+    beneficiaryLookup = new DefaultAutoCompleteModel<Agent>(this.consumerSrv, 'id', 'denomination');
+    customerAutoCompleteModel = new DefaultAutoCompleteModel(this.customerSrv, 'id', 'denomination');
+    receptionLookup = new ReceptionAutoComplete(this.receptionSrv);
     accountantDepreciation: Depreciation[] = [];
     fiscalDepreciation: Depreciation[] = [];
     assetEnds: Lookup[] = [];
     depreciationColumns = ['year', 'depreciation', 'totalDepreciation', 'remaining'];
     readonly LOCAL_ASSER_ARCHIVE = ASSET_ARCHIVES;
+
+    readonly ARCHIVE_ROUT = 0;
+    readonly COSTS_ROUT = 1;
+    readonly REVALUATIONS_ROUT = 2;
+    readonly BLOCKINGS_ROUT = 3;
+
+    activePanel: -1 | 0 | 1 | 2 | 3 = -1;
+    private PANELS = [
+        ARCHIVE_ROUTE_URL,     // 0
+        "costs",               // 1
+        "revaluations",         // 2
+        "blockings"             // 3
+    ];
 
     constructor(
         public detailSrv: AssetsService,
@@ -116,15 +140,29 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> impl
         this.receptionLookup.onObjectSelected = o => this.onReceptionChange(o);
     }
 
+    showPanel(panel: -1 | 0 | 1 | 2 | 3) {
+        this.activePanel = panel;
+        const dest = this.PANELS[panel];
+        if (this.router.url.indexOf(dest) < 0) {
+            this.router.navigate([dest], {relativeTo: this.route}).then();
+        }
+    }
+
     setupForm(b: Asset): UntypedFormGroup {
-        this.receptionSrv.sortColumn = { active: 'id', direction: 'asc'};
+        this.assetCostsSrv.setParentId(b.id);
+        this.assetRevaluationSrv.setParentId(b.id);
+        this.assetBlockingService.setParentId(b.id);
+        this.receptionSrv.sortColumn = {active: 'id', direction: 'asc'};
         const today = new Date();
         this.importBtn.visible = !b.id && this.isANSEJ;
-        this.minLength = this.isANSEJ? 11 : 1;
-        const ref2Validators = this.isANSEJ? [Validators.maxLength(5), Validators.required] : [Validators.maxLength(20)];
+        this.minLength = this.isANSEJ ? 11 : 1;
+        const ref2Validators = this.isANSEJ ? [Validators.maxLength(5), Validators.required] : [Validators.maxLength(20)];
         const form = this.formBuilder.group({
             id: [b.id],
-            reference: [{value: b.reference, disabled: !!b.isFinal}, [Validators.minLength(this.minLength),  Validators.required]],
+            reference: [{
+                value: b.reference,
+                disabled: !!b.isFinal
+            }, [Validators.minLength(this.minLength), Validators.required]],
             reference2: [{value: b.reference2 || this.maxReference, disabled: !!b.isFinal}, ref2Validators],
             description: [{value: b.description, disabled: !!b.isFinal}, Validators.required],
             acquisitionDate: [b.acquisitionDate],
@@ -137,19 +175,19 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> impl
             vat: [b.vat || 0, Validators.required],
             itemCount: [b.itemCount || 1],
             depreciationType: [b.depreciationType || 1],
-            supplier: [{ value: b.supplier, disabled: true }],
-            originalSupplier: [{ value: b.originalSupplier, disabled: true }],
+            supplier: [{value: b.supplier, disabled: true}],
+            originalSupplier: [{value: b.originalSupplier, disabled: true}],
             dateOut: [b.dateOut],
             customer: [b.customer],
-            serial_no: [{ value: b.serial_no, disabled: !!b.isFinal }],
+            serial_no: [{value: b.serial_no, disabled: !!b.isFinal}],
             location: [b.location],
             centerId: [b.centerId || this.loginSrv.appCtx.center],
-            accountno:  [{ value: b.accountno, disabled: !!b.isFinal}],
-            accountId: [{ value: b.accountId, disabled: !!b.isFinal}, Validators.required],
-            costCenter: [{ value: b.costCenter, disabled: !!b.isFinal}],
+            accountno: [{value: b.accountno, disabled: !!b.isFinal}],
+            accountId: [{value: b.accountId, disabled: !!b.isFinal}, Validators.required],
+            costCenter: [{value: b.costCenter, disabled: !!b.isFinal}],
             investEnd: [b.investEnd],
             receptionNumber: [b.receptionNumber],
-            receptionDate: [{ value: b.receptionDate, disabled: true }],
+            receptionDate: [{value: b.receptionDate, disabled: true}],
             comment: [b.comment],
             office: [b.office],
             beneficiaryId: [b.beneficiaryId],
@@ -158,23 +196,23 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> impl
             investment_type: [b.investment_type],
             old_depreciation: [b.old_depreciation || 0],
             outOfService: [b.outOfService || false],
-            startYear:   [b.startYear || 0],
-            assetClass:  [{ value: b.assetClass, disabled: !!b.isFinal}, Validators.required],
-            status:      [b.status],
-            receptionId:    [{ value: b.receptionId, disabled: !!b.isFinal}],
-            orderNumber:    [{ value: b.orderNumber, disabled: true }],
-            orderDate:      [{ value: b.orderDate, disabled: true }],
-            requestNumber:  [b.requestNumber],
-            requestDate:    [b.requestDate],
-            requester:      [b.requester],
-            mark:           [{ value: b.mark, disabled: !!b.isFinal}],
-            deliveryNumber: [{ value: b.deliveryNumber, disabled: true }],
-            deliveryDate:   [{ value: b.deliveryDate, disabled: true }],
-            invoiceNumber:  [{ value: b.invoiceNumber, disabled: true }],
-            invoiceDate:    [{ value: b.invoiceDate, disabled: true }],
-            site:           [{ value: b.site, disabled: true }],
-            building:       [{ value: b.building, disabled: true }],
-            isVehicle:      [b.isVehicle]
+            startYear: [b.startYear || 0],
+            assetClass: [{value: b.assetClass, disabled: !!b.isFinal}, Validators.required],
+            status: [b.status],
+            receptionId: [{value: b.receptionId, disabled: !!b.isFinal}],
+            orderNumber: [{value: b.orderNumber, disabled: true}],
+            orderDate: [{value: b.orderDate, disabled: true}],
+            requestNumber: [b.requestNumber],
+            requestDate: [b.requestDate],
+            requester: [b.requester],
+            mark: [{value: b.mark, disabled: !!b.isFinal}],
+            deliveryNumber: [{value: b.deliveryNumber, disabled: true}],
+            deliveryDate: [{value: b.deliveryDate, disabled: true}],
+            invoiceNumber: [{value: b.invoiceNumber, disabled: true}],
+            invoiceDate: [{value: b.invoiceDate, disabled: true}],
+            site: [{value: b.site, disabled: true}],
+            building: [{value: b.building, disabled: true}],
+            isVehicle: [b.isVehicle]
         });
         if (!this.isAQS) {
             form.controls['assetClass'].clearValidators();
@@ -258,58 +296,58 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> impl
                 delete asset['className'];
                 delete asset['ccCode'];
                 asset.id = 0;
-                asset.reference2         =  this.form?.controls['reference2']?.value;
-                asset.centerId           =  this.loginSrv.appCtx.center;
-                asset.accountno          =  asset.accountno        || null;
-                asset.description        =  asset.description      || null;
-                asset.acquisitionDate    =  asset.acquisitionDate  || null;
-                asset.serviceDate        =  asset.serviceDate      || null;
-                asset.reserviceDate      =  asset.reserviceDate    || null;
-                asset.invoiceNumber      =  asset.invoiceNumber    || null;
-                asset.itemCount          =  asset.itemCount        || null;
-                asset.acquisitionValue   =  asset.acquisitionValue || 0;
-                asset.historicValue      =  asset.historicValue    || 0;
-                asset.depreciationRate   =  asset.depreciationRate || null;
-                asset.depreciationType   =  asset.depreciationType || null;
-                asset.residualValue      =  asset.residualValue    || null;
-                asset.supplier           =  asset.supplier         || null;
-                asset.requester          =  asset.requester        || null;
-                asset.originalSupplier   =  asset.originalSupplier || null;
-                asset.receptionNumber    =  asset.receptionNumber  || null;
-                asset.dateOut            =  null;
-                asset.customer           =  null;
-                asset.serial_no          =  asset.serial_no        || null;
-                asset.location           =  asset.location         || null;
-                asset.costCenter         =  asset.costCenter       || null;
-                asset.investEnd          =  null;
-                asset.startYear          =  asset.startYear        || 0;
-                asset.receptionDate      =  asset.receptionDate    || null;
-                asset.comment            =  asset.comment          || null;
-                asset.requester          =  asset.requester        || null;
-                asset.requestNumber      =  asset.requestNumber    || null;
-                asset.requestDate        =  asset.requestDate      || null;
-                asset.orderNumber        =  asset.orderNumber      || null;
-                asset.orderDate          =  asset.orderDate        || null;
-                asset.office             =  asset.office           || null;
-                asset.vat                =  asset.vat              || 0;
-                asset.sales_price        =  asset.sales_price      || null;
-                asset.investment_type    =  asset.investment_type  || null;
-                asset.outOfService       =  false;
-                asset.accountId          =  asset.accountId        || null;
-                asset.assetClass         =  asset.assetClass       || null;
-                asset.status             =  asset.status           || null;
-                asset.mark               =  asset.mark             || null;
-                asset.site               =  asset.site             || null;
-                asset.building           =  asset.building         || null;
-                asset.beneficiaryId      =  asset.beneficiaryId    || null;
-                asset.receptionId        =  asset.receptionId      || null;
-                asset.deliveryNumber     =  asset.deliveryNumber   || null;
-                asset.deliveryDate       =  asset.deliveryDate     || null;
-                asset.invoiceDate        =  asset.invoiceDate      || null;
-                asset.isVehicle          =  asset.isVehicle        || false;
-                asset.reserviceDate      =  asset.reserviceDate    || null;
+                asset.reference2 = this.form?.controls['reference2']?.value;
+                asset.centerId = this.loginSrv.appCtx.center;
+                asset.accountno = asset.accountno || null;
+                asset.description = asset.description || null;
+                asset.acquisitionDate = asset.acquisitionDate || null;
+                asset.serviceDate = asset.serviceDate || null;
+                asset.reserviceDate = asset.reserviceDate || null;
+                asset.invoiceNumber = asset.invoiceNumber || null;
+                asset.itemCount = asset.itemCount || null;
+                asset.acquisitionValue = asset.acquisitionValue || 0;
+                asset.historicValue = asset.historicValue || 0;
+                asset.depreciationRate = asset.depreciationRate || null;
+                asset.depreciationType = asset.depreciationType || null;
+                asset.residualValue = asset.residualValue || null;
+                asset.supplier = asset.supplier || null;
+                asset.requester = asset.requester || null;
+                asset.originalSupplier = asset.originalSupplier || null;
+                asset.receptionNumber = asset.receptionNumber || null;
+                asset.dateOut = null;
+                asset.customer = null;
+                asset.serial_no = asset.serial_no || null;
+                asset.location = asset.location || null;
+                asset.costCenter = asset.costCenter || null;
+                asset.investEnd = null;
+                asset.startYear = asset.startYear || 0;
+                asset.receptionDate = asset.receptionDate || null;
+                asset.comment = asset.comment || null;
+                asset.requester = asset.requester || null;
+                asset.requestNumber = asset.requestNumber || null;
+                asset.requestDate = asset.requestDate || null;
+                asset.orderNumber = asset.orderNumber || null;
+                asset.orderDate = asset.orderDate || null;
+                asset.office = asset.office || null;
+                asset.vat = asset.vat || 0;
+                asset.sales_price = asset.sales_price || null;
+                asset.investment_type = asset.investment_type || null;
+                asset.outOfService = false;
+                asset.accountId = asset.accountId || null;
+                asset.assetClass = asset.assetClass || null;
+                asset.status = asset.status || null;
+                asset.mark = asset.mark || null;
+                asset.site = asset.site || null;
+                asset.building = asset.building || null;
+                asset.beneficiaryId = asset.beneficiaryId || null;
+                asset.receptionId = asset.receptionId || null;
+                asset.deliveryNumber = asset.deliveryNumber || null;
+                asset.deliveryDate = asset.deliveryDate || null;
+                asset.invoiceDate = asset.invoiceDate || null;
+                asset.isVehicle = asset.isVehicle || false;
+                asset.reserviceDate = asset.reserviceDate || null;
 
-                this.form.setValue(asset, { onlySelf: false, emitEvent: true });
+                this.form.setValue(asset, {onlySelf: false, emitEvent: true});
             }
         });
     }
@@ -370,7 +408,7 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> impl
     openReception() {
         const id = this.form.get('receptionId').value || 0;
         if (id > 0) {
-            this.router.navigate(['../../asset-receptions', id], { relativeTo: this.route }).then();
+            this.router.navigate(['../../asset-receptions', id], {relativeTo: this.route}).then();
         }
     }
 

@@ -1,3 +1,14 @@
+<div class="button_div size" *ngIf="form">
+    <button mat-mini-fab (click)="save()"
+            color="accent" *ngIf="isEditable">
+        <i class="fas fa-save"></i>
+    </button>
+    <button mat-mini-fab (click)="cancel()"
+            color="warn">
+        <i class="fas fa-redo"></i>
+    </button>
+</div>
+
 <form *ngIf="form !== null" novalidate [formGroup]="form">
     <mat-form-field class="default-100">
         <mat-label translate>COMMON_DECISION</mat-label>
