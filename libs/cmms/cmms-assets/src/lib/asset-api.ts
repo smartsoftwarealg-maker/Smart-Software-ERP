@@ -1,5 +1,6 @@
 export const CMMS_ASSETS = '/cmms-assets';
 export const CMMS_PM = '/pm';
+export const CMMS_INSPECTIONS = '/inspections';
 export const ASSETS = '/assets';
 
 export interface Asset {

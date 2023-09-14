@@ -8,7 +8,6 @@
         <i class="fas fa-redo"></i>
     </button>
 </div>
-
 <mat-card *ngIf="form">
     <mat-card-content>
         <form *ngIf="form" novalidate [formGroup]="form">
@@ -17,8 +16,7 @@
                 <mat-label translate>ASSET</mat-label>
                 <ss-auto-complete matInput
                                   [model]="assetLookup"
-                                  formControlName="parentId"
-                                  required="true">
+                                  formControlName="parentId">
                 </ss-auto-complete>
                 <mat-error *ngIf="form.controls['parentId'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
             </mat-form-field>
@@ -53,7 +51,7 @@
             <mat-form-field class="default-50 sm-100">
                 <mat-label translate>CMMS_ROUTING</mat-label>
                 <ss-auto-complete matInput
-                                  [model]="routingLookup"
+                                  [model]="isChecklist? checklistLookup : routingLookup"
                                   formControlName="routingId">
                 </ss-auto-complete>
             </mat-form-field>
@@ -62,17 +60,7 @@
                 <mat-label translate>CMMS_FAULT</mat-label>
                 <ss-auto-complete matInput
                                   [model]="faultLookup"
-                                  formControlName="fault"
-                                  required="true">
-                </ss-auto-complete>
-            </mat-form-field>
-
-            <mat-form-field class="default-50 sm-100">
-                <mat-label translate>CMMS_FAULT_CAUSE</mat-label>
-                <ss-auto-complete matInput
-                                  [model]="causeLookup"
-                                  formControlName="cause"
-                                  required="true">
+                                  formControlName="fault">
                 </ss-auto-complete>
             </mat-form-field>
 

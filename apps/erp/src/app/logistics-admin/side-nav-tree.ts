@@ -6,7 +6,11 @@ import {
     ABS_LOGISTICS_OPTIONS,
     ABS_LOGISTICS_AGENT_URL,
     ABS_LOGISTICS_VAT_URL,
-    ABS_LOGISTICS_ARTICLES_URL, ABS_LOGISTICS_CATEGORY, ABS_LOGISTICS_UNITS, ABS_LOGISTICS_CUSTOMER_URL
+    ABS_LOGISTICS_ARTICLES_URL,
+    ABS_LOGISTICS_CATEGORY,
+    ABS_LOGISTICS_UNITS,
+    ABS_LOGISTICS_CUSTOMER_URL,
+    ABS_LOGISTICS_SUPPLIER_URL
 } from "../common";
 import {SideNavNode} from '@ss/common/api-common';
 
@@ -28,8 +32,14 @@ export const logisticsAdminNavTree: SideNavNode = {
             accessRights: 'Agent'
         },
         {
+            name: 'LOGISTICS_SUPPLIER',
+            icon: 'fa-duotone fa-ship',
+            route: ABS_LOGISTICS_SUPPLIER_URL,
+            accessRights: 'Customer'
+        },
+        {
             name: 'LOGISTICS_CUSTOMER',
-            icon: 'fas fa-user',
+            icon: 'fa-solid fa-cart-shopping',
             route: ABS_LOGISTICS_CUSTOMER_URL,
             accessRights: 'Customer'
         },

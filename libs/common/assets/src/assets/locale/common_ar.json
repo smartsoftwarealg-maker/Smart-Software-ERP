@@ -302,5 +302,6 @@
     "DUPLICATE":                  "ينسخ",
     "MONTH":                      "شهر",
     "DESTINATIONS":               "الوجهات",
-    "HOME":                       "الرئيسية"
+    "HOME":                       "الرئيسية",
+    "RECORD_NO":                  "رقم السجل"
 }

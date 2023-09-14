@@ -9,7 +9,12 @@ import {
     LOGISTICS_CURRENCY_URL,
     LOGISTICS_VAT_URL,
     LOGISTICS_NUMBERING_URL,
-    LOGISTICS_CATEGORY_URL, docInfoRoutes, LOGISTICS_ARTICLES_URL, STOCK_UNITS_URL, LOGISTICS_CUSTOMER_URL
+    LOGISTICS_CATEGORY_URL,
+    docInfoRoutes,
+    LOGISTICS_ARTICLES_URL,
+    STOCK_UNITS_URL,
+    LOGISTICS_CUSTOMER_URL,
+    LOGISTICS_SUPPLIER_URL
 } from "../common";
 import {ABS_INDEX_URL, CanDeactivateService, LIST_URL} from '@ss/common/api-common';
 import {Routes} from '@angular/router';
@@ -100,6 +105,40 @@ export const mainRoutes: Routes = [
                         canActivate: [loginGuard],
                         canDeactivate: [CanDeactivateService],
                         data: {sales: true, customer: true },
+                        children: [
+                            { path: '', redirectTo: 'archive', pathMatch: 'full'},
+                            {
+                                path: 'archive',
+                                children: [
+                                    {path: '', component: AppArchiveListComponent, pathMatch: 'full' },
+                                    {path: ':id', component: AppArchiveDetailComponent},
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+        ]
+    },
+    {
+        path: LOGISTICS_SUPPLIER_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: AgentListComponent,
+                canActivate: [loginGuard],
+                data: {sales: true, supplier: true },
+                children: docInfoRoutes
+            },
+            {
+                path: ':id',
+                children: [
+                    {
+                        path: '',
+                        component: AgentDetailComponent,
+                        canActivate: [loginGuard],
+                        canDeactivate: [CanDeactivateService],
+                        data: {sales: true, supplier: true },
                         children: [
                             { path: '', redirectTo: 'archive', pathMatch: 'full'},
                             {

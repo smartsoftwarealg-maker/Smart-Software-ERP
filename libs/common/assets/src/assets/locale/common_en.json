@@ -303,5 +303,6 @@
     "DUPLICATE":                 "Duplicate",
     "MONTH":                     "Month",
     "DESTINATIONS":              "Destinations",
-    "HOME":                      "Home"
+    "HOME":                      "Home",
+    "RECORD_NO":                 "Record No."
 }

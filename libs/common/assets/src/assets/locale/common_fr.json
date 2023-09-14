@@ -306,5 +306,6 @@
     "DUPLICATE":                  "Dupliquer",
     "MONTH":                      "Mois",
     "DESTINATIONS":                "Destinations",
-    "HOME":                       "Acceil"
+    "HOME":                       "Acceil",
+    "RECORD_NO":                  "N° PV"
 }

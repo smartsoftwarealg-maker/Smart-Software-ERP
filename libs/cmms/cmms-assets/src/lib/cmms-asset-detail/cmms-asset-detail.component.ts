@@ -79,9 +79,10 @@ export class CmmsAssetDetailComponent extends BaseEntityDetailComponent<Asset> i
     // Public
     minLength = 1;
     activePanel = -1;
-    PANEL_ROUTES = ['pm', 'archive'];
+    PANEL_ROUTES = ['pm', 'inspection', 'archive'];
     readonly PM_PANEL = 0;
-    readonly ARCHIVE_PANEL = 1;
+    readonly INSPECTION_PANEL = 1;
+    readonly ARCHIVE_PANEL = 2;
 
     markAutoCompleteModel      = new DefaultAutoCompleteModel(this.markSrv);
     classAutoCompleteModel     = new DefaultAutoCompleteModel(this.classSrv);

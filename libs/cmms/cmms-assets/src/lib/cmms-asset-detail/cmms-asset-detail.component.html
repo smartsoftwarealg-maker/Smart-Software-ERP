@@ -228,15 +228,18 @@
 
     </mat-expansion-panel>
 
-    <mat-expansion-panel #attributes expanded="false" [class]="getPanelHeaderClass('attributes', attributes)">
+    <mat-expansion-panel #inspectionPanel
+                         expanded="false"
+                         (afterExpand)="showPanel(INSPECTION_PANEL)"
+                         [class.b-primary-expansion-panel]="inspectionPanel.expanded">
       <mat-expansion-panel-header>
         <mat-panel-title translate>
-          ADMINISTRATION_ATTRIBUTES
+          CMMS_INSPECTION
         </mat-panel-title>
       </mat-expansion-panel-header>
 
-      <ss-child-attributes [childAttribute]="'/assets'" [attributeId]="id" [parentId]="2"
-                           [editable]="isEditable"></ss-child-attributes>
+      <router-outlet *ngIf="id && activePanel === INSPECTION_PANEL"></router-outlet>
+
     </mat-expansion-panel>
 
     <mat-expansion-panel #pmPanel
@@ -253,7 +256,19 @@
 
     </mat-expansion-panel>
 
-    <mat-expansion-panel #archivePanel
+      <mat-expansion-panel #attributes expanded="false" [class]="getPanelHeaderClass('attributes', attributes)">
+          <mat-expansion-panel-header>
+              <mat-panel-title translate>
+                  ADMINISTRATION_ATTRIBUTES
+              </mat-panel-title>
+          </mat-expansion-panel-header>
+
+          <ss-child-attributes [childAttribute]="'/assets'" [attributeId]="id" [parentId]="2"
+                               [editable]="isEditable">
+          </ss-child-attributes>
+      </mat-expansion-panel>
+
+      <mat-expansion-panel #archivePanel
                          expanded="false"
                          (afterExpand)="showPanel(ARCHIVE_PANEL)"
                          [class.b-primary-expansion-panel]="archivePanel.expanded">

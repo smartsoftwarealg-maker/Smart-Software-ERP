@@ -14,7 +14,14 @@ import {
     LookupsService,
     PayModeService
 } from '@ss/common/api-lookup';
-import { Agent, AgentCenter, AgentCenterService, AgentService, CUSTOMER_URL } from '@ss/logistics/api-agent';
+import {
+    Agent, AGENT_URL,
+    AgentCenter,
+    AgentCenterService,
+    AgentService,
+    CUSTOMER_URL,
+    SUPPLIER_URL
+} from '@ss/logistics/api-agent';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {MatExpansionPanel} from '@angular/material/expansion';
 import { FormValidators, IsParamService, LoginService, Role } from '@ss/common/api-common';
@@ -26,7 +33,6 @@ import { CenterService } from '@ss/administration/api-center';
 import { MatDialog } from '@angular/material/dialog';
 import { AgentImportComponent } from '../agent-import/agent-import.component';
 import { AgentPriceService } from '@ss/logistics/api-agent-price';
-
 
 @Component({
     selector: 'ss-agent-detail',
@@ -52,7 +58,6 @@ export class AgentDetailComponent extends BaseEntityDetailComponent<Agent> imple
     private companyTypeSrv = inject(CompanyTypeService);
     private citySrv = inject(CityService);
     private countrySrv = inject(CountryService);
-
 
     private invImportBtn: ToolbarButton = {
         disabled: false,
@@ -108,11 +113,11 @@ export class AgentDetailComponent extends BaseEntityDetailComponent<Agent> imple
                 tap(res => this.AQS = res),
                 switchMap(() => this.route.data),
                 tap(res => {
-                    if (res['customer']) {
-                        this.entitySrv.setURL(CUSTOMER_URL);
-                        this.agentTypeLookup = new CustomerLookup(this.agentTypeSrv);
-                        this.shellSrv.setTitle('LOGISTICS_CUSTOMER');
-                    }
+                    const isSupplier = res['supplier'];
+                    const isCustomer = res['customer'];
+                    this.entitySrv.setURL(isCustomer? CUSTOMER_URL : isSupplier? SUPPLIER_URL : AGENT_URL);
+                    this.shellSrv.setTitle(isCustomer? 'LOGISTICS_CUSTOMER': isSupplier ? 'LOGISTICS_SUPPLIER' : 'COMMON_AGENTS');
+                    this.agentTypeLookup = isSupplier? new SupplierLookup(this.agentTypeSrv): isCustomer? new CustomerLookup(this.agentTypeSrv) : this.agentTypeLookup;
                 })
             );
     }
@@ -339,5 +344,13 @@ class CustomerLookup extends DefaultAutoCompleteModel<Lookup> {
         super(srv);
     }
     override filterLoadedData = (x: Lookup[]) => x.filter(e => e && e.id < 2);
+    override getById = (id: Id) => id === null || id === undefined? of(null) : this.entitySrv.get(id);
+}
+
+class SupplierLookup extends DefaultAutoCompleteModel<Lookup> {
+    constructor(public srv: AgentTypeService) {
+        super(srv);
+    }
+    override filterLoadedData = (x: Lookup[]) => x.filter(e => e?.id == 1 || e?.id == 2);
     override getById = (id: Id) => id === null || id === undefined? of(null) : this.entitySrv.get(id);
 }

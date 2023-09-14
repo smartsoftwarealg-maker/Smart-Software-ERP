@@ -20,7 +20,7 @@ export class AssetPmListComponent extends BaseChildEntityListComponent<PM>{
     override displayedColumns = [
         'reference',
         'description',
-        'assetDescription',
+        // 'assetDescription',
         'planDescription',
         'lastReleased',
         'nextDue',
@@ -29,6 +29,6 @@ export class AssetPmListComponent extends BaseChildEntityListComponent<PM>{
 
     constructor(protected override detailSrv: AssetPmService) {
         super(detailSrv);
+        this.detailSrv.inspection = this.route.snapshot.data['inspection'];
     }
-
 }
