@@ -43,11 +43,6 @@ export class AppArchiveService extends BaseEntityExtendedService<AppArchive> {
         return this._editable;
     }
 
-    // canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot):
-    //     Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    //     return this._appId > 0 && this.getParentId() > 0;
-    // }
-
     get isReady() {
         return this._appId > 0 && this.getParentId() > 0;
     }
@@ -80,6 +75,7 @@ export class AppArchiveService extends BaseEntityExtendedService<AppArchive> {
             .set('refdate', refDate || '');
         return this.httpSrv.getData<AppArchive>('/archives/asset-receptions', offset, limit, null, null, params);
     }
+
     getAssetArchives(reference: string, description: string, offset: number, limit: number): Observable<AppArchiveObs> {
         const params = new HttpParams()
             .set('reference', reference)

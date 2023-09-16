@@ -43,6 +43,7 @@ import {
 } from '@ss/treasury/ui-transactions';
 import {TreasuryGroupDetailComponent, TreasuryGroupListComponent} from '@ss/common/ui-lookup';
 import {loginGuard} from '../erp-guards';
+import { TREASURY_ARCHIVES } from '@ss/common/app-archive';
 
 export const mainRoutes: Routes = [
     {
@@ -170,9 +171,9 @@ export const mainRoutes: Routes = [
                     {
                         path: 'archive',
                         children: [
-                            {path: '', component: AppArchiveListComponent, pathMatch: 'full'},
-                            {path: ':id', component: AppArchiveDetailComponent},
-                            {path: '**', component: AppArchiveListComponent}
+                            {path: '', component: AppArchiveListComponent, pathMatch: 'full', data: { appId: TREASURY_ARCHIVES }},
+                            {path: ':id', component: AppArchiveDetailComponent, data: { appId: TREASURY_ARCHIVES }},
+                            {path: '**', component: AppArchiveListComponent,  data: { appId: TREASURY_ARCHIVES }}
                         ]
                     }
                 ]

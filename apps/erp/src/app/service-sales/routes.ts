@@ -52,6 +52,7 @@ import {
 import {
     ServiceCinvoiceLineDetailComponent
 } from '@ss/service-sales/service-invoice-cancellation';
+import { AGENT_ARCHIVES } from "@ss/common/app-archive";
 
 export const ssalesRoutes: Routes = [
     {
@@ -78,8 +79,8 @@ export const ssalesRoutes: Routes = [
                             {
                                 path: 'archive',
                                 children: [
-                                    {path: '', component: AppArchiveListComponent, pathMatch: 'full' },
-                                    {path: ':id', component: AppArchiveDetailComponent},
+                                    {path: '', component: AppArchiveListComponent, pathMatch: 'full', data: { appId: AGENT_ARCHIVES } },
+                                    {path: ':id', component: AppArchiveDetailComponent, data: { appId: AGENT_ARCHIVES }},
                                 ]
                             }
                         ]

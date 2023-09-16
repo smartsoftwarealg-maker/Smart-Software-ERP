@@ -6,7 +6,11 @@ import { AgentBalanceComponent } from '@ss/logistics/ui-agent-balance';
 import { AgentDebtsComponent } from '@ss/logistics/ui-agent-debts';
 import { CardComponent } from '@ss/logistics/ui-card';
 import { UiStockInfoComponent } from '@ss/logistics/ui-stock-info';
-import { AppArchiveDetailComponent, AppArchiveListComponent } from '@ss/common/app-archive';
+import {
+    ACC_TRANSACTION_ARCHIVES,
+    AppArchiveDetailComponent,
+    AppArchiveListComponent
+} from '@ss/common/app-archive';
 import {AgentAssetsListComponent} from '@ss/assets-component';
 
 // common
@@ -736,8 +740,8 @@ export const docInfoRoutes: Routes = [
     {
         path: 'archive',
         children: [
-            {path: '', component: AppArchiveListComponent, pathMatch: 'full' },
-            {path: ':id', component: AppArchiveDetailComponent},
+            {path: '', component: AppArchiveListComponent, pathMatch: 'full', data: { appId: ACC_TRANSACTION_ARCHIVES } },
+            {path: ':id', component: AppArchiveDetailComponent, data: { appId: ACC_TRANSACTION_ARCHIVES }},
         ]
     },
     {

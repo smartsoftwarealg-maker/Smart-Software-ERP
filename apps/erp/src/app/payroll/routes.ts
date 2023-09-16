@@ -95,7 +95,12 @@ import {
     WIVES_ROUTE_URL
 } from '@ss/payroll/api-employee';
 import {DashboardComponent} from '@ss/dashboard';
-import {AppArchiveDetailComponent, AppArchiveListComponent} from '@ss/common/app-archive';
+import {
+    AGENT_ARCHIVES,
+    AppArchiveDetailComponent,
+    AppArchiveListComponent,
+    EMPLOYEE_ARCHIVES
+} from '@ss/common/app-archive';
 import {ArchiveViewerListComponent} from '@ss/remuneration/archive-viewer';
 import {loginGuard, payrollGuard} from '../erp-guards';
 
@@ -378,8 +383,8 @@ export const mainRoutes: Routes = [
                             {
                                 path: 'archive',
                                 children: [
-                                    {path: '', component: AppArchiveListComponent, pathMatch: 'full' },
-                                    {path: ':id', component: AppArchiveDetailComponent},
+                                    {path: '', component: AppArchiveListComponent, pathMatch: 'full', data: { appId: AGENT_ARCHIVES } },
+                                    {path: ':id', component: AppArchiveDetailComponent, data: { appId: AGENT_ARCHIVES }},
                                 ]
                             },
                             {
@@ -514,8 +519,8 @@ export const mainRoutes: Routes = [
                             {
                                 path: 'archive',
                                 children: [
-                                    {path: '', component: AppArchiveListComponent, pathMatch: 'full' },
-                                    {path: ':id', component: AppArchiveDetailComponent},
+                                    {path: '', component: AppArchiveListComponent, pathMatch: 'full', data: { appId: EMPLOYEE_ARCHIVES } },
+                                    {path: ':id', component: AppArchiveDetailComponent, data: { appId: EMPLOYEE_ARCHIVES }},
                                 ]
                             }
                         ]

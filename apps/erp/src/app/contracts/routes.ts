@@ -21,7 +21,11 @@ import {
     ProjectMotiveDetailComponent,
     ProjectMotiveListComponent
 } from '@ss/common/ui-lookup';
-import {AppArchiveDetailComponent, AppArchiveListComponent} from '@ss/common/app-archive';
+import {
+    AppArchiveDetailComponent,
+    AppArchiveListComponent,
+    PART_ARCHIVES
+} from '@ss/common/app-archive';
 import {loginGuard} from '../erp-guards';
 
 export const mainRoutes: Routes = [
@@ -99,8 +103,8 @@ export const mainRoutes: Routes = [
                     {
                         path: 'archives',
                         children: [
-                            {path: '', component: AppArchiveListComponent, pathMatch: 'full'},
-                            {path: ':id', component: AppArchiveDetailComponent}
+                            {path: '', component: AppArchiveListComponent, pathMatch: 'full', data: { appId: PART_ARCHIVES }},
+                            {path: ':id', component: AppArchiveDetailComponent, data: { appId: PART_ARCHIVES }}
                         ]
                     },
                 ]

@@ -9,6 +9,10 @@ export const CONTRACT_ARCHIVES         = 6;
 export const ACC_TRANSACTION_ARCHIVES  = 7;
 export const CMMS_ROUTING_ARCHIVES     = 8;
 export const PARK_ARCHIVES             = 9;
+export const PART_ARCHIVES            = 10;
+export const DRIVER_ARCHIVES          = 11;
+export const VEHICLE_ARCHIVES         = 12;
+export const TREASURY_ARCHIVES        = 13;
 
 export const APP_ARCHIVE_URL = '/archives';
 export const ARCHIVE_ROUTE_URL = 'archive';

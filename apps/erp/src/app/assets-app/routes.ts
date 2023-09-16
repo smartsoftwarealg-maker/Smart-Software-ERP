@@ -89,6 +89,7 @@ import {
 } from '@ss/accounting/accounting-accounts';
 import {DashboardComponent} from '@ss/dashboard';
 import {loginGuard} from '../erp-guards';
+import { AGENT_ARCHIVES, ASSET_ARCHIVES, ASSET_RECEPTIONS_ARCHIVES } from '@ss/common/app-archive';
 
 export const mainRoutes: Routes = [
     {
@@ -111,8 +112,8 @@ export const mainRoutes: Routes = [
                             {
                                 path: 'archive',
                                 children: [
-                                    {path: '', component: AppArchiveListComponent, pathMatch: 'full'},
-                                    {path: ':id', component: AppArchiveDetailComponent},
+                                    { path: '', component: AppArchiveListComponent, pathMatch: 'full', data: { appId: ASSET_ARCHIVES } },
+                                    { path: ':id', component: AppArchiveDetailComponent, data: { appId: ASSET_ARCHIVES } },
                                 ]
                             },
                             {
@@ -467,8 +468,8 @@ export const mainRoutes: Routes = [
                             {
                                 path: 'archive',
                                 children: [
-                                    {path: '', component: AppArchiveListComponent, pathMatch: 'full'},
-                                    {path: ':id', component: AppArchiveDetailComponent},
+                                    {path: '', component: AppArchiveListComponent, pathMatch: 'full', data: { appId: ASSET_RECEPTIONS_ARCHIVES }},
+                                    {path: ':id', component: AppArchiveDetailComponent, data: { appId: ASSET_RECEPTIONS_ARCHIVES }},
                                 ]
                             }
                         ]
@@ -508,8 +509,8 @@ export const mainRoutes: Routes = [
                             {
                                 path: 'archive',
                                 children: [
-                                    {path: '', component: AppArchiveListComponent, pathMatch: 'full'},
-                                    {path: ':id', component: AppArchiveDetailComponent},
+                                    {path: '', component: AppArchiveListComponent, pathMatch: 'full', data: { appId: AGENT_ARCHIVES }},
+                                    {path: ':id', component: AppArchiveDetailComponent, data: { appId: AGENT_ARCHIVES }},
                                 ]
                             }
                         ]
