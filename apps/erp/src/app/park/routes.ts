@@ -18,7 +18,12 @@ import {
     PARK_VEHICLE_TYPES_URL,
     PARK_VEHICLE_URL
 } from '../common';
-import { AppArchiveDetailComponent, AppArchiveListComponent } from '@ss/common/app-archive';
+import {
+    AppArchiveDetailComponent,
+    AppArchiveListComponent,
+    DRIVER_ARCHIVES,
+    VEHICLE_ARCHIVES
+} from '@ss/common/app-archive';
 import {
     VehicleDamageDetailComponent,
     VehicleDamageListComponent,
@@ -76,8 +81,8 @@ export const parkRoutes: Routes = [
                             {
                                 path: 'archive',
                                 children: [
-                                    {path: '', component: AppArchiveListComponent, pathMatch: 'full' },
-                                    {path: ':id', component: AppArchiveDetailComponent},
+                                    {path: '', component: AppArchiveListComponent, pathMatch: 'full', data: { appId: DRIVER_ARCHIVES } },
+                                    {path: ':id', component: AppArchiveDetailComponent, data: { appId: DRIVER_ARCHIVES }},
                                 ]
                             },
                             {
@@ -122,8 +127,8 @@ export const parkRoutes: Routes = [
                             {
                                 path: 'archive',
                                 children: [
-                                    { path: '', component: AppArchiveListComponent, pathMatch: 'full' },
-                                    { path: ':id', component: AppArchiveDetailComponent },
+                                    { path: '', component: AppArchiveListComponent, pathMatch: 'full', data: { appId: VEHICLE_ARCHIVES } },
+                                    { path: ':id', component: AppArchiveDetailComponent, data: { appId: VEHICLE_ARCHIVES } },
                                 ]
                             },
                             {

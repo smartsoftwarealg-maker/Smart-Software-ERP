@@ -96,7 +96,11 @@ import {
 } from '@ss/payroll/api-employee';
 import { ReportViewComponent } from '@ss/common/ui-report-param';
 import {DashboardComponent} from '@ss/dashboard';
-import {AppArchiveDetailComponent, AppArchiveListComponent} from '@ss/common/app-archive';
+import {
+    AppArchiveDetailComponent,
+    AppArchiveListComponent,
+    EMPLOYEE_ARCHIVES
+} from '@ss/common/app-archive';
 import {loginGuard} from '../erp-guards';
 import { HolidayRequestDetailComponent, HolidayRequestListComponent } from '@ss/attendance';
 import {
@@ -242,8 +246,8 @@ export const hrRoutes: Routes = [
                             {
                                 path: 'archive',
                                 children: [
-                                    {path: '', component: AppArchiveListComponent, pathMatch: 'full' },
-                                    {path: ':id', component: AppArchiveDetailComponent},
+                                    {path: '', component: AppArchiveListComponent, pathMatch: 'full', data: { appId: EMPLOYEE_ARCHIVES } },
+                                    {path: ':id', component: AppArchiveDetailComponent, data: { appId: EMPLOYEE_ARCHIVES }},
                                 ]
                             },
                             {
@@ -377,8 +381,8 @@ export const hrRoutes: Routes = [
                             {
                                 path: 'archive',
                                 children: [
-                                    {path: '', component: AppArchiveListComponent, pathMatch: 'full' },
-                                    {path: ':id', component: AppArchiveDetailComponent},
+                                    {path: '', component: AppArchiveListComponent, pathMatch: 'full', data: { appId: EMPLOYEE_ARCHIVES } },
+                                    {path: ':id', component: AppArchiveDetailComponent, data: { appId: EMPLOYEE_ARCHIVES }},
                                 ]
                             }
                         ]

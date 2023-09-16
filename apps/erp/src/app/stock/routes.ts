@@ -83,7 +83,7 @@ import {
     GenerationAccountsListComponent, TransacAccountsDetailComponent, TransacAccountsListComponent
 } from '@ss/accounting/accounting-accounts';
 import {loginGuard} from '../erp-guards';
-import { AppArchiveMainComponent } from '@ss/common/app-archive';
+import { AGENT_ARCHIVES, AppArchiveMainComponent } from '@ss/common/app-archive';
 import {
     PartsRequestDetailComponent, PartsRequestLineDetailComponent,
     PartsRequestLineListComponent,
@@ -464,8 +464,8 @@ export const mainRoutes: Routes = [
                             {
                                 path: 'archive',
                                 children: [
-                                    {path: '', component: AppArchiveMainComponent, pathMatch: 'full' },
-                                    {path: ':id', component: AppArchiveDetailComponent},
+                                    {path: '', component: AppArchiveMainComponent, pathMatch: 'full', data: { appId: AGENT_ARCHIVES } },
+                                    {path: ':id', component: AppArchiveDetailComponent, data: { appId: AGENT_ARCHIVES }},
                                 ]
                             }
                         ]

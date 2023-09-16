@@ -68,7 +68,7 @@ import {
     WorkOrderListComponent,
     WorkPersonsDetailComponent,
     WorkPersonsListComponent
-} from "@ss/cmms/work-order";
+} from '@ss/cmms/work-order';
 import {
     AssetBuildingDetailComponent,
     AssetBuildingListComponent,
@@ -80,7 +80,13 @@ import {
     EndTypesDetailComponent,
     EndTypesListComponent
 } from '@ss/assets-component';
-import { AppArchiveDetailComponent, AppArchiveListComponent } from '@ss/common/app-archive';
+import {
+    AGENT_ARCHIVES,
+    AppArchiveDetailComponent,
+    AppArchiveListComponent,
+    ASSET_ARCHIVES,
+    CMMS_ROUTING_ARCHIVES
+} from '@ss/common/app-archive';
 import { FurnitureStatusDetailComponent, FurnitureStatusListComponent } from '@ss/common/ui-lookup';
 import { ReportViewComponent } from '@ss/common/ui-report-param';
 import { OfficeDetailComponent, OfficesListComponent } from '@ss/organizations/ui-organizations';
@@ -472,8 +478,8 @@ export const cmmsRoutes: Routes = [
                     {
                         path: 'archive',
                         children: [
-                            {path: '', component: AppArchiveListComponent, pathMatch: 'full' },
-                            {path: ':id', component: AppArchiveDetailComponent},
+                            {path: '', component: AppArchiveListComponent, pathMatch: 'full', data: { appId: ASSET_ARCHIVES } },
+                            {path: ':id', component: AppArchiveDetailComponent, data: { appId: ASSET_ARCHIVES }},
                         ]
                     },
                     {
@@ -533,8 +539,8 @@ export const cmmsRoutes: Routes = [
                     {   path: 'archive',
                         component: CMMSRoutingArchiveComponent,
                         children: [
-                            {path: '',    component: AppArchiveListComponent, pathMatch: 'full' },
-                            {path: ':id', component: AppArchiveDetailComponent},
+                            {path: '',    component: AppArchiveListComponent, pathMatch: 'full', data: { appId: CMMS_ROUTING_ARCHIVES } },
+                            {path: ':id', component: AppArchiveDetailComponent, data: { appId: CMMS_ROUTING_ARCHIVES }},
                         ]
                     }
                 ],
@@ -561,15 +567,15 @@ export const cmmsRoutes: Routes = [
                     },
                     {   path: 'detail',
                         children: [
-                            { path: '', component: CmmsChecklistLineListComponent, pathMatch: 'full'},
-                            { path: ':id', component: CmmsChecklistLineDetailComponent }
+                            { path: '', component: CmmsChecklistLineListComponent, pathMatch: 'full', data: { appId: CMMS_ROUTING_ARCHIVES }},
+                            { path: ':id', component: CmmsChecklistLineDetailComponent, data: { appId: CMMS_ROUTING_ARCHIVES } }
                         ]
                     },
                     {   path: 'archive',
                         component: CMMSRoutingArchiveComponent,
                         children: [
-                            {path: '',    component: AppArchiveListComponent, pathMatch: 'full' },
-                            {path: ':id', component: AppArchiveDetailComponent},
+                            {path: '',    component: AppArchiveListComponent, pathMatch: 'full', data: { appId: CMMS_ROUTING_ARCHIVES } },
+                            {path: ':id', component: AppArchiveDetailComponent, data: { appId: CMMS_ROUTING_ARCHIVES }},
                         ]
                     }
                 ],
@@ -752,8 +758,8 @@ export const cmmsRoutes: Routes = [
                             {
                                 path: 'archive',
                                 children: [
-                                    {path: '', component: AppArchiveListComponent, pathMatch: 'full' },
-                                    {path: ':id', component: AppArchiveDetailComponent},
+                                    {path: '', component: AppArchiveListComponent, pathMatch: 'full', data: { appId: AGENT_ARCHIVES } },
+                                    {path: ':id', component: AppArchiveDetailComponent, data: { appId: AGENT_ARCHIVES }},
                                 ]
                             },
                             {

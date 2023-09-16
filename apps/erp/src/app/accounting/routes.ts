@@ -36,7 +36,12 @@ import {
 } from '@ss/accounting/accounting-accounts';
 import {ReportViewComponent} from '@ss/common/ui-report-param';
 import {accountingGuard, loginGuard} from '../erp-guards';
-import { AppArchiveDetailComponent, AppArchiveListComponent } from '@ss/common/app-archive';
+import {
+    ACC_TRANSACTION_ARCHIVES,
+    AppArchiveDetailComponent,
+    AppArchiveListComponent,
+    EMPLOYEE_ARCHIVES
+} from "@ss/common/app-archive";
 
 export const accRoutes: Routes = [
     {
@@ -246,8 +251,8 @@ export const accRoutes: Routes = [
                             {
                                 path: 'archive',
                                 children: [
-                                    {path: '', component: AppArchiveListComponent, pathMatch: 'full' },
-                                    {path: ':id', component: AppArchiveDetailComponent},
+                                    {path: '', component: AppArchiveListComponent, pathMatch: 'full', data: { appId: ACC_TRANSACTION_ARCHIVES } },
+                                    {path: ':id', component: AppArchiveDetailComponent, data: { appId: ACC_TRANSACTION_ARCHIVES }},
                                 ]
                             },
                             {

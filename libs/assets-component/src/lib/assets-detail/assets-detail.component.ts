@@ -263,7 +263,7 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> impl
     }
 
     override ngOnInit() {
-        this.archiveSrv.appId = AGENT_ARCHIVES;
+        this.archiveSrv.appId = ASSET_ARCHIVES;
         super.ngOnInit();
         this.shellSrv.addButton(this.importBtn);
     }

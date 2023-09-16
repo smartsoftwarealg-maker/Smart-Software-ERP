@@ -15,7 +15,7 @@ import {
     STOCK_UNITS_URL,
     LOGISTICS_CUSTOMER_URL,
     LOGISTICS_SUPPLIER_URL
-} from "../common";
+} from '../common';
 import {ABS_INDEX_URL, CanDeactivateService, LIST_URL} from '@ss/common/api-common';
 import {Routes} from '@angular/router';
 import {PayMethodDetailComponent, PayMethodListComponent} from '@ss/logistics/ui-pay-method';
@@ -46,6 +46,7 @@ import {
 } from '@ss/logistics/document-numbering';
 import {loginGuard} from '../erp-guards';
 import { ArticleDetailComponent, ArticleListComponent } from '@ss/stock/ui-article';
+import { AGENT_ARCHIVES } from '@ss/common/app-archive';
 
 export const mainRoutes: Routes = [
     {
@@ -76,8 +77,8 @@ export const mainRoutes: Routes = [
                             {
                                 path: 'archive',
                                 children: [
-                                    {path: '', component: AppArchiveListComponent, pathMatch: 'full' },
-                                    {path: ':id', component: AppArchiveDetailComponent},
+                                    {path: '', component: AppArchiveListComponent, pathMatch: 'full', data: { appId: AGENT_ARCHIVES } },
+                                    {path: ':id', component: AppArchiveDetailComponent, data: { appId: AGENT_ARCHIVES }},
                                 ]
                             }
                         ]
@@ -110,8 +111,8 @@ export const mainRoutes: Routes = [
                             {
                                 path: 'archive',
                                 children: [
-                                    {path: '', component: AppArchiveListComponent, pathMatch: 'full' },
-                                    {path: ':id', component: AppArchiveDetailComponent},
+                                    {path: '', component: AppArchiveListComponent, pathMatch: 'full', data: { appId: AGENT_ARCHIVES } },
+                                    {path: ':id', component: AppArchiveDetailComponent, data: { appId: AGENT_ARCHIVES }},
                                 ]
                             }
                         ]
@@ -144,8 +145,8 @@ export const mainRoutes: Routes = [
                             {
                                 path: 'archive',
                                 children: [
-                                    {path: '', component: AppArchiveListComponent, pathMatch: 'full' },
-                                    {path: ':id', component: AppArchiveDetailComponent},
+                                    {path: '', component: AppArchiveListComponent, pathMatch: 'full', data: { appId: AGENT_ARCHIVES } },
+                                    {path: ':id', component: AppArchiveDetailComponent, data: { appId: AGENT_ARCHIVES }},
                                 ]
                             }
                         ]

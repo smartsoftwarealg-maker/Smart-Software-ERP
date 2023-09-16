@@ -50,43 +50,19 @@ export class AppArchiveListComponent implements OnInit {
                 .parent
                 .paramMap
                 .pipe(
-                    switchMap(params => {
+                    tap(params => {
                         const id = +params.get('id');
                         if (id > 0) {
                             this.entitySrv.setParentId(id);
-                            return this.entitySrv.getList(0, 50);
-                        } else {
-                            return of(null);
                         }
                     }))
                 .subscribe(res => {
-                    if (res) {
-                        this.data = res.body || [];
-                        this.paginator.elementCount = res.itemCount;
-                        this.imgSrc = null;
-                    }
                 });
             this.refresh();
         });
         const rights = this.shellSrv.getCurrentNodeRights();
         this.isEditable = rights.edit;
     }
-    // ngOnInit(): void {
-    //     this.route.parent.parent.params
-    //         .pipe(
-    //             tap(params => {
-    //                 const id = +params['id'] || 0;
-    //                 if (id >= 0) {
-    //                     this.entitySrv.setParentId(this._id);
-    //                 }
-    //             }),
-    //             switchMap(_ => this.entitySrv.getList(0, 50)))
-    //         .subscribe(res => {
-    //             this.data = res.body || [];
-    //             this.paginator.elementCount = res.itemCount;
-    //             this.imgSrc = null;
-    //         });
-    // }
 
     public showDetail(id: string) {
         this.router.navigate([id], {relativeTo: this.route}).then();

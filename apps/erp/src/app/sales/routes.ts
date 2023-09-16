@@ -7,7 +7,7 @@ import {
     DASHBOARD_URL,
     docInfoRoutes, LOGISTICS_AGENT_URL,
     SALES_AD_URL, SALES_SERVICE_ARTICLE_URL
-} from "../common";
+} from '../common';
 import { OrderListComponent } from '@ss/sales/ui-sales-order';
 import { OrderDetailComponent } from '@ss/sales/ui-sales-order';
 import { OrderLinesDetailComponent, OrderLinesListComponent } from '@ss/sales/ui-order-lines';
@@ -41,7 +41,8 @@ import {
     AppArchiveDetailComponent,
     AppArchiveListComponent
 } from '@ss/logistics/ui-agent';
-import { ServiceArticleDetailComponent, ServiceArticleListComponent } from "@ss/service-sales/service-articles";
+import { ServiceArticleDetailComponent, ServiceArticleListComponent } from '@ss/service-sales/service-articles';
+import { AGENT_ARCHIVES } from '@ss/common/app-archive';
 
 export const lookupRoutes: Routes = [];
 
@@ -273,8 +274,8 @@ export const mainRoutes: Routes = [
                             {
                                 path: 'archive',
                                 children: [
-                                    {path: '', component: AppArchiveListComponent, pathMatch: 'full' },
-                                    {path: ':id', component: AppArchiveDetailComponent},
+                                    {path: '', component: AppArchiveListComponent, pathMatch: 'full', data: { appId: AGENT_ARCHIVES } },
+                                    {path: ':id', component: AppArchiveDetailComponent, data: { appId: AGENT_ARCHIVES }},
                                 ]
                             }
                         ]
