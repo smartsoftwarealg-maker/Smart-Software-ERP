@@ -3,9 +3,9 @@ import {PayrollMonthService} from '../payroll-month.service';
 import {UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import {of, switchMap, tap} from 'rxjs';
+import { catchError, delay, map, mergeMap, Observable, of, repeat, retry, switchMap, tap, throwError } from "rxjs";
 import {SnackBarService} from '@ss/common/ui-shell';
-import {LanguageService} from '@ss/common/api-common';
+import { LanguageService, LoginService } from "@ss/common/api-common";
 
 @Component({
   selector: 'ss-month-selector',
@@ -15,36 +15,47 @@ import {LanguageService} from '@ss/common/api-common';
 export class MonthCloserComponent implements OnInit {
     form: UntypedFormGroup = null;
     processing = false;
-
+    private maxMonth = 0;
   constructor(private selectorSrv: PayrollMonthService,
               private formBuilder: UntypedFormBuilder,
               private router: Router,
               private activatedRoute: ActivatedRoute,
               private confirmationSrv: ConfirmationDialogService,
               private snackBarSrv: SnackBarService,
-              private langSrv: LanguageService) {
+              private langSrv: LanguageService,
+              private loginSrv: LoginService) {
+      this.maxMonth = this.loginSrv.appCtx.payMonth;
   }
 
   ngOnInit(): void {
       this.selectorSrv
           .maxMonth()
           .subscribe(res => {
+              this.maxMonth = res?.month || 0;
               this.form = this.formBuilder
                   .group({
-                      year: [+(res.month / 100).toFixed(0), Validators.required],
-                      month: [+(res.month % 100).toFixed(0), Validators.required],
+                      year:  [ { value: +(res.month / 100).toFixed(0), disabled: true }, Validators.required],
+                      month: [{ value: +(res.month % 100).toFixed(0), disabled: true }, Validators.required],
                   })
           })
   }
 
   cancel() {
-      this.router.navigate(['../'], { relativeTo: this.activatedRoute });
+      this.router
+          .navigate(['../'], { relativeTo: this.activatedRoute })
+          .then();
+  }
+
+  retries(count: number): Observable<boolean> {
+      return count >= 5?
+        of(false) :
+        this.selectorSrv
+          .maxMonth()
+          .pipe(delay(2000),
+              switchMap(res => res.month > this.maxMonth? of(true) : this.retries(count + 1)));
   }
 
   close() {
-      let oldMonth = 0;
-      let currMonth = 0;
-
       this.confirmationSrv
           .confirm(this.langSrv.translate('REMUN_MONTH_CLOSURE'),
               this.langSrv.translate('REMUN_CLOSE') + '?',
@@ -52,25 +63,42 @@ export class MonthCloserComponent implements OnInit {
               false)
           .pipe(
               tap(confirmed => this.processing = confirmed),
-              switchMap(_ => this.selectorSrv.maxMonth()),
-              tap(res => oldMonth = res.month),
-              switchMap(confirmed => confirmed ? this.selectorSrv.close() : of(false)),
-              switchMap(_ => this.selectorSrv.maxMonth()),
-              tap(res => currMonth = res.month),
-              switchMap(_ => currMonth > oldMonth? this.selectorSrv.selectMonth(currMonth) : of(0)))
+              switchMap(confirmed => {
+                  if (confirmed) {
+                      return this.selectorSrv
+                                 .close()
+                                 .pipe(switchMap(() => this.selectorSrv.maxMonth()),
+                                       switchMap(res => this.selectorSrv.selectMonth(res.month)));
+                  } else {
+                      return of(false)
+                  }
+              }),
+            catchError(err =>
+              this.retries(1)
+                .pipe(tap(res => {
+                    if (!res) {
+                      throw err;
+                    }
+                  }),
+                  switchMap(() => this.selectorSrv.maxMonth()),
+                  switchMap(res => this.selectorSrv.selectMonth(res.month)))
+            ))
           .subscribe({
-                  next: _ => {
-                      if (currMonth > oldMonth) {
+                  next: res => {
+                      this.processing = false;
+                      console.log('______________________________________________', res);
+                      if (res) {
                           this.snackBarSrv.showSuccessMessage();
-                          this.router.navigate(['../'], {relativeTo: this.activatedRoute});
+                          this.router
+                              .navigate(['../'], {relativeTo: this.activatedRoute})
+                              .then();
                       } else {
                           this.snackBarSrv.showFailureMessage();
                       }
-                      this.processing = false;
                   },
                   error: err => {
-                      this.processing  = false;
-                      throw err;
+                    this.processing = false;
+                    throw err;
                   }
               }
           );
