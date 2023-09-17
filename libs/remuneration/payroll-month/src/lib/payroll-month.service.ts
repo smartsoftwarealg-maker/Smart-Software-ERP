@@ -1,16 +1,18 @@
 import {Injectable} from '@angular/core';
 import {AppContext, HttpService, LanguageService, LoginInfo, LoginService} from '@ss/common/api-common';
-import {catchError, map, Observable, of, tap} from 'rxjs';
-import {ToolbarLabel} from '@ss/common/ui-shell';
+import { catchError, map, Observable, of, switchMap, tap } from "rxjs";
+import { ShellService, ToolbarLabel } from "@ss/common/ui-shell";
 
 @Injectable({
     providedIn: 'root'
 })
 export class PayrollMonthService {
-    maxMonnth = 0;
+    private _maxMonth = 0;
+
     constructor(protected httpSrv: HttpService,
                 private loginSrv: LoginService,
-                private langSrv: LanguageService) {}
+                private langSrv: LanguageService,
+                private shellSrv: ShellService) {}
 
     maxMonth(): Observable<{ month: number }> {
         return this.httpSrv.get<{ month: number }>('/payroll/max-month');
@@ -20,7 +22,7 @@ export class PayrollMonthService {
         return this.httpSrv
             .get<{ month: number }>('/payroll/max-month')
             .pipe(map(res => {
-                    this.maxMonnth = res.month;
+                    this._maxMonth = res.month;
                     return this.getLabel();
                 }),
                 catchError(err => of({ title: '', text: '' })));
@@ -31,7 +33,7 @@ export class PayrollMonthService {
         const off = +(this.loginSrv.appCtx.payMonth / 1_000_000).toFixed(0);
         return {
             title: `${this.langSrv.translate('PAYROLL_MONTH')} :`,
-            text: `${cur % 100}/${(cur / 100).toFixed(0)} ${off > 0 ? '.' + off : ''} / ${this.maxMonnth % 100}/${(this.maxMonnth / 100).toFixed(0)}`
+            text: `${cur % 100}/${(cur / 100).toFixed(0)} ${off > 0 ? '.' + off : ''} / ${this._maxMonth % 100}/${(this._maxMonth / 100).toFixed(0)}`
         };
     }
 
@@ -42,9 +44,11 @@ export class PayrollMonthService {
 
     selectMonth(month: number): Observable<boolean> {
         return this.httpSrv
-            .put('/payroll/month', {month: month})
+            .put('/payroll/month', { month: month })
             .pipe(
                 tap(ctx => this.loginSrv.setContext(ctx)),
+                switchMap(_ => this.curMonthLabel()),
+                tap(title => this.shellSrv.setLabels([title])),
                 map(_ => true));
     }
 

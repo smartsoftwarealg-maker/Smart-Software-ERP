@@ -1,8 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import {UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
+import { Component, inject, OnInit } from "@angular/core";
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from "@angular/forms";
 import {PayrollMonthService} from '../payroll-month.service';
 import {ActivatedRoute, Router} from '@angular/router';
-import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {of, switchMap, tap, zip} from 'rxjs';
 import {Special, SpecialPayrollService} from '@ss/remuneration/special-payroll-common';
@@ -14,48 +13,58 @@ import {LanguageService} from '@ss/common/api-common';
     styleUrls: ['./month-selector.component.scss']
 })
 export class MonthSelectorComponent implements OnInit {
+    private selectorSrv  = inject(PayrollMonthService);
+    private formBuilder  = inject(UntypedFormBuilder);
+    private router  = inject(Router);
+    private activatedRoute  = inject(ActivatedRoute);
+    private snackBarSrv  = inject(SnackBarService);
+    private specialSrv  = inject(SpecialPayrollService);
+    private langSrv  = inject(LanguageService);
+    private shellSrv  = inject(ShellService);
+
     specialList: Special[] = [];
     minMonth = 0;
     maxMonth = 0;
-    form: UntypedFormGroup = null;
+    form: UntypedFormGroup | null = null;
     processing = false;
 
-    constructor(private selectorSrv: PayrollMonthService,
-                private formBuilder: UntypedFormBuilder,
-                private router: Router,
-                private activatedRoute: ActivatedRoute,
-                private confirmationSrv: ConfirmationDialogService,
-                private snackBarSrv: SnackBarService,
-                private specialSrv: SpecialPayrollService,
-                private langSrv: LanguageService,
-                private shellSrv: ShellService) {
-    }
-
     ngOnInit(): void {
+        this.shellSrv.setLoading(true);
         zip(this.selectorSrv.minMonth(),
             this.selectorSrv.maxMonth(),
             this.selectorSrv.ctx(),
             this.specialSrv.getList(0, 50))
-            .subscribe(res => {
-                this.minMonth  = res[0].month;
-                this.maxMonth  = res[1].month;
-                const min      = +(res[0].month / 100).toFixed(0);
-                const max      = +(res[1].month / 100).toFixed(0);
-                const curYear  = (+( (res[2].payMonth || this.maxMonth) / 100) % 10000).toFixed(0);
-                const curMonth = +( (res[2].payMonth || this.maxMonth) % 100).toFixed(0);
-                this.specialList = res[3].body;
-                this.specialList.push({ id: 0, center: 0, paymonth: res[2].payMonth % 1_000_000, description: this.langSrv.translate('REMUN_NORMAL_PAY')});
-                this.form = this.formBuilder
-                    .group({
-                        year: [curYear, [Validators.required, Validators.min(min), Validators.max(max)]],
-                        month: [curMonth, [Validators.required, Validators.min(1), Validators.max(12)]],
-                        offset: [res[2].payMonth, Validators.required]
+            .subscribe({
+                next: res => {
+                    this.minMonth = res[0].month;
+                    this.maxMonth = res[1].month;
+                    const min = +(res[0].month / 100).toFixed(0);
+                    const max = +(res[1].month / 100).toFixed(0);
+                    const curYear = (+((res[2].payMonth || this.maxMonth) / 100) % 10000).toFixed(0);
+                    const curMonth = +((res[2].payMonth || this.maxMonth) % 100).toFixed(0);
+                    this.specialList = res[3].body;
+                    this.specialList.push({
+                        id: 0,
+                        center: 0,
+                        paymonth: res[2].payMonth % 1_000_000,
+                        description: this.langSrv.translate("REMUN_NORMAL_PAY")
                     });
+                    this.form = this.formBuilder
+                        .group({
+                            year: [curYear, [Validators.required, Validators.min(min), Validators.max(max)]],
+                            month: [curMonth, [Validators.required, Validators.min(1), Validators.max(12)]],
+                            offset: [res[2].payMonth, Validators.required]
+                        });
+                    this.shellSrv.setLoading(false);
+                }, error: err => {
+                    this.shellSrv.setLoading(false);
+                    throw err;
+                }
             });
     }
 
     cancel() {
-        this.router.navigate(['../'], { relativeTo: this.activatedRoute });
+        this.router.navigate(['../'], { relativeTo: this.activatedRoute }).then();
     }
 
     select(loadSpecial: boolean) {
@@ -77,7 +86,7 @@ export class MonthSelectorComponent implements OnInit {
                     next: res => {
                         if (!loadSpecial) {
                             this.snackBarSrv.showSuccessMessage();
-                            this.router.navigate(['../'], {relativeTo: this.activatedRoute});
+                            this.router.navigate(['../'], {relativeTo: this.activatedRoute}).then();
                         } else {
                             if (typeof res !== 'number') {
                                 this.specialList = res.body;
@@ -95,6 +104,4 @@ export class MonthSelectorComponent implements OnInit {
         } else
             this.snackBarSrv.showFailureMessage();
     }
-
-
 }
