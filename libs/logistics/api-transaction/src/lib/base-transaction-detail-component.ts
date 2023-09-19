@@ -16,7 +16,7 @@ import {MatDialog} from '@angular/material/dialog';
 import {DocImportComponent, DocImportService} from '@ss/logistics/ui-doc-import';
 import { Directive, inject, OnInit, ViewChild } from '@angular/core';
 import { Currency, CurrencyService, Lookup, LookupsService, PayMethod } from '@ss/common/api-lookup';
-import { Agent, AgentService, ConsumerService, SupplierService } from '@ss/logistics/api-agent';
+import { Agent, AgentService, BranchService, ConsumerService, SupplierService } from '@ss/logistics/api-agent';
 import { PayMethodService } from '@ss/logistics/api-logistics-common';
 import { UserListService } from '@ss/common/api-users';
 import { DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
@@ -30,7 +30,7 @@ export abstract class BaseTransactionDetailComponent extends BaseEntityDetailCom
     private payMethodSrv = inject(PayMethodService);
     private usersSrv = inject(UserListService);
     private consumerSrv = inject(ConsumerService);
-    // private branchService = inject(BranchService);
+    private branchSrv = inject(BranchService);
     private _isManager = false;
     private transaction: Transaction = null;
     private docImportService: DocImportService = inject(DocImportService);
@@ -68,6 +68,7 @@ export abstract class BaseTransactionDetailComponent extends BaseEntityDetailCom
     public currencyCompleteModel = new DefaultAutoCompleteModel<Currency>(this.currencySrv);
     public supplierAutoCompleteModel   = new DefaultAutoCompleteModel<Agent>(this.supplierSrv, 'id', 'denomination');
     public consumerAutoCompleteModel   = new DefaultAutoCompleteModel<Agent>(this.consumerSrv, 'id', 'denomination');
+    public branchLookup = new DefaultAutoCompleteModel(this.branchSrv, 'id', 'denomination');
     public executionRef = 0;
     public formId = 0;
 
