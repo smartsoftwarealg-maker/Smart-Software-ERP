@@ -5,6 +5,7 @@
 }
 
 .content-div {
-    min-height: calc(100% - 72px);
+    height: 100%;
+    max-height: calc(100% - 72px);
     overflow-x: auto;
 }

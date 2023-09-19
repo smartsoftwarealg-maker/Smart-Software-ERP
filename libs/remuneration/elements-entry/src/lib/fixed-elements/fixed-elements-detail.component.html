@@ -1,4 +1,4 @@
-<div class="size_div" *ngIf="form">
+<div class="size_div employee_div" *ngIf="form">
     <div class="person-photo">
         <ss-image-input width="120px" height="120px" [imageModel]="employee.imageModel"
                         style="display: inline-block;">
@@ -6,9 +6,9 @@
     </div>
 
     <div class="employee-details">
-        <div style="font-size: 1.5em; text-align: start; font-weight: bolder">{{employee.id}}</div>
-        <div style="font-weight: bold;">{{employee.fullName}}</div>
-        <div style="font-size: 0.7em">{{employee.post}}</div>
+        <div style="font-size: 1.5em; text-align: start; font-weight: bolder">{{employee?.id}}</div>
+        <div style="font-weight: bold;">{{employee?.fullName}}</div>
+        <div style="font-size: 0.7em">{{employee?.post}}</div>
     </div>
 </div>
 

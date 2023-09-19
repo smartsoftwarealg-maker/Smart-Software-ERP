@@ -111,10 +111,6 @@ export abstract class BaseTransactionDetailComponent extends BaseEntityDetailCom
                     switchMap(res => res?.dirty? of(false): super.canDeactivate()));
     }
 
-    override readForm(): Transaction {
-        return this.form.getRawValue();
-    }
-
     protected abstract showImportButton(): boolean;
     protected abstract requireAgentToImportDocument(): boolean;
     protected abstract requireAgent(): boolean;

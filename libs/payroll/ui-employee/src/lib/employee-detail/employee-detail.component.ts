@@ -253,16 +253,16 @@ export class EmployeeDetailComponent extends BaseEntityDetailComponent<Employee>
 
     public isSectionValid(section: string): boolean {
         switch (section) {
-            case 'birthinfo':
-                return this.isBirthInfoValid();
-            case 'socialInfo':
-                return this.issocialInfoPanelValid();
-            case 'arabicInfo':
-                return this.isArabicInfoPanelValid();
-            case 'fixedElemnts':
-                return this.isFixedElementsPanelValid();
-            default:
-                return true;
+        case 'birthinfo':
+            return this.isBirthInfoValid();
+        case 'socialInfo':
+            return this.issocialInfoPanelValid();
+        case 'arabicInfo':
+            return this.isArabicInfoPanelValid();
+        case 'fixedElemnts':
+            return this.isFixedElementsPanelValid();
+        default:
+            return true;
         }
     }
 
@@ -321,18 +321,18 @@ export class EmployeeDetailComponent extends BaseEntityDetailComponent<Employee>
                         code === this.PAYROLL_RANK ? this.infoSrv.generateFromRank(id) :
                             code === this.PAYROLL_POST ? this.infoSrv.generateFromPost(id) : of({count: -1}) : of({count: -1})
             )).subscribe({
-            next: res => {
-                if (res.count >= 0) {
-                    this.snackBarSrv.showSuccessMessage();
-                } else {
-                    this.snackBarSrv.showMessage('PAYROLL_NO_CHANGES');
+                next: res => {
+                    if (res.count >= 0) {
+                        this.snackBarSrv.showSuccessMessage();
+                    } else {
+                        this.snackBarSrv.showMessage('PAYROLL_NO_CHANGES');
+                    }
+                },
+                error: err => {
+                    this.snackBarSrv.showFailureMessage();
+                    throw err;
                 }
-            },
-            error: err => {
-                this.snackBarSrv.showFailureMessage();
-                throw err;
-            }
-        });
+            });
     }
 
     showPanel(panel: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11) {

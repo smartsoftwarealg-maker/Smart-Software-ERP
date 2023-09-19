@@ -86,7 +86,6 @@ export class MonthCloserComponent implements OnInit {
           .subscribe({
                   next: res => {
                       this.processing = false;
-                      console.log('______________________________________________', res);
                       if (res) {
                           this.snackBarSrv.showSuccessMessage();
                           this.router

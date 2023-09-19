@@ -3,6 +3,13 @@
     margin: 8px auto;
 }
 
+.employee_div {
+    display: flex;
+    gap: 1em;
+}
+.employee-details div {
+    line-height: 2.2em;
+}
 
 mat-card {
     padding: 8px;

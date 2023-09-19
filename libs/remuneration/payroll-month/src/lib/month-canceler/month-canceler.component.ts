@@ -5,7 +5,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {SnackBarService} from '@ss/common/ui-shell';
 import {LanguageService} from '@ss/common/api-common';
-import {of, switchMap, tap} from 'rxjs';
+import { catchError, delay, Observable, of, switchMap, tap } from "rxjs";
 
 @Component({
   selector: 'ss-month-canceler',
@@ -44,6 +44,15 @@ export class MonthCancelerComponent implements OnInit {
             .then();
     }
 
+    retries(count: number): Observable<boolean> {
+        return count >= 5?
+            of(false) :
+            this.selectorSrv
+                .maxMonth()
+                .pipe(delay(2000),
+                    switchMap(res => res.month < this.maxMonth? of(true) : this.retries(count + 1)));
+    }
+
     close() {
         let oldMonth = 0;
         let currMonth = 0;
@@ -61,7 +70,17 @@ export class MonthCancelerComponent implements OnInit {
                             .pipe(switchMap(() => this.selectorSrv.maxMonth()),
                                   switchMap(res => this.selectorSrv.selectMonth(res.month))) :
                         of(false)
-                }))
+                }),
+                catchError(err =>
+                    this.retries(1)
+                        .pipe(tap(res => {
+                                if (!res) {
+                                    throw err;
+                                }
+                            }),
+                            switchMap(() => this.selectorSrv.maxMonth()),
+                            switchMap(res => this.selectorSrv.selectMonth(res.month)))
+                ))
             .subscribe({
                     next: res => {
                         if (res) {
@@ -74,7 +93,6 @@ export class MonthCancelerComponent implements OnInit {
                     },
                     error: err => {
                         this.processing  = false;
-                        this.form.enable();
                         throw err;
                     }
                 }
