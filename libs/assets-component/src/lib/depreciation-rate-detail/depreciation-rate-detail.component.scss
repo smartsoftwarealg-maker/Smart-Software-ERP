@@ -3,3 +3,12 @@
     margin: 0 auto;
     padding: 32px;
 }
+
+.button_div {
+    width: 90%;
+    margin: auto;
+    max-width: 900px;
+    display: flex;
+    gap: 2em;
+    justify-content: flex-end;
+}

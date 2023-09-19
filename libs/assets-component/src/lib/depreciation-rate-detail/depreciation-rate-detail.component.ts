@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
+import {Component, inject, OnInit} from '@angular/core';
+import {BaseChildEntityDetailComponent, BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {DepreciationRate} from '../assets-api';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
@@ -16,25 +16,12 @@ import {DepreciationRateService} from '../services/depreciation-rate.service';
   templateUrl: './depreciation-rate-detail.component.html',
   styleUrls: ['./depreciation-rate-detail.component.scss']
 })
-export class DepreciationRateDetailComponent extends BaseEntityDetailComponent<DepreciationRate> implements OnInit {
+export class DepreciationRateDetailComponent extends BaseChildEntityDetailComponent<DepreciationRate> implements OnInit {
     private parentId = 0;
+    private formBuilder = inject(UntypedFormBuilder);
 
-    constructor(
-        public rateSrv: DepreciationRateService,
-        public override shellSrv: ShellService,
-        public override snackBarSrv: SnackBarService,
-        public override route: ActivatedRoute,
-        public override formBuilder: UntypedFormBuilder,
-        public httpSrv: HttpService,
-        public override confirmationSrv: ConfirmationDialogService,
-        public lookupsSrv: LookupsService) {
-        super(rateSrv,
-            shellSrv,
-            snackBarSrv,
-            route,
-            formBuilder,
-            confirmationSrv,
-            'ASSET_DEPRECIATION_RATES');
+    constructor(public rateSrv: DepreciationRateService) {
+        super(rateSrv);
     }
 
     public override setupForm(a: DepreciationRate): UntypedFormGroup {
@@ -46,22 +33,4 @@ export class DepreciationRateDetailComponent extends BaseEntityDetailComponent<D
         });
     }
 
-    protected override getRouteParam(): Observable<any> {
-        return this.route
-            .parent
-            .parent.params
-            .pipe(
-                switchMap(p => {
-                    this.parentId = +p['id'] || 0;
-                    this.rateSrv.setParentId(this.parentId);
-                    return super.getRouteParam();
-                })
-            );
-    }
-
-
-    override ngOnInit() {
-        super.ngOnInit();
-        this.shellSrv.setGoBackPath('../..', this.route);
-    }
 }

@@ -136,6 +136,13 @@ export const mainRoutes: Routes = [
                                     {path: '', component: AssetBlockingListComponent, pathMatch: 'full'},
                                     {path: ':id', component: AssetBlockingDetailComponent},
                                 ]
+                            },
+                            {
+                                path: 'depreciation-rate',
+                                children: [
+                                    {path: '', component: DepreciationRateListComponent, pathMatch: 'full'},
+                                    {path: ':id', component: DepreciationRateDetailComponent},
+                                ]
                             }
                         ]
                     },

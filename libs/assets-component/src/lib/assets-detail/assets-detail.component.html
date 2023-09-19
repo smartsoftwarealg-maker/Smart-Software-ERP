@@ -476,13 +476,14 @@
                                  [editable]="isEditable"></ss-child-attributes>
         </mat-expansion-panel>
 
-        <mat-expansion-panel *ngIf="!isCMMS" #rates expanded="false" [class]="getPanelHeaderClass('rates', rates)">
+        <mat-expansion-panel *ngIf="!isCMMS" #rates expanded="false" [class]="getPanelHeaderClass('rates', rates)" (afterExpand)="showPanel(DEPRECIATION_RATE_ROUT)">
             <mat-expansion-panel-header>
                 <mat-panel-title translate>
                     ASSET_DEPRECIATION_RATES
                 </mat-panel-title>
             </mat-expansion-panel-header>
-            <ss-depreciation-rate-list [assetId]="id" [editable]="isEditable"></ss-depreciation-rate-list>
+            <router-outlet *ngIf="id && activePanel === DEPRECIATION_RATE_ROUT"></router-outlet>
+<!--            <ss-depreciation-rate-list [assetId]="id" [editable]="isEditable"></ss-depreciation-rate-list>-->
         </mat-expansion-panel>
 
 
