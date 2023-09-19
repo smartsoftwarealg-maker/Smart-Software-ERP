@@ -1,66 +1,65 @@
 <div class="right_div container">
     <div class="main-table">
-        <mat-table mat-table [dataSource]="data" class="master">
-
+        <mat-table mat-table [dataSource]="data" class="master"  matSort (matSortChange)="sort($event)">
 
             <ng-container matColumnDef="employee">
-                <mat-header-cell *matHeaderCellDef translate>PAYROLL_ID</mat-header-cell>
+                <mat-header-cell *matHeaderCellDef mat-sort-header translate>PAYROLL_ID</mat-header-cell>
                 <mat-cell *matCellDef="let e">
                     {{e.employee}}
                 </mat-cell>
             </ng-container>
 
             <ng-container matColumnDef="lastName">
-                <mat-header-cell *matHeaderCellDef translate>COMMON_LAST_NAME</mat-header-cell>
+                <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_LAST_NAME</mat-header-cell>
                 <mat-cell *matCellDef="let e">
                     {{e.lastName}}
                 </mat-cell>
             </ng-container>
 
             <ng-container matColumnDef="firstName">
-                <mat-header-cell *matHeaderCellDef translate>COMMON_FIRST_NAME</mat-header-cell>
+                <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_FIRST_NAME</mat-header-cell>
                 <mat-cell *matCellDef="let e">
                     {{e.firstName}}
                 </mat-cell>
             </ng-container>
 
             <ng-container matColumnDef="description">
-                <mat-header-cell *matHeaderCellDef translate>COMMON_DESCRIPTION</mat-header-cell>
+                <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_DESCRIPTION</mat-header-cell>
                 <mat-cell *matCellDef="let e">
                     {{e.description}}
                 </mat-cell>
             </ng-container>
 
             <ng-container matColumnDef="date">
-                <mat-header-cell *matHeaderCellDef translate>COMMON_DATE</mat-header-cell>
+                <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_DATE</mat-header-cell>
                 <mat-cell *matCellDef="let e">
                     {{e.date | date: 'dd-MM-yyyy'}}
                 </mat-cell>
             </ng-container>
 
             <ng-container matColumnDef="amount">
-                <mat-header-cell *matHeaderCellDef translate>COMMON_AMOUNT</mat-header-cell>
+                <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_AMOUNT</mat-header-cell>
                 <mat-cell *matCellDef="let e">
                     {{e.amount | number: '1.2-2'}}
                 </mat-cell>
             </ng-container>
 
             <ng-container matColumnDef="taken_amount">
-                <mat-header-cell *matHeaderCellDef translate>PAYROLL_TAKEN</mat-header-cell>
+                <mat-header-cell *matHeaderCellDef mat-sort-header translate>PAYROLL_TAKEN</mat-header-cell>
                 <mat-cell *matCellDef="let e">
                     {{e.taken_amount  | number: '1.2-2'}}
                 </mat-cell>
             </ng-container>
 
             <ng-container matColumnDef="number">
-                <mat-header-cell *matHeaderCellDef translate>PAYROLL_MONTH_COUNT</mat-header-cell>
+                <mat-header-cell *matHeaderCellDef mat-sort-header translate>PAYROLL_MONTH_COUNT</mat-header-cell>
                 <mat-cell *matCellDef="let e">
                     {{e.number  | number: '1.0'}}
                 </mat-cell>
             </ng-container>
 
             <ng-container matColumnDef="monthConsumed">
-                <mat-header-cell *matHeaderCellDef translate>PAYROLL_CONSUMPTION_MONTH</mat-header-cell>
+                <mat-header-cell *matHeaderCellDef mat-sort-header translate>PAYROLL_CONSUMPTION_MONTH</mat-header-cell>
                 <mat-cell *matCellDef="let e">
                     {{e.monthConsumed}}
                 </mat-cell>

@@ -7,12 +7,11 @@ import { AbstractControl, FormControl, UntypedFormBuilder, UntypedFormControl, V
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {
     ActivityService,
-    AgentTypeService, CategoryService,
-    CityService,
+    AgentTypeService, CityService,
     CompanyTypeService, CountryService,
     CurrencyService, DepartmentService, Lookup,
     LookupsService,
-    PayModeService
+    PayModeService, SalesCategoryService
 } from '@ss/common/api-lookup';
 import {
     Agent, AGENT_URL,
@@ -53,7 +52,7 @@ export class AgentDetailComponent extends BaseEntityDetailComponent<Agent> imple
     private payModeSrv = inject(PayModeService);
     private currencySrv = inject(CurrencyService);
     private agentTypeSrv = inject(AgentTypeService);
-    private categorySrv = inject(CategoryService);
+    private categorySrv = inject(SalesCategoryService);
     private priceSrv = inject(AgentPriceService);
     private companyTypeSrv = inject(CompanyTypeService);
     private citySrv = inject(CityService);

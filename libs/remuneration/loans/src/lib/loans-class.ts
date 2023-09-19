@@ -11,7 +11,7 @@ export interface Consumption {
 export interface Loan {
     id: number;
     employee: number;
-    center: number;
+    centerId: number;
     loan: number;
     payMonth: number;
     monthConsumed: number;

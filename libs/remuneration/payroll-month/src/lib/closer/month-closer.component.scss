@@ -12,8 +12,8 @@ button {
 .spinner {
     display: flex;
     width: 90%;
-    height: 90%;
+    min-height: 90%;
     margin: 0 auto;
-    align-content: center;
+    align-items: center;
     justify-content: center;
 }

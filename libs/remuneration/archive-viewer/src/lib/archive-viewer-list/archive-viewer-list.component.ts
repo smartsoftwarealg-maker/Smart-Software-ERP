@@ -230,7 +230,7 @@ export class ArchiveViewerListComponent extends BaseEntityListComponent<PAYArchi
                 this.displayedColumns = this.displayedColumns.concat(this._formulaVariables);
                 this.data = res.body;
             });
-         this.minTableWidth = 400 + 100 * (formulaSel.selected.length + this._formulaVariables.length + personalSel.selected.length);
+         this.minTableWidth = 900 + 100 * (formulaSel.selected.length + this._formulaVariables.length + personalSel.selected.length);
         // console.log(this.minTableWidth);
     }
 

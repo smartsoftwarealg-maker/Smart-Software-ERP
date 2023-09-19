@@ -10,6 +10,7 @@ import {LoginService} from '@ss/common/api-common';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {ElementTypesService} from '@ss/remuneration/element-types';
 import { EmployeeService, PersonAutocompleteClass } from '@ss/employee-services/employee-services';
+import { LoanTypeService } from "@ss/payroll-common";
 
 type Period = {
     year: number;
@@ -25,8 +26,9 @@ export class LoansDetailComponent extends BaseEntityDetailComponent<Loan> {
     private employeeSrv  = inject(EmployeeService);
     private loginSrv  = inject(LoginService);
     private elementTypeSrv  = inject(ElementTypesService);
+    private loanSrv = inject(LoanTypeService);
     employeeAutoCompleteModel = new PersonAutocompleteClass(this.employeeSrv);
-    loansAutoCompleteModel = new DefaultAutoCompleteModel(this.elementTypeSrv);
+    loanLookup = new DefaultAutoCompleteModel(this.loanSrv);
 
     constructor(
         private detailSrv: LoansService,
@@ -48,7 +50,7 @@ export class LoansDetailComponent extends BaseEntityDetailComponent<Loan> {
         return this.formBuilder.group({
             id: [e.id || 0],
             employee: [e.employee || 0],
-            center: [e.center || this.loginSrv.appCtx.center],
+            centerId: [e.centerId || this.loginSrv.appCtx.center],
             loan: [e.loan, Validators.required],
             payMonth: [e.payMonth, Validators.required],
             monthConsumed: [e.monthConsumed || 0],

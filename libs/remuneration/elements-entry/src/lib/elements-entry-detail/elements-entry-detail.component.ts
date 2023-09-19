@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
-import {ELine} from './elements-entry-api';
+import {ELine} from '../elements-entry-api';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
 import {UntypedFormArray, UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {LookupsService} from '@ss/common/api-lookup';
-import {ElementsEntryService} from './elements-entry.service';
+import {ElementsEntryService} from '../services/elements-entry.service';
 import {MatSelectChange} from '@angular/material/select';
 import {ImageModel} from '@ss/common/ui-image-input';
 import {HttpService} from '@ss/common/api-common';
@@ -21,7 +21,7 @@ type Employee = {
 @Component({
     selector: 'ss-elements-entry-detail',
     templateUrl: './elements-entry-detail.component.html',
-    styleUrls: ['./elements-entry-detail.component.scss', './common-css.scss']
+    styleUrls: ['./elements-entry-detail.component.scss', '../common-css.scss']
 })
 export class ElementsEntryDetailComponent extends BaseEntityDetailComponent<ELine> implements OnInit {
     imageModel: ImageModel;

@@ -34,6 +34,10 @@ export class SalaryGridListComponent extends BaseEntityListComponent<Grid> {
         'base13',
         'base14',
         'base15',
+        'base16',
+        'base17',
+        'base18',
+        // 'base19',
     ];
 
 

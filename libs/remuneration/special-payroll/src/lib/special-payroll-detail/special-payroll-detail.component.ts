@@ -1,7 +1,7 @@
 import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {KeepOnToolbar, ShellService, SnackBarService, ToolbarButton} from '@ss/common/ui-shell';
-import {ActivatedRoute} from '@angular/router';
+import { ActivatedRoute, Router } from "@angular/router";
 import {FormControl, UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators} from '@angular/forms';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {LoginService, PaginationModel} from '@ss/common/api-common';
@@ -19,6 +19,7 @@ import {EmployeeLookupService} from '../employee-lookup.service';
   styleUrls: ['./special-payroll-detail.component.scss']
 })
 export class SpecialPayrollDetailComponent extends BaseEntityDetailComponent<Special> implements OnInit, OnDestroy {
+    private router = inject(Router);
     private loginSrv  = inject(LoginService);
     private entrySrv  = inject(ElementsEntryService);
     private selectorSrv  = inject(PayrollMonthService);
@@ -170,4 +171,12 @@ export class SpecialPayrollDetailComponent extends BaseEntityDetailComponent<Spe
             }
         });
     }
+
+  protected override goBack() {
+    if (this.form.controls['id'].value > 0) {
+      super.goBack();
+    } else {
+      this.router.navigate(['..', this.queryId], {relativeTo: this.route}).then();
+    }
+  }
 }

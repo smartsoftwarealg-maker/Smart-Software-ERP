@@ -18,7 +18,7 @@
                 <mat-label translate>REMUN_LOAN</mat-label>
                 <ss-auto-complete matInput
                                   [required]="true"
-                                  [model]="loansAutoCompleteModel"
+                                  [model]="loanLookup"
                                   formControlName="loan">
                 </ss-auto-complete>
                 <mat-error
@@ -27,13 +27,13 @@
             </mat-form-field>
 
 
-            <mat-form-field class="default-25 sm-50">
+            <mat-form-field class="default-50">
                 <mat-label translate>PAYROLL_STARTING_MONTH</mat-label>
                 <ss-paymonth-editor formControlName="payMonth" required></ss-paymonth-editor>
                 <mat-error *ngIf="form.controls['payMonth'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
             </mat-form-field>
 
-            <mat-form-field class="default-25 sm-50">
+            <mat-form-field class="default-50">
                 <mat-label translate>PAYROLL_MONTH_COUNT</mat-label>
                 <input matInput formControlName="number" type="number" required step="1">
                 <mat-error *ngIf="form.controls['number'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>

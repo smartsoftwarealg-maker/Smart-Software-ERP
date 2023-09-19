@@ -9,7 +9,7 @@ import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {LookupsService} from '@ss/common/api-lookup';
 import {InputFiltersService} from './input-filters.service';
 import {SelectionModel} from '@angular/cdk/collections';
-import {debounceTime, distinctUntilChanged} from 'rxjs/operators';
+import { debounceTime, distinctUntilChanged, tap } from "rxjs/operators";
 
 @Component({
     selector: 'ss-input-filter-detail',
@@ -64,7 +64,10 @@ export class InputFilterDetailComponent extends BaseEntityDetailComponent<InputF
                     debounceTime(300),
                     distinctUntilChanged()
                 ).subscribe(value => this.filteredElements =
-                this.elements.filter(e => e.description && (value === '' || e.description.toLowerCase().indexOf(value.toLowerCase()) >= 0)))
+                this.elements
+                  .filter(e => (value === '' ||
+                    e.description?.toLowerCase().indexOf(value.toLowerCase()) >= 0 ||
+                    e.field?.toLowerCase().indexOf(value.toLowerCase()) >= 0)))
         );
     }
 

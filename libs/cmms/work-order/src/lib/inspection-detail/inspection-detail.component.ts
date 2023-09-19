@@ -72,6 +72,7 @@ export class InspectionDetailComponent extends CMMSWorkDetail implements OnInit 
     override setupForm(e: Work): UntypedFormGroup {
         const form = super.setupForm(e);
         this.saveButton.visible = !e.id;
+        form.disable();
         return form;
     }
 }
