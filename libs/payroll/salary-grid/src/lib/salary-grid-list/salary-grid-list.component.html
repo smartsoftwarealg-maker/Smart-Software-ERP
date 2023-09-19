@@ -129,6 +129,30 @@
             </ng-container>
 
 
+            <ng-container matColumnDef="base16">
+                <mat-header-cell *matHeaderCellDef><span translate>PAYROLL_BASE_SALARY</span> 17</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{e.base16 | number: '1.2-2'}}
+                </mat-cell>
+            </ng-container>
+
+
+            <ng-container matColumnDef="base17">
+                <mat-header-cell *matHeaderCellDef><span translate>PAYROLL_BASE_SALARY</span> 18</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{e.base17 | number: '1.2-2'}}
+                </mat-cell>
+            </ng-container>
+
+
+            <ng-container matColumnDef="base18">
+                <mat-header-cell *matHeaderCellDef><span translate>PAYROLL_BASE_SALARY</span> 19</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{e.base18 | number: '1.2-2'}}
+                </mat-cell>
+            </ng-container>
+
+
             <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
             <mat-row class="selectable" [class.selected]="row.id == selected" (click)="select(row.id)"
                      *matRowDef="let row; columns: displayedColumns;"></mat-row>

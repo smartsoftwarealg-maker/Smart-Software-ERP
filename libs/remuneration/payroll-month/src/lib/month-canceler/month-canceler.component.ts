@@ -5,7 +5,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {SnackBarService} from '@ss/common/ui-shell';
 import {LanguageService} from '@ss/common/api-common';
-import {of, switchMap, tap} from 'rxjs';
+import { catchError, delay, Observable, of, switchMap, tap } from "rxjs";
 
 @Component({
   selector: 'ss-month-canceler',
@@ -15,7 +15,7 @@ import {of, switchMap, tap} from 'rxjs';
 export class MonthCancelerComponent implements OnInit {
     form: UntypedFormGroup = null;
     processing = false;
-
+    maxMonth = 0;
     constructor(private selectorSrv: PayrollMonthService,
                 private formBuilder: UntypedFormBuilder,
                 private router: Router,
@@ -29,6 +29,7 @@ export class MonthCancelerComponent implements OnInit {
         this.selectorSrv
             .maxMonth()
             .subscribe(res => {
+                this.maxMonth = res.month;
                 this.form = this.formBuilder
                     .group({
                         year: [+(res.month / 100).toFixed(0), Validators.required],
@@ -38,31 +39,53 @@ export class MonthCancelerComponent implements OnInit {
     }
 
     cancel() {
-        this.router.navigate(['../'], { relativeTo: this.activatedRoute });
+        this.router
+            .navigate(['../'], { relativeTo: this.activatedRoute })
+            .then();
+    }
+
+    retries(count: number): Observable<boolean> {
+        return count >= 5?
+            of(false) :
+            this.selectorSrv
+                .maxMonth()
+                .pipe(delay(2000),
+                    switchMap(res => res.month < this.maxMonth? of(true) : this.retries(count + 1)));
     }
 
     close() {
         let oldMonth = 0;
         let currMonth = 0;
-
         this.confirmationSrv
             .confirm(this.langSrv.translate('REMUN_MONTH_CANCELLATION'),
                 this.langSrv.translate('REMUN_CANCEL_MONTH') + '?',
                 false,
                 false)
             .pipe(
-                tap(confirmed => this.processing = confirmed),
-                switchMap(_ => this.selectorSrv.maxMonth()),
-                tap(res => oldMonth = res.month),
-                switchMap(confirmed => confirmed ? this.selectorSrv.cancel() : of(false)),
-                switchMap(_ => this.selectorSrv.maxMonth()),
-                tap(res => currMonth = res.month),
-                switchMap(_ => currMonth < oldMonth? this.selectorSrv.selectMonth(currMonth) : of(0)))
+                switchMap(confirmed => {
+                    this.processing = confirmed;
+                    return confirmed ?
+                        this.selectorSrv
+                            .cancel()
+                            .pipe(switchMap(() => this.selectorSrv.maxMonth()),
+                                  switchMap(res => this.selectorSrv.selectMonth(res.month))) :
+                        of(false)
+                }),
+                catchError(err =>
+                    this.retries(1)
+                        .pipe(tap(res => {
+                                if (!res) {
+                                    throw err;
+                                }
+                            }),
+                            switchMap(() => this.selectorSrv.maxMonth()),
+                            switchMap(res => this.selectorSrv.selectMonth(res.month)))
+                ))
             .subscribe({
-                    next: _ => {
-                        if (currMonth < oldMonth) {
+                    next: res => {
+                        if (res) {
                             this.snackBarSrv.showSuccessMessage();
-                            this.router.navigate(['../'], {relativeTo: this.activatedRoute});
+                            this.router.navigate(['../'], {relativeTo: this.activatedRoute}).then();
                         } else {
                             this.snackBarSrv.showFailureMessage();
                         }

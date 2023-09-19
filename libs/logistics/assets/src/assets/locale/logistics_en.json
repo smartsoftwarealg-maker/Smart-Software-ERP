@@ -163,6 +163,6 @@
     "PRICE_DISCOUNT":   "Price discount",
     "COST_TYPE":        "Cost type",
     "VALUE_TYPE":       "Value type",
-    "APPROVAL":         "Approval",
-    "PASSING_CLIENT":   "Occasional customer"
+    "PASSING_CLIENT":   "Occasional customer",
+    "UNIT":             "Unit"
 }

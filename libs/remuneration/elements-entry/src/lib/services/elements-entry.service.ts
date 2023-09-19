@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BaseEntityService } from '@ss/common/api-base-entity';
-import { ELine, INPUT_ELEMENTS_URL, Journal, PaymentElement, PSpecial } from './elements-entry-api';
+import { ELine, INPUT_ELEMENTS_URL, Journal, PaymentElement, PSpecial } from '../elements-entry-api';
 import { HttpService, PaginationModel } from "@ss/common/api-common";
 import { HttpParams } from '@angular/common/http';
 import { map, Observable, zip } from 'rxjs';

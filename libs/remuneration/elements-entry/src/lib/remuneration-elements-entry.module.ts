@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ElementsEntryDetailComponent } from './elements-entry-detail.component';
-import { ElementsEntryListComponent } from './elements-entry-list.component';
+import { ElementsEntryDetailComponent } from './elements-entry-detail/elements-entry-detail.component';
+import { ElementsEntryListComponent } from './elements-entry-list/elements-entry-list.component';
 import {MaterialModule} from '@ss/common/api-common';
 import {CommonUiLangModule} from '@ss/common/ui-lang';
 import {UiPaginationModule} from '@ss/common/ui-pagination';

@@ -1,11 +1,19 @@
 mat-card {
-    padding: 40px;
     max-width: 600px;
     margin: 16px auto;
     padding: 8px;
-    border-radius: 1.4px;
+    border-radius: 1.4em;
 }
 
 button {
     min-width: 150px;
+}
+
+.spinner {
+    display: flex;
+    width: 90%;
+    min-height: 90%;
+    margin: 0 auto;
+    align-items: center;
+    justify-content: center;
 }

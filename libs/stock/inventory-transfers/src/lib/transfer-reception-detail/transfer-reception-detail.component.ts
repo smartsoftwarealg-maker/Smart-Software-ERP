@@ -19,7 +19,6 @@ import {TransferReceptionService} from '../transfer-reception.service';
 export class TransferReceptionDetailComponent extends BaseTransactionDetailComponent implements OnInit {
     public groups: CCGroup[];
 
-
     constructor(
         protected override loginSrv: LoginService,
         protected override dialog: MatDialog,

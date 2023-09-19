@@ -159,6 +159,6 @@
     "PRICE_DISCOUNT":   "سعر الخصم",
     "COST_TYPE":        "نوع التكلفة",
     "VALUE_TYPE":       "نوع القيمة",
-    "APPROVAL":         "موافقة",
-    "PASSING_CLIENT":   "زبون عابر"
+    "PASSING_CLIENT":   "زبون عابر",
+    "UNIT":             "الوحدة"
 }

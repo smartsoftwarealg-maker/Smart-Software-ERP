@@ -21,7 +21,10 @@
             </mat-form-field>
 
             <div *ngIf="!processing" class="default-50 sm-50" >
-                <button mat-raised-button color="primary" type="button" (click)="select(true)">
+                <button mat-raised-button color="primary"
+                        type="button"
+                        [disabled]="+form.controls['year'].value * 100 + (+form.controls['month'].value)> maxMonth"
+                        (click)="select(true)">
                     <i class="fa-solid fa-truck-ramp-box"></i>
                     {{ 'REMUN_LOAD_SPECIAL' | translate }}
                 </button>
@@ -33,7 +36,10 @@
             <span class="default-100 sm-100"></span>
 
             <div *ngIf="!processing" class="default-50 sm-50" >
-                <button mat-raised-button color="primary" type="button" (click)="select(false)">
+                <button mat-raised-button color="primary"
+                        type="button"
+                        [disabled]="+form.controls['year'].value * 100 + (+form.controls['month'].value)> maxMonth"
+                        (click)="select(false)">
                     <i class="fa-solid fa-check"></i>
                     {{ 'REMUN_SELECT_MONTH' | translate }}
                 </button>
