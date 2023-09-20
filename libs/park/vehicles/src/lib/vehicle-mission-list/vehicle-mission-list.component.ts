@@ -7,11 +7,12 @@ import { MatTableModule } from '@angular/material/table';
 import { UiPaginationModule } from '@ss/common/ui-pagination';
 import { VehicleMissionService } from '../services/vehicle-mission.service';
 import { VehicleMission } from '../vehicle-api';
+import { MaterialModule } from "@ss/common/api-common";
 
 @Component({
     selector: 'ss-mission-vehicles-list',
     standalone: true,
-    imports: [CommonModule, CommonUiLangModule, MatButtonModule, MatTableModule, UiPaginationModule],
+    imports: [CommonModule, CommonUiLangModule, MatButtonModule, MatTableModule, UiPaginationModule, MaterialModule],
     templateUrl: './vehicle-mission-list.component.html',
     styleUrls: ['./vehicle-mission-list.component.css']
 })

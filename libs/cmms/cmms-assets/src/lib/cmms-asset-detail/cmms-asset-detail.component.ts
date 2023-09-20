@@ -5,7 +5,7 @@ import { Asset } from '../asset-api';
 import { AGENT_ARCHIVES, AppArchiveModule, AppArchiveService, ASSET_ARCHIVES } from '@ss/common/app-archive';
 import { ActivatedRoute, Router, RouterOutlet } from '@angular/router';
 import { ConsumerService, CustomerService } from '@ss/logistics/api-agent';
-import { IsParamService, LoginService } from '@ss/common/api-common';
+import { IsParamService, LoginService, MaterialModule } from "@ss/common/api-common";
 import { AssetEndsService } from '@ss/accounting/accounting-api';
 import { MatDialog } from '@angular/material/dialog';
 import {
@@ -50,7 +50,7 @@ import { AssetPmService } from '../asset-pm.service';
 @Component({
     selector: 'ss-cmms-asset-detail',
     standalone: true,
-    imports: [CommonModule, AppArchiveModule, CommonUiAutoCompleteModule, CommonUiDatepickerModule, CommonUiLangModule, CustomAttributesModule, FormsModule, MatButtonModule, MatExpansionModule, MatFormFieldModule, MatInputModule, MatOptionModule, MatSelectModule, MatTableModule, MatTooltipModule, QRCodeModule, ReactiveFormsModule, RouterOutlet],
+    imports: [CommonModule, AppArchiveModule, CommonUiAutoCompleteModule, CommonUiDatepickerModule, CommonUiLangModule, CustomAttributesModule, FormsModule, MatButtonModule, MatExpansionModule, MatFormFieldModule, MatInputModule, MatOptionModule, MatSelectModule, MatTableModule, MatTooltipModule, QRCodeModule, ReactiveFormsModule, RouterOutlet, MaterialModule],
     templateUrl: './cmms-asset-detail.component.html',
     styleUrls: ['./cmms-asset-detail.component.scss'],
 })

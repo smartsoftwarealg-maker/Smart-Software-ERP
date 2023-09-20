@@ -4,7 +4,7 @@ import { BaseChildEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { PM } from '@ss/cmms/cmms-api';
 import { AssetPmService } from '../asset-pm.service';
 import { FormBuilder, ReactiveFormsModule, UntypedFormGroup, Validators } from '@angular/forms';
-import { LoginService } from '@ss/common/api-common';
+import { LoginService, MaterialModule } from "@ss/common/api-common";
 import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
 import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
 import { CommonUiLangModule } from '@ss/common/ui-lang';
@@ -25,7 +25,7 @@ import { MatButtonModule } from '@angular/material/button';
 @Component({
     selector: 'ss-asset-pm-detail',
     standalone: true,
-    imports: [CommonModule, CommonUiAutoCompleteModule, CommonUiDatepickerModule, CommonUiLangModule, MatCardModule, MatFormFieldModule, MatInputModule, ReactiveFormsModule, MatButtonModule],
+    imports: [CommonModule, CommonUiAutoCompleteModule, CommonUiDatepickerModule, CommonUiLangModule, MatCardModule, MatFormFieldModule, MatInputModule, ReactiveFormsModule, MatButtonModule, MaterialModule],
     templateUrl: './asset-pm-detail.component.html',
     styleUrls: ['./asset-pm-detail.component.css'],
 })

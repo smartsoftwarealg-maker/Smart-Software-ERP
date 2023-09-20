@@ -11,13 +11,14 @@ export abstract class BaseChildEntityDetailComponent<T extends { id: number, par
     private EMPTY_RECORD: T = { id: 0, parentId: 0} as T;
     private shellSrv  = inject(ShellService);
     private router  = inject(Router);
-    private snackBarSrv  = inject(SnackBarService);
     private confirmationSrv  = inject(ConfirmationDialogService);
 
+    protected snackBarSrv  = inject(SnackBarService);
     protected route  = inject(ActivatedRoute);
-    id = 0;
+
+    public id = 0;
     public form: UntypedFormGroup | null = null;
-    isEditable = true;
+    public isEditable = true;
 
 
     constructor(protected entitySrv: BaseEntityService<T>) {}

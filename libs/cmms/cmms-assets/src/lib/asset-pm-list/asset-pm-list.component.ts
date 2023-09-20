@@ -8,11 +8,12 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { UiPaginationModule } from '@ss/common/ui-pagination';
 import { MatButtonModule } from '@angular/material/button';
+import { MaterialModule } from '@ss/common/api-common';
 
 @Component({
     selector: 'ss-asset-pm-list',
     standalone: true,
-    imports: [CommonModule, CommonUiLangModule, MatSortModule, MatTableModule, UiPaginationModule, MatButtonModule],
+    imports: [CommonModule, CommonUiLangModule, MatSortModule, MatTableModule, UiPaginationModule, MatButtonModule, MaterialModule],
     templateUrl: './asset-pm-list.component.html',
     styleUrls: ['./asset-pm-list.component.css'],
 })

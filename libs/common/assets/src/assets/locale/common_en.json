@@ -304,5 +304,6 @@
     "MONTH":                     "Month",
     "DESTINATIONS":              "Destinations",
     "HOME":                      "Home",
-    "RECORD_NO":                 "Record No."
+    "RECORD_NO":                 "Record No.",
+    "REORDER":                   "Reorder"
 }

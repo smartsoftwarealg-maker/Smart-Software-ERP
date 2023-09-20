@@ -7,11 +7,12 @@ import { MatTableModule } from '@angular/material/table';
 import { UiPaginationModule } from '@ss/common/ui-pagination';
 import { VehicleDriverService } from '../services/vehicle-driver.service';
 import { VehicleDriver } from '../vehicle-api';
+import { MaterialModule } from "@ss/common/api-common";
 
 @Component({
     selector: 'ss-driver-vehicles-list',
     standalone: true,
-    imports: [CommonModule, CommonUiLangModule, MatButtonModule, MatTableModule, UiPaginationModule],
+    imports: [CommonModule, CommonUiLangModule, MatButtonModule, MatTableModule, UiPaginationModule, MaterialModule],
     templateUrl: './vehicles-driver-list.component.html',
     styleUrls: ['./vehicles-driver-list.component.css']
 })
