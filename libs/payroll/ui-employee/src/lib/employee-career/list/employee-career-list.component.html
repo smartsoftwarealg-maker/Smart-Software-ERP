@@ -1,16 +1,26 @@
 <div class="buttons" *ngIf="isEditable">
-    <button mat-mini-fab color="primary" (click)="showDetail(0)">
+    <button mat-mini-fab color="primary"
+            (click)="showDetail(0)"
+            [matTooltip]="'COMMON_SAVE' | translate">
         <span class="fas fa-plus"></span>
     </button>
     <button mat-mini-fab (click)="edit()"
             [disabled]="!selectedId"
-            color="accent">
+            color="accent"
+            [matTooltip]="'COMMON_EDIT' | translate">
         <span class="fas fa-pen"></span>
     </button>
     <button mat-mini-fab (click)="deleteSelected()"
             [disabled]="!selectedId"
+            [matTooltip]="'COMMON_DELETE' | translate"
             color="warn">
         <span class="fas fa-trash-alt"></span>
+    </button>
+    <button mat-mini-fab (click)="reorder()"
+            color="accent"
+            *ngIf="isEditable"
+            [matTooltip]="'COMMON_REORDER' | translate">
+        <i class="fa-solid fa-arrow-up-big-small"></i>
     </button>
 </div>
 

@@ -7,11 +7,12 @@ import { CommonUiLangModule } from '@ss/common/ui-lang';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTableModule } from '@angular/material/table';
 import { UiPaginationModule } from '@ss/common/ui-pagination';
+import { MaterialModule } from '@ss/common/api-common';
 
 @Component({
     selector: 'ss-vehicle-oil-change-list',
     standalone: true,
-    imports: [CommonModule, CommonUiLangModule, MatButtonModule, MatTableModule, UiPaginationModule],
+    imports: [CommonModule, CommonUiLangModule, MatButtonModule, MatTableModule, UiPaginationModule, MaterialModule],
     templateUrl: './vehicle-oil-change-list.component.html',
     styleUrls: ['./vehicle-oil-change-list.component.css']
 })

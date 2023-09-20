@@ -8,11 +8,12 @@
             <span class="fas fa-plus"></span>
         </button>
         <button mat-mini-fab (click)="edit()"
+                [matTooltip]="'COMMON_EDIT' | translate"
                 [disabled]="!selectedId"
                 color="accent" *ngIf="isEditable">
             <span class="fas fa-pen"></span>
         </button>
-        <button mat-mini-fab (click)="deleteSelected()"
+        <button mat-mini-fab (click)="deleteSelected()" [matTooltip]="'COMMON_DELETE' | translate"
                 [disabled]="!selectedId"
                 color="warn" *ngIf="isEditable">
             <span class="fas fa-trash-alt"></span>

@@ -307,5 +307,6 @@
     "MONTH":                      "Mois",
     "DESTINATIONS":                "Destinations",
     "HOME":                       "Acceil",
-    "RECORD_NO":                  "N° PV"
+    "RECORD_NO":                  "N° PV",
+    "REORDER":                    "Réorganiser"
 }

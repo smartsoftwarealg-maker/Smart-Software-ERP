@@ -1,6 +1,7 @@
 <div class="ctrl-div" *ngIf="editable">
     <button mat-mini-fab
             type="button"
+            [matTooltip]="'COMMON_ADD' | translate"
             color="primary" (click)="showDetail(0)">
         <span class="fas fa-plus"></span>
     </button>

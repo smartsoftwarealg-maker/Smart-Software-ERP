@@ -7,11 +7,12 @@ import { CommonUiLangModule } from "@ss/common/ui-lang";
 import { MatButtonModule } from "@angular/material/button";
 import { MatTableModule } from "@angular/material/table";
 import { UiPaginationModule } from "@ss/common/ui-pagination";
+import { MaterialModule } from "@ss/common/api-common";
 
 @Component({
     selector: "ss-journal-user-list",
     standalone: true,
-    imports: [CommonModule, CommonUiLangModule, MatButtonModule, MatTableModule, UiPaginationModule],
+    imports: [CommonModule, CommonUiLangModule, MatButtonModule, MatTableModule, UiPaginationModule, MaterialModule],
     templateUrl: "./journal-user-list.component.html",
     styleUrls: ["./journal-user-list.component.css"]
 })

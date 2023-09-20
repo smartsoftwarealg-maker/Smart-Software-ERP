@@ -40,4 +40,17 @@ export class EmployeeCareerListComponent extends BaseChildEntityListComponent<Ca
     set personId(id: number) {
         this.entitySrv.setParentId(id);
     }
+
+    reorder() {
+        this.entitySrv
+            .reorder(this.entitySrv.getParentId())
+            .subscribe(res => {
+                if (res.count > 0) {
+                    this.snackBarSrv.showSuccessMessage();
+                    this.refresh();
+                } else {
+                    this.snackBarSrv.showFailureMessage();
+                }
+            });
+    }
 }

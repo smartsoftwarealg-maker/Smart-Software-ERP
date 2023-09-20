@@ -20,4 +20,7 @@ export class EmployeeCareerService extends BaseEntityService<Career> {
             );
     }
 
+    public reorder(id: number): Observable<{ count: number }> {
+        return this.httpSrv.put(`/persons/${id}/careers/reorder`);
+    }
 }

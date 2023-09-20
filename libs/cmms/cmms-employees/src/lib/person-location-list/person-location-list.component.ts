@@ -6,11 +6,12 @@ import { PersonLocationService } from '../services/person-location.service';
 import { CommonUiLangModule } from '@ss/common/ui-lang';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTableModule } from '@angular/material/table';
+import { MaterialModule } from '@ss/common/api-common';
 
 @Component({
     selector: 'ss-person-location-list',
     standalone: true,
-    imports: [CommonModule, CommonUiLangModule, MatButtonModule, MatTableModule],
+    imports: [CommonModule, CommonUiLangModule, MatButtonModule, MatTableModule, MaterialModule],
     templateUrl: './person-location-list.component.html',
     styleUrls: ['./person-location-list.component.css'],
 })
