@@ -72,7 +72,7 @@ export class DepreciationRateListComponent implements OnInit {
     }
 
     public showDetail(id: number) {
-        this.router.navigate(['rates', id], { relativeTo: this.route })
+        this.router.navigate([id], { relativeTo: this.route })
             .then();
     }
 

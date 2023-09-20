@@ -39,6 +39,7 @@ import {
 import {AssetCostsService} from "../services/asset-costs.service";
 import {AssetRevaluationService} from "../services/asset-revaluation.service";
 import {AssetBlockingService} from "../services/asset-blocking.service";
+import {DepreciationRateService} from "../services/depreciation-rate.service";
 
 @Component({
     selector: 'ss-assets-detail',
@@ -65,7 +66,8 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> impl
     private receptionSrv = inject(AssetReceptionService);
     private assetCostsSrv = inject(AssetCostsService);
     private assetRevaluationSrv = inject(AssetRevaluationService);
-    private assetBlockingService = inject(AssetBlockingService);
+    private assetBlockingSrv = inject(AssetBlockingService);
+    private rateSrv = inject(DepreciationRateService);
     private isANSEJ = false;
 
     private importBtn: ToolbarButton = {
@@ -110,13 +112,15 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> impl
     readonly COSTS_ROUT = 1;
     readonly REVALUATIONS_ROUT = 2;
     readonly BLOCKINGS_ROUT = 3;
+    readonly DEPRECIATION_RATE_ROUT = 4;
 
-    activePanel: -1 | 0 | 1 | 2 | 3 = -1;
+    activePanel: -1 | 0 | 1 | 2 | 3 | 4 = -1;
     private PANELS = [
         ARCHIVE_ROUTE_URL,     // 0
         "costs",               // 1
-        "revaluations",         // 2
-        "blockings"             // 3
+        "revaluations",        // 2
+        "blockings",           // 3
+        "depreciation-rate"    // 4
     ];
 
     constructor(
@@ -140,7 +144,7 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> impl
         this.receptionLookup.onObjectSelected = o => this.onReceptionChange(o);
     }
 
-    showPanel(panel: -1 | 0 | 1 | 2 | 3) {
+    showPanel(panel: -1 | 0 | 1 | 2 | 3 | 4) {
         this.activePanel = panel;
         const dest = this.PANELS[panel];
         if (this.router.url.indexOf(dest) < 0) {
@@ -151,7 +155,8 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> impl
     setupForm(b: Asset): UntypedFormGroup {
         this.assetCostsSrv.setParentId(b.id);
         this.assetRevaluationSrv.setParentId(b.id);
-        this.assetBlockingService.setParentId(b.id);
+        this.assetBlockingSrv.setParentId(b.id);
+        this.rateSrv.setParentId(b.id);
         this.receptionSrv.sortColumn = {active: 'id', direction: 'asc'};
         const today = new Date();
         this.importBtn.visible = !b.id && this.isANSEJ;
