@@ -27,7 +27,7 @@ import {
     ABS_CMMS_FUNCTIONS,
     ABS_CMMS_CHECKLIST_URL,
     ABS_INSPECTION_ORDER_URL, ABS_INSPECTION_URL, ABS_CMMS_GANT_URL
-} from "../common";
+} from '../common';
 
 export const cmmsNavTree: SideNavNode = {
     name: 'CMMS',

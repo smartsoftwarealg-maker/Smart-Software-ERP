@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { Chart, ChartDataset, ChartItem, Point, registerables } from 'chart.js';
 import { ChartService } from '../chart.service';
 import { Gantt } from '../chart-api';
+import { ShellService } from '@ss/common/ui-shell';
+import { ActivatedRoute } from "@angular/router";
 
 @Component({
     selector: 'ss-cmms-gantt',
@@ -12,6 +14,9 @@ import { Gantt } from '../chart-api';
     styleUrls: ['./cmms-gantt.component.css'],
 })
 export class CmmsGanttComponent implements OnInit {
+    private shellSrv = inject(ShellService);
+    private route = inject(ActivatedRoute);
+
     private COLORS = [
         'rgba(255, 99, 132, 0.8)',
         'rgba(255, 159, 64, 0.8)',
@@ -25,6 +30,7 @@ export class CmmsGanttComponent implements OnInit {
     private chartSrv = inject(ChartService);
 
     ngOnInit() {
+        this.shellSrv.setGoBackPath('..', this.route);
         Chart.register(...registerables);
         this.chartSrv
             .gant()
