@@ -20,6 +20,7 @@ import { MaterialModule } from '@ss/common/api-common';
 import { CMMSWorkOrderArticleService } from '../services/c-m-m-s-work-order-article.service';
 import { CMMSWorkPersonService } from '../services/c-m-m-s-work-person.service';
 import { CMMSInspectionOrderService } from '../services/c-m-m-s-inspection-order.service';
+import { CMMSInspectionService } from '../services/c-m-m-s-inspection.service';
 
 @Component({
     selector: 'ss-work-order-detail',
@@ -44,6 +45,7 @@ import { CMMSInspectionOrderService } from '../services/c-m-m-s-inspection-order
     ]
 })
 export class InspectionOrderDetailComponent extends CMMSWorkDetail {
+    inspectionSrv = inject(CMMSInspectionService);
     private workPersonSrv = inject(CMMSWorkPersonService);
     private articleSrv = inject(CMMSWorkOrderArticleService);
     private router = inject(Router);
@@ -67,10 +69,11 @@ export class InspectionOrderDetailComponent extends CMMSWorkDetail {
             formBuilder,
             confirmationSrv,
             DOC_WORK_ORDER,
-            'CMMS_INSPECTION');
+            'CMMS_INSPECTION_ORDERS');
     }
 
     override loadEntity(id: number): Observable<Work> {
+        this.inspectionSrv.setParentId(id);
         this.workPersonSrv.setParentId(id);
         this.articleSrv.setParentId(id);
         return super.loadEntity(id);

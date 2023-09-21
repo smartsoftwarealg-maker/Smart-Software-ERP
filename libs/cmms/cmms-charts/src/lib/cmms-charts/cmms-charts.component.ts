@@ -7,7 +7,7 @@ import { ChartService } from '../chart.service';
 import { LanguageService, MaterialModule } from '@ss/common/api-common';
 import { PastDue, PendingSR, DueChartConfig, PriorityChartConfig, ByPriority } from '../chart-api';
 import { switchMap, tap } from 'rxjs';
-import { CommonUiLangModule } from "@ss/common/ui-lang";
+import { CommonUiLangModule } from '@ss/common/ui-lang';
 @Component({
     selector: 'ss-cmms-charts',
     standalone: true,

@@ -27,3 +27,9 @@ export interface ByPriority {
     priority: string,
     count: number;
 }
+
+export interface Gantt {
+    description: string;
+    dueDate: Date,
+    hours: number;
+}

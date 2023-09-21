@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { Work, WORK_TYPES } from '@ss/cmms/cmms-api';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
@@ -40,7 +40,7 @@ import { CMMSInspectionOrderService } from '../services/c-m-m-s-inspection-order
         MaterialModule
     ],
 })
-export class InspectionOrderListComponent extends BaseEntityListComponent<Work> {
+export class InspectionOrderListComponent extends BaseEntityListComponent<Work> implements OnInit {
     public types = WORK_TYPES;
     displayedColumns = [
         'number',
@@ -70,7 +70,7 @@ export class InspectionOrderListComponent extends BaseEntityListComponent<Work> 
             confirmationSrv,
             defReportSrv,
             pagPersistSrv,
-            'CMMS_INSPECTION');
+            'CMMS_INSPECTION_ORDERS');
         this.pagination.pageSize = 15;
     }
 

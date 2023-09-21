@@ -71,5 +71,6 @@
     "INSPECTION_ORDERS": "أمر التفتيش",
     "PASSES":                     "جائز",
     "FAILS":                      "فاشل",
-    "LOAD_CHECKLIST":             "قم بتحميل القائمة المرجعية"
+    "LOAD_CHECKLIST":             "قم بتحميل القائمة المرجعية",
+    "CLOSURE_DATE":               "تاريخ الإغلاق"
 }

@@ -71,6 +71,7 @@
     "INSPECTION_ORDERS": "Ordre de visite",
     "PASSES":                     "Passe",
     "FAILS":                      "Échoue",
-    "LOAD_CHECKLIST":             "Charger checklist"
+    "LOAD_CHECKLIST":             "Charger checklist",
+    "CLOSURE_DATE":               "Date de fermeture"
 }
 

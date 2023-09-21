@@ -14,23 +14,25 @@ import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
 import { CmmsAlertListComponent } from './cmms-alert-list/cmms-alert-list.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSortModule } from "@angular/material/sort";
+import { CmmsGanttComponent } from "@ss/cmms/cmms-charts";
 
 @NgModule({
-    imports: [
-        CommonModule,
-        CommonUiLangModule,
-        MatTableModule,
-        UiPaginationModule,
-        CommonUiAutoCompleteModule,
-        FormsModule,
-        MatFormFieldModule,
-        ReactiveFormsModule,
-        MatCardModule,
-        MatInputModule,
-        CommonUiDatepickerModule,
-        MatButtonModule,
-        MatSortModule
-    ],
+  imports: [
+    CommonModule,
+    CommonUiLangModule,
+    MatTableModule,
+    UiPaginationModule,
+    CommonUiAutoCompleteModule,
+    FormsModule,
+    MatFormFieldModule,
+    ReactiveFormsModule,
+    MatCardModule,
+    MatInputModule,
+    CommonUiDatepickerModule,
+    MatButtonModule,
+    MatSortModule,
+    CmmsGanttComponent
+  ],
     declarations: [PmListComponent, PMDetailComponent, CmmsAlertListComponent],
 })
 export class CmmsPmModule {}
