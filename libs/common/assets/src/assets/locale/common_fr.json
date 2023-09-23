@@ -308,5 +308,6 @@
     "DESTINATIONS":                "Destinations",
     "HOME":                       "Acceil",
     "RECORD_NO":                  "N° PV",
-    "REORDER":                    "Réorganiser"
+    "REORDER":                    "Réorganiser",
+    "GO_BACK":                    "Retourner"
 }
