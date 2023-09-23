@@ -305,5 +305,6 @@
     "DESTINATIONS":              "Destinations",
     "HOME":                      "Home",
     "RECORD_NO":                 "Record No.",
-    "REORDER":                   "Reorder"
+    "REORDER":                   "Reorder",
+    "GO_BACK":                   "Go back"
 }

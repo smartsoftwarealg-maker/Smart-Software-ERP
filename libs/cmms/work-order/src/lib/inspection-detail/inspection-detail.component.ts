@@ -1,8 +1,8 @@
-import { Component, inject, OnInit } from "@angular/core";
+import { Component, inject, OnInit } from '@angular/core';
 import { CMMSWorkDetail, Work } from '@ss/cmms/cmms-api';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, RouterOutlet } from '@angular/router';
-import { FormsModule, ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { DOC_WORK_ORDER } from '@ss/logistics/api-transaction';
 import { Observable } from 'rxjs';
@@ -45,6 +45,7 @@ import { CMMSInspectionService } from '../services/c-m-m-s-inspection.service';
     ]
 })
 export class InspectionDetailComponent extends CMMSWorkDetail implements OnInit {
+    private CONTROLS = ['actualStart', 'actualDue', 'memo', 'failsInspection'];
     private detailSrv = inject(CMMSInspectionService);
 
     constructor(
@@ -73,6 +74,7 @@ export class InspectionDetailComponent extends CMMSWorkDetail implements OnInit 
         const form = super.setupForm(e);
         this.saveButton.visible = !e.id;
         form.disable();
+        this.CONTROLS.forEach(c => form.controls[c].enable());
         return form;
     }
 }

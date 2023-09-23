@@ -38,7 +38,6 @@ export class CMMSWorkDetail extends BaseEntityDetailComponent<Work> {
     private serviceSrv = inject(ServiceService);
     private assetSrv = inject(AssetsService);
     private personSrv = inject(CmmsPersonService);
-    private validated = false;
     private defaultType = 1;
     private sendBtn: ToolbarButton = {
         disabled: false,
@@ -51,6 +50,7 @@ export class CMMSWorkDetail extends BaseEntityDetailComponent<Work> {
 
     protected dialog = inject(MatDialog);
 
+    validated = false;
     solutionLookup = new DefaultAutoCompleteModel(this.solutionSrv);
     faultLookup = new DefaultAutoCompleteModel(this.faultSrv);
     causeLookup = new DefaultAutoCompleteModel(this.causeSrv);
@@ -92,6 +92,7 @@ export class CMMSWorkDetail extends BaseEntityDetailComponent<Work> {
         if (e.id) {
             this.shellSrv.addButton(this.sendBtn);
         }
+        this.validated = e.validated;
         this.isEditable = this.isEditable && !e.actualDue;
         this.saveButton.visible = this.isEditable;
         return this.formBuilder.group({
@@ -132,6 +133,7 @@ export class CMMSWorkDetail extends BaseEntityDetailComponent<Work> {
             executorDescription:  [{ value: e.executorDescription, disabled: true }],
             schedulerDescription: [{ value: e.schedulerDescription, disabled: true }],
             closerDescription:    [{ value: e.closerDescription || this.loginSrv.appCtx.fullName, disabled: true }],
+            failsInspection:      [e.failsInspection || false]
         });
     }
 

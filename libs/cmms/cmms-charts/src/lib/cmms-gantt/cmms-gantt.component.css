@@ -1,0 +1,11 @@
+.size {
+    width: 90%;
+    max-width: 1000px;
+    margin: 1em auto;
+}
+
+.chart_div {
+    height: 80%;
+    padding: 8px;
+}
+

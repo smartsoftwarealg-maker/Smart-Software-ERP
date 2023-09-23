@@ -24,9 +24,9 @@
   <mat-table mat-table [dataSource]="data$ | async" class="main-table">
 
     <ng-container matColumnDef="faultDescription">
-      <mat-header-cell *matHeaderCellDef translate>CMMS_FAULTS</mat-header-cell>
+      <mat-header-cell *matHeaderCellDef translate>CMMS_EXPERTISE</mat-header-cell>
       <mat-cell *matCellDef="let e">
-        {{e.faultDescription}}
+        {{ e.faultDescription }}
       </mat-cell>
     </ng-container>
 

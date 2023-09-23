@@ -185,6 +185,7 @@ export interface Work {
     schedulerDescription?: string;
     executorDescription?: string;
     closerDescription?: string;
+    failsInspection: boolean;
 }
 
 export interface CMMSEmployee extends IEmployee {

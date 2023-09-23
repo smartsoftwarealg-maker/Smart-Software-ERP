@@ -162,7 +162,20 @@
 
                 <mat-form-field id="memo" class="default-100">
                     <mat-label translate>COMMON_MEMO</mat-label>
-                    <input matInput formControlName="memo" type="text">
+                    <textarea matInput formControlName="memo" rows="5"></textarea>
+                </mat-form-field>
+
+                <mat-radio-group aria-label="Select an option" formControlName="failsInspection" class="default-50 sm-100">
+                    <mat-radio-button [value]="false" translate>CMMS_PASSES</mat-radio-button>
+                    <mat-radio-button [value]="true" translate>CMMS_FAILS</mat-radio-button>
+                </mat-radio-group>
+
+                <mat-form-field class="default-50">
+                    <mat-label translate>CMMS_FAULT</mat-label>
+                    <ss-auto-complete matInput
+                                      [model]="faultLookup"
+                                      formControlName="fault">
+                    </ss-auto-complete>
                 </mat-form-field>
 
             </mat-expansion-panel>
@@ -204,8 +217,7 @@
                     </mat-panel-title>
                 </mat-expansion-panel-header>
                 <span class="default-100"></span>
-
-
+                <router-outlet></router-outlet>
             </mat-expansion-panel>
 
             <mat-expansion-panel
@@ -234,5 +246,4 @@
         </mat-accordion>
 
     </form>
-
 </mat-card-content>

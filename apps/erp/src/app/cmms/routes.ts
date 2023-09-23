@@ -32,7 +32,12 @@ import {
     docInfoRoutes,
     CMMS_CHARTS_URL,
     CMMS_ASSET_TREE,
-    CMMS_EMPLOYEES_URL, CMMS_FUNCTION_URL, CMMS_CHECKLIST_URL, CMMS_INSPECTION_ORDER_URL, CMMS_INSPECTION_URL
+    CMMS_EMPLOYEES_URL,
+    CMMS_FUNCTION_URL,
+    CMMS_CHECKLIST_URL,
+    CMMS_INSPECTION_ORDER_URL,
+    CMMS_INSPECTION_URL,
+    CMMS_GANT_URL
 } from '../common';
 import { loginGuard } from '../erp-guards';
 import {
@@ -60,6 +65,7 @@ import { AssetReadingDetailComponent, AssetReadingListComponent, readingDetailGu
 import { AssetTriggerDetailComponent, AssetTriggerListComponent, triggerDetailGuard } from '@ss/cmms/asset-triggers';
 import {
     InspectionDetailComponent,
+    InspectionDetailListComponent,
     InspectionOrderDetailComponent,
     InspectionOrderListComponent,
     WorkOrderArticleDetailComponent,
@@ -96,7 +102,7 @@ import {
     PartsRequestLineListComponent,
     PartsRequestListComponent
 } from '@ss/stock/ui-parts-request';
-import { CMMSChartsComponent } from '@ss/cmms/cmms-charts';
+import { CMMSChartsComponent, CmmsGanttComponent } from '@ss/cmms/cmms-charts';
 import { CmmsEmployeeDetailComponent, CmmsEmployeeListComponent } from '@ss/cmms/cmms-employees';
 import {
     AssetPmDetailComponent,
@@ -381,6 +387,13 @@ export const cmmsRoutes: Routes = [
                 component: InspectionOrderDetailComponent,
                 canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService],
+                children: [
+                    { path: 'inspections',
+                        children: [
+                            { path: '', component: InspectionDetailListComponent, pathMatch: 'full'},
+                        ]
+                    }
+                ]
             },
         ]
     },
@@ -732,6 +745,9 @@ export const cmmsRoutes: Routes = [
     },
     {
         path: CMMS_CHARTS_URL, component: CMMSChartsComponent
+    },
+    {
+        path: CMMS_GANT_URL, component: CmmsGanttComponent
     },
     {
         path: CMMS_ASSET_TREE, component: AssetTreeComponent

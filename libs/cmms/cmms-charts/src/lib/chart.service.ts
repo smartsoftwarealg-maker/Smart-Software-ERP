@@ -3,7 +3,8 @@ import { BaseEntityService } from '@ss/common/api-base-entity';
 import { Lookup } from '@ss/common/api-lookup';
 import { HttpService } from '@ss/common/api-common';
 import { Observable } from 'rxjs';
-import { ByPriority, PastDue, PendingSR } from './chart-api';
+import { ByPriority, Gantt, PastDue, PendingSR } from "./chart-api";
+import { dateToStr } from "../../../../../apps/hotel/src/app/common/util";
 
 @Injectable({
     providedIn: 'root'
@@ -31,5 +32,10 @@ export class ChartService extends BaseEntityService<Lookup>{
 
     woPriority(): Observable<ByPriority[]> {
         return this.httpSrv.get<ByPriority[]>('/cmms/wo-priority');
+    }
+
+    gantt(date: Date): Observable<Gantt[]> {
+        const from = dateToStr(date);
+        return this.httpSrv.get<Gantt[]>('/cmms/gantt?from=' + from);
     }
 }

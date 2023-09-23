@@ -10,7 +10,7 @@
 }
 
 mat-table {
-    min-width: 600px;
+    min-width: 100%;
 }
 
 .mat-column-description {

@@ -71,5 +71,7 @@
     "INSPECTION_ORDERS": "Inspection order",
     "PASSES":                    "Passes",
     "FAILS":                     "Fails",
-    "LOAD_CHECKLIST":             "Load the checklist"
+    "LOAD_CHECKLIST":             "Load the checklist",
+    "CLOSURE_DATE":               "Closure date",
+    "GANTT":                      "Gantt"
 }
