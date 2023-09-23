@@ -72,5 +72,6 @@
     "PASSES":                     "جائز",
     "FAILS":                      "فاشل",
     "LOAD_CHECKLIST":             "قم بتحميل القائمة المرجعية",
-    "CLOSURE_DATE":               "تاريخ الإغلاق"
+    "CLOSURE_DATE":               "تاريخ الإغلاق",
+    "GANTT":                      "مسار غنت"
 }

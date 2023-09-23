@@ -72,5 +72,6 @@
     "PASSES":                    "Passes",
     "FAILS":                     "Fails",
     "LOAD_CHECKLIST":             "Load the checklist",
-    "CLOSURE_DATE":               "Closure date"
+    "CLOSURE_DATE":               "Closure date",
+    "GANTT":                      "Gantt"
 }

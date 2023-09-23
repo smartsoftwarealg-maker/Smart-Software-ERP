@@ -30,6 +30,7 @@ export interface ByPriority {
 
 export interface Gantt {
     description: string;
-    dueDate: Date,
-    hours: number;
+    startDate: Date,
+    duration: number;
+    completed: number;
 }

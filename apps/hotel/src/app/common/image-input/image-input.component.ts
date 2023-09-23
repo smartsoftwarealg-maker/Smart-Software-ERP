@@ -45,7 +45,7 @@ export class ImageInputComponent implements OnInit, Validator {
 
     defaultImage: SafeResourceUrl;
 
-    public imageInputUploader: FileUploader = new FileUploader({url: ''});
+    public imageInputUploader = null;
     id = 0;
 
     constructor(public httpSrv: HttpService, public sanitizer: DomSanitizer) {
@@ -81,7 +81,7 @@ export class ImageInputComponent implements OnInit, Validator {
     ngOnInit(): void {
         this.imageInputUploader.onAfterAddingFile = (fileItem => {
             if (fileItem.file.name.endsWith('.jpg') || fileItem.file.name.endsWith('.jpeg') || fileItem.file.name.endsWith('.png')) {
-                this.selectImage(fileItem);
+                this.selectImage();
             } else {
                 // todo: throw a proper error
                 alert('File format not supported');
@@ -108,10 +108,8 @@ export class ImageInputComponent implements OnInit, Validator {
             this.imageInputUploader.queue[0].url = this.httpSrv.getBaseUrl()
                 + this.parentUrl + id + this.childUrl;
 
-            this.imageInputUploader.onSuccessItem = (item: FileItem,
-                response: string,
-                status: number,
-                headers: ParsedResponseHeaders) => {
+            this.imageInputUploader.onSuccessItem = (response: string,
+                status: number) => {
                 if (onFinish != null) {
                     this.id = id;
                     onFinish(null);
@@ -119,10 +117,9 @@ export class ImageInputComponent implements OnInit, Validator {
                 // this.loadImage();
                 this.imageInputUploader.clearQueue();
             };
-            this.imageInputUploader.onErrorItem = (item: FileItem,
+            this.imageInputUploader.onErrorItem = (
                 response: string,
-                status: number,
-                headers: ParsedResponseHeaders) => {
+                status: number) => {
                 // todo: translate these:
                 const err = {
                     name: 'error saving photo',
@@ -158,7 +155,7 @@ export class ImageInputComponent implements OnInit, Validator {
         this.imgSrc = this.sanitizer.bypassSecurityTrustResourceUrl(b);
     }
 
-    private selectImage(f: FileItem) {
+    private selectImage() {
         const reader = new FileReader();
         // it's onload event and you forgot (parameters)
         reader.onload = (e: ProgressEvent) => {
