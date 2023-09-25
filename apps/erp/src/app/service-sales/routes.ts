@@ -228,7 +228,7 @@ export const ssalesRoutes: Routes = [
     },
     {
         path: COMMON_REPORTS_URL,
-        data: { reportBase: 'sales' },
+        data: { reportBase: 'service-sales' },
         component: ReportViewComponent,
         canActivate: [loginGuard]
     },

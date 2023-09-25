@@ -13,6 +13,7 @@ export class OfficeService extends BaseEntityService<Office> {
 
     constructor(protected override httpSrv: HttpService) {
         super(httpSrv, OFFICES, BUILDINGS);
+        this.setParentId(0);
     }
 
     search(location: number, building: number, floor: number): Observable<Office[]> {
@@ -24,9 +25,10 @@ export class OfficeService extends BaseEntityService<Office> {
     }
 
     buildings(location: number): Observable<Lookup[]>{
-        const params = new HttpParams().set('location', location + '');
-        return this.httpSrv
-            .get<Lookup[]>(BUILDINGS_URL, params);
+        return this.httpSrv.get<Lookup[]>(`/locations/${location}/buildings?page=0-50`);
+        // const params = new HttpParams().set('location', location + '');
+        // return this.httpSrv
+        //     .get<Lookup[]>(BUILDINGS_URL, params);
     }
 
     floors(location: number, building: number): Observable<Lookup[]>{

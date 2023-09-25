@@ -18,6 +18,7 @@ import { FormControl } from "@angular/forms";
 export class OfficesListComponent extends BaseEntityListComponent<Office> {
     private locationSrv = inject(AssetLocationService);
     private buildingSrv = inject(AssetsBuildingService);
+    buidlingLabel = 'ASSET_BUILDINGS';
 
     locationLookup = new DefaultAutoCompleteModel(this.locationSrv);
     buildingLookup = new DefaultAutoCompleteModel(this.buildingSrv);
@@ -44,7 +45,7 @@ export class OfficesListComponent extends BaseEntityListComponent<Office> {
         this.pagination.pageSize = 10;
         const title = this.route.snapshot?.data['title'];
         if (title) {
-            this.title = title;
+            this.buidlingLabel = title;
             this.displayedColumns = this.displayedColumns.slice(0, 2);
         }
         this.locationLookup.onObjectSelected = e => this.onLocation(e);

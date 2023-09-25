@@ -9,8 +9,8 @@ mat-table {
 }
 .table-container {
     flex-grow: 1;
-    overflow-x: auto;
-    height: calc(100% - 70px);
+    overflow: auto;
+    min-height: calc(100% - 155px);
 }
 
 
