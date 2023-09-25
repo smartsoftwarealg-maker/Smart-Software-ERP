@@ -1,10 +1,9 @@
 import { Injectable } from '@angular/core';
 import { BaseEntityService } from '@ss/common/api-base-entity';
 import { Lookup } from '@ss/common/api-lookup';
-import { HttpService } from '@ss/common/api-common';
+import { dateToYmdStr, HttpService } from '@ss/common/api-common';
 import { Observable } from 'rxjs';
-import { ByPriority, Gantt, PastDue, PendingSR } from "./chart-api";
-import { dateToStr } from "../../../../../apps/hotel/src/app/common/util";
+import { ByPriority, Gantt, PastDue, PendingSR } from './chart-api';
 
 @Injectable({
     providedIn: 'root'
@@ -35,7 +34,7 @@ export class ChartService extends BaseEntityService<Lookup>{
     }
 
     gantt(date: Date): Observable<Gantt[]> {
-        const from = dateToStr(date);
+        const from = dateToYmdStr(date);
         return this.httpSrv.get<Gantt[]>('/cmms/gantt?from=' + from);
     }
 }

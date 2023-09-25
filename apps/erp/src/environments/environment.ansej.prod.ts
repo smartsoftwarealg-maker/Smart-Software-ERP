@@ -30,8 +30,12 @@ import {
     TREASURY_APP_URL,
     WEBARCH_APP_URL,
     MISSIONS_APP_URL,
-    CONTRACTS_APP_URL, WORK_FLOW_APP_URL, BUDGET_BUDGET_URL, ARCH_VIEWER_URL, PARK_APP_URL
-} from "../app/common";
+    CONTRACTS_APP_URL,
+    WORK_FLOW_APP_URL,
+    BUDGET_BUDGET_URL,
+    ARCH_VIEWER_URL,
+    PARK_APP_URL
+} from '../app/common';
 import {hrLookupNavTree} from '../app/hr-lookups/side-nav-tree';
 import {MainPageComponent} from '../../../../libs/common/ui-main-page/src';
 import {workflowNavTree} from '../app/workflow/side-nav-tree';
@@ -53,7 +57,6 @@ export const navBar = [
     financeNavTree,
     hrLookupNavTree,
     hrNavTree,
-    parkNavTree,
     payrollNavTree,
     missionsNavTree,
     webArchNavTree,
@@ -82,7 +85,10 @@ export const langAssets = [
     ['assets/locale/missions_', 'MISSION_'],
     ['assets/locale/assets_', 'ASSET_'],
     ['assets/locale/treasury_', 'TRS_'],
-    ['assets/locale/accounting_', 'ACC_']
+    ['assets/locale/accounting_', 'ACC_'],
+    ['assets/locale/park_', 'PARK_'],
+    ['assets/locale/att_', 'ATT_'],
+    ['assets/locale/budget_', 'BUD_']
 ];
 
 export const appRoutes: Routes =  [

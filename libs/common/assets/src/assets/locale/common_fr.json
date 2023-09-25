@@ -309,5 +309,6 @@
     "HOME":                       "Acceil",
     "RECORD_NO":                  "N° PV",
     "REORDER":                    "Réorganiser",
-    "GO_BACK":                    "Retourner"
+    "GO_BACK":                    "Retourner",
+    "REASON":                     "Raison"
 }

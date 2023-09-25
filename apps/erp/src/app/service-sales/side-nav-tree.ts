@@ -11,8 +11,8 @@ import {
     ABS_SERVICE_INVOICE_CANCEL_URL,
     ABS_SERVICE_INVOICE_URL,
     ABS_SERVICE_ORDER_URL,
-    ABS_SERVICE_PROFORMA_URL
-} from '../common';
+    ABS_SERVICE_PROFORMA_URL, ABS_SERVICE_REPORTS_URL
+} from "../common";
 
 export const ssalesNavTree: SideNavNode = {
     name: 'COMMON_SERVICES',
@@ -81,7 +81,7 @@ export const ssalesNavTree: SideNavNode = {
         {
             name: 'COMMON_REPORTS',
             icon: 'fa-solid fa-file-chart-column',
-            route: ABS_SALES_REPORTS_URL,
+            route: ABS_SERVICE_REPORTS_URL,
             accessRights: 'Report'
         },
         {

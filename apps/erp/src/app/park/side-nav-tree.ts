@@ -12,7 +12,7 @@ import {
 
 export const parkNavTree: SideNavNode = {
     name: 'PARK',
-    icon: 'fa-solid fa-cars',
+    icon: 'fa-solid fa-car-building',
     children: [
         {
             name: 'PARK_VEHICLE_TYPES',
