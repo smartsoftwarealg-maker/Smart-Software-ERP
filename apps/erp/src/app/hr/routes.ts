@@ -20,8 +20,8 @@ import {
     HR_JUDICIAL_FRAMES_URL,
     HR_DECISION_MOTIVE_URL,
     HR_MOTIVE_URL,
-    HR_CONTRACT_MOTIVE_URL, HR_HOLIDAY_REQUEST_URL, COMMON_BLOOD_GROUPS_URL
-} from '../common';
+    HR_CONTRACT_MOTIVE_URL, HR_HOLIDAY_REQUEST_URL, COMMON_BLOOD_GROUPS_URL, ADMIN_REPORT_RIGHTS_URL
+} from "../common";
 import {
     ABS_INDEX_URL,
     CanDeactivateService,
@@ -127,6 +127,7 @@ import {
 import {
     EmployeeContractListComponent
 } from '@ss/payroll/ui-employee';
+import { ReportRightsComponent } from "@ss/administration/reports-rights";
 
 export const hrRoutes: Routes = [
     {
@@ -546,6 +547,11 @@ export const hrRoutes: Routes = [
         component: ReportViewComponent,
         canActivate: [loginGuard],
         data: { reportBase: 'hr' }
+    },
+    {
+        path: ADMIN_REPORT_RIGHTS_URL,
+        component: ReportRightsComponent,
+        data: {reportBase: 'hr'},
     },
     {
         path: HR_EMPLOYMENT_TYPE_URL,

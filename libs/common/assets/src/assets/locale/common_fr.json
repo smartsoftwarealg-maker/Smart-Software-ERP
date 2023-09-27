@@ -310,5 +310,6 @@
     "RECORD_NO":                  "N° PV",
     "REORDER":                    "Réorganiser",
     "GO_BACK":                    "Retourner",
-    "REASON":                     "Raison"
+    "REASON":                     "Raison",
+    "REPORT_RIGHTS":              "Droits Etats"
 }

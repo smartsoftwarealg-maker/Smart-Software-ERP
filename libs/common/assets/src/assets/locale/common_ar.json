@@ -306,5 +306,6 @@
     "RECORD_NO":                  "رقم السجل",
     "REORDER":                    "إعادة الترتيب",
     "GO_BACK":                    "عودة",
-    "REASON":                     "السبب"
+    "REASON":                     "السبب",
+    "REPORT_RIGHTS":              "حقوق التقرير"
 }

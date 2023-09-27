@@ -21,7 +21,11 @@ import {
     USER_STORES_URL,
     STOCK_ARTICLE_URL,
     GENERATION_ACCOUNT_URL,
-    STOCK_ACCOUNT_URL, STOCK_PRICE_RECALCULATION_URL, STOCK_CONSUMPTION_CANCELLATION_URL, STOCK_PARTS_REUEST_URL
+    STOCK_ACCOUNT_URL,
+    STOCK_PRICE_RECALCULATION_URL,
+    STOCK_CONSUMPTION_CANCELLATION_URL,
+    STOCK_PARTS_REUEST_URL,
+    ADMIN_REPORT_RIGHTS_URL
 } from '../common';
 import { ABS_INDEX_URL, LINES_DETAIL_URL, LIST_URL, CanDeactivateService } from '@ss/common/api-common';
 import { ArticleDetailComponent, ArticleListComponent } from '@ss/stock/ui-article';
@@ -89,6 +93,7 @@ import {
     PartsRequestLineListComponent,
     PartsRequestListComponent
 } from '@ss/stock/ui-parts-request';
+import { ReportRightsComponent } from '@ss/administration/reports-rights';
 
 export const mainRoutes: Routes = [
     {
@@ -514,16 +519,14 @@ export const mainRoutes: Routes = [
     },
     {
         path: STOCK_REPORTS_URL,
-        children: [
-            {
-                path: LIST_URL,
-                data: { reportBase: 'stock'},
-                component: ReportViewComponent,
-                canActivate: [loginGuard]
-            },
-            { path: '', redirectTo: LIST_URL, pathMatch: 'full' },
-            { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' }
-        ]
+        data: { reportBase: 'stock'},
+        component: ReportViewComponent,
+        canActivate: [loginGuard]
+    },
+    {
+        path: ADMIN_REPORT_RIGHTS_URL,
+        component: ReportRightsComponent,
+        data: {reportBase: 'stock'},
     },
     {
         path: STOCK_STORE_NAMES_URL,

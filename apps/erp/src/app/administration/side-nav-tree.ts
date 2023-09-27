@@ -15,8 +15,8 @@ import {
     ABS_DB_UPDATER_URL,
     ABS_APP_ARCHIVE_DOCUMENTS_URL,
     ABS_ADMINISTRATION_DAIRAS_URL,
-    ABS_ADMINISTRATION_DOCUMENT_URL
-} from '../common';
+    ABS_ADMINISTRATION_DOCUMENT_URL, ABS_ADMINISTRATION_REPORT_RIGHTS_URL
+} from "../common";
 import {SideNavNode} from '@ss/common/api-common';
 
 export const administrationNavTree: SideNavNode = {
@@ -113,6 +113,12 @@ export const administrationNavTree: SideNavNode = {
             icon: 'fas fa-hand-paper',
             route: ABS_ADMINISTRATION_ACCESS_RIGHTS_URL,
             accessRights: 'AccessRight'
+        },
+        {
+            name: 'COMMON_REPORT_RIGHTS',
+            icon: 'fa-regular fa-ban',
+            route: ABS_ADMINISTRATION_REPORT_RIGHTS_URL,
+            accessRights: 'RoleReport'
         },
         {
             name: 'COMMON_DB_UPDATER',

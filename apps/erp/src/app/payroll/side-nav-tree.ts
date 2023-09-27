@@ -1,7 +1,8 @@
 import {SideNavNode} from '@ss/common/api-common';
 import {
     ABS_AMENDMENT_URL,
-    ABS_ARCHIVE_GENERATOR_URL, ABS_ARCHIVE_VIEWER_URL,
+    ABS_ARCHIVE_GENERATOR_URL,
+    ABS_ARCHIVE_VIEWER_URL,
     ABS_CACO_URL,
     ABS_COMMON_REPORTS_URL,
     ABS_DAS_URL,
@@ -20,6 +21,7 @@ import {
     ABS_MONTH_SELECTOR_URL,
     ABS_PAYROLL_DASHBOARD_URL,
     ABS_PAYROLL_EMPLOYEES_URL,
+    ABS_PAYROLL_REPORT_RIGHT_URL,
     ABS_SALARY_GRID_URL,
     ABS_SPECIAL_PAYROLL_URL,
     ABS_VACATION_PLANNING_URL
@@ -168,6 +170,12 @@ export const payrollNavTree: SideNavNode = {
             accessRights: 'Dashboard'
         },
 
+        {
+            name: 'COMMON_REPORT_RIGHTS',
+            icon: 'fa-regular fa-ban',
+            route: ABS_PAYROLL_REPORT_RIGHT_URL,
+            accessRights: 'RoleReport'
+        },
         {
             name: 'COMMON_REPORTS',
             icon: 'fa-solid fa-file-chart-column',

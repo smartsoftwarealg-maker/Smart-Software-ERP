@@ -56,6 +56,9 @@
             "@ss/administration/db-updater": [
                 "libs/administration/db-updater/src/index.ts"
             ],
+            "@ss/administration/reports-rights": [
+                "libs/administration/reports-rights/src/index.ts"
+            ],
             "@ss/administration/ui-bank": [
                 "libs/administration/ui-bank/src/index.ts"
             ],
