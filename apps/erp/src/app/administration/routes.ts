@@ -20,7 +20,7 @@ import {
     LOGISTICS_WORKFLOW_URL,
     ADMIN_USER_MESSAGES_URL,
     ADMIN_USER_DOCUMENTS_URL,
-    ADMIN_WORKFLOW_INBOX_URL, ADMIN_USER_RECEIVED_MESSAGES_URL
+    ADMIN_WORKFLOW_INBOX_URL, ADMIN_USER_RECEIVED_MESSAGES_URL, ADMIN_REPORT_RIGHTS_URL
 } from '../common';
 import { ABS_INDEX_URL, LIST_URL, CanDeactivateService } from '@ss/common/api-common';
 import { Routes } from '@angular/router';
@@ -62,6 +62,7 @@ import {
     UserReceivedMessageListComponent, UserReceivedMessageDetailComponent
 } from '@ss/workflow';
 import {loginGuard} from '../erp-guards';
+import { ReportRightsComponent } from '@ss/administration/reports-rights';
 
 export const mainRoutes: Routes = [
     //    // NOT USED
@@ -385,6 +386,10 @@ export const mainRoutes: Routes = [
     {
         path: ADMIN_WORKFLOW_INBOX_URL,
         component: WorkflowInboxListComponent
+    },
+    {
+        path: ADMIN_REPORT_RIGHTS_URL,
+        component: ReportRightsComponent
     },
     {
         path: FURNITURE_STATUS_URL,

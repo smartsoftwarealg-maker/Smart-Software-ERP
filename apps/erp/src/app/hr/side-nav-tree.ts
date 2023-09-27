@@ -4,7 +4,8 @@ import {
     ABS_HR_REPORTS_URL,
     ABS_INACTIVE_HR_EMPLOYEES_URL,
     ABS_HR_DASHBOARD_URL,
-    ABS_HR_HOLIDAY_REQUEST_URL
+    ABS_HR_HOLIDAY_REQUEST_URL,
+    ABS_HR_REPORT_RIGHT_URL
 } from '../common';
 import {SideNavNode} from '@ss/common/api-common';
 
@@ -100,6 +101,12 @@ export const hrNavTree: SideNavNode = {
             icon: 'fa-solid fa-umbrella-beach',
             route: ABS_HR_HOLIDAY_REQUEST_URL,
             accessRights: 'HolidayRequest'
+        },
+        {
+            name: 'COMMON_REPORT_RIGHTS',
+            icon: 'fa-regular fa-ban',
+            route: ABS_HR_REPORT_RIGHT_URL,
+            accessRights: 'RoleReport'
         },
         {
             name: 'COMMON_REPORTS',

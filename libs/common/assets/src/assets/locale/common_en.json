@@ -307,5 +307,6 @@
     "RECORD_NO":                 "Record No.",
     "REORDER":                   "Reorder",
     "GO_BACK":                   "Go back",
-    "REASON":                    "Reason"
+    "REASON":                    "Reason",
+    "REPORT_RIGHTS":             "Report rights"
 }

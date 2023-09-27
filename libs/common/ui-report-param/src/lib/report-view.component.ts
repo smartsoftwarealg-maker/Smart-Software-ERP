@@ -57,11 +57,11 @@ export class ReportViewComponent extends BaseEntityListComponent<ReportParam> im
     ];
 
     reportTree: MatTreeNestedDataSource<ReportNode> = new MatTreeNestedDataSource();
-    treeControl = new NestedTreeControl<any>(node => node.list);
+    treeControl = new NestedTreeControl<ReportNode>(node => node.list);
     selectedReport: ReportNode;
     app: string;
 
-    hasChild = (_: number, node: any) => !!node && node.list.length > 0;
+    hasChild = (_: number, node: ReportNode) => !!node && node.list.length > 0;
 
     constructor(
         public reportsService: ReportTreeService,

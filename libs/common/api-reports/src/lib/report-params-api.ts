@@ -2,11 +2,13 @@ import { Lookup } from '@ss/common/api-lookup';
 import { ParamAutoCompleteModel } from './param-auto-complete-model';
 
 export const REPORT_PARAMS_URL = '/reports/params';
+export const ROLES = '/roles';
+export const REPORTS = '/reports';
 
 export interface ReportNode {
     name: string;
     list: ReportNode[];
-    parent: '';
+    parent: string;
 }
 
 export interface ParamValue {
