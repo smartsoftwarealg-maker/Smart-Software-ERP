@@ -1,5 +1,6 @@
 import { ImageModel } from '@ss/common/ui-image-input';
 export const EMPLOYEES_URL = '/persons';
+export const CMMS_EMPLOYEES_URL = '/cmms-persons';
 export const INACTIVE_EMPLOYEES_URL = '/inactive-persons';
 export const EMPLOYEE_PHOTO_URL = '/photo';
 

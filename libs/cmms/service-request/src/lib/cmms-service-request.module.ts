@@ -13,9 +13,11 @@ import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from "@angular/material/input";
 import { MatTabsModule } from "@angular/material/tabs";
 import { ReactiveFormsModule } from "@angular/forms";
+import { MatOptionModule } from "@angular/material/core";
+import { MatSelectModule } from "@angular/material/select";
 
 @NgModule({
-    imports: [CommonModule, CommonUiLangModule, MatSortModule, MatTableModule, UiPaginationModule, CommonUiAutoCompleteModule, CommonUiDatepickerModule, MatCardModule, MatFormFieldModule, MatInputModule, MatTabsModule, ReactiveFormsModule],
+  imports: [CommonModule, CommonUiLangModule, MatSortModule, MatTableModule, UiPaginationModule, CommonUiAutoCompleteModule, CommonUiDatepickerModule, MatCardModule, MatFormFieldModule, MatInputModule, MatTabsModule, ReactiveFormsModule, MatOptionModule, MatSelectModule],
     declarations: [ServiceRequestListComponent, ServiceRequestDetailComponent],
 })
 export class CmmsServiceRequestModule {}

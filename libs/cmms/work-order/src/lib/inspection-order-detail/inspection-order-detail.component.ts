@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { CMMSWorkDetail, Work } from '@ss/cmms/cmms-api';
+import { CMMSWorkDetail, INSPECTION, IS_INSPECTION, Work, WORK_TYPES } from "@ss/cmms/cmms-api";
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router, RouterOutlet } from '@angular/router';
 import { FormsModule, ReactiveFormsModule, UntypedFormBuilder } from '@angular/forms';
@@ -53,6 +53,8 @@ export class InspectionOrderDetailComponent extends CMMSWorkDetail {
     private URLS = ['inspections'];
     readonly INSPECTION_PANEL = 0;
 
+    cmmsTypes = WORK_TYPES.filter(e => e.id === INSPECTION);
+
     activePanel = -1;
 
     constructor(
@@ -69,7 +71,8 @@ export class InspectionOrderDetailComponent extends CMMSWorkDetail {
             formBuilder,
             confirmationSrv,
             DOC_WORK_ORDER,
-            'CMMS_INSPECTION_ORDERS');
+            'CMMS_INSPECTION_ORDERS',
+            IS_INSPECTION);
     }
 
     override loadEntity(id: number): Observable<Work> {

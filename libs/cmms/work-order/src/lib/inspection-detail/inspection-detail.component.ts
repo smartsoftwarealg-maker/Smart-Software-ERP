@@ -1,5 +1,5 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { CMMSWorkDetail, Work } from '@ss/cmms/cmms-api';
+import { CMMSWorkDetail, IS_INSPECTION, Work } from "@ss/cmms/cmms-api";
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, RouterOutlet } from '@angular/router';
 import { FormsModule, ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
@@ -62,7 +62,8 @@ export class InspectionDetailComponent extends CMMSWorkDetail implements OnInit 
             formBuilder,
             confirmationSrv,
             DOC_WORK_ORDER,
-            'CMMS_INSPECTION');
+            'CMMS_INSPECTION',
+            IS_INSPECTION);
     }
 
     override loadEntity(id: number): Observable<Work> {

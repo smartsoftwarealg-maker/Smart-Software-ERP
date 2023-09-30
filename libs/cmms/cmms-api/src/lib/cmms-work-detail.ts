@@ -23,6 +23,9 @@ import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { WorkflowDialogComponent } from '@ss/workflow';
 import { BaseEntityService } from '@ss/common/api-base-entity';
 import { CmmsPersonService } from './cmms-person.service';
+import { CMMSWorkPersonService } from "../../../work-order/src/lib/services/c-m-m-s-work-person.service";
+import { CmmsOrderPersonService } from "./cmms-order-person.service";
+
 
 @Directive()
 export class CMMSWorkDetail extends BaseEntityDetailComponent<Work> {
@@ -37,8 +40,7 @@ export class CMMSWorkDetail extends BaseEntityDetailComponent<Work> {
     private prioritySrv = inject(CMMSPriorityService);
     private serviceSrv = inject(ServiceService);
     private assetSrv = inject(AssetsService);
-    private personSrv = inject(CmmsPersonService);
-    private defaultType = 1;
+    private personSrv = inject(CmmsOrderPersonService);
     private sendBtn: ToolbarButton = {
         disabled: false,
         icon: 'fa-solid fa-envelope',
@@ -47,6 +49,7 @@ export class CMMSWorkDetail extends BaseEntityDetailComponent<Work> {
         visible: true,
         click: () => this.sendMessage(),
     };
+
 
     protected dialog = inject(MatDialog);
 
@@ -63,7 +66,6 @@ export class CMMSWorkDetail extends BaseEntityDetailComponent<Work> {
 
     routingPaginator = PaginationModel.newInstance();
     partPaginator = PaginationModel.newInstance();
-    cmmsTyes = WORK_TYPES;
 
     data$: Observable<RoutingDetail[]> = of([]);
     partData$: Observable<RoutingPart[]> = of([]);
@@ -80,18 +82,18 @@ export class CMMSWorkDetail extends BaseEntityDetailComponent<Work> {
         public override formBuilder: UntypedFormBuilder,
         public override confirmationSrv: ConfirmationDialogService,
         protected document: number,
-        public override title: string) {
+        public override title: string,
+        protected isInspection: boolean) {
         super(entitySrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, title);
-        this.defaultType = this.document == 12? 1 : 2;
         this.routingPaginator.onChange = () => this.data$ = this.routingDetailSrv.getPage(this.routingPaginator);
         this.partPaginator.onChange = () => this.partData$ = this.routingPartSrv.getPage(this.partPaginator);
-        this.cmmsTyes = WORK_TYPES;
     }
 
     setupForm(e: Work): UntypedFormGroup {
         if (e.id) {
             this.shellSrv.addButton(this.sendBtn);
         }
+        this.personSrv.setParentId(e?.id || 0);
         this.validated = e.validated;
         this.isEditable = this.isEditable && !e.actualDue;
         this.saveButton.visible = this.isEditable;
@@ -104,7 +106,7 @@ export class CMMSWorkDetail extends BaseEntityDetailComponent<Work> {
             description:          [e.description, Validators.required],
             assetId:              [e.assetId, Validators.required],
             requester:            [e.requester   ],
-            wrType:               [{ value: e.wrType || INSPECTION, disabled: true }, Validators.required],
+            wrType:               [{ value: e.wrType || INSPECTION, disabled: this.isInspection }, Validators.required],
             priority:             [e.priority, Validators.required],
             plannedStart:         [e.plannedStart, Validators.required],
             scheduledStart:       [e.scheduledStart],
