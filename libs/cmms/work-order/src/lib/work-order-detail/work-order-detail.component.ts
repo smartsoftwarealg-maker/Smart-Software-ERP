@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { CMMSWorkDetail, Work } from '@ss/cmms/cmms-api';
+import { CMMSWorkDetail, INSPECTION, IS_NOT_INSPECTION, Work, WORK_TYPES } from '@ss/cmms/cmms-api';
 import { KeepOnToolbar, ShellService, SnackBarService, ToolbarButton } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router, RouterOutlet } from '@angular/router';
 import { FormsModule, ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
@@ -71,6 +71,8 @@ export class WorkOrderDetailComponent extends CMMSWorkDetail {
     readonly ARTICLE_PANEL = 0;
     readonly WORK_PANEL = 1;
 
+    cmmsTypes = WORK_TYPES.filter(e => e.id !== INSPECTION);
+
     activePanel = -1;
 
     constructor(
@@ -80,7 +82,15 @@ export class WorkOrderDetailComponent extends CMMSWorkDetail {
         public override route: ActivatedRoute,
         public override formBuilder: UntypedFormBuilder,
         public override confirmationSrv: ConfirmationDialogService) {
-        super(entitySrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, DOC_WORK_ORDER, 'CMMS_WORK_ORDER');
+        super(entitySrv,
+            shellSrv,
+            snackBarSrv,
+            route,
+            formBuilder,
+            confirmationSrv,
+            DOC_WORK_ORDER,
+            'CMMS_WORK_ORDER',
+            IS_NOT_INSPECTION);
     }
 
     private importDocument() {

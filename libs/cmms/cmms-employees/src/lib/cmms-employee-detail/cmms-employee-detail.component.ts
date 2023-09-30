@@ -24,7 +24,7 @@ import { ActivatedRoute, Router, RouterOutlet } from '@angular/router';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { HttpService, MaterialModule } from '@ss/common/api-common';
 import { FixedElementsEntryService } from '@ss/remuneration/elements-entry';
-import { Observable, of, switchMap } from "rxjs";
+import { Observable, of, switchMap } from 'rxjs';
 import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
 import { CommonUiLangModule } from '@ss/common/ui-lang';
 import { MatButtonModule } from '@angular/material/button';
@@ -37,7 +37,8 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
 import { PersonFaultService } from '../services/person-fault.service';
 import { PersonLocationService } from '../services/person-location.service';
-import { CMMSEmployeeService, CmmsPersonService } from '@ss/cmms/cmms-api';
+import { CmmsPersonService } from '@ss/cmms/cmms-api';
+import { CmmsEmployeeService } from '../services/cmms-employee.service';
 
 @Component({
     selector: 'ss-cmms-employee-detail',
@@ -102,7 +103,7 @@ export class CmmsEmployeeDetailComponent extends BaseEntityDetailComponent<Emplo
         public override route: ActivatedRoute,
         public override formBuilder: UntypedFormBuilder,
         public override confirmationSrv: ConfirmationDialogService,
-        public employeeSrv: CMMSEmployeeService,
+        public employeeSrv: CmmsEmployeeService,
         public httpSrv: HttpService,
         public infoSrv: FixedElementsEntryService,
         private lookupsSrv: LookupsService,

@@ -33,6 +33,10 @@ export const PREVENTIVE = 1;
 export const CURATIVE = 2;
 export const INSPECTION = 3;
 
+export const IS_INSPECTION = true;
+export const IS_NOT_INSPECTION = false;
+
+
 export const WORK_TYPES: Lookup[] = [
     { id: 1, description: 'CMMS_PREVENTIVE' },
     { id: 2, description: 'CMMS_CURATIVE' },

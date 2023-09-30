@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CMMSWorkDetail } from '@ss/cmms/cmms-api';
+import { CMMSWorkDetail, IS_NOT_INSPECTION } from '@ss/cmms/cmms-api';
 import { UntypedFormBuilder } from '@angular/forms';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute } from '@angular/router';
@@ -20,7 +20,7 @@ export class PrevWorkOrderDetailComponent extends CMMSWorkDetail {
         public override route: ActivatedRoute,
         public override formBuilder: UntypedFormBuilder,
         public override confirmationSrv: ConfirmationDialogService) {
-        super(entitySrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, DOC_WORK_REQUEST, 'CMMS_PREV_WORK_ORDER');
+        super(entitySrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, DOC_WORK_REQUEST, 'CMMS_PREV_WORK_ORDER', IS_NOT_INSPECTION);
     }
 
 }
