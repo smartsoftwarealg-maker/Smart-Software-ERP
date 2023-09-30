@@ -1,4 +1,4 @@
-import { AssetLookup, INSPECTION, RoutingDetail, RoutingPart, Work, WORK_TYPES } from './cmms-api';
+import { AssetLookup, INSPECTION, RoutingDetail, RoutingPart, Work } from './cmms-api';
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { Directive, inject } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
@@ -22,8 +22,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { WorkflowDialogComponent } from '@ss/workflow';
 import { BaseEntityService } from '@ss/common/api-base-entity';
-import { CmmsPersonService } from './cmms-person.service';
-import { CMMSWorkPersonService } from "../../../work-order/src/lib/services/c-m-m-s-work-person.service";
+import { CMMSWorkPersonService } from '@ss/cmms/work-order';
 import { CmmsOrderPersonService } from "./cmms-order-person.service";
 
 

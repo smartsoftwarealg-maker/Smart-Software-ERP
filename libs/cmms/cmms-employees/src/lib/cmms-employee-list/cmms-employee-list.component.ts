@@ -35,7 +35,6 @@ import { CmmsEmployeeService } from '../services/cmms-employee.service';
     styleUrls: ['./cmms-employee-list.component.scss'],
 })
 export class CmmsEmployeeListComponent extends BaseEntityListComponent<Employee> implements OnInit {
-    activePersonnel = true;
     public displayedColumns = [
         'id',
         'fullName',
