@@ -89,9 +89,14 @@ export class AssetReceptionsComponent extends BaseEntityListComponent<AssetRecep
         this.entitySrv.getAssets(id || 0).subscribe(res => this.detail = res);
     }
 
+    override selectRow(ar: AssetReception) {
+      super.selectRow(ar);
+      this.deleteButton.disabled = !!ar.validated;
+    }
+
     openAsset(id: number) {
         if (id > 0) {
-            this.router.navigate(['../assets', id], { relativeTo: this.route });
+            this.router.navigate(['../assets', id], { relativeTo: this.route }).then();
         }
     }
 }
