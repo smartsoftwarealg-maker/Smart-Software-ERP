@@ -5,7 +5,7 @@ import { Asset } from '../asset-api';
 import { AGENT_ARCHIVES, AppArchiveModule, AppArchiveService, ASSET_ARCHIVES } from '@ss/common/app-archive';
 import { ActivatedRoute, Router, RouterOutlet } from '@angular/router';
 import { ConsumerService, CustomerService } from '@ss/logistics/api-agent';
-import { IsParamService, LoginService, MaterialModule } from "@ss/common/api-common";
+import { IsParamService, LoginService, MaterialModule } from '@ss/common/api-common';
 import { AssetEndsService } from '@ss/accounting/accounting-api';
 import { MatDialog } from '@angular/material/dialog';
 import {
@@ -46,6 +46,7 @@ import { QRCodeModule } from 'angularx-qrcode';
 import { CMMSFunctionService } from '@ss/cmms/lookups';
 import { BaseEntityService } from '@ss/common/api-base-entity';
 import { AssetPmService } from '../asset-pm.service';
+import { CMMSAssetTriggerService } from "../../../../asset-triggers/src/lib/cmms-asset-trigger.service";
 
 @Component({
     selector: 'ss-cmms-asset-detail',
@@ -65,6 +66,7 @@ export class CmmsAssetDetailComponent extends BaseEntityDetailComponent<Asset> i
     private endSrv = inject(AssetEndsService);
     private dialog = inject(MatDialog);
     private officeSrv =  inject(OfficeService);
+    private triggerSrv = inject(CMMSAssetTriggerService);
     private accountSrv = inject(AccountService);
     private isParamSrv =  inject(IsParamService);
     private costCenterSrv =  inject(CostCenterService);
@@ -79,10 +81,11 @@ export class CmmsAssetDetailComponent extends BaseEntityDetailComponent<Asset> i
     // Public
     minLength = 1;
     activePanel = -1;
-    PANEL_ROUTES = ['pm', 'inspection', 'archive'];
+    PANEL_ROUTES = ['pm', 'inspection', 'triggers', 'archive'];
     readonly PM_PANEL = 0;
     readonly INSPECTION_PANEL = 1;
-    readonly ARCHIVE_PANEL = 2;
+    readonly TRIGGER_PANEL = 2;
+    readonly ARCHIVE_PANEL = 3;
 
     markAutoCompleteModel      = new DefaultAutoCompleteModel(this.markSrv);
     classAutoCompleteModel     = new DefaultAutoCompleteModel(this.classSrv);
@@ -96,7 +99,6 @@ export class CmmsAssetDetailComponent extends BaseEntityDetailComponent<Asset> i
     fiscalDepreciation: Depreciation[] = [];
     assetEnds: Lookup[] = [];
     receptionLookup            = new ReceptionAutoComplete(this.receptionSrv);
-    readonly LOCAL_ASSER_ARCHIVE = ASSET_ARCHIVES;
 
     constructor(
         public detailSrv: CmmsAssetService,
@@ -192,11 +194,6 @@ export class CmmsAssetDetailComponent extends BaseEntityDetailComponent<Asset> i
                 tap(res => this.assetEnds = res.body));
     }
 
-    override ngOnInit() {
-        this.archiveSrv.appId = AGENT_ARCHIVES;
-        super.ngOnInit();
-    }
-
     private updateAccountDefaults(a: Account) {
         if (this.form && a) {
             this.form.controls['accountno'].setValue(a.accountNo);
@@ -224,7 +221,9 @@ export class CmmsAssetDetailComponent extends BaseEntityDetailComponent<Asset> i
     }
 
     override loadEntity(id: number): Observable<Asset> {
+        this.archiveSrv.appId = AGENT_ARCHIVES;
         this.officeSrv.setParentId(id || 0);
+        this.triggerSrv.setParentId(id || 0);
         this.pmSrv.setParentId(id || 0);
         return super.loadEntity(id);
     }
