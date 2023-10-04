@@ -1,6 +1,6 @@
 export const BUILDINGS = '/buildings';
 export const OFFICES = '/offices';
-export const  VATS_URL = '/logistics/vats';
+export const VATS_URL = '/logistics/vats';
 export const MARITAL_STATUS_URL = '/lookups/marital_status';
 export const LOOKUPS_APPLICATIONS_URL = '/lookups/erp_applications';
 export const WILAYAS_URL = '/lookups/wilayas';
