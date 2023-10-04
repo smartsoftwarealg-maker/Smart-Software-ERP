@@ -28,7 +28,7 @@
                        (click)="select(d)"
                        *ngFor="let d of list"
                        [class.selected]="d.id === selectedOffice?.id">
-            {{ d.buildingCode }}: {{ d.description }}
+            {{ d.code }}: {{ d.description }}
         </mat-list-item>
     </mat-list>
 </div>
