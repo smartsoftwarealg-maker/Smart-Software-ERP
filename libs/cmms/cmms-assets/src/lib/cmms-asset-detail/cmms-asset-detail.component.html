@@ -255,16 +255,31 @@
 
     </mat-expansion-panel>
 
-      <mat-expansion-panel #attributes expanded="false" [class]="getPanelHeaderClass('attributes', attributes)">
+
+<!--      <mat-expansion-panel #attributes expanded="false" [class]="getPanelHeaderClass('attributes', attributes)">-->
+<!--          <mat-expansion-panel-header>-->
+<!--              <mat-panel-title translate>-->
+<!--                  ADMINISTRATION_ATTRIBUTES-->
+<!--              </mat-panel-title>-->
+<!--          </mat-expansion-panel-header>-->
+
+<!--          <ss-child-attributes [childAttribute]="'/assets'" [attributeId]="id" [parentId]="2"-->
+<!--                               [editable]="isEditable">-->
+<!--          </ss-child-attributes>-->
+<!--      </mat-expansion-panel>-->
+
+      <mat-expansion-panel #triggerPanel
+                           expanded="false"
+                           (afterExpand)="showPanel(TRIGGER_PANEL)"
+                           [class.b-primary-expansion-panel]="triggerPanel.expanded">
           <mat-expansion-panel-header>
               <mat-panel-title translate>
-                  ADMINISTRATION_ATTRIBUTES
+                  CMMS_TRIGGERS
               </mat-panel-title>
           </mat-expansion-panel-header>
 
-          <ss-child-attributes [childAttribute]="'/assets'" [attributeId]="id" [parentId]="2"
-                               [editable]="isEditable">
-          </ss-child-attributes>
+          <router-outlet *ngIf="id && activePanel === TRIGGER_PANEL"></router-outlet>
+
       </mat-expansion-panel>
 
       <mat-expansion-panel #archivePanel

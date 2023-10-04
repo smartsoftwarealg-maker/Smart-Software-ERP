@@ -19,7 +19,7 @@ export class CMMSAlertService extends BaseEntityService<PM> {
         return this.httpSrv.post(CMMS_ALERT_URL, { date: date, filter: filter});
     }
 
-    override getList(page: number, pageSize: number, filter?: string, sortBy?: string, extraPrams?: HttpParams): Observable<{
+    override getList(page: number, pageSize: number, filter?: string, sortBy?: string): Observable<{
         itemCount: number;
         body: PM[]
     }> {

@@ -4,6 +4,11 @@
     margin: 4px auto;
 }
 
+.button__div {
+    display: flex;
+    justify-content: flex-end;
+}
+
 .table_div {
     overflow-x: auto;
     min-height: calc(100% - 150px);
@@ -14,10 +19,12 @@ mat-table {
     min-width: 700px;
 }
 
-.mat-column-meterDescription {
-    flex: 2 1 auto;
+.mat-column-description {
+    flex: 3 1 auto;
 }
 
 .mat-column-amount {
-    flex: 1 1 100px;
+    flex: 1 1 150px;
+    justify-content: flex-end;
 }
+

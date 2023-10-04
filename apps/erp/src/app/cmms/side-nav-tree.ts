@@ -159,12 +159,12 @@ export const cmmsNavTree: SideNavNode = {
             route: ABS_CMMS_PLANS_URL,
             accessRights: 'CMPlan'
         },
-        {
-            name: 'CMMS_TRIGGERS',
-            icon: 'fa-solid fa-gun',
-            route: ABS_CMMS_TRIGGER_URL,
-            accessRights: 'CMTrigger'
-        },
+        // {
+        //     name: 'CMMS_TRIGGERS',
+        //     icon: 'fa-solid fa-gun',
+        //     route: ABS_CMMS_TRIGGER_URL,
+        //     accessRights: 'CMTrigger'
+        // },
         {
             name: 'CMMS_READINGS',
             icon: 'fa-solid fa-gauge-low',

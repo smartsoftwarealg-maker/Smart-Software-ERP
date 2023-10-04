@@ -503,6 +503,13 @@ export const cmmsRoutes: Routes = [
                         ]
                     },
                     {
+                        path: 'triggers',
+                        children: [
+                            {path: '', component: AssetTriggerListComponent, pathMatch: 'full' },
+                            {path: ':id', component: AssetTriggerDetailComponent},
+                        ]
+                    },
+                    {
                         path: 'inspection',
                         children: [
                             {   path: '',
