@@ -186,7 +186,7 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
                         }
                         const testForm = this.formBuilder.group({
                             testId:   [{ value: t.testId, disabled: true }, Validators.required],
-                            value:    [0,        [Validators.required, Validators.min(t.minValue), Validators.max(t.maxValue)]]
+                            value:    [0,        [Validators.required, Validators.min(t.minValue), Validators.max(t.maxValue || 999)]]
                         });
                         this.tests.push(testForm);
                     });
