@@ -142,7 +142,6 @@ export class LtmReportComponent implements OnInit, OnDestroy {
                     legend: {
                         display: true,
                         labels: {
-                            color: 'white',
                             boxHeight: 18,
                         },
                     }

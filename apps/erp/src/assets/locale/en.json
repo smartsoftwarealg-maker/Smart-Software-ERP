@@ -49,5 +49,10 @@
     "WORKFLOW":        "Workflow",
     "BUDGET-APP":      "Budget",
     "ATTENDANCE":      "Attendance",
-    "PARK":            "Auto Park"
+    "PARK":            "Auto Park",
+    "REPORTING":       "Reports",
+    "COMMON":          "Utils",
+    "BUDGET":          "Budget",
+    "EPAYMENT":        "ePayment",
+    "EXCHANGE":        "Money Exchange"
 }
