@@ -21,5 +21,6 @@
     "STANDARD_FORMAT": "النسق المعياري",
     "UPDATE_FORMAT":   "نسيق التحديث",
     "SHOW_GRAPH":      "تظهر في الرسم البياني",
-    "SEARCH_MATTERS":  "ابحث في هذه القائمة"
+    "SEARCH_MATTERS":  "ابحث في هذه القائمة",
+    "RANGE":           "مجال"
 }

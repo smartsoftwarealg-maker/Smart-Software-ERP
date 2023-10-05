@@ -43,6 +43,7 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
 
 
     labels: string[] = [];
+    limits: number[][] = [];
     totalsLabels: string[] = [];
     variables: string[] = [];
     formulas: string[] = [];
@@ -179,12 +180,13 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
                     .filter(t => (this._periodicity < 1 || this._periodicity === t.periodicity) && !t.formula)
                     .forEach(t => {
                         this.labels.push(t.testDescription);
+                        this.limits.push([t.minValue, t.maxValue|| 999])
                         if (t.variable) {
                             this.variables.push(t.variable);
                         }
                         const testForm = this.formBuilder.group({
                             testId:   [{ value: t.testId, disabled: true }, Validators.required],
-                            value:    [0,        Validators.required]
+                            value:    [0,        [Validators.required, Validators.min(t.minValue), Validators.max(t.maxValue)]]
                         });
                         this.tests.push(testForm);
                     });

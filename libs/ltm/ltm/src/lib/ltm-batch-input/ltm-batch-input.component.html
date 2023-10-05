@@ -54,6 +54,7 @@
             <div *ngFor="let f of tests.controls; let i = index">
                 <div [formGroupName]="i">
                     <mat-form-field class="input_div">
+                        <mat-hint> <span translate>LTM_RANGE</span>: {{limits[i][0]}}- {{limits[i][1]}}</mat-hint>
                         <mat-label translate>{{ labels[i] }}</mat-label>
                         <input matInput formControlName="value" type="number" (click)="$event.target.select()">
                     </mat-form-field>

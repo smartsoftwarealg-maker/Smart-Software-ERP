@@ -21,5 +21,6 @@
     "STANDARD_FORMAT": "Format standard",
     "UPDATE_FORMAT":   "Format de mise à jour",
     "SHOW_GRAPH":      "Afficher dans le graphique",
-    "SEARCH_MATTERS":  "Rechercher dans cette liste"
+    "SEARCH_MATTERS":  "Rechercher dans cette liste",
+    "RANGE":           "Plage"
 }
