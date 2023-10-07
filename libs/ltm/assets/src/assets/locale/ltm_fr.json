@@ -13,8 +13,8 @@
     "OPT_VALUE":      "Valeur optimale",
     "MAX_VALUE":      "Valeur maximum",
     "PERIODICITY":    "Périodicité",
-    "LOW":            "Faible",
-    "HIGH":           "Haut",
+    "LOW":            "Min",
+    "HIGH":           "Max",
     "ANOMALIES_ONLY": "Afficher uniquement les anomalies",
     "BATCH_TESTINGS": "Tests horaires",
     "LINE_MATTERS":   "Matières ligne",
@@ -22,5 +22,11 @@
     "UPDATE_FORMAT":   "Format de mise à jour",
     "SHOW_GRAPH":      "Afficher dans le graphique",
     "SEARCH_MATTERS":  "Rechercher dans cette liste",
-    "RANGE":           "Plage"
+    "RANGE":           "Plage",
+    "HOURLY":          "Horaire",
+    "DAILY":           "Tous les jours",
+    "WEEKLY":          "Hebdomadaire",
+    "MONTHLY":         "Mensuel",
+    "SHOW_MENU":       "Afficher le menu",
+    "BG_COLOR":        "Couleur de l'arrière plan"
 }

@@ -20,7 +20,7 @@ export class LtmTestDetailComponent extends BaseEntityDetailComponent<LTMTest> {
         public override route: ActivatedRoute,
         public override formBuilder: UntypedFormBuilder,
         public override confirmationSrv: ConfirmationDialogService) {
-        super(entitySrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'LTM_MATTERS');
+        super(entitySrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'LTM_TESTS');
     }
 
 
@@ -30,7 +30,7 @@ export class LtmTestDetailComponent extends BaseEntityDetailComponent<LTMTest> {
             id:            [b.id],
             description:   [b.description, Validators.required],
             descriptionAr: [b.descriptionAr],
-            variable:      [b.variable],
+            variable:      [b.variable, [Validators.required, Validators.min(3), Validators.max(4)]],
             formula:       [b.formula],
             showGraph:     [b.showGraph]
         });

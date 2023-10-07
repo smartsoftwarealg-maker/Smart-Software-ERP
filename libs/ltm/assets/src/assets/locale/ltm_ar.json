@@ -13,8 +13,8 @@
     "OPT_VALUE":      "القيمة المثلى",
     "MAX_VALUE":      "القيمة القصوى",
     "PERIODICITY":    "دور",
-    "LOW":            "قليل",
-    "HIGH":           "عالي",
+    "LOW":            "الأدنى",
+    "HIGH":           "الأقصى",
     "ANOMALIES_ONLY": "إظهار الحالات الشاذة فقط",
     "BATCH_TESTINGS": "الاختبارات الساعية",
     "LINE_MATTERS":   "مواد الخط",
@@ -22,5 +22,11 @@
     "UPDATE_FORMAT":   "نسيق التحديث",
     "SHOW_GRAPH":      "تظهر في الرسم البياني",
     "SEARCH_MATTERS":  "ابحث في هذه القائمة",
-    "RANGE":           "مجال"
+    "RANGE":           "مجال",
+    "HOURLY":          "ساعيا",
+    "DAILY":           "يوميًا",
+    "WEEKLY":          "أسبوعي",
+    "MONTHLY":         "شهريا",
+    "SHOW_MENU":       "قائمة العرض",
+    "BG_COLOR":        "لون الخلفية"
 }

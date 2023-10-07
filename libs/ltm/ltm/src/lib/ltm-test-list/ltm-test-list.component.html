@@ -15,6 +15,13 @@
             </mat-cell>
         </ng-container>
 
+        <ng-container matColumnDef="descriptionAr">
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_INFO</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.descriptionAr}}
+            </mat-cell>
+        </ng-container>
+
         <ng-container matColumnDef="variable">
             <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_VARIABLE</mat-header-cell>
             <mat-cell *matCellDef="let e">
@@ -37,15 +44,6 @@
                 </mat-checkbox>
             </mat-cell>
         </ng-container>
-
-        <ng-container matColumnDef="descriptionAr">
-            <mat-header-cell *matHeaderCellDef mat-sort-header translate>ADMINISTRATION_DESCRIPTION_AR</mat-header-cell>
-            <mat-cell *matCellDef="let e">
-                {{e.descriptionAr}}
-            </mat-cell>
-        </ng-container>
-
-
 
         <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
         <mat-row class="selectable" [class.selected]="row.id == selected" (click)="select(row.id)"

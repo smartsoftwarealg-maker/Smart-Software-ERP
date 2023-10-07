@@ -311,5 +311,6 @@
     "REORDER":                    "Réorganiser",
     "GO_BACK":                    "Retourner",
     "REASON":                     "Raison",
-    "REPORT_RIGHTS":              "Droits Etats"
+    "REPORT_RIGHTS":              "Droits Etats",
+    "WEEKS":                      "Semaines"
 }

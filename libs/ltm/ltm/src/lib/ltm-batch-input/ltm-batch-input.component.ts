@@ -27,6 +27,7 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
     private TODAY = new Date();
     private formulaMap = new Map<string, string>();
     private missingVariables: string[] = [];
+
     matters: LTMLineMatter[] = [];
     filteredMatters: LTMLineMatter[] = [];
     periods$: Observable<Lookup[]> = of([]);

@@ -8,7 +8,7 @@
 }
 .list_div {
     overflow-y: auto;
-    height: calc(100vh - 450px);
+    height: calc(100% - 90px);
 }
 .line_div {
     flex: 1 1 25%;
@@ -21,9 +21,9 @@ mat-card {
 .chart_container {
     overflow-y: auto;
     flex: 2 1 75%;
-    //background: black;
     max-height: calc(100vh - 140px);
     margin-top: 2em;
+    overflow-x: auto;
 }
 
 .chart_div {
@@ -37,7 +37,7 @@ mat-card {
 .chart {
     flex: 1 1 40%;
     display: block;
-    width: 40%;
+    width: 100%;
     height: 300px;
     border-bottom: white solid 6px;
 }
@@ -54,4 +54,9 @@ mat-card {
 
 mat-progress-bar {
     margin: 4px 0;
+}
+
+.menu_nav {
+    width: 30%;
+    max-width: 300px;
 }

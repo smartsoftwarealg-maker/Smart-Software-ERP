@@ -14,7 +14,7 @@ import {LtmTestService} from '../services/ltm-test.service';
     styleUrls: ['./ltm-test-list.component.scss'],
 })
 export class LtmTestListComponent extends BaseEntityListComponent<LTMTest> {
-    displayedColumns = ['id', 'description', 'variable', 'formula', 'showGraph'];
+    displayedColumns = ['variable', 'description', 'descriptionAr', 'formula', 'showGraph'];
 
     constructor(
         public override entitySrv: LtmTestService,
