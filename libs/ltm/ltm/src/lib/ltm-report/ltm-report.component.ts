@@ -1,5 +1,5 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import {ShellService} from '@ss/common/ui-shell';
+import { Component, inject, OnDestroy, OnInit } from "@angular/core";
+import { KeepOnToolbar, ShellService, ToolbarButton } from "@ss/common/ui-shell";
 import {ActivatedRoute} from '@angular/router';
 import { filter, map, Observable, of, Subscription } from "rxjs";
 import {Data, LTMLineMatter} from '../ltm-api';
@@ -12,6 +12,7 @@ import {ChartConfiguration} from 'chart.js/dist/types';
 import {LtmMatterTestService} from '../services/ltm-matter-test.service';
 import {LanguageService} from '@ss/common/api-common';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
+import { Lookup } from "@ss/common/api-lookup";
 
 @Component({
     selector: 'ss-ltm-report',
@@ -19,21 +20,54 @@ import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
     styleUrls: ['./ltm-report.component.scss'],
 })
 export class LtmReportComponent implements OnInit, OnDestroy {
+    private shellSrv = inject(ShellService);
     private subscription: Subscription = null;
     private chartList: Chart[] = null;
     private _matters$: Observable<LTMLineMatter[]> = of([]);
+    private _periods = ['hourly', 'daily', 'weekly', 'monthly'];
+    private menuBtn: ToolbarButton = {
+        disabled: false,
+        icon: 'fa-duotone fa-bars',
+        keepOnToolbar: KeepOnToolbar.DYNAMIC,
+        label: 'LTM_SHOW_MENU',
+        visible: true,
+        click: () => this.menuOpened = !this.menuOpened
+    };
+    private lightBtn: ToolbarButton = {
+        disabled: false,
+        icon: 'fa-duotone fa-moon',
+        keepOnToolbar: KeepOnToolbar.DYNAMIC,
+        label: 'LTM_BG_COLOR',
+        visible: true,
+        click: () => this.toggleMode()
+    };
+
     processing = false;
     anomaly = new FormControl<boolean>(false);
     searchText = new FormControl<string>({ value: '', disabled: this.processing });
     selectedMatter: LTMLineMatter = null;
     charts: string[] = [];
+    periods: Lookup[] = [
+        { id: 1, description: 'LTM_HOURLY'},
+        { id: 2, description: 'LTM_DAILY'},
+        { id: 3, description: 'LTM_WEEKLY'},
+        { id: 4, description: 'LTM_MONTHLY'},
+    ];
+    chartLabels: String[] = [
+        'HOURS',
+        'DAYS',
+        'WEEKS',
+        'MONTHS',
+    ];
+    menuOpened = true;
+    light = true;
+    wideDisplay = false;
     matters$ = this._matters$;
     from     = new FormControl<Date>(new Date());
     to       = new FormControl<Date>(new Date());
+    period = new FormControl<number>(1);
 
-    constructor(private shellSrv:   ShellService,
-                private lineSrv:    LtmLineService,
-                private matterSrv:  LtmLineMatterService,
+    constructor(private matterSrv:  LtmLineMatterService,
                 private testingSrv: LtmTestingService,
                 private testSrv:    LtmMatterTestService,
                 private langSrv:    LanguageService,
@@ -54,6 +88,8 @@ export class LtmReportComponent implements OnInit, OnDestroy {
                 distinctUntilChanged()
             ).subscribe(res => this.matters$ = this._matters$
                 .pipe(map(e => e.filter(d => !res || d.description?.toLowerCase().indexOf(res.toLowerCase()) >= 0))));
+        this.shellSrv.addButton(this.menuBtn);
+        this.shellSrv.addButton(this.lightBtn);
     }
 
     onMatter(m: LTMLineMatter) {
@@ -61,9 +97,13 @@ export class LtmReportComponent implements OnInit, OnDestroy {
         this.testingSrv.setParentId(m?.centerId);
         this.testSrv.setParentId(m?.matterId);
         if (m) {
+            this.menuOpened = false;
             this.processing = true;
             this.testSrv.setParentId(m?.id);
-            this.testingSrv.getData(m?.matterId, this.anomaly.value, this.from.value, this.to.value)
+            const from = new Date(this.from.value) || new Date();
+            const to   = new Date(this.to.value) || new Date();
+            this.wideDisplay = (to?.getTime() - from?.getTime() ) / (1000 * 60 * 60 * 24) > 30 && this.period.value == 1;
+            this.testingSrv.getData(m?.matterId, this._periods[(this.period.value || 1) - 1], this.anomaly.value, this.from.value, this.to.value)
                 .subscribe({
                     next: res => {
                         this.buildCharts(res);
@@ -73,10 +113,6 @@ export class LtmReportComponent implements OnInit, OnDestroy {
                     }
                 });
         }
-    }
-
-    onLine() {
-        this.selectedMatter = null;
     }
 
     private buildCharts(data: Data[]) {
@@ -100,15 +136,6 @@ export class LtmReportComponent implements OnInit, OnDestroy {
                 }
             });
         this.processing = false;
-    }
-
-    private getTitle() {
-        const now  = new Date();
-        const from = Date.parse((this.from.value || now).toString());
-        const to   = Date.parse((this.to.value || now).toString());
-        const days = (to - from) / (1000 * 60 * 60 * 72);
-        const msg = days < 4? 'HOURS': days < 32? 'DAYS' : 'MONTHS';
-        return this.langSrv.translate('COMMON_' + msg);
     }
 
     private chartData(data: Data[]): ChartConfiguration {
@@ -142,8 +169,8 @@ export class LtmReportComponent implements OnInit, OnDestroy {
                     legend: {
                         display: true,
                         labels: {
-                            color: 'white',
-                            boxHeight: 18,
+                            boxHeight: 32,
+                            color: 'green'
                         },
                     }
                 },
@@ -151,7 +178,7 @@ export class LtmReportComponent implements OnInit, OnDestroy {
                     x: {
                         title: {
                             display: true,
-                            text: this.getTitle()
+                            text: this.langSrv.translate('COMMON_' + this.chartLabels[this.period.value - 1])
                         },
                         ticks: {
                             autoSkip: false,
@@ -168,5 +195,10 @@ export class LtmReportComponent implements OnInit, OnDestroy {
 
     ngOnDestroy(): void {
         this.subscription?.unsubscribe();
+    }
+
+    toggleMode() {
+        this.light = !this.light;
+        this.lightBtn.icon = this.light? 'fa-duotone fa-moon' : 'fa-light fa-moon';
     }
 }

@@ -6,13 +6,12 @@ import {
     ABS_SALES_AGENT_URL,
     ABS_SALES_DASHBOARD_URL,
     ABS_SALES_DUPLICATION_URL,
-    ABS_SALES_REPORTS_URL,
     ABS_SALES_SERVICE_URL,
     ABS_SERVICE_INVOICE_CANCEL_URL,
     ABS_SERVICE_INVOICE_URL,
     ABS_SERVICE_ORDER_URL,
     ABS_SERVICE_PROFORMA_URL, ABS_SERVICE_REPORTS_URL
-} from "../common";
+} from '../common';
 
 export const ssalesNavTree: SideNavNode = {
     name: 'COMMON_SERVICES',
@@ -103,5 +102,5 @@ export const ssalesNavTree: SideNavNode = {
             accessRights: 'Dashboard'
         },
     ],
-    accessRights: 'SERVICE'
+    accessRights: 'SALES'
 };

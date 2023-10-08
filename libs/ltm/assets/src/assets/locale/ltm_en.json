@@ -13,13 +13,20 @@
     "OPT_VALUE":      "Optimal value",
     "MAX_VALUE":      "Maximum value",
     "PERIODICITY":    "Periodicity",
-    "LOW":            "Low",
-    "HIGH":           "High",
+    "LOW":            "Min",
+    "HIGH":           "Max",
     "ANOMALIES_ONLY": "Show anomalies only",
     "BATCH_TESTINGS": "Hourly testings",
     "LINE_MATTERS":   "Line matters",
     "STANDARD_FORMAT": "Standard format",
     "UPDATE_FORMAT":   "Update format",
     "SHOW_GRAPH":      "Show in graph",
-    "SEARCH_MATTERS":  "Search in this list"
+    "SEARCH_MATTERS":  "Search in this list",
+    "RANGE":           "Range",
+    "HOURLY":          "Hourly",
+    "DAILY":           "Daily",
+    "WEEKLY":          "Weekly",
+    "MONTHLY":         "Monthly",
+    "SHOW_MENU":       "Show menu",
+    "BG_COLOR":        "Background color"
 }

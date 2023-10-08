@@ -1,39 +1,57 @@
 <mat-progress-bar mode="indeterminate" *ngIf="processing"></mat-progress-bar>
 
-<div class="container">
-    <div class="line_div ">
-        <mat-form-field class="default-100 sm-50">
-            <mat-label translate>COMMON_FROM</mat-label>
-            <ss-date-picker [formControl]="from"></ss-date-picker>
-        </mat-form-field>
+<mat-sidenav-container class="container">
+    <mat-sidenav mode="side" [opened]="menuOpened" class="menu_nav">
+        <div class="line_div ">
+            <mat-form-field class="default-100 sm-50">
+                <mat-label translate>COMMON_FROM</mat-label>
+                <ss-date-picker [formControl]="from"></ss-date-picker>
+            </mat-form-field>
 
-        <mat-form-field class="default-100 sm-50">
-            <mat-label translate>COMMON_TO</mat-label>
-            <ss-date-picker [formControl]="to"></ss-date-picker>
-        </mat-form-field>
+            <mat-form-field class="default-100 sm-50">
+                <mat-label translate>COMMON_TO</mat-label>
+                <ss-date-picker [formControl]="to"></ss-date-picker>
+            </mat-form-field>
 
-        <mat-checkbox [formControl]="anomaly" (click)="onMatter(selectedMatter)" translate>LTM_ANOMALIES_ONLY
-        </mat-checkbox>
-        <mat-form-field class="default-100 sm-50" >
-            <mat-label translate>COMMON_SEARCH</mat-label>
-            <input matInput [formControl]="searchText" type="text">
-        </mat-form-field>
+            <mat-form-field class="default-100 sm-50">
+                <mat-label translate>LTM_PERIOD</mat-label>
+                <mat-select required [formControl]="period">
+                    <mat-option *ngFor="let m of periods" [value]="m.id" translate>{{m.description}}</mat-option>
+                </mat-select>
+            </mat-form-field>
 
-        <div class="list_div">
-            <mat-card>
-                <mat-list [disabled]="processing">
-                    <mat-list-item *ngFor="let m of matters$ | async"
-                                   [class.selected]="selectedMatter?.id == m.id"
-                                   (click)="onMatter(m)"
-                                   class="list-item selectable">
-                        {{ m.description }}
-                    </mat-list-item>
-                </mat-list>
-            </mat-card>
+
+            <mat-checkbox [formControl]="anomaly" (click)="onMatter(selectedMatter)" translate>LTM_ANOMALIES_ONLY
+            </mat-checkbox>
+
+            <mat-form-field class="default-100 sm-50">
+                <mat-label translate>COMMON_SEARCH</mat-label>
+                <input matInput [formControl]="searchText" type="text">
+            </mat-form-field>
+
+            <div class="list_div">
+                <mat-card>
+                    <mat-list [disabled]="processing">
+                        <mat-list-item *ngFor="let m of matters$ | async"
+                                       [class.selected]="selectedMatter?.id == m.id"
+                                       (click)="onMatter(m)"
+                                       class="list-item selectable">
+                            {{ m.description }}
+                        </mat-list-item>
+                    </mat-list>
+                </mat-card>
+            </div>
         </div>
-    </div>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <div class="chart_container">
+            <canvas *ngFor="let c of charts" [id]="c"
+                    class="chart"
+                    [ngStyle]="processing? {display: 'none'} : {display: 'block'}"
+                    [style.background]="light?'white' : 'black'"
+                    [style.width]="wideDisplay? '200%' : '200%' ">
 
-    <div class="chart_container" >
-        <canvas *ngFor="let c of charts" [id]="c" class="chart" [ngStyle]="processing? {display: 'none'} : {display: 'block'}"></canvas>
-    </div>
-</div>
+            </canvas>
+        </div>
+    </mat-sidenav-content>
+</mat-sidenav-container>

@@ -40,5 +40,6 @@
     "FOOD":            "Food",
     "WORKFLOW":        "Workflow",
     "BUDGET-APP":          "Budget",
-    "AAVIEWER":        ""
+    "AAVIEWER":        "",
+    "REPORTING":       ""
 }

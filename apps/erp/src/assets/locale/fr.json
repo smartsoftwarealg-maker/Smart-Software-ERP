@@ -49,5 +49,10 @@
     "WORKFLOW":        "Workflow",
     "BUDGET-APP":      "Budget",
     "ATTENDANCE":      "Pointage",
-    "PARK":            "Parc auto"
+    "PARK":            "Parc auto",
+    "REPORTING":       "Etats",
+    "COMMON":          "Utilitaires",
+    "BUDGET":          "Budget",
+    "EPAYMENT":        "Paiement électronique",
+    "EXCHANGE":        "Échange de l'argent"
 }

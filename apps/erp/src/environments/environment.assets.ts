@@ -3,11 +3,12 @@ import {organizationsNavTree} from '../app/organizations/side-nav-tree';
 import {assetsNavTree} from '../app/assets-app/side-nav-tree';
 import {Routes} from '@angular/router';
 import {MainPageComponent} from '../../../../libs/common/ui-main-page/src';
+import { aaNavTree } from '../app/archive-viewer/side-nav-tree';
 import {
-    ADMINISTRATION_APP_URL,
+    ADMINISTRATION_APP_URL, ARCH_VIEWER_URL,
     ASSETS_APP_URL,
     DASHBOARD_APP_URL,
-    ORGANIZATIONS_APP_URL, WORK_FLOW_APP_URL,
+    ORGANIZATIONS_APP_URL, WORK_FLOW_APP_URL
 } from '../app/common';
 import {dashboardNavTree} from '../app/dashboard/side-nav-tree';
 import {workflowNavTree} from '../app/workflow/side-nav-tree';
@@ -24,6 +25,7 @@ export const navBar = [
     dashboardNavTree,
     workflowNavTree,
     assetsNavTree,
+    aaNavTree,
 ];
 
 export const langAssets = [
@@ -38,6 +40,10 @@ export const langAssets = [
 ];
 
 export const appRoutes: Routes =  [
+    {
+        path: ARCH_VIEWER_URL,
+        loadChildren: () => import('../app/archive-viewer/archive-viewer.module').then(m => m.ArchiveViewerModule)
+    },
     {
         path: INDEX_PAGE_URL,
         component: MainPageComponent,

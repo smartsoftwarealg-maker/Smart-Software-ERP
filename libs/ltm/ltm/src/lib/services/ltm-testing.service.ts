@@ -16,12 +16,12 @@ export class LtmTestingService extends BaseEntityService<LTMTesting> {
         super(httpSrv, LTM_TESTING_URL);
     }
 
-    getData(matterId: number, anomaly: boolean, from: Date, to: Date): Observable<Data[]> {
+    getData(matterId: number, period: string, anomaly: boolean, from: Date, to: Date): Observable<Data[]> {
         const params = new HttpParams()
             .set('matter', matterId)
             .set('anomaly', anomaly)
             .set('from', this.datePipe.transform(from.toString(), 'dd/MM/yyyy'))
             .set('to', this.datePipe.transform(to.toString(), 'dd/MM/yyyy'));
-        return this.httpSrv.get<Data[]>('/ltm/data', params);
+        return this.httpSrv.get<Data[]>('/ltm/data/' + period, params);
     }
 }
