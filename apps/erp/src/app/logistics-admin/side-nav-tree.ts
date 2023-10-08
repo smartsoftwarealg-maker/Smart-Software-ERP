@@ -11,7 +11,7 @@ import {
     ABS_LOGISTICS_UNITS,
     ABS_LOGISTICS_CUSTOMER_URL,
     ABS_LOGISTICS_SUPPLIER_URL
-} from "../common";
+} from '../common';
 import {SideNavNode} from '@ss/common/api-common';
 
 export const logisticsAdminNavTree: SideNavNode = {

@@ -11,7 +11,9 @@ import {
     LTM_TESTING_URL,
     LTM_BATCH_URL,
     DASHBOARD_URL,
-    COMMON_REPORTS_URL, LTM_LINES_URL
+    COMMON_REPORTS_URL,
+    LTM_LINES_URL,
+    LTM_UNIT_URL
 } from '../common';
 
 import {
@@ -20,17 +22,20 @@ import {
     LtmMatterTestListComponent,
     LtmPeriodicitiesDetailComponent,
     LtmPeriodicitiesListComponent,
-    LtmTestDetailComponent,
-    LtmTestListComponent,
     LtmMatterTestDetailComponent,
     LtmTestingListComponent,
     LtmTestingDetailComponent,
     LtmReportComponent,
-    LtmBatchInputComponent, LineMatterDetailComponent, LineMatterListComponent
-} from '@ss/ltm/ltm';
+    LtmBatchInputComponent,
+    LineMatterDetailComponent,
+    LineMatterListComponent,
+    LtmTestListComponent,
+    LtmTestDetailComponent
+} from "@ss/ltm/ltm";
 import {loginGuard} from '../erp-guards';
 import {DashboardComponent} from '@ss/dashboard';
 import {ReportViewComponent} from '@ss/common/ui-report-param';
+import { UnitDetailComponent, UnitListComponent } from '@ss/common/ui-lookup';
 
 export const ltmRoutes: Routes = [
     {
@@ -72,16 +77,16 @@ export const ltmRoutes: Routes = [
         ]
     },
     {
-        path: LTM_TEST_URL,
+        path: LTM_UNIT_URL,
         children: [
             {
                 path: LIST_URL,
-                component: LtmTestListComponent,
+                component: UnitListComponent,
                 canActivate: [loginGuard]
             },
             {
                 path: ':id',
-                component: LtmTestDetailComponent,
+                component: UnitDetailComponent,
                 canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService],
             },
@@ -99,6 +104,23 @@ export const ltmRoutes: Routes = [
             {
                 path: ':id',
                 component: LtmPeriodicitiesDetailComponent,
+                canActivate: [loginGuard],
+                canDeactivate: [CanDeactivateService],
+            },
+            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
+        ]
+    },
+    {
+        path: LTM_TEST_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: LtmTestListComponent,
+                canActivate: [loginGuard]
+            },
+            {
+                path: ':id',
+                component: LtmTestDetailComponent,
                 canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService],
             },

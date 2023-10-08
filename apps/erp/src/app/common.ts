@@ -316,6 +316,7 @@ export const DASHBOARD_URL       = 'dashbaord';
 // LTM
 export const LTM_LINES_URL       = 'ltm-lines';
 export const LTM_TEST_URL        = 'ltm-tests';
+export const LTM_UNIT_URL        = 'ltm-units';
 export const LTM_MATTER_URL      = 'ltm-matters';
 export const LTM_PERIODICITY_URL = 'ltm-periodicities';
 export const LTM_TESTING_URL     = 'ltm-testings';
@@ -614,6 +615,7 @@ export const ABS_LTM_REPORTS_URL = '/' + [MAIN_PAGE_URL, LTM_APP_URL, COMMON_REP
 export const ABS_LTM_CHARTS_URL        = '/' + [MAIN_PAGE_URL, LTM_APP_URL, LTM_CHARTS_URL].join('/');
 export const ABS_LTM_BATCH_TESTINGS_URL = '/' + [MAIN_PAGE_URL, LTM_APP_URL, LTM_BATCH_URL].join('/');
 export const ABS_LTM_DASHBOARD_URL            = '/' + [MAIN_PAGE_URL, LTM_APP_URL, DASHBOARD_URL].join('/');
+export const ABS_LTM_UNIT_URL            = '/' + [MAIN_PAGE_URL, LTM_APP_URL, LTM_UNIT_URL].join('/');
 
 
 // CMMS

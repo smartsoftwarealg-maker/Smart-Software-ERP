@@ -5,13 +5,20 @@ import {
     ABS_LTM_MATTERS_URL,
     ABS_LTM_PERIODICITIES_URL, ABS_LTM_REPORTS_URL,
     ABS_LTM_TESTINGS_URL,
-    ABS_LTM_TESTS_URL
+    ABS_LTM_TESTS_URL,
+    ABS_LTM_UNIT_URL
 } from '../common';
 
 export const ltmNavTree: SideNavNode = {
     name: 'LTM',
     icon: 'fa-solid fa-flask',
     children: [
+        {
+            name: 'COMMON_UNITS',
+            icon: 'fa-solid fa-puzzle-piece-simple',
+            route: ABS_LTM_UNIT_URL,
+            accessRights: 'LTMMPeriod'
+        },
         {
             name: 'LTM_PERIODICITIES',
             icon: 'fa-solid fa-timeline-arrow',
