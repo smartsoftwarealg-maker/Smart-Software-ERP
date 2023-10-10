@@ -49,5 +49,6 @@
     "EMPTY_DOCUMENTS":               "The following documents are empty:",
     "INVALID_CARD":                  "This part's card is not balanced",
     "IS_LOCAL_CURRENCY":             "Import reception cannot be in local currency.",
-    "RECURSIVE_ASSEMBLY":            "Recursive composition is not allowed."
+    "RECURSIVE_ASSEMBLY":            "Recursive composition is not allowed.",
+    "TESTS_EXIST":                   "This matter cannot be deleted from this line because it has recorded tests."
 }
