@@ -28,8 +28,15 @@ form {
     justify-content: flex-end;
 }
 
-mat-form-field {
-    width: 100%;
+.purchase_div {
+    mat-form-field {
+        flex: 1 1 80%;
+        max-width: 150px;
+    }
+    i {
+        flex: 0 0 auto;
+        align-self: center;
+    }
 }
 
 $color: hsl(100, 60%, 50%, .7);
@@ -43,11 +50,6 @@ $color: hsl(100, 60%, 50%, .7);
     padding: 2px;
 }
 
-
-.reception-div {
-    display: flex;
-    gap: 16px;
-}
 
 mat-expansion-panel-header {
     margin-bottom: 8px;

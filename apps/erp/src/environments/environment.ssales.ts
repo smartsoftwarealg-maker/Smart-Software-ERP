@@ -7,29 +7,26 @@ import {ltmNavTree} from '../app/ltm/side-nav-tree';
 import {
     ADMINISTRATION_APP_URL,
     DASHBOARD_APP_URL,
-    FINANCE_APP_URL,
-    LOGISTICS_APP_URL, LTM_APP_URL,
+    LTM_APP_URL,
     ORGANIZATIONS_APP_URL,
     SCHEDULED_SALES_APP_URL
 } from '../app/common';
 import {dashboardNavTree} from '../app/dashboard/side-nav-tree';
 
 export const environment = {
-  production: true,
+    production: true,
 };
 
 export const navBar = [
     administrationNavTree,
     scheduledSalesNavTree,
-    dashboardNavTree,
-    ltmNavTree,
+    dashboardNavTree
 ];
 
 export const langAssets = [
     ['assets/locale/', ''],
     ['assets/locale/administration_', 'ADMINISTRATION_'],
     ['assets/locale/sch_', 'SCH_'],
-    ['assets/locale/ltm_', 'LTM_'],
     ['assets/locale/bl_', 'BL_'],
     ['assets/locale/common_', 'COMMON_'],
 ];
@@ -39,10 +36,6 @@ export const appRoutes: Routes =  [
         path: INDEX_PAGE_URL,
         component: MainPageComponent,
         canActivate: [CanActivateService]
-    },
-    {
-        path: LTM_APP_URL,
-        loadChildren: () => import('../app/ltm/l-t-m.module').then(m => m.LTMModule)
     },
     {
         path: ORGANIZATIONS_APP_URL,
@@ -74,4 +67,4 @@ export const appRoutes: Routes =  [
 
 export const APPLICATION_LIST = [
     'ADMINISTRATION', 'DASHBOARD-APP',  'ORGANIZATION', 'PAYMENTS',
-    'PURCHASES', 'SALES', 'WEBARCHIVE', 'LTM', 'WORKFLOW'];
+    'PURCHASES', 'SALES', 'WEBARCHIVE', 'WORKFLOW'];

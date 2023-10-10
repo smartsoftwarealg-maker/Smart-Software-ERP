@@ -6,8 +6,7 @@ import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DefaultReportService } from '@ss/common/ui-default-report-component';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
-import { IsParamService, PaginatorPersistenceService } from '@ss/common/api-common';
-import { MatDialog } from '@angular/material/dialog';
+import { PaginatorPersistenceService } from '@ss/common/api-common';
 import { CommonModule } from '@angular/common';
 import { CommonUiLangModule } from '@ss/common/ui-lang';
 import { MatSortModule } from '@angular/material/sort';
@@ -45,9 +44,7 @@ export class AssetListComponent extends BaseEntityListComponent<Asset> {
         public override router: Router,
         public override defReportSrv: DefaultReportService,
         public override confirmationSrv: ConfirmationDialogService,
-        public override pagPersistSrv: PaginatorPersistenceService,
-        private dialog: MatDialog,
-        private isParamSrv: IsParamService) {
+        public override pagPersistSrv: PaginatorPersistenceService) {
         super(listSrv,
             shellSrv,
             snackBarSrv,
@@ -58,5 +55,10 @@ export class AssetListComponent extends BaseEntityListComponent<Asset> {
             pagPersistSrv,
             'ASSETS');
         this.pagination.pageSize = 10;
+    }
+
+    override selectRow(row: Asset) {
+        super.selectRow(row);
+        this.deleteButton.disabled = row?.isFinal;
     }
 }

@@ -118,7 +118,7 @@
     </mat-form-field>
 
 
-    <div class="default-50 sm-100 qr" *ngIf="!isAQS" >
+    <div class="default-50 sm-100 qr" *ngIf="!isAQS">
         <mat-form-field class="count_div">
             <mat-label translate>ASSET_ITEM_COUNT</mat-label>
             <input matInput formControlName="itemCount" type="number">
@@ -217,17 +217,17 @@
             </mat-expansion-panel-header>
 
 
-            <mat-form-field class="default-25 sm-50">
-                <mat-label translate>ASSET_RECEPTION_NUMBER</mat-label>
-                <div class="reception-div">
+            <div class="default-25 sm-50 purchase_div">
+                <mat-form-field>
+                    <mat-label translate>ASSET_RECEPTION_NUMBER</mat-label>
                     <ss-auto-complete matInput
                                       [model]="receptionLookup"
                                       formControlName="receptionId">
                     </ss-auto-complete>
-                    <i class="fa-solid fa-book-open open-icon" (click)="openReception()"
-                       matTooltip="{{ 'COMMON_GOTO_DETAIL' | translate }}"></i>
-                </div>
-            </mat-form-field>
+                </mat-form-field>
+                <i class="fa-solid fa-book-open open-icon" (click)="openReception()"
+                   matTooltip="{{ 'COMMON_GOTO_DETAIL' | translate }}"></i>
+            </div>
 
             <mat-form-field class="default-25 sm-50">
                 <mat-label translate>ASSET_RECEPTION_DATE</mat-label>
@@ -235,7 +235,7 @@
             </mat-form-field>
 
             <div class="default-50 sm-100">
-                <mat-form-field>
+                <mat-form-field style="width: 100%">
                     <mat-label translate>COMMON_REQUESTER</mat-label>
                     <ss-auto-complete matInput
                                       [model]="requesterLookup"
@@ -293,7 +293,7 @@
                 <input matInput formControlName="originalSupplier" type="text">
             </mat-form-field>
 
-<!--            <mat-checkbox class="default-50 sm-100"  formControlName="isVehicle" translate>ASSET_IS_VEHICLE</mat-checkbox>-->
+            <!--            <mat-checkbox class="default-50 sm-100"  formControlName="isVehicle" translate>ASSET_IS_VEHICLE</mat-checkbox>-->
 
         </mat-expansion-panel>
 
@@ -428,12 +428,12 @@
                 </mat-panel-title>
             </mat-expansion-panel-header>
             <router-outlet *ngIf="id && activePanel === COSTS_ROUT"></router-outlet>
-<!--            <ss-asset-costs-list [assetId]="id" [editable]="isEditable"></ss-asset-costs-list>-->
+            <!--            <ss-asset-costs-list [assetId]="id" [editable]="isEditable"></ss-asset-costs-list>-->
         </mat-expansion-panel>
 
         <mat-expansion-panel *ngIf="!isCMMS" #revaluations expanded="false"
                              [class]="getPanelHeaderClass('revaluations', revaluations)"
-            (afterExpand)="showPanel(REVALUATIONS_ROUT)">
+                             (afterExpand)="showPanel(REVALUATIONS_ROUT)">
             <mat-expansion-panel-header>
                 <mat-panel-title translate>
                     ASSET_REVALUATIONS
@@ -452,7 +452,7 @@
                 </mat-panel-title>
             </mat-expansion-panel-header>
             <router-outlet *ngIf="id && activePanel === BLOCKINGS_ROUT"></router-outlet>
-<!--            <ss-asset-blocking-list [assetId]="id" [editable]="isEditable"></ss-asset-blocking-list>-->
+            <!--            <ss-asset-blocking-list [assetId]="id" [editable]="isEditable"></ss-asset-blocking-list>-->
         </mat-expansion-panel>
 
         <mat-expansion-panel *ngIf="!isCMMS" #appointments expanded="false"
@@ -476,18 +476,20 @@
                                  [editable]="isEditable"></ss-child-attributes>
         </mat-expansion-panel>
 
-        <mat-expansion-panel *ngIf="!isCMMS" #rates expanded="false" [class]="getPanelHeaderClass('rates', rates)" (afterExpand)="showPanel(DEPRECIATION_RATE_ROUT)">
+        <mat-expansion-panel *ngIf="!isCMMS" #rates expanded="false" [class]="getPanelHeaderClass('rates', rates)"
+                             (afterExpand)="showPanel(DEPRECIATION_RATE_ROUT)">
             <mat-expansion-panel-header>
                 <mat-panel-title translate>
                     ASSET_DEPRECIATION_RATES
                 </mat-panel-title>
             </mat-expansion-panel-header>
             <router-outlet *ngIf="id && activePanel === DEPRECIATION_RATE_ROUT"></router-outlet>
-<!--            <ss-depreciation-rate-list [assetId]="id" [editable]="isEditable"></ss-depreciation-rate-list>-->
+            <!--            <ss-depreciation-rate-list [assetId]="id" [editable]="isEditable"></ss-depreciation-rate-list>-->
         </mat-expansion-panel>
 
 
-        <mat-expansion-panel #archives expanded="false" [class]="getPanelHeaderClass('archives', archives)" (afterExpand)="showPanel(ARCHIVE_ROUT)">
+        <mat-expansion-panel #archives expanded="false" [class]="getPanelHeaderClass('archives', archives)"
+                             (afterExpand)="showPanel(ARCHIVE_ROUT)">
             <mat-expansion-panel-header>
                 <mat-panel-title translate>
                     COMMON_ARCHIVE
@@ -495,7 +497,7 @@
             </mat-expansion-panel-header>
 
             <router-outlet *ngIf="id && activePanel === ARCHIVE_ROUT"></router-outlet>
-<!--            <ss-app-archive-main [id]="id" [appId]="LOCAL_ASSER_ARCHIVE" [editable]="isEditable"></ss-app-archive-main>-->
+            <!--            <ss-app-archive-main [id]="id" [appId]="LOCAL_ASSER_ARCHIVE" [editable]="isEditable"></ss-app-archive-main>-->
 
         </mat-expansion-panel>
 

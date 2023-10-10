@@ -26,6 +26,8 @@ import { LogisticsUiDocInfoModule } from '@ss/logistics/ui-doc-info';
 import { AppArchiveModule } from '@ss/common/app-archive';
 import { LtmBatchInputComponent } from './ltm-batch-input/ltm-batch-input.component';
 import {CommonUiHourPickerModule} from '@ss/common/ui-hour-picker';
+import { LtmTestTypeDetailComponent } from './ltm-test-type-list/ltm-test-type-detail.component';
+import { LtmTestTypeListComponent } from './ltm-test-type-list/ltm-test-type-list.component';
 
 @NgModule({
     imports: [
@@ -58,7 +60,9 @@ import {CommonUiHourPickerModule} from '@ss/common/ui-hour-picker';
         LtmInjectionComponent,
         LtmReportComponent,
         LineMatterListComponent,
-        LineMatterDetailComponent
+        LineMatterDetailComponent,
+        LtmTestTypeDetailComponent,
+        LtmTestTypeListComponent
     ],
     declarations: [
         LineMatterDetailComponent,
@@ -77,7 +81,9 @@ import {CommonUiHourPickerModule} from '@ss/common/ui-hour-picker';
         LtmReportComponent,
         LtmBatchInputComponent,
         LineMatterListComponent,
-        LineMatterDetailComponent
+        LineMatterDetailComponent,
+        LtmTestTypeDetailComponent,
+        LtmTestTypeListComponent
     ],
 })
 export class LtmAppModule {}
