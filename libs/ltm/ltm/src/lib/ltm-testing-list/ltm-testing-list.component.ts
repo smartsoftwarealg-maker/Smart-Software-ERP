@@ -5,13 +5,13 @@ import {KeepOnToolbar, ShellService, SnackBarService, ToolbarButton} from '@ss/c
 import {ActivatedRoute, Router} from '@angular/router';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
-import {PaginatorPersistenceService} from '@ss/common/api-common';
+import { PaginatorPersistenceService, ymdToDmy } from "@ss/common/api-common";
 import {LtmTestingService} from '../services/ltm-testing.service';
 import {map, Observable} from 'rxjs';
 import {LtmLineService} from '../services/ltm-line.service';
-import {LtmLineMatterService} from '../services/ltm-line-matter.service';
 import {MatDialog} from '@angular/material/dialog';
 import {LtmInjectionComponent} from '../ltm-injection/ltm-injection.component';
+import { dateToStr } from "../../../../../../apps/hotel/src/app/common/util";
 
 @Component({
     selector: 'ss-ltm-testing-list',
@@ -57,11 +57,18 @@ export class LtmTestingListComponent extends BaseEntityListComponent<LTMTesting>
         this.pagination.pageSize = 10;
     }
 
+    private lastMonth(): string {
+        const now = new Date();
+        now.setMonth(now.getMonth() - 1);
+        return ymdToDmy(dateToStr(now));
+    }
+
     override ngOnInit() {
         super.ngOnInit();
         if (this.editable) {
             this.shellSrv.addButton(this.injectBtn);
         }
+        this.shellSrv.searchFormControl.setValue(this.lastMonth());
         this.refresh();
     }
 
