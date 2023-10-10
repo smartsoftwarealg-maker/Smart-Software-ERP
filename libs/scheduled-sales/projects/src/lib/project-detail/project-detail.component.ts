@@ -25,11 +25,11 @@ export class ProjectDetailComponent extends BaseEntityDetailComponent<SSProject>
     private workMasterSrv  = inject( WorkMasterService);
     private loginSrv  = inject( LoginService);
 
-    public customerLookup = new DefaultAutoCompleteModel<Agent>(this.customerSrv, 'id', 'denomination')
-    public activityLookup = new DefaultAutoCompleteModel<Activity>(this.activitySrv)
-    public sectorLookup = new DefaultAutoCompleteModel<Activity>(this.sectorSrv)
-    public wilayaLookup = new DefaultAutoCompleteModel<Activity>(this.wilayaSrv)
-    public workMasterLookup = new DefaultAutoCompleteModel<Activity>(this.wilayaSrv)
+    public customerLookup = new DefaultAutoCompleteModel<Agent>(this.customerSrv, 'id', 'denomination');
+    public activityLookup = new DefaultAutoCompleteModel<Activity>(this.activitySrv);
+    public sectorLookup = new DefaultAutoCompleteModel<Activity>(this.sectorSrv);
+    public wilayaLookup = new DefaultAutoCompleteModel<Activity>(this.wilayaSrv);
+    public workMasterLookup = new DefaultAutoCompleteModel<Activity>(this.wilayaSrv);
 
     constructor(
         public override entitySrv: ProjectService,

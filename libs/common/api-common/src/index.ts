@@ -22,3 +22,4 @@ export * from './lib/can-deactivate.service';
 export * from './lib/app-config.service';
 export * from './lib/dec.service';
 export * from './lib/main-page.service';
+export * from './lib/base-lookup.service';

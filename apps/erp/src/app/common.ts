@@ -322,6 +322,7 @@ export const LTM_PERIODICITY_URL = 'ltm-periodicities';
 export const LTM_TESTING_URL     = 'ltm-testings';
 export const LTM_CHARTS_URL      = 'ltm-reports';
 export const LTM_BATCH_URL       = 'ltm-batch';
+export const LTM_TEST_TYPE_URL       = 'test-types';
 
 // CMMS
 export const CMMS_FAULTS_URL        = 'cmms-faults';
@@ -608,6 +609,7 @@ export const ABS_PAYROLL_REPORT_RIGHT_URL = '/' + [MAIN_PAGE_URL, PAYROLL_APP_UR
 // ltm
 export const ABS_LTM_MATTERS_URL       = '/' + [MAIN_PAGE_URL, LTM_APP_URL, LTM_MATTER_URL].join('/');
 export const ABS_LTM_PERIODICITIES_URL = '/' + [MAIN_PAGE_URL, LTM_APP_URL, LTM_PERIODICITY_URL].join('/');
+export const ABS_LTM_TEST_TYPE_URL = '/' + [MAIN_PAGE_URL, LTM_APP_URL, LTM_TEST_TYPE_URL].join('/');
 export const ABS_LTM_TESTS_URL         = '/' + [MAIN_PAGE_URL, LTM_APP_URL, LTM_TEST_URL].join('/');
 export const ABS_LTM_LINES_URL         = '/' + [MAIN_PAGE_URL, LTM_APP_URL, LTM_LINES_URL].join('/');
 export const ABS_LTM_TESTINGS_URL      = '/' + [MAIN_PAGE_URL, LTM_APP_URL, LTM_TESTING_URL].join('/');

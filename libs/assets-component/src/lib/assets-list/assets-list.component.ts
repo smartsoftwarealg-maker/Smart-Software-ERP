@@ -110,8 +110,10 @@ export class AssetsListComponent extends BaseEntityListComponent<Asset> {
         }
     }
 
-    override select(id: number) {
-        super.select(id);
-        this.duplicateBtn.disabled = !id;
+    override selectRow(row: Asset) {
+        super.selectRow(row);
+        this.duplicateBtn.disabled = !row?.id;
+        this.deleteButton.disabled = row.isFinal;
     }
+
 }

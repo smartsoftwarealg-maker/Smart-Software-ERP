@@ -83,7 +83,7 @@ export interface Asset {
     building?: string;
     beneficiaryId?: number;
     appointmentNumber?: number;
-    isFinal?: number;
+    isFinal?: boolean;
     reserviceDate?: Date;
     isVehicle: Boolean;
 }

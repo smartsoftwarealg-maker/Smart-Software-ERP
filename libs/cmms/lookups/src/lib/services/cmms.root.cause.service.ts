@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BaseLookupService } from './base-lookup.service';
+import { BaseLookupService } from '../../../../../common/api-common/src/lib/base-lookup.service';
 import { HttpService } from '@ss/common/api-common';
 
 @Injectable({

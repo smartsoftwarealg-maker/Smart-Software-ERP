@@ -3,7 +3,7 @@ import {
     ABS_LTM_BATCH_TESTINGS_URL,
     ABS_LTM_CHARTS_URL, ABS_LTM_DASHBOARD_URL, ABS_LTM_LINES_URL,
     ABS_LTM_MATTERS_URL,
-    ABS_LTM_PERIODICITIES_URL, ABS_LTM_REPORTS_URL,
+    ABS_LTM_PERIODICITIES_URL, ABS_LTM_REPORTS_URL, ABS_LTM_TEST_TYPE_URL,
     ABS_LTM_TESTINGS_URL,
     ABS_LTM_TESTS_URL,
     ABS_LTM_UNIT_URL
@@ -24,6 +24,12 @@ export const ltmNavTree: SideNavNode = {
             icon: 'fa-solid fa-timeline-arrow',
             route: ABS_LTM_PERIODICITIES_URL,
             accessRights: 'LTMMPeriod'
+        },
+        {
+            name: 'LTM_TEST_TYPES',
+            icon: 'fa-thin fa-list-tree',
+            route: ABS_LTM_TEST_TYPE_URL,
+            accessRights: 'TestType'
         },
         {
             name: 'LTM_TEST',

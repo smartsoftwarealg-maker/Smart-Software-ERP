@@ -4,6 +4,7 @@ import {ActivatedRouteSnapshot, CanActivateFn, RouterStateSnapshot} from '@angul
 
 export const LTM_TESTINGS_URL    = '/ltm/testings';
 export const LTM_LINE_URL        = '/ltm/lines';
+export const LTM_LINE_TYPE_URL        = '/lookups/ltm_test_types';
 export const LTM_TEST_URL        = '/ltm/tests';
 export const LTM_BATCH_URL       = '/ltm/batch';
 export const LTM_TESTING_URL    = '/ltm/testings';
@@ -42,6 +43,8 @@ export interface LTMTest {
     variable?: string;
     formula?: string;
     showGraph: boolean;
+    testType?: number;
+    unit?: number;
 }
 
 export interface LTMMatterTest {

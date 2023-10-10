@@ -41,9 +41,16 @@ export class LtmTestingListComponent extends BaseEntityListComponent<LTMTesting>
         public override router: Router,
         public override pagPersistSrv: PaginatorPersistenceService,
         private lineSrv: LtmLineService,
-        private matterSrv: LtmLineMatterService,
         private dialog: MatDialog) {
-        super(entitySrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv, 'LTM_TESTINGS');
+        super(entitySrv,
+            shellSrv,
+            snackBarSrv,
+            route,
+            router,
+            confirmationSrv,
+            defReportSrv,
+            pagPersistSrv,
+            "LTM_TESTINGS");
         this.lines$ = this.lineSrv
             .getList(0, 50)
             .pipe(map(_ => _.body));

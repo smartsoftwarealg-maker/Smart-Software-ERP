@@ -309,5 +309,6 @@
     "GO_BACK":                   "Go back",
     "REASON":                    "Reason",
     "REPORT_RIGHTS":             "Report rights",
-    "WEEKS":                     "Weeks"
+    "WEEKS":                     "Weeks",
+    "UNIT":                      "Unit"
 }
