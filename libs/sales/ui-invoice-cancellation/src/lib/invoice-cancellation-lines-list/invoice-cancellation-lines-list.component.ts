@@ -1,5 +1,5 @@
 import {Component, OnInit,} from '@angular/core';
-import {ShellService, SnackBarService, ToolbarButton} from '@ss/common/ui-shell';
+import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {ArticleService} from '@ss/stock/api-article';
@@ -15,8 +15,6 @@ import {
     styleUrls: ['../../../../../common/assets/src/assets/transac-lines-list.scss'],
 })
 export class InvoiceCancellationLinesListComponent extends BaseTransactionLinesListComponent implements OnInit {
-
-
     displayedColumns = [
         'position',
         'store',
