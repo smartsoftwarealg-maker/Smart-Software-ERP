@@ -2,7 +2,7 @@ import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { Batch, LTMLineMatter } from '../ltm-api';
 import {KeepOnToolbar, ShellService, SnackBarService, ToolbarButton} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
-import { FormArray, FormBuilder, FormControl, Validators } from "@angular/forms";
+import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms";
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {LtmLineMatterService} from '../services/ltm-line-matter.service';
 import {LtmMatterTestService} from '../services/ltm-matter-test.service';
@@ -115,15 +115,6 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
     }
 
 
-    // private compute(formula: string, values: number[], i: number): string {
-    //     if (i < values.length) {
-    //         const temp = this.variables[i]? formula.replace(this.variables[i], values[0]+'').trim() : formula;
-    //         return this.compute(temp, values, i+ 1);
-    //     } else {
-    //         return formula.trim();
-    //     }
-    // }
-
     private refreshFormulas() {
         const values = this.variables.map((v, i) => {
             return v? this.tests.at(i)?.value.value : 0;
@@ -185,9 +176,10 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
                         if (t.variable) {
                             this.variables.push(t.variable);
                         }
-                        const testForm = this.formBuilder.group({
+                        const testForm:  FormGroup<{id: FormControl<number>, testId: FormControl<number>, value: FormControl<number>}> = this.formBuilder.group({
+                            id:       [{ value: 0,        disabled: true }],
                             testId:   [{ value: t.testId, disabled: true }, Validators.required],
-                            value:    [0,        [Validators.required, Validators.min(t.minValue), Validators.max(t.maxValue || 999)]]
+                            value:    [0,                                   [Validators.required, Validators.min(t.minValue), Validators.max(t.maxValue || 999)]]
                         });
                         this.tests.push(testForm);
                     });
@@ -249,6 +241,19 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
         const date = new Date(value.timeStamp);
         date.setHours(h, 0);
         value.timeStamp = date;
+        // console.log('11111', value);
         this.form.setValue(value);
+        this.entitySrv
+            .input(value.matterId, date)
+            .subscribe(res => {
+                const tests =  value.tests as {id: number, testId: number, value: number}[];
+                tests.forEach(e => {
+                    const test = res.find(t => t.matterId === value.matterId && t.testId === e.testId);
+                    e.id = test?.id || 0;
+                    e.value = test?.value || 0;
+                });
+                // console.log('22222222222', value);
+                this.form.setValue(value);
+            });
     }
 }
