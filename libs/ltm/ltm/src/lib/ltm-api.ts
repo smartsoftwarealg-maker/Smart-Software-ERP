@@ -7,6 +7,7 @@ export const LTM_LINE_URL        = '/ltm/lines';
 export const LTM_LINE_TYPE_URL        = '/lookups/ltm_test_types';
 export const LTM_TEST_URL        = '/ltm/tests';
 export const LTM_BATCH_URL       = '/ltm/batch';
+export const LTM_INPUT_URL       = '/ltm/input';
 export const LTM_TESTING_URL    = '/ltm/testings';
 export const LTM_INJECTION_URL   = '/ltm/injection';
 export const LTM_MATTER_URL      = '/ltm/matters';
