@@ -62,7 +62,7 @@
 
             <mat-form-field id="price" class="default-50 sm-100">
                 <mat-label translate>LOGISTICS_PRICE</mat-label>
-                <input matInput formControlName="price" type="number" step=".01" required>
+                <input matInput formControlName="price" type="number" step="1" required>
                 <mat-error
                     *ngIf="form.controls['price'].hasError('required')" translate>COMMON_FIELD_REQUIRED
                 </mat-error>
@@ -70,12 +70,16 @@
 
             <mat-form-field id="vat" class="default-50 sm-100">
                 <mat-label translate>LOGISTICS_VAT</mat-label>
-                <input matInput formControlName="vat" type="number" step=".1">
+                <input matInput formControlName="vat" type="number" step="1">
                 <mat-error
                     *ngIf="form.controls['vat'].hasError('required')" translate>COMMON_FIELD_REQUIRED
                 </mat-error>
             </mat-form-field>
 
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>LOGISTICS_DISCOUNT</mat-label>
+                <input matInput formControlName="charge" type="number" step="1">
+            </mat-form-field>
 
             <mat-form-field id="header" class="default-50 sm-100">
                 <mat-label translate>LOGISTICS_HEADER</mat-label>
