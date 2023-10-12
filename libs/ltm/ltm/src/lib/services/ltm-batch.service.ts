@@ -15,6 +15,8 @@ export class LtmBatchService extends BaseEntityService<Batch> {
     }
 
     saveBatch(batch: Batch): Observable<{ count: number }> {
+        const hours = batch.timeStamp.getHours();
+        batch.timeStamp.setHours(hours, 0, 0, 0);
         return this.httpSrv.post(LTM_BATCH_URL, batch);
     }
 

@@ -2,7 +2,7 @@
     <div class="clock">
         <div class="form_field">
             <mat-form-field class="hour">
-                <input matInput #hour (change)="hourChanged(hour.value)" type="number" [formControl]="hourControl" [step]="step" min="1" max="24">
+                <input matInput #hour (change)="hourChanged(hour.value)" type="number" [formControl]="hourControl" [step]="step" min="0" max="23">
             </mat-form-field>
         </div>
         <div class="selectors">

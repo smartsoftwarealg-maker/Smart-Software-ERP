@@ -12,7 +12,7 @@ import {map, Observable, of, Subscription, switchMap} from 'rxjs';
 import {Lookup} from '@ss/common/api-lookup';
 import {debounceTime, distinctUntilChanged, tap} from 'rxjs/operators';
 import {LtmTestService} from '../services/ltm-test.service';
-import { LoginService } from '@ss/common/api-common';
+import { dateTimeToYmdStr, LoginService } from "@ss/common/api-common";
 
 @Component({
     selector: 'ss-ltm-batch-input',
@@ -150,6 +150,7 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
         this.totals.clear();
         this.formulaMap.clear();
         this.labels = [];
+        this.limits = [];
         this.formulas = [];
         this.variables = [];
         this.totalsLabels = [];
@@ -211,21 +212,25 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
 
     private save() {
         const formValue: Batch = this.form.getRawValue() as Batch;
-        if (formValue.matterId && formValue.centerId) {
-            this.shellSrv.setLoading(true);
-            this.entitySrv
-                .saveBatch(formValue)
-                .subscribe({
-                    next: res => {
-                        this.shellSrv.setLoading(false);
-                        formValue.tests.forEach(e => e.value = 0);
-                        this.form.reset(formValue);
-                        this.snackBarSrv.showSuccessMessage();
-                    }, error: err => {
-                        this.shellSrv.setLoading(false);
-                        throw err;
-                    }
-                });
+        if (!this.form.valid) {
+            this.snackBarSrv.showFailureMessage('COMMON_INVALID_FORM');
+        } else {
+            if (formValue.matterId && formValue.centerId) {
+                this.shellSrv.setLoading(true);
+                this.entitySrv
+                    .saveBatch(formValue)
+                    .subscribe({
+                        next: res => {
+                            this.shellSrv.setLoading(false);
+                            formValue.tests.forEach(e => e.value = 0);
+                            this.form.reset(formValue);
+                            this.snackBarSrv.showSuccessMessage();
+                        }, error: err => {
+                            this.shellSrv.setLoading(false);
+                            throw err;
+                        }
+                    });
+            }
         }
     }
 
@@ -239,21 +244,20 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
     onHour(h: number) {
         const value = this.form.getRawValue();
         const date = new Date(value.timeStamp);
-        date.setHours(h, 0);
+        date.setHours(h, 0, 0, 0);
         value.timeStamp = date;
-        // console.log('11111', value);
-        this.form.setValue(value);
+        this.form.controls['timeStamp'].setValue(date);
         this.entitySrv
             .input(value.matterId, date)
             .subscribe(res => {
                 const tests =  value.tests as {id: number, testId: number, value: number}[];
-                tests.forEach(e => {
+                tests.forEach((e, i) => {
                     const test = res.find(t => t.matterId === value.matterId && t.testId === e.testId);
                     e.id = test?.id || 0;
                     e.value = test?.value || 0;
                 });
-                // console.log('22222222222', value);
                 this.form.setValue(value);
+              this.form.controls['timeStamp'].setValue(new Date(dateTimeToYmdStr(date)));
             });
     }
 }
