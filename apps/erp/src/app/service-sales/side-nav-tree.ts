@@ -3,7 +3,7 @@ import {
     ABS_ADMINISTRATION_WORKFLOW_INBOX_URL,
     ABS_FINANCE_CCOMPENSATIONS,
     ABS_FINANCE_CPAYMENTS,
-    ABS_SALES_AGENT_URL,
+    ABS_SALES_AGENT_URL, ABS_SERVICE_CLASSES_URL,
     ABS_SALES_DASHBOARD_URL,
     ABS_SALES_DUPLICATION_URL,
     ABS_SALES_SERVICE_URL,
@@ -17,6 +17,12 @@ export const ssalesNavTree: SideNavNode = {
     name: 'COMMON_SERVICES',
     icon: 'fa-solid fa-handshake',
     children: [
+        {
+            name: 'COMMON_CLASSES',
+            icon: 'fa-solid fa-family',
+            route: ABS_SERVICE_CLASSES_URL,
+            accessRights: 'Klass'
+        },
         {
             name: 'COMMON_AGENT',
             icon: 'fas fa-user',

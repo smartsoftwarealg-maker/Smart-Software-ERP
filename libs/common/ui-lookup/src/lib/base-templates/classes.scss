@@ -10,31 +10,15 @@
     height: calc(100% - 64px);
     overflow-x: auto;
 }
-
-
-// keep the material design specs
-.mat-row, .mat-header-row {
-    padding-right: 16px;
-    padding-left: 16px;
-    font-weight: bolder;
+.table_div {
+    height: calc(100% - 70px);
 }
-.mat-header-cell {
-    font-weight: bolder;
-    font-size: medium;
-}
-.mat-column-description,
-.mat-column-descriptionAr,
-.mat-column-dairaDescription,
-.mat-column-wilayaDescription {
-    flex: 0 0 150px;
-    padding-right: 8px !important;
-    padding-left: 8px !important;
+.mat-column-description {
+    flex: 1 1 250px;
 }
 
-.mat-column-accountId {
-    flex: 0 0 250px;
-    padding-right: 8px !important;
-    padding-left: 8px !important;
+.mat-column-accountno {
+    flex: 2 1 250px;
 }
 
 .pagination-container {
@@ -46,4 +30,8 @@
         margin: auto;
         max-width: 900px;
     }
+}
+
+mat-table {
+    width: 100%;
 }
