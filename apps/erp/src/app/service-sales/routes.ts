@@ -9,11 +9,11 @@ import {
     INVOICE_DUPLICATE_URL,
     LOGISTICS_AGENT_URL,
     SALES_PROFORMA_URL,
-    SALES_SERVICE_ARTICLE_URL,
+    SALES_SERVICE_ARTICLE_URL, SERVICE_CLASSES_URL,
     SERVICE_INVOICE_CANCELLATION_URL,
     SERVICE_INVOICE_URL,
-    SERVICE_ORDER_URL
-} from '../common';
+    SERVICE_ORDER_URL, STOCK_CLASSES_URL
+} from "../common";
 import {
     AgentDetailComponent,
     AgentListComponent,
@@ -53,6 +53,7 @@ import {
     ServiceCinvoiceLineDetailComponent
 } from '@ss/service-sales/service-invoice-cancellation';
 import { AGENT_ARCHIVES } from "@ss/common/app-archive";
+import { ClassDetailComponent, ClassListComponent } from "@ss/common/ui-lookup";
 
 export const ssalesRoutes: Routes = [
     {
@@ -248,6 +249,22 @@ export const ssalesRoutes: Routes = [
                 canDeactivate: [CanDeactivateService],
                 // children: docInfoRoutes
             },
+        ]
+    },
+    {
+        path: SERVICE_CLASSES_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: ClassListComponent
+            },
+            {
+                path: ':id',
+                component: ClassDetailComponent,
+                canActivate: [loginGuard],
+                canDeactivate: [CanDeactivateService]
+            },
+            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
         ]
     },
     { path: '', redirectTo: ABS_INDEX_URL, pathMatch: 'full' },

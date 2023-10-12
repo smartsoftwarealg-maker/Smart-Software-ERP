@@ -44,19 +44,15 @@ export class ClassListComponent extends BaseEntityListComponent<Class> {
     selector: 'ss-class-detail',
     templateUrl: '../base-templates/class-detail-template.html',
     styles: [`
-        .value {
-            width: 300px;
-            display: block;
-            margin: auto;
-        }
 
-        form {
-            width: 100%;
-            padding-top: 16px;
-            height: 100px;
-            display: flex;
-            flex-flow: column;
-        }`]
+        mat-card {
+            width: 90%;
+            max-width: 600px;
+            margin: 8px auto 0;
+            padding: 16px;
+            border-radius: 1.4em;
+        }
+        `]
 })
 export class ClassDetailComponent extends BaseEntityDetailComponent<Class> {
     private accountSrv =  inject(GenerationAccountService);
