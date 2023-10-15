@@ -229,6 +229,13 @@ export class HttpService {
         return this.remove(url + slash + id);
     }
 
+
+    public removePrams(url: string, params: HttpParams): Observable<any> {
+        return this
+            .httpClient
+            .delete(this.baseUrl + url, {headers: HttpService.getHeaders(), params: params});
+    }
+
     public remove(url: string): Observable<any> {
         return this
             .httpClient

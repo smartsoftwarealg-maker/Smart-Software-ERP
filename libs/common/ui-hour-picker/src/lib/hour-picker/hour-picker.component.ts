@@ -10,7 +10,7 @@ export class HourPickerComponent {
     @Output('hour') eventEmitter = new EventEmitter<number>();
     step = 2;
     mode = 12;
-    hourControl = new FormControl<number>(1);
+    hourControl = new FormControl<number>(0);
 
     onStep(e: any) {
         this.step = e.value;

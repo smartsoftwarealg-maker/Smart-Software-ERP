@@ -1,6 +1,8 @@
 
 // in this file define functions and constants only
 
+const DATE_TIME_SEPARATOR = ' ';
+
 import {Router} from '@angular/router';
 import {
     APP_ASSET,
@@ -152,6 +154,44 @@ export function dateToYmdStr(date: Date | string): string {
     }
 }
 
+export function toDate(str: Date|string): Date {
+    return typeof str === 'string'? new Date(str.replace('/', '-')) : str;
+}
+
+const TIME_SEPARATOR = ':';
+const DATE_SEPARATOR_2 = '-';
+
+export function dateToStr(date: Date) {
+    const dDate = toDate(date);
+    try {
+        return pad4(date.getFullYear())
+      + DATE_SEPARATOR_2
+      + pad2(dDate.getMonth() + 1)
+      + DATE_SEPARATOR_2
+      + pad2(dDate.getDate());
+    } catch (e) {
+        return null;
+    }
+}
+
+export function dateTimeToStr(dDate: Date) {
+    const date = toDate(dDate);
+    const d = dateToStr(date);
+    if (d != null) {
+        try {
+            return d
+                + DATE_TIME_SEPARATOR
+                + pad2(date.getHours())
+                + TIME_SEPARATOR
+                + pad2(date.getMinutes())
+                + TIME_SEPARATOR
+                + pad2(date.getSeconds());
+        } catch (e) {
+        }
+    }
+    return null;
+}
+
 export function dateTimeToYmdStr(date: Date | string): string {
     if (typeof date === 'string' || date instanceof String) {
         return <string>date;
@@ -160,6 +200,23 @@ export function dateTimeToYmdStr(date: Date | string): string {
             + '/'
             + pad2(date.getMonth() + 1)
             + '/'
+            + pad2(date.getDate())
+            + ' '
+            + pad2(date.getHours())
+            + ':'
+            + pad2(date.getMinutes())
+            + ':'
+            + pad2(date.getSeconds());
+    }
+}
+export function dateTimeToYmdStrSeparator(date: Date | string, sep: string): string {
+    if (typeof date === 'string' || date instanceof String) {
+        return <string>date.replace('/', sep);
+    } else {
+        return pad4(date.getFullYear())
+            + sep
+            + pad2(date.getMonth() + 1)
+            + sep
             + pad2(date.getDate())
             + ' '
             + pad2(date.getHours())
@@ -211,15 +268,15 @@ export function isDate(value: any): boolean {
 }
 
 export function isObject(value: any) {
-    const type = typeof value
-    return value != null && (type === 'object' || type === 'function')
+    const type = typeof value;
+    return value != null && (type === 'object' || type === 'function');
 }
 
 function getTag(value: any) {
     if (value == null) {
-        return value === undefined ? '[object Undefined]' : '[object Null]'
+        return value === undefined ? '[object Undefined]' : '[object Null]';
     }
-    return toString.call(value)
+    return toString.call(value);
 }
 
 const ZERO_ASCII = 48;

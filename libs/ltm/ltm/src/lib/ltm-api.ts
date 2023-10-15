@@ -89,6 +89,7 @@ export interface LTMTestInjection {
 }
 
 export interface BTest {
+    id?: number;
     testId: number;
     value: number;
 }
