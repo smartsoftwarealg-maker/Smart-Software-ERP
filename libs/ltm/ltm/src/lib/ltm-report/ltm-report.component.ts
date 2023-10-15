@@ -94,6 +94,8 @@ export class LtmReportComponent implements OnInit, OnDestroy {
 
     onMatter(m: LTMLineMatter) {
         this.selectedMatter = m;
+        const subTitle = m?.description? ':' + m.description : '';
+        this.shellSrv.setTitle(this.langSrv.translate('COMMON_CHARTS') + subTitle);
         this.testingSrv.setParentId(m?.centerId);
         this.testSrv.setParentId(m?.matterId);
         if (m) {

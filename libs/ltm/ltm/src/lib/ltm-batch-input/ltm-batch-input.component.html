@@ -49,6 +49,7 @@
                 </mat-card-content>
             </mat-card>
         </div>
+<!--        <pre> {{ form.value | json }}</pre>-->
         <div formArrayName="tests" class="group_div">
             <div *ngFor="let f of tests.controls; let i = index">
                 <div [formGroupName]="i">

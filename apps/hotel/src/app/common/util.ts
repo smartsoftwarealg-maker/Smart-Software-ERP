@@ -13,7 +13,8 @@ const ZERO_ASCII = 48;
 const NINE_ASCII = 57;
 const TIME_SEPARATOR = ':';
 
-export function dateTimeToStr(date: Date) {
+export function dateTimeToStr(dDate: Date) {
+    const date = toDate(dDate);
     const d = dateToStr(date);
     if (d != null) {
         try {
@@ -30,13 +31,18 @@ export function dateTimeToStr(date: Date) {
     return null;
 }
 
+export function toDate(str: Date|string): Date {
+    return typeof str === 'string'? new Date(str.replace('/', DATE_SEPARATOR_2)) : str;
+}
+
 export function dateToStr(date: Date) {
+    const dDate = toDate(date);
     try {
         return pad4(date.getFullYear())
             + DATE_SEPARATOR_2
-            + pad2(date.getMonth() + 1)
+            + pad2(dDate.getMonth() + 1)
             + DATE_SEPARATOR_2
-            + pad2(date.getDate());
+            + pad2(dDate.getDate());
     } catch (e) {
         return null;
     }
@@ -50,6 +56,7 @@ export function timeToStr(date: Date) {
             + TIME_SEPARATOR
             + pad2(date.getSeconds());
     } catch (e) {
+        console.log('_____________________________error', e);
         return null;
     }
 }
