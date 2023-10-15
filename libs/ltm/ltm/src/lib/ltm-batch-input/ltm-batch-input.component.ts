@@ -207,6 +207,8 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
             this.totals.push(testForm);
           });
         this.formulas = this.formulas.map(f => this.replaceFormulas(f));
+        const formValue: Batch = this.form.getRawValue() as Batch;
+        this.savedData(formValue).subscribe(res => this.tests.setValue(res));
       });
   }
 
@@ -293,7 +295,10 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
     const date = new Date(value.timeStamp);
     date.setHours(h, 0, 0, 0);
     value.timeStamp = date;
-    this.form.controls["timeStamp"].setValue(date);
+    this.form.controls['timeStamp'].setValue(date);
+    const tests: BTest[] = <BTest[]>value.tests;
+    tests.forEach(e => e.value = 0);
+    this.tests.setValue(tests);
     this.savedData(<Batch>value)
       .subscribe(tests => {
         this.tests.setValue(tests);
