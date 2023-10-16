@@ -5,13 +5,12 @@ import {KeepOnToolbar, ShellService, SnackBarService, ToolbarButton} from '@ss/c
 import {ActivatedRoute, Router} from '@angular/router';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
-import { PaginatorPersistenceService, ymdToDmy } from "@ss/common/api-common";
+import { dateToStr, PaginatorPersistenceService, ymdToDmy } from '@ss/common/api-common';
 import {LtmTestingService} from '../services/ltm-testing.service';
 import {map, Observable} from 'rxjs';
 import {LtmLineService} from '../services/ltm-line.service';
 import {MatDialog} from '@angular/material/dialog';
 import {LtmInjectionComponent} from '../ltm-injection/ltm-injection.component';
-import { dateToStr } from "../../../../../../apps/hotel/src/app/common/util";
 
 @Component({
     selector: 'ss-ltm-testing-list',
