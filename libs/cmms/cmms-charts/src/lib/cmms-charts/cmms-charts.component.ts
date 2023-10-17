@@ -1,34 +1,45 @@
-import { Component, inject, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { ShellService } from '@ss/common/ui-shell';
-import { ActivatedRoute } from '@angular/router';
-import { Chart, ChartItem, registerables } from 'chart.js';
-import { ChartService } from '../chart.service';
-import { LanguageService, MaterialModule } from '@ss/common/api-common';
-import { PastDue, PendingSR, DueChartConfig, PriorityChartConfig, ByPriority } from '../chart-api';
-import { switchMap, tap } from 'rxjs';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
+import {Component, inject, OnInit} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {ShellService} from '@ss/common/ui-shell';
+import {ActivatedRoute} from '@angular/router';
+import {Chart, ChartItem, registerables} from 'chart.js';
+import {ChartService} from '../chart.service';
+import {LanguageService, MaterialModule} from '@ss/common/api-common';
+import {
+    PastDue,
+    PendingSR,
+    DueChartConfig,
+    ByPriority,
+    SimpleBarsChartConfig, Pmp, Mttr, Mtts
+} from '../chart-api';
+import {forkJoin, switchMap, tap} from 'rxjs';
+import {CommonUiLangModule} from '@ss/common/ui-lang';
+import {FormControl} from '@angular/forms';
+import {ChartConfiguration} from 'chart.js/dist/types';
+
 @Component({
     selector: 'ss-cmms-charts',
     standalone: true,
     imports: [CommonModule, MaterialModule, CommonUiLangModule],
     templateUrl: './cmms-charts.component.html',
-    styleUrls: ['./cmms-charts.component.css']
+    styleUrls: ['./cmms-charts.component.scss']
 })
 export class CMMSChartsComponent implements OnInit {
     private COLORS = [
-        'rgba(255, 99, 132, 0.2)',
-        'rgba(255, 159, 64, 0.2)',
-        'rgba(255, 205, 86, 0.2)',
-        'rgba(75, 192, 192, 0.2)',
-        'rgba(54, 162, 235, 0.2)',
-        'rgba(153, 102, 255, 0.2)',
-        'rgba(201, 203, 207, 0.2)'
+        'rgba(255,  99, 132, 0.4)',
+        'rgba(255, 205,  86, 0.4)',
+        'rgba( 75, 192, 192, 0.4)',
+        'rgba( 54, 162, 235, 0.4)',
+        'rgba(153, 102, 255, 0.4)',
+        'rgba(255, 159,  64, 0.4)',
+        'rgba(201, 203, 207, 0.4)'
     ];
     private shellSrv = inject(ShellService);
     private route = inject(ActivatedRoute);
     private chartSrv = inject(ChartService);
     private langSrv = inject(LanguageService);
+
+    private fromDateControl: FormControl<string>;
 
     processing = true;
 
@@ -36,19 +47,28 @@ export class CMMSChartsComponent implements OnInit {
         this.shellSrv.setGoBackPath('..', this.route);
         Chart.register(...registerables);
         this.buildCharts();
+        this.fromDateControl = new FormControl(new Date().getFullYear() + '-1-1');
     }
 
     private buildCharts() {
+        const from = new Date(2020, 1, 1);
         this.chartSrv
             .pastDue()
             .pipe(
                 tap(past => this.pastDue(past)),
+                // maintenance stats
+                switchMap(() => forkJoin([this.chartSrv.mttr(from), this.chartSrv.mtts(from), this.chartSrv.pmp(from)])),
+                tap(stats => this.maintenanceStats(stats)),
+                // pending
                 switchMap(() => this.chartSrv.pending()),
                 tap(pend => this.pending(pend)),
+                // assets priority
                 switchMap(() => this.chartSrv.assetsPriority()),
                 tap(res => this.assetsPriority(res)),
+                // sr priority
                 switchMap(() => this.chartSrv.srPriority()),
                 tap(res => this.srPriority(res)),
+                // wo priority
                 switchMap(() => this.chartSrv.woPriority()),
                 tap(res => this.woPriority(res)))
             .subscribe({
@@ -69,7 +89,7 @@ export class CMMSChartsComponent implements OnInit {
             pastDescription: 'CMMS_PAST_DUE',
             chartDescription: 'CMMS_WORK_ORDER'
         };
-        this.pastDue_(config);
+        this.buildDuePieChart(config);
     }
 
     private pending(past: PendingSR) {
@@ -81,62 +101,109 @@ export class CMMSChartsComponent implements OnInit {
             pastDescription: 'COMMON_PENDING',
             chartDescription: 'CMMS_SERVICE_REQUEST'
         };
-        this.pastDue_(config);
+        this.buildDuePieChart(config);
     }
 
     private assetsPriority(data: ByPriority[]) {
-        const config: PriorityChartConfig =
-            {
-                id: 'assets-priority',
-                label: 'CMMS_EQUIPMENT',
-                data: data
-            };
-        this.buildPriorityChart(config);
+        // const config: PriorityChartConfig =
+        //     {
+        //         id: 'assets-priority',
+        //         label: 'CMMS_EQUIPMENT',
+        //         data: data
+        //     };
+        // this.buildPriorityChart(config);
+        this.buildPriorityChart('assets-priority', data);
     }
 
     private srPriority(data: ByPriority[]) {
-        const config: PriorityChartConfig =
-            {
-                id: 'sr-priority',
-                label: 'CMMS_SERVICE_REQUESTS',
-                data: data
-            };
-        this.buildPriorityChart(config);
+        // const config: PriorityChartConfig =
+        //     {
+        //         id: 'sr-priority',
+        //         label: 'CMMS_SERVICE_REQUESTS',
+        //         data: data
+        //     };
+        this.buildPriorityChart('sr-priority', data);
     }
 
     private woPriority(data: ByPriority[]) {
-        const config: PriorityChartConfig =
-            {
-                id: 'wo-priority',
-                label: 'CMMS_WORK_ORDER',
-                data: data
-            };
-        this.buildPriorityChart(config);
-    }
-    private buildPriorityChart(config: PriorityChartConfig) {
-        const ctx = <ChartItem>document.getElementById(config.id);
-        new Chart(ctx, {
-            type: 'bar',
-            data: {
-                labels: config.data.map(e => e.priority),
-                datasets: [{
-                    label: this.langSrv.translate(config.label),
-                    data: config.data.map(e => e.count),
-                    backgroundColor: this.COLORS.slice(0, config.data.length),
-                }]
-            },
-            options: {
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
-                }
-            }
-        });
+        // const config: PriorityChartConfig =
+        //     {
+        //         id: 'wo-priority',
+        //         label: 'CMMS_WORK_ORDER',
+        //         data: data
+        //     };
+        this.buildPriorityChart('wo-priority', data);
     }
 
-    private pastDue_(config: DueChartConfig) {
+    // private buildPriorityChart(config: PriorityChartConfig) {
+    //     const ctx = <ChartItem>document.getElementById(config.id);
+    //     new Chart(ctx, {
+    //         type: 'bar',
+    //         data: {
+    //             labels: config.data.map(e => e.priority),
+    //             datasets: [{
+    //                 label: this.langSrv.translate(config.label),
+    //                 data: config.data.map(e => e.count),
+    //                 backgroundColor: this.COLORS.slice(0, config.data.length),
+    //             }]
+    //         },
+    //         options: {
+    //             responsive: true,
+    //             maintainAspectRatio: false,
+    //             scales: {
+    //                 y: {
+    //                     beginAtZero: true,
+    //                     ticks: {
+    //                         precision: 0
+    //                     }
+    //                 }
+    //             },
+    //             plugins: {
+    //                 legend: {
+    //                     display: false
+    //                 },
+    //             }
+    //         }
+    //     });
+    // }
+
+    private buildBarChart(config: SimpleBarsChartConfig) {
         const ctx = <ChartItem>document.getElementById(config.id);
+        const chartConfig: ChartConfiguration = {
+            type: 'bar',
+            data: {
+                labels: config.lables,
+                datasets: [
+                    {
+                        data: config.values,
+                        backgroundColor: this.COLORS.slice(0, config.values.length),
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            precision: 0
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                }
+            }
+        };
+        new Chart(ctx, chartConfig);
+    }
+
+    private buildDuePieChart(config: DueChartConfig) {
+        const ctx = <ChartItem>document.getElementById(config.id);
+
         new Chart(ctx, {
             type: 'pie',
             data: {
@@ -153,7 +220,32 @@ export class CMMSChartsComponent implements OnInit {
                     ],
                     hoverOffset: 4
                 }]
+            },
+            options: {
+                responsive: true
             }
         });
+    }
+
+    private buildPriorityChart(id: string, data: ByPriority[]) {
+        const config: SimpleBarsChartConfig = {
+            id: id,
+            values: data.map(p => p.count),
+            lables: data.map(e => e.priority)
+        };
+        this.buildBarChart(config);
+    }
+
+    private maintenanceStats(stats: [Mttr, Mtts, Pmp]) {
+        const config: SimpleBarsChartConfig = {
+            id: 'maintenance-times',
+            values: [stats[0].mttr + 30, stats[1].mtts + 56, stats[2].pmp + 40],
+            lables: [
+                this.langSrv.translate('CMMS_MTTR'),
+                this.langSrv.translate('CMMS_MTTS'),
+                this.langSrv.translate('CMMS_PMP')
+            ]
+        };
+        this.buildBarChart(config);
     }
 }

@@ -73,5 +73,9 @@
     "FAILS":                     "Fails",
     "LOAD_CHECKLIST":             "Load the checklist",
     "CLOSURE_DATE":               "Closure date",
-    "GANTT":                      "Gantt"
+    "GANTT":                      "Gantt",
+    "MTTR":                       "mttr",
+    "MTTS":                       "mtts",
+    "PMP":                        "pmp",
+    "REPAIR_TIMES":               "Maintenance times"
 }

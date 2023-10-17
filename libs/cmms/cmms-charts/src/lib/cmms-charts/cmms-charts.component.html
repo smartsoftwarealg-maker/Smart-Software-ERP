@@ -1,7 +1,9 @@
 <h1 class="size"> {{ 'COMMON_DASHBOARD' | translate }}</h1>
 <div class="container size">
     <mat-card>
-        <mat-card-title ><div translate>CMMS_WORK_ORDER</div></mat-card-title>
+        <mat-card-title>
+            <div translate>CMMS_WORK_ORDER</div>
+        </mat-card-title>
         <mat-card-content>
             <div class="chart_div">
                 <canvas [id]="'past-due'" class="chart"
@@ -11,7 +13,9 @@
     </mat-card>
 
     <mat-card>
-        <mat-card-title ><div translate>CMMS_SERVICE_REQUEST</div></mat-card-title>
+        <mat-card-title>
+            <div translate>CMMS_SERVICE_REQUEST</div>
+        </mat-card-title>
         <mat-card-content>
             <div class="chart_div">
                 <canvas [id]="'pending'" class="chart"
@@ -21,7 +25,11 @@
     </mat-card>
 
     <mat-card>
-        <mat-card-title ><span translate>CMMS_EQUIPMENT</span><span>/</span><span translate>CMMS_PRIORITY</span></mat-card-title>
+        <mat-card-title>
+            <div>
+                <span translate>CMMS_EQUIPMENT</span><span>/</span><span translate>CMMS_PRIORITY</span>
+            </div>
+        </mat-card-title>
         <mat-card-content>
             <div class="chart_div">
                 <canvas [id]="'assets-priority'" class="chart"
@@ -31,7 +39,11 @@
     </mat-card>
 
     <mat-card>
-        <mat-card-title ><span translate>CMMS_SERVICE_REQUEST</span><span>/</span><span translate>CMMS_PRIORITY</span></mat-card-title>
+        <mat-card-title>
+            <div>
+                <span translate>CMMS_SERVICE_REQUEST</span><span>/</span><span translate>CMMS_PRIORITY</span>
+            </div>
+        </mat-card-title>
         <mat-card-content>
             <div class="chart_div">
                 <canvas [id]="'sr-priority'" class="chart"
@@ -41,10 +53,25 @@
     </mat-card>
 
     <mat-card>
-        <mat-card-title ><span translate>CMMS_WORK_ORDER</span><span>/</span><span translate>CMMS_PRIORITY</span></mat-card-title>
+        <mat-card-title>
+            <div>
+                <span translate>CMMS_WORK_ORDER</span><span>/</span><span translate>CMMS_PRIORITY</span>
+            </div>
+        </mat-card-title>
         <mat-card-content>
             <div class="chart_div">
                 <canvas [id]="'wo-priority'" class="chart"
+                        [ngStyle]="processing? {display: 'none'} : {display: 'block'}"></canvas>
+            </div>
+        </mat-card-content>
+    </mat-card>
+
+    <mat-card>
+        <mat-card-title><div translate>CMMS_REPAIR_TIMES</div>
+        </mat-card-title>
+        <mat-card-content>
+            <div class="chart_div">
+                <canvas [id]="'maintenance-times'" class="chart"
                         [ngStyle]="processing? {display: 'none'} : {display: 'block'}"></canvas>
             </div>
         </mat-card-content>

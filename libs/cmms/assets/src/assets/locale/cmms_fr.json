@@ -73,6 +73,10 @@
     "FAILS":                      "Échoue",
     "LOAD_CHECKLIST":             "Charger checklist",
     "CLOSURE_DATE":               "Date de fermeture",
-    "GANTT":                      "Gantt"
+    "GANTT":                      "Gantt",
+    "MTTR":                       "mttr",
+    "MTTS":                       "mtts",
+    "PMP":                        "pmp",
+    "REPAIR_TIMES":               "Délais d'entretien"
 }
 
