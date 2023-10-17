@@ -4,7 +4,6 @@ import { Batch, LTM_BATCH_URL, LTM_INPUT_URL, LTMTesting } from '../ltm-api';
 import { dateTimeToYmdStr, HttpService } from '@ss/common/api-common';
 import { Observable } from 'rxjs';
 import { HttpParams } from '@angular/common/http';
-import { dateTimeToStr } from "../../../../../../apps/hotel/src/app/common/util";
 
 @Injectable({
   providedIn: 'root'
