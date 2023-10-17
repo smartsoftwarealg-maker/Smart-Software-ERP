@@ -1,0 +1,47 @@
+:host {
+    padding: 8px;
+    user-select: none;
+}
+
+.size {
+    //width: 90%;
+    //max-width: 1000px;
+    margin: 4px auto;
+    user-select: none;
+}
+
+h1 {
+    user-select: none;
+    text-align: center;
+    padding: 16px;
+}
+
+.container {
+    justify-content: center;
+    display: flex;
+    gap: 2em;
+    flex-wrap: wrap;
+    user-select: none;
+}
+
+.chart_div {
+    //width: 100%;
+    //height: 100%;
+    width: 288px;
+    height: 288px;
+    user-select: none;
+}
+
+mat-card {
+    border-radius: 1.4em;
+    min-width: 320px;
+    max-width: 320px;
+    user-select: none;
+}
+
+mat-card-title div {
+    font-size: 1.5em;
+    font-weight: bold;
+    padding: 1.0em;
+    user-select: none;
+}

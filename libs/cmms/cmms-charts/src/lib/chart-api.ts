@@ -7,10 +7,16 @@ export interface DueChartConfig {
     chartDescription: string;
 }
 
-export interface PriorityChartConfig {
+// export interface PriorityChartConfig {
+//     id: string;
+//     label: string;
+//     data: ByPriority[];
+// }
+
+export interface SimpleBarsChartConfig {
     id: string;
-    label: string;
-    data: ByPriority[];
+    lables: string[];
+    values: number[];
 }
 
 export interface PastDue {
@@ -33,4 +39,16 @@ export interface Gantt {
     startDate: Date,
     duration: number;
     completed: number;
+}
+
+export interface Mttr {
+    mttr: number;
+}
+
+export interface Mtts {
+    mtts: number;
+}
+
+export interface Pmp {
+    pmp: number;
 }

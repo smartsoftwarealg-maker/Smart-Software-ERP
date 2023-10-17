@@ -73,5 +73,9 @@
     "FAILS":                      "فاشل",
     "LOAD_CHECKLIST":             "قم بتحميل القائمة المرجعية",
     "CLOSURE_DATE":               "تاريخ الإغلاق",
-    "GANTT":                      "مسار غنت"
+    "GANTT":                      "مسار غنت",
+    "MTTR":                       "mttr",
+    "MTTS":                       "mtts",
+    "PMP":                        "pmp",
+    "REPAIR_TIMES":               "مدة الصيانة"
 }
