@@ -242,8 +242,9 @@ export class CMMSChartsComponent implements OnInit {
         const config: SimpleBarsChartConfig = {
             id: 'maintenance-times',
             series: [
-                [20, 30, 80],
-                [stats[0].mttr + (Math.random() * 100), stats[1].mtts + (Math.random() * 100), stats[2].pmp + (Math.random() * 100)]
+                // todo: find optimal values in PDF
+                [60, 40, 50],
+                [stats[0].mttr, stats[1].mtts, stats[2].pmp]
             ],
             seriesNames: [
                 this.langSrv.translate('CMMS_OPTIMAL_TIME'),
