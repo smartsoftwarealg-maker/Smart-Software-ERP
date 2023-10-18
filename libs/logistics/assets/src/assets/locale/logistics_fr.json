@@ -160,5 +160,8 @@
     "COST_TYPE":        "Type de coût",
     "VALUE_TYPE":       "Type de valeur",
     "PASSING_CLIENT":   "Client occasionnel",
-    "UNIT":             "Unité"
+    "UNIT":             "Unité",
+    "DISPATCH":         "Expédition",
+    "TRANSPORTER":      "Transporteur",
+    "LICENSE_ISSUER":   "Délivré a"
 }

@@ -36,7 +36,7 @@
     "ACCESS_DENIED":                 "Access denied for this page",
     "BLOCKED_GROUP":                 "This budget group is blocked.",
     "INSUFFICIENT_BALANCE":          "Insufficient balance",
-    "CONSUMED_REFERENCE":            "Reference is already consumed, no further modification is allowed",
+    "CONSUMED_REFERENCE":            "Reference is already consumed or received again, no further modification is allowed",
     "USAGE_INVALID_DATE":            "Some articles of this document are already consumed",
     "NUMBERING_PROBLEM":             "Your serial numbering policy does not allow you to create new pieces in this period",
     "INVALID_PRICE":                 "Invalid inventory price",
