@@ -14,7 +14,6 @@ import {
 } from '../chart-api';
 import {forkJoin, switchMap, tap} from 'rxjs';
 import {CommonUiLangModule} from '@ss/common/ui-lang';
-import {FormControl} from '@angular/forms';
 import {ChartConfiguration} from 'chart.js/dist/types';
 
 @Component({
@@ -26,11 +25,11 @@ import {ChartConfiguration} from 'chart.js/dist/types';
 })
 export class CMMSChartsComponent implements OnInit {
     private COLORS = [
-        'rgba(255,  99, 132, 0.4)',
         'rgba(255, 205,  86, 0.4)',
+        'rgba(153, 102, 255, 0.4)',
         'rgba( 75, 192, 192, 0.4)',
         'rgba( 54, 162, 235, 0.4)',
-        'rgba(153, 102, 255, 0.4)',
+        'rgba(255,  99, 132, 0.4)',
         'rgba(255, 159,  64, 0.4)',
         'rgba(201, 203, 207, 0.4)'
     ];
@@ -39,19 +38,20 @@ export class CMMSChartsComponent implements OnInit {
     private chartSrv = inject(ChartService);
     private langSrv = inject(LanguageService);
 
-    private fromDateControl: FormControl<string>;
-
     processing = true;
 
     ngOnInit() {
         this.shellSrv.setGoBackPath('..', this.route);
         Chart.register(...registerables);
         this.buildCharts();
-        this.fromDateControl = new FormControl(new Date().getFullYear() + '-1-1');
     }
 
     private buildCharts() {
-        const from = new Date(2020, 1, 1);
+        const from = new Date();
+        from.setHours(0);
+        from.setMinutes(0);
+        from.setSeconds(0);
+        from.setMilliseconds(0);
         this.chartSrv
             .pastDue()
             .pipe(
@@ -169,16 +169,18 @@ export class CMMSChartsComponent implements OnInit {
 
     private buildBarChart(config: SimpleBarsChartConfig) {
         const ctx = <ChartItem>document.getElementById(config.id);
+
         const chartConfig: ChartConfiguration = {
             type: 'bar',
             data: {
                 labels: config.lables,
-                datasets: [
-                    {
-                        data: config.values,
-                        backgroundColor: this.COLORS.slice(0, config.values.length),
-                    }
-                ]
+                datasets: config.series.map((s, i) => {
+                    return {
+                        data: s,
+                        label: config.seriesNames ? config.seriesNames[i] : '',
+                        backgroundColor: this.COLORS.slice(i, config.series.length == 1 ? config.series[0].length : (1 + i))
+                    };
+                })
             },
             options: {
                 responsive: true,
@@ -193,7 +195,7 @@ export class CMMSChartsComponent implements OnInit {
                 },
                 plugins: {
                     legend: {
-                        display: false
+                        display: config.series.length > 1
                     },
                 }
             }
@@ -230,7 +232,7 @@ export class CMMSChartsComponent implements OnInit {
     private buildPriorityChart(id: string, data: ByPriority[]) {
         const config: SimpleBarsChartConfig = {
             id: id,
-            values: data.map(p => p.count),
+            series: [data.map(p => p.count)],
             lables: data.map(e => e.priority)
         };
         this.buildBarChart(config);
@@ -239,7 +241,14 @@ export class CMMSChartsComponent implements OnInit {
     private maintenanceStats(stats: [Mttr, Mtts, Pmp]) {
         const config: SimpleBarsChartConfig = {
             id: 'maintenance-times',
-            values: [stats[0].mttr + 30, stats[1].mtts + 56, stats[2].pmp + 40],
+            series: [
+                [20, 30, 80],
+                [stats[0].mttr + (Math.random() * 100), stats[1].mtts + (Math.random() * 100), stats[2].pmp + (Math.random() * 100)]
+            ],
+            seriesNames: [
+                this.langSrv.translate('CMMS_OPTIMAL_TIME'),
+                this.langSrv.translate('CMMS_ACTUAL_TIME')
+            ],
             lables: [
                 this.langSrv.translate('CMMS_MTTR'),
                 this.langSrv.translate('CMMS_MTTS'),
