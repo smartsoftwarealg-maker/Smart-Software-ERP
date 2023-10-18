@@ -86,6 +86,12 @@ export interface Transaction {
     projectDescription?: string;
     docStatus?: string;
     isValidated: boolean;
+    transporter?: number;
+    driver?: string;
+    license?: string;
+    licenseDate?: Date;
+    licenseIssuer?: string;
+    plateNumber?: string;
 }
 
 export interface ExtraCost {

@@ -160,5 +160,8 @@
     "COST_TYPE":        "نوع التكلفة",
     "VALUE_TYPE":       "نوع القيمة",
     "PASSING_CLIENT":   "زبون عابر",
-    "UNIT":             "الوحدة"
+    "UNIT":             "الوحدة",
+    "DISPATCH":         "إرسال",
+    "TRANSPORTER":      "الناقل",
+    "LICENSE_ISSUER":   "مصدر الرخصة"
 }

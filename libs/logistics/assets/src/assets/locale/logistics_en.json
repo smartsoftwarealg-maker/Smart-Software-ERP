@@ -163,5 +163,8 @@
     "COST_TYPE":        "Cost type",
     "VALUE_TYPE":       "Value type",
     "PASSING_CLIENT":   "Occasional customer",
-    "UNIT":             "Unit"
+    "UNIT":             "Unit",
+    "DISPATCH":         "Dispatch",
+    "TRANSPORTER":      "Transporter",
+    "LICENSE_ISSUER":   "Issued in"
 }

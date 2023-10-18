@@ -66,6 +66,7 @@ export abstract class BaseTransactionDetailComponent extends BaseEntityDetailCom
     public agentAutoCompleteModel = new DefaultAutoCompleteModel<Agent>(this.agentService, 'id', 'denomination');
     public projectLookup            = new DefaultAutoCompleteModel(this.projectSrv);
     public currencyCompleteModel = new DefaultAutoCompleteModel<Currency>(this.currencySrv);
+    public transporterAutoCompleteModel   = new DefaultAutoCompleteModel<Agent>(this.supplierSrv, 'id', 'denomination');
     public supplierAutoCompleteModel   = new DefaultAutoCompleteModel<Agent>(this.supplierSrv, 'id', 'denomination');
     public consumerAutoCompleteModel   = new DefaultAutoCompleteModel<Agent>(this.consumerSrv, 'id', 'denomination');
     public branchLookup = new DefaultAutoCompleteModel(this.branchSrv, 'id', 'denomination');
@@ -216,7 +217,13 @@ export abstract class BaseTransactionDetailComponent extends BaseEntityDetailCom
             altAgent: [b.altAgent],
             project: [b.project],
             locked: [b.locked || false, Validators.required],
-            dirty: [!b.dirty || false, Validators.required]
+            dirty: [!b.dirty || false, Validators.required],
+            driver: [b.driver],
+            transporter: [b.transporter],
+            license: [b.license],
+            licenseDate: [b.licenseDate],
+            licenseIssuer: [b.licenseIssuer],
+            plateNumber: [b.plateNumber]
         });
     }
 

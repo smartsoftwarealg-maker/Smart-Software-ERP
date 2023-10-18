@@ -43,7 +43,6 @@
                 <mat-label translate>LOGISTICS_SUPPLIER</mat-label>
                 <ss-auto-complete matInput
                                   [required]="true"
-                                  descriptionFieldName="denomination"
                                   [model]="supplierAutoCompleteModel"
                                   formControlName="agent"></ss-auto-complete>
                 <mat-error
@@ -72,7 +71,7 @@
 
             <mat-form-field id="altAgent" class="default-50 sm-100">
                 <mat-label translate>COMMON_MEMO</mat-label>
-                <textarea matInput formControlName="altAgent" rows="2" ></textarea>
+                <textarea matInput formControlName="altAgent" rows="2"></textarea>
             </mat-form-field>
 
             <mat-tab-group>
@@ -130,6 +129,44 @@
                         <mat-label translate>LOGISTICS_EXCHANGE_RATE</mat-label>
                         <input type="number" matInput formControlName="currencyRate">
                     </mat-form-field>
+                </mat-tab>
+                <mat-tab>
+                    <ng-template mat-tab-label>
+                        <span translate>LOGISTICS_DISPATCH</span>
+                    </ng-template>
+
+                    <mat-form-field class="default-50 sm-100">
+                        <mat-label translate>LOGISTICS_TRANSPORTER</mat-label>
+                        <ss-auto-complete matInput
+                                          [model]="transporterAutoCompleteModel"
+                                          formControlName="transporter">
+                        </ss-auto-complete>
+                    </mat-form-field>
+                    <mat-form-field class="default-50 sm-100">
+                        <mat-label translate>LOGISTICS_DRIVER</mat-label>
+                        <input matInput formControlName="driver" type="text">
+                    </mat-form-field>
+
+                    <mat-form-field class="default-50 sm-100">
+                        <mat-label translate>LOGISTICS_DRIVER_LICENSE</mat-label>
+                        <input matInput formControlName="license" type="text">
+                    </mat-form-field>
+
+                    <mat-form-field class="default-50 sm-100">
+                        <mat-label translate>COMMON_DATE</mat-label>
+                        <ss-date-picker formControlName="licenseDate"></ss-date-picker>
+                    </mat-form-field>
+
+                    <mat-form-field class="default-50 sm-100">
+                        <mat-label translate>LOGISTICS_LICENSE_ISSUER</mat-label>
+                        <input matInput formControlName="licenseIssuer" type="text">
+                    </mat-form-field>
+
+                    <mat-form-field class="default-50 sm-100">
+                        <mat-label translate>LOGISTICS_PLATE_NUMBER</mat-label>
+                        <input matInput formControlName="plateNumber" type="text">
+                    </mat-form-field>
+
                 </mat-tab>
             </mat-tab-group>
         </form>
