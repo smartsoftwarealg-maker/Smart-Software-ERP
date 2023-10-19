@@ -11,7 +11,11 @@ import {
     Service,
     Category,
     Lookup,
-    PostService, WorkshopService, DivisionService, DepartmentService, ServiceService
+    WorkshopService,
+    DivisionService,
+    DepartmentService,
+    ServiceService,
+    ActivePostService
 } from '@ss/common/api-lookup';
 import {GridService} from '@ss/payroll/salary-grid';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
@@ -31,7 +35,7 @@ export class EmployeeCareerDetailComponent extends BaseChildEntityDetailComponen
     public lookupsSrv = inject(LookupsService);
     private gridService = inject(GridService);
 
-    private postSrv =  inject(PostService);
+    private postSrv =  inject(ActivePostService);
     postLookup = new DefaultAutoCompleteModel(this.postSrv);
     workshopLookup = new DefaultAutoCompleteModel(this.workshopSrv);
     divisionLookup = new DefaultAutoCompleteModel(this.divisionSrv);

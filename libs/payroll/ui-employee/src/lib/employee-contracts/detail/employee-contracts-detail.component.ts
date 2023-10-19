@@ -9,7 +9,10 @@ import {
     Division,
     Service,
     Category,
-    PostService, DepartmentService, DivisionService, ServiceService
+    DepartmentService,
+    DivisionService,
+    ServiceService,
+    ActivePostService
 } from '@ss/common/api-lookup';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import { GridService } from '@ss/payroll/salary-grid';
@@ -24,7 +27,7 @@ export class EmployeeContractsDetailComponent extends BaseChildEntityDetailCompo
     private gridSrv = inject(GridService);
     private loginSrv = inject(LoginService);
     private formBuilder = inject(UntypedFormBuilder);
-    private postSrv =  inject(PostService);
+    private postSrv =  inject(ActivePostService);
     private motiveSrv =  inject(ContractMotiveService);
     private departmentSrv = inject(DepartmentService);
     private divisionSrv = inject(DivisionService);
