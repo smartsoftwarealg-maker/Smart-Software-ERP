@@ -21,6 +21,7 @@ export class ReceptionCancellationLinesListComponent extends BaseTransactionLine
         'qtySatisfied',
         'price',
         'vat',
+        'total'
     ];
 
 

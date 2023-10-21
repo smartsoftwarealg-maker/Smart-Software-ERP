@@ -47,7 +47,8 @@ export class ServiceInvoiceLineListComponent extends BaseTransactionLinesListCom
         'qtyOrdered',
         'qtySatisfied',
         'price',
-        'vat'
+        'vat',
+        'total'
     ];
 
     constructor(

@@ -67,6 +67,12 @@
                     {{ e.price | number : '1.2-2'}}
                 </mat-cell>
             </ng-container>
+            <ng-container matColumnDef="total">
+                <mat-header-cell *matHeaderCellDef translate>COMMON_TOTAL</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{ e.price * e.qtySatisfied | number : '1.2-2'}}
+                </mat-cell>
+            </ng-container>
 
             <ng-container matColumnDef="vat">
                 <mat-header-cell *matHeaderCellDef translate>LOGISTICS_VAT</mat-header-cell>

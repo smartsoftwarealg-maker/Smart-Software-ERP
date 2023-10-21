@@ -21,6 +21,7 @@ export class InventoryTransferLinesListComponent extends BaseTransactionLinesLis
         'qtySatisfied',
         'price',
         'vat',
+        'total'
     ];
 
     constructor(

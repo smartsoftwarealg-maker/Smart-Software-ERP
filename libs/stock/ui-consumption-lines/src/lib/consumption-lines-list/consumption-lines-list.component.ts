@@ -20,6 +20,7 @@ export class ConsumptionLinesListComponent  extends BaseTransactionLinesListComp
         'description',
         'qtySatisfied',
         'price',
+        'total'
     ];
 
 
