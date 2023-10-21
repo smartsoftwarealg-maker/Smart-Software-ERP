@@ -19,7 +19,7 @@ export class AssetAccountsListComponent extends BaseEntityListComponent<Account>
     displayedColumns = [
         'accountNo',
         'description',
-        'depreciation_account',
+        'depreciationAccount',
         'endowment_account',
         'depreciationRate',
         'usefulLife'
