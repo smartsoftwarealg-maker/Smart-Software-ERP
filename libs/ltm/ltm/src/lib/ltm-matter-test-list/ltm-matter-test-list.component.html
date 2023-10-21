@@ -1,4 +1,9 @@
 <div class="ctrl_div content_div" *ngIf="isEditable">
+    <mat-form-field>
+        <mat-label translate>COMMON_SEARCH</mat-label>
+        <input matInput [formControl]="searchText" type="text">
+    </mat-form-field>
+
     <button mat-mini-fab
             type="button"
             color="primary" (click)="showDetail(0)">
