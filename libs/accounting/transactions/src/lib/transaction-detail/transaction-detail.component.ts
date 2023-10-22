@@ -70,6 +70,7 @@ export class TransactionDetailComponent implements OnInit, OnDestroy {
                         pieceNo: 0,
                         isBudget: false})))
             .subscribe(ent => this.setupForm(ent));
+
         this.subscriptions.push(
             this.router.events.pipe(
                 filter((e: any): e is RouterEvent => e instanceof RouterEvent)
@@ -98,16 +99,16 @@ export class TransactionDetailComponent implements OnInit, OnDestroy {
         e.id = e.oid? e.fileId * SCALE + (e.oid || 0) : 0;
         this.isEmpty = e.debit < 0.001 && e.credit < 0.001;
         this.form = this.formBuilder.group({
-            id: [e.id],
-            oid: [e.oid || 0],
-            pieceDate: [e.pieceDate, [Validators.required, maxDate(this.maxDate), minDate(this.minDate)]],
-            pieceNo: [ { value: e.pieceNo || 0, disabled: !this.accPolicy.manualNumbering }, Validators.required],
-            folio: [e.folio],
-            projectId: [e.projectId],
+            id:         [e.id],
+            oid:        [e.oid || 0],
+            pieceDate:  [e.pieceDate || this.maxDate, [Validators.required, maxDate(this.maxDate), minDate(this.minDate)]],
+            pieceNo:    [ { value: e.pieceNo || 0, disabled: !this.accPolicy.manualNumbering }, Validators.required],
+            folio:      [e.folio],
+            projectId:  [e.projectId],
             piecemonth: [e.pieceMonth || this.loginSrv.appCtx.accPeriod],
-            journalno: [+e.journalno],
-            isBudget: [e.isBudget],
-            fileId: [e.fileId],
+            journalno:  [+e.journalno],
+            isBudget:   [e.isBudget || !e.id, Validators.required],
+            fileId:     [e.fileId],
         });
     }
 
@@ -122,7 +123,12 @@ export class TransactionDetailComponent implements OnInit, OnDestroy {
             .subscribe(res => {
                 if (res) {
                     this.snackBarSrv.showSuccessMessage();
-                    this.form.reset(this.form.getRawValue());
+                    const value = this.form.getRawValue();
+                    if (value.id) {
+                        this.form.reset(value);
+                    } else {
+                        this.router.navigate(['/app/accounting/transactions', res]).then();
+                    }
                 }
             });
     }

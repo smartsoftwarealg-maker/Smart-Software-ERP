@@ -14,6 +14,7 @@ export const ACC_CTX_URL            = '/ctx';
 export const ACC_PROJECTS_URL       = '/lookups/acc_projects';
 export const ACC_ASSET_END_URL      = '/lookups/investment_ends';
 export const ACC_PERIOD_SUMMARY_URL = '/accounting/summary';
+export const ACC_PIECE_SUMMARY_URL = '/accounting/piece-summary';
 export const ACC_ACC_BALANCE_URL    = '/accounting/balance';
 export const ACC_ACCOUNTING_GL_URL  = '/accounting/gl';
 export const TRANSAC_ACCOUNT_URL    = '/accounting/transac-accounts';
@@ -100,6 +101,11 @@ export interface ACCTransaction {
     debit?: number;
     credit?: number;
     projectName?: string;
+}
+
+export interface PieceSummary {
+    description?: string;
+    balance?: number;
 }
 
 export interface ACCTransactionLine {

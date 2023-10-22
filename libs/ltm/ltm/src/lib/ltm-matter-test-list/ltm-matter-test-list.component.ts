@@ -1,4 +1,4 @@
-import { Component, inject, OnDestroy, OnInit } from "@angular/core";
+import { Component, DestroyRef, inject, OnDestroy, OnInit } from "@angular/core";
 import {PaginationModel} from '@ss/common/api-common';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
@@ -16,7 +16,7 @@ import { debounceTime, distinctUntilChanged } from "rxjs/operators";
     templateUrl: './ltm-matter-test-list.component.html',
     styleUrls: ['./ltm-matter-test-list.component.scss'],
 })
-export class LtmMatterTestListComponent implements OnInit, OnDestroy {
+export class LtmMatterTestListComponent implements OnInit {
     private matterSrv  = inject(LtmMatterService);
     private subscriptions: Subscription | null = null;
 
@@ -40,12 +40,10 @@ export class LtmMatterTestListComponent implements OnInit, OnDestroy {
         private snackBarSrv: SnackBarService,
         private route: ActivatedRoute,
         private router: Router,
-        private confirmationSrv: ConfirmationDialogService) {
+        private confirmationSrv: ConfirmationDialogService,
+        private destroyRef: DestroyRef) {
         this.pagination.onChange = () => this.refresh();
-    }
-
-    ngOnDestroy(): void {
-        this.subscriptions?.unsubscribe();
+        destroyRef.onDestroy(() => this.subscriptions?.unsubscribe());
     }
 
     showDetail(id: number) {

@@ -37,7 +37,7 @@
     "FOLIO":                    "Folio",
     "MANUAL_CASH_FLOW":         "Manually manage cash flow",
     "ANALYZE_CHECKS":           "Analyze checks",
-    "CC_REQUIRED":              "Cost center is required",
+    "CC_REQUIRED":              "Cost center required",
     "PERIOD_SELECTION":         "Period selection",
     "ASSET_ACCOUNTS":           "Asset accounts",
     "DEPRECIATION_ACCOUNT":     "Depreciation account",
@@ -64,5 +64,5 @@
     "DEPRECIATION_RATE":        "Depreciation rate",
     "USEFUL_LIFE":              "Useful life",
     "FILE":                     "File",
-    "STOCK_ACCOUNTS":       "Stock accounts"
+    "STOCK_ACCOUNTS":           "Stock accounts"
 }

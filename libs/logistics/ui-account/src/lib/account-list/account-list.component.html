@@ -1,4 +1,4 @@
-<div class="container table_div">
+<div class="container size">
     <mat-table mat-table [dataSource]="data" class="main-table">
 
         <ng-container matColumnDef="accountNo">
@@ -45,6 +45,13 @@
             </mat-cell>
         </ng-container>
 
+        <ng-container matColumnDef="budgetAccount">
+            <mat-header-cell *matHeaderCellDef translate>LOGISTICS_BUDGET_ACCOUNT</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                <mat-checkbox disabled="true" [checked]="e.budgetAccount"></mat-checkbox>
+            </mat-cell>
+        </ng-container>
+
 
         <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
         <mat-row class="selectable" [class.selected]="row.id == selected" (click)="select(row.id)"
@@ -52,6 +59,6 @@
     </mat-table>
 </div>
 
-<div class="container b-b-background">
+<div class="size b-b-background">
     <ss-pagination [paginationModel]="pagination"></ss-pagination>
 </div>
