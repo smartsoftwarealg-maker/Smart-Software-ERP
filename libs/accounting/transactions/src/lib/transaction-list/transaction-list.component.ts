@@ -125,10 +125,6 @@ export class TransactionListComponent extends BaseEntityListComponent<ACCTransac
 
     private navigate() {
         if (this.selected) {
-            // const url = this.transactionMode?
-            //     `/app/accounting/transactions/${this.selected}/detail` :
-            //     `/app/accounting/transactions/${this.selected}/archive`;
-            // this.router.navigate([url]).then(() => this.detailSrv.setParentId(this.selected));
             const commands = this.transactionMode? [this.selected] : [this.selected,  'archive'];
             this.router.navigate(commands, {relativeTo: this.route})
                 .then(_ => {
@@ -140,15 +136,16 @@ export class TransactionListComponent extends BaseEntityListComponent<ACCTransac
     override selectRow(row: ACCTransaction) {
         row.id = (row.fileId || 0 ) * SCALE + (row.oid || 0);
         super.selectRow(row);
-        this.navigate();
+        // this.navigate();
     }
 
     override edit() {
-        if (this.selected) {
-            this.router
-                .navigate(['.'], {relativeTo: this.route})
-                .then(res => this.router.navigate([this.selected], {relativeTo: this.route}));
-        }
+        this.navigate();
+        // if (this.selected) {
+        //     this.router
+        //         .navigate(['.'], {relativeTo: this.route})
+        //         .then(res => this.router.navigate([this.selected], {relativeTo: this.route}));
+        // }
     }
 
 
