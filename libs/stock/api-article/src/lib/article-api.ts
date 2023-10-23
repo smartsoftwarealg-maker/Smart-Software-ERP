@@ -25,6 +25,7 @@ export interface Article {
     unitDescrip?: string;
     vatValue?: number;
     notForSale: boolean;
+    blocked: boolean;
     klassName?: string;
     markName?: string;
     minQty?: number;

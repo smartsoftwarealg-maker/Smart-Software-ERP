@@ -29,8 +29,8 @@ export interface SchemaMap {
   providedIn: 'root'
 })
 export class TraceabilityService {
-    fromDate = new Date();
     toDate   = new Date();
+    fromDate = new Date(this.toDate.getTime() - 30 * 24 * 3600 * 1000);
     private URLs = ['/logging/writes', '/logging/updates', '/logging/deletes' ];
 
     constructor(private httpSrv: HttpService) {}
@@ -41,15 +41,15 @@ export class TraceabilityService {
             .get<SchemaMap[]>('/logging/map', params);
     }
 
-    getDetails(from: Date, to: Date, type: number, schema: number, page: number, size: number): Observable<{ itemCount: number, body: string[] }> {
+    getDetails(from: Date, to: Date, type: number, filter: string, schema: number, page: number, size: number): Observable<{ itemCount: number, body: string[] }> {
         const params = new HttpParams()
             .set('from', dateToYmdStr(from))
             .set('to', dateToYmdStr(to))
             .set('schema', schema)
-            .set('page', `${page}-${size}`);
+            .set('page', `${page}-${size}`)
+            .set('filter', filter);
         const url = this.URLs[Math.min(2, Math.max(type - 1, 0))];
         return this.httpSrv.getData(url, page, size, '', '', params);
-        //return this.httpSrv.get<string[]>(url, params);
     }
 
     getApps(): Observable<{ apps: string[] }> {
