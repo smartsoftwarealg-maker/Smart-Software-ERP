@@ -47,7 +47,7 @@
         <mat-table mat-table [dataSource]="data" class="content-div" [ngStyle]="{ 'min-width.px': tableWidth }">
             <ng-container *ngFor="let col of displayedColumns; let i = index" matColumnDef="{{ col }}">
                 <mat-header-cell *matHeaderCellDef> {{ col }} </mat-header-cell>
-                <mat-cell *matCellDef="let e" [class.changed]="e[i]?.indexOf('->')>0">
+                <mat-cell *matCellDef="let e" [class.changed]="e[i]?.indexOf('->')>0 && displayedColumns[i].indexOf('Description') < 1 && displayedColumns[i].indexOf('Name') < 1">
                     {{e[i]}}
                 </mat-cell>
             </ng-container>
