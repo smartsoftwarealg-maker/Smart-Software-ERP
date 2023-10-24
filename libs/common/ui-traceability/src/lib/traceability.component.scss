@@ -12,6 +12,12 @@
                          "schemas  pager"  ;
 
 }
+.changed {
+    font-size: 0.8em;
+    color: red;
+    font-weight: bolder;
+}
+
 @media (max-width: 500px) {
     .form_container {
         grid-template-columns: auto;
@@ -23,10 +29,6 @@
                          "schemas"
                          "detail"
                          "pager"  ;
-    }
-
-    .log__type {
-        flex-wrap: wrap;
     }
 }
 .schemas {
@@ -57,9 +59,10 @@
     gap: 20px;
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: baseline;
     grid-area: selector;
     border-radius: 1.2em;
+    flex-wrap: wrap;
 }
 
 .date__picker {
