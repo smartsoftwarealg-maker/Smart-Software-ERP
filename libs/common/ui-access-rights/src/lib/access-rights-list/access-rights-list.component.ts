@@ -32,7 +32,13 @@ export class AccessRightsListComponent extends BaseEntityListComponent<AccessRig
     menuItems: string[] = [];
     roleList: Role[] = [];
     selectedItem = '';
-    form: UntypedFormGroup = null;
+    form =    new FormGroup({
+        roles:     new FormControl(0),
+        canRead:   new FormControl(false),
+        canWrite:  new FormControl(false),
+        canEdit:   new FormControl(false),
+        canDelete: new FormControl(false)
+    });
     displayedColumns = ['roleId', 'read', 'write', 'edit', 'delete'];
 
     constructor(
@@ -58,13 +64,6 @@ export class AccessRightsListComponent extends BaseEntityListComponent<AccessRig
             pagPersistSrv,
             'COMMON_ACCESS_RIGHTS');
         this.pagination.pageSize = 20;
-        this.form =    new FormGroup({
-            roles:     new FormControl(0),
-            canRead:   new FormControl(false),
-            canWrite:  new FormControl(false),
-            canEdit:   new FormControl(false),
-            canDelete: new FormControl(false)
-        });
     }
 
     override ngOnInit() {
@@ -95,10 +94,10 @@ export class AccessRightsListComponent extends BaseEntityListComponent<AccessRig
                 centerId: this.loginSrv.appCtx.center,
                 roleId: this.form.controls['roles'].value || 0,
                 document: 0,
-                rights: (this.form.controls['canRead'].value || 0) +
-                        (this.form.controls['canWrite'].value || 0) * 2 +
-                        (this.form.controls['canEdit'].value || 0) * 4 +
-                        (this.form.controls['canDelete'].value || 0) * 8,
+                rights: (this.form.controls['canRead'].value === true? 1 : 0) +
+                        (this.form.controls['canWrite'].value === true? 1 : 0) * 2 +
+                        (this.form.controls['canEdit'].value  === true? 1 : 0) * 4 +
+                        (this.form.controls['canDelete'].value  === true? 1 : 0) * 8,
             };
             this.rightsSrv
                 .saveRights(r, this.selectedItem)
@@ -118,6 +117,10 @@ export class AccessRightsListComponent extends BaseEntityListComponent<AccessRig
     }
 
     override showDetail(id: number) {
+        if (!id) {
+            this.form.controls['roles'].setValue(0);
+            this.form.reset();
+        }
         this.editButton.disabled = false;
     }
 
@@ -173,4 +176,6 @@ export class AccessRightsListComponent extends BaseEntityListComponent<AccessRig
             .getEntities(this.application)
             .subscribe(res => this.menuItems = res);
     }
+
+
 }
