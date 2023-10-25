@@ -2,21 +2,32 @@ import { Component, inject } from '@angular/core';
 import {DashboardService} from '../dashboard.service';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {Dashboard} from '../dashboard';
-import {KeepOnToolbar, ShellService, SnackBarService, ToolbarButton} from '@ss/common/ui-shell';
+import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
-import {LookupsService} from '@ss/common/api-lookup';
-import {of, switchMap, tap} from 'rxjs';
+import { Lookup, LookupsService } from "@ss/common/api-lookup";
+import {switchMap, tap} from 'rxjs';
 import {
+    APP_ASSET,
+    APP_DASHBOARD,
+    APP_HR,
+    APP_LTM,
+    APP_PAYROLL,
+    APP_PURCHASE,
+    APP_SALES,
+    APP_STOCK,
+    APP_TREASURY,
     getApplicationId,
     LanguageService,
     PaginationModel,
     PaginatorPersistenceService
-} from '@ss/common/api-common';
-import {FormControl, UntypedFormControl} from '@angular/forms';
+} from "@ss/common/api-common";
+import {FormControl} from '@angular/forms';
 import {AgentLookupModel, AgentService} from '@ss/logistics/api-agent';
 import {Id} from '@ss/common/ui-auto-complete';
+import { Chart, ChartConfiguration, ChartItem, registerables } from "chart.js";
+import { debounceTime, distinctUntilChanged } from "rxjs/operators";
 
 @Component({
     selector: 'ss-dashboard',
@@ -26,6 +37,7 @@ import {Id} from '@ss/common/ui-auto-complete';
 export class DashboardComponent extends BaseEntityListComponent<Dashboard> {
     private agentSrv = inject(AgentService);
     private langSrv = inject(LanguageService);
+    private chartComponent: Chart | null = null;
 
     // private jsonButton: ToolbarButton = {
     //     icon:  'fa-solid fa-coffee-bean',
@@ -35,16 +47,31 @@ export class DashboardComponent extends BaseEntityListComponent<Dashboard> {
     //     keepOnToolbar: KeepOnToolbar.DYNAMIC,
     //     click: () => this.json()
     // };
+    APPLICATIONS: Lookup[] = [{ id: APP_DASHBOARD, description: 'DASHBOARD' },
+        { id: APP_PURCHASE,  description: 'PURCHASES' },
+        { id: APP_STOCK,     description: 'STOCK'     },
+        { id: APP_SALES,     description: 'SALES'     },
+        { id: APP_PAYROLL,   description: 'PAYROLL'   },
+        { id: APP_HR,        description: 'HR'        },
+        { id: APP_ASSET,     description: 'ASSETS'    },
+        { id: APP_TREASURY,  description: 'TREASURY'  },
+        { id: APP_LTM,       description: 'LTM'  },
+    ];
+
+    showApplications = false;
     headers: string[] = ['test'];
     dashboardData: any[][] = [['test']];
     detailPagination = PaginationModel.newInstance();
     time = new Date().getTime();
-    toDate              = new UntypedFormControl(new Date());
-    fromDate            = new UntypedFormControl(new Date(this.time - 365 * 24 * 3600 * 1000));
-    consolidated        = new FormControl<boolean>(false);
+    application = new FormControl<number>(1);
+    toDate              = new FormControl(new Date());
+    fromDate            = new FormControl(new Date(this.time - 365 * 24 * 3600 * 1000));
+    consolidated     = new FormControl<boolean>(false);
     agentLookup         = new AgentLookupModel(this.agentSrv);
     tableWidth          = '1000';
     selectedAgentId: Id = '';
+    processing = false;
+    light = true;
 
     constructor(public dashboardSrv: DashboardService,
                 public override shellSrv: ShellService,
@@ -58,14 +85,27 @@ export class DashboardComponent extends BaseEntityListComponent<Dashboard> {
         super(dashboardSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv, 'COMMON_DASHBOARD_QUERIES');
         this.detailPagination.onChange = () => this.updatePage();
         this.agentLookup.onValueChanged = (id: Id) => this.selectedAgentId = id;
+        Chart.register(...registerables);
     }
 
     override ngOnInit() {
-        this.dashboardSrv.setParentId(getApplicationId(this.router));
+        const appId = getApplicationId(this.router);
+        this.dashboardSrv.setParentId(appId);
+        this.showApplications = appId === APP_DASHBOARD;
         this.editButton.visible = false;
         this.addButton.visible = false;
         this.deleteButton.visible = false;
         super.ngOnInit();
+        this.subscriptions.push(this.application
+            .valueChanges
+            .pipe(
+                debounceTime(300),
+                distinctUntilChanged()
+            ).subscribe(id => {
+                this.dashboardSrv.setParentId(id);
+                this.refresh();
+            }));
+
         // this.shellSrv.addButton(this.jsonButton);
     }
 
@@ -96,6 +136,9 @@ export class DashboardComponent extends BaseEntityListComponent<Dashboard> {
                     next: res => {
                         this.dashboardData = res.body;
                         this.detailPagination.elementCount = res.itemCount;
+                        this.chartComponent?.destroy();
+                        const ctx = <ChartItem>document.getElementById('chart');
+                        this.chartComponent = new Chart(ctx, this.chartData());
                         this.shellSrv.setLoading(false);
                     },
                     error: err => {
@@ -163,4 +206,47 @@ export class DashboardComponent extends BaseEntityListComponent<Dashboard> {
                 }
             });
     }
+
+    private chartData(): ChartConfiguration {
+        return {
+            type: 'bar' ,
+            data: {
+                labels: this.dashboardData.map(a => a[0]?.toString()),
+                datasets: [
+                    {
+                        label: this.selectedRow?.description || '',
+                        data: this.dashboardData.map(a => +((a[1] || '0').replaceAll(',', ''))),
+                        backgroundColor: ['blue'],
+                        borderColor: ['blue']
+                    },
+                ],
+            },
+            options: {
+                plugins: {
+                    legend: {
+                        display: true,
+                        labels: {
+                            boxHeight: 32,
+                            color: 'blue'
+                        },
+                    }
+                },
+                scales: {
+                    x: {
+                        title: {
+                            display: true,
+                            text: this.data.filter(e => e.id === this.selected).map(e => e.description)[0]
+                        },
+                        ticks: {
+                            autoSkip: false,
+                            maxRotation: 45,
+                            minRotation: 45
+                        }
+
+                    }
+                }
+            }
+        };
+    }
+
 }

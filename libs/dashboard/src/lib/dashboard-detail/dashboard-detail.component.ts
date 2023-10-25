@@ -12,10 +12,10 @@ import {
     APP_DASHBOARD,
     APP_HR, APP_LTM,
     APP_PAYROLL,
-    APP_PURCHASE,
+    APP_PURCHASE, APP_SALES,
     APP_STOCK, APP_TREASURY,
     getApplicationId
-} from '@ss/common/api-common';
+} from "@ss/common/api-common";
 import {debounceTime, distinctUntilChanged} from 'rxjs/operators';
 
 @Component({
@@ -29,11 +29,12 @@ export class DashboardDetailComponent extends BaseEntityDetailComponent<Dashboar
     APPLICATIONS: Lookup[] = [{ id: APP_DASHBOARD, description: 'DASHBOARD' },
         { id: APP_PURCHASE,  description: 'PURCHASES' },
         { id: APP_STOCK,     description: 'STOCK'     },
+        { id: APP_SALES,     description: 'SALES'     },
         { id: APP_PAYROLL,   description: 'PAYROLL'   },
         { id: APP_HR,        description: 'HR'        },
         { id: APP_ASSET,     description: 'ASSETS'    },
         { id: APP_TREASURY,  description: 'TREASURY'  },
-        { id: APP_LTM,       description: 'LTM'       },
+        { id: APP_LTM,       description: 'LTM'  },
     ];
 
     constructor(public dashboardSrv: DashboardService,

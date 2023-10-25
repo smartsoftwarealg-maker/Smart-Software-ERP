@@ -9,7 +9,7 @@ import {
     DASHBOARD_URL,
     COMMON_REPORTS_URL
 } from '../common';
-import {ABS_INDEX_URL, CanActivateService, CanDeactivateService, LIST_URL} from '@ss/common/api-common';
+import {ABS_INDEX_URL, CanDeactivateService, LIST_URL} from '@ss/common/api-common';
 import {Routes} from '@angular/router';
 import {PaymentsListComponent, PaymentsDetailComponent} from '@ss/logistics/payments';
 import {PaymentCompensationComponent} from '@ss/logistics/payment-compensation';
@@ -27,7 +27,7 @@ export const financeRoutes: Routes = [
     {
         path: LOGISTICS_CCOMPENSATION_URL,
         component: PaymentCompensationComponent,
-            data: { agents: '/customers' }
+        data: { agents: '/customers' }
     },
     {
         path: LOGISTICS_SCOMPENSATION_URL,
