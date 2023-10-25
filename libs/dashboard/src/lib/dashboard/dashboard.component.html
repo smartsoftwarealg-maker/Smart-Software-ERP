@@ -1,5 +1,14 @@
 <div class="main-container">
     <div class="ctrl">
+        <mat-form-field *ngIf="showApplications">
+            <mat-label translate>COMMON_APPLICATIONS</mat-label>
+            <mat-select [formControl]="application">
+                <mat-option *ngFor="let a of APPLICATIONS" [value]="a.id">
+                    {{ a.description | translate }}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
         <mat-form-field class="date__picker">
             <mat-label translate>COMMON_FROM</mat-label>
             <ss-date-picker [formControl]="fromDate"></ss-date-picker>
@@ -26,7 +35,7 @@
         <mat-list>
             <mat-list-item *ngFor="let row of data"
                            [class.selected]="row.id === selected"
-                           (click)="select(row.id)"
+                           (click)="selectRow(row)"
                            class="selectable">
                 {{ row.description }}
             </mat-list-item>
@@ -55,5 +64,11 @@
             </mat-row>
         </mat-table>
 
+    </div>
+    <div class="chart">
+        <canvas [id]="'chart'"
+                [ngStyle]="processing? {display: 'none'} : {display: 'block'}"
+                [style.background]="light?'white' : 'black'">
+        </canvas>
     </div>
 </div>

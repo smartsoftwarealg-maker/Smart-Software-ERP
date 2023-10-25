@@ -13,11 +13,11 @@ import {
     APP_HR,
     APP_LTM,
     APP_PAYROLL,
-    APP_PURCHASE,
+    APP_PURCHASE, APP_SALES,
     APP_STOCK,
     APP_TREASURY,
     PaginatorPersistenceService
-} from '@ss/common/api-common';
+} from "@ss/common/api-common";
 import {FormControl} from '@angular/forms';
 import {debounceTime, distinctUntilChanged} from 'rxjs/operators';
 
@@ -30,6 +30,7 @@ export class DashboardListComponent extends BaseEntityListComponent<Dashboard> {
     APPLICATIONS: Lookup[] = [{ id: APP_DASHBOARD, description: 'DASHBOARD' },
         { id: APP_PURCHASE,  description: 'PURCHASES' },
         { id: APP_STOCK,     description: 'STOCK'     },
+        { id: APP_SALES,     description: 'SALES'     },
         { id: APP_PAYROLL,   description: 'PAYROLL'   },
         { id: APP_HR,        description: 'HR'        },
         { id: APP_ASSET,     description: 'ASSETS'    },
