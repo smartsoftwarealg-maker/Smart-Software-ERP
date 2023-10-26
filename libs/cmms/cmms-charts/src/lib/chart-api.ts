@@ -16,7 +16,8 @@ export interface DueChartConfig {
 export interface SimpleBarsChartConfig {
     id: string;
     lables: string[];
-    values: number[];
+    series: number[][];
+    seriesNames?: string[];
 }
 
 export interface PastDue {

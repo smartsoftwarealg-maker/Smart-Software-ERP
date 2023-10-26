@@ -77,5 +77,7 @@
     "MTTR":                       "mttr",
     "MTTS":                       "mtts",
     "PMP":                        "pmp",
-    "REPAIR_TIMES":               "مدة الصيانة"
+    "REPAIR_TIMES":               "مدة الصيانة",
+    "OPTIMAL_TIME":               "المدة المثلى",
+    "ACTUAL_TIME":                "المدة الفعلية"
 }
