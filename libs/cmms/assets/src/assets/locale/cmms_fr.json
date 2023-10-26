@@ -77,6 +77,8 @@
     "MTTR":                       "mttr",
     "MTTS":                       "mtts",
     "PMP":                        "pmp",
-    "REPAIR_TIMES":               "Délais d'entretien"
+    "REPAIR_TIMES":               "Délais d'entretien",
+    "OPTIMAL_TIME":               "Temps optimal",
+    "ACTUAL_TIME":                "Heure réelle"
 }
 
