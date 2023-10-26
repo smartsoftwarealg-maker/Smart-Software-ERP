@@ -249,4 +249,12 @@ export abstract class BaseTransactionDetailComponent extends BaseEntityDetailCom
         this.saveButton.visible = enabled;
         this.shellSrv.setGoBackEnabled(enabled);
     }
+
+    protected goBack() {
+        if (this.form.controls['id'].value > 0) {
+            super.goBack();
+        } else {
+            this.router.navigate(['..', this.queryId], {relativeTo: this.route}).then();
+        }
+    }
 }
