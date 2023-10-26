@@ -19,6 +19,7 @@ export class PurchaseRequestLinesListComponent extends  BaseTransactionLinesList
         'description',
         'qtyOrdered',
         'qtySatisfied',
+        'total'
     ];
 
     constructor(

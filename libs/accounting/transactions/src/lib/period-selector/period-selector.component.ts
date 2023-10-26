@@ -49,7 +49,7 @@ export class PeriodSelectorComponent extends BaseEntityListComponent<PeriodSumma
     }
 
     override finishLoading(data: PeriodSummary[]) {
-        const error = data.filter(e => Math.abs(e.debit - e.credit) >= 0);
+        const error = data.filter(e => this.imbalance(e));
         const maxMonth = (error.length > 0)? error[error.length - 1].id - 1 : 11;
         this.periods = this.MONTHS.filter((e, i) => i <= maxMonth);
         data.forEach(e => e.month = this.MONTHS[e.id - 1]);
@@ -67,7 +67,7 @@ export class PeriodSelectorComponent extends BaseEntityListComponent<PeriodSumma
             })
     }
 
-    balance(row: PeriodSummary): boolean {
+    imbalance(row: PeriodSummary): boolean {
         return Math.abs(row?.debit - row?.credit) >= 0.01;
     }
 

@@ -1,8 +1,12 @@
-.container {
+.size {
     width: 90%;
-    height: calc(100% - 64px);
-    max-width: 800px;
-    margin: 0 auto;
+    max-width: 900px;
+    margin: 4px auto 0;
+}
+
+.container {
+    min-height: calc(100% - 120px);
+    overflow-x: auto;
 }
 
 .mat-column-description {
@@ -15,4 +19,5 @@
 
 .mat-table {
     width: 100%;
+    min-width: 600px;
 }

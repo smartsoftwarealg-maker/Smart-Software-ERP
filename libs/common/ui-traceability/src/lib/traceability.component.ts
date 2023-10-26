@@ -2,7 +2,7 @@ import { Component, EventEmitter, inject, OnDestroy, OnInit } from "@angular/cor
 import {LogNode, Schema, TraceabilityService} from "./traceability.service";
 import {FlatTreeControl} from "@angular/cdk/tree";
 import {MatTreeFlatDataSource, MatTreeFlattener} from "@angular/material/tree";
-import {UntypedFormControl, UntypedFormGroup} from "@angular/forms";
+import { FormControl, FormGroup, UntypedFormControl, UntypedFormGroup } from "@angular/forms";
 import {LanguageService, PaginationModel} from '@ss/common/api-common';
 import {ShellService} from "@ss/common/ui-shell";
 import {switchMap} from "rxjs/operators";
@@ -32,10 +32,11 @@ export class TraceabilityComponent implements OnInit, OnDestroy {
     application = '';
     data: string[][] = [];
     displayedColumns: string[] = [];
-    form = new UntypedFormGroup({
-        options: new UntypedFormControl(1),
-        fromDate: new UntypedFormControl(this.traceSrv.fromDate),
-        toDate: new UntypedFormControl(this.traceSrv.toDate)
+    form = new FormGroup({
+        options: new FormControl<number>(1),
+        fromDate: new FormControl<Date>(this.traceSrv.fromDate),
+        toDate: new FormControl<Date>(this.traceSrv.toDate),
+        filter: new FormControl<string>('')
     });
     public readonly pagination = PaginationModel.newInstance({ page: 1, pageSize: 20, elementCount: 0 });
     apps: string[] = [];
@@ -62,12 +63,10 @@ export class TraceabilityComponent implements OnInit, OnDestroy {
     // eslint-disable-next-line @typescript-eslint/member-ordering
     dataSource = new MatTreeFlatDataSource(this.treeControl, this.treeFlattener);
 
-
-
     ngOnInit(): void {
         this.traceSrv
             .getApps()
-            .subscribe(res => this.apps = res['apps'] || []);
+            .subscribe(res => this.apps = (res['apps'] || []).filter(e => e));
         this.pagination.onChange = () => this.refresh();
         this.shellSrv.setTitle('COMMON_TRACEABILITY');
         this.shellSrv.setGoBackPathByRelativeUrl('..');
@@ -88,10 +87,12 @@ export class TraceabilityComponent implements OnInit, OnDestroy {
     }
 
     public refresh() {
+        const value = this.form.value;
         this.traceSrv.getDetails(
-            this.form.controls['fromDate'].value,
-            this.form.controls['toDate']?.value,
-            this.form.controls['options'].value,
+            value.fromDate,
+            value.toDate,
+            value.options,
+            value.filter,
             this.selectedId,
             this.pagination.page - 1,
             this.pagination.pageSize)

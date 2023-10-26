@@ -5,11 +5,12 @@
 }
 
 .table_div {
-    min-height: calc(100% - 260px);
+    min-height: calc(100% - 290px);
 }
 
 .ctrl_div {
     display: flex;
     justify-content: center;
+    align-items: center;
     gap: 1em;
 }

@@ -17,7 +17,9 @@
                 <mat-header-cell *matHeaderCellDef translate></mat-header-cell>
                 <mat-cell *matCellDef="let e">
                     <button mat-icon-button (click)="add(e); assigned.refresh()" color="primary"
-                            [disabled]="!selectedCode"><i class="fa-solid fa-circle-plus"></i></button>
+                            [disabled]="!selectedCode">
+                        <i class="fa-solid fa-circle-plus"></i>
+                    </button>
                 </mat-cell>
             </ng-container>
 
@@ -101,7 +103,10 @@
 
         <div class="btn-div">
             <mat-checkbox [formControl]="consolidated" translate>COMMON_CONSOLIDATED</mat-checkbox>
-            <button mat-raised-button color="primary" (click)="refreshPending()" translate> COMMON_REFRESH</button>
+            <button mat-raised-button color="primary" (click)="refreshPending()" >
+                <i class="fa-solid fa-arrows-rotate"></i>
+                <span translate> COMMON_REFRESH </span>
+            </button>
         </div>
 
     </div>

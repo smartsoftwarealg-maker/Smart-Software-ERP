@@ -7,6 +7,7 @@
 mat-card {
     border-radius: 1.2em;
 }
+
 .main-container {
     max-width: 1400px;
     margin: 0 auto;
@@ -17,10 +18,13 @@ mat-card {
     grid-template-columns: 280px 3fr;
     grid-template-areas: "ctrl  ctrl"
                          "list  detail"
-                         "page1 detail";
-    grid-template-rows: 64px auto 100px;
+                         "list  chart"
+                         "page1 chart";
+    grid-template-rows: 64px auto 300px 100px;
     height: 100%;
 }
+
+
 .content-div {
     height: 100%;
     min-width: 100%;
@@ -57,8 +61,12 @@ mat-header-cell {
     grid-area: page1;
 }
 
-.page2 {
-    grid-area: page2;
+.chart {
+    grid-area: chart;
+}
+
+.chart canvas {
+    width: 100%;
 }
 
 .right_div {
@@ -78,13 +86,14 @@ mat-header-cell {
     .main-container {
         align-items: stretch;
         grid-template-columns: 1fr;
-        grid-template-rows: 128px 1fr 100px 2fr 100px;
+        grid-template-rows: 128px 300px 100px 1fr 300px;
         grid-template-areas: "ctrl"
                              "list"
                              "page1"
                              "detail"
-                             "page2";
+                             "chart";
     }
+
     mat-table {
         width: 100%;
         height: 100%;

@@ -45,9 +45,9 @@ export class ServiceProformaLineListComponent extends BaseTransactionLinesListCo
         'reference',
         'description',
         'qtyOrdered',
-        'qtySatisfied',
         'price',
-        'vat'
+        'vat',
+        'total'
     ];
 
     constructor(

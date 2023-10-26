@@ -1,19 +1,27 @@
 import { Component, inject, OnInit } from '@angular/core';
-import {AbstractControl, UntypedFormBuilder, UntypedFormGroup, ValidationErrors, ValidatorFn, Validators} from '@angular/forms';
+import {
+    AbstractControl,
+    UntypedFormBuilder,
+    UntypedFormGroup,
+    ValidationErrors,
+    ValidatorFn,
+    Validators
+} from '@angular/forms';
 import {
     AccFileService,
     AccPoliciesService,
     ACCPolicy,
     ACCTransactionLine,
     AccTransactionLineService,
-    AnnexCodeService, SCALE
+    AnnexCodeService,
+    SCALE
 } from '@ss/accounting/accounting-api';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import { ActivatedRoute, Router } from "@angular/router";
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {LookupsService} from '@ss/common/api-lookup';
 import {LoginService} from '@ss/common/api-common';
-import {Observable, of} from 'rxjs';
+import { map, Observable, of } from "rxjs";
 import {switchMap, tap} from 'rxjs/operators';
 import {Account, AccountAutocompleteModel, AccountService} from '@ss/accounting/api-accounts';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
@@ -91,17 +99,16 @@ export class TransactionLinesDetailComponent implements OnInit {
     }
 
     setupForm(e: ACCTransactionLine): UntypedFormGroup {
-
         return  this.formBuilder.group({
             id: [((e.fileId * SCALE + e.oid) * SCALE + e.lineNumber) || 0],
-            fileId: [e.fileId || this.loginSrv.appCtx.accFile],
-            oid: [e.oid || this.transactionId],
-            accountNo: [e.accountNo],
-            customer: [e.customer],
+            fileId:     [e.fileId || this.loginSrv.appCtx.accFile],
+            oid:        [e.oid || this.transactionId],
+            accountNo:  [e.accountNo],
+            customer:   [e.customer],
             lineNumber: [e.lineNumber || 1],
-            c_o_d: [e.c_o_d],
-            balance: [e.balance],
-            debit: [{ value: e.balance > 0? e.balance : 0.0, disabled: e.balance < 0 }],
+            c_o_d:      [e.c_o_d],
+            balance:    [e.balance],
+            debit:      [{ value: e.balance > 0? e.balance : 0.0, disabled: e.balance < 0 }],
             credit: [{ value: e.balance < 0? -e.balance : 0.0, disabled: e.balance > 0 } ],
             reference: [e.reference],
             checkNo: [e.checkNo],
@@ -113,7 +120,6 @@ export class TransactionLinesDetailComponent implements OnInit {
     }
 
     ngOnInit() {
-        // this.shellSrv.setGoBackPath('..', this.route);
         this.load();
     }
 
@@ -128,10 +134,15 @@ export class TransactionLinesDetailComponent implements OnInit {
             return of(null);
         }
         if (id === 0) {
-            const a: any = {
-                id: 0
-            };
-            return of(a);
+            return this.entitySrv
+                .getPieceSummary(this.transactionId)
+                .pipe(map(res => {
+                    return <ACCTransactionLine> {
+                        id: 0,
+                        description: res.description,
+                        balance: -(res.balance || 0)
+                    }
+                }));
         }
         return this.entitySrv.get(id);
     }

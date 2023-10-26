@@ -1,6 +1,6 @@
 .container {
     height: 100%;
-    width: 100%;
+    width: 98%;
     max-width: 1400px;
     margin: 0 auto;
     display: grid;
@@ -23,6 +23,10 @@
     overflow-x: auto;
 }
 
+mat-table {
+    width: 100%;;
+    min-width: 600px;
+}
 .content-div {
     width: 600px;
 }
@@ -62,16 +66,22 @@
 }
 
 .btn-div {
-    width: 90%;
+    width: 100%;
     display: flex;
     justify-content: space-between;
     margin: 0 auto;
-    padding: 2px 0;
+    padding: 4px 0;
 }
 input {
     text-align: end;
 }
 
+legend {
+    font-weight: bolder;
+}
+button span {
+    margin-left: 1em;
+}
 @media (max-width: 700px) {
     .container {
         width: 100%;

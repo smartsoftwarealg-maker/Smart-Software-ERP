@@ -20,6 +20,7 @@ export class ConsumptionCancellationLinesListComponent extends BaseTransactionLi
         'description',
         'qtySatisfied',
         'price',
+        'total'
     ];
 
 

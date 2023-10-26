@@ -20,8 +20,8 @@ export interface Account {
     treasuryAccount: boolean;
     journalId: number;
     ccRequired: boolean;
-    depreciation_account?: string;
-    endowment_account?: string;
+    depreciationAccount?: string;
+    endowmentAccount?: string;
     depreciationRate?: number;
     usefulLife?: number;
 }

@@ -75,7 +75,8 @@ export class ArticleDetailComponent extends BaseEntityDetailComponent<Article> i
             reference:    [a.reference, Validators.required],
             appId:        [a.appId || this.articleSrv.getParentId()],
             notForSale:   [a.notForSale || false, Validators.required],
-            vat:          [a.vat]
+            vat:          [a.vat],
+            blocked:      [a.blocked]
         });
     }
 

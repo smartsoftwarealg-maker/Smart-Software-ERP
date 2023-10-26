@@ -25,6 +25,7 @@ export class DeliveryLinesListComponent extends BaseTransactionLinesListComponen
         'qtySatisfied',
         'price',
         'vat',
+        'total'
     ];
 
     constructor(

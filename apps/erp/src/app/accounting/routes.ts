@@ -24,7 +24,10 @@ import {
     DepreciationGenerationComponent,
     AccProjectListComponent,
     AccProjectDetailComponent,
-    AccountingGenerationComponent, AccountingReopenComponent, CanCloseOpener, BalanceQueriesComponent
+    AccountingGenerationComponent,
+    AccountingReopenComponent,
+    CanCloseOpener,
+    BalanceQueriesComponent
 } from '@ss/accounting/transactions';
 import {
     AssetAccountsListComponent,
@@ -32,16 +35,17 @@ import {
     TransacAccountsListComponent,
     TransacAccountsDetailComponent,
     GenerationAccountsListComponent,
-    GenerationAccountsDetailComponent, CashFlowListComponent, CashFlowDetailComponent
+    GenerationAccountsDetailComponent,
+    CashFlowListComponent,
+    CashFlowDetailComponent
 } from '@ss/accounting/accounting-accounts';
 import {ReportViewComponent} from '@ss/common/ui-report-param';
 import {accountingGuard, loginGuard} from '../erp-guards';
 import {
     ACC_TRANSACTION_ARCHIVES,
     AppArchiveDetailComponent,
-    AppArchiveListComponent,
-    EMPLOYEE_ARCHIVES
-} from "@ss/common/app-archive";
+    AppArchiveListComponent
+} from '@ss/common/app-archive';
 
 export const accRoutes: Routes = [
     {

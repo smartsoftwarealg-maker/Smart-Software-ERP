@@ -21,6 +21,7 @@ export class TransferReceptionLinesListComponent  extends BaseTransactionLinesLi
         'qtySatisfied',
         'price',
         'vat',
+        'total'
     ];
 
     constructor(

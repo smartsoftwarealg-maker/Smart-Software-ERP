@@ -1,13 +1,15 @@
-import { Component, inject, OnInit } from "@angular/core";
+import { Component, DestroyRef, inject, OnDestroy, OnInit } from "@angular/core";
 import {PaginationModel} from '@ss/common/api-common';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import {of, switchMap} from 'rxjs';
+import { of, Subscription, switchMap } from "rxjs";
 import {LTMMatterTest} from '../ltm-api';
 import {LtmMatterTestService} from '../services/ltm-matter-test.service';
 import {Sort} from '@angular/material/sort';
 import { LtmMatterService } from "../services/ltm-matter.service";
+import { FormControl } from "@angular/forms";
+import { debounceTime, distinctUntilChanged } from "rxjs/operators";
 
 @Component({
     selector: 'ss-ltm-matter-test-list',
@@ -16,10 +18,14 @@ import { LtmMatterService } from "../services/ltm-matter.service";
 })
 export class LtmMatterTestListComponent implements OnInit {
     private matterSrv  = inject(LtmMatterService);
+    private subscriptions: Subscription | null = null;
+
     selected: LTMMatterTest = null;
     data: LTMMatterTest[] = [];
     pagination = PaginationModel.newInstance({ pageSize: 10, page: 1, elementCount: 0});
+
     readonly isEditable = this.matterSrv.editable;
+    readonly searchText = new FormControl<string>('');
 
     displayedColumns = [
         'testDescription',
@@ -31,12 +37,13 @@ export class LtmMatterTestListComponent implements OnInit {
 
     constructor(
         private entitySrv: LtmMatterTestService,
-        private shellSrv: ShellService,
         private snackBarSrv: SnackBarService,
         private route: ActivatedRoute,
         private router: Router,
-        private confirmationSrv: ConfirmationDialogService) {
+        private confirmationSrv: ConfirmationDialogService,
+        private destroyRef: DestroyRef) {
         this.pagination.onChange = () => this.refresh();
+        destroyRef.onDestroy(() => this.subscriptions?.unsubscribe());
     }
 
     showDetail(id: number) {
@@ -70,11 +77,17 @@ export class LtmMatterTestListComponent implements OnInit {
 
     ngOnInit(): void {
         this.refresh();
+        this.subscriptions = this.searchText
+            .valueChanges
+            .pipe(
+                debounceTime(300),
+                distinctUntilChanged())
+            .subscribe(res => this.refresh());
     }
 
     refresh() {
         this.entitySrv
-            .getList(this.pagination.page - 1, this.pagination.pageSize)
+            .getList(this.pagination.page - 1, this.pagination.pageSize, this.searchText.value || '')
             .subscribe(res => {
                 this.data = res.body;
                 this.pagination.elementCount = res.itemCount;

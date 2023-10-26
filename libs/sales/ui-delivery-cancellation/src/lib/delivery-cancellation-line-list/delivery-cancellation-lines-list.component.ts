@@ -21,6 +21,7 @@ export class DeliveryCancellationLinesListComponent extends BaseTransactionLines
         'qtySatisfied',
         'price',
         'vat',
+        'total'
     ];
 
     constructor(

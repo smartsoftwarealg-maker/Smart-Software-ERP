@@ -14,6 +14,7 @@ export * from './lib/lookups-cache.service';
 export * from './lib/marital-status.service';
 export * from './lib/nationality.service';
 export * from './lib/post.service';
+export * from './lib/active-post.service';
 export * from './lib/service.service';
 export * from './lib/vat.service';
 export * from './lib/wilaya.service';

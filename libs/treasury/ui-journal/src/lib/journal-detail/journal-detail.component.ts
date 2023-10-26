@@ -44,7 +44,6 @@ export class JournalDetailComponent extends BaseEntityDetailComponent<Journal> i
 
     override loadEntity(id: number): Observable<Journal> {
         this.journalUserSrv.setParentId(id);
-        console.log('_________________________________________________', id);
         return super.loadEntity(id);
     }
 

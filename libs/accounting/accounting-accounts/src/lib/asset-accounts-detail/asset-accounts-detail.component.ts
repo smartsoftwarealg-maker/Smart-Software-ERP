@@ -48,8 +48,8 @@ export class AssetAccountsDetailComponent extends BaseEntityDetailComponent<Acco
             treasuryAccount: [a.treasuryAccount],
             journalId: [a.journalId],
             ccRequired: [a.ccRequired],
-            depreciation_account: [a.depreciation_account],
-            endowment_account: [a.endowment_account],
+            depreciationAccount: [a.depreciationAccount],
+            endowment_account: [a.endowmentAccount],
             depreciationRate: [a.depreciationRate],
             usefulLife: [a.usefulLife]
         });

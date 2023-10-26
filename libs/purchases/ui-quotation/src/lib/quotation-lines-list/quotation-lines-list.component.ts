@@ -22,6 +22,7 @@ export class QuotationLinesListComponent extends BaseTransactionLinesListCompone
         'qtySatisfied',
         'price',
         'vat',
+        'total'
     ];
 
     constructor(

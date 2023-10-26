@@ -20,6 +20,7 @@ export class InventoryLinesListComponent extends BaseTransactionLinesListCompone
         'description',
         'qtySatisfied',
         'price',
+        'total'
     ];
 
 

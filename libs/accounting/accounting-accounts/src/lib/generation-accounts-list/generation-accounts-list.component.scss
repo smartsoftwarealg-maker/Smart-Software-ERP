@@ -1,8 +1,12 @@
-.content-div {
+.content_div {
     width: 96%;
-    max-width: 1400px;
-    margin: 0 auto;
+    max-width: 1200px;
+    margin: 4px auto;
+}
+
+.table_div {
     overflow-x: auto;
+    height: calc(100% - 116px);
 }
 
 .mat-column-description,
