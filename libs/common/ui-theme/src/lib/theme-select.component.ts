@@ -1,4 +1,4 @@
-import {Component, ViewChild} from '@angular/core';
+import { Component, EventEmitter, Output, ViewChild } from '@angular/core';
 import {LanguageService} from '@ss/common/api-common';
 import {MatMenuTrigger} from '@angular/material/menu';
 import { ThemeService } from './theme.service';
@@ -9,6 +9,7 @@ import { ThemeService } from './theme.service';
     templateUrl: './theme-select.component.html'
 })
 export class ThemeSelect {
+    @Output() onTheme = new EventEmitter<string>();
 
     @ViewChild('trigger', {static: false}) trigger: MatMenuTrigger;
 
@@ -24,6 +25,7 @@ export class ThemeSelect {
 
     public setTheme(t: string) {
         this.themeSrv.setTheme(t);
+        this.onTheme.emit(t);
     }
 
     public click(): void {

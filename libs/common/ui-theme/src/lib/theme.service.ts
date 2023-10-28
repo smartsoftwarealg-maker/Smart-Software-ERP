@@ -1,7 +1,7 @@
 import { Injectable, EventEmitter } from '@angular/core';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class ThemeService {
 
@@ -22,5 +22,4 @@ export class ThemeService {
     getCurrentThemeName(): string {
         return localStorage.getItem(this.THEME_KEY) ? localStorage.getItem(this.THEME_KEY) : this.DEFAULT_THEME;
     }
-
 }
