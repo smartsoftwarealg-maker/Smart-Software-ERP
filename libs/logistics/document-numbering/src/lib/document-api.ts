@@ -1,5 +1,5 @@
 export const DEFINITION_URL = '/lookups/definitions';
-export const DOCUMENTS_URL = '/documents';
+export const DOCUMENTS_URL = '/logistics/documents';
 
 
 export interface LDocument {
