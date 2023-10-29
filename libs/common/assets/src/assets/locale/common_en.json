@@ -311,5 +311,6 @@
     "REPORT_RIGHTS":             "Report rights",
     "WEEKS":                     "Weeks",
     "UNIT":                      "Unit",
-    "PARK":                      "Park"
+    "PARK":                      "Park",
+    "TYPE_TO_SELECT":            "Type to select"
 }

@@ -6,8 +6,7 @@ import {Center, Company, HttpService} from '@ss/common/api-common';
     providedIn: 'root'
 })
 export class CenterService {
-    constructor(private httpSrv: HttpService) {
-    }
+    constructor(private httpSrv: HttpService) {}
 
     public getCompanyList(): Observable<Company[]> {
         return this.httpSrv.get<Company[]>('/login/companies');
