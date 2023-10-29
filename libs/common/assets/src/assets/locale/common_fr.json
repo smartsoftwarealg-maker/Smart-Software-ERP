@@ -314,5 +314,6 @@
     "REPORT_RIGHTS":              "Droits Etats",
     "WEEKS":                      "Semaines",
     "UNIT":                       "Unité",
-    "PARK":                       "Park"
+    "PARK":                       "Park",
+    "TYPE_TO_SELECT":             "Tapez pour sélectionner"
 }

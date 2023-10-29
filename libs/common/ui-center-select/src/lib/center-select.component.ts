@@ -152,8 +152,8 @@ export class CenterSelectComponent implements OnInit {
     }
 
     select(e: MatAutocompleteSelectedEvent) {
-        const center = e.option.value;
-        this.centerList.find(c => c.id == center);
-        console.log(e.option.value);
+        const search = e.option.value;
+        const selection = this.centerList.find(c => c.description === search);
+        this.selectedCenter = selection?.id || 0;
     }
 }
