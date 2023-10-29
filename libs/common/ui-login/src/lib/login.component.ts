@@ -27,33 +27,6 @@ export class LoginComponent implements OnInit {
     readonly isPhone: boolean;
 
     currentTheme: string = 'string-1';
-    screenCSS = new Map<string, string>([
-        ['theme-1', 'screen'],
-        ['theme-2', 'screen_2'],
-        ['theme-3', 'screen_3'],
-        ['theme-4', 'screen_4'],
-    ]);
-
-    shape2CSS = new Map<string, string>([
-        ['theme-1', 'screen__background__shape2'],
-        ['theme-2', 'screen__background__shape2_2'],
-        ['theme-3', 'screen__background__shape2_3'],
-        ['theme-4', 'screen__background__shape2_4'],
-    ]);
-
-    shape3CSS = new Map<string, string>([
-        ['theme-1', 'screen__background__shape3'],
-        ['theme-2', 'screen__background__shape3_2'],
-        ['theme-3', 'screen__background__shape3_3'],
-        ['theme-4', 'screen__background__shape3_4'],
-    ]);
-
-    shape4CSS = new Map<string, string>([
-        ['theme-1', 'screen__background__shape4'],
-        ['theme-2', 'screen__background__shape4_2'],
-        ['theme-3', 'screen__background__shape4_3'],
-        ['theme-4', 'screen__background__shape4_4'],
-    ]);
 
     form = this.formBuilder.group({
         user:    ['', Validators.required],

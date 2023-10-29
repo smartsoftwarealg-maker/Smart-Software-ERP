@@ -1,16 +1,25 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import { Component, inject, OnInit, ViewChild } from '@angular/core';
 import {CenterService} from './center.service';
 import {Router} from '@angular/router';
 import {
     Center,
     Company,
     INDEX_PAGE_URL, LoginService,
-    PROFILE_PAGE_URL, UserService
+    PROFILE_PAGE_URL
 } from '@ss/common/api-common';
-import {switchMap} from 'rxjs/operators';
+import {
+    debounceTime,
+    distinctUntilChanged,
+    map,
+    startWith,
+    switchMap
+} from 'rxjs/operators';
 import {MatStepper} from '@angular/material/stepper';
 import {UserRightsService} from '@ss/common/api-common';
 import {ShellService} from '@ss/common/ui-shell';
+import { FormControl } from '@angular/forms';
+import { Observable } from 'rxjs';
+import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 
 @Component({
     selector: 'ss-company-center-login',
@@ -18,6 +27,7 @@ import {ShellService} from '@ss/common/ui-shell';
     styleUrls: ['./center-select.component.scss']
 })
 export class CenterSelectComponent implements OnInit {
+    private ccListSrv = inject(CenterService);
 
     companyList: Company[] = [];
     centerList: Center[] = [];
@@ -30,34 +40,43 @@ export class CenterSelectComponent implements OnInit {
     loading = false;
     loadingCenters = false;
 
+    centerControl = new FormControl<string>('');
+    filteredCenters: Observable<Center[]>;
+
     @ViewChild('stepper', {static: false}) stepper: MatStepper;
 
-    constructor(private ccListSrv: CenterService,
-                private loginSrv: LoginService,
+    constructor(private loginSrv: LoginService,
                 private router: Router,
-                private userSrv: UserService,
                 private rightsSrv: UserRightsService,
                 private shellSrv: ShellService) {
     }
 
     ngOnInit() {
         this.companyList = [];
+        this.filteredCenters = this.centerControl
+            .valueChanges
+            .pipe(
+                startWith(''),
+                debounceTime(300),
+                distinctUntilChanged(),
+                map(value => this.centerList.filter(c => c.description?.toLocaleLowerCase().includes(value.toLocaleLowerCase())))
+            );
 
         this.loading = true;
         this.ccListSrv.getCompanyList()
             .subscribe({
-                    next: r => {
-                        this.companyList = r;
-                        if (this.companyList.length === 1) {
-                            this.selectCompany(this.companyList[0].id);
-                        }
-                        this.endLoading();
-                    },
-                    error: err => {
-                        this.endLoading();
-                        throw err;
+                next: r => {
+                    this.companyList = r;
+                    if (this.companyList.length === 1) {
+                        this.selectCompany(this.companyList[0].id);
                     }
+                    this.endLoading();
+                },
+                error: err => {
+                    this.endLoading();
+                    throw err;
                 }
+            }
             );
     }
 
@@ -88,7 +107,7 @@ export class CenterSelectComponent implements OnInit {
                         throw err;
                     }
                 }
-            );
+                );
         } else {
             this.selectedCompanyName = null;
         }
@@ -96,6 +115,7 @@ export class CenterSelectComponent implements OnInit {
 
     selectCenter(center: number) {
         this.selectedCenter = center;
+        console.log('selected center', center);
     }
 
     onDone() {
@@ -105,16 +125,16 @@ export class CenterSelectComponent implements OnInit {
                 .centerLogin(this.selectedCenter)
                 .pipe(switchMap(_ => this.rightsSrv.load()))
                 .subscribe({
-                        next: () => {
-                            // this.endLoading(); // don't show shit, because we are leaving anyway
-                            const dest = !this.loginSrv.appCtx? PROFILE_PAGE_URL : INDEX_PAGE_URL;
-                            this.shellSrv.setCompanyName(this.centerList.filter(c => c.id === this.selectedCenter)[0]?.description);
-                            this.router.navigate(['/' + dest]).then(() => {});
-                        }, error: err => {
-                            this.endLoading();
-                            throw err;
-                        }
+                    next: () => {
+                        // this.endLoading(); // don't show shit, because we are leaving anyway
+                        const dest = !this.loginSrv.appCtx? PROFILE_PAGE_URL : INDEX_PAGE_URL;
+                        this.shellSrv.setCompanyName(this.centerList.filter(c => c.id === this.selectedCenter)[0]?.description);
+                        this.router.navigate(['/' + dest]).then(() => {});
+                    }, error: err => {
+                        this.endLoading();
+                        throw err;
                     }
+                }
                 );
         }
     }
@@ -129,5 +149,11 @@ export class CenterSelectComponent implements OnInit {
             this.selectedCompanyName = null;
             this.centerList = [];
         }
+    }
+
+    select(e: MatAutocompleteSelectedEvent) {
+        const center = e.option.value;
+        this.centerList.find(c => c.id == center);
+        console.log(e.option.value);
     }
 }
