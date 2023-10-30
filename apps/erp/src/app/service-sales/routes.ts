@@ -4,16 +4,18 @@ import {
 } from '@ss/common/api-common';
 import {
     COMMON_REPORTS_URL,
+    COMPLEMENT_INVOICE_URL,
     DASHBOARD_URL,
     docInfoRoutes,
     INVOICE_DUPLICATE_URL,
     LOGISTICS_AGENT_URL,
     SALES_PROFORMA_URL,
-    SALES_SERVICE_ARTICLE_URL, SERVICE_CLASSES_URL,
+    SALES_SERVICE_ARTICLE_URL,
+    SERVICE_CLASSES_URL,
     SERVICE_INVOICE_CANCELLATION_URL,
     SERVICE_INVOICE_URL,
-    SERVICE_ORDER_URL, STOCK_CLASSES_URL
-} from "../common";
+    SERVICE_ORDER_URL
+} from '../common';
 import {
     AgentDetailComponent,
     AgentListComponent,
@@ -22,9 +24,10 @@ import {
 } from '@ss/logistics/ui-agent';
 import { loginGuard } from '../erp-guards';
 import {
-    InvoiceCancellationDetailComponent, InvoiceCancellationListComponent
+    InvoiceCancellationDetailComponent,
+    InvoiceCancellationListComponent
 } from '@ss/sales/ui-invoice-cancellation';
-import {InvoiceDetailComponent, InvoiceListComponent} from '@ss/sales/ui-invoice';
+import {InvoiceListComponent} from '@ss/sales/ui-invoice';
 import { DashboardComponent } from '@ss/dashboard';
 import { ReportViewComponent } from '@ss/common/ui-report-param';
 import {
@@ -42,18 +45,20 @@ import {
     ServiceProformaLineListComponent
 } from '@ss/service-sales/service-proforma';
 import {
-    InvoiceDuplicationComponent,
+    InvoiceDuplicationComponent, ServiceInvoiceDetailComponent,
     ServiceInvoiceLineDetailComponent,
     ServiceInvoiceLineListComponent
 } from '@ss/service-sales/service-invoice';
 import {
+    ComplementInvoiceDetailComponent, ComplementInvoiceLinesDetailComponent, ComplementInvoiceLinesListComponent,
+    ComplementInvoiceListComponent,
     ServiceCinvoiceLineListComponent
 } from '@ss/service-sales/service-invoice-cancellation';
 import {
     ServiceCinvoiceLineDetailComponent
 } from '@ss/service-sales/service-invoice-cancellation';
-import { AGENT_ARCHIVES } from "@ss/common/app-archive";
-import { ClassDetailComponent, ClassListComponent } from "@ss/common/ui-lookup";
+import { AGENT_ARCHIVES } from '@ss/common/app-archive';
+import { ClassDetailComponent, ClassListComponent } from '@ss/common/ui-lookup';
 
 export const ssalesRoutes: Routes = [
     {
@@ -124,6 +129,37 @@ export const ssalesRoutes: Routes = [
         ]
     },
     {
+        path: COMPLEMENT_INVOICE_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: ComplementInvoiceListComponent,
+                canActivate: [loginGuard],
+                children: docInfoRoutes
+            },
+            {
+                path: ':id',
+                component: ComplementInvoiceDetailComponent,
+                canActivate: [loginGuard],
+                canDeactivate: [CanDeactivateService],
+                children: [
+                    { path: '', pathMatch: 'full', redirectTo: 'lines-list' },
+                    { path: 'lines-list',
+                        component: ComplementInvoiceLinesListComponent,
+                        children: docInfoRoutes
+                    },
+                    {
+                        path: 'lines-detail',
+                        children: [
+                            { path: ':id', component: ComplementInvoiceLinesDetailComponent },
+                        ]
+                    },
+                    ...docInfoRoutes
+                ]
+            },
+        ]
+    },
+    {
         path: SERVICE_INVOICE_URL,
         children: [
             {
@@ -134,7 +170,7 @@ export const ssalesRoutes: Routes = [
             },
             {
                 path: ':id',
-                component: InvoiceDetailComponent,
+                component: ServiceInvoiceDetailComponent,
                 canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService],
                 children: [

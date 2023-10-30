@@ -10,8 +10,8 @@ import {
     ABS_SERVICE_INVOICE_CANCEL_URL,
     ABS_SERVICE_INVOICE_URL,
     ABS_SERVICE_ORDER_URL,
-    ABS_SERVICE_PROFORMA_URL, ABS_SERVICE_REPORTS_URL
-} from '../common';
+    ABS_SERVICE_PROFORMA_URL, ABS_SERVICE_REPORTS_URL, ABS_COMPLEMENT_INVOICE_URL
+} from "../common";
 
 export const ssalesNavTree: SideNavNode = {
     name: 'COMMON_SERVICES',
@@ -63,6 +63,12 @@ export const ssalesNavTree: SideNavNode = {
             name: 'SALES_INVOICE_CANCELLATION',
             icon: 'fas fa-phone-slash',
             route: ABS_SERVICE_INVOICE_CANCEL_URL,
+            accessRights: 'CInvoice'
+        },
+        {
+            name: 'SALES_COMPLEMENT_INVOICE',
+            icon: 'fas fa-file',
+            route: ABS_COMPLEMENT_INVOICE_URL,
             accessRights: 'CInvoice'
         },
         {

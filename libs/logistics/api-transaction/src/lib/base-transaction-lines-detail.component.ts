@@ -120,16 +120,6 @@ export abstract class BaseTransactionLinesDetailComponent extends AbstractEntity
             });
     }
 
-    // protected getRouteParam(): Observable<any> {
-    //     return this.route.params
-    //         .pipe(
-    //             switchMap(p => {
-    //                 this.queryId = +p['id'];
-    //                 return this.loadEntity(this.queryId || 0);
-    //             })
-    //         );
-    // }
-
     finishLoading(e: TransactionLine) {
         this.selectedRow = e;
         this.form = this.setupForm(e);

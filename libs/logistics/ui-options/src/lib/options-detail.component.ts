@@ -77,7 +77,8 @@ export class OptionsDetailComponent extends BaseEntityDetailComponent<Option> im
             inventory_date: [a.inventory_date, Validators.required],
             defaultCurrency: [a.defaultCurrency, Validators.required],
             checkPrices: [a.checkPrices || false, Validators.required],
-            passingClient: [a.passingClient]
+            passingClient: [a.passingClient],
+            returnInvoiceMerge: [a.returnInvoiceMerge, Validators.required]
         });
     }
 

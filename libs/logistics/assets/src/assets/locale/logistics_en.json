@@ -166,5 +166,7 @@
     "UNIT":             "Unit",
     "DISPATCH":         "Dispatch",
     "TRANSPORTER":      "Transporter",
-    "LICENSE_ISSUER":   "Issued by"
+    "LICENSE_ISSUER":   "Issued by",
+    "DESTINATION":      "Destination",
+    "MERGE_INVOICE_SERIES": "Same number series for invoices and cancellations"
 }

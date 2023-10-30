@@ -44,6 +44,7 @@ export class Option {
     hide_purch_price: boolean;
     count_year: number;
     raw_store: number;
+    returnInvoiceMerge: boolean;
 }
 
 export interface MiniLine {
