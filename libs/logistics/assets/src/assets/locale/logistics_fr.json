@@ -164,5 +164,6 @@
     "DISPATCH":         "Expédition",
     "TRANSPORTER":      "Transporteur",
     "LICENSE_ISSUER":   "Etabli par",
-    "DESTINATION":      "Destination"
+    "DESTINATION":      "Destination",
+    "MERGE_INVOICE_SERIES": "Même série de numéros pour les factures et les avoirs"
 }

@@ -164,5 +164,6 @@
     "DISPATCH":         "إرسال",
     "TRANSPORTER":      "الناقل",
     "LICENSE_ISSUER":   "مصدر الرخصة",
-    "DESTINATION":      "الوجهة"
+    "DESTINATION":      "الوجهة",
+    "MERGE_INVOICE_SERIES": "نفس سلسلة الأرقام للفواتير والإلغاءات"
 }
