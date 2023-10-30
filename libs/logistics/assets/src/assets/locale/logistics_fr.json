@@ -163,5 +163,6 @@
     "UNIT":             "Unité",
     "DISPATCH":         "Expédition",
     "TRANSPORTER":      "Transporteur",
-    "LICENSE_ISSUER":   "Etabli par"
+    "LICENSE_ISSUER":   "Etabli par",
+    "DESTINATION":      "Destination"
 }

@@ -163,5 +163,6 @@
     "UNIT":             "الوحدة",
     "DISPATCH":         "إرسال",
     "TRANSPORTER":      "الناقل",
-    "LICENSE_ISSUER":   "مصدر الرخصة"
+    "LICENSE_ISSUER":   "مصدر الرخصة",
+    "DESTINATION":      "الوجهة"
 }
