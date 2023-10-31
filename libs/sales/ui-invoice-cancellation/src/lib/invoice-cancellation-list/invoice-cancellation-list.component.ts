@@ -17,7 +17,7 @@ import { LogisticsUiDocInfoModule } from '@ss/logistics/ui-doc-info';
 import { LogisticsUiDocImportModule } from '@ss/logistics/ui-doc-import';
 
 @Component({
-    selector: 'ss-delivery-list',
+    selector: 'ss-invoice-cancellation-list',
     templateUrl: './invoice-cancellation-list.component.html',
     styleUrls: ['../../../../../common/assets/src/assets/transac-list.scss'],
     standalone: true,
