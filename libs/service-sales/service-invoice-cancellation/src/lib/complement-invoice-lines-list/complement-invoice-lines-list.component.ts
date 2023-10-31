@@ -19,7 +19,7 @@ import { LogisticsUiDocInfoModule } from '@ss/logistics/ui-doc-info';
 import { LogisticsUiDocImportModule } from '@ss/logistics/ui-doc-import';
 
 @Component({
-    selector: 'ss-invoice-cancel-lines-list',
+    selector: 'ss-complement-invoice-cancel-lines-list',
     templateUrl: './complement-invoice-lines-list.component.html',
     styleUrls: ['../../../../../common/assets/src/assets/transac-lines-list.scss'],
     standalone: true,

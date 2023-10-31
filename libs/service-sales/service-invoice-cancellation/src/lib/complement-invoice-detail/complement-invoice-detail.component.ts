@@ -16,9 +16,8 @@ import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
 import { LogisticsUiDocInfoModule } from '@ss/logistics/ui-doc-info';
 import { LogisticsUiDocImportModule } from '@ss/logistics/ui-doc-import';
 
-
 @Component({
-    selector: 'ss-invoice-detail',
+    selector: 'ss-complement-invoice-detail',
     styleUrls: ['../../../../../common/assets/src/assets/transac-detail.scss'],
     templateUrl: './complement-invoice-detail.component.html',
     standalone: true,
@@ -47,8 +46,8 @@ export class ComplementInvoiceDetailComponent extends BaseTransactionDetailCompo
         public override router: Router,
         public override formBuilder: UntypedFormBuilder,
         public override confirmationSrv: ConfirmationDialogService,
-        public lookupsSrv: LookupsService,
-        protected dialog: MatDialog) {
+        public override lookupsSrv: LookupsService,
+        protected override dialog: MatDialog) {
         super(invoiceService,
             detailSrv,
             shellSrv,

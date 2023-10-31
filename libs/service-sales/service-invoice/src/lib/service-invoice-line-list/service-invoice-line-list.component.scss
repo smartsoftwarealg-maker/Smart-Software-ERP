@@ -4,7 +4,7 @@
     overflow-x: auto;
 }
 mat-table {
-    min-width: 900px;
+    min-width: 1000px;
     height: 100%;
     min-height: 250px;
 }
@@ -62,6 +62,7 @@ mat-table {
 .mat-column-qtySatisfied,
 .mat-column-qtyOrdered,
 .mat-column-price,
+.mat-column-total,
 .mat-column-vat,
 .mat-column-position {
     flex: 1 0 90px;
