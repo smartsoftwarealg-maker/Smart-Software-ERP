@@ -1,13 +1,20 @@
 import { Component, inject, OnInit } from '@angular/core';
 import {ShellService, SnackBarService} from "@ss/common/ui-shell";
 import {AgentLookupModel, AgentService} from "@ss/logistics/api-agent";
-import {UntypedFormControl} from "@angular/forms";
+import { ReactiveFormsModule, UntypedFormControl } from "@angular/forms";
 import {FlatTreeControl} from "@angular/cdk/tree";
 import {MatTreeFlatDataSource, MatTreeFlattener} from "@angular/material/tree";
 import {map, Observable, of, switchMap} from "rxjs";
-import {LanguageService} from "@ss/common/api-common";
+import { LanguageService, MaterialModule } from "@ss/common/api-common";
 import {Accounting, Debt, Payment} from "@ss/logistics/api-common";
 import {ActivatedRoute} from "@angular/router";
+import { CommonModule } from "@angular/common";
+import { DragDropModule } from "@angular/cdk/drag-drop";
+import { CommonUiLangModule } from "@ss/common/ui-lang";
+import { UiPaginationModule } from "@ss/common/ui-pagination";
+import { CommonUiAutoCompleteModule } from "@ss/common/ui-auto-complete";
+import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
+import { CommonUiConfirmationDialogModule } from "@ss/common/ui-confirmation-dialog";
 
 interface FlatPaymentNode {
     expandable: boolean;
@@ -30,7 +37,18 @@ interface PaymentTree {
 @Component({
     selector: 'ss-payment-compensation',
     templateUrl: './payment-compensation.component.html',
-    styleUrls: ['./payment-compensation.component.scss']
+    styleUrls: ['./payment-compensation.component.scss'],
+    standalone: true,
+    imports: [CommonModule,
+        DragDropModule,
+        MaterialModule,
+        CommonUiLangModule,
+        UiPaginationModule,
+        CommonUiAutoCompleteModule,
+        CommonUiDatepickerModule,
+        ReactiveFormsModule,
+        CommonUiConfirmationDialogModule
+    ],
 })
 export class PaymentCompensationComponent implements OnInit {
     private shellSrv  = inject( ShellService);
@@ -72,7 +90,7 @@ export class PaymentCompensationComponent implements OnInit {
 
     dataSource = new MatTreeFlatDataSource(this.treeControl, this.treeFlattener);
     hasChild = (_: number, node: FlatPaymentNode) => node.expandable;
-
+    firstNode = (node: FlatPaymentNode) => node && this.dataSource.data[0].id === node?.id;
     constructor() {
         this.agentAutoCompleteModel.onValueChanged = value => this.onAgentChange(value);
     }
@@ -134,10 +152,8 @@ export class PaymentCompensationComponent implements OnInit {
 
     onAgentChange(id: number | string) {
         this.dataSource.data = [];
-        if (id) {
-            this.dataObs(id)
-                .subscribe(res => this.dataSource.data = res);
-        }
+        this.dataObs(id || 0)
+          .subscribe(res => this.dataSource.data = res);
     }
 
     selectPayment(node: FlatPaymentNode) {

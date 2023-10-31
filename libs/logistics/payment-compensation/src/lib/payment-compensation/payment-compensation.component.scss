@@ -6,10 +6,10 @@
     display: grid;
     grid-gap: 10px;
     height: 100%;
-    width: 100%;
-    max-width: 1000px;
+    width: 98%;
+    max-width: 1400px;
     margin: 0 auto;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 60% 40%;
     grid-template-rows: 70px 1fr 64px;
     grid-template-areas: "customer date"
                          "payments debts"
@@ -42,10 +42,13 @@
 }
 .payments {
     grid-area: payments;
-    overflow-y: auto;
 }
 .debts {
     grid-area: debts;
+    overflow: hidden;
+}
+.list__div {
+    height: 100%;
     overflow-y: auto;
 }
 .cancel {
@@ -72,4 +75,36 @@
 mat-list {
     height: 100%;
     width: 100%;
+}
+
+table {
+    width: 100%;
+}
+
+.th__description {
+    margin-left: 48px;
+    width: 200px;
+}
+
+.td__description {
+    width: 320px;
+}
+
+.td__amount {
+    width: 120px;
+    text-align: end;
+    font-weight: bold;
+}
+
+.debt__div {
+    display: flex;
+    width: 100%;
+}
+.debt_description {
+    flex: 1 1 250px;
+}
+.debt_amount {
+    flex: 1 1 100px;
+    justify-self: flex-end;
+    text-align: end;
 }
