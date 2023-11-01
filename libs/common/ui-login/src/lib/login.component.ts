@@ -91,7 +91,7 @@ export class LoginComponent implements OnInit {
         this.time = window.setTimeout(() => this.loginSrv.logout().then(() => {
             document.onmousemove = null;
             document.onkeydown   = null;
-        }),  10 * 1000);
+        }),  20 * 60 * 1000);
     }
     onLoadingFinished = () => {
         this.loading = false;
