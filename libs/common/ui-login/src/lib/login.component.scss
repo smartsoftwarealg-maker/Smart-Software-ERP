@@ -98,6 +98,11 @@ body {
     color: #7875B5;
 }
 
+label {
+    color: black;
+    font-weight: bolder;
+    padding-left: 8px;
+}
 .connection__error {
     color: red;
 }

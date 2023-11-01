@@ -315,5 +315,6 @@
     "WEEKS":                      "Semaines",
     "UNIT":                       "Unité",
     "PARK":                       "Park",
-    "TYPE_TO_SELECT":             "Tapez pour sélectionner"
+    "TYPE_TO_SELECT":             "Tapez pour sélectionner",
+    "KEEP_ME_SIGNED":             "garde-moi connecté"
 }

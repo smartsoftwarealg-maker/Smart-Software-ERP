@@ -115,7 +115,6 @@ export class CenterSelectComponent implements OnInit {
 
     selectCenter(center: number) {
         this.selectedCenter = center;
-        console.log('selected center', center);
     }
 
     onDone() {

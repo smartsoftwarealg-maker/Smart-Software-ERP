@@ -312,5 +312,6 @@
     "WEEKS":                     "Weeks",
     "UNIT":                      "Unit",
     "PARK":                      "Park",
-    "TYPE_TO_SELECT":            "Type to select"
+    "TYPE_TO_SELECT":            "Type to select",
+    "KEEP_ME_SIGNED":            "Keep me signed in"
 }

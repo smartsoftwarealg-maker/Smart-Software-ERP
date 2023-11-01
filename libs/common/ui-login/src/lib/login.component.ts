@@ -1,5 +1,5 @@
 import { Component, inject, OnInit } from '@angular/core';
-import {UntypedFormBuilder, Validators} from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import {ABS_INDEX_URL, LoginService, LoginType} from '@ss/common/api-common';
 import {DeviceDetectorService} from 'ngx-device-detector';
 import {Router} from '@angular/router';
@@ -14,8 +14,9 @@ type User = {
     styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
+    private time = 0;
     private themeSrv = inject(ThemeService);
-    private formBuilder = inject(UntypedFormBuilder);
+    private formBuilder = inject(FormBuilder);
     private router = inject(Router);
     protected deviceSrv = inject(DeviceDetectorService);
     private readonly USER_DATA = 'USER_DATA';
@@ -31,7 +32,8 @@ export class LoginComponent implements OnInit {
     form = this.formBuilder.group({
         user:    ['', Validators.required],
         pass:    [''],
-        license: ['']
+        license: [''],
+        keep:    [true]
     });
     loading = false;
     updating = false;
@@ -55,14 +57,20 @@ export class LoginComponent implements OnInit {
             this.router.navigate([ABS_INDEX_URL]).then();
         }
         this.currentTheme = this.themeSrv.getCurrentThemeName();
-        console.log(this.currentTheme);
+        if (this.time) {
+            clearTimeout(this.time);
+        }
     }
 
     public onSubmit() {
         const tmp = this.form.value;
         this.user.username = tmp.user;
         this.user.password = tmp.pass;
-        //
+        const keep = tmp.keep;
+        if (!keep) {
+            document.onmousemove = () => this.resetTimer();
+            document.onkeydown = () => this.resetTimer();
+        }
         this.loading = true;
         if (this.loginSrv.customerLogin === LoginType.CUSTOMER) {
             this.loginSrv.agentLogin('/customers/login', this.user, this.isPhone, this.onLoadingFinished);
@@ -76,6 +84,15 @@ export class LoginComponent implements OnInit {
         localStorage.setItem(this.USER_DATA, JSON.stringify(this.user));
     }
 
+    private resetTimer() {
+        if (this.time) {
+            clearTimeout(this.time);
+        }
+        this.time = window.setTimeout(() => this.loginSrv.logout().then(() => {
+            document.onmousemove = null;
+            document.onkeydown   = null;
+        }),  10 * 1000);
+    }
     onLoadingFinished = () => {
         this.loading = false;
     };
