@@ -57,6 +57,9 @@ export class LoginComponent implements OnInit {
             this.router.navigate([ABS_INDEX_URL]).then();
         }
         this.currentTheme = this.themeSrv.getCurrentThemeName();
+        if (this.time) {
+            clearTimeout(this.time);
+        }
     }
 
     public onSubmit() {
@@ -65,7 +68,6 @@ export class LoginComponent implements OnInit {
         this.user.password = tmp.pass;
         const keep = tmp.keep;
         if (!keep) {
-            window.onload = () => this.resetTimer();
             document.onmousemove = () => this.resetTimer();
             document.onkeydown = () => this.resetTimer();
         }
@@ -81,9 +83,15 @@ export class LoginComponent implements OnInit {
         }
         localStorage.setItem(this.USER_DATA, JSON.stringify(this.user));
     }
+
     private resetTimer() {
-        clearTimeout(this.time);
-        this.time = window.setTimeout(() => this.loginSrv.logout().then(), 20 * 60 * 1000) as number;
+        if (this.time) {
+            clearTimeout(this.time);
+        }
+        this.time = window.setTimeout(() => this.loginSrv.logout().then(() => {
+            document.onmousemove = null;
+            document.onkeydown   = null;
+        }),  10 * 1000);
     }
     onLoadingFinished = () => {
         this.loading = false;
