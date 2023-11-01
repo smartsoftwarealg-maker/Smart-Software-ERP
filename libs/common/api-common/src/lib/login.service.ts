@@ -1,27 +1,25 @@
-import {Injectable} from '@angular/core';
-import {Observable, of} from 'rxjs';
-import {Router} from '@angular/router';
-import {catchError, map, switchMap, tap} from 'rxjs/operators';
+import { inject, Injectable } from '@angular/core';
+import { Observable, of } from 'rxjs';
+import { Router } from '@angular/router';
+import { catchError, map, switchMap, tap } from 'rxjs/operators';
 import { AppContext, Credentials, ESender, LoginInfo, UserInfo } from './models';
-import {DecService} from './dec.service';
-import {CENTER_SELECT_URL, INDEX_PAGE_URL, LOGIN_URL} from './constants';
-import {HttpService} from './http.service';
-import {MainPageService} from './main-page.service';
+import { CENTER_SELECT_URL, INDEX_PAGE_URL, LOGIN_URL } from './constants';
+import { HttpService } from './http.service';
+import { MainPageService } from './main-page.service';
 
 export enum LicenseErrorType {
-    UserLicense = 1000,
-    AgentLicense = 2000,
-    PersonLicense = 3000
+  UserLicense = 1000,
+  AgentLicense = 2000,
+  PersonLicense = 3000
 }
 
-const APP_CTX = 'APP_CTX';
 const AUTH_TOKEN = 'auth_token';
 
 export enum LoginType {
-    USER = 1,
-    CUSTOMER,
-    BOTH,
-    PERSON
+  USER = 1,
+  CUSTOMER,
+  BOTH,
+  PERSON
 }
 
 
@@ -29,18 +27,19 @@ export enum LoginType {
     providedIn: 'root'
 })
 export class LoginService {
+    private httpSrv = inject(HttpService);
+    private router = inject(Router);
+    private mainPageSrv = inject(MainPageService);
     private readonly EMPTY_USER: UserInfo = {
-        user: {id: 0, description: null, fullName: null, manager: false, blocked: false},
+        user: { id: 0, description: null, fullName: null, manager: false, blocked: false }
     };
     public appCtx: AppContext = null;
     public connectionError = false;
     public wrongData = false;
     public licenseErrorType: LicenseErrorType = null;
-    private _customerLogin:LoginType  = LoginType.USER;
-    constructor(private httpSrv: HttpService,
-                private decSrv: DecService,
-                public router: Router,
-                private mainPageSrv: MainPageService) {
+    private _customerLogin: LoginType = LoginType.USER;
+
+    constructor() {
     }
 
     get isLoggedIn(): boolean {
@@ -58,7 +57,7 @@ export class LoginService {
                 tap((info: LoginInfo) => {
                     this.appCtx = info.ctx;
                     this.httpSrv.updateAuthToken(info.jwt);
-                }), catchError(err => of(null)));
+                }), catchError(() => of(null)));
     }
 
     // todo: fix auto login
@@ -91,8 +90,8 @@ export class LoginService {
 
     public reload(): Observable<AppContext> {
         this.httpSrv.init();
-        return  (this.appCtx)? of (this.appCtx) :
-            this.httpSrv.getAuthToken()?
+        return (this.appCtx) ? of(this.appCtx) :
+            this.httpSrv.getAuthToken() ?
                 this.httpSrv
                     .get<LoginInfo>('/ctx')
                     .pipe(
@@ -105,7 +104,7 @@ export class LoginService {
                             if (err.status !== 401) {
                                 throw err;
                             }
-                            return of (null);
+                            return of(null);
                         })
                     ) : of(null);
     }
@@ -126,14 +125,14 @@ export class LoginService {
     }
 
     public logout(): Promise<any> {
-        return this.router.navigate(['/' + LOGIN_URL])
-            .then(fulfilled => {
-                if (fulfilled) {
-                    this.mainPageSrv.clear();
-                    this.appCtx = null;
-                    localStorage.removeItem(AUTH_TOKEN);
-                }
-            });
+        const promise = this.router ? this.router.navigate(['/' + LOGIN_URL]) : Promise.resolve(true);
+        return promise.then(fulfilled => {
+            if (fulfilled) {
+                this.mainPageSrv.clear();
+                this.appCtx = null;
+                localStorage.removeItem(AUTH_TOKEN);
+            }
+        });
     }
 
 
@@ -157,7 +156,7 @@ export class LoginService {
                     this.httpSrv.updateAuthToken(info.jwt);
                     this.appCtx = info.ctx;
                     if (!this.licenseErrorType) {
-                        const url = this.appCtx.center? INDEX_PAGE_URL: CENTER_SELECT_URL;
+                        const url = this.appCtx.center ? INDEX_PAGE_URL : CENTER_SELECT_URL;
                         this.router.navigate(['/' + CENTER_SELECT_URL]);
                     }
                 },
@@ -178,8 +177,8 @@ export class LoginService {
 
     public refresh(cr: Credentials): Observable<LoginInfo> {
         const url =
-            this.customerLogin === LoginType.CUSTOMER ? '/customers/login' :
-                this.customerLogin === LoginType.USER ? '/login' : '/persons/login';
+      this.customerLogin === LoginType.CUSTOMER ? '/customers/login' :
+          this.customerLogin === LoginType.USER ? '/login' : '/persons/login';
 
         return this.httpSrv
             .doLogin(url, cr)
@@ -193,7 +192,7 @@ export class LoginService {
     public anonymous() {
         this.wrongData = false;
         this.licenseErrorType = null;
-        return  this
+        return this
             .httpSrv
             .init()
             .pipe(switchMap(_ => this.httpSrv.anonymous()),
@@ -219,7 +218,7 @@ export class LoginService {
                     this.httpSrv.updateAuthToken(info.jwt);
                     this.appCtx = info.ctx;
                     if (!this.licenseErrorType) {
-                        const url = this.appCtx.center? INDEX_PAGE_URL: CENTER_SELECT_URL;
+                        const url = this.appCtx.center ? INDEX_PAGE_URL : CENTER_SELECT_URL;
                         this.router.navigate(['/' + CENTER_SELECT_URL]);
                     }
                 },
@@ -233,7 +232,10 @@ export class LoginService {
     }
 
 
-    public agentLogin(url: string, credential: { username: string, password: string }, isAndroid: boolean, onFinish?: () => void) {
+    public agentLogin(url: string, credential: {
+    username: string,
+    password: string
+  }, isAndroid: boolean, onFinish?: () => void) {
         this.licenseErrorType = null;
         this.wrongData = false;
         this.httpSrv
@@ -245,23 +247,23 @@ export class LoginService {
                 })
             ).subscribe({
                 next:
-                    (info: LoginInfo) => {
-                        this.httpSrv.updateAuthToken(info.jwt);
-                        this.appCtx = info.ctx;
-                        const url = this.appCtx?.center ? INDEX_PAGE_URL : CENTER_SELECT_URL;
-                        this.router.navigate(['/' + CENTER_SELECT_URL]);
-                        if (onFinish != null) {
-                            onFinish();
-                        }
-                    },
+          (info: LoginInfo) => {
+              this.httpSrv.updateAuthToken(info.jwt);
+              this.appCtx = info.ctx;
+              const url = this.appCtx?.center ? INDEX_PAGE_URL : CENTER_SELECT_URL;
+              this.router.navigate(['/' + CENTER_SELECT_URL]);
+              if (onFinish != null) {
+                  onFinish();
+              }
+          },
                 error:
-                    err => {
-                        this.wrongData = true;
-                        if (onFinish != null) {
-                            onFinish();
-                        }
-                        throw err;
-                    },
+          err => {
+              this.wrongData = true;
+              if (onFinish != null) {
+                  onFinish();
+              }
+              throw err;
+          },
                 complete: () => {
                     if (onFinish != null) {
                         onFinish();
@@ -273,11 +275,11 @@ export class LoginService {
 
 
     public updateAgentLicense(license: string): Observable<number> {
-        return this.httpSrv.put('/agents/license', {license});
+        return this.httpSrv.put('/agents/license', { license });
     }
 
     public updatePersonMobile(license: string): Observable<number> {
-        return this.httpSrv.put('/persons/mobile', {mobile: license});
+        return this.httpSrv.put('/persons/mobile', { mobile: license });
     }
 
     getUserById(id: number): Observable<UserInfo> {
@@ -304,6 +306,7 @@ export class LoginService {
     getAppParam(key: string): string {
         return this.appCtx?.params?.get(key);
     }
+
     ctx(): Observable<AppContext> {
         return this.httpSrv.get<any>('/ctx').pipe(map(res => res['ctx']));
     }

@@ -243,5 +243,6 @@
     "ATTENDANCE":                 "",
     "GOTO_DETAIL":   "",
     "ADDRESS":             "Adres $ addr $",
-    "ADDRESS_AR":          "Addressar"
+    "ADDRESS_AR":          "Addressar",
+    "KEEP_ME_SIGNED":             ""
 }
