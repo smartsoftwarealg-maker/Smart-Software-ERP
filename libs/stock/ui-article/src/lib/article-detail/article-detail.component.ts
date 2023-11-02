@@ -1,21 +1,41 @@
 import { Component, inject, OnInit } from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {Article, ArticleService} from '@ss/stock/api-article';
-import {ActivatedRoute, Router} from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from "@angular/router";
 import {tap} from 'rxjs/operators';
 import {Observable, zip} from 'rxjs';
 import {UntypedFormBuilder, Validators} from '@angular/forms';
 import {ClassService, LookupsService, Mark, Unit, Vat} from '@ss/common/api-lookup';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
-import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
-import {ImageModel} from '@ss/common/ui-image-input';
-import {HttpService} from '@ss/common/api-common';
+import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
+import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from "@ss/common/ui-auto-complete";
+import { CommonUiImageInputModule, ImageModel } from "@ss/common/ui-image-input";
+import { HttpService, MaterialModule } from "@ss/common/api-common";
+import { CommonModule } from "@angular/common";
+import { CommonUiLangModule } from "@ss/common/ui-lang";
+import { UiPaginationModule } from "@ss/common/ui-pagination";
+import { StockUiArticleStoreModule } from "@ss/stock/article-store";
+import { LogisticsUiDocInfoModule } from "@ss/logistics/ui-doc-info";
+import { LogisticsUiStockInfoModule } from "@ss/logistics/ui-stock-info";
 
 @Component({
     selector: 'ss-article-detail',
     styleUrls: ['./article-detail.component.scss'],
-    templateUrl: './article-detail.component.html'
+    templateUrl: './article-detail.component.html',
+    standalone: true,
+    imports: [
+        CommonModule,
+        MaterialModule,
+        CommonUiLangModule,
+        UiPaginationModule,
+        CommonUiConfirmationDialogModule,
+        StockUiArticleStoreModule,
+        LogisticsUiDocInfoModule,
+        RouterModule,
+        CommonUiImageInputModule,
+        CommonUiAutoCompleteModule,
+        LogisticsUiStockInfoModule
+    ],
 })
 export class ArticleDetailComponent extends BaseEntityDetailComponent<Article> implements OnInit {
     private classSrv =  inject(ClassService);

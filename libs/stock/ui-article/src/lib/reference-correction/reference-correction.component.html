@@ -1,0 +1,53 @@
+<div class="container">
+    <mat-card>
+        <mat-card-title>
+            <mat-label translate>STOCK_REPLACED_REFERENCE</mat-label>
+        </mat-card-title>
+        <mat-card-content>
+            <mat-form-field class="default-100">
+                <mat-label translate>LOGISTICS_ARTICLE</mat-label>
+                <ss-auto-complete matInput
+                                  [model]="sourceLookup"
+                                  [formControl]="sourceReference"
+                                  required="true">
+                </ss-auto-complete>
+            </mat-form-field>
+
+            <mat-form-field class="default-100">
+                <mat-label translate>STOCK_REPLACED_REFERENCE</mat-label>
+                <input matInput [formControl]="sourceClass" type="text" readonly>
+            </mat-form-field>
+
+        </mat-card-content>
+    </mat-card>
+    <mat-card>
+        <mat-card-title>
+            <mat-label translate>STOCK_REPLACING_REFERENCE</mat-label>
+        </mat-card-title>
+        <mat-card-content>
+            <mat-form-field class="default-100">
+                <mat-label translate>LOGISTICS_ARTICLE</mat-label>
+                <ss-auto-complete matInput
+                                  [model]="destinationLookup"
+                                  [formControl]="destinationReference"
+                                  required="true">
+                </ss-auto-complete>
+            </mat-form-field>
+
+            <mat-form-field class="default-100">
+                <mat-label translate>STOCK_REPLACING_REFERENCE</mat-label>
+                <input matInput [formControl]="destinationClass" type="text" readonly>
+            </mat-form-field>
+
+        </mat-card-content>
+    </mat-card>
+</div>
+<div class="btn_div container">
+    <button mat-raised-button color="primary"
+            type="button"
+            [disabled]="disabled()"
+            (click)="correct()">
+        <i class="fa-solid fa-check-double"></i>
+        {{ 'STOCK_REPLACE_REFERENCE' | translate }}
+    </button>
+</div>

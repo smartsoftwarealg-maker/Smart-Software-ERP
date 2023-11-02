@@ -25,10 +25,15 @@ import {
     STOCK_PRICE_RECALCULATION_URL,
     STOCK_CONSUMPTION_CANCELLATION_URL,
     STOCK_PARTS_REUEST_URL,
-    ADMIN_REPORT_RIGHTS_URL
+    ADMIN_REPORT_RIGHTS_URL, REFERENCE_CORRECTION_URL
 } from '../common';
-import { ABS_INDEX_URL, LINES_DETAIL_URL, LIST_URL, CanDeactivateService } from '@ss/common/api-common';
-import { ArticleDetailComponent, ArticleListComponent } from '@ss/stock/ui-article';
+import {
+    ABS_INDEX_URL,
+    LINES_DETAIL_URL,
+    LIST_URL,
+    CanDeactivateService
+} from '@ss/common/api-common';
+import { ArticleDetailComponent, ArticleListComponent, ReferenceCorrectionComponent } from '@ss/stock/ui-article';
 import { Routes } from '@angular/router';
 import {
     ClassDetailComponent,
@@ -114,6 +119,11 @@ export const mainRoutes: Routes = [
     {
         path: USER_STORES_URL,
         component: UserStoresComponent,
+        canActivate: [loginGuard],
+    },
+    {
+        path: REFERENCE_CORRECTION_URL,
+        component: ReferenceCorrectionComponent,
         canActivate: [loginGuard],
     },
     {

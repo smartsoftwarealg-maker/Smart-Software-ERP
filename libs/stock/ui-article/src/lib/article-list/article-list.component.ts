@@ -1,22 +1,43 @@
 import {Component, OnInit,} from '@angular/core';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { ArticleService, Article } from '@ss/stock/api-article';
 import {Mark, Unit} from '@ss/common/api-lookup';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {Observable, of, zip} from 'rxjs';
 import {LookupsService, Vat} from '@ss/common/api-lookup';
-import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
+import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
-import {ImageModel} from '@ss/common/ui-image-input';
-import {HttpService, PaginatorPersistenceService} from '@ss/common/api-common';
+import { CommonUiImageInputModule, ImageModel } from '@ss/common/ui-image-input';
+import { HttpService, MaterialModule, PaginatorPersistenceService } from '@ss/common/api-common';
 import {FormControl} from '@angular/forms';
 import {debounceTime, distinctUntilChanged} from 'rxjs/operators';
+import { CommonModule } from '@angular/common';
+import { CommonUiLangModule } from '@ss/common/ui-lang';
+import { UiPaginationModule } from '@ss/common/ui-pagination';
+import { StockUiArticleStoreModule } from '@ss/stock/article-store';
+import { LogisticsUiDocInfoModule } from '@ss/logistics/ui-doc-info';
+import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
+import { LogisticsUiStockInfoModule } from '@ss/logistics/ui-stock-info';
 
 @Component({
     selector: 'ss-article-list',
     styleUrls: ['./article-list.component.scss'],
-    templateUrl: './article-list.component.html'
+    templateUrl: './article-list.component.html',
+    standalone: true,
+    imports: [
+        CommonModule,
+        MaterialModule,
+        CommonUiLangModule,
+        UiPaginationModule,
+        CommonUiConfirmationDialogModule,
+        StockUiArticleStoreModule,
+        LogisticsUiDocInfoModule,
+        RouterModule,
+        CommonUiImageInputModule,
+        CommonUiAutoCompleteModule,
+        LogisticsUiStockInfoModule
+    ],
 })
 export class ArticleListComponent extends BaseEntityListComponent<Article> implements OnInit {
     filterCtrl = new FormControl<number>(this.entitySrv.getParentId());

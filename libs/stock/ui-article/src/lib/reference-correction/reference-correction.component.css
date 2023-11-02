@@ -1,0 +1,23 @@
+.container {
+    display: flex;
+    padding: 1em;
+    gap: 1em;
+    width: 90%;
+    max-width: 900px;
+    margin: 0 auto;
+    flex-wrap: nowrap;
+}
+.btn_div {
+    justify-content: flex-end;
+}
+
+@media (width <= 500px) {
+    .container {
+        flex-wrap: wrap;
+    }
+}
+mat-card {
+    padding: 1em;
+    border-radius: 1.4em;
+}
+

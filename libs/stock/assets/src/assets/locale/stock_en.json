@@ -60,5 +60,9 @@
     "RECALCULATE_PRICES":     "Recalculate prices",
     "PRICE_RECALCULATION":    "Price recalculation",
     "CONSUMPTION_CANCELLATION": "Consumption cancellation",
-    "PARTS_REQUEST":            "Parts request"
+    "PARTS_REQUEST":            "Parts request",
+    "REFERENCE_CORRECTION":     "Reference correction",
+    "REPLACED_REFERENCE":       "Replaced reference",
+    "REPLACING_REFERENCE":      "Replacing reference",
+    "REPLACE_REFERENCE":        "Replace reference"
 }

@@ -59,5 +59,9 @@
     "RECALCULATE_PRICES":     "أعد حساب الأسعار",
     "PRICE_RECALCULATION":    "حساب السعر",
     "CONSUMPTION_CANCELLATION": "إلغاء الاستهلاك",
-    "PARTS_REQUEST":            "طلب قطع غيار"
+    "PARTS_REQUEST":            "طلب قطع غيار",
+    "REFERENCE_CORRECTION":     "تصحيح المراجع",
+    "REPLACED_REFERENCE":       "المرجع المستبدل",
+    "REPLACING_REFERENCE":      "المرجع البديل",
+    "REPLACE_REFERENCE":        "استبدال المرجع"
 }
