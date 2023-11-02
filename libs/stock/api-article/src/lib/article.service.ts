@@ -46,4 +46,8 @@ export class ArticleService extends BaseEntityExtendedService<Article> {
     init(): Observable<boolean> {
         return this.httpSrv.init();
     }
+
+    correct(oldRef: string, newRef: string): Observable<{ count: number }> {
+        return this.httpSrv.post('/articles/correct', { oldRef: oldRef, newRef: newRef});
+    }
 }

@@ -59,5 +59,9 @@
     "RECALCULATE_PRICES":     "Recalculer les prix",
     "PRICE_RECALCULATION":    "Recalcul du prix",
     "CONSUMPTION_CANCELLATION": "Annulation consommation",
-    "PARTS_REQUEST":            "Demande de pièces"
+    "PARTS_REQUEST":            "Demande de pièces",
+    "REFERENCE_CORRECTION":     "Correction reference",
+    "REPLACED_REFERENCE":       "Référence remplacée",
+    "REPLACING_REFERENCE":      "Référence de remplacement",
+    "REPLACE_REFERENCE":        "Remplacer la référence"
 }

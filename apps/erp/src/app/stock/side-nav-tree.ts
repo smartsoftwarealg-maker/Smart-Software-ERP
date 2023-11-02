@@ -21,8 +21,8 @@ import {
     ABS_STOCK_STOCK_ACCOUNT_URL,
     ABS_INVENTORY_PRICE_RECALCULATION_URL,
     ABS_STOCK_CONSUMPTION_CANCELLATION_URL,
-    ABS_STOCK_PARTS_REQUEST_URL, ABS_STOCK_REPORT_RIGHT_URL
-} from '../common';
+    ABS_STOCK_PARTS_REQUEST_URL, ABS_STOCK_REPORT_RIGHT_URL, ABS_REFERENCE_CORRECTION_URL
+} from "../common";
 import {SideNavNode} from '@ss/common/api-common';
 
 export const stockNavTree: SideNavNode = {
@@ -148,6 +148,12 @@ export const stockNavTree: SideNavNode = {
             name: 'STOCK_ANOMALIES',
             icon: 'fas fa-tasks',
             route: ABS_INVENTORY_ANOMALIES_URL,
+            accessRights: 'Article'
+        },
+        {
+            name: 'STOCK_REFERENCE_CORRECTION',
+            icon: 'fa-solid fa-check-double',
+            route: ABS_REFERENCE_CORRECTION_URL,
             accessRights: 'Article'
         },
         {
