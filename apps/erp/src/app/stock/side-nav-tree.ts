@@ -154,7 +154,7 @@ export const stockNavTree: SideNavNode = {
             name: 'STOCK_REFERENCE_CORRECTION',
             icon: 'fa-solid fa-check-double',
             route: ABS_REFERENCE_CORRECTION_URL,
-            accessRights: 'Article'
+            accessRights: 'Correction'
         },
         {
             name: 'STOCK_PRICE_RECALCULATION',

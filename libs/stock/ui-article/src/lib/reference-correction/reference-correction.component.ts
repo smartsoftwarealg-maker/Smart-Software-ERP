@@ -46,6 +46,8 @@ export class ReferenceCorrectionComponent implements OnInit {
     destinationReference = new FormControl<number>(0);
     sourceClass = new FormControl<string|null>({ value: null, disabled: true});
     destinationClass = new FormControl<string|null>({ value: null, disabled: true});
+    oldReference = new FormControl<string|null>(null);
+    newReference = new FormControl<string|null>(null);
 
     sourceArticle: Article | null = null;
     destinationArticle: Article | null = null;
@@ -54,8 +56,8 @@ export class ReferenceCorrectionComponent implements OnInit {
     destinationLookup = new ArticleAutoCompleteModel(this.articleSrv);
 
     constructor() {
-        this.sourceLookup.onObjectSelected = a => { this.sourceArticle = a; this.sourceClass.setValue(a?.klassName); };
-        this.destinationLookup.onObjectSelected = a => { this.destinationArticle = a; this.destinationClass.setValue(a?.klassName); };
+        this.sourceLookup.onObjectSelected = a => this.onOldArticle(a);
+        this.destinationLookup.onObjectSelected = a => this.onNewArticle(a);
         this.shellSrv.setGoBackPath('..', this.route);
     }
 
@@ -63,12 +65,24 @@ export class ReferenceCorrectionComponent implements OnInit {
         this.shellSrv.setTitle('STOCK_REFERENCE_CORRECTION');
     }
 
+    private onNewArticle(a: Article) {
+        this.destinationArticle = a;
+        this.destinationClass.setValue(a?.klassName);
+        this.newReference.setValue(a?.reference);
+    }
+
+    private onOldArticle(a: Article) {
+        this.sourceArticle = a;
+        this.sourceClass.setValue(a?.klassName);
+        this.oldReference.setValue(a?.reference);
+    }
+
     correct() {
         this.confirmSrv
-            .confirm('STOCK_REFERENCE_CORRECTION', 'STOCK_CORRECT_REFERENCE')
+            .confirm('STOCK_REFERENCE_CORRECTION', 'STOCK_REPLACE_REFERENCE')
             .pipe(
                 tap(res => this.shellSrv.setLoading(res)),
-                switchMap(ans => ans? this.articleSrv.correct(this.sourceArticle.reference, this.destinationArticle.reference) : of({count: 0})))
+                switchMap(ans => ans? this.articleSrv.correct(this.sourceArticle.reference, this.newReference.value) : of({count: 0})))
             .subscribe({
                 next: res => {
                     this.shellSrv.setLoading(false);
@@ -94,11 +108,14 @@ export class ReferenceCorrectionComponent implements OnInit {
         this.sourceClass.setValue(null);
         this.destinationClass.setValue(null);
     }
+
     disabled() {
         return !(
-            this.sourceClass.value !== null &&
             this.sourceArticle !== null &&
-            this.sourceClass.value === this.destinationClass.value &&
-            this.sourceArticle !== this.destinationArticle);
+            this.newReference.value !== null &&
+            this.newReference.value.length > 1 &&
+            this.sourceArticle !== this.destinationArticle &&
+            (this.sourceClass.value === this.destinationClass.value || this.destinationArticle === null)
+        );
     }
 }
