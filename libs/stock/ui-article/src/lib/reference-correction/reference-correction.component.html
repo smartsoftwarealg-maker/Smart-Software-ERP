@@ -5,7 +5,7 @@
         </mat-card-title>
         <mat-card-content>
             <mat-form-field class="default-100">
-                <mat-label translate>LOGISTICS_ARTICLE</mat-label>
+                <mat-label translate>STOCK_REPLACED_REFERENCE</mat-label>
                 <ss-auto-complete matInput
                                   [model]="sourceLookup"
                                   [formControl]="sourceReference"
@@ -14,10 +14,14 @@
             </mat-form-field>
 
             <mat-form-field class="default-100">
-                <mat-label translate>STOCK_REPLACED_REFERENCE</mat-label>
+                <mat-label translate>COMMON_CLASS</mat-label>
                 <input matInput [formControl]="sourceClass" type="text" readonly>
             </mat-form-field>
 
+            <mat-form-field class="default-100">
+                <mat-label translate>COMMON_REFERENCE</mat-label>
+                <input matInput [formControl]="oldReference" type="text">
+            </mat-form-field>
         </mat-card-content>
     </mat-card>
     <mat-card>
@@ -26,7 +30,7 @@
         </mat-card-title>
         <mat-card-content>
             <mat-form-field class="default-100">
-                <mat-label translate>LOGISTICS_ARTICLE</mat-label>
+                <mat-label translate>STOCK_REPLACING_REFERENCE</mat-label>
                 <ss-auto-complete matInput
                                   [model]="destinationLookup"
                                   [formControl]="destinationReference"
@@ -35,8 +39,13 @@
             </mat-form-field>
 
             <mat-form-field class="default-100">
-                <mat-label translate>STOCK_REPLACING_REFERENCE</mat-label>
+                <mat-label translate>COMMON_CLASS</mat-label>
                 <input matInput [formControl]="destinationClass" type="text" readonly>
+            </mat-form-field>
+
+            <mat-form-field class="default-100">
+                <mat-label translate>COMMON_REFERENCE</mat-label>
+                <input matInput [formControl]="newReference" type="text">
             </mat-form-field>
 
         </mat-card-content>
