@@ -1,7 +1,10 @@
 
 .form_container {
-    height: calc(100% - 20px);
+    height: calc(100% - 24px);
     max-height: 90%;
+    width: 98%;
+    max-width: 1600px;
+    margin: 4px auto 0;
     display: grid;
     grid-template-columns: 1fr 2fr;
     grid-template-rows: auto auto 1fr auto;
