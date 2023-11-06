@@ -1,6 +1,7 @@
 export const PAYMENT_ORDER_URL = '/payment-orders';
 export interface PaymentOrder {
     id: number;
+    bankId?: number;
     ord_number: number;
     ord_date: string;
     agent_id: number;
