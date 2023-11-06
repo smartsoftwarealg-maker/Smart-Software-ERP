@@ -9,14 +9,22 @@
 .info-div {
     padding: 8px;
 }
+
 .amount {
     font-size: 1.3em;
     font-weight: bolder;
     margin-left: 16px;
 }
 
-.size {
+.size,
+mat-card {
     width: 90%;
     max-width: 900px;
     margin: 8px auto;
+    border-radius: 1.4em;
+}
+
+mat-card {
+    padding: 8px;
+    border-radius: 1.4em;
 }

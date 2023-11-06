@@ -1,7 +1,7 @@
-.container_div, .pagination-container {
+.container_div {
     width: 90%;
-    min-height: 55%;
-    max-width: 700px;
+    height: calc(100% - 64px);
+    max-width: 900px;
     margin: 0 auto;
     overflow-y: auto;
 }
@@ -18,4 +18,9 @@
 
 .mat-column-supplierName {
     flex: 3 1 300px;
+}
+.pagination-container {
+    width: 90%;
+    max-width: 700px;
+    margin: 0 auto;
 }

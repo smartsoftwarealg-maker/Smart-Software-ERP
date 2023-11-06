@@ -11,6 +11,7 @@ import { IsParamService, LoginService } from "@ss/common/api-common";
 import { Agent, AgentService, ConsumerService } from "@ss/logistics/api-agent";
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import { Observable, switchMap, tap } from "rxjs";
+import { BankService } from "@ss/administration/api-bank";
 
 @Component({
   selector: 'ss-payment-order-detail',
@@ -18,6 +19,7 @@ import { Observable, switchMap, tap } from "rxjs";
   styleUrls: ['./payment-order-detail.component.scss']
 })
 export class PaymentOrderDetailComponent extends BaseEntityDetailComponent<PaymentOrder> {
+    private bankSrv = inject(BankService);
     private isParamSrv = inject(IsParamService);
     private supplierSrv  = inject(AgentService);
     private consumerSrv = inject(ConsumerService);
@@ -30,6 +32,8 @@ export class PaymentOrderDetailComponent extends BaseEntityDetailComponent<Payme
     consumerLookup = new DefaultAutoCompleteModel<Agent>(this.consumerSrv, 'id', 'denomination');
     storeLookup = new DefaultAutoCompleteModel<Store>(this.storeSrv);
     payModeLookup = new DefaultAutoCompleteModel(this.payModeSrv);
+    bankLookup = new DefaultAutoCompleteModel(this.bankSrv);
+
 
     constructor(
         public detailSrv: PaymentOrderService,
@@ -67,6 +71,7 @@ export class PaymentOrderDetailComponent extends BaseEntityDetailComponent<Payme
             payMode:           [b.payMode],
             bankAccount:       [b.bankAccount],
             bankAgency:        [b.bankAgency],
+            bankId:            [b.bankId],
             authorizationNo:   [b.authorizationNo],
             authorizationDate: [b.authorizationDate],
             recordNo:          [b.recordNo]
