@@ -28,6 +28,7 @@ export class AppArchiveDocumentListComponent extends BaseEntityListComponent<Loo
         public override router: Router,
         public override pagPersistSrv: PaginatorPersistenceService) {
         super(markSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv,'ADMINISTRATION_ARCHIVE_DOCUMENTS');
+        this.pagination.pageSize = 10;
     }
 }
 

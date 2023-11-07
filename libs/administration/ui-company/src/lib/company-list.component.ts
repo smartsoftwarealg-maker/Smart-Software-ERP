@@ -32,5 +32,6 @@ export class CompanyListComponent extends BaseEntityListComponent<Company> {
         public override confirmationSrv: ConfirmationDialogService,
         public override pagPersistSrv: PaginatorPersistenceService) {
         super(companySrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv, 'ADMINISTRATION_COMPANY');
+        this.pagination.pageSize = 10;
     }
 }

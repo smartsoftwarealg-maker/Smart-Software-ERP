@@ -5,8 +5,8 @@ import {CommonUiLangModule} from "@ss/common/ui-lang";
 import {UiPaginationModule} from "@ss/common/ui-pagination";
 import {ReactiveFormsModule} from "@angular/forms";
 import {CommonUiConfirmationDialogModule} from "@ss/common/ui-confirmation-dialog";
-import {SmtpDetailComponent} from "./smtp-detail.component";
-import {SmtpListComponent} from "./smtp-list.component";
+import {SmtpDetailComponent} from "./smtp-detail/smtp-detail.component";
+import {SmtpListComponent} from "./smtp-list/smtp-list.component";
 
 
 @NgModule({

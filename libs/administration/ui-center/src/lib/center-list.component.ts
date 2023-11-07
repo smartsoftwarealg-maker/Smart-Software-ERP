@@ -32,6 +32,7 @@ export class CenterListComponent extends BaseEntityListComponent<Center> {
         private loginSrv: LoginService,
         public override pagPersistSrv: PaginatorPersistenceService) {
         super(centerSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv, 'ADMINISTRATION_CENTER');
+        this.pagination.pageSize = 10;
     }
 
 

@@ -2,8 +2,8 @@ import {Component,} from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
-import {ConfirmationDialogService} from "@ss/common/ui-confirmation-dialog";
-import {Smtp, SmtpService} from "@ss/administration/api-smtp";
+import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
+import {Smtp, SmtpService} from '@ss/administration/api-smtp';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import {PaginatorPersistenceService} from '@ss/common/api-common';
 
@@ -32,7 +32,6 @@ export class SmtpListComponent extends BaseEntityListComponent<Smtp> {
         public override confirmationSrv: ConfirmationDialogService,
         public override pagPersistSrv: PaginatorPersistenceService) {
         super(smtpSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv,'ADMINISTRATION_SMTP');
+        this.pagination.pageSize = 10;
     }
-
-
 }

@@ -35,6 +35,7 @@ export class DairaListComponent extends BaseEntityListComponent<Lookup> {
             defReportSrv,
             pagPersistSrv,
             'COMMON_DAIRAS');
+        this.pagination.pageSize = 10;
     }
 }
 
