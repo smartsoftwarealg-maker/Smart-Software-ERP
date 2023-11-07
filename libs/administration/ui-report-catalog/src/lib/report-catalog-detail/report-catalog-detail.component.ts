@@ -1,22 +1,34 @@
 import {Component, OnInit} from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
-import {UntypedFormBuilder, Validators} from '@angular/forms';
+import { ReactiveFormsModule, UntypedFormBuilder, Validators } from '@angular/forms';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
-import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
+import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import {ReportCatalogService, ReportsCatalog} from '@ss/administration/api-report-catalog';
-import {LIST_URL} from '@ss/common/api-common';
+import { LIST_URL, MaterialModule } from '@ss/common/api-common';
 import {ReportAppsService, ReportListService} from '@ss/common/api-reports';
 import {switchMap, tap} from 'rxjs/operators';
 import {Observable} from 'rxjs';
 import {TraceabilityService} from '@ss/common/ui-traceability';
 import {MatSelectChange} from '@angular/material/select';
+import { CommonModule } from '@angular/common';
+import { CommonUiLangModule } from '@ss/common/ui-lang';
+import { UiPaginationModule } from '@ss/common/ui-pagination';
 
 
 @Component({
     selector: 'ss-report-catalog-detail',
     styleUrls: ['./report-catalog-detail.component.scss'],
-    templateUrl: './report-catalog-detail.component.html'
+    templateUrl: './report-catalog-detail.component.html',
+    standalone: true,
+    imports: [
+        CommonModule,
+        MaterialModule,
+        CommonUiLangModule,
+        UiPaginationModule,
+        ReactiveFormsModule,
+        CommonUiConfirmationDialogModule
+    ],
 })
 export class ReportCatalogDetailComponent extends BaseEntityDetailComponent<ReportsCatalog> implements OnInit {
     app: string;

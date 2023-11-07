@@ -28,6 +28,7 @@ export class CountryListComponent extends BaseEntityListComponent<Country> {
         public override router: Router,
         public override pagPersistSrv: PaginatorPersistenceService) {
         super(countrySrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv, 'COMMON_COUNTRIES');
+        this.pagination.pageSize = 10;
     }
 
 }

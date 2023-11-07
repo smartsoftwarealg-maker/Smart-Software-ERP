@@ -28,6 +28,7 @@ export class WilayaListComponent extends BaseEntityListComponent<Wilaya> {
         public override router: Router,
         public override pagPersistSrv: PaginatorPersistenceService) {
         super(wilayaSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv,'COMMON_WILAYAS');
+        this.pagination.pageSize = 10;
     }
 
 }
