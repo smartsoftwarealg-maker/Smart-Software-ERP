@@ -151,5 +151,6 @@
     "PERSONAL_INFO":     "Informations personnelles",
     "ARCHIVE_VIEWER":    "Visualisation archives",
     "IS_DRIVER":         "Conducteur",
-    "CMMS_PERSON":       "Personnel d'entretien?"
+    "CMMS_PERSON":       "Personnel d'entretien?",
+    "WORK_STOPPAGES":    "Arrêts de travail"
 }

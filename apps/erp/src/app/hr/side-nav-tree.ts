@@ -5,8 +5,8 @@ import {
     ABS_INACTIVE_HR_EMPLOYEES_URL,
     ABS_HR_DASHBOARD_URL,
     ABS_HR_HOLIDAY_REQUEST_URL,
-    ABS_HR_REPORT_RIGHT_URL
-} from '../common';
+    ABS_HR_REPORT_RIGHT_URL, ABS_WORK_STOPPAGES_URL
+} from "../common";
 import {SideNavNode} from '@ss/common/api-common';
 
 export const hrNavTree: SideNavNode = {
@@ -89,6 +89,12 @@ export const hrNavTree: SideNavNode = {
             icon: 'fad fa-users',
             route: ABS_HR_EMPLOYEES_URL,
             accessRights: 'Person'
+        },
+        {
+            name: 'PAYROLL_WORK_STOPPAGES',
+            icon: 'fa-regular fa-stopwatch',
+            route: ABS_WORK_STOPPAGES_URL,
+            accessRights: 'Accident'
         },
         {
             name: 'PAYROLL_EMPLOYEE_SUMMARY',

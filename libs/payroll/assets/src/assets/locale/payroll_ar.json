@@ -151,5 +151,6 @@
     "PERSONAL_INFO":     "معلومات شخصية",
     "ARCHIVE_VIEWER":    "استعراض الأرشيف",
     "IS_DRIVER":         "سائق",
-    "CMMS_PERSON":       ""
+    "CMMS_PERSON":       "موظف صيانة",
+    "WORK_STOPPAGES":    "توقفات العمل"
 }

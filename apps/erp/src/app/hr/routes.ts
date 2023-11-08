@@ -20,8 +20,12 @@ import {
     HR_JUDICIAL_FRAMES_URL,
     HR_DECISION_MOTIVE_URL,
     HR_MOTIVE_URL,
-    HR_CONTRACT_MOTIVE_URL, HR_HOLIDAY_REQUEST_URL, COMMON_BLOOD_GROUPS_URL, ADMIN_REPORT_RIGHTS_URL
-} from "../common";
+    HR_CONTRACT_MOTIVE_URL,
+    HR_HOLIDAY_REQUEST_URL,
+    COMMON_BLOOD_GROUPS_URL,
+    ADMIN_REPORT_RIGHTS_URL,
+    HR_WORK_STOPPAGE_URL
+} from '../common';
 import {
     ABS_INDEX_URL,
     CanDeactivateService,
@@ -127,7 +131,8 @@ import {
 import {
     EmployeeContractListComponent
 } from '@ss/payroll/ui-employee';
-import { ReportRightsComponent } from "@ss/administration/reports-rights";
+import { ReportRightsComponent } from '@ss/administration/reports-rights';
+import { WorkStoppageListComponent } from '@ss/payroll/work-stoppage';
 
 export const hrRoutes: Routes = [
     {
@@ -158,6 +163,23 @@ export const hrRoutes: Routes = [
             {
                 path: ':id',
                 component: MotiveDetailComponent,
+                canActivate: [loginGuard],
+                canDeactivate: [CanDeactivateService]
+            },
+            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
+        ]
+    },
+    {
+        path: HR_WORK_STOPPAGE_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: WorkStoppageListComponent,
+                canActivate: [loginGuard]
+            },
+            {
+                path: ':id',
+                component: WorkStoppageListComponent,
                 canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService]
             },
