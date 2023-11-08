@@ -10,7 +10,6 @@ import { CommonUiConfirmationDialogModule } from '@ss/common/ui-confirmation-dia
 import { RouterModule } from '@angular/router';
 import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
 import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
-import { StockUiinventoryLinesModule } from '@ss/stock/ui-inventory-lines';
 import { LogisticsUiDocInfoModule } from '@ss/logistics/ui-doc-info';
 import { PriceRecalculationComponent } from './price-recalcultion/price-recalculation.component';
 
@@ -23,7 +22,6 @@ import { PriceRecalculationComponent } from './price-recalcultion/price-recalcul
         ReactiveFormsModule,
         CommonUiConfirmationDialogModule,
         RouterModule,
-        StockUiinventoryLinesModule,
         LogisticsUiDocInfoModule,
         CommonUiDatepickerModule,
         CommonUiAutoCompleteModule,
