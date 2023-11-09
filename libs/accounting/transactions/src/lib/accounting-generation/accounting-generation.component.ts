@@ -1,7 +1,7 @@
 import { Component, inject, OnDestroy, OnInit } from '@angular/core';
-import {UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
-import {LoginService, PaginationModel} from '@ss/common/api-common';
-import {ActivatedRoute} from '@angular/router';
+import { ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup, Validators } from "@angular/forms";
+import { LoginService, MaterialModule, PaginationModel } from "@ss/common/api-common";
+import { ActivatedRoute, RouterModule } from "@angular/router";
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {
     AccJournalsService,
@@ -10,15 +10,36 @@ import {
     PAYRow,
     TDocument
 } from '@ss/accounting/accounting-api';
-import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
+import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from "@ss/common/ui-auto-complete";
 import {Subscription} from 'rxjs';
 import {debounceTime, distinctUntilChanged} from 'rxjs/operators';
 import {HttpParams} from '@angular/common/http';
+import { CommonModule } from "@angular/common";
+import { CommonUiLangModule } from "@ss/common/ui-lang";
+import { UiPaginationModule } from "@ss/common/ui-pagination";
+import { CommonUiMainPageModule } from "@ss/common/ui-main-page";
+import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
+import { CommonUiConfirmationDialogModule } from "@ss/common/ui-confirmation-dialog";
+import { AppArchiveModule } from "@ss/common/app-archive";
 
 @Component({
     selector: 'ss-accounting-generation',
     templateUrl: './accounting-generation.component.html',
-    styleUrls: ['./accounting-generation.component.scss']
+    styleUrls: ['./accounting-generation.component.scss'],
+    standalone: true,
+    imports: [
+        CommonModule,
+        RouterModule,
+        MaterialModule,
+        CommonUiLangModule,
+        UiPaginationModule,
+        ReactiveFormsModule,
+        CommonUiMainPageModule,
+        CommonUiAutoCompleteModule,
+        CommonUiDatepickerModule,
+        CommonUiConfirmationDialogModule,
+        AppArchiveModule
+    ],
 })
 export class AccountingGenerationComponent implements OnInit, OnDestroy {
     private loginSrv = inject(LoginService);

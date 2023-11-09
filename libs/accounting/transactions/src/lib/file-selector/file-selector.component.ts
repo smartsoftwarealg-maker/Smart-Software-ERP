@@ -2,17 +2,38 @@ import {Component, OnInit} from '@angular/core';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {ACCFile, AccFileService, PeriodSelectorService} from '@ss/accounting/accounting-api';
 import {KeepOnToolbar, ShellService, SnackBarService, ToolbarButton} from '@ss/common/ui-shell';
-import {ActivatedRoute, Router} from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from "@angular/router";
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
-import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import {LoginService, PaginatorPersistenceService} from '@ss/common/api-common';
+import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
+import { LoginService, MaterialModule, PaginatorPersistenceService } from "@ss/common/api-common";
 import {switchMap, tap} from 'rxjs';
-import {UntypedFormControl, Validators} from '@angular/forms';
+import { ReactiveFormsModule, UntypedFormControl, Validators } from "@angular/forms";
+import { CommonModule } from "@angular/common";
+import { CommonUiLangModule } from "@ss/common/ui-lang";
+import { UiPaginationModule } from "@ss/common/ui-pagination";
+import { CommonUiMainPageModule } from "@ss/common/ui-main-page";
+import { CommonUiAutoCompleteModule } from "@ss/common/ui-auto-complete";
+import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
+import { AppArchiveModule } from "@ss/common/app-archive";
 
 @Component({
   selector: 'ss-file-selector',
   templateUrl: './file-selector.component.html',
-  styleUrls: ['./file-selector.component.scss']
+  styleUrls: ['./file-selector.component.scss'],
+    standalone: true,
+    imports: [
+        CommonModule,
+        RouterModule,
+        MaterialModule,
+        CommonUiLangModule,
+        UiPaginationModule,
+        ReactiveFormsModule,
+        CommonUiMainPageModule,
+        CommonUiAutoCompleteModule,
+        CommonUiDatepickerModule,
+        CommonUiConfirmationDialogModule,
+        AppArchiveModule
+    ],
 })
 export class FileSelectorComponent extends BaseEntityListComponent<ACCFile> implements OnInit {
     private MONTHS = ['JANUARY', 'FEBRUARY', 'MARCH', 'APRIL', 'MAY', 'JUNE', 'JULY', 'AUGUST', 'SEPTEMBER', 'OCTOBER', 'NOVEMBER', 'DECEMBER'];

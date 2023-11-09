@@ -2,15 +2,37 @@ import { Component} from '@angular/core';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {ACCFile, AccFileService} from '@ss/accounting/accounting-api';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
-import {ActivatedRoute, Router} from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from "@angular/router";
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
-import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import {PaginatorPersistenceService} from '@ss/common/api-common';
+import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
+import { MaterialModule, PaginatorPersistenceService } from "@ss/common/api-common";
+import { CommonModule } from "@angular/common";
+import { CommonUiLangModule } from "@ss/common/ui-lang";
+import { UiPaginationModule } from "@ss/common/ui-pagination";
+import { ReactiveFormsModule } from "@angular/forms";
+import { CommonUiMainPageModule } from "@ss/common/ui-main-page";
+import { CommonUiAutoCompleteModule } from "@ss/common/ui-auto-complete";
+import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
+import { AppArchiveModule } from "@ss/common/app-archive";
 
 @Component({
   selector: 'ss-acc-file-list',
   templateUrl: './acc-file-list.component.html',
-  styleUrls: ['./acc-file-list.component.scss']
+  styleUrls: ['./acc-file-list.component.scss'],
+    standalone: true,
+    imports: [
+        CommonModule,
+        RouterModule,
+        MaterialModule,
+        CommonUiLangModule,
+        UiPaginationModule,
+        ReactiveFormsModule,
+        CommonUiMainPageModule,
+        CommonUiAutoCompleteModule,
+        CommonUiDatepickerModule,
+        CommonUiConfirmationDialogModule,
+        AppArchiveModule
+    ],
 })
 export class AccFileListComponent extends BaseEntityListComponent<ACCFile> {
     displayedColumns = [

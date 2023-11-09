@@ -1,15 +1,37 @@
 import { Component, inject, OnInit } from "@angular/core";
 import {Balance, BalanceQueryService, GL} from '@ss/accounting/accounting-api';
-import { FormBuilder, UntypedFormBuilder, UntypedFormGroup, Validators } from "@angular/forms";
-import {PaginationModel} from '@ss/common/api-common';
+import { FormBuilder, ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup, Validators } from "@angular/forms";
+import { MaterialModule, PaginationModel } from "@ss/common/api-common";
 import {HttpParams} from '@angular/common/http';
 import {ShellService} from '@ss/common/ui-shell';
-import {ActivatedRoute} from '@angular/router';
+import { ActivatedRoute, RouterModule } from "@angular/router";
+import { CommonModule } from "@angular/common";
+import { CommonUiLangModule } from "@ss/common/ui-lang";
+import { UiPaginationModule } from "@ss/common/ui-pagination";
+import { CommonUiMainPageModule } from "@ss/common/ui-main-page";
+import { CommonUiAutoCompleteModule } from "@ss/common/ui-auto-complete";
+import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
+import { CommonUiConfirmationDialogModule } from "@ss/common/ui-confirmation-dialog";
+import { AppArchiveModule } from "@ss/common/app-archive";
 
 @Component({
     selector: 'ss-balance-queries',
     templateUrl: './balance-queries.component.html',
-    styleUrls: ['./balance-queries.component.scss']
+    styleUrls: ['./balance-queries.component.scss'],
+    standalone: true,
+    imports: [
+        CommonModule,
+        RouterModule,
+        MaterialModule,
+        CommonUiLangModule,
+        UiPaginationModule,
+        ReactiveFormsModule,
+        CommonUiMainPageModule,
+        CommonUiAutoCompleteModule,
+        CommonUiDatepickerModule,
+        CommonUiConfirmationDialogModule,
+        AppArchiveModule
+    ],
 })
 export class BalanceQueriesComponent implements OnInit {
     private fb = inject(FormBuilder);

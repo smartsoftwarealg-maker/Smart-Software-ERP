@@ -2,15 +2,37 @@ import { Component, OnInit } from '@angular/core';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {Lookup, Mark, MarkService} from '@ss/common/api-lookup';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
-import {ActivatedRoute} from '@angular/router';
-import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import {UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
+import { ActivatedRoute, RouterModule } from "@angular/router";
+import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
+import { ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup, Validators } from "@angular/forms";
 import {AccProjectService} from '@ss/accounting/accounting-api';
+import { CommonModule } from "@angular/common";
+import { MaterialModule } from "@ss/common/api-common";
+import { CommonUiLangModule } from "@ss/common/ui-lang";
+import { UiPaginationModule } from "@ss/common/ui-pagination";
+import { CommonUiMainPageModule } from "@ss/common/ui-main-page";
+import { CommonUiAutoCompleteModule } from "@ss/common/ui-auto-complete";
+import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
+import { AppArchiveModule } from "@ss/common/app-archive";
 
 @Component({
   selector: 'ss-acc-project-detail',
   templateUrl: './acc-project-detail.component.html',
-  styleUrls: ['./acc-project-detail.component.scss']
+  styleUrls: ['./acc-project-detail.component.scss'],
+    standalone: true,
+    imports: [
+        CommonModule,
+        RouterModule,
+        MaterialModule,
+        CommonUiLangModule,
+        UiPaginationModule,
+        ReactiveFormsModule,
+        CommonUiMainPageModule,
+        CommonUiAutoCompleteModule,
+        CommonUiDatepickerModule,
+        CommonUiConfirmationDialogModule,
+        AppArchiveModule
+    ],
 })
 export class AccProjectDetailComponent extends BaseEntityDetailComponent<Lookup> {
 

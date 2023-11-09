@@ -1,5 +1,5 @@
 import { Component, inject, OnDestroy, OnInit, ViewChild } from "@angular/core";
-import {ActivatedRoute, NavigationEnd, Router, RouterOutlet} from '@angular/router';
+import { ActivatedRoute, NavigationEnd, Router, RouterModule, RouterOutlet } from "@angular/router";
 import {
     AccFileService,
     AccJournalsService, AccPoliciesService,
@@ -10,19 +10,40 @@ import {
 } from '@ss/accounting/accounting-api';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
-import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import {LoginService, PaginatorPersistenceService} from '@ss/common/api-common';
+import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
+import { LoginService, MaterialModule, PaginatorPersistenceService } from "@ss/common/api-common";
 import {MatSelectionListChange} from '@angular/material/list';
 import {switchMap, tap} from 'rxjs';
 import {debounceTime, distinctUntilChanged, filter} from 'rxjs/operators';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
-import {FormControl} from '@angular/forms';
+import { FormControl, ReactiveFormsModule } from "@angular/forms";
 import { MatRadioChange } from '@angular/material/radio';
+import { CommonModule } from "@angular/common";
+import { CommonUiLangModule } from "@ss/common/ui-lang";
+import { UiPaginationModule } from "@ss/common/ui-pagination";
+import { CommonUiMainPageModule } from "@ss/common/ui-main-page";
+import { CommonUiAutoCompleteModule } from "@ss/common/ui-auto-complete";
+import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
+import { AppArchiveModule } from "@ss/common/app-archive";
 
 @Component({
     selector: 'ss-transaction-list',
     templateUrl: './transaction-list.component.html',
-    styleUrls: ['./transaction-list.component.scss']
+    styleUrls: ['./transaction-list.component.scss'],
+    standalone: true,
+    imports: [
+        CommonModule,
+        RouterModule,
+        MaterialModule,
+        CommonUiLangModule,
+        UiPaginationModule,
+        ReactiveFormsModule,
+        CommonUiMainPageModule,
+        CommonUiAutoCompleteModule,
+        CommonUiDatepickerModule,
+        CommonUiConfirmationDialogModule,
+        AppArchiveModule
+    ],
 })
 export class TransactionListComponent extends BaseEntityListComponent<ACCTransaction> implements OnDestroy, OnInit {
     private fileSrv = inject(AccFileService);
@@ -114,6 +135,11 @@ export class TransactionListComponent extends BaseEntityListComponent<ACCTransac
         this.addButton.visible = isRoot && this.selectedJournal > 0;
         this.editButton.visible = isRoot;
         this.deleteButton.visible = isRoot;
+        if (isRoot) {
+            this.journalFilter.enable();
+        } else {
+            this.journalFilter.disable();
+        }
     }
 
     // private showButtons() {
@@ -134,8 +160,10 @@ export class TransactionListComponent extends BaseEntityListComponent<ACCTransac
     }
 
     override selectRow(row: ACCTransaction) {
-        row.id = (row.fileId || 0 ) * SCALE + (row.oid || 0);
-        super.selectRow(row);
+        if (this.isRoot) {
+            row.id = (row.fileId || 0) * SCALE + (row.oid || 0);
+            super.selectRow(row);
+        }
         // this.navigate();
     }
 

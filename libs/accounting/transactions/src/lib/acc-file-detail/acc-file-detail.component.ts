@@ -2,17 +2,38 @@ import {Component, OnInit} from '@angular/core';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {ACCFile, AccFileService} from '@ss/accounting/accounting-api';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
-import {ActivatedRoute} from '@angular/router';
-import {UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
-import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
+import { ActivatedRoute, RouterModule } from "@angular/router";
+import { ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup, Validators } from "@angular/forms";
+import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
 import {LookupsService} from '@ss/common/api-lookup';
 import {debounceTime, distinctUntilChanged} from 'rxjs/operators';
-import {LoginService} from '@ss/common/api-common';
+import { LoginService, MaterialModule } from "@ss/common/api-common";
+import { CommonModule } from "@angular/common";
+import { CommonUiLangModule } from "@ss/common/ui-lang";
+import { UiPaginationModule } from "@ss/common/ui-pagination";
+import { CommonUiMainPageModule } from "@ss/common/ui-main-page";
+import { CommonUiAutoCompleteModule } from "@ss/common/ui-auto-complete";
+import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
+import { AppArchiveModule } from "@ss/common/app-archive";
 
 @Component({
     selector: 'ss-acc-file-detail',
     templateUrl: './acc-file-detail.component.html',
-    styleUrls: ['./acc-file-detail.component.scss']
+    styleUrls: ['./acc-file-detail.component.scss'],
+    standalone: true,
+    imports: [
+        CommonModule,
+        RouterModule,
+        MaterialModule,
+        CommonUiLangModule,
+        UiPaginationModule,
+        ReactiveFormsModule,
+        CommonUiMainPageModule,
+        CommonUiAutoCompleteModule,
+        CommonUiDatepickerModule,
+        CommonUiConfirmationDialogModule,
+        AppArchiveModule
+    ],
 })
 export class AccFileDetailComponent extends BaseEntityDetailComponent<ACCFile> implements OnInit {
     private centerName = '';
