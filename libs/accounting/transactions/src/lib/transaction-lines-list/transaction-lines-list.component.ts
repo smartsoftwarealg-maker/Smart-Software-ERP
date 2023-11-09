@@ -1,24 +1,50 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, DestroyRef, OnInit } from "@angular/core";
 import {
     AccPoliciesService, ACCPolicy,
     ACCTransactionLine, AccTransactionLineService, SCALE
 } from '@ss/accounting/accounting-api';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
-import {ActivatedRoute, Router} from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from "@angular/router";
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
-import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import {LoginService, PaginationModel, PaginatorPersistenceService} from '@ss/common/api-common';
-import {of, switchMap, tap} from 'rxjs';
+import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
+import { LoginService, MaterialModule, PaginationModel, PaginatorPersistenceService } from "@ss/common/api-common";
+import { of, Subscription, switchMap, tap } from "rxjs";
+import { CommonModule } from "@angular/common";
+import { CommonUiLangModule } from "@ss/common/ui-lang";
+import { UiPaginationModule } from "@ss/common/ui-pagination";
+import { FormControl, ReactiveFormsModule } from "@angular/forms";
+import { CommonUiMainPageModule } from "@ss/common/ui-main-page";
+import { CommonUiAutoCompleteModule } from "@ss/common/ui-auto-complete";
+import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
+import { AppArchiveModule } from "@ss/common/app-archive";
+import { debounceTime, distinctUntilChanged } from "rxjs/operators";
+import { Sort } from "@angular/material/sort";
 
 @Component({
     selector: 'ss-transaction-lines-list',
     templateUrl: './transaction-lines-list.component.html',
-    styleUrls: ['./transaction-lines-list.component.scss']
+    styleUrls: ['./transaction-lines-list.component.scss'],
+    standalone: true,
+    imports: [
+        CommonModule,
+        RouterModule,
+        MaterialModule,
+        CommonUiLangModule,
+        UiPaginationModule,
+        ReactiveFormsModule,
+        CommonUiMainPageModule,
+        CommonUiAutoCompleteModule,
+        CommonUiDatepickerModule,
+        CommonUiConfirmationDialogModule,
+        AppArchiveModule
+    ],
 })
 export class TransactionLinesListComponent implements OnInit {
+    private susbscription: Subscription = null;
     data: ACCTransactionLine[] = [];
     private accPolicy: ACCPolicy = null;
     pagination = PaginationModel.newInstance({page: 0, pageSize: 5, elementCount: 0});
+    searchText = new FormControl<string>('');
     private COLUMNS = [
         'lineNumber',
         'accountNo',
@@ -43,8 +69,10 @@ export class TransactionLinesListComponent implements OnInit {
         public confirmationSrv: ConfirmationDialogService,
         public pagPersistSrv: PaginatorPersistenceService,
         private loginSrv: LoginService,
-        private policySrv: AccPoliciesService) {
+        private policySrv: AccPoliciesService,
+        private destroyRef: DestroyRef) {
         this.pagination.onChange = () => this.refresh();
+        this.destroyRef.onDestroy(() => this.susbscription?.unsubscribe());
     }
 
     ngOnInit() {
@@ -69,6 +97,12 @@ export class TransactionLinesListComponent implements OnInit {
                 this.accPolicy = res;
                 this.displayedColumns = this.COLUMNS.filter(e => this.accPolicy?.manualCashFlow || e !== 'c_o_d');
             });
+        this.susbscription = this.searchText
+            .valueChanges
+            .pipe(
+                debounceTime(300),
+                distinctUntilChanged()
+            ).subscribe(res => this.refresh());
     }
 
     selectRow(row: ACCTransactionLine) {
@@ -98,10 +132,15 @@ export class TransactionLinesListComponent implements OnInit {
 
     refresh() {
         this.entitySrv
-            .getList(this.pagination.page - 1, this.pagination.pageSize)
+            .getList(this.pagination.page - 1, this.pagination.pageSize, this.searchText.value)
             .subscribe(res => {
                 this.data = res.body;
                 this.pagination.elementCount = res.itemCount;
             });
+    }
+
+    sort(event: Sort) {
+        this.entitySrv.sortColumn = event;
+        this.refresh();
     }
 }

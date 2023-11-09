@@ -42,7 +42,6 @@ import { AppArchiveModule } from "@ss/common/app-archive";
     declarations: [
       TransactionListComponent,
       TransactionDetailComponent,
-      TransactionLinesListComponent,
       TransactionLinesDetailComponent,
       FileSelectorComponent,
       PeriodSelectorComponent,

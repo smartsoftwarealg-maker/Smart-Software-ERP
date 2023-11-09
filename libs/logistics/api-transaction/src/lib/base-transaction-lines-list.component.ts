@@ -16,7 +16,7 @@ export class BaseTransactionLinesListComponent implements OnInit, OnDestroy {
     private _ref = 0;
     private _isEditable_ = true;
     protected subscription: Subscription = null;
-    searchText = new FormControl('');
+    searchText = new FormControl<string>('');
     parentId: number;
     data: TransactionLine[];
     selectedId: number;
