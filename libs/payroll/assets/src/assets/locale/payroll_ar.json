@@ -152,5 +152,13 @@
     "ARCHIVE_VIEWER":    "استعراض الأرشيف",
     "IS_DRIVER":         "سائق",
     "CMMS_PERSON":       "موظف صيانة",
-    "WORK_STOPPAGES":    "توقفات العمل"
+    "WORK_STOPPAGES":    "توقفات العمل",
+    "MOTHERHOOD":        "الأمومة",
+    "ILLNESS":           "مرض",
+    "ACCIDENT":          "حادثة",
+    "LONG_ILLNESS":      "مرض طويل",
+    "DURATION":             "مدة",
+    "DATE_BACK":            "موعد قديم",
+    "PICK_BACK":            "اختر التاريخ",
+    "CERTIFICATION_NUMBER": "رقم الشهادة"
 }

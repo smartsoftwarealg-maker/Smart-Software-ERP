@@ -152,5 +152,13 @@
     "ARCHIVE_VIEWER":    "Visualisation archives",
     "IS_DRIVER":         "Conducteur",
     "CMMS_PERSON":       "Personnel d'entretien?",
-    "WORK_STOPPAGES":    "Arrêts de travail"
+    "WORK_STOPPAGES":    "Arrêts de travail",
+    "MOTHERHOOD":        "Maternité",
+    "ILLNESS":           "Maladie",
+    "ACCIDENT":          "Accident",
+    "LONG_ILLNESS":      "Longue maladie",
+    "DURATION":             "Durée",
+    "DATE_BACK":            "Revenez en arrière",
+    "PICK_BACK":            "Choisissez la date",
+    "CERTIFICATION_NUMBER": "Numéro de certification"
 }

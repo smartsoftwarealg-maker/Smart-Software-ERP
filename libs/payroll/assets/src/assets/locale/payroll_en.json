@@ -152,5 +152,13 @@
     "ARCHIVE_VIEWER":    "Archive viewer",
     "IS_DRIVER":         "Driver",
     "CMMS_PERSON":       "Maintenance personnel",
-    "WORK_STOPPAGES":    "Work stoppages"
+    "WORK_STOPPAGES":    "Work stoppages",
+    "MOTHERHOOD":        "Motherhood",
+    "ILLNESS":           "Illness",
+    "ACCIDENT":          "Accident",
+    "LONG_ILLNESS":      "Long illness",
+    "DURATION":             "Duration",
+    "DATE_BACK":            "Date back",
+    "PICK_BACK":            "Pick date",
+    "CERTIFICATION_NUMBER": "Certification number"
 }
