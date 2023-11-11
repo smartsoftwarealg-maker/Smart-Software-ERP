@@ -160,5 +160,15 @@
     "DURATION":             "مدة",
     "DATE_BACK":            "موعد قديم",
     "PICK_BACK":            "اختر التاريخ",
-    "CERTIFICATION_NUMBER": "رقم الشهادة"
+    "CERTIFICATION_NUMBER": "رقم الشهادة",
+    "ACTIVITIES":            "أنشطة",
+    "PHYSICIANS":            "الأطباء",
+    "PHYSICIAN":             "الطبيب",
+    "PHYSICIAN_SPECIALTIES": "تخصصات الطبيب",
+    "PHYSICIAN_SPECIALTY": "تخصص الطبيب",
+    "CERT_NUMBER":           "رقم الشهادة",
+    "CERT_REFERENCE":        "مرجع الشهادة",
+    "SALARY":                "مرتب",
+    "PICK_DATE":             "تاريخ الاختيار",
+    "STOPPAGE_TYPE":         "نوع التوقف"
 }

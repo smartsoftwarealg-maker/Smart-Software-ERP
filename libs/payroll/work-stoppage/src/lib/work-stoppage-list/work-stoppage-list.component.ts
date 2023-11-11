@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { Accident } from '../api-work-stoppage';
@@ -22,7 +22,7 @@ import { FormControl, FormsModule } from '@angular/forms';
     templateUrl: './work-stoppage-list.component.html',
     styleUrls: ['./work-stoppage-list.component.css']
 })
-export class WorkStoppageListComponent extends BaseEntityListComponent<Accident> {
+export class WorkStoppageListComponent extends BaseEntityListComponent<Accident> implements OnInit {
     absenceTypes: Lookup[] = [
         { id: 1, description: 'PAYROLL_ILLNESS'},
         { id: 2, description: 'PAYROLL_ACCIDENT'},
@@ -30,17 +30,17 @@ export class WorkStoppageListComponent extends BaseEntityListComponent<Accident>
         { id: 4, description: 'PAYROLL_MOTHERHOOD'},
     ];
 
-    absenceType = new FormControl<number>(0);
+    absenceType = new FormControl<number>(this.entitySrv?.getParentId() || 0);
     displayedColumns = [
         'firstName',
         'lastName',
-        'typeDescription',
         'motiveDescription',
         'date',
         'duration',
         'dateBack',
         'pickDate',
-        'certificationNumber'
+        'certificationNumber',
+        'certificationRef'
     ];
 
     constructor(
@@ -60,12 +60,22 @@ export class WorkStoppageListComponent extends BaseEntityListComponent<Accident>
             confirmationSrv,
             defReportSrv,
             pagPersistSrv,
-            'PAYROLL_WORK_STOPPAGE');
+            'PAYROLL_WORK_STOPPAGES');
         this.pagination.pageSize = 15;
-        this.entitySrv.setParentId(0);
+        if (!this.entitySrv.getParentId()) {
+            this.entitySrv.setParentId(0);
+        }
     }
 
-    onAbsence(e: Lookup) {
-        this.entitySrv.setParentId(e?.id || 0);
+    onAbsence(id: number) {
+        this.entitySrv.setParentId(id || 0);
+        this.addButton.disabled = !id;
+        this.refresh();
+    }
+
+    override ngOnInit() {
+        this.addButton.disabled = !this.entitySrv.getParentId();
+        this.absenceType.setValue(this.entitySrv.getParentId() || 0, { onlySelf: true, emitEvent: true});
+        super.ngOnInit();
     }
 }

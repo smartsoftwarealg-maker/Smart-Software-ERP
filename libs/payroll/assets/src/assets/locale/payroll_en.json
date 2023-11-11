@@ -160,5 +160,15 @@
     "DURATION":             "Duration",
     "DATE_BACK":            "Date back",
     "PICK_BACK":            "Pick date",
-    "CERTIFICATION_NUMBER": "Certification number"
+    "CERTIFICATION_NUMBER": "Certification number",
+    "ACTIVITIES":            "Activities",
+    "PHYSICIANS":            "Physicians",
+    "PHYSICIAN":             "Physician",
+    "PHYSICIAN_SPECIALTIES": "Physician specialties",
+    "PHYSICIAN_SPECIALTY":   "Physician specialty",
+    "CERT_NUMBER":           "Certification number",
+    "CERT_REFERENCE":        "Certification reference",
+    "SALARY":                "Salary",
+    "PICK_DATE":             "Pick date",
+    "STOPPAGE_TYPE":         "Stoppage type"
 }

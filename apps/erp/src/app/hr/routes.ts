@@ -24,7 +24,7 @@ import {
     HR_HOLIDAY_REQUEST_URL,
     COMMON_BLOOD_GROUPS_URL,
     ADMIN_REPORT_RIGHTS_URL,
-    HR_WORK_STOPPAGE_URL
+    HR_WORK_STOPPAGE_URL, HR_ACTIVITY_URL, HR_PHYSICIAN_URL, HR_SPECIALTY_URL
 } from '../common';
 import {
     ABS_INDEX_URL,
@@ -83,7 +83,10 @@ import {
     EmployeeLanguagesDetailComponent,
     EmployeeOldCareerDetailComponent,
     EmployeeDecisionDetailComponent,
-    PersonListComponent, PunishmentListComponent, EmployeeTrainingListComponent, EmployeeDiplomaListComponent
+    PersonListComponent,
+    PunishmentListComponent,
+    EmployeeTrainingListComponent,
+    EmployeeDiplomaListComponent
 } from '@ss/payroll/ui-employee';
 import {
     ACTIVATION_ROUTE_URL,
@@ -132,7 +135,18 @@ import {
     EmployeeContractListComponent
 } from '@ss/payroll/ui-employee';
 import { ReportRightsComponent } from '@ss/administration/reports-rights';
-import { WorkStoppageListComponent } from '@ss/payroll/work-stoppage';
+import {
+    ActivityDetailComponent,
+    ActivityListComponent, PhysicianDetailComponent, PhysicianListComponent,
+    WorkStoppageDetailComponent,
+    WorkStoppageListComponent
+} from '@ss/payroll/work-stoppage';
+import {
+    SpecialtyListComponent
+} from '@ss/payroll/work-stoppage';
+import {
+    SpecialtyDetailComponent
+} from '@ss/payroll/work-stoppage';
 
 export const hrRoutes: Routes = [
     {
@@ -179,7 +193,7 @@ export const hrRoutes: Routes = [
             },
             {
                 path: ':id',
-                component: WorkStoppageListComponent,
+                component: WorkStoppageDetailComponent,
                 canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService]
             },
@@ -826,6 +840,57 @@ export const hrRoutes: Routes = [
                 component: HolidayRequestDetailComponent,
                 canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService],
+            },
+            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
+        ]
+    },
+    {
+        path: HR_ACTIVITY_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: ActivityListComponent,
+                canActivate: [loginGuard]
+            },
+            {
+                path: ':id',
+                component: ActivityDetailComponent,
+                canActivate: [loginGuard],
+                canDeactivate: [CanDeactivateService]
+            },
+            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
+        ]
+    },
+    {
+        path: HR_PHYSICIAN_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: PhysicianListComponent,
+                canActivate: [loginGuard]
+            },
+            {
+                path: ':id',
+                component: PhysicianDetailComponent,
+                canActivate: [loginGuard],
+                canDeactivate: [CanDeactivateService]
+            },
+            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
+        ]
+    },
+    {
+        path: HR_SPECIALTY_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: SpecialtyListComponent,
+                canActivate: [loginGuard]
+            },
+            {
+                path: ':id',
+                component: SpecialtyDetailComponent,
+                canActivate: [loginGuard],
+                canDeactivate: [CanDeactivateService]
             },
             { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
         ]

@@ -228,6 +228,9 @@ export const HR_SUSPENSION_REASON_URL = 'suspensionReason';
 export const HR_DIVISIONS_URL = 'divisions';
 export const HR_HOLIDAY_REQUEST_URL = 'holiday-requests';
 export const HR_DEPARTMENTS_URL = 'departments';
+export const HR_ACTIVITY_URL = 'activities';
+export const HR_PHYSICIAN_URL = 'physicians';
+export const HR_SPECIALTY_URL = 'specialties';
 
 // Payroll
 export const PAYROLL_EMPLOYEES_URL = 'pay-employees';
@@ -564,6 +567,9 @@ export const ABS_HR_DIPLOMAS_URL = '/' + [MAIN_PAGE_URL, HR_APP_URL, HR_DIPLOMAS
 export const ABS_HR_EDUCATION_LEVELS_URL = '/' + [MAIN_PAGE_URL, HR_APP_URL, HR_EDUCATION_LEVELS_URL].join('/');
 export const ABS_HR_MARITAL_STATUS_URL = '/' + [MAIN_PAGE_URL, HR_APP_URL, HR_MARITAL_STATUS_URL].join('/');
 export const ABS_PROFESSIONAL_FAULTS_URL = '/' + [MAIN_PAGE_URL, HR_APP_URL, HR_PROFESSIONAL_FAULT_URL].join('/');
+export const ABS_ACTIVITIES_URL = '/' + [MAIN_PAGE_URL, HR_APP_URL, HR_ACTIVITY_URL].join('/');
+export const ABS_PHYSICIANS_URL = '/' + [MAIN_PAGE_URL, HR_APP_URL, HR_PHYSICIAN_URL].join('/');
+export const ABS_PHYSICIAN_SPECIALTIES_URL = '/' + [MAIN_PAGE_URL, HR_APP_URL, HR_SPECIALTY_URL].join('/');
 export const ABS_PUNISHMENT_TYPE_URL = '/' + [MAIN_PAGE_URL, HR_APP_URL, HR_PUNISHMENT_TYPE_URL].join('/');
 export const ABS_HR_POSTS_URL = '/' + [MAIN_PAGE_URL, HR_APP_URL, HR_POSTS_URL].join('/');
 export const ABS_HR_NATIONALITIES_URL = '/' + [MAIN_PAGE_URL, HR_APP_URL, HR_NATIONALITIES_URL].join('/');

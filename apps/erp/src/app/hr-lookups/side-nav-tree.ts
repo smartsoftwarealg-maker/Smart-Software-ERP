@@ -1,17 +1,28 @@
 import {SideNavNode} from '@ss/common/api-common';
 
 import {
+    ABS_ACTIVITIES_URL,
     ABS_HR_BLOOD_GROUP_URL,
-    ABS_HR_CATEGORIES_URL, ABS_HR_CONTRACT_MOTIVES_URL, ABS_HR_DECISION_MOTIVES_URL,
-    ABS_HR_DEPARTMENTS_URL, ABS_HR_DIPLOMAS_URL,
-    ABS_HR_DIVISIONS_URL, ABS_HR_EDUCATION_LEVELS_URL,
-    ABS_HR_EMPLOYMENT_TYPE_URL, ABS_HR_JUDICIAL_FRAMES_URL,
-    ABS_HR_MARITAL_STATUS_URL, ABS_HR_MOTIVES_URL,
+    ABS_HR_CATEGORIES_URL,
+    ABS_HR_CONTRACT_MOTIVES_URL,
+    ABS_HR_DECISION_MOTIVES_URL,
+    ABS_HR_DEPARTMENTS_URL,
+    ABS_HR_DIPLOMAS_URL,
+    ABS_HR_DIVISIONS_URL,
+    ABS_HR_EDUCATION_LEVELS_URL,
+    ABS_HR_EMPLOYMENT_TYPE_URL,
+    ABS_HR_JUDICIAL_FRAMES_URL,
+    ABS_HR_MARITAL_STATUS_URL,
+    ABS_HR_MOTIVES_URL,
     ABS_HR_NATIONALITIES_URL,
     ABS_HR_POSTS_URL,
     ABS_HR_SERVICES_URL,
-    ABS_HR_SUSPENSION_REASON_URL, ABS_PROFESSIONAL_FAULTS_URL, ABS_PUNISHMENT_TYPE_URL
-} from '../common';
+    ABS_HR_SUSPENSION_REASON_URL,
+    ABS_PHYSICIAN_SPECIALTIES_URL,
+    ABS_PHYSICIANS_URL,
+    ABS_PROFESSIONAL_FAULTS_URL,
+    ABS_PUNISHMENT_TYPE_URL
+} from "../common";
 
 export const hrLookupNavTree: SideNavNode = {
     name: 'PAYROLL_LOOKUPS',
@@ -114,6 +125,21 @@ export const hrLookupNavTree: SideNavNode = {
             name: 'PAYROLL_PUNISHMENTS',
             icon: 'fas fa-graduation-cap',
             route: ABS_PROFESSIONAL_FAULTS_URL
+        },
+        {
+            name: 'PAYROLL_ACTIVITIES',
+            icon: 'fa-solid fa-cake-candles',
+            route: ABS_ACTIVITIES_URL
+        },
+        {
+            name: 'PAYROLL_PHYSICIANS',
+            icon: 'fa-solid fa-user-doctor-hair',
+            route: ABS_PHYSICIANS_URL
+        },
+        {
+            name: 'PAYROLL_PHYSICIAN_SPECIALTIES',
+            icon: 'fa-solid fa-microscope',
+            route: ABS_PHYSICIAN_SPECIALTIES_URL
         },
     ],
     accessRights: 'PAYROLL'

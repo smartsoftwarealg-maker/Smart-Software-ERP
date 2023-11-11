@@ -160,5 +160,15 @@
     "DURATION":             "Durée",
     "DATE_BACK":            "Revenez en arrière",
     "PICK_BACK":            "Choisissez la date",
-    "CERTIFICATION_NUMBER": "Numéro de certification"
+    "CERTIFICATION_NUMBER": "Numéro de certification",
+    "ACTIVITIES":            "Activités",
+    "PHYSICIANS":            "Médecins",
+    "PHYSICIAN":             "Médecin",
+    "PHYSICIAN_SPECIALTIES": "Spécialités médicales",
+    "PHYSICIAN_SPECIALTY":   "Spécialité médicales",
+    "CERT_NUMBER":           "Numéro de certification",
+    "CERT_REFERENCE":        "Référence de certification",
+    "SALARY":                "Salaire",
+    "PICK_DATE":             "Date de remise",
+    "STOPPAGE_TYPE":         "Type d'arrêt"
 }

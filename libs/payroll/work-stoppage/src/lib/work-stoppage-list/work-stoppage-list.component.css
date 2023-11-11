@@ -1,0 +1,29 @@
+.size {
+    width: 96%;
+    max-width: 1200px;
+    margin: 4px auto 0;
+}
+
+.div_table {
+    height: calc(100% - 148px);
+    overflow-x: auto;
+}
+
+.mat-column-firstName,
+.mat-column-lastName,
+.mat-column-date,
+.mat-column-duration,
+.mat-column-dateBack,
+.mat-column-pickDate {
+    flex: 1 1 100px;
+}
+
+.mat-column-certificationNumber,
+.mat-column-motiveDescription,
+.mat-column-certificationRef {
+    flex: 1 1 180px;
+}
+
+mat-table {
+    min-width: 1200px;
+}
