@@ -1,17 +1,38 @@
 import { Component, inject, OnInit } from "@angular/core";
-import {UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
-import {LoginService} from '@ss/common/api-common';
+import { ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup, Validators } from "@angular/forms";
+import { LoginService, MaterialModule } from "@ss/common/api-common";
 import {DepreciationGenerationService} from './depreciation-generation.service';
 import {DepreciationRow} from './depreciation-row';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
-import {ActivatedRoute} from '@angular/router';
+import { ActivatedRoute, RouterModule } from "@angular/router";
 import {AccJournalsService, Journal} from '@ss/accounting/accounting-api';
-import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
+import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from "@ss/common/ui-auto-complete";
+import { CommonModule } from "@angular/common";
+import { CommonUiLangModule } from "@ss/common/ui-lang";
+import { UiPaginationModule } from "@ss/common/ui-pagination";
+import { CommonUiMainPageModule } from "@ss/common/ui-main-page";
+import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
+import { CommonUiConfirmationDialogModule } from "@ss/common/ui-confirmation-dialog";
+import { AppArchiveModule } from "@ss/common/app-archive";
 
 @Component({
     selector: 'ss-depreciation-generation',
     templateUrl: './depreciation-generation.component.html',
-    styleUrls: ['./depreciation-generation.component.scss']
+    styleUrls: ['./depreciation-generation.component.scss'],
+    standalone: true,
+    imports: [
+        CommonModule,
+        RouterModule,
+        MaterialModule,
+        CommonUiLangModule,
+        UiPaginationModule,
+        ReactiveFormsModule,
+        CommonUiMainPageModule,
+        CommonUiAutoCompleteModule,
+        CommonUiDatepickerModule,
+        CommonUiConfirmationDialogModule,
+        AppArchiveModule
+    ],
 })
 export class DepreciationGenerationComponent implements OnInit {
     private fb = inject(UntypedFormBuilder);

@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {forkJoin, Observable, of, Subject, zip} from 'rxjs';
-import {catchError, map, switchMap, tap} from 'rxjs/operators';
+import {catchError, map, switchMap} from 'rxjs/operators';
 import {Direction} from '@angular/cdk/bidi';
 import {HttpClient} from '@angular/common/http';
 import {dateStrToDmy, dateStrToYmd, dateToDmyStr, dateToYmdStr, isString, removeTimeForDateStr} from './utils';
@@ -27,6 +27,8 @@ export interface Language {
     formatDateStr: (d: string) => string;
     formatFullName: (first: string, family: string) => string;
     formatMediumName: (first: string, family: string) => string;
+    decimalPoint: string,
+    thousandSeparator: string;
     // todo: add support for datetime
 }
 
@@ -38,7 +40,9 @@ export const DEFAULT_SUPPORTED_LANGUAGES: Language[] = [
         formatDate: dateToYmdStr,
         formatDateStr: dateStrToYmd,
         formatFullName: formatFullName,
-        formatMediumName: formatMediumName
+        formatMediumName: formatMediumName,
+        decimalPoint: '.',
+        thousandSeparator: ','
     },
     {
         code: 'en',
@@ -47,7 +51,9 @@ export const DEFAULT_SUPPORTED_LANGUAGES: Language[] = [
         formatDate: dateToYmdStr,
         formatDateStr: dateStrToYmd,
         formatFullName: formatFullName,
-        formatMediumName: formatMediumName
+        formatMediumName: formatMediumName,
+        decimalPoint: '.',
+        thousandSeparator: ','
     },
     {
         code: 'fr',
@@ -56,7 +62,9 @@ export const DEFAULT_SUPPORTED_LANGUAGES: Language[] = [
         formatDate: dateToDmyStr,
         formatDateStr: dateStrToDmy,
         formatFullName: formatFullNameWeird,
-        formatMediumName: formatMediumName
+        formatMediumName: formatMediumName,
+        decimalPoint: ',',
+        thousandSeparator: ' '
     }
 ];
 
@@ -189,6 +197,7 @@ export class LanguageService {
     public get dir(): Direction {
         return this.rtl ? 'rtl' : 'ltr';
     }
+
     public get lang(): string {
         return  this.currentLanguage?.code;
     }
@@ -269,7 +278,9 @@ export class LanguageService {
             formatDate: dateToYmdStr,
             formatDateStr: dateStrToYmd,
             formatFullName: formatFullName,
-            formatMediumName: formatMediumName
+            formatMediumName: formatMediumName,
+            decimalPoint: DEFAULT_SUPPORTED_LANGUAGES.filter(e => e.code === conf.code).map(e => e.decimalPoint)[0] || '.',
+            thousandSeparator: DEFAULT_SUPPORTED_LANGUAGES.filter(e => e.code === conf.code).map(e => e.thousandSeparator)[0] || ','
         };
         if (conf.dateFormat === 'fr') {
             lang.formatDate = dateToDmyStr;
@@ -451,6 +462,11 @@ export class LanguageService {
         }
     }
 
+    parseNumber(input: string): number {
+        const str = input || '0';
+        return +str.split(this.currentLanguage.thousandSeparator).join('')
+            .split(this.currentLanguage.decimalPoint).join('.');
+    }
 
 
 }

@@ -1,12 +1,12 @@
 import { Component, inject, OnInit } from '@angular/core';
 import {
-    AbstractControl,
+    AbstractControl, ReactiveFormsModule,
     UntypedFormBuilder,
     UntypedFormGroup,
     ValidationErrors,
     ValidatorFn,
     Validators
-} from '@angular/forms';
+} from "@angular/forms";
 import {
     AccFileService,
     AccPoliciesService,
@@ -17,21 +17,41 @@ import {
     SCALE
 } from '@ss/accounting/accounting-api';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
-import { ActivatedRoute, Router } from "@angular/router";
-import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
+import { ActivatedRoute, Router, RouterModule } from "@angular/router";
+import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
 import {LookupsService} from '@ss/common/api-lookup';
-import {LoginService} from '@ss/common/api-common';
+import { LoginService, MaterialModule } from "@ss/common/api-common";
 import { map, Observable, of } from "rxjs";
 import {switchMap, tap} from 'rxjs/operators';
 import {Account, AccountAutocompleteModel, AccountService} from '@ss/accounting/api-accounts';
-import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
+import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from "@ss/common/ui-auto-complete";
 import {AgentService} from '@ss/logistics/api-agent';
 import {CostCenterService} from '@ss/logistics/api-cost-center';
+import { CommonModule } from "@angular/common";
+import { CommonUiLangModule } from "@ss/common/ui-lang";
+import { UiPaginationModule } from "@ss/common/ui-pagination";
+import { CommonUiMainPageModule } from "@ss/common/ui-main-page";
+import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
+import { AppArchiveModule } from "@ss/common/app-archive";
 
 @Component({
     selector: 'ss-transaction-lines-detail',
     templateUrl: './transaction-lines-detail.component.html',
-    styleUrls: ['./transaction-lines-detail.component.scss']
+    styleUrls: ['./transaction-lines-detail.component.scss'],
+    standalone: true,
+    imports: [
+        CommonModule,
+        RouterModule,
+        MaterialModule,
+        CommonUiLangModule,
+        UiPaginationModule,
+        ReactiveFormsModule,
+        CommonUiMainPageModule,
+        CommonUiAutoCompleteModule,
+        CommonUiDatepickerModule,
+        CommonUiConfirmationDialogModule,
+        AppArchiveModule
+    ],
 })
 export class TransactionLinesDetailComponent implements OnInit {
     private ccSrv = inject(CostCenterService);

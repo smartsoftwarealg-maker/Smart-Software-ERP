@@ -121,5 +121,6 @@
     "SEX":               "",
     "CHILD_COUNT":       "",
     "SUSPENSION_DATE":   "",
-    "PERMANENT_DATE":    ""
+    "PERMANENT_DATE":    "",
+    "WORK_STOPPAGES":    ""
 }

@@ -270,7 +270,7 @@ export class AgentDetailComponent extends BaseEntityDetailComponent<Agent> imple
                     agentId: this.form.controls['id'].value,
                     password: this.pwd2.value
                 })
-                .subscribe(res => this.snackBarSrv.showMessage('COMMON_SUCCESS', false, false));
+                .subscribe(() => this.snackBarSrv.showMessage('COMMON_SUCCESS', false, false));
         }
     }
 

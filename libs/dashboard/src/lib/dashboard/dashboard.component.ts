@@ -215,7 +215,7 @@ export class DashboardComponent extends BaseEntityListComponent<Dashboard> {
                 datasets: [
                     {
                         label: this.selectedRow?.description || '',
-                        data: this.dashboardData.map(a => +((a[1] || '0').replaceAll(',', ''))),
+                        data: this.dashboardData.map(a => this.langSrv.parseNumber(a[1])),
                         backgroundColor: ['blue'],
                         borderColor: ['blue']
                     },

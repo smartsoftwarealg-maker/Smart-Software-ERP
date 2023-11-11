@@ -1,4 +1,3 @@
-export * from './lib/accounting-transactions.module';
 export * from './lib/transaction-detail/transaction-detail.component';
 export * from './lib/transaction-list/transaction-list.component';
 export * from './lib/transaction-lines-list/transaction-lines-list.component';

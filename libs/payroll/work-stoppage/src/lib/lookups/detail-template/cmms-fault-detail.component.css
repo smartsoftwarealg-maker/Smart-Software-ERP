@@ -1,0 +1,16 @@
+.size {
+    width: 600px;
+    margin: 8px auto;
+}
+
+mat-card {
+    border-radius: 1.4em;
+    padding: 16px;
+}
+
+.value {
+    width: 400px;
+    display: block;
+    margin: auto;
+}
+
