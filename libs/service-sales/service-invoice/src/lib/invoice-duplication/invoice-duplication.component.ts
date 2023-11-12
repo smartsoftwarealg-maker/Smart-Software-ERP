@@ -69,10 +69,10 @@ export class InvoiceDuplicationComponent implements OnInit {
 
     private doDuplicate(list: MatSelectionList): Observable<{ count: number }> {
         const e = list.selectedOptions.selected;
-        console.log(e.filter(x => !x.value).map(x => x.value));
+        const value = this.form.value;
         const insert: Insert = {
             center: this.loginSrv.appCtx.center,
-            date: new Date(),
+            date: value.date,
             numbers: e.filter(x => x.value).map(x => +x.value.toString()),
             userId: this.loginSrv.appCtx.id
         };
