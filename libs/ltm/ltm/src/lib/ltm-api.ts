@@ -100,3 +100,8 @@ export interface Batch {
     timeStamp: Date;
     tests: BTest[];
 }
+
+export interface INJResult {
+    found: string[];
+    missing: string[];
+}

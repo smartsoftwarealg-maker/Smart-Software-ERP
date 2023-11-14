@@ -313,5 +313,8 @@
     "UNIT":                      "Unit",
     "PARK":                      "Park",
     "TYPE_TO_SELECT":            "Type to select",
-    "KEEP_ME_SIGNED":            "Keep me signed in"
+    "KEEP_ME_SIGNED":            "Keep me signed in",
+    "SUCCESSES":                  "Successes",
+    "FAILURES":                   "Failures",
+    "OK":                         "OK"
 }

@@ -312,5 +312,8 @@
     "UNIT":                       "الوحدة",
     "PARK":                       "الحظيرة",
     "TYPE_TO_SELECT":             "اكتب للتحديد",
-    "KEEP_ME_SIGNED":             "ابقني مسجلا"
+    "KEEP_ME_SIGNED":             "ابقني مسجلا",
+    "SUCCESSES":                  "النجاحات",
+    "FAILURES":                   "الإخفاقات",
+    "OK":                         "تم"
 }

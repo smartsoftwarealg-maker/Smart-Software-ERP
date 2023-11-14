@@ -316,5 +316,8 @@
     "UNIT":                       "Unité",
     "PARK":                       "Park",
     "TYPE_TO_SELECT":             "Tapez pour sélectionner",
-    "KEEP_ME_SIGNED":             "garde-moi connecté"
+    "KEEP_ME_SIGNED":             "garde-moi connecté",
+    "SUCCESSES":                  "Succès",
+    "FAILURES":                   "Les échecs",
+    "OK":                         "OK"
 }
