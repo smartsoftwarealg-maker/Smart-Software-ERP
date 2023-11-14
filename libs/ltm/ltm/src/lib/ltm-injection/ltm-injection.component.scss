@@ -15,8 +15,7 @@ fieldset {
     margin: 8px auto;
     border-radius: 1.5em;
 }
-
-.ctrl-div {
+.ctrl_div {
     width: 90%;
     margin: 16px auto;
     display: flex;
@@ -25,13 +24,32 @@ fieldset {
     justify-content: space-between;
     border-radius: 1.5em;
 }
-
+.ok__div {
+    justify-content: flex-end;
+}
+.upload_div {
+    height: 270px;
+    align-content: flex-end;
+    padding: 1em;
+}
 .icon {
     margin-left: 8px;
 }
 
 .file-input {
     display: none;
+}
+
+.result {
+    display: flex;
+    justify-content: space-between;
+    padding: 1em;
+    gap: 1em;
+    overflow-y: auto;
+    height: 220px;
+}
+.res__list {
+    flex: 1 1 40%;
 }
 
 progress-bar {

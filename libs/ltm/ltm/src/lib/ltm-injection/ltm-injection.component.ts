@@ -1,15 +1,14 @@
-import { Component, inject, Input, OnInit } from '@angular/core';
+import { Component, inject, Input } from '@angular/core';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {finalize, Subscription} from 'rxjs';
 import {UntypedFormBuilder, Validators} from '@angular/forms';
 import {MatDialogRef} from '@angular/material/dialog';
 import {HttpEventType} from '@angular/common/http';
-import {LtmLineService} from '../services/ltm-line.service';
 import {LtmLineMatterService} from '../services/ltm-line-matter.service';
-import {debounceTime, distinctUntilChanged} from 'rxjs/operators';
 import {LtmInjectionService} from '../services/ltm-injection.service';
 import {LanguageService} from '@ss/common/api-common';
 import { MatRadioChange } from "@angular/material/radio";
+import { INJResult } from "../ltm-api";
 
 @Component({
     selector: 'ss-ltm-injection',
@@ -17,40 +16,42 @@ import { MatRadioChange } from "@angular/material/radio";
     styleUrls: ['./ltm-injection.component.scss'],
 })
 export class LtmInjectionComponent {
-    private matterSrv =  inject(LtmLineMatterService);
-    matterLookup = new DefaultAutoCompleteModel(this.matterSrv, 'matterId');
+    // private matterSrv =  inject(LtmLineMatterService);
+    // matterLookup = new DefaultAutoCompleteModel(this.matterSrv, 'matterId');
 
-    @Input()  requiredFileType = '.xlsx';
+    @Input() requiredFileType = '.xlsx';
     isEditable = false;
 
+    result: INJResult | null = null; // {found: ['foo', '111111', '2222', '33333', '4444', '5555', '6666', '7777', '4444', '5555', '6666', '7777'], missing: ['baz', 'aaa', 'bbb', 'ccc', 'ddd', 'eee', 'ffff', 'ggg', 'hhh', 'iiii', 'jjjj', 'kkkk', 'llll', 'mmm']};
     fileName = '';
     uploadProgress = 0;
     uploadSub: Subscription;
     processing = false;
-    format: 1|2 = 1;
+    format: 1 | 2 = 1;
 
     fb = inject(UntypedFormBuilder);
     form = this.fb.group({
-        from:   [new Date(),                        Validators.required],
-        to:     [new Date(),                        Validators.required],
+        from: [new Date(), Validators.required],
+        to: [new Date(), Validators.required],
     });
 
+
     constructor(private dialogRef: MatDialogRef<LtmInjectionComponent>,
-                private injectSrv: LtmInjectionService,
-                private langSrv: LanguageService) {
+        private injectSrv: LtmInjectionService,
+        private langSrv: LanguageService) {
     }
 
 
     upload(files: any) {
-        const file:File = files[0];
+        const file: File = files[0];
         if (file) {
             this.fileName = file.name;
             const formData = new FormData();
             const value = this.form.value;
             formData.append('file', file);
             formData.append('from', this.langSrv.formatDate(value.from));
-            formData.append('to',   this.langSrv.formatDate(value.to));
-            formData.append('format',   this.format.toString());
+            formData.append('to', this.langSrv.formatDate(value.to));
+            formData.append('format', this.format.toString());
 
             this.processing = true;
             this.uploadSub = this.injectSrv
@@ -60,6 +61,8 @@ export class LtmInjectionComponent {
                     next: (res: any) => {
                         if (res.type == HttpEventType.UploadProgress) {
                             this.uploadProgress = Math.round(100 * (res.loaded / res.total));
+                        } else {
+                            this.result = res?.body;
                         }
                     },
                     error: (err) => {
@@ -67,7 +70,7 @@ export class LtmInjectionComponent {
                         throw err;
                     },
                     complete: () => {
-                        this.dialogRef.close( { count: 1 });
+                        // this.dialogRef.close( { count: 1 });
                         this.processing = false;
                     }
                 });
@@ -87,11 +90,9 @@ export class LtmInjectionComponent {
     public cancel() {
         this.dialogRef.close();
     }
+
     onChange(e: any) {
         this.fileName = e[0]?.name;
     }
-
-    onFormat(e: MatRadioChange) {
-        this.format = +e.value === 2? 2 : 1;
-    }
 }
+

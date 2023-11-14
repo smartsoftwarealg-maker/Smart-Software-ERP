@@ -25,12 +25,12 @@
 
 <mat-progress-bar class="progress-bar" mode="indeterminate" *ngIf="processing"></mat-progress-bar>
 <mat-card>
-    <mat-card-header>
-        <mat-radio-group aria-label="Select an option">
-            <mat-radio-button value="1" (change)="onFormat($event)" translate [checked]="true">LTM_STANDARD_FORMAT</mat-radio-button>
-            <mat-radio-button value="2" (change)="onFormat($event)" translate>LTM_UPDATE_FORMAT</mat-radio-button>
-        </mat-radio-group>
-    </mat-card-header>
+    <!--    <mat-card-header>-->
+    <!--        <mat-radio-group aria-label="Select an option">-->
+    <!--            <mat-radio-button value="1" (change)="onFormat($event)" translate [checked]="true">LTM_STANDARD_FORMAT</mat-radio-button>-->
+    <!--            <mat-radio-button value="2" (change)="onFormat($event)" translate>LTM_UPDATE_FORMAT</mat-radio-button>-->
+    <!--        </mat-radio-group>-->
+    <!--    </mat-card-header>-->
 
     <mat-card-content>
         <form novalidate [formGroup]="form">
@@ -47,8 +47,30 @@
 </mat-card>
 <!--    <div><pre>{{form?.value | json }}</pre></div>-->
 
-
-<div class="ctrl-div">
+<div class="result size" *ngIf="result">
+    <div class="res__list">
+        <mat-toolbar translate color="primary">COMMON_SUCCESSES</mat-toolbar>
+        <ul>
+            <li *ngFor="let i of result.found"> {{ i }} </li>
+        </ul>
+    </div>
+    <div class="res__list">
+        <mat-toolbar color="accent" translate>COMMON_FAILURES</mat-toolbar>
+        <ul>
+            <li *ngFor="let i of result.missing"> {{ i }} </li>
+        </ul>
+    </div>
+</div>
+<div class="ctrl_div ok__div"  *ngIf="result">
+        <button mat-raised-button
+                color="primary"
+                type="button"
+                (click)="cancel()">
+            {{ 'COMMON_OK' | translate }}
+            <i class="fa-solid fa-check  icon"></i>
+        </button>
+</div>
+<div class="ctrl_div upload_div" *ngIf="!result">
     <div *ngIf="!uploadProgress">
         <button mat-raised-button color="primary"
                 type="button"
