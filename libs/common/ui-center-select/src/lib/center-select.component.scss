@@ -1,4 +1,4 @@
-@import "@angular/material/theming";
+@use '@angular/material' as mat;
 
 .cc-container {
   display: flex;
@@ -6,16 +6,15 @@
   height: 100%;
   justify-content: center;
   align-items: center;
-  //background-image: url('assets/img/bg.png');
+  /*background-image: url('assets/img/bg.png');*/
   .stepper {
-    @include mat-elevation(6);
+    @include mat.elevation(6);
     border-radius: 25px;
     overflow: hidden;
     width: 93.75%;
     margin: auto;
     display: block;
     max-width: 480px;
-    //height: 320px;
   }
 
   .hidden-stepper {

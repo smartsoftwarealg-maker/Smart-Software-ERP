@@ -30,7 +30,7 @@ export class WorkStoppageListComponent extends BaseEntityListComponent<Accident>
         { id: 4, description: 'PAYROLL_MOTHERHOOD'},
     ];
 
-    absenceType = new FormControl<number>(this.entitySrv?.getParentId() || 0);
+    absenceType = new FormControl<number>(0);
     displayedColumns = [
         'firstName',
         'lastName',
@@ -61,6 +61,7 @@ export class WorkStoppageListComponent extends BaseEntityListComponent<Accident>
             defReportSrv,
             pagPersistSrv,
             'PAYROLL_WORK_STOPPAGES');
+        this.absenceType.setValue(this.entitySrv?.getParentId() || 0);
         this.pagination.pageSize = 15;
         if (!this.entitySrv.getParentId()) {
             this.entitySrv.setParentId(0);
