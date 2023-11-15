@@ -1,0 +1,870 @@
+[1m[33mOption "browserTarget" is deprecated: Use 'buildTarget' instead.[39m[22m
+[1m[33mWarning: Running a server with --disable-host-check is a security risk. See https://medium.com/webpack/webpack-dev-server-middleware-security-issues-1489d950874a for more information.[39m[22m
+[1m[33mWarning: 'outputHashing' option is disabled when using the dev-server.[39m[22m
+[36m⠋[39m Generating browser application bundles (phase: setup)...[2K[1G[36m⠙[39m Generating browser application bundles (phase: setup)...[2K[1G[36m⠹[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠸[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠼[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠴[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠦[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠧[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠇[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠏[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠋[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠙[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠹[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠸[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠼[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠴[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠦[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠧[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠇[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠏[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠋[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠙[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠹[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠸[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠼[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠴[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠦[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠧[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠇[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠏[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠋[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠙[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠹[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠸[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠼[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠴[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠦[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠧[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠇[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠏[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠋[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠙[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠹[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠸[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠼[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠴[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠦[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠧[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠇[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠏[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠋[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠙[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠹[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠸[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠼[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠴[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠦[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠧[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠇[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠏[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠋[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠙[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠹[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠸[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠼[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠴[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠦[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠧[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠇[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠏[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠋[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠙[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠹[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠸[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠼[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠴[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠦[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠧[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠇[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠏[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠋[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠙[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠹[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠸[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠼[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠴[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠦[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠧[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠇[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠏[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠋[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠙[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠹[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠸[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠼[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠴[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠦[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠧[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠇[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠏[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠋[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠙[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠹[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠸[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠼[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠴[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠦[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠧[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠇[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠏[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠋[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠙[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠹[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠸[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠼[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠴[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠦[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠧[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠇[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠏[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠋[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠙[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠹[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠸[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠼[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠴[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠦[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠧[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠇[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠏[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠋[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠙[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠹[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠸[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠼[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠴[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠦[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠧[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠇[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠏[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠋[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠙[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠹[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠸[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠼[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠴[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠦[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠧[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠇[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠏[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠋[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠙[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠹[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠸[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠼[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠴[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠦[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠧[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠇[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠏[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠋[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠙[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠹[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠸[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠼[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠴[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠦[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠧[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠇[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠏[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠋[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠙[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠹[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠸[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠼[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠴[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠦[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠧[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠇[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠏[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠋[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠙[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠹[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠸[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠼[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠴[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠦[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠧[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠇[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠏[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠋[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠙[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠹[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠸[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠼[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠴[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠦[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠧[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠇[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠏[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠋[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠙[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠹[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠸[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠼[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠴[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠦[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠧[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠇[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠏[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠋[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠙[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠹[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠸[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠼[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠴[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠦[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠧[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠇[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠏[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠋[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠙[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠹[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠸[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠼[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠴[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠦[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠧[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠇[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠏[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠋[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠙[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠹[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠸[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠼[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠴[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠦[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠧[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠇[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠏[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠋[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠙[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠹[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠸[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠼[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠴[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠦[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠧[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠇[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠏[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠋[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠙[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠹[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠸[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠼[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠴[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠦[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠧[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠇[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠏[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠋[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠙[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠹[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠸[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠼[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠴[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠦[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠧[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠇[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠏[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠋[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠙[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠹[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠸[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠼[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠴[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠦[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠧[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠇[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠏[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠋[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠙[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠹[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠸[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠼[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠴[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠦[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠧[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠇[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠏[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠋[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠙[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠹[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠸[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠼[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠴[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠦[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠧[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠇[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠏[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠋[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠙[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠹[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠸[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠼[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠴[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠦[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠧[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠇[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠏[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠋[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠙[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠹[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠸[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠼[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠴[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠦[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠧[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠇[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠏[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠋[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠙[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠹[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠸[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠼[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠴[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠦[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠧[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠇[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠏[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠋[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠙[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠹[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠸[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠼[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠴[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠦[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠧[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠇[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠏[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠋[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠙[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠹[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠸[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠼[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠴[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠦[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠧[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠇[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠏[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠋[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠙[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠹[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠸[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠼[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠴[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠦[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠧[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠇[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠏[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠋[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠙[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠹[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠸[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠼[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠴[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠦[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠧[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠇[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠏[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠋[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠙[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠹[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠸[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠼[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠴[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠦[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠧[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠇[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠏[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠋[39m Generating browser application bundles (phase: sealing)...[2K[1G[36m⠙[39m Generating browser application bundles (phase: sealing)...[2K[1G[32m✔[39m Browser application bundle generation complete.
+[37m[39m
+[37m[0m[1mInitial Chunk Files[22m                                                                                    [2m | [22m[1mNames[22m                                     [2m | [22m [1mRaw Size[22m[0m[39m
+[37m[0m[92mmain.js[39m[37m                                                                                                [2m | [22mmain                                      [2m | [22m [96m10.01 MB[39m[37m[2m | [22m[0m[39m
+[37m[0m[92mstyles.css, styles.js[39m[37m                                                                                  [2m | [22mstyles                                    [2m | [22m[96m613.29 kB[39m[37m[2m | [22m[0m[39m
+[37m[0m[92mpolyfills.js[39m[37m                                                                                           [2m | [22mpolyfills                                 [2m | [22m[96m336.36 kB[39m[37m[2m | [22m[0m[39m
+[37m[0m[92mruntime.js[39m[37m                                                                                             [2m | [22mruntime                                   [2m | [22m [96m12.61 kB[39m[37m[2m | [22m[0m[39m
+[37m[0m[0m[39m
+[37m[0m[1m [22m                                                                                                      [2m | [22m[1mInitial Total[22m                             [2m | [22m [1m10.95 MB[22m[0m[39m
+[37m[0m[0m[39m
+[37m[0m[1mLazy Chunk Files[22m                                                                                       [2m | [22m[1mNames[22m                                     [2m | [22m [1mRaw Size[22m[0m[39m
+[37m[0m[92mapps_erp_src_app_cmms_cmms_module_ts.js[39m[37m                                                                [2m | [22mapp-cmms-cmms-module                      [2m | [22m  [96m1.48 MB[39m[37m[2m | [22m[0m[39m
+[37m[0m[92mdefault-libs_common_ui-lookup_src_index_ts.js[39m[37m                                                          [2m | [22mapp-service-sales-service-sales-module    [2m | [22m[96m990.26 kB[39m[37m[2m | [22m[0m[39m
+[37m[0m[92mapps_erp_src_app[39m[37m_stock_stock_module_ts.js[39m[37m                                                              [2m | [22mapp-stock-stock-module                    [2m | [22m[96m857.30 kB[39m[37m[2m | [22m[0m[39m
+[37m[0m[92mdefault-libs_payroll_ui-employee_src_index_ts.js[39m[37m                                                       [2m | [22mapp-payroll-payroll-module                [2m | [22m[96m802.42 kB[39m[37m[2m | [22m[0m[39m
+[37m[0m[92mapps_erp_src_app_purchases_purchases_module_ts.js[39m[37m                                                      [2m | [22mapp-purchases-purchases-module            [2m | [22m[96m782.95 kB[39m[37m[2m | [22m[0m[39m
+[37m[0m[92mapps_erp_src_app_payroll_payroll_module_ts.js[39m[37m                                                          [2m | [22mapp-payroll-payroll-module                [2m | [22m[96m557.64 kB[39m[37m[2m | [22m[0m[39m
+[37m[0m[92mdefault-libs_sales_ui-invoice-cancellation_src_index_ts-libs_sales_ui-invoice_src_index_ts-li-4522a2.js[39m[37m[2m | [22mapp-service-sales-service-sales-module    [2m | [22m[96m513.03 kB[39m[37m[2m | [22m[0m[39m
+[37m[0m[92mapps_erp_src_app_accounting_accounting_module_ts.js[39m[37m                                                    [2m | [22mapp-accounting-accounting-module          [2m | [22m[96m502.87 kB[39m[37m[2m | [22m[0m[39m
+[37m[0m[92mapps_erp_src_app_park_park_module_ts.js[39m[37m                                                                [2m | [22mapp-park-park-module                      [2m | [22m[96m496.25 kB[39m[37m[2m | [22m[0m[39m
+[37m[0m[92mdefault-node_modules_chart_js_dist_chart_js.js[39m[37m                                                         [2m | [22mapp-service-sales-service-sales-module    [2m | [22m[96m482.50 kB[39m[37m[2m | [22m[0m[39m
+[37m[0m[92mapps_erp_src_app_treasury_treasury_module_ts.js[39m[37m                                                        [2m | [22mapp-treasury-treasury-module              [2m | [22m[96m452.10 kB[39m[37m[2m | [22m[0m[39m
+[37m[0m[92mapps_erp_src_app_service-sales_service-sales_[39m[37mmodule_ts.js[39m[37m                                              [2m | [22mapp-service-sales-service-sales-module    [2m | [22m[96m428.56 kB[39m[37m[2m | [22m[0m[39m
+[37m[0m[92mapps_erp_src_app_sales_sales_module_ts.js[39m[37m                                                              [2m | [22mapp-sales-sales-module                    [2m | [22m[96m341.08 kB[39m[37m[2m | [22m[0m[39m
+[37m[0m[92mapps_erp_src_app_ltm_l-t-m_module_ts.js[39m[37m                                                                [2m | [22mapp-ltm-l-t-m-module                      [2m | [22m[96m339.72 kB[39m[37m[2m | [22m[0m[39m
+[37m[0m[92mdefault-apps_erp_src_app_erp-guards_ts.js[39m[37m                                                              [2m | [22mapp-service-sales-service-sales-module    [2m | [22m[96m337.18 kB[39m[37m[2m | [22m[0m[39m
+[37m[0m[92mapps_erp_src_app_scheduled-sales_scheduled-sales_module_ts.js[39m[37m                                          [2m | [22mapp-scheduled-sales-scheduled-sales-module[2m | [22m[96m329.56 kB[39m[37m[2m | [22m[0m[39m
+[37m[0m[92mapps_erp_src_app_administration_administration_module_ts.js[39m[37m                                            [2m | [22mapp-administration-administration-module  [2m | [22m[96m314.42 kB[39m[37m[2m | [22m[0m[39m
+[37m[0m[92mdefault-libs_remuneration_elements-entry_src_index_ts.js[39m[37m                                               [2m | [22mapp-park-park-module                      [2m | [22m[96m231.25 kB[39m[37m[2m | [22m[0m[39m
+[37m[0m[92mapps_erp_src_app_furniture_furniture_module_ts.js[39m[37m                                                      [2m | [22mapp-furniture-furniture-module            [2m | [22m[96m212.67 kB[39m[37m[2m | [22m[0m[39m
+[37m[0m[92mdefault-libs_logistics_ui-agent_src_index_ts.js[39m[37m                                                        [2m | [22mapp-service-sales-service-sales-module    [2m | [22m[96m204.78 kB[39m[37m[2m | [22m[0m[39m
+[37m[0m[92mdefault-libs_organizations_ui-organizations_src_index_ts.js[39m[37m          [39m[37m                                  [2m | [22mapp-cmms-cmms-module                      [2m | [22m[96m188.93 kB[39m[37m[2m | [22m[0m[39m
+[37m[0m[92mapps_erp_src_app_hr_hr_module_ts.js[39m[37m                                                                    [2m | [22mapp-hr-hr-module                          [2m | [22m[96m177.40 kB[39m[37m[2m | [22m[0m[39m
+[37m[0m[92mapps_erp_src_app_finance_finance_module_ts.js[39m[37m                                                          [2m | [22mapp-finance-finance-module                [2m | [22m[96m150.42 kB[39m[37m[2m | [22m[0m[39m
+[37m[0m[92mdefault-libs_accounting_accounting-accounts_src_index_ts.js[39m[37m                                            [2m | [22mapp-accounting-accounting-module          [2m | [22m[96m150.37 kB[39m[37m[2m | [22m[0m[39m
+[37m[0m[92mapps_erp_src_app_budget_budget_module_ts.js[39m[37m                                                            [2m | [22mapp-budget-budget-module                  [2m | [22m[96m133.45 kB[39m[37m[2m | [22m[0m[39m
+[37m[0m[92mdefault-libs_stock_ui-consumption-lines_src_index_ts.js[39m[37m                                                [2m | [22mapp-treasury-treasury-module              [2m | [22m[96m123.44 kB[39m[37m[2m | [22m[0m[39m
+[37m[0m[92mdefault-libs_budget_budget-planning_src_index_ts.js[39m[37m                                                    [2m | [22mapp-budget-budget-module                  [2m | [22m[96m111.61 kB[39m[37m[2m | [22m[0m[39m
+[37m[0m[92mapps_erp_src_app_web-arch_web-arch_module_ts.js[39m[37m                                                        [2m | [22mapp-web-arch-web-arch-module              [2m | [22m[96m111.41 kB[39m[37m[2m | [22m[0m[39m
+[37m[0m[92mapps_erp_src_app_food_food_module_ts.js[39m[37m                                                                [2m | [22mapp-food-food-module                      [2m | [22m[96m107.49 kB[39m[37m[2m | [22m[0m[39m
+[37m[0m[92mdefault-libs_stock_ui-parts-request_src_index_ts.js[39m[37m                                               [39m[37m     [2m | [22mapp-cmms-cmms-module                      [2m | [22m[96m104.75 kB[39m[37m[2m | [22m[0m[39m
+[37m[0m[92mdefault-libs_logistics_contracts_src_index_ts.js[39m[37m                                                       [2m | [22mapp-service-sales-service-sales-module    [2m | [22m[96m100.78 kB[39m[37m[2m | [22m[0m[39m
+[37m[0m[92mapps_erp_src_app_missions_missions_module_ts.js[39m[37m                                                        [2m | [22mapp-missions-missions-module              [2m | [22m [96m97.57 kB[39m[37m[2m | [22m[0m[39m
+[37m[0m[92mdefault-libs_common_ui-report-param_src_index_ts.js[39m[37m                                                    [2m | [22mapp-service-sales-service-sales-module    [2m | [22m [96m92.20 kB[39m[37m[2m | [22m[0m[39m
+[37m[0m[92mdefault-libs_sales_shopping-cart_src_index_ts.js[39m[37m                                                       [2m | [22mapp-shopping-cart-shopping-cart-module    [2m | [22m [96m87.07 kB[39m[37m[2m | [22m[0m[39m
+[37m[0m[92mdefault-libs_stock_ui-article_src_index_ts.js[39m[37m                                                          [2m | [22mapp-stock-stock-module                    [2m | [22m [96m80.58 kB[39m[37m[2m | [22m[0m[39m
+[37m[0m[92mdefault-libs_administration_ui-report-catalog_src_index_ts.js[39m[37m                                          [2m | [22mapp-administration-administration-module  [2m | [22m [96m78.09 kB[39m[37m[2m | [22m[0m[39m
+[37m[0m[92mdefault-libs_dashboard_src_index_ts.js[39m[37m                                                                 [2m | [22mapp-service-sales-service-sales-module    [2m | [22m [96m74.89 kB[39m[37m[2m | [22m[0m[39m
+[37m[0m[92mdefault-libs_sales_ui-delivery-lines_src_index_ts.js[39m[37m                                                   [2m | [22mapp-shopping-cart-shopping-cart-module    [2m | [22m [96m66.38 kB[39m[37m[2m | [22m[0m[39m
+[37m[0m[92mdefault-libs_logistics_api-transaction_src_index_ts.js[39m[37m                                                 [2m | [22mapp-service-[39m[37msales-service-sales-module    [2m | [22m [96m61.07 kB[39m[37m[2m | [22m[0m[39m
+[37m[0m[92mdefault-libs_logistics_ui-doc-import_src_index_ts.js[39m[37m                                                   [2m | [22mapp-service-sales-service-sales-module    [2m | [22m [96m51.94 kB[39m[37m[2m | [22m[0m[39m
+[37m[0m[92mapps_erp_src_app_logistics-admin_logistics-admin_module_ts.js[39m[37m                                          [2m | [22mapp-logistics-admin-logistics-admin-module[2m | [22m [96m49.95 kB[39m[37m[2m | [22m[0m[39m
+[37m[0m[92mdefault-libs_payroll_api-employee_src_index_ts.js[39m[37m                                                      [2m | [22mapp-service-sales-service-sales-module    [2m | [22m [96m49.50 kB[39m[37m[2m | [22m[0m[39m
+[37m[0m[92mdefault-libs_logistics_ui-account_src_index_ts.js[39m[37m                                                      [2m | [22mapp-accounting-accounting-module          [2m | [22m [96m39.57 kB[39m[37m[2m | [22m[0m[39m
+[37m[0m[92mdefault-libs_administration_reports-rights_src_index_ts.js[39m[37m                                             [2m | [22mapp-stock-stock-module                    [2m | [22m [96m32.51 kB[39m[37m[2m | [22m[0m[39m
+[37m[0m[92mdefault-libs_stock_article-store_src_index_ts.js[39m[37m                                                       [2m | [22mapp-service-sales-service-sales-module    [2m | [22m [96m28.54 kB[39m[37m[2m | [22m[0m[39m
+[37m[0m[92mnode_modules_capacitor_filesystem_dist_esm_web_js.js[39m[37m                                                   [2m | [22mweb                                       [2m | [22m [96m26.28 kB[39m[37m[2m | [22m[0m[39m
+[37m[0m[92mdefault-libs_logistics_ui-options_src_index_ts.js[39m[37m                                                      [2m | [22mapp-service-sales-service-sales-module    [2m | [22m [96m24.47 kB[39m[37m[2m | [22m[0m[39m
+[37m[0m[92mapps_erp_src_app_assets-app_assets_module_ts.js[39m[37m                                                        [2m | [22mapp-assets-app-assets-module             [39m[37m [2m | [22m [96m24.39 kB[39m[37m[2m | [22m[0m[39m
+[37m[0m[92mdefault-libs_common_ui-lookup_src_lib_components_article-type_component_ts.js[39m[37m                          [2m | [22mapp-service-sales-service-sales-module    [2m | [22m [96m20.09 kB[39m[37m[2m | [22m[0m[39m
+[37m[0m[92mdefault-libs_logistics_ui-doc-info_src_index_ts.js[39m[37m                                                     [2m | [22mapp-service-sales-service-sales-module    [2m | [22m [96m17.55 kB[39m[37m[2m | [22m[0m[39m
+[37m[0m[92mcommon.js[39m[37m                                                                                              [2m | [22mcommon                                    [2m | [22m [96m16.74 kB[39m[37m[2m | [22m[0m[39m
+[37m[0m[92mapps_erp_src_app_attendance_attendance_module_ts.js[39m[37m                                                    [2m | [22mapp-attendance-attendance-module          [2m | [22m  [96m7.11 kB[39m[37m[2m | [22m[0m[39m
+[37m[0m[92mapps_erp_src_app_contracts_contracts_module_ts.js[39m[37m                                                      [2m | [22mapp-contracts-contracts-module            [2m | [22m  [96m6.48 kB[39m[37m[2m | [22m[0m[39m
+[37m[0m[92mapps_erp_src_app_organizations_organizations_module_ts.js[39m[37m                                              [2m | [22mapp-organizations-organizations-module    [2m | [22m  [96m6.33 kB[39m[37m[2m | [22m[0m[39m
+[37m[0m[92mapps_erp_src_app_workflow_workflow_module_ts.js[39m[37m                                                        [2m | [22mapp-workflow-workflow-module              [2m | [22m  [96m5.62 kB[39m[37m[2m | [22m[0m[39m
+[37m[0m[92mapps_erp_src_app_shopping-cart_shopping-cart_module_ts.js[39m[37m                                              [2m | [22mapp-shopping-cart-shopping-cart-module    [2m | [22m  [96m4.59 kB[39m[37m[2m | [22m[0m[39m
+[37m[0m[92mapps_erp_src_app_dashboard_app-dashboard_module_ts.js[39m[37m                                                  [2m | [22mapp-dashboard-app-dashboard-module        [2m | [22m  [96m3.92 kB[[39m[37m39m[2m | [22m[0m[39m
+[37m[0m[92mapps_erp_src_app_archive-viewer_archive-viewer_module_ts.js[39m[37m                                            [2m | [22mapp-archive-viewer-archive-viewer-module  [2m | [22m  [96m3.21 kB[39m[37m[2m | [22m[0m[39m
+[37m[0m[92mapps_erp_src_app_logistics-admin_logistics-admin-lookups_module_ts.js[39m[37m                                  [2m | [22mlogistics-admin-lookups-module            [2m | [22m  [96m2.21 kB[39m[37m[2m | [22m[0m[39m
+[37m[0m[92mapps_erp_src_app_web-arch_web-arch-lookups_module_ts.js[39m[37m                                                [2m | [22mweb-arch-lookups-module                   [2m | [22m  [96m2.09 kB[39m[37m[2m | [22m[0m[39m
+[37m[0m[92mapps_erp_src_app_payroll_payroll-lookups_module_ts.js[39m[37m                                                  [2m | [22mpayroll-lookups-module                    [2m | [22m  [96m2.08 kB[39m[37m[2m | [22m[0m[39m
+[37m[0m[0m[39m
+[37m[0mBuild at: [1m[37m2023-11-15T09:05:07.936Z[39m[37m[22m - Hash: [1m[37mcb19cdad9fb39aa7[39m[37m[22m - Time: [1m[37m111998[39m[37m[22mms[0m[39m
+[1m[33m[39m[22m
+[1m[33m[0m[33mWarning: [39m[33m[0m/home/sysnet/backup/weberp-frontend2/node_modules/angularx-qrcode/fesm2022/angularx-qrcode.mjs depends on 'qrcode'. CommonJS or AMD dependencies can cause optimization bailouts.[39m[22m
+[1m[33mFor more info see: https://angular.io/guide/build#configuring-commonjs-dependencies[39m[22m
+[1m[33m[39m[22m
+[1m[33m[39m[22m
+[1m[31m[39m[22m
+[1m[31m[0m[36m./libs/common/ui-center-select/src/lib/center-select.component.scss?ngResource[39m[31m[0m - [0m[91mError: [39m[31m[0mModule build failed (from ./node_modules/sass-loader/dist/cjs.js):[39m[22m
+[1m[31mCan't find stylesheet to import.[39m[22m
+[1m[31m  ╷[39m[22m
+[1m[31m1 │ @import "@angular/material/theming";[39m[22m
+[1m[31m  │         ^^^^^^^^^^^^^^^^^^^^^^^^^^^[39m[22m
+[1m[31m  ╵[39m[22m
+[1m[31m  libs/common/ui-center-select/src/lib/center-select.component.scss 1:9  root stylesheet[39m[22m
+[1m[31m[39m[22m
+[1m[31m[0m[36m./libs/logistics/payment-compensation/src/lib/payment-compensation/payment-compensation.component.scss?ngResource[39m[31m[0m - [0m[91mError: [39m[31m[0mModule build failed (from ./node_modules/sass-loader/dist/cjs.js):[39m[22m
+[1m[31mCan't find stylesheet to import.[39m[22m
+[1m[31m  ╷[39m[22m
+[1m[31m1 │ @import '@angular/material/theming';[39m[22m
+[1m[31m  │         ^^^^^^^^^^^^^^^^^^^^^^^^^^^[39m[22m
+[1m[31m  ╵[39m[22m
+[1m[31m  libs/logistics/payment-compensation/src/lib/payment-compensation/payment-compensation.component.scss 1:9  root stylesheet[39m[22m
+[1m[31m[39m[22m
+[1m[31m[0m[91mError: [39m[31m[0m[96mlibs/payroll/work-stoppage/src/lib/work-stoppage-list/work-stoppage-list.component.ts[0m:[93m33[0m:[93m48[0m - [91merror[0m[90m TS2729: [0mProperty 'entitySrv' is used before its initialization.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m33[0m     absenceType = new FormControl<number>(this.entitySrv?.getParentId() || 0);[39m[22m
+[1m[31m[7m  [0m [91m                                               ~~~~~~~~~[0m[39m[22m
+[1m[31m[39m[22m
+[1m[31m  [96mlibs/payroll/work-stoppage/src/lib/work-stoppage-list/work-stoppage-list.component.ts[0m:[93m47[0m:[93m5[0m[39m[22m
+[1m[31m    [7m47[0m     public override entitySrv: WorkStoppageService,[39m[22m
+[1m[31m    [7m  [0m [96m    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m[39m[22m
+[1m[31m    'entitySrv' is declared here.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[39m[22m
+[1m[31m[0m[91mError: [39m[31m[0m[96mlibs/treasury/ui-transactions/src/lib/bank-expense-list/bank-expense-list.component.ts[0m:[93m55[0m:[93m29[0m - [91merror[0m[90m TS2729: [0mProperty 'entitySrv' is used before its initialization.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m55[0m     displayedColumns = this.entitySrv?.isBank()? this.BANK_COLS: this.CASH_COLS;[39m[22m
+[1m[31m[7m  [0m [91m                            ~~~~~~~~~[0m[39m[22m
+[1m[31m[39m[22m
+[1m[31m  [96mlibs/treasury/ui-transaction[39m[22m[1m[31ms/src/lib/bank-expense-list/bank-expense-list.component.ts[0m:[93m58[0m:[93m9[0m[39m[22m
+[1m[31m    [7m58[0m         public override entitySrv: TreasuryBankExpenseService,[39m[22m
+[1m[31m    [7m  [0m [96m        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m[39m[22m
+[1m[31m    'entitySrv' is declared here.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[39m[22m
+[1m[31m[0m[91mError: [39m[31m[0m[96mlibs/treasury/ui-transactions/src/lib/transaction-list/transaction-list.component.ts[0m:[93m49[0m:[93m29[0m - [91merror[0m[90m TS2729: [0mProperty 'entitySrv' is used before its initialization.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m49[0m     displayedColumns = this.entitySrv?.isBank()? this.BANK_COLS: this.CASH_COLS;[39m[22m
+[1m[31m[7m  [0m [91m                            ~~~~~~~~~[0m[39m[22m
+[1m[31m[39m[22m
+[1m[31m  [96mlibs/treasury/ui-transactions/src/lib/transaction-list/transaction-list.component.ts[0m:[93m54[0m:[93m9[0m[39m[22m
+[1m[31m    [7m54[0m         public override entitySrv: TreasuryTransactionService,[39m[22m
+[1m[31m    [7m  [0m [96m        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m[39m[22m
+[1m[31m    'entitySrv' is declared here.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[39m[22m
+[1m[31m[39m[22m
+[37m[39m
+[37m** Angular Live Development Server is listening on 0.0.0.0:4200, open your browser on http://localhost:4200/ **[39m
+[37m[39m
+[37m[39m
+[37m[91m✖[39m[37m Failed to compile.[39m
+[36m⠋[39m Generating browser application bundles...[2K[1G[36m⠙[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠹[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠸[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠼[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠴[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠦[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠧[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠇[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠏[39m Generating browser application bundles (phase: sealing)...[2K[1G[32m✔[39m Browser application bundle generation complete.
+[37m[39m
+[37m[0m[1mInitial Chunk Files[22m                            [2m | [22m[1mNames[22m                       [2m | [22m [1mRaw Size[22m[0m[39m
+[37m[0m[92mruntime.js[39m[37m                                     [2m | [22mruntime                     [2m | [22m [96m12.61 kB[39m[37m[2m | [22m[0m[39m
+[37m[0m[0m[39m
+[37m[0m[1mLazy Chunk Files[22m                               [2m | [22m[1mNames[22m                       [2m | [22m [1mRaw Size[22m[0m[39m
+[37m[0m[92mapps_erp_src_app_treasury_treasury_module_ts.js[39m[37m[2m | [22mapp-treasury-treasury-module[2m | [22m[96m452.14 kB[39m[37m[2m | [22m[0m[39m
+[37m[0m[0m[39m
+[37m[0m63 unchanged chunks[0m[39m
+[37m[0m[0m[39m
+[37m[0mBuild at: [1m[37m2023-11-15T09:08:49.098Z[39m[37m[22m - Hash: [1m[37m1eb2271ebe64171d[39m[37m[22m - Time: [1m[37m8652[39m[37m[22mms[0m[39m
+[1m[31m[39m[22m
+[1m[31m[0m[91mError: [39m[31m[0m[96mlibs/payroll/work-stoppage/src/lib/work-stoppage-list/work-stoppage-list.component.ts[0m:[93m33[0m:[93m48[0m - [91merror[0m[90m TS2729: [0mProperty 'entitySrv' is used before its initialization.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m33[0m     absenceType = new FormControl<number>(this.entitySrv?.getParentId() || 0);[39m[22m
+[1m[31m[7m  [0m [91m                                               ~~~~~~~~~[0m[39m[22m
+[1m[31m[39m[22m
+[1m[31m  [96mlibs/payroll/work-stoppage/src/lib/work-stoppage-list/work-stoppage-list.component.ts[0m:[93m47[0m:[93m5[0m[39m[22m
+[1m[31m    [7m47[0m     public override entitySrv: WorkStoppageService,[39m[22m
+[1m[31m    [7m  [0m [96m    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m[39m[22m
+[1m[31m    'entitySrv' is declared here.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[39m[22m
+[1m[31m[0m[91mError: [39m[31m[0m[96mlibs/treasury/ui-transactions/src/lib/bank-expense-list/bank-expense-list.component.ts[0m:[93m55[0m:[93m29[0m - [91merror[0m[90m TS2729: [0mProperty 'entitySrv' is used before its initialization.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m55[0m     displayedColumns = this.entitySrv?.isBank()? this.BANK_COLS: this.CASH_COLS;[39m[22m
+[1m[31m[7m  [0m [91m                            ~~~~~~~~~[0m[39m[22m
+[1m[31m[39m[22m
+[1m[31m  [96mlibs/treasury/ui-transactions/src/lib/bank-expense-list/bank-expense-list.component.ts[0m:[93m58[0m:[93m9[0m[39m[22m
+[1m[31m    [7m58[0m         public override entitySrv: TreasuryBankExpenseService,[39m[22m
+[1m[31m    [7m  [0m [96m        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m[39m[22m
+[1m[31m    'entitySrv' is declared here.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[39m[22m
+[1m[31m[39m[22m
+[37m[39m
+[37m[91m✖[39m[37m Failed to compile.[39m
+[36m⠋[39m Generating browser application bundles...[2K[1G[36m⠙[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠹[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠸[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠼[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠴[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠦[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠧[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠇[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠏[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠋[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠙[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠹[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠸[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠼[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠴[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠦[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠧[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠇[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠏[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠋[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠙[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠹[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠸[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠼[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠴[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠦[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠧[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠇[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠏[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠋[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠙[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠹[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠸[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠼[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠴[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠦[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠧[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠇[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠏[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠋[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠙[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠹[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠸[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠼[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠴[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠦[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠧[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠇[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠏[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠋[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠙[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠹[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠸[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠼[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠴[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠦[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠧[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠇[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠏[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠋[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠙[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠹[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠸[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠼[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠴[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠦[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠧[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠇[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠏[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠋[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠙[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠹[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠸[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠼[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠴[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠦[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠧[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠇[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠏[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠋[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠙[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠹[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠸[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠼[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠴[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠦[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠧[39m Generating browser application bundles (phase: sealing)...[2K[1G[32m✔[39m Browser application bundle generation complete.
+[37m[39m
+[37m[0m[1mInitial Chunk Files[22m                            [2m | [22m[1mNames[22m                       [2m | [22m [1mRaw Size[22m[0m[39m
+[37m[0m[92mruntime.js[39m[37m                                     [2m | [22mruntime                     [2m | [22m [96m12.61 kB[39m[37m[2m | [22m[0m[39m
+[37m[0m[0m[39m
+[37m[0m[1mLazy Chunk Files[22m                               [2m | [22m[1mNames[22m                       [2m | [22m [1mRaw Size[22m[0m[39m
+[37m[0m[92mapps_erp_src_app_treasury_treasury_module_ts.js[39m[37m[2m | [22mapp-treasury-treasury-module[2m | [22m[96m452.19 kB[39m[37m[2m | [22m[0m[39m
+[37m[0m[0m[39m
+[37m[0m63 unchanged chunks[0m[39m
+[37m[0m[0m[39m
+[37m[0mBuild at: [1m[37m2023-11-15T09:09:39.372Z[39m[37m[22m - Hash: [1m[37me16e670da230c416[39m[37m[22m - Time: [1m[37m13090[39m[37m[22mms[0m[39m
+[1m[31m[39m[22m
+[1m[31m[0m[91mError: [39m[31m[0m[96mlibs/payroll/work-stoppage/src/lib/work-stoppage-list/work-stoppage-list.component.ts[0m:[93m33[0m:[93m48[0m - [91merror[0m[90m TS2729: [0mProperty 'entitySrv' is used before its initialization.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m33[0m     absenceType = new FormControl<number>(this.entitySrv?.getParentId() || 0);[39m[22m
+[1m[31m[7m  [0m [91m                                               ~~~~~~~~~[0m[39m[22m
+[1m[31m[39m[22m
+[1m[31m  [96mlibs/payroll/work-stoppage/src/lib/work-stoppage-list/work-stoppage-list.component.ts[0m:[93m47[0m:[93m5[0m[39m[22m
+[1m[31m    [7m47[0m     public override entitySrv: WorkStoppageService,[39m[22m
+[1m[31m    [7m  [0m [96m    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m[39m[22m
+[1m[31m    'entitySrv' is declared here.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[39m[22m
+[1m[31m[39m[22m
+[37m[39m
+[37m[91m✖[39m[37m Failed to compile.[39m
+[36m⠋[39m Generating browser application bundles...[2K[1G[36m⠙[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠹[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠸[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠼[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠴[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠦[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠧[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠇[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠏[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠋[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠙[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠹[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠸[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠼[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠴[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠦[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠧[39m Generating browser application bundles (phase: sealing)...[2K[1G[36m⠇[39m Generating browser application bundles (phase: emitting)...[2K[1G[36m⠏[39m Generating browser application bundles (phase: emitting)...[2K[1G[36m⠋[39m Generating browser application bundles (phase: emitting)...[2K[1G[36m⠙[39m Generating browser application bundles (phase: emitting)...[2K[1G[36m⠹[39m Generating browser application bundles (phase: emitting)...[2K[1G[32m✔[39m Browser application bundle generation complete.
+[37m[39m
+[37m[0m[1mInitial Chunk Files[22m                [2m | [22m[1mNames[22m           [2m | [22m [1mRaw Size[22m[0m[39m
+[37m[0m[92mruntime.js[39m[37m                         [2m | [22mruntime         [2m | [22m [96m12.61 kB[39m[37m[2m | [22m[0m[39m
+[37m[0m[0m[39m
+[37m[0m[1mLazy Chunk Files[22m                   [2m | [22m[1mNames[22m           [2m | [22m [1mRaw Size[22m[0m[39m
+[37m[0m[92mapps_erp_src_app_hr_hr_module_ts.js[39m[37m[2m | [22mapp-hr-hr-module[2m | [22m[96m177.44 kB[39m[37m[2m | [22m[0m[39m
+[37m[0m[0m[39m
+[37m[0m63 unchanged chunks[0m[39m
+[37m[0m[0m[39m
+[37m[0mBuild at: [1m[37m2023-11-15T09:11:02.655Z[39m[37m[22m - Hash: [1m[37m1c472d503bd287f6[39m[37m[22m - Time: [1m[37m8754[39m[37m[22mms[0m[39m
+[37m[39m
+[37m[92m✔[39m[37m Compiled successfully.[39m
+[36m⠋[39m Generating browser application bundles...[2K[1G[36m⠙[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠹[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠸[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠼[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠴[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠦[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠧[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠇[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠏[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠋[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠙[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠹[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠸[39m Generating browser application bundles (phase: sealing)...[2K[1G[32m✔[39m Browser application bundle generation complete.
+[37m[39m
+[37m[0m[1mInitial Chunk Files[22m[2m | [22m[1mNames[22m  [2m | [22m[1mRaw Size[22m[0m[39m
+[37m[0m[92mmain.js[39m[37m            [2m | [22mmain   [2m | [22m[96m10.01 MB[39m[37m[2m | [22m[0m[39m
+[37m[0m[92mruntime.js[39m[37m         [2m | [22mruntime[2m | [22m[96m12.61 kB[39m[37m[2m | [22m[0m[39m
+[37m[0m[0m[39m
+[37m[0m63 unchanged chunks[0m[39m
+[37m[0m[0m[39m
+[37m[0mBuild at: [1m[37m2023-11-15T09:21:42.356Z[39m[37m[22m - Hash: [1m[37m348b8b8830900cbd[39m[37m[22m - Time: [1m[37m17404[39m[37m[22mms[0m[39m
+[1m[31m[39m[22m
+[1m[31m[0m[36m./libs/common/ui-center-select/src/lib/center-select.component.scss?ngResource[39m[31m[0m - [0m[91mError: [39m[31m[0mModule build failed (from ./node_modules/sass-loader/dist/cjs.js):[39m[22m
+[1m[31mCan't find stylesheet to import.[39m[22m
+[1m[31m  ╷[39m[22m
+[1m[31m1 │ @import "@angular/material/theming";[39m[22m
+[1m[31m  │         ^^^^^^^^^^^^^^^^^^^^^^^^^^^[39m[22m
+[1m[31m  ╵[39m[22m
+[1m[31m  libs/common/ui-center-select/src/lib/center-select.component.scss 1:9  root stylesheet[39m[22m
+[1m[31m[39m[22m
+[1m[31m[39m[22m
+[37m[39m
+[37m[91m✖[39m[37m Failed to compile.[39m
+[36m⠋[39m Generating browser application bundles...[2K[1G[36m⠙[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠹[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠸[39m Generating browser application bundles (phase: building)...[2K[1G[36m⠼[39m Generating browser application bundles (phase: sealing)...[2K[1G[36m⠴[39m Generating browser application bundles (phase: sealing)...[2K[1G[36m⠦[39m Generating browser application bundles (phase: sealing)...[2K[1G[36m⠧[39m Generating browser application bundles (phase: sealing)...[2K[1G[32m✔[39m Browser application bundle generation complete.
+[37m[39m
+[37m[0m[1mInitial Chunk Files[22m[2m | [22m[1mNames[22m        [2m | [22m[1mRaw Size[22m[0m[39m
+[37m[0m[92mruntime.js[39m[37m         [2m | [22mruntime      [2m | [22m[96m99 bytes[39m[37m[2m | [22m[0m[39m
+[37m[0m[0m[39m
+[37m[0m[1m [22m                  [2m | [22m[1mInitial Total[22m[2m | [22m[1m99 bytes[22m[0m[39m
+[37m[0m[0m[39m
+[37m[0mBuild at: [1m[37m2023-11-15T09:24:22.681Z[39m[37m[22m - Hash: [1m[37mca9250fccf7cdff4[39m[37m[22m - Time: [1m[37m24681[39m[37m[22mms[0m[39m
+[1m[31m[39m[22m
+[1m[31m[0m[91mError: [39m[31m[0mModule not found: Error: Can't resolve '/home/sysnet/backup/weberp-frontend2/node_modules/@ngtools/webpack/src/ivy/index.js' in '/home/sysnet/backup/weberp-frontend2'[39m[22m
+[1m[31m[39m[22m
+[1m[31m[0m[91mError: [39m[31m[0mModule not found: Error: Can't resolve '/home/sysnet/backup/weberp-frontend2/node_modules/@ngtools/webpack/src/ivy/index.js' in '/home/sysnet/backup/weberp-frontend2'[39m[22m
+[1m[31m[39m[22m
+[1m[31m[0m[91mError: [39m[31m[0mModule not found: Error: Can't resolve '/home/sysnet/backup/weberp-frontend2/node_modules/resolve-url-loader/index.js' in '/home/sysnet/backup/weberp-frontend2'[39m[22m
+[1m[31m[39m[22m
+[1m[31m[0m[91mError: [39m[31m[0mModule not found: Error: Can't resolve '/home/sysnet/backup/weberp-frontend2/node_modules/resolve-url-loader/index.js' in '/home/sysnet/backup/weberp-frontend2'[39m[22m
+[1m[31m[39m[22m
+[1m[31m[0m[91mError: [39m[31m[0mModule not found: Error: Can't resolve '/home/sysnet/backup/weberp-frontend2/node_modules/resolve-url-loader/index.js' in '/home/sysnet/backup/weberp-frontend2'[39m[22m
+[1m[31m[39m[22m
+[1m[31m[0m[91mError: [39m[31m[0mModule not found: Error: Can't resolve '/home/sysnet/backup/weberp-frontend2/node_modules/resolve-url-loader/index.js' in '/home/sysnet/backup/weberp-frontend2'[39m[22m
+[1m[31m[39m[22m
+[1m[31m[0m[91mError: [39m[31m[0mModule not found: Error: Can't resolve '/home/sysnet/backup/weberp-frontend2/node_modules/resolve-url-loader/index.js' in '/home/sysnet/backup/weberp-frontend2'[39m[22m
+[1m[31m[39m[22m
+[1m[31m[0m[91mError: [39m[31m[0mModule not found: Error: Can't resolve '/home/sysnet/backup/weberp-frontend2/node_modules/resolve-url-loader/index.js' in '/home/sysnet/backup/weberp-frontend2'[39m[22m
+[1m[31m[39m[22m
+[1m[31m[0m[91mError: [39m[31m[0mModule not found: Error: Can't resolve '/home/sysnet/backup/weberp-frontend2/node_modules/webpack-dev-server/client/index.js?protocol=auto%3A&username=&password=&hostname=0.0.0.0&port=0&pathname=%2Fng-cli-ws&logging=info&overlay=%7B%22errors%22%3Atrue%2C%22warnings%22%3Afalse%2C%22runtimeErrors%22%3Afalse%7D&reconnect=10&hot=false&live-reload=true' in '/home/sysnet/backup/weberp-frontend2'[39m[22m
+[1m[31m[39m[22m
+[1m[31m[0m[91mError: [39m[31m[0m[96mapps/erp/src/app/app.component.html[0m:[[39m[22m[1m[31m93m4[0m:[93m1[0m - [91merror[0m[90m NG8001: [0m'ss-error-message' is not a known element:[39m[22m
+[1m[31m1. If 'ss-error-message' is an Angular component, then verify that it is part of this module.[39m[22m
+[1m[31m2. If 'ss-error-message' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m4[0m <ss-error-message></ss-error-message>[39m[22m
+[1m[31m[7m [0m [91m~~~~~~~~~~~~~~~~~~[0m[39m[22m
+[1m[31m[39m[22m
+[1m[31m  [96mapps/erp/src/app/app.component.ts[0m:[93m13[0m:[93m18[0m[39m[22m
+[1m[31m    [7m13[0m     templateUrl: './app.component.html',[39m[22m
+[1m[31m    [7m  [0m [96m                 ~~~~~~~~~~~~~~~~~~~~~~[0m[39m[22m
+[1m[31m    Error occurs in the template of component AppComponent.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[39m[22m
+[1m[31m[0m[91mError: [39m[31m[0m[96mapps/erp/src/app/app.module.ts[0m:[93m15[0m:[93m9[0m - [91merror[0m[90m TS2305: [0mModule '"ngx-color-picker"' has no exported member 'ColorPickerModule'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m15[0m import {ColorPickerModule} from 'ngx-color-picker';[39m[22m
+[1m[31m[7m  [0m [91m        ~~~~~~~~~~~~~~~~~[0m[39m[22m
+[1m[31m[39m[22m
+[1m[31m[39m[22m
+[1m[31m[0m[91mError: [39m[31m[0m[96mapps/erp/src/app/app.module.ts[0m:[93m35[0m:[93m14[0m - [91merror[0m[90m NG1010: [0mValue[39m[22m
+[1m[31m[39m[22m
+[1m[31m[0m[91mError: [39m[31m[0m[96mlibs/organizations/ui-organizations/src/lib/departments/departments-list.component.html[0m:[93m2[0m:[93m5[0m - [91merror[0m[90m NG8001: [0m'mat-table' is not a known element:[39m[22m
+[1m[31m1. If 'mat-table' is an Angular component, then verify that it is part of this module.[39m[22m
+[1m[31m2. If 'mat-table' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m2[0m     <mat-table mat-table [dataSource]="data" class="main-table">[39m[22m
+[1m[31m[7m [0m [91m    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m[39m[22m
+[1m[31m[39m[22m
+[1m[31m  [96mlibs/organizations/ui-organizations/src/lib/departments/departments-list.component.ts[0m:[93m14[0m:[93m18[0m[39m[22m
+[1m[31m    [7m14[0m     templateUrl: './departments-list.component.html',[39m[22m
+[1m[31m    [7m  [0m [96m                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m[39m[22m
+[1m[31m    Error occu[39m[22m[1m[31mrs in the template of component DepartmentsListComponent.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[39m[22m
+[1m[31m[0m[91mError: [39m[31m[0m[96mlibs/organizations/ui-organizations/src/lib/departments/departments-list.component.html[0m:[93m2[0m:[93m26[0m - [91merror[0m[90m NG8002: [0mCan't bind to 'dataSource' since it isn't a known property of 'mat-table'.[39m[22m
+[1m[31m1. If 'mat-table' is an Angular component and it has 'dataSource' input, then verify that it is part of this module.[39m[22m
+[1m[31m2. If 'mat-table' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.[39m[22m
+[1m[31m3. To allow any property add 'NO_ERRORS_SCHEMA' to the '@NgModule.schemas' of this component.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m2[0m     <mat-table mat-table [dataSource]="data" class="main-table">[39m[22m
+[1m[31m[7m [0m [91m                         ~~~~~~~~~~~~~~~~~~~[0m[39m[22m
+[1m[31m[39m[22m
+[1m[31m  [96mlibs/organizations/ui-organizations/src/lib/departments/departments-list.component.ts[0m:[93m14[0m:[93m18[0m[39m[22m
+[1m[31m    [7m14[0m     templateUrl: './departments-list.component.html',[39m[22m
+[1m[31m    [7m  [0m [96m                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m[39m[22m
+[1m[31m    Error occurs in the template of component DepartmentsListComponent.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[39m[22m
+[1m[31m[0m[91mError: [39m[31m[0m[96mlibs/organizations/ui-organizations/src/lib/departments/departments-list.component.html[0m:[93m25[0m:[93m5[0m - [91merror[0m[90m NG8001: [0m'ss-pagination' is not a known element:[39m[22m
+[1m[31m1. If 'ss-pagination' is an Angular component, then verify that it is part of this module.[39m[22m
+[1m[31m2. If 'ss-pagination' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m25[0m     <ss-pagination [paginationModel]="pagination"></ss-pagination>[39m[22m
+[1m[31m[7m  [0m [91m    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m[39m[22m
+[1m[31m[39m[22m
+[1m[31m  [96mlibs/organizations/ui-organizations/src/lib/departments/departments-list.component.ts[0m:[93m14[0m:[93m18[0m[39m[22m
+[1m[31m    [7m14[0m     templateUrl: './departments-list.component.html',[39m[22m
+[1m[31m    [7m  [0m [96m                 ~~~~~~~~~~~~~~~~~[39m[22m[1m[31m~~~~~~~~~~~~~~~~~~[0m[39m[22m
+[1m[31m    Error occurs in the template of component DepartmentsListComponent.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[39m[22m
+[1m[31m[0m[91mError: [39m[31m[0m[96mlibs/organizations/ui-organizations/src/lib/departments/departments-list.component.html[0m:[93m25[0m:[93m20[0m - [91merror[0m[90m NG8002: [0mCan't bind to 'paginationModel' since it isn't a known property of 'ss-pagination'.[39m[22m
+[1m[31m1. If 'ss-pagination' is an Angular component and it has 'paginationModel' input, then verify that it is part of this module.[39m[22m
+[1m[31m2. If 'ss-pagination' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.[39m[22m
+[1m[31m3. To allow any property add 'NO_ERRORS_SCHEMA' to the '@NgModule.schemas' of this component.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m25[0m     <ss-pagination [paginationModel]="pagination"></ss-pagination>[39m[22m
+[1m[31m[7m  [0m [91m                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m[39m[22m
+[1m[31m[39m[22m
+[1m[31m  [96mlibs/organizations/ui-organizations/src/lib/departments/departments-list.component.ts[0m:[93m14[0m:[93m18[0m[39m[22m
+[1m[31m    [7m14[0m     templateUrl: './departments-list.component.html',[39m[22m
+[1m[31m    [7m  [0m [96m                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m[39m[22m
+[1m[31m    Error occurs in the template of component DepartmentsListComponent.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[39m[22m
+[1m[31m[0m[91mError: [39m[31m[0m[96mlibs/organizations/ui-organizations/src/lib/divisions/divisions-list.component.html[0m:[93m2[0m:[93m5[0m - [91merror[0m[90m NG8001: [0m'mat-table' is not a known element:[39m[22m
+[1m[31m1. If 'mat-table' is an Angular component, then verify that it is part of this module.[39m[22m
+[1m[31m2. If 'mat-table' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m2[0m     <mat-table mat-table [dataSource]="data" class="main-table">[39m[22m
+[1m[31m[7m [0m [91m    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m[39m[22m
+[1m[31m[39m[22m
+[1m[31m  [96mlibs/organizations/ui-organizations/src/lib/divisions/divisions-list.component.ts[0m:[93m17[0m:[93m18[0m[39m[22m
+[1m[31m    [7m17[0m     templateUrl: './divisions-list.component.html'[39m[22m[1m[31m,[39m[22m
+[1m[31m    [7m  [0m [96m                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m[39m[22m
+[1m[31m    Error occurs in the template of component DivisionsListComponent.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[39m[22m
+[1m[31m[0m[91mError: [39m[31m[0m[96mlibs/organizations/ui-organizations/src/lib/divisions/divisions-list.component.html[0m:[93m2[0m:[93m26[0m - [91merror[0m[90m NG8002: [0mCan't bind to 'dataSource' since it isn't a known property of 'mat-table'.[39m[22m
+[1m[31m1. If 'mat-table' is an Angular component and it has 'dataSource' input, then verify that it is part of this module.[39m[22m
+[1m[31m2. If 'mat-table' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.[39m[22m
+[1m[31m3. To allow any property add 'NO_ERRORS_SCHEMA' to the '@NgModule.schemas' of this component.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m2[0m     <mat-table mat-table [dataSource]="data" class="main-table">[39m[22m
+[1m[31m[7m [0m [91m                         ~~~~~~~~~~~~~~~~~~~[0m[39m[22m
+[1m[31m[39m[22m
+[1m[31m  [96mlibs/organizations/ui-organizations/src/lib/divisions/divisions-list.component.ts[0m:[93m17[0m:[93m18[0m[39m[22m
+[1m[31m    [7m17[0m     templateUrl: './divisions-list.component.html',[39m[22m
+[1m[31m    [7m  [0m [96m                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m[39m[22m
+[1m[31m    Error occurs in the template of component DivisionsListComponent.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[39m[22m
+[1m[31m[0m[91mError: [39m[31m[0m[96mlibs/organizations/ui-organizations/src/lib/divisions/divisions-list.component.html[0m:[93m27[0m:[93m5[0m - [91merror[0m[90m NG8001: [0m'ss-pagination' is not a known element:[39m[22m
+[1m[31m1. If 'ss-pagination' is an Angular component, then verify that it is part of this module.[39m[22m
+[1m[31m2. If 'ss-pagination' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m27[0m     <ss-pagination [paginationModel]="pagination"></ss-pagination>[39m[22m
+[1m[31m[7m  [0m [91m    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m[39m[22m
+[1m[31m[39m[22m
+[1m[31m  [96mlibs/organizations/ui-organizations/src/lib/divisions/divisions-list.component.ts[0m:[93m17[0m:[93m18[0m[39m[22m
+[1m[31m    [7m17[0m     templateUrl: './divisions-list.compon[39m[22m[1m[31ment.html',[39m[22m
+[1m[31m    [7m  [0m [96m                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m[39m[22m
+[1m[31m    Error occurs in the template of component DivisionsListComponent.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[39m[22m
+[1m[31m[0m[91mError: [39m[31m[0m[96mlibs/organizations/ui-organizations/src/lib/divisions/divisions-list.component.html[0m:[93m27[0m:[93m20[0m - [91merror[0m[90m NG8002: [0mCan't bind to 'paginationModel' since it isn't a known property of 'ss-pagination'.[39m[22m
+[1m[31m1. If 'ss-pagination' is an Angular component and it has 'paginationModel' input, then verify that it is part of this module.[39m[22m
+[1m[31m2. If 'ss-pagination' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.[39m[22m
+[1m[31m3. To allow any property add 'NO_ERRORS_SCHEMA' to the '@NgModule.schemas' of this component.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m27[0m     <ss-pagination [paginationModel]="pagination"></ss-pagination>[39m[22m
+[1m[31m[7m  [0m [91m                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m[39m[22m
+[1m[31m[39m[22m
+[1m[31m  [96mlibs/organizations/ui-organizations/src/lib/divisions/divisions-list.component.ts[0m:[93m17[0m:[93m18[0m[39m[22m
+[1m[31m    [7m17[0m     templateUrl: './divisions-list.component.html',[39m[22m
+[1m[31m    [7m  [0m [96m                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m[39m[22m
+[1m[31m    Error occurs in the template of component DivisionsListComponent.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[39m[22m
+[1m[31m[0m[91mError: [39m[31m[0m[96mlibs/organizations/ui-organizations/src/lib/offices/detail/office-detail.component.html[0m:[93m2[0m:[93m1[0m - [91merror[0m[90m NG8001: [0m'mat-card' is not a known element:[39m[22m
+[1m[31m1. If 'mat-card' is an Angular component, then verify that it is part of this module.[39m[22m
+[1m[31m2. If 'mat-card' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m2[0m <mat-card class="form-container">[39m[22m
+[1m[31m[7m [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m[39m[22m
+[1m[31m[39m[22m
+[1m[31m  [96mlibs/organizations/ui-organizations/src/lib/offices/detail/office-detail.component.ts[0m:[93m14[0m:[93m16[0m[39m[22m
+[1m[31m    [7m14[0m   templateUrl: './office-detail.component.html',[39m[22m
+[1m[31m    [7m  [39m[22m[1m[31m[0m [96m               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m[39m[22m
+[1m[31m    Error occurs in the template of component OfficeDetailComponent.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[39m[22m
+[1m[31m[0m[91mError: [39m[31m[0m[96mlibs/organizations/ui-organizations/src/lib/offices/list/offices-list.component.html[0m:[93m3[0m:[93m5[0m - [91merror[0m[90m NG8001: [0m'mat-form-field' is not a known element:[39m[22m
+[1m[31m1. If 'mat-form-field' is an Angular component, then verify that it is part of this module.[39m[22m
+[1m[31m2. If 'mat-form-field' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m3[0m     <mat-form-field class="default-50 sm-100">[39m[22m
+[1m[31m[7m [0m [91m    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m[39m[22m
+[1m[31m[39m[22m
+[1m[31m  [96mlibs/organizations/ui-organizations/src/lib/offices/list/offices-list.component.ts[0m:[93m15[0m:[93m18[0m[39m[22m
+[1m[31m    [7m15[0m     templateUrl: './offices-list.component.html',[39m[22m
+[1m[31m    [7m  [0m [96m                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m[39m[22m
+[1m[31m    Error occurs in the template of component OfficesListComponent.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[39m[22m
+[1m[31m[0m[91mError: [39m[31m[0m[96mlibs/organizations/ui-organizations/src/lib/offices/list/offices-list.component.html[0m:[93m4[0m:[93m9[0m - [91merror[0m[90m NG8001: [0m'mat-label' is not a known element:[39m[22m
+[1m[31m1. If 'mat-label' is an Angular component, then verify that it is part of this module.[39m[22m
+[1m[31m2. If 'mat-label' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m4[0m         <mat-label translate>ASSET_SITES</mat-label>[39m[22m
+[1m[31m[7m [0m [91m        ~~~~~~~~~~~~~~~~~~~~~[0m[39m[22m
+[1m[31m[39m[22m
+[1m[31m  [96mlibs/organizations/ui-organizations/src/lib/offices/list/offices-list.component.ts[0m:[93m15[0m:[93m18[0m[39m[22m
+[1m[31m    [7m15[0m     templateUrl: './offices-list.component.html',[39m[22m
+[1m[31m    [7m  [0m [96m                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m[39m[22m
+[1m[31m    Error occurs in the template of component OfficesListComponent.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[39m[22m
+[1m[31m[0m[91mError: [39m[31m[0m[96mlibs/organizations/ui-organizations/src/lib/offices/[39m[22m[1m[31mlist/offices-list.component.html[0m:[93m5[0m:[93m9[0m - [91merror[0m[90m NG8001: [0m'ss-auto-complete' is not a known element:[39m[22m
+[1m[31m1. If 'ss-auto-complete' is an Angular component, then verify that it is part of this module.[39m[22m
+[1m[31m2. If 'ss-auto-complete' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m5[0m         <ss-auto-complete matInput[39m[22m
+[1m[31m[7m [0m [91m        ~~~~~~~~~~~~~~~~~~~~~~~~~~[0m[39m[22m
+[1m[31m[7m6[0m                           [formControl]="locationCtrl"[39m[22m
+[1m[31m[7m [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m[39m[22m
+[1m[31m[7m7[0m                           [model]="locationLookup">[39m[22m
+[1m[31m[7m [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m[39m[22m
+[1m[31m[39m[22m
+[1m[31m  [96mlibs/organizations/ui-organizations/src/lib/offices/list/offices-list.component.ts[0m:[93m15[0m:[93m18[0m[39m[22m
+[1m[31m    [7m15[0m     templateUrl: './offices-list.component.html',[39m[22m
+[1m[31m    [7m  [0m [96m                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m[39m[22m
+[1m[31m    Error occurs in the template of component OfficesListComponent.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[39m[22m
+[1m[31m[0m[91mError: [39m[31m[0m[96mlibs/organizations/ui-organizations/src/lib/offices/list/offices-list.component.html[0m:[93m6[0m:[93m27[0m - [91merror[0m[90m NG8002: [0mCan't bind to 'formControl' since it isn't a known property of 'ss-auto-complete'.[39m[22m
+[1m[31m1. If 'ss-auto-complete' is an Angular component and it has 'formControl' input, then verify that it is part of this module.[39m[22m
+[1m[31m2. If 'ss-auto-complete' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.[39m[22m
+[1m[31m3. To allow any property add 'NO_ERRORS_SCHEMA' to the '@NgModule.schemas' of this component.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m6[0m                           [formControl]="locationCtrl"[39m[22m
+[1m[31m[7m [0m [91m                          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m[39m[22m
+[1m[31m[39m[22m
+[1m[31m  [96mlibs/organizations/ui-organizations/src/lib/offices/list/offices-list.component.ts[0m:[93m15[0m:[93m18[0m[39m[22m
+[1m[31m    [7m15[0m     templateUrl: './o[39m[22m[1m[31mffices-list.component.html',[39m[22m
+[1m[31m    [7m  [0m [96m                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m[39m[22m
+[1m[31m    Error occurs in the template of component OfficesListComponent.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[39m[22m
+[1m[31m[0m[91mError: [39m[31m[0m[96mlibs/organizations/ui-organizations/src/lib/offices/list/offices-list.component.html[0m:[93m7[0m:[93m27[0m - [91merror[0m[90m NG8002: [0mCan't bind to 'model' since it isn't a known property of 'ss-auto-complete'.[39m[22m
+[1m[31m1. If 'ss-auto-complete' is an Angular component and it has 'model' input, then verify that it is part of this module.[39m[22m
+[1m[31m2. If 'ss-auto-complete' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.[39m[22m
+[1m[31m3. To allow any property add 'NO_ERRORS_SCHEMA' to the '@NgModule.schemas' of this component.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m7[0m                           [model]="locationLookup">[39m[22m
+[1m[31m[7m [0m [91m                          ~~~~~~~~~~~~~~~~~~~~~~~~[0m[39m[22m
+[1m[31m[39m[22m
+[1m[31m  [96mlibs/organizations/ui-organizations/src/lib/offices/list/offices-list.component.ts[0m:[93m15[0m:[93m18[0m[39m[22m
+[1m[31m    [7m15[0m     templateUrl: './offices-list.component.html',[39m[22m
+[1m[31m    [7m  [0m [96m                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m[39m[22m
+[1m[31m    Error occurs in the template of component OfficesListComponent.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[39m[22m
+[1m[31m[0m[91mError: [39m[31m[0m[96mlibs/organizations/ui-organizations/src/lib/offices/list/offices-list.component.html[0m:[93m11[0m:[93m5[0m - [91merror[0m[90m NG8001: [0m'mat-form-field' is not a known element:[39m[22m
+[1m[31m1. If 'mat-form-field' is an Angular component, then verify that it is part of this module.[39m[22m
+[1m[31m2. If 'mat-form-field' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m11[0m     <mat-form-field class="default-50 sm-100">[39m[22m
+[1m[31m[7m  [0m [91m    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m[39m[22m
+[1m[31m[39m[22m
+[1m[31m  [96mlibs/organizations/ui-organizations/src/lib/offices/list/offices-list.component.ts[0m:[93m15[0m:[93m18[0m[39m[22m
+[1m[31m    [7m15[0m     templateUrl: './offices-list.comp[39m[22m[1m[31monent.html',[39m[22m
+[1m[31m    [7m  [0m [96m                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m[39m[22m
+[1m[31m    Error occurs in the template of component OfficesListComponent.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[39m[22m
+[1m[31m[0m[91mError: [39m[31m[0m[96mlibs/organizations/ui-organizations/src/lib/offices/list/offices-list.component.html[0m:[93m12[0m:[93m9[0m - [91merror[0m[90m NG8001: [0m'mat-label' is not a known element:[39m[22m
+[1m[31m1. If 'mat-label' is an Angular component, then verify that it is part of this module.[39m[22m
+[1m[31m2. If 'mat-label' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m12[0m         <mat-label translate> {{ buidlingLabel }} </mat-label>[39m[22m
+[1m[31m[7m  [0m [91m        ~~~~~~~~~~~~~~~~~~~~~[0m[39m[22m
+[1m[31m[39m[22m
+[1m[31m  [96mlibs/organizations/ui-organizations/src/lib/offices/list/offices-list.component.ts[0m:[93m15[0m:[93m18[0m[39m[22m
+[1m[31m    [7m15[0m     templateUrl: './offices-list.component.html',[39m[22m
+[1m[31m    [7m  [0m [96m                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m[39m[22m
+[1m[31m    Error occurs in the template of component OfficesListComponent.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[39m[22m
+[1m[31m[0m[91mError: [39m[31m[0m[96mlibs/organizations/ui-organizations/src/lib/offices/list/offices-list.component.html[0m:[93m13[0m:[93m9[0m - [91merror[0m[90m NG8001: [0m'ss-auto-complete' is not a known element:[39m[22m
+[1m[31m1. If 'ss-auto-complete' is an Angular component, then verify that it is part of this module.[39m[22m
+[1m[31m2. If 'ss-auto-complete' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m13[0m         <ss-auto-complete matInput[39m[22m
+[1m[31m[7m  [0m [91m        ~~~~~~~~~~~~~~~~~~~~~~~~~~[0m[39m[22m
+[1m[31m[7m14[0m                           [formControl]="buildingCtrl"[39m[22m
+[1m[31m[7m  [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m[39m[22m
+[1m[31m[7m15[0m                           [model]="buildingLookup">[39m[22m
+[1m[31m[7m  [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m[39m[22m
+[1m[31m[39m[22m
+[1m[31m  [96mlibs/organizations/ui-organizations/src/lib/offices/list/offices-list.component.ts[0m:[93m15[0m:[93[39m[22m[1m[31mm18[0m[39m[22m
+[1m[31m    [7m15[0m     templateUrl: './offices-list.component.html',[39m[22m
+[1m[31m    [7m  [0m [96m                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m[39m[22m
+[1m[31m    Error occurs in the template of component OfficesListComponent.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[39m[22m
+[1m[31m[0m[91mError: [39m[31m[0m[96mlibs/organizations/ui-organizations/src/lib/offices/list/offices-list.component.html[0m:[93m14[0m:[93m27[0m - [91merror[0m[90m NG8002: [0mCan't bind to 'formControl' since it isn't a known property of 'ss-auto-complete'.[39m[22m
+[1m[31m1. If 'ss-auto-complete' is an Angular component and it has 'formControl' input, then verify that it is part of this module.[39m[22m
+[1m[31m2. If 'ss-auto-complete' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.[39m[22m
+[1m[31m3. To allow any property add 'NO_ERRORS_SCHEMA' to the '@NgModule.schemas' of this component.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m14[0m                           [formControl]="buildingCtrl"[39m[22m
+[1m[31m[7m  [0m [91m                          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m[39m[22m
+[1m[31m[39m[22m
+[1m[31m  [96mlibs/organizations/ui-organizations/src/lib/offices/list/offices-list.component.ts[0m:[93m15[0m:[93m18[0m[39m[22m
+[1m[31m    [7m15[0m     templateUrl: './offices-list.component.html',[39m[22m
+[1m[31m    [7m  [0m [96m                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m[39m[22m
+[1m[31m    Error occurs in the template of component OfficesListComponent.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[39m[22m
+[1m[31m[0m[91mError: [39m[31m[0m[96mlibs/organizations/ui-organizations/src/lib/offices/list/offices-list.component.html[0m:[93m15[0m:[93m27[0m - [91merror[0m[90m NG8002: [0mCan't bind to 'model' since it isn't a known property of 'ss-auto-complete'.[39m[22m
+[1m[31m1. If 'ss-auto-complete' is an Angular component and it has 'model' input, then verify that it is part of this module.[39m[22m
+[1m[31m2. If 'ss-auto-complete' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.[39m[22m
+[1m[31m3. To allow any property add 'NO_ERRORS_SCHEMA' to the '@NgModule.schemas' of this component.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m15[0m                           [model]="buildingLookup">[39m[22m
+[1m[31m[7m  [39m[22m[1m[31m[0m [91m                          ~~~~~~~~~~~~~~~~~~~~~~~~[0m[39m[22m
+[1m[31m[39m[22m
+[1m[31m  [96mlibs/organizations/ui-organizations/src/lib/offices/list/offices-list.component.ts[0m:[93m15[0m:[93m18[0m[39m[22m
+[1m[31m    [7m15[0m     templateUrl: './offices-list.component.html',[39m[22m
+[1m[31m    [7m  [0m [96m                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m[39m[22m
+[1m[31m    Error occurs in the template of component OfficesListComponent.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[39m[22m
+[1m[31m[0m[91mError: [39m[31m[0m[96mlibs/organizations/ui-organizations/src/lib/offices/list/offices-list.component.html[0m:[93m23[0m:[93m5[0m - [91merror[0m[90m NG8001: [0m'mat-table' is not a known element:[39m[22m
+[1m[31m1. If 'mat-table' is an Angular component, then verify that it is part of this module.[39m[22m
+[1m[31m2. If 'mat-table' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m23[0m     <mat-table mat-table [dataSource]="data" class="main-table" matSort (matSortChange)="sort($event)" >[39m[22m
+[1m[31m[7m  [0m [91m    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m[39m[22m
+[1m[31m[39m[22m
+[1m[31m  [96mlibs/organizations/ui-organizations/src/lib/offices/list/offices-list.component.ts[0m:[93m15[0m:[93m18[0m[39m[22m
+[1m[31m    [7m15[0m     templateUrl: './offices-list.component.html',[39m[22m
+[1m[31m    [7m  [0m [96m                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m[39m[22m
+[1m[31m    Error occurs in the template of component OfficesListComponent.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[39m[22m
+[1m[31m[0m[91mError: [39m[31m[0m[96mlibs/organizations/ui-organizations/src/lib/offices/list/offices-list.component.html[0m:[93m23[0m:[93m26[0m - [91merror[0m[90m NG8002: [0mCan't bind to 'dataSource' since it isn't a known property of 'mat-table'.[39m[22m
+[1m[31m1. If 'mat-table' is an Angular component and it has 'dataSource' input, then verify that it is part of this module.[39m[22m
+[1m[31m2. If 'mat-table' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.[39m[22m
+[1m[31m3. To allow any property add 'NO_ERRORS_SCHEMA' to the '@NgModule.schemas' of this compo[39m[22m[1m[31mnent.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m23[0m     <mat-table mat-table [dataSource]="data" class="main-table" matSort (matSortChange)="sort($event)" >[39m[22m
+[1m[31m[7m  [0m [91m                         ~~~~~~~~~~~~~~~~~~~[0m[39m[22m
+[1m[31m[39m[22m
+[1m[31m  [96mlibs/organizations/ui-organizations/src/lib/offices/list/offices-list.component.ts[0m:[93m15[0m:[93m18[0m[39m[22m
+[1m[31m    [7m15[0m     templateUrl: './offices-list.component.html',[39m[22m
+[1m[31m    [7m  [0m [96m                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m[39m[22m
+[1m[31m    Error occurs in the template of component OfficesListComponent.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[39m[22m
+[1m[31m[0m[91mError: [39m[31m[0m[96mlibs/organizations/ui-organizations/src/lib/offices/list/offices-list.component.html[0m:[93m61[0m:[93m5[0m - [91merror[0m[90m NG8001: [0m'ss-pagination' is not a known element:[39m[22m
+[1m[31m1. If 'ss-pagination' is an Angular component, then verify that it is part of this module.[39m[22m
+[1m[31m2. If 'ss-pagination' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m61[0m     <ss-pagination [paginationModel]="pagination"></ss-pagination>[39m[22m
+[1m[31m[7m  [0m [91m    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m[39m[22m
+[1m[31m[39m[22m
+[1m[31m  [96mlibs/organizations/ui-organizations/src/lib/offices/list/offices-list.component.ts[0m:[93m15[0m:[93m18[0m[39m[22m
+[1m[31m    [7m15[0m     templateUrl: './offices-list.component.html',[39m[22m
+[1m[31m    [7m  [0m [96m                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m[39m[22m
+[1m[31m    Error occurs in the template of component OfficesListComponent.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[39m[22m
+[1m[31m[0m[91mError: [39m[31m[0m[96mlibs/organizations/ui-organizations/src/lib/offices/list/offices-list.component.html[0m:[93m61[0m:[93m20[0m - [91merror[0m[90m NG8002: [0mCan't bind to 'paginationModel' since it isn't a known property of 'ss-pagination'.[39m[22m
+[1m[31m1. If 'ss-pagination' is an Angular component and it has 'paginationModel' input, then verify that it is part of this module.[39m[22m
+[1m[31m2. If 'ss-pagination' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.[39m[22m
+[1m[31m3. To allow any proper[39m[22m[1m[31mty add 'NO_ERRORS_SCHEMA' to the '@NgModule.schemas' of this component.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m61[0m     <ss-pagination [paginationModel]="pagination"></ss-pagination>[39m[22m
+[1m[31m[7m  [0m [91m                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m[39m[22m
+[1m[31m[39m[22m
+[1m[31m  [96mlibs/organizations/ui-organizations/src/lib/offices/list/offices-list.component.ts[0m:[93m15[0m:[93m18[0m[39m[22m
+[1m[31m    [7m15[0m     templateUrl: './offices-list.component.html',[39m[22m
+[1m[31m    [7m  [0m [96m                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m[39m[22m
+[1m[31m    Error occurs in the template of component OfficesListComponent.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[39m[22m
+[1m[31m[0m[91mError: [39m[31m[0m[96mlibs/organizations/ui-organizations/src/lib/organizations-ui-organizations.module.ts[0m:[93m4[0m:[93m32[0m - [91merror[0m[90m TS2307: [0mCannot find module 'angular13-organization-chart' or its corresponding type declarations.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m4[0m import { OrgChartModule } from 'angular13-organization-chart';[39m[22m
+[1m[31m[7m [0m [91m                               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m[39m[22m
+[1m[31m[39m[22m
+[1m[31m[39m[22m
+[1m[31m[0m[91mError: [39m[31m[0m[96mlibs/organizations/ui-organizations/src/lib/organizations-ui-organizations.module.ts[0m:[93m35[0m:[93m14[0m - [91merror[0m[90m NG1010: [0mValue[39m[22m
+[1m[31m[39m[22m
+[1m[31m[0m[91mError: [39m[31m[0m[96mlibs/organizations/ui-organizations/src/lib/organizations/organizations-detail.component.html[0m:[93m4[0m:[93m1[0m - [91merror[0m[90m NG8001: [0m'mat-dialog-content' is not a known element:[39m[22m
+[1m[31m1. If 'mat-dialog-content' is an Angular component, then verify that it is part of this module.[39m[22m
+[1m[31m2. If 'mat-dialog-content' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m4[0m <mat-dialog-content style="display: block">[39m[22m
+[1m[31m[7m [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m[39m[22m
+[1m[31m[39m[22m
+[1m[31m  [96mlibs/organizations/ui-organizations/src/lib/organizations/organizations-detail.component.ts[0m:[93m23[0m:[93m18[0m[39m[22m
+[1m[31m    [7m23[0m     templateUrl: './organizations-detail.component.html',[39m[22m
+[1m[31m    [7m  [0m [96m                 ~~~~~~~~~~~~~[39m[22m[1m[31m~~~~~~~~~~~~~~~~~~~~~~~~~~[0m[39m[22m
+[1m[31m    Error occurs in the template of component OrganizationsDetailComponent.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[39m[22m
+[1m[31m[0m[91mError: [39m[31m[0m[96mlibs/organizations/ui-organizations/src/lib/organizations/organizations-detail.component.html[0m:[93m21[0m:[93m1[0m - [91merror[0m[90m NG8001: [0m'mat-dialog-actions' is not a known element:[39m[22m
+[1m[31m1. If 'mat-dialog-actions' is an Angular component, then verify that it is part of this module.[39m[22m
+[1m[31m2. If 'mat-dialog-actions' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m21[0m <mat-dialog-actions style="display: block">[39m[22m
+[1m[31m[7m  [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m[39m[22m
+[1m[31m[39m[22m
+[1m[31m  [96mlibs/organizations/ui-organizations/src/lib/organizations/organizations-detail.component.ts[0m:[93m23[0m:[93m18[0m[39m[22m
+[1m[31m    [7m23[0m     templateUrl: './organizations-detail.component.html',[39m[22m
+[1m[31m    [7m  [0m [96m                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m[39m[22m
+[1m[31m    Error occurs in the template of component OrganizationsDetailComponent.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[39m[22m
+[1m[31m[0m[91mError: [39m[31m[0m[96mlibs/organizations/ui-organizations/src/lib/organizations/organizations.component.ts[0m:[93m9[0m:[93m26[0m - [91merror[0m[90m TS2307: [0mCannot find module 'angular13-organization-chart' or its corresponding type declarations.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m9[0m import { TreeNode } from 'angular13-organization-chart';[39m[22m
+[1m[31m[7m [0m [91m                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m[39m[22m
+[1m[31m[39m[22m
+[1m[31m[39m[22m
+[1m[31m[0m[91mError: [39m[31m[0m[96mlibs/organizations/ui-organizations/src/lib/organizations/organizations.component.ts[0m:[93m104[0m:[93m19[0m - [91merror[0m[90m TS2339: [0mProperty 'onClick' does not exist on type 'OrgTreeNode'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m104[0m         this.root.onClick = () => this.select(this.root, Level.Root);[39m[22m
+[1m[31m[7m   [0m [91m                  ~~~~~~~[0m[39m[22m
+[1m[31m[39m[22m
+[1m[31m[39m[22m
+[1m[31m[0m[91mError: [39m[31m[0m[96mlibs/organizations/ui-organizations/src/lib/organizations/organizations.component.ts[0m:[93m194[0m:[93m13[0m - [91merror[39m[22m[1m[31m[0m[90m TS2322: [0mType '{ id: number; parentId: number; responsible: number; name: string; css: string; imageModel: any; children: undefined[]; }' is not assignable to type 'OrgTreeNode'.[39m[22m
+[1m[31m  Object literal may only specify known properties, and 'css' does not exist in type 'OrgTreeNode'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m194[0m             css: this.defaultStyle,[39m[22m
+[1m[31m[7m   [0m [91m            ~~~[0m[39m[22m
+[1m[31m[39m[22m
+[1m[31m[39m[22m
+[1m[31m[0m[91mError: [39m[31m[0m[96mlibs/organizations/ui-organizations/src/lib/organizations/organizations.component.ts[0m:[93m198[0m:[93m14[0m - [91merror[0m[90m TS2339: [0mProperty 'onClick' does not exist on type 'OrgTreeNode'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m198[0m         node.onClick = () => this.select(node, level);[39m[22m
+[1m[31m[7m   [0m [91m             ~~~~~~~[0m[39m[22m
+[1m[31m[39m[22m
+[1m[31m[39m[22m
+[1m[31m[0m[91mError: [39m[31m[0m[96mlibs/organizations/ui-organizations/src/lib/organizations/organizations.component.ts[0m:[93m212[0m:[93m14[0m - [91merror[0m[90m TS2339: [0mProperty 'cssClass' does not exist on type 'OrgTreeNode'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m212[0m         node.cssClass = 'selected';[39m[22m
+[1m[31m[7m   [0m [91m             ~~~~~~~~[0m[39m[22m
+[1m[31m[39m[22m
+[1m[31m[39m[22m
+[1m[31m[0m[91mError: [39m[31m[0m[96mlibs/organizations/ui-organizations/src/lib/organizations/organizations.component.ts[0m:[93m218[0m:[93m27[0m - [91merror[0m[90m TS2339: [0mProperty 'cssClass' does not exist on type 'OrgTreeNode'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m218[0m             this.selected.cssClass = '';[39m[22m
+[1m[31m[7m   [0m [91m                          ~~~~~~~~[0m[39m[22m
+[1m[31m[39m[22m
+[1m[31m[39m[22m
+[1m[31m[0m[91mError: [39m[31m[0m[96mlibs/organizations/ui-organizations/src/lib/services/services-list.component.html[0m:[93m2[0m:[93m5[0m - [91merror[0m[90m NG8001: [0m'mat-table' is not a known element:[39m[22m
+[1m[31m1. If 'mat-table' is an Angular component, then verify that it is part of this module.[39m[22m
+[1m[31m2. If 'mat-table' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m2[0m     <mat-table mat-table [dataSource]="data" class="main-table">[39m[22m
+[1m[31m[7m [0m [91m    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0[39m[22m[1m[31mm[39m[22m
+[1m[31m[39m[22m
+[1m[31m  [96mlibs/organizations/ui-organizations/src/lib/services/services-list.component.ts[0m:[93m15[0m:[93m18[0m[39m[22m
+[1m[31m    [7m15[0m     templateUrl: './services-list.component.html',[39m[22m
+[1m[31m    [7m  [0m [96m                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m[39m[22m
+[1m[31m    Error occurs in the template of component ServicesListComponent.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[39m[22m
+[1m[31m[0m[91mError: [39m[31m[0m[96mlibs/organizations/ui-organizations/src/lib/services/services-list.component.html[0m:[93m2[0m:[93m26[0m - [91merror[0m[90m NG8002: [0mCan't bind to 'dataSource' since it isn't a known property of 'mat-table'.[39m[22m
+[1m[31m1. If 'mat-table' is an Angular component and it has 'dataSource' input, then verify that it is part of this module.[39m[22m
+[1m[31m2. If 'mat-table' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.[39m[22m
+[1m[31m3. To allow any property add 'NO_ERRORS_SCHEMA' to the '@NgModule.schemas' of this component.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m2[0m     <mat-table mat-table [dataSource]="data" class="main-table">[39m[22m
+[1m[31m[7m [0m [91m                         ~~~~~~~~~~~~~~~~~~~[0m[39m[22m
+[1m[31m[39m[22m
+[1m[31m  [96mlibs/organizations/ui-organizations/src/lib/services/services-list.component.ts[0m:[93m15[0m:[93m18[0m[39m[22m
+[1m[31m    [7m15[0m     templateUrl: './services-list.component.html',[39m[22m
+[1m[31m    [7m  [0m [96m                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m[39m[22m
+[1m[31m    Error occurs in the template of component ServicesListComponent.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[39m[22m
+[1m[31m[0m[91mError: [39m[31m[0m[96mlibs/organizations/ui-organizations/src/lib/services/services-list.component.html[0m:[93m25[0m:[93m5[0m - [91merror[0m[90m NG8001: [0m'ss-pagination' is not a known element:[39m[22m
+[1m[31m1. If 'ss-pagination' is an Angular component, then verify that it is part of this module.[39m[22m
+[1m[31m2. If 'ss-pagination' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m25[0m     <ss-pagination [paginationModel]="pagination"></ss-pagination>[39m[22m
+[1m[31m[7m  [0m [91m    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m[39m[22m
+[1m[31m[39m[22m
+[1m[31m  [39m[22m[1m[31m[96mlibs/organizations/ui-organizations/src/lib/services/services-list.component.ts[0m:[93m15[0m:[93m18[0m[39m[22m
+[1m[31m    [7m15[0m     templateUrl: './services-list.component.html',[39m[22m
+[1m[31m    [7m  [0m [96m                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m[39m[22m
+[1m[31m    Error occurs in the template of component ServicesListComponent.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[39m[22m
+[1m[31m[0m[91mError: [39m[31m[0m[96mlibs/organizations/ui-organizations/src/lib/services/services-list.component.html[0m:[93m25[0m:[93m20[0m - [91merror[0m[90m NG8002: [0mCan't bind to 'paginationModel' since it isn't a known property of 'ss-pagination'.[39m[22m
+[1m[31m1. If 'ss-pagination' is an Angular component and it has 'paginationModel' input, then verify that it is part of this module.[39m[22m
+[1m[31m2. If 'ss-pagination' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.[39m[22m
+[1m[31m3. To allow any property add 'NO_ERRORS_SCHEMA' to the '@NgModule.schemas' of this component.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m25[0m     <ss-pagination [paginationModel]="pagination"></ss-pagination>[39m[22m
+[1m[31m[7m  [0m [91m                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m[39m[22m
+[1m[31m[39m[22m
+[1m[31m  [96mlibs/organizations/ui-organizations/src/lib/services/services-list.component.ts[0m:[93m15[0m:[93m18[0m[39m[22m
+[1m[31m    [7m15[0m     templateUrl: './services-list.component.html',[39m[22m
+[1m[31m    [7m  [0m [96m                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m[39m[22m
+[1m[31m    Error occurs in the template of component ServicesListComponent.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[39m[22m
+[1m[31m[0m[91mError: [39m[31m[0m[96mlibs/sales/paypal/src/lib/checkout/checkout.component.ts[0m:[93m7[0m:[93m24[0m - [91merror[0m[90m TS2307: [0mCannot find module 'codelyzer/walkerFactory/walkerFn' or its corresponding type declarations.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m7[0m import {validate} from 'codelyzer/walkerFactory/walkerFn';[39m[22m
+[1m[31m[7m [0m [91m                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m[39m[22m
+[1m[31m[39m[22m
+[1m[31m[39m[22m
+[1m[31m[0m[91mError: [39m[31m[0m[96mlibs/scheduled-sales/article/src/lib/article-detail/article-detail.component.html[0m:[93m1[0m:[93m1[0m - [91merror[0m[90m NG8001: [0m'mat-card' is[39m[22m[1m[31m not a known element:[39m[22m
+[1m[31m1. If 'mat-card' is an Angular component, then verify that it is part of this module.[39m[22m
+[1m[31m2. If 'mat-card' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m1[0m <mat-card>[39m[22m
+[1m[31m[7m [0m [91m~~~~~~~~~~[0m[39m[22m
+[1m[31m[39m[22m
+[1m[31m  [96mlibs/scheduled-sales/article/src/lib/article-detail/article-detail.component.ts[0m:[93m32[0m:[93m16[0m[39m[22m
+[1m[31m    [7m32[0m   templateUrl: './article-detail.component.html',[39m[22m
+[1m[31m    [7m  [0m [96m               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m[39m[22m
+[1m[31m    Error occurs in the template of component ArticleDetailComponent.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[39m[22m
+[1m[31m[0m[91mError: [39m[31m[0m[96mlibs/scheduled-sales/article/src/lib/article-detail/article-detail.component.html[0m:[93m2[0m:[93m5[0m - [91merror[0m[90m NG8001: [0m'mat-card-content' is not a known element:[39m[22m
+[1m[31m1. If 'mat-card-content' is an Angular component, then verify that it is part of this module.[39m[22m
+[1m[31m2. If 'mat-card-content' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m2[0m     <mat-card-content>[39m[22m
+[1m[31m[7m [0m [91m    ~~~~~~~~~~~~~~~~~~[0m[39m[22m
+[1m[31m[39m[22m
+[1m[31m  [96mlibs/scheduled-sales/article/src/lib/article-detail/article-detail.component.ts[0m:[93m32[0m:[93m16[0m[39m[22m
+[1m[31m    [7m32[0m   templateUrl: './article-detail.component.html',[39m[22m
+[1m[31m    [7m  [0m [96m               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m[39m[22m
+[1m[31m    Error occurs in the template of component ArticleDetailComponent.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[39m[22m
+[1m[31m[0m[91mError: [39m[31m[0m[96mlibs/scheduled-sales/article/src/lib/article-list/article-list.component.html[0m:[93m3[0m:[93m9[0m - [91merror[0m[90m NG8001: [0m'mat-table' is not a known element:[39m[22m
+[1m[31m1. If 'mat-table' is an Angular component, then verify that it is part of this module.[39m[22m
+[1m[31m2. If 'mat-table' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m3[0m         <mat-table mat-table [dataSource]="data" class="main-table">[39m[22m
+[1m[31m[39m[22m[1m[31m[7m [0m [91m        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m[39m[22m
+[1m[31m[39m[22m
+[1m[31m  [96mlibs/scheduled-sales/article/src/lib/article-list/article-list.component.ts[0m:[93m13[0m:[93m16[0m[39m[22m
+[1m[31m    [7m13[0m   templateUrl: './article-list.component.html',[39m[22m
+[1m[31m    [7m  [0m [96m               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m[39m[22m
+[1m[31m    Error occurs in the template of component ArticleListComponent.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[39m[22m
+[1m[31m[0m[91mError: [39m[31m[0m[96mlibs/scheduled-sales/article/src/lib/article-list/article-list.component.html[0m:[93m3[0m:[93m30[0m - [91merror[0m[90m NG8002: [0mCan't bind to 'dataSource' since it isn't a known property of 'mat-table'.[39m[22m
+[1m[31m1. If 'mat-table' is an Angular component and it has 'dataSource' input, then verify that it is part of this module.[39m[22m
+[1m[31m2. If 'mat-table' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.[39m[22m
+[1m[31m3. To allow any property add 'NO_ERRORS_SCHEMA' to the '@NgModule.schemas' of this component.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m3[0m         <mat-table mat-table [dataSource]="data" class="main-table">[39m[22m
+[1m[31m[7m [0m [91m                             ~~~~~~~~~~~~~~~~~~~[0m[39m[22m
+[1m[31m[39m[22m
+[1m[31m  [96mlibs/scheduled-sales/article/src/lib/article-list/article-list.component.ts[0m:[93m13[0m:[93m16[0m[39m[22m
+[1m[31m    [7m13[0m   templateUrl: './article-list.component.html',[39m[22m
+[1m[31m    [7m  [0m [96m               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m[39m[22m
+[1m[31m    Error occurs in the template of component ArticleListComponent.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[39m[22m
+[1m[31m[0m[91mError: [39m[31m[0m[96mlibs/scheduled-sales/article/src/lib/article-list/article-list.component.html[0m:[93m54[0m:[93m5[0m - [91merror[0m[90m NG8001: [0m'ss-pagination' is not a known element:[39m[22m
+[1m[31m1. If 'ss-pagination' is an Angular component, then verify that it is part of this module.[39m[22m
+[1m[31m2. If 'ss-pagination' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m54[0m     <ss-pagination [paginationModel]="pagination"></ss-pagination>[39m[22m
+[1m[31m[7m  [0m[39m[22m[1m[31m [91m    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m[39m[22m
+[1m[31m[39m[22m
+[1m[31m  [96mlibs/scheduled-sales/article/src/lib/article-list/article-list.component.ts[0m:[93m13[0m:[93m16[0m[39m[22m
+[1m[31m    [7m13[0m   templateUrl: './article-list.component.html',[39m[22m
+[1m[31m    [7m  [0m [96m               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m[39m[22m
+[1m[31m    Error occurs in the template of component ArticleListComponent.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[39m[22m
+[1m[31m[0m[91mError: [39m[31m[0m[96mlibs/scheduled-sales/article/src/lib/article-list/article-list.component.html[0m:[93m54[0m:[93m20[0m - [91merror[0m[90m NG8002: [0mCan't bind to 'paginationModel' since it isn't a known property of 'ss-pagination'.[39m[22m
+[1m[31m1. If 'ss-pagination' is an Angular component and it has 'paginationModel' input, then verify that it is part of this module.[39m[22m
+[1m[31m2. If 'ss-pagination' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.[39m[22m
+[1m[31m3. To allow any property add 'NO_ERRORS_SCHEMA' to the '@NgModule.schemas' of this component.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m54[0m     <ss-pagination [paginationModel]="pagination"></ss-pagination>[39m[22m
+[1m[31m[7m  [0m [91m                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m[39m[22m
+[1m[31m[39m[22m
+[1m[31m  [96mlibs/scheduled-sales/article/src/lib/article-list/article-list.component.ts[0m:[93m13[0m:[93m16[0m[39m[22m
+[1m[31m    [7m13[0m   templateUrl: './article-list.component.html',[39m[22m
+[1m[31m    [7m  [0m [96m               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m[39m[22m
+[1m[31m    Error occurs in the template of component ArticleListComponent.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[39m[22m
+[1m[31m[0m[91mError: [39m[31m[0m[96mlibs/scheduled-sales/article/src/lib/scheduled-sales-article.module.ts[0m:[93m18[0m:[93m9[0m - [91merror[0m[90m TS2305: [0mModule '"ngx-color-picker"' has no exported member 'ColorPickerModule'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m18[0m import {ColorPickerModule} from 'ngx-color-picker';[39m[22m
+[1m[31m[7m  [0m [91m        ~~~~~~~~~~~~~~~~~[0m[39m[22m
+[1m[31m[39m[22m
+[1m[31m[39m[22m
+[1m[31m[0m[91mError: [39m[31m[0m[96mlibs/scheduled-sales/article/src/lib/scheduled-sales-article.module.ts[0m:[93m21[0m:[93m14[0m - [91merror[0m[90m NG1010: [0mValue[39m[22m
+[1m[31m[39m[22m
+[1m[31m[0m[91mError: [39m[31m[39m[22m[1m[31m[0mglobby is not a function[39m[22m
+[1m[31m[39m[22m
+[1m[31m[0m[91mError: [39m[31m[0mglobby is not a function[39m[22m
+[1m[31m[39m[22m
+[1m[31m[0m[91mError: [39m[31m[0mglobby is not a function[39m[22m
+[1m[31m[39m[22m
+[1m[31m[0m[91mError: [39m[31m[0mglobby is not a function[39m[22m
+[1m[31m[39m[22m
+[1m[31m[0m[91mError: [39m[31m[0mglobby is not a function[39m[22m
+[1m[31m[39m[22m
+[1m[31m[0m[91mError: [39m[31m[0mglobby is not a function[39m[22m
+[1m[31m[39m[22m
+[1m[31m[0m[91mError: [39m[31m[0mglobby is not a function[39m[22m
+[1m[31m[39m[22m
+[1m[31m[0m[91mError: [39m[31m[0mglobby is not a function[39m[22m
+[1m[31m[39m[22m
+[1m[31m[0m[91mError: [39m[31m[0mglobby is not a function[39m[22m
+[1m[31m[39m[22m
+[1m[31m[0m[91mError: [39m[31m[0mglobby is not a function[39m[22m
+[1m[31m[39m[22m
+[1m[31m[0m[91mError: [39m[31m[0mglobby is not a function[39m[22m
+[1m[31m[39m[22m
+[1m[31m[0m[91mError: [39m[31m[0mglobby is not a function[39m[22m
+[1m[31m[39m[22m
+[1m[31m[0m[91mError: [39m[31m[0mglobby is not a function[39m[22m
+[1m[31m[39m[22m
+[1m[31m[0m[91mError: [39m[31m[0mglobby is not a function[39m[22m
+[1m[31m[39m[22m
+[1m[31m[0m[91mError: [39m[31m[0mglobby is not a function[39m[22m
+[1m[31m[39m[22m
+[1m[31m[0m[91mError: [39m[31m[0mglobby is not a function[39m[22m
+[1m[31m[39m[22m
+[1m[31m[0m[91mError: [39m[31m[0mglobby is not a function[39m[22m
+[1m[31m[39m[22m
+[1m[31m[0m[91mError: [39m[31m[0mglobby is not a function[39m[22m
+[1m[31m[39m[22m
+[1m[31m[0m[91mError: [39m[31m[0mglobby is not a function[39m[22m
+[1m[31m[39m[22m
+[1m[31m[0m[91mError: [39m[31m[0mglobby is not a function[39m[22m
+[1m[31m[39m[22m
+[1m[31m[0m[91mError: [39m[31m[0mglobby is not a function[39m[22m
+[1m[31m[39m[22m
+[1m[31m[0m[91mError: [39m[31m[0mglobby is not a function[39m[22m
+[1m[31m[39m[22m
+[1m[31m[0m[91mError: [39m[31m[0mglobby is not a function[39m[22m
+[1m[31m[39m[22m
+[1m[31m[0m[91mError: [39m[31m[0mCannot find package 'parse5-html-rewriting-stream' imported from /home/sysnet/backup/weberp-frontend2/node_modules/@angular-devkit/build-angular/src/utils/load-esm.js[39m[22m
+[1m[31m[39m[22m
+[1m[31m[39m[22m
+[37m[39m
+[37m[91m✖[39m[37m Failed to compile.[39m

@@ -46,3 +46,4 @@ apps/empspace/android/
 apps/empspace/node_modules/
 apps/empspace/package-lock.json
 apps/cespace/package-lock.json
+.nx/cache/

@@ -1,4 +1,4 @@
-@import '@angular/material/theming';
+@use '@angular/material' as mat;
 
 .form_container {
     box-sizing: border-box;
@@ -65,7 +65,7 @@
     user-select: none;
     cursor: move;
     &.cdk-drag-preview { // while dragging
-        @include mat-elevation(12);
+        @include mat.elevation(12);
     }
     &.cdk-drag-placeholder { // potential drop area
         opacity: 0;

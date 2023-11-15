@@ -1,4 +1,4 @@
-@import "@angular/material/theming";
+@use "@angular/material" as mat;
 
 :host {
   display: block;
@@ -14,7 +14,7 @@
   height: 100%;
 
   .login-form {
-    @include mat-elevation(6);
+    @include mat.elevation(6);
     border-radius: 25px;
     padding-top: 16px;
     padding-bottom: 16px;
