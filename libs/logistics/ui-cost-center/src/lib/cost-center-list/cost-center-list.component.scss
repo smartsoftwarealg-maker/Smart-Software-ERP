@@ -1,0 +1,33 @@
+.size {
+    width: 90%;
+    max-width: 900px;
+    margin: 4px auto 0;
+}
+
+.table_div {
+    height: calc(100% - 72px);
+}
+
+.mat-column-description,
+.mat-column-descriptionAr {
+    flex: 1 1 300px;
+    padding-right: 8px !important;
+    padding-left: 8px !important;
+}
+
+.mat-column-code {
+    flex:  1 1 100px;
+    padding-right: 8px !important;
+    padding-left: 8px !important;
+}
+
+
+.pagination-container {
+
+    ss-pagination {
+        left: 0;
+        right: 0;
+        position: sticky;
+        margin: auto;
+    }
+}
