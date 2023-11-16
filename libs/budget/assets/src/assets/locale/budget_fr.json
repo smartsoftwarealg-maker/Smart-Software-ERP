@@ -16,5 +16,6 @@
     "TRANSFERS":        "Transferts",
     "DESTINATION":      "Budget de réception",
     "PLANNINGS":        "Plannings",
-    "SELECTOR":         "Sélection budget"
+    "SELECTOR":         "Sélection budget",
+    "ADD_GROUP":        "Ajouter un groupe budgétaire"
 }
