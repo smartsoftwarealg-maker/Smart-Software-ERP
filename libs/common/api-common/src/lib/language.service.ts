@@ -64,7 +64,7 @@ export const DEFAULT_SUPPORTED_LANGUAGES: Language[] = [
         formatFullName: formatFullNameWeird,
         formatMediumName: formatMediumName,
         decimalPoint: ',',
-        thousandSeparator: ' '
+        thousandSeparator: ' '
     }
 ];
 

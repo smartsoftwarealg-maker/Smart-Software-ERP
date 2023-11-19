@@ -9,7 +9,7 @@ import {
     UntypedFormBuilder,
     UntypedFormGroup,
     Validators
-} from "@angular/forms";
+} from '@angular/forms';
 import { ArticleService } from '@ss/stock/api-article';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -17,21 +17,34 @@ import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { ClassService, LookupsService } from '@ss/common/api-lookup';
 import { HttpService } from '@ss/common/api-common';
 import { ServiceArticleService } from '../service-article.service';
-import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from "@ss/common/ui-auto-complete";
-import { CommonUiImageInputModule } from "@ss/common/ui-image-input";
-import { CommonUiLangModule } from "@ss/common/ui-lang";
-import { MatCardModule } from "@angular/material/card";
-import { MatCheckboxModule } from "@angular/material/checkbox";
-import { MatFormFieldModule } from "@angular/material/form-field";
-import { MatInputModule } from "@angular/material/input";
-import { MatOptionModule } from "@angular/material/core";
-import { MatSelectModule } from "@angular/material/select";
-import { StockUiArticleStoreModule } from "@ss/stock/article-store";
+import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
+import { CommonUiImageInputModule } from '@ss/common/ui-image-input';
+import { CommonUiLangModule } from '@ss/common/ui-lang';
+import { MatCardModule } from '@angular/material/card';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatOptionModule } from '@angular/material/core';
+import { MatSelectModule } from '@angular/material/select';
+import { StockUiArticleStoreModule } from '@ss/stock/article-store';
 
 @Component({
     selector: 'ss-service-article-detail',
     standalone: true,
-    imports: [CommonModule, CommonUiAutoCompleteModule, CommonUiImageInputModule, CommonUiLangModule, FormsModule, MatCardModule, MatCheckboxModule, MatFormFieldModule, MatInputModule, MatOptionModule, MatSelectModule, ReactiveFormsModule, StockUiArticleStoreModule],
+    imports: [
+        CommonModule,
+        CommonUiAutoCompleteModule,
+        CommonUiImageInputModule,
+        CommonUiLangModule,
+        FormsModule,
+        MatCardModule,
+        MatCheckboxModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatOptionModule,
+        MatSelectModule,
+        ReactiveFormsModule,
+        StockUiArticleStoreModule],
     templateUrl: './service-article-detail.component.html',
     styleUrls: ['./service-article-detail.component.css']
 })
@@ -50,7 +63,7 @@ export class ServiceArticleDetailComponent extends BaseEntityDetailComponent<Ser
         public override route: ActivatedRoute,
         public override formBuilder: UntypedFormBuilder,
         public override confirmationSrv: ConfirmationDialogService) {
-        super(articleSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'STOCK_SERVICE');
+        super(articleSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'STOCK_ARTICLES');
     }
 
 
@@ -62,6 +75,7 @@ export class ServiceArticleDetailComponent extends BaseEntityDetailComponent<Ser
             reference:      [a.reference, Validators.required],
             appId:          [a.appId || this.articleSrv.getParentId()],
             notForSale:     [a.notForSale || false, Validators.required],
+            price1:         [a.price1],
             vat:            [a.vat],
             recordBlocked:  [a.recordBlocked || false],
             blockingReason: [a.blockingReason]

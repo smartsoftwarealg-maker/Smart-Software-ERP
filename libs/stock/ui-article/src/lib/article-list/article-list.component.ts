@@ -2,10 +2,9 @@ import {Component, OnInit,} from '@angular/core';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { ArticleService, Article } from '@ss/stock/api-article';
-import {Mark, Unit} from '@ss/common/api-lookup';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
-import {Observable, of, zip} from 'rxjs';
-import {LookupsService, Vat} from '@ss/common/api-lookup';
+import {Observable, of} from 'rxjs';
+import {LookupsService} from '@ss/common/api-lookup';
 import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import { CommonUiImageInputModule, ImageModel } from '@ss/common/ui-image-input';
@@ -41,13 +40,9 @@ import { LogisticsUiStockInfoModule } from '@ss/logistics/ui-stock-info';
 })
 export class ArticleListComponent extends BaseEntityListComponent<Article> implements OnInit {
     filterCtrl = new FormControl<number>(this.entitySrv.getParentId());
-    private STOCK_COLS = ['image', 'reference', 'description2', 'markName', 'klassName', 'unit'];
-    private SALES_COLS = ['image', 'reference', 'description2', 'markName', 'klassName', 'unit'];
+    private STOCK_COLS = ['image', 'reference', 'description2', 'markDescription', 'classDescription', 'unitDescription'];
+    private SALES_COLS = ['image', 'reference', 'description2', 'markDescription', 'classDescription', 'unitDescription'];
     displayedColumns = this.STOCK_COLS;
-
-    private marks: Mark[] = [];
-    private units: Unit[] = [];
-    private vats: Vat[] = [];
 
     constructor(
         public articleSrv: ArticleService,
@@ -68,24 +63,16 @@ export class ArticleListComponent extends BaseEntityListComponent<Article> imple
             p.imageModel = new ImageModel(this.httpSrv);
             p.imageModel.readOnly = true;
             p.imageModel.setImageUrl(this.articleSrv.getPhotoUrl(p.id), false);
-            p.markDescrip = this.marks?.find(m => m.id === p.mark)?.description;
-            p.unitDescrip = this.units?.find(u => u.id === p.salesUnit)?.description;
-            p.vatValue = this.vats.find(u => u.id === p.vat)?.value;
         });
         return of(data);
     }
 
     override ngOnInit() {
         super.ngOnInit();
-        zip(this.lookupsSrv.getMarks(),
-            this.lookupsSrv.getUnits(),
-            this.lookupsSrv.getVats(),
-            this.route.paramMap)
+        this.route
+            .paramMap
             .subscribe(res => {
-                this.marks = res[0];
-                this.units = res[1];
-                this.vats = res[2];
-                this.displayedColumns = res[3].get('price') === 'price1'? this.SALES_COLS : this.STOCK_COLS;
+                this.displayedColumns = res.get('price') === 'price1'? this.SALES_COLS : this.STOCK_COLS;
             });
         this.subscriptions.push(
             this.filterCtrl

@@ -3,7 +3,6 @@
         <div class="form_container">
             <form *ngIf="form" novalidate [formGroup]="form">
 
-
                 <mat-form-field floatLabel="always" class="default-50 sm-100">
                     <mat-label translate>COMMON_REFERENCE</mat-label>
                     <input matInput formControlName="reference" type="text" required>
@@ -13,6 +12,11 @@
                 <mat-form-field floatLabel="always" class="default-50 sm-100">
                     <mat-label translate>LOGISTICS_DESCRIPTION</mat-label>
                     <input matInput formControlName="description2" type="text" required>
+                </mat-form-field>
+
+                <mat-form-field floatLabel="always" class="default-50 sm-100">
+                    <mat-label translate>LOGISTICS_PRICE</mat-label>
+                    <input matInput formControlName="price1" type="number" required>
                 </mat-form-field>
 
 

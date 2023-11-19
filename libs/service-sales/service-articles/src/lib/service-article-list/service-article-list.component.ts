@@ -30,7 +30,7 @@ import { MatSortModule } from '@angular/material/sort';
     styleUrls: ['./service-article-list.component.css']
 })
 export class ServiceArticleListComponent extends BaseEntityListComponent<Service> {
-    displayedColumns = ['reference', 'description2', 'klassName', 'vatValue'];
+    displayedColumns = ['reference', 'description2', 'klassName', 'price1', 'vatValue'];
 
     constructor(
         public articleSrv: ServiceArticleService,
