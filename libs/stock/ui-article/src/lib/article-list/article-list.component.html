@@ -12,7 +12,7 @@
 </div>
 
 <div class="table-container main-container ">
-    <mat-table mat-table [dataSource]="data" class="main-table">
+    <mat-table mat-table [dataSource]="data" class="main-table" matSort (matSortChange)="sort($event)">
 
         <ng-container matColumnDef="image">
             <mat-header-cell *matHeaderCellDef style="justify-content: center" translate>LOGISTICS_IMAGE
@@ -30,58 +30,58 @@
         </ng-container>
 
         <ng-container matColumnDef="reference">
-            <mat-header-cell *matHeaderCellDef translate>COMMON_REFERENCE</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_REFERENCE</mat-header-cell>
             <mat-cell *matCellDef="let e">
                 {{e.reference}}
             </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="description2">
-            <mat-header-cell *matHeaderCellDef translate>LOGISTICS_DESCRIPTION</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>LOGISTICS_DESCRIPTION</mat-header-cell>
             <mat-cell *matCellDef="let e">
                 {{e.description2}}
             </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="price1">
-            <mat-header-cell *matHeaderCellDef translate>LOGISTICS_PRICE</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>LOGISTICS_PRICE</mat-header-cell>
             <mat-cell *matCellDef="let e" style="justify-content: flex-end; direction: ltr;">
                 {{ e.price1 | number: '1.2-2'}}
             </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="awp">
-            <mat-header-cell *matHeaderCellDef translate>LOGISTICS_PRICE</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>LOGISTICS_PRICE</mat-header-cell>
             <mat-cell *matCellDef="let e" style="justify-content: flex-end; direction: ltr;">
                 {{ e.awp | number: '1.2-2'}}
             </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="vat">
-            <mat-header-cell *matHeaderCellDef translate>STOCK_VAT</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>STOCK_VAT</mat-header-cell>
             <mat-cell *matCellDef="let e" style="justify-content: flex-end; direction: ltr;">
                 {{ e.vatValue | number: '1.2-2' }}
             </mat-cell>
         </ng-container>
 
-        <ng-container matColumnDef="markName">
-            <mat-header-cell *matHeaderCellDef translate>STOCK_MARK</mat-header-cell>
+        <ng-container matColumnDef="markDescription">
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>STOCK_MARK</mat-header-cell>
             <mat-cell *matCellDef="let e">
-                {{e.markName}}
+                {{e.markDescription}}
             </mat-cell>
         </ng-container>
 
-        <ng-container matColumnDef="klassName">
-            <mat-header-cell *matHeaderCellDef translate>STOCK_CLASS</mat-header-cell>
+        <ng-container matColumnDef="classDescription">
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>STOCK_CLASS</mat-header-cell>
             <mat-cell *matCellDef="let e">
-                {{e.klassName}}
+                {{e.classDescription}}
             </mat-cell>
         </ng-container>
 
-        <ng-container matColumnDef="unit">
-            <mat-header-cell *matHeaderCellDef translate>STOCK_UNIT</mat-header-cell>
+        <ng-container matColumnDef="unitDescription">
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>STOCK_UNIT</mat-header-cell>
             <mat-cell *matCellDef="let e">
-                {{e.unitDescrip}}
+                {{e.unitDescription}}
             </mat-cell>
         </ng-container>
 

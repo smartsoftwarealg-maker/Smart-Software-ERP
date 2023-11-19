@@ -26,10 +26,11 @@ export interface Article {
     vatValue?: number;
     notForSale: boolean;
     blocked: boolean;
-    klassName?: string;
-    markName?: string;
+    classDescription?: string;
+    markDescription?: string;
     minQty?: number;
     maxQty?: number;
+    unitDescription?: string;
 }
 
 export interface QtyPrice {

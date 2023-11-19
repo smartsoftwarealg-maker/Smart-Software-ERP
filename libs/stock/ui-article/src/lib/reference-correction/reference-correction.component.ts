@@ -67,13 +67,13 @@ export class ReferenceCorrectionComponent implements OnInit {
 
     private onNewArticle(a: Article) {
         this.destinationArticle = a;
-        this.destinationClass.setValue(a?.klassName);
+        this.destinationClass.setValue(a?.classDescription);
         this.newReference.setValue(a?.reference);
     }
 
     private onOldArticle(a: Article) {
         this.sourceArticle = a;
-        this.sourceClass.setValue(a?.klassName);
+        this.sourceClass.setValue(a?.classDescription);
         this.oldReference.setValue(a?.reference);
     }
 

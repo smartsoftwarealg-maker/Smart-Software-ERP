@@ -44,5 +44,6 @@ export class ServiceInvoiceLineDetailComponent extends BaseTransactionLinesDetai
     private onService(a: Service) {
         this.selectedReference = a?.reference;
         this.form.controls['vat'].setValue(a?.vatValue || 0);
+        this.form?.controls['price'].setValue(a?.price1);
     }
 }

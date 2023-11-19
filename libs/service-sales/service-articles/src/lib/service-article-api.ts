@@ -18,4 +18,7 @@ export interface Service {
     klassName?: string;
     accountId?: number;
     vatValue?: number;
+    price1?: number;
+    price2?: number;
+    price3?: number;
 }

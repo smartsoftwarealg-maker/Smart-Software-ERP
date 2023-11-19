@@ -1,44 +1,44 @@
 <div class="main-container">
     <div class="table-container">
-        <mat-table mat-table [dataSource]="data" class="main-table">
+        <mat-table mat-table [dataSource]="data" class="main-table" matSort (matSortChange)="sort($event)">
 
             <ng-container matColumnDef="reference">
-                <mat-header-cell *matHeaderCellDef translate>COMMON_REFERENCE</mat-header-cell>
+                <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_REFERENCE</mat-header-cell>
                 <mat-cell *matCellDef="let e">
                     {{e.reference}}
                 </mat-cell>
             </ng-container>
 
             <ng-container matColumnDef="description2">
-                <mat-header-cell *matHeaderCellDef translate>LOGISTICS_DESCRIPTION</mat-header-cell>
+                <mat-header-cell *matHeaderCellDef mat-sort-header translate>LOGISTICS_DESCRIPTION</mat-header-cell>
                 <mat-cell *matCellDef="let e">
                     {{e.description2}}
                 </mat-cell>
             </ng-container>
 
             <ng-container matColumnDef="price">
-                <mat-header-cell *matHeaderCellDef translate>LOGISTICS_PRICE</mat-header-cell>
+                <mat-header-cell *matHeaderCellDef mat-sort-header translate>LOGISTICS_PRICE</mat-header-cell>
                 <mat-cell *matCellDef="let e" style="justify-content: flex-end; direction: ltr;">
                     {{ e.price1 | number: '1.2-2'}}
                 </mat-cell>
             </ng-container>
 
             <ng-container matColumnDef="classDescription">
-                <mat-header-cell *matHeaderCellDef translate>LOGISTICS_CLASS</mat-header-cell>
+                <mat-header-cell *matHeaderCellDef mat-sort-header translate>LOGISTICS_CLASS</mat-header-cell>
                 <mat-cell *matCellDef="let e">
                     {{e.classDescription}}
                 </mat-cell>
             </ng-container>
 
             <ng-container matColumnDef="typeDescription">
-                <mat-header-cell *matHeaderCellDef translate>COMMON_TYPE</mat-header-cell>
+                <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_TYPE</mat-header-cell>
                 <mat-cell *matCellDef="let e">
                     {{e.typeDescription}}
                 </mat-cell>
             </ng-container>
 
             <ng-container matColumnDef="vatValue">
-                <mat-header-cell *matHeaderCellDef translate>LOGISTICS_VAT</mat-header-cell>
+                <mat-header-cell *matHeaderCellDef mat-sort-header translate>LOGISTICS_VAT</mat-header-cell>
                 <mat-cell *matCellDef="let e">
                     {{e.vatValue | number: '1.2-2' }}
                 </mat-cell>

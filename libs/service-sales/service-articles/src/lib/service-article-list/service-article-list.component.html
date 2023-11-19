@@ -23,6 +23,13 @@
             </mat-cell>
         </ng-container>
 
+        <ng-container matColumnDef="price1">
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>LOGISTICS_PRICE</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.price1 | number: '1.2-2'}}
+            </mat-cell>
+        </ng-container>
+
         <ng-container matColumnDef="vatValue">
             <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_VAT</mat-header-cell>
             <mat-cell *matCellDef="let e">
@@ -37,9 +44,8 @@
             </mat-cell>
         </ng-container>
 
-
         <ng-container matColumnDef="vat">
-            <mat-header-cell *matHeaderCellDef translate>STOCK_VAT</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>STOCK_VAT</mat-header-cell>
             <mat-cell *matCellDef="let e" style="justify-content: flex-end; direction: ltr;">
                 {{ e.vatValue | number: '1.2-2' }}
             </mat-cell>
