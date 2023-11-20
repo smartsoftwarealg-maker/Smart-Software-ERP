@@ -17,7 +17,7 @@ import {SideNavNode} from '@ss/common/api-common';
 export const logisticsAdminNavTree: SideNavNode = {
     name: 'COMMON_LOGISTICS-ADMINISTRATION',
     icon: 'fas fa-users-cog',
-    accessRights: 'LOGISTICS-ADMINISTRATION',
+    accessRights: 'LOGISTICS',
     children: [
         {
             name: 'STOCK_ARTICLES',

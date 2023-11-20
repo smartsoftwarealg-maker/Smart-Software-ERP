@@ -1,19 +1,40 @@
 import { Component, OnInit } from '@angular/core';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
-import { ActivatedRoute, Router } from '@angular/router';
-import { UntypedFormBuilder } from '@angular/forms';
+import { ActivatedRoute, Router, RouterOutlet } from "@angular/router";
+import { ReactiveFormsModule, UntypedFormBuilder } from "@angular/forms";
 import { Lookup } from '@ss/common/api-lookup';
-import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
+import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
 import { BaseTransactionDetailComponent, TransactionLinesService } from '@ss/logistics/api-transaction';
 import { ReceptionService } from '@ss/purchases/api-reception';
-import { LoginService } from '@ss/common/api-common';
+import { LoginService, MaterialModule } from "@ss/common/api-common";
 import { MatDialog } from '@angular/material/dialog';
+import { CommonModule } from "@angular/common";
+import { CommonUiLangModule } from "@ss/common/ui-lang";
+import { UiPaginationModule } from "@ss/common/ui-pagination";
+import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
+import { CommonUiAutoCompleteModule } from "@ss/common/ui-auto-complete";
+import { LogisticsUiDocInfoModule } from "@ss/logistics/ui-doc-info";
+import { LogisticsUiStockInfoModule } from "@ss/logistics/ui-stock-info";
 
 
 @Component({
     selector: 'ss-reception-detail',
     templateUrl: './reception-detail.component.html',
-    styleUrls: ['../../../../common/assets/src/assets/transac-detail.scss']
+    styleUrls: ['../../../../../common/assets/src/assets/transac-detail.scss'],
+    standalone: true,
+    imports: [
+        CommonModule,
+        MaterialModule,
+        CommonUiLangModule,
+        UiPaginationModule,
+        ReactiveFormsModule,
+        CommonUiConfirmationDialogModule,
+        CommonUiDatepickerModule,
+        CommonUiAutoCompleteModule,
+        LogisticsUiDocInfoModule,
+        LogisticsUiStockInfoModule,
+        RouterOutlet
+    ],
 })
 export class ReceptionDetailComponent extends BaseTransactionDetailComponent implements OnInit {
 

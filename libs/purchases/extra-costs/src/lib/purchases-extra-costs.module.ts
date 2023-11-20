@@ -16,7 +16,6 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MaterialModule } from '@ss/common/api-common';
-import { PurchasesUiReceptionModule } from '@ss/purchases/ui-reception';
 import { ReactiveFormsModule } from '@angular/forms';
 import { TextFieldModule } from '@angular/cdk/text-field';
 
@@ -36,7 +35,6 @@ import { TextFieldModule } from '@angular/cdk/text-field';
         MatInputModule,
         MatTabsModule,
         MaterialModule,
-        PurchasesUiReceptionModule,
         ReactiveFormsModule,
         TextFieldModule,
         RouterOutlet,
