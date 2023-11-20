@@ -1,16 +1,15 @@
 :host {
     display: block;
-    margin: auto;
+    margin: 4px auto;
     max-width: 100%;
-    width: 600px;
+    width: 800px;
     min-width: 320px;
 }
 
 mat-card{
-    margin-top: 24px;
-    mat-card-content{
-        margin-top: 24px;
-    }
+    padding: 1em;
+    border-radius: 1.4em;
+    margin-bottom: 8px;
 }
 .value {
     width: 260px;
