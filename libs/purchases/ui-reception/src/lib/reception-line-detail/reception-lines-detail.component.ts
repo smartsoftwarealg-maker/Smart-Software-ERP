@@ -1,8 +1,8 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {
-    BaseTransactionLinesDetailComponent, DOC_RECEPTION,
+    BaseTransactionLinesDetailComponent, DOC_RECEPTION, TransactionLine,
     TransactionLinesService
-} from '@ss/logistics/api-transaction';
+} from "@ss/logistics/api-transaction";
 import { CommonModule } from "@angular/common";
 import { MaterialModule } from "@ss/common/api-common";
 import { CommonUiLangModule } from "@ss/common/ui-lang";
@@ -37,5 +37,11 @@ import { RouterOutlet } from "@angular/router";
 export class ReceptionLinesDetailComponent extends BaseTransactionLinesDetailComponent implements OnInit, OnDestroy {
     constructor(public receptionLinesSrv: TransactionLinesService) {
         super(receptionLinesSrv,  DOC_RECEPTION);
+    }
+
+    readForm(): TransactionLine {
+        const value =  super.readForm();
+        value.qtyInvoiced = value.qtySatisfied;
+        return value;
     }
 }
