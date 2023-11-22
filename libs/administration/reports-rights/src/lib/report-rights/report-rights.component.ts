@@ -2,7 +2,7 @@ import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, RouterModule } from '@angular/router';
-import { LanguageService, MaterialModule } from '@ss/common/api-common';
+import { MaterialModule } from '@ss/common/api-common';
 import { CommonUiLangModule } from '@ss/common/ui-lang';
 import { UiPaginationModule } from '@ss/common/ui-pagination';
 import { CommonUiConfirmationDialogModule } from '@ss/common/ui-confirmation-dialog';

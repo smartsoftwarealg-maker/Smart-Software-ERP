@@ -15,8 +15,11 @@ import {
     ABS_DB_UPDATER_URL,
     ABS_APP_ARCHIVE_DOCUMENTS_URL,
     ABS_ADMINISTRATION_DAIRAS_URL,
-    ABS_ADMINISTRATION_DOCUMENT_URL, ABS_ADMINISTRATION_REPORT_RIGHTS_URL
-} from "../common";
+    ABS_ADMINISTRATION_DOCUMENT_URL,
+    ABS_ADMINISTRATION_REPORT_RIGHTS_URL,
+    ABS_ADMINISTRATION_REPORT_PRIVILEGE_URL
+} from '../common';
+
 import {SideNavNode} from '@ss/common/api-common';
 
 export const administrationNavTree: SideNavNode = {
@@ -114,12 +117,21 @@ export const administrationNavTree: SideNavNode = {
             route: ABS_ADMINISTRATION_ACCESS_RIGHTS_URL,
             accessRights: 'AccessRight'
         },
+
         {
             name: 'COMMON_REPORT_RIGHTS',
             icon: 'fa-regular fa-ban',
             route: ABS_ADMINISTRATION_REPORT_RIGHTS_URL,
             accessRights: 'RoleReport'
         },
+
+        {
+            name: 'COMMON_REPORT_PRIVILEGES',
+            icon: 'fa-solid fa-ranking-star',
+            route: ABS_ADMINISTRATION_REPORT_PRIVILEGE_URL,
+            accessRights: 'RPrivilege'
+        },
+
         {
             name: 'COMMON_DB_UPDATER',
             icon: 'fa-solid fa-calendar-lines-pen',

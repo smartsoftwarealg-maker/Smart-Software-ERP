@@ -1,8 +1,8 @@
 import { Component, inject, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from "@angular/router";
 import { LookupsService } from '@ss/common/api-lookup';
-import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
+import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
 import { NestedTreeControl } from '@angular/cdk/tree';
 import {
     ParamAutoCompleteModel,
@@ -14,7 +14,13 @@ import {
     ReportViewData
 } from '@ss/common/api-reports';
 import { MatTree, MatTreeNestedDataSource } from '@angular/material/tree';
-import { HttpService, LanguageService, LoginService, PaginatorPersistenceService } from '@ss/common/api-common';
+import {
+    HttpService,
+    LanguageService,
+    LoginService,
+    MaterialModule,
+    PaginatorPersistenceService
+} from "@ss/common/api-common";
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { delay, Observable, of } from 'rxjs';
 import { HttpParams } from '@angular/common/http';
@@ -25,12 +31,28 @@ import { DeviceDetectorService } from 'ngx-device-detector';
 import { DefaultReportService } from '@ss/common/ui-default-report-component';
 import { Directory, Filesystem } from '@capacitor/filesystem';
 import { FileOpener } from '@capacitor-community/file-opener';
+import { CommonModule } from "@angular/common";
+import { CommonUiLangModule } from "@ss/common/ui-lang";
+import { UiPaginationModule } from "@ss/common/ui-pagination";
+import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
+import { CommonUiAutoCompleteModule } from "@ss/common/ui-auto-complete";
 
 
 @Component({
     selector: 'ss-report-view',
     styleUrls: ['./report-view.component.scss'],
-    templateUrl: './report-view.component.html'
+    templateUrl: './report-view.component.html',
+    standalone: true,
+    imports: [
+        CommonModule,
+        MaterialModule,
+        CommonUiLangModule,
+        UiPaginationModule,
+        CommonUiConfirmationDialogModule,
+        RouterModule,
+        CommonUiDatepickerModule,
+        CommonUiAutoCompleteModule
+    ],
 })
 export class ReportViewComponent extends BaseEntityListComponent<ReportParam> implements OnInit, OnDestroy {
     private paramLookupSrv = inject(ReportParamLookupService);

@@ -319,5 +319,7 @@
     "KEEP_ME_SIGNED":             "garde-moi connecté",
     "SUCCESSES":                  "Succès",
     "FAILURES":                   "Les échecs",
-    "OK":                         "OK"
+    "OK":                         "OK",
+    "FOLDER":                     "Dossier",
+    "REPORT_PRIVILEGES":          "Privilèges de signalement"
 }

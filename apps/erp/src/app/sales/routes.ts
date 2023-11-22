@@ -3,11 +3,12 @@ import { DeliveryDetailComponent, DeliveryListComponent } from '@ss/sales/ui-del
 import { ABS_INDEX_URL, LIST_URL, CanDeactivateService } from '@ss/common/api-common';
 import { DeliveryLinesDetailComponent, DeliveryLinesListComponent } from '@ss/sales/ui-delivery-lines';
 import {
+    ADMINISTRATION_REPORT_PRIVILEGE_URL,
     COMMON_REPORTS_URL,
     DASHBOARD_URL,
     docInfoRoutes, LOGISTICS_AGENT_URL,
     SALES_AD_URL, SALES_SERVICE_ARTICLE_URL
-} from '../common';
+} from "../common";
 import { OrderListComponent } from '@ss/sales/ui-sales-order';
 import { OrderDetailComponent } from '@ss/sales/ui-sales-order';
 import { OrderLinesDetailComponent, OrderLinesListComponent } from '@ss/sales/ui-order-lines';
@@ -43,6 +44,7 @@ import {
 } from '@ss/logistics/ui-agent';
 import { ServiceArticleDetailComponent, ServiceArticleListComponent } from '@ss/service-sales/service-articles';
 import { AGENT_ARCHIVES } from '@ss/common/app-archive';
+import { ReportPrivilegesComponent } from "common/report-privileges";
 
 export const lookupRoutes: Routes = [];
 
@@ -314,6 +316,12 @@ export const mainRoutes: Routes = [
                 // children: docInfoRoutes
             },
         ]
+    },
+    {
+        path: ADMINISTRATION_REPORT_PRIVILEGE_URL,
+        component: ReportPrivilegesComponent,
+        data: {reportBase: 'sales'},
+        canActivate: [loginGuard]
     },
     { path: '', redirectTo: ABS_INDEX_URL, pathMatch: 'full' },
     { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' }
