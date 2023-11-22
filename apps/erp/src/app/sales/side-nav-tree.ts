@@ -10,6 +10,7 @@ import {
     ABS_SALES_INVOICE_URL,
     ABS_SALES_ORDER_URL,
     ABS_SALES_PROFORMA_URL,
+    ABS_SALES_REPORT_PRIVILEGE_URL,
     ABS_SALES_REPORTS_URL
 } from '../common';
 import {SideNavNode} from '@ss/common/api-common';
@@ -95,6 +96,12 @@ export const salesNavTree: SideNavNode = {
             icon: 'fa-solid fa-gauge-min',
             route: ABS_SALES_DASHBOARD_URL,
             accessRights: 'Dashboard'
+        },
+        {
+            name: 'COMMON_REPORT_PRIVILEGES',
+            icon: 'fa-solid fa-ranking-star',
+            route: ABS_SALES_REPORT_PRIVILEGE_URL,
+            accessRights: 'RPrivilege'
         },
     ],
     accessRights: 'SALES'

@@ -316,5 +316,7 @@
     "KEEP_ME_SIGNED":            "Keep me signed in",
     "SUCCESSES":                  "Successes",
     "FAILURES":                   "Failures",
-    "OK":                         "OK"
+    "OK":                         "OK",
+    "FOLDER":                     "Folder",
+    "REPORT_PRIVILEGES":          "Report privileges"
 }

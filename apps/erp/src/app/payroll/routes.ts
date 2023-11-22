@@ -1,5 +1,5 @@
 import {
-    ADMIN_REPORT_RIGHTS_URL,
+    ADMIN_REPORT_RIGHTS_URL, ADMINISTRATION_REPORT_PRIVILEGE_URL,
     COMMON_REPORTS_URL,
     DASHBOARD_URL,
     HR_INACTIVE_EMPLOYEES_URL,
@@ -105,6 +105,7 @@ import {
 import {ArchiveViewerListComponent} from '@ss/remuneration/archive-viewer';
 import {loginGuard, payrollGuard} from '../erp-guards';
 import { ReportRightsComponent } from "@ss/administration/reports-rights";
+import { ReportPrivilegesComponent } from "common/report-privileges";
 
 export const mainRoutes: Routes = [
     {
@@ -686,6 +687,12 @@ export const mainRoutes: Routes = [
             },
             { path: '**', redirectTo: LIST_URL }
         ]
+    },
+    {
+        path: ADMINISTRATION_REPORT_PRIVILEGE_URL,
+        component: ReportPrivilegesComponent,
+        data: {reportBase: 'payroll'},
+        canActivate: [loginGuard]
     },
     { path: '', redirectTo: ABS_INDEX_URL, pathMatch: 'full' },
     { path: '**', redirectTo: ABS_INDEX_URL }

@@ -21,6 +21,7 @@ import {
     ABS_MONTH_SELECTOR_URL,
     ABS_PAYROLL_DASHBOARD_URL,
     ABS_PAYROLL_EMPLOYEES_URL,
+    ABS_PAYROLL_REPORT_PRIVILEGE_URL,
     ABS_PAYROLL_REPORT_RIGHT_URL,
     ABS_SALARY_GRID_URL,
     ABS_SPECIAL_PAYROLL_URL,
@@ -183,6 +184,12 @@ export const payrollNavTree: SideNavNode = {
             accessRights: 'Report'
         },
 
+        {
+            name: 'COMMON_REPORT_PRIVILEGES',
+            icon: 'fa-solid fa-ranking-star',
+            route: ABS_PAYROLL_REPORT_PRIVILEGE_URL,
+            accessRights: 'RPrivilege'
+        },
     ],
     accessRights: 'PAYROLL'
 };

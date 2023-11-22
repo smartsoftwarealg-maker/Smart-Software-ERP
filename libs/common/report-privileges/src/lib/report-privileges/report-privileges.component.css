@@ -1,0 +1,22 @@
+.size  {
+    width: 90%;
+    max-width: 700px;
+    margin: 4px auto;
+}
+.div_table {
+    overflow-x: auto;
+}
+
+mat-table {
+    width: 100%;
+    min-width: 380px;
+}
+
+.mat-column-folder {
+    flex: 3 1 500px;
+}
+
+.mat-column-manager {
+    flex: 1 1 100px;
+}
+

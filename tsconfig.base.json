@@ -604,7 +604,10 @@
             ],
             "@ss/web-arch/assets": ["libs/web-arch/assets/src/index.ts"],
             "@ss/web-arch/ui": ["libs/web-arch/ui/src/index.ts"],
-            "@ss/workflow": ["libs/workflow/src/index.ts"]
+            "@ss/workflow": ["libs/workflow/src/index.ts"],
+            "common/report-privileges": [
+                "libs/common/report-privileges/src/index.ts"
+            ]
         }
     },
     "exclude": ["node_modules", "tmp"]

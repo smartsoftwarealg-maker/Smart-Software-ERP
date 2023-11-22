@@ -1,0 +1,27 @@
+<div class="div_table size">
+    <mat-table mat-table [dataSource]="data$ | async" class="main-table" matSort (matSortChange)="sort($event)">
+
+        <ng-container matColumnDef="folder">
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_FOLDER</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.folder}}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="manager">
+            <mat-header-cell *matHeaderCellDef translate>ADMINISTRATION_MANAGER</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+
+                <mat-checkbox #admin
+                              [class.mat-checkbox-disabled]="false"
+                              (click)="updateAdmin(e, admin.checked)"
+                              [checked]="e.manager">
+                </mat-checkbox>
+            </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+        <mat-row class="selectable" [class.selected]="selectedRow?.folder === row.folder" (click)="selectRow(row)"
+                 *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+</div>

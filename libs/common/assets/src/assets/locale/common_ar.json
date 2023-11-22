@@ -315,5 +315,7 @@
     "KEEP_ME_SIGNED":             "ابقني مسجلا",
     "SUCCESSES":                  "النجاحات",
     "FAILURES":                   "الإخفاقات",
-    "OK":                         "تم"
+    "OK":                         "تم",
+    "FOLDER":                     "مجلد",
+    "REPORT_PRIVILEGES":          "تقرير الامتيازات"
 }
