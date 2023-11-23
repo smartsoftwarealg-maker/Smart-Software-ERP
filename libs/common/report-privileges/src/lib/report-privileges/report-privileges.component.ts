@@ -90,7 +90,7 @@ export class ReportPrivilegesComponent implements OnInit, OnDestroy {
         const res =  list
             .filter(l => l.name !== 'forms' &&l.name !== 'subreports' && l.list?.length > 0)
             .map(l => [l.name, ...this.getFolders(l.list)]);
-        return  res.length == 0? [] : res.reduce((a, b) => [...a, ...b]);
+        return res.reduce((a, b) => [...a, ...b], []);
         // return list
         //     .filter(l => l.name !== 'forms' &&l.name !== 'subreports' && l.list?.length > 0)
         //     .flatMap(l => [l.name, ...this.getFolders(l.list)]);

@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from "@angular/core";
+import { Component, inject, OnDestroy, OnInit } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { KeepOnToolbar, ShellService, SnackBarService, ToolbarButton } from "@ss/common/ui-shell";
 import { ActivatedRoute } from "@angular/router";
@@ -22,7 +22,7 @@ import { of } from "rxjs";
     templateUrl: "./asset-tree.component.html",
     styleUrls: ["./asset-tree.component.css"]
 })
-export class AssetTreeComponent implements OnInit {
+export class AssetTreeComponent implements OnInit, OnDestroy {
     private confirmationSrv  = inject(ConfirmationDialogService);
     private refreshButton: ToolbarButton = {
         icon: 'fas fa-sync-alt',
@@ -60,7 +60,7 @@ export class AssetTreeComponent implements OnInit {
 
     ngOnInit(): void {
         this.shellSrv.setButtons([this.refreshButton]);
-        this.shellSrv.enableSearch("SEARCH_APP", () => this.refreshList());
+        this.shellSrv.enableSearch("SEARCH_APP", obs => obs.subscribe(str => this.refreshList()));
         this.shellSrv.setGoBackPath("..", this.route);
         this.refreshTree();
     }
@@ -133,5 +133,9 @@ export class AssetTreeComponent implements OnInit {
                     }
                 });
         }
+    }
+
+    ngOnDestroy() {
+        this.shellSrv.reset();
     }
 }
