@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnDestroy, OnInit } from "@angular/core";
 import {LoginService, PaginationModel, User} from '@ss/common/api-common';
 import {UserListService} from '@ss/common/api-users';
 import {UserStoresService} from './user-stores.service';
@@ -16,7 +16,7 @@ import {of, switchMap} from 'rxjs';
     templateUrl: './user-stores.component.html',
     styleUrls: ['./user-stores.component.scss'],
 })
-export class UserStoresComponent implements OnInit {
+export class UserStoresComponent implements OnInit, OnDestroy {
     private loginSrv =  inject(LoginService);
     private lotsService =  inject(LotsService);
 
@@ -129,5 +129,9 @@ export class UserStoresComponent implements OnInit {
     private search(filter: string) {
         this.filter = filter;
         this.refreshUsers();
+    }
+
+    ngOnDestroy() {
+        this.shellSrv.reset();
     }
 }

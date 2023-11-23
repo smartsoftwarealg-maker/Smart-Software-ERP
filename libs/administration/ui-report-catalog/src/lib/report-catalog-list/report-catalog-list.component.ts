@@ -55,10 +55,6 @@ export class ReportCatalogListComponent extends BaseEntityListComponent<ReportsC
 
     override ngOnInit(): void {
         super.ngOnInit();
-        // this.shellSrv.setTitle(this.title);
-        // this.shellSrv.setGoBackPath('../..', this.route);
-        // this.shellSrv.enableSearch('COMMON_SEARCH', o => o.subscribe(f => this.setFilter(f)));
-        // this.shellSrv.setButtons([this.refreshButton, this.addButton, this.editButton, this.deleteButton]);
         this.pagination.onChange = () => this.refresh();
         this.reportService.getApps().subscribe(x => {
             this.applications = x;
