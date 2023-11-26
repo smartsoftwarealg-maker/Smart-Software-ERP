@@ -187,6 +187,12 @@
             "@ss/common/ui-traceability": [
                 "libs/common/ui-traceability/src/index.ts"
             ],
+            "@ss/costing/costing-items": [
+                "libs/costing/costing-items/src/index.ts"
+            ],
+            "@ss/costing/costing-utils": [
+                "libs/costing/costing-utils/src/index.ts"
+            ],
             "@ss/custom-attributes": ["libs/custom-attributes/src/index.ts"],
             "@ss/dashboard": ["libs/dashboard/src/index.ts"],
             "@ss/employee-services/employee-services": [
@@ -608,8 +614,7 @@
             "common/report-privileges": [
                 "libs/common/report-privileges/src/index.ts"
             ],
-            "@ss/costing/costing-items": ["libs/costing/costing-items/src/index.ts"],
-            "@ss/costing/costing-utils": ["libs/costing/costing-utils/src/index.ts"]
+            "costing/costing-keys": ["libs/costing/costing-keys/src/index.ts"]
         }
     },
     "exclude": ["node_modules", "tmp"]
