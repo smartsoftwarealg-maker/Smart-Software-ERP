@@ -1,5 +1,5 @@
 import {SideNavNode} from '@ss/common/api-common';
-import {ABS_CART, ABS_CUSTOMER_PROFILE, ABS_FOOD} from '../common';
+import {ABS_CUSTOMER_PROFILE, ABS_FOOD} from '../common';
 
 
 export const foodNavTree: SideNavNode = {

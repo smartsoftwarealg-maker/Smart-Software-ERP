@@ -607,7 +607,9 @@
             "@ss/workflow": ["libs/workflow/src/index.ts"],
             "common/report-privileges": [
                 "libs/common/report-privileges/src/index.ts"
-            ]
+            ],
+            "costing": ["libs/costing/src/index.ts"],
+            "costing/costing-utils": ["libs/costing/costing-utils/src/index.ts"]
         }
     },
     "exclude": ["node_modules", "tmp"]

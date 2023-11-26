@@ -1,0 +1,147 @@
+export const COSTING_ENTITIES = {
+    Item: 'CItem',
+    Key: 'CKey',
+    Project: 'CProject',
+    Product: 'CProduct',
+    ProductLine: 'CProductLine',
+    ProductLineDirect: 'CLineDirectItem',
+    ProductLineOverhead: 'CLineOHItem',
+    Pool: 'CPool',
+    PoolDetail: 'CPoolDetail',
+    OH: 'OH',
+    User: 'User', // FIXME: wrong value
+    Role: 'Role', // FIXME: wrong value
+    CostCenter: 'CostCenter', // FIXME: wrong value
+    CostCenterGroup: 'CostCenterGroup', // FIXME: wrong value
+    Injection: 'CostingInjection', // FIXME: wrong value
+    InjectionAct: 'CostingInjectionAct', // FIXME: wrong value
+    Report: 'Report', // FIXME: wrong value
+    AccessRights: 'AccessRights', // FIXME: wrong value
+    Profile: 'Profile', // FIXME: wrong value
+};
+
+export const COSTING_ENTITY_LIST = [
+    COSTING_ENTITIES.Item,
+    COSTING_ENTITIES.Key,
+    COSTING_ENTITIES.Project,
+    COSTING_ENTITIES.Product,
+    COSTING_ENTITIES.ProductLine,
+    COSTING_ENTITIES.ProductLineDirect,
+    COSTING_ENTITIES.ProductLineOverhead,
+    COSTING_ENTITIES.Pool,
+    COSTING_ENTITIES.PoolDetail,
+    COSTING_ENTITIES.OH,
+    COSTING_ENTITIES.CostCenter,
+    COSTING_ENTITIES.CostCenterGroup,
+    COSTING_ENTITIES.Injection,
+    COSTING_ENTITIES.InjectionAct,
+    COSTING_ENTITIES.Report,
+    COSTING_ENTITIES.User,
+    COSTING_ENTITIES.Role,
+    COSTING_ENTITIES.AccessRights,
+    COSTING_ENTITIES.Profile
+];
+
+export interface CItem {
+    id: number;
+    code: string;
+    description: string;
+    accountNo: number;
+    accountDescription?: string;
+}
+
+export interface CKey {
+    id: number;
+    code: string;
+    description: string;
+}
+
+export interface CProject {
+    id: number;
+    code: string;
+    description: string;
+    from: string;
+    to: string;
+    centerId: number;
+}
+
+export interface CProduct {
+    id: number;
+    code: string;
+    description: string;
+}
+
+export interface CProductLine {
+    id: number;
+    projectId: number;
+    productId: number;
+    units: number;
+}
+
+export interface CLineDirectItem {
+    id: number;
+    productLineId: number;
+    item: number;
+    amount: number;
+    scale: number;
+    actual: number;
+}
+
+export interface CLineOHItem {
+    id: number;
+    productLineId: number;
+    keyId: number;
+    value: number;
+    actual: number;
+}
+
+export interface CPool {
+    id: number;
+    costCenterId: number;
+    projectId: number;
+    keyId: number;
+    isSupport: boolean;
+}
+
+export interface CPoolDetail {
+    id: number;
+    poolId: number;
+    key: number;
+    value: number;
+}
+
+export interface OH {
+    id: number;
+    projectId: number;
+    keyId: number;
+    description: string;
+    amount: number;
+    scale: number;
+    actual: number;
+    accountNo: number;
+}
+
+export interface CostCenter {
+    id: number;
+    code: string;
+    description: string;
+    groupId: number;
+}
+
+export interface ScalaCostingResult {
+    _1: CProduct;
+    _2: number;
+}
+
+export interface CostingResult {
+    product: CProduct;
+    productAcDescription: number;
+    expectedCost: number;
+    actualCost: number;
+    error: string;
+}
+
+export interface ReportList {
+    name: string;
+    files: string[];
+}

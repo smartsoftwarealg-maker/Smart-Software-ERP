@@ -46,7 +46,7 @@ import {
     ARCH_VIEWER_URL,
     CMMS_APP_URL,
     PARK_APP_URL,
-    SERVICE_SALES
+    SERVICE_SALES, COSTING_APP_URL
 } from '../app/common';
 import {hrLookupNavTree} from '../app/hr-lookups/side-nav-tree';
 import {foodNavTree} from '../app/food/side-nav-tree';
@@ -59,6 +59,7 @@ import { aaNavTree } from '../app/archive-viewer/side-nav-tree';
 import { parkNavTree } from '../app/park/side-nav-tree';
 import { cmmsNavTree } from '../app/cmms/side-nav-tree';
 import { ssalesNavTree } from '../app/service-sales/side-nav-tree';
+import { costingNavTree } from '../app/costing/side-nav-tree';
 
 export const environment = {
     production: true,
@@ -92,7 +93,8 @@ export const navBar = [
     aaNavTree,
     parkNavTree,
     cmmsNavTree,
-    foodNavTree
+    foodNavTree,
+    costingNavTree
 ];
 
 export const langAssets = [
@@ -237,6 +239,10 @@ export const appRoutes: Routes =  [
     {
         path: SHOPPING_CART_APP_URL,
         loadChildren: () => import('../app/shopping-cart/shopping-cart.module').then(m => m.ShoppingCartModule)
+    },
+    {
+        path: COSTING_APP_URL,
+        loadChildren: () => import('../app/costing/costing.module').then(m => m.CostingModule)
     },
     { path: '', redirectTo: INDEX_PAGE_URL, pathMatch: 'full' },
     { path: '**', redirectTo: INDEX_PAGE_URL, pathMatch: 'full' }

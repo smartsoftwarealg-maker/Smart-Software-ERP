@@ -43,6 +43,7 @@ export const FURNITURE_APP_URL = 'furniture';
 export const ARCH_VIEWER_APP_URL = 'arch-viewer';
 export const ORGANIZATIONS_APP_URL = 'organizations';
 export const LTM_APP_URL = 'ltm';
+export const COSTING_APP_URL = 'costing';
 export const CMMS_APP_URL = 'cmms';
 export const PARK_APP_URL = 'park';
 export const ARCH_VIEWER_URL = 'arch-viewer';
@@ -371,6 +372,9 @@ export const FURNITURE_TYPES_URL      = 'furniture-types';
 export const AA_VIEWER = 'aa-viewer';
 export const AA_RIGHTS = 'aa-rights';
 
+// Costing
+export const COSTING_ITEMS_URL = 'costing-items';
+
 //Web arch
 export const ARCHIVE_URL    = 'arch';
 export const TAG_URL        = 'tags';
@@ -669,6 +673,9 @@ export const ABS_CMMS_GANT_URL = '/' + [MAIN_PAGE_URL, CMMS_APP_URL, CMMS_GANT_U
 export const ABS_CMMS_LOCATIONS = '/' + [MAIN_PAGE_URL, CMMS_APP_URL, ASSET_LOCATIONS_URL].join('/');
 export const ABS_CMMS_EMPLOYEES_URL = '/' + [MAIN_PAGE_URL, CMMS_APP_URL, CMMS_EMPLOYEES_URL].join('/');
 export const ABS_CMMS_FUNCTIONS = '/' + [MAIN_PAGE_URL, CMMS_APP_URL, CMMS_FUNCTION_URL].join('/');
+
+// Costing
+export const ABS_COSTING_ITEMS = '/' + [MAIN_PAGE_URL, COSTING_APP_URL, COSTING_ITEMS_URL].join('/');
 
 // Furniture
 export const ABS_FURNITURE_URL            = '/' + [MAIN_PAGE_URL, FURNITURE_APP_URL, FURNITURE_URL].join('/');

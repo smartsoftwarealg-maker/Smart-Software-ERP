@@ -54,5 +54,6 @@
     "COMMON":          "Utilitaires",
     "BUDGET":          "Budget",
     "EPAYMENT":        "Paiement électronique",
-    "EXCHANGE":        "Échange de l'argent"
+    "EXCHANGE":        "Échange de l'argent",
+    "COSTING":         "Coût"
 }
