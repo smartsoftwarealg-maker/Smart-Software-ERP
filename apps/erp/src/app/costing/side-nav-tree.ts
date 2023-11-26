@@ -6,8 +6,8 @@ export const costingNavTree: SideNavNode = {
     icon: 'fa-solid fa-hand-holding-dollar',
     children: [
         {
-            name: 'CMMS_FUNCTION',
-            icon: 'fa-solid fa-function',
+            name: 'COSTING_ITEMS',
+            icon: 'fa-solid fa-sitemap',
             route: ABS_COSTING_ITEMS,
             accessRights: 'CMMSFunction'
         },

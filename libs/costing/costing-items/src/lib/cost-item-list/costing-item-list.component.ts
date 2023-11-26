@@ -1,21 +1,21 @@
 import { Component, HostBinding, OnInit } from "@angular/core";
 import { ActivatedRoute, Router, RouterModule } from "@angular/router";
-import { CItem } from "costing/costing-utils";
-import { slideToRight } from "costing/costing-utils";
-import { BaseEntityListComponent } from "libs/common/ui-base-entity/src";
-import { MaterialModule, PaginatorPersistenceService, UserService } from "@ss/common/api-common";
+import { CItem } from '@ss/costing/costing-utils';
+import { slideToRight } from '@ss/costing/costing-utils';
+import { BaseEntityListComponent } from 'libs/common/ui-base-entity/src';
+import { MaterialModule, PaginatorPersistenceService } from '@ss/common/api-common';
 import { ShellService, SnackBarService } from "@ss/common/ui-shell";
-import { DefaultReportService } from "@ss/common/ui-default-report-component";
+import { DefaultReportService } from '@ss/common/ui-default-report-component';
 import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
 import { ItemService } from "../item.service";
-import { CommonModule } from "@angular/common";
-import { CommonUiLangModule } from "@ss/common/ui-lang";
+import { CommonModule } from '@angular/common';
+import { CommonUiLangModule } from '@ss/common/ui-lang';
 import { UiPaginationModule } from "@ss/common/ui-pagination";
-import { ReactiveFormsModule } from "@angular/forms";
-import { CommonUiMainPageModule } from "@ss/common/ui-main-page";
-import { CommonUiAutoCompleteModule } from "@ss/common/ui-auto-complete";
-import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
-import { AppArchiveModule } from "@ss/common/app-archive";
+import { ReactiveFormsModule } from '@angular/forms';
+import { CommonUiMainPageModule } from '@ss/common/ui-main-page';
+import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
+import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
+import { AppArchiveModule } from '@ss/common/app-archive';
 
 @Component({
   selector: "ss-costing-item-list",

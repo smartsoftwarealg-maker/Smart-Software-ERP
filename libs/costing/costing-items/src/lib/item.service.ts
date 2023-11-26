@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BaseEntityService } from "@ss/common/api-base-entity";
-import { CItem } from "costing/costing-utils";
+import { CItem } from '@ss/costing/costing-utils';
 import { HttpService } from "@ss/common/api-common";
 
 @Injectable({

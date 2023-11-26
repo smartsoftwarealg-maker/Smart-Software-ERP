@@ -2,7 +2,7 @@ import { Routes } from '@angular/router';
 import { ABS_INDEX_URL, CanDeactivateService, LIST_URL } from '@ss/common/api-common';
 import { COSTING_ITEMS_URL } from '../common';
 import { loginGuard } from '../erp-guards';
-import { CostingItemDetailComponent, CostingItemListComponent } from '../../../../../libs/costing/costing-items/src';
+import { CostingItemDetailComponent, CostingItemListComponent } from '@ss/costing/costing-items';
 
 export const costingRoutes: Routes = [
     {

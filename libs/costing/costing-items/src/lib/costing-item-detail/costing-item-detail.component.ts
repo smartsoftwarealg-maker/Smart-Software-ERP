@@ -3,8 +3,8 @@ import { ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup,
   Validators
 } from "@angular/forms";
 import { ActivatedRoute, RouterModule } from "@angular/router";
-import { slideToRight } from "costing/costing-utils";
-import { CItem } from "costing/costing-utils";
+import { slideToRight } from "@ss/costing/costing-utils";
+import { CItem } from '@ss/costing/costing-utils';
 import { CommonModule } from "@angular/common";
 import { MaterialModule } from "@ss/common/api-common";
 import { CommonUiLangModule } from "@ss/common/ui-lang";
