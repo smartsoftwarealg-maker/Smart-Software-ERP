@@ -25,8 +25,8 @@ import {
     ABS_CMMS_EMPLOYEES_URL,
     ABS_CMMS_FUNCTIONS,
     ABS_CMMS_CHECKLIST_URL,
-    ABS_INSPECTION_ORDER_URL, ABS_INSPECTION_URL, ABS_CMMS_GANT_URL
-} from '../common';
+    ABS_INSPECTION_ORDER_URL, ABS_INSPECTION_URL, ABS_CMMS_GANT_URL, ABS_FURNITURE_REPORTS_URL, ABS_CMMS_REPORTS_URL
+} from "../common";
 
 export const cmmsNavTree: SideNavNode = {
     name: 'CMMS',
@@ -229,6 +229,12 @@ export const cmmsNavTree: SideNavNode = {
             icon: 'fa-solid fa-car-battery',
             route: ABS_CMMS_PARTS_REQUEST_URL,
             accessRights: 'PartsRequest'
+        },
+        {
+            name: 'COMMON_REPORTS',
+            icon: 'fa-solid fa-file-chart-column',
+            route: ABS_CMMS_REPORTS_URL,
+            accessRights: 'Report'
         },
     ],
     accessRights: 'CMMS'

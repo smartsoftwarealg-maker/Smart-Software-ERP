@@ -1,10 +1,11 @@
 import {SideNavNode} from '@ss/common/api-common';
 import {
+    ABS_ACC_REPORTS_URL,
     ABS_FURNITURE_ASSIGNMENT_URL,
     ABS_FURNITURE_RECEIVERS_URL,
-    ABS_FURNITURE_RECEPTION_URL, ABS_FURNITURE_SALES_URL, ABS_FURNITURE_TYPES_URL,
+    ABS_FURNITURE_RECEPTION_URL, ABS_FURNITURE_REPORTS_URL, ABS_FURNITURE_SALES_URL, ABS_FURNITURE_TYPES_URL,
     ABS_FURNITURE_URL
-} from '../common';
+} from "../common";
 
 export const furnitureNavTree: SideNavNode = {
     name: 'ASSET_FURNITURE',
@@ -46,6 +47,12 @@ export const furnitureNavTree: SideNavNode = {
             route: ABS_FURNITURE_SALES_URL,
             accessRights: 'FurnitureAssignment'
         },
+        {
+            name: 'COMMON_REPORTS',
+            icon: 'fa-solid fa-file-chart-column',
+            route: ABS_FURNITURE_REPORTS_URL,
+            accessRights: 'Report'
+        },
     ],
-    accessRights: "Furniture"
+    accessRights: 'Furniture'
 };
