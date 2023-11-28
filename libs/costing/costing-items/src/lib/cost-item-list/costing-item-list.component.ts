@@ -7,7 +7,7 @@ import { MaterialModule, PaginatorPersistenceService } from '@ss/common/api-comm
 import { ShellService, SnackBarService } from "@ss/common/ui-shell";
 import { DefaultReportService } from '@ss/common/ui-default-report-component';
 import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
-import { ItemService } from "../item.service";
+import { CostingItemService } from "../costing-item.service";
 import { CommonModule } from '@angular/common';
 import { CommonUiLangModule } from '@ss/common/ui-lang';
 import { UiPaginationModule } from "@ss/common/ui-pagination";
@@ -43,7 +43,7 @@ export class CostingItemListComponent extends BaseEntityListComponent<CItem> imp
   public displayedColumns = ["code", "description", "accountDescription"];
 
   constructor(
-    public override entitySrv: ItemService,
+    public override entitySrv: CostingItemService,
     public override shellSrv: ShellService,
     public override snackBarSrv: SnackBarService,
     public override route: ActivatedRoute,

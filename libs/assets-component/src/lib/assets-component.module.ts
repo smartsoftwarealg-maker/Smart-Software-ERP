@@ -25,7 +25,6 @@ import { AssetLocationsDetailComponent } from './asset-locations-detail/asset-lo
 import { AssetSearchDialogComponent } from './asset-search-dialog/asset-search-dialog.component';
 import { CustomAttributesModule } from '@ss/custom-attributes';
 import { AssetClassListComponent } from './asset-class-list/asset-class-list.component';
-import { AssetClassDetailComponent } from './asset-class-detail/asset-class-detail.component';
 import { AssetOptionsComponent } from './asset-options/asset-options.component';
 import { AssetReceptionsComponent } from './asset-receptions/asset-receptions.component';
 import { AssetAppointmentDocListComponent } from './asset-appointment-doc-list/asset-appointment-doc-list.component';
@@ -84,7 +83,6 @@ import { QRCodeModule } from "angularx-qrcode";
         AssetLocationsDetailComponent,
         AssetSearchDialogComponent,
         AssetClassListComponent,
-        AssetClassDetailComponent,
         AssetOptionsComponent,
         AssetReceptionsComponent,
         AssetAppointmentDocListComponent,

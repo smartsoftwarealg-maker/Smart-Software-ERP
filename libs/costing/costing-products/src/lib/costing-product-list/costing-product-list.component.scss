@@ -1,0 +1,21 @@
+.size {
+  width: 90%;
+  max-width: 900px;
+  margin: 4px auto;
+}
+.container {
+  height: calc(100% - 72px);
+}
+.mat-column-code {
+  flex: 1 1  90px;
+}
+
+.mat-column-description {
+  flex: 2 1 250px;
+  padding-right: 8px;
+  padding-left: 8px;
+}
+
+.mat-column-accountDescription {
+  flex: 2 1 300px;
+}

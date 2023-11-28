@@ -23,6 +23,8 @@
     "ADD": "إضافة",
     "EDIT_SELECTED": "تعديل المحدد",
     "DEL_SELECTED": "حذف المحدد",
+    "FIELD_MIN_VALUE": "أقل عدد مسموح به هو $minValue$ حرفا",
+    "FIELD_MAX_VALUE": "أقصى عدد مسموح به هو $maxValue$ حرفا",
     "FIELD_REQUIRED": "هذا الحقل مطلوب",
     "FIELD_MAX_LENGTH": "أقصى عدد مسموح به هو $maxLen$ حرفا",
     "EMAIL_INVALID": "عنوان البريد الذي أدخلته خاطئ",

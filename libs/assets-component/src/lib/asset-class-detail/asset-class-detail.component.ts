@@ -1,18 +1,41 @@
-import { Component, OnInit } from '@angular/core';
-import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
-import {AssetClass} from '../assets-api';
-import {Bank, BankService} from '@ss/administration/api-bank';
-import {ShellService, SnackBarService} from '@ss/common/ui-shell';
-import {ActivatedRoute} from '@angular/router';
-import {UntypedFormBuilder, Validators} from '@angular/forms';
-import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import {LookupsService} from '@ss/common/api-lookup';
-import {AssetClassService} from '../services/asset-class.service';
+import { Component, OnInit } from "@angular/core";
+import { BaseEntityDetailComponent } from "@ss/common/ui-base-entity";
+import { AssetClass } from "../assets-api";
+import { ShellService, SnackBarService } from "@ss/common/ui-shell";
+import { ActivatedRoute, RouterModule } from "@angular/router";
+import { UntypedFormBuilder, Validators } from "@angular/forms";
+import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
+import { LookupsService } from "@ss/common/api-lookup";
+import { AssetClassService } from "../services/asset-class.service";
+import { CommonModule } from "@angular/common";
+import { MaterialModule } from "@ss/common/api-common";
+import { CommonUiLangModule } from "@ss/common/ui-lang";
+import { CommonUiImageInputModule } from "@ss/common/ui-image-input";
+import { UiPaginationModule } from "@ss/common/ui-pagination";
+import { CommonUiAutoCompleteModule } from "@ss/common/ui-auto-complete";
+import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
+import { CustomAttributesModule } from "@ss/custom-attributes";
+import { AppArchiveModule } from '@ss/common/app-archive';
 
 @Component({
-  selector: 'ss-asset-class-detail',
-  templateUrl: './asset-class-detail.component.html',
-  styleUrls: ['./asset-class-detail.component.scss']
+    selector: "ss-asset-class-detail",
+    templateUrl: "./asset-class-detail.component.html",
+    standalone: true,
+    imports: [
+        CommonModule,
+        MaterialModule,
+        CommonUiLangModule,
+        CommonUiImageInputModule,
+        UiPaginationModule,
+        CommonUiConfirmationDialogModule,
+        CommonUiAutoCompleteModule,
+        CommonUiDatepickerModule,
+        RouterModule,
+        CustomAttributesModule,
+        AppArchiveModule
+    ],
+
+    styleUrls: ["./asset-class-detail.component.scss"]
 })
 export class AssetClassDetailComponent extends BaseEntityDetailComponent<AssetClass> {
 
@@ -24,16 +47,16 @@ export class AssetClassDetailComponent extends BaseEntityDetailComponent<AssetCl
         public override formBuilder: UntypedFormBuilder,
         public override confirmationSrv: ConfirmationDialogService,
         public lookupsSrv: LookupsService) {
-        super(entitySrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'COMMON_CLASSES');
+        super(entitySrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, "COMMON_CLASSES");
     }
 
 
     public override setupForm(b: AssetClass) {
         return this.formBuilder.group({
             id: [b.id],
-            depreciationRate: [b.depreciationRate, Validators.maxLength(50)],
-            description: [b.description, [Validators.required, Validators.min(1), Validators.max(100)]],
-            usefulLife: [b.usefulLife, [Validators.required, Validators.min(1), Validators.max(100)]],
+            description:      [b.description, [Validators.required, Validators.minLength(1), Validators.maxLength(70)]],
+            depreciationRate: [b.depreciationRate, Validators.max(100)],
+            usefulLife:       [b.usefulLife, [Validators.required, Validators.min(1), Validators.max(100)]]
         });
     }
 

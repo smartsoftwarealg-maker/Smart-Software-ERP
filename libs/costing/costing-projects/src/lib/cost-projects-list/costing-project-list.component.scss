@@ -1,0 +1,91 @@
+@use '@angular/material' as mat;
+
+
+#project-list {
+  max-height: 530px;
+  transition: max-height 0.5s linear, height 0.5s linear, padding 0.5s linear;
+  overflow: hidden;
+}
+
+#project-clone-form {
+  max-height: 530px;
+  transition: max-height 0.5s linear, height 0.5s linear, padding 0.5s linear;
+  overflow: hidden;
+  margin-top: 10px;
+}
+
+.panel {
+  @include mat.elevation(6);
+  position: relative;
+  overflow: hidden;
+  display: block;
+  padding: 45px 1% 1%;
+  border-radius: 30px;
+  width: 98%;
+  max-width: 1200px;
+  margin: auto;
+
+  .round-header {
+    overflow: hidden;
+    user-select: none;
+    position: absolute;
+    padding-right: 15px;
+    padding-left: 15px;
+    height: 40px;
+    line-height: 40px;
+    top: 0;
+    right: 0;
+    left: 0;
+  }
+
+  .bottom-bar {
+    display: inline-block;
+    user-select: none;
+    width: 100%;
+    button {
+      user-select: none;
+      float: right;
+      margin-right: 12px;
+    }
+  }
+
+}
+
+.max-height-zero {
+  max-height: 0 !important;
+  min-height: 0 !important;
+  padding: 0 !important;
+  overflow: hidden;
+  transition: max-height 0.5s linear, height 0.5s linear, padding 0.5s linear;
+}
+
+.costing-project-lst-container {
+  max-width: 1200px;
+  width: 100%;
+  margin: auto;
+
+  .tbl-container {
+    width: 100%;
+    max-width: 100%;
+  }
+
+}
+
+.mat-column-code {
+  flex: 1 1 64px;
+  padding-right: 8px;
+}
+
+.mat-column-description {
+  flex: 1 1 200px;
+  padding-right: 8px;
+}
+
+.mat-column-from {
+  padding-right: 8px;
+  flex: 1 1 80px;
+}
+
+.mat-column-to {
+  flex: 1 1 80px;
+}

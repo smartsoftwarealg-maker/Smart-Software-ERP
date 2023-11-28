@@ -614,7 +614,13 @@
             "common/report-privileges": [
                 "libs/common/report-privileges/src/index.ts"
             ],
-            "costing/costing-keys": ["libs/costing/costing-keys/src/index.ts"]
+            "@ss/costing/costing-keys": ["libs/costing/costing-keys/src/index.ts"],
+            "@ss/costing/costing-products": [
+                "libs/costing/costing-products/src/index.ts"
+            ],
+            "@ss/costing/costing-projects": [
+                "libs/costing/costing-projects/src/index.ts"
+            ]
         }
     },
     "exclude": ["node_modules", "tmp"]

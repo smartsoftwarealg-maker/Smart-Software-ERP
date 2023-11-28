@@ -6,7 +6,7 @@ import { HttpService } from "@ss/common/api-common";
 @Injectable({
   providedIn: 'root'
 })
-export class ItemService extends BaseEntityService<CItem> {
+export class CostingItemService extends BaseEntityService<CItem> {
 
   constructor(protected override httpSrv: HttpService) {
       super(httpSrv, '/costing/items');

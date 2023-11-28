@@ -16,7 +16,7 @@ import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from '@ss
 import { AppArchiveModule } from "@ss/common/app-archive";
 import { BaseEntityDetailComponent } from "@ss/common/ui-base-entity";
 import { ShellService, SnackBarService } from "@ss/common/ui-shell";
-import { ItemService } from "../item.service";
+import { CostingItemService } from "../costing-item.service";
 import { AccountAutocompleteModel, AccountService } from "@ss/accounting/api-accounts";
 
 @Component({
@@ -46,7 +46,7 @@ export class CostingItemDetailComponent extends BaseEntityDetailComponent<CItem>
   @HostBinding('@routeAnimation') routeAnimation = true;
 
   constructor(
-    public override entitySrv: ItemService,
+    public override entitySrv: CostingItemService,
     public override shellSrv: ShellService,
     public override snackBarSrv: SnackBarService,
     public override route: ActivatedRoute,

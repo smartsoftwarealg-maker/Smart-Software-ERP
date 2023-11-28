@@ -69,8 +69,8 @@ export class InventoryDetailComponent extends BaseTransactionDetailComponent imp
         if (!this.invImportBtn.disabled) {
             const id = this.form.controls['id']?.value;
             const dialogRef = this.dialog.open(InventoryImportComponent, {
-                width: '600px',
-                height: '360px',
+                width: '650px',
+                height: '380px',
                 disableClose: true,
                 data: {
                     transactId: id

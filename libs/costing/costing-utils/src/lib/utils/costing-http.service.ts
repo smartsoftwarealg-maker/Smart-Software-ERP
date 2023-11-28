@@ -31,7 +31,7 @@ export interface ReportParameter {
     value: number | string;
 }
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class CostingHttpService {
 
     public appName = 'costing';
@@ -86,7 +86,7 @@ export class CostingHttpService {
     public cloneUrlParamCode = 'code';
     public cloneUrlParamDescription = 'description';
 
-    public reportsListUrl = '/reports/list';
+    public reportsListUrl = '/reports';
     public reportsListUrlFilterParam = 'filter=costing';
 
     public reportsViewUrl = '/reports/view';
@@ -585,7 +585,7 @@ export class CostingHttpService {
 
     // keys
     private keysFilter(filter: string): Observable<CKey[]> {
-        return this.listKeys(0, 5, filter);
+        return this.listKeys(0, 50, filter);
     }
 
     private keysGetter(obj: CKey): number {

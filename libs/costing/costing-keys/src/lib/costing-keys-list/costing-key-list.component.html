@@ -2,12 +2,12 @@
     <div class="tbl-container theme-background">
         <mat-table mat-table [dataSource]="data" class="main-table" matSort (matSortChange)="sort($event)">
             <ng-container matColumnDef="code">
-                <mat-header-cell *matHeaderCellDef mat-sort-header translate>{{'CODE'}}</mat-header-cell>
+                <mat-header-cell *matHeaderCellDef mat-sort-header translate>ADMINISTRATION_CODE</mat-header-cell>
                 <mat-cell *matCellDef="let item">{{ item.code }}</mat-cell>
             </ng-container>
 
             <ng-container matColumnDef="description">
-                <mat-header-cell *matHeaderCellDef mat-sort-header translate>{{'DESCRIPTION'}}</mat-header-cell>
+                <mat-header-cell *matHeaderCellDef mat-sort-header translate>ADMINISTRATION_DESCRIPTION</mat-header-cell>
                 <mat-cell *matCellDef="let item">{{ item.description }}</mat-cell>
             </ng-container>
 

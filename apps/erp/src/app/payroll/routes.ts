@@ -24,7 +24,7 @@ import {
     PAY_VACATION_PLANNING,
     PAY_XLS_INJECTION,
     PAYROLL_EMPLOYEES_URL
-} from "../common";
+} from '../common';
 import {
     ABS_INDEX_URL,
     CanDeactivateService,
@@ -104,8 +104,8 @@ import {
 } from '@ss/common/app-archive';
 import {ArchiveViewerListComponent} from '@ss/remuneration/archive-viewer';
 import {loginGuard, payrollGuard} from '../erp-guards';
-import { ReportRightsComponent } from "@ss/administration/reports-rights";
-import { ReportPrivilegesComponent } from "common/report-privileges";
+import { ReportRightsComponent } from '@ss/administration/reports-rights';
+import { ReportPrivilegesComponent } from 'common/report-privileges';
 
 export const mainRoutes: Routes = [
     {
@@ -386,7 +386,7 @@ export const mainRoutes: Routes = [
                         component: EmployeeDetailComponent,
                         canActivate: [loginGuard],
                         canDeactivate: [CanDeactivateService],
-                        data: { hrMode: true, active: true },
+                        data: { hrMode: false, active: true },
                         children: [
                             {
                                 path: 'archive',
@@ -506,7 +506,7 @@ export const mainRoutes: Routes = [
                         component: EmployeeDetailComponent,
                         canActivate: [loginGuard],
                         canDeactivate: [CanDeactivateService],
-                        data: { hrMode: true, active: false },
+                        data: { hrMode: false, active: false },
                         children: [
                             {
                                 path: ACTIVATION_ROUTE_URL,

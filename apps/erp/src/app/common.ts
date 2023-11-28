@@ -375,6 +375,8 @@ export const AA_RIGHTS = 'aa-rights';
 // Costing
 export const COSTING_ITEMS_URL = 'costing-items';
 export const COSTING_KEY_URL = 'costing-keys';
+export const COSTING_PRODUCTS_URL = 'costing-products';
+export const COSTING_PROJECT_URL = 'costing-projects';
 
 //Web arch
 export const ARCHIVE_URL    = 'arch';
@@ -679,6 +681,8 @@ export const ABS_CMMS_REPORTS_URL = '/' + [MAIN_PAGE_URL, CMMS_APP_URL, COMMON_R
 // Costing
 export const ABS_COSTING_ITEMS = '/' + [MAIN_PAGE_URL, COSTING_APP_URL, COSTING_ITEMS_URL].join('/');
 export const ABS_COSTING_KEYS = '/' + [MAIN_PAGE_URL, COSTING_APP_URL, COSTING_KEY_URL].join('/');
+export const ABS_COSTING_PRODUCTS = '/' + [MAIN_PAGE_URL, COSTING_APP_URL, COSTING_PRODUCTS_URL].join('/');
+export const ABS_COSTING_PROJECTS = '/' + [MAIN_PAGE_URL, COSTING_APP_URL, COSTING_PROJECT_URL].join('/');
 
 // Furniture
 export const ABS_FURNITURE_URL            = '/' + [MAIN_PAGE_URL, FURNITURE_APP_URL, FURNITURE_URL].join('/');
