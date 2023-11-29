@@ -265,7 +265,7 @@
                 </mat-panel-title>
             </mat-expansion-panel-header>
 
-            <div class="ctrl-div" *ngIf="activePersonnel">
+            <div class="ctrl-div" *ngIf="activePersonnel && isEditable">
                 <div class="filler"></div>
                 <mat-form-field appearance="fill">
                     <mat-label translate>PAYROLL_GENERATE_FROM</mat-label>
@@ -277,6 +277,7 @@
                 </mat-form-field>
 
                 <button mat-raised-button color="primary" type="button" (click)="generateFrom(mode.value)">
+                    <i class="fa-solid fa-wind-turbine"></i>
                     {{ 'COMMON_GENERATE' | translate }}
                 </button>
                 <button mat-raised-button color="primary" type="button" (click)="saveElements()">

@@ -20,7 +20,6 @@ import {
 import {GridService} from '@ss/payroll/salary-grid';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 
-
 @Component({
     selector: 'ss-emp-career-detail',
     templateUrl: './employee-career-detail.component.html',
@@ -59,13 +58,13 @@ export class EmployeeCareerDetailComponent extends BaseChildEntityDetailComponen
         this.preload();
         this.entity = a;
         return this.form = this.formBuilder.group({
-            id:       [a.id],
-            parentId: [a.parentId || this.employeeCareerSrv.getParentId()],
-            paymonthY: [Math.floor(a.paymonth / 100), Validators.required],
-            paymonthM: [a.paymonth % 100, Validators.required],
-            post: [a.post, Validators.required],
-            division: a.division,
-            department: a.department,
+            id:         [a.id],
+            parentId:   [a.parentId || this.employeeCareerSrv.getParentId()],
+            paymonthY:  [Math.floor(a.paymonth / 100), Validators.required],
+            paymonthM:  [a.paymonth % 100, Validators.required],
+            post:       [a.post, Validators.required],
+            division:   [a.division],
+            department: [a.department],
             service: a.service,
             workshop: a.workshop,
             salary_grid: a.salary_grid,
