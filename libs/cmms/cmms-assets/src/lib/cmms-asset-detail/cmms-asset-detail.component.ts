@@ -210,6 +210,8 @@ export class CmmsAssetDetailComponent extends BaseEntityDetailComponent<Asset> i
     openSearchDlg() {
         const dialogRef = this.dialog.open(OfficeSearchComponent,
             {
+                width: '600px',
+                height: '520px',
                 data: {id: 0, description: null, cmms: true }
             });
         dialogRef

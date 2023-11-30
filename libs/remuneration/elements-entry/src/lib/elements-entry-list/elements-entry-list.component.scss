@@ -14,8 +14,7 @@
 
 .table__div {
     overflow-x: auto;
-    max-height: calc(100% - 60px);
-    min-height: calc(100% - 60px);
+    height: calc(100vh - 300px);
 }
 
 .main-table {
@@ -60,7 +59,6 @@ mat-form-field {
 .journal-table {
     width: 100vw;
 }
-
 
 .pay-slip {
     width: 100%;
@@ -139,3 +137,6 @@ mat-form-field {
     font-weight: bolder;
 }
 
+mat-tab-group {
+    height: calc(100% - 100px);
+}

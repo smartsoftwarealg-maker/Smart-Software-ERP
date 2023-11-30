@@ -1,20 +1,18 @@
 import {
-    ABS_LOGISTICS_PAY_METHOD,
-    ABS_LOGISTICS_AGENT_URL,
-    ABS_LOGISTICS_CATEGORY,
     ABS_SCHEDULED_SALES_PROJECTS,
     ABS_SCHEDULED_SALES_ARTICLE,
     ABS_SCHEDULED_SALES_QUOTAS,
     ABS_SCHEDULED_SALES_DISCOUNT_TYPES,
     ABS_SCHEDULED_SALES_SCHEDULES,
     ABS_SALES_MODES_URL,
-    ABS_SCHEDULED_SALES_PARTNER_SCHEDULES, ABS_SCHEDULED_SALES_PARTNER_TRUCKS,
+    ABS_SCHEDULED_SALES_PARTNER_SCHEDULES,
+    ABS_SCHEDULED_SALES_PARTNER_TRUCKS,
+    ABS_SCHEDULED_SALES_AGENT_URL,
+    ABS_SCHEDULED_SALES_ACTIVITY,
+    ABS_SCHEDULED_SALES_VAT_URL,
+    ABS_SCHEDULED_SALES_CATEGORY
 } from '../common';
 import {SideNavNode} from '@ss/common/api-common';
-import {
-    ABS_LOGISTICS_ACTIVITY,
-    ABS_LOGISTICS_VAT_URL
-} from '../common';
 
 export const scheduledSalesNavTree: SideNavNode = {
     name: 'SCHEDULED_SALES',
@@ -29,7 +27,7 @@ export const scheduledSalesNavTree: SideNavNode = {
         {
             name: 'COMMON_AGENT',
             icon: 'fas fa-user',
-            route: ABS_LOGISTICS_AGENT_URL,
+            route: ABS_SCHEDULED_SALES_AGENT_URL,
             accessRights: 'Agent'
         },
         {
@@ -41,13 +39,13 @@ export const scheduledSalesNavTree: SideNavNode = {
         {
             name: 'COMMON_VAT',
             icon: 'fas fa-percentage',
-            route: ABS_LOGISTICS_VAT_URL,
+            route: ABS_SCHEDULED_SALES_VAT_URL,
             accessRights: 'VAT'
         },
         // {
         //     name: 'COMMON_COMPANY_TYPES',
         //     icon: 'fas fa-building',
-        //     route: ABS_LOGISTICS_COMPANY_TYPE
+        //     route: ABS_SCHEDULED_SALES_DISCOUNT_COMPANY_TYPE
         // },
         {
             name: 'SCH_DISCOUNTS',
@@ -58,19 +56,19 @@ export const scheduledSalesNavTree: SideNavNode = {
         {
             name: 'COMMON_ACTIVITIES',
             icon: 'fab fa-app-store-ios',
-            route: ABS_LOGISTICS_ACTIVITY,
+            route: ABS_SCHEDULED_SALES_ACTIVITY,
             accessRights: 'Activity'
         },
-        {
-            name: 'LOGISTICS_PAY_METHOD',
-            icon: 'fas fa-money-check-edit',
-            route: ABS_LOGISTICS_PAY_METHOD,
-            accessRights: 'MPay'
-        },
+        // {
+        //     name: 'LOGISTICS_PAY_METHOD',
+        //     icon: 'fas fa-money-check-edit',
+        //     route: ABS_SCHEDULED_SALES_PAY_METHOD,
+        //     accessRights: 'MPay'
+        // },
         // {
         //     name: 'COMMON_CURRENCIES',
         //     icon: 'fas fa-coins',
-        //     route: ABS_LOGISTICS_CURRENCY,
+        //     route: ABS_SCHEDULED_SALES_DISCOUNT_CURRENCY,
         //     accessRights: 'Currency'
         // },
         {
@@ -82,7 +80,7 @@ export const scheduledSalesNavTree: SideNavNode = {
         {
             name: 'COMMON_CATEGORIES',
             icon: 'fas fa-users-class',
-            route: ABS_LOGISTICS_CATEGORY,
+            route: ABS_SCHEDULED_SALES_CATEGORY,
             accessRights: 'SalesCategory'
         },
         {

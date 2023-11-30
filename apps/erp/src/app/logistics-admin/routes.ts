@@ -9,7 +9,7 @@ import {
     LOGISTICS_CURRENCY_URL,
     LOGISTICS_VAT_URL,
     LOGISTICS_NUMBERING_URL,
-    LOGISTICS_CATEGORY_URL,
+    SALES_CATEGORY_URL,
     docInfoRoutes,
     LOGISTICS_ARTICLES_URL,
     STOCK_UNITS_URL,
@@ -273,7 +273,7 @@ export const mainRoutes: Routes = [
         ]
     },
     {
-        path: LOGISTICS_CATEGORY_URL,
+        path: SALES_CATEGORY_URL,
         children: [
             {
                 path: LIST_URL,
