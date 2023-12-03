@@ -1,25 +1,36 @@
 <mat-card>
     <mat-card-content>
         <form *ngIf="form !== null" novalidate [formGroup]="form">
-            <mat-form-field id="description" class="default-50 sm-100">
+            <mat-form-field id="description" class="default-100">
                 <mat-label translate>ADMINISTRATION_DESCRIPTION</mat-label>
                 <input matInput formControlName="description" type="text" required>
-                <mat-error *ngIf="form.controls['description'].invalid" translate>COMMON_FIELD_REQUIRED
-                </mat-error>
+                @if (form.controls['description']?.hasError('maxlength')) {
+                    <mat-error [translate]="{maxLen: 70}"> COMMON_FIELD_MAX_LENGTH </mat-error>
+                } @else if (form.controls['description'].invalid) {
+                      <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+                }
             </mat-form-field>
 
             <mat-form-field class="default-50 sm-100">
                 <mat-label translate>ACC_DEPRECIATION_RATE</mat-label>
                 <input matInput formControlName="depreciationRate" type="number" min="1" max="100">
-                <mat-error *ngIf="form.controls['depreciationRate'].invalid" translate>COMMON_FIELD_MAX_LENGTH
-                </mat-error>
+                @if (form.controls['depreciationRate'].hasError('max')) {
+                  <mat-error [translate]="{maxValue: 100}">COMMON_FIELD_MAX_VALUE</mat-error>
+                }
+                @if (form.controls['depreciationRate'].hasError('min')) {
+                  <mat-error [translate]="{minValue: 1}">COMMON_FIELD_MIN_VALUE</mat-error>
+                }
             </mat-form-field>
 
             <mat-form-field class="default-50 sm-100">
                 <mat-label translate>ACC_USEFUL_LIFE</mat-label>
                 <input matInput formControlName="usefulLife" type="number" min="1" max="100">
-                <mat-error *ngIf="form.controls['usefulLife'].invalid" translate>COMMON_FIELD_MAX_LENGTH
-                </mat-error>
+                @if (form.controls['usefulLife'].hasError('max')) {
+                <mat-error [translate]="{maxValue: 100}">COMMON_FIELD_MAX_VALUE</mat-error>
+                }
+                @if (form.controls['usefulLife'].hasError('min')) {
+                <mat-error [translate]="{minValue: 1}">COMMON_FIELD_MIN_VALUE</mat-error>
+                }
             </mat-form-field>
 
         </form>

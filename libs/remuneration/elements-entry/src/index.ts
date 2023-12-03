@@ -1,4 +1,3 @@
-export * from './lib/remuneration-elements-entry.module';
 export * from './lib/services/elements-entry.service';
 export * from './lib/elements-entry-detail/elements-entry-detail.component';
 export * from './lib/elements-entry-list/elements-entry-list.component';

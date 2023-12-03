@@ -69,7 +69,7 @@ export class AssetInventoryListComponent extends BaseEntityListComponent<AssetIn
     private importDocument() {
         if (!this.importBtn.disabled) {
             const dialogRef = this.dialog.open(InventoryImportComponent, {
-                width: '600px',
+                width: '680px',
                 height: '420px',
                 disableClose: true,
             });

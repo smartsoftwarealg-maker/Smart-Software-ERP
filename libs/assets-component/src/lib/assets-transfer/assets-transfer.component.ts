@@ -52,6 +52,8 @@ export class AssetsTransferComponent implements OnInit {
     openSourceDlg() {
         const dialogRef = this.dialog.open(OfficeSearchComponent,
             {
+                width: '600px',
+                height: '540px',
                 data: {id: 0, description: null}
             });
 
@@ -67,6 +69,8 @@ export class AssetsTransferComponent implements OnInit {
     openDestinationDlg() {
         const dialogRef = this.dialog.open(OfficeSearchComponent,
             {
+                width: '700px',
+                height: '540px',
                 data: {id: 0, description: null}
             });
         dialogRef

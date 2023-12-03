@@ -21,7 +21,7 @@ export abstract class BaseChildEntityDetailComponent<T extends { id: number, par
     public isEditable = true;
 
 
-    constructor(protected entitySrv: BaseEntityService<T>) {}
+    protected constructor(protected entitySrv: BaseEntityService<T>) {}
 
     abstract setupForm(e: T): UntypedFormGroup;
 
@@ -39,6 +39,7 @@ export abstract class BaseChildEntityDetailComponent<T extends { id: number, par
             ).subscribe(ent => {
             this.form = this.setupForm(ent);
         });
+        this.isEditable = this.shellSrv.getCurrentNodeRights()?.edit || false;
     }
 
     readForm(): T {

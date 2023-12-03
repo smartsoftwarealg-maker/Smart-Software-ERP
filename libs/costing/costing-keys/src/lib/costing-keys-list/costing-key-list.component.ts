@@ -1,0 +1,64 @@
+import { Component, HostBinding, OnInit } from '@angular/core';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
+import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
+import { ShellService, SnackBarService } from '@ss/common/ui-shell';
+import { DefaultReportService } from '@ss/common/ui-default-report-component';
+import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
+import { MaterialModule, PaginatorPersistenceService } from '@ss/common/api-common';
+import { CostingKeyService } from '../costing-key.service';
+import { CommonModule } from '@angular/common';
+import { CommonUiLangModule } from '@ss/common/ui-lang';
+import { UiPaginationModule } from '@ss/common/ui-pagination';
+import { ReactiveFormsModule } from '@angular/forms';
+import { CommonUiMainPageModule } from '@ss/common/ui-main-page';
+import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
+import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
+import { AppArchiveModule } from '@ss/common/app-archive';
+import { CKey, slideToRight } from '@ss/costing/costing-utils';
+
+@Component({
+    selector: 'ss-costing-key-list',
+    templateUrl: './costing-key-list.component.html',
+    styleUrls: ['./costing-key-list.component.scss'],
+    standalone: true,
+    imports: [
+        CommonModule,
+        RouterModule,
+        MaterialModule,
+        CommonUiLangModule,
+        UiPaginationModule,
+        ReactiveFormsModule,
+        CommonUiMainPageModule,
+        CommonUiAutoCompleteModule,
+        CommonUiDatepickerModule,
+        CommonUiConfirmationDialogModule,
+        AppArchiveModule
+    ],
+    animations: [slideToRight]
+})
+export class CostingKeyListComponent extends BaseEntityListComponent<CKey> implements OnInit {
+  @HostBinding('@routeAnimation') routeAnimation = true;
+
+  public displayedColumns = ['code', 'description'];
+
+  constructor(
+    public override entitySrv: CostingKeyService,
+    public override shellSrv: ShellService,
+    public override snackBarSrv: SnackBarService,
+    public override route: ActivatedRoute,
+    public override router: Router,
+    public override defReportSrv: DefaultReportService,
+    public override confirmationSrv: ConfirmationDialogService,
+    public override pagPersistSrv: PaginatorPersistenceService) {
+      super(entitySrv,
+          shellSrv,
+          snackBarSrv,
+          route,
+          router,
+          confirmationSrv,
+          defReportSrv,
+          pagPersistSrv,
+          'COSTING_KEYS');
+      this.pagination.pageSize = 15;
+  }
+}

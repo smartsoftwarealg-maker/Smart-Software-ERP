@@ -24,6 +24,8 @@
     "EDIT_SELECTED": "Edit selected",
     "DEL_SELECTED": "Delete selected",
     "FIELD_REQUIRED": "This field is required",
+    "FIELD_MIN_VALUE": "The min value is $minValue$",
+    "FIELD_MAX_VALUE": "The max value is $maxValue$",
     "FIELD_MAX_LENGTH": "The max length is $maxLen$",
     "FIELD_MIN_LENGTH": "The min length is $minLen$",
     "EMAIL_INVALID": "This email is invalid",

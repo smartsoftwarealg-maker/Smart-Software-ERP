@@ -49,7 +49,7 @@ import {
     ARCH_VIEWER_URL,
     CMMS_APP_URL,
     PARK_APP_URL,
-    SERVICE_SALES
+    SERVICE_SALES, COSTING_APP_URL
 } from '../app/common';
 import {Routes} from '@angular/router';
 import {hrLookupNavTree} from '../app/hr-lookups/side-nav-tree';
@@ -63,6 +63,7 @@ import { aaNavTree } from '../app/archive-viewer/side-nav-tree';
 import { parkNavTree } from '../app/park/side-nav-tree';
 import { cmmsNavTree } from '../app/cmms/side-nav-tree';
 import { ssalesNavTree } from '../app/service-sales/side-nav-tree';
+import { costingNavTree } from '../app/costing/side-nav-tree';
 
 export const environment = {
     production: false,
@@ -97,7 +98,8 @@ export const navBar = [
     aaNavTree,
     parkNavTree,
     cmmsNavTree,
-    foodNavTree
+    foodNavTree,
+    costingNavTree
 ];
 
 export const langAssets = [
@@ -242,6 +244,10 @@ export const appRoutes: Routes =  [
     {
         path: CONTRACTS_APP_URL,
         loadChildren: () => import('../app/contracts/contracts.module').then(m => m.ContractsModule)
+    },
+    {
+        path: COSTING_APP_URL,
+        loadChildren: () => import('../app/costing/costing.module').then(m => m.CostingModule)
     },
     { path: '', redirectTo: INDEX_PAGE_URL, pathMatch: 'full' },
     { path: '**', redirectTo: INDEX_PAGE_URL, pathMatch: 'full' }

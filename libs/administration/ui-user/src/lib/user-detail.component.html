@@ -102,7 +102,8 @@
     </mat-expansion-panel>
 
     <mat-expansion-panel #centerPanel
-                         [class.b-primary-expansion-panel]="centerPanel.expanded">
+                         [class.b-primary-expansion-panel]="centerPanel.expanded"
+                         *ngIf="isManager">
         <mat-expansion-panel-header>
             <mat-panel-title >
                 <span translate>ADMINISTRATION_CENTERS</span>

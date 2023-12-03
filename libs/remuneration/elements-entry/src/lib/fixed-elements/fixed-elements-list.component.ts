@@ -3,20 +3,40 @@ import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {ELine} from '../elements-entry-api';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
-import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
+import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
-import {HttpService, PaginatorPersistenceService} from '@ss/common/api-common';
+import { HttpService, MaterialModule, PaginatorPersistenceService } from "@ss/common/api-common";
 import {Observable, of} from 'rxjs';
 import {HttpParams} from '@angular/common/http';
-import {ImageModel} from '@ss/common/ui-image-input';
+import { CommonUiImageInputModule, ImageModel } from "@ss/common/ui-image-input";
 import {FixedElementsEntryService} from './fixed-elements-entry.service';
 import {PayrollMonthService} from '@ss/remuneration/payroll-month';
 import { EmployeeService } from '@ss/employee-services/employee-services';
+import { CommonModule } from "@angular/common";
+import { CommonUiLangModule } from "@ss/common/ui-lang";
+import { UiPaginationModule } from "@ss/common/ui-pagination";
+import { ReactiveFormsModule } from "@angular/forms";
+import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
+import { CommonUiAutoCompleteModule } from "@ss/common/ui-auto-complete";
+import { RemunerationInputFiltersModule } from "@ss/remuneration/input-filters";
 
 @Component({
     selector: 'ss-fixed-elements-list',
     templateUrl: './fixed-elements-list.component.html',
-    styleUrls: ['./fixed-elements-list.component.scss']
+    styleUrls: ['./fixed-elements-list.component.scss'],
+    standalone: true,
+    imports: [
+        CommonModule,
+        MaterialModule,
+        CommonUiLangModule,
+        UiPaginationModule,
+        ReactiveFormsModule,
+        CommonUiConfirmationDialogModule,
+        CommonUiDatepickerModule,
+        CommonUiAutoCompleteModule,
+        RemunerationInputFiltersModule,
+        CommonUiImageInputModule
+    ],
 })
 export class FixedElementsListComponent extends BaseEntityListComponent<ELine> {
 

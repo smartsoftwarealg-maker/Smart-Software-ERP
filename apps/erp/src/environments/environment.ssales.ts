@@ -3,11 +3,9 @@ import {scheduledSalesNavTree} from '../app/scheduled-sales/side-nav-tree';
 import {Routes} from '@angular/router';
 import {CanActivateService, INDEX_PAGE_URL} from '../../../../libs/common/api-common/src';
 import {MainPageComponent} from '../../../../libs/common/ui-main-page/src';
-import {ltmNavTree} from '../app/ltm/side-nav-tree';
 import {
     ADMINISTRATION_APP_URL,
     DASHBOARD_APP_URL,
-    LTM_APP_URL,
     ORGANIZATIONS_APP_URL,
     SCHEDULED_SALES_APP_URL
 } from '../app/common';

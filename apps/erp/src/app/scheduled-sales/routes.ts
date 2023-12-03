@@ -3,11 +3,18 @@ import {
 } from '@ss/common/api-common';
 import {Routes} from '@angular/router';
 import {
-    LOGISTICS_ACTIVITY_URL, SS_SALES_MODE_URL,
+    LOGISTICS_ACTIVITY_URL,
+    SS_SALES_MODE_URL,
     SS_ARTICLE_URL,
-    SS_DISCOUNTS_URL, SS_PARTNER_SCHEDULE_URL,
+    SS_DISCOUNTS_URL,
+    SS_PARTNER_SCHEDULE_URL,
     SS_PROJECTS_URL,
-    SS_QUOTA_URL, SS_SCHEDULE_URL, SS_TRUCKS_URL
+    SS_QUOTA_URL,
+    SS_SCHEDULE_URL,
+    SS_TRUCKS_URL,
+    LOGISTICS_AGENT_URL,
+    LOGISTICS_VAT_URL,
+    LOGISTICS_PAY_METHOD_URL, SALES_CATEGORY_URL
 } from '../common';
 import {ProjectListComponent, ProjectDetailComponent} from '@ss/scheduled-sales/projects';
 import {ArticleDetailComponent, ArticleListComponent} from '@ss/scheduled-sales/article';
@@ -23,12 +30,50 @@ import {
     ActivityDetailComponent,
     ActivityListComponent,
     DiscountDetailComponent,
-    DiscountListComponent
+    DiscountListComponent, SalesCategoryDetailComponent, SalesCategoryListComponent,
+    VatDetailComponent,
+    VatListComponent
 } from '@ss/common/ui-lookup';
 import {SupplierTrucksDetailComponent, SupplierTrucksListComponent} from '@ss/scheduled-sales/supplier-trucks';
 import {loginGuard} from '../erp-guards';
+import { AgentDetailComponent, AgentListComponent, AppArchiveDetailComponent } from '@ss/logistics/ui-agent';
+import { AGENT_ARCHIVES, AppArchiveMainComponent } from '@ss/common/app-archive';
+import { PayMethodDetailComponent, PayMethodListComponent } from '@ss/logistics/ui-pay-method';
 
 export const schedSalesRoutes: Routes = [
+    {
+        path: LOGISTICS_AGENT_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: AgentListComponent,
+                canActivate: [loginGuard]
+            },
+            {
+                path: ':id',
+                children: [
+                    {
+                        path: '',
+                        component: AgentDetailComponent,
+                        canActivate: [loginGuard],
+                        canDeactivate: [CanDeactivateService],
+                        data: {sales: true},
+                        children: [
+                            {
+                                path: 'archive',
+                                children: [
+                                    {path: '', component: AppArchiveMainComponent, pathMatch: 'full', data: { appId: AGENT_ARCHIVES } },
+                                    {path: ':id', component: AppArchiveDetailComponent, data: { appId: AGENT_ARCHIVES }},
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {path: '', redirectTo: LIST_URL, pathMatch: 'full'},
+            {path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full'}
+        ]
+    },
     {
         path: SS_TRUCKS_URL,
         children: [
@@ -171,6 +216,57 @@ export const schedSalesRoutes: Routes = [
             {
                 path: ':id',
                 component: ArticleDetailComponent,
+                canActivate: [loginGuard],
+                canDeactivate: [CanDeactivateService]
+            },
+            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
+        ]
+    },
+
+    {
+        path: LOGISTICS_VAT_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: VatListComponent
+            },
+            {
+                path: ':id',
+                component: VatDetailComponent,
+                canActivate: [loginGuard],
+                canDeactivate: [CanDeactivateService]
+            },
+            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
+        ]
+    },
+
+    {
+        path: LOGISTICS_PAY_METHOD_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: PayMethodListComponent
+            },
+            {
+                path: ':id',
+                component: PayMethodDetailComponent,
+                canActivate: [loginGuard],
+                canDeactivate: [CanDeactivateService]
+            },
+            {path: '**', redirectTo: LIST_URL, pathMatch: 'full'}
+        ]
+    },
+
+    {
+        path: SALES_CATEGORY_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: SalesCategoryListComponent
+            },
+            {
+                path: ':id',
+                component: SalesCategoryDetailComponent,
                 canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService]
             },

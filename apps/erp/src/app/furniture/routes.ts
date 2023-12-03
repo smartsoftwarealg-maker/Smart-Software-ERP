@@ -4,6 +4,7 @@ import {
     ABS_INDEX_URL, CanDeactivateService, LIST_URL,
 } from '@ss/common/api-common';
 import {
+    COMMON_REPORTS_URL,
     FURNITURE_ASSIGNMENT_URL,
     FURNITURE_RECEIVER_URL,
     FURNITURE_RECEPTION_URL,
@@ -29,6 +30,7 @@ import {
     ArticleTypeDetailComponent,
     ArticleTypeListComponent
 } from '../../../../../libs/common/ui-lookup/src/lib/components/article-type.component';
+import { ReportViewComponent } from '@ss/common/ui-report-param';
 
 export const furnitureRoutes: Routes = [
     {
@@ -156,6 +158,12 @@ export const furnitureRoutes: Routes = [
             },
             { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
         ]
+    },
+    {
+        path: COMMON_REPORTS_URL,
+        data: {reportBase: 'furniture'},
+        component: ReportViewComponent,
+        canActivate: [loginGuard]
     },
     { path: '', redirectTo: ABS_INDEX_URL, pathMatch: 'full' },
     { path: '**', redirectTo: ABS_INDEX_URL }

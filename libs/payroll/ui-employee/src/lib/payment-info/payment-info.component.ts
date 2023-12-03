@@ -6,7 +6,7 @@ import {switchMap} from 'rxjs';
 import {tap} from 'rxjs/operators';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {BankService} from '@ss/administration/api-bank';
-import {SnackBarService} from '@ss/common/ui-shell';
+import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 
 @Component({
     selector: 'ss-payment-info',
@@ -17,7 +17,9 @@ export class PaymentInfoComponent {
     private lookupsSrv =  inject(LookupsService);
     private fundSrv =  inject(FundService);
     private bankSrv =  inject(BankService);
+    private shellSrv = inject(ShellService);
 
+    isEditable = this.shellSrv.getCurrentNodeRights()?.edit || false;
     form = null;
     maritalStatus: MaritalStatus[];
     funds: Fund[] = [];
@@ -62,16 +64,16 @@ export class PaymentInfoComponent {
     save() {
         this.infoSrv
             .update(this.form.value)
-            .subscribe(res => this.snackBarSrv.showSuccessMessage());
+            .subscribe(() => this.snackBarSrv.showSuccessMessage());
     }
 
     private load() {
         this.lookupsSrv
             .getMaritalStatuses()
             .pipe(tap(res => this.maritalStatus = res),
-                switchMap(_ => this.fundSrv.getFunds()),
+                switchMap(() => this.fundSrv.getFunds()),
                 tap(res => this.funds = res),
-                switchMap(_ => this.infoSrv.load(this._personId))
+                switchMap(() => this.infoSrv.load(this._personId))
             ).subscribe(res => {
                 this.form = this.formBuilder.group({
                     id: [res.id],

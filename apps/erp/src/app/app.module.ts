@@ -15,6 +15,7 @@ import {CommonUiLangModule} from '@ss/common/ui-lang';
 import {ColorPickerModule} from 'ngx-color-picker';
 import {appRoutes} from '../environments/environment';
 import { Auth2FAConfirmationComponent, PasswordUpdateComponent } from '@ss/auth-2fa';
+import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 
 const routes: Routes = [
     {
@@ -36,6 +37,7 @@ const routes: Routes = [
         BrowserModule,
         BrowserAnimationsModule,
         HttpClientModule,
+        MatProgressSpinnerModule,
         RouterModule.forRoot(routes, { enableTracing: false }),
         // Smart Software modules
         UiThemeModule,

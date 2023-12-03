@@ -43,6 +43,7 @@ export const FURNITURE_APP_URL = 'furniture';
 export const ARCH_VIEWER_APP_URL = 'arch-viewer';
 export const ORGANIZATIONS_APP_URL = 'organizations';
 export const LTM_APP_URL = 'ltm';
+export const COSTING_APP_URL = 'costing';
 export const CMMS_APP_URL = 'cmms';
 export const PARK_APP_URL = 'park';
 export const ARCH_VIEWER_URL = 'arch-viewer';
@@ -180,7 +181,6 @@ export const LOGISTICS_AGENT_TYPE_URL = 'agentTypes';
 export const LOGISTICS_COMPANY_TYPE_URL = 'companyTypes';
 export const LOGISTICS_ACTIVITY_URL = 'activities';
 export const LOGISTICS_CURRENCY_URL = 'currencies';
-export const LOGISTICS_CATEGORY_URL = 'sales-categories';
 export const FURNITURE_STATUS_URL = 'furniture-states';
 export const LOGISTICS_WORKFLOW_URL = 'workflow-messages';
 
@@ -205,6 +205,7 @@ export const SERVICE_INVOICE_URL = 'service-invoice';
 export const SERVICE_INVOICE_CANCELLATION_URL = 'service-cinvoice';
 export const SERVICE_CLASSES_URL = 'service-classes';
 export const COMPLEMENT_INVOICE_URL = 'complement-invoice';
+export const SALES_CATEGORY_URL = 'sales-categories';
 
 // HR
 export const HR_CATEGORIES_URL = 'categories';
@@ -371,6 +372,12 @@ export const FURNITURE_TYPES_URL      = 'furniture-types';
 export const AA_VIEWER = 'aa-viewer';
 export const AA_RIGHTS = 'aa-rights';
 
+// Costing
+export const COSTING_ITEMS_URL = 'costing-items';
+export const COSTING_KEY_URL = 'costing-keys';
+export const COSTING_PRODUCTS_URL = 'costing-products';
+export const COSTING_PROJECT_URL = 'costing-projects';
+
 //Web arch
 export const ARCHIVE_URL    = 'arch';
 export const TAG_URL        = 'tags';
@@ -532,7 +539,7 @@ export const ABS_LOGISTICS_VAT_URL = '/' + [MAIN_PAGE_URL, LOGISTICS_APP_URL, LO
 export const ABS_LOGISTICS_COMPANY_TYPE = '/' + [MAIN_PAGE_URL, LOGISTICS_APP_URL,  LOGISTICS_COMPANY_TYPE_URL].join('/');
 export const ABS_LOGISTICS_ACTIVITY = '/' + [MAIN_PAGE_URL, LOGISTICS_APP_URL, LOGISTICS_ACTIVITY_URL].join('/');
 export const ABS_LOGISTICS_CURRENCY = '/' + [MAIN_PAGE_URL, LOGISTICS_APP_URL, LOGISTICS_CURRENCY_URL].join('/');
-export const ABS_LOGISTICS_CATEGORY = '/' + [MAIN_PAGE_URL, LOGISTICS_APP_URL, LOGISTICS_CATEGORY_URL].join('/');
+export const ABS_LOGISTICS_CATEGORY = '/' + [MAIN_PAGE_URL, LOGISTICS_APP_URL, SALES_CATEGORY_URL].join('/');
 export const ABS_LOGISTICS_UNITS = '/' + [MAIN_PAGE_URL, LOGISTICS_APP_URL, STOCK_UNITS_URL].join('/');
 
 // Contracts
@@ -550,17 +557,20 @@ export const ABS_SCHEDULED_SALES_DISCOUNT_TYPES     = '/' + [MAIN_PAGE_URL, SCHE
 export const ABS_SALES_MODES_URL                    = '/' + [MAIN_PAGE_URL, SCHEDULED_SALES_APP_URL, SS_SALES_MODE_URL].join('/');
 export const ABS_SCHEDULED_SALES_PARTNER_SCHEDULES  = '/' + [MAIN_PAGE_URL, SCHEDULED_SALES_APP_URL, SS_PARTNER_SCHEDULE_URL].join('/');
 export const ABS_SCHEDULED_SALES_PARTNER_TRUCKS     = '/' + [MAIN_PAGE_URL, SCHEDULED_SALES_APP_URL, SS_TRUCKS_URL].join('/');
+export const ABS_SCHEDULED_SALES_AGENT_URL     = '/' + [MAIN_PAGE_URL, SCHEDULED_SALES_APP_URL, LOGISTICS_AGENT_URL].join('/');
+export const ABS_SCHEDULED_SALES_ACTIVITY     = '/' + [MAIN_PAGE_URL, SCHEDULED_SALES_APP_URL, LOGISTICS_ACTIVITY_URL].join('/');
+export const ABS_SCHEDULED_SALES_VAT_URL     = '/' + [MAIN_PAGE_URL, SCHEDULED_SALES_APP_URL, LOGISTICS_VAT_URL].join('/');
+export const ABS_SCHEDULED_SALES_PAY_METHOD     = '/' + [MAIN_PAGE_URL, SCHEDULED_SALES_APP_URL, LOGISTICS_PAY_METHOD_URL].join('/');
+export const ABS_SCHEDULED_SALES_CATEGORY     = '/' + [MAIN_PAGE_URL, SCHEDULED_SALES_APP_URL, SALES_CATEGORY_URL].join('/');
 
 
 
 //Finance
 export const ABS_FINANCE_CPAYMENTS = '/' + [MAIN_PAGE_URL, FINANCE_APP_URL, LOGISTICS_CPAYMENTS_URL].join('/');
-export const ABS_FINANCE_SPAYMENTS = '/' + [MAIN_PAGE_URL, FINANCE_APP_URL, LOGISTICS_SPAYMENTS_URL].join('/');
 export const ABS_FINANCE_PAYMENT_ORDERS   = '/' + [MAIN_PAGE_URL, FINANCE_APP_URL, PAYMENT_ORDER].join('/');
 export const ABS_FINANCE_DASHBOARD_URL    = '/' + [MAIN_PAGE_URL, FINANCE_APP_URL, DASHBOARD_URL].join('/');
 export const ABS_FINANCE_PAYMENTS = '/' + [MAIN_PAGE_URL, FINANCE_APP_URL, LOGISTICS_PAYMENTS_URL].join('/');
 export const ABS_FINANCE_COMPENSATIONS = '/' + [MAIN_PAGE_URL, FINANCE_APP_URL, LOGISTICS_COMPENSATION_URL].join('/');
-export const ABS_FINANCE_SCOMPENSATIONS = '/' + [MAIN_PAGE_URL, FINANCE_APP_URL, LOGISTICS_SCOMPENSATION_URL].join('/');
 export const ABS_FINANCE_CCOMPENSATIONS = '/' + [MAIN_PAGE_URL, FINANCE_APP_URL, LOGISTICS_CCOMPENSATION_URL].join('/');
 export const ABS_FINANCE_REPORTS_URL = '/' + [MAIN_PAGE_URL, FINANCE_APP_URL, COMMON_REPORTS_URL].join('/');
 // HR
@@ -669,6 +679,13 @@ export const ABS_CMMS_GANT_URL = '/' + [MAIN_PAGE_URL, CMMS_APP_URL, CMMS_GANT_U
 export const ABS_CMMS_LOCATIONS = '/' + [MAIN_PAGE_URL, CMMS_APP_URL, ASSET_LOCATIONS_URL].join('/');
 export const ABS_CMMS_EMPLOYEES_URL = '/' + [MAIN_PAGE_URL, CMMS_APP_URL, CMMS_EMPLOYEES_URL].join('/');
 export const ABS_CMMS_FUNCTIONS = '/' + [MAIN_PAGE_URL, CMMS_APP_URL, CMMS_FUNCTION_URL].join('/');
+export const ABS_CMMS_REPORTS_URL = '/' + [MAIN_PAGE_URL, CMMS_APP_URL, COMMON_REPORTS_URL].join('/');
+
+// Costing
+export const ABS_COSTING_ITEMS = '/' + [MAIN_PAGE_URL, COSTING_APP_URL, COSTING_ITEMS_URL].join('/');
+export const ABS_COSTING_KEYS = '/' + [MAIN_PAGE_URL, COSTING_APP_URL, COSTING_KEY_URL].join('/');
+export const ABS_COSTING_PRODUCTS = '/' + [MAIN_PAGE_URL, COSTING_APP_URL, COSTING_PRODUCTS_URL].join('/');
+export const ABS_COSTING_PROJECTS = '/' + [MAIN_PAGE_URL, COSTING_APP_URL, COSTING_PROJECT_URL].join('/');
 
 // Furniture
 export const ABS_FURNITURE_URL            = '/' + [MAIN_PAGE_URL, FURNITURE_APP_URL, FURNITURE_URL].join('/');
@@ -677,6 +694,7 @@ export const ABS_FURNITURE_RECEPTION_URL = '/' + [MAIN_PAGE_URL, FURNITURE_APP_U
 export const ABS_FURNITURE_ASSIGNMENT_URL = '/' + [MAIN_PAGE_URL, FURNITURE_APP_URL, FURNITURE_ASSIGNMENT_URL].join('/');
 export const ABS_FURNITURE_SALES_URL      = '/' + [MAIN_PAGE_URL, FURNITURE_APP_URL, FURNITURE_SALES_URL].join('/');
 export const ABS_FURNITURE_TYPES_URL      = '/' + [MAIN_PAGE_URL, FURNITURE_APP_URL, FURNITURE_TYPES_URL].join('/');
+export const ABS_FURNITURE_REPORTS_URL      = '/' + [MAIN_PAGE_URL, FURNITURE_APP_URL, COMMON_REPORTS_URL].join('/');
 
 // Park
 export const ABS_PARK_DRIVER_URL = '/' + [MAIN_PAGE_URL, PARK_APP_URL, PARK_DRIVER_URL].join('/');

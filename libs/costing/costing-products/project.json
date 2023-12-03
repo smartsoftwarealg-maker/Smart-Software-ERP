@@ -1,0 +1,27 @@
+{
+    "name": "costing-costing-products",
+    "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+    "sourceRoot": "libs/costing/costing-products/src",
+    "prefix": "ss",
+    "tags": [],
+    "projectType": "library",
+    "targets": {
+        "test": {
+            "executor": "@nx/jest:jest",
+            "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+            "options": {
+                "jestConfig": "libs/costing/costing-products/jest.config.ts"
+            }
+        },
+        "lint": {
+            "executor": "@nx/eslint:lint",
+            "outputs": ["{options.outputFile}"],
+            "options": {
+                "lintFilePatterns": [
+                    "libs/costing/costing-products/**/*.ts",
+                    "libs/costing/costing-products/**/*.html"
+                ]
+            }
+        }
+    }
+}

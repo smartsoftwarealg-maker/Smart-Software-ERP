@@ -54,5 +54,6 @@
     "COMMON":          "Utils",
     "BUDGET":          "Budget",
     "EPAYMENT":        "ePayment",
-    "EXCHANGE":        "Money Exchange"
+    "EXCHANGE":        "Money Exchange",
+    "COSTING":         "Costing"
 }

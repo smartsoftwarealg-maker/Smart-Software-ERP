@@ -3,14 +3,26 @@ import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {ELine} from '../elements-entry-api';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
-import {UntypedFormArray, UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
-import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
+import {
+    ReactiveFormsModule,
+    UntypedFormArray,
+    UntypedFormBuilder,
+    UntypedFormGroup,
+    Validators
+} from "@angular/forms";
+import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
 import {LookupsService} from '@ss/common/api-lookup';
 import {ElementsEntryService} from '../services/elements-entry.service';
 import {MatSelectChange} from '@angular/material/select';
-import {ImageModel} from '@ss/common/ui-image-input';
-import {HttpService} from '@ss/common/api-common';
+import { CommonUiImageInputModule, ImageModel } from "@ss/common/ui-image-input";
+import { HttpService, MaterialModule } from "@ss/common/api-common";
 import { EmployeeService } from '@ss/employee-services/employee-services';
+import { CommonModule } from "@angular/common";
+import { CommonUiLangModule } from "@ss/common/ui-lang";
+import { UiPaginationModule } from "@ss/common/ui-pagination";
+import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
+import { CommonUiAutoCompleteModule } from "@ss/common/ui-auto-complete";
+import { RemunerationInputFiltersModule } from "@ss/remuneration/input-filters";
 
 type Employee = {
     id: number;
@@ -21,7 +33,20 @@ type Employee = {
 @Component({
     selector: 'ss-elements-entry-detail',
     templateUrl: './elements-entry-detail.component.html',
-    styleUrls: ['./elements-entry-detail.component.scss', '../common-css.scss']
+    styleUrls: ['./elements-entry-detail.component.scss', '../common-css.scss'],
+    standalone: true,
+    imports: [
+        CommonModule,
+        MaterialModule,
+        CommonUiLangModule,
+        UiPaginationModule,
+        ReactiveFormsModule,
+        CommonUiConfirmationDialogModule,
+        CommonUiDatepickerModule,
+        CommonUiAutoCompleteModule,
+        RemunerationInputFiltersModule,
+        CommonUiImageInputModule
+    ],
 })
 export class ElementsEntryDetailComponent extends BaseEntityDetailComponent<ELine> implements OnInit {
     imageModel: ImageModel;

@@ -360,6 +360,8 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> impl
     openSearchDlg() {
         const dialogRef = this.dialog.open(OfficeSearchComponent,
             {
+                width: '600px',
+                height: '540px',
                 data: {id: 0, description: null, cmms: this.isCMMS}
             });
         dialogRef

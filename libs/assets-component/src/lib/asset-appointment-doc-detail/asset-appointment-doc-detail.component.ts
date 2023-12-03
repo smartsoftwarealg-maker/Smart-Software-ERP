@@ -184,6 +184,8 @@ export class AssetAppointmentDocDetailComponent extends BaseEntityDetailComponen
     openSearchDlg() {
         const dialogRef = this.dialog.open(OfficeSearchComponent,
             {
+                width: '600px',
+                height: '540px',
                 data: {id: 0, description: null}
             });
         dialogRef
