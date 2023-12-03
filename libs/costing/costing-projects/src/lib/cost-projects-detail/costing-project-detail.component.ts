@@ -1,40 +1,33 @@
-import { Component, HostBinding, inject, OnDestroy, OnInit } from '@angular/core';
+import {Component, HostBinding, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import {map, switchMap, tap} from 'rxjs/operators';
-import { FormBuilder, FormControl, ReactiveFormsModule, Validators } from "@angular/forms";
+import {FormGroup} from '@angular/forms';
 import {
-    CItem,
-    CKey,
-    CLineDirectItem,
-    CLineOHItem, CostCenter, CostingHttpService, CostingResult,
-    CPool,
-    CPoolDetail, CProduct,
-    CProductLine,
-    CProject,
-    OH, ReportList, ReportParameter, SafeDomObject, slideToRight
-} from '@ss/costing/costing-utils';
+  CItem, CKey,
+  CLineDirectItem,
+  CLineOHItem, CostCenter,
+  CostingHttpService,
+  CostingResult,
+  CPool,
+  CPoolDetail, CProduct,
+  CProductLine,
+  CProject,
+  OH,
+  ReportList,
+  SafeDomObject,
+  slideToRight
+} from "@ss/costing/costing-utils";
 import { CommonModule } from '@angular/common';
 import { LanguageService, LoginService, MaterialModule } from '@ss/common/api-common';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
-import { UiPaginationModule } from '@ss/common/ui-pagination';
-import { CommonUiMainPageModule } from '@ss/common/ui-main-page';
-import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
-import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
 import { CommonUiConfirmationDialogModule } from '@ss/common/ui-confirmation-dialog';
-import { AppArchiveModule } from '@ss/common/app-archive';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialog } from '@angular/material/dialog';
-import { ConfirmationDialogComponent } from '@ss/web-arch/ui';
-import { CostingKeyService } from '@ss/costing/costing-keys';
-import { GenerationAccountService } from '@ss/accounting/api-accounts';
-import { CostingProductService } from '@ss/costing/costing-products';
-import { CostingItemService } from '@ss/costing/costing-items';
-import { CostCenterService } from '@ss/logistics/api-cost-center';
-import { ShellService } from '@ss/common/ui-shell';
+import { ConfirmationDialogComponent } from "@ss/web-arch/ui";
 
 interface PoolDetail extends CPoolDetail {
     keyAcDescription: string;
 }
+
 interface Pool extends CPool {
     costCenterAcDescription: string;
     detailsList: { data: PoolDetail[], loaded: boolean, hidden: boolean };
@@ -61,89 +54,22 @@ interface Project extends CProject {
     poolList: { data: Pool[], loaded: boolean, hidden: boolean };
 }
 
+type Function = () => void;
+
 @Component({
     selector: 'ss-costing-project-detail',
     templateUrl: './costing-project-detail.component.html',
     styleUrls: ['./costing-project-detail.component.scss'],
+    animations: [slideToRight],
     standalone: true,
     imports: [
         CommonModule,
         RouterModule,
         MaterialModule,
-        CommonUiLangModule,
-        UiPaginationModule,
-        ReactiveFormsModule,
-        CommonUiMainPageModule,
-        CommonUiAutoCompleteModule,
-        CommonUiDatepickerModule,
         CommonUiConfirmationDialogModule,
-        AppArchiveModule
-    ],
-    animations: [slideToRight]
+    ]
 })
 export class CostingProjectDetailComponent implements OnInit, OnDestroy {
-    private shellSrv = inject(ShellService);
-    private fb = inject(FormBuilder);
-    private accountSrv =  inject(GenerationAccountService);
-    private loginSrv = inject(LoginService);
-    private translationSrv = inject(LanguageService);
-    private costingKeySrv = inject(CostingKeyService);
-    private productSrv = inject(CostingProductService);
-    private costingItemSrv = inject(CostingItemService);
-    private costCenterSrv = inject(CostCenterService);
-
-    costingKeyLookup = new DefaultAutoCompleteModel(this.costingKeySrv);
-    accountLookupModel = new DefaultAutoCompleteModel(this.accountSrv);
-    productLookup = new DefaultAutoCompleteModel(this.productSrv);
-    itemLookup = new DefaultAutoCompleteModel(this.costingItemSrv);
-    costCenterLookup = new DefaultAutoCompleteModel(this.costCenterSrv);
-
-    ohForm = this.fb.group({
-        description: [''],
-        accountId: [0],
-        keyId:     [0],
-        amount:    [0],
-        scale:     [0],
-        actual:    [0],
-    });
-
-    productLineForm = this.fb.group({
-        productId: [0],
-        units:     [0],
-        amount:    [0],
-    });
-
-    lineOverheadForm = this.fb.group({
-        keyId:  [0],
-        value:  [0],
-        actual: [0],
-    });
-
-    lineDirectForm = this.fb.group({
-        itemId:  [0],
-        amount:  [0],
-        scale:   [0],
-        actual:  [0],
-    });
-
-    poolForm = this.fb.group({
-        costCenterId: [0],
-        keyId:        [0],
-        isSupport:    [false],
-    });
-
-    projectForm = this.fb.group({
-        code:        ['', Validators.required],
-        description: ['', Validators.required],
-        from:        [new Date()],
-        to:          [new Date()],
-    });
-
-    poolDetailForm = this.fb.group({
-        keyId:  [0],
-        value: [0],
-    });
-
     @HostBinding('@routeAnimation') routeAnimation = true;
 
     resultTableColumns: string[] = ['product', 'cost', 'cost2', 'percent'];
@@ -187,7 +113,6 @@ export class CostingProjectDetailComponent implements OnInit, OnDestroy {
     readOnly = false;
     //
     simpleKeyId: number = null;
-    simpleKeyCtrl = new FormControl<number>(0);
     result: CostingResult[];
     //
     REPORT_TYPE_HTML = 1;
@@ -202,37 +127,19 @@ export class CostingProjectDetailComponent implements OnInit, OnDestroy {
     reportType = 0;
     reportObject: SafeDomObject = null;
 
+    @ViewChild('form') form: FormGroup;
+
     constructor(private route: ActivatedRoute,
-                private router: Router,
-                private snackBar: MatSnackBar,
-                private matDialog: MatDialog,
-                public httpSrv: CostingHttpService) {
-        this.costingKeyLookup.onObjectSelected = (k) => this.onSimpleKeyChanged(k);
-    }
+    private router: Router,
+    private userSrv: LoginService,
+    private snackBar: MatSnackBar,
+    private matDialog: MatDialog,
+    private languageSrv: LanguageService,
+    public httpSrv: CostingHttpService) {}
 
     ngOnInit(): void {
         this.readOnly = this.route.snapshot.data['readOnly'];
-        if (this.readOnly) {
-            this.projectForm.controls['code']?.disable();
-            this.projectForm.controls['description']?.disable();
-            this.poolDetailForm.controls['value']?.disable();
-
-            this.ohForm.controls['description']?.disable();
-            this.ohForm.controls['amount']?.disable();
-            this.ohForm.controls['scale']?.disable();
-            this.ohForm.controls['actual']?.disable();
-
-            this.productLineForm.controls['units']?.disable();
-
-            this.lineOverheadForm.controls['value']?.disable();
-            this.lineOverheadForm.controls['actual']?.disable();
-
-            this.lineDirectForm.controls['amount']?.disable();
-            this.lineDirectForm.controls['scale']?.disable();
-            this.lineDirectForm.controls['actual']?.disable();
-        }
         this.loadProject();
-        this.shellSrv.setGoBackPath('..', this.route);
     }
 
     ngOnDestroy(): void {
@@ -244,7 +151,7 @@ export class CostingProjectDetailComponent implements OnInit, OnDestroy {
     }
 
     isFormValid() {
-        return this.ohForm && this.ohForm.valid;
+        return this.form && this.form.valid;
     }
 
     // project
@@ -274,7 +181,7 @@ export class CostingProjectDetailComponent implements OnInit, OnDestroy {
     public onReloadProjectBtnClick(): void {
         if (this.wasObjectModified()) {
             this.confirm('CANCEL_EDIT', 'CONFIRM_CANCELLATION', () => {
-                this.ohForm?.reset();
+                this.resetForm();
                 this.loadProject();
             });
         } else {
@@ -289,7 +196,7 @@ export class CostingProjectDetailComponent implements OnInit, OnDestroy {
             description: null,
             from: null,
             to: null,
-            centerId: this.loginSrv.appCtx.center,
+            centerId: this.userSrv.appCtx.center,
             overheadList: {
                 data: [], loaded: false, hidden: true
             },
@@ -309,7 +216,7 @@ export class CostingProjectDetailComponent implements OnInit, OnDestroy {
             this.activeObjectType = this.OBJ_TYPE_PROJECT;
             this.activeObjectIndex = null;
             this.activeObjectIndex2 = null;
-            this.ohForm?.reset();
+            this.resetForm();
             if (onFinish) {
                 onFinish();
             }
@@ -332,7 +239,7 @@ export class CostingProjectDetailComponent implements OnInit, OnDestroy {
                         this.activeObjectType = this.OBJ_TYPE_PROJECT;
                         this.activeObjectIndex = null;
                         this.activeObjectIndex2 = null;
-                        this.ohForm?.reset();
+                        this.resetForm();
                     }),
                     switchMap(() => this.httpSrv.listPools(this.project.id, 0, 50)),
                     tap<CPool[]>(pools => {
@@ -345,7 +252,8 @@ export class CostingProjectDetailComponent implements OnInit, OnDestroy {
                         this.project.productLineList.loaded = true;
                     }),
                     switchMap(() => this.httpSrv.listOH(this.project.id, 0, 50))
-                ).subscribe(oh => {
+                )
+                .subscribe(oh => {
                     this.project.overheadList.data.push(...oh);
                     this.project.overheadList.loaded = true;
                     if (onFinish) {
@@ -377,7 +285,7 @@ export class CostingProjectDetailComponent implements OnInit, OnDestroy {
         }
         if (this.wasObjectModified() || (this.activeObject != null && this.activeObject.id === 0)) {
             this.confirm('CANCEL_EDIT', 'CONFIRM_CANCELLATION', () => {
-                this.ohForm?.reset();
+                this.resetForm();
                 if (this.activeObject.id > 0) {
                     this.reloadThenSetActiveObject(obj, type, index, index2);
                 } else {
@@ -398,42 +306,45 @@ export class CostingProjectDetailComponent implements OnInit, OnDestroy {
                 }
             });
         } else {
-            this.ohForm?.reset();
+            this.resetForm();
             this.doSetActiveObject(obj, type, index, index2);
         }
     }
 
     private reloadThenSetActiveObject(obj: any, type: number, index?: number, index2?: number): void {
+        let func = null;
         switch (this.activeObjectType) {
         case this.OBJ_TYPE_PROJECT: {
-            this.loadProject(() => this.doSetActiveObject(obj, type, index, index2));
+            func = this.loadProject;
             break;
         }
         case this.OBJ_TYPE_OVERHEAD: {
-            this.reloadOverhead(() => this.doSetActiveObject(obj, type, index, index2));
+            func = this.reloadOverhead;
             break;
         }
         case this.OBJ_TYPE_PRODUCT_LINE: {
-            this.reloadProductLine(() => this.doSetActiveObject(obj, type, index, index2));
+            func = this.reloadProductLine;
             break;
         }
         case this.OBJ_TYPE_PRODUCT_LINE_DIRECT: {
-            this.reloadProductionLineDirect(() => this.doSetActiveObject(obj, type, index, index2));
+            func = this.reloadProductionLineDirect;
             break;
         }
         case this.OBJ_TYPE_PRODUCT_LINE_OH: {
-            this.reloadProductionLineOverhead(() => this.doSetActiveObject(obj, type, index, index2));
+            func = this.reloadProductionLineOverhead;
             break;
         }
         case this.OBJ_TYPE_POOL: {
-            this.reloadPool(() => this.doSetActiveObject(obj, type, index, index2));
+            func = this.reloadPool;
             break;
         }
         case this.OBJ_TYPE_POOL_DETAIL: {
-            this.reloadPoolDetail(() => this.doSetActiveObject(obj, type, index, index2));
+            func = this.reloadPoolDetail;
             break;
         }
         }
+        func = func.bind(this);
+        func(() => this.doSetActiveObject(obj, type, index, index2));
     }
 
     private doSetActiveObject(obj: any, type: number, index?: number, index2?: number): void {
@@ -468,15 +379,26 @@ export class CostingProjectDetailComponent implements OnInit, OnDestroy {
     }
 
     private wasObjectModified(): boolean {
-        return this.ohForm && this.ohForm.dirty;
+        return this.form && this.form.dirty;
+        // if (this.form) {
+        //     const controls = this.form.controls;
+        //     for (const k in controls) {
+        //         if (controls.hasOwnProperty(k)) {
+        //             if (controls[k].dirty) {
+        //                 return true;
+        //             }
+        //         }
+        //     }
+        // }
+        // return false;
     }
 
     // view
 
-    public confirm(title: string, msg: string, fn: () => void): void {
+    public confirm(title: string, msg: string, fn: Function): void {
         const dialogRef = this.matDialog.open(ConfirmationDialogComponent, {disableClose: true});
-        dialogRef.componentInstance.title = this.translationSrv.translate(title);
-        dialogRef.componentInstance.message = this.translationSrv.translate(msg);
+        dialogRef.componentInstance.title = title;
+        dialogRef.componentInstance.message = msg;
         dialogRef.afterClosed().subscribe(result => {
             if (result === 'yes') {
                 fn();
@@ -495,12 +417,24 @@ export class CostingProjectDetailComponent implements OnInit, OnDestroy {
         });
     }
 
+    private resetForm(): void {
+        if (this.form) {
+            const controls = this.form.controls;
+            for (const k in controls) {
+                if (controls.hasOwnProperty(k)) {
+                    controls[k].markAsUntouched();
+                    controls[k].markAsPristine();
+                }
+            }
+        }
+    }
+
     private openSnackBar(message: string): void {
-        this.snackBar.open(this.translationSrv.translate(message), null, {duration: 2000});
+        this.snackBar.open(this.languageSrv.translate(message), null, {duration: 2000});
     }
 
     private showSavedMsg(): void {
-        this.ohForm?.reset();
+        this.resetForm();
         this.openSnackBar('RECORD_SAVED');
     }
 
@@ -579,7 +513,7 @@ export class CostingProjectDetailComponent implements OnInit, OnDestroy {
                     });
             });
         } else {
-            this.ohForm?.reset();
+            this.resetForm();
             this.project.overheadList.data.splice(this.activeObjectIndex, 1);
             if (!skipSelect) {
                 this.setActiveObject(this.project.overheadList, this.OBJ_TYPE_OVERHEAD_LIST);
@@ -603,7 +537,7 @@ export class CostingProjectDetailComponent implements OnInit, OnDestroy {
                     });
             });
         } else {
-            this.ohForm?.reset();
+            this.resetForm();
             this.project.poolList.data[this.activeObjectIndex].detailsList.data.splice(this.activeObjectIndex2, 1);
             if (!skipSelect) {
                 this.setActiveObject(
@@ -632,7 +566,7 @@ export class CostingProjectDetailComponent implements OnInit, OnDestroy {
                     });
             });
         } else {
-            this.ohForm?.reset();
+            this.resetForm();
             this.project.productLineList.data[this.activeObjectIndex].overheadList.data.splice(this.activeObjectIndex2, 1);
             if (!skipSelect) {
                 this.setActiveObject(
@@ -647,7 +581,7 @@ export class CostingProjectDetailComponent implements OnInit, OnDestroy {
     public onReloadOverheadBtnClick() {
         if (this.wasObjectModified()) {
             this.confirm('CANCEL_EDIT', 'CONFIRM_CANCELLATION', () => {
-                this.ohForm?.reset();
+                this.resetForm();
                 this.reloadOverhead();
             });
         } else {
@@ -673,7 +607,7 @@ export class CostingProjectDetailComponent implements OnInit, OnDestroy {
                 // this.project.overheadList.data[this.activeObjectIndex] = this.ohToOverhead(oh);
                 this.project.overheadList.data[this.activeObjectIndex] = oh;
                 this.activeObject = this.project.overheadList.data[this.activeObjectIndex];
-                this.ohForm?.reset();
+                this.resetForm();
                 if (onFinish) {
                     onFinish();
                 }
@@ -683,7 +617,7 @@ export class CostingProjectDetailComponent implements OnInit, OnDestroy {
     public onReloadPoolDetailBtnClick() {
         if (this.wasObjectModified()) {
             this.confirm('CANCEL_EDIT', 'CONFIRM_CANCELLATION', () => {
-                this.ohForm?.reset();
+                this.resetForm();
                 this.reloadPoolDetail();
             });
         } else {
@@ -702,7 +636,7 @@ export class CostingProjectDetailComponent implements OnInit, OnDestroy {
             .subscribe(pooDetail => {
                 pool.detailsList.data[this.activeObjectIndex2] = this.cPoolDetailToPoolDetail(pooDetail);
                 this.activeObject = pool.detailsList.data[this.activeObjectIndex2];
-                this.ohForm?.reset();
+                this.resetForm();
                 if (onFinish) {
                     onFinish();
                 }
@@ -712,7 +646,7 @@ export class CostingProjectDetailComponent implements OnInit, OnDestroy {
     public onReloadPoolBtnClick() {
         if (this.wasObjectModified()) {
             this.confirm('CANCEL_EDIT', 'CONFIRM_CANCELLATION', () => {
-                this.ohForm?.reset();
+                this.resetForm();
                 this.reloadPool();
             });
         } else {
@@ -736,7 +670,7 @@ export class CostingProjectDetailComponent implements OnInit, OnDestroy {
             .subscribe(poo => {
                 this.project.poolList.data[this.activeObjectIndex] = this.cPoolToPool(poo);
                 this.activeObject = this.project.poolList.data[this.activeObjectIndex];
-                this.ohForm?.reset();
+                this.resetForm();
                 if (onFinish) {
                     onFinish();
                 }
@@ -746,7 +680,7 @@ export class CostingProjectDetailComponent implements OnInit, OnDestroy {
     public onReloadProductionLineOverheadBtnClick() {
         if (this.wasObjectModified()) {
             this.confirm('CANCEL_EDIT', 'CONFIRM_CANCELLATION', () => {
-                this.ohForm?.reset();
+                this.resetForm();
                 this.reloadProductionLineOverhead();
             });
         } else {
@@ -773,7 +707,7 @@ export class CostingProjectDetailComponent implements OnInit, OnDestroy {
                         .data[this.activeObjectIndex]
                         .overheadList.data[this.activeObjectIndex2] = this.cLineOHItemToLineOverhead(oh);
                     this.activeObject = oh;
-                    this.ohForm?.reset();
+                    this.resetForm();
                     if (onFinish) {
                         onFinish();
                     }
@@ -941,7 +875,7 @@ export class CostingProjectDetailComponent implements OnInit, OnDestroy {
                     });
             });
         } else {
-            this.ohForm?.reset();
+            this.resetForm();
             this.project.productLineList.data.splice(this.activeObjectIndex, 1);
             if (!skipSelect) {
                 this.setActiveObject(this.project.productLineList, this.OBJ_TYPE_PRODUCT_LINE_LIST);
@@ -976,7 +910,7 @@ export class CostingProjectDetailComponent implements OnInit, OnDestroy {
                     });
             });
         } else {
-            this.ohForm?.reset();
+            this.resetForm();
             this.project.poolList.data.splice(this.activeObjectIndex, 1);
             if (!skipSelect) {
                 this.setActiveObject(this.project.poolList, this.OBJ_TYPE_POOL_LIST);
@@ -987,7 +921,7 @@ export class CostingProjectDetailComponent implements OnInit, OnDestroy {
     public onReloadProductLineBtnClick() {
         if (this.wasObjectModified()) {
             this.confirm('CANCEL_EDIT', 'CONFIRM_CANCELLATION', () => {
-                this.ohForm?.reset();
+                this.resetForm();
                 this.reloadProductLine();
             });
         } else {
@@ -1012,7 +946,7 @@ export class CostingProjectDetailComponent implements OnInit, OnDestroy {
                 .subscribe(pl => {
                     this.project.productLineList.data[this.activeObjectIndex] = this.cProductLineToProductLine(pl);
                     this.activeObject = this.project.productLineList.data[this.activeObjectIndex];
-                    this.ohForm?.reset();
+                    this.resetForm();
                     if (onFinish) {
                         onFinish();
                     }
@@ -1080,7 +1014,7 @@ export class CostingProjectDetailComponent implements OnInit, OnDestroy {
                     });
             });
         } else {
-            this.ohForm?.reset();
+            this.resetForm();
             this.project.productLineList.data[this.activeObjectIndex].directList.data.splice(this.activeObjectIndex2, 1);
             if (!skipSelect) {
                 this.setActiveObject(
@@ -1094,7 +1028,7 @@ export class CostingProjectDetailComponent implements OnInit, OnDestroy {
     public onReloadProductionLineDirectBtnClick(): void {
         if (this.wasObjectModified()) {
             this.confirm('CANCEL_EDIT', 'CONFIRM_CANCELLATION', () => {
-                this.ohForm?.reset();
+                this.resetForm();
                 this.reloadProductionLineDirect();
             });
         } else {
@@ -1117,7 +1051,7 @@ export class CostingProjectDetailComponent implements OnInit, OnDestroy {
                         .data[this.activeObjectIndex]
                         .directList.data[this.activeObjectIndex2] = this.cLineDirectItemToLineDirect(drt);
                     this.activeObject = drt;
-                    this.ohForm?.reset();
+                    this.resetForm();
                     if (onFinish) {
                         onFinish();
                     }
@@ -1145,7 +1079,7 @@ export class CostingProjectDetailComponent implements OnInit, OnDestroy {
 
     public getActivityResult(): void {
         this.httpSrv.getResultActivity(this.project.id)
-            .subscribe(rawResult => {
+            .subscribe((rawResult: CostingResult[]) => {
                 this.result = rawResult.map(r => {
                     this.updateProductDescription(r, r.product);
                     return r;
@@ -1156,8 +1090,7 @@ export class CostingProjectDetailComponent implements OnInit, OnDestroy {
     public onSimpleKeyChanged(key: CKey): void {
         if (key) {
             this.simpleKeyId = key.id;
-            this.httpSrv
-                .getResultSimple(this.project.id, key.id)
+            this.httpSrv.getResultSimple(this.project.id, key.id)
                 .subscribe(rawResult => {
                     this.result = rawResult.map(r => {
                         this.updateProductDescription(r, r.product);
@@ -1181,46 +1114,25 @@ export class CostingProjectDetailComponent implements OnInit, OnDestroy {
                 this.reportsList = list[0];
             }
         } else {
-            this.httpSrv
-                .getReportList()
-                .subscribe({next: lst => {
-                    if (lst) {
-                        this.fullReportsList = lst.map(rLst => {
-                            rLst.files = rLst.files.map(file => file.replace('.jasper', ''));
-                            return rLst;
-                        });
-                        this.filterReports(filter);
+            this.httpSrv.getReportList()
+                .subscribe({
+                    next: lst => {
+                        if (lst) {
+                            this.fullReportsList = lst.map(rLst => {
+                                rLst.files = rLst.files.map(file => file.replace('.jasper', ''));
+                                return rLst;
+                            });
+                            this.filterReports(filter);
+                        }
+                    },
+                    error: err => {
+                        this.reportsList = { name: null, files: [] };
+                        throw err;
                     }
-                },
-                error: err => {
-                    this.reportsList = {name: null, files: []};
-                    throw err;
-                }
                 });
         }
     }
 
-    private showReport(type: string) {
-        const filename = this.reportsList.name + '/' + this.reportsList.files[this.selectedReport];
-        const paramList: ReportParameter[] =
-            [
-                {name: 'id', value: this.project.id},
-                {name: 'actual', value: this.reportParamActual ? 1 : 0}
-            ];
-        if (this.activeObjectType === this.OBJ_TYPE_RESULT_SIMPLE) {
-            // {"name":"keyId","value":"4"}
-            paramList.push({name: 'keyId', value: this.simpleKeyId});
-        }
-        if (type === 'HTML') {
-            this.reportType = this.REPORT_TYPE_HTML;
-        } else if (type === 'PDF') {
-            this.reportType = this.REPORT_TYPE_PDF;
-        }
-        this.httpSrv.generateReport(filename, paramList, type)
-            .subscribe(result => {
-                this.reportObject = result;
-            });
-    }
 
     public closeReport() {
         if (this.reportObject != null) {

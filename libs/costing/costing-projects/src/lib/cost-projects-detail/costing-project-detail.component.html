@@ -1,232 +1,225 @@
-<div *ngIf="reportObject" class="report__div">
+<div *ngIf="reportObject" class="costing-project-dtl-report-container">
     <div class="report-container">
-        <iframe *ngIf="reportType == REPORT_TYPE_PDF" [src]="reportObject.safeObject"
-                style="display: block; border: none;" height="100%" width="100%">
+        <iframe *ngIf="reportType == REPORT_TYPE_PDF" [src]="reportObject.safeObject" style="display: block; border: none;" height="100%" width="100%">
             <div style="font-size: 200%" (click)="saveReport()" translate>NOT_SUPPORTED_DOWNLOAD</div>
         </iframe>
-        <div *ngIf="reportType == REPORT_TYPE_HTML" [innerHTML]="reportObject.safeObject"
-             style="display: block; height: 100%; width: 100%;"></div>
+        <div *ngIf="reportType == REPORT_TYPE_HTML" [innerHTML]="reportObject.safeObject" style="display: block; height: 100%; width: 100%;"></div>
     </div>
     <button mat-mini-fab class="close-btn" (click)="closeReport()" color="warn">
         <i class="fas fa-times"></i>
     </button>
 </div>
+<div *ngIf="!reportObject" class="costing-project-dtl-container theme-background theme-foreground">
 
-<div *ngIf="!reportObject" class="project__div">
+    <div class="panel" style="height: 98%">
 
-    <div class="menu__div">
-        <div class="round-header theme-background-primary"><strong translate>C_PROJECT_OVERVIEW</strong></div>
-        <div class="v-box">
-                    <div *ngIf="activeObjectType == OBJ_TYPE_LOADING" class="c-tree-node"
-                         style="padding-left: 8px;">
-                        <strong class="c-leaf-txt" translate>LOADING</strong>
-                    </div>
-                    <div *ngIf="activeObjectType != OBJ_TYPE_LOADING" class="c-tree-node list-item"
-                         style="padding-left: 8px;" (click)="setActiveObject(project, OBJ_TYPE_PROJECT)"
-                         [ngClass]="{'active-list-item': activeObjectType == OBJ_TYPE_PROJECT}">
-                        <strong class="c-leaf-txt" *ngIf="project.code">({{project.code}})&nbsp;</strong>
-                        <strong class="c-leaf-txt" *ngIf="!project.description" translate>C_NAMELESS_PROJECT</strong>
-                        <strong class="c-leaf-txt" *ngIf="project.description">{{project.description}}</strong>
-                    </div>
-                    <!--OVERHEAD-->
-                    <div class="c-tree" *ngIf="project && project.id">
+        <div class="panel-content">
+            <div class="round-header theme-background-primary"><strong translate>C_PROJECT_OVERVIEW</strong></div>
+            <div class="panel-body">
+                <div class="c-tree-container" style="padding-right: 24px">
+                    <div class="c-tree" style="margin-left: 0 !important;">
                         <div class="v-box">
-                            <div class="c-tree-node list-item"
-                                 (click)="setActiveObject(project.overheadList, OBJ_TYPE_OVERHEAD_LIST)"
-                                 [ngClass]="{'active-list-item': activeObjectType == OBJ_TYPE_OVERHEAD_LIST}">
-                                <button mat-button color="" class="tree-button"
-                                        (click)="toggleListTree(project.overheadList)">
-                                    <span class="btn-txt">{{project.overheadList.hidden ? '+' : '-'}}</span>
-                                </button>
-                                <strong class="c-leaf-txt" translate>{{project.overheadList.loaded ?
-                                    'C_OVERHEAD' :
-                                    'LOADING'}}</strong>
+                            <div *ngIf="activeObjectType == OBJ_TYPE_LOADING" class="c-tree-node" style="padding-left: 8px;">
+                                <strong class="c-leaf-txt" translate>LOADING</strong>
                             </div>
-                            <div class="c-tree" *ngIf="!project.overheadList.hidden">
+                            <div *ngIf="activeObjectType != OBJ_TYPE_LOADING" class="c-tree-node list-item" style="padding-left: 8px;" (click)="setActiveObject(project, OBJ_TYPE_PROJECT)" [ngClass]="{'active-list-item': activeObjectType == OBJ_TYPE_PROJECT}">
+                                <strong class="c-leaf-txt" *ngIf="project.code">({{project.code}})&nbsp;</strong>
+                                <strong class="c-leaf-txt" *ngIf="!project.description"
+                                        translate>C_NAMELESS_PROJECT</strong>
+                                <strong class="c-leaf-txt" *ngIf="project.description">{{project.description}}</strong>
+                            </div>
+                            <!--OVERHEAD-->
+                            <div class="c-tree" style="margin-left: 4px" *ngIf="project && project.id">
                                 <div class="v-box">
                                     <div class="c-tree-node list-item"
-                                         *ngFor="let overhead of project.overheadList.data; let i = index"
-                                         (click)="setActiveObject(overhead, OBJ_TYPE_OVERHEAD, i)"
-                                         [ngClass]="{'active-list-item': activeObjectType == OBJ_TYPE_OVERHEAD && activeObjectIndex == i}">
-                                        <div class="c-leaf-txt" *ngIf="!overhead.description" translate>
-                                            C_NEW_OVERHEAD
-                                        </div>
-                                        <div class="c-leaf-txt" *ngIf="overhead.description">
-                                            {{overhead.description}}
-                                        </div>
+                                         (click)="setActiveObject(project.overheadList, OBJ_TYPE_OVERHEAD_LIST)"
+                                         [ngClass]="{'active-list-item': activeObjectType == OBJ_TYPE_OVERHEAD_LIST}">
+                                        <button mat-button color="" class="tree-button"
+                                                (click)="toggleListTree(project.overheadList)">
+                                            <span class="btn-txt">{{project.overheadList.hidden ? '+' : '-'}}</span>
+                                        </button>
+                                        <strong class="c-leaf-txt" translate>{{project.overheadList.loaded ?
+                                            'C_OVERHEAD' :
+                                            'LOADING'}}</strong>
                                     </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!--PRODUCT LINE-->
-                    <div class="c-tree" *ngIf="project && project.id">
-                        <div class="v-box">
-                            <div class="c-tree-node list-item"
-                                 (click)="setActiveObject(project.productLineList, OBJ_TYPE_PRODUCT_LINE_LIST)"
-                                 [ngClass]="{'active-list-item': activeObjectType == OBJ_TYPE_PRODUCT_LINE_LIST}">
-                                <button mat-button color="" class="tree-button"
-                                        (click)="toggleListTree(project.productLineList)">
-                                    <span class="btn-txt">{{project.productLineList.hidden ? '+' : '-'}}</span>
-                                </button>
-                                <strong class="c-leaf-txt" translate>{{project.productLineList.loaded ?
-                                    'C_PRODUCT_LINES' : 'LOADING'}}</strong>
-                            </div>
-                            <div class="v-box" *ngIf="!project.productLineList.hidden">
-                                <div class="c-tree"
-                                     *ngFor="let line of project.productLineList.data; let i = index">
-                                    <div class="v-box">
-                                        <div class="c-tree-node list-item"
-                                             (click)="setActiveObject(line, OBJ_TYPE_PRODUCT_LINE, i)"
-                                             [ngClass]="{'active-list-item': activeObjectType == OBJ_TYPE_PRODUCT_LINE && activeObjectIndex == i}">
-                                            <button mat-button color="" class="tree-button"
-                                                    (click)="toggleListTree(line)">
-                                                <span class="btn-txt">{{line.hidden ? '+' : '-'}}</span>
-                                            </button>
-                                            <div *ngIf="!line.productId" translate>C_NEW_PRODUCT_LINE</div>
-                                            <div *ngIf="line.productId && !line.productAcDescription" translate>
-                                                LOADING
-                                            </div>
-                                            <div *ngIf="line.productAcDescription">{{line.productAcDescription}}
-                                            </div>
-                                        </div>
-                                        <!--PRODUCT LINE OVERHEAD-->
-                                        <div class="c-tree" *ngIf="!line.hidden && line.id">
-                                            <div class="v-box">
-                                                <div class="c-tree-node list-item"
-                                                     (click)="setActiveObject(line.overheadList, OBJ_TYPE_PRODUCT_LINE_OH_LIST, i)"
-                                                     [ngClass]="{'active-list-item': activeObjectType == OBJ_TYPE_PRODUCT_LINE_OH_LIST && activeObjectIndex == i}">
-                                                    <button mat-button color="" class="tree-button"
-                                                            (click)="toggleListTree(line.overheadList)">
-                                                                <span
-                                                                    class="btn-txt">{{line.overheadList.hidden ? '+' : '-'}}</span>
-                                                    </button>
-                                                    <strong class="c-leaf-txt"
-                                                            translate>{{line.overheadList.loaded
-                                                        ?
-                                                        'C_LINE_OVERHEAD' : 'LOADING'}}</strong>
-                                                </div>
-                                                <div class="c-tree" *ngIf="!line.overheadList.hidden">
-                                                    <div class="v-box">
-                                                        <div class="c-tree-node list-item"
-                                                             *ngFor="let lineOH of line.overheadList.data; let j = index"
-                                                             (click)="setActiveObject(lineOH, OBJ_TYPE_PRODUCT_LINE_OH, i, j)"
-                                                             [ngClass]="{'active-list-item': activeObjectType == OBJ_TYPE_PRODUCT_LINE_OH && activeObjectIndex == i && activeObjectIndex2 == j}">
-                                                            <div class="c-leaf-txt" *ngIf="!lineOH.keyId"
-                                                                 translate>
-                                                                C_NEW_OVERHEAD
-                                                            </div>
-                                                            <div class="c-leaf-txt"
-                                                                 *ngIf="lineOH.keyId && !lineOH.keyAcDescription"
-                                                                 translate>LOADING
-                                                            </div>
-                                                            <div class="c-leaf-txt"
-                                                                 *ngIf="lineOH.keyAcDescription">
-                                                                {{lineOH.keyAcDescription}}
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!--PRODUCT LINE DIRECT-->
-                                        <div class="c-tree" *ngIf="!line.hidden && line.id">
-                                            <div class="v-box">
-                                                <div class="c-tree-node list-item"
-                                                     (click)="setActiveObject(line.directList, OBJ_TYPE_PRODUCT_LINE_DIRECT_LIST, i)"
-                                                     [ngClass]="{'active-list-item': activeObjectType == OBJ_TYPE_PRODUCT_LINE_DIRECT_LIST && activeObjectIndex == i}">
-                                                    <button mat-button color="" class="tree-button"
-                                                            (click)="toggleListTree(line.directList)">
-                                                                <span
-                                                                    class="btn-txt">{{line.directList.hidden ? '+' : '-'}}</span>
-                                                    </button>
-                                                    <strong class="c-leaf-txt"
-                                                            translate>{{line.directList.loaded
-                                                        ?
-                                                        'C_LINE_DIRECT' : 'LOADING'}}</strong>
-                                                </div>
-                                                <div class="c-tree" *ngIf="!line.directList.hidden">
-                                                    <div class="v-box">
-                                                        <div class="c-tree-node list-item"
-                                                             *ngFor="let lineDirect of line.directList.data; let j = index"
-                                                             (click)="setActiveObject(lineDirect, OBJ_TYPE_PRODUCT_LINE_DIRECT, i, j)"
-                                                             [ngClass]="{'active-list-item': activeObjectType == OBJ_TYPE_PRODUCT_LINE_DIRECT && activeObjectIndex == i && activeObjectIndex2 == j}">
-                                                            <div class="c-leaf-txt" *ngIf="!lineDirect.item"
-                                                                 translate>
-                                                                C_NEW_LINE_DIRECT
-                                                            </div>
-                                                            <div class="c-leaf-txt"
-                                                                 *ngIf="lineDirect.item && !lineDirect.itemAcDescription"
-                                                                 translate>LOADING
-                                                            </div>
-                                                            <div class="c-leaf-txt"
-                                                                 *ngIf="lineDirect.itemAcDescription">
-                                                                {{lineDirect.itemAcDescription}}
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!--POOLS-->
-                    <div class="c-tree" *ngIf="project && project.id">
-                        <div class="v-box">
-                            <div class="c-tree-node list-item"
-                                 (click)="setActiveObject(project.poolList, OBJ_TYPE_POOL_LIST)"
-                                 [ngClass]="{'active-list-item': activeObjectType == OBJ_TYPE_POOL_LIST}">
-                                <button mat-button color="" class="tree-button"
-                                        (click)="toggleListTree(project.poolList)">
-                                    <span class="btn-txt">{{project.poolList.hidden ? '+' : '-'}}</span>
-                                </button>
-                                <strong class="c-leaf-txt"
-                                        translate>{{project.poolList.loaded ? 'C_POOLS' : 'LOADING'}}</strong>
-                            </div>
-                            <div class="c-tree-container" *ngIf="!project.poolList.hidden">
-                                <div class="v-box">
-                                    <div class="c-tree"
-                                         *ngFor="let pool of project.poolList.data; let i = index">
+                                    <div class="c-tree" *ngIf="!project.overheadList.hidden">
                                         <div class="v-box">
                                             <div class="c-tree-node list-item"
-                                                 (click)="setActiveObject(pool, OBJ_TYPE_POOL, i)"
-                                                 [ngClass]="{'active-list-item': activeObjectType == OBJ_TYPE_POOL && activeObjectIndex == i}">
-                                                <button mat-button color="" class="tree-button"
-                                                        (click)="toggleListTree(pool.detailsList)">
-                                                            <span
-                                                                class="btn-txt">{{pool.detailsList.hidden ? '+' : '-'}}</span>
-                                                </button>
-                                                <div class="c-leaf-txt" *ngIf="!pool.costCenterId" translate>
-                                                    C_NEW_POOL
+                                                 *ngFor="let overhead of project.overheadList.data; let i = index"
+                                                 (click)="setActiveObject(overhead, OBJ_TYPE_OVERHEAD, i)"
+                                                 [ngClass]="{'active-list-item': activeObjectType == OBJ_TYPE_OVERHEAD && activeObjectIndex == i}">
+                                                <div class="c-leaf-txt" *ngIf="!overhead.description" translate>
+                                                    C_NEW_OVERHEAD
                                                 </div>
-                                                <div class="c-leaf-txt"
-                                                     *ngIf="pool.costCenterId && !pool.costCenterAcDescription"
-                                                     translate>
-                                                    LOADING
-                                                </div>
-                                                <div class="c-leaf-txt" *ngIf="pool.costCenterAcDescription">
-                                                    {{pool.costCenterAcDescription}}
+                                                <div class="c-leaf-txt" *ngIf="overhead.description">
+                                                    {{overhead.description}}
                                                 </div>
                                             </div>
-                                            <div class="c-tree" *ngIf="!pool.detailsList.hidden">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--PRODUCT LINE-->
+                            <div class="c-tree" style="margin-left: 4px" *ngIf="project && project.id">
+                                <div class="v-box">
+                                    <div class="c-tree-node list-item"
+                                         (click)="setActiveObject(project.productLineList, OBJ_TYPE_PRODUCT_LINE_LIST)"
+                                         [ngClass]="{'active-list-item': activeObjectType == OBJ_TYPE_PRODUCT_LINE_LIST}">
+                                        <button mat-button color="" class="tree-button"
+                                                (click)="toggleListTree(project.productLineList)">
+                                            <span class="btn-txt">{{project.productLineList.hidden ? '+' : '-'}}</span>
+                                        </button>
+                                        <strong class="c-leaf-txt" translate>{{project.productLineList.loaded ?
+                                            'C_PRODUCT_LINES' : 'LOADING'}}</strong>
+                                    </div>
+                                    <div class="v-box" *ngIf="!project.productLineList.hidden">
+                                        <div class="c-tree"
+                                             *ngFor="let line of project.productLineList.data; let i = index">
+                                            <div class="v-box">
+                                                <div class="c-tree-node list-item"
+                                                     (click)="setActiveObject(line, OBJ_TYPE_PRODUCT_LINE, i)"
+                                                     [ngClass]="{'active-list-item': activeObjectType == OBJ_TYPE_PRODUCT_LINE && activeObjectIndex == i}">
+                                                    <button mat-button color="" class="tree-button"
+                                                            (click)="toggleListTree(line)">
+                                                        <span class="btn-txt">{{line.hidden ? '+' : '-'}}</span>
+                                                    </button>
+                                                    <div *ngIf="!line.productId" translate>C_NEW_PRODUCT_LINE</div>
+                                                    <div *ngIf="line.productId && !line.productAcDescription" translate>
+                                                        LOADING
+                                                    </div>
+                                                    <div *ngIf="line.productAcDescription">{{line.productAcDescription}}
+                                                    </div>
+                                                </div>
+                                                <!--PRODUCT LINE OVERHEAD-->
+                                                <div class="c-tree" *ngIf="!line.hidden && line.id">
+                                                    <div class="v-box">
+                                                        <div class="c-tree-node list-item"
+                                                             (click)="setActiveObject(line.overheadList, OBJ_TYPE_PRODUCT_LINE_OH_LIST, i)"
+                                                             [ngClass]="{'active-list-item': activeObjectType == OBJ_TYPE_PRODUCT_LINE_OH_LIST && activeObjectIndex == i}">
+                                                            <button mat-button color="" class="tree-button"
+                                                                    (click)="toggleListTree(line.overheadList)">
+                                                                <span class="btn-txt">{{line.overheadList.hidden ? '+' : '-'}}</span>
+                                                            </button>
+                                                            <strong class="c-leaf-txt" translate>{{line.overheadList.loaded
+                                                                ?
+                                                                'C_LINE_OVERHEAD' : 'LOADING'}}</strong>
+                                                        </div>
+                                                        <div class="c-tree" *ngIf="!line.overheadList.hidden">
+                                                            <div class="v-box">
+                                                                <div class="c-tree-node list-item"
+                                                                     *ngFor="let lineOH of line.overheadList.data; let j = index"
+                                                                     (click)="setActiveObject(lineOH, OBJ_TYPE_PRODUCT_LINE_OH, i, j)"
+                                                                     [ngClass]="{'active-list-item': activeObjectType == OBJ_TYPE_PRODUCT_LINE_OH && activeObjectIndex == i && activeObjectIndex2 == j}">
+                                                                    <div class="c-leaf-txt" *ngIf="!lineOH.keyId"
+                                                                         translate>
+                                                                        C_NEW_OVERHEAD
+                                                                    </div>
+                                                                    <div class="c-leaf-txt"
+                                                                         *ngIf="lineOH.keyId && !lineOH.keyAcDescription"
+                                                                         translate>LOADING
+                                                                    </div>
+                                                                    <div class="c-leaf-txt"
+                                                                         *ngIf="lineOH.keyAcDescription">
+                                                                        {{lineOH.keyAcDescription}}
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!--PRODUCT LINE DIRECT-->
+                                                <div class="c-tree" *ngIf="!line.hidden && line.id">
+                                                    <div class="v-box">
+                                                        <div class="c-tree-node list-item"
+                                                             (click)="setActiveObject(line.directList, OBJ_TYPE_PRODUCT_LINE_DIRECT_LIST, i)"
+                                                             [ngClass]="{'active-list-item': activeObjectType == OBJ_TYPE_PRODUCT_LINE_DIRECT_LIST && activeObjectIndex == i}">
+                                                            <button mat-button color="" class="tree-button"
+                                                                    (click)="toggleListTree(line.directList)">
+                                                                <span class="btn-txt">{{line.directList.hidden ? '+' : '-'}}</span>
+                                                            </button>
+                                                            <strong class="c-leaf-txt" translate>{{line.directList.loaded
+                                                                ?
+                                                                'C_LINE_DIRECT' : 'LOADING'}}</strong>
+                                                        </div>
+                                                        <div class="c-tree" *ngIf="!line.directList.hidden">
+                                                            <div class="v-box">
+                                                                <div class="c-tree-node list-item"
+                                                                     *ngFor="let lineDirect of line.directList.data; let j = index"
+                                                                     (click)="setActiveObject(lineDirect, OBJ_TYPE_PRODUCT_LINE_DIRECT, i, j)"
+                                                                     [ngClass]="{'active-list-item': activeObjectType == OBJ_TYPE_PRODUCT_LINE_DIRECT && activeObjectIndex == i && activeObjectIndex2 == j}">
+                                                                    <div class="c-leaf-txt" *ngIf="!lineDirect.item"
+                                                                         translate>
+                                                                        C_NEW_LINE_DIRECT
+                                                                    </div>
+                                                                    <div class="c-leaf-txt"
+                                                                         *ngIf="lineDirect.item && !lineDirect.itemAcDescription"
+                                                                         translate>LOADING
+                                                                    </div>
+                                                                    <div class="c-leaf-txt"
+                                                                         *ngIf="lineDirect.itemAcDescription">
+                                                                        {{lineDirect.itemAcDescription}}
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--POOLS-->
+                            <div class="c-tree" style="margin-left: 4px" *ngIf="project && project.id">
+                                <div class="v-box">
+                                    <div class="c-tree-node list-item"
+                                         (click)="setActiveObject(project.poolList, OBJ_TYPE_POOL_LIST)"
+                                         [ngClass]="{'active-list-item': activeObjectType == OBJ_TYPE_POOL_LIST}">
+                                        <button mat-button color="" class="tree-button"
+                                                (click)="toggleListTree(project.poolList)">
+                                            <span class="btn-txt">{{project.poolList.hidden ? '+' : '-'}}</span>
+                                        </button>
+                                        <strong class="c-leaf-txt" translate>{{project.poolList.loaded ? 'C_POOLS' : 'LOADING'}}</strong>
+                                    </div>
+                                    <div class="c-tree-container" *ngIf="!project.poolList.hidden">
+                                        <div class="v-box">
+                                            <div class="c-tree"
+                                                 *ngFor="let pool of project.poolList.data; let i = index">
                                                 <div class="v-box">
                                                     <div class="c-tree-node list-item"
-                                                         *ngFor="let detail of pool.detailsList.data; let j = index"
-                                                         (click)="setActiveObject(detail, OBJ_TYPE_POOL_DETAIL, i, j)"
-                                                         [ngClass]="{'active-list-item': activeObjectType == OBJ_TYPE_POOL_DETAIL && activeObjectIndex == i && activeObjectIndex2 == j}">
-                                                        <div class="c-leaf-txt" *ngIf="!detail.key" translate>
-                                                            C_NEW_POOL_DETAIL
-                                                        </div>
+                                                         (click)="setActiveObject(pool, OBJ_TYPE_POOL, i)"
+                                                         [ngClass]="{'active-list-item': activeObjectType == OBJ_TYPE_POOL && activeObjectIndex == i}">
+                                                        <button mat-button color="" class="tree-button" (click)="toggleListTree(pool.detailsList)">
+                                                            <span class="btn-txt">{{pool.detailsList.hidden ? '+' : '-'}}</span>
+                                                        </button>
+                                                        <div class="c-leaf-txt" *ngIf="!pool.costCenterId" translate>C_NEW_POOL</div>
                                                         <div class="c-leaf-txt"
-                                                             *ngIf="detail.key && !detail.keyAcDescription"
+                                                             *ngIf="pool.costCenterId && !pool.costCenterAcDescription"
                                                              translate>
                                                             LOADING
                                                         </div>
-                                                        <div class="c-leaf-txt" *ngIf="detail.keyAcDescription">
-                                                            {{detail.keyAcDescription}}
+                                                        <div class="c-leaf-txt" *ngIf="pool.costCenterAcDescription">
+                                                            {{pool.costCenterAcDescription}}
+                                                        </div>
+                                                    </div>
+                                                    <div class="c-tree" *ngIf="!pool.detailsList.hidden">
+                                                        <div class="v-box">
+                                                            <div class="c-tree-node list-item"
+                                                                 *ngFor="let detail of pool.detailsList.data; let j = index"
+                                                                 (click)="setActiveObject(detail, OBJ_TYPE_POOL_DETAIL, i, j)"
+                                                                 [ngClass]="{'active-list-item': activeObjectType == OBJ_TYPE_POOL_DETAIL && activeObjectIndex == i && activeObjectIndex2 == j}">
+                                                                <div class="c-leaf-txt" *ngIf="!detail.key" translate>
+                                                                    C_NEW_POOL_DETAIL
+                                                                </div>
+                                                                <div class="c-leaf-txt"
+                                                                     *ngIf="detail.key && !detail.keyAcDescription"
+                                                                     translate>
+                                                                    LOADING
+                                                                </div>
+                                                                <div class="c-leaf-txt" *ngIf="detail.keyAcDescription">
+                                                                    {{detail.keyAcDescription}}
+                                                                </div>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -235,44 +228,48 @@
                                     </div>
                                 </div>
                             </div>
+                            <!--RESULTS-->
+                            <div class="c-tree-node list-item" *ngIf="project && project.id"
+                                 (click)="setActiveObject(null, OBJ_TYPE_RESULT_SIMPLE)"
+                                 [ngClass]="{'theme-foreground-primary': activeObjectType != OBJ_TYPE_RESULT_SIMPLE, 'active-list-item': activeObjectType == OBJ_TYPE_RESULT_SIMPLE}">
+                                <strong class="c-leaf-txt" translate>C_RESULT_SIMPLE</strong>
+                            </div>
+                            <div class="c-tree-node list-item" *ngIf="project && project.id"
+                                 (click)="setActiveObject(null, OBJ_TYPE_RESULT_ACTIVITY)"
+                                 [ngClass]="{'theme-foreground-primary': activeObjectType != OBJ_TYPE_RESULT_ACTIVITY, 'active-list-item': activeObjectType == OBJ_TYPE_RESULT_ACTIVITY}">
+                                <strong class="c-leaf-txt" translate>C_RESULT_ACTIVITY</strong>
+                            </div>
+                            <div class="c-tree-node list-item" *ngIf="project && project.id"
+                                 (click)="setActiveObject(null, OBJ_TYPE_RESULT_STEP_DOWN)"
+                                 [ngClass]="{'theme-foreground-primary': activeObjectType != OBJ_TYPE_RESULT_STEP_DOWN, 'active-list-item': activeObjectType == OBJ_TYPE_RESULT_STEP_DOWN}">
+                                <strong class="c-leaf-txt" translate>C_RESULT_STEPDOWN</strong>
+                            </div>
                         </div>
                     </div>
-                    <!--RESULTS-->
-                    <div class="c-tree-node list-item" *ngIf="project && project.id"
-                         (click)="setActiveObject(null, OBJ_TYPE_RESULT_SIMPLE)"
-                         [ngClass]="{'theme-foreground-primary': activeObjectType != OBJ_TYPE_RESULT_SIMPLE, 'active-list-item': activeObjectType == OBJ_TYPE_RESULT_SIMPLE}">
-                        <strong class="c-leaf-txt" translate>C_RESULT_SIMPLE</strong>
-                    </div>
-                    <div class="c-tree-node list-item" *ngIf="project && project.id"
-                         (click)="setActiveObject(null, OBJ_TYPE_RESULT_ACTIVITY)"
-                         [ngClass]="{'theme-foreground-primary': activeObjectType != OBJ_TYPE_RESULT_ACTIVITY, 'active-list-item': activeObjectType == OBJ_TYPE_RESULT_ACTIVITY}">
-                        <strong class="c-leaf-txt" translate>C_RESULT_ACTIVITY</strong>
-                    </div>
-                    <div class="c-tree-node list-item" *ngIf="project && project.id"
-                         (click)="setActiveObject(null, OBJ_TYPE_RESULT_STEP_DOWN)"
-                         [ngClass]="{'theme-foreground-primary': activeObjectType != OBJ_TYPE_RESULT_STEP_DOWN, 'active-list-item': activeObjectType == OBJ_TYPE_RESULT_STEP_DOWN}">
-                        <strong class="c-leaf-txt" translate>C_RESULT_STEPDOWN</strong>
-                    </div>
                 </div>
+            </div>
+        </div>
+
     </div>
 
-        <div *ngIf="activeObjectType == OBJ_TYPE_RESULT_SIMPLE"
-         class="content__div"
-         [style.height]="((result ? result.length : 1 ) * 48 + 210) + 'px'">
+    <div *ngIf="activeObjectType == OBJ_TYPE_RESULT_SIMPLE" class="panel" [style.height]="((result ? result.length : 1 ) * 48 + 210) + 'px'">
         <div class="panel-content">
             <div class="round-header theme-background-primary"><strong translate>C_RESULT_SIMPLE</strong></div>
             <div class="panel-body">
-                <mat-form-field class="default-100">
-                    <mat-label translate>LOGISTICS_ACCOUNT_NO</mat-label>
-                    <ss-auto-complete matInput
-                                      [model]="costingKeyLookup"
-                                      [formControl]="simpleKeyCtrl"
-                                      required="true">
-                    </ss-auto-complete>
-                </mat-form-field>
+                <ss-strict-auto-complete
+                    style="width: 100%; max-width: 100%;"
+                    [required]="true"
+                    [name]="'C_KEY_1'"
+                    [ngModel]="simpleKeyId"
+                    (selectionChanged)="onSimpleKeyChanged($event)"
+                    [toStringField]="'description'"
+                    [filterMethod]="httpSrv.keysFilterFn"
+                    [setter]="httpSrv.keysSetterFn"
+                    [getter]="httpSrv.keysGetterFn">
+                    <div translate>C_KEY</div>
+                </ss-strict-auto-complete>
 
-                <div *ngIf="!result" class="c-result-table"
-                     translate>{{simpleKeyId ? 'LOADING' : 'C_PLZ_SELECT_KEY' }}</div>
+                <div *ngIf="!result" class="c-result-table" translate>{{simpleKeyId ? 'LOADING' : 'C_PLZ_SELECT_KEY' }}</div>
 
                 <div *ngIf="result" class="c-result-table">
                     <table mat-table [dataSource]="result" style="width: 100%">
@@ -288,8 +285,7 @@
                                 <span translate>C_RESULT_COST</span>
                             </th>
                             <td mat-cell *matCellDef="let element" style="text-align: right">
-                            <span
-                                [ngClass]="{'theme-foreground-primary': element.actualCost == element.expectedCost, 'theme-foreground-warn': element.actualCost != element.expectedCost}">
+                            <span [ngClass]="{'theme-foreground-primary': element.actualCost == element.expectedCost, 'theme-foreground-warn': element.actualCost != element.expectedCost}">
                                 {{element.expectedCost}}
                             </span>
                             </td>
@@ -323,8 +319,7 @@
         </div>
     </div>
 
-    <div *ngIf="activeObjectType == OBJ_TYPE_RESULT_STEP_DOWN" class="content__div"
-         [style.height]="((result ? result.length : 1 ) * 48 + 144) + 'px'">
+    <div *ngIf="activeObjectType == OBJ_TYPE_RESULT_STEP_DOWN" class="panel" [style.height]="((result ? result.length : 1 ) * 48 + 144) + 'px'">
         <div class="panel-content">
             <div class="round-header theme-background-primary"><strong translate>C_RESULT_STEPDOWN</strong></div>
             <div class="panel-body">
@@ -343,8 +338,7 @@
                                 <span translate>C_RESULT_COST</span>
                             </th>
                             <td mat-cell *matCellDef="let element" style="text-align: right">
-                                <span
-                                    [ngClass]="{'theme-foreground-primary': element.actualCost == element.expectedCost, 'theme-foreground-warn': element.actualCost != element.expectedCost}">
+                                <span [ngClass]="{'theme-foreground-primary': element.actualCost == element.expectedCost, 'theme-foreground-warn': element.actualCost != element.expectedCost}">
                                     {{element.expectedCost}}
                                 </span>
                             </td>
@@ -361,8 +355,7 @@
                         </ng-container>
 
                         <ng-container matColumnDef="percent">
-                            <th mat-header-cell *matHeaderCellDef
-                                style="width: 40px; padding-left: 10px; text-align: center;">
+                            <th mat-header-cell *matHeaderCellDef style="width: 40px; padding-left: 10px; text-align: center;">
                                 <span>%</span>
                             </th>
                             <td mat-cell *matCellDef="let element" style="text-align: right">
@@ -378,8 +371,7 @@
         </div>
     </div>
 
-    <div *ngIf="activeObjectType == OBJ_TYPE_RESULT_ACTIVITY" class="content__div"
-         [style.height]="((result ? result.length : 1 ) * 48 + 144) + 'px'">
+    <div *ngIf="activeObjectType == OBJ_TYPE_RESULT_ACTIVITY" class="panel" [style.height]="((result ? result.length : 1 ) * 48 + 144) + 'px'">
         <div class="panel-content">
             <div class="round-header theme-background-primary"><strong translate>C_RESULT_ACTIVITY</strong></div>
             <div class="panel-body">
@@ -399,8 +391,7 @@
                                 <span translate>C_RESULT_COST</span>
                             </th>
                             <td mat-cell *matCellDef="let element" style="text-align: right">
-                                <span
-                                    [ngClass]="{'theme-foreground-primary': element.actualCost == element.expectedCost, 'theme-foreground-warn': element.actualCost != element.expectedCost}">
+                                <span [ngClass]="{'theme-foreground-primary': element.actualCost == element.expectedCost, 'theme-foreground-warn': element.actualCost != element.expectedCost}">
                                     {{element.expectedCost}}
                                 </span>
                             </td>
@@ -417,8 +408,7 @@
                         </ng-container>
 
                         <ng-container matColumnDef="percent">
-                            <th mat-header-cell *matHeaderCellDef
-                                style="width: 40px; padding-left: 10px; text-align: center;">
+                            <th mat-header-cell *matHeaderCellDef style="width: 40px; padding-left: 10px; text-align: center;">
                                 <span>%</span>
                             </th>
                             <td mat-cell *matCellDef="let element" style="text-align: right">
@@ -434,23 +424,14 @@
         </div>
     </div>
 
-    <div class="content__div"
-        *ngIf="(activeObjectType == OBJ_TYPE_RESULT_SIMPLE && simpleKeyId) || activeObjectType == OBJ_TYPE_RESULT_ACTIVITY || activeObjectType == OBJ_TYPE_RESULT_STEP_DOWN"
-        [style.height]="((reportsList ? reportsList.files.length : 1 ) * 32 + 200) + 'px'">
+    <div *ngIf="(activeObjectType == OBJ_TYPE_RESULT_SIMPLE && simpleKeyId) || activeObjectType == OBJ_TYPE_RESULT_ACTIVITY || activeObjectType == OBJ_TYPE_RESULT_STEP_DOWN" class="panel" [style.height]="((reportsList ? reportsList.files.length : 1 ) * 32 + 200) + 'px'">
         <div class="panel-content">
-            <div class="round-header theme-background-primary"><strong translate>COMMON_REPORTS</strong></div>
+            <div class="round-header theme-background-primary"><strong translate>REPORTS</strong></div>
             <div class="panel-body">
-                <div class="c-tree-container" style="width: 100% !important; padding-bottom: 20px"
-                     *ngIf="reportsList && reportsList.files.length">
-                    <div class="c-tree-node" style="width: 98%; padding-right: 1%; padding-left: 1%"
-                         *ngIf="!reportsList" translate>LOADING
-                    </div>
-                    <div class="c-tree-node" style="width: 98%; padding-right: 1%; padding-left: 1%"
-                         *ngIf="reportsList && !reportsList.files.length" translate>C_NO_REPORTS_FOUND
-                    </div>
-                    <div class="c-tree-node" style="width: 94%; padding-right: 3%; padding-left: 3%;"
-                         *ngFor="let report of reportsList.files; let i = index" (click)="selectedReport = i"
-                         [ngClass]="{'active-list-item': selectedReport == i}">
+                <div class="c-tree-container" style="width: 100% !important; padding-bottom: 20px" *ngIf="reportsList && reportsList.files.length">
+                    <div class="c-tree-node" style="width: 98%; padding-right: 1%; padding-left: 1%" *ngIf="!reportsList" translate>LOADING</div>
+                    <div class="c-tree-node" style="width: 98%; padding-right: 1%; padding-left: 1%" *ngIf="reportsList && !reportsList.files.length" translate>C_NO_REPORTS_FOUND</div>
+                    <div class="c-tree-node" style="width: 94%; padding-right: 3%; padding-left: 3%;" *ngFor="let report of reportsList.files; let i = index" (click)="selectedReport = i" [ngClass]="{'active-list-item': selectedReport == i}">
                         <div class="c-leaf-txt" style="text-decoration: underline">{{report}}</div>
                     </div>
                 </div>
@@ -476,45 +457,38 @@
         </div>
     </div>
 
-    <div *ngIf="activeObjectType == OBJ_TYPE_PROJECT" class="content__div">
+    <div *ngIf="activeObjectType == OBJ_TYPE_PROJECT" class="panel" style="height: 333px">
         <div class="panel-content">
             <div class="round-header theme-background-primary"><strong translate>C_PROJECT_DETAIL</strong></div>
             <div class="panel-body">
-                <form novalidate [formGroup]="projectForm">
+                <form #form="ngForm">
 
-                    <mat-form-field class="default-50">
-                        <mat-label translate>CODE</mat-label>
-                        <input name="CODE" matInput [maxlength]="4" formControlName="code" type="text" required>
+                    <mat-form-field style="width: 50%; max-width: 50%;">
+                        <mat-placeholder translate>CODE</mat-placeholder>
+                        <input name="CODE" matInput [disabled]="readOnly" [maxlength]="4" [(ngModel)]="activeObject.code" type="text" required>
                     </mat-form-field>
 
-                    <mat-form-field class="default-100">
-                        <mat-label translate>C_DESCRIPTION</mat-label>
-                        <input name="DESCRIPTION" matInput formControlName="description" type="text" required>
+                    <mat-form-field style="width: 100%;">
+                        <mat-placeholder translate>C_DESCRIPTION</mat-placeholder>
+                        <input name="DESCRIPTION" matInput [disabled]="readOnly" [(ngModel)]="activeObject.description" type="text" required>
                     </mat-form-field>
 
-                    <mat-form-field class="default-50 sm-100">
-                        <mat-label translate>COMMON_DATE</mat-label>
-                        <ss-date-picker formControlName="from" required="true"></ss-date-picker>
-                        <mat-error *ngIf="projectForm.controls['from'].invalid" translate>COMMON_FIELD_REQUIRED
-                        </mat-error>
-                    </mat-form-field>
+                    <app-date-picker [name]="'FROM'" style="margin-right: 10px" [(ngModel)]="activeObject.from"
+                                     [required]="true" [disabled]="readOnly">
+                        <span translate>FROM</span>
+                    </app-date-picker>
 
-                    <mat-form-field class="default-50 sm-100">
-                        <mat-label translate>COMMON_DATE</mat-label>
-                        <ss-date-picker formControlName="to" required="true"></ss-date-picker>
-                        <mat-error *ngIf="projectForm.controls['to'].invalid" translate>COMMON_FIELD_REQUIRED
-                        </mat-error>
-                    </mat-form-field>
+                    <app-date-picker [name]="'TO'" [(ngModel)]="activeObject.to" [required]="true" [disabled]="readOnly">
+                        <span translate>TO</span>
+                    </app-date-picker>
 
                 </form>
 
                 <div class="bottom-bar">
-                    <button *ngIf="!readOnly" mat-mini-fab (click)="saveProject()" color="primary"
-                            [disabled]="!isFormValid()">
+                    <button *ngIf="!readOnly" mat-mini-fab (click)="saveProject()" color="primary" [disabled]="!isFormValid()">
                         <i class="fas fa-save"></i>
                     </button>
-                    <button *ngIf="activeObject && activeObject.id" mat-mini-fab color=""
-                            (click)="onReloadProjectBtnClick()">
+                    <button *ngIf="activeObject && activeObject.id" mat-mini-fab color="" (click)="onReloadProjectBtnClick()">
                         <i class="fas fa-undo"></i>
                     </button>
                 </div>
@@ -522,8 +496,7 @@
         </div>
     </div>
 
-    <div *ngIf="activeObjectType == OBJ_TYPE_OVERHEAD_LIST" class="content__div"
-         [style.height]="(activeObject.data.length * 32 + 140) + 'px'">
+    <div *ngIf="activeObjectType == OBJ_TYPE_OVERHEAD_LIST" class="panel" [style.height]="(activeObject.data.length * 32 + 140) + 'px'">
         <div class="panel-content">
             <div class="round-header theme-background-primary"><strong translate>C_OVERHEAD</strong></div>
             <div class="panel-body">
@@ -531,11 +504,8 @@
                     <div class="v-box">
                         <div class="c-tree-node" *ngFor="let overhead of activeObject.data; let i = index"
                              (click)="setActiveObject(overhead, OBJ_TYPE_OVERHEAD, i)">
-                            <div class="c-leaf-txt theme-foreground-primary" style="text-decoration: underline"
-                                 *ngIf="!overhead.description" translate>C_NEW_OVERHEAD
-                            </div>
-                            <div class="c-leaf-txt theme-foreground-primary" style="text-decoration: underline"
-                                 *ngIf="overhead.description">{{overhead.description}}</div>
+                            <div class="c-leaf-txt theme-foreground-primary" style="text-decoration: underline" *ngIf="!overhead.description" translate>C_NEW_OVERHEAD</div>
+                            <div class="c-leaf-txt theme-foreground-primary" style="text-decoration: underline" *ngIf="overhead.description">{{overhead.description}}</div>
                         </div>
                     </div>
                 </div>
@@ -549,8 +519,7 @@
         </div>
     </div>
 
-    <div *ngIf="activeObjectType == OBJ_TYPE_PRODUCT_LINE_LIST" class="content__div"
-         [style.height]="(activeObject.data.length * 32 + 140) + 'px'">
+    <div *ngIf="activeObjectType == OBJ_TYPE_PRODUCT_LINE_LIST" class="panel" [style.height]="(activeObject.data.length * 32 + 140) + 'px'">
         <div class="panel-content">
             <div class="round-header theme-background-primary"><strong translate>C_PRODUCT_LINES</strong></div>
             <div class="panel-body">
@@ -558,14 +527,9 @@
                     <div class="v-box">
                         <div class="c-tree-node" *ngFor="let line of activeObject.data; let i = index"
                              (click)="setActiveObject(line, OBJ_TYPE_PRODUCT_LINE, i)">
-                            <div class="c-leaf-txt theme-foreground-primary" style="text-decoration: underline"
-                                 *ngIf="!line.productId" translate>C_NEW_PRODUCT_LINE
-                            </div>
-                            <div class="c-leaf-txt theme-foreground-primary" style="text-decoration: underline"
-                                 *ngIf="line.productId && !line.productAcDescription" translate>LOADING
-                            </div>
-                            <div class="c-leaf-txt theme-foreground-primary" style="text-decoration: underline"
-                                 *ngIf="line.productAcDescription">{{line.productAcDescription}}</div>
+                            <div class="c-leaf-txt theme-foreground-primary" style="text-decoration: underline" *ngIf="!line.productId" translate>C_NEW_PRODUCT_LINE</div>
+                            <div class="c-leaf-txt theme-foreground-primary" style="text-decoration: underline" *ngIf="line.productId && !line.productAcDescription" translate>LOADING</div>
+                            <div class="c-leaf-txt theme-foreground-primary" style="text-decoration: underline" *ngIf="line.productAcDescription">{{line.productAcDescription}}</div>
                         </div>
                     </div>
                 </div>
@@ -579,8 +543,7 @@
         </div>
     </div>
 
-    <div *ngIf="activeObjectType == OBJ_TYPE_PRODUCT_LINE_OH_LIST" class="content__div"
-         [style.height]="(activeObject.data.length * 32 + 140) + 'px'">
+    <div *ngIf="activeObjectType == OBJ_TYPE_PRODUCT_LINE_OH_LIST" class="panel" [style.height]="(activeObject.data.length * 32 + 140) + 'px'">
         <div class="panel-content">
             <div class="round-header theme-background-primary"><strong translate>C_LINE_OVERHEAD</strong></div>
             <div class="panel-body">
@@ -588,14 +551,9 @@
                     <div class="v-box">
                         <div class="c-tree-node" *ngFor="let lineOH of activeObject.data; let j = index"
                              (click)="setActiveObject(lineOH, OBJ_TYPE_PRODUCT_LINE_OH, activeObjectIndex, j)">
-                            <div class="c-leaf-txt theme-foreground-primary" style="text-decoration: underline"
-                                 *ngIf="!lineOH.keyId" translate>C_NEW_OVERHEAD
-                            </div>
-                            <div class="c-leaf-txt theme-foreground-primary" style="text-decoration: underline"
-                                 *ngIf="lineOH.keyId && !lineOH.keyAcDescription" translate>LOADING
-                            </div>
-                            <div class="c-leaf-txt theme-foreground-primary" style="text-decoration: underline"
-                                 *ngIf="lineOH.keyAcDescription">{{lineOH.keyAcDescription}}</div>
+                            <div class="c-leaf-txt theme-foreground-primary" style="text-decoration: underline" *ngIf="!lineOH.keyId" translate>C_NEW_OVERHEAD</div>
+                            <div class="c-leaf-txt theme-foreground-primary" style="text-decoration: underline" *ngIf="lineOH.keyId && !lineOH.keyAcDescription" translate>LOADING</div>
+                            <div class="c-leaf-txt theme-foreground-primary" style="text-decoration: underline" *ngIf="lineOH.keyAcDescription">{{lineOH.keyAcDescription}}</div>
                         </div>
                     </div>
                 </div>
@@ -609,8 +567,7 @@
         </div>
     </div>
 
-    <div *ngIf="activeObjectType == OBJ_TYPE_PRODUCT_LINE_DIRECT_LIST" class="content__div"
-         [style.height]="(activeObject.data.length * 32 + 140) + 'px'">
+    <div *ngIf="activeObjectType == OBJ_TYPE_PRODUCT_LINE_DIRECT_LIST" class="panel" [style.height]="(activeObject.data.length * 32 + 140) + 'px'">
         <div class="panel-content">
             <div class="round-header theme-background-primary"><strong translate>C_LINE_DIRECT</strong></div>
             <div class="panel-body">
@@ -618,17 +575,11 @@
                     <div class="v-box">
                         <div class="c-tree-node" *ngFor="let lineDirect of activeObject.data; let j = index"
                              (click)="setActiveObject(lineDirect, OBJ_TYPE_PRODUCT_LINE_DIRECT, activeObjectIndex, j)">
-                            <div class="c-leaf-txt theme-foreground-primary"
-                                 style="text-decoration: underline"
-                                 *ngIf="!lineDirect.item" translate>
-                                C_NEW_LINE_DIRECT
-                            </div>
-                            <div class="c-leaf-txt theme-foreground-primary" style="text-decoration: underline"
-                                 *ngIf="lineDirect.item && !lineDirect.itemAcDescription" translate>
+                            <div class="c-leaf-txt theme-foreground-primary" style="text-decoration: underline" *ngIf="!lineDirect.item" translate>C_NEW_LINE_DIRECT</div>
+                            <div class="c-leaf-txt theme-foreground-primary" style="text-decoration: underline" *ngIf="lineDirect.item && !lineDirect.itemAcDescription" translate>
                                 LOADING
                             </div>
-                            <div class="c-leaf-txt theme-foreground-primary" style="text-decoration: underline"
-                                 *ngIf="lineDirect.itemAcDescription">{{lineDirect.itemAcDescription}}</div>
+                            <div class="c-leaf-txt theme-foreground-primary" style="text-decoration: underline" *ngIf="lineDirect.itemAcDescription">{{lineDirect.itemAcDescription}}</div>
                         </div>
                     </div>
                 </div>
@@ -642,59 +593,66 @@
         </div>
     </div>
 
-    <div *ngIf="activeObjectType == OBJ_TYPE_OVERHEAD" class="content__div" >
+    <div *ngIf="activeObjectType == OBJ_TYPE_OVERHEAD" class="panel" style="height: 464px">
         <div class="panel-content">
             <div class="round-header theme-background-primary"><strong translate>C_OVERHEAD_DETAIL</strong></div>
             <div class="panel-body">
-                <form novalidate [formGroup]="ohForm">
+                <form #form="ngForm">
                     <mat-form-field style="width: 100%; max-width: 100%;">
-                        <mat-label translate>C_DESCRIPTION</mat-label>
-                        <input name="DESCRIPTION" matInput formControlName="description" type="text" required>
+                        <mat-placeholder translate>C_DESCRIPTION</mat-placeholder>
+                        <input name="DESCRIPTION" [disabled]="readOnly" matInput [(ngModel)]="activeObject.description" type="text" required>
                     </mat-form-field>
 
-                    <mat-form-field class="default-100">
-                        <mat-label translate>LOGISTICS_ACCOUNT_NO</mat-label>
-                        <ss-auto-complete matInput
-                                          [model]="accountLookupModel"
-                                          formControlName="accountId">
-                        </ss-auto-complete>
-                    </mat-form-field>
+                    <ss-strict-auto-complete style="width: 100%; max-width: 100%"
+                                             [disabled]="readOnly"
+                                             [(ngModel)]="activeObject.accountNo"
+                                             [filterMethod]="httpSrv.accountsFilterFn"
+                                             [setter]="httpSrv.accountsSetterFn"
+                                             [getter]="httpSrv.accountsGetterFn"
+                                             name="accountno"
+                                             [toStringField]="'accountno'">
+                        <mat-placeholder><span translate>ACCOUNTNO</span></mat-placeholder>
+                    </ss-strict-auto-complete>
 
-                    <mat-form-field class="default-100">
-                        <mat-label translate>LOGISTICS_ACCOUNT_NO</mat-label>
-                        <ss-auto-complete matInput
-                                          [model]="costingKeyLookup"
-                                          formControlName="keyId">
-                        </ss-auto-complete>
-                    </mat-form-field>
-
+                    <ss-strict-auto-complete
+                        style="width: 100%; max-width: 100%;"
+                        [required]="true"
+                        [disabled]="readOnly"
+                        [name]="'C_KEY_2'"
+                        [ngModel]="activeObject.keyId"
+                        (selectionChanged)="onKeySelectionChanged($event)"
+                        (setterLoadingComplete)="onOverheadKeyLoaded($event)"
+                        [toStringField]="'description'"
+                        [filterMethod]="httpSrv.keysFilterFn"
+                        [setter]="httpSrv.keysSetterFn"
+                        [getter]="httpSrv.keysGetterFn">
+                        <div translate>C_KEY</div>
+                    </ss-strict-auto-complete>
 
                     <mat-form-field style="width: 48%; max-width: 48%; margin-right: 2%;">
-                        <mat-label translate>C_AMOUNT</mat-label>
-                        <input matInput name="C_AMOUNT" formControlName="amount" type="number" required>
+                        <mat-placeholder translate>C_AMOUNT</mat-placeholder>
+                        <input matInput name="C_AMOUNT" [disabled]="readOnly" [(ngModel)]="activeObject.amount" type="number" required>
                     </mat-form-field>
 
                     <mat-form-field style="width: 48%; max-width: 48%; margin-left: 2%;">
-                        <mat-label translate>C_SCALE</mat-label>
-                        <input matInput name="C_SCALE" formControlName="scale" type="number" [step]="0.1" required>
+                        <mat-placeholder translate>C_SCALE</mat-placeholder>
+                        <input matInput name="C_SCALE" [disabled]="readOnly" [(ngModel)]="activeObject.scale" type="number" [step]="0.1" required>
                     </mat-form-field>
 
                     <mat-form-field style="width: 48%; max-width: 48%; margin-left: 2%;">
-                        <mat-label translate>C_ACTUAL</mat-label>
-                        <input matInput name="C_ACTUAL" formControlName="actual" type="number">
+                        <mat-placeholder translate>C_ACTUAL</mat-placeholder>
+                        <input matInput name="C_ACTUAL" [disabled]="readOnly" [(ngModel)]="activeObject.actual" type="number">
                     </mat-form-field>
                 </form>
 
                 <div class="bottom-bar">
-                    <button *ngIf="!readOnly" mat-mini-fab (click)="saveOverhead()" color="primary"
-                            [disabled]="!isFormValid()">
+                    <button *ngIf="!readOnly" mat-mini-fab (click)="saveOverhead()" color="primary" [disabled]="!isFormValid()">
                         <i class="fas fa-save"></i>
                     </button>
                     <button *ngIf="!readOnly" mat-mini-fab (click)="deleteOverhead()" color="warn">
                         <i class="fas fa-trash"></i>
                     </button>
-                    <button *ngIf="activeObject && activeObject.id" mat-mini-fab color=""
-                            (click)="onReloadOverheadBtnClick()">
+                    <button *ngIf="activeObject && activeObject.id" mat-mini-fab color="" (click)="onReloadOverheadBtnClick()">
                         <i class="fas fa-undo"></i>
                     </button>
                 </div>
@@ -706,32 +664,38 @@
         <div class="panel-content">
             <div class="round-header theme-background-primary"><strong translate>C_PRODUCT_LINE_DETAIL</strong></div>
             <div class="panel-body">
-                <form novalidate [formGroup]="productLineForm">
-                    <mat-form-field class="default-100">
-                        <mat-label translate>LOGISTICS_ACCOUNT_NO</mat-label>
-                        <ss-auto-complete matInput
-                                          [model]="productLookup"
-                                          formControlName="productId">
-                        </ss-auto-complete>
-                    </mat-form-field>
+                <form #form="ngForm">
 
-                    <mat-form-field class="default-100">
-                        <mat-label translate>C_UNITS</mat-label>
-                        <input matInput name="C_UNITS" formControlName="units" type="number" required>
+                    <ss-strict-auto-complete
+                        style="width: 100%;"
+                        [required]="true"
+                        [disabled]="readOnly"
+                        [name]="'C_ITEM_1'"
+                        [ngModel]="activeObject.productId"
+                        (selectionChanged)="onProductSelectionChanged($event)"
+                        (setterLoadingComplete)="onProductLoaded($event)"
+                        [toStringField]="'description'"
+                        [filterMethod]="httpSrv.productsFilterFn"
+                        [setter]="httpSrv.productsSetterFn"
+                        [getter]="httpSrv.productsGetterFn">
+                        <div translate>C_ITEM</div>
+                    </ss-strict-auto-complete>
+
+                    <mat-form-field style="width: 50%; max-width: 50%;">
+                        <mat-placeholder translate>C_UNITS</mat-placeholder>
+                        <input matInput name="C_UNITS" [disabled]="readOnly" [(ngModel)]="activeObject.units" type="number" required>
                     </mat-form-field>
 
                 </form>
 
                 <div class="bottom-bar">
-                    <button *ngIf="!readOnly" mat-mini-fab (click)="saveProductLine()" color="primary"
-                            [disabled]="!isFormValid()">
+                    <button *ngIf="!readOnly" mat-mini-fab (click)="saveProductLine()" color="primary" [disabled]="!isFormValid()">
                         <i class="fas fa-save"></i>
                     </button>
                     <button *ngIf="!readOnly" mat-mini-fab (click)="deleteProductLine()" color="warn">
                         <i class="fas fa-trash"></i>
                     </button>
-                    <button *ngIf="activeObject && activeObject.id" mat-mini-fab color=""
-                            (click)="onReloadProductLineBtnClick()">
+                    <button *ngIf="activeObject && activeObject.id" mat-mini-fab color="" (click)="onReloadProductLineBtnClick()">
                         <i class="fas fa-undo"></i>
                     </button>
                 </div>
@@ -743,30 +707,37 @@
         <div class="panel-content">
             <div class="round-header theme-background-primary"><strong translate>C_LINE_OVERHEAD_DETAIL</strong></div>
             <div class="panel-body">
-                <form novalidate [formGroup]="lineOverheadForm">
+                <form #form="ngForm">
 
-                    <mat-form-field class="default-100">
-                        <ss-auto-complete matInput
-                                          [model]="costingKeyLookup"
-                                          formControlName="keyId"
-                                          required="true">
-                        </ss-auto-complete>
-                    </mat-form-field>
-                    <mat-form-field class="default-100">
-                        <mat-label translate>C_VALUE</mat-label>
-                        <input matInput name="C_VALUE" formControlName="value" type="number" required>
+                    <ss-strict-auto-complete
+                        style="width: 100%; max-width: 100%;"
+                        [required]="true"
+                        [disabled]="readOnly"
+                        [name]="'C_KEY_3'"
+                        [ngModel]="activeObject.keyId"
+                        (selectionChanged)="onKeySelectionChanged($event)"
+                        (setterLoadingComplete)="onOverheadKeyLoaded($event)"
+                        [toStringField]="'description'"
+                        [filterMethod]="httpSrv.keysFilterFn"
+                        [setter]="httpSrv.keysSetterFn"
+                        [getter]="httpSrv.keysGetterFn">
+                        <div translate>C_KEY</div>
+                    </ss-strict-auto-complete>
+
+                    <mat-form-field style="width: 48%; max-width: 48%; margin-right: 2%;">
+                        <mat-placeholder translate>C_VALUE</mat-placeholder>
+                        <input matInput name="C_VALUE" [disabled]="readOnly" [(ngModel)]="activeObject.value" type="number" required>
                     </mat-form-field>
 
                     <mat-form-field style="width: 48%; max-width: 48%; margin-left: 2%;">
-                        <mat-label translate>C_ACTUAL</mat-label>
-                        <input matInput name="C_ACTUAL" formControlName="actual" type="number">
+                        <mat-placeholder translate>C_ACTUAL</mat-placeholder>
+                        <input matInput name="C_ACTUAL" [disabled]="readOnly" [(ngModel)]="activeObject.actual" type="number">
                     </mat-form-field>
 
                 </form>
 
                 <div class="bottom-bar">
-                    <button *ngIf="!readOnly" mat-mini-fab (click)="saveProductionLineOverhead()" color="primary"
-                            [disabled]="!isFormValid()">
+                    <button *ngIf="!readOnly" mat-mini-fab (click)="saveProductionLineOverhead()" color="primary" [disabled]="!isFormValid()">
                         <i class="fas fa-save"></i>
                     </button>
                     <button *ngIf="!readOnly" mat-mini-fab (click)="deleteProductionLineOverhead()" color="warn">
@@ -785,36 +756,42 @@
         <div class="panel-content">
             <div class="round-header theme-background-primary"><strong translate>C_LINE_DIRECT_DETAIL</strong></div>
             <div class="panel-body">
-                <form novalidate [formGroup]="lineDirectForm">
+                <form #form="ngForm">
 
-                    <mat-form-field class="default-100">
-                        <ss-auto-complete matInput
-                                          [model]="itemLookup"
-                                          formControlName="itemId"
-                                          required="true">
-                        </ss-auto-complete>
+                    <ss-strict-auto-complete
+                        style="width: 100%; max-width: 100%;"
+                        [required]="true"
+                        [disabled]="readOnly"
+                        [name]="'C_ITEM_2'"
+                        [ngModel]="activeObject.item"
+                        (selectionChanged)="onItemSelectionChanged($event)"
+                        (setterLoadingComplete)="onItemLoaded($event)"
+                        [toStringField]="'description'"
+                        [filterMethod]="httpSrv.itemsFilterFn"
+                        [setter]="httpSrv.itemsSetterFn"
+                        [getter]="httpSrv.itemsGetterFn">
+                        <div translate>C_ITEM</div>
+                    </ss-strict-auto-complete>
+
+                    <mat-form-field style="width: 48%; max-width: 48%; margin-right: 2%;">
+                        <mat-placeholder translate>C_AMOUNT</mat-placeholder>
+                        <input matInput name="C_AMOUNT" [disabled]="readOnly" [(ngModel)]="activeObject.amount" type="number" required>
                     </mat-form-field>
 
-                    <mat-form-field class="default-50 sm-100">
-                        <mat-label translate>C_AMOUNT</mat-label>
-                        <input matInput name="C_AMOUNT" formControlName="amount" type="number" required>
+                    <mat-form-field style="width: 48%; max-width: 48%; margin-left: 2%;">
+                        <mat-placeholder translate>C_SCALE</mat-placeholder>
+                        <input matInput [disabled]="readOnly" name="C_SCALE" [(ngModel)]="activeObject.scale" type="number" [step]="0.1" required>
                     </mat-form-field>
 
-                    <mat-form-field class="default-50 sm-100">
-                        <mat-label translate>C_SCALE</mat-label>
-                        <input matInput name="C_SCALE" formControlName="scale" type="number" [step]="0.1" required>
-                    </mat-form-field>
-
-                    <mat-form-field class="default-50 sm-100">
-                        <mat-label translate>C_ACTUAL</mat-label>
-                        <input matInput name="C_ACTUAL" formControlName="actual" type="number">
+                    <mat-form-field style="width: 48%; max-width: 48%; margin-right: 2%;">
+                        <mat-placeholder translate>C_ACTUAL</mat-placeholder>
+                        <input matInput [disabled]="readOnly" name="C_ACTUAL" [(ngModel)]="activeObject.actual" type="number">
                     </mat-form-field>
 
                 </form>
 
                 <div class="bottom-bar">
-                    <button *ngIf="!readOnly" mat-mini-fab (click)="saveProductionLineDirect()" color="primary"
-                            [disabled]="!isFormValid()">
+                    <button *ngIf="!readOnly" mat-mini-fab (click)="saveProductionLineDirect()" color="primary" [disabled]="!isFormValid()">
                         <i class="fas fa-save"></i>
                     </button>
                     <button *ngIf="!readOnly" mat-mini-fab (click)="deleteProductionLineDirect()" color="warn">
@@ -829,8 +806,7 @@
         </div>
     </div>
 
-    <div *ngIf="activeObjectType == OBJ_TYPE_POOL_LIST" class="panel"
-         [style.height]="(activeObject.data.length * 32 + 140) + 'px'">
+    <div *ngIf="activeObjectType == OBJ_TYPE_POOL_LIST" class="panel" [style.height]="(activeObject.data.length * 32 + 140) + 'px'">
         <div class="panel-content">
             <div class="round-header theme-background-primary">
                 <strong translate>C_POOLS</strong>
@@ -838,20 +814,14 @@
             </div>
             <div class="panel-body">
                 <div class="c-tree-container">
-                    <div class="c-tree-node" style="width: 98%; padding-right: 1%; padding-left: 1%"
-                         *ngFor="let pool of project.poolList.data; let i = index"
+                    <div class="c-tree-node" style="width: 98%; padding-right: 1%; padding-left: 1%" *ngFor="let pool of project.poolList.data; let i = index"
                          (click)="setActiveObject(pool, OBJ_TYPE_POOL, i)">
-                        <div class="c-leaf-txt theme-foreground-primary" style="text-decoration: underline"
-                             *ngIf="!pool.costCenterId" translate>C_NEW_POOL
-                        </div>
-                        <div class="c-leaf-txt theme-foreground-primary" style="text-decoration: underline"
-                             *ngIf="pool.costCenterId && !pool.costCenterAcDescription" translate>
+                        <div class="c-leaf-txt theme-foreground-primary" style="text-decoration: underline" *ngIf="!pool.costCenterId" translate>C_NEW_POOL</div>
+                        <div class="c-leaf-txt theme-foreground-primary" style="text-decoration: underline" *ngIf="pool.costCenterId && !pool.costCenterAcDescription" translate>
                             LOADING
                         </div>
-                        <div class="c-leaf-txt theme-foreground-primary" style="text-decoration: underline"
-                             *ngIf="pool.costCenterAcDescription">{{pool.costCenterAcDescription}}</div>
-                        <mat-checkbox style="float: right; margin-right: 8px"
-                                      matTooltip="{{'C_IS_SUPPORT' | translate}}" [disabled]="true"></mat-checkbox>
+                        <div class="c-leaf-txt theme-foreground-primary" style="text-decoration: underline" *ngIf="pool.costCenterAcDescription">{{pool.costCenterAcDescription}}</div>
+                        <mat-checkbox style="float: right; margin-right: 8px" matTooltip="{{'C_IS_SUPPORT' | translate}}" [ngModel]="pool.isSupport" disabled></mat-checkbox>
                     </div>
                 </div>
 
@@ -864,48 +834,56 @@
         </div>
     </div>
 
-    <div *ngIf="activeObjectType == OBJ_TYPE_POOL" class="panel"
-         [style.height]="(activeObject.detailsList.data.length * 32 + 435) + 'px'">
+    <div *ngIf="activeObjectType == OBJ_TYPE_POOL" class="panel" [style.height]="(activeObject.detailsList.data.length * 32 + 435) + 'px'">
         <div class="panel-content">
             <div class="round-header theme-background-primary"><strong translate>C_POOLDETAILS</strong></div>
             <div class="panel-body">
-                <form novalidate [formGroup]="poolForm">
+                <form #form="ngForm">
 
-                    <mat-form-field class="default-100">
-                        <mat-label translate>LOGISTICS_ACCOUNT_NO</mat-label>
-                        <ss-auto-complete matInput
-                                          [model]="costCenterLookup"
-                                          formControlName="costCenterId"
-                                          required="true">
-                        </ss-auto-complete>
-                    </mat-form-field>
+                    <ss-strict-auto-complete
+                        style="width: 100%; max-width: 100%;"
+                        [required]="true"
+                        [disabled]="readOnly"
+                        [name]="'C_COST_CENTER'"
+                        [ngModel]="activeObject.costCenterId"
+                        (selectionChanged)="onCostCenterChanged($event)"
+                        (setterLoadingComplete)="onCostCenterLoaded($event)"
+                        [toStringField]="'description'"
+                        [filterMethod]="httpSrv.costCentersFilterFn"
+                        [setter]="httpSrv.costCentersSetterFn"
+                        [getter]="httpSrv.costCentersGetterFn">
+                        <div translate>COST_CENTER</div>
+                    </ss-strict-auto-complete>
 
-                    <mat-form-field class="default-100">
-                        <mat-label translate>LOGISTICS_ACCOUNT_NO</mat-label>
-                        <ss-auto-complete matInput
-                                          [model]="costingKeyLookup"
-                                          formControlName="keyId"
-                                          required="true">
-                        </ss-auto-complete>
-                    </mat-form-field>
+                    <ss-strict-auto-complete
+                        style="width: 100%; max-width: 100%;"
+                        [required]="true"
+                        [disabled]="readOnly"
+                        [name]="'C_KEY_4'"
+                        [ngModel]="activeObject.keyId"
+                        (selectionChanged)="onKeySelectionChanged($event)"
+                        (setterLoadingComplete)="onOverheadKeyLoaded($event)"
+                        [toStringField]="'description'"
+                        [filterMethod]="httpSrv.keysFilterFn"
+                        [setter]="httpSrv.keysSetterFn"
+                        [getter]="httpSrv.keysGetterFn">
+                        <div translate>C_KEY</div>
+                    </ss-strict-auto-complete>
 
-
-                    <mat-checkbox name="C_IS_SUPPORT" [disabled]="readOnly">
+                    <mat-checkbox name="C_IS_SUPPORT" [disabled]="readOnly" [(ngModel)]="activeObject.isSupport">
                         <span translate>C_IS_SUPPORT</span>
                     </mat-checkbox>
 
                 </form>
 
                 <div class="bottom-bar">
-                    <button *ngIf="!readOnly" mat-mini-fab (click)="savePool()" color="primary"
-                            [disabled]="!isFormValid()">
+                    <button *ngIf="!readOnly" mat-mini-fab (click)="savePool()" color="primary" [disabled]="!isFormValid()">
                         <i class="fas fa-save"></i>
                     </button>
                     <button *ngIf="!readOnly" mat-mini-fab (click)="deletePool()" color="warn">
                         <i class="fas fa-trash"></i>
                     </button>
-                    <button *ngIf="activeObject && activeObject.id" mat-mini-fab color=""
-                            (click)="onReloadPoolBtnClick()">
+                    <button *ngIf="activeObject && activeObject.id" mat-mini-fab color="" (click)="onReloadPoolBtnClick()">
                         <i class="fas fa-undo"></i>
                     </button>
                 </div>
@@ -916,19 +894,12 @@
                 </div>
 
                 <div class="c-tree-container" style="width: 100% !important" *ngIf="activeObject.id">
-                    <div class="c-tree-node" style="width: 98%; padding-right: 1%; padding-left: 1%"
-                         *ngFor="let detail of activeObject.detailsList.data; let j = index"
+                    <div class="c-tree-node" style="width: 98%; padding-right: 1%; padding-left: 1%" *ngFor="let detail of activeObject.detailsList.data; let j = index"
                          (click)="setActiveObject(detail, OBJ_TYPE_POOL_DETAIL, activeObjectIndex, j)">
-                        <div class="c-leaf-txt theme-foreground-primary" style="text-decoration: underline"
-                             *ngIf="!detail.key" translate>C_NEW_POOL_DETAIL
-                        </div>
-                        <div class="c-leaf-txt theme-foreground-primary" style="text-decoration: underline"
-                             *ngIf="detail.key && !detail.keyAcDescription" translate>LOADING
-                        </div>
-                        <div class="c-leaf-txt theme-foreground-primary" style="text-decoration: underline"
-                             *ngIf="detail.keyAcDescription">{{detail.keyAcDescription}}</div>
-                        <div class="c-leaf-txt"
-                             style="text-align: right !important; float: right; margin-right: 8px">{{detail.value}}</div>
+                        <div class="c-leaf-txt theme-foreground-primary" style="text-decoration: underline" *ngIf="!detail.key" translate>C_NEW_POOL_DETAIL</div>
+                        <div class="c-leaf-txt theme-foreground-primary" style="text-decoration: underline" *ngIf="detail.key && !detail.keyAcDescription" translate>LOADING</div>
+                        <div class="c-leaf-txt theme-foreground-primary" style="text-decoration: underline" *ngIf="detail.keyAcDescription">{{detail.keyAcDescription}}</div>
+                        <div class="c-leaf-txt" style="text-align: right !important; float: right; margin-right: 8px">{{detail.value}}</div>
                     </div>
                 </div>
 
@@ -946,33 +917,38 @@
         <div class="panel-content">
             <div class="round-header theme-background-primary"><strong translate>C_POOL_DETAILS_DETAIL</strong></div>
             <div class="panel-body">
-                <form novalidate [formGroup]="poolDetailForm">
-                    <mat-form-field class="default-100">
-                        <mat-label translate>LOGISTICS_ACCOUNT_NO</mat-label>
-                        <ss-auto-complete matInput
-                                          [model]="costingKeyLookup"
-                                          formControlName="keyId"
-                                          required="true">
-                        </ss-auto-complete>
-                    </mat-form-field>
+                <form #form="ngForm">
 
-                    <mat-form-field class="default-100">
-                        <mat-label translate>C_VALUE</mat-label>
-                        <input matInput name="C_VALUE" formControlName="value" type="number" required>
+                    <ss-strict-auto-complete
+                        style="width: 100%; max-width: 100%;"
+                        [required]="true"
+                        [disabled]="readOnly"
+                        [name]="'C_KEY_5'"
+                        [ngModel]="activeObject.key"
+                        (selectionChanged)="onKeySelectionChanged($event)"
+                        (setterLoadingComplete)="onOverheadKeyLoaded($event)"
+                        [toStringField]="'description'"
+                        [filterMethod]="httpSrv.keysFilterFn"
+                        [setter]="httpSrv.keysSetterFn"
+                        [getter]="httpSrv.keysGetterFn">
+                        <div translate>C_KEY</div>
+                    </ss-strict-auto-complete>
+
+                    <mat-form-field style="width: 48%; max-width: 48%; margin-right: 2%;">
+                        <mat-placeholder translate>C_VALUE</mat-placeholder>
+                        <input matInput name="C_VALUE" [(ngModel)]="activeObject.value" type="number" [disabled]="readOnly" required>
                     </mat-form-field>
 
                 </form>
 
                 <div class="bottom-bar">
-                    <button *ngIf="!readOnly" mat-mini-fab (click)="savePoolDetail()" color="primary"
-                            [disabled]="!isFormValid()">
+                    <button *ngIf="!readOnly" mat-mini-fab (click)="savePoolDetail()" color="primary" [disabled]="!isFormValid()">
                         <i class="fas fa-save"></i>
                     </button>
                     <button *ngIf="!readOnly" mat-mini-fab (click)="deletePoolDetail()" color="warn">
                         <i class="fas fa-trash"></i>
                     </button>
-                    <button *ngIf="activeObject && activeObject.id" mat-mini-fab color=""
-                            (click)="onReloadPoolDetailBtnClick()">
+                    <button *ngIf="activeObject && activeObject.id" mat-mini-fab color="" (click)="onReloadPoolDetailBtnClick()">
                         <i class="fas fa-undo"></i>
                     </button>
                 </div>
