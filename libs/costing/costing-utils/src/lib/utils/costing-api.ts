@@ -101,6 +101,7 @@ export interface CPool {
     projectId: number;
     keyId: number;
     isSupport: boolean;
+    ccDescription?: string;
 }
 
 export interface CPoolDetail {
