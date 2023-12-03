@@ -3,25 +3,44 @@ import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {ELine, MJournal, PaymentElement} from '../elements-entry-api';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
-import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
+import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
-import {HttpService, PaginatorPersistenceService} from '@ss/common/api-common';
+import { HttpService, MaterialModule, PaginatorPersistenceService } from "@ss/common/api-common";
 import {ElementsEntryService} from '../services/elements-entry.service';
 import {Observable, of, switchMap, tap} from 'rxjs';
 import {HttpParams} from '@angular/common/http';
 import {MatSelectChange} from '@angular/material/select';
 import { EmployeeService } from '@ss/employee-services/employee-services';
-import {ImageModel} from '@ss/common/ui-image-input';
+import { CommonUiImageInputModule, ImageModel } from "@ss/common/ui-image-input";
 import {PayrollMonthService} from '@ss/remuneration/payroll-month';
-import {UntypedFormBuilder, UntypedFormGroup} from '@angular/forms';
+import { ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup } from "@angular/forms";
 import {CommonElementsService} from '../services/common-elements.service';
-import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
+import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from "@ss/common/ui-auto-complete";
+import { CommonModule } from "@angular/common";
+import { CommonUiLangModule } from "@ss/common/ui-lang";
+import { UiPaginationModule } from "@ss/common/ui-pagination";
+import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
+import { RemunerationInputFiltersModule } from "@ss/remuneration/input-filters";
 
 
 @Component({
     selector: 'ss-elements-entry-list',
     templateUrl: './elements-entry-list.component.html',
-    styleUrls: ['./elements-entry-list.component.scss', '../common-css.scss']
+    styleUrls: ['./elements-entry-list.component.scss', '../common-css.scss'],
+    standalone: true,
+    imports: [
+        CommonModule,
+        MaterialModule,
+        CommonUiLangModule,
+        UiPaginationModule,
+        ReactiveFormsModule,
+        CommonUiConfirmationDialogModule,
+        CommonUiDatepickerModule,
+        CommonUiAutoCompleteModule,
+        RemunerationInputFiltersModule,
+        CommonUiImageInputModule
+    ],
+
 })
 export class ElementsEntryListComponent extends BaseEntityListComponent<ELine> implements OnInit {
     private employeeSrv  = inject(EmployeeService);

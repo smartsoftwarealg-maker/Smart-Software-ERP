@@ -1,91 +1,255 @@
 @use '@angular/material' as mat;
-.report__div,
-.project__div {
-    width: 96%;
-    max-width: 1400px;
-    height: 98%;
-    margin: 0 auto;
+
+:host {
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    overflow: auto;
 }
 
-.project__div {
-    display: flex;
+@media (max-width: 639px) {
+    //.costing-project-dtl-container {
+    //  min-height: 198% !important;
+    //  height: 198% !important;
+    //  max-height: 198% !important;
+    //}
+    .panel {
+        max-width: 98%;
+    }
 }
 
-.content__div {
-    flex: 2 1 60%;
+@media (min-width: 640px) {
+    .costing-project-dtl-container {
+        min-height: 98% !important;
+        height: 98% !important;
+        max-height: 98% !important;
+    }
+    .panel {
+        max-width: 48%;
+        max-height: 98% !important;
+    }
 }
 
-.menu__div {
-    flex: 1 1 40%;
-
-}
-.panel-content {
+.costing-project-dtl-container {
+    min-width: 320px;
+    max-width: 2000px;
+    padding-top: 1%;
     width: 100%;
-    height: 100%;
-    display: grid;
-    grid-template-rows: 40px auto;
-    grid-template-columns: auto;
-}
+    overflow: auto;
+    margin: auto;
+    display: block;
 
-.v-box {
-    user-select: none;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: nowrap;
-    flex-grow: 1;
-    flex-shrink: 0;
-    align-items: flex-start;
-}
-.c-tree {
-    margin-left: 16px;
-}
-.c-tree-node {
-    overflow: visible;
-    user-select: none;
-    display: inline-block;
-    height: 32px;
-    line-height: 32px;
-    border-radius: 15px;
-    padding-right: 8px;
-    padding-left: 40px;
-    cursor: pointer;
-    white-space: nowrap;
-    position: relative;
-    .tree-button {
-        font-size: 18px;
-        font-weight: bold;
-        width: 32px;
-        height: 32px;
-        min-width: 32px;
-        border-radius: 50%;
-        position: absolute;
-        text-align: center;
+    .c-tree-container {
+        display: inline-block;
         overflow: hidden;
-        left: 0;
-        top: 0;
-        .btn-txt {
-            display: inline-block;
-            width: 32px;
-            height: 32px;
-            line-height: 32px;
-            //overflow: hidden;
-            //position: absolute;
-            //text-align: center;
-            //top: 0;
-            //right: 0;
-        }
-    }
-    &:hover {
-      @include mat.elevation(4);
-        background-color: #ddd;
-    }
-    .c-leaf-txt {
+        //max-height: 100%;
+        //max-width: 100%;
         user-select: none;
-        white-space: nowrap;
+    }
+
+    .c-tree {
+        user-select: none;
+        display: inline-block;
+        margin-left: 36px;
+        padding-bottom: 2px;
+        margin-top: 2px;
+        //overflow: hidden;
+    }
+
+    .v-box {
+        user-select: none;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        flex-grow: 1;
+        flex-shrink: 0;
+        align-items: flex-start;
+    }
+
+    .c-tree-node {
+        overflow: visible;
+        user-select: none;
         display: inline-block;
         height: 32px;
         line-height: 32px;
+        border-radius: 15px;
+        padding-right: 8px;
+        padding-left: 40px;
+        cursor: pointer;
+        white-space: nowrap;
+        position: relative;
+        .tree-button {
+            font-size: 18px;
+            font-weight: bold;
+            width: 32px;
+            height: 32px;
+            min-width: 32px;
+            border-radius: 50%;
+            position: absolute;
+            text-align: center;
+            overflow: hidden;
+            //left: -36px;
+            left: 0;
+            top: 0;
+            .btn-txt {
+                display: inline-block;
+                width: 32px;
+                height: 32px;
+                line-height: 32px;
+                overflow: hidden;
+                position: absolute;
+                text-align: center;
+                top: 0;
+                right: 0;
+            }
+        }
+        //&:hover {
+        //  @include mat-elevation(2);
+        //}
+        .c-leaf-txt {
+            user-select: none;
+            white-space: nowrap;
+            display: inline-block;
+            height: 32px;
+            line-height: 32px;
+        }
     }
+
+    .panel {
+        @include mat.elevation(6);
+        position: relative;
+        overflow: hidden;
+        display: inline-block;
+        float: left;
+        margin-right: 1%;
+        margin-left: 1%;
+        border-radius: 30px;
+        width: 98%;
+        margin-bottom: 10px;
+
+        .panel-content {
+            width: 100%;
+            height: 100%;
+            display: grid;
+            grid-template-rows: 40px auto;
+            grid-template-columns: auto;
+        }
+
+        .sub-header {
+            overflow: hidden;
+            display: inline-block;
+            padding: 2px 5%;
+            border-radius: 30px;
+            width: 90%;
+            margin: 12px 0;
+            height: 36px;
+            max-height: 36px;
+            min-height: 36px;
+            line-height: 36px;
+            user-select: none;
+        }
+
+        .round-header {
+            grid-column: 1 / 2;
+            grid-row: 1 / 2;
+
+            user-select: none;
+            padding-right: 5%;
+            padding-left: 5%;
+            display: inline-block;
+            margin: 0 0 4px;
+            height: 40px;
+            line-height: 40px;
+        }
+
+        .panel-body {
+
+            grid-column: 1 / 2;
+            grid-row: 2 / 3;
+
+            display: inline-block;
+            overflow: auto;
+            margin-top: 8px;
+            margin-right: 8px;
+            margin-left: 8px;
+            margin-bottom: 16px;
+        }
+
+    }
+
+    .bottom-bar {
+        display: inline-block;
+        margin-top: 12px;
+        user-select: none;
+        width: 100%;
+        padding-top: 4px;
+        height: 48px;
+        padding-bottom: 4px;
+        button {
+            user-select: none;
+            float: right;
+            margin-right: 12px;
+        }
+    }
+
+    .c-result-table {
+        width: 98%;
+        margin: 10px 1%;
+        display: inline-block;
+
+        //  .row {
+        //    display: inline-block;
+        //    width: 100%;
+        //    height: 30px;
+        //    line-height: 30px;
+        //    margin-bottom: 2px;
+        //    border-bottom: 1px dotted;
+        //
+        //    .product {
+        //      display: inline-block;
+        //      width: 80%;
+        //      text-align: left;
+        //    }
+        //
+        //    .cost {
+        //      display: inline-block;
+        //      width: 19%;
+        //      text-align: right;
+        //    }
+        //  }
+        //
+    }
+
 }
 
+.costing-project-dtl-report-container {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
 
+    .close-btn {
+        position: absolute;
+        top: 64px;
+        right: 24px;
+        z-index: 9999;
+    }
+
+    .report-container {
+        //position: absolute;
+        //top: 0;
+        //right: 0;
+        //bottom: 0;
+        //left: 0;
+        overflow: auto;
+        max-width: 100%;
+        max-height: 100%;
+        width: 100%;
+        height: 100%;
+        //background-color: orange;
+    }
+}

@@ -23,6 +23,7 @@ export class EdoComponent implements OnInit {
     @ViewChild('blist') blist: MatSelectionList
     form: UntypedFormGroup = null;
     curYear = new Date().getFullYear();
+    curMonth = new Date().getFullYear();
     bankList: Lookup[] = [];
     receivingBanks: Lookup[] = [];
     selectedBanks = '';
@@ -45,7 +46,10 @@ export class EdoComponent implements OnInit {
                     this.selectedBanks = this.bankList.map(e => e.id).join(',');
                 }),
                 switchMap(_ => this.monthSrv.maxMonth()),
-                tap(res => this.curYear = +((res.month % 1_000_000)/100).toFixed(0) ),
+                tap(res => {
+                    this.curYear = +((res.month % 1_000_000)/100).toFixed(0);
+                    this.curMonth = +(res.month % 100).toFixed(0);
+                } ),
                 switchMap(_ => this.edoSrv.getCenterBank()),
                 tap(res => this.receivingBanks = this.bankList.filter(e => e.id == res)))
             .subscribe(res => this.buildForm(res));
@@ -106,14 +110,14 @@ export class EdoComponent implements OnInit {
 
     private buildForm(bank: number) {
         this.form = this.formBuilder.group({
-            month: [1, Validators.required],
-            year: [this.curYear, Validators.required],
-            description: ['', Validators.required],
-            formula: ['c990', Validators.required],
-            bank: [{ value: bank, disabled: true }, Validators.required],
-            date: [new Date(), Validators.required],
-            reference: [1, Validators.required],
-            special: [0],
+            month:       [this.curMonth,                   Validators.required],
+            year:        [this.curYear,                    Validators.required],
+            description: ['',                              Validators.required],
+            formula:     ['c990',                          Validators.required],
+            bank:        [{ value: bank, disabled: true }, Validators.required],
+            date:        [new Date(),                      Validators.required],
+            reference:   [1,                               Validators.required],
+            special:     ['0',                             [Validators.required, Validators.minLength(1)]],
             all: [false]
         });
     }
