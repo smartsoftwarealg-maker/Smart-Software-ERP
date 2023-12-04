@@ -3,6 +3,18 @@
         <form *ngIf="form !== null" novalidate [formGroup]="form">
 
             <mat-form-field class="default-50">
+                <mat-label translate>COMMON_DATE</mat-label>
+                <ss-date-picker formControlName="date" required="true"
+                                [type]="'date'">
+                </ss-date-picker>
+            </mat-form-field>
+
+            <mat-form-field class="default-50">
+                <mat-label translate>COMMON_NUMBER</mat-label>
+                <input matInput formControlName="number" type="text">
+            </mat-form-field>
+
+            <mat-form-field class="default-50">
                 <mat-label translate>ASSET</mat-label>
                 <ss-auto-complete matInput
                                   [model]="assetLookup"
@@ -22,7 +34,8 @@
             <mat-form-field class="default-50">
                 <mat-label translate>COMMON_TYPE</mat-label>
                 <mat-select matNativeControl required formControlName="wrType">
-                    <mat-option *ngFor="let t of cmmsTypes" [value]="t.id"> {{ t.description | translate }} </mat-option>
+                    <mat-option *ngFor="let t of cmmsTypes"
+                                [value]="t.id"> {{ t.description | translate }} </mat-option>
                 </mat-select>
             </mat-form-field>
 
@@ -37,13 +50,13 @@
                 <mat-error *ngIf="form.controls['priority'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
             </mat-form-field>
 
-            <mat-form-field class="default-50">
-                <mat-label translate>CMMS_ROUTING</mat-label>
-                <ss-auto-complete matInput
-                                  [model]="checklistLookup"
-                                  formControlName="routingId">
-                </ss-auto-complete>
-            </mat-form-field>
+            <!--            <mat-form-field class="default-50">-->
+            <!--                <mat-label translate>CMMS_ROUTING</mat-label>-->
+            <!--                <ss-auto-complete matInput-->
+            <!--                                  [model]="checklistLookup"-->
+            <!--                                  formControlName="routingId">-->
+            <!--                </ss-auto-complete>-->
+            <!--            </mat-form-field>-->
 
             <mat-form-field class="default-50">
                 <mat-label translate>CMMS_FAULT</mat-label>
@@ -54,22 +67,22 @@
                 </ss-auto-complete>
             </mat-form-field>
 
-            <mat-form-field class="default-50">
-                <mat-label translate>CMMS_FAULT_CAUSE</mat-label>
-                <ss-auto-complete matInput
-                                  [model]="causeLookup"
-                                  formControlName="cause"
-                                  required="true">
-                </ss-auto-complete>
-            </mat-form-field>
+            <!--            <mat-form-field class="default-50">-->
+            <!--                <mat-label translate>CMMS_FAULT_CAUSE</mat-label>-->
+            <!--                <ss-auto-complete matInput-->
+            <!--                                  [model]="causeLookup"-->
+            <!--                                  formControlName="cause"-->
+            <!--                                  required="true">-->
+            <!--                </ss-auto-complete>-->
+            <!--            </mat-form-field>-->
 
-            <mat-form-field class="default-50">
-                <mat-label translate>CMMS_ROOT_CAUSE</mat-label>
-                <ss-auto-complete matInput
-                                  [model]="rootCauseLookup"
-                                  formControlName="rootCause">
-                </ss-auto-complete>
-            </mat-form-field>
+            <!--            <mat-form-field class="default-50">-->
+            <!--                <mat-label translate>CMMS_ROOT_CAUSE</mat-label>-->
+            <!--                <ss-auto-complete matInput-->
+            <!--                                  [model]="rootCauseLookup"-->
+            <!--                                  formControlName="rootCause">-->
+            <!--                </ss-auto-complete>-->
+            <!--            </mat-form-field>-->
 
             <mat-form-field class="default-50">
                 <mat-label translate>CMMS_REQUESTER</mat-label>
@@ -81,7 +94,7 @@
 
             <mat-form-field class="default-50">
                 <mat-label translate>CMMS_PLANNED_START</mat-label>
-                <ss-date-picker formControlName="plannedStart" required="true"  [type]="'datetime'"></ss-date-picker>
+                <ss-date-picker formControlName="plannedStart" required="true" [type]="'datetime'"></ss-date-picker>
                 <mat-error *ngIf="form.controls['plannedStart'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
             </mat-form-field>
 
@@ -91,136 +104,154 @@
                 <mat-error *ngIf="form.controls['plannedDue'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
             </mat-form-field>
 
-            <mat-form-field class="default-50">
-                <mat-label translate>CMMS_ASSIGNEE</mat-label>
-                <ss-auto-complete matInput
-                                  [model]="personLookup"
-                                  formControlName="assignee">
-                </ss-auto-complete>
+            <mat-form-field id="memo" class="default-100">
+                <mat-label translate>COMMON_MEMO</mat-label>
+                <textarea matInput formControlName="memo" type="text" rows="5"></textarea>
             </mat-form-field>
 
+        </form>
 
-            <mat-form-field class="default-50">
-                <mat-label translate>CMMS_TEAM_SIZE</mat-label>
-                <input matInput formControlName="teamSize" type="number">
-            </mat-form-field>
-
-            <mat-tab-group>
-                <mat-tab label="{{ 'LOGISTICS_PARTS' | translate}}">
-                    <div class="table_div size">
-                        <mat-table mat-table [dataSource]="partData$ | async" class="main-table">
-
-                            <ng-container matColumnDef="reference">
-                                <mat-header-cell *matHeaderCellDef translate>COMMON_REFERENCE</mat-header-cell>
-                                <mat-cell *matCellDef="let e">
-                                    {{e.reference}}
-                                </mat-cell>
-                            </ng-container>
-
-                            <ng-container matColumnDef="description">
-                                <mat-header-cell *matHeaderCellDef translate>ADMINISTRATION_DESCRIPTION</mat-header-cell>
-                                <mat-cell *matCellDef="let e">
-                                    {{e.description}}
-                                </mat-cell>
-                            </ng-container>
-
-                            <ng-container matColumnDef="qty">
-                                <mat-header-cell *matHeaderCellDef translate>COMMON_QTY</mat-header-cell>
-                                <mat-cell *matCellDef="let e">
-                                    {{e.qty | number: '1.2-2' }}
-                                </mat-cell>
-                            </ng-container>
-
-                            <mat-header-row *matHeaderRowDef="partColumns; sticky: true"></mat-header-row>
-                            <mat-row class="selectable" [class.selected]="row.id == selectedPartId" (click)="selectPart(row.id)"
-                                     *matRowDef="let row; columns: partColumns;"></mat-row>
-                        </mat-table>
-                    </div>
-                    <div class="size b-b-background">
-                        <ss-pagination [paginationModel]="partPaginator"></ss-pagination>
-                    </div>
-                </mat-tab>
-
-                <mat-tab label="{{ 'CMMS_ROUTING' | translate}}">
-                    <div class="table_div">
-                        <mat-table mat-table [dataSource]="data$ | async" class="main-table">
-
-                            <ng-container matColumnDef="order">
-                                <mat-header-cell *matHeaderCellDef translate>CMMS_ORDER</mat-header-cell>
-                                <mat-cell *matCellDef="let e">
-                                    {{e.order}}
-                                </mat-cell>
-                            </ng-container>
-
-                            <ng-container matColumnDef="description">
-                                <mat-header-cell *matHeaderCellDef translate>ADMINISTRATION_DESCRIPTION
-                                </mat-header-cell>
-                                <mat-cell *matCellDef="let e">
-                                    {{e.description}}
-                                </mat-cell>
-                            </ng-container>
-
-                            <ng-container matColumnDef="hours">
-                                <mat-header-cell *matHeaderCellDef translate>CMMS_HOURS</mat-header-cell>
-                                <mat-cell *matCellDef="let e">
-                                    {{e.hours | number: '1.2-2' }}
-                                </mat-cell>
-                            </ng-container>
-
-                            <ng-container matColumnDef="teamSize">
-                                <mat-header-cell *matHeaderCellDef translate>CMMS_TEAM_SIZE</mat-header-cell>
-                                <mat-cell *matCellDef="let e">
-                                    {{ e.teamSize }}
-                                </mat-cell>
-                            </ng-container>
-
-                            <ng-container matColumnDef="cost">
-                                <mat-header-cell *matHeaderCellDef translate>CMMS_COST</mat-header-cell>
-                                <mat-cell *matCellDef="let e">
-                                    {{e.cost | number: '1.2-2' }}
-                                </mat-cell>
-                            </ng-container>
-
-                            <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
-                            <mat-row class="selectable" [class.selected]="row.id == selectedId" (click)="select(row.id)"
-                                     *matRowDef="let row; columns: displayedColumns;"></mat-row>
-                        </mat-table>
-                    </div>
-                    <div class="size b-b-background">
-                        <ss-pagination [paginationModel]="routingPaginator"></ss-pagination>
-                    </div>
-                </mat-tab>
-
-                <mat-tab label="{{ 'CMMS_COSTS' | translate}}">
-
+    </mat-card-content>
+</mat-card>
+<mat-tab-group class="size">
+    <mat-tab label="{{ 'CMMS_WORK_ORDER' | translate}}">
+        <form *ngIf="orderForm !== null" novalidate [formGroup]="orderForm" class="size">
+            <mat-accordion>
+                <mat-expansion-panel
+                    #detailPanel
+                    [class.b-primary-expansion-panel]="detailPanel.expanded">
                     <mat-form-field class="default-50">
-                        <mat-label translate>CMMS_LABOR_COST</mat-label>
-                        <input matInput formControlName="laborCost" type="number">
-                    </mat-form-field>
-                    <mat-form-field class="default-50">
-                        <mat-label translate>CMMS_MATERIAL_COST</mat-label>
-                        <input matInput formControlName="materialCost" type="number">
-                    </mat-form-field>
-                    <mat-form-field class="default-50">
-                        <mat-label translate>CMMS_TRAVEL_COST</mat-label>
-                        <input matInput formControlName="travelCost" type="number">
-                    </mat-form-field>
-                    <mat-form-field class="default-50">
-                        <mat-label translate>CMMS_OTHER_COST</mat-label>
-                        <input matInput formControlName="otherCost" type="number">
+                        <mat-label translate>COMMON_DATE</mat-label>
+                        <ss-date-picker formControlName="date" required="true"
+                                        [type]="'datetime'">
+                        </ss-date-picker>
                     </mat-form-field>
 
-                </mat-tab>
-                <mat-tab label="{{ 'CMMS_CLOSURE' | translate}}">
-                    <div class="default-100 separator"></div>
+                    <mat-form-field class="default-50">
+                        <mat-label translate>COMMON_NUMBER</mat-label>
+                        <input matInput formControlName="number" type="text">
+                    </mat-form-field>
+
+                    <mat-expansion-panel-header>
+                        <mat-panel-title translate>
+                            COMMON_DETAIL
+                        </mat-panel-title>
+                    </mat-expansion-panel-header>
 
                     <mat-form-field class="default-50">
-                        <mat-label translate>CMMS_SOLUTION</mat-label>
+                        <mat-label translate>CMMS_ROUTING</mat-label>
                         <ss-auto-complete matInput
-                                          [model]="solutionLookup"
-                                          formControlName="solution">
+                                          [model]="checklistLookup"
+                                          formControlName="routingId">
                         </ss-auto-complete>
                     </mat-form-field>
+
+                    <mat-form-field class="default-50">
+                        <mat-label translate>CMMS_FAULT</mat-label>
+                        <ss-auto-complete matInput
+                                          [model]="faultLookup"
+                                          formControlName="fault"
+                                          required="true">
+                        </ss-auto-complete>
+                    </mat-form-field>
+
+                    <mat-form-field class="default-50">
+                        <mat-label translate>CMMS_FAULT_CAUSE</mat-label>
+                        <ss-auto-complete matInput
+                                          [model]="causeLookup"
+                                          formControlName="cause">
+                        </ss-auto-complete>
+                    </mat-form-field>
+
+                    <mat-form-field class="default-50">
+                        <mat-label translate>CMMS_ROOT_CAUSE</mat-label>
+                        <ss-auto-complete matInput
+                                          [model]="rootCauseLookup"
+                                          formControlName="rootCause">
+                        </ss-auto-complete>
+                    </mat-form-field>
+                    <mat-form-field class="default-50">
+                        <mat-label translate>CMMS_REQUESTER</mat-label>
+                        <ss-auto-complete matInput
+                                          [model]="serviceLookup"
+                                          formControlName="requester">
+                        </ss-auto-complete>
+                    </mat-form-field>
+
+                    <mat-form-field class="default-50">
+                        <mat-label translate>CMMS_PLANNED_START</mat-label>
+                        <ss-date-picker formControlName="plannedStart" required="true"
+                                        [type]="'datetime'"></ss-date-picker>
+                        <mat-error *ngIf="orderForm.controls['plannedStart'].invalid" translate>COMMON_FIELD_REQUIRED
+                        </mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field class="default-50">
+                        <mat-label translate>CMMS_PLANNED_DUE</mat-label>
+                        <ss-date-picker formControlName="plannedDue" required="true"
+                                        [type]="'datetime'"></ss-date-picker>
+                        <mat-error *ngIf="orderForm.controls['plannedDue'].invalid" translate>COMMON_FIELD_REQUIRED
+                        </mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field class="default-50">
+                        <mat-label translate>PAYROLL_FULLNAME</mat-label>
+                        <input matInput formControlName="creatorDescription" type="text">
+                    </mat-form-field>
+
+                    <mat-form-field class="default-50">
+                        <mat-label translate>COMMON_STATUS</mat-label>
+                        <input matInput formControlName="statusDescription" type="text">
+                    </mat-form-field>
+                </mat-expansion-panel>
+                <mat-expansion-panel
+                    #scheduledPanel
+                    [class.b-primary-expansion-panel]="scheduledPanel.expanded">
+                    <mat-expansion-panel-header>
+                        <mat-panel-title translate>
+                            CMMS_SCHEDULING
+                        </mat-panel-title>
+                    </mat-expansion-panel-header>
+
+                    <div class="default-100"></div>
+                    <mat-form-field class="default-50">
+                        <mat-label translate>CMMS_SCHEDULED_START</mat-label>
+                        <ss-date-picker formControlName="scheduledStart" [type]="'datetime'"></ss-date-picker>
+                        <mat-error *ngIf="orderForm.controls['scheduledStart'].invalid" translate>COMMON_FIELD_REQUIRED
+                        </mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field class="default-50">
+                        <mat-label translate>CMMS_SCHEDULED_DUE</mat-label>
+                        <ss-date-picker formControlName="scheduledDue" [type]="'datetime'"></ss-date-picker>
+                        <mat-error *ngIf="orderForm.controls['scheduledDue'].invalid" translate>COMMON_FIELD_REQUIRED
+                        </mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field class="default-50">
+                        <mat-label translate>CMMS_ASSIGNEE</mat-label>
+                        <ss-auto-complete matInput
+                                          [model]="personLookup"
+                                          formControlName="assignee">
+                        </ss-auto-complete>
+                    </mat-form-field>
+
+                    <mat-form-field class="default-50">
+                        <mat-label translate>CMMS_TEAM_SIZE</mat-label>
+                        <input matInput formControlName="teamSize" type="number">
+                    </mat-form-field>
+
+                </mat-expansion-panel>
+
+                <mat-expansion-panel
+                    #executionPanel
+                    [class.b-primary-expansion-panel]="executionPanel.expanded">
+                    <mat-expansion-panel-header>
+                        <mat-panel-title translate>
+                            CMMS_EXECUTION
+                        </mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <span class="default-100"></span>
 
                     <mat-form-field class="default-50">
                         <mat-label translate>CMMS_ACTUAL_START</mat-label>
@@ -232,14 +263,39 @@
                         <ss-date-picker formControlName="actualDue" [type]="'datetime'"></ss-date-picker>
                     </mat-form-field>
 
-                    <mat-form-field id="memo" class="default-100">
-                        <mat-label translate>COMMON_MEMO</mat-label>
-                        <input matInput formControlName="memo" type="text">
+                    <mat-form-field class="default-50">
+                        <mat-label translate>CMMS_SOLUTION</mat-label>
+                        <ss-auto-complete matInput
+                                          [model]="solutionLookup"
+                                          formControlName="solution">
+                        </ss-auto-complete>
                     </mat-form-field>
-                </mat-tab>
-            </mat-tab-group>
+
+                    <mat-form-field class="default-50">
+                        <mat-label translate>PAYROLL_FULLNAME</mat-label>
+                        <input matInput formControlName="executorDescription" type="text">
+                    </mat-form-field>
+                    <mat-form-field class="default-50">
+                        <mat-label translate>CMMS_CLOSURE_DATE</mat-label>
+                        <ss-date-picker formControlName="closureDate" [type]="'datetime'"></ss-date-picker>
+                    </mat-form-field>
+
+                    <mat-form-field class="default-50">
+                        <mat-label translate>PAYROLL_FULLNAME</mat-label>
+                        <input matInput formControlName="closerDescription" type="text">
+                    </mat-form-field>
+
+                    <mat-form-field class="default-100">
+                        <mat-label translate>COMMON_MEMO</mat-label>
+                        <textarea matInput formControlName="memo" rows="5"></textarea>
+                    </mat-form-field>
+
+                </mat-expansion-panel>
+
+
+            </mat-accordion>
 
         </form>
 
-    </mat-card-content>
-</mat-card>
+    </mat-tab>
+</mat-tab-group>

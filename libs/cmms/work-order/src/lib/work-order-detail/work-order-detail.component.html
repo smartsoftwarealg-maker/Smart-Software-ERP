@@ -1,73 +1,87 @@
 <mat-card-content>
     <form *ngIf="form !== null" novalidate [formGroup]="form" class="size">
-        <mat-card >
+        <mat-card>
             <mat-card-content>
-            <mat-form-field class="default-50">
-                <mat-label translate>ASSET</mat-label>
-                <ss-auto-complete matInput
-                                  [model]="assetLookup"
-                                  formControlName="assetId"
-                                  required="true">
-                </ss-auto-complete>
-                <mat-error *ngIf="form.controls['assetId'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
-            </mat-form-field>
 
-            <mat-form-field class="default-50">
-                <mat-label translate>COMMON_DESCRIPTION</mat-label>
-                <input matInput formControlName="description" type="text">
-                <mat-error *ngIf="form.controls['description'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
-            </mat-form-field>
+                <mat-form-field class="default-50">
+                    <mat-label translate>COMMON_DATE</mat-label>
+                    <ss-date-picker formControlName="date" required="true"
+                                    [type]="'date'">
+                    </ss-date-picker>
+                </mat-form-field>
+
+                <mat-form-field class="default-50">
+                    <mat-label translate>COMMON_NUMBER</mat-label>
+                    <input matInput formControlName="number" type="text">
+                </mat-form-field>
+
+                <mat-form-field class="default-50">
+                    <mat-label translate>ASSET</mat-label>
+                    <ss-auto-complete matInput
+                                      [model]="assetLookup"
+                                      formControlName="assetId"
+                                      required="true">
+                    </ss-auto-complete>
+                    <mat-error *ngIf="form.controls['assetId'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
+                </mat-form-field>
+
+                <mat-form-field class="default-50">
+                    <mat-label translate>COMMON_DESCRIPTION</mat-label>
+                    <input matInput formControlName="description" type="text">
+                    <mat-error *ngIf="form.controls['description'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
+                </mat-form-field>
 
 
-            <mat-form-field class="default-50">
-                <mat-label translate>COMMON_TYPE</mat-label>
-                <mat-select matNativeControl required formControlName="wrType">
-                    <mat-option *ngFor="let t of cmmsTypes" [value]="t.id"> {{ t.description | translate }} </mat-option>
-                </mat-select>
-            </mat-form-field>
+                <mat-form-field class="default-50">
+                    <mat-label translate>COMMON_TYPE</mat-label>
+                    <mat-select matNativeControl required formControlName="wrType">
+                        <mat-option *ngFor="let t of cmmsTypes"
+                                    [value]="t.id"> {{ t.description | translate }} </mat-option>
+                    </mat-select>
+                </mat-form-field>
 
-            <mat-form-field class="default-50">
-                <mat-label translate>CMMS_PRIORITY</mat-label>
-                <ss-auto-complete matInput
-                                  [model]="priorityLookup"
-                                  formControlName="priority"
-                                  required="true">
-                </ss-auto-complete>
-                <mat-error *ngIf="form.controls['priority'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
-            </mat-form-field>
+                <mat-form-field class="default-50">
+                    <mat-label translate>CMMS_PRIORITY</mat-label>
+                    <ss-auto-complete matInput
+                                      [model]="priorityLookup"
+                                      formControlName="priority"
+                                      required="true">
+                    </ss-auto-complete>
+                    <mat-error *ngIf="form.controls['priority'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
+                </mat-form-field>
 
-            <mat-form-field class="default-50">
-                <mat-label translate>CMMS_ROUTING</mat-label>
-                <ss-auto-complete matInput
-                                  [model]="checklistLookup"
-                                  formControlName="routingId">
-                </ss-auto-complete>
-            </mat-form-field>
+                <mat-form-field class="default-50">
+                    <mat-label translate>CMMS_ROUTING</mat-label>
+                    <ss-auto-complete matInput
+                                      [model]="checklistLookup"
+                                      formControlName="routingId">
+                    </ss-auto-complete>
+                </mat-form-field>
 
-            <mat-form-field class="default-50">
-                <mat-label translate>CMMS_FAULT</mat-label>
-                <ss-auto-complete matInput
-                                  [model]="faultLookup"
-                                  formControlName="fault"
-                                  required="true">
-                </ss-auto-complete>
-            </mat-form-field>
+                <mat-form-field class="default-50">
+                    <mat-label translate>CMMS_FAULT</mat-label>
+                    <ss-auto-complete matInput
+                                      [model]="faultLookup"
+                                      formControlName="fault"
+                                      required="true">
+                    </ss-auto-complete>
+                </mat-form-field>
 
-            <mat-form-field class="default-50">
-                <mat-label translate>CMMS_FAULT_CAUSE</mat-label>
-                <ss-auto-complete matInput
-                                  [model]="causeLookup"
-                                  formControlName="cause">
-                </ss-auto-complete>
-            </mat-form-field>
+                <mat-form-field class="default-50">
+                    <mat-label translate>CMMS_FAULT_CAUSE</mat-label>
+                    <ss-auto-complete matInput
+                                      [model]="causeLookup"
+                                      formControlName="cause">
+                    </ss-auto-complete>
+                </mat-form-field>
 
-            <mat-form-field class="default-50">
-                <mat-label translate>CMMS_ROOT_CAUSE</mat-label>
-                <ss-auto-complete matInput
-                                  [model]="rootCauseLookup"
-                                  formControlName="rootCause">
-                </ss-auto-complete>
-            </mat-form-field>
+                <mat-form-field class="default-50">
+                    <mat-label translate>CMMS_ROOT_CAUSE</mat-label>
+                    <ss-auto-complete matInput
+                                      [model]="rootCauseLookup"
+                                      formControlName="rootCause">
+                    </ss-auto-complete>
+                </mat-form-field>
             </mat-card-content>
         </mat-card>
         <mat-accordion class="size">
@@ -126,7 +140,8 @@
                 <mat-form-field class="default-50">
                     <mat-label translate>CMMS_SCHEDULED_START</mat-label>
                     <ss-date-picker formControlName="scheduledStart" [type]="'datetime'"></ss-date-picker>
-                    <mat-error *ngIf="form.controls['scheduledStart'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
+                    <mat-error *ngIf="form.controls['scheduledStart'].invalid" translate>COMMON_FIELD_REQUIRED
+                    </mat-error>
                 </mat-form-field>
 
                 <mat-form-field class="default-50">
@@ -180,7 +195,7 @@
 
                 <mat-form-field class="default-50">
                     <mat-label translate>PAYROLL_FULLNAME</mat-label>
-                    <input matInput formControlName="executorDescription"  type="text">
+                    <input matInput formControlName="executorDescription" type="text">
                 </mat-form-field>
 
                 <mat-form-field id="memo" class="default-100">

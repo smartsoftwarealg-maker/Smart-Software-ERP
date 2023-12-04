@@ -190,6 +190,7 @@ export interface Work {
     executorDescription?: string;
     closerDescription?: string;
     failsInspection: boolean;
+    destinationId?: number;
 }
 
 export interface CMMSEmployee extends IEmployee {
