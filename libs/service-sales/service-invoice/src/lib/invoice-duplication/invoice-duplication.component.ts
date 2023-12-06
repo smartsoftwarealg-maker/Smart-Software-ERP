@@ -84,7 +84,6 @@ export class InvoiceDuplicationComponent implements OnInit {
             .confirm('CONFIRMATION', 'COMMON_DUPLICATE')
             .pipe(switchMap(ans => ans? this.doDuplicate(list) : of({ count: 0}) ))
             .subscribe(res => {
-                console.log(res);
                 if (res.count > 0) {
                     this.snackBarSrv.showSuccessMessage();
                     list.deselectAll();

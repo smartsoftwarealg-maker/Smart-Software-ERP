@@ -1,0 +1,22 @@
+.list_div {
+    height: calc(100% - 64px);
+    overflow-y: auto;
+}
+.ctrl_div {
+    width: 80%;
+    margin: 4px auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+.ctrl_div button {
+    width: 14em;
+    min-width: 14em;
+}
+.ctrl_div button i {
+    margin-right: 1em;
+}
+
+tr {
+    height: 100%;
+}

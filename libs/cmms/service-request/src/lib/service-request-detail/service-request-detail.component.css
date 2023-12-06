@@ -1,11 +1,15 @@
 mat-card {
-    width: 90%;
+    width: 100%;
     max-width: 1000px;
     margin: 16px auto;
     padding: 16px;
     border-radius: 1.4em;
 }
-
+.size {
+    width: 90%;
+    max-width: 1000px;
+    margin: 0 auto;
+}
 .separator {
     height: 8px;
 }

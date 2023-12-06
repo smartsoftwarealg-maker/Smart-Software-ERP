@@ -13,8 +13,8 @@ import {
     LOGISTICS_ARTICLES_URL,
     STOCK_ARTICLE_URL,
     PURCHASE_RECEPTION_CANCELLATION_URL,
-    IMPORT_PURCHASE_RECEPTION_URL
-} from '../common';
+    IMPORT_PURCHASE_RECEPTION_URL, ADMIN_REPORT_RIGHTS_URL
+} from "../common";
 import {
     PurchaseOrderDetailComponent,
     PurchaseOrderLinesDetailComponent,
@@ -55,6 +55,7 @@ import {
     ImportReceptionListComponent
 } from '@ss/purchases/imported-purchases';
 import { ExtraCostDetailComponent, ExtraCostListComponent } from '@ss/purchases/extra-costs';
+import { ReportRightsComponent } from "@ss/administration/reports-rights";
 
 export const routes: Routes = [
     {
@@ -264,6 +265,11 @@ export const routes: Routes = [
         data: { reportBase: 'purchases' },
         component: ReportViewComponent,
         canActivate: [loginGuard]
+    },
+    {
+        path: ADMIN_REPORT_RIGHTS_URL,
+        component: ReportRightsComponent,
+        data: {reportBase: 'purchases'},
     },
     {
         path: STOCK_ARTICLE_URL,

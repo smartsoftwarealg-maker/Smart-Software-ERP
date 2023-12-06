@@ -22,8 +22,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { WorkflowDialogComponent } from '@ss/workflow';
 import { BaseEntityService } from '@ss/common/api-base-entity';
-import { CMMSWorkPersonService } from '@ss/cmms/work-order';
-import { CmmsOrderPersonService } from "./cmms-order-person.service";
+import { CmmsOrderPersonService } from './cmms-order-person.service';
 
 
 @Directive()

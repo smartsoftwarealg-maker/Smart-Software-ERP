@@ -79,6 +79,7 @@
     "PMP":                        "pmp",
     "REPAIR_TIMES":               "Délais d'entretien",
     "OPTIMAL_TIME":               "Temps optimal",
-    "ACTUAL_TIME":                "Heure réelle"
+    "ACTUAL_TIME":                "Heure réelle",
+    "RESERVE":                    "Créer une réservation"
 }
 

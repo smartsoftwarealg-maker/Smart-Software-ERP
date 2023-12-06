@@ -3,26 +3,27 @@ import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import {map, switchMap, tap} from 'rxjs/operators';
 import {FormGroup} from '@angular/forms';
 import {
-  CItem, CKey,
-  CLineDirectItem,
-  CLineOHItem, CostCenter,
-  CostingHttpService,
-  CostingResult,
-  CPool,
-  CPoolDetail, CProduct,
-  CProductLine,
-  CProject,
-  OH,
-  ReportList,
-  SafeDomObject,
-  slideToRight
-} from "@ss/costing/costing-utils";
+    CItem, CKey,
+    CLineDirectItem,
+    CLineOHItem, CostCenter,
+    CostingHttpService,
+    CostingResult,
+    CPool,
+    CPoolDetail, CProduct,
+    CProductLine,
+    CProject,
+    OH,
+    ReportList,
+    SafeDomObject,
+    slideToRight
+} from '@ss/costing/costing-utils';
 import { CommonModule } from '@angular/common';
 import { LanguageService, LoginService, MaterialModule } from '@ss/common/api-common';
 import { CommonUiConfirmationDialogModule } from '@ss/common/ui-confirmation-dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialog } from '@angular/material/dialog';
-import { ConfirmationDialogComponent } from "@ss/web-arch/ui";
+import { ConfirmationDialogComponent } from '@ss/web-arch/ui';
+import { CommonUiLangModule } from '@ss/common/ui-lang';
 
 interface PoolDetail extends CPoolDetail {
     keyAcDescription: string;
@@ -54,7 +55,6 @@ interface Project extends CProject {
     poolList: { data: Pool[], loaded: boolean, hidden: boolean };
 }
 
-type Function = () => void;
 
 @Component({
     selector: 'ss-costing-project-detail',
@@ -67,6 +67,7 @@ type Function = () => void;
         RouterModule,
         MaterialModule,
         CommonUiConfirmationDialogModule,
+        CommonUiLangModule
     ]
 })
 export class CostingProjectDetailComponent implements OnInit, OnDestroy {
@@ -312,7 +313,7 @@ export class CostingProjectDetailComponent implements OnInit, OnDestroy {
     }
 
     private reloadThenSetActiveObject(obj: any, type: number, index?: number, index2?: number): void {
-        let func = null;
+        let func: (p: any) => void = null;
         switch (this.activeObjectType) {
         case this.OBJ_TYPE_PROJECT: {
             func = this.loadProject;
@@ -395,7 +396,7 @@ export class CostingProjectDetailComponent implements OnInit, OnDestroy {
 
     // view
 
-    public confirm(title: string, msg: string, fn: Function): void {
+    public confirm(title: string, msg: string, fn: () => void): void {
         const dialogRef = this.matDialog.open(ConfirmationDialogComponent, {disableClose: true});
         dialogRef.componentInstance.title = title;
         dialogRef.componentInstance.message = msg;
@@ -418,15 +419,16 @@ export class CostingProjectDetailComponent implements OnInit, OnDestroy {
     }
 
     private resetForm(): void {
-        if (this.form) {
-            const controls = this.form.controls;
-            for (const k in controls) {
-                if (controls.hasOwnProperty(k)) {
-                    controls[k].markAsUntouched();
-                    controls[k].markAsPristine();
-                }
-            }
-        }
+        this.form?.reset();
+        // if (this.form) {
+        //     const controls = this.form.controls;
+        //     for (const k in controls) {
+        //         if (controls.hasOwnProperty(k)) {
+        //             controls[k].markAsUntouched();
+        //             controls[k].markAsPristine();
+        //         }
+        //     }
+        // }
     }
 
     private openSnackBar(message: string): void {
@@ -785,7 +787,7 @@ export class CostingProjectDetailComponent implements OnInit, OnDestroy {
         const pool: Pool = {
             id: poo.id,
             costCenterId: poo.costCenterId,
-            costCenterAcDescription: null,
+            costCenterAcDescription: poo.ccDescription,
             projectId: poo.projectId,
             keyId: poo.keyId,
             isSupport: poo.isSupport,

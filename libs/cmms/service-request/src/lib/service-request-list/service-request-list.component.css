@@ -10,7 +10,7 @@
 }
 
 mat-table {
-    min-width: 1200px;
+    min-width: 1400px;
 }
 .mat-column-requesterDescription,
 .mat-column-assetDescription {
@@ -23,6 +23,8 @@ mat-table {
     flex: 2 1 200px;
 }
 
+.mat-column-date,
+.mat-column-number,
 .mat-column-plannedStart,
 .mat-column-plannedDue {
     flex: 1 1 100px;

@@ -9,7 +9,7 @@ import {
     ABS_ADMINISTRATION_WORKFLOW_INBOX_URL,
     ABS_STOCK_ARTICLES_URL,
     ABS_PURCHASE_RECEPTION_CANCELLATION_URL,
-    ABS_IMPORT_PURCHASE_RECEPTION_URL
+    ABS_IMPORT_PURCHASE_RECEPTION_URL, ABS_PURCHASE_REPORT_RIGHT_URL
 } from '../common';
 import {SideNavNode} from '@ss/common/api-common';
 
@@ -83,6 +83,12 @@ export const purchasesNavTree: SideNavNode = {
             icon: 'fa-solid fa-file-chart-column',
             route: ABS_PURCHASE_REPORTS_URL,
             accessRights: 'Report'
+        },
+        {
+            name: 'COMMON_REPORT_RIGHTS',
+            icon: 'fa-regular fa-ban',
+            route: ABS_PURCHASE_REPORT_RIGHT_URL,
+            accessRights: 'RoleReport'
         },
         {
             name: 'ADMINISTRATION_WORKFLOW_INBOX',
