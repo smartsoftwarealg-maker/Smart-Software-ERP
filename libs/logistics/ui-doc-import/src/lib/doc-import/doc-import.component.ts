@@ -1,4 +1,4 @@
-import {Component, Inject, OnInit} from '@angular/core';
+import { Component, inject, Inject, OnInit } from "@angular/core";
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {Lookup} from '../lookup';
 import {ImportInfo} from '../import-info';
@@ -13,6 +13,8 @@ import { Subscription } from 'rxjs';
     styleUrls: ['./doc-import.component.scss']
 })
 export class DocImportComponent implements OnInit {
+    private dialogRef = inject(MatDialogRef<DocImportComponent>);
+    private docImportService = inject(DocImportService);
     private subscriptions: Subscription[] = [];
     private  agentId = 0;
     public   documentList: Lookup[];
@@ -24,9 +26,7 @@ export class DocImportComponent implements OnInit {
     public  importInfo: ImportInfo = null;
 
 
-    constructor(private dialogRef: MatDialogRef<DocImportComponent>,
-              private docImportService: DocImportService,
-              @Inject(MAT_DIALOG_DATA) private data: { documentList: Lookup[], agentId?: number }) {
+    constructor(@Inject(MAT_DIALOG_DATA) private data: { documentList: Lookup[], agentId?: number }) {
         this.documentList = data.documentList;
         this.agentId = data.agentId;
     }

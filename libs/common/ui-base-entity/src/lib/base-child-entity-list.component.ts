@@ -18,6 +18,7 @@ export class BaseChildEntityListComponent<T extends { id: number }> implements O
     paginator = PaginationModel.newInstance( );
     selectedId = 0;
     data$: Observable<T[]> = of([]);
+    emptyData$ = this.data$.pipe(map(res => res.length === 0));
     displayedColumns = ['id'];
     isEditable = false;
 
@@ -55,6 +56,7 @@ export class BaseChildEntityListComponent<T extends { id: number }> implements O
                             .subscribe({
                                 next: () => {
                                     this.data$ = this.data$.pipe(map(res => res.filter(e => e.id !== this.selectedId)));
+                                    this.emptyData$ = this.data$.pipe(map(res => res.length === 0));
                                     this.shellSrv.setLoading(false);
                                     this.snackBarSrv.showSuccessMessage();
                                     this.selectedId = 0;
@@ -72,6 +74,7 @@ export class BaseChildEntityListComponent<T extends { id: number }> implements O
 
     protected refresh() {
         this.data$ = this.detailSrv.getPage(this.paginator);
+        this.emptyData$ = this.data$.pipe(map(res => res.length === 0));
     }
 
     select(id: number) {

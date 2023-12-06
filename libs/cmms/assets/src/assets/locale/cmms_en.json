@@ -79,5 +79,6 @@
     "PMP":                        "pmp",
     "REPAIR_TIMES":               "Maintenance times",
     "OPTIMAL_TIME":               "Optimal time",
-    "ACTUAL_TIME":                "Actual time"
+    "ACTUAL_TIME":                "Actual time",
+    "RESERVE":                    "Reserve spare parts"
 }

@@ -190,6 +190,15 @@
             "@ss/costing/costing-items": [
                 "libs/costing/costing-items/src/index.ts"
             ],
+            "@ss/costing/costing-keys": [
+                "libs/costing/costing-keys/src/index.ts"
+            ],
+            "@ss/costing/costing-products": [
+                "libs/costing/costing-products/src/index.ts"
+            ],
+            "@ss/costing/costing-projects": [
+                "libs/costing/costing-projects/src/index.ts"
+            ],
             "@ss/costing/costing-utils": [
                 "libs/costing/costing-utils/src/index.ts"
             ],
@@ -613,13 +622,6 @@
             "@ss/workflow": ["libs/workflow/src/index.ts"],
             "common/report-privileges": [
                 "libs/common/report-privileges/src/index.ts"
-            ],
-            "@ss/costing/costing-keys": ["libs/costing/costing-keys/src/index.ts"],
-            "@ss/costing/costing-products": [
-                "libs/costing/costing-products/src/index.ts"
-            ],
-            "@ss/costing/costing-projects": [
-                "libs/costing/costing-projects/src/index.ts"
             ]
         }
     },

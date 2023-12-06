@@ -8,7 +8,7 @@ import {
     DASHBOARD_URL,
     docInfoRoutes, LOGISTICS_AGENT_URL,
     SALES_AD_URL, SALES_SERVICE_ARTICLE_URL
-} from "../common";
+} from '../common';
 import { OrderListComponent } from '@ss/sales/ui-sales-order';
 import { OrderDetailComponent } from '@ss/sales/ui-sales-order';
 import { OrderLinesDetailComponent, OrderLinesListComponent } from '@ss/sales/ui-order-lines';
@@ -44,7 +44,7 @@ import {
 } from '@ss/logistics/ui-agent';
 import { ServiceArticleDetailComponent, ServiceArticleListComponent } from '@ss/service-sales/service-articles';
 import { AGENT_ARCHIVES } from '@ss/common/app-archive';
-import { ReportPrivilegesComponent } from "common/report-privileges";
+import { ReportPrivilegesComponent } from 'common/report-privileges';
 
 export const lookupRoutes: Routes = [];
 

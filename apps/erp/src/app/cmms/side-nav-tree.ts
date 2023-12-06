@@ -207,16 +207,16 @@ export const cmmsNavTree: SideNavNode = {
         //     accessRights: 'PREVOrder'
         // },
         {
-            name: 'CMMS_WORK_ORDER',
-            icon: 'fa-solid fa-hammer-crash',
-            route: ABS_CUR_ORDER_URL,
-            accessRights: 'WRKROrder'
-        },
-        {
             name: 'CMMS_INSPECTION_ORDERS',
             icon: 'fa-solid fa-microscope',
             route: ABS_INSPECTION_ORDER_URL,
             accessRights: 'INSPECROrder'
+        },
+        {
+            name: 'CMMS_WORK_ORDER',
+            icon: 'fa-solid fa-hammer-crash',
+            route: ABS_CUR_ORDER_URL,
+            accessRights: 'WRKROrder'
         },
         {
             name: 'CMMS_INSPECTION',

@@ -67,7 +67,7 @@ export class ReportRightsComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.shellSrv.setGoBackPath('..', this.route);
+        this.shellSrv.setGoBackPath('../..', this.route);
         this.shellSrv.setTitle('COMMON_REPORT_RIGHTS');
         this.route
             .data

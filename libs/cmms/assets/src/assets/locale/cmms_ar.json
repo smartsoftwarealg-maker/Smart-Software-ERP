@@ -79,5 +79,6 @@
     "PMP":                        "pmp",
     "REPAIR_TIMES":               "مدة الصيانة",
     "OPTIMAL_TIME":               "المدة المثلى",
-    "ACTUAL_TIME":                "المدة الفعلية"
+    "ACTUAL_TIME":                "المدة الفعلية",
+    "RESERVE":                    "حجز قطع الغيار"
 }
