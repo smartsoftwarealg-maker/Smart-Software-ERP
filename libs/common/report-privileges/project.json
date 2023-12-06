@@ -2,7 +2,7 @@
     "name": "common-report-privileges",
     "$schema": "../../../node_modules/nx/schemas/project-schema.json",
     "sourceRoot": "libs/common/report-privileges/src",
-    "prefix": "lib",
+    "prefix": "ss",
     "tags": [],
     "projectType": "library",
     "targets": {

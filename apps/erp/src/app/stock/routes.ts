@@ -25,7 +25,7 @@ import {
     STOCK_PRICE_RECALCULATION_URL,
     STOCK_CONSUMPTION_CANCELLATION_URL,
     STOCK_PARTS_REUEST_URL,
-    ADMIN_REPORT_RIGHTS_URL, REFERENCE_CORRECTION_URL
+    ADMIN_REPORT_RIGHTS_URL, REFERENCE_CORRECTION_URL, STOCK_RESERVATIONS_URL
 } from '../common';
 import {
     ABS_INDEX_URL,
@@ -99,6 +99,11 @@ import {
     PartsRequestListComponent
 } from '@ss/stock/ui-parts-request';
 import { ReportRightsComponent } from '@ss/administration/reports-rights';
+import {
+    PartsReservationDetailComponent, PartsReservationLineDetailComponent,
+    PartsReservationLineListComponent,
+    PartsReservationListComponent
+} from 'logistics/parts-reservation';
 
 export const mainRoutes: Routes = [
     {
@@ -338,6 +343,38 @@ export const mainRoutes: Routes = [
             },
         ]
     },
+    {
+        path: STOCK_RESERVATIONS_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: PartsReservationListComponent,
+                canActivate: [loginGuard],
+                children: docInfoRoutes
+            },
+            {
+                path: ':id',
+                component: PartsReservationDetailComponent,
+                canActivate: [loginGuard],
+                canDeactivate: [CanDeactivateService],
+                children: [
+                    { path: '', pathMatch: 'full', redirectTo: 'lines-list' },
+                    { path: 'lines-list',
+                        component: PartsReservationLineListComponent,
+                        children: docInfoRoutes
+                    },
+                    {
+                        path: 'lines-detail',
+                        children: [
+                            { path: ':id', component: PartsReservationLineDetailComponent },
+                        ]
+                    },
+                    ...docInfoRoutes
+                ]
+            },
+        ]
+    },
+
     {
         path: STOCK_CONSUMPTION_URL,
         children: [

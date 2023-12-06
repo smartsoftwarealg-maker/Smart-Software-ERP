@@ -42,11 +42,11 @@ export class ConsumptionDetailComponent extends BaseTransactionDetailComponent {
             confirmationSrv,
             loginSrv,
             dialog,
-            "STOCK_EDIT_CONSUMPTION");
+            'STOCK_EDIT_CONSUMPTION');
     }
 
 
-    override preload(): Observable<any> {
+    override preload(): Observable<CCGroup[]> {
         return this.lookupsSrv.getCCGroups()
             .pipe(tap(x => this.groups = x));
     }

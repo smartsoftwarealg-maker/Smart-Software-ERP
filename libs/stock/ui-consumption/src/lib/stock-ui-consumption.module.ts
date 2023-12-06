@@ -15,10 +15,10 @@ import {LogisticsUiDocInfoModule} from '@ss/logistics/ui-doc-info';
 import {LogisticsUiStockInfoModule} from '@ss/logistics/ui-stock-info';
 import {
     ConsumptionCancellationDetailComponent
-} from "./consumption-cancellation-detail/consumption-cancellation-detail.component";
+} from './consumption-cancellation-detail/consumption-cancellation-detail.component';
 import {
     ConsumptionCancellationListComponent
-} from "./consumption-cancellation-list/consumption-cancellation-list.component";
+} from './consumption-cancellation-list/consumption-cancellation-list.component';
 
 @NgModule({
     imports: [

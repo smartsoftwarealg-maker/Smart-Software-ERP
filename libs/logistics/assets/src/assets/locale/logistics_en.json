@@ -168,5 +168,6 @@
     "TRANSPORTER":      "Transporter",
     "LICENSE_ISSUER":   "Issued by",
     "DESTINATION":      "Destination",
-    "MERGE_INVOICE_SERIES": "Same number series for invoices and cancellations"
+    "MERGE_INVOICE_SERIES": "Same number series for invoices and cancellations",
+    "RESERVATION":          "Reservation"
 }

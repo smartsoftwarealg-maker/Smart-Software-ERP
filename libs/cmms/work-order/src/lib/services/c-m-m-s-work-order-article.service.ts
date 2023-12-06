@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { BaseEntityService } from '@ss/common/api-base-entity';
 import { CMMS_ARTICLES, CMMS_WORKS, WorkArticle } from '@ss/cmms/cmms-api';
 import { HttpService } from '@ss/common/api-common';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 
 @Injectable({
     providedIn: 'root'
@@ -14,6 +14,6 @@ export class CMMSWorkOrderArticleService extends BaseEntityService<WorkArticle> 
     }
 
     reserve(orderId: number, list: number[]): Observable<{count: number}> {
-        return this.httpSrv.post(`/cmms/works/${orderId}/reserve`, {articles: list});
+        return list.length == 0? of({count: 0}) : this.httpSrv.post('/cmms/reservations', {workId: orderId, partsList: list});
     }
 }

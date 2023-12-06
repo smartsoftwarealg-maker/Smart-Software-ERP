@@ -53,21 +53,24 @@ export class WorkOrderArticleReservationComponent {
     }
 
     public close(list: MatSelectionList) {
-        this.confirmationSrv
-            .confirm('CONFIRMATION', 'CMMS_RESERVE')
-            .pipe(
-                tap(ans => this.processing = ans),
-                switchMap(ans => ans ?
-                    this.workOrderArticleSrv.reserve(this.id, list.selectedOptions.selected.filter(v => v.value > 0).map(o => o.value)) :
-                    of({ count: 0 }))
-            ).subscribe({
-                next: res => {
-                    this.dialogRef.close({ success: res.count > 0 });
-                }, error: err => {
-                    this.dialogRef.close({ success: false });
-                    throw err;
-                }
-            });
+        const reservations = list.selectedOptions.selected.filter(v => v.value > 0);
+        if (reservations.length > 0) {
+            this.confirmationSrv
+                .confirm('CONFIRMATION', 'CMMS_RESERVE')
+                .pipe(
+                    tap(ans => this.processing = ans),
+                    switchMap(ans => ans ?
+                        this.workOrderArticleSrv.reserve(this.id, reservations.map(o => o.value)) :
+                        of({ count: 0 }))
+                ).subscribe({
+                    next: res => {
+                        this.dialogRef.close({ success: res.count > 0 });
+                    }, error: err => {
+                        this.dialogRef.close({ success: false });
+                        throw err;
+                    }
+                });
+        }
     }
 
     public cancel() {

@@ -622,6 +622,9 @@
             "@ss/workflow": ["libs/workflow/src/index.ts"],
             "common/report-privileges": [
                 "libs/common/report-privileges/src/index.ts"
+            ],
+            "logistics/parts-reservation": [
+                "libs/logistics/parts-reservation/src/index.ts"
             ]
         }
     },
