@@ -18,9 +18,9 @@ import { of, switchMap } from 'rxjs';
 })
 export class ServiceRequestListComponent extends BaseEntityListComponent<Work> implements OnInit {
     private workOrderSrv = inject(CMMSWorkOrderService);
-    private exportButton: ToolbarButton = {
-        icon: 'fas fa-minus',
-        label: 'CMMS_GENERATE_WO',
+    private generateButton: ToolbarButton = {
+        icon: 'fa-solid fa-person-digging',
+        label: 'CMMS_GENERATE_WORK_ORDER',
         disabled: false,
         visible: true,
         keepOnToolbar: KeepOnToolbar.ALWAYS,
@@ -38,6 +38,7 @@ export class ServiceRequestListComponent extends BaseEntityListComponent<Work> i
         'faultDescription',
         'plannedStart',
         'plannedDue',
+        'statusDescription'
     ];
 
     constructor(
@@ -65,7 +66,7 @@ export class ServiceRequestListComponent extends BaseEntityListComponent<Work> i
         if (this.selectedRow) {
             const wo: Work = {...this.selectedRow, id: 0, number: 0, document: DOC_WORK_ORDER, date: new Date(), sourceId: this.selected, memo: null};
             this.confirmationSrv
-                .confirm('CMMS_GENERATION', 'GENERATE_WORK_ORDER')
+                .confirm('CMMS_GENERATION', 'CMMS_GENERATE_WORK_ORDER')
                 .pipe(switchMap(b => b? this.workOrderSrv.save(wo) : of(0)))
                 .subscribe(res => {
                     if (res > 0) {
@@ -77,7 +78,12 @@ export class ServiceRequestListComponent extends BaseEntityListComponent<Work> i
 
     override ngOnInit(): void {
         super.ngOnInit();
-        this.shellSrv.addButton(this.exportButton);
+        this.shellSrv.addButton(this.generateButton);
+    }
+
+    override selectRow(row: Work) {
+        super.selectRow(row);
+        this.generateButton.disabled = row?.destinationId > 0;
     }
 }
 

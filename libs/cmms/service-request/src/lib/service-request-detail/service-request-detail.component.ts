@@ -71,7 +71,7 @@ export class ServiceRequestDetailComponent extends CMMSWorkDetail {
             statusDescription:    [{ value: e.statusDescription, disabled: true }],
             executorDescription:  [{ value: e.executorDescription, disabled: true }],
             schedulerDescription: [{ value: e.schedulerDescription, disabled: true }],
-            closerDescription:    [{ value: e.closerDescription }],
+            closerDescription:    [{ value: e.closerDescription, disabled: true }],
             failsInspection:      [e.failsInspection || false]
         });
         this.orderForm.disable();

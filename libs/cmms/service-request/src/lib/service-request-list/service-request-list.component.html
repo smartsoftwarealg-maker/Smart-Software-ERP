@@ -22,6 +22,13 @@
             </mat-cell>
         </ng-container>
 
+        <ng-container matColumnDef="statusDescription">
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_STATUS</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.statusDescription}}
+            </mat-cell>
+        </ng-container>
+
         <ng-container matColumnDef="description">
             <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_DESCRIPTION</mat-header-cell>
             <mat-cell *matCellDef="let e">

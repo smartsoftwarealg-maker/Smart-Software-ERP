@@ -80,6 +80,11 @@
     "REPAIR_TIMES":               "Délais d'entretien",
     "OPTIMAL_TIME":               "Temps optimal",
     "ACTUAL_TIME":                "Heure réelle",
-    "RESERVE":                    "Créer une réservation"
+    "RESERVE":                    "Créer une réservation",
+    "GENERATE_WORK_ORDER":        "Générer un bon de travail",
+    "EXECUTED_BY":                "Exécuté par",
+    "CLOSED_BY":                  "Fermé par",
+    "DOWNTIME":                   "temps d'arrêt de l'équipement",
+    "TOTAL_HOURS":                "Heures totales"
 }
 

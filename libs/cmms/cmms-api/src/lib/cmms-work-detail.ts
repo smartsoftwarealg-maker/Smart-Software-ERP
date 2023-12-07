@@ -1,7 +1,7 @@
 import { AssetLookup, INSPECTION, RoutingDetail, RoutingPart, Work } from './cmms-api';
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { Directive, inject } from '@angular/core';
-import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
+import { FormGroup, UntypedFormBuilder, UntypedFormGroup, Validators } from "@angular/forms";
 import { MatDialog } from '@angular/material/dialog';
 import {
     CmmsChecklistService,
@@ -23,6 +23,7 @@ import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { WorkflowDialogComponent } from '@ss/workflow';
 import { BaseEntityService } from '@ss/common/api-base-entity';
 import { CmmsOrderPersonService } from './cmms-order-person.service';
+import { debounceTime, distinctUntilChanged } from "rxjs/operators";
 
 
 @Directive()
@@ -87,14 +88,14 @@ export class CMMSWorkDetail extends BaseEntityDetailComponent<Work> {
         this.partPaginator.onChange = () => this.partData$ = this.routingPartSrv.getPage(this.partPaginator);
     }
 
-    setupForm(e: Work): UntypedFormGroup {
+    setupForm(e: Work): FormGroup {
         if (e.id) {
             this.shellSrv.addButton(this.sendBtn);
         }
         this.personSrv.setParentId(e?.id || 0);
         this.validated = e.validated;
-        this.isEditable = this.isEditable && !e.actualDue;
-        this.saveButton.visible = this.isEditable;
+        // this.isEditable = this.isEditable && !e.actualDue;
+        // this.saveButton.visible = this.isEditable;
         return this.formBuilder.group({
             id:                   [e.id],
             document:             [e.document || this.document],
@@ -133,7 +134,9 @@ export class CMMSWorkDetail extends BaseEntityDetailComponent<Work> {
             executorDescription:  [{ value: e.executorDescription, disabled: true }],
             schedulerDescription: [{ value: e.schedulerDescription, disabled: true }],
             closerDescription:    [{ value: e.closerDescription || this.loginSrv.appCtx.fullName, disabled: true }],
-            failsInspection:      [e.failsInspection || false]
+            failsInspection:      [e.failsInspection || false],
+            downtime:             [e.downtime],
+            executorId:           [{ value: e.executorId, disabled: true}]
         });
     }
 
@@ -171,5 +174,16 @@ export class CMMSWorkDetail extends BaseEntityDetailComponent<Work> {
                 }
             });
         }
+    }
+
+    actualTime() {
+        const start = this.form?.controls['actualStart'].value;
+        const due   = this.form?.controls['actualDue'].value;
+        return (start && due) ? ((new Date(due).getTime() - new Date(start).getTime())/3_600_000) : 0;
+    }
+    plannedTime() {
+        const start = this.form?.controls['plannedStart'].value;
+        const due   = this.form?.controls['plannedDue'].value;
+        return (start && due) ? ((new Date(due).getTime() - new Date(start).getTime())/3_600_000) : 0;
     }
 }

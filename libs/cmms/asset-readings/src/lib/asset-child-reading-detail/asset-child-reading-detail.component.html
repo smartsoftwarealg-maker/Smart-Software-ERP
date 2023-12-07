@@ -1,0 +1,40 @@
+<div class="size button_div size" *ngIf="form">
+    <button mat-mini-fab (click)="save()"
+            color="primary" *ngIf="isEditable">
+        <i class="fas fa-save"></i>
+    </button>
+    <button mat-mini-fab (click)="cancel()"
+            color="warn">
+        <i class="fas fa-redo"></i>
+    </button>
+</div>
+
+<mat-card>
+    <mat-card-content>
+        <form *ngIf="form !== null" novalidate [formGroup]="form">
+
+            <mat-form-field class="default-100">
+                <mat-label translate>CMMS_METER</mat-label>
+                <ss-auto-complete matInput
+                                  [model]="meterLookup"
+                                  formControlName="meterId"
+                                  required="true">
+                </ss-auto-complete>
+                <mat-error *ngIf="form.controls['meterId'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>CMMS_READING_DATE</mat-label>
+                <ss-date-picker formControlName="date" required="true"></ss-date-picker>
+                <mat-error *ngIf="form.controls['amount'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
+            </mat-form-field>
+
+            <mat-form-field id="amount" class="default-50 sm-100">
+                <mat-label translate>COMMON_AMOUNT</mat-label>
+                <input matInput formControlName="amount" type="number" required>
+                <mat-error *ngIf="form.controls['amount'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
+            </mat-form-field>
+        </form>
+
+    </mat-card-content>
+</mat-card>

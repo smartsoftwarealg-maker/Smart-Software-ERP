@@ -80,5 +80,10 @@
     "REPAIR_TIMES":               "Maintenance times",
     "OPTIMAL_TIME":               "Optimal time",
     "ACTUAL_TIME":                "Actual time",
-    "RESERVE":                    "Reserve spare parts"
+    "RESERVE":                    "Reserve spare parts",
+    "GENERATE_WORK_ORDER":        "Generate work order",
+    "EXECUTED_BY":                "Executed by",
+    "CLOSED_BY":                  "Closed by",
+    "DOWNTIME":                   "equipment downtime",
+    "TOTAL_HOURS":                "Total hours"
 }

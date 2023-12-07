@@ -80,5 +80,10 @@
     "REPAIR_TIMES":               "مدة الصيانة",
     "OPTIMAL_TIME":               "المدة المثلى",
     "ACTUAL_TIME":                "المدة الفعلية",
-    "RESERVE":                    "حجز قطع الغيار"
+    "RESERVE":                    "حجز قطع الغيار",
+    "GENERATE_WORK_ORDER":        "إنشاء أمر العمل",
+    "EXECUTED_BY":                "تنفيذ",
+    "CLOSED_BY":                  "إغلاق",
+    "DOWNTIME":                   "مدة العطل",
+    "TOTAL_HOURS":                "مجموع الساعات"
 }

@@ -191,6 +191,7 @@ export interface Work {
     closerDescription?: string;
     failsInspection: boolean;
     destinationId?: number;
+    downtime?: number;
 }
 
 export interface CMMSEmployee extends IEmployee {
