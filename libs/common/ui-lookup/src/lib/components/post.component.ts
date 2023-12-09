@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { Post, PostService } from '@ss/common/api-lookup';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -7,6 +7,8 @@ import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import {PaginatorPersistenceService} from '@ss/common/api-common';
+import { GridService } from '@ss/payroll/salary-grid';
+import { DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
 
 
 @Component({
@@ -82,7 +84,16 @@ export class PostListComponent extends BaseEntityListComponent<Post> {
                 <input matInput formControlName="descriptionAr" type="text">
             </mat-form-field>
 
-            <div class="default-100 sm-100">
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>PAYROLL_SALARY_GRID</mat-label>
+                <ss-auto-complete matInput
+                                  [model]="gridLookup"
+                                  formControlName="grid"
+                                  required="true">
+                </ss-auto-complete>
+            </mat-form-field>
+
+            <div class="default-50 sm-100">
                 <mat-checkbox formControlName="blocked" translate>ADMINISTRATION_BLOCKED</mat-checkbox>
             </div>
         </form>
@@ -90,7 +101,8 @@ export class PostListComponent extends BaseEntityListComponent<Post> {
     styleUrls: ['../base-templates/detail-template.scss']
 })
 export class PostDetailComponent extends BaseEntityDetailComponent<Post> {
-
+    private gridService = inject(GridService);
+    gridLookup = new DefaultAutoCompleteModel(this.gridService);
     constructor(
         public postSrv: PostService,
         public override shellSrv: ShellService,
@@ -106,7 +118,8 @@ export class PostDetailComponent extends BaseEntityDetailComponent<Post> {
             id:            [e.id],
             description:   [e.description, Validators.required],
             descriptionAr: [e.descriptionAr],
-            blocked:       [e.blocked || false, Validators.required]
+            blocked:       [e.blocked || false, Validators.required],
+            grid:          [e.grid]
         });
     }
 }

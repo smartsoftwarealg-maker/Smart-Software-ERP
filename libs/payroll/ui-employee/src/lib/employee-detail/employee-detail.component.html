@@ -266,24 +266,34 @@
             </mat-expansion-panel-header>
 
             <div class="ctrl-div" *ngIf="activePersonnel && isEditable">
-                <div class="filler"></div>
-                <mat-form-field appearance="fill">
-                    <mat-label translate>PAYROLL_GENERATE_FROM</mat-label>
-                    <mat-select #mode>
-                        <mat-option *ngFor="let g of generationModes" [value]="g.id">
-                            <span translate>  {{g.description}} </span>
-                        </mat-option>
-                    </mat-select>
-                </mat-form-field>
+                @if (fixedElementEditInProgress) {
+                    <mat-form-field appearance="fill">
+                        <mat-label translate>PAYROLL_GENERATE_FROM</mat-label>
+                        <mat-select #mode>
+                            <mat-option *ngFor="let g of generationModes" [value]="g.id">
+                                <span translate>  {{g.description}} </span>
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
 
-                <button mat-raised-button color="primary" type="button" (click)="generateFrom(mode.value)">
-                    <i class="fa-solid fa-wind-turbine"></i>
-                    {{ 'COMMON_GENERATE' | translate }}
-                </button>
-                <button mat-raised-button color="primary" type="button" (click)="saveElements()">
-                    <i class="fa-solid fa-floppy-disk"></i>
-                    {{ 'COMMON_SAVE' | translate }}
-                </button>
+                    <button mat-raised-button
+                            color="primary"
+                            type="button"
+                            (click)="generateFrom(mode.value)"
+                            [disabled]="!mode.value">
+                        <i class="fa-solid fa-wind-turbine"></i>
+                        {{ 'COMMON_GENERATE' | translate }}
+                    </button>
+                    <button mat-raised-button color="primary" type="button" (click)="saveElements()">
+                        <i class="fa-solid fa-floppy-disk"></i>
+                        {{ 'COMMON_SAVE' | translate }}
+                    </button>
+                } @else {
+                    <button mat-raised-button color="primary" type="button" (click)="editFixedElements()">
+                        <i class="fas fa-pen"></i>
+                        {{ 'COMMON_EDIT' | translate }}
+                    </button>
+                }
             </div>
 
             <form *ngIf="elementsForm !== null" novalidate [formGroup]="elementsForm">

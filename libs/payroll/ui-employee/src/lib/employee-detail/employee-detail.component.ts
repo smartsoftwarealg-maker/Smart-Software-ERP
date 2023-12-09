@@ -105,6 +105,7 @@ export class EmployeeDetailComponent extends BaseEntityDetailComponent<Employee>
     readonly PAYROLL_RANK = 3;
     readonly PAYROLL_POST = 4;
 
+    fixedElementEditInProgress = false;
     hrMode = false;
     activePersonnel = false;
     imageModel: ImageModel;
@@ -115,7 +116,7 @@ export class EmployeeDetailComponent extends BaseEntityDetailComponent<Employee>
     generationModes = [
         {id: 1, description: 'PAYROLL_IEP'},
         {id: 2, description: 'PAYROLL_OLD_ELEMENTS'},
-        {id: 3, description: 'PAYROLL_RANK'},
+        {id: 3, description: 'PAYROLL_SALARY_GRID'},
         {id: 4, description: 'PAYROLL_POST'},
     ];
     bloodGroups$ = this.bloodGroupSrv.getList(0, 50).pipe(map(res => res.body));
@@ -152,7 +153,7 @@ export class EmployeeDetailComponent extends BaseEntityDetailComponent<Employee>
         this.activationSrv.setParentId(id || 0);
     }
 
-    public override preload(): Observable<any> {
+    public override preload(): Observable<MaritalStatus[]> {
         this.route.data.subscribe(data => {
             this.hrMode = !!data['hrMode'];
             this.activePersonnel = !!data['active'];
@@ -164,20 +165,26 @@ export class EmployeeDetailComponent extends BaseEntityDetailComponent<Employee>
             );
     }
 
+    private loadFixedElements(): Observable<ELine> {
+        return this.infoSrv
+            .load()
+            .pipe(switchMap(() => this.infoSrv.get(this.queryId)),
+                tap(res => {
+                    const elements = res.elements.length === 0 ?
+                        this.infoSrv.loadDataCols().map(() => 0.0) :
+                        res.elements;
+
+                    this.elementsForm = this.formBuilder.group({
+                        elements: this.formBuilder.array(elements)
+                    });
+                    this.elementsForm.disable();
+                    this.fixedElementEditInProgress = false;
+                }));
+    }
+
     public override setupForm(p: Employee) {
         this.archiveSrv.appId = EMPLOYEE_ARCHIVES;
-        this.infoSrv.load()
-            .pipe(switchMap(() => this.infoSrv.get(p.id)))
-            .subscribe(res => {
-                const elements = res.elements.length === 0 ?
-                    this.infoSrv.loadDataCols().map(() => 0.0) :
-                    res.elements;
-
-                this.elementsForm = this.formBuilder.group({
-                    elements: this.formBuilder.array(elements)
-                });
-            });
-
+        this.loadFixedElements().subscribe();
         this.imageModel.setImageUrl(this.employeeSrv.getPhotoUrl(this.id), false);
         if (!p.id) {
             p.sex = 1;
@@ -308,6 +315,8 @@ export class EmployeeDetailComponent extends BaseEntityDetailComponent<Employee>
                     throw err;
                 }
             });
+        this.fixedElementEditInProgress = false;
+        this.elementsForm.disable();
     }
 
     generateFrom(code: number) {
@@ -319,8 +328,10 @@ export class EmployeeDetailComponent extends BaseEntityDetailComponent<Employee>
                     this.infoSrv.generateFromIEP(id) :
                     code === this.PAYROLL_OLD_ELEMENTS ? this.infoSrv.generateFromOldElements(id) :
                         code === this.PAYROLL_RANK ? this.infoSrv.generateFromRank(id) :
-                            code === this.PAYROLL_POST ? this.infoSrv.generateFromPost(id) : of({count: -1}) : of({count: -1})
-            )).subscribe({
+                            code === this.PAYROLL_POST ? this.infoSrv.generateFromPost(id) : of({ count: -1 }) : of({ count: -1 })
+            ),
+            switchMap(res => this.loadFixedElements().pipe(map(() => res))))
+            .subscribe({
                 next: res => {
                     if (res.count >= 0) {
                         this.snackBarSrv.showSuccessMessage();
@@ -349,6 +360,11 @@ export class EmployeeDetailComponent extends BaseEntityDetailComponent<Employee>
         } else {
             this.router.navigate(['..', this.queryId], {relativeTo: this.route}).then();
         }
+    }
+
+    editFixedElements() {
+        this.fixedElementEditInProgress = true;
+        this.elementsForm.enable();
     }
 }
 
