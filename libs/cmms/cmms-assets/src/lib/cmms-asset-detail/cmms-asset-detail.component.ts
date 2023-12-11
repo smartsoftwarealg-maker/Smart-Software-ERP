@@ -1,8 +1,8 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
-import { Asset } from '../asset-api';
-import { AGENT_ARCHIVES, AppArchiveModule, AppArchiveService, ASSET_ARCHIVES } from '@ss/common/app-archive';
+import { Asset } from '../services/asset-api';
+import { AGENT_ARCHIVES, AppArchiveModule, AppArchiveService } from '@ss/common/app-archive';
 import { ActivatedRoute, Router, RouterOutlet } from '@angular/router';
 import { ConsumerService, CustomerService } from '@ss/logistics/api-agent';
 import { IsParamService, LoginService, MaterialModule } from '@ss/common/api-common';
@@ -31,7 +31,7 @@ import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { map, switchMap, tap } from 'rxjs/operators';
 import { MatExpansionModule, MatExpansionPanel } from '@angular/material/expansion';
 import { Observable } from 'rxjs';
-import { CmmsAssetService } from '../cmms-asset.service';
+import { CmmsAssetService } from '../services/cmms-asset.service';
 import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
 import { CommonUiLangModule } from '@ss/common/ui-lang';
 import { CustomAttributesModule } from '@ss/custom-attributes';
@@ -45,8 +45,8 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { QRCodeModule } from 'angularx-qrcode';
 import { CMMSFunctionService } from '@ss/cmms/lookups';
 import { BaseEntityService } from '@ss/common/api-base-entity';
-import { AssetPmService } from '../asset-pm.service';
-import { CMMSAssetTriggerService } from "../../../../asset-triggers/src/lib/cmms-asset-trigger.service";
+import { AssetPmService } from '../services/asset-pm.service';
+import { CMMSAssetTriggerService } from '@ss/cmms/asset-triggers';
 
 @Component({
     selector: 'ss-cmms-asset-detail',

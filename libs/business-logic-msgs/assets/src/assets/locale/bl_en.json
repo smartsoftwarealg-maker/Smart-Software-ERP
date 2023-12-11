@@ -51,5 +51,6 @@
     "IS_LOCAL_CURRENCY":             "Import reception cannot be in local currency.",
     "RECURSIVE_ASSEMBLY":            "Recursive composition is not allowed.",
     "TESTS_EXIST":                   "This matter cannot be deleted from this line because it has recorded tests.",
-    "CMMS_PARTS_RESERVED":           "Parts for this work order are already reserved."
+    "CMMS_PARTS_RESERVED":           "Parts for this work order are already reserved.",
+    "ORDER_ALREADY_GENERATED":       "A work order is already generated for this request."
 }

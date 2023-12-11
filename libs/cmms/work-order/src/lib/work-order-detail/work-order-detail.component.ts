@@ -7,7 +7,7 @@ import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { CMMSWorkOrderService } from '../services/c-m-m-s-work-order.service';
 import { DOC_WORK_ORDER } from '@ss/logistics/api-transaction';
 import { RequestImportComponent } from '@ss/cmms/cmms-ui';
-import { Observable, of, switchMap } from 'rxjs';
+import { Observable, of, switchMap, tap } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { CommonUiLangModule } from '@ss/common/ui-lang';
 import { MatTableModule } from '@angular/material/table';
@@ -21,6 +21,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MaterialModule } from '@ss/common/api-common';
 import { CMMSWorkOrderArticleService } from '../services/c-m-m-s-work-order-article.service';
 import { CMMSWorkPersonService } from '../services/c-m-m-s-work-person.service';
+import { CMMSAssetReadingService } from '../../../../asset-readings/src/lib/cmms-asset-reading.service';
 
 @Component({
     selector: 'ss-work-order-detail',
@@ -47,6 +48,7 @@ import { CMMSWorkPersonService } from '../services/c-m-m-s-work-person.service';
 export class WorkOrderDetailComponent extends CMMSWorkDetail {
     private workPersonSrv = inject(CMMSWorkPersonService);
     private articleSrv = inject(CMMSWorkOrderArticleService);
+    private readingSrv = inject(CMMSAssetReadingService);
     private router = inject(Router);
 
     private importBtn: ToolbarButton = {
@@ -67,9 +69,10 @@ export class WorkOrderDetailComponent extends CMMSWorkDetail {
         click: () => this.generateRequest(),
     };
 
-    private URLS = ['articles', 'works'];
+    private URLS = ['articles', 'works', 'readings'];
     readonly ARTICLE_PANEL = 0;
     readonly WORK_PANEL = 1;
+    readonly READING_PANEL = 2;
 
     cmmsTypes = WORK_TYPES.filter(e => e.id !== INSPECTION);
 
@@ -116,7 +119,9 @@ export class WorkOrderDetailComponent extends CMMSWorkDetail {
     override loadEntity(id: number): Observable<Work> {
         this.workPersonSrv.setParentId(id);
         this.articleSrv.setParentId(id);
-        return super.loadEntity(id);
+
+        return super.loadEntity(id)
+            .pipe(tap(res => this.readingSrv.setParentId(res.assetId)));
     }
 
     override setupForm(e: Work): UntypedFormGroup {

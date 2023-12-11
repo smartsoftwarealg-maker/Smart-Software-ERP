@@ -42,6 +42,12 @@
 }
 .payments {
     grid-area: payments;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+}
+mat-tree {
+    flex-grow: 1;
 }
 .debts {
     grid-area: debts;

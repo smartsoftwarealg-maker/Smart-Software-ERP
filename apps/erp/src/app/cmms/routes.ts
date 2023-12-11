@@ -28,7 +28,7 @@ import {
     COMMON_REPORTS_URL,
     FURNITURE_STATUS_URL,
     CMMS_SERVICE_REQUEST_URL,
-    STOCK_PARTS_REUEST_URL,
+    STOCK_PARTS_REQUEST_URL,
     docInfoRoutes,
     CMMS_CHARTS_URL,
     CMMS_ASSET_TREE,
@@ -37,7 +37,7 @@ import {
     CMMS_CHECKLIST_URL,
     CMMS_INSPECTION_ORDER_URL,
     CMMS_INSPECTION_URL,
-    CMMS_GANT_URL
+    CMMS_GANT_URL, ASSETS_ASSET_PM_URL
 } from '../common';
 import { loginGuard } from '../erp-guards';
 import {
@@ -61,7 +61,13 @@ import {
 } from '@ss/cmms/lookups';
 import { CMMSPlanDetailComponent, CMMSPlanListComponent } from '@ss/cmms/plans';
 import { CmmsAlertListComponent, PMDetailComponent, PmListComponent } from '@ss/cmms/pm';
-import { AssetReadingDetailComponent, AssetReadingListComponent, readingDetailGuard } from '@ss/cmms/asset-readings';
+import {
+    AssetChildReadingDetailComponent,
+    AssetChildReadingListComponent,
+    AssetReadingDetailComponent,
+    AssetReadingListComponent,
+    readingDetailGuard
+} from '@ss/cmms/asset-readings';
 import { AssetTriggerDetailComponent, AssetTriggerListComponent, triggerDetailGuard } from '@ss/cmms/asset-triggers';
 import {
     InspectionDetailComponent,
@@ -105,9 +111,11 @@ import {
 import { CMMSChartsComponent, CmmsGanttComponent } from '@ss/cmms/cmms-charts';
 import { CmmsEmployeeDetailComponent, CmmsEmployeeListComponent } from '@ss/cmms/cmms-employees';
 import {
+    AssetPmArticleDetailComponent, AssetPmArticleListComponent,
     AssetPmDetailComponent,
     AssetPmListComponent,
-    CmmsAssetListComponent
+    CmmsAssetListComponent,
+    CmmsAssetPmDetailComponent
 } from '@ss/cmms/cmms-assets';
 import {
     CmmsAssetDetailComponent
@@ -134,6 +142,7 @@ import {
     CMMSChecklistDetailComponent, CmmsChecklistLineDetailComponent, CmmsChecklistLineListComponent,
     CmmsChecklistListComponent
 } from '@ss/cmms/cmms-checklists';
+
 
 export const cmmsRoutes: Routes = [
     {
@@ -368,6 +377,12 @@ export const cmmsRoutes: Routes = [
                             { path: '', component: WorkPersonsListComponent, pathMatch: 'full'},
                             { path: ':id', component: WorkPersonsDetailComponent }
                         ]
+                    },
+                    { path: 'readings',
+                        children: [
+                            { path: '', component: AssetChildReadingListComponent, pathMatch: 'full'},
+                            { path: ':id', component: AssetChildReadingDetailComponent }
+                        ]
                     }
                 ]
             },
@@ -527,6 +542,64 @@ export const cmmsRoutes: Routes = [
     },
 
     {
+        path: ASSETS_ASSET_PM_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: CmmsAssetListComponent,
+                canActivate: [loginGuard]
+            },
+            {
+                path: ':id',
+                component: CmmsAssetPmDetailComponent,
+                canActivate: [loginGuard],
+                canDeactivate: [CanDeactivateService],
+                children: [
+                    { path: 'articles',
+                        children: [
+                            { path: '', component: AssetPmArticleListComponent, pathMatch: 'full'},
+                            { path: ':id', component: AssetPmArticleDetailComponent }
+                        ]
+                    },
+                    {
+                        path: 'archive',
+                        children: [
+                            {path: '', component: AppArchiveListComponent, pathMatch: 'full', data: { appId: ASSET_ARCHIVES } },
+                            {path: ':id', component: AppArchiveDetailComponent, data: { appId: ASSET_ARCHIVES }},
+                        ]
+                    },
+                    {
+                        path: 'pm',
+                        children: [
+                            {path: '', component: AssetPmListComponent, pathMatch: 'full' },
+                            {path: ':id', component: AssetPmDetailComponent},
+                        ]
+                    },
+                    {
+                        path: 'triggers',
+                        children: [
+                            {path: '', component: AssetTriggerListComponent, pathMatch: 'full' },
+                            {path: ':id', component: AssetTriggerDetailComponent},
+                        ]
+                    },
+                    {
+                        path: 'inspection',
+                        children: [
+                            {   path: '',
+                                component: AssetPmListComponent,
+                                pathMatch: 'full',
+                                data: { inspection: true }
+                            },
+                            {path: ':id', component: AssetPmDetailComponent, data: { inspection: true } },
+                        ]
+                    }
+                ],
+                data: { isCMMS : 'true' }
+            },
+        ]
+    },
+
+    {
         path: CMMS_ROUTING_URL,
         children: [
             {
@@ -603,7 +676,7 @@ export const cmmsRoutes: Routes = [
         ]
     },
     {
-        path: STOCK_PARTS_REUEST_URL,
+        path: STOCK_PARTS_REQUEST_URL,
         children: [
             {
                 path: LIST_URL,

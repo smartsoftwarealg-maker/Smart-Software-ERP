@@ -51,5 +51,6 @@
     "IS_LOCAL_CURRENCY":                  "La réception des importations ne peut pas être en devise locale.",
     "RECURSIVE_ASSEMBLY":                 "La composition récursive n'est pas autorisée.",
     "TESTS_EXIST":                        "Ce sujet ne peut pas être supprimé de cette ligne car il a enregistré des tests.",
-    "CMMS_PARTS_RESERVED":                "Les pièces pour ce bon de travail sont déjà réservées."
+    "CMMS_PARTS_RESERVED":                "Les pièces pour ce bon de travail sont déjà réservées.",
+    "ORDER_ALREADY_GENERATED":            "Un bon de travail est déjà généré pour cette demande."
 }

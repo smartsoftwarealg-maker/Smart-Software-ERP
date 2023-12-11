@@ -18,8 +18,8 @@ export class SalaryGridListComponent extends BaseEntityListComponent<Grid> {
     displayedColumns = [
         'category',
         'sec',
-        'baseSalary',
         'base0',
+        'base1',
         'base2',
         'base3',
         'base4',

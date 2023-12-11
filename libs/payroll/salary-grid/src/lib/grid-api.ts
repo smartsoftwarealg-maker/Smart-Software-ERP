@@ -2,12 +2,13 @@ export const GRID_URL = '/payroll/grids';
 
 export interface Grid {
     id: number;
+    description?: string;
     category?: string;
     sec?: string;
     subsection?: number;
     idx?: number;
-    base0?: number;
-    baseSalary: number;
+    base1?: number;
+    base0: number;
     base2: number;
     base3: number;
     base4: number;

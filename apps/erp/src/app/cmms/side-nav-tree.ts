@@ -25,8 +25,11 @@ import {
     ABS_CMMS_EMPLOYEES_URL,
     ABS_CMMS_FUNCTIONS,
     ABS_CMMS_CHECKLIST_URL,
-    ABS_INSPECTION_ORDER_URL, ABS_INSPECTION_URL, ABS_CMMS_GANT_URL, ABS_FURNITURE_REPORTS_URL, ABS_CMMS_REPORTS_URL
-} from "../common";
+    ABS_INSPECTION_ORDER_URL,
+    ABS_INSPECTION_URL,
+    ABS_CMMS_GANT_URL,
+    ABS_CMMS_REPORTS_URL, ABS_CMMS_ASSETS_PM_URL
+} from '../common';
 
 export const cmmsNavTree: SideNavNode = {
     name: 'CMMS',
@@ -206,6 +209,12 @@ export const cmmsNavTree: SideNavNode = {
         //     route: ABS_PREV_ORDERS_URL,
         //     accessRights: 'PREVOrder'
         // },
+        {
+            name: 'CMMS_PM',
+            icon: 'fa-solid fa-head-side-mask',
+            route: ABS_CMMS_ASSETS_PM_URL,
+            accessRights: 'Asset'
+        },
         {
             name: 'CMMS_INSPECTION_ORDERS',
             icon: 'fa-solid fa-microscope',

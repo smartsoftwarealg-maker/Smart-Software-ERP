@@ -277,7 +277,9 @@ export class AgentDetailComponent extends BaseEntityDetailComponent<Agent> imple
     override ngOnInit() {
         this.archiveSrv.appId = AGENT_ARCHIVES;
         super.ngOnInit();
-        const target = this.router.url.indexOf('agents') < 0? 'customers' : 'agents';
+        const target = this.router.url.indexOf('agents') > 0?
+            'agents' :
+            this.router.url.indexOf('suppliers') > 0? 'suppliers' : 'customers';
         const idx = this.router.url.indexOf(target);
         const url = this.router.url.substring(0, idx) + target;
         this.shellSrv.setGoBackPath(url, this.route);

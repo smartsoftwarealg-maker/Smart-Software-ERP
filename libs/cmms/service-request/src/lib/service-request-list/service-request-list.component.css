@@ -23,9 +23,10 @@ mat-table {
     flex: 2 1 200px;
 }
 
+.mat-column-statusDescription,
 .mat-column-date,
 .mat-column-number,
 .mat-column-plannedStart,
 .mat-column-plannedDue {
-    flex: 1 1 100px;
+    flex: 1 1 120px;
 }

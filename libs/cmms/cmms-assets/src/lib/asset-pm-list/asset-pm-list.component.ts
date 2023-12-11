@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BaseChildEntityListComponent } from '@ss/common/ui-base-entity';
 import { PM } from '@ss/cmms/cmms-api';
-import { AssetPmService } from '../asset-pm.service';
+import { AssetPmService } from '../services/asset-pm.service';
 import { CommonUiLangModule } from '@ss/common/ui-lang';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';

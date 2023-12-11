@@ -1,0 +1,31 @@
+<div class="size button_div size" *ngIf="form">
+    <button mat-mini-fab (click)="save()"
+            color="primary" *ngIf="isEditable">
+        <i class="fas fa-save"></i>
+    </button>
+    <button mat-mini-fab (click)="cancel()"
+            color="warn">
+        <i class="fas fa-redo"></i>
+    </button>
+</div>
+<mat-card>
+    <form novalidate [formGroup]="form" *ngIf="form">
+
+        <mat-form-field class="default-100">
+            <mat-label translate>LOGISTICS_ARTICLE</mat-label>
+            <ss-auto-complete matInput
+                              [model]="articleLookup"
+                              formControlName="partId"
+                              required="true"
+                              autofocus>
+            </ss-auto-complete>
+            <mat-error *ngIf="form.controls['partId'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="default-50 sm-100">
+            <mat-label translate>COMMON_QTY</mat-label>
+            <input matInput formControlName="qty" type="number" required>
+        </mat-form-field>
+
+    </form>
+</mat-card>

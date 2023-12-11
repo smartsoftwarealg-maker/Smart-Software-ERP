@@ -14,7 +14,8 @@ import { CommonUiLangModule } from "@ss/common/ui-lang";
 import { UiPaginationModule } from "@ss/common/ui-pagination";
 import { CommonUiAutoCompleteModule } from "@ss/common/ui-auto-complete";
 import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
-import { CommonUiConfirmationDialogModule } from "@ss/common/ui-confirmation-dialog";
+import { CommonUiConfirmationDialogModule } from '@ss/common/ui-confirmation-dialog';
+import {PaginationModel} from '@ss/common/api-common';
 
 interface FlatPaymentNode {
     expandable: boolean;
@@ -62,7 +63,7 @@ export class PaymentCompensationComponent implements OnInit {
     private SUPPLIER = 'LOGISTICS_SUPPLIER';
 
     public partner = this.AGENT;
-
+    public pagination = PaginationModel.newInstance();
     debts: Debt[] = [];
     selectedPayment: FlatPaymentNode = null;
     selectedDebt: Debt = null;
@@ -93,6 +94,8 @@ export class PaymentCompensationComponent implements OnInit {
     firstNode = (node: FlatPaymentNode) => node && this.dataSource.data[0].id === node?.id;
     constructor() {
         this.agentAutoCompleteModel.onValueChanged = value => this.onAgentChange(value);
+        this.pagination.onChange = () => this.onAgentChange(this.agentAutoCompleteModel.cache?.id);
+        this.pagination.pageSize = 50;
     }
 
     ngOnInit() {
@@ -138,11 +141,12 @@ export class PaymentCompensationComponent implements OnInit {
             .getDebts(+id)
             .pipe(switchMap(res => {
                     this.debts = res;
-                    return this.agentSrv.getPayments(+id)}),
+                    return this.agentSrv.getPayments(+id, this.pagination.page - 1, this.pagination.pageSize)}),
                 switchMap(res => {
-                    const ret = this.paymentToTree(res);
+                    this.pagination.elementCount = res.itemCount;
+                    const ret = this.paymentToTree(res.body);
                     return this.agentSrv
-                        .getCompensations(+id, res.map(e => e.id).join(','))
+                        .getCompensations(+id, res.body.map(e => e.id).join(','))
                         .pipe(map(next => {
                             this.updatePaymentTree(next, ret);
                             return ret;

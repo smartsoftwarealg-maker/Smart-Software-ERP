@@ -8,11 +8,11 @@ import { of, switchMap, tap } from "rxjs";
 
 @Directive()
 export abstract class BaseChildEntityDetailComponent<T extends { id: number, parentId: number} > {
-    private EMPTY_RECORD: T = { id: 0, parentId: 0} as T;
-    private shellSrv  = inject(ShellService);
     private router  = inject(Router);
     private confirmationSrv  = inject(ConfirmationDialogService);
 
+    protected shellSrv  = inject(ShellService);
+    protected EMPTY_RECORD: T = { id: 0, parentId: 0} as T;
     protected snackBarSrv  = inject(SnackBarService);
     protected route  = inject(ActivatedRoute);
 

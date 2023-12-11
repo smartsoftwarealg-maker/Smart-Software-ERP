@@ -14,7 +14,7 @@ import {
     COMMON_REPORTS_URL,
     LTM_LINES_URL,
     LTM_UNIT_URL, LTM_TEST_TYPE_URL
-} from "../common";
+} from '../common';
 
 import {
     LtmMatterDetailComponent,
@@ -30,18 +30,14 @@ import {
     LineMatterDetailComponent,
     LineMatterListComponent,
     LtmTestListComponent,
+    LtmTestTypeListComponent,
+    LtmTestTypeDetailComponent,
     LtmTestDetailComponent
-} from "@ss/ltm/ltm";
+} from '@ss/ltm/ltm';
 import {loginGuard} from '../erp-guards';
 import {DashboardComponent} from '@ss/dashboard';
 import {ReportViewComponent} from '@ss/common/ui-report-param';
 import { UnitDetailComponent, UnitListComponent } from '@ss/common/ui-lookup';
-import {
-    LtmTestTypeListComponent
-} from "../../../../../libs/ltm/ltm/src/lib/ltm-test-type-list/ltm-test-type-list.component";
-import {
-    LtmTestTypeDetailComponent
-} from "../../../../../libs/ltm/ltm/src/lib/ltm-test-type-list/ltm-test-type-detail.component";
 
 export const ltmRoutes: Routes = [
     {

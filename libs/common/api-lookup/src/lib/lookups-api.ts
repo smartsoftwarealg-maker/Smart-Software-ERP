@@ -109,6 +109,7 @@ export class Post {
     description: string;
     descriptionAr?: string;
     blocked: boolean;
+    grid?: number;
 }
 
 export class Category {
