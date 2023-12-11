@@ -16,7 +16,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MaterialModule } from '@ss/common/api-common';
 import { MatSelectionList } from '@angular/material/list';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
-import { CMMSWorkOrderArticleService } from '../services/c-m-m-s-work-order-article.service';
+import { CMMSWorkOrderArticleService } from '@ss/cmms/work-order';
 
 @Component({
     selector: 'ss-work-order-article-reservation',

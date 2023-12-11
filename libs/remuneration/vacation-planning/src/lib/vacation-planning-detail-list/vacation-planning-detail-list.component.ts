@@ -1,15 +1,13 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
-import {VacationPlanning, VacationPlanningDetail} from '../vacation-planning-api';
+import {VacationPlanningDetail} from '../vacation-planning-api';
 import {KeepOnToolbar, ShellService, SnackBarService, ToolbarButton} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import {PaginationModel, PaginatorPersistenceService} from '@ss/common/api-common';
-import {TransactionLine} from '@ss/logistics/api-transaction';
 import {Observable, of, zip} from 'rxjs';
 import {map, switchMap, tap} from 'rxjs/operators';
-import {VacationPlanningDetailService} from '../vacation-planning-detail.service';
+import {VacationPlanningDetailService} from "@ss/remuneration/vacation-planning";
 
 @Component({
   selector: 'ss-vacation-planning-detail-list',

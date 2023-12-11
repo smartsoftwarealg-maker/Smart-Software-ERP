@@ -13,3 +13,5 @@ export * from './lib/ltm-testing-list/ltm-testing-list.component';
 export * from './lib/ltm-testing-detail/ltm-testing-detail.component';
 export * from './lib/ltm-report/ltm-report.component';
 export * from './lib/ltm-batch-input/ltm-batch-input.component';
+export * from './lib/ltm-test-type-list/ltm-test-type-list.component';
+export * from './lib/ltm-test-type-list/ltm-test-type-detail.component';

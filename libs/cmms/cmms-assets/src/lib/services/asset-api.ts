@@ -1,5 +1,6 @@
 export const CMMS_ASSETS = '/cmms-assets';
 export const CMMS_PM = '/pm';
+export const CMMS_PM_PARTS = '/parts';
 export const CMMS_INSPECTIONS = '/inspections';
 export const ASSETS = '/assets';
 
@@ -54,4 +55,13 @@ export interface Asset {
     function?: number;
     functionDescription?: string;
     buildingDescription?: string;
+}
+
+export interface PMPart {
+    id: number;
+    parentId: number;
+    partId: number;
+    qty: number;
+    reference ? : string;
+    description ? : string;
 }

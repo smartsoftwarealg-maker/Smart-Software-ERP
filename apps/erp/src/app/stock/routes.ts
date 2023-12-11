@@ -24,7 +24,7 @@ import {
     STOCK_ACCOUNT_URL,
     STOCK_PRICE_RECALCULATION_URL,
     STOCK_CONSUMPTION_CANCELLATION_URL,
-    STOCK_PARTS_REUEST_URL,
+    STOCK_PARTS_REQUEST_URL,
     ADMIN_REPORT_RIGHTS_URL, REFERENCE_CORRECTION_URL, STOCK_RESERVATIONS_URL
 } from '../common';
 import {
@@ -251,7 +251,7 @@ export const mainRoutes: Routes = [
         ]
     },
     {
-        path: STOCK_PARTS_REUEST_URL,
+        path: STOCK_PARTS_REQUEST_URL,
         children: [
             {
                 path: LIST_URL,

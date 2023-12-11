@@ -31,8 +31,8 @@ export class AgentService extends BaseEntityExtendedService<Agent> {
         return this.httpSrv.post('/password', pwd);
     }
 
-    getPayments(id: number): Observable<Payment[]> {
-        return id? this.httpSrv.get<Payment[]>(`/agents/${id}/payments`) : of([]);
+    getPayments(id: number, offset: number, limit: number): Observable<{ body: Payment[], itemCount: number }> {
+        return id? this.httpSrv.getData<{ body: Payment[], itemCount: number }>(`/agents/${id}/payments`, offset, limit) : of({ body: [], itemCount: 0 });
     }
 
     getCompensations(agentId: number, idList: string): Observable<Accounting[]> {
