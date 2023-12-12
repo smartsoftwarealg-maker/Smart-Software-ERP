@@ -95,8 +95,10 @@ mat-table {
 
 .buttons {
     margin: 8px auto;
-    width: 150px;
+    width: 100%;
+    max-width: $table_width;
     text-align: center;
     display: flex;
-    justify-content: space-between;
+    gap: 1em;
+    justify-content: flex-end;
 }

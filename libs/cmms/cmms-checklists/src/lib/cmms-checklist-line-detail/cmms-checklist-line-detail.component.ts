@@ -27,7 +27,7 @@ export class CmmsChecklistLineDetailComponent extends BaseChildEntityDetailCompo
     private fb = inject(FormBuilder);
 
     constructor(protected override entitySrv: CMMSRoutingDetailService) {
-        super(entitySrv);
+        super(entitySrv, 'PM');
     }
 
     override setupForm(e: RoutingDetail): UntypedFormGroup {

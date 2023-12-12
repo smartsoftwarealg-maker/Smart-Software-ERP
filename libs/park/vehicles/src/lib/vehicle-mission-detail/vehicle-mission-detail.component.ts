@@ -38,7 +38,6 @@ export class VehicleMissionDetailComponent extends BaseChildEntityDetailComponen
     private fb = inject(FormBuilder);
     private driverSrv = inject(ParkPersonService);
     private personSrv = inject(EmployeeService);
-    private loginSrv  = inject(LoginService);
 
     vehicleStatesLookup: DefaultAutoCompleteModel<VehicleState> = null;
     depVehicleStatesLookup: DefaultAutoCompleteModel<VehicleState> = null;
@@ -48,7 +47,7 @@ export class VehicleMissionDetailComponent extends BaseChildEntityDetailComponen
     destinationLookup: DefaultAutoCompleteModel<Destination> = null;
 
     constructor(protected override entitySrv: VehicleMissionService) {
-        super(entitySrv);
+        super(entitySrv, 'VehicleMission');
         const vehicleStateSrv = inject(VehicleStateService);
         const destinationService = inject(DestinationService);
         this.vehicleStatesLookup = new DefaultAutoCompleteModel<VehicleState>(vehicleStateSrv);

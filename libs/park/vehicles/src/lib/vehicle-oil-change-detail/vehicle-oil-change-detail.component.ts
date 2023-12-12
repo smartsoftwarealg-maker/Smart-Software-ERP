@@ -34,7 +34,7 @@ export class VehicleOilChangeDetailComponent extends BaseChildEntityDetailCompon
     private fb = inject(FormBuilder);
 
     constructor(protected override entitySrv: VehicleOilChangeService) {
-        super(entitySrv);
+        super(entitySrv, 'OilChange');
     }
 
     setupForm(e: OilChange): UntypedFormGroup {

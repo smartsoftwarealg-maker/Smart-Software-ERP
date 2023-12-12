@@ -18,7 +18,7 @@ export class CMMSRoutingPartsDetailComponent extends BaseChildEntityDetailCompon
     articleLookup = new DefaultAutoCompleteModel(this.articleSrv, 'id', 'description2');
 
     constructor(protected override entitySrv: CMMSRoutingPartService) {
-        super(entitySrv);
+        super(entitySrv, 'RoutingPart');
     }
 
     setupForm(e: RoutingPart): UntypedFormGroup {

@@ -45,7 +45,7 @@ export class WorkPersonsDetailComponent extends BaseChildEntityDetailComponent<W
     personLookup = new PersonAutocompleteClass(this.personSrv);
 
     constructor(protected override entitySrv: CMMSWorkPersonService) {
-        super(entitySrv);
+        super(entitySrv, 'WorkPerson');
     }
 
     setupForm(e: WorkPerson): UntypedFormGroup {

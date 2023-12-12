@@ -46,7 +46,7 @@ export class WorkOrderArticleListComponent extends BaseChildEntityListComponent<
     override displayedColumns = ['reference', 'description', 'qty'];
 
     constructor(protected override detailSrv: CMMSWorkOrderArticleService) {
-        super(detailSrv);
+        super(detailSrv, 'WorkArticle');
     }
 
     reserve() {

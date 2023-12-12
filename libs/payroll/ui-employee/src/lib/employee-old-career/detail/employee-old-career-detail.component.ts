@@ -13,7 +13,7 @@ export class EmployeeOldCareerDetailComponent extends BaseChildEntityDetailCompo
 
     constructor(
         public employeeOldCareerSrv: EmployeeOldCareerService) {
-        super(employeeOldCareerSrv);
+        super(employeeOldCareerSrv, 'OldCareer');
     }
 
 

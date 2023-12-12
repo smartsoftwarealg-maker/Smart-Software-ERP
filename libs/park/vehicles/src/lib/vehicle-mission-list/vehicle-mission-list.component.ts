@@ -27,7 +27,7 @@ export class VehicleMissionListComponent extends BaseChildEntityListComponent<Ve
     ];
 
     constructor(protected override detailSrv: VehicleMissionService) {
-        super(detailSrv);
+        super(detailSrv, 'VehicleMission');
     }
 }
 

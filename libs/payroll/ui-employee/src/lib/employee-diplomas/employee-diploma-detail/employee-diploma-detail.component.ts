@@ -1,19 +1,19 @@
 import { Component, inject } from '@angular/core';
 import { BaseChildEntityDetailComponent } from '@ss/common/ui-base-entity';
 import {SubjectService} from '@ss/payroll/api-employee';
-import {EmployeeDiploma} from '../employee-diploma-api';
+import {PersonDiploma} from '../employee-diploma-api';
 import { FormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import {DiplomaService, EducationLevelService} from '@ss/common/api-lookup';
 import {EmployeeDiplomaService} from '../employee-diploma.service';
-import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {SupplierService} from '@ss/logistics/api-agent';
+import { DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
 
 @Component({
     selector: 'ss-employee-diploma-detail',
     templateUrl: './employee-diploma-detail.component.html',
     styleUrls: ['./employee-diploma-detail.component.scss']
 })
-export class EmployeeDiplomaDetailComponent extends BaseChildEntityDetailComponent<EmployeeDiploma> {
+export class EmployeeDiplomaDetailComponent extends BaseChildEntityDetailComponent<PersonDiploma> {
     private formBuilder = inject(FormBuilder);
     private diplomaSrv =  inject(DiplomaService);
     private subjectSrv =  inject(SubjectService);
@@ -24,15 +24,15 @@ export class EmployeeDiplomaDetailComponent extends BaseChildEntityDetailCompone
     diplomaAutoCompleteModel = new DefaultAutoCompleteModel(this.diplomaSrv);
     supplierAutoCompleteModel = new DefaultAutoCompleteModel(this.supplierSrv, 'id', 'denomination');
     subjectAutoCompleteModel = new DefaultAutoCompleteModel(this.subjectSrv);
-    entity: EmployeeDiploma = null;
+    // entity: PersonDiploma = null;
 
     constructor(public employeeDiplomaSrv: EmployeeDiplomaService) {
-        super(employeeDiplomaSrv);
+        super(employeeDiplomaSrv, 'PersonDiploma');
     }
 
 
-    override setupForm(a: EmployeeDiploma): UntypedFormGroup {
-        this.entity = a;
+    override setupForm(a: PersonDiploma): UntypedFormGroup {
+        // this.entity = a;
         return this.form = this.formBuilder.group({
             id: a.id,
             parentId: a.parentId || this.employeeDiplomaSrv.getParentId(),

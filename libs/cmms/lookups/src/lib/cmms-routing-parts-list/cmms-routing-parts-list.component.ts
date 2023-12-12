@@ -12,6 +12,6 @@ export class CMMSRoutingPartsListComponent extends BaseChildEntityListComponent<
     override displayedColumns = ['reference', 'description', 'qty'];
 
     constructor(protected override detailSrv: CMMSRoutingPartService) {
-        super(detailSrv);
+        super(detailSrv, 'RoutingPart');
     }
 }

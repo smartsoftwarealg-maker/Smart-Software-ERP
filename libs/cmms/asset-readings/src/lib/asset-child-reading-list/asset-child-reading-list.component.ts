@@ -52,6 +52,6 @@ export class AssetChildReadingListComponent extends BaseChildEntityListComponent
 
     constructor(
         public override detailSrv: CMMSAssetReadingService) {
-        super(detailSrv);
+        super(detailSrv, 'AssetReading');
     }
 }

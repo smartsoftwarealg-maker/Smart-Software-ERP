@@ -25,7 +25,6 @@ import { GridService } from '@ss/payroll/salary-grid';
 })
 export class EmployeeContractsDetailComponent extends BaseChildEntityDetailComponent<Contract> {
     private gridSrv = inject(GridService);
-    private loginSrv = inject(LoginService);
     private formBuilder = inject(UntypedFormBuilder);
     private postSrv =  inject(ActivePostService);
     private motiveSrv =  inject(ContractMotiveService);
@@ -40,7 +39,7 @@ export class EmployeeContractsDetailComponent extends BaseChildEntityDetailCompo
     serviceLookup = new DefaultAutoCompleteModel(this.serviceSrv);
     gridLookup = new DefaultAutoCompleteModel(this.gridSrv);
 
-    entity: Contract;
+    // entity: Contract;
     posts: Post[] = [];
     departments: Department[] = [];
     divisions: Division[] = [];
@@ -50,12 +49,12 @@ export class EmployeeContractsDetailComponent extends BaseChildEntityDetailCompo
     parentId = 0;
 
     constructor(public employeeContractSrv: EmployeeContractService) {
-        super(employeeContractSrv);
+        super(employeeContractSrv, 'Contract');
     }
 
 
     setupForm(a: Contract): UntypedFormGroup {
-        this.entity = a;
+        // this.entity = a;
         return this.form = this.formBuilder.group({
             id:           [a.id],
             parentId:     [a.parentId || this.employeeContractSrv.getParentId()],

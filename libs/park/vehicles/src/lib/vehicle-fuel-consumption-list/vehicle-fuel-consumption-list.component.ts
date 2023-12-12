@@ -20,6 +20,6 @@ export class VehicleFuelConsumptionListComponent extends BaseChildEntityListComp
     override displayedColumns = ['date', 'driverName', 'fuelDescription', 'orderNo', 'odoMeter'];
 
     constructor(protected override detailSrv: VehicleFuelConsumptionService) {
-        super(detailSrv);
+        super(detailSrv, 'FuelConsumption');
     }
 }

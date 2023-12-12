@@ -46,7 +46,7 @@ export class AssetChildReadingDetailComponent extends BaseChildEntityDetailCompo
     meterLookup = new DefaultAutoCompleteModel(this.meterSrv);
 
     constructor(public override entitySrv: CMMSAssetReadingService) {
-        super(entitySrv);
+        super(entitySrv, 'AssetReading');
     }
 
     setupForm(e: AssetReading): UntypedFormGroup {

@@ -20,7 +20,7 @@ export class DriverVehiclesListComponent extends BaseChildEntityListComponent<Dr
     override displayedColumns = ['date', 'plateNo', 'description'];
 
     constructor(protected override detailSrv: DriverVehicleService) {
-        super(detailSrv);
+        super(detailSrv, 'DriverVehicle');
     }
 }
 

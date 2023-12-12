@@ -559,6 +559,10 @@ export class ShellService {
             node.customerRights;
     }
 
+    getEntityRights(entity: string): Right {
+        return this.rightsSrv.rights.get(entity);
+    }
+
     loadUserRights(): Observable<DocRight[]> {
         return this.rightsSrv.load();
     }

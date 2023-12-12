@@ -41,7 +41,7 @@ export class EmployeeCareerDetailComponent extends BaseChildEntityDetailComponen
     departmentLookup = new DefaultAutoCompleteModel(this.departmentSrv);
     serviceLookup = new DefaultAutoCompleteModel(this.serviceSrv);
 
-    entity: Career;
+    // entity: Career;
     posts: Post[] = [];
     departments: Department[] = [];
     divisions: Division[] = [];
@@ -51,12 +51,12 @@ export class EmployeeCareerDetailComponent extends BaseChildEntityDetailComponen
 
     constructor(
         public employeeCareerSrv: EmployeeCareerService) {
-        super(employeeCareerSrv);
+        super(employeeCareerSrv, 'Career');
     }
 
     setupForm(a: Career): UntypedFormGroup {
         this.preload();
-        this.entity = a;
+        // this.entity = a;
         return this.form = this.formBuilder.group({
             id:         [a.id],
             parentId:   [a.parentId || this.employeeCareerSrv.getParentId()],
@@ -98,7 +98,7 @@ export class EmployeeCareerDetailComponent extends BaseChildEntityDetailComponen
     public override readForm(): Career {
         const formVal = this.form.value;
         const val: Career = formVal;
-        val.paymonth = +(formVal.paymonthY * 100 + formVal.paymonthM);
+        val.paymonth = (+formVal.paymonthY) * 100 + (+formVal.paymonthM);
         delete formVal.paymonthY;
         delete formVal.paymonthM;
         return val;

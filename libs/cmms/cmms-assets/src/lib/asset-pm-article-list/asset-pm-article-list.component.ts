@@ -48,7 +48,7 @@ export class AssetPmArticleListComponent extends BaseChildEntityListComponent<PM
     override displayedColumns = ['reference', 'description', 'qty'];
     parentId = new FormControl<number>(0);
     constructor(protected override detailSrv: CmmsAssetPmArticleService) {
-        super(detailSrv);
+        super(detailSrv, 'PMPart');
         this.pmLookup.onObjectSelected = p => this.onPM(p);
     }
 

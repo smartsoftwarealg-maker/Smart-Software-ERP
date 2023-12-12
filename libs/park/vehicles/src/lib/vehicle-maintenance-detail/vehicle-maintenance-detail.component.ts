@@ -40,7 +40,7 @@ export class VehicleMaintenanceDetailComponent extends BaseChildEntityDetailComp
     supplierLookup =  new DefaultAutoCompleteModel<Agent>(this.supplierSrv, 'id', 'denomination');
 
     constructor(protected override entitySrv: VehicleMaintenanceService) {
-        super(entitySrv);
+        super(entitySrv, 'VehicleMaintenance');
     }
 
     setupForm(e: VehicleMaintenance): UntypedFormGroup {

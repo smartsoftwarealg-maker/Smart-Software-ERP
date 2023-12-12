@@ -18,14 +18,14 @@ import { Post, LookupsService, Department, Division, Service, Category } from '@
 export class EmployeeChildDetailComponent extends BaseChildEntityDetailComponent<Child> {
     private formBuilder = inject(FormBuilder);
 
-    entity: Child = null;
+    // entity: Child = null;
 
     constructor(public employeeChildrenSrv: EmployeeChildrenService) {
-        super(employeeChildrenSrv);
+        super(employeeChildrenSrv, 'Child');
     }
 
     override setupForm(a: Child): UntypedFormGroup {
-        this.entity = a;
+        // this.entity = a;
         return this.form = this.formBuilder.group({
             id: a.id,
             parentId:   [a.parentId || this.employeeChildrenSrv.getParentId()],

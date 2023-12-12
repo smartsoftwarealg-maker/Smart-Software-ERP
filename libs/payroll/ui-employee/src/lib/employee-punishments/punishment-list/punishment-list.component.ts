@@ -19,6 +19,6 @@ export class PunishmentListComponent extends BaseChildEntityListComponent<Punish
     ];
 
     constructor(public entitySrv: PunishmentService) {
-        super(entitySrv);
+        super(entitySrv, 'Punishment');
     }
 }

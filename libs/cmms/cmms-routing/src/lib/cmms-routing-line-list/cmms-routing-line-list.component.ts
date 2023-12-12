@@ -13,6 +13,6 @@ export class CMMSRoutingLineListComponent extends BaseChildEntityListComponent<R
     override displayedColumns = ['order', 'description', 'teamSize', 'hours', 'cost'];
 
     constructor(protected override detailSrv: CMMSRoutingDetailService) {
-        super(detailSrv);
+        super(detailSrv, 'RoutingDetail');
     }
 }

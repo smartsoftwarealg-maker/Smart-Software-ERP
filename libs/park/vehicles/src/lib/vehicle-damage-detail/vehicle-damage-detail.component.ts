@@ -27,7 +27,7 @@ export class VehicleDamageDetailComponent extends BaseChildEntityDetailComponent
     personLookup = new PersonAutocompleteClass(this.personSrv);
 
     constructor(protected override entitySrv: VehicleDamageService) {
-        super(entitySrv);
+        super(entitySrv, 'VehicleDamage');
     }
 
     setupForm(e: VehicleDamage): UntypedFormGroup {

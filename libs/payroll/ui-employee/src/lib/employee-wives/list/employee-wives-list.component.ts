@@ -20,6 +20,6 @@ export class EmployeeWivesListComponent extends BaseChildEntityListComponent<Wif
     ];
 
     constructor(public entitySrv: EmployeeWivesService) {
-        super(entitySrv);
+        super(entitySrv, 'Wife');
     }
 }

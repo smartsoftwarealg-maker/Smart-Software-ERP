@@ -16,6 +16,6 @@ export class EmployeeChildrenListComponent extends BaseChildEntityListComponent<
     ];
 
     constructor(public entitySrv: EmployeeChildrenService) {
-        super(entitySrv);
+        super(entitySrv, 'Child');
     }
 }

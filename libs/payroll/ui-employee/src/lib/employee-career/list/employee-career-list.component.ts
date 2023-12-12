@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import {Career, EmployeeCareerService} from '@ss/payroll/api-employee';
 import { BaseChildEntityListComponent } from '@ss/common/ui-base-entity';
 
@@ -7,8 +7,9 @@ import { BaseChildEntityListComponent } from '@ss/common/ui-base-entity';
     templateUrl: './employee-career-list.component.html',
     styleUrls: ['./employee-career-list.component.scss']
 })
-export class EmployeeCareerListComponent extends BaseChildEntityListComponent<Career> {
+export class EmployeeCareerListComponent extends BaseChildEntityListComponent<Career> implements OnInit {
     private _hrMode = true;
+    canCreate = false;
 
     public displayedColumns = [
         'paymonth',
@@ -24,7 +25,7 @@ export class EmployeeCareerListComponent extends BaseChildEntityListComponent<Ca
     ];
 
     constructor(public entitySrv: EmployeeCareerService) {
-        super(entitySrv);
+        super(entitySrv, 'Career');
     }
 
     get hrMode() {

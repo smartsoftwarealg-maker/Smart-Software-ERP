@@ -40,7 +40,7 @@ export class WorkPersonsListComponent extends BaseChildEntityListComponent<WorkP
     override displayedColumns = ['firstName', 'lastName', 'description', 'from', 'to'];
 
     constructor(protected override detailSrv: CMMSWorkPersonService) {
-        super(detailSrv);
+        super(detailSrv, 'WorkPerson');
     }
 
 }

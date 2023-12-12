@@ -16,24 +16,22 @@ import { map } from 'rxjs/operators';
     styleUrls: ['./employee-activation-detail.component.scss']
 })
 export class EmployeeActivationDetailComponent extends BaseChildEntityDetailComponent<EmployeeActivation> {
-    private lookupSrv = inject(LookupsService);
-    private loginSrv = inject(LoginService);
     private suspensionReasonSrv = inject(SuspensionReasonService);
     private empTypeSrv = inject(EmploymentTypeService);
     private fb = inject(FormBuilder);
 
     empId = 0;
-    entity: EmployeeActivation;
+    // entity: EmployeeActivation;
     employmentTypes = this.empTypeSrv.getList(0, 500).pipe(map(res => res.body));
     suspensionReasons = this.suspensionReasonSrv.getList(0, 500).pipe(map(res => res.body));
 
     constructor(
         public entitySrv: EmployeeActivationService) {
-        super(entitySrv);
+        super(entitySrv, 'EmployeeActivation');
     }
 
     override setupForm(a: EmployeeActivation): UntypedFormGroup {
-        this.entity = a;
+        // this.entity = a;
         return this.fb.group({
             id:               [a.id],
             centerId:         [a.centerId || this.loginSrv.appCtx.center],

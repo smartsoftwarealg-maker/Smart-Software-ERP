@@ -1,5 +1,5 @@
 import {Component, Input} from '@angular/core';
-import {EmployeeDiploma} from '../employee-diploma-api';
+import {PersonDiploma} from '../employee-diploma-api';
 import {EmployeeDiplomaService} from '../employee-diploma.service';
 import { BaseChildEntityListComponent } from '@ss/common/ui-base-entity';
 
@@ -8,7 +8,7 @@ import { BaseChildEntityListComponent } from '@ss/common/ui-base-entity';
     templateUrl: './employee-diploma-list.component.html',
     styleUrls: ['./employee-diploma-list.component.scss']
 })
-export class EmployeeDiplomaListComponent extends BaseChildEntityListComponent<EmployeeDiploma> {
+export class EmployeeDiplomaListComponent extends BaseChildEntityListComponent<PersonDiploma> {
     @Input() editable = true;
 
     public displayedColumns = [
@@ -23,6 +23,6 @@ export class EmployeeDiplomaListComponent extends BaseChildEntityListComponent<E
     ];
 
     constructor(public entitySrv: EmployeeDiplomaService) {
-        super(entitySrv);
+        super(entitySrv, 'PersonDiploma');
     }
 }

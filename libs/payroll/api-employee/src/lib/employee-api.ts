@@ -129,7 +129,7 @@ export interface Child {
     birthPlace?: string;
 }
 
-export interface EmployeeLanguage {
+export interface PersonLanguage {
     id: number;
     parentId: number;
     languageId: number;

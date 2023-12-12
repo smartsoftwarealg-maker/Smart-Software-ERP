@@ -20,6 +20,6 @@ export class EmployeeDecisionListComponent extends BaseChildEntityListComponent<
     ];
 
     constructor(public entitySrv: EmployeeDecisionService) {
-        super(entitySrv);
+        super(entitySrv, 'Decision');
     }
 }

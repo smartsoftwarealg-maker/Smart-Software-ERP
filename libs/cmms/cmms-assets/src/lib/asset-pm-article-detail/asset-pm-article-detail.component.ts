@@ -46,7 +46,7 @@ export class AssetPmArticleDetailComponent extends BaseChildEntityDetailComponen
     articleLookup = new DefaultAutoCompleteModel(this.articleSrv, 'id', 'description2');
 
     constructor(protected override entitySrv: CmmsAssetPmArticleService) {
-        super(entitySrv);
+        super(entitySrv, 'PMPart');
     }
 
     setupForm(e: PMPart): UntypedFormGroup {

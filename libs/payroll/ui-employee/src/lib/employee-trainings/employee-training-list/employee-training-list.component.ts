@@ -29,6 +29,6 @@ export class EmployeeTrainingListComponent extends BaseChildEntityListComponent<
     ];
 
     constructor(public entitySrv: EmployeeTrainingService) {
-        super(entitySrv);
+        super(entitySrv, 'Training');
     }
 }

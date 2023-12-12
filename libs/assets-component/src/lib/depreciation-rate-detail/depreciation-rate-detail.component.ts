@@ -21,7 +21,7 @@ export class DepreciationRateDetailComponent extends BaseChildEntityDetailCompon
     private formBuilder = inject(UntypedFormBuilder);
 
     constructor(public rateSrv: DepreciationRateService) {
-        super(rateSrv);
+        super(rateSrv, 'DepreciationRate');
     }
 
     public override setupForm(a: DepreciationRate): UntypedFormGroup {

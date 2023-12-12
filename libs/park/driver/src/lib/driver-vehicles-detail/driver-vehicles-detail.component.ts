@@ -37,7 +37,7 @@ export class DriverVehiclesDetailComponent extends BaseChildEntityDetailComponen
     private fb = inject(FormBuilder);
 
     constructor(protected override entitySrv: DriverVehicleService) {
-        super(entitySrv);
+        super(entitySrv, 'DriverVehicle');
     }
 
     vehicleLookup = new DefaultAutoCompleteModel(this.vehicleSrv);

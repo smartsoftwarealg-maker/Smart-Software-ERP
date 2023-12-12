@@ -1,7 +1,7 @@
 export const EMPLOYEE_DIPLOMA_URL = '/diplomas';
 export const PERSON_URL = '/persons';
 
-export interface EmployeeDiploma {
+export interface PersonDiploma {
     id: number;
     parentId: number;
     diploma?: number;

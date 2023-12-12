@@ -20,6 +20,6 @@ export class DriverLicenseListComponent extends BaseChildEntityListComponent<Dri
     override displayedColumns = ['licenseType', 'from', 'to'];
 
     constructor(protected override detailSrv: DriverLicenseService) {
-        super(detailSrv);
+        super(detailSrv, 'DriverLicense');
     }
 }

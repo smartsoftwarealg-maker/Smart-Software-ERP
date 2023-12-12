@@ -20,6 +20,6 @@ export class PersonFaultListComponent extends BaseChildEntityListComponent<Perso
     override displayedColumns = ['faultDescription'];
 
     constructor(protected override detailSrv: PersonFaultService) {
-        super(detailSrv);
+        super(detailSrv, 'PersonFault');
     }
 }

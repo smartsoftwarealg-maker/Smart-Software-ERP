@@ -25,7 +25,7 @@ export class PersonFaultDetailComponent extends BaseChildEntityDetailComponent<P
     faultLookup = new DefaultAutoCompleteModel(this.faultSrv);
 
     constructor(protected override entitySrv: PersonFaultService) {
-        super(entitySrv);
+        super(entitySrv, 'PersonFault');
     }
 
     setupForm(e: PersonFault): UntypedFormGroup {

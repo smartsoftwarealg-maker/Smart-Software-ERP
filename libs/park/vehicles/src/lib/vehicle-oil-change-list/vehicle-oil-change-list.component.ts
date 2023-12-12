@@ -20,6 +20,6 @@ export class VehicleOilChangeListComponent extends BaseChildEntityListComponent<
     override displayedColumns = ['date', 'odometer', 'nextDate', 'nextOdometer'];
 
     constructor(protected override detailSrv: VehicleOilChangeService) {
-        super(detailSrv);
+        super(detailSrv, 'OilChange');
     }
 }

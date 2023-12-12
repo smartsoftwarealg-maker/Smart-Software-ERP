@@ -22,7 +22,7 @@ export class EmployeeOldCareerListComponent extends BaseChildEntityListComponent
 
 
     constructor(public entitySrv: EmployeeOldCareerService) {
-        super(entitySrv);
+        super(entitySrv, 'OldCareer');
     }
 
     get hrMode() {

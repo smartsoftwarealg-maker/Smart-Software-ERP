@@ -35,7 +35,7 @@ export class DriverLicenseDetailComponent extends BaseChildEntityDetailComponent
     private fb = inject(FormBuilder);
 
     constructor(protected override entitySrv: DriverLicenseService) {
-        super(entitySrv);
+        super(entitySrv, 'DriverLicense');
     }
 
     setupForm(e: DriverLicense): UntypedFormGroup {

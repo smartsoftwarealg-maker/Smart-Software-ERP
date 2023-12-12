@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { EmployeeLanguagesService, EmployeeLanguage } from '@ss/payroll/api-employee';
+import { EmployeeLanguagesService, PersonLanguage } from '@ss/payroll/api-employee';
 import { BaseChildEntityListComponent } from '@ss/common/ui-base-entity';
 
 @Component({
@@ -7,7 +7,7 @@ import { BaseChildEntityListComponent } from '@ss/common/ui-base-entity';
     templateUrl: './employee-languages-list.component.html',
     styleUrls: ['./employee-languages-list.component.scss']
 })
-export class EmployeeLanguagesListComponent extends BaseChildEntityListComponent<EmployeeLanguage>{
+export class EmployeeLanguagesListComponent extends BaseChildEntityListComponent<PersonLanguage>{
     @Input() editable = true;
 
     public displayedColumns = [
@@ -17,6 +17,6 @@ export class EmployeeLanguagesListComponent extends BaseChildEntityListComponent
     ];
 
     constructor(public entitySrv: EmployeeLanguagesService) {
-        super(entitySrv);
+        super(entitySrv, 'PersonLanguage');
     }
 }

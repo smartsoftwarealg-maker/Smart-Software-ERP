@@ -7,7 +7,7 @@ import { CommonUiLangModule } from '@ss/common/ui-lang';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTableModule } from '@angular/material/table';
 import { UiPaginationModule } from '@ss/common/ui-pagination';
-import { MaterialModule } from "@ss/common/api-common";
+import { MaterialModule } from '@ss/common/api-common';
 
 @Component({
     selector: 'ss-vehicle-insurance-list',
@@ -20,6 +20,6 @@ export class VehicleInsuranceListComponent extends BaseChildEntityListComponent<
     override displayedColumns = ['date', 'policyDescription', 'agencyDescription', 'amount'];
 
     constructor(protected override detailSrv: VehicleInsuranceService) {
-        super(detailSrv);
+        super(detailSrv, 'VehicleInsurance');
     }
 }
