@@ -5,12 +5,14 @@ import { ActivatedRoute, Router } from "@angular/router";
 import { ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
 import { FormBuilder, UntypedFormGroup, Validators } from "@angular/forms";
 import { of, switchMap, tap } from "rxjs";
+import { LoginService, Right } from "@ss/common/api-common";
 
 @Directive()
 export abstract class BaseChildEntityDetailComponent<T extends { id: number, parentId: number} > {
     private router  = inject(Router);
     private confirmationSrv  = inject(ConfirmationDialogService);
 
+    protected loginSrv = inject(LoginService);
     protected shellSrv  = inject(ShellService);
     protected EMPTY_RECORD: T = { id: 0, parentId: 0} as T;
     protected snackBarSrv  = inject(SnackBarService);
@@ -19,9 +21,10 @@ export abstract class BaseChildEntityDetailComponent<T extends { id: number, par
     public id = 0;
     public form: UntypedFormGroup | null = null;
     public isEditable = true;
+    rights: Right = {edit: false, write: false, read: false, delete: false};
 
 
-    protected constructor(protected entitySrv: BaseEntityService<T>) {}
+    protected constructor(protected entitySrv: BaseEntityService<T>, protected entity: string) {}
 
     abstract setupForm(e: T): UntypedFormGroup;
 
@@ -40,6 +43,10 @@ export abstract class BaseChildEntityDetailComponent<T extends { id: number, par
             this.form = this.setupForm(ent);
         });
         this.isEditable = this.shellSrv.getCurrentNodeRights()?.edit || false;
+        const isManager = this.loginSrv?.appCtx?.manager || false;
+        const rights = this.shellSrv.getEntityRights(this.entity);
+        this.rights = rights || {write: isManager, edit: isManager, read: isManager, delete: isManager};
+        this.isEditable = this.rights.edit;
     }
 
     readForm(): T {

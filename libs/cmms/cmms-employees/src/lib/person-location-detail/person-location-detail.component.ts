@@ -25,7 +25,7 @@ export class PersonLocationDetailComponent extends BaseChildEntityDetailComponen
     locationLookup = new DefaultAutoCompleteModel(this.locationSrv);
 
     constructor(protected override entitySrv: PersonLocationService) {
-        super(entitySrv);
+        super(entitySrv, 'PersonLocation');
     }
 
     setupForm(e: PersonLocation): UntypedFormGroup {

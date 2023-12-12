@@ -45,7 +45,7 @@ export class InspectionDetailListComponent extends BaseChildEntityListComponent<
     ];
 
     constructor(public override detailSrv: CMMSInspectionService) {
-        super(detailSrv);
+        super(detailSrv, 'CMMSInspection');
     }
 
     pass(i: Inspection, checked: boolean) {

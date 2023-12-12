@@ -41,7 +41,7 @@ export class VehicleFuelConsumptionDetailComponent extends BaseChildEntityDetail
     fuelLookup = new DefaultAutoCompleteModel(this.fuelSrv);
 
     constructor(protected override entitySrv: VehicleFuelConsumptionService) {
-        super(entitySrv);
+        super(entitySrv, 'FuelConsumption');
     }
 
     setupForm(e: FuelConsumption): UntypedFormGroup {

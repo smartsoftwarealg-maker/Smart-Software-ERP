@@ -37,7 +37,7 @@ export class AssetTriggerDetailComponent extends BaseChildEntityDetailComponent<
     assetLookup = new DefaultAutoCompleteModel(this.assetSrv);
 
     constructor(public override entitySrv: CMMSAssetTriggerService) {
-        super(entitySrv);
+        super(entitySrv, 'AssetTrigger');
     }
 
     setupForm(e: AssetReading): UntypedFormGroup {

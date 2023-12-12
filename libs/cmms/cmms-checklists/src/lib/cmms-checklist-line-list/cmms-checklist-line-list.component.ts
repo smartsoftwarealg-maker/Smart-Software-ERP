@@ -20,6 +20,6 @@ export class CmmsChecklistLineListComponent extends BaseChildEntityListComponent
     override displayedColumns = ['order', 'description', 'teamSize', 'hours', 'cost'];
 
     constructor(override detailSrv: CMMSRoutingDetailService) {
-        super(detailSrv);
+        super(detailSrv, 'RoutingDetail');
     }
 }

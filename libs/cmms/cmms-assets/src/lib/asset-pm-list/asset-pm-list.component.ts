@@ -29,7 +29,7 @@ export class AssetPmListComponent extends BaseChildEntityListComponent<PM>{
     ];
 
     constructor(protected override detailSrv: AssetPmService) {
-        super(detailSrv);
+        super(detailSrv, 'PM');
         this.detailSrv.inspection = this.route.snapshot.data['inspection'];
     }
 }

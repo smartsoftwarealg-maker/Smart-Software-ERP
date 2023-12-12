@@ -8,16 +8,16 @@ import { tap, switchMap } from 'rxjs/operators';
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { HttpService } from '@ss/common/api-common';
 import { Language, LookupsService } from '@ss/common/api-lookup';
-import { EmployeeLanguage, EmployeeLanguagesService } from '@ss/payroll/api-employee';
+import { PersonLanguage, EmployeeLanguagesService } from '@ss/payroll/api-employee';
 
 @Component({
     selector: 'ss-emp-languages-detail',
     templateUrl: './employee-languages-detail.component.html',
     styleUrls: ['./employee-languages-detail.component.scss']
 })
-export class EmployeeLanguagesDetailComponent extends BaseEntityDetailComponent<EmployeeLanguage> implements OnInit, OnDestroy {
+export class EmployeeLanguagesDetailComponent extends BaseEntityDetailComponent<PersonLanguage> implements OnInit, OnDestroy {
 
-    entity: EmployeeLanguage;
+    entity: PersonLanguage;
     languages: Language[] = [];
     languageLevels: Language[] = [];
 
@@ -46,7 +46,7 @@ export class EmployeeLanguagesDetailComponent extends BaseEntityDetailComponent<
             );
     }
 
-    override setupForm(a: EmployeeLanguage): UntypedFormGroup {
+    override setupForm(a: PersonLanguage): UntypedFormGroup {
         this.entity = a;
         return this.form = this.formBuilder.group({
             id:         [a.id],
@@ -66,8 +66,8 @@ export class EmployeeLanguagesDetailComponent extends BaseEntityDetailComponent<
             );
     }
 
-    public override readForm(): EmployeeLanguage {
-        const formVal = this.form.value as EmployeeLanguage;
+    public override readForm(): PersonLanguage {
+        const formVal = this.form.value as PersonLanguage;
         formVal.parentId = this.parentId;
         return formVal;
     }

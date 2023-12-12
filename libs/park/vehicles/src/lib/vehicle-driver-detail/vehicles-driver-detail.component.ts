@@ -41,7 +41,7 @@ export class VehiclesDriverDetailComponent extends BaseChildEntityDetailComponen
     personLookup = new PersonAutocompleteClass(this.personSrv);
 
     constructor(protected override entitySrv: VehicleDriverService) {
-        super(entitySrv);
+        super(entitySrv, 'VehicleDriver');
     }
 
     vehicleLookup = new DefaultAutoCompleteModel(this.vehicleSrv);

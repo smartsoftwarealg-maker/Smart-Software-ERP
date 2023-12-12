@@ -17,16 +17,14 @@ interface Lookup {
 
 export class UserRightsService {
     private rightsMap: Map<string, Right> = new Map<string, Right>();
-    private forms: Lookup[] = [];
 
     constructor(private httpSrv: HttpService, private loginSrv: LoginService) { }
 
     public load(): Observable<DocRight[]> {
         return this.loginSrv.isLoggedIn?
             this.httpSrv.get<Lookup[]>(FORMS_URL)
-            .pipe(switchMap(res => {
-                    this.forms = res;
-                    return this.httpSrv.get<DocRight[]>('/rights')
+                .pipe(switchMap(() => {
+                    return this.httpSrv.get<DocRight[]>('/rights');
                 }),
                 tap((res: DocRight[]) =>
                     res.forEach(e => this.rightsMap.set(e.document, { read: e.read, write: e.write, edit: e.edit, delete: e.delete}))

@@ -3,18 +3,20 @@ import { ShellService, SnackBarService } from "@ss/common/ui-shell";
 import { ActivatedRoute, Router } from "@angular/router";
 import { ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
 import { BaseEntityService } from "@ss/common/api-base-entity";
-import { PaginationModel } from "@ss/common/api-common";
+import { LoginService, PaginationModel, Right } from "@ss/common/api-common";
 import { map, Observable, of } from "rxjs";
 import { Sort } from "@angular/material/sort";
 
 @Directive()
 export class BaseChildEntityListComponent<T extends { id: number }> implements OnInit {
+    private   loginSrv = inject(LoginService);
     protected shellSrv  = inject(ShellService);
     protected confirmationSrv  = inject(ConfirmationDialogService);
     protected snackBarSrv  = inject(SnackBarService);
     protected router  = inject(Router);
     protected route  = inject(ActivatedRoute);
 
+    rights: Right = {read: false, edit: false, write: false, delete: false};
     paginator = PaginationModel.newInstance( );
     selectedId = 0;
     data$: Observable<T[]> = of([]);
@@ -22,15 +24,17 @@ export class BaseChildEntityListComponent<T extends { id: number }> implements O
     displayedColumns = ['id'];
     isEditable = false;
 
-    constructor(protected detailSrv: BaseEntityService<T>) {
+    constructor(protected detailSrv: BaseEntityService<T>, protected entity: string) {
         this.paginator.onChange = () => this.refresh();
         this.paginator.pageSize = 5;
     }
 
     ngOnInit(): void {
         this.refresh();
-        const rights = this.shellSrv.getCurrentNodeRights();
-        this.isEditable = rights.edit;
+        const rights = this.shellSrv.getEntityRights(this.entity);
+        const isManager = this.loginSrv.appCtx.manager;
+        this.rights = rights || {write: isManager, edit: isManager, delete: isManager, read: isManager};
+        this.isEditable = rights?.edit || false;
     }
 
     showDetail(id: number) {

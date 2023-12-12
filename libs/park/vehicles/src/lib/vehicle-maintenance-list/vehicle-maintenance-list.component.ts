@@ -20,7 +20,7 @@ export class VehicleMaintenanceListComponent extends BaseChildEntityListComponen
     override displayedColumns = ['date', 'description', 'supplierName', 'invoiceNo'];
 
     constructor(protected override detailSrv: VehicleMaintenanceService) {
-        super(detailSrv);
+        super(detailSrv, 'VehicleMaintenance');
     }
 
 }

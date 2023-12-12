@@ -32,6 +32,6 @@ export class AssetTriggerListComponent extends BaseChildEntityListComponent<Asse
     ];
 
     constructor(protected override detailSrv: CMMSAssetTriggerService) {
-        super(detailSrv);
+        super(detailSrv, 'AssetTrigger');
     }
 }

@@ -26,7 +26,7 @@ export class AssetBlockingDetailComponent extends BaseChildEntityDetailComponent
 
     constructor(
         public assetBlockingSrv: AssetBlockingService) {
-        super(assetBlockingSrv);
+        super(assetBlockingSrv, 'Blocking');
     }
 
     public override setupForm(a: Blocking): UntypedFormGroup {

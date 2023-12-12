@@ -11,19 +11,18 @@ import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
     styleUrls: ['./employee-decision-detail.component.scss']
 })
 export class EmployeeDecisionDetailComponent extends BaseChildEntityDetailComponent<Decision> {
-    private loginSrv = inject(LoginService);
     private formBuilder = inject(FormBuilder);
     private motiveSrv = inject(DecisionMotiveService);
     decisionLookup = new DefaultAutoCompleteModel(this.motiveSrv);
 
-    entity: Decision;
+    // entity: Decision;
 
     constructor(public employeeDecisionSrv: EmployeeDecisionService) {
-        super(employeeDecisionSrv);
+        super(employeeDecisionSrv, 'Decision');
     }
 
     override setupForm(a: Decision): UntypedFormGroup {
-        this.entity = a;
+        // this.entity = a;
         return this.form = this.formBuilder.group({
             id: a.id,
             parentId:           [a.parentId || this.entitySrv.getParentId()],

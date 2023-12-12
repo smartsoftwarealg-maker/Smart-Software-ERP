@@ -20,6 +20,6 @@ export class JournalUserListComponent extends  BaseChildEntityListComponent <Jou
     override displayedColumns = ['fullName'];
 
     constructor(protected override detailSrv: JournalUserService) {
-        super(detailSrv);
+        super(detailSrv, 'JournalUser');
     }
 };

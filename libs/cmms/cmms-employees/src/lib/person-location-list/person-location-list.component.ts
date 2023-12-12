@@ -19,6 +19,6 @@ export class PersonLocationListComponent extends BaseChildEntityListComponent<Pe
     override displayedColumns = ['locationDescription'];
 
     constructor(protected override detailSrv: PersonLocationService) {
-        super(detailSrv);
+        super(detailSrv, 'PersonLocation');
     }
 }

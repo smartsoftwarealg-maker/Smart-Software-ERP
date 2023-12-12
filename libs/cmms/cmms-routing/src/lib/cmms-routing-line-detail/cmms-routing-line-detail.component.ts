@@ -13,7 +13,7 @@ export class CMMSRoutingLineDetailComponent extends BaseChildEntityDetailCompone
     private fb = inject(FormBuilder);
 
     constructor(protected override entitySrv: CMMSRoutingDetailService) {
-        super(entitySrv);
+        super(entitySrv, 'RoutingDetail');
     }
 
     override setupForm(e: RoutingDetail): UntypedFormGroup {

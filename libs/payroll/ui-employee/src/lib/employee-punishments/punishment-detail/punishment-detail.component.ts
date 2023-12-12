@@ -17,15 +17,14 @@ import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 })
 export class PunishmentDetailComponent extends BaseChildEntityDetailComponent<Punishment> {
     private formBuilder = inject(FormBuilder);
-    private loginSrv = inject(LoginService);
     private faultSrv =  inject(ProfessionalFaultService);
     private punishTypeSrv =  inject(PunishmentTypeService);
 
     faultAutoCompleteModel = new DefaultAutoCompleteModel(this.faultSrv);
     punishmentTypeAutoCompleteModel = new DefaultAutoCompleteModel(this.punishTypeSrv);
 
-    constructor(public detailSrv: PunishmentService) {
-        super(detailSrv);
+    constructor(protected detailSrv: PunishmentService) {
+        super(detailSrv, 'Punishment');
     }
 
     override setupForm(a: Punishment): UntypedFormGroup {

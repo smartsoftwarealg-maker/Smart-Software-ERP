@@ -24,7 +24,7 @@ export class EmployeeActivationListComponent extends BaseChildEntityListComponen
     public employmentTypes: { [id: number]: string; };
 
     constructor(public entitySrv: EmployeeActivationService) {
-        super(entitySrv);
+        super(entitySrv, 'Activation');
     }
 
 }

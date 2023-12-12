@@ -37,7 +37,7 @@ export class JournalUserDetailComponent extends BaseChildEntityDetailComponent<J
 
 
     constructor(protected override entitySrv: JournalUserService) {
-        super(entitySrv);
+        super(entitySrv, 'JournalUser');
     }
 
     setupForm(e: JournalUser): UntypedFormGroup {

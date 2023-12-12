@@ -37,6 +37,6 @@ export class EmployeeContractListComponent extends BaseChildEntityListComponent<
     public selected = 0;
 
     constructor(public entitySrv: EmployeeContractService) {
-        super(entitySrv);
+        super(entitySrv, 'Contract');
     }
 }

@@ -13,23 +13,20 @@ import { Post, Department, Division, Service, Category } from '@ss/common/api-lo
 export class EmployeeWifeDetailComponent extends BaseChildEntityDetailComponent<Wife> {
     private formBuilder = inject(FormBuilder);
 
-    entity: Wife;
-    posts: Post[] = [];
-    departments: Department[] = [];
-    divisions: Division[] = [];
-    services: Service[] = [];
-    categories: Category[] = [];
+    // posts: Post[] = [];
+    // departments: Department[] = [];
+    // divisions: Division[] = [];
+    // services: Service[] = [];
+    // categories: Category[] = [];
 
-    parentId = 0;
+    // parentId = 0;
 
-    constructor(
-        public employeeWivesSrv: EmployeeWivesService) {
-        super(employeeWivesSrv);
+    constructor(protected employeeWivesSrv: EmployeeWivesService) {
+        super(employeeWivesSrv, 'Wife');
     }
 
 
     override setupForm(a: Wife): UntypedFormGroup {
-        this.entity = a;
         return this.form = this.formBuilder.group({
             id:         [a.id],
             parentId:   [a.parentId || this.employeeWivesSrv.getParentId()],

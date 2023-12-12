@@ -18,7 +18,7 @@ export class AssetRevaluationDetailComponent extends BaseChildEntityDetailCompon
     revaluationLookup = new DefaultAutoCompleteModel(this.revaluationLookupSrv);
 
     constructor(public assetRevaluationSrv: AssetRevaluationService) {
-        super(assetRevaluationSrv);
+        super(assetRevaluationSrv, 'AssetRevaluation');
     }
 
     public override setupForm(a: AssetRevaluation): UntypedFormGroup {

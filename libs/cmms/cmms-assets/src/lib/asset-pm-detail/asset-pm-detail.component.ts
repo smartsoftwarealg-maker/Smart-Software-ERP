@@ -47,7 +47,6 @@ export class AssetPmDetailComponent extends BaseChildEntityDetailComponent<PM> {
     private planSrv = inject(CMMSPlanService);
     private assetSrv = inject(AssetsService);
     private prioritySrv = inject(CMMSPriorityService);
-    private loginSrv = inject(LoginService);
     private fb = inject(FormBuilder);
 
     planLookup = new DefaultAutoCompleteModel(this.planSrv);
@@ -60,7 +59,7 @@ export class AssetPmDetailComponent extends BaseChildEntityDetailComponent<PM> {
     isChecklist = false;
 
     constructor(protected override entitySrv: AssetPmService) {
-        super(entitySrv);
+        super(entitySrv, 'PM');
         this.isChecklist = this.route.snapshot.data['inspection'] ?? false;
         this.entitySrv.inspection = this.isChecklist;
     }

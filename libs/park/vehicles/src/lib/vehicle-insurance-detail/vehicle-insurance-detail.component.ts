@@ -29,7 +29,7 @@ export class VehicleInsuranceDetailComponent extends BaseChildEntityDetailCompon
     agencyLookup = new DefaultAutoCompleteModel(this.agencySrv);
 
     constructor(protected override entitySrv: VehicleInsuranceService) {
-        super(entitySrv);
+        super(entitySrv, 'VehicleInsurance');
     }
 
     setupForm(e: VehicleInsurance): UntypedFormGroup {

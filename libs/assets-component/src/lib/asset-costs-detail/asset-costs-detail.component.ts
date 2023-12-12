@@ -27,7 +27,7 @@ export class AssetCostsDetailComponent extends BaseChildEntityDetailComponent<As
 
     constructor(
         public assetCostSrv: AssetCostsService) {
-        super(assetCostSrv);
+        super(assetCostSrv, 'AssetCost');
     }
 
     public override setupForm(a: AssetCost): UntypedFormGroup {

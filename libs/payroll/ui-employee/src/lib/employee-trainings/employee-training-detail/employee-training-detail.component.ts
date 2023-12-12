@@ -2,7 +2,6 @@ import { Component, inject } from '@angular/core';
 import { BaseChildEntityDetailComponent } from '@ss/common/ui-base-entity';
 import {Training} from '../employee-training';
 import { FormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
-import {LoginService} from '@ss/common/api-common';
 import {DiplomaService} from '@ss/common/api-lookup';
 import {JudicialFrameService, MotiveService} from '@ss/payroll/api-employee';
 import {EmployeeTrainingService} from '../employee-training.service';
@@ -17,14 +16,13 @@ export class EmployeeTrainingDetailComponent extends BaseChildEntityDetailCompon
     private formBuilder = inject(FormBuilder);
     private motiveSrv =  inject(MotiveService);
     private diplomaSrv =  inject(DiplomaService);
-    private loginSrv =  inject(LoginService);
     private judicialSrv = inject(JudicialFrameService);
     motiveAutoCompleteModel = new DefaultAutoCompleteModel(this.motiveSrv);
     diplomaAutoCompleteModel = new DefaultAutoCompleteModel(this.diplomaSrv);
     judicialFrameAutoCompleteModel = new DefaultAutoCompleteModel(this.judicialSrv);
 
     constructor(public trainingSrv: EmployeeTrainingService) {
-        super(trainingSrv);
+        super(trainingSrv, 'Training');
     }
 
 

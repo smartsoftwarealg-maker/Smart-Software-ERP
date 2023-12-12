@@ -44,7 +44,7 @@ export class WorkOrderArticleDetailComponent extends BaseChildEntityDetailCompon
     articleLookup = new DefaultAutoCompleteModel(this.articleSrv, 'id', 'description2');
 
     constructor(protected override entitySrv: CMMSWorkOrderArticleService) {
-        super(entitySrv);
+        super(entitySrv, 'WorkArticle');
     }
 
     setupForm(e: WorkArticle): UntypedFormGroup {
