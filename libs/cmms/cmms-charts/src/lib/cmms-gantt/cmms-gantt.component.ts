@@ -1,19 +1,17 @@
-import { AfterViewInit, Component, inject, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ChartService } from '../chart.service';
 import { ShellService } from '@ss/common/ui-shell';
 import { ActivatedRoute } from '@angular/router';
-import { ChartType, GoogleChartComponent, GoogleChartsModule, Row } from 'angular-google-charts';
-import { Gantt } from '../chart-api';
 import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
 import { MaterialModule } from '@ss/common/api-common';
 import { FormControl } from '@angular/forms';
-import { CommonUiLangModule } from "@ss/common/ui-lang";
+import { CommonUiLangModule } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-cmms-gantt',
     standalone: true,
-    imports: [CommonModule, GoogleChartsModule, CommonUiDatepickerModule, MaterialModule, CommonUiLangModule],
+    imports: [CommonModule, CommonUiDatepickerModule, MaterialModule, CommonUiLangModule],
     templateUrl: './cmms-gantt.component.html',
     styleUrls: ['./cmms-gantt.component.css'],
 })
@@ -39,7 +37,7 @@ export class CmmsGanttComponent implements OnInit, AfterViewInit {
         }
     };
 
-    chartType = ChartType.Gantt;
+    // chartType = ChartType.Gantt;
     columns = [
         { type: 'string', role: 'Task ID' },
         { type: 'string', role: 'Task Name' },
@@ -56,10 +54,8 @@ export class CmmsGanttComponent implements OnInit, AfterViewInit {
         this.refresh(this.dateFilter.value);
     }
 
-    @ViewChild(GoogleChartComponent) chart: GoogleChartComponent;
     content: string;
 
-    data: Row[] = [[ ]];
     loaded = false;
 
     ngAfterViewInit(): void {
@@ -97,20 +93,20 @@ export class CmmsGanttComponent implements OnInit, AfterViewInit {
     }
 
     refresh(date: Date) {
-        this.chartSrv
-            .gantt(new Date(date))
-            .subscribe(res => {
-                this.data = res.map((g: Gantt) => [
-                    g.description.substring(0, 10),
-                    g.description,
-                    null,
-                    new Date(g.startDate || new Date()),
-                    null,
-                    Math.max(g.duration, 24) * 3600 * 1000,
-                    g.completed,
-                    null
-                ]);
-                this.loaded = res.length > 0;
-            });
+        // this.chartSrv
+        //     .gantt(new Date(date))
+        //     .subscribe(res => {
+        //         this.data = res.map((g: Gantt) => [
+        //             g.description.substring(0, 10),
+        //             g.description,
+        //             null,
+        //             new Date(g.startDate || new Date()),
+        //             null,
+        //             Math.max(g.duration, 24) * 3600 * 1000,
+        //             g.completed,
+        //             null
+        //         ]);
+        //         this.loaded = res.length > 0;
+        //     });
     }
 }
