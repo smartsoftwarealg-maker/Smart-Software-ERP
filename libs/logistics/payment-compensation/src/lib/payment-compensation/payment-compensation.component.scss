@@ -55,6 +55,7 @@ mat-tree {
 }
 .list__div {
     height: calc(100% - 80px);
+    overflow-y: auto;
 }
 .cancel {
     grid-area: cancel;
@@ -116,4 +117,6 @@ table {
     justify-self: flex-end;
     text-align: end;
     margin-left: 0.5em;
+    display: flex;
+    align-items: center;
 }
