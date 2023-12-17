@@ -3,16 +3,19 @@ import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {Article, Quota, Schedule, ScheduleService} from '@ss/scheduled-sales/api-scheduled-sales';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
-import {UntypedFormBuilder, Validators} from '@angular/forms';
-import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
+import { ReactiveFormsModule, UntypedFormBuilder, Validators } from "@angular/forms";
+import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
 import {LookupsService} from '@ss/common/api-lookup';
-import {LoginService} from '@ss/common/api-common';
-import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
+import { LoginService, MaterialModule } from "@ss/common/api-common";
+import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from "@ss/common/ui-auto-complete";
 import {Agent, CustomerService} from '@ss/logistics/api-agent';
-import {DatePipe} from '@angular/common';
+import { CommonModule, DatePipe } from "@angular/common";
 import {MatSelectChange} from '@angular/material/select';
 import {switchMap, tap} from 'rxjs';
 import {debounceTime, distinctUntilChanged} from 'rxjs/operators';
+import { CommonUiLangModule } from "@ss/common/ui-lang";
+import { UiPaginationModule } from "@ss/common/ui-pagination";
+import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
 
 // type Article = { id: number, reference: string, description: string};
 
@@ -20,6 +23,17 @@ import {debounceTime, distinctUntilChanged} from 'rxjs/operators';
     selector: 'ss-sales-schedule-detail',
     templateUrl: './sales-schedule-detail.component.html',
     styleUrls: ['./sales-schedule-detail.component.scss'],
+    standalone: true,
+    imports: [
+        CommonModule,
+        MaterialModule,
+        CommonUiLangModule,
+        UiPaginationModule,
+        ReactiveFormsModule,
+        CommonUiConfirmationDialogModule,
+        CommonUiDatepickerModule,
+        CommonUiAutoCompleteModule,
+    ],
 })
 export class SalesScheduleDetailComponent extends BaseEntityDetailComponent<Schedule> {
     private loginSrv  = inject(LoginService);

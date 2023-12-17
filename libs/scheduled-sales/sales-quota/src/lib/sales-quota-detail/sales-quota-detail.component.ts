@@ -3,17 +3,32 @@ import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {Quota, SSArticleService, SSQuotaService} from '@ss/scheduled-sales/api-scheduled-sales';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
-import {UntypedFormBuilder, Validators} from '@angular/forms';
-import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
+import { ReactiveFormsModule, UntypedFormBuilder, Validators } from "@angular/forms";
+import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
 import {DiscountService, LookupsService} from '@ss/common/api-lookup';
-import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
+import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from "@ss/common/ui-auto-complete";
 import {Agent, CustomerService} from '@ss/logistics/api-agent';
-import {LoginService} from '@ss/common/api-common';
+import { LoginService, MaterialModule } from "@ss/common/api-common";
+import { CommonModule } from "@angular/common";
+import { CommonUiLangModule } from "@ss/common/ui-lang";
+import { UiPaginationModule } from "@ss/common/ui-pagination";
+import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
 
 @Component({
     selector: 'ss-sales-quota-detail',
     templateUrl: './sales-quota-detail.component.html',
     styleUrls: ['./sales-quota-detail.component.scss'],
+    standalone: true,
+    imports: [
+        CommonModule,
+        MaterialModule,
+        CommonUiLangModule,
+        UiPaginationModule,
+        ReactiveFormsModule,
+        CommonUiConfirmationDialogModule,
+        CommonUiDatepickerModule,
+        CommonUiAutoCompleteModule,
+    ],
 })
 export class SalesQuotaDetailComponent extends BaseEntityDetailComponent<Quota> {
     private customerSrv = inject(CustomerService);

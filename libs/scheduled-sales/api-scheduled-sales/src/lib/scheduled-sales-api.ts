@@ -3,7 +3,7 @@ import {ImageModel} from '@ss/common/ui-image-input';
 export const SS_PROJECT_URL     = '/ssales/projects';
 export const SS_ARTICLE_URL     = '/ssales/articles';
 export const SS_SCHEDULE_URL    = '/schedules';
-export const SS_QUOTA_URL       = '/ssales/quotas';
+export const SS_QUOTA_URL       = '/quotas';
 export const SS_MODE_URL        = '/ssales/modes';
 export const SS_TRUCK_URL       = '/ssales/trucks';
 export const SS_CONTRACT_URL    = '/ssales/supplier-contracts';
