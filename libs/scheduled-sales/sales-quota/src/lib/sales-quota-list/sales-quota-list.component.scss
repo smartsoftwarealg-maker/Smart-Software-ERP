@@ -17,11 +17,14 @@
 }
 
 .container_div {
-    width: 90%;
-    max-width: 1100px;
     overflow-x: auto;
-    margin: 0 auto;
-    min-height: calc(100% - 64px);
+    min-height: calc(100% - 72px);
+}
+
+.size, container_div {
+    width: 90%;
+    max-width: 1200px;
+    margin: 4px auto 0;
 }
 .content-div {
     min-width: 800px;
