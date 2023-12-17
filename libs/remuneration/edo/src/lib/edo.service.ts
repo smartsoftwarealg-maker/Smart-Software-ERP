@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpService, LanguageService, LoginService} from '@ss/common/api-common';
+import { dateToYmdStr, HttpService, LanguageService, LoginService } from "@ss/common/api-common";
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 import {HttpParams} from '@angular/common/http';
@@ -29,7 +29,7 @@ export class EdoService {
             .set('period', period + '')
             .set('banks', bankList.join(','))
             .set('bank', edo.bank + '')
-            .set('date', this.langSrv.formatDate(edo.date))
+            .set('date', dateToYmdStr(new Date(edo.date)))
             .set('all', edo.all);
         return this.httpSrv
             .get<{ edo: string[]}>('/payroll/edo', params)

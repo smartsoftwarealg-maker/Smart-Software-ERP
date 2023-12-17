@@ -41,12 +41,12 @@ export const cmmsNavTree: SideNavNode = {
             route: ABS_CMMS_CHARTS_URL,
             accessRights: 'KPI'
         },
-        {
-            name: 'CMMS_GANTT',
-            icon: 'fa-solid fa-chart-gantt',
-            route: ABS_CMMS_GANT_URL,
-            accessRights: 'Gantt'
-        },
+        // {
+        //     name: 'CMMS_GANTT',
+        //     icon: 'fa-solid fa-chart-gantt',
+        //     route: ABS_CMMS_GANT_URL,
+        //     accessRights: 'Gantt'
+        // },
         {
             name: 'ASSET_END_TYPES',
             icon: 'fa-solid fa-person-walking-dashed-line-arrow-right',

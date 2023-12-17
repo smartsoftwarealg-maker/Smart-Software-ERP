@@ -4,14 +4,5 @@
     <ss-date-picker [formControl]="dateFilter" (dateChange)="refresh($event)"></ss-date-picker>
   </mat-form-field>
 </div>
-<div class="chart_div size" *ngIf="loaded">
-  <google-chart
-    #chart
-    [height]="700"
-    [width]="900"
-    [type]="chartType"
-    [data]="data"
-    [options]="options"
-    [columns]="columns">
-  </google-chart>
-</div>
+
+<canvas id="chart" class="chart" ></canvas>
