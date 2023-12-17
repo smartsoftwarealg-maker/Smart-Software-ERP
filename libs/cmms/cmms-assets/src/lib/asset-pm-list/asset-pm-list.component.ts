@@ -19,7 +19,7 @@ import { MaterialModule } from '@ss/common/api-common';
 })
 export class AssetPmListComponent extends BaseChildEntityListComponent<PM>{
     override displayedColumns = [
-        'reference',
+        // 'reference',
         'description',
         // 'assetDescription',
         'planDescription',

@@ -13,7 +13,7 @@
                             <mat-label translate>PAYROLL_EMPLOYEE</mat-label>
                             <ss-auto-complete matInput
                                               [required]="true"
-                                              [model]="employeeAutoCompleteModel"
+                                              [model]="employeeLookup"
                                               formControlName="employee">
                             </ss-auto-complete>
                             <mat-error
@@ -25,7 +25,7 @@
                             <mat-label translate>REMUN_FIELD</mat-label>
                             <ss-auto-complete matInput
                                               [required]="true"
-                                              [model]="infoLookupModel"
+                                              [model]="elementLookup"
                                               formControlName="elementId">
                             </ss-auto-complete>
                             <mat-error
@@ -80,7 +80,7 @@
                             <mat-label translate>REMUN_FIELD</mat-label>
                             <ss-auto-complete matInput
                                               [required]="true"
-                                              [model]="infoLookupModel"
+                                              [model]="elementLookup"
                                               formControlName="elementId">
                             </ss-auto-complete>
                             <mat-error

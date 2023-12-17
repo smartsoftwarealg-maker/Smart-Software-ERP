@@ -44,7 +44,7 @@
     grid-area: payments;
     display: flex;
     flex-direction: column;
-    overflow-y: auto;
+    overflow: auto;
 }
 mat-tree {
     flex-grow: 1;
@@ -54,7 +54,7 @@ mat-tree {
     overflow: hidden;
 }
 .list__div {
-    height: 100%;
+    height: calc(100% - 80px);
     overflow-y: auto;
 }
 .cancel {
@@ -94,6 +94,8 @@ table {
 
 .td__description {
     width: 320px;
+    max-width: 350px;
+    overflow-x: hidden;
 }
 
 .td__amount {
@@ -108,9 +110,13 @@ table {
 }
 .debt_description {
     flex: 1 1 250px;
+    white-space: normal;
 }
 .debt_amount {
     flex: 1 1 100px;
     justify-self: flex-end;
     text-align: end;
+    margin-left: 0.5em;
+    display: flex;
+    align-items: center;
 }

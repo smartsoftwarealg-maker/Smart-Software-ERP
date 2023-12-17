@@ -22,8 +22,8 @@ export class PayrollAmendmentDetailComponent extends BaseEntityDetailComponent<A
     private employeeSrv  = inject(EmployeeService);
     private loginSrv  = inject(LoginService);
 
-    infoLookupModel = new ElementInfoLookupModel(new ElementsInfoService(this.httpSrv));
-    employeeAutoCompleteModel = new PersonAutocompleteClass(this.employeeSrv);
+    elementLookup = new ElementInfoLookupModel(new ElementsInfoService(this.httpSrv));
+    employeeLookup = new PersonAutocompleteClass(this.employeeSrv);
 
     constructor(
         private detailSrv: PayrollAmendmentService,
@@ -33,6 +33,7 @@ export class PayrollAmendmentDetailComponent extends BaseEntityDetailComponent<A
         public override formBuilder: UntypedFormBuilder,
         public override confirmationSrv: ConfirmationDialogService) {
         super(detailSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'REMUN_AMENDMENTS');
+        this.elementLookup.onObjectSelected = e => this.form?.controls['element'].setValue(e.field);
     }
 
     setupForm(e: Amendment): UntypedFormGroup {
@@ -66,7 +67,6 @@ export class PayrollAmendmentDetailComponent extends BaseEntityDetailComponent<A
             new_value: value.new_value,
             percentage: value.percentage
         });
-
         this.detailSrv
             .insertAll(list)
             .subscribe(res => {
