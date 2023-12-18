@@ -4,7 +4,7 @@ import { FormGroup, UntypedFormBuilder, Validators } from '@angular/forms';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute } from '@angular/router';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
-import { BaseLookupService } from '../../../../../common/api-common/src/lib/base-lookup.service';
+import { BaseLookupService } from '@ss/common/api-common';
 
 export class BaseLookupDetailClass extends BaseEntityDetailComponent<Lookup> {
     protected constructor(

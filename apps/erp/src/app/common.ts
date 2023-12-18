@@ -336,13 +336,14 @@ export const LTM_BATCH_URL       = 'ltm-batch';
 export const LTM_TEST_TYPE_URL       = 'test-types';
 
 // CMMS
+export const CMMS_PERMIT_TYPE_URL        = 'permit-types';
 export const CMMS_FAULTS_URL        = 'cmms-faults';
 export const CMMS_STATUS_URL        = 'cmms-status';
 export const CMMS_PRIORITY_URL      = 'cmms-priority';
-export const CMMS_FAULT_CAUSE_URL   = 'cmms-csuses';
-export const CMMS_ROOT_CAUSE_URL    = 'cmms-root-csuses';
+export const CMMS_FAULT_CAUSE_URL   = 'cmms-causes';
+export const CMMS_ROOT_CAUSE_URL    = 'cmms-root-causes';
 export const CMMS_TYPE_URL          = 'cmms-types';
-export const CMMS_ROUTING_URL       = 'cmms-routings';
+export const CMMS_ROUTING_URL       = 'cmms-routing';
 export const CMMS__PLANS__URL       = 'cmms-plans';
 export const CMMS__PM__URL          = 'cmms-pm';
 export const CMMS_ALERT_URL         = 'cmms-alerts';
@@ -684,6 +685,7 @@ export const ABS_CMMS_LOCATIONS = '/' + [MAIN_PAGE_URL, CMMS_APP_URL, ASSET_LOCA
 export const ABS_CMMS_EMPLOYEES_URL = '/' + [MAIN_PAGE_URL, CMMS_APP_URL, CMMS_EMPLOYEES_URL].join('/');
 export const ABS_CMMS_FUNCTIONS = '/' + [MAIN_PAGE_URL, CMMS_APP_URL, CMMS_FUNCTION_URL].join('/');
 export const ABS_CMMS_REPORTS_URL = '/' + [MAIN_PAGE_URL, CMMS_APP_URL, COMMON_REPORTS_URL].join('/');
+export const ABS_CMMS_PERMIT_TYPES_URL = '/' + [MAIN_PAGE_URL, CMMS_APP_URL, CMMS_PERMIT_TYPE_URL].join('/');
 
 // Costing
 export const ABS_COSTING_ITEMS = '/' + [MAIN_PAGE_URL, COSTING_APP_URL, COSTING_ITEMS_URL].join('/');

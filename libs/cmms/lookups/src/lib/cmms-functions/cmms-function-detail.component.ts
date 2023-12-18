@@ -4,7 +4,6 @@ import { ActivatedRoute, RouterOutlet } from '@angular/router';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { ReactiveFormsModule, UntypedFormBuilder } from '@angular/forms';
 import { BaseLookupDetailClass } from '../detail-template/base-lookup-detail.class';
-import { CMMSPriorityService } from '../services/cmms.priority.service';
 import { CommonModule } from '@angular/common';
 import { CommonUiLangModule } from '@ss/common/ui-lang';
 import { MatSortModule } from '@angular/material/sort';
@@ -18,7 +17,7 @@ import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
 import { CMMSFunctionService } from '../services/cmms.function.service';
 
 @Component({
-    selector: 'ss-cmms-priority-detail',
+    selector: 'ss-cmms-function-detail',
     standalone: true,
     imports: [
         CommonModule,

@@ -85,5 +85,11 @@
     "EXECUTED_BY":                "Executed by",
     "CLOSED_BY":                  "Closed by",
     "DOWNTIME":                   "equipment downtime",
-    "TOTAL_HOURS":                "Total hours"
+    "TOTAL_HOURS":                "Total hours",
+    "PERMITS":                    "Work permits",
+    "AUTHORIZER":                 "Authorized by",
+    "WORK_DETAIL":                "Work detail",
+    "PRECAUTIONS":                "Safety precautions",
+    "PRE_WORK":                   "Pre work checklist",
+    "POST_WORK":                  "Post work checklist"
 }

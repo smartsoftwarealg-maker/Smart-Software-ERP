@@ -1,16 +1,10 @@
 <div class="b-primary info-div size">
-    <div class="default-50 sm-100 header">{{ 'COMMON_OLD_BALANCE'| translate }}: <span
-        class="amount"> {{ balance | number: '1.2-2' }}  </span></div>
-    <div class="default-50 sm-100 header">{{ 'SCH_REMAINING_QTY' | translate }} : <span
-        class="amount">{{ remainingQty | number: '1.2-2' }}</span></div>
-    <div class="default-50 header">{{ 'SCH_SCHEDULED_QTY' | translate }} : <span
-        class="amount">{{ qty | number: '1.2-2' }}</span></div>
-    <div class="default-50 header">{{ 'LOGISTICS_PRICE' | translate }}: <span
-        class="amount">{{ price | number: '1.2-2' }}</span></div>
-    <div class="default-50 header">{{ 'COMMON_AMOUNT' | translate }} : <span
-        class="amount">{{ qty * price | number: '1.2-2' }}</span></div>
-    <div class="default-50 sm-100 header">{{ 'COMMON_BALANCE' | translate }} : <span
-        class="amount">{{ balance - qty * price | number: '1.2-2' }}</span></div>
+    <div class="default-50 sm-100 header">{{ 'COMMON_OLD_BALANCE'| translate }}: <span class="amount"> {{ balance | number: '1.2-2' }}  </span></div>
+    <div class="default-50 sm-100 header">{{ 'SCH_REMAINING_QTY' | translate }} : <span class="amount">{{ remainingQty | number: '1.2-2' }}</span></div>
+    <div class="default-50 header">{{ 'SCH_SCHEDULED_QTY' | translate }} : <span class="amount">{{ qty | number: '1.2-2' }}</span></div>
+    <div class="default-50 header">{{ 'LOGISTICS_PRICE' | translate }}: <span class="amount">{{ price | number: '1.2-2' }}</span></div>
+    <div class="default-50 header">{{ 'COMMON_AMOUNT' | translate }} : <span class="amount">{{ qty * price | number: '1.2-2' }}</span></div>
+    <div class="default-50 sm-100 header">{{ 'COMMON_BALANCE' | translate }} : <span class="amount">{{ balance - qty * price | number: '1.2-2' }}</span></div>
 </div>
 
 <mat-card>

@@ -85,6 +85,12 @@
     "EXECUTED_BY":                "Exécuté par",
     "CLOSED_BY":                  "Fermé par",
     "DOWNTIME":                   "temps d'arrêt de l'équipement",
-    "TOTAL_HOURS":                "Heures totales"
+    "TOTAL_HOURS":                "Heures totales",
+    "PERMITS":                    "Permis de travail",
+    "AUTHORIZER":                 "Autorisé par",
+    "WORK_DETAIL":                "Détail des travaux",
+    "PRECAUTIONS":                "Précautions de sécurité",
+    "PRE_WORK":                   "Liste de contrôle avant le travail",
+    "POST_WORK":                  "Liste de contrôle après le travail"
 }
 
