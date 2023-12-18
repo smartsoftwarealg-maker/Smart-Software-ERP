@@ -6,10 +6,13 @@ import { BaseEntityService } from "@ss/common/api-base-entity";
 import { LoginService, PaginationModel, Right } from "@ss/common/api-common";
 import { map, Observable, of } from "rxjs";
 import { Sort } from "@angular/material/sort";
+import { DefaultReportService } from "@ss/common/ui-default-report-component";
 
 @Directive()
 export class BaseChildEntityListComponent<T extends { id: number }> implements OnInit {
-    private   loginSrv = inject(LoginService);
+    private reportForm = 'WorkPermit';
+    private defReportSrv = inject(DefaultReportService);
+    private loginSrv = inject(LoginService);
     protected shellSrv  = inject(ShellService);
     protected confirmationSrv  = inject(ConfirmationDialogService);
     protected snackBarSrv  = inject(SnackBarService);
@@ -89,5 +92,24 @@ export class BaseChildEntityListComponent<T extends { id: number }> implements O
         // console.log(event);
         this.detailSrv.sortColumn = event;
         this.refresh();
+    }
+
+    public selectReport() {
+        this.defReportSrv
+            .open(this.shellSrv.getApp(), this.reportForm)
+            .subscribe(resp => {
+                if (resp.count > 0) {
+                    this.snackBarSrv.showSuccessMessage();
+                }
+            });
+    }
+
+    public viewReport() {
+        this.defReportSrv
+            .viewReport(this.reportForm, this.selectedId)
+            .subscribe(res => {
+                const fileURL = URL.createObjectURL(new Blob([res], { type: 'application/pdf' }));
+                window.open(fileURL, '_blank');
+            });
     }
 }

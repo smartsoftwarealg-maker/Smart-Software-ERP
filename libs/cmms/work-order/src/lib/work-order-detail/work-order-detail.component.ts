@@ -21,7 +21,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MaterialModule } from '@ss/common/api-common';
 import { CMMSWorkOrderArticleService } from '../services/c-m-m-s-work-order-article.service';
 import { CMMSWorkPersonService } from '../services/c-m-m-s-work-person.service';
-import { CMMSAssetReadingService } from '../../../../asset-readings/src/lib/cmms-asset-reading.service';
+import { CMMSAssetReadingService } from '@ss/cmms/asset-readings';
+import { CMMSWorkPermitService } from '../services/c-m-m-s-work-permit.service';
 
 @Component({
     selector: 'ss-work-order-detail',
@@ -49,6 +50,7 @@ export class WorkOrderDetailComponent extends CMMSWorkDetail {
     private workPersonSrv = inject(CMMSWorkPersonService);
     private articleSrv = inject(CMMSWorkOrderArticleService);
     private readingSrv = inject(CMMSAssetReadingService);
+    private workPermitSrv = inject(CMMSWorkPermitService);
     private router = inject(Router);
 
     private importBtn: ToolbarButton = {
@@ -69,10 +71,11 @@ export class WorkOrderDetailComponent extends CMMSWorkDetail {
         click: () => this.generateRequest(),
     };
 
-    private URLS = ['articles', 'works', 'readings'];
+    private URLS = ['articles', 'works', 'readings', 'permits'];
     readonly ARTICLE_PANEL = 0;
     readonly WORK_PANEL = 1;
     readonly READING_PANEL = 2;
+    readonly PERMIT_PANEL = 3;
 
     cmmsTypes = WORK_TYPES.filter(e => e.id !== INSPECTION);
 
@@ -119,6 +122,8 @@ export class WorkOrderDetailComponent extends CMMSWorkDetail {
     override loadEntity(id: number): Observable<Work> {
         this.workPersonSrv.setParentId(id);
         this.articleSrv.setParentId(id);
+        this.workPersonSrv.setParentId(id);
+        this.workPermitSrv.setParentId(id);
 
         return super.loadEntity(id)
             .pipe(tap(res => this.readingSrv.setParentId(res.assetId)));
@@ -146,7 +151,7 @@ export class WorkOrderDetailComponent extends CMMSWorkDetail {
             });
     }
 
-    showPanel(index: 0|1) {
+    showPanel(index: 0|1|2|3|4) {
         this.activePanel = index;
         const url = this.URLS[index];
         if (this.router.url.indexOf(url) < 0) {

@@ -85,5 +85,11 @@
     "EXECUTED_BY":                "تنفيذ",
     "CLOSED_BY":                  "إغلاق",
     "DOWNTIME":                   "مدة العطل",
-    "TOTAL_HOURS":                "مجموع الساعات"
+    "TOTAL_HOURS":                "مجموع الساعات",
+    "PERMITS":                    "تصاريح العمل",
+    "AUTHORIZER":                 "مفوض من",
+    "WORK_DETAIL":                "تفاصيل العمل",
+    "PRECAUTIONS":                "احتياطات السلامة",
+    "PRE_WORK":                   "قائمة مراجعة ما قبل العمل",
+    "POST_WORK":                  "قائمة مراجعة ما بعد العمل"
 }

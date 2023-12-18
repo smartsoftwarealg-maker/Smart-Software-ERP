@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
-import { BaseLookupService } from '../../../../../common/api-common/src/lib/base-lookup.service';
+import { BaseLookupService } from '@ss/common/api-common';
 import { HttpService } from '@ss/common/api-common';
 
 @Injectable({
     providedIn: 'root'
 })
-export class CMMSTypeService extends BaseLookupService {
+export class CMMSPermitTypeService extends BaseLookupService {
 
     constructor(protected override httpSrv: HttpService) {
-        super(httpSrv, '/lookups/cmms_types');
+        super(httpSrv, '/lookups/cmms_permit_types');
     }
 }

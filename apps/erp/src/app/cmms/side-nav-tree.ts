@@ -27,8 +27,9 @@ import {
     ABS_CMMS_CHECKLIST_URL,
     ABS_INSPECTION_ORDER_URL,
     ABS_INSPECTION_URL,
-    ABS_CMMS_GANT_URL,
-    ABS_CMMS_REPORTS_URL, ABS_CMMS_ASSETS_PM_URL
+    ABS_CMMS_REPORTS_URL,
+    ABS_CMMS_ASSETS_PM_URL,
+    ABS_CMMS_PERMIT_TYPES_URL
 } from '../common';
 
 export const cmmsNavTree: SideNavNode = {
@@ -58,6 +59,12 @@ export const cmmsNavTree: SideNavNode = {
             icon: 'fa-solid fa-battery-bolt',
             route: ABS_CMMS_STATUS_TYPES,
             accessRights: 'FurnitureStatus'
+        },
+        {
+            name: 'COMMON_PERMIT_TYPES',
+            icon: 'fa-solid fa-traffic-light-slow',
+            route: ABS_CMMS_PERMIT_TYPES_URL,
+            accessRights: 'PermitType'
         },
         {
             name: 'COMMON_CLASSES',

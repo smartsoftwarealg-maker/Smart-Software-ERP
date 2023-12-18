@@ -1,4 +1,3 @@
-export * from './lib/cmms-lookups.module';
 export * from './lib/cmms-fault/cmms-fault-list.component';
 export * from './lib/cmms-fault/cmms-fault-detail.component';
 export * from './lib/cmms-fault-cause/cmms-fault-cause-detail.component';
@@ -34,3 +33,6 @@ export * from './lib/cmms-functions/cmms-function-detail.component';
 export * from './lib/services/cmms.function.service';
 export * from './lib/services/cmms.checklist.service';
 export * from './lib/services/cmms-checklist-detail.service';
+export * from './lib/services/cmms-permit-type.service';
+export * from './lib/cmms-permit-type/cmms-permit-type-list.component';
+export * from './lib/cmms-permit-type/c-m-m-s-permit-type-detail.component';

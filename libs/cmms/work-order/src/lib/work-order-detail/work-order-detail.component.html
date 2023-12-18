@@ -171,90 +171,6 @@
             </mat-expansion-panel>
 
             <mat-expansion-panel
-                #executionPanel
-                [class.b-primary-expansion-panel]="executionPanel.expanded">
-                <mat-expansion-panel-header>
-                    <mat-panel-title translate>
-                        CMMS_EXECUTION
-                    </mat-panel-title>
-                </mat-expansion-panel-header>
-                <span class="default-100"></span>
-
-                <mat-form-field class="default-50">
-                    <mat-label translate>CMMS_DOWNTIME</mat-label>
-                    <input matInput formControlName="downtime" type="number">
-                </mat-form-field>
-
-<!--                <mat-form-field class="default-50">-->
-<!--                    <mat-label translate>CMMS_EXECUTED_BY</mat-label>-->
-<!--                    <input matInput formControlName="executorDescription" type="text">-->
-<!--                </mat-form-field>-->
-
-                <mat-form-field class="default-50">
-                    <mat-label translate>CMMS_EXECUTED_BY</mat-label>
-                    <input matInput formControlName="executorDescription" type="text">
-                </mat-form-field>
-
-
-                <mat-form-field class="default-50">
-                    <mat-label translate>CMMS_ACTUAL_START</mat-label>
-                    <ss-date-picker formControlName="actualStart" [type]="'datetime'" #start></ss-date-picker>
-                </mat-form-field>
-
-                <mat-form-field class="default-50">
-                    <mat-label translate>CMMS_ACTUAL_DUE</mat-label>
-                    <ss-date-picker formControlName="actualDue" [type]="'datetime'" #due></ss-date-picker>
-                </mat-form-field>
-
-                <mat-form-field class="default-50">
-                    <mat-label translate>CMMS_SOLUTION</mat-label>
-                    <ss-auto-complete matInput
-                                      [model]="solutionLookup"
-                                      formControlName="solution">
-                    </ss-auto-complete>
-                </mat-form-field>
-
-                <mat-form-field class="default-50">
-                    <mat-label translate>CMMS_TOTAL_HOURS</mat-label>
-                    <input matInput [value]="actualTime() | number: '1.2-2'" type="text" readonly disabled>
-                </mat-form-field>
-
-
-                <mat-form-field id="memo" class="default-100">
-                    <mat-label translate>COMMON_MEMO</mat-label>
-                    <textarea matInput formControlName="memo" rows="5"></textarea>
-                </mat-form-field>
-
-            </mat-expansion-panel>
-
-            <mat-expansion-panel
-                #costPanel
-                [class.b-primary-expansion-panel]="costPanel.expanded">
-                <span class="default-100"></span>
-                <mat-expansion-panel-header>
-                    <mat-panel-title translate>
-                        CMMS_COSTS
-                    </mat-panel-title>
-                </mat-expansion-panel-header>
-                <mat-form-field class="default-50">
-                    <mat-label translate>CMMS_LABOR_COST</mat-label>
-                    <input matInput formControlName="laborCost" type="number">
-                </mat-form-field>
-                <mat-form-field class="default-50">
-                    <mat-label translate>CMMS_MATERIAL_COST</mat-label>
-                    <input matInput formControlName="materialCost" type="number">
-                </mat-form-field>
-                <mat-form-field class="default-50">
-                    <mat-label translate>CMMS_TRAVEL_COST</mat-label>
-                    <input matInput formControlName="travelCost" type="number">
-                </mat-form-field>
-                <mat-form-field class="default-50">
-                    <mat-label translate>CMMS_OTHER_COST</mat-label>
-                    <input matInput formControlName="otherCost" type="number">
-                </mat-form-field>
-            </mat-expansion-panel>
-
-            <mat-expansion-panel
                 #partsPanel
                 [class.b-primary-expansion-panel]="partsPanel.expanded"
                 (afterExpand)="showPanel(ARTICLE_PANEL)">
@@ -324,6 +240,74 @@
             </mat-expansion-panel>
 
             <mat-expansion-panel
+                #permitPanel
+                [class.b-primary-expansion-panel]="permitPanel.expanded"
+                (afterExpand)="showPanel(PERMIT_PANEL)">
+                <mat-expansion-panel-header>
+                    <mat-panel-title translate>
+                        CMMS_PERMITS
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <router-outlet *ngIf="id > 0 && activePanel === PERMIT_PANEL"></router-outlet>
+            </mat-expansion-panel>
+
+            <mat-expansion-panel
+                #executionPanel
+                [class.b-primary-expansion-panel]="executionPanel.expanded">
+                <mat-expansion-panel-header>
+                    <mat-panel-title translate>
+                        CMMS_EXECUTION
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+
+                <mat-form-field class="default-50">
+                    <mat-label translate>CMMS_DOWNTIME</mat-label>
+                    <input matInput formControlName="downtime" type="number">
+                </mat-form-field>
+
+                <!--                <mat-form-field class="default-50">-->
+                <!--                    <mat-label translate>CMMS_EXECUTED_BY</mat-label>-->
+                <!--                    <input matInput formControlName="executorDescription" type="text">-->
+                <!--                </mat-form-field>-->
+
+                <mat-form-field class="default-50">
+                    <mat-label translate>CMMS_EXECUTED_BY</mat-label>
+                    <input matInput formControlName="executorDescription" type="text">
+                </mat-form-field>
+
+
+                <mat-form-field class="default-50">
+                    <mat-label translate>CMMS_ACTUAL_START</mat-label>
+                    <ss-date-picker formControlName="actualStart" [type]="'datetime'" #start></ss-date-picker>
+                </mat-form-field>
+
+                <mat-form-field class="default-50">
+                    <mat-label translate>CMMS_ACTUAL_DUE</mat-label>
+                    <ss-date-picker formControlName="actualDue" [type]="'datetime'" #due></ss-date-picker>
+                </mat-form-field>
+
+                <mat-form-field class="default-50">
+                    <mat-label translate>CMMS_SOLUTION</mat-label>
+                    <ss-auto-complete matInput
+                                      [model]="solutionLookup"
+                                      formControlName="solution">
+                    </ss-auto-complete>
+                </mat-form-field>
+
+                <mat-form-field class="default-50">
+                    <mat-label translate>CMMS_TOTAL_HOURS</mat-label>
+                    <input matInput [value]="actualTime() | number: '1.2-2'" type="text" readonly disabled>
+                </mat-form-field>
+
+
+                <mat-form-field id="memo" class="default-100">
+                    <mat-label translate>COMMON_MEMO</mat-label>
+                    <textarea matInput formControlName="memo" rows="5"></textarea>
+                </mat-form-field>
+
+            </mat-expansion-panel>
+
+            <mat-expansion-panel
                 #workPanel
                 [class.b-primary-expansion-panel]="workPanel.expanded"
                 (afterExpand)="showPanel(WORK_PANEL)">
@@ -336,6 +320,32 @@
             </mat-expansion-panel>
 
             <mat-expansion-panel
+                #costPanel
+                [class.b-primary-expansion-panel]="costPanel.expanded">
+                <mat-expansion-panel-header>
+                    <mat-panel-title translate>
+                        CMMS_COSTS
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <mat-form-field class="default-50">
+                    <mat-label translate>CMMS_LABOR_COST</mat-label>
+                    <input matInput formControlName="laborCost" type="number">
+                </mat-form-field>
+                <mat-form-field class="default-50">
+                    <mat-label translate>CMMS_MATERIAL_COST</mat-label>
+                    <input matInput formControlName="materialCost" type="number">
+                </mat-form-field>
+                <mat-form-field class="default-50">
+                    <mat-label translate>CMMS_TRAVEL_COST</mat-label>
+                    <input matInput formControlName="travelCost" type="number">
+                </mat-form-field>
+                <mat-form-field class="default-50">
+                    <mat-label translate>CMMS_OTHER_COST</mat-label>
+                    <input matInput formControlName="otherCost" type="number">
+                </mat-form-field>
+            </mat-expansion-panel>
+
+            <mat-expansion-panel
                 #closurePanel
                 [class.b-primary-expansion-panel]="closurePanel.expanded">
                 <mat-expansion-panel-header>
@@ -343,7 +353,6 @@
                         CMMS_CLOSURE
                     </mat-panel-title>
                 </mat-expansion-panel-header>
-                <span class="default-100"></span>
 
                 <mat-form-field class="default-50">
                     <mat-label translate>CMMS_CLOSURE_DATE</mat-label>
@@ -356,6 +365,7 @@
                 </mat-form-field>
 
             </mat-expansion-panel>
+
             <mat-expansion-panel
                 #readingPanel
                 [class.b-primary-expansion-panel]="readingPanel.expanded"
@@ -365,7 +375,6 @@
                         CMMS_READINGS
                     </mat-panel-title>
                 </mat-expansion-panel-header>
-                <span class="default-100"></span>
 
                 <router-outlet *ngIf="id > 0 && activePanel === READING_PANEL"></router-outlet>
             </mat-expansion-panel>

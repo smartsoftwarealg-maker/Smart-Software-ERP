@@ -37,8 +37,8 @@ import {
     CMMS_CHECKLIST_URL,
     CMMS_INSPECTION_ORDER_URL,
     CMMS_INSPECTION_URL,
-    CMMS_GANT_URL, ASSETS_ASSET_PM_URL
-} from '../common';
+    CMMS_GANT_URL, ASSETS_ASSET_PM_URL, CMMS_PERMIT_TYPE_URL
+} from "../common";
 import { loginGuard } from '../erp-guards';
 import {
     CmmsFaultCauseDetailComponent,
@@ -57,8 +57,12 @@ import {
     CMMSSolutionDetailComponent,
     CMMSRoutingPartsListComponent,
     CMMSRoutingPartsDetailComponent,
-    CMMSRoutingArchiveComponent, CMMSFunctionListComponent, CMMSFunctionDetailComponent
-} from '@ss/cmms/lookups';
+    CMMSRoutingArchiveComponent,
+    CMMSFunctionListComponent,
+    CMMSFunctionDetailComponent,
+    CmmsPermitTypeListComponent,
+    CMMSPermitTypeDetailComponent
+} from "@ss/cmms/lookups";
 import { CMMSPlanDetailComponent, CMMSPlanListComponent } from '@ss/cmms/plans';
 import { CmmsAlertListComponent, PMDetailComponent, PmListComponent } from '@ss/cmms/pm';
 import {
@@ -142,6 +146,12 @@ import {
     CMMSChecklistDetailComponent, CmmsChecklistLineDetailComponent, CmmsChecklistLineListComponent,
     CmmsChecklistListComponent
 } from '@ss/cmms/cmms-checklists';
+import {
+    WorkPermitListComponent
+} from "../../../../../libs/cmms/work-order/src/lib/work-permit-list/work-permit-list.component";
+import {
+    WorkPermitDetailComponent
+} from "../../../../../libs/cmms/work-order/src/lib/work-permit-detail/work-permit-detail.component";
 
 
 export const cmmsRoutes: Routes = [
@@ -173,6 +183,22 @@ export const cmmsRoutes: Routes = [
             {
                 path: ':id',
                 component: CMMSTypeDetailComponent,
+                canActivate: [loginGuard],
+                canDeactivate: [CanDeactivateService],
+            },
+        ]
+    },
+    {
+        path: CMMS_PERMIT_TYPE_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: CmmsPermitTypeListComponent,
+                canActivate: [loginGuard]
+            },
+            {
+                path: ':id',
+                component: CMMSPermitTypeDetailComponent,
                 canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService],
             },
@@ -382,6 +408,12 @@ export const cmmsRoutes: Routes = [
                         children: [
                             { path: '', component: AssetChildReadingListComponent, pathMatch: 'full'},
                             { path: ':id', component: AssetChildReadingDetailComponent }
+                        ]
+                    },
+                    { path: 'permits',
+                        children: [
+                            { path: '', component: WorkPermitListComponent, pathMatch: 'full'},
+                            { path: ':id', component: WorkPermitDetailComponent }
                         ]
                     }
                 ]

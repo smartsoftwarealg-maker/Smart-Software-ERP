@@ -21,6 +21,7 @@ export const CMMS_DETAIL_URL = '/detail';
 export const CMMS_WORKS = '/works';
 export const CMMS_ARTICLES = '/articles';
 export const CMMS_PERSONS = '/persons';
+export const CMMS_PERMITS = '/permits';
 
 
 export const CMMS_TRIGGER_TYPES: Lookup[] = [
@@ -196,6 +197,28 @@ export interface Work {
 
 export interface CMMSEmployee extends IEmployee {
     hourlyRate?: number;
+}
+export interface WorkPermit{
+    id: number;
+    number: number;
+    date: Date;
+    parentId: number;
+    permitType: number;
+    description?: string;
+    startDate: Date;
+    dueDate?: Date;
+    closureDate?: Date;
+    requester?: number;
+    authorizer?: number;
+    closer?: number;
+    safetyPrecautions?: string;
+    workDetail?: string;
+    preWork?: string;
+    postWork?: string;
+    status?: number;
+    creationTime: Date;
+    typeDescription?: string;
+    requesterDescription?: string;
 }
 
 export interface WorkPerson extends IEmployee {

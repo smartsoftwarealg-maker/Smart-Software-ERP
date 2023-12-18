@@ -26,7 +26,6 @@ export class AssetBlockingListComponent implements OnInit {
                 private snackBarSrv: SnackBarService,
                 private route: ActivatedRoute,
                 private router: Router,
-                private langSrv: LanguageService,
                 private confirmationSrv: ConfirmationDialogService,
                 private defReportSrv: DefaultReportService,
                 private shellSrv: ShellService) {
