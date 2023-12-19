@@ -61,7 +61,7 @@ export const cmmsNavTree: SideNavNode = {
             accessRights: 'FurnitureStatus'
         },
         {
-            name: 'COMMON_PERMIT_TYPES',
+            name: 'CMMS_PERMIT_TYPES',
             icon: 'fa-solid fa-traffic-light-slow',
             route: ABS_CMMS_PERMIT_TYPES_URL,
             accessRights: 'PermitType'

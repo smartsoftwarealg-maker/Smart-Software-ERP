@@ -91,6 +91,7 @@
     "WORK_DETAIL":                "Détail des travaux",
     "PRECAUTIONS":                "Précautions de sécurité",
     "PRE_WORK":                   "Liste de contrôle avant le travail",
-    "POST_WORK":                  "Liste de contrôle après le travail"
+    "POST_WORK":                  "Liste de contrôle après le travail",
+    "PERMIT_TYPES":               "Types de permis"
 }
 
