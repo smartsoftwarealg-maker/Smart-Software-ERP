@@ -29,13 +29,13 @@
 
         <mat-form-field class="default-50 sm-100">
             <mat-label translate>COMMON_FROM</mat-label>
-            <ss-date-picker formControlName="startDate" required="true" [type]="'date'"></ss-date-picker>
+            <ss-date-picker formControlName="startDate" required="true" [type]="'datetime'"></ss-date-picker>
             <mat-error *ngIf="form.controls['startDate'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
         </mat-form-field>
 
         <mat-form-field class="default-50 sm-100">
             <mat-label translate>COMMON_TO</mat-label>
-            <ss-date-picker formControlName="dueDate" [type]="'date'"></ss-date-picker>
+            <ss-date-picker formControlName="dueDate" [type]="'datetime'"></ss-date-picker>
             <mat-error *ngIf="form.controls['dueDate'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
         </mat-form-field>
 

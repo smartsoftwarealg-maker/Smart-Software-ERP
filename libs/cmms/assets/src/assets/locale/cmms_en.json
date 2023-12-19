@@ -91,5 +91,6 @@
     "WORK_DETAIL":                "Work detail",
     "PRECAUTIONS":                "Safety precautions",
     "PRE_WORK":                   "Pre work checklist",
-    "POST_WORK":                  "Post work checklist"
+    "POST_WORK":                  "Post work checklist",
+    "PERMIT_TYPES":               "Permit types"
 }
