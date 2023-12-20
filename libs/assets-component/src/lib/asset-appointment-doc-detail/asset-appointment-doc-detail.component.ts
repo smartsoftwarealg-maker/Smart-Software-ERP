@@ -25,6 +25,7 @@ import {Agent, ConsumerService} from '@ss/logistics/api-agent';
 import {OfficeSearchComponent} from '../office-search/office-search.component';
 import {MatDialog} from '@angular/material/dialog';
 import {WorkflowDialogComponent} from '@ss/workflow';
+import { ASSET_APPOINTMENT } from "../../../../workflow/src/lib/workflow-api";
 
 @Component({
     selector: 'ss-asset-appointment-doc-detail',
@@ -250,7 +251,7 @@ export class AssetAppointmentDocDetailComponent extends BaseEntityDetailComponen
             const dialogRef = this.dialog.open(WorkflowDialogComponent, {
                 width: '350px',
                 height: '400px',
-                data: { assetAppointmentId: id, senderId: this.loginSrv.appCtx.id, validated: this.validated }
+                data: { transacId: id, senderId: this.loginSrv.appCtx.id, validated: this.validated, documentId: ASSET_APPOINTMENT }
             });
 
             dialogRef.afterClosed().subscribe(result => {

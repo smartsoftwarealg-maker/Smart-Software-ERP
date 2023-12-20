@@ -124,7 +124,7 @@ export abstract class BaseTransactionDetailComponent extends BaseEntityDetailCom
             const dialogRef = this.dialog.open(WorkflowDialogComponent, {
                 width: '350px',
                 height: '500px',
-                data: { transacId: id, senderId: this.loginSrv.appCtx.id, validated: this.transaction.isValidated }
+                data: { transacId: id, senderId: this.loginSrv.appCtx.id, validated: this.transaction.isValidated, documentId: this.form.controls['document'].value }
             });
 
             dialogRef.afterClosed().subscribe(result => {
@@ -198,7 +198,7 @@ export abstract class BaseTransactionDetailComponent extends BaseEntityDetailCom
         this.transaction = b;
         return this.formBuilder.group({
             id: [b.id],
-            document: [0],
+            document: [b.document],
             centerId: [0 || this.loginSrv.appCtx.center],
             date: [b.date || new Date(), Validators.required],
             number: [b.number || 0],

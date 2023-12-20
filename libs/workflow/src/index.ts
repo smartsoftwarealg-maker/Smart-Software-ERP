@@ -10,3 +10,4 @@ export * from './lib/workflow-inbox-list/workflow-inbox-list.component';
 export * from './lib/user-received-message-detail/user-received-message-detail.component';
 export * from './lib/user-received-message-list/user-received-message-list.component';
 export * from './lib/workflow-inbox.service';
+export * from './lib/workflow-api';
