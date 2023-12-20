@@ -9,12 +9,8 @@ import {FormControl} from '@angular/forms';
 
 type MBData = {
     amount: number;
+    documentId: number,
     transacId?: number;
-    payOrderId?: number;
-    assetRecepId?: number;
-    assetAppointmentId?: number;
-    holidayRequestId?: number;
-    cmmsWorkId?: number;
     validated?: boolean;
 };
 
@@ -52,12 +48,8 @@ export class WorkflowDialogComponent implements OnInit {
     public send() {
         const ent: MailBox = {
             id: 0,
-            assetRecepId: this.data.assetRecepId,
-            payOrderId: this.data.payOrderId,
             transacId: this.data.transacId,
-            holidayRequestId: this.data.holidayRequestId,
-            assetAppointmentId: this.data.assetAppointmentId,
-            cmmsWorkId: this.data.cmmsWorkId,
+            documentId: this.data.documentId,
             messageId: this.selectedId,
             centerId: this.loginSrv.appCtx.center,
             timeStamp: new Date(),

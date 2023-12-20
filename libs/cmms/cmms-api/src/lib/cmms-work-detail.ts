@@ -20,7 +20,7 @@ import { DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
 import { Observable, of } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
-import { WorkflowDialogComponent } from '@ss/workflow';
+import { CMMS_WORK_ORDER, WorkflowDialogComponent } from "@ss/workflow";
 import { BaseEntityService } from '@ss/common/api-base-entity';
 import { CmmsOrderPersonService } from './cmms-order-person.service';
 import { debounceTime, distinctUntilChanged } from "rxjs/operators";
@@ -163,7 +163,7 @@ export class CMMSWorkDetail extends BaseEntityDetailComponent<Work> {
             const dialogRef = this.dialog.open(WorkflowDialogComponent, {
                 width: '350px',
                 height: '500px',
-                data: { cmmsWorkId: id, senderId: this.loginSrv.appCtx.id, validated: this.validated }
+                data: { transacId: id, senderId: this.loginSrv.appCtx.id, validated: this.validated, documentId: CMMS_WORK_ORDER }
             });
 
             dialogRef.afterClosed().subscribe(result => {

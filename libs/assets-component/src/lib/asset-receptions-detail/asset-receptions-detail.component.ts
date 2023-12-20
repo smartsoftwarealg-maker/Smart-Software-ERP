@@ -13,6 +13,7 @@ import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {MatDialog} from '@angular/material/dialog';
 import {WorkflowDialogComponent} from '@ss/workflow';
 import { ASSET_RECEPTIONS_ARCHIVES } from '@ss/common/app-archive';
+import { ASSET_RECEPTION } from '@ss/workflow';
 
 @Component({
     selector: 'ss-asset-receptions-detail',
@@ -113,7 +114,7 @@ export class AssetReceptionsDetailComponent extends BaseEntityDetailComponent<As
             const dialogRef = this.dialog.open(WorkflowDialogComponent, {
                 width: '350px',
                 height: '500px',
-                data: { assetRecepId: id, senderId: this.loginSrv.appCtx.id, validated: this.validated }
+                data: { transacId: id, senderId: this.loginSrv.appCtx.id, validated: this.validated, documentId: ASSET_RECEPTION }
             });
 
             dialogRef.afterClosed().subscribe(result => {

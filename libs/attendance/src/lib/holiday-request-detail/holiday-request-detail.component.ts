@@ -9,7 +9,7 @@ import {HolidayRequestService} from '../holiday-request.service';
 import {LoginService} from '@ss/common/api-common';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {HolidayTypeService} from '../holiday-type.service';
-import { WorkflowDialogComponent } from '@ss/workflow';
+import { HOLIDAY_REQUEST, WorkflowDialogComponent } from '@ss/workflow';
 import { MatDialog } from '@angular/material/dialog';
 
 @Component({
@@ -72,7 +72,7 @@ export class HolidayRequestDetailComponent extends BaseEntityDetailComponent<Hol
             const dialogRef = this.dialog.open(WorkflowDialogComponent, {
                 width: '350px',
                 height: '500px',
-                data: { holidayRequestId: id, senderId: 1 }
+                data: { transacId: id, senderId: 1, documentId: HOLIDAY_REQUEST }
             });
 
             dialogRef.afterClosed().subscribe(result => {
