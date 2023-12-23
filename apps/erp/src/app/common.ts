@@ -140,7 +140,9 @@ export const STOCK_UNITS_URL = 'units';
 export const STOCK_REPORT_CATALOG_URL = 'report-catalog';
 export const STOCK_REPORTS_URL = 'stock-reports';
 export const STOCK_ARTICLE_URL = 'stock-articles';
+export const BOM_URL = 'bom';
 export const STOCK_PRICE_RECALCULATION_URL = 'price-recalculation';
+
 
 // Budget
 export const BUDGET_BUDGET_URL   = 'budgets';
@@ -692,6 +694,7 @@ export const ABS_COSTING_ITEMS = '/' + [MAIN_PAGE_URL, COSTING_APP_URL, COSTING_
 export const ABS_COSTING_KEYS = '/' + [MAIN_PAGE_URL, COSTING_APP_URL, COSTING_KEY_URL].join('/');
 export const ABS_COSTING_PRODUCTS = '/' + [MAIN_PAGE_URL, COSTING_APP_URL, COSTING_PRODUCTS_URL].join('/');
 export const ABS_COSTING_PROJECTS = '/' + [MAIN_PAGE_URL, COSTING_APP_URL, COSTING_PROJECT_URL].join('/');
+export const ABS_COSTING_BOM_PRODUCTS = '/' + [MAIN_PAGE_URL, COSTING_APP_URL, BOM_URL].join('/');
 
 // Furniture
 export const ABS_FURNITURE_URL            = '/' + [MAIN_PAGE_URL, FURNITURE_APP_URL, FURNITURE_URL].join('/');

@@ -7,6 +7,26 @@ export const SERVICE_ARTICLES_URL = '/articles/services';
 export const APP_URL = '/apps';
 export const AVAILABLE_ARTICLES_URL = '/articles/available';
 export const ARTICLE_IMAGE_URL = '/image';
+export const BOM_TREE_URL = '/articles/tree';
+export const BOM_URL = '/bom';
+
+
+
+export interface BOM {
+    id: number;
+    parentId?: number;
+    childId: number;
+    qty: number;
+    parentRef?: string;
+    parentDescription?: string;
+    childRef?: string;
+    childDescription?: string;
+}
+
+export interface BOMTree {
+    bom: BOM;
+    children: BOMTree[];
+}
 
 export interface Article {
     id: number;
