@@ -166,5 +166,6 @@
     "LICENSE_ISSUER":   "مصدر الرخصة",
     "DESTINATION":      "الوجهة",
     "MERGE_INVOICE_SERIES": "نفس سلسلة الأرقام للفواتير والإلغاءات",
-    "RESERVATION":          "حجز"
+    "RESERVATION":          "حجز",
+    "BOM":                  "فاتورة المواد"
 }
