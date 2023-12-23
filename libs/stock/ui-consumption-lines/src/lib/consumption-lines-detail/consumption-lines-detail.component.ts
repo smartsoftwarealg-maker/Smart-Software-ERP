@@ -1,8 +1,9 @@
 import {Component} from '@angular/core';
 import {ConsumptionLinesService} from '@ss/stock/api-consumption-lines';
 import {
-    BaseTransactionLinesDetailComponent, DOC_CONSUMPTION
+    BaseTransactionLinesDetailComponent, DOC_CONSUMPTION, TransactionLine
 } from '@ss/logistics/api-transaction';
+import { UntypedFormGroup } from '@angular/forms';
 
 
 @Component({
@@ -14,5 +15,11 @@ export class ConsumptionLinesDetailComponent extends BaseTransactionLinesDetailC
     constructor(
         public detailSrv: ConsumptionLinesService) {
         super(detailSrv,  DOC_CONSUMPTION);
+    }
+
+    setupForm(b: TransactionLine): UntypedFormGroup {
+        const form = super.setupForm(b);
+        form.controls['qtyOrdered'].disable();
+        return form;
     }
 }

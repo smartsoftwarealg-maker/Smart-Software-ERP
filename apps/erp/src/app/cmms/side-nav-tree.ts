@@ -175,12 +175,6 @@ export const cmmsNavTree: SideNavNode = {
         //     accessRights: 'CMTrigger'
         // },
         {
-            name: 'CMMS_READINGS',
-            icon: 'fa-solid fa-gauge-low',
-            route: ABS_CMMS_READING_URL,
-            accessRights: 'CMReading'
-        },
-        {
             name: 'CMMS_ROUTINGS',
             icon: 'fa-solid fa-list-tree',
             route: ABS_CMMS_ROUTING_URL,
@@ -198,6 +192,12 @@ export const cmmsNavTree: SideNavNode = {
         //     route: ABS_CMMS_PM_URL,
         //     accessRights: 'PM'
         // },
+        {
+            name: 'CMMS_READINGS',
+            icon: 'fa-solid fa-gauge-low',
+            route: ABS_CMMS_READING_URL,
+            accessRights: 'CMReading'
+        },
         {
             name: 'CMMS_ALERTS',
             icon: 'fa-solid fa-bells',

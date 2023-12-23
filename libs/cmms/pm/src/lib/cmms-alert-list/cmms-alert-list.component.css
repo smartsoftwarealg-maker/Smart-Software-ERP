@@ -11,3 +11,20 @@
 .ctrl__div button {
     margin-top: 8px;
 }
+
+.mat-column-assetDescription,
+.mat-column-description,
+.mat-column-planDescription {
+    flex: 2 1 200px;
+}
+
+.mat-column-reference,
+.mat-column-lastReleased,
+.mat-column-nextDue,
+.mat-column-daysAhead {
+    flex: 1 1 100px;
+}
+
+mat-table {
+    width: 1000px;
+}

@@ -8,7 +8,10 @@ import { ConsumptionService } from '@ss/stock/api-consumption';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { LoginService } from '@ss/common/api-common';
-import { BaseTransactionDetailComponent, DOC_CONSUMPTION } from '@ss/logistics/api-transaction';
+import {
+    BaseTransactionDetailComponent,
+    DOC_RESERVATION
+} from '@ss/logistics/api-transaction';
 import { MatDialog } from '@angular/material/dialog';
 import { ConsumptionLinesService } from '@ss/stock/api-consumption-lines';
 
@@ -52,7 +55,7 @@ export class ConsumptionDetailComponent extends BaseTransactionDetailComponent {
     }
 
     protected importedDocuments(): Lookup[] {
-        return [{ id: DOC_CONSUMPTION, description: 'STOCK_CANCELLATION'}];
+        return [{ id: DOC_RESERVATION, description: 'LOGISTICS_RESERVATION'}];
     }
 
     protected requireAgent(): boolean {
@@ -60,7 +63,7 @@ export class ConsumptionDetailComponent extends BaseTransactionDetailComponent {
     }
 
     protected requireAgentToImportDocument(): boolean {
-        return true;
+        return false;
     }
 
     protected showImportButton(): boolean {

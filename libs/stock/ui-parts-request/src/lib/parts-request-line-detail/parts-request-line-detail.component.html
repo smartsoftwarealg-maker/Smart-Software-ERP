@@ -19,15 +19,6 @@
                 <input matInput formControlName="position" type="number">
             </mat-form-field>
 
-            <mat-form-field id="qtyOrdered" class="default-50">
-                <mat-label translate>LOGISTICS_QTY_ORDERED</mat-label>
-                <input matInput formControlName="qtyOrdered" type="number" step=".01" required>
-                <mat-error
-                    *ngIf="form.controls['qtyOrdered'].hasError('required')" translate>COMMON_FIELD_REQUIRED
-                </mat-error>
-            </mat-form-field>
-
-
 
             <mat-form-field class="default-100">
                 <mat-label translate>LOGISTICS_ARTICLE</mat-label>
@@ -43,6 +34,16 @@
                     *ngIf="form.controls['reference'].hasError('validOption')" translate>COMMON_NO_MATCH
                 </mat-error>
             </mat-form-field>
+
+            <mat-form-field id="qtyOrdered" class="default-50">
+                <mat-label translate>LOGISTICS_QTY_ORDERED</mat-label>
+                <input matInput formControlName="qtyOrdered" type="number" step=".01" required>
+                <mat-error
+                    *ngIf="form.controls['qtyOrdered'].hasError('required')" translate>COMMON_FIELD_REQUIRED
+                </mat-error>
+            </mat-form-field>
+
+
 
 
 <!--            <mat-form-field id="price" class="default-50 sm-100">-->
@@ -62,12 +63,12 @@
 <!--            </mat-form-field>-->
 
 
-            <mat-form-field id="header" class="default-50 sm-100">
+            <mat-form-field id="header" class="default-100">
                 <mat-label translate>LOGISTICS_HEADER</mat-label>
                 <textarea matInput formControlName="observation" cdkTextareaAutosize="true"></textarea>
             </mat-form-field>
 
-            <mat-form-field id="footer" class="default-50 sm-100">
+            <mat-form-field id="footer" class="default-100">
                 <mat-label translate>LOGISTICS_FOOTER</mat-label>
                 <textarea matInput formControlName="footerMemo" cdkTextareaAutosize="true"></textarea>
             </mat-form-field>

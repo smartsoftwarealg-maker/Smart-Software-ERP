@@ -53,7 +53,7 @@
 
     </div>
     <div class="ctrl">
-        <button mat-raised-button color="primary" (click)="close()" translate>COMMON_IMPORT</button>
+        <button mat-raised-button color="primary" (click)="close()" [disabled]="!importInfo" translate>COMMON_IMPORT</button>
         <button mat-raised-button (click)="cancel()" translate>COMMON_CANCEL</button>
     </div>
 </div>

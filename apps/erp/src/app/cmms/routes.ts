@@ -37,8 +37,10 @@ import {
     CMMS_CHECKLIST_URL,
     CMMS_INSPECTION_ORDER_URL,
     CMMS_INSPECTION_URL,
-    CMMS_GANT_URL, ASSETS_ASSET_PM_URL, CMMS_PERMIT_TYPE_URL
-} from "../common";
+    CMMS_GANT_URL,
+    ASSETS_ASSET_PM_URL,
+    CMMS_PERMIT_TYPE_URL
+} from '../common';
 import { loginGuard } from '../erp-guards';
 import {
     CmmsFaultCauseDetailComponent,
@@ -62,7 +64,7 @@ import {
     CMMSFunctionDetailComponent,
     CmmsPermitTypeListComponent,
     CMMSPermitTypeDetailComponent
-} from "@ss/cmms/lookups";
+} from '@ss/cmms/lookups';
 import { CMMSPlanDetailComponent, CMMSPlanListComponent } from '@ss/cmms/plans';
 import { CmmsAlertListComponent, PMDetailComponent, PmListComponent } from '@ss/cmms/pm';
 import {
@@ -148,10 +150,10 @@ import {
 } from '@ss/cmms/cmms-checklists';
 import {
     WorkPermitListComponent
-} from "../../../../../libs/cmms/work-order/src/lib/work-permit-list/work-permit-list.component";
+} from '../../../../../libs/cmms/work-order/src/lib/work-permit-list/work-permit-list.component';
 import {
     WorkPermitDetailComponent
-} from "../../../../../libs/cmms/work-order/src/lib/work-permit-detail/work-permit-detail.component";
+} from '../../../../../libs/cmms/work-order/src/lib/work-permit-detail/work-permit-detail.component';
 
 
 export const cmmsRoutes: Routes = [
