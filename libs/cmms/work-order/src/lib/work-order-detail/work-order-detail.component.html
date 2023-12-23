@@ -67,21 +67,6 @@
                     </ss-auto-complete>
                 </mat-form-field>
 
-                <mat-form-field class="default-50">
-                    <mat-label translate>CMMS_FAULT_CAUSE</mat-label>
-                    <ss-auto-complete matInput
-                                      [model]="causeLookup"
-                                      formControlName="cause">
-                    </ss-auto-complete>
-                </mat-form-field>
-
-                <mat-form-field class="default-50">
-                    <mat-label translate>CMMS_ROOT_CAUSE</mat-label>
-                    <ss-auto-complete matInput
-                                      [model]="rootCauseLookup"
-                                      formControlName="rootCause">
-                    </ss-auto-complete>
-                </mat-form-field>
             </mat-card-content>
         </mat-card>
         <mat-accordion class="size">
@@ -348,6 +333,23 @@
             <mat-expansion-panel
                 #closurePanel
                 [class.b-primary-expansion-panel]="closurePanel.expanded">
+
+                <mat-form-field class="default-50">
+                    <mat-label translate>CMMS_FAULT_CAUSE</mat-label>
+                    <ss-auto-complete matInput
+                                      [model]="causeLookup"
+                                      formControlName="cause">
+                    </ss-auto-complete>
+                </mat-form-field>
+
+                <mat-form-field class="default-50">
+                    <mat-label translate>CMMS_ROOT_CAUSE</mat-label>
+                    <ss-auto-complete matInput
+                                      [model]="rootCauseLookup"
+                                      formControlName="rootCause">
+                    </ss-auto-complete>
+                </mat-form-field>
+
                 <mat-expansion-panel-header>
                     <mat-panel-title translate>
                         CMMS_CLOSURE
@@ -360,7 +362,7 @@
                 </mat-form-field>
 
                 <mat-form-field class="default-50">
-                    <mat-label translate>PAYROLL_FULLNAME</mat-label>
+                    <mat-label translate>CMMS_CLOSED_BY</mat-label>
                     <input matInput formControlName="closerDescription" type="text">
                 </mat-form-field>
 
