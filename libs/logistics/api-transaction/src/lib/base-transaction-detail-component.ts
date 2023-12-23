@@ -39,7 +39,7 @@ export abstract class BaseTransactionDetailComponent extends BaseEntityDetailCom
     protected currencySrv =  inject(CurrencyService);
     protected projectSrv = inject(SalesContractService);
 
-    @ViewChild(RouterOutlet) outlet;
+    @ViewChild(RouterOutlet) outlet: RouterOutlet|null = null;
 
     private importBtn: ToolbarButton = {
         disabled: false,
@@ -140,9 +140,10 @@ export abstract class BaseTransactionDetailComponent extends BaseEntityDetailCom
         if (!this.importBtn.disabled) {
             const agentId = this.form.controls['agent'].value;
             const dialogRef = this.dialog.open(DocImportComponent, {
-                width: '700px',
+                width: '720px',
                 height: '55%',
-                data: { documentList: this.importedDocuments(), agentId: agentId }
+                data: { documentList: this.importedDocuments(), agentId: agentId },
+                disableClose: true
             });
 
             dialogRef.afterClosed().subscribe(result => {
@@ -198,7 +199,7 @@ export abstract class BaseTransactionDetailComponent extends BaseEntityDetailCom
         this.transaction = b;
         return this.formBuilder.group({
             id: [b.id],
-            document: [b.document],
+            document: [b.document || 0],
             centerId: [0 || this.loginSrv.appCtx.center],
             date: [b.date || new Date(), Validators.required],
             number: [b.number || 0],

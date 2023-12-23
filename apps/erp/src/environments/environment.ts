@@ -98,7 +98,7 @@ export const navBar = [
     aaNavTree,
     parkNavTree,
     cmmsNavTree,
-    foodNavTree,
+    // foodNavTree,
     costingNavTree
 ];
 

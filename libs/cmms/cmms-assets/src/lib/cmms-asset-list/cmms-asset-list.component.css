@@ -17,9 +17,7 @@ mat-table {
     min-width: 1200px;
 }
 
-.mat-column-building,
 .mat-column-functionDescription,
-.mat-column-reference,
 .mat-column-acquisitionDate,
 .mat-column-serial_no,
 .mat-column-officeDescription,
@@ -29,6 +27,10 @@ mat-table {
     flex: 1 1 150px;
 }
 
+.mat-column-building,
+.mat-column-reference {
+    flex: 1 1 160px;
+}
 .mat-column-description {
     flex: 2 1 280px;
 }

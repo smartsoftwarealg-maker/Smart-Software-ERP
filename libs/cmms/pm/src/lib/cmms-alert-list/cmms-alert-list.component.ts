@@ -23,7 +23,7 @@ export class CmmsAlertListComponent extends BaseEntityListComponent<PM> implemen
     dateControl = new FormControl<Date>(new Date());
 
     displayedColumns = [
-        'reference',
+        // 'reference',
         'description',
         'assetDescription',
         'planDescription',

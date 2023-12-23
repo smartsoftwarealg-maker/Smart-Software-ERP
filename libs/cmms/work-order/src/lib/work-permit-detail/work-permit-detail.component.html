@@ -68,13 +68,6 @@
             </ss-auto-complete>
         </mat-form-field>
 
-        <mat-form-field class="default-50 sm-100">
-            <mat-label translate>CMMS_CLOSED_BY</mat-label>
-            <ss-auto-complete matInput
-                              [model]="personLookup"
-                              formControlName="closer">
-            </ss-auto-complete>
-        </mat-form-field>
 
         <mat-form-field class="default-100">
             <mat-label translate>CMMS_WORK_DETAIL</mat-label>
@@ -96,5 +89,17 @@
             <textarea matInput formControlName="postWork" rows="5" ></textarea>
         </mat-form-field>
 
+        <mat-form-field class="default-50 sm-100">
+            <mat-label translate>CMMS_CLOSURE_DATE</mat-label>
+            <ss-date-picker formControlName="closureDate" required="true" [type]="'date'"></ss-date-picker>
+        </mat-form-field>
+
+        <mat-form-field class="default-50 sm-100">
+            <mat-label translate>CMMS_CLOSED_BY</mat-label>
+            <ss-auto-complete matInput
+                              [model]="personLookup"
+                              formControlName="closer">
+            </ss-auto-complete>
+        </mat-form-field>
     </form>
 </mat-card>
