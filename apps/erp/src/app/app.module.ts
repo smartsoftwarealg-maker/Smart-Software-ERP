@@ -15,7 +15,7 @@ import {CommonUiLangModule} from '@ss/common/ui-lang';
 import {ColorPickerModule} from 'ngx-color-picker';
 import {appRoutes} from '../environments/environment';
 import { Auth2FAConfirmationComponent, PasswordUpdateComponent } from '@ss/auth-2fa';
-import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 const routes: Routes = [
     {
