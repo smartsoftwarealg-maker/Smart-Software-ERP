@@ -1,4 +1,4 @@
-<mat-tree [dataSource]="dataSource" [treeControl]="treeControl" class="example-tree">
+<mat-tree [dataSource]="dataSource" [treeControl]="treeControl" class="example-tree" #tree>
     <!-- This is the tree node template for leaf nodes -->
     <!-- There is inline padding applied to this node using styles.
       This padding value depends on the mat-icon-button width. -->
@@ -7,7 +7,13 @@
                    class="selectable"
                    [class.selected]="node?.bom.id === selectedBOM?.bom.id"
                    (click)="select(node)">
-        {{node.bom.childRef}} {{node.bom.childDescription}}
+        <tr>
+            <td class="reference">{{node.bom.childRef}}</td>
+            <td class="description">{{node.bom.childDescription}}</td>
+            <td class="qty"> {{node.bom.qty | number: '1.2-2'}}</td>
+            <td class="price"> {{node.bom.price | number: '1.2-2'}}</td>
+        </tr>
+
     </mat-tree-node>
     <!-- This is the tree node template for expandable nodes -->
     <mat-nested-tree-node *matTreeNodeDef="let node; when: hasChild">
@@ -22,7 +28,21 @@
                     <i class="fa-solid fa-plus bold"></i>
                 }
             </button>
-            {{node.bom.childRef}} {{node.bom.childDescription}}
+            @if (node.bom.id === 0) {
+                <tr class="b-primary header" >
+                    <th class="reference" translate> COMMON_REFERENCE</th>
+                    <th class="description" translate> COMMON_DESCRIPTION</th>
+                    <th class="qty" translate> LOGISTICS_QTY</th>
+                    <th class="price" translate> LOGISTICS_PRICE</th>
+                </tr>
+            } @else {
+                <tr>
+                    <td class="reference" > {{node.bom.childRef}}</td>
+                    <td class="description">{{node.bom.childDescription}}</td>
+                    <td class="qty"> {{node.bom.qty | number: '1.2-2'}}</td>
+                    <td class="price"> {{node.bom.price | number: '1.2-2'}}</td>
+                </tr>
+           }
         </div>
         <!-- There is inline padding applied to this div using styles.
             This padding value depends on the mat-icon-button width.  -->
