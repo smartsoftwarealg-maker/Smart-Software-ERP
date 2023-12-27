@@ -1,14 +1,31 @@
 import { Component, inject } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, FormsModule, ReactiveFormsModule, Validators } from "@angular/forms";
 import { AgentService } from '@ss/logistics/api-agent';
 import { SnackBarService } from '@ss/common/ui-shell';
 import { ESender, LanguageService, LoginService } from '@ss/common/api-common';
 import { Router } from '@angular/router';
+import { CommonModule } from "@angular/common";
+import { CommonUiLangModule } from "@ss/common/ui-lang";
+import { MatFormFieldModule } from "@angular/material/form-field";
+import { MatInputModule } from "@angular/material/input";
+import { MatButtonModule } from "@angular/material/button";
+import { MatProgressBarModule } from "@angular/material/progress-bar";
+import { MatCardModule } from "@angular/material/card";
 
 @Component({
     selector: 'ss-code-confirmation',
     templateUrl: './auth2-f-a-confirmation.component.html',
     styleUrls: ['./auth2-f-a-confirmation.component.scss'],
+    standalone: true,
+    imports: [CommonModule,
+        CommonUiLangModule,
+        FormsModule,
+        MatFormFieldModule,
+        MatInputModule,
+        ReactiveFormsModule,
+        MatButtonModule,
+        MatProgressBarModule,
+        MatCardModule]
 })
 export class Auth2FAConfirmationComponent {
     private THIRTY_MINUTES = 30 * 30;

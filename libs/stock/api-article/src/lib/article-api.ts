@@ -8,7 +8,7 @@ export const APP_URL = '/apps';
 export const AVAILABLE_ARTICLES_URL = '/articles/available';
 export const ARTICLE_IMAGE_URL = '/image';
 export const BOM_TREE_URL = '/articles/tree';
-export const BOM_URL = '/bom';
+export const BOM_URL = '/boms';
 
 
 
@@ -17,6 +17,7 @@ export interface BOM {
     parentId?: number;
     childId: number;
     qty: number;
+    price?: number;
     parentRef?: string;
     parentDescription?: string;
     childRef?: string;

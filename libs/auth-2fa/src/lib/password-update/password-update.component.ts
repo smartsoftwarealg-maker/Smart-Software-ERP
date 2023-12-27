@@ -2,14 +2,31 @@ import { Component, inject } from '@angular/core';
 import { LoginService } from '@ss/common/api-common';
 import { SnackBarService } from '@ss/common/ui-shell';
 import { AgentService } from '@ss/logistics/api-agent';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, FormsModule, ReactiveFormsModule, Validators } from "@angular/forms";
 import { Router } from '@angular/router';
 import { of, switchMap } from 'rxjs';
+import { CommonModule } from "@angular/common";
+import { CommonUiLangModule } from "@ss/common/ui-lang";
+import { MatFormFieldModule } from "@angular/material/form-field";
+import { MatInputModule } from "@angular/material/input";
+import { MatButtonModule } from "@angular/material/button";
+import { MatProgressBarModule } from "@angular/material/progress-bar";
+import { MatCardModule } from "@angular/material/card";
 
 @Component({
     selector: 'ss-password-update',
     templateUrl: './password-update.component.html',
     styleUrls: ['./password-update.component.scss'],
+    standalone: true,
+    imports: [CommonModule,
+        CommonUiLangModule,
+        FormsModule,
+        MatFormFieldModule,
+        MatInputModule,
+        ReactiveFormsModule,
+        MatButtonModule,
+        MatProgressBarModule,
+        MatCardModule]
 })
 export class PasswordUpdateComponent {
     private router = inject(Router);

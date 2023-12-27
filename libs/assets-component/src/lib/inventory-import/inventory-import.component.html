@@ -69,20 +69,18 @@
 <!--    <div><pre>{{form?.value | json }}</pre></div>-->
 
 
-<div class="ctrl-div">
-    <div *ngIf="!uploadProgress">
-        <button mat-raised-button color="primary"
-                type="button"
-                (click)="onFileSelected(fileUpload.files)"
-                [disabled]="!form.valid || fileName?.length < 4">
-            {{ 'COMMON_UPLOAD' | translate }}
-            <i class="fa-solid fa-upload  icon"></i>
-        </button>
+@if (!uploadProgress) {
+    <div class="ctrl-div">
+            <button mat-raised-button color="primary"
+                    type="button"
+                    (click)="onFileSelected(fileUpload.files)"
+                    [disabled]="!form.valid || fileName?.length < 4">
+                {{ 'COMMON_UPLOAD' | translate }}
+                <i class="fa-solid fa-upload  icon"></i>
+            </button>
+            <button mat-raised-button color="warn" type="button" (click)="cancel()">
+                {{ 'COMMON_CANCEL' | translate }}
+                <i class="fa-solid fa-rotate-left icon"></i>
+            </button>
     </div>
-    <div *ngIf="!uploadProgress">
-        <button mat-raised-button color="warn" type="button" (click)="cancel()">
-            {{ 'COMMON_CANCEL' | translate }}
-            <i class="fa-solid fa-rotate-left icon"></i>
-        </button>
-    </div>
-</div>
+}

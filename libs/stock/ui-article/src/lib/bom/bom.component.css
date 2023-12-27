@@ -28,3 +28,30 @@
 .bold {
     font-weight: bold;
 }
+
+.reference {
+    width: 15em;
+}
+
+.description {
+    width: 30em;
+}
+
+.price,
+.qty {
+    width: 12em;
+}
+
+mat-tree {
+    width: 90%;
+    max-width: 1200px;
+    margin: 4px auto;
+    overflow-x: auto;
+    height: calc(100% - 10px);
+}
+
+.header {
+    height: 32px;
+    display: flex;
+    align-content: center;
+}
