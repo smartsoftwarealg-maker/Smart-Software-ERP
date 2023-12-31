@@ -2,7 +2,7 @@ import {Component, OnInit,} from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import {ArticleService} from '@ss/stock/api-article';
+import {ArticleService} from '@ss/master-data/api-article';
 import {PaginationModel} from '@ss/common/api-common';
 import {Total, TotalService} from '@ss/logistics/api-totals';
 import {LanguageService} from '@ss/common/api-common';

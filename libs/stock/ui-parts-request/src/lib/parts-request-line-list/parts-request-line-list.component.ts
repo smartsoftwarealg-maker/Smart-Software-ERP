@@ -12,7 +12,7 @@ import { PartsRequestLineService } from '../services/parts-request-line.service'
 import { CommonUiLangModule } from '@ss/common/ui-lang';
 import { LogisticsUiDocInfoModule } from '@ss/logistics/ui-doc-info';
 import { UiPaginationModule } from '@ss/common/ui-pagination';
-import { ArticleService } from '@ss/stock/api-article';
+import { ArticleService } from '@ss/master-data/api-article';
 import { MaterialModule } from '@ss/common/api-common';
 import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
 import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';

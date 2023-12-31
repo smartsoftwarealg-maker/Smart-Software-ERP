@@ -11,5 +11,4 @@ export class MaritalStatusService extends BaseEntityService<MaritalStatus> {
     constructor(protected override httpSrv: HttpService) {
         super(httpSrv, MARITAL_STATUS_URL);
     }
-
 }

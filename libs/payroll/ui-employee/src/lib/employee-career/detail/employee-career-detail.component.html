@@ -57,6 +57,15 @@
     </div>
 
     <mat-form-field floatLabel="always" class="default-50 sm-100">
+        <mat-label translate>PAYROLL_CAREER_MOTIVES</mat-label>
+        <ss-auto-complete matInput
+                          formControlName="motive"
+                          [model]="careerMotiveLookup">
+        </ss-auto-complete>
+    </mat-form-field>
+
+
+    <mat-form-field floatLabel="always" class="default-50 sm-100">
         <mat-label translate>PAYROLL_POST</mat-label>
         <ss-auto-complete matInput
                           formControlName="post"

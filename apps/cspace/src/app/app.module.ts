@@ -20,8 +20,8 @@ import {
 } from '@ss/common/api-common';
 import {CommonUiLangModule} from '@ss/common/ui-lang';
 import {COMMON_CUSTOMER_PROFILE_URL, CSPACE_APP_URL} from "./common";
-import {CustomerProfileComponent} from "@ss/logistics/ui-agent";
-import {ExchangeUiIdiotPageModule} from "@ss/exchange/ui-idiot-page";
+import {CustomerProfileComponent} from '@ss/logistics/ui-agent';
+import {ExchangeUiIdiotPageModule} from '@ss/exchange/ui-idiot-page';
 
 const routes: Routes = [
     {

@@ -1,13 +1,14 @@
 import {Component, HostBinding} from '@angular/core';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { CostingProjectService } from '../costing-project.service';
+import { CostingProjectService } from '../services/costing-project.service';
 import { MaterialModule, PaginatorPersistenceService } from '@ss/common/api-common';
 import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { CProject, DateUtil, slideToRight } from '@ss/costing/costing-utils';
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { DefaultReportService } from '@ss/common/ui-default-report-component';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
+import { UiPaginationModule } from "@ss/common/ui-pagination";
 
 @Component({
     selector: 'ss-costing-project-list',
@@ -19,6 +20,7 @@ import { ShellService, SnackBarService } from '@ss/common/ui-shell';
         RouterModule,
         MaterialModule,
         CommonUiConfirmationDialogModule,
+        UiPaginationModule
     ],
     animations: [slideToRight]
 })

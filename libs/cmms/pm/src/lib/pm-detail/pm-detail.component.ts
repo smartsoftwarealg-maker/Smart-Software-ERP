@@ -8,9 +8,10 @@ import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { CMMSPMService } from '../services/cmms-p-m.service';
 import { CMMSPlanService } from '@ss/cmms/plans';
 import { AssetsService } from '@ss/assets-component';
-import { CMMSFaultCauseService, CMMSFaultService, CMMSPriorityService, CMMSRoutingService } from '@ss/cmms/lookups';
+import { CMMSFaultCauseService, CMMSFaultService, CMMSPriorityService } from '@ss/cmms/lookups';
 import { DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
 import { LoginService } from '@ss/common/api-common';
+import { CMMSRoutingService } from '@ss/master-data/cmms-routing';
 
 @Component({
     selector: 'ss-pm-detail',

@@ -68,7 +68,7 @@ export interface Career {
     wrkDescription?: string;
     postDescription?: string;
     // todo: add these fields
-    // motive               ?: number;
+    motive?: number;
     // qualification        ?: number;
     // responsible          : Option[Long] = None,
 }

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {BaseEntityService} from '@ss/common/api-base-entity';
 import {Article, SS_ARTICLE_URL} from './scheduled-sales-api';
 import {HttpService} from '@ss/common/api-common';
-import {ARTICLE_IMAGE_URL, ARTICLES_URL} from '@ss/stock/api-article';
+import {ARTICLE_IMAGE_URL, ARTICLES_URL} from '@ss/master-data/api-article';
 
 @Injectable({
   providedIn: 'root'

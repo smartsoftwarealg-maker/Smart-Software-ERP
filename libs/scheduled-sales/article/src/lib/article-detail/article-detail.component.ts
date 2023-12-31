@@ -1,7 +1,7 @@
 import { Component, inject, OnInit } from '@angular/core';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
-import {ImageModel} from '@ss/common/ui-image-input';
-import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
+import { CommonUiImageInputModule, ImageModel } from "@ss/common/ui-image-input";
+import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from "@ss/common/ui-auto-complete";
 import {
     ClassService,
     LookupsService,
@@ -13,24 +13,51 @@ import {
     VatService
 } from '@ss/common/api-lookup';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
-import {ActivatedRoute, Router} from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from "@angular/router";
 import {
-    AbstractControl,
+    AbstractControl, ReactiveFormsModule,
     UntypedFormBuilder,
     ValidationErrors,
     ValidatorFn,
     Validators
-} from '@angular/forms';
-import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import {HttpService} from '@ss/common/api-common';
+} from "@angular/forms";
+import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
+import { HttpService, MaterialModule } from "@ss/common/api-common";
 import {Observable} from 'rxjs';
 import {tap} from 'rxjs/operators';
 import {Article, SSArticleService} from '@ss/scheduled-sales/api-scheduled-sales';
+import { CommonModule } from "@angular/common";
+import { CommonUiLangModule } from "@ss/common/ui-lang";
+import { UiPaginationModule } from "@ss/common/ui-pagination";
+import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
+import { LogisticsUiDocInfoModule } from "@ss/logistics/ui-doc-info";
+import { LogisticsUiDocImportModule } from "@ss/logistics/ui-doc-import";
+import { LogisticsUiStockInfoModule } from "@ss/logistics/ui-stock-info";
+import { CommonUiColorSelectModule } from "@ss/common/ui-color-select";
+import { ColorPickerModule } from "ngx-color-picker";
 
 @Component({
-  selector: 'ss-article-detail',
-  templateUrl: './article-detail.component.html',
-  styleUrls: ['./article-detail.component.scss']
+    selector: "ss-article-detail",
+    templateUrl: "./article-detail.component.html",
+    styleUrls: ["./article-detail.component.scss"],
+    standalone: true,
+    imports: [
+        CommonModule,
+        MaterialModule,
+        CommonUiLangModule,
+        UiPaginationModule,
+        ReactiveFormsModule,
+        CommonUiConfirmationDialogModule,
+        RouterModule,
+        CommonUiDatepickerModule,
+        CommonUiAutoCompleteModule,
+        LogisticsUiDocInfoModule,
+        LogisticsUiDocImportModule,
+        LogisticsUiStockInfoModule,
+        CommonUiImageInputModule,
+        CommonUiColorSelectModule,
+        ColorPickerModule
+    ]
 })
 export class ArticleDetailComponent  extends BaseEntityDetailComponent<Article> implements OnInit {
     private classSrv  = inject(ClassService);

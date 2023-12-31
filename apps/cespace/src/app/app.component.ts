@@ -4,7 +4,7 @@ import { switchMap } from 'rxjs/operators';
 import { ShellService } from '@ss/common/ui-shell';
 import { exchangeNavTree } from './exchange/side-nav-tree';
 import {DeviceDetectorService} from "ngx-device-detector";
-import {AdmobClass} from "@ss/common/api-admob";
+import {AdmobClass} from '@ss/common/api-admob';
 
 @Component({
     selector: 'ss-root',

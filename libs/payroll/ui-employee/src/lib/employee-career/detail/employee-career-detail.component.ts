@@ -15,7 +15,7 @@ import {
     DivisionService,
     DepartmentService,
     ServiceService,
-    ActivePostService
+    ActivePostService, CareerMotiveService
 } from '@ss/common/api-lookup';
 import {GridService} from '@ss/payroll/salary-grid';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
@@ -33,6 +33,7 @@ export class EmployeeCareerDetailComponent extends BaseChildEntityDetailComponen
     private formBuilder = inject(UntypedFormBuilder);
     public lookupsSrv = inject(LookupsService);
     private gridService = inject(GridService);
+    private careerMotiveSrv = inject(CareerMotiveService);
 
     private postSrv =  inject(ActivePostService);
     postLookup = new DefaultAutoCompleteModel(this.postSrv);
@@ -40,6 +41,7 @@ export class EmployeeCareerDetailComponent extends BaseChildEntityDetailComponen
     divisionLookup = new DefaultAutoCompleteModel(this.divisionSrv);
     departmentLookup = new DefaultAutoCompleteModel(this.departmentSrv);
     serviceLookup = new DefaultAutoCompleteModel(this.serviceSrv);
+    careerMotiveLookup = new DefaultAutoCompleteModel(this.careerMotiveSrv);
 
     // entity: Career;
     posts: Post[] = [];
@@ -58,23 +60,24 @@ export class EmployeeCareerDetailComponent extends BaseChildEntityDetailComponen
         this.preload();
         // this.entity = a;
         return this.form = this.formBuilder.group({
-            id:         [a.id],
-            parentId:   [a.parentId || this.employeeCareerSrv.getParentId()],
-            paymonthY:  [Math.floor(a.paymonth / 100), Validators.required],
-            paymonthM:  [a.paymonth % 100, Validators.required],
-            post:       [a.post, Validators.required],
-            division:   [a.division],
-            department: [a.department],
-            service: a.service,
-            workshop: a.workshop,
-            salary_grid: a.salary_grid,
-            prof_category: a.prof_category,
-            salary_rank: a.salary_rank,
-            from_date: [a.from_date],
-            to_date: a.to_date,
-            trial_period: [a.trial_period || 0, Validators.required],
-            decision: a.decision,
-            decision_date: a.decision_date
+            id:            [a.id],
+            parentId:      [a.parentId || this.employeeCareerSrv.getParentId()],
+            paymonthY:     [Math.floor(a.paymonth / 100), Validators.required],
+            paymonthM:     [a.paymonth % 100, Validators.required],
+            post:          [a.post, Validators.required],
+            division:      [a.division],
+            department:    [a.department],
+            service:       [a.service],
+            workshop:      [a.workshop],
+            salary_grid:   [a.salary_grid],
+            prof_category: [a.prof_category],
+            salary_rank:   [a.salary_rank],
+            from_date:     [a.from_date],
+            to_date:       [a.to_date],
+            trial_period:  [a.trial_period || 0, Validators.required],
+            decision:      [a.decision],
+            decision_date: [a.decision_date],
+            motive:        [a.motive]
         });
     }
 
@@ -88,7 +91,7 @@ export class EmployeeCareerDetailComponent extends BaseChildEntityDetailComponen
                 tap(list => this.services = list),
                 switchMap(() => this.lookupsSrv.getCategories()),
                 tap(list => this.categories = list),
-                switchMap(_ => this.gridService.getList(0, 50)),
+                switchMap(() => this.gridService.getList(0, 50)),
                 tap(res => this.salaryGrid = res.body.map(g => {
                     return { id: g.id, description: g.category + '/' + g.sec};
                 }))

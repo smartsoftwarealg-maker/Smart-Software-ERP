@@ -7,8 +7,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { FormBuilder, ReactiveFormsModule, UntypedFormGroup, Validators } from '@angular/forms';
 import { BaseChildEntityDetailComponent } from '@ss/common/ui-base-entity';
-import { ChecklistDetail, RoutingDetail } from '@ss/cmms/cmms-api';
-import { CMMSRoutingDetailService } from '@ss/cmms/lookups';
+import { RoutingDetail } from '@ss/cmms/cmms-api';
+import { CMMSRoutingDetailService } from '@ss/master-data/cmms-routing';
 
 @Component({
     imports: [CommonModule,

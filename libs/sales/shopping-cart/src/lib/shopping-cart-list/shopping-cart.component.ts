@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {ShellService, SnackBarService} from "@ss/common/ui-shell";
-import {Article, ArticleService, AVAILABLE_ARTICLES_URL} from "@ss/stock/api-article";
+import {Article, ArticleService, AVAILABLE_ARTICLES_URL} from "@ss/master-data/api-article";
 import {BaseEntityListComponent} from "@ss/common/ui-base-entity";
 import {ActivatedRoute, Router} from "@angular/router";
 import {ConfirmationDialogService} from "@ss/common/ui-confirmation-dialog";

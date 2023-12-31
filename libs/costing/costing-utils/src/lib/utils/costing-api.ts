@@ -98,10 +98,11 @@ export interface CLineOHItem {
 export interface CPool {
     id: number;
     costCenterId: number;
-    projectId: number;
+    parentId: number;
     keyId: number;
     isSupport: boolean;
     ccDescription?: string;
+    keyDescription?: string;
 }
 
 export interface CPoolDetail {

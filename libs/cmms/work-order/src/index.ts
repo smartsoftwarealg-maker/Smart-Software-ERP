@@ -17,3 +17,5 @@ export * from './lib/services/c-m-m-s-work-order.service';
 export * from './lib/services/c-m-m-s-inspection-order.service';
 export * from './lib/services/c-m-m-s-work-person.service';
 export * from './lib/work-order-article-reservation/work-order-article-reservation.component';
+export * from './lib/work-permit-detail/work-permit-detail.component';
+export * from './lib/work-permit-list/work-permit-list.component';

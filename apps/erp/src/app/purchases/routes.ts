@@ -14,7 +14,7 @@ import {
     STOCK_ARTICLE_URL,
     PURCHASE_RECEPTION_CANCELLATION_URL,
     IMPORT_PURCHASE_RECEPTION_URL, ADMIN_REPORT_RIGHTS_URL
-} from "../common";
+} from '../common';
 import {
     PurchaseOrderDetailComponent,
     PurchaseOrderLinesDetailComponent,
@@ -40,7 +40,6 @@ import {
     PurchaseRequestLinesDetailComponent, PurchaseRequestLinesListComponent,
     PurchaseRequestListComponent
 } from '@ss/purchases/ui-purchase-request';
-import {ArticleDetailComponent, ArticleListComponent} from '@ss/stock/ui-article';
 import {
     ReceptionCancellationDetailComponent,
     ReceptionCancellationLinesDetailComponent,
@@ -55,7 +54,8 @@ import {
     ImportReceptionListComponent
 } from '@ss/purchases/imported-purchases';
 import { ExtraCostDetailComponent, ExtraCostListComponent } from '@ss/purchases/extra-costs';
-import { ReportRightsComponent } from "@ss/administration/reports-rights";
+import { ReportRightsComponent } from '@ss/administration/reports-rights';
+import { ArticleDetailComponent, ArticleListComponent } from '@ss/master-data/ui-article';
 
 export const routes: Routes = [
     {

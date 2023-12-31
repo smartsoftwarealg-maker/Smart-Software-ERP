@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpService } from '@ss/common/api-common';
 import { BaseEntityService } from '@ss/common/api-base-entity';
-import { CMMS_CHECKLIST } from '@ss/cmms/cmms-routing';
+import { CMMS_CHECKLIST } from '@ss/master-data/cmms-routing';
 import { Lookup } from '@ss/common/api-lookup';
 
 @Injectable({

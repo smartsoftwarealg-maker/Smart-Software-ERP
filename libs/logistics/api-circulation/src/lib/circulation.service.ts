@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpService, PaginationModel} from '@ss/common/api-common';
 import {BaseEntityService} from '@ss/common/api-base-entity';
 import {Circulation, CIRCULATION_URL} from './circulation-api';
-import {ARTICLES_URL} from '@ss/stock/api-article';
+import {ARTICLES_URL} from '@ss/master-data/api-article';
 import {Observable} from 'rxjs';
 import {HttpParams} from '@angular/common/http';
 import {map} from 'rxjs/operators';

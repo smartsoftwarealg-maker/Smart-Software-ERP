@@ -10,7 +10,7 @@ import {
     SS_SCHEDULE_URL
 } from './scheduled-sales-api';
 import {HttpService, LanguageService} from '@ss/common/api-common';
-import {ARTICLE_IMAGE_URL, ARTICLES_URL} from '@ss/stock/api-article';
+import {ARTICLE_IMAGE_URL, ARTICLES_URL} from '@ss/master-data/api-article';
 import {map, Observable, tap} from 'rxjs';
 import {HttpParams} from '@angular/common/http';
 

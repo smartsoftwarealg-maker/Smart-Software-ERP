@@ -219,7 +219,7 @@ export class CostingHttpService {
     }
 
     public addPool(obj: CPool): Observable<number> {
-        return this.add(this.poolParentUrl + obj.projectId + this.poolChildUrl, obj);
+        return this.add(this.poolParentUrl + obj.parentId + this.poolChildUrl, obj);
     }
 
     public addPoolDetail(obj: CPoolDetail): Observable<number> {
@@ -265,7 +265,7 @@ export class CostingHttpService {
     }
 
     public updatePool(obj: CPool): Observable<any> {
-        return this.httpSrv.put(this.poolParentUrl + obj.projectId + this.poolChildUrl, obj);
+        return this.httpSrv.put(this.poolParentUrl + obj.parentId + this.poolChildUrl, obj);
     }
 
     public updatePoolDetail(obj: CPoolDetail): Observable<any> {

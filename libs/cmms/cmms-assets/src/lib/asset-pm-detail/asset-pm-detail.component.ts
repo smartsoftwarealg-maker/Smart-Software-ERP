@@ -4,7 +4,7 @@ import { BaseChildEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { PM } from '@ss/cmms/cmms-api';
 import { AssetPmService } from '../services/asset-pm.service';
 import { FormBuilder, ReactiveFormsModule, UntypedFormGroup, Validators } from '@angular/forms';
-import { LoginService, MaterialModule } from '@ss/common/api-common';
+import { MaterialModule } from '@ss/common/api-common';
 import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
 import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
 import { CommonUiLangModule } from '@ss/common/ui-lang';
@@ -16,11 +16,11 @@ import {
     CMMSFaultCauseService,
     CMMSFaultService,
     CMMSPriorityService,
-    CMMSRoutingService
 } from '@ss/cmms/lookups';
 import { CMMSPlanService } from '@ss/cmms/plans';
 import { AssetsService } from '@ss/assets-component';
 import { MatButtonModule } from '@angular/material/button';
+import { CMMSRoutingService } from '@ss/master-data/cmms-routing';
 
 @Component({
     selector: 'ss-asset-pm-detail',

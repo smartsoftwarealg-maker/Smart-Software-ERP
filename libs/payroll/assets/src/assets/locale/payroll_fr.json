@@ -170,5 +170,6 @@
     "CERT_REFERENCE":        "Référence de certification",
     "SALARY":                "Salaire",
     "PICK_DATE":             "Date de remise",
-    "STOPPAGE_TYPE":         "Type d'arrêt"
+    "STOPPAGE_TYPE":         "Type d'arrêt",
+    "CAREER_MOTIVES":        "Motivations de carrière"
 }

@@ -1,0 +1,25 @@
+<form *ngIf="form" novalidate [formGroup]="form">
+
+    <mat-form-field class="default-50 sm-100">
+        <mat-label translate>COMMON_COST_CENTER</mat-label>
+        <ss-auto-complete matInput
+                          [model]="costServiceLookup"
+                          formControlName="costCenterId">
+        </ss-auto-complete>
+        <mat-error *ngIf="form.controls['costCenterId'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="default-50 sm-100">
+        <mat-label translate>COST_KEY</mat-label>
+        <ss-auto-complete matInput
+                          [model]="keyLookup"
+                          formControlName="costCenterId">
+        </ss-auto-complete>
+        <mat-error *ngIf="form.controls['costCenterId'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
+    </mat-form-field>
+
+    <div id="manager" class="default-50 sm-100" >
+        <mat-checkbox formControlName="isSupport" translate>COST_IS_SUPPORT</mat-checkbox>
+    </div>
+
+</form>

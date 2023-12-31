@@ -1,0 +1,32 @@
+.size,
+.table__container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 4px auto;
+}
+
+.table__container {
+    height: calc(100% - 70px);
+    overflow-x: auto;
+}
+
+
+.mat-column-ccDescription,
+.mat-column-keyDescription {
+    flex: 2 1 200px;
+}
+
+.mat-column-isSupport {
+    flex: 1 1 90px;
+}
+
+mat-table {
+    min-width: 500px;
+}
+
+@media (width <= 600px) {
+    .table__container {
+        height: calc(100% - 124px);
+    }
+
+}

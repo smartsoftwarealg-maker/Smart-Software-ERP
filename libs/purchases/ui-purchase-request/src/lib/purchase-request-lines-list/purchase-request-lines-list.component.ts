@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {BaseTransactionLinesListComponent} from '@ss/logistics/api-transaction';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
-import {ArticleService} from '@ss/stock/api-article';
+import {ArticleService} from '@ss/master-data/api-article';
 import {LotsService} from '@ss/common/api-lookup';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {PurchaseRequestLinesService} from '../purchase-request-lines.service';
