@@ -16,3 +16,17 @@
         }
     </mat-card-content>
 </mat-card>
+
+
+<mat-tab-group (selectedIndexChange)="showPanel($event)">
+    <mat-tab label="{{ 'COST_PRODUCTS'|translate }}" >
+        @if (id > 0 && activePanel === PRODUCTS_PANEL) {
+             <router-outlet></router-outlet>
+        }
+    </mat-tab>
+    <mat-tab label="{{ 'COST_POOLS'|translate }}" (click)="showPanel(POOLS_PANEL)">
+        @if (id > 0 && activePanel === POOLS_PANEL) {
+             <router-outlet></router-outlet>
+        }
+    </mat-tab>
+</mat-tab-group>

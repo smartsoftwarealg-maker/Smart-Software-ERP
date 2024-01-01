@@ -36,6 +36,7 @@ export interface EmployeeActivation {
     suspensionReason: number;
     employmentType: number;
     inConflict: boolean;
+    isFinal: boolean;
     centerName?: string;
     empTypeDescription?: string;
     suspendReasonDescription?: string;

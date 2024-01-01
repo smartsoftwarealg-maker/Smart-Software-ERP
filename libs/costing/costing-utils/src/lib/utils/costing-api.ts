@@ -73,9 +73,11 @@ export interface CProduct {
 
 export interface CProductLine {
     id: number;
-    projectId: number;
+    parentId: number; //projectId
     productId: number;
     units: number;
+    reference?: string;
+    description?: string;
 }
 
 export interface CLineDirectItem {

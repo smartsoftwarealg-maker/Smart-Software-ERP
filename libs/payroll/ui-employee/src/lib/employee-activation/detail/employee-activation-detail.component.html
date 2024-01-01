@@ -32,6 +32,10 @@
         <mat-checkbox formControlName="inConflict" translate>PAYROLL_IN_CONFLICT</mat-checkbox>
     </div>
 
+    <div class="default-50 sm-100" style="height: 64.8px; line-height: 64.8px;">
+        <mat-checkbox formControlName="isFinal" translate>PAYROLL_FINAL</mat-checkbox>
+    </div>
+
     <mat-form-field class="default-50 sm-100">
         <mat-label translate>PAYROLL_SUSP_DATE</mat-label>
         <ss-date-picker [required]="form.value['suspended']" formControlName="suspensionDate"></ss-date-picker>

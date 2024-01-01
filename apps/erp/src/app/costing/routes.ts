@@ -14,7 +14,12 @@ import { loginGuard } from '../erp-guards';
 import { CostingItemDetailComponent, CostingItemListComponent } from '@ss/costing/costing-items';
 import { CostingKeyDetailComponent, CostingKeyListComponent } from '@ss/costing/costing-keys';
 import { CostingProductDetailComponent, CostingProductListComponent } from '@ss/costing/costing-products';
-import { CostingProjectDetailComponent, CostingProjectListComponent } from '@ss/costing/costing-projects';
+import {
+    CostingPoolDetailComponent,
+    CostingPoolListComponent,
+    CostingProjectDetailComponent,
+    CostingProjectListComponent, ProductLineDetailComponent, ProductLineListComponent
+} from '@ss/costing/costing-projects';
 import {
     BomComponent,
     ChildBomComponent,
@@ -28,7 +33,6 @@ import {
     CMMSRoutingListComponent
 } from '@ss/master-data/cmms-routing';
 import { CostCenterDetailComponent, CostCenterListComponent } from '@ss/logistics/ui-cost-center';
-import { COST_CENTER_URL } from '@ss/logistics/api-cost-center';
 
 export const costingRoutes: Routes = [
     {
@@ -44,6 +48,22 @@ export const costingRoutes: Routes = [
                 component: CostingProjectDetailComponent,
                 canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService],
+                children: [
+                    {
+                        path: 'pools',
+                        children: [
+                            { path: '', component: CostingPoolListComponent, pathMatch: 'full' },
+                            { path: ':id', component: CostingPoolDetailComponent }
+                        ]
+                    },
+                    {
+                        path: 'products',
+                        children: [
+                            { path: '', component: ProductLineListComponent, pathMatch: 'full' },
+                            { path: ':id', component: ProductLineDetailComponent }
+                        ]
+                    },
+                ]
             },
             { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
         ]

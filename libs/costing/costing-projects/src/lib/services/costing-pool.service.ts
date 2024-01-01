@@ -8,6 +8,6 @@ import { HttpService } from '@ss/common/api-common';
 })
 export class CostingPoolService extends BaseEntityService<CPool> {
     constructor(protected override httpSrv: HttpService) {
-        super(httpSrv, '/costing/pools', '/projects');
+        super(httpSrv, '/pools', '/costing/projects');
     }
 }

@@ -3,7 +3,7 @@ import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {Article} from '@ss/master-data/api-article';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import {tap} from 'rxjs/operators';
-import {Observable, zip} from 'rxjs';
+import {Observable} from 'rxjs';
 import {UntypedFormBuilder, Validators} from '@angular/forms';
 import { ClassService, LookupsService, MarkService, Unit, Vat } from '@ss/common/api-lookup';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
@@ -19,7 +19,9 @@ import { LogisticsUiDocInfoModule } from '@ss/logistics/ui-doc-info';
 import { LogisticsUiStockInfoModule } from '@ss/logistics/ui-stock-info';
 import { FinalProductService } from '@ss/master-data/api-article';
 import { CMMSRoutingService } from '@ss/master-data/cmms-routing';
-import { BomService } from "../bom.service";
+import { BomService } from '../bom.service';
+import { CommonUiMainPageModule } from '@ss/common/ui-main-page';
+import { MatCardModule } from '@angular/material/card';
 
 @Component({
     selector: 'ss-article-detail',
@@ -37,7 +39,9 @@ import { BomService } from "../bom.service";
         RouterModule,
         CommonUiImageInputModule,
         CommonUiAutoCompleteModule,
-        LogisticsUiStockInfoModule
+        LogisticsUiStockInfoModule,
+        CommonUiMainPageModule,
+        MatCardModule
     ],
 })
 export class FinalProductDetailComponent extends BaseEntityDetailComponent<Article> implements OnInit {

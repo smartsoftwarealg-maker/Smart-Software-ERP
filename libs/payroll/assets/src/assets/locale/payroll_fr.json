@@ -171,5 +171,6 @@
     "SALARY":                "Salaire",
     "PICK_DATE":             "Date de remise",
     "STOPPAGE_TYPE":         "Type d'arrêt",
-    "CAREER_MOTIVES":        "Motivations de carrière"
+    "CAREER_MOTIVES":        "Motivations de carrière",
+    "FINAL":                 "Final"
 }

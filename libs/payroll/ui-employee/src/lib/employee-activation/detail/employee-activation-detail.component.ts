@@ -42,7 +42,8 @@ export class EmployeeActivationDetailComponent extends BaseChildEntityDetailComp
             suspensionDate:   [a.suspensionDate],
             suspensionReason: [a.suspensionReason],
             employmentType:   [a.employmentType],
-            inConflict:       [a.inConflict]
+            inConflict:       [a.inConflict],
+            isFinal:          [a.isFinal]
         });
     }
 }

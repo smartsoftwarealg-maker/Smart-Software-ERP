@@ -6,11 +6,16 @@
 }
 
 .table__container {
-    height: calc(100% - 70px);
     overflow-x: auto;
+    height: calc(100vh - 420px);
 }
 
-
+.button__div {
+    display: flex;
+    gap: 1em;
+    justify-content: flex-end;
+    background: #00C853;
+}
 .mat-column-ccDescription,
 .mat-column-keyDescription {
     flex: 2 1 200px;
@@ -24,9 +29,3 @@ mat-table {
     min-width: 500px;
 }
 
-@media (width <= 600px) {
-    .table__container {
-        height: calc(100% - 124px);
-    }
-
-}

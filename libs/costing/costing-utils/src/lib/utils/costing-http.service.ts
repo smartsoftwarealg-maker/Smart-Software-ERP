@@ -207,7 +207,7 @@ export class CostingHttpService {
     }
 
     public addProductLine(obj: CProductLine): Observable<number> {
-        return this.add(this.productLineParentUrl + obj.projectId + this.productLineChildUrl, obj);
+        return this.add(this.productLineParentUrl + obj.parentId + this.productLineChildUrl, obj);
     }
 
     public addProductLineOH(obj: CLineOHItem): Observable<number> {
@@ -253,7 +253,7 @@ export class CostingHttpService {
     }
 
     public updateProductLine(obj: CProductLine): Observable<any> {
-        return this.httpSrv.put(this.productLineParentUrl + obj.projectId + this.productLineChildUrl, obj);
+        return this.httpSrv.put(this.productLineParentUrl + obj.parentId + this.productLineChildUrl, obj);
     }
 
     public updateProductLineOH(obj: CLineOHItem): Observable<any> {

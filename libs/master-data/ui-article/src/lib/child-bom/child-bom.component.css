@@ -7,6 +7,15 @@
     justify-content: flex-end;
 }
 
+.btn_div span {
+    flex-grow: 2;
+    justify-self: center;
+    align-self: center;
+    font-weight: bolder;
+    font-size: 1.5em;
+    text-align: center;
+}
+
 .example-tree-invisible {
     display: none;
 }

@@ -171,5 +171,6 @@
     "SALARY":                "مرتب",
     "PICK_DATE":             "تاريخ الاختيار",
     "STOPPAGE_TYPE":         "نوع التوقف",
-    "CAREER_MOTIVES":        "الدوافع المهنية"
+    "CAREER_MOTIVES":        "الدوافع المهنية",
+    "FINAL":                 ""
 }
