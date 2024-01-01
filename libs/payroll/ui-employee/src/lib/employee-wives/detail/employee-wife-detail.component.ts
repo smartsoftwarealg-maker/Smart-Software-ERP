@@ -1,8 +1,7 @@
-import { Component, inject } from "@angular/core";
-import { FormBuilder, UntypedFormGroup, Validators } from "@angular/forms";
+import { Component, inject } from '@angular/core';
+import { FormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { BaseChildEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { Wife, EmployeeWivesService } from '@ss/payroll/api-employee';
-import { Post, Department, Division, Service, Category } from '@ss/common/api-lookup';
 
 
 @Component({

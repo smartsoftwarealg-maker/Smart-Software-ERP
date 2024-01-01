@@ -98,8 +98,8 @@ export class EmployeeDetailComponent extends BaseEntityDetailComponent<Employee>
     readonly DECISION_ROUT = 10;
     readonly ARCHIVE_ROUT = 11;
 
-    activePanel: -1 | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 = -1;
-
+    activePanel: number = -1;
+    noEdit = true;
     readonly PAYROLL_IEP = 1;
     readonly PAYROLL_OLD_ELEMENTS = 2;
     readonly PAYROLL_RANK = 3;
@@ -136,12 +136,13 @@ export class EmployeeDetailComponent extends BaseEntityDetailComponent<Employee>
 
     loadEntity(id: number): Observable<Employee> {
         this.updateChildren(id);
+        this.showPanel(this.ACTIVATION_ROUTE);
         this.subscriptions
             .push(this.router.events.pipe(filter((e: any): e is RouterEvent => e instanceof RouterEvent))
                 .subscribe((e: RouterEvent) => {
-                    const noEdit = e.url.split('/').length < 7;
-                    this.saveButton.visible = noEdit;
-                    this.shellSrv.setGoBackEnabled(noEdit);
+                    this.noEdit = e.url.split('/').length < 7;
+                    this.saveButton.visible = this.noEdit;
+                    this.shellSrv.setGoBackEnabled(this.noEdit);
                 }));
         return super.loadEntity(id);
     }
@@ -303,6 +304,10 @@ export class EmployeeDetailComponent extends BaseEntityDetailComponent<Employee>
         return this.elementsForm?.controls['elements'] as UntypedFormArray;
     }
 
+    cancelElements() {
+        this.loadFixedElements().subscribe();
+    }
+
     saveElements() {
         const line: ELine = {
             //            id: this.form.controls['id'].value, <--- why??
@@ -353,7 +358,7 @@ export class EmployeeDetailComponent extends BaseEntityDetailComponent<Employee>
             });
     }
 
-    showPanel(panel: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11) {
+    showPanel(panel: number) {
         this.activePanel = panel;
         const dest = this.PANELS[panel];
         if (this.router.url.indexOf(dest) < 0) {

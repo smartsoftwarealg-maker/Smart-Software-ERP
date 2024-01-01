@@ -1,14 +1,7 @@
-import { Component, inject, OnDestroy, OnInit } from "@angular/core";
-import { ShellService, SnackBarService, KeepOnToolbar } from '@ss/common/ui-shell';
-import { UntypedFormGroup, UntypedFormBuilder, Validators, FormBuilder } from "@angular/forms";
-import { ActivatedRoute } from '@angular/router';
-import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
-import { Observable, of } from 'rxjs';
-import { tap, switchMap, map } from 'rxjs/operators';
-import { BaseChildEntityDetailComponent, BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
-import { HttpService } from '@ss/common/api-common';
+import { Component, inject } from '@angular/core';
+import { UntypedFormGroup, Validators, FormBuilder } from '@angular/forms';
+import { BaseChildEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { Child, EmployeeChildrenService } from '@ss/payroll/api-employee';
-import { Post, LookupsService, Department, Division, Service, Category } from '@ss/common/api-lookup';
 
 @Component({
     selector: 'ss-emp-child-detail',

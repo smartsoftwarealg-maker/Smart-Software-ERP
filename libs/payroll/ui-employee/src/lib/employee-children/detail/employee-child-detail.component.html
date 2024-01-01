@@ -10,27 +10,33 @@
     </button>
 </div>
 
-<div class="form-container">
-    <form *ngIf="form" novalidate [formGroup]="form" style="min-height: 100%; display: unset">
+<mat-card class="form-container">
+    <mat-card-content>
+        <form *ngIf="form" novalidate [formGroup]="form" style="min-height: 100%; display: unset">
 
-        <mat-form-field floatLabel="always" class="default-50 sm-100">
-            <mat-label translate>PAYROLL_NAME</mat-label>
-            <input matInput required [maxLength]="64" formControlName="name">
-        </mat-form-field>
+            <mat-form-field floatLabel="always" class="default-50 sm-100">
+                <mat-label translate>PAYROLL_NAME</mat-label>
+                <input matInput required [maxLength]="64" formControlName="name">
+            </mat-form-field>
 
-        <mat-radio-group formControlName="sex" class="default-50 sm-100">
-            <mat-radio-button [value]="1" translate style="margin: 8px;" [checked]="form.controls['sex'].value === 1"> PAYROLL_MALE</mat-radio-button>
-            <mat-radio-button [value]="2" translate style="margin: 8px;" [checked]="form.controls['sex'].value === 2">PAYROLL_FEMALE</mat-radio-button>
-        </mat-radio-group>
+            <mat-radio-group formControlName="sex" class="default-50 sm-100">
+                <mat-radio-button [value]="1" translate style="margin: 8px;"
+                                  [checked]="form.controls['sex'].value === 1"> PAYROLL_MALE
+                </mat-radio-button>
+                <mat-radio-button [value]="2" translate style="margin: 8px;"
+                                  [checked]="form.controls['sex'].value === 2">PAYROLL_FEMALE
+                </mat-radio-button>
+            </mat-radio-group>
 
-        <mat-form-field floatLabel="always" class="default-50 sm-100">
-            <mat-label translate>PAYROLL_BIRTH_DATE</mat-label>
-            <ss-date-picker formControlName="birthDate"></ss-date-picker>
-        </mat-form-field>
+            <mat-form-field floatLabel="always" class="default-50 sm-100">
+                <mat-label translate>PAYROLL_BIRTH_DATE</mat-label>
+                <ss-date-picker formControlName="birthDate"></ss-date-picker>
+            </mat-form-field>
 
-        <mat-form-field floatLabel="always" class="default-50 sm-100">
-            <mat-label translate>PAYROLL_BIRTH_PLACE</mat-label>
-            <input matInput [maxLength]="64" formControlName="birthPlace">
-        </mat-form-field>
-    </form>
-</div>
+            <mat-form-field floatLabel="always" class="default-50 sm-100">
+                <mat-label translate>PAYROLL_BIRTH_PLACE</mat-label>
+                <input matInput [maxLength]="64" formControlName="birthPlace">
+            </mat-form-field>
+        </form>
+    </mat-card-content>
+</mat-card>

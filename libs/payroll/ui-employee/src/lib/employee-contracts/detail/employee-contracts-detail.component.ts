@@ -1,7 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { UntypedFormGroup, UntypedFormBuilder, Validators } from '@angular/forms';
 import { BaseChildEntityDetailComponent } from '@ss/common/ui-base-entity';
-import {LoginService} from '@ss/common/api-common';
 import {Contract, ContractMotiveService, EmployeeContractService} from '@ss/payroll/api-employee';
 import {
     Post,
