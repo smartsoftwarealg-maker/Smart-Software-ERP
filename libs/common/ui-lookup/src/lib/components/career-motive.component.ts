@@ -11,7 +11,7 @@ import { CareerMotiveService } from '@ss/common/api-lookup';
 
 
 @Component({
-    selector: 'ss-marital-status-list',
+    selector: 'ss-career-motive-list',
     templateUrl: '../base-templates/list-template.html',
     styleUrls: ['../base-templates/list-template.scss']
 })
@@ -32,9 +32,8 @@ export class CareerMotiveListComponent extends BaseEntityListComponent<Lookup> {
     }
 }
 
-
 @Component({
-    selector: 'ss-marital-status-detail',
+    selector: 'ss-career-motive-detail',
     templateUrl: '../base-templates/detail-template.html',
     styleUrls: ['../base-templates/detail-template.scss']
 })

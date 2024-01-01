@@ -172,5 +172,6 @@
     "PICK_DATE":             "تاريخ الاختيار",
     "STOPPAGE_TYPE":         "نوع التوقف",
     "CAREER_MOTIVES":        "الدوافع المهنية",
-    "FINAL":                 ""
+    "FINAL":                 "نهائي",
+    "DAS_OUT":               "نهاية الضمان"
 }

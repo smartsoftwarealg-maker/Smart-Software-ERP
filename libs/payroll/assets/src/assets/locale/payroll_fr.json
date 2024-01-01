@@ -172,5 +172,6 @@
     "PICK_DATE":             "Date de remise",
     "STOPPAGE_TYPE":         "Type d'arrêt",
     "CAREER_MOTIVES":        "Motivations de carrière",
-    "FINAL":                 "Final"
+    "FINAL":                 "Final",
+    "DAS_OUT":               "Sortie DAS"
 }

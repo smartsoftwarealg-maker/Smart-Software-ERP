@@ -172,5 +172,6 @@
     "PICK_DATE":             "Pick date",
     "STOPPAGE_TYPE":         "Stoppage type",
     "CAREER_MOTIVES":        "Career motives",
-    "FINAL":                 "Final"
+    "FINAL":                 "Final",
+    "DAS_OUT":               "Das out"
 }

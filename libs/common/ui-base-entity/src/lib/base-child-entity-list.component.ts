@@ -38,7 +38,7 @@ export class BaseChildEntityListComponent<T extends { id: number }> implements O
         const rights = this.shellSrv.getEntityRights(this.entity);
         const isManager = this.loginSrv.appCtx.manager;
         this.rights = rights || {write: isManager, edit: isManager, delete: isManager, read: isManager};
-        this.isEditable = rights?.edit || false;
+        this.isEditable = this.rights.edit;
     }
 
     showDetail(id: number) {

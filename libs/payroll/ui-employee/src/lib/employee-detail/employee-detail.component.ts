@@ -1,7 +1,7 @@
 import {Component, inject} from '@angular/core';
 import {EmployeeService} from '@ss/employee-services/employee-services';
 import {AbstractControl, UntypedFormArray, UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
-import {ActivatedRoute, Router} from '@angular/router';
+import { ActivatedRoute, Router, RouterEvent } from '@angular/router';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ImageModel} from '@ss/common/ui-image-input';
 import {
@@ -15,7 +15,7 @@ import {
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {MatExpansionPanel} from '@angular/material/expansion';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
-import {Observable, of, switchMap} from 'rxjs';
+import { filter, Observable, of, switchMap } from 'rxjs';
 import {map, tap} from 'rxjs/operators';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {HttpService} from '@ss/common/api-common';
@@ -136,6 +136,13 @@ export class EmployeeDetailComponent extends BaseEntityDetailComponent<Employee>
 
     loadEntity(id: number): Observable<Employee> {
         this.updateChildren(id);
+        this.subscriptions
+            .push(this.router.events.pipe(filter((e: any): e is RouterEvent => e instanceof RouterEvent))
+                .subscribe((e: RouterEvent) => {
+                    const noEdit = e.url.split('/').length < 7;
+                    this.saveButton.visible = noEdit;
+                    this.shellSrv.setGoBackEnabled(noEdit);
+                }));
         return super.loadEntity(id);
     }
 

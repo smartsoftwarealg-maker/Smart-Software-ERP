@@ -1,13 +1,11 @@
 import { Component, inject } from '@angular/core';
 import {
     EmploymentTypeService,
-    LookupsService,
     SuspensionReasonService
 } from '@ss/common/api-lookup';
 import { FormBuilder, UntypedFormGroup } from '@angular/forms';
 import { EmployeeActivationService, EmployeeActivation } from '@ss/payroll/api-employee';
 import { BaseChildEntityDetailComponent } from '@ss/common/ui-base-entity';
-import { LoginService } from '@ss/common/api-common';
 import { map } from 'rxjs/operators';
 
 @Component({
@@ -43,6 +41,7 @@ export class EmployeeActivationDetailComponent extends BaseChildEntityDetailComp
             suspensionReason: [a.suspensionReason],
             employmentType:   [a.employmentType],
             inConflict:       [a.inConflict],
+            dasOut:           [a.dasOut],
             isFinal:          [a.isFinal]
         });
     }
