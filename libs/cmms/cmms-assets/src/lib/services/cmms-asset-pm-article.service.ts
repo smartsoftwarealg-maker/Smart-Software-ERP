@@ -12,10 +12,4 @@ export class CmmsAssetPmArticleService extends BaseEntityService<PMPart> {
         super(httpSrv, CMMS_PM_PARTS, CMMS_PM);
         this.setParentId(0);
     }
-
-    override setParentId(id: number) {
-        // eslint-disable-next-line no-debugger
-        debugger;
-        super.setParentId(id);
-    }
 }

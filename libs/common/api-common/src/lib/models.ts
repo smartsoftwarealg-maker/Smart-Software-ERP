@@ -47,6 +47,7 @@ export interface AppContext {
     id: number;
     userName: string;
     manager: boolean;
+    responsible: boolean;
     company: number;
     center: number;
     severe: boolean;

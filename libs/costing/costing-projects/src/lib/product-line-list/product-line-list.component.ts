@@ -24,7 +24,7 @@ import { CProductLineService } from '../services/product-line.service';
     styleUrls: ['./product-line-list.component.css'],
 })
 export class ProductLineListComponent extends BaseChildEntityListComponent<CProductLine> {
-    override displayedColumns = ['reference', 'description', 'units'];
+    override displayedColumns = ['reference', 'description', 'directMaterial', 'directLabor', 'units'];
 
     constructor(protected override detailSrv: CProductLineService) {
         super(detailSrv, 'CProductLine');

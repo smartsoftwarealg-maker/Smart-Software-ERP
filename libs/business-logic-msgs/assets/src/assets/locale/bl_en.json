@@ -52,5 +52,6 @@
     "RECURSIVE_ASSEMBLY":            "Recursive composition is not allowed.",
     "TESTS_EXIST":                   "This matter cannot be deleted from this line because it has recorded tests.",
     "CMMS_PARTS_RESERVED":           "Parts for this work order are already reserved.",
-    "ORDER_ALREADY_GENERATED":       "A work order is already generated for this request."
+    "ORDER_ALREADY_GENERATED":       "A work order is already generated for this request.",
+    "ASSET_ALLOCATED_BY_DOCUMENT":   "This asset cannot be allocated manually because it has been allocated by an allocation document."
 }

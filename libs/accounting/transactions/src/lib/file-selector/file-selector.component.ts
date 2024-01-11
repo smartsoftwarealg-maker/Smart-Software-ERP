@@ -96,7 +96,7 @@ export class FileSelectorComponent extends BaseEntityListComponent<ACCFile> impl
     selectFolder() {
         this.entitySrv
             .selectFolder(this.selectedRow?.id || 0, this.selectedRow?.fileYear || 0, this.accPeriod.value)
-            .pipe(tap(ctx => this.loginSrv.updateCtx(ctx)))
+            .pipe(tap(ctx => this.loginSrv.setContext(ctx)))
             .subscribe(res => {
                 if (this.selectedRow) {
                     this.entitySrv.accFile = this.selectedRow;
@@ -116,7 +116,7 @@ export class FileSelectorComponent extends BaseEntityListComponent<ACCFile> impl
         super.select(id);
         this.entitySrv
             .selectFolder(this.selectedRow?.id || 0, this.selectedRow?.fileYear || 0, 1)
-            .pipe(tap(ctx => this.loginSrv.updateCtx(ctx)),
+            .pipe(tap(ctx => this.loginSrv.setContext(ctx)),
                 switchMap(_ => this.periodSrv.getList(0, 50)))
             .subscribe(res => {
                 const data = res.body;

@@ -5,3 +5,8 @@ export * from './lib/costing-pool-list/costing-pool-list.component';
 export * from './lib/services/product-line.service';
 export * from './lib/product-line-detail/product-line-detail.component';
 export * from './lib/product-line-list/product-line-list.component';
+export * from './lib/cost-oh-detail/costing-oh-detail.component';
+export * from './lib/cost-oh-list/costing-oh-line.component';
+export * from './lib/services/costing-pool-keys.service';
+export * from './lib/services/product-line-keys.service';
+export * from './lib/services/costing-oh.service';

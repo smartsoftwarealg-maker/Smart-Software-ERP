@@ -63,5 +63,6 @@
     "REFERENCE_CORRECTION":     "تصحيح المراجع",
     "REPLACED_REFERENCE":       "المرجع المستبدل",
     "REPLACING_REFERENCE":      "المرجع البديل",
-    "REPLACE_REFERENCE":        "استبدال المرجع"
+    "REPLACE_REFERENCE":        "استبدال المرجع",
+    "INVENTORYING":             "جرد"
 }

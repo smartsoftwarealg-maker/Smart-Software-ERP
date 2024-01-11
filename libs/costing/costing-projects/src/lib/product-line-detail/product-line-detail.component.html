@@ -23,6 +23,16 @@
             </mat-form-field>
 
 
+<!--            <mat-form-field class="default-50">-->
+<!--                <mat-label translate>COST_DIRECT_MATERIAL</mat-label>-->
+<!--                <input matInput formControlName="directMaterial" type="number">-->
+<!--            </mat-form-field>-->
+
+<!--            <mat-form-field class="default-50">-->
+<!--                <mat-label translate>COST_DIRECT_LABOR</mat-label>-->
+<!--                <input matInput formControlName="directLabor" type="number">-->
+<!--            </mat-form-field>-->
+
             <mat-form-field class="default-50">
                 <mat-label translate>COST_UNITS</mat-label>
                 <input matInput formControlName="units" type="number">
@@ -32,3 +42,29 @@
     </mat-card-content>
 </mat-card>
 
+@if (keySrv.getParentId()) {
+    <mat-accordion class="size">
+        <mat-expansion-panel
+            #costPanel
+            [class.b-primary-expansion-panel]="costPanel.expanded">
+            <div class="default-100"></div>
+            <mat-expansion-panel-header>
+                <mat-panel-title translate>
+                    COST_COSTS
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <ss-product-line-items></ss-product-line-items>
+        </mat-expansion-panel>
+        <mat-expansion-panel
+            #keyPanel
+            [class.b-primary-expansion-panel]="keyPanel.expanded">
+            <div class="default-100"></div>
+            <mat-expansion-panel-header>
+                <mat-panel-title translate>
+                    COST_PARTITION_KEYS
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <ss-product-line-keys></ss-product-line-keys>
+        </mat-expansion-panel>
+    </mat-accordion>
+}

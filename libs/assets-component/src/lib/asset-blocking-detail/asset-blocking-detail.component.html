@@ -10,28 +10,28 @@
 </div>
 
 <form *ngIf="form !== null" novalidate [formGroup]="form">
-    <mat-form-field class="default-100">
+    <mat-form-field class="default-50 sm-100">
         <mat-label translate>COMMON_DECISION</mat-label>
         <input matInput formControlName="decisionNumber" type="text">
     </mat-form-field>
 
-    <mat-form-field class="default-100">
+    <mat-form-field class="default-50 sm-100">
         <mat-label translate>COMMON_DATE</mat-label>
         <ss-date-picker formControlName="decisionDate"></ss-date-picker>
     </mat-form-field>
 
-    <mat-form-field class="default-100">
+    <mat-form-field class="default-50 sm-100">
         <mat-label translate>COMMON_FROM</mat-label>
         <ss-date-picker formControlName="fromDate"></ss-date-picker>
     </mat-form-field>
 
 
-    <mat-form-field class="default-100">
+    <mat-form-field class="default-50 sm-100">
         <mat-label translate>COMMON_TO</mat-label>
         <ss-date-picker formControlName="toDate"></ss-date-picker>
     </mat-form-field>
 
-    <mat-form-field class="default-100">
+    <mat-form-field class="default-50 sm-100">
         <mat-label translate>COMMON_TYPE</mat-label>
         <ss-auto-complete matInput
                           [model]="typeLookup"

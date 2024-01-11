@@ -15,11 +15,13 @@ import { CostingItemDetailComponent, CostingItemListComponent } from '@ss/costin
 import { CostingKeyDetailComponent, CostingKeyListComponent } from '@ss/costing/costing-keys';
 import { CostingProductDetailComponent, CostingProductListComponent } from '@ss/costing/costing-products';
 import {
+    CostingOhDetailComponent,
+    CostingOhLineComponent,
     CostingPoolDetailComponent,
     CostingPoolListComponent,
     CostingProjectDetailComponent,
     CostingProjectListComponent, ProductLineDetailComponent, ProductLineListComponent
-} from '@ss/costing/costing-projects';
+} from "@ss/costing/costing-projects";
 import {
     BomComponent,
     ChildBomComponent,
@@ -61,6 +63,13 @@ export const costingRoutes: Routes = [
                         children: [
                             { path: '', component: ProductLineListComponent, pathMatch: 'full' },
                             { path: ':id', component: ProductLineDetailComponent }
+                        ]
+                    },
+                    {
+                        path: 'oh',
+                        children: [
+                            { path: '', component: CostingOhLineComponent, pathMatch: 'full' },
+                            { path: ':id', component: CostingOhDetailComponent }
                         ]
                     },
                 ]

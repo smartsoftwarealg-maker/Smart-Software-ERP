@@ -33,6 +33,16 @@
             <mat-cell *matCellDef="let p">{{ p.units }}</mat-cell>
         </ng-container>
 
+        <ng-container matColumnDef="directMaterial">
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>COST_DIRECT_MATERIAL</mat-header-cell>
+            <mat-cell *matCellDef="let p">{{ p.directMaterial }}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="directLabor">
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>COST_DIRECT_LABOR</mat-header-cell>
+            <mat-cell *matCellDef="let p">{{ p.directLabor }}</mat-cell>
+        </ng-container>
+
 
         <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
 

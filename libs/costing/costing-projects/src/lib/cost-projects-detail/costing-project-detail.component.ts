@@ -1,5 +1,5 @@
-import { Component, HostBinding, inject } from '@angular/core';
-import { ActivatedRoute, Router, RouterModule } from '@angular/router';
+import { Component, HostBinding, inject, OnInit, signal } from "@angular/core";
+import { ActivatedRoute, Router, RouterEvent, RouterModule } from '@angular/router';
 import { FormGroup, UntypedFormBuilder, Validators } from '@angular/forms';
 import {
     CProject,
@@ -12,9 +12,11 @@ import { CommonUiLangModule } from '@ss/common/ui-lang';
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { CostingProjectService } from '../services/costing-project.service';
-import { Observable } from 'rxjs';
+import { filter, Observable } from 'rxjs';
 import { CostingPoolService } from '../services/costing-pool.service';
 import { CProductLineService } from '../services/product-line.service';
+import { sign } from "chart.js/helpers";
+import { CostingOhService } from "../services/costing-oh.service";
 
 
 @Component({
@@ -31,18 +33,21 @@ import { CProductLineService } from '../services/product-line.service';
         CommonUiLangModule
     ]
 })
-export class CostingProjectDetailComponent extends BaseEntityDetailComponent<CProject> {
+export class CostingProjectDetailComponent extends BaseEntityDetailComponent<CProject> implements  OnInit {
     private productSrv = inject(CProductLineService);
     private router = inject(Router);
     private costingPoolSrv = inject(CostingPoolService);
+    private ohSrv = inject(CostingOhService);
     private loginSrv = inject(LoginService);
 
+    onEdit = signal(false);
     @HostBinding('@routeAnimation') routeAnimation = true;
     activePanel = -1;
-    private URLS = ['products', 'pools'];
+    private URLS = ['products', 'pools', 'oh'];
 
     PRODUCTS_PANEL = 0;
     POOLS_PANEL = 1;
+    COH_PANEL = 2;
 
     constructor(
         public override entitySrv: CostingProjectService,
@@ -67,6 +72,7 @@ export class CostingProjectDetailComponent extends BaseEntityDetailComponent<CPr
     override loadEntity(id: number): Observable<CProject> {
         this.productSrv.setParentId(id || 0);
         this.costingPoolSrv.setParentId(id || 0);
+        this.ohSrv.setParentId(id || 0);
         return super.loadEntity(id);
     }
 
@@ -76,5 +82,13 @@ export class CostingProjectDetailComponent extends BaseEntityDetailComponent<CPr
         if (this.router.url.indexOf(url) < 0) {
             this.router.navigate([url], { relativeTo: this.route }).then();
         }
+    }
+
+    override ngOnInit() {
+        super.ngOnInit();
+        this.router.events.pipe(filter((e: any): e is RouterEvent => e instanceof RouterEvent))
+            .subscribe((e: RouterEvent) => {
+                this.onEdit.set(e.url.split('/').length > 6);
+            });
     }
 }

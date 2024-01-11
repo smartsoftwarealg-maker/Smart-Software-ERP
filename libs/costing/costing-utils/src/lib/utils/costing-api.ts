@@ -75,18 +75,35 @@ export interface CProductLine {
     id: number;
     parentId: number; //projectId
     productId: number;
+    directMaterial: number;
+    directLabor: number;
     units: number;
     reference?: string;
     description?: string;
 }
 
-export interface CLineDirectItem {
-    id: number;
-    productLineId: number;
-    item: number;
-    amount: number;
-    scale: number;
-    actual: number;
+export interface CLineKey {
+    id:              number;
+    parentId:        number;
+    keyId:           number;
+    value:           number;
+    keyDescription?: string;
+}
+
+export interface CLineCost {
+    id:              number;
+    parentId:        number;
+    itemId:          number;
+    value:           number;
+    keyDescription?: string;
+}
+
+export interface CPoolCost {
+    id:              number;
+    parentId:        number;
+    itemId:          number;
+    value:           number;
+    keyDescription?: string;
 }
 
 export interface CLineOHItem {
@@ -109,20 +126,22 @@ export interface CPool {
 
 export interface CPoolDetail {
     id: number;
-    poolId: number;
+    parentId: number;
     key: number;
     value: number;
+    keyDescription?: string;
 }
 
 export interface OH {
     id: number;
-    projectId: number;
+    parentId: number;
     keyId: number;
     description: string;
+    keyDescription?: string;
     amount: number;
-    scale: number;
-    actual: number;
-    accountNo: number;
+    scale?: number;
+    actual?: number;
+    accountNo?: number;
 }
 
 export interface CostCenter {

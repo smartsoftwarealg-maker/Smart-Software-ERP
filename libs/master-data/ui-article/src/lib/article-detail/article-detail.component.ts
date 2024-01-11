@@ -52,6 +52,7 @@ export class ArticleDetailComponent extends BaseEntityDetailComponent<Article> i
     imageModel: ImageModel;
     aid = 0;
     classLookup = new DefaultAutoCompleteModel(this.classSrv);
+    unitLookup = new DefaultAutoCompleteModel(this.unitSrv);
     markLookup = new DefaultAutoCompleteModel(this.markSrv);
 
     vats: Vat[];

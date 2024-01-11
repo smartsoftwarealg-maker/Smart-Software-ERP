@@ -54,10 +54,8 @@ export class LoginService {
     public loadContext(): Observable<LoginInfo> {
         return this.httpSrv.get<LoginInfo>('/relogin')
             .pipe(
-                tap((info: LoginInfo) => {
-                    this.appCtx = info.ctx;
-                    this.httpSrv.updateAuthToken(info.jwt);
-                }), catchError(() => of(null)));
+                tap((info: LoginInfo) => this.setContext(info)),
+                catchError(() => of(null)));
     }
 
     // todo: fix auto login
@@ -65,10 +63,7 @@ export class LoginService {
         return this.httpSrv
             .init()
             .pipe(switchMap(_ => this.httpSrv.get<LoginInfo>('/relogin')),
-                tap((info: LoginInfo) => {
-                    this.appCtx = info.ctx;
-                    this.httpSrv.updateAuthToken(info.jwt);
-                }),
+                tap((info: LoginInfo) => this.setContext(info)),
                 catchError(err => of(false)),
                 map(_ => {
                     const failure: boolean = !this.appCtx || (this.appCtx.id == null && this.appCtx.agentId == null);
@@ -95,10 +90,7 @@ export class LoginService {
                 this.httpSrv
                     .get<LoginInfo>('/ctx')
                     .pipe(
-                        tap(info => {
-                            this.httpSrv.updateAuthToken(info.jwt);
-                            this.appCtx = info.ctx;
-                        }),
+                        tap((info: LoginInfo) => this.setContext(info)),
                         map(() => this.appCtx),
                         catchError(err => {
                             if (err.status !== 401) {
@@ -109,19 +101,12 @@ export class LoginService {
                     ) : of(null);
     }
 
-    public updateCtx(info: LoginInfo) {
-        this.httpSrv.updateAuthToken(info.jwt);
-        this.appCtx = info.ctx;
-    }
 
     public centerLogin(center: number): Observable<LoginInfo> {
         return this
             .httpSrv
             .put('/clogin/' + center)
-            .pipe(tap<LoginInfo>(info => {
-                this.httpSrv.updateAuthToken(info.jwt);
-                this.appCtx = info.ctx;
-            }));
+            .pipe(tap<LoginInfo>(info => this.setContext(info)));
     }
 
     public logout(): Promise<any> {
@@ -139,10 +124,7 @@ export class LoginService {
     public setLanguage(lang: string): Observable<any> {
         return this.appCtx ?
             this.httpSrv.put('/lang?lang=' + lang)
-                .pipe(tap((info: LoginInfo) => {
-                    this.httpSrv.updateAuthToken(info.jwt);
-                    this.appCtx = info.ctx;
-                })) : of(null);
+                .pipe(tap((info: LoginInfo) => this.setContext(info))) : of(null);
     }
 
     public userLogin(user: { username: string, password: string }, isAndroid: boolean, onFinish?: () => void) {
@@ -153,8 +135,7 @@ export class LoginService {
             .doLogin('/login', user)
             .subscribe({
                 next: (info: LoginInfo) => {
-                    this.httpSrv.updateAuthToken(info.jwt);
-                    this.appCtx = info.ctx;
+                    this.setContext(info);
                     if (!this.licenseErrorType) {
                         const url = this.appCtx.center ? INDEX_PAGE_URL : CENTER_SELECT_URL;
                         this.router.navigate(['/' + CENTER_SELECT_URL]);
@@ -185,6 +166,7 @@ export class LoginService {
             .pipe(
                 tap(info => {
                     this.httpSrv.updateAuthToken(info.jwt);
+                    debugger;
                     this.appCtx = info.ctx;
                 }));
     }
@@ -198,6 +180,7 @@ export class LoginService {
             .pipe(switchMap(_ => this.httpSrv.anonymous()),
                 tap((info: LoginInfo) => {
                     this.httpSrv.updateAuthToken(info.jwt);
+                    debugger;
                     this.appCtx = info.ctx;
                 }),
                 catchError(err => {
@@ -216,6 +199,7 @@ export class LoginService {
             .subscribe({
                 next: (info: LoginInfo) => {
                     this.httpSrv.updateAuthToken(info.jwt);
+                    debugger;
                     this.appCtx = info.ctx;
                     if (!this.licenseErrorType) {
                         const url = this.appCtx.center ? INDEX_PAGE_URL : CENTER_SELECT_URL;
@@ -243,12 +227,14 @@ export class LoginService {
             .pipe(
                 tap(info => {
                     this.httpSrv.updateAuthToken(info.jwt);
+                    debugger;
                     this.appCtx = info.ctx;
                 })
             ).subscribe({
                 next:
           (info: LoginInfo) => {
               this.httpSrv.updateAuthToken(info.jwt);
+              debugger;
               this.appCtx = info.ctx;
               const url = this.appCtx?.center ? INDEX_PAGE_URL : CENTER_SELECT_URL;
               this.router.navigate(['/' + CENTER_SELECT_URL]);
