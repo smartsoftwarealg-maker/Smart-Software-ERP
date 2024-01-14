@@ -1,9 +1,13 @@
 
-:host {
-    display: block;
-    width: 100%;
-    max-width: 640px;
-    margin: auto;
+mat-card {
+    padding: 8px;
+    border-radius: 1.4em;
+}
+
+mat-card, .button_div {
+    width: 90%;
+    max-width: 900px;
+    margin: 4px auto;
 }
 
 .button_div {

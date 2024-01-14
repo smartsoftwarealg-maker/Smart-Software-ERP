@@ -86,6 +86,7 @@ export interface Asset {
     isFinal?: boolean;
     reserviceDate?: Date;
     isVehicle: Boolean;
+    allocationId?: number;
 }
 
 export interface Depreciation {

@@ -8,7 +8,7 @@ import {
 import {Cart, Cartline} from '../cartline';
 import {LookupsService, MarkService} from '@ss/common/api-lookup';
 import {ShoppingCartService} from '../shopping-cart.service';
-import {ArticleService} from '@ss/stock/api-article';
+import {ArticleService} from '@ss/master-data/api-article';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';

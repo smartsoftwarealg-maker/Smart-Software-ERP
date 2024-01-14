@@ -2,6 +2,7 @@ export const BUILDINGS = '/buildings';
 export const OFFICES = '/offices';
 export const VATS_URL = '/logistics/vats';
 export const MARITAL_STATUS_URL = '/lookups/marital_status';
+export const CAREER_MOTIVE_URL = '/lookups/career_motives';
 export const LOOKUPS_APPLICATIONS_URL = '/lookups/erp_applications';
 export const WILAYAS_URL = '/lookups/wilayas';
 export const BLOOD_GROUP_URL = '/lookups/blood_groups';

@@ -111,7 +111,6 @@
             "@ss/cmms/cmms-employees": [
                 "libs/cmms/cmms-employees/src/index.ts"
             ],
-            "@ss/cmms/cmms-routing": ["libs/cmms/cmms-routing/src/index.ts"],
             "@ss/cmms/cmms-ui": ["libs/cmms/cmms-ui/src/index.ts"],
             "@ss/cmms/lookups": ["libs/cmms/lookups/src/index.ts"],
             "@ss/cmms/plans": ["libs/cmms/plans/src/index.ts"],
@@ -328,6 +327,18 @@
             ],
             "@ss/ltm/assets": ["libs/ltm/assets/src/index.ts"],
             "@ss/ltm/ltm": ["libs/ltm/ltm/src/index.ts"],
+            "@ss/master-data/api-article": [
+                "libs/master-data/api-article/src/index.ts"
+            ],
+            "@ss/master-data/cmms-routing": [
+                "libs/master-data/cmms-routing/src/index.ts"
+            ],
+            "@ss/master-data/ui-article": [
+                "libs/master-data/ui-article/src/index.ts"
+            ],
+            "@ss/master-data/ui-store": [
+                "libs/master-data/ui-store/src/index.ts"
+            ],
             "@ss/organizations/api-organizations": [
                 "libs/organizations/api-organizations/src/index.ts"
             ],
@@ -518,7 +529,6 @@
             "@ss/service-sales/service-proforma": [
                 "libs/service-sales/service-proforma/src/index.ts"
             ],
-            "@ss/stock/api-article": ["libs/stock/api-article/src/index.ts"],
             "@ss/stock/api-article-store": [
                 "libs/stock/api-article-store/src/index.ts"
             ],
@@ -558,7 +568,6 @@
             "@ss/stock/inventory-transfers": [
                 "libs/stock/inventory-transfers/src/index.ts"
             ],
-            "@ss/stock/ui-article": ["libs/stock/ui-article/src/index.ts"],
             "@ss/stock/ui-article-store-assignment": [
                 "libs/stock/ui-article-store-assignment/src/index.ts"
             ],
@@ -594,7 +603,6 @@
             "@ss/stock/ui-reception-lines": [
                 "libs/stock/ui-reception-lines/src/index.ts"
             ],
-            "@ss/stock/ui-store": ["libs/stock/ui-store/src/index.ts"],
             "@ss/treasury/api-check-books": [
                 "libs/treasury/api-check-books/src/index.ts"
             ],

@@ -3,13 +3,13 @@
         <span class="fas fa-plus"></span>
     </button>
     <button mat-mini-fab (click)="edit()"
-            [disabled]="!selectedId"
+            [disabled]="!selectedId || foreignRecord"
             [matTooltip]="'COMMON_EDIT' | translate"
             color="accent">
         <span class="fas fa-pen"></span>
     </button>
     <button mat-mini-fab (click)="deleteSelected()" [matTooltip]="'COMMON_DELETE' | translate"
-            [disabled]="!selectedId"
+            [disabled]="!selectedId || foreignRecord"
             color="warn">
         <span class="fas fa-trash-alt"></span>
     </button>
@@ -39,8 +39,10 @@
             <mat-header-cell style="justify-content: center" *matHeaderCellDef translate>
                 PAYROLL_SUSPENDED
             </mat-header-cell>
-            <mat-cell style="justify-content: center" *matCellDef="let e">
-                <i *ngIf="e.suspended" class="fas fa-times"></i>
+            <mat-cell *matCellDef="let e">
+                <mat-checkbox [class.mat-checkbox-disabled]="false" disabled="true"
+                              [checked]="e.suspended">
+                </mat-checkbox>
             </mat-cell>
         </ng-container>
 
@@ -73,18 +75,31 @@
             <mat-header-cell style="justify-content: center" *matHeaderCellDef translate>
                 PAYROLL_IN_CONFLICT
             </mat-header-cell>
-            <mat-cell style="justify-content: center" *matCellDef="let e">
-                <i *ngIf="e.inConflict" class="fas fa-times"></i>
+            <mat-cell *matCellDef="let e">
+                <mat-checkbox [class.mat-checkbox-disabled]="false" disabled="true"
+                              [checked]="e.inConflict">
+                </mat-checkbox>
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="isFinal">
+            <mat-header-cell style="justify-content: center" *matHeaderCellDef translate>
+                PAYROLL_FINAL
+            </mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                <mat-checkbox [class.mat-checkbox-disabled]="false" disabled="true"
+                              [checked]="e.isFinal">
+                </mat-checkbox>
             </mat-cell>
         </ng-container>
 
         <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
-        <mat-row class="selectable" [class.selected]="row.id == selectedId" (click)="select(row.id)"
+        <mat-row class="selectable" [class.selected]="row.id == selectedId" (click)="selectRow(row)"
             *matRowDef="let row; columns: displayedColumns;"></mat-row>
     </mat-table>
 
 </div>
 
 <div class="pagination-container b-b-background">
-    <ss-pagination [paginationModel]="pagination"></ss-pagination>
+    <ss-pagination [paginationModel]="paginator"></ss-pagination>
 </div>

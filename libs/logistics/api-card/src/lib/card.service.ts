@@ -1,11 +1,11 @@
 import {Injectable} from '@angular/core';
 import {HttpService, PaginationModel} from '@ss/common/api-common';
 import {BaseEntityService} from '@ss/common/api-base-entity';
-import {ARTICLES_URL} from '@ss/stock/api-article';
+import {ARTICLES_URL} from '@ss/master-data/api-article';
 import {Card, CARD_URL} from './card-api';
-import {ARTICLE_STORE_URL} from '@ss/stock/api-article-store';
 import {Observable} from 'rxjs';
 import {HttpParams} from '@angular/common/http';
+import { ARTICLE_STORE_URL } from '@ss/stock/api-article-store';
 
 
 @Injectable({
@@ -30,7 +30,7 @@ export class CardService extends BaseEntityService<Card> {
         const params = new HttpParams()
             .set('store', (storeId || 0).toString())
             .set('reference', articleReference);
-        return this.getPage(pagination, null, null, params)
+        return this.getPage(pagination, null, null, params);
     }
 
 

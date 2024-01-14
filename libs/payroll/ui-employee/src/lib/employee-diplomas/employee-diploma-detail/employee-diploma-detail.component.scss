@@ -1,17 +1,23 @@
+.size,
 .form-container {
     width: 98%;
-    max-width: 800px;
+    max-width: 900px;
     margin: 0 auto;
+}
+
+.form-container {
     padding: 16px;
 }
 
+mat-card {
+    border-radius: 1.4em;
+}
 
 @media (max-width: 600px) {
     .filler {
         display: none;
     }
 }
-
 
 .button_div {
     display: flex;

@@ -3,7 +3,7 @@ import {BaseEntityService} from '@ss/common/api-base-entity';
 import {Lookup} from '@ss/common/api-lookup';
 import {HttpService} from '@ss/common/api-common';
 import {Observable, of} from 'rxjs';
-import {AvailableArticle} from '@ss/stock/api-article';
+import {AvailableArticle} from '@ss/master-data/api-article';
 import {Confirmation} from './ecommerce-api';
 import {ImageModel} from '@ss/common/ui-image-input';
 

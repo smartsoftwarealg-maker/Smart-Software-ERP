@@ -1,11 +1,13 @@
 import {SideNavNode} from '@ss/common/api-common';
 import {
     ABS_COSTING_BOM_PRODUCTS,
+    ABS_COSTING_COST_CENTER_URL,
     ABS_COSTING_ITEMS,
     ABS_COSTING_KEYS,
     ABS_COSTING_PRODUCTS,
-    ABS_COSTING_PROJECTS
-} from "../common";
+    ABS_COSTING_PROJECTS,
+    ABS_COSTING_ROUTING_URL
+} from '../common';
 
 export const costingNavTree: SideNavNode = {
     name: 'COSTING',
@@ -26,10 +28,24 @@ export const costingNavTree: SideNavNode = {
         },
 
         {
+            name: 'CMMS_ROUTINGS',
+            icon: 'fa-solid fa-list-tree',
+            route: ABS_COSTING_ROUTING_URL,
+            accessRights: 'CMType'
+        },
+
+        {
+            name: 'COMMON_COST_CENTER',
+            icon: 'fas fa-building',
+            route: ABS_COSTING_COST_CENTER_URL,
+            accessRights: 'CostCenter'
+        },
+
+        {
             name: 'COSTING_PRODUCTS',
             icon: 'fa-solid fa-conveyor-belt-arm',
             route: ABS_COSTING_PRODUCTS,
-            accessRights: 'CProduct'
+            accessRights: 'Article'
         },
 
         {
@@ -45,7 +61,6 @@ export const costingNavTree: SideNavNode = {
             route: ABS_COSTING_BOM_PRODUCTS,
             accessRights: 'BOM'
         },
-
     ]
 
 };

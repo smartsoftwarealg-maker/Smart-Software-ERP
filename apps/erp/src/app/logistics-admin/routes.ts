@@ -45,8 +45,8 @@ import {
     DocumentNumberingListComponent
 } from '@ss/logistics/document-numbering';
 import {loginGuard} from '../erp-guards';
-import { ArticleDetailComponent, ArticleListComponent } from '@ss/stock/ui-article';
 import { AGENT_ARCHIVES } from '@ss/common/app-archive';
+import { ArticleDetailComponent, ArticleListComponent } from '@ss/master-data/ui-article';
 
 export const mainRoutes: Routes = [
     {

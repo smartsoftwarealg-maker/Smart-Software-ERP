@@ -9,9 +9,9 @@ import { LoginService, Right } from "@ss/common/api-common";
 
 @Directive()
 export abstract class BaseChildEntityDetailComponent<T extends { id: number, parentId: number} > {
-    private router  = inject(Router);
     private confirmationSrv  = inject(ConfirmationDialogService);
 
+    protected router  = inject(Router);
     protected loginSrv = inject(LoginService);
     protected shellSrv  = inject(ShellService);
     protected EMPTY_RECORD: T = { id: 0, parentId: 0} as T;

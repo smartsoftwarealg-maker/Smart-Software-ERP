@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { BaseChildEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { WorkArticle } from '@ss/cmms/cmms-api';
 import { FormBuilder, FormsModule, ReactiveFormsModule, UntypedFormGroup } from '@angular/forms';
-import { ArticleService } from '@ss/stock/api-article';
+import { ArticleService } from '@ss/master-data/api-article';
 import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
 import { CommonUiLangModule } from '@ss/common/ui-lang';
 import { MatTableModule } from '@angular/material/table';

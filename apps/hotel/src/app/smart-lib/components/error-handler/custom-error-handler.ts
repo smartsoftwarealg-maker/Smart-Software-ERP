@@ -17,14 +17,6 @@ export class CustomErrorHandler extends ErrorHandler implements OnInit {
     // I handle the given error.
     public handleError(error: any): void {
         const unwrappedError = error.originalError || error;
-        // if (unwrappedError.status === 401) {
-        //   if (!this.router) {
-        //     this.router = this.injector.get(Router);
-        //   }
-        //   if (this.router) {
-        //     this.router.navigate(['/agent/login']);
-        //   }
-        // } else {
         this.openMessage(unwrappedError);
         // need to log the error in console;
         super.handleError(error);

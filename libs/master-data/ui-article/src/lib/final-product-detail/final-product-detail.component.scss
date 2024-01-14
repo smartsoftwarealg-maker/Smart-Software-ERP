@@ -1,0 +1,43 @@
+mat-card {
+    border-radius: 1.4em;
+}
+
+.size_container {
+    width: 96%;
+    max-width: 1200px;
+    margin: 8px auto;
+    padding: 0;
+}
+
+.form_container {
+    flex: 1 0 auto;
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    width: 100%;
+    max-width: 1400px;
+}
+
+@media (max-width: 600px) {
+    .form_container {
+        flex-wrap: wrap;
+    }
+}
+.image {
+    flex: 1 1 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 8px;
+}
+
+form {
+    flex: 2 1 auto;
+}
+
+ss-article-store {
+    flex: 2 1 auto;
+    height: auto;
+    width: 100%;
+    background: #B2FFBB;
+}

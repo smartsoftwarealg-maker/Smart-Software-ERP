@@ -1,7 +1,7 @@
 import {Component, OnInit,} from '@angular/core';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ArticleService, Article } from '@ss/stock/api-article';
+import { ArticleService, Article } from '@ss/master-data/api-article';
 import { Mark } from '@ss/common/api-lookup';
 import { switchMap, tap } from 'rxjs/operators';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
@@ -12,7 +12,7 @@ import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import {PaginatorPersistenceService} from '@ss/common/api-common';
 
 @Component({
-    selector: 'ss-article-list',
+    selector: 'ss-store-assignment',
     styleUrls: ['./article-store-assignment.component.scss'],
     templateUrl: './article-store-assignment.component.html'
 })

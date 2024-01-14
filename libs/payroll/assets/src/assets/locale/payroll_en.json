@@ -170,5 +170,8 @@
     "CERT_REFERENCE":        "Certification reference",
     "SALARY":                "Salary",
     "PICK_DATE":             "Pick date",
-    "STOPPAGE_TYPE":         "Stoppage type"
+    "STOPPAGE_TYPE":         "Stoppage type",
+    "CAREER_MOTIVES":        "Career motives",
+    "FINAL":                 "Final",
+    "DAS_OUT":               "Das out"
 }

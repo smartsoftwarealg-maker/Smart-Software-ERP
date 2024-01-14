@@ -89,6 +89,10 @@ export class ReportRightsComponent implements OnInit {
         const reports = this.roleReports.map(r => r.report);
         this.reportTree.data = this.parseTree(this.filter(this.reportNode?.list, n => reports.indexOf(n.name) < 0), '');
         this.roleTree.data = this.parseTree(this.filter(this.reportNode?.list, n => reports.indexOf(n.name) >= 0), '');
+        this.reportTreeControl.dataNodes = this.reportTree.data;
+        this.roleTreeControl.dataNodes = this.roleTree.data;
+        this.reportTreeControl.expandAll();
+        this.roleTreeControl.expandAll();
     }
 
     selectReport(reportNode: ReportNode) {
@@ -133,6 +137,8 @@ export class ReportRightsComponent implements OnInit {
                             this.updateTrees();
                             this.snackBar.showSuccessMessage();
                             this.selectedRole = null;
+                            this.reportTreeControl.expandAll();
+                            this.roleTree
                         }
                     });
             }
@@ -140,8 +146,6 @@ export class ReportRightsComponent implements OnInit {
     }
 
     addReport() {
-        // eslint-disable-next-line no-debugger
-        debugger;
         if (this.selectedReport?.name.indexOf('.jasper') > 1) {
             const roleReport: RoleReport = {
                 id: 0,

@@ -57,8 +57,6 @@ import {
     CMMSMeterDetailComponent,
     CMMSSolutionListComponent,
     CMMSSolutionDetailComponent,
-    CMMSRoutingPartsListComponent,
-    CMMSRoutingPartsDetailComponent,
     CMMSRoutingArchiveComponent,
     CMMSFunctionListComponent,
     CMMSFunctionDetailComponent,
@@ -143,17 +141,23 @@ import {
     CMMSRoutingDetailComponent, CMMSRoutingLineDetailComponent,
     CMMSRoutingLineListComponent,
     CMMSRoutingListComponent
-} from '@ss/cmms/cmms-routing';
+} from '@ss/master-data/cmms-routing';
 import {
     CMMSChecklistDetailComponent, CmmsChecklistLineDetailComponent, CmmsChecklistLineListComponent,
     CmmsChecklistListComponent
 } from '@ss/cmms/cmms-checklists';
 import {
     WorkPermitListComponent
-} from '../../../../../libs/cmms/work-order/src/lib/work-permit-list/work-permit-list.component';
+} from '@ss/cmms/work-order';
 import {
     WorkPermitDetailComponent
-} from '../../../../../libs/cmms/work-order/src/lib/work-permit-detail/work-permit-detail.component';
+} from '@ss/cmms/work-order';
+import {
+    CMMSRoutingPartsDetailComponent
+} from '@ss/master-data/cmms-routing';
+import {
+    CMMSRoutingPartsListComponent
+} from '@ss/master-data/cmms-routing';
 
 
 export const cmmsRoutes: Routes = [
@@ -646,6 +650,7 @@ export const cmmsRoutes: Routes = [
                 component: CMMSRoutingDetailComponent,
                 canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService],
+                data: {showParts: true},
                 children: [
                     {   path: '',
                         redirectTo: 'detail',

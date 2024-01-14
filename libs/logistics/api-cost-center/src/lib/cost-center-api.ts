@@ -1,9 +1,9 @@
-export const COST_CENTER_URL = "/costCenters";
+export const COST_CENTER_URL = '/costCenters';
 
 export interface CostCenter {
     id: number;
-    code: String;
-    description: String;
+    code: string;
+    description: string;
     groupId: number;
 }
 

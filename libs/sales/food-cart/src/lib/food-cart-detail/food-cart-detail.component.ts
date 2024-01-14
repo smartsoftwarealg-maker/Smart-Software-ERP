@@ -6,7 +6,7 @@ import {
     PaginatorPersistenceService
 } from "@ss/common/api-common";
 import {LookupsService, MarkService} from '@ss/common/api-lookup';
-import {Article, ArticleService} from '@ss/stock/api-article';
+import {Article, ArticleService} from '@ss/master-data/api-article';
 import {ShellService, SnackBarService} from "@ss/common/ui-shell";
 import {ActivatedRoute, Router} from '@angular/router';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';

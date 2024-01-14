@@ -4,7 +4,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {InventoryEntryLinesService} from '@ss/stock/api-inventory-entry-lines';
 //import {PaginationModel} from '@ss/common/api-common';
-import {ArticleService} from '@ss/stock/api-article';
+import {ArticleService} from '@ss/master-data/api-article';
 import {LotsService} from '@ss/common/api-lookup';
 import {BaseTransactionLinesListComponent} from '@ss/logistics/api-transaction';
 

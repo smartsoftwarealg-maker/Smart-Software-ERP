@@ -25,4 +25,4 @@ export class ConsumerService extends BaseEntityExtendedService<Agent> {
     updatePassword(pwd: Password): Observable<any> {
         return this.httpSrv.post('/password', pwd);
     }
- }
+}

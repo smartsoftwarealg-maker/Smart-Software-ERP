@@ -24,7 +24,11 @@ import {
     HR_HOLIDAY_REQUEST_URL,
     COMMON_BLOOD_GROUPS_URL,
     ADMIN_REPORT_RIGHTS_URL,
-    HR_WORK_STOPPAGE_URL, HR_ACTIVITY_URL, HR_PHYSICIAN_URL, HR_SPECIALTY_URL
+    HR_WORK_STOPPAGE_URL,
+    HR_ACTIVITY_URL,
+    HR_PHYSICIAN_URL,
+    HR_SPECIALTY_URL,
+    HR_CAREER_MOTIVE_URL
 } from '../common';
 import {
     ABS_INDEX_URL,
@@ -67,7 +71,9 @@ import {
     ServiceDetailComponent,
     ServiceListComponent,
     SuspensionReasonDetailComponent,
-    SuspensionReasonListComponent
+    SuspensionReasonListComponent,
+    CareerMotiveDetailComponent,
+    CareerMotiveListComponent
 } from '@ss/common/ui-lookup';
 import {
     EmployeeActivationDetailComponent,
@@ -753,6 +759,23 @@ export const hrRoutes: Routes = [
             {
                 path: ':id',
                 component: MaritalStatusDetailComponent,
+                canActivate: [loginGuard],
+                canDeactivate: [CanDeactivateService]
+            },
+            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
+        ]
+    },
+    {
+        path: HR_CAREER_MOTIVE_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: CareerMotiveListComponent,
+                canActivate: [loginGuard]
+            },
+            {
+                path: ':id',
+                component: CareerMotiveDetailComponent,
                 canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService]
             },

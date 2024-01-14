@@ -12,7 +12,7 @@ import { DefaultReportService } from "@ss/common/ui-default-report-component";
 export class BaseChildEntityListComponent<T extends { id: number }> implements OnInit {
     private reportForm = 'WorkPermit';
     private defReportSrv = inject(DefaultReportService);
-    private loginSrv = inject(LoginService);
+    protected loginSrv = inject(LoginService);
     protected shellSrv  = inject(ShellService);
     protected confirmationSrv  = inject(ConfirmationDialogService);
     protected snackBarSrv  = inject(SnackBarService);
@@ -22,6 +22,7 @@ export class BaseChildEntityListComponent<T extends { id: number }> implements O
     rights: Right = {read: false, edit: false, write: false, delete: false};
     paginator = PaginationModel.newInstance( );
     selectedId = 0;
+    selectedRow: T|null = null;
     data$: Observable<T[]> = of([]);
     emptyData$ = this.data$.pipe(map(res => res.length === 0));
     displayedColumns = ['id'];
@@ -37,7 +38,7 @@ export class BaseChildEntityListComponent<T extends { id: number }> implements O
         const rights = this.shellSrv.getEntityRights(this.entity);
         const isManager = this.loginSrv.appCtx.manager;
         this.rights = rights || {write: isManager, edit: isManager, delete: isManager, read: isManager};
-        this.isEditable = rights?.edit || false;
+        this.isEditable = this.rights.edit;
     }
 
     showDetail(id: number) {
@@ -82,6 +83,11 @@ export class BaseChildEntityListComponent<T extends { id: number }> implements O
     protected refresh() {
         this.data$ = this.detailSrv.getPage(this.paginator);
         this.emptyData$ = this.data$.pipe(map(res => res.length === 0));
+    }
+
+    selectRow(row: T) {
+        this.selectedRow = row;
+        this.selectedId = row?.id;
     }
 
     select(id: number) {

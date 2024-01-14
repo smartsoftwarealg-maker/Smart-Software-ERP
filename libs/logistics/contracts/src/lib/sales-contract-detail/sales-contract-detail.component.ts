@@ -13,7 +13,7 @@ import {ProjectTypeService} from '@ss/common/api-lookup';
 import {LoginService} from '@ss/common/api-common';
 import {MatExpansionPanel} from '@angular/material/expansion';
 import {ContractArticleService} from '../contract-article.service';
-import {Article, ArticleService} from '@ss/stock/api-article';
+import {Article, ArticleService} from '@ss/master-data/api-article';
 
 @Component({
     selector: 'ss-sales-contract-detail',
