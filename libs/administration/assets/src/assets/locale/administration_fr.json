@@ -79,5 +79,6 @@
     "USER_DOCUMENTS":      "Documents utilisateur",
     "WORKFLOW_INBOX":      "Boîte de réception",
     "USER_RECEIVED_MESSAGES": "Messages reçus",
-    "POST_FINAL":             "Après la finale"
+    "POST_FINAL":             "Après la finale",
+    "WORKFLOW_CHART": "Graphique"
 }

@@ -3,7 +3,8 @@ import {
     ABS_ADMINISTRATION_USER_DOCUMENT_URL,
     ABS_ADMINISTRATION_USER_MESSAGES_URL, ABS_ADMINISTRATION_USER_RECEIVED_MESSAGES_URL,
     ABS_ADMINISTRATION_WORKFLOW_INBOX_URL,
-    ABS_ADMINISTRATION_WORKFLOW_URL
+    ABS_ADMINISTRATION_WORKFLOW_URL,
+    ABS_ADMINISTRATION_WORKFLOW_CHART_URL
 } from '../common';
 
 
@@ -40,6 +41,12 @@ export const workflowNavTree: SideNavNode = {
             icon: 'fa-solid fa-envelope',
             route: ABS_ADMINISTRATION_WORKFLOW_INBOX_URL,
             accessRights: 'MailBox'
+        },
+        {
+            name: 'ADMINISTRATION_WORKFLOW_CHART',
+            icon: 'fa-solid fa-chart-pyramid',
+            route: ABS_ADMINISTRATION_WORKFLOW_CHART_URL,
+            accessRights: 'Chart'
         },
     ],
     accessRights: 'WORKFLOW',
