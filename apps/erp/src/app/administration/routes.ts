@@ -23,7 +23,7 @@ import {
     ADMIN_WORKFLOW_INBOX_URL,
     ADMIN_USER_RECEIVED_MESSAGES_URL,
     ADMIN_REPORT_RIGHTS_URL,
-    ADMINISTRATION_REPORT_PRIVILEGE_URL
+    ADMINISTRATION_REPORT_PRIVILEGE_URL, ADMIN_WORKFLOW_CHART_URL
 } from '../common';
 import { ABS_INDEX_URL, LIST_URL, CanDeactivateService } from '@ss/common/api-common';
 import { Routes } from '@angular/router';
@@ -62,7 +62,7 @@ import {
     UserDocumentListComponent,
     UserDocumentDetailComponent,
     WorkflowInboxListComponent,
-    UserReceivedMessageListComponent, UserReceivedMessageDetailComponent
+    UserReceivedMessageListComponent, UserReceivedMessageDetailComponent, WorkflowChartComponent
 } from '@ss/workflow';
 import {loginGuard} from '../erp-guards';
 import { ReportRightsComponent } from '@ss/administration/reports-rights';
@@ -390,6 +390,10 @@ export const mainRoutes: Routes = [
     {
         path: ADMIN_WORKFLOW_INBOX_URL,
         component: WorkflowInboxListComponent
+    },
+    {
+        path: ADMIN_WORKFLOW_CHART_URL,
+        component: WorkflowChartComponent
     },
     {
         path: ADMIN_REPORT_RIGHTS_URL,

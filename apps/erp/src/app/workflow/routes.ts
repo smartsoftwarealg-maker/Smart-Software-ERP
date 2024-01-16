@@ -2,7 +2,7 @@ import { Routes } from '@angular/router';
 import {ABS_INDEX_URL, CanDeactivateService, LIST_URL} from '@ss/common/api-common';
 import {
     ADMIN_USER_DOCUMENTS_URL,
-    ADMIN_USER_MESSAGES_URL, ADMIN_USER_RECEIVED_MESSAGES_URL,
+    ADMIN_USER_MESSAGES_URL, ADMIN_USER_RECEIVED_MESSAGES_URL, ADMIN_WORKFLOW_CHART_URL,
     ADMIN_WORKFLOW_INBOX_URL,
     LOGISTICS_WORKFLOW_URL
 } from '../common';
@@ -14,7 +14,8 @@ import {
     UserMessageListComponent,
     UserReceivedMessageDetailComponent,
     UserReceivedMessageListComponent,
-    WorkflowInboxListComponent
+    WorkflowInboxListComponent,
+    WorkflowChartComponent
 } from '@ss/workflow';
 import {loginGuard} from '../erp-guards';
 
@@ -86,6 +87,10 @@ export const workflowRoutes: Routes = [
     {
         path: ADMIN_WORKFLOW_INBOX_URL,
         component: WorkflowInboxListComponent
+    },
+    {
+        path: ADMIN_WORKFLOW_CHART_URL,
+        component: WorkflowChartComponent
     },
 
     {path: '', redirectTo: ABS_INDEX_URL, pathMatch: 'full'},
