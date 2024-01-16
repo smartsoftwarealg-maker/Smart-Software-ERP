@@ -1,13 +1,12 @@
 import { AssetLookup, INSPECTION, RoutingDetail, RoutingPart, Work } from './cmms-api';
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { Directive, inject } from '@angular/core';
-import { FormGroup, UntypedFormBuilder, UntypedFormGroup, Validators } from "@angular/forms";
+import { FormGroup, UntypedFormBuilder, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import {
     CmmsChecklistService,
     CMMSFaultCauseService,
     CMMSFaultService, CMMSPriorityService, CMMSRootCauseService,
-    CMMSRoutingDetailService,
     CMMSRoutingPartService,
     CMMSSolutionService
 } from '@ss/cmms/lookups';
@@ -20,10 +19,10 @@ import { DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
 import { Observable, of } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
-import { CMMS_WORK_ORDER, WorkflowDialogComponent } from "@ss/workflow";
+import { CMMS_WORK_ORDER, WorkflowDialogComponent } from '@ss/workflow';
 import { BaseEntityService } from '@ss/common/api-base-entity';
 import { CmmsOrderPersonService } from './cmms-order-person.service';
-import { debounceTime, distinctUntilChanged } from "rxjs/operators";
+import { CMMSRoutingDetailService } from '@ss/master-data/cmms-routing';
 
 
 @Directive()

@@ -1,7 +1,7 @@
 import {Component, inject, OnDestroy, OnInit} from '@angular/core';
 import {map, Observable, Subscription, switchMap, tap} from 'rxjs';
 import {HttpService, ImageUploaderUtil} from '@ss/common/api-common';
-import {ArticleService, AvailableArticle, AvailableStock} from '@ss/stock/api-article';
+import {ArticleService, AvailableArticle, AvailableStock} from '@ss/master-data/api-article';
 import {ImageModel} from '@ss/common/ui-image-input';
 import {FormControl} from '@angular/forms';
 import {debounceTime, distinctUntilChanged} from 'rxjs/operators';

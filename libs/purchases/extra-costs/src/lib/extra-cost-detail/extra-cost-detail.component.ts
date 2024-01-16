@@ -6,7 +6,7 @@ import { ExtraCostService } from '../services/extra-cost.service';
 import { FormBuilder, FormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { COST_TYPES, ExtraCost, VALUE_TYPES } from '@ss/logistics/api-transaction';
 import { of, switchMap, tap } from 'rxjs';
-import { ArticleAutoCompleteModel, ServiceArticleService } from '@ss/stock/api-article';
+import { ArticleAutoCompleteModel, ServiceArticleService } from '@ss/master-data/api-article';
 import { AbstractEntityComponent } from '@ss/common/ui-base-entity';
 import { Agent, SupplierService } from '@ss/logistics/api-agent';
 import { DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';

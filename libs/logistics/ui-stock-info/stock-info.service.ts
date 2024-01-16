@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {PaginationModel} from '@ss/common/api-common';
 import {Observable} from 'rxjs';
-import {ARTICLES_URL} from '@ss/stock/api-article';
+import {ARTICLES_URL} from '@ss/master-data/api-article';
 import {HttpParams} from '@angular/common/http';
 import {map} from 'rxjs/operators';
 import {STOCK_INFO_URL, StockInfo} from './src/lib/stock-info';

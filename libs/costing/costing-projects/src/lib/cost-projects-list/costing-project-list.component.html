@@ -1,64 +1,34 @@
-<div class="container costing-project-lst-container" id="project-list">
-<!--        <button style="float: left; margin-top: 8px; margin-bottom: 8px;" mat-icon-button [disabled]="!selectedId" matTooltip="{{ 'C_CLONE_PROJECT' | translate }}" (click)="onClone()">-->
-<!--            <i class="fas fa-clone"></i>-->
-<!--        </button>-->
-<!--        <button style="float: left; margin-top: 8px; margin-bottom: 8px;" mat-icon-button [disabled]="!selectedId" matTooltip="{{ 'C_VIEW_PROJECT' | translate }}" (click)="onView()">-->
-<!--            <i class="far fa-eye"></i>-->
-<!--        </button>-->
+<div class="table__container">
+    <mat-table mat-table [dataSource]="data" class="main-table" matSort (matSortChange)="sort($event)">
 
-    <div class="tbl-container">
-        <mat-table mat-table [dataSource]="data" class="main-table" matSort (matSortChange)="sort($event)">
+        <ng-container matColumnDef="code">
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>ADMINISTRATION_CODE</mat-header-cell>
+            <mat-cell *matCellDef="let p">{{ p.code }}</mat-cell>
+        </ng-container>
 
-            <ng-container matColumnDef="code">
-                <mat-header-cell *matHeaderCellDef mat-sort-header translate>ADMINISTRATION_CODE</mat-header-cell>
-                <mat-cell *matCellDef="let p">{{ p.code }}</mat-cell>
-            </ng-container>
+        <ng-container matColumnDef="description">
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>ADMINISTRATION_DESCRIPTION</mat-header-cell>
+            <mat-cell *matCellDef="let p">{{ p.description }}</mat-cell>
+        </ng-container>
 
-            <ng-container matColumnDef="description">
-                <mat-header-cell *matHeaderCellDef mat-sort-header translate>ADMINISTRATION_DESCRIPTION</mat-header-cell>
-                <mat-cell *matCellDef="let p">{{ p.description }}</mat-cell>
-            </ng-container>
+        <ng-container matColumnDef="from">
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>{{ 'FROM' }}</mat-header-cell>
+            <mat-cell *matCellDef="let p">{{ projectFromStr(p) }}</mat-cell>
+        </ng-container>
 
-            <ng-container matColumnDef="from">
-                <mat-header-cell *matHeaderCellDef mat-sort-header translate>{{ 'FROM' }}</mat-header-cell>
-                <mat-cell *matCellDef="let p">{{ projectFromStr(p) }}</mat-cell>
-            </ng-container>
+        <ng-container matColumnDef="to">
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>{{ 'TO' }}</mat-header-cell>
+            <mat-cell *matCellDef="let p">{{ projectToStr(p) }}</mat-cell>
+        </ng-container>
 
-            <ng-container matColumnDef="to">
-                <mat-header-cell *matHeaderCellDef mat-sort-header translate>{{ 'TO' }}</mat-header-cell>
-                <mat-cell *matCellDef="let p">{{ projectToStr(p) }}</mat-cell>
-            </ng-container>
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
 
-            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-
-            <mat-row class="selectable" [class.selected]="row.id == selected" (click)="select(row.id)"
-                     *matRowDef="let row; columns: displayedColumns;">
-            </mat-row>
-        </mat-table>
-    </div>
-
-
+        <mat-row class="selectable" [class.selected]="row.id == selected" (click)="select(row.id)"
+                 *matRowDef="let row; columns: displayedColumns;">
+        </mat-row>
+    </mat-table>
 </div>
-<!--<div class="panel container max-height-zero" id="project-clone-form">-->
-<!--    <div class="round-header theme-background-primary"></div>-->
 
-<!--    <mat-form-field style="margin-right: 1%; margin-left: 1%; width: 98%; max-width: 100px;">-->
-<!--        <mat-placeholder translate>CODE</mat-placeholder>-->
-<!--        <input matInput [maxlength]="4" [(ngModel)]="cloneCode" type="text">-->
-<!--    </mat-form-field>-->
-
-<!--    <mat-form-field style="margin-right: 1%; margin-left: 1%; width: 98%; max-width: 350px;">-->
-<!--        <mat-placeholder translate>DESCRIPTION</mat-placeholder>-->
-<!--        <input matInput [(ngModel)]="cloneDescription" type="text">-->
-<!--    </mat-form-field>-->
-
-<!--    <div class="bottom-bar">-->
-<!--        <button mat-mini-fab (click)="addClone()" color="primary">-->
-<!--            <i class="fas fa-save"></i>-->
-<!--        </button>-->
-
-<!--        <button mat-mini-fab (click)="onCancelClone()" color="">-->
-<!--            <i class="fas fa-times"></i>-->
-<!--        </button>-->
-<!--    </div>-->
-<!--</div>-->
+<div class="size b-b-background">
+    <ss-pagination [paginationModel]="pagination"></ss-pagination>
+</div>

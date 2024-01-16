@@ -122,5 +122,6 @@
     "CHILD_COUNT":       "",
     "SUSPENSION_DATE":   "",
     "PERMANENT_DATE":    "",
-    "WORK_STOPPAGES":    ""
+    "WORK_STOPPAGES":    "",
+    "CAREER_MOTIVES":        ""
 }

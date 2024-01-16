@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { EmployeeActivationService, EmployeeActivation } from '@ss/payroll/api-employee';
-import { PaginationModel } from '@ss/common/api-common';
 import { BaseChildEntityListComponent } from '@ss/common/ui-base-entity';
 
 @Component({
@@ -9,6 +8,7 @@ import { BaseChildEntityListComponent } from '@ss/common/ui-base-entity';
     styleUrls: ['./employee-activation-list.component.scss']
 })
 export class EmployeeActivationListComponent extends BaseChildEntityListComponent<EmployeeActivation> {
+    foreignRecord = false;
     public displayedColumns = [
         'centerName',
         'hireDate',
@@ -16,15 +16,18 @@ export class EmployeeActivationListComponent extends BaseChildEntityListComponen
         'suspended',
         'suspensionDate',
         'suspendReasonDescription',
-        'inConflict'
+        'inConflict',
+        'isFinal'
     ];
-    public readonly pagination = PaginationModel.newInstance();
-    public data: EmployeeActivation[] = [];
-    public selected = 0;
-    public employmentTypes: { [id: number]: string; };
+    // public readonly pagination = PaginationModel.newInstance();
+    // public employmentTypes: { [id: number]: string; };
 
     constructor(public entitySrv: EmployeeActivationService) {
         super(entitySrv, 'Activation');
     }
 
+    selectRow(row: EmployeeActivation) {
+        super.selectRow(row);
+        this.foreignRecord = row?.centerId !== this.loginSrv.appCtx.center;
+    }
 }

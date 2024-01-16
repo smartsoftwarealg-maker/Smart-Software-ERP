@@ -1,18 +1,25 @@
-<div class="buttons" *ngIf="isEditable">
-    <button mat-mini-fab color="primary" (click)="showDetail(0)" [matTooltip]="'COMMON_ADD' | translate">
-        <span class="fas fa-plus"></span>
-    </button>
+<div class="buttons">
+    @if (rights?.write||false) {
+        <button mat-mini-fab color="primary"
+                (click)="showDetail(0)"
+                [matTooltip]="'COMMON_ADD' | translate">
+            <span class="fas fa-plus"></span>
+        </button>
+    }
     <button mat-mini-fab (click)="edit()"
-            [matTooltip]="'COMMON_EDIT' | translate"
             [disabled]="!selectedId"
-            color="accent">
+            color="accent"
+            [matTooltip]="'COMMON_EDIT' | translate">
         <span class="fas fa-pen"></span>
     </button>
-    <button mat-mini-fab (click)="deleteSelected()" [matTooltip]="'COMMON_DELETE' | translate"
-            [disabled]="!selectedId"
-            color="warn">
-        <span class="fas fa-trash-alt"></span>
-    </button>
+    @if (rights?.delete) {
+        <button mat-mini-fab (click)="deleteSelected()"
+                [disabled]="!selectedId || !rights?.delete"
+                [matTooltip]="'COMMON_DELETE' | translate"
+                color="warn">
+            <span class="fas fa-trash-alt"></span>
+        </button>
+    }
 </div>
 
 <div class="table-container">

@@ -25,7 +25,7 @@ import {Agent, ConsumerService} from '@ss/logistics/api-agent';
 import {OfficeSearchComponent} from '../office-search/office-search.component';
 import {MatDialog} from '@angular/material/dialog';
 import {WorkflowDialogComponent} from '@ss/workflow';
-import { ASSET_APPOINTMENT } from "../../../../workflow/src/lib/workflow-api";
+import { ASSET_APPOINTMENT } from '@ss/workflow';
 
 @Component({
     selector: 'ss-asset-appointment-doc-detail',
@@ -89,10 +89,8 @@ export class AssetAppointmentDocDetailComponent extends BaseEntityDetailComponen
         this.activity = b?.activity;
         this.attributeSrv.setParentId(ASSET_MODULE);
         this.detailSrv.setParentId(b.id || 0);
-        if (this.isEditable) {
-            this.shellSrv.addButton(this.sendBtn);
-        }
-        this.isEditable = this.sendBtn.visible = this.saveButton.visible = this.isEditable && (!b.validated || this.loginSrv.appCtx.manager);
+        this.shellSrv.addButton(this.sendBtn);
+        this.isEditable = this.saveButton.visible = this.isEditable && (!b.validated || this.loginSrv.appCtx.manager);
         this.attributeSrv
             .attributeList(ASSET_MODULE, ATTRIB_TYPE_LOOKUP)
             .pipe(tap(res => this.childAttributes = res),

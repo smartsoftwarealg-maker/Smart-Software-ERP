@@ -20,6 +20,8 @@ import {
 import {logisticsAdminNavTree} from '../app/logistics-admin/side-nav-tree';
 import {workflowNavTree} from '../app/workflow/side-nav-tree';
 import { ssalesNavTree } from '../app/service-sales/side-nav-tree';
+import { stockNavTree } from '../app/stock/side-nav-tree';
+import { purchasesNavTree } from '../app/purchases/side-nav-tree';
 
 export const environment = {
     production: true,
@@ -28,6 +30,8 @@ export const environment = {
 export const navBar = [
     administrationNavTree,
     logisticsAdminNavTree,
+    purchasesNavTree,
+    stockNavTree,
     contractsNavTree,
     ssalesNavTree,
     financeNavTree,
@@ -107,5 +111,6 @@ export const APPLICATION_LIST = [
     'PAYMENTS',
     'SALES',
     'WEBARCHIVE',
-    'WORKFLOW'
+    'WORKFLOW',
+    'PURCHASES'
 ];

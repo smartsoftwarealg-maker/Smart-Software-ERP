@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {ARTICLE_LOTS_URL, ArticleLot} from './article-store-api';
-import {ARTICLES_URL} from '@ss/stock/api-article';
+import {ARTICLES_URL} from '@ss/master-data/api-article';
 import {Observable} from 'rxjs';
 import {BaseEntityExtendedService} from '@ss/common/api-base-entity';
 import {HttpService} from '@ss/common/api-common';

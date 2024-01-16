@@ -1,13 +1,13 @@
-import { Component, inject, Input, OnInit } from "@angular/core";
+import { Component, inject, Input, OnInit } from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import {Article} from '@ss/stock/api-article';
+import {Article} from '@ss/master-data/api-article';
 import {PaginationModel} from '@ss/common/api-common';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {LotsService, Store} from '@ss/common/api-lookup';
 import {FormControl, FormGroup} from '@angular/forms';
-import {ArticleStore, ArticleStoresService} from '@ss/stock/api-article-store';
+import { ArticleStore, ArticleStoresService } from '@ss/stock/api-article-store';
 
 interface StoreForm {
     id: FormControl<number>;
@@ -98,9 +98,9 @@ export class ArticleStoreComponent implements OnInit {
             .getList(this.pagination.page - 1, this.pagination.pageSize)
             .subscribe((x) => {
                 this.pagination.elementCount = x.itemCount;
-                const ids = x.body.map(_ => _.id);
+                // const ids = x.body.map(_ => _.id);
                 this.data = x.body;
-        });
+            });
 
     }
 
@@ -108,7 +108,7 @@ export class ArticleStoreComponent implements OnInit {
         const value = this.storeForm.getRawValue();
         this.articleStoreSrv.add(value)
             .subscribe({
-                next: res => {
+                next: () => {
                     this.snackBarSrv.showSuccessMessage();
                 },
                 error: err => {
@@ -118,7 +118,7 @@ export class ArticleStoreComponent implements OnInit {
                 complete: () => {
                     this.loadArticleStore();
                 }
-            })
+            });
     }
 
     selectStore(store: ArticleStore) {
@@ -132,10 +132,10 @@ export class ArticleStoreComponent implements OnInit {
             console.log('selected', this.selectedStore);
             this.articleStoreSrv
                 .remove(this.selectedStore.id)
-                .subscribe(res => {
+                .subscribe(() => {
                     this.snackBarSrv.showSuccessMessage();
                     this.data = this.data.filter(e => e.id !== this.selectedStore.id);
-                })
+                });
         }
     }
 }

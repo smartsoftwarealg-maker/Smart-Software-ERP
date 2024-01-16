@@ -10,7 +10,7 @@ import {
     ABS_LOGISTICS_CATEGORY,
     ABS_LOGISTICS_UNITS,
     ABS_LOGISTICS_CUSTOMER_URL,
-    ABS_LOGISTICS_SUPPLIER_URL
+    ABS_LOGISTICS_SUPPLIER_URL, ABS_LOGISTICS_DOCUMENT_URL
 } from '../common';
 import {SideNavNode} from '@ss/common/api-common';
 
@@ -19,6 +19,12 @@ export const logisticsAdminNavTree: SideNavNode = {
     icon: 'fas fa-users-cog',
     accessRights: 'LOGISTICS',
     children: [
+        {
+            name: 'LOGISTICS_DOCUMENT_NUMBERING',
+            icon: 'fas fa-list-ol',
+            route: ABS_LOGISTICS_DOCUMENT_URL,
+            accessRights: 'Document'
+        },
         {
             name: 'STOCK_ARTICLES',
             icon: 'fas fa-box',
@@ -35,7 +41,7 @@ export const logisticsAdminNavTree: SideNavNode = {
             name: 'LOGISTICS_SUPPLIER',
             icon: 'fa-duotone fa-ship',
             route: ABS_LOGISTICS_SUPPLIER_URL,
-            accessRights: 'Customer'
+            accessRights: 'Supplier'
         },
         {
             name: 'LOGISTICS_CUSTOMER',
@@ -89,7 +95,7 @@ export const logisticsAdminNavTree: SideNavNode = {
             name: 'COMMON_OPTIONS',
             icon: 'fas fa-coins',
             route: ABS_LOGISTICS_OPTIONS,
-            accessRights: 'Option'
+            accessRights: 'LogisticsOption'
         },
     ]
 };

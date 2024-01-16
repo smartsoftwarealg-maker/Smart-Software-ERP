@@ -33,7 +33,6 @@ import {
     LIST_URL,
     CanDeactivateService
 } from '@ss/common/api-common';
-import { ArticleDetailComponent, ArticleListComponent, ReferenceCorrectionComponent } from '@ss/stock/ui-article';
 import { Routes } from '@angular/router';
 import {
     ClassDetailComponent,
@@ -86,7 +85,6 @@ import {
     TransferReceptionLinesDetailComponent, TransferReceptionLinesListComponent,
     TransferReceptionListComponent
 } from '@ss/stock/inventory-transfers';
-import {UserStoresComponent} from '@ss/stock/ui-store';
 import {
     GenerationAccountsDetailComponent,
     GenerationAccountsListComponent, TransacAccountsDetailComponent, TransacAccountsListComponent
@@ -104,6 +102,8 @@ import {
     PartsReservationLineListComponent,
     PartsReservationListComponent
 } from 'logistics/parts-reservation';
+import { UserStoresComponent } from '@ss/master-data/ui-store';
+import { ArticleDetailComponent, ArticleListComponent, ReferenceCorrectionComponent } from '@ss/master-data/ui-article';
 
 export const mainRoutes: Routes = [
     {

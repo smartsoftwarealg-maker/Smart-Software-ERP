@@ -23,6 +23,8 @@ export class WorkflowDialogComponent implements OnInit {
     canceled = new FormControl<boolean>(false);
     selectedId = 0;
     userMessages$: Observable<UserMessage[]> | null = null;
+    responsible = false;
+
     constructor(private dialogRef: MatDialogRef<WorkflowDialogComponent>,
                 private messageSrv: UserMessageService,
                 private mailboxSrv: MailBoxService,
@@ -31,6 +33,8 @@ export class WorkflowDialogComponent implements OnInit {
 
     ngOnInit(): void {
         this.messageSrv.setParentId(this.loginSrv.appCtx.id);
+        this.responsible = this.loginSrv.appCtx.manager || this.loginSrv.appCtx.responsible;
+
         this.userMessages$ = this.messageSrv
             .getList(0, 100, (this.data.amount || 0) + '')
             .pipe(map(res => {

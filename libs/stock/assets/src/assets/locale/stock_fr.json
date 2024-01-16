@@ -63,5 +63,6 @@
     "REFERENCE_CORRECTION":     "Correction reference",
     "REPLACED_REFERENCE":       "Référence remplacée",
     "REPLACING_REFERENCE":      "Référence de remplacement",
-    "REPLACE_REFERENCE":        "Remplacer la référence"
+    "REPLACE_REFERENCE":        "Remplacer la référence",
+    "INVENTORYING":             "Inventaire"
 }

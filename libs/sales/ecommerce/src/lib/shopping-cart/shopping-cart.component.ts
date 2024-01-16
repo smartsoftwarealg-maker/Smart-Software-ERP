@@ -3,7 +3,7 @@ import {CartService} from '../cart.service';
 import {ImageUploaderUtil} from '@ss/common/api-common';
 import {FormControl} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
-import {AvailableArticle} from '@ss/stock/api-article';
+import {AvailableArticle} from '@ss/master-data/api-article';
 
 @Component({
     selector: 'ss-shopping-cart',

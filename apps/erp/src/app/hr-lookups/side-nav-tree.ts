@@ -3,6 +3,7 @@ import {SideNavNode} from '@ss/common/api-common';
 import {
     ABS_ACTIVITIES_URL,
     ABS_HR_BLOOD_GROUP_URL,
+    ABS_HR_CAREER_MOTIVE_URL,
     ABS_HR_CATEGORIES_URL,
     ABS_HR_CONTRACT_MOTIVES_URL,
     ABS_HR_DECISION_MOTIVES_URL,
@@ -22,7 +23,7 @@ import {
     ABS_PHYSICIANS_URL,
     ABS_PROFESSIONAL_FAULTS_URL,
     ABS_PUNISHMENT_TYPE_URL
-} from "../common";
+} from '../common';
 
 export const hrLookupNavTree: SideNavNode = {
     name: 'PAYROLL_LOOKUPS',
@@ -44,52 +45,67 @@ export const hrLookupNavTree: SideNavNode = {
             name: 'COMMON_SUSPENSION_REASONS',
             icon: 'fas fa-user-times',
             route: ABS_HR_SUSPENSION_REASON_URL,
-            accessRights: ''
+            accessRights: 'SuspensionReason'
+        },
+        {
+            name: 'PAYROLL_CAREER_MOTIVES',
+            icon: 'fa-regular fa-bullseye-pointer',
+            route: ABS_HR_CAREER_MOTIVE_URL,
+            accessRights: 'CareerMotive'
         },
         {
             name: 'COMMON_POSTS',
             icon: 'fas fa-chair-office',
-            route: ABS_HR_POSTS_URL
+            route: ABS_HR_POSTS_URL,
+            accessRights: 'Post'
         },
         {
             name: 'COMMON_MARITAL_STATUS',
             icon: 'fas fa-rings-wedding',
-            route: ABS_HR_MARITAL_STATUS_URL
+            route: ABS_HR_MARITAL_STATUS_URL,
+            accessRights: 'MaritalStatus'
         },
         {
             name: 'COMMON_DIPLOMAS',
             icon: 'fas fa-file-certificate',
-            route: ABS_HR_DIPLOMAS_URL
+            route: ABS_HR_DIPLOMAS_URL,
+            accessRights: 'Diploma'
         },
         {
             name: 'COMMON_EDUCATION_LEVELS',
             icon: 'fas fa-graduation-cap',
-            route: ABS_HR_EDUCATION_LEVELS_URL
+            route: ABS_HR_EDUCATION_LEVELS_URL,
+            accessRights: 'EducationLevel'
         },
         {
             name: 'COMMON_MARITAL_STATUS',
             icon: 'fas fa-rings-wedding',
-            route: ABS_HR_MARITAL_STATUS_URL
+            route: ABS_HR_MARITAL_STATUS_URL,
+            accessRights: 'MaritalStatus'
         },
         {
             name: 'COMMON_CATEGORIES',
             icon: 'fas fa-shapes',
-            route: ABS_HR_CATEGORIES_URL
+            route: ABS_HR_CATEGORIES_URL,
+            accessRights: 'Category'
         },
         {
             name: 'COMMON_DIVISIONS',
             icon: 'fas fa-puzzle-piece',
-            route: ABS_HR_DIVISIONS_URL
+            route: ABS_HR_DIVISIONS_URL,
+            accessRights: 'Division'
         },
         {
             name: 'COMMON_DEPARTMENTS',
             icon: 'far fa-building',
-            route: ABS_HR_DEPARTMENTS_URL
+            route: ABS_HR_DEPARTMENTS_URL,
+            accessRights: 'Department'
         },
         {
             name: 'COMMON_SERVICES',
             icon: 'fas fa-shapes',
-            route: ABS_HR_SERVICES_URL
+            route: ABS_HR_SERVICES_URL,
+            accessRights: 'Service'
         },
         {
             name: 'PAYROLL_JUDICIAL_FRAMES',

@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BaseChildEntityListComponent } from '@ss/common/ui-base-entity';
 import { RoutingDetail } from '@ss/cmms/cmms-api';
-import { CMMSRoutingDetailService } from '@ss/cmms/lookups';
+import { CMMSRoutingDetailService } from '@ss/master-data/cmms-routing';
 import { CommonUiLangModule } from '@ss/common/ui-lang';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTableModule } from '@angular/material/table';

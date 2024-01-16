@@ -21,7 +21,6 @@ import {AssetBlockingTypeService} from '../services/asset-blocking-type.service'
 export class AssetBlockingDetailComponent extends BaseChildEntityDetailComponent<Blocking> implements OnInit {
     private typeLookupSrv = inject(AssetBlockingTypeService);
     typeLookup = new DefaultAutoCompleteModel(this.typeLookupSrv);
-    private parentId = 0;
     private formBuilder = inject(UntypedFormBuilder);
 
     constructor(
@@ -33,7 +32,7 @@ export class AssetBlockingDetailComponent extends BaseChildEntityDetailComponent
         const today = new Date();
         return this.form = this.formBuilder.group({
             id: a.id,
-            investId:       [a.investId || this.parentId, Validators.required],
+            investId:       [a.investId || this.assetBlockingSrv.getParentId(), Validators.required],
             fromDate:       [a.fromDate || today, Validators.required],
             toDate:         [a.toDate || today, Validators.required],
             decisionDate:   [a.decisionDate, Validators.required],

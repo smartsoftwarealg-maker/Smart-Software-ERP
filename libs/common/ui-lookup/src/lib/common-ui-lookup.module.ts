@@ -58,6 +58,7 @@ import { FuelTypeDetailComponent, FuelTypeListComponent } from './components/fue
 import { InsurancePolicyDetailComponent, InsurancePolicyListComponent } from './components/insurance-policy.component';
 import { InsuranceAgencyDetailComponent, InsuranceAgencyListComponent } from './components/insurance-agency.component';
 import { DestinationDetailComponent, DestinationListComponent } from './components/destination.component';
+import { CareerMotiveDetailComponent, CareerMotiveListComponent } from "./components/career-motive.component";
 
 @NgModule({
     imports: [
@@ -175,7 +176,9 @@ import { DestinationDetailComponent, DestinationListComponent } from './componen
         InsuranceAgencyListComponent,
         InsuranceAgencyDetailComponent,
         DestinationListComponent,
-        DestinationDetailComponent
+        DestinationDetailComponent,
+        CareerMotiveListComponent,
+        CareerMotiveDetailComponent
     ],
     exports: [
         VatListComponent,
@@ -278,7 +281,10 @@ import { DestinationDetailComponent, DestinationListComponent } from './componen
         InsurancePolicyListComponent,
         InsurancePolicyDetailComponent,
         InsuranceAgencyListComponent,
-        InsuranceAgencyDetailComponent
+        InsuranceAgencyDetailComponent,
+        CareerMotiveListComponent,
+        CareerMotiveDetailComponent
+
     ]
 })
 export class CommonUiLookupModule { }

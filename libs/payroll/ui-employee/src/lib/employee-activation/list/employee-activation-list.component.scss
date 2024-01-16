@@ -1,5 +1,5 @@
 
-$table_width: 972px;
+$table_width: 1100px;
 
 :host {
     display: inline-block;
@@ -65,6 +65,7 @@ $table_width: 972px;
     padding-left: 8px;
 }
 
+.mat-column-isFinal,
 .mat-column-inConflict {
     flex: 0 0 100px;
     padding-right: 8px;

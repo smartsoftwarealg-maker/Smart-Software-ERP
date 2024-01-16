@@ -36,6 +36,8 @@ export interface EmployeeActivation {
     suspensionReason: number;
     employmentType: number;
     inConflict: boolean;
+    isFinal: boolean;
+    dasOut: boolean;
     centerName?: string;
     empTypeDescription?: string;
     suspendReasonDescription?: string;
@@ -68,7 +70,7 @@ export interface Career {
     wrkDescription?: string;
     postDescription?: string;
     // todo: add these fields
-    // motive               ?: number;
+    motive?: number;
     // qualification        ?: number;
     // responsible          : Option[Long] = None,
 }

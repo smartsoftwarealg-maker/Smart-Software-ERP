@@ -1,8 +1,9 @@
 
-.form-container {
-    display: block;
-    max-width: 640px;
-    margin: auto;
+.form-container,
+.button_div {
+    width: 96%;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .button_div {
@@ -12,3 +13,6 @@
     justify-content: flex-end;
 }
 
+mat-card {
+    border-radius: 1.4em;
+}

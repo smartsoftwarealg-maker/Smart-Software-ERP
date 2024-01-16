@@ -170,5 +170,8 @@
     "CERT_REFERENCE":        "مرجع الشهادة",
     "SALARY":                "مرتب",
     "PICK_DATE":             "تاريخ الاختيار",
-    "STOPPAGE_TYPE":         "نوع التوقف"
+    "STOPPAGE_TYPE":         "نوع التوقف",
+    "CAREER_MOTIVES":        "الدوافع المهنية",
+    "FINAL":                 "نهائي",
+    "DAS_OUT":               "نهاية الضمان"
 }

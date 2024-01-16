@@ -3,7 +3,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {ContractArticleService} from '../contract-article.service';
 import {FormBuilder, FormControl, UntypedFormGroup, Validators} from '@angular/forms';
 import {filter, map, of, switchMap, tap} from 'rxjs';
-import {ArticleAutoCompleteModel, ArticleService} from '@ss/stock/api-article';
+import {ArticleAutoCompleteModel, ArticleService} from '@ss/master-data/api-article';
 import {SnackBarService} from '@ss/common/ui-shell';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 
