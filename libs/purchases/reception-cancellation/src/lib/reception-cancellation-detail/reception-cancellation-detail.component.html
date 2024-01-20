@@ -27,7 +27,7 @@
                 <mat-label translate>LOGISTICS_SUPPLIER</mat-label>
                 <ss-auto-complete matInput
                                   [required]="true"
-                                  [model]="supplierAutoCompleteModel"
+                                  [model]="supplierLookup"
                                   formControlName="agent"></ss-auto-complete>
                 <mat-error
                     *ngIf="form.controls['agent'].hasError('required')" translate>COMMON_FIELD_REQUIRED

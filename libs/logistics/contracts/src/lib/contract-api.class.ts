@@ -1,6 +1,8 @@
 export const PROJECT_URL = '/projects';
+export const CONTRACTS_URL = '/contracts';
 export const PROJECT_ARTICLES_URL = '/articles';
 export const PROJECT_AGENT_URL = '/agents';
+export const PROJECT_SUPPLIERS_URL = '/suppliers';
 
 export interface Project {
     id: number;
@@ -37,6 +39,7 @@ export interface Project {
     execDays?: number;
     customerName?: string;
     wilaya?: number;
+    salesPurchase: number;
     wilayaName?: string;
 }
 

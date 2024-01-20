@@ -1,17 +1,38 @@
 import { Component, inject, OnInit } from "@angular/core";
-import {ActivatedRoute, Router} from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from "@angular/router";
 import {ContractArticleService} from '../contract-article.service';
-import {FormBuilder, FormControl, UntypedFormGroup, Validators} from '@angular/forms';
+import { FormBuilder, FormControl, ReactiveFormsModule, UntypedFormGroup, Validators } from "@angular/forms";
 import {filter, map, of, switchMap, tap} from 'rxjs';
 import {ArticleAutoCompleteModel, ArticleService} from '@ss/master-data/api-article';
 import {SnackBarService} from '@ss/common/ui-shell';
-import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
+import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
+import { CommonModule } from "@angular/common";
+import { MaterialModule } from "@ss/common/api-common";
+import { CommonUiLangModule } from "@ss/common/ui-lang";
+import { UiPaginationModule } from "@ss/common/ui-pagination";
+import { AppArchiveModule } from "@ss/common/app-archive";
+import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
+import { CommonUiAutoCompleteModule } from "@ss/common/ui-auto-complete";
 
 
 @Component({
     selector: 'ss-contract-article-detail',
     templateUrl: './contract-article-detail.component.html',
     styleUrls: ['./contract-article-detail.component.scss'],
+    standalone: true,
+    imports: [
+        CommonModule,
+        MaterialModule,
+        CommonUiLangModule,
+        UiPaginationModule,
+        ReactiveFormsModule,
+        CommonUiConfirmationDialogModule,
+        AppArchiveModule,
+        CommonUiDatepickerModule,
+        CommonUiAutoCompleteModule,
+        RouterModule,
+    ],
+
 })
 export class ContractArticleDetailComponent implements OnInit {
     private fb = inject(FormBuilder);

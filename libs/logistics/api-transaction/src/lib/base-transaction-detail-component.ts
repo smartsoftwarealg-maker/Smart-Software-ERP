@@ -16,17 +16,24 @@ import {MatDialog} from '@angular/material/dialog';
 import {DocImportComponent, DocImportService} from '@ss/logistics/ui-doc-import';
 import { Directive, inject, OnInit, ViewChild } from '@angular/core';
 import { Currency, CurrencyService, Lookup, LookupsService, PayMethod } from '@ss/common/api-lookup';
-import { Agent, AgentService, BranchService, ConsumerService, SupplierService } from '@ss/logistics/api-agent';
+import {
+    Agent,
+    AgentService,
+    BranchService,
+    ConsumerService,
+    CustomerService,
+    SupplierService
+} from '@ss/logistics/api-agent';
 import { PayMethodService } from '@ss/logistics/api-logistics-common';
 import { UserListService } from '@ss/common/api-users';
 import { DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
-import { SalesContractService } from '@ss/logistics/contracts';
 import { TransactionLinesClass } from './transaction-lines.class';
 import { BaseTransactionLinesListComponent } from './base-transaction-lines-list.component';
+import { PurchaseContractService } from '@ss/logistics/contracts';
 
 @Directive()
 export abstract class BaseTransactionDetailComponent extends BaseEntityDetailComponent<Transaction> implements OnInit {
-    private agentService = inject(AgentService);
+    private agentSrv = inject(AgentService);
     private payMethodSrv = inject(PayMethodService);
     private usersSrv = inject(UserListService);
     private consumerSrv = inject(ConsumerService);
@@ -35,9 +42,10 @@ export abstract class BaseTransactionDetailComponent extends BaseEntityDetailCom
     private transaction: Transaction = null;
     private docImportService: DocImportService = inject(DocImportService);
     private supplierSrv = inject(SupplierService);
+    private customerSrv = inject(CustomerService);
 
     protected currencySrv =  inject(CurrencyService);
-    protected projectSrv = inject(SalesContractService);
+    protected projectSrv = inject(PurchaseContractService);
 
     @ViewChild(RouterOutlet) outlet: RouterOutlet|null = null;
 
@@ -63,11 +71,12 @@ export abstract class BaseTransactionDetailComponent extends BaseEntityDetailCom
 
     public payModeAutoCompleteModel = new DefaultAutoCompleteModel<PayMethod>(this.payMethodSrv);
     public dealerAutoCompleteModel = new DefaultAutoCompleteModel<User>(this.usersSrv);
-    public agentAutoCompleteModel = new DefaultAutoCompleteModel<Agent>(this.agentService, 'id', 'denomination');
+    public agentLookup = new DefaultAutoCompleteModel<Agent>(this.agentSrv, 'id', 'denomination');
+    public customerLookup = new DefaultAutoCompleteModel<Agent>(this.customerSrv, 'id', 'denomination');
+    public supplierLookup   = new DefaultAutoCompleteModel<Agent>(this.supplierSrv, 'id', 'denomination');
     public projectLookup            = new DefaultAutoCompleteModel(this.projectSrv);
     public currencyCompleteModel = new DefaultAutoCompleteModel<Currency>(this.currencySrv);
     public transporterAutoCompleteModel   = new DefaultAutoCompleteModel<Agent>(this.supplierSrv, 'id', 'denomination');
-    public supplierAutoCompleteModel   = new DefaultAutoCompleteModel<Agent>(this.supplierSrv, 'id', 'denomination');
     public consumerAutoCompleteModel   = new DefaultAutoCompleteModel<Agent>(this.consumerSrv, 'id', 'denomination');
     public branchLookup = new DefaultAutoCompleteModel(this.branchSrv, 'id', 'denomination');
     public executionRef = 0;
@@ -87,7 +96,9 @@ export abstract class BaseTransactionDetailComponent extends BaseEntityDetailCom
         public override title: string) {
         super(entitySrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, title);
         this.projectSrv.setParentId(0);
-        this.agentAutoCompleteModel.onObjectSelected = e => this.projectSrv.setParentId(e?.id || 0);
+        this.agentLookup.onObjectSelected = e => this.projectSrv.setParentId(e?.id || 0);
+        this.supplierLookup.onObjectSelected = e => this.projectSrv.setParentId(e?.id || 0);
+        this.customerLookup.onObjectSelected = e => this.projectSrv.setParentId(e?.id || 0);
     }
 
     public override canDeactivate(): Observable<boolean> {
