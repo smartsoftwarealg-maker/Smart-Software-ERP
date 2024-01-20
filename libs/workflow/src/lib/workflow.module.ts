@@ -18,6 +18,9 @@ import { UserReceivedMessageListComponent } from './user-received-message-list/u
 import {
     UserReceivedMessageDetailComponent
 } from './user-received-message-detail/user-received-message-detail.component';
+import {WorkflowChartComponent} from "./work-chart/workflow-chart.component";
+import {CommonUiImageInputModule} from "@ss/common/ui-image-input";
+import {OrgChartModule} from "angular13-organization-chart";
 
 @NgModule({
     imports: [
@@ -28,6 +31,8 @@ import {
         CommonUiAutoCompleteModule,
         RemunerationPaymonthEditorModule,
         CommonPayrollModule,
+        CommonUiImageInputModule,
+        OrgChartModule,
     ],
     declarations: [
         WorkflowDialogComponent,
@@ -40,6 +45,7 @@ import {
         WorkflowInboxListComponent,
         UserReceivedMessageListComponent,
         UserReceivedMessageDetailComponent,
+        WorkflowChartComponent
     ],
 })
 export class WorkflowModule {}

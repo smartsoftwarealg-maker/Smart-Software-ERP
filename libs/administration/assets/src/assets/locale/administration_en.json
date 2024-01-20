@@ -79,5 +79,6 @@
     "USER_DOCUMENTS":      "User documents",
     "WORKFLOW_INBOX":      "Inbox",
     "USER_RECEIVED_MESSAGES": "Received messages",
-    "POST_FINAL":             "Post final"
+    "POST_FINAL":             "Post final",
+    "WORKFLOW_CHART": "Chart"
 }

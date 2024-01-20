@@ -6,6 +6,7 @@ export const MAILBOX_URL  = '/mailbox';
 export const USER_URL  = '/users';
 export const INBOX_URL  = '/workflow/inbox';
 export const INBOX_COUNT  = '/workflow/count';
+export const CHART_TREE = '/workflow/tree/';
 
 export const DOC_SEPARATOR_200 = 200
 export const DOC_SEPARATOR_512 = 512
@@ -64,7 +65,6 @@ export const PAYMENT_ORDER = 1030
 export const CMMS_WORK_ORDER = 1031
 export const HOLIDAY_REQUEST = 3000
 
-
 export interface DocStatus {
     id: number;
     description: string;
@@ -117,4 +117,19 @@ export interface Inbox {
     docStatus: string;
     documentId: number;
     targetId: number;
+}
+
+export interface WorkflowChartNode {
+    id: number;
+    parentId: number; //appId
+    parentMsg?: number;
+    childMsg:          number,
+    isFinal: boolean;
+    parentDescription?: string,
+    childDescription?: string;
+}
+
+export interface WorkflowChartTree {
+    message: WorkflowChartNode;
+    children: WorkflowChartTree[];
 }
