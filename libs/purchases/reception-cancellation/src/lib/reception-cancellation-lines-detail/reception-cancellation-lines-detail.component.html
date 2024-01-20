@@ -22,7 +22,7 @@
                 <mat-form-field class="default-50 sm-100">
                     <mat-label translate>STOCK_STORE</mat-label>
                     <ss-auto-complete matInput
-                                      [model]="storeAutoCompleteModel"
+                                      [model]="storeLookup"
                                       formControlName="store"></ss-auto-complete>
                     <mat-error
                         *ngIf="form.controls['store'].hasError('required')" translate>COMMON_FIELD_REQUIRED
@@ -36,7 +36,7 @@
                     <mat-label translate>STOCK_ARTICLE</mat-label>
                     <ss-auto-complete matInput
                                       [required]="true"
-                                      [model]="articleAutoCompleteModel"
+                                      [model]="articleLookup"
                                       formControlName="reference"></ss-auto-complete>
                     <mat-error
                         *ngIf="form.controls['reference'].hasError('required')" translate>COMMON_FIELD_REQUIRED

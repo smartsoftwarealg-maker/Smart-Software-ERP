@@ -107,6 +107,7 @@ export abstract class AbstractEntityComponent<T extends { id: number }> implemen
     }
 
     public loadEntity(id: number): Observable<T> {
+        this.id = id || 0;
         if (id == null) {
             this.shellSrv.goBack();
             return of(null);

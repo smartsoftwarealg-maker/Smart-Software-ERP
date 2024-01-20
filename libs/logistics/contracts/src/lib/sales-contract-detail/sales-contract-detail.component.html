@@ -74,34 +74,37 @@
 
     </mat-card-content>
 </mat-card>
-<!--<ss-contract-article-main></ss-contract-article-main>-->
-<!--<ss-app-archive-main [id]="id" [appId]="6"></ss-app-archive-main>-->
 
-<mat-accordion *ngIf="id">
-    <mat-expansion-panel #articles
-                         expanded="false"
-                         [class]="getPanelHeaderClass('articles', articles)"
-                         class="width-div"
-                         (opened)="panelOpened('articles')">
-        <mat-expansion-panel-header>
-            <mat-panel-title translate>
-                LOGISTICS_ARTICLES
-            </mat-panel-title>
-        </mat-expansion-panel-header>
-        <ss-contract-article-main *ngIf="shownPanel === 'articles'"></ss-contract-article-main>
-    </mat-expansion-panel>
+@if (id > 0) {
+    <mat-accordion>
+        <mat-expansion-panel #articles
+                             expanded="false"
+                             [class.b-primary-expansion-panel]="articles.expanded"
+                             class="width-div"
+                             (afterExpand)="panelOpened('articles')">
+            <mat-expansion-panel-header>
+                <mat-panel-title translate>
+                    LOGISTICS_ARTICLES
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            @if (shownPanel === 'articles') {
+                <ss-contract-article-main></ss-contract-article-main>
+            }
+        </mat-expansion-panel>
 
-    <mat-expansion-panel #archivePanel
-                         [class]="getPanelHeaderClass('archives', archivePanel)"
-                         class="width-div"
-                         (opened)="panelOpened('archives')">
-        <mat-expansion-panel-header>
-            <mat-panel-title translate>
-                COMMON_ARCHIVE
-            </mat-panel-title>
-        </mat-expansion-panel-header>
-        <ss-app-archive-main *ngIf="shownPanel === 'archives'" [id]="id" [appId]="6" [editable]="isEditable"></ss-app-archive-main>
+        <mat-expansion-panel #archivePanel
+                             [class.b-primary-expansion-panel]="archivePanel.expanded"
+                             class="width-div"
+                             (afterExpand)="panelOpened('archives')">
+            <mat-expansion-panel-header>
+                <mat-panel-title translate>
+                    COMMON_ARCHIVE
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            @if (shownPanel === 'archives') {
+                <ss-app-archive-main [id]="id" [appId]="CONTRACT_ARCHIVES" [editable]="isEditable"></ss-app-archive-main>
+            }
+        </mat-expansion-panel>
 
-    </mat-expansion-panel>
-
-</mat-accordion>
+    </mat-accordion>
+}

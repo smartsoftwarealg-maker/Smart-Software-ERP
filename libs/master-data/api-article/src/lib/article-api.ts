@@ -60,6 +60,45 @@ export interface Article {
     maxQty?: number;
     unitDescription?: string;
 }
+export interface StockInfo {
+    reference: string;
+    description?: string;
+    storeId: number;
+    store: string;
+    stock: number;
+    price1: number;
+    price2: number;
+    price3: number;
+    price4: number;
+    price5: number;
+    awp: number;
+}
+
+export interface Location{
+    id: number;
+    storeId: number;
+    referenceId: number;
+    reference: string;
+    location?: string;
+    locSector?: string;
+    stock: number;
+    pp: number;
+    price1: number;
+    price2: number;
+    price3: number;
+    price4: number;
+    price5: number;
+    inventPMP: number;
+    inventStock: number;
+    theoStock: number;
+    lastPurchaseDate?: Date;
+    inventDate?: Date;
+    fixDate?: Date;
+    blockedLot?: boolean;
+    analysisDate?: Date;
+    center?: number;
+    storeName?: string;
+}
 
 export interface QtyPrice {
     document: number;

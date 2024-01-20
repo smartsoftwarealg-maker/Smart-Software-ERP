@@ -3,3 +3,4 @@ export * from './lib/article.service';
 export * from './lib/article-auto-complete.class';
 export * from './lib/service-article.service';
 export * from './lib/final-product.service';
+export * from './lib/article-location.service';

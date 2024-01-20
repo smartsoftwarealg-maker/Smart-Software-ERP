@@ -2,23 +2,43 @@ import { Component, inject } from "@angular/core";
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {Project} from '../contract-api.class';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
-import {ActivatedRoute, Router} from '@angular/router';
-import {UntypedFormBuilder, Validators} from '@angular/forms';
-import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
+import { ActivatedRoute, Router, RouterModule } from "@angular/router";
+import { ReactiveFormsModule, UntypedFormBuilder, Validators } from "@angular/forms";
+import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
 import { AwardProcedureService, LookupsService, ProjectMotiveService, WilayaService } from "@ss/common/api-lookup";
 import {SalesContractService} from '../sales-contract.service';
-import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
+import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from "@ss/common/ui-auto-complete";
 import {AgentService} from '@ss/logistics/api-agent';
 import {ProjectTypeService} from '@ss/common/api-lookup';
-import {LoginService} from '@ss/common/api-common';
+import { LoginService, MaterialModule } from "@ss/common/api-common";
 import {MatExpansionPanel} from '@angular/material/expansion';
 import {ContractArticleService} from '../contract-article.service';
 import {Article, ArticleService} from '@ss/master-data/api-article';
+import { CommonModule } from "@angular/common";
+import { CommonUiLangModule } from "@ss/common/ui-lang";
+import { UiPaginationModule } from "@ss/common/ui-pagination";
+import { AppArchiveModule, CONTRACT_ARCHIVES } from "@ss/common/app-archive";
+import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
+import { ContractArticleMainComponent } from "../contract-article-main/contract-article-main.component";
 
 @Component({
     selector: 'ss-sales-contract-detail',
     templateUrl: './sales-contract-detail.component.html',
     styleUrls: ['./sales-contract-detail.component.scss'],
+    standalone: true,
+    imports: [
+        CommonModule,
+        MaterialModule,
+        CommonUiLangModule,
+        UiPaginationModule,
+        ReactiveFormsModule,
+        CommonUiConfirmationDialogModule,
+        AppArchiveModule,
+        CommonUiDatepickerModule,
+        CommonUiAutoCompleteModule,
+        RouterModule,
+        ContractArticleMainComponent
+    ]
 })
 export class SalesContractDetailComponent extends BaseEntityDetailComponent<Project> {
     private wilayaSrv = inject(WilayaService);
@@ -46,7 +66,6 @@ export class SalesContractDetailComponent extends BaseEntityDetailComponent<Proj
         public override confirmationSrv: ConfirmationDialogService,
         public lookupsSrv: LookupsService) {
         super(entitySrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'COMMON_PROJECTS');
-        this.entitySrv.setParentId(0);
         // this.articleLookup.onObjectSelected = (a) => this.onArticle(a);
     }
 
@@ -58,7 +77,7 @@ export class SalesContractDetailComponent extends BaseEntityDetailComponent<Proj
             contractNo:     [b.contractNo, Validators.required],
             projDate:       [b.projDate, Validators.required],
             description:    [b.description, Validators.required],
-            customer:       [b.customer, Validators.required],
+            customer:       [b.customer || this.entitySrv.getParentId(), Validators.required],
             fromDate:       [b.fromDate  || today, Validators.required],
             toDate:         [b.toDate  || today, Validators.required],
             amount:         [b.amount || 0],
@@ -67,6 +86,7 @@ export class SalesContractDetailComponent extends BaseEntityDetailComponent<Proj
             projType:       [b.projType],
             awardProcedure: [b.awardProcedure],
             projMotive:     [b.projMotive],
+            salesPurchase:  [1],
             wilaya:         [b.wilaya]
         });
     }
@@ -89,4 +109,13 @@ export class SalesContractDetailComponent extends BaseEntityDetailComponent<Proj
         const next = '/app/contracts/contracts/' + this.id + '/' + panel;
         this.router.navigate([next]).then();
     }
+    override ngOnInit() {
+        if (this.entitySrv.getParentId()) {
+            super.ngOnInit();
+        } else {
+            this.router.navigate(['../'], { relativeTo: this.route }).then();
+        }
+    }
+
+    protected readonly CONTRACT_ARCHIVES = CONTRACT_ARCHIVES;
 }

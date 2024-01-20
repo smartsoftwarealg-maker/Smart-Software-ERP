@@ -1,16 +1,36 @@
 import { Component, OnInit } from '@angular/core';
 import {ProjectArticle} from '../contract-api.class';
-import {ActivatedRoute, Router} from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from "@angular/router";
 import {map, of, switchMap} from 'rxjs';
 import {ContractArticleService} from '../contract-article.service';
-import {PaginationModel} from '@ss/common/api-common';
+import { MaterialModule, PaginationModel } from "@ss/common/api-common";
 import {SnackBarService} from '@ss/common/ui-shell';
-import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
+import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
+import { CommonModule } from "@angular/common";
+import { CommonUiLangModule } from "@ss/common/ui-lang";
+import { UiPaginationModule } from "@ss/common/ui-pagination";
+import { ReactiveFormsModule } from "@angular/forms";
+import { AppArchiveModule } from "@ss/common/app-archive";
+import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
+import { CommonUiAutoCompleteModule } from "@ss/common/ui-auto-complete";
 
 @Component({
     selector: 'ss-contract-article-list',
     templateUrl: './contract-article-list.component.html',
     styleUrls: ['./contract-article-list.component.scss'],
+    standalone: true,
+    imports: [
+        CommonModule,
+        MaterialModule,
+        CommonUiLangModule,
+        UiPaginationModule,
+        ReactiveFormsModule,
+        CommonUiConfirmationDialogModule,
+        AppArchiveModule,
+        CommonUiDatepickerModule,
+        CommonUiAutoCompleteModule,
+        RouterModule,
+    ],
 })
 export class ContractArticleListComponent implements OnInit {
     selected: ProjectArticle | null = null;

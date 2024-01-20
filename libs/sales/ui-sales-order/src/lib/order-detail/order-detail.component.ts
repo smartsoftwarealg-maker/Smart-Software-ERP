@@ -47,6 +47,7 @@ export class OrderDetailComponent extends BaseTransactionDetailComponent {
                 public override loginSrv: LoginService,
                 public override dialog: MatDialog) {
         super(orderService, detailSrv, shellSrv, snackBarSrv, route, router, formBuilder, confirmationSrv, loginSrv, dialog, 'SALES_EDIT_ORDER');
+        this.agentLookup.onObjectSelected = e => this.projectSrv.setParentId(e?.id || 0);
     }
 
     override preload(): Observable<any> {

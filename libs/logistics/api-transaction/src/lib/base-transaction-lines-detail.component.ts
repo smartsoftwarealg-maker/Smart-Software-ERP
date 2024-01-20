@@ -12,16 +12,18 @@ import { Directive, inject, OnInit } from '@angular/core';
 import {OptionService} from '@ss/logistics/ui-options';
 import {
     DOC_CONSUMPTION,
-    DOC_CORRECTION_OUT,
+    DOC_CORRECTION_OUT, DOC_DELIVERY, DOC_INVOICE,
     DOC_RECEPTION,
     DOC_SEPARATOR_200,
     DOC_SEPARATOR_800
-} from './transaction';
+} from "./transaction";
 import { AbstractEntityComponent } from '@ss/common/ui-base-entity';
 import { TransactionLinesClass } from './transaction-lines.class';
+import { ArticleLocationService } from '@ss/master-data/api-article';
 
 @Directive()
 export abstract class BaseTransactionLinesDetailComponent extends AbstractEntityComponent<TransactionLine> implements OnInit {
+    private locationSrv = inject(ArticleLocationService);
     private loginSrv  =  inject(LoginService);
     private optionSrv =  inject(OptionService);
     private formBuilder = inject(UntypedFormBuilder);
@@ -44,15 +46,15 @@ export abstract class BaseTransactionLinesDetailComponent extends AbstractEntity
     mainStore = 0;
     saveDisabled = false;
     articleStock = 0.0;
-    articleAutoCompleteModel: ArticleAutoCompleteModel = null;
-    storeAutoCompleteModel: LotAutoCompleteModel = null;
+    articleLookup: ArticleAutoCompleteModel = null;
+    storeLookup: LotAutoCompleteModel = null;
 
     protected constructor(public entitySrv: TransactionLinesClass, protected document: number) {
         super(entitySrv);
-        this.articleAutoCompleteModel = new ArticleAutoCompleteModel(this.articleSrv);
-        this.storeAutoCompleteModel   = new LotAutoCompleteModel(this.lotSrv);
-        this.articleAutoCompleteModel.onObjectSelected = (a) => this.onArticle(a);
-        this.storeAutoCompleteModel.onObjectSelected =  (s) => this.onStore(s);
+        this.articleLookup = new ArticleAutoCompleteModel(this.articleSrv);
+        this.storeLookup   = new LotAutoCompleteModel(this.lotSrv);
+        this.articleLookup.onObjectSelected = (a) => { this.onArticle(a); this.setSalesPrice(); };
+        this.storeLookup.onObjectSelected =  (s) => { this.onStore(s); this.setSalesPrice(); };
     }
 
     preload(): Observable<any> {
@@ -94,13 +96,13 @@ export abstract class BaseTransactionLinesDetailComponent extends AbstractEntity
         this.form = null;
         this.preload()
             .pipe(
-                switchMap(_ => this.shellSrv.loadUserRights()),
-                tap(_ => {
+                switchMap(() => this.shellSrv.loadUserRights()),
+                tap(() => {
                     const rights = this.shellSrv.getCurrentNodeRights();
                     this.saveDisabled &&= rights.edit;
                     this.isEditable = rights.edit && this.entitySrv.editable;
                 }),
-                switchMap(_ => this.route.params),
+                switchMap(() => this.route.params),
                 tap(p => {
                     this.queryId = +p['id'];
                 }),
@@ -134,6 +136,7 @@ export abstract class BaseTransactionLinesDetailComponent extends AbstractEntity
                 }
             }
         });
+
         this.subscriptions.push(subs2);
         this.shellSrv.setLoading(false);
         this.onStore({ id: e.store, center: this.loginSrv.appCtx.center, description: '', expires: false });
@@ -159,6 +162,20 @@ export abstract class BaseTransactionLinesDetailComponent extends AbstractEntity
                 next: res => this.updateStockAndValue(res),
                 error: () => this.resetPrice()
             });
+    }
+
+    private setSalesPrice() {
+        if (this.document === DOC_INVOICE || this.document === DOC_DELIVERY) {
+            const reference = this.form.controls['reference'].value;
+            this.locationSrv
+                .find(reference)
+                .subscribe(res => {
+                    const locations = res.body.filter(e => e.storeId === this.form.controls['store'].value);
+                    if (locations.length > 0) {
+                        this.form.controls['price'].setValue(locations[0].price1);
+                    }
+                });
+        }
     }
 
     onStore(s: Store) {
