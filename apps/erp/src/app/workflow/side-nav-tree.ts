@@ -26,7 +26,7 @@ export const workflowNavTree: SideNavNode = {
         },
         {
             name: 'ADMINISTRATION_USER_MESSAGES',
-            icon: 'fa-regular fa-user-doctor-message',
+            icon: 'fa-solid fa-paper-plane',
             route: ABS_ADMINISTRATION_USER_MESSAGES_URL,
             accessRights: 'UserMessage'
         },

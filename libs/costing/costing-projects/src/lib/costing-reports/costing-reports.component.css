@@ -1,0 +1,18 @@
+table {
+    width: 100%;
+    margin-top: 1em;
+}
+
+.product {
+    width: 35em;
+}
+
+.method {
+    width: 20em;
+}
+
+.header {
+    height: 2em;
+    font-weight: bolder;
+    font-size: 1.3em;
+}

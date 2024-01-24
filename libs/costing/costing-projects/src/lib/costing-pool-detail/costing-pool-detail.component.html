@@ -1,13 +1,11 @@
 @if (form) {
     <div class="size button__div">
         @if (isEditable) {
-            <button mat-mini-fab (click)="save()"
-                    color="primary">
+            <button mat-mini-fab (click)="save()" color="primary" [disabled]="childEditMode">
                 <i class="fas fa-save"></i>
             </button>
         }
-        <button mat-mini-fab (click)="cancel()"
-                color="warn">
+        <button mat-mini-fab (click)="cancel()"  color="warn"  [disabled]="childEditMode">
             <i class="fas fa-redo"></i>
         </button>
     </div>
@@ -42,30 +40,31 @@
         </mat-card-content>
     </mat-card>
 
-    <mat-accordion class="size" *ngIf="costSrv.getParentId()">
-        <mat-expansion-panel
-            #costPanel
-            [class.b-primary-expansion-panel]="costPanel.expanded">
-            <div class="default-100"></div>
-            <mat-expansion-panel-header>
-                <mat-panel-title translate>
-                    COST_COSTS
-                </mat-panel-title>
-            </mat-expansion-panel-header>
-            <ss-costing-pools-costs></ss-costing-pools-costs>
-        </mat-expansion-panel>
-        <mat-expansion-panel
-            #keyPanel
-            [class.b-primary-expansion-panel]="keyPanel.expanded">
-            <div class="default-100"></div>
-            <mat-expansion-panel-header>
-                <mat-panel-title translate>
-                    COST_PARTITION_KEYS
-                </mat-panel-title>
-            </mat-expansion-panel-header>
-            <ss-costing-pool-keys></ss-costing-pool-keys>
-        </mat-expansion-panel>
-    </mat-accordion>
-
+    @if (loaded()) {
+        <mat-accordion class="size">
+            <mat-expansion-panel
+                #costPanel
+                [class.b-primary-expansion-panel]="costPanel.expanded">
+                <div class="default-100"></div>
+                <mat-expansion-panel-header>
+                    <mat-panel-title translate>
+                        COST_COSTS
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <ss-costing-pools-costs (startedEdit)="onChildEdit($event)"></ss-costing-pools-costs>
+            </mat-expansion-panel>
+            <mat-expansion-panel
+                #keyPanel
+                [class.b-primary-expansion-panel]="keyPanel.expanded">
+                <div class="default-100"></div>
+                <mat-expansion-panel-header>
+                    <mat-panel-title translate>
+                        COST_PARTITION_KEYS
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <ss-costing-pool-keys (startedEdit)="onChildEdit($event)"></ss-costing-pool-keys>
+            </mat-expansion-panel>
+        </mat-accordion>
+    }
 }
 

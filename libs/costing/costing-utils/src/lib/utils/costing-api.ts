@@ -95,15 +95,15 @@ export interface CLineCost {
     parentId:        number;
     itemId:          number;
     value:           number;
-    keyDescription?: string;
+    itemDescription?: string;
 }
 
 export interface CPoolCost {
-    id:              number;
-    parentId:        number;
-    itemId:          number;
-    value:           number;
-    keyDescription?: string;
+    id:               number;
+    parentId:         number;
+    itemId:           number;
+    value:            number;
+    itemDescription?: string;
 }
 
 export interface CLineOHItem {
@@ -121,6 +121,14 @@ export interface CPool {
     keyId: number;
     isSupport: boolean;
     ccDescription?: string;
+    keyDescription?: string;
+}
+
+export interface CPoolKey {
+    id: number;
+    parentId: number;
+    keyId: number;
+    value: number;
     keyDescription?: string;
 }
 
@@ -149,6 +157,13 @@ export interface CostCenter {
     code: string;
     description: string;
     groupId: number;
+}
+
+export interface CReport {
+    trivial: CProduct[],
+    simple: CProduct[],
+    stepDown: CProduct[],
+    reciprocal: CProduct[],
 }
 
 export interface ScalaCostingResult {

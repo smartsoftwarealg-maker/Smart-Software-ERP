@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BaseChildEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { CPool } from '@ss/costing/costing-utils';
@@ -44,25 +44,32 @@ export class CostingPoolDetailComponent extends BaseChildEntityDetailComponent<C
     private costCenterSrv = inject(CostCenterService);
     private fb = inject(FormBuilder);
 
-
+    childEditMode = false;
     costSrv = inject(CostingPoolsCostsService);
     costServiceLookup = new DefaultAutoCompleteModel(this.costCenterSrv);
     keyLookup = new DefaultAutoCompleteModel(this.keySrv);
+    loaded = signal<boolean>(false);
 
     constructor(protected override entitySrv: CostingPoolService) {
         super(entitySrv, 'CPool');
     }
 
     override setupForm(e: CPool): UntypedFormGroup {
-        this.detailSrv.setParentId(e.id || 0);
-        this.costSrv.setParentId(e.id || 0);
-        this.keySrv.setParentId(e.id || 0);
+        const id = e.id || 0;
+        this.detailSrv.setParentId(id);
+        this.costSrv.setParentId(id);
+        this.keySrv.setParentId(id);
+        this.loaded.set(id > 0);
         return this.fb.group({
             id:           [e.id],
             parentId:     [e.parentId, Validators.required],
             costCenterId: [e.costCenterId],
-            keyId:        [e.keyId || 10, Validators.required],
+            keyId:        [e.keyId, Validators.required],
             isSupport:    [e.isSupport || false, Validators.required],
         });
+    }
+
+    onChildEdit(event: boolean) {
+        this.childEditMode = event;
     }
 }

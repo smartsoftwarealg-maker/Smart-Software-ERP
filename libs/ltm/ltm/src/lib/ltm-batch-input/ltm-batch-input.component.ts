@@ -67,6 +67,7 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
   variables: string[] = [];
   formulas: string[] = [];
   selectedMatter: LTMLineMatter = null;
+  currentHour = 0;
 
   formBuilder = inject(FormBuilder);
   form = this.formBuilder.group(
@@ -253,11 +254,11 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
         this.shellSrv.setLoading(true);
         this.entitySrv
           .saveBatch(formValue)
-          .pipe(switchMap(() => formValue.tests[0].id > 0 ? of(formValue.tests) : this.savedData(formValue)))
+          .pipe(switchMap(() => this.onHour_()))
           .subscribe({
-            next: res => {
+            next: tests => {
+              this.tests.setValue(tests);
               this.shellSrv.setLoading(false);
-              this.tests.setValue(res);
               this.snackBarSrv.showSuccessMessage();
             }, error: err => {
               this.shellSrv.setLoading(false);
@@ -291,6 +292,7 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
   }
 
   onHour(h: number) {
+    this.currentHour = h;
     const value = this.form.getRawValue();
     const date = new Date(value.timeStamp);
     date.setHours(h, 0, 0, 0);
@@ -304,4 +306,17 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
         this.tests.setValue(tests);
       });
   }
+
+  private onHour_(): Observable<BTest[]> {
+    const value = this.form.getRawValue();
+    const date = new Date(value.timeStamp);
+    date.setHours(this.currentHour, 0, 0, 0);
+    value.timeStamp = date;
+    this.form.controls['timeStamp'].setValue(date);
+    const tests: BTest[] = <BTest[]>value.tests;
+    tests.forEach(e => e.value = 0);
+    this.tests.setValue(tests);
+    return this.savedData(<Batch>value);
+  }
+
 }

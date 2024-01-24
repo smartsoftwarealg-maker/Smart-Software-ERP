@@ -1,7 +1,7 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, EventEmitter, inject, Output, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BaseChildEntityListComponent } from '@ss/common/ui-base-entity';
-import { CPoolDetail } from '@ss/costing/costing-utils';
+import { CPoolKey } from '@ss/costing/costing-utils';
 import { RouterModule } from '@angular/router';
 import { MaterialModule } from '@ss/common/api-common';
 import { CommonUiConfirmationDialogModule } from '@ss/common/ui-confirmation-dialog';
@@ -27,15 +27,16 @@ import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common
     templateUrl: './costing-pool-keys.component.html',
     styleUrl: './costing-pool-keys.component.css',
 })
-export class CostingPoolKeysComponent extends BaseChildEntityListComponent<CPoolDetail> {
+export class CostingPoolKeysComponent extends BaseChildEntityListComponent<CPoolKey> {
     private fb = inject(FormBuilder);
     private keySrv = inject(CostingKeyService);
+    @Output() startedEdit = new EventEmitter<boolean>(false);
 
     editMode = signal(false);
     form = this.fb.group({
         id:       [0],
         parentId: [0],
-        key:      [0],
+        keyId:    [0],
         value:    [0]
     });
     keyLookup = new DefaultAutoCompleteModel(this.keySrv);
@@ -43,7 +44,7 @@ export class CostingPoolKeysComponent extends BaseChildEntityListComponent<CPool
     override displayedColumns = ['keyDescription', 'value'];
 
     constructor(protected override detailSrv: CostingPoolKeysService) {
-        super(detailSrv, 'CPoolDetail');
+        super(detailSrv, 'CPoolKey');
     }
 
     override showDetail(id: number) {
@@ -53,18 +54,19 @@ export class CostingPoolKeysComponent extends BaseChildEntityListComponent<CPool
                 .subscribe(res => this.form = this.fb.group({
                     id:       [id],
                     parentId: [this.detailSrv.getParentId()],
-                    key:      [res.key],
+                    keyId:    [res.keyId],
                     value:    [res.value]
                 }));
         } else {
             this.form = this.fb.group({
                 id:       [0],
                 parentId: [this.detailSrv.getParentId()],
-                key:      [0, Validators.required],
+                keyId:    [0, Validators.required],
                 value:    [0, Validators.required]
             });
         }
         this.editMode.set(true);
+        this.startedEdit.emit(true);
     }
 
     save() {
@@ -78,8 +80,10 @@ export class CostingPoolKeysComponent extends BaseChildEntityListComponent<CPool
                         this.snackBarSrv.showFailureMessage();
                     }
                     this.editMode.set(false);
+                    this.startedEdit.emit(false);
                 }, error: err => {
                     this.editMode.set(false);
+                    this.startedEdit.emit(false);
                     throw err;
                 }
             });
@@ -87,5 +91,6 @@ export class CostingPoolKeysComponent extends BaseChildEntityListComponent<CPool
 
     cancel() {
         this.editMode.set(false);
+        this.startedEdit.emit(false);
     }
 }

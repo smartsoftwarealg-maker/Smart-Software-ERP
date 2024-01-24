@@ -14,7 +14,7 @@ export class LtmBatchService extends BaseEntityService<Batch> {
     }
 
     saveBatch(batch: Batch): Observable<{ count: number }> {
-        return this.httpSrv.post(LTM_BATCH_URL, batch);
+        return this.httpSrv.put(LTM_BATCH_URL, batch);
     }
 
     deleteBatch(batch: Batch): Observable<{ count: number }> {
