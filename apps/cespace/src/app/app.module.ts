@@ -20,7 +20,7 @@ import {UiErrorHandlerModule} from '@ss/common/ui-error-handler';
 import {ShellComponent, UiShellModule} from '@ss/common/ui-shell';
 import {EXCHANGE_APP_URL} from './common';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {CommonUiMainPageModule, MainPageComponent} from "@ss/common/ui-main-page";
+import { MainPageComponent} from "@ss/common/ui-main-page";
 import {ExchangeUiIdiotPageModule} from "@ss/exchange/ui-idiot-page";
 
 const routes: Routes = [
@@ -59,7 +59,7 @@ const routes: Routes = [
         UiErrorHandlerModule,
         UiShellModule,
         CommonUiLangModule,
-        CommonUiMainPageModule,
+
         ExchangeUiIdiotPageModule,
         // modules with routes
         UiLoginModule,

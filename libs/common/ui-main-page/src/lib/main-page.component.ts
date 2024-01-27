@@ -2,12 +2,19 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ShellService } from '@ss/common/ui-shell';
 import { Router } from '@angular/router';
 import { LanguageService, MainPageService, SideNavNode } from '@ss/common/api-common';
+import { CommonModule } from "@angular/common";
+import { CommonUiLangModule } from "@ss/common/ui-lang";
 
 
 @Component({
     selector: 'ss-main-page',
     templateUrl: './main-page.component.html',
-    styleUrls: ['./main-page.component.scss']
+    styleUrls: ['./main-page.component.scss'],
+    standalone: true,
+    imports: [
+        CommonModule,
+        CommonUiLangModule
+    ],
 })
 export class MainPageComponent implements OnInit, OnDestroy {
 

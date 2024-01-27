@@ -20,7 +20,7 @@ import { ACC_TRANSACTION_ARCHIVES, AppArchiveModule } from "@ss/common/app-archi
 import { CommonModule } from "@angular/common";
 import { CommonUiLangModule } from "@ss/common/ui-lang";
 import { UiPaginationModule } from "@ss/common/ui-pagination";
-import { CommonUiMainPageModule } from "@ss/common/ui-main-page";
+
 import { CommonUiAutoCompleteModule } from "@ss/common/ui-auto-complete";
 
 @Component({
@@ -35,7 +35,7 @@ import { CommonUiAutoCompleteModule } from "@ss/common/ui-auto-complete";
         CommonUiLangModule,
         UiPaginationModule,
         ReactiveFormsModule,
-        CommonUiMainPageModule,
+
         CommonUiAutoCompleteModule,
         CommonUiDatepickerModule,
         CommonUiConfirmationDialogModule,

@@ -1,0 +1,18 @@
+{
+    "PRODUCTS":        "Products",
+    "POOLS":           "Costing pools",
+    "OH":              "Costing overhead",
+    "DIRECT_LABOR":    "Direct labor",
+    "DIRECT_MATERIAL": "Direct material",
+    "UNITS":           "Number of units",
+    "ALLOCATION_KEY":  "Allocation key",
+    "ALLOCATION_KEYS":  "Allocation keys",
+    "IS_SUPPORT" :     "Is support pool",
+    "PARTITION_KEYS":  "Partition key",
+    "TRIVIAL":         "Trivial method",
+    "SIMPLE":          "Simple method",
+    "STEP_DOWN":       "Step down method",
+    "RECIPROCAL":      "Reciprocal method",
+    "METHOD":          "Costing method",
+    "ITEMS":           "Cost drivers"
+}

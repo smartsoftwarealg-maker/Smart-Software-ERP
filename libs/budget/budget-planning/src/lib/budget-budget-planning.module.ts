@@ -6,7 +6,6 @@ import {MaterialModule} from '@ss/common/api-common';
 import {CommonUiLangModule} from '@ss/common/ui-lang';
 import {UiPaginationModule} from '@ss/common/ui-pagination';
 import {ReactiveFormsModule} from '@angular/forms';
-import {CommonUiMainPageModule} from '@ss/common/ui-main-page';
 import {CommonUiAutoCompleteModule} from '@ss/common/ui-auto-complete';
 import {CommonUiConfirmationDialogModule} from '@ss/common/ui-confirmation-dialog';
 
@@ -17,7 +16,7 @@ import {CommonUiConfirmationDialogModule} from '@ss/common/ui-confirmation-dialo
         CommonUiLangModule,
         UiPaginationModule,
         ReactiveFormsModule,
-        CommonUiMainPageModule,
+
         CommonUiAutoCompleteModule,
         CommonUiConfirmationDialogModule,
     ],

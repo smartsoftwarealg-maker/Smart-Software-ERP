@@ -56,7 +56,7 @@ const routes: Routes = [
         UiErrorHandlerModule,
         UiShellModule,
         CommonUiLangModule,
-        CommonUiMainPageModule,
+
         // modules with routes
         UiLoginModule,
         UiCenterSelectModule

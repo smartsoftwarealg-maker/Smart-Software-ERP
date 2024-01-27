@@ -69,6 +69,7 @@ export interface CProduct {
     id: number;
     code: string;
     description: string;
+    price: number;
 }
 
 export interface CProductLine {

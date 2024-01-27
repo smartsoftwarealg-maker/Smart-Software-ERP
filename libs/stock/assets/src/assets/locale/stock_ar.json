@@ -64,5 +64,6 @@
     "REPLACED_REFERENCE":       "المرجع المستبدل",
     "REPLACING_REFERENCE":      "المرجع البديل",
     "REPLACE_REFERENCE":        "استبدال المرجع",
-    "INVENTORYING":             "جرد"
+    "INVENTORYING":             "جرد",
+    "FINAL_PRODUCTS":           "المنتجات النهائية"
 }

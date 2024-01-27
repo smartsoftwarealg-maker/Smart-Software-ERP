@@ -6,27 +6,35 @@
         }
     </tr>
     <tr>
-        <td class="method"> COSTING_TRIVIAL</td>
+        <td class="method" translate> COST_TRIVIAL</td>
         @for (p of report()?.trivial; track p.description) {
             <th> {{ p.price || 0 | number: '1.0-0'}}</th>
         }
     </tr>
     <tr>
-        <td class="method"> COSTING_SIMPLE</td>
+        <td class="method" translate> COST_SIMPLE</td>
         @for (p of report()?.simple; track p.description) {
             <th> {{ p.price || 0 | number: '1.0-0'}}</th>
         }
     </tr>
     <tr>
-        <td class="method"> COSTING_STEP_DOWN</td>
+        <td class="method" translate> COST_STEP_DOWN</td>
         @for (p of report()?.stepDown; track p.description) {
             <th> {{ p.price || 0 | number: '1.0-0'}}</th>
         }
     </tr>
     <tr>
-        <td class="method"> COSTING_RECIPROCAL</td>
+        <td class="method" translate> COST_RECIPROCAL</td>
         @for (p of report()?.reciprocal; track p.description) {
             <th> {{ p.price || 0 | number: '1.0-0'}}</th>
         }
     </tr>
 </table>
+
+<mat-card>
+    <mat-card-content>
+        <div class="chart_div">
+            <canvas [id]="'trivial'" class="chart"></canvas>
+        </div>
+    </mat-card-content>
+</mat-card>

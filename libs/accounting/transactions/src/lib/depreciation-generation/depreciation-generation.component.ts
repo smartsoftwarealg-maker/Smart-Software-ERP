@@ -10,7 +10,7 @@ import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from "@ss/common
 import { CommonModule } from "@angular/common";
 import { CommonUiLangModule } from "@ss/common/ui-lang";
 import { UiPaginationModule } from "@ss/common/ui-pagination";
-import { CommonUiMainPageModule } from "@ss/common/ui-main-page";
+
 import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
 import { CommonUiConfirmationDialogModule } from "@ss/common/ui-confirmation-dialog";
 import { AppArchiveModule } from "@ss/common/app-archive";
@@ -27,7 +27,6 @@ import { AppArchiveModule } from "@ss/common/app-archive";
         CommonUiLangModule,
         UiPaginationModule,
         ReactiveFormsModule,
-        CommonUiMainPageModule,
         CommonUiAutoCompleteModule,
         CommonUiDatepickerModule,
         CommonUiConfirmationDialogModule,

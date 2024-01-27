@@ -60,16 +60,16 @@ export class CmmsGanttComponent implements OnInit {
                         borderColor: 'red',
                         backgroundColor: 'red',
                     },
-                    {
-                        label: 'Dataset 2',
-                        data: [30, 40, 50, 60],
-                        borderColor: 'blue',
-                        backgroundColor: 'blue',
-                    }
+                    // {
+                    //     label: 'Dataset 2',
+                    //     data: [30, 40],
+                    //     borderColor: 'blue',
+                    //     backgroundColor: 'blue',
+                    // }
                 ],
             },
             options: {
-                indexAxis: 'y',
+                indexAxis: 'x',
                 // Elements options apply to all of the options unless overridden in a dataset
                 // In this case, we are setting the border of each horizontal bar to be 2px wide
                 elements: {

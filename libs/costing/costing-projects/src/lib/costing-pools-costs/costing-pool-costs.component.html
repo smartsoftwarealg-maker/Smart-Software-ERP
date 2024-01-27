@@ -50,7 +50,7 @@
     <div class="table__container">
         <mat-table mat-table [dataSource]="data$|async" class="main-table" matSort (matSortChange)="sort($event)">
             <ng-container matColumnDef="itemDescription">
-                <mat-header-cell *matHeaderCellDef mat-sort-header translate>COST_KEY</mat-header-cell>
+                <mat-header-cell *matHeaderCellDef mat-sort-header translate>COST_PARTITION_KEY</mat-header-cell>
                 <mat-cell *matCellDef="let p">{{ p.itemDescription }}</mat-cell>
             </ng-container>
 

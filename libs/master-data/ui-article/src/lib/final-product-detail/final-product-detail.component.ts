@@ -20,7 +20,6 @@ import { LogisticsUiStockInfoModule } from '@ss/logistics/ui-stock-info';
 import { FinalProductService } from '@ss/master-data/api-article';
 import { CMMSRoutingService } from '@ss/master-data/cmms-routing';
 import { BomService } from '../bom.service';
-import { CommonUiMainPageModule } from '@ss/common/ui-main-page';
 import { MatCardModule } from '@angular/material/card';
 
 @Component({
@@ -40,7 +39,6 @@ import { MatCardModule } from '@angular/material/card';
         CommonUiImageInputModule,
         CommonUiAutoCompleteModule,
         LogisticsUiStockInfoModule,
-        CommonUiMainPageModule,
         MatCardModule
     ],
 })

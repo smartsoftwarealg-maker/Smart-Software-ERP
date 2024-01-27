@@ -14,14 +14,14 @@ export const costingNavTree: SideNavNode = {
     icon: 'fa-solid fa-hand-holding-dollar',
     children: [
         {
-            name: 'COSTING_ITEMS',
+            name: 'COST_ITEMS',
             icon: 'fa-solid fa-sitemap',
             route: ABS_COSTING_ITEMS,
             accessRights: 'CItem'
         },
 
         {
-            name: 'COSTING_KEYS',
+            name: 'COST_ALLOCATION_KEYS',
             icon: 'fa-solid fa-key-skeleton-left-right',
             route: ABS_COSTING_KEYS,
             accessRights: 'CKey'
@@ -42,10 +42,17 @@ export const costingNavTree: SideNavNode = {
         },
 
         {
-            name: 'COSTING_PRODUCTS',
+            name: 'COST_PRODUCTS',
             icon: 'fa-solid fa-conveyor-belt-arm',
             route: ABS_COSTING_PRODUCTS,
             accessRights: 'Article'
+        },
+
+        {
+            name: 'LOGISTICS_BOM',
+            icon: 'fa-solid fa-list-tree',
+            route: ABS_COSTING_BOM_PRODUCTS,
+            accessRights: 'BOM'
         },
 
         {
@@ -55,12 +62,6 @@ export const costingNavTree: SideNavNode = {
             accessRights: 'CProject'
         },
 
-        {
-            name: 'LOGISTICS_BOM',
-            icon: 'fa-solid fa-list-tree',
-            route: ABS_COSTING_BOM_PRODUCTS,
-            accessRights: 'BOM'
-        },
     ]
 
 };

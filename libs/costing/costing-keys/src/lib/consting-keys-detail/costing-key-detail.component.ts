@@ -10,7 +10,7 @@ import { CommonModule } from '@angular/common';
 import { MaterialModule } from '@ss/common/api-common';
 import { CommonUiLangModule } from '@ss/common/ui-lang';
 import { UiPaginationModule } from '@ss/common/ui-pagination';
-import { CommonUiMainPageModule } from '@ss/common/ui-main-page';
+
 import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
 import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
 import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
@@ -32,7 +32,7 @@ import { CKey, slideToRight } from '@ss/costing/costing-utils';
         CommonUiLangModule,
         UiPaginationModule,
         ReactiveFormsModule,
-        CommonUiMainPageModule,
+
         CommonUiAutoCompleteModule,
         CommonUiDatepickerModule,
         CommonUiConfirmationDialogModule,
@@ -50,7 +50,7 @@ export class CostingKeyDetailComponent extends BaseEntityDetailComponent<CKey> {
     public override route: ActivatedRoute,
     public override formBuilder: UntypedFormBuilder,
     public override confirmationSrv: ConfirmationDialogService) {
-      super(entitySrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'COSTING_ITEMS');
+      super(entitySrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'COST_ALLOCATION_KEYS');
   }
 
   public override setupForm(b: CKey): FormGroup {

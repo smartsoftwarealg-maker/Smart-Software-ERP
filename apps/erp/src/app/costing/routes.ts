@@ -46,7 +46,7 @@ export const costingRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: CostingProjectListComponent,
-                canActivate: [loginGuard]
+                canActivate: [loginGuard],
             },
             {
                 path: ':id',

@@ -58,7 +58,7 @@ export class CostingProjectDetailComponent extends BaseEntityDetailComponent<CPr
         public override route: ActivatedRoute,
         public override formBuilder: UntypedFormBuilder,
         public override confirmationSrv: ConfirmationDialogService) {
-        super(entitySrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'COSTING_PROJECTS');
+        super(entitySrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'COMMON_PROJECTS');
     }
 
     public override setupForm(e: CProject): FormGroup {
