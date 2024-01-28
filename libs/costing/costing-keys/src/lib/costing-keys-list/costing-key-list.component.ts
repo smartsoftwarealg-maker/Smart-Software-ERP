@@ -10,7 +10,7 @@ import { CommonModule } from '@angular/common';
 import { CommonUiLangModule } from '@ss/common/ui-lang';
 import { UiPaginationModule } from '@ss/common/ui-pagination';
 import { ReactiveFormsModule } from '@angular/forms';
-import { CommonUiMainPageModule } from '@ss/common/ui-main-page';
+
 import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
 import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
 import { AppArchiveModule } from '@ss/common/app-archive';
@@ -28,7 +28,7 @@ import { CKey, slideToRight } from '@ss/costing/costing-utils';
         CommonUiLangModule,
         UiPaginationModule,
         ReactiveFormsModule,
-        CommonUiMainPageModule,
+
         CommonUiAutoCompleteModule,
         CommonUiDatepickerModule,
         CommonUiConfirmationDialogModule,
@@ -58,7 +58,7 @@ export class CostingKeyListComponent extends BaseEntityListComponent<CKey> imple
           confirmationSrv,
           defReportSrv,
           pagPersistSrv,
-          'COSTING_KEYS');
+          'COST_ALLOCATION_KEYS');
       this.pagination.pageSize = 15;
   }
 }

@@ -15,8 +15,8 @@ import { CostingProjectService } from '../services/costing-project.service';
 import { filter, Observable } from 'rxjs';
 import { CostingPoolService } from '../services/costing-pool.service';
 import { CProductLineService } from '../services/product-line.service';
-import { sign } from "chart.js/helpers";
-import { CostingOhService } from "../services/costing-oh.service";
+import { CostingOhService } from '../services/costing-oh.service';
+import { CostingReportService } from '../services/costing-report.service';
 
 
 @Component({
@@ -34,6 +34,7 @@ import { CostingOhService } from "../services/costing-oh.service";
     ]
 })
 export class CostingProjectDetailComponent extends BaseEntityDetailComponent<CProject> implements  OnInit {
+    private reportSrv = inject(CostingReportService);
     private productSrv = inject(CProductLineService);
     private router = inject(Router);
     private costingPoolSrv = inject(CostingPoolService);
@@ -43,11 +44,12 @@ export class CostingProjectDetailComponent extends BaseEntityDetailComponent<CPr
     onEdit = signal(false);
     @HostBinding('@routeAnimation') routeAnimation = true;
     activePanel = -1;
-    private URLS = ['products', 'pools', 'oh'];
+    private URLS = ['products', 'pools', 'oh', 'reports'];
 
     PRODUCTS_PANEL = 0;
     POOLS_PANEL = 1;
     COH_PANEL = 2;
+    COH_REPORT = 3;
 
     constructor(
         public override entitySrv: CostingProjectService,
@@ -56,7 +58,7 @@ export class CostingProjectDetailComponent extends BaseEntityDetailComponent<CPr
         public override route: ActivatedRoute,
         public override formBuilder: UntypedFormBuilder,
         public override confirmationSrv: ConfirmationDialogService) {
-        super(entitySrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'COSTING_PRODUCTS');
+        super(entitySrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'COMMON_PROJECTS');
     }
 
     public override setupForm(e: CProject): FormGroup {
@@ -70,9 +72,11 @@ export class CostingProjectDetailComponent extends BaseEntityDetailComponent<CPr
     }
 
     override loadEntity(id: number): Observable<CProject> {
-        this.productSrv.setParentId(id || 0);
-        this.costingPoolSrv.setParentId(id || 0);
-        this.ohSrv.setParentId(id || 0);
+        const iId = id || 0;
+        this.productSrv.setParentId(iId);
+        this.costingPoolSrv.setParentId(iId);
+        this.ohSrv.setParentId(iId);
+        this.reportSrv.parentId = iId;
         return super.loadEntity(id);
     }
 

@@ -43,7 +43,7 @@ export class BomComponent implements OnInit {
     private addButton: ToolbarButton = {
         icon: 'fas fa-plus',
         label: 'COMMON_ADD',
-        disabled: false,
+        disabled: true,
         visible: true,
         keepOnToolbar: KeepOnToolbar.DYNAMIC,
         click: () => this.showAddDialog()
@@ -73,6 +73,7 @@ export class BomComponent implements OnInit {
     ngOnInit(): void {
         this.shellSrv.setGoBackPath('..', this.route);
         this.shellSrv.setButtons([this.addButton, this.editButton, this.deleteButton]);
+        this.shellSrv.setTitle('LOGISTICS_BOM');
         this.refresh(null);
     }
 
@@ -112,6 +113,7 @@ export class BomComponent implements OnInit {
     select(tree: BOMTree) {
         this.selectedBOM = tree;
         this.editButton.disabled = !tree?.bom.id;
+        this.addButton.disabled = !tree;
         this.deleteButton.disabled = !tree?.bom.id;
         this.rootBOM = this.getSelectedParent(this.dataSource.data, this.selectedBOM);
     }

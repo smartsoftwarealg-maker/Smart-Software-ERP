@@ -9,7 +9,7 @@ import {UiThemeModule} from "@ss/common/ui-theme";
 import {UiErrorHandlerModule} from "@ss/common/ui-error-handler";
 import {ShellComponent, UiShellModule} from "@ss/common/ui-shell";
 import {CommonUiLangModule} from "@ss/common/ui-lang";
-import {CommonUiMainPageModule, MainPageComponent} from "@ss/common/ui-main-page";
+import { MainPageComponent} from "@ss/common/ui-main-page";
 import {UiLoginModule} from "@ss/common/ui-login";
 import {UiCenterSelectModule} from "@ss/common/ui-center-select";
 import {ADMINISTRATION_APP_URL, FINANCE_APP_URL, PATIENTS_APP_URL} from './common';
@@ -58,7 +58,7 @@ const routes: Routes = [
         UiErrorHandlerModule,
         UiShellModule,
         CommonUiLangModule,
-        CommonUiMainPageModule,
+
         UiLoginModule,
         UiCenterSelectModule,
         LogisticsUiAgentModule

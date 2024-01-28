@@ -5,7 +5,7 @@ import { MaterialModule, PaginatorPersistenceService } from '@ss/common/api-comm
 import { CommonUiLangModule } from '@ss/common/ui-lang';
 import { UiPaginationModule } from '@ss/common/ui-pagination';
 import { ReactiveFormsModule } from '@angular/forms';
-import { CommonUiMainPageModule } from '@ss/common/ui-main-page';
+
 import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
 import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
 import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
@@ -28,7 +28,7 @@ import { CProduct, slideToRight } from '@ss/costing/costing-utils';
         CommonUiLangModule,
         UiPaginationModule,
         ReactiveFormsModule,
-        CommonUiMainPageModule,
+
         CommonUiAutoCompleteModule,
         CommonUiDatepickerModule,
         CommonUiConfirmationDialogModule,
@@ -57,7 +57,7 @@ export class CostingProductListComponent extends BaseEntityListComponent<CProduc
           confirmationSrv,
           defReportSrv,
           pagPersistSrv,
-          'COSTING_PRODUCTS');
+          'COST_PRODUCTS');
       this.pagination.pageSize = 15;
   }
 

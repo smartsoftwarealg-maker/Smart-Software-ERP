@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, EventEmitter, inject, Output, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BaseChildEntityListComponent } from '@ss/common/ui-base-entity';
 import { CLineCost } from '@ss/costing/costing-utils';
@@ -30,6 +30,7 @@ import { ProductLineCostsService } from '../services/product-line-costs.service'
 export class CProductLineCostComponent extends BaseChildEntityListComponent<CLineCost> {
     private fb = inject(FormBuilder);
     private itemSrv = inject(CostingItemService);
+    @Output() startedEdit = new EventEmitter<boolean>(false);
 
     editMode = signal(false);
     form = this.fb.group({
@@ -40,7 +41,7 @@ export class CProductLineCostComponent extends BaseChildEntityListComponent<CLin
     });
     itemLookup = new DefaultAutoCompleteModel(this.itemSrv);
 
-    override displayedColumns = ['keyDescription', 'value'];
+    override displayedColumns = ['itemDescription', 'value'];
 
     constructor(protected override detailSrv: ProductLineCostsService) {
         super(detailSrv, 'CPoolDetail');
@@ -53,7 +54,7 @@ export class CProductLineCostComponent extends BaseChildEntityListComponent<CLin
                 .subscribe(res => this.form = this.fb.group({
                     id:       [id],
                     parentId: [this.detailSrv.getParentId()],
-                    itemId:    [res.itemId],
+                    itemId:   [res.itemId],
                     value:    [res.value],
                 }));
         } else {
@@ -65,6 +66,7 @@ export class CProductLineCostComponent extends BaseChildEntityListComponent<CLin
             });
         }
         this.editMode.set(true);
+        this.startedEdit.emit(true);
     }
 
     save() {
@@ -78,8 +80,10 @@ export class CProductLineCostComponent extends BaseChildEntityListComponent<CLin
                         this.snackBarSrv.showFailureMessage();
                     }
                     this.editMode.set(false);
+                    this.startedEdit.emit(false);
                 }, error: err => {
                     this.editMode.set(false);
+                    this.startedEdit.emit(false);
                     throw err;
                 }
             });
@@ -87,5 +91,6 @@ export class CProductLineCostComponent extends BaseChildEntityListComponent<CLin
 
     cancel() {
         this.editMode.set(false);
+        this.startedEdit.emit(false);
     }
 }

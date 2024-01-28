@@ -1,7 +1,7 @@
-import {Component, OnInit,} from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
-import { Article } from '@ss/master-data/api-article';
+import { Article, BOMTree } from '@ss/master-data/api-article';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {Observable, of} from 'rxjs';
 import {LookupsService} from '@ss/common/api-lookup';
@@ -19,6 +19,7 @@ import { LogisticsUiDocInfoModule } from '@ss/logistics/ui-doc-info';
 import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
 import { LogisticsUiStockInfoModule } from '@ss/logistics/ui-stock-info';
 import { FinalProductService } from '@ss/master-data/api-article';
+import { BomService } from '../bom.service';
 
 @Component({
     selector: 'ss-product-list',
@@ -40,10 +41,11 @@ import { FinalProductService } from '@ss/master-data/api-article';
     ],
 })
 export class FinalProductListComponent extends BaseEntityListComponent<Article> implements OnInit {
-    filterCtrl = new FormControl<number>(this.entitySrv.getParentId());
-    private STOCK_COLS = ['image', 'reference', 'description2', 'markDescription', 'classDescription'];
-    private SALES_COLS = ['image', 'reference', 'description2', 'markDescription', 'classDescription'];
+    private bomSrv = inject(BomService);
+    private STOCK_COLS = ['image', 'reference', 'description2', 'markDescription', 'classDescription', 'routingValue', 'bomValue'];
+    private SALES_COLS = ['image', 'reference', 'description2', 'markDescription', 'classDescription', 'routingValue', 'bomValue'];
     displayedColumns = this.STOCK_COLS;
+    filterCtrl = new FormControl<number>(this.entitySrv.getParentId());
 
     constructor(
         public articleSrv: FinalProductService,
@@ -64,6 +66,10 @@ export class FinalProductListComponent extends BaseEntityListComponent<Article> 
             p.imageModel = new ImageModel(this.httpSrv);
             p.imageModel.readOnly = true;
             p.imageModel.setImageUrl(this.articleSrv.getPhotoUrl(p.id), false);
+            this.bomSrv.setParentId(p.id);
+            this.bomSrv
+                .treeById()
+                .subscribe(tree => p.bomValue = this.getBOMValue(tree));
         });
         return of(data);
     }
@@ -85,5 +91,14 @@ export class FinalProductListComponent extends BaseEntityListComponent<Article> 
                     this.articleSrv.setParentId(id);
                     this.refresh();
                 }));
+    }
+
+    private getBOMValue(tree: BOMTree[]): number {
+        return tree.reduce((result, current) => {
+            return result +
+                   current.bom.qty + current.bom.price +
+                   this.getBOMValue(current.children);
+        },
+        0.0);
     }
 }

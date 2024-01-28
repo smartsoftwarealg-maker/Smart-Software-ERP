@@ -15,6 +15,7 @@
     min-width: 800px;
     width: 100%;
 }
+
 // keep the material design specs
 .mat-row, .mat-header-row {
     padding-right: 16px;
@@ -40,9 +41,11 @@
     padding-left: 8px !important;
 }
 
+.mat-column-routingValue,
+.mat-column-bomValue,
 .mat-column-price1,
 .mat-column-awp {
-    flex: 0 0 90px;
+    flex: 0 0 100px;
     padding-right: 8px !important;
 }
 
@@ -63,3 +66,7 @@
     padding-left: 8px !important;
 }
 
+mat-table {
+    width: 100%;
+    min-width: 900px;
+}

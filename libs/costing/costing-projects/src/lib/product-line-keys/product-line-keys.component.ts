@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, EventEmitter, inject, Output, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BaseChildEntityListComponent } from '@ss/common/ui-base-entity';
 import { CLineKey } from '@ss/costing/costing-utils';
@@ -33,6 +33,7 @@ export class ProductLineKeysComponent extends BaseChildEntityListComponent<CLine
     private itemSrv = inject(CostingItemService);
     private keySrv = inject(CostingKeyService);
 
+    @Output() startedEdit = new EventEmitter<boolean>(false);
     editMode = signal(false);
     form = this.fb.group({
         id:       [0],
@@ -68,6 +69,7 @@ export class ProductLineKeysComponent extends BaseChildEntityListComponent<CLine
             });
         }
         this.editMode.set(true);
+        this.startedEdit.emit(true);
     }
 
     save() {
@@ -81,8 +83,10 @@ export class ProductLineKeysComponent extends BaseChildEntityListComponent<CLine
                         this.snackBarSrv.showFailureMessage();
                     }
                     this.editMode.set(false);
+                    this.startedEdit.emit(false);
                 }, error: err => {
                     this.editMode.set(false);
+                    this.startedEdit.emit(false);
                     throw err;
                 }
             });
@@ -90,5 +94,6 @@ export class ProductLineKeysComponent extends BaseChildEntityListComponent<CLine
 
     cancel() {
         this.editMode.set(false);
+        this.startedEdit.emit(false);
     }
 }

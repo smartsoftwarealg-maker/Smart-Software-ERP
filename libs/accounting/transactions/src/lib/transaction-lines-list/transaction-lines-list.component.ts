@@ -13,7 +13,7 @@ import { CommonModule } from "@angular/common";
 import { CommonUiLangModule } from "@ss/common/ui-lang";
 import { UiPaginationModule } from "@ss/common/ui-pagination";
 import { FormControl, ReactiveFormsModule } from "@angular/forms";
-import { CommonUiMainPageModule } from "@ss/common/ui-main-page";
+
 import { CommonUiAutoCompleteModule } from "@ss/common/ui-auto-complete";
 import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
 import { AppArchiveModule } from "@ss/common/app-archive";
@@ -32,7 +32,7 @@ import { Sort } from "@angular/material/sort";
         CommonUiLangModule,
         UiPaginationModule,
         ReactiveFormsModule,
-        CommonUiMainPageModule,
+
         CommonUiAutoCompleteModule,
         CommonUiDatepickerModule,
         CommonUiConfirmationDialogModule,

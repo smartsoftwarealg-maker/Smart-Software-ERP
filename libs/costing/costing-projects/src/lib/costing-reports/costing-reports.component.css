@@ -1,0 +1,32 @@
+table {
+    width: 100%;
+    margin-top: 1em;
+}
+
+.product {
+    width: 35em;
+}
+
+.method {
+    width: 20em;
+}
+
+tr {
+    line-height: 1.5em;
+}
+
+.header {
+    height: 2em;
+    font-weight: bolder;
+    font-size: 1.3em;
+}
+
+mat-card {
+    margin-top: 1em;
+    padding: 8px;
+    border-radius: 1.4em;
+}
+
+.chart_div {
+    max-height: 28em;
+}

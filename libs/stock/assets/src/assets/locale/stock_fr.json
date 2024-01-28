@@ -64,5 +64,6 @@
     "REPLACED_REFERENCE":       "Référence remplacée",
     "REPLACING_REFERENCE":      "Référence de remplacement",
     "REPLACE_REFERENCE":        "Remplacer la référence",
-    "INVENTORYING":             "Inventaire"
+    "INVENTORYING":             "Inventaire",
+    "FINAL_PRODUCTS":           "Produits finaux"
 }

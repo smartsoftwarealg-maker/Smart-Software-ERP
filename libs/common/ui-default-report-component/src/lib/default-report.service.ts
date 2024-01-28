@@ -7,6 +7,7 @@ import {HttpParams} from '@angular/common/http';
 import {Company, HttpService} from '@ss/common/api-common';
 import {EmailSenderComponent} from './ui-email-sender/email-sender.component';
 import {tap} from 'rxjs/operators';
+import { ReportViewData } from '@ss/common/api-reports';
 
 @Injectable({
     providedIn: 'root'
@@ -70,6 +71,15 @@ export class DefaultReportService {
             .getBlob('/reports/view', params);
     }
 
+    viewReportWithData(form: string, data: string): Observable<any> {
+        const params = new HttpParams()
+            .set('form', form)
+            .set('data', data)
+            .set('type', 'PDF');
+        return this.httpSrv
+            .getBlob('/reports/view', params);
+    }
+
     emailReport(app: string,
                 id: number,
                 form: string,
@@ -91,7 +101,6 @@ export class DefaultReportService {
             .getBlob('/reports/email', params);
     }
 
-
     setUserReport(form: string, report: string): Observable<{ count: number }> {
         return this.httpSrv.post('/reports', { form: form, report: report});
     }
@@ -102,4 +111,7 @@ export class DefaultReportService {
                 .pipe(tap(res => this._company = res));
     }
 
+    viewPDF(data: ReportViewData): Observable<any> {
+        return this.httpSrv.putBlob('/reports/view', data);
+    }
 }

@@ -48,8 +48,6 @@ export interface Article {
     appId: number;
     salesUnit: number;
     imageModel?: ImageModel;
-    markDescrip?: string;
-    unitDescrip?: string;
     vatValue?: number;
     notForSale: boolean;
     blocked: boolean;
@@ -59,7 +57,10 @@ export interface Article {
     minQty?: number;
     maxQty?: number;
     unitDescription?: string;
+    routingValue?: number;
+    bomValue?: number;
 }
+
 export interface StockInfo {
     reference: string;
     description?: string;

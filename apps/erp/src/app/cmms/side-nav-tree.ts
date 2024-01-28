@@ -29,7 +29,7 @@ import {
     ABS_INSPECTION_URL,
     ABS_CMMS_REPORTS_URL,
     ABS_CMMS_ASSETS_PM_URL,
-    ABS_CMMS_PERMIT_TYPES_URL
+    ABS_CMMS_PERMIT_TYPES_URL, ABS_CMMS_GANT_URL
 } from '../common';
 
 export const cmmsNavTree: SideNavNode = {
@@ -42,12 +42,12 @@ export const cmmsNavTree: SideNavNode = {
             route: ABS_CMMS_CHARTS_URL,
             accessRights: 'KPI'
         },
-        // {
-        //     name: 'CMMS_GANTT',
-        //     icon: 'fa-solid fa-chart-gantt',
-        //     route: ABS_CMMS_GANT_URL,
-        //     accessRights: 'Gantt'
-        // },
+        {
+            name: 'CMMS_GANTT',
+            icon: 'fa-solid fa-chart-gantt',
+            route: ABS_CMMS_GANT_URL,
+            accessRights: 'Gantt'
+        },
         {
             name: 'ASSET_END_TYPES',
             icon: 'fa-solid fa-person-walking-dashed-line-arrow-right',

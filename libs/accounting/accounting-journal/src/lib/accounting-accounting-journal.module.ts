@@ -8,7 +8,6 @@ import {UiPaginationModule} from '@ss/common/ui-pagination';
 import {ReactiveFormsModule} from '@angular/forms';
 import {CommonUiAutoCompleteModule} from '@ss/common/ui-auto-complete';
 import {CommonUiConfirmationDialogModule} from '@ss/common/ui-confirmation-dialog';
-import {CommonUiMainPageModule} from '@ss/common/ui-main-page';
 
 @NgModule({
     imports: [
@@ -17,7 +16,7 @@ import {CommonUiMainPageModule} from '@ss/common/ui-main-page';
         CommonUiLangModule,
         UiPaginationModule,
         ReactiveFormsModule,
-        CommonUiMainPageModule,
+
         CommonUiAutoCompleteModule,
         CommonUiConfirmationDialogModule
     ],

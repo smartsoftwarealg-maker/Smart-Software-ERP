@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BaseChildEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { CProductLine } from '@ss/costing/costing-utils';
@@ -39,17 +39,20 @@ export class ProductLineDetailComponent extends BaseChildEntityDetailComponent<C
     private articleSrv = inject(ArticleService);
     private fb = inject(FormBuilder);
 
-    protected keySrv = inject(ProductLineKeysService);
-    protected itemSrv = inject(ProductLineCostsService);
+    protected lineKeySrv = inject(ProductLineKeysService);
+    protected lineCostSrv = inject(ProductLineCostsService);
     articleLookup = new DefaultAutoCompleteModel(this.articleSrv, 'id', 'description2');
+    childEditMode = false;
+    loaded = signal(false);
 
     constructor(protected override entitySrv: CProductLineService) {
         super(entitySrv, 'CProductLine');
     }
 
     override setupForm(e: CProductLine): UntypedFormGroup {
-        this.keySrv.setParentId(e?.id || 0);
-        this.itemSrv.setParentId(e?.id || 0);
+        this.lineKeySrv.setParentId(e?.id || 0);
+        this.lineCostSrv.setParentId(e?.id || 0);
+        this.loaded.set(true);
         return this.fb.group({
             id:             [e.id],
             parentId:       [e.parentId, Validators.required],
@@ -58,5 +61,14 @@ export class ProductLineDetailComponent extends BaseChildEntityDetailComponent<C
             directLabor:    [e.directLabor || 0, Validators.required],
             units:          [e.units || 0, Validators.min(1)],
         });
+    }
+
+    onChildEdit(event: boolean) {
+        this.childEditMode = event;
+    }
+
+    override ngOnInit() {
+        this.loaded.set(false);
+        super.ngOnInit();
     }
 }

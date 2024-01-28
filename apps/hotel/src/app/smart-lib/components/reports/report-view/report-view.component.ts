@@ -5,6 +5,7 @@ import { DeviceDetectorService } from 'ngx-device-detector';
 import { map } from 'rxjs/operators';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { HttpService } from '../../../common/http.service';
+import { Observable } from "rxjs";
 
 @Component({
     selector: 'ss-report-catalog',
@@ -163,7 +164,7 @@ export class ReportViewComponent implements OnInit, OnDestroy {
             uuid: this.uuid
         };
 
-        let obsrv;
+        let obsrv: Observable<any>|null = null;
 
         if (this.reportType === 'HTML') {
             obsrv = this.httpSrv.putHTML('/reports/view', data);

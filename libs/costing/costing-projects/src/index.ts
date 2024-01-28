@@ -10,3 +10,4 @@ export * from './lib/cost-oh-list/costing-oh-line.component';
 export * from './lib/services/costing-pool-keys.service';
 export * from './lib/services/product-line-keys.service';
 export * from './lib/services/costing-oh.service';
+export * from './lib/costing-reports/costing-reports.component';

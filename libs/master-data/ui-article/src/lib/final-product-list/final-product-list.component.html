@@ -57,6 +57,20 @@
             </mat-cell>
         </ng-container>
 
+        <ng-container matColumnDef="routingValue">
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>CMMS_ROUTING</mat-header-cell>
+            <mat-cell *matCellDef="let e" style="justify-content: flex-end; direction: ltr;">
+                {{ e.routingValue | number: '1.2-2'}}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="bomValue">
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>LOGISTICS_BOM</mat-header-cell>
+            <mat-cell *matCellDef="let e" style="justify-content: flex-end; direction: ltr;">
+                {{ e.bomValue | number: '1.2-2'}}
+            </mat-cell>
+        </ng-container>
+
         <ng-container matColumnDef="vat">
             <mat-header-cell *matHeaderCellDef mat-sort-header translate>STOCK_VAT</mat-header-cell>
             <mat-cell *matCellDef="let e" style="justify-content: flex-end; direction: ltr;">

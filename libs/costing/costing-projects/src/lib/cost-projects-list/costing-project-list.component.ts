@@ -1,4 +1,4 @@
-import {Component, HostBinding} from '@angular/core';
+import { Component, HostBinding, inject, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { CostingProjectService } from '../services/costing-project.service';
@@ -8,7 +8,11 @@ import { CProject, DateUtil, slideToRight } from '@ss/costing/costing-utils';
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { DefaultReportService } from '@ss/common/ui-default-report-component';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
-import { UiPaginationModule } from "@ss/common/ui-pagination";
+import { UiPaginationModule } from '@ss/common/ui-pagination';
+import { CommonUiLangModule } from '@ss/common/ui-lang';
+import { CostingReportsComponent } from '../costing-reports/costing-reports.component';
+import { CostingReportService } from '../services/costing-report.service';
+import { Chart, registerables } from 'chart.js';
 
 @Component({
     selector: 'ss-costing-project-list',
@@ -20,13 +24,16 @@ import { UiPaginationModule } from "@ss/common/ui-pagination";
         RouterModule,
         MaterialModule,
         CommonUiConfirmationDialogModule,
-        UiPaginationModule
+        UiPaginationModule,
+        CommonUiLangModule,
+        CostingReportsComponent
     ],
     animations: [slideToRight]
 })
-export class CostingProjectListComponent extends BaseEntityListComponent<CProject> {
+export class CostingProjectListComponent extends BaseEntityListComponent<CProject> implements OnInit {
+    private reportSrv = inject(CostingReportService);
     @HostBinding('@routeAnimation') routeAnimation = true;
-
+    @ViewChild(CostingReportsComponent) reportView: CostingReportsComponent | null = null;
     public displayedColumns = ['code', 'description', 'from', 'to'];
     private projectListId = 'project-list';
     private cloneFormId = 'project-clone-form';
@@ -50,10 +57,9 @@ export class CostingProjectListComponent extends BaseEntityListComponent<CProjec
             confirmationSrv,
             defReportSrv,
             pagPersistSrv,
-            'COSTING_PRODUCTS');
+            'COST_PRODUCTS');
         this.pagination.pageSize = 15;
     }
-
 
 
     projectFromStr(item: any): string {
@@ -95,6 +101,14 @@ export class CostingProjectListComponent extends BaseEntityListComponent<CProjec
     public onCancelClone() {
         document.getElementById(this.projectListId).classList.remove(this.maxHeightZeroClass);
         document.getElementById(this.cloneFormId).classList.add(this.maxHeightZeroClass);
+    }
+
+    override select(id: number) {
+        super.select(id);
+        if (this.reportView) {
+            this.reportSrv.parentId = id;
+            this.reportView.refresh();
+        }
     }
 
 }

@@ -120,6 +120,7 @@ export const langAssets = [
     ['assets/locale/budget_', 'BUD_'],
     ['assets/locale/cmms_', 'CMMS_'],
     ['assets/locale/park_', 'PARK_'],
+    ['assets/locale/costing_', 'COST_'],
 ];
 
 export const appRoutes: Routes =  [

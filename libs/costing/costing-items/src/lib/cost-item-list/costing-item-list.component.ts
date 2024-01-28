@@ -6,13 +6,13 @@ import { BaseEntityListComponent } from 'libs/common/ui-base-entity/src';
 import { MaterialModule, PaginatorPersistenceService } from '@ss/common/api-common';
 import { ShellService, SnackBarService } from "@ss/common/ui-shell";
 import { DefaultReportService } from '@ss/common/ui-default-report-component';
-import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
+import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { CostingItemService } from "../costing-item.service";
 import { CommonModule } from '@angular/common';
 import { CommonUiLangModule } from '@ss/common/ui-lang';
 import { UiPaginationModule } from "@ss/common/ui-pagination";
 import { ReactiveFormsModule } from '@angular/forms';
-import { CommonUiMainPageModule } from '@ss/common/ui-main-page';
+
 import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
 import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
 import { AppArchiveModule } from '@ss/common/app-archive';
@@ -29,7 +29,7 @@ import { AppArchiveModule } from '@ss/common/app-archive';
     CommonUiLangModule,
     UiPaginationModule,
     ReactiveFormsModule,
-    CommonUiMainPageModule,
+
     CommonUiAutoCompleteModule,
     CommonUiDatepickerModule,
     CommonUiConfirmationDialogModule,
@@ -40,7 +40,7 @@ import { AppArchiveModule } from '@ss/common/app-archive';
 export class CostingItemListComponent extends BaseEntityListComponent<CItem> implements OnInit {
   @HostBinding("@routeAnimation") routeAnimation = true;
 
-  public displayedColumns = ["code", "description", "accountDescription"];
+  public displayedColumns = ['code', 'description'];
 
   constructor(
     public override entitySrv: CostingItemService,
@@ -59,7 +59,7 @@ export class CostingItemListComponent extends BaseEntityListComponent<CItem> imp
       confirmationSrv,
       defReportSrv,
       pagPersistSrv,
-      "COSTING_ITEMS");
+      "COST_ITEMS");
     this.pagination.pageSize = 15;
   }
 

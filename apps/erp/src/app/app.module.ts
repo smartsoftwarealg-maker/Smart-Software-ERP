@@ -9,7 +9,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { UiErrorHandlerModule } from '@ss/common/ui-error-handler';
 import { ShellComponent, UiShellModule } from '@ss/common/ui-shell';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { CommonUiMainPageModule } from '@ss/common/ui-main-page';
 import { AUTH_2FA_URL, LOGIN_URL, MAIN_PAGE_URL, UPDATE_PASSWORD_URL } from '@ss/common/api-common';
 import {CommonUiLangModule} from '@ss/common/ui-lang';
 import {ColorPickerModule} from 'ngx-color-picker';
@@ -44,7 +43,6 @@ const routes: Routes = [
         UiErrorHandlerModule,
         UiShellModule,
         CommonUiLangModule,
-        CommonUiMainPageModule,
         // modules with routes
         UiLoginModule,
         UiCenterSelectModule,

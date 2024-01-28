@@ -20,8 +20,11 @@ import {
     CostingPoolDetailComponent,
     CostingPoolListComponent,
     CostingProjectDetailComponent,
-    CostingProjectListComponent, ProductLineDetailComponent, ProductLineListComponent
-} from "@ss/costing/costing-projects";
+    CostingProjectListComponent,
+    CostingReportsComponent,
+    ProductLineDetailComponent,
+    ProductLineListComponent
+} from '@ss/costing/costing-projects';
 import {
     BomComponent,
     ChildBomComponent,
@@ -43,7 +46,7 @@ export const costingRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: CostingProjectListComponent,
-                canActivate: [loginGuard]
+                canActivate: [loginGuard],
             },
             {
                 path: ':id',
@@ -71,6 +74,9 @@ export const costingRoutes: Routes = [
                             { path: '', component: CostingOhLineComponent, pathMatch: 'full' },
                             { path: ':id', component: CostingOhDetailComponent }
                         ]
+                    },
+                    {
+                        path: 'reports', component: CostingReportsComponent
                     },
                 ]
             },

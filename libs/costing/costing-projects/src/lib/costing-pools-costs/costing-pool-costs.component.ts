@@ -1,7 +1,7 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, EventEmitter, inject, Output, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BaseChildEntityListComponent } from '@ss/common/ui-base-entity';
-import { CLineCost } from '@ss/costing/costing-utils';
+import { CPoolCost } from '@ss/costing/costing-utils';
 import { RouterModule } from '@angular/router';
 import { MaterialModule } from '@ss/common/api-common';
 import { CommonUiConfirmationDialogModule } from '@ss/common/ui-confirmation-dialog';
@@ -10,8 +10,7 @@ import { CommonUiLangModule } from '@ss/common/ui-lang';
 import { FormBuilder, Validators } from '@angular/forms';
 import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
 import { CostingItemService } from '@ss/costing/costing-items';
-import { ProductLineCostsService } from '../services/product-line-costs.service';
-import { CostingPoolsCostsService } from "../services/costing-pools-costs.service";
+import { CostingPoolsCostsService } from '../services/costing-pools-costs.service';
 
 @Component({
     selector: 'ss-costing-pools-costs',
@@ -28,9 +27,10 @@ import { CostingPoolsCostsService } from "../services/costing-pools-costs.servic
     templateUrl: './costing-pool-costs.component.html',
     styleUrl: './costing-pool-costs.component.css',
 })
-export class CostingPoolCostComponent extends BaseChildEntityListComponent<CLineCost> {
+export class CostingPoolCostComponent extends BaseChildEntityListComponent<CPoolCost> {
     private fb = inject(FormBuilder);
     private itemSrv = inject(CostingItemService);
+    @Output() startedEdit = new EventEmitter<boolean>(false);
 
     editMode = signal(false);
     form = this.fb.group({
@@ -41,7 +41,7 @@ export class CostingPoolCostComponent extends BaseChildEntityListComponent<CLine
     });
     itemLookup = new DefaultAutoCompleteModel(this.itemSrv);
 
-    override displayedColumns = ['keyDescription', 'value'];
+    override displayedColumns = ['itemDescription', 'value'];
 
     constructor(protected override detailSrv: CostingPoolsCostsService) {
         super(detailSrv, 'CPoolCost');
@@ -66,6 +66,7 @@ export class CostingPoolCostComponent extends BaseChildEntityListComponent<CLine
             });
         }
         this.editMode.set(true);
+        this.startedEdit.emit(true);
     }
 
     save() {
@@ -79,8 +80,10 @@ export class CostingPoolCostComponent extends BaseChildEntityListComponent<CLine
                         this.snackBarSrv.showFailureMessage();
                     }
                     this.editMode.set(false);
+                    this.startedEdit.emit(false);
                 }, error: err => {
                     this.editMode.set(false);
+                    this.startedEdit.emit(false);
                     throw err;
                 }
             });
@@ -88,5 +91,6 @@ export class CostingPoolCostComponent extends BaseChildEntityListComponent<CLine
 
     cancel() {
         this.editMode.set(false);
+        this.startedEdit.emit(false);
     }
 }
