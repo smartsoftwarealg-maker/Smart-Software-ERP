@@ -57,7 +57,7 @@ export class ShoppingCartComponent extends BaseEntityListComponent<Article> {
         return this.markSrv
             .getByIdList(data.filter(e => e.mark && e.mark > 0).map(e => e.mark).join(','))
             .pipe(
-                tap(res => data.forEach(a => a.markDescrip = res.find(e => e.id === a.mark)?.description)),
+                tap(res => data.forEach(a => a.markDescription = res.find(e => e.id === a.mark)?.description)),
                 switchMap(res => this.cartSrv.getTotal()),
                 tap(res => this.cartTotal = res.total),
                 switchMap(res => of(data))

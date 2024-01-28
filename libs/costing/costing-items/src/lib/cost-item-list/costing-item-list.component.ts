@@ -6,7 +6,7 @@ import { BaseEntityListComponent } from 'libs/common/ui-base-entity/src';
 import { MaterialModule, PaginatorPersistenceService } from '@ss/common/api-common';
 import { ShellService, SnackBarService } from "@ss/common/ui-shell";
 import { DefaultReportService } from '@ss/common/ui-default-report-component';
-import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
+import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { CostingItemService } from "../costing-item.service";
 import { CommonModule } from '@angular/common';
 import { CommonUiLangModule } from '@ss/common/ui-lang';
@@ -40,7 +40,7 @@ import { AppArchiveModule } from '@ss/common/app-archive';
 export class CostingItemListComponent extends BaseEntityListComponent<CItem> implements OnInit {
   @HostBinding("@routeAnimation") routeAnimation = true;
 
-  public displayedColumns = ["code", "description", "accountDescription"];
+  public displayedColumns = ['code', 'description'];
 
   constructor(
     public override entitySrv: CostingItemService,
