@@ -46,7 +46,7 @@ export class PurchaseOrderDetailComponent extends BaseTransactionDetailComponent
                 protected loginSrv: LoginService,
                 protected dialog: MatDialog) {
         super(orderService, detailSrv, shellSrv, snackBarSrv, route, router, formBuilder, confirmationSrv, loginSrv, dialog, 'PURCHASES_EDIT_ORDER');
-        this.projectLookup.onObjectSelected = e => this.onProject(e);
+        this.purchaseProjectLookup.onObjectSelected = e => this.onProject(e);
     }
 
     override preload(): Observable<any> {
@@ -55,7 +55,7 @@ export class PurchaseOrderDetailComponent extends BaseTransactionDetailComponent
     }
 
     override setupForm(b: Transaction): FormGroup {
-        this.projectSrv.setParentId(b?.agent || 0);
+        this.purchaseProjectSrv.setParentId(b?.agent || 0);
         return super.setupForm(b);
     }
 

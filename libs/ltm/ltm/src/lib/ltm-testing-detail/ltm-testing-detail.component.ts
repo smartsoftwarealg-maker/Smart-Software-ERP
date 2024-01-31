@@ -2,20 +2,42 @@ import { Component, inject, OnInit } from '@angular/core';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import { LTMLineMatter, LTMTesting } from '../ltm-api';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
-import {ActivatedRoute, Router} from '@angular/router';
-import {UntypedFormBuilder, Validators} from '@angular/forms';
-import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
+import { ActivatedRoute, Router, RouterOutlet } from "@angular/router";
+import { ReactiveFormsModule, UntypedFormBuilder, Validators } from "@angular/forms";
+import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
 import {LtmTestingService} from '../services/ltm-testing.service';
-import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
+import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from "@ss/common/ui-auto-complete";
 import {LtmMatterTestLookupService} from '../services/ltm-matter-test-lookup.service';
-import { LoginService } from '@ss/common/api-common';
+import { LoginService, MaterialModule } from "@ss/common/api-common";
 import { LtmLineMatterService } from '../services/ltm-line-matter.service';
 import { LtmLineMatterLookup } from '../services/ltm-line-matter-lookup';
+import { CommonModule } from "@angular/common";
+import { CommonUiLangModule } from "@ss/common/ui-lang";
+import { UiPaginationModule } from "@ss/common/ui-pagination";
+import { LogisticsUiDocInfoModule } from "@ss/logistics/ui-doc-info";
+import { AppArchiveModule } from "@ss/common/app-archive";
+import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
+import { CommonUiHourPickerModule } from "@ss/common/ui-hour-picker";
 
 @Component({
     selector: 'ss-ltm-testing-detail',
     templateUrl: './ltm-testing-detail.component.html',
     styleUrls: ['./ltm-testing-detail.component.scss'],
+    standalone: true,
+    imports: [
+        CommonModule,
+        MaterialModule,
+        CommonUiLangModule,
+        UiPaginationModule,
+        ReactiveFormsModule,
+        CommonUiConfirmationDialogModule,
+        LogisticsUiDocInfoModule,
+        AppArchiveModule,
+        CommonUiAutoCompleteModule,
+        CommonUiDatepickerModule,
+        RouterOutlet,
+        CommonUiHourPickerModule
+    ],
 })
 export class LtmTestingDetailComponent extends BaseEntityDetailComponent<LTMTesting> implements OnInit {
     private router  = inject(Router);

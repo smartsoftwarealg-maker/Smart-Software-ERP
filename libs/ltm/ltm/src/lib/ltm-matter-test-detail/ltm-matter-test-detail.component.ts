@@ -1,20 +1,43 @@
 import { Component, inject, OnInit } from '@angular/core';
-import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
-import {FormBuilder, Validators} from '@angular/forms';
-import {ActivatedRoute, Router} from '@angular/router';
+import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from "@ss/common/ui-auto-complete";
+import { FormBuilder, ReactiveFormsModule, Validators } from "@angular/forms";
+import { ActivatedRoute, Router, RouterOutlet } from "@angular/router";
 import {SnackBarService} from '@ss/common/ui-shell';
-import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
+import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
 import {switchMap, tap} from 'rxjs/operators';
 import {of} from 'rxjs';
 import {LTMMatterTest} from '../ltm-api';
 import {LtmTestService} from '../services/ltm-test.service';
 import {LtmMatterTestService} from '../services/ltm-matter-test.service';
 import {LtmPeriodicityService} from '../services/ltm-periodicity.service';
+import { CommonModule } from "@angular/common";
+import { MaterialModule } from "@ss/common/api-common";
+import { CommonUiLangModule } from "@ss/common/ui-lang";
+import { UiPaginationModule } from "@ss/common/ui-pagination";
+import { LogisticsUiDocInfoModule } from "@ss/logistics/ui-doc-info";
+import { AppArchiveModule } from "@ss/common/app-archive";
+import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
+import { CommonUiHourPickerModule } from "@ss/common/ui-hour-picker";
 
 @Component({
     selector: 'ss-ltm-matter-test-detail',
     templateUrl: './ltm-matter-test-detail.component.html',
     styleUrls: ['../line-matter-detail/line-matter-detail.component.scss'],
+    standalone: true,
+    imports: [
+        CommonModule,
+        MaterialModule,
+        CommonUiLangModule,
+        UiPaginationModule,
+        ReactiveFormsModule,
+        CommonUiConfirmationDialogModule,
+        LogisticsUiDocInfoModule,
+        AppArchiveModule,
+        CommonUiAutoCompleteModule,
+        CommonUiDatepickerModule,
+        RouterOutlet,
+        CommonUiHourPickerModule
+    ],
 })
 export class LtmMatterTestDetailComponent implements OnInit {
     private testSrv = inject(LtmTestService);

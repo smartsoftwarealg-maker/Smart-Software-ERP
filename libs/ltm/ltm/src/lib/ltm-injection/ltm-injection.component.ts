@@ -1,19 +1,43 @@
 import { Component, inject, Input } from '@angular/core';
-import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
+import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from "@ss/common/ui-auto-complete";
 import {finalize, Subscription} from 'rxjs';
-import {UntypedFormBuilder, Validators} from '@angular/forms';
+import { ReactiveFormsModule, UntypedFormBuilder, Validators } from "@angular/forms";
 import {MatDialogRef} from '@angular/material/dialog';
 import {HttpEventType} from '@angular/common/http';
 import {LtmLineMatterService} from '../services/ltm-line-matter.service';
 import {LtmInjectionService} from '../services/ltm-injection.service';
-import {LanguageService} from '@ss/common/api-common';
+import { LanguageService, MaterialModule } from "@ss/common/api-common";
 import { MatRadioChange } from "@angular/material/radio";
 import { INJResult } from "../ltm-api";
+import { CommonModule } from "@angular/common";
+import { CommonUiLangModule } from "@ss/common/ui-lang";
+import { UiPaginationModule } from "@ss/common/ui-pagination";
+import { CommonUiConfirmationDialogModule } from "@ss/common/ui-confirmation-dialog";
+import { LogisticsUiDocInfoModule } from "@ss/logistics/ui-doc-info";
+import { AppArchiveModule } from "@ss/common/app-archive";
+import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
+import { RouterOutlet } from "@angular/router";
+import { CommonUiHourPickerModule } from "@ss/common/ui-hour-picker";
 
 @Component({
     selector: 'ss-ltm-injection',
     templateUrl: './ltm-injection.component.html',
     styleUrls: ['./ltm-injection.component.scss'],
+    standalone: true,
+    imports: [
+        CommonModule,
+        MaterialModule,
+        CommonUiLangModule,
+        UiPaginationModule,
+        ReactiveFormsModule,
+        CommonUiConfirmationDialogModule,
+        LogisticsUiDocInfoModule,
+        AppArchiveModule,
+        CommonUiAutoCompleteModule,
+        CommonUiDatepickerModule,
+        RouterOutlet,
+        CommonUiHourPickerModule
+    ],
 })
 export class LtmInjectionComponent {
     // private matterSrv =  inject(LtmLineMatterService);

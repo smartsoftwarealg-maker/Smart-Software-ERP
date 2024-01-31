@@ -29,7 +29,7 @@ import { UserListService } from '@ss/common/api-users';
 import { DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
 import { TransactionLinesClass } from './transaction-lines.class';
 import { BaseTransactionLinesListComponent } from './base-transaction-lines-list.component';
-import { PurchaseContractService } from '@ss/logistics/contracts';
+import { PurchaseContractService, SalesContractService } from '@ss/logistics/contracts';
 
 @Directive()
 export abstract class BaseTransactionDetailComponent extends BaseEntityDetailComponent<Transaction> implements OnInit {
@@ -45,7 +45,8 @@ export abstract class BaseTransactionDetailComponent extends BaseEntityDetailCom
     private customerSrv = inject(CustomerService);
 
     protected currencySrv =  inject(CurrencyService);
-    protected projectSrv = inject(PurchaseContractService);
+    protected purchaseProjectSrv = inject(PurchaseContractService);
+    protected salesProjectSrv = inject(SalesContractService);
 
     @ViewChild(RouterOutlet) outlet: RouterOutlet|null = null;
 
@@ -74,7 +75,8 @@ export abstract class BaseTransactionDetailComponent extends BaseEntityDetailCom
     public agentLookup = new DefaultAutoCompleteModel<Agent>(this.agentSrv, 'id', 'denomination');
     public customerLookup = new DefaultAutoCompleteModel<Agent>(this.customerSrv, 'id', 'denomination');
     public supplierLookup   = new DefaultAutoCompleteModel<Agent>(this.supplierSrv, 'id', 'denomination');
-    public projectLookup            = new DefaultAutoCompleteModel(this.projectSrv);
+    public purchaseProjectLookup            = new DefaultAutoCompleteModel(this.purchaseProjectSrv);
+    public salesProjectLookup            = new DefaultAutoCompleteModel(this.salesProjectSrv);
     public currencyCompleteModel = new DefaultAutoCompleteModel<Currency>(this.currencySrv);
     public transporterAutoCompleteModel   = new DefaultAutoCompleteModel<Agent>(this.supplierSrv, 'id', 'denomination');
     public consumerAutoCompleteModel   = new DefaultAutoCompleteModel<Agent>(this.consumerSrv, 'id', 'denomination');
@@ -95,10 +97,17 @@ export abstract class BaseTransactionDetailComponent extends BaseEntityDetailCom
         protected dialog: MatDialog,
         public override title: string) {
         super(entitySrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, title);
-        this.projectSrv.setParentId(0);
-        this.agentLookup.onObjectSelected = e => this.projectSrv.setParentId(e?.id || 0);
-        this.supplierLookup.onObjectSelected = e => this.projectSrv.setParentId(e?.id || 0);
-        this.customerLookup.onObjectSelected = e => this.projectSrv.setParentId(e?.id || 0);
+        this.purchaseProjectSrv.setParentId(0);
+        this.agentLookup.onObjectSelected = e => this.updateProjectLookups(e?.id || 0);
+        this.supplierLookup.onObjectSelected = e => this.updateProjectLookups(e?.id || 0);
+        this.customerLookup.onObjectSelected = e => this.updateProjectLookups(e?.id || 0);
+    }
+
+    private updateProjectLookups(id: number) {
+        this.purchaseProjectSrv.setParentId(id);
+        this.salesProjectSrv.setParentId(id);
+        this.salesProjectLookup.filter('').subscribe();
+        this.purchaseProjectLookup.filter('').subscribe();
     }
 
     public override canDeactivate(): Observable<boolean> {
@@ -198,7 +207,7 @@ export abstract class BaseTransactionDetailComponent extends BaseEntityDetailCom
             }
         }
         this.detailSrv.setParentId(b.id || 0);
-        this.projectSrv.setParentId(b.agent || 0);
+        this.purchaseProjectSrv.setParentId(b.agent || 0);
         this._isManager = this.loginSrv.appCtx.manager;
         this.formId = b.id || 0;
 

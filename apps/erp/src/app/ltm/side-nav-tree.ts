@@ -2,12 +2,12 @@ import {SideNavNode} from '@ss/common/api-common';
 import {
     ABS_LTM_BATCH_TESTINGS_URL,
     ABS_LTM_CHARTS_URL, ABS_LTM_DASHBOARD_URL, ABS_LTM_LINES_URL,
-    ABS_LTM_MATTERS_URL,
+    ABS_LTM_MATTERS_URL, ABS_LTM_MIXTURES_URL,
     ABS_LTM_PERIODICITIES_URL, ABS_LTM_REPORTS_URL, ABS_LTM_TEST_TYPE_URL,
     ABS_LTM_TESTINGS_URL,
     ABS_LTM_TESTS_URL,
     ABS_LTM_UNIT_URL
-} from '../common';
+} from "../common";
 
 export const ltmNavTree: SideNavNode = {
     name: 'LTM',
@@ -52,6 +52,12 @@ export const ltmNavTree: SideNavNode = {
             accessRights: 'LTMLineMatter'
         },
 
+        {
+            name: 'LTM_MIXTURES',
+            icon: 'fa-duotone fa-blender',
+            route: ABS_LTM_MIXTURES_URL,
+            accessRights: 'LTMMixture'
+        },
 
         {
             name: 'LTM_TESTINGS',

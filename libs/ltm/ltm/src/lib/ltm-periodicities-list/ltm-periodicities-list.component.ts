@@ -2,16 +2,40 @@ import { Component } from '@angular/core';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {Lookup} from '@ss/common/api-lookup';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
-import {ActivatedRoute, Router} from '@angular/router';
-import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
+import { ActivatedRoute, Router, RouterOutlet } from "@angular/router";
+import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
-import {PaginatorPersistenceService} from '@ss/common/api-common';
+import { MaterialModule, PaginatorPersistenceService } from "@ss/common/api-common";
 import {LtmPeriodicityService} from '../services/ltm-periodicity.service';
+import { CommonModule } from "@angular/common";
+import { CommonUiLangModule } from "@ss/common/ui-lang";
+import { UiPaginationModule } from "@ss/common/ui-pagination";
+import { ReactiveFormsModule } from "@angular/forms";
+import { LogisticsUiDocInfoModule } from "@ss/logistics/ui-doc-info";
+import { AppArchiveModule } from "@ss/common/app-archive";
+import { CommonUiAutoCompleteModule } from "@ss/common/ui-auto-complete";
+import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
+import { CommonUiHourPickerModule } from "@ss/common/ui-hour-picker";
 
 @Component({
     selector: 'ss-ltm-periodicities-list',
     templateUrl: './ltm-periodicities-list.component.html',
     styleUrls: ['./ltm-periodicities-list.component.scss'],
+    standalone: true,
+    imports: [
+        CommonModule,
+        MaterialModule,
+        CommonUiLangModule,
+        UiPaginationModule,
+        ReactiveFormsModule,
+        CommonUiConfirmationDialogModule,
+        LogisticsUiDocInfoModule,
+        AppArchiveModule,
+        CommonUiAutoCompleteModule,
+        CommonUiDatepickerModule,
+        RouterOutlet,
+        CommonUiHourPickerModule
+    ],
 })
 export class LtmPeriodicitiesListComponent extends BaseEntityListComponent<Lookup> {
 
