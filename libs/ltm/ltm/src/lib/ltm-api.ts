@@ -4,6 +4,8 @@ import {ActivatedRouteSnapshot, CanActivateFn, RouterStateSnapshot} from '@angul
 
 export const LTM_TESTINGS_URL    = '/ltm/testings';
 export const LTM_LINE_URL        = '/ltm/lines';
+export const LTM_MIXTURE_URL        = '/ltm/mixtures';
+export const LTM_MIXTURE_DETAIL_URL        = '/detail';
 export const LTM_LINE_TYPE_URL        = '/lookups/ltm_test_types';
 export const LTM_TEST_URL        = '/ltm/tests';
 export const LTM_BATCH_URL       = '/ltm/batch';
@@ -15,8 +17,19 @@ export const LTM_LINE_MATTER_URL      = '/ltm/line-matters';
 export const LRM_PERIODICITY_URL = '/lookups/ltm_periodicities';
 export const LTM_LINE_SELECT_URL = '/ltm/ltm_selection';
 
-export const lineGuard: CanActivateFn =
-    (route: ActivatedRouteSnapshot, state: RouterStateSnapshot) => inject(LtmLineGuard).canActivate(route, state)
+export interface LTMMixture {
+    id: number;
+    description: string,
+    descriptionAr?: string;
+}
+
+export interface LTMMixtureDetail {
+    id: number;
+    parentId: number;
+    matterId: number;
+    matterDescription?: string;
+}
+
 export interface LTMLine {
     id: number;
     centerId: number;

@@ -1,0 +1,40 @@
+<div class="content_div button__div">
+    <!--    <mat-form-field>-->
+    <!--        <mat-label translate>COMMON_SEARCH</mat-label>-->
+    <!--        <input matInput [formControl]="searchText" type="text">-->
+    <!--    </mat-form-field>-->
+
+    <button mat-mini-fab color="primary" (click)="showDetail(0)" [matTooltip]="'COMMON_ADD' | translate">
+        <span class="fas fa-plus"></span>
+    </button>
+    <button mat-mini-fab (click)="edit()"
+            [disabled]="!selectedId"
+            [matTooltip]="'COMMON_EDIT' | translate"
+            color="accent">
+        <span class="fas fa-pen"></span>
+    </button>
+    <button mat-mini-fab (click)="deleteSelected()" [matTooltip]="'COMMON_DELETE' | translate"
+            [disabled]="!selectedId"
+            color="warn">
+        <span class="fas fa-trash-alt"></span>
+    </button>
+</div>
+
+<div class="table_div content_div">
+    <mat-table mat-table matSort [dataSource]="data$ | async" class="main-table" (matSortChange)="sort($event)">
+
+        <ng-container matColumnDef="matterDescription">
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>LTM_TEST</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.matterDescription}}
+            </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+        <mat-row class="selectable" [class.selected]="row.id == selectedId" (click)="selectRow(row)"
+                 *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+</div>
+<div class="content_div b-b-background">
+    <ss-pagination [paginationModel]="paginator"></ss-pagination>
+</div>

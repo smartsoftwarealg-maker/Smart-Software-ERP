@@ -30,5 +30,6 @@
     "SHOW_MENU":       "Show menu",
     "BG_COLOR":        "Background color",
     "TEST_TYPES":      "Test types",
-    "TEST_TYPE":       "Test type"
+    "TEST_TYPE":       "Test type",
+    "MIXTURES":        "Mixtures"
 }

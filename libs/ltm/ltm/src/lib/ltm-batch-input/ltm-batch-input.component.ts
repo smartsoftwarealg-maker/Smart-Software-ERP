@@ -1,9 +1,9 @@
 import { Component, inject, OnDestroy, OnInit } from "@angular/core";
 import { Batch, BTest, LTMLineMatter } from "../ltm-api";
 import { KeepOnToolbar, ShellService, SnackBarService, ToolbarButton } from "@ss/common/ui-shell";
-import { ActivatedRoute } from "@angular/router";
-import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms";
-import { ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
+import { ActivatedRoute, RouterOutlet } from "@angular/router";
+import { FormArray, FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from "@angular/forms";
+import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
 import { LtmLineMatterService } from "../services/ltm-line-matter.service";
 import { LtmMatterTestService } from "../services/ltm-matter-test.service";
 import { LtmBatchService } from "../services/ltm-batch.service";
@@ -12,13 +12,36 @@ import { map, Observable, of, Subscription, switchMap } from "rxjs";
 import { Lookup } from "@ss/common/api-lookup";
 import { debounceTime, distinctUntilChanged, tap } from 'rxjs/operators';
 import { LtmTestService } from '../services/ltm-test.service';
-import { LoginService } from '@ss/common/api-common';
+import { LoginService, MaterialModule } from "@ss/common/api-common";
+import { CommonModule } from "@angular/common";
+import { CommonUiLangModule } from "@ss/common/ui-lang";
+import { UiPaginationModule } from "@ss/common/ui-pagination";
+import { LogisticsUiDocInfoModule } from "@ss/logistics/ui-doc-info";
+import { AppArchiveModule } from "@ss/common/app-archive";
+import { CommonUiAutoCompleteModule } from "@ss/common/ui-auto-complete";
+import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
+import { CommonUiHourPickerModule } from "@ss/common/ui-hour-picker";
 
 
 @Component({
   selector: "ss-ltm-batch-input",
   templateUrl: "./ltm-batch-input.component.html",
-  styleUrls: ["./ltm-batch-input.component.scss"]
+  styleUrls: ["./ltm-batch-input.component.scss"],
+    standalone: true,
+    imports: [
+        CommonModule,
+        MaterialModule,
+        CommonUiLangModule,
+        UiPaginationModule,
+        ReactiveFormsModule,
+        CommonUiConfirmationDialogModule,
+        LogisticsUiDocInfoModule,
+        AppArchiveModule,
+        CommonUiAutoCompleteModule,
+        CommonUiDatepickerModule,
+        RouterOutlet,
+        CommonUiHourPickerModule
+    ],
 })
 export class LtmBatchInputComponent implements OnInit, OnDestroy {
   private entitySrv = inject(LtmBatchService);

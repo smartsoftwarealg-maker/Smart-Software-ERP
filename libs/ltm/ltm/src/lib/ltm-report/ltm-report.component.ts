@@ -1,23 +1,47 @@
 import { Component, inject, OnDestroy, OnInit } from "@angular/core";
 import { KeepOnToolbar, ShellService, ToolbarButton } from "@ss/common/ui-shell";
-import {ActivatedRoute} from '@angular/router';
+import { ActivatedRoute, RouterOutlet } from "@angular/router";
 import { filter, map, Observable, of, Subscription } from "rxjs";
 import {Data, LTMLineMatter} from '../ltm-api';
-import {FormControl} from '@angular/forms';
+import { FormControl, ReactiveFormsModule } from "@angular/forms";
 import {LtmLineService} from '../services/ltm-line.service';
 import {LtmLineMatterService} from '../services/ltm-line-matter.service';
 import {Chart, ChartItem, registerables} from 'chart.js';
 import {LtmTestingService} from '../services/ltm-testing.service';
 import {ChartConfiguration} from 'chart.js/dist/types';
 import {LtmMatterTestService} from '../services/ltm-matter-test.service';
-import {LanguageService} from '@ss/common/api-common';
+import { LanguageService, MaterialModule } from "@ss/common/api-common";
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { Lookup } from "@ss/common/api-lookup";
+import { CommonModule } from "@angular/common";
+import { CommonUiLangModule } from "@ss/common/ui-lang";
+import { UiPaginationModule } from "@ss/common/ui-pagination";
+import { CommonUiConfirmationDialogModule } from "@ss/common/ui-confirmation-dialog";
+import { LogisticsUiDocInfoModule } from "@ss/logistics/ui-doc-info";
+import { AppArchiveModule } from "@ss/common/app-archive";
+import { CommonUiAutoCompleteModule } from "@ss/common/ui-auto-complete";
+import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
+import { CommonUiHourPickerModule } from "@ss/common/ui-hour-picker";
 
 @Component({
     selector: 'ss-ltm-report',
     templateUrl: './ltm-report.component.html',
     styleUrls: ['./ltm-report.component.scss'],
+    standalone: true,
+    imports: [
+        CommonModule,
+        MaterialModule,
+        CommonUiLangModule,
+        UiPaginationModule,
+        ReactiveFormsModule,
+        CommonUiConfirmationDialogModule,
+        LogisticsUiDocInfoModule,
+        AppArchiveModule,
+        CommonUiAutoCompleteModule,
+        CommonUiDatepickerModule,
+        RouterOutlet,
+        CommonUiHourPickerModule
+    ],
 })
 export class LtmReportComponent implements OnInit, OnDestroy {
     private shellSrv = inject(ShellService);
@@ -202,5 +226,28 @@ export class LtmReportComponent implements OnInit, OnDestroy {
     toggleMode() {
         this.light = !this.light;
         this.lightBtn.icon = this.light? 'fa-duotone fa-moon' : 'fa-light fa-moon';
+    }
+
+    export() {
+        this.shellSrv.setLoading(true);
+        const from = this.from.value;
+        const to   = this.to.value;
+        this.testingSrv
+            .export(from, to)
+            .subscribe({
+                next: blob => {
+                 this.shellSrv.setLoading(false);
+                if (blob && blob.size > 100) {
+                    const link = document.createElement('a');
+                    link.href = window.URL.createObjectURL(blob);
+                    link.download = this.testingSrv.constructor.name + '.xlsx';
+                    link.click();
+                    setTimeout(() => window.URL.revokeObjectURL(link.href), 5000);
+                }
+            }, error: err => {
+                    this.shellSrv.setLoading(false);
+                    throw err;
+                }
+            });
     }
 }

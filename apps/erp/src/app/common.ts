@@ -337,7 +337,8 @@ export const LTM_PERIODICITY_URL = 'ltm-periodicities';
 export const LTM_TESTING_URL     = 'ltm-testings';
 export const LTM_CHARTS_URL      = 'ltm-reports';
 export const LTM_BATCH_URL       = 'ltm-batch';
-export const LTM_TEST_TYPE_URL       = 'test-types';
+export const LTM_TEST_TYPE_URL   = 'test-types';
+export const LTM_MIXTURE_URL   = 'ltm-mixtures';
 
 // CMMS
 export const CMMS_PERMIT_TYPE_URL        = 'permit-types';
@@ -642,6 +643,7 @@ export const ABS_LTM_TEST_TYPE_URL = '/' + [MAIN_PAGE_URL, LTM_APP_URL, LTM_TEST
 export const ABS_LTM_TESTS_URL         = '/' + [MAIN_PAGE_URL, LTM_APP_URL, LTM_TEST_URL].join('/');
 export const ABS_LTM_LINES_URL         = '/' + [MAIN_PAGE_URL, LTM_APP_URL, LTM_LINES_URL].join('/');
 export const ABS_LTM_TESTINGS_URL      = '/' + [MAIN_PAGE_URL, LTM_APP_URL, LTM_TESTING_URL].join('/');
+export const ABS_LTM_MIXTURES_URL      = '/' + [MAIN_PAGE_URL, LTM_APP_URL, LTM_MIXTURE_URL].join('/');
 export const ABS_LTM_REPORTS_URL = '/' + [MAIN_PAGE_URL, LTM_APP_URL, COMMON_REPORTS_URL].join('/');
 export const ABS_LTM_CHARTS_URL        = '/' + [MAIN_PAGE_URL, LTM_APP_URL, LTM_CHARTS_URL].join('/');
 export const ABS_LTM_BATCH_TESTINGS_URL = '/' + [MAIN_PAGE_URL, LTM_APP_URL, LTM_BATCH_URL].join('/');

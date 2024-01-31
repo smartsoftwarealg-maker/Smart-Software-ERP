@@ -21,8 +21,7 @@
             </mat-form-field>
 
 
-            <mat-checkbox [formControl]="anomaly" (click)="onMatter(selectedMatter)" translate>LTM_ANOMALIES_ONLY
-            </mat-checkbox>
+            <mat-checkbox [formControl]="anomaly" (click)="onMatter(selectedMatter)" translate>LTM_ANOMALIES_ONLY </mat-checkbox>
 
             <mat-form-field class="default-100 sm-50">
                 <mat-label translate>COMMON_SEARCH</mat-label>
@@ -41,6 +40,13 @@
                     </mat-list>
                 </mat-card>
             </div>
+            <button mat-raised-button color="primary"
+                    type="button"
+                    (click)="export()">
+                <i class="fa-solid fa-file-excel"></i>
+                {{ 'COMMON_EXCEL_EXPORT' | translate }}
+            </button>
+
         </div>
     </mat-sidenav>
     <mat-sidenav-content>

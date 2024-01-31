@@ -30,5 +30,6 @@
     "SHOW_MENU":       "Afficher le menu",
     "BG_COLOR":        "Couleur de l'arrière plan",
     "TEST_TYPES":      "Type testes",
-    "TEST_TYPE":       "Type"
+    "TEST_TYPE":       "Type",
+    "MIXTURES":        "Mélanges"
 }

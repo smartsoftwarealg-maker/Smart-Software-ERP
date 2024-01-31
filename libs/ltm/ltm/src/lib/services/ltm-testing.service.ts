@@ -5,6 +5,8 @@ import {HttpService} from '@ss/common/api-common';
 import {Observable} from 'rxjs';
 import {HttpParams} from '@angular/common/http';
 import {DatePipe} from '@angular/common';
+import { DateUtil } from "@ss/costing/costing-utils";
+import { map } from "rxjs/operators";
 
 @Injectable({
     providedIn: 'root'
@@ -24,4 +26,13 @@ export class LtmTestingService extends BaseEntityService<LTMTesting> {
             .set('to', this.datePipe.transform(to.toString(), 'dd/MM/yyyy'));
         return this.httpSrv.get<Data[]>('/ltm/data/' + period, params);
     }
+
+    export(from: Date, to: Date): Observable<Blob> {
+        const params = new HttpParams()
+            .set('from', DateUtil.dateToStr(new Date(from)))
+            .set('to', DateUtil.dateToStr(new Date(to)));
+        return this.httpSrv.getBlob('/ltm/excel', params);
+    }
 }
+
+

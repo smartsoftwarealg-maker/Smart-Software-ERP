@@ -13,7 +13,7 @@ import {
     DASHBOARD_URL,
     COMMON_REPORTS_URL,
     LTM_LINES_URL,
-    LTM_UNIT_URL, LTM_TEST_TYPE_URL
+    LTM_UNIT_URL, LTM_TEST_TYPE_URL, LTM_MIXTURE_URL
 } from '../common';
 
 import {
@@ -32,7 +32,11 @@ import {
     LtmTestListComponent,
     LtmTestTypeListComponent,
     LtmTestTypeDetailComponent,
-    LtmTestDetailComponent
+    LtmTestDetailComponent,
+    LTMMixtureListComponent,
+    LtmMixtureDetailComponent,
+    LtmMixtureDetailListComponent,
+    LtmMixtureDetailDetailComponent
 } from '@ss/ltm/ltm';
 import {loginGuard} from '../erp-guards';
 import {DashboardComponent} from '@ss/dashboard';
@@ -75,7 +79,34 @@ export const ltmRoutes: Routes = [
                     }
                 ]
             },
-            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
+        ]
+    },
+    {
+        path: LTM_MIXTURE_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: LTMMixtureListComponent,
+                canActivate: [loginGuard]
+            },
+            {
+                path: ':id',
+                component: LtmMixtureDetailComponent,
+                canActivate: [loginGuard],
+                canDeactivate: [CanDeactivateService],
+                children: [
+                    {   path: '',
+                        redirectTo: 'detail',
+                        pathMatch: 'full',
+                    },
+                    { path: 'detail',
+                        children: [
+                            { path: '', component: LtmMixtureDetailListComponent, pathMatch: 'full'},
+                            { path: ':id', component: LtmMixtureDetailDetailComponent }
+                        ]
+                    }
+                ]
+            },
         ]
     },
     {
