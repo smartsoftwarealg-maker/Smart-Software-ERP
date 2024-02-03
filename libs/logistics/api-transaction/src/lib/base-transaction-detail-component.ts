@@ -97,7 +97,6 @@ export abstract class BaseTransactionDetailComponent extends BaseEntityDetailCom
         protected dialog: MatDialog,
         public override title: string) {
         super(entitySrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, title);
-        this.purchaseProjectSrv.setParentId(0);
         this.agentLookup.onObjectSelected = e => this.updateProjectLookups(e?.id || 0);
         this.supplierLookup.onObjectSelected = e => this.updateProjectLookups(e?.id || 0);
         this.customerLookup.onObjectSelected = e => this.updateProjectLookups(e?.id || 0);
@@ -277,5 +276,10 @@ export abstract class BaseTransactionDetailComponent extends BaseEntityDetailCom
         } else {
             this.router.navigate(['..', this.queryId], {relativeTo: this.route}).then();
         }
+    }
+
+    finishLoading(e: Transaction) {
+        super.finishLoading(e);
+        this.updateProjectLookups(e?.agent || 0);
     }
 }

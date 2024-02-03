@@ -92,6 +92,7 @@
     "PRECAUTIONS":                "Précautions de sécurité",
     "PRE_WORK":                   "Liste de contrôle avant le travail",
     "POST_WORK":                  "Liste de contrôle après le travail",
-    "PERMIT_TYPES":               "Types de permis"
+    "PERMIT_TYPES":               "Types de permis",
+    "LABOR_HOURS":                "Heures de travail"
 }
 

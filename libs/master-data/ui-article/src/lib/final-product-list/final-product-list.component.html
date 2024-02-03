@@ -51,21 +51,21 @@
         </ng-container>
 
         <ng-container matColumnDef="awp">
-            <mat-header-cell *matHeaderCellDef mat-sort-header translate>LOGISTICS_PRICE</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>LOGISTICS_AWP</mat-header-cell>
             <mat-cell *matCellDef="let e" style="justify-content: flex-end; direction: ltr;">
                 {{ e.awp | number: '1.2-2'}}
             </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="routingValue">
-            <mat-header-cell *matHeaderCellDef mat-sort-header translate>CMMS_ROUTING</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>CMMS_LABOR_COST</mat-header-cell>
             <mat-cell *matCellDef="let e" style="justify-content: flex-end; direction: ltr;">
                 {{ e.routingValue | number: '1.2-2'}}
             </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="bomValue">
-            <mat-header-cell *matHeaderCellDef mat-sort-header translate>LOGISTICS_BOM</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>COST_DIRECT_MATERIAL</mat-header-cell>
             <mat-cell *matCellDef="let e" style="justify-content: flex-end; direction: ltr;">
                 {{ e.bomValue | number: '1.2-2'}}
             </mat-cell>
@@ -85,10 +85,10 @@
             </mat-cell>
         </ng-container>
 
-        <ng-container matColumnDef="classDescription">
-            <mat-header-cell *matHeaderCellDef mat-sort-header translate>STOCK_CLASS</mat-header-cell>
+        <ng-container matColumnDef="laborHours">
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>CMMS_LABOR_HOURS</mat-header-cell>
             <mat-cell *matCellDef="let e">
-                {{e.classDescription}}
+                {{e.laborHours | number: '1.2-2' }}
             </mat-cell>
         </ng-container>
 

@@ -33,6 +33,10 @@
                    class="selectable"
                    [class.selected]="node?.bom.id === selectedBOM?.bom.id"
                    (click)="select(node)">
+        <button mat-icon-button matTreeNodeToggle
+                [attr.aria-label]="'Toggle ' + node.name">
+            <i class="fa-solid fa-arrow-turn-down-right"></i>
+        </button>
         <tr>
             <td class="reference">{{node.bom.childRef}}</td>
             <td class="description">{{node.bom.childDescription}}</td>

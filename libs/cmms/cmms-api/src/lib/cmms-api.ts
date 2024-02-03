@@ -103,7 +103,13 @@ export interface RoutingPart {
     reference?: string;
     description?: string;
 }
-
+export interface CMMSRouting {
+    id: number;
+    description: string;
+    descriptionAr?: string;
+    cost?: number;
+    laborHours?: number;
+}
 export interface RoutingDetail {
     id: number;
     parentId: number;

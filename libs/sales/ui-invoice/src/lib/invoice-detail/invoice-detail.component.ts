@@ -16,7 +16,6 @@ import {
     DOC_SALES_ORDER
 } from '@ss/logistics/api-transaction';
 
-
 @Component({
     selector: 'ss-invoice-detail',
     templateUrl: './invoice-detail.component.html',
