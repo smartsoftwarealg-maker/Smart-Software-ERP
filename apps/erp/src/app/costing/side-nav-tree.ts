@@ -35,7 +35,7 @@ export const costingNavTree: SideNavNode = {
         },
 
         {
-            name: 'COMMON_COST_CENTER',
+            name: 'COMMON_COST_CENTERS',
             icon: 'fas fa-building',
             route: ABS_COSTING_COST_CENTER_URL,
             accessRights: 'CostCenter'

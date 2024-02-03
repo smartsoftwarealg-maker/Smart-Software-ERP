@@ -214,7 +214,7 @@ export abstract class BaseTransactionLinesDetailComponent extends AbstractEntity
             vat:          [b.vat || 0, Validators.required],
             observation:  [b.observation],
             footerMemo:   [b.footerMemo],
-            position:     [{ value: b.position || 0, disabled: true }],
+            position:     [{ value: b.position || 0, disabled: false }],
             charge:       [b.charge  || 0],
             charge2:      [b.charge2 || 0],
             charge3:      [b.charge3 || 0],

@@ -5,7 +5,6 @@ import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { DefaultReportService } from '@ss/common/ui-default-report-component';
 import { PaginatorPersistenceService } from '@ss/common/api-common';
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
-import { Lookup } from '@ss/common/api-lookup';
 import { CommonModule } from '@angular/common';
 import { CommonUiLangModule } from '@ss/common/ui-lang';
 import { MatCheckboxModule } from '@angular/material/checkbox';
@@ -13,16 +12,17 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { UiPaginationModule } from '@ss/common/ui-pagination';
 import { CMMSRoutingService } from '../services/cmms.routing.service';
+import { CMMSRouting } from '@ss/cmms/cmms-api';
 
 @Component({
     selector: 'ss-cmms-routing-list',
     standalone: true,
     imports: [CommonModule, CommonUiLangModule, MatCheckboxModule, MatSortModule, MatTableModule, UiPaginationModule],
-    templateUrl: '../list-template/cmms-fault-list.component.html',
+    templateUrl: './cmms-routing-list.component.html',
     styleUrls: ['../list-template/cmms-fault-list.component.css'],
 })
-export class CMMSRoutingListComponent extends BaseEntityListComponent<Lookup> {
-    displayedColumns = ['description', 'descriptionAr'];
+export class CMMSRoutingListComponent extends BaseEntityListComponent<CMMSRouting> {
+    displayedColumns = ['description', 'descriptionAr', 'cost', 'laborHours'];
     constructor(
         public override entitySrv: CMMSRoutingService,
         public override shellSrv: ShellService,

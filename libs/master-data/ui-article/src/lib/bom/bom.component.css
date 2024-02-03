@@ -1,3 +1,21 @@
+.btn_div {
+    width: 96%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    gap: 1em;
+    justify-content: flex-end;
+}
+
+.btn_div span {
+    flex-grow: 2;
+    justify-self: center;
+    align-self: center;
+    font-weight: bolder;
+    font-size: 1.5em;
+    text-align: center;
+}
+
 .example-tree-invisible {
     display: none;
 }
@@ -22,7 +40,7 @@
  * under the same parent.
  */
 .example-tree div[role=group] > .mat-tree-node {
-    padding-left: 30px;
+    /*padding-left: 30px;*/
 }
 
 .bold {
@@ -36,25 +54,30 @@
 .description {
     width: 22em;
     text-align: start;
+    flex-grow: 2;
 }
 
 .price,
 .qty {
     width: 10em;
-    text-align: end;
-    padding-right: 8px;
+    text-align: center;
 }
 
 mat-tree {
-    width: 90%;
-    max-width: 63em;
+    width: 98%;
+    max-width: 1200px;
     margin: 4px auto;
     overflow-x: auto;
-    height: calc(100% - 10px);
+    height: calc(100% - 440px);
 }
 
 .header {
     height: 32px;
     display: flex;
-    align-content: center;
+    align-items: center;
+}
+
+tr {
+    display: flex;
+    width: calc(100% - 40px);
 }

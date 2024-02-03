@@ -22,6 +22,4 @@ export class BomService extends BaseEntityService<BOM> {
     treeById(): Observable<BOMTree[]> {
         return this.httpSrv.get<BOMTree[]>(BOM_TREE_URL, new HttpParams().set('id', this.getParentId() || 0));
     }
-
-
 }

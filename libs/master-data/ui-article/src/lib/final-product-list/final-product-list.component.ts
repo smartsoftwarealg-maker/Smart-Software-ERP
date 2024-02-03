@@ -3,7 +3,7 @@ import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { Article, BOMTree } from '@ss/master-data/api-article';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
-import {Observable, of} from 'rxjs';
+import { map, Observable, of } from 'rxjs';
 import {LookupsService} from '@ss/common/api-lookup';
 import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
@@ -20,6 +20,7 @@ import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
 import { LogisticsUiStockInfoModule } from '@ss/logistics/ui-stock-info';
 import { FinalProductService } from '@ss/master-data/api-article';
 import { BomService } from '../bom.service';
+import { CMMSRoutingDetailService } from '@ss/master-data/cmms-routing';
 
 @Component({
     selector: 'ss-product-list',
@@ -41,9 +42,10 @@ import { BomService } from '../bom.service';
     ],
 })
 export class FinalProductListComponent extends BaseEntityListComponent<Article> implements OnInit {
+    private routingDetailSrv = inject(CMMSRoutingDetailService);
     private bomSrv = inject(BomService);
-    private STOCK_COLS = ['image', 'reference', 'description2', 'markDescription', 'classDescription', 'routingValue', 'bomValue'];
-    private SALES_COLS = ['image', 'reference', 'description2', 'markDescription', 'classDescription', 'routingValue', 'bomValue'];
+    private STOCK_COLS = ['image', 'reference', 'description2', 'markDescription', 'laborHours', 'routingValue', 'bomValue'];
+    private SALES_COLS = ['image', 'reference', 'description2', 'markDescription', 'laborHours', 'routingValue', 'bomValue'];
     displayedColumns = this.STOCK_COLS;
     filterCtrl = new FormControl<number>(this.entitySrv.getParentId());
 
@@ -70,6 +72,14 @@ export class FinalProductListComponent extends BaseEntityListComponent<Article> 
             this.bomSrv
                 .treeById()
                 .subscribe(tree => p.bomValue = this.getBOMValue(tree));
+            this.routingDetailSrv.setParentId(p.routingId);
+            this.routingDetailSrv
+                .getList(0, 50)
+                .pipe(map(res => res .body))
+                .subscribe(r => {
+                    p.laborHours = r.map(e => e.hours * e.teamSize).reduce((a, b) => a + b);
+                    p.routingValue = r.map(e => e.hours * e.cost * e.teamSize).reduce((a, b) => a + b);
+                });
         });
         return of(data);
     }
