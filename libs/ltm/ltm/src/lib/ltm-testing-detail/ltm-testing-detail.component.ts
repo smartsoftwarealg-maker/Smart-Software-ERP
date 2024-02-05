@@ -93,4 +93,5 @@ export class LtmTestingDetailComponent extends BaseEntityDetailComponent<LTMTest
     override readForm(): LTMTesting {
         return this.form.getRawValue();
     }
+
 }
