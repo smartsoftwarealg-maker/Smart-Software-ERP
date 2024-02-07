@@ -46,7 +46,8 @@ export interface CItem {
     id: number;
     code: string;
     description: string;
-    accountNo: number;
+    accountId?: number;
+    accountNo?: string;
     accountDescription?: string;
 }
 

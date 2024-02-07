@@ -72,14 +72,16 @@ export class FinalProductListComponent extends BaseEntityListComponent<Article> 
             this.bomSrv
                 .treeById()
                 .subscribe(tree => p.bomValue = this.getBOMValue(tree));
-            this.routingDetailSrv.setParentId(p.routingId);
-            this.routingDetailSrv
-                .getList(0, 50)
-                .pipe(map(res => res .body))
-                .subscribe(r => {
-                    p.laborHours = r.map(e => e.hours * e.teamSize).reduce((a, b) => a + b);
-                    p.routingValue = r.map(e => e.hours * e.cost * e.teamSize).reduce((a, b) => a + b);
-                });
+            if (p.routingId) {
+                this.routingDetailSrv.setParentId(p.routingId || 0);
+                this.routingDetailSrv
+                    .getList(0, 50)
+                    .pipe(map(res => res.body))
+                    .subscribe(r => {
+                        p.laborHours = r.map(e => e.hours * e.teamSize).reduce((a, b) => a + b);
+                        p.routingValue = r.map(e => e.hours * e.cost * e.teamSize).reduce((a, b) => a + b);
+                    });
+            }
         });
         return of(data);
     }
