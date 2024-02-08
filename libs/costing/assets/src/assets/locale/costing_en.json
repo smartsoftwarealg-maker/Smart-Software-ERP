@@ -14,5 +14,6 @@
     "STEP_DOWN":       "Step down method",
     "RECIPROCAL":      "Reciprocal method",
     "METHOD":          "Costing method",
-    "ITEMS":           "Cost items"
+    "ITEMS":           "Cost drivers",
+    "TRANSACTIONS":    "Accounting"
 }

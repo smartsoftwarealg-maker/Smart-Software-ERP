@@ -11,3 +11,4 @@ export * from './lib/services/costing-pool-keys.service';
 export * from './lib/services/product-line-keys.service';
 export * from './lib/services/costing-oh.service';
 export * from './lib/costing-reports/costing-reports.component';
+export * from './lib/costing-accounting/costing-accounting.component';

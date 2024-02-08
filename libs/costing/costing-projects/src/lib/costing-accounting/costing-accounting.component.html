@@ -1,0 +1,186 @@
+<mat-card>
+    <form novalidate [formGroup]="form">
+
+        <mat-form-field class="default-50 sm-100">
+            <mat-label translate>LTM_MATTER</mat-label>
+            <ss-auto-complete matInput
+                              [model]="projectLookup"
+                              formControlName="project">
+            </ss-auto-complete>
+        </mat-form-field>
+
+        <mat-form-field class="default-50 sm-100">
+            <mat-label translate>COMMON_VALUE</mat-label>
+            <input matInput formControlName="units" type="number" required>
+        </mat-form-field>
+        <span class="default-50 sm-hide"></span>
+        <button mat-raised-button
+                color="primary"
+                (click)="refresh()"
+                class="default-50"
+                translate>COMMON_REFRESH
+        </button>
+
+    </form>
+</mat-card>
+
+@if (!processing() && data()) {
+    <mat-tab-group>
+        <mat-tab [label]="'COST_TRIVIAL'|translate">
+            <mat-table mat-table [dataSource]="data().trivial" class="main-table" matSort>
+
+                <ng-container matColumnDef="accountNo">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_ACCOUNTNO</mat-header-cell>
+                    <mat-cell *matCellDef="let e">
+                        {{ e.accountNo }}
+                    </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="description">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header translate>ADMINISTRATION_DESCRIPTION
+                    </mat-header-cell>
+                    <mat-cell *matCellDef="let e">
+                        {{ e.description }}
+                    </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="debit">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_DEBIT</mat-header-cell>
+                    <mat-cell *matCellDef="let e">
+                        {{ (e.amount > 0 ? e.amount : 0) | number: '1.2-2' }}
+                    </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="credit">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_CREDIT</mat-header-cell>
+                    <mat-cell *matCellDef="let e">
+                        {{ (e.amount < 0 ? -e.amount : 0) | number: '1.2-2' }}
+                    </mat-cell>
+                </ng-container>
+
+                <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+                <mat-row class="selectable" [class.selected]="false"
+                         *matRowDef="let row; columns: displayedColumns;">
+                </mat-row>
+            </mat-table>
+
+        </mat-tab>
+        <mat-tab [label]="'COST_SIMPLE'|translate">
+            <mat-table mat-table [dataSource]="data().simple" class="main-table" matSort>
+
+                <ng-container matColumnDef="accountNo">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_ACCOUNTNO</mat-header-cell>
+                    <mat-cell *matCellDef="let e">
+                        {{ e.accountNo }}
+                    </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="description">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header translate>ADMINISTRATION_DESCRIPTION
+                    </mat-header-cell>
+                    <mat-cell *matCellDef="let e">
+                        {{ e.description }}
+                    </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="debit">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_DEBIT</mat-header-cell>
+                    <mat-cell *matCellDef="let e">
+                        {{ (e.amount > 0 ? e.amount : 0) | number: '1.2-2' }}
+                    </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="credit">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_CREDIT</mat-header-cell>
+                    <mat-cell *matCellDef="let e">
+                        {{ (e.amount < 0 ? -e.amount : 0) | number: '1.2-2' }}
+                    </mat-cell>
+                </ng-container>
+
+                <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+                <mat-row class="selectable" [class.selected]="false"
+                         *matRowDef="let row; columns: displayedColumns;">
+                </mat-row>
+            </mat-table>
+
+        </mat-tab>
+        <mat-tab [label]="'COST_STEP_DOWN'|translate">
+            <mat-table mat-table [dataSource]="data().stepDown" class="main-table" matSort>
+
+                <ng-container matColumnDef="accountNo">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_ACCOUNTNO</mat-header-cell>
+                    <mat-cell *matCellDef="let e">
+                        {{ e.accountNo }}
+                    </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="description">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header translate>ADMINISTRATION_DESCRIPTION
+                    </mat-header-cell>
+                    <mat-cell *matCellDef="let e">
+                        {{ e.description }}
+                    </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="debit">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_DEBIT</mat-header-cell>
+                    <mat-cell *matCellDef="let e">
+                        {{ (e.amount > 0 ? e.amount : 0) | number: '1.2-2' }}
+                    </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="credit">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_CREDIT</mat-header-cell>
+                    <mat-cell *matCellDef="let e">
+                        {{ (e.amount < 0 ? -e.amount : 0) | number: '1.2-2' }}
+                    </mat-cell>
+                </ng-container>
+
+                <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+                <mat-row class="selectable" [class.selected]="false"
+                         *matRowDef="let row; columns: displayedColumns;">
+                </mat-row>
+            </mat-table>
+
+        </mat-tab>
+        <mat-tab [label]="'COST_RECIPROCAL'|translate">
+            <mat-table mat-table [dataSource]="data().reciprocal" class="main-table" matSort>
+
+                <ng-container matColumnDef="accountNo">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_ACCOUNTNO</mat-header-cell>
+                    <mat-cell *matCellDef="let e">
+                        {{ e.accountNo }}
+                    </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="description">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header translate>ADMINISTRATION_DESCRIPTION
+                    </mat-header-cell>
+                    <mat-cell *matCellDef="let e">
+                        {{ e.description }}
+                    </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="debit">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_DEBIT</mat-header-cell>
+                    <mat-cell *matCellDef="let e">
+                        {{ (e.amount > 0 ? e.amount : 0) | number: '1.2-2' }}
+                    </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="credit">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_CREDIT</mat-header-cell>
+                    <mat-cell *matCellDef="let e">
+                        {{ (e.amount < 0 ? -e.amount : 0) | number: '1.2-2' }}
+                    </mat-cell>
+                </ng-container>
+
+                <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+                <mat-row class="selectable" [class.selected]="false"
+                         *matRowDef="let row; columns: displayedColumns;">
+                </mat-row>
+            </mat-table>
+
+        </mat-tab>
+    </mat-tab-group>
+}

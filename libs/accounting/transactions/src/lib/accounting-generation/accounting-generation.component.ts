@@ -82,6 +82,7 @@ export class AccountingGenerationComponent implements OnInit, OnDestroy {
     payrollColumns = ['account', 'description', 'employee', 'cCenter', 'debit', 'credit'];
     bankColumns = ['number', 'date', 'bank'];
     cashColumns = ['number', 'date', 'debit', 'credit'];
+
     public pagination = PaginationModel.newInstance();
 
     constructor() {

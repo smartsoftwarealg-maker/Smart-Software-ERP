@@ -386,6 +386,7 @@ export const COSTING_KEY_URL = 'costing-keys';
 export const COSTING_PRODUCTS_URL = 'costing-products';
 export const COSTING_PROJECT_URL = 'costing-projects';
 export const COSTING_FINAL_PRODUCT = 'final-products';
+export const COSTING_ACCOUNTING_URL = 'cost-accounting';
 
 //Web arch
 export const ARCHIVE_URL    = 'arch';
@@ -697,6 +698,7 @@ export const ABS_COSTING_PROJECTS = '/' + [MAIN_PAGE_URL, COSTING_APP_URL, COSTI
 export const ABS_COSTING_BOM_PRODUCTS = '/' + [MAIN_PAGE_URL, COSTING_APP_URL, BOM_URL].join('/');
 export const ABS_COSTING_ROUTING_URL = '/' + [MAIN_PAGE_URL, COSTING_APP_URL, CMMS_ROUTING_URL].join('/');
 export const ABS_COSTING_COST_CENTER_URL = '/' + [MAIN_PAGE_URL, COSTING_APP_URL, STOCK_COST_CENTER_URL].join('/');
+export const ABS_COSTING_ACCOUNTING = '/' + [MAIN_PAGE_URL, COSTING_APP_URL, COSTING_ACCOUNTING_URL].join('/');
 
 // Furniture
 export const ABS_FURNITURE_URL            = '/' + [MAIN_PAGE_URL, FURNITURE_APP_URL, FURNITURE_URL].join('/');

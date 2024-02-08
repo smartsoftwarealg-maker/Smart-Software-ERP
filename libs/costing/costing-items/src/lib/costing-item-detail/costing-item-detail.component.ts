@@ -60,7 +60,7 @@ export class CostingItemDetailComponent extends BaseEntityDetailComponent<CItem>
       id:          [b.id],
       code:        [b.code, Validators.maxLength(4)],
       description: [b.description, Validators.required],
-      accountNo:   [b.accountNo, Validators.required],
+      accountId:   [b.accountId, Validators.required],
     });
   }
 }

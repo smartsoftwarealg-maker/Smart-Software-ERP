@@ -1,5 +1,6 @@
 import {SideNavNode} from '@ss/common/api-common';
 import {
+    ABS_COSTING_ACCOUNTING,
     ABS_COSTING_BOM_PRODUCTS,
     ABS_COSTING_COST_CENTER_URL,
     ABS_COSTING_ITEMS,
@@ -60,6 +61,13 @@ export const costingNavTree: SideNavNode = {
             icon: 'fa-solid fa-shovel-snow',
             route: ABS_COSTING_PROJECTS,
             accessRights: 'CProject'
+        },
+
+        {
+            name: 'COST_TRANSACTIONS',
+            icon: 'fa-solid fa-calculator-simple',
+            route: ABS_COSTING_ACCOUNTING,
+            accessRights: 'CACCReport'
         },
 
     ]

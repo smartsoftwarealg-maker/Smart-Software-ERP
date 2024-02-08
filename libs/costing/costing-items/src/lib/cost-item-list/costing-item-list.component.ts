@@ -40,7 +40,7 @@ import { AppArchiveModule } from '@ss/common/app-archive';
 export class CostingItemListComponent extends BaseEntityListComponent<CItem> implements OnInit {
   @HostBinding("@routeAnimation") routeAnimation = true;
 
-  public displayedColumns = ['code', 'description', 'accountNo'];
+  public displayedColumns = ['code', 'description', 'accountNo', 'accountDescription'];
 
   constructor(
     public override entitySrv: CostingItemService,

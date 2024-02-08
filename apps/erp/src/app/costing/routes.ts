@@ -2,7 +2,7 @@ import { Routes } from '@angular/router';
 import { ABS_INDEX_URL, CanDeactivateService, LIST_URL } from '@ss/common/api-common';
 import {
     BOM_URL,
-    CMMS_ROUTING_URL,
+    CMMS_ROUTING_URL, COSTING_ACCOUNTING_URL,
     COSTING_FINAL_PRODUCT,
     COSTING_ITEMS_URL,
     COSTING_KEY_URL,
@@ -15,6 +15,7 @@ import { CostingItemDetailComponent, CostingItemListComponent } from '@ss/costin
 import { CostingKeyDetailComponent, CostingKeyListComponent } from '@ss/costing/costing-keys';
 import { CostingProductDetailComponent, CostingProductListComponent } from '@ss/costing/costing-products';
 import {
+    CostingAccountingComponent,
     CostingOhDetailComponent,
     CostingOhLineComponent,
     CostingPoolDetailComponent,
@@ -103,7 +104,7 @@ export const costingRoutes: Routes = [
             { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
         ]
     },
-
+    { path: COSTING_ACCOUNTING_URL, component: CostingAccountingComponent },
     {
         path: COSTING_PRODUCTS_URL,
         children: [
@@ -157,7 +158,6 @@ export const costingRoutes: Routes = [
             { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
         ]
     },
-
     {
         path: COSTING_KEY_URL,
         children: [

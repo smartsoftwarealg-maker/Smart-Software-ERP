@@ -160,6 +160,18 @@ export interface CostCenter {
     description: string;
     groupId: number;
 }
+export interface ACCLine {
+    accountNo: string;
+    description?: string;
+    amount: number;
+}
+
+export interface CACCReport {
+    trivial: ACCLine[],
+    simple: ACCLine[],
+    stepDown: ACCLine[],
+    reciprocal: ACCLine[],
+}
 
 export interface CReport {
     trivial: CProduct[],
