@@ -1,14 +1,18 @@
 table {
     width: 100%;
-    margin-top: 1em;
+    margin: 1em 0;
 }
 
+.table_div {
+    width: 100%;
+    overflow-x: auto;
+}
 .product {
     width: 35em;
 }
 
 .method {
-    width: 20em;
+    width: 30em;
 }
 
 tr {
@@ -18,7 +22,8 @@ tr {
 .header {
     height: 2em;
     font-weight: bolder;
-    font-size: 1.3em;
+    font-size: 1.2em;
+    width: 100%;
 }
 
 mat-card {

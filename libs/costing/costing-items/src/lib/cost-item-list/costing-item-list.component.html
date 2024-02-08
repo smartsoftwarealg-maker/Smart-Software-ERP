@@ -12,8 +12,13 @@
             </ng-container>
 
             <ng-container matColumnDef="accountDescription">
-                <mat-header-cell *matHeaderCellDef mat-sort-header translate>{{'COMMON_ACCOUNTNO'}}</mat-header-cell>
+                <mat-header-cell *matHeaderCellDef mat-sort-header translate>ADMINISTRATION_DESCRIPTION</mat-header-cell>
                 <mat-cell *matCellDef="let item">{{ item.accountDescription }}</mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="accountNo">
+                <mat-header-cell *matHeaderCellDef mat-sort-header translate>{{'COMMON_ACCOUNTNO'}}</mat-header-cell>
+                <mat-cell *matCellDef="let item">{{ item.accountNo }}</mat-cell>
             </ng-container>
 
             <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

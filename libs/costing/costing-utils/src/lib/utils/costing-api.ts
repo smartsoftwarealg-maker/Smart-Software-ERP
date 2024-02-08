@@ -46,7 +46,8 @@ export interface CItem {
     id: number;
     code: string;
     description: string;
-    accountNo: number;
+    accountId?: number;
+    accountNo?: string;
     accountDescription?: string;
 }
 
@@ -158,6 +159,18 @@ export interface CostCenter {
     code: string;
     description: string;
     groupId: number;
+}
+export interface ACCLine {
+    accountNo: string;
+    description?: string;
+    amount: number;
+}
+
+export interface CACCReport {
+    trivial: ACCLine[],
+    simple: ACCLine[],
+    stepDown: ACCLine[],
+    reciprocal: ACCLine[],
 }
 
 export interface CReport {

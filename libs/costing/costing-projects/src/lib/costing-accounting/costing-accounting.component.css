@@ -1,0 +1,25 @@
+
+mat-card {
+    padding: 8px;
+    border-radius: 1.4em;
+}
+
+mat-card, mat-tab-group {
+    width: 94%;
+    max-width: 1000px;
+    margin: 4px auto;
+}
+
+.mat-column-accountNo {
+    flex: 1 1 120px;
+}
+
+.mat-column-description {
+    flex: 2 1 250px;
+}
+
+.mat-column-debit,
+.mat-column-credit {
+    flex: 2 1 120px;
+    justify-content: flex-end;
+}

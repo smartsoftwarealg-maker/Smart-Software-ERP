@@ -15,8 +15,8 @@ import {
     STOCK_APP_URL,
     CONTRACTS_APP_URL,
     WORK_FLOW_APP_URL,
-    SERVICE_SALES
-} from '../app/common';
+    SERVICE_SALES, PURCHASES_APP_URL
+} from "../app/common";
 import {logisticsAdminNavTree} from '../app/logistics-admin/side-nav-tree';
 import {workflowNavTree} from '../app/workflow/side-nav-tree';
 import { ssalesNavTree } from '../app/service-sales/side-nav-tree';
@@ -88,6 +88,10 @@ export const appRoutes: Routes =  [
     {
         path: FINANCE_APP_URL,
         loadChildren: () => import('../app/finance/finance.module').then(m => m.FinanceModule)
+    },
+    {
+        path: PURCHASES_APP_URL,
+        loadChildren: () => import('../app/purchases/purchases.module').then(m => m.PurchasesModule)
     },
     {
         path: LOGISTICS_APP_URL,

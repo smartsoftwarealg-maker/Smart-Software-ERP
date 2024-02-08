@@ -74,10 +74,22 @@ mat-tree {
 .header {
     height: 32px;
     display: flex;
+    font-weight: bolder;
     align-items: center;
 }
 
 tr {
     display: flex;
     width: calc(100% - 40px);
+}
+
+.info_div {
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    flex-grow: 1;
+}
+
+.detail_div {
+    display: flex;
 }

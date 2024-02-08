@@ -8,10 +8,6 @@ import { CommonUiLangModule } from '@ss/common/ui-lang';
 import { CProduct, CReport } from '@ss/costing/costing-utils';
 import { CostingReportService } from '../services/costing-report.service';
 import { Chart, ChartItem, registerables } from 'chart.js';
-import { KeepOnToolbar, ShellService, SnackBarService, ToolbarButton } from "@ss/common/ui-shell";
-import { DefaultReportService } from "@ss/common/ui-default-report-component";
-import { ParamValue, ReportParamsService, ReportViewData } from "@ss/common/api-reports";
-import { Observable } from "rxjs";
 
 interface ChartConfig {
     id: string;
@@ -46,24 +42,6 @@ export class CostingReportsComponent implements OnInit {
         'rgba(255, 159,  64, 0.4)',
         'rgba(201, 203, 207, 0.4)'
     ];
-
-    // public defReportButton: ToolbarButton = {
-    //     icon: 'fas fa-folders',
-    //     label: 'COMMON_DEFAULT_REPORT',
-    //     disabled: false, // always false
-    //     visible: false,
-    //     keepOnToolbar: KeepOnToolbar.DYNAMIC,
-    //     click: () => this.selectReport()
-    // };
-    //
-    // public viewReportButton: ToolbarButton = {
-    //     icon: 'fas fa-print',
-    //     label: 'COMMON_VIEW_REPORT',
-    //     disabled: false,
-    //     visible: true,
-    //     keepOnToolbar: KeepOnToolbar.DYNAMIC,
-    //     click: () => this.viewReport()
-    // };
 
     report = signal<CReport|null>(null);
     processing = signal(false);
@@ -182,31 +160,4 @@ export class CostingReportsComponent implements OnInit {
             }
         });
     }
-
-    // private selectReport() {
-    //     this.defReportSrv
-    //         .open(this.shellSrv.getApp(), this.reportForm)
-    //         .subscribe(resp => {
-    //             if (resp.count > 0) {
-    //                 this.snackBarSrv.showSuccessMessage();
-    //             }
-    //         });
-    // }
-    //
-    //
-    // private viewReport() {
-    //     const data = {
-    //         app:       'costing',
-    //         rType:     'pdf',
-    //         fileName:  this.reportForm, //'./forms/test.jasper',
-    //         paramList: [] as ParamValue[]
-    //     };
-    //
-    //     // this.defReportSrv
-    //     //     .viewPDF(data)
-    //     //     .subscribe(res => {
-    //     //         const fileURL = URL.createObjectURL(new Blob([res], {type: 'application/pdf'}));
-    //     //         window.open(fileURL, '_blank');
-    //     //     });
-    // }
 }
