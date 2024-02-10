@@ -15,5 +15,7 @@
     "RECIPROCAL":      "Reciprocal method",
     "METHOD":          "Costing method",
     "ITEMS":           "Cost drivers",
-    "TRANSACTIONS":    "Accounting"
+    "TRANSACTIONS":    "Accounting",
+    "PARTITION_KEY":   "Partition key",
+    "ACC_RECORDS":     "Accounting history"
 }

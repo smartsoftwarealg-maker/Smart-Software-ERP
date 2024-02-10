@@ -15,5 +15,7 @@
     "RECIPROCAL":      "الطريقة المتبادلة",
     "METHOD":          "طريقة التكلفة",
     "ITEMS":           "عناصر التكلفة",
-    "TRANSACTIONS":    "المحاسبة"
+    "TRANSACTIONS":    "المحاسبة",
+    "PARTITION_KEY":   "مفتاح التقسيم",
+    "ACC_RECORDS":     "تاريخ المحاسبة"
 }

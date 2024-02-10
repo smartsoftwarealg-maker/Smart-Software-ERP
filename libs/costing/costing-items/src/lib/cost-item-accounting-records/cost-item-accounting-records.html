@@ -1,0 +1,39 @@
+<div class="ctrl_div size">
+    <mat-form-field class="default-50 sm-100">
+        <mat-label translate>PAYROLL_YEAR</mat-label>
+        <input matInput [formControl]="year" type="number" required step="1" min="currentYear()-10"
+               max="currentYear()+1">
+    </mat-form-field>
+
+</div>
+<div class="container size">
+    <div class="tbl-container theme-background">
+        <mat-table mat-table [dataSource]="data" class="main-table" matSort (matSortChange)="sort($event)">
+            <ng-container matColumnDef="balance">
+                <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_BALANCE</mat-header-cell>
+                <mat-cell *matCellDef="let item">{{ item.balance | number: '1.2-2' }}</mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="description">
+                <mat-header-cell *matHeaderCellDef mat-sort-header translate>ADMINISTRATION_DESCRIPTION
+                </mat-header-cell>
+                <mat-cell *matCellDef="let item">{{ item.description }}</mat-cell>
+            </ng-container>
+
+
+            <ng-container matColumnDef="accountNo">
+                <mat-header-cell *matHeaderCellDef mat-sort-header translate>{{ 'COMMON_ACCOUNTNO' }}</mat-header-cell>
+                <mat-cell *matCellDef="let item">{{ item.accountNo }}</mat-cell>
+            </ng-container>
+
+            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+
+            <mat-row class="selectable" [class.selected]="row.id == selected" (click)="select(row.id)"
+                     *matRowDef="let row; columns: displayedColumns;">
+            </mat-row>
+        </mat-table>
+    </div>
+</div>
+<div class="size b-b-background">
+    <ss-pagination [paginationModel]="pagination"></ss-pagination>
+</div>

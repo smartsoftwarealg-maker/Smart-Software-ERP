@@ -15,5 +15,7 @@
     "RECIPROCAL":      "Méthode réciproque",
     "METHOD":          "Méthode de calcul des coûts",
     "ITEMS":           "Inducteurs de coûts",
-    "TRANSACTIONS":    "Comptabilité"
+    "TRANSACTIONS":    "Comptabilité",
+    "PARTITION_KEY":   "Clé de partition",
+    "ACC_RECORDS":     "Historique comptable"
 }

@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 import { ABS_INDEX_URL, CanDeactivateService, LIST_URL } from '@ss/common/api-common';
 import {
+    ACC_RECORDS,
     BOM_URL,
     CMMS_ROUTING_URL, COSTING_ACCOUNTING_URL,
     COSTING_FINAL_PRODUCT,
@@ -9,9 +10,13 @@ import {
     COSTING_PRODUCTS_URL,
     COSTING_PROJECT_URL,
     STOCK_COST_CENTER_URL
-} from '../common';
+} from "../common";
 import { loginGuard } from '../erp-guards';
-import { CostingItemDetailComponent, CostingItemListComponent } from '@ss/costing/costing-items';
+import {
+    CostingItemDetailComponent,
+    CostingItemListComponent,
+    CostItemAccountingRecords
+} from "@ss/costing/costing-items";
 import { CostingKeyDetailComponent, CostingKeyListComponent } from '@ss/costing/costing-keys';
 import { CostingProductDetailComponent, CostingProductListComponent } from '@ss/costing/costing-products';
 import {
@@ -206,6 +211,10 @@ export const costingRoutes: Routes = [
 
     {
         path: BOM_URL, component: BomComponent
+    },
+
+    {
+        path: ACC_RECORDS, component: CostItemAccountingRecords
     },
 
     {path: '', redirectTo: ABS_INDEX_URL, pathMatch: 'full'},
