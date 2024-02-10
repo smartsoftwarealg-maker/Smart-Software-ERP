@@ -66,6 +66,13 @@ export interface CProject {
     centerId: number;
 }
 
+export interface ACCRecord {
+    accountNo: string;
+    description: string;
+    balance: number;
+    id: number;
+}
+
 export interface CProduct {
     id: number;
     code: string;

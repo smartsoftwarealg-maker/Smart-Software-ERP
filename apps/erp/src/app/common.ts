@@ -141,6 +141,7 @@ export const STOCK_REPORT_CATALOG_URL = 'report-catalog';
 export const STOCK_REPORTS_URL = 'stock-reports';
 export const STOCK_ARTICLE_URL = 'stock-articles';
 export const BOM_URL = 'bom';
+export const ACC_RECORDS = 'accrecords';
 export const STOCK_PRICE_RECALCULATION_URL = 'price-recalculation';
 
 
@@ -692,6 +693,7 @@ export const ABS_CMMS_PERMIT_TYPES_URL = '/' + [MAIN_PAGE_URL, CMMS_APP_URL, CMM
 
 // Costing
 export const ABS_COSTING_ITEMS = '/' + [MAIN_PAGE_URL, COSTING_APP_URL, COSTING_ITEMS_URL].join('/');
+export const ABS_COST_ACC_RECORDS = '/' + [MAIN_PAGE_URL, COSTING_APP_URL, ACC_RECORDS].join('/');
 export const ABS_COSTING_KEYS = '/' + [MAIN_PAGE_URL, COSTING_APP_URL, COSTING_KEY_URL].join('/');
 export const ABS_COSTING_PRODUCTS = '/' + [MAIN_PAGE_URL, COSTING_APP_URL, COSTING_FINAL_PRODUCT].join('/');
 export const ABS_COSTING_PROJECTS = '/' + [MAIN_PAGE_URL, COSTING_APP_URL, COSTING_PROJECT_URL].join('/');

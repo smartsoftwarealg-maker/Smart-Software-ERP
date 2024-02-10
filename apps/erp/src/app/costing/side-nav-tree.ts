@@ -7,7 +7,7 @@ import {
     ABS_COSTING_KEYS,
     ABS_COSTING_PRODUCTS,
     ABS_COSTING_PROJECTS,
-    ABS_COSTING_ROUTING_URL
+    ABS_COSTING_ROUTING_URL, ABS_COST_ACC_RECORDS
 } from '../common';
 
 export const costingNavTree: SideNavNode = {
@@ -18,6 +18,13 @@ export const costingNavTree: SideNavNode = {
             name: 'COST_ITEMS',
             icon: 'fa-solid fa-sitemap',
             route: ABS_COSTING_ITEMS,
+            accessRights: 'CItem'
+        },
+
+        {
+            name: 'COST_ACC_RECORDS',
+            icon: 'fa-solid fa-calendar-days',
+            route: ABS_COST_ACC_RECORDS,
             accessRights: 'CItem'
         },
 
