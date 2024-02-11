@@ -37,14 +37,14 @@
                 [attr.aria-label]="'Toggle ' + node.name">
             <i class="fa-solid fa-arrow-turn-down-right"></i>
         </button>
-        <tr>
-            <td class="reference">{{node.bom.childRef}}</td>
-            <td class="description">{{node.bom.childDescription}}</td>
-            @if (node.bom.parentId) {
-                <td class="qty"> {{node.bom.qty | number: '1.2-2'}}</td>
-                <td class="price"> {{node.bom.price | number: '1.2-2'}}</td>
-                }
-        </tr>
+        <div class="info_div">
+            <td class="reference">{{ node.bom.childRef }}</td>
+            <div class="detail_div">
+                <span class="description">{{ node.bom.childDescription }}</span>
+                <span class="qty"> {{ node.bom.qty | number: '1.2-2' }}</span>
+                <span class="price"> {{ node.bom.price | number: '1.2-2' }}</span>
+            </div>
+        </div>
 
     </mat-tree-node>
     <!-- This is the tree node template for expandable nodes -->
@@ -61,22 +61,24 @@
                 }
             </button>
             @if (node.bom.id === 0) {
-                <tr class="b-primary header" >
-                    <th class="reference" translate> COMMON_REFERENCE</th>
-                    <th class="description" translate> COMMON_DESCRIPTION</th>
-                    <th class="qty" translate> LOGISTICS_QTY</th>
-                    <th class="price" translate> LOGISTICS_PRICE</th>
-                </tr>
+                <div class="info_div b-primary header">
+                    <span class="reference" translate> COMMON_REFERENCE</span>
+                    <div class="detail_div">
+                        <span class="description" translate> COMMON_DESCRIPTION</span>
+                        <span class="qty" translate> LOGISTICS_QTY</span>
+                        <span class="price" translate> LOGISTICS_PRICE</span>
+                    </div>
+                </div>
             } @else {
-                <tr>
-                    <td class="reference" > {{node.bom.childRef}}</td>
-                    <td class="description">{{node.bom.childDescription}}</td>
-                    @if (node.bom.parentId) {
-                        <td class="qty"> {{node.bom.qty | number: '1.2-2'}}</td>
-                        <td class="price"> {{node.bom.price | number: '1.2-2'}}</td>
-                    }
-                </tr>
-           }
+                <div class="info_div">
+                    <td class="reference"> {{ node.bom.childRef }}</td>
+                    <div class="detail_div">
+                        <span class="description">{{ node.bom.childDescription }}</span>
+                        <span class="qty"> {{ node.bom.qty | number: '1.2-2' }}</span>
+                        <span class="price"> {{ node.bom.price | number: '1.2-2' }}</span>
+                    </div>
+                </div>
+            }
         </div>
         <!-- There is inline padding applied to this div using styles.
             This padding value depends on the mat-icon-button width.  -->

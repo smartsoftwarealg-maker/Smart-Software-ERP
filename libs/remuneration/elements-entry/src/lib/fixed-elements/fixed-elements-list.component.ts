@@ -64,7 +64,7 @@ export class FixedElementsListComponent extends BaseEntityListComponent<ELine> {
 
     override getPage(): Observable<ELine[]> {
         const extraPrams = new HttpParams().set('input', -1).set('fixed', true);
-        return this.infoSrv.getPage(this.pagination, super.filter, super.sortBy, extraPrams);
+        return this.infoSrv.getPage(this.pagination, this.filter, this.sortBy, extraPrams);
     }
 
     override processLoadedData(data: ELine[]): Observable<ELine[]> {
