@@ -1,3 +1,2 @@
-export * from './lib/administration-ui-bank.module';
-export * from './lib/bank-detail.component';
-export * from './lib/bank-list.component';
+export * from './lib/bank-detail/bank-detail.component';
+export * from './lib/bank-list/bank-list.component';

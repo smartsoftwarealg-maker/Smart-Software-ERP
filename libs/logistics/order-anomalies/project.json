@@ -1,0 +1,17 @@
+{
+    "name": "logistics-order-anomalies",
+    "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+    "sourceRoot": "libs/logistics/order-anomalies/src",
+    "prefix": "ss",
+    "tags": [],
+    "projectType": "library",
+    "targets": {
+        "test": {
+            "executor": "@nx/jest:jest",
+            "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+            "options": {
+                "jestConfig": "libs/logistics/order-anomalies/jest.config.ts"
+            }
+        }
+    }
+}

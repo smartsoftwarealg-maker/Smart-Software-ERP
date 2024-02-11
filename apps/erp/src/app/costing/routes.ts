@@ -210,11 +210,15 @@ export const costingRoutes: Routes = [
     },
 
     {
-        path: BOM_URL, component: BomComponent
+        path: BOM_URL,
+        component: BomComponent,
+        canActivate: [loginGuard]
     },
 
     {
-        path: ACC_RECORDS, component: CostItemAccountingRecords
+        path: ACC_RECORDS,
+        component: CostItemAccountingRecords,
+        canActivate: [loginGuard]
     },
 
     {path: '', redirectTo: ABS_INDEX_URL, pathMatch: 'full'},

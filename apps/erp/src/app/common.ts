@@ -177,6 +177,7 @@ export const LOGISTICS_COMPENSATION_URL = 'compensations';
 export const LOGISTICS_SCOMPENSATION_URL = 'scompensations';
 export const LOGISTICS_CCOMPENSATION_URL = 'ccompensations';
 export const LOGISTICS_OPTION_URL = 'options';
+export const LOGISTICS_ORDER_ANOMALIES_URL = 'order-anomalies';
 export const LOGISTICS_AGENT_URL = 'agents';
 export const LOGISTICS_CUSTOMER_URL = 'customers';
 export const LOGISTICS_SUPPLIER_URL = 'suppliers';
@@ -546,6 +547,7 @@ export const ABS_LOGISTICS_ACTIVITY = '/' + [MAIN_PAGE_URL, LOGISTICS_APP_URL, L
 export const ABS_LOGISTICS_CURRENCY = '/' + [MAIN_PAGE_URL, LOGISTICS_APP_URL, LOGISTICS_CURRENCY_URL].join('/');
 export const ABS_LOGISTICS_CATEGORY = '/' + [MAIN_PAGE_URL, LOGISTICS_APP_URL, SALES_CATEGORY_URL].join('/');
 export const ABS_LOGISTICS_UNITS = '/' + [MAIN_PAGE_URL, LOGISTICS_APP_URL, STOCK_UNITS_URL].join('/');
+export const ABS_LOGISTICS_ORDER_ANOMALIES = '/' + [MAIN_PAGE_URL, LOGISTICS_APP_URL, LOGISTICS_ORDER_ANOMALIES_URL].join('/');
 
 // Contracts
 export const ABS_CONTRACTS_PROJECT_TYPE = '/' + [MAIN_PAGE_URL, CONTRACTS_APP_URL,  CONTRACTS_PROJECT_TYPE_URL].join('/');

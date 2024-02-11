@@ -631,6 +631,9 @@
             "common/report-privileges": [
                 "libs/common/report-privileges/src/index.ts"
             ],
+            "logistics/order-anomalies": [
+                "libs/logistics/order-anomalies/src/index.ts"
+            ],
             "logistics/parts-reservation": [
                 "libs/logistics/parts-reservation/src/index.ts"
             ]

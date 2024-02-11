@@ -167,5 +167,6 @@
     "DESTINATION":      "Destination",
     "MERGE_INVOICE_SERIES": "Même série de numéros pour les factures et les avoirs",
     "RESERVATION":          "Réservation",
-    "BOM":                  "Nomenclature"
+    "BOM":                  "Nomenclature",
+    "ORDER_ANOMALIES":      "Anomalies de bons de commande achat/ventes"
 }

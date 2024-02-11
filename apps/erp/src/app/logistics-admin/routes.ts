@@ -14,7 +14,7 @@ import {
     LOGISTICS_ARTICLES_URL,
     STOCK_UNITS_URL,
     LOGISTICS_CUSTOMER_URL,
-    LOGISTICS_SUPPLIER_URL
+    LOGISTICS_SUPPLIER_URL, LOGISTICS_ORDER_ANOMALIES_URL
 } from '../common';
 import {ABS_INDEX_URL, CanDeactivateService, LIST_URL} from '@ss/common/api-common';
 import {Routes} from '@angular/router';
@@ -47,6 +47,7 @@ import {
 import {loginGuard} from '../erp-guards';
 import { AGENT_ARCHIVES } from '@ss/common/app-archive';
 import { ArticleDetailComponent, ArticleListComponent } from '@ss/master-data/ui-article';
+import { LogisticsOrderAnomaliesComponent } from 'logistics/order-anomalies';
 
 export const mainRoutes: Routes = [
     {
@@ -325,6 +326,11 @@ export const mainRoutes: Routes = [
         component: OptionsDetailComponent,
         canActivate: [loginGuard],
         canDeactivate: [CanDeactivateService]
+    },
+    {
+        path: LOGISTICS_ORDER_ANOMALIES_URL,
+        component: LogisticsOrderAnomaliesComponent,
+        canActivate: [loginGuard]
     },
     {path: '', redirectTo: ABS_INDEX_URL, pathMatch: 'full'},
     {path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full'}
