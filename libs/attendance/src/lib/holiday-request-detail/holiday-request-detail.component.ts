@@ -49,7 +49,7 @@ export class HolidayRequestDetailComponent extends BaseEntityDetailComponent<Hol
         if (b.id) {
             this.shellSrv.addButton(this.sendBtn);
         }
-        super.isEditable = !!this.loginSrv.appCtx.personId;
+        this.isEditable = !!this.loginSrv.appCtx.personId;
         return this.formBuilder.group({
             id:        [b.id],
             centerId:  [b.centerId || this.loginSrv.appCtx.center, Validators.required],
