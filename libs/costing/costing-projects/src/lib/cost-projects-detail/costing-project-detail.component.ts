@@ -1,4 +1,4 @@
-import { Component, HostBinding, inject, OnInit, signal } from "@angular/core";
+import { Component, HostBinding, inject, OnInit, signal } from '@angular/core';
 import { ActivatedRoute, Router, RouterEvent, RouterModule } from '@angular/router';
 import { FormGroup, UntypedFormBuilder, Validators } from '@angular/forms';
 import {
@@ -12,7 +12,7 @@ import { CommonUiLangModule } from '@ss/common/ui-lang';
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { CostingProjectService } from '../services/costing-project.service';
-import { filter, Observable } from 'rxjs';
+import { filter, Observable, tap } from 'rxjs';
 import { CostingPoolService } from '../services/costing-pool.service';
 import { CProductLineService } from '../services/product-line.service';
 import { CostingOhService } from '../services/costing-oh.service';
@@ -95,4 +95,5 @@ export class CostingProjectDetailComponent extends BaseEntityDetailComponent<CPr
                 this.onEdit.set(e.url.split('/').length > 6);
             });
     }
+
 }

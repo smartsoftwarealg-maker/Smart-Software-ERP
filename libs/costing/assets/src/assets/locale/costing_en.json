@@ -1,6 +1,7 @@
 {
     "PRODUCTS":        "Products",
-    "POOLS":           "Costing pools",
+    "PRODUCT":         "Product",
+    "POOLS":           "Cost pools",
     "OH":              "Costing overhead",
     "DIRECT_LABOR":    "Direct labor",
     "DIRECT_MATERIAL": "Direct material",
@@ -17,5 +18,8 @@
     "ITEMS":           "Cost drivers",
     "TRANSACTIONS":    "Accounting",
     "PARTITION_KEY":   "Partition key",
-    "ACC_RECORDS":     "Accounting history"
+    "ACC_RECORDS":     "Accounting history",
+    "TYPE":            "Costing type",
+    "PROJECT_DUPLICATION": "Project duplications",
+    "DUPLICATE":           "Duplicate a project"
 }

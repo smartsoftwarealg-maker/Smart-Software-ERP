@@ -37,6 +37,7 @@ export class CProductLineCostComponent extends BaseChildEntityListComponent<CLin
         id:       [0],
         parentId: [0],
         itemId:   [0],
+        costType: [1],
         value:    [0],
     });
     itemLookup = new DefaultAutoCompleteModel(this.itemSrv);
@@ -56,13 +57,15 @@ export class CProductLineCostComponent extends BaseChildEntityListComponent<CLin
                     parentId: [this.detailSrv.getParentId()],
                     itemId:   [res.itemId],
                     value:    [res.value],
+                    costType: [res.costType]
                 }));
         } else {
             this.form = this.fb.group({
                 id:       [0],
                 parentId: [this.detailSrv.getParentId()],
                 itemId:   [0, Validators.required],
-                value:   [0, Validators.required],
+                value:    [0, Validators.required],
+                costType: [1, Validators.required],
             });
         }
         this.editMode.set(true);

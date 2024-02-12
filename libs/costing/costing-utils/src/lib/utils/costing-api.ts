@@ -104,6 +104,7 @@ export interface CLineCost {
     parentId:        number;
     itemId:          number;
     value:           number;
+    costType:        number;
     itemDescription?: string;
 }
 

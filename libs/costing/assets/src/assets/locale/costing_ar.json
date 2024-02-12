@@ -1,5 +1,6 @@
 {
     "PRODUCTS":        "منتجات",
+    "PRODUCT":         "منتجوج",
     "POOLS":           "مجموعات التكاليف",
     "OH":              "التكاليف العامة",
     "DIRECT_LABOR":    "يوجه العمال",
@@ -17,5 +18,8 @@
     "ITEMS":           "عناصر التكلفة",
     "TRANSACTIONS":    "المحاسبة",
     "PARTITION_KEY":   "مفتاح التقسيم",
-    "ACC_RECORDS":     "تاريخ المحاسبة"
+    "ACC_RECORDS":     "تاريخ المحاسبة",
+    "TYPE":            "نوع التكلفة",
+    "PROJECT_DUPLICATION": "نسخ المشروع",
+    "DUPLICATE":           "استنساخ المشروع"
 }

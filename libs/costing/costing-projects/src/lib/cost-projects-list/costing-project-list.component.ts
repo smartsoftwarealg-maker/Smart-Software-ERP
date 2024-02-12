@@ -7,12 +7,11 @@ import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from '@ss
 import { CProject, DateUtil, slideToRight } from '@ss/costing/costing-utils';
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { DefaultReportService } from '@ss/common/ui-default-report-component';
-import { ShellService, SnackBarService } from '@ss/common/ui-shell';
+import { KeepOnToolbar, ShellService, SnackBarService, ToolbarButton } from '@ss/common/ui-shell';
 import { UiPaginationModule } from '@ss/common/ui-pagination';
 import { CommonUiLangModule } from '@ss/common/ui-lang';
 import { CostingReportsComponent } from '../costing-reports/costing-reports.component';
 import { CostingReportService } from '../services/costing-report.service';
-import { Chart, registerables } from 'chart.js';
 
 @Component({
     selector: 'ss-costing-project-list',
@@ -31,9 +30,18 @@ import { Chart, registerables } from 'chart.js';
     animations: [slideToRight]
 })
 export class CostingProjectListComponent extends BaseEntityListComponent<CProject> implements OnInit {
+    public duplicateButton: ToolbarButton = {
+        icon: 'fa-solid fa-folders',
+        label: 'COST_DUPLICATE',
+        disabled: true,
+        visible: true,
+        keepOnToolbar: KeepOnToolbar.ALWAYS,
+        click: () => this.duplicate()
+    };
     private reportSrv = inject(CostingReportService);
     @HostBinding('@routeAnimation') routeAnimation = true;
     @ViewChild(CostingReportsComponent) reportView: CostingReportsComponent | null = null;
+
     public displayedColumns = ['code', 'description', 'from', 'to'];
     private projectListId = 'project-list';
     private cloneFormId = 'project-clone-form';
@@ -89,20 +97,6 @@ export class CostingProjectListComponent extends BaseEntityListComponent<CProjec
         this.router.navigate(['view/' + this.selected], {relativeTo: this.route}).then();
     }
 
-    public addClone() {
-        // this.httpSrv.clone(this.selectedId, this.cloneCode, this.cloneDescription)
-        //     .subscribe(() => {
-        //         this.snackBar.open(this.trans.translate('C_RECORD_CLONED'), null, {duration: 3000});
-        //         this.refresh(this.filter);
-        //         this.onCancelClone();
-        //     });
-    }
-
-    public onCancelClone() {
-        document.getElementById(this.projectListId).classList.remove(this.maxHeightZeroClass);
-        document.getElementById(this.cloneFormId).classList.add(this.maxHeightZeroClass);
-    }
-
     override select(id: number) {
         super.select(id);
         if (this.reportView) {
@@ -111,4 +105,17 @@ export class CostingProjectListComponent extends BaseEntityListComponent<CProjec
         }
     }
 
+    private duplicate() {
+        this.router.navigate(['duplicate', this.selected], {relativeTo: this.route}).then();
+    }
+
+    override ngOnInit() {
+        super.ngOnInit();
+        this.shellSrv.addButton(this.duplicateButton);
+    }
+
+    override selectRow(row: CProject) {
+        super.selectRow(row);
+        this.duplicateButton.disabled = !row?.id;
+    }
 }
