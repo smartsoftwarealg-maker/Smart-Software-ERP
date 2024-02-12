@@ -1,6 +1,7 @@
 {
-    "PRODUCTS":        "Des produits",
-    "POOLS":           "Costing des pools",
+    "PRODUCTS":        "Produits",
+    "PRODUCT":         "Produits",
+    "POOLS":           "Pools de coûts",
     "OH":              "Établissement des coûts",
     "DIRECT_LABOR":    "Main-d'œuvre directe",
     "DIRECT_MATERIAL": "Matériel direct",
@@ -17,5 +18,8 @@
     "ITEMS":           "Inducteurs de coûts",
     "TRANSACTIONS":    "Comptabilité",
     "PARTITION_KEY":   "Clé de partition",
-    "ACC_RECORDS":     "Historique comptable"
+    "ACC_RECORDS":     "Historique comptable",
+    "TYPE":            "Type de coûts",
+    "PROJECT_DUPLICATION": "Duplications de projets",
+    "DUPLICATE":           "Dupliquer un projet"
 }

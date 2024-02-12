@@ -10,13 +10,13 @@ import {
     COSTING_PRODUCTS_URL,
     COSTING_PROJECT_URL,
     STOCK_COST_CENTER_URL
-} from "../common";
+} from '../common';
 import { loginGuard } from '../erp-guards';
 import {
     CostingItemDetailComponent,
     CostingItemListComponent,
     CostItemAccountingRecords
-} from "@ss/costing/costing-items";
+} from '@ss/costing/costing-items';
 import { CostingKeyDetailComponent, CostingKeyListComponent } from '@ss/costing/costing-keys';
 import { CostingProductDetailComponent, CostingProductListComponent } from '@ss/costing/costing-products';
 import {
@@ -25,7 +25,7 @@ import {
     CostingOhLineComponent,
     CostingPoolDetailComponent,
     CostingPoolListComponent,
-    CostingProjectDetailComponent,
+    CostingProjectDetailComponent, CostingProjectDuplicateDetailComponent,
     CostingProjectListComponent,
     CostingReportsComponent,
     ProductLineDetailComponent,
@@ -55,9 +55,15 @@ export const costingRoutes: Routes = [
                 canActivate: [loginGuard],
             },
             {
+                path: 'duplicate',
+                children: [
+                    { path: ':id', component: CostingProjectDuplicateDetailComponent }
+                ]
+            },
+            {
                 path: ':id',
-                component: CostingProjectDetailComponent,
                 canActivate: [loginGuard],
+                component: CostingProjectDetailComponent,
                 canDeactivate: [CanDeactivateService],
                 children: [
                     {

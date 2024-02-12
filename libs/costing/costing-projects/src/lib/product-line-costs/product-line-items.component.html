@@ -14,14 +14,22 @@
         <mat-card-content>
             <form [formGroup]="form">
                 <mat-form-field class="default-100">
-                    <mat-label translate>COST_ITEM</mat-label>
+                    <mat-label translate>COST_ITEMS</mat-label>
                     <ss-auto-complete matInput
                                       [model]="itemLookup"
                                       formControlName="itemId">
                     </ss-auto-complete>
                 </mat-form-field>
 
-                <mat-form-field class="number">
+                <mat-form-field class="default-50">
+                    <mat-label translate>COST_TYPE</mat-label>
+                    <mat-select formControlName="costType">
+                        <mat-option [value]="1">{{ 'COST_DIRECT_LABOR' | translate}}</mat-option>
+                        <mat-option [value]="2">{{ 'COST_DIRECT_MATERIAL' | translate}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-form-field class="number" class="default-50">
                     <mat-label translate>COMMON_VALUE</mat-label>
                     <input matInput formControlName="value" type="number">
                 </mat-form-field>
@@ -50,7 +58,7 @@
     <div class="table__container">
         <mat-table mat-table [dataSource]="data$|async" class="main-table" matSort (matSortChange)="sort($event)">
             <ng-container matColumnDef="itemDescription">
-                <mat-header-cell *matHeaderCellDef mat-sort-header translate>COST_PARTITION_KEY</mat-header-cell>
+                <mat-header-cell *matHeaderCellDef mat-sort-header translate>COST_ITEMS</mat-header-cell>
                 <mat-cell *matCellDef="let p">{{ p.itemDescription }}</mat-cell>
             </ng-container>
 

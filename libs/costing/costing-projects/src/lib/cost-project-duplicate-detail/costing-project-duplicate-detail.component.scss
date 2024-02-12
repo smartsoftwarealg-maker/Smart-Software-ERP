@@ -1,0 +1,11 @@
+mat-card, mat-tab-group {
+    width: 90%;
+    max-width: 900px;
+    margin: 4px auto 0;
+    border-radius: 1.4em;
+}
+
+mat-tab-group,
+mat-tab {
+    height: calc(100% - 200px);
+}
