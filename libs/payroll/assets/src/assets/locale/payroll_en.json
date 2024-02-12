@@ -173,5 +173,8 @@
     "STOPPAGE_TYPE":         "Stoppage type",
     "CAREER_MOTIVES":        "Career motives",
     "FINAL":                 "Final",
-    "DAS_OUT":               "Das out"
+    "DAS_OUT":               "Das out",
+    "SEC":                   "Section",
+    "INDEX_VALUE":           "Indexical value",
+    "INDEX":                 "Index"
 }

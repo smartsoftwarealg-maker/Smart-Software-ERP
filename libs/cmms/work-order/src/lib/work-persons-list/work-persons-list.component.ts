@@ -42,5 +42,4 @@ export class WorkPersonsListComponent extends BaseChildEntityListComponent<WorkP
     constructor(protected override detailSrv: CMMSWorkPersonService) {
         super(detailSrv, 'WorkPerson');
     }
-
 }

@@ -173,5 +173,8 @@
     "STOPPAGE_TYPE":         "Type d'arrêt",
     "CAREER_MOTIVES":        "Motivations de carrière",
     "FINAL":                 "Final",
-    "DAS_OUT":               "Sortie DAS"
+    "DAS_OUT":               "Sortie DAS",
+    "SEC":                   "Section",
+    "INDEX_VALUE":           "Valeur indexale",
+    "INDEX":                 "Indice"
 }
