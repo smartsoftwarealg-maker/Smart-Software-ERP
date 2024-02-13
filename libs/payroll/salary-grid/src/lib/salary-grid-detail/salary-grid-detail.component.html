@@ -33,6 +33,6 @@
     </mat-card-content>
 </mat-card>
 
-@if (rankSrv.getParentId()) {
+@if (loaded()) {
     <router-outlet></router-outlet>
 }

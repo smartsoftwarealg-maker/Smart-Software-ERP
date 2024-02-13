@@ -1,4 +1,4 @@
-import {Directive, OnDestroy, OnInit} from '@angular/core';
+import { Directive, OnDestroy, OnInit, signal } from "@angular/core";
 import {UntypedFormBuilder} from '@angular/forms';
 import {KeepOnToolbar, ShellService, SnackBarService, ToolbarButton} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
@@ -10,7 +10,7 @@ import { AbstractEntityComponent } from './abstract-entity.component';
 
 @Directive()
 export abstract class BaseEntityDetailComponent<T extends { id: number }> extends AbstractEntityComponent<T> implements OnInit, OnDestroy {
-    public loaded = false;
+    public loaded = signal(false);
 
     public saveButton: ToolbarButton = {
         icon: 'fas fa-save',
@@ -74,7 +74,7 @@ export abstract class BaseEntityDetailComponent<T extends { id: number }> extend
                     } else {
                         throw new Error('BaseEntityDetail: Entity is null');
                     }
-                    this.loaded = true;
+                    this.loaded.set(true);
                 },
                 error: error => {
                     this.shellSrv.showRetry(() => this.load());
@@ -101,9 +101,6 @@ export abstract class BaseEntityDetailComponent<T extends { id: number }> extend
     protected goBack() {
         this.shellSrv.goBack();
     }
-
-
-
 
     // use CanDeactivateService, it will look for this function and call it
 }

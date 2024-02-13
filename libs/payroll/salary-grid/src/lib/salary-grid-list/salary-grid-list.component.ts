@@ -38,7 +38,6 @@ export class SalaryGridListComponent extends BaseEntityListComponent<Grid> {
         "indexValue"
     ];
 
-
     constructor(
         public gridSrv: GridService,
         public override shellSrv: ShellService,

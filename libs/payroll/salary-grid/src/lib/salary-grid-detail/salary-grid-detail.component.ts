@@ -62,5 +62,4 @@ export class SalaryGridDetailComponent extends BaseEntityDetailComponent<Grid> {
         this.rankSrv.setParentId(id);
         return super.loadEntity(id);
     }
-
 }
