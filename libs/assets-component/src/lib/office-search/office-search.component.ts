@@ -1,7 +1,7 @@
 import { Component, inject, Inject, OnDestroy, OnInit } from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {Lookup, Office, OfficeService} from '@ss/common/api-lookup';
-import {AssetLocationService} from "@ss/assets-component";
+import { AssetLocationService, AssetsBuildingService } from "@ss/assets-component";
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import { FormControl } from '@angular/forms';
 import {Subscription} from 'rxjs';
@@ -13,6 +13,7 @@ import {debounceTime, distinctUntilChanged} from 'rxjs/operators';
     styleUrls: ['./office-search.component.scss']
 })
 export class OfficeSearchComponent implements OnDestroy, OnInit {
+    private buildingSrv = inject(AssetsBuildingService);
     private officeSrv = inject(OfficeService);
     private locationSrv = inject(AssetLocationService);
 
@@ -21,6 +22,7 @@ export class OfficeSearchComponent implements OnDestroy, OnInit {
     subscriptions: Subscription[] = [];
     selectedOffice: Office | null = null;
     locationLookup = new DefaultAutoCompleteModel(this.locationSrv);
+    buildingLookup = new DefaultAutoCompleteModel(this.buildingSrv);
     buildings: Lookup[] = [];
     floors:    Lookup[] = [];
 
@@ -32,6 +34,8 @@ export class OfficeSearchComponent implements OnDestroy, OnInit {
     constructor(public dialogRef: MatDialogRef<OfficeSearchComponent>,
                 @Inject(MAT_DIALOG_DATA) public data: Office) {
         this.isCMMS = data?.cmms;
+        this.locationLookup.onObjectSelected = o => this.buildingSrv.setParentId(o?.id);
+        this.buildingSrv.setParentId(0);
     }
 
     close() {
