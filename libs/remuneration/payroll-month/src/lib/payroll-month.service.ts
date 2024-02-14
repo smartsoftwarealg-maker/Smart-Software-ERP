@@ -41,7 +41,6 @@ export class PayrollMonthService {
         return this.httpSrv.get<{ month: number }>('/payroll/min-month');
     }
 
-
     selectMonth(month: number): Observable<boolean> {
         return this.httpSrv
             .put('/payroll/month', { month: month })

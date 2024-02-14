@@ -176,5 +176,8 @@
     "DAS_OUT":               "Das out",
     "SEC":                   "Section",
     "INDEX_VALUE":           "Indexical value",
-    "INDEX":                 "Index"
+    "INDEX":                 "Index",
+    "GRID_UPDATE":           "Grid update",
+    "UPDATE_GRID":           "Update the salary grid",
+    "UPDATE_ELEMENTS":       "Update elements from the salary grid"
 }

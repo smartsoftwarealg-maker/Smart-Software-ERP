@@ -3,7 +3,7 @@ import { ABS_INDEX_URL, CanDeactivateService, LIST_URL } from '@ss/common/api-co
 import {
     ACC_RECORDS,
     BOM_URL,
-    CMMS_ROUTING_URL, COSTING_ACCOUNTING_URL,
+    CMMS_ROUTING_URL, COMMON_COST_CENTER_GROUP_URL, COSTING_ACCOUNTING_URL,
     COSTING_FINAL_PRODUCT,
     COSTING_ITEMS_URL,
     COSTING_KEY_URL,
@@ -44,6 +44,7 @@ import {
     CMMSRoutingListComponent
 } from '@ss/master-data/cmms-routing';
 import { CostCenterDetailComponent, CostCenterListComponent } from '@ss/logistics/ui-cost-center';
+import { CostCenterGroupDetailComponent, CostCenterGroupListComponent } from '@ss/common/ui-lookup';
 
 export const costingRoutes: Routes = [
     {
@@ -145,6 +146,24 @@ export const costingRoutes: Routes = [
             {
                 path: ':id',
                 component: CostCenterDetailComponent,
+                canActivate: [loginGuard],
+                canDeactivate: [CanDeactivateService],
+            },
+            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
+        ]
+    },
+
+    {
+        path: COMMON_COST_CENTER_GROUP_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: CostCenterGroupListComponent,
+                canActivate: [loginGuard]
+            },
+            {
+                path: ':id',
+                component: CostCenterGroupDetailComponent,
                 canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService],
             },

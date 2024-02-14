@@ -13,7 +13,7 @@ import {
     PAY_ELEMENTS_ENTRY_URL,
     PAY_ELEMENTSINFO_URL,
     PAY_FIXED_ELEMENTS_URL,
-    PAY_FORMULAS_URL,
+    PAY_FORMULAS_URL, PAY_GRID_UPDATE_URL,
     PAY_INPUT_FILTERS,
     PAY_LOANS_URL,
     PAY_MONTH_CANCELER,
@@ -59,7 +59,12 @@ import {PayrollAmendmentDetailComponent, PayrollAmendmentListComponent} from '@s
 import {LoansDetailComponent, LoansListComponent} from '@ss/remuneration/loans';
 import {DasComponent} from '@ss/remuneration/das';
 import {CacoComponent} from '@ss/remuneration/caco';
-import { SalaryGridDetailComponent, SalaryGridListComponent, SalaryRankListComponent } from '@ss/payroll/salary-grid';
+import {
+    SalaryGridDetailComponent,
+    SalaryGridListComponent,
+    SalaryGridUpdateComponent,
+    SalaryRankListComponent
+} from '@ss/payroll/salary-grid';
 import {ReportViewComponent} from '@ss/common/ui-report-param';
 import {
     EmployeeActivationDetailComponent,
@@ -377,6 +382,11 @@ export const mainRoutes: Routes = [
         path: COMMON_REPORTS_URL,
         component: ReportViewComponent,
         data: {reportBase: 'payroll'},
+        canActivate: [loginGuard, payrollGuard]
+    },
+    {
+        path: PAY_GRID_UPDATE_URL,
+        component: SalaryGridUpdateComponent,
         canActivate: [loginGuard, payrollGuard]
     },
     {

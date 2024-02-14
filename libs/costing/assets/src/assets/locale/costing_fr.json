@@ -19,5 +19,6 @@
     "ACC_RECORDS":         "Historique comptable",
     "TYPE":                "Type de coûts",
     "PROJECT_DUPLICATION": "Duplications de projets",
-    "DUPLICATE":           "Dupliquer un projet"
+    "DUPLICATE":           "Dupliquer un projet",
+    "TRANSACTIONS":        "Comptabilité"
 }

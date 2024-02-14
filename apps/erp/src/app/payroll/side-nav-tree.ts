@@ -22,7 +22,7 @@ import {
     ABS_PAYROLL_DASHBOARD_URL,
     ABS_PAYROLL_EMPLOYEES_URL,
     ABS_PAYROLL_REPORT_PRIVILEGE_URL,
-    ABS_PAYROLL_REPORT_RIGHT_URL,
+    ABS_PAYROLL_REPORT_RIGHT_URL, ABS_SALARY_GRID_UPDATE_URL,
     ABS_SALARY_GRID_URL,
     ABS_SPECIAL_PAYROLL_URL,
     ABS_VACATION_PLANNING_URL
@@ -37,6 +37,12 @@ export const payrollNavTree: SideNavNode = {
             icon: 'far fa-game-board',
             route: ABS_SALARY_GRID_URL,
             accessRights: 'Grid'
+        },
+        {
+            name: 'PAYROLL_GRID_UPDATE',
+            icon: 'fa-solid fa-grid-round-2-plus',
+            route: ABS_SALARY_GRID_UPDATE_URL,
+            accessRights: 'GridApplication'
         },
         {
             name: 'PAYROLL_INACTIVE_EMPLOYEES_LIST',

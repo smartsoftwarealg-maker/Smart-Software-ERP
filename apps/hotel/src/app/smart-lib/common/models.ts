@@ -116,10 +116,6 @@ export interface CostCenter {
     groupId: number;
 }
 
-export interface CostCenterGroup {
-    id: number;
-    description: string;
-}
 
 export interface Debt {
     description?: string;

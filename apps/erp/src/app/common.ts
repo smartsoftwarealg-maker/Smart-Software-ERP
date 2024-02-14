@@ -24,6 +24,7 @@ export const CASHFLOW_ACCOUNTS_URL  = 'cashflow-accounts';
 export const COMMON_MARKS_URL = 'marks';
 export const COMMON_REPORTS_URL = 'reports';
 export const COMMON_BLOOD_GROUPS_URL = 'blood-groups';
+export const COMMON_COST_CENTER_GROUP_URL = 'cc-groups';
 
 // apps
 export const ADMINISTRATION_APP_URL = 'administration';
@@ -254,6 +255,7 @@ export const PAY_MONTH_CANCELER       = 'cancel';
 export const PAY_ARCHIVE_GENERATOR    = 'arch-generator';
 export const PAY_MONTH_SELECTOR       = 'select';
 export const PAY_INPUT_FILTERS        = 'inputfilters';
+export const PAY_GRID_UPDATE_URL        = 'grid-update';
 export const PAY_SALARY_GRID          = 'salary-grid';
 export const PAY_ELEMENTS_ENTRY_URL   = 'elementsentry';
 export const PAY_AMENDMENT_URL        = 'amendments';
@@ -636,6 +638,7 @@ export const ABS_DAS_URL             = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, PA
 export const ABS_ARCHIVE_VIEWER_URL  = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, PAY_ARCHIVE_VIEWER_URL].join('/');
 export const ABS_CACO_URL            = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, PAY_CACO_URL].join('/');
 export const ABS_SALARY_GRID_URL     = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, PAY_SALARY_GRID].join('/');
+export const ABS_SALARY_GRID_UPDATE_URL     = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, PAY_GRID_UPDATE_URL].join('/');
 export const ABS_PAYROLL_DASHBOARD_URL = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, DASHBOARD_URL].join('/');
 export const ABS_PAYROLL_REPORT_RIGHT_URL = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, ADMIN_REPORT_RIGHTS_URL].join('/');
 export const ABS_PAYROLL_REPORT_PRIVILEGE_URL = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, ADMINISTRATION_REPORT_PRIVILEGE_URL].join('/');
@@ -703,6 +706,7 @@ export const ABS_COSTING_BOM_PRODUCTS = '/' + [MAIN_PAGE_URL, COSTING_APP_URL, B
 export const ABS_COSTING_ROUTING_URL = '/' + [MAIN_PAGE_URL, COSTING_APP_URL, CMMS_ROUTING_URL].join('/');
 export const ABS_COSTING_COST_CENTER_URL = '/' + [MAIN_PAGE_URL, COSTING_APP_URL, STOCK_COST_CENTER_URL].join('/');
 export const ABS_COSTING_ACCOUNTING = '/' + [MAIN_PAGE_URL, COSTING_APP_URL, COSTING_ACCOUNTING_URL].join('/');
+export const ABS_COSTING_COST_CENTER_GROUP_URL = '/' + [MAIN_PAGE_URL, COSTING_APP_URL, COMMON_COST_CENTER_GROUP_URL].join('/');
 
 // Furniture
 export const ABS_FURNITURE_URL            = '/' + [MAIN_PAGE_URL, FURNITURE_APP_URL, FURNITURE_URL].join('/');

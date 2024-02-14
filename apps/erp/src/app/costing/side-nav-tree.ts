@@ -7,7 +7,9 @@ import {
     ABS_COSTING_KEYS,
     ABS_COSTING_PRODUCTS,
     ABS_COSTING_PROJECTS,
-    ABS_COSTING_ROUTING_URL, ABS_COST_ACC_RECORDS
+    ABS_COSTING_ROUTING_URL,
+    ABS_COST_ACC_RECORDS,
+    ABS_COSTING_COST_CENTER_GROUP_URL
 } from '../common';
 
 export const costingNavTree: SideNavNode = {
@@ -40,6 +42,12 @@ export const costingNavTree: SideNavNode = {
             icon: 'fa-solid fa-list-tree',
             route: ABS_COSTING_ROUTING_URL,
             accessRights: 'CMType'
+        },
+        {
+            name: 'COMMON_CC_GROUPS',
+            icon: 'fa-duotone fa-layer-group',
+            route: ABS_COSTING_COST_CENTER_GROUP_URL,
+            accessRights: 'CCenterGroup'
         },
 
         {

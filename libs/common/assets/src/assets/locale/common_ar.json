@@ -319,5 +319,6 @@
     "FAILURES":                   "الإخفاقات",
     "OK":                         "تم",
     "FOLDER":                     "مجلد",
-    "REPORT_PRIVILEGES":          "تقرير الامتيازات"
+    "REPORT_PRIVILEGES":          "تقرير الامتيازات",
+    "CC_GROUPS":                  "مجموعات التكلفة"
 }

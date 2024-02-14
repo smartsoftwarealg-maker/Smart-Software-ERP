@@ -61,3 +61,4 @@ export * from './lib/insurance-agency.service';
 export * from './lib/insurance-policy.service';
 export * from './lib/destination.service';
 export * from './lib/career-motive.service';
+export * from './lib/cost-center-group.service';
