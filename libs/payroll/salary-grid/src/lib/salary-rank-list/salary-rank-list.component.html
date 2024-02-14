@@ -1,0 +1,55 @@
+<div class="size button__div">
+    <!--    <mat-form-field>-->
+    <!--        <mat-label translate>COMMON_SEARCH</mat-label>-->
+    <!--        <input matInput [formControl]="searchText" type="text">-->
+    <!--    </mat-form-field>-->
+
+    <button mat-mini-fab color="primary" (click)="showDetail(0)" [matTooltip]="'COMMON_ADD' | translate">
+        <span class="fas fa-plus"></span>
+    </button>
+    <button mat-mini-fab (click)="edit()"
+            [disabled]="!selectedId"
+            [matTooltip]="'COMMON_EDIT' | translate"
+            color="accent">
+        <span class="fas fa-pen"></span>
+    </button>
+    <button mat-mini-fab (click)="deleteSelected()" [matTooltip]="'COMMON_DELETE' | translate"
+            [disabled]="!selectedId"
+            color="warn">
+        <span class="fas fa-trash-alt"></span>
+    </button>
+</div>
+
+<div class="container_div">
+    <mat-table mat-table [dataSource]="data$ | async" class="content-div" matSort (matSortChange)="sort($event)" >
+
+        <ng-container matColumnDef="rank">
+            <mat-header-cell *matHeaderCellDef  mat-sort-header translate>PAYROLL_RANK</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{ e.rank }}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="index">
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>PAYROLL_INDEX</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{ e.index }}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="baseSalary">
+            <mat-header-cell *matHeaderCellDef mat-sort-header><span translate>PAYROLL_BASE_SALARY</span></mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{ e.baseSalary | number: '1.2-2' }}
+            </mat-cell>
+        </ng-container>
+
+
+        <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+        <mat-row class="selectable" [class.selected]="row.id == selectedId" (click)="select(row.id)"
+                 *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+</div>
+<div class="pagination-container b-b-background">
+    <ss-pagination [paginationModel]="paginator"></ss-pagination>
+</div>

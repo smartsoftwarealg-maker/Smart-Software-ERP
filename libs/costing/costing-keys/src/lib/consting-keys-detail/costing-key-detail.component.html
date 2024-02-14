@@ -1,5 +1,6 @@
 <mat-card>
-  <form novalidate [formGroup]="form" *ngIf="loaded">
+    @if (loaded()) {
+  <form novalidate [formGroup]="form" >
 
     <mat-form-field id="code" class="default-50">
       <mat-label translate>ADMINISTRATION_CODE</mat-label>
@@ -12,6 +13,6 @@
       <input matInput formControlName="description" type="text" required>
       <mat-error *ngIf="form.controls['description'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
     </mat-form-field>
-
   </form>
+    }
 </mat-card>

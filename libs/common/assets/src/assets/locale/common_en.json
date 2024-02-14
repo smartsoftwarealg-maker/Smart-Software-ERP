@@ -320,5 +320,6 @@
     "FAILURES":                   "Failures",
     "OK":                         "OK",
     "FOLDER":                     "Folder",
-    "REPORT_PRIVILEGES":          "Report privileges"
+    "REPORT_PRIVILEGES":          "Report privileges",
+    "CC_GROUPS":                  "Cost groups"
 }

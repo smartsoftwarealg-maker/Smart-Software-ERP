@@ -1,27 +1,29 @@
 <mat-card>
-  <form novalidate [formGroup]="form" *ngIf="loaded">
+    @if (loaded()) {
+        <form novalidate [formGroup]="form">
 
-    <mat-form-field id="code" class="default-50">
-      <mat-label translate>ADMINISTRATION_CODE</mat-label>
-      <input matInput formControlName="code" type="text" autofocus maxlength="4">
-      <mat-error *ngIf="form.controls['code'].invalid" translate>COMMON_FIELD_MAX_LENGTH</mat-error>
-    </mat-form-field>
+            <mat-form-field id="code" class="default-50">
+                <mat-label translate>ADMINISTRATION_CODE</mat-label>
+                <input matInput formControlName="code" type="text" autofocus maxlength="4">
+                <mat-error *ngIf="form.controls['code'].invalid" translate>COMMON_FIELD_MAX_LENGTH</mat-error>
+            </mat-form-field>
 
-    <mat-form-field id="description" class="default-100">
-      <mat-label translate>ADMINISTRATION_DESCRIPTION</mat-label>
-      <input matInput formControlName="description" type="text" required>
-      <mat-error *ngIf="form.controls['description'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
-    </mat-form-field>
+            <mat-form-field id="description" class="default-100">
+                <mat-label translate>ADMINISTRATION_DESCRIPTION</mat-label>
+                <input matInput formControlName="description" type="text" required>
+                <mat-error *ngIf="form.controls['description'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
+            </mat-form-field>
 
-    <mat-form-field class="default-100">
-      <mat-label translate>LOGISTICS_ACCOUNT_NO</mat-label>
-      <ss-auto-complete matInput
-                        [model]="accountLookup"
-                        required
-                        formControlName="accountId">
-      </ss-auto-complete>
-    </mat-form-field>
+            <mat-form-field class="default-100">
+                <mat-label translate>LOGISTICS_ACCOUNT_NO</mat-label>
+                <ss-auto-complete matInput
+                                  [model]="accountLookup"
+                                  required
+                                  formControlName="accountId">
+                </ss-auto-complete>
+            </mat-form-field>
 
 
-  </form>
+        </form>
+    }
 </mat-card>

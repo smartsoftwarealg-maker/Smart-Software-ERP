@@ -1,133 +1,38 @@
 <mat-card>
     <mat-card-content>
         <form *ngIf="form !== null" novalidate [formGroup]="form">
-            <mat-form-field id="code" class="value">
+            <mat-form-field id="code" class="default-50 sm-100">
                 <mat-label translate>PAYROLL_CATEGORY</mat-label>
                 <input matInput formControlName="category" type="text" autofocus maxlength="4">
                 <mat-error *ngIf="form.controls['category'].invalid" translate>COMMON_FIELD_MAX_LENGTH
                 </mat-error>
             </mat-form-field>
-            <mat-form-field>
+
+            <mat-form-field class="default-50 sm-100">
                 <mat-label translate>PAYROLL_SEC</mat-label>
                 <input matInput formControlName="sec" type="text" required>
                 <mat-error *ngIf="form.controls['sec'].invalid" translate>COMMON_FIELD_REQUIRED
                 </mat-error>
             </mat-form-field>
-            <mat-form-field>
-                <mat-label><span translate>PAYROLL_BASE_SALARY </span> 1</mat-label>
+
+            <mat-form-field class="default-50 sm-100">
+                <mat-label><span translate>PAYROLL_BASE_SALARY </span></mat-label>
                 <input matInput formControlName="baseSalary" type="number" required>
                 <mat-error *ngIf="form.controls['baseSalary'].invalid" translate>COMMON_FIELD_REQUIRED
                 </mat-error>
             </mat-form-field>
-            <mat-form-field>
-                <mat-label><span translate>PAYROLL_BASE_SALARY </span> 2</mat-label>
-                <input matInput formControlName="base0" type="number" required>
-                <mat-error *ngIf="form.controls['base0'].invalid" translate>COMMON_FIELD_REQUIRED
-                </mat-error>
-            </mat-form-field>
-            <mat-form-field>
-                <mat-label><span translate>PAYROLL_BASE_SALARY </span> 4</mat-label>
-                <input matInput formControlName="base2" type="number" required>
-                <mat-error *ngIf="form.controls['base2'].invalid" translate>COMMON_FIELD_REQUIRED
-                </mat-error>
-            </mat-form-field>
-            <mat-form-field>
-                <mat-label><span translate>PAYROLL_BASE_SALARY </span> 5</mat-label>
-                <input matInput formControlName="base3" type="number" required>
-                <mat-error *ngIf="form.controls['base3'].invalid" translate>COMMON_FIELD_REQUIRED
-                </mat-error>
-            </mat-form-field>
-            <mat-form-field>
-                <mat-label><span translate>PAYROLL_BASE_SALARY </span> 6</mat-label>
-                <input matInput formControlName="base4" type="number" required>
-                <mat-error *ngIf="form.controls['base4'].invalid" translate>COMMON_FIELD_REQUIRED
-                </mat-error>
-            </mat-form-field>
-            <mat-form-field>
-                <mat-label><span translate>PAYROLL_BASE_SALARY </span> 7</mat-label>
-                <input matInput formControlName="base5" type="number" required>
-                <mat-error *ngIf="form.controls['base5'].invalid" translate>COMMON_FIELD_REQUIRED
-                </mat-error>
-            </mat-form-field>
-            <mat-form-field>
-                <mat-label><span translate>PAYROLL_BASE_SALARY </span> 8</mat-label>
-                <input matInput formControlName="base6" type="number" required>
-                <mat-error *ngIf="form.controls['base6'].invalid" translate>COMMON_FIELD_REQUIRED
-                </mat-error>
-            </mat-form-field>
-            <mat-form-field>
-                <mat-label><span translate>PAYROLL_BASE_SALARY </span> 9</mat-label>
-                <input matInput formControlName="base7" type="number" required>
-                <mat-error *ngIf="form.controls['base7'].invalid" translate>COMMON_FIELD_REQUIRED
-                </mat-error>
-            </mat-form-field>
-            <mat-form-field>
-                <mat-label><span translate>PAYROLL_BAE_SALARY </span> 10</mat-label>
-                <input matInput formControlName="base8" type="number" required>
-                <mat-error *ngIf="form.controls['base8'].invalid" translate>COMMON_FIELD_REQUIRED
-                </mat-error>
-            </mat-form-field>
-            <mat-form-field>
-                <mat-label><span translate>PAYROLL_BASE_SALARY </span> 11</mat-label>
-                <input matInput formControlName="base9" type="number" required>
-                <mat-error *ngIf="form.controls['base9'].invalid" translate>COMMON_FIELD_REQUIRED
-                </mat-error>
-            </mat-form-field>
-            <mat-form-field>
-                <mat-label><span translate>PAYROLL_BASE_SALARY </span> 12</mat-label>
-                <input matInput formControlName="base10" type="number" required>
-                <mat-error *ngIf="form.controls['base10'].invalid" translate>COMMON_FIELD_REQUIRED
-                </mat-error>
-            </mat-form-field>
-            <mat-form-field>
-                <mat-label><span translate>PAYROLL_BASE_SALARY </span> 13</mat-label>
-                <input matInput formControlName="base11" type="number" required>
-                <mat-error *ngIf="form.controls['base11'].invalid" translate>COMMON_FIELD_REQUIRED
-                </mat-error>
-            </mat-form-field>
-            <mat-form-field>
-                <mat-label><span translate>PAYROLL_BASE_SALARY </span> 14</mat-label>
-                <input matInput formControlName="base12" type="number" required>
-                <mat-error *ngIf="form.controls['base12'].invalid" translate>COMMON_FIELD_REQUIRED
-                </mat-error>
-            </mat-form-field>
-            <mat-form-field>
-                <mat-label><span translate>PAYROLL_BASE_SALARY </span> 15</mat-label>
-                <input matInput formControlName="base13" type="number" required>
-                <mat-error *ngIf="form.controls['base13'].invalid" translate>COMMON_FIELD_REQUIRED
-                </mat-error>
-            </mat-form-field>
-            <mat-form-field>
-                <mat-label><span translate>PAYROLL_BASE_SALARY </span> 16</mat-label>
-                <input matInput formControlName="base14" type="number" required>
-                <mat-error *ngIf="form.controls['base14'].invalid" translate>COMMON_FIELD_REQUIRED
-                </mat-error>
-            </mat-form-field>
-            <mat-form-field>
-                <mat-label><span translate>PAYROLL_BASE_SALARY </span> 17</mat-label>
-                <input matInput formControlName="base15" type="number" required>
-                <mat-error *ngIf="form.controls['base15'].invalid" translate>COMMON_FIELD_REQUIRED
-                </mat-error>
-            </mat-form-field>
-            <mat-form-field>
-                <mat-label><span translate>PAYROLL_BASE_SALARY </span> 18</mat-label>
-                <input matInput formControlName="base16" type="number" required>
-                <mat-error *ngIf="form.controls['base16'].invalid" translate>COMMON_FIELD_REQUIRED
-                </mat-error>
-            </mat-form-field>
-            <mat-form-field>
-                <mat-label><span translate>PAYROLL_BASE_SALARY </span> 19</mat-label>
-                <input matInput formControlName="base17" type="number" required>
-                <mat-error *ngIf="form.controls['base17'].invalid" translate>COMMON_FIELD_REQUIRED
-                </mat-error>
-            </mat-form-field>
-            <mat-form-field>
-                <mat-label><span translate>PAYROLL_BASE_SALARY </span> 20</mat-label>
-                <input matInput formControlName="base18" type="number" required>
-                <mat-error *ngIf="form.controls['base18'].invalid" translate>COMMON_FIELD_REQUIRED
+
+            <mat-form-field class="default-50 sm-100">
+                <mat-label><span translate>PAYROLL_INDEX_VALUE</span></mat-label>
+                <input matInput formControlName="indexValue" type="number" required>
+                <mat-error *ngIf="form.controls['indexValue'].invalid" translate>COMMON_FIELD_REQUIRED
                 </mat-error>
             </mat-form-field>
         </form>
 
     </mat-card-content>
 </mat-card>
+
+@if (loaded()) {
+    <router-outlet></router-outlet>
+}

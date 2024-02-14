@@ -114,8 +114,8 @@ export class LookupsService {
         return this.lookupCacheSrv.load<Fund>(ROLES_URL, 'roles', 500);
     }
 
-    public getCCGroups(): Observable<CCGroup[]> {
-        return this.lookupCacheSrv.load<CCGroup>(CC_GROUP_URL, 'cc_groups');
+    public getCCGroups(): Observable<Lookup[]> {
+        return this.lookupCacheSrv.load<Lookup>(CC_GROUP_URL, 'cc_groups');
     }
 
     public getEmploymentTypes(): Observable<EmploymentType[]> {

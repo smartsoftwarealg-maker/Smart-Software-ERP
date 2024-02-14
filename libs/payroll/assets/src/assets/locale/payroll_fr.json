@@ -173,5 +173,11 @@
     "STOPPAGE_TYPE":         "Type d'arrêt",
     "CAREER_MOTIVES":        "Motivations de carrière",
     "FINAL":                 "Final",
-    "DAS_OUT":               "Sortie DAS"
+    "DAS_OUT":               "Sortie DAS",
+    "SEC":                   "Section",
+    "INDEX_VALUE":           "Valeur indexale",
+    "INDEX":                 "Indice",
+    "GRID_UPDATE":           "Mise à jour grille",
+    "UPDATE_GRID":           "Mettre à jour la grille salariale",
+    "UPDATE_ELEMENTS":       "Mettre à jour les éléments de la grille salariale"
 }

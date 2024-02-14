@@ -1,0 +1,41 @@
+<mat-card>
+    <mat-card-content>
+        <form  novalidate [formGroup]="form">
+
+            <mat-form-field class="default-50 sm-100" >
+                <mat-label translate>PAYROLL_YEAR</mat-label>
+                <input matInput formControlName="year" type="number"  required step="1" readonly>
+            </mat-form-field>
+
+            <mat-form-field class="default-50 sm-100" >
+                <mat-label translate>PAYROLL_MONTH</mat-label>
+                <input matInput formControlName="month" type="number"  required autofocus step="1" readonly>
+            </mat-form-field>
+
+
+            <div id="responsible" class="default-100">
+                <mat-checkbox formControlName="updateGrid" translate>PAYROLL_UPDATE_GRID</mat-checkbox>
+            </div>
+
+            <div class="default-100">
+                <mat-checkbox formControlName="updateElements" translate>PAYROLL_UPDATE_ELEMENTS</mat-checkbox>
+            </div>
+
+            <span class="default-100"></span>
+
+            @if (!processing()) {
+                <div class="default-100 btn_div">
+                    <button mat-raised-button color="primary"
+                            type="button"
+                            (click)="update()">
+                        <i class="fa-solid fa-check"></i>
+                        {{ 'UPDATE' | translate }}
+                    </button>
+                </div>
+            } @else {
+                <mat-progress-bar mode="indeterminate" *ngIf="processing"></mat-progress-bar>
+            }
+        </form>
+
+    </mat-card-content>
+</mat-card>
