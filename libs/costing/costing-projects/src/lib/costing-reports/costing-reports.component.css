@@ -5,7 +5,8 @@ table {
 
 .table_div {
     width: 100%;
-    overflow-x: auto;
+    overflow: auto;
+    max-height: 14em;
 }
 .product {
     width: 35em;
@@ -33,5 +34,5 @@ mat-card {
 }
 
 .chart_div {
-    max-height: 28em;
+    max-height: 25em;
 }
