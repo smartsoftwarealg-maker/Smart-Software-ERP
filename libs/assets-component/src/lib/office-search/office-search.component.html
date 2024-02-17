@@ -26,7 +26,7 @@
     <mat-list role="list">
         <mat-list-item class="selectable"
                        role="listitem"
-                       (click)="select(d)"
+                       (click)="onSelect(d)"
                        *ngFor="let d of list"
                        [class.selected]="d.id === selectedOffice?.id">
             {{ d.code }}: {{ d.description }}

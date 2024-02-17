@@ -31,7 +31,7 @@ import { CostingReportService } from '../services/costing-report.service';
 })
 export class CostingProjectListComponent extends BaseEntityListComponent<CProject> implements OnInit {
     public duplicateButton: ToolbarButton = {
-        icon: 'fa-solid fa-folders',
+        icon: 'fa-solid fa-copy',
         label: 'COST_DUPLICATE',
         disabled: true,
         visible: true,
