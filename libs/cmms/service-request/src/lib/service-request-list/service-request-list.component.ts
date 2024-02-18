@@ -64,7 +64,7 @@ export class ServiceRequestListComponent extends BaseEntityListComponent<Work> i
 
     private generateWorkOrder() {
         if (this.selectedRow) {
-            const wo: Work = {...this.selectedRow, id: 0, number: 0, document: DOC_WORK_ORDER, date: new Date(), sourceId: this.selected, memo: null};
+            const wo: Work = {...this.selectedRow, id: 0, number: 0, document: DOC_WORK_ORDER, date: new Date(), sourceId: this.selected, memo: null, status: null};
             this.confirmationSrv
                 .confirm('CMMS_GENERATION', 'CMMS_GENERATE_WORK_ORDER')
                 .pipe(switchMap(b => b? this.workOrderSrv.save(wo) : of(0)))
