@@ -52,7 +52,7 @@ export class DefaultAutoCompleteModel<T> implements AutoCompleteModel<T> {
             entity['id'] = 0;
             entity['description'] = entry;
             return this.entitySrv.save(entity as T);
-        } else of(0);
+        } else return of(0);
     }
 }
 
