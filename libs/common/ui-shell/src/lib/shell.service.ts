@@ -12,10 +12,10 @@ import {
     SideNavNode,
     strDropEndUntil,
     strTakeUntil,
-    cloneDeep,
     UserRightsService,
     MainPageService
 } from '@ss/common/api-common';
+import { cloneDeep } from './lodash';
 
 export enum KeepOnToolbar {
     ALWAYS = 1, // replaces true in old version

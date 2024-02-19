@@ -7,7 +7,7 @@
     "urlRules": [
         {
             "frontend": "?",
-            "backend": "smartsoft.hopto.org:4430",
+            "backend": "https://demo.smartsoftware-dz.com:4430",
             "backend0": "localhost:8080"
         }
     ],
@@ -35,12 +35,5 @@
             "dateFormat": "fr",
             "personFullNameFormat": "fr"
         },
-        {
-            "code": "tr",
-            "dir": "ltr",
-            "name": "Türkçe",
-            "dateFormat": "default",
-            "personFullNameFormat": "default"
-        }
     ]
 }
