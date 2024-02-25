@@ -72,11 +72,11 @@
                     </ng-template>
                     <mat-form-field id="discountDescription" class="default-50 sm-100">
                         <mat-label translate>COMMON_DESCRIPTION</mat-label>
-                        <textarea matInput formControlName="discountDescription"></textarea>
+                        <input matInput type="text" formControlName="discountDescription">
                     </mat-form-field>
                     <mat-form-field id="fixedDiscount" class="default-25 sm-50">
                         <mat-label translate>LOGISTICS_DISCOUNT</mat-label>
-                        <input matInput formControlName="fixedDiscount" type="number">
+                        <input matInput formControlName="discount" type="number">
                     </mat-form-field>
                     <mat-form-field id="fixedDiscountVAT" class="default-25 sm-50">
                         <mat-label translate>LOGISTICS_VAT</mat-label>
