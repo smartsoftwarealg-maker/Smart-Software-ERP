@@ -231,6 +231,7 @@ export abstract class BaseTransactionDetailComponent extends BaseEntityDetailCom
             currencyRate: [b.currencyRate || 1],
             discountDescription: [b.discountDescription],
             fixedDiscount: [b.fixedDiscount || 0.0],
+            discount: [b.discount || 0.0],
             fixedDiscountVAT: [b.fixedDiscountVAT || 0.0],
             dealer: [{ value: b.dealer || this.loginSrv.appCtx.id, disabled: !this._isManager }, Validators.required],
             agent: [b.agent, this.requireAgent()? Validators.required : null],

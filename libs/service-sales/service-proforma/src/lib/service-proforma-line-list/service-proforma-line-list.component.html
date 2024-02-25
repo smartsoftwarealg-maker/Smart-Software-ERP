@@ -55,14 +55,14 @@
             <ng-container matColumnDef="qtyOrdered">
                 <mat-header-cell *matHeaderCellDef translate>LOGISTICS_QTY_ORDERED</mat-header-cell>
                 <mat-cell *matCellDef="let e">
-                    {{ e.qtyOrdered | number : '1.2-2'}}
+                    {{ e.qtyOrdered | number : '1.2-3'}}
                 </mat-cell>
             </ng-container>
 
             <ng-container matColumnDef="total">
                 <mat-header-cell *matHeaderCellDef translate>COMMON_TOTAL</mat-header-cell>
                 <mat-cell *matCellDef="let e">
-                    {{ e.price * e.qtyOrdered | number : '1.2-2'}}
+                    {{ (e.price * e.qtyOrdered) | number : '1.2-2'}}
                 </mat-cell>
             </ng-container>
 

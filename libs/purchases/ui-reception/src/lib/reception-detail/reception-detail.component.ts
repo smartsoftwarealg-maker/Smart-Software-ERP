@@ -71,29 +71,6 @@ export class ReceptionDetailComponent extends BaseTransactionDetailComponent imp
         return true;
     }
 
-    // public override setupForm(form: Transaction) {
-    //     // Make sure to update the template if you edit the configuration here
-    //     return this.formBuilder.group({
-    //         id: [form.id],
-    //         document: [0],
-    //         centerId: [form.centerId || this.loginSrv.appCtx.center],
-    //         date: [form.date || new Date(), Validators.required],
-    //         number: [{ value: form.number || 0, disabled: true }],
-    //         reference: [form.reference],
-    //         payMethod: [form.payMethod, Validators.required],
-    //         referenceDocDate: [form.referenceDocDate],
-    //         header: [form.header],
-    //         footer: [form.footer],
-    //         discountDescription: [form.discountDescription],
-    //         fixedDiscount: [form.fixedDiscount || 0.0],
-    //         fixedDiscountVAT: [form.fixedDiscountVAT || 0.0],
-    //         dealer: [{ value: form.dealer || this.loginSrv.appCtx.id, disabled: !this.loginSrv.appCtx.manager }],
-    //         currency: [form.currency || 10, Validators.required],
-    //         currencyRate: [form.currencyRate || 1],
-    //         agent: [form.agent, Validators.required]
-    //     });
-    // }
-
     override ngOnInit() {
         super.ngOnInit();
         this.currencySrv.load().subscribe();

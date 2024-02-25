@@ -73,6 +73,7 @@ export interface Transaction {
     locked: string;
     creationTime: string;
     discountDescription?: string;
+    discount?: number;
     fixedDiscount?: number;
     fixedDiscountVAT?: number;
     currency?: number;

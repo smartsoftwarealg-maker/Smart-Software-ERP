@@ -58,39 +58,4 @@ export class InventoryTransferDetailComponent extends BaseTransactionDetailCompo
     protected showImportButton(): boolean {
         return false;
     }
-
-    // override setupForm(b: Transaction) {
-    //     if (!b.id) {
-    //         b.id = 0;
-    //         b.number = 0;
-    //         b.userID = this.loginSrv.appCtx.id;
-    //         b.dealer = b.userID;
-    //         b.date = new DatePipe('en').transform(new Date(), 'dd/MM/yyyy');
-    //     }
-    //     this.transfer = b;
-    //     this.isManager = this.loginSrv.appCtx.manager;
-    //     return this.formBuilder.group({
-    //         id: [b.id],
-    //         document: [0],
-    //         centerId: [0 || this.loginSrv.appCtx.center],
-    //         date: [b.date || this.langSrv.formatDate(new Date()), Validators.required],
-    //         number: [b.number || 0],
-    //         reference: [b.reference],
-    //         referenceDocDate: [b.referenceDocDate],
-    //         header: [b.header],
-    //         payMethod: [b.payMethod],
-    //         footer: [b.footer],
-    //         discountDescription: [b.discountDescription],
-    //         fixedDiscount: [b.fixedDiscount || 0.0],
-    //         fixedDiscountVAT: [b.fixedDiscountVAT || 0.0],
-    //         dealer: [{ value: b.dealer || this.loginSrv.appCtx.id, disabled: !this.isManager }, Validators.required],
-    //         agent: [b.agent, Validators.required],
-    //     });
-    // }
-    //
-    // override readForm(): Transaction {
-    //     const form =  super.readForm();
-    //     fillObject(this.transfer, form)
-    //     return form;
-    // }
 }
