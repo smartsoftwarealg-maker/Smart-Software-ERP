@@ -1,14 +1,11 @@
 {
     "version": "3.0",
     "protocol": "https://",
-    "protocol0": "http://",
-    "defaultUrl": "smartsoft.hopto.org:9999",
-    "defaultUrl0": "localhost:8080",
+    "defaultUrl": "localhost:8080",
     "urlRules": [
         {
             "frontend": "?",
-            "backend": "https://demo.smartsoftware-dz.com:4430",
-            "backend0": "localhost:8080"
+            "backend": "demo.smartsoftware-dz.com:4430"
         }
     ],
     "useBrowserLanguage": true,
@@ -34,6 +31,6 @@
             "name": "Français",
             "dateFormat": "fr",
             "personFullNameFormat": "fr"
-        },
+        }
     ]
 }

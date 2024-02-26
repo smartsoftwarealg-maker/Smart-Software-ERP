@@ -17,7 +17,6 @@ export class AppComponent implements OnInit {
 
     constructor(private httpSrv: HttpService,
                 private shellSrv: ShellService,
-                private loginSrv: LoginService,
                 private deviceSrv: DeviceDetectorService,
                 public langSrv: LanguageService) {
         if (this.deviceSrv.isMobile()) {

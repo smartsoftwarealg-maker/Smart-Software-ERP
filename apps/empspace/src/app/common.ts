@@ -6,7 +6,7 @@ import { REPORT_PARAMS_URL } from '@ss/common/api-reports';
 export const EMPSPACE_HOLIDAY_REQUEST_URL = 'holiday-requests';
 export const EMPSPACE_PROFILE_URL = 'person-profile';
 export const EMPSPACE_PAYSLIP_URL = 'person-payslip';
-export const EMPSPACE_REPOERT_URL = 'espace-reports';
+export const EMPSPACE_REPOERT_URL = 'empspace';
 
 // apps
 export const ADMINISTRATION_APP_URL = 'administration';

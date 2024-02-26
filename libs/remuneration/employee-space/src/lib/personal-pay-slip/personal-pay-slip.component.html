@@ -22,12 +22,14 @@
 
             <div *ngIf="!processing" class="default-50">
                 <button mat-raised-button color="primary" type="button" (click)="select(true)">
+                    <i class="fa-solid fa-download"></i>
                     {{ 'REMUN_LOAD_SPECIAL' | translate }}
                 </button>
             </div>
 
             <div *ngIf="!processing" class="default-50">
                 <button mat-raised-button color="accent" type="button" (click)="loadPaySlip()" [disabled]="changing">
+                    <i class="fa-solid fa-arrows-rotate"></i>
                     {{ 'COMMON_REFRESH' | translate }}
                 </button>
             </div>

@@ -47,7 +47,7 @@ export const empRoutes: Routes = [
         path: EMPSPACE_REPOERT_URL,
         component: ReportViewComponent,
         canActivate: [loginGuard],
-        data: { reportBase: 'espace' }
+        data: { reportBase: 'empspace' }
     },
     {path: '**', redirectTo: LIST_URL, pathMatch: 'full'}
 ];
