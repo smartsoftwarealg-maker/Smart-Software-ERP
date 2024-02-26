@@ -1,0 +1,19 @@
+    <mat-form-field class="default-100 input-field">
+        <mat-label translate>COMMON_DESCRIPTION</mat-label>
+        <input matInput [formControl]="description" type="text">
+    </mat-form-field>
+
+    <div class="default-100 ctrl-div">
+        @if (data) {
+            <button mat-raised-button color="primary" type="button" (click)="duplicate()">
+                {{ 'ASSET_DUPLICATE' | translate }}
+            </button>
+        }
+        <button mat-raised-button color="accent" type="button" (click)="cancel()">
+            {{ 'COMMON_CANCEL' | translate }}
+        </button>
+    </div>
+
+    @if (processing()) {
+      <mat-progress-bar mode="indeterminate" ></mat-progress-bar>
+    }
