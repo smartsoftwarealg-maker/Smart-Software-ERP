@@ -1,0 +1,36 @@
+{
+    "version": "3.0",
+    "protocol": "https://",
+    "defaultUrl": "localhost:8080",
+    "urlRules": [
+        {
+            "frontend": "?",
+            "backend": "demo.smartsoftware-dz.com:4430"
+        }
+    ],
+    "useBrowserLanguage": true,
+    "defaultLanguage": "ar",
+    "languages": [
+        {
+            "code": "ar",
+            "dir": "rtl",
+            "name": "العربية",
+            "dateFormat": "default",
+            "personFullNameFormat": "default"
+        },
+        {
+            "code": "en",
+            "dir": "ltr",
+            "name": "English",
+            "dateFormat": "default",
+            "personFullNameFormat": "default"
+        },
+        {
+            "code": "fr",
+            "dir": "ltr",
+            "name": "Français",
+            "dateFormat": "fr",
+            "personFullNameFormat": "fr"
+        }
+    ]
+}

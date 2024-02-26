@@ -37,6 +37,7 @@ export class PersonalPaySlipComponent implements OnInit, OnDestroy {
     slipColumns      = ['description', 'base', 'rate', 'gain', 'deduction'];
 
     ngOnInit() {
+        this.shellSrv.setTitle('REMUN_PAY_SLIP');
         this.shellSrv.setGoBackPath('../..', this.route);
         zip(this.selectorSrv.minMonth(),
             this.selectorSrv.maxMonth(),

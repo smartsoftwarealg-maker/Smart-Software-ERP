@@ -166,7 +166,6 @@ export class LoginService {
             .pipe(
                 tap(info => {
                     this.httpSrv.updateAuthToken(info.jwt);
-                    debugger;
                     this.appCtx = info.ctx;
                 }));
     }
@@ -180,7 +179,6 @@ export class LoginService {
             .pipe(switchMap(_ => this.httpSrv.anonymous()),
                 tap((info: LoginInfo) => {
                     this.httpSrv.updateAuthToken(info.jwt);
-                    debugger;
                     this.appCtx = info.ctx;
                 }),
                 catchError(err => {
@@ -199,7 +197,6 @@ export class LoginService {
             .subscribe({
                 next: (info: LoginInfo) => {
                     this.httpSrv.updateAuthToken(info.jwt);
-                    debugger;
                     this.appCtx = info.ctx;
                     if (!this.licenseErrorType) {
                         const url = this.appCtx.center ? INDEX_PAGE_URL : CENTER_SELECT_URL;
@@ -227,14 +224,12 @@ export class LoginService {
             .pipe(
                 tap(info => {
                     this.httpSrv.updateAuthToken(info.jwt);
-                    debugger;
                     this.appCtx = info.ctx;
                 })
             ).subscribe({
                 next:
           (info: LoginInfo) => {
               this.httpSrv.updateAuthToken(info.jwt);
-              debugger;
               this.appCtx = info.ctx;
               const url = this.appCtx?.center ? INDEX_PAGE_URL : CENTER_SELECT_URL;
               this.router.navigate(['/' + CENTER_SELECT_URL]);
