@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {BaseEntityService} from '@ss/common/api-base-entity';
 import {LTMMatter} from '../ltm-api';
 import {HttpService} from '@ss/common/api-common';
+import { Observable } from "rxjs";
 
 @Injectable({
     providedIn: 'root'
@@ -19,5 +20,9 @@ export class LtmMatterService extends BaseEntityService<LTMMatter> {
 
     get editable() {
         return this._editable;
+    }
+
+    duplicate(matter: LTMMatter): Observable<{id: number }> {
+        return this.httpSrv.put('/ltm/matter-duplicate', matter);
     }
 }

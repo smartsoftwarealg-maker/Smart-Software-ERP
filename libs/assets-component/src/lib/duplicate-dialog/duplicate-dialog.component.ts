@@ -8,7 +8,7 @@ import {UntypedFormControl, Validators} from '@angular/forms';
     templateUrl: './duplicate-dialog.component.html',
     styleUrls: ['./duplicate-dialog.component.scss']
 })
-export class DuplicateDialogComponent implements OnInit {
+export class DuplicateDialogComponent {
     assetId = 0;
     processing = false;
     count = new UntypedFormControl(1, Validators.required);
@@ -17,9 +17,6 @@ export class DuplicateDialogComponent implements OnInit {
                 private assetSrv: AssetsService,
                 @Inject(MAT_DIALOG_DATA) private data: { id: number }) {
         this.assetId = data.id;
-    }
-
-    ngOnInit(): void {
     }
 
     public cancel() {
