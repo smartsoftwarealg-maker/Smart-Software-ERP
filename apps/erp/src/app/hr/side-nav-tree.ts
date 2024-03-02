@@ -6,7 +6,7 @@ import {
     ABS_HR_DASHBOARD_URL,
     ABS_HR_HOLIDAY_REQUEST_URL,
     ABS_HR_REPORT_RIGHT_URL, ABS_WORK_STOPPAGES_URL
-} from "../common";
+} from '../common';
 import {SideNavNode} from '@ss/common/api-common';
 
 export const hrNavTree: SideNavNode = {

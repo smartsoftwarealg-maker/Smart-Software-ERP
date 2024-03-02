@@ -179,5 +179,14 @@
     "INDEX":                 "Indice",
     "GRID_UPDATE":           "Mise à jour grille",
     "UPDATE_GRID":           "Mettre à jour la grille salariale",
-    "UPDATE_ELEMENTS":       "Mettre à jour les éléments de la grille salariale"
+    "UPDATE_ELEMENTS":       "Mettre à jour les éléments de la grille salariale",
+    "CAREER_CONSTANTS":      "Paramètres",
+    "SCALE":                 "Bareme",
+    "CAREER_FAULTS":         "Défauts",
+    "FAULT_COUNT":           "Points",
+    "YEARLY_GRADE":          "Note annuelle",
+    "PASSING_GRADE":         "Note de passage",
+    "DAILY_GRADE":           "Note quotidienne",
+    "MAX_RATE":              "Taux maximum",
+    "RATE_ELEMENT":          "Rubrique"
 }

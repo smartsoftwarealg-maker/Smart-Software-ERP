@@ -179,5 +179,14 @@
     "INDEX":                 "Index",
     "GRID_UPDATE":           "Grid update",
     "UPDATE_GRID":           "Update the salary grid",
-    "UPDATE_ELEMENTS":       "Update elements from the salary grid"
+    "UPDATE_ELEMENTS":       "Update elements from the salary grid",
+    "CAREER_CONSTANTS":      "Parameters",
+    "SCALE":                 "Scale",
+    "CAREER_FAULTS":         "Faults",
+    "FAULT_COUNT":           "Points",
+    "YEARLY_GRADE":          "Annual grade",
+    "PASSING_GRADE":         "Passing grade",
+    "DAILY_GRADE":           "Daily grade",
+    "MAX_RATE":              "Maximum rate",
+    "RATE_ELEMENT":          "Element"
 }

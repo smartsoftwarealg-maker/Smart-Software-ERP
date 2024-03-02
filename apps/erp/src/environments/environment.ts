@@ -49,11 +49,10 @@ import {
     ARCH_VIEWER_URL,
     CMMS_APP_URL,
     PARK_APP_URL,
-    SERVICE_SALES, COSTING_APP_URL
+    SERVICE_SALES, COSTING_APP_URL, GICA_APP_URL
 } from '../app/common';
 import {Routes} from '@angular/router';
 import {hrLookupNavTree} from '../app/hr-lookups/side-nav-tree';
-import {foodNavTree} from '../app/food/side-nav-tree';
 import {workflowNavTree} from '../app/workflow/side-nav-tree';
 import {budgetNavTree} from '../app/budget/side-nav-tree';
 import {ltmNavTree} from '../app/ltm/side-nav-tree';
@@ -64,6 +63,7 @@ import { parkNavTree } from '../app/park/side-nav-tree';
 import { cmmsNavTree } from '../app/cmms/side-nav-tree';
 import { ssalesNavTree } from '../app/service-sales/side-nav-tree';
 import { costingNavTree } from '../app/costing/side-nav-tree';
+import { gicaNavTree } from '../app/gica/side-nav-tree';
 
 export const environment = {
     production: false,
@@ -84,6 +84,7 @@ export const navBar = [
     payrollNavTree,
     attendanceNavTree,
     missionsNavTree,
+    gicaNavTree,
     webArchNavTree,
     accountingNavTree,
     assetsNavTree,
@@ -145,6 +146,10 @@ export const appRoutes: Routes =  [
     {
         path: LTM_APP_URL,
         loadChildren: () => import('../app/ltm/l-t-m.module').then(m => m.LTMModule)
+    },
+    {
+        path: GICA_APP_URL,
+        loadChildren: () => import('../app/gica/gica.module').then(m => m.GicaModule)
     },
     {
         path: PARK_APP_URL,

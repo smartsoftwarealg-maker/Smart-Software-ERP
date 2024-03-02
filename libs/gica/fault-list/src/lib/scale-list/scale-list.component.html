@@ -1,0 +1,33 @@
+<div class="div_table size">
+    <mat-table mat-table [dataSource]="data" class="main-table" matSort (matSortChange)="sort($event)">
+
+        <ng-container matColumnDef="from">
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_FROM</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.from}}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="to">
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_TO</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.to}}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="rate">
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_RATE</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.rate}}
+            </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+        <mat-row class="selectable" [class.selected]="row.id == selected" (click)="select(row.id)"
+                 *matRowDef="let row; columns: displayedColumns;">
+        </mat-row>
+    </mat-table>
+</div>
+<div class="size b-b-background">
+    <ss-pagination [paginationModel]="pagination"></ss-pagination>
+</div>
