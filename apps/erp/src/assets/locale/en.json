@@ -55,5 +55,6 @@
     "BUDGET":          "Budget",
     "EPAYMENT":        "ePayment",
     "EXCHANGE":        "Money Exchange",
-    "COSTING":         "Costing"
+    "COSTING":         "Costing",
+    "GICA-CAREER":     "Career plan"
 }

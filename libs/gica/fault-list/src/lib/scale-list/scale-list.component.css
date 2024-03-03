@@ -1,0 +1,40 @@
+.size {
+    width: 90%;
+    max-width: 500px;
+    margin: 4px auto 0;
+}
+
+.div_table {
+    height: calc(100% - 70px);
+    overflow: auto;
+}
+
+.main-table {
+    width: 100%;
+}
+
+
+.mat-column-from,
+.mat-column-to {
+    flex: 1 1 150px ;
+    padding-right: 8px !important;
+    padding-left: 8px !important;
+}
+
+.mat-column-rate {
+    flex: 1 1 200px ;
+    padding-right: 8px !important;
+    padding-left: 8px !important;
+    justify-content: flex-end;
+}
+
+
+.pagination-container {
+
+    ss-pagination {
+        left: 0;
+        right: 0;
+        position: sticky;
+        margin: auto;
+    }
+}

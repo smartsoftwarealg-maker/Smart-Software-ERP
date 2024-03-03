@@ -9,7 +9,6 @@ export class FormValidators {
 
     static autoCompleteValidator(list: any[]): ValidatorFn {
         return (control: AbstractControl) => {
-            // @ts-ignore
             return control.value != null && !list.includes(control.value) ? {'validOption': true} : null;
         }
     }

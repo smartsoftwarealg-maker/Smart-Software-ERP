@@ -179,5 +179,17 @@
     "INDEX":                 "فِهرِس",
     "GRID_UPDATE":           "تحديث الشبكة",
     "UPDATE_GRID":           "تحديث شبكة الرواتب",
-    "UPDATE_ELEMENTS":       "تحديث العناصر من شبكة الرواتب"
+    "UPDATE_ELEMENTS":       "تحديث العناصر من شبكة الرواتب",
+    "CAREER_CONSTANTS":      "حدود",
+    "SCALE":                 "حجم",
+    "CAREER_FAULTS":         "فوالق",
+    "FAULT_COUNT":           "نقاط",
+    "YEARLY_GRADE":          "الدرجة السنوية",
+    "PASSING_GRADE":         "درجة النجاح",
+    "DAILY_GRADE":           "الدرجة اليومية",
+    "MAX_RATE":              "النسبة القصوى",
+    "RATE_ELEMENT":          "العنصر",
+    "AGE":                   "اﻷقدمية",
+    "HISTORY":               "تاريخ",
+    "CONFIRM_APPLY":         "هل سيتم تأكيد تحديث البيانات المهنية؟"
 }

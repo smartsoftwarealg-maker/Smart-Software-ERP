@@ -58,6 +58,7 @@ export const WORK_FLOW_APP_URL = 'workflow';
 export const BUDGET_APP_URL = 'budget';
 export const ATTENDANCE_APP_URL = 'attendance';
 export const SERVICE_APP_URL = 'service-sales';
+export const GICA_APP_URL = 'gica';
 
 // treasury
 export const TREASURY_AGENT_URL = 'agents';
@@ -331,6 +332,15 @@ export const ABS_ATTENDANCE_ABSENCE_MOTIVE_URL = '/' + [MAIN_PAGE_URL, ATTENDANC
 //Dashboard
 export const DASHBOARD_QUERY_URL = 'queries';
 export const DASHBOARD_URL       = 'dashbaord';
+
+// GICA
+export const GICA_MOTIVES_URL = 'gica-motives';
+export const GICA_FAULTS_URL = 'gica-faults';
+export const GICA_CONSTANTS_URL = 'gica-constants';
+export const GICA_SCALE_URL = 'gica-scale';
+export const GICA_REPORTS_URL = 'gica-reports';
+export const GICA_HISTORY_URL = 'gica-history';
+
 
 // LTM
 export const LTM_LINES_URL       = 'ltm-lines';
@@ -656,6 +666,14 @@ export const ABS_LTM_CHARTS_URL        = '/' + [MAIN_PAGE_URL, LTM_APP_URL, LTM_
 export const ABS_LTM_BATCH_TESTINGS_URL = '/' + [MAIN_PAGE_URL, LTM_APP_URL, LTM_BATCH_URL].join('/');
 export const ABS_LTM_DASHBOARD_URL            = '/' + [MAIN_PAGE_URL, LTM_APP_URL, DASHBOARD_URL].join('/');
 export const ABS_LTM_UNIT_URL            = '/' + [MAIN_PAGE_URL, LTM_APP_URL, LTM_UNIT_URL].join('/');
+
+// GICA
+export const ABS_GICA_MOTIVES_URL       = '/' + [MAIN_PAGE_URL, GICA_APP_URL, GICA_MOTIVES_URL].join('/');
+export const ABS_GICA_FAULTS_URL       = '/' + [MAIN_PAGE_URL, GICA_APP_URL, GICA_FAULTS_URL].join('/');
+export const ABS_GICA_SCALE_URL       = '/' + [MAIN_PAGE_URL, GICA_APP_URL, GICA_SCALE_URL].join('/');
+export const ABS_GICA_CONSTANTS_URL       = '/' + [MAIN_PAGE_URL, GICA_APP_URL, GICA_CONSTANTS_URL].join('/');
+export const ABS_GICA_REPORTS_URL       = '/' + [MAIN_PAGE_URL, GICA_APP_URL, GICA_REPORTS_URL].join('/');
+export const ABS_GICA_HISTORY_URL       = '/' + [MAIN_PAGE_URL, GICA_APP_URL, GICA_HISTORY_URL].join('/');
 
 
 // CMMS

@@ -1,0 +1,37 @@
+.size {
+    width: 90%;
+    max-width: 700px;
+    margin: 4px auto 0;
+}
+
+.div_table {
+    height: calc(100% - 150px);
+    overflow: auto;
+}
+
+.main-table {
+    width: 100%;
+}
+
+.mat-column-count {
+    flex: 1 1 150px ;
+    padding-right: 8px !important;
+    padding-left: 8px !important;
+    justify-content: flex-end;
+}
+
+.mat-column-motiveDescription {
+    flex: 3 1 300px ;
+    padding-right: 8px !important;
+    padding-left: 8px !important;
+}
+
+.pagination-container {
+
+    ss-pagination {
+        left: 0;
+        right: 0;
+        position: sticky;
+        margin: auto;
+    }
+}
