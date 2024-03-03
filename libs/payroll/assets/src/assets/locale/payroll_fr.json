@@ -188,5 +188,8 @@
     "PASSING_GRADE":         "Note de passage",
     "DAILY_GRADE":           "Note quotidienne",
     "MAX_RATE":              "Taux maximum",
-    "RATE_ELEMENT":          "Rubrique"
+    "RATE_ELEMENT":          "Rubrique",
+    "AGE":                   "Ancienneté",
+    "HISTORY":               "Historique",
+    "CONFIRM_APPLY":         "Voulez-vous confirmer la mise à jour des données de carrière ?"
 }

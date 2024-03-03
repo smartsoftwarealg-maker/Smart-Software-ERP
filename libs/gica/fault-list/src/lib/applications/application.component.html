@@ -1,0 +1,82 @@
+<div class="input_div">
+    <div>
+        <mat-form-field class="default-50 sm-100">
+            <mat-label translate>PAYROLL_YEAR</mat-label>
+            <input matInput [formControl]="year" type="number" required step="1">
+        </mat-form-field>
+
+        <button mat-raised-button color="primary" type="button" (click)="refresh()">
+            <i class="fa-solid fa-arrows-rotate"></i>
+            {{ 'COMMON_REFRESH' | translate }}
+        </button>
+    </div>
+
+    @if (data$) {
+        <div class="btn_div">
+            @if ((data$ | async)?.length > 0) {
+                <button mat-raised-button color="accent" type="button" (click)="apply()">
+                    <i class="fa-solid fa-ballot-check"></i>
+                    {{ 'COMMON_APPLY' | translate }}
+                </button>
+            }
+            @if ((data$ | async)?.length === 0) {
+                <button mat-raised-button color="warn" type="button" (click)="delete()">
+                    <i class="fa-solid fa-trash-can-list"></i>
+                    {{ 'COMMON_DELETE' | translate }}
+                </button>
+            }
+        </div>
+    }
+</div>
+
+@if (data$) {
+    <div class="div_table size">
+        <mat-table mat-table [dataSource]="data$ | async" class="main-table" matSort (matSortChange)="sort($event)">
+
+            <ng-container matColumnDef="id">
+                <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_ID</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{ e.id }}
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="firstName">
+                <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_FIRST_NAME</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{ e.firstName }}
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="lastName">
+                <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_LAST_NAME</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{ e.lastName }}
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="age">
+                <mat-header-cell *matHeaderCellDef mat-sort-header translate>PAYROLL_AGE</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{ e.age }}
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="rate">
+                <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_RATE</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{ e.rate }}
+                </mat-cell>
+            </ng-container>
+
+            <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+            <mat-row class="selectable"
+                     [class.selected]="row.id == selectedReport?.id"
+                     (click)="selectRow(row.id)"
+                     *matRowDef="let row; columns: displayedColumns;">
+            </mat-row>
+        </mat-table>
+    </div>
+    <div class="size b-b-background">
+        <ss-pagination [paginationModel]="paginator"></ss-pagination>
+    </div>
+}

@@ -188,5 +188,8 @@
     "PASSING_GRADE":         "درجة النجاح",
     "DAILY_GRADE":           "الدرجة اليومية",
     "MAX_RATE":              "النسبة القصوى",
-    "RATE_ELEMENT":          "العنصر"
+    "RATE_ELEMENT":          "العنصر",
+    "AGE":                   "اﻷقدمية",
+    "HISTORY":               "تاريخ",
+    "CONFIRM_APPLY":         "هل سيتم تأكيد تحديث البيانات المهنية؟"
 }

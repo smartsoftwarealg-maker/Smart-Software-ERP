@@ -338,6 +338,8 @@ export const GICA_MOTIVES_URL = 'gica-motives';
 export const GICA_FAULTS_URL = 'gica-faults';
 export const GICA_CONSTANTS_URL = 'gica-constants';
 export const GICA_SCALE_URL = 'gica-scale';
+export const GICA_REPORTS_URL = 'gica-reports';
+export const GICA_HISTORY_URL = 'gica-history';
 
 
 // LTM
@@ -670,6 +672,8 @@ export const ABS_GICA_MOTIVES_URL       = '/' + [MAIN_PAGE_URL, GICA_APP_URL, GI
 export const ABS_GICA_FAULTS_URL       = '/' + [MAIN_PAGE_URL, GICA_APP_URL, GICA_FAULTS_URL].join('/');
 export const ABS_GICA_SCALE_URL       = '/' + [MAIN_PAGE_URL, GICA_APP_URL, GICA_SCALE_URL].join('/');
 export const ABS_GICA_CONSTANTS_URL       = '/' + [MAIN_PAGE_URL, GICA_APP_URL, GICA_CONSTANTS_URL].join('/');
+export const ABS_GICA_REPORTS_URL       = '/' + [MAIN_PAGE_URL, GICA_APP_URL, GICA_REPORTS_URL].join('/');
+export const ABS_GICA_HISTORY_URL       = '/' + [MAIN_PAGE_URL, GICA_APP_URL, GICA_HISTORY_URL].join('/');
 
 
 // CMMS

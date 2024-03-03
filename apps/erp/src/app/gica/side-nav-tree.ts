@@ -1,6 +1,11 @@
 import {SideNavNode} from '@ss/common/api-common';
 import {
-    ABS_GICA_CONSTANTS_URL, ABS_GICA_FAULTS_URL, ABS_GICA_MOTIVES_URL, ABS_GICA_SCALE_URL
+    ABS_GICA_CONSTANTS_URL,
+    ABS_GICA_FAULTS_URL,
+    ABS_GICA_HISTORY_URL,
+    ABS_GICA_MOTIVES_URL,
+    ABS_GICA_REPORTS_URL,
+    ABS_GICA_SCALE_URL
 } from '../common';
 
 export const gicaNavTree: SideNavNode = {
@@ -32,6 +37,19 @@ export const gicaNavTree: SideNavNode = {
             accessRights: 'GCFault'
         },
 
+        {
+            name: 'COMMON_UPDATE',
+            icon: 'fa-solid fa-file-chart-column',
+            route: ABS_GICA_REPORTS_URL,
+            accessRights: 'GCReport'
+        },
+
+        {
+            name: 'PAYROLL_HISTORY',
+            icon: 'fa-solid fa-file-chart-column',
+            route: ABS_GICA_HISTORY_URL,
+            accessRights: 'GCArchive'
+        },
 
     ],
     accessRights: 'LTM'

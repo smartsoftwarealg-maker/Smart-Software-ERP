@@ -6,3 +6,5 @@ export * from './lib/constant-detail/constant-detail.component';
 export * from './lib/fault-list/fault-list.component';
 export * from './lib/fault-detail/fault-detail.component';
 export * from './lib/services/fault.service';
+export * from './lib/applications/application.component';
+export * from './lib/applications-archives/application-archive.component';

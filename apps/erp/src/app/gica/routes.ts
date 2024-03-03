@@ -1,4 +1,4 @@
-import { ActivatedRouteSnapshot, CanActivateFn, RouterStateSnapshot, Routes } from "@angular/router";
+import { CanActivateFn, Routes } from '@angular/router';
 
 import {
     ABS_INDEX_URL, LIST_URL,
@@ -7,7 +7,7 @@ import {
     GICA_CONSTANTS_URL,
     GICA_MOTIVES_URL,
     GICA_FAULTS_URL,
-    GICA_SCALE_URL
+    GICA_SCALE_URL, GICA_REPORTS_URL, GICA_HISTORY_URL
 } from '../common';
 
 import {loginGuard} from '../erp-guards';
@@ -18,17 +18,27 @@ import {
     FaultMotiveDetailComponent,
     FaultMotiveListComponent,
     FaultService,
+    ApplicationComponent,
     ScaleDetailComponent,
     ScaleListComponent
 } from 'gica/fault-list';
 import { inject } from '@angular/core';
+import {
+    ApplicationArchiveComponent
+} from 'gica/fault-list';
 
 
-export const faultGuard: CanActivateFn = (route: ActivatedRouteSnapshot, state: RouterStateSnapshot) => inject(FaultService).canActivate();
+export const faultGuard: CanActivateFn = () => inject(FaultService).canActivate();
 
 export const ltmRoutes: Routes = [
     {
         path: GICA_CONSTANTS_URL, component: ConstantDetailComponent, canActivate: [loginGuard]
+    },
+    {
+        path: GICA_REPORTS_URL, component: ApplicationComponent, canActivate: [loginGuard]
+    },
+    {
+        path: GICA_HISTORY_URL, component: ApplicationArchiveComponent, canActivate: [loginGuard]
     },
     {
         path: GICA_MOTIVES_URL,
