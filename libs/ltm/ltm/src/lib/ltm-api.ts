@@ -19,6 +19,7 @@ export const LTM_LINE_SELECT_URL = '/ltm/ltm_selection';
 
 export interface LTMMixture {
     id: number;
+    lineId: number;
     description: string,
     descriptionAr?: string;
 }
@@ -73,6 +74,7 @@ export interface LTMMatterTest {
     maxValue: number;
     variable?: string;
     formula?: string;
+    orderNo: number;
 }
 
 export interface Data {

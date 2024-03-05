@@ -1,10 +1,9 @@
 import { Component, inject, OnDestroy, OnInit } from "@angular/core";
-import { KeepOnToolbar, ShellService, ToolbarButton } from "@ss/common/ui-shell";
-import { ActivatedRoute, RouterOutlet } from "@angular/router";
+import { KeepOnToolbar, ShellService, ToolbarButton } from '@ss/common/ui-shell';
+import { ActivatedRoute, RouterOutlet } from '@angular/router';
 import { filter, map, Observable, of, Subscription } from "rxjs";
 import {Data, LTMLineMatter} from '../ltm-api';
-import { FormControl, ReactiveFormsModule } from "@angular/forms";
-import {LtmLineService} from '../services/ltm-line.service';
+import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import {LtmLineMatterService} from '../services/ltm-line-matter.service';
 import {Chart, ChartItem, registerables} from 'chart.js';
 import {LtmTestingService} from '../services/ltm-testing.service';
@@ -233,7 +232,7 @@ export class LtmReportComponent implements OnInit, OnDestroy {
         const from = this.from.value;
         const to   = this.to.value;
         this.testingSrv
-            .export(from, to)
+            .export(from, to, this.period.value)
             .subscribe({
                 next: blob => {
                  this.shellSrv.setLoading(false);

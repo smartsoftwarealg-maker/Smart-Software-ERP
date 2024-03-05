@@ -38,12 +38,14 @@
                 <mat-card-content>
                     <div class="list_div">
                         <mat-list>
-                            <mat-list-item *ngFor="let m of filteredMatters"
+                            @for (m of (filteredMatters | async); track m.id) {
+                            <mat-list-item
                                            [class.selected]="selectedMatter?.id == m.id"
                                            (click)="onMatter(m)"
                                            class="list-item selectable">
                                 {{ m.description }}
                             </mat-list-item>
+                            }
                         </mat-list>
                     </div>
                 </mat-card-content>
