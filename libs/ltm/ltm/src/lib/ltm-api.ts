@@ -20,6 +20,7 @@ export const LTM_LINE_SELECT_URL = '/ltm/ltm_selection';
 export interface LTMMixture {
     id: number;
     lineId: number;
+    orderNo: number;
     description: string,
     descriptionAr?: string;
 }

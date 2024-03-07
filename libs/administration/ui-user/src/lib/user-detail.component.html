@@ -14,6 +14,11 @@
                 <mat-error *ngIf="form.controls['fullName'].invalid" translate>COMMON_FIELD_MAX_LENGTH</mat-error>
             </mat-form-field>
 
+            <mat-form-field id="fullNameAr" class="default-50 sm-100">
+                <mat-label translate>PAYROLL_NAME_AR</mat-label>
+                <input matInput formControlName="fullNameAr" type="text" maxlength="40">
+            </mat-form-field>
+
             <mat-form-field id="email" class="default-50 sm-100">
                 <mat-label translate>ADMINISTRATION_EMAIL</mat-label>
                 <input matInput formControlName="email" type="text" maxlength="40">

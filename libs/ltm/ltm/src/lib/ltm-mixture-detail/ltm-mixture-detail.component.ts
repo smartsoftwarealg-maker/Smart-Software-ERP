@@ -57,6 +57,7 @@ export class LtmMixtureDetailComponent extends BaseEntityDetailComponent<LTMMixt
         return this.formBuilder.group({
             id:            [b.id],
             lineId:        [b.lineId || this.loginSrv.appCtx.center],
+            orderNo:       [b.orderNo || 1, Validators.required],
             description:   [b.description, Validators.required],
             descriptionAr: [b.descriptionAr],
         });

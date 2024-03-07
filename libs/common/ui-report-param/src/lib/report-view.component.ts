@@ -1,8 +1,8 @@
 import { Component, inject, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
-import { ActivatedRoute, Router, RouterModule } from "@angular/router";
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { LookupsService } from '@ss/common/api-lookup';
-import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
+import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { NestedTreeControl } from '@angular/cdk/tree';
 import {
     ParamAutoCompleteModel,
@@ -15,11 +15,12 @@ import {
 } from '@ss/common/api-reports';
 import { MatTree, MatTreeNestedDataSource } from '@angular/material/tree';
 import {
+    dateTimeToStr,
     HttpService,
     LanguageService,
     LoginService,
     MaterialModule,
-    PaginatorPersistenceService
+    PaginatorPersistenceService, strToDateTime
 } from "@ss/common/api-common";
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { delay, Observable, of } from 'rxjs';
@@ -31,11 +32,11 @@ import { DeviceDetectorService } from 'ngx-device-detector';
 import { DefaultReportService } from '@ss/common/ui-default-report-component';
 import { Directory, Filesystem } from '@capacitor/filesystem';
 import { FileOpener } from '@capacitor-community/file-opener';
-import { CommonModule } from "@angular/common";
-import { CommonUiLangModule } from "@ss/common/ui-lang";
-import { UiPaginationModule } from "@ss/common/ui-pagination";
-import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
-import { CommonUiAutoCompleteModule } from "@ss/common/ui-auto-complete";
+import { CommonModule } from '@angular/common';
+import { CommonUiLangModule } from '@ss/common/ui-lang';
+import { UiPaginationModule } from '@ss/common/ui-pagination';
+import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
+import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
 
 
 @Component({
@@ -252,14 +253,16 @@ export class ReportViewComponent extends BaseEntityListComponent<ReportParam> im
         return this.data
             .filter(p => this.form.controls[p.name] && this.form.controls[p.name].value !== null)
             .map(p => {
-                return { name: p.name, value: this.defaultValue(p.name) };
+                return { name: p.name, value: this.defaultValue(p.name, p.typeName) };
             });
     }
 
-    private defaultValue(typeName: string): any {
-        const value = this.form.controls[typeName].value;
-        return value === false? 'false' : value === true? 'true' : value;
+    private defaultValue(ctrlName: string, typeName: string): any {
+        const value = this.form.controls[ctrlName].value;
+        return typeName === 'java.sql.Timestamp'? dateTimeToStr(value).substring(0, 19):
+            value === false? 'false' : value === true? 'true' : value;
     }
+
     private async writeThenOpenFile(fileBlob: any): Promise<void> {
         const str = await this.blobToBse64(fileBlob);
         const temp1 = await Filesystem.writeFile({
