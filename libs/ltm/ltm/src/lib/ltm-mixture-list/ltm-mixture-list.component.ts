@@ -41,6 +41,7 @@ import { CommonUiHourPickerModule } from "@ss/common/ui-hour-picker";
 export class LTMMixtureListComponent extends BaseEntityListComponent<LTMMixture> {
 
     displayedColumns = [
+        'orderNo',
         'description',
     ];
 

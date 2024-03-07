@@ -34,49 +34,62 @@
 
             <div *ngFor="let d of data">
 
-<!--                <mat-form-field *ngIf="d.valueList != null">-->
-<!--                    <mat-label translate>{{ d.description }}</mat-label>-->
-<!--                    <mat-select formControlName="{{ d.name }}">-->
-<!--                        <mat-option *ngFor="let s of d.valueList" [value]="s['id']">-->
-<!--                            {{ s['description'] }}-->
-<!--                        </mat-option>-->
-<!--                    </mat-select>-->
-<!--                </mat-form-field>-->
+                <!--                <mat-form-field *ngIf="d.valueList != null">-->
+                <!--                    <mat-label translate>{{ d.description }}</mat-label>-->
+                <!--                    <mat-select formControlName="{{ d.name }}">-->
+                <!--                        <mat-option *ngFor="let s of d.valueList" [value]="s['id']">-->
+                <!--                            {{ s['description'] }}-->
+                <!--                        </mat-option>-->
+                <!--                    </mat-select>-->
+                <!--                </mat-form-field>-->
+                @if (d.lookupTable) {
+                    <mat-form-field>
+                        <mat-label translate>{{ d.description }}</mat-label>
+                        <ss-auto-complete matInput
+                                          [model]="d.lookupModel"
+                                          formControlName="{{ d.name }}">
+                        </ss-auto-complete>
+                    </mat-form-field>
+                }
+                @if (d.typeName == 'java.lang.Integer' && d.lookupTable == null) {
+                    <mat-form-field>
+                        <mat-label translate>{{ d.description }}</mat-label>
+                        <input matInput formControlName="{{ d.name }}" type="number">
+                        <mat-error *ngIf="form.controls[d.name].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
+                    </mat-form-field>
+                }
+                @if (d.typeName == 'java.lang.Double') {
+                    <mat-form-field>
+                        <mat-label translate>{{ d.description }}</mat-label>
+                        <input matInput formControlName="{{ d.name }}" type="number">
+                        <mat-error *ngIf="form.controls[d.name].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
+                    </mat-form-field>
+                }
+                @if (d.typeName == 'java.lang.Boolean') {
+                    <div class="boolean-param">
+                        <mat-checkbox formControlName="{{ d.name }}"> {{ d.description }}</mat-checkbox>
+                    </div>
+                }
+                @if (d.typeName == 'java.lang.String') {
+                    <mat-form-field>
+                        <mat-label translate>{{ d.description }}</mat-label>
+                        <input matInput formControlName="{{ d.name }}" type="text">
+                        <mat-error *ngIf="form.controls[d.name].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
+                    </mat-form-field>
+                }
+                @if (d.typeName == 'java.util.Date') {
+                    <mat-form-field>
+                        <mat-label translate>{{ d.description }}</mat-label>
+                        <ss-date-picker formControlName="{{ d.name }}"></ss-date-picker>
+                    </mat-form-field>
+                }
 
-                <mat-form-field *ngIf="d.lookupTable">
-                    <mat-label translate>{{ d.description }}</mat-label>
-                    <ss-auto-complete matInput
-                                      [model]="d.lookupModel"
-                                      formControlName="{{ d.name }}">
-                    </ss-auto-complete>
-                </mat-form-field>
-
-                <mat-form-field *ngIf="d.typeName == 'java.lang.Integer' && d.lookupTable == null">
-                    <mat-label translate>{{ d.description }}</mat-label>
-                    <input matInput formControlName="{{ d.name }}" type="number">
-                    <mat-error *ngIf="form.controls[d.name].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
-                </mat-form-field>
-
-                <mat-form-field *ngIf="d.typeName == 'java.lang.Double'">
-                    <mat-label translate>{{ d.description }}</mat-label>
-                    <input matInput formControlName="{{ d.name }}" type="number">
-                    <mat-error *ngIf="form.controls[d.name].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
-                </mat-form-field>
-
-                <div *ngIf="d.typeName == 'java.lang.Boolean'" class="boolean-param">
-                    <mat-checkbox formControlName="{{ d.name }}"> {{ d.description }}</mat-checkbox>
-                </div>
-
-                <mat-form-field *ngIf="d.typeName == 'java.lang.String'">
-                    <mat-label translate>{{ d.description }}</mat-label>
-                    <input matInput formControlName="{{ d.name }}" type="text">
-                    <mat-error *ngIf="form.controls[d.name].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
-                </mat-form-field>
-
-                <mat-form-field *ngIf="d.typeName == 'java.util.Date'">
-                    <mat-label translate>{{ d.description }}</mat-label>
-                    <ss-date-picker formControlName="{{ d.name }}"></ss-date-picker>
-                </mat-form-field>
+                @if (d.typeName == 'java.sql.Timestamp') {
+                    <mat-form-field>
+                        <mat-label translate>{{ d.description }}</mat-label>
+                        <ss-date-picker formControlName="{{ d.name }}" type="datetime"></ss-date-picker>
+                    </mat-form-field>
+                }
 
             </div>
             <div class="btn-div">
@@ -110,7 +123,8 @@
                     style="display: block; border: none;" height="100%" width="100%">
                 This browser does not support PDFs. Please download the PDF to view it:
             </iframe>
-            <div *ngIf="form.controls['reportType']?.value == 'HTML'" [innerHTML]="htmlSrc" class="html-report"
+            <div *ngIf="form.controls['reportType']?.value == 'HTML'" [innerHTML]="htmlSrc"
+                 class="html-report"
                  style="display: block; height: 100vh; width: 100vw;">
             </div>
         </div>

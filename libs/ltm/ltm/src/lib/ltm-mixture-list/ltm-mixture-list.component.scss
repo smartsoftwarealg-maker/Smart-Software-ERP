@@ -7,3 +7,11 @@
     min-height: calc(100% - 86px);
     overflow-y: auto;
 }
+
+.mat-column-description {
+    flex: 2 1 250px;
+}
+
+.mat-column-orderNo {
+    flex: 1 1 120px;
+}

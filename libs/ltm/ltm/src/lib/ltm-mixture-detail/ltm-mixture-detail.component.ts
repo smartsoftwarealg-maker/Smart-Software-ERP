@@ -7,7 +7,7 @@ import { ReactiveFormsModule, UntypedFormBuilder, Validators } from "@angular/fo
 import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
 import {filter, Observable} from 'rxjs';
 import { CommonModule } from "@angular/common";
-import { MaterialModule } from "@ss/common/api-common";
+import { LoginService, MaterialModule } from "@ss/common/api-common";
 import { CommonUiLangModule } from "@ss/common/ui-lang";
 import { UiPaginationModule } from "@ss/common/ui-pagination";
 import { LogisticsUiDocInfoModule } from "@ss/logistics/ui-doc-info";
@@ -39,6 +39,7 @@ import { LtmMixtureDetailService } from "../services/ltm-mixture-detail.service"
     ],
 })
 export class LtmMixtureDetailComponent extends BaseEntityDetailComponent<LTMMixture> implements OnInit {
+    private loginSrv = inject(LoginService);
     private detailSrv = inject(LtmMixtureDetailService);
 
     constructor(
@@ -47,15 +48,16 @@ export class LtmMixtureDetailComponent extends BaseEntityDetailComponent<LTMMixt
         public override snackBarSrv: SnackBarService,
         public override route: ActivatedRoute,
         public override formBuilder: UntypedFormBuilder,
-        public override confirmationSrv: ConfirmationDialogService,
-        private router: Router) {
-        super(entitySrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'LTM_MATTERS');
+        public override confirmationSrv: ConfirmationDialogService) {
+        super(entitySrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'LTM_MIXTURES');
     }
 
     public override setupForm(b: LTMMixture) {
 
         return this.formBuilder.group({
             id:            [b.id],
+            lineId:        [b.lineId || this.loginSrv.appCtx.center],
+            orderNo:       [b.orderNo || 1, Validators.required],
             description:   [b.description, Validators.required],
             descriptionAr: [b.descriptionAr],
         });

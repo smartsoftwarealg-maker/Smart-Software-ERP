@@ -51,6 +51,7 @@ export class LtmMatterTestListComponent implements OnInit {
     readonly searchText = new FormControl<string>('');
 
     displayedColumns = [
+        'orderNo',
         'testDescription',
         'periodDescription',
         'minValue',

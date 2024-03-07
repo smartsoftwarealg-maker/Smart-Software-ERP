@@ -34,6 +34,13 @@
             </mat-cell>
         </ng-container>
 
+        <ng-container matColumnDef="orderNo">
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_POSITION</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.orderNo}}
+            </mat-cell>
+        </ng-container>
+
         <ng-container matColumnDef="periodDescription">
             <mat-header-cell *matHeaderCellDef mat-sort-header translate>LTM_PERIOD</mat-header-cell>
             <mat-cell *matCellDef="let e">

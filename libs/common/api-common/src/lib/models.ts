@@ -35,6 +35,7 @@ export interface User {
     id: number;
     description: string;
     fullName: string;
+    fullNameAr?: string;
     manager: boolean;
     blocked: boolean;
     responsible?: boolean;

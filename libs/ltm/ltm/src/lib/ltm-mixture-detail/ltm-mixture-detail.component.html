@@ -1,8 +1,13 @@
 <mat-card>
     <form *ngIf="form !== null" novalidate [formGroup]="form">
         <mat-form-field class="default-100">
+            <mat-label translate>COMMON_POSITION</mat-label>
+            <input matInput formControlName="orderNo" type="number" required autofocus>
+        </mat-form-field>
+
+        <mat-form-field class="default-100">
             <mat-label translate>COMMON_DESCRIPTION</mat-label>
-            <input matInput formControlName="description" type="text" required autofocus>
+            <input matInput formControlName="description" type="text" required >
         </mat-form-field>
 
     </form>

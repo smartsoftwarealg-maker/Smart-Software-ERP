@@ -9,7 +9,7 @@ import {
 } from '../common';
 
 export const gicaNavTree: SideNavNode = {
-    name: 'GICA-CAREER',
+    name: 'GICACARRER',
     icon: 'fa-solid fa-stairs',
     children: [
         {

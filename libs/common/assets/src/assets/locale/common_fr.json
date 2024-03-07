@@ -324,5 +324,6 @@
     "OK":                         "OK",
     "FOLDER":                     "Dossier",
     "REPORT_PRIVILEGES":          "Privilèges Etats",
-    "CC_GROUPS":                  "Groupes de coûts"
+    "CC_GROUPS":                  "Groupes de coûts",
+    "POSITION":                   "Pos."
 }

@@ -55,7 +55,8 @@ export class LtmMatterTestDetailComponent implements OnInit {
         minValue:    [0, Validators.required],
         maxValue:    [0, Validators.required],
         optValue:    [0, Validators.required],
-        periodicity: [0, Validators.required]
+        periodicity: [0, Validators.required],
+        orderNo:     [0, Validators.required],
     });
 
     constructor(private entitySrv: LtmMatterTestService,
@@ -82,6 +83,7 @@ export class LtmMatterTestDetailComponent implements OnInit {
                 this.form.controls.minValue.setValue(matter.minValue);
                 this.form.controls.optValue.setValue(matter.optValue);
                 this.form.controls.maxValue.setValue(matter.maxValue);
+                this.form.controls.orderNo.setValue(matter.orderNo);
             });
     }
 

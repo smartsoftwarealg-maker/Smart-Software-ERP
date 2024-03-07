@@ -71,7 +71,7 @@ function isTimeValid(h: number, m: number, s: number) {
 /*
  * This code is long and stupid, I know. But it allows for mistakes like 2018-01/02 to be valid
  */
-export function strToDateTime(s: string) {
+export function strToDateTime(s: string): Date {
     if (s.match(/^\d+[-\/\.]\d+[-\/\.]\d+$/g)) {
         const args = s.match(/\d+/g);
         if (args[0].length == 4) {
@@ -174,7 +174,7 @@ export function dateToStr(date: Date) {
     }
 }
 
-export function dateTimeToStr(dDate: Date) {
+export function dateTimeToStr(dDate: Date): string {
     const date = toDate(dDate);
     const d = dateToStr(date);
     if (d != null) {

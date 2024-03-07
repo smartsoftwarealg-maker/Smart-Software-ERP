@@ -27,8 +27,9 @@ export class LtmTestingService extends BaseEntityService<LTMTesting> {
         return this.httpSrv.get<Data[]>('/ltm/data/' + period, params);
     }
 
-    export(from: Date, to: Date): Observable<Blob> {
+    export(from: Date, to: Date, periodicity: number): Observable<Blob> {
         const params = new HttpParams()
+            .set('periodicity', periodicity)
             .set('from', DateUtil.dateToStr(new Date(from)))
             .set('to', DateUtil.dateToStr(new Date(to)));
         return this.httpSrv.getBlob('/ltm/excel', params);

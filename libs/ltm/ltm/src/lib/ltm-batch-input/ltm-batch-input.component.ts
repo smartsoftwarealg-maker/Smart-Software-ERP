@@ -8,7 +8,7 @@ import { LtmLineMatterService } from "../services/ltm-line-matter.service";
 import { LtmMatterTestService } from "../services/ltm-matter-test.service";
 import { LtmBatchService } from "../services/ltm-batch.service";
 import { LtmPeriodicityService } from "../services/ltm-periodicity.service";
-import { map, Observable, of, Subscription, switchMap } from "rxjs";
+import { filter, map, Observable, of, Subscription, switchMap } from 'rxjs';
 import { Lookup } from "@ss/common/api-lookup";
 import { debounceTime, distinctUntilChanged, tap } from 'rxjs/operators';
 import { LtmTestService } from '../services/ltm-test.service';
@@ -60,8 +60,8 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
   private formulaMap = new Map<string, string>();
   private missingVariables: string[] = [];
 
-  matters: LTMLineMatter[] = [];
-  filteredMatters: LTMLineMatter[] = [];
+  // matters: LTMLineMatter[] = [];
+  filteredMatters: Observable<LTMLineMatter[]> = null;
   periods$: Observable<Lookup[]> = of([]);
   searchField = new FormControl<string | null>("");
 
@@ -121,10 +121,6 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
       this.shellSrv.setButtons([this.saveButton, this.deleteButton]);
     }
 
-    this.matterSrv
-      .getList(0, 50)
-      .subscribe(res => this.filteredMatters = this.matters = res.body);
-
     this.subscriptions.push(
       this.form
         .valueChanges
@@ -140,11 +136,9 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
           debounceTime(300),
           distinctUntilChanged())
         .subscribe(res =>
-          this.filteredMatters = this.matters
-            .filter(e =>
-              res == null ||
-              res.length == 0 ||
-              e.description?.toLowerCase()?.indexOf(res.toLowerCase()) >= 0))
+          this.filteredMatters = this.matterSrv
+              .getList(0, 50, res)
+              .pipe(map(res => res.body)))
     );
   }
 

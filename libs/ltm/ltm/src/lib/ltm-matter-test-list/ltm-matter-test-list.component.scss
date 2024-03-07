@@ -14,3 +14,18 @@
     align-items: center;
     gap: 1em;
 }
+
+.mat-column-orderNo {
+    flex: 1 1 90px;
+}
+
+.mat-column-testDescription,
+.mat-column-periodDescription {
+    flex: 2 1 200px;
+}
+
+.mat-column-minValue,
+.mat-column-optValue,
+.mat-column-maxValue {
+    flex: 1 1 100px;
+}
