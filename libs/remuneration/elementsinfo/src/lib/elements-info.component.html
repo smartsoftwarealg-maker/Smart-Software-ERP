@@ -1,23 +1,23 @@
 <div class="container">
     <div class="main-table">
-        <mat-table mat-table [dataSource]="data">
+        <mat-table mat-table [dataSource]="data" matSort (matSortChange)="sort($event)">
 
             <ng-container matColumnDef="field">
-                <mat-header-cell *matHeaderCellDef translate>REMUN_FIELD</mat-header-cell>
+                <mat-header-cell *matHeaderCellDef mat-sort-header translate>REMUN_FIELD</mat-header-cell>
                 <mat-cell *matCellDef="let e">
                     {{e.field}}
                 </mat-cell>
             </ng-container>
 
             <ng-container matColumnDef="description">
-                <mat-header-cell *matHeaderCellDef translate>COMMON_DESCRIPTION</mat-header-cell>
+                <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_DESCRIPTION</mat-header-cell>
                 <mat-cell *matCellDef="let e">
                     {{e.description}}
                 </mat-cell>
             </ng-container>
 
             <ng-container matColumnDef="fixed">
-                <mat-header-cell *matHeaderCellDef translate>REMUN_FIXED</mat-header-cell>
+                <mat-header-cell *matHeaderCellDef mat-sort-header translate>REMUN_FIXED</mat-header-cell>
                 <mat-cell *matCellDef="let e">
                     <mat-checkbox [class.mat-checkbox-disabled]="false" disabled="true"
                                   [checked]="e.fixed"></mat-checkbox>
@@ -25,7 +25,7 @@
             </ng-container>
 
             <ng-container matColumnDef="specialFixed">
-                <mat-header-cell *matHeaderCellDef translate>REMUN_SPECIAL_FIXED</mat-header-cell>
+                <mat-header-cell *matHeaderCellDef mat-sort-header translate>REMUN_SPECIAL_FIXED</mat-header-cell>
                 <mat-cell *matCellDef="let e">
                     <mat-checkbox [class.mat-checkbox-disabled]="false" disabled="true"
                                   [checked]="e.specialFixed"></mat-checkbox>
@@ -33,7 +33,7 @@
             </ng-container>
 
             <ng-container matColumnDef="common">
-                <mat-header-cell *matHeaderCellDef translate>REMUN_COLLECTIVE</mat-header-cell>
+                <mat-header-cell *matHeaderCellDef mat-sort-header translate>REMUN_COLLECTIVE</mat-header-cell>
                 <mat-cell *matCellDef="let e">
                     <mat-checkbox [class.mat-checkbox-disabled]="false" disabled="true"
                                   [checked]="e.common"></mat-checkbox>
@@ -41,7 +41,7 @@
             </ng-container>
 
             <ng-container matColumnDef="gridComputed">
-                <mat-header-cell *matHeaderCellDef translate>REMUN_GRID_COMPUTED</mat-header-cell>
+                <mat-header-cell *matHeaderCellDef mat-sort-header translate>REMUN_GRID_COMPUTED</mat-header-cell>
                 <mat-cell *matCellDef="let e">
                     <mat-checkbox [class.mat-checkbox-disabled]="false" disabled="true"
                                   [checked]="e.gridComputed"></mat-checkbox>
@@ -49,7 +49,7 @@
             </ng-container>
 
             <ng-container matColumnDef="postComputed">
-                <mat-header-cell *matHeaderCellDef translate>REMUN_POST_COMPUTED</mat-header-cell>
+                <mat-header-cell *matHeaderCellDef mat-sort-header translate>REMUN_POST_COMPUTED</mat-header-cell>
                 <mat-cell *matCellDef="let e">
                     <mat-checkbox [class.mat-checkbox-disabled]="false" disabled="true"
                                   [checked]="e.postComputed"></mat-checkbox>
@@ -57,14 +57,14 @@
             </ng-container>
 
             <ng-container matColumnDef="minValue">
-                <mat-header-cell *matHeaderCellDef translate>REMUN_MIN</mat-header-cell>
+                <mat-header-cell *matHeaderCellDef mat-sort-header translate>REMUN_MIN</mat-header-cell>
                 <mat-cell *matCellDef="let e">
                     {{e.minValue | number: '1.2-2'}}
                 </mat-cell>
             </ng-container>
 
             <ng-container matColumnDef="maxValue">
-                <mat-header-cell *matHeaderCellDef translate>REMUN_MIN</mat-header-cell>
+                <mat-header-cell *matHeaderCellDef mat-sort-header translate>REMUN_MIN</mat-header-cell>
                 <mat-cell *matCellDef="let e">
                     {{e.maxValue | number: '1.2-2'}}
                 </mat-cell>
