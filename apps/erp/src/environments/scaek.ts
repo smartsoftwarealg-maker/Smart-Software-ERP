@@ -14,12 +14,13 @@ import {
     SCHEDULED_SALES_APP_URL,
     WORK_FLOW_APP_URL,
     ARCH_VIEWER_URL,
-    GICA_APP_URL
+    GICA_APP_URL, COSTING_APP_URL
 } from '../app/common';
 import {hrLookupNavTree} from '../app/hr-lookups/side-nav-tree';
 import {workflowNavTree} from '../app/workflow/side-nav-tree';
 import { aaNavTree } from '../app/archive-viewer/side-nav-tree';
 import { gicaNavTree } from '../app/gica/side-nav-tree';
+import { costingNavTree } from '../app/costing/side-nav-tree';
 
 export const environment = {
     production: true,
@@ -33,6 +34,7 @@ export const navBar = [
     payrollNavTree,
     gicaNavTree,
     workflowNavTree,
+    costingNavTree,
     aaNavTree
 ];
 
@@ -107,6 +109,10 @@ export const appRoutes: Routes =  [
     {
         path: WORK_FLOW_APP_URL,
         loadChildren: () => import('../app/workflow/workflow.module').then(m => m.WorkflowModule)
+    },
+    {
+        path: COSTING_APP_URL,
+        loadChildren: () => import('../app/costing/costing.module').then(m => m.CostingModule)
     },
     { path: '', redirectTo: INDEX_PAGE_URL, pathMatch: 'full' },
     { path: '**', redirectTo: INDEX_PAGE_URL, pathMatch: 'full' }

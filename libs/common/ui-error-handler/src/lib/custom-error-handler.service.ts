@@ -23,7 +23,6 @@ export class CustomErrorHandlerService {
 
     // todo: Push error into a queue instead of keeping the last one only
     public setError(err: HttpErrorResponse | any) {
-        console.log(err);
         this.status = err == null || err.status == null
             ? 0
             : err.status;

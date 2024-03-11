@@ -17,7 +17,7 @@
 
 .div_table {
     overflow-y: auto;
-    height: calc(100% - 90px)
+    height: calc(100% - 140px)
 }
 
 .mat-column-id,

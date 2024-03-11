@@ -18,7 +18,7 @@
         <mat-radio-group aria-label="Select log type" formControlName="options" (change)="refresh()">
             <mat-radio-button value="1" [checked]="form.controls['options']?.value ===  1" translate> COMMON_WRITE</mat-radio-button>
             <mat-radio-button value="2" [checked]="form.controls['options']?.value ===  2" translate>COMMON_EDIT</mat-radio-button>
-            <mat-radio-button value="3" [checked]="form.controls['options']?.value ===  3"translate>COMMON_DELETE</mat-radio-button>
+            <mat-radio-button value="3" [checked]="form.controls['options']?.value ===  3" translate>COMMON_DELETE</mat-radio-button>
         </mat-radio-group>
     </div>
     <mat-tree [dataSource]="dataSource"
