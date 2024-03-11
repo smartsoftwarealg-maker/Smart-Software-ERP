@@ -25,6 +25,7 @@ export interface Constant {
 export interface Fault {
     id: number;
     parentId: number;
+    date: Date;
     motive: number;
     count: number;
     motiveDescription?: string;

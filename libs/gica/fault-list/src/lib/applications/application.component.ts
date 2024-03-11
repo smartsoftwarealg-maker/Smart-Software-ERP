@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CommonUiLangModule } from '@ss/common/ui-lang';
 import {
@@ -16,7 +16,7 @@ import { MatCard, MatCardContent } from '@angular/material/card';
 import { MatError, MatFormField, MatLabel } from '@angular/material/form-field';
 import { MatInput } from '@angular/material/input';
 import { ReportService } from '../services/report.service';
-import { map, Observable, of, switchMap } from 'rxjs';
+import { map, Observable, of, switchMap, tap } from 'rxjs';
 import { HttpParams } from '@angular/common/http';
 import { Report } from '../gica-careers-api';
 import { MatButton } from '@angular/material/button';
@@ -24,6 +24,7 @@ import { PaginationModel } from '@ss/common/api-common';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute } from '@angular/router';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
+import { MatProgressSpinner } from '@angular/material/progress-spinner';
 
 @Component({
     selector: 'ss-gica-constant-detail',
@@ -49,7 +50,7 @@ import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
         MatInput,
         MatLabel,
         ReactiveFormsModule,
-        MatButton, MatHeaderCellDef],
+        MatButton, MatHeaderCellDef, MatProgressSpinner],
     templateUrl: './application.component.html',
     styleUrl: './application.component.css'
 })
@@ -61,7 +62,7 @@ export class ApplicationComponent implements OnInit {
     private today = new Date();
     private reportSrv = inject(ReportService);
 
-    paginator = PaginationModel.newInstance();
+    paginator = PaginationModel.newInstance({page: 1, pageSize: 10, elementCount: 0});
     displayedColumns = [
         'id',
         'firstName',
@@ -71,6 +72,8 @@ export class ApplicationComponent implements OnInit {
     ];
     selectedReport: Report | null = null;
 
+    processing = signal(false);
+
     data$:Observable<Report[]> | null = null;
     year = new FormControl<number>(this.today.getFullYear());
 
@@ -78,8 +81,10 @@ export class ApplicationComponent implements OnInit {
         const params = new HttpParams().set('year', this.year.value);
         const params1 = this.reportSrv.sortColumn? params.set('orderBy', this.reportSrv.sortColumn) : params;
         this.data$ = this.reportSrv
-            .getList(1, 9999, null, this.reportSrv.sortColumn, params1)
-            .pipe(map(res => res.body));
+            .getList(this.paginator.page - 1, this.paginator.pageSize, null, this.reportSrv.sortColumn, params1)
+            .pipe(
+                tap(res => this.paginator.elementCount = res.itemCount),
+                map(res => res.body));
     }
 
     sort(event: Sort) {
@@ -92,6 +97,7 @@ export class ApplicationComponent implements OnInit {
     }
 
     ngOnInit() {
+        this.paginator.onChange = () => this.refresh();
         this.shellSrv.setTitle('COMMON_UPDATE');
         this.shellSrv.setGoBackPath('..', this.route);
     }
@@ -99,11 +105,14 @@ export class ApplicationComponent implements OnInit {
     apply() {
         this.confirmationSrv
             .confirm('PAYROLL_GICA_CAREER', 'PAYROLL_CONFIRM_APPLY')
-            .pipe(switchMap(res => res? this.reportSrv.apply(this.year.value) : of({count: 0})))
+            .pipe(
+                tap(res => this.processing.set(res)),
+                switchMap(res => res? this.reportSrv.apply(this.year.value) : of({count: 0})))
             .subscribe(res => {
                 if (res?.count) {
                     this.snackBarSrv.showSuccessMessage();
                 }
+                this.processing.set(false);
                 this.refresh();
             });
     }
@@ -111,11 +120,13 @@ export class ApplicationComponent implements OnInit {
     delete() {
         this.confirmationSrv
             .confirmDelete()
-            .pipe(switchMap(res => res? this.reportSrv.delete(this.year.value) : of({count: 0})))
+            .pipe(tap(res => this.processing.set(res)),
+                switchMap(res => res? this.reportSrv.delete(this.year.value) : of({count: 0})))
             .subscribe(res => {
                 if (res?.count) {
                     this.snackBarSrv.showSuccessMessage();
                 }
+                this.processing.set(false);
                 this.refresh();
             });
     }

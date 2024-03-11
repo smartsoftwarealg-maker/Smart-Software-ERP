@@ -15,7 +15,7 @@ import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { MatCard, MatCardContent } from '@angular/material/card';
 import { MatError, MatFormField, MatLabel } from '@angular/material/form-field';
 import { MatInput } from '@angular/material/input';
-import { map, Observable, of, switchMap } from 'rxjs';
+import { map, Observable, of, switchMap, tap } from 'rxjs';
 import { HttpParams } from '@angular/common/http';
 import { Application, Report } from '../gica-careers-api';
 import { MatButton } from '@angular/material/button';
@@ -61,7 +61,7 @@ export class ApplicationArchiveComponent implements OnInit {
     private today = new Date();
     private archiveSrv = inject(ArchiveService);
 
-    paginator = PaginationModel.newInstance();
+    paginator = PaginationModel.newInstance( { page: 1, pageSize: 15, elementCount: 0 });
     displayedColumns = [
         'id',
         'firstName',
@@ -75,6 +75,7 @@ export class ApplicationArchiveComponent implements OnInit {
     year = new FormControl<number>(this.today.getFullYear());
 
     refresh() {
+        this.data$ = null;
         const yyyy = this.year.value;
         this.archiveSrv.setParentId(yyyy);
         const params = new HttpParams().set('year', yyyy);
@@ -82,7 +83,9 @@ export class ApplicationArchiveComponent implements OnInit {
         this.data$ = this
             .archiveSrv
             .getList(this.paginator.page - 1, this.paginator.pageSize, null, this.archiveSrv.sortColumn, params1)
-            .pipe(map(res => res.body));
+            .pipe(
+                tap(res => this.paginator.elementCount = res.itemCount),
+                map(res => res.body));
     }
 
     sort(event: Sort) {
@@ -95,6 +98,7 @@ export class ApplicationArchiveComponent implements OnInit {
     }
 
     ngOnInit() {
+        this.paginator.onChange = () => this.refresh();
         this.shellSrv.setTitle('PAYROLL_HISTORY');
         this.shellSrv.setGoBackPath('..', this.route);
     }

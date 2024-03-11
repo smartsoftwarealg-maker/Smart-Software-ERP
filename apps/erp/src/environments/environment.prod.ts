@@ -81,6 +81,7 @@ export const navBar = [
     payrollNavTree,
     attendanceNavTree,
     missionsNavTree,
+    gicaNavTree,
     webArchNavTree,
     accountingNavTree,
     assetsNavTree,

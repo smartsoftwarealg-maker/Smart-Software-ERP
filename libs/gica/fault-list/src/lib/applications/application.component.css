@@ -17,7 +17,7 @@
 
 .div_table {
     overflow-y: auto;
-    height: calc(100% - 90px)
+    height: calc(100% - 136px)
 }
 
 .mat-column-id,
@@ -29,4 +29,12 @@
 .mat-column-firstName,
 .mat-column-lastName {
     flex: 2 1 120px;
+}
+
+.processing_div {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

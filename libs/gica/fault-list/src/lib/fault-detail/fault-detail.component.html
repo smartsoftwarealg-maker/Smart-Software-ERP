@@ -10,9 +10,13 @@
                 </ss-auto-complete>
             </mat-form-field>
 
+            <mat-form-field class="default-100">
+                <mat-label translate>COMMON_DATE</mat-label>
+                <ss-date-picker formControlName="date"></ss-date-picker>
+            </mat-form-field>
 
             <mat-form-field class="default-100">
-                <mat-label translate>PAYROLL_EMPLOYEE</mat-label>
+                <mat-label translate>COMMON_MOTIVE</mat-label>
                 <ss-auto-complete matInput
                                   [model]="motiveLookup"
                                   formControlName="motive">
@@ -21,7 +25,7 @@
 
 
             <mat-form-field id="count" class="default-100">
-                <mat-label translate>PAYROLL_FAULT_COUNT</mat-label>
+                <mat-label translate>COMMON_DAYS</mat-label>
                 <input matInput formControlName="count" type="number">
                 <mat-error *ngIf="form.controls['count'].invalid" translate>COMMON_FIELD_MAX_LENGTH
                 </mat-error>
