@@ -9,6 +9,8 @@ import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {LookupsService} from '@ss/common/api-lookup';
 import {PayrollFormulasService} from './payroll-formulas.service';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
+import { MonthSelectorComponent } from "@ss/remuneration/payroll-month";
+import { LoginService } from "@ss/common/api-common";
 
 @Component({
   selector: 'ss-formula-detail',
@@ -16,6 +18,7 @@ import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
   styleUrls: ['./formula-detail.component.scss']
 })
 export class FormulaDetailComponent extends BaseEntityDetailComponent<Formula> {
+    private loginSrv = inject(LoginService);
     private elementSrv = inject(ElementsInfoService);
     elementLookup = new DefaultAutoCompleteModel(this.elementSrv, 'field', 'description');
 
@@ -39,7 +42,7 @@ export class FormulaDetailComponent extends BaseEntityDetailComponent<Formula> {
     setupForm(e: Formula): UntypedFormGroup {
         return this.formBuilder.group({
             id: [e.id],
-            archiveYear: [e.archiveYear],
+            archiveYear: [e.archiveYear || this.loginSrv.appCtx.payMonth],
             description: [e.description, Validators.required],
             variable: [e.variable, Validators.required],
             descriptionAr: [e.descriptionAr],
@@ -52,4 +55,8 @@ export class FormulaDetailComponent extends BaseEntityDetailComponent<Formula> {
         });
     }
 
+
+    readForm(): Formula {
+        return this.form.getRawValue();
+    }
 }
