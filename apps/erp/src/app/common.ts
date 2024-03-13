@@ -353,6 +353,8 @@ export const LTM_CHARTS_URL      = 'ltm-reports';
 export const LTM_BATCH_URL       = 'ltm-batch';
 export const LTM_TEST_TYPE_URL   = 'test-types';
 export const LTM_MIXTURE_URL   = 'ltm-mixtures';
+export const LTM_ANOMALIES_URL_URL   = 'ltm-anomalies';
+export const LTM_TESTING_ANOMALIES_URL   = 'ltm-testing-anomalies';
 
 // CMMS
 export const CMMS_PERMIT_TYPE_URL        = 'permit-types';
@@ -666,6 +668,8 @@ export const ABS_LTM_CHARTS_URL        = '/' + [MAIN_PAGE_URL, LTM_APP_URL, LTM_
 export const ABS_LTM_BATCH_TESTINGS_URL = '/' + [MAIN_PAGE_URL, LTM_APP_URL, LTM_BATCH_URL].join('/');
 export const ABS_LTM_DASHBOARD_URL            = '/' + [MAIN_PAGE_URL, LTM_APP_URL, DASHBOARD_URL].join('/');
 export const ABS_LTM_UNIT_URL            = '/' + [MAIN_PAGE_URL, LTM_APP_URL, LTM_UNIT_URL].join('/');
+export const ABS_LTM_ANOMALY_URL            = '/' + [MAIN_PAGE_URL, LTM_APP_URL, LTM_ANOMALIES_URL_URL].join('/');
+export const ABS_LTM_TESTINGS_ANOMALIES_URL            = '/' + [MAIN_PAGE_URL, LTM_APP_URL, LTM_TESTING_ANOMALIES_URL].join('/');
 
 // GICA
 export const ABS_GICA_MOTIVES_URL       = '/' + [MAIN_PAGE_URL, GICA_APP_URL, GICA_MOTIVES_URL].join('/');

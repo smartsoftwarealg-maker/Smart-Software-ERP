@@ -1,0 +1,23 @@
+<mat-card>
+    <form *ngIf="form !== null" novalidate [formGroup]="form">
+
+        <mat-form-field class="default-50 sm-100">
+            <mat-label translate>ASSET_RECEPTION_DATE</mat-label>
+            <ss-date-picker formControlName="date" type="datetime" autofocus></ss-date-picker>
+        </mat-form-field>
+
+        <mat-form-field id="agentType" class="default-100">
+            <mat-label translate>LTM_ANOMALY</mat-label>
+            <ss-auto-complete matInput
+                              formControlName="anomalyId"
+                              [model]="anomalyLookup">
+            </ss-auto-complete>
+        </mat-form-field>
+
+        <mat-form-field class="default-100">
+            <mat-label translate>COMMON_DESCRIPTION</mat-label>
+            <input matInput formControlName="memo" type="text" >
+        </mat-form-field>
+
+    </form>
+</mat-card>

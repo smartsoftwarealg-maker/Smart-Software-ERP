@@ -39,8 +39,7 @@ import { CommonUiHourPickerModule } from "@ss/common/ui-hour-picker";
         AppArchiveModule,
         CommonUiAutoCompleteModule,
         CommonUiDatepickerModule,
-        RouterOutlet,
-        CommonUiHourPickerModule
+        RouterOutlet
     ],
 })
 export class LtmBatchInputComponent implements OnInit, OnDestroy {
@@ -90,7 +89,6 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
   variables: string[] = [];
   formulas: string[] = [];
   selectedMatter: LTMLineMatter = null;
-  currentHour = 0;
 
   formBuilder = inject(FormBuilder);
   form = this.formBuilder.group(
@@ -308,11 +306,10 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
       }));
   }
 
-  onHour(h: number) {
-    this.currentHour = h;
+  onHour() {
     const value = this.form.getRawValue();
     const date = new Date(value.timeStamp);
-    date.setHours(h, 0, 0, 0);
+    date.setHours(date.getHours(), 0, 0, 0);
     value.timeStamp = date;
     this.form.controls['timeStamp'].setValue(date);
     const tests: BTest[] = <BTest[]>value.tests;
@@ -327,7 +324,6 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
   private onHour_(): Observable<BTest[]> {
     const value = this.form.getRawValue();
     const date = new Date(value.timeStamp);
-    date.setHours(this.currentHour, 0, 0, 0);
     value.timeStamp = date;
     this.form.controls['timeStamp'].setValue(date);
     const tests: BTest[] = <BTest[]>value.tests;

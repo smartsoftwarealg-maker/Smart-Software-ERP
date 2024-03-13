@@ -28,10 +28,12 @@ export class LtmTestingService extends BaseEntityService<LTMTesting> {
     }
 
     export(from: Date, to: Date, periodicity: number): Observable<Blob> {
+        const fromDate = periodicity === 1? DateUtil.dateTimeToStr(new Date(from)) : DateUtil.dateToStr(new Date(from));
+        const toDate = periodicity === 1? DateUtil.dateTimeToStr(new Date(to)) : DateUtil.dateToStr(new Date(to));
         const params = new HttpParams()
             .set('periodicity', periodicity)
-            .set('from', DateUtil.dateToStr(new Date(from)))
-            .set('to', DateUtil.dateToStr(new Date(to)));
+            .set('from', fromDate)
+            .set('to', toDate);
         return this.httpSrv.getBlob('/ltm/excel', params);
     }
 }

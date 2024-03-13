@@ -1,9 +1,10 @@
 import {SideNavNode} from '@ss/common/api-common';
 import {
+    ABS_LTM_ANOMALY_URL,
     ABS_LTM_BATCH_TESTINGS_URL,
     ABS_LTM_CHARTS_URL, ABS_LTM_DASHBOARD_URL, ABS_LTM_LINES_URL,
     ABS_LTM_MATTERS_URL, ABS_LTM_MIXTURES_URL,
-    ABS_LTM_PERIODICITIES_URL, ABS_LTM_REPORTS_URL, ABS_LTM_TEST_TYPE_URL,
+    ABS_LTM_PERIODICITIES_URL, ABS_LTM_REPORTS_URL, ABS_LTM_TEST_TYPE_URL, ABS_LTM_TESTINGS_ANOMALIES_URL,
     ABS_LTM_TESTINGS_URL,
     ABS_LTM_TESTS_URL,
     ABS_LTM_UNIT_URL
@@ -18,6 +19,12 @@ export const ltmNavTree: SideNavNode = {
             icon: 'fa-solid fa-puzzle-piece-simple',
             route: ABS_LTM_UNIT_URL,
             accessRights: 'LTMMPeriod'
+        },
+        {
+            name: 'LTM_ANOMALIES',
+            icon: 'fa-regular fa-spider-black-widow',
+            route: ABS_LTM_ANOMALY_URL,
+            accessRights: 'LTMAnomaly'
         },
         {
             name: 'LTM_PERIODICITIES',
@@ -71,6 +78,13 @@ export const ltmNavTree: SideNavNode = {
             icon: 'fa-solid fa-clock-three-thirty',
             route: ABS_LTM_BATCH_TESTINGS_URL,
             accessRights: 'LTMTesting'
+        },
+
+        {
+            name: 'LTM_TESTING_ANOMALIES',
+            icon: 'fa-solid fa-circle-exclamation',
+            route: ABS_LTM_TESTINGS_ANOMALIES_URL,
+            accessRights: 'LTMTestingAnomaly'
         },
 
         {

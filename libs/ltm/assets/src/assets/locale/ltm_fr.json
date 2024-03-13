@@ -31,5 +31,8 @@
     "BG_COLOR":        "Couleur de l'arrière plan",
     "TEST_TYPES":      "Type testes",
     "TEST_TYPE":       "Type",
-    "MIXTURES":        "Mélanges"
+    "MIXTURES":        "Mélanges",
+    "TESTING_ANOMALIES": "Anomalies de tests",
+    "ANOMALY":           "Anomalie",
+    "ANOMALIES":         "Anomalies"
 }

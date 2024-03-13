@@ -13,7 +13,11 @@ import {
     DASHBOARD_URL,
     COMMON_REPORTS_URL,
     LTM_LINES_URL,
-    LTM_UNIT_URL, LTM_TEST_TYPE_URL, LTM_MIXTURE_URL
+    LTM_UNIT_URL,
+    LTM_TEST_TYPE_URL,
+    LTM_MIXTURE_URL,
+    LTM_ANOMALIES_URL_URL,
+    LTM_TESTING_ANOMALIES_URL
 } from '../common';
 
 import {
@@ -36,7 +40,11 @@ import {
     LTMMixtureListComponent,
     LtmMixtureDetailComponent,
     LtmMixtureDetailListComponent,
-    LtmMixtureDetailDetailComponent
+    LtmMixtureDetailDetailComponent,
+    LtmAnomalyListComponent,
+    LtmAnomalyDetailComponent,
+    LtmTestingAnomalyListComponent,
+    LtmTestingAnomalyDetailComponent
 } from '@ss/ltm/ltm';
 import {loginGuard} from '../erp-guards';
 import {DashboardComponent} from '@ss/dashboard';
@@ -55,6 +63,20 @@ export const ltmRoutes: Routes = [
         children: [
             { path: LIST_URL, component: LineMatterListComponent, canActivate: [loginGuard]},
             { path: ':id', component: LineMatterDetailComponent, canActivate: [loginGuard] }
+        ]
+    },
+    {
+        path: LTM_ANOMALIES_URL_URL,
+        children: [
+            { path: LIST_URL, component: LtmAnomalyListComponent, canActivate: [loginGuard]},
+            { path: ':id', component: LtmAnomalyDetailComponent, canActivate: [loginGuard] }
+        ]
+    },
+    {
+        path: LTM_TESTING_ANOMALIES_URL,
+        children: [
+            { path: LIST_URL, component: LtmTestingAnomalyListComponent, canActivate: [loginGuard]},
+            { path: ':id', component: LtmTestingAnomalyDetailComponent, canActivate: [loginGuard] }
         ]
     },
     {
