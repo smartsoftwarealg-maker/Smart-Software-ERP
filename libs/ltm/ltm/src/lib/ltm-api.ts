@@ -5,6 +5,8 @@ import {ActivatedRouteSnapshot, CanActivateFn, RouterStateSnapshot} from '@angul
 export const LTM_TESTINGS_URL    = '/ltm/testings';
 export const LTM_LINE_URL        = '/ltm/lines';
 export const LTM_MIXTURE_URL        = '/ltm/mixtures';
+export const LTM_ANOMALIES_URL        = '/ltm/anomalies';
+export const LTM_TESTING_ANOMALIES_URL        = '/ltm/testing-anomalies';
 export const LTM_MIXTURE_DETAIL_URL        = '/detail';
 export const LTM_LINE_TYPE_URL        = '/lookups/ltm_test_types';
 export const LTM_TEST_URL        = '/ltm/tests';
@@ -17,12 +19,24 @@ export const LTM_LINE_MATTER_URL      = '/ltm/line-matters';
 export const LRM_PERIODICITY_URL = '/lookups/ltm_periodicities';
 export const LTM_LINE_SELECT_URL = '/ltm/ltm_selection';
 
+
 export interface LTMMixture {
     id: number;
     lineId: number;
     orderNo: number;
     description: string,
     descriptionAr?: string;
+}
+
+export interface LTMTestingAnomaly {
+    id: number;
+    centerId: number;
+    date: Date;
+    anomalyId: number;
+    userId: number;
+    memo?: string;
+    anomalyDescription?: string;
+    userDescription?: string;
 }
 
 export interface LTMMixtureDetail {

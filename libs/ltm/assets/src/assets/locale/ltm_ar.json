@@ -31,5 +31,8 @@
     "BG_COLOR":        "لون الخلفية",
     "TEST_TYPES":      "أنواع الاختبار",
     "TEST_TYPE":       "نوع الاختبار",
-    "MIXTURES":        "مخاليط"
+    "MIXTURES":        "مخاليط",
+    "TESTING_ANOMALIES": "الاختبارات الشاذة",
+    "ANOMALY":           "شذوذ",
+    "ANOMALIES":         "شذوذ"
 }
