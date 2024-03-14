@@ -257,6 +257,7 @@ export class ReportViewComponent extends BaseEntityListComponent<ReportParam> im
             });
     }
 
+
     private defaultValue(ctrlName: string, typeName: string): any {
         const value = this.form.controls[ctrlName].value;
         return typeName === 'java.sql.Timestamp'? dateTimeToStr(value).substring(0, 19):

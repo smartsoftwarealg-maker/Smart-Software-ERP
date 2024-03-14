@@ -8,8 +8,6 @@ import { BaseChildEntityListComponent } from '@ss/common/ui-base-entity';
     styleUrls: ['./employee-career-list.component.scss']
 })
 export class EmployeeCareerListComponent extends BaseChildEntityListComponent<Career> implements OnInit {
-    private _hrMode = true;
-    canCreate = false;
 
     public displayedColumns = [
         'paymonth',
@@ -26,15 +24,6 @@ export class EmployeeCareerListComponent extends BaseChildEntityListComponent<Ca
 
     constructor(public entitySrv: EmployeeCareerService) {
         super(entitySrv, 'Career');
-    }
-
-    get hrMode() {
-        return this._hrMode;
-    }
-
-    @Input()
-    set hrMode(mode: boolean) {
-        this._hrMode = mode;
     }
 
     @Input()

@@ -69,10 +69,9 @@ export interface Career {
     srvDescription?: string;
     wrkDescription?: string;
     postDescription?: string;
-    // todo: add these fields
     motive?: number;
     // qualification        ?: number;
-    // responsible          : Option[Long] = None,
+    responsible?: number;
 }
 
 export interface Contract {

@@ -1,13 +1,7 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ShellService, SnackBarService } from '@ss/common/ui-shell';
-import { UntypedFormGroup, UntypedFormBuilder, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
-import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
-import { Observable } from 'rxjs';
-import { tap, switchMap } from 'rxjs/operators';
-import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
-import { HttpService } from '@ss/common/api-common';
-import { Language, LookupsService } from '@ss/common/api-lookup';
+import { Component, inject } from '@angular/core';
+import { UntypedFormGroup, Validators, FormBuilder } from '@angular/forms';
+import { BaseChildEntityDetailComponent } from '@ss/common/ui-base-entity';
+import { Language } from '@ss/common/api-lookup';
 import { PersonLanguage, EmployeeLanguagesService } from '@ss/payroll/api-employee';
 
 @Component({
@@ -15,39 +9,20 @@ import { PersonLanguage, EmployeeLanguagesService } from '@ss/payroll/api-employ
     templateUrl: './employee-languages-detail.component.html',
     styleUrls: ['./employee-languages-detail.component.scss']
 })
-export class EmployeeLanguagesDetailComponent extends BaseEntityDetailComponent<PersonLanguage> implements OnInit, OnDestroy {
+export class EmployeeLanguagesDetailComponent extends BaseChildEntityDetailComponent<PersonLanguage> {
+    private formBuilder = inject(FormBuilder);
 
-    entity: PersonLanguage;
     languages: Language[] = [];
     languageLevels: Language[] = [];
 
     parentId = 0;
 
-    constructor(
-        public employeeLanguagesSrv: EmployeeLanguagesService,
-        public override shellSrv: ShellService,
-        public override snackBarSrv: SnackBarService,
-        public override route: ActivatedRoute,
-        public override formBuilder: UntypedFormBuilder,
-        public httpSrv: HttpService,
-        public override confirmationSrv: ConfirmationDialogService,
-        public lookupsSrv: LookupsService) {
-        super(employeeLanguagesSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'PAYROLL_LANGUAGES');
+    constructor(public employeeLanguagesSrv: EmployeeLanguagesService) {
+        super(employeeLanguagesSrv, 'PAYROLL_LANGUAGES');
     }
 
-    protected override getRouteParam(): Observable<any> {
-        return this.route.parent.parent.params
-            .pipe(
-                switchMap(p => {
-                    this.parentId = +p['id'];
-                    this.employeeLanguagesSrv.setParentId(this.parentId);
-                    return super.getRouteParam();
-                })
-            );
-    }
 
     override setupForm(a: PersonLanguage): UntypedFormGroup {
-        this.entity = a;
         return this.form = this.formBuilder.group({
             id:         [a.id],
             employee:   [a.parentId],
@@ -55,15 +30,6 @@ export class EmployeeLanguagesDetailComponent extends BaseEntityDetailComponent<
             readLevel:  [a.readLevel, Validators.required],
             writeLevel: [a.writeLevel, Validators.required],
         });
-    }
-
-    override preload(): Observable<any> {
-        return this.lookupsSrv.getLanguages()
-            .pipe(
-                tap(languages => this.languages = languages),
-                switchMap(() => this.lookupsSrv.getLanguageLevels()),
-                tap(list => this.languageLevels = list)
-            );
     }
 
     public override readForm(): PersonLanguage {

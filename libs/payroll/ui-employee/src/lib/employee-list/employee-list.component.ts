@@ -42,10 +42,6 @@ export class EmployeeListComponent extends BaseEntityListComponent<Employee> imp
         public override pagPersistSrv: PaginatorPersistenceService) {
         super(employeeSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv, 'PAYROLL_EMPLOYEES_LIST');
         this.pagination.pageSize = 15;
-        this.route.data.subscribe(data => {
-            this.activePersonnel = !!data['active'];
-            this.employeeSrv.setMode(this.activePersonnel);
-        });
     }
 
     trackByFn(index: number, item: Employee) {
@@ -56,6 +52,11 @@ export class EmployeeListComponent extends BaseEntityListComponent<Employee> imp
         this.addButton.visible = this.activePersonnel;
         super.ngOnInit();
         this.shellSrv.setGoBackPath('..', this.route);
+        this.route.data.subscribe(data => {
+            this.activePersonnel = !!data['active'];
+            this.employeeSrv.setMode(this.activePersonnel);
+            this.shellSrv.setTitle(this.activePersonnel? 'PAYROLL_EMPLOYEES_LIST' : 'PAYROLL_INACTIVE_EMPLOYEES_LIST');
+        });
     }
 
 

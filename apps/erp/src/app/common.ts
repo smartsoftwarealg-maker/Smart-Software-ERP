@@ -244,6 +244,7 @@ export const HR_PHYSICIAN_URL = 'physicians';
 export const HR_SPECIALTY_URL = 'specialties';
 
 // Payroll
+export const PAYROLL_INACTIVE_EMPLOYEES_URL = 'pay-inactive-employees';
 export const PAYROLL_EMPLOYEES_URL = 'pay-employees';
 export const PAY_ELEMENTSINFO_URL     = 'elementsinfo';
 export const PAY_SPECIAL_PAYROLL_URL  = 'special-payroll';
@@ -629,6 +630,7 @@ export const ABS_HR_CAREER_MOTIVE_URL    = '/' + [MAIN_PAGE_URL, HR_APP_URL, HR_
 
 
 // payroll
+export const ABS_INACTIVE_PAYROLL_EMPLOYEES_URL = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, PAYROLL_INACTIVE_EMPLOYEES_URL].join('/');
 export const ABS_PAYROLL_EMPLOYEES_URL = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, PAYROLL_EMPLOYEES_URL].join('/');
 export const ABS_ELEMENTSINFO_URL = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, PAY_ELEMENTSINFO_URL].join('/');
 export const ABS_ELEMENT_TYPES_URL = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, PAY_ELEMENT_TYPES_URL].join('/');

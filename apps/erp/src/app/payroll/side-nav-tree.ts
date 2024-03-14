@@ -13,7 +13,7 @@ import {
     ABS_EXCEL_INJECTION_URL,
     ABS_FIXED_ELEMENTS_URL,
     ABS_FORMULAS_URL,
-    ABS_INACTIVE_HR_EMPLOYEES_URL,
+    ABS_INACTIVE_PAYROLL_EMPLOYEES_URL,
     ABS_INPUT_FILTERS_URL,
     ABS_LOANS_URL,
     ABS_MONTH_CANCELER_URL,
@@ -47,7 +47,7 @@ export const payrollNavTree: SideNavNode = {
         {
             name: 'PAYROLL_INACTIVE_EMPLOYEES_LIST',
             icon: 'far fa-users-slash',
-            route: ABS_INACTIVE_HR_EMPLOYEES_URL,
+            route: ABS_INACTIVE_PAYROLL_EMPLOYEES_URL,
             accessRights: 'Person'
         },
         {
