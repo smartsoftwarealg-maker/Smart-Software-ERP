@@ -19,6 +19,8 @@ import {
 } from '@ss/common/api-lookup';
 import {GridService} from '@ss/payroll/salary-grid';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
+import { EmployeeLookupService } from '@ss/remuneration/special-payroll';
+import { EmployeeService, PersonAutocompleteClass } from "@ss/employee-services/employee-services";
 
 @Component({
     selector: 'ss-emp-career-detail',
@@ -31,11 +33,12 @@ export class EmployeeCareerDetailComponent extends BaseChildEntityDetailComponen
     private divisionSrv = inject(DivisionService);
     private workshopSrv =  inject(WorkshopService);
     private formBuilder = inject(UntypedFormBuilder);
-    public lookupsSrv = inject(LookupsService);
     private gridService = inject(GridService);
     private careerMotiveSrv = inject(CareerMotiveService);
-
+    private lookupsSrv = inject(LookupsService);
+    private employeeSrv = inject(EmployeeService);
     private postSrv =  inject(ActivePostService);
+
     postLookup = new DefaultAutoCompleteModel(this.postSrv);
     workshopLookup = new DefaultAutoCompleteModel(this.workshopSrv);
     divisionLookup = new DefaultAutoCompleteModel(this.divisionSrv);
@@ -43,6 +46,7 @@ export class EmployeeCareerDetailComponent extends BaseChildEntityDetailComponen
     serviceLookup = new DefaultAutoCompleteModel(this.serviceSrv);
     careerMotiveLookup = new DefaultAutoCompleteModel(this.careerMotiveSrv);
 
+    employeeLookup: PersonAutocompleteClass = new PersonAutocompleteClass(this.employeeSrv);
     // entity: Career;
     posts: Post[] = [];
     departments: Department[] = [];
@@ -77,7 +81,8 @@ export class EmployeeCareerDetailComponent extends BaseChildEntityDetailComponen
             trial_period:  [a.trial_period || 0, Validators.required],
             decision:      [a.decision],
             decision_date: [a.decision_date],
-            motive:        [a.motive]
+            motive:        [a.motive],
+            responsible:   [a.responsible]
         });
     }
 

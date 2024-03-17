@@ -191,5 +191,9 @@
     "RATE_ELEMENT":          "Rubrique",
     "AGE":                   "Ancienneté",
     "HISTORY":               "Historique",
-    "CONFIRM_APPLY":         "Voulez-vous confirmer la mise à jour des données de carrière ?"
+    "CONFIRM_APPLY":         "Voulez-vous confirmer la mise à jour des données de carrière ?",
+    "GICA_GRADING":          "Pointage",
+    "GICA_DEGRADING":        "Abattement",
+    "GRADE":                 "Point",
+    "CRITERIA":              "Critères"
 }

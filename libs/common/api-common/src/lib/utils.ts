@@ -154,17 +154,17 @@ export function dateToYmdStr(date: Date | string): string {
     }
 }
 
-export function toDate(str: Date|string): Date {
-    return typeof str === 'string'? new Date(str.replace('/', '-')) : str;
+export function toDate(d: Date|string): Date {
+    return new Date(d.toString().replaceAll('/', '-'));
 }
 
 const TIME_SEPARATOR = ':';
 const DATE_SEPARATOR_2 = '-';
 
-export function dateToStr(date: Date) {
+export function dateToStr(date: Date|string) {
     const dDate = toDate(date);
     try {
-        return pad4(date.getFullYear())
+        return pad4(dDate.getFullYear())
       + DATE_SEPARATOR_2
       + pad2(dDate.getMonth() + 1)
       + DATE_SEPARATOR_2
@@ -174,8 +174,8 @@ export function dateToStr(date: Date) {
     }
 }
 
-export function dateTimeToStr(dDate: Date): string {
-    const date = toDate(dDate);
+export function dateTimeToStr(dDate: Date|string): string {
+    const date = toDate(dDate.toString().replaceAll('/', '-'));
     const d = dateToStr(date);
     if (d != null) {
         try {

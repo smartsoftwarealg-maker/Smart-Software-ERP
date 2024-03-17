@@ -45,26 +45,6 @@ export class ReportCatalogDetailComponent implements OnInit {
             .subscribe(res => {
                 this.reports = this.service.getReports(res, this.appName);
             });
-        // this
-        //   .parent
-        //   .params
-        //   .pipe( switchMap(res => {
-        //     this.id =  +res['id'];
-        //     return this.service.getCatalogById(this.id);
-        //   })
-        //   ).pipe(
-        //     tap((res: ReportCatalog) => {
-        //       this.form = this.fb.group({
-        //         id: [res.id],
-        //         fileName: [res.fileName, Validators.required],
-        //         description: [res.description, Validators.required]});
-        //     }),
-        //     switchMap(res => this.parent.queryParamMap)
-        //   ).pipe(tap(res => this.appName = res.get('appName') || ''),
-        //           switchMap(res => this.service.loadByApp(this.appName)))
-        //   .subscribe(res => {
-        //     this.reports = this.service.getReports(res, this.appName);
-        //   });
     }
 
     save() {

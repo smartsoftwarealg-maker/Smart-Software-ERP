@@ -6,6 +6,8 @@ export const GICA_EMPLOYEES = '/gica-careers/employees';
 export const GICA_SCALES = '/gica-careers/scales';
 export const GICA_REPORTS = '/gica-careers/reports';
 export const GICA_ARCHIVES = '/archives';
+export const GICA_CATEGORIES = '/gica-careers/categories';
+export const GICA_CRITERIA = '/criteria';
 
 export interface Motive {
     id: number;
@@ -40,8 +42,8 @@ export interface Scale {
 
 export interface Report {
     id: number;
-    firstName: string,
-    lastName: string,
+    firstName: string;
+    lastName: string;
     lastApplicationYear: number;
     age: number;
     rate: number;
@@ -56,4 +58,25 @@ export interface Application {
     lastName?: string;
     from: number;
     to: number;
+}
+
+export interface Grade {
+    id: number;
+    year: number;
+    employeeId: number;
+    userId: number;
+    criterion: number;
+    description: string;
+    grade1: number;
+    grade2: number;
+    finalGrade: number;
+    maxGrade: number;
+}
+
+export interface Criterion {
+    id: number
+    parentId: number;
+    description: string;
+    grade: number;
+    sign: number;
 }

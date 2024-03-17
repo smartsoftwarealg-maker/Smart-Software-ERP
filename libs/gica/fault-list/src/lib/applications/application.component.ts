@@ -27,7 +27,7 @@ import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { MatProgressSpinner } from '@angular/material/progress-spinner';
 
 @Component({
-    selector: 'ss-gica-constant-detail',
+    selector: 'ss-gica-applications',
     standalone: true,
     imports: [CommonModule,
         CommonUiLangModule,

@@ -1,11 +1,12 @@
 import {
-    ADMIN_REPORT_RIGHTS_URL, ADMINISTRATION_REPORT_PRIVILEGE_URL,
+    ADMIN_REPORT_RIGHTS_URL,
+    ADMINISTRATION_REPORT_PRIVILEGE_URL,
     COMMON_REPORTS_URL,
     DASHBOARD_URL,
-    HR_INACTIVE_EMPLOYEES_URL,
     LOOKUPS_URL,
     PAY_AMENDMENT_URL,
-    PAY_ARCHIVE_GENERATOR, PAY_ARCHIVE_VIEWER_URL,
+    PAY_ARCHIVE_GENERATOR,
+    PAY_ARCHIVE_VIEWER_URL,
     PAY_CACO_URL,
     PAY_DAS_URL,
     PAY_EDO_URL,
@@ -13,7 +14,8 @@ import {
     PAY_ELEMENTS_ENTRY_URL,
     PAY_ELEMENTSINFO_URL,
     PAY_FIXED_ELEMENTS_URL,
-    PAY_FORMULAS_URL, PAY_GRID_UPDATE_URL,
+    PAY_FORMULAS_URL,
+    PAY_GRID_UPDATE_URL,
     PAY_INPUT_FILTERS,
     PAY_LOANS_URL,
     PAY_MONTH_CANCELER,
@@ -23,8 +25,9 @@ import {
     PAY_SPECIAL_PAYROLL_URL,
     PAY_VACATION_PLANNING,
     PAY_XLS_INJECTION,
-    PAYROLL_EMPLOYEES_URL
-} from '../common';
+    PAYROLL_EMPLOYEES_URL,
+    PAYROLL_INACTIVE_EMPLOYEES_URL
+} from "../common";
 import {
     ABS_INDEX_URL,
     CanDeactivateService,
@@ -400,7 +403,7 @@ export const mainRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: EmployeeListComponent,
-                canActivate: [loginGuard, payrollGuard],
+                canActivate: [loginGuard],
                 data: { active: true }
             },
             {
@@ -416,8 +419,8 @@ export const mainRoutes: Routes = [
                             {
                                 path: 'archive',
                                 children: [
-                                    {path: '', component: AppArchiveListComponent, pathMatch: 'full', data: { appId: AGENT_ARCHIVES } },
-                                    {path: ':id', component: AppArchiveDetailComponent, data: { appId: AGENT_ARCHIVES }},
+                                    {path: '', component: AppArchiveListComponent, pathMatch: 'full', data: { appId: EMPLOYEE_ARCHIVES } },
+                                    {path: ':id', component: AppArchiveDetailComponent, data: { appId: EMPLOYEE_ARCHIVES }},
                                 ]
                             },
                             {
@@ -511,16 +514,15 @@ export const mainRoutes: Routes = [
                     },
                 ]
             },
-            { path: '**', redirectTo: LIST_URL }
         ]
     },
     {
-        path: HR_INACTIVE_EMPLOYEES_URL,
+        path: PAYROLL_INACTIVE_EMPLOYEES_URL,
         children: [
             {
                 path: LIST_URL,
                 component: EmployeeListComponent,
-                canActivate: [loginGuard, payrollGuard],
+                canActivate: [loginGuard],
                 data: { active: false }
             },
             {
@@ -710,7 +712,6 @@ export const mainRoutes: Routes = [
                     }
                 ]
             },
-            { path: '**', redirectTo: LIST_URL }
         ]
     },
     {
