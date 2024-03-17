@@ -177,7 +177,6 @@ export function dateToStr(date: Date|string) {
 export function dateTimeToStr(dDate: Date|string): string {
     const date = toDate(dDate.toString().replaceAll('/', '-'));
     const d = dateToStr(date);
-    console.log('dDate:',dDate.toString().replaceAll('/', '-'), '____date:', date, '___d:', d);
     if (d != null) {
         try {
             return d

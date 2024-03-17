@@ -8,3 +8,7 @@ export * from './lib/fault-detail/fault-detail.component';
 export * from './lib/services/fault.service';
 export * from './lib/applications/application.component';
 export * from './lib/application-archives/application-archive.component';
+export * from './lib/gradings/gradings.component';
+export * from './lib/criteria-list/criteria-list.component';
+export * from './lib/criteria-detail/criteria-detail.component';
+export * from './lib/services/criterion.service';

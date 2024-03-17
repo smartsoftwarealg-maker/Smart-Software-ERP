@@ -337,10 +337,13 @@ export const DASHBOARD_URL       = 'dashbaord';
 // GICA
 export const GICA_MOTIVES_URL = 'gica-motives';
 export const GICA_FAULTS_URL = 'gica-faults';
+export const GICA_CRITERIA_URL = 'gica-crieria';
 export const GICA_CONSTANTS_URL = 'gica-constants';
 export const GICA_SCALE_URL = 'gica-scale';
 export const GICA_REPORTS_URL = 'gica-reports';
 export const GICA_HISTORY_URL = 'gica-history';
+export const GICA_GRADING_URL = 'gica-grading';
+export const GICA_DEGRADING_URL = 'gica-degrading';
 
 
 // LTM
@@ -680,6 +683,9 @@ export const ABS_GICA_SCALE_URL       = '/' + [MAIN_PAGE_URL, GICA_APP_URL, GICA
 export const ABS_GICA_CONSTANTS_URL       = '/' + [MAIN_PAGE_URL, GICA_APP_URL, GICA_CONSTANTS_URL].join('/');
 export const ABS_GICA_REPORTS_URL       = '/' + [MAIN_PAGE_URL, GICA_APP_URL, GICA_REPORTS_URL].join('/');
 export const ABS_GICA_HISTORY_URL       = '/' + [MAIN_PAGE_URL, GICA_APP_URL, GICA_HISTORY_URL].join('/');
+export const ABS_GICA_GRADING_URL       = '/' + [MAIN_PAGE_URL, GICA_APP_URL, GICA_GRADING_URL].join('/');
+export const ABS_GICA_DEGRADING_URL       = '/' + [MAIN_PAGE_URL, GICA_APP_URL, GICA_DEGRADING_URL].join('/');
+export const ABS_GICA_CRITERIA_URL       = '/' + [MAIN_PAGE_URL, GICA_APP_URL, GICA_CRITERIA_URL].join('/');
 
 
 // CMMS

@@ -3,11 +3,11 @@
     "compilerOptions": {
         "experimentalDecorators": true,
         "outDir": "../../../dist/out-tsc",
-        "target": "es2015",
+        "target": "es2022",
         "declaration": true,
         "inlineSources": true,
         "types": [],
-        "lib": ["dom", "es2020"]
+        "lib": ["dom", "es2022"]
     },
     "angularCompilerOptions": {
         "skipTemplateCodegen": true,

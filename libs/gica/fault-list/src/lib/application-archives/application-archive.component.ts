@@ -26,7 +26,7 @@ import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { ArchiveService } from '../services/archive.service';
 
 @Component({
-    selector: 'ss-gica-constant-detail',
+    selector: 'ss-gica-application-archives',
     standalone: true,
     imports: [CommonModule,
         CommonUiLangModule,

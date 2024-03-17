@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { ltmRoutes } from './routes';
+import { gicaRoutes } from './routes';
 
 @NgModule({
     imports: [
-        RouterModule.forChild(ltmRoutes)
+        RouterModule.forChild(gicaRoutes)
     ]
 })
 export class GicaModule { }

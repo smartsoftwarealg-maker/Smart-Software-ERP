@@ -7,7 +7,11 @@ import {
     GICA_CONSTANTS_URL,
     GICA_MOTIVES_URL,
     GICA_FAULTS_URL,
-    GICA_SCALE_URL, GICA_REPORTS_URL, GICA_HISTORY_URL
+    GICA_SCALE_URL,
+    GICA_REPORTS_URL,
+    GICA_HISTORY_URL,
+    GICA_GRADING_URL,
+    GICA_CRITERIA_URL, GICA_DEGRADING_URL
 } from '../common';
 
 import {loginGuard} from '../erp-guards';
@@ -20,19 +24,27 @@ import {
     FaultService,
     ApplicationComponent,
     ScaleDetailComponent,
-    ScaleListComponent
+    ScaleListComponent, GradingsComponent, CriteriaListComponent, CriteriaDetailComponent
 } from 'gica/fault-list';
 import { inject } from '@angular/core';
 import {
-    ApplicationArchiveComponent
+    ApplicationArchiveComponent,
+    CriterionService
 } from 'gica/fault-list';
 
 
 export const faultGuard: CanActivateFn = () => inject(FaultService).canActivate();
+export const criteriaGuard: CanActivateFn = () => inject(CriterionService).canActivate();
 
-export const ltmRoutes: Routes = [
+export const gicaRoutes: Routes = [
     {
         path: GICA_CONSTANTS_URL, component: ConstantDetailComponent, canActivate: [loginGuard]
+    },
+    {
+        path: GICA_GRADING_URL, component: GradingsComponent, canActivate: [loginGuard], data: { gradingMode: true }
+    },
+    {
+        path: GICA_DEGRADING_URL, component: GradingsComponent, canActivate: [loginGuard], data: { gradingMode: false }
     },
     {
         path: GICA_REPORTS_URL, component: ApplicationComponent, canActivate: [loginGuard]
@@ -52,6 +64,13 @@ export const ltmRoutes: Routes = [
         children: [
             { path: LIST_URL, component: FaultListComponent, canActivate: [loginGuard]},
             { path: ':id', component: FaultDetailComponent, canActivate: [loginGuard, faultGuard] }
+        ]
+    },
+    {
+        path: GICA_CRITERIA_URL,
+        children: [
+            { path: LIST_URL, component: CriteriaListComponent, canActivate: [loginGuard]},
+            { path: ':id', component: CriteriaDetailComponent, canActivate: [loginGuard, criteriaGuard] }
         ]
     },
     {

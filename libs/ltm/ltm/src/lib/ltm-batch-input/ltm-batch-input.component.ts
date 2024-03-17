@@ -204,9 +204,9 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
               this.variables.push(t.variable);
             }
             const testForm: FormGroup<{ id: FormControl<number>, testId: FormControl<number>, value: FormControl<number> }> = this.formBuilder.group({
-              id: [{ value: 0, disabled: true }],
+              id:     [{ value: 0, disabled: true }],
               testId: [{ value: t.testId, disabled: true }, Validators.required],
-              value: [0, [Validators.required, Validators.min(t.minValue), Validators.max(t.maxValue || 999)]]
+              value:  [0, [Validators.required, Validators.min(t.minValue), Validators.max(t.maxValue || 999)]]
             });
             this.tests.push(testForm);
           });
@@ -331,5 +331,4 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
     this.tests.setValue(tests);
     return this.savedData(<Batch>value);
   }
-
 }
