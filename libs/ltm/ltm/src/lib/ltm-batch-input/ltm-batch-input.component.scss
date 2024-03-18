@@ -15,6 +15,17 @@ mat-card-header div {
 mat-hint {
     font-size: 0.6em;
 }
+.date_div {
+    display: flex;
+}
+.hour input {
+    background: black;
+    font-family: 'digital-font', serif;
+    color: red!important;
+    padding: 4px;
+    font-weight: bolder!important;
+    font-size: 3em!important;
+}
 
 .group_div {
     padding: 8px;

@@ -89,6 +89,7 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
   variables: string[] = [];
   formulas: string[] = [];
   selectedMatter: LTMLineMatter = null;
+  hourCtrl = new FormControl<number>(0);
 
   formBuilder = inject(FormBuilder);
   form = this.formBuilder.group(
@@ -125,7 +126,15 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
         .pipe(
           debounceTime(300),
           distinctUntilChanged()
-        ).subscribe(() => this.refreshFormulas()));
+        ).subscribe(() => this.refreshFormulas()),
+        this.form
+            .controls
+            .timeStamp
+            .valueChanges
+            .pipe(
+                debounceTime(300),
+                distinctUntilChanged()
+            ).subscribe(() => this.onHour()));
 
     this.subscriptions.push(
       this.searchField
@@ -306,10 +315,19 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
       }));
   }
 
+  onHourChange() {
+      const value = this.form.getRawValue();
+      const date = new Date(value.timeStamp);
+      date.setHours(this.hourCtrl.value, 0, 0, 0);
+      value.timeStamp = date;
+      this.form.controls['timeStamp'].setValue(date);
+  }
+
   onHour() {
     const value = this.form.getRawValue();
     const date = new Date(value.timeStamp);
     date.setHours(date.getHours(), 0, 0, 0);
+    this.hourCtrl.setValue(date.getHours());
     value.timeStamp = date;
     this.form.controls['timeStamp'].setValue(date);
     const tests: BTest[] = <BTest[]>value.tests;
