@@ -8,6 +8,13 @@
             </mat-cell>
         </ng-container>
 
+        <ng-container matColumnDef="selection">
+            <mat-header-cell *matHeaderCellDef ><mat-checkbox (change)="addAll($event)"></mat-checkbox> </mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                <mat-checkbox (change)="addId(e.id)" [checked]="isSelected(e.id)"></mat-checkbox>
+            </mat-cell>
+        </ng-container>
+
         <ng-container matColumnDef="test">
             <mat-header-cell *matHeaderCellDef mat-sort-header translate>LTM_TEST</mat-header-cell>
             <mat-cell *matCellDef="let e">

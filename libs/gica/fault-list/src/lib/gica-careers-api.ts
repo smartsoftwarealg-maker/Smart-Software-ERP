@@ -58,6 +58,7 @@ export interface Application {
     lastName?: string;
     from: number;
     to: number;
+    rate: number;
 }
 
 export interface Grade {

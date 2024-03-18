@@ -7,6 +7,12 @@
 .mat-column-timeStamp {
     flex: 1 1 120px;
 }
+
+.mat-column-selection {
+    flex: 1 1 50px;
+    justify-content: center;
+}
+
 .mat-column-value {
     flex: 1 1 100px;
     justify-content: right;

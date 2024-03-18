@@ -32,8 +32,7 @@
                     </div>
                 </div>
             </div>
-            <mat-card class="list_card default-100">
-                <mat-card-header>
+            <div class="list_card default-100">
                     <div class="b-primary">
                         <mat-form-field class="input_div">
                             <mat-label translate>COMMON_SEARCH</mat-label>
@@ -41,8 +40,6 @@
                             <mat-hint translate>LTM_SEARCH_MATTERS</mat-hint>
                         </mat-form-field>
                     </div>
-                </mat-card-header>
-                <mat-card-content>
                     <div class="list_div">
                         <mat-list>
                             @for (m of (filteredMatters | async); track m.id) {
@@ -55,8 +52,7 @@
                             }
                         </mat-list>
                     </div>
-                </mat-card-content>
-            </mat-card>
+            </div>
         </div>
         <!--        <pre> {{ form.value | json }}</pre>-->
         <div formArrayName="tests" class="group_div">

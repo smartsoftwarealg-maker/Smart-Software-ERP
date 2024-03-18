@@ -36,6 +36,10 @@ export class LtmTestingService extends BaseEntityService<LTMTesting> {
             .set('to', toDate);
         return this.httpSrv.getBlob('/ltm/excel', params);
     }
+
+    deleteAll(ids: number[]): Observable<{ count: number }> {
+        return this.httpSrv.remove('/ltm/testings', ids);
+    }
 }
 
 

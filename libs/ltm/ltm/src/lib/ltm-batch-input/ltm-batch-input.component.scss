@@ -21,10 +21,10 @@ mat-hint {
 .hour input {
     background: black;
     font-family: 'digital-font', serif;
-    color: red!important;
+    color: lawngreen!important;
     padding: 4px;
     font-weight: bolder!important;
-    font-size: 3em!important;
+    font-size: 2em!important;
 }
 
 .group_div {
@@ -49,10 +49,12 @@ mat-hint {
 .container_div {
     display: flex;
     gap: 1em;
+    border: #00C853 2px solid;
 }
 
 .list_card {
     flex: 1 1 45%;
+    border: #5555FF 2px solid;
 }
 
 .data_div {
