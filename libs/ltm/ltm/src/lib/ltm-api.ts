@@ -32,11 +32,13 @@ export interface LTMTestingAnomaly {
     id: number;
     centerId: number;
     date: Date;
+    matterId: number;
     anomalyId: number;
     userId: number;
     memo?: string;
     anomalyDescription?: string;
     userDescription?: string;
+    matterDescription?: string;
 }
 
 export interface LTMMixtureDetail {
@@ -73,6 +75,7 @@ export interface LTMTest {
     variable?: string;
     formula?: string;
     showGraph: boolean;
+    showKPI: boolean;
     testType?: number;
     unit?: number;
 }

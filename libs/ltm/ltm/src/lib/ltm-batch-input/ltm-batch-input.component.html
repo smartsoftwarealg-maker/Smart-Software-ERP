@@ -4,7 +4,7 @@
             <div class="data_div">
 
                 <div class="default-100 period_div">
-                    <div>
+                    <div style="width: 100%">
                         <div class="date_div">
                             <mat-form-field class="default-100">
                                 <mat-label translate>COMMON_DATE</mat-label>
@@ -21,14 +21,23 @@
                                 <input matInput [formControl]="hourCtrl" type="number" min="0" max="23" (change)="onHourChange()">
                             </mat-form-field>
                         </div>
-                        <mat-form-field class="default-100">
-                            <mat-label translate>LTM_PERIODICITY</mat-label>
-                            <mat-select (valueChange)="onPeriod($event)">
-                                <mat-option *ngFor="let m of periods$ | async"
-                                            [value]="m.id">{{ m.description }}
-                                </mat-option>
-                            </mat-select>
-                        </mat-form-field>
+                        <div class="list_div">
+                            <mat-list>
+                                @for (m of (periods$ | async); track m.id) {
+                                    <mat-list-item
+                                        [class.selected]="selectedPeriodicity === m.id"
+                                        (click)="onPeriod(m.id)"
+                                        class="list-item selectable">
+                                        {{ m.description }}
+                                    </mat-list-item>
+                                }
+                            </mat-list>
+                        </div>
+<!--                            <mat-select (valueChange)="onPeriod($event)">-->
+<!--                                <mat-option *ngFor="let m of periods$ | async"-->
+<!--                                            [value]="m.id">{{ m.description }}-->
+<!--                                </mat-option>-->
+<!--                            </mat-select>-->
                     </div>
                 </div>
             </div>

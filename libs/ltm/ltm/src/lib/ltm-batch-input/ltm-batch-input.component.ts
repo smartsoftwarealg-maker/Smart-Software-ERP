@@ -54,7 +54,6 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
   private shellSrv = inject(ShellService);
   private loginSrv = inject(LoginService);
   private subscriptions: Subscription[] = [];
-  private _periodicity = 0;
   private TODAY = new Date();
   private formulaMap = new Map<string, string>();
   private missingVariables: string[] = [];
@@ -89,6 +88,7 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
   variables: string[] = [];
   formulas: string[] = [];
   selectedMatter: LTMLineMatter = null;
+  selectedPeriodicity = 0;
   hourCtrl = new FormControl<number>(0);
 
   formBuilder = inject(FormBuilder);
@@ -205,7 +205,7 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
         switchMap(_ => this.matterTestSrv.getList(0, 100, null, "id")))
       .subscribe(res => {
         res.body
-          .filter(t => (this._periodicity < 1 || this._periodicity === t.periodicity) && !t.formula)
+          .filter(t => (this.selectedPeriodicity < 1 || this.selectedPeriodicity === t.periodicity) && !t.formula)
           .forEach(t => {
             this.labels.push(t.testDescription);
             this.limits.push([t.minValue, t.maxValue || 999]);
@@ -222,7 +222,7 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
         this.missingVariables = this.missingVariables.filter(v => this.variables.indexOf(v) < 0);
 
         res.body
-          .filter(t => (this._periodicity < 1 || this._periodicity === t.periodicity) && t.formula && t.testDescription)
+          .filter(t => (this.selectedPeriodicity < 1 || this.selectedPeriodicity === t.periodicity) && t.formula && t.testDescription)
           .forEach(t => {
             this.totalsLabels.push(t.testDescription);
             this.formulas.push(t.formula);
@@ -294,7 +294,7 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
   }
 
   onPeriod(e: number) {
-    this._periodicity = e;
+    this.selectedPeriodicity = e;
     if (this.matterTestSrv.getParentId() > 0) {
       this.refreshData();
     }

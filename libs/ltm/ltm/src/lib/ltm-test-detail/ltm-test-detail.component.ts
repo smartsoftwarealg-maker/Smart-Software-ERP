@@ -65,6 +65,7 @@ export class LtmTestDetailComponent extends BaseEntityDetailComponent<LTMTest> {
             variable:      [b.variable, [Validators.required, Validators.min(3), Validators.max(4)]],
             formula:       [b.formula],
             showGraph:     [b.showGraph],
+            showKPI:       [b.showKPI],
             unit:          [b.unit],
             testType:      [b.testType]
         });

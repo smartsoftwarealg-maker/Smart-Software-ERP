@@ -13,7 +13,7 @@ mat-card-header div {
     padding: 4px;
 }
 mat-hint {
-    font-size: 0.6em;
+    font-size: .7em;
 }
 .date_div {
     display: flex;
@@ -49,12 +49,10 @@ mat-hint {
 .container_div {
     display: flex;
     gap: 1em;
-    border: #00C853 2px solid;
 }
 
 .list_card {
     flex: 1 1 45%;
-    border: #5555FF 2px solid;
 }
 
 .data_div {

@@ -34,5 +34,6 @@
     "MIXTURES":        "Mixtures",
     "TESTING_ANOMALIES": "Testing anomalies",
     "ANOMALY":           "Anomaly",
-    "ANOMALIES":         "Anomalies"
+    "ANOMALIES":         "Anomalies",
+    "SHOW_KPI":          "Show in KPI"
 }
