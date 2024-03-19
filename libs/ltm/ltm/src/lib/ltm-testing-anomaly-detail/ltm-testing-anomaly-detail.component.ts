@@ -2,7 +2,7 @@ import { Component, inject, Inject } from "@angular/core";
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import { ActivatedRoute, RouterOutlet } from "@angular/router";
-import { ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup, Validators } from "@angular/forms";
+import { ReactiveFormsModule, UntypedFormBuilder, Validators } from "@angular/forms";
 import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
 import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from "@ss/common/ui-auto-complete";
 import { CommonModule } from "@angular/common";
@@ -16,6 +16,7 @@ import { CommonUiHourPickerModule } from "@ss/common/ui-hour-picker";
 import { LtmAnomalyService } from "../services/ltm-anomaly.service";
 import { LTMTestingAnomaly } from "../ltm-api";
 import { LtmTestingAnomalyService } from "../services/ltm-testing-anomaly.service";
+import { LtmMatterService } from "../services/ltm-matter.service";
 
 @Component({
     selector: 'ss-ltm-test-detail',
@@ -40,8 +41,10 @@ import { LtmTestingAnomalyService } from "../services/ltm-testing-anomaly.servic
 export class LtmTestingAnomalyDetailComponent extends BaseEntityDetailComponent<LTMTestingAnomaly> {
     private loginSrv = inject(LoginService);
     private anomalySrv = inject(LtmAnomalyService);
+    private matterSrv = inject(LtmMatterService);
 
     anomalyLookup = new DefaultAutoCompleteModel(this.anomalySrv);
+    matterLookup = new DefaultAutoCompleteModel(this.matterSrv);
 
     constructor(
         public override entitySrv: LtmTestingAnomalyService,
@@ -60,6 +63,7 @@ export class LtmTestingAnomalyDetailComponent extends BaseEntityDetailComponent<
             memo:      [b.memo],
             date:      [b.date || new Date(), Validators.required],
             userId:    [b.userId || this.loginSrv.appCtx.id],
+            matterId:  [b.matterId],
             anomalyId: [b.anomalyId]
         });
     }

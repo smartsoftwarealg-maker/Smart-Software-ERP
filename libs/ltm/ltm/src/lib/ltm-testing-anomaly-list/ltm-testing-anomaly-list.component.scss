@@ -1,10 +1,11 @@
 .content_div {
     width: 90%;
-    max-width: 1000px;
+    max-width: 1200px;
     margin: 0 auto;
 }
 
 .mat-column-memo,
+.mat-column-matterDescription,
 .mat-column-anomalyDescription {
     flex: 2 1 250px;
     border-left: gray solid 1px;
@@ -14,13 +15,12 @@
 .mat-column-date,
 .mat-column-userDescription {
     flex: 1 1 120px;
-    justify-content: center;
     border-left: gray solid 1px;
 }
 
 mat-table {
     width: 98%;
-    min-width: 1000px;
+    min-width: 1200px;
 }
 
 .container {

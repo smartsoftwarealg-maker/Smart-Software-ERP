@@ -34,5 +34,6 @@
     "MIXTURES":        "مخاليط",
     "TESTING_ANOMALIES": "الاختبارات الشاذة",
     "ANOMALY":           "شذوذ",
-    "ANOMALIES":         "شذوذ"
+    "ANOMALIES":         "شذوذ",
+    "SHOW_KPI":          "إظهار في تقارير الأداء"
 }

@@ -66,8 +66,9 @@ export class ApplicationArchiveComponent implements OnInit {
         'id',
         'firstName',
         'lastName',
-        'age',
-        'rate',
+        'from',
+        'to',
+        'rate'
     ];
     selectedReport: Report | null = null;
 

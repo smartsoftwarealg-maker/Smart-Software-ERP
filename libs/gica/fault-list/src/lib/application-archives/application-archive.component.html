@@ -48,10 +48,17 @@
                 </mat-cell>
             </ng-container>
 
-            <ng-container matColumnDef="age">
-                <mat-header-cell *matHeaderCellDef mat-sort-header translate>PAYROLL_AGE</mat-header-cell>
+            <ng-container matColumnDef="from">
+                <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_FROM</mat-header-cell>
                 <mat-cell *matCellDef="let e">
-                    {{ e.age }}
+                    {{ e.from }}
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="to">
+                <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_TO</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{ e.to }}
                 </mat-cell>
             </ng-container>
 

@@ -16,6 +16,13 @@
             </mat-cell>
         </ng-container>
 
+        <ng-container matColumnDef="matterDescription">
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>LTM_MATTER</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.matterDescription}}
+            </mat-cell>
+        </ng-container>
+
         <ng-container matColumnDef="anomalyDescription">
             <mat-header-cell *matHeaderCellDef mat-sort-header translate>LTM_ANOMALY</mat-header-cell>
             <mat-cell *matCellDef="let e">

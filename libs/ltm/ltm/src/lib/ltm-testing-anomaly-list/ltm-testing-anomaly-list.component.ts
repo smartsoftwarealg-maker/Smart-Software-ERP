@@ -38,7 +38,7 @@ import { LtmTestingAnomalyService } from "../services/ltm-testing-anomaly.servic
     ],
 })
 export class LtmTestingAnomalyListComponent extends BaseEntityListComponent<LTMTestingAnomaly> {
-    displayedColumns = ['date', 'anomalyDescription', 'memo', 'userDescription'];
+    displayedColumns = ['date', 'matterDescription', 'anomalyDescription', 'memo', 'userDescription'];
 
     constructor(
         public override entitySrv: LtmTestingAnomalyService,

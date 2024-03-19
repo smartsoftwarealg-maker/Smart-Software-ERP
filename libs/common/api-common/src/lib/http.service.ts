@@ -236,11 +236,11 @@ export class HttpService {
             .delete(this.baseUrl + url, {headers: HttpService.getHeaders(), params: params});
     }
 
-    public remove(url: string): Observable<any> {
+    public remove(url: string, data?: any|null): Observable<any> {
         return this
             .httpClient
             .delete(this.baseUrl + url,
-                {headers: HttpService.getHeaders()});
+                {headers: HttpService.getHeaders(), body: data});
     }
 
     public doLogin(url: string, data: any | null): Observable<LoginInfo> {

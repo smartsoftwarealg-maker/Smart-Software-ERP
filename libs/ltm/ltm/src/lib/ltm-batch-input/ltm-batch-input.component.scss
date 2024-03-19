@@ -13,7 +13,18 @@ mat-card-header div {
     padding: 4px;
 }
 mat-hint {
-    font-size: 0.6em;
+    font-size: .7em;
+}
+.date_div {
+    display: flex;
+}
+.hour input {
+    background: black;
+    font-family: 'digital-font', serif;
+    color: lawngreen!important;
+    padding: 4px;
+    font-weight: bolder!important;
+    font-size: 2em!important;
 }
 
 .group_div {
