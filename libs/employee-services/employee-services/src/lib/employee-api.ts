@@ -21,6 +21,7 @@ export interface PersonSummary {
     contractType: string;
     categSection: string;
     rank: string;
+    userId?: number;
 }
 export interface IEmployee {
   id: number;
@@ -78,4 +79,5 @@ export interface Employee extends IEmployee {
     blood_group?: number;
     cmmsPerson: boolean;
     hourlyRate?: number;
+    userId?: number;
 }

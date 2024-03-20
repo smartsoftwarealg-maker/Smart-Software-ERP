@@ -1,9 +1,13 @@
 <div class="ctrl_div">
-    <mat-form-field class="default-50">
+    <mat-form-field class="year">
         <mat-label translate>COMMON_YEAR</mat-label>
         <input matInput [formControl]="yearCtrl" type="number">
     </mat-form-field>
-    <mat-form-field class="default-50">
+    <mat-form-field class="grade">
+        <mat-label translate>PAYROLL_GRADE</mat-label>
+        <input matInput [formControl]="gradeCtrl" type="number" min="1" max="3">
+    </mat-form-field>
+    <mat-form-field class="employee">
         <mat-label translate>PAYROLL_EMPLOYEE</mat-label>
         <ss-auto-complete matInput
                           [model]="employeeLookup"
@@ -15,30 +19,28 @@
 @if (grades.length > 0) {
     <form [formGroup]="form">
 
-        <div class="ctrl_div">
-            <mat-form-field class="default-50">
-                <mat-label translate>PAYROLL_GRADE</mat-label>
-                <input matInput formControlName="index" type="number" min="1" max="3">
-            </mat-form-field>
+<!--        <mat-form-field class="default-50">-->
+<!--            <mat-label translate>PAYROLL_GRADE</mat-label>-->
+<!--            <input matInput formControlName="index" type="number" min="1" max="3">-->
+<!--        </mat-form-field>-->
+        <div formArrayName="grades">
+            @for (l of labels; track l; let i = $index) {
+                <fieldset [formGroupName]="i">
+                    <legend>{{ labels[i] }}</legend>
+                    <mat-form-field>
+                        <mat-label>{{ 'PAYROLL_GRADE' | translate }} 1</mat-label>
+                        <input matInput formControlName="grade1" type="number" (click)="$event.target.select()">
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-label>{{ 'PAYROLL_GRADE' | translate }} 2</mat-label>
+                        <input matInput formControlName="grade2" type="number" (click)="$event.target.select()">
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-label>{{ 'PAYROLL_GRADE' | translate }} 3</mat-label>
+                        <input matInput formControlName="finalGrade" type="number" (click)="$event.target.select()">
+                    </mat-form-field>
+                </fieldset>
+            }
         </div>
-    <div formArrayName="grades">
-        @for (l of labels; track l; let i = $index) {
-            <fieldset [formGroupName]="i">
-        <legend>{{ labels[i] }}</legend>
-        <mat-form-field>
-            <mat-label>{{ 'PAYROLL_GRADE' | translate }} 1</mat-label>
-            <input matInput formControlName="grade1" type="number" (click)="$event.target.select()">
-        </mat-form-field>
-        <mat-form-field>
-            <mat-label>{{ 'PAYROLL_GRADE' | translate }} 2</mat-label>
-            <input matInput formControlName="grade2" type="number" (click)="$event.target.select()">
-        </mat-form-field>
-        <mat-form-field>
-            <mat-label>{{ 'PAYROLL_GRADE' | translate }} 3</mat-label>
-            <input matInput formControlName="finalGrade" type="number" (click)="$event.target.select()">
-        </mat-form-field>
-    </fieldset>
-        }
-    </div>
     </form>
 }

@@ -64,6 +64,11 @@
     </mat-form-field>
 
     <mat-form-field floatLabel="always" class="default-50 sm-100">
+      <mat-label translate>PAYROLL_DAY_COUNT</mat-label>
+      <input matInput [maxLength]="100" formControlName="dayCount" type="number" min="0" max="360">
+    </mat-form-field>
+
+    <mat-form-field floatLabel="always" class="default-50 sm-100">
       <mat-label translate>COMMON_MEMO</mat-label>
       <input matInput [maxLength]="100" formControlName="memo" type="text" required>
       <mat-error *ngIf="form.controls['memo'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>

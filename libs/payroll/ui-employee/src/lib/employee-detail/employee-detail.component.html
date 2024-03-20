@@ -229,6 +229,11 @@
                     </mat-select>
                 </mat-form-field>
 
+                <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>ADMINISTRATION_USERNAME</mat-label>
+                    <ss-auto-complete [model]="userLookup" formControlName="userId"></ss-auto-complete>
+                </mat-form-field>
+
                 <mat-checkbox class="default-50 sm-100" formControlName="is_driver" translate>PAYROLL_IS_DRIVER
                 </mat-checkbox>
                 <mat-checkbox class="default-50 sm-100" formControlName="cmmsPerson" translate>PAYROLL_CMMS_PERSON

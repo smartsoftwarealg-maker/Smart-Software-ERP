@@ -14,11 +14,11 @@ import {
 } from '@ss/common/api-lookup';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {MatExpansionPanel} from '@angular/material/expansion';
-import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
+import { DefaultAutoCompleteModel, UserLookup } from "@ss/common/ui-auto-complete";
 import { filter, Observable, of, switchMap } from 'rxjs';
 import {map, tap} from 'rxjs/operators';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
-import {HttpService} from '@ss/common/api-common';
+import { HttpService, UserService } from '@ss/common/api-common';
 import {ELine, FixedElementsEntryService} from '@ss/remuneration/elements-entry';
 import {Employee} from '@ss/employee-services/employee-services';
 import {AppArchiveService, EMPLOYEE_ARCHIVES} from '@ss/common/app-archive';
@@ -46,6 +46,7 @@ import {
 import {EmployeeDiplomaService} from '../employee-diplomas/employee-diploma.service';
 import {EmployeeTrainingService} from '../employee-trainings/employee-training.service';
 import {PunishmentService} from '../employee-punishments/punishment.service';
+import { UserListService } from "@ss/common/api-users";
 
 @Component({
     selector: 'ss-employee-detail',
@@ -54,6 +55,7 @@ import {PunishmentService} from '../employee-punishments/punishment.service';
 })
 export class EmployeeDetailComponent extends BaseEntityDetailComponent<Employee> {
     private lookupsSrv = inject(LookupsService);
+    private usersSrv =  inject(UserListService);
     private router = inject(Router);
     private decisionSrv = inject(EmployeeDecisionService);
     private punishmentSrv = inject(PunishmentService);
@@ -111,8 +113,9 @@ export class EmployeeDetailComponent extends BaseEntityDetailComponent<Employee>
     imageModel: ImageModel;
     nationalityModel = new DefaultAutoCompleteModel(this.nationalitySrv);
     cityLookup = new CityLookup(this.citySrv);
-    public maritalStatuses: MaritalStatus[];
-    public elementsForm: UntypedFormGroup = null;
+    userLookup = new UserLookup(this.usersSrv);
+    maritalStatuses: MaritalStatus[];
+    elementsForm: UntypedFormGroup = null;
     generationModes = [
         {id: 1, description: 'PAYROLL_IEP'},
         {id: 2, description: 'PAYROLL_OLD_ELEMENTS'},
@@ -225,7 +228,8 @@ export class EmployeeDetailComponent extends BaseEntityDetailComponent<Employee>
             birthCity: [p.birthCity],
             is_driver: [p.is_driver || false, Validators.required],
             cmmsPerson: [p.cmmsPerson || false, Validators.required],
-            blood_group: [p.blood_group]
+            blood_group: [p.blood_group],
+            userId: [p.userId]
         });
     }
 

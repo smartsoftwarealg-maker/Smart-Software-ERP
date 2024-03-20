@@ -2,7 +2,6 @@ import { Component, inject } from '@angular/core';
 import { BaseChildEntityDetailComponent } from '@ss/common/ui-base-entity';
 import {Punishment} from '../punishment-api';
 import { FormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
-import {LoginService} from '@ss/common/api-common';
 import {
     ProfessionalFaultService,
     PunishmentTypeService
@@ -39,6 +38,7 @@ export class PunishmentDetailComponent extends BaseChildEntityDetailComponent<Pu
             faultType:      [a.faultType, Validators.required],
             sanction:       [a.sanction, Validators.required],
             memo:           [a.memo],
+            dayCount:       [a.dayCount],
         });
     }
 }

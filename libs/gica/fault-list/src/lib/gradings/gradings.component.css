@@ -16,3 +16,16 @@ fieldset {
 legend {
     font-weight: bolder;
 }
+
+.ctrl_div {
+    display: flex;
+    gap: 1em;
+}
+
+.year,
+.grade {
+    flex: 1 1 60px;
+}
+.employee {
+    flex: 3 1 250px;
+}

@@ -77,15 +77,17 @@ export class GradingsComponent implements OnInit {
     private shellSrv = inject(ShellService);
     private destroyRef = inject(DestroyRef);
     private subscription: Subscription|null = null;
+    private executionIndex = 1;
 
     processing = signal(false);
 
     employeeLookup  = new PersonAutocompleteClass(this.employeeSrv);
     employeeCtrl = new FormControl<number>(0);
     yearCtrl = new FormControl<number>({ value: this.CUR_YEAR, disabled: true });
+    gradeCtrl = new FormControl<number>(1 );
 
     form = this.fb.group({
-        index:  [1, [Validators.required, Validators.min(1), Validators.max(3)] ] ,
+        index:  [0, [Validators.required, Validators.min(1), Validators.max(3)] ] ,
         grades: this.fb.array([])
     });
     labels = [''];
@@ -99,24 +101,24 @@ export class GradingsComponent implements OnInit {
 
         this.route.data.subscribe(data => {
             this.gradingSrv.gradingMode = !!data['gradingMode'];
-            this.form.controls.index.setValue(this.gradingSrv.gradingMode? 1 : 3);
         });
 
-        this.subscription = this.form
-            .controls['index']
+        this.subscription = this.gradeCtrl
             .valueChanges
             .pipe(
                 debounceTime(300),
                 distinctUntilChanged())
             .subscribe(res => {
-                this.grades
-                    .controls
-                    .forEach(c => {
-                        const grades = ['grade1', 'grade2', 'finalGrade'];
-                        const ctrl = grades[res - 1];
-                        grades.forEach(g => (<FormGroup>c).controls[g].disable());
-                        (<FormGroup>c).controls[ctrl].enable({ onlySelf: false });
-                    });
+                if (res && res >= 1 && res <= 3) {
+                    this.grades
+                        .controls
+                        .forEach(c => {
+                            const grades = ['grade1', 'grade2', 'finalGrade'];
+                            const ctrl = grades[res - 1];
+                            grades.forEach(g => (<FormGroup>c).controls[g].disable());
+                            (<FormGroup>c).controls[ctrl].enable({ onlySelf: false });
+                        });
+                }
             });
     }
 
@@ -128,18 +130,20 @@ export class GradingsComponent implements OnInit {
         this.grades.clear();
         this.labels = [];
         this.gradingSrv
-            .get(this.CUR_YEAR, e?.id)
+            .get(this.CUR_YEAR, e?.id, this.gradeCtrl.value)
             .subscribe(res => {
+                this.executionIndex = this.gradeCtrl.value;
                 res.forEach(g => {
+                    const idx = this.executionIndex;
                     const temp = this.fb.group({
                         id:          [g.id],
                         year:        [this.CUR_YEAR],
                         employeeId:  [e?.id],
                         criterion:   [g.criterion],
                         description: [g.description],
-                        grade1 :     [{ value: g.grade1, disabled: !this.gradingSrv.gradingMode}],
-                        grade2:      [{ value: g.grade2, disabled: true}],
-                        finalGrade:  [{ value: g.finalGrade, disabled: this.gradingSrv.gradingMode}],
+                        grade1 :     [{ value: g.grade1, disabled: this.gradeCtrl.value !== 1}],
+                        grade2:      [{ value: idx >= 2? g.grade2: 0, disabled: this.gradeCtrl.value !== 2}],
+                        finalGrade:  [{ value: idx >= 3? g.finalGrade : 0, disabled: !this.gradingSrv.gradingMode || this.gradeCtrl.value !== 3}],
                         userId:      [this.loginSrv.appCtx.id]
                     });
                     this.grades.push(temp);
@@ -154,7 +158,7 @@ export class GradingsComponent implements OnInit {
         this.processing.set(true);
         this.saveButton.disabled = true;
         this.gradingSrv
-            .update(value.index, <Grade[]>value.grades)
+            .update(this.gradeCtrl.value, <Grade[]>value.grades)
             .subscribe(res => {
                 if (res.length > 0) {
                     this.snackBarSrv.showSuccessMessage();
