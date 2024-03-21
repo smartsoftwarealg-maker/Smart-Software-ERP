@@ -6,21 +6,15 @@ import {
 import {
     GICA_CONSTANTS_URL,
     GICA_WEIGHTS_URL,
-    GICA_FAULTS_URL,
     GICA_SCALE_URL,
     GICA_REPORTS_URL,
     GICA_HISTORY_URL,
     GICA_GRADING_URL,
-    GICA_CRITERIA_URL, GICA_DEGRADING_URL
+    GICA_CRITERIA_URL, GICA_DEGRADING_URL, GICA_DEDUCTIONS_URL
 } from '../common';
 
 import {loginGuard} from '../erp-guards';
 import {
-    FaultDetailComponent,
-    FaultListComponent,
-    FaultMotiveDetailComponent,
-    FaultMotiveListComponent,
-    FaultService,
     ApplicationComponent,
     ScaleDetailComponent,
     ApplicationArchiveComponent,
@@ -30,18 +24,21 @@ import {
     CriteriaListComponent,
     CriteriaDetailComponent,
     AbsenceWeightListComponent,
-    AbsenceWeightDetailComponent
-} from "gica/career-evolution";
+    AbsenceWeightDetailComponent, DeductionReportComponent
+} from 'gica/career-evolution';
 import { inject } from '@angular/core';
 import {
     ConstantDetailComponent
 } from 'gica/career-evolution';
 
 
-export const faultGuard: CanActivateFn = () => inject(FaultService).canActivate();
+// export const faultGuard: CanActivateFn = () => inject(FaultService).canActivate();
 export const criteriaGuard: CanActivateFn = () => inject(CriterionService).canActivate();
 
 export const gicaRoutes: Routes = [
+    {
+        path: GICA_DEDUCTIONS_URL, component: DeductionReportComponent, canActivate: [loginGuard]
+    },
     {
         path: GICA_CONSTANTS_URL, component: ConstantDetailComponent, canActivate: [loginGuard]
     },
@@ -62,13 +59,6 @@ export const gicaRoutes: Routes = [
         children: [
             { path: LIST_URL, component: AbsenceWeightListComponent, canActivate: [loginGuard]},
             { path: ':id', component: AbsenceWeightDetailComponent, canActivate: [loginGuard] }
-        ]
-    },
-    {
-        path: GICA_FAULTS_URL,
-        children: [
-            { path: LIST_URL, component: FaultListComponent, canActivate: [loginGuard]},
-            { path: ':id', component: FaultDetailComponent, canActivate: [loginGuard, faultGuard] }
         ]
     },
     {

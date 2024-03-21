@@ -1,11 +1,14 @@
 import {SideNavNode} from '@ss/common/api-common';
 import {
-    ABS_GICA_CONSTANTS_URL, ABS_GICA_CRITERIA_URL, ABS_GICA_DEGRADING_URL,
-    ABS_GICA_FAULTS_URL, ABS_GICA_GRADING_URL,
+    ABS_GICA_CONSTANTS_URL,
+    ABS_GICA_CRITERIA_URL,
+    ABS_GICA_DEGRADING_URL,
+    ABS_GICA_GRADING_URL,
     ABS_GICA_HISTORY_URL,
     ABS_GICA_WEIGHTS_URL,
     ABS_GICA_REPORTS_URL,
-    ABS_GICA_SCALE_URL
+    ABS_GICA_SCALE_URL,
+    ABS_GICA_DEDUCTION_REPORT_URL
 } from '../common';
 
 export const gicaNavTree: SideNavNode = {
@@ -54,6 +57,13 @@ export const gicaNavTree: SideNavNode = {
             name: 'PAYROLL_GICA_DEGRADING',
             icon: 'fa-solid fa-thumbs-down',
             route: ABS_GICA_DEGRADING_URL,
+            accessRights: 'DGrade'
+        },
+
+        {
+            name: 'PAYROLL_DEDUCTION_REPORT',
+            icon: 'fa-solid fa-face-angry',
+            route: ABS_GICA_DEDUCTION_REPORT_URL,
             accessRights: 'DGrade'
         },
 
