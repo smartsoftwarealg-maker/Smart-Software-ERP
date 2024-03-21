@@ -195,5 +195,9 @@
     "GICA_GRADING":          "التقييم",
     "GRADE":                 "درجة",
     "DEGRADE":               "الخصم",
-    "CRITERIA":              "معايير"
+    "CRITERIA":              "معايير",
+    "WEIGHT":                "وزن",
+    "WEIGHTS":               "أوزان",
+    "DISCIPLINE":            "تأديب",
+    "ABSENCE":               "غياب"
 }

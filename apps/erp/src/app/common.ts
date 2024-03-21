@@ -335,7 +335,7 @@ export const DASHBOARD_QUERY_URL = 'queries';
 export const DASHBOARD_URL       = 'dashbaord';
 
 // GICA
-export const GICA_MOTIVES_URL = 'gica-motives';
+export const GICA_WEIGHTS_URL = 'gica-motives';
 export const GICA_FAULTS_URL = 'gica-faults';
 export const GICA_CRITERIA_URL = 'gica-crieria';
 export const GICA_CONSTANTS_URL = 'gica-constants';
@@ -677,7 +677,7 @@ export const ABS_LTM_ANOMALY_URL            = '/' + [MAIN_PAGE_URL, LTM_APP_URL,
 export const ABS_LTM_TESTINGS_ANOMALIES_URL            = '/' + [MAIN_PAGE_URL, LTM_APP_URL, LTM_TESTING_ANOMALIES_URL].join('/');
 
 // GICA
-export const ABS_GICA_MOTIVES_URL       = '/' + [MAIN_PAGE_URL, GICA_APP_URL, GICA_MOTIVES_URL].join('/');
+export const ABS_GICA_WEIGHTS_URL       = '/' + [MAIN_PAGE_URL, GICA_APP_URL, GICA_WEIGHTS_URL].join('/');
 export const ABS_GICA_FAULTS_URL       = '/' + [MAIN_PAGE_URL, GICA_APP_URL, GICA_FAULTS_URL].join('/');
 export const ABS_GICA_SCALE_URL       = '/' + [MAIN_PAGE_URL, GICA_APP_URL, GICA_SCALE_URL].join('/');
 export const ABS_GICA_CONSTANTS_URL       = '/' + [MAIN_PAGE_URL, GICA_APP_URL, GICA_CONSTANTS_URL].join('/');

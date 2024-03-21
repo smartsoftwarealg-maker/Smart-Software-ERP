@@ -23,11 +23,14 @@ import { MatInput } from '@angular/material/input';
 import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
 import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
 import { CriterionService } from '../services/criterion.service';
+import { MatListOption, MatSelectionList } from "@angular/material/list";
+import { MatOption } from "@angular/material/autocomplete";
+import { MatSelect } from "@angular/material/select";
 
 @Component({
     selector: 'ss-gica-criteria-detail',
     standalone: true,
-    imports: [CommonModule, CommonUiLangModule, MatCell, MatCellDef, MatColumnDef, MatHeaderCell, MatHeaderRow, MatHeaderRowDef, MatRow, MatRowDef, MatSort, MatSortHeader, MatTable, UiPaginationModule, MatCard, MatCardContent, MatError, MatFormField, MatInput, MatLabel, ReactiveFormsModule, CommonUiAutoCompleteModule, CommonUiDatepickerModule],
+    imports: [CommonModule, CommonUiLangModule, MatCell, MatCellDef, MatColumnDef, MatHeaderCell, MatHeaderRow, MatHeaderRowDef, MatRow, MatRowDef, MatSort, MatSortHeader, MatTable, UiPaginationModule, MatCard, MatCardContent, MatError, MatFormField, MatInput, MatLabel, ReactiveFormsModule, CommonUiAutoCompleteModule, CommonUiDatepickerModule, MatListOption, MatSelectionList, MatOption, MatSelect],
     templateUrl: './criteria-detail.component.html',
     styleUrl: './criteria-detail.component.css'
 })
@@ -48,6 +51,7 @@ export class CriteriaDetailComponent extends BaseEntityDetailComponent<Criterion
             description: [b.description, Validators.required],
             grade:       [b.grade || 4, [Validators.required, Validators.min(1)]],
             sign:        [b.sign || 1, Validators.required],
+            cType:       [b.cType]
         });
     }
 }

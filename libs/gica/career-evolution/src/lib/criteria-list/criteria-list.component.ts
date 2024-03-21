@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
-import { Criterion, Fault } from "../gica-careers-api";
+import { Criterion } from '../gica-careers-api';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DefaultReportService } from '@ss/common/ui-default-report-component';
@@ -22,14 +22,12 @@ import {
 } from '@angular/material/table';
 import { MatSort, MatSortHeader } from '@angular/material/sort';
 import { UiPaginationModule } from '@ss/common/ui-pagination';
-import { FaultService } from '../services/fault.service';
 import { FormControl } from '@angular/forms';
-import { EmployeeService, IEmployee, PersonAutocompleteClass } from '@ss/employee-services/employee-services';
 import { MatFormField } from '@angular/material/form-field';
 import { CommonUiLookupModule } from '@ss/common/ui-lookup';
-import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from "@ss/common/ui-auto-complete";
-import { CriterionService } from "../services/criterion.service";
-import { Category, CategoryService } from "@ss/common/api-lookup";
+import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
+import { CriterionService } from '../services/criterion.service';
+import { Category, CategoryService } from '@ss/common/api-lookup';
 
 @Component({
     selector: 'ss-gica-criteria-list',

@@ -632,7 +632,7 @@
                 "libs/common/report-privileges/src/index.ts"
             ],
             "gica.careers": ["libs/gica.careers/src/index.ts"],
-            "gica/fault-list": ["libs/gica/fault-list/src/index.ts"],
+            "gica/career-evolution": ["libs/gica/career-evolution/src/index.ts"],
             "logistics/order-anomalies": [
                 "libs/logistics/order-anomalies/src/index.ts"
             ],

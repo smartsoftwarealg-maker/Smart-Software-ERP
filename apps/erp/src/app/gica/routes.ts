@@ -5,7 +5,7 @@ import {
 } from '@ss/common/api-common';
 import {
     GICA_CONSTANTS_URL,
-    GICA_MOTIVES_URL,
+    GICA_WEIGHTS_URL,
     GICA_FAULTS_URL,
     GICA_SCALE_URL,
     GICA_REPORTS_URL,
@@ -16,7 +16,6 @@ import {
 
 import {loginGuard} from '../erp-guards';
 import {
-    ConstantDetailComponent,
     FaultDetailComponent,
     FaultListComponent,
     FaultMotiveDetailComponent,
@@ -24,13 +23,19 @@ import {
     FaultService,
     ApplicationComponent,
     ScaleDetailComponent,
-    ScaleListComponent, GradingsComponent, CriteriaListComponent, CriteriaDetailComponent
-} from 'gica/fault-list';
+    ApplicationArchiveComponent,
+    CriterionService,
+    ScaleListComponent,
+    GradingsComponent,
+    CriteriaListComponent,
+    CriteriaDetailComponent,
+    AbsenceWeightListComponent,
+    AbsenceWeightDetailComponent
+} from "gica/career-evolution";
 import { inject } from '@angular/core';
 import {
-    ApplicationArchiveComponent,
-    CriterionService
-} from 'gica/fault-list';
+    ConstantDetailComponent
+} from 'gica/career-evolution';
 
 
 export const faultGuard: CanActivateFn = () => inject(FaultService).canActivate();
@@ -53,10 +58,10 @@ export const gicaRoutes: Routes = [
         path: GICA_HISTORY_URL, component: ApplicationArchiveComponent, canActivate: [loginGuard]
     },
     {
-        path: GICA_MOTIVES_URL,
+        path: GICA_WEIGHTS_URL,
         children: [
-            { path: LIST_URL, component: FaultMotiveListComponent, canActivate: [loginGuard]},
-            { path: ':id', component: FaultMotiveDetailComponent, canActivate: [loginGuard] }
+            { path: LIST_URL, component: AbsenceWeightListComponent, canActivate: [loginGuard]},
+            { path: ':id', component: AbsenceWeightDetailComponent, canActivate: [loginGuard] }
         ]
     },
     {

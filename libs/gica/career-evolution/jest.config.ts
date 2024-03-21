@@ -3,7 +3,7 @@ export default {
     displayName: 'gica-fault-list',
     preset: '../../../jest.preset.js',
     setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
-    coverageDirectory: '../../../coverage/libs/gica/fault-list',
+    coverageDirectory: '../../../coverage/libs/gica/career-evolution',
     transform: {
         '^.+\\.(ts|mjs|js|html)$': [
             'jest-preset-angular',

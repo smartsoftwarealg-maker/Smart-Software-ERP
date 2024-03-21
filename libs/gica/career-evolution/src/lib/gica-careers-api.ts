@@ -1,13 +1,14 @@
-export const GICA_MOTIVES = '/gica-careers/motives';
-export const GICA_CONSTANTS = '/gica-careers/parameters';
-export const GICA_FAULTS = '/faults';
-export const GICA_YEARS = '/gica-careers/years';
-export const GICA_EMPLOYEES = '/gica-careers/employees';
-export const GICA_SCALES = '/gica-careers/scales';
-export const GICA_REPORTS = '/gica-careers/reports';
-export const GICA_ARCHIVES = '/archives';
-export const GICA_CATEGORIES = '/gica-careers/categories';
-export const GICA_CRITERIA = '/criteria';
+export const GICA_MOTIVES = "/gica-careers/motives";
+export const GICA_CONSTANTS = "/gica-careers/parameters";
+export const GICA_FAULTS = "/faults";
+export const GICA_YEARS = "/gica-careers/years";
+export const GICA_EMPLOYEES = "/gica-careers/employees";
+export const GICA_SCALES = "/gica-careers/scales";
+export const GICA_REPORTS = "/gica-careers/reports";
+export const GICA_ARCHIVES = "/archives";
+export const GICA_CATEGORIES = "/gica-careers/categories";
+export const GICA_CRITERIA = "/criteria";
+export const GICA_WEIGHTS = "/gica-careers/weights";
 
 export interface Motive {
     id: number;
@@ -75,9 +76,25 @@ export interface Grade {
 }
 
 export interface Criterion {
-    id: number
+    id: number;
     parentId: number;
     description: string;
     grade: number;
     sign: number;
+    cType?: number;
+}
+
+export interface AbsenceWeight {
+    id: number;
+    elementId: number;
+    weight: number;
+    elementDescription?: string;
+    cType?: number;
+}
+
+export interface Deduction {
+    id: number;
+    firstName: string;
+    lastName: string;
+    deduction: number;
 }

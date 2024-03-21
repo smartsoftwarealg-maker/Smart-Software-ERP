@@ -3,10 +3,10 @@ import {
     ABS_GICA_CONSTANTS_URL, ABS_GICA_CRITERIA_URL, ABS_GICA_DEGRADING_URL,
     ABS_GICA_FAULTS_URL, ABS_GICA_GRADING_URL,
     ABS_GICA_HISTORY_URL,
-    ABS_GICA_MOTIVES_URL,
+    ABS_GICA_WEIGHTS_URL,
     ABS_GICA_REPORTS_URL,
     ABS_GICA_SCALE_URL
-} from "../common";
+} from '../common';
 
 export const gicaNavTree: SideNavNode = {
     name: 'GICACARRER',
@@ -25,10 +25,10 @@ export const gicaNavTree: SideNavNode = {
             accessRights: 'Criterion'
         },
         {
-            name: 'COMMON_MOTIVES',
-            icon: 'fa-solid fa-golf-flag-hole',
-            route: ABS_GICA_MOTIVES_URL,
-            accessRights: 'GCMotive'
+            name: 'PAYROLL_WEIGHTS',
+            icon: 'fa-solid fa-weight-hanging',
+            route: ABS_GICA_WEIGHTS_URL,
+            accessRights: 'AbsenceMotive'
         },
         {
             name: 'PAYROLL_SCALE',
@@ -36,12 +36,12 @@ export const gicaNavTree: SideNavNode = {
             route: ABS_GICA_SCALE_URL,
             accessRights: 'GCScale'
         },
-        {
-            name: 'PAYROLL_CAREER_FAULTS',
-            icon: 'fa-solid fa-circle-exclamation',
-            route: ABS_GICA_FAULTS_URL,
-            accessRights: 'GCFault'
-        },
+        // {
+        //     name: 'PAYROLL_CAREER_FAULTS',
+        //     icon: 'fa-solid fa-circle-exclamation',
+        //     route: ABS_GICA_FAULTS_URL,
+        //     accessRights: 'GCFault'
+        // },
 
         {
             name: 'PAYROLL_GICA_GRADING',
