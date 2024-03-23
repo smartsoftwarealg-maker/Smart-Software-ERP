@@ -3,9 +3,17 @@
     display: flex;
     gap: 1em;
     justify-content: flex-end;
+    padding: 8px;
 }
 
 mat-card {
     padding: 8px;
     border-radius: 1.4em;
+}
+
+mat-card,
+.button_div {
+    width: 98%;
+    max-width: 1200px;
+    margin: 0 auto;
 }

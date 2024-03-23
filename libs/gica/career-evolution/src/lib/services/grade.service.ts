@@ -11,10 +11,11 @@ export class GradeService {
     private _gradingMode = true;
     private httpSrv =  inject(HttpService);
 
-    get(year: number, id: number): Observable<Grade[]> {
+    get(year: number, id: number, index: number): Observable<Grade[]> {
         const params = new HttpParams()
             .set('year', year)
             .set('id', id)
+            .set('index', index)
             .set('grading', this._gradingMode);
         return this.httpSrv.get('/gica-careers/gradings', params);
     }

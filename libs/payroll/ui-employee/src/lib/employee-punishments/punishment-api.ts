@@ -11,6 +11,7 @@ export interface Punishment {
     fault: string;
     faultType?: number;
     memo: string;
+    dayCount?: number;
     typeName?: string;
     faultName?: string;
 }

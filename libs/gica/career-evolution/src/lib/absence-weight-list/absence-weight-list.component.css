@@ -1,0 +1,45 @@
+.size {
+    width: 90%;
+    max-width: 800px;
+    margin: 4px auto 0;
+}
+
+.div_table {
+    height: calc(100% - 70px);
+    overflow: auto;
+}
+
+.main-table {
+    width: 100%;
+}
+
+
+.mat-column-elementDescription {
+    flex: 2 1 250px ;
+    padding-right: 8px !important;
+    padding-left: 8px !important;
+}
+
+.mat-column-cType {
+    flex: 1 1 150px ;
+    padding-right: 8px !important;
+    padding-left: 8px !important;
+}
+
+.mat-column-weight {
+    flex: 1 1 100px ;
+    padding-right: 8px !important;
+    padding-left: 8px !important;
+    justify-content: flex-end;
+}
+
+
+.pagination-container {
+
+    ss-pagination {
+        left: 0;
+        right: 0;
+        position: sticky;
+        margin: auto;
+    }
+}
