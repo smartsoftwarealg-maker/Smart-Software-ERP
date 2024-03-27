@@ -13,16 +13,23 @@
                         COMMON_FIELD_REQUIRED
                     </mat-error>
                 </mat-form-field>
-                <mat-form-field class="hour default-100">
-                    <mat-label translate>COMMON_HOURS</mat-label>
-                    <input matInput [formControl]="hourCtrl" type="number" min="0" max="23"
-                           (change)="onHourChange()">
-                </mat-form-field>
+                @if (sampleMode()) {
                     <mat-form-field class="default-100">
-                        <mat-label translate>COMMON_SEARCH</mat-label>
-                        <input matInput [formControl]="searchField" type="text">
-                        <mat-hint translate>LTM_SEARCH_MATTERS</mat-hint>
+                        <mat-label translate>LTM_SAMPLE_NO</mat-label>
+                        <input matInput [formControl]="sampleCtrl" type="text"   (change)="onHour()">
                     </mat-form-field>
+                } @else {
+                    <mat-form-field class="hour default-100">
+                        <mat-label translate>COMMON_HOURS</mat-label>
+                        <input matInput [formControl]="hourCtrl" type="number" min="0" max="23"
+                               (change)="onHourChange()">
+                    </mat-form-field>
+                }
+                <mat-form-field class="default-100">
+                    <mat-label translate>COMMON_SEARCH</mat-label>
+                    <input matInput [formControl]="searchField" type="text">
+                    <mat-hint translate>LTM_SEARCH_MATTERS</mat-hint>
+                </mat-form-field>
                 <div class="list_div">
                     <mat-list>
                         @for (m of (filteredMatters | async); track m.id) {
@@ -40,7 +47,8 @@
                 <div *ngFor="let f of tests.controls; let i = index">
                     <div [formGroupName]="i">
                         <mat-form-field class="input_div">
-                            <mat-hint><span translate>LTM_RANGE</span>: {{ limits[i][0] }}- {{ limits[i][1] }} </mat-hint>
+                            <mat-hint><span translate>LTM_RANGE</span>: {{ limits[i][0] }}- {{ limits[i][1] }}
+                            </mat-hint>
                             <mat-label translate>{{ labels[i] }}</mat-label>
                             <input matInput formControlName="value" type="number" (click)="$event.target.select()">
                         </mat-form-field>

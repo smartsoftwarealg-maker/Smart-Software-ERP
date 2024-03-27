@@ -35,5 +35,7 @@
     "TESTING_ANOMALIES": "Testing anomalies",
     "ANOMALY":           "Anomaly",
     "ANOMALIES":         "Anomalies",
-    "SHOW_KPI":          "Show in KPI"
+    "SHOW_KPI":          "Show in KPI",
+    "SAMPLE_TESTINGS":   "Sample testings",
+    "SAMPLE_NO":         "Sample No."
 }

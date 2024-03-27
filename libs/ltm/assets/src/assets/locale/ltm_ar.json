@@ -35,5 +35,7 @@
     "TESTING_ANOMALIES": "الاختبارات الشاذة",
     "ANOMALY":           "شذوذ",
     "ANOMALIES":         "شذوذ",
-    "SHOW_KPI":          "إظهار في تقارير الأداء"
+    "SHOW_KPI":          "إظهار في تقارير الأداء",
+    "SAMPLE_TESTINGS":   "اختبار العينات",
+    "SAMPLE_NO":         "رقم العينة"
 }
