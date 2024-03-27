@@ -1,9 +1,29 @@
+.container__div {
+    display: flex;
+    gap: 1em;
+    flex-wrap: nowrap;
+    width: 100%;
+    height: calc(100% - 110px);
+}
+
 .ctrl_div,
 fiorm,
+.container__div,
 fieldset {
     width: 80%;
-    max-width: 700px;
+    max-width: 1200px;
     margin: 8px auto;
+}
+.table_div {
+    height: calc(100% - 60px);
+}
+.emp__div {
+    flex: 1 1 50%;
+    max-width: 50%;
+    height: 100%;
+}
+form {
+    flex: 2 1 50%;
 }
 
 fieldset {
@@ -12,7 +32,9 @@ fieldset {
     flex-wrap: wrap;
     justify-content: space-between;
 }
-
+mat-form-field {
+    max-width: 30%;
+}
 legend {
     font-weight: bolder;
 }

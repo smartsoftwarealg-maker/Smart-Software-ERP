@@ -199,5 +199,6 @@
     "WEIGHT":                "Weight",
     "WEIGHTS":                "Weights",
     "DISCIPLINE":            "Discipline",
-    "ABSENCE":               "Absence"
+    "ABSENCE":               "Absence",
+    "DEDUCTION_REPORT":      "Deduction report"
 }

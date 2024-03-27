@@ -97,7 +97,7 @@ export class DeductionReportComponent implements OnInit {
 
     ngOnInit() {
         this.paginator.onChange = () => this.refresh();
-        this.shellSrv.setTitle('COMMON_UPDATE');
+        this.shellSrv.setTitle('PAYROLL_DEDUCTION_REPORT');
         this.shellSrv.setGoBackPath('..', this.route);
     }
 

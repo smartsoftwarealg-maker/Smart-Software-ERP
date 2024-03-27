@@ -293,12 +293,12 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
     }
   }
 
-  onPeriod(e: number) {
-    this.selectedPeriodicity = e;
-    if (this.matterTestSrv.getParentId() > 0) {
-      this.refreshData();
-    }
-  }
+  // onPeriod(e: number) {
+  //   this.selectedPeriodicity = e;
+  //   if (this.matterTestSrv.getParentId() > 0) {
+  //     this.refreshData();
+  //   }
+  // }
 
   savedData(value: Batch): Observable<BTest[]> {
     const date = new Date(value.timeStamp);
@@ -307,7 +307,7 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
       .pipe(map(res => {
         const tests: BTest[] = value.tests as BTest[];
         tests.forEach((e, i) => {
-          const test = res.find(t => t.matterId === value.matterId && t.testId === e.testId);
+          const test = res.find(t => t.parentId === value.matterId && t.testId === e.testId);
           e.id = test?.id || 0;
           e.value = test?.value || 0;
         });

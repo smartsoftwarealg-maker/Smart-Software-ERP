@@ -1,96 +1,69 @@
-<mat-card>
-    <form *ngIf="form !== null" novalidate [formGroup]="form">
-        <div class="container_div">
-            <div class="data_div">
+<div class="container">
+    <mat-card class="main_card">
+        <form novalidate [formGroup]="form">
+            <div class="ctrl__div">
 
-                <div class="default-100 period_div">
-                    <div style="width: 100%">
-                        <div class="date_div">
-                            <mat-form-field class="default-100">
-                                <mat-label translate>COMMON_DATE</mat-label>
-                                <ss-date-picker [required]=true
-                                                formControlName="timeStamp"
-                                                [type]="'datetime'">
-                                </ss-date-picker>
-                                <mat-error *ngIf="form.controls['timeStamp'].hasError('required')" translate>
-                                    COMMON_FIELD_REQUIRED
-                                </mat-error>
-                            </mat-form-field>
-                            <mat-form-field class="hour">
-                                <mat-label translate>COMMON_HOURS</mat-label>
-                                <input matInput [formControl]="hourCtrl" type="number" min="0" max="23" (change)="onHourChange()">
-                            </mat-form-field>
-                        </div>
-                        <div class="list_div">
-                            <mat-list>
-                                @for (m of (periods$ | async); track m.id) {
-                                    <mat-list-item
-                                        [class.selected]="selectedPeriodicity === m.id"
-                                        (click)="onPeriod(m.id)"
-                                        class="list-item selectable">
-                                        {{ m.description }}
-                                    </mat-list-item>
-                                }
-                            </mat-list>
-                        </div>
-<!--                            <mat-select (valueChange)="onPeriod($event)">-->
-<!--                                <mat-option *ngFor="let m of periods$ | async"-->
-<!--                                            [value]="m.id">{{ m.description }}-->
-<!--                                </mat-option>-->
-<!--                            </mat-select>-->
-                    </div>
+                <mat-form-field class="default-100">
+                    <mat-label translate>COMMON_DATE</mat-label>
+                    <ss-date-picker [required]=true
+                                    formControlName="timeStamp"
+                                    [type]="'datetime'">
+                    </ss-date-picker>
+                    <mat-error *ngIf="form.controls['timeStamp'].hasError('required')" translate>
+                        COMMON_FIELD_REQUIRED
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field class="hour default-100">
+                    <mat-label translate>COMMON_HOURS</mat-label>
+                    <input matInput [formControl]="hourCtrl" type="number" min="0" max="23"
+                           (change)="onHourChange()">
+                </mat-form-field>
+                    <mat-form-field class="default-100">
+                        <mat-label translate>COMMON_SEARCH</mat-label>
+                        <input matInput [formControl]="searchField" type="text">
+                        <mat-hint translate>LTM_SEARCH_MATTERS</mat-hint>
+                    </mat-form-field>
+                <div class="list_div">
+                    <mat-list>
+                        @for (m of (filteredMatters | async); track m.id) {
+                            <mat-list-item
+                                [class.selected]="selectedMatter?.id == m.id"
+                                (click)="onMatter(m)"
+                                class="list-item selectable">
+                                {{ m.description }}
+                            </mat-list-item>
+                        }
+                    </mat-list>
                 </div>
             </div>
-            <div class="list_card default-100">
-                    <div class="b-primary">
+            <div formArrayName="tests" class="group_div">
+                <div *ngFor="let f of tests.controls; let i = index">
+                    <div [formGroupName]="i">
                         <mat-form-field class="input_div">
-                            <mat-label translate>COMMON_SEARCH</mat-label>
-                            <input matInput [formControl]="searchField" type="text">
-                            <mat-hint translate>LTM_SEARCH_MATTERS</mat-hint>
+                            <mat-hint><span translate>LTM_RANGE</span>: {{ limits[i][0] }}- {{ limits[i][1] }} </mat-hint>
+                            <mat-label translate>{{ labels[i] }}</mat-label>
+                            <input matInput formControlName="value" type="number" (click)="$event.target.select()">
                         </mat-form-field>
                     </div>
-                    <div class="list_div">
-                        <mat-list>
-                            @for (m of (filteredMatters | async); track m.id) {
-                                <mat-list-item
-                                    [class.selected]="selectedMatter?.id == m.id"
-                                    (click)="onMatter(m)"
-                                    class="list-item selectable">
-                                    {{ m.description }}
-                                </mat-list-item>
-                            }
-                        </mat-list>
+                </div>
+            </div>
+        </form>
+    </mat-card>
+
+    <mat-card class="formula_card">
+        <mat-card-header> {{ 'COMMON_FORMULAS'|translate }}</mat-card-header>
+
+        <form *ngIf="totalsForm" [formGroup]="totalsForm">
+            <div formArrayName="totals" class="group_div">
+                <div *ngFor="let f of totals.controls; let i = index">
+                    <div [formGroupName]="i">
+                        <mat-form-field class="input_div">
+                            <mat-label translate>{{ totalsLabels[i] }}</mat-label>
+                            <input matInput formControlName="value" type="number">
+                        </mat-form-field>
                     </div>
-            </div>
-        </div>
-        <!--        <pre> {{ form.value | json }}</pre>-->
-        <div formArrayName="tests" class="group_div">
-            <div *ngFor="let f of tests.controls; let i = index">
-                <div [formGroupName]="i">
-                    <mat-form-field class="input_div">
-                        <mat-hint><span translate>LTM_RANGE</span>: {{ limits[i][0] }}- {{ limits[i][1] }}</mat-hint>
-                        <mat-label translate>{{ labels[i] }}</mat-label>
-                        <input matInput formControlName="value" type="number" (click)="$event.target.select()">
-                    </mat-form-field>
                 </div>
             </div>
-        </div>
-
-    </form>
-</mat-card>
-<mat-card>
-    <mat-card-header> {{ 'COMMON_FORMULAS'|translate }}</mat-card-header>
-
-    <form *ngIf="totalsForm" [formGroup]="totalsForm">
-        <div formArrayName="totals" class="group_div">
-            <div *ngFor="let f of totals.controls; let i = index">
-                <div [formGroupName]="i">
-                    <mat-form-field class="input_div">
-                        <mat-label translate>{{ totalsLabels[i] }}</mat-label>
-                        <input matInput formControlName="value" type="number">
-                    </mat-form-field>
-                </div>
-            </div>
-        </div>
-    </form>
-</mat-card>
+        </form>
+    </mat-card>
+</div>
