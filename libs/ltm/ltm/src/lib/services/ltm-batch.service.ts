@@ -22,8 +22,11 @@ export class LtmBatchService extends BaseEntityService<Batch> {
         return this.httpSrv.removePrams(LTM_BATCH_URL, params);
     }
 
-    input(matterId: number, time: Date): Observable<LTMTesting[]> {
-        const params = new HttpParams().set('matter', matterId).set('time', dateTimeToYmdStr(time));
+    input(matterId: number, time: Date, sample?: string): Observable<LTMTesting[]> {
+        const params0 = new HttpParams()
+            .set('matter', matterId)
+            .set('time', dateTimeToYmdStr(time));
+        const params = sample? params0.set('sample', sample) : params0;
         return this.httpSrv.get<LTMTesting[]>(LTM_INPUT_URL, params);
     }
 }

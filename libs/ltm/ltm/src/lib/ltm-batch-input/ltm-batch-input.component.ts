@@ -94,9 +94,10 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
   formBuilder = inject(FormBuilder);
   form = this.formBuilder.group(
     {
-      centerId: [this.loginSrv.appCtx.center, Validators.required],
-      matterId: [0, Validators.required],
+      centerId:  [this.loginSrv.appCtx.center, Validators.required],
+      matterId:  [0, Validators.required],
       timeStamp: [this.TODAY, Validators.required],
+      sampleNo:  [null],
       tests: this.formBuilder.array([])
     }
   );
@@ -303,7 +304,7 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
   savedData(value: Batch): Observable<BTest[]> {
     const date = new Date(value.timeStamp);
     return this.entitySrv
-      .input(value.matterId, date)
+      .input(value.matterId, date, value.sampleNo)
       .pipe(map(res => {
         const tests: BTest[] = value.tests as BTest[];
         tests.forEach((e, i) => {

@@ -110,6 +110,7 @@ export interface LTMTesting {
     userId?: number;
     matter?: string;
     test?: string;
+    sampleNo?: string;
 }
 
 export interface LTMTestInjection {
@@ -127,6 +128,7 @@ export interface Batch {
     centerId: number;
     matterId: number;
     timeStamp: Date;
+    sampleNo?: string;
     tests: BTest[];
 }
 
