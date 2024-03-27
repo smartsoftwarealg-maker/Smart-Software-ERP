@@ -63,6 +63,7 @@ export class ApplicationComponent implements OnInit {
     private reportSrv = inject(ReportService);
 
     paginator = PaginationModel.newInstance({page: 1, pageSize: 10, elementCount: 0});
+    dataLength = signal(0);
     displayedColumns = [
         'id',
         'firstName',
@@ -83,7 +84,10 @@ export class ApplicationComponent implements OnInit {
         this.data$ = this.reportSrv
             .getList(this.paginator.page - 1, this.paginator.pageSize, null, this.reportSrv.sortColumn, params1)
             .pipe(
-                tap(res => this.paginator.elementCount = res.itemCount),
+                tap(res => {
+                    this.paginator.elementCount = res.itemCount;
+                    this.dataLength.set(res.itemCount);
+                }),
                 map(res => res.body));
     }
 

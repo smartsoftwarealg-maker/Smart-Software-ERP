@@ -1,21 +1,23 @@
-import {Injectable} from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import {BaseEntityService} from '@ss/common/api-base-entity';
-import {Data, LTM_TESTING_URL, LTM_TEST_URL, LTM_TESTINGS_URL, LTMTesting} from '../ltm-api';
+import { Data, LTM_TESTING_URL, LTM_TEST_URL, LTM_TESTINGS_URL, LTMTesting, LTM_MATTER_URL } from '../ltm-api';
 import { dateTimeToStr, dateToYmdStr, HttpService } from "@ss/common/api-common";
 import {Observable} from 'rxjs';
 import {HttpParams} from '@angular/common/http';
 import {DatePipe} from '@angular/common';
 import { DateUtil } from "@ss/costing/costing-utils";
 import { map } from "rxjs/operators";
+import { Router, UrlTree } from '@angular/router';
 
 @Injectable({
     providedIn: 'root'
 })
 export class LtmTestingService extends BaseEntityService<LTMTesting> {
+    private router = inject(Router);
     private datePipe = new DatePipe('en');
 
     constructor(protected override httpSrv: HttpService) {
-        super(httpSrv, LTM_TESTING_URL);
+        super(httpSrv, LTM_TESTING_URL, LTM_MATTER_URL);
     }
 
     getData(matterId: number, period: string, anomaly: boolean, from: Date, to: Date): Observable<Data[]> {
@@ -40,6 +42,13 @@ export class LtmTestingService extends BaseEntityService<LTMTesting> {
     deleteAll(ids: number[]): Observable<{ count: number }> {
         return this.httpSrv.remove('/ltm/testings', ids);
     }
+
+    canActivate():
+        Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+
+        return this.getParentId()? true : this.router.createUrlTree(['/app/ltm/ltm-testings']);
+    }
+
 }
 
 

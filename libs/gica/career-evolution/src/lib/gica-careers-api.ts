@@ -1,14 +1,15 @@
-export const GICA_MOTIVES = "/gica-careers/motives";
-export const GICA_CONSTANTS = "/gica-careers/parameters";
-export const GICA_FAULTS = "/faults";
-export const GICA_YEARS = "/gica-careers/years";
-export const GICA_EMPLOYEES = "/gica-careers/employees";
-export const GICA_SCALES = "/gica-careers/scales";
-export const GICA_REPORTS = "/gica-careers/reports";
-export const GICA_ARCHIVES = "/archives";
-export const GICA_CATEGORIES = "/gica-careers/categories";
-export const GICA_CRITERIA = "/criteria";
-export const GICA_WEIGHTS = "/gica-careers/weights";
+export const GICA_MOTIVES = '/gica-careers/motives';
+export const GICA_CONSTANTS = '/gica-careers/parameters';
+export const GICA_FAULTS = '/faults';
+export const GICA_YEARS = '/gica-careers/years';
+export const GICA_EMPLOYEES = '/gica-careers/employees';
+export const GICA_SCALES = '/gica-careers/scales';
+export const GICA_REPORTS = '/gica-careers/reports';
+export const GICA_ARCHIVES = '/archives';
+export const GICA_CATEGORIES = '/gica-careers/categories';
+export const GICA_CRITERIA = '/criteria';
+export const GICA_WEIGHTS = '/gica-careers/weights';
+export const GICA_DEDUCTIONS = '/gica-careers/deductions';
 
 export interface Motive {
     id: number;

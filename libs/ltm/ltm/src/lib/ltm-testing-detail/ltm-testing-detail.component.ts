@@ -67,11 +67,11 @@ export class LtmTestingDetailComponent extends BaseEntityDetailComponent<LTMTest
     }
 
     public override setupForm(b: LTMTesting) {
-        this.testLookupSrv.setParentId(b.matterId || 0);
+        this.testLookupSrv.setParentId(b.parentId || 0);
         return this.formBuilder.group({
             id:           [b.id],
             centerId:     [{value: b.centerId || this.loginSrv.appCtx.center, disabled: true}, Validators.required],
-            matterId:     [b.matterId, Validators.required],
+            parentId:     [{ value: b.parentId || this.entitySrv.getParentId(), disabled: true }, Validators.required],
             testId:       [b.testId, Validators.required],
             timeStamp:    [b.timeStamp || new Date(), Validators.required],
             creationTime: [b.creationTime || new Date(), Validators.required],
@@ -89,9 +89,7 @@ export class LtmTestingDetailComponent extends BaseEntityDetailComponent<LTMTest
         this.testLookupSrv.setParentId(m.matterId);
     }
 
-
     override readForm(): LTMTesting {
         return this.form.getRawValue();
     }
-
 }

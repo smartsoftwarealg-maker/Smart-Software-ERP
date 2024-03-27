@@ -1,7 +1,3 @@
-import {inject} from '@angular/core';
-import {LtmLineGuard} from './services/ltm-line-guard';
-import {ActivatedRouteSnapshot, CanActivateFn, RouterStateSnapshot} from '@angular/router';
-
 export const LTM_TESTINGS_URL    = '/ltm/testings';
 export const LTM_LINE_URL        = '/ltm/lines';
 export const LTM_MIXTURE_URL        = '/ltm/mixtures';
@@ -12,7 +8,7 @@ export const LTM_LINE_TYPE_URL        = '/lookups/ltm_test_types';
 export const LTM_TEST_URL        = '/ltm/tests';
 export const LTM_BATCH_URL       = '/ltm/batch';
 export const LTM_INPUT_URL       = '/ltm/input';
-export const LTM_TESTING_URL    = '/ltm/testings';
+export const LTM_TESTING_URL    = '/testings';
 export const LTM_INJECTION_URL   = '/ltm/injection';
 export const LTM_MATTER_URL      = '/ltm/matters';
 export const LTM_LINE_MATTER_URL      = '/ltm/line-matters';
@@ -106,7 +102,7 @@ export interface Data {
 export interface LTMTesting {
     id: number;
     centerId: number;
-    matterId: number;
+    parentId: number;
     testId: number;
     timeStamp: Date;
     creationTime: Date;

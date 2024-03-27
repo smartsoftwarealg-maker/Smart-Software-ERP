@@ -13,13 +13,13 @@
         </div>
         @if (data$) {
             <div class="btn_div">
-                @if ((data$ | async)?.length > 0) {
+                @if (dataLength() > 0) {
                     <button mat-raised-button color="accent" type="button" (click)="apply()">
                         <i class="fa-solid fa-ballot-check"></i>
                         {{ 'COMMON_APPLY' | translate }}
                     </button>
                 }
-                @if ((data$ | async)?.length === 0) {
+                @if (dataLength() === 0) {
                     <button mat-raised-button color="warn" type="button" (click)="delete()">
                         <i class="fa-solid fa-trash-can-list"></i>
                         {{ 'COMMON_DELETE' | translate }}

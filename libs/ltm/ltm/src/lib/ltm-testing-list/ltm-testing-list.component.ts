@@ -1,11 +1,11 @@
-import { Component, OnInit, signal } from "@angular/core";
+import { Component, inject, OnInit, signal } from '@angular/core';
 import { BaseEntityListComponent } from "@ss/common/ui-base-entity";
 import { LTMLine, LTMTesting } from "../ltm-api";
 import { KeepOnToolbar, ShellService, SnackBarService, ToolbarButton } from "@ss/common/ui-shell";
 import { ActivatedRoute, Router, RouterOutlet } from "@angular/router";
 import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
 import { DefaultReportService } from "@ss/common/ui-default-report-component";
-import { dateToStr, MaterialModule, PaginatorPersistenceService, ymdToDmy } from "@ss/common/api-common";
+import { dateTimeToStr, dateToStr, MaterialModule, PaginatorPersistenceService, ymdToDmy } from '@ss/common/api-common';
 import { LtmTestingService } from "../services/ltm-testing.service";
 import { map, Observable, of, switchMap } from "rxjs";
 import { LtmLineService } from "../services/ltm-line.service";
@@ -14,13 +14,15 @@ import { LtmInjectionComponent } from "../ltm-injection/ltm-injection.component"
 import { CommonModule } from "@angular/common";
 import { CommonUiLangModule } from "@ss/common/ui-lang";
 import { UiPaginationModule } from "@ss/common/ui-pagination";
-import { ReactiveFormsModule } from "@angular/forms";
+import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { LogisticsUiDocInfoModule } from "@ss/logistics/ui-doc-info";
 import { AppArchiveModule } from "@ss/common/app-archive";
-import { CommonUiAutoCompleteModule } from "@ss/common/ui-auto-complete";
+import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
 import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
 import { CommonUiHourPickerModule } from "@ss/common/ui-hour-picker";
 import { MatCheckboxChange } from "@angular/material/checkbox";
+import { LtmMatterService } from '../services/ltm-matter.service';
+import { callback } from 'chart.js/helpers';
 
 @Component({
     selector: "ss-ltm-testing-list",
@@ -43,6 +45,7 @@ import { MatCheckboxChange } from "@angular/material/checkbox";
     ]
 })
 export class LtmTestingListComponent extends BaseEntityListComponent<LTMTesting> implements OnInit {
+    private matterSrv = inject(LtmMatterService);
     private injectBtn: ToolbarButton = {
         icon: "fa-regular fa-syringe",
         label: "COMMON_EXCEL_INJECTION",
@@ -52,6 +55,10 @@ export class LtmTestingListComponent extends BaseEntityListComponent<LTMTesting>
         click: () => this.inject()
     };
     lines$: Observable<LTMLine[]> = null;
+    matterCtrl = new FormControl<number>(0);
+    fromCtrl = new FormControl<Date>(new Date());
+    toCtrl = new FormControl<Date>(new Date());
+    matterLookup = new DefaultAutoCompleteModel(this.matterSrv);
 
     displayedColumns = ["matter", "test", "timeStamp", "value", "selection"];
     selection = signal<number[]>([]);
@@ -80,12 +87,19 @@ export class LtmTestingListComponent extends BaseEntityListComponent<LTMTesting>
             .getList(0, 50)
             .pipe(map(_ => _.body));
         this.pagination.pageSize = 10;
+        this.fromCtrl.setValue(this.lastMonth());
+        this.entitySrv.setParentId(this.entitySrv.getParentId() || 0);
+        this.matterCtrl.setValue(this.entitySrv.getParentId());
+        this.matterLookup.onObjectSelected = m => {
+            this.entitySrv.setParentId(m?.id || 0);
+            this.refresh();
+        }
     }
 
-    private lastMonth(): string {
+    private lastMonth(): Date {
         const now = new Date();
         now.setMonth(now.getMonth() - 1);
-        return ymdToDmy(dateToStr(now));
+        return now;
     }
 
     override ngOnInit() {
@@ -93,8 +107,6 @@ export class LtmTestingListComponent extends BaseEntityListComponent<LTMTesting>
         if (this.editable) {
             this.shellSrv.addButton(this.injectBtn);
         }
-        this.shellSrv.searchFormControl.setValue(this.lastMonth());
-        this.refresh();
     }
 
     private inject() {
@@ -159,5 +171,10 @@ export class LtmTestingListComponent extends BaseEntityListComponent<LTMTesting>
                     }
                 });
         }
+    }
+
+    override getPage(): Observable<LTMTesting[]> {
+        const filter = this.filter || `${dateToStr(this.fromCtrl.value)}~${dateToStr(this.toCtrl.value)}`;
+        return this.entitySrv.getPage(this.pagination, filter, this.sortBy);
     }
 }

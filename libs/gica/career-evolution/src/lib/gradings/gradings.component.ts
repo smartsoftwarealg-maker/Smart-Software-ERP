@@ -9,7 +9,7 @@ import {
     MatHeaderRow,
     MatHeaderRowDef, MatRow, MatRowDef, MatTable
 } from '@angular/material/table';
-import { MatSort, MatSortHeader } from '@angular/material/sort';
+import { MatSort, MatSortHeader, Sort } from '@angular/material/sort';
 import { UiPaginationModule } from '@ss/common/ui-pagination';
 import { FormArray, FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatCard, MatCardContent } from '@angular/material/card';
@@ -18,14 +18,18 @@ import { MatInput } from '@angular/material/input';
 import { MatButton } from '@angular/material/button';
 import { KeepOnToolbar, ShellService, SnackBarService, ToolbarButton } from '@ss/common/ui-shell';
 import { ActivatedRoute } from '@angular/router';
-import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { MatProgressSpinner } from '@angular/material/progress-spinner';
-import { EmployeeService, IEmployee, PersonAutocompleteClass } from '@ss/employee-services/employee-services';
+import {
+    Employee,
+    IEmployee,
+    PersonAutocompleteClass,
+    SubordinateService
+} from '@ss/employee-services/employee-services';
 import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
 import { GradeService } from '../services/grade.service';
 import { Grade } from '../gica-careers-api';
-import { LoginService } from '@ss/common/api-common';
-import { Subscription } from 'rxjs';
+import { LoginService, PaginationModel } from '@ss/common/api-common';
+import { map, Observable, of, Subscription, tap } from 'rxjs';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 
 @Component({
@@ -67,61 +71,98 @@ export class GradingsComponent implements OnInit {
         click: () => this.save()
     };
 
+    public refreshButton: ToolbarButton = {
+        icon: 'fas fa-sync-alt',
+        label: 'COMMON_REFRESH',
+        disabled: false,
+        visible: true,
+        keepOnToolbar: KeepOnToolbar.DYNAMIC,
+        click: () => this.refreshSubordinates()
+
+    };
+
     private CUR_YEAR = new Date().getFullYear() - 1;
     private loginSrv = inject(LoginService);
-    private employeeSrv = inject(EmployeeService);
+    private subordinateSrv = inject(SubordinateService);
     private gradingSrv = inject(GradeService);
     private fb = inject(FormBuilder);
     private snackBarSrv = inject(SnackBarService);
     private route = inject(ActivatedRoute);
     private shellSrv = inject(ShellService);
     private destroyRef = inject(DestroyRef);
-    private subscription: Subscription|null = null;
+    private subscriptions: Subscription[] = [];
     private executionIndex = 1;
 
     processing = signal(false);
 
-    employeeLookup  = new PersonAutocompleteClass(this.employeeSrv);
+    employeeLookup  = new PersonAutocompleteClass(this.subordinateSrv);
     employeeCtrl = new FormControl<number>(0);
     yearCtrl = new FormControl<number>({ value: this.CUR_YEAR, disabled: true });
     gradeCtrl = new FormControl<number>(1 );
+    searchCtrl = new FormControl<string>('');
 
     form = this.fb.group({
         index:  [0, [Validators.required, Validators.min(1), Validators.max(3)] ] ,
         grades: this.fb.array([])
     });
     labels = [''];
+    displayedColumns = ['id', 'lastName', 'firstName'];
+    paginator = PaginationModel.newInstance({page: 1, pageSize: 10, elementCount: 0});
+    data$: Observable<Employee[]> = of([]);
+    selectedId = 0;
 
     ngOnInit(): void {
-        this.destroyRef.onDestroy(() => this.subscription?.unsubscribe());
+        this.destroyRef.onDestroy(() => this.subscriptions.forEach(s => s.unsubscribe()));
         this.employeeLookup.onObjectSelected = e => this.refresh(e);
         this.shellSrv.setTitle('PAYROLL_GICA_GRADING');
         this.shellSrv.setGoBackPath('../', this.route);
-        this.shellSrv.addButton(this.saveButton);
+        this.shellSrv.setButtons([this.refreshButton, this.saveButton, ]);
 
         this.route.data.subscribe(data => {
             this.gradingSrv.gradingMode = !!data['gradingMode'];
         });
 
-        this.subscription = this.gradeCtrl
-            .valueChanges
-            .pipe(
-                debounceTime(300),
-                distinctUntilChanged())
-            .subscribe(res => {
-                if (res && res >= 1 && res <= 3) {
-                    this.grades
-                        .controls
-                        .forEach(c => {
-                            const grades = ['grade1', 'grade2', 'finalGrade'];
-                            const ctrl = grades[res - 1];
-                            grades.forEach(g => (<FormGroup>c).controls[g].disable());
-                            (<FormGroup>c).controls[ctrl].enable({ onlySelf: false });
-                        });
-                }
-            });
+        this.subscriptions.push(
+            this.gradeCtrl
+                .valueChanges
+                .pipe(
+                    debounceTime(300),
+                    distinctUntilChanged())
+                .subscribe(res => {
+                    if (res && res >= 1 && res <= 3) {
+                        this.grades
+                            .controls
+                            .forEach(c => {
+                                const grades = ['grade1', 'grade2', 'finalGrade'];
+                                const ctrl = grades[res - 1];
+                                grades.forEach(g => (<FormGroup>c).controls[g].disable());
+                                (<FormGroup>c).controls[ctrl].enable({ onlySelf: false });
+                            });
+                        this.refreshSubordinates();
+                    }
+                }));
+
+        this.subscriptions.push(
+            this.searchCtrl
+                .valueChanges
+                .pipe(
+                    debounceTime(300),
+                    distinctUntilChanged())
+                .subscribe(() => this.refreshSubordinates()));
+
+        this.paginator.onChange = () => this.refreshSubordinates();
+        this.refreshSubordinates();
     }
 
+    refreshSubordinates() {
+        this.data$ = this.subordinateSrv
+            .getList(this.paginator.page - 1, this.paginator.pageSize, this.searchCtrl.value, this.subordinateSrv.sortColumn)
+            .pipe(
+                tap(res => this.paginator.elementCount = res.itemCount),
+                map(res => res.body)
+            );
+        this.refresh({id: 0, firstName: null, lastName: null});
+    }
     get grades(): FormArray {
         return this.form.controls['grades'] as FormArray;
     }
@@ -166,5 +207,15 @@ export class GradingsComponent implements OnInit {
                 this.processing.set(false);
                 this.saveButton.disabled = false;
             });
+    }
+
+    selectEmployee(emp: Employee) {
+        this.selectedId = emp?.id | 0;
+        this.refresh(emp);
+    }
+
+    sort(event: Sort) {
+        this.subordinateSrv.sortColumn = event;
+        this.refreshSubordinates();
     }
 }

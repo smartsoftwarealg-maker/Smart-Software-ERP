@@ -23,3 +23,4 @@ export * from './lib/ltm-anomaly-detail/ltm-anomaly-detail.component';
 export * from './lib/ltm-anomaly-list/ltm-anomaly-list.component';
 export * from './lib/ltm-testing-anomaly-detail/ltm-testing-anomaly-detail.component';
 export * from './lib/ltm-testing-anomaly-list/ltm-testing-anomaly-list.component';
+export * from './lib/services/ltm-testing.service';

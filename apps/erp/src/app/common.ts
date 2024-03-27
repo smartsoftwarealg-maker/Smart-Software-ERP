@@ -12,6 +12,7 @@ import {
     AppArchiveListComponent
 } from '@ss/common/app-archive';
 import {AgentAssetsListComponent} from '@ss/assets-component';
+import { GICA_DEDUCTIONS } from "../../../../libs/gica/career-evolution/src/lib/gica-careers-api";
 
 // common
 export const LOOKUPS_URL = 'lookups';
@@ -344,6 +345,7 @@ export const GICA_REPORTS_URL = 'gica-reports';
 export const GICA_HISTORY_URL = 'gica-history';
 export const GICA_GRADING_URL = 'gica-grading';
 export const GICA_DEGRADING_URL = 'gica-degrading';
+export const GICA_DEDUCTIONS_URL = 'gica-deductions';
 
 
 // LTM
@@ -686,6 +688,7 @@ export const ABS_GICA_HISTORY_URL       = '/' + [MAIN_PAGE_URL, GICA_APP_URL, GI
 export const ABS_GICA_GRADING_URL       = '/' + [MAIN_PAGE_URL, GICA_APP_URL, GICA_GRADING_URL].join('/');
 export const ABS_GICA_DEGRADING_URL       = '/' + [MAIN_PAGE_URL, GICA_APP_URL, GICA_DEGRADING_URL].join('/');
 export const ABS_GICA_CRITERIA_URL       = '/' + [MAIN_PAGE_URL, GICA_APP_URL, GICA_CRITERIA_URL].join('/');
+export const ABS_GICA_DEDUCTION_REPORT_URL       = '/' + [MAIN_PAGE_URL, GICA_APP_URL, GICA_DEDUCTIONS_URL].join('/');
 
 
 // CMMS

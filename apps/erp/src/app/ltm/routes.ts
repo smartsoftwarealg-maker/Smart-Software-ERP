@@ -1,4 +1,4 @@
-import { Routes } from '@angular/router';
+import { CanActivateFn, Routes } from '@angular/router';
 
 import {
     ABS_INDEX_URL, CanDeactivateService, LIST_URL,
@@ -50,6 +50,9 @@ import {loginGuard} from '../erp-guards';
 import {DashboardComponent} from '@ss/dashboard';
 import {ReportViewComponent} from '@ss/common/ui-report-param';
 import { UnitDetailComponent, UnitListComponent } from '@ss/common/ui-lookup';
+import { inject } from '@angular/core';
+import { LtmTestingService } from '@ss/ltm/ltm';
+export const testingGuard: CanActivateFn = () => inject(LtmTestingService).canActivate();
 
 export const ltmRoutes: Routes = [
     {
@@ -210,7 +213,7 @@ export const ltmRoutes: Routes = [
             {
                 path: ':id',
                 component: LtmTestingDetailComponent,
-                canActivate: [loginGuard],
+                canActivate: [loginGuard, testingGuard],
                 canDeactivate: [CanDeactivateService],
             },
             { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }

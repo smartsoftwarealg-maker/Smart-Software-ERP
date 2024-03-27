@@ -199,5 +199,6 @@
     "WEIGHT":                "وزن",
     "WEIGHTS":               "أوزان",
     "DISCIPLINE":            "تأديب",
-    "ABSENCE":               "غياب"
+    "ABSENCE":               "غياب",
+    "DEDUCTION_REPORT":      "الخصوم"
 }
