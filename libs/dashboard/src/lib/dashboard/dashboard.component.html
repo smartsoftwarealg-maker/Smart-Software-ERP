@@ -51,24 +51,26 @@
                    class="main-table"
                    [ngStyle]="{ 'min-width.px': tableWidth }">
             <ng-container *ngFor="let h of headers; let i = index" matColumnDef="{{ h }}">
-                <mat-header-cell *matHeaderCellDef> {{ h }} </mat-header-cell>
+                <mat-header-cell *matHeaderCellDef> {{ h }}</mat-header-cell>
                 <mat-cell *matCellDef="let e">
-                    {{e[i] }}
+                    {{ e[i] }}
                 </mat-cell>
             </ng-container>
 
 
-            <mat-header-row *matHeaderRowDef="headers"></mat-header-row>
+            <mat-header-row *matHeaderRowDef="headers; sticky: true"></mat-header-row>
             <mat-row class="selectable"
                      *matRowDef="let row; columns: headers;">
             </mat-row>
         </mat-table>
 
     </div>
-    <div class="chart">
-        <canvas [id]="'chart'"
-                [ngStyle]="processing? {display: 'none'} : {display: 'block'}"
-                [style.background]="light?'white' : 'black'">
-        </canvas>
-    </div>
+    @if (dashboardData.length < 5) {
+        <div class="chart">
+            <canvas [id]="'chart'"
+                    [ngStyle]="processing? {display: 'none'} : {display: 'block'}"
+                    [style.background]="light?'white' : 'black'">
+            </canvas>
+        </div>
+    }
 </div>
