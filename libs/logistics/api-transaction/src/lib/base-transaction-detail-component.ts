@@ -1,19 +1,19 @@
-import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
-import {KeepOnToolbar, ShellService, SnackBarService, ToolbarButton} from '@ss/common/ui-shell';
+import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
+import { KeepOnToolbar, ShellService, SnackBarService, ToolbarButton } from '@ss/common/ui-shell';
 import {
     ActivatedRoute, NavigationEnd,
     Router, RouterEvent, RouterOutlet
 } from '@angular/router';
-import {UntypedFormBuilder, Validators} from '@angular/forms';
-import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
+import { UntypedFormBuilder, Validators } from '@angular/forms';
+import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { filter, Observable, of, switchMap } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
 import { BaseEntityService } from '@ss/common/api-base-entity';
-import {Transaction} from './transaction';
-import {WorkflowDialogComponent} from '@ss/workflow';
+import { Transaction } from './transaction';
+import { WorkflowDialogComponent } from '@ss/workflow';
 import { LoginService, User } from '@ss/common/api-common';
-import {MatDialog} from '@angular/material/dialog';
-import {DocImportComponent, DocImportService} from '@ss/logistics/ui-doc-import';
+import { MatDialog } from '@angular/material/dialog';
+import { DocImportComponent, DocImportService } from '@ss/logistics/ui-doc-import';
 import { Directive, inject, OnInit, ViewChild } from '@angular/core';
 import { Currency, CurrencyService, Lookup, LookupsService, PayMethod } from '@ss/common/api-lookup';
 import {
@@ -44,11 +44,11 @@ export abstract class BaseTransactionDetailComponent extends BaseEntityDetailCom
     private supplierSrv = inject(SupplierService);
     private customerSrv = inject(CustomerService);
 
-    protected currencySrv =  inject(CurrencyService);
+    protected currencySrv = inject(CurrencyService);
     protected purchaseProjectSrv = inject(PurchaseContractService);
     protected salesProjectSrv = inject(SalesContractService);
 
-    @ViewChild(RouterOutlet) outlet: RouterOutlet|null = null;
+    @ViewChild(RouterOutlet) outlet: RouterOutlet | null = null;
 
     private importBtn: ToolbarButton = {
         disabled: false,
@@ -56,7 +56,7 @@ export abstract class BaseTransactionDetailComponent extends BaseEntityDetailCom
         keepOnToolbar: KeepOnToolbar.DYNAMIC,
         label: 'LOGISTICS_IMPORT_DOCUMENT',
         visible: true,
-        click: () => this.importDocument(),
+        click: () => this.importDocument()
     };
 
     private sendBtn: ToolbarButton = {
@@ -65,21 +65,21 @@ export abstract class BaseTransactionDetailComponent extends BaseEntityDetailCom
         keepOnToolbar: KeepOnToolbar.DYNAMIC,
         label: 'LOGISTICS_SEND_MESSAGE',
         visible: true,
-        click: () => this.sendMessage(),
+        click: () => this.sendMessage()
     };
 
-    protected lookupsSrv =  inject(LookupsService);
+    protected lookupsSrv = inject(LookupsService);
 
     public payModeAutoCompleteModel = new DefaultAutoCompleteModel<PayMethod>(this.payMethodSrv);
     public dealerAutoCompleteModel = new DefaultAutoCompleteModel<User>(this.usersSrv);
     public agentLookup = new DefaultAutoCompleteModel<Agent>(this.agentSrv, 'id', 'denomination');
     public customerLookup = new DefaultAutoCompleteModel<Agent>(this.customerSrv, 'id', 'denomination');
-    public supplierLookup   = new DefaultAutoCompleteModel<Agent>(this.supplierSrv, 'id', 'denomination');
-    public purchaseProjectLookup            = new DefaultAutoCompleteModel(this.purchaseProjectSrv);
-    public salesProjectLookup            = new DefaultAutoCompleteModel(this.salesProjectSrv);
+    public supplierLookup = new DefaultAutoCompleteModel<Agent>(this.supplierSrv, 'id', 'denomination');
+    public purchaseProjectLookup = new DefaultAutoCompleteModel(this.purchaseProjectSrv);
+    public salesProjectLookup = new DefaultAutoCompleteModel(this.salesProjectSrv);
     public currencyCompleteModel = new DefaultAutoCompleteModel<Currency>(this.currencySrv);
-    public transporterAutoCompleteModel   = new DefaultAutoCompleteModel<Agent>(this.supplierSrv, 'id', 'denomination');
-    public consumerAutoCompleteModel   = new DefaultAutoCompleteModel<Agent>(this.consumerSrv, 'id', 'denomination');
+    public transporterAutoCompleteModel = new DefaultAutoCompleteModel<Agent>(this.supplierSrv, 'id', 'denomination');
+    public consumerAutoCompleteModel = new DefaultAutoCompleteModel<Agent>(this.consumerSrv, 'id', 'denomination');
     public branchLookup = new DefaultAutoCompleteModel(this.branchSrv, 'id', 'denomination');
     public executionRef = 0;
     public formId = 0;
@@ -111,7 +111,7 @@ export abstract class BaseTransactionDetailComponent extends BaseEntityDetailCom
 
     public override canDeactivate(): Observable<boolean> {
         const parent = +(this.router.getCurrentNavigation().extractedUrl.queryParamMap.get('parent') || '0');
-        return parent === 0 || !this.isEditable?
+        return parent === 0 || !this.isEditable ?
             of(true) :
             this.entitySrv
                 .get(this.id)
@@ -123,18 +123,21 @@ export abstract class BaseTransactionDetailComponent extends BaseEntityDetailCom
                         return res;
                     }),
                     tap(res => {
-                        if (res?.dirty && this.form)  {
-                            this.form.markAsDirty({onlySelf: false});
-                            this.form.markAsUntouched({onlySelf: false});
+                        if (res?.dirty && this.form) {
+                            this.form.markAsDirty({ onlySelf: false });
+                            this.form.markAsUntouched({ onlySelf: false });
                             this.snackBarSrv.showFailureMessage('COMMON_SAVE_REQUIRED');
                         }
                     }),
-                    switchMap(res => res?.dirty? of(false): super.canDeactivate()));
+                    switchMap(res => res?.dirty ? of(false) : super.canDeactivate()));
     }
 
     protected abstract showImportButton(): boolean;
+
     protected abstract requireAgentToImportDocument(): boolean;
+
     protected abstract requireAgent(): boolean;
+
     protected abstract importedDocuments(): Lookup[];
 
     private sendMessage() {
@@ -143,7 +146,12 @@ export abstract class BaseTransactionDetailComponent extends BaseEntityDetailCom
             const dialogRef = this.dialog.open(WorkflowDialogComponent, {
                 width: '350px',
                 height: '500px',
-                data: { transacId: id, senderId: this.loginSrv.appCtx.id, validated: this.transaction.isValidated, documentId: this.form.controls['document'].value }
+                data: {
+                    transacId: id,
+                    senderId: this.loginSrv.appCtx.id,
+                    validated: this.transaction.isValidated,
+                    documentId: this.form.controls['document'].value
+                }
             });
 
             dialogRef.afterClosed().subscribe(result => {
@@ -155,6 +163,7 @@ export abstract class BaseTransactionDetailComponent extends BaseEntityDetailCom
             });
         }
     }
+
     private importDocument() {
         if (!this.importBtn.disabled) {
             const agentId = this.form.controls['agent'].value;
@@ -166,16 +175,16 @@ export abstract class BaseTransactionDetailComponent extends BaseEntityDetailCom
             });
 
             dialogRef.afterClosed().subscribe(result => {
-                if (result && result['document']  && result['number']) {
+                if (result && result['document'] && result['number']) {
                     const document = result['document'];
-                    const number   = result['number'];
+                    const number = result['number'];
                     this.docImportService
                         .importDoc(document, number, this.transaction.id)
                         .pipe(
                             switchMap(() => this.loadEntity(this.queryId)),
                             tap(ent => this.form = this.setupForm(ent)),
                             switchMap(() =>
-                                this.outlet?.component instanceof BaseTransactionLinesListComponent?
+                                this.outlet?.component instanceof BaseTransactionLinesListComponent ?
                                     this.outlet?.component.loadDetailLines() :
                                     of(0)))
                         .subscribe({
@@ -192,6 +201,7 @@ export abstract class BaseTransactionDetailComponent extends BaseEntityDetailCom
             });
         }
     }
+
     public override setupForm(b: Transaction) {
         if (!b.id) {
             b.id = 0;
@@ -199,12 +209,10 @@ export abstract class BaseTransactionDetailComponent extends BaseEntityDetailCom
             b.userID = this.loginSrv.appCtx.id;
             b.dealer = b.userID;
             b.date = new Date();
-        } else {
-            this.shellSrv.addButton(this.sendBtn);
-            if (this.showImportButton()) {
-                this.shellSrv.addButton(this.importBtn);
-            }
         }
+
+        this.importBtn.disabled = !b?.id;
+
         this.detailSrv.setParentId(b.id || 0);
         this.purchaseProjectSrv.setParentId(b.agent || 0);
         this._isManager = this.loginSrv.appCtx.manager;
@@ -234,7 +242,7 @@ export abstract class BaseTransactionDetailComponent extends BaseEntityDetailCom
             discount: [b.discount || 0.0],
             fixedDiscountVAT: [b.fixedDiscountVAT || 0.0],
             dealer: [{ value: b.dealer || this.loginSrv.appCtx.id, disabled: !this._isManager }, Validators.required],
-            agent: [b.agent, this.requireAgent()? Validators.required : null],
+            agent: [b.agent, this.requireAgent() ? Validators.required : null],
             altAgent: [b.altAgent],
             project: [b.project],
             locked: [b.locked || false, Validators.required],
@@ -263,6 +271,10 @@ export abstract class BaseTransactionDetailComponent extends BaseEntityDetailCom
         });
         this.subscriptions.push(sub);
         this.disableControls(this.router.url);
+        this.shellSrv.addButton(this.sendBtn);
+        if (this.showImportButton()) {
+            this.shellSrv.addButton(this.importBtn);
+        }
     }
 
     protected disableControls(url: string) {
@@ -275,7 +287,7 @@ export abstract class BaseTransactionDetailComponent extends BaseEntityDetailCom
         if (this.form.controls['id'].value > 0) {
             super.goBack();
         } else {
-            this.router.navigate(['..', this.queryId], {relativeTo: this.route}).then();
+            this.router.navigate(['..', this.queryId], { relativeTo: this.route }).then();
         }
     }
 

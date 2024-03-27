@@ -17,7 +17,7 @@ import {
     LTM_TEST_TYPE_URL,
     LTM_MIXTURE_URL,
     LTM_ANOMALIES_URL_URL,
-    LTM_TESTING_ANOMALIES_URL
+    LTM_TESTING_ANOMALIES_URL, LTM_SAMPLE_URL
 } from '../common';
 
 import {
@@ -57,6 +57,9 @@ export const testingGuard: CanActivateFn = () => inject(LtmTestingService).canAc
 export const ltmRoutes: Routes = [
     {
         path: LTM_BATCH_URL, component: LtmBatchInputComponent, canActivate: [loginGuard]
+    },
+    {
+        path: LTM_SAMPLE_URL, component: LtmBatchInputComponent, canActivate: [loginGuard], data: { sampleMode: 'true' }
     },
     {
         path: LTM_CHARTS_URL, component: LtmReportComponent, canActivate: [loginGuard]

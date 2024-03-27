@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {BaseEntityService} from '@ss/common/api-base-entity';
 import { Batch, LTM_BATCH_URL, LTM_INPUT_URL, LTMTesting } from '../ltm-api';
 import { dateTimeToYmdStr, HttpService } from '@ss/common/api-common';
-import { Observable } from 'rxjs';
+import { Observable, sample } from 'rxjs';
 import { HttpParams } from '@angular/common/http';
 
 @Injectable({
@@ -19,7 +19,7 @@ export class LtmBatchService extends BaseEntityService<Batch> {
 
     deleteBatch(batch: Batch): Observable<{ count: number }> {
         const params = new HttpParams().set('matter', batch.matterId).set('time', dateTimeToYmdStr(batch.timeStamp));
-        return this.httpSrv.removePrams(LTM_BATCH_URL, params);
+        return this.httpSrv.removePrams(LTM_BATCH_URL, batch.sampleNo? params.set('sample', batch.sampleNo) : params);
     }
 
     input(matterId: number, time: Date, sample?: string): Observable<LTMTesting[]> {
