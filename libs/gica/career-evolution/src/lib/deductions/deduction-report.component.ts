@@ -72,7 +72,7 @@ export class DeductionReportComponent implements OnInit {
     dataLength = signal(0);
 
     data$:Observable<Deduction[]> | null = null;
-    year = new FormControl<number>(this.today.getFullYear());
+    year = new FormControl<number>({ value: this.today.getFullYear(), disabled: true });
 
     refresh() {
         const params = new HttpParams().set('year', this.year.value);

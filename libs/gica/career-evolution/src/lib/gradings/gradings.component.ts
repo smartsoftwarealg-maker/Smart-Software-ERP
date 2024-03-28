@@ -20,7 +20,7 @@ import { KeepOnToolbar, ShellService, SnackBarService, ToolbarButton } from '@ss
 import { ActivatedRoute } from '@angular/router';
 import { MatProgressSpinner } from '@angular/material/progress-spinner';
 import {
-    Employee,
+    Employee, EmployeeService,
     IEmployee,
     PersonAutocompleteClass,
     SubordinateService
@@ -83,6 +83,7 @@ export class GradingsComponent implements OnInit {
 
     private CUR_YEAR = new Date().getFullYear() - 1;
     private loginSrv = inject(LoginService);
+    private employeeSrv = inject(EmployeeService);
     private subordinateSrv = inject(SubordinateService);
     private gradingSrv = inject(GradeService);
     private fb = inject(FormBuilder);
@@ -94,8 +95,9 @@ export class GradingsComponent implements OnInit {
     private executionIndex = 1;
 
     processing = signal(false);
+    gradingMode = signal(true);
 
-    employeeLookup  = new PersonAutocompleteClass(this.subordinateSrv);
+    subordinateLookup  = new PersonAutocompleteClass(this.subordinateSrv);
     employeeCtrl = new FormControl<number>(0);
     yearCtrl = new FormControl<number>({ value: this.CUR_YEAR, disabled: true });
     gradeCtrl = new FormControl<number>(1 );
@@ -113,13 +115,15 @@ export class GradingsComponent implements OnInit {
 
     ngOnInit(): void {
         this.destroyRef.onDestroy(() => this.subscriptions.forEach(s => s.unsubscribe()));
-        this.employeeLookup.onObjectSelected = e => this.refresh(e);
+        this.subordinateLookup.onObjectSelected = e => this.refresh(e);
         this.shellSrv.setTitle('PAYROLL_GICA_GRADING');
         this.shellSrv.setGoBackPath('../', this.route);
         this.shellSrv.setButtons([this.refreshButton, this.saveButton, ]);
 
         this.route.data.subscribe(data => {
             this.gradingSrv.gradingMode = !!data['gradingMode'];
+            this.gradingMode.set(this.gradingSrv.gradingMode);
+            this.subordinateLookup  = new PersonAutocompleteClass(this.gradingSrv? this.subordinateSrv : this.employeeSrv);
         });
 
         this.subscriptions.push(
@@ -155,7 +159,8 @@ export class GradingsComponent implements OnInit {
     }
 
     refreshSubordinates() {
-        this.data$ = this.subordinateSrv
+        const srv = this.gradingMode()? this.subordinateSrv : this.employeeSrv;
+        this.data$ = srv
             .getList(this.paginator.page - 1, this.paginator.pageSize, this.searchCtrl.value, this.subordinateSrv.sortColumn)
             .pipe(
                 tap(res => this.paginator.elementCount = res.itemCount),
