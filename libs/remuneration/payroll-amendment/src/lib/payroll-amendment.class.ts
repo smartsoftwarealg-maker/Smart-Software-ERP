@@ -14,7 +14,7 @@ export interface Amendment {
     center: number;
     employee: number;
     paymonth: number;
-    application_month: number;
+    applicationMonth: number;
     element: string;
     new_value: number;
     percentage: boolean;

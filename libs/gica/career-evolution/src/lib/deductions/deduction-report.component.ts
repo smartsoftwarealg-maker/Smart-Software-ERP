@@ -15,15 +15,16 @@ import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { MatCard, MatCardContent } from '@angular/material/card';
 import { MatError, MatFormField, MatLabel } from '@angular/material/form-field';
 import { MatInput } from '@angular/material/input';
-import { map, Observable, tap } from 'rxjs';
+import { map, Observable, of, switchMap, tap } from 'rxjs';
 import { HttpParams } from '@angular/common/http';
 import { Deduction, Report } from '../gica-careers-api';
 import { MatButton } from '@angular/material/button';
 import { PaginationModel } from '@ss/common/api-common';
-import { ShellService } from '@ss/common/ui-shell';
+import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute } from '@angular/router';
 import { MatProgressSpinner } from '@angular/material/progress-spinner';
 import { DeductionService } from '../services/deduction.service';
+import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 
 @Component({
     selector: 'ss-gica-deduction-report',
@@ -54,6 +55,8 @@ import { DeductionService } from '../services/deduction.service';
     styleUrl: './deduction-report.component.css'
 })
 export class DeductionReportComponent implements OnInit {
+    private snackBarSrv = inject(SnackBarService);
+    private confirmationSrv = inject(ConfirmationDialogService);
     private route = inject(ActivatedRoute);
     private shellSrv = inject(ShellService);
     private today = new Date();
@@ -102,11 +105,44 @@ export class DeductionReportComponent implements OnInit {
     }
 
     apply() {
-        console.log('Applying...............');
+        this.processing.set(true);
+        this.deductionSrv.generate(this.year.value)
+            .subscribe({
+                next: res => {
+                    if (res.count) {
+                        this.snackBarSrv.showSuccessMessage();
+                        this.refresh();
+                    }
+                    this.processing.set(false);
+                },
+                error: err => {
+                    this.processing.set(false);
+                    this.snackBarSrv.showFailureMessage();
+                    //this.shellSrv.setLoading(false);
+                    throw err;
+                }
+            });
     }
 
     delete() {
-        console.log('Deleting...............');
-
+        this.processing.set(true);
+        this.confirmationSrv
+            .confirmDelete()
+            .pipe(switchMap(yes => yes? this.deductionSrv.remove(this.year.value) : of({count: 0 })))
+            .subscribe({
+                next: res => {
+                    this.processing.set(false);
+                    if (res.count) {
+                        this.snackBarSrv.showSuccessMessage();
+                        this.refresh();
+                    }
+                },
+                error: err => {
+                    this.processing.set(false);
+                    this.snackBarSrv.showFailureMessage();
+                    //this.shellSrv.setLoading(false);
+                    throw err;
+                }
+            });
     }
 }

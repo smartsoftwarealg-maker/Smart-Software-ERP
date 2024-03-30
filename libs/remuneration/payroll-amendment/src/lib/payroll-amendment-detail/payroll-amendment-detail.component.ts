@@ -42,7 +42,7 @@ export class PayrollAmendmentDetailComponent extends BaseEntityDetailComponent<A
             center: [e.center || this.loginSrv.appCtx.center],
             employee: [e.employee || 0],
             paymonth: [e.paymonth || this.loginSrv.appCtx.payMonth],
-            application_month: [e.application_month || 0, Validators.required],
+            applicationMonth: [e.applicationMonth || 0, Validators.required],
             to: [0],
             element: [e.element || 'e001'],
             elementId: [e.elementId, Validators.required],
@@ -55,14 +55,14 @@ export class PayrollAmendmentDetailComponent extends BaseEntityDetailComponent<A
 
     private saveMany() {
         const value = this.form.value;
-        const range = PayrollUtil.range(value.application_month, value.to);
+        const range = PayrollUtil.range(value.applicationMonth, value.to);
         delete value.to;
         const list = range.map((e: number) => <Amendment>{
             id: value.id,
             center: value.center,
             employee: value.employee,
             paymonth: value.paymonth,
-            application_month: e,
+            applicationMonth: e,
             element: value.element,
             new_value: value.new_value,
             percentage: value.percentage
@@ -78,13 +78,13 @@ export class PayrollAmendmentDetailComponent extends BaseEntityDetailComponent<A
 
     override save() {
         const value = this.form.value;
-        if (value.application_month['month']) {
-            value.application_month = value.application_month.month + 100 * value.application_month.year;
+        if (value.applicationMonth['month']) {
+            value.applicationMonth = value.applicationMonth.month + 100 * value.applicationMonth.year;
         }
         if (value.to['month']) {
             value.to = value.to.month + 100 * value.to.year;
         }
-        if (PayrollUtil.isValidOrZero(value.application_month) && PayrollUtil.isValidOrZero(value.to)) {
+        if (PayrollUtil.isValidOrZero(value.applicationMonth) && PayrollUtil.isValidOrZero(value.to)) {
             if (value.to) {
                 this.saveMany();
             } else {
