@@ -47,7 +47,7 @@ export class PayrollAmendmentListComponent extends BaseEntityListComponent<Amend
         'employee',
         'lastName',
         'firstName',
-        'application_month',
+        'applicationMonth',
         'element',
         'new_value',
         'percentage'

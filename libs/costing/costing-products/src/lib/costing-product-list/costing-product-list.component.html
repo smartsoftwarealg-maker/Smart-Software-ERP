@@ -11,7 +11,7 @@
                 <mat-cell *matCellDef="let item">{{ item.description }}</mat-cell>
             </ng-container>
 
-            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+            <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
 
             <mat-row class="selectable" [class.selected]="row.id == selected" (click)="select(row.id)"
                      *matRowDef="let row; columns: displayedColumns;">

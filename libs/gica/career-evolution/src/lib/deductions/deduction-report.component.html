@@ -13,18 +13,14 @@
         </div>
         @if (data$) {
             <div class="btn_div">
-                @if (dataLength() > 0) {
-                    <button mat-raised-button color="accent" type="button" (click)="apply()">
-                        <i class="fa-solid fa-ballot-check"></i>
-                        {{ 'COMMON_APPLY' | translate }}
-                    </button>
-                }
-                @if (dataLength() === 0) {
-                    <button mat-raised-button color="warn" type="button" (click)="delete()">
-                        <i class="fa-solid fa-trash-can-list"></i>
-                        {{ 'COMMON_DELETE' | translate }}
-                    </button>
-                }
+                <button mat-raised-button color="accent" type="button" (click)="apply()">
+                    <i class="fa-solid fa-ballot-check"></i>
+                    {{ 'COMMON_APPLY' | translate }}
+                </button>
+                <button mat-raised-button color="warn" type="button" (click)="delete()">
+                    <i class="fa-solid fa-trash-can-list"></i>
+                    {{ 'COMMON_DELETE' | translate }}
+                </button>
             </div>
         }
     </div>
@@ -55,7 +51,7 @@
             </ng-container>
 
             <ng-container matColumnDef="deduction">
-                <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_VALUE</mat-header-cell>
+                <mat-header-cell *matHeaderCellDef mat-sort-header translate>PAYROLL_DEDUCTION</mat-header-cell>
                 <mat-cell *matCellDef="let e">
                     {{ e.deduction }}
                 </mat-cell>
@@ -80,7 +76,7 @@
         <ss-pagination [paginationModel]="paginator"></ss-pagination>
     </div>
 }
-@if(processing()) {
+@if (processing()) {
     <div class="processing_div">
         <mat-spinner></mat-spinner>
     </div>

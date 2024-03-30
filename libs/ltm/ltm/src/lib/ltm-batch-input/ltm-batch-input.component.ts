@@ -342,8 +342,9 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
         const date = new Date(value.timeStamp);
         date.setHours(date.getHours(), 0, 0, 0);
         this.hourCtrl.setValue(date.getHours());
-        value.timeStamp = date;
         this.form.controls['timeStamp'].setValue(date);
+        value.timeStamp = date;
+        value.sampleNo = this.sampleMode()? this.sampleCtrl.value : null;
         const tests: BTest[] = <BTest[]>value.tests;
         tests.forEach(e => e.value = 0);
         this.tests.setValue(tests);

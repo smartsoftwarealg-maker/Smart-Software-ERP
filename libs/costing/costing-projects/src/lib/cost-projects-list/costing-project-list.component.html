@@ -21,7 +21,7 @@
             <mat-cell *matCellDef="let p">{{ projectToStr(p) }}</mat-cell>
         </ng-container>
 
-        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
 
         <mat-row class="selectable" [class.selected]="row.id == selected" (click)="selectRow(row)"
                  *matRowDef="let row; columns: displayedColumns;">
