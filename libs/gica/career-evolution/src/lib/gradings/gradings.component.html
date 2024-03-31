@@ -47,27 +47,43 @@
         <ss-pagination [paginationModel]="paginator"></ss-pagination>
     </div>
     @if (grades.length > 0) {
-        <form [formGroup]="form">
-
-            <div formArrayName="grades">
-                @for (l of labels; track l; let i = $index) {
-                    <fieldset [formGroupName]="i">
-                        <legend>{{ labels[i] }}</legend>
-                        <mat-form-field>
-                            <mat-label>{{ 'PAYROLL_GRADE' | translate }} 1</mat-label>
-                            <input matInput formControlName="grade1" type="number" (click)="$event.target.select()">
-                        </mat-form-field>
-                        <mat-form-field>
-                            <mat-label>{{ 'PAYROLL_GRADE' | translate }} 2</mat-label>
-                            <input matInput formControlName="grade2" type="number" (click)="$event.target.select()">
-                        </mat-form-field>
-                        <mat-form-field>
-                            <mat-label>{{ 'PAYROLL_GRADE' | translate }} 3</mat-label>
-                            <input matInput formControlName="finalGrade" type="number" (click)="$event.target.select()">
-                        </mat-form-field>
-                    </fieldset>
+        <div class="form__div">
+            <div class="person-photo employee-card">
+                <ss-image-input width="120px" height="120px" [imageModel]="imageModel"
+                                style="display: inline-block;">
+                </ss-image-input>
+                @if (emp()) {
+                    <div class="employee-details">
+                        <div style="font-size: 1.5em; text-align: start; font-weight: bolder">{{ emp().id }}</div>
+                        <div style="font-weight: bold;">{{ emp().lastName }} {{ emp().firstName}}</div>
+                        <div style="font-size: 0.7em">{{ emp().post }}</div>
+                    </div>
                 }
             </div>
-        </form>
+
+            <form [formGroup]="form">
+
+                <div formArrayName="grades">
+                    @for (l of labels; track l; let i = $index) {
+                        <fieldset [formGroupName]="i">
+                            <legend>{{ labels[i] }}</legend>
+                            <mat-form-field>
+                                <mat-label>{{ 'PAYROLL_GRADE' | translate }} 1</mat-label>
+                                <input matInput formControlName="grade1" type="number" (click)="$event.target.select()">
+                            </mat-form-field>
+                            <mat-form-field>
+                                <mat-label>{{ 'PAYROLL_GRADE' | translate }} 2</mat-label>
+                                <input matInput formControlName="grade2" type="number" (click)="$event.target.select()">
+                            </mat-form-field>
+                            <mat-form-field>
+                                <mat-label>{{ 'PAYROLL_GRADE' | translate }} 3</mat-label>
+                                <input matInput formControlName="finalGrade" type="number"
+                                       (click)="$event.target.select()">
+                            </mat-form-field>
+                        </fieldset>
+                    }
+                </div>
+            </form>
+        </div>
     }
 </div>

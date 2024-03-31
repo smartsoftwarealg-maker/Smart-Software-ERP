@@ -28,9 +28,10 @@ import {
 import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
 import { GradeService } from '../services/grade.service';
 import { Grade } from '../gica-careers-api';
-import { LoginService, PaginationModel } from '@ss/common/api-common';
+import { HttpService, LoginService, PaginationModel } from '@ss/common/api-common';
 import { map, Observable, of, Subscription, tap } from 'rxjs';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
+import { CommonUiImageInputModule, ImageModel } from '@ss/common/ui-image-input';
 
 @Component({
     selector: 'ss-gica-gradings',
@@ -56,7 +57,7 @@ import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
         MatInput,
         MatLabel,
         ReactiveFormsModule,
-        MatButton, MatHeaderCellDef, MatProgressSpinner, CommonUiAutoCompleteModule, MatHint],
+        MatButton, MatHeaderCellDef, MatProgressSpinner, CommonUiAutoCompleteModule, MatHint, CommonUiImageInputModule],
     templateUrl: './gradings.component.html',
     styleUrl: './gradings.component.css'
 })
@@ -81,6 +82,7 @@ export class GradingsComponent implements OnInit {
 
     };
 
+    private httpSrv = inject(HttpService);
     private CUR_YEAR = new Date().getFullYear() - 1;
     private loginSrv = inject(LoginService);
     private employeeSrv = inject(EmployeeService);
@@ -96,6 +98,8 @@ export class GradingsComponent implements OnInit {
 
     processing = signal(false);
     gradingMode = signal(true);
+    emp = signal<IEmployee|null>(null);
+    imageModel = new ImageModel(this.httpSrv);
 
     subordinateLookup  = new PersonAutocompleteClass(this.subordinateSrv);
     employeeCtrl = new FormControl<number>(0);
@@ -114,6 +118,7 @@ export class GradingsComponent implements OnInit {
     selectedId = 0;
 
     ngOnInit(): void {
+        this.imageModel.readOnly = true;
         this.destroyRef.onDestroy(() => this.subscriptions.forEach(s => s.unsubscribe()));
         this.subordinateLookup.onObjectSelected = e => this.refresh(e);
         this.shellSrv.setTitle('PAYROLL_GICA_GRADING');
@@ -173,6 +178,8 @@ export class GradingsComponent implements OnInit {
     }
 
     private refresh(e: IEmployee) {
+        this.imageModel.setImageUrl(this.employeeSrv.getPhotoUrl(e.id), false);
+        this.emp.set(e);
         this.grades.clear();
         this.labels = [];
         this.gradingSrv

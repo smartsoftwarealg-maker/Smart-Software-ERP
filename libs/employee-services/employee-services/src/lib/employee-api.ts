@@ -28,6 +28,7 @@ export interface IEmployee {
   id: number;
   firstName: string;
   lastName: string;
+  post?: string;
 }
 
 export interface Employee extends IEmployee {
