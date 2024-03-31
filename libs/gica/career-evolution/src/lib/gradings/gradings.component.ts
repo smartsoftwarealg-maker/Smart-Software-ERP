@@ -190,13 +190,14 @@ export class GradingsComponent implements OnInit {
                     const idx = this.executionIndex;
                     const temp = this.fb.group({
                         id:          [g.id],
+                        centerId:    [g.centerId || this.loginSrv.appCtx.center],
                         year:        [this.CUR_YEAR],
                         employeeId:  [e?.id],
                         criterion:   [g.criterion],
                         description: [g.description],
-                        grade1 :     [{ value: g.grade1, disabled: this.gradeCtrl.value !== 1}],
-                        grade2:      [{ value: idx >= 2? g.grade2: 0, disabled: this.gradeCtrl.value !== 2}],
-                        finalGrade:  [{ value: idx >= 3? g.finalGrade : 0, disabled: !this.gradingSrv.gradingMode || this.gradeCtrl.value !== 3}],
+                        grade1 :     [{ value: g.grade1, disabled: !this.gradingSrv.gradingMode || this.gradeCtrl.value !== 1}],
+                        grade2:      [{ value: idx >= 2? g.grade2: 0, disabled: !this.gradingSrv.gradingMode || this.gradeCtrl.value !== 2}],
+                        finalGrade:  [{ value: idx >= 3? g.finalGrade : 0, disabled: this.gradeCtrl.value !== 3}],
                         userId:      [this.loginSrv.appCtx.id]
                     });
                     this.grades.push(temp);

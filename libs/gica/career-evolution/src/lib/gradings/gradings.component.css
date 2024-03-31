@@ -4,12 +4,13 @@
 fiorm,
 .container__div,
 fieldset {
-    width: 80%;
+    width: 90%;
     max-width: 1200px;
     margin: 8px auto;
 }
 .table_div {
-    height: calc(100% - 60px);
+    height: calc(100% - 260px);
+    overflow-y: auto;
 }
 .emp__div {
     flex: 1 1 50%;
@@ -17,7 +18,7 @@ fieldset {
     height: 100%;
 }
 
-.form__div {
+form {
     flex: 2 1 50%;
 }
 
