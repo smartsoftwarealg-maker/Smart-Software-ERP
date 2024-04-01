@@ -49,7 +49,7 @@
     </mat-card>
 
     <div class="data__div">
-            <div class="table___div" [class.hidden]="!validData()">
+            <div class="table___div" [class.hidden]="!validData()" [class.full__height]="!smallData()">
                 <mat-table mat-table [dataSource]="dashboardData"
                            class="main-table"
                            [ngStyle]="{ 'min-width.px': tableWidth }">

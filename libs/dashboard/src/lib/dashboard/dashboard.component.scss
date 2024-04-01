@@ -8,8 +8,8 @@
 .ctrl__div,
 .main__container {
     display: flex;
-    width: 90%;
-    max-width: 1600px;
+    width: 96%;
+    max-width: 1400px;
     margin: 0 auto;
     gap: 8px;
 }
@@ -27,6 +27,7 @@
 
 .data__div {
     flex: 2 1 69%;
+    overflow-x: auto;
 }
 
 .list__div,
@@ -34,8 +35,12 @@
     overflow-y: auto;
 }
 
+.list__div {
+    flex-grow: 1;
+}
 .table___div {
     max-height: 60%;
+    flex-grow: 1;
 }
 
 .chart__div, canvas {
@@ -44,6 +49,10 @@
 
 .hidden {
     display: none;
+}
+
+.full__height {
+    max-height: 100%;
 }
 
 @media (width <= 600px) {
