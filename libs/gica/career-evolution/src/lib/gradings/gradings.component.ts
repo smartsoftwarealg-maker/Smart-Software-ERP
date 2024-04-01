@@ -165,8 +165,9 @@ export class GradingsComponent implements OnInit {
 
     refreshSubordinates() {
         const srv = this.gradingMode()? this.subordinateSrv : this.employeeSrv;
+        const filter = this.gradingMode()? '//' + this.gradeCtrl.value : '';
         this.data$ = srv
-            .getList(this.paginator.page - 1, this.paginator.pageSize, this.searchCtrl.value, this.subordinateSrv.sortColumn)
+            .getList(this.paginator.page - 1, this.paginator.pageSize, this.searchCtrl.value + filter, this.subordinateSrv.sortColumn)
             .pipe(
                 tap(res => this.paginator.elementCount = res.itemCount),
                 map(res => res.body)
