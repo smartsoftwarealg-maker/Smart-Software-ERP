@@ -137,7 +137,7 @@ export class DashboardComponent extends BaseEntityListComponent<Dashboard> {
                         this.dashboardData = res.body;
                         this.detailPagination.elementCount = res.itemCount;
                         this.chartComponent?.destroy();
-                        if (this.dashboardData.length < 5 && this.dashboardData.length > 0) {
+                        if (this.dashboardData.length < 14 && this.dashboardData.length > 0) {
                             const ctx = <ChartItem>document.getElementById('chart');
                             this.chartComponent = new Chart(ctx, this.chartData());
                         }
