@@ -34,12 +34,13 @@
     <mat-card class="list__container">
         <div class="list__div">
             <mat-list>
-                <mat-list-item *ngFor="let row of data"
-                               [class.selected]="row.id === selected"
+                @for (row of data; track row.id) {
+                <mat-list-item [class.selected]="row.id === selected"
                                (click)="selectRow(row)"
                                class="selectable">
                     {{ row.description }}
                 </mat-list-item>
+                }
             </mat-list>
         </div>
         <div class="pagination-container b-b-background">
