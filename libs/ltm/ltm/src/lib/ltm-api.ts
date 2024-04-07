@@ -7,7 +7,6 @@ export const LTM_MIXTURE_DETAIL_URL        = '/detail';
 export const LTM_LINE_TYPE_URL        = '/lookups/ltm_test_types';
 export const LTM_TEST_URL        = '/ltm/tests';
 export const LTM_BATCH_URL       = '/ltm/batch';
-export const LTM_INPUT_URL       = '/ltm/input';
 export const LTM_TESTING_URL    = '/testings';
 export const LTM_INJECTION_URL   = '/ltm/injection';
 export const LTM_MATTER_URL      = '/ltm/matters';
@@ -91,6 +90,37 @@ export interface LTMMatterTest {
     orderNo: number;
 }
 
+
+export interface LTMTestingLine {
+    id: number;
+    parentId: number; //testing_id
+    testId: number;
+    value: number;
+    testDescription?: string;
+    orderNo?: number;
+}
+
+export interface MLTMTestingLine {
+    id: number;
+    parentId: number; //testing_id
+    testId: number;
+    value: number;
+}
+
+export interface LTMBatch {
+    id: number;
+    centerId: number;
+    parentId: number;
+    timeStamp: Date|string;
+    sampleNo?: string;
+    spoilageHour?: number;
+    breakageHour?: number;
+    silo?: number;
+    userId: number;
+    creationTime: Date;
+    tests: LTMTestingLine[];
+}
+
 export interface Data {
     key: string;
     testId: number;
@@ -102,15 +132,15 @@ export interface Data {
 export interface LTMTesting {
     id: number;
     centerId: number;
-    parentId: number;
-    testId: number;
+    parentId: number; //Matter id
     timeStamp: Date;
     creationTime: Date;
-    value: number;
     userId?: number;
     matter?: string;
-    test?: string;
     sampleNo?: string;
+    spoilageHour: Date;
+    breakageHour: Date;
+    silo: number;
 }
 
 export interface LTMTestInjection {
@@ -118,19 +148,13 @@ export interface LTMTestInjection {
     matter: number;
 }
 
-export interface BTest {
-    id?: number;
-    testId: number;
-    value: number;
-}
+// export interface BTest {
+//     id?: number;
+//     parentId: number;
+//     testId: number;
+//     value: number;
+// }
 
-export interface Batch {
-    centerId: number;
-    matterId: number;
-    timeStamp: Date;
-    sampleNo?: string;
-    tests: BTest[];
-}
 
 export interface INJResult {
     found: string[];

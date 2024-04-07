@@ -72,10 +72,8 @@ export class LtmTestingDetailComponent extends BaseEntityDetailComponent<LTMTest
             id:           [b.id],
             centerId:     [{value: b.centerId || this.loginSrv.appCtx.center, disabled: true}, Validators.required],
             parentId:     [{ value: b.parentId || this.entitySrv.getParentId(), disabled: true }, Validators.required],
-            testId:       [b.testId, Validators.required],
             timeStamp:    [b.timeStamp || new Date(), Validators.required],
             creationTime: [b.creationTime || new Date(), Validators.required],
-            value:        [b.value || 0, Validators.required],
             userId:       [b.userId || this.loginSrv.appCtx.id, Validators.required]
         });
     }

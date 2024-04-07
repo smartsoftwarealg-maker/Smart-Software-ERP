@@ -64,6 +64,7 @@ export interface Application {
 }
 
 export interface Grade {
+    centerId: number;
     id: number;
     year: number;
     employeeId: number;

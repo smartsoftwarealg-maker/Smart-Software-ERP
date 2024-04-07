@@ -1,76 +1,77 @@
-<div class="main-container">
-    <div class="ctrl">
-        <mat-form-field *ngIf="showApplications">
-            <mat-label translate>COMMON_APPLICATIONS</mat-label>
-            <mat-select [formControl]="application">
-                <mat-option *ngFor="let a of APPLICATIONS" [value]="a.id">
-                    {{ a.description | translate }}
-                </mat-option>
-            </mat-select>
-        </mat-form-field>
+<div class="ctrl__div">
+    @if(showApplications()) {
+    <mat-form-field>
+        <mat-label translate>COMMON_APPLICATIONS</mat-label>
+        <mat-select [formControl]="application">
+            <mat-option *ngFor="let a of APPLICATIONS" [value]="a.id">
+                {{ a.description | translate }}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+    }
+    <mat-form-field class="date__picker">
+        <mat-label translate>COMMON_FROM</mat-label>
+        <ss-date-picker [formControl]="fromDate"></ss-date-picker>
+    </mat-form-field>
 
-        <mat-form-field class="date__picker">
-            <mat-label translate>COMMON_FROM</mat-label>
-            <ss-date-picker [formControl]="fromDate"></ss-date-picker>
-        </mat-form-field>
+    <mat-form-field class="date__picker">
+        <mat-label translate>COMMON_TO</mat-label>
+        <ss-date-picker [formControl]="toDate"></ss-date-picker>
+    </mat-form-field>
 
-        <mat-form-field class="date__picker">
-            <mat-label translate>COMMON_TO</mat-label>
-            <ss-date-picker [formControl]="toDate"></ss-date-picker>
-        </mat-form-field>
-
-        <div class="consolidated">
-            <mat-checkbox [formControl]="consolidated" translate>COMMON_CONSOLIDATED</mat-checkbox>
-        </div>
-
-        <mat-form-field class="default-50 sm-100" *ngIf="false">
-            <mat-label translate>LOGISTICS_CUSTOMER</mat-label>
-            <ss-auto-complete matInput
-                              [required]="true"
-                              [model]="agentLookup"></ss-auto-complete>
-        </mat-form-field>
+    <div class="consolidated">
+        <mat-checkbox [formControl]="consolidated" translate>COMMON_CONSOLIDATED</mat-checkbox>
     </div>
 
-    <mat-card class="list-container">
-        <mat-list>
-            <mat-list-item *ngFor="let row of data"
-                           [class.selected]="row.id === selected"
-                           (click)="selectRow(row)"
-                           class="selectable">
-                {{ row.description }}
-            </mat-list-item>
-        </mat-list>
+    <mat-form-field class="default-50 sm-100" *ngIf="false">
+        <mat-label translate>LOGISTICS_CUSTOMER</mat-label>
+        <ss-auto-complete matInput
+                          [required]="true"
+                          [model]="agentLookup"></ss-auto-complete>
+    </mat-form-field>
+</div>
+<div class="main__container">
+    <mat-card class="list__container">
+        <div class="list__div">
+            <mat-list>
+                @for (row of data; track row.id) {
+                <mat-list-item [class.selected]="row.id === selected"
+                               (click)="selectRow(row)"
+                               class="selectable">
+                    {{ row.description }}
+                </mat-list-item>
+                }
+            </mat-list>
+        </div>
+        <div class="pagination-container b-b-background">
+            <ss-pagination [paginationModel]="pagination"></ss-pagination>
+        </div>
     </mat-card>
 
-    <div class="pagination-container b-b-background page1">
-        <ss-pagination [paginationModel]="pagination"></ss-pagination>
+    <div class="data__div">
+            <div class="table___div" [class.hidden]="!validData()" [class.full__height]="!smallData()">
+                <mat-table mat-table [dataSource]="dashboardData"
+                           class="main-table"
+                           [ngStyle]="{ 'min-width.px': tableWidth }">
+                    <ng-container *ngFor="let h of headers; let i = index" matColumnDef="{{ h }}">
+                        <mat-header-cell *matHeaderCellDef> {{ h }}</mat-header-cell>
+                        <mat-cell *matCellDef="let e">
+                            {{ e[i] }}
+                        </mat-cell>
+                    </ng-container>
+
+
+                    <mat-header-row *matHeaderRowDef="headers; sticky: true"></mat-header-row>
+                    <mat-row class="selectable"
+                             *matRowDef="let row; columns: headers;">
+                    </mat-row>
+                </mat-table>
+            </div>
+            <div class="chart__div" [class.hidden]="!smallData()">
+                <canvas [id]="'chart'"
+                        [ngStyle]="processing? {display: 'none'} : {display: 'block'}"
+                        [style.background]="light?'white' : 'black'">
+                </canvas>
+            </div>
     </div>
-
-    <div class="right_div" *ngIf="headers && headers.length > 0 && dashboardData.length > 0">
-        <mat-table mat-table [dataSource]="dashboardData"
-                   class="main-table"
-                   [ngStyle]="{ 'min-width.px': tableWidth }">
-            <ng-container *ngFor="let h of headers; let i = index" matColumnDef="{{ h }}">
-                <mat-header-cell *matHeaderCellDef> {{ h }}</mat-header-cell>
-                <mat-cell *matCellDef="let e">
-                    {{ e[i] }}
-                </mat-cell>
-            </ng-container>
-
-
-            <mat-header-row *matHeaderRowDef="headers; sticky: true"></mat-header-row>
-            <mat-row class="selectable"
-                     *matRowDef="let row; columns: headers;">
-            </mat-row>
-        </mat-table>
-
-    </div>
-    @if (dashboardData.length < 5) {
-        <div class="chart">
-            <canvas [id]="'chart'"
-                    [ngStyle]="processing? {display: 'none'} : {display: 'block'}"
-                    [style.background]="light?'white' : 'black'">
-            </canvas>
-        </div>
-    }
 </div>

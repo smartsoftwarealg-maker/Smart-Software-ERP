@@ -1,15 +1,23 @@
 .container {
     display: flex;
-    height: calc(100% - 20px);
+    height: calc(100% - 0px);
     flex-direction: column;
-    gap: 1em;
+    gap: 0.5em;
 }
 .main_card {
-    flex: 1 1 70%;
-    max-height: 70%;
+    flex: 1 1 80%;
+    max-height: 80%;
 }
+
 .formula_card {
-    flex: 1 1 30%
+    flex: 1 1 20%;
+    display: flex;
+    align-content: flex-start;
+    gap: 0.5em;
+}
+
+.formula_card .input_div {
+    width: 150px;
 }
 
 mat-card {
@@ -50,7 +58,7 @@ mat-hint {
 
 .list_div {
     margin-top: 1em;
-    height: calc(100% - 140px);
+    height: calc(100% - 260px);
     overflow-y: auto;
 }
 
@@ -112,4 +120,20 @@ mat-card-header {
   .container_div {
       display: block;
   }
+}
+
+.invalid {
+    color: red;
+}
+
+.period__div {
+    display: flex;
+    align-content: stretch;
+}
+
+.period__div button {
+    align-self: center;
+}
+.period__div button i {
+    font-size: 1.5em;
 }

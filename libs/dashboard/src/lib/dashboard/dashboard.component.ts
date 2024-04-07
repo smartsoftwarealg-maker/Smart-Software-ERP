@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import {DashboardService} from '../dashboard.service';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {Dashboard} from '../dashboard';
@@ -58,7 +58,7 @@ export class DashboardComponent extends BaseEntityListComponent<Dashboard> {
         { id: APP_LTM,       description: 'LTM'  },
     ];
 
-    showApplications = false;
+    showApplications = signal(false);
     headers: string[] = ['test'];
     dashboardData: any[][] = [['test']];
     detailPagination = PaginationModel.newInstance();
@@ -72,6 +72,8 @@ export class DashboardComponent extends BaseEntityListComponent<Dashboard> {
     selectedAgentId: Id = '';
     processing = false;
     light = true;
+    smallData = signal(false);
+    validData = signal(false);
 
     constructor(public dashboardSrv: DashboardService,
                 public override shellSrv: ShellService,
@@ -91,7 +93,7 @@ export class DashboardComponent extends BaseEntityListComponent<Dashboard> {
     override ngOnInit() {
         const appId = getApplicationId(this.router);
         this.dashboardSrv.setParentId(appId);
-        this.showApplications = appId === APP_DASHBOARD;
+        this.showApplications.set(appId === APP_DASHBOARD);
         this.editButton.visible = false;
         this.addButton.visible = false;
         this.deleteButton.visible = false;
@@ -110,6 +112,8 @@ export class DashboardComponent extends BaseEntityListComponent<Dashboard> {
     }
 
     override select(id: number) {
+        this.smallData.set(false);
+        this.validData.set(false);
         super.select(id || getApplicationId(this.router));
         this.headers = [];
         this.dashboardData = [];
@@ -137,11 +141,13 @@ export class DashboardComponent extends BaseEntityListComponent<Dashboard> {
                         this.dashboardData = res.body;
                         this.detailPagination.elementCount = res.itemCount;
                         this.chartComponent?.destroy();
-                        if (this.dashboardData.length < 5 && this.dashboardData.length > 0) {
+                        if (this.dashboardData.length < 14 && this.dashboardData.length > 0) {
                             const ctx = <ChartItem>document.getElementById('chart');
                             this.chartComponent = new Chart(ctx, this.chartData());
                         }
                         this.shellSrv.setLoading(false);
+                        this.smallData.set(this.dashboardData.length < 14 && this.dashboardData.length > 0);
+                        this.validData.set(this.dashboardData.length > 0);
                     },
                     error: err => {
                         this.shellSrv.setLoading(false);
