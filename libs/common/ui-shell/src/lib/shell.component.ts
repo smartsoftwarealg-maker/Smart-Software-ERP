@@ -1,8 +1,20 @@
-import { Component, OnInit, OnDestroy, HostListener, ViewChild, ElementRef, AfterViewInit, ChangeDetectorRef, AfterViewChecked } from '@angular/core';
+import {
+    Component,
+    OnInit,
+    OnDestroy,
+    HostListener,
+    ViewChild,
+    ElementRef,
+    AfterViewInit,
+    ChangeDetectorRef,
+    AfterViewChecked,
+    inject
+} from '@angular/core';
 import { ShellService } from './shell.service';
 import { NestedTreeControl } from '@angular/cdk/tree';
-import {LanguageService, LoginService, SideNavNode} from '@ss/common/api-common';
+import { CENTER_SELECT_URL, LanguageService, LoginService, SideNavNode } from '@ss/common/api-common';
 import {UserRightsService} from '@ss/common/api-common';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'ss-shell',
@@ -10,6 +22,7 @@ import {UserRightsService} from '@ss/common/api-common';
     styleUrls: ['./shell.component.scss']
 })
 export class ShellComponent implements OnInit, OnDestroy, AfterViewInit, AfterViewChecked {
+    private router = inject(Router);
 
     // todo: disable all buttons on toolbar when loading
 
@@ -106,5 +119,9 @@ export class ShellComponent implements OnInit, OnDestroy, AfterViewInit, AfterVi
             inline: 'center',
             behavior: 'smooth'
         });
+    }
+
+    centerSelect() {
+        this.router.navigate(['/' + CENTER_SELECT_URL]).then();
     }
 }

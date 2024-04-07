@@ -322,5 +322,6 @@
     "FOLDER":                     "Folder",
     "REPORT_PRIVILEGES":          "Report privileges",
     "CC_GROUPS":                  "Cost groups",
-    "POSITION":                   "Pos."
+    "POSITION":                   "Pos.",
+    "CENTER_CHANGE":              "Center change"
 }
