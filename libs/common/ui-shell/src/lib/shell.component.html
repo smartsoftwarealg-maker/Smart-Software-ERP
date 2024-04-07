@@ -252,6 +252,10 @@
                 <ss-theme-select class="icon" (click)="$event.stopPropagation()" #themeBtn></ss-theme-select>
                 <span class="text" translate>COMMON_THEME_SETTINGS</span>
             </div>
+            <div type="button" mat-menu-item class="settings-item" (click)="centerSelect()">
+                <i class="fa-solid fa-door-open simple-btn icon"></i>
+                <span class="text" translate>COMMON_CENTER_CHANGE</span>
+            </div>
             <div type="button" mat-menu-item class="settings-item" (click)="logoutBtn.click()">
                 <ss-logout class="icon" (click)="$event.stopPropagation()" #logoutBtn></ss-logout>
                 <span class="text" translate>COMMON_LOGOUT</span>

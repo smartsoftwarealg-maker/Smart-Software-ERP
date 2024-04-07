@@ -137,8 +137,8 @@ export class LoginService {
                 next: (info: LoginInfo) => {
                     this.setContext(info);
                     if (!this.licenseErrorType) {
-                        const url = this.appCtx.center ? INDEX_PAGE_URL : CENTER_SELECT_URL;
-                        this.router.navigate(['/' + CENTER_SELECT_URL]);
+                        // const url = this.appCtx.center ? INDEX_PAGE_URL : CENTER_SELECT_URL;
+                        this.router.navigate(['/' + CENTER_SELECT_URL]).then();
                     }
                 },
                 error: err => {

@@ -325,5 +325,6 @@
     "FOLDER":                     "Dossier",
     "REPORT_PRIVILEGES":          "Privilèges Etats",
     "CC_GROUPS":                  "Groupes de coûts",
-    "POSITION":                   "Pos."
+    "POSITION":                   "Pos.",
+    "CENTER_CHANGE":              "Changement centre"
 }

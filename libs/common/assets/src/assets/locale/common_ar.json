@@ -321,5 +321,6 @@
     "FOLDER":                     "مجلد",
     "REPORT_PRIVILEGES":          "تقرير الامتيازات",
     "CC_GROUPS":                  "مجموعات التكلفة",
-    "POSITION":                   "الرتبة"
+    "POSITION":                   "الرتبة",
+    "CENTER_CHANGE":              "تغيير المركز"
 }
