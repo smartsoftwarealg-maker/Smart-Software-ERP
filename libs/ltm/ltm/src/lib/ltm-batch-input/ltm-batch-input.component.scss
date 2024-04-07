@@ -17,7 +17,7 @@
 }
 
 .formula_card .input_div {
-    width: 120px;
+    width: 150px;
 }
 
 mat-card {
@@ -58,7 +58,7 @@ mat-hint {
 
 .list_div {
     margin-top: 1em;
-    height: calc(100% - 140px);
+    height: calc(100% - 260px);
     overflow-y: auto;
 }
 
@@ -120,4 +120,20 @@ mat-card-header {
   .container_div {
       display: block;
   }
+}
+
+.invalid {
+    color: red;
+}
+
+.period__div {
+    display: flex;
+    align-content: stretch;
+}
+
+.period__div button {
+    align-self: center;
+}
+.period__div button i {
+    font-size: 1.5em;
 }

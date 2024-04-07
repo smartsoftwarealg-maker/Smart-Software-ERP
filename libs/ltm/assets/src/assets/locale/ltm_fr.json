@@ -16,7 +16,7 @@
     "LOW":            "Min",
     "HIGH":           "Max",
     "ANOMALIES_ONLY": "Afficher uniquement les anomalies",
-    "BATCH_TESTINGS": "Tests horaires",
+    "BATCH_TESTINGS": "Tests chimiques",
     "LINE_MATTERS":   "Matières ligne",
     "STANDARD_FORMAT": "Format standard",
     "UPDATE_FORMAT":   "Format de mise à jour",
@@ -36,6 +36,10 @@
     "ANOMALY":           "Anomalie",
     "ANOMALIES":         "Anomalies",
     "SHOW_KPI":          "Afficher dans KPI",
-    "SAMPLE_TESTINGS":   "Tests d'échantillons",
-    "SAMPLE_NO":         "N° d'échantillon."
+    "SAMPLE_TESTINGS":   "Tests physiques",
+    "SAMPLE_NO":         "N° d'échantillon.",
+    "SPOILAGE_HOUR":     "Heur gâchage",
+    "BREAKAGE_HOUR":     "Heur casse",
+    "SILO":              "Silo",
+    "SILOS":              "Silos"
 }

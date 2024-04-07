@@ -9,10 +9,9 @@ import {
     ABS_LTM_MIXTURES_URL,
     ABS_LTM_PERIODICITIES_URL,
     ABS_LTM_REPORTS_URL,
-    ABS_LTM_SAMPLE_TESTINGS_URL,
+    ABS_LTM_SAMPLE_TESTINGS_URL, ABS_LTM_SILO_URL,
     ABS_LTM_TEST_TYPE_URL,
     ABS_LTM_TESTINGS_ANOMALIES_URL,
-    ABS_LTM_TESTINGS_URL,
     ABS_LTM_TESTS_URL,
     ABS_LTM_UNIT_URL
 } from '../common';
@@ -26,6 +25,12 @@ export const ltmNavTree: SideNavNode = {
             icon: 'fa-solid fa-puzzle-piece-simple',
             route: ABS_LTM_UNIT_URL,
             accessRights: 'LTMMPeriod'
+        },
+        {
+            name: 'LTM_SILOS',
+            icon: 'fa-solid fa-farm',
+            route: ABS_LTM_SILO_URL,
+            accessRights: 'Silo'
         },
         {
             name: 'LTM_ANOMALIES',
@@ -73,23 +78,23 @@ export const ltmNavTree: SideNavNode = {
             accessRights: 'LTMMixture'
         },
 
-        {
-            name: 'LTM_TESTINGS',
-            icon: 'fa-regular fa-vials',
-            route: ABS_LTM_TESTINGS_URL,
-            accessRights: 'LTMTesting'
-        },
+        // {
+        //     name: 'LTM_TESTINGS',
+        //     icon: 'fa-regular fa-vials',
+        //     route: ABS_LTM_TESTINGS_URL,
+        //     accessRights: 'LTMTesting'
+        // },
 
         {
             name: 'LTM_BATCH_TESTINGS',
-            icon: 'fa-solid fa-clock-three-thirty',
+            icon: 'fa-regular fa-vial',
             route: ABS_LTM_BATCH_TESTINGS_URL,
             accessRights: 'LTMTesting'
         },
 
         {
             name: 'LTM_SAMPLE_TESTINGS',
-            icon: 'fa-regular fa-vial',
+            icon: 'fa-regular fa-flask-gear',
             route: ABS_LTM_SAMPLE_TESTINGS_URL,
             accessRights: 'LTMTesting'
         },

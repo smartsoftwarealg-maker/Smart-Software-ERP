@@ -1,5 +1,5 @@
 import { ErrorHandler, Injectable } from '@angular/core';
-import { CustomErrorHandlerService } from './custom-error-handler.service';
+import { CustomErrorHandlerService } from '@ss/common/ui-error-handler';
 
 @Injectable()
 export class CustomErrorHandler extends ErrorHandler {
@@ -10,7 +10,8 @@ export class CustomErrorHandler extends ErrorHandler {
 
     // I handle the given error.
     public override handleError(error: any): void {
-        this.errorSrv.setError(error.originalError || error);
+        console.log(error);
+        this.errorSrv.setError(error?.originalError || error);
     }
 
 }
