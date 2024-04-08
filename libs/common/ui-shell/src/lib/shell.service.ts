@@ -15,7 +15,10 @@ import {
     UserRightsService,
     MainPageService
 } from '@ss/common/api-common';
-import { cloneDeep } from './lodash';
+
+export function cloneDeep<T>(obj: T): T {
+    return JSON.parse(JSON.stringify(obj)) as T;
+}
 
 export enum KeepOnToolbar {
     ALWAYS = 1, // replaces true in old version

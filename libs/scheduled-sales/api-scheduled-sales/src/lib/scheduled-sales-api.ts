@@ -179,3 +179,21 @@ export interface TruckContract {
     fromDate?: string;
     toDate?: string;
 }
+
+export interface Balance {
+    debit: number;
+    credit: number;
+    balance?: number;
+}
+
+export interface SalesRecord {
+    id: number;
+    date: Date,
+    number: number;
+    product: string;
+    qty: number;
+    price: number;
+    transporter?: string;
+    licenseNo?: string;
+    plateNumber?: string;
+}

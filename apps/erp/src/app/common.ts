@@ -12,7 +12,6 @@ import {
     AppArchiveListComponent
 } from '@ss/common/app-archive';
 import {AgentAssetsListComponent} from '@ss/assets-component';
-import { GICA_DEDUCTIONS } from "../../../../libs/gica/career-evolution/src/lib/gica-careers-api";
 
 // common
 export const LOOKUPS_URL = 'lookups';

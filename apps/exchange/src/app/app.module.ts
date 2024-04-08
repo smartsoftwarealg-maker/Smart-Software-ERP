@@ -14,7 +14,7 @@ import {
     ADMINISTRATION_APP_URL, EXCHANGE_APP_URL
 } from './common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MainPageComponent, CommonUiMainPageModule } from '@ss/common/ui-main-page';
+import { MainPageComponent } from '@ss/common/ui-main-page';
 
 const routes: Routes = [
     {

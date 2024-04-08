@@ -632,12 +632,17 @@
                 "libs/common/report-privileges/src/index.ts"
             ],
             "gica.careers": ["libs/gica.careers/src/index.ts"],
-            "gica/career-evolution": ["libs/gica/career-evolution/src/index.ts"],
+            "gica/career-evolution": [
+                "libs/gica/career-evolution/src/index.ts"
+            ],
             "logistics/order-anomalies": [
                 "libs/logistics/order-anomalies/src/index.ts"
             ],
             "logistics/parts-reservation": [
                 "libs/logistics/parts-reservation/src/index.ts"
+            ],
+            "scheduled-sales/customer-history": [
+                "libs/scheduled-sales/customer-history/src/index.ts"
             ]
         }
     },
