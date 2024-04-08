@@ -1,0 +1,6 @@
+<mat-card>
+    <h1 translate class="title b-primary">COMMON_BALANCE</h1>
+    <span class="debit__1" translate>COMMON_DEBIT</span> <span class="debit__2">{{ balance().debit | number: '1.2-2'}} </span>
+    <span class="credit__1" translate>COMMON_CREDIT</span> <span class="credit__2">{{ balance().credit | number: '1.2-2'}} </span>
+    <span class="balance__1" translate>COMMON_BALANCE</span> <span class="balance__2" [class.f-primary]="balance().debit <= balance().credit" [class.f-warn]="balance().debit > balance().credit">{{ (balance().credit - balance().debit) | number: '1.2-2'}} </span>
+</mat-card>

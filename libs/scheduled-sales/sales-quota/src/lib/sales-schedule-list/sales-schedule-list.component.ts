@@ -45,7 +45,7 @@ export class SalesScheduleListComponent extends BaseEntityListComponent<Schedule
         'qty',
         'price',
         'discount',
-        'is_desktop'
+        // 'is_desktop'
     ];
 
     constructor(
@@ -71,8 +71,10 @@ export class SalesScheduleListComponent extends BaseEntityListComponent<Schedule
     }
 
     override ngOnInit() {
+        const b: boolean = !this.agentId;
+        this.editButton.visible = this.deleteButton.visible = this.addButton.visible = b;
         super.ngOnInit();
-        if (this.agentId) {
+        if (b) {
             this.onAgent(this.agentId);
         }
     }

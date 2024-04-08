@@ -26,7 +26,17 @@
                     },
                     {
                         "glob": "**/*",
+                        "input": "libs/business-logic-msgs/assets/src/assets",
+                        "output": "assets"
+                    },
+                    {
+                        "glob": "**/*",
                         "input": "libs/logistics/assets/src/assets",
+                        "output": "assets"
+                    },
+                    {
+                        "glob": "**/*",
+                        "input": "libs/scheduled-sales/assets/src/assets",
                         "output": "assets"
                     },
                     {
@@ -36,6 +46,9 @@
                     }
                 ],
                 "styles": ["apps/cspace/src/styles.scss"],
+                "stylePreprocessorOptions": {
+                    "includePaths": ["node_modules"]
+                },
                 "scripts": []
             },
             "configurations": {

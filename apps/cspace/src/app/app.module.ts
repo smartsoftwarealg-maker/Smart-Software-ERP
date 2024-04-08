@@ -9,7 +9,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { UiErrorHandlerModule } from '@ss/common/ui-error-handler';
 import { ShellComponent, UiShellModule } from '@ss/common/ui-shell';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MainPageComponent, CommonUiMainPageModule } from '@ss/common/ui-main-page';
+import { MainPageComponent } from '@ss/common/ui-main-page';
 import {
     CanActivateService,
     INDEX_PAGE_URL,
@@ -31,11 +31,6 @@ const routes: Routes = [
             {
                 path: INDEX_PAGE_URL,
                 component: MainPageComponent,
-                canActivate: [CanActivateService]
-            },
-            {
-                path: COMMON_CUSTOMER_PROFILE_URL,
-                component: CustomerProfileComponent,
                 canActivate: [CanActivateService]
             },
             {

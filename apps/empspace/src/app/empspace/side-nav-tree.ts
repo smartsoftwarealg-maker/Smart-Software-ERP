@@ -30,7 +30,7 @@ export const empSpaceNavTree: SideNavNode[] =
             name: 'COMMON_PROFILE',
             icon: 'fas fa-file-chart-line',
             route: ABS_EMPLOYEE_PROFILE,
-            accessRights: 'Report',
+            accessRights: 'Profile',
             customerRights: {read: true, edit: false, delete: true, write: true}
         }
     ];

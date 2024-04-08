@@ -71,6 +71,7 @@ export class SalesQuotaListComponent extends BaseEntityListComponent<Quota> {
     }
 
     override ngOnInit() {
+        this.editButton.visible = this.deleteButton.visible = this.addButton.visible = !this.agentId;
         super.ngOnInit();
         if (this.agentId) {
             this.onAgent(this.agentId);

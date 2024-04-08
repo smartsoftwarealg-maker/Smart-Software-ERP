@@ -20,8 +20,8 @@ import {
     LanguageService,
     LoginService,
     MaterialModule,
-    PaginatorPersistenceService, strToDateTime
-} from "@ss/common/api-common";
+    PaginatorPersistenceService
+} from '@ss/common/api-common';
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { delay, Observable, of } from 'rxjs';
 import { HttpParams } from '@angular/common/http';
@@ -58,7 +58,7 @@ import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
 export class ReportViewComponent extends BaseEntityListComponent<ReportParam> implements OnInit, OnDestroy {
     private paramLookupSrv = inject(ReportParamLookupService);
 
-    @ViewChild('tree', { static: false }) tree: MatTree<any>;
+    @ViewChild('tree', { static: false }) tree: MatTree<unknown>;
 
     private uuid = '';
     private readonly mimeMap = new Map([
@@ -67,13 +67,13 @@ export class ReportViewComponent extends BaseEntityListComponent<ReportParam> im
         ['PDF', 'application/pdf']
     ]);
 
-    pdfSrc: any = null;
+    pdfSrc: string|null = null;
     htmlSrc: SafeHtml = null;
     generating = false;
     leftPaneHidden = false;
     isAndroid = false;
     form: UntypedFormGroup = null;
-    params: any = null;
+    params: unknown = null;
     displayedColumns = [
         'description',
         'valueString'
@@ -123,12 +123,12 @@ export class ReportViewComponent extends BaseEntityListComponent<ReportParam> im
     loadReportTree(app: string) {
         this.reportsService
             .getReportsTree(app, this.shellSrv.getSearchText())
-            .subscribe((res: any) => {
+            .subscribe((res: ReportNode) => {
                 this.reportTree.data = this.parseTree(res.list, '');
             });
     }
 
-    parseTree(tree: any[], parent: any): ReportNode[] {
+    parseTree(tree: ReportNode[], parent: string): ReportNode[] {
         return tree.map(x => {
             if (x.list.length > 0) x.list = this.parseTree(x.list, `${parent}/${x.name}`);
             x.parent = (x.parent || '') + (parent || '');
@@ -150,7 +150,7 @@ export class ReportViewComponent extends BaseEntityListComponent<ReportParam> im
         this.form = null;
         this.selectedReport = reportNode;
         this.refresh(() => {
-            const cc: any = {};
+            const cc = {reportType: new FormControl<string>(''), name: new FormControl<string>('')};
 
             this.data.forEach(e => {
                 cc[e.name] = new FormControl(e.valueString);
@@ -184,7 +184,7 @@ export class ReportViewComponent extends BaseEntityListComponent<ReportParam> im
             paramList: this.createList()
         };
 
-        const loop: Observable<any> = this.httpSrv
+        const loop: Observable<unknown> = this.httpSrv
             .get(`/reports/view?uuid=${this.uuid}`)
             .pipe(delay(3000),
                 switchMap(res => res['processing'] ? loop : of(res)));
