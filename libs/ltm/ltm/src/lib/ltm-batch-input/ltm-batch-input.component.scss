@@ -4,6 +4,11 @@
     flex-direction: column;
     gap: 0.5em;
 }
+
+.search__form {
+    display: block;
+}
+
 .main_card {
     flex: 1 1 80%;
     max-height: 80%;
@@ -24,7 +29,7 @@ mat-card {
     width: 90%;
     max-width: 1500px;
     margin: 16px auto;
-    padding: 16px;
+    padding: 4px;
     border-radius: 1.4em;
     overflow-y: auto;
 }

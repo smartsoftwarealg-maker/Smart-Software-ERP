@@ -2,88 +2,107 @@
     <mat-card class="main_card">
         <form novalidate [formGroup]="form">
             <div class="ctrl__div">
+                <mat-card>
+                    <form novalidate [formGroup]="searchForm" class="search__form">
+                        <mat-form-field class="default-100">
+                            <mat-label translate>COMMON_DATE</mat-label>
+                            <ss-date-picker [required]=true
+                                            formControlName="date"
+                                            [type]="'date'">
+                            </ss-date-picker>
+                        </mat-form-field>
+                        <mat-form-field class="default-100">
+                            <mat-label translate>LTM_MATTER</mat-label>
+                            <ss-auto-complete matInput
+                                              [model]="lineMatterLookup"
+                                              formControlName="matterId">
+                            </ss-auto-complete>
+                        </mat-form-field>
+                        @if (sampleMode()) {
+                            <mat-form-field class="default-100">
+                                <mat-label translate>LTM_SAMPLE_NO</mat-label>
+                                <input matInput formControlName="sampleNo" type="text" min="3">
+                            </mat-form-field>
+                        } @else {
+                            <mat-form-field class="hour default-100">
+                                <mat-label translate>COMMON_HOURS</mat-label>
+                                <input matInput formControlName="hour" type="number" min="0" max="23"
+                                       (change)="onHour()">
+                            </mat-form-field>
 
+                            <div class="default-100 period__div">
+                                <mat-form-field class="default-100">
+                                    <mat-label translate>LTM_PERIOD</mat-label>
+                                    <ss-auto-complete matInput
+                                                      [model]="periodLookup"
+                                                      formControlName="period">
+                                    </ss-auto-complete>
+                                </mat-form-field>
+                                <button mat-icon-button color="primary" type="button" (click)="clearPeriod()"
+                                        [matTooltip]="'COMMON_CLEAR'|translate"
+                                        [disabled]="editInProgress()">
+                                    <i class="fa-solid fa-circle-xmark"></i>
+                                </button>
+                            </div>
+                        }
+                    </form>
+                </mat-card>
                 <mat-form-field class="default-100">
                     <mat-label translate>COMMON_DATE</mat-label>
                     <ss-date-picker [required]=true
                                     formControlName="timeStamp"
-                                    [type]="'date'">
+                                    [type]="'datetime'">
                     </ss-date-picker>
                     <mat-error *ngIf="form.controls['timeStamp'].hasError('required')" translate>
                         COMMON_FIELD_REQUIRED
                     </mat-error>
                 </mat-form-field>
-                @if (sampleMode()) {
-                    <mat-form-field class="default-100">
-                        <mat-label translate>LTM_SAMPLE_NO</mat-label>
-                        <input matInput [formControl]="sampleCtrl" type="text" (change)="onHour()">
-                    </mat-form-field>
-                    <mat-form-field class="default-50 sm-100">
-                        <mat-label translate>LTM_SPOILAGE_HOUR</mat-label>
-                        <input matInput formControlName="spoilageHour" type="number" min="0" max="23">
-                    </mat-form-field>
+                <mat-card>
+                    @if (sampleMode()) {
+                        <mat-form-field class="default-100">
+                            <mat-label translate>LTM_SPOILAGE_HOUR</mat-label>
+                            <input matInput formControlName="spoilageHour" type="number" min="0" max="23">
+                        </mat-form-field>
 
-                    <mat-form-field class="default-50 sm-100">
-                        <mat-label translate>LTM_BREAKAGE_HOUR</mat-label>
-                        <input matInput formControlName="breakageHour" type="number" min="0" max="23">
-                    </mat-form-field>
+                        <mat-form-field class="default-100">
+                            <mat-label translate>LTM_BREAKAGE_HOUR</mat-label>
+                            <input matInput formControlName="breakageHour" type="number" min="0" max="23">
+                        </mat-form-field>
 
+                        <mat-form-field class="default-100">
+                            <mat-label translate>LTM_SILO</mat-label>
+                            <ss-auto-complete matInput
+                                              [model]="siloLookup"
+                                              formControlName="silo">
+                            </ss-auto-complete>
+                        </mat-form-field>
+
+                        <mat-form-field class="default-100">
+                            <mat-label translate>LTM_SAMPLE_NO</mat-label>
+                            <input matInput formControlName="sampleNo" type="text" min="3">
+                        </mat-form-field>
+                    }
                     <mat-form-field class="default-100">
-                        <mat-label translate>LTM_SILO</mat-label>
+                        <mat-label translate>LTM_MATTER</mat-label>
                         <ss-auto-complete matInput
-                                          [model]="siloLookup"
-                                          formControlName="silo">
+                                          [model]="matterLookup"
+                                          formControlName="parentId">
                         </ss-auto-complete>
                     </mat-form-field>
-
-                } @else {
-                    <mat-form-field class="hour default-100">
-                        <mat-label translate>COMMON_HOURS</mat-label>
-                        <input matInput [formControl]="hourCtrl" type="number" min="0" max="23"
-                               (change)="onHour()">
-                    </mat-form-field>
-                }
-                <div class="default-100 period__div">
-                    <mat-form-field class="default-100">
-                        <mat-label translate>LTM_PERIOD</mat-label>
-                        <ss-auto-complete matInput
-                                          [model]="periodLookup"
-                                          [formControl]="periodCtrl">
-                        </ss-auto-complete>
-                    </mat-form-field>
-                    <button mat-icon-button color="primary" type="button" (click)="clearPeriod()" [matTooltip]="'COMMON_CLEAR'|translate">
-                        <i class="fa-solid fa-circle-xmark"></i>
-                    </button>
-                </div>
-                <mat-form-field class="default-100">
-                    <mat-label translate>LTM_MATTERS</mat-label>
-                    <input matInput [formControl]="searchField" type="text">
-                    <mat-hint translate>LTM_SEARCH_MATTERS</mat-hint>
-                </mat-form-field>
-                <div class="list_div">
-                    <mat-list [disabled]="editInProgress()">
-                        @for (m of (filteredMatters | async); track m.id) {
-                            <mat-list-item
-                                [class.selected]="selectedLineMatter?.id == m.id"
-                                (click)="onMatter(m)"
-                                class="list-item selectable"
-                                [disabled]="editInProgress()"
-                                #matterList>
-                                {{ m.description }}
-                            </mat-list-item>
-                        }
-                    </mat-list>
-                </div>
+                </mat-card>
             </div>
+
+
             <div formArrayName="tests" class="group_div">
                 <div *ngFor="let f of tests.controls; let i = index">
                     <div [formGroupName]="i">
                         <mat-form-field class="input_div">
-                            <mat-hint><span translate>LTM_RANGE</span>: {{ limits[i][0] }}- {{ limits[i][1] }}</mat-hint>
+                            <mat-hint><span translate>LTM_RANGE</span>: {{ limits[i][0] }}- {{ limits[i][1] }}
+                            </mat-hint>
                             <mat-label translate>{{ labels[i] }}</mat-label>
                             <input matInput formControlName="value" type="number" (click)="$event.target.select()">
                             @if (false) {
-                              <mat-error translate>BL_INVALID_DATA</mat-error>
+                                <mat-error translate>BL_INVALID_DATA</mat-error>
                             }
                         </mat-form-field>
                     </div>
