@@ -75,7 +75,7 @@ export const gicaNavTree: SideNavNode = {
         },
 
         {
-            name: 'PAYROLL_HISTORY',
+            name: 'COMMON_HISTORY',
             icon: 'fa-solid fa-file-chart-column',
             route: ABS_GICA_HISTORY_URL,
             accessRights: 'GCArchive'

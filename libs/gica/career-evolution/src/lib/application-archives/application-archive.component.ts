@@ -100,7 +100,7 @@ export class ApplicationArchiveComponent implements OnInit {
 
     ngOnInit() {
         this.paginator.onChange = () => this.refresh();
-        this.shellSrv.setTitle('PAYROLL_HISTORY');
+        this.shellSrv.setTitle('COMMON_HISTORY');
         this.shellSrv.setGoBackPath('..', this.route);
     }
 

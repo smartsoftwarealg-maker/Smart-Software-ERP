@@ -323,5 +323,6 @@
     "REPORT_PRIVILEGES":          "Report privileges",
     "CC_GROUPS":                  "Cost groups",
     "POSITION":                   "Pos.",
-    "CENTER_CHANGE":              "Center change"
+    "CENTER_CHANGE":              "Center change",
+    "HISTORY":                    "History"
 }

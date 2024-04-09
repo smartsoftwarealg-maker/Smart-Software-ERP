@@ -133,13 +133,13 @@
             </div>
             <div class="b-primary mat-elevation-z6 shell-toolbar-2">
                 <div class="toolbar-inner">
-                    <div *ngFor="let n of shellSrv.labels" class="shell-label margin-end-8">
+                    <div *ngFor="let n of shellSrv.labels" class="shell-label margin-end-8 large-only">
                         <div *ngIf="n.icon" class="label-icon"><i [class]="n.icon"></i></div>
                         <div *ngIf="n.title" class="label-title margin-start-4">{{n.title}}</div>
                         <div *ngIf="n.text" class="label-text margin-start-4">{{n.text}}</div>
                     </div>
 
-                    <div class="toolbar-username margin-end-8 large-only">
+                    <div class="toolbar-username margin-end-8">
                         <div class="user-icon">
                             <i class="fas fa-user-alt"></i>
                         </div>
@@ -235,14 +235,14 @@
 
             <mat-divider *ngIf="shellSrv.appButtons.length"></mat-divider>
 
-            <div type="button" mat-menu-item class="settings-item small-only">
-                <div class="icon">
-                    <i class="fas fa-user-alt"></i>
-                </div>
-                <span class="text" style="font-weight: bold;" translate>{{loginSrv.appCtx?.fullName}}</span>
-            </div>
+<!--            <div type="button" mat-menu-item class="settings-item small-only">-->
+<!--                <div class="icon">-->
+<!--                    <i class="fas fa-user-alt"></i>-->
+<!--                </div>-->
+<!--                <span class="text" style="font-weight: bold;" translate>{{loginSrv.appCtx?.fullName}}</span>-->
+<!--            </div>-->
 
-            <mat-divider class="small-only"></mat-divider>
+<!--            <mat-divider class="small-only"></mat-divider>-->
 
             <div type="button" mat-menu-item class="settings-item" (click)="langBtn.click()">
                 <ss-language-select class="icon" (click)="$event.stopPropagation()" #langBtn></ss-language-select>

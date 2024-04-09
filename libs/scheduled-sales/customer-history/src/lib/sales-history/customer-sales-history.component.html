@@ -1,3 +1,24 @@
+<mat-card class="size">
+    <mat-card-content>
+        <form novalidate [formGroup]="searchForm">
+            <mat-form-field class="number">
+                <mat-label translate>COMMON_SEARCH</mat-label>
+                <input matInput formControlName="search" type="text">
+            </mat-form-field>
+
+            <mat-form-field  autofocus>
+                <mat-label translate>COMMON_FROM</mat-label>
+                <ss-date-picker formControlName="from"></ss-date-picker>
+            </mat-form-field>
+
+            <mat-form-field >
+                <mat-label translate>COMMON_TO</mat-label>
+                <ss-date-picker formControlName="to"></ss-date-picker>
+            </mat-form-field>
+
+        </form>
+    </mat-card-content>
+</mat-card>
 <div class="div_table size">
     <mat-table mat-table [dataSource]="data" class="main-table" matSort (matSortChange)="sort($event)">
 
@@ -11,7 +32,49 @@
         <ng-container matColumnDef="number">
             <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_NUMBER</mat-header-cell>
             <mat-cell *matCellDef="let e">
-                {{e.number}}
+                {{ e.number }}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="product">
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_PRODUCT</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{ e.product }}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="qty">
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_QTY</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{ e.qty | number: '1.2-3' }}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="price">
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>LOGISTICS_PRICE</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{ e.price | number: '1.2-2' }}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="transporter">
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>LOGISTICS_TRANSPORTER</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{ e.transporter }}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="licenseNo">
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>LOGISTICS_DRIVER_LICENSE</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{ e.licenseNo }}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="plateNumber">
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>LOGISTICS_PLATE_NUMBER</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{ e.plateNumber }}
             </mat-cell>
         </ng-container>
 

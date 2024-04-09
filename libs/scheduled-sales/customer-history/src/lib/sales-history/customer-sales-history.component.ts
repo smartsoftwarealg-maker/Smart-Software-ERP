@@ -6,7 +6,7 @@ import { LoginService, MaterialModule, PaginatorPersistenceService } from '@ss/c
 import { CommonModule } from "@angular/common";
 import { CommonUiLangModule } from "@ss/common/ui-lang";
 import { UiPaginationModule } from "@ss/common/ui-pagination";
-import { ReactiveFormsModule } from "@angular/forms";
+import { FormBuilder, FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
 import { CommonUiAutoCompleteModule } from "@ss/common/ui-auto-complete";
 import { LogisticsUiDocInfoModule } from "@ss/logistics/ui-doc-info";
@@ -18,8 +18,8 @@ import { ColorPickerModule } from "ngx-color-picker";
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { SalesRecord } from '@ss/scheduled-sales/api-scheduled-sales';
 import { DefaultReportService } from '@ss/common/ui-default-report-component';
-import { BudgetPlanningService } from '@ss/budget/budget-planning';
 import { SalesHistoryService } from './sales-history.service';
+import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 
 @Component({
     selector: 'ss-customer-history',
@@ -44,18 +44,26 @@ import { SalesHistoryService } from './sales-history.service';
         ColorPickerModule
     ]
 })
-export class CustomerBalanceComponent extends BaseEntityListComponent<SalesRecord> {
+export class CustomerSalesHistoryComponent extends BaseEntityListComponent<SalesRecord> {
+    private TODAY = new Date();
     private loginSrv = inject(LoginService);
+    private fb = inject(FormBuilder);
+
+    searchForm = this.fb.group({
+        search: [''],
+        from:   [this.TODAY, Validators.required],
+        to:     [this.TODAY, Validators.required],
+    });
 
     displayedColumns = [
         'date',
         'number',
-        // 'product',
-        // 'qty',
-        // 'price',
-        // 'transporter',
-        // 'licenseNo',
-        // 'plateNumber'
+        'product',
+        'qty',
+        'price',
+        'transporter',
+        'licenseNo',
+        'plateNumber'
     ];
 
     constructor(
@@ -66,8 +74,7 @@ export class CustomerBalanceComponent extends BaseEntityListComponent<SalesRecor
         public override router: Router,
         public override defReportSrv: DefaultReportService,
         public override confirmationSrv: ConfirmationDialogService,
-        public override pagPersistSrv: PaginatorPersistenceService,
-        private planningSrv: BudgetPlanningService) {
+        public override pagPersistSrv: PaginatorPersistenceService) {
         super(entitySrv,
             shellSrv,
             snackBarSrv,
@@ -78,6 +85,32 @@ export class CustomerBalanceComponent extends BaseEntityListComponent<SalesRecor
             pagPersistSrv,
             'COMMON_HISTORY');
         this.pagination.pageSize = 10;
-        this.planningSrv.setParentId(this.loginSrv.appCtx.agentId || 0);
+    }
+
+    protected override canShowProcessingStatus(): boolean {
+        return false;
+    }
+
+    override ngOnInit() {
+        this.editButton.visible = this.addButton.visible = this.deleteButton.visible = false;
+        super.ngOnInit();
+        this.shellSrv.disableSearch();
+        this.entitySrv.setParentId(this.loginSrv.appCtx.agentId || 0);
+        const lastYear = new Date();
+        lastYear.setFullYear(this.TODAY.getFullYear() - 1);
+        this.searchForm.controls.from.setValue(lastYear);
+
+        this.subscriptions.push(
+            this.searchForm
+                .valueChanges
+                .pipe(debounceTime(300),
+                      distinctUntilChanged())
+                .subscribe(res => {
+                    this.entitySrv.from = this.searchForm.controls.from.value;
+                    this.entitySrv.to = this.searchForm.controls.to.value;
+                    this.entitySrv.searchStr = this.searchForm.controls.search.value;
+                    this.refresh();
+                })
+        );
     }
 }

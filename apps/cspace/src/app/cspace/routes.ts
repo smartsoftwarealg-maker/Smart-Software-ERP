@@ -1,6 +1,6 @@
 import {
     COMMON_CUSTOMER_PROFILE_URL,
-    COMMON_REPORT_PARAMS_URL, SS_CUSTOMER_BALANCE_URL,
+    CSPACE_REPORTS_URL, SS_CUSTOMER_BALANCE_URL, SS_CUSTOMER_HISTORY_URL,
     SS_PARTNER_SCHEDULE_URL, SS_QUOTA_URL
 } from '../common';
 import {Routes} from '@angular/router';
@@ -8,11 +8,12 @@ import { ABS_INDEX_URL, CanActivateService, CanDeactivateService, LIST_URL } fro
 import {ReportViewComponent} from '@ss/common/ui-report-param';
 import {CustomerProfileComponent} from "@ss/logistics/ui-agent";
 import {
-    PartnerScheduleDetailComponent,
     SalesQuotaDetailComponent,
     SalesQuotaListComponent, SalesScheduleDetailComponent, SalesScheduleListComponent
 } from '@ss/scheduled-sales/sales-quota';
-import { CustomerBalanceComponent } from 'scheduled-sales/customer-history';
+import { CustomerBalanceComponent, CustomerSalesHistoryComponent } from 'scheduled-sales/customer-history';
+import { EMPSPACE_REPOERT_URL } from '../../../../empspace/src/app/common';
+import { loginGuard } from '../../../../empspace/src/app/empspace/routes';
 
 export const cSpaceRoutes: Routes = [
     {
@@ -58,17 +59,16 @@ export const cSpaceRoutes: Routes = [
         canActivate: [CanActivateService],
     },
     {
-        path: COMMON_REPORT_PARAMS_URL,
-        children: [
-            {
-                path: LIST_URL,
-                data: { reportBase: 'cspace' },
-                component: ReportViewComponent,
-                canActivate: [CanActivateService]
-            },
-            {path: '', redirectTo: LIST_URL, pathMatch: 'full'},
-            {path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full'}
-        ]
+        path: SS_CUSTOMER_HISTORY_URL,
+        component: CustomerSalesHistoryComponent,
+        canActivate: [CanActivateService],
+    },
+
+    {
+        path: CSPACE_REPORTS_URL,
+        component: ReportViewComponent,
+        canActivate: [CanActivateService],
+        data: { reportBase: 'cspace' }
     },
 
     {path: '', redirectTo: ABS_INDEX_URL, pathMatch: 'full'},

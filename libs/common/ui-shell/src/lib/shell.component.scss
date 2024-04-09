@@ -9,7 +9,7 @@
     overflow: hidden;
 }
 
-@media (max-width: 499px) {
+@media (max-width: 599px) {
     .shell-side-nav {
         width: 280px;
     }
@@ -19,7 +19,7 @@
     }
 }
 
-@media (min-width: 500px) {
+@media (min-width: 600px) {
     .shell-side-nav {
         width: 260px;
     }
@@ -29,7 +29,7 @@
     }
 }
 
-@media (max-width: 500px) {
+@media (max-width: 600px) {
     .larger-than-500 {
         display: none !important;
     }
