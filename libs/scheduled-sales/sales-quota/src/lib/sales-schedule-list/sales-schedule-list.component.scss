@@ -24,6 +24,7 @@
 
 .mat-column-productRef,
 .mat-column-serialNumber,
+.mat-column-invoiceNumber,
 .mat-column-salesDate {
     flex: 1 1 100px;
 }
@@ -42,4 +43,9 @@
 
 .mat-column-productDescription {
     flex: 1 1 250px;
+}
+
+.invoiced {
+    opacity: 60%;
+    font-style: italic;
 }

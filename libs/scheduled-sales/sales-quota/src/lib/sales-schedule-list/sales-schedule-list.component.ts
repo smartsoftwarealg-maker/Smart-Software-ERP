@@ -45,6 +45,7 @@ export class SalesScheduleListComponent extends BaseEntityListComponent<Schedule
         'qty',
         'price',
         'discount',
+        'invoiceNo'
         // 'is_desktop'
     ];
 

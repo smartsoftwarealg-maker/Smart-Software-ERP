@@ -322,5 +322,6 @@
     "REPORT_PRIVILEGES":          "تقرير الامتيازات",
     "CC_GROUPS":                  "مجموعات التكلفة",
     "POSITION":                   "الرتبة",
-    "CENTER_CHANGE":              "تغيير المركز"
+    "CENTER_CHANGE":              "تغيير المركز",
+    "HISTORY":                    "تاريخ"
 }

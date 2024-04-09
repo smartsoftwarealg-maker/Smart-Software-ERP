@@ -1,11 +1,24 @@
+form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+mat-card {
+    padding: 0px;
+    border-radius: 1.4em;
+}
+mat-table {
+    min-width: 1000px;
+}
 .size {
     width: 90%;
-    max-width: 900px;
+    max-width: 1200px;
     margin: 4px auto 0;
 }
 
 .div_table {
-    height: calc(100% - 70px);
+    height: calc(100% - 184px);
     overflow: auto;
 }
 
@@ -17,24 +30,6 @@
     min-height: 320px;
 }
 
-// keep the material design specs
-.mat-row, .mat-header-row {
-    padding-right: 16px;
-    padding-left: 16px;
-}
-
-.mat-column-code {
-    flex: 0 1 150px ;
-    padding-right: 8px !important;
-    padding-left: 8px !important;
-}
-
-.mat-column-description {
-    flex: 3 1 300px ;
-    padding-right: 8px !important;
-    padding-left: 8px !important;
-}
-
 
 .pagination-container {
 
@@ -44,4 +39,22 @@
         position: sticky;
         margin: auto;
     }
+}
+
+.mat-column-date,
+.mat-column-number {
+    flex: 1 1 100px;
+}
+.mat-column-product {
+    flex: 1 1 220px;
+}
+.mat-column-qty,
+.mat-column-price {
+    flex: 1 1 100px;
+    justify-self: flex-end;
+}
+.mat-column-transporter,
+.mat-column-licenseNo,
+.mat-column-plateNumber {
+    flex: 1 1 150px;
 }

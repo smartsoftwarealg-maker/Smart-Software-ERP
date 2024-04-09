@@ -326,5 +326,6 @@
     "REPORT_PRIVILEGES":          "Privilèges Etats",
     "CC_GROUPS":                  "Groupes de coûts",
     "POSITION":                   "Pos.",
-    "CENTER_CHANGE":              "Changement centre"
+    "CENTER_CHANGE":              "Changement centre",
+    "HISTORY":                    "Historique"
 }

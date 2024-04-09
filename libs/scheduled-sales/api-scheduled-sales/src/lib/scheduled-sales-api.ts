@@ -155,6 +155,7 @@ export interface Schedule {
     customerCode?: string;
     customerName?: string;
     productDescription?: string;
+    invoiceNo?: number;
 }
 
 export interface SalesMode {

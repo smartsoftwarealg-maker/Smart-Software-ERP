@@ -7,13 +7,14 @@ export const COMMON_CUSTOMER_PROFILE_URL = 'profile';
 export const SS_PARTNER_SCHEDULE_URL     = 'customer-schedules';
 export const SS_QUOTA_URL     = 'sales-quotas';
 export const SS_CUSTOMER_BALANCE_URL     = 'customer-balance';
+export const SS_CUSTOMER_HISTORY_URL     = 'customer-history';
 
 // apps
 export const ADMINISTRATION_APP_URL = 'administration';
 export const CSPACE_APP_URL = 'cspace';
 
 // common
-export const COMMON_REPORT_PARAMS_URL = 'report-params';
+export const CSPACE_REPORTS_URL = 'capace-reports';
 export const LOOKUPS_URL = 'lookups';
 
 // Administration
@@ -36,4 +37,6 @@ export const ABS_CART = '/' + [MAIN_PAGE_URL, CSPACE_APP_URL, CSPACE_CART_URL].j
 export const ABS_CUSTOMER_SCHEDULES_URL = '/' + [MAIN_PAGE_URL, CSPACE_APP_URL, SS_PARTNER_SCHEDULE_URL].join('/');
 export const ABS_SALES_QUOTAS_URL = '/' + [MAIN_PAGE_URL, CSPACE_APP_URL, SS_QUOTA_URL].join('/');
 export const ABS_CUSTOMER_BALANCE_URL = '/' + [MAIN_PAGE_URL, CSPACE_APP_URL, SS_CUSTOMER_BALANCE_URL].join('/');
+export const ABS_CUSTOMER_HISTORY_URL = '/' + [MAIN_PAGE_URL, CSPACE_APP_URL, SS_CUSTOMER_HISTORY_URL].join('/');
+export const ABS_CSPACE_REPORTS_URL = '/' + [MAIN_PAGE_URL, CSPACE_APP_URL, CSPACE_REPORTS_URL].join('/');
 
