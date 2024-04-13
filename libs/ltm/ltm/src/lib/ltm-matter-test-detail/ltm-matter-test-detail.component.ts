@@ -50,13 +50,15 @@ export class LtmMatterTestDetailComponent implements OnInit {
     testLookup = new DefaultAutoCompleteModel(this.testSrv);
     form = this.fb.group( {
         id:          [0],
-        testId:      [0, Validators.required],
-        parentId:    [0, Validators.required],
-        minValue:    [0, Validators.required],
-        maxValue:    [0, Validators.required],
-        optValue:    [0, Validators.required],
-        periodicity: [0, Validators.required],
-        orderNo:     [0, Validators.required],
+        testId:      [0,    Validators.required],
+        parentId:    [0,    Validators.required],
+        minValue:    [0,    Validators.required],
+        maxValue:    [0,    Validators.required],
+        normMin:     [0, Validators.required],
+        normMax:     [0, Validators.required],
+        optValue:    [0,    Validators.required],
+        periodicity: [0,    Validators.required],
+        orderNo:     [0,    Validators.required],
     });
 
     constructor(private entitySrv: LtmMatterTestService,
@@ -84,6 +86,8 @@ export class LtmMatterTestDetailComponent implements OnInit {
                 this.form.controls.optValue.setValue(matter.optValue);
                 this.form.controls.maxValue.setValue(matter.maxValue);
                 this.form.controls.orderNo.setValue(matter.orderNo);
+                this.form.controls.normMin.setValue(matter.normMin);
+                this.form.controls.normMax.setValue(matter.normMax);
             });
     }
 

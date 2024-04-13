@@ -41,5 +41,7 @@
     "SPOILAGE_HOUR":     "Heur gâchage",
     "BREAKAGE_HOUR":     "Heur casse",
     "SILO":              "Silo",
-    "SILOS":              "Silos"
+    "SILOS":              "Silos",
+    "NORM":               "Les normes",
+    "INPUT":              "Saisie"
 }

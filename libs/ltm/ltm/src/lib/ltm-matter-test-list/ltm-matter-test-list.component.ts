@@ -55,7 +55,6 @@ export class LtmMatterTestListComponent implements OnInit {
         'testDescription',
         'periodDescription',
         'minValue',
-        'optValue',
         'maxValue'
     ];
 
