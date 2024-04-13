@@ -1,7 +1,7 @@
 import {
     COMMON_CUSTOMER_PROFILE_URL,
     CSPACE_REPORTS_URL, SS_CUSTOMER_BALANCE_URL, SS_CUSTOMER_HISTORY_URL,
-    SS_PARTNER_SCHEDULE_URL, SS_QUOTA_URL
+    SS_PARTNER_SCHEDULE_URL, SS_PAYMENT_URL, SS_QUOTA_URL
 } from '../common';
 import {Routes} from '@angular/router';
 import { ABS_INDEX_URL, CanActivateService, CanDeactivateService, LIST_URL } from '@ss/common/api-common';
@@ -12,8 +12,7 @@ import {
     SalesQuotaListComponent, SalesScheduleDetailComponent, SalesScheduleListComponent
 } from '@ss/scheduled-sales/sales-quota';
 import { CustomerBalanceComponent, CustomerSalesHistoryComponent } from 'scheduled-sales/customer-history';
-import { EMPSPACE_REPOERT_URL } from '../../../../empspace/src/app/common';
-import { loginGuard } from '../../../../empspace/src/app/empspace/routes';
+import { PaymentsListComponent } from 'scheduled-sales/payments';
 
 export const cSpaceRoutes: Routes = [
     {
@@ -56,6 +55,11 @@ export const cSpaceRoutes: Routes = [
     {
         path: SS_CUSTOMER_BALANCE_URL,
         component: CustomerBalanceComponent,
+        canActivate: [CanActivateService],
+    },
+    {
+        path: SS_PAYMENT_URL,
+        component: PaymentsListComponent,
         canActivate: [CanActivateService],
     },
     {

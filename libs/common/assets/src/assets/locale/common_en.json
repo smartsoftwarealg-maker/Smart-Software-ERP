@@ -324,5 +324,6 @@
     "CC_GROUPS":                  "Cost groups",
     "POSITION":                   "Pos.",
     "CENTER_CHANGE":              "Center change",
-    "HISTORY":                    "History"
+    "HISTORY":                    "History",
+    "CHECK_DATE":                 "Check date"
 }

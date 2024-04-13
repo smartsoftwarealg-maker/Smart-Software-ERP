@@ -323,5 +323,6 @@
     "CC_GROUPS":                  "مجموعات التكلفة",
     "POSITION":                   "الرتبة",
     "CENTER_CHANGE":              "تغيير المركز",
-    "HISTORY":                    "تاريخ"
+    "HISTORY":                    "تاريخ",
+    "CHECK_DATE":                 "تاريخ الصك"
 }

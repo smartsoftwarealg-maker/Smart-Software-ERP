@@ -8,6 +8,7 @@ export const SS_MODE_URL        = '/ssales/modes';
 export const SS_TRUCK_URL       = '/ssales/trucks';
 export const SS_CONTRACT_URL    = '/ssales/supplier-contracts';
 export const SS_SCHEDULE_AGENTS = '/ssales/agents';
+export const SS_PAYMENTS = '/ssales/payments';
 
 
 export interface SSProject {
@@ -197,4 +198,27 @@ export interface SalesRecord {
     transporter?: string;
     licenseNo?: string;
     plateNumber?: string;
+}
+
+export interface Payment {
+    id: number;
+    centerId: number;
+    agentId: number;
+    date: Date,
+    payMethod: number;
+    document: number;
+    amount: number;
+    chkNumber?: string;
+    bankId?: number;
+    chkBank?: string;
+    chkDate?: string;
+    memo?: string;
+    scheduleId?: number;
+    validated: boolean;
+    destBank?: number;
+    creationTime: Date;
+    cash: number;
+    payMethodDescription?: string;
+    agentDescription?: string;
+    bankDescription?: string;
 }

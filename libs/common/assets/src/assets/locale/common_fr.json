@@ -327,5 +327,6 @@
     "CC_GROUPS":                  "Groupes de coûts",
     "POSITION":                   "Pos.",
     "CENTER_CHANGE":              "Changement centre",
-    "HISTORY":                    "Historique"
+    "HISTORY":                    "Historique",
+    "CHECK_DATE":                 "Date du chèque"
 }
