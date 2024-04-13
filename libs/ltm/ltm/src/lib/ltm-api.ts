@@ -85,6 +85,8 @@ export interface LTMMatterTest {
     minValue: number;
     optValue: number;
     maxValue: number;
+    normMin?: number;
+    normMax?: number;
     variable?: string;
     formula?: string;
     orderNo: number;
