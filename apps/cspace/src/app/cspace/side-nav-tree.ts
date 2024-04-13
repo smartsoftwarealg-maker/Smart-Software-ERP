@@ -1,7 +1,7 @@
 import {
     ABS_CSPACE_REPORTS_URL,
     ABS_CUSTOMER_BALANCE_URL, ABS_CUSTOMER_HISTORY_URL,
-    ABS_CUSTOMER_PROFILE_URL, ABS_CUSTOMER_SCHEDULES_URL, ABS_SALES_QUOTAS_URL
+    ABS_CUSTOMER_PROFILE_URL, ABS_CUSTOMER_SCHEDULES_URL, ABS_PAYMENTS_URL, ABS_SALES_QUOTAS_URL
 } from '../common';
 import {SideNavNode} from '@ss/common/api-common';
 import { ABS_ESPACE_REPORTS_URL } from '../../../../empspace/src/app/common';
@@ -26,6 +26,13 @@ export const cSpaceNavTree: SideNavNode[] =
             name: 'COMMON_HISTORY',
             icon: 'fa-solid fa-rectangle-history-circle-user',
             route: ABS_CUSTOMER_HISTORY_URL,
+            accessRights: 'Sale',
+            customerRights: {read: true, edit: true, delete: true, write: true}
+        },
+        {
+            name: 'COMMON_PAYMENTS',
+            icon: 'fa-solid fa-money-check-dollar-pen',
+            route: ABS_PAYMENTS_URL,
             accessRights: 'Sale',
             customerRights: {read: true, edit: true, delete: true, write: true}
         },
