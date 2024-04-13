@@ -41,5 +41,7 @@
     "SPOILAGE_HOUR":     "Spoilage hour",
     "BREAKAGE_HOUR":     "Breakage hour",
     "SILO":              "Silo",
-    "SILOS":              "Silos"
+    "SILOS":              "Silos",
+    "NORM":               "The norm",
+    "INPUT":              "Data input"
 }
