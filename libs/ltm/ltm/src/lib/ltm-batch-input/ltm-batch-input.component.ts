@@ -124,7 +124,7 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
         date:         [new Date()],
         lineMatterId: [0],
         matterId:     [0],
-        sampleNo:     ['', [Validators.required, Validators.min(3)]],
+        sampleNo:     ['', [Validators.required]],
         period:       [0],
         hour:         [0],
         search:       ['']
