@@ -48,7 +48,7 @@ export class OptionsDetailComponent extends BaseEntityDetailComponent<Option> im
     private storeNameSrv = inject(LotsService);
     evalPriceOptions: EvalPrice[] = [
         { id: 1, name: "LOGISTICS_FIFO" },
-        { id: 2, name: "LOGISTICS_AWP" }
+        { id: 3, name: "LOGISTICS_AWP" }
     ];
 
     currencies: Currency[] = [];

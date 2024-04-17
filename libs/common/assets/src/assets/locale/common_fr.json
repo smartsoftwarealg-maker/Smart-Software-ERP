@@ -328,5 +328,6 @@
     "POSITION":                   "Pos.",
     "CENTER_CHANGE":              "Changement centre",
     "HISTORY":                    "Historique",
-    "CHECK_DATE":                 "Date du chèque"
+    "CHECK_DATE":                 "Date du chèque",
+    "CLEAR":                      "Nettoyer"
 }

@@ -1,18 +1,39 @@
 import { Component } from '@angular/core';
-import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
-import {Anomaly} from "./anomaly.interface";
-import {KeepOnToolbar, ShellService, SnackBarService, ToolbarButton} from '@ss/common/ui-shell';
-import {ActivatedRoute, Router} from '@angular/router';
-import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import {DefaultReportService} from '@ss/common/ui-default-report-component';
-import {AnomalyService} from './anomaly.service';
-import {tap} from 'rxjs';
-import {PaginatorPersistenceService} from '@ss/common/api-common';
+import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
+import { Anomaly } from './anomaly.interface';
+import { KeepOnToolbar, ShellService, SnackBarService, ToolbarButton } from '@ss/common/ui-shell';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
+import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
+import { DefaultReportService } from '@ss/common/ui-default-report-component';
+import { AnomalyService } from './anomaly.service';
+import { tap } from 'rxjs';
+import { MaterialModule, PaginatorPersistenceService } from '@ss/common/api-common';
+import { CommonModule } from '@angular/common';
+import { CommonUiLangModule } from '@ss/common/ui-lang';
+import { UiPaginationModule } from '@ss/common/ui-pagination';
+import { ReactiveFormsModule } from '@angular/forms';
+import { LogisticsUiDocInfoModule } from '@ss/logistics/ui-doc-info';
+import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
+import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
 
 @Component({
-  selector: 'ss-inventory-anomalies',
-  templateUrl: './inventory-anomalies.component.html',
-  styleUrls: ['./inventory-anomalies.component.scss']
+    selector: 'ss-inventory-anomalies',
+    templateUrl: './inventory-anomalies.component.html',
+    styleUrls: ['./inventory-anomalies.component.scss'],
+    standalone: true,
+    imports: [
+        CommonModule,
+        MaterialModule,
+        CommonUiLangModule,
+        UiPaginationModule,
+        ReactiveFormsModule,
+        CommonUiConfirmationDialogModule,
+        RouterModule,
+        LogisticsUiDocInfoModule,
+        CommonUiDatepickerModule,
+        CommonUiAutoCompleteModule
+    ]
+
 })
 export class InventoryAnomaliesComponent extends BaseEntityListComponent<Anomaly> {
     private fixButton: ToolbarButton = {
@@ -21,13 +42,13 @@ export class InventoryAnomaliesComponent extends BaseEntityListComponent<Anomaly
         label: 'STOCK_FIX',
         keepOnToolbar: KeepOnToolbar.ALWAYS,
         visible: true,
-        click: () => this.fixAnomalies(),
-    }
+        click: () => this.fixAnomalies()
+    };
 
     displayedColumns = [
         'store',
         'reference',
-        'description2',
+        'description',
         'computedStock',
         'actualStock',
         'diff'

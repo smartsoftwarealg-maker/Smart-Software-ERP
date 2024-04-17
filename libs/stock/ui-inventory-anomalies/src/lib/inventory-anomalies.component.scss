@@ -1,20 +1,17 @@
-
-.content-div {
-    flex: 1 1 50%;
+mat-table {
     width: 100%;
-    min-width: 800px;
-    overflow-x: auto;
-    height: calc(100% - 64px);
-    min-height: 200px;
+    min-width: 700px;
 }
 
 .table_div {
     width: 96%;
     min-height: calc(100% - 64px);
     margin: 0 auto;
+    max-width: 1200px;
+    overflow-x: auto;
 }
 
-.mat-column-description2 {
+.mat-column-description {
     flex: 1 1 250px;
 }
 

@@ -219,22 +219,6 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
         );
 
 
-        // this.subscriptions.push(
-        //     this.searchForm
-        //         .controls
-        //         .search
-        //         .valueChanges
-        //         .pipe(
-        //             debounceTime(300),
-        //             distinctUntilChanged())
-        //         .subscribe(res => {
-        //             if (!(this.form.controls.id.value && this.sampleMode())) {
-        //                 this.filteredMatters = this.lineMatterSrv
-        //                     .getList(0, 1000, res)
-        //                     .pipe(map(res => res.body));
-        //             }
-        //         })
-        // );
         this.form.controls.timeStamp.setValue(this.TODAY);
     }
 
@@ -284,8 +268,11 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
                 switchMap(_ => this.matterTestSrv.getList(0, 900, null, 'id')))
             .subscribe(res => {
                 const testingId = this.form.controls.id.value;
-                res.body
+                const selectedTests = res.body
                     .filter(t => (this.selectedPeriodicity < 1 || this.selectedPeriodicity === t.periodicity) && !t.formula)
+
+                selectedTests
+                    .sort((a, b) => a.testId - b.testId)
                     .forEach(t => {
                         this.labels.push(t.testDescription);
                         this.limits.push([t.minValue, t.maxValue || 999]);
@@ -309,6 +296,7 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
 
                 res.body
                     .filter(t => (this.selectedPeriodicity < 1 || this.selectedPeriodicity === t.periodicity) && t.formula && t.testDescription)
+                    .sort((a, b) => a.id - b.id)
                     .forEach(t => {
                         this.totalsLabels.push(t.testDescription);
                         this.totalsLimits.push([t.minValue, t.maxValue || 999]);
@@ -323,10 +311,10 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
                 })
                 this.formulas = this.formulas.map(f => this.replaceFormulas(f));
 
-                if (batch.tests.length > 0 && this.tests.controls.length == batch.tests.length) {
-                    this.tests.setValue(batch.tests);
+                if (batch.tests.length > 0 ) {
+                    const values = batch.tests.filter(bt => selectedTests.findIndex(st => st.testId === bt.testId) >= 0)
+                    this.tests.setValue(values.sort((a, b) => a.testId - b.testId));
                 }
-
             });
 
     }
@@ -366,9 +354,10 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
                         this.form.controls.parentId.enable();
                     }
                 }
-                if (this.matterTestSrv.getParentId()) {
-                    this.showData(batch);
+                if (!this.matterTestSrv.getParentId()) {
+                    this.matterTestSrv.setParentId(0);
                 }
+                this.showData(batch);
             });
 
     }
@@ -494,18 +483,6 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
         this.refreshData();
     }
 
-    // private onHour_(): Observable<LTMBatch> {
-    //     const value: LTMBatch = <LTMBatch>this.form.getRawValue();
-    //     const date = new Date(value.timeStamp);
-    //     value.timeStamp = date;
-    //     this.form.controls['timeStamp'].setValue(date);
-    //     this.form.controls['sampleNo'].setValue(this.sampleMode()? this.sampleCtrl.value : null);
-    //     const tests  = value.tests;
-    //     tests.forEach(e => e.value = 0);
-    //     this.tests.setValue(tests);
-    //     return this.savedData(value);
-    // }
-    //
     private cancel() {
         this.confirmationSrv
             .confirmDontSave()
