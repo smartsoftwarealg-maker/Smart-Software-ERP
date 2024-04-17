@@ -325,5 +325,6 @@
     "POSITION":                   "Pos.",
     "CENTER_CHANGE":              "Center change",
     "HISTORY":                    "History",
-    "CHECK_DATE":                 "Check date"
+    "CHECK_DATE":                 "Check date",
+    "CLEAR":                      "Clear"
 }

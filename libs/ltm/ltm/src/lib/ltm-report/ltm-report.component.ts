@@ -122,7 +122,6 @@ export class LtmReportComponent implements OnInit, OnDestroy {
         this.testingSrv.setParentId(m?.centerId);
         this.testSrv.setParentId(m?.matterId);
         if (m) {
-            this.menuOpened = false;
             this.processing = true;
             this.testSrv.setParentId(m?.id);
             const from = new Date(this.from.value) || new Date();

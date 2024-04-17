@@ -28,7 +28,7 @@
 mat-card {
     width: 90%;
     max-width: 1500px;
-    margin: 16px auto;
+    margin: 8px auto;
     padding: 4px;
     border-radius: 1.4em;
     overflow-y: auto;
@@ -71,10 +71,10 @@ mat-hint {
 form {
     display: flex;
     gap: 1em;
-    height: 75%;
+    height: 60%;
 }
 .ctrl__div {
-    flex: 1 1 25%;
+    flex: 1 1 40%;
     gap: 1em;
     height: 100%;
 }

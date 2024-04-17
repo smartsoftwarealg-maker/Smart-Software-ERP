@@ -324,5 +324,6 @@
     "POSITION":                   "الرتبة",
     "CENTER_CHANGE":              "تغيير المركز",
     "HISTORY":                    "تاريخ",
-    "CHECK_DATE":                 "تاريخ الصك"
+    "CHECK_DATE":                 "تاريخ الصك",
+    "CLEAR":                      "مسح"
 }
