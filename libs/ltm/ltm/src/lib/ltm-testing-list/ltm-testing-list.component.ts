@@ -22,7 +22,6 @@ import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
 import { CommonUiHourPickerModule } from "@ss/common/ui-hour-picker";
 import { MatCheckboxChange } from "@angular/material/checkbox";
 import { LtmMatterService } from '../services/ltm-matter.service';
-import { callback } from 'chart.js/helpers';
 
 @Component({
     selector: "ss-ltm-testing-list",
