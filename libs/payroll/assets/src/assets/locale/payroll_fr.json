@@ -196,7 +196,7 @@
     "GRADE":                 "Point",
     "CRITERIA":              "Critères",
     "WEIGHT":                "Poids",
-    "WEIGHTS":               "Poids",
+    "WEIGHTS":               "Coefficients",
     "DISCIPLINE":            "Discipline",
     "ABSENCE":               "Absence",
     "DEDUCTION_REPORT":      "Etat Abattement"

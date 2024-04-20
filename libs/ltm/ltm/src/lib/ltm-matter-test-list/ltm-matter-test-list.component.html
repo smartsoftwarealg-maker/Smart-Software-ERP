@@ -69,6 +69,15 @@
             </mat-cell>
         </ng-container>
 
+        <ng-container matColumnDef="selection">
+            <mat-header-cell *matHeaderCellDef>
+                <mat-checkbox (change)="addAll($event)"></mat-checkbox>
+            </mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                <mat-checkbox (change)="addId(e.id)" [checked]="isSelected(e.id)"></mat-checkbox>
+            </mat-cell>
+        </ng-container>
+
         <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
         <mat-row class="selectable" [class.selected]="row.id == selected?.id" (click)="select(row)"
                  *matRowDef="let row; columns: displayedColumns;"></mat-row>
