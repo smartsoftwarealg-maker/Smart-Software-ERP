@@ -1,9 +1,9 @@
-import { Component, DestroyRef, inject, OnDestroy, OnInit } from "@angular/core";
+import { Component, DestroyRef, inject, OnInit, signal } from '@angular/core';
 import { MaterialModule, PaginationModel } from "@ss/common/api-common";
-import {ShellService, SnackBarService} from '@ss/common/ui-shell';
+import { SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router, RouterOutlet } from "@angular/router";
 import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
-import { of, Subscription, switchMap } from "rxjs";
+import { combineAll, combineLatest, map, of, Subscription, switchMap, zip } from 'rxjs';
 import {LTMMatterTest} from '../ltm-api';
 import {LtmMatterTestService} from '../services/ltm-matter-test.service';
 import {Sort} from '@angular/material/sort';
@@ -18,6 +18,7 @@ import { AppArchiveModule } from "@ss/common/app-archive";
 import { CommonUiAutoCompleteModule } from "@ss/common/ui-auto-complete";
 import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
 import { CommonUiHourPickerModule } from "@ss/common/ui-hour-picker";
+import { MatCheckboxChange } from '@angular/material/checkbox';
 
 @Component({
     selector: 'ss-ltm-matter-test-list',
@@ -49,13 +50,15 @@ export class LtmMatterTestListComponent implements OnInit {
 
     readonly isEditable = this.matterSrv.editable;
     readonly searchText = new FormControl<string>('');
+    selection = signal<number[]>([]);
 
     displayedColumns = [
         'orderNo',
         'testDescription',
         'periodDescription',
         'minValue',
-        'maxValue'
+        'maxValue',
+        'selection'
     ];
 
     constructor(
@@ -80,15 +83,19 @@ export class LtmMatterTestListComponent implements OnInit {
     }
 
     deleteSelected() {
+        const deletion = combineLatest(this.selection().map(id => this.entitySrv.remove(id)))
+            .pipe(map(res => res.reduce((a, b) => { return { count: a.count + b.count } })));
+
         this.confirmationSrv
             .confirmDelete()
-            .pipe(switchMap(res => res ? this.entitySrv.remove(this.selected?.id) : of({count: -1})),
-                switchMap(res => res.count > 0 ? this.entitySrv.getList(this.pagination.page - 1, this.pagination.pageSize) : of(null)))
+            .pipe(switchMap(res => res ? deletion : of({count: -1})),
+                  switchMap(res => res.count > 0 ? this.entitySrv.getList(this.pagination.page - 1, this.pagination.pageSize) : of(null)))
             .subscribe(res => {
                 if (res && res.itemCount != null) {
                     this.data = res.body;
                     this.pagination.elementCount = res.itemCount;
                     this.snackBarSrv.showSuccessMessage();
+                    this.selection.set([]);
                     this.selected = null;
                 }
             });
@@ -120,5 +127,21 @@ export class LtmMatterTestListComponent implements OnInit {
     sortData(s: Sort) {
         this.entitySrv.sortColumn = s;
         this.refresh();
+    }
+
+    addId(id: number) {
+        if (this.selection().indexOf(id) < 1) {
+            this.selection.update(values => [...values, id]);
+        } else {
+            this.selection.update(values => [...values.filter(_ => _ !== id)]);
+        }
+    }
+
+    addAll(event: MatCheckboxChange) {
+        this.selection.set(event.checked ? this.data.map(d => d.id) : []);
+    }
+
+    isSelected(id: number) {
+        return this.selection().indexOf(id) > -1;
     }
 }

@@ -1,3 +1,15 @@
+<div class="ctrl__div content_div">
+    <mat-form-field>
+        <mat-label translate>COMMON_FROM</mat-label>
+        <ss-date-picker [formControl]="from"></ss-date-picker>
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label translate>COMMON_TO</mat-label>
+        <ss-date-picker [formControl]="to"></ss-date-picker>
+    </mat-form-field>
+
+</div>
 <div class="content_div container">
     <mat-table mat-table [dataSource]="data" class="main-table" matSort (matSortChange)="sort($event)">
 

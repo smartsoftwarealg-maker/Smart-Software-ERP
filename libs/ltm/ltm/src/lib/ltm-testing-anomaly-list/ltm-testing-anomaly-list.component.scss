@@ -1,3 +1,10 @@
+.ctrl__div {
+    display: flex;
+    gap: 1em;
+    padding-top: 0.5em;
+    align-content: center;
+}
+
 .content_div {
     width: 90%;
     max-width: 1200px;
@@ -26,5 +33,5 @@ mat-table {
 .container {
     margin-top: 8px;
     overflow: auto;
-    height: calc(100% - 64px);
+    height: calc(100% - 156px);
 }

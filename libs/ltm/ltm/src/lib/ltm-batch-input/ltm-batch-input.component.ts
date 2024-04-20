@@ -2,7 +2,16 @@ import { Component, ElementRef, inject, OnDestroy, OnInit, signal, viewChildren 
 import { LTMBatch, LTMLineMatter, LTMTestingLine } from '../ltm-api';
 import { KeepOnToolbar, ShellService, SnackBarService, ToolbarButton } from '@ss/common/ui-shell';
 import { ActivatedRoute, RouterLink, RouterOutlet } from '@angular/router';
-import { FormArray, FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import {
+    AbstractControl,
+    FormArray,
+    FormBuilder,
+    FormControl,
+    FormGroup,
+    ReactiveFormsModule,
+    ValidatorFn,
+    Validators
+} from '@angular/forms';
 import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { LtmLineMatterService } from '../services/ltm-line-matter.service';
 import { LtmMatterTestService } from '../services/ltm-matter-test.service';
@@ -21,6 +30,14 @@ import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common
 import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
 import { LTMSiloService } from '../services/ltm-silo.service';
 import { LtmMatterService } from '../services/ltm-matter.service';
+import { LtmSampleLookupService } from '../services/ltm-sample-lookup.service';
+import { ValidationError } from '@nx/angular/src/generators/ng-add/utilities';
+
+function sampleNoValidatorFn(sampleMode: boolean): ValidatorFn {
+    return (control: AbstractControl): ValidationError | null => {
+        return sampleMode && !control.value ? { message: 'COMMON_REQUIRED' } : null;
+    };
+};
 
 @Component({
     selector: 'ss-ltm-batch-input',
@@ -43,6 +60,7 @@ import { LtmMatterService } from '../services/ltm-matter.service';
     ]
 })
 export class LtmBatchInputComponent implements OnInit, OnDestroy {
+    private sampleLookupSrv = inject(LtmSampleLookupService);
     private soloSrv = inject(LTMSiloService);
     private entitySrv = inject(LtmBatchService);
     private snackBarSrv = inject(SnackBarService);
@@ -61,12 +79,11 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
     private missingVariables: string[] = [];
     // private matterList = viewChildren<ElementRef>('matterList');
 
-    // matters: LTMLineMatter[] = [];
-    // filteredMatters: Observable<LTMLineMatter[]> = null;
     periodLookup = new DefaultAutoCompleteModel(this.periodSrv);
     siloLookup = new DefaultAutoCompleteModel(this.soloSrv);
     lineMatterLookup = new DefaultAutoCompleteModel(this.lineMatterSrv);
     matterLookup = new DefaultAutoCompleteModel(this.matterSrv);
+    sampleLookup = new DefaultAutoCompleteModel(this.sampleLookupSrv, 'description', 'description');
 
     public saveButton: ToolbarButton = {
         icon: 'fas fa-save',
@@ -136,7 +153,7 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
             centerId:     [this.loginSrv.appCtx.center, Validators.required],
             parentId:     [{ value: 0, disabled: true }, Validators.required],
             timeStamp:    [{ value: this.TODAY, disabled: true }, Validators.required],
-            sampleNo:     [{ value: null, disabled: true }],
+            sampleNo:     [{ value: null, disabled: false }],
             spoilageHour: [null],
             breakageHour: [null],
             silo:         [null],
@@ -153,7 +170,7 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
         this.TODAY.setHours(0, 0, 0, 0);
         this.periodLookup.onObjectSelected = e => this.onPeriod(e?.id || 0);
         this.lineMatterLookup.onObjectSelected = lm => this.searchForm.controls.matterId.setValue(lm.matterId||0);
-        // this.matterTestSrv.setParentId(0);
+        this.form.controls.sampleNo.setValidators(sampleNoValidatorFn(this.sampleMode()));
     }
 
     ngOnDestroy(): void {
@@ -191,7 +208,11 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
                     .pipe(
                         debounceTime(300),
                         distinctUntilChanged()
-                    ).subscribe(() => this.onHour())
+                    ).subscribe(res => {
+                        if (!this.editInProgress()) {
+                            this.onHour();
+                        }
+                })
             );
         }
 
@@ -315,6 +336,13 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
                     const values = batch.tests.filter(bt => selectedTests.findIndex(st => st.testId === bt.testId) >= 0)
                     this.tests.setValue(values.sort((a, b) => a.testId - b.testId));
                 }
+
+                this.editButton.visible = !!batch.id && !!batch.parentId && (!this.sampleMode() || !!this.searchForm.controls.sampleNo.value);
+                this.deleteButton.disabled = !batch.id;
+                this.addButton.visible = !batch.id &&
+                    (!!batch.parentId || this.sampleMode()) &&
+                    (!this.sampleMode() || !!this.searchForm.controls.sampleNo.value) &&
+                    this.tests.length > 0;
             });
 
     }
@@ -331,10 +359,8 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
         this.totalsLabels = [];
         this.totalsLimits = [];
         this.form.controls['parentId'].setValue(this.matterTestSrv.getParentId() || 0);
-        this.deleteButton.disabled = false;
         this.matterTestSrv.sortColumn = { active: 'variable', direction: '' };
 
-        // const formValue: LTMBatch = this.form.getRawValue() as LTMBatch;
         this.savedData()
             .subscribe(batch => {
                 this.form.controls.id.setValue(batch.id);
@@ -344,14 +370,15 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
                 this.form.controls.sampleNo.setValue(batch.sampleNo);
                 this.form.controls.breakageHour.setValue(batch.breakageHour);
                 this.form.controls.parentId.setValue(batch.parentId);
-                this.editButton.visible = !!batch.id && !!batch.parentId && (!this.sampleMode() || !!this.searchForm.controls.sampleNo.value);
-                this.addButton.visible = !batch.id && (!!batch.parentId || this.sampleMode()) && (!this.sampleMode() || !!this.searchForm.controls.sampleNo.value);
+                this.searchForm.controls.matterId.setValue(batch.parentId);
                 if (this.sampleMode()) {
                     this.matterTestSrv.setParentId(batch.parentId || 0);
                     if (batch.id) {
                         this.form.controls.parentId.disable();
+                        this.searchForm.controls.matterId.disable();
                     } else {
                         this.form.controls.parentId.enable();
+                        this.searchForm.controls.matterId.enable();
                     }
                 }
                 if (!this.matterTestSrv.getParentId()) {
@@ -411,12 +438,19 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
 
     private save() {
         const formValue: LTMBatch = this.form.getRawValue() as LTMBatch;
-        formValue.sampleNo = this.sampleMode() ? this.searchForm.controls.sampleNo.value : null;
-        if (!this.form.valid || (this.searchForm.controls.sampleNo.invalid && this.sampleMode()) || !this.validateFormulas()) {
+        // formValue.sampleNo = this.sampleMode() ? this.searchForm.controls.sampleNo.value : null;
+        if (!this.searchForm.controls.matterId) {
+            this.searchForm.controls.sampleNo.setValue(null);
+        }
+        if (!this.form.valid ||
+            (this.searchForm.controls.sampleNo.invalid && this.sampleMode()) ||
+            !this.validateFormulas() ||
+            (this.sampleMode() && !this.form.controls.sampleNo.value)) {
             this.snackBarSrv.showFailureMessage('COMMON_INVALID_FORM');
         } else {
             if (formValue.parentId && formValue.centerId) {
                 formValue.timeStamp = dateToYmdStr(formValue.timeStamp) + ' ' + this.searchForm.controls.hour.value + ':00:00';
+                formValue.sampleNo = this.searchForm.controls.sampleNo.value;
                 this.shellSrv.setLoading(true);
                 this.entitySrv
                     .saveBatch(formValue)
@@ -440,10 +474,10 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
         }
     }
 
-    clearPeriod() {
-        this.searchForm.controls.period.setValue(0);
-        this.onPeriod(0);
-    }
+    // clearPeriod() {
+    //     this.searchForm.controls.period.setValue(0);
+    //     this.onPeriod(0);
+    // }
 
     onPeriod(e: number) {
       this.selectedPeriodicity = e;
@@ -500,6 +534,8 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
     private edit() {
         this.editInProgress.set(true);
         this.searchForm.disable({ onlySelf: true, emitEvent: false });
+        this.searchForm.controls.sampleNo.enable({onlySelf: true, emitEvent: false})
+        this.deleteButton.disabled = true;
         this.cancelButton.disabled = false;
         this.saveButton.disabled = false;
         this.tests.controls.forEach((c, i) => {
@@ -507,6 +543,9 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
         })
         this.editButton.visible = false;
         this.addButton.visible = false;
+        if (this.sampleMode()) {
+            this.form.controls.sampleNo.setValue(this.searchForm.controls.sampleNo.value);
+        }
     }
     private endEdit() {
         this.editInProgress.set(false);
@@ -515,8 +554,7 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
         this.addButton.visible = false;
         this.cancelButton.disabled = true;
         this.saveButton.disabled = true;
-        this.tests.controls.forEach((c, i) => {
-            c.disable();
-        })
+        this.deleteButton.disabled = !this.form.getRawValue().id;
+        this.tests.controls.forEach((c, i) => c.disable());
     }
 }

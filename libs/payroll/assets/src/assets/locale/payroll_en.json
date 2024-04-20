@@ -195,7 +195,7 @@
     "GICA_DEGRADING":        "Deduction",
     "GRADE":                 "Grade",
     "CRITERIA":              "Criteria",
-    "WEIGHT":                "Weight",
+    "WEIGHT":                "Coefficients",
     "WEIGHTS":                "Weights",
     "DISCIPLINE":            "Discipline",
     "ABSENCE":               "Absence",

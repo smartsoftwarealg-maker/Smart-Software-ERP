@@ -12,23 +12,38 @@
                                                 [type]="'date'">
                                 </ss-date-picker>
                             </mat-form-field>
-                            <mat-form-field class="default-100">
-                                <mat-label translate>LTM_MATTER</mat-label>
-                                <ss-auto-complete matInput
-                                                  [model]="lineMatterLookup"
-                                                  formControlName="lineMatterId">
-                                </ss-auto-complete>
-                            </mat-form-field>
                             @if (sampleMode()) {
                                 <mat-form-field class="default-100">
                                     <mat-label translate>LTM_SAMPLE_NO</mat-label>
-                                    <input matInput formControlName="sampleNo" type="text" min="3">
+                                    <ss-auto-complete matInput
+                                                      [model]="sampleLookup"
+                                                      formControlName="sampleNo">
+                                    </ss-auto-complete>
                                 </mat-form-field>
+                                <mat-form-field class="default-100">
+                                    <mat-label translate>LTM_MATTER</mat-label>
+                                    <ss-auto-complete matInput
+                                                      [model]="lineMatterLookup"
+                                                      formControlName="lineMatterId">
+                                    </ss-auto-complete>
+                                </mat-form-field>
+<!--                                <mat-form-field class="default-100">-->
+<!--                                    <mat-label translate>LTM_SAMPLE_NO</mat-label>-->
+<!--                                    <input matInput formControlName="sampleNo" type="text" min="3">-->
+<!--                                </mat-form-field>-->
                             } @else {
                                 <mat-form-field class="hour default-100">
                                     <mat-label translate>COMMON_HOURS</mat-label>
                                     <input matInput formControlName="hour" type="number" min="0" max="23"
                                            (change)="onHour()">
+                                </mat-form-field>
+
+                                <mat-form-field class="default-100">
+                                    <mat-label translate>LTM_MATTER</mat-label>
+                                    <ss-auto-complete matInput
+                                                      [model]="lineMatterLookup"
+                                                      formControlName="lineMatterId">
+                                    </ss-auto-complete>
                                 </mat-form-field>
 
                                 <div class="default-100 period__div">
@@ -39,28 +54,29 @@
                                                           formControlName="period">
                                         </ss-auto-complete>
                                     </mat-form-field>
-                                    <button mat-icon-button color="primary" type="button" (click)="clearPeriod()"
-                                            [matTooltip]="'COMMON_CLEAR'|translate"
-                                            [disabled]="editInProgress()">
-                                        <i class="fa-solid fa-circle-xmark"></i>
-                                    </button>
+<!--                                    <button mat-icon-button color="primary" type="button" (click)="clearPeriod()"-->
+<!--                                            [matTooltip]="'COMMON_CLEAR'|translate"-->
+<!--                                            [disabled]="editInProgress()">-->
+<!--                                        <i class="fa-solid fa-circle-xmark"></i>-->
+<!--                                    </button>-->
                                 </div>
                             }
+
                         </form>
                     </mat-card-content>
                 </mat-card>
                 <mat-card>
                     <mat-card-content>
-                        <mat-form-field class="default-100">
-                            <mat-label translate>COMMON_DATE</mat-label>
-                            <ss-date-picker [required]=true
-                                            formControlName="timeStamp"
-                                            [type]="'datetime'">
-                            </ss-date-picker>
-                            <mat-error *ngIf="form.controls['timeStamp'].hasError('required')" translate>
-                                COMMON_FIELD_REQUIRED
-                            </mat-error>
-                        </mat-form-field>
+<!--                        <mat-form-field class="default-100">-->
+<!--                            <mat-label translate>COMMON_DATE</mat-label>-->
+<!--                            <ss-date-picker [required]=true-->
+<!--                                            formControlName="timeStamp"-->
+<!--                                            [type]="'datetime'">-->
+<!--                            </ss-date-picker>-->
+<!--                            <mat-error *ngIf="form.controls['timeStamp'].hasError('required')" translate>-->
+<!--                                COMMON_FIELD_REQUIRED-->
+<!--                            </mat-error>-->
+<!--                        </mat-form-field>-->
                         @if (sampleMode()) {
                             <mat-form-field class="default-100">
                                 <mat-label translate>LTM_SPOILAGE_HOUR</mat-label>
@@ -72,7 +88,7 @@
                                 <input matInput formControlName="breakageHour" type="number" min="0" max="23">
                             </mat-form-field>
 
-                            <mat-form-field class="default-50 sm-100">
+                            <mat-form-field class="default-100 sm-100">
                                 <mat-label translate>LTM_SILO</mat-label>
                                 <ss-auto-complete matInput
                                                   [model]="siloLookup"
@@ -80,10 +96,10 @@
                                 </ss-auto-complete>
                             </mat-form-field>
 
-                            <mat-form-field class="default-50 sm-100">
-                                <mat-label translate>LTM_SAMPLE_NO</mat-label>
-                                <input matInput formControlName="sampleNo" type="text" min="3">
-                            </mat-form-field>
+<!--                            <mat-form-field class="default-100">-->
+<!--                                <mat-label translate>LTM_SAMPLE_NO</mat-label>-->
+<!--                                <input matInput formControlName="sampleNo" type="text" min="3">-->
+<!--                            </mat-form-field>-->
                         }
                         <mat-form-field class="default-100">
                             <mat-label translate>LTM_MATTER</mat-label>

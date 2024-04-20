@@ -13,6 +13,7 @@ export const LTM_MATTER_URL      = '/ltm/matters';
 export const LTM_LINE_MATTER_URL      = '/ltm/line-matters';
 export const LRM_PERIODICITY_URL = '/lookups/ltm_periodicities';
 export const LTM_LINE_SELECT_URL = '/ltm/ltm_selection';
+export const LTM_SAMPLES_URL = '/ltm/samples';
 
 
 export interface LTMMixture {

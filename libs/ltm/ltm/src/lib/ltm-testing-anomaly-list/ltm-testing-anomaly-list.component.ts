@@ -5,17 +5,19 @@ import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import { ActivatedRoute, Router, RouterOutlet } from "@angular/router";
 import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
-import { MaterialModule, PaginatorPersistenceService } from "@ss/common/api-common";
+import { dateToYmdStr, MaterialModule, PaginatorPersistenceService } from '@ss/common/api-common';
 import { CommonModule } from "@angular/common";
 import { CommonUiLangModule } from "@ss/common/ui-lang";
 import { UiPaginationModule } from "@ss/common/ui-pagination";
-import { ReactiveFormsModule } from "@angular/forms";
+import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { LogisticsUiDocInfoModule } from "@ss/logistics/ui-doc-info";
 import { AppArchiveModule } from "@ss/common/app-archive";
 import { CommonUiAutoCompleteModule } from "@ss/common/ui-auto-complete";
 import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
 import { CommonUiHourPickerModule } from "@ss/common/ui-hour-picker";
 import { LtmTestingAnomalyService } from "../services/ltm-testing-anomaly.service";
+import { callback } from 'chart.js/helpers';
+import { Observable } from 'rxjs';
 
 @Component({
     selector: 'ss-ltm-test-list',
@@ -38,7 +40,11 @@ import { LtmTestingAnomalyService } from "../services/ltm-testing-anomaly.servic
     ],
 })
 export class LtmTestingAnomalyListComponent extends BaseEntityListComponent<LTMTestingAnomaly> {
+    private TODAY = new Date();
+
     displayedColumns = ['date', 'matterDescription', 'anomalyDescription', 'memo', 'userDescription'];
+    from = new FormControl<Date>(this.TODAY);
+    to   = new FormControl<Date>(this.TODAY);
 
     constructor(
         public override entitySrv: LtmTestingAnomalyService,
@@ -51,5 +57,12 @@ export class LtmTestingAnomalyListComponent extends BaseEntityListComponent<LTMT
         public override pagPersistSrv: PaginatorPersistenceService) {
         super(entitySrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv, 'LTM_TESTING_ANOMALIES');
         this.pagination.pageSize = 15;
+    }
+
+    override getPage(): Observable<LTMTestingAnomaly[]> {
+        const from = dateToYmdStr(this.from.value);
+        const to   = dateToYmdStr(this.to.value);
+        const filter = `${this.filter||''}//${from}~${to}`
+        return this.entitySrv.getPage(this.pagination, filter, this.sortBy);
     }
 }
