@@ -1,4 +1,4 @@
-<div class="container" [ngStyle]="{ display: lastPage > 1 || model.pageSize > 5? 'block' : 'none'}">
+<div class="container" [ngStyle]="{ display: lastPage > 1 || model.elementCount >= 5? 'block' : 'none'}">
     <div class="row">
         <div class="pagination-buttons b-b-background f-f-text">
 
@@ -49,7 +49,9 @@
 </div>
 <mat-menu [xPosition]="langSrv.rtl ? 'before' : 'after'" yPosition="below" overlapTrigger="false"
           #perPageMenu="matMenu">
-    <div mat-menu-item *ngFor="let o of pageSizes" (click)="model.pageSize = o">
+    @for (o of pageSizes; track o) {
+    <div mat-menu-item (click)="model.pageSize = o">
         {{o}}
     </div>
+    }
 </mat-menu>

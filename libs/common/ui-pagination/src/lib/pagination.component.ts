@@ -33,12 +33,11 @@ export class PaginationComponent implements OnInit {
     lastPage = 0;
     @ViewChild('container', { static: true }) container: ElementRef;
     @ViewChild('pageInput', { static: true }) pageInput: ElementRef;
-    lastContainerSize = 0;
 
     readonly pageSizes = [5, 10, 15, 20, 30, 40, 50];
 
     @Input()
-    minContainerWidth: number = null;
+        minContainerWidth: number = null;
 
     ngOnInit(): void {
         const f = (evt: KeyboardEvent) => {
