@@ -224,7 +224,11 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
                 .pipe(
                     debounceTime(300),
                     distinctUntilChanged()
-                ).subscribe(() => this.onHour())
+                ).subscribe(() => {
+                    if (!this.editInProgress()) {
+                        this.onHour();
+                    }
+            })
         );
 
 
