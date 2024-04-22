@@ -15,5 +15,8 @@
     "SALES_MODES":       "Delivery modes",
     "DAYS_AHEAD":        "Advance days",
     "PARTNER_SCHEDULES": "Partner reservations",
-    "SUPPLIER_TRUCKS":   "Supplier trucks"
+    "SUPPLIER_TRUCKS":   "Supplier trucks",
+    "MISSED_SCHEDULES":   "Missed schedules",
+    "INVOICED_SCHEDULES": "Invoiced schedules",
+    "PENDING_SCHEDULES":  "Pending schedules"
 }
