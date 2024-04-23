@@ -159,7 +159,7 @@ export class ReportViewComponent extends BaseEntityListComponent<ReportParam> im
                     e.description = e.description.substring(0, e.description.indexOf('//'));
                 }
             });
-            cc['reportType'] = new FormControl('PDF');
+            cc['reportType'] = new FormControl('HTML');
             this.form = new FormGroup(cc);
         });
         if (this.tree) {

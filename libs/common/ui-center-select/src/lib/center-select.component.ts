@@ -4,7 +4,7 @@ import {Router} from '@angular/router';
 import {
     Center,
     Company,
-    INDEX_PAGE_URL, LoginService,
+    INDEX_PAGE_URL, LoginService, MainPageService,
     PROFILE_PAGE_URL
 } from '@ss/common/api-common';
 import {
@@ -28,6 +28,7 @@ import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 })
 export class CenterSelectComponent implements OnInit {
     private ccListSrv = inject(CenterService);
+    private mainPageSrv = inject(MainPageService);
 
     companyList: Company[] = [];
     centerList: Center[] = [];
@@ -53,6 +54,7 @@ export class CenterSelectComponent implements OnInit {
 
     ngOnInit() {
         this.companyList = [];
+        this.mainPageSrv.clear();
         this.filteredCenters = this.centerControl
             .valueChanges
             .pipe(
