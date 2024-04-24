@@ -19,9 +19,7 @@ import {
     MAIN_PAGE_URL
 } from '@ss/common/api-common';
 import {CommonUiLangModule} from '@ss/common/ui-lang';
-import {COMMON_CUSTOMER_PROFILE_URL, CSPACE_APP_URL} from "./common";
-import {CustomerProfileComponent} from '@ss/logistics/ui-agent';
-import {ExchangeUiIdiotPageModule} from '@ss/exchange/ui-idiot-page';
+import {CSPACE_APP_URL} from "./common";
 
 const routes: Routes = [
     {
@@ -60,7 +58,6 @@ const routes: Routes = [
         UiShellModule,
         CommonUiLangModule,
 
-        ExchangeUiIdiotPageModule,
         // modules with routes
         UiLoginModule,
         UiCenterSelectModule
@@ -68,13 +65,4 @@ const routes: Routes = [
     bootstrap: [AppComponent],
 })
 export class AppModule {
-
-    constructor(private langSrv: LanguageService, private loginSrv: LoginService) {
-        this.loginSrv.customerLogin = LoginType.BOTH;
-        langSrv.addSource('assets/locale/', '');
-        langSrv.addSource('assets/locale/common_', 'COMMON_');
-        langSrv.addSource('assets/locale/logistics_', 'LOGISTICS_');
-        langSrv.addSource('assets/locale/administration_', 'ADMINISTRATION_');
-        langSrv.addSource('assets/locale/common_', 'COMMON_');
-    }
 }

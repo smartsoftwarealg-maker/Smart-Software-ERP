@@ -15,5 +15,8 @@
     "SALES_MODES":       "Modes de livraison",
     "DAYS_AHEAD":        "Jours d'avance",
     "PARTNER_SCHEDULES": "Réservations partenaires",
-    "SUPPLIER_TRUCKS":   "Camions fournisseurs"
+    "SUPPLIER_TRUCKS":   "Camions fournisseurs",
+    "MISSED_SCHEDULES":   "Perogrammes manqués",
+    "INVOICED_SCHEDULES": "Perogrammes facturés",
+    "PENDING_SCHEDULES":  "Perogrammes en attente"
 }

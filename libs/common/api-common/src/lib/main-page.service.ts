@@ -14,4 +14,5 @@ export class MainPageService {
         this.display = null;
         this.historyStack = [];
     }
+
 }

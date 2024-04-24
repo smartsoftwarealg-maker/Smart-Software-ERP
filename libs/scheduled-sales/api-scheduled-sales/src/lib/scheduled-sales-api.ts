@@ -187,6 +187,11 @@ export interface Balance {
     credit: number;
     balance?: number;
 }
+export interface ScheduleBalance {
+    missed: number;
+    invoiced: number;
+    pending: number;
+}
 
 export interface SalesRecord {
     id: number;

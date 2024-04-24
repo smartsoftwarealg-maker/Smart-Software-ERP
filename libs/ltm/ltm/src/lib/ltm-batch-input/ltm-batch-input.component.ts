@@ -1,5 +1,5 @@
-import { Component, ElementRef, inject, OnDestroy, OnInit, signal, viewChildren } from '@angular/core';
-import { LTMBatch, LTMLineMatter, LTMTestingLine } from '../ltm-api';
+import { Component, ElementRef, inject, OnDestroy, OnInit, signal, viewChild, viewChildren } from '@angular/core';
+import { LTMBatch, LTMLineMatter, LTMTest, LTMTestingLine } from '../ltm-api';
 import { KeepOnToolbar, ShellService, SnackBarService, ToolbarButton } from '@ss/common/ui-shell';
 import { ActivatedRoute, RouterLink, RouterOutlet } from '@angular/router';
 import {
@@ -37,7 +37,7 @@ function sampleNoValidatorFn(sampleMode: boolean): ValidatorFn {
     return (control: AbstractControl): ValidationError | null => {
         return sampleMode && !control.value ? { message: 'COMMON_REQUIRED' } : null;
     };
-};
+}
 
 @Component({
     selector: 'ss-ltm-batch-input',
@@ -60,6 +60,7 @@ function sampleNoValidatorFn(sampleMode: boolean): ValidatorFn {
     ]
 })
 export class LtmBatchInputComponent implements OnInit, OnDestroy {
+    private onRefresh = signal(false);
     private sampleLookupSrv = inject(LtmSampleLookupService);
     private soloSrv = inject(LTMSiloService);
     private entitySrv = inject(LtmBatchService);
@@ -77,13 +78,14 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
     private TODAY = new Date();
     private formulaMap = new Map<string, string>();
     private missingVariables: string[] = [];
-    // private matterList = viewChildren<ElementRef>('matterList');
+    private hour = viewChild<ElementRef>('hour');
 
     periodLookup = new DefaultAutoCompleteModel(this.periodSrv);
     siloLookup = new DefaultAutoCompleteModel(this.soloSrv);
     lineMatterLookup = new DefaultAutoCompleteModel(this.lineMatterSrv);
     matterLookup = new DefaultAutoCompleteModel(this.matterSrv);
     sampleLookup = new DefaultAutoCompleteModel(this.sampleLookupSrv, 'description', 'description');
+    lineTests: LTMTest[] = [];
 
     public saveButton: ToolbarButton = {
         icon: 'fas fa-save',
@@ -178,10 +180,46 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit() {
+        this.testSrv
+            .getList(0, 999, null, 'variable')
+            .subscribe(
+                res => {
+                    const data = res.body;
+                    this.missingVariables = data.filter(t => t.variable).map(t => t.variable)
+                    data.filter(t => t.variable && t.formula)
+                        .forEach(v => this.formulaMap.set(v.variable, v.formula));
+                });
+
         this.route.data.subscribe(res => {
             const sampleMode = res['sampleMode'] === 'true';
             this.sampleMode.set(sampleMode);
             this.shellSrv.setTitle(sampleMode ? 'LTM_SAMPLE_TESTINGS' : 'LTM_BATCH_TESTINGS');
+            if (sampleMode) {
+                this.sampleLookup.onObjectSelected = e => { if (!this.editInProgress()) { this.refreshData(); } };
+            } else {
+                this.subscriptions.push(
+                    this.searchForm
+                        .controls
+                        .date
+                        .valueChanges
+                        .pipe(
+                            debounceTime(300),
+                            distinctUntilChanged(),
+                            filter(() => !this.editInProgress() && !this.onRefresh())
+                        ).subscribe(() => this.refreshData())
+                );
+                this.subscriptions.push(
+                    this.searchForm
+                        .controls
+                        .hour
+                        .valueChanges
+                        .pipe(
+                            debounceTime(300),
+                            distinctUntilChanged(),
+                            filter(() => !this.editInProgress() && !this.onRefresh())
+                        ).subscribe(() => this.refreshData())
+                );
+            }
         });
         this.shellSrv.setGoBackPath('..', this.route);
 
@@ -199,37 +237,23 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
                 ).subscribe(() => this.refreshFormulas()),
         );
 
-        if (this.sampleMode()) {
-            this.subscriptions.push(
-                this.searchForm
-                    .controls
-                    .sampleNo
-                    .valueChanges
-                    .pipe(
-                        debounceTime(300),
-                        distinctUntilChanged()
-                    ).subscribe(res => {
-                        if (!this.editInProgress()) {
-                            this.onHour();
-                        }
-                })
-            );
-        }
+        // if (this.sampleMode()) {
+        //     this.subscriptions.push(
+        //         this.searchForm
+        //             .controls
+        //             .sampleNo
+        //             .valueChanges
+        //             .pipe(
+        //                 debounceTime(300),
+        //                 distinctUntilChanged()
+        //             ).subscribe(res => {
+        //                 if (!this.editInProgress()) {
+        //                     this.onHour();
+        //                 }
+        //         })
+        //     );
+        // }
 
-        this.subscriptions.push(
-            this.searchForm
-                .controls
-                .date
-                .valueChanges
-                .pipe(
-                    debounceTime(300),
-                    distinctUntilChanged()
-                ).subscribe(() => {
-                    if (!this.editInProgress()) {
-                        this.onHour();
-                    }
-            })
-        );
 
 
         this.subscriptions.push(
@@ -239,8 +263,9 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
                 .valueChanges
                 .pipe(
                     debounceTime(300),
-                    distinctUntilChanged()
-                ).subscribe(id => this.onMatter(id) )
+                    distinctUntilChanged(),
+                    filter(() => !this.onRefresh())
+                ).subscribe(id => this.onMatter(id))
         );
 
 
@@ -281,16 +306,7 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
     }
 
     private showData(batch: LTMBatch) {
-        this.testSrv
-            .getList(0, 999, null, 'variable')
-            .pipe(
-                tap(res => this.missingVariables = res.body.filter(t => t.variable).map(t => t.variable)),
-                tap(res => {
-                    res.body
-                        .filter(t => t.variable && t.formula)
-                        .forEach(v => this.formulaMap.set(v.variable, v.formula));
-                }),
-                switchMap(_ => this.matterTestSrv.getList(0, 900, null, 'id')))
+         this.matterTestSrv.getList(0, 900, null, 'id')
             .subscribe(res => {
                 const testingId = this.form.controls.id.value;
                 const selectedTests = res.body
@@ -336,7 +352,7 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
                 })
                 this.formulas = this.formulas.map(f => this.replaceFormulas(f));
 
-                if (batch.tests.length > 0 ) {
+                if (batch.tests.length > 0) {
                     const values = batch.tests.filter(bt => selectedTests.findIndex(st => st.testId === bt.testId) >= 0)
                     this.tests.setValue(values.sort((a, b) => a.testId - b.testId));
                 }
@@ -347,11 +363,18 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
                     (!!batch.parentId || this.sampleMode()) &&
                     (!this.sampleMode() || !!this.searchForm.controls.sampleNo.value) &&
                     this.tests.length > 0;
+                this.searchForm.enable();
+                if (!this.sampleMode()) {
+                    this.hour()?.nativeElement?.focus();
+                }
+                this.onRefresh.set(false);
             });
 
     }
 
+
     private refreshData() {
+        this.onRefresh.set(true);
         this.tests.clear();
         this.totals.clear();
         this.totalsForm.reset();
@@ -374,7 +397,7 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
                 this.form.controls.sampleNo.setValue(batch.sampleNo);
                 this.form.controls.breakageHour.setValue(batch.breakageHour);
                 this.form.controls.parentId.setValue(batch.parentId);
-                this.searchForm.controls.matterId.setValue(batch.parentId);
+                this.searchForm.controls.matterId.setValue(batch.parentId, {onlySelf: true, emitEvent: false});
                 if (this.sampleMode()) {
                     this.matterTestSrv.setParentId(batch.parentId || 0);
                     if (batch.id) {
@@ -400,9 +423,11 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
     }
 
     onMatter(id: number) {
-        this.matterTestSrv.setParentId(id);
-        this.deleteButton.disabled = !id;
-        this.refreshData();
+        if (!this.form.controls.id || !this.sampleMode()) {
+            this.matterTestSrv.setParentId(id);
+            this.deleteButton.disabled = !id;
+            this.refreshData();
+        }
     }
 
     private delete() {
@@ -495,7 +520,6 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
         return this.entitySrv
             .input(params.matterId || 0, date, params.sampleNo)
             .pipe(map(res => {
-
                 res.tests = res.tests.map(t => {
                     return { id: t.id, testId: t.testId, value: t.value, parentId: t.parentId };
                 });
@@ -504,22 +528,64 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
             }));
     }
 
-    onHour() {
-        const value: LTMBatch = <LTMBatch>this.form.getRawValue();
-        const tests = value.tests;
-        if (tests.length > 0) {
-            tests.forEach(e => e.value = 0);
-            this.tests.setValue(tests);
-        }
-        const date = new Date(this.searchForm.controls.date.value);
-        date.setHours(date.getHours(), 0, 0, 0);
-        this.form.controls.timeStamp.setValue(date);
-        this.form.controls.parentId.setValue(this.searchForm.controls.matterId.value);
-        if (this.sampleMode()) {
-            this.form.controls.sampleNo.setValue(this.sampleMode()? this.searchForm.controls.sampleNo.value : null);
-        }
-        this.refreshData();
-    }
+    // onHour() {
+    //     // this.searchForm.disable();
+    //     // const value: LTMBatch = <LTMBatch>this.form.getRawValue();
+    //     // const tests = value.tests;
+    //     // if (tests.length > 0) {
+    //     //     tests.forEach(e => e.value = 0);
+    //     //     this.tests.setValue(tests);
+    //     // }
+    //     // const date = new Date(this.searchForm.controls.date.value);
+    //     // date.setHours(date.getHours(), 0, 0, 0);
+    //     // this.form.controls.timeStamp.setValue(date);
+    //     // this.form.controls.parentId.setValue(this.searchForm.controls.matterId.value);
+    //     // if (this.sampleMode()) {
+    //     //     this.form.controls.sampleNo.setValue(this.sampleMode()? this.searchForm.controls.sampleNo.value : null, {onlySelf: true, emitEvent: false});
+    //     // }
+    //     this.refreshData();
+    // }
+    // private onHour_() {
+    //     this.savedData()
+    //         .subscribe(batch => {
+    //             this.form.controls.id.setValue(batch.id);
+    //             this.form.controls.timeStamp.setValue(<Date>batch.timeStamp);
+    //             this.form.controls.spoilageHour.setValue(batch.spoilageHour);
+    //             this.form.controls.silo.setValue(batch.silo);
+    //             this.form.controls.sampleNo.setValue(batch.sampleNo);
+    //             this.form.controls.breakageHour.setValue(batch.breakageHour);
+    //             this.form.controls.parentId.setValue(batch.parentId);
+    //             this.searchForm.controls.matterId.setValue(batch.parentId, {onlySelf: true, emitEvent: false});
+    //             if (this.sampleMode()) {
+    //                 this.matterTestSrv.setParentId(batch.parentId || 0);
+    //                 if (batch.id) {
+    //                     this.form.controls.parentId.disable();
+    //                     this.searchForm.controls.matterId.disable();
+    //                 } else {
+    //                     this.form.controls.parentId.enable();
+    //                     this.searchForm.controls.matterId.enable();
+    //                 }
+    //             }
+    //             if (!this.matterTestSrv.getParentId()) {
+    //                 this.matterTestSrv.setParentId(0);
+    //             }
+    //             if (batch.tests.length > 0) {
+    //                 const idSet = this.tests.controls.map(c => <number>(<FormGroup>c).controls['testId'].value);
+    //                 const values = batch.tests.filter(bt => idSet.find(id => id === bt.testId) >= 0)
+    //                 console.log(this.tests.controls);
+    //                 this.tests.setValue(values.sort((a, b) => a.testId - b.testId));
+    //             }
+    //
+    //             this.editButton.visible = !!batch.id && !!batch.parentId && (!this.sampleMode() || !!this.searchForm.controls.sampleNo.value);
+    //             this.deleteButton.disabled = !batch.id;
+    //             this.addButton.visible = !batch.id &&
+    //                 (!!batch.parentId || this.sampleMode()) &&
+    //                 (!this.sampleMode() || !!this.searchForm.controls.sampleNo.value) &&
+    //                 this.tests.length > 0;
+    //             this.searchForm.enable();
+    //             this.hour()?.nativeElement?.focus();
+    //         });
+    // }
 
     private cancel() {
         this.confirmationSrv

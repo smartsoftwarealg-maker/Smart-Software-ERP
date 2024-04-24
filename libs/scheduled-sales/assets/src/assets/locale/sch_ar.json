@@ -15,5 +15,8 @@
     "SALES_MODES":       "طرق التسليم",
     "DAYS_AHEAD":        "الأيام المتقدمة",
     "PARTNER_SCHEDULES": "حجوزات الشركاء",
-    "SUPPLIER_TRUCKS":   "شاحنات المورد"
+    "SUPPLIER_TRUCKS":   "شاحنات المورد",
+    "MISSED_SCHEDULES":   "الجداول المهملة",
+    "INVOICED_SCHEDULES": "الجداول المفوترة",
+    "PENDING_SCHEDULES":  "الجداول العالقة"
 }

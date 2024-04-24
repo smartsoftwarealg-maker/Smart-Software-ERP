@@ -16,6 +16,7 @@ import { CommonUiImageInputModule } from "@ss/common/ui-image-input";
 import { CommonUiColorSelectModule } from "@ss/common/ui-color-select";
 import { ColorPickerModule } from "ngx-color-picker";
 import { CustomerBalanceService } from './customer-balance.service';
+import { ScheduleBalanceService } from './schedule-balance.service';
 
 @Component({
     selector: 'ss-customer-history',
@@ -42,12 +43,14 @@ import { CustomerBalanceService } from './customer-balance.service';
 
 })
 export class CustomerBalanceComponent implements OnInit {
+    private scheduleBalanceSrv = inject(ScheduleBalanceService);
     private shellSrv = inject(ShellService);
     private route = inject(ActivatedRoute);
     private loginSrv = inject(LoginService);
     private balanceSrv = inject(CustomerBalanceService);
 
     balance = signal({ credit: 0, debit: 0 });
+    schedule = signal({ missed: 0, invoiced: 0, pending: 0 });
 
     ngOnInit() {
         this.shellSrv.setGoBackPath('..', this.route);
@@ -55,5 +58,8 @@ export class CustomerBalanceComponent implements OnInit {
         this.balanceSrv
             .balance(this.loginSrv.appCtx.agentId | 0)
             .subscribe(res => this.balance.set(res));
+        this.scheduleBalanceSrv
+            .balance(this.loginSrv.appCtx.agentId | 0)
+            .subscribe(res => this.schedule.set(res));
     }
 }

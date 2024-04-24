@@ -22,7 +22,9 @@ export class AppComponent implements OnInit {
 
     loaded = false;
 
-
+    constructor() {
+        this.loginSrv.customerLogin = LoginType.BOTH;
+    }
     ngOnInit() {
         this.loginSrv.customerLogin = LoginType.CUSTOMER;
         this.shellSrv.setApplicationTitle('Customer Space 1.0');
