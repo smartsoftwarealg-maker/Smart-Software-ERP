@@ -208,6 +208,17 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
                             filter(() => !this.editInProgress() && !this.onRefresh())
                         ).subscribe(() => this.refreshData())
                 );
+                this.subscriptions.push(
+                    this.searchForm
+                        .controls
+                        .hour
+                        .valueChanges
+                        .pipe(
+                            debounceTime(300),
+                            distinctUntilChanged(),
+                            filter(() => !this.editInProgress() && !this.onRefresh())
+                        ).subscribe(() => this.refreshData())
+                );
             }
         });
         this.shellSrv.setGoBackPath('..', this.route);
@@ -295,16 +306,7 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
     }
 
     private showData(batch: LTMBatch) {
-        this.testSrv
-            .getList(0, 999, null, 'variable')
-            .pipe(
-                tap(res => this.missingVariables = res.body.filter(t => t.variable).map(t => t.variable)),
-                tap(res => {
-                    res.body
-                        .filter(t => t.variable && t.formula)
-                        .forEach(v => this.formulaMap.set(v.variable, v.formula));
-                }),
-                switchMap(_ => this.matterTestSrv.getList(0, 900, null, 'id')))
+         this.matterTestSrv.getList(0, 900, null, 'id')
             .subscribe(res => {
                 const testingId = this.form.controls.id.value;
                 const selectedTests = res.body
