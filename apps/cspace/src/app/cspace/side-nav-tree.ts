@@ -4,7 +4,6 @@ import {
     ABS_CUSTOMER_PROFILE_URL, ABS_CUSTOMER_SCHEDULES_URL, ABS_PAYMENTS_URL, ABS_SALES_QUOTAS_URL
 } from '../common';
 import {SideNavNode} from '@ss/common/api-common';
-import { ABS_ESPACE_REPORTS_URL } from '../../../../empspace/src/app/common';
 
 export const cSpaceNavTree: SideNavNode[] =
     [

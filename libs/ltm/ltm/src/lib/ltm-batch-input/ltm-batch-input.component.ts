@@ -364,9 +364,9 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
                     (!this.sampleMode() || !!this.searchForm.controls.sampleNo.value) &&
                     this.tests.length > 0;
                 this.searchForm.enable();
-                if (!this.sampleMode()) {
-                    this.hour()?.nativeElement?.focus();
-                }
+                // if (!this.sampleMode()) {
+                //     this.hour()?.nativeElement?.focus();
+                // }
                 this.onRefresh.set(false);
             });
 
