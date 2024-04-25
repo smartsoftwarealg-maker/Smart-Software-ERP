@@ -43,5 +43,6 @@
     "SILO":              "Silo",
     "SILOS":              "Silos",
     "NORM":               "Les normes",
-    "INPUT":              "Saisie"
+    "INPUT":              "Saisie",
+    "ALERTS":             "Alertes"
 }

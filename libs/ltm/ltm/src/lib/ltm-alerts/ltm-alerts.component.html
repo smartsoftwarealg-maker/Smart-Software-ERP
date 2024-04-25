@@ -1,0 +1,74 @@
+<mat-card >
+    <form [formGroup]="form">
+        <mat-form-field class="default-50 sm-100">
+            <mat-label translate>COMMON_FROM</mat-label>
+            <ss-date-picker [required]=true
+                            formControlName="from"
+                            [type]="'date'">
+            </ss-date-picker>
+        </mat-form-field>
+
+        <mat-form-field class="default-50 sm-100">
+            <mat-label translate>COMMON_TO</mat-label>
+            <ss-date-picker [required]=true
+                            formControlName="to"
+                            [type]="'date'">
+            </ss-date-picker>
+        </mat-form-field>
+
+    </form>
+</mat-card>
+<div class="content_div container">
+    <mat-table mat-table [dataSource]="data" class="main-table" matSort (matSortChange)="sort($event)">
+
+
+        <ng-container matColumnDef="matter">
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>LTM_MATTER</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.matter}}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="test">
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>LTM_TEST</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.test}}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="time">
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_TIME</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.time | date: 'dd/MM/yyyy HH:mm' }}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="value">
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_VALUE</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.value | number: '1.2-2' }}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="min">
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_MIN</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.min | number: '1.2-2' }}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="max">
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_MAX</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.max | number: '1.2-2' }}
+            </mat-cell>
+        </ng-container>
+
+
+        <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+        <mat-row class="selectable" *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+</div>
+<div class="content_div b-b-background">
+    <ss-pagination [paginationModel]="pagination"></ss-pagination>
+</div>

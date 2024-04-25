@@ -326,5 +326,7 @@
     "CENTER_CHANGE":              "Center change",
     "HISTORY":                    "History",
     "CHECK_DATE":                 "Check date",
-    "CLEAR":                      "Clear"
+    "CLEAR":                      "Clear",
+    "MIN":                        "Min",
+    "MAX":                        "Max"
 }

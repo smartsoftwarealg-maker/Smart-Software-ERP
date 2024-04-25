@@ -1,5 +1,6 @@
 import {SideNavNode} from '@ss/common/api-common';
 import {
+    ABS_LTM_ALERT_URL,
     ABS_LTM_ANOMALY_URL,
     ABS_LTM_BATCH_TESTINGS_URL,
     ABS_LTM_CHARTS_URL,
@@ -78,12 +79,12 @@ export const ltmNavTree: SideNavNode = {
             accessRights: 'LTMMixture'
         },
 
-        // {
-        //     name: 'LTM_TESTINGS',
-        //     icon: 'fa-regular fa-vials',
-        //     route: ABS_LTM_TESTINGS_URL,
-        //     accessRights: 'LTMTesting'
-        // },
+        {
+            name: 'LTM_ALERTS',
+            icon: 'fa-solid fa-sensor-triangle-exclamation',
+            route: ABS_LTM_ALERT_URL,
+            accessRights: 'LTMTesting'
+        },
 
         {
             name: 'LTM_BATCH_TESTINGS',

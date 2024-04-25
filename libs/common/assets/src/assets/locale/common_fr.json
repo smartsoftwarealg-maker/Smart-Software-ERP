@@ -329,5 +329,7 @@
     "CENTER_CHANGE":              "Changement centre",
     "HISTORY":                    "Historique",
     "CHECK_DATE":                 "Date du chèque",
-    "CLEAR":                      "Nettoyer"
+    "CLEAR":                      "Nettoyer",
+    "MIN":                        "Min",
+    "MAX":                        "Max"
 }

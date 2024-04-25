@@ -25,3 +25,5 @@ export * from './lib/ltm-testing-anomaly-list/ltm-testing-anomaly-list.component
 export * from './lib/services/ltm-testing.service';
 export * from './lib/ltm-silo-detail/ltm-silo-detail.component';
 export * from './lib/ltm-silo-list/ltm-silo-list.component';
+export * from './lib/ltm-alerts/ltm-alerts.component';
+export * from './lib/services/ltm-abnormal-test.service';
