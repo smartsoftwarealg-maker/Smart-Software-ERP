@@ -320,16 +320,18 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
                         if (t.variable) {
                             this.variables.push(t.variable);
                         }
+                        const valueArr = batch.tests.filter(b => b.testId === t.testId);
+                        const value = valueArr.length>0? valueArr[0]: {id: 0, testId: 0, value: 0, parentId: 0};
                         const testForm: FormGroup<{
                             id: FormControl<number>,
                             testId: FormControl<number>,
                             parentId: FormControl<number>,
                             value: FormControl<number>,
                         }> = this.formBuilder.group({
-                            id:              [{ value: 0, disabled: true }],
+                            id:              [{ value: value.id, disabled: true }],
                             parentId:        [testingId || 0, Validators.required],
                             testId:          [{ value: t.testId, disabled: true }, Validators.required],
-                            value:           [0, [Validators.required, Validators.min(t.minValue), Validators.max(t.maxValue || 999)]],
+                            value:           [value.value, [Validators.required, Validators.min(t.minValue), Validators.max(t.maxValue || 999)]],
                         });
                         this.tests.push(testForm);
                     });
@@ -352,10 +354,10 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
                 })
                 this.formulas = this.formulas.map(f => this.replaceFormulas(f));
 
-                if (batch.tests.length > 0) {
-                    const values = batch.tests.filter(bt => selectedTests.findIndex(st => st.testId === bt.testId) >= 0)
-                    this.tests.setValue(values.sort((a, b) => a.testId - b.testId));
-                }
+                // if (batch.tests.length > 0) {
+                //     const values = batch.tests.filter(bt => selectedTests.findIndex(st => st.testId === bt.testId) >= 0)
+                //     this.tests.setValue(values.sort((a, b) => a.testId - b.testId));
+                // }
 
                 this.editButton.visible = !!batch.id && !!batch.parentId && (!this.sampleMode() || !!this.searchForm.controls.sampleNo.value);
                 this.deleteButton.disabled = !batch.id;
@@ -364,9 +366,9 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
                     (!this.sampleMode() || !!this.searchForm.controls.sampleNo.value) &&
                     this.tests.length > 0;
                 this.searchForm.enable();
-                if (!this.sampleMode()) {
-                    this.hour()?.nativeElement?.focus();
-                }
+                // if (!this.sampleMode()) {
+                //     this.hour()?.nativeElement?.focus();
+                // }
                 this.onRefresh.set(false);
             });
 
@@ -393,7 +395,7 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
                 this.form.controls.id.setValue(batch.id);
                 this.form.controls.timeStamp.setValue(<Date>batch.timeStamp);
                 this.form.controls.spoilageHour.setValue(batch.spoilageHour);
-                this.form.controls.silo.setValue(batch.silo);
+                this.form.controls.silo.setValue(batch.silo||0);
                 this.form.controls.sampleNo.setValue(batch.sampleNo);
                 this.form.controls.breakageHour.setValue(batch.breakageHour);
                 this.form.controls.parentId.setValue(batch.parentId);
@@ -423,7 +425,7 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
     }
 
     onMatter(id: number) {
-        if (!this.form.controls.id || !this.sampleMode()) {
+        if (!this.form.controls.id.value || !this.sampleMode()) {
             this.matterTestSrv.setParentId(id);
             this.deleteButton.disabled = !id;
             this.refreshData();

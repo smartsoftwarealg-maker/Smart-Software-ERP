@@ -1,13 +1,19 @@
 import {
     ABS_CSPACE_REPORTS_URL,
     ABS_CUSTOMER_BALANCE_URL, ABS_CUSTOMER_HISTORY_URL,
-    ABS_CUSTOMER_PROFILE_URL, ABS_CUSTOMER_SCHEDULES_URL, ABS_PAYMENTS_URL, ABS_SALES_QUOTAS_URL
+    ABS_CUSTOMER_PROFILE_URL, ABS_CUSTOMER_SCHEDULES_URL, ABS_PAYMENTS_URL, ABS_SALES_HOME_URL, ABS_SALES_QUOTAS_URL
 } from '../common';
 import {SideNavNode} from '@ss/common/api-common';
-import { ABS_ESPACE_REPORTS_URL } from '../../../../empspace/src/app/common';
 
 export const cSpaceNavTree: SideNavNode[] =
     [
+        {
+            name: 'COMMON_HOME',
+            icon: 'fa-solid fa-house',
+            route: ABS_SALES_HOME_URL,
+            accessRights: 'Home',
+            customerRights: {read: true, edit: true, delete: true, write: true}
+        },
         {
             name: 'SCH_QUOTAS',
             icon: 'fa-solid fa-quote-left',

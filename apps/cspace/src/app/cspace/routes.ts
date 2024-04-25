@@ -1,6 +1,6 @@
 import {
     COMMON_CUSTOMER_PROFILE_URL,
-    CSPACE_REPORTS_URL, SS_CUSTOMER_BALANCE_URL, SS_CUSTOMER_HISTORY_URL,
+    CSPACE_REPORTS_URL, SS_CUSTOMER_BALANCE_URL, SS_CUSTOMER_HISTORY_URL, SS_HOME_PAGE_URL,
     SS_PARTNER_SCHEDULE_URL, SS_PAYMENT_URL, SS_QUOTA_URL
 } from '../common';
 import {Routes} from '@angular/router';
@@ -13,6 +13,7 @@ import {
 } from '@ss/scheduled-sales/sales-quota';
 import { CustomerBalanceComponent, CustomerSalesHistoryComponent } from 'scheduled-sales/customer-history';
 import { PaymentsListComponent } from 'scheduled-sales/payments';
+import { HomePageComponent } from 'home.page';
 
 export const cSpaceRoutes: Routes = [
     {
@@ -58,6 +59,10 @@ export const cSpaceRoutes: Routes = [
         canActivate: [CanActivateService],
     },
     {
+        path: SS_HOME_PAGE_URL,
+        component: HomePageComponent,
+    },
+    {
         path: SS_PAYMENT_URL,
         component: PaymentsListComponent,
         canActivate: [CanActivateService],
@@ -75,6 +80,6 @@ export const cSpaceRoutes: Routes = [
         data: { reportBase: 'cspace' }
     },
 
-    {path: '', redirectTo: ABS_INDEX_URL, pathMatch: 'full'},
-    {path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full'}
+    {path: '', redirectTo: SS_HOME_PAGE_URL, pathMatch: 'full'},
+    {path: '**', redirectTo: SS_HOME_PAGE_URL, pathMatch: 'full'}
 ];
