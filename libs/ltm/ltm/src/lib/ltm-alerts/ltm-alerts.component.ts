@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
-import {ShellService, SnackBarService} from '@ss/common/ui-shell';
+import { KeepOnToolbar, ShellService, SnackBarService, ToolbarButton } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router, RouterOutlet } from "@angular/router";
 import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
@@ -16,6 +16,7 @@ import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
 import { CommonUiHourPickerModule } from "@ss/common/ui-hour-picker";
 import { LTMAbnormalTest } from '../ltm-api';
 import { LtmAbnormalTestService } from '../services/ltm-abnormal-test.service';
+import { Subscription } from 'rxjs';
 
 @Component({
     selector: 'ss-ltm-alerts-list',
@@ -38,6 +39,18 @@ import { LtmAbnormalTestService } from '../services/ltm-abnormal-test.service';
     ],
 })
 export class LtmAlertsComponent extends BaseEntityListComponent<LTMAbnormalTest> {
+    private abnormalTestSrv = inject(LtmAbnormalTestService);
+    private subscription: Subscription|null = null;
+
+    private badgeBtn: ToolbarButton = {
+        icon: 'fa-solid fa-sensor-triangle-exclamation',
+        label: 'LTM_ALERTS',
+        disabled: false,
+        visible: true,
+        keepOnToolbar: KeepOnToolbar.ALWAYS,
+        click: () => this.showAlerts()
+    };
+
     displayedColumns = ['matter', 'test', 'time', 'value', 'min', 'max'];
     formBuilder = inject(FormBuilder);
     form = this.formBuilder.group({
@@ -78,5 +91,23 @@ export class LtmAlertsComponent extends BaseEntityListComponent<LTMAbnormalTest>
                     }
                 }
             );
+    }
+
+    showAlertBadge() {
+            const TODAY = new Date(new Date().getTime() - 24 * 3600 * 1000);
+            this.subscription = this.abnormalTestSrv
+                .refresh(TODAY, new Date(), 0, 49)
+                .subscribe(res => {
+                    if (res.itemCount > 0) {
+                        this.badgeBtn.badgeCount = res.itemCount;
+                        this.shellSrv.addButton(this.badgeBtn);
+                    }
+                });
+    }
+
+    private showAlerts() {
+        this.shellSrv.removeButton('LTM_ALERTS');
+        this.subscription?.unsubscribe();
+        this.router.navigate(['/app/ltm/ltm-alerts']).then();
     }
 }

@@ -15,6 +15,7 @@ export class LTMModule {
     private router = inject(Router);
     private abnormalTestSrv = inject(LtmAbnormalTestService);
     private subscription: Subscription|null = null;
+
     private badgeBtn: ToolbarButton = {
         icon: 'fa-solid fa-sensor-triangle-exclamation',
         label: 'LTM_ALERTS',
