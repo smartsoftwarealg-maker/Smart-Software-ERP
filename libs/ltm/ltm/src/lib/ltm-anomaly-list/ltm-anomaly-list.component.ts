@@ -18,7 +18,7 @@ import { Lookup } from "@ss/common/api-lookup";
 import { LtmAnomalyService } from "../services/ltm-anomaly.service";
 
 @Component({
-    selector: 'ss-ltm-test-list',
+    selector: 'ss-ltm-anomaly-list',
     templateUrl: './ltm-anomaly-list.component.html',
     styleUrls: ['./ltm-anomaly-list.component.scss'],
     standalone: true,

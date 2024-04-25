@@ -356,6 +356,7 @@ export const LTM_PERIODICITY_URL = 'ltm-periodicities';
 export const LTM_TESTING_URL     = 'ltm-testings';
 export const LTM_CHARTS_URL      = 'ltm-reports';
 export const LTM_BATCH_URL       = 'ltm-batch';
+export const LTM_ALERT_URL       = 'ltm-alerts';
 export const LTM_SAMPLE_URL       = 'ltm-sample';
 export const LTM_TEST_TYPE_URL   = 'test-types';
 export const LTM_MIXTURE_URL   = 'ltm-mixtures';
@@ -680,6 +681,7 @@ export const ABS_LTM_UNIT_URL            = '/' + [MAIN_PAGE_URL, LTM_APP_URL, LT
 export const ABS_LTM_ANOMALY_URL            = '/' + [MAIN_PAGE_URL, LTM_APP_URL, LTM_ANOMALIES_URL_URL].join('/');
 export const ABS_LTM_TESTINGS_ANOMALIES_URL            = '/' + [MAIN_PAGE_URL, LTM_APP_URL, LTM_TESTING_ANOMALIES_URL].join('/');
 export const ABS_LTM_SILO_URL            = '/' + [MAIN_PAGE_URL, LTM_APP_URL, LTM_SILOS_URL].join('/');
+export const ABS_LTM_ALERT_URL            = '/' + [MAIN_PAGE_URL, LTM_APP_URL, LTM_ALERT_URL].join('/');
 
 // GICA
 export const ABS_GICA_WEIGHTS_URL       = '/' + [MAIN_PAGE_URL, GICA_APP_URL, GICA_WEIGHTS_URL].join('/');

@@ -1,5 +1,6 @@
 export const LTM_TESTINGS_URL    = '/ltm/testings';
 export const LTM_LINE_URL        = '/ltm/lines';
+export const LTM_ABNORMAL_TESTS_URL        = '/ltm/abnormal-tests';
 export const LTM_MIXTURE_URL        = '/ltm/mixtures';
 export const LTM_ANOMALIES_URL        = '/ltm/anomalies';
 export const LTM_TESTING_ANOMALIES_URL        = '/ltm/testing-anomalies';
@@ -20,7 +21,7 @@ export interface LTMMixture {
     id: number;
     lineId: number;
     orderNo: number;
-    description: string,
+    description: string;
     descriptionAr?: string;
 }
 
@@ -47,7 +48,7 @@ export interface LTMMixtureDetail {
 export interface LTMLine {
     id: number;
     centerId: number;
-    description: string,
+    description: string;
     descriptionAr?: string
 }
 
@@ -162,4 +163,14 @@ export interface LTMTestInjection {
 export interface INJResult {
     found: string[];
     missing: string[];
+}
+
+export interface LTMAbnormalTest {
+    id: number;
+    matter: string;
+    time: Date;
+    test: string;
+    value: number;
+    min: number;
+    max: number;
 }

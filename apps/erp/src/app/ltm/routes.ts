@@ -17,7 +17,7 @@ import {
     LTM_TEST_TYPE_URL,
     LTM_MIXTURE_URL,
     LTM_ANOMALIES_URL_URL,
-    LTM_TESTING_ANOMALIES_URL, LTM_SAMPLE_URL, LTM_SILOS_URL
+    LTM_TESTING_ANOMALIES_URL, LTM_SAMPLE_URL, LTM_SILOS_URL, LTM_ALERT_URL
 } from '../common';
 
 import {
@@ -44,7 +44,7 @@ import {
     LtmAnomalyListComponent,
     LtmAnomalyDetailComponent,
     LtmTestingAnomalyListComponent,
-    LtmTestingAnomalyDetailComponent, LtmSiloDetailComponent, LtmSiloListComponent
+    LtmTestingAnomalyDetailComponent, LtmSiloDetailComponent, LtmSiloListComponent, LtmAlertsComponent
 } from '@ss/ltm/ltm';
 import {loginGuard} from '../erp-guards';
 import {DashboardComponent} from '@ss/dashboard';
@@ -57,6 +57,9 @@ export const testingGuard: CanActivateFn = () => inject(LtmTestingService).canAc
 export const ltmRoutes: Routes = [
     {
         path: LTM_BATCH_URL, component: LtmBatchInputComponent, canActivate: [loginGuard]
+    },
+    {
+        path: LTM_ALERT_URL, component: LtmAlertsComponent, canActivate: [loginGuard]
     },
     {
         path: LTM_SAMPLE_URL, component: LtmBatchInputComponent, canActivate: [loginGuard], data: { sampleMode: 'true' }

@@ -20,7 +20,7 @@ import { callback } from 'chart.js/helpers';
 import { Observable } from 'rxjs';
 
 @Component({
-    selector: 'ss-ltm-test-list',
+    selector: 'ss-ltm-testing-anomaly-list',
     templateUrl: './ltm-testing-anomaly-list.component.html',
     styleUrls: ['./ltm-testing-anomaly-list.component.scss'],
     standalone: true,

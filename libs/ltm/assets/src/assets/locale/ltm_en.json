@@ -43,5 +43,6 @@
     "SILO":              "Silo",
     "SILOS":              "Silos",
     "NORM":               "The norm",
-    "INPUT":              "Data input"
+    "INPUT":              "Data input",
+    "ALERTS":             "Alerts"
 }

@@ -27,7 +27,7 @@ export class MainPageComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit(): void {
-        this.updateGobackButton();
+        this.updateGoBackButton();
         this.shellSrv.setTitle(this.shellSrv.applicationTitle);
         this.shellSrv.enableSearch(
             'SEARCH_APP',
@@ -64,14 +64,14 @@ export class MainPageComponent implements OnInit, OnDestroy {
         if (node.children) {
             this.srv.historyStack.push(node);
             this.srv.display = node.children;
-            this.updateGobackButton();
+            this.updateGoBackButton();
         } else if (node.route) {
-            this.router.navigateByUrl(node.route);
+            this.router.navigateByUrl(node.route).then();
         }
         this.clearSearch();
     }
 
-    updateGobackButton() {
+    updateGoBackButton() {
         this.shellSrv.setGoBackFn(this.srv.historyStack.length > 0 ? () => this.goUp() : null);
     }
 
