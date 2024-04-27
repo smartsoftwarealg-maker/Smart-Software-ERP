@@ -8,7 +8,7 @@ import {
     FormBuilder,
     FormControl,
     FormGroup,
-    ReactiveFormsModule,
+    ReactiveFormsModule, ValidationErrors,
     ValidatorFn,
     Validators
 } from '@angular/forms';
@@ -31,10 +31,9 @@ import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
 import { LTMSiloService } from '../services/ltm-silo.service';
 import { LtmMatterService } from '../services/ltm-matter.service';
 import { LtmSampleLookupService } from '../services/ltm-sample-lookup.service';
-import { ValidationError } from '@nx/angular/src/generators/ng-add/utilities';
 
 function sampleNoValidatorFn(sampleMode: boolean): ValidatorFn {
-    return (control: AbstractControl): ValidationError | null => {
+    return (control: AbstractControl): ValidationErrors | null => {
         return sampleMode && !control.value ? { message: 'COMMON_REQUIRED' } : null;
     };
 }
