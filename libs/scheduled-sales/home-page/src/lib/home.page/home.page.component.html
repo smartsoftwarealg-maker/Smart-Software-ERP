@@ -1,1 +1,67 @@
-<h1>Home page</h1>
+<div class="header__div">
+    <!--        <img class="logo" src="./assets/img/anim-jika-new-all.gif" alt="ecde">-->
+
+</div>
+
+<div class="ctrl__div">
+    <button mat-button color="primary" (click)="toggleHome()" [disabled]="onHome()">
+        <i class="fa-solid fa-house-chimney"></i>
+        <span>{{ 'COMMON_HOME' | translate }}</span>
+    </button>
+    <button mat-button color="warn" (click)="toggleHome()" [disabled]="!onHome()">
+        <i class="fa-solid fa-conveyor-belt-arm"></i>
+        <span translate>COMMON_PRODUCTS</span>
+    </button>
+    <button mat-button color="accent" (click)="login()" >
+        <i class="fa-solid fa-key"></i>
+        <span translate>COMMON_LOGIN</span>
+    </button>
+</div>
+
+<div class="container">
+    @if (onHome()) {
+        <div class="about">
+            <mat-card>
+                <mat-card-content>
+                    <img width="100%" src="./assets/img/about.jpg" alt="about">
+                    <div>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut fugiat hic necessitatibus rem
+                        repudiandae. Enim error, eum magnam minus quidem quisquam sunt voluptates. Aspernatur, deserunt
+                        iusto quos recusandae velit veniam!
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </div>
+        <div class="news">
+            <mat-card>
+                <mat-card-content>
+                    <img width="100%" src="./assets/img/products.jpg" alt="news">
+                    <div class="news__div">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis laboriosam similique
+                        veritatis
+                        voluptates? Ab commodi distinctio dolores eum optio? Aliquam animi aut autem, culpa ex harum
+                        nemo
+                        nostrum reiciendis similique.
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    } @else {
+        <div class="product__div">
+            @for (p of products; track p.name) {
+                <mat-card>
+                    <mat-card-header>
+                        <mat-card-title > <span class="p-primary">{{ p.name }}</span></mat-card-title>
+                    </mat-card-header>
+                    <mat-card-content>
+                        <img class="product__image" src="{{p.image}}" alt="{{p.image}}" width="100%">
+                    </mat-card-content>
+                    <mat-card-footer>
+                        <div class="info__div">{{ p.description }}</div>
+                    </mat-card-footer>
+                </mat-card>
+            }
+        </div>
+    }
+
+</div>
