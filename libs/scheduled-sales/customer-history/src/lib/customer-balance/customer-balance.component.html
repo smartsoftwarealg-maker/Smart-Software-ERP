@@ -1,6 +1,9 @@
 <div class="container">
     <mat-card>
-        <h1 translate class="title b-primary">COMMON_BALANCE</h1>
+        <h1 class="title b-primary">
+            <i class="fa-solid fa-scale-balanced"></i>
+            {{ 'COMMON_BALANCE'|translate }}
+        </h1>
         <span class="debit__1" translate>COMMON_DEBIT</span> <span
         class="debit__2">{{ balance().debit | number: '1.2-2' }} </span>
         <span class="credit__1" translate>COMMON_CREDIT</span> <span
@@ -11,11 +14,15 @@
                                                                                               [class.f-warn]="balance().debit > balance().credit">{{ (balance().credit - balance().debit) | number: '1.2-2' }} </span>
     </mat-card>
     <mat-card>
-        <h1 translate class="title b-primary">SCH_SCHEDULES</h1>
+        <h1 class="title b-primary">
+            <i class="fa-solid fa-calendar-days"></i>
+            {{ 'SCH_SCHEDULES'|translate }}
+        </h1>
         <span class="debit__1" translate>SCH_MISSED_SCHEDULES</span> <span
         class="debit__2">{{ schedule().missed | number: '1.2-2' }} </span>
         <span class="credit__1" translate>SCH_INVOICED_SCHEDULES</span> <span
         class="credit__2">{{ schedule().invoiced | number: '1.2-2' }} </span>
-        <span class="balance__1" translate>SCH_PENDING_SCHEDULES</span> <span class="balance__2">{{ schedule().pending| number: '1.2-2' }} </span>
+        <span class="balance__1" translate>SCH_PENDING_SCHEDULES</span> <span
+        class="balance__2">{{ schedule().pending| number: '1.2-2' }} </span>
     </mat-card>
 </div>

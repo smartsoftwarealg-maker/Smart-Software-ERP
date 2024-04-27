@@ -331,5 +331,6 @@
     "CHECK_DATE":                 "Date du chèque",
     "CLEAR":                      "Nettoyer",
     "MIN":                        "Min",
-    "MAX":                        "Max"
+    "MAX":                        "Max",
+    "PRODUCTS":                   "Produits"
 }

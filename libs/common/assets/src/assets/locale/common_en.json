@@ -328,5 +328,6 @@
     "CHECK_DATE":                 "Check date",
     "CLEAR":                      "Clear",
     "MIN":                        "Min",
-    "MAX":                        "Max"
+    "MAX":                        "Max",
+    "PRODUCTS":                   "Products"
 }
