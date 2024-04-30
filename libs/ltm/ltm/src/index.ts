@@ -27,3 +27,7 @@ export * from './lib/ltm-silo-detail/ltm-silo-detail.component';
 export * from './lib/ltm-silo-list/ltm-silo-list.component';
 export * from './lib/ltm-alerts/ltm-alerts.component';
 export * from './lib/services/ltm-abnormal-test.service';
+export * from './lib/ltm-equiment-detail/ltm-equipment-detail.component';
+export * from './lib/ltm-equipment-list/ltm-equipment-list.component';
+export * from './lib/ltm-product-detail/ltm-product-detail.component';
+export * from './lib/ltm-product-list/ltm-product-list.component';

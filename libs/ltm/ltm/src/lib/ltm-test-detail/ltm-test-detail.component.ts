@@ -67,6 +67,8 @@ export class LtmTestDetailComponent extends BaseEntityDetailComponent<LTMTest> {
             showGraph:     [b.showGraph],
             showKPI:       [b.showKPI],
             unit:          [b.unit],
+            min:           [b.min],
+            max:           [b.max],
             testType:      [b.testType]
         });
     }

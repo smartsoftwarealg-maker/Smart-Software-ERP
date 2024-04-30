@@ -1,22 +1,34 @@
 import { Component } from '@angular/core';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute } from '@angular/router';
-import { AbstractControl, UntypedFormBuilder, Validators } from '@angular/forms';
+import { AbstractControl, ReactiveFormsModule, UntypedFormBuilder, Validators } from '@angular/forms';
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { Bank, Fund, LookupsService } from '@ss/common/api-lookup';
-import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
+import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { Center, CenterService } from '@ss/administration/api-center';
 import { MatExpansionPanel } from '@angular/material/expansion';
 import { catchError, Observable, of } from 'rxjs';
 import { switchMap, tap } from 'rxjs/operators';
 import { UserListService } from '@ss/common/api-users';
-import { LoginService } from '@ss/common/api-common';
+import { LoginService, MaterialModule } from '@ss/common/api-common';
+import { CommonModule } from '@angular/common';
+import { CommonUiLangModule } from '@ss/common/ui-lang';
+import { UiPaginationModule } from '@ss/common/ui-pagination';
 
 
 @Component({
     selector: 'ss-center-detail',
     styleUrls: ['./center-detail.component.scss'],
-    templateUrl: './center-detail.component.html'
+    templateUrl: './center-detail.component.html',
+    standalone: true,
+    imports: [
+        CommonModule,
+        MaterialModule,
+        CommonUiLangModule,
+        UiPaginationModule,
+        ReactiveFormsModule,
+        CommonUiConfirmationDialogModule,
+    ],
 })
 export class CenterDetailComponent extends BaseEntityDetailComponent<Center> {
 
@@ -73,7 +85,7 @@ export class CenterDetailComponent extends BaseEntityDetailComponent<Center> {
             activityCode: [b.activityCode],
             payMonth: [b.payMonth],
             bankRib: [b.bankRib],
-            abbreviation: [b.abbreviation, Validators.maxLength(1)],
+            abbreviation: [b.abbreviation, Validators.maxLength(3)],
             fiscalId: [b.fiscalId],
             commReg: [b.commReg],
             addressAr: [b.addressAr],

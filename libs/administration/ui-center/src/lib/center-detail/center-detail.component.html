@@ -41,7 +41,7 @@
                 <mat-form-field id="abbreviation" class="default-50">
                     <mat-label translate>ADMINISTRATION_ABBREVIATION</mat-label>
                     <input matInput formControlName="abbreviation" type="text">
-                    <mat-error *ngIf="form.controls['abbreviation'].invalid" [translate]="{maxLen: 1}">
+                    <mat-error *ngIf="form.controls['abbreviation'].invalid" [translate]="{maxLen: 3}">
                         COMMON_FIELD_MAX_LENGTH
                     </mat-error>
                 </mat-form-field>

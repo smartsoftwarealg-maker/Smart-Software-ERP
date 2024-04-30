@@ -1,9 +1,18 @@
 .size {
     width: 90%;
-    max-width: 800px;
+    max-width: 1200px;
     margin: 8px auto;
 }
 
 .table_div {
     min-height: calc(100% - 80px);
+}
+
+.mat-column-description {
+    flex: 2 1 200px;
+}
+
+.mat-column-productDescription,
+.mat-column-equipmentDescription {
+    flex: 1 1 200px;
 }

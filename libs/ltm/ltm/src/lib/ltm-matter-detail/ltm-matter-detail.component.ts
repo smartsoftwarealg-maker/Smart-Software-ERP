@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {LTMMatter} from '../ltm-api';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
@@ -14,9 +14,11 @@ import { CommonUiLangModule } from "@ss/common/ui-lang";
 import { UiPaginationModule } from "@ss/common/ui-pagination";
 import { LogisticsUiDocInfoModule } from "@ss/logistics/ui-doc-info";
 import { AppArchiveModule } from "@ss/common/app-archive";
-import { CommonUiAutoCompleteModule } from "@ss/common/ui-auto-complete";
+import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
 import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
 import { CommonUiHourPickerModule } from "@ss/common/ui-hour-picker";
+import { LtmProductService } from '../services/ltm-product.service';
+import { LtmEquipmentService } from '../services/ltm-equipment.service';
 
 @Component({
     selector: 'ss-ltm-matter-detail',
@@ -39,6 +41,12 @@ import { CommonUiHourPickerModule } from "@ss/common/ui-hour-picker";
     ],
 })
 export class LtmMatterDetailComponent extends BaseEntityDetailComponent<LTMMatter> implements OnInit {
+    private productSrv = inject(LtmProductService);
+    private equipmentSrv = inject(LtmEquipmentService);
+
+    equipmentLookup = new DefaultAutoCompleteModel(this.equipmentSrv);
+    productLookup = new DefaultAutoCompleteModel(this.productSrv);
+
     constructor(
         public override entitySrv: LtmMatterService,
         public override shellSrv: ShellService,
@@ -57,6 +65,8 @@ export class LtmMatterDetailComponent extends BaseEntityDetailComponent<LTMMatte
             id:            [b.id],
             description:   [b.description, Validators.required],
             descriptionAr: [b.descriptionAr],
+            equipment:     [b.equipment],
+            product:       [b.product],
         });
     }
 

@@ -332,5 +332,6 @@
     "CLEAR":                      "Nettoyer",
     "MIN":                        "Min",
     "MAX":                        "Max",
-    "PRODUCTS":                   "Produits"
+    "PRODUCTS":                   "Produits",
+    "EQUIPMENT":        "Equipements"
 }

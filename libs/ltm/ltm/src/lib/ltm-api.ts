@@ -3,6 +3,8 @@ export const LTM_LINE_URL        = '/ltm/lines';
 export const LTM_ABNORMAL_TESTS_URL        = '/ltm/abnormal-tests';
 export const LTM_MIXTURE_URL        = '/ltm/mixtures';
 export const LTM_ANOMALIES_URL        = '/ltm/anomalies';
+export const LTM_EQUIPMENTS_URL        = '/lookups/ltm_equipment';
+export const LTM_PRODUCTS_URL        = '/lookups/ltm_products';
 export const LTM_TESTING_ANOMALIES_URL        = '/ltm/testing-anomalies';
 export const LTM_MIXTURE_DETAIL_URL        = '/detail';
 export const LTM_LINE_TYPE_URL        = '/lookups/ltm_test_types';
@@ -63,6 +65,10 @@ export interface LTMMatter {
     id: number,
     description: string;
     descriptionAr?: string;
+    equipment?: number;
+    product?: number;
+    equipmentDescription?: string;
+    productDescription?: string;
 }
 
 export interface LTMTest {
@@ -75,6 +81,8 @@ export interface LTMTest {
     showKPI: boolean;
     testType?: number;
     unit?: number;
+    min?: number;
+    max: number;
 }
 
 export interface LTMMatterTest {
