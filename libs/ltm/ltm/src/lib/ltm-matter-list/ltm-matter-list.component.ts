@@ -56,6 +56,8 @@ export class LtmMatterListComponent  extends BaseEntityListComponent<LTMMatter> 
     displayedColumns = [
         'id',
         'description',
+        'equipmentDescription',
+        'productDescription',
     ];
 
     constructor(

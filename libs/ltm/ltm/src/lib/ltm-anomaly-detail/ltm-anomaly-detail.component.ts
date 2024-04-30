@@ -17,7 +17,7 @@ import { CommonUiHourPickerModule } from "@ss/common/ui-hour-picker";
 import { LtmAnomalyService } from "../services/ltm-anomaly.service";
 
 @Component({
-    selector: 'ss-ltm-test-detail',
+    selector: 'ss-ltm-anomaly-detail',
     templateUrl: './ltm-anomaly-detail.component.html',
     styleUrls: ['./ltm-anomaly-detail.component.scss'],
     standalone: true,

@@ -4,11 +4,11 @@ import {
     ABS_LTM_ANOMALY_URL,
     ABS_LTM_BATCH_TESTINGS_URL,
     ABS_LTM_CHARTS_URL,
-    ABS_LTM_DASHBOARD_URL,
+    ABS_LTM_DASHBOARD_URL, ABS_LTM_EQUIPMENT_URL,
     ABS_LTM_LINES_URL,
     ABS_LTM_MATTERS_URL,
     ABS_LTM_MIXTURES_URL,
-    ABS_LTM_PERIODICITIES_URL,
+    ABS_LTM_PERIODICITIES_URL, ABS_LTM_PRODUCT_URL,
     ABS_LTM_REPORTS_URL,
     ABS_LTM_SAMPLE_TESTINGS_URL, ABS_LTM_SILO_URL,
     ABS_LTM_TEST_TYPE_URL,
@@ -32,6 +32,18 @@ export const ltmNavTree: SideNavNode = {
             icon: 'fa-solid fa-farm',
             route: ABS_LTM_SILO_URL,
             accessRights: 'Silo'
+        },
+        {
+            name: 'COMMON_EQUIPMENT',
+            icon: 'fa-solid fa-conveyor-belt-arm',
+            route: ABS_LTM_EQUIPMENT_URL,
+            accessRights: 'LTMEquipment'
+        },
+        {
+            name: 'COMMON_PRODUCTS',
+            icon: 'fa-solid fa-cart-shopping',
+            route: ABS_LTM_PRODUCT_URL,
+            accessRights: 'LTMProduct'
         },
         {
             name: 'LTM_ANOMALIES',

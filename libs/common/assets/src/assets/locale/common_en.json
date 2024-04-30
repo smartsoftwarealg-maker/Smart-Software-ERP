@@ -329,5 +329,6 @@
     "CLEAR":                      "Clear",
     "MIN":                        "Min",
     "MAX":                        "Max",
-    "PRODUCTS":                   "Products"
+    "PRODUCTS":                   "Products",
+    "EQUIPMENT":                  "Equipment"
 }
