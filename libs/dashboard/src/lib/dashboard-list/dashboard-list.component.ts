@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {Dashboard} from '../dashboard';
-import {DashboardService} from '../dashboard.service';
+import {DashboardService} from '../services/dashboard.service';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
-import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
+import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import {Lookup, LookupsService} from '@ss/common/api-lookup';
 import {
@@ -15,16 +15,33 @@ import {
     APP_PAYROLL,
     APP_PURCHASE, APP_SALES,
     APP_STOCK,
-    APP_TREASURY,
+    APP_TREASURY, MaterialModule,
     PaginatorPersistenceService
-} from "@ss/common/api-common";
-import {FormControl} from '@angular/forms';
+} from '@ss/common/api-common';
+import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import {debounceTime, distinctUntilChanged} from 'rxjs/operators';
+import { CommonModule } from '@angular/common';
+import { CommonUiLangModule } from '@ss/common/ui-lang';
+import { UiPaginationModule } from '@ss/common/ui-pagination';
+import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
+import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
 
 @Component({
     selector: 'ss-dashboard-list',
     templateUrl: './dashboard-list.component.html',
-    styleUrls: ['./dashboard-list.component.scss']
+    styleUrls: ['./dashboard-list.component.scss'],
+    standalone: true,
+    imports: [
+        CommonModule,
+        MaterialModule,
+        CommonUiLangModule,
+        UiPaginationModule,
+        ReactiveFormsModule,
+        CommonUiConfirmationDialogModule,
+        CommonUiDatepickerModule,
+        CommonUiAutoCompleteModule
+    ],
+
 })
 export class DashboardListComponent extends BaseEntityListComponent<Dashboard> {
     APPLICATIONS: Lookup[] = [{ id: APP_DASHBOARD, description: 'DASHBOARD' },

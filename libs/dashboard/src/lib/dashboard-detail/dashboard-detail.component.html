@@ -1,32 +1,73 @@
 <form *ngIf="form" novalidate [formGroup]="form">
+    <mat-card>
+        <div class="input_ctrl">
+            <mat-form-field class="default-100">
+                <mat-label translate>COMMON_APPLICATIONS</mat-label>
+                <mat-select formControlName="appId" required>
+                    <mat-option *ngFor="let a of APPLICATIONS" [value]="a.id"> {{ a.description | translate }}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
 
-    <div class="input_ctrl">
-        <mat-form-field class="default-100">
-            <mat-label translate>COMMON_APPLICATIONS</mat-label>
-            <mat-select formControlName="appId" required>
-                <mat-option *ngFor="let a of APPLICATIONS" [value]="a.id"> {{ a.description | translate }} </mat-option>
-            </mat-select>
-        </mat-form-field>
+            <mat-form-field class="default-100">
+                <mat-label translate>COMMON_DESCRIPTION</mat-label>
+                <input matInput formControlName="description" type="text" required>
 
-        <mat-form-field class="default-100">
-            <mat-label translate>COMMON_DESCRIPTION</mat-label>
-            <input matInput formControlName="description" type="text" required>
+                <mat-error
+                    *ngIf="form.controls['description'].invalid" translate>COMMON_FIELD_REQUIRED
+                </mat-error>
 
-            <mat-error
-                *ngIf="form.controls['description'].invalid" translate>COMMON_FIELD_REQUIRED
-            </mat-error>
+            </mat-form-field>
+        </div>
+    </mat-card>
+    <mat-tab-group>
+        <mat-tab>
+            <ng-template mat-tab-label>
+                <span translate>COMMON_QUERY</span>
+            </ng-template>
+                <mat-form-field class="default-100 query_div">
+                    <mat-label translate>COMMON_DASHBOARD_QUERY</mat-label>
+                    <textarea matInput formControlName="query" type="text" rows="30"></textarea>
+                    <mat-error
+                        *ngIf="form.controls['query'].hasError('required')" translate>COMMON_FIELD_REQUIRED
+                    </mat-error>
+                </mat-form-field>
+        </mat-tab>
+        @if (form?.value['id']) {
+            <mat-tab>
+                <ng-template mat-tab-label>
+                    <span>{{ 'ADMINISTRATION_CENTERS' | translate }}</span>
+                </ng-template>
+                <div class="center__div">
+                    <div class="list__div">
+                        <mat-selection-list color="primary" multiple="false"
+                                            (selectionChange)="centerSelectionChanged($event)">
+                            @for (c of dashboardCenters; track c.id) {
+                                <mat-list-option [value]="c.id"> {{ c.centerDescription }}</mat-list-option>
+                            }
+                        </mat-selection-list>
+                    </div>
+                    <div class="center__ctrl">
+                        <button mat-mini-fab color="accent"
+                                (click)="addCenter()">
+                            <i class="fas fa-plus-circle"></i>
+                        </button>
 
-        </mat-form-field>
-    </div>
+                        <mat-form-field class="lookup__div">
+                            <mat-label translate>ADMINISTRATION_CENTER</mat-label>
+                            <ss-auto-complete matInput
+                                              [formControl]="centerCtrl"
+                                              [model]="centerLookup">
+                            </ss-auto-complete>
+                        </mat-form-field>
+                        <button mat-mini-fab color="warn" [disabled]="selectedCenter < 1" (click)="deleteCenter()"><i
+                            class="fas fa-trash-alt"></i>
+                        </button>
+                    </div>
+                </div>
 
-    <div class="query_div">
-        <mat-form-field class="default-100 query_div">
-            <mat-label translate>COMMON_DASHBOARD_QUERY</mat-label>
-            <textarea matInput formControlName="query" type="text" rows="30"></textarea>
-            <mat-error
-                *ngIf="form.controls['query'].hasError('required')" translate>COMMON_FIELD_REQUIRED
-            </mat-error>
-        </mat-form-field>
-    </div>
+            </mat-tab>
+        }
+    </mat-tab-group>
 
 </form>

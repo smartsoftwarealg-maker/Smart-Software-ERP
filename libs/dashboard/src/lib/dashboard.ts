@@ -9,3 +9,10 @@ export interface Dashboard {
 export interface Headers {
     headers: string[];
 }
+
+export interface DashboardCenter {
+    id: number;
+    parentId: number;
+    centerId: number;
+    centerDescription?: string;
+}

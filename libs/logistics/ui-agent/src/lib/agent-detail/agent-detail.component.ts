@@ -23,7 +23,7 @@ import {
 } from '@ss/logistics/api-agent';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {MatExpansionPanel} from '@angular/material/expansion';
-import { FormValidators, IsParamService, LoginService, Role } from '@ss/common/api-common';
+import { Center, FormValidators, IsParamService, LoginService, Role } from '@ss/common/api-common';
 import {BankService} from '@ss/administration/api-bank';
 import { DefaultAutoCompleteModel, Id } from '@ss/common/ui-auto-complete';
 import { AGENT_ARCHIVES, AppArchiveService } from '@ss/common/app-archive';
@@ -89,7 +89,7 @@ export class AgentDetailComponent extends BaseEntityDetailComponent<Agent> imple
     selectedCenter = 0;
     agentCenters: AgentCenter[] = [];
 
-    centerLookup = new DefaultAutoCompleteModel<Role>(this.centerSrv);
+    centerLookup = new DefaultAutoCompleteModel<Lookup>(this.centerSrv);
     centerCtrl = new FormControl<number>(0);
 
     constructor(

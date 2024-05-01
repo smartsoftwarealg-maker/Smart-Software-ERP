@@ -333,5 +333,6 @@
     "MIN":                        "Min",
     "MAX":                        "Max",
     "PRODUCTS":                   "Produits",
-    "EQUIPMENT":        "Equipements"
+    "EQUIPMENT":                  "Equipements",
+    "QUERY":                      "Requête"
 }
