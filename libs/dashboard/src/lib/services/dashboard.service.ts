@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {BaseEntityExtendedService} from '@ss/common/api-base-entity';
-import {Dashboard, Headers} from './dashboard';
+import {Dashboard, Headers} from '../dashboard';
 import {HttpService} from '@ss/common/api-common';
 import {Observable} from 'rxjs';
 import {HttpParams} from '@angular/common/http';
