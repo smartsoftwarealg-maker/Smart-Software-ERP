@@ -272,4 +272,7 @@ export class DashboardComponent extends BaseEntityListComponent<Dashboard> {
         };
     }
 
+    public getPage() {
+        return this.dashboardSrv.getCenterPage(this.pagination, this.filter);
+    }
 }
