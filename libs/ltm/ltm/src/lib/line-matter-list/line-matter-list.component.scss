@@ -1,9 +1,16 @@
 .content_div {
-    width: 500px;
+    width: 900px;
     margin: 8px auto;
 }
 
 .table_div {
     min-height: calc(100% - 86px);
     overflow-y: auto;
+}
+
+
+.mat-column-description,
+.mat-column-productDescription,
+.mat-column-equipmentDescription {
+    flex: 1 1 200px;
 }

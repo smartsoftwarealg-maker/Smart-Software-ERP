@@ -59,16 +59,16 @@ export interface LTMLineMatter {
     centerId: number;
     matterId: number;
     description?: string;
+    product?: number;
+    equipment?: number;
+    productDescription?: string;
+    equipmentDescriptionAr?: string;
 }
 
 export interface LTMMatter {
     id: number,
     description: string;
     descriptionAr?: string;
-    equipment?: number;
-    product?: number;
-    equipmentDescription?: string;
-    productDescription?: string;
 }
 
 export interface LTMTest {
