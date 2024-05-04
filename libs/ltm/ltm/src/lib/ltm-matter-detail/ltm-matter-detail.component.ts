@@ -41,12 +41,6 @@ import { LtmEquipmentService } from '../services/ltm-equipment.service';
     ],
 })
 export class LtmMatterDetailComponent extends BaseEntityDetailComponent<LTMMatter> implements OnInit {
-    private productSrv = inject(LtmProductService);
-    private equipmentSrv = inject(LtmEquipmentService);
-
-    equipmentLookup = new DefaultAutoCompleteModel(this.equipmentSrv);
-    productLookup = new DefaultAutoCompleteModel(this.productSrv);
-
     constructor(
         public override entitySrv: LtmMatterService,
         public override shellSrv: ShellService,
@@ -65,8 +59,6 @@ export class LtmMatterDetailComponent extends BaseEntityDetailComponent<LTMMatte
             id:            [b.id],
             description:   [b.description, Validators.required],
             descriptionAr: [b.descriptionAr],
-            equipment:     [b.equipment],
-            product:       [b.product],
         });
     }
 

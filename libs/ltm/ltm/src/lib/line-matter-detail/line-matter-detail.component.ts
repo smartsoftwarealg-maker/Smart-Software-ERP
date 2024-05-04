@@ -16,6 +16,8 @@ import { LogisticsUiDocInfoModule } from "@ss/logistics/ui-doc-info";
 import { AppArchiveModule } from "@ss/common/app-archive";
 import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
 import { CommonUiHourPickerModule } from '@ss/common/ui-hour-picker';
+import { LtmProductService } from '../services/ltm-product.service';
+import { LtmEquipmentService } from '../services/ltm-equipment.service';
 
 @Component({
     selector: 'ss-line-matter-detail',
@@ -40,6 +42,11 @@ import { CommonUiHourPickerModule } from '@ss/common/ui-hour-picker';
 export class LineMatterDetailComponent extends BaseEntityDetailComponent<LTMLineMatter> {
     private loginSrv = inject(LoginService);
     private matterSrv = inject(LtmMatterService);
+    private productSrv = inject(LtmProductService);
+    private equipmentSrv = inject(LtmEquipmentService);
+
+    equipmentLookup = new DefaultAutoCompleteModel(this.equipmentSrv);
+    productLookup = new DefaultAutoCompleteModel(this.productSrv);
 
     matterLookup = new DefaultAutoCompleteModel(this.matterSrv);
     constructor(
@@ -58,6 +65,8 @@ export class LineMatterDetailComponent extends BaseEntityDetailComponent<LTMLine
             id:            [b.id],
             centerId:      [b.centerId || this.loginSrv.appCtx.center],
             matterId:      [b.matterId],
+            product:       [b.product],
+            equipment:     [b.equipment]
         });
     }
 }
