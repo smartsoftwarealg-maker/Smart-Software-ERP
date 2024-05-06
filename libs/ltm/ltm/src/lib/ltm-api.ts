@@ -21,7 +21,7 @@ export const LTM_SAMPLES_URL = '/ltm/samples';
 
 export interface LTMMixture {
     id: number;
-    lineId: number;
+    centerId: number;
     orderNo: number;
     description: string;
     descriptionAr?: string;
@@ -63,6 +63,10 @@ export interface LTMLineMatter {
     equipment?: number;
     productDescription?: string;
     equipmentDescriptionAr?: string;
+    min?: number;
+    max?: number;
+    normMin?: number;
+    normMax?: number;
 }
 
 export interface LTMMatter {

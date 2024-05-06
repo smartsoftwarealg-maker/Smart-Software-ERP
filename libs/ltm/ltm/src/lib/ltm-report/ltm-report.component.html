@@ -10,18 +10,19 @@
 
             <mat-form-field class="default-100 sm-50">
                 <mat-label translate>COMMON_TO</mat-label>
-                <ss-date-picker [formControl]="to"  type="datetime"></ss-date-picker>
+                <ss-date-picker [formControl]="to" type="datetime"></ss-date-picker>
             </mat-form-field>
 
             <mat-form-field class="default-100 sm-50">
                 <mat-label translate>LTM_PERIOD</mat-label>
                 <mat-select required [formControl]="period">
-                    <mat-option *ngFor="let m of periods" [value]="m.id" translate>{{m.description}}</mat-option>
+                    <mat-option *ngFor="let m of periods" [value]="m.id" translate>{{ m.description }}</mat-option>
                 </mat-select>
             </mat-form-field>
 
 
-            <mat-checkbox [formControl]="anomaly" (click)="onMatter(selectedMatter)" translate>LTM_ANOMALIES_ONLY </mat-checkbox>
+            <mat-checkbox [formControl]="anomaly" (click)="onMatter(selectedMatter)" translate>LTM_ANOMALIES_ONLY
+            </mat-checkbox>
 
             <mat-form-field class="default-100 sm-50">
                 <mat-label translate>COMMON_SEARCH</mat-label>
@@ -41,13 +42,14 @@
                     </mat-list>
                 </mat-card>
             </div>
-            <button mat-raised-button color="primary"
-                    type="button"
-                    (click)="export()">
-                <i class="fa-solid fa-file-excel"></i>
-                {{ 'COMMON_EXCEL_EXPORT' | translate }}
-            </button>
-
+            <div class="btn__div">
+                <button mat-raised-button color="primary"
+                        type="button"
+                        (click)="export()">
+                    <i class="fa-solid fa-file-excel"></i>
+                    {{ 'COMMON_EXCEL_EXPORT' | translate }}
+                </button>
+            </div>
         </div>
     </mat-sidenav>
     <mat-sidenav-content>
