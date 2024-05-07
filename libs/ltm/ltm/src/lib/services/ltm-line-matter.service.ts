@@ -8,6 +8,7 @@ import { Observable, of } from 'rxjs';
     providedIn: 'root'
 })
 export class LtmLineMatterService extends BaseEntityService<LTMLineMatter> {
+    private _editable = true;
 
     constructor(protected override httpSrv: HttpService) {
         super(httpSrv, LTM_LINE_MATTER_URL);
@@ -15,5 +16,13 @@ export class LtmLineMatterService extends BaseEntityService<LTMLineMatter> {
 
     public getByMatterId(id: number): Observable<LTMLineMatter> {
         return this.httpSrv.get('/ltm/line-matters-matter/' + id);
+    }
+
+    set editable(e: boolean) {
+        this._editable = e;
+    }
+
+    get editable() {
+        return this._editable;
     }
 }

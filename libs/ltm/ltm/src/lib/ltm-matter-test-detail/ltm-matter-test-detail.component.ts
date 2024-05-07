@@ -11,7 +11,7 @@ import {LtmTestService} from '../services/ltm-test.service';
 import {LtmMatterTestService} from '../services/ltm-matter-test.service';
 import {LtmPeriodicityService} from '../services/ltm-periodicity.service';
 import { CommonModule } from "@angular/common";
-import { MaterialModule } from "@ss/common/api-common";
+import { LoginService, MaterialModule } from '@ss/common/api-common';
 import { CommonUiLangModule } from "@ss/common/ui-lang";
 import { UiPaginationModule } from "@ss/common/ui-pagination";
 import { LogisticsUiDocInfoModule } from "@ss/logistics/ui-doc-info";
@@ -40,6 +40,7 @@ import { CommonUiHourPickerModule } from "@ss/common/ui-hour-picker";
     ],
 })
 export class LtmMatterTestDetailComponent implements OnInit {
+    private loginSrv = inject(LoginService);
     private testSrv = inject(LtmTestService);
     private fb = inject(FormBuilder);
     private activatedRoute = inject(ActivatedRoute);
@@ -59,6 +60,7 @@ export class LtmMatterTestDetailComponent implements OnInit {
         optValue:    [0,    Validators.required],
         periodicity: [0,    Validators.required],
         orderNo:     [0,    Validators.required],
+        centerId:    [this.loginSrv.appCtx.center]
     });
 
     constructor(private entitySrv: LtmMatterTestService,
@@ -68,12 +70,8 @@ export class LtmMatterTestDetailComponent implements OnInit {
 
     ngOnInit(): void {
         this.route
-            .parent
-            .parent
             .paramMap
             .pipe(
-                tap(params => this.form.controls.parentId.setValue(+(params.get('id')||'0'))),
-                switchMap(_ => this.route.paramMap),
                 switchMap(params => {
                     const id = +(params.get('id')||'0');
                     return id > 0? this.entitySrv.get(id) : of(<LTMMatterTest> { id: 0, parentId: this.form.controls.parentId.value, testId: 0, minValue: 0, optValue: 0, maxValue: 0});
@@ -86,12 +84,15 @@ export class LtmMatterTestDetailComponent implements OnInit {
                 this.form.controls.optValue.setValue(matter.optValue);
                 this.form.controls.maxValue.setValue(matter.maxValue);
                 this.form.controls.orderNo.setValue(matter.orderNo);
+                this.form.controls.parentId.setValue(this.entitySrv.getParentId());
                 this.form.controls.normMin.setValue(matter.normMin);
                 this.form.controls.normMax.setValue(matter.normMax);
+                this.form.controls.centerId.setValue(matter.centerId || this.loginSrv.appCtx.center);
             });
     }
 
     save() {
+        console.log(this.form.getRawValue())
         this.entitySrv
             .save(this.form.getRawValue())
             .subscribe(res => {

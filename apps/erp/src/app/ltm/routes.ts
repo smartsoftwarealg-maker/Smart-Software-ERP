@@ -75,7 +75,18 @@ export const ltmRoutes: Routes = [
         path: LTM_LINES_URL,
         children: [
             { path: LIST_URL, component: LineMatterListComponent, canActivate: [loginGuard]},
-            { path: ':id', component: LineMatterDetailComponent, canActivate: [loginGuard] }
+            { path: ':id',
+                component: LineMatterDetailComponent,
+                canActivate: [loginGuard],
+                children: [
+                    { path: '', component: LtmMatterTestListComponent, pathMatch: 'full'},
+                    { path: 'detail',
+                        children: [
+                            { path: ':id', component: LtmMatterTestDetailComponent }
+                        ]
+                    }
+                ]
+            }
         ]
     },
     {

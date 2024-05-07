@@ -41,6 +41,9 @@ import { LtmEquipmentService } from '../services/ltm-equipment.service';
     ],
 })
 export class LtmMatterDetailComponent extends BaseEntityDetailComponent<LTMMatter> implements OnInit {
+    private testSrv =  inject(LtmMatterTestService);
+    private router = inject(Router);
+
     constructor(
         public override entitySrv: LtmMatterService,
         public override shellSrv: ShellService,
@@ -48,13 +51,12 @@ export class LtmMatterDetailComponent extends BaseEntityDetailComponent<LTMMatte
         public override route: ActivatedRoute,
         public override formBuilder: UntypedFormBuilder,
         public override confirmationSrv: ConfirmationDialogService,
-        private router: Router,
-        private testSrv: LtmMatterTestService) {
+
+        ) {
         super(entitySrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'LTM_MATTERS');
     }
 
     public override setupForm(b: LTMMatter) {
-
         return this.formBuilder.group({
             id:            [b.id],
             description:   [b.description, Validators.required],

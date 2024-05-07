@@ -91,6 +91,7 @@ export interface LTMTest {
 
 export interface LTMMatterTest {
     id: number;
+    centerId: number;
     parentId: number;
     testId: number;
     periodDescription?: string;

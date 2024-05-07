@@ -8,7 +8,7 @@
                                   [model]="matterLookup">
                 </ss-auto-complete>
             </mat-form-field>
-            <mat-form-field class="default-100">
+            <mat-form-field class="default-50 sm-100">
                 <mat-label translate>COMMON_EQUIPMENT</mat-label>
                 <ss-auto-complete matInput
                                   [model]="equipmentLookup"
@@ -16,7 +16,7 @@
                 </ss-auto-complete>
             </mat-form-field>
 
-            <mat-form-field class="default-100">
+            <mat-form-field class="default-50 sm-100">
                 <mat-label translate>COMMON_PRODUCT</mat-label>
                 <ss-auto-complete matInput
                                   [model]="productLookup"
@@ -26,3 +26,7 @@
         </form>
     </mat-card-content>
 </mat-card>
+
+@if (form && id) {
+    <router-outlet></router-outlet>
+}

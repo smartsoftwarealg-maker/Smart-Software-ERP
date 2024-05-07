@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { ReactiveFormsModule, UntypedFormBuilder } from "@angular/forms";
-import { ActivatedRoute, RouterOutlet } from "@angular/router";
-import { LTMLineMatter } from '../ltm-api';
+import { ActivatedRoute, NavigationEnd, Router, RouterEvent, RouterOutlet } from '@angular/router';
+import { LTMLineMatter, LTMMatter } from '../ltm-api';
 import {LtmLineMatterService} from '../services/ltm-line-matter.service';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
@@ -18,6 +18,8 @@ import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
 import { CommonUiHourPickerModule } from '@ss/common/ui-hour-picker';
 import { LtmProductService } from '../services/ltm-product.service';
 import { LtmEquipmentService } from '../services/ltm-equipment.service';
+import { LtmMatterTestService } from '../services/ltm-matter-test.service';
+import { filter, Observable } from 'rxjs';
 
 @Component({
     selector: 'ss-line-matter-detail',
@@ -40,6 +42,9 @@ import { LtmEquipmentService } from '../services/ltm-equipment.service';
     ],
 })
 export class LineMatterDetailComponent extends BaseEntityDetailComponent<LTMLineMatter> {
+    private testSrv =  inject(LtmMatterTestService);
+    private router = inject(Router);
+
     private loginSrv = inject(LoginService);
     private matterSrv = inject(LtmMatterService);
     private productSrv = inject(LtmProductService);
@@ -61,6 +66,7 @@ export class LineMatterDetailComponent extends BaseEntityDetailComponent<LTMLine
 
 
     public override setupForm(b: LTMLineMatter) {
+        this.testSrv.setParentId(b.matterId||0);
         return this.formBuilder.group({
             id:            [b.id],
             centerId:      [b.centerId || this.loginSrv.appCtx.center],
@@ -68,5 +74,26 @@ export class LineMatterDetailComponent extends BaseEntityDetailComponent<LTMLine
             product:       [b.product],
             equipment:     [b.equipment]
         });
+    }
+
+
+    override ngOnInit() {
+        super.ngOnInit();
+        const sub = this.router.events.pipe(
+            filter((e: any): e is RouterEvent => e instanceof RouterEvent)
+        ).subscribe((e: RouterEvent) => {
+            if (e instanceof NavigationEnd) {
+                this.disableControls(e.url);
+            }
+        });
+        this.subscriptions.push(sub);
+        this.disableControls(this.router.url);
+        this.entitySrv.editable = this.isEditable;
+    }
+
+    private disableControls(url: string) {
+        const enabled = url.indexOf('/detail') < 0;
+        this.saveButton.visible = enabled;
+        this.shellSrv.setGoBackEnabled(enabled);
     }
 }
