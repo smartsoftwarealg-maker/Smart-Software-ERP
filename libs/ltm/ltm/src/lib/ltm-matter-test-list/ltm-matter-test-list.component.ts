@@ -3,7 +3,7 @@ import { MaterialModule, PaginationModel } from "@ss/common/api-common";
 import { SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router, RouterOutlet } from "@angular/router";
 import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
-import { combineAll, combineLatest, map, of, Subscription, switchMap, zip } from 'rxjs';
+import { combineLatest, map, of, Subscription, switchMap, zip } from 'rxjs';
 import {LTMMatterTest} from '../ltm-api';
 import {LtmMatterTestService} from '../services/ltm-matter-test.service';
 import {Sort} from '@angular/material/sort';
@@ -46,7 +46,7 @@ export class LtmMatterTestListComponent implements OnInit {
 
     selected: LTMMatterTest = null;
     data: LTMMatterTest[] = [];
-    pagination = PaginationModel.newInstance({ pageSize: 10, page: 1, elementCount: 0});
+    pagination = PaginationModel.newInstance({ pageSize: 5, page: 1, elementCount: 0});
 
     readonly isEditable = this.matterSrv.editable;
     readonly searchText = new FormControl<string>('');

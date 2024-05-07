@@ -11,6 +11,11 @@
     margin-bottom: 1em;
     height: calc(100% - 420px);
 }
+.btn__div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .line_div {
     flex: 1 1 50%;
     height: calc(100% - 8px);
