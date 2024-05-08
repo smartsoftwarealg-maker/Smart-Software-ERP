@@ -44,5 +44,7 @@
     "SILOS":              "Silos",
     "NORM":               "Les normes",
     "INPUT":              "Saisie",
-    "ALERTS":             "Alertes"
+    "ALERTS":             "Alertes",
+    "PICKUP_POINTS":      "Points Prélèvement",
+    "PICKUP_POINT":      "Point Prélèvement"
 }

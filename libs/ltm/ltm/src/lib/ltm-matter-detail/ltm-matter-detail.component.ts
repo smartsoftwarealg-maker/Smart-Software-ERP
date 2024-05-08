@@ -14,11 +14,9 @@ import { CommonUiLangModule } from "@ss/common/ui-lang";
 import { UiPaginationModule } from "@ss/common/ui-pagination";
 import { LogisticsUiDocInfoModule } from "@ss/logistics/ui-doc-info";
 import { AppArchiveModule } from "@ss/common/app-archive";
-import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
+import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
 import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
 import { CommonUiHourPickerModule } from "@ss/common/ui-hour-picker";
-import { LtmProductService } from '../services/ltm-product.service';
-import { LtmEquipmentService } from '../services/ltm-equipment.service';
 
 @Component({
     selector: 'ss-ltm-matter-detail',

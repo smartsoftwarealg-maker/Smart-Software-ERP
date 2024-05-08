@@ -8,7 +8,7 @@ import {
     ABS_LTM_LINES_URL,
     ABS_LTM_MATTERS_URL,
     ABS_LTM_MIXTURES_URL,
-    ABS_LTM_PERIODICITIES_URL, ABS_LTM_PRODUCT_URL,
+    ABS_LTM_PERIODICITIES_URL, ABS_LTM_PICKUP_POINTS_URL, ABS_LTM_PRODUCT_URL,
     ABS_LTM_REPORTS_URL,
     ABS_LTM_SAMPLE_TESTINGS_URL, ABS_LTM_SILO_URL,
     ABS_LTM_TEST_TYPE_URL,
@@ -44,6 +44,13 @@ export const ltmNavTree: SideNavNode = {
             icon: 'fa-solid fa-cart-shopping',
             route: ABS_LTM_PRODUCT_URL,
             accessRights: 'LTMProduct'
+        },
+
+        {
+            name: 'LTM_PICKUP_POINTS',
+            icon: 'fa-solid fa-truck-pickup',
+            route: ABS_LTM_PICKUP_POINTS_URL,
+            accessRights: 'LTMPickupPoint'
         },
         {
             name: 'LTM_ANOMALIES',

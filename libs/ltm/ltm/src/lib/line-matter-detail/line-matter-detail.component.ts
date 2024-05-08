@@ -20,6 +20,7 @@ import { LtmProductService } from '../services/ltm-product.service';
 import { LtmEquipmentService } from '../services/ltm-equipment.service';
 import { LtmMatterTestService } from '../services/ltm-matter-test.service';
 import { filter, Observable } from 'rxjs';
+import { LtmPickupPointService } from '../services/ltm-pickup-point.service';
 
 @Component({
     selector: 'ss-line-matter-detail',
@@ -49,9 +50,11 @@ export class LineMatterDetailComponent extends BaseEntityDetailComponent<LTMLine
     private matterSrv = inject(LtmMatterService);
     private productSrv = inject(LtmProductService);
     private equipmentSrv = inject(LtmEquipmentService);
+    private pickupPointSrv = inject(LtmPickupPointService);
 
     equipmentLookup = new DefaultAutoCompleteModel(this.equipmentSrv);
     productLookup = new DefaultAutoCompleteModel(this.productSrv);
+    pickupPointLookup = new DefaultAutoCompleteModel(this.pickupPointSrv);
 
     matterLookup = new DefaultAutoCompleteModel(this.matterSrv);
     constructor(
@@ -72,7 +75,8 @@ export class LineMatterDetailComponent extends BaseEntityDetailComponent<LTMLine
             centerId:      [b.centerId || this.loginSrv.appCtx.center],
             matterId:      [b.matterId],
             product:       [b.product],
-            equipment:     [b.equipment]
+            equipment:     [b.equipment],
+            pickupPoint:   [b.pickupPoint]
         });
     }
 

@@ -31,3 +31,5 @@ export * from './lib/ltm-equiment-detail/ltm-equipment-detail.component';
 export * from './lib/ltm-equipment-list/ltm-equipment-list.component';
 export * from './lib/ltm-product-detail/ltm-product-detail.component';
 export * from './lib/ltm-product-list/ltm-product-list.component';
+export * from './lib/ltm-pickup-point-detail/ltm-pickup-point-detail.component';
+export * from './lib/ltm-pickup-point-list/ltm-pickup-point-list.component';
