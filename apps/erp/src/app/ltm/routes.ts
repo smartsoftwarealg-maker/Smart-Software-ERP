@@ -17,7 +17,13 @@ import {
     LTM_TEST_TYPE_URL,
     LTM_MIXTURE_URL,
     LTM_ANOMALIES_URL,
-    LTM_TESTING_ANOMALIES_URL, LTM_SAMPLE_URL, LTM_SILOS_URL, LTM_ALERT_URL, LTM_EQUIPMENT_URL, LTM_PRODUCTS_URL
+    LTM_TESTING_ANOMALIES_URL,
+    LTM_SAMPLE_URL,
+    LTM_SILOS_URL,
+    LTM_ALERT_URL,
+    LTM_EQUIPMENT_URL,
+    LTM_PRODUCTS_URL,
+    LTM_PICKUP_POINTS_URL
 } from '../common';
 
 import {
@@ -48,7 +54,11 @@ import {
     LtmSiloDetailComponent,
     LtmSiloListComponent,
     LtmAlertsComponent,
-    LtmEquipmentListComponent, LtmEquipmentDetailComponent, LtmProductListComponent, LtmProductDetailComponent
+    LtmEquipmentListComponent,
+    LtmEquipmentDetailComponent,
+    LtmProductListComponent,
+    LtmProductDetailComponent,
+    LtmPickupPointListComponent, LtmPickupPointDetailComponent
 } from '@ss/ltm/ltm';
 import {loginGuard} from '../erp-guards';
 import {DashboardComponent} from '@ss/dashboard';
@@ -118,6 +128,13 @@ export const ltmRoutes: Routes = [
         ]
     },
     {
+        path: LTM_PICKUP_POINTS_URL,
+        children: [
+            { path: LIST_URL, component: LtmPickupPointListComponent, canActivate: [loginGuard]},
+            { path: ':id', component: LtmPickupPointDetailComponent, canActivate: [loginGuard] }
+        ]
+    },
+    {
         path: LTM_TESTING_ANOMALIES_URL,
         children: [
             { path: LIST_URL, component: LtmTestingAnomalyListComponent, canActivate: [loginGuard]},
@@ -137,14 +154,6 @@ export const ltmRoutes: Routes = [
                 component: LtmMatterDetailComponent,
                 canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService],
-                children: [
-                    { path: '', component: LtmMatterTestListComponent, pathMatch: 'full'},
-                    { path: 'detail',
-                        children: [
-                            { path: ':id', component: LtmMatterTestDetailComponent }
-                        ]
-                    }
-                ]
             },
         ]
     },

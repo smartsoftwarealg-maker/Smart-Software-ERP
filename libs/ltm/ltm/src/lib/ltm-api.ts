@@ -5,6 +5,7 @@ export const LTM_MIXTURE_URL        = '/ltm/mixtures';
 export const LTM_ANOMALIES_URL        = '/ltm/anomalies';
 export const LTM_EQUIPMENTS_URL        = '/lookups/ltm_equipment';
 export const LTM_PRODUCTS_URL        = '/lookups/ltm_products';
+export const LTM_PICKUP_POINTS_URL        = '/lookups/ltm_pickup_points';
 export const LTM_TESTING_ANOMALIES_URL        = '/ltm/testing-anomalies';
 export const LTM_MIXTURE_DETAIL_URL        = '/detail';
 export const LTM_LINE_TYPE_URL        = '/lookups/ltm_test_types';
@@ -61,7 +62,9 @@ export interface LTMLineMatter {
     description?: string;
     product?: number;
     equipment?: number;
+    pickupPoint?: number;
     productDescription?: string;
+    pickupPointDescription?: string;
     equipmentDescriptionAr?: string;
     min?: number;
     max?: number;

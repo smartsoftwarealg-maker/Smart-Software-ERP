@@ -44,5 +44,7 @@
     "SILOS":              "Silos",
     "NORM":               "The norm",
     "INPUT":              "Data input",
-    "ALERTS":             "Alerts"
+    "ALERTS":             "Alerts",
+    "PICKUP_POINTS":      "Pickup points",
+    "PICKUP_POINT":      "Pickup point"
 }
