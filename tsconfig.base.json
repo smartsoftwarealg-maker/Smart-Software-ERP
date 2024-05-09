@@ -631,6 +631,9 @@
             "common/report-privileges": [
                 "libs/common/report-privileges/src/index.ts"
             ],
+            "customer-complaints-list": [
+                "libs/scheduled-sales/customer-complaints/src/index.ts"
+            ],
             "gica.careers": ["libs/gica.careers/src/index.ts"],
             "gica/career-evolution": [
                 "libs/gica/career-evolution/src/index.ts"

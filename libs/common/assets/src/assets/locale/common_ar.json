@@ -330,5 +330,8 @@
     "MAX":                        "أقصى",
     "PRODUCTS":                   "منتوجات",
     "EQUIPMENT":                  "معدات",
-    "QUERY":                      "استفسار"
+    "QUERY":                      "استفسار",
+    "COMPLAINT":                 "الشكوى",
+    "COMPLAINTS":                 "الشكاوى",
+    "ANSWER":                     "إجابة"
 }

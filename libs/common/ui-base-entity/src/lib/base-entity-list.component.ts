@@ -356,4 +356,8 @@ export class BaseEntityListComponent<T extends { id: number, email?: string }> i
     get editable() {
         return this._editable;
     }
+
+    set editable(b: boolean) {
+        this._editable = b;
+    }
 }

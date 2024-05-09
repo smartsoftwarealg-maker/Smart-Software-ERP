@@ -1,10 +1,10 @@
 import {
-    COMMON_CUSTOMER_PROFILE_URL,
-    CSPACE_REPORTS_URL, SS_CUSTOMER_BALANCE_URL, SS_CUSTOMER_HISTORY_URL, SS_HOME_PAGE_URL,
+    COMMON_CUSTOMER_PROFILE_URL, CSPACE_APP_URL,
+    CSPACE_REPORTS_URL, SS_COMPLAINTS_URL, SS_CUSTOMER_BALANCE_URL, SS_CUSTOMER_HISTORY_URL, SS_HOME_PAGE_URL,
     SS_PARTNER_SCHEDULE_URL, SS_PAYMENT_URL, SS_QUOTA_URL
 } from '../common';
 import {Routes} from '@angular/router';
-import { ABS_INDEX_URL, CanActivateService, CanDeactivateService, LIST_URL } from '@ss/common/api-common';
+import { ABS_INDEX_URL, CustomerCanActivateService, CanDeactivateService, LIST_URL } from '@ss/common/api-common';
 import {ReportViewComponent} from '@ss/common/ui-report-param';
 import {CustomerProfileComponent} from "@ss/logistics/ui-agent";
 import {
@@ -14,6 +14,7 @@ import {
 import { CustomerBalanceComponent, CustomerSalesHistoryComponent } from 'scheduled-sales/customer-history';
 import { PaymentsListComponent } from 'scheduled-sales/payments';
 import { HomePageComponent } from 'home.page';
+import { CustomerComplaintsDetailComponent, CustomerComplaintsListComponent } from 'customer-complaints-list';
 
 export const cSpaceRoutes: Routes = [
     {
@@ -22,12 +23,12 @@ export const cSpaceRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: SalesScheduleListComponent,
-                canActivate: [CanActivateService]
+                canActivate: [CustomerCanActivateService]
             },
             {
                 path: ':id',
                 component: SalesScheduleDetailComponent,
-                canActivate: [CanActivateService],
+                canActivate: [CustomerCanActivateService],
                 canDeactivate: [CanDeactivateService],
             },
         ]
@@ -38,12 +39,28 @@ export const cSpaceRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: SalesQuotaListComponent,
-                canActivate: [CanActivateService]
+                canActivate: [CustomerCanActivateService]
             },
             {
                 path: ':id',
                 component: SalesQuotaDetailComponent,
-                canActivate: [CanActivateService],
+                canActivate: [CustomerCanActivateService],
+                canDeactivate: [CanDeactivateService],
+            },
+        ]
+    },
+    {
+        path: SS_COMPLAINTS_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: CustomerComplaintsListComponent,
+                canActivate: [CustomerCanActivateService]
+            },
+            {
+                path: ':id',
+                component: CustomerComplaintsDetailComponent,
+                canActivate: [CustomerCanActivateService],
                 canDeactivate: [CanDeactivateService],
             },
         ]
@@ -51,12 +68,12 @@ export const cSpaceRoutes: Routes = [
     {
         path: COMMON_CUSTOMER_PROFILE_URL,
         component: CustomerProfileComponent,
-        canActivate: [CanActivateService],
+        canActivate: [CustomerCanActivateService],
     },
     {
         path: SS_CUSTOMER_BALANCE_URL,
         component: CustomerBalanceComponent,
-        canActivate: [CanActivateService],
+        canActivate: [CustomerCanActivateService],
     },
     {
         path: SS_HOME_PAGE_URL,
@@ -65,21 +82,21 @@ export const cSpaceRoutes: Routes = [
     {
         path: SS_PAYMENT_URL,
         component: PaymentsListComponent,
-        canActivate: [CanActivateService],
+        canActivate: [CustomerCanActivateService],
     },
     {
         path: SS_CUSTOMER_HISTORY_URL,
         component: CustomerSalesHistoryComponent,
-        canActivate: [CanActivateService],
+        canActivate: [CustomerCanActivateService],
     },
 
     {
         path: CSPACE_REPORTS_URL,
         component: ReportViewComponent,
-        canActivate: [CanActivateService],
+        canActivate: [CustomerCanActivateService],
         data: { reportBase: 'cspace' }
     },
 
-    {path: '', redirectTo: SS_HOME_PAGE_URL, pathMatch: 'full'},
-    {path: '**', redirectTo: SS_HOME_PAGE_URL, pathMatch: 'full'}
+    {path: '', redirectTo: CSPACE_APP_URL, pathMatch: 'full'},
+    {path: '**', redirectTo: CSPACE_APP_URL, pathMatch: 'full'}
 ];

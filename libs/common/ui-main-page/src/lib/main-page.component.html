@@ -10,7 +10,7 @@
     <ng-container *ngIf="!searchResult">
         <ng-container *ngFor="let l of srv.display">
             <div *ngIf="l.visible" class="app-card" (click)="onClick(l)">
-                <div class="img" [style.backgroundColor]="l.backgroundColor">
+                <div class="img" [style.background-color]="l.backgroundColor">
                     <i style="margin-right: 8px; margin-left: 8px" [class]="l.icon"></i>
                 </div>
                 <div class="txt">
@@ -22,7 +22,7 @@
     <ng-container *ngIf="searchResult">
         <ng-container *ngFor="let l of searchResult">
             <div *ngIf="l.visible" class="app-card" (click)="onClick(l)">
-                <div class="img" [style.backgroundColor]="l.backgroundColor">
+                <div class="img" [style.background-color]="l.backgroundColor">
                     <i style="margin-right: 8px; margin-left: 8px" [class]="l.icon"></i>
                 </div>
                 <div class="txt">

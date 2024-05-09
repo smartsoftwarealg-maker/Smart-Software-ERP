@@ -6,6 +6,7 @@ export const CSPACE_CARTDETAIL_URL = 'cartdetail';
 export const COMMON_CUSTOMER_PROFILE_URL = 'profile';
 export const SS_PARTNER_SCHEDULE_URL     = 'customer-schedules';
 export const SS_QUOTA_URL     = 'sales-quotas';
+export const SS_COMPLAINTS_URL     = 'sales-complaints';
 export const SS_CUSTOMER_BALANCE_URL     = 'customer-balance';
 export const SS_HOME_PAGE_URL     = 'home';
 export const SS_CUSTOMER_HISTORY_URL     = 'customer-history';
@@ -41,6 +42,7 @@ export const ABS_SALES_QUOTAS_URL = '/' + [MAIN_PAGE_URL, CSPACE_APP_URL, SS_QUO
 export const ABS_CUSTOMER_BALANCE_URL = '/' + [MAIN_PAGE_URL, CSPACE_APP_URL, SS_CUSTOMER_BALANCE_URL].join('/');
 export const ABS_CUSTOMER_HISTORY_URL = '/' + [MAIN_PAGE_URL, CSPACE_APP_URL, SS_CUSTOMER_HISTORY_URL].join('/');
 export const ABS_CSPACE_REPORTS_URL = '/' + [MAIN_PAGE_URL, CSPACE_APP_URL, CSPACE_REPORTS_URL].join('/');
+export const ABS_CUSTOMER_COMPLAINTS_URL = '/' + [MAIN_PAGE_URL, CSPACE_APP_URL, SS_COMPLAINTS_URL].join('/');
 export const ABS_PAYMENTS_URL = '/' + [MAIN_PAGE_URL, CSPACE_APP_URL, SS_PAYMENT_URL].join('/');
 export const ABS_SALES_HOME_URL = '/' + [MAIN_PAGE_URL, CSPACE_APP_URL, SS_HOME_PAGE_URL].join('/');
 
