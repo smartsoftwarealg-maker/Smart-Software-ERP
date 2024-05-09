@@ -331,5 +331,8 @@
     "MAX":                        "Max",
     "PRODUCTS":                   "Products",
     "EQUIPMENT":                  "Equipment",
-    "QUERY":                      "Query"
+    "QUERY":                      "Query",
+    "COMPLAINT":                  "Complaint",
+    "COMPLAINTS":                 "Complaints",
+    "ANSWER":                     "Answer"
 }

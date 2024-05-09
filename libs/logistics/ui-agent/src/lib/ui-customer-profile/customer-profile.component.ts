@@ -25,7 +25,7 @@ export class CustomerProfileComponent implements OnInit {
 
     ngOnInit(): void {
         this.shellSrv.setTitle('COMMON_PROFILE');
-        this.shellSrv.setGoBackPath('..', this.route);
+        this.shellSrv.setGoBackPath('../..', this.route);
         this.agentSrv
             .currentCustomer()
             .subscribe(agent => {

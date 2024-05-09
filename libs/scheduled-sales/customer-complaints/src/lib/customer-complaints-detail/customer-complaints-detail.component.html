@@ -1,0 +1,28 @@
+<mat-card>
+    <mat-card-content>
+        <form *ngIf="form !== null" novalidate [formGroup]="form">
+
+            <mat-form-field class="default-100">
+                <mat-label translate>COMMON_TYPE</mat-label>
+                <ss-auto-complete matInput
+                                  formControlName="complaintId"
+                                  [model]="complaintLookup">
+                </ss-auto-complete>
+            </mat-form-field>
+
+            <mat-form-field id="complaint" class="default-100">
+                <mat-label translate>COMMON_COMPLAINT</mat-label>
+                <textarea matInput formControlName="complaint" cdkTextareaAutosize="true" rows="5"></textarea>
+                <mat-error *ngIf="form.controls['complaint'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
+            </mat-form-field>
+
+            <mat-form-field id="answer" class="default-100">
+                <mat-label translate>COMMON_ANSWER</mat-label>
+                <textarea matInput formControlName="answer" cdkTextareaAutosize="true" rows="5"></textarea>
+                <mat-error *ngIf="form.controls['answer'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
+            </mat-form-field>
+
+        </form>
+
+    </mat-card-content>
+</mat-card>

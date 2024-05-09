@@ -1,6 +1,6 @@
 import {
     ABS_CSPACE_REPORTS_URL,
-    ABS_CUSTOMER_BALANCE_URL, ABS_CUSTOMER_HISTORY_URL,
+    ABS_CUSTOMER_BALANCE_URL, ABS_CUSTOMER_COMPLAINTS_URL, ABS_CUSTOMER_HISTORY_URL,
     ABS_CUSTOMER_PROFILE_URL, ABS_CUSTOMER_SCHEDULES_URL, ABS_PAYMENTS_URL, ABS_SALES_HOME_URL, ABS_SALES_QUOTAS_URL
 } from '../common';
 import {SideNavNode} from '@ss/common/api-common';
@@ -54,6 +54,13 @@ export const cSpaceNavTree: SideNavNode[] =
             icon: 'fa-solid fa-file-chart-column',
             route: ABS_CSPACE_REPORTS_URL,
             accessRights: 'Report',
+            customerRights: {read: true, edit: true, delete: true, write: true}
+        },
+        {
+            name: 'COMMON_COMPLAINTS',
+            icon: 'fa-solid fa-address-card',
+            route: ABS_CUSTOMER_COMPLAINTS_URL,
+            accessRights: 'CustomerComplaint',
             customerRights: {read: true, edit: true, delete: true, write: true}
         },
         {
