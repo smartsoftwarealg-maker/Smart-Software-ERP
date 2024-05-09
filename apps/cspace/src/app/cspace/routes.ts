@@ -1,5 +1,5 @@
 import {
-    COMMON_CUSTOMER_PROFILE_URL, CSPACE_APP_URL,
+    COMMON_CUSTOMER_PROFILE_URL,
     CSPACE_REPORTS_URL, SS_COMPLAINTS_URL, SS_CUSTOMER_BALANCE_URL, SS_CUSTOMER_HISTORY_URL, SS_HOME_PAGE_URL,
     SS_PARTNER_SCHEDULE_URL, SS_PAYMENT_URL, SS_QUOTA_URL
 } from '../common';
@@ -97,6 +97,6 @@ export const cSpaceRoutes: Routes = [
         data: { reportBase: 'cspace' }
     },
 
-    {path: '', redirectTo: CSPACE_APP_URL, pathMatch: 'full'},
-    {path: '**', redirectTo: CSPACE_APP_URL, pathMatch: 'full'}
+    {path: '', redirectTo: SS_HOME_PAGE_URL, pathMatch: 'full'},
+    {path: '**', redirectTo: SS_HOME_PAGE_URL, pathMatch: 'full'}
 ];

@@ -53,7 +53,7 @@ export class CustomerBalanceComponent implements OnInit {
     schedule = signal({ missed: 0, invoiced: 0, pending: 0 });
 
     ngOnInit() {
-        this.shellSrv.setGoBackPath('..', this.route);
+        this.shellSrv.setGoBackPath('../..', this.route);
         this.shellSrv.setTitle('COMMON_BALANCE');
         this.balanceSrv
             .balance(this.loginSrv.appCtx.agentId | 0)
