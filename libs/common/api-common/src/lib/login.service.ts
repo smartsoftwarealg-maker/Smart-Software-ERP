@@ -3,7 +3,7 @@ import { Observable, of } from 'rxjs';
 import { Router } from '@angular/router';
 import { catchError, map, switchMap, tap } from 'rxjs/operators';
 import { AppContext, Credentials, ESender, LoginInfo, UserInfo } from './models';
-import { CENTER_SELECT_URL, INDEX_PAGE_URL, LOGIN_URL } from './constants';
+import { CENTER_SELECT_URL, HOME_URL, INDEX_PAGE_URL, LOGIN_URL } from './constants';
 import { HttpService } from './http.service';
 import { MainPageService } from './main-page.service';
 
@@ -109,15 +109,15 @@ export class LoginService {
             .pipe(tap<LoginInfo>(info => this.setContext(info)));
     }
 
-    public logout(): Promise<any> {
-        const promise = this.router ? this.router.navigate(['/' + LOGIN_URL]) : Promise.resolve(true);
-        return promise.then(fulfilled => {
-            if (fulfilled) {
-                this.mainPageSrv.clear();
-                this.appCtx = null;
-                localStorage.removeItem(AUTH_TOKEN);
-            }
-        });
+    public async logout(): Promise<any> {
+        const url = this.appCtx?.agentId ? HOME_URL : LOGIN_URL;
+        const promise = this.router ? this.router.navigate(['/' + url]).then() : Promise.resolve(true).then();
+        let fulfilled = await promise;
+        if (fulfilled) {
+            this.mainPageSrv.clear();
+            this.appCtx = null;
+            localStorage.removeItem(AUTH_TOKEN);
+        }
     }
 
 
