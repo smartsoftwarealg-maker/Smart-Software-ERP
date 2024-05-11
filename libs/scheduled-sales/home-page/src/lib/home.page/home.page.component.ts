@@ -9,7 +9,7 @@ import {
     MatCardTitleGroup
 } from '@angular/material/card';
 import { ShellService } from '@ss/common/ui-shell';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { MatButton } from '@angular/material/button';
 import { CommonUiLangModule } from '@ss/common/ui-lang';
 import { LanguageService } from '@ss/common/api-common';
@@ -23,7 +23,7 @@ type Product =  {
 @Component({
     selector: 'lib-home.page',
     standalone: true,
-    imports: [CommonModule, MatCard, MatCardHeader, MatCardTitle, MatCardContent, MatButton, CommonUiLangModule, MatCardFooter],
+    imports: [CommonModule, MatCard, MatCardHeader, MatCardTitle, MatCardContent, MatButton, CommonUiLangModule, MatCardFooter, RouterOutlet, RouterLink, RouterLinkActive],
     templateUrl: './home.page.component.html',
     styleUrl: './home.page.component.css',
 })

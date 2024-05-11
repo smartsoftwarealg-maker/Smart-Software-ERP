@@ -15,6 +15,8 @@ import { CustomerBalanceComponent, CustomerSalesHistoryComponent } from 'schedul
 import { PaymentsListComponent } from 'scheduled-sales/payments';
 import { HomePageComponent } from 'home.page';
 import { CustomerComplaintsDetailComponent, CustomerComplaintsListComponent } from 'customer-complaints-list';
+import { ScheduledSalesMainPageComponent } from 'scheduled-sales/main-page';
+import { ScheduledSalesProductsPageComponent } from 'scheduled-sales/products-page';
 
 export const cSpaceRoutes: Routes = [
     {
@@ -78,6 +80,17 @@ export const cSpaceRoutes: Routes = [
     {
         path: SS_HOME_PAGE_URL,
         component: HomePageComponent,
+        children: [
+            {
+                path: '', redirectTo: 'main', pathMatch: 'full'
+            },
+            {
+                path: 'main', component: ScheduledSalesMainPageComponent
+            },
+            {
+                path: 'products', component: ScheduledSalesProductsPageComponent
+            }
+        ]
     },
     {
         path: SS_PAYMENT_URL,
