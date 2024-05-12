@@ -4,7 +4,7 @@ import {
     SS_PARTNER_SCHEDULE_URL, SS_PAYMENT_URL, SS_QUOTA_URL
 } from '../common';
 import {Routes} from '@angular/router';
-import { ABS_INDEX_URL, CustomerCanActivateService, CanDeactivateService, LIST_URL } from '@ss/common/api-common';
+import { CustomerCanActivateService, CanDeactivateService, LIST_URL } from '@ss/common/api-common';
 import {ReportViewComponent} from '@ss/common/ui-report-param';
 import {CustomerProfileComponent} from "@ss/logistics/ui-agent";
 import {

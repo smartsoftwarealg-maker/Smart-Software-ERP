@@ -648,6 +648,9 @@
             "scheduled-sales/customer-history": [
                 "libs/scheduled-sales/customer-history/src/index.ts"
             ],
+            "scheduled-sales/header": [
+                "libs/scheduled-sales/header/src/index.ts"
+            ],
             "scheduled-sales/main-page": [
                 "libs/scheduled-sales/main-page/src/index.ts"
             ],

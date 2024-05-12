@@ -185,7 +185,7 @@ export interface TruckContract {
 export interface Balance {
     debit: number;
     credit: number;
-    balance?: number;
+    balance: number;
 }
 export interface ScheduleBalance {
     missed: number;
@@ -226,4 +226,9 @@ export interface Payment {
     payMethodDescription?: string;
     agentDescription?: string;
     bankDescription?: string;
+}
+
+export interface Turnover {
+    id: number;
+    turnover: number;
 }

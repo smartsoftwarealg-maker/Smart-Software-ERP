@@ -1,11 +1,11 @@
 .size {
     width: 96%;
     max-width: 1200px;
-    margin: 0 auto;
+    margin: 4px auto 0;
 }
 
 .div_table {
-    height: calc(100% - 64px);
+    height: calc(100% - 70px);
     overflow-x: auto;
 }
 

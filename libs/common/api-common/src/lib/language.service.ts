@@ -468,4 +468,8 @@ export class LanguageService {
         return +str.split(this.currentLanguage.thousandSeparator).join('')
             .split(this.currentLanguage.decimalPoint).join('.');
     }
+
+    getMonth(month: number) {
+        return month >= 1 && month <= 12? this.translate(this.MONTHS[month - 1]) : '';
+    }
 }

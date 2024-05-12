@@ -173,7 +173,7 @@ export class CMMSChartsComponent implements OnInit {
         const chartConfig: ChartConfiguration = {
             type: 'bar',
             data: {
-                labels: config.lables,
+                labels: config.labels,
                 datasets: config.series.map((s, i) => {
                     return {
                         data: s,
@@ -233,7 +233,7 @@ export class CMMSChartsComponent implements OnInit {
         const config: SimpleBarsChartConfig = {
             id: id,
             series: [data.map(p => p.count)],
-            lables: data.map(e => e.priority)
+            labels: data.map(e => e.priority)
         };
         this.buildBarChart(config);
     }
@@ -250,7 +250,7 @@ export class CMMSChartsComponent implements OnInit {
                 this.langSrv.translate('CMMS_OPTIMAL_TIME'),
                 this.langSrv.translate('CMMS_ACTUAL_TIME')
             ],
-            lables: [
+            labels: [
                 this.langSrv.translate('CMMS_MTTR'),
                 this.langSrv.translate('CMMS_MTTS'),
                 this.langSrv.translate('CMMS_PMP')

@@ -27,6 +27,7 @@ export enum LoginType {
     providedIn: 'root'
 })
 export class LoginService {
+    #homePage: string|null = null;
     private httpSrv = inject(HttpService);
     private router = inject(Router);
     private mainPageSrv = inject(MainPageService);
@@ -110,13 +111,15 @@ export class LoginService {
     }
 
     public async logout(): Promise<any> {
-        const url = this.appCtx?.agentId ? HOME_URL : LOGIN_URL;
-        const promise = this.router ? this.router.navigate(['/' + url]).then() : Promise.resolve(true).then();
+        const promise = this.router && !this.#homePage? this.router.navigate(['/' + LOGIN_URL]).then() : Promise.resolve(true).then();
         let fulfilled = await promise;
         if (fulfilled) {
             this.mainPageSrv.clear();
             this.appCtx = null;
             localStorage.removeItem(AUTH_TOKEN);
+            if (this.#homePage) {
+                window.location.href = this.#homePage;
+            }
         }
     }
 
@@ -298,5 +301,12 @@ export class LoginService {
 
     setVerified(): Observable<any> {
         return this.httpSrv.post('/verified');
+    }
+
+    set homePage(hPage: string) {
+        this.#homePage = hPage;
+    }
+    get homePage() {
+        return this.#homePage;
     }
 }

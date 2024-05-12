@@ -15,7 +15,7 @@ export interface DueChartConfig {
 
 export interface SimpleBarsChartConfig {
     id: string;
-    lables: string[];
+    labels: string[];
     series: number[][];
     seriesNames?: string[];
 }

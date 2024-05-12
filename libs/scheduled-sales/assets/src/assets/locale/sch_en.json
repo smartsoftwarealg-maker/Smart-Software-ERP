@@ -18,5 +18,7 @@
     "SUPPLIER_TRUCKS":   "Supplier trucks",
     "MISSED_SCHEDULES":   "Missed schedules",
     "INVOICED_SCHEDULES": "Invoiced schedules",
-    "PENDING_SCHEDULES":  "Pending schedules"
+    "PENDING_SCHEDULES":  "Pending schedules",
+    "MONTHLY_TURNOVER":   "Monthly turnover",
+    "ANNUAL_TURNOVER":    "Annual turnover"
 }
