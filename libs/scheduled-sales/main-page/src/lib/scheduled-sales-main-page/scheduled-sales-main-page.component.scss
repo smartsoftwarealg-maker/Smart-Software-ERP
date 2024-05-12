@@ -1,0 +1,41 @@
+.container {
+    width: 94%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    height: calc(100% - 350px);
+    gap: 1em;
+    flex-wrap: wrap;
+    //border: red solid 4px;
+    align-items: stretch;
+}
+
+.about {
+    flex: 2 1 calc(70% - 2em);
+}
+
+.news {
+    flex: 1 1 calc(30% - 2em);
+    //height: 100%;
+    //border: #4CFF55 4px solid;
+}
+
+mat-card-title {
+    font-size: 1.3em;
+    line-height: 2em;
+    padding-bottom: 2em;
+}
+
+mat-card {
+    margin-top: 1em;
+    height: 100%;
+    border-radius: 1.7em;
+}
+
+mat-card-content div {
+    margin-top: 1em;
+}
+
+.news__div {
+    font-size: 1.5em;
+}

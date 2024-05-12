@@ -1,28 +1,72 @@
 <div class="container">
     <mat-card>
-        <h1 class="title b-primary">
-            <i class="fa-solid fa-scale-balanced"></i>
-            {{ 'COMMON_BALANCE'|translate }}
-        </h1>
-        <span class="debit__1" translate>COMMON_DEBIT</span> <span
-        class="debit__2">{{ balance().debit | number: '1.2-2' }} </span>
-        <span class="credit__1" translate>COMMON_CREDIT</span> <span
-        class="credit__2">{{ balance().credit | number: '1.2-2' }} </span>
-        <span class="balance__1" translate [class.f-primary]="balance().debit <= balance().credit"
-              [class.f-warn]="balance().debit > balance().credit">COMMON_BALANCE</span> <span class="balance__2"
-                                                                                              [class.f-primary]="balance().debit <= balance().credit"
-                                                                                              [class.f-warn]="balance().debit > balance().credit">{{ (balance().credit - balance().debit) | number: '1.2-2' }} </span>
+        <mat-card-title>
+            <h1 class="b-primary">
+                <i class="fa-solid fa-scale-balanced"></i>
+                {{ 'COMMON_BALANCE'|translate }}
+            </h1>
+        </mat-card-title>
+        <mat-card-content>
+        <form [formGroup]="balanceForm" >
+            <mat-form-field class="default-100 input" >
+                <mat-label translate>COMMON_DEBIT</mat-label>
+                <input matInput formControlName="debit" type="test" readonly>
+            </mat-form-field>
+
+            <mat-form-field class="default-100 input" >
+                <mat-label translate>COMMON_CREDIT</mat-label>
+                <input matInput formControlName="credit" type="test" readonly>
+            </mat-form-field>
+
+            <mat-form-field class="default-100 input" >
+                <mat-label translate>COMMON_BALANCE</mat-label>
+                <input matInput formControlName="balance" type="test" readonly step="0.01">
+            </mat-form-field>
+        </form>
+        </mat-card-content>
     </mat-card>
+
     <mat-card>
-        <h1 class="title b-primary">
-            <i class="fa-solid fa-calendar-days"></i>
-            {{ 'SCH_SCHEDULES'|translate }}
-        </h1>
-        <span class="debit__1" translate>SCH_MISSED_SCHEDULES</span> <span
-        class="debit__2">{{ schedule().missed | number: '1.2-2' }} </span>
-        <span class="credit__1" translate>SCH_INVOICED_SCHEDULES</span> <span
-        class="credit__2">{{ schedule().invoiced | number: '1.2-2' }} </span>
-        <span class="balance__1" translate>SCH_PENDING_SCHEDULES</span> <span
-        class="balance__2">{{ schedule().pending| number: '1.2-2' }} </span>
+        <mat-card-title>
+            <h1 class="b-primary">
+                <i class="fa-solid fa-calendar-days"></i>
+                {{ 'SCH_SCHEDULES'|translate }}
+            </h1>
+        </mat-card-title>
+        <mat-card-content>
+            <form [formGroup]="scheduleForm" >
+                <mat-form-field class="default-100 input" >
+                    <mat-label translate>SCH_MISSED_SCHEDULES</mat-label>
+                    <input matInput formControlName="missed" type="test" readonly>
+                </mat-form-field>
+
+                <mat-form-field class="default-100 input" >
+                    <mat-label translate>SCH_INVOICED_SCHEDULES</mat-label>
+                    <input matInput formControlName="invoiced" type="test" readonly>
+                </mat-form-field>
+
+                <mat-form-field class="default-100 input" >
+                    <mat-label translate>SCH_PENDING_SCHEDULES</mat-label>
+                    <input matInput formControlName="pending" type="test" readonly step="0.01">
+                </mat-form-field>
+            </form>
+
+        </mat-card-content>
+    </mat-card>
+
+        <mat-card>
+            <mat-card-content>
+                <div class="chart_div">
+                    <canvas [id]="'monthly'" class="chart"></canvas>
+                </div>
+            </mat-card-content>
+        </mat-card>
+
+    <mat-card>
+        <mat-card-content>
+            <div class="chart_div">
+                <canvas [id]="'annual'" class="chart"></canvas>
+            </div>
+        </mat-card-content>
     </mat-card>
 </div>

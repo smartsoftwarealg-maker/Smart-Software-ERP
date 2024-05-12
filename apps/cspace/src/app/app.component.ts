@@ -4,7 +4,7 @@ import { catchError, switchMap, tap } from 'rxjs/operators';
 import {LanguageService} from '@ss/common/api-common';
 import {ShellService} from '@ss/common/ui-shell';
 import {cSpaceNavTree} from "./cspace/side-nav-tree";
-import { langAssets } from '../environments/environment';
+import { homePage, langAssets } from '../environments/environment';
 import { of } from 'rxjs';
 import { DeviceDetectorService } from 'ngx-device-detector';
 
@@ -24,6 +24,7 @@ export class AppComponent implements OnInit {
 
     constructor() {
         this.loginSrv.customerLogin = LoginType.BOTH;
+        this.loginSrv.homePage = homePage;
     }
     ngOnInit() {
         this.loginSrv.customerLogin = LoginType.CUSTOMER;

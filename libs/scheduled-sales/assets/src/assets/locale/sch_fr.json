@@ -18,5 +18,7 @@
     "SUPPLIER_TRUCKS":   "Camions fournisseurs",
     "MISSED_SCHEDULES":   "Perogrammes manqués",
     "INVOICED_SCHEDULES": "Perogrammes facturés",
-    "PENDING_SCHEDULES":  "Perogrammes en attente"
+    "PENDING_SCHEDULES":  "Perogrammes en attente",
+    "MONTHLY_TURNOVER":   "Chiffre d'affaires mensuel",
+    "ANNUAL_TURNOVER":    "Chiffre d'affaires annuel"
 }
