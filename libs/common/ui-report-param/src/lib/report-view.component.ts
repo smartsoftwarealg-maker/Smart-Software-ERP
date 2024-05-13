@@ -1,4 +1,4 @@
-import { Component, inject, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Component, inject, input, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { LookupsService } from '@ss/common/api-lookup';
@@ -61,6 +61,7 @@ export class ReportViewComponent extends BaseEntityListComponent<ReportParam> im
     @ViewChild('tree', { static: false }) tree: MatTree<unknown>;
 
     private uuid = '';
+    isLTM = input(false);
     private readonly mimeMap = new Map([
         ['Excel', 'application/excel'],
         ['HTML', 'text/html'],
@@ -113,7 +114,6 @@ export class ReportViewComponent extends BaseEntityListComponent<ReportParam> im
         this.shellSrv.enableSearch('COMMON_SEARCH', o => o.subscribe(f => this.setFilter(f)));
         this.shellSrv.setButtons([this.refreshButton]);
         this.pagination.onChange = () => this.refresh();
-
         this.route.data.subscribe(res => {
             this.loadReportTree(res['reportBase']);
             this.app = res['reportBase'];
@@ -153,13 +153,14 @@ export class ReportViewComponent extends BaseEntityListComponent<ReportParam> im
             const cc = {reportType: new FormControl<string>(''), name: new FormControl<string>('')};
 
             this.data.forEach(e => {
-                cc[e.name] = new FormControl(e.valueString);
+                cc[e.name] = new FormControl(this.isLTM() && e.typeName === 'java.sql.Timestamp'? e.valueString?.substring(0, 11) + '05:00:00' : e.valueString);
+                console.log(e.typeName, e.valueString);
                 if (e.lookupTable) {
                     e.lookupModel = new ParamAutoCompleteModel(this.paramLookupSrv, e.lookupTable);
                     e.description = e.description.substring(0, e.description.indexOf('//'));
                 }
             });
-            cc['reportType'] = new FormControl('PDF');
+            cc['reportType'] = new FormControl(this.isLTM()? 'HTML' : 'PDF');
             this.form = new FormGroup(cc);
         });
         if (this.tree) {
