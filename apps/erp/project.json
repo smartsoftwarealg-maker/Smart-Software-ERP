@@ -127,6 +127,11 @@
                         "glob": "**/*",
                         "input": "libs/costing/assets/src/assets",
                         "output": "assets"
+                    },
+                    {
+                        "glob": "**/*",
+                        "input": "libs/social/assets/src/assets",
+                        "output": "assets"
                     }
                 ],
                 "styles": ["apps/erp/src/styles.scss"],

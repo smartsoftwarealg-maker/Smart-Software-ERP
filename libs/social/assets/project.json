@@ -1,0 +1,33 @@
+{
+    "name": "social-assets",
+    "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+    "projectType": "library",
+    "sourceRoot": "libs/social/assets/src",
+    "prefix": "ss",
+    "targets": {
+        "lint": {
+            "executor": "@angular-devkit/build-angular:tslint",
+            "options": {
+                "tsConfig": [
+                    "libs/social/assets/tsconfig.lib.json",
+                    "libs/social/assets/tsconfig.spec.json"
+                ],
+                "exclude": ["**/node_modules/**", "!libs/social/assets/**/*"]
+            }
+        },
+        "test": {
+            "executor": "@nx/jest:jest",
+            "options": {
+                "jestConfig": "libs/social/assets/jest.config.js",
+                "tsConfig": "libs/social/assets/tsconfig.spec.json",
+                "passWithNoTests": true,
+                "setupFile": "libs/social/assets/src/test-setup.ts"
+            }
+        }
+    },
+    "generators": {
+        "@nx/angular:component": {
+            "style": "scss"
+        }
+    }
+}
