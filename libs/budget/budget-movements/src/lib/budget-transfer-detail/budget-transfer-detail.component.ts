@@ -23,7 +23,6 @@ export class BudgetTransferDetailComponent extends BaseEntityDetailComponent<Bud
     private activatedRoute = inject(ActivatedRoute);
     private langSrv = inject(LanguageService);
     private router = inject(Router);
-    private planningSrv = inject(BudgetPlanningService);
     private budgetSrv = inject(BudgetService);
     private loginSrv = inject(LoginService);
     private numberPipe: DecimalPipe = new DecimalPipe(this.langSrv.defaultLanguage);

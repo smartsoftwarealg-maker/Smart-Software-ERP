@@ -39,8 +39,8 @@ const routes: Routes = [
             { path: '**', redirectTo: INDEX_PAGE_URL, pathMatch: 'full' }
         ]
     },
-    { path: '', redirectTo: 'app/cspace', pathMatch: 'full' },
-    { path: '**', redirectTo: 'app/cspace', pathMatch: 'full' }
+    { path: '', redirectTo: LOGIN_URL, pathMatch: 'full' },
+    { path: '**', redirectTo: LOGIN_URL, pathMatch: 'full' }
 ];
 
 @NgModule({

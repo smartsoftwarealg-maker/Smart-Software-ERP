@@ -4,7 +4,7 @@ import {
     SS_PARTNER_SCHEDULE_URL, SS_PAYMENT_URL, SS_QUOTA_URL
 } from '../common';
 import {Routes} from '@angular/router';
-import { ABS_INDEX_URL, CustomerCanActivateService, CanDeactivateService, LIST_URL } from '@ss/common/api-common';
+import { CustomerCanActivateService, CanDeactivateService, LIST_URL } from '@ss/common/api-common';
 import {ReportViewComponent} from '@ss/common/ui-report-param';
 import {CustomerProfileComponent} from "@ss/logistics/ui-agent";
 import {
@@ -15,6 +15,8 @@ import { CustomerBalanceComponent, CustomerSalesHistoryComponent } from 'schedul
 import { PaymentsListComponent } from 'scheduled-sales/payments';
 import { HomePageComponent } from 'home.page';
 import { CustomerComplaintsDetailComponent, CustomerComplaintsListComponent } from 'customer-complaints-list';
+import { ScheduledSalesMainPageComponent } from 'scheduled-sales/main-page';
+import { ScheduledSalesProductsPageComponent } from 'scheduled-sales/products-page';
 
 export const cSpaceRoutes: Routes = [
     {
@@ -78,6 +80,17 @@ export const cSpaceRoutes: Routes = [
     {
         path: SS_HOME_PAGE_URL,
         component: HomePageComponent,
+        children: [
+            {
+                path: '', redirectTo: 'main', pathMatch: 'full'
+            },
+            {
+                path: 'main', component: ScheduledSalesMainPageComponent
+            },
+            {
+                path: 'products', component: ScheduledSalesProductsPageComponent
+            }
+        ]
     },
     {
         path: SS_PAYMENT_URL,

@@ -18,5 +18,7 @@
     "SUPPLIER_TRUCKS":   "شاحنات المورد",
     "MISSED_SCHEDULES":   "الجداول المهملة",
     "INVOICED_SCHEDULES": "الجداول المفوترة",
-    "PENDING_SCHEDULES":  "الجداول العالقة"
+    "PENDING_SCHEDULES":  "الجداول العالقة",
+    "MONTHLY_TURNOVER":   "المردود الشهري",
+    "ANNUAL_TURNOVER":    "المردود السنوي"
 }
