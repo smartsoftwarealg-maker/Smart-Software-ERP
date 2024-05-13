@@ -21,7 +21,7 @@ export interface ReportParam {
     name: string;
     typeName: string;
     description: string;
-    valueString: boolean;
+    valueString: string;
     valueList: Lookup[];
     lookupTable?: string;
     lookupModel?: ParamAutoCompleteModel;

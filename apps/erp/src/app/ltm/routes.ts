@@ -274,7 +274,7 @@ export const ltmRoutes: Routes = [
         path: COMMON_REPORTS_URL,
         component: ReportViewComponent,
         canActivate: [loginGuard],
-        data: { reportBase: 'ltm' }
+        data: { reportBase: 'ltm', isLTM: true }
     },
     {
         path: DASHBOARD_URL,

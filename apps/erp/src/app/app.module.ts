@@ -37,7 +37,7 @@ const routes: Routes = [
         BrowserAnimationsModule,
         HttpClientModule,
         MatProgressSpinnerModule,
-        RouterModule.forRoot(routes, { enableTracing: false }),
+        RouterModule.forRoot(routes, { enableTracing: false, bindToComponentInputs: true }),
         // Smart Software modules
         UiThemeModule,
         UiErrorHandlerModule,
