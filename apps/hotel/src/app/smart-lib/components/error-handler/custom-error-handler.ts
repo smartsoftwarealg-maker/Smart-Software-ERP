@@ -20,7 +20,6 @@ export class CustomErrorHandler extends ErrorHandler {
         // }
     }
 
-
     openMessage(aError: any) {
         const config = new MatDialogConfig();
         config.width = '600px';

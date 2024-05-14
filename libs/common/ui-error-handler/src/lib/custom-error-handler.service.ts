@@ -62,5 +62,4 @@ export class CustomErrorHandlerService {
         const url = new URL(urlStr);
         return url.protocol + '//' + (url.hostname || url.host) + ':' + url.port;
     }
-
 }
