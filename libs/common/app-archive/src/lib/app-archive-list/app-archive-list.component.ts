@@ -74,8 +74,8 @@ export class AppArchiveListComponent implements OnInit {
 
     @Input()
     set id(id: number) {
-        this._id = id;
-        this.entitySrv.setParentId(id);
+        this._id = id || 0;
+        this.entitySrv.setParentId(this._id);
         this.entitySrv
             .getList(0, 50)
             .subscribe(res => {

@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {BaseEntityExtendedService} from '@ss/common/api-base-entity';
-import { AccessRight, APPLICATIONS_URL, HttpService } from "@ss/common/api-common";
+import { AccessRight, APPLICATIONS_URL, HttpService, PaginationModel } from '@ss/common/api-common';
 import {Observable} from 'rxjs';
 import { APP_ARCHIVE_URL, AppArchive, AppArchiveObs } from "./app-archive-api";
 import { HttpParams } from '@angular/common/http';

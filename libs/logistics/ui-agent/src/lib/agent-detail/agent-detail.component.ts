@@ -39,7 +39,6 @@ import { AgentPriceService } from '@ss/logistics/api-agent-price';
     templateUrl: './agent-detail.component.html'
 })
 export class AgentDetailComponent extends BaseEntityDetailComponent<Agent> implements OnInit {
-    private archiveSrv = inject(AppArchiveService);
     private dialog  = inject(MatDialog);
     private router = inject(Router);
     private isParamSrv = inject(IsParamService);
@@ -67,6 +66,7 @@ export class AgentDetailComponent extends BaseEntityDetailComponent<Agent> imple
         click: () => this.importAgents(),
     };
 
+    archiveSrv = inject(AppArchiveService);
     public LOCAL_AGENT_ARCHIVES = AGENT_ARCHIVES;
     AQS = false;
 
@@ -275,7 +275,6 @@ export class AgentDetailComponent extends BaseEntityDetailComponent<Agent> imple
     }
 
     override ngOnInit() {
-        this.archiveSrv.appId = AGENT_ARCHIVES;
         super.ngOnInit();
         const target = this.router.url.indexOf('agents') > 0?
             'agents' :
@@ -284,6 +283,12 @@ export class AgentDetailComponent extends BaseEntityDetailComponent<Agent> imple
         const url = this.router.url.substring(0, idx) + target;
         this.shellSrv.setGoBackPath(url, this.route);
         this.shellSrv.addButton(this.invImportBtn);
+    }
+
+    loadEntity(id: number): Observable<Agent> {
+        this.archiveSrv.appId = AGENT_ARCHIVES;
+        this.archiveSrv.setParentId(id);
+        return super.loadEntity(id);
     }
 
     centerSelectionChanged(ev: MatSelectionListChange) {
