@@ -154,7 +154,6 @@ export class ReportViewComponent extends BaseEntityListComponent<ReportParam> im
 
             this.data.forEach(e => {
                 cc[e.name] = new FormControl(this.isLTM() && e.typeName === 'java.sql.Timestamp'? e.valueString?.substring(0, 11) + '05:00:00' : e.valueString);
-                console.log(e.typeName, e.valueString);
                 if (e.lookupTable) {
                     e.lookupModel = new ParamAutoCompleteModel(this.paramLookupSrv, e.lookupTable);
                     e.description = e.description.substring(0, e.description.indexOf('//'));

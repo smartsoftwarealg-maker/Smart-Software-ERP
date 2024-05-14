@@ -402,11 +402,12 @@
                         COMMON_ARCHIVE
                     </mat-panel-title>
                 </mat-expansion-panel-header>
-                <ss-app-archive-main [id]="id"
-                                     [appId]="LOCAL_AGENT_ARCHIVES"
-                                     [editable]="isEditable"
-                                     *ngIf="id">
-                </ss-app-archive-main>
+                @if (id) {
+                    <ss-app-archive-main [id]="id"
+                                         [appId]="LOCAL_AGENT_ARCHIVES"
+                                         [editable]="isEditable">
+                    </ss-app-archive-main>
+               }
             </mat-expansion-panel>
 
             <mat-expansion-panel #attributes expanded="false" [class]="getPanelHeaderClass('attributes', attributes)">
