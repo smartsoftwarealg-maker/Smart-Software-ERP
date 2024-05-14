@@ -54,5 +54,6 @@
     "CMMS_PARTS_RESERVED":           "Parts for this work order are already reserved.",
     "ORDER_ALREADY_GENERATED":       "A work order is already generated for this request.",
     "ASSET_ALLOCATED_BY_DOCUMENT":   "This asset cannot be allocated manually because it has been allocated by an allocation document.",
-    "CANT_DELETE":                   "This record cannot be deleted"
+    "CANT_DELETE":                   "This record cannot be deleted",
+    "MAX_DEBIT_EXCEEDED":            "The maximum allowed debit for this client has been exceeded. Require the payment for this document or increase the maximum debit."
 }

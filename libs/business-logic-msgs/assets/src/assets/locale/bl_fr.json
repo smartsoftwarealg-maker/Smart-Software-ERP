@@ -54,5 +54,6 @@
     "CMMS_PARTS_RESERVED":                "Les pièces pour ce bon de travail sont déjà réservées.",
     "ORDER_ALREADY_GENERATED":            "Un bon de travail est déjà généré pour cette demande.",
     "ASSET_ALLOCATED_BY_DOCUMENT":        "Ce bien ne peut pas être affecté manuellement car il a été affecté par un document d'affectation.",
-    "CANT_DELETE":                        "Cet enregistrement ne peut pas être supprimé"
+    "CANT_DELETE":                        "Cet enregistrement ne peut pas être supprimé",
+    "MAX_DEBIT_EXCEEDED":                 "Le débit maximum autorisé pour ce client a été dépassé. Exiger le paiement de ce document ou augmenter le débit maximum."
 }
