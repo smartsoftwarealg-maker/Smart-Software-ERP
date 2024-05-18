@@ -56,5 +56,6 @@
     "EPAYMENT":        "الدفع الإلكتروني",
     "EXCHANGE":        "حوالة نقدية",
     "COSTING":         "التكلفة",
-    "GICACARRER":     "تقدم المهنة"
+    "GICACARRER":      "تقدم المهنة",
+    "SOCIAL_APP":      "أعمال اجتماعية"
 }

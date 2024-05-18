@@ -25,11 +25,11 @@ import {
     CriteriaDetailComponent,
     AbsenceWeightListComponent,
     AbsenceWeightDetailComponent, DeductionReportComponent
-} from 'gica/career-evolution';
+} from '@gica/career-evolution';
 import { inject } from '@angular/core';
 import {
     ConstantDetailComponent
-} from 'gica/career-evolution';
+} from '@gica/career-evolution';
 
 
 // export const faultGuard: CanActivateFn = () => inject(FaultService).canActivate();

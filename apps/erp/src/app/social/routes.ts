@@ -1,7 +1,85 @@
 import { Routes } from '@angular/router';
-import { ABS_INDEX_URL } from '@ss/common/api-common';
+import { ABS_INDEX_URL, CanDeactivateService, LIST_URL } from '@ss/common/api-common';
+import { loginGuard } from '../erp-guards';
+import {
+    MedicalAidTypesDetailComponent,
+    MedicalAidTypesListComponent,
+    SocialActivitiesDetailComponent,
+    SocialActivitiesListComponent
+} from '@social/social-lookups';
+import { MEDICAL_AIDS_URL, SOCIAL_ACTIVITIES_URL, SOCIAL_MEDICAL_AIDS_URL, SOCIAL_WORKS_URL } from './constants';
+import { SocialWorksDetailComponent } from '@social/social-works-detail';
+import { SocialAidsListComponent } from '@social/social-works-list';
+import { MedicalAidsDetailComponent } from '@social/medical-aids-detail';
+import { MedicalAidsListComponent } from '@social/medical-aids-list';
 
-export const mainRoutes: Routes = [
+export const socialRoutes: Routes = [
+    {
+        path: SOCIAL_ACTIVITIES_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: SocialActivitiesListComponent,
+                canActivate: [loginGuard],
+            },
+            {
+                path: ':id',
+                component: SocialActivitiesDetailComponent,
+                canActivate: [loginGuard],
+                canDeactivate: [CanDeactivateService],
+            },
+        ]
+    },
+    {
+        path: SOCIAL_MEDICAL_AIDS_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: MedicalAidTypesListComponent,
+                canActivate: [loginGuard],
+            },
+            {
+                path: ':id',
+                component: MedicalAidTypesDetailComponent,
+                canActivate: [loginGuard],
+                canDeactivate: [CanDeactivateService],
+            },
+        ]
+    },
+
+    {
+        path: SOCIAL_WORKS_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: SocialAidsListComponent,
+                canActivate: [loginGuard],
+            },
+            {
+                path: ':id',
+                component: SocialWorksDetailComponent,
+                canActivate: [loginGuard],
+                canDeactivate: [CanDeactivateService],
+            },
+        ]
+    },
+    {
+        path: MEDICAL_AIDS_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: MedicalAidsListComponent,
+                canActivate: [loginGuard],
+            },
+            {
+                path: ':id',
+                component: MedicalAidsDetailComponent,
+                canActivate: [loginGuard],
+                canDeactivate: [CanDeactivateService],
+            },
+        ]
+    },
+
     { path: '', redirectTo: ABS_INDEX_URL, pathMatch: 'full' },
     { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' }
 ];

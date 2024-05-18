@@ -887,3 +887,56 @@ mat-sidenav-content.mat-drawer-content.mat-sidenav-content {
 .mat-calendar-next-button:after {
     border: none !important;
 }
+
+.container__700 {
+    width: 80%;
+    max-width: 700px;
+    margin: 4px auto 0;
+}
+
+.container__1200 {
+    width: 94%;
+    max-width: 1200px;
+    margin: 4px auto 0;
+}
+
+.mat__card__500 {
+    width: 98%;
+    max-width: 500px;
+    margin: 1em auto;
+    padding: 1em;
+    border-radius: 1.4em !important;
+}
+
+.mat__card__700 {
+    width: 98%;
+    max-width: 700px;
+    margin: 1em auto;
+    padding: 1em;
+    border-radius: 1.4em !important;
+}
+
+.mat__card__900 {
+    width: 98%;
+    max-width: 900px;
+    margin: 1em auto;
+    padding: 1em;
+    border-radius: 1.4em !important;
+}
+
+.table_div {
+    height: calc(100% - 120px);
+    overflow-x: auto;
+}
+
+.content-div {
+    height: 100%;
+    width: 100%;
+    flex-grow: 1;
+    flex-shrink: 1;
+    overflow-x: auto;
+}
+
+.pagination-container {
+    flex-grow: 0;
+}

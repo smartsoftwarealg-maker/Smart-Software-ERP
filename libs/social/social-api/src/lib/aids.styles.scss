@@ -1,0 +1,21 @@
+.mat-column-typeDescription {
+    flex: 1 1 250px;
+}
+.mat-column-number,
+.mat-column-date {
+    flex: 1 1 100px;
+    justify-content: center;
+}
+.mat-column-firstName,
+.mat-column-lastName {
+    flex: 1 1 120px;
+}
+
+.mat-column-amount {
+    flex: 1 1 100px;
+    justify-content: flex-end;
+}
+
+mat-table {
+    min-width: 1000px;
+}

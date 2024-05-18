@@ -1,3 +1,6 @@
 {
-    "SOCIAL_APP": "Social Security"
+    "ACTIVITIES":      "Activities",
+    "MEDICAL_TYPES":   "Medical types",
+    "MEDICAL_AIDS":    "Medical aids",
+    "WORKS":           "Social works"
 }

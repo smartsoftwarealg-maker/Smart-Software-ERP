@@ -44,7 +44,7 @@ import {
 } from '@ss/logistics/ui-agent';
 import { ServiceArticleDetailComponent, ServiceArticleListComponent } from '@ss/service-sales/service-articles';
 import { AGENT_ARCHIVES } from '@ss/common/app-archive';
-import { ReportPrivilegesComponent } from 'common/report-privileges';
+import { ReportPrivilegesComponent } from '@common/report-privileges';
 
 export const lookupRoutes: Routes = [];
 

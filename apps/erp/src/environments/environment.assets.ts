@@ -37,6 +37,7 @@ export const langAssets = [
     ['assets/locale/bl_', 'BL_'],
     ['assets/locale/assets_', 'ASSET_'],
     ['assets/locale/accounting_', 'ACC_'],
+    ['assets/locale/social_', 'SOCIAL_'],
 ];
 
 export const appRoutes: Routes =  [

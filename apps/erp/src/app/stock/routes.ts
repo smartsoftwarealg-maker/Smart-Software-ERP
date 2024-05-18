@@ -101,7 +101,7 @@ import {
     PartsReservationDetailComponent, PartsReservationLineDetailComponent,
     PartsReservationLineListComponent,
     PartsReservationListComponent
-} from 'logistics/parts-reservation';
+} from '@logistics/parts-reservation';
 import { UserStoresComponent } from '@ss/master-data/ui-store';
 import { ArticleDetailComponent, ArticleListComponent, ReferenceCorrectionComponent } from '@ss/master-data/ui-article';
 
