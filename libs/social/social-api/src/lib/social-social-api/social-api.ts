@@ -26,4 +26,5 @@ export interface SocialAid {
         description?: string;
         typeDescription?: string;
         medicalTypeDescription?: string;
+        rate?: number;
 }

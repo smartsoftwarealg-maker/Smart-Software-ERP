@@ -25,14 +25,25 @@
                 <mat-form-field class="default-50 sm-100">
                     <mat-label translate>COMMON_TYPE</mat-label>
                     <ss-auto-complete matInput
-                                      [model]="activityLookup"
-                                      formControlName="aidType">
+                                      [model]="medicalAidTypeLookup"
+                                      formControlName="medicalAidType">
                     </ss-auto-complete>
                     <mat-error *ngIf="form.controls['personId'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
                 </mat-form-field>
 
                 <mat-form-field class="default-50 sm-100">
-                    <mat-label translate>COMMON_AMOUNT</mat-label>
+                    <mat-label translate>SOCIAL_REFERENCE_AMOUNT</mat-label>
+                    <input matInput formControlName="referenceAmount" type="number" required step="0.01" class="number">
+                </mat-form-field>
+
+                <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>COMMON_RATE</mat-label>
+                    <input matInput formControlName="rate" type="number" required step="1" class="number" min="5" max="100">
+                </mat-form-field>
+
+
+                <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>SOCIAL_SPONSORED_AMOUNT</mat-label>
                     <input matInput formControlName="amount" type="number" required step="0.01" class="number">
                 </mat-form-field>
 

@@ -1,4 +1,5 @@
-.mat-column-typeDescription {
+.mat-column-typeDescription,
+.mat-column-medicalTypeDescription {
     flex: 1 1 250px;
 }
 .mat-column-number,
@@ -8,10 +9,11 @@
 }
 .mat-column-firstName,
 .mat-column-lastName {
-    flex: 1 1 120px;
+    flex: 1 1 140px;
 }
 
-.mat-column-amount {
+.mat-column-amount,
+.mat-column-installmentCount{
     flex: 1 1 100px;
     justify-content: flex-end;
 }

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BaseEntityService } from '@ss/common/api-base-entity';
-import { SOCIAL_ACTIVITIES_URL, SOCIAL_AIDS_URL, SocialAid } from '@social/social-api';
+import { SOCIAL_ACTIVITIES_URL } from '@social/social-api';
 import { HttpService } from '@ss/common/api-common';
 import { Lookup } from '@ss/common/api-lookup';
 

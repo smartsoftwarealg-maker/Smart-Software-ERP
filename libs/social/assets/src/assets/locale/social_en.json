@@ -1,6 +1,9 @@
 {
-    "ACTIVITIES":      "Activities",
-    "MEDICAL_TYPES":   "Medical types",
-    "MEDICAL_AIDS":    "Medical aids",
-    "WORKS":           "Social works"
+    "ACTIVITIES":        "Activities",
+    "MEDICAL_TYPES":     "Medical types",
+    "MEDICAL_AIDS":      "Medical aids",
+    "WORKS":             "Social works",
+    "INSTALLMENT_COUNT": "Installment count",
+    "REFERENCE_AMOUNT":  "Invoice amount",
+    "SPONSORED_AMOUNT":  "Sponsored amount"
 }

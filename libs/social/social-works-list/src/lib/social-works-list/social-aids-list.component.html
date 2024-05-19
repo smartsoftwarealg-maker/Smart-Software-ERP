@@ -32,7 +32,14 @@
         <ng-container matColumnDef="amount">
             <mat-header-cell *matHeaderCellDef translate>COMMON_AMOUNT</mat-header-cell>
             <mat-cell *matCellDef="let e">
-                {{e.amount}}
+                {{e.amount | number: '1.0-2'}}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="installmentCount">
+            <mat-header-cell *matHeaderCellDef translate>SOCIAL_INSTALLMENT_COUNT</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.installmentCount}}
             </mat-cell>
         </ng-container>
 

@@ -7,7 +7,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { DefaultReportService } from '@ss/common/ui-default-report-component';
 import { PaginatorPersistenceService } from '@ss/common/api-common';
-import { Lookup } from '@ss/common/api-lookup';
 import { CommonUiLangModule } from '@ss/common/ui-lang';
 import {
     MatCell,
@@ -33,7 +32,8 @@ export class SocialAidsListComponent extends BaseEntityListComponent<SocialAid> 
         'date',
         'firstName',
         'lastName',
-        'amount'
+        'amount',
+        'installmentCount'
     ]
     constructor(
         public override entitySrv: SocialWorksService,

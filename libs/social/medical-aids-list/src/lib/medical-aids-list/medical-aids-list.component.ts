@@ -28,12 +28,13 @@ import { UiPaginationModule } from '@ss/common/ui-pagination';
 })
 export class MedicalAidsListComponent extends BaseEntityListComponent<SocialAid> {
     displayedColumns = [
-        'typeDescription',
+        'medicalTypeDescription',
         'number',
         'date',
         'firstName',
         'lastName',
-        'amount'
+        'amount',
+        'installmentCount'
     ]
     constructor(
         public override entitySrv: MedicalAidService,
