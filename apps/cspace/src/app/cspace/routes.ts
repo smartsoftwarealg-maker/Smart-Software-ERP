@@ -11,12 +11,12 @@ import {
     SalesQuotaDetailComponent,
     SalesQuotaListComponent, SalesScheduleDetailComponent, SalesScheduleListComponent
 } from '@ss/scheduled-sales/sales-quota';
-import { CustomerBalanceComponent, CustomerSalesHistoryComponent } from 'scheduled-sales/customer-history';
-import { PaymentsListComponent } from 'scheduled-sales/payments';
+import { CustomerBalanceComponent, CustomerSalesHistoryComponent } from '@scheduled-sales/customer-history';
+import { PaymentsListComponent } from '@scheduled-sales/payments';
 import { HomePageComponent } from 'home.page';
-import { CustomerComplaintsDetailComponent, CustomerComplaintsListComponent } from 'customer-complaints-list';
-import { ScheduledSalesMainPageComponent } from 'scheduled-sales/main-page';
-import { ScheduledSalesProductsPageComponent } from 'scheduled-sales/products-page';
+import { CustomerComplaintsDetailComponent, CustomerComplaintsListComponent } from '@customer-complaints-list';
+import { ScheduledSalesMainPageComponent } from '@scheduled-sales/main-page';
+import { ScheduledSalesProductsPageComponent } from '@scheduled-sales/products-page';
 
 export const cSpaceRoutes: Routes = [
     {

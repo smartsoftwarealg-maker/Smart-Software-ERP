@@ -1,0 +1,97 @@
+<div class="container">
+    <mat-card>
+        <form *ngIf="form" novalidate [formGroup]="form">
+
+            <mat-form-field class="default-25 sm-50">
+                <mat-label translate>PAYROLL_MONTH</mat-label>
+                <input matInput formControlName="month" type="number" min="1" max="12" step="1" required>
+                <mat-error *ngIf="form.controls['month']?.hasError('required')" translate>COMMON_FIELD_REQUIRED
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="default-25 sm-50">
+                <mat-label translate>PAYROLL_YEAR</mat-label>
+                <input matInput formControlName="year" type="number" [min]="curYear - 1" [max]="curYear" step="1"
+                       required>
+                <mat-error *ngIf="form.controls['year']?.hasError('required')" translate>COMMON_FIELD_REQUIRED
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="default-50">
+                <mat-label translate>REMUN_SPECIAL</mat-label>
+                <input matInput formControlName="special" type="text" minlength="1" >
+            </mat-form-field>
+
+            <mat-form-field class="default-50">
+                <mat-label translate>REMUN_REFERENCE</mat-label>
+                <input matInput formControlName="reference" type="number" min="1" max="50" required>
+                <mat-error *ngIf="form.controls['reference']?.hasError('required')" translate>COMMON_FIELD_REQUIRED
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>COMMON_DATE</mat-label>
+                <ss-date-picker [required]=true formControlName="date"></ss-date-picker>
+                <mat-error *ngIf="form.controls['date']?.hasError('required')" translate>
+                    COMMON_FIELD_REQUIRED
+                </mat-error>
+            </mat-form-field>
+
+            <div class="default-50 sm-100">
+                <mat-form-field>
+                    <mat-label translate>REMUN_RECEIVING_BANK</mat-label>
+                    <mat-select formControlName="bank">
+                        <mat-option *ngFor="let c of receivingBanks" [value]="c.id">{{ c.description }}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>COMMON_DESCRIPTION</mat-label>
+                <input matInput formControlName="description" type="text" maxlength="80" required>
+                <mat-error *ngIf="form.controls['description']?.hasError('required')" translate>COMMON_FIELD_REQUIRED
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>COMMON_FORMULA</mat-label>
+                <input matInput formControlName="formula" type="text" maxlength="4" required>
+                <mat-error *ngIf="form.controls['formula']?.hasError('required')" translate>COMMON_FIELD_REQUIRED
+                </mat-error>
+            </mat-form-field>
+
+
+            <button mat-raised-button
+                    type="button"
+                    color="primary"
+                    class="generate default-25 sm-50"
+                    [disabled]="!form.valid"
+                    (click)="generate()">
+                {{ 'COMMON_GENERATE' | translate }}
+            </button>
+
+            <button mat-raised-button
+                    type="button"
+                    color="primary"
+                    class="save default-25 sm-50"
+                    [disabled]="!form.valid"
+                    (click)="save()">
+                {{ 'COMMON_SAVE' | translate }}
+            </button>
+
+        </form>
+    </mat-card>
+    <div class="bank-list">
+        <div mat-subheader class="b-primary subheader" translate> {{ 'REMUN_SELECTED_BANKS' }}</div>
+        <div class="llist">
+            <mat-selection-list #blist (change)="selectBanks(blist.selectedOptions)">
+                <mat-list-option *ngFor="let s of bankList" [value]="s.id" [selected]="true">
+                    {{ s.description }}
+                </mat-list-option>
+            </mat-selection-list>
+        </div>
+    </div>
+</div>
+<div class="edo_text">
+    <textarea cols="200" class="text-area" readonly [value]="edoText" rows="40"></textarea>
+</div>

@@ -46,7 +46,7 @@ import {
     ARCH_VIEWER_URL,
     CMMS_APP_URL,
     PARK_APP_URL,
-    SERVICE_SALES, COSTING_APP_URL, GICA_APP_URL
+    SERVICE_SALES, COSTING_APP_URL, GICA_APP_URL, SOCIAL_APP_URL
 } from '../app/common';
 import {hrLookupNavTree} from '../app/hr-lookups/side-nav-tree';
 import {foodNavTree} from '../app/food/side-nav-tree';
@@ -253,6 +253,10 @@ export const appRoutes: Routes =  [
     {
         path: COSTING_APP_URL,
         loadChildren: () => import('../app/costing/costing.module').then(m => m.CostingModule)
+    },
+    {
+        path: SOCIAL_APP_URL,
+        loadChildren: () => import('../app/social/social.module').then(m => m.SocialModule)
     },
     { path: '', redirectTo: INDEX_PAGE_URL, pathMatch: 'full' },
     { path: '**', redirectTo: INDEX_PAGE_URL, pathMatch: 'full' }
