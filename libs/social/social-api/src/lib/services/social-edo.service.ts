@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { BaseEntityService } from '@ss/common/api-base-entity';
 import { AIDS_URL, MEDICAL_AIDS_TYPE, SocialAid, TYPES_URL } from '@social/social-api';
 import { dateToYmdStr, HttpService, LanguageService, LoginService } from '@ss/common/api-common';
@@ -8,9 +8,9 @@ import { HttpParams } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 
 @Injectable({ providedIn: 'root' })
-export class MedicalAidService  {
-    constructor(private httpSrv: HttpService, private loginSrv: LoginService) {
-    }
+export class SocialEDOService {
+    private httpSrv  = inject(HttpService);
+    private loginSrv = inject(LoginService);
 
     generate(edo: EDO, bankList: number[]): Observable<string[]> {
         const mm = +edo.month;
@@ -19,7 +19,6 @@ export class MedicalAidService  {
         const params = new HttpParams()
             .set('mode', 'b') // b for bank
             .set('description', edo.description)
-            .set('formula', edo.formula)
             .set('reference', edo.reference)
             .set('month', mm)
             .set('year', yy)
@@ -27,8 +26,7 @@ export class MedicalAidService  {
             .set('bank', edo.bank + '')
             .set('date', dateToYmdStr(new Date(edo.date)));
         return this.httpSrv
-            .get<{ edo: string[]}>('/payroll/edo', params)
-            .pipe(map(res => res.edo));
+            .get<string[]>('/social/edo', params);
     }
 
     getCenterBank(): Observable<number> {

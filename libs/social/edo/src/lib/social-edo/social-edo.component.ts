@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { MatListOption, MatListSubheaderCssMatStyler, MatSelectionList } from '@angular/material/list';
 import { FormsModule, ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { ShellService } from '@ss/common/ui-shell';
-import { EdoService } from '@ss/remuneration/edo';
 import { ActivatedRoute } from '@angular/router';
 import { PayrollMonthService } from '@ss/remuneration/payroll-month';
 import { BankService } from '@ss/administration/api-bank';
@@ -18,6 +17,7 @@ import { MatInput } from '@angular/material/input';
 import { MatOption } from '@angular/material/autocomplete';
 import { MatSelect } from '@angular/material/select';
 import { Lookup } from '@ss/common/api-lookup';
+import { SocialEDOService } from '@social/social-api';
 
 @Component({
     selector: 'ss-social-edo',
@@ -30,14 +30,14 @@ export class SocialEdoComponent implements OnInit {
     @ViewChild('blist') blist: MatSelectionList
     form: UntypedFormGroup = null;
     curYear = new Date().getFullYear();
-    curMonth = new Date().getFullYear();
+    curMonth = new Date().getMonth();
     bankList: Lookup[] = [];
     receivingBanks: Lookup[] = [];
     selectedBanks = '';
     edoText: string = '';
 
     constructor(private shellSrv: ShellService,
-        private edoSrv: EdoService,
+        private edoSrv: SocialEDOService,
         private route: ActivatedRoute,
         private formBuilder: UntypedFormBuilder,
         private monthSrv: PayrollMonthService,
@@ -46,17 +46,13 @@ export class SocialEdoComponent implements OnInit {
     }
 
     ngOnInit(): void {
+        this.shellSrv.setTitle('REMUN_EDO');
         this.bankSrv
             .getList(0, 1000)
             .pipe(tap(res => {
                     this.bankList = res.body;
                     this.selectedBanks = this.bankList.map(e => e.id).join(',');
                 }),
-                switchMap(_ => this.monthSrv.maxMonth()),
-                tap(res => {
-                    this.curYear = +((res.month % 1_000_000)/100).toFixed(0);
-                    this.curMonth = +(res.month % 100).toFixed(0);
-                } ),
                 switchMap(_ => this.edoSrv.getCenterBank()),
                 tap(res => this.receivingBanks = this.bankList.filter(e => e.id == res)))
             .subscribe(res => this.buildForm(res));
@@ -67,12 +63,15 @@ export class SocialEdoComponent implements OnInit {
         const selection = this.blist.selectedOptions.selected.map(e => e.value);
         this.shellSrv.setLoading(true);
         this.form.value['bank'] = this.receivingBanks.length > 0? this.receivingBanks[0].id: 0;
+        console.log(this.form.value);
         this.edoSrv
             .generate(this.form.value, selection)
             .subscribe({
                 next:
                     res => {
-                        this.edoText = res.join('');
+                        if (res) {
+                            this.edoText = res.join('');
+                        }
                         this.shellSrv.setLoading(false);
                     },
                 error:

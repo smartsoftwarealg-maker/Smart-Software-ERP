@@ -1,7 +1,7 @@
 import { SideNavNode } from '@ss/common/api-common';
 import {
     ABS_MEDICAL_AIDS_URL,
-    ABS_SOCIAL_ACTIVITIES_URL,
+    ABS_SOCIAL_ACTIVITIES_URL, ABS_SOCIAL_EDO_URL,
     ABS_SOCIAL_MEDICAL_AIDS_URL,
     ABS_SOCIAL_WORKS_URL
 } from './constants';
@@ -36,6 +36,13 @@ export const socialNavTree: SideNavNode = {
             icon: 'fa-solid fa-stretcher',
             route: ABS_MEDICAL_AIDS_URL,
             accessRights: 'SocialWork'
+        },
+
+        {
+            name: 'REMUN_EDO',
+            icon: 'fa-solid fa-money-check-dollar-pen',
+            route: ABS_SOCIAL_EDO_URL,
+            accessRights: 'EDO'
         },
 
     ],

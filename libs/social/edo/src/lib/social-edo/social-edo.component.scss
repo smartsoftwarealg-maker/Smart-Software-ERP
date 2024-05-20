@@ -27,23 +27,12 @@ mat-card {
 
 
 .month {
-    grid-area: month;
     justify-self: start;
     max-width: 140px;
 }
 .year {
-    grid-area: year;
     justify-self: start;
     max-width: 140px;
-}
-.bank {
-    grid-area: bank;
-}
-.description {
-    grid-area: description;
-}
-.formula {
-    grid-area: formula;
 }
 
 button {
@@ -54,13 +43,12 @@ button {
 }
 
 .bank-list {
-    grid-area: list;
     flex-grow: 1;
     height: 100%;
 }
 
 .llist {
-    max-height: 300px;
+    max-height: 200px;
     overflow-y: auto;
 }
 
