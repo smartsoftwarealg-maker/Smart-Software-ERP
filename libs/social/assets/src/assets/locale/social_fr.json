@@ -1,3 +1,9 @@
 {
-    "SOCIAL_APP": "Social Security"
+    "ACTIVITIES":        "Activités",
+    "MEDICAL_TYPES":     "Types médicaux",
+    "MEDICAL_AIDS":      "Aides médicales",
+    "WORKS":             "Œuvres sociales",
+    "INSTALLMENT_COUNT": "Nombre de versements",
+    "REFERENCE_AMOUNT":  "Montant de la facture",
+    "SPONSORED_AMOUNT":  "Montant sponsorisé"
 }

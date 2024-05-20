@@ -1,3 +1,9 @@
 {
-    "SOCIAL_APP": "Social Security"
+    "ACTIVITIES":        "أنشطة",
+    "MEDICAL_TYPES":     "أنواع طبية",
+    "MEDICAL_AIDS":      "مساعدات طبية",
+    "WORKS":             "الأعمال الاجتماعية",
+    "INSTALLMENT_COUNT": "عدد الأقساط",
+    "REFERENCE_AMOUNT":  "قيمة الفاتورة",
+    "SPONSORED_AMOUNT":  "المبلغ المكفول"
 }

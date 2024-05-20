@@ -13,7 +13,7 @@
                                 </ss-date-picker>
                             </mat-form-field>
                             @if (sampleMode()) {
-                                <mat-form-field class="default-100" #sampleNo>
+                                <mat-form-field class="default-100">
                                     <mat-label translate>LTM_SAMPLE_NO</mat-label>
                                     <ss-auto-complete matInput
                                                       [model]="sampleLookup"
@@ -27,10 +27,6 @@
                                                       formControlName="lineMatterId">
                                     </ss-auto-complete>
                                 </mat-form-field>
-<!--                                <mat-form-field class="default-100">-->
-<!--                                    <mat-label translate>LTM_SAMPLE_NO</mat-label>-->
-<!--                                    <input matInput formControlName="sampleNo" type="text" min="3">-->
-<!--                                </mat-form-field>-->
                             } @else {
                                 <mat-form-field class="hour default-100">
                                     <mat-label translate>COMMON_HOURS</mat-label>

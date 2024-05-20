@@ -66,7 +66,7 @@ import {
 } from '@ss/workflow';
 import {loginGuard} from '../erp-guards';
 import { ReportRightsComponent } from '@ss/administration/reports-rights';
-import { ReportPrivilegesComponent } from 'common/report-privileges';
+import { ReportPrivilegesComponent } from '@common/report-privileges';
 
 export const mainRoutes: Routes = [
     //    // NOT USED

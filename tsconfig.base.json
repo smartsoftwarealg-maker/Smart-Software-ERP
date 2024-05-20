@@ -17,6 +17,53 @@
         "skipDefaultLibCheck": true,
         "baseUrl": ".",
         "paths": {
+            "@common/report-privileges": [
+                "libs/common/report-privileges/src/index.ts"
+            ],
+            "@customer-complaints-list": [
+                "libs/scheduled-sales/customer-complaints/src/index.ts"
+            ],
+            "@gica.careers": ["libs/gica.careers/src/index.ts"],
+            "@gica/career-evolution": [
+                "libs/gica/career-evolution/src/index.ts"
+            ],
+            "@logistics/order-anomalies": [
+                "libs/logistics/order-anomalies/src/index.ts"
+            ],
+            "@logistics/parts-reservation": [
+                "libs/logistics/parts-reservation/src/index.ts"
+            ],
+            "@scheduled-sales/customer-history": [
+                "libs/scheduled-sales/customer-history/src/index.ts"
+            ],
+            "@scheduled-sales/header": [
+                "libs/scheduled-sales/header/src/index.ts"
+            ],
+            "@scheduled-sales/main-page": [
+                "libs/scheduled-sales/main-page/src/index.ts"
+            ],
+            "@scheduled-sales/payments": [
+                "libs/scheduled-sales/payments/src/index.ts"
+            ],
+            "@scheduled-sales/products-page": [
+                "libs/scheduled-sales/products-page/src/index.ts"
+            ],
+            "@social/medical-aids-detail": [
+                "libs/social/medical-aids-detail/src/index.ts"
+            ],
+            "@social/medical-aids-list": [
+                "libs/social/medical-aids-list/src/index.ts"
+            ],
+            "@social/social-api": ["libs/social/social-api/src/index.ts"],
+            "@social/social-lookups": [
+                "libs/social/social-lookups/src/index.ts"
+            ],
+            "@social/social-works-detail": [
+                "libs/social/social-works-detail/src/index.ts"
+            ],
+            "@social/social-works-list": [
+                "libs/social/social-works-list/src/index.ts"
+            ],
             "@ss/accounting/acc-policies": [
                 "libs/accounting/acc-policies/src/index.ts"
             ],
@@ -628,38 +675,8 @@
             "@ss/web-arch/assets": ["libs/web-arch/assets/src/index.ts"],
             "@ss/web-arch/ui": ["libs/web-arch/ui/src/index.ts"],
             "@ss/workflow": ["libs/workflow/src/index.ts"],
-            "common/report-privileges": [
-                "libs/common/report-privileges/src/index.ts"
-            ],
-            "customer-complaints-list": [
-                "libs/scheduled-sales/customer-complaints/src/index.ts"
-            ],
-            "gica.careers": ["libs/gica.careers/src/index.ts"],
-            "gica/career-evolution": [
-                "libs/gica/career-evolution/src/index.ts"
-            ],
             "home.page": ["libs/scheduled-sales/home-page/src/index.ts"],
-            "logistics/order-anomalies": [
-                "libs/logistics/order-anomalies/src/index.ts"
-            ],
-            "logistics/parts-reservation": [
-                "libs/logistics/parts-reservation/src/index.ts"
-            ],
-            "scheduled-sales/customer-history": [
-                "libs/scheduled-sales/customer-history/src/index.ts"
-            ],
-            "scheduled-sales/header": [
-                "libs/scheduled-sales/header/src/index.ts"
-            ],
-            "scheduled-sales/main-page": [
-                "libs/scheduled-sales/main-page/src/index.ts"
-            ],
-            "scheduled-sales/payments": [
-                "libs/scheduled-sales/payments/src/index.ts"
-            ],
-            "scheduled-sales/products-page": [
-                "libs/scheduled-sales/products-page/src/index.ts"
-            ]
+            "@social/edo": ["libs/social/edo/src/index.ts"]
         }
     },
     "exclude": ["node_modules", "tmp"]

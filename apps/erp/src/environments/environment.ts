@@ -129,6 +129,7 @@ export const langAssets = [
     ['assets/locale/park_', 'PARK_'],
     ['assets/locale/budget_', 'BUD_'],
     ['assets/locale/costing_', 'COST_'],
+    ['assets/locale/social_', 'SOCIAL_'],
 ];
 
 export const appRoutes: Routes =  [
@@ -268,7 +269,9 @@ export const appRoutes: Routes =  [
 export const APPLICATION_LIST = [
     'ACCOUNTING', 'ADMINISTRATION', 'ASSETS', 'DASHBOARD-APP', 'FINANCE', 'HRMASTER',
     'STOCK', 'LOGISTICS', 'LOGISTICS-ADMINISTRATION', 'ORGANIZATION', 'PAYMENTS',
-    'PAYROLL', 'ATTENDANCE', 'PURCHASES', 'SALES', 'WEBARCHIVE', 'TREASURY', 'LTM', 'WORKFLOW'];
+    'PAYROLL', 'ATTENDANCE', 'PURCHASES', 'SALES', 'WEBARCHIVE', 'TREASURY', 'LTM',
+    'WORKFLOW',
+    "SOCIAL"];
 /*
  * For easier debugging in development mode, you can import the following file
  * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.

@@ -1,6 +1,8 @@
 export const environment = {
     production: true,
 };
+export const homePage: string|null = 'https://http://www.ecde.dz/';
+
 export const langAssets = [
     ['assets/locale/', ''],
     ['assets/locale/administration_', 'ADMINISTRATION_'],

@@ -113,7 +113,7 @@ import {
 import {ArchiveViewerListComponent} from '@ss/remuneration/archive-viewer';
 import {loginGuard, payrollGuard} from '../erp-guards';
 import { ReportRightsComponent } from '@ss/administration/reports-rights';
-import { ReportPrivilegesComponent } from 'common/report-privileges';
+import { ReportPrivilegesComponent } from '@common/report-privileges';
 import {
     SalaryRankDetailComponent
 } from '@ss/payroll/salary-grid';

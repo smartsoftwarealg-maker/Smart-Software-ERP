@@ -1,40 +1,42 @@
-<mat-card>
-    <mat-card-content>
-        <form *ngIf="form !== null" novalidate [formGroup]="form">
+@if (form) {
+    <mat-card>
+        <mat-card-content>
+            <form novalidate [formGroup]="form">
 
-            <mat-form-field class="default-100">
-                <mat-label translate>PAYROLL_EMPLOYEE</mat-label>
-                <ss-auto-complete matInput
-                                  [model]="employeeLookup"
-                                  formControlName="parentId">
-                </ss-auto-complete>
-                <mat-error *ngIf="form.controls['parentId'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
-            </mat-form-field>
+                <mat-form-field class="default-100">
+                    <mat-label translate>PAYROLL_EMPLOYEE</mat-label>
+                    <ss-auto-complete matInput
+                                      [model]="employeeLookup"
+                                      formControlName="parentId">
+                    </ss-auto-complete>
+                    <mat-error *ngIf="form.controls['parentId'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
+                </mat-form-field>
 
-            <mat-form-field class="default-100">
-                <mat-label translate>COMMON_SERVICE</mat-label>
-                <ss-auto-complete matInput
-                                  [model]="serviceLookup"
-                                  formControlName="service">
-                </ss-auto-complete>
-            </mat-form-field>
+                <mat-form-field class="default-100">
+                    <mat-label translate>COMMON_SERVICE</mat-label>
+                    <ss-auto-complete matInput
+                                      [model]="serviceLookup"
+                                      formControlName="service">
+                    </ss-auto-complete>
+                </mat-form-field>
 
-            <mat-form-field class="default-100">
-                <mat-label translate>ATT_SHIFT</mat-label>
-                <ss-auto-complete matInput
-                                  [model]="shiftLookup"
-                                  formControlName="shift">
-                </ss-auto-complete>
-                <mat-error *ngIf="form.controls['shift'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
-            </mat-form-field>
+                <mat-form-field class="default-100">
+                    <mat-label translate>ATT_SHIFT</mat-label>
+                    <ss-auto-complete matInput
+                                      [model]="shiftLookup"
+                                      formControlName="shift">
+                    </ss-auto-complete>
+                    <mat-error *ngIf="form.controls['shift'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
+                </mat-form-field>
 
-            <mat-form-field class="default-100">
-                <mat-label translate>COMMON_FROM</mat-label>
-                <ss-date-picker formControlName="date"></ss-date-picker>
-            </mat-form-field>
+                <mat-form-field class="default-100">
+                    <mat-label translate>COMMON_FROM</mat-label>
+                    <ss-date-picker formControlName="date"></ss-date-picker>
+                </mat-form-field>
 
-            <!--            <pre>{{form.value | json}}</pre>-->
-        </form>
+                <!--            <pre>{{form.value | json}}</pre>-->
+            </form>
 
-    </mat-card-content>
-</mat-card>
+        </mat-card-content>
+    </mat-card>
+}

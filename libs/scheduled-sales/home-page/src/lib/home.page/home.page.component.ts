@@ -12,7 +12,7 @@ import { ActivatedRoute, Router, RouterLink, RouterLinkActive, RouterOutlet } fr
 import { MatButton } from '@angular/material/button';
 import { CommonUiLangModule } from '@ss/common/ui-lang';
 import { LoginService } from '@ss/common/api-common';
-import { ScheduledSalesHeaderComponent } from 'scheduled-sales/header';
+import { ScheduledSalesHeaderComponent } from '@scheduled-sales/header';
 
 @Component({
     selector: 'ss-home.page',

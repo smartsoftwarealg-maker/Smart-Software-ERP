@@ -56,5 +56,6 @@
     "EPAYMENT":        "ePayment",
     "EXCHANGE":        "Money Exchange",
     "COSTING":         "Costing",
-    "GICACARRER":     "Career advancements"
+    "GICACARRER":      "Career advancements",
+    "SOCIAL_APP":      "Social works"
 }

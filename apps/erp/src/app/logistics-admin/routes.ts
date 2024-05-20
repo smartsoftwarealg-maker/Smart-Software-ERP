@@ -47,7 +47,7 @@ import {
 import {loginGuard} from '../erp-guards';
 import { AGENT_ARCHIVES } from '@ss/common/app-archive';
 import { ArticleDetailComponent, ArticleListComponent } from '@ss/master-data/ui-article';
-import { LogisticsOrderAnomaliesComponent } from 'logistics/order-anomalies';
+import { LogisticsOrderAnomaliesComponent } from '@logistics/order-anomalies';
 
 export const mainRoutes: Routes = [
     {
