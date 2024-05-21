@@ -195,7 +195,7 @@
     "GICA_DEGRADING":        "Abattement",
     "GRADE":                 "Point",
     "CRITERIA":              "Critères",
-    "WEIGHT":                "Poids",
+    "WEIGHT":                "Coefficient",
     "WEIGHTS":               "Coefficients",
     "DISCIPLINE":            "Discipline",
     "ABSENCE":               "Absence",
