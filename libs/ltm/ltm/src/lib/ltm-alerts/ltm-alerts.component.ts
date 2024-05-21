@@ -110,4 +110,10 @@ export class LtmAlertsComponent extends BaseEntityListComponent<LTMAbnormalTest>
         this.subscription?.unsubscribe();
         this.router.navigate(['/app/ltm/ltm-alerts']).then();
     }
+    override ngOnInit() {
+        this.addButton.visible = false;
+        this.editButton.visible = false;
+        this.deleteButton.visible = false;
+        super.ngOnInit();
+    }
 }

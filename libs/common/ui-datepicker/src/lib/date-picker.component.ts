@@ -67,7 +67,7 @@ export class DatePickerComponent implements MatFormFieldControl<Date>, DoCheck, 
     }
 
     @Output()
-    dateChange = new EventEmitter<Date>();
+        dateChange = new EventEmitter<Date>();
 
     // @Input()
     // public time: boolean = false;
@@ -117,7 +117,7 @@ export class DatePickerComponent implements MatFormFieldControl<Date>, DoCheck, 
 
     get required(): boolean {
         return this.isRequired;
-    };
+    }
 
     @Input()
     set required(b: boolean | string) {
@@ -152,7 +152,7 @@ export class DatePickerComponent implements MatFormFieldControl<Date>, DoCheck, 
     lastErrorState = false;
 
     @Input()
-    outputFormat: 'dateObject' | 'dateStr' = 'dateStr'; // todo: add 'datetime'
+        outputFormat: 'dateObject' | 'dateStr' = 'dateStr'; // todo: add 'datetime'
 
     @ViewChild('textField', { static: true }) textField: ElementRef;
 
@@ -315,8 +315,8 @@ export class DatePickerComponent implements MatFormFieldControl<Date>, DoCheck, 
         }
         if (this.outputFormat === 'dateStr') {
             return this._type == 'datetime' ?
-                                 dateTimeToYmdStr(obj):
-                                 this._type === 'time'? dateTimeToTime(obj) : dateToYmdStr(obj);
+                dateTimeToYmdStr(obj):
+                this._type === 'time'? dateTimeToTime(obj) : dateToYmdStr(obj);
         }
         if (this.outputFormat === 'dateObject') {
             return obj;

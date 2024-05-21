@@ -6,7 +6,7 @@ import { ReactiveFormsModule, UntypedFormBuilder, Validators } from "@angular/fo
 import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
 import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from "@ss/common/ui-auto-complete";
 import { CommonModule } from "@angular/common";
-import { LoginService, MaterialModule } from "@ss/common/api-common";
+import { dateTimeToYmdStr, LoginService, MaterialModule } from '@ss/common/api-common';
 import { CommonUiLangModule } from "@ss/common/ui-lang";
 import { UiPaginationModule } from "@ss/common/ui-pagination";
 import { LogisticsUiDocInfoModule } from "@ss/logistics/ui-doc-info";
@@ -66,5 +66,11 @@ export class LtmTestingAnomalyDetailComponent extends BaseEntityDetailComponent<
             matterId:  [b.matterId],
             anomalyId: [b.anomalyId]
         });
+    }
+
+    override readForm(): LTMTestingAnomaly {
+        const value = this.form.getRawValue();
+        value.date = dateTimeToYmdStr(value.date);
+        return value;
     }
 }

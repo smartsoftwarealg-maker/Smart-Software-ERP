@@ -53,7 +53,7 @@
             <ng-container matColumnDef="deduction">
                 <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_VALUE</mat-header-cell>
                 <mat-cell *matCellDef="let e">
-                    {{ e.deduction }}
+                    {{ e.deduction | number: '1.2-4'}}
                 </mat-cell>
             </ng-container>
 

@@ -79,16 +79,16 @@ export class SimpleDateAdapter extends NativeDateAdapter {
         }
         const fmt = displayFormat as string;
         switch (fmt) {
-            case 'yyyy/MM/dd':
-                return pad4(date.getFullYear()) + '/' + pad2(date.getMonth() + 1) + '/' + pad2(date.getDate());
-            case 'yyyy/MM/dd HH:mm':
-                return pad4(date.getFullYear()) + '/' + pad2(date.getMonth() + 1) + '/' + pad2(date.getDate()) + ' ' + pad2(date.getHours()) + ':' + pad2(date.getMinutes());
-            case 'LL':
-            case 'yyyy/MM/dd HH:mm:ss':
-                return pad4(date.getFullYear()) + '/' + pad2(date.getMonth() + 1) + '/' + pad2(date.getDate()) + ' ' + pad2(date.getHours()) + ':' + pad2(date.getMinutes()) + ':' + pad2(date.getSeconds());
-            default:
-                console.log('new format', fmt);
-                return '???';
+        case 'yyyy/MM/dd':
+            return pad4(date.getFullYear()) + '/' + pad2(date.getMonth() + 1) + '/' + pad2(date.getDate());
+        case 'yyyy/MM/dd HH:mm':
+            return pad4(date.getFullYear()) + '/' + pad2(date.getMonth() + 1) + '/' + pad2(date.getDate()) + ' ' + pad2(date.getHours()) + ':' + pad2(date.getMinutes());
+        case 'LL':
+        case 'yyyy/MM/dd HH:mm:ss':
+            return pad4(date.getFullYear()) + '/' + pad2(date.getMonth() + 1) + '/' + pad2(date.getDate()) + ' ' + pad2(date.getHours()) + ':' + pad2(date.getMinutes()) + ':' + pad2(date.getSeconds());
+        default:
+            console.log('new format', fmt);
+            return '???';
         }
     }
 
