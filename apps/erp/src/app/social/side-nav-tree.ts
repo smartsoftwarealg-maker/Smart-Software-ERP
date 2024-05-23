@@ -1,7 +1,7 @@
 import { SideNavNode } from '@ss/common/api-common';
 import {
     ABS_MEDICAL_AIDS_URL,
-    ABS_SOCIAL_ACTIVITIES_URL, ABS_SOCIAL_EDO_URL,
+    ABS_SOCIAL_ACTIVITIES_URL, ABS_SOCIAL_DASHBOARD_URL, ABS_SOCIAL_EDO_URL,
     ABS_SOCIAL_MEDICAL_AIDS_URL,
     ABS_SOCIAL_WORKS_URL
 } from './constants';
@@ -10,6 +10,12 @@ export const socialNavTree: SideNavNode = {
     name: 'SOCIAL_APP',
     icon: 'fa-solid fa-hands-holding-heart',
     children: [
+        {
+            name: 'COMMON_DASHBOARD',
+            icon: 'fa-solid fa-chart-pie',
+            route: ABS_SOCIAL_DASHBOARD_URL,
+            accessRights: 'SocialDashboard'
+        },
         {
             name: 'SOCIAL_ACTIVITIES',
             icon: 'fa-solid fa-star-and-crescent',

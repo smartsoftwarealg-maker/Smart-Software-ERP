@@ -9,7 +9,7 @@ import {
 } from '@social/social-lookups';
 import {
     MEDICAL_AIDS_URL,
-    SOCIAL_ACTIVITIES_URL,
+    SOCIAL_ACTIVITIES_URL, SOCIAL_DASHBOARD_URL,
     SOCIAL_EDO_URL,
     SOCIAL_MEDICAL_AIDS_URL,
     SOCIAL_WORKS_URL
@@ -19,6 +19,7 @@ import { SocialAidsListComponent } from '@social/social-works-list';
 import { MedicalAidsDetailComponent } from '@social/medical-aids-detail';
 import { MedicalAidsListComponent } from '@social/medical-aids-list';
 import { SocialEdoComponent } from '@social/edo';
+import { SocialDashboardComponent } from '@social/social-dashboard';
 
 export const socialRoutes: Routes = [
     {
@@ -73,6 +74,11 @@ export const socialRoutes: Routes = [
     {
         path: SOCIAL_EDO_URL,
         component: SocialEdoComponent,
+        canDeactivate: [CanDeactivateService]
+    },
+    {
+        path: SOCIAL_DASHBOARD_URL,
+        component: SocialDashboardComponent,
         canDeactivate: [CanDeactivateService]
     },
     {

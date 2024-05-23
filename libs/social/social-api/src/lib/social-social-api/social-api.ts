@@ -10,21 +10,42 @@ export const MEDICAL_AIDS_URL = '/social/medical_aids';
 
 // Classes
 export interface SocialAid {
-        id: number;
-        centerId: number;
-        aidType: number;
-        date: Date;
-        number: number;
-        personId: number;
-        amount: number;
-        referenceAmount?: number;
-        medicalAidType?: number;
-        installmentCount: number;
-        parentId: number;
-        firstName?: string;
-        lastName?: string;
-        description?: string;
-        typeDescription?: string;
-        medicalTypeDescription?: string;
-        rate?: number;
+    id: number;
+    centerId: number;
+    aidType: number;
+    date: Date;
+    number: number;
+    personId: number;
+    amount: number;
+    referenceAmount?: number;
+    medicalAidType?: number;
+    installmentCount: number;
+    parentId: number;
+    firstName?: string;
+    lastName?: string;
+    description?: string;
+    typeDescription?: string;
+    medicalTypeDescription?: string;
+    rate?: number;
 }
+
+export interface SActivity {
+    count: number;
+    description: string;
+}
+
+export interface SBalance {
+    bank: string;
+    balance: number;
+}
+
+export interface Dashboard {
+    id: number;
+    employeeCount: number;
+    femaleCount: number;
+    counts: SActivity[],
+    amounts: SActivity[],
+    payments: SActivity[],
+    balance: SBalance[]
+}
+

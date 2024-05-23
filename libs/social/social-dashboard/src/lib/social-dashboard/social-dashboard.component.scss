@@ -1,0 +1,22 @@
+.container__div {
+    display: flex;
+    flex-wrap: wrap;
+    width: 96%;
+    max-width: 1400px;
+    margin: 1em auto;
+    gap: 1em;
+    justify-content: space-around;
+}
+
+.chart__div {
+    flex: 1 1 30%;
+}
+
+.chart {
+    height: 100%;
+}
+mat-card {
+    padding: 8px;
+    border-radius: 1.4em;
+}
+
