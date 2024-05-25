@@ -49,3 +49,10 @@ export interface Dashboard {
     balance: SBalance[]
 }
 
+export interface Reimbursement {
+    id: number;
+    amount?: number;
+    parentId: number;
+    reference?: string;
+    date?: Date;
+}

@@ -4,3 +4,4 @@ export * from './lib/services/medical-aid-types.service';
 export * from './lib/services/social.activity.service';
 export * from './lib/services/social-edo.service';
 export * from './lib/services/social-dashboard.service';
+export * from './lib/services/reimbursement.service';
