@@ -28,7 +28,7 @@ export class AppComponent implements OnInit {
     }
     ngOnInit() {
         this.loginSrv.customerLogin = LoginType.CUSTOMER;
-        this.shellSrv.setApplicationTitle('Customer Space 1.1');
+        this.shellSrv.setApplicationTitle('Customer Space 1.2');
         this.httpSrv
             .init()
             .pipe(switchMap(_ => this.loginSrv.loadContext()),

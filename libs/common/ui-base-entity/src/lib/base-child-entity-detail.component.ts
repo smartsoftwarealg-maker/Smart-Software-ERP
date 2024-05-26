@@ -1,10 +1,10 @@
 import { Directive, inject } from "@angular/core";
 import { BaseEntityService } from "@ss/common/api-base-entity";
 import { ShellService, SnackBarService } from "@ss/common/ui-shell";
-import { ActivatedRoute, Router } from "@angular/router";
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
 import { FormBuilder, UntypedFormGroup, Validators } from "@angular/forms";
-import { of, switchMap, tap } from "rxjs";
+import { Observable, of, switchMap, tap } from 'rxjs';
 import { LoginService, Right } from "@ss/common/api-common";
 
 @Directive()
@@ -28,12 +28,15 @@ export abstract class BaseChildEntityDetailComponent<T extends { id: number, par
 
     abstract setupForm(e: T): UntypedFormGroup;
 
+    idParamMap(): Observable<ParamMap> {
+        return this.route.parent.parent.paramMap;
+    }
     ngOnInit() {
         this.route
             .paramMap
             .pipe(
                 tap(map => this.id = +map.get('id') || 0),
-                switchMap(() => this.route.parent.parent.paramMap),
+                switchMap(() => this.idParamMap()),
                 switchMap(map => {
                     this.EMPTY_RECORD.parentId = +map.get('id') || 0;
                     this.entitySrv.setParentId(this.EMPTY_RECORD.parentId);

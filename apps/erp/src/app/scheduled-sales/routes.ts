@@ -36,7 +36,12 @@ import {
 } from '@ss/common/ui-lookup';
 import {SupplierTrucksDetailComponent, SupplierTrucksListComponent} from '@ss/scheduled-sales/supplier-trucks';
 import {loginGuard} from '../erp-guards';
-import { AgentDetailComponent, AgentListComponent, AppArchiveDetailComponent } from '@ss/logistics/ui-agent';
+import {
+    AgentDetailComponent,
+    AgentListComponent,
+    AppArchiveDetailComponent,
+    AppArchiveListComponent
+} from '@ss/logistics/ui-agent';
 import { AGENT_ARCHIVES, AppArchiveMainComponent } from '@ss/common/app-archive';
 import { PayMethodDetailComponent, PayMethodListComponent } from '@ss/logistics/ui-pay-method';
 
@@ -59,10 +64,11 @@ export const schedSalesRoutes: Routes = [
                         canDeactivate: [CanDeactivateService],
                         data: {sales: true},
                         children: [
+                            { path: '', redirectTo: 'archive', pathMatch: 'full'},
                             {
                                 path: 'archive',
                                 children: [
-                                    {path: '', component: AppArchiveMainComponent, pathMatch: 'full', data: { appId: AGENT_ARCHIVES } },
+                                    {path: '', component: AppArchiveListComponent, pathMatch: 'full', data: { appId: AGENT_ARCHIVES } },
                                     {path: ':id', component: AppArchiveDetailComponent, data: { appId: AGENT_ARCHIVES }},
                                 ]
                             }

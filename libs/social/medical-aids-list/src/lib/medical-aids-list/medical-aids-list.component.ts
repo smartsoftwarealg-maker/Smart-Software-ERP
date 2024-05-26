@@ -35,7 +35,7 @@ export class MedicalAidsListComponent extends BaseEntityListComponent<SocialAid>
         'lastName',
         'amount',
         'installmentCount'
-    ]
+    ];
     constructor(
         public override entitySrv: MedicalAidService,
         public override shellSrv: ShellService,

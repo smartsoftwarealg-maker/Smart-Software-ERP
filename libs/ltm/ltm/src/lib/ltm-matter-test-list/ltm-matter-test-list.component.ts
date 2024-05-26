@@ -46,7 +46,7 @@ export class LtmMatterTestListComponent implements OnInit {
 
     selected: LTMMatterTest = null;
     data: LTMMatterTest[] = [];
-    pagination = PaginationModel.newInstance({ pageSize: 5, page: 1, elementCount: 0});
+    pagination = PaginationModel.newInstance({ pageSize: 10, page: 1, elementCount: 0});
 
     readonly isEditable = this.matterSrv.editable;
     readonly searchText = new FormControl<string>('');

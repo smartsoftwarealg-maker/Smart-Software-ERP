@@ -5,15 +5,29 @@ import {KeepOnToolbar, ShellService, SnackBarService, ToolbarButton} from '@ss/c
 import {ActivatedRoute, Router} from '@angular/router';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
-import {PaginatorPersistenceService} from '@ss/common/api-common';
+import { MaterialModule, PaginatorPersistenceService } from '@ss/common/api-common';
 import {PayrollAmendmentService} from '../payroll-amendment.service';
 import {of, switchMap, tap} from 'rxjs';
 import {PayrollMonthService} from '@ss/remuneration/payroll-month';
+import { CommonModule } from '@angular/common';
+import { UiPaginationModule } from '@ss/common/ui-pagination';
+import { CommonUiLangModule } from '@ss/common/ui-lang';
+import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
+import { RemunerationPaymonthEditorModule } from '@ss/remuneration/paymonth-editor';
 
 @Component({
   selector: 'ss-payroll-amendment-list',
   templateUrl: './payroll-amendment-list.component.html',
-  styleUrls: ['./payroll-amendment-list.component.scss']
+  styleUrls: ['./payroll-amendment-list.component.scss'],
+    standalone: true,
+    imports: [
+        CommonModule,
+        MaterialModule,
+        UiPaginationModule,
+        CommonUiLangModule,
+        CommonUiAutoCompleteModule,
+        RemunerationPaymonthEditorModule
+    ]
 })
 export class PayrollAmendmentListComponent extends BaseEntityListComponent<Amendment> implements OnInit {
     private deleteAllButton: ToolbarButton = {

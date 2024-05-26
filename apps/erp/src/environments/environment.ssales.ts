@@ -5,7 +5,7 @@ import {CanActivateService, INDEX_PAGE_URL} from '../../../../libs/common/api-co
 import {MainPageComponent} from '../../../../libs/common/ui-main-page/src';
 import {
     ADMINISTRATION_APP_URL,
-    DASHBOARD_APP_URL,
+    DASHBOARD_APP_URL, LOGISTICS_APP_URL,
     ORGANIZATIONS_APP_URL,
     SCHEDULED_SALES_APP_URL
 } from '../app/common';
@@ -25,6 +25,7 @@ export const langAssets = [
     ['assets/locale/', ''],
     ['assets/locale/administration_', 'ADMINISTRATION_'],
     ['assets/locale/sch_', 'SCH_'],
+    ['assets/locale/logistics_', 'LOGISTICS_'],
     ['assets/locale/bl_', 'BL_'],
     ['assets/locale/common_', 'COMMON_'],
 ];
@@ -55,10 +56,10 @@ export const appRoutes: Routes =  [
     //     path: FINANCE_APP_URL,
     //     loadChildren: () => import('../app/finance/finance.module').then(m => m.FinanceModule)
     // },
-    // {
-    //     path: LOGISTICS_APP_URL,
-    //     loadChildren: () => import('../app/logistics-admin/logistics-admin.module').then(m => m.LogisticsAdminModule)
-    // },
+    {
+        path: LOGISTICS_APP_URL,
+        loadChildren: () => import('../app/logistics-admin/logistics-admin.module').then(m => m.LogisticsAdminModule)
+    },
     { path: '', redirectTo: INDEX_PAGE_URL, pathMatch: 'full' },
     { path: '**', redirectTo: INDEX_PAGE_URL, pathMatch: 'full' }
 ];

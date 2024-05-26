@@ -5,5 +5,10 @@
     "WORKS":             "الأعمال الاجتماعية",
     "INSTALLMENT_COUNT": "عدد الأقساط",
     "REFERENCE_AMOUNT":  "قيمة الفاتورة",
-    "SPONSORED_AMOUNT":  "المبلغ المكفول"
+    "SPONSORED_AMOUNT":  "المبلغ المكفول",
+    "REIMBURSEMENTS":    "السداد",
+    "EMPLOYEE_COUNT":    "عدد الموظفين",
+    "MALE_COUNT":       "عدد الذكور",
+    "FEMALE_COUNT":      "عدد الإناث",
+    "ACTIVITY_COUNT":    "عدد الأنشطة"
 }

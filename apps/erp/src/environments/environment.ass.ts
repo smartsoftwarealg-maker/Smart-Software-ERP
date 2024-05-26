@@ -15,13 +15,18 @@ import {
     STOCK_APP_URL,
     CONTRACTS_APP_URL,
     WORK_FLOW_APP_URL,
-    SERVICE_SALES, PURCHASES_APP_URL
-} from "../app/common";
+    SERVICE_SALES, PURCHASES_APP_URL, PAYROLL_APP_URL, HR_APP_URL, ACCOUNTING_APP_URL, TREASURY_APP_URL
+} from '../app/common';
 import {logisticsAdminNavTree} from '../app/logistics-admin/side-nav-tree';
 import {workflowNavTree} from '../app/workflow/side-nav-tree';
 import { ssalesNavTree } from '../app/service-sales/side-nav-tree';
 import { stockNavTree } from '../app/stock/side-nav-tree';
 import { purchasesNavTree } from '../app/purchases/side-nav-tree';
+import { socialNavTree } from '../app/social/side-nav-tree';
+import { accountingNavTree } from '../app/accounting/side-nav-tree';
+import { hrLookupNavTree } from '../app/hr-lookups/side-nav-tree';
+import { hrNavTree } from '../app/hr/side-nav-tree';
+import { payrollNavTree } from '../app/payroll/side-nav-tree';
 
 export const environment = {
     production: true,
@@ -33,10 +38,15 @@ export const navBar = [
     purchasesNavTree,
     stockNavTree,
     contractsNavTree,
+    socialNavTree,
     ssalesNavTree,
     financeNavTree,
+    hrLookupNavTree,
+    hrNavTree,
+    payrollNavTree,
+    accountingNavTree,
     dashboardNavTree,
-    workflowNavTree
+    workflowNavTree,
 ];
 
 export const langAssets = [
@@ -101,6 +111,22 @@ export const appRoutes: Routes =  [
     {
         path: CONTRACTS_APP_URL,
         loadChildren: () => import('../app/contracts/contracts.module').then(m => m.ContractsModule)
+    },
+    {
+        path: PAYROLL_APP_URL,
+        loadChildren: () => import('../app/payroll/payroll.module').then(m => m.PayrollModule)
+    },
+    {
+        path: HR_APP_URL,
+        loadChildren: () => import('../app/hr/hr.module').then(m => m.HRModule)
+    },
+    {
+        path: ACCOUNTING_APP_URL,
+        loadChildren: () => import('../app/accounting/accounting.module').then(m => m.AccountingModule)
+    },
+    {
+        path: TREASURY_APP_URL,
+        loadChildren: () => import('../app/treasury/treasury.module').then(m => m.TreasuryModule)
     },
     { path: '', redirectTo: INDEX_PAGE_URL, pathMatch: 'full' },
     { path: '**', redirectTo: INDEX_PAGE_URL, pathMatch: 'full' }

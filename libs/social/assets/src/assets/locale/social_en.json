@@ -5,5 +5,10 @@
     "WORKS":             "Social works",
     "INSTALLMENT_COUNT": "Installment count",
     "REFERENCE_AMOUNT":  "Invoice amount",
-    "SPONSORED_AMOUNT":  "Sponsored amount"
+    "SPONSORED_AMOUNT":  "Sponsored amount",
+    "REIMBURSEMENTS":    "Reimbursements",
+    "EMPLOYEE_COUNT":    "Employee count",
+    "MALE_COUNT":       "Male count",
+    "FEMALE_COUNT":      "Female count",
+    "ACTIVITY_COUNT":    "Activity count"
 }

@@ -48,6 +48,7 @@
             "@scheduled-sales/products-page": [
                 "libs/scheduled-sales/products-page/src/index.ts"
             ],
+            "@social/edo": ["libs/social/edo/src/index.ts"],
             "@social/medical-aids-detail": [
                 "libs/social/medical-aids-detail/src/index.ts"
             ],
@@ -55,6 +56,9 @@
                 "libs/social/medical-aids-list/src/index.ts"
             ],
             "@social/social-api": ["libs/social/social-api/src/index.ts"],
+            "@social/social-dashboard": [
+                "libs/social/social-dashboard/src/index.ts"
+            ],
             "@social/social-lookups": [
                 "libs/social/social-lookups/src/index.ts"
             ],
@@ -676,7 +680,7 @@
             "@ss/web-arch/ui": ["libs/web-arch/ui/src/index.ts"],
             "@ss/workflow": ["libs/workflow/src/index.ts"],
             "home.page": ["libs/scheduled-sales/home-page/src/index.ts"],
-            "@social/edo": ["libs/social/edo/src/index.ts"]
+            "social/reimbursements": ["libs/social/reimbursements/src/index.ts"]
         }
     },
     "exclude": ["node_modules", "tmp"]

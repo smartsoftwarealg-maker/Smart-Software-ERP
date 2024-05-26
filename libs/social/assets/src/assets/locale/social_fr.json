@@ -5,5 +5,10 @@
     "WORKS":             "Œuvres sociales",
     "INSTALLMENT_COUNT": "Nombre de versements",
     "REFERENCE_AMOUNT":  "Montant de la facture",
-    "SPONSORED_AMOUNT":  "Montant sponsorisé"
+    "SPONSORED_AMOUNT":  "Montant sponsorisé",
+    "REIMBURSEMENTS":    "Remboursements",
+    "EMPLOYEE_COUNT":    "Nombre d'employés",
+    "MALE_COUNT":       "Comte masculin",
+    "FEMALE_COUNT":      "Compte féminin",
+    "ACTIVITY_COUNT":    "Nombre d'activités"
 }
