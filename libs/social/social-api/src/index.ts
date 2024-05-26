@@ -5,3 +5,4 @@ export * from './lib/services/social.activity.service';
 export * from './lib/services/social-edo.service';
 export * from './lib/services/social-dashboard.service';
 export * from './lib/services/reimbursement.service';
+export * from './lib/services/employee-aid.service';

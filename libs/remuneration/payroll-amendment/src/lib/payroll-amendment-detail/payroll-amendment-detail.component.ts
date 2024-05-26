@@ -1,26 +1,41 @@
 import { Component, inject } from '@angular/core';
-import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
-import {Amendment} from '../payroll-amendment.class';
-import {ElementsInfoService} from '@ss/remuneration/elementsinfo';
-import {ShellService, SnackBarService} from '@ss/common/ui-shell';
-import {ActivatedRoute} from '@angular/router';
-import {UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
-import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import {PayrollAmendmentService} from '../payroll-amendment.service';
-import {HttpService, LoginService} from '@ss/common/api-common';
-import {ElementInfoLookupModel} from '@ss/remuneration/element-types';
-import {PayrollUtil} from '@ss/payroll-common';
+import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
+import { Amendment } from '../payroll-amendment.class';
+import { ElementsInfoService } from '@ss/remuneration/elementsinfo';
+import { ShellService, SnackBarService } from '@ss/common/ui-shell';
+import { ActivatedRoute } from '@angular/router';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
+import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
+import { PayrollAmendmentService } from '../payroll-amendment.service';
+import { HttpService, LoginService, MaterialModule } from '@ss/common/api-common';
+import { ElementInfoLookupModel } from '@ss/remuneration/element-types';
+import { PayrollUtil } from '@ss/payroll-common';
 import { EmployeeService, PersonAutocompleteClass } from '@ss/employee-services/employee-services';
+import { CommonModule } from '@angular/common';
+import { UiPaginationModule } from '@ss/common/ui-pagination';
+import { CommonUiLangModule } from '@ss/common/ui-lang';
+import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
+import { RemunerationPaymonthEditorModule } from '@ss/remuneration/paymonth-editor';
 
 @Component({
-  selector: 'ss-payroll-amendment-detail',
-  templateUrl: './payroll-amendment-detail.component.html',
-  styleUrls: ['./payroll-amendment-detail.component.scss']
+    selector: 'ss-payroll-amendment-detail',
+    templateUrl: './payroll-amendment-detail.component.html',
+    styleUrls: ['./payroll-amendment-detail.component.scss'],
+    standalone: true,
+    imports: [
+        CommonModule,
+        MaterialModule,
+        UiPaginationModule,
+        CommonUiLangModule,
+        CommonUiAutoCompleteModule,
+        RemunerationPaymonthEditorModule
+    ]
+
 })
 export class PayrollAmendmentDetailComponent extends BaseEntityDetailComponent<Amendment> {
-    private httpSrv  = inject(HttpService);
-    private employeeSrv  = inject(EmployeeService);
-    private loginSrv  = inject(LoginService);
+    private httpSrv = inject(HttpService);
+    private employeeSrv = inject(EmployeeService);
+    private loginSrv = inject(LoginService);
 
     elementLookup = new ElementInfoLookupModel(new ElementsInfoService(this.httpSrv));
     employeeLookup = new PersonAutocompleteClass(this.employeeSrv);
@@ -48,8 +63,8 @@ export class PayrollAmendmentDetailComponent extends BaseEntityDetailComponent<A
             elementId: [e.elementId, Validators.required],
             new_value: [e.new_value, Validators.required],
             percentage: [e.percentage || false],
-            lastName: [{value: e.lastName, disabled: true}],
-            firstName: [{value: e.firstName, disabled: true}]
+            lastName: [{ value: e.lastName, disabled: true }],
+            firstName: [{ value: e.firstName, disabled: true }]
         });
     }
 

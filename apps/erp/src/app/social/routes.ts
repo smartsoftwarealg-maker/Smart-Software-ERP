@@ -11,7 +11,7 @@ import {
     MEDICAL_AIDS_URL,
     SOCIAL_ACTIVITIES_URL, SOCIAL_DASHBOARD_URL,
     SOCIAL_EDO_URL,
-    SOCIAL_MEDICAL_AIDS_URL,
+    SOCIAL_MEDICAL_AIDS_URL, SOCIAL_REIMBURSEMENT_URL,
     SOCIAL_WORKS_URL
 } from './constants';
 import { SocialWorksDetailComponent } from '@social/social-works-detail';
@@ -20,6 +20,11 @@ import { MedicalAidsDetailComponent } from '@social/medical-aids-detail';
 import { MedicalAidsListComponent } from '@social/medical-aids-list';
 import { SocialEdoComponent } from '@social/edo';
 import { SocialDashboardComponent } from '@social/social-dashboard';
+import {
+    SocialReimbursementsComponent,
+    SocialReimbursementsDetailComponent,
+    SocialReimbursementsListComponent
+} from 'social/reimbursements';
 
 export const socialRoutes: Routes = [
     {
@@ -80,6 +85,15 @@ export const socialRoutes: Routes = [
         path: SOCIAL_DASHBOARD_URL,
         component: SocialDashboardComponent,
         canDeactivate: [CanDeactivateService]
+    },
+    {
+        path: SOCIAL_REIMBURSEMENT_URL,
+        component: SocialReimbursementsComponent,
+        canDeactivate: [CanDeactivateService],
+        children: [
+            { path: '', component: SocialReimbursementsListComponent},
+            { path: ':id', component: SocialReimbursementsDetailComponent}
+        ]
     },
     {
         path: MEDICAL_AIDS_URL,

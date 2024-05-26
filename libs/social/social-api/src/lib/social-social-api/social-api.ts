@@ -1,12 +1,16 @@
 export const SOCIAL_WORKS_TYPE = 1;
 export const MEDICAL_AIDS_TYPE = 2;
+export const REIMBURSEMENT = 'Reimbursement';
 
 //URLs
 export const TYPES_URL = '/social/types';
 export const AIDS_URL = '/aids';
+export const EMPLOYEE_URL = '/social/employees';
 export const SOCIAL_AIDS_URL = '/social/aids';
 export const SOCIAL_ACTIVITIES_URL = '/social/social_activities';
+export const ACTIVITIES_URL = '/social/activities';
 export const MEDICAL_AIDS_URL = '/social/medical_aids';
+export const REIMBURSEMENTS_URL = '/reimbursements';
 
 // Classes
 export interface SocialAid {

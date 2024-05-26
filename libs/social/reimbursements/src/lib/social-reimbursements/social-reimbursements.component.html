@@ -1,0 +1,81 @@
+<div class="container__div">
+    <div class="selection__div">
+        <mat-card>
+            <form novalidate [formGroup]="form">
+
+                <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>PAYROLL_EMPLOYEE</mat-label>
+                    <ss-auto-complete
+                        [required]="true"
+                        [model]="employeeLookup"
+                        formControlName="employee">
+                    </ss-auto-complete>
+                </mat-form-field>
+
+                <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>COMMON_DATE</mat-label>
+                    <ss-date-picker [required]=true
+                                    formControlName="date"
+                                    [type]="'date'">
+                    </ss-date-picker>
+                </mat-form-field>
+
+            </form>
+        </mat-card>
+
+        <div class="table_div">
+            <mat-table mat-table [dataSource]="data$()|async">
+
+                <ng-container matColumnDef="number">
+                    <mat-header-cell *matHeaderCellDef translate>COMMON_NUMBER</mat-header-cell>
+                    <mat-cell *matCellDef="let e">
+                        {{ e.number }}
+                    </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="typeDescription">
+                    <mat-header-cell *matHeaderCellDef translate>COMMON_TYPE</mat-header-cell>
+                    <mat-cell *matCellDef="let e">
+                        {{ e.typeDescription }}
+                    </mat-cell>
+                </ng-container>
+
+
+                <ng-container matColumnDef="amount">
+                    <mat-header-cell *matHeaderCellDef translate>COMMON_AMOUNT</mat-header-cell>
+                    <mat-cell *matCellDef="let e">
+                        {{ e.amount | number: '1.0-2' }}
+                    </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="installmentCount">
+                    <mat-header-cell *matHeaderCellDef translate>SOCIAL_INSTALLMENT_COUNT</mat-header-cell>
+                    <mat-cell *matCellDef="let e">
+                        {{ e.installmentCount }}
+                    </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="date">
+                    <mat-header-cell *matHeaderCellDef translate>COMMON_DATE</mat-header-cell>
+                    <mat-cell *matCellDef="let e">
+                        {{ e.date | date: 'dd/MM/yyyy' }}
+                    </mat-cell>
+                </ng-container>
+
+
+                <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+                <mat-row class="selectable" [class.selected]="row.id === parentId()" (click)="select(row.id)"
+                         *matRowDef="let row; columns: displayedColumns;"></mat-row>
+            </mat-table>
+        </div>
+
+        <div class="container b-b-background">
+            <ss-pagination [paginationModel]="pagination"></ss-pagination>
+        </div>
+    </div>
+    @if (parentId() > 0) {
+        <div class="content__div">
+            <router-outlet />
+        </div>
+    }
+</div>

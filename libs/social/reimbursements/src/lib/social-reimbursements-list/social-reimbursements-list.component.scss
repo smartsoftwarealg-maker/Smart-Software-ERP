@@ -1,0 +1,30 @@
+.button__div {
+    display: flex;
+    gap: 1em;
+    justify-content: flex-end;
+    max-width: 1200px;
+    padding: 8px;
+}
+
+.size {
+    width: 96%;
+}
+
+.table_div {
+    max-width: calc(100% - 60px);
+    overflow: auto;
+}
+
+.mat-column-reference {
+    flex: 1 1 150px;
+}
+
+.mat-column-date {
+    flex: 1 1 120px;
+    justify-content: center;
+}
+
+.mat-column-amount {
+    flex: 1 1 120px;
+    justify-content: flex-end;
+}

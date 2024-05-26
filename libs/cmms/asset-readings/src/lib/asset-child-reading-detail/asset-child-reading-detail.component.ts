@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from "@angular/core";
+import { Component, inject, OnInit } from '@angular/core';
 import {
     BaseChildEntityDetailComponent
 } from '@ss/common/ui-base-entity';
