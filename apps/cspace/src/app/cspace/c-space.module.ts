@@ -7,4 +7,4 @@ import { cSpaceRoutes } from './routes';
         RouterModule.forChild(cSpaceRoutes)
     ]
 })
-export class CspaceModule {}
+export class CSpaceModule {}
