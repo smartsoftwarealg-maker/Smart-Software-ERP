@@ -168,6 +168,7 @@
     "HRCOMMON": "HRMaster common",
     "PERSONS": "Personnel",
     "DASHBOARD": "Dashboard",
+    "DASHBOARD-APP": "Dashboard",
     "DASHBOARD_QUERIES": "Dashboard queries",
     "DASHBOARD_QUERY": "Dashboard query",
     "EXIT": "Exit",
@@ -334,5 +335,8 @@
     "QUERY":                      "Query",
     "COMPLAINT":                  "Complaint",
     "COMPLAINTS":                 "Complaints",
-    "ANSWER":                     "Answer"
+    "ANSWER":                     "Answer",
+    "SOCIAL":                     "Social",
+    "SCHEDULED_SALES":            "Scheduled sales",
+    "HR": "HR Management"
 }

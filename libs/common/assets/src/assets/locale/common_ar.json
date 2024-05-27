@@ -166,6 +166,7 @@
     "HRCOMMON": "الموارد البشرية المشتركة",
     "PERSONS": "الموظفون",
     "DASHBOARD": "لوحة القيادة",
+    "DASHBOARD-APP": "لوحة القيادة",
     "DASHBOARD_QUERY": "استفسا لوحة القيادة",
     "DASHBOARD_QUERIES": "استفسارات لوحة القيادة",
     "EXIT": "خروج",
@@ -333,5 +334,8 @@
     "QUERY":                      "استفسار",
     "COMPLAINT":                 "الشكوى",
     "COMPLAINTS":                 "الشكاوى",
-    "ANSWER":                     "إجابة"
+    "ANSWER":                     "إجابة",
+    "SOCIAL":                     "الاجتماعية",
+    "SCHEDULED_SALES": "المبيعات المبرمجة",
+    "HR":              "HR Management"
 }

@@ -34,7 +34,7 @@ export interface SocialAid {
 }
 
 export interface SActivity {
-    count: number;
+    value: number;
     description: string;
 }
 
@@ -49,6 +49,7 @@ export interface Dashboard {
     femaleCount: number;
     counts: SActivity[],
     amounts: SActivity[],
+    paymentCounts: SActivity[],
     payments: SActivity[],
     balance: SBalance[]
 }

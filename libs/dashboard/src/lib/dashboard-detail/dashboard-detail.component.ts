@@ -13,7 +13,7 @@ import {
     APP_HR, APP_LTM,
     APP_PAYROLL,
     APP_PURCHASE, APP_SALES,
-    APP_STOCK, APP_TREASURY,
+    APP_STOCK, APP_TREASURY, APPLICATIONS,
     getApplicationId, LoginService, MaterialModule
 } from '@ss/common/api-common';
 import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
@@ -52,16 +52,8 @@ export class DashboardDetailComponent extends BaseEntityDetailComponent<Dashboar
     centerCtrl = new FormControl<number>(0);
     private lookupsSrv =  inject(LookupsService);
     applications = this.lookupsSrv.getApplicationList();
-    APPLICATIONS: Lookup[] = [{ id: APP_DASHBOARD, description: 'DASHBOARD' },
-        { id: APP_PURCHASE,  description: 'PURCHASES' },
-        { id: APP_STOCK,     description: 'STOCK'     },
-        { id: APP_SALES,     description: 'SALES'     },
-        { id: APP_PAYROLL,   description: 'PAYROLL'   },
-        { id: APP_HR,        description: 'HR'        },
-        { id: APP_ASSET,     description: 'ASSETS'    },
-        { id: APP_TREASURY,  description: 'TREASURY'  },
-        { id: APP_LTM,       description: 'LTM'  },
-    ];
+
+    apps = APPLICATIONS;
 
     dashboardCenters: DashboardCenter[] = [];
     selectedCenter = 0;

@@ -1,12 +1,15 @@
 <div class="container_div">
     <div class="list_div">
         <mat-list role="list">
-            <mat-list-item role="listitem"
-                           class="selectable"
-                           *ngFor="let a of applications"
-                           [class.selected]="a.id === selectedApp?.id"
-                           (click)="selectApp(a)"> {{ a.description | translate }}</mat-list-item>
+            @for (a of applications; track a.id) {
+                <mat-list-item role="listitem"
+                               class="selectable"
+                               [class.selected]="a.id === selectedApp?.id"
+                               (click)="selectApp(a)"> {{ a.description | translate }}
+                </mat-list-item>
+            }
         </mat-list>
+
     </div>
 
     <div class="rights_div">

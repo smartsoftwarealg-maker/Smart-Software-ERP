@@ -15,9 +15,9 @@ import {
     APP_LTM,
     APP_PAYROLL,
     APP_PURCHASE,
-    APP_SALES,
+    APP_SALES, APP_SCHEDULED_SALES,
     APP_STOCK,
-    APP_TREASURY,
+    APP_TREASURY, APPLICATIONS,
     getApplicationId,
     LanguageService, MaterialModule,
     PaginationModel,
@@ -54,6 +54,7 @@ export class DashboardComponent extends BaseEntityListComponent<Dashboard> {
     private langSrv = inject(LanguageService);
     private chartComponent: Chart | null = null;
 
+    applications = APPLICATIONS;
     // private jsonButton: ToolbarButton = {
     //     icon:  'fa-solid fa-coffee-bean',
     //     label: 'COMMON_JSON_EXPORT',
@@ -62,16 +63,6 @@ export class DashboardComponent extends BaseEntityListComponent<Dashboard> {
     //     keepOnToolbar: KeepOnToolbar.DYNAMIC,
     //     click: () => this.json()
     // };
-    APPLICATIONS: Lookup[] = [{ id: APP_DASHBOARD, description: 'DASHBOARD' },
-        { id: APP_PURCHASE,  description: 'PURCHASES' },
-        { id: APP_STOCK,     description: 'STOCK'     },
-        { id: APP_SALES,     description: 'SALES'     },
-        { id: APP_PAYROLL,   description: 'PAYROLL'   },
-        { id: APP_HR,        description: 'HR'        },
-        { id: APP_ASSET,     description: 'ASSETS'    },
-        { id: APP_TREASURY,  description: 'TREASURY'  },
-        { id: APP_LTM,       description: 'LTM'  },
-    ];
 
     showApplications = signal(false);
     headers: string[] = ['test'];

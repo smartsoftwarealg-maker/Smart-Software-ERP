@@ -10,5 +10,7 @@
     "EMPLOYEE_COUNT":    "عدد الموظفين",
     "MALE_COUNT":       "عدد الذكور",
     "FEMALE_COUNT":      "عدد الإناث",
-    "ACTIVITY_COUNT":    "عدد الأنشطة"
+    "ACTIVITY_COUNT":    "عدد الأنشطة",
+    "PAYMENT_COUNTS":    "عدد الدفعات",
+    "ACTIVITY_AMOUNTS":  "مبالغ النشاط"
 }

@@ -10,5 +10,7 @@
     "EMPLOYEE_COUNT":    "Nombre d'employés",
     "MALE_COUNT":       "Comte masculin",
     "FEMALE_COUNT":      "Compte féminin",
-    "ACTIVITY_COUNT":    "Nombre d'activités"
+    "ACTIVITY_COUNT":    "Nombre d'activités",
+    "PAYMENT_COUNTS":    "Nombre de paiements",
+    "ACTIVITY_AMOUNTS":  "Montants d'activité"
 }

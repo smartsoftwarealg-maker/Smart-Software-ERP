@@ -10,7 +10,8 @@ import {
     ABS_SCHEDULED_SALES_AGENT_URL,
     ABS_SCHEDULED_SALES_ACTIVITY,
     ABS_SCHEDULED_SALES_VAT_URL,
-    ABS_SCHEDULED_SALES_CATEGORY
+    ABS_SCHEDULED_SALES_CATEGORY,
+    ABS_SCHEDULED_SALES_DASHBOARD_URL
 } from '../common';
 import {SideNavNode} from '@ss/common/api-common';
 
@@ -115,6 +116,12 @@ export const scheduledSalesNavTree: SideNavNode = {
             route: ABS_SCHEDULED_SALES_PARTNER_SCHEDULES,
             accessRights: 'Schedule',
             customerRights: {read: true, edit: false, delete: false, write: false}
+        },
+        {
+            name: 'COMMON_DASHBOARD',
+            icon: 'fa-solid fa-gauge-min',
+            route: ABS_SCHEDULED_SALES_DASHBOARD_URL,
+            accessRights: 'Dashboard'
         },
     ],
     accessRights: 'SCHEDULED_SALES',
