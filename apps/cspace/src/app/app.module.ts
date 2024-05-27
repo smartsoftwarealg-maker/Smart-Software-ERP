@@ -33,7 +33,7 @@ const routes: Routes = [
             },
             {
                path: CSPACE_APP_URL,
-               loadChildren: () => import('./cspace/cspace.module').then(m => m.CspaceModule)
+               loadChildren: () => import('./cspace/c-space.module').then(m => m.CSpaceModule)
             },
             { path: '', redirectTo: INDEX_PAGE_URL, pathMatch: 'full' },
             { path: '**', redirectTo: INDEX_PAGE_URL, pathMatch: 'full' }
