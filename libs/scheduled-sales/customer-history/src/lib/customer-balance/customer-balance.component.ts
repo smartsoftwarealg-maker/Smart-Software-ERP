@@ -1,6 +1,6 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
-import {ShellService, SnackBarService} from '@ss/common/ui-shell';
-import { ActivatedRoute, Router, RouterModule } from "@angular/router";
+import {ShellService} from '@ss/common/ui-shell';
+import { ActivatedRoute, RouterModule } from "@angular/router";
 import { CommonUiConfirmationDialogModule } from "@ss/common/ui-confirmation-dialog";
 import { LanguageService, LoginService, MaterialModule } from '@ss/common/api-common';
 import { CommonModule, DecimalPipe } from '@angular/common';
@@ -19,9 +19,8 @@ import { CustomerBalanceService } from '../services/customer-balance.service';
 import { ScheduleBalanceService } from '../services/schedule-balance.service';
 import { TurnoverService } from '../services/turnover.service';
 import { Turnover } from '@ss/scheduled-sales/api-scheduled-sales';
-import { map, switchMap, tap } from 'rxjs';
-import { Chart, ChartConfiguration, ChartItem, registerables } from 'chart.js';
-import { SimpleBarsChartConfig } from '../../../../../cmms/cmms-charts/src/lib/chart-api';
+import { switchMap, tap } from 'rxjs';
+import { Chart, ChartItem, registerables } from 'chart.js';
 
 @Component({
     selector: 'ss-customer-history',

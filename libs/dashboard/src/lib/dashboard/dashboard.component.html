@@ -3,9 +3,11 @@
     <mat-form-field>
         <mat-label translate>COMMON_APPLICATIONS</mat-label>
         <mat-select [formControl]="application">
-            <mat-option *ngFor="let a of APPLICATIONS" [value]="a.id">
-                {{ a.description | translate }}
-            </mat-option>
+            @for (a of applications; track a.id) {
+                <mat-option [value]="a.id">
+                    {{ a.description | translate }}
+                </mat-option>
+            }
         </mat-select>
     </mat-form-field>
     }

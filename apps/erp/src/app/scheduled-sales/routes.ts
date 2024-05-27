@@ -14,7 +14,7 @@ import {
     SS_TRUCKS_URL,
     LOGISTICS_AGENT_URL,
     LOGISTICS_VAT_URL,
-    LOGISTICS_PAY_METHOD_URL, SALES_CATEGORY_URL
+    LOGISTICS_PAY_METHOD_URL, SALES_CATEGORY_URL, DASHBOARD_URL
 } from '../common';
 import {ProjectListComponent, ProjectDetailComponent} from '@ss/scheduled-sales/projects';
 import {ArticleDetailComponent, ArticleListComponent} from '@ss/scheduled-sales/article';
@@ -44,6 +44,7 @@ import {
 } from '@ss/logistics/ui-agent';
 import { AGENT_ARCHIVES, AppArchiveMainComponent } from '@ss/common/app-archive';
 import { PayMethodDetailComponent, PayMethodListComponent } from '@ss/logistics/ui-pay-method';
+import { DashboardComponent } from '@ss/dashboard';
 
 export const schedSalesRoutes: Routes = [
     {
@@ -278,6 +279,12 @@ export const schedSalesRoutes: Routes = [
             },
             { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
         ]
+    },
+
+    {
+        path: DASHBOARD_URL,
+        component: DashboardComponent,
+        canActivate: [loginGuard],
     },
 
     {path: '', redirectTo: ABS_INDEX_URL, pathMatch: 'full'},

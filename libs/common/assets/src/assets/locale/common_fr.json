@@ -168,6 +168,7 @@
     "CUR_EXCHANGE": "Currency exchange",
     "HRCOMMON": "HRMaster common",
     "PERSONS": "Personnel",
+    "DASHBOARD-APP": "Tableau de bord",
     "DASHBOARD": "Tableau de bord",
     "DASHBOARD_QUERIES": "Requêtes du tableau de bord",
     "DASHBOARD_QUERY": "Requête du tableau de bord",
@@ -337,5 +338,8 @@
     "QUERY":                      "Requête",
     "COMPLAINT":                  "Réclamation",
     "COMPLAINTS":                 "Réclamations",
-    "ANSWER":                     "Répondre"
+    "ANSWER":                     "Répondre",
+    "SOCIAL":                     "Social",
+    "SCHEDULED_SALES": "Ventes programmées",
+    "HR": "Gestion RH"
 }

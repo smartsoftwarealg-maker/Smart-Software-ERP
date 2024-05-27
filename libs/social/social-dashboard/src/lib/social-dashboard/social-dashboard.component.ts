@@ -44,20 +44,21 @@ export class SocialDashboardComponent implements OnInit {
 
     private buildCharts(db: Dashboard) {
         this.buildEmployeeChart(db.employeeCount, db.femaleCount);
-        this.buildChart('activity-count', 2, db.counts.map(e => e.description), 'SOCIAL_ACTIVITY_COUNT', 'SOCIAL_ACTIVITY_COUNT', db.counts.map(e => e.count));
-        // this.buildChart('payment-count', 3, db.payments.map(e => e.description), 'SOCIAL_PAYMENT_COUNTS', 'COMMON_COUNT', db.payments.map(e => e.count));
-        this.buildChart('activity-amounts', 3, db.amounts.map(e => e.description), 'COMMON_AMOUNT', 'SOCIAL_WORKS', db.amounts.map(e => e.count));
+        this.buildChart('activity-counts', 2, db.counts.map(e => e.description), 'SOCIAL_ACTIVITY_COUNT', 'SOCIAL_ACTIVITY_COUNT', db.counts.map(e => e.value));
+        this.buildChart('activity-amounts', 3, db.amounts.map(e => e.description), 'SOCIAL_ACTIVITY_AMOUNTS', 'SOCIAL_WORKS', db.amounts.map(e => e.value));
+        this.buildChart('payment-counts', 5, db.paymentCounts.map(e => e.description), 'SOCIAL_PAYMENT_COUNTS', 'SOCIAL_PAYMENT_COUNTS', db.paymentCounts.map(e => e.value));
+        this.buildChart('payments', 4, db.payments.map(e => e.description), 'COMMON_PAYMENTS', 'COMMON_PAYMENTS', db.payments.map(e => e.value));
     }
 
 
     private buildEmployeeChart(totalCount: number, femaleCount: number) {
-        const ctx = <ChartItem>document.getElementById('emp-count');
+        const ctx = <ChartItem>document.getElementById('emp-counts');
 
         const data = {
             labels: [this.langSrv.translate('SOCIAL_MALE_COUNT'), this.langSrv.translate('SOCIAL_FEMALE_COUNT')],
             datasets: [
                 {
-                    label: this.langSrv.translate('COMMON_EMPLOYEE_COUNT'),
+                    label: this.langSrv.translate('SOCIAL_EMPLOYEE_COUNT'),
                     data: [totalCount - femaleCount, femaleCount, ],
                     backgroundColor: [this.COLORS[2], this.COLORS[3]],
                 }

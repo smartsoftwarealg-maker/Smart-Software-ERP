@@ -10,5 +10,7 @@
     "EMPLOYEE_COUNT":    "Employee count",
     "MALE_COUNT":       "Male count",
     "FEMALE_COUNT":      "Female count",
-    "ACTIVITY_COUNT":    "Activity count"
+    "ACTIVITY_COUNT":    "Activity count",
+    "PAYMENT_COUNTS":    "Payments count",
+    "ACTIVITY_AMOUNTS":  "Activity amounts"
 }
