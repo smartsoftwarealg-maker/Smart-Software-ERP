@@ -63,6 +63,7 @@ export class LtmTestDetailComponent extends BaseEntityDetailComponent<LTMTest> {
             description:       [b.description, Validators.required],
             descriptionAr:     [b.descriptionAr],
             variable:          [b.variable, [Validators.required, Validators.min(3), Validators.max(4)]],
+            chemicalFormula:   [b.chemicalFormula],
             formula:           [b.formula],
             showGraph:         [b.showGraph],
             showKPI:           [b.showKPI],

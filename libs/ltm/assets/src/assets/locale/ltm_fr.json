@@ -47,5 +47,6 @@
     "ALERTS":             "Alertes",
     "PICKUP_POINTS":      "Points Prélèvement",
     "PICKUP_POINT":       "Point Prélèvement",
-    "SHOW_CERTIFICATE":   "Afficher dans le certificat"
+    "SHOW_CERTIFICATE":   "Afficher dans le certificat",
+    "CHEMICAL_FORMULA":   ""
 }

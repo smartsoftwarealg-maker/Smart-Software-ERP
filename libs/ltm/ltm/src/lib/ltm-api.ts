@@ -84,6 +84,7 @@ export interface LTMTest {
     descriptionAr?: string;
     variable?: string;
     formula?: string;
+    chemicalFormula?: string;
     showGraph: boolean;
     showInCertificate: boolean;
     showKPI: boolean;
