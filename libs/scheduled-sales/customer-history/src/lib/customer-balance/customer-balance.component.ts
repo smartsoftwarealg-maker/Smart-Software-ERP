@@ -96,9 +96,9 @@ export class CustomerBalanceComponent implements OnInit {
                 switchMap(() => this.balanceSrv.balance(this.loginSrv.appCtx.agentId | 0)),
                 tap( res => {
                     const value = {
-                        "debit":  this.numberPipe.transform(res.debit, '1.2-2'),
-                        "credit": this.numberPipe.transform(res.credit, '1.2-2'),
-                        "balance": this.numberPipe.transform(res.credit - res.debit, '1.2-2')
+                        "debit":  res.debit.toLocaleString(),
+                        "credit": res.credit.toLocaleString(),
+                        "balance": (res.credit - res.debit).toLocaleString()
                     };
                     this.balanceForm.setValue(value);
                 }),
@@ -106,9 +106,9 @@ export class CustomerBalanceComponent implements OnInit {
             )
             .subscribe(res => {
                 this.scheduleForm.setValue({
-                    "missed":  this.numberPipe.transform(res.missed, '1.2-2'),
-                    "invoiced": this.numberPipe.transform(res.invoiced, '1.2-2'),
-                    "pending": this.numberPipe.transform(res.pending, '1.2-2')
+                    "missed":  res.missed.toLocaleString(),
+                    "invoiced": res.invoiced.toLocaleString(),
+                    "pending": res.pending.toLocaleString()
                 });
             });
     }

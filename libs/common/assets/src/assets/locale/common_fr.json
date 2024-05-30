@@ -340,6 +340,7 @@
     "COMPLAINTS":                 "Réclamations",
     "ANSWER":                     "Répondre",
     "SOCIAL":                     "Social",
-    "SCHEDULED_SALES": "Ventes programmées",
-    "HR": "Gestion RH"
+    "SCHEDULED_SALES":            "Ventes programmées",
+    "HR":                         "Gestion RH",
+    "GICACARRER":                 "Avencement carrière"
 }

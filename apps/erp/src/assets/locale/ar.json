@@ -1,4 +1,15 @@
 {
+    "AbsenceWeight": "المعاملات",
+    "AbsenceMotive": "دوافع الغياب",
+    "GApplication":  "طلب",
+    "GCArchive":     "أرشيف",
+    "GCConstant":    "إعدادات",
+    "GCFault":       "فوالق",
+    "GCMotive":      "الدوافع",
+    "GCReport":      "تقرير",
+    "GCScale":       "حجم",
+    "GGrade":        "وضع العلامات",
+
     "MAIN_MENU": "الواجهة الرئيسية",
     "ABOUT": "عن البرنامج",
     "PAYROLL":"المرتبات",

@@ -15,7 +15,7 @@ import {
     STOCK_APP_URL,
     CONTRACTS_APP_URL,
     WORK_FLOW_APP_URL,
-    SERVICE_SALES, PURCHASES_APP_URL, PAYROLL_APP_URL, HR_APP_URL, ACCOUNTING_APP_URL, TREASURY_APP_URL
+    SERVICE_SALES, PURCHASES_APP_URL, PAYROLL_APP_URL, HR_APP_URL, ACCOUNTING_APP_URL, TREASURY_APP_URL, SOCIAL_APP_URL
 } from '../app/common';
 import {logisticsAdminNavTree} from '../app/logistics-admin/side-nav-tree';
 import {workflowNavTree} from '../app/workflow/side-nav-tree';
@@ -27,6 +27,7 @@ import { accountingNavTree } from '../app/accounting/side-nav-tree';
 import { hrLookupNavTree } from '../app/hr-lookups/side-nav-tree';
 import { hrNavTree } from '../app/hr/side-nav-tree';
 import { payrollNavTree } from '../app/payroll/side-nav-tree';
+import { treasuryNavTree } from '../app/treasury/side-nav-tree';
 
 export const environment = {
     production: true,
@@ -45,6 +46,7 @@ export const navBar = [
     hrNavTree,
     payrollNavTree,
     accountingNavTree,
+    treasuryNavTree,
     dashboardNavTree,
     workflowNavTree,
 ];
@@ -53,12 +55,20 @@ export const langAssets = [
     ['assets/locale/', ''],
     ['assets/locale/administration_', 'ADMINISTRATION_'],
     ['assets/locale/stock_', 'STOCK_'],
+    ['assets/locale/payroll_', 'PAYROLL_'],
     ['assets/locale/common_', 'COMMON_'],
-    ['assets/locale/sales_', 'SALES_'],
+    ['assets/locale/remuneration_', 'REMUN_'],
     ['assets/locale/logistics_', 'LOGISTICS_'],
     ['assets/locale/purchases_', 'PURCHASES_'],
     ['assets/locale/bl_', 'BL_'],
+    ['assets/locale/webarch_', 'WAR_'],
+    ['assets/locale/missions_', 'MISSION_'],
+    ['assets/locale/assets_', 'ASSET_'],
+    ['assets/locale/treasury_', 'TRS_'],
     ['assets/locale/accounting_', 'ACC_'],
+    ['assets/locale/park_', 'PARK_'],
+    ['assets/locale/att_', 'ATT_'],
+    ['assets/locale/budget_', 'BUD_'],
     ['assets/locale/social_', 'SOCIAL_'],
 ];
 
@@ -128,20 +138,29 @@ export const appRoutes: Routes =  [
         path: TREASURY_APP_URL,
         loadChildren: () => import('../app/treasury/treasury.module').then(m => m.TreasuryModule)
     },
+    {
+        path: SOCIAL_APP_URL,
+        loadChildren: () => import('../app/social/social.module').then(m => m.SocialModule)
+    },
     { path: '', redirectTo: INDEX_PAGE_URL, pathMatch: 'full' },
     { path: '**', redirectTo: INDEX_PAGE_URL, pathMatch: 'full' }
 ];
 
 export const APPLICATION_LIST = [
+    'ACCOUNTING',
     'ADMINISTRATION',
+    'ASSETS',
     'DASHBOARD-APP',
     'FINANCE',
+    'HRMASTER',
+    'STOCK',
     'LOGISTICS',
     'LOGISTICS-ADMINISTRATION',
     'ORGANIZATION',
     'PAYMENTS',
-    'SALES',
-    'WEBARCHIVE',
+    'PAYROLL',
+    'PURCHASES',
+    'TREASURY',
     'WORKFLOW',
-    'PURCHASES'
+    'SOCIAL'
 ];

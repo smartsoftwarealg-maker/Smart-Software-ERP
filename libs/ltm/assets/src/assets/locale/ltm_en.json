@@ -46,5 +46,7 @@
     "INPUT":              "Data input",
     "ALERTS":             "Alerts",
     "PICKUP_POINTS":      "Pickup points",
-    "PICKUP_POINT":      "Pickup point"
+    "PICKUP_POINT":      "Pickup point",
+    "SHOW_CERTIFICATE":   "Show in certificate",
+    "CHEMICAL_FORMULA":   "Chemical formula"
 }

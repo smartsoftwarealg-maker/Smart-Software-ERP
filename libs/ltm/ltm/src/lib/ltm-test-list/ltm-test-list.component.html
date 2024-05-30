@@ -29,6 +29,13 @@
             </mat-cell>
         </ng-container>
 
+        <ng-container matColumnDef="chemicalFormula">
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>LTM_CHEMICAL_FORMULA</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.chemicalFormula}}
+            </mat-cell>
+        </ng-container>
+
         <ng-container matColumnDef="formula">
             <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_FORMULA</mat-header-cell>
             <mat-cell *matCellDef="let e">

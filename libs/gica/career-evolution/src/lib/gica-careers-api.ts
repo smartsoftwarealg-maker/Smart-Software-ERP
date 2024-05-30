@@ -90,6 +90,7 @@ export interface AbsenceWeight {
     id: number;
     elementId: number;
     weight: number;
+    maxValue: number;
     elementDescription?: string;
     cType?: number;
 }

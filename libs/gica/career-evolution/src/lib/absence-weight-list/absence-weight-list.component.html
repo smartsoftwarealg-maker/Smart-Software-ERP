@@ -11,7 +11,14 @@
         <ng-container matColumnDef="weight">
             <mat-header-cell *matHeaderCellDef mat-sort-header translate>PAYROLL_WEIGHT</mat-header-cell>
             <mat-cell *matCellDef="let e">
-                {{e.weight}}
+                {{ e.weight | number: '1.2-4' }}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="maxValue">
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_MAX</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{ e.maxValue | number: '1.2-4' }}
             </mat-cell>
         </ng-container>
 
