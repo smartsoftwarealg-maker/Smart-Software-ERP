@@ -53,6 +53,7 @@ export class AbsenceWeightDetailComponent extends BaseEntityDetailComponent<Abse
             id:         [b.id],
             elementId:  [b.elementId, Validators.required],
             weight:     [b.weight, Validators.required],
+            maxValue:   [b.maxValue, Validators.required],
             cType:      [b.cType, Validators.required],
         });
     }

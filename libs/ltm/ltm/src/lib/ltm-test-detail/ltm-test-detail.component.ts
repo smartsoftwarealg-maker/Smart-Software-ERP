@@ -59,17 +59,18 @@ export class LtmTestDetailComponent extends BaseEntityDetailComponent<LTMTest> {
     public override setupForm(b: LTMTest) {
         // Make sure to update the template if you edit the configuration here
         return this.formBuilder.group({
-            id:            [b.id],
-            description:   [b.description, Validators.required],
-            descriptionAr: [b.descriptionAr],
-            variable:      [b.variable, [Validators.required, Validators.min(3), Validators.max(4)]],
-            formula:       [b.formula],
-            showGraph:     [b.showGraph],
-            showKPI:       [b.showKPI],
-            unit:          [b.unit],
-            min:           [b.min],
-            max:           [b.max],
-            testType:      [b.testType]
+            id:                [b.id],
+            description:       [b.description, Validators.required],
+            descriptionAr:     [b.descriptionAr],
+            variable:          [b.variable, [Validators.required, Validators.min(3), Validators.max(4)]],
+            formula:           [b.formula],
+            showGraph:         [b.showGraph],
+            showKPI:           [b.showKPI],
+            showInCertificate: [b.showInCertificate || false],
+            unit:              [b.unit],
+            min:               [b.min],
+            max:               [b.max],
+            testType:          [b.testType]
         });
     }
 }

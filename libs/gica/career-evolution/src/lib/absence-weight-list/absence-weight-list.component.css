@@ -26,7 +26,8 @@
     padding-left: 8px !important;
 }
 
-.mat-column-weight {
+.mat-column-weight,
+.mat-column-maxValue {
     flex: 1 1 100px ;
     padding-right: 8px !important;
     padding-left: 8px !important;

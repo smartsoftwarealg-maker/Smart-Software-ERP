@@ -85,6 +85,7 @@ export interface LTMTest {
     variable?: string;
     formula?: string;
     showGraph: boolean;
+    showInCertificate: boolean;
     showKPI: boolean;
     testType?: number;
     unit?: number;

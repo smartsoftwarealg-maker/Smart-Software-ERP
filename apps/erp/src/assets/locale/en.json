@@ -1,4 +1,16 @@
 {
+    "AbsenceWeight": "Coefficients",
+    "AbsenceMotive": "Absence motives",
+    "GApplication":  "Application",
+    "GCArchive":     "Archive",
+    "GCConstant":    "Settings",
+    "GCFault":       "Faults",
+    "GCMotive":      "Motives",
+    "GCReport":      "Report",
+    "GCScale":       "Scale",
+    "GGrade":        "Grading",
+
+
     "MAIN_MENU": "Main Menu",
     "ABOUT": "About",
     "PAYROLL":"Payroll",

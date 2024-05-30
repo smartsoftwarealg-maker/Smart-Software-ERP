@@ -36,6 +36,7 @@ export class AbsenceWeightListComponent extends BaseEntityListComponent<AbsenceW
         'elementDescription',
         'cType',
         'weight',
+        'maxValue'
     ];
 
     constructor(
