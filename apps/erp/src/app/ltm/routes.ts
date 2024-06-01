@@ -23,7 +23,7 @@ import {
     LTM_ALERT_URL,
     LTM_EQUIPMENT_URL,
     LTM_PRODUCTS_URL,
-    LTM_PICKUP_POINTS_URL
+    LTM_PICKUP_POINTS_URL, LTM_NORM_URL
 } from '../common';
 
 import {
@@ -58,7 +58,10 @@ import {
     LtmEquipmentDetailComponent,
     LtmProductListComponent,
     LtmProductDetailComponent,
-    LtmPickupPointListComponent, LtmPickupPointDetailComponent
+    LtmPickupPointListComponent,
+    LtmPickupPointDetailComponent,
+    LtmNormListComponent,
+    LtmNormDetailComponent
 } from '@ss/ltm/ltm';
 import {loginGuard} from '../erp-guards';
 import {DashboardComponent} from '@ss/dashboard';
@@ -104,6 +107,13 @@ export const ltmRoutes: Routes = [
         children: [
             { path: LIST_URL, component: LtmSiloListComponent, canActivate: [loginGuard]},
             { path: ':id', component: LtmSiloDetailComponent, canActivate: [loginGuard] }
+        ]
+    },
+    {
+        path: LTM_NORM_URL,
+        children: [
+            { path: LIST_URL, component: LtmNormListComponent, canActivate: [loginGuard]},
+            { path: ':id', component: LtmNormDetailComponent, canActivate: [loginGuard] }
         ]
     },
     {

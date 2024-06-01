@@ -4,6 +4,7 @@ export const LTM_ABNORMAL_TESTS_URL        = '/ltm/abnormal-tests';
 export const LTM_MIXTURE_URL        = '/ltm/mixtures';
 export const LTM_ANOMALIES_URL        = '/ltm/anomalies';
 export const LTM_EQUIPMENTS_URL        = '/lookups/ltm_equipment';
+export const LTM_NORM_URL        = '/lookups/ltm_norms';
 export const LTM_PRODUCTS_URL        = '/lookups/ltm_products';
 export const LTM_PICKUP_POINTS_URL        = '/lookups/ltm_pickup_points';
 export const LTM_TESTING_ANOMALIES_URL        = '/ltm/testing-anomalies';
@@ -63,6 +64,7 @@ export interface LTMLineMatter {
     product?: number;
     equipment?: number;
     pickupPoint?: number;
+    norm?: number;
     productDescription?: string;
     pickupPointDescription?: string;
     equipmentDescriptionAr?: string;

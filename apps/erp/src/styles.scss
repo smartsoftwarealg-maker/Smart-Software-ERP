@@ -6,7 +6,7 @@
 //@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
 
 
-mat.$theme-ignore-duplication-warnings:true;
+//mat.$theme-ignore-duplication-warnings: true;
 
 body {
     box-sizing: border-box;
@@ -149,7 +149,7 @@ $ss-green: (
     .mdc-data-table__header-cell.cdk-header-cell,
     .mat-mdc-header-row.mdc-data-table__header-row {
         background-color: map-get($primary, 300);
-        color: mat.get-contrast-color-from-palette($primary, 100);
+        color: mat.m2-get-contrast-color-from-palette($primary, 100);
         font-weight: bolder;
         font-size: 0.95em;
     }
@@ -321,9 +321,11 @@ $ss-green: (
 
 }
 
-$theme-1-primary: mat.define-palette(mat.$blue-palette);
-$theme-1-accent:  mat.define-palette(mat.$pink-palette, A200, A100, A400);
-$theme-1-warn:    mat.define-palette(mat.$red-palette);
+
+
+$theme-1-primary: mat.m2-define-palette(mat.$m2-blue-palette);
+$theme-1-accent:  mat.m2-define-palette(mat.$m2-pink-palette, A200, A100, A400);
+$theme-1-warn:    mat.m2-define-palette(mat.$m2-red-palette);
 
 .theme-1-bg-p {
     background-color: map-get($theme-1-primary, default);
@@ -343,7 +345,7 @@ $theme-1-warn:    mat.define-palette(mat.$red-palette);
 
 .theme-1 {
 
-    $theme: mat.define-light-theme((
+    $theme: mat.m2-define-light-theme((
         color: (
             primary: $theme-1-primary,
             accent: $theme-1-accent,
@@ -390,9 +392,9 @@ $theme-1-warn:    mat.define-palette(mat.$red-palette);
     }
 }
 
-$theme-2-primary: mat.define-palette(mat.$indigo-palette);
-$theme-2-accent:  mat.define-palette(mat.$orange-palette, 900, 800, A700);
-$theme-2-warn:    mat.define-palette(mat.$red-palette);
+$theme-2-primary: mat.m2-define-palette(mat.$m2-indigo-palette);
+$theme-2-accent:  mat.m2-define-palette(mat.$m2-orange-palette, 900, 800, A700);
+$theme-2-warn:    mat.m2-define-palette(mat.$m2-red-palette);
 
 .theme-2-bg-p {
     background-color: map-get($theme-2-primary, default);
@@ -412,7 +414,7 @@ $theme-2-warn:    mat.define-palette(mat.$red-palette);
 
 .theme-2 {
 
-    $theme: mat.define-light-theme((
+    $theme: mat.m2-define-light-theme((
         color: (
             primary: $theme-2-primary,
             accent: $theme-2-accent,
@@ -460,9 +462,9 @@ $theme-2-warn:    mat.define-palette(mat.$red-palette);
 }
 
 
-$theme-3-primary: mat.define-palette($ss-green);
-$theme-3-accent:  mat.define-palette(mat.$lime-palette, 100, 200, 300);
-$theme-3-warn:    mat.define-palette(mat.$red-palette);
+$theme-3-primary: mat.m2-define-palette($ss-green);
+$theme-3-accent:  mat.m2-define-palette(mat.$m2-lime-palette, 100, 200, 300);
+$theme-3-warn:    mat.m2-define-palette(mat.$m2-red-palette);
 
 .theme-3-bg-p {
     background-color: map-get($theme-3-primary, default);
@@ -482,7 +484,7 @@ $theme-3-warn:    mat.define-palette(mat.$red-palette);
 
 .theme-3 {
 
-    $theme: mat.define-dark-theme((
+    $theme: mat.m2-define-dark-theme((
         color: (
             primary: $theme-3-primary,
             accent: $theme-3-accent,
@@ -530,9 +532,9 @@ $theme-3-warn:    mat.define-palette(mat.$red-palette);
 
 }
 
-$theme-4-primary: mat.define-palette(mat.$yellow-palette);
-$theme-4-accent:  mat.define-palette(mat.$orange-palette);
-$theme-4-warn:    mat.define-palette(mat.$red-palette);
+$theme-4-primary: mat.m2-define-palette(mat.$m2-yellow-palette);
+$theme-4-accent:  mat.m2-define-palette(mat.$m2-orange-palette);
+$theme-4-warn:    mat.m2-define-palette(mat.$m2-red-palette);
 
 .theme-4-bg-p {
     background-color: map-get($theme-4-primary, default);
@@ -552,7 +554,7 @@ $theme-4-warn:    mat.define-palette(mat.$red-palette);
 
 .theme-4 {
 
-    $theme: mat.define-dark-theme((
+    $theme: mat.m2-define-dark-theme((
         color: (
             primary: $theme-4-primary,
             accent: $theme-4-accent,

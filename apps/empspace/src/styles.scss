@@ -147,7 +147,7 @@ $ss-green: (
     .mdc-data-table__header-cell.cdk-header-cell,
     .mat-mdc-header-row.mdc-data-table__header-row {
         background-color: map-get($primary, 300);
-        color: mat.get-contrast-color-from-palette($primary, 100);
+        color: mat.m2-get-contrast-color-from-palette($primary, 100);
         font-weight: bolder;
         font-size: 0.95em;
     }
@@ -319,9 +319,9 @@ $ss-green: (
 
 }
 
-$theme-1-primary: mat.define-palette(mat.$blue-palette);
-$theme-1-accent:  mat.define-palette(mat.$pink-palette, A200, A100, A400);
-$theme-1-warn:    mat.define-palette(mat.$red-palette);
+$theme-1-primary: mat.m2-define-palette(mat.$m2-blue-palette);
+$theme-1-accent:  mat.m2-define-palette(mat.$m2-pink-palette, A200, A100, A400);
+$theme-1-warn:    mat.m2-define-palette(mat.$m2-red-palette);
 
 .theme-1-bg-p {
     background-color: map-get($theme-1-primary, default);
@@ -341,7 +341,7 @@ $theme-1-warn:    mat.define-palette(mat.$red-palette);
 
 .theme-1 {
 
-    $theme: mat.define-light-theme((
+    $theme: mat.m2-define-light-theme((
         color: (
             primary: $theme-1-primary,
             accent: $theme-1-accent,
@@ -354,9 +354,9 @@ $theme-1-warn:    mat.define-palette(mat.$red-palette);
     @include datepicker.theme($theme);
 
     .b-primary {
-        $reverse-theme-p: mat.define-dark-theme((
+        $reverse-theme-p: mat.m2-define-dark-theme((
             color: (
-                primary: mat.define-palette($ss-white, 500, 100, 700, 500),
+                primary: mat.m2-define-palette($ss-white, 500, 100, 700, 500),
                 accent: $theme-1-accent,
                 warn: $theme-1-warn
             )
@@ -382,10 +382,10 @@ $theme-1-warn:    mat.define-palette(mat.$red-palette);
     }
 
     .b-accent {
-        $reverse-theme-a: mat.define-dark-theme((
+        $reverse-theme-a: mat.m2-define-dark-theme((
             color: (
                 primary: $theme-1-primary,
-                accent: mat.define-palette($ss-white),
+                accent: mat.m2-define-palette($ss-white),
                 warn: $theme-1-warn
             )
         ));
@@ -398,11 +398,11 @@ $theme-1-warn:    mat.define-palette(mat.$red-palette);
     }
 
     .b-warn {
-        $reverse-theme-w: mat.define-dark-theme((
+        $reverse-theme-w: mat.m2-define-dark-theme((
             color: (
                 primary: $theme-1-primary,
                 accent: $theme-1-accent,
-                warn: mat.define-palette($ss-white)
+                warn: mat.m2-define-palette($ss-white)
             )
         ));
         $reverse-color-w: map-get($reverse-theme-w, warn);
@@ -421,9 +421,9 @@ $theme-1-warn:    mat.define-palette(mat.$red-palette);
     }
 }
 
-$theme-2-primary: mat.define-palette(mat.$indigo-palette);
-$theme-2-accent:  mat.define-palette(mat.$orange-palette, 900, 800, A700);
-$theme-2-warn:    mat.define-palette(mat.$red-palette);
+$theme-2-primary: mat.m2-define-palette(mat.$m2-indigo-palette);
+$theme-2-accent:  mat.m2-define-palette(mat.$m2-orange-palette, 900, 800, A700);
+$theme-2-warn:    mat.m2-define-palette(mat.$m2-red-palette);
 
 .theme-2-bg-p {
     background-color: map-get($theme-2-primary, default);
@@ -443,7 +443,7 @@ $theme-2-warn:    mat.define-palette(mat.$red-palette);
 
 .theme-2 {
 
-    $theme: mat.define-light-theme((
+    $theme: mat.m2-define-light-theme((
         color: (
             primary: $theme-2-primary,
             accent: $theme-2-accent,
@@ -456,9 +456,9 @@ $theme-2-warn:    mat.define-palette(mat.$red-palette);
     @include datepicker.theme($theme);
 
     .b-primary {
-        $reverse-theme-p: mat.define-dark-theme((
+        $reverse-theme-p: mat.m2-define-dark-theme((
             color: (
-                primary: mat.define-palette($ss-white),
+                primary: mat.m2-define-palette($ss-white),
                 accent: $theme-2-accent,
                 warn: $theme-2-warn
             )
@@ -485,10 +485,10 @@ $theme-2-warn:    mat.define-palette(mat.$red-palette);
 
 
     .b-accent {
-        $reverse-theme-a: mat.define-dark-theme((
+        $reverse-theme-a: mat.m2-define-dark-theme((
             color: (
                 primary: $theme-2-primary,
-                accent: mat.define-palette($ss-white),
+                accent: mat.m2-define-palette($ss-white),
                 warn: $theme-2-warn
             )
         ));
@@ -501,11 +501,11 @@ $theme-2-warn:    mat.define-palette(mat.$red-palette);
     }
 
     .b-warn {
-        $reverse-theme-w: mat.define-dark-theme((
+        $reverse-theme-w: mat.m2-define-dark-theme((
             color: (
                 primary: $theme-2-primary,
                 accent: $theme-2-accent,
-                warn: mat.define-palette($ss-white)
+                warn: mat.m2-define-palette($ss-white)
             )
         ));
         $reverse-color-w: map-get($reverse-theme-w, warn);
@@ -525,9 +525,9 @@ $theme-2-warn:    mat.define-palette(mat.$red-palette);
 }
 
 
-$theme-3-primary: mat.define-palette($ss-green);
-$theme-3-accent:  mat.define-palette(mat.$lime-palette, 100, 200, 300);
-$theme-3-warn:    mat.define-palette(mat.$red-palette);
+$theme-3-primary: mat.m2-define-palette($ss-green);
+$theme-3-accent:  mat.m2-define-palette(mat.$m2-lime-palette, 100, 200, 300);
+$theme-3-warn:    mat.m2-define-palette(mat.$m2-red-palette);
 
 .theme-3-bg-p {
     background-color: map-get($theme-3-primary, default);
@@ -547,7 +547,7 @@ $theme-3-warn:    mat.define-palette(mat.$red-palette);
 
 .theme-3 {
 
-    $theme: mat.define-dark-theme((
+    $theme: mat.m2-define-dark-theme((
         color: (
             primary: $theme-3-primary,
             accent: $theme-3-accent,
@@ -560,9 +560,9 @@ $theme-3-warn:    mat.define-palette(mat.$red-palette);
     @include datepicker.theme($theme);
 
     .b-primary {
-        $reverse-theme-p: mat.define-light-theme((
+        $reverse-theme-p: mat.m2-define-light-theme((
             color: (
-                primary: mat.define-palette($ss-black),
+                primary: mat.m2-define-palette($ss-black),
                 accent: $theme-3-accent,
                 warn: $theme-3-warn
             )
@@ -589,10 +589,10 @@ $theme-3-warn:    mat.define-palette(mat.$red-palette);
 
 
     .b-accent {
-        $reverse-theme-a: mat.define-light-theme((
+        $reverse-theme-a: mat.m2-define-light-theme((
             color: (
                 primary: $theme-3-primary,
-                accent: mat.define-palette($ss-black),
+                accent: mat.m2-define-palette($ss-black),
                 warn: $theme-3-warn
             )
         ));
@@ -605,11 +605,11 @@ $theme-3-warn:    mat.define-palette(mat.$red-palette);
     }
 
     .b-warn {
-        $reverse-theme-w: mat.define-light-theme((
+        $reverse-theme-w: mat.m2-define-light-theme((
             color: (
                 primary: $theme-3-primary,
                 accent: $theme-3-accent,
-                warn: mat.define-palette($ss-black)
+                warn: mat.m2-define-palette($ss-black)
             )
         ));
         $reverse-color-w: map-get($reverse-theme-w, warn);
@@ -628,9 +628,9 @@ $theme-3-warn:    mat.define-palette(mat.$red-palette);
 
 }
 
-$theme-4-primary: mat.define-palette(mat.$yellow-palette);
-$theme-4-accent:  mat.define-palette(mat.$orange-palette);
-$theme-4-warn:    mat.define-palette(mat.$red-palette);
+$theme-4-primary: mat.m2-define-palette(mat.$yellow-palette);
+$theme-4-accent:  mat.m2-define-palette(mat.$m2-orange-palette);
+$theme-4-warn:    mat.m2-define-palette(mat.$m2-red-palette);
 
 .theme-4-bg-p {
     background-color: map-get($theme-4-primary, default);
@@ -650,7 +650,7 @@ $theme-4-warn:    mat.define-palette(mat.$red-palette);
 
 .theme-4 {
 
-    $theme: mat.define-dark-theme((
+    $theme: mat.m2-define-dark-theme((
         color: (
             primary: $theme-4-primary,
             accent: $theme-4-accent,
@@ -663,9 +663,9 @@ $theme-4-warn:    mat.define-palette(mat.$red-palette);
     @include datepicker.theme($theme);
 
     .b-primary {
-        $reverse-theme-p: mat.define-light-theme((
+        $reverse-theme-p: mat.m2-define-light-theme((
             color: (
-                primary: mat.define-palette($ss-black),
+                primary: mat.m2-define-palette($ss-black),
                 accent: $theme-4-accent,
                 warn: $theme-4-warn
             )
@@ -692,10 +692,10 @@ $theme-4-warn:    mat.define-palette(mat.$red-palette);
 
 
     .b-accent {
-        $reverse-theme-a: mat.define-light-theme((
+        $reverse-theme-a: mat.m2-define-light-theme((
             color: (
                 primary: $theme-4-primary,
-                accent: mat.define-palette($ss-black),
+                accent: mat.m2-define-palette($ss-black),
                 warn: $theme-4-warn
             )
         ));
@@ -708,11 +708,11 @@ $theme-4-warn:    mat.define-palette(mat.$red-palette);
     }
 
     .b-warn {
-        $reverse-theme-w: mat.define-light-theme((
+        $reverse-theme-w: mat.m2-define-light-theme((
             color: (
                 primary: $theme-4-primary,
                 accent: $theme-4-accent,
-                warn: mat.define-palette($ss-black)
+                warn: mat.m2-define-palette($ss-black)
             )
         ));
         $reverse-color-w: map-get($reverse-theme-w, warn);
