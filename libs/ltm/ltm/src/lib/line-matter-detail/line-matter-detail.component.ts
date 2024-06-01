@@ -21,6 +21,7 @@ import { LtmEquipmentService } from '../services/ltm-equipment.service';
 import { LtmMatterTestService } from '../services/ltm-matter-test.service';
 import { filter, Observable } from 'rxjs';
 import { LtmPickupPointService } from '../services/ltm-pickup-point.service';
+import { LtmNormService } from '../services/ltm-norm.service';
 
 @Component({
     selector: 'ss-line-matter-detail',
@@ -51,10 +52,12 @@ export class LineMatterDetailComponent extends BaseEntityDetailComponent<LTMLine
     private productSrv = inject(LtmProductService);
     private equipmentSrv = inject(LtmEquipmentService);
     private pickupPointSrv = inject(LtmPickupPointService);
+    private normSrv = inject(LtmNormService);
 
     equipmentLookup = new DefaultAutoCompleteModel(this.equipmentSrv);
     productLookup = new DefaultAutoCompleteModel(this.productSrv);
     pickupPointLookup = new DefaultAutoCompleteModel(this.pickupPointSrv);
+    normLookup = new DefaultAutoCompleteModel(this.normSrv);
 
     matterLookup = new DefaultAutoCompleteModel(this.matterSrv);
     constructor(
@@ -71,12 +74,13 @@ export class LineMatterDetailComponent extends BaseEntityDetailComponent<LTMLine
     public override setupForm(b: LTMLineMatter) {
         this.testSrv.setParentId(b.matterId||0);
         return this.formBuilder.group({
-            id:            [b.id],
-            centerId:      [b.centerId || this.loginSrv.appCtx.center],
-            matterId:      [b.matterId],
-            product:       [b.product],
-            equipment:     [b.equipment],
-            pickupPoint:   [b.pickupPoint]
+            id:          [b.id],
+            centerId:    [b.centerId || this.loginSrv.appCtx.center],
+            matterId:    [b.matterId],
+            product:     [b.product],
+            equipment:   [b.equipment],
+            norm:        [b.norm],
+            pickupPoint: [b.pickupPoint]
         });
     }
 

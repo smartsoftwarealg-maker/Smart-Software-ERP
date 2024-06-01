@@ -43,10 +43,11 @@
     "SILO":              "الصومعة",
     "SILOS":              "الصوامع",
     "NORM":               "القاعدة",
+    "NORMS":              "المعايير",
     "INPUT":              "إدخال بيانات",
     "ALERTS":             "تنبيهات",
     "PICKUP_POINTS":      "نقاط التجميع",
     "PICKUP_POINT":       "نقطة التجميع",
     "SHOW_CERTIFICATE":   "تظهر في الشهادة",
-    "CHEMICAL_FORMULA":   "الصيغة الكميائية"
+    "CHEMICAL_FORMULA":   "الصيغة الكميائية",
 }

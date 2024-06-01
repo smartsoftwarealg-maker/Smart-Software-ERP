@@ -43,8 +43,7 @@ export class LtmSiloDetailComponent extends BaseEntityDetailComponent<Lookup> im
         public override snackBarSrv: SnackBarService,
         public override route: ActivatedRoute,
         public override formBuilder: UntypedFormBuilder,
-        public override confirmationSrv: ConfirmationDialogService,
-        private router: Router) {
+        public override confirmationSrv: ConfirmationDialogService) {
         super(entitySrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'LTM_SILOS');
     }
 

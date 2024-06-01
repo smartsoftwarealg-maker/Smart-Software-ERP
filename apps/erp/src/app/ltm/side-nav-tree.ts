@@ -7,7 +7,7 @@ import {
     ABS_LTM_DASHBOARD_URL, ABS_LTM_EQUIPMENT_URL,
     ABS_LTM_LINES_URL,
     ABS_LTM_MATTERS_URL,
-    ABS_LTM_MIXTURES_URL,
+    ABS_LTM_MIXTURES_URL, ABS_LTM_NORM_URL,
     ABS_LTM_PERIODICITIES_URL, ABS_LTM_PICKUP_POINTS_URL, ABS_LTM_PRODUCT_URL,
     ABS_LTM_REPORTS_URL,
     ABS_LTM_SAMPLE_TESTINGS_URL, ABS_LTM_SILO_URL,
@@ -26,6 +26,12 @@ export const ltmNavTree: SideNavNode = {
             icon: 'fa-solid fa-puzzle-piece-simple',
             route: ABS_LTM_UNIT_URL,
             accessRights: 'LTMMPeriod'
+        },
+        {
+            name: 'LTM_NORMS',
+            icon: 'fa-solid fa-ruler-triangle',
+            route: ABS_LTM_NORM_URL,
+            accessRights: 'Silo'
         },
         {
             name: 'LTM_SILOS',

@@ -30,6 +30,13 @@
                                   formControlName="pickupPoint">
                 </ss-auto-complete>
             </mat-form-field>
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>LTM_NORM</mat-label>
+                <ss-auto-complete matInput
+                                  [model]="normLookup"
+                                  formControlName="norm">
+                </ss-auto-complete>
+            </mat-form-field>
         </form>
     </mat-card-content>
 </mat-card>

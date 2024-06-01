@@ -33,3 +33,5 @@ export * from './lib/ltm-product-detail/ltm-product-detail.component';
 export * from './lib/ltm-product-list/ltm-product-list.component';
 export * from './lib/ltm-pickup-point-detail/ltm-pickup-point-detail.component';
 export * from './lib/ltm-pickup-point-list/ltm-pickup-point-list.component';
+export * from './lib/ltm-norm-list/ltm-norm-list.component';
+export * from './lib/ltm-norm-detail/ltm-norm-detail.component';
