@@ -14,7 +14,7 @@ import { LogisticsUiDocInfoModule } from "@ss/logistics/ui-doc-info";
 import { AppArchiveModule } from "@ss/common/app-archive";
 import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
 import { CommonUiHourPickerModule } from "@ss/common/ui-hour-picker";
-import { LtmProductService } from '../services/ltm-product.service';
+import { LtmProductLookupService } from '../services/ltm-product-lookup.service';
 import { LtmPickupPointService } from '../services/ltm-pickup-point.service';
 
 @Component({

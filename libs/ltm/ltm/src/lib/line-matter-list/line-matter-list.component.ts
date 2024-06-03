@@ -41,7 +41,6 @@ export class LineMatterListComponent extends BaseEntityListComponent<LTMLineMatt
 
     displayedColumns = [
         'description',
-        'equipmentDescription',
         'productDescription',
         'pickupPointDescription'
     ];

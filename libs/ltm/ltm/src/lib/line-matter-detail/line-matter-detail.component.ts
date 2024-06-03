@@ -16,10 +16,9 @@ import { LogisticsUiDocInfoModule } from "@ss/logistics/ui-doc-info";
 import { AppArchiveModule } from "@ss/common/app-archive";
 import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
 import { CommonUiHourPickerModule } from '@ss/common/ui-hour-picker';
-import { LtmProductService } from '../services/ltm-product.service';
-import { LtmEquipmentService } from '../services/ltm-equipment.service';
+import { LtmProductLookupService } from '../services/ltm-product-lookup.service';
 import { LtmMatterTestService } from '../services/ltm-matter-test.service';
-import { filter, Observable } from 'rxjs';
+import {filter } from 'rxjs';
 import { LtmPickupPointService } from '../services/ltm-pickup-point.service';
 import { LtmNormService } from '../services/ltm-norm.service';
 
@@ -49,12 +48,10 @@ export class LineMatterDetailComponent extends BaseEntityDetailComponent<LTMLine
 
     private loginSrv = inject(LoginService);
     private matterSrv = inject(LtmMatterService);
-    private productSrv = inject(LtmProductService);
-    private equipmentSrv = inject(LtmEquipmentService);
+    private productSrv = inject(LtmProductLookupService);
     private pickupPointSrv = inject(LtmPickupPointService);
     private normSrv = inject(LtmNormService);
 
-    equipmentLookup = new DefaultAutoCompleteModel(this.equipmentSrv);
     productLookup = new DefaultAutoCompleteModel(this.productSrv);
     pickupPointLookup = new DefaultAutoCompleteModel(this.pickupPointSrv);
     normLookup = new DefaultAutoCompleteModel(this.normSrv);
@@ -78,7 +75,6 @@ export class LineMatterDetailComponent extends BaseEntityDetailComponent<LTMLine
             centerId:    [b.centerId || this.loginSrv.appCtx.center],
             matterId:    [b.matterId],
             product:     [b.product],
-            equipment:   [b.equipment],
             norm:        [b.norm],
             pickupPoint: [b.pickupPoint]
         });

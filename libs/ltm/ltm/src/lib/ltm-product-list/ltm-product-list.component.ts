@@ -14,12 +14,11 @@ import { AppArchiveModule } from "@ss/common/app-archive";
 import { CommonUiAutoCompleteModule } from "@ss/common/ui-auto-complete";
 import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
 import { CommonUiHourPickerModule } from "@ss/common/ui-hour-picker";
-import { Lookup } from "@ss/common/api-lookup";
-import { LtmAnomalyService } from "../services/ltm-anomaly.service";
-import { LtmProductService } from '../services/ltm-product.service';
+import { LTMProduct } from '../ltm-api';
+import { LtmProductService } from '@ss/ltm/ltm';
 
 @Component({
-    selector: 'ss-ltm-product-list',
+    selector: 'ss-ltm-product-lookup-list',
     templateUrl: './ltm-product-list.component.html',
     styleUrls: ['./ltm-product-list.component.scss'],
     standalone: true,
@@ -38,8 +37,8 @@ import { LtmProductService } from '../services/ltm-product.service';
         CommonUiHourPickerModule
     ],
 })
-export class LtmProductListComponent extends BaseEntityListComponent<Lookup> {
-    displayedColumns = ['description'];
+export class LtmProductListComponent extends BaseEntityListComponent<LTMProduct> {
+    displayedColumns = ['code', 'description'];
 
     constructor(
         public override entitySrv: LtmProductService,

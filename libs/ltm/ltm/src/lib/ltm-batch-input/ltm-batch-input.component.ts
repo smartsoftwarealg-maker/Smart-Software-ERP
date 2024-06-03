@@ -31,6 +31,7 @@ import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
 import { LTMSiloService } from '../services/ltm-silo.service';
 import { LtmMatterService } from '../services/ltm-matter.service';
 import { LtmSampleLookupService } from '../services/ltm-sample-lookup.service';
+import { LtmEquipmentService } from '../services/ltm-equipment.service';
 
 function sampleNoValidatorFn(sampleMode: boolean): ValidatorFn {
     return (control: AbstractControl): ValidationErrors | null => {
@@ -61,7 +62,8 @@ function sampleNoValidatorFn(sampleMode: boolean): ValidatorFn {
 export class LtmBatchInputComponent implements OnInit, OnDestroy {
     private onRefresh = signal(false);
     private sampleLookupSrv = inject(LtmSampleLookupService);
-    private soloSrv = inject(LTMSiloService);
+    private siloSrv = inject(LTMSiloService);
+    private equipmentSrv = inject(LtmEquipmentService);
     private entitySrv = inject(LtmBatchService);
     private snackBarSrv = inject(SnackBarService);
     private route = inject(ActivatedRoute);
@@ -80,10 +82,11 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
     private hour = viewChild<ElementRef>('hour');
 
     periodLookup = new DefaultAutoCompleteModel(this.periodSrv);
-    siloLookup = new DefaultAutoCompleteModel(this.soloSrv);
+    siloLookup = new DefaultAutoCompleteModel(this.siloSrv);
     lineMatterLookup = new DefaultAutoCompleteModel(this.lineMatterSrv);
     matterLookup = new DefaultAutoCompleteModel(this.matterSrv);
     sampleLookup = new DefaultAutoCompleteModel(this.sampleLookupSrv, 'description', 'description');
+    equipmentLookup = new DefaultAutoCompleteModel(this.equipmentSrv);
 
     public saveButton: ToolbarButton = {
         icon: 'fas fa-save',
@@ -157,6 +160,7 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
             spoilageHour: [null],
             breakageHour: [null],
             silo:         [null],
+            equipment:    [null],
             userId:       [this.loginSrv.appCtx.id],
             tests:        this.formBuilder.array([])
         }
@@ -396,6 +400,7 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
                 this.form.controls.timeStamp.setValue(<Date>batch.timeStamp);
                 this.form.controls.spoilageHour.setValue(batch.spoilageHour);
                 this.form.controls.silo.setValue(batch.silo||0);
+                this.form.controls.equipment.setValue(batch.equipment||0);
                 this.form.controls.sampleNo.setValue(batch.sampleNo);
                 this.form.controls.breakageHour.setValue(batch.breakageHour);
                 this.form.controls.parentId.setValue(batch.parentId);

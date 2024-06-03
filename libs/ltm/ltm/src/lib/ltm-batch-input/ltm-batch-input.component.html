@@ -97,7 +97,15 @@
                             </ss-auto-complete>
                         </mat-form-field>
 
-                        <mat-form-field class="default-100 sm-100">
+                        <mat-form-field class="default-100">
+                            <mat-label translate>COMMON_EQUIPMENT</mat-label>
+                            <ss-auto-complete matInput
+                                              [model]="equipmentLookup"
+                                              formControlName="equipment">
+                            </ss-auto-complete>
+                        </mat-form-field>
+
+                        <mat-form-field class="default-100">
                             <mat-label translate>LTM_SILO</mat-label>
                             <ss-auto-complete matInput
                                               [model]="siloLookup"
