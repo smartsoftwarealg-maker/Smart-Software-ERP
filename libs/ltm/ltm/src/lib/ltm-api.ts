@@ -5,7 +5,8 @@ export const LTM_MIXTURE_URL        = '/ltm/mixtures';
 export const LTM_ANOMALIES_URL        = '/ltm/anomalies';
 export const LTM_EQUIPMENTS_URL        = '/lookups/ltm_equipment';
 export const LTM_NORM_URL        = '/lookups/ltm_norms';
-export const LTM_PRODUCTS_URL        = '/lookups/ltm_products';
+export const LTM_PRODUCT_LOOKUP_URL        = '/lookups/ltm_products';
+export const LTM_PRODUCTS_URL        = '/ltm/products';
 export const LTM_PICKUP_POINTS_URL        = '/lookups/ltm_pickup_points';
 export const LTM_TESTING_ANOMALIES_URL        = '/ltm/testing-anomalies';
 export const LTM_MIXTURE_DETAIL_URL        = '/detail';
@@ -140,6 +141,7 @@ export interface LTMBatch {
     spoilageHour?: number;
     breakageHour?: number;
     silo?: number;
+    equipment?: number;
     userId: number;
     creationTime: Date;
     tests: LTMTestingLine[];
@@ -193,4 +195,11 @@ export interface LTMAbnormalTest {
     value: number;
     min: number;
     max: number;
+}
+
+export interface LTMProduct {
+    id: number
+    description: string,
+    code?: string;
+    descriptionAr?: string;
 }

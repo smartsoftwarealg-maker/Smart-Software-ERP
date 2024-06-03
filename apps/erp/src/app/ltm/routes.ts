@@ -56,12 +56,10 @@ import {
     LtmAlertsComponent,
     LtmEquipmentListComponent,
     LtmEquipmentDetailComponent,
-    LtmProductListComponent,
-    LtmProductDetailComponent,
     LtmPickupPointListComponent,
     LtmPickupPointDetailComponent,
     LtmNormListComponent,
-    LtmNormDetailComponent
+    LtmNormDetailComponent, LtmProductDetailComponent, LtmProductListComponent
 } from '@ss/ltm/ltm';
 import {loginGuard} from '../erp-guards';
 import {DashboardComponent} from '@ss/dashboard';
