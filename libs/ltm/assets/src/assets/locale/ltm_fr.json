@@ -53,5 +53,8 @@
     "BLEACHERS":          "Gradins",
     "ZONES":              "Zones",
     "DEPOSITS":           "Dépôts",
-    "SUPPLIERS":          "Fournisseurs"
+    "SUPPLIERS":          "Fournisseurs",
+    "SUPPLIER":           "Fournisseur",
+    "DEPOSIT_TESTINGS":   "Tests de dépôt",
+    "RAW_TESTINGS":        "Tests bruts"
 }

@@ -9,7 +9,7 @@ import {
     LTM_CHARTS_URL,
     LTM_TEST_URL,
     LTM_TESTING_URL,
-    LTM_BATCH_URL,
+    LTM_CHEMICAL_TEST_URL,
     DASHBOARD_URL,
     COMMON_REPORTS_URL,
     LTM_LINES_URL,
@@ -18,7 +18,7 @@ import {
     LTM_MIXTURE_URL,
     LTM_ANOMALIES_URL,
     LTM_TESTING_ANOMALIES_URL,
-    LTM_SAMPLE_URL,
+    LTM_PHYSICAL_TEST_URL,
     LTM_SILOS_URL,
     LTM_ALERT_URL,
     LTM_EQUIPMENT_URL,
@@ -28,7 +28,7 @@ import {
     LTM_BLEACHER_URL,
     LTM_ZONE_URL,
     LTM_DEPOSIT_URL,
-    LTM_SUPPLIER_URL
+    LTM_SUPPLIER_URL, LTM_DEPOSIT_TEST_URL, LTM_RAW_MATERIAL_TEST_URL
 } from '../common';
 
 import {
@@ -72,7 +72,7 @@ import {
     LtmZoneListComponent,
     LtmZoneDetailComponent,
     LtmDepositDetailComponent,
-    LtmDepositListComponent
+    LtmDepositListComponent, CHEMICAL_TEST, PHYSICAL_TEST, DEPOSIT_TEST, RAW_MATERIAL_TEST
 } from '@ss/ltm/ltm';
 import {loginGuard} from '../erp-guards';
 import {DashboardComponent} from '@ss/dashboard';
@@ -88,13 +88,19 @@ export const testingGuard: CanActivateFn = () => inject(LtmTestingService).canAc
 
 export const ltmRoutes: Routes = [
     {
-        path: LTM_BATCH_URL, component: LtmBatchInputComponent, canActivate: [loginGuard]
+        path: LTM_CHEMICAL_TEST_URL, component: LtmBatchInputComponent, canActivate: [loginGuard], data: { testingMode: CHEMICAL_TEST }
+    },
+    {
+        path: LTM_PHYSICAL_TEST_URL, component: LtmBatchInputComponent, canActivate: [loginGuard], data: { testingMode: PHYSICAL_TEST }
+    },
+    {
+        path: LTM_DEPOSIT_TEST_URL, component: LtmBatchInputComponent, canActivate: [loginGuard], data: { testingMode: DEPOSIT_TEST }
+    },
+    {
+        path: LTM_RAW_MATERIAL_TEST_URL, component: LtmBatchInputComponent, canActivate: [loginGuard], data: { testingMode: RAW_MATERIAL_TEST }
     },
     {
         path: LTM_ALERT_URL, component: LtmAlertsComponent, canActivate: [loginGuard]
-    },
-    {
-        path: LTM_SAMPLE_URL, component: LtmBatchInputComponent, canActivate: [loginGuard], data: { sampleMode: 'true' }
     },
     {
         path: LTM_CHARTS_URL, component: LtmReportComponent, canActivate: [loginGuard]

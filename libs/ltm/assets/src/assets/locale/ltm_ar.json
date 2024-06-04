@@ -53,5 +53,8 @@
     "BLEACHERS":          "المدرجات",
     "ZONES":              "المناطق",
     "DEPOSITS":           "الودائع",
-    "SUPPLIERS":          "الموردون"
+    "SUPPLIERS":          "الموردون",
+    "SUPPLIER":           "المورد",
+    "DEPOSIT_TESTINGS":   "اختبارات الودائع",
+    "RAW_TESTINGS":        "الاختبارات الخام"
 }

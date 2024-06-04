@@ -4,11 +4,11 @@ import {
     ABS_LTM_ANOMALY_URL,
     ABS_LTM_BATCH_TESTINGS_URL, ABS_LTM_BLEACHERS_URL,
     ABS_LTM_CHARTS_URL,
-    ABS_LTM_DASHBOARD_URL, ABS_LTM_DEPOSIT_URL, ABS_LTM_EQUIPMENT_URL,
+    ABS_LTM_DASHBOARD_URL, ABS_LTM_DEPOSIT_TESTINGS_URL, ABS_LTM_DEPOSIT_URL, ABS_LTM_EQUIPMENT_URL,
     ABS_LTM_LINES_URL,
     ABS_LTM_MATTERS_URL,
     ABS_LTM_MIXTURES_URL, ABS_LTM_NORM_URL,
-    ABS_LTM_PERIODICITIES_URL, ABS_LTM_PICKUP_POINTS_URL, ABS_LTM_PRODUCT_URL,
+    ABS_LTM_PERIODICITIES_URL, ABS_LTM_PICKUP_POINTS_URL, ABS_LTM_PRODUCT_URL, ABS_LTM_RAW_TESTINGS_URL,
     ABS_LTM_REPORTS_URL,
     ABS_LTM_SAMPLE_TESTINGS_URL, ABS_LTM_SILO_URL, ABS_LTM_SUPPLIER_URL,
     ABS_LTM_TEST_TYPE_URL,
@@ -146,6 +146,20 @@ export const ltmNavTree: SideNavNode = {
             name: 'LTM_SAMPLE_TESTINGS',
             icon: 'fa-regular fa-flask-gear',
             route: ABS_LTM_SAMPLE_TESTINGS_URL,
+            accessRights: 'LTMTesting'
+        },
+
+        {
+            name: 'LTM_DEPOSIT_TESTINGS',
+            icon: 'fa-solid fa-vial-circle-check',
+            route: ABS_LTM_DEPOSIT_TESTINGS_URL,
+            accessRights: 'LTMTesting'
+        },
+
+        {
+            name: 'LTM_RAW_TESTINGS',
+            icon: 'fa-solid fa-microscope',
+            route: ABS_LTM_RAW_TESTINGS_URL,
             accessRights: 'LTMTesting'
         },
 

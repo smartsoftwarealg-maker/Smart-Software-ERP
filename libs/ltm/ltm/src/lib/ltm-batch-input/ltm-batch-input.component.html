@@ -12,7 +12,7 @@
                                                 [type]="'date'">
                                 </ss-date-picker>
                             </mat-form-field>
-                            @if (sampleMode()) {
+                            @if (testingMode() === PHYSICAL_TEST) {
                                 <mat-form-field class="default-100">
                                     <mat-label translate>LTM_SAMPLE_NO</mat-label>
                                     <ss-auto-complete matInput
@@ -72,7 +72,7 @@
 <!--                                COMMON_FIELD_REQUIRED-->
 <!--                            </mat-error>-->
 <!--                        </mat-form-field>-->
-                        @if (sampleMode()) {
+                        @if (testingMode() === PHYSICAL_TEST) {
                             <mat-form-field class="default-100">
                                 <mat-label translate>LTM_SPOILAGE_HOUR</mat-label>
                                 <input matInput formControlName="spoilageHour" type="number" min="0" max="23">
@@ -88,6 +88,14 @@
 <!--                                <mat-label translate>LTM_SAMPLE_NO</mat-label>-->
 <!--                                <input matInput formControlName="sampleNo" type="text" min="3">-->
 <!--                            </mat-form-field>-->
+                        } @else if (testingMode() === RAW_MATERIAL_TEST) {
+                            <mat-form-field class="default-100">
+                                <mat-label translate>LTM_SUPPLIER</mat-label>
+                                <ss-auto-complete matInput
+                                                  [model]="supplierLookup"
+                                                  formControlName="supplier">
+                                </ss-auto-complete>
+                            </mat-form-field>
                         }
                         <mat-form-field class="default-100">
                             <mat-label translate>LTM_MATTER</mat-label>
@@ -97,25 +105,26 @@
                             </ss-auto-complete>
                         </mat-form-field>
 
-                        <mat-form-field class="default-100">
-                            <mat-label translate>COMMON_EQUIPMENT</mat-label>
-                            <ss-auto-complete matInput
-                                              [model]="equipmentLookup"
-                                              formControlName="equipment">
-                            </ss-auto-complete>
-                        </mat-form-field>
+                        @if (testingMode() !== RAW_MATERIAL_TEST) {
+                            <mat-form-field class="default-100">
+                                <mat-label translate>COMMON_EQUIPMENT</mat-label>
+                                <ss-auto-complete matInput
+                                                  [model]="equipmentLookup"
+                                                  formControlName="equipment">
+                                </ss-auto-complete>
+                            </mat-form-field>
 
-                        <mat-form-field class="default-100">
-                            <mat-label translate>LTM_SILO</mat-label>
-                            <ss-auto-complete matInput
-                                              [model]="siloLookup"
-                                              formControlName="silo">
-                            </ss-auto-complete>
-                        </mat-form-field>
+                            <mat-form-field class="default-100">
+                                <mat-label translate>LTM_SILO</mat-label>
+                                <ss-auto-complete matInput
+                                                  [model]="siloLookup"
+                                                  formControlName="silo">
+                                </ss-auto-complete>
+                            </mat-form-field>
+                        }
                     </mat-card-content>
                 </mat-card>
             </div>
-
 
             <div formArrayName="tests" class="group_div">
                 <div *ngFor="let f of tests.controls; let i = index">

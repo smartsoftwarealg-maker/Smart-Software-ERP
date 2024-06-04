@@ -53,5 +53,8 @@
     "BLEACHERS":          "Bleachers",
     "ZONES":              "Zones",
     "DEPOSITS":           "Deposits",
-    "SUPPLIERS":          "Suppliers"
+    "SUPPLIERS":          "Suppliers",
+    "SUPPLIER":           "Supplier",
+    "DEPOSIT_TESTINGS":   "Deposit testings",
+    "RAW_TESTINGS":        "Raw testings"
 }

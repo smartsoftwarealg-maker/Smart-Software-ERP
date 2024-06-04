@@ -46,3 +46,4 @@ export * from './lib/ltm-deposit-detail/ltm-deposit-detail.component';
 export * from './lib/ltm-deposit-list/ltm-deposit-list.component';
 export * from './lib/ltm-supplier-detail/ltm-supplier-detail.component';
 export * from './lib/ltm-supplier-list/ltm-supplier-list.component';
+export * from './lib/ltm-api';
