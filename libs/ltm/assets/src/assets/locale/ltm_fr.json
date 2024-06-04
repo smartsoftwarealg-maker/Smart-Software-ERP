@@ -49,5 +49,9 @@
     "PICKUP_POINTS":      "Points Prélèvement",
     "PICKUP_POINT":       "Point Prélèvement",
     "SHOW_CERTIFICATE":   "Afficher dans le certificat",
-    "CHEMICAL_FORMULA":   ""
+    "CHEMICAL_FORMULA":   "Formule chimique",
+    "BLEACHERS":          "Gradins",
+    "ZONES":              "Zones",
+    "DEPOSITS":           "Dépôts",
+    "SUPPLIERS":          "Fournisseurs"
 }

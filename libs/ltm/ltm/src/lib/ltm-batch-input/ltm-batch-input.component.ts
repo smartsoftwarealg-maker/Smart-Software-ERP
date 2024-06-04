@@ -161,6 +161,10 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
             breakageHour: [null],
             silo:         [null],
             equipment:    [null],
+            bleacher:     [0],
+            zone:         [0],
+            deposit:      [0],
+            supplier:     [0],
             userId:       [this.loginSrv.appCtx.id],
             tests:        this.formBuilder.array([])
         }
@@ -401,6 +405,10 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
                 this.form.controls.spoilageHour.setValue(batch.spoilageHour);
                 this.form.controls.silo.setValue(batch.silo||0);
                 this.form.controls.equipment.setValue(batch.equipment||0);
+                this.form.controls.bleacher.setValue(batch.bleacher||0);
+                this.form.controls.zone.setValue(batch.zone||0);
+                this.form.controls.deposit.setValue(batch.deposit||0);
+                this.form.controls.supplier.setValue(batch.supplier||0);
                 this.form.controls.sampleNo.setValue(batch.sampleNo);
                 this.form.controls.breakageHour.setValue(batch.breakageHour);
                 this.form.controls.parentId.setValue(batch.parentId);

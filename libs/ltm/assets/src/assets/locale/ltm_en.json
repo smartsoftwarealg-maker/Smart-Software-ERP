@@ -49,5 +49,9 @@
     "PICKUP_POINTS":      "Pickup points",
     "PICKUP_POINT":      "Pickup point",
     "SHOW_CERTIFICATE":   "Show in certificate",
-    "CHEMICAL_FORMULA":   "Chemical formula"
+    "CHEMICAL_FORMULA":   "Chemical formula",
+    "BLEACHERS":          "Bleachers",
+    "ZONES":              "Zones",
+    "DEPOSITS":           "Deposits",
+    "SUPPLIERS":          "Suppliers"
 }

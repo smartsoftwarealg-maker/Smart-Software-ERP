@@ -2,19 +2,19 @@ import {SideNavNode} from '@ss/common/api-common';
 import {
     ABS_LTM_ALERT_URL,
     ABS_LTM_ANOMALY_URL,
-    ABS_LTM_BATCH_TESTINGS_URL,
+    ABS_LTM_BATCH_TESTINGS_URL, ABS_LTM_BLEACHERS_URL,
     ABS_LTM_CHARTS_URL,
-    ABS_LTM_DASHBOARD_URL, ABS_LTM_EQUIPMENT_URL,
+    ABS_LTM_DASHBOARD_URL, ABS_LTM_DEPOSIT_URL, ABS_LTM_EQUIPMENT_URL,
     ABS_LTM_LINES_URL,
     ABS_LTM_MATTERS_URL,
     ABS_LTM_MIXTURES_URL, ABS_LTM_NORM_URL,
     ABS_LTM_PERIODICITIES_URL, ABS_LTM_PICKUP_POINTS_URL, ABS_LTM_PRODUCT_URL,
     ABS_LTM_REPORTS_URL,
-    ABS_LTM_SAMPLE_TESTINGS_URL, ABS_LTM_SILO_URL,
+    ABS_LTM_SAMPLE_TESTINGS_URL, ABS_LTM_SILO_URL, ABS_LTM_SUPPLIER_URL,
     ABS_LTM_TEST_TYPE_URL,
     ABS_LTM_TESTINGS_ANOMALIES_URL,
     ABS_LTM_TESTS_URL,
-    ABS_LTM_UNIT_URL
+    ABS_LTM_UNIT_URL, ABS_LTM_ZONES_URL
 } from '../common';
 
 export const ltmNavTree: SideNavNode = {
@@ -26,6 +26,30 @@ export const ltmNavTree: SideNavNode = {
             icon: 'fa-solid fa-puzzle-piece-simple',
             route: ABS_LTM_UNIT_URL,
             accessRights: 'LTMMPeriod'
+        },
+        {
+            name: 'LTM_BLEACHERS',
+            icon: 'fa-solid fa-brush',
+            route: ABS_LTM_BLEACHERS_URL,
+            accessRights: 'LTMBleacher'
+        },
+        {
+            name: 'LTM_ZONES',
+            icon: 'fa-solid fa-location-dot',
+            route: ABS_LTM_ZONES_URL,
+            accessRights: 'LTMZone'
+        },
+        {
+            name: 'LTM_DEPOSITS',
+            icon: 'fa-solid fa-bucket',
+            route: ABS_LTM_DEPOSIT_URL,
+            accessRights: 'LTMDeposit'
+        },
+        {
+            name: 'LTM_SUPPLIERS',
+            icon: 'fa-solid fa-truck-field',
+            route: ABS_LTM_SUPPLIER_URL,
+            accessRights: 'LTMSupplier'
         },
         {
             name: 'LTM_NORMS',

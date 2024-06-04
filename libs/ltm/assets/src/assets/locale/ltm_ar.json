@@ -50,4 +50,8 @@
     "PICKUP_POINT":       "نقطة التجميع",
     "SHOW_CERTIFICATE":   "تظهر في الشهادة",
     "CHEMICAL_FORMULA":   "الصيغة الكميائية",
+    "BLEACHERS":          "المدرجات",
+    "ZONES":              "المناطق",
+    "DEPOSITS":           "الودائع",
+    "SUPPLIERS":          "الموردون"
 }

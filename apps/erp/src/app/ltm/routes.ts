@@ -23,7 +23,12 @@ import {
     LTM_ALERT_URL,
     LTM_EQUIPMENT_URL,
     LTM_PRODUCTS_URL,
-    LTM_PICKUP_POINTS_URL, LTM_NORM_URL
+    LTM_PICKUP_POINTS_URL,
+    LTM_NORM_URL,
+    LTM_BLEACHER_URL,
+    LTM_ZONE_URL,
+    LTM_DEPOSIT_URL,
+    LTM_SUPPLIER_URL
 } from '../common';
 
 import {
@@ -59,7 +64,15 @@ import {
     LtmPickupPointListComponent,
     LtmPickupPointDetailComponent,
     LtmNormListComponent,
-    LtmNormDetailComponent, LtmProductDetailComponent, LtmProductListComponent
+    LtmNormDetailComponent,
+    LtmProductDetailComponent,
+    LtmProductListComponent,
+    LtmBleacherListComponent,
+    LtmBleacherDetailComponent,
+    LtmZoneListComponent,
+    LtmZoneDetailComponent,
+    LtmDepositDetailComponent,
+    LtmDepositListComponent
 } from '@ss/ltm/ltm';
 import {loginGuard} from '../erp-guards';
 import {DashboardComponent} from '@ss/dashboard';
@@ -67,6 +80,10 @@ import {ReportViewComponent} from '@ss/common/ui-report-param';
 import { UnitDetailComponent, UnitListComponent } from '@ss/common/ui-lookup';
 import { inject } from '@angular/core';
 import { LtmTestingService } from '@ss/ltm/ltm';
+import {
+    LtmSupplierListComponent
+} from '@ss/ltm/ltm';
+import { LtmSupplierDetailComponent } from '@ss/ltm/ltm';
 export const testingGuard: CanActivateFn = () => inject(LtmTestingService).canActivate();
 
 export const ltmRoutes: Routes = [
@@ -289,6 +306,77 @@ export const ltmRoutes: Routes = [
         component: DashboardComponent,
         canActivate: [loginGuard],
     },
+    {
+        path: LTM_BLEACHER_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: LtmBleacherListComponent,
+                canActivate: [loginGuard]
+            },
+            {
+                path: ':id',
+                component: LtmBleacherDetailComponent,
+                canActivate: [loginGuard],
+                canDeactivate: [CanDeactivateService],
+            },
+            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
+        ]
+    },
+    {
+        path: LTM_ZONE_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: LtmZoneListComponent,
+                canActivate: [loginGuard]
+            },
+            {
+                path: ':id',
+                component: LtmZoneDetailComponent,
+                canActivate: [loginGuard],
+                canDeactivate: [CanDeactivateService],
+            },
+            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
+        ]
+    },
+
+    {
+        path: LTM_DEPOSIT_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: LtmDepositListComponent,
+                canActivate: [loginGuard]
+            },
+            {
+                path: ':id',
+                component: LtmDepositDetailComponent,
+                canActivate: [loginGuard],
+                canDeactivate: [CanDeactivateService],
+            },
+            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
+        ]
+    },
+
+    {
+        path: LTM_SUPPLIER_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: LtmSupplierListComponent,
+                canActivate: [loginGuard]
+            },
+            {
+                path: ':id',
+                component: LtmSupplierDetailComponent,
+                canActivate: [loginGuard],
+                canDeactivate: [CanDeactivateService],
+            },
+            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
+        ]
+    },
+
     { path: '', redirectTo: ABS_INDEX_URL, pathMatch: 'full' },
     { path: '**', redirectTo: ABS_INDEX_URL }
 ];
