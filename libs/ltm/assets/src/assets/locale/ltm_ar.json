@@ -50,4 +50,15 @@
     "PICKUP_POINT":       "نقطة التجميع",
     "SHOW_CERTIFICATE":   "تظهر في الشهادة",
     "CHEMICAL_FORMULA":   "الصيغة الكميائية",
+    "BLEACHERS":          "المبيضات",
+    "ZONES":              "المناطق",
+    "DEPOSITS":           "المناجم",
+    "SUPPLIERS":          "الموردون",
+    "SUPPLIER":           "المورد",
+    "DEPOSIT_TESTINGS":   "اختبار الحقول",
+    "RAW_TESTINGS":        "اختبار الخام",
+    "BLEACHER":            "المبيض",
+    "ZONE":               "المنطقة",
+    "DEPOSIT":            "المنجم",
+    "STANDARD_NAME":      "الاسم القياسي"
 }

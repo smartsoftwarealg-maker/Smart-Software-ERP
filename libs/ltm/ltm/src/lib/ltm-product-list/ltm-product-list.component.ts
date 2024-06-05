@@ -18,7 +18,7 @@ import { LTMProduct } from '../ltm-api';
 import { LtmProductService } from '@ss/ltm/ltm';
 
 @Component({
-    selector: 'ss-ltm-product-lookup-list',
+    selector: 'ss-ltm-product-list-list',
     templateUrl: './ltm-product-list.component.html',
     styleUrls: ['./ltm-product-list.component.scss'],
     standalone: true,

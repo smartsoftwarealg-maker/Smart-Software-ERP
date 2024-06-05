@@ -1,5 +1,5 @@
 import { Component, Inject, inject, signal } from "@angular/core";
-import {LTMMatter} from '../ltm-api';
+import { LTMLineMatter, LTMMatter } from '../ltm-api';
 import { RouterOutlet } from "@angular/router";
 import { CommonUiConfirmationDialogModule } from "@ss/common/ui-confirmation-dialog";
 import { MaterialModule } from "@ss/common/api-common";
@@ -10,7 +10,7 @@ import { UiPaginationModule } from "@ss/common/ui-pagination";
 import { FormControl, ReactiveFormsModule } from "@angular/forms";
 import { LogisticsUiDocInfoModule } from "@ss/logistics/ui-doc-info";
 import { AppArchiveModule } from "@ss/common/app-archive";
-import { CommonUiAutoCompleteModule } from "@ss/common/ui-auto-complete";
+import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
 import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
 import { CommonUiHourPickerModule } from "@ss/common/ui-hour-picker";
 import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material/dialog";
@@ -40,11 +40,10 @@ export class LtmMatterDuplicateComponent {
     private matterSrv = inject(LtmMatterService);
 
     processing = signal(false);
-    description = new FormControl<string>('');
+    description = new FormControl<number>(0);
+    matterLookup = new DefaultAutoCompleteModel(this.matterSrv);
 
-    constructor(@Inject(MAT_DIALOG_DATA) protected data: LTMMatter) {
-        this.description.setValue((data?.description || '') + ' 2')
-    }
+    constructor(@Inject(MAT_DIALOG_DATA) protected data: LTMLineMatter) {}
 
     public cancel() {
         this.dialogRef.close({success: false});
@@ -52,7 +51,7 @@ export class LtmMatterDuplicateComponent {
 
     duplicate() {
         this.matterSrv
-            .duplicate({...this.data, description: this.description.value })
+            .duplicate(this.data.matterId, {...this.data, matterId: this.description.value })
             .subscribe({
                 next: _ => {
                     this.dialogRef.close({success: true});

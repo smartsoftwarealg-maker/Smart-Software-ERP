@@ -1,102 +1,111 @@
-<div class="container">
-    <mat-card class="main_card">
-        <form novalidate [formGroup]="form">
-            <div class="ctrl__div">
-                <mat-card>
-                    <mat-card-content>
-                        <form novalidate [formGroup]="searchForm" class="search__form">
-                            <mat-form-field class="default-100">
-                                <mat-label translate>COMMON_DATE</mat-label>
-                                <ss-date-picker [required]=true
-                                                formControlName="date"
-                                                [type]="'date'">
-                                </ss-date-picker>
-                            </mat-form-field>
-                            @if (sampleMode()) {
-                                <mat-form-field class="default-100">
-                                    <mat-label translate>LTM_SAMPLE_NO</mat-label>
-                                    <ss-auto-complete matInput
-                                                      [model]="sampleLookup"
-                                                      formControlName="sampleNo">
-                                    </ss-auto-complete>
-                                </mat-form-field>
-                                <mat-form-field class="default-100">
-                                    <mat-label translate>LTM_MATTER</mat-label>
-                                    <ss-auto-complete matInput
-                                                      [model]="lineMatterLookup"
-                                                      formControlName="lineMatterId">
-                                    </ss-auto-complete>
-                                </mat-form-field>
-                            } @else {
-                                <mat-form-field class="hour default-100">
-                                    <mat-label translate>COMMON_HOURS</mat-label>
-                                    <input matInput formControlName="hour" type="number" min="0" max="23" #hour>
-                                </mat-form-field>
+<form novalidate [formGroup]="searchForm">
+    <mat-card>
+        <mat-card-content class="search__form">
+            <mat-form-field>
+                <mat-label translate>COMMON_DATE</mat-label>
+                <ss-date-picker [required]=true
+                                formControlName="date"
+                                [type]="'date'">
+                </ss-date-picker>
+            </mat-form-field>
+            @if (testingMode() === PHYSICAL_TEST) {
+                <mat-form-field>
+                    <mat-label translate>LTM_SAMPLE_NO</mat-label>
+                    <ss-auto-complete matInput
+                                      [model]="sampleLookup"
+                                      formControlName="sampleNo">
+                    </ss-auto-complete>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label translate>LTM_MATTER</mat-label>
+                    <ss-auto-complete matInput
+                                      [model]="lineMatterLookup"
+                                      formControlName="lineMatterId">
+                    </ss-auto-complete>
+                </mat-form-field>
+            } @else {
+                <mat-form-field class="hour">
+                    <mat-label translate>COMMON_HOURS</mat-label>
+                    <input matInput formControlName="hour" type="number" min="0" max="23" class="hour_input">
+                </mat-form-field>
 
-                                <mat-form-field class="default-100">
-                                    <mat-label translate>LTM_MATTER</mat-label>
-                                    <ss-auto-complete matInput
-                                                      [model]="lineMatterLookup"
-                                                      formControlName="lineMatterId">
-                                    </ss-auto-complete>
-                                </mat-form-field>
+                <mat-form-field>
+                    <mat-label translate>LTM_MATTER</mat-label>
+                    <ss-auto-complete matInput
+                                      [model]="lineMatterLookup"
+                                      formControlName="lineMatterId">
+                    </ss-auto-complete>
+                </mat-form-field>
 
-                                <div class="default-100 period__div">
-                                    <mat-form-field class="default-100">
-                                        <mat-label translate>LTM_PERIOD</mat-label>
-                                        <ss-auto-complete matInput
-                                                          [model]="periodLookup"
-                                                          formControlName="period">
-                                        </ss-auto-complete>
-                                    </mat-form-field>
-<!--                                    <button mat-icon-button color="primary" type="button" (click)="clearPeriod()"-->
-<!--                                            [matTooltip]="'COMMON_CLEAR'|translate"-->
-<!--                                            [disabled]="editInProgress()">-->
-<!--                                        <i class="fa-solid fa-circle-xmark"></i>-->
-<!--                                    </button>-->
-                                </div>
-                            }
-
-                        </form>
-                    </mat-card-content>
-                </mat-card>
-                <mat-card>
-                    <mat-card-content>
-<!--                        <mat-form-field class="default-100">-->
-<!--                            <mat-label translate>COMMON_DATE</mat-label>-->
-<!--                            <ss-date-picker [required]=true-->
-<!--                                            formControlName="timeStamp"-->
-<!--                                            [type]="'datetime'">-->
-<!--                            </ss-date-picker>-->
-<!--                            <mat-error *ngIf="form.controls['timeStamp'].hasError('required')" translate>-->
-<!--                                COMMON_FIELD_REQUIRED-->
-<!--                            </mat-error>-->
-<!--                        </mat-form-field>-->
-                        @if (sampleMode()) {
-                            <mat-form-field class="default-100">
-                                <mat-label translate>LTM_SPOILAGE_HOUR</mat-label>
-                                <input matInput formControlName="spoilageHour" type="number" min="0" max="23">
-                            </mat-form-field>
-
-                            <mat-form-field class="default-100">
-                                <mat-label translate>LTM_BREAKAGE_HOUR</mat-label>
-                                <input matInput formControlName="breakageHour" type="number" min="0" max="23">
-                            </mat-form-field>
+                <div>
+                    <mat-form-field>
+                        <mat-label translate>LTM_PERIOD</mat-label>
+                        <ss-auto-complete matInput
+                                          [model]="periodLookup"
+                                          formControlName="period">
+                        </ss-auto-complete>
+                    </mat-form-field>
+                    <!--                                    <button mat-icon-button color="primary" type="button" (click)="clearPeriod()"-->
+                    <!--                                            [matTooltip]="'COMMON_CLEAR'|translate"-->
+                    <!--                                            [disabled]="editInProgress()">-->
+                    <!--                                        <i class="fa-solid fa-circle-xmark"></i>-->
+                    <!--                                    </button>-->
+                </div>
+            }
+        </mat-card-content>
+    </mat-card>
+</form>
 
 
-<!--                            <mat-form-field class="default-100">-->
-<!--                                <mat-label translate>LTM_SAMPLE_NO</mat-label>-->
-<!--                                <input matInput formControlName="sampleNo" type="text" min="3">-->
-<!--                            </mat-form-field>-->
-                        }
+<mat-card class="main_card">
+    <form novalidate [formGroup]="form">
+        <div class="ctrl__div">
+            <mat-card>
+                <mat-card-content>
+                    <!--                        <mat-form-field class="default-100">-->
+                    <!--                            <mat-label translate>COMMON_DATE</mat-label>-->
+                    <!--                            <ss-date-picker [required]=true-->
+                    <!--                                            formControlName="timeStamp"-->
+                    <!--                                            [type]="'datetime'">-->
+                    <!--                            </ss-date-picker>-->
+                    <!--                            <mat-error *ngIf="form.controls['timeStamp'].hasError('required')" translate>-->
+                    <!--                                COMMON_FIELD_REQUIRED-->
+                    <!--                            </mat-error>-->
+                    <!--                        </mat-form-field>-->
+                    @if (testingMode() === PHYSICAL_TEST) {
                         <mat-form-field class="default-100">
-                            <mat-label translate>LTM_MATTER</mat-label>
-                            <ss-auto-complete matInput
-                                              [model]="matterLookup"
-                                              formControlName="parentId">
-                            </ss-auto-complete>
+                            <mat-label translate>LTM_SPOILAGE_HOUR</mat-label>
+                            <input matInput formControlName="spoilageHour" type="number" min="0" max="23">
                         </mat-form-field>
 
+                        <mat-form-field class="default-100">
+                            <mat-label translate>LTM_BREAKAGE_HOUR</mat-label>
+                            <input matInput formControlName="breakageHour" type="number" min="0" max="23">
+                        </mat-form-field>
+
+
+                        <!--                            <mat-form-field class="default-100">-->
+                            <!--                                <mat-label translate>LTM_SAMPLE_NO</mat-label>-->
+                            <!--                                <input matInput formControlName="sampleNo" type="text" min="3">-->
+                            <!--                            </mat-form-field>-->
+                    } @else if (testingMode() === RAW_MATERIAL_TEST) {
+                        <mat-form-field class="default-100">
+                            <mat-label translate>LTM_SUPPLIER</mat-label>
+                            <ss-auto-complete matInput
+                                              [model]="supplierLookup"
+                                              formControlName="supplier">
+                            </ss-auto-complete>
+                        </mat-form-field>
+                    }
+                    <mat-form-field class="default-100">
+                        <mat-label translate>LTM_MATTER</mat-label>
+                        <ss-auto-complete matInput
+                                          [model]="matterLookup"
+                                          formControlName="parentId">
+                        </ss-auto-complete>
+                    </mat-form-field>
+
+                    @if (testingMode() !== RAW_MATERIAL_TEST) {
                         <mat-form-field class="default-100">
                             <mat-label translate>COMMON_EQUIPMENT</mat-label>
                             <ss-auto-complete matInput
@@ -105,54 +114,80 @@
                             </ss-auto-complete>
                         </mat-form-field>
 
+                        @if (testingMode() !== DEPOSIT_TEST) {
+                            <mat-form-field class="default-100">
+                                <mat-label translate>LTM_SILO</mat-label>
+                                <ss-auto-complete matInput
+                                                  [model]="siloLookup"
+                                                  formControlName="silo">
+                                </ss-auto-complete>
+                            </mat-form-field>
+                        }
+                    }
+                    @if (testingMode() === DEPOSIT_TEST) {
                         <mat-form-field class="default-100">
-                            <mat-label translate>LTM_SILO</mat-label>
+                            <mat-label translate>LTM_BLEACHER</mat-label>
                             <ss-auto-complete matInput
-                                              [model]="siloLookup"
-                                              formControlName="silo">
+                                              [model]="bleacherLookup"
+                                              formControlName="bleacher">
                             </ss-auto-complete>
                         </mat-form-field>
-                    </mat-card-content>
-                </mat-card>
-            </div>
 
-
-            <div formArrayName="tests" class="group_div">
-                <div *ngFor="let f of tests.controls; let i = index">
-                    <div [formGroupName]="i">
-                        <mat-form-field class="input_div">
-                            <mat-hint><span translate>LTM_RANGE</span>: {{ limits[i][0] }}- {{ limits[i][1] }}
-                            </mat-hint>
-                            <mat-label translate>{{ labels[i] }}</mat-label>
-                            <input matInput formControlName="value" type="number" (click)="$event.target.select()">
-                            @if (false) {
-                                <mat-error translate>BL_INVALID_DATA</mat-error>
-                            }
+                        <mat-form-field class="default-100">
+                            <mat-label translate>LTM_ZONE</mat-label>
+                            <ss-auto-complete matInput
+                                              [model]="zoneLookup"
+                                              formControlName="zone">
+                            </ss-auto-complete>
                         </mat-form-field>
-                    </div>
-                </div>
-            </div>
-        </form>
-    </mat-card>
 
-    <mat-card class="formula_card">
-        <mat-card-header> {{ 'COMMON_FORMULAS'|translate }}</mat-card-header>
+                        <mat-form-field class="default-100">
+                            <mat-label translate>LTM_DEPOSIT</mat-label>
+                            <ss-auto-complete matInput
+                                              [model]="depositLookup"
+                                              formControlName="deposit">
+                            </ss-auto-complete>
+                        </mat-form-field>
+                    }
 
-        <form *ngIf="totalsForm" [formGroup]="totalsForm">
-            <div formArrayName="totals" class="group_div">
-                <div *ngFor="let f of totals.controls; let i = index">
-                    <div [formGroupName]="i">
-                        <mat-form-field class="input_div" [class.invalid]="f.errors">
-                            <mat-hint><span translate>LTM_RANGE</span>: {{ totalsLimits[i][0] }}
-                                - {{ totalsLimits[i][1] }}
-                            </mat-hint>
-                            <mat-label translate>{{ totalsLabels[i] }}</mat-label>
-                            <input matInput formControlName="value" type="number" readonly>
+                </mat-card-content>
+            </mat-card>
+        </div>
+
+        <div formArrayName="tests" class="group_div">
+            <div *ngFor="let f of tests.controls; let i = index">
+                <div [formGroupName]="i">
+                    <mat-form-field class="input_div">
+                        <mat-hint><span translate>LTM_RANGE</span>: {{ limits[i][0] }}- {{ limits[i][1] }}</mat-hint>
+                        <mat-label translate>{{ labels[i] }}</mat-label>
+                        <input matInput formControlName="value" type="number" (click)="$event.target.select()">
+                        @if (false) {
                             <mat-error translate>BL_INVALID_DATA</mat-error>
-                        </mat-form-field>
-                    </div>
+                        }
+                    </mat-form-field>
                 </div>
             </div>
-        </form>
-    </mat-card>
-</div>
+        </div>
+    </form>
+</mat-card>
+
+<mat-card class="formula_card">
+    <mat-card-header> {{ 'COMMON_FORMULAS'|translate }}</mat-card-header>
+
+    <form *ngIf="totalsForm" [formGroup]="totalsForm">
+        <div formArrayName="totals" class="group_div">
+            <div *ngFor="let f of totals.controls; let i = index">
+                <div [formGroupName]="i">
+                    <mat-form-field class="input_div" [class.invalid]="f.errors">
+                        <mat-hint><span translate>LTM_RANGE</span>: {{ totalsLimits[i][0] }}
+                            - {{ totalsLimits[i][1] }}
+                        </mat-hint>
+                        <mat-label translate>{{ totalsLabels[i] }}</mat-label>
+                        <input matInput formControlName="value" type="number" readonly>
+                        <mat-error translate>BL_INVALID_DATA</mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+        </div>
+    </form>
+</mat-card>

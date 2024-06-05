@@ -49,5 +49,16 @@
     "PICKUP_POINTS":      "Pickup points",
     "PICKUP_POINT":      "Pickup point",
     "SHOW_CERTIFICATE":   "Show in certificate",
-    "CHEMICAL_FORMULA":   "Chemical formula"
+    "CHEMICAL_FORMULA":   "Chemical formula",
+    "BLEACHERS":          "Bleachers",
+    "ZONES":              "Zones",
+    "DEPOSITS":           "Deposits",
+    "SUPPLIERS":          "Suppliers",
+    "SUPPLIER":           "Supplier",
+    "DEPOSIT_TESTINGS":   "Deposit testings",
+    "RAW_TESTINGS":       "RM testings",
+    "BLEACHER":           "Bleacher",
+    "ZONE":               "Zone",
+    "DEPOSIT":            "Deposit",
+    "STANDARD_NAME":      "Standard name"
 }

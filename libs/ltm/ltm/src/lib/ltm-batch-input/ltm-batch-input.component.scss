@@ -1,24 +1,21 @@
 .container {
     display: flex;
-    height: calc(100% - 0px);
     flex-direction: column;
     gap: 0.5em;
 }
 
-.search__form {
-    display: block;
-}
-
 .main_card {
-    flex: 1 1 80%;
+    min-height: 300px;
     max-height: 80%;
+    padding: 8px 0;
 }
 
 .formula_card {
-    flex: 1 1 20%;
     display: flex;
     align-content: flex-start;
+    min-height: 150px;
     gap: 0.5em;
+    padding: 0.5em;
 }
 
 .formula_card .input_div {
@@ -53,7 +50,7 @@ mat-hint {
     color: lawngreen!important;
     padding: 4px;
     font-weight: bolder!important;
-    font-size: 2em!important;
+    font-size: 1.4em!important;
 }
 
 
@@ -71,8 +68,8 @@ mat-hint {
 form {
     display: flex;
     gap: 1em;
-    height: 70%;
 }
+
 .ctrl__div {
     flex: 1 1 30%;
     gap: 1em;
@@ -88,6 +85,8 @@ form {
     align-content: flex-start;
     flex: 2 1 75%;
 }
+
+
 
 
 .list_card {
@@ -141,4 +140,17 @@ mat-card-header {
 }
 .period__div button i {
     font-size: 1.5em;
+}
+//
+
+.search__form {
+    width: 90%;
+    max-width: 1500px;
+    margin: 8px auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: space-between;
+    padding: 10px;
+    border-radius: 1.4em;
 }

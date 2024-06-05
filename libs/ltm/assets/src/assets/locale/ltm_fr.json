@@ -49,5 +49,16 @@
     "PICKUP_POINTS":      "Points Prélèvement",
     "PICKUP_POINT":       "Point Prélèvement",
     "SHOW_CERTIFICATE":   "Afficher dans le certificat",
-    "CHEMICAL_FORMULA":   ""
+    "CHEMICAL_FORMULA":   "Formule chimique",
+    "BLEACHERS":          "Gradins",
+    "ZONES":              "Zones",
+    "DEPOSITS":           "Gisements",
+    "SUPPLIERS":          "Fournisseurs",
+    "SUPPLIER":           "Fournisseur",
+    "DEPOSIT_TESTINGS":   "Tests gisement",
+    "RAW_TESTINGS":       "Tests M.P.",
+    "BLEACHER":           "Gradin",
+    "ZONE":               "Zone",
+    "DEPOSIT":            "Gisement",
+    "STANDARD_NAME":      "Nom standard"
 }

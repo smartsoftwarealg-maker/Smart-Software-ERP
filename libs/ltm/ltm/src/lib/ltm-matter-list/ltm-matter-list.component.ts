@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
-import {LTMLine, LTMMatter} from '../ltm-api';
-import {LtmLineService} from '../services/ltm-line.service';
+import {LTMMatter} from '../ltm-api';
 import { KeepOnToolbar, ShellService, SnackBarService, ToolbarButton } from "@ss/common/ui-shell";
 import { ActivatedRoute, Router, RouterOutlet } from "@angular/router";
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
@@ -17,9 +16,6 @@ import { AppArchiveModule } from "@ss/common/app-archive";
 import { CommonUiAutoCompleteModule } from "@ss/common/ui-auto-complete";
 import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
 import { CommonUiHourPickerModule } from "@ss/common/ui-hour-picker";
-import {
-    DuplicateDialogComponent
-} from "../../../../../assets-component/src/lib/duplicate-dialog/duplicate-dialog.component";
 import { MatDialog } from "@angular/material/dialog";
 import { LtmMatterDuplicateComponent } from "../ltm-matter-duplicate/ltm-matter-duplicate.component";
 
@@ -44,18 +40,20 @@ import { LtmMatterDuplicateComponent } from "../ltm-matter-duplicate/ltm-matter-
     ],
 })
 export class LtmMatterListComponent  extends BaseEntityListComponent<LTMMatter> implements OnInit {
-    public duplicateButton: ToolbarButton = {
-        icon: 'fa-solid fa-copy',
-        label: 'COMMON_DUPLICATE',
-        disabled: true,
-        visible: true,
-        keepOnToolbar: KeepOnToolbar.ALWAYS,
-        click: () => this.duplicate()
-    };
+    // public duplicateButton: ToolbarButton = {
+    //     icon: 'fa-solid fa-copy',
+    //     label: 'COMMON_DUPLICATE',
+    //     disabled: true,
+    //     visible: true,
+    //     keepOnToolbar: KeepOnToolbar.ALWAYS,
+    //     click: () => this.duplicate()
+    // };
 
     displayedColumns = [
         'id',
         'description',
+        'code',
+        'name'
     ];
 
     constructor(
@@ -80,34 +78,34 @@ export class LtmMatterListComponent  extends BaseEntityListComponent<LTMMatter> 
         this.pagination.pageSize = 15;
     }
 
-    override ngOnInit() {
-        super.ngOnInit();
-        if (this.editButton.visible) {
-            this.shellSrv.addButton(this.duplicateButton);
-        }
-    }
+    // override ngOnInit() {
+    //     super.ngOnInit();
+    //     if (this.editButton.visible) {
+    //         this.shellSrv.addButton(this.duplicateButton);
+    //     }
+    // }
 
-    private duplicate() {
-        if (!!this.selected) {
-            const dialogRef = this.dialog.open(LtmMatterDuplicateComponent, {
-                disableClose: true,
-                width: '450px',
-                height: '160px',
-                data: this.selectedRow
-            });
-            dialogRef
-                .afterClosed()
-                .subscribe(res => {
-                    if (res['success'] === true) {
-                        this.snackBarSrv.showSuccessMessage();
-                        this.refresh();
-                    }
-                });
-        }
-    }
-
-    override selectRow(row: LTMMatter) {
-        super.selectRow(row);
-        this.duplicateButton.disabled = this.editButton.disabled;
-    }
+    // private duplicate() {
+    //     if (!!this.selected) {
+    //         const dialogRef = this.dialog.open(LtmMatterDuplicateComponent, {
+    //             disableClose: true,
+    //             width: '450px',
+    //             height: '160px',
+    //             data: this.selectedRow
+    //         });
+    //         dialogRef
+    //             .afterClosed()
+    //             .subscribe(res => {
+    //                 if (res['success'] === true) {
+    //                     this.snackBarSrv.showSuccessMessage();
+    //                     this.refresh();
+    //                 }
+    //             });
+    //     }
+    // }
+    //
+    // override selectRow(row: LTMMatter) {
+    //     super.selectRow(row);
+    //     this.duplicateButton.disabled = this.editButton.disabled;
+    // }
 }

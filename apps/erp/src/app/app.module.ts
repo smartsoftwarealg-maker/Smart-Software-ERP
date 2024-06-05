@@ -5,7 +5,6 @@ import { UiThemeModule } from '@ss/common/ui-theme';
 import { AppComponent } from './app.component';
 import { RouterModule, Routes } from '@angular/router';
 import { UiLoginModule } from '@ss/common/ui-login';
-import { HttpClientModule } from '@angular/common/http';
 import { UiErrorHandlerModule } from '@ss/common/ui-error-handler';
 import { ShellComponent, UiShellModule } from '@ss/common/ui-shell';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -35,7 +34,6 @@ const routes: Routes = [
     imports: [
         BrowserModule,
         BrowserAnimationsModule,
-        HttpClientModule,
         MatProgressSpinnerModule,
         RouterModule.forRoot(routes, { enableTracing: false, bindToComponentInputs: true }),
         // Smart Software modules

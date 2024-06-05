@@ -3,7 +3,11 @@ export const LTM_LINE_URL        = '/ltm/lines';
 export const LTM_ABNORMAL_TESTS_URL        = '/ltm/abnormal-tests';
 export const LTM_MIXTURE_URL        = '/ltm/mixtures';
 export const LTM_ANOMALIES_URL        = '/ltm/anomalies';
-export const LTM_EQUIPMENTS_URL        = '/lookups/ltm_equipment';
+export const LTM_EQUIPMENT_URL        = '/lookups/ltm_equipment';
+export const LTM_BLEACHER_URL        = '/lookups/ltm_bleachers';
+export const LTM_ZONE_URL        = '/lookups/ltm_zones';
+export const LTM_DEPOSIT_URL        = '/lookups/ltm_deposits';
+export const LTM_SUPPLIER_URL        = '/lookups/ltm_suppliers';
 export const LTM_NORM_URL        = '/lookups/ltm_norms';
 export const LTM_PRODUCT_LOOKUP_URL        = '/lookups/ltm_products';
 export const LTM_PRODUCTS_URL        = '/ltm/products';
@@ -79,6 +83,8 @@ export interface LTMMatter {
     id: number,
     description: string;
     descriptionAr?: string;
+    code?: string;
+    name?: string;
 }
 
 export interface LTMTest {
@@ -142,6 +148,10 @@ export interface LTMBatch {
     breakageHour?: number;
     silo?: number;
     equipment?: number;
+    bleacher?: number;
+    zone?: number;
+    deposit?: number;
+    supplier?: number;
     userId: number;
     creationTime: Date;
     tests: LTMTestingLine[];
@@ -203,3 +213,8 @@ export interface LTMProduct {
     code?: string;
     descriptionAr?: string;
 }
+
+export const CHEMICAL_TEST = 1;
+export const PHYSICAL_TEST = 2;
+export const DEPOSIT_TEST = 3;
+export const RAW_MATERIAL_TEST = 4;

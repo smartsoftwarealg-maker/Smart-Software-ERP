@@ -59,6 +59,8 @@ export class LtmMatterDetailComponent extends BaseEntityDetailComponent<LTMMatte
             id:            [b.id],
             description:   [b.description, Validators.required],
             descriptionAr: [b.descriptionAr],
+            name:          [b.name],
+            code:          [b.code],
         });
     }
 
