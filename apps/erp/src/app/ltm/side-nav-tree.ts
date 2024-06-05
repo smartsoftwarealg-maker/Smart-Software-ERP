@@ -69,12 +69,12 @@ export const ltmNavTree: SideNavNode = {
             route: ABS_LTM_EQUIPMENT_URL,
             accessRights: 'LTMEquipment'
         },
-        {
-            name: 'COMMON_PRODUCTS',
-            icon: 'fa-solid fa-cart-shopping',
-            route: ABS_LTM_PRODUCT_URL,
-            accessRights: 'LTMProduct'
-        },
+        // {
+        //     name: 'COMMON_PRODUCTS',
+        //     icon: 'fa-solid fa-cart-shopping',
+        //     route: ABS_LTM_PRODUCT_URL,
+        //     accessRights: 'LTMProduct'
+        // },
 
         {
             name: 'LTM_PICKUP_POINTS',

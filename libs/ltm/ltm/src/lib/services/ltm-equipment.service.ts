@@ -2,13 +2,13 @@ import {Injectable} from '@angular/core';
 import {BaseEntityService} from '@ss/common/api-base-entity';
 import {HttpService} from '@ss/common/api-common';
 import { Lookup } from "@ss/common/api-lookup";
-import { LTM_EQUIPMENTS_URL } from '../ltm-api';
+import { LTM_EQUIPMENT_URL } from '@ss/ltm/ltm';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LtmEquipmentService extends BaseEntityService<Lookup> {
     constructor(protected override httpSrv: HttpService) {
-        super(httpSrv, LTM_EQUIPMENTS_URL);
+        super(httpSrv, LTM_EQUIPMENT_URL);
     }
 }

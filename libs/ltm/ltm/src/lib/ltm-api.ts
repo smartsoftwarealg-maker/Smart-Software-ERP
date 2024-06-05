@@ -3,7 +3,7 @@ export const LTM_LINE_URL        = '/ltm/lines';
 export const LTM_ABNORMAL_TESTS_URL        = '/ltm/abnormal-tests';
 export const LTM_MIXTURE_URL        = '/ltm/mixtures';
 export const LTM_ANOMALIES_URL        = '/ltm/anomalies';
-export const LTM_EQUIPMENTS_URL        = '/lookups/ltm_bleachers';
+export const LTM_EQUIPMENT_URL        = '/lookups/ltm_equipment';
 export const LTM_BLEACHER_URL        = '/lookups/ltm_bleachers';
 export const LTM_ZONE_URL        = '/lookups/ltm_zones';
 export const LTM_DEPOSIT_URL        = '/lookups/ltm_deposits';
@@ -83,6 +83,8 @@ export interface LTMMatter {
     id: number,
     description: string;
     descriptionAr?: string;
+    code?: string;
+    name?: string;
 }
 
 export interface LTMTest {

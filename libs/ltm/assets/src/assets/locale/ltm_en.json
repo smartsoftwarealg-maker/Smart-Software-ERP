@@ -56,5 +56,9 @@
     "SUPPLIERS":          "Suppliers",
     "SUPPLIER":           "Supplier",
     "DEPOSIT_TESTINGS":   "Deposit testings",
-    "RAW_TESTINGS":        "Raw testings"
+    "RAW_TESTINGS":       "RM testings",
+    "BLEACHER":           "Bleacher",
+    "ZONE":               "Zone",
+    "DEPOSIT":            "Deposit",
+    "STANDARD_NAME":      "Standard name"
 }

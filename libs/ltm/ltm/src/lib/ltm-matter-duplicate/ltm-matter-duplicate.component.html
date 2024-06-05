@@ -1,6 +1,9 @@
     <mat-form-field class="default-100 input-field">
-        <mat-label translate>COMMON_DESCRIPTION</mat-label>
-        <input matInput [formControl]="description" type="text">
+        <mat-label translate>LTM_MATTER</mat-label>
+        <ss-auto-complete matInput
+                          [model]="matterLookup"
+                          [formControl]="description">
+        </ss-auto-complete>
     </mat-form-field>
 
     <div class="default-100 ctrl-div">

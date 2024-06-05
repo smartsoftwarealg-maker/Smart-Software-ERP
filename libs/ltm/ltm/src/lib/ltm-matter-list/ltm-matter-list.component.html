@@ -8,8 +8,22 @@
             </mat-cell>
         </ng-container>
 
-        <ng-container matColumnDef="id">
+        <ng-container matColumnDef="code">
             <mat-header-cell *matHeaderCellDef mat-sort-header translate>ADMINISTRATION_CODE</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.code}}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="name">
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>LTM_STANDARD_NAME</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{ e.name }}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="id">
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>LOGISTICS_ID</mat-header-cell>
             <mat-cell *matCellDef="let e">
                 {{e.id}}
             </mat-cell>

@@ -42,6 +42,9 @@ import { LtmMatterService } from '../services/ltm-matter.service';
 import { LtmSampleLookupService } from '../services/ltm-sample-lookup.service';
 import { LtmEquipmentService } from '../services/ltm-equipment.service';
 import { LtmSupplierService } from '../services/ltm-supplier.service';
+import { LtmBleacherService } from '../services/ltm-bleacher.service';
+import { LtmZoneService } from '../services/ltm-zone.service';
+import { LtmDepositService } from '../services/ltm-deposit.service';
 
 function sampleNoValidatorFn(sampleMode: boolean): ValidatorFn {
     return (control: AbstractControl): ValidationErrors | null => {
@@ -86,6 +89,9 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
     private testSrv = inject(LtmTestService);
     private shellSrv = inject(ShellService);
     private supplierSrv = inject(LtmSupplierService);
+    private bleacherSrv = inject(LtmBleacherService);
+    private zoneSrv = inject(LtmZoneService);
+    private depositSrv = inject(LtmDepositService);
     private loginSrv = inject(LoginService);
     private subscriptions: Subscription[] = [];
     private TODAY = new Date();
@@ -100,9 +106,13 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
     sampleLookup = new DefaultAutoCompleteModel(this.sampleLookupSrv, 'description', 'description');
     equipmentLookup = new DefaultAutoCompleteModel(this.equipmentSrv);
     supplierLookup = new DefaultAutoCompleteModel(this.supplierSrv);
+    bleacherLookup = new DefaultAutoCompleteModel(this.bleacherSrv);
+    depositLookup = new DefaultAutoCompleteModel(this.depositSrv);
+    zoneLookup = new DefaultAutoCompleteModel(this.zoneSrv);
 
     protected readonly PHYSICAL_TEST = PHYSICAL_TEST;
     protected readonly RAW_MATERIAL_TEST = RAW_MATERIAL_TEST;
+    protected readonly DEPOSIT_TEST = DEPOSIT_TEST;
 
     public saveButton: ToolbarButton = {
         icon: 'fas fa-save',

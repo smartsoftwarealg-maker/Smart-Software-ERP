@@ -52,9 +52,13 @@
     "CHEMICAL_FORMULA":   "Formule chimique",
     "BLEACHERS":          "Gradins",
     "ZONES":              "Zones",
-    "DEPOSITS":           "Dépôts",
+    "DEPOSITS":           "Gisements",
     "SUPPLIERS":          "Fournisseurs",
     "SUPPLIER":           "Fournisseur",
-    "DEPOSIT_TESTINGS":   "Tests de dépôt",
-    "RAW_TESTINGS":        "Tests bruts"
+    "DEPOSIT_TESTINGS":   "Tests gisement",
+    "RAW_TESTINGS":       "Tests M.P.",
+    "BLEACHER":           "Gradin",
+    "ZONE":               "Zone",
+    "DEPOSIT":            "Gisement",
+    "STANDARD_NAME":      "Nom standard"
 }
