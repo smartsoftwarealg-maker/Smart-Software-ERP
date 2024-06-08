@@ -72,13 +72,20 @@
                     <!--                                COMMON_FIELD_REQUIRED-->
                     <!--                            </mat-error>-->
                     <!--                        </mat-form-field>-->
+                    <mat-form-field class="default-100">
+                        <mat-label translate>LTM_MATTER</mat-label>
+                        <ss-auto-complete matInput
+                                          [model]="matterLookup"
+                                          formControlName="parentId">
+                        </ss-auto-complete>
+                    </mat-form-field>
                     @if (testingMode() === PHYSICAL_TEST) {
-                        <mat-form-field class="default-100">
+                        <mat-form-field class="default-50 sm-100">
                             <mat-label translate>LTM_SPOILAGE_HOUR</mat-label>
                             <input matInput formControlName="spoilageHour" type="number" min="0" max="23">
                         </mat-form-field>
 
-                        <mat-form-field class="default-100">
+                        <mat-form-field class="default-50 sm-100">
                             <mat-label translate>LTM_BREAKAGE_HOUR</mat-label>
                             <input matInput formControlName="breakageHour" type="number" min="0" max="23">
                         </mat-form-field>
@@ -97,13 +104,6 @@
                             </ss-auto-complete>
                         </mat-form-field>
                     }
-                    <mat-form-field class="default-100">
-                        <mat-label translate>LTM_MATTER</mat-label>
-                        <ss-auto-complete matInput
-                                          [model]="matterLookup"
-                                          formControlName="parentId">
-                        </ss-auto-complete>
-                    </mat-form-field>
 
                     @if (testingMode() !== RAW_MATERIAL_TEST) {
                         <mat-form-field class="default-100">

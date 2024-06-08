@@ -12,7 +12,7 @@ import {
     ABS_LTM_REPORTS_URL,
     ABS_LTM_SAMPLE_TESTINGS_URL, ABS_LTM_SILO_URL, ABS_LTM_SUPPLIER_URL,
     ABS_LTM_TEST_TYPE_URL,
-    ABS_LTM_TESTINGS_ANOMALIES_URL,
+    ABS_LTM_TESTINGS_ANOMALIES_URL, ABS_LTM_TESTINGS_URL,
     ABS_LTM_TESTS_URL,
     ABS_LTM_UNIT_URL, ABS_LTM_ZONES_URL
 } from '../common';
@@ -132,6 +132,13 @@ export const ltmNavTree: SideNavNode = {
             name: 'LTM_ALERTS',
             icon: 'fa-solid fa-sensor-triangle-exclamation',
             route: ABS_LTM_ALERT_URL,
+            accessRights: 'LTMTesting'
+        },
+
+        {
+            name: 'LTM_TESTINGS',
+            icon: 'fa-regular fa-vial',
+            route: ABS_LTM_TESTINGS_URL,
             accessRights: 'LTMTesting'
         },
 

@@ -45,21 +45,21 @@ import { LtmMatterService } from '../services/ltm-matter.service';
 })
 export class LtmTestingListComponent extends BaseEntityListComponent<LTMTesting> implements OnInit {
     private matterSrv = inject(LtmMatterService);
-    private injectBtn: ToolbarButton = {
-        icon: "fa-regular fa-syringe",
-        label: "COMMON_EXCEL_INJECTION",
-        disabled: false,
-        visible: true,
-        keepOnToolbar: KeepOnToolbar.DYNAMIC,
-        click: () => this.inject()
-    };
+    // private injectBtn: ToolbarButton = {
+    //     icon: "fa-regular fa-syringe",
+    //     label: "COMMON_EXCEL_INJECTION",
+    //     disabled: false,
+    //     visible: true,
+    //     keepOnToolbar: KeepOnToolbar.DYNAMIC,
+    //     click: () => this.inject()
+    // };
     lines$: Observable<LTMLine[]> = null;
     matterCtrl = new FormControl<number>(0);
     fromCtrl = new FormControl<Date>(new Date());
     toCtrl = new FormControl<Date>(new Date());
     matterLookup = new DefaultAutoCompleteModel(this.matterSrv);
 
-    displayedColumns = ['matter', 'test', 'timeStamp', 'value', 'selection'];
+    displayedColumns = ['matter', 'timeStamp', 'selection'];
     selection = signal<number[]>([]);
 
     constructor(
@@ -101,31 +101,31 @@ export class LtmTestingListComponent extends BaseEntityListComponent<LTMTesting>
         return now;
     }
 
-    override ngOnInit() {
-        super.ngOnInit();
-        if (this.editable) {
-            this.shellSrv.addButton(this.injectBtn);
-        }
-    }
-
-    private inject() {
-        const dialogRef = this.dialog.open(LtmInjectionComponent, {
-            width: "600px",
-            height: "520px",
-            disableClose: true
-        });
-
-        dialogRef
-            .afterClosed()
-            .subscribe(result => {
-                if (result && result["count"]) {
-                    this.snackBarSrv.showMessage("COMMON_SUCCESS");
-                    this.refresh(() => this.shellSrv.setLoading(false));
-                } else {
-                    this.snackBarSrv.showFailureMessage();
-                }
-            });
-    }
+    // override ngOnInit() {
+    //     super.ngOnInit();
+    //     if (this.editable) {
+    //         this.shellSrv.addButton(this.injectBtn);
+    //     }
+    // }
+    //
+    // private inject() {
+    //     const dialogRef = this.dialog.open(LtmInjectionComponent, {
+    //         width: "600px",
+    //         height: "520px",
+    //         disableClose: true
+    //     });
+    //
+    //     dialogRef
+    //         .afterClosed()
+    //         .subscribe(result => {
+    //             if (result && result["count"]) {
+    //                 this.snackBarSrv.showMessage("COMMON_SUCCESS");
+    //                 this.refresh(() => this.shellSrv.setLoading(false));
+    //             } else {
+    //                 this.snackBarSrv.showFailureMessage();
+    //             }
+    //         });
+    // }
 
     addId(id: number) {
         if (this.selection().indexOf(id) < 1) {
