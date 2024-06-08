@@ -39,7 +39,6 @@ import {
     LtmPeriodicitiesListComponent,
     LtmMatterTestDetailComponent,
     LtmTestingListComponent,
-    LtmTestingDetailComponent,
     LtmReportComponent,
     LtmBatchInputComponent,
     LineMatterDetailComponent,
@@ -294,9 +293,10 @@ export const ltmRoutes: Routes = [
             },
             {
                 path: ':id',
-                component: LtmTestingDetailComponent,
+                component: LtmBatchInputComponent,
                 canActivate: [loginGuard, testingGuard],
                 canDeactivate: [CanDeactivateService],
+                data: { testingMode: CHEMICAL_TEST }
             },
             { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
         ]

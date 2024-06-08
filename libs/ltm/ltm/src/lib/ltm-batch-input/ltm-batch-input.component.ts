@@ -1,12 +1,10 @@
 import {
     Component,
-    ElementRef,
     inject,
     input,
     OnDestroy,
     OnInit,
-    signal,
-    viewChild
+    signal
 } from '@angular/core';
 import { CHEMICAL_TEST, DEPOSIT_TEST, LTMBatch, LTMTest, PHYSICAL_TEST, RAW_MATERIAL_TEST } from '../ltm-api';
 import { KeepOnToolbar, ShellService, SnackBarService, ToolbarButton } from '@ss/common/ui-shell';
@@ -198,6 +196,7 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
 
     totalsForm = this.formBuilder.group({ totals: this.formBuilder.array([]) });
     testingMode = input(CHEMICAL_TEST);
+    id = input(0);
     editInProgress = signal(false);
 
     constructor() {
@@ -260,25 +259,6 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
                     ).subscribe(() => this.refreshData())
             );
         }
-        // if (this.testingMode()) {
-        //     this.sampleLookup.onObjectSelected = e => {
-        //         if (!this.editInProgress()) {
-        //             this.refreshData();
-        //         }
-        //     };
-        // } else {
-        //     this.subscriptions.push(
-        //         this.searchForm
-        //             .controls
-        //             .hour
-        //             .valueChanges
-        //             .pipe(
-        //                 debounceTime(300),
-        //                 distinctUntilChanged(),
-        //                 filter(() => !this.editInProgress() && !this.onRefresh())
-        //             ).subscribe(() => this.refreshData())
-        //     );
-        // }
 
         this.shellSrv.setGoBackPath('..', this.route);
 
@@ -312,7 +292,6 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
         //         })
         //     );
         // }
-
 
 
         this.subscriptions.push(

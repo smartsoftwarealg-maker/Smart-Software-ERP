@@ -18,6 +18,9 @@ export const LTM_LINE_TYPE_URL        = '/lookups/ltm_test_types';
 export const LTM_TEST_URL        = '/ltm/tests';
 export const LTM_BATCH_URL       = '/ltm/batch';
 export const LTM_TESTING_URL    = '/testings';
+export const LTM_PHYSICAL_TESTING_URL    = '/physical-testings';
+export const LTM_DEPOSIT_TESTING_URL    = '/deposit-testings';
+export const LTM_RM_TESTING_URL    = '/rm-testings';
 export const LTM_INJECTION_URL   = '/ltm/injection';
 export const LTM_MATTER_URL      = '/ltm/matters';
 export const LTM_LINE_MATTER_URL      = '/ltm/line-matters';
@@ -177,6 +180,10 @@ export interface LTMTesting {
     spoilageHour: Date;
     breakageHour: Date;
     silo: number;
+    pickupPoint?: number;
+    matterDescription?:string;
+    siloDescription?:string;
+    pickupDescription?:string;
 }
 
 export interface LTMTestInjection {

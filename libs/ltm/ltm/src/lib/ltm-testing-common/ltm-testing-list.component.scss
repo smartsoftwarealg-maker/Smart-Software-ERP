@@ -1,6 +1,7 @@
-.mat-column-matter,
-.mat-column-test {
-    flex: 1 1 150px;
+.mat-column-matterDescription,
+.mat-column-siloDescription,
+.mat-column-pickupDescription {
+    flex: 1 1 180px;
 }
 
 .mat-column-timeStamp {
@@ -18,7 +19,7 @@
 }
 .content_div {
     width: 96%;
-    max-width: 900px;
+    max-width: 1200px;
     margin: 8px auto;
 }
 

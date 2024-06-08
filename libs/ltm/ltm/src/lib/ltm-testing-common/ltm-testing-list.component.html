@@ -21,10 +21,31 @@
 <div class="content_div container">
     <mat-table mat-table [dataSource]="data" class="main-table" matSort (matSortChange)="sort($event)">
 
-        <ng-container matColumnDef="matter">
+        <ng-container matColumnDef="matterDescription">
             <mat-header-cell *matHeaderCellDef mat-sort-header translate>LTM_MATTER</mat-header-cell>
             <mat-cell *matCellDef="let e">
-                {{ e.matter }}
+                {{ e.matterDescription }}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="pickupDescription">
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>LTM_PICKUP_POINT</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{ e.pickupDescription }}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="equipmentDescription">
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>LTM_EQUIPMENT</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{ e.equipmentDescription }}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="siloDescription">
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>LTM_SILO</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{ e.siloDescription }}
             </mat-cell>
         </ng-container>
 
