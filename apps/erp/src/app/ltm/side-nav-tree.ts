@@ -10,7 +10,7 @@ import {
     ABS_LTM_MIXTURES_URL, ABS_LTM_NORM_URL,
     ABS_LTM_PERIODICITIES_URL, ABS_LTM_PICKUP_POINTS_URL, ABS_LTM_PRODUCT_URL, ABS_LTM_RAW_TESTINGS_URL,
     ABS_LTM_REPORTS_URL,
-    ABS_LTM_SAMPLE_TESTINGS_URL, ABS_LTM_SILO_URL, ABS_LTM_SUPPLIER_URL,
+    ABS_LTM_PHYSICAL_TESTINGS_URL, ABS_LTM_SILO_URL, ABS_LTM_SUPPLIER_URL,
     ABS_LTM_TEST_TYPE_URL,
     ABS_LTM_TESTINGS_ANOMALIES_URL, ABS_LTM_TESTINGS_URL,
     ABS_LTM_TESTS_URL,
@@ -135,12 +135,12 @@ export const ltmNavTree: SideNavNode = {
             accessRights: 'LTMTesting'
         },
 
-        {
-            name: 'LTM_TESTINGS',
-            icon: 'fa-regular fa-vial',
-            route: ABS_LTM_TESTINGS_URL,
-            accessRights: 'LTMTesting'
-        },
+        // {
+        //     name: 'LTM_TESTINGS',
+        //     icon: 'fa-regular fa-vial',
+        //     route: ABS_LTM_TESTINGS_URL,
+        //     accessRights: 'LTMTesting'
+        // },
 
         {
             name: 'LTM_BATCH_TESTINGS',
@@ -150,9 +150,9 @@ export const ltmNavTree: SideNavNode = {
         },
 
         {
-            name: 'LTM_SAMPLE_TESTINGS',
+            name: 'LTM_PHYSICAL_TESTINGS',
             icon: 'fa-regular fa-flask-gear',
-            route: ABS_LTM_SAMPLE_TESTINGS_URL,
+            route: ABS_LTM_PHYSICAL_TESTINGS_URL,
             accessRights: 'LTMTesting'
         },
 

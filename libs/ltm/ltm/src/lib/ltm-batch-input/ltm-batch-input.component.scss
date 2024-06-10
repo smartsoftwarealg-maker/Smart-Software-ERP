@@ -4,11 +4,6 @@
     gap: 0.5em;
 }
 
-.main_card {
-    min-height: 300px;
-    max-height: 80%;
-    padding: 8px 0;
-}
 
 .formula_card {
     display: flex;
@@ -21,12 +16,14 @@
 .formula_card .input_div {
     width: 150px;
 }
-
-mat-card {
+form, mat-card {
     width: 90%;
     max-width: 1500px;
     margin: 8px auto;
-    padding: 4px;
+}
+
+mat-card {
+    padding: 8px;
     border-radius: 1.4em;
     overflow-y: auto;
 }
@@ -72,8 +69,10 @@ form {
 
 .ctrl__div {
     flex: 1 1 30%;
-    gap: 1em;
-    height: 100%;
+    height: calc(100% - 8px);
+}
+.content__div {
+    flex: 1 1 70%;
 }
 
 .group_div {

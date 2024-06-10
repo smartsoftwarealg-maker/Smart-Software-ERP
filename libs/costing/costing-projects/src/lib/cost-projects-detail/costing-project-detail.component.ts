@@ -12,7 +12,7 @@ import { CommonUiLangModule } from '@ss/common/ui-lang';
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { CostingProjectService } from '../services/costing-project.service';
-import { filter, Observable, tap } from 'rxjs';
+import { filter, Observable } from 'rxjs';
 import { CostingPoolService } from '../services/costing-pool.service';
 import { CProductLineService } from '../services/product-line.service';
 import { CostingOhService } from '../services/costing-oh.service';

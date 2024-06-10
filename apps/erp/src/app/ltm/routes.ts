@@ -8,7 +8,6 @@ import {
     LTM_PERIODICITY_URL,
     LTM_CHARTS_URL,
     LTM_TEST_URL,
-    LTM_TESTING_URL,
     LTM_CHEMICAL_TEST_URL,
     DASHBOARD_URL,
     COMMON_REPORTS_URL,
@@ -71,33 +70,23 @@ import {
     LtmZoneListComponent,
     LtmZoneDetailComponent,
     LtmDepositDetailComponent,
-    LtmDepositListComponent, CHEMICAL_TEST, PHYSICAL_TEST, DEPOSIT_TEST, RAW_MATERIAL_TEST
+    LtmDepositListComponent,
+    CHEMICAL_TEST,
+    PHYSICAL_TEST,
+    DEPOSIT_TEST,
+    RAW_MATERIAL_TEST,
+    LtmPhysicalTestingListComponent, LtmDepositTestingListComponent, LtmRmTestingListComponent
 } from '@ss/ltm/ltm';
 import {loginGuard} from '../erp-guards';
 import {DashboardComponent} from '@ss/dashboard';
 import {ReportViewComponent} from '@ss/common/ui-report-param';
 import { UnitDetailComponent, UnitListComponent } from '@ss/common/ui-lookup';
-import { inject } from '@angular/core';
-import { LtmTestingService } from '@ss/ltm/ltm';
 import {
     LtmSupplierListComponent
 } from '@ss/ltm/ltm';
 import { LtmSupplierDetailComponent } from '@ss/ltm/ltm';
-export const testingGuard: CanActivateFn = () => inject(LtmTestingService).canActivate();
 
 export const ltmRoutes: Routes = [
-    {
-        path: LTM_CHEMICAL_TEST_URL, component: LtmBatchInputComponent, canActivate: [loginGuard], data: { testingMode: CHEMICAL_TEST }
-    },
-    {
-        path: LTM_PHYSICAL_TEST_URL, component: LtmBatchInputComponent, canActivate: [loginGuard], data: { testingMode: PHYSICAL_TEST }
-    },
-    {
-        path: LTM_DEPOSIT_TEST_URL, component: LtmBatchInputComponent, canActivate: [loginGuard], data: { testingMode: DEPOSIT_TEST }
-    },
-    {
-        path: LTM_RAW_MATERIAL_TEST_URL, component: LtmBatchInputComponent, canActivate: [loginGuard], data: { testingMode: RAW_MATERIAL_TEST }
-    },
     {
         path: LTM_ALERT_URL, component: LtmAlertsComponent, canActivate: [loginGuard]
     },
@@ -283,8 +272,22 @@ export const ltmRoutes: Routes = [
             { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
         ]
     },
+
+    // {
+    //     path: LTM_CHEMICAL_TEST_URL, component: LtmBatchInputComponent, canActivate: [loginGuard], data: { testingMode: CHEMICAL_TEST }
+    // },
+    // {
+    //     path: LTM_PHYSICAL_TEST_URL, component: LtmBatchInputComponent, canActivate: [loginGuard], data: { testingMode: PHYSICAL_TEST }
+    // },
+    // {
+    //     path: LTM_DEPOSIT_TEST_URL, component: LtmBatchInputComponent, canActivate: [loginGuard], data: { testingMode: DEPOSIT_TEST }
+    // },
+    // {
+    //     path: LTM_RAW_MATERIAL_TEST_URL, component: LtmBatchInputComponent, canActivate: [loginGuard], data: { testingMode: RAW_MATERIAL_TEST }
+    // },
+
     {
-        path: LTM_TESTING_URL,
+        path: LTM_CHEMICAL_TEST_URL,
         children: [
             {
                 path: LIST_URL,
@@ -294,9 +297,63 @@ export const ltmRoutes: Routes = [
             {
                 path: ':id',
                 component: LtmBatchInputComponent,
-                canActivate: [loginGuard, testingGuard],
+                canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService],
                 data: { testingMode: CHEMICAL_TEST }
+            },
+            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
+        ]
+    },
+    {
+        path: LTM_PHYSICAL_TEST_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: LtmPhysicalTestingListComponent,
+                canActivate: [loginGuard]
+            },
+            {
+                path: ':id',
+                component: LtmBatchInputComponent,
+                canActivate: [loginGuard],
+                canDeactivate: [CanDeactivateService],
+                data: { testingMode: PHYSICAL_TEST }
+            },
+            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
+        ]
+    },
+    {
+        path: LTM_DEPOSIT_TEST_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: LtmDepositTestingListComponent,
+                canActivate: [loginGuard]
+            },
+            {
+                path: ':id',
+                component: LtmBatchInputComponent,
+                canActivate: [loginGuard],
+                canDeactivate: [CanDeactivateService],
+                data: { testingMode: DEPOSIT_TEST }
+            },
+            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
+        ]
+    },
+    {
+        path: LTM_RAW_MATERIAL_TEST_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: LtmRmTestingListComponent,
+                canActivate: [loginGuard]
+            },
+            {
+                path: ':id',
+                component: LtmBatchInputComponent,
+                canActivate: [loginGuard],
+                canDeactivate: [CanDeactivateService],
+                data: { testingMode: RAW_MATERIAL_TEST }
             },
             { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
         ]

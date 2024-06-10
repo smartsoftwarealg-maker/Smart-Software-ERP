@@ -1,4 +1,4 @@
-import { Component, inject, Inject } from "@angular/core";
+import { Component } from "@angular/core";
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import { ActivatedRoute, RouterOutlet } from "@angular/router";
@@ -14,7 +14,6 @@ import { LogisticsUiDocInfoModule } from "@ss/logistics/ui-doc-info";
 import { AppArchiveModule } from "@ss/common/app-archive";
 import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
 import { CommonUiHourPickerModule } from "@ss/common/ui-hour-picker";
-import { LtmDepositService } from '../services/ltm-deposit.service';
 import { LtmSupplierService } from '../services/ltm-supplier.service';
 
 @Component({

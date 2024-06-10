@@ -1,30 +1,39 @@
-<div class="filter__div content_div">
-    <mat-form-field>
-        <mat-label translate>LTM_MATTER</mat-label>
-        <ss-auto-complete matInput
-                          [formControl]="matterCtrl"
-                          [model]="matterLookup">
-        </ss-auto-complete>
-    </mat-form-field>
+<mat-card class="content_div">
+    <div class="filter__div ">
+        <mat-form-field class="ltm__matter">
+            <mat-label translate>LTM_MATTER</mat-label>
+            <ss-auto-complete matInput
+                              [formControl]="matterCtrl"
+                              [model]="matterLookup">
+            </ss-auto-complete>
+        </mat-form-field>
 
-    <mat-form-field>
-        <mat-label translate>COMMON_FROM</mat-label>
-        <ss-date-picker [formControl]="fromCtrl"></ss-date-picker>
-    </mat-form-field>
+        <mat-form-field>
+            <mat-label translate>COMMON_FROM</mat-label>
+            <ss-date-picker [formControl]="fromCtrl"></ss-date-picker>
+        </mat-form-field>
 
-    <mat-form-field>
-        <mat-label translate>COMMON_TO</mat-label>
-        <ss-date-picker [formControl]="toCtrl"></ss-date-picker>
-    </mat-form-field>
+        <mat-form-field>
+            <mat-label translate>COMMON_TO</mat-label>
+            <ss-date-picker [formControl]="toCtrl"></ss-date-picker>
+        </mat-form-field>
 
-</div>
-<div class="content_div container">
+    </div>
+</mat-card>
+<div class="content_div table__container">
     <mat-table mat-table [dataSource]="data" class="main-table" matSort (matSortChange)="sort($event)">
 
         <ng-container matColumnDef="matterDescription">
             <mat-header-cell *matHeaderCellDef mat-sort-header translate>LTM_MATTER</mat-header-cell>
             <mat-cell *matCellDef="let e">
                 {{ e.matterDescription }}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="supplierDescription">
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>LOGISTICS_SUPPLIER</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{ e.supplierDescription }}
             </mat-cell>
         </ng-container>
 
@@ -36,7 +45,7 @@
         </ng-container>
 
         <ng-container matColumnDef="equipmentDescription">
-            <mat-header-cell *matHeaderCellDef mat-sort-header translate>LTM_EQUIPMENT</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_EQUIPMENT</mat-header-cell>
             <mat-cell *matCellDef="let e">
                 {{ e.equipmentDescription }}
             </mat-cell>
@@ -49,14 +58,20 @@
             </mat-cell>
         </ng-container>
 
-        <ng-container matColumnDef="selection">
-            <mat-header-cell *matHeaderCellDef>
-                <mat-checkbox (change)="addAll($event)"></mat-checkbox>
-            </mat-header-cell>
+        <ng-container matColumnDef="zoneDescription">
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>LTM_ZONE</mat-header-cell>
             <mat-cell *matCellDef="let e">
-                <mat-checkbox (change)="addId(e.id)" [checked]="isSelected(e.id)"></mat-checkbox>
+                {{ e.zoneDescription }}
             </mat-cell>
         </ng-container>
+
+        <ng-container matColumnDef="depositDescription">
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>LTM_DEPOSIT</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{ e.depositDescription }}
+            </mat-cell>
+        </ng-container>
+
 
         <ng-container matColumnDef="test">
             <mat-header-cell *matHeaderCellDef mat-sort-header translate>LTM_TEST</mat-header-cell>
@@ -65,11 +80,17 @@
             </mat-cell>
         </ng-container>
 
-
         <ng-container matColumnDef="value">
             <mat-header-cell *matHeaderCellDef mat-sort-header translate>LTM_VALUE</mat-header-cell>
             <mat-cell *matCellDef="let e">
                 {{ e.value | number: '1.2-4' }}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="sampleNo">
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>LTM_SAMPLE_NO</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{ e.sampleNo  }}
             </mat-cell>
         </ng-container>
 
@@ -88,7 +109,7 @@
         </ng-container>
 
         <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
-        <mat-row class="selectable" [class.selected]="row.id == selected" (click)="select(row.id)"
+        <mat-row class="selectable" [class.selected]="row.id == selected" (click)="selectRow(row)"
                  *matRowDef="let row; columns: displayedColumns;"></mat-row>
     </mat-table>
 </div>
