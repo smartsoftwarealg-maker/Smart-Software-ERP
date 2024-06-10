@@ -18,9 +18,13 @@ export const LTM_LINE_TYPE_URL        = '/lookups/ltm_test_types';
 export const LTM_TEST_URL        = '/ltm/tests';
 export const LTM_BATCH_URL       = '/ltm/batch';
 export const LTM_TESTING_URL    = '/testings';
+export const LTM_PHYSICAL_TESTING_URL    = '/physical-testings';
+export const LTM_DEPOSIT_TESTING_URL    = '/deposit-testings';
+export const LTM_RM_TESTING_URL    = '/rm-testings';
 export const LTM_INJECTION_URL   = '/ltm/injection';
 export const LTM_MATTER_URL      = '/ltm/matters';
 export const LTM_LINE_MATTER_URL      = '/ltm/line-matters';
+export const LTM_CENTER_MATTER_URL      = '/ltm/center-matters';
 export const LRM_PERIODICITY_URL = '/lookups/ltm_periodicities';
 export const LTM_LINE_SELECT_URL = '/ltm/ltm_selection';
 export const LTM_SAMPLES_URL = '/ltm/samples';
@@ -143,6 +147,7 @@ export interface LTMBatch {
     centerId: number;
     parentId: number;
     timeStamp: Date|string;
+    hour?: number;
     sampleNo?: string;
     spoilageHour?: number;
     breakageHour?: number;
@@ -151,8 +156,10 @@ export interface LTMBatch {
     bleacher?: number;
     zone?: number;
     deposit?: number;
+    pickupPoint?: number;
     supplier?: number;
     userId: number;
+    testType: number;
     creationTime: Date;
     tests: LTMTestingLine[];
 }
@@ -177,7 +184,14 @@ export interface LTMTesting {
     spoilageHour: Date;
     breakageHour: Date;
     silo: number;
-}
+    pickupPoint?: number;
+    matterDescription?:string;
+    siloDescription?:string;
+    pickupDescription?:string;
+    equipmentDescription?: string;
+    zoneDescription?: string;
+    supplierDescription?: string;
+    depositDescription?: string;}
 
 export interface LTMTestInjection {
     line: number;

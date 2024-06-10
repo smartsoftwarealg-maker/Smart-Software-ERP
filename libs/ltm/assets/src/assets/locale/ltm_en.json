@@ -36,7 +36,7 @@
     "ANOMALY":           "Anomaly",
     "ANOMALIES":         "Anomalies",
     "SHOW_KPI":          "Show in KPI",
-    "SAMPLE_TESTINGS":   "Physical testings",
+    "PHYSICAL_TESTINGS":   "Physical testings",
     "SAMPLE_NO":         "Sample No.",
     "SPOILAGE_HOUR":     "Spoilage hour",
     "BREAKAGE_HOUR":     "Breakage hour",

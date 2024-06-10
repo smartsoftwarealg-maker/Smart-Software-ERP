@@ -36,7 +36,7 @@
     "ANOMALY":           "شذوذ",
     "ANOMALIES":         "شذوذ",
     "SHOW_KPI":          "إظهار في تقارير الأداء",
-    "SAMPLE_TESTINGS":   "اختبار العينات",
+    "PHYSICAL_TESTINGS":   "اختبار العينات",
     "SAMPLE_NO":         "رقم العينة",
     "SPOILAGE_HOUR":     "ساعة التلف",
     "BREAKAGE_HOUR":     "ساعة الانكسار",

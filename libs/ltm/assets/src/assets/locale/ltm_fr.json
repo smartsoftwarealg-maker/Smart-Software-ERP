@@ -36,7 +36,7 @@
     "ANOMALY":           "Anomalie",
     "ANOMALIES":         "Anomalies",
     "SHOW_KPI":          "Afficher dans KPI",
-    "SAMPLE_TESTINGS":   "Tests physiques",
+    "PHYSICAL_TESTINGS":   "Tests physiques",
     "SAMPLE_NO":         "N° d'échantillon.",
     "SPOILAGE_HOUR":     "Heur gâchage",
     "BREAKAGE_HOUR":     "Heur casse",

@@ -30,11 +30,8 @@ export class LtmBatchService extends BaseEntityService<LTMBatch> {
         return this.httpSrv.get<LTMTesting[]>(LTM_BATCH_URL, params);
     }
 
-    input(matterId: number, time: Date, sample?: string): Observable<LTMBatch> {
-        const params0 = new HttpParams()
-            .set('matter', matterId)
-            .set('time', dateTimeToYmdStr(time));
-        const params = sample? params0.set('sample', sample) : params0;
+    input(id: number): Observable<LTMBatch> {
+        const params = new HttpParams().set('id', id);
         return this.httpSrv.get<LTMBatch>(LTM_BATCH_URL, params);
     }
 

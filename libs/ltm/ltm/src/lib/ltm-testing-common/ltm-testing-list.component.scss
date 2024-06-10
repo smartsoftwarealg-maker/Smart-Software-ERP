@@ -1,0 +1,52 @@
+.ltm__matter {
+    min-width: 20em;
+    max-width: 94%;
+}
+.mat-column-matterDescription,
+.mat-column-siloDescription,
+.mat-column-supplierDescription,
+.mat-column-equipmentDescription,
+.mat-column-pickupDescription {
+    flex: 1 1 180px;
+}
+
+.mat-column-timeStamp,
+.mat-column-sampleNo {
+    flex: 1 1 120px;
+}
+
+.mat-column-selection {
+    flex: 1 1 50px;
+    justify-content: center;
+}
+
+.mat-column-value {
+    flex: 1 1 100px;
+    justify-content: right;
+}
+.content_div {
+    width: 96%;
+    max-width: 1200px;
+    margin: 8px auto;
+}
+
+.table__container {
+    min-height: calc(100% - 180px);
+    overflow-x: auto;
+}
+
+mat-table {
+    height: 100%;
+    min-width: 1000px;
+}
+
+mat-card {
+    padding: 16px 8px 0;
+    border-radius: 1.4em;
+}
+.filter__div {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1em;
+    align-content: center;
+}
