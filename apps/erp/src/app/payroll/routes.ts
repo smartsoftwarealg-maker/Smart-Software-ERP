@@ -27,7 +27,7 @@ import {
     PAY_XLS_INJECTION,
     PAYROLL_EMPLOYEES_URL,
     PAYROLL_INACTIVE_EMPLOYEES_URL
-} from "../common";
+} from '../common';
 import {
     ABS_INDEX_URL,
     CanDeactivateService,
