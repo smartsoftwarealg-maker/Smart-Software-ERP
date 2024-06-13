@@ -90,14 +90,16 @@
                     <mat-label translate>LTM_PICKUP_POINT</mat-label>
                     <ss-auto-complete matInput
                                       [model]="pickupLookup"
-                                      formControlName="pickupPoint">
+                                      formControlName="pickupPoint"
+                                      required>
                     </ss-auto-complete>
                 </mat-form-field>
                 <mat-form-field class="default-100">
                     <mat-label translate>COMMON_EQUIPMENT</mat-label>
                     <ss-auto-complete matInput
                                       [model]="equipmentLookup"
-                                      formControlName="equipment">
+                                      formControlName="equipment"
+                                      required>
                     </ss-auto-complete>
                 </mat-form-field>
 

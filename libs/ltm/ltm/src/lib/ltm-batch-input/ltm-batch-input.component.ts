@@ -238,9 +238,13 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
         );
         this.form.controls.timeStamp.setValue(this.TODAY);
         this.form.controls.testType.setValue(this.testingMode());
-        if (this.testingMode() === CHEMICAL_TEST) {
+        if (this.testingMode() === CHEMICAL_TEST || this.testingMode() === PHYSICAL_TEST) {
+            this.form.controls.equipment.addValidators(Validators.required);
+            this.form.controls.pickupPoint.addValidators(Validators.required);
             this.form.controls.hour.addValidators(Validators.required);
         } else {
+            this.form.controls.equipment.removeValidators(Validators.required);
+            this.form.controls.pickupPoint.removeValidators(Validators.required);
             this.form.controls.hour.removeValidators(Validators.required);
         }
         if (this.testingMode() === PHYSICAL_TEST) {
