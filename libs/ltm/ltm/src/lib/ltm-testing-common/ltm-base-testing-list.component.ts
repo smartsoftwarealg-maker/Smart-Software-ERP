@@ -13,6 +13,7 @@ import { DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
 import { LtmBaseTestingClass } from '../services/ltm-base-testing.class';
 import { LtmMatterTestService } from '../services/ltm-matter-test.service';
 import { LtmCenterMatterService } from '../services/ltm-center-matter.service';
+import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 
 @Directive()
 export class LtmBaseTestingListComponent extends BaseEntityListComponent<LTMTesting> implements OnInit {
@@ -74,5 +75,25 @@ export class LtmBaseTestingListComponent extends BaseEntityListComponent<LTMTest
     override selectRow(row: LTMTesting) {
         super.selectRow(row);
         this.matterTestSrv.setParentId(row?.parentId || 0);
+    }
+
+    override ngOnInit() {
+        super.ngOnInit();
+        this.subscriptions.push(
+            this.fromCtrl
+                .valueChanges
+                .pipe(
+                    debounceTime(300),
+                    distinctUntilChanged()
+                ).subscribe(() => this.refresh())
+        );
+        this.subscriptions.push(
+            this.toCtrl
+                .valueChanges
+                .pipe(
+                    debounceTime(300),
+                    distinctUntilChanged()
+                ).subscribe(() => this.refresh())
+        );
     }
 }

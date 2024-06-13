@@ -85,7 +85,7 @@ export abstract class AbstractEntityComponent<T extends { id: number }> implemen
 
     ngOnInit() {
         const rights = this.shellSrv.getCurrentNodeRights();
-        this.isEditable = rights.edit;
+        this.isEditable = rights.edit || rights.write;
     }
 
     ngOnDestroy() {
