@@ -70,13 +70,7 @@ export interface LTMLineMatter {
     centerId: number;
     matterId: number;
     description?: string;
-    product?: number;
-    equipment?: number;
-    pickupPoint?: number;
     norm?: number;
-    productDescription?: string;
-    pickupPointDescription?: string;
-    equipmentDescriptionAr?: string;
     min?: number;
     max?: number;
     normMin?: number;

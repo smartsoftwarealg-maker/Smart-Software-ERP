@@ -420,8 +420,7 @@ $theme-2-warn:    mat.m2-define-palette(mat.$m2-red-palette);
             primary: $theme-2-primary,
             accent: $theme-2-accent,
             warn: $theme-2-warn
-        ),
-        density: -1
+        )
     ));
 
     @include mat.all-component-themes($theme);
@@ -491,8 +490,7 @@ $theme-3-warn:    mat.m2-define-palette(mat.$m2-red-palette);
             primary: $theme-3-primary,
             accent: $theme-3-accent,
             warn: $theme-3-warn
-        ),
-        density: -1
+        )
     ));
 
     @include mat.all-component-themes($theme);
@@ -562,8 +560,7 @@ $theme-4-warn:    mat.m2-define-palette(mat.$m2-red-palette);
             primary: $theme-4-primary,
             accent: $theme-4-accent,
             warn: $theme-4-warn
-        ),
-        density: -1
+        )
     ));
 
     @include mat.all-component-themes($theme);

@@ -74,9 +74,7 @@ export class LineMatterDetailComponent extends BaseEntityDetailComponent<LTMLine
             id:          [b.id],
             centerId:    [b.centerId || this.loginSrv.appCtx.center],
             matterId:    [b.matterId],
-            product:     [b.product],
             norm:        [b.norm],
-            pickupPoint: [b.pickupPoint]
         });
     }
 

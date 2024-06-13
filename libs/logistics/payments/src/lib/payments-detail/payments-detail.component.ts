@@ -86,7 +86,6 @@ export class PaymentsDetailComponent extends BaseEntityDetailComponent<Payment> 
     private onAmountChange(ctrl: string): void {
         const src = ctrl == 'debit' ? 'credit' : 'debit';
         const value = this.form.controls[src].value;
-        console.log(value);
         if (value > 0.0) {
             this.form.controls[ctrl].setValue(0);
             this.form.controls[ctrl].disable({onlySelf: true, emitEvent: false});

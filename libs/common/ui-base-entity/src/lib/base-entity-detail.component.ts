@@ -61,8 +61,8 @@ export abstract class BaseEntityDetailComponent<T extends { id: number }> extend
                 switchMap(_ => this.shellSrv.loadUserRights()),
                 tap(_ => {
                     const rights = this.shellSrv.getCurrentNodeRights();
-                    this.saveButton.visible &&= rights.edit;
-                    this.isEditable = rights.edit;
+                    this.saveButton.visible &&= rights.edit || rights.write;
+                    this.isEditable = rights.edit || rights.write;
                 }),
                 switchMap(_ => this.getRouteParam()),
                 tap(p => this.queryId = +p['id'] || 0),

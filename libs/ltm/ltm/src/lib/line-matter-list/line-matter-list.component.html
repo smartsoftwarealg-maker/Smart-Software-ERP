@@ -1,24 +1,17 @@
 <div class="table_div content_div">
     <mat-table mat-table [dataSource]="data" class="main-table" matSort (matSortChange)="sort($event)">
 
-        <ng-container matColumnDef="description">
-            <mat-header-cell *matHeaderCellDef mat-sort-header translate>ADMINISTRATION_DESCRIPTION</mat-header-cell>
+        <ng-container matColumnDef="normDescription">
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>LTM_NORM</mat-header-cell>
             <mat-cell *matCellDef="let e">
-                {{e.description}}
+                {{e.normDescription}}
             </mat-cell>
         </ng-container>
 
-        <ng-container matColumnDef="productDescription">
-            <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_PRODUCT</mat-header-cell>
+        <ng-container matColumnDef="matterDescription">
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>LTM_MATTER</mat-header-cell>
             <mat-cell *matCellDef="let e">
-                {{e.productDescription}}
-            </mat-cell>
-        </ng-container>
-
-        <ng-container matColumnDef="pickupPointDescription">
-            <mat-header-cell *matHeaderCellDef mat-sort-header translate>LTM_PICKUP_POINT</mat-header-cell>
-            <mat-cell *matCellDef="let e">
-                {{e.pickupPointDescription}}
+                {{e.matterDescription}}
             </mat-cell>
         </ng-container>
 
