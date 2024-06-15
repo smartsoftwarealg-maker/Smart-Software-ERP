@@ -76,5 +76,11 @@
     "LOAN":              "Pret",
     "PAYMENT_INFO":      "Informations de paiement",
     "CACO_FUND":         "CACOBATPH",
-    "UPDATE_ALL":        "Tout mettre à jour"
+    "UPDATE_ALL":        "Tout mettre à jour",
+    "CODIFY_ID":         "Codifier l'identifiant avec le code du centre",
+    "MAX_SALARY":        "Salaire maximum",
+    "VACATION_DAYS":     "Jours de vacances",
+    "PERSONAL_ROLE":     "Rôle des informations personnelles",
+    "PAYROLL_ROLE":      "Rôle des données de paie",
+    "IEP_FORMULA":       "Formule IEP"
 }

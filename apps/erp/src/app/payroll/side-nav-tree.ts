@@ -20,7 +20,7 @@ import {
     ABS_MONTH_CLOSER_URL,
     ABS_MONTH_SELECTOR_URL,
     ABS_PAYROLL_DASHBOARD_URL,
-    ABS_PAYROLL_EMPLOYEES_URL,
+    ABS_PAYROLL_EMPLOYEES_URL, ABS_PAYROLL_OPTIONS_URL,
     ABS_PAYROLL_REPORT_PRIVILEGE_URL,
     ABS_PAYROLL_REPORT_RIGHT_URL, ABS_SALARY_GRID_UPDATE_URL,
     ABS_SALARY_GRID_URL,
@@ -195,6 +195,13 @@ export const payrollNavTree: SideNavNode = {
             icon: 'fa-solid fa-ranking-star',
             route: ABS_PAYROLL_REPORT_PRIVILEGE_URL,
             accessRights: 'RPrivilege'
+        },
+
+        {
+            name: 'COMMON_OPTIONS',
+            icon: 'fas fa-tools',
+            route: ABS_PAYROLL_OPTIONS_URL,
+            accessRights: 'POption'
         },
     ],
     accessRights: 'PAYROLL'

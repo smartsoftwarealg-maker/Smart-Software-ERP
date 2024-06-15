@@ -20,7 +20,7 @@ import {
     PAY_LOANS_URL,
     PAY_MONTH_CANCELER,
     PAY_MONTH_CLOSER,
-    PAY_MONTH_SELECTOR,
+    PAY_MONTH_SELECTOR, PAY_OPTIONS_URL,
     PAY_SALARY_GRID,
     PAY_SPECIAL_PAYROLL_URL,
     PAY_VACATION_PLANNING,
@@ -105,7 +105,6 @@ import {
 } from '@ss/payroll/api-employee';
 import {DashboardComponent} from '@ss/dashboard';
 import {
-    AGENT_ARCHIVES,
     AppArchiveDetailComponent,
     AppArchiveListComponent,
     EMPLOYEE_ARCHIVES
@@ -117,6 +116,7 @@ import { ReportPrivilegesComponent } from '@common/report-privileges';
 import {
     SalaryRankDetailComponent
 } from '@ss/payroll/salary-grid';
+import { PayrollOptionsComponent } from 'payroll/payroll-options';
 
 export const mainRoutes: Routes = [
     {
@@ -131,6 +131,11 @@ export const mainRoutes: Routes = [
     {
         path: PAY_EDO_URL,
         component: EdoComponent,
+        canActivate: [loginGuard]
+    },
+    {
+        path: PAY_OPTIONS_URL,
+        component: PayrollOptionsComponent,
         canActivate: [loginGuard]
     },
     {

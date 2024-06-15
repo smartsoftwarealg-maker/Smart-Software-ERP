@@ -268,6 +268,7 @@ export const PAY_EDO_URL              = 'edo';
 export const PAY_DAS_URL              = 'das';
 export const PAY_ARCHIVE_VIEWER_URL   = 'archive-viewer';
 export const PAY_CACO_URL             = 'caco';
+export const PAY_OPTIONS_URL             = 'payroll-options';
 
 // Assets
 export const ASSETS_ASSET_URL            = 'assets';
@@ -675,6 +676,7 @@ export const ABS_SALARY_GRID_UPDATE_URL     = '/' + [MAIN_PAGE_URL, PAYROLL_APP_
 export const ABS_PAYROLL_DASHBOARD_URL = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, DASHBOARD_URL].join('/');
 export const ABS_PAYROLL_REPORT_RIGHT_URL = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, ADMIN_REPORT_RIGHTS_URL].join('/');
 export const ABS_PAYROLL_REPORT_PRIVILEGE_URL = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, ADMINISTRATION_REPORT_PRIVILEGE_URL].join('/');
+export const ABS_PAYROLL_OPTIONS_URL = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, PAY_OPTIONS_URL].join('/');
 
 // ltm
 export const ABS_LTM_MATTERS_URL       = '/' + [MAIN_PAGE_URL, LTM_APP_URL, LTM_MATTER_URL].join('/');
