@@ -67,13 +67,17 @@
     "CACO_CONTRIBUTION": "اشتراك كوكبات",
     "CACO": "تقرير كوكبات",
     "NORMAL_PAY": "كشوف رواتب عادية",
-    "MIN":  "الحد الأدنى للقيمة",
-    "MAX":  "القيمة القصوى",
     "FOLLOWUP": "التابع",
     "STRICT_POSITIVE": "أكبر من الصفر",
     "ARCHIVE_GENERATOR": "منشئ الأرشيف",
     "LOAN":              "القرض",
     "PAYMENT_INFO":      "معلومات الدفع",
     "CACO_FUND":         "الكوكبات",
-    "UPDATE_ALL":        "تحديث الجميع"
+    "UPDATE_ALL":        "تحديث الجميع",
+    "CODIFY_ID":         "تدوين الهوية برمز المركز",
+    "MAX_SALARY":        "الحد الأقصى للراتب",
+    "VACATION_DAYS":     "أيام الإجازة",
+    "PERSONAL_ROLE":     "دور المعلومات الشخصية",
+    "PAYROLL_ROLE":      "دور بيانات الرواتب",
+    "IEP_FORMULA":       "صيغة منحة الخبرة المهنية"
 }

@@ -75,5 +75,11 @@
     "LOAN":              "Loan",
     "PAYMENT_INFO":      "Payment information",
     "CACO_FUND":         "CACOBABPT",
-    "UPDATE_ALL":        "Update all"
+    "UPDATE_ALL":        "Update all",
+    "CODIFY_ID":         "Codify ID with the center code",
+    "MAX_SALARY":        "Maximum salary",
+    "VACATION_DAYS":     "Vacation days",
+    "PERSONAL_ROLE":     "Role of personal information",
+    "PAYROLL_ROLE":      "Role of payroll data",
+    "IEP_FORMULA":       "Formula of Professional experience allowance"
 }

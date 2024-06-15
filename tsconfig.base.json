@@ -680,6 +680,9 @@
             "@ss/web-arch/ui": ["libs/web-arch/ui/src/index.ts"],
             "@ss/workflow": ["libs/workflow/src/index.ts"],
             "home.page": ["libs/scheduled-sales/home-page/src/index.ts"],
+            "payroll/payroll-options": [
+                "libs/payroll/payroll-options/src/index.ts"
+            ],
             "social/reimbursements": ["libs/social/reimbursements/src/index.ts"]
         }
     },
