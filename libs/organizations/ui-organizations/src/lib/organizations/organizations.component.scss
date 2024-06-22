@@ -45,7 +45,7 @@
         height: 48px;
         line-height: 48px;
         width: 100%;
- 
+
         .responsible-img {
             user-select: none;
             width: 48px;
@@ -73,7 +73,7 @@
 }
 
 // just show the image when the chart is zoomed out
-.ng13-org-chart-zoom-out { // predefined in the library, applyed to show overview
+.ng13-org-chart-zoom-out { /* predefined in the library, applyed to show overview*/
     .chart-node:not(:hover) {
         padding: 0;
         .node-name {
@@ -85,12 +85,12 @@
         .responsible {
             width: 32px;
             height: 32px;
- 
+
             .responsible-img {
                 width: 32px;
                 height: 32px;
             }
-    
+
             .responsible-name {
                 display: none;
             }

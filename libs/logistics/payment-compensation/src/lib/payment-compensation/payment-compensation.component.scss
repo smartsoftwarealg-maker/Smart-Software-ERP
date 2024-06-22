@@ -70,10 +70,10 @@ mat-tree {
 .mat-tree-node {
     user-select: none;
     cursor: move;
-    &.cdk-drag-preview { // while dragging
+    &.cdk-drag-preview {
         @include mat.elevation(12);
     }
-    &.cdk-drag-placeholder { // potential drop area
+    &.cdk-drag-placeholder {
         opacity: 0;
     }
 }

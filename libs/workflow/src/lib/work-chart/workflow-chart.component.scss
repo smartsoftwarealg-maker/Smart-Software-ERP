@@ -42,7 +42,7 @@ angular-org-chart {
 }
 
 // just show the image when the chart is zoomed out
-.ng13-org-chart-zoom-out { // predefined in the library, applyed to show overview
+.ng13-org-chart-zoom-out { /* predefined in the library, applyed to show overview*/
     .chart-node:not(:hover) {
         padding: 0;
 
