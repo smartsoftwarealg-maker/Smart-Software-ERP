@@ -1,11 +1,10 @@
-import { Component, inject, Inject } from "@angular/core";
+import { Component, inject } from '@angular/core';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import { ActivatedRoute, RouterOutlet } from "@angular/router";
 import { ReactiveFormsModule, UntypedFormBuilder, Validators } from "@angular/forms";
 import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
-import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from "@ss/common/ui-auto-complete";
-import { Lookup, UnitService } from '@ss/common/api-lookup';
+import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
 import { CommonModule } from "@angular/common";
 import { MaterialModule } from "@ss/common/api-common";
 import { CommonUiLangModule } from "@ss/common/ui-lang";
@@ -14,8 +13,9 @@ import { LogisticsUiDocInfoModule } from "@ss/logistics/ui-doc-info";
 import { AppArchiveModule } from "@ss/common/app-archive";
 import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
 import { CommonUiHourPickerModule } from "@ss/common/ui-hour-picker";
-import { LtmProductLookupService } from '../services/ltm-product-lookup.service';
 import { LtmPickupPointService } from '../services/ltm-pickup-point.service';
+import { LTMPickupPoint } from '../ltm-api';
+import { LtmEquipmentService } from '../services/ltm-equipment.service';
 
 @Component({
     selector: 'ss-ltm-product-detail',
@@ -37,8 +37,10 @@ import { LtmPickupPointService } from '../services/ltm-pickup-point.service';
         CommonUiHourPickerModule
     ],
 })
-export class LtmPickupPointDetailComponent extends BaseEntityDetailComponent<Lookup> {
+export class LtmPickupPointDetailComponent extends BaseEntityDetailComponent<LTMPickupPoint> {
+    private equipmentSrv = inject(LtmEquipmentService);
 
+    equipmentLookup = new DefaultAutoCompleteModel(this.equipmentSrv);
 
     constructor(
         public override entitySrv: LtmPickupPointService,
@@ -50,12 +52,12 @@ export class LtmPickupPointDetailComponent extends BaseEntityDetailComponent<Loo
         super(entitySrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'LTM_PICKUP_POINTS');
     }
 
-    public override setupForm(b: Lookup) {
-        // Make sure to update the template if you edit the configuration here
+    public override setupForm(b: LTMPickupPoint) {
         return this.formBuilder.group({
             id:            [b.id],
             description:   [b.description, Validators.required],
             descriptionAr: [b.descriptionAr],
+            equipmentId:   [b.equipmentId]
         });
     }
 }

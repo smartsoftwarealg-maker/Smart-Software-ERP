@@ -24,7 +24,7 @@
     <mat-table mat-table matSort [dataSource]="data$ | async" class="main-table" (matSortChange)="sort($event)">
 
         <ng-container matColumnDef="matterDescription">
-            <mat-header-cell *matHeaderCellDef mat-sort-header translate>LTM_TEST</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>LTM_MATTER</mat-header-cell>
             <mat-cell *matCellDef="let e">
                 {{e.matterDescription}}
             </mat-cell>

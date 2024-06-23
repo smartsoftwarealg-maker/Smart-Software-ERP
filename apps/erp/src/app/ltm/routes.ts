@@ -1,4 +1,4 @@
-import { CanActivateFn, Routes } from '@angular/router';
+import { Routes } from '@angular/router';
 
 import {
     ABS_INDEX_URL, CanDeactivateService, LIST_URL,

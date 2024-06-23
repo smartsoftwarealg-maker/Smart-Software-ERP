@@ -11,7 +11,7 @@ export const LTM_SUPPLIER_URL        = '/lookups/ltm_suppliers';
 export const LTM_NORM_URL        = '/lookups/ltm_norms';
 export const LTM_PRODUCT_LOOKUP_URL        = '/lookups/ltm_products';
 export const LTM_PRODUCTS_URL        = '/ltm/products';
-export const LTM_PICKUP_POINTS_URL        = '/lookups/ltm_pickup_points';
+export const LTM_PICKUP_POINTS_URL        = '/ltm/pickup-points';
 export const LTM_TESTING_ANOMALIES_URL        = '/ltm/testing-anomalies';
 export const LTM_MIXTURE_DETAIL_URL        = '/detail';
 export const LTM_LINE_TYPE_URL        = '/lookups/ltm_test_types';
@@ -222,7 +222,17 @@ export interface LTMProduct {
     descriptionAr?: string;
 }
 
+export interface LTMPickupPoint {
+    id: number;
+    description: string,
+    descriptionAr?: string;
+    equipmentId?: number;
+    equipmentDescription?: string;
+}
+
+
 export const CHEMICAL_TEST = 1;
 export const PHYSICAL_TEST = 2;
 export const DEPOSIT_TEST = 3;
 export const RAW_MATERIAL_TEST = 4;
+
