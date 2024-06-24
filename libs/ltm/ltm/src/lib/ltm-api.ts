@@ -12,6 +12,7 @@ export const LTM_NORM_URL        = '/lookups/ltm_norms';
 export const LTM_PRODUCT_LOOKUP_URL        = '/lookups/ltm_products';
 export const LTM_PRODUCTS_URL        = '/ltm/products';
 export const LTM_PICKUP_POINTS_URL        = '/ltm/pickup-points';
+export const LTM_PICKUP_POINTS_CHILD_URL        = '/pickup-points';
 export const LTM_TESTING_ANOMALIES_URL        = '/ltm/testing-anomalies';
 export const LTM_MIXTURE_DETAIL_URL        = '/detail';
 export const LTM_LINE_TYPE_URL        = '/lookups/ltm_test_types';
@@ -70,6 +71,7 @@ export interface LTMLineMatter {
     centerId: number;
     matterId: number;
     description?: string;
+    matterDescription?: string;
     norm?: number;
     min?: number;
     max?: number;
@@ -230,6 +232,12 @@ export interface LTMPickupPoint {
     equipmentDescription?: string;
 }
 
+export interface LTMMixturePickupPoint {
+    id: number;
+    parentId: number;
+    pickupPoint: number;
+    pickPointDescription?: string;
+}
 
 export const CHEMICAL_TEST = 1;
 export const PHYSICAL_TEST = 2;

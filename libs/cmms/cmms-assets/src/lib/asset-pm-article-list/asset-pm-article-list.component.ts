@@ -12,7 +12,6 @@ import { MatInputModule } from '@angular/material/input';
 import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
 import { MatButtonModule } from '@angular/material/button';
 import { MaterialModule } from '@ss/common/api-common';
-import { MatDialog } from '@angular/material/dialog';
 import { PMPart } from '../services/asset-api';
 import { CmmsAssetPmArticleService } from '../services/cmms-asset-pm-article.service';
 import { AssetPmService } from '../services/asset-pm.service';
@@ -41,7 +40,7 @@ import { PM } from '@ss/cmms/cmms-api';
 })
 export class AssetPmArticleListComponent extends BaseChildEntityListComponent<PMPart> {
     private pmSrv = inject(AssetPmService);
-    private dialog = inject(MatDialog);
+    // private dialog = inject(MatDialog);
 
     pmLookup = new DefaultAutoCompleteModel(this.pmSrv);
 

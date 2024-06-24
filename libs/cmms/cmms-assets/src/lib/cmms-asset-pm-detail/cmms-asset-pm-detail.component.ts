@@ -4,19 +4,10 @@ import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { Asset } from '../services/asset-api';
 import { AGENT_ARCHIVES, AppArchiveModule, AppArchiveService } from '@ss/common/app-archive';
 import { ActivatedRoute, Router, RouterOutlet } from '@angular/router';
-import { ConsumerService, CustomerService } from '@ss/logistics/api-agent';
 import { IsParamService, LoginService, MaterialModule } from '@ss/common/api-common';
 import { AssetEndsService } from '@ss/accounting/accounting-api';
-import { MatDialog } from '@angular/material/dialog';
-import {
-    FurnitureStatusService,
-    Lookup,
-    LookupsService,
-    MarkService,
-    OfficeService
-} from '@ss/common/api-lookup';
+import {FurnitureStatusService, Lookup, LookupsService, OfficeService} from '@ss/common/api-lookup';
 import { AccountAutocompleteModel, AccountService } from '@ss/accounting/api-accounts';
-import { CostCenterService } from '@ss/logistics/api-cost-center';
 import { AssetClassService, AssetsService } from '@ss/assets-component';
 import {
     AssetReceptionService,
@@ -45,7 +36,6 @@ import { QRCodeModule } from 'angularx-qrcode';
 import { CMMSFunctionService } from '@ss/cmms/lookups';
 import { AssetPmService } from '../services/asset-pm.service';
 import { CMMSAssetTriggerService } from '@ss/cmms/asset-triggers';
-import { CmmsAssetPmArticleService } from '../services/cmms-asset-pm-article.service';
 
 @Component({
     selector: 'ss-cmms-asset-detail',
@@ -55,25 +45,25 @@ import { CmmsAssetPmArticleService } from '../services/cmms-asset-pm-article.ser
     styleUrls: ['./cmms-asset-pm-detail.component.scss'],
 })
 export class CmmsAssetPmDetailComponent extends BaseEntityDetailComponent<Asset> implements OnInit {
-    private partSrv = inject(CmmsAssetPmArticleService);
+    // private partSrv = inject(CmmsAssetPmArticleService);
     private pmSrv = inject(AssetPmService);
     private router = inject(Router);
     private functionSrv = inject(CMMSFunctionService);
     private assetSrv = inject(AssetsService);
     private archiveSrv = inject(AppArchiveService);
-    private customerSrv = inject(CustomerService);
+    // private customerSrv = inject(CustomerService);
     private loginSrv = inject(LoginService);
     private endSrv = inject(AssetEndsService);
-    private dialog = inject(MatDialog);
+    // private dialog = inject(MatDialog);
     private officeSrv =  inject(OfficeService);
     private triggerSrv = inject(CMMSAssetTriggerService);
     private accountSrv = inject(AccountService);
     private isParamSrv =  inject(IsParamService);
-    private costCenterSrv =  inject(CostCenterService);
+    // private costCenterSrv =  inject(CostCenterService);
     private classSrv =  inject(AssetClassService);
     private statusSrv =  inject(FurnitureStatusService);
-    private consumerSrv =  inject(ConsumerService);
-    private markSrv =  inject(MarkService);
+    // private consumerSrv =  inject(ConsumerService);
+    // private markSrv =  inject(MarkService);
     private receptionSrv =  inject(AssetReceptionService);
 
     private maxReference: string = null;
@@ -136,41 +126,41 @@ export class CmmsAssetPmDetailComponent extends BaseEntityDetailComponent<Asset>
             reference2: [{value: b.reference2 || this.maxReference, disabled: !!b.isFinal}, ref2Validators],
             description: [{value: b.description, disabled: !!b.isFinal}, Validators.required],
             acquisitionDate: [b.acquisitionDate],
-            serviceDate: [b.serviceDate],
+            serviceDate:      [b.serviceDate],
             acquisitionValue: [b.acquisitionValue || 0, Validators.required],
-            supplier: [{ value: b.supplier, disabled: true }],
-            dateOut: [b.dateOut],
-            customer: [b.customer],
-            serial_no: [{ value: b.serial_no, disabled: !!b.isFinal }],
-            location: [b.location],
-            centerId: [b.centerId || this.loginSrv.appCtx.center],
-            accountno:  [{ value: b.accountno, disabled: !!b.isFinal}],
-            accountId: [{ value: b.accountId, disabled: !!b.isFinal}, Validators.required],
-            costCenter: [{ value: b.costCenter, disabled: !!b.isFinal}],
-            investEnd: [b.investEnd],
+            supplier:        [{ value: b.supplier, disabled: true }],
+            dateOut:         [b.dateOut],
+            customer:        [b.customer],
+            serial_no:       [{ value: b.serial_no, disabled: !!b.isFinal }],
+            location:        [b.location],
+            centerId:        [b.centerId || this.loginSrv.appCtx.center],
+            accountno:       [{ value: b.accountno, disabled: !!b.isFinal}],
+            accountId:       [{ value: b.accountId, disabled: !!b.isFinal}, Validators.required],
+            costCenter:      [{ value: b.costCenter, disabled: !!b.isFinal}],
+            investEnd:       [b.investEnd],
             receptionNumber: [b.receptionNumber],
-            receptionDate: [{ value: b.receptionDate, disabled: true }],
-            comment: [b.comment],
-            office: [b.office],
-            sales_price: [b.sales_price],
+            receptionDate:   [{ value: b.receptionDate, disabled: true }],
+            comment:         [b.comment],
+            office:          [b.office],
+            sales_price:     [b.sales_price],
             investment_type: [b.investment_type],
-            outOfService: [b.outOfService || false],
-            assetClass:  [{ value: b.assetClass, disabled: !!b.isFinal}, Validators.required],
-            status:      [b.status],
-            receptionId:    [{ value: b.receptionId, disabled: !!b.isFinal}],
-            orderNumber:    [{ value: b.orderNumber, disabled: true }],
-            orderDate:      [{ value: b.orderDate, disabled: true }],
-            requestNumber:  [b.requestNumber],
-            requestDate:    [b.requestDate],
-            mark:           [{ value: b.mark, disabled: !!b.isFinal}],
-            deliveryNumber: [{ value: b.deliveryNumber, disabled: true }],
-            deliveryDate:   [{ value: b.deliveryDate, disabled: true }],
-            invoiceNumber:  [{ value: b.invoiceNumber, disabled: true }],
-            invoiceDate:    [{ value: b.invoiceDate, disabled: true }],
-            site:           [{ value: b.site, disabled: true }],
-            building:       [{ value: b.building, disabled: true }],
-            isVehicle:      [b.isVehicle || false],
-            function:       [b.function]
+            outOfService:    [b.outOfService || false],
+            assetClass:      [{ value: b.assetClass, disabled: !!b.isFinal}, Validators.required],
+            status:          [b.status],
+            receptionId:     [{ value: b.receptionId, disabled: !!b.isFinal}],
+            orderNumber:     [{ value: b.orderNumber, disabled: true }],
+            orderDate:       [{ value: b.orderDate, disabled: true }],
+            requestNumber:   [b.requestNumber],
+            requestDate:     [b.requestDate],
+            mark:            [{ value: b.mark, disabled: !!b.isFinal}],
+            deliveryNumber:  [{ value: b.deliveryNumber, disabled: true }],
+            deliveryDate:    [{ value: b.deliveryDate, disabled: true }],
+            invoiceNumber:   [{ value: b.invoiceNumber, disabled: true }],
+            invoiceDate:     [{ value: b.invoiceDate, disabled: true }],
+            site:            [{ value: b.site, disabled: true }],
+            building:        [{ value: b.building, disabled: true }],
+            isVehicle:       [b.isVehicle || false],
+            function:        [b.function]
         });
         if (b.id) {
             this.maxReference = b.reference2;
