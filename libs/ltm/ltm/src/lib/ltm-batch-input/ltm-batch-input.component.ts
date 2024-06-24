@@ -74,7 +74,7 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
     private activatedRoute = inject(ActivatedRoute);
     private router = inject(Router);
     private siloSrv = inject(LTMSiloService);
-    private equipmentSrv = inject(LtmEquipmentService);
+    // private equipmentSrv = inject(LtmEquipmentService);
     private entitySrv = inject(LtmBatchService);
     private snackBarSrv = inject(SnackBarService);
     private route = inject(ActivatedRoute);
@@ -99,7 +99,7 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
     periodLookup = new DefaultAutoCompleteModel(this.periodSrv);
     siloLookup = new DefaultAutoCompleteModel(this.siloSrv);
     matterLookup = new DefaultAutoCompleteModel(this.lineMatterSrv);
-    equipmentLookup = new DefaultAutoCompleteModel(this.equipmentSrv);
+    // equipmentLookup = new DefaultAutoCompleteModel(this.equipmentSrv);
     supplierLookup = new DefaultAutoCompleteModel(this.supplierSrv);
     bleacherLookup = new DefaultAutoCompleteModel(this.bleacherSrv);
     depositLookup = new DefaultAutoCompleteModel(this.depositSrv);
@@ -175,7 +175,7 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
             spoilageHour: [null],
             breakageHour: [null],
             silo:         [null],
-            equipment:    [null],
+            // equipment:    [null],
             bleacher:     [0],
             pickupPoint:  [0],
             zone:         [0],
@@ -239,11 +239,11 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
         this.form.controls.timeStamp.setValue(this.TODAY);
         this.form.controls.testType.setValue(this.testingMode());
         if (this.testingMode() === CHEMICAL_TEST || this.testingMode() === PHYSICAL_TEST) {
-            this.form.controls.equipment.addValidators(Validators.required);
+            // this.form.controls.equipment.addValidators(Validators.required);
             this.form.controls.pickupPoint.addValidators(Validators.required);
             this.form.controls.hour.addValidators(Validators.required);
         } else {
-            this.form.controls.equipment.removeValidators(Validators.required);
+            // this.form.controls.equipment.removeValidators(Validators.required);
             this.form.controls.pickupPoint.removeValidators(Validators.required);
             this.form.controls.hour.removeValidators(Validators.required);
         }
@@ -360,7 +360,7 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
                 this.form.controls.hour.setValue(date.getHours());
                 this.form.controls.spoilageHour.setValue(batch.spoilageHour);
                 this.form.controls.silo.setValue(batch.silo||0);
-                this.form.controls.equipment.setValue(batch.equipment||0);
+                // this.form.controls.equipment.setValue(batch.equipment||0);
                 this.form.controls.bleacher.setValue(batch.bleacher||0);
                 this.form.controls.pickupPoint.setValue(batch.pickupPoint||0);
                 this.form.controls.zone.setValue(batch.zone||0);

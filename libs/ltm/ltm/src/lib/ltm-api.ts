@@ -180,7 +180,6 @@ export interface LTMTesting {
     spoilageHour: Date;
     breakageHour: Date;
     silo: number;
-    pickupPoint?: number;
     matterDescription?:string;
     siloDescription?:string;
     pickupDescription?:string;

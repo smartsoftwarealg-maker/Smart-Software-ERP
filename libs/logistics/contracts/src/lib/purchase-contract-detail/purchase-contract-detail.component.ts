@@ -76,7 +76,7 @@ export class PurchaseContractDetailComponent extends BaseEntityDetailComponent<P
             id:             [b.id],
             centerId:       [b.centerId || this.loginSrv.appCtx.center, Validators.required],
             contractNo:     [b.contractNo, Validators.required],
-            projDate:       [b.projDate, Validators.required],
+            projDate:       [b.projDate || new Date(), Validators.required],
             description:    [b.description, Validators.required],
             customer:       [b.customer || this.entitySrv.getParentId(), Validators.required],
             fromDate:       [b.fromDate  || today, Validators.required],
@@ -88,7 +88,8 @@ export class PurchaseContractDetailComponent extends BaseEntityDetailComponent<P
             awardProcedure: [b.awardProcedure],
             projMotive:     [b.projMotive],
             salesPurchase:  [2],
-            wilaya:         [b.wilaya]
+            wilaya:         [b.wilaya],
+            fiscalId:       [b.fiscalId]
         });
     }
 
