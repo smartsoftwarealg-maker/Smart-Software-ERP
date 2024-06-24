@@ -101,7 +101,7 @@ export class LtmReportComponent implements OnInit, OnDestroy {
     ngOnInit(): void {
         this.shellSrv.setGoBackPath('..', this.route);
         this.shellSrv.setTitle(this.langSrv.translate('COMMON_CHARTS'));
-        this._matters$ = this.matterSrv.getList(0, 50).pipe(map(res => res.body));
+        this._matters$ = this.matterSrv.getList(0, 500).pipe(map(res => res.body));
         this.matters$ = this._matters$;
         this.subscription = this.searchText
             .valueChanges

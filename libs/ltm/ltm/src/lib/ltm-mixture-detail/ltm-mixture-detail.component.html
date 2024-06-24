@@ -7,9 +7,34 @@
 
         <mat-form-field class="default-100">
             <mat-label translate>COMMON_DESCRIPTION</mat-label>
-            <input matInput formControlName="description" type="text" required >
+            <input matInput formControlName="description" type="text" required>
         </mat-form-field>
 
     </form>
 </mat-card>
-<router-outlet *ngIf="form !== null && id"></router-outlet>
+
+@if (form !== null && id) {
+    <mat-tab-group class="detail__div" (selectedIndexChange)="onTab($event)" [dynamicHeight]="true">
+        <mat-tab class="content__div">
+            <ng-template mat-tab-label>
+                <span translate>LTM_MATTERS</span>
+            </ng-template>
+            @if (selectedIndex() == 0) {
+                <router-outlet></router-outlet>
+            }
+        </mat-tab>
+
+        <mat-tab class="content__div">
+            <ng-template mat-tab-label>
+                <span translate>LTM_PICKUP_POINTS</span>
+            </ng-template>
+
+            @if (selectedIndex() == 1) {
+                <router-outlet></router-outlet>
+            }
+
+        </mat-tab>
+    </mat-tab-group>
+
+}
+

@@ -75,7 +75,7 @@ export class SalesContractDetailComponent extends BaseEntityDetailComponent<Proj
             id:             [b.id],
             centerId:       [b.centerId || this.loginSrv.appCtx.center, Validators.required],
             contractNo:     [b.contractNo, Validators.required],
-            projDate:       [b.projDate, Validators.required],
+            projDate:       [b.projDate || new Date(), Validators.required],
             description:    [b.description, Validators.required],
             customer:       [b.customer || this.entitySrv.getParentId(), Validators.required],
             fromDate:       [b.fromDate  || today, Validators.required],
@@ -87,6 +87,7 @@ export class SalesContractDetailComponent extends BaseEntityDetailComponent<Proj
             awardProcedure: [b.awardProcedure],
             projMotive:     [b.projMotive],
             salesPurchase:  [1],
+            fiscalId:       [b.fiscalId],
             wilaya:         [b.wilaya]
         });
     }

@@ -41,6 +41,7 @@ export interface Project {
     wilaya?: number;
     salesPurchase: number;
     wilayaName?: string;
+    fiscalId?: string;
 }
 
 export interface ProjectArticle {

@@ -16,6 +16,7 @@ import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
 import { CommonUiHourPickerModule } from "@ss/common/ui-hour-picker";
 import { Lookup } from "@ss/common/api-lookup";
 import { LtmPickupPointService } from '../services/ltm-pickup-point.service';
+import { LTMPickupPoint } from '../ltm-api';
 
 @Component({
     selector: 'ss-ltm-pickup-point-list',
@@ -37,8 +38,8 @@ import { LtmPickupPointService } from '../services/ltm-pickup-point.service';
         CommonUiHourPickerModule
     ],
 })
-export class LtmPickupPointListComponent extends BaseEntityListComponent<Lookup> {
-    displayedColumns = ['description'];
+export class LtmPickupPointListComponent extends BaseEntityListComponent<LTMPickupPoint> {
+    displayedColumns = ['description', 'equipmentDescription'];
 
     constructor(
         public override entitySrv: LtmPickupPointService,

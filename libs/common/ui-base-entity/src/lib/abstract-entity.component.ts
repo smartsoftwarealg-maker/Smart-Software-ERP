@@ -14,7 +14,7 @@ export abstract class AbstractEntityComponent<T extends { id: number }> implemen
 
     protected queryId: number;
     protected subscriptions: Subscription[] = [];
-    public form: UntypedFormGroup = null;
+    public form: UntypedFormGroup|null = null;
     public isEditable = true;
 
     protected constructor(public entitySrv: BaseEntityService<T>) {}

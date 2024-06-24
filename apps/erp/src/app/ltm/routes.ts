@@ -1,4 +1,4 @@
-import { CanActivateFn, Routes } from '@angular/router';
+import { Routes } from '@angular/router';
 
 import {
     ABS_INDEX_URL, CanDeactivateService, LIST_URL,
@@ -85,6 +85,12 @@ import {
     LtmSupplierListComponent
 } from '@ss/ltm/ltm';
 import { LtmSupplierDetailComponent } from '@ss/ltm/ltm';
+import {
+    LtmMixturePickupPointsListComponent
+} from '../../../../../libs/ltm/ltm/src/lib/ltm-mixture-pickup-points-list/ltm-mixture-pickup-points-list.component';
+import {
+    LtmMixturePickupPointsDetailComponent
+} from '../../../../../libs/ltm/ltm/src/lib/ltm-mixture-pickup-points-detail/ltm-mixture-pickup-points-detail.component';
 
 export const ltmRoutes: Routes = [
     {
@@ -190,14 +196,16 @@ export const ltmRoutes: Routes = [
                 canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService],
                 children: [
-                    {   path: '',
-                        redirectTo: 'detail',
-                        pathMatch: 'full',
-                    },
-                    { path: 'detail',
+                    { path: 'm-matters',
                         children: [
                             { path: '', component: LtmMixtureDetailListComponent, pathMatch: 'full'},
                             { path: ':id', component: LtmMixtureDetailDetailComponent }
+                        ]
+                    },
+                    { path: 'm-pickups',
+                        children: [
+                            { path: '', component: LtmMixturePickupPointsListComponent, pathMatch: 'full'},
+                            { path: ':id', component: LtmMixturePickupPointsDetailComponent }
                         ]
                     }
                 ]

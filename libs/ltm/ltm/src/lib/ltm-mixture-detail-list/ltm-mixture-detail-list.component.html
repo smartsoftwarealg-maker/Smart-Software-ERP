@@ -1,4 +1,4 @@
-<div class="content_div button__div">
+<div class="content__div button__div">
     <!--    <mat-form-field>-->
     <!--        <mat-label translate>COMMON_SEARCH</mat-label>-->
     <!--        <input matInput [formControl]="searchText" type="text">-->
@@ -20,11 +20,11 @@
     </button>
 </div>
 
-<div class="table_div content_div">
+<div class="table__div content__div">
     <mat-table mat-table matSort [dataSource]="data$ | async" class="main-table" (matSortChange)="sort($event)">
 
         <ng-container matColumnDef="matterDescription">
-            <mat-header-cell *matHeaderCellDef mat-sort-header translate>LTM_TEST</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>LTM_MATTER</mat-header-cell>
             <mat-cell *matCellDef="let e">
                 {{e.matterDescription}}
             </mat-cell>
@@ -35,6 +35,6 @@
                  *matRowDef="let row; columns: displayedColumns;"></mat-row>
     </mat-table>
 </div>
-<div class="content_div b-b-background">
+<div class="content__div b-b-background">
     <ss-pagination [paginationModel]="paginator"></ss-pagination>
 </div>
