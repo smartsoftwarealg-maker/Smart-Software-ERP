@@ -135,6 +135,7 @@ export class CMMSWorkDetail extends BaseEntityDetailComponent<Work> {
             closerDescription:    [{ value: e.closerDescription || this.loginSrv.appCtx.fullName, disabled: true }],
             failsInspection:      [e.failsInspection || false],
             downtime:             [e.downtime],
+            closerId:             [e.closerId],
             executorId:           [{ value: e.executorId, disabled: true}]
         });
     }

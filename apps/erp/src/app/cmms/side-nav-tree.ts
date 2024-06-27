@@ -97,7 +97,7 @@ export const cmmsNavTree: SideNavNode = {
             accessRights: 'Office'
         },
         {
-            name: 'CMMS_EQUIPMENT',
+            name: 'COMMON_EQUIPMENT',
             icon: 'fa-solid fa-car-building',
             route: ABS_CMMS_ASSETS_URL,
             accessRights: 'Asset'
