@@ -108,7 +108,7 @@ export class CMMSChartsComponent implements OnInit {
         // const config: PriorityChartConfig =
         //     {
         //         id: 'assets-priority',
-        //         label: 'CMMS_EQUIPMENT',
+        //         label: 'COMMON_EQUIPMENT',
         //         data: data
         //     };
         // this.buildPriorityChart(config);
