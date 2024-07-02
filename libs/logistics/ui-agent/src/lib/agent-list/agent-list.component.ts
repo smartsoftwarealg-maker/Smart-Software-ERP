@@ -1,10 +1,10 @@
-import { Component, inject } from "@angular/core";
+import { Component, inject } from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {LookupsService} from '@ss/common/api-lookup';
 import {Observable, switchMap} from 'rxjs';
 import {tap} from 'rxjs/operators';
-import { Agent, AGENT_URL, AgentService, CUSTOMER_URL, SUPPLIER_URL } from "@ss/logistics/api-agent";
+import { Agent, AGENT_URL, AgentService, CUSTOMER_URL, SUPPLIER_URL } from '@ss/logistics/api-agent';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';

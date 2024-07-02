@@ -1,45 +1,46 @@
-<div class="table_div size_98">
-    <mat-table mat-table [dataSource]="data" class="main-table" matSort (matSortChange)="sort($event)">
+@if (isSales) {
+    <div class="table_div size_98">
+        <mat-table mat-table [dataSource]="data" class="main-table" matSort (matSortChange)="sort($event)">
 
             <ng-container matColumnDef="customerCode">
                 <mat-header-cell *matHeaderCellDef mat-sort-header translate>LOGISTICS_CUSTOMER_CODE</mat-header-cell>
                 <mat-cell *matCellDef="let e">
-                    {{e.customerCode}}
+                    {{ e.customerCode }}
                 </mat-cell>
             </ng-container>
 
             <ng-container matColumnDef="denomination">
                 <mat-header-cell *matHeaderCellDef mat-sort-header translate>LOGISTICS_DENOMINATION</mat-header-cell>
                 <mat-cell *matCellDef="let e">
-                    {{e.denomination}}
+                    {{ e.denomination }}
                 </mat-cell>
             </ng-container>
 
             <ng-container matColumnDef="address">
                 <mat-header-cell *matHeaderCellDef mat-sort-header translate>LOGISTICS_ADDRESS</mat-header-cell>
                 <mat-cell *matCellDef="let e">
-                    {{e.address}}
+                    {{ e.address }}
                 </mat-cell>
             </ng-container>
 
             <ng-container matColumnDef="activityDescription">
                 <mat-header-cell *matHeaderCellDef mat-sort-header translate>LOGISTICS_ACTIVITY</mat-header-cell>
                 <mat-cell *matCellDef="let e">
-                    {{e.activityDescription}}
+                    {{ e.activityDescription }}
                 </mat-cell>
             </ng-container>
 
             <ng-container matColumnDef="departmentName">
                 <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_DEPARTMENT</mat-header-cell>
                 <mat-cell *matCellDef="let e">
-                    {{e.departmentName}}
+                    {{ e.departmentName }}
                 </mat-cell>
             </ng-container>
 
             <ng-container matColumnDef="typeDescription">
                 <mat-header-cell *matHeaderCellDef mat-sort-header translate>LOGISTICS_COMPANY_TYPE</mat-header-cell>
                 <mat-cell *matCellDef="let e">
-                    {{e.typeDescription}}
+                    {{ e.typeDescription }}
                 </mat-cell>
             </ng-container>
 
@@ -48,19 +49,75 @@
             <mat-row class="selectable" [class.selected]="row.id == selected" (click)="selectRow(row)"
                      *matRowDef="let row; columns: displayedColumns;"></mat-row>
         </mat-table>
-</div>
+    </div>
+} @else {
+    <div class="full__height size_98">
+        <mat-table mat-table [dataSource]="data" class="main-table" matSort (matSortChange)="sort($event)">
+
+            <ng-container matColumnDef="customerCode">
+                <mat-header-cell *matHeaderCellDef mat-sort-header translate>LOGISTICS_CUSTOMER_CODE</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{ e.customerCode }}
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="denomination">
+                <mat-header-cell *matHeaderCellDef mat-sort-header translate>LOGISTICS_DENOMINATION</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{ e.denomination }}
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="address">
+                <mat-header-cell *matHeaderCellDef mat-sort-header translate>LOGISTICS_ADDRESS</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{ e.address }}
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="activityDescription">
+                <mat-header-cell *matHeaderCellDef mat-sort-header translate>LOGISTICS_ACTIVITY</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{ e.activityDescription }}
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="departmentName">
+                <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_DEPARTMENT</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{ e.departmentName }}
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="typeDescription">
+                <mat-header-cell *matHeaderCellDef mat-sort-header translate>LOGISTICS_COMPANY_TYPE</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{ e.typeDescription }}
+                </mat-cell>
+            </ng-container>
+
+
+            <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+            <mat-row class="selectable" [class.selected]="row.id == selected" (click)="selectRow(row)"
+                     *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        </mat-table>
+    </div>
+
+}
 <div class="size_98 b-b-background">
     <ss-pagination [paginationModel]="pagination"></ss-pagination>
 </div>
-<div class="size_98" *ngIf="isSales">
-    <ss-doc-info
-        *ngIf="selected"
-        [displayedGroups]="['agent']"
-        [showAssets]="isAsset"
-        [params]="{
-            documentId: 0,
-            documentURL:'/agents',
-            agentId : selectedRow?.id
-        }">
-    </ss-doc-info>
-</div>
+@if (isSales) {
+    <div class="size_98">
+        <ss-doc-info
+            *ngIf="selected"
+            [displayedGroups]="['agent']"
+            [showAssets]="isAsset"
+            [params]="{
+                documentId: 0,
+                documentURL:'/agents',
+                agentId : selectedRow?.id
+            }">
+        </ss-doc-info>
+    </div>
+}

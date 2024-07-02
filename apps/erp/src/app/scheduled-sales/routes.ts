@@ -42,7 +42,7 @@ import {
     AppArchiveDetailComponent,
     AppArchiveListComponent
 } from '@ss/logistics/ui-agent';
-import { AGENT_ARCHIVES, AppArchiveMainComponent } from '@ss/common/app-archive';
+import { AGENT_ARCHIVES } from '@ss/common/app-archive';
 import { PayMethodDetailComponent, PayMethodListComponent } from '@ss/logistics/ui-pay-method';
 import { DashboardComponent } from '@ss/dashboard';
 

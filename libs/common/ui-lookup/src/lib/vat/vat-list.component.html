@@ -1,7 +1,7 @@
 <mat-table mat-table [dataSource]="data" class="main-table">
 
     <ng-container matColumnDef="value">
-        <mat-header-cell *matHeaderCellDef translate>STOCK_PERCENTAGE</mat-header-cell>
+        <mat-header-cell *matHeaderCellDef translate>COMMON_VALUE</mat-header-cell>
         <mat-cell style="justify-content: flex-end; direction: ltr;" *matCellDef="let e">
             {{e.value.toFixed(2)}}
         </mat-cell>

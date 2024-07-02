@@ -2,14 +2,30 @@ import {Component} from '@angular/core';
 import {Vat, VatService} from '@ss/common/api-lookup';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
-import {ActivatedRoute} from '@angular/router';
+import { ActivatedRoute, RouterModule } from '@angular/router';
 import {UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
-import {ConfirmationDialogService} from "@ss/common/ui-confirmation-dialog";
+import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
+import { CommonModule } from '@angular/common';
+import { MaterialModule } from '@ss/common/api-common';
+import { CommonUiLangModule } from '@ss/common/ui-lang';
+import { UiPaginationModule } from '@ss/common/ui-pagination';
+import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
 
 
 @Component({
     selector: 'ss-vat-detail',
     templateUrl: './vat-detail.component.html',
+    standalone: true,
+    imports: [
+        CommonModule,
+        MaterialModule,
+        RouterModule,
+        MaterialModule,
+        CommonUiLangModule,
+        UiPaginationModule,
+        CommonUiAutoCompleteModule,
+        CommonUiConfirmationDialogModule
+    ],
     styleUrls: ['./vat-detail.component.scss']
 })
 export class VatDetailComponent extends BaseEntityDetailComponent<Vat> {

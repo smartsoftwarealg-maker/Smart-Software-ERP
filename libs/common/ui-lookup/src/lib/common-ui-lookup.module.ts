@@ -72,8 +72,6 @@ import { CareerMotiveDetailComponent, CareerMotiveListComponent } from './compon
         CommonUiConfirmationDialogModule
     ],
     declarations: [
-        VatListComponent,
-        VatDetailComponent,
         WilayaDetailComponent,
         WilayaListComponent,
 
@@ -181,8 +179,6 @@ import { CareerMotiveDetailComponent, CareerMotiveListComponent } from './compon
         CareerMotiveDetailComponent
     ],
     exports: [
-        VatListComponent,
-        VatDetailComponent,
         WilayaDetailComponent,
         WilayaListComponent,
 
