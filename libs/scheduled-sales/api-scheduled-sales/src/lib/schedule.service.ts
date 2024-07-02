@@ -1,16 +1,14 @@
 import { Injectable } from '@angular/core';
 import {BaseEntityService} from '@ss/common/api-base-entity';
 import {
-    Article, Qty,
+    Qty,
     Quota,
     Schedule,
-    SS_ARTICLE_URL,
     SS_QUOTA_URL,
     SS_SCHEDULE_AGENTS,
     SS_SCHEDULE_URL
 } from './scheduled-sales-api';
 import {HttpService, LanguageService} from '@ss/common/api-common';
-import {ARTICLE_IMAGE_URL, ARTICLES_URL} from '@ss/master-data/api-article';
 import {map, Observable, tap} from 'rxjs';
 import {HttpParams} from '@angular/common/http';
 

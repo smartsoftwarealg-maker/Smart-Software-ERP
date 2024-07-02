@@ -60,9 +60,10 @@ export class SalesQuotaDetailComponent extends BaseEntityDetailComponent<Quota> 
             exworks: [b.exworks || true, Validators.required],
             qty: [b.qty, Validators.required],
             discountType: [b.discountType],
-            discount: [b.discount || 0, Validators.required],
+            discount:   [b.discount || 0, Validators.required],
             discount_2: [b.discount_2 || 0, Validators.required],
             discount_3: [b.discount_3 || 0, Validators.required],
+            canceled:   [b.canceled || false]
         });
     }
 
