@@ -16,7 +16,9 @@
             <mat-form-field class="default-100 sm-50">
                 <mat-label translate>LTM_PERIOD</mat-label>
                 <mat-select required [formControl]="period">
-                    <mat-option *ngFor="let m of periods" [value]="m.id" translate>{{ m.description }}</mat-option>
+                    @for (m of periods; track m.id) {
+                        <mat-option [value]="m.id" translate>{{ m.description }}</mat-option>
+                    }
                 </mat-select>
             </mat-form-field>
 
@@ -33,12 +35,13 @@
             <div class="list_div">
                 <mat-card>
                     <mat-list [disabled]="processing">
-                        <mat-list-item *ngFor="let m of matters$ | async"
-                                       [class.selected]="selectedMatter?.id == m.id"
-                                       (click)="onMatter(m)"
-                                       class="list-item selectable">
-                            {{ m.matterDescription }}
-                        </mat-list-item>
+                        @for (m of matters$ | async; track m.id) {
+                            <mat-list-item [class.selected]="selectedMatter?.id == m.id"
+                                           (click)="onMatter(m)"
+                                           class="list-item selectable">
+                                {{ m.matterDescription }}
+                            </mat-list-item>
+                        }
                     </mat-list>
                 </mat-card>
             </div>

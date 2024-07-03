@@ -109,8 +109,11 @@ export class LtmReportComponent implements OnInit, OnDestroy {
                 debounceTime(300),
                 filter(() => !this.processing),
                 distinctUntilChanged()
-            ).subscribe(res => this.matters$ = this._matters$
-                .pipe(map(e => e.filter(d => !res || d.description?.toLowerCase().indexOf(res.toLowerCase()) >= 0))));
+            ).subscribe(res => {
+                console.log(res);
+                return this.matters$ = this._matters$.pipe(map(e => e.filter(d => !res || d.matterDescription?.toLowerCase().indexOf(res.toLowerCase()) >= 0)))
+            });
+
         this.shellSrv.addButton(this.menuBtn);
         this.shellSrv.addButton(this.lightBtn);
     }
