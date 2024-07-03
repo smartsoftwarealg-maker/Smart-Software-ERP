@@ -6,7 +6,7 @@
 //@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
 
 
-mat.$theme-ignore-duplication-warnings:true;
+//mat.$theme-ignore-duplication-warnings: true;
 
 body {
     box-sizing: border-box;
@@ -321,6 +321,8 @@ $ss-green: (
 
 }
 
+
+
 $theme-1-primary: mat.m2-define-palette(mat.$m2-blue-palette);
 $theme-1-accent:  mat.m2-define-palette(mat.$m2-pink-palette, A200, A100, A400);
 $theme-1-warn:    mat.m2-define-palette(mat.$m2-red-palette);
@@ -348,7 +350,8 @@ $theme-1-warn:    mat.m2-define-palette(mat.$m2-red-palette);
             primary: $theme-1-primary,
             accent: $theme-1-accent,
             warn: $theme-1-warn
-        )
+        ),
+        density: -1
     ));
 
     @include mat.all-component-themes($theme);
@@ -530,7 +533,7 @@ $theme-3-warn:    mat.m2-define-palette(mat.$m2-red-palette);
 
 }
 
-$theme-4-primary: mat.m2-define-palette(mat.$yellow-palette);
+$theme-4-primary: mat.m2-define-palette(mat.$m2-yellow-palette);
 $theme-4-accent:  mat.m2-define-palette(mat.$m2-orange-palette);
 $theme-4-warn:    mat.m2-define-palette(mat.$m2-red-palette);
 
@@ -886,4 +889,57 @@ mat-sidenav-content.mat-drawer-content.mat-sidenav-content {
 }
 .mat-calendar-next-button:after {
     border: none !important;
+}
+
+.container__700 {
+    width: 80%;
+    max-width: 700px;
+    margin: 4px auto 0;
+}
+
+.container__1200 {
+    width: 94%;
+    max-width: 1200px;
+    margin: 4px auto 0;
+}
+
+.mat__card__500 {
+    width: 98%;
+    max-width: 500px;
+    margin: 1em auto;
+    padding: 1em;
+    border-radius: 1.4em !important;
+}
+
+.mat__card__700 {
+    width: 98%;
+    max-width: 700px;
+    margin: 1em auto;
+    padding: 1em;
+    border-radius: 1.4em !important;
+}
+
+.mat__card__900 {
+    width: 98%;
+    max-width: 900px;
+    margin: 1em auto;
+    padding: 1em;
+    border-radius: 1.4em !important;
+}
+
+.table_div {
+    height: calc(100% - 120px);
+    overflow-x: auto;
+}
+
+.content-div {
+    height: 100%;
+    width: 100%;
+    flex-grow: 1;
+    flex-shrink: 1;
+    overflow-x: auto;
+}
+
+.pagination-container {
+    flex-grow: 0;
 }
