@@ -2,14 +2,33 @@ import {Component, OnInit,} from '@angular/core';
 import {SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Circulation, CirculationService} from '@ss/logistics/api-circulation';
-import {PaginationModel} from '@ss/common/api-common';
+import { MaterialModule, PaginationModel } from '@ss/common/api-common';
 import {LanguageService} from '@ss/common/api-common';
 import {Observable} from 'rxjs';
+import { CommonModule } from '@angular/common';
+import { CommonUiLangModule } from '@ss/common/ui-lang';
+import { UiPaginationModule } from '@ss/common/ui-pagination';
+import { ReactiveFormsModule } from '@angular/forms';
+import { CommonUiConfirmationDialogModule } from '@ss/common/ui-confirmation-dialog';
+import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
+import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
 
 @Component({
     selector: 'ss-circulation',
     styleUrls: ['./circulation.component.scss'],
-    templateUrl: './circulation.component.html'
+    templateUrl: './circulation.component.html',
+    standalone: true,
+    imports: [
+        CommonModule,
+        MaterialModule,
+        CommonUiLangModule,
+        UiPaginationModule,
+        ReactiveFormsModule,
+        CommonUiConfirmationDialogModule,
+        CommonUiDatepickerModule,
+        CommonUiAutoCompleteModule,
+    ],
+
 })
 export class CirculationComponent implements OnInit {
 

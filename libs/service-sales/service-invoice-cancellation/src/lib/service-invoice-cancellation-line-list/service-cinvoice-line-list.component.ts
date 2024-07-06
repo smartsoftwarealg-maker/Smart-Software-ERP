@@ -10,7 +10,7 @@ import { LotsService } from '@ss/common/api-lookup';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { CommonUiImageInputModule } from '@ss/common/ui-image-input';
 import { CommonUiLangModule } from '@ss/common/ui-lang';
-import { LogisticsUiDocInfoModule } from '@ss/logistics/ui-doc-info';
+
 import { MatTableModule } from '@angular/material/table';
 import { UiPaginationModule } from '@ss/common/ui-pagination';
 import { MatSortModule } from '@angular/material/sort';
@@ -19,6 +19,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MaterialModule } from '@ss/common/api-common';
 import { InvoiceLinesService } from '@ss/sales/api-invoice';
+import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
 
 @Component({
     selector: 'ss-service-cinvoice-line-list',
@@ -27,14 +28,15 @@ import { InvoiceLinesService } from '@ss/sales/api-invoice';
         CommonModule,
         CommonUiImageInputModule,
         CommonUiLangModule,
-        LogisticsUiDocInfoModule,
+
         MatTableModule,
         UiPaginationModule,
         MatSortModule,
         MatButtonModule,
         MatFormFieldModule,
         MatInputModule,
-        MaterialModule
+        MaterialModule,
+        DocInfoComponent
     ],
     templateUrl: './service-cinvoice-line-list.component.html',
     styleUrls: ['./service-cinvoice-line-list.component.scss']

@@ -13,7 +13,7 @@ import { CommonUiLangModule } from '@ss/common/ui-lang';
 import { UiPaginationModule } from '@ss/common/ui-pagination';
 import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
 import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
-import { LogisticsUiDocInfoModule } from '@ss/logistics/ui-doc-info';
+
 import { LogisticsUiStockInfoModule } from '@ss/logistics/ui-stock-info';
 
 
@@ -31,7 +31,7 @@ import { LogisticsUiStockInfoModule } from '@ss/logistics/ui-stock-info';
         CommonUiConfirmationDialogModule,
         CommonUiDatepickerModule,
         CommonUiAutoCompleteModule,
-        LogisticsUiDocInfoModule,
+
         LogisticsUiStockInfoModule,
         RouterOutlet
     ],

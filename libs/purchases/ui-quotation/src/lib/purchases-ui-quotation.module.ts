@@ -12,8 +12,9 @@ import {CommonUiConfirmationDialogModule} from "@ss/common/ui-confirmation-dialo
 import {RouterModule} from "@angular/router";
 import {CommonUiDatepickerModule} from "@ss/common/ui-datepicker";
 import {CommonUiAutoCompleteModule} from "@ss/common/ui-auto-complete";
-import {LogisticsUiDocInfoModule} from "@ss/logistics/ui-doc-info";
+
 import {LogisticsUiStockInfoModule} from "@ss/logistics/ui-stock-info";
+import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
 
 @NgModule({
     imports: [CommonModule,
@@ -25,8 +26,8 @@ import {LogisticsUiStockInfoModule} from "@ss/logistics/ui-stock-info";
         RouterModule,
         CommonUiDatepickerModule,
         CommonUiAutoCompleteModule,
-        LogisticsUiDocInfoModule,
-        LogisticsUiStockInfoModule],
+
+        LogisticsUiStockInfoModule, DocInfoComponent],
 
     declarations: [
       QuotationDetailComponent,

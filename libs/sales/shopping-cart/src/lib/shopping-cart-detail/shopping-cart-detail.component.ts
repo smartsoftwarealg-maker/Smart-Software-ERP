@@ -1,27 +1,53 @@
-import {Component} from '@angular/core';
+import { Component } from '@angular/core';
 import {
     HttpService,
     LanguageService,
-    LoginService,
+    LoginService, MaterialModule,
     PaginatorPersistenceService
 } from '@ss/common/api-common';
-import {Cart, Cartline} from '../cartline';
-import {LookupsService, MarkService} from '@ss/common/api-lookup';
-import {ShoppingCartService} from '../shopping-cart.service';
-import {ArticleService} from '@ss/master-data/api-article';
-import {ShellService, SnackBarService} from '@ss/common/ui-shell';
-import {ActivatedRoute, Router} from '@angular/router';
-import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import {DefaultReportService} from '@ss/common/ui-default-report-component';
-import {Observable, of, Subscription, switchMap, tap} from 'rxjs';
-import {ImageModel} from '@ss/common/ui-image-input';
-import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
-import {BreakpointObserver, BreakpointState} from '@angular/cdk/layout';
+import { Cart, Cartline } from '../cartline';
+import { LookupsService, MarkService } from '@ss/common/api-lookup';
+import { ShoppingCartService } from '../shopping-cart.service';
+import { ArticleService } from '@ss/master-data/api-article';
+import { ShellService, SnackBarService } from '@ss/common/ui-shell';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
+import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
+import { DefaultReportService } from '@ss/common/ui-default-report-component';
+import { Observable, of, Subscription, switchMap, tap } from 'rxjs';
+import { CommonUiImageInputModule, ImageModel } from '@ss/common/ui-image-input';
+import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
+import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
+import { CommonModule } from '@angular/common';
+import { CommonUiLangModule } from '@ss/common/ui-lang';
+import { UiPaginationModule } from '@ss/common/ui-pagination';
+import { ReactiveFormsModule } from '@angular/forms';
+import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
+import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
+import { SalesUiDeliveryLinesModule } from '@ss/sales/ui-delivery-lines';
+import { LogisticsUiDocImportModule } from '@ss/logistics/ui-doc-import';
+import { LogisticsUiStockInfoModule } from '@ss/logistics/ui-stock-info';
 
 @Component({
-  selector: 'ss-shopping-cart-detail',
-  templateUrl: './shopping-cart-detail.component.html',
-  styleUrls: ['./shopping-cart-detail.component.scss', '../shopping-cart-list/shopping-cart.component.scss']
+    selector: 'ss-shopping-cart-detail',
+    templateUrl: './shopping-cart-detail.component.html',
+    styleUrls: ['./shopping-cart-detail.component.scss', '../shopping-cart-list/shopping-cart.component.scss'],
+    standalone: true,
+    imports: [
+        CommonModule,
+        MaterialModule,
+        CommonUiLangModule,
+        UiPaginationModule,
+        ReactiveFormsModule,
+        CommonUiConfirmationDialogModule,
+        RouterModule,
+        CommonUiDatepickerModule,
+        CommonUiAutoCompleteModule,
+
+        SalesUiDeliveryLinesModule,
+        LogisticsUiDocImportModule,
+        CommonUiImageInputModule,
+        LogisticsUiStockInfoModule
+    ]
 })
 export class ShoppingCartDetailComponent extends BaseEntityListComponent<Cartline> {
     private subscription: Subscription = null;
@@ -36,12 +62,12 @@ export class ShoppingCartDetailComponent extends BaseEntityListComponent<Cartlin
         'qty',
         'price',
         'total',
-        'actions',
+        'actions'
     ];
     private SHORT = [
         'description2',
         'qty',
-        'price',
+        'price'
     ];
     displayedColumns = this.LONG;
 
@@ -78,11 +104,11 @@ export class ShoppingCartDetailComponent extends BaseEntityListComponent<Cartlin
             p.imageModel = new ImageModel(this.httpSrv);
             p.imageModel.readOnly = true;
             p.imageModel.setImageUrl(this.articleSrv.getPhotoUrl(p.partId), false);
-        })
+        });
 
         return this.cartSrv.getTotal()
             .pipe(tap(res => this.cartTotal = res.total),
-                  switchMap(res => of(data)));
+                switchMap(res => of(data)));
     }
 
     override ngOnInit() {
@@ -90,7 +116,7 @@ export class ShoppingCartDetailComponent extends BaseEntityListComponent<Cartlin
         this.shellSrv.setButtons([this.refreshButton, this.viewReportButton]);
         this.isHandset.subscribe(state => {
             this.isSmallScreen = state.matches;
-            this.displayedColumns =  this.isSmallScreen? this.SHORT : this.LONG;
+            this.displayedColumns = this.isSmallScreen ? this.SHORT : this.LONG;
         });
     }
 
@@ -137,7 +163,7 @@ export class ShoppingCartDetailComponent extends BaseEntityListComponent<Cartlin
                 agentId: this.loginSrv.appCtx.agentId,
                 shopDate: new Date(),
                 validated: dirty,
-                processed: false,
+                processed: false
             };
             this.cartSrv
                 .confirm(cart)

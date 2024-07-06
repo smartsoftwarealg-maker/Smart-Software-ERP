@@ -30,12 +30,10 @@ import { dateToYmdStr, LoginService, MaterialModule } from '@ss/common/api-commo
 import { CommonModule } from '@angular/common';
 import { CommonUiLangModule } from '@ss/common/ui-lang';
 import { UiPaginationModule } from '@ss/common/ui-pagination';
-import { LogisticsUiDocInfoModule } from '@ss/logistics/ui-doc-info';
 import { AppArchiveModule } from '@ss/common/app-archive';
 import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
 import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
 import { LTMSiloService } from '../services/ltm-silo.service';
-import { LtmEquipmentService } from '../services/ltm-equipment.service';
 import { LtmSupplierService } from '../services/ltm-supplier.service';
 import { LtmBleacherService } from '../services/ltm-bleacher.service';
 import { LtmZoneService } from '../services/ltm-zone.service';
@@ -61,7 +59,7 @@ function sampleNoValidatorFn(sampleMode: boolean): ValidatorFn {
         UiPaginationModule,
         ReactiveFormsModule,
         CommonUiConfirmationDialogModule,
-        LogisticsUiDocInfoModule,
+
         AppArchiveModule,
         CommonUiAutoCompleteModule,
         CommonUiDatepickerModule,

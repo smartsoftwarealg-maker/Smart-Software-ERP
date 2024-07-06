@@ -11,28 +11,30 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { CommonUiConfirmationDialogModule } from '@ss/common/ui-confirmation-dialog';
 import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
 import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
-import { LogisticsUiDocInfoModule } from '@ss/logistics/ui-doc-info';
+
 import { LogisticsUiStockInfoModule } from '@ss/logistics/ui-stock-info';
 import { TransferReceptionListComponent } from './transfer-reception-list/transfer-reception-list.component';
 import { TransferReceptionDetailComponent } from './transfer-reception-detail/transfer-reception-detail.component';
 import { TransferReceptionLinesListComponent } from './transfer-reception-lines-list/transfer-reception-lines-list.component';
 import { TransferReceptionLinesDetailComponent } from './transfer-reception-lines-detail/transfer-reception-lines-detail.component';
 import { RouterOutlet } from "@angular/router";
+import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    MaterialModule,
-    CommonUiLangModule,
-    UiPaginationModule,
-    ReactiveFormsModule,
-    CommonUiConfirmationDialogModule,
-    CommonUiDatepickerModule,
-    CommonUiAutoCompleteModule,
-    LogisticsUiDocInfoModule,
-    LogisticsUiStockInfoModule,
-    RouterOutlet
-  ],
+    imports: [
+        CommonModule,
+        MaterialModule,
+        CommonUiLangModule,
+        UiPaginationModule,
+        ReactiveFormsModule,
+        CommonUiConfirmationDialogModule,
+        CommonUiDatepickerModule,
+        CommonUiAutoCompleteModule,
+
+        LogisticsUiStockInfoModule,
+        RouterOutlet,
+        DocInfoComponent
+    ],
     declarations: [
         InventoryTransferListComponent,
         InventoryTransferDetailComponent,

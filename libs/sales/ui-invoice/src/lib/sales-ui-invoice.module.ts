@@ -8,13 +8,14 @@ import {CommonUiConfirmationDialogModule} from '@ss/common/ui-confirmation-dialo
 import {RouterModule} from '@angular/router';
 import {CommonUiDatepickerModule} from '@ss/common/ui-datepicker';
 import {CommonUiAutoCompleteModule} from '@ss/common/ui-auto-complete';
-import {LogisticsUiDocInfoModule} from '@ss/logistics/ui-doc-info';
+
 import {LogisticsUiDocImportModule} from '@ss/logistics/ui-doc-import';
 import {InvoiceListComponent} from './invoice-list/invoice-list.component';
 import {InvoiceDetailComponent} from './invoice-detail/invoice-detail.component';
 import {InvoiceLinesDetailComponent} from './invoice-lines-detail/invoice-lines-detail.component';
 import {InvoiceLinesListComponent} from './invoice-lines-list/invoice-lines-list.component';
 import {LogisticsUiStockInfoModule} from '@ss/logistics/ui-stock-info';
+import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
 
 @NgModule({
     imports: [
@@ -27,9 +28,10 @@ import {LogisticsUiStockInfoModule} from '@ss/logistics/ui-stock-info';
         RouterModule,
         CommonUiDatepickerModule,
         CommonUiAutoCompleteModule,
-        LogisticsUiDocInfoModule,
+
         LogisticsUiDocImportModule,
-        LogisticsUiStockInfoModule
+        LogisticsUiStockInfoModule,
+        DocInfoComponent
     ],
     declarations: [
         InvoiceListComponent,

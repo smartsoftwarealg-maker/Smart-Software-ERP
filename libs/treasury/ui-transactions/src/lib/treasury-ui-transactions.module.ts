@@ -9,7 +9,6 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { CommonUiConfirmationDialogModule } from '@ss/common/ui-confirmation-dialog';
 import { RouterModule } from '@angular/router';
 import { StockUiConsumptionLinesModule } from '@ss/stock/ui-consumption-lines';
-import { LogisticsUiDocInfoModule } from '@ss/logistics/ui-doc-info';
 import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
 import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
 import { LogisticsUiStockInfoModule } from '@ss/logistics/ui-stock-info';
@@ -29,7 +28,6 @@ import { AppArchiveModule } from "@ss/common/app-archive";
     CommonUiConfirmationDialogModule,
     RouterModule,
     StockUiConsumptionLinesModule,
-    LogisticsUiDocInfoModule,
     CommonUiDatepickerModule,
     CommonUiAutoCompleteModule,
     LogisticsUiStockInfoModule,

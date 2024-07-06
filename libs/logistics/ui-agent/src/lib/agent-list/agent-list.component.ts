@@ -5,17 +5,40 @@ import {LookupsService} from '@ss/common/api-lookup';
 import {Observable, switchMap} from 'rxjs';
 import {tap} from 'rxjs/operators';
 import { Agent, AGENT_URL, AgentService, CUSTOMER_URL, SUPPLIER_URL } from '@ss/logistics/api-agent';
-import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
+import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
-import {IsParamService, PaginatorPersistenceService} from '@ss/common/api-common';
+import { IsParamService, MaterialModule, PaginatorPersistenceService } from '@ss/common/api-common';
+import { CommonModule } from '@angular/common';
+import { CommonUiLangModule } from '@ss/common/ui-lang';
+import { UiPaginationModule } from '@ss/common/ui-pagination';
+import { ReactiveFormsModule } from '@angular/forms';
+import { AppArchiveModule } from '@ss/common/app-archive';
+import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
+import { CustomAttributesModule } from '@ss/custom-attributes';
+import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
 
 //import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 
 @Component({
     selector: 'ss-agent-list',
     styleUrls: ['./agent-list.component.scss'],
-    templateUrl: './agent-list.component.html'
+    templateUrl: './agent-list.component.html',
+    standalone: true,
+    imports: [
+        CommonModule,
+        MaterialModule,
+        CommonUiLangModule,
+        UiPaginationModule,
+        ReactiveFormsModule,
+        CommonUiConfirmationDialogModule,
+
+        AppArchiveModule,
+        CommonUiAutoCompleteModule,
+        CustomAttributesModule,
+        DocInfoComponent
+    ],
+
 })
 export class AgentListComponent extends BaseEntityListComponent<Agent> {
     private isParamSrv = inject(IsParamService);

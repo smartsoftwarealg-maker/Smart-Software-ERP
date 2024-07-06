@@ -30,7 +30,7 @@ import { CommonModule } from "@angular/common";
 import { CommonUiLangModule } from "@ss/common/ui-lang";
 import { UiPaginationModule } from "@ss/common/ui-pagination";
 import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
-import { LogisticsUiDocInfoModule } from "@ss/logistics/ui-doc-info";
+
 import { LogisticsUiDocImportModule } from "@ss/logistics/ui-doc-import";
 import { LogisticsUiStockInfoModule } from "@ss/logistics/ui-stock-info";
 import { CommonUiColorSelectModule } from "@ss/common/ui-color-select";
@@ -51,7 +51,7 @@ import { ColorPickerModule } from "ngx-color-picker";
         RouterModule,
         CommonUiDatepickerModule,
         CommonUiAutoCompleteModule,
-        LogisticsUiDocInfoModule,
+
         LogisticsUiDocImportModule,
         LogisticsUiStockInfoModule,
         CommonUiImageInputModule,

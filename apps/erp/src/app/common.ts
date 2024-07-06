@@ -12,6 +12,7 @@ import {
     AppArchiveListComponent
 } from '@ss/common/app-archive';
 import {AgentAssetsListComponent} from '@ss/assets-component';
+import { DocumentSourcesComponent } from 'logistics/ui-document-sources';
 
 // common
 export const LOOKUPS_URL = 'lookups';
@@ -902,5 +903,9 @@ export const docInfoRoutes: Routes = [
     {
         path: 'agent-assets',
         component: AgentAssetsListComponent
+    },
+    {
+        path: 'sources',
+        component: DocumentSourcesComponent
     }
 ];

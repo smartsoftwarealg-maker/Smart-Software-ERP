@@ -15,8 +15,9 @@ import { UiPaginationModule } from "@ss/common/ui-pagination";
 import { ReactiveFormsModule } from "@angular/forms";
 import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
 import { CommonUiAutoCompleteModule } from "@ss/common/ui-auto-complete";
-import { LogisticsUiDocInfoModule } from "@ss/logistics/ui-doc-info";
+
 import { LogisticsUiStockInfoModule } from "@ss/logistics/ui-stock-info";
+import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
 
 @Component({
     selector: 'ss-reception-lines-list',
@@ -32,10 +33,11 @@ import { LogisticsUiStockInfoModule } from "@ss/logistics/ui-stock-info";
         CommonUiConfirmationDialogModule,
         CommonUiDatepickerModule,
         CommonUiAutoCompleteModule,
-        LogisticsUiDocInfoModule,
+
         LogisticsUiStockInfoModule,
-        RouterOutlet
-    ],
+        RouterOutlet,
+        DocInfoComponent
+    ]
 })
 export class ReceptionLinesListComponent  extends BaseTransactionLinesListComponent implements OnInit {
     displayedColumns = [

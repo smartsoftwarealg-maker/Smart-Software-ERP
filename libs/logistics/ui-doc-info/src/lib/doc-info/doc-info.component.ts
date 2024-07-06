@@ -1,6 +1,13 @@
 import {Component, Input} from '@angular/core';
-import {ActivatedRoute, Router} from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import {DOCUMENT_ARCHIVES} from '@ss/common/app-archive';
+import { CommonModule } from '@angular/common';
+import { MaterialModule } from '@ss/common/api-common';
+import { CommonUiLangModule } from '@ss/common/ui-lang';
+import { UiPaginationModule } from '@ss/common/ui-pagination';
+import { ReactiveFormsModule } from '@angular/forms';
+import { CommonUiConfirmationDialogModule } from '@ss/common/ui-confirmation-dialog';
+import { LogisticsUiStockInfoModule } from '@ss/logistics/ui-stock-info';
 
 interface Entry {
     name: string,
@@ -12,12 +19,23 @@ interface Entry {
 @Component({
     selector: 'ss-doc-info',
     templateUrl: './doc-info.component.html',
-    styleUrls: ['./doc-info.component.scss']
+    styleUrls: ['./doc-info.component.scss'],
+    standalone: true,
+    imports: [
+        CommonModule,
+        MaterialModule,
+        CommonUiLangModule,
+        UiPaginationModule,
+        RouterModule,
+        ReactiveFormsModule,
+        CommonUiConfirmationDialogModule,
+        LogisticsUiStockInfoModule
+    ],
 })
 
 export class DocInfoComponent {
     private params_: any;
-    private     AGENT_ASSETS = 'agent_assets';
+    private AGENT_ASSETS = 'agent_assets';
     private readonly ASSET = {
         name: this.AGENT_ASSETS,
         description: 'ASSET_ASSIGNED_ASSETS',
@@ -94,6 +112,12 @@ export class DocInfoComponent {
                     url: 'stock',
                     paramsProvided: (p: string[]) => p.includes('articleReference')
                 },
+                {
+                    name: 'sources',
+                    description: 'LOGISTICS_SOURCES',
+                    url: 'sources',
+                    paramsProvided: (p: string[]) => p.includes('documentId')
+                },
             ]
         },
     ];
@@ -131,8 +155,8 @@ export class DocInfoComponent {
         if (this.selectedEntry != null) {
             delete this.params_['compensated'];
             this.params_.compensated = this.selectedEntry.name === 'debts_2'? 'false' : 'true';
-            const backUrl = this.router.url.indexOf('/lines-') > 0 ||
-                          this.router.url.indexOf('/costs-') > 0? ['..', this.selectedEntry.url] : [this.selectedEntry.url];
+            // const backUrl = this.router.url.indexOf('/lines-') > 0 ||
+            //               this.router.url.indexOf('/costs-') > 0? ['..', this.selectedEntry.url] : [this.selectedEntry.url];
             this.router.navigate([this.selectedEntry.url],
                 {
                     relativeTo: this.route,

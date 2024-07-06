@@ -12,7 +12,7 @@ import { CommonUiConfirmationDialogModule } from '@ss/common/ui-confirmation-dia
 import { RouterModule } from '@angular/router';
 import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
 import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
-import { LogisticsUiDocInfoModule } from '@ss/logistics/ui-doc-info';
+
 import { LogisticsUiDocImportModule } from '@ss/logistics/ui-doc-import';
 import { ServiceArticleService } from '@ss/service-sales/service-articles';
 
@@ -31,7 +31,7 @@ import { ServiceArticleService } from '@ss/service-sales/service-articles';
         RouterModule,
         CommonUiDatepickerModule,
         CommonUiAutoCompleteModule,
-        LogisticsUiDocInfoModule,
+
         LogisticsUiDocImportModule
     ],
 })

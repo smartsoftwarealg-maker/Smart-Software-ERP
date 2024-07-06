@@ -169,5 +169,6 @@
     "MERGE_INVOICE_SERIES": "Same number series for invoices and cancellations",
     "RESERVATION":          "Reservation",
     "BOM":                  "Bill of material",
-    "ORDER_ANOMALIES":      "Sales/purchase order anomalies"
+    "ORDER_ANOMALIES":      "Sales/purchase order anomalies",
+    "SOURCES":              "Sources"
 }

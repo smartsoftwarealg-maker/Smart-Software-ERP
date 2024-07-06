@@ -12,7 +12,7 @@ import { CommonModule } from '@angular/common';
 import { CommonUiLangModule } from '@ss/common/ui-lang';
 import { UiPaginationModule } from '@ss/common/ui-pagination';
 import { ReactiveFormsModule } from '@angular/forms';
-import { LogisticsUiDocInfoModule } from '@ss/logistics/ui-doc-info';
+
 import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
 import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
 
@@ -29,7 +29,7 @@ import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
         ReactiveFormsModule,
         CommonUiConfirmationDialogModule,
         RouterModule,
-        LogisticsUiDocInfoModule,
+
         CommonUiDatepickerModule,
         CommonUiAutoCompleteModule
     ]

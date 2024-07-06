@@ -13,8 +13,9 @@ import { UiPaginationModule } from '@ss/common/ui-pagination';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
 import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
-import { LogisticsUiDocInfoModule } from '@ss/logistics/ui-doc-info';
+
 import { LogisticsUiDocImportModule } from '@ss/logistics/ui-doc-import';
+import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
 
 @Component({
     selector: 'ss-delivery-list',
@@ -31,9 +32,10 @@ import { LogisticsUiDocImportModule } from '@ss/logistics/ui-doc-import';
         RouterModule,
         CommonUiDatepickerModule,
         CommonUiAutoCompleteModule,
-        LogisticsUiDocInfoModule,
-        LogisticsUiDocImportModule
-    ],
+
+        LogisticsUiDocImportModule,
+        DocInfoComponent
+    ]
 })
 export class ComplementInvoiceListComponent extends BaseEntityListComponent<Transaction> {
 

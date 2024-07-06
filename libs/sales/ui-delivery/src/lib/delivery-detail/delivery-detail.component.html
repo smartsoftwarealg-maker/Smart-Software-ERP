@@ -1,6 +1,7 @@
 <mat-card>
     <mat-card-content>
-        <form *ngIf="form !== null" novalidate [formGroup]="form">
+        @if (form !== null) {
+            <form  novalidate [formGroup]="form">
 
             <mat-form-field id="number" class="default-25 sm-100">
                 <mat-label translate>STOCK_NUMBER</mat-label>
@@ -106,6 +107,7 @@
             </mat-tab-group>
 
         </form>
+        }
     </mat-card-content>
 </mat-card>
 

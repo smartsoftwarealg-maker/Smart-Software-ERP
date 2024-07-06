@@ -10,8 +10,9 @@ import { CommonUiConfirmationDialogModule } from '@ss/common/ui-confirmation-dia
 import { RouterModule } from '@angular/router';
 import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
 import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
-import { LogisticsUiDocInfoModule } from '@ss/logistics/ui-doc-info';
+
 import { PriceRecalculationComponent } from './price-recalcultion/price-recalculation.component';
+import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
 
 @NgModule({
     imports: [
@@ -22,9 +23,10 @@ import { PriceRecalculationComponent } from './price-recalcultion/price-recalcul
         ReactiveFormsModule,
         CommonUiConfirmationDialogModule,
         RouterModule,
-        LogisticsUiDocInfoModule,
+
         CommonUiDatepickerModule,
         CommonUiAutoCompleteModule,
+        DocInfoComponent
     ],
     declarations: [
         InventoryListComponent,

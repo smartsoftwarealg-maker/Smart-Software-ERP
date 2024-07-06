@@ -10,7 +10,7 @@ import { CommonModule } from "@angular/common";
 import { LoginService, MaterialModule } from "@ss/common/api-common";
 import { CommonUiLangModule } from "@ss/common/ui-lang";
 import { UiPaginationModule } from "@ss/common/ui-pagination";
-import { LogisticsUiDocInfoModule } from "@ss/logistics/ui-doc-info";
+
 import { AppArchiveModule } from "@ss/common/app-archive";
 import { CommonUiAutoCompleteModule } from "@ss/common/ui-auto-complete";
 import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
@@ -31,7 +31,7 @@ import { LtmMixturePickupPointService } from '../services/ltm-mixture-pickup-poi
         UiPaginationModule,
         ReactiveFormsModule,
         CommonUiConfirmationDialogModule,
-        LogisticsUiDocInfoModule,
+
         AppArchiveModule,
         CommonUiAutoCompleteModule,
         CommonUiDatepickerModule,

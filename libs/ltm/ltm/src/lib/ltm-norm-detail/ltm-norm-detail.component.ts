@@ -8,7 +8,7 @@ import { CommonModule } from '@angular/common';
 import { MaterialModule } from '@ss/common/api-common';
 import { CommonUiLangModule } from '@ss/common/ui-lang';
 import { UiPaginationModule } from '@ss/common/ui-pagination';
-import { LogisticsUiDocInfoModule } from '@ss/logistics/ui-doc-info';
+
 import { AppArchiveModule } from "@ss/common/app-archive";
 import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
 import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
@@ -29,7 +29,7 @@ import { LtmNormService } from '../services/ltm-norm.service';
         UiPaginationModule,
         ReactiveFormsModule,
         CommonUiConfirmationDialogModule,
-        LogisticsUiDocInfoModule,
+
         AppArchiveModule,
         CommonUiAutoCompleteModule,
         CommonUiDatepickerModule,

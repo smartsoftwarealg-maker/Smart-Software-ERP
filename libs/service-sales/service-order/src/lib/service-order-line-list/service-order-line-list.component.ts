@@ -8,7 +8,7 @@ import { LotsService } from '@ss/common/api-lookup';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { CommonUiImageInputModule } from '@ss/common/ui-image-input';
 import { CommonUiLangModule } from '@ss/common/ui-lang';
-import { LogisticsUiDocInfoModule } from '@ss/logistics/ui-doc-info';
+
 import { MatTableModule } from '@angular/material/table';
 import { UiPaginationModule } from '@ss/common/ui-pagination';
 import { MatSortModule } from '@angular/material/sort';
@@ -16,6 +16,7 @@ import { MatButtonModule } from "@angular/material/button";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from "@angular/material/input";
 import { MaterialModule } from "@ss/common/api-common";
+import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
 
 @Component({
     selector: 'ss-service-order-line-list',
@@ -24,14 +25,15 @@ import { MaterialModule } from "@ss/common/api-common";
         CommonModule,
         CommonUiImageInputModule,
         CommonUiLangModule,
-        LogisticsUiDocInfoModule,
+
         MatTableModule,
         UiPaginationModule,
         MatSortModule,
         MatButtonModule,
         MatFormFieldModule,
         MatInputModule,
-        MaterialModule
+        MaterialModule,
+        DocInfoComponent
     ],
     templateUrl: './service-order-line-list.component.html',
     styleUrls: ['./service-order-line-list.component.scss']

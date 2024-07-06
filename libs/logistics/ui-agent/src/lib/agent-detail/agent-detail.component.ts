@@ -3,7 +3,14 @@ import { KeepOnToolbar, ShellService, SnackBarService, ToolbarButton } from '@ss
 import {ActivatedRoute, Router} from '@angular/router';
 import {switchMap, tap} from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
-import { AbstractControl, FormControl, UntypedFormBuilder, UntypedFormControl, Validators } from '@angular/forms';
+import {
+    AbstractControl,
+    FormControl,
+    ReactiveFormsModule,
+    UntypedFormBuilder,
+    UntypedFormControl,
+    Validators
+} from '@angular/forms';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {
     ActivityService,
@@ -21,22 +28,42 @@ import {
     CUSTOMER_URL,
     SUPPLIER_URL
 } from '@ss/logistics/api-agent';
-import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
+import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import {MatExpansionPanel} from '@angular/material/expansion';
-import { Center, FormValidators, IsParamService, LoginService, Role } from '@ss/common/api-common';
+import { Center, FormValidators, IsParamService, LoginService, MaterialModule, Role } from '@ss/common/api-common';
 import {BankService} from '@ss/administration/api-bank';
-import { DefaultAutoCompleteModel, Id } from '@ss/common/ui-auto-complete';
-import { AGENT_ARCHIVES, AppArchiveService } from '@ss/common/app-archive';
+import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel, Id } from '@ss/common/ui-auto-complete';
+import { AGENT_ARCHIVES, AppArchiveModule, AppArchiveService } from '@ss/common/app-archive';
 import { MatSelectionListChange } from '@angular/material/list';
 import { CenterService } from '@ss/administration/api-center';
 import { MatDialog } from '@angular/material/dialog';
 import { AgentImportComponent } from '../agent-import/agent-import.component';
 import { AgentPriceService } from '@ss/logistics/api-agent-price';
+import { CommonModule } from '@angular/common';
+import { CommonUiLangModule } from '@ss/common/ui-lang';
+import { UiPaginationModule } from '@ss/common/ui-pagination';
+import { CustomAttributesModule } from '@ss/custom-attributes';
+import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
 
 @Component({
     selector: 'ss-agent-detail',
     styleUrls: ['./agent-detail.component.scss'],
-    templateUrl: './agent-detail.component.html'
+    templateUrl: './agent-detail.component.html',
+    standalone: true,
+    imports: [
+        CommonModule,
+        MaterialModule,
+        CommonUiLangModule,
+        UiPaginationModule,
+        ReactiveFormsModule,
+        CommonUiConfirmationDialogModule,
+
+        AppArchiveModule,
+        CommonUiAutoCompleteModule,
+        CustomAttributesModule,
+        DocInfoComponent
+    ],
+
 })
 export class AgentDetailComponent extends BaseEntityDetailComponent<Agent> implements OnInit {
     private dialog  = inject(MatDialog);

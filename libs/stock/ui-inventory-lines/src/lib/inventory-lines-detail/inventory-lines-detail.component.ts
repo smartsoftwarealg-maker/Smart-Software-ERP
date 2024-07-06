@@ -8,7 +8,7 @@ import { CommonUiLangModule } from '@ss/common/ui-lang';
 import { UiPaginationModule } from '@ss/common/ui-pagination';
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
-import { LogisticsUiDocInfoModule } from '@ss/logistics/ui-doc-info';
+
 import { CommonUiConfirmationDialogModule } from '@ss/common/ui-confirmation-dialog';
 import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
 import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
@@ -26,7 +26,7 @@ import { InventoryLinesService } from "@ss/stock/api-inventory-lines";
         UiPaginationModule,
         RouterModule,
         ReactiveFormsModule,
-        LogisticsUiDocInfoModule,
+
         CommonUiConfirmationDialogModule,
         CommonUiDatepickerModule,
         CommonUiAutoCompleteModule,

@@ -11,7 +11,7 @@ import { ReactiveFormsModule } from "@angular/forms";
 import { CommonUiConfirmationDialogModule } from "@ss/common/ui-confirmation-dialog";
 import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
 import { CommonUiAutoCompleteModule } from "@ss/common/ui-auto-complete";
-import { LogisticsUiDocInfoModule } from "@ss/logistics/ui-doc-info";
+
 import { LogisticsUiStockInfoModule } from "@ss/logistics/ui-stock-info";
 import { RouterOutlet } from "@angular/router";
 
@@ -29,7 +29,7 @@ import { RouterOutlet } from "@angular/router";
         CommonUiConfirmationDialogModule,
         CommonUiDatepickerModule,
         CommonUiAutoCompleteModule,
-        LogisticsUiDocInfoModule,
+
         LogisticsUiStockInfoModule,
         RouterOutlet
     ],

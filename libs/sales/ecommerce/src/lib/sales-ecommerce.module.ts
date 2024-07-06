@@ -8,7 +8,7 @@ import { CommonUiConfirmationDialogModule } from '@ss/common/ui-confirmation-dia
 import { RouterModule } from '@angular/router';
 import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
 import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
-import { LogisticsUiDocInfoModule } from '@ss/logistics/ui-doc-info';
+
 import { LogisticsUiDocImportModule } from '@ss/logistics/ui-doc-import';
 import { HeaderPageComponent, MainPageComponent} from '@ss/sales/ecommerce';
 import { CommonUiImageInputModule } from '@ss/common/ui-image-input';
@@ -33,7 +33,7 @@ import { SalesAcknowledgementComponent } from './sales-acknowledgement/sales-ack
         RouterModule,
         CommonUiDatepickerModule,
         CommonUiAutoCompleteModule,
-        LogisticsUiDocInfoModule,
+
         LogisticsUiDocImportModule,
         CommonUiImageInputModule,
         BrowserAnimationsModule,

@@ -10,10 +10,11 @@ import {CommonUiConfirmationDialogModule} from '@ss/common/ui-confirmation-dialo
 import {RouterModule} from '@angular/router';
 import {CommonUiDatepickerModule} from '@ss/common/ui-datepicker';
 import {CommonUiAutoCompleteModule} from '@ss/common/ui-auto-complete';
-import {LogisticsUiDocInfoModule} from '@ss/logistics/ui-doc-info';
+
 import {SalesUiDeliveryLinesModule} from '@ss/sales/ui-delivery-lines';
 import {LogisticsUiDocImportModule} from '@ss/logistics/ui-doc-import';
 import {LogisticsUiStockInfoModule} from '@ss/logistics/ui-stock-info';
+import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
 
 @NgModule({
     imports: [
@@ -26,10 +27,11 @@ import {LogisticsUiStockInfoModule} from '@ss/logistics/ui-stock-info';
         RouterModule,
         CommonUiDatepickerModule,
         CommonUiAutoCompleteModule,
-        LogisticsUiDocInfoModule,
+
         SalesUiDeliveryLinesModule,
         LogisticsUiDocImportModule,
-        LogisticsUiStockInfoModule
+        LogisticsUiStockInfoModule,
+        DocInfoComponent
     ],
     declarations: [
         DeliveryListComponent,

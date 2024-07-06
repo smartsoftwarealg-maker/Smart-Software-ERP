@@ -9,15 +9,16 @@ import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { PaginatorPersistenceService } from '@ss/common/api-common';
 import { ReservationService } from '../services/reservation.service';
 import { CommonUiLangModule } from '@ss/common/ui-lang';
-import { LogisticsUiDocInfoModule } from '@ss/logistics/ui-doc-info';
+
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { UiPaginationModule } from '@ss/common/ui-pagination';
+import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
 
 @Component({
     selector: 'ss-logistics-parts-reservation',
     standalone: true,
-    imports: [CommonModule, CommonUiLangModule, LogisticsUiDocInfoModule, MatSortModule, MatTableModule, UiPaginationModule],
+    imports: [CommonModule, CommonUiLangModule, MatSortModule, MatTableModule, UiPaginationModule, DocInfoComponent],
     templateUrl: './parts-reservation-list.component.html',
     styleUrls: ['../../../../../common/assets/src/assets/transac-list.scss'],
 })
