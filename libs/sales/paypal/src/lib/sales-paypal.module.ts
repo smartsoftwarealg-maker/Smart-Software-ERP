@@ -9,7 +9,7 @@ import { CommonUiConfirmationDialogModule } from '@ss/common/ui-confirmation-dia
 import { RouterModule } from '@angular/router';
 import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
 import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
-import { LogisticsUiDocInfoModule } from '@ss/logistics/ui-doc-info';
+
 import { SalesUiDeliveryLinesModule } from '@ss/sales/ui-delivery-lines';
 import { LogisticsUiDocImportModule } from '@ss/logistics/ui-doc-import';
 import { CommonUiImageInputModule } from '@ss/common/ui-image-input';
@@ -27,7 +27,7 @@ import { ReviewComponent } from './review/review.component';
         RouterModule,
         CommonUiDatepickerModule,
         CommonUiAutoCompleteModule,
-        LogisticsUiDocInfoModule,
+
         SalesUiDeliveryLinesModule,
         LogisticsUiDocImportModule,
         CommonUiImageInputModule,

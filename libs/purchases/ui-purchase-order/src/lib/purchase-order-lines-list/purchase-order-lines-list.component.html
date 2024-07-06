@@ -115,11 +115,12 @@
         <ss-doc-info
             [displayedGroups]="['document', 'article']"
             [params]="{
-            documentId: selectedRow?.transacId,
-            documentURL:'/sales-order',
-            articleReference: selectedRow?.reference,
-            articleStoreId: selectedRow?.store
-        }">
+                documentId: selectedRow?.transacId,
+                documentURL:'/sales-order',
+                articleReference: selectedRow?.reference,
+                detailId: selectedId,
+                articleStoreId: selectedRow?.store
+            }">
         </ss-doc-info>
     </div>
 </div>

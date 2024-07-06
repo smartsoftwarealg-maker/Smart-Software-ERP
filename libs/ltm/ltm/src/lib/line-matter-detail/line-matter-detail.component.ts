@@ -12,7 +12,7 @@ import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from "@ss/common
 import { CommonModule } from "@angular/common";
 import { CommonUiLangModule } from "@ss/common/ui-lang";
 import { UiPaginationModule } from "@ss/common/ui-pagination";
-import { LogisticsUiDocInfoModule } from "@ss/logistics/ui-doc-info";
+
 import { AppArchiveModule } from "@ss/common/app-archive";
 import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
 import { CommonUiHourPickerModule } from '@ss/common/ui-hour-picker';
@@ -34,7 +34,7 @@ import { LtmNormService } from '../services/ltm-norm.service';
         UiPaginationModule,
         ReactiveFormsModule,
         CommonUiConfirmationDialogModule,
-        LogisticsUiDocInfoModule,
+
         AppArchiveModule,
         CommonUiAutoCompleteModule,
         CommonUiDatepickerModule,

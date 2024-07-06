@@ -13,7 +13,7 @@ import {of, switchMap} from 'rxjs';
 import { CommonModule } from "@angular/common";
 import { CommonUiLangModule } from "@ss/common/ui-lang";
 import { UiPaginationModule } from "@ss/common/ui-pagination";
-import { LogisticsUiDocInfoModule } from "@ss/logistics/ui-doc-info";
+
 import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
 import { StockUiArticleStoreModule } from "@ss/stock/article-store";
 
@@ -29,7 +29,7 @@ import { StockUiArticleStoreModule } from "@ss/stock/article-store";
     UiPaginationModule,
     RouterModule,
     ReactiveFormsModule,
-    LogisticsUiDocInfoModule,
+
     CommonUiConfirmationDialogModule,
     CommonUiDatepickerModule,
     CommonUiAutoCompleteModule,

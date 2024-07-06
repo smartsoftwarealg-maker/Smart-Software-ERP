@@ -5,7 +5,7 @@ import { CommonUiLangModule } from '@ss/common/ui-lang';
 import { UiPaginationModule } from '@ss/common/ui-pagination';
 import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { StockUiArticleStoreModule } from '@ss/stock/article-store';
-import { LogisticsUiDocInfoModule } from '@ss/logistics/ui-doc-info';
+
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { CommonUiImageInputModule } from '@ss/common/ui-image-input';
 import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
@@ -26,7 +26,7 @@ import { tap } from 'rxjs/operators';
         UiPaginationModule,
         CommonUiConfirmationDialogModule,
         StockUiArticleStoreModule,
-        LogisticsUiDocInfoModule,
+
         RouterModule,
         CommonUiImageInputModule,
         CommonUiAutoCompleteModule,

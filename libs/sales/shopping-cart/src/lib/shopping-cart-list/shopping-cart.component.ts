@@ -1,22 +1,48 @@
-import {Component} from '@angular/core';
-import {ShellService, SnackBarService} from "@ss/common/ui-shell";
-import {Article, ArticleService, AVAILABLE_ARTICLES_URL} from "@ss/master-data/api-article";
-import {BaseEntityListComponent} from "@ss/common/ui-base-entity";
-import {ActivatedRoute, Router} from "@angular/router";
-import {ConfirmationDialogService} from "@ss/common/ui-confirmation-dialog";
-import {DefaultReportService} from "@ss/common/ui-default-report-component";
-import {LookupsService, MarkService} from "@ss/common/api-lookup";
-import {HttpService, PaginationModel, PaginatorPersistenceService} from "@ss/common/api-common";
-import {ImageModel} from '@ss/common/ui-image-input';
-import {Observable, of, switchMap, tap} from 'rxjs';
-import {ShoppingCartService} from "../shopping-cart.service";
-import {Cartline} from "../cartline";
-import {FormControl} from "@angular/forms";
+import { Component } from '@angular/core';
+import { ShellService, SnackBarService } from '@ss/common/ui-shell';
+import { Article, ArticleService, AVAILABLE_ARTICLES_URL } from '@ss/master-data/api-article';
+import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
+import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
+import { DefaultReportService } from '@ss/common/ui-default-report-component';
+import { LookupsService, MarkService } from '@ss/common/api-lookup';
+import { HttpService, MaterialModule, PaginationModel, PaginatorPersistenceService } from '@ss/common/api-common';
+import { CommonUiImageInputModule, ImageModel } from '@ss/common/ui-image-input';
+import { Observable, of, switchMap, tap } from 'rxjs';
+import { ShoppingCartService } from '../shopping-cart.service';
+import { Cartline } from '../cartline';
+import { FormControl, ReactiveFormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { CommonUiLangModule } from '@ss/common/ui-lang';
+import { UiPaginationModule } from '@ss/common/ui-pagination';
+import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
+import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
+import { SalesUiDeliveryLinesModule } from '@ss/sales/ui-delivery-lines';
+import { LogisticsUiDocImportModule } from '@ss/logistics/ui-doc-import';
+import { LogisticsUiStockInfoModule } from '@ss/logistics/ui-stock-info';
 
 @Component({
-  selector: 'ss-shopping-cart',
-  templateUrl: './shopping-cart.component.html',
-  styleUrls: ['./shopping-cart.component.scss']
+    selector: 'ss-shopping-cart',
+    templateUrl: './shopping-cart.component.html',
+    styleUrls: ['./shopping-cart.component.scss'],
+    standalone: true,
+    imports: [
+        CommonModule,
+        MaterialModule,
+        CommonUiLangModule,
+        UiPaginationModule,
+        ReactiveFormsModule,
+        CommonUiConfirmationDialogModule,
+        RouterModule,
+        CommonUiDatepickerModule,
+        CommonUiAutoCompleteModule,
+
+        SalesUiDeliveryLinesModule,
+        LogisticsUiDocImportModule,
+        CommonUiImageInputModule,
+        LogisticsUiStockInfoModule
+    ]
+
 })
 export class ShoppingCartComponent extends BaseEntityListComponent<Article> {
     // public readonly pagination = PaginationModel.newInstance();
@@ -53,7 +79,7 @@ export class ShoppingCartComponent extends BaseEntityListComponent<Article> {
             p.imageModel = new ImageModel(this.httpSrv);
             p.imageModel.readOnly = true;
             p.imageModel.setImageUrl(this.articleSrv.getPhotoUrl(p.id), false);
-        })
+        });
         return this.markSrv
             .getByIdList(data.filter(e => e.mark && e.mark > 0).map(e => e.mark).join(','))
             .pipe(

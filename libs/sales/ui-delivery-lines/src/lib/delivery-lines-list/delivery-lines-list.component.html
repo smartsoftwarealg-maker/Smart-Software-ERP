@@ -108,15 +108,18 @@
         <ss-pagination [paginationModel]="pagination"></ss-pagination>
     </div>
     <div class="doc-info">
-        <ss-doc-info
-            *ngIf="selectedId"
-            [displayedGroups]="['article', 'document']"
-            [params]="{
-            documentId: selectedRow?.transacId,
-            documentURL:'/inventory',
-            articleReference: selectedRow?.reference,
-            articleStoreId: selectedRow?.store
-        }">
-        </ss-doc-info>
+        @if (selectedId) {
+            <ss-doc-info
+                *ngIf="selectedId"
+                [displayedGroups]="['article', 'document']"
+                [params]="{
+                    documentId: selectedRow?.transacId,
+                    detailId: selectedId,
+                    documentURL:'/inventory',
+                    articleReference: selectedRow?.reference,
+                    articleStoreId: selectedRow?.store
+               }">
+            </ss-doc-info>
+        }
     </div>
 </div>

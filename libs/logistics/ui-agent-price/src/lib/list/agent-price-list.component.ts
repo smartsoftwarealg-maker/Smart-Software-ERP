@@ -2,15 +2,28 @@ import {Component, OnInit,} from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
-import {ConfirmationDialogService} from "@ss/common/ui-confirmation-dialog";
+import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import {AgentPrice, AgentPriceService} from "@ss/logistics/api-agent-price";
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
-import {PaginatorPersistenceService} from '@ss/common/api-common';
+import { MaterialModule, PaginatorPersistenceService } from '@ss/common/api-common';
+import { CommonModule } from '@angular/common';
+import { CommonUiLangModule } from '@ss/common/ui-lang';
+import { UiPaginationModule } from '@ss/common/ui-pagination';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @Component({
     selector: 'ss-agent-price-list',
     styleUrls: ['./agent-price-list.component.scss'],
-    templateUrl: './agent-price-list.component.html'
+    templateUrl: './agent-price-list.component.html',
+    standalone: true,
+    imports: [
+        CommonModule,
+        MaterialModule,
+        CommonUiLangModule,
+        UiPaginationModule,
+        ReactiveFormsModule,
+        CommonUiConfirmationDialogModule
+    ],
 })
 export class AgentPriceListComponent extends BaseEntityListComponent<AgentPrice> implements OnInit {
 

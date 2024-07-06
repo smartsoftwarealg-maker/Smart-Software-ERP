@@ -12,8 +12,9 @@ import {CommonUiConfirmationDialogModule} from "@ss/common/ui-confirmation-dialo
 import {RouterModule} from "@angular/router";
 import {CommonUiDatepickerModule} from "@ss/common/ui-datepicker";
 import {CommonUiAutoCompleteModule} from "@ss/common/ui-auto-complete";
-import {LogisticsUiDocInfoModule} from "@ss/logistics/ui-doc-info";
+
 import {LogisticsUiDocImportModule} from "@ss/logistics/ui-doc-import";
+import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
 
 @NgModule({
     imports: [
@@ -26,8 +27,9 @@ import {LogisticsUiDocImportModule} from "@ss/logistics/ui-doc-import";
         RouterModule,
         CommonUiDatepickerModule,
         CommonUiAutoCompleteModule,
-        LogisticsUiDocInfoModule,
-        LogisticsUiDocImportModule
+
+        LogisticsUiDocImportModule,
+        DocInfoComponent
     ],
   declarations: [
       DeliveryCancellationListComponent,

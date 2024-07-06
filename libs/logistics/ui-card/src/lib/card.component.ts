@@ -1,20 +1,36 @@
 import { Component, inject, OnInit } from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
-import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
+import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import {Card, CardService} from '@ss/logistics/api-card';
 import {ArticleService} from '@ss/master-data/api-article';
-import {PaginationModel} from '@ss/common/api-common';
-import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
+import { MaterialModule, PaginationModel } from '@ss/common/api-common';
+import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
 import {Store} from '@ss/common/api-lookup';
-import {UntypedFormControl, UntypedFormGroup} from '@angular/forms';
+import { ReactiveFormsModule, UntypedFormControl, UntypedFormGroup } from '@angular/forms';
 import {ArticleLotsService} from '@ss/stock/api-article-store';
 import {LanguageService} from '@ss/common/api-common';
+import { CommonModule } from '@angular/common';
+import { CommonUiLangModule } from '@ss/common/ui-lang';
+import { UiPaginationModule } from '@ss/common/ui-pagination';
+import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
 
 @Component({
     selector: 'ss-card',
     styleUrls: ['./card.component.scss'],
-    templateUrl: './card.component.html'
+    templateUrl: './card.component.html',
+    standalone: true,
+    imports: [
+        CommonModule,
+        MaterialModule,
+        CommonUiLangModule,
+        UiPaginationModule,
+        ReactiveFormsModule,
+        CommonUiConfirmationDialogModule,
+        CommonUiDatepickerModule,
+        CommonUiAutoCompleteModule,
+    ],
+
 })
 export class CardComponent implements OnInit {
     private storeSrv =  inject(ArticleLotsService);

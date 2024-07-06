@@ -9,7 +9,7 @@ import { UiPaginationModule } from "@ss/common/ui-pagination";
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
 import { CommonUiAutoCompleteModule } from "@ss/common/ui-auto-complete";
-import { LogisticsUiDocInfoModule } from "@ss/logistics/ui-doc-info";
+
 import { LogisticsUiDocImportModule } from "@ss/logistics/ui-doc-import";
 import { LogisticsUiStockInfoModule } from "@ss/logistics/ui-stock-info";
 import { CommonUiImageInputModule } from "@ss/common/ui-image-input";
@@ -37,7 +37,7 @@ import { Chart, ChartItem, registerables } from 'chart.js';
         RouterModule,
         CommonUiDatepickerModule,
         CommonUiAutoCompleteModule,
-        LogisticsUiDocInfoModule,
+
         LogisticsUiDocImportModule,
         LogisticsUiStockInfoModule,
         CommonUiImageInputModule,

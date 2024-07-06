@@ -15,7 +15,7 @@ import { CommonModule } from '@angular/common';
 import { CommonUiLangModule } from '@ss/common/ui-lang';
 import { UiPaginationModule } from '@ss/common/ui-pagination';
 import { StockUiArticleStoreModule } from '@ss/stock/article-store';
-import { LogisticsUiDocInfoModule } from '@ss/logistics/ui-doc-info';
+
 import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
 import { LogisticsUiStockInfoModule } from '@ss/logistics/ui-stock-info';
 import { FinalProductService } from '@ss/master-data/api-article';
@@ -34,7 +34,7 @@ import { CMMSRoutingDetailService } from '@ss/master-data/cmms-routing';
         UiPaginationModule,
         CommonUiConfirmationDialogModule,
         StockUiArticleStoreModule,
-        LogisticsUiDocInfoModule,
+
         RouterModule,
         CommonUiImageInputModule,
         CommonUiAutoCompleteModule,

@@ -22,7 +22,7 @@ import { CommonModule } from '@angular/common';
 import { CommonUiLangModule } from '@ss/common/ui-lang';
 import { UiPaginationModule } from '@ss/common/ui-pagination';
 import { StockUiArticleStoreModule } from '@ss/stock/article-store';
-import { LogisticsUiDocInfoModule } from '@ss/logistics/ui-doc-info';
+
 import { LogisticsUiStockInfoModule } from '@ss/logistics/ui-stock-info';
 
 @Component({
@@ -37,7 +37,7 @@ import { LogisticsUiStockInfoModule } from '@ss/logistics/ui-stock-info';
         UiPaginationModule,
         CommonUiConfirmationDialogModule,
         StockUiArticleStoreModule,
-        LogisticsUiDocInfoModule,
+
         RouterModule,
         CommonUiImageInputModule,
         CommonUiAutoCompleteModule,

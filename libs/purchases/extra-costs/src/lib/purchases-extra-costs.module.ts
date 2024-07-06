@@ -5,7 +5,7 @@ import { ExtraCostListComponent } from './extra-cost-list/extra-cost-list.compon
 import { ExtraCostDetailComponent } from './extra-cost-detail/extra-cost-detail.component';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { CommonUiLangModule } from '@ss/common/ui-lang';
-import { LogisticsUiDocInfoModule } from '@ss/logistics/ui-doc-info';
+
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { UiPaginationModule } from '@ss/common/ui-pagination';
@@ -24,7 +24,7 @@ import { TextFieldModule } from '@angular/cdk/text-field';
         CommonModule,
         CommonModule,
         CommonUiLangModule,
-        LogisticsUiDocInfoModule,
+
         MatSortModule,
         MatTableModule,
         UiPaginationModule,

@@ -11,7 +11,7 @@ import {RouterModule} from '@angular/router';
 import {CommonUiDatepickerModule} from '@ss/common/ui-datepicker';
 import {CommonUiAutoCompleteModule} from '@ss/common/ui-auto-complete';
 import {StockUiConsumptionLinesModule} from '@ss/stock/ui-consumption-lines';
-import {LogisticsUiDocInfoModule} from '@ss/logistics/ui-doc-info';
+
 import {LogisticsUiStockInfoModule} from '@ss/logistics/ui-stock-info';
 import {
     ConsumptionCancellationDetailComponent
@@ -19,6 +19,7 @@ import {
 import {
     ConsumptionCancellationListComponent
 } from './consumption-cancellation-list/consumption-cancellation-list.component';
+import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
 
 @NgModule({
     imports: [
@@ -30,10 +31,11 @@ import {
         CommonUiConfirmationDialogModule,
         RouterModule,
         StockUiConsumptionLinesModule,
-        LogisticsUiDocInfoModule,
+
         CommonUiDatepickerModule,
         CommonUiAutoCompleteModule,
-        LogisticsUiStockInfoModule
+        LogisticsUiStockInfoModule,
+        DocInfoComponent
     ],
     declarations: [
         ConsumptionListComponent,

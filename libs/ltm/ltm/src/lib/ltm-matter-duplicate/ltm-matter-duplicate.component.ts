@@ -8,7 +8,7 @@ import { CommonModule } from "@angular/common";
 import { CommonUiLangModule } from "@ss/common/ui-lang";
 import { UiPaginationModule } from "@ss/common/ui-pagination";
 import { FormControl, ReactiveFormsModule } from "@angular/forms";
-import { LogisticsUiDocInfoModule } from "@ss/logistics/ui-doc-info";
+
 import { AppArchiveModule } from "@ss/common/app-archive";
 import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
 import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
@@ -27,7 +27,7 @@ import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material/dialog";
         UiPaginationModule,
         ReactiveFormsModule,
         CommonUiConfirmationDialogModule,
-        LogisticsUiDocInfoModule,
+
         AppArchiveModule,
         CommonUiAutoCompleteModule,
         CommonUiDatepickerModule,

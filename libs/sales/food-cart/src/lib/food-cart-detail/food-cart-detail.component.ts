@@ -1,31 +1,56 @@
-import {Component, Inject} from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import {
     HttpService,
     LanguageService,
-    LoginService,
+    LoginService, MaterialModule,
     PaginatorPersistenceService
-} from "@ss/common/api-common";
-import {LookupsService, MarkService} from '@ss/common/api-lookup';
-import {Article, ArticleService} from '@ss/master-data/api-article';
-import {ShellService, SnackBarService} from "@ss/common/ui-shell";
-import {ActivatedRoute, Router} from '@angular/router';
-import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import {DefaultReportService} from '@ss/common/ui-default-report-component';
-import {debounceTime, distinctUntilChanged, Observable, of, switchMap, tap} from 'rxjs';
-import {ImageModel} from '@ss/common/ui-image-input';
-import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
-import {BreakpointObserver, BreakpointState} from "@angular/cdk/layout";
-import {Cart, Cartline} from '@ss/sales/shopping-cart';
-import {FoodCartService} from '../food-cart.service';
-import {FormControl} from '@angular/forms';
-import {MatDialog} from '@angular/material/dialog';
-import {CheckoutComponent} from '@ss/sales/paypal';
-import {DOCUMENT} from '@angular/common';
+} from '@ss/common/api-common';
+import { LookupsService, MarkService } from '@ss/common/api-lookup';
+import { Article, ArticleService } from '@ss/master-data/api-article';
+import { ShellService, SnackBarService } from '@ss/common/ui-shell';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
+import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
+import { DefaultReportService } from '@ss/common/ui-default-report-component';
+import { debounceTime, distinctUntilChanged, Observable, of, switchMap, tap } from 'rxjs';
+import { CommonUiImageInputModule, ImageModel } from '@ss/common/ui-image-input';
+import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
+import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
+import { Cart, Cartline } from '@ss/sales/shopping-cart';
+import { FoodCartService } from '../food-cart.service';
+import { FormControl, ReactiveFormsModule } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
+import { CheckoutComponent } from '@ss/sales/paypal';
+import { CommonModule, DOCUMENT } from '@angular/common';
+import { CommonUiLangModule } from '@ss/common/ui-lang';
+import { UiPaginationModule } from '@ss/common/ui-pagination';
+import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
+import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
+import { SalesUiDeliveryLinesModule } from '@ss/sales/ui-delivery-lines';
+import { LogisticsUiDocImportModule } from '@ss/logistics/ui-doc-import';
+import { LogisticsUiStockInfoModule } from '@ss/logistics/ui-stock-info';
 
 @Component({
-  selector: 'ss-food-cart-detail',
-  templateUrl: './food-cart-detail.component.html',
-  styleUrls: ['./food-cart-detail.component.scss']
+    selector: 'ss-food-cart-detail',
+    templateUrl: './food-cart-detail.component.html',
+    styleUrls: ['./food-cart-detail.component.scss'],
+    standalone: true,
+    imports: [
+        CommonModule,
+        MaterialModule,
+        CommonUiLangModule,
+        UiPaginationModule,
+        ReactiveFormsModule,
+        CommonUiConfirmationDialogModule,
+        RouterModule,
+        CommonUiDatepickerModule,
+        CommonUiAutoCompleteModule,
+
+        SalesUiDeliveryLinesModule,
+        LogisticsUiDocImportModule,
+        CommonUiImageInputModule,
+        LogisticsUiStockInfoModule
+    ]
+
 })
 export class FoodCartDetailComponent extends BaseEntityListComponent<Cartline> {
     searchCtrl = new FormControl<string>('');
@@ -44,14 +69,14 @@ export class FoodCartDetailComponent extends BaseEntityListComponent<Cartline> {
         'qty',
         'price',
         'total',
-        'actions',
+        'actions'
     ];
 
 
     private SHORT = [
         'description2',
         'qty',
-        'price',
+        'price'
     ];
     displayedColumns = this.LONG;
 
@@ -90,13 +115,13 @@ export class FoodCartDetailComponent extends BaseEntityListComponent<Cartline> {
             p.imageModel = new ImageModel(this.httpSrv);
             p.imageModel.readOnly = true;
             p.imageModel.setImageUrl(this.articleSrv.getPhotoUrl(p.partId), false);
-        })
+        });
 
         this.openOrderExists = data.length == 0 || data.find(c => !c.validated) != null;
 
         return this.cartSrv.getTotal()
             .pipe(tap(res => this.cartTotal = res.total),
-                  switchMap(res => of(data)));
+                switchMap(res => of(data)));
     }
 
     override ngOnInit() {
@@ -105,7 +130,7 @@ export class FoodCartDetailComponent extends BaseEntityListComponent<Cartline> {
         this.shellSrv.setButtons([this.viewReportButton]);
         this.isHandset.subscribe(state => {
             this.isSmallScreen = state.matches;
-            this.displayedColumns =  this.isSmallScreen? this.SHORT : this.LONG;
+            this.displayedColumns = this.isSmallScreen ? this.SHORT : this.LONG;
         });
         this.subscriptions
             .push(
@@ -122,7 +147,7 @@ export class FoodCartDetailComponent extends BaseEntityListComponent<Cartline> {
                             p.imageModel = new ImageModel(this.httpSrv);
                             p.imageModel.readOnly = true;
                             p.imageModel.setImageUrl(this.articleSrv.getPhotoUrl(p.id), false);
-                        })
+                        });
                     }));
         // this.articleSrv
         //     .getList(0, 50, 'pizza')
@@ -176,7 +201,7 @@ export class FoodCartDetailComponent extends BaseEntityListComponent<Cartline> {
     }
 
     confirm() {
-        const dialogRef = this.dialog.open(CheckoutComponent,{ data: this.data, disableClose: true })
+        const dialogRef = this.dialog.open(CheckoutComponent, { data: this.data, disableClose: true });
         dialogRef
             .afterClosed()
             .subscribe(res => {
@@ -186,7 +211,7 @@ export class FoodCartDetailComponent extends BaseEntityListComponent<Cartline> {
                 // if (res === true) {
                 //     this.data = [];
                 // }
-            })
+            });
         // if (this.data.length > 0) {
         //     this.confirmationSrv
         //         .confirm('COMMON_CONFIRMATION', 'SALES_CONFIRM_CART')

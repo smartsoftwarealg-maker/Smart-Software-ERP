@@ -5,7 +5,7 @@ import {CommonUiLangModule} from "@ss/common/ui-lang";
 import {UiPaginationModule} from "@ss/common/ui-pagination";
 import {CommonUiConfirmationDialogModule} from "@ss/common/ui-confirmation-dialog";
 import {StockUiArticleStoreModule} from "@ss/stock/article-store";
-import {LogisticsUiDocInfoModule} from "@ss/logistics/ui-doc-info";
+
 import {RouterModule} from "@angular/router";
 import {CommonUiAutoCompleteModule} from "@ss/common/ui-auto-complete";
 import {LogisticsUiStockInfoModule} from "@ss/logistics/ui-stock-info";
@@ -19,7 +19,7 @@ import {ArticleStoreAssignmentComponent} from "./article-store-assignment.compon
         UiPaginationModule,
         CommonUiConfirmationDialogModule,
         StockUiArticleStoreModule,
-        LogisticsUiDocInfoModule,
+
         RouterModule,
         CommonUiAutoCompleteModule,
         LogisticsUiStockInfoModule

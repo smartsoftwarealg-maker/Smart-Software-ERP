@@ -1,14 +1,37 @@
 import { Component, OnInit } from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {Agent, AgentService} from '@ss/logistics/api-agent';
-import {UntypedFormBuilder, UntypedFormControl, UntypedFormGroup} from '@angular/forms';
-import {LoginService} from '@ss/common/api-common';
+import { ReactiveFormsModule, UntypedFormBuilder, UntypedFormControl, UntypedFormGroup } from '@angular/forms';
+import { LoginService, MaterialModule } from '@ss/common/api-common';
 import {ActivatedRoute} from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { CommonUiLangModule } from '@ss/common/ui-lang';
+import { UiPaginationModule } from '@ss/common/ui-pagination';
+import { CommonUiConfirmationDialogModule } from '@ss/common/ui-confirmation-dialog';
+import { AppArchiveModule } from '@ss/common/app-archive';
+import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
+import { CustomAttributesModule } from '@ss/custom-attributes';
+import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
 
 @Component({
     selector: 'ss-ui-customer-profile',
     templateUrl: './customer-profile.component.html',
-    styleUrls: ['./customer-profile.component.scss']
+    styleUrls: ['./customer-profile.component.scss'],
+    standalone: true,
+    imports: [
+        CommonModule,
+        MaterialModule,
+        CommonUiLangModule,
+        UiPaginationModule,
+        ReactiveFormsModule,
+        CommonUiConfirmationDialogModule,
+
+        AppArchiveModule,
+        CommonUiAutoCompleteModule,
+        CustomAttributesModule,
+        DocInfoComponent
+    ],
+
 })
 export class CustomerProfileComponent implements OnInit {
     form: UntypedFormGroup = null;

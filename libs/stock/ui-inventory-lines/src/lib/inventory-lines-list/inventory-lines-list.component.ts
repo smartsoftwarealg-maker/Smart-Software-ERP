@@ -11,9 +11,10 @@ import { MaterialModule } from '@ss/common/api-common';
 import { CommonUiLangModule } from '@ss/common/ui-lang';
 import { UiPaginationModule } from '@ss/common/ui-pagination';
 import { ReactiveFormsModule } from '@angular/forms';
-import { LogisticsUiDocInfoModule } from '@ss/logistics/ui-doc-info';
+
 import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
 import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
+import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
 
 @Component({
     selector: 'ss-inventory-lines-list',
@@ -27,11 +28,12 @@ import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
         UiPaginationModule,
         RouterModule,
         ReactiveFormsModule,
-        LogisticsUiDocInfoModule,
+
         CommonUiConfirmationDialogModule,
         CommonUiDatepickerModule,
         CommonUiAutoCompleteModule,
-    ],
+        DocInfoComponent
+    ]
 })
 export class InventoryLinesListComponent extends BaseTransactionLinesListComponent implements OnInit {
     displayedColumns = [

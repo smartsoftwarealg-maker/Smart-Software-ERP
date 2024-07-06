@@ -4,7 +4,7 @@ import { ImportReceptionListComponent } from './import-reception-list/import-rec
 import { ImportReceptionDetailComponent } from './import-reception-detail/import-reception-detail.component';
 import { ImportReceptionLinesDetailComponent } from './import-reception-lines-detail/import-reception-lines-detail.component';
 import { CommonUiLangModule } from '@ss/common/ui-lang';
-import { LogisticsUiDocInfoModule } from '@ss/logistics/ui-doc-info';
+
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { UiPaginationModule } from '@ss/common/ui-pagination';
@@ -20,6 +20,7 @@ import { TextFieldModule } from '@angular/cdk/text-field';
 import { ImportReceptionLinesListComponent } from './import-reception-lines-list/import-reception-lines-list.component';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { ImportReceptionLinesMainComponent } from './import-reception-lines-main/import-reception-lines-main.component';
+import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
 
 @NgModule({
     declarations: [
@@ -32,7 +33,7 @@ import { ImportReceptionLinesMainComponent } from './import-reception-lines-main
     imports: [
         CommonModule,
         CommonUiLangModule,
-        LogisticsUiDocInfoModule,
+
         MatSortModule,
         MatTableModule,
         UiPaginationModule,
@@ -47,6 +48,7 @@ import { ImportReceptionLinesMainComponent } from './import-reception-lines-main
         TextFieldModule,
         RouterOutlet,
         RouterLink,
-    ],
+        DocInfoComponent
+    ]
 })
 export class PurchasesImportedPurchasesModule {}

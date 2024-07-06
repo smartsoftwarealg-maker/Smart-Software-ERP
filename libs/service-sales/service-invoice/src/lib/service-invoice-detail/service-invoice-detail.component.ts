@@ -18,7 +18,7 @@ import {
 import { CommonModule } from '@angular/common';
 import { CommonUiImageInputModule } from '@ss/common/ui-image-input';
 import { CommonUiLangModule } from '@ss/common/ui-lang';
-import { LogisticsUiDocInfoModule } from '@ss/logistics/ui-doc-info';
+
 import { MatTableModule } from '@angular/material/table';
 import { UiPaginationModule } from '@ss/common/ui-pagination';
 import { MatSortModule } from '@angular/material/sort';
@@ -36,7 +36,7 @@ import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
         CommonModule,
         CommonUiImageInputModule,
         CommonUiLangModule,
-        LogisticsUiDocInfoModule,
+
         MatTableModule,
         UiPaginationModule,
         MatSortModule,

@@ -1,16 +1,39 @@
 import { Component, Inject, inject, Input } from '@angular/core';
-import { UntypedFormBuilder, Validators } from '@angular/forms';
+import { ReactiveFormsModule, UntypedFormBuilder, Validators } from '@angular/forms';
 import { LotsService, Store } from '@ss/common/api-lookup';
-import { DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
+import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
 import { finalize, Subscription } from 'rxjs';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { HttpEventType } from '@angular/common/http';
 import { AgentImportService } from '../agent-import.service';
+import { CommonModule } from '@angular/common';
+import { MaterialModule } from '@ss/common/api-common';
+import { CommonUiLangModule } from '@ss/common/ui-lang';
+import { UiPaginationModule } from '@ss/common/ui-pagination';
+import { CommonUiConfirmationDialogModule } from '@ss/common/ui-confirmation-dialog';
+import { AppArchiveModule } from '@ss/common/app-archive';
+import { CustomAttributesModule } from '@ss/custom-attributes';
+import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
 
 @Component({
     selector: 'ss-agent-import',
     templateUrl: './agent-import.component.html',
     styleUrls: ['./agent-import.component.scss'],
+    standalone: true,
+    imports: [
+        CommonModule,
+        MaterialModule,
+        CommonUiLangModule,
+        UiPaginationModule,
+        ReactiveFormsModule,
+        CommonUiConfirmationDialogModule,
+
+        AppArchiveModule,
+        CommonUiAutoCompleteModule,
+        CustomAttributesModule,
+        DocInfoComponent
+    ],
+
 })
 export class AgentImportComponent {
     private fb = inject(UntypedFormBuilder);

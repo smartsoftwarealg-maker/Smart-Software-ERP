@@ -10,12 +10,13 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { PartsRequestLineService } from '../services/parts-request-line.service';
 import { CommonUiLangModule } from '@ss/common/ui-lang';
-import { LogisticsUiDocInfoModule } from '@ss/logistics/ui-doc-info';
+
 import { UiPaginationModule } from '@ss/common/ui-pagination';
 import { ArticleService } from '@ss/master-data/api-article';
 import { MaterialModule } from '@ss/common/api-common';
 import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
 import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
+import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
 
 @Component({
     imports: [
@@ -25,10 +26,11 @@ import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
         UiPaginationModule,
         RouterModule,
         ReactiveFormsModule,
-        LogisticsUiDocInfoModule,
+
         CommonUiConfirmationDialogModule,
         CommonUiDatepickerModule,
         CommonUiAutoCompleteModule,
+        DocInfoComponent
     ],
     selector: 'ss-parts-request-line-list',
     standalone: true,
