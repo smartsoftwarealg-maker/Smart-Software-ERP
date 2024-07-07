@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import {schedSalesRoutes} from './routes';
+import {scheduledSalesRoutes} from './routes';
 
 @NgModule({
     imports: [
-        RouterModule.forChild(schedSalesRoutes)
+        RouterModule.forChild(scheduledSalesRoutes)
     ]
 })
 export class ScheduledSalesModule {

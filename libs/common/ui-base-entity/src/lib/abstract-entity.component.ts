@@ -20,6 +20,13 @@ export abstract class AbstractEntityComponent<T extends { id: number }> implemen
     protected constructor(public entitySrv: BaseEntityService<T>) {}
 
     public save() {
+        for (let k in this.form.controls) {
+            const c = this.form.controls[k];
+            if (!c.value) {
+                console.log(k, c.value, c.valid);
+            }
+        }
+
         this.form.markAllAsTouched();
         if (!this.isValidForm()) {
             this.snackBarSrv.showFailureMessage('COMMON_FORM_NOT_VALID');

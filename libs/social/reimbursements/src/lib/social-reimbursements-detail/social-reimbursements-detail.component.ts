@@ -42,7 +42,7 @@ export class SocialReimbursementsDetailComponent extends BaseChildEntityDetailCo
             id:        [e.id],
             parentId:  [e.parentId || this.entitySrv.getParentId()],
             amount:    [e.amount, Validators.required],
-            date:      [e.date, Validators.required],
+            date:      [e.date || new Date(), Validators.required],
             reference: [e.reference],
         });
     }

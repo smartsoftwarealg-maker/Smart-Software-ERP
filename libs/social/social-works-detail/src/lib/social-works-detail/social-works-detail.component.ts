@@ -1,7 +1,13 @@
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
-import { SOCIAL_WORKS_TYPE, SocialActivityService, SocialAid, SocialWorksService } from '@social/social-api';
+import {
+    SOCIAL_WORKS_TYPE,
+    SocialActivityService,
+    SocialAid,
+    SocialEmployeeService,
+    SocialWorksService
+} from '@social/social-api';
 import { ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute } from '@angular/router';
@@ -23,7 +29,7 @@ import { MatInput } from '@angular/material/input';
     styleUrl: './social-works-detail.component.scss'
 })
 export class SocialWorksDetailComponent extends BaseEntityDetailComponent<SocialAid> {
-    private employeeSrv  = inject(EmployeeService);
+    private employeeSrv  = inject(SocialEmployeeService);
     private activitySrv = inject(SocialActivityService);
     private loginSrv  = inject(LoginService);
 

@@ -11,7 +11,7 @@ import {
     ABS_SCHEDULED_SALES_ACTIVITY,
     ABS_SCHEDULED_SALES_VAT_URL,
     ABS_SCHEDULED_SALES_CATEGORY,
-    ABS_SCHEDULED_SALES_DASHBOARD_URL
+    ABS_SCHEDULED_SALES_DASHBOARD_URL, ABS_CUSTOMER_COMPLAINTS_URL
 } from '../common';
 import {SideNavNode} from '@ss/common/api-common';
 
@@ -116,6 +116,12 @@ export const scheduledSalesNavTree: SideNavNode = {
             route: ABS_SCHEDULED_SALES_PARTNER_SCHEDULES,
             accessRights: 'Schedule',
             customerRights: {read: true, edit: false, delete: false, write: false}
+        },
+        {
+            name: 'COMMON_COMPLAINTS',
+            icon: 'fa-solid fa-face-angry',
+            route: ABS_CUSTOMER_COMPLAINTS_URL,
+            accessRights: 'CustomerComplaint',
         },
         {
             name: 'COMMON_DASHBOARD',
