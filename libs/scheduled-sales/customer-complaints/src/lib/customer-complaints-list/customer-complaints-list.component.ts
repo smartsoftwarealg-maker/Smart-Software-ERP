@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { CustomerComplaint } from '../customer-complaint.class';
@@ -7,7 +7,7 @@ import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DefaultReportService } from '@ss/common/ui-default-report-component';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
-import { PaginatorPersistenceService } from '@ss/common/api-common';
+import { LoginService, PaginatorPersistenceService } from '@ss/common/api-common';
 import { CustomerComplaintsService } from '../customer-complaint.service';
 import { CommonUiLangModule } from '@ss/common/ui-lang';
 import {
@@ -29,6 +29,8 @@ import { UiPaginationModule } from '@ss/common/ui-pagination';
     styleUrl: './customer-complaints-list.component.css',
 })
 export class CustomerComplaintsListComponent extends BaseEntityListComponent<CustomerComplaint>{
+    private loginSrv = inject(LoginService);
+
     displayedColumns = [
         'complaintDescription',
         'complaint',
@@ -59,5 +61,10 @@ export class CustomerComplaintsListComponent extends BaseEntityListComponent<Cus
     override selectRow(row: CustomerComplaint) {
         super.selectRow(row);
         this.editable = this.editable && (row?.answer?.length || 0) == 0;
+    }
+
+    override ngOnInit() {
+        this.addButton.visible = (this.loginSrv.appCtx.agentId||0) > 0;
+        super.ngOnInit();
     }
 }

@@ -5,7 +5,7 @@ import { HttpService } from '@ss/common/api-common';
 import { Employee } from '@ss/employee-services/employee-services';
 
 @Injectable({ providedIn: 'root' })
-export class EmployeeService extends BaseEntityService<Employee> {
+export class SocialEmployeeService extends BaseEntityService<Employee> {
     constructor(protected override httpSrv: HttpService) {
         super(httpSrv, EMPLOYEE_URL);
     }

@@ -58,7 +58,7 @@ export const cSpaceNavTree: SideNavNode[] =
         },
         {
             name: 'COMMON_COMPLAINTS',
-            icon: 'fa-solid fa-address-card',
+            icon: 'fa-solid fa-face-angry',
             route: ABS_CUSTOMER_COMPLAINTS_URL,
             accessRights: 'CustomerComplaint',
             customerRights: {read: true, edit: true, delete: true, write: true}

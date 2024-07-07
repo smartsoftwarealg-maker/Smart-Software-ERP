@@ -16,7 +16,7 @@ export const REIMBURSEMENTS_URL = '/reimbursements';
 export interface SocialAid {
     id: number;
     centerId: number;
-    aidType: number;
+    aidType?: number;
     date: Date;
     number: number;
     personId: number;

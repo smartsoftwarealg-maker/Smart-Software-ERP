@@ -1,7 +1,12 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { EmployeeAidService, Reimbursement, ReimbursementService } from '@social/social-api';
-import { EmployeeService, IEmployee, PersonAutocompleteClass } from '@ss/employee-services/employee-services';
+import {
+    EmployeeAidService,
+    ReimbursementService,
+    SocialAid,
+    SocialEmployeeService
+} from '@social/social-api';
+import { IEmployee, PersonAutocompleteClass } from '@ss/employee-services/employee-services';
 import { dateToYmdStr, MaterialModule, PaginationModel } from '@ss/common/api-common';
 import { UiPaginationModule } from '@ss/common/ui-pagination';
 import { CommonUiLangModule } from '@ss/common/ui-lang';
@@ -33,7 +38,7 @@ import { ShellService } from '@ss/common/ui-shell';
 })
 export class SocialReimbursementsComponent implements OnInit {
     private route = inject(ActivatedRoute);
-    private employeeSrv  = inject(EmployeeService);
+    private employeeSrv  = inject(SocialEmployeeService);
     private employeeAidSrv = inject(EmployeeAidService);
     private reimbursementSrv = inject(ReimbursementService);
     private fb = inject(FormBuilder);
@@ -41,7 +46,7 @@ export class SocialReimbursementsComponent implements OnInit {
 
     pagination = PaginationModel.newInstance({page: 0, pageSize: 10, elementCount: 0});
 
-    data$ =  signal<Observable<Reimbursement[]>>( of([]));
+    data$ =  signal<Observable<SocialAid[]>>( of([]));
 
     displayedColumns = [
         'typeDescription',

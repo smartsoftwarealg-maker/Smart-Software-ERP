@@ -45,10 +45,9 @@ export class CustomerComplaintsDetailComponent extends BaseEntityDetailComponent
             id:          [b.id],
             centerId:    [b.centerId || this.loginSrv.appCtx.center],
             agentId:     [b.agentId || this.loginSrv.appCtx.agentId],
-            complaintId: [b.complaintId, Validators.maxLength(4)],
-            complaint:   [b.complaint, Validators.required],
-            answer:      [{ value: b.answer, disabled: true }],
+            complaintId: [{ value: b.complaintId, disabled: this.loginSrv.appCtx.id > 0 }, Validators.required],
+            complaint:   [{ value: b.complaint, disabled: this.loginSrv.appCtx.id > 0 }, Validators.required],
+            answer:      [{ value: b.answer, disabled: this.loginSrv.appCtx.id < 1 }],
         });
     }
-
 }

@@ -56,5 +56,6 @@
     "ASSET_ALLOCATED_BY_DOCUMENT":   "This asset cannot be allocated manually because it has been allocated by an allocation document.",
     "CANT_DELETE":                   "This record cannot be deleted",
     "MAX_DEBIT_EXCEEDED":            "The maximum allowed debit for this client has been exceeded. Require the payment for this document or increase the maximum debit.",
-    "BLOCKED_AGENT":                 "This agent is blocked."
+    "BLOCKED_AGENT":                 "This agent is blocked.",
+    "INACTIVE_PERSON":              "Inactive person."
 }

@@ -13,6 +13,7 @@ import {
 } from '@ss/common/app-archive';
 import {AgentAssetsListComponent} from '@ss/assets-component';
 import { DocumentSourcesComponent } from 'logistics/ui-document-sources';
+import { CSPACE_APP_URL } from '../../../cspace/src/app/common';
 
 // common
 export const LOOKUPS_URL = 'lookups';
@@ -216,6 +217,7 @@ export const SERVICE_INVOICE_CANCELLATION_URL = 'service-cinvoice';
 export const SERVICE_CLASSES_URL = 'service-classes';
 export const COMPLEMENT_INVOICE_URL = 'complement-invoice';
 export const SALES_CATEGORY_URL = 'sales-categories';
+export const SS_COMPLAINTS_URL     = 'sales-complaints';
 
 // HR
 export const HR_CATEGORIES_URL = 'categories';
@@ -606,6 +608,7 @@ export const ABS_SCHEDULED_SALES_VAT_URL     = '/' + [MAIN_PAGE_URL, SCHEDULED_S
 export const ABS_SCHEDULED_SALES_PAY_METHOD     = '/' + [MAIN_PAGE_URL, SCHEDULED_SALES_APP_URL, LOGISTICS_PAY_METHOD_URL].join('/');
 export const ABS_SCHEDULED_SALES_CATEGORY     = '/' + [MAIN_PAGE_URL, SCHEDULED_SALES_APP_URL, SALES_CATEGORY_URL].join('/');
 export const ABS_SCHEDULED_SALES_DASHBOARD_URL     = '/' + [MAIN_PAGE_URL, SCHEDULED_SALES_APP_URL, DASHBOARD_URL].join('/');
+export const ABS_CUSTOMER_COMPLAINTS_URL = '/' + [MAIN_PAGE_URL, SCHEDULED_SALES_APP_URL, SS_COMPLAINTS_URL].join('/');
 
 
 

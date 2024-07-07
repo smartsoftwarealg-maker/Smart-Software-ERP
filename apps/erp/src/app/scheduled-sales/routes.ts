@@ -1,5 +1,5 @@
 import {
-    ABS_INDEX_URL, CanDeactivateService, LIST_URL,
+    ABS_INDEX_URL, CanDeactivateService, CustomerCanActivateService, LIST_URL
 } from '@ss/common/api-common';
 import {Routes} from '@angular/router';
 import {
@@ -14,7 +14,7 @@ import {
     SS_TRUCKS_URL,
     LOGISTICS_AGENT_URL,
     LOGISTICS_VAT_URL,
-    LOGISTICS_PAY_METHOD_URL, SALES_CATEGORY_URL, DASHBOARD_URL
+    LOGISTICS_PAY_METHOD_URL, SALES_CATEGORY_URL, DASHBOARD_URL, SS_COMPLAINTS_URL
 } from '../common';
 import {ProjectListComponent, ProjectDetailComponent} from '@ss/scheduled-sales/projects';
 import {ArticleDetailComponent, ArticleListComponent} from '@ss/scheduled-sales/article';
@@ -45,8 +45,9 @@ import {
 import { AGENT_ARCHIVES } from '@ss/common/app-archive';
 import { PayMethodDetailComponent, PayMethodListComponent } from '@ss/logistics/ui-pay-method';
 import { DashboardComponent } from '@ss/dashboard';
+import { CustomerComplaintsDetailComponent, CustomerComplaintsListComponent } from '@customer-complaints-list';
 
-export const schedSalesRoutes: Routes = [
+export const scheduledSalesRoutes: Routes = [
     {
         path: LOGISTICS_AGENT_URL,
         children: [
@@ -285,6 +286,23 @@ export const schedSalesRoutes: Routes = [
         path: DASHBOARD_URL,
         component: DashboardComponent,
         canActivate: [loginGuard],
+    },
+
+    {
+        path: SS_COMPLAINTS_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: CustomerComplaintsListComponent,
+                canActivate: [CustomerCanActivateService]
+            },
+            {
+                path: ':id',
+                component: CustomerComplaintsDetailComponent,
+                canActivate: [CustomerCanActivateService],
+                canDeactivate: [CanDeactivateService],
+            },
+        ]
     },
 
     {path: '', redirectTo: ABS_INDEX_URL, pathMatch: 'full'},
