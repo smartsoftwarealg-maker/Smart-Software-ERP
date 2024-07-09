@@ -64,7 +64,7 @@ export class CustomerComplaintsListComponent extends BaseEntityListComponent<Cus
     }
 
     override ngOnInit() {
-        this.addButton.visible = (this.loginSrv.appCtx.agentId||0) > 0;
+        this.deleteButton.visible = this.addButton.visible = (this.loginSrv.appCtx.agentId||0) > 0;
         super.ngOnInit();
     }
 }

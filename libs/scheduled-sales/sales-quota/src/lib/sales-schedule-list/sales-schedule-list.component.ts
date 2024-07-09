@@ -34,8 +34,8 @@ export class SalesScheduleListComponent extends BaseEntityListComponent<Schedule
     private customerSrv = inject(CustomerService);
     private loginSrv = inject(LoginService);
 
-    agentId = this.loginSrv.appCtx.agentId;
-    agentFC = new FormControl<number>(this.loginSrv.appCtx.agentId || 0);
+    agentId = this.loginSrv.appCtx.agentId || 0;
+    agentFC = new FormControl<number>(this.agentId);
     public customerLookup = new DefaultAutoCompleteModel<Agent>(this.customerSrv, 'id', 'denomination')
     displayedColumns = [
         'serialNumber',
@@ -72,12 +72,9 @@ export class SalesScheduleListComponent extends BaseEntityListComponent<Schedule
     }
 
     override ngOnInit() {
-        const b: boolean = !this.agentId;
-        this.editButton.visible = this.deleteButton.visible = this.addButton.visible = b;
+        this.editButton.visible = this.deleteButton.visible = this.addButton.visible = this.agentId === 0;
         super.ngOnInit();
-        if (b) {
-            this.onAgent(this.agentId);
-        }
+        this.onAgent(this.agentId);
     }
 
     onAgent(id?: number) {
