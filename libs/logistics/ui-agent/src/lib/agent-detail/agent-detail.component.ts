@@ -26,11 +26,11 @@ import {
     AgentCenterService,
     AgentService,
     CUSTOMER_URL,
-    SUPPLIER_URL
+    SUPPLIER_URL, TRANSPORTER_URL
 } from '@ss/logistics/api-agent';
 import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import {MatExpansionPanel} from '@angular/material/expansion';
-import { Center, FormValidators, IsParamService, LoginService, MaterialModule, Role } from '@ss/common/api-common';
+import { FormValidators, IsParamService, LoginService, MaterialModule } from '@ss/common/api-common';
 import {BankService} from '@ss/administration/api-bank';
 import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel, Id } from '@ss/common/ui-auto-complete';
 import { AGENT_ARCHIVES, AppArchiveModule, AppArchiveService } from '@ss/common/app-archive';
@@ -141,9 +141,10 @@ export class AgentDetailComponent extends BaseEntityDetailComponent<Agent> imple
                 tap(res => {
                     const isSupplier = res['supplier'];
                     const isCustomer = res['customer'];
-                    this.entitySrv.setURL(isCustomer? CUSTOMER_URL : isSupplier? SUPPLIER_URL : AGENT_URL);
-                    this.shellSrv.setTitle(isCustomer? 'LOGISTICS_CUSTOMER': isSupplier ? 'LOGISTICS_SUPPLIER' : 'COMMON_AGENTS');
-                    this.agentTypeLookup = isSupplier? new SupplierLookup(this.agentTypeSrv): isCustomer? new CustomerLookup(this.agentTypeSrv) : this.agentTypeLookup;
+                    const isTransporter = res['transporter'];
+                    this.entitySrv.setURL(isCustomer? CUSTOMER_URL : isSupplier? SUPPLIER_URL : isTransporter? TRANSPORTER_URL : AGENT_URL);
+                    this.shellSrv.setTitle(isCustomer? 'LOGISTICS_CUSTOMER': isSupplier ? 'LOGISTICS_SUPPLIER' : isTransporter? 'LOGISTICS_TRANSPORTER': 'COMMON_AGENTS');
+                    this.agentTypeLookup = isSupplier? new SupplierLookup(this.agentTypeSrv): isCustomer? new CustomerLookup(this.agentTypeSrv) : isTransporter? new TransporterLookup(this.agentTypeSrv)  : this.agentTypeLookup;
                 })
             );
     }
@@ -326,7 +327,7 @@ export class AgentDetailComponent extends BaseEntityDetailComponent<Agent> imple
         if (this.selectedCenter > 0) {
             this.agentCenterSrv
                 .remove(this.selectedCenter)
-                .pipe(switchMap(res => this.agentCenterSrv.getList(0, 1000)))
+                .pipe(switchMap(() => this.agentCenterSrv.getList(0, 1000)))
                 .subscribe(res => {
                     this.selectedCenter = 0;
                     this.agentCenters = res.body;
@@ -377,6 +378,14 @@ class CustomerLookup extends DefaultAutoCompleteModel<Lookup> {
         super(srv);
     }
     override filterLoadedData = (x: Lookup[]) => x.filter(e => e && e.id < 2);
+    override getById = (id: Id) => id === null || id === undefined? of(null) : this.entitySrv.get(id);
+}
+
+class TransporterLookup extends DefaultAutoCompleteModel<Lookup> {
+    constructor(public srv: AgentTypeService) {
+        super(srv);
+    }
+    override filterLoadedData = (x: Lookup[]) => x.filter(e => e && e.id == 5);
     override getById = (id: Id) => id === null || id === undefined? of(null) : this.entitySrv.get(id);
 }
 

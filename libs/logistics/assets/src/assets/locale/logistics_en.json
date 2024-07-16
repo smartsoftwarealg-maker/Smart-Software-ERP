@@ -164,6 +164,7 @@
     "UNIT":             "Unit",
     "DISPATCH":         "Dispatch",
     "TRANSPORTER":      "Transporter",
+    "TRANSPORTERS":      "Transporters",
     "LICENSE_ISSUER":   "Issued by",
     "DESTINATION":      "Destination",
     "MERGE_INVOICE_SERIES": "Same number series for invoices and cancellations",
