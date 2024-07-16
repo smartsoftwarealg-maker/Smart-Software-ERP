@@ -4,7 +4,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {LookupsService} from '@ss/common/api-lookup';
 import {Observable, switchMap} from 'rxjs';
 import {tap} from 'rxjs/operators';
-import { Agent, AGENT_URL, AgentService, CUSTOMER_URL, SUPPLIER_URL } from '@ss/logistics/api-agent';
+import { Agent, AGENT_URL, AgentService, CUSTOMER_URL, SUPPLIER_URL, TRANSPORTER_URL } from '@ss/logistics/api-agent';
 import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
@@ -93,8 +93,10 @@ export class AgentListComponent extends BaseEntityListComponent<Agent> {
             tap(res => {
                 const isSupplier = res['supplier'];
                 const isCustomer = res['customer'];
-                this.agentService.setURL(isCustomer? CUSTOMER_URL : isSupplier? SUPPLIER_URL : AGENT_URL);
-                this.shellSrv.setTitle(isCustomer? 'LOGISTICS_CUSTOMER': isSupplier ? 'LOGISTICS_SUPPLIER' : 'COMMON_AGENTS');
+                const isTransporter = res['transporter'];
+
+                this.agentService.setURL(isCustomer? CUSTOMER_URL : isSupplier? SUPPLIER_URL : isTransporter? TRANSPORTER_URL : AGENT_URL);
+                this.shellSrv.setTitle(isCustomer? 'LOGISTICS_CUSTOMER': isSupplier ? 'LOGISTICS_SUPPLIER' : isTransporter ? 'LOGISTICS_TRANSPORTER' : 'COMMON_AGENTS');
             }));
     }
 }
