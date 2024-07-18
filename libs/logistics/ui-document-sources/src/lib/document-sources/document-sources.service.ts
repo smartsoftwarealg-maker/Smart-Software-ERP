@@ -14,7 +14,6 @@ export class DocumentSourcesService extends BaseEntityService<Source> {
 
     getData(): Observable<Source[]> {
         return this.httpSrv
-            .get<Source[]>(`/inventory/${this.getParentId()}/sources`)
+            .get<Source[]>(`/transactions/${this.getParentId()}/sources`);
     }
-
 }

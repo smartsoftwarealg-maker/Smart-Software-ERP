@@ -43,6 +43,7 @@ export class ArchiveService extends BaseEntityService<ArchiveDocument> {
 
     constructor(protected override httpSrv: HttpService) {
         super(httpSrv, ARCHIVE_URL);
+        this.setParentId(0);
     }
 
     public toBase64FromDoc(doc: ArchiveDocument): string {

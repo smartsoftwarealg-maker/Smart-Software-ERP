@@ -17,18 +17,18 @@ export class OptionService extends BaseEntityExtendedService<Option> {
 
     recalculatePrice(since: Date): Observable<ERR[]> {
         const date = isString(since)? since : dateToDmyStr(since);
-        return this.httpSrv.put(`/reception/recalculate?date=${date}`);
+        return this.httpSrv.put(`/recalculate?date=${date}`);
     }
 
-    recalculatePriceFetch(since: Date): Observable<ERR[]> {
-        const date = isString(since)? since : dateToDmyStr(since);
-        const base = this.httpSrv.getBaseUrl();
-        const promise = fetch(`${base}/reception/recalculate?date=${date}`, {
-            method: 'PUT',
-            headers: {'Authorization': this.httpSrv.getAuthToken() }
-        }).then(res => res.json());
-        return from(promise);
-    }
+    // recalculatePriceFetch(since: Date): Observable<ERR[]> {
+    //     const date = isString(since)? since : dateToDmyStr(since);
+    //     const base = this.httpSrv.getBaseUrl();
+    //     const promise = fetch(`${base}/recalculate?date=${date}`, {
+    //         method: 'PUT',
+    //         headers: {'Authorization': this.httpSrv.getAuthToken() }
+    //     }).then(res => res.json());
+    //     return from(promise);
+    // }
 
 }
 

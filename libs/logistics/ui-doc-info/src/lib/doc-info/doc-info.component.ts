@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import { Component, inject, Input } from '@angular/core';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import {DOCUMENT_ARCHIVES} from '@ss/common/app-archive';
 import { CommonModule } from '@angular/common';
@@ -34,6 +34,9 @@ interface Entry {
 })
 
 export class DocInfoComponent {
+    private router = inject( Router);
+    private route = inject(ActivatedRoute)
+
     private params_: any;
     private AGENT_ASSETS = 'agent_assets';
     private readonly ASSET = {
@@ -61,7 +64,12 @@ export class DocInfoComponent {
                     url: 'totals',
                     paramsProvided: (p: string[]) => p.includes('documentId') && p.includes('documentURL')
                 },
-                this.ARCHIVE
+                {
+                    name: 'archive',
+                    description: 'COMMON_ARCHIVE',
+                    url: 'archive',
+                    paramsProvided: (p: string[]) => p.includes('id') && p.includes('appId')
+                }
             ],
         },
         {
@@ -140,7 +148,6 @@ export class DocInfoComponent {
         }
     }
 
-    constructor(private router: Router, private route: ActivatedRoute) {}
 
     getDisplayedEntries(): any {
         return this.entries_.filter(x => this.displayedGroups.includes(x.group));
@@ -155,8 +162,6 @@ export class DocInfoComponent {
         if (this.selectedEntry != null) {
             delete this.params_['compensated'];
             this.params_.compensated = this.selectedEntry.name === 'debts_2'? 'false' : 'true';
-            // const backUrl = this.router.url.indexOf('/lines-') > 0 ||
-            //               this.router.url.indexOf('/costs-') > 0? ['..', this.selectedEntry.url] : [this.selectedEntry.url];
             this.router.navigate([this.selectedEntry.url],
                 {
                     relativeTo: this.route,
