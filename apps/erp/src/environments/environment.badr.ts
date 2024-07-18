@@ -1,21 +1,19 @@
 import {administrationNavTree} from '../app/administration/side-nav-tree';
 import {purchasesNavTree} from '../app/purchases/side-nav-tree';
 import {stockNavTree} from '../app/stock/side-nav-tree';
-import {salesNavTree} from '../app/sales/side-nav-tree';
 import {financeNavTree} from '../app/finance/side-nav-tree';
 import {dashboardNavTree} from '../app/dashboard/side-nav-tree';
 import {contractsNavTree} from '../app/contracts/side-nav-tree';
 import {Routes} from '@angular/router';
-import {INDEX_PAGE_URL} from '../../../../libs/common/api-common/src';
-import {CanActivateService} from '../../../../libs/common/api-common/src';
-import {MainPageComponent} from '../../../../libs/common/ui-main-page/src';
+import {INDEX_PAGE_URL} from '@ss/common/api-common';
+import {CanActivateService} from '@ss/common/api-common';
+import {MainPageComponent} from '@ss/common/ui-main-page';
 import {
     ADMINISTRATION_APP_URL,
     DASHBOARD_APP_URL,
     FINANCE_APP_URL,
     LOGISTICS_APP_URL,
     PURCHASES_APP_URL,
-    SALES_APP_URL,
     STOCK_APP_URL,
     CONTRACTS_APP_URL, WORK_FLOW_APP_URL,
 } from '../app/common';
@@ -23,7 +21,7 @@ import {logisticsAdminNavTree} from '../app/logistics-admin/side-nav-tree';
 import {workflowNavTree} from '../app/workflow/side-nav-tree';
 
 export const environment = {
-  production: true,
+    production: true,
 };
 
 export const navBar = [
@@ -32,7 +30,7 @@ export const navBar = [
     contractsNavTree,
     purchasesNavTree,
     stockNavTree,
-    salesNavTree,
+    // salesNavTree,
     financeNavTree,
     dashboardNavTree,
     workflowNavTree
@@ -69,10 +67,10 @@ export const appRoutes: Routes =  [
         path: STOCK_APP_URL,
         loadChildren: () => import('../app/stock/stock.module').then(m => m.StockModule)
     },
-    {
-        path: SALES_APP_URL,
-        loadChildren: () => import('../app/sales/sales.module').then(m => m.SalesModule)
-    },
+    // {
+    //     path: SALES_APP_URL,
+    //     loadChildren: () => import('../app/sales/sales.module').then(m => m.SalesModule)
+    // },
     {
         path: ADMINISTRATION_APP_URL,
         loadChildren: () => import('../app/administration/administration.module').then(m => m.AdministrationModule)

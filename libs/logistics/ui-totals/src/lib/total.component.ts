@@ -38,10 +38,9 @@ export class TotalComponent implements OnInit {
     ngOnInit() {
         this.route.queryParams.subscribe(param => {
             const documentId = +param['documentId'];
-            const documentURL = param['documentURL'];
 
             if (documentId) {
-                this.totalSrv.setParentsIds(documentId, documentURL);
+                this.totalSrv.setParentsIds(documentId);
                 this.loadTotal();
                 this.pagination.onChange = () => this.loadTotal();
             }
