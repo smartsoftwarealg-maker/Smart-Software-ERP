@@ -19,6 +19,7 @@ export const ASSET_RECEPTIONS_URL = '/asset-receptions';
 export const ASSET_APPOINTMENT_URL = '/asset-appointments';
 export const ASSET_APPOINTMENT_LINE_URL = '/lines';
 export const ASSET_INVENTORY_URL = '/inventories';
+export const ASSET_OFFICE_URL = '/offices';
 export const ASSET_YEARS_URL = '/years';
 export const ASSET_DEPRECIATION_RATES = '/rates';
 
@@ -294,4 +295,17 @@ export interface TAsset {
 export interface ASSTree {
     ent: TAsset;
     children: ASSTree[];
+}
+
+export interface InventoryAsset {
+    id: number;
+    centerId: number;
+    reference: String,
+    serialNo?: string;
+    parentId: number;
+    year?: number;
+    status?: number;
+    date?: Date;
+    inventoryId?: number;
+    officeDescription?: string;
 }

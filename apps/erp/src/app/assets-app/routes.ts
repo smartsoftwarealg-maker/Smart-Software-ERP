@@ -30,7 +30,7 @@ import {
     ASSETS_SEARCH_URL,
     ASSETS_INJECTION_URL,
     ASSETS_DEPRECIATION_URL,
-    COMMON_MARKS_URL, docInfoRoutes, DASHBOARD_URL, ASSET_TRANSFER_URL, CMMS_ASSET_TREE
+    COMMON_MARKS_URL, docInfoRoutes, DASHBOARD_URL, ASSET_TRANSFER_URL, CMMS_ASSET_TREE, ASSET_QR_INVENTORY_URL
 } from '../common';
 import {
     AssetCostsDetailComponent,
@@ -66,7 +66,7 @@ import {
     AssetExcelInjectionComponent,
     DepreciationRateListComponent,
     DepreciationRateDetailComponent,
-    AssetsTransferComponent, AssetTreeComponent
+    AssetsTransferComponent, AssetTreeComponent, AssetListInventoryComponent
 } from '@ss/assets-component';
 import {ReportViewComponent} from '@ss/common/ui-report-param';
 import {ReportCatalogListComponent, ReportCatalogDetailComponent} from '@ss/administration/ui-report-catalog';
@@ -436,6 +436,10 @@ export const mainRoutes: Routes = [
     {
         path: ASSETS_INJECTION_URL,
         component: AssetExcelInjectionComponent
+    },
+    {
+        path: ASSET_QR_INVENTORY_URL,
+        component: AssetListInventoryComponent
     },
     {
         path: ASSET_INVENTORY_URL,

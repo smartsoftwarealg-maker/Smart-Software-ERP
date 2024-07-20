@@ -41,6 +41,10 @@ export class AssetOptionsComponent extends BaseEntityDetailComponent<ACCPolicy> 
                 }));
     }
 
+    override loadEntity(id: number): Observable<ACCPolicy> {
+        return super.loadEntity(this.loginSrv.appCtx.center);
+    }
+
     public override setupForm(e: ACCPolicy): UntypedFormGroup {
         return this.formBuilder.group({
             id: [e.id],
