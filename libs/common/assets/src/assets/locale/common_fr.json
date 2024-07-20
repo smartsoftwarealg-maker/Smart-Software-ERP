@@ -343,5 +343,7 @@
     "SCHEDULED_SALES":            "Ventes programmées",
     "HR":                         "Gestion RH",
     "GICACARRER":                 "Avencement carrière",
-    "RECORDED":                   "Saisie"
+    "RECORDED":                   "Saisie",
+    "INVENTORYING":               "Inventaire",
+    "INVENTORY2":                 "Inventaire 2"
 }

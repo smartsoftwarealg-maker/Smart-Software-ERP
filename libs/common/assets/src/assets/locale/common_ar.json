@@ -339,5 +339,7 @@
     "SCHEDULED_SALES":            "المبيعات المبرمجة",
     "HR":                         "تسيير الموظفين",
     "GICACARRER":                 "تقدم المهنة",
-    "RECORDED":                   "مسجل"
+    "RECORDED":                   "مسجل",
+    "INVENTORYING":               "جرد",
+    "INVENTORY2":                 "جرد 2"
 }

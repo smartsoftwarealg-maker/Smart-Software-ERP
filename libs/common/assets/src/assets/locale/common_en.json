@@ -340,5 +340,7 @@
     "SCHEDULED_SALES":            "Scheduled sales",
     "HR":                         "HR Management",
     "GICACARRER":                 "Career advancements",
-    "RECORDED":                   "Recorded"
+    "RECORDED":                   "Recorded",
+    "INVENTORYING":               "inventory",
+    "INVENTORY2":                 "inventory 2"
 }
