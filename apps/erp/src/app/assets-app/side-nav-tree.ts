@@ -150,7 +150,7 @@ export const assetsNavTree: SideNavNode = {
             accessRights: 'AssetInventory'
         },
         {
-            name: 'BC_INVENTORY',
+            name: 'COMMON_INVENTORY2',
             icon: 'fa-solid fa-barcode-read',
             route: ABS_BC_ASSET_INVENTORY_URL,
             accessRights: 'AssetInventory'
