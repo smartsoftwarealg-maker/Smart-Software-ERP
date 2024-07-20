@@ -3,9 +3,9 @@ import {financeNavTree} from '../app/finance/side-nav-tree';
 import {dashboardNavTree} from '../app/dashboard/side-nav-tree';
 import {contractsNavTree} from '../app/contracts/side-nav-tree';
 import {Routes} from '@angular/router';
-import {INDEX_PAGE_URL} from '../../../../libs/common/api-common/src';
-import {CanActivateService} from '../../../../libs/common/api-common/src';
-import {MainPageComponent} from '../../../../libs/common/ui-main-page/src';
+import {INDEX_PAGE_URL} from '@ss/common/api-common';
+import {CanActivateService} from '@ss/common/api-common';
+import {MainPageComponent} from '@ss/common/ui-main-page';
 import {
     ADMINISTRATION_APP_URL,
     DASHBOARD_APP_URL,
