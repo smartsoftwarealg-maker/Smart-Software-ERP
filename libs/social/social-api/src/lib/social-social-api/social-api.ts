@@ -52,6 +52,8 @@ export interface Dashboard {
     paymentCounts: SActivity[],
     payments: SActivity[],
     balance: SBalance[]
+    annualCounts: SActivity[]
+    annualAmounts: SActivity[]
 }
 
 export interface Reimbursement {

@@ -12,5 +12,7 @@
     "FEMALE_COUNT":      "Female count",
     "ACTIVITY_COUNT":    "Activity count",
     "PAYMENT_COUNTS":    "Payments count",
-    "ACTIVITY_AMOUNTS":  "Activity amounts"
+    "ACTIVITY_AMOUNTS":  "Activity amounts",
+    "ANNUAL_COUNTS":     "Annual installment counts",
+    "ANNUAL_AMOUNTS":    "Annual amounts"
 }

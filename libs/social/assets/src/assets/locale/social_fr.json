@@ -12,5 +12,7 @@
     "FEMALE_COUNT":      "Compte féminin",
     "ACTIVITY_COUNT":    "Nombre d'activités",
     "PAYMENT_COUNTS":    "Nombre de paiements",
-    "ACTIVITY_AMOUNTS":  "Montants d'activité"
+    "ACTIVITY_AMOUNTS":  "Montants d'activité",
+    "ANNUAL_COUNTS":     "Nombre de versements annuels",
+    "ANNUAL_AMOUNTS":    "Montants annuels"
 }

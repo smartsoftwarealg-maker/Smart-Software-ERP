@@ -12,5 +12,7 @@
     "FEMALE_COUNT":      "عدد الإناث",
     "ACTIVITY_COUNT":    "عدد الأنشطة",
     "PAYMENT_COUNTS":    "عدد الدفعات",
-    "ACTIVITY_AMOUNTS":  "مبالغ النشاط"
+    "ACTIVITY_AMOUNTS":  "مبالغ النشاط",
+    "ANNUAL_COUNTS":     "مجموع الأقساط",
+    "ANNUAL_AMOUNTS":    "مجموع المصاريف"
 }
