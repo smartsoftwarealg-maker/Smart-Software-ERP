@@ -16,13 +16,15 @@ import { LanguageService } from '@ss/common/api-common';
 })
 export class SocialDashboardComponent implements OnInit {
     private COLORS = [
-        'rgba(255, 205,  86, 0.4)',
-        'rgba(153, 102, 255, 0.4)',
-        'rgba( 75, 192, 192, 0.4)',
-        'rgba( 54, 162, 235, 0.4)',
-        'rgba(255,  99, 132, 0.4)',
-        'rgba(255, 159,  64, 0.4)',
-        'rgba(201, 203, 207, 0.4)'
+        'rgba(255, 205,  86, 0.9)',
+        'rgba(153, 102, 255, 0.9)',
+        'rgba( 75, 192, 192, 0.9)',
+        'rgba( 54, 162, 235, 0.9)',
+        'rgba(255,  99, 132, 0.9)',
+        'rgba(255, 159,  64, 0.9)',
+        'rgba(201, 203, 207, 0.9)',
+        'rgba(200, 230, 50, 0.9)',
+        'rgba(255, 180, 255, 0.9)'
     ];
     private TODAY = new Date();
     private langSrv = inject(LanguageService);
@@ -44,10 +46,13 @@ export class SocialDashboardComponent implements OnInit {
 
     private buildCharts(db: Dashboard) {
         this.buildEmployeeChart(db.employeeCount, db.femaleCount);
-        this.buildChart('activity-counts', 2, db.counts.map(e => e.description), 'SOCIAL_ACTIVITY_COUNT', 'SOCIAL_ACTIVITY_COUNT', db.counts.map(e => e.value));
-        this.buildChart('activity-amounts', 3, db.amounts.map(e => e.description), 'SOCIAL_ACTIVITY_AMOUNTS', 'SOCIAL_WORKS', db.amounts.map(e => e.value));
-        this.buildChart('payment-counts', 5, db.paymentCounts.map(e => e.description), 'SOCIAL_PAYMENT_COUNTS', 'SOCIAL_PAYMENT_COUNTS', db.paymentCounts.map(e => e.value));
-        this.buildChart('payments', 4, db.payments.map(e => e.description), 'COMMON_PAYMENTS', 'COMMON_PAYMENTS', db.payments.map(e => e.value));
+        this.buildChart('activity-counts', 0, db.counts.map(e => e.description), 'SOCIAL_ACTIVITY_COUNT', 'SOCIAL_ACTIVITY_COUNT', db.counts.map(e => e.value));
+        this.buildChart('activity-amounts', 1, db.amounts.map(e => e.description), 'SOCIAL_ACTIVITY_AMOUNTS', 'SOCIAL_WORKS', db.amounts.map(e => e.value));
+        this.buildChart('payment-counts', 2, db.paymentCounts.map(e => e.description), 'SOCIAL_PAYMENT_COUNTS', 'SOCIAL_PAYMENT_COUNTS', db.paymentCounts.map(e => e.value));
+        this.buildChart('payments', 3, db.payments.map(e => e.description), 'COMMON_PAYMENTS', 'COMMON_PAYMENTS', db.payments.map(e => e.value));
+        this.buildChart('banks', 4, db.balance.map(e => e.bank), 'COMMON_BALANCE', 'COMMON_BALANCE', db.payments.map(e => e.value));
+        this.buildChart('annualCounts', 5, db.annualCounts.map(e => e.description), 'SOCIAL_ANNUAL_COUNTS', 'SOCIAL_ANNUAL_COUNTS', db.annualCounts.map(e => e.value));
+        this.buildChart('annualAmounts', 6, db.annualAmounts.map(e => e.description), 'SOCIAL_ANNUAL_AMOUNTS', 'SOCIAL_ANNUAL_AMOUNTS', db.annualAmounts.map(e => e.value));
     }
 
 
