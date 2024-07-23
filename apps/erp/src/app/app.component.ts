@@ -43,7 +43,9 @@ export class AppComponent implements OnInit {
                 switchMap(() => this.langSrv.init()),
                 switchMap(() => this.langSrv.addSources(langAssets)),
                 switchMap(() => this.httpSrv.get<any>('/ccenter')),
-                catchError(() => of({ description: '' })),
+                catchError(e => {
+                    return of({ description: '' });
+                }),
                 tap(res => this.shellSrv.setCompanyName(res['description'] || '')),
                 switchMap(res => res['description']? this.workflowSrv.countInbox() : of({ count: 0 })),
                 tap(res => {

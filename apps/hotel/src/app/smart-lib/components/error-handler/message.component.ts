@@ -1,10 +1,17 @@
 import { ChangeDetectorRef, Component, Inject, NgZone } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { CommonModule } from '@angular/common';
+import { MaterialModule } from '../material.module';
 
 @Component({
     selector: 'ss-message',
     templateUrl: './message.component.html',
-    styleUrls: ['./message.component.scss']
+    styleUrls: ['./message.component.scss'],
+    standalone: true,
+    imports: [
+        CommonModule,
+        MaterialModule
+    ],
 })
 export class MessageComponent {
     public error = { _body: 'errorBody', status: 0, statusText: 'errorType' };

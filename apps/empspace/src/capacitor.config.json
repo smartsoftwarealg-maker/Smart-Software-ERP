@@ -4,6 +4,7 @@
   "bundledWebRuntime": false,
   "npmClient": "npm",
   "webDir": "../../dist/apps/empspace",
+
   "allowMixedContent": true,
   "plugins": {
     "SplashScreen": {
