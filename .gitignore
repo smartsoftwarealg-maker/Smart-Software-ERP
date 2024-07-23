@@ -48,3 +48,4 @@ apps/empspace/package-lock.json
 apps/cespace/package-lock.json
 .nx/
 NX/
+/android/gradle/

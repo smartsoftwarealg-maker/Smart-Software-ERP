@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">SmartERP</string>
+    <string name="title_activity_main">SmartERP</string>
+    <string name="package_name">smart.software.erp</string>
+    <string name="custom_url_scheme">smart.software.erp</string>
+</resources>
