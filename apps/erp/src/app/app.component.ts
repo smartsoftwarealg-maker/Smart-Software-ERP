@@ -7,6 +7,8 @@ import { of } from 'rxjs';
 import {langAssets, navBar} from '../environments/environment';
 import { WorkflowInboxService } from '@ss/workflow';
 import { Router } from '@angular/router';
+import { DeviceDetectorService } from 'ngx-device-detector';
+import { initialize } from './admobile';
 
 @Component({
     selector: 'ss-root',
@@ -14,6 +16,7 @@ import { Router } from '@angular/router';
     styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
+    private deviceSrv = inject(DeviceDetectorService);
     private badgeBtn: ToolbarButton = {
         icon: 'fa-solid fa-envelopes-bulk',
         label: 'ADMINISTRATION_WORKFLOW_INBOX',
@@ -38,12 +41,12 @@ export class AppComponent implements OnInit {
         this.httpSrv
             .init()
             .pipe(
-                switchMap(_ => this.loginSrv.loadContext()),
-                switchMap(_ => this.rightsSrv.load()),
+                switchMap(() => this.loginSrv.loadContext()),
+                switchMap(() => this.rightsSrv.load()),
                 switchMap(() => this.langSrv.init()),
                 switchMap(() => this.langSrv.addSources(langAssets)),
-                switchMap(() => this.httpSrv.get<any>('/ccenter')),
-                catchError(e => {
+                switchMap(() => this.httpSrv.get('/ccenter')),
+                catchError(() => {
                     return of({ description: '' });
                 }),
                 tap(res => this.shellSrv.setCompanyName(res['description'] || '')),
@@ -60,8 +63,12 @@ export class AppComponent implements OnInit {
                     this.shellSrv.setSideNavDataSource(navBar);
                     // this.shellSrv.filterSideNav();
                 },
-                error: () => this.loginSrv.logout()
+                error: () => this.loginSrv.logout().then()
             });
+
+        if (this.deviceSrv.isMobile()) {
+            initialize().then(() => {});
+        }
     }
 
     showInbox() {

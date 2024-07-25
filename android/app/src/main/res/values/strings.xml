@@ -4,4 +4,5 @@
     <string name="title_activity_main">SmartERP</string>
     <string name="package_name">smart.software.erp</string>
     <string name="custom_url_scheme">smart.software.erp</string>
+    <string name="admob_app_id">ca-app-pub-8350344729252908~3197940877</string>
 </resources>
