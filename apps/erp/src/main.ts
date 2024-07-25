@@ -10,4 +10,6 @@ if (environment.production) {
 
 platformBrowserDynamic()
     .bootstrapModule(AppModule)
-    .catch((err) => console.error('main.ts (line 13): ', err));
+    .catch((err) => {
+        console.error('main.ts (line 13): ', err);
+    });

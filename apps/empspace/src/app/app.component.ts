@@ -5,7 +5,6 @@ import {LanguageService} from '@ss/common/api-common';
 import {ShellService} from '@ss/common/ui-shell';
 import {empSpaceNavTree} from './empspace/side-nav-tree';
 import {of} from 'rxjs';
-import { AdMob } from '@capacitor-community/admob';
 import { DeviceDetectorService } from "ngx-device-detector";
 import { AdmobClass } from "@ss/common/api-admob";
 import { EmpSpaceAdmobClass } from '@ss/remuneration/employee-space';
