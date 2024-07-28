@@ -29,12 +29,14 @@ mat-card {
 }
 
 .mat-column-recorded {
-    flex: 1 1 80px;
+    flex: 1 1 3em;
     padding-left: 4px;
     padding-right: 4px;
     justify-content: center;
 }
-
+.located {
+    font-size: 1.5em;
+}
 .mat-column-description,
 .mat-column-officeDescription {
     flex: 2 1 250px;

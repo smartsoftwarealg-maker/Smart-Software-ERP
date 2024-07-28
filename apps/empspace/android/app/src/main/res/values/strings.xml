@@ -4,5 +4,5 @@
     <string name="title_activity_main">smart-empspace</string>
     <string name="package_name">com.smartsoftware.empspace</string>
     <string name="custom_url_scheme">com.smartsoftware.empspace</string>
-    <string name="admob_app_id">ca-app-pub-8350344729252908~6374705577</string>
+    <string name="admob_app_id">ca-app-pub-8350344729252908~3197940877</string>
 </resources>

@@ -49,3 +49,4 @@ apps/cespace/package-lock.json
 .nx/
 NX/
 /android/gradle/
+/android/.idea/
