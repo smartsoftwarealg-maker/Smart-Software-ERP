@@ -37,7 +37,7 @@
         </ng-container>
 
         <ng-container matColumnDef="recorded">
-            <mat-header-cell *matHeaderCellDef translate>COMMON_RECORDED</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef translate><i class="fa-solid fa-location-question located"></i></mat-header-cell>
             <mat-cell *matCellDef="let e">
 
                 <mat-checkbox [checked]="(e.inventoryId||0) > 0" (click)="update(e)"></mat-checkbox>
