@@ -105,8 +105,10 @@ export abstract class BaseTransactionDetailComponent extends BaseEntityDetailCom
     private updateProjectLookups(id: number) {
         this.purchaseProjectSrv.setParentId(id);
         this.salesProjectSrv.setParentId(id);
-        this.salesProjectLookup.filter('').subscribe();
-        this.purchaseProjectLookup.filter('').subscribe();
+        if (id) {
+            this.salesProjectLookup.filter('').subscribe();
+            this.purchaseProjectLookup.filter('').subscribe();
+        }
     }
 
     public override canDeactivate(): Observable<boolean> {
@@ -263,7 +265,7 @@ export abstract class BaseTransactionDetailComponent extends BaseEntityDetailCom
     override ngOnInit() {
         super.ngOnInit();
         const sub = this.router.events.pipe(
-            filter((e: any): e is RouterEvent => e instanceof RouterEvent)
+            filter((e: object): e is RouterEvent => e instanceof RouterEvent)
         ).subscribe((e: RouterEvent) => {
             if (e instanceof NavigationEnd) {
                 this.disableControls(e.url);
