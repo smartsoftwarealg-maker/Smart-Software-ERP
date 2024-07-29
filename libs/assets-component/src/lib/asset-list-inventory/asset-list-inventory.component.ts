@@ -95,7 +95,7 @@ export class AssetListInventoryComponent extends BaseEntityListComponent<Invento
         dialogRef
             .afterClosed()
             .subscribe(res => {
-                const id = res?.id;
+                const id = res?.id || 0;
                 this.officeCtrl.setValue(id);
                 this.listSrv.setParentId(id);
                 this.refresh();
