@@ -13,12 +13,12 @@
         "    BackEnd is same as FrontEnd if the frontend is on port 4430, but with port 9998"
     ],
     "version": "3.0",
-    "protocol": "https://",
+    "protocol": "http://",
     "defaultUrl": "localhost:8080",
     "urlRules": [
         {
             "frontend": "?",
-            "backend": "demo.smartsoftware-dz.com:4430"
+            "backend": "?:8080"
         }
     ],
     "useBrowserLanguage": true,
