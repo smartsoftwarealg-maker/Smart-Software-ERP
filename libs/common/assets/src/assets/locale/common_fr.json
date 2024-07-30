@@ -345,5 +345,6 @@
     "GICACARRER":                 "Avencement carrière",
     "RECORDED":                   "Saisie",
     "INVENTORYING":               "Inventaire",
-    "INVENTORY2":                 "Inventaire CB"
+    "INVENTORY2":                 "Inventaire CB",
+    "OTHER":                      "Autre"
 }

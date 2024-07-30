@@ -171,5 +171,9 @@
     "RESERVATION":          "Reservation",
     "BOM":                  "Bill of material",
     "ORDER_ANOMALIES":      "Sales/purchase order anomalies",
-    "SOURCES":              "Sources"
+    "SOURCES":              "Sources",
+    "PACKAGING":            "Packing",
+    "DELIVERY_TIME":        "Delivery time",
+    "INVOICING":            "Invoicing",
+    "ORDER_VOLUME":         "Order volume"
 }

@@ -1,6 +1,6 @@
 <div class="header-div">
     <mat-card class="calendar_div">
-        <mat-calendar [selected]="entitySrv.date" (dateChanged)="onDate($event)">
+        <mat-calendar [selected]="entitySrv.date"  (dateChanged)="onDate($event)">
             <mat-hint>dd/MM/yyyy</mat-hint>
         </mat-calendar>
     </mat-card>
@@ -22,17 +22,18 @@
                     <th translate>COMMON_TOTAL</th>
                     <th></th>
                 </tr>
-                <tr *ngFor="let s of summary$ | async" class="selectable">
-                    <td style="min-width: 8em"> {{ ('0' + (s.period % 100).toFixed(0)).substring(0, 2) }}/
-                        {{ ('0' + ((s.period / 100) % 100).toFixed(0)).substring(0, 2)}}/
-                        {{ (s.period / 10000).toFixed(0)}}
+                <tr *ngFor="let s of summary$ | async" class="selectable" (click)="openPeriod(s.period)" [class.selected]="selectedPeriod() === s.period">
+                    <td style="min-width: 8em">
+                        {{ s.period.toString().substring(6) }}/
+                        {{ s.period.toString().substring(4, 6) }}/
+                        {{ s.period.toString().substring(0, 4) }}
                     </td>
                     <td style="text-align: right"> {{ s.balance | number: '1.2-2' }}</td>
                     <td style="text-align: right"> {{ s.rTotal | number: '1.2-2' }}</td>
-                    <td style="padding: 0; max-width: 36px;">
-                        <button mat-icon-button (click)="openPeriod(s.period)" color="primary"><i
-                            class="fa-solid fa-file-pen"></i></button>
-                    </td>
+<!--                    <td style="padding: 0; max-width: 36px;">-->
+<!--                        <button mat-icon-button (click)="openPeriod(s.period)" color="primary"><i-->
+<!--                            class="fa-solid fa-file-pen"></i></button>-->
+<!--                    </td>-->
                 </tr>
             </table>
         </div>

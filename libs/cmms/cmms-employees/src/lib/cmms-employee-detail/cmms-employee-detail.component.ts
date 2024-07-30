@@ -43,7 +43,8 @@ import { CmmsEmployeeService } from '../services/cmms-employee.service';
 @Component({
     selector: 'ss-cmms-employee-detail',
     standalone: true,
-    imports: [CommonModule,
+    imports: [
+        CommonModule,
         CommonUiAutoCompleteModule,
         CommonUiDatepickerModule,
         CommonUiImageInputModule,
@@ -58,7 +59,8 @@ import { CmmsEmployeeService } from '../services/cmms-employee.service';
         MatSelectModule,
         MaterialModule,
         ReactiveFormsModule,
-        RouterOutlet],
+        RouterOutlet
+    ],
     templateUrl: './cmms-employee-detail.component.html',
     styleUrls: ['./cmms-employee-detail.component.scss'],
 })

@@ -168,5 +168,9 @@
     "RESERVATION":          "حجز",
     "BOM":                  "فاتورة المواد",
     "ORDER_ANOMALIES":      "شذوذات أوامر البيع/الشراء",
-    "SOURCES":             "المصادر"
+    "SOURCES":             "المصادر",
+    "PACKAGING":           "تعبئة",
+    "DELIVERY_TIME":       "وقت التسليم",
+    "INVOICING":           "الفواتير",
+    "ORDER_VOLUME":        "حجم الطلب"
 }

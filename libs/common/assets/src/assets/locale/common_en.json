@@ -342,5 +342,6 @@
     "GICACARRER":                 "Career advancements",
     "RECORDED":                   "Recorded",
     "INVENTORYING":               "inventory",
-    "INVENTORY2":                 "BC inventory"
+    "INVENTORY2":                 "BC inventory",
+    "OTHER":                      "Other"
 }
