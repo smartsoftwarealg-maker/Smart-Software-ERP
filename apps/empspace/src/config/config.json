@@ -1,6 +1,6 @@
 {
     "version": "3.0",
-    "protocol": "https://",
+    "protocol": "http://",
     "defaultUrl": "localhost:8080",
     "urlRules": [
         {

@@ -17,9 +17,11 @@ export class BaseTreasuryTransactionService extends BaseEntityExtendedService<TT
     }
 
     set period(date: Date) {
-        const d = this._date = date || new Date();
+        const d = date || new Date();
+        this._date = d;
         this._period = d.getFullYear() * 10000 + (d.getMonth() + 1) * 100 + d.getDate();
     }
+
 
     set journal(j: Journal) {
         this._journal = j;

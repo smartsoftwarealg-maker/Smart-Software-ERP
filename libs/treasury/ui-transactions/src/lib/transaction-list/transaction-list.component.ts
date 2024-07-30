@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {Summary, TreasuryTransactionService, TTransaction} from '@ss/treasury/api-transactions';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
@@ -48,7 +48,8 @@ export class TransactionListComponent extends BaseEntityListComponent<TTransacti
     summary$: Observable<Summary[]> = null;
     displayedColumns = this.CASH_COLS;
     mode: 1|2 = 1;
-    public TREASURY = APP_TREASURY;
+    TREASURY = APP_TREASURY;
+    selectedPeriod = signal(0);
 
     constructor(
         public override entitySrv: TreasuryTransactionService,
@@ -96,6 +97,7 @@ export class TransactionListComponent extends BaseEntityListComponent<TTransacti
     }
 
     openPeriod(period: number) {
+        this.selectedPeriod.set(period);
         const date = new Date(+(period / 10000).toFixed(0), +((period / 100) % 100).toFixed(0) - 1, +(period % 100).toFixed(0));
         this.onDate(date);
     }
