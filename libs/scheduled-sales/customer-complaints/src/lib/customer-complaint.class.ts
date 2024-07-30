@@ -7,6 +7,7 @@ export interface CustomerComplaint {
     date: Date;
     agentId: number;
     complaintId?: string;
+    complaintType?: number|string;
     complaint?: string;
     answer?: string;
     agentDescription?: string;

@@ -32,6 +32,7 @@ export class CustomerComplaintsListComponent extends BaseEntityListComponent<Cus
     private loginSrv = inject(LoginService);
 
     displayedColumns = [
+        'date',
         'complaintDescription',
         'complaint',
         'answer'

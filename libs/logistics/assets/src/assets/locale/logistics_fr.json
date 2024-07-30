@@ -168,5 +168,9 @@
     "RESERVATION":          "Réservation",
     "BOM":                  "Nomenclature",
     "ORDER_ANOMALIES":      "Anomalies de bons de commande achat/ventes",
-    "SOURCES":              "Sources"
+    "SOURCES":              "Sources",
+    "PACKAGING":            "Emballage",
+    "DELIVERY_TIME":        "Temps de livraison",
+    "INVOICING":            "Facturation",
+    "ORDER_VOLUME":         "Volume de commande"
 }
