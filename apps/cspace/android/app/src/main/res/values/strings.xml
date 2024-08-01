@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">cspace</string>
+    <string name="title_activity_main">cspace</string>
+    <string name="package_name">smart.software.com</string>
+    <string name="custom_url_scheme">smart.software.com</string>
+    <string name="admob_app_id">ca-app-pub-8350344729252908~3197940877</string>
+</resources>

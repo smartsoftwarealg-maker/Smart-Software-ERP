@@ -24,7 +24,7 @@ export class AttendanceLogComponent implements OnInit {
     private datePipe      = new DatePipe(this.langSrv.lang);
 
     private FIXED_HEADERS    = [
-        this.langSrv.translate('LOGISTICS_ID'),
+        this.langSrv.translate('COMMON_ID'),
         this.langSrv.translate('COMMON_FIRST_NAME'),
         this.langSrv.translate('COMMON_LAST_NAME'),
         this.langSrv.translate('PAYROLL_POST')
