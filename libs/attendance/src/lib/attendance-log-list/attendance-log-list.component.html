@@ -2,7 +2,7 @@
     <mat-table mat-table [dataSource]="data" class="main-table" matSort (matSortChange)="sort($event)">
 
         <ng-container matColumnDef="personId">
-            <mat-header-cell *matHeaderCellDef translate>LOGISTICS_ID</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef translate>COMMON_ID</mat-header-cell>
             <mat-cell *matCellDef="let e">
                 {{e.personId}}
             </mat-cell>

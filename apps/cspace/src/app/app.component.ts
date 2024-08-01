@@ -7,6 +7,7 @@ import {cSpaceNavTree} from "./cspace/side-nav-tree";
 import { homePage, langAssets } from '../environments/environment';
 import { of } from 'rxjs';
 import { DeviceDetectorService } from 'ngx-device-detector';
+import { initialize } from './admobile';
 
 @Component({
     selector: 'ss-root',
@@ -41,5 +42,9 @@ export class AppComponent implements OnInit {
                 this.loaded = true;
                 this.shellSrv.setSideNavDataSource(cSpaceNavTree);
             });
+
+        if (this.deviceSrv.isMobile()) {
+            initialize().then(() => {});
+        }
     }
 }
