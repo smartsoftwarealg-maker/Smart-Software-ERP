@@ -1,7 +1,7 @@
 import {administrationNavTree} from '../app/administration/side-nav-tree';
 import {Routes} from '@angular/router';
-import {CanActivateService, INDEX_PAGE_URL} from '../../../../libs/common/api-common/src';
-import {MainPageComponent} from '../../../../libs/common/ui-main-page/src';
+import {CanActivateService, INDEX_PAGE_URL} from '@ss/common/api-common';
+import {MainPageComponent} from '@ss/common/ui-main-page';
 import {ltmNavTree} from '../app/ltm/side-nav-tree';
 import {
     ADMINISTRATION_APP_URL,
@@ -24,7 +24,6 @@ export const navBar = [
 export const langAssets = [
     ['assets/locale/', ''],
     ['assets/locale/administration_', 'ADMINISTRATION_'],
-    ['assets/locale/sch_', 'SCH_'],
     ['assets/locale/ltm_', 'LTM_'],
     ['assets/locale/bl_', 'BL_'],
     ['assets/locale/common_', 'COMMON_'],
