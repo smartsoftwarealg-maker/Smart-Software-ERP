@@ -1,14 +1,24 @@
-.main-container {
+.report-name,
+.main-container,
+.size__div {
     display: flex;
-    height: calc(100% - 32px);
     flex-direction: row;
     flex-wrap: wrap;
     column-gap: 8px;
+    width: 90%;
     max-width: 1400px;
     margin: 8px auto 0;
-    overflow-y: hidden;
+    padding:  0.5em;
+}
+.main-container {
+    max-height: 30%;
+    overflow-y: auto;
 }
 
+.size__div > button {
+    align-self: center;
+    min-width: fit-content;
+}
 .tree-div {
     width: 100%;
     overflow-y: auto;
@@ -29,25 +39,12 @@
     flex-grow: 1;
     align-self: stretch;
     height: 100%;
-    max-height: calc(100% - 40px);
 }
 
 .report-name {
-    font-size: 1.2em;
+    font-size: 1.5em;
     padding: 8px;
     font-weight: bolder;
-    display: flex;
-    width: 100%;
-    justify-items: center;
-    justify-content: center;
-    align-items: center;
-    flex-grow: 0;
-}
-.btn-div {
-    display: flex;
-    gap: 10px;
-    justify-content: center;
-    align-items: center;
 }
 
 form {

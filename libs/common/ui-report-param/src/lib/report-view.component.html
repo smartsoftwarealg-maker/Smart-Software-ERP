@@ -7,7 +7,7 @@
                 <li class="tree-leaf"
                     [class.selected]="selectedReport == node"
                     (click)="reportSelect(node)">
-                    {{ node.name }}
+                    {{ node.name.replaceAll('.jasper', '') }}
                 </li>
                 <mat-divider></mat-divider>
             </mat-nested-tree-node>
@@ -28,89 +28,92 @@
             </mat-nested-tree-node>
         </mat-tree>
     </div>
-    <div class="report-name"> {{ selectedReport?.name }}</div>
-    <div class="param-container">
-        <form (ngSubmit)="generateReport()" *ngIf="isReady()" [formGroup]="form">
-
-            <div *ngFor="let d of data">
-
-                <!--                <mat-form-field *ngIf="d.valueList != null">-->
-                <!--                    <mat-label translate>{{ d.description }}</mat-label>-->
-                <!--                    <mat-select formControlName="{{ d.name }}">-->
-                <!--                        <mat-option *ngFor="let s of d.valueList" [value]="s['id']">-->
-                <!--                            {{ s['description'] }}-->
-                <!--                        </mat-option>-->
-                <!--                    </mat-select>-->
-                <!--                </mat-form-field>-->
-                @if (d.lookupTable) {
-                    <mat-form-field>
-                        <mat-label translate>{{ d.description }}</mat-label>
-                        <ss-auto-complete matInput
-                                          [model]="d.lookupModel"
-                                          formControlName="{{ d.name }}">
-                        </ss-auto-complete>
-                    </mat-form-field>
-                }
-                @if (d.typeName == 'java.lang.Integer' && d.lookupTable == null) {
-                    <mat-form-field>
-                        <mat-label translate>{{ d.description }}</mat-label>
-                        <input matInput formControlName="{{ d.name }}" type="number">
-                        <mat-error *ngIf="form.controls[d.name].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
-                    </mat-form-field>
-                }
-                @if (d.typeName == 'java.lang.Double') {
-                    <mat-form-field>
-                        <mat-label translate>{{ d.description }}</mat-label>
-                        <input matInput formControlName="{{ d.name }}" type="number">
-                        <mat-error *ngIf="form.controls[d.name].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
-                    </mat-form-field>
-                }
-                @if (d.typeName == 'java.lang.Boolean') {
-                    <div class="boolean-param">
-                        <mat-checkbox formControlName="{{ d.name }}"> {{ d.description }}</mat-checkbox>
-                    </div>
-                }
-                @if (d.typeName == 'java.lang.String') {
-                    <mat-form-field>
-                        <mat-label translate>{{ d.description }}</mat-label>
-                        <input matInput formControlName="{{ d.name }}" type="text">
-                        <mat-error *ngIf="form.controls[d.name].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
-                    </mat-form-field>
-                }
-                @if (d.typeName == 'java.util.Date') {
-                    <mat-form-field>
-                        <mat-label translate>{{ d.description }}</mat-label>
-                        <ss-date-picker formControlName="{{ d.name }}"></ss-date-picker>
-                    </mat-form-field>
-                }
-
-                @if (d.typeName == 'java.sql.Timestamp') {
-                    <mat-form-field>
-                        <mat-label translate>{{ d.description }}</mat-label>
-                        <ss-date-picker formControlName="{{ d.name }}" type="datetime"></ss-date-picker>
-                    </mat-form-field>
-                }
-
-            </div>
-            <div class="btn-div">
-                <mat-form-field>
-                    <mat-label translate>COMMON_TYPE</mat-label>
-                    <mat-select formControlName="reportType" #reportType>
-                        <mat-option [value]="'HTML'"> HTML</mat-option>
-                        <mat-option [value]="'PDF'"> PDF</mat-option>
-                        <mat-option [value]="'EXCEL'"> Excel</mat-option>
-                    </mat-select>
-                </mat-form-field>
-                <div>
-                    <button mat-raised-button color="primary" type="submit">
-                        <i class="far fa-file-pdf"></i>
-                        <span translate>COMMON_VIEW_REPORT</span>
-                    </button>
-                </div>
-            </div>
-        </form>
-    </div>
 </div>
+
+<div class="report-name"> {{ selectedReport?.name.replaceAll(".jasper", "") }}</div>
+
+@if (isReady()) {
+    <form (ngSubmit)="generateReport()" [formGroup]="form">
+        <div class="size__div">
+            @for (d of data; track d.id) {
+                <div>
+
+                    <!--                <mat-form-field *ngIf="d.valueList != null">-->
+                    <!--                    <mat-label translate>{{ d.description }}</mat-label>-->
+                    <!--                    <mat-select formControlName="{{ d.name }}">-->
+                    <!--                        <mat-option *ngFor="let s of d.valueList" [value]="s['id']">-->
+                    <!--                            {{ s['description'] }}-->
+                    <!--                        </mat-option>-->
+                    <!--                    </mat-select>-->
+                    <!--                </mat-form-field>-->
+                    @if (d.lookupTable) {
+                        <mat-form-field>
+                            <mat-label translate>{{ d.description }}</mat-label>
+                            <ss-auto-complete matInput
+                                              [model]="d.lookupModel"
+                                              formControlName="{{ d.name }}">
+                            </ss-auto-complete>
+                        </mat-form-field>
+                    }
+                    @if (d.typeName == 'java.lang.Integer' && d.lookupTable == null) {
+                        <mat-form-field>
+                            <mat-label translate>{{ d.description }}</mat-label>
+                            <input matInput formControlName="{{ d.name }}" type="number">
+                            <mat-error *ngIf="form.controls[d.name].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
+                        </mat-form-field>
+                    }
+                    @if (d.typeName == 'java.lang.Double') {
+                        <mat-form-field>
+                            <mat-label translate>{{ d.description }}</mat-label>
+                            <input matInput formControlName="{{ d.name }}" type="number">
+                            <mat-error *ngIf="form.controls[d.name].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
+                        </mat-form-field>
+                    }
+                    @if (d.typeName == 'java.lang.Boolean') {
+                        <div class="boolean-param">
+                            <mat-checkbox formControlName="{{ d.name }}"> {{ d.description }}</mat-checkbox>
+                        </div>
+                    }
+                    @if (d.typeName == 'java.lang.String') {
+                        <mat-form-field>
+                            <mat-label translate>{{ d.description }}</mat-label>
+                            <input matInput formControlName="{{ d.name }}" type="text">
+                            <mat-error *ngIf="form.controls[d.name].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
+                        </mat-form-field>
+                    }
+                    @if (d.typeName == 'java.util.Date') {
+                        <mat-form-field>
+                            <mat-label translate>{{ d.description }}</mat-label>
+                            <ss-date-picker formControlName="{{ d.name }}"></ss-date-picker>
+                        </mat-form-field>
+                    }
+
+                    @if (d.typeName == 'java.sql.Timestamp') {
+                        <mat-form-field>
+                            <mat-label translate>{{ d.description }}</mat-label>
+                            <ss-date-picker formControlName="{{ d.name }}" type="datetime"></ss-date-picker>
+                        </mat-form-field>
+                    }
+
+                </div>
+            }
+
+            <mat-form-field>
+                <mat-label translate>COMMON_TYPE</mat-label>
+                <mat-select formControlName="reportType" #reportType>
+                    <mat-option [value]="'HTML'"> HTML</mat-option>
+                    <mat-option [value]="'PDF'"> PDF</mat-option>
+                    <mat-option [value]="'EXCEL'"> Excel</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <button mat-raised-button color="primary" type="submit">
+                <i class="far fa-file-pdf"></i>
+                <span translate>COMMON_VIEW_REPORT</span>
+            </button>
+        </div>
+    </form>
+}
+
 
 <ng-template #report>
     <div class="spinner" *ngIf="generating; else content">

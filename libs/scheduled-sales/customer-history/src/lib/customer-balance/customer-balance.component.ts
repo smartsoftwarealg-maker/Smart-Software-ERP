@@ -96,9 +96,9 @@ export class CustomerBalanceComponent implements OnInit {
                 switchMap(() => this.balanceSrv.balance(this.loginSrv.appCtx.agentId | 0)),
                 tap( res => {
                     const value = {
-                        "debit":  res.debit.toLocaleString(),
-                        "credit": res.credit.toLocaleString(),
-                        "balance": (res.credit - res.debit).toLocaleString()
+                        "debit":  res.debit?.toLocaleString()||'0',
+                        "credit": res.credit?.toLocaleString()||'0',
+                        "balance": (res?.credit||0 - res?.debit||0).toLocaleString()
                     };
                     this.balanceForm.setValue(value);
                 }),

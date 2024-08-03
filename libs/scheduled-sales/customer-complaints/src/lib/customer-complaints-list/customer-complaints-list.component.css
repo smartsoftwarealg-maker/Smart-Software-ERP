@@ -47,3 +47,8 @@
         margin: auto;
     }
 }
+
+mat-table {
+    min-width: 600px;
+    overflow-x: auto;
+}
