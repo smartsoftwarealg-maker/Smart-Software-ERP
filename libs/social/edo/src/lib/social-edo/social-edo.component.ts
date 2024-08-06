@@ -18,11 +18,12 @@ import { MatOption } from '@angular/material/autocomplete';
 import { MatSelect } from '@angular/material/select';
 import { Lookup } from '@ss/common/api-lookup';
 import { SocialEDOService } from '@social/social-api';
+import { MatDatepickerModule } from '@muaazh/datepicker';
 
 @Component({
     selector: 'ss-social-edo',
     standalone: true,
-    imports: [CommonModule, CommonUiDatepickerModule, CommonUiLangModule, FormsModule, MatButton, MatCard, MatError, MatFormField, MatInput, MatLabel, MatListOption, MatListSubheaderCssMatStyler, MatOption, MatSelect, MatSelectionList, ReactiveFormsModule],
+    imports: [CommonModule, CommonUiDatepickerModule, CommonUiLangModule, FormsModule, MatButton, MatCard, MatError, MatFormField, MatInput, MatLabel, MatListOption, MatListSubheaderCssMatStyler, MatOption, MatSelect, MatSelectionList, ReactiveFormsModule, MatDatepickerModule],
     templateUrl: './social-edo.component.html',
     styleUrl: './social-edo.component.scss',
 })

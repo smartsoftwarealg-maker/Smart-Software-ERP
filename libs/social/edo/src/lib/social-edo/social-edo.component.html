@@ -1,6 +1,7 @@
 <div class="container">
     <mat-card>
-        <form *ngIf="form" novalidate [formGroup]="form">
+        @if (form) {
+            <form novalidate [formGroup]="form">
 
             <mat-form-field class="default-25 sm-50">
                 <mat-label translate>PAYROLL_MONTH</mat-label>
@@ -24,13 +25,20 @@
                 </mat-error>
             </mat-form-field>
 
-            <mat-form-field class="default-50 sm-100">
-                <mat-label translate>COMMON_DATE</mat-label>
-                <ss-date-picker [required]=true formControlName="date"></ss-date-picker>
-                <mat-error *ngIf="form.controls['date']?.hasError('required')" translate>
-                    COMMON_FIELD_REQUIRED
-                </mat-error>
-            </mat-form-field>
+<!--            <mat-form-field class="default-50 sm-100">-->
+<!--                <mat-label translate>COMMON_DATE</mat-label>-->
+<!--                <ss-date-picker [required]=true formControlName="date"></ss-date-picker>-->
+<!--                <mat-error *ngIf="form.controls['date']?.hasError('required')" translate>-->
+<!--                    COMMON_FIELD_REQUIRED-->
+<!--                </mat-error>-->
+<!--            </mat-form-field>-->
+
+                <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>COMMON_DATE</mat-label>
+                    <input matInput [matDatepicker]="picker" formControlName="date">
+                    <mat-datepicker-toggle matIconSuffix [for]="picker" ></mat-datepicker-toggle>
+                    <mat-datepicker #picker ></mat-datepicker>
+                </mat-form-field>
 
             <div class="default-50 sm-100">
                 <mat-form-field>
@@ -69,6 +77,7 @@
             </button>
 
         </form>
+        }
     </mat-card>
     <div class="bank-list">
         <div mat-subheader class="b-primary subheader" translate> {{ 'REMUN_SELECTED_BANKS' }}</div>
