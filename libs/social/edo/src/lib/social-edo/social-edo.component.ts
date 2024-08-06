@@ -8,26 +8,47 @@ import { PayrollMonthService } from '@ss/remuneration/payroll-month';
 import { BankService } from '@ss/administration/api-bank';
 import { switchMap, tap } from 'rxjs';
 import { SelectionModel } from '@angular/cdk/collections';
-import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
 import { CommonUiLangModule } from '@ss/common/ui-lang';
 import { MatButton } from '@angular/material/button';
 import { MatCard } from '@angular/material/card';
-import { MatError, MatFormField, MatLabel } from '@angular/material/form-field';
-import { MatInput } from '@angular/material/input';
+import { MatError, MatFormField, MatFormFieldModule, MatLabel } from '@angular/material/form-field';
+import { MatInput, MatInputModule } from '@angular/material/input';
 import { MatOption } from '@angular/material/autocomplete';
 import { MatSelect } from '@angular/material/select';
 import { Lookup } from '@ss/common/api-lookup';
 import { SocialEDOService } from '@social/social-api';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
 
 @Component({
     selector: 'ss-social-edo',
     standalone: true,
-    imports: [CommonModule, CommonUiDatepickerModule, CommonUiLangModule, FormsModule, MatButton, MatCard, MatError, MatFormField, MatInput, MatLabel, MatListOption, MatListSubheaderCssMatStyler, MatOption, MatSelect, MatSelectionList, ReactiveFormsModule],
+    imports: [
+        CommonModule,
+        CommonUiLangModule,
+        FormsModule,
+        MatButton,
+        MatCard,
+        MatError,
+        MatFormField,
+        MatInput,
+        MatLabel,
+        MatListOption,
+        MatListSubheaderCssMatStyler,
+        MatOption,
+        MatSelect,
+        MatSelectionList,
+        ReactiveFormsModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatDatepickerModule,
+        CommonUiDatepickerModule
+    ],
     templateUrl: './social-edo.component.html',
-    styleUrl: './social-edo.component.scss',
+    styleUrl: './social-edo.component.scss'
 })
 export class SocialEdoComponent implements OnInit {
-    @ViewChild('blist') blist: MatSelectionList
+    @ViewChild('blist') blist: MatSelectionList;
     form: UntypedFormGroup = null;
     curYear = new Date().getFullYear();
     curMonth = new Date().getMonth();
@@ -50,11 +71,11 @@ export class SocialEdoComponent implements OnInit {
         this.bankSrv
             .getList(0, 1000)
             .pipe(tap(res => {
-                    this.bankList = res.body;
-                    this.selectedBanks = this.bankList.map(e => e.id).join(',');
-                }),
-                switchMap(_ => this.edoSrv.getCenterBank()),
-                tap(res => this.receivingBanks = this.bankList.filter(e => e.id == res)))
+                this.bankList = res.body;
+                this.selectedBanks = this.bankList.map(e => e.id).join(',');
+            }),
+            switchMap(_ => this.edoSrv.getCenterBank()),
+            tap(res => this.receivingBanks = this.bankList.filter(e => e.id == res)))
             .subscribe(res => this.buildForm(res));
         this.shellSrv.setGoBackPath('../', this.route);
     }
