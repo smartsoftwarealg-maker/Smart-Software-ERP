@@ -36,4 +36,5 @@ export class DeliveryListComponent extends BaseEntityListComponent<Transaction> 
         public override pagPersistSrv: PaginatorPersistenceService) {
         super(deliverySrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv, 'SALES_DELIVERY');
     }
+
 }

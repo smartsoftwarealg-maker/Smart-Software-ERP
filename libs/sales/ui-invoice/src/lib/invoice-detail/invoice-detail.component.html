@@ -44,7 +44,8 @@
                     <ss-auto-complete matInput
                                       [required]="true"
                                       [model]="payModeAutoCompleteModel"
-                                      formControlName="payMethod"></ss-auto-complete>
+                                      formControlName="payMethod">
+                    </ss-auto-complete>
                     <mat-error
                         *ngIf="form.controls['payMethod'].hasError('required')" translate>COMMON_FIELD_REQUIRED
                     </mat-error>

@@ -3,7 +3,7 @@ import { Observable, of } from 'rxjs';
 import { Router } from '@angular/router';
 import { catchError, map, switchMap, tap } from 'rxjs/operators';
 import { AppContext, Credentials, ESender, LoginInfo, UserInfo } from './models';
-import { CENTER_SELECT_URL, HOME_URL, INDEX_PAGE_URL, LOGIN_URL } from './constants';
+import { CENTER_SELECT_URL, INDEX_PAGE_URL, LOGIN_URL } from './constants';
 import { HttpService } from './http.service';
 import { MainPageService } from './main-page.service';
 
@@ -34,11 +34,12 @@ export class LoginService {
     private readonly EMPTY_USER: UserInfo = {
         user: { id: 0, description: null, fullName: null, manager: false, blocked: false }
     };
+    private _customerLogin: LoginType = LoginType.USER;
     public appCtx: AppContext = null;
     public connectionError = false;
+    public errorMessage = '';
     public wrongData = false;
     public licenseErrorType: LicenseErrorType = null;
-    private _customerLogin: LoginType = LoginType.USER;
 
     constructor() {
     }
@@ -145,7 +146,9 @@ export class LoginService {
                     }
                 },
                 error: err => {
+                    this.errorMessage = err?.message || null;
                     this.connectionError = err.status === 0;
+                    console.log(err);
                     this.wrongData = !this.connectionError;
                     if (onFinish != null) {
                         onFinish();

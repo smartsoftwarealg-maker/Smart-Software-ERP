@@ -57,5 +57,6 @@
     "CANT_DELETE":                        "Cet enregistrement ne peut pas être supprimé",
     "MAX_DEBIT_EXCEEDED":                 "Le débit maximum autorisé pour ce client a été dépassé. Exiger le paiement de ce document ou augmenter le débit maximum.",
     "BLOCKED_AGENT":                      "Cet tiers est bloqué.",
-    "INACTIVE_PERSON":                    "Personnes inactives"
+    "INACTIVE_PERSON":                    "Personnes inactives",
+    "INVALID_AGENT_UPDATE":               "Cet agent ne peut pas être mis à jour car le document contient des informations provenant du document d'un autre agent. Veuillez supprimer les informations, puis mettre à jour l'agent."
 }
