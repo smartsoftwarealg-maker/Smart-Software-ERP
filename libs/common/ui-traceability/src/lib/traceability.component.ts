@@ -1,11 +1,16 @@
-import { Component, EventEmitter, inject, OnDestroy, OnInit } from "@angular/core";
+import { Component, EventEmitter, inject, OnDestroy, OnInit, signal } from '@angular/core';
 import {LogNode, Schema, TraceabilityService} from "./traceability.service";
 import {FlatTreeControl} from "@angular/cdk/tree";
 import {MatTreeFlatDataSource, MatTreeFlattener} from "@angular/material/tree";
-import { FormControl, FormGroup, UntypedFormControl, UntypedFormGroup } from "@angular/forms";
-import {LanguageService, PaginationModel} from '@ss/common/api-common';
+import { FormControl, FormGroup, ReactiveFormsModule, UntypedFormControl, UntypedFormGroup } from '@angular/forms';
+import { LanguageService, MaterialModule, PaginationModel } from '@ss/common/api-common';
 import {ShellService} from "@ss/common/ui-shell";
 import {switchMap} from "rxjs/operators";
+import { CommonModule } from '@angular/common';
+import { CommonUiLangModule } from '@ss/common/ui-lang';
+import { UiPaginationModule } from '@ss/common/ui-pagination';
+import { CommonUiConfirmationDialogModule } from '@ss/common/ui-confirmation-dialog';
+import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
 
 
 /** Flat node with expandable and level information */
@@ -20,13 +25,25 @@ interface LogFlatNode {
 @Component({
     selector: 'ss-traceability',
     templateUrl: './traceability.component.html',
-    styleUrls: ['./traceability.component.scss']
+    styleUrls: ['./traceability.component.scss'],
+    standalone: true,
+    imports: [
+        CommonModule,
+        MaterialModule,
+        CommonUiLangModule,
+        UiPaginationModule,
+        ReactiveFormsModule,
+        CommonUiConfirmationDialogModule,
+        CommonUiDatepickerModule,
+    ],
+
 })
 export class TraceabilityComponent implements OnInit, OnDestroy {
     private traceSrv = inject(TraceabilityService);
     private shellSrv = inject(ShellService);
     public langSrv = inject(LanguageService);
 
+    processing = signal<boolean>(false);
     tableWidth = 400;
     selectedId = 0;
     application = '';
@@ -87,6 +104,7 @@ export class TraceabilityComponent implements OnInit, OnDestroy {
     }
 
     public refresh() {
+        this.processing.set(true);
         const value = this.form.value;
         this.traceSrv.getDetails(
             value.fromDate,
@@ -96,25 +114,38 @@ export class TraceabilityComponent implements OnInit, OnDestroy {
             this.selectedId,
             this.pagination.page - 1,
             this.pagination.pageSize)
-            .subscribe(res => {
-                this.data = res.body.map(e => e.split('`'));
-                this.pagination.elementCount = res.itemCount;
-                this.tableWidth = (this.data.length > 0)?  this.data[0].length * 120 : 400;
+            .subscribe({
+                next: res => {
+                    this.processing.set(false);
+                    this.data = res.body.map(e => e.split('`'));
+                    this.pagination.elementCount = res.itemCount;
+                    this.tableWidth = (this.data.length > 0) ? this.data[0].length * 120 : 400;
+                }, error: err => {
+                    this.processing.set(false);
+                    throw err;
+                }
             });
     }
 
     setApp(app: any) {
+        this.processing.set(true);
         this.application = app['value'];
         this.traceSrv.getSchemaMap(this.application)
-            .subscribe(res => {
-                const nodes: LogNode[] = res.map(e => {
-                    const children: LogNode[] = e.schemas.map(f => {
-                        const fNode: LogNode = {application: f.description, schema: f};
-                        return fNode;
+            .subscribe({
+                next: res => {
+                    this.processing.set(false);
+                    const nodes: LogNode[] = res.map(e => {
+                        const children: LogNode[] = e.schemas.map(f => {
+                            const fNode: LogNode = { application: f.description, schema: f };
+                            return fNode;
+                        });
+                        return { application: e.application, children: children };
                     });
-                    return {application: e.application, children: children};
-                })
-                this.dataSource.data = nodes;
+                    this.dataSource.data = nodes;
+                }, error: err => {
+                    this.processing.set(false);
+                    throw err;
+                }
             });
     }
 }

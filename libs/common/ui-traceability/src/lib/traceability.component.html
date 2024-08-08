@@ -21,6 +21,9 @@
             <mat-radio-button value="3" [checked]="form.controls['options']?.value ===  3" translate>COMMON_DELETE</mat-radio-button>
         </mat-radio-group>
     </div>
+    @if (processing()) {
+        <mat-progress-bar mode="indeterminate" class="prog__bar"></mat-progress-bar>
+    } @else {
     <mat-tree [dataSource]="dataSource"
               [treeControl]="treeControl"
               class="schemas">
@@ -69,4 +72,5 @@
     </mat-form-field>
 
     <ss-pagination class="pager" [paginationModel]="pagination"></ss-pagination>
+    }
 </div>

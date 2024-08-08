@@ -63,10 +63,16 @@
                     <input type="checkbox" id="checkbox1" formControlName="keep">
                     <label for="checkbox1" translate>COMMON_KEEP_ME_SIGNED</label>
                 </div>
-
-                <div class="connection__error" *ngIf="loginSrv.connectionError">
-                    <strong translate>COMMON_CONNECTION_ERROR</strong>
-                </div>
+                @if (loginSrv.connectionError) {
+                    <div class="connection__error">
+                        <strong translate>COMMON_CONNECTION_ERROR</strong>
+                    </div>
+                }
+                @if (loginSrv.errorMessage) {
+                    <div class="connection__error">
+                        <strong>{{ loginSrv.errorMessage }}</strong>
+                    </div>
+                }
 
                 <div *ngIf="loginSrv.wrongData" class="connection__error">
                     <strong translate>COMMON_LOGIN_WRONG_USERNAME_PASSWORD</strong>

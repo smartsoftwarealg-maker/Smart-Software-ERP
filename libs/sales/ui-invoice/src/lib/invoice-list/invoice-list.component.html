@@ -55,7 +55,10 @@
 
 
         <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
-        <mat-row class="selectable" [class.selected]="row.id == selected" (click)="selectRow(row)"
+        <mat-row class="selectable"
+                 [class.selected]="row.id == selected"
+                 [class.dirty]="row.dirty"
+                 (click)="selectRow(row)"
                  *matRowDef="let row; columns: displayedColumns;"></mat-row>
     </mat-table>
 </div>

@@ -65,7 +65,10 @@ mat-header-cell {
     border-left: gray solid 1px;
 }
 
-
+.dirty {
+    color: red;
+    text-decoration: line-through;
+}
 
 .mat-column-dealer,
 .mat-column-payMethod {

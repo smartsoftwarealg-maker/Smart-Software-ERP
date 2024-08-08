@@ -9,10 +9,11 @@
     grid-template-columns: 1fr 2fr;
     grid-template-rows: auto auto 1fr auto;
     gap: 15px;
-    grid-template-areas: "selector selector"
-                         "apps     detail"
-                         "schemas  detail"
-                         "schemas  pager"  ;
+    grid-template-areas: "selector   selector"
+                         "apps       detail"
+                         "schemas    detail"
+                         "schemas    pager"
+                         "prog__bar  prog__bar";
 
 }
 .changed {
@@ -31,12 +32,17 @@
                          "apps"
                          "schemas"
                          "detail"
-                         "pager"  ;
+                         "pager"
+                         "prog__bar";
     }
 }
 .schemas {
     grid-area: schemas;
     overflow-y: auto;
+}
+
+.prog__bar {
+    grid-area: prog__bar;
 }
 
 .apps {
