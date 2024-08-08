@@ -40,7 +40,7 @@ export class TranslateDirective extends BaseDirective implements OnInit { //1
     }
 
     protected replaceText(): void {
-        if (!!this.key) {
+        if (this.key) {
             this.setText(this.getValue(this.key));
         }
     }

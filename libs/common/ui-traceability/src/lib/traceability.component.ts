@@ -1,16 +1,17 @@
-import { Component, EventEmitter, inject, OnDestroy, OnInit, signal } from '@angular/core';
+import { Component, DestroyRef, EventEmitter, inject, OnDestroy, OnInit, signal } from '@angular/core';
 import {LogNode, Schema, TraceabilityService} from "./traceability.service";
 import {FlatTreeControl} from "@angular/cdk/tree";
 import {MatTreeFlatDataSource, MatTreeFlattener} from "@angular/material/tree";
 import { FormControl, FormGroup, ReactiveFormsModule, UntypedFormControl, UntypedFormGroup } from '@angular/forms';
 import { LanguageService, MaterialModule, PaginationModel } from '@ss/common/api-common';
 import {ShellService} from "@ss/common/ui-shell";
-import {switchMap} from "rxjs/operators";
+import { debounceTime, distinctUntilChanged, switchMap, takeUntil } from 'rxjs/operators';
 import { CommonModule } from '@angular/common';
 import { CommonUiLangModule } from '@ss/common/ui-lang';
 import { UiPaginationModule } from '@ss/common/ui-pagination';
 import { CommonUiConfirmationDialogModule } from '@ss/common/ui-confirmation-dialog';
 import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 
 /** Flat node with expandable and level information */
@@ -39,22 +40,27 @@ interface LogFlatNode {
 
 })
 export class TraceabilityComponent implements OnInit, OnDestroy {
+    private destroyRef = inject(DestroyRef);
     private traceSrv = inject(TraceabilityService);
     private shellSrv = inject(ShellService);
     public langSrv = inject(LanguageService);
 
     processing = signal<boolean>(false);
+
     tableWidth = 400;
     selectedId = 0;
     application = '';
     data: string[][] = [];
     displayedColumns: string[] = [];
+
     form = new FormGroup({
         options: new FormControl<number>(1),
         fromDate: new FormControl<Date>(this.traceSrv.fromDate),
         toDate: new FormControl<Date>(this.traceSrv.toDate),
-        filter: new FormControl<string>('')
+        filter: new FormControl<string>(''),
+        consolidated: new FormControl<boolean>(false),
     });
+
     public readonly pagination = PaginationModel.newInstance({ page: 1, pageSize: 20, elementCount: 0 });
     apps: string[] = [];
     treeControl = new FlatTreeControl<LogFlatNode>(
@@ -84,9 +90,18 @@ export class TraceabilityComponent implements OnInit, OnDestroy {
         this.traceSrv
             .getApps()
             .subscribe(res => this.apps = (res['apps'] || []).filter(e => e));
+
         this.pagination.onChange = () => this.refresh();
         this.shellSrv.setTitle('COMMON_TRACEABILITY');
         this.shellSrv.setGoBackPathByRelativeUrl('..');
+
+        this.form
+            .valueChanges
+            .pipe(
+                takeUntilDestroyed(this.destroyRef),
+                debounceTime(300),
+                distinctUntilChanged()
+            ).subscribe(() => this.refresh());
     }
 
     ngOnDestroy() {
@@ -110,6 +125,7 @@ export class TraceabilityComponent implements OnInit, OnDestroy {
             value.fromDate,
             value.toDate,
             value.options,
+            value.consolidated,
             value.filter,
             this.selectedId,
             this.pagination.page - 1,

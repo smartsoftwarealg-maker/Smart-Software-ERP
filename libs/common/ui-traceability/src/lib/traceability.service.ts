@@ -41,10 +41,11 @@ export class TraceabilityService {
             .get<SchemaMap[]>('/logging/map', params);
     }
 
-    getDetails(from: Date, to: Date, type: number, filter: string, schema: number, page: number, size: number): Observable<{ itemCount: number, body: string[] }> {
+    getDetails(from: Date, to: Date, type: number, consolidated: boolean, filter: string, schema: number, page: number, size: number): Observable<{ itemCount: number, body: string[] }> {
         const params = new HttpParams()
             .set('from', dateToYmdStr(from))
             .set('to', dateToYmdStr(to))
+            .set('consolidated', consolidated)
             .set('schema', schema)
             .set('page', `${page}-${size}`)
             .set('filter', filter);

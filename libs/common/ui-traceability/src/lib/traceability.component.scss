@@ -64,20 +64,14 @@
 .log__type {
     width: 98%;
     margin: 4px auto;
-    padding: 0 8px;
-    gap: 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
+    padding: 8px;
+    justify-content: space-around;
     grid-area: selector;
     border-radius: 1.2em;
-    flex-wrap: wrap;
-}
 
-.date__picker {
-    flex-grow: 1;
-    max-width: 240px;
-    margin-top: 16px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
 }
 
 mat-radio-group {
