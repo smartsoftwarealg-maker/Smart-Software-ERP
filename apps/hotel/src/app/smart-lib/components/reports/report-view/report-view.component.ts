@@ -60,7 +60,6 @@ export class ReportViewComponent implements OnInit, OnDestroy {
     }
 
     public onReportSelect() {
-        console.log('params *************************');
         this._service.get('/reports/params?app=' + this.appName + '&report=' + this.selectedReport)
             .subscribe(res => {
                 this.params = res;

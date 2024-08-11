@@ -39,7 +39,7 @@ import { LtmDepositTestingService } from '../services/ltm-deposit-testing.servic
 })
 
 export class LtmDepositTestingListComponent extends LtmBaseTestingListComponent {
-    displayedColumns = ['matterDescription', 'timeStamp', 'zoneDescription', 'depositDescription'];
+    displayedColumns = ['matterDescription', 'timeStamp', 'pickupDescription'];
     constructor(
         public override entitySrv: LtmDepositTestingService,
         public override shellSrv: ShellService,

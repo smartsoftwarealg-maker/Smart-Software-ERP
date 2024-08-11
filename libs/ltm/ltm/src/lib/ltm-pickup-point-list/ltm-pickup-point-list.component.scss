@@ -1,11 +1,13 @@
 .content_div {
     width: 90%;
-    max-width: 600px;
+    max-width: 900px;
     margin: 0 auto;
 }
 
 .mat-column-description,
-.mat-column-equipmentDescription {
+.mat-column-equipmentDescription,
+.mat-column-bleacherDescription ,
+.mat-column-zoneDescription {
     flex: 3 1 200px;
     border-left: gray solid 1px;
     padding-left: 4px;

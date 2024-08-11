@@ -59,51 +59,51 @@
                                       formControlName="supplier">
                     </ss-auto-complete>
                 </mat-form-field>
-            } @else if (testingMode() === DEPOSIT_TEST) {
-                <mat-form-field class="default-100">
-                    <mat-label translate>LTM_BLEACHER</mat-label>
-                    <ss-auto-complete matInput
-                                      [model]="bleacherLookup"
-                                      formControlName="bleacher">
-                    </ss-auto-complete>
-                </mat-form-field>
-
-                <mat-form-field class="default-100">
-                    <mat-label translate>LTM_ZONE</mat-label>
-                    <ss-auto-complete matInput
-                                      [model]="zoneLookup"
-                                      formControlName="zone">
-                    </ss-auto-complete>
-                </mat-form-field>
-
-                <mat-form-field class="default-100">
-                    <mat-label translate>LTM_DEPOSIT</mat-label>
-                    <ss-auto-complete matInput
-                                      [model]="depositLookup"
-                                      formControlName="deposit">
-                    </ss-auto-complete>
-                </mat-form-field>
             }
+            <!--            @else if (testingMode() === DEPOSIT_TEST) {-->
+            <!--                <mat-form-field class="default-100">-->
+            <!--                    <mat-label translate>LTM_BLEACHER</mat-label>-->
+            <!--                    <ss-auto-complete matInput-->
+            <!--                                      [model]="bleacherLookup"-->
+            <!--                                      formControlName="bleacher">-->
+            <!--                    </ss-auto-complete>-->
+            <!--                </mat-form-field>-->
 
-            @if (testingMode() !== DEPOSIT_TEST) {
-                <mat-form-field class="default-100">
-                    <mat-label translate>LTM_PICKUP_POINT</mat-label>
-                    <ss-auto-complete matInput
-                                      [model]="pickupLookup"
-                                      formControlName="pickupPoint"
-                                      required>
-                    </ss-auto-complete>
-                </mat-form-field>
-            }
+            <!--                <mat-form-field class="default-100">-->
+            <!--                    <mat-label translate>LTM_ZONE</mat-label>-->
+            <!--                    <ss-auto-complete matInput-->
+            <!--                                      [model]="zoneLookup"-->
+            <!--                                      formControlName="zone">-->
+            <!--                    </ss-auto-complete>-->
+            <!--                </mat-form-field>-->
+
+            <!--                <mat-form-field class="default-100">-->
+            <!--                    <mat-label translate>LTM_DEPOSIT</mat-label>-->
+            <!--                    <ss-auto-complete matInput-->
+            <!--                                      [model]="depositLookup"-->
+            <!--                                      formControlName="deposit">-->
+            <!--                    </ss-auto-complete>-->
+            <!--                </mat-form-field>-->
+            <!--            }-->
+
+            <mat-form-field class="default-100">
+                <mat-label translate>LTM_PICKUP_POINT</mat-label>
+                <ss-auto-complete matInput
+                                  [required]="true"
+                                  [model]="pickupLookup"
+                                  formControlName="pickupPoint"
+                                  required>
+                </ss-auto-complete>
+            </mat-form-field>
             @if (testingMode() !== DEPOSIT_TEST && testingMode() !== RAW_MATERIAL_TEST) {
-<!--                <mat-form-field class="default-100">-->
-<!--                    <mat-label translate>COMMON_EQUIPMENT</mat-label>-->
-<!--                    <ss-auto-complete matInput-->
-<!--                                      [model]="equipmentLookup"-->
-<!--                                      formControlName="equipment"-->
-<!--                                      required>-->
-<!--                    </ss-auto-complete>-->
-<!--                </mat-form-field>-->
+                <!--                <mat-form-field class="default-100">-->
+                    <!--                    <mat-label translate>COMMON_EQUIPMENT</mat-label>-->
+                    <!--                    <ss-auto-complete matInput-->
+                    <!--                                      [model]="equipmentLookup"-->
+                    <!--                                      formControlName="equipment"-->
+                    <!--                                      required>-->
+                    <!--                    </ss-auto-complete>-->
+                    <!--                </mat-form-field>-->
 
                 <mat-form-field class="default-100">
                     <mat-label translate>LTM_SILO</mat-label>
