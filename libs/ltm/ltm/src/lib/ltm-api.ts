@@ -228,7 +228,11 @@ export interface LTMPickupPoint {
     description: string,
     descriptionAr?: string;
     equipmentId?: number;
+    bleacherId?: number;
+    zoneId?: number;
     equipmentDescription?: string;
+    bleacherDescription?: string;
+    zoneDescription?: string
 }
 
 export interface LTMMixturePickupPoint {

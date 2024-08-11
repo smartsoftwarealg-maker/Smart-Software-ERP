@@ -175,7 +175,7 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
             silo:         [null],
             // equipment:    [null],
             bleacher:     [0],
-            pickupPoint:  [0],
+            pickupPoint:  [0, Validators.required],
             zone:         [0],
             deposit:      [0],
             supplier:     [0],

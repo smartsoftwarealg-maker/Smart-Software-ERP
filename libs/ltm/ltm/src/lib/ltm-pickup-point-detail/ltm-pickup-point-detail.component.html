@@ -13,5 +13,21 @@
                               [model]="equipmentLookup">
             </ss-auto-complete>
         </mat-form-field>
+
+        <mat-form-field class="default-100" >
+            <mat-label translate>LTM_BLEACHER</mat-label>
+            <ss-auto-complete matInput
+                              formControlName="bleacherId"
+                              [model]="bleacherLookup">
+            </ss-auto-complete>
+        </mat-form-field>
+
+        <mat-form-field class="default-100" >
+            <mat-label translate>LTM_ZONE</mat-label>
+            <ss-auto-complete matInput
+                              formControlName="zoneId"
+                              [model]="zoneLookup">
+            </ss-auto-complete>
+        </mat-form-field>
     </form>
 </mat-card>
