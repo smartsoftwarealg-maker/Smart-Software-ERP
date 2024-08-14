@@ -54,16 +54,16 @@ export const navBar = [
 export const langAssets = [
     ['assets/locale/', ''],
     ['assets/locale/administration_', 'ADMINISTRATION_'],
-    ['assets/locale/payroll_', 'PAYROLL_'],
-    ['assets/locale/stock_', 'STOCK_'],
-    ['assets/locale/common_', 'COMMON_'],
-    ['assets/locale/social_', 'SOCIAL_'],
-    ['assets/locale/logistics_', 'LOGISTICS_'],
-    ['assets/locale/purchases_', 'PURCHASES_'],
-    ['assets/locale/bl_', 'BL_'],
-    ['assets/locale/remuneration_', 'REMUN_'],
-    ['assets/locale/webarch_', 'WAR_'],
-    ['assets/locale/assets_', 'ASSET_'],
+    ['assets/locale/payroll_',        'PAYROLL_'],
+    ['assets/locale/stock_',          'STOCK_'],
+    ['assets/locale/common_',         'COMMON_'],
+    ['assets/locale/social_',         'SOCIAL_'],
+    ['assets/locale/logistics_',      'LOGISTICS_'],
+    ['assets/locale/purchases_',      'PURCHASES_'],
+    ['assets/locale/bl_',             'BL_'],
+    ['assets/locale/remuneration_',    'REMUN_'],
+    ['assets/locale/webarch_',         'WAR_'],
+    ['assets/locale/assets_',          'ASSET_'],
 ];
 
 export const appRoutes: Routes =  [
