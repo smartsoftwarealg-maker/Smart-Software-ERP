@@ -20,7 +20,7 @@
                 </mat-error>
             </mat-form-field>
 
-            @if (testingMode() == CHEMICAL_TEST) {
+            @if (testingMode() === CHEMICAL_TEST || testingMode() === DEPOSIT_TEST) {
                 <mat-form-field class="hour">
                     <mat-label translate>COMMON_HOURS</mat-label>
                     <input matInput formControlName="hour" type="number" min="0" max="23" class="hour_input">

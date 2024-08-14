@@ -244,7 +244,10 @@ export class HttpService {
     }
 
     public doLogin(url: string, data: any | null): Observable<LoginInfo> {
-        const httpHeaders = new HttpHeaders({'Content-Type': 'application/json'});
+        const httpHeaders = new HttpHeaders({
+            'Content-Type': 'application/json',
+            'Accept': 'application/json, text/plain, */*'
+        });
         return this.httpClient.post<LoginInfo>(this.baseUrl + url, data, {headers: httpHeaders});
     }
 
