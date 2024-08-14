@@ -148,7 +148,6 @@ export class LoginService {
                 error: err => {
                     this.errorMessage = err?.message || null;
                     this.connectionError = err.status === 0;
-                    console.log(err);
                     this.wrongData = !this.connectionError;
                     if (onFinish != null) {
                         onFinish();

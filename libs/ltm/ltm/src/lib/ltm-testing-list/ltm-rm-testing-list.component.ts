@@ -39,7 +39,7 @@ import { LtmRmTestingService } from '../services/ltm-rm-testing.service';
 })
 
 export class LtmRmTestingListComponent extends LtmBaseTestingListComponent {
-    displayedColumns = ['matterDescription', 'timeStamp', 'supplierDescription', 'pickupDescription'];
+    displayedColumns = ['matterDescription', 'timeStamp',  'pickupDescription'];
     constructor(
         public override entitySrv: LtmRmTestingService,
         public override shellSrv: ShellService,

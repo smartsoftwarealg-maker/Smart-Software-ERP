@@ -24,9 +24,10 @@ export const navBar = [
 export const langAssets = [
     ['assets/locale/', ''],
     ['assets/locale/administration_', 'ADMINISTRATION_'],
-    ['assets/locale/ltm_', 'LTM_'],
-    ['assets/locale/bl_', 'BL_'],
-    ['assets/locale/common_', 'COMMON_'],
+    ['assets/locale/logistics_',      'LOGISTICS_'],
+    ['assets/locale/ltm_',            'LTM_'],
+    ['assets/locale/bl_',             'BL_'],
+    ['assets/locale/common_',         'COMMON_'],
 ];
 
 export const appRoutes: Routes =  [
