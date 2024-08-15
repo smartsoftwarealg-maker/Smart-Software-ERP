@@ -5,13 +5,33 @@ import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import {PaginatorPersistenceService} from '@ss/common/api-common';
+import { MaterialModule, PaginatorPersistenceService } from '@ss/common/api-common';
 import {WorkflowInboxService} from '../workflow-inbox.service';
+import { CommonModule } from '@angular/common';
+import { UiPaginationModule } from '@ss/common/ui-pagination';
+import { CommonUiLangModule } from '@ss/common/ui-lang';
+import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
+import { RemunerationPaymonthEditorModule } from '@ss/remuneration/paymonth-editor';
+import { CommonPayrollModule } from '@ss/payroll-common';
+import { CommonUiImageInputModule } from '@ss/common/ui-image-input';
+import { OrgChartModule } from 'angular13-organization-chart';
 
 @Component({
     selector: 'ss-workflow-inbox-list',
     templateUrl: './workflow-inbox-list.component.html',
     styleUrls: ['./workflow-inbox-list.component.scss'],
+    standalone: true,
+    imports: [
+        CommonModule,
+        MaterialModule,
+        UiPaginationModule,
+        CommonUiLangModule,
+        CommonUiAutoCompleteModule,
+        RemunerationPaymonthEditorModule,
+        CommonPayrollModule,
+        CommonUiImageInputModule,
+        OrgChartModule,
+    ],
 })
 export class WorkflowInboxListComponent extends BaseEntityListComponent<Inbox> implements OnInit {
     displayedColumns = [

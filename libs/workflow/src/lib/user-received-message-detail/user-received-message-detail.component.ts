@@ -3,7 +3,7 @@ import { BaseEntityDetailComponent } from "@ss/common/ui-base-entity";
 import { DocStatus, UserMessage } from "../workflow-api";
 import { DocStatusService } from "../doc-status.service";
 import { UserListService } from "@ss/common/api-users";
-import { DefaultAutoCompleteModel, UserLookup } from "@ss/common/ui-auto-complete";
+import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel, UserLookup } from '@ss/common/ui-auto-complete';
 import { UserMessageService } from "../user-message.service";
 import { ShellService, SnackBarService } from "@ss/common/ui-shell";
 import { ActivatedRoute } from "@angular/router";
@@ -11,11 +11,31 @@ import { UntypedFormBuilder, UntypedFormGroup, Validators } from "@angular/forms
 import { ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
 import { LookupsService } from "@ss/common/api-lookup";
 import { UserReceivedMessageService } from "../user-received-message.service";
+import { CommonModule } from '@angular/common';
+import { MaterialModule } from '@ss/common/api-common';
+import { UiPaginationModule } from '@ss/common/ui-pagination';
+import { CommonUiLangModule } from '@ss/common/ui-lang';
+import { RemunerationPaymonthEditorModule } from '@ss/remuneration/paymonth-editor';
+import { CommonPayrollModule } from '@ss/payroll-common';
+import { CommonUiImageInputModule } from '@ss/common/ui-image-input';
+import { OrgChartModule } from 'angular13-organization-chart';
 
 @Component({
     selector: 'ss-user-received-message-detail',
     templateUrl: '../user-message-detail/user-message-detail.component.html',
     styleUrls: ['../user-message-detail/user-message-detail.component.scss'],
+    standalone: true,
+    imports: [
+        CommonModule,
+        MaterialModule,
+        UiPaginationModule,
+        CommonUiLangModule,
+        CommonUiAutoCompleteModule,
+        RemunerationPaymonthEditorModule,
+        CommonPayrollModule,
+        CommonUiImageInputModule,
+        OrgChartModule,
+    ],
 })
 export class UserReceivedMessageDetailComponent  extends BaseEntityDetailComponent<UserMessage> {
     private messageSrv =  inject(DocStatusService);

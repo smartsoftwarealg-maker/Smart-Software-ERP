@@ -1,20 +1,38 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute, Router} from '@angular/router';
-import {UntypedFormControl} from '@angular/forms';
-import {HttpService, LanguageService, PaginatorPersistenceService} from '@ss/common/api-common';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
+import { ReactiveFormsModule, UntypedFormControl } from '@angular/forms';
+import { HttpService, LanguageService, MaterialModule, PaginatorPersistenceService } from '@ss/common/api-common';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {ArchiveDocument} from '../archive-document';
 import {KeepOnToolbar, ShellService, SnackBarService, ToolbarButton} from '@ss/common/ui-shell';
 import {LookupsService} from '@ss/common/api-lookup';
-import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
+import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import {ArchiveService} from '../archive.service';
 import {Observable, of} from 'rxjs';
+import { CommonModule } from '@angular/common';
+import { CommonUiLangModule } from '@ss/common/ui-lang';
+import { UiPaginationModule } from '@ss/common/ui-pagination';
+import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
+import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
+import { LogisticsUiStockInfoModule } from '@ss/logistics/ui-stock-info';
 
 @Component({
     selector: 'ss-archive-list',
     templateUrl: './archive-list.component.html',
-    styleUrls: ['./archive-list.component.css']
+    styleUrls: ['./archive-list.component.css'],
+    standalone: true,
+    imports: [
+        CommonModule,
+        MaterialModule,
+        CommonUiLangModule,
+        UiPaginationModule,
+        ReactiveFormsModule,
+        CommonUiConfirmationDialogModule,
+        RouterModule,
+        CommonUiDatepickerModule,
+        CommonUiAutoCompleteModule,
+        LogisticsUiStockInfoModule]
 })
 export class ArchiveListComponent extends BaseEntityListComponent<ArchiveDocument> implements OnInit {
     rights = {create: true, del: true, edit: true};

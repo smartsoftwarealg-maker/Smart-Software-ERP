@@ -1,34 +1,57 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {Observable, of} from 'rxjs';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Observable, of } from 'rxjs';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
+import { MaterialModule } from '@ss/common/api-common';
+import { CommonUiLangModule } from '@ss/common/ui-lang';
+import { UiPaginationModule } from '@ss/common/ui-pagination';
+import { ReactiveFormsModule } from '@angular/forms';
+import { CommonUiConfirmationDialogModule } from '@ss/common/ui-confirmation-dialog';
+import { RouterModule } from '@angular/router';
+import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
+import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
+import { LogisticsUiStockInfoModule } from '@ss/logistics/ui-stock-info';
 
 @Component({
-  selector: 'ss-archive-element',
-  templateUrl: './archive-element.component.html',
-  styleUrls: ['./archive-element.component.css']
+    selector: 'ss-archive-element',
+    templateUrl: './archive-element.component.html',
+    styleUrls: ['./archive-element.component.css'],
+    standalone: true,
+    imports: [
+        CommonModule,
+        MaterialModule,
+        CommonUiLangModule,
+        UiPaginationModule,
+        ReactiveFormsModule,
+        CommonUiConfirmationDialogModule,
+        RouterModule,
+        CommonUiDatepickerModule,
+        CommonUiAutoCompleteModule,
+        LogisticsUiStockInfoModule]
 })
 export class ArchiveElementComponent {
-  readonly MB = 1024 * 1024;
-  readonly KB = 1024;
-  @Input() description = '';
-  @Input() id = 0;
-  @Input() imgSrc: Observable<string> = of('./assets/img/Dummy.png');
-  @Output() selected = new EventEmitter<number>();
-  @Input() size = 0;
-  @Input() editDate = '2018-01-07 10:00:00';
-  @Input() checkSum: string = null;
-  defImage = of('./assets/img/Dummy.png');
+    readonly MB = 1024 * 1024;
+    readonly KB = 1024;
+    @Input() description = '';
+    @Input() id = 0;
+    @Input() imgSrc: Observable<string> = of('./assets/img/Dummy.png');
+    @Output() selected = new EventEmitter<number>();
+    @Input() size = 0;
+    @Input() editDate = '2018-01-07 10:00:00';
+    @Input() checkSum: string = null;
+    defImage = of('./assets/img/Dummy.png');
 
 
-  constructor(private sanitizer: DomSanitizer) {}
+    constructor(private sanitizer: DomSanitizer) {
+    }
 
-  onSelect() {
-    this.selected.emit(this.id);
-  }
+    onSelect() {
+        this.selected.emit(this.id);
+    }
 
-  docSize() {
-      return this.size > this.MB ? (this.size / this.MB).toFixed(2) + 'MB' :
-          this.size > this.KB ? (this.size / this.KB).toFixed(2) + 'KB' : this.size + 'B';
+    docSize() {
+        return this.size > this.MB ? (this.size / this.MB).toFixed(2) + 'MB' :
+            this.size > this.KB ? (this.size / this.KB).toFixed(2) + 'KB' : this.size + 'B';
 
-  }
+    }
 }

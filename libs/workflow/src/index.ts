@@ -1,4 +1,3 @@
-export * from './lib/workflow.module';
 export * from './lib/workflow-dialog/workflow-dialog.component';
 export * from './lib/doc-status-detail/doc-status-detail.component';
 export * from './lib/doc-status-list/doc-status-list.component';
