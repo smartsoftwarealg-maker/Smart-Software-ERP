@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {UserDocument} from '../workflow-api';
-import {DefaultAutoCompleteModel, UserLookup} from '@ss/common/ui-auto-complete';
+import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel, UserLookup } from '@ss/common/ui-auto-complete';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
 import {UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
@@ -10,11 +10,31 @@ import {LookupsService} from '@ss/common/api-lookup';
 import {UserListService} from '@ss/common/api-users';
 import {UserDocumentService} from '../user-document.service';
 import {DefinitionLookupService} from '@ss/logistics/document-numbering';
+import { CommonModule } from '@angular/common';
+import { MaterialModule } from '@ss/common/api-common';
+import { UiPaginationModule } from '@ss/common/ui-pagination';
+import { CommonUiLangModule } from '@ss/common/ui-lang';
+import { RemunerationPaymonthEditorModule } from '@ss/remuneration/paymonth-editor';
+import { CommonPayrollModule } from '@ss/payroll-common';
+import { CommonUiImageInputModule } from '@ss/common/ui-image-input';
+import { OrgChartModule } from 'angular13-organization-chart';
 
 @Component({
     selector: 'ss-user-document-detail',
     templateUrl: './user-document-detail.component.html',
     styleUrls: ['./user-document-detail.component.scss'],
+    standalone: true,
+    imports: [
+        CommonModule,
+        MaterialModule,
+        UiPaginationModule,
+        CommonUiLangModule,
+        CommonUiAutoCompleteModule,
+        RemunerationPaymonthEditorModule,
+        CommonPayrollModule,
+        CommonUiImageInputModule,
+        OrgChartModule,
+    ],
 })
 export class UserDocumentDetailComponent extends BaseEntityDetailComponent<UserDocument> {
     private usersSrv =  inject(UserListService);

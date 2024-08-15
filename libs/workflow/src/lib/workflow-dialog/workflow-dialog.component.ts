@@ -1,11 +1,19 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {UserMessageService} from '../user-message.service';
-import {LoginService} from '@ss/common/api-common';
+import { LoginService, MaterialModule } from '@ss/common/api-common';
 import { map, Observable, of, switchMap, tap } from "rxjs";
 import {MailBox, UserMessage} from '../workflow-api';
 import {MailBoxService} from '../mail-box.service';
 import {FormControl} from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { UiPaginationModule } from '@ss/common/ui-pagination';
+import { CommonUiLangModule } from '@ss/common/ui-lang';
+import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
+import { RemunerationPaymonthEditorModule } from '@ss/remuneration/paymonth-editor';
+import { CommonPayrollModule } from '@ss/payroll-common';
+import { CommonUiImageInputModule } from '@ss/common/ui-image-input';
+import { OrgChartModule } from 'angular13-organization-chart';
 
 type MBData = {
     amount: number;
@@ -18,6 +26,18 @@ type MBData = {
     selector: 'ss-workflow-dialog',
     templateUrl: './workflow-dialog.component.html',
     styleUrls: ['./workflow-dialog.component.scss'],
+    standalone: true,
+    imports: [
+        CommonModule,
+        MaterialModule,
+        UiPaginationModule,
+        CommonUiLangModule,
+        CommonUiAutoCompleteModule,
+        RemunerationPaymonthEditorModule,
+        CommonPayrollModule,
+        CommonUiImageInputModule,
+        OrgChartModule,
+    ],
 })
 export class WorkflowDialogComponent implements OnInit {
     canceled = new FormControl<boolean>(false);

@@ -1,19 +1,38 @@
-import {Component, HostBinding, OnInit, ViewChild} from '@angular/core';
-import {Observable} from 'rxjs';
-import {switchMap, tap} from 'rxjs/operators';
-import {UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
-import {ActivatedRoute, Router} from '@angular/router';
-import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
-import {Tag} from '../tag';
-import {Service, ServiceService} from '@ss/common/api-lookup';
-import {ShellService, SnackBarService} from '@ss/common/ui-shell';
-import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import {TagService} from '../tag-list/tag.service';
+import { Component, HostBinding, OnInit, ViewChild } from '@angular/core';
+import { Observable } from 'rxjs';
+import { switchMap, tap } from 'rxjs/operators';
+import { ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
+import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
+import { Tag } from '../tag';
+import { Service, ServiceService } from '@ss/common/api-lookup';
+import { ShellService, SnackBarService } from '@ss/common/ui-shell';
+import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
+import { TagService } from '../tag-list/tag.service';
+import { CommonModule } from '@angular/common';
+import { MaterialModule } from '@ss/common/api-common';
+import { CommonUiLangModule } from '@ss/common/ui-lang';
+import { UiPaginationModule } from '@ss/common/ui-pagination';
+import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
+import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
+import { LogisticsUiStockInfoModule } from '@ss/logistics/ui-stock-info';
 
 @Component({
-  selector: 'ss-tag-detail',
-  templateUrl: './tag-detail.component.html',
-  styleUrls: ['./tag-detail.component.css']
+    selector: 'ss-tag-detail',
+    templateUrl: './tag-detail.component.html',
+    styleUrls: ['./tag-detail.component.css'],
+    standalone: true,
+    imports: [
+        CommonModule,
+        MaterialModule,
+        CommonUiLangModule,
+        UiPaginationModule,
+        ReactiveFormsModule,
+        CommonUiConfirmationDialogModule,
+        RouterModule,
+        CommonUiDatepickerModule,
+        CommonUiAutoCompleteModule,
+        LogisticsUiStockInfoModule]
 })
 export class TagDetailComponent extends BaseEntityDetailComponent<Tag> {
 

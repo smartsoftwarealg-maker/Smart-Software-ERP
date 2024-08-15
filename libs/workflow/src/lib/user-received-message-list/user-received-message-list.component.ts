@@ -1,20 +1,39 @@
 import { Component, inject } from '@angular/core';
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { UserMessage } from '../workflow-api';
-import { LoginService, PaginatorPersistenceService } from '@ss/common/api-common';
+import { LoginService, MaterialModule, PaginatorPersistenceService } from '@ss/common/api-common';
 import { UserListService } from '@ss/common/api-users';
 import { FormControl } from '@angular/forms';
-import { UserLookup } from '@ss/common/ui-auto-complete';
+import { CommonUiAutoCompleteModule, UserLookup } from '@ss/common/ui-auto-complete';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DefaultReportService } from '@ss/common/ui-default-report-component';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { UserReceivedMessageService } from '../user-received-message.service';
+import { CommonModule } from '@angular/common';
+import { UiPaginationModule } from '@ss/common/ui-pagination';
+import { CommonUiLangModule } from '@ss/common/ui-lang';
+import { RemunerationPaymonthEditorModule } from '@ss/remuneration/paymonth-editor';
+import { CommonPayrollModule } from '@ss/payroll-common';
+import { CommonUiImageInputModule } from '@ss/common/ui-image-input';
+import { OrgChartModule } from 'angular13-organization-chart';
 
 @Component({
     selector: 'ss-user-received-message-list',
     templateUrl: '../user-message-list/user-message-list.component.html',
     styleUrls: ['../user-message-list/user-message-list.component.scss'],
+    standalone: true,
+    imports: [
+        CommonModule,
+        MaterialModule,
+        UiPaginationModule,
+        CommonUiLangModule,
+        CommonUiAutoCompleteModule,
+        RemunerationPaymonthEditorModule,
+        CommonPayrollModule,
+        CommonUiImageInputModule,
+        OrgChartModule,
+    ],
 })
 export class UserReceivedMessageListComponent  extends BaseEntityListComponent<UserMessage> {
     private loginSrv  = inject(LoginService);

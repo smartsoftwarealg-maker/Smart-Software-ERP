@@ -1,15 +1,35 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute, Router} from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import {switchMap} from 'rxjs/operators';
 import {ArchiveService} from '../archive.service';
 import {of} from 'rxjs';
 import {ShellService} from '@ss/common/ui-shell';
-import {LanguageService} from '@ss/common/api-common';
+import { LanguageService, MaterialModule } from '@ss/common/api-common';
+import { CommonModule } from '@angular/common';
+import { CommonUiLangModule } from '@ss/common/ui-lang';
+import { UiPaginationModule } from '@ss/common/ui-pagination';
+import { ReactiveFormsModule } from '@angular/forms';
+import { CommonUiConfirmationDialogModule } from '@ss/common/ui-confirmation-dialog';
+import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
+import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
+import { LogisticsUiStockInfoModule } from '@ss/logistics/ui-stock-info';
 
 @Component({
     selector: 'ss-archive-viewer',
     templateUrl: './archive-viewer.component.html',
-    styleUrls: ['./archive-viewer.component.css']
+    styleUrls: ['./archive-viewer.component.css'],
+    standalone: true,
+    imports: [
+        CommonModule,
+        MaterialModule,
+        CommonUiLangModule,
+        UiPaginationModule,
+        ReactiveFormsModule,
+        CommonUiConfirmationDialogModule,
+        RouterModule,
+        CommonUiDatepickerModule,
+        CommonUiAutoCompleteModule,
+        LogisticsUiStockInfoModule]
 })
 export class ArchiveViewerComponent implements OnInit {
     imgSrc: string = null;

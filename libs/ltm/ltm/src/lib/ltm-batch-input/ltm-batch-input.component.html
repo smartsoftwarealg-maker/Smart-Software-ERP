@@ -20,7 +20,7 @@
                 </mat-error>
             </mat-form-field>
 
-            @if (testingMode() === CHEMICAL_TEST || testingMode() === DEPOSIT_TEST) {
+            @if (testingMode() !== PHYSICAL_TEST) {
                 <mat-form-field class="hour">
                     <mat-label translate>COMMON_HOURS</mat-label>
                     <input matInput formControlName="hour" type="number" min="0" max="23" class="hour_input">
@@ -51,15 +51,16 @@
                     <input matInput formControlName="sampleNo" type="text" min="3">
                 </mat-form-field>
 
-            } @else if (testingMode() === RAW_MATERIAL_TEST) {
-                <mat-form-field class="default-100">
-                    <mat-label translate>LTM_SUPPLIER</mat-label>
-                    <ss-auto-complete matInput
-                                      [model]="supplierLookup"
-                                      formControlName="supplier">
-                    </ss-auto-complete>
-                </mat-form-field>
             }
+<!--            @else if (testingMode() === RAW_MATERIAL_TEST) {-->
+<!--                <mat-form-field class="default-100">-->
+<!--                    <mat-label translate>LTM_SUPPLIER</mat-label>-->
+<!--                    <ss-auto-complete matInput-->
+<!--                                      [model]="supplierLookup"-->
+<!--                                      formControlName="supplier">-->
+<!--                    </ss-auto-complete>-->
+<!--                </mat-form-field>-->
+<!--            }-->
             <!--            @else if (testingMode() === DEPOSIT_TEST) {-->
             <!--                <mat-form-field class="default-100">-->
             <!--                    <mat-label translate>LTM_BLEACHER</mat-label>-->

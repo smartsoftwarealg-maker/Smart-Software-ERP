@@ -1,22 +1,40 @@
 import { Component, ElementRef, inject, OnInit, ViewChild } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { FormBuilder, UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
+import { FormBuilder, ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { ArchiveService } from '../archive.service';
 import { switchMap, tap } from 'rxjs/operators';
 import { ArchiveDocument, Lookup, UPDocInfo } from '../archive-document';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ServiceService } from '@ss/common/api-lookup';
-import { LanguageService, LoginService } from '@ss/common/api-common';
+import { LanguageService, LoginService, MaterialModule } from '@ss/common/api-common';
 import { AgentLookupModel, AgentService } from '@ss/logistics/api-agent';
 import { ShellService } from '@ss/common/ui-shell';
-import { DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
+import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
 import { Tag } from '../tags/tag';
 import { MatSelectionList } from '@angular/material/list';
+import { CommonModule } from '@angular/common';
+import { CommonUiLangModule } from '@ss/common/ui-lang';
+import { UiPaginationModule } from '@ss/common/ui-pagination';
+import { CommonUiConfirmationDialogModule } from '@ss/common/ui-confirmation-dialog';
+import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
+import { LogisticsUiStockInfoModule } from '@ss/logistics/ui-stock-info';
 
 @Component({
     selector: 'ss-archive-detail',
     templateUrl: './archive-detail.component.html',
-    styleUrls: ['./archive-detail.component.css']
+    styleUrls: ['./archive-detail.component.css'],
+    standalone: true,
+    imports: [
+        CommonModule,
+        MaterialModule,
+        CommonUiLangModule,
+        UiPaginationModule,
+        ReactiveFormsModule,
+        CommonUiConfirmationDialogModule,
+        RouterModule,
+        CommonUiDatepickerModule,
+        CommonUiAutoCompleteModule,
+        LogisticsUiStockInfoModule]
 })
 export class ArchiveDetailComponent implements OnInit {
     private service = inject( ArchiveService);
