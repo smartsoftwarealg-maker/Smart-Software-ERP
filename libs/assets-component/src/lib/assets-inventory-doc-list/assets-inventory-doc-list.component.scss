@@ -1,0 +1,45 @@
+mat-table {
+    min-width: 900px;
+}
+
+.container {
+    width: 96%;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.container_div {
+    height: calc(100% - 96px);
+    flex-grow: 1;
+    overflow-y: auto;
+    margin-top: 4px;
+}
+
+.pagination-container {
+    flex-grow: 0;
+}
+
+.content-div {
+    width: 1400px;
+}
+
+.sold {
+    opacity: 60%;
+}
+
+.mat-column-creationDate,
+.mat-column-officeDescription,
+.mat-column-buildingDescription,
+.mat-column-locationDescription,
+.mat-column-beneficiary {
+    flex: 1 1 150px;
+}
+
+.mat-column-closed {
+    flex: 1 1 90px;
+}
+
+.mat-column-description {
+    flex: 3 1 200px;
+}
+

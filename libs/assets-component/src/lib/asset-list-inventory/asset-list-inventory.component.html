@@ -1,16 +1,23 @@
 <mat-card>
     <div class="container__div">
         <mat-form-field>
-            <mat-label translate>COMMON_OFFICE</mat-label>
+            <mat-label translate>ASSET_INVENTORY_DOC</mat-label>
             <ss-auto-complete matInput
-                              [model]="officeLookup"
-                              [formControl]="officeCtrl">
+                              [model]="inventoryDocLookup"
+                              [formControl]="inventoryDoc">
             </ss-auto-complete>
         </mat-form-field>
-        <button mat-mini-fab (click)="openSearchDlg()" type="button">
-            <i class="fa-solid fa-file-magnifying-glass"></i>
-        </button>
-    </div>
+            <mat-form-field>
+                <mat-label translate>COMMON_OFFICE</mat-label>
+                <ss-auto-complete matInput
+                                  [model]="officeLookup"
+                                  [formControl]="officeCtrl">
+                </ss-auto-complete>
+            </mat-form-field>
+            <button mat-mini-fab (click)="openSearchDlg()" type="button">
+                <i class="fa-solid fa-file-magnifying-glass"></i>
+            </button>
+        </div>
 </mat-card>
 <div class="table__div container">
     <mat-table mat-table [dataSource]="data" class="main-table" matSort (matSortChange)="sort($event)">
@@ -37,7 +44,8 @@
         </ng-container>
 
         <ng-container matColumnDef="recorded">
-            <mat-header-cell *matHeaderCellDef translate><i class="fa-solid fa-location-question located"></i></mat-header-cell>
+            <mat-header-cell *matHeaderCellDef translate><i class="fa-solid fa-location-question located"></i>
+            </mat-header-cell>
             <mat-cell *matCellDef="let e">
 
                 <mat-checkbox [checked]="(e.inventoryId||0) > 0" (click)="update(e)"></mat-checkbox>

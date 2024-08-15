@@ -30,7 +30,13 @@ import {
     ASSETS_SEARCH_URL,
     ASSETS_INJECTION_URL,
     ASSETS_DEPRECIATION_URL,
-    COMMON_MARKS_URL, docInfoRoutes, DASHBOARD_URL, ASSET_TRANSFER_URL, CMMS_ASSET_TREE, ASSET_QR_INVENTORY_URL
+    COMMON_MARKS_URL,
+    docInfoRoutes,
+    DASHBOARD_URL,
+    ASSET_TRANSFER_URL,
+    CMMS_ASSET_TREE,
+    ASSET_QR_INVENTORY_URL,
+    ASSET_INVENTORY_DOC_URL
 } from '../common';
 import {
     AssetCostsDetailComponent,
@@ -90,6 +96,12 @@ import {
 import {DashboardComponent} from '@ss/dashboard';
 import {loginGuard} from '../erp-guards';
 import { AGENT_ARCHIVES, ASSET_ARCHIVES, ASSET_RECEPTIONS_ARCHIVES } from '@ss/common/app-archive';
+import {
+    AssetsInventoryDocListComponent
+} from '@ss/assets-component';
+import {
+    AssetsInventoryDocDetailComponent
+} from '@ss/assets-component';
 
 export const mainRoutes: Routes = [
     {
@@ -544,6 +556,25 @@ export const mainRoutes: Routes = [
             {
                 path: ':id',
                 component: AssetAccountsDetailComponent,
+                canActivate: [loginGuard],
+                canDeactivate: [CanDeactivateService]
+            },
+            {path: '', redirectTo: LIST_URL, pathMatch: 'full'},
+            {path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full'}
+        ]
+    },
+
+    {
+        path: ASSET_INVENTORY_DOC_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: AssetsInventoryDocListComponent,
+                canActivate: [loginGuard]
+            },
+            {
+                path: ':id',
+                component: AssetsInventoryDocDetailComponent,
                 canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService]
             },

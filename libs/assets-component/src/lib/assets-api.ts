@@ -10,6 +10,7 @@ export const COST_URL = '/costs';
 export const ATTRIBUTE_URL = '/attributes';
 export const LOCATIONS_URL = '/locations';
 export const BLOCKING_URL = '/blocking';
+export const INVENTORY_DOC_URL = '/inventory-docs';
 export const REVALUATION_URL = '/revaluations';
 export const COST_TYPE_URL = '/lookups/invest_costtypes';
 export const BLOCKING_TYPE_URL = '/lookups/blocking_types';
@@ -307,5 +308,29 @@ export interface InventoryAsset {
     status?: number;
     date?: Date;
     inventoryId?: number;
+    officeDescription?: string;
+}
+
+export interface AssetInventoryDoc {
+    id: number;
+    centerId: number;
+    inventoryYear: number;
+    creationDate: Date;
+    description: string;
+    userId: number;
+    accountNo?: string;
+    minValue: number;
+    maxValue: number;
+    buildingId?: number;
+    locationId?: number;
+    officeId?: number;
+    classId?: number;
+    beneficiary?: number;
+    receptionNo?: string;
+    closed: boolean;
+    userDescription?: string;
+    beneficiaryDescription?: string;
+    buildingDescription?: string;
+    locationDescription?: string;
     officeDescription?: string;
 }

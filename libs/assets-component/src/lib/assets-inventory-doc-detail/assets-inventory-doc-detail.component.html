@@ -1,0 +1,85 @@
+@if (form !== null) {
+    <mat-card>
+        <form novalidate [formGroup]="form">
+
+            <mat-form-field id="description" class="default-50 sm-100">
+                <mat-label translate>ADMINISTRATION_DESCRIPTION</mat-label>
+                <input matInput formControlName="description" type="text" required>
+                @if (form.controls['description'].invalid) {
+                    <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+                }
+            </mat-form-field>
+
+
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>LOGISTICS_ACCOUNT_NO</mat-label>
+                <ss-auto-complete matInput
+                                  [model]="accountLookup"
+                                  required
+                                  formControlName="accountNo">
+                </ss-auto-complete>
+            </mat-form-field>
+
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>ASSET_SITE</mat-label>
+                <ss-auto-complete matInput
+                                  [model]="locationLookup"
+                                  formControlName="locationId">
+                </ss-auto-complete>
+            </mat-form-field>
+
+
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>ASSET_BUILDINGS</mat-label>
+                <ss-auto-complete matInput
+                                  [model]="buildingLookup"
+                                  formControlName="buildingId">
+                </ss-auto-complete>
+            </mat-form-field>
+
+
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>ASSET_LOCATIONS</mat-label>
+                <ss-auto-complete matInput
+                                  [model]="officeLookup"
+                                  formControlName="officeId">
+                </ss-auto-complete>
+            </mat-form-field>
+
+
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>ASSET_BENEFICIARY</mat-label>
+                <ss-auto-complete matInput
+                                  [model]="beneficiaryLookup"
+                                  formControlName="beneficiary">
+                </ss-auto-complete>
+            </mat-form-field>
+
+
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>COMMON_CLASS</mat-label>
+                <ss-auto-complete matInput
+                                  [model]="classLookup"
+                                  formControlName="classId">
+                </ss-auto-complete>
+            </mat-form-field>
+
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>ASSET_MIN_VALUE</mat-label>
+                <input matInput formControlName="minValue" type="number" required>
+                @if (form.controls['minValue'].invalid) {
+                    <mat-error translate>COMMON_MIN_VALUE</mat-error>
+                }
+            </mat-form-field>
+
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>ASSET_MAX_VALUE</mat-label>
+                <input matInput formControlName="maxValue" type="number" required>
+                @if (form.controls['maxValue'].invalid) {
+                    <mat-error translate>COMMON_MIN_VALUE</mat-error>
+                }
+            </mat-form-field>
+
+        </form>
+    </mat-card>
+}

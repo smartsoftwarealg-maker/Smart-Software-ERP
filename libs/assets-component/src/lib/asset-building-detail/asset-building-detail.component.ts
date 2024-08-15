@@ -1,20 +1,43 @@
 import { Component, inject } from "@angular/core";
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
-import { ActivatedRoute, Router } from "@angular/router";
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import {UntypedFormBuilder, Validators} from '@angular/forms';
-import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
+import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import {LookupsService} from '@ss/common/api-lookup';
 import {AssetBuilding} from '../assets-api';
 import {AssetsBuildingService} from '../services/assets-building.service';
-import {CodeDescriptionAutoCompleteModel} from '@ss/common/ui-auto-complete';
+import { CodeDescriptionAutoCompleteModel, CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
 import {AssetLocationService} from '../services/asset-location.service';
+import { CommonModule } from '@angular/common';
+import { MaterialModule } from '@ss/common/api-common';
+import { CommonUiLangModule } from '@ss/common/ui-lang';
+import { CommonUiImageInputModule } from '@ss/common/ui-image-input';
+import { UiPaginationModule } from '@ss/common/ui-pagination';
+import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
+import { CustomAttributesModule } from '@ss/custom-attributes';
+import { AppArchiveModule } from '@ss/common/app-archive';
+import { QRCodeModule } from 'angularx-qrcode';
 
 @Component({
   selector: 'ss-asset-building-detail',
   templateUrl: './asset-building-detail.component.html',
-  styleUrls: ['./asset-building-detail.component.scss']
-})
+  styleUrls: ['./asset-building-detail.component.scss'],
+  standalone: true,
+    imports: [
+        CommonModule,
+        MaterialModule,
+        CommonUiLangModule,
+        CommonUiImageInputModule,
+        UiPaginationModule,
+        CommonUiConfirmationDialogModule,
+        CommonUiAutoCompleteModule,
+        CommonUiDatepickerModule,
+        RouterModule,
+        CustomAttributesModule,
+        AppArchiveModule,
+        QRCodeModule
+    ]})
 export class AssetBuildingDetailComponent extends BaseEntityDetailComponent<AssetBuilding> {
     private router = inject(Router);
     private locationSrv = inject(AssetLocationService);

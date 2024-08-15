@@ -346,5 +346,6 @@
     "RECORDED":                   "Saisie",
     "INVENTORYING":               "Inventaire",
     "INVENTORY2":                 "Inventaire CB",
-    "OTHER":                      "Autre"
+    "OTHER":                      "Autre",
+    "CLOSED":                     "Clôturée"
 }

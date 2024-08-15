@@ -1,17 +1,41 @@
 import { Component, inject, Input, OnInit } from "@angular/core";
 import {finalize, Subscription} from 'rxjs';
-import {ActivatedRoute, Router} from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {HttpEventType} from '@angular/common/http';
 import {AssetsService} from '../services/assets.service';
 import {UntypedFormBuilder, Validators} from '@angular/forms';
-import {UserRightsService} from '@ss/common/api-common';
+import { MaterialModule, UserRightsService } from '@ss/common/api-common';
+import { CommonModule } from '@angular/common';
+import { CommonUiLangModule } from '@ss/common/ui-lang';
+import { CommonUiImageInputModule } from '@ss/common/ui-image-input';
+import { UiPaginationModule } from '@ss/common/ui-pagination';
+import { CommonUiConfirmationDialogModule } from '@ss/common/ui-confirmation-dialog';
+import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
+import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
+import { CustomAttributesModule } from '@ss/custom-attributes';
+import { AppArchiveModule } from '@ss/common/app-archive';
+import { QRCodeModule } from 'angularx-qrcode';
 
 @Component({
     selector: 'ss-asset-excel-injection',
     templateUrl: './asset-excel-injection.component.html',
-    styleUrls: ['./asset-excel-injection.component.scss']
-})
+    styleUrls: ['./asset-excel-injection.component.scss'],
+    standalone: true,
+    imports: [
+        CommonModule,
+        MaterialModule,
+        CommonUiLangModule,
+        CommonUiImageInputModule,
+        UiPaginationModule,
+        CommonUiConfirmationDialogModule,
+        CommonUiAutoCompleteModule,
+        CommonUiDatepickerModule,
+        RouterModule,
+        CustomAttributesModule,
+        AppArchiveModule,
+        QRCodeModule
+    ]})
 export class AssetExcelInjectionComponent implements OnInit {
     private fb = inject(UntypedFormBuilder);
     columns = [' ', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T',

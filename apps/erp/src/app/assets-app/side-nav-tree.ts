@@ -21,7 +21,11 @@ import {
     ABS_ASSET_STATUS_TYPES,
     ABS_ASSETS_AGENT_URL,
     ABS_ASSET_MARKS_URL,
-    ABS_ASSET_DASHBOARD_URL, ABS_ASSET_TRANSFER_URL, ABS_ASSETS_TREE_URL, ABS_BC_ASSET_INVENTORY_URL
+    ABS_ASSET_DASHBOARD_URL,
+    ABS_ASSET_TRANSFER_URL,
+    ABS_ASSETS_TREE_URL,
+    ABS_BC_ASSET_INVENTORY_URL,
+    ABS_ASSETS_INVENTORY_DOC
 } from '../common';
 
 export const assetsNavTree: SideNavNode = {
@@ -148,6 +152,12 @@ export const assetsNavTree: SideNavNode = {
             icon: 'fa-solid fa-scanner-gun',
             route: ABS_ASSET_INVENTORY_URL,
             accessRights: 'AssetInventory'
+        },
+        {
+            name: 'ASSET_INVENTORY_DOCUMENT',
+            icon: 'fa-solid fa-file-spreadsheet',
+            route: ABS_ASSETS_INVENTORY_DOC,
+            accessRights: 'AssetInventoryDoc'
         },
         {
             name: 'COMMON_INVENTORY2',

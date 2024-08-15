@@ -1,23 +1,45 @@
 import { Component, inject, OnInit } from '@angular/core';
 import {BaseChildEntityDetailComponent, BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {Blocking} from '../assets-api';
-import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
+import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
-import {ActivatedRoute} from '@angular/router';
+import { ActivatedRoute, RouterModule } from '@angular/router';
 import {UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
-import {HttpService} from '@ss/common/api-common';
-import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
+import { HttpService, MaterialModule } from '@ss/common/api-common';
+import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import {LookupsService} from '@ss/common/api-lookup';
 import {Observable} from 'rxjs';
 import {switchMap} from 'rxjs/operators';
 import {AssetBlockingService} from '../services/asset-blocking.service';
 import {AssetBlockingTypeService} from '../services/asset-blocking-type.service';
+import { CommonModule } from '@angular/common';
+import { CommonUiLangModule } from '@ss/common/ui-lang';
+import { CommonUiImageInputModule } from '@ss/common/ui-image-input';
+import { UiPaginationModule } from '@ss/common/ui-pagination';
+import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
+import { CustomAttributesModule } from '@ss/custom-attributes';
+import { AppArchiveModule } from '@ss/common/app-archive';
+import { QRCodeModule } from 'angularx-qrcode';
 
 @Component({
     selector: 'ss-asset-blocking-detail',
     templateUrl: './asset-blocking-detail.component.html',
-    styleUrls: ['./asset-blocking-detail.component.scss']
-})
+    styleUrls: ['./asset-blocking-detail.component.scss'],
+    standalone: true,
+    imports: [
+        CommonModule,
+        MaterialModule,
+        CommonUiLangModule,
+        CommonUiImageInputModule,
+        UiPaginationModule,
+        CommonUiConfirmationDialogModule,
+        CommonUiAutoCompleteModule,
+        CommonUiDatepickerModule,
+        RouterModule,
+        CustomAttributesModule,
+        AppArchiveModule,
+        QRCodeModule
+    ]})
 export class AssetBlockingDetailComponent extends BaseChildEntityDetailComponent<Blocking> implements OnInit {
     private typeLookupSrv = inject(AssetBlockingTypeService);
     typeLookup = new DefaultAutoCompleteModel(this.typeLookupSrv);

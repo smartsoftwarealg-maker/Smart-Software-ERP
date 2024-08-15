@@ -2,9 +2,9 @@ import {Component, inject, Input, OnInit} from "@angular/core";
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {Asset, AssetReception, Depreciation, OfficeAutoComplete} from '../assets-api';
 import {KeepOnToolbar, ShellService, SnackBarService, ToolbarButton} from '@ss/common/ui-shell';
-import {ActivatedRoute, Router} from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import {UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
-import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
+import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import {
     FurnitureStatusService,
     Lookup,
@@ -14,14 +14,13 @@ import {
     OfficeService
 } from '@ss/common/api-lookup';
 import {AssetsService} from '../services/assets.service';
-import {IsParamService, LoginService} from '@ss/common/api-common';
-import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
+import { IsParamService, LoginService, MaterialModule } from '@ss/common/api-common';
+import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
 import {Agent, AgentService, ConsumerService, CustomerService, SupplierService} from "@ss/logistics/api-agent";
 import {MatExpansionPanel} from '@angular/material/expansion';
 import {Account, AccountAutocompleteModel, AccountService} from '@ss/accounting/api-accounts';
 import {debounceTime, distinctUntilChanged, map, switchMap, tap} from 'rxjs/operators';
 import {Observable} from 'rxjs';
-import {AssetLocationService} from '../services/asset-location.service';
 import {AssetEndsService} from '@ss/accounting/accounting-api';
 import {MatDialog} from '@angular/material/dialog';
 import {AssetSearchDialogComponent} from '../asset-search-dialog/asset-search-dialog.component';
@@ -34,17 +33,39 @@ import {
     AGENT_ARCHIVES,
     AppArchiveService,
     ASSET_ARCHIVES,
-    ARCHIVE_ROUTE_URL
-} from "@ss/common/app-archive";
+    ARCHIVE_ROUTE_URL, AppArchiveModule
+} from '@ss/common/app-archive';
 import {AssetCostsService} from "../services/asset-costs.service";
 import {AssetRevaluationService} from "../services/asset-revaluation.service";
 import {AssetBlockingService} from "../services/asset-blocking.service";
 import {DepreciationRateService} from "../services/depreciation-rate.service";
+import { CommonModule } from '@angular/common';
+import { CommonUiLangModule } from '@ss/common/ui-lang';
+import { CommonUiImageInputModule } from '@ss/common/ui-image-input';
+import { UiPaginationModule } from '@ss/common/ui-pagination';
+import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
+import { CustomAttributesModule } from '@ss/custom-attributes';
+import { QRCodeModule } from 'angularx-qrcode';
 
 @Component({
     selector: 'ss-assets-detail',
     templateUrl: './assets-detail.component.html',
-    styleUrls: ['./assets-detail.component.scss']
+    styleUrls: ['./assets-detail.component.scss'],
+    standalone: true,
+    imports: [
+        CommonModule,
+        MaterialModule,
+        CommonUiLangModule,
+        CommonUiImageInputModule,
+        UiPaginationModule,
+        CommonUiConfirmationDialogModule,
+        CommonUiAutoCompleteModule,
+        CommonUiDatepickerModule,
+        RouterModule,
+        CustomAttributesModule,
+        AppArchiveModule,
+        QRCodeModule
+    ]
 })
 export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> implements OnInit {
     // Private
