@@ -17,7 +17,6 @@ import { DocumentSourcesComponent } from 'logistics/ui-document-sources';
 // common
 export const LOOKUPS_URL = 'lookups';
 export const COMMON_ACCOUNT_URL     = 'accounts';
-export const ASSET_ACCOUNT_URL      = 'asset-accounts';
 export const TRANSAC_ACCOUNT_URL    = 'transac-accounts';
 export const GENERATION_ACCOUNT_URL = 'generation-accounts';
 export const STOCK_ACCOUNT_URL      = 'stock-accounts';
@@ -298,6 +297,8 @@ export const ASSET_RECEPTIONS_URL        = 'asset-receptions';
 export const ASSETS_APPOINTMENTS_DOC_URL = 'asset-appointments';
 export const ASSETS_AGENT_URL            = 'agents';
 export const ASSET_BUILDING_URL          = 'buildings';
+export const ASSET_ACCOUNT_URL           = 'asset-accounts';
+export const ASSET_INVENTORY_DOC_URL     = 'inventory-docs';
 
 // Scheduled sales
 export const SS_PROJECTS_URL             = 'ss_projects';
@@ -825,6 +826,7 @@ export const ABS_ASSET_MARKS_URL     = '/' + [MAIN_PAGE_URL, ASSETS_APP_URL, COM
 export const ABS_ASSET_STATUS_TYPES  = '/' + [MAIN_PAGE_URL, ASSETS_APP_URL, FURNITURE_STATUS_URL].join('/');
 export const ABS_ASSET_DASHBOARD_URL = '/' + [MAIN_PAGE_URL, ASSETS_APP_URL, DASHBOARD_URL].join('/');
 export const ABS_ASSETS_TREE_URL = '/' + [MAIN_PAGE_URL, ASSETS_APP_URL, CMMS_ASSET_TREE].join('/');
+export const ABS_ASSETS_INVENTORY_DOC = '/' + [MAIN_PAGE_URL, ASSETS_APP_URL, ASSET_INVENTORY_DOC_URL].join('/');
 
 // sales
 export const ABS_SALES_DELIVERY_URL = '/' + [MAIN_PAGE_URL, SALES_APP_URL, SALES_DELIVERY_URL].join('/');

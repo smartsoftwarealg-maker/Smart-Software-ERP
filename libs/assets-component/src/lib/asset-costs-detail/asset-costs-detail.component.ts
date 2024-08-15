@@ -2,22 +2,44 @@ import { Component, inject, OnInit } from '@angular/core';
 import {BaseChildEntityDetailComponent, BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {AssetCost} from '../assets-api';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
-import {ActivatedRoute} from '@angular/router';
+import { ActivatedRoute, RouterModule } from '@angular/router';
 import {UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
-import {HttpService} from '@ss/common/api-common';
-import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
+import { HttpService, MaterialModule } from '@ss/common/api-common';
+import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import {LookupsService} from '@ss/common/api-lookup';
 import {AssetCostsService} from '../services/asset-costs.service';
 import {Observable} from 'rxjs';
 import {switchMap} from 'rxjs/operators';
-import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
+import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
 import {AssetCostsTypeService} from '../services/asset-costs-type.service';
+import { CommonModule } from '@angular/common';
+import { CommonUiLangModule } from '@ss/common/ui-lang';
+import { CommonUiImageInputModule } from '@ss/common/ui-image-input';
+import { UiPaginationModule } from '@ss/common/ui-pagination';
+import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
+import { CustomAttributesModule } from '@ss/custom-attributes';
+import { AppArchiveModule } from '@ss/common/app-archive';
+import { QRCodeModule } from 'angularx-qrcode';
 
 @Component({
     selector: 'ss-asset-costs-detail',
     templateUrl: './asset-costs-detail.component.html',
-    styleUrls: ['./asset-costs-detail.component.scss']
-})
+    styleUrls: ['./asset-costs-detail.component.scss'],
+    standalone: true,
+    imports: [
+        CommonModule,
+        MaterialModule,
+        CommonUiLangModule,
+        CommonUiImageInputModule,
+        UiPaginationModule,
+        CommonUiConfirmationDialogModule,
+        CommonUiAutoCompleteModule,
+        CommonUiDatepickerModule,
+        RouterModule,
+        CustomAttributesModule,
+        AppArchiveModule,
+        QRCodeModule
+    ]})
 export class AssetCostsDetailComponent extends BaseChildEntityDetailComponent<AssetCost> implements OnInit {
     private costTypeLookupSrv =  inject(AssetCostsTypeService);
     private formBuilder = inject(UntypedFormBuilder);

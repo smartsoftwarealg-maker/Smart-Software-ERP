@@ -343,5 +343,6 @@
     "RECORDED":                   "Recorded",
     "INVENTORYING":               "inventory",
     "INVENTORY2":                 "BC inventory",
-    "OTHER":                      "Other"
+    "OTHER":                      "Other",
+    "CLOSED":                     "Closed"
 }

@@ -43,7 +43,9 @@
                           required
                           formControlName="accountId">
         </ss-auto-complete>
-        <mat-error *ngIf="form.controls['accountId'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
+        @if (form.controls['accountId'].invalid) {
+            <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+        }
     </mat-form-field>
 
     <div class="default-50 sm-100">

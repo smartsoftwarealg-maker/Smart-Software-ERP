@@ -1,18 +1,41 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {SnackBarService} from '@ss/common/ui-shell';
-import {ActivatedRoute, Router} from '@angular/router';
-import {LanguageService, PaginationModel} from '@ss/common/api-common';
-import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
+import { LanguageService, MaterialModule, PaginationModel } from '@ss/common/api-common';
+import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import {AssetCostsService} from '../services/asset-costs.service';
 import {AssetCost} from '../assets-api';
 import {of, switchMap} from 'rxjs';
+import { CommonModule } from '@angular/common';
+import { CommonUiLangModule } from '@ss/common/ui-lang';
+import { CommonUiImageInputModule } from '@ss/common/ui-image-input';
+import { UiPaginationModule } from '@ss/common/ui-pagination';
+import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
+import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
+import { CustomAttributesModule } from '@ss/custom-attributes';
+import { AppArchiveModule } from '@ss/common/app-archive';
+import { QRCodeModule } from 'angularx-qrcode';
 
 @Component({
     selector: 'ss-asset-costs-list',
     templateUrl: './asset-costs-list.component.html',
-    styleUrls: ['./asset-costs-list.component.scss']
-})
+    styleUrls: ['./asset-costs-list.component.scss'],
+    standalone: true,
+    imports: [
+        CommonModule,
+        MaterialModule,
+        CommonUiLangModule,
+        CommonUiImageInputModule,
+        UiPaginationModule,
+        CommonUiConfirmationDialogModule,
+        CommonUiAutoCompleteModule,
+        CommonUiDatepickerModule,
+        RouterModule,
+        CustomAttributesModule,
+        AppArchiveModule,
+        QRCodeModule
+    ]})
 export class AssetCostsListComponent implements OnInit {
     @Input() editable = true;
     selected = 0;

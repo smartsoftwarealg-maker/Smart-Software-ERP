@@ -342,5 +342,6 @@
     "RECORDED":                   "مسجل",
     "INVENTORYING":               "جرد",
     "INVENTORY2":                 "جرد 2",
-    "OTHER":                      "اخرى"
+    "OTHER":                      "اخرى",
+    "CLOSED":                     "مغلق"
 }

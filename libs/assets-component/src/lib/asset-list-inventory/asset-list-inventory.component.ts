@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
-import { InventoryAsset } from '../assets-api';
+import { AssetInventoryDoc, InventoryAsset } from '../assets-api';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
@@ -20,6 +20,7 @@ import { FormControl } from '@angular/forms';
 import { AssetListInventoryService } from '../services/asset-list-inventory.service';
 import { OfficeSearchComponent } from '../office-search/office-search.component';
 import { MatDialog } from '@angular/material/dialog';
+import { AssetInventoryDocService } from '../services/asset-inventory-doc.service';
 
 @Component({
     selector: 'ss-asset-list-inventory',
@@ -44,9 +45,14 @@ import { MatDialog } from '@angular/material/dialog';
 export class AssetListInventoryComponent extends BaseEntityListComponent<InventoryAsset> {
     private dialog = inject(MatDialog);
     private officeSrv = inject(OfficeService);
+    private inventoryDocSrv = inject(AssetInventoryDocService);
 
-    officeLookup      = new DefaultAutoCompleteModel(this.officeSrv);
-    officeCtrl = new FormControl<number>(0);
+    officeLookup       = new DefaultAutoCompleteModel(this.officeSrv);
+    inventoryDocLookup = new DefaultAutoCompleteModel(this.inventoryDocSrv);
+
+    officeCtrl   = new FormControl<number>(0);
+    inventoryDoc = new FormControl<number>(0);
+
     displayedColumns = [
         'reference',
         'description',
@@ -71,11 +77,17 @@ export class AssetListInventoryComponent extends BaseEntityListComponent<Invento
             pagPersistSrv,
             'INVENTORY');
         this.pagination.pageSize = 10;
-        this.officeLookup.onObjectSelected = e => this.refreshData(e);
+        this.officeLookup.onObjectSelected = e => this.onOffice(e);
+        this.inventoryDocLookup.onObjectSelected = d => this.onDocument(d);
     }
 
-    private refreshData(o: Office) {
+    private onOffice(o: Office) {
         this.listSrv.setParentId(o.id||0);
+        this.refresh();
+    }
+
+    private onDocument(d: AssetInventoryDoc) {
+        this.listSrv.document = d.id || 0;
         this.refresh();
     }
 

@@ -47,3 +47,5 @@ export * from './lib/services/asset-class.service';
 export * from './lib/asset-search-dialog/asset-search-dialog.component';
 export * from './lib/office-search/office-search.component';
 export * from './lib/asset-list-inventory/asset-list-inventory.component';
+export * from './lib/assets-inventory-doc-list/assets-inventory-doc-list.component';
+export * from './lib/assets-inventory-doc-detail/assets-inventory-doc-detail.component';

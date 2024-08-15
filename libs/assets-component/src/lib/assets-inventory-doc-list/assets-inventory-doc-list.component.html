@@ -1,0 +1,55 @@
+<div class="container_div container">
+    <mat-table mat-table [dataSource]="data" class="main-table" matSort (matSortChange)="sort($event)">
+
+        <ng-container matColumnDef="description">
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>ADMINISTRATION_DESCRIPTION</mat-header-cell>
+            <mat-cell *matCellDef="let e" >
+                {{e.description}}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="officeDescription">
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_OFFICE</mat-header-cell>
+            <mat-cell *matCellDef="let e" >
+                {{e.officeDescription}}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="buildingDescription">
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>ASSET_BUILDINGS</mat-header-cell>
+            <mat-cell *matCellDef="let e" >
+                {{e.buildingDescription}}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="locationDescription">
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>ASSET_SITE</mat-header-cell>
+            <mat-cell *matCellDef="let e" >
+                {{e.locationDescription}}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="creationDate">
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_DATE</mat-header-cell>
+            <mat-cell *matCellDef="let e" >
+                {{e.creationDate | date: 'dd/MM/yyyy'}}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="closed">
+            <mat-header-cell *matHeaderCellDef translate>COMMON_CLOSED</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                <mat-checkbox [class.mat-checkbox-disabled]="false" disabled="true"
+                              [checked]="e.closed">
+                </mat-checkbox>
+            </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+        <mat-row class="selectable" [class.selected]="row.id == selected" (click)="selectRow(row)"
+                 *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+</div>
+<div class="container b-b-background">
+    <ss-pagination [paginationModel]="pagination"></ss-pagination>
+</div>

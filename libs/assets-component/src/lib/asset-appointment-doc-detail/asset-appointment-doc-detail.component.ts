@@ -2,18 +2,18 @@ import { Component, inject } from '@angular/core';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {ASSAppointmentHeader, AssetAppointmentLine} from '../assets-api';
 import {KeepOnToolbar, ShellService, SnackBarService, ToolbarButton} from '@ss/common/ui-shell';
-import {ActivatedRoute, Router} from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import {UntypedFormBuilder, UntypedFormControl, Validators} from '@angular/forms';
-import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
+import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import {LookupsService, Office, OfficeService} from '@ss/common/api-lookup';
 import {AssetAppointmentDocService} from '../services/asset-appointment-doc.service';
-import {LoginService, PaginationModel} from '@ss/common/api-common';
-import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
+import { LoginService, MaterialModule, PaginationModel } from '@ss/common/api-common';
+import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
 import {
     ASSET_MODULE,
     ATTRIB_TYPE_LOOKUP,
     AttribTempl,
-    AttributesService
+    AttributesService, CustomAttributesModule
 } from '@ss/custom-attributes';
 import {switchMap} from 'rxjs/operators';
 import {tap} from 'rxjs/operators';
@@ -26,12 +26,33 @@ import {OfficeSearchComponent} from '../office-search/office-search.component';
 import {MatDialog} from '@angular/material/dialog';
 import {WorkflowDialogComponent} from '@ss/workflow';
 import { ASSET_APPOINTMENT } from '@ss/workflow';
+import { CommonModule } from '@angular/common';
+import { CommonUiLangModule } from '@ss/common/ui-lang';
+import { CommonUiImageInputModule } from '@ss/common/ui-image-input';
+import { UiPaginationModule } from '@ss/common/ui-pagination';
+import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
+import { AppArchiveModule } from '@ss/common/app-archive';
+import { QRCodeModule } from 'angularx-qrcode';
 
 @Component({
     selector: 'ss-asset-appointment-doc-detail',
     templateUrl: './asset-appointment-doc-detail.component.html',
-    styleUrls: ['./asset-appointment-doc-detail.component.scss']
-})
+    styleUrls: ['./asset-appointment-doc-detail.component.scss'],
+    standalone: true,
+    imports: [
+        CommonModule,
+        MaterialModule,
+        CommonUiLangModule,
+        CommonUiImageInputModule,
+        UiPaginationModule,
+        CommonUiConfirmationDialogModule,
+        CommonUiAutoCompleteModule,
+        CommonUiDatepickerModule,
+        RouterModule,
+        CustomAttributesModule,
+        AppArchiveModule,
+        QRCodeModule
+    ]})
 export class AssetAppointmentDocDetailComponent extends BaseEntityDetailComponent<ASSAppointmentHeader>{
     private officeSrv = inject(OfficeService);
     private attributeSrv = inject(AttributesService);
