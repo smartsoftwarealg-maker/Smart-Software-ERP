@@ -30,7 +30,8 @@
     "BLOCK_NO":           "Block number",
     "FLOOR_NO":           "Floor number",
     "APPOINTMENTS":       "Assignments",
-    "MIN_VALUE":          "Minimum asset value",
+    "MIN_VALUE":          "Minimum value",
+    "MAX_VALUE":          "Maximum value",
     "RECEPTIONS":         "Asset receptions",
     "BENEFICIARY":        "Beneficiary",
     "INVENTORY_YEAR":     "Inventory year",
@@ -68,5 +69,8 @@
     "ADD":                 "Add",
     "REMOVE":              "Remove",
     "IS_VEHICLE":          "Vehicle?",
-    "BLOCK":               "Block"
+    "BLOCK":               "Block",
+    "INVENTORY_DOCUMENTS": "Inventory document",
+    "INVENTORY_DOCUMENT":  "Inventory document",
+    "UNIDENTIFIED_INVENTORY": "Unidentified inventory"
 }

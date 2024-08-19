@@ -1,4 +1,4 @@
-import {Injectable} from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import {ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree} from '@angular/router';
 import {Observable} from 'rxjs';
 import {LoginService} from '@ss/common/api-common';
@@ -9,10 +9,10 @@ import {AccFileService} from './acc-file.service';
     providedIn: 'root'
 })
 export class AccountingPeriodGuard  {
-    constructor(private loginSrv: LoginService,
-                private router: Router,
-                private shellSrv: ShellService,
-                private fileSrv: AccFileService) {}
+    private loginSrv = inject( LoginService);
+    private router   = inject(Router);
+    private shellSrv = inject( ShellService);
+    private fileSrv  = inject(AccFileService);
     canActivate(
         route: ActivatedRouteSnapshot,
         state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {

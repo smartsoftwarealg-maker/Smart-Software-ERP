@@ -1,37 +1,61 @@
 import { Component, inject, OnDestroy } from '@angular/core';
-import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
-import {Asset, SearchCriteria} from '../assets-api';
-import {AssetsService} from '../services/assets.service';
-import {ShellService, SnackBarService} from '@ss/common/ui-shell';
-import {ActivatedRoute, Router} from '@angular/router';
-import {DefaultReportService} from '@ss/common/ui-default-report-component';
-import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import {IsParamService, LanguageService, PaginatorPersistenceService} from '@ss/common/api-common';
-import {Observable} from 'rxjs';
-import {debounceTime, distinctUntilChanged, map, tap} from 'rxjs/operators';
-import {UntypedFormBuilder} from '@angular/forms';
-import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
-import {ConsumerService, SupplierService} from '@ss/logistics/api-agent';
-import {AssetLocationService} from '../services/asset-location.service';
-import {OfficeSearchComponent} from '../office-search/office-search.component';
-import {MatDialog} from '@angular/material/dialog';
-import {Office, OfficeService} from '@ss/common/api-lookup';
-import {BaseEntityService} from '@ss/common/api-base-entity';
+import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
+import { Asset, SearchCriteria } from '../assets-api';
+import { AssetsService } from '../services/assets.service';
+import { ShellService, SnackBarService } from '@ss/common/ui-shell';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
+import { DefaultReportService } from '@ss/common/ui-default-report-component';
+import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
+import { IsParamService, LanguageService, MaterialModule, PaginatorPersistenceService } from '@ss/common/api-common';
+import { Observable } from 'rxjs';
+import { debounceTime, distinctUntilChanged, map, tap } from 'rxjs/operators';
+import { UntypedFormBuilder } from '@angular/forms';
+import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
+import { ConsumerService, SupplierService } from '@ss/logistics/api-agent';
+import { AssetLocationService } from '../services/asset-location.service';
+import { OfficeSearchComponent } from '../office-search/office-search.component';
+import { MatDialog } from '@angular/material/dialog';
+import { Office, OfficeService } from '@ss/common/api-lookup';
+import { BaseEntityService } from '@ss/common/api-base-entity';
+import { CommonModule } from '@angular/common';
+import { CommonUiLangModule } from '@ss/common/ui-lang';
+import { CommonUiImageInputModule } from '@ss/common/ui-image-input';
+import { UiPaginationModule } from '@ss/common/ui-pagination';
+import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
+import { CustomAttributesModule } from '@ss/custom-attributes';
+import { AppArchiveModule } from '@ss/common/app-archive';
+import { QRCodeModule } from 'angularx-qrcode';
 
 @Component({
     selector: 'ss-search-list',
     templateUrl: './search-list.component.html',
-    styleUrls: ['./search-list.component.scss']
+    styleUrls: ['./search-list.component.scss'],
+    standalone: true,
+    imports: [
+        CommonModule,
+        MaterialModule,
+        CommonUiLangModule,
+        CommonUiImageInputModule,
+        UiPaginationModule,
+        CommonUiConfirmationDialogModule,
+        CommonUiAutoCompleteModule,
+        CommonUiDatepickerModule,
+        RouterModule,
+        CustomAttributesModule,
+        AppArchiveModule,
+        QRCodeModule
+    ]
+
 })
 export class SearchListComponent extends BaseEntityListComponent<Asset> implements OnDestroy {
-    private fb =  inject(UntypedFormBuilder);
-    private supplierSrv  = inject(SupplierService);
+    private fb = inject(UntypedFormBuilder);
+    private supplierSrv = inject(SupplierService);
     private beneficiarySrv = inject(ConsumerService);
-    private assetSrv  = inject(AssetsService);
-    private isParamSrv  = inject(IsParamService);
-    private locationSrv  = inject(AssetLocationService);
-    private officeSrv  = inject(OfficeService);
-    private langSrv  = inject(LanguageService);
+    private assetSrv = inject(AssetsService);
+    private isParamSrv = inject(IsParamService);
+    private locationSrv = inject(AssetLocationService);
+    private officeSrv = inject(OfficeService);
+    private langSrv = inject(LanguageService);
     private EPOCH: Date | null = new Date(0);
     private FUTURE: Date | null = new Date(9999, 11, 31);
     private DEF_COLS = [
@@ -67,37 +91,37 @@ export class SearchListComponent extends BaseEntityListComponent<Asset> implemen
     beneficiaryLookup = new DefaultAutoCompleteModel(this.beneficiarySrv, 'id', 'denomination');
 
     displayedColumns = this.DEF_COLS;
-    form = this.fb.group( {
-        reference:         [''],
-        reference2:        [''],
-        description:       [''],
-        supplier:          [0],
-        beneficiary:       [0],
-        accountNo:         [''],
-        serialNo:          [''],
-        acquisitionDate:   [this.EPOCH],
-        serviceDate:       [this.EPOCH],
+    form = this.fb.group({
+        reference: [''],
+        reference2: [''],
+        description: [''],
+        supplier: [0],
+        beneficiary: [0],
+        accountNo: [''],
+        serialNo: [''],
+        acquisitionDate: [this.EPOCH],
+        serviceDate: [this.EPOCH],
         acquisitionDateTo: [this.FUTURE],
-        serviceDateTo:     [this.FUTURE],
-        acquisitionValue:  [0],
-        location:          [0],
-        consolidated:      [false],
-        invoiceNumber:     [''],
-        orderNumb:         [''],
-        status:            [''],
-        receptionNumber:   [0]
+        serviceDateTo: [this.FUTURE],
+        acquisitionValue: [0],
+        location: [0],
+        consolidated: [false],
+        invoiceNumber: [''],
+        orderNumb: [''],
+        status: [''],
+        receptionNumber: [0]
     });
-    officeAutoCompleteModel  = new OfficeAutoComplete(this.officeSrv);
+    officeAutoCompleteModel = new OfficeAutoComplete(this.officeSrv);
 
     constructor(public listSrv: AssetsService,
-                public override shellSrv: ShellService,
-                public override snackBarSrv: SnackBarService,
-                public override route: ActivatedRoute,
-                public override router: Router,
-                public override defReportSrv: DefaultReportService,
-                public override confirmationSrv: ConfirmationDialogService,
-                public override pagPersistSrv: PaginatorPersistenceService,
-                private dialog: MatDialog) {
+        public override shellSrv: ShellService,
+        public override snackBarSrv: SnackBarService,
+        public override route: ActivatedRoute,
+        public override router: Router,
+        public override defReportSrv: DefaultReportService,
+        public override confirmationSrv: ConfirmationDialogService,
+        public override pagPersistSrv: PaginatorPersistenceService,
+        private dialog: MatDialog) {
         super(listSrv,
             shellSrv,
             snackBarSrv,
@@ -113,7 +137,7 @@ export class SearchListComponent extends BaseEntityListComponent<Asset> implemen
     override preload(): Observable<any> {
         return this.isParamSrv
             .is('AQS')
-            .pipe(tap(res => res? this.displayedColumns = this.AQS_COLS : this.DEF_COLS));
+            .pipe(tap(res => res ? this.displayedColumns = this.AQS_COLS : this.DEF_COLS));
     }
 
     override ngOnInit() {
@@ -138,7 +162,7 @@ export class SearchListComponent extends BaseEntityListComponent<Asset> implemen
                 width: '600px',
                 height: '540px',
                 disableClose: true,
-                data: {id: 0, description: null}
+                data: { id: 0, description: null }
             });
         dialogRef
             .afterClosed()
@@ -191,5 +215,5 @@ class OfficeAutoComplete extends DefaultAutoCompleteModel<Office> {
         super(entitySrv, 'id', 'description');
     }
 
-    override toString = (x:Office) => x ? `${x.description.substring(0, 50)} (${x.code})`  : null;
+    override toString = (x: Office) => x ? `${x.description.substring(0, 50)} (${x.code})` : null;
 }

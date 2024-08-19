@@ -85,7 +85,7 @@ export class AssetsInventoryDocDetailComponent extends BaseEntityDetailComponent
             route,
             formBuilder,
             confirmationSrv,
-            'ASSETS');
+            'ASSET_INVENTORY_DOCUMENTS');
         this.officeSrv.setParentId(0);
         this.locationLookup.onObjectSelected = o => this.buildingSrv.setParentId(o?.id||0);
         this.buildingLookup.onObjectSelected = o => this.officeSrv.setParentId(o?.id||0);

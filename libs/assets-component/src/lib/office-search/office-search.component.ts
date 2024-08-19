@@ -1,16 +1,43 @@
-import { Component, inject, Inject, OnDestroy, OnInit } from "@angular/core";
-import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material/dialog";
-import { Lookup, Office, OfficeService } from "@ss/common/api-lookup";
-import { AssetLocationService, AssetsBuildingService } from "@ss/assets-component";
-import { DefaultAutoCompleteModel } from "@ss/common/ui-auto-complete";
-import { FormControl } from "@angular/forms";
-import { Subscription } from "rxjs";
-import { debounceTime, distinctUntilChanged } from "rxjs/operators";
+import { Component, inject, Inject, OnDestroy, OnInit } from '@angular/core';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { Lookup, Office, OfficeService } from '@ss/common/api-lookup';
+import { AssetLocationService, AssetsBuildingService } from '@ss/assets-component';
+import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
+import { FormControl } from '@angular/forms';
+import { Subscription } from 'rxjs';
+import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
+import { CommonModule } from '@angular/common';
+import { MaterialModule } from '@ss/common/api-common';
+import { CommonUiLangModule } from '@ss/common/ui-lang';
+import { CommonUiImageInputModule } from '@ss/common/ui-image-input';
+import { UiPaginationModule } from '@ss/common/ui-pagination';
+import { CommonUiConfirmationDialogModule } from '@ss/common/ui-confirmation-dialog';
+import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
+import { RouterModule } from '@angular/router';
+import { CustomAttributesModule } from '@ss/custom-attributes';
+import { AppArchiveModule } from '@ss/common/app-archive';
+import { QRCodeModule } from 'angularx-qrcode';
 
 @Component({
-    selector: "ss-office-search",
-    templateUrl: "./office-search.component.html",
-    styleUrls: ["./office-search.component.scss"]
+    selector: 'ss-office-search',
+    templateUrl: './office-search.component.html',
+    styleUrls: ['./office-search.component.scss'],
+    standalone: true,
+    imports: [
+        CommonModule,
+        MaterialModule,
+        CommonUiLangModule,
+        CommonUiImageInputModule,
+        UiPaginationModule,
+        CommonUiConfirmationDialogModule,
+        CommonUiAutoCompleteModule,
+        CommonUiDatepickerModule,
+        RouterModule,
+        CustomAttributesModule,
+        AppArchiveModule,
+        QRCodeModule
+    ]
+
 })
 export class OfficeSearchComponent implements OnDestroy, OnInit {
     private buildingSrv = inject(AssetsBuildingService);

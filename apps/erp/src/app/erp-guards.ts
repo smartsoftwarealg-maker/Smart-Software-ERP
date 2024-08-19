@@ -5,6 +5,8 @@ import {AccountingPeriodGuard} from '@ss/accounting/accounting-api';
 import {PayrollMonthGuard} from '@ss/payroll-common';
 import {BudgetSelectorGuard} from '@ss/budget/budget';
 import {AssignmentDetailGuard, TimingDetailGuard} from '@ss/attendance';
+import { AssetUnidentifiedInventoryService } from '@ss/assets-component';
+
 
 export const loginGuard: CanActivateFn =
     (route: ActivatedRouteSnapshot, state: RouterStateSnapshot) => inject(CanActivateService).canActivate(route, state);
@@ -23,3 +25,6 @@ export const detailGuard: CanActivateFn =
 
 export const timingGuard: CanActivateFn =
     (route: ActivatedRouteSnapshot, state: RouterStateSnapshot) => inject(TimingDetailGuard).canActivate(route, state);
+
+export const unidentifiedInventoryGuard: CanActivateFn =
+    (route: ActivatedRouteSnapshot, state: RouterStateSnapshot) => inject(AssetUnidentifiedInventoryService).canActivate(route, state);

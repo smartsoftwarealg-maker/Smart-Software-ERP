@@ -37,7 +37,8 @@
     "ITEM_COUNT": "Nombre d'éléments",
     "LINEAR": "Linéaire",
     "LOCATIONS": "Emplacements",
-    "MIN_VALUE": "Valeur minimale d' immobilisation",
+    "MIN_VALUE": "Valeur minimale",
+    "MAX_VALUE": "Valeur maximale",
     "MULTIFUNCTIONAL": "Multifonctionnel",
     "NAC": "V.N.C",
     "OLD_DEPRECIATION": "Ancien amortissement",
@@ -68,5 +69,8 @@
     "ADD":                 "Ajouter",
     "REMOVE":              "Retirer",
     "IS_VEHICLE":          "Vehicule?",
-    "BLOCK":               "Bloc"
+    "BLOCK":               "Bloc",
+    "INVENTORY_DOCUMENT":  "Document d'inventaire",
+    "INVENTORY_DOCUMENTS": "Documents d'inventaire",
+    "UNIDENTIFIED_INVENTORY": "Inventaire non identifié"
 }

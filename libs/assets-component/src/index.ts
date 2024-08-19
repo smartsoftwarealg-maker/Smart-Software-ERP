@@ -1,4 +1,3 @@
-export * from './lib/assets-component.module';
 export * from './lib/assets-list/assets-list.component';
 export * from './lib/assets-detail/assets-detail.component';
 export * from './lib/asset-costs-detail/asset-costs-detail.component';
@@ -49,3 +48,6 @@ export * from './lib/office-search/office-search.component';
 export * from './lib/asset-list-inventory/asset-list-inventory.component';
 export * from './lib/assets-inventory-doc-list/assets-inventory-doc-list.component';
 export * from './lib/assets-inventory-doc-detail/assets-inventory-doc-detail.component';
+export * from './lib/asset-unidentified-inventory-detail/asset-unidentified-inventory-detail.component';
+export * from './lib/asset-unidentified-inventory-list/asset-unidentified-inventory-list.component';
+export * from './lib/services/asset-unidentified-inventory.service'

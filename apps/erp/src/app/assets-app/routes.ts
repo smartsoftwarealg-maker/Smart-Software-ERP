@@ -36,7 +36,7 @@ import {
     ASSET_TRANSFER_URL,
     CMMS_ASSET_TREE,
     ASSET_QR_INVENTORY_URL,
-    ASSET_INVENTORY_DOC_URL
+    ASSET_INVENTORY_DOC_URL, ASSET_UNIDENTIFIED_INVENTORY_URL
 } from '../common';
 import {
     AssetCostsDetailComponent,
@@ -72,7 +72,11 @@ import {
     AssetExcelInjectionComponent,
     DepreciationRateListComponent,
     DepreciationRateDetailComponent,
-    AssetsTransferComponent, AssetTreeComponent, AssetListInventoryComponent
+    AssetsTransferComponent,
+    AssetTreeComponent,
+    AssetListInventoryComponent,
+    AssetUnidentifiedInventoryListComponent,
+    AssetUnidentifiedInventoryDetailComponent
 } from '@ss/assets-component';
 import {ReportViewComponent} from '@ss/common/ui-report-param';
 import {ReportCatalogListComponent, ReportCatalogDetailComponent} from '@ss/administration/ui-report-catalog';
@@ -94,7 +98,7 @@ import {
     AssetAccountsListComponent
 } from '@ss/accounting/accounting-accounts';
 import {DashboardComponent} from '@ss/dashboard';
-import {loginGuard} from '../erp-guards';
+import { loginGuard, unidentifiedInventoryGuard } from '../erp-guards';
 import { AGENT_ARCHIVES, ASSET_ARCHIVES, ASSET_RECEPTIONS_ARCHIVES } from '@ss/common/app-archive';
 import {
     AssetsInventoryDocListComponent
@@ -561,6 +565,23 @@ export const mainRoutes: Routes = [
             },
             {path: '', redirectTo: LIST_URL, pathMatch: 'full'},
             {path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full'}
+        ]
+    },
+
+    {
+        path: ASSET_UNIDENTIFIED_INVENTORY_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: AssetUnidentifiedInventoryListComponent,
+                canActivate: [loginGuard]
+            },
+            {
+                path: ':id',
+                component: AssetUnidentifiedInventoryDetailComponent,
+                canActivate: [loginGuard, unidentifiedInventoryGuard],
+                canDeactivate: [CanDeactivateService]
+            },
         ]
     },
 

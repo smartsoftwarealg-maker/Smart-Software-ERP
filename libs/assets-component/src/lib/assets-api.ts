@@ -22,7 +22,10 @@ export const ASSET_APPOINTMENT_LINE_URL = '/lines';
 export const ASSET_INVENTORY_URL = '/inventories';
 export const ASSET_OFFICE_URL = '/offices';
 export const ASSET_YEARS_URL = '/years';
-export const ASSET_DEPRECIATION_RATES = '/rates';
+export const ASSET_DEPRECIATION_RATES_URL = '/rates';
+export const ASSET_DOCUMENT_URL = '/documents';
+export const UNIDENTIFIED_INVENTORY_URL = '/unidentified-inventory';
+
 
 export interface Asset {
     id: number;
@@ -303,11 +306,16 @@ export interface InventoryAsset {
     centerId: number;
     reference: String,
     serialNo?: string;
-    parentId: number;
+    officeId: number;
     year?: number;
     status?: number;
     date?: Date;
+    acquisitionDate?: Date;
+    receptionNumber?: string;
+    comment?: string;
     inventoryId?: number;
+    locationDescription?: string;
+    buildingDescription?: string;
     officeDescription?: string;
 }
 
@@ -326,11 +334,35 @@ export interface AssetInventoryDoc {
     officeId?: number;
     classId?: number;
     beneficiary?: number;
-    receptionNo?: string;
+    receptionNo?: number;
     closed: boolean;
     userDescription?: string;
     beneficiaryDescription?: string;
     buildingDescription?: string;
     locationDescription?: string;
     officeDescription?: string;
+}
+
+export interface AssetInventoryFilter {
+    accountNo?: string;
+    minValue: number;
+    maxValue: number;
+    buildingId?: number;
+    locationId?: number;
+    officeId?: number;
+    classId?: number;
+    beneficiary?: number;
+    receptionNo?: number;
+}
+
+export interface UnidentifiedInventory {
+    id: number;
+    parentId: number;
+    creationDate: Date;
+    userId: number;
+    buildingId?: number;
+    classId?: number;
+    count: number;
+    buildingDescription?: string;
+    classDescription?: string;
 }

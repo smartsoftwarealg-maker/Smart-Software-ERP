@@ -5,12 +5,12 @@
 .pagination-container {
     width: 94%;
     max-width: 1400px;
-    margin: 0 auto;
+    margin: 0.5em auto 0;
 }
 
 .content-div {
     overflow-x: auto;
-    height: 100%;
+    height: calc(100% - 96px);
 }
 
 mat-table {

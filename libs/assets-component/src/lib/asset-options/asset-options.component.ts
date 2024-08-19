@@ -1,22 +1,46 @@
 import { Component, OnInit } from '@angular/core';
-import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
-import {AccJournalsService, AccPoliciesService, ACCPolicy} from '@ss/accounting/accounting-api';
-import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
-import {ShellService, SnackBarService} from '@ss/common/ui-shell';
-import {ActivatedRoute} from '@angular/router';
-import {UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
-import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import {LookupsService} from '@ss/common/api-lookup';
-import {LoginService} from '@ss/common/api-common';
-import {Observable, switchMap} from 'rxjs';
-import {MatExpansionPanel} from '@angular/material/expansion';
-import {MatCheckboxChange} from '@angular/material/checkbox';
-import {tap} from 'rxjs/operators';
+import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
+import { AccJournalsService, AccPoliciesService, ACCPolicy } from '@ss/accounting/accounting-api';
+import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
+import { ShellService, SnackBarService } from '@ss/common/ui-shell';
+import { ActivatedRoute, RouterModule } from '@angular/router';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
+import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
+import { LookupsService } from '@ss/common/api-lookup';
+import { LoginService, MaterialModule } from '@ss/common/api-common';
+import { Observable, switchMap } from 'rxjs';
+import { MatExpansionPanel } from '@angular/material/expansion';
+import { MatCheckboxChange } from '@angular/material/checkbox';
+import { tap } from 'rxjs/operators';
+import { CommonModule } from '@angular/common';
+import { CommonUiLangModule } from '@ss/common/ui-lang';
+import { CommonUiImageInputModule } from '@ss/common/ui-image-input';
+import { UiPaginationModule } from '@ss/common/ui-pagination';
+import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
+import { CustomAttributesModule } from '@ss/custom-attributes';
+import { AppArchiveModule } from '@ss/common/app-archive';
+import { QRCodeModule } from 'angularx-qrcode';
 
 @Component({
     selector: 'ss-asset-options',
     templateUrl: './asset-options.component.html',
-    styleUrls: ['./asset-options.component.scss']
+    styleUrls: ['./asset-options.component.scss'],
+    standalone: true,
+    imports: [
+        CommonModule,
+        MaterialModule,
+        CommonUiLangModule,
+        CommonUiImageInputModule,
+        UiPaginationModule,
+        CommonUiConfirmationDialogModule,
+        CommonUiAutoCompleteModule,
+        CommonUiDatepickerModule,
+        RouterModule,
+        CustomAttributesModule,
+        AppArchiveModule,
+        QRCodeModule
+    ]
+
 })
 export class AssetOptionsComponent extends BaseEntityDetailComponent<ACCPolicy> {
     constructor(
@@ -32,7 +56,7 @@ export class AssetOptionsComponent extends BaseEntityDetailComponent<ACCPolicy> 
     }
 
     protected override getRouteParam(): Observable<any> {
-        return  this.loginSrv
+        return this.loginSrv
             .loadContext()
             .pipe(
                 tap(_ => {
@@ -55,6 +79,7 @@ export class AssetOptionsComponent extends BaseEntityDetailComponent<ACCPolicy> 
             inventoryYear: [e.inventoryYear || 0, Validators.required]
         });
     }
+
     public getPanelHeaderClass(section: string, panel: MatExpansionPanel): string {
         // if expanded return primary background class
         if (panel.expanded)
@@ -65,9 +90,9 @@ export class AssetOptionsComponent extends BaseEntityDetailComponent<ACCPolicy> 
 
     updateOptionChanged(event: MatCheckboxChange) {
         const ctrl = this.form.controls['openPeriods'];
-        ctrl.setValue(event.checked? 12: 0);
+        ctrl.setValue(event.checked ? 12 : 0);
         if (event.checked) {
-            ctrl.disable({onlySelf: true});
+            ctrl.disable({ onlySelf: true });
         } else {
             ctrl.enable({ onlySelf: true });
         }
@@ -75,7 +100,7 @@ export class AssetOptionsComponent extends BaseEntityDetailComponent<ACCPolicy> 
 
     override readForm(): ACCPolicy {
         const value = super.readForm();
-        value.openPeriods = value.modifyClosedPeriods? 12 : value.openPeriods || 0;
+        value.openPeriods = value.modifyClosedPeriods ? 12 : value.openPeriods || 0;
         return value;
     }
 }
