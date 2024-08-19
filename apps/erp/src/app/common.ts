@@ -299,6 +299,7 @@ export const ASSETS_AGENT_URL            = 'agents';
 export const ASSET_BUILDING_URL          = 'buildings';
 export const ASSET_ACCOUNT_URL           = 'asset-accounts';
 export const ASSET_INVENTORY_DOC_URL     = 'inventory-docs';
+export const ASSET_UNIDENTIFIED_INVENTORY_URL = 'unidentified-inventory';
 
 // Scheduled sales
 export const SS_PROJECTS_URL             = 'ss_projects';
@@ -827,6 +828,7 @@ export const ABS_ASSET_STATUS_TYPES  = '/' + [MAIN_PAGE_URL, ASSETS_APP_URL, FUR
 export const ABS_ASSET_DASHBOARD_URL = '/' + [MAIN_PAGE_URL, ASSETS_APP_URL, DASHBOARD_URL].join('/');
 export const ABS_ASSETS_TREE_URL = '/' + [MAIN_PAGE_URL, ASSETS_APP_URL, CMMS_ASSET_TREE].join('/');
 export const ABS_ASSETS_INVENTORY_DOC = '/' + [MAIN_PAGE_URL, ASSETS_APP_URL, ASSET_INVENTORY_DOC_URL].join('/');
+export const ABS_ASSETS_UNIDENTIFIED = '/' + [MAIN_PAGE_URL, ASSETS_APP_URL, ASSET_UNIDENTIFIED_INVENTORY_URL].join('/');
 
 // sales
 export const ABS_SALES_DELIVERY_URL = '/' + [MAIN_PAGE_URL, SALES_APP_URL, SALES_DELIVERY_URL].join('/');

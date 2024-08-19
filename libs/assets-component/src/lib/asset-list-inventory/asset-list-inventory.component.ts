@@ -1,10 +1,15 @@
-import { Component, inject } from '@angular/core';
+import { Component, DestroyRef, inject, OnInit, signal } from '@angular/core';
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
-import { AssetInventoryDoc, InventoryAsset } from '../assets-api';
+import {
+    AssetBuilding,
+    AssetInventoryDoc,
+    AssetLocation,
+    InventoryAsset
+} from '../assets-api';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
-import { MaterialModule, PaginatorPersistenceService } from '@ss/common/api-common';
+import { LoginService, MaterialModule, PaginatorPersistenceService } from '@ss/common/api-common';
 import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
 import { CommonModule } from '@angular/common';
 import { CommonUiLangModule } from '@ss/common/ui-lang';
@@ -15,12 +20,17 @@ import { CustomAttributesModule } from '@ss/custom-attributes';
 import { AppArchiveModule } from '@ss/common/app-archive';
 import { QRCodeModule } from 'angularx-qrcode';
 import { DefaultReportService } from '@ss/common/ui-default-report-component';
-import { Office, OfficeService } from '@ss/common/api-lookup';
-import { FormControl } from '@angular/forms';
+import { Lookup, Office, OfficeService } from '@ss/common/api-lookup';
+import { FormBuilder, FormControl } from '@angular/forms';
 import { AssetListInventoryService } from '../services/asset-list-inventory.service';
-import { OfficeSearchComponent } from '../office-search/office-search.component';
 import { MatDialog } from '@angular/material/dialog';
 import { AssetInventoryDocService } from '../services/asset-inventory-doc.service';
+import { AssetsBuildingService } from '../services/assets-building.service';
+import { AccountService, AccountStringAutocompleteModel } from '@ss/accounting/api-accounts';
+import { AssetLocationService } from '../services/asset-location.service';
+import { AssetClassService } from '../services/asset-class.service';
+import { Agent, ConsumerService } from '@ss/logistics/api-agent';
+import { AssetReceptionService } from '../services/asset-reception.service';
 
 @Component({
     selector: 'ss-asset-list-inventory',
@@ -42,7 +52,17 @@ import { AssetInventoryDocService } from '../services/asset-inventory-doc.servic
         QRCodeModule
     ],
 })
-export class AssetListInventoryComponent extends BaseEntityListComponent<InventoryAsset> {
+export class AssetListInventoryComponent extends BaseEntityListComponent<InventoryAsset> implements OnInit {
+    private destroyRef   = inject(DestroyRef);
+    private loginSrv     = inject(LoginService);
+    private fb           = inject(FormBuilder);
+    private buildingSrv  = inject(AssetsBuildingService);
+    private accountSrv   = inject(AccountService);
+    private locationSrv  = inject(AssetLocationService);
+    private classSrv     = inject(AssetClassService);
+    private consumerSrv  = inject(ConsumerService);
+    private receptionSrv = inject(AssetReceptionService);
+
     private dialog = inject(MatDialog);
     private officeSrv = inject(OfficeService);
     private inventoryDocSrv = inject(AssetInventoryDocService);
@@ -50,14 +70,43 @@ export class AssetListInventoryComponent extends BaseEntityListComponent<Invento
     officeLookup       = new DefaultAutoCompleteModel(this.officeSrv);
     inventoryDocLookup = new DefaultAutoCompleteModel(this.inventoryDocSrv);
 
-    officeCtrl   = new FormControl<number>(0);
     inventoryDoc = new FormControl<number>(0);
 
+    accountLookup     = new AccountStringAutocompleteModel(this.accountSrv)
+    locationLookup    = new DefaultAutoCompleteModel(this.locationSrv);
+    buildingLookup    = new DefaultAutoCompleteModel(this.buildingSrv);
+    classLookup       = new DefaultAutoCompleteModel(this.classSrv);
+    beneficiaryLookup = new DefaultAutoCompleteModel<Agent>(this.consumerSrv, 'id', 'denomination');
+    receptionLookup   = new DefaultAutoCompleteModel(this.receptionSrv, 'id', 'reference');
+
+    isEditable = signal(false);
+
+    formGroup   = this.fb.group({
+        officeId:     [0],
+        accountNo:    [''],
+        buildingId:   [0],
+        beneficiary:  [0],
+        locationId:   [0],
+        classId:      [0],
+        receptionId:  [0],
+        minValue:     [0],
+        maxValue:     [99999999],
+    });
+
     displayedColumns = [
+        'recorded',
         'reference',
         'description',
-        'recorded'
-    ];
+        'serialNo',
+        'locationDescription',
+        'buildingDescription',
+        'officeDescription',
+        'date',
+        'userDescription',
+        'acquisitionDate',
+        'receptionNumber',
+        'comment'
+];
 
     constructor(public listSrv: AssetListInventoryService,
         public override shellSrv: ShellService,
@@ -76,19 +125,99 @@ export class AssetListInventoryComponent extends BaseEntityListComponent<Invento
             defReportSrv,
             pagPersistSrv,
             'INVENTORY');
-        this.pagination.pageSize = 10;
-        this.officeLookup.onObjectSelected = e => this.onOffice(e);
+        this.pagination.pageSize = 5;
         this.inventoryDocLookup.onObjectSelected = d => this.onDocument(d);
+        this.officeLookup.onObjectSelected = e => this.onOffice(e);
+        this.buildingLookup.onObjectSelected = b => this.onBuilding(b);
+        this.classLookup.onObjectSelected = c => this.formGroup.controls.classId.setValue(c?.id||0);
+        this.beneficiaryLookup.onObjectSelected = b => this.formGroup.controls.beneficiary.setValue(b?.id||0);
+        this.receptionLookup.onObjectSelected = r => this.formGroup.controls.receptionId.setValue(r?.id||0);
+        this.accountLookup.onObjectSelected = a => this.formGroup.controls.accountNo.setValue(a?.accountNo||'');
+        this.locationLookup.onObjectSelected = l => this.onLocation(l);
+    }
+
+    private onLocation(l: AssetLocation) {
+        this.buildingSrv.setParentId(l.id||0);
+        this.formGroup.controls.locationId.setValue(l.id||0);
     }
 
     private onOffice(o: Office) {
-        this.listSrv.setParentId(o.id||0);
+        this.formGroup.controls.officeId.setValue(o.id||0);
+    }
+
+    private onBuilding(b: AssetBuilding) {
+        this.officeSrv.setParentId(b.id||0);
+        this.formGroup.controls.buildingId.setValue(b.id||0);
+    }
+
+
+    private onDocument(d: AssetInventoryDoc) {
+        this.isEditable.set(!d?.closed);
+        this.buildingSrv.setParentId(d.locationId||0);
+        this.officeSrv.setParentId(d.buildingId||0);
+        this.listSrv.document = {
+            officeId: d.officeId,
+            accountNo: d.accountNo,
+            buildingId: d.buildingId,
+            beneficiary: d.beneficiary,
+            locationId: d.locationId,
+            classId: d.classId,
+            receptionNo: d.receptionNo,
+            minValue: d.minValue,
+            maxValue: d.maxValue
+        };
+        this.formGroup.controls.officeId.setValue(d.officeId||0);
+        this.formGroup.controls.accountNo.setValue(d.accountNo||'');
+        this.formGroup.controls.buildingId.setValue(d.buildingId||0);
+        this.formGroup.controls.beneficiary.setValue(d.beneficiary||0);
+        this.formGroup.controls.locationId.setValue(d.locationId||0);
+        this.formGroup.controls.classId.setValue(d.classId||0);
+        this.formGroup.controls.receptionId.setValue(d.receptionNo||0);
+        this.formGroup.controls.minValue.setValue(d.minValue||0);
+        this.formGroup.controls.maxValue.setValue(d.maxValue||0);
+
+        if (d.officeId > 0) {
+            this.formGroup.controls.officeId.disable();
+        } else {
+            this.formGroup.controls.officeId.enable();
+        }
+        if (d.accountNo?.length > 0) {
+            this.formGroup.controls.accountNo.disable();
+        } else {
+            this.formGroup.controls.accountNo.enable();
+        }
+        if (d.buildingId > 0) {
+            this.formGroup.controls.buildingId.disable();
+        } else {
+            this.formGroup.controls.buildingId.enable();
+        }
+        if (d.beneficiary > 0) {
+            this.formGroup.controls.beneficiary.disable();
+        } else {
+            this.formGroup.controls.beneficiary.enable();
+        }
+        if (d.locationId > 0) {
+            this.formGroup.controls.locationId.disable();
+        } else {
+            this.formGroup.controls.locationId.enable();
+        }
+        if (d.classId > 0) {
+            this.formGroup.controls.classId.disable();
+        } else {
+            this.formGroup.controls.classId.enable();
+        }
+        if (d.receptionNo > 0) {
+            this.formGroup.controls.receptionId.disable();
+        } else {
+            this.formGroup.controls.receptionId.enable();
+        }
+
         this.refresh();
     }
 
-    private onDocument(d: AssetInventoryDoc) {
-        this.listSrv.document = d.id || 0;
-        this.refresh();
+    override refresh(callback?: () => void) {
+        this.listSrv.document = this.formGroup.getRawValue();
+        super.refresh(callback);
     }
 
     update(e: InventoryAsset) {
@@ -97,20 +226,10 @@ export class AssetListInventoryComponent extends BaseEntityListComponent<Invento
             .subscribe(res =>  e.inventoryId = e.inventoryId? null : res  );
     }
 
-    openSearchDlg() {
-        const dialogRef = this.dialog.open(OfficeSearchComponent,
-            {
-                width: '600px',
-                height: '540px',
-                data: {id: 0, description: null, cmms: false}
-            });
-        dialogRef
-            .afterClosed()
-            .subscribe(res => {
-                const id = res?.id || 0;
-                this.officeCtrl.setValue(id);
-                this.listSrv.setParentId(id);
-                this.refresh();
-            });
+    override ngOnInit() {
+        this.addButton.visible = false;
+        this.deleteButton.visible = false;
+        this.editButton.visible = false;
+        super.ngOnInit();
     }
 }

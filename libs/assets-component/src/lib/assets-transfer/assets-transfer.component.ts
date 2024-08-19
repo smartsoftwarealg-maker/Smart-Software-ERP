@@ -1,18 +1,43 @@
 import { Component, inject, OnInit } from "@angular/core";
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
-import {ActivatedRoute, Router} from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import {OfficeService} from '@ss/common/api-lookup';
 import {OfficeAutoComplete} from '../assets-api';
 import {OfficeSearchComponent} from '../office-search/office-search.component';
 import {MatDialog} from '@angular/material/dialog';
 import {FormBuilder, Validators} from '@angular/forms';
 import {AssetsTransferService} from '../services/assets-transfer.service';
-import {IsParamService, UserRightsService} from '@ss/common/api-common';
+import { IsParamService, MaterialModule, UserRightsService } from '@ss/common/api-common';
+import { CommonModule } from '@angular/common';
+import { CommonUiLangModule } from '@ss/common/ui-lang';
+import { CommonUiImageInputModule } from '@ss/common/ui-image-input';
+import { UiPaginationModule } from '@ss/common/ui-pagination';
+import { CommonUiConfirmationDialogModule } from '@ss/common/ui-confirmation-dialog';
+import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
+import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
+import { CustomAttributesModule } from '@ss/custom-attributes';
+import { AppArchiveModule } from '@ss/common/app-archive';
+import { QRCodeModule } from 'angularx-qrcode';
 
 @Component({
     selector: 'ss-assets-transfer',
     templateUrl: './assets-transfer.component.html',
     styleUrls: ['./assets-transfer.component.scss'],
+    standalone: true,
+    imports: [
+        CommonModule,
+        MaterialModule,
+        CommonUiLangModule,
+        CommonUiImageInputModule,
+        UiPaginationModule,
+        CommonUiConfirmationDialogModule,
+        CommonUiAutoCompleteModule,
+        CommonUiDatepickerModule,
+        RouterModule,
+        CustomAttributesModule,
+        AppArchiveModule,
+        QRCodeModule
+    ]
 })
 export class AssetsTransferComponent implements OnInit {
     private fb =  inject(FormBuilder);

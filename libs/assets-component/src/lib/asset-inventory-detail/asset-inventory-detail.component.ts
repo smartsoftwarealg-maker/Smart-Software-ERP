@@ -1,26 +1,50 @@
-import { Component, inject } from "@angular/core";
-import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
-import {AssetInventory} from '../assets-api';
-import {KeepOnToolbar, ShellService, SnackBarService, ToolbarButton} from '@ss/common/ui-shell';
-import {ActivatedRoute} from '@angular/router';
-import {UntypedFormBuilder, Validators} from '@angular/forms';
-import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import {FurnitureStatusService, LookupsService, OfficeService} from '@ss/common/api-lookup';
-import {AssetInventoryService} from '../services/asset-inventory.service';
-import {LoginService} from '@ss/common/api-common';
-import {AccPoliciesService, ACCPolicy} from '@ss/accounting/accounting-api';
-import {Observable, switchMap} from 'rxjs';
-import {tap} from 'rxjs/operators';
-import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
-import {AssetLookupModel} from '../asset-lookup-model';
-import {AssetsService} from '../services/assets.service';
-import {InventoryImportComponent} from '@ss/logistics/ui-doc-import';
-import {MatDialog} from '@angular/material/dialog';
+import { Component, inject } from '@angular/core';
+import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
+import { AssetInventory } from '../assets-api';
+import { KeepOnToolbar, ShellService, SnackBarService, ToolbarButton } from '@ss/common/ui-shell';
+import { ActivatedRoute, RouterModule } from '@angular/router';
+import { UntypedFormBuilder, Validators } from '@angular/forms';
+import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
+import { FurnitureStatusService, LookupsService, OfficeService } from '@ss/common/api-lookup';
+import { AssetInventoryService } from '../services/asset-inventory.service';
+import { LoginService, MaterialModule } from '@ss/common/api-common';
+import { AccPoliciesService, ACCPolicy } from '@ss/accounting/accounting-api';
+import { Observable, switchMap } from 'rxjs';
+import { tap } from 'rxjs/operators';
+import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
+import { AssetLookupModel } from '../asset-lookup-model';
+import { AssetsService } from '../services/assets.service';
+import { InventoryImportComponent } from '@ss/logistics/ui-doc-import';
+import { MatDialog } from '@angular/material/dialog';
+import { CommonModule } from '@angular/common';
+import { CommonUiLangModule } from '@ss/common/ui-lang';
+import { CommonUiImageInputModule } from '@ss/common/ui-image-input';
+import { UiPaginationModule } from '@ss/common/ui-pagination';
+import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
+import { CustomAttributesModule } from '@ss/custom-attributes';
+import { AppArchiveModule } from '@ss/common/app-archive';
+import { QRCodeModule } from 'angularx-qrcode';
 
 @Component({
-  selector: 'ss-asset-inventory',
-  templateUrl: './asset-inventory-detail.component.html',
-  styleUrls: ['./asset-inventory-detail.component.scss']
+    selector: 'ss-asset-inventory',
+    templateUrl: './asset-inventory-detail.component.html',
+    styleUrls: ['./asset-inventory-detail.component.scss'],
+    standalone: true,
+    imports: [
+        CommonModule,
+        MaterialModule,
+        CommonUiLangModule,
+        CommonUiImageInputModule,
+        UiPaginationModule,
+        CommonUiConfirmationDialogModule,
+        CommonUiAutoCompleteModule,
+        CommonUiDatepickerModule,
+        RouterModule,
+        CustomAttributesModule,
+        AppArchiveModule,
+        QRCodeModule
+    ]
+
 })
 export class AssetInventoryDetailComponent extends BaseEntityDetailComponent<AssetInventory> {
     private loginSrv = inject(LoginService);
@@ -31,9 +55,9 @@ export class AssetInventoryDetailComponent extends BaseEntityDetailComponent<Ass
 
     private accPolicy: ACCPolicy | null = null;
 
-    officeLookup      = new DefaultAutoCompleteModel(this.officeSrv);
-    assetLookupModel  = new AssetLookupModel(this.assetSrv);
-    statusLookup      = new DefaultAutoCompleteModel(this.statusSrv);
+    officeLookup = new DefaultAutoCompleteModel(this.officeSrv);
+    assetLookupModel = new AssetLookupModel(this.assetSrv);
+    statusLookup = new DefaultAutoCompleteModel(this.statusSrv);
 
     constructor(
         public override entitySrv: AssetInventoryService,
@@ -49,14 +73,14 @@ export class AssetInventoryDetailComponent extends BaseEntityDetailComponent<Ass
     public override setupForm(b: AssetInventory) {
         this.id = this.id || 0;
         return this.formBuilder.group({
-            id:         [b.id || 0],
-            centerId:   [this.loginSrv.appCtx.center],
-            office:     [b.office, Validators.required],
-            investId:   [b.investId],
-            status:      [b.status],
+            id: [b.id || 0],
+            centerId: [this.loginSrv.appCtx.center],
+            office: [b.office, Validators.required],
+            investId: [b.investId],
+            status: [b.status],
             inventYear: [b.inventYear | this.accPolicy?.inventoryYear, Validators.required],
-            date:       [b.date || new Date(), Validators.required],
-            inventMemo: [b.inventMemo],
+            date: [b.date || new Date(), Validators.required],
+            inventMemo: [b.inventMemo]
         });
     }
 
@@ -64,14 +88,14 @@ export class AssetInventoryDetailComponent extends BaseEntityDetailComponent<Ass
         return this.loginSrv
             .loadContext()
             .pipe(switchMap(_ => this.policySrv.get(this.loginSrv.appCtx.center)),
-                  tap(res => {
-                      this.accPolicy = res;
-                      this.entitySrv.setParentId(res.inventoryYear);
-                  }));
+                tap(res => {
+                    this.accPolicy = res;
+                    this.entitySrv.setParentId(res.inventoryYear);
+                }));
     }
 
 
     onScan(data: any) {
-        console.log(data)
+        console.log(data);
     }
 }

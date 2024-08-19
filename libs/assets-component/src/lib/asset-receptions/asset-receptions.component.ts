@@ -1,18 +1,43 @@
-import { Component} from '@angular/core';
-import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
-import {ShellService, SnackBarService} from '@ss/common/ui-shell';
-import {ActivatedRoute, Router} from '@angular/router';
-import {DefaultReportService} from '@ss/common/ui-default-report-component';
-import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import {IsParamService, PaginationModel, PaginatorPersistenceService} from '@ss/common/api-common';
-import {Asset, AssetReception} from '../assets-api';
-import {AssetReceptionService} from '../services/asset-reception.service';
-import {tap} from 'rxjs/operators';
+import { Component } from '@angular/core';
+import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
+import { ShellService, SnackBarService } from '@ss/common/ui-shell';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
+import { DefaultReportService } from '@ss/common/ui-default-report-component';
+import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
+import { IsParamService, MaterialModule, PaginationModel, PaginatorPersistenceService } from '@ss/common/api-common';
+import { Asset, AssetReception } from '../assets-api';
+import { AssetReceptionService } from '../services/asset-reception.service';
+import { tap } from 'rxjs/operators';
+import { CommonModule } from '@angular/common';
+import { CommonUiLangModule } from '@ss/common/ui-lang';
+import { CommonUiImageInputModule } from '@ss/common/ui-image-input';
+import { UiPaginationModule } from '@ss/common/ui-pagination';
+import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
+import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
+import { CustomAttributesModule } from '@ss/custom-attributes';
+import { AppArchiveModule } from '@ss/common/app-archive';
+import { QRCodeModule } from 'angularx-qrcode';
 
 @Component({
-  selector: 'ss-asset-receptions',
-  templateUrl: './asset-receptions.component.html',
-  styleUrls: ['./asset-receptions.component.scss']
+    selector: 'ss-asset-receptions',
+    templateUrl: './asset-receptions.component.html',
+    styleUrls: ['./asset-receptions.component.scss'],
+    standalone: true,
+    imports: [
+        CommonModule,
+        MaterialModule,
+        CommonUiLangModule,
+        CommonUiImageInputModule,
+        UiPaginationModule,
+        CommonUiConfirmationDialogModule,
+        CommonUiAutoCompleteModule,
+        CommonUiDatepickerModule,
+        RouterModule,
+        CustomAttributesModule,
+        AppArchiveModule,
+        QRCodeModule
+    ]
+
 })
 export class AssetReceptionsComponent extends BaseEntityListComponent<AssetReception> {
     private DEF_COLS = [
@@ -81,7 +106,7 @@ export class AssetReceptionsComponent extends BaseEntityListComponent<AssetRecep
         this.shellSrv.updateShell();
         this.isParamSrv
             .is('AQS')
-            .pipe(tap(res => res? this.detailColumns = this.AQS_COLS : this.DEF_COLS))
+            .pipe(tap(res => res ? this.detailColumns = this.AQS_COLS : this.DEF_COLS));
     }
 
     override select(id: number) {
@@ -90,8 +115,8 @@ export class AssetReceptionsComponent extends BaseEntityListComponent<AssetRecep
     }
 
     override selectRow(ar: AssetReception) {
-      super.selectRow(ar);
-      this.deleteButton.disabled = !!ar.validated;
+        super.selectRow(ar);
+        this.deleteButton.disabled = !!ar.validated;
     }
 
     openAsset(id: number) {

@@ -1,20 +1,45 @@
 import { Component, OnInit } from '@angular/core';
-import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
-import {AssetLocation} from '../assets-api';
-import {Bank, BankService} from '@ss/administration/api-bank';
-import {ShellService, SnackBarService} from '@ss/common/ui-shell';
-import {ActivatedRoute} from '@angular/router';
-import {UntypedFormBuilder, Validators} from '@angular/forms';
-import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import {LookupsService} from '@ss/common/api-lookup';
-import {AssetLocationService} from '../services/asset-location.service';
-import {LoginService} from '@ss/common/api-common';
-import {Observable} from 'rxjs';
+import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
+import { AssetLocation } from '../assets-api';
+import { Bank, BankService } from '@ss/administration/api-bank';
+import { ShellService, SnackBarService } from '@ss/common/ui-shell';
+import { ActivatedRoute, RouterModule } from '@angular/router';
+import { UntypedFormBuilder, Validators } from '@angular/forms';
+import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
+import { LookupsService } from '@ss/common/api-lookup';
+import { AssetLocationService } from '../services/asset-location.service';
+import { LoginService, MaterialModule } from '@ss/common/api-common';
+import { Observable } from 'rxjs';
+import { CommonModule } from '@angular/common';
+import { CommonUiLangModule } from '@ss/common/ui-lang';
+import { CommonUiImageInputModule } from '@ss/common/ui-image-input';
+import { UiPaginationModule } from '@ss/common/ui-pagination';
+import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
+import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
+import { CustomAttributesModule } from '@ss/custom-attributes';
+import { AppArchiveModule } from '@ss/common/app-archive';
+import { QRCodeModule } from 'angularx-qrcode';
 
 @Component({
-  selector: 'ss-asset-locations-detail',
-  templateUrl: './asset-locations-detail.component.html',
-  styleUrls: ['./asset-locations-detail.component.scss']
+    selector: 'ss-asset-locations-detail',
+    templateUrl: './asset-locations-detail.component.html',
+    styleUrls: ['./asset-locations-detail.component.scss'],
+    standalone: true,
+    imports: [
+        CommonModule,
+        MaterialModule,
+        CommonUiLangModule,
+        CommonUiImageInputModule,
+        UiPaginationModule,
+        CommonUiConfirmationDialogModule,
+        CommonUiAutoCompleteModule,
+        CommonUiDatepickerModule,
+        RouterModule,
+        CustomAttributesModule,
+        AppArchiveModule,
+        QRCodeModule
+    ]
+
 })
 export class AssetLocationsDetailComponent extends BaseEntityDetailComponent<AssetLocation> {
 
@@ -28,12 +53,12 @@ export class AssetLocationsDetailComponent extends BaseEntityDetailComponent<Ass
         public lookupsSrv: LookupsService,
         private loginSrv: LoginService) {
         super(entitySrv,
-              shellSrv,
-              snackBarSrv,
-              route,
-              formBuilder,
-              confirmationSrv,
-              'ASSET_LOCATIONS');
+            shellSrv,
+            snackBarSrv,
+            route,
+            formBuilder,
+            confirmationSrv,
+            'ASSET_LOCATIONS');
         this.title = this.route.snapshot?.data['title'] || this.title;
     }
 

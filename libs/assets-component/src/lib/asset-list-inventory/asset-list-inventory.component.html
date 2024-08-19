@@ -1,54 +1,160 @@
 <mat-card>
     <div class="container__div">
         <mat-form-field>
-            <mat-label translate>ASSET_INVENTORY_DOC</mat-label>
+            <mat-label translate>ASSET_INVENTORY_DOCUMENT</mat-label>
             <ss-auto-complete matInput
                               [model]="inventoryDocLookup"
                               [formControl]="inventoryDoc">
             </ss-auto-complete>
         </mat-form-field>
-            <mat-form-field>
+
+        <form [formGroup]="formGroup" >
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>LOGISTICS_ACCOUNT_NO</mat-label>
+                <ss-auto-complete matInput
+                                  [model]="accountLookup"
+                                  required
+                                  formControlName="accountNo">
+                </ss-auto-complete>
+            </mat-form-field>
+
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>ASSET_SITE</mat-label>
+                <ss-auto-complete matInput
+                                  [model]="locationLookup"
+                                  formControlName="locationId">
+                </ss-auto-complete>
+            </mat-form-field>
+
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>ASSET_BUILDINGS</mat-label>
+                <ss-auto-complete matInput
+                                  [model]="buildingLookup"
+                                  formControlName="buildingId">
+                </ss-auto-complete>
+            </mat-form-field>
+
+            <mat-form-field class="default-50 sm-100">
                 <mat-label translate>COMMON_OFFICE</mat-label>
                 <ss-auto-complete matInput
                                   [model]="officeLookup"
-                                  [formControl]="officeCtrl">
+                                  formControlName="officeId">
                 </ss-auto-complete>
             </mat-form-field>
-            <button mat-mini-fab (click)="openSearchDlg()" type="button">
-                <i class="fa-solid fa-file-magnifying-glass"></i>
-            </button>
-        </div>
+
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>ASSET_BENEFICIARY</mat-label>
+                <ss-auto-complete matInput
+                                  [model]="beneficiaryLookup"
+                                  formControlName="beneficiary">
+                </ss-auto-complete>
+            </mat-form-field>
+
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>COMMON_CLASS</mat-label>
+                <ss-auto-complete matInput
+                                  [model]="classLookup"
+                                  formControlName="classId">
+                </ss-auto-complete>
+            </mat-form-field>
+
+            <div class="default-50 sm-100 ">
+                <mat-form-field>
+                    <mat-label translate>ASSET_RECEPTION_NUMBER</mat-label>
+                    <ss-auto-complete matInput
+                                      [model]="receptionLookup"
+                                      formControlName="receptionId">
+                    </ss-auto-complete>
+                </mat-form-field>
+            </div>
+        </form>
+    </div>
 </mat-card>
-<div class="table__div container">
-    <mat-table mat-table [dataSource]="data" class="main-table" matSort (matSortChange)="sort($event)">
+<div class="table__div">
+    <mat-table mat-table [dataSource]="data" matSort (matSortChange)="sort($event)">
 
         <ng-container matColumnDef="description">
             <mat-header-cell *matHeaderCellDef mat-sort-header translate>ADMINISTRATION_DESCRIPTION</mat-header-cell>
-            <mat-cell *matCellDef="let e" [ngClass]="{ sold: e.dateOut }">
+            <mat-cell *matCellDef="let e" >
                 {{ e.description }}
             </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="reference">
             <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_REFERENCE</mat-header-cell>
-            <mat-cell *matCellDef="let e" [ngClass]="{ sold: e.dateOut }">
+            <mat-cell *matCellDef="let e" >
                 {{ e.reference }}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="userDescription">
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_USERNAME</mat-header-cell>
+            <mat-cell *matCellDef="let e" >
+                {{ e.userDescription }}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="locationDescription">
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_LOCATION</mat-header-cell>
+            <mat-cell *matCellDef="let e" >
+                {{ e.locationDescription }}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="buildingDescription">
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>ASSET_SITE</mat-header-cell>
+            <mat-cell *matCellDef="let e" >
+                {{ e.buildingDescription }}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="serialNo">
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>ASSET_SERIAL_NUMBER</mat-header-cell>
+            <mat-cell *matCellDef="let e" >
+                {{ e.serialNo }}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="receptionNumber">
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>ASSET_RECEPTION_NUMBER</mat-header-cell>
+            <mat-cell *matCellDef="let e" >
+                {{ e.receptionNumber }}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="comment">
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_MEMO</mat-header-cell>
+            <mat-cell *matCellDef="let e" >
+                {{ e.comment }}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="date">
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_DATE</mat-header-cell>
+            <mat-cell *matCellDef="let e" >
+                {{ e.date | date:'dd/MM/yyyy' }}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="acquisitionDate">
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>ASSET_ACQUISITION_DATE</mat-header-cell>
+            <mat-cell *matCellDef="let e" >
+                {{ e.acquisitionDate | date:'dd/MM/yyyy' }}
             </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="officeDescription">
             <mat-header-cell *matHeaderCellDef mat-sort-header translate>ASSET_LOCATIONS</mat-header-cell>
-            <mat-cell *matCellDef="let e" [ngClass]="{ sold: e.dateOut }">
+            <mat-cell *matCellDef="let e" >
                 {{ e.officeDescription }}
             </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="recorded">
-            <mat-header-cell *matHeaderCellDef translate><i class="fa-solid fa-location-question located"></i>
+            <mat-header-cell *matHeaderCellDef translate><i class="fa-solid fa-check-double located"></i>
             </mat-header-cell>
             <mat-cell *matCellDef="let e">
-
-                <mat-checkbox [checked]="(e.inventoryId||0) > 0" (click)="update(e)"></mat-checkbox>
+                <mat-checkbox [checked]="(e.inventoryId||0) > 0" (click)="update(e)" [disabled]="!isEditable()"></mat-checkbox>
             </mat-cell>
         </ng-container>
 

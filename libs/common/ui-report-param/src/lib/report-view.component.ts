@@ -56,6 +56,7 @@ import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
     ],
 })
 export class ReportViewComponent extends BaseEntityListComponent<ReportParam> implements OnInit, OnDestroy {
+    private deviceService = inject( DeviceDetectorService);
     private paramLookupSrv = inject(ReportParamLookupService);
 
     @ViewChild('tree', { static: false }) tree: MatTree<unknown>;
@@ -99,12 +100,11 @@ export class ReportViewComponent extends BaseEntityListComponent<ReportParam> im
         public sanitizer: DomSanitizer,
         public langSrv: LanguageService,
         public override defReportSrv: DefaultReportService,
-        private deviceService: DeviceDetectorService,
         private loginSrv: LoginService,
         private httpSrv: HttpService,
         public override pagPersistSrv: PaginatorPersistenceService) {
         super(reportService, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv, 'COMMON_REPORTS');
-        const os = deviceService.getDeviceInfo().os.toLowerCase();
+        const os = this.deviceService.getDeviceInfo().os.toLowerCase();
         this.isAndroid = os === 'android' || os === 'ios';
     }
 
@@ -163,7 +163,7 @@ export class ReportViewComponent extends BaseEntityListComponent<ReportParam> im
             this.form = new FormGroup(cc);
         });
         if (this.tree) {
-            this.tree.treeControl.collapseAll();
+            this.tree.collapseAll();
         }
     }
 

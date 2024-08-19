@@ -32,7 +32,8 @@
     "BLOCK_NO": "رقم المبنى",
     "FLOOR_NO": "رقم الطابق",
     "APPOINTMENTS": "تخصيصات",
-    "MIN_VALUE": "الحد الأدنى لقيمة الأصول",
+    "MIN_VALUE": "الحد الأدنى ",
+    "MAX_VALUE": "الحد الأقصى ",
     "RECEPTIONS": "الاستقبال",
     "BENEFICIARY": "المستفيد",
     "INVENTORY_YEAR": "سنة الجرد",
@@ -68,5 +69,8 @@
     "ADD":                 "إضافة",
     "REMOVE":              "إزالة",
     "IS_VEHICLE":          "مركبة؟",
-    "BLOCK":               "مربع"
+    "BLOCK":               "مربع",
+    "INVENTORY_DOCUMENTS": "وثيقة الجرد",
+    "INVENTORY_DOCUMENT": "وثيقات الجرد",
+    "UNIDENTIFIED_INVENTORY": "مخزون غير محدد"
 }

@@ -68,7 +68,7 @@ export class AssetsInventoryDocListComponent extends BaseEntityListComponent<Ass
             confirmationSrv,
             defReportSrv,
             pagPersistSrv,
-            'ASSETS');
+            'ASSET_INVENTORY_DOCUMENT');
         this.pagination.pageSize = 10;
     }
 }

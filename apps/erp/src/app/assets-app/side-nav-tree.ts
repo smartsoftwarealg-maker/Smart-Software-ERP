@@ -25,7 +25,7 @@ import {
     ABS_ASSET_TRANSFER_URL,
     ABS_ASSETS_TREE_URL,
     ABS_BC_ASSET_INVENTORY_URL,
-    ABS_ASSETS_INVENTORY_DOC
+    ABS_ASSETS_INVENTORY_DOC, ABS_ASSETS_UNIDENTIFIED
 } from '../common';
 
 export const assetsNavTree: SideNavNode = {
@@ -148,22 +148,28 @@ export const assetsNavTree: SideNavNode = {
             accessRights: 'Asset'
         },
         {
-            name: 'INVENTORY',
-            icon: 'fa-solid fa-scanner-gun',
-            route: ABS_ASSET_INVENTORY_URL,
-            accessRights: 'AssetInventory'
-        },
-        {
             name: 'ASSET_INVENTORY_DOCUMENT',
             icon: 'fa-solid fa-file-spreadsheet',
             route: ABS_ASSETS_INVENTORY_DOC,
             accessRights: 'AssetInventoryDoc'
         },
         {
+            name: 'INVENTORY',
+            icon: 'fa-solid fa-scanner-gun',
+            route: ABS_ASSET_INVENTORY_URL,
+            accessRights: 'AssetInventory'
+        },
+        {
             name: 'COMMON_INVENTORY2',
             icon: 'fa-solid fa-barcode-read',
             route: ABS_BC_ASSET_INVENTORY_URL,
             accessRights: 'AssetInventory'
+        },
+        {
+            name: 'ASSET_UNIDENTIFIED_INVENTORY',
+            icon: 'fa-solid fa-address-card',
+            route: ABS_ASSETS_UNIDENTIFIED,
+            accessRights: 'UnidentifiedInventory'
         },
         {
             name: 'ASSET_TRANSFER',
