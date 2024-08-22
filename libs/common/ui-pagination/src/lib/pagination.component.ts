@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, inject, Input, OnInit, ViewChild } from '@angular/core';
 import {ExtendedPaginationModel, isString, LanguageService, PaginationModel} from '@ss/common/api-common';
 
 
@@ -9,6 +9,7 @@ import {ExtendedPaginationModel, isString, LanguageService, PaginationModel} fro
     styleUrls: ['./pagination.component.scss']
 })
 export class PaginationComponent implements OnInit {
+    public langSrv = inject(LanguageService);
 
     @Input()
     set paginationModel(model: PaginationModel) {
@@ -25,8 +26,6 @@ export class PaginationComponent implements OnInit {
 
     // @Output() paginationChanged = new EventEmitter<PaginationModel>();
 
-    constructor(public langSrv: LanguageService) {
-    }
 
     model: ExtendedPaginationModel = new ExtendedPaginationModel(1, 5, 5);
     // lastModel: ExtendedPaginationModel = this.model.copy() as ExtendedPaginationModel;
@@ -54,7 +53,7 @@ export class PaginationComponent implements OnInit {
             const data = evt.clipboardData.getData('text/plain').trim();
             if (data != null && data !== '') {
                 if (/^[0-9]+$/.test(data)) {
-                    (evt.target as any).value = +data;
+                    evt.target['value'] = +data;
                 }
             }
             return false;

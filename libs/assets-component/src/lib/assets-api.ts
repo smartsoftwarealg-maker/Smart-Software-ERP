@@ -344,6 +344,7 @@ export interface AssetInventoryDoc {
 }
 
 export interface AssetInventoryFilter {
+    id: number;
     accountNo?: string;
     minValue: number;
     maxValue: number;

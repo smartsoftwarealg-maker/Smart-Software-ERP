@@ -1,4 +1,4 @@
-import { Component, DestroyRef, inject, OnInit, signal } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import {
     AssetBuilding,
@@ -9,7 +9,7 @@ import {
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
-import { LoginService, MaterialModule, PaginatorPersistenceService } from '@ss/common/api-common';
+import { MaterialModule, PaginatorPersistenceService } from '@ss/common/api-common';
 import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
 import { CommonModule } from '@angular/common';
 import { CommonUiLangModule } from '@ss/common/ui-lang';
@@ -20,7 +20,7 @@ import { CustomAttributesModule } from '@ss/custom-attributes';
 import { AppArchiveModule } from '@ss/common/app-archive';
 import { QRCodeModule } from 'angularx-qrcode';
 import { DefaultReportService } from '@ss/common/ui-default-report-component';
-import { Lookup, Office, OfficeService } from '@ss/common/api-lookup';
+import { Office, OfficeService } from '@ss/common/api-lookup';
 import { FormBuilder, FormControl } from '@angular/forms';
 import { AssetListInventoryService } from '../services/asset-list-inventory.service';
 import { MatDialog } from '@angular/material/dialog';
@@ -53,8 +53,6 @@ import { AssetReceptionService } from '../services/asset-reception.service';
     ],
 })
 export class AssetListInventoryComponent extends BaseEntityListComponent<InventoryAsset> implements OnInit {
-    private destroyRef   = inject(DestroyRef);
-    private loginSrv     = inject(LoginService);
     private fb           = inject(FormBuilder);
     private buildingSrv  = inject(AssetsBuildingService);
     private accountSrv   = inject(AccountService);
@@ -82,6 +80,7 @@ export class AssetListInventoryComponent extends BaseEntityListComponent<Invento
     isEditable = signal(false);
 
     formGroup   = this.fb.group({
+        id:           [0],
         officeId:     [0],
         accountNo:    [''],
         buildingId:   [0],
@@ -156,15 +155,16 @@ export class AssetListInventoryComponent extends BaseEntityListComponent<Invento
         this.buildingSrv.setParentId(d.locationId||0);
         this.officeSrv.setParentId(d.buildingId||0);
         this.listSrv.document = {
-            officeId: d.officeId,
-            accountNo: d.accountNo,
-            buildingId: d.buildingId,
+            id:          d.id,
+            officeId:    d.officeId,
+            accountNo:   d.accountNo,
+            buildingId:  d.buildingId,
             beneficiary: d.beneficiary,
-            locationId: d.locationId,
-            classId: d.classId,
+            locationId:  d.locationId,
+            classId:     d.classId,
             receptionNo: d.receptionNo,
-            minValue: d.minValue,
-            maxValue: d.maxValue
+            minValue:    d.minValue,
+            maxValue:    d.maxValue
         };
         this.formGroup.controls.officeId.setValue(d.officeId||0);
         this.formGroup.controls.accountNo.setValue(d.accountNo||'');

@@ -72,5 +72,7 @@
     "BLOCK":               "Bloc",
     "INVENTORY_DOCUMENT":  "Document d'inventaire",
     "INVENTORY_DOCUMENTS": "Documents d'inventaire",
-    "UNIDENTIFIED_INVENTORY": "Inventaire non identifié"
+    "UNIDENTIFIED_INVENTORY": "Inventaire non identifié",
+    "RECORDED_ARTICLES":      "Articles enregistrés",
+    "MISSING_ARTICLES":       "Articles manquants"
 }

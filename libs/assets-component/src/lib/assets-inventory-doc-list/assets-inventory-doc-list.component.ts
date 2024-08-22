@@ -1,12 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { AssetInventoryDoc } from '../assets-api';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { DefaultReportService} from '@ss/common/ui-default-report-component';
 import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
-import { IsParamService, MaterialModule, PaginatorPersistenceService } from '@ss/common/api-common';
-import { MatDialog} from '@angular/material/dialog';
+import { MaterialModule, PaginationModel, PaginatorPersistenceService } from '@ss/common/api-common';
 import { CommonModule } from '@angular/common';
 import { CommonUiLangModule } from '@ss/common/ui-lang';
 import { CommonUiImageInputModule } from '@ss/common/ui-image-input';
@@ -17,6 +16,12 @@ import { CustomAttributesModule } from '@ss/custom-attributes';
 import { AppArchiveModule } from '@ss/common/app-archive';
 import { QRCodeModule } from 'angularx-qrcode';
 import { AssetInventoryDocService } from '../services/asset-inventory-doc.service';
+import {
+    AssetRecordedInventoryReportComponent
+} from '../asset-inventory-report/asset-recorded-inventory-report.component';
+import {
+    AssetUnidentifiedChildInventoryListComponent
+} from '../asset-unidentified-child-inventory-list/asset-unidentified-child-inventory-list.component';
 
 @Component({
     selector: 'ss-assets-inventory-doc-list',
@@ -35,11 +40,13 @@ import { AssetInventoryDocService } from '../services/asset-inventory-doc.servic
         RouterModule,
         CustomAttributesModule,
         AppArchiveModule,
-        QRCodeModule
+        QRCodeModule,
+        AssetRecordedInventoryReportComponent,
+        AssetUnidentifiedChildInventoryListComponent
     ]
 })
 export class AssetsInventoryDocListComponent extends BaseEntityListComponent<AssetInventoryDoc> {
-
+    selectedTab = signal(0);
     displayedColumns = [
         'description',
         'creationDate',
@@ -49,7 +56,6 @@ export class AssetsInventoryDocListComponent extends BaseEntityListComponent<Ass
         'closed'
     ];
 
-
     constructor(public listSrv: AssetInventoryDocService,
                 public override shellSrv: ShellService,
                 public override snackBarSrv: SnackBarService,
@@ -57,9 +63,7 @@ export class AssetsInventoryDocListComponent extends BaseEntityListComponent<Ass
                 public override router: Router,
                 public override defReportSrv: DefaultReportService,
                 public override confirmationSrv: ConfirmationDialogService,
-                public override pagPersistSrv: PaginatorPersistenceService,
-                private dialog: MatDialog,
-                private isParamSrv: IsParamService) {
+                public override pagPersistSrv: PaginatorPersistenceService) {
         super(listSrv,
             shellSrv,
             snackBarSrv,
@@ -69,6 +73,10 @@ export class AssetsInventoryDocListComponent extends BaseEntityListComponent<Ass
             defReportSrv,
             pagPersistSrv,
             'ASSET_INVENTORY_DOCUMENT');
-        this.pagination.pageSize = 10;
+        this.pagination.pageSize = 5;
+    }
+
+    onTab(e: number) {
+        this.selectedTab.set(e);
     }
 }

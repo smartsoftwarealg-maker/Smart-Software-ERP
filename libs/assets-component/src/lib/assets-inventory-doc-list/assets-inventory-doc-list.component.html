@@ -53,3 +53,27 @@
 <div class="container b-b-background">
     <ss-pagination [paginationModel]="pagination"></ss-pagination>
 </div>
+
+<div class="container">
+    <mat-tab-group (selectedIndexChange)="onTab($event)" [dynamicHeight]="true">
+        <mat-tab>
+            <ng-template mat-tab-label>
+                <span translate>ASSET_RECORDED_ARTICLES</span>
+            </ng-template>
+             <ss-asset-recorded-inventory-report [documentId]="selectedRow" [recorded]="selectedTab() === 0"></ss-asset-recorded-inventory-report>
+        </mat-tab>
+        <mat-tab>
+            <ng-template mat-tab-label>
+                <span translate>ASSET_MISSING_ARTICLES</span>
+            </ng-template>
+                <ss-asset-recorded-inventory-report [documentId]="selectedRow" [recorded]="selectedTab() === 0"></ss-asset-recorded-inventory-report>
+        </mat-tab>
+        <mat-tab>
+            <ng-template mat-tab-label>
+                <span translate>ASSET_UNIDENTIFIED_INVENTORY</span>
+            </ng-template>
+            <ss-asset-unidentified-child-inventory-list [documentId]="selected||0"></ss-asset-unidentified-child-inventory-list>
+        </mat-tab>
+
+    </mat-tab-group>
+</div>
