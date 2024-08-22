@@ -72,5 +72,7 @@
     "BLOCK":               "Block",
     "INVENTORY_DOCUMENTS": "Inventory document",
     "INVENTORY_DOCUMENT":  "Inventory document",
-    "UNIDENTIFIED_INVENTORY": "Unidentified inventory"
+    "UNIDENTIFIED_INVENTORY": "Unidentified inventory",
+    "RECORDED_ARTICLES": "Recorded articles",
+    "MISSING_ARTICLES": "Missing articles"
 }

@@ -72,5 +72,7 @@
     "BLOCK":               "مربع",
     "INVENTORY_DOCUMENTS": "وثيقة الجرد",
     "INVENTORY_DOCUMENT": "وثيقات الجرد",
-    "UNIDENTIFIED_INVENTORY": "مخزون غير محدد"
+    "UNIDENTIFIED_INVENTORY": "مخزون غير محدد",
+    "RECORDED_ARTICLES": "مقالات مسجلة",
+    "MISSING_ARTICLES": "مقالات مفقودة"
 }
