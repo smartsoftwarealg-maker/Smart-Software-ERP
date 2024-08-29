@@ -25,7 +25,7 @@ import {
     STOCK_PRICE_RECALCULATION_URL,
     STOCK_CONSUMPTION_CANCELLATION_URL,
     STOCK_PARTS_REQUEST_URL,
-    ADMIN_REPORT_RIGHTS_URL, REFERENCE_CORRECTION_URL, STOCK_RESERVATIONS_URL
+    ADMIN_REPORT_RIGHTS_URL, REFERENCE_CORRECTION_URL, STOCK_RESERVATIONS_URL, STOCK_ARTICLE_TYPE_URL
 } from '../common';
 import {
     ABS_INDEX_URL,
@@ -104,6 +104,10 @@ import {
 } from '@logistics/parts-reservation';
 import { UserStoresComponent } from '@ss/master-data/ui-store';
 import { ArticleDetailComponent, ArticleListComponent, ReferenceCorrectionComponent } from '@ss/master-data/ui-article';
+import {
+    ArticleTypeDetailComponent,
+    ArticleTypeListComponent
+} from '../../../../../libs/common/ui-lookup/src/lib/components/article-type.component';
 
 export const mainRoutes: Routes = [
     {
@@ -633,6 +637,22 @@ export const mainRoutes: Routes = [
             {
                 path: ':id',
                 component: ClassDetailComponent,
+                canActivate: [loginGuard],
+                canDeactivate: [CanDeactivateService]
+            },
+            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
+        ]
+    },
+    {
+        path: STOCK_ARTICLE_TYPE_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: ArticleTypeListComponent
+            },
+            {
+                path: ':id',
+                component: ArticleTypeDetailComponent,
                 canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService]
             },

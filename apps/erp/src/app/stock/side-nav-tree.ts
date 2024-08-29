@@ -21,7 +21,11 @@ import {
     ABS_STOCK_STOCK_ACCOUNT_URL,
     ABS_INVENTORY_PRICE_RECALCULATION_URL,
     ABS_STOCK_CONSUMPTION_CANCELLATION_URL,
-    ABS_STOCK_PARTS_REQUEST_URL, ABS_STOCK_REPORT_RIGHT_URL, ABS_REFERENCE_CORRECTION_URL, ABS_STOCK_RESERVATION_URL
+    ABS_STOCK_PARTS_REQUEST_URL,
+    ABS_STOCK_REPORT_RIGHT_URL,
+    ABS_REFERENCE_CORRECTION_URL,
+    ABS_STOCK_RESERVATION_URL,
+    ABS_STOCK_ARTICLE_TYPES_URL, ABS_STOCK_MARKS_URL
 } from '../common';
 import {SideNavNode} from '@ss/common/api-common';
 
@@ -35,6 +39,18 @@ export const stockNavTree: SideNavNode = {
             icon: 'fa-solid fa-family',
             route: ABS_STOCK_CLASSES_URL,
             accessRights: 'Klass'
+        },
+        {
+            name: 'COMMON_TYPES',
+            icon: 'fa-solid fa-people-roof',
+            route: ABS_STOCK_ARTICLE_TYPES_URL,
+            accessRights: 'ArticleType'
+        },
+        {
+            name: 'COMMON_MARKS',
+            icon: 'fa-solid fa-copyright',
+            route: ABS_STOCK_MARKS_URL,
+            accessRights: 'Mark'
         },
         {
             name: 'STOCK_ARTICLES',

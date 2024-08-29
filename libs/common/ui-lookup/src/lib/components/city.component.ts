@@ -8,12 +8,12 @@ import {UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {PaginatorPersistenceService} from '@ss/common/api-common';
-import { DairaService } from '../../../../api-lookup/src/lib/dira.service';
+import { DairaService } from '@ss/common/api-lookup';
 
 
 @Component({
     selector: 'ss-city-list',
-    templateUrl: './city-list.component.html',
+    templateUrl: '../city/city-list.component.html',
     styleUrls: ['../base-templates/classes.scss']
 })
 export class CityListComponent extends BaseEntityListComponent<City> {
@@ -37,7 +37,7 @@ export class CityListComponent extends BaseEntityListComponent<City> {
 
 @Component({
     selector: 'ss-city-detail',
-    templateUrl: './city-detail.component.html',
+    templateUrl: '../city/city-detail.component.html',
     styleUrls: ['../base-templates/detail-template.scss']
 })
 export class CityDetailComponent extends BaseEntityDetailComponent<City> {

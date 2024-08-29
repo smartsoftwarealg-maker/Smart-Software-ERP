@@ -5,9 +5,7 @@ import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from "@ss/common
 import {
     ClassService,
     LookupsService,
-    Mark,
     TypeService,
-    Unit,
     UnitService,
     Vat,
     VatService
@@ -62,7 +60,6 @@ import { ColorPickerModule } from "ngx-color-picker";
 export class ArticleDetailComponent  extends BaseEntityDetailComponent<Article> implements OnInit {
     private classSrv  = inject(ClassService);
     private typeSrv  = inject(TypeService);
-    private vatSrv  = inject(VatService);
     private unitSrv  = inject(UnitService);
 
     imageModel: ImageModel;
