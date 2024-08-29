@@ -44,8 +44,11 @@ export class SalesScheduleListComponent extends BaseEntityListComponent<Schedule
         'productDescription',
         'qty',
         'price',
+        'vat',
         'discount',
-        'invoiceNo'
+        'invoiceNo',
+        'isPrinted',
+        'canceled',
         // 'is_desktop'
     ];
 
@@ -67,14 +70,16 @@ export class SalesScheduleListComponent extends BaseEntityListComponent<Schedule
             defReportSrv,
             pagPersistSrv,
             'SCH_SCHEDULES');
+        this.agentId = this.entitySrv.getParentId() || 0;
+        this.agentFC.setValue(this.agentId);
         this.customerLookup.onObjectSelected = (a) => this.onAgent(a?.id);
         this.pagination.pageSize = 10;
     }
 
     override ngOnInit() {
-        this.editButton.visible = this.deleteButton.visible = this.addButton.visible = this.agentId === 0;
+        // this.editButton.visible = this.deleteButton.visible = this.addButton.visible = this.agentId === 0;
         super.ngOnInit();
-        this.onAgent(this.agentId);
+        this.onAgent(this.entitySrv.getParentId() || 0);
     }
 
     onAgent(id?: number) {

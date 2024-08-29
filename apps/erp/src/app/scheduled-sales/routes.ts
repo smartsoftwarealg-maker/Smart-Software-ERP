@@ -35,7 +35,7 @@ import {
     VatListComponent
 } from '@ss/common/ui-lookup';
 import {SupplierTrucksDetailComponent, SupplierTrucksListComponent} from '@ss/scheduled-sales/supplier-trucks';
-import {loginGuard} from '../erp-guards';
+import { loginGuard, ssProjectGuard } from '../erp-guards';
 import {
     AgentDetailComponent,
     AgentListComponent,
@@ -189,7 +189,7 @@ export const scheduledSalesRoutes: Routes = [
             {
                 path: ':id',
                 component: ProjectDetailComponent,
-                canActivate: [loginGuard],
+                canActivate: [loginGuard, ssProjectGuard],
                 canDeactivate: [CanDeactivateService]
             },
             { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
