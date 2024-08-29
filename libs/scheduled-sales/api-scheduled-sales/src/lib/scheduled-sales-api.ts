@@ -1,6 +1,6 @@
 import {ImageModel} from '@ss/common/ui-image-input';
 
-export const SS_PROJECT_URL     = '/ssales/projects';
+export const SS_PROJECT_URL     = '/projects';
 export const SS_ARTICLE_URL     = '/ssales/articles';
 export const SS_SCHEDULE_URL    = '/schedules';
 export const SS_QUOTA_URL       = '/ssales/quotas';
@@ -10,11 +10,12 @@ export const SS_TRUCK_URL       = '/ssales/trucks';
 export const SS_CONTRACT_URL    = '/ssales/supplier-contracts';
 export const SS_SCHEDULE_AGENTS = '/ssales/agents';
 export const SS_PAYMENTS = '/ssales/payments';
+export const SS_AGENTS = '/ssales/agents';
 
 
 export interface SSProject {
     id: number;
-    agentId: number;
+    parentId: number;
     centerId: number;
     description?: string;
     project_code?: string;
@@ -112,6 +113,7 @@ export interface Schedule {
     centerId: number;
     parentId: number;
     productRef?: string;
+    productId?: number;
     qty: number;
     price: number;
     vat: number;
@@ -232,4 +234,11 @@ export interface Payment {
 export interface Turnover {
     id: number;
     turnover: number;
+}
+
+export interface Quantities {
+    id: number;
+    qty: number;
+    scheduled: number;
+    remaining: number;
 }

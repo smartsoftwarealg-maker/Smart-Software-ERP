@@ -48,22 +48,24 @@ export class SalesQuotaDetailComponent extends BaseEntityDetailComponent<Quota> 
         public override confirmationSrv: ConfirmationDialogService,
         public lookupsSrv: LookupsService) {
         super(entitySrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'SCH_QUOTAS');
+        this.customerLookup.onObjectSelected = c => this.entitySrv.setParentId(c?.id||0)
     }
 
     public override setupForm(b: Quota) {
         // Make sure to update the template if you edit the configuration here
         return this.formBuilder.group({
-            id: [b.id],
-            salesDate: [b.salesDate || new Date(), Validators.required],
-            agentId: [b.agentId, Validators.required],
-            productId: [b.productId, Validators.required],
-            exworks: [b.exworks || true, Validators.required],
-            qty: [b.qty, Validators.required],
+            id:           [b.id],
+            centerId:     [b.centerId||this.loginSrv.appCtx.center, Validators.required],
+            salesDate:    [b.salesDate || new Date(), Validators.required],
+            agentId:      [b.agentId, Validators.required],
+            productId:    [b.productId, Validators.required],
+            exworks:      [b.exworks || true, Validators.required],
+            qty:          [b.qty, Validators.required],
             discountType: [b.discountType],
-            discount:   [b.discount || 0, Validators.required],
-            discount_2: [b.discount_2 || 0, Validators.required],
-            discount_3: [b.discount_3 || 0, Validators.required],
-            canceled:   [b.canceled || false]
+            discount:     [b.discount || 0, Validators.required],
+            discount_2:   [b.discount_2 || 0, Validators.required],
+            discount_3:   [b.discount_3 || 0, Validators.required],
+            canceled:     [b.canceled || false]
         });
     }
 

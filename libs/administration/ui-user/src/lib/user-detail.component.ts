@@ -87,7 +87,7 @@ export class UserDetailComponent extends BaseEntityDetailComponent<User> {
             this.curUser.password = this.pwd1.value;
             this.userSrv
                 .updatePassword( { id: this.curUser.id, password: this.pwd1.value })
-                .subscribe(res => this.snackBarSrv.showMessage('COMMON_SUCCESS', false, false));
+                .subscribe(() => this.snackBarSrv.showMessage('COMMON_SUCCESS', false, false));
         }
     }
 
@@ -111,7 +111,7 @@ export class UserDetailComponent extends BaseEntityDetailComponent<User> {
         if (this.roleCtrl.value != null) {
             this.userSrv
                 .addRole(this.curUser.id, this.roleCtrl.value)
-                .pipe(switchMap(res => this.userSrv.loadRoles(this.curUser.id)))
+                .pipe(switchMap(() => this.userSrv.loadRoles(this.curUser.id)))
                 .subscribe(res => {
                     this.userRoles = res;
                     this.snackBarSrv.showSuccessMessage();
@@ -143,7 +143,7 @@ export class UserDetailComponent extends BaseEntityDetailComponent<User> {
         if (this.centerCtrl.value != null) {
             this.userSrv
                 .addCenter(this.curUser.id, this.centerCtrl.value)
-                .pipe(switchMap(res => this.userSrv.loadCenters(this.curUser.id)))
+                .pipe(switchMap(() => this.userSrv.loadCenters(this.curUser.id)))
                 .subscribe(res => {
                     this.userCenters = res;
                     this.snackBarSrv.showSuccessMessage();
@@ -161,7 +161,7 @@ export class UserDetailComponent extends BaseEntityDetailComponent<User> {
             .loadCenters(this.curUser.id)
             .pipe(
                 tap(res => this.userCenters = res),
-                switchMap(res => this.userSrv.loadRoles(this.curUser.id))
+                switchMap(() => this.userSrv.loadRoles(this.curUser.id))
             ).subscribe(res => this.userRoles = res);
 
     }

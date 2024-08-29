@@ -46,6 +46,7 @@ import { UiPaginationModule } from '@ss/common/ui-pagination';
 import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
 import { CustomAttributesModule } from '@ss/custom-attributes';
 import { QRCodeModule } from 'angularx-qrcode';
+import { AssetAppointmentListComponent } from '../asset-appointment-list/asset-appointment-list.component';
 
 @Component({
     selector: 'ss-assets-detail',
@@ -64,7 +65,8 @@ import { QRCodeModule } from 'angularx-qrcode';
         RouterModule,
         CustomAttributesModule,
         AppArchiveModule,
-        QRCodeModule
+        QRCodeModule,
+        AssetAppointmentListComponent
     ]
 })
 export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> implements OnInit {

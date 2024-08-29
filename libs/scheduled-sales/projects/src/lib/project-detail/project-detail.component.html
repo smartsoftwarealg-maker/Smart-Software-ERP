@@ -1,24 +1,24 @@
 <mat-card>
     <mat-card-content>
-        <form *ngIf="form !== null" novalidate [formGroup]="form">
+        <form *ngIf="form !== null" [formGroup]="form">
 
             <mat-form-field class="default-50 sm-100">
                 <mat-label translate>LOGISTICS_CUSTOMER</mat-label>
                 <ss-auto-complete matInput
                                   [required]="true"
                                   [model]="customerLookup"
-                                  formControlName="agentId">
+                                  formControlName="parentId">
                 </ss-auto-complete>
-                                <mat-error
-                                    *ngIf="form.controls['agentId'].hasError('required')" translate>COMMON_FIELD_REQUIRED
-                                </mat-error>
-                                <mat-error
-                                    *ngIf="form.controls['agentId'].hasError('validOption')" translate>COMMON_NO_MATCH
-                                </mat-error>
+                @if (form.controls['parentId'].hasError('required')) {
+                    <mat-error translate>COMMON_FIELD_REQUIRED </mat-error>
+                }
+                @if (form.controls['parentId'].hasError('validOption')) {
+                    <mat-error translate>COMMON_NO_MATCH </mat-error>
+                }
             </mat-form-field>
 
 
-            <mat-form-field class="default-50 sm-100">
+            <mat-form-field class="default-100">
                 <mat-label translate>ADMINISTRATION_DESCRIPTION</mat-label>
                 <input matInput formControlName="description" type="text" required autofocus>
                 <mat-error *ngIf="form.controls['description'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
@@ -26,7 +26,7 @@
 
             <mat-form-field class="default-50 sm-100">
                 <mat-label translate>ADMINISTRATION_CODE</mat-label>
-                <input matInput formControlName="project_code" type="text"  >
+                <input matInput formControlName="project_code" type="text">
             </mat-form-field>
 
             <mat-form-field class="default-50 sm-100">
@@ -41,17 +41,17 @@
 
             <mat-form-field class="default-50 sm-100">
                 <mat-label translate>SCH_REQUESTED_QTY</mat-label>
-                <input matInput formControlName="requested_qty" type="number"  step="1">
+                <input matInput formControlName="requested_qty" type="number" step="1">
             </mat-form-field>
 
             <mat-form-field class="default-50 sm-100">
                 <mat-label translate>COMMON_QTY</mat-label>
-                <input matInput formControlName="qty" type="number"  step="1">
+                <input matInput formControlName="qty" type="number" step="1">
             </mat-form-field>
 
             <mat-form-field class="default-50 sm-100">
                 <mat-label translate>SCH_MONTHLY_RATE</mat-label>
-                <input matInput formControlName="monthly_rate" type="number"  step="1">
+                <input matInput formControlName="monthly_rate" type="number" step="1">
             </mat-form-field>
 
             <mat-form-field class="default-50 sm-100">
@@ -91,7 +91,7 @@
             </mat-form-field>
 
             <mat-form-field class="default-50 sm-100">
-                <mat-label translate>COMMOM_NUMBER</mat-label>
+                <mat-label translate>LOGISTICS_CONTRACT_NUMBER</mat-label>
                 <input matInput formControlName="contract_number" type="text">
             </mat-form-field>
 

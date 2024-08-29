@@ -1,7 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { VatDetailComponent } from './vat/vat-detail.component';
-import { VatListComponent } from './vat/vat-list.component';
 import { MaterialModule } from '@ss/common/api-common';
 import { RouterModule } from '@angular/router';
 import { CommonUiLangModule } from '@ss/common/ui-lang';

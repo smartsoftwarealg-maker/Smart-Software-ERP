@@ -2,26 +2,41 @@ import { Component, inject, OnInit } from '@angular/core';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
-import {UntypedFormBuilder, Validators} from '@angular/forms';
-import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
+import { ReactiveFormsModule, UntypedFormBuilder, Validators } from '@angular/forms';
+import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import {Activity, ActivityService, LookupsService, WilayaService} from '@ss/common/api-lookup';
 import {SSProject} from '@ss/scheduled-sales/api-scheduled-sales';
 import {ProjectService} from '../project.service';
-import {LoginService} from '@ss/common/api-common';
+import { LoginService, MaterialModule } from '@ss/common/api-common';
 import {Agent, CustomerService} from '@ss/logistics/api-agent';
-import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
+import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
 import {WorkMasterService, SectorService} from '@ss/common/api-lookup';
+import { CommonModule } from '@angular/common';
+import { CommonUiLangModule } from '@ss/common/ui-lang';
+import { UiPaginationModule } from '@ss/common/ui-pagination';
+import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
 
 @Component({
   selector: 'ss-project-detail',
   templateUrl: './project-detail.component.html',
-  styleUrls: ['./project-detail.component.scss']
+  styleUrls: ['./project-detail.component.scss'],
+    standalone: true,
+    imports: [
+        CommonModule,
+        MaterialModule,
+        CommonUiLangModule,
+        UiPaginationModule,
+        ReactiveFormsModule,
+        CommonUiConfirmationDialogModule,
+        CommonUiDatepickerModule,
+        CommonUiAutoCompleteModule
+    ],
 })
 export class ProjectDetailComponent extends BaseEntityDetailComponent<SSProject> {
     private customerSrv  = inject( CustomerService);
     private activitySrv  = inject( ActivityService);
     private sectorSrv  = inject( SectorService);
-    private wilayaSrv  = inject( WilayaService);
+    private wilayaSrv  = inject( WilayaService)
     private workMasterSrv  = inject( WorkMasterService);
     private loginSrv  = inject( LoginService);
 
@@ -48,7 +63,7 @@ export class ProjectDetailComponent extends BaseEntityDetailComponent<SSProject>
         return this.formBuilder.group({
             id:               [b.id],
             centerId:         [b.centerId || this.loginSrv.appCtx.center],
-            agentId:          [b.agentId, Validators.required],
+            parentId:         [b.parentId || this.entitySrv.getParentId(), Validators.required],
             project_code:     [b.project_code],
             description:      [b.description, Validators.required],
             start_date:       [b.start_date, Validators.required],

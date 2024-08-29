@@ -347,5 +347,6 @@
     "INVENTORYING":               "Inventaire",
     "INVENTORY2":                 "Inventaire CB",
     "OTHER":                      "Autre",
-    "CLOSED":                     "Clôturée"
+    "CLOSED":                     "Clôturée",
+    "PRINTED":                    "imprimée"
 }

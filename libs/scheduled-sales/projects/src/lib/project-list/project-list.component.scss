@@ -1,11 +1,13 @@
 .container_div,
+.ctrl__div,
 .pagination-container {
     width: 96%;
     max-width: 1200px;
     margin: 4px auto;
 }
+
 .container_div {
-    min-height: calc(100% - 72px);
+    min-height: calc(100% - 100px);
     overflow-y: auto;
 }
 

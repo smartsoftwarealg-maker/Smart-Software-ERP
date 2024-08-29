@@ -343,5 +343,6 @@
     "INVENTORYING":               "جرد",
     "INVENTORY2":                 "جرد 2",
     "OTHER":                      "اخرى",
-    "CLOSED":                     "مغلق"
+    "CLOSED":                     "مغلق",
+    "PRINTED":                    "مطبوع"
 }

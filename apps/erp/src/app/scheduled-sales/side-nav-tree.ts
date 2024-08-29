@@ -46,14 +46,14 @@ export const scheduledSalesNavTree: SideNavNode = {
         // {
         //     name: 'COMMON_COMPANY_TYPES',
         //     icon: 'fas fa-building',
-        //     route: ABS_SCHEDULED_SALES_DISCOUNT_COMPANY_TYPE
+        //     route: ABS_SCHEDULED_SALES_COMPANY_TYPE
         // },
-        {
-            name: 'SCH_DISCOUNTS',
-            icon: 'fa-solid fa-badge-percent',
-            route: ABS_SCHEDULED_SALES_DISCOUNT_TYPES,
-            accessRights: 'Discount'
-        },
+        // {
+        //     name: 'SCH_DISCOUNTS',
+        //     icon: 'fa-solid fa-badge-percent',
+        //     route: ABS_SCHEDULED_SALES_DISCOUNT_TYPES,
+        //     accessRights: 'Discount'
+        // },
         {
             name: 'COMMON_ACTIVITIES',
             icon: 'fab fa-app-store-ios',
@@ -107,14 +107,13 @@ export const scheduledSalesNavTree: SideNavNode = {
             name: 'SCH_SCHEDULES',
             icon: 'fa-solid fa-calendar-range',
             route: ABS_SCHEDULED_SALES_SCHEDULES,
-            accessRights: 'Schedule',
-            customerRights: {read: true, edit: false, delete: false, write: false}
+            accessRights: 'Schedule'
         },
         {
             name: 'SCH_PARTNER_SCHEDULES',
             icon: 'fa-solid fa-calendar-range',
             route: ABS_SCHEDULED_SALES_PARTNER_SCHEDULES,
-            accessRights: 'Schedule',
+            accessRights: 'PSchedule',
             customerRights: {read: true, edit: false, delete: false, write: false}
         },
         {

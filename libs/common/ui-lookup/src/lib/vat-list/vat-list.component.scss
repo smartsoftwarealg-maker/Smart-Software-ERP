@@ -1,13 +1,13 @@
 
 :host {
     display: block;
-    margin: auto;
+    margin: 1em auto;
     width: 320px;
 }
 
-.content-div {
-    width: 320px;
-    min-height: 320px;
+.table__div {
+    height: calc(100% - 120px);
+    overflow-y: auto;
 }
 
 // keep the material design specs

@@ -1,17 +1,14 @@
-@if (!agentId) {
-    <div class="search-div">
-        <mat-form-field class="default-50 sm-100" autofocus>
-            <mat-label translate>LOGISTICS_CUSTOMER</mat-label>
-            <ss-auto-complete matInput
-                              [required]="true"
-                              [model]="customerLookup"
-                              [formControl]="agentFC">
-            </ss-auto-complete>
-        </mat-form-field>
-    </div>
-}
-<div class="container_div">
-    <div class="table__div">
+<div class="search-div">
+    <mat-form-field class="default-50 sm-100" autofocus>
+        <mat-label translate>LOGISTICS_CUSTOMER</mat-label>
+        <ss-auto-complete matInput
+                          [required]="true"
+                          [model]="customerLookup"
+                          [formControl]="agentFC">
+        </ss-auto-complete>
+    </mat-form-field>
+</div>
+<div class="table__div">
         <mat-table mat-table [dataSource]="data" class="main-table" matSort (matSortChange)="sort($event)">
 
             <ng-container matColumnDef="serialNumber">
@@ -64,6 +61,13 @@
                 </mat-cell>
             </ng-container>
 
+            <ng-container matColumnDef="vat">
+                <mat-header-cell *matHeaderCellDef mat-sort-header translate>LOGISTICS_VAT</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{ e.vat | number: '1.2-2' }}
+                </mat-cell>
+            </ng-container>
+
             <ng-container matColumnDef="invoiceNo">
                 <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_INVOICE_NUMBER</mat-header-cell>
                 <mat-cell *matCellDef="let e">
@@ -80,6 +84,26 @@
                 </mat-cell>
             </ng-container>
 
+            <ng-container matColumnDef="isPrinted">
+                <mat-header-cell *matHeaderCellDef translate><i class="fa-solid fa-print"></i></mat-header-cell>
+                <mat-cell *matCellDef="let e">
+
+                    <mat-checkbox [class.mat-checkbox-disabled]="false" disabled="true"
+                                  [checked]="e.isPrinted">
+                    </mat-checkbox>
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="canceled">
+                <mat-header-cell *matHeaderCellDef translate><i class="fa-solid fa-plane-slash"></i></mat-header-cell>
+                <mat-cell *matCellDef="let e">
+
+                    <mat-checkbox [class.mat-checkbox-disabled]="false" disabled="true"
+                                  [checked]="e.canceled">
+                    </mat-checkbox>
+                </mat-cell>
+            </ng-container>
+
 
             <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
             <mat-row class="selectable"
@@ -89,7 +113,6 @@
                      *matRowDef="let row; columns: displayedColumns;"></mat-row>
         </mat-table>
     </div>
-</div>
 <div class="pagination-container b-b-background">
     <ss-pagination [paginationModel]="pagination"></ss-pagination>
 </div>
