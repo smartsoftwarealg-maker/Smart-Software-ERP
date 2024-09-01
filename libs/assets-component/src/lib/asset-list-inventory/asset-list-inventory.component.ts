@@ -53,6 +53,7 @@ import { AssetReceptionService } from '../services/asset-reception.service';
     ],
 })
 export class AssetListInventoryComponent extends BaseEntityListComponent<InventoryAsset> implements OnInit {
+    private documentId   = 0;
     private fb           = inject(FormBuilder);
     private buildingSrv  = inject(AssetsBuildingService);
     private accountSrv   = inject(AccountService);
@@ -75,7 +76,7 @@ export class AssetListInventoryComponent extends BaseEntityListComponent<Invento
     buildingLookup    = new DefaultAutoCompleteModel(this.buildingSrv);
     classLookup       = new DefaultAutoCompleteModel(this.classSrv);
     beneficiaryLookup = new DefaultAutoCompleteModel<Agent>(this.consumerSrv, 'id', 'denomination');
-    receptionLookup   = new DefaultAutoCompleteModel(this.receptionSrv, 'id', 'reference');
+    receptionLookup   = new DefaultAutoCompleteModel(this.receptionSrv);
 
     isEditable = signal(false);
 
@@ -87,7 +88,7 @@ export class AssetListInventoryComponent extends BaseEntityListComponent<Invento
         beneficiary:  [0],
         locationId:   [0],
         classId:      [0],
-        receptionId:  [0],
+        receptionNo:  [0],
         minValue:     [0],
         maxValue:     [99999999],
     });
@@ -130,7 +131,7 @@ export class AssetListInventoryComponent extends BaseEntityListComponent<Invento
         this.buildingLookup.onObjectSelected = b => this.onBuilding(b);
         this.classLookup.onObjectSelected = c => this.formGroup.controls.classId.setValue(c?.id||0);
         this.beneficiaryLookup.onObjectSelected = b => this.formGroup.controls.beneficiary.setValue(b?.id||0);
-        this.receptionLookup.onObjectSelected = r => this.formGroup.controls.receptionId.setValue(r?.id||0);
+        this.receptionLookup.onObjectSelected = r => this.formGroup.controls.receptionNo.setValue(r?.id||0);
         this.accountLookup.onObjectSelected = a => this.formGroup.controls.accountNo.setValue(a?.accountNo||'');
         this.locationLookup.onObjectSelected = l => this.onLocation(l);
     }
@@ -151,6 +152,7 @@ export class AssetListInventoryComponent extends BaseEntityListComponent<Invento
 
 
     private onDocument(d: AssetInventoryDoc) {
+        this.documentId = d?.id || 0;
         this.isEditable.set(!d?.closed);
         this.buildingSrv.setParentId(d.locationId||0);
         this.officeSrv.setParentId(d.buildingId||0);
@@ -172,9 +174,10 @@ export class AssetListInventoryComponent extends BaseEntityListComponent<Invento
         this.formGroup.controls.beneficiary.setValue(d.beneficiary||0);
         this.formGroup.controls.locationId.setValue(d.locationId||0);
         this.formGroup.controls.classId.setValue(d.classId||0);
-        this.formGroup.controls.receptionId.setValue(d.receptionNo||0);
+        this.formGroup.controls.receptionNo.setValue(d.receptionNo||0);
         this.formGroup.controls.minValue.setValue(d.minValue||0);
         this.formGroup.controls.maxValue.setValue(d.maxValue||0);
+        this.formGroup.controls.receptionNo.setValue(d.receptionNo||0);
 
         if (d.officeId > 0) {
             this.formGroup.controls.officeId.disable();
@@ -207,20 +210,24 @@ export class AssetListInventoryComponent extends BaseEntityListComponent<Invento
             this.formGroup.controls.classId.enable();
         }
         if (d.receptionNo > 0) {
-            this.formGroup.controls.receptionId.disable();
+            this.formGroup.controls.receptionNo.disable();
         } else {
-            this.formGroup.controls.receptionId.enable();
+            this.formGroup.controls.receptionNo.enable();
         }
 
         this.refresh();
     }
 
     override refresh(callback?: () => void) {
-        this.listSrv.document = this.formGroup.getRawValue();
+        const formValue = this.formGroup.getRawValue();
+        formValue.id = this.documentId;
+        this.listSrv.document = formValue;
         super.refresh(callback);
     }
 
     update(e: InventoryAsset) {
+        e.documentId = this.documentId;
+        debugger;
         this.listSrv
             .update(e)
             .subscribe(res =>  e.inventoryId = e.inventoryId? null : res  );

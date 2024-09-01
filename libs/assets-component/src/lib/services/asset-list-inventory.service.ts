@@ -55,4 +55,7 @@ export class AssetListInventoryService extends BaseEntityService<InventoryAsset>
     set document(doc: AssetInventoryFilter) {
         this._document = doc;
     }
+    get document(): AssetInventoryFilter|null {
+        return this._document;
+    }
 }

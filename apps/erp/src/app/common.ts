@@ -13,6 +13,7 @@ import {
 } from '@ss/common/app-archive';
 import {AgentAssetsListComponent} from '@ss/assets-component';
 import { DocumentSourcesComponent } from 'logistics/ui-document-sources';
+import { ARTICLE_TYPE_URL, MARKS_URL } from '@ss/common/api-lookup';
 
 // common
 export const LOOKUPS_URL = 'lookups';
@@ -146,6 +147,7 @@ export const STOCK_ARTICLE_URL = 'stock-articles';
 export const BOM_URL = 'bom';
 export const ACC_RECORDS = 'accrecords';
 export const STOCK_PRICE_RECALCULATION_URL = 'price-recalculation';
+export const STOCK_ARTICLE_TYPE_URL = 'article-types';
 
 
 // Budget
@@ -535,6 +537,8 @@ export const ABS_STOCK_STOCK_ACCOUNT_URL = '/' + [MAIN_PAGE_URL, STOCK_APP_URL, 
 export const ABS_STOCK_GENERATION_ACCOUNT_URL = '/' + [MAIN_PAGE_URL, STOCK_APP_URL, GENERATION_ACCOUNT_URL].join('/');
 export const ABS_INVENTORY_PRICE_RECALCULATION_URL = '/' + [MAIN_PAGE_URL, STOCK_APP_URL, STOCK_PRICE_RECALCULATION_URL].join('/');
 export const ABS_STOCK_REPORT_RIGHT_URL = '/' + [MAIN_PAGE_URL, STOCK_APP_URL, ADMIN_REPORT_RIGHTS_URL].join('/');
+export const ABS_STOCK_ARTICLE_TYPES_URL = '/' + [MAIN_PAGE_URL, STOCK_APP_URL, STOCK_ARTICLE_TYPE_URL].join('/');
+export const ABS_STOCK_MARKS_URL = '/' + [MAIN_PAGE_URL, STOCK_APP_URL, COMMON_MARKS_URL].join('/');
 
 // cspace
 export const ABS_CUSTOMER_PROFILE = '/' + [MAIN_PAGE_URL, SHOPPING_CART_APP_URL, COMMON_CUSTOMER_PROFILE_URL].join('/');

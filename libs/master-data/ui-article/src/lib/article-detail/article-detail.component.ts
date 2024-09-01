@@ -6,6 +6,7 @@ import {tap} from 'rxjs/operators';
 import {Observable} from 'rxjs';
 import {UntypedFormBuilder, Validators} from '@angular/forms';
 import {
+    ArticleTypeService,
     ClassService,
     LookupsService,
     MarkService,
@@ -46,14 +47,18 @@ import { LogisticsUiStockInfoModule } from '@ss/logistics/ui-stock-info';
 })
 export class ArticleDetailComponent extends BaseEntityDetailComponent<Article> implements OnInit {
     private classSrv =  inject(ClassService);
-    private markSrv =  inject(MarkService);
-    private unitSrv =  inject(UnitService);
-    private vatSrv = inject(VatService);
+    private markSrv  =  inject(MarkService);
+    private unitSrv  =  inject(UnitService);
+    private vatSrv   = inject(VatService);
+    private typeSrv  = inject(ArticleTypeService);
+
     imageModel: ImageModel;
     aid = 0;
+
     classLookup = new DefaultAutoCompleteModel(this.classSrv);
     unitLookup = new DefaultAutoCompleteModel(this.unitSrv);
     markLookup = new DefaultAutoCompleteModel(this.markSrv);
+    typeLookup = new DefaultAutoCompleteModel(this.typeSrv);
 
     vats: Vat[];
     selectedRow: Article;
@@ -73,7 +78,7 @@ export class ArticleDetailComponent extends BaseEntityDetailComponent<Article> i
     }
 
 
-    public override preload(): Observable<any> {
+    public override preload(): Observable<Vat[]> {
         return this.lookupsSrv.getVats().pipe(tap(res => this.vats = res));
     }
 
@@ -99,7 +104,8 @@ export class ArticleDetailComponent extends BaseEntityDetailComponent<Article> i
             appId:        [a.appId || this.articleSrv.getParentId()],
             notForSale:   [a.notForSale || false, Validators.required],
             vat:          [a.vat],
-            blocked:      [a.blocked]
+            blocked:      [a.blocked],
+            articleType:  [a.articleType],
         });
     }
 

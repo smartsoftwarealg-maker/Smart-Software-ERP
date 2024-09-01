@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { AssetInventory } from '../assets-api';
-import { KeepOnToolbar, ShellService, SnackBarService, ToolbarButton } from '@ss/common/ui-shell';
+import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { UntypedFormBuilder, Validators } from '@angular/forms';
 import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
@@ -14,8 +14,6 @@ import { tap } from 'rxjs/operators';
 import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
 import { AssetLookupModel } from '../asset-lookup-model';
 import { AssetsService } from '../services/assets.service';
-import { InventoryImportComponent } from '@ss/logistics/ui-doc-import';
-import { MatDialog } from '@angular/material/dialog';
 import { CommonModule } from '@angular/common';
 import { CommonUiLangModule } from '@ss/common/ui-lang';
 import { CommonUiImageInputModule } from '@ss/common/ui-image-input';
