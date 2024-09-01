@@ -53,6 +53,7 @@ import { AssetReceptionService } from '../services/asset-reception.service';
     ],
 })
 export class AssetListInventoryComponent extends BaseEntityListComponent<InventoryAsset> implements OnInit {
+    private documentId   = 0;
     private fb           = inject(FormBuilder);
     private buildingSrv  = inject(AssetsBuildingService);
     private accountSrv   = inject(AccountService);
@@ -75,7 +76,7 @@ export class AssetListInventoryComponent extends BaseEntityListComponent<Invento
     buildingLookup    = new DefaultAutoCompleteModel(this.buildingSrv);
     classLookup       = new DefaultAutoCompleteModel(this.classSrv);
     beneficiaryLookup = new DefaultAutoCompleteModel<Agent>(this.consumerSrv, 'id', 'denomination');
-    receptionLookup   = new DefaultAutoCompleteModel(this.receptionSrv, 'id', 'reference');
+    receptionLookup   = new DefaultAutoCompleteModel(this.receptionSrv);
 
     isEditable = signal(false);
 
@@ -151,6 +152,7 @@ export class AssetListInventoryComponent extends BaseEntityListComponent<Invento
 
 
     private onDocument(d: AssetInventoryDoc) {
+        this.documentId = d?.id || 0;
         this.isEditable.set(!d?.closed);
         this.buildingSrv.setParentId(d.locationId||0);
         this.officeSrv.setParentId(d.buildingId||0);
@@ -217,11 +219,15 @@ export class AssetListInventoryComponent extends BaseEntityListComponent<Invento
     }
 
     override refresh(callback?: () => void) {
-        this.listSrv.document = this.formGroup.getRawValue();
+        const formValue = this.formGroup.getRawValue();
+        formValue.id = this.documentId;
+        this.listSrv.document = formValue;
         super.refresh(callback);
     }
 
     update(e: InventoryAsset) {
+        e.documentId = this.documentId;
+        debugger;
         this.listSrv
             .update(e)
             .subscribe(res =>  e.inventoryId = e.inventoryId? null : res  );

@@ -238,6 +238,7 @@ export interface AssetInventory {
     status?: number;
     inventId?: number;
     userId?: number;
+    documentId?: number;
     officeDescription?: string;
     assetDescription?: string;
     statusDescription?: string;
@@ -314,6 +315,7 @@ export interface InventoryAsset {
     receptionNumber?: string;
     comment?: string;
     inventoryId?: number;
+    documentId?: number;
     locationDescription?: string;
     buildingDescription?: string;
     officeDescription?: string;
@@ -350,6 +352,7 @@ export interface AssetInventoryFilter {
     maxValue: number;
     buildingId?: number;
     locationId?: number;
+    documentId?: number;
     officeId?: number;
     classId?: number;
     beneficiary?: number;
