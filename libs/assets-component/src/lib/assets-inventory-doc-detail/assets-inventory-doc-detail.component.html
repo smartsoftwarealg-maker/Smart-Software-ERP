@@ -15,7 +15,6 @@
                 <mat-label translate>LOGISTICS_ACCOUNT_NO</mat-label>
                 <ss-auto-complete matInput
                                   [model]="accountLookup"
-                                  required
                                   formControlName="accountNo">
                 </ss-auto-complete>
             </mat-form-field>
@@ -61,6 +60,14 @@
                 <ss-auto-complete matInput
                                   [model]="classLookup"
                                   formControlName="classId">
+                </ss-auto-complete>
+            </mat-form-field>
+
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>ASSET_RECEPTION_NUMBER</mat-label>
+                <ss-auto-complete matInput
+                                  [model]="receptionLookup"
+                                  formControlName="receptionNo">
                 </ss-auto-complete>
             </mat-form-field>
 
