@@ -44,7 +44,7 @@ export class ProjectDetailComponent extends BaseEntityDetailComponent<SSProject>
     public activityLookup = new DefaultAutoCompleteModel<Activity>(this.activitySrv);
     public sectorLookup = new DefaultAutoCompleteModel<Activity>(this.sectorSrv);
     public wilayaLookup = new DefaultAutoCompleteModel<Activity>(this.wilayaSrv);
-    public workMasterLookup = new DefaultAutoCompleteModel<Activity>(this.wilayaSrv);
+    public workMasterLookup = new DefaultAutoCompleteModel<Activity>(this.workMasterSrv);
 
     constructor(
         public override entitySrv: ProjectService,

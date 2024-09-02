@@ -43,17 +43,24 @@ export interface SBalance {
     balance: number;
 }
 
+export interface TreasuryBalance {
+    journal: string;
+    year: number,
+    balance: number;
+}
+
 export interface Dashboard {
     id: number;
     employeeCount: number;
     femaleCount: number;
-    counts: SActivity[],
-    amounts: SActivity[],
-    paymentCounts: SActivity[],
-    payments: SActivity[],
-    balance: SBalance[]
-    annualCounts: SActivity[]
-    annualAmounts: SActivity[]
+    counts: SActivity[];
+    amounts: SActivity[];
+    paymentCounts: SActivity[];
+    payments: SActivity[];
+    balance: SBalance[];
+    annualCounts: SActivity[];
+    annualAmounts: SActivity[];
+    treasury: TreasuryBalance[];
 }
 
 export interface Reimbursement {
