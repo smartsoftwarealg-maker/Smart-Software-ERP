@@ -2,7 +2,7 @@ import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ShellService } from '@ss/common/ui-shell';
 import { ActivatedRoute } from '@angular/router';
-import { Dashboard, SocialDashboardService } from '@social/social-api';
+import { Dashboard, SocialDashboardService, TreasuryBalance } from '@social/social-api';
 import { Chart, ChartConfiguration, ChartItem, registerables } from 'chart.js';
 import { MatCard } from '@angular/material/card';
 import { LanguageService } from '@ss/common/api-common';
@@ -53,6 +53,7 @@ export class SocialDashboardComponent implements OnInit {
         this.buildChart('banks', 4, db.balance.map(e => e.bank), 'COMMON_BALANCE', 'COMMON_BALANCE', db.payments.map(e => e.value));
         this.buildChart('annualCounts', 5, db.annualCounts.map(e => e.description), 'SOCIAL_ANNUAL_COUNTS', 'SOCIAL_ANNUAL_COUNTS', db.annualCounts.map(e => e.value));
         this.buildChart('annualAmounts', 6, db.annualAmounts.map(e => e.description), 'SOCIAL_ANNUAL_AMOUNTS', 'SOCIAL_ANNUAL_AMOUNTS', db.annualAmounts.map(e => e.value));
+        this.buildTreasuryChart2('treasury', db.treasury);
     }
 
 
@@ -121,7 +122,90 @@ export class SocialDashboardComponent implements OnInit {
                     },
                     title: {
                         display: true,
-                        text: this.langSrv.translate(title)
+                        text: this.langSrv.translate(title),
+                    }
+                }
+            },
+        };
+        new Chart(ctx, config);
+    }
+
+    private buildTreasuryChart(id: string, colorIndex: number[], labels: string[], title: string, label: string[], data: number[][]) {
+        const ctx = <ChartItem>document.getElementById(id);
+        const config: ChartConfiguration = {
+            type: 'line' ,
+            data: {
+                labels: labels,
+                datasets: [
+                    {
+                        label: this.langSrv.translate(label[0]),
+                        data: data[0],
+                        borderColor: this.COLORS[colorIndex[0]],
+                        backgroundColor: this.COLORS[colorIndex[0]],
+                        borderWidth: 2,
+                        borderRadius: 20
+                    }
+                ]
+            },
+            options: {
+                indexAxis: 'x',
+                elements: {
+                    bar: {
+                        borderWidth: 2,
+                    }
+                },
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                    },
+                    title: {
+                        display: true,
+                        text: this.langSrv.translate(title),
+                    }
+                }
+            },
+        };
+        new Chart(ctx, config);
+    }
+
+    private buildTreasuryChart2(id: string, data: TreasuryBalance[]) {
+        const ctx = <ChartItem>document.getElementById(id);
+        const journals = [... new Set(data.map(d => d.journal))];
+        const years = [... new Set(data.map(d => d.year + ''))];
+
+        const config: ChartConfiguration = {
+            type: 'line' ,
+            data: {
+                labels: years,
+                datasets:
+                    journals.map((j, i) => {
+                        return {
+                            label: j,
+                            data: data.filter(d => d.journal === j).map(e => e.balance),
+                            borderColor: this.COLORS[i],
+                            backgroundColor: this.COLORS[i],
+                            borderWidth: 2,
+                            borderRadius: 20
+                        };
+                    })
+
+            },
+            options: {
+                indexAxis: 'x',
+                elements: {
+                    bar: {
+                        borderWidth: 2,
+                    }
+                },
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                    },
+                    title: {
+                        display: true,
+                        text: this.langSrv.translate('COMMON_BALANCE'),
                     }
                 }
             },

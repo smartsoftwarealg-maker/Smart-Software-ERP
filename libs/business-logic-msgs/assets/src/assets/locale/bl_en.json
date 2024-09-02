@@ -58,5 +58,6 @@
     "MAX_DEBIT_EXCEEDED":            "The maximum allowed debit for this client has been exceeded. Require the payment for this document or increase the maximum debit.",
     "BLOCKED_AGENT":                 "This agent is blocked.",
     "INACTIVE_PERSON":               "Inactive person.",
-    "INVALID_AGENT_UPDATE":          "This agent cannot be updated because the document contains detail from another agent's document. Please, delete the detail and then update the agent."
+    "INVALID_AGENT_UPDATE":          "This agent cannot be updated because the document contains detail from another agent's document. Please, delete the detail and then update the agent.",
+    "INVALID_SCHEDULE_DATE":         "Invalid schedule date. Either the project is expired or the schedule date is not within the project's period."
 }
