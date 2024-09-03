@@ -1,23 +1,23 @@
 import {Component, OnInit,} from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
-import { ActivatedRoute, Router, RouterOutlet } from "@angular/router";
-import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
+import { ActivatedRoute, Router, RouterOutlet } from '@angular/router';
+import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import {ArticleService} from '@ss/master-data/api-article';
 import {LotsService} from '@ss/common/api-lookup';
 import {
-    BaseTransactionLinesListComponent,
-    TransactionLinesService
+    BaseTransactionLinesListComponent
 } from '@ss/logistics/api-transaction';
-import { CommonModule } from "@angular/common";
-import { MaterialModule } from "@ss/common/api-common";
-import { CommonUiLangModule } from "@ss/common/ui-lang";
-import { UiPaginationModule } from "@ss/common/ui-pagination";
-import { ReactiveFormsModule } from "@angular/forms";
-import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
-import { CommonUiAutoCompleteModule } from "@ss/common/ui-auto-complete";
+import { CommonModule } from '@angular/common';
+import { MaterialModule } from '@ss/common/api-common';
+import { CommonUiLangModule } from '@ss/common/ui-lang';
+import { UiPaginationModule } from '@ss/common/ui-pagination';
+import { ReactiveFormsModule } from '@angular/forms';
+import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
+import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
 
-import { LogisticsUiStockInfoModule } from "@ss/logistics/ui-stock-info";
+import { LogisticsUiStockInfoModule } from '@ss/logistics/ui-stock-info';
 import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
+import { ReceptionLinesService } from '../reception-lines.service';
 
 @Component({
     selector: 'ss-reception-lines-list',
@@ -52,7 +52,7 @@ export class ReceptionLinesListComponent  extends BaseTransactionLinesListCompon
     ];
 
     constructor(
-        public override detailSrv: TransactionLinesService,
+        public override detailSrv: ReceptionLinesService,
         public override shellSrv: ShellService,
         public override snackBarSrv: SnackBarService,
         public override route: ActivatedRoute,

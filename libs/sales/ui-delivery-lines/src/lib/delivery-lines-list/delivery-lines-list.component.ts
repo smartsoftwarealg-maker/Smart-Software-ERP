@@ -5,9 +5,9 @@ import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {ArticleService} from '@ss/master-data/api-article';
 import {LotsService} from '@ss/common/api-lookup';
 import {
-    BaseTransactionLinesListComponent,
-    TransactionLinesService
+    BaseTransactionLinesListComponent
 } from '@ss/logistics/api-transaction';
+import { DeliveryLinesService } from '../../../../api-delivery/src/lib/delivery-lines.service';
 
 @Component({
     selector: 'ss-delivery-lines-list',
@@ -29,7 +29,7 @@ export class DeliveryLinesListComponent extends BaseTransactionLinesListComponen
     ];
 
     constructor(
-        public override detailSrv: TransactionLinesService,
+        public override detailSrv: DeliveryLinesService,
         public override shellSrv: ShellService,
         public override snackBarSrv: SnackBarService,
         public override route: ActivatedRoute,

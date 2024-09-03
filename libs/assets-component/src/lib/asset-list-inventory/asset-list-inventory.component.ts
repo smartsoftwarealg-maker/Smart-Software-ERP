@@ -227,7 +227,6 @@ export class AssetListInventoryComponent extends BaseEntityListComponent<Invento
 
     update(e: InventoryAsset) {
         e.documentId = this.documentId;
-        debugger;
         this.listSrv
             .update(e)
             .subscribe(res =>  e.inventoryId = e.inventoryId? null : res  );

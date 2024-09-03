@@ -50,7 +50,7 @@ export class SocialDashboardComponent implements OnInit {
         this.buildChart('activity-amounts', 1, db.amounts.map(e => e.description), 'SOCIAL_ACTIVITY_AMOUNTS', 'SOCIAL_WORKS', db.amounts.map(e => e.value));
         this.buildChart('payment-counts', 2, db.paymentCounts.map(e => e.description), 'SOCIAL_PAYMENT_COUNTS', 'SOCIAL_PAYMENT_COUNTS', db.paymentCounts.map(e => e.value));
         this.buildChart('payments', 3, db.payments.map(e => e.description), 'COMMON_PAYMENTS', 'COMMON_PAYMENTS', db.payments.map(e => e.value));
-        this.buildChart('banks', 4, db.balance.map(e => e.bank), 'COMMON_BALANCE', 'COMMON_BALANCE', db.payments.map(e => e.value));
+        this.buildChart('banks', 4, db.balance.map(e => e.bank), 'COMMON_BALANCE', 'COMMON_BALANCE', db.balance.map(e => e.balance));
         this.buildChart('annualCounts', 5, db.annualCounts.map(e => e.description), 'SOCIAL_ANNUAL_COUNTS', 'SOCIAL_ANNUAL_COUNTS', db.annualCounts.map(e => e.value));
         this.buildChart('annualAmounts', 6, db.annualAmounts.map(e => e.description), 'SOCIAL_ANNUAL_AMOUNTS', 'SOCIAL_ANNUAL_AMOUNTS', db.annualAmounts.map(e => e.value));
         this.buildTreasuryChart2('treasury', db.treasury);
@@ -130,44 +130,6 @@ export class SocialDashboardComponent implements OnInit {
         new Chart(ctx, config);
     }
 
-    private buildTreasuryChart(id: string, colorIndex: number[], labels: string[], title: string, label: string[], data: number[][]) {
-        const ctx = <ChartItem>document.getElementById(id);
-        const config: ChartConfiguration = {
-            type: 'line' ,
-            data: {
-                labels: labels,
-                datasets: [
-                    {
-                        label: this.langSrv.translate(label[0]),
-                        data: data[0],
-                        borderColor: this.COLORS[colorIndex[0]],
-                        backgroundColor: this.COLORS[colorIndex[0]],
-                        borderWidth: 2,
-                        borderRadius: 20
-                    }
-                ]
-            },
-            options: {
-                indexAxis: 'x',
-                elements: {
-                    bar: {
-                        borderWidth: 2,
-                    }
-                },
-                responsive: true,
-                plugins: {
-                    legend: {
-                        position: 'bottom',
-                    },
-                    title: {
-                        display: true,
-                        text: this.langSrv.translate(title),
-                    }
-                }
-            },
-        };
-        new Chart(ctx, config);
-    }
 
     private buildTreasuryChart2(id: string, data: TreasuryBalance[]) {
         const ctx = <ChartItem>document.getElementById(id);
