@@ -1,18 +1,41 @@
 import {Component} from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
-import {ActivatedRoute, Router} from '@angular/router';
-import {PaginatorPersistenceService} from '@ss/common/api-common';
-import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
+import { MaterialModule, PaginatorPersistenceService } from '@ss/common/api-common';
+import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import { Transaction } from '@ss/logistics/api-transaction';
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
-import { InventoryService } from '@ss/stock/api-inventory';
-import { DELIVERY_CANCELLATION_URL, DeliveryCancellationService } from "@ss/sales/api-delivery-cancellation";
+import { DeliveryCancellationService } from '@ss/sales/api-delivery-cancellation';
+import { CommonModule } from '@angular/common';
+import { CommonUiLangModule } from '@ss/common/ui-lang';
+import { UiPaginationModule } from '@ss/common/ui-pagination';
+import { ReactiveFormsModule } from '@angular/forms';
+import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
+import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
+import { LogisticsUiDocImportModule } from '@ss/logistics/ui-doc-import';
+import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
 
 @Component({
     selector: 'ss-delivery-cancellation-list',
     templateUrl: './delivery-cancellation-list.component.html',
     styleUrls: ['../../../../../common/assets/src/assets/transac-list.scss'],
+    standalone: true,
+    imports: [
+        CommonModule,
+        MaterialModule,
+        CommonUiLangModule,
+        UiPaginationModule,
+        ReactiveFormsModule,
+        CommonUiConfirmationDialogModule,
+        RouterModule,
+        CommonUiDatepickerModule,
+        CommonUiAutoCompleteModule,
+
+        LogisticsUiDocImportModule,
+        DocInfoComponent
+    ],
+
 })
 export class DeliveryCancellationListComponent extends BaseEntityListComponent<Transaction> {
     displayedColumns = [

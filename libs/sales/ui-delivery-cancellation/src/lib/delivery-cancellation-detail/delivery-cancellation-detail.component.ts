@@ -1,25 +1,49 @@
 import { Component, OnInit } from '@angular/core';
 import {Lookup, LookupsService} from '@ss/common/api-lookup';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
-import {ActivatedRoute, Router} from '@angular/router';
-import {UntypedFormBuilder} from '@angular/forms';
-import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import {LanguageService, LoginService} from '@ss/common/api-common';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
+import { ReactiveFormsModule, UntypedFormBuilder } from '@angular/forms';
+import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
+import { LanguageService, LoginService, MaterialModule } from '@ss/common/api-common';
 import {MatDialog} from '@angular/material/dialog';
 import {DeliveryCancellationService} from '@ss/sales/api-delivery-cancellation';
 import { BaseTransactionDetailComponent, TransactionLinesService } from '@ss/logistics/api-transaction';
+import { CommonModule } from '@angular/common';
+import { CommonUiLangModule } from '@ss/common/ui-lang';
+import { UiPaginationModule } from '@ss/common/ui-pagination';
+import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
+import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
+import { LogisticsUiDocImportModule } from '@ss/logistics/ui-doc-import';
+import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
+import { DeliveryCancellationLinesService } from '../delivery-cancellation-lines.service';
 
 @Component({
     selector: 'ss-delivery-cancellation-detail',
     templateUrl: './delivery-cancellation-detail.component.html',
-    styleUrls: ['../../../../../common/assets/src/assets/transac-detail.scss']
+    styleUrls: ['../../../../../common/assets/src/assets/transac-detail.scss'],
+    standalone: true,
+    imports: [
+        CommonModule,
+        MaterialModule,
+        CommonUiLangModule,
+        UiPaginationModule,
+        ReactiveFormsModule,
+        CommonUiConfirmationDialogModule,
+        RouterModule,
+        CommonUiDatepickerModule,
+        CommonUiAutoCompleteModule,
+
+        LogisticsUiDocImportModule,
+        DocInfoComponent
+    ],
+
 })
 export class DeliveryCancellationDetailComponent extends BaseTransactionDetailComponent implements OnInit {
     constructor(
         protected langSrv: LanguageService,
         protected loginSrv: LoginService,
         public deliveryService: DeliveryCancellationService,
-        public override detailSrv: TransactionLinesService,
+        public override detailSrv: DeliveryCancellationLinesService,
         public override shellSrv: ShellService,
         public override snackBarSrv: SnackBarService,
         public override route: ActivatedRoute,
