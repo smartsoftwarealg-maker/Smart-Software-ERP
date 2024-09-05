@@ -1,27 +1,49 @@
 import { Component } from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
-import {ActivatedRoute, Router} from '@angular/router';
-import {UntypedFormBuilder} from '@angular/forms';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
+import { ReactiveFormsModule, UntypedFormBuilder } from '@angular/forms';
 import {CCGroup, Lookup, LookupsService} from '@ss/common/api-lookup';
-import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
+import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import {Observable} from 'rxjs';
 import {tap} from 'rxjs/operators';
-import {LoginService} from '@ss/common/api-common';
+import { LoginService, MaterialModule } from '@ss/common/api-common';
 import { BaseTransactionDetailComponent, OfferLinesService } from "@ss/logistics/api-transaction";
 import {SalesProformaService} from '../sales-proforma.service';
 import {MatDialog} from '@angular/material/dialog';
+import { CommonModule } from '@angular/common';
+import { CommonUiLangModule } from '@ss/common/ui-lang';
+import { UiPaginationModule } from '@ss/common/ui-pagination';
+import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
+import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
+import { LogisticsUiStockInfoModule } from '@ss/logistics/ui-stock-info';
+import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
+import { SalesProformaLinesService } from '../sales-proforma-lines.service';
 
 @Component({
     selector: 'ss-proforma-detail',
     templateUrl: './proforma-detail.component.html',
-    styleUrls: ['../../../../../common/assets/src/assets/transac-detail.scss']
+    styleUrls: ['../../../../../common/assets/src/assets/transac-detail.scss'],
+    standalone: true,
+    imports: [
+        CommonModule,
+        MaterialModule,
+        CommonUiLangModule,
+        UiPaginationModule,
+        ReactiveFormsModule,
+        CommonUiConfirmationDialogModule,
+        RouterModule,
+        CommonUiDatepickerModule,
+        CommonUiAutoCompleteModule,
+        LogisticsUiStockInfoModule,
+        DocInfoComponent
+    ],
 })
 export class ProformaDetailComponent extends BaseTransactionDetailComponent {
 
     public groups: CCGroup[];
 
     constructor(public proformaSrv: SalesProformaService,
-                public override detailSrv: OfferLinesService,
+                public override detailSrv: SalesProformaLinesService,
                 public override shellSrv: ShellService,
                 public override snackBarSrv: SnackBarService,
                 public override route: ActivatedRoute,

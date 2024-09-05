@@ -13,7 +13,6 @@ import {
 } from '@ss/common/app-archive';
 import {AgentAssetsListComponent} from '@ss/assets-component';
 import { DocumentSourcesComponent } from 'logistics/ui-document-sources';
-import { ARTICLE_TYPE_URL, MARKS_URL } from '@ss/common/api-lookup';
 
 // common
 export const LOOKUPS_URL = 'lookups';

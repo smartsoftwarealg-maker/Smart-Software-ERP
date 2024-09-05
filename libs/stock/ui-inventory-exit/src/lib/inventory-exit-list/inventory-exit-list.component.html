@@ -60,9 +60,10 @@
         <ss-doc-info
             [displayedGroups]="['document']"
             [params]="{
-            documentId: selectedRow?.id,
-            documentURL:'/correctionOut'
-        }">
+                    documentId: selectedRow?.id,
+                    detailId: selectedRow?.id,
+                    documentURL:'/correctionOut'
+                }">
         </ss-doc-info>
     </div>
 </div>

@@ -18,6 +18,7 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 interface LogFlatNode {
     expandable: boolean;
     name: string;
+    version: number;
     level: number;
     schema: Schema;
 }
@@ -70,7 +71,8 @@ export class TraceabilityComponent implements OnInit, OnDestroy {
     private _transformer = (node: LogNode, level: number) => {
         return {
             expandable: level == 0,
-            name: `${node.application} ${node.schema?.schemaVersion || ''} ${(node.schema?.creationDate.substring(0, 10)) || ''}`,
+            name: node.application, // ${node.schema?.schemaVersion || ''} ${(node.schema?.creationDate.substring(0, 10)) || ''}
+            version: node.schema?.schemaVersion || 0,
             level: level,
             schema: node.schema
         };

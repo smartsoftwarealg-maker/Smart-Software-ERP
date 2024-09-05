@@ -3,15 +3,42 @@ import {
     BaseTransactionLinesDetailComponent, DOC_DELIVERY_CANCELLATION,
     TransactionLinesService
 } from '@ss/logistics/api-transaction';
+import { CommonModule } from '@angular/common';
+import { MaterialModule } from '@ss/common/api-common';
+import { CommonUiLangModule } from '@ss/common/ui-lang';
+import { UiPaginationModule } from '@ss/common/ui-pagination';
+import { ReactiveFormsModule } from '@angular/forms';
+import { CommonUiConfirmationDialogModule } from '@ss/common/ui-confirmation-dialog';
+import { RouterModule } from '@angular/router';
+import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
+import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
+import { LogisticsUiDocImportModule } from '@ss/logistics/ui-doc-import';
+import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
+import { DeliveryCancellationLinesService } from '../delivery-cancellation-lines.service';
 
 @Component({
     selector: 'ss-delivery-cancellation-lines-detail',
     templateUrl: './delivery-cancellation-lines-detail.component.html',
     styleUrls: ['../../../../../common/assets/src/assets/transac-lines-detail.scss'],
+    standalone: true,
+    imports: [
+        CommonModule,
+        MaterialModule,
+        CommonUiLangModule,
+        UiPaginationModule,
+        ReactiveFormsModule,
+        CommonUiConfirmationDialogModule,
+        RouterModule,
+        CommonUiDatepickerModule,
+        CommonUiAutoCompleteModule,
+
+        LogisticsUiDocImportModule,
+        DocInfoComponent
+    ],
 })
 export class DeliveryCancellationLinesDetailComponent extends BaseTransactionLinesDetailComponent implements OnInit, OnDestroy {
     constructor(
-        public inventoryLinesService: TransactionLinesService) {
+        public inventoryLinesService: DeliveryCancellationLinesService) {
         super(inventoryLinesService, DOC_DELIVERY_CANCELLATION);
     }
 }

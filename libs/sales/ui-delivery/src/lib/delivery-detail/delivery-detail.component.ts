@@ -10,6 +10,7 @@ import {DeliveryService} from '@ss/sales/api-delivery';
 import {LoginService} from '@ss/common/api-common';
 import {MatDialog} from '@angular/material/dialog';
 import { BaseTransactionDetailComponent, TransactionLinesService } from '@ss/logistics/api-transaction';
+import { DeliveryLinesService } from '../../../../api-delivery/src/lib/delivery-lines.service';
 
 
 @Component({
@@ -31,7 +32,7 @@ export class DeliveryDetailComponent extends BaseTransactionDetailComponent impl
     constructor(
         protected loginSrv: LoginService,
         public deliveryService: DeliveryService,
-        public override detailSrv: TransactionLinesService,
+        public override detailSrv: DeliveryLinesService,
         public override shellSrv: ShellService,
         public override snackBarSrv: SnackBarService,
         public override route: ActivatedRoute,
@@ -73,4 +74,5 @@ export class DeliveryDetailComponent extends BaseTransactionDetailComponent impl
     protected importedDocuments(): Lookup[] {
         return [{id: 1025, description: 'SALES_ORDER'}];
     }
+
 }

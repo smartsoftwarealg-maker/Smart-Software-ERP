@@ -15,6 +15,7 @@ import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
 import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
 
 import { LogisticsUiStockInfoModule } from '@ss/logistics/ui-stock-info';
+import { ReceptionLinesService } from '../reception-lines.service';
 
 
 @Component({
@@ -40,8 +41,8 @@ export class ReceptionDetailComponent extends BaseTransactionDetailComponent imp
 
 
     constructor(
-        public receptionService: ReceptionService,
-        public override detailSrv: TransactionLinesService,
+        public override entitySrv: ReceptionService,
+        public override detailSrv: ReceptionLinesService,
         public override shellSrv: ShellService,
         public override snackBarSrv: SnackBarService,
         public override route: ActivatedRoute,
@@ -50,7 +51,7 @@ export class ReceptionDetailComponent extends BaseTransactionDetailComponent imp
         public override confirmationSrv: ConfirmationDialogService,
         protected readonly loginSrv: LoginService,
         protected dialog: MatDialog) {
-        super(receptionService,
+        super(entitySrv,
             detailSrv,
             shellSrv,
             snackBarSrv,

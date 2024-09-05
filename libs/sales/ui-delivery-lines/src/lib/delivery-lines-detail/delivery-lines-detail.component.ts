@@ -4,6 +4,7 @@ import {
     BaseTransactionLinesDetailComponent, DOC_DELIVERY, TransactionLine,
     TransactionLinesService
 } from '@ss/logistics/api-transaction';
+import { DeliveryLinesService } from '../../../../api-delivery/src/lib/delivery-lines.service';
 
 @Component({
     selector: 'ss-delivery-lines-detail',
@@ -12,7 +13,7 @@ import {
 })
 export class DeliveryLinesDetailComponent extends BaseTransactionLinesDetailComponent {
     constructor(
-        public inventoryLinesService: TransactionLinesService) {
+        public inventoryLinesService: DeliveryLinesService) {
         super(inventoryLinesService, DOC_DELIVERY);
     }
 

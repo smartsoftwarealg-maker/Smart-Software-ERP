@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { BaseTransactionLinesListComponent, TransactionLinesService } from '@ss/logistics/api-transaction';
+import {
+    BaseTransactionLinesListComponent,
+    TransactionLine,
+    TransactionLinesService
+} from '@ss/logistics/api-transaction';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ArticleService } from '@ss/master-data/api-article';

@@ -26,8 +26,8 @@ export class InvoiceDetailComponent extends BaseTransactionDetailComponent imple
 
     constructor(
         protected loginSrv: LoginService,
-        public override detailSrv: InvoiceLinesService,
         public override entitySrv: InvoiceService,
+        public override detailSrv: InvoiceLinesService,
         public override shellSrv: ShellService,
         public override snackBarSrv: SnackBarService,
         public override route: ActivatedRoute,

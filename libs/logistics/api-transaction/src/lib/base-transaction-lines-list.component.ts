@@ -13,7 +13,6 @@ import { TransactionLinesClass } from './transaction-lines.class';
 
 @Directive()
 export class BaseTransactionLinesListComponent implements OnInit, OnDestroy {
-    private _ref = 0;
     private _isEditable_ = true;
     protected subscription: Subscription = null;
     searchText = new FormControl<string>('');
@@ -34,20 +33,20 @@ export class BaseTransactionLinesListComponent implements OnInit, OnDestroy {
         public articleSrv: ArticleService,
         public storeNamesSrv: LotsService,
         public confirmationSrv: ConfirmationDialogService) {
-        this.pagination.onChange = () => this.loadDetailLines().subscribe(x => this.shellSrv.setLoading(false));
+        this.pagination.onChange = () => this.loadDetailLines().subscribe(() => this.shellSrv.setLoading(false));
     }
 
     ngOnInit() {
         this.parentId = this.detailSrv.getParentId();
         this._isEditable_ = this.detailSrv.editable;
-        this.loadDetailLines().subscribe(_ => this.shellSrv.setLoading(false));
+        this.loadDetailLines().subscribe(() => this.shellSrv.setLoading(false));
 
         this.subscription = this.searchText
             .valueChanges
             .pipe(
                 debounceTime(300),
                 distinctUntilChanged()
-            ).subscribe( str => this.loadDetailLines().subscribe());
+            ).subscribe( () => this.loadDetailLines().subscribe());
     }
 
     public loadDetailLines(): Observable<TransactionLine[]> {
@@ -69,9 +68,9 @@ export class BaseTransactionLinesListComponent implements OnInit, OnDestroy {
                         this.shellSrv.setLoading(true);
                         this.detailSrv
                             .remove(a.id)
-                            .pipe(switchMap(_ => this.loadDetailLines()))
+                            .pipe(switchMap(() => this.loadDetailLines()))
                             .subscribe({
-                                next: _ => {
+                                next: () => {
                                     this.shellSrv.setLoading(false);
                                     this.snackBarSrv.showSuccessMessage();
                                 },
@@ -117,7 +116,6 @@ export class BaseTransactionLinesListComponent implements OnInit, OnDestroy {
     @Input()
     set parentExecutionRef(ref: number) {
         if (this.parentId > 0) {
-            this._ref = ref;
             this.loadDetailLines().subscribe();
         }
     }
