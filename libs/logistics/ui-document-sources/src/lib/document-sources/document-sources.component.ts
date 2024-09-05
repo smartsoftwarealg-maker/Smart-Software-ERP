@@ -45,8 +45,8 @@ export class DocumentSourcesComponent implements OnInit {
 
     ngOnInit() {
         this.route.queryParams.subscribe(params => {
-            const documentId = +params['detailId'] || 0;
-            this.sourceSrv.setParentId(documentId);
+            const detailId = +params['detailId'] || 0;
+            this.sourceSrv.setParentId(detailId);
             this.loadTotal();
         });
     }
@@ -54,6 +54,7 @@ export class DocumentSourcesComponent implements OnInit {
     loadTotal() {
         this.data$ = this.sourceSrv.getData();
     }
+
 
     select(id: number) {
         this.selectedId.set(id);

@@ -1,7 +1,7 @@
 <div class="main-container">
     <div class="apps">
         <mat-form-field appearance="fill">
-            <mat-label><span translate>COMMON_SELECT_APP</span></mat-label>
+            <mat-label><span translate>ADMINISTRATION_SELECT_APP</span></mat-label>
             <mat-select (selectionChange)="setApp($event)">
                 <mat-option *ngFor="let app of apps" [value]="app">
                     <span translate> {{ 'COMMON_' + app }}</span>

@@ -103,11 +103,12 @@
             *ngIf="selectedId"
             [displayedGroups]="['article', 'document']"
             [params]="{
-            documentId: selectedRow?.transacId,
-            documentURL:'/inventory',
-            articleReference: selectedRow?.reference,
-            articleStoreId: selectedRow?.store
-        }">
+                    documentId: selectedRow?.transacId,
+                    documentURL:'/inventory',
+                    detailId: selectedRow?.id,
+                    articleReference: selectedRow?.reference,
+                    articleStoreId: selectedRow?.store
+                }">
         </ss-doc-info>
     </div>
 </div>

@@ -176,4 +176,6 @@
 </mat-card>
 
 <!--<ss-reception-lines-list class="detail-list" [isEditable]="isEditable" *ngIf="!isLoading && formId" [parentExecutionRef]="executionRef"></ss-reception-lines-list>-->
-<router-outlet *ngIf="formId"></router-outlet>
+@if (formId) {
+   <router-outlet></router-outlet>
+}
