@@ -40,13 +40,13 @@ export class DepartmentDetailComponent extends BaseEntityDetailComponent<Departm
     override setupForm(a: Department): UntypedFormGroup {
         console.log(a);
         return this.form = this.formBuilder.group({
+            id:          [a.id||0],
             description: [a.description, Validators.compose([Validators.required, Validators.minLength(3), Validators.maxLength(64)])],
             responsible: [a.responsible]
         });
     }
 
     public override readForm(): Department {
-        const formVal = this.form.value as Department;
-        return formVal;
+        return  this.form.value as Department;
     }
 }
