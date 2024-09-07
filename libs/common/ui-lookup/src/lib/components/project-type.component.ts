@@ -27,7 +27,7 @@ export class ProjectTypeListComponent extends BaseEntityListComponent<Lookup> {
         public override defReportSrv: DefaultReportService,
         public override router: Router,
         public override pagPersistSrv: PaginatorPersistenceService) {
-        super(companyTypeSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv, 'COMMON_COMPANY_TYPES');
+        super(companyTypeSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv, 'LOGISTICS_PROJECT_TYPES');
     }
 
 }
@@ -47,7 +47,7 @@ export class ProjectTypeDetailComponent extends BaseEntityDetailComponent<Lookup
         public override route: ActivatedRoute,
         public override confirmationSrv: ConfirmationDialogService,
         public override formBuilder: UntypedFormBuilder) {
-        super(companyTypeServ, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'COMMON_PROJECT_TYPES');
+        super(companyTypeServ, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'LOGISTICS_PROJECT_TYPES');
     }
 
     public override setupForm(e: Lookup): UntypedFormGroup {

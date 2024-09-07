@@ -1,11 +1,8 @@
 
-:host {
-    display: inline-block;
-    width: 100%;
-}
-
-.form-container {
-    display: block;
-    max-width: 320px;
-    margin: auto;
+mat-card {
+    width: 90%;
+    max-width: 600px;
+    margin: 16px auto;
+    padding: 16px;
+    border-radius: 1.4em;
 }

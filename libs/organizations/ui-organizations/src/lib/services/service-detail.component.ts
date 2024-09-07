@@ -39,13 +39,13 @@ export class ServiceDetailComponent extends BaseEntityDetailComponent<Service> i
 
     override setupForm(a: Service): UntypedFormGroup {
         return this.form = this.formBuilder.group({
+            id:          [a.id||0],
             description: [a.description, Validators.compose([Validators.required, Validators.minLength(3), Validators.maxLength(64)])],
             responsible: [a.responsible]
         });
     }
 
     public override readForm(): Service {
-        const formVal = this.form.value as Service;
-        return formVal;
+        return  this.form.value as Service;
     }
 }

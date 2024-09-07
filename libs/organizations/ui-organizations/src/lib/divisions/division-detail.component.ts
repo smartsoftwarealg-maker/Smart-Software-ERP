@@ -33,13 +33,13 @@ export class DivisionDetailComponent extends BaseEntityDetailComponent<Division>
 
     override setupForm(a: Division): UntypedFormGroup {
         return this.form = this.formBuilder.group({
+            id:          [a.id || 0],
             description: [a.description, Validators.compose([Validators.required, Validators.minLength(3), Validators.maxLength(64)])],
             responsible: [a.responsible]
         });
     }
 
     public override readForm(): Division {
-        const formVal = this.form.value as Division;
-        return formVal;
+        return this.form.value as Division;
     }
 }
