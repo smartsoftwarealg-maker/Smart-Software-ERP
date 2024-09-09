@@ -4,7 +4,7 @@ const config: CapacitorConfig = {
     appId: 'smart.software.erp',
     appName: 'SmartERP',
     webDir: 'dist/apps/erp',
-    loggingBehavior: 'debug',
+    loggingBehavior: 'none',
     server: {
         cleartext: true,
         androidScheme: 'http'

@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from "@angular/core";
+import { Component, inject, OnInit, signal } from '@angular/core';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {Schedule, ScheduleService} from '@ss/scheduled-sales/api-scheduled-sales';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
@@ -34,8 +34,8 @@ export class SalesScheduleListComponent extends BaseEntityListComponent<Schedule
     private customerSrv = inject(CustomerService);
     private loginSrv = inject(LoginService);
 
-    agentId = this.loginSrv.appCtx.agentId || 0;
-    agentFC = new FormControl<number>(this.agentId);
+    agentId = signal(-1);
+    agentFC = new FormControl<number>(this.agentId());
     public customerLookup = new DefaultAutoCompleteModel<Agent>(this.customerSrv, 'id', 'denomination')
     displayedColumns = [
         'serialNumber',
@@ -70,15 +70,16 @@ export class SalesScheduleListComponent extends BaseEntityListComponent<Schedule
             defReportSrv,
             pagPersistSrv,
             'SCH_SCHEDULES');
-        this.agentId = this.entitySrv.getParentId() || 0;
-        this.agentFC.setValue(this.agentId);
         this.customerLookup.onObjectSelected = (a) => this.onAgent(a?.id);
         this.pagination.pageSize = 10;
     }
 
     override ngOnInit() {
-        // this.editButton.visible = this.deleteButton.visible = this.addButton.visible = this.agentId === 0;
         super.ngOnInit();
+        this.agentId.set(this.loginSrv.appCtx.agentId || 0);
+        this.editButton.visible = this.deleteButton.visible = this.addButton.visible = this.agentId() === 0;
+        this.agentFC.setValue(this.agentId());
+
         this.onAgent(this.entitySrv.getParentId() || 0);
     }
 

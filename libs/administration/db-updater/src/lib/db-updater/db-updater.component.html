@@ -1,20 +1,29 @@
-<mat-progress-bar mode="indeterminate" *ngIf="processing"></mat-progress-bar>
+@if (processing())  {
+    <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+}
 <div class="container">
     <div class="ctrl_div">
+        <mat-form-field class="search_field">
+            <mat-label translate>COMMON_SEARCH</mat-label>
+            <input [formControl]="searchText" matInput type="text">
+        </mat-form-field>
+
         <div class="list_div">
-            <mat-selection-list #list [disabled]="processing">
-                <mat-list-option *ngFor="let f of files" [value]="f">
-                    {{f}}
-                </mat-list-option>
+            <mat-selection-list #list [disabled]="processing()">
+                @for (f of files(); track f) {
+                    <mat-list-option [value]="f">
+                        {{f.substring(0, f.lastIndexOf('.'))}}
+                    </mat-list-option>
+                }
             </mat-selection-list>
         </div>
         <button mat-raised-button
                 type="button"
                 color="primary"
                 class="generate"
-                [disabled]="!list.selectedOptions.selected.length || processing"
+                [disabled]="!list.selectedOptions.selected.length || processing ()"
                 (click)="update(list.selectedOptions.selected)">
-            {{ 'COMMON_GENERATE' | translate }}
+            {{ 'COMMON_UPDATE' | translate }}
         </button>
     </div>
     <div class="out_div">

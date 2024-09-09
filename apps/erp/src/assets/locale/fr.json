@@ -26,6 +26,14 @@
     "OfferLine":                    "Detail offre",
     "POrder":                       "Commande fournisseur",
     "PRequest":                     "Demande d'achat",
+    "Department":                   "Departement",
+    "ODivision":                    "Division",
+    "Office":                       "Bureau",
+    "ReceptionLine":                "Detail reception",
+    "Identitycard":                 "Carte identité",
+    "ProjectMotive":                "Motif projet",
+    "ProjectType":                  "Type projet",
+    "SocialActivity":               "Activité sociale",
 
 
     "MAIN_MENU": "Menu principal",
