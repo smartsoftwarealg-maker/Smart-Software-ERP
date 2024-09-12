@@ -39,7 +39,7 @@ import { QRCodeModule } from 'angularx-qrcode';
     ]})
 export class AssetAppointmentDocListComponent extends BaseEntityListComponent<ASSAppointmentHeader> {
     detailData: AssetAppointmentLine[] = [];
-    detailPagination = PaginationModel.newInstance();
+    detailPagination = PaginationModel.newInstance( {pageSize: 5, elementCount: 0, page: 1});
     private DEF_COLS = [
         'reference',
         'description',
@@ -101,21 +101,26 @@ export class AssetAppointmentDocListComponent extends BaseEntityListComponent<AS
             defReportSrv,
             pagPersistSrv,
             'ASSET_APPOINTMENTS');
+        this.detailPagination.onChange = () => this.refreshDetail();
     }
 
     override select(id: number) {
         super.select(id);
         this.detailSrv.setParentId(id || 0);
+        this.refreshDetail();
+    }
+    openAsset(id: number) {
+        if (id > 0) {
+            this.router.navigate(['../assets', id], { relativeTo: this.route }).then();
+        }
+    }
+
+    private refreshDetail() {
         this.detailSrv
-            .getList(0, this.detailPagination.pageSize)
+            .getList(this.detailPagination.page - 1, this.detailPagination.pageSize)
             .subscribe(res => {
                 this.detailData = res.body;
                 this.detailPagination.elementCount = res.itemCount;
             });
-    }
-    openAsset(id: number) {
-        if (id > 0) {
-            this.router.navigate(['../assets', id], { relativeTo: this.route });
-        }
     }
 }

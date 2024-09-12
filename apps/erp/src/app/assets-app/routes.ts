@@ -76,7 +76,7 @@ import {
     AssetTreeComponent,
     AssetListInventoryComponent,
     AssetUnidentifiedInventoryListComponent,
-    AssetUnidentifiedInventoryDetailComponent
+    AssetUnidentifiedInventoryDetailComponent, AssetListInventoryDetailComponent
 } from '@ss/assets-component';
 import {ReportViewComponent} from '@ss/common/ui-report-param';
 import {ReportCatalogListComponent, ReportCatalogDetailComponent} from '@ss/administration/ui-report-catalog';
@@ -455,7 +455,19 @@ export const mainRoutes: Routes = [
     },
     {
         path: ASSET_QR_INVENTORY_URL,
-        component: AssetListInventoryComponent
+        children: [
+            {
+                path: LIST_URL,
+                component: AssetListInventoryComponent,
+                canActivate: [loginGuard]
+            },
+            {
+                path: ':id',
+                component: AssetListInventoryDetailComponent,
+                canActivate: [loginGuard],
+                canDeactivate: [CanDeactivateService],
+            },
+        ]
     },
     {
         path: ASSET_INVENTORY_URL,

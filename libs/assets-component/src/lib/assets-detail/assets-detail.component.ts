@@ -129,7 +129,7 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> impl
     fiscalDepreciation: Depreciation[] = [];
     assetEnds: Lookup[] = [];
     depreciationColumns = ['year', 'depreciation', 'totalDepreciation', 'remaining'];
-    readonly LOCAL_ASSER_ARCHIVE = ASSET_ARCHIVES;
+    readonly LOCAL_ASSET_ARCHIVE = ASSET_ARCHIVES;
 
     readonly ARCHIVE_ROUT = 0;
     readonly COSTS_ROUT = 1;

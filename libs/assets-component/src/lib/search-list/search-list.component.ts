@@ -51,9 +51,9 @@ export class SearchListComponent extends BaseEntityListComponent<Asset> implemen
     private fb = inject(UntypedFormBuilder);
     private supplierSrv = inject(SupplierService);
     private beneficiarySrv = inject(ConsumerService);
-    private assetSrv = inject(AssetsService);
+    // private assetSrv = inject(AssetsService);
     private isParamSrv = inject(IsParamService);
-    private locationSrv = inject(AssetLocationService);
+    // private locationSrv = inject(AssetLocationService);
     private officeSrv = inject(OfficeService);
     private langSrv = inject(LanguageService);
     private EPOCH: Date | null = new Date(0);

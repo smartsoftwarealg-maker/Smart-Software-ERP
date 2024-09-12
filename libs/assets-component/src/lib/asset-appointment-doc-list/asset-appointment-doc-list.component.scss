@@ -1,13 +1,15 @@
-.content-div {
+.content__div,
+.size__div {
     width: 96%;
     max-width: 1400px;
-    margin: 0 auto;
+    margin: 0.5em auto;
+}
+.content__div {
     overflow-y: auto;
-    height: calc(50% - 64px);
 }
 
 .main_table {
-    height: 50%;
+    height: max(350px, 40%);
     margin-top: 4px;
 }
 

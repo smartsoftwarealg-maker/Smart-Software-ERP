@@ -104,6 +104,7 @@ export class AppArchiveService extends BaseEntityExtendedService<AppArchive> {
     }
 
     override setParentId(id: number) {
+        debugger
         this._id = id;
         super.setParentId(id * 100 + (this._appId || 0));
     }

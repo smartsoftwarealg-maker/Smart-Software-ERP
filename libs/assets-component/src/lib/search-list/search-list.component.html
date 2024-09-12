@@ -108,7 +108,7 @@
 
             <ng-container matColumnDef="description">
                 <mat-header-cell *matHeaderCellDef translate>ADMINISTRATION_DESCRIPTION</mat-header-cell>
-                <mat-cell *matCellDef="let e">
+                <mat-cell *matCellDef="let e" [ngClass]="{ sold: e.dateOut }" >
                     {{e.description}}
                 </mat-cell>
             </ng-container>
@@ -116,84 +116,84 @@
 
             <ng-container matColumnDef="reference">
                 <mat-header-cell *matHeaderCellDef translate>COMMON_REFERENCE</mat-header-cell>
-                <mat-cell *matCellDef="let e">
+                <mat-cell *matCellDef="let e" [ngClass]="{ sold: e.dateOut }" >
                     {{e.reference}}
                 </mat-cell>
             </ng-container>
 
             <ng-container matColumnDef="accountno">
                 <mat-header-cell *matHeaderCellDef translate>LOGISTICS_ACCOUNT_NO</mat-header-cell>
-                <mat-cell *matCellDef="let e">
+                <mat-cell *matCellDef="let e" [ngClass]="{ sold: e.dateOut }" >
                     {{e.accountno}}
                 </mat-cell>
             </ng-container>
 
             <ng-container matColumnDef="serial_no">
                 <mat-header-cell *matHeaderCellDef translate>ASSET_SERIAL_NUMBER</mat-header-cell>
-                <mat-cell *matCellDef="let e">
+                <mat-cell *matCellDef="let e" [ngClass]="{ sold: e.dateOut }" >
                     {{e.serial_no}}
                 </mat-cell>
             </ng-container>
 
             <ng-container matColumnDef="geolocation">
                 <mat-header-cell *matHeaderCellDef translate>ASSET_LOCATIONS</mat-header-cell>
-                <mat-cell *matCellDef="let e">
+                <mat-cell *matCellDef="let e" [ngClass]="{ sold: e.dateOut }" >
                     {{e.geolocation}}
                 </mat-cell>
             </ng-container>
 
             <ng-container matColumnDef="beneficiary">
                 <mat-header-cell *matHeaderCellDef translate>ASSET_BENEFICIARY</mat-header-cell>
-                <mat-cell *matCellDef="let e">
+                <mat-cell *matCellDef="let e" [ngClass]="{ sold: e.dateOut }" >
                     {{e.beneficiary}}
                 </mat-cell>
             </ng-container>
 
             <ng-container matColumnDef="acquisitionDate">
                 <mat-header-cell *matHeaderCellDef translate>ASSET_ACQUISITION_DATE</mat-header-cell>
-                <mat-cell *matCellDef="let e">
+                <mat-cell *matCellDef="let e" [ngClass]="{ sold: e.dateOut }" >
                     {{e.acquisitionDate | date: 'dd/MM/yyyy'}}
                 </mat-cell>
             </ng-container>
 
             <ng-container matColumnDef="serviceDate">
                 <mat-header-cell *matHeaderCellDef translate>ASSET_SERVICE_DATE</mat-header-cell>
-                <mat-cell *matCellDef="let e">
+                <mat-cell *matCellDef="let e" [ngClass]="{ sold: e.dateOut }" >
                     {{e.serviceDate | date: 'dd/MM/yyyy'}}
                 </mat-cell>
             </ng-container>
 
             <ng-container matColumnDef="acquisitionValue">
                 <mat-header-cell *matHeaderCellDef translate>ASSET_ACQUISITION_VALUE</mat-header-cell>
-                <mat-cell *matCellDef="let e">
+                <mat-cell *matCellDef="let e" [ngClass]="{ sold: e.dateOut }" >
                     {{e.acquisitionValue | number: '1.2-2'}}
                 </mat-cell>
             </ng-container>
 
             <ng-container matColumnDef="residualValue">
                 <mat-header-cell *matHeaderCellDef translate>ASSET_RESIDUAL_VALUE</mat-header-cell>
-                <mat-cell *matCellDef="let e">
+                <mat-cell *matCellDef="let e" [ngClass]="{ sold: e.dateOut }" >
                     {{e.residualValue | number: '1.2-2'}}
                 </mat-cell>
             </ng-container>
 
             <ng-container matColumnDef="depreciationRate">
                 <mat-header-cell *matHeaderCellDef translate>ACC_DEPRECIATION_RATE</mat-header-cell>
-                <mat-cell *matCellDef="let e">
+                <mat-cell *matCellDef="let e" [ngClass]="{ sold: e.dateOut }" >
                     {{e.depreciationRate | number: '1.2-2'}}
                 </mat-cell>
             </ng-container>
 
             <ng-container matColumnDef="useful_life">
                 <mat-header-cell *matHeaderCellDef translate>ACC_USEFUL_LIFE</mat-header-cell>
-                <mat-cell *matCellDef="let e">
+                <mat-cell *matCellDef="let e" [ngClass]="{ sold: e.dateOut }" >
                     {{e.useful_life | number: '1.2-2'}}
                 </mat-cell>
             </ng-container>
 
             <ng-container matColumnDef="key">
                 <mat-header-cell *matHeaderCellDef></mat-header-cell>
-                <mat-cell *matCellDef="let e">
+                <mat-cell *matCellDef="let e" [ngClass]="{ sold: e.dateOut }" >
                     <i class="fa-solid fa-book-open" (click)="openAsset(e.id)"
                        matTooltip="{{ 'COMMON_GOTO_DETAIL' | translate }}"></i>
                 </mat-cell>

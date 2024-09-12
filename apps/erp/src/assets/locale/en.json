@@ -26,6 +26,14 @@
     "OfferLine": "Offer Line",
     "POrder": "Purchase Order",
     "PRequest": "Parts Request",
+    "Department": "Department",
+    "ODivision": "Division",
+    "Office": "Office",
+    "ReceptionLine": "Reception Line",
+    "Identitycard": "Identity card",
+    "ProjectMotive": "Project motive",
+    "ProjectType": "Project type",
+    "SocialActivity": "Social activity",
 
 
     "MAIN_MENU": "Main Menu",
