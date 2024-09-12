@@ -52,3 +52,4 @@ export * from './lib/asset-unidentified-inventory-detail/asset-unidentified-inve
 export * from './lib/asset-unidentified-inventory-list/asset-unidentified-inventory-list.component';
 export * from './lib/services/asset-unidentified-inventory.service';
 export * from './lib/asset-unidentified-child-inventory-list/asset-unidentified-child-inventory-list.component';
+export * from './lib/asset-list-inventory-detail/asset-list-inventory-detail.component';

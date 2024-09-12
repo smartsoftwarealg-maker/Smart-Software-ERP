@@ -238,10 +238,14 @@ export interface AssetInventory {
     status?: number;
     inventId?: number;
     userId?: number;
+    newBuildingId?: string;
+    newOfficeId?: string;
     documentId?: number;
     officeDescription?: string;
     assetDescription?: string;
     statusDescription?: string;
+    newOfficeDescription?: string;
+    newBuildingDescription?: string;
 }
 
 export interface AssetBuilding {
@@ -305,7 +309,8 @@ export interface ASSTree {
 export interface InventoryAsset {
     id: number;
     centerId: number;
-    reference: String,
+    locationId: number;
+    reference: string,
     serialNo?: string;
     officeId: number;
     year?: number;
@@ -314,11 +319,14 @@ export interface InventoryAsset {
     acquisitionDate?: Date;
     receptionNumber?: string;
     comment?: string;
+    newBuildingId?: string;
+    newOfficeId?: string;
     inventoryId?: number;
     documentId?: number;
     locationDescription?: string;
     buildingDescription?: string;
     officeDescription?: string;
+    updateLocation?: boolean;
 }
 
 export interface AssetInventoryDoc {

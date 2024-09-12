@@ -82,6 +82,7 @@ export class AssetListInventoryComponent extends BaseEntityListComponent<Invento
 
     formGroup   = this.fb.group({
         id:           [0],
+        documentId:   [0],
         officeId:     [0],
         accountNo:    [''],
         buildingId:   [0],
@@ -105,7 +106,9 @@ export class AssetListInventoryComponent extends BaseEntityListComponent<Invento
         'userDescription',
         'acquisitionDate',
         'receptionNumber',
-        'comment'
+        'comment',
+        'newOfficeDescription',
+        'newBuildingDescription'
 ];
 
     constructor(public listSrv: AssetListInventoryService,
@@ -153,6 +156,7 @@ export class AssetListInventoryComponent extends BaseEntityListComponent<Invento
 
     private onDocument(d: AssetInventoryDoc) {
         this.documentId = d?.id || 0;
+        this.formGroup.controls.documentId.setValue(this.documentId);
         this.isEditable.set(!d?.closed);
         this.buildingSrv.setParentId(d.locationId||0);
         this.officeSrv.setParentId(d.buildingId||0);
@@ -235,7 +239,12 @@ export class AssetListInventoryComponent extends BaseEntityListComponent<Invento
     override ngOnInit() {
         this.addButton.visible = false;
         this.deleteButton.visible = false;
-        this.editButton.visible = false;
         super.ngOnInit();
+    }
+
+    override selectRow(row: InventoryAsset) {
+        super.selectRow(row);
+        console.log(row?.inventoryId)
+        this.editButton.visible = (row?.inventoryId||0) > 0;
     }
 }

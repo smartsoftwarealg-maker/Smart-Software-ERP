@@ -74,5 +74,7 @@
     "INVENTORY_DOCUMENT":  "Inventory document",
     "UNIDENTIFIED_INVENTORY": "Unidentified inventory",
     "RECORDED_ARTICLES": "Recorded articles",
-    "MISSING_ARTICLES": "Missing articles"
+    "MISSING_ARTICLES": "Missing articles",
+    "NEW_OFFICE": "New office",
+    "NEW_BUILDING": "New building"
 }

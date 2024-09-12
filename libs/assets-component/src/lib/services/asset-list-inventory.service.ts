@@ -11,6 +11,7 @@ import {
 } from '../assets-api';
 import {Observable} from 'rxjs';
 import { HttpParams } from '@angular/common/http';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -46,6 +47,7 @@ export class AssetListInventoryService extends BaseEntityService<InventoryAsset>
                 ['beneficiary', this._document.beneficiary],
                 ['receptionNo', this._document.receptionNo],
                 ['accountNo',   this._document.accountNo],
+                ['documentId', this.document?.documentId]
             ]);
            extraPrams = this.setParams(extraPrams||new HttpParams(), values);
         }
@@ -57,5 +59,13 @@ export class AssetListInventoryService extends BaseEntityService<InventoryAsset>
     }
     get document(): AssetInventoryFilter|null {
         return this._document;
+    }
+
+    override update(a: InventoryAsset): Observable<number> {
+        return a.updateLocation ?
+            this.httpSrv
+                .put('/inventory-locations', a)
+                .pipe(map((res: { count: number }) => res['count'])) :
+            super.update(a);
     }
 }

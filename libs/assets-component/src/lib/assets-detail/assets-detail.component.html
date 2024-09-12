@@ -490,7 +490,8 @@
         </mat-expansion-panel>
 
 
-        <mat-expansion-panel #archives expanded="false" [class]="getPanelHeaderClass('archives', archives)"
+        <mat-expansion-panel #archives expanded="false"
+                             [class]="getPanelHeaderClass('archives', archives)"
                              (afterExpand)="showPanel(ARCHIVE_ROUT)">
             <mat-expansion-panel-header>
                 <mat-panel-title translate>
@@ -498,7 +499,9 @@
                 </mat-panel-title>
             </mat-expansion-panel-header>
 
-            <router-outlet *ngIf="id && activePanel === ARCHIVE_ROUT"></router-outlet>
+            @if (id && activePanel === ARCHIVE_ROUT) {
+              <router-outlet></router-outlet>
+            }
             <!--            <ss-app-archive-main [id]="id" [appId]="LOCAL_ASSER_ARCHIVE" [editable]="isEditable"></ss-app-archive-main>-->
 
         </mat-expansion-panel>

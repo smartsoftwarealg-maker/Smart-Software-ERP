@@ -74,5 +74,7 @@
     "INVENTORY_DOCUMENTS": "Documents d'inventaire",
     "UNIDENTIFIED_INVENTORY": "Inventaire non identifié",
     "RECORDED_ARTICLES":      "Articles enregistrés",
-    "MISSING_ARTICLES":       "Articles manquants"
+    "MISSING_ARTICLES":       "Articles manquants",
+    "NEW_OFFICE": "Nouveau bureau",
+    "NEW_BUILDING": "Nouveau batiment"
 }

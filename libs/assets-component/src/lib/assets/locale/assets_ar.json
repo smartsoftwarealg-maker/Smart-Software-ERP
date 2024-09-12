@@ -74,5 +74,7 @@
     "INVENTORY_DOCUMENT": "وثيقات الجرد",
     "UNIDENTIFIED_INVENTORY": "مخزون غير محدد",
     "RECORDED_ARTICLES": "مقالات مسجلة",
-    "MISSING_ARTICLES": "مقالات مفقودة"
+    "MISSING_ARTICLES": "مقالات مفقودة",
+    "NEW_OFFICE": "مكتب جديد",
+    "NEW_BUILDING": "مبنى جديد"
 }

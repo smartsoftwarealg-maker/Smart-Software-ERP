@@ -1,8 +1,12 @@
+mat-card {
+    border-radius: 1.4em;
+    padding: 16px;
+}
+
 .item {
     width: 80%;
     max-width: 900px;
-    margin: 16px auto;
-    padding: 16px;
+    margin: 0.5em auto;
 }
 
 .ctrl_div {
@@ -55,6 +59,7 @@
 
 .table_div {
     overflow-x: auto;
+    height: 20em;
 }
 
 .main-table {
