@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {OrderListComponent} from './order-list/order-list.component';
 import {OrderDetailComponent} from './order-detail/order-detail.component';
-import {SalesUiOrderLinesModule} from '@ss/sales/ui-order-lines';
 import {MaterialModule} from '@ss/common/api-common';
 import {CommonUiLangModule} from '@ss/common/ui-lang';
 import {UiPaginationModule} from '@ss/common/ui-pagination';
@@ -26,8 +25,9 @@ import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
         CommonUiDatepickerModule,
         CommonUiAutoCompleteModule,
 
-        SalesUiOrderLinesModule,
-        LogisticsUiStockInfoModule, DocInfoComponent],
+        LogisticsUiStockInfoModule,
+        DocInfoComponent
+    ],
 
     declarations: [OrderListComponent,
         OrderDetailComponent]

@@ -9,7 +9,7 @@ import {tap} from 'rxjs/operators';
 import {fillObject, LoginService} from '@ss/common/api-common';
 import {SalesOrderService} from '@ss/sales/api-sales-order';
 import {
-    BaseTransactionDetailComponent, BaseTransactionLinesListComponent, DOC_QUOTATION,
+    BaseTransactionDetailComponent, BaseTransactionLinesListComponent, DOC_QUOTATION, SalesOrderLinesService,
     Transaction,
     TransactionLinesService
 } from '@ss/logistics/api-transaction';
@@ -36,7 +36,7 @@ export class OrderDetailComponent extends BaseTransactionDetailComponent {
     public groups: CCGroup[];
 
     constructor(public orderService: SalesOrderService,
-                public override detailSrv: TransactionLinesService,
+                public override detailSrv: SalesOrderLinesService,
                 public override shellSrv: ShellService,
                 public override snackBarSrv: SnackBarService,
                 public override route: ActivatedRoute,
