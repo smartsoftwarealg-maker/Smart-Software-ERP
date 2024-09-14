@@ -68,6 +68,7 @@ export class TraceabilityComponent implements OnInit, OnDestroy {
         node => node.level,
         node => node.expandable
     );
+
     private _transformer = (node: LogNode, level: number) => {
         return {
             expandable: level == 0,
