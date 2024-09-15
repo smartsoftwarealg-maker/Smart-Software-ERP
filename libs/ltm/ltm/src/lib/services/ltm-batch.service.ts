@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import {BaseEntityService} from '@ss/common/api-base-entity';
 import { LTM_BATCH_URL, LTMBatch, LTMTesting } from '../ltm-api';
-import { dateTimeToYmdStr, HttpService } from '@ss/common/api-common';
-import { Observable, sample } from 'rxjs';
+import { dateTimeToYmdStr, dateToYmdStr, HttpService } from '@ss/common/api-common';
+import { map, Observable, of, sample } from 'rxjs';
 import { HttpParams } from '@angular/common/http';
 
 @Injectable({
@@ -35,5 +35,16 @@ export class LtmBatchService extends BaseEntityService<LTMBatch> {
         return this.httpSrv.get<LTMBatch>(LTM_BATCH_URL, params);
     }
 
+    validateBatch(batch: LTMBatch): Observable<boolean> {
+        const time = dateToYmdStr(batch.timeStamp) + ' ' + batch.hour + ':00:00';
+        const params = new HttpParams()
+            .set('matter', batch.parentId||0)
+            .set('time',   time)
+            .set('id',     batch.id)
+            .set('pickup', batch.pickupPoint || 0);
+        return this.httpSrv
+            .get<{valid: boolean}>('/ltm/validation', params)
+            .pipe(map(res => res.valid));
+    }
 
 }

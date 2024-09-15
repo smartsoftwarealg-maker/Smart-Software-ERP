@@ -1,5 +1,5 @@
 import {
-    Component,
+    Component, DestroyRef,
     inject,
     input,
     OnDestroy,
@@ -23,7 +23,7 @@ import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from '@ss
 import { LtmMatterTestService } from '../services/ltm-matter-test.service';
 import { LtmBatchService } from '../services/ltm-batch.service';
 import { LtmPeriodicityService } from '../services/ltm-periodicity.service';
-import { map, Observable, of, Subscription, switchMap } from 'rxjs';
+import { filter, map, merge, Observable, of, Subscription, switchMap } from 'rxjs';
 import { debounceTime, distinctUntilChanged, tap } from 'rxjs/operators';
 import { LtmTestService } from '../services/ltm-test.service';
 import { dateToYmdStr, LoginService, MaterialModule } from '@ss/common/api-common';
@@ -40,6 +40,7 @@ import { LtmZoneService } from '../services/ltm-zone.service';
 import { LtmDepositService } from '../services/ltm-deposit.service';
 import { LtmPickupPointService } from '../services/ltm-pickup-point.service';
 import { LtmCenterMatterService } from '../services/ltm-center-matter.service';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 function sampleNoValidatorFn(sampleMode: boolean): ValidatorFn {
     return (control: AbstractControl): ValidationErrors | null => {
@@ -68,6 +69,8 @@ function sampleNoValidatorFn(sampleMode: boolean): ValidatorFn {
     ]
 })
 export class LtmBatchInputComponent implements OnInit, OnDestroy {
+    #destroyRef = inject(DestroyRef);
+
     private TITLES = ['LTM_BATCH_TESTINGS', 'LTM_PHYSICAL_TESTINGS', 'LTM_DEPOSIT_TESTINGS', 'LTM_RAW_TESTINGS']
     private activatedRoute = inject(ActivatedRoute);
     private router = inject(Router);
@@ -83,9 +86,6 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
     private testSrv = inject(LtmTestService);
     private shellSrv = inject(ShellService);
     private supplierSrv = inject(LtmSupplierService);
-    private bleacherSrv = inject(LtmBleacherService);
-    private zoneSrv = inject(LtmZoneService);
-    private depositSrv = inject(LtmDepositService);
     private loginSrv = inject(LoginService);
     private pickupSrv = inject(LtmPickupPointService);
     private subscriptions: Subscription[] = [];
@@ -97,11 +97,7 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
     periodLookup = new DefaultAutoCompleteModel(this.periodSrv);
     siloLookup = new DefaultAutoCompleteModel(this.siloSrv);
     matterLookup = new DefaultAutoCompleteModel(this.lineMatterSrv);
-    // equipmentLookup = new DefaultAutoCompleteModel(this.equipmentSrv);
     supplierLookup = new DefaultAutoCompleteModel(this.supplierSrv);
-    bleacherLookup = new DefaultAutoCompleteModel(this.bleacherSrv);
-    depositLookup = new DefaultAutoCompleteModel(this.depositSrv);
-    zoneLookup = new DefaultAutoCompleteModel(this.zoneSrv);
     pickupLookup = new DefaultAutoCompleteModel(this.pickupSrv);
 
     protected readonly CHEMICAL_TEST = CHEMICAL_TEST;
@@ -127,30 +123,6 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
         click: () => this.cancel()
     };
 
-    // public deleteButton: ToolbarButton = {
-    //     icon: 'fas fa-trash-alt',
-    //     label: 'COMMON_DELETE',
-    //     disabled: true,
-    //     visible: true,
-    //     keepOnToolbar: KeepOnToolbar.ALWAYS, // save button is too important to hide
-    //     click: () => this.delete()
-    // };
-    // public addButton: ToolbarButton = {
-    //     icon: 'fas fa-plus',
-    //     label: 'COMMON_ADD',
-    //     disabled: false,
-    //     visible: false,
-    //     keepOnToolbar: KeepOnToolbar.DYNAMIC,
-    //     click: () => this.edit()
-    // };
-    // public editButton: ToolbarButton = {
-    //     icon: 'fas fa-pen',
-    //     label: 'COMMON_EDIT_SELECTED',
-    //     disabled: false,
-    //     visible: false,
-    //     keepOnToolbar: KeepOnToolbar.ALWAYS,
-    //     click: () => this.edit()
-    // };
 
     labels: string[] = [];
     limits: number[][] = [];
@@ -203,9 +175,6 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit() {
-        // if (this.testingMode() === CHEMICAL_TEST && (this.matterTestSrv.getParentId()||0) < 1) {
-        //     this.router.navigate(['..'], { relativeTo: this.activatedRoute }).then();
-        // } else {
         this.testSrv
             .getList(0, 999, null, 'variable')
             .subscribe(
@@ -234,8 +203,24 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
                     distinctUntilChanged()
                 ).subscribe(() => this.refreshFormulas())
         );
+
+        merge(
+            this.form.controls.timeStamp.valueChanges,
+            this.form.controls.hour.valueChanges,
+            this.form.controls.parentId.valueChanges,
+            this.form.controls.pickupPoint.valueChanges
+        ).pipe(
+            filter(() => !!this.form.controls.parentId && !!this.form.controls.pickupPoint),
+            debounceTime(300),
+            distinctUntilChanged(),
+            takeUntilDestroyed(this.#destroyRef))
+            .subscribe(() => {
+                this.validate();
+            });
+
         this.form.controls.timeStamp.setValue(this.TODAY);
         this.form.controls.testType.setValue(this.testingMode());
+
         if (this.testingMode() === CHEMICAL_TEST || this.testingMode() === PHYSICAL_TEST) {
             // this.form.controls.equipment.addValidators(Validators.required);
             this.form.controls.pickupPoint.addValidators(Validators.required);
@@ -251,6 +236,14 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
             this.form.controls.sampleNo.removeValidators(Validators.required);
         }
         // }
+    }
+
+    private validate() {
+        this.entitySrv
+            .validateBatch(this.form.getRawValue() as LTMBatch)
+            .subscribe(res => {
+                this.form.controls.pickupPoint.setErrors(res? null : { 'duplicate': true });
+            });
     }
 
     private refreshFormulas() {

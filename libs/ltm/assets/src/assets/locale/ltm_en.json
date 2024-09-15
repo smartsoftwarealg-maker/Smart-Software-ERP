@@ -60,5 +60,6 @@
     "BLEACHER":           "Bleacher",
     "ZONE":               "Zone",
     "DEPOSIT":            "Deposit",
-    "STANDARD_NAME":      "Standard name"
+    "STANDARD_NAME":      "Standard name",
+    "DUPLICATE_TEST":     "Duplicate test"
 }

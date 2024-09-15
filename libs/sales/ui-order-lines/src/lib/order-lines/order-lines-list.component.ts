@@ -1,15 +1,40 @@
 import { Component, OnInit } from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
-import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
+import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import {ArticleService} from '@ss/master-data/api-article';
 import {LotsService} from '@ss/common/api-lookup';
-import {BaseTransactionLinesListComponent, TransactionLinesService} from '@ss/logistics/api-transaction';
+import {
+    BaseTransactionLinesListComponent,
+    SalesOrderLinesService,
+    TransactionLinesService
+} from '@ss/logistics/api-transaction';
+import { CommonModule } from '@angular/common';
+import { MaterialModule } from '@ss/common/api-common';
+import { CommonUiLangModule } from '@ss/common/ui-lang';
+import { UiPaginationModule } from '@ss/common/ui-pagination';
+import { ReactiveFormsModule } from '@angular/forms';
+import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
+import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
+import { LogisticsUiStockInfoModule } from '@ss/logistics/ui-stock-info';
+import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
 
 @Component({
     selector: 'ss-order-lines-list',
     templateUrl: './order-lines-list.component.html',
     styleUrls: ['../../../../../common/assets/src/assets/transac-lines-list.scss'],
+    standalone: true,
+    imports: [CommonModule,
+        MaterialModule,
+        CommonUiLangModule,
+        UiPaginationModule,
+        ReactiveFormsModule,
+        CommonUiConfirmationDialogModule,
+        CommonUiDatepickerModule,
+        CommonUiAutoCompleteModule,
+
+        LogisticsUiStockInfoModule, DocInfoComponent
+    ],
 })
 export class OrderLinesListComponent extends BaseTransactionLinesListComponent implements OnInit {
     displayedColumns = [
@@ -25,7 +50,7 @@ export class OrderLinesListComponent extends BaseTransactionLinesListComponent i
     ];
 
     constructor(
-        public override detailSrv: TransactionLinesService,
+        public override detailSrv: SalesOrderLinesService,
         public override shellSrv: ShellService,
         public override snackBarSrv: SnackBarService,
         public override route: ActivatedRoute,

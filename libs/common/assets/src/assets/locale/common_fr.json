@@ -347,5 +347,6 @@
     "INVENTORY2":                 "Inventaire CB",
     "OTHER":                      "Autre",
     "CLOSED":                     "Clôturée",
-    "PRINTED":                    "imprimée"
+    "PRINTED":                    "imprimée",
+    "VERSION":                    "Version"
 }

@@ -344,5 +344,6 @@
     "INVENTORY2":                 "BC inventory",
     "OTHER":                      "Other",
     "CLOSED":                     "Closed",
-    "PRINTED":                    "Printed"
+    "PRINTED":                    "Printed",
+    "VERSION":                    "Version"
 }

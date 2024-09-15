@@ -343,5 +343,6 @@
     "INVENTORY2":                 "جرد 2",
     "OTHER":                      "اخرى",
     "CLOSED":                     "مغلق",
-    "PRINTED":                    "مطبوع"
+    "PRINTED":                    "مطبوع",
+    "VERSION":                    "النسخة",
 }

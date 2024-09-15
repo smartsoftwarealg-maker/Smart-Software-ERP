@@ -60,5 +60,6 @@
     "BLEACHER":            "المبيض",
     "ZONE":               "المنطقة",
     "DEPOSIT":            "المنجم",
-    "STANDARD_NAME":      "الاسم القياسي"
+    "STANDARD_NAME":      "الاسم القياسي",
+    "DUPLICATE_TEST":     " اختبار مكرر"
 }

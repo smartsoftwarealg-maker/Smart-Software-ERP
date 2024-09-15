@@ -60,5 +60,6 @@
     "BLEACHER":           "Gradin",
     "ZONE":               "Zone",
     "DEPOSIT":            "Gisement",
-    "STANDARD_NAME":      "Nom standard"
+    "STANDARD_NAME":      "Nom standard",
+    "DUPLICATE_TEST":     "Test dupliqué"
 }
