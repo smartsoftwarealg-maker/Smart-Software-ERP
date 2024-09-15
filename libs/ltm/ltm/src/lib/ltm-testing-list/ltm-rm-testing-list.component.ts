@@ -18,7 +18,7 @@ import { LtmBaseTestingListComponent } from '../ltm-testing-common/ltm-base-test
 import { LtmRmTestingService } from '../services/ltm-rm-testing.service';
 
 @Component({
-    selector: "ss-ltm-testing-list",
+    selector: "ss-ltm-rm-testing-list",
     templateUrl: "../ltm-testing-common/ltm-testing-list.component.html",
     styleUrls: ["../ltm-testing-common/ltm-testing-list.component.scss"],
     standalone: true,

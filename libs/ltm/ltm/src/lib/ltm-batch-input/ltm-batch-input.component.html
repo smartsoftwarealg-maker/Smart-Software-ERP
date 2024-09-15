@@ -1,4 +1,4 @@
-<form novalidate [formGroup]="form">
+<form [formGroup]="form">
     <mat-card class="ctrl__div">
         <mat-card-content>
             <mat-form-field>
@@ -95,7 +95,9 @@
                                   formControlName="pickupPoint"
                                   required>
                 </ss-auto-complete>
+                <mat-error *ngIf="form.controls['pickupPoint'].hasError('duplicate')" translate>LTM_DUPLICATE_TEST</mat-error>
             </mat-form-field>
+
             @if (testingMode() !== DEPOSIT_TEST && testingMode() !== RAW_MATERIAL_TEST) {
                 <!--                <mat-form-field class="default-100">-->
                     <!--                    <mat-label translate>COMMON_EQUIPMENT</mat-label>-->

@@ -6,7 +6,7 @@ import { ActivatedRoute, Router } from "@angular/router";
 import { ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
 import { DefaultReportService } from "@ss/common/ui-default-report-component";
 import { dateToStr, PaginatorPersistenceService } from '@ss/common/api-common';
-import { map, Observable } from 'rxjs';
+import { filter, map, Observable } from 'rxjs';
 import { LtmLineService } from '../services/ltm-line.service';
 import { FormControl } from '@angular/forms';
 import { DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
@@ -68,7 +68,8 @@ export class LtmBaseTestingListComponent extends BaseEntityListComponent<LTMTest
     }
 
     override getPage(): Observable<LTMTesting[]> {
-        const filter = this.filter || `${dateToStr(this.fromCtrl.value)}~${dateToStr(this.toCtrl.value)}`;
+        const TODAY = new Date();
+        const filter = this.filter || `${dateToStr(this.fromCtrl.value||TODAY)}~${dateToStr(this.toCtrl.value||TODAY)}`;
         return this.entitySrv.getPage(this.pagination, filter, this.sortBy);
     }
 
@@ -84,15 +85,18 @@ export class LtmBaseTestingListComponent extends BaseEntityListComponent<LTMTest
                 .valueChanges
                 .pipe(
                     debounceTime(300),
-                    distinctUntilChanged()
+                    distinctUntilChanged(),
+                    filter(() => !this.fromCtrl.value)
                 ).subscribe(() => this.refresh())
         );
-        this.subscriptions.push(
+        this.subscriptions
+            .push(
             this.toCtrl
                 .valueChanges
                 .pipe(
                     debounceTime(300),
-                    distinctUntilChanged()
+                    distinctUntilChanged(),
+                    filter(() => !this.toCtrl.value)
                 ).subscribe(() => this.refresh())
         );
     }
