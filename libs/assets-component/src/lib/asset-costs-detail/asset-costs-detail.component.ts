@@ -54,11 +54,11 @@ export class AssetCostsDetailComponent extends BaseChildEntityDetailComponent<As
 
     public override setupForm(a: AssetCost): UntypedFormGroup {
         return this.form = this.formBuilder.group({
-            id: a.id,
-            cost_type: [a.cost_type || 2, Validators.required],
-            invest_id: [a.invest_id || this.parentId, Validators.required],
-            cost_id: [a.cost_id, Validators.required],
-            amount: [a.amount || 0, Validators.required]
+            id:        [a.id],
+            cost_type: [a.cost_type || 0, Validators.required],
+            invest_id: [a.invest_id || this.assetCostSrv.getParentId(), Validators.required],
+            cost_id:   [a.cost_id,        Validators.required],
+            amount:    [a.amount || 0,    Validators.required]
         });
     }
 }

@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import { Component, Input, OnInit, signal } from '@angular/core';
 import {SnackBarService} from '@ss/common/ui-shell';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { LanguageService, MaterialModule, PaginationModel } from '@ss/common/api-common';
@@ -37,7 +37,7 @@ import { QRCodeModule } from 'angularx-qrcode';
         QRCodeModule
     ]})
 export class AssetCostsListComponent implements OnInit {
-    @Input() editable = true;
+    editable = signal(true);
     selected = 0;
     fiscalCosts: AssetCost[] = [];
     accountantCosts: AssetCost[] = [];
@@ -68,6 +68,10 @@ export class AssetCostsListComponent implements OnInit {
 
     public select(id: number): void {
         this.selected = id;
+    }
+
+    set isEditable(b: boolean) {
+        this.editable.set(b);
     }
 
     public deleteSelected(): void {

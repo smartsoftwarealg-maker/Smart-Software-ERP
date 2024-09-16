@@ -178,7 +178,7 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> impl
                 .navigate([dest], {relativeTo: this.route})
                 .then(_ => {
                     if (this.outlet?.component instanceof AssetCostsListComponent) {
-                        // this.outlet?.component.editable = this.isEditable;
+                        (<AssetCostsListComponent>this.outlet?.component).isEditable = this.isEditable;
                     }
                 });
         }

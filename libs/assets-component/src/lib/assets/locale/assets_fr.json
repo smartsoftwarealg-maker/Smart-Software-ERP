@@ -76,5 +76,6 @@
     "RECORDED_ARTICLES":      "Articles enregistrés",
     "MISSING_ARTICLES":       "Articles manquants",
     "NEW_OFFICE": "Nouveau bureau",
-    "NEW_BUILDING": "Nouveau batiment"
+    "NEW_BUILDING": "Nouveau batiment",
+    "ACCOUNTING_TYPE": "Type comptabilite"
 }
