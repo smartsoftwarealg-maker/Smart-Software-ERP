@@ -61,10 +61,10 @@ export class AssetCostsListComponent implements OnInit {
         this.refresh();
     }
 
-    @Input()
-    set assetId(id: number) {
-        this.entitySrv.setParentId(id);
-    }
+    // @Input()
+    // set assetId(id: number) {
+    //     this.entitySrv.setParentId(id);
+    // }
 
     public select(id: number): void {
         this.selected = id;

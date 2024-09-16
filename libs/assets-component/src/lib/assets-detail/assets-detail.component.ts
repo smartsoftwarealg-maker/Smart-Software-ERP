@@ -1,8 +1,8 @@
-import {Component, inject, Input, OnInit} from "@angular/core";
+import { Component, inject, Input, OnInit, ViewChild } from '@angular/core';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {Asset, AssetReception, Depreciation, OfficeAutoComplete} from '../assets-api';
 import {KeepOnToolbar, ShellService, SnackBarService, ToolbarButton} from '@ss/common/ui-shell';
-import { ActivatedRoute, Router, RouterModule } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule, RouterOutlet } from '@angular/router';
 import {UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
 import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import {
@@ -47,6 +47,7 @@ import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
 import { CustomAttributesModule } from '@ss/custom-attributes';
 import { QRCodeModule } from 'angularx-qrcode';
 import { AssetAppointmentListComponent } from '../asset-appointment-list/asset-appointment-list.component';
+import { AssetCostsListComponent } from '../asset-costs-list/asset-costs-list.component';
 
 @Component({
     selector: 'ss-assets-detail',
@@ -102,6 +103,8 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> impl
         click: () => this.importAsset()
     };
     private maxReference: string = null;
+
+    @ViewChild(RouterOutlet) outlet: RouterOutlet | null = null;
 
     // Public
     minLength = 1;
@@ -171,12 +174,18 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> impl
         this.activePanel = panel;
         const dest = this.PANELS[panel];
         if (this.router.url.indexOf(dest) < 0) {
-            this.router.navigate([dest], {relativeTo: this.route}).then();
+            this.router
+                .navigate([dest], {relativeTo: this.route})
+                .then(_ => {
+                    if (this.outlet?.component instanceof AssetCostsListComponent) {
+                        // this.outlet?.component.editable = this.isEditable;
+                    }
+                });
         }
     }
 
     setupForm(b: Asset): UntypedFormGroup {
-        this.assetCostsSrv.setParentId(b.id);
+        this.assetCostsSrv.setParentId(b.id||0);
         this.assetRevaluationSrv.setParentId(b.id);
         this.assetBlockingSrv.setParentId(b.id);
         this.rateSrv.setParentId(b.id);
@@ -445,6 +454,7 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> impl
     override readForm(): Asset {
         return this.form.getRawValue();
     }
+
 }
 
 

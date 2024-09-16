@@ -422,15 +422,18 @@
                 </div>
             </div>
         </mat-expansion-panel>
-        <mat-expansion-panel *ngIf="!isCMMS" #costs expanded="false" [class]="getPanelHeaderClass('costs', costs)"
+        <mat-expansion-panel *ngIf="!isCMMS"
+                             #costs expanded="false"
+                             [class.b-primary-expansion-panel]="costs.expanded"
                              (afterExpand)="showPanel(COSTS_ROUT)">
             <mat-expansion-panel-header>
                 <mat-panel-title translate>
                     ASSET_COSTS
                 </mat-panel-title>
             </mat-expansion-panel-header>
-            <router-outlet *ngIf="id && activePanel === COSTS_ROUT"></router-outlet>
-            <!--            <ss-asset-costs-list [assetId]="id" [editable]="isEditable"></ss-asset-costs-list>-->
+            @if (id && activePanel === COSTS_ROUT) {
+                <router-outlet></router-outlet>
+            }
         </mat-expansion-panel>
 
         <mat-expansion-panel *ngIf="!isCMMS" #revaluations expanded="false"
