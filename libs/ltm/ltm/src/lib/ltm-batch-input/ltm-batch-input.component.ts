@@ -165,7 +165,7 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
 
     constructor() {
         this.TODAY.setHours(0, 0, 0, 0);
-        this.periodLookup.onObjectSelected = e => this.refreshData();
+        this.periodLookup.onObjectSelected = e => this.onPeriod();
         this.matterLookup.onObjectSelected = e => this.onMatter(e?.id || 0);
         this.form.controls.sampleNo.setValidators(sampleNoValidatorFn(this.testingMode() === PHYSICAL_TEST));
     }
@@ -330,7 +330,10 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
 
             });
     }
-
+    private onPeriod() {
+        this.refreshData();
+        this.validate();
+    }
     private refreshData() {
         this.tests.clear();
         this.totals.clear();
