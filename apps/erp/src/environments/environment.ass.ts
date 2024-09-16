@@ -15,7 +15,14 @@ import {
     STOCK_APP_URL,
     CONTRACTS_APP_URL,
     WORK_FLOW_APP_URL,
-    SERVICE_SALES, PURCHASES_APP_URL, PAYROLL_APP_URL, HR_APP_URL, ACCOUNTING_APP_URL, TREASURY_APP_URL, SOCIAL_APP_URL
+    SERVICE_SALES,
+    PURCHASES_APP_URL,
+    PAYROLL_APP_URL,
+    HR_APP_URL,
+    ACCOUNTING_APP_URL,
+    TREASURY_APP_URL,
+    SOCIAL_APP_URL,
+    ASSETS_APP_URL
 } from '../app/common';
 import {logisticsAdminNavTree} from '../app/logistics-admin/side-nav-tree';
 import {workflowNavTree} from '../app/workflow/side-nav-tree';
@@ -28,6 +35,7 @@ import { hrLookupNavTree } from '../app/hr-lookups/side-nav-tree';
 import { hrNavTree } from '../app/hr/side-nav-tree';
 import { payrollNavTree } from '../app/payroll/side-nav-tree';
 import { treasuryNavTree } from '../app/treasury/side-nav-tree';
+import { assetsNavTree } from '../app/assets-app/side-nav-tree';
 
 export const environment = {
     production: true,
@@ -39,6 +47,7 @@ export const navBar = [
     purchasesNavTree,
     stockNavTree,
     contractsNavTree,
+    assetsNavTree,
     socialNavTree,
     ssalesNavTree,
     financeNavTree,
@@ -62,6 +71,7 @@ export const langAssets = [
     ['assets/locale/purchases_',      'PURCHASES_'],
     ['assets/locale/bl_',             'BL_'],
     ['assets/locale/remuneration_',    'REMUN_'],
+    ['assets/locale/accounting_', 'ACC_'],
     ['assets/locale/webarch_',         'WAR_'],
     ['assets/locale/assets_',          'ASSET_'],
 ];
@@ -123,6 +133,10 @@ export const appRoutes: Routes =  [
     {
         path: HR_APP_URL,
         loadChildren: () => import('../app/hr/hr.module').then(m => m.HRModule)
+    },
+    {
+        path: ASSETS_APP_URL,
+        loadChildren: () => import('../app/assets-app/assets.module').then(m => m.AssetsModule)
     },
     {
         path: ACCOUNTING_APP_URL,
