@@ -95,7 +95,7 @@
                                   formControlName="pickupPoint"
                                   required>
                 </ss-auto-complete>
-                <mat-error *ngIf="form.controls['pickupPoint'].hasError('duplicate')" translate>LTM_DUPLICATE_TEST</mat-error>
+                <mat-error *ngIf="form.controls['pickupPoint'].hasError('duplicate')" translate>BL_DUPLICATE_TEST</mat-error>
             </mat-form-field>
 
             @if (testingMode() !== DEPOSIT_TEST && testingMode() !== RAW_MATERIAL_TEST) {

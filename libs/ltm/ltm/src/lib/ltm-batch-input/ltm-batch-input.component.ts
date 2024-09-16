@@ -243,6 +243,8 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
             .validateBatch(this.form.getRawValue() as LTMBatch)
             .subscribe(res => {
                 this.form.controls.pickupPoint.setErrors(res? null : { 'duplicate': true });
+                this.form.controls.pickupPoint.markAsDirty({ onlySelf: true });
+                this.form.controls.pickupPoint.markAsTouched({ onlySelf: true });
             });
     }
 
