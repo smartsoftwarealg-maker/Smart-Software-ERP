@@ -13,16 +13,18 @@
     <form *ngIf="form" novalidate [formGroup]="form" >
 
         <mat-form-field appearance="fill" class="default-50 sm-100">
-            <mat-label><span translate>COMMON_TYPE</span></mat-label>
+            <mat-label><span translate>ASSET_ACCOUNTING_TYPE</span></mat-label>
             <mat-select formControlName="cost_type">
-                <mat-option *ngFor="let t of costTypes" [value]="t.id">
-                    <span translate> {{ t.description }} </span>
-                </mat-option>
+                @for (t of costTypes; track t.id) {
+                    <mat-option [value]="t.id">
+                        <span translate> {{ t.description }} </span>
+                    </mat-option>
+                }
             </mat-select>
         </mat-form-field>
 
         <mat-form-field class="default-50 sm-100">
-            <mat-label translate>COMMON_TYPE</mat-label>
+            <mat-label translate>ASSET_COST_TYPES</mat-label>
             <ss-auto-complete matInput
                               [required]="true"
                               [model]="costTypeLookup"

@@ -28,7 +28,8 @@
                     <mat-label translate>COMMON_TYPE</mat-label>
                     <mat-select matNativeControl required formControlName="wrType">
                         <mat-option *ngFor="let t of cmmsTypes"
-                                    [value]="t.id"> {{ t.description | translate }} </mat-option>
+                                    [value]="t.id"> {{ t.description | translate }}
+                        </mat-option>
                     </mat-select>
                 </mat-form-field>
 
@@ -50,46 +51,48 @@
                     </ss-auto-complete>
                 </mat-form-field>
 
-                <mat-accordion *ngIf="validated === true">
-                    <mat-expansion-panel
-                        #executionPanel
-                        [class.b-primary-expansion-panel]="executionPanel.expanded">
-                        <mat-expansion-panel-header>
-                            <mat-panel-title translate>
-                                CMMS_EXECUTION
-                            </mat-panel-title>
-                        </mat-expansion-panel-header>
-                        <span class="default-100"></span>
+                @if (validated) {
+                    <mat-accordion>
+                        <mat-expansion-panel
+                            #executionPanel
+                            [class.b-primary-expansion-panel]="executionPanel.expanded">
+                            <mat-expansion-panel-header>
+                                <mat-panel-title translate>
+                                    CMMS_EXECUTION
+                                </mat-panel-title>
+                            </mat-expansion-panel-header>
+                            <span class="default-100"></span>
 
-                        <mat-form-field class="default-50 sm-100">
-                            <mat-label translate>CMMS_ACTUAL_START</mat-label>
-                            <ss-date-picker formControlName="actualStart" [type]="'datetime'"></ss-date-picker>
-                        </mat-form-field>
+                            <mat-form-field class="default-50 sm-100">
+                                <mat-label translate>CMMS_ACTUAL_START</mat-label>
+                                <ss-date-picker formControlName="actualStart" [type]="'datetime'"></ss-date-picker>
+                            </mat-form-field>
 
-                        <mat-form-field class="default-50 sm-100">
-                            <mat-label translate>CMMS_ACTUAL_DUE</mat-label>
-                            <ss-date-picker formControlName="actualDue" [type]="'datetime'"></ss-date-picker>
-                        </mat-form-field>
+                            <mat-form-field class="default-50 sm-100">
+                                <mat-label translate>CMMS_ACTUAL_DUE</mat-label>
+                                <ss-date-picker formControlName="actualDue" [type]="'datetime'"></ss-date-picker>
+                            </mat-form-field>
 
-                        <mat-radio-group aria-label="Select an option" formControlName="failsInspection" class="default-50 sm-100">
-                            <mat-radio-button [value]="false" translate>CMMS_PASSES</mat-radio-button>
-                            <mat-radio-button [value]="true" translate>CMMS_FAILS</mat-radio-button>
-                        </mat-radio-group>
+                            <mat-radio-group aria-label="Select an option" formControlName="failsInspection"
+                                             class="default-50 sm-100">
+                                <mat-radio-button [value]="false" translate>CMMS_PASSES</mat-radio-button>
+                                <mat-radio-button [value]="true" translate>CMMS_FAILS</mat-radio-button>
+                            </mat-radio-group>
 
-                        <mat-form-field class="default-50 sm-100">
-                            <mat-label translate>PAYROLL_FULLNAME</mat-label>
-                            <input matInput formControlName="executorDescription" type="text">
-                        </mat-form-field>
+                            <mat-form-field class="default-50 sm-100">
+                                <mat-label translate>PAYROLL_FULLNAME</mat-label>
+                                <input matInput formControlName="executorDescription" type="text">
+                            </mat-form-field>
 
-                        <mat-form-field id="memo" class="default-100">
-                            <mat-label translate>COMMON_MEMO</mat-label>
-                            <textarea matInput formControlName="memo" rows="5"></textarea>
-                        </mat-form-field>
+                            <mat-form-field id="memo" class="default-100">
+                                <mat-label translate>COMMON_MEMO</mat-label>
+                                <textarea matInput formControlName="memo" rows="5"></textarea>
+                            </mat-form-field>
 
 
-                    </mat-expansion-panel>
-
-                </mat-accordion>
+                        </mat-expansion-panel>
+                    </mat-accordion>
+                }
             </mat-card-content>
         </mat-card>
     </form>

@@ -109,6 +109,9 @@ export interface AssetLocation {
     structure?: number;
     bar_code?: number;
 }
+export interface AssetChildComponent {
+    isEditable(b: boolean): void;
+}
 
 export interface AssetCost {
     id: number;

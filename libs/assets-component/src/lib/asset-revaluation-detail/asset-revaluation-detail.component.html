@@ -1,59 +1,70 @@
-<div class="button_div size" *ngIf="form">
-    <button mat-mini-fab (click)="save()"
-            color="accent" *ngIf="isEditable">
-        <i class="fas fa-save"></i>
-    </button>
-    <button mat-mini-fab (click)="cancel()"
-            color="warn">
-        <i class="fas fa-redo"></i>
-    </button>
-</div>
+@if (form) {
+    <div class="button_div size">
+        @if (isEditable) {
+            <button mat-mini-fab (click)="save()" color="accent">
+                <i class="fas fa-save"></i>
+            </button>
+        }
+        <button mat-mini-fab (click)="cancel()"
+                color="warn">
+            <i class="fas fa-redo"></i>
+        </button>
+    </div>
 
-<div class="form-container">
-
-    <form *ngIf="form" novalidate [formGroup]="form" >
-
-
-        <mat-form-field class="default-50 sm-100">
-            <mat-label translate>COMMON_TYPE</mat-label>
-            <ss-auto-complete matInput
-                              [required]="true"
-                              [model]="revaluationLookup"
-                              formControlName="reval_type">
-            </ss-auto-complete>
-            <mat-error *ngIf="form.controls['reval_type'].hasError('required')" translate>COMMON_FIELD_REQUIRED</mat-error>
-            <mat-error *ngIf="form.controls['reval_type'].hasError('validOption')" translate>COMMON_NO_MATCH</mat-error>
-        </mat-form-field>
+    <mat-card class="form-container">
+        <form [formGroup]="form">
 
 
-        <mat-form-field floatLabel="always" class="default-50 sm-100">
-            <mat-label translate>COMMON_YEAR</mat-label>
-            <input matInput formControlName="deprec_year" type="number" required>
-            <mat-error *ngIf="form.controls['deprec_year'].hasError('required')" translate>COMMON_FIELD_REQUIRED</mat-error>
-            <mat-error *ngIf="form.controls['deprec_year'].hasError('validOption')" translate>COMMON_NO_MATCH</mat-error>
-        </mat-form-field>
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>COMMON_TYPE</mat-label>
+                <ss-auto-complete matInput
+                                  [required]="true"
+                                  [model]="revaluationLookup"
+                                  formControlName="reval_type">
+                </ss-auto-complete>
+                <mat-error *ngIf="form.controls['reval_type'].hasError('required')" translate>COMMON_FIELD_REQUIRED
+                </mat-error>
+                <mat-error *ngIf="form.controls['reval_type'].hasError('validOption')" translate>COMMON_NO_MATCH
+                </mat-error>
+            </mat-form-field>
 
-        <mat-form-field floatLabel="always" class="default-50 sm-100">
-            <mat-label translate>ACC_USEFUL_LIFE</mat-label>
-            <input matInput formControlName="useful_life" type="number" required>
-            <mat-error *ngIf="form.controls['useful_life'].hasError('required')" translate>COMMON_FIELD_REQUIRED</mat-error>
-            <mat-error *ngIf="form.controls['useful_life'].hasError('validOption')" translate>COMMON_NO_MATCH</mat-error>
-        </mat-form-field>
 
-        <mat-form-field floatLabel="always" class="default-50 sm-100">
-            <mat-label translate>LOGISTICS_AMOUNT</mat-label>
-            <input matInput formControlName="amount" type="number" required>
-            <mat-error *ngIf="form.controls['amount'].hasError('validOption')" translate>COMMON_NO_MATCH</mat-error>
-            <mat-error *ngIf="form.controls['amount'].hasError('required')" translate>COMMON_FIELD_REQUIRED</mat-error>
-        </mat-form-field>
+            <mat-form-field floatLabel="always" class="default-50 sm-100">
+                <mat-label translate>COMMON_YEAR</mat-label>
+                <input matInput formControlName="deprec_year" type="number" required>
+                <mat-error *ngIf="form.controls['deprec_year'].hasError('required')" translate>COMMON_FIELD_REQUIRED
+                </mat-error>
+                <mat-error *ngIf="form.controls['deprec_year'].hasError('validOption')" translate>COMMON_NO_MATCH
+                </mat-error>
+            </mat-form-field>
 
-        <mat-form-field floatLabel="always" class="default-50 sm-100">
-            <mat-label translate>ACC_DEPRECIATION_RATE</mat-label>
-            <input matInput formControlName="deprec_rate" type="number" required step="0.1">
-            <mat-error *ngIf="form.controls['deprec_rate'].hasError('validOption')" translate>COMMON_NO_MATCH</mat-error>
-            <mat-error *ngIf="form.controls['deprec_rate'].hasError('required')" translate>COMMON_FIELD_REQUIRED</mat-error>
-        </mat-form-field>
+            <mat-form-field floatLabel="always" class="default-50 sm-100">
+                <mat-label translate>ACC_USEFUL_LIFE</mat-label>
+                <input matInput formControlName="useful_life" type="number" required>
+                <mat-error *ngIf="form.controls['useful_life'].hasError('required')" translate>COMMON_FIELD_REQUIRED
+                </mat-error>
+                <mat-error *ngIf="form.controls['useful_life'].hasError('validOption')" translate>COMMON_NO_MATCH
+                </mat-error>
+            </mat-form-field>
 
-        <!--                <pre>{{form.value | json}}</pre>-->
-    </form>
-</div>
+            <mat-form-field floatLabel="always" class="default-50 sm-100">
+                <mat-label translate>LOGISTICS_AMOUNT</mat-label>
+                <input matInput formControlName="amount" type="number" required>
+                <mat-error *ngIf="form.controls['amount'].hasError('validOption')" translate>COMMON_NO_MATCH</mat-error>
+                <mat-error *ngIf="form.controls['amount'].hasError('required')" translate>COMMON_FIELD_REQUIRED
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field floatLabel="always" class="default-50 sm-100">
+                <mat-label translate>ACC_DEPRECIATION_RATE</mat-label>
+                <input matInput formControlName="deprec_rate" type="number" required step="0.1">
+                <mat-error *ngIf="form.controls['deprec_rate'].hasError('validOption')" translate>COMMON_NO_MATCH
+                </mat-error>
+                <mat-error *ngIf="form.controls['deprec_rate'].hasError('required')" translate>COMMON_FIELD_REQUIRED
+                </mat-error>
+            </mat-form-field>
+
+            <!--                <pre>{{form.value | json}}</pre>-->
+        </form>
+    </mat-card>
+}

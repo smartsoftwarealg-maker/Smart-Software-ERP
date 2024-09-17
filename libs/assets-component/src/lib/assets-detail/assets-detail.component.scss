@@ -69,3 +69,15 @@ mat-expansion-panel-header {
     max-width: 200px;
 }
 
+
+mat-tab-group, mat-tab-body {
+    min-height: 30em;
+}
+
+mat-tab-body {
+    padding-top: 1em;
+}
+
+.filler {
+    margin-bottom: .7em;
+}

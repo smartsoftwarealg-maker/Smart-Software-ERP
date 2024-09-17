@@ -1,8 +1,8 @@
-import {Component, inject, Input, OnInit} from "@angular/core";
+import { Component, inject, Input, OnInit, ViewChild } from '@angular/core';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {Asset, AssetReception, Depreciation, OfficeAutoComplete} from '../assets-api';
 import {KeepOnToolbar, ShellService, SnackBarService, ToolbarButton} from '@ss/common/ui-shell';
-import { ActivatedRoute, Router, RouterModule } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule, RouterOutlet } from '@angular/router';
 import {UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
 import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import {
@@ -47,6 +47,7 @@ import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
 import { CustomAttributesModule } from '@ss/custom-attributes';
 import { QRCodeModule } from 'angularx-qrcode';
 import { AssetAppointmentListComponent } from '../asset-appointment-list/asset-appointment-list.component';
+import { AssetCostsListComponent } from '../asset-costs-list/asset-costs-list.component';
 
 @Component({
     selector: 'ss-assets-detail',
@@ -103,6 +104,8 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> impl
     };
     private maxReference: string = null;
 
+    @ViewChild(RouterOutlet) outlet: RouterOutlet | null = null;
+
     // Public
     minLength = 1;
     depreciationTypes: Lookup[] = [
@@ -131,20 +134,24 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> impl
     depreciationColumns = ['year', 'depreciation', 'totalDepreciation', 'remaining'];
     readonly LOCAL_ASSET_ARCHIVE = ASSET_ARCHIVES;
 
-    readonly ARCHIVE_ROUT = 0;
-    readonly COSTS_ROUT = 1;
-    readonly REVALUATIONS_ROUT = 2;
-    readonly BLOCKINGS_ROUT = 3;
-    readonly DEPRECIATION_RATE_ROUT = 4;
+    readonly COSTS_ROUT = 4;
+    readonly REVALUATIONS_ROUT = 5;
+    readonly BLOCKINGS_ROUT = 6;
+    readonly DEPRECIATION_RATE_ROUT = 9;
+    readonly ARCHIVE_ROUT = 10;
 
-    activePanel: -1 | 0 | 1 | 2 | 3 | 4 = -1;
+    #panelIndexs = [0, 0, 0, 0, 1, 2, 3, 0, 0, 4, 5, 0];
+
     private PANELS = [
         ARCHIVE_ROUTE_URL,     // 0
         "costs",               // 1
         "revaluations",        // 2
         "blockings",           // 3
-        "depreciation-rate"    // 4
+        "depreciation-rate",   // 4
+        ARCHIVE_ROUTE_URL,     // 5
     ];
+
+    activePanel: number;
 
     constructor(
         public detailSrv: AssetsService,
@@ -167,16 +174,24 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> impl
         this.receptionLookup.onObjectSelected = o => this.onReceptionChange(o);
     }
 
-    showPanel(panel: -1 | 0 | 1 | 2 | 3 | 4) {
+    showPanel(panel: number) {
         this.activePanel = panel;
-        const dest = this.PANELS[panel];
-        if (this.router.url.indexOf(dest) < 0) {
-            this.router.navigate([dest], {relativeTo: this.route}).then();
+        if (this.#panelIndexs[panel] > 0) {
+            const dest = this.PANELS[this.#panelIndexs[panel]];
+            if (this.router.url.indexOf(dest) < 0) {
+                this.router
+                    .navigate([dest], { relativeTo: this.route })
+                    .then(_ => {
+                        if (this.outlet?.component instanceof AssetCostsListComponent) {
+                            (<AssetCostsListComponent>this.outlet?.component).isEditable = this.isEditable;
+                        }
+                    });
+            }
         }
     }
 
     setupForm(b: Asset): UntypedFormGroup {
-        this.assetCostsSrv.setParentId(b.id);
+        this.assetCostsSrv.setParentId(b.id||0);
         this.assetRevaluationSrv.setParentId(b.id);
         this.assetBlockingSrv.setParentId(b.id);
         this.rateSrv.setParentId(b.id);
@@ -445,6 +460,7 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> impl
     override readForm(): Asset {
         return this.form.getRawValue();
     }
+
 }
 
 

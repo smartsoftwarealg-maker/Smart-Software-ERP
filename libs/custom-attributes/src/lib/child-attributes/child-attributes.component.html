@@ -49,7 +49,7 @@
             <mat-option *ngFor="let a of $childAttributes" [value]="a">{{ a.description }}</mat-option>
         </mat-select>
     </mat-form-field>
-    <container-element [ngSwitch]="attributeType" class="default-50">
+    <div [ngSwitch]="attributeType" class="default-50">
         <div *ngSwitchCase="1">
             <mat-form-field class="default-50">
                 <mat-label translate>ADMINISTRATION_LOOKUP_VALUES</mat-label>
@@ -80,6 +80,6 @@
             </mat-form-field>
         </div>
 
-    </container-element>
+    </div>
 </div>
 

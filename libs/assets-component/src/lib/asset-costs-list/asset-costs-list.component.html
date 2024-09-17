@@ -1,27 +1,29 @@
-<div class="ctrl-div" *ngIf="editable">
-    <button mat-mini-fab  type="button" color="primary" (click)="showDetail(0)"  [matTooltip]="'COMMON_ADD' | translate">
-        <span class="fas fa-plus"></span>
-    </button>
-    <button mat-mini-fab
-            type="button"
-            (click)="edit()"
-            [disabled]="!selected"
-            color="accent">
-        <span class="fas fa-pen"></span>
-    </button>
-    <button mat-mini-fab
-            type="button"
-            (click)="deleteSelected()"
-            [disabled]="!selected"
-            color="warn">
-        <span class="fas fa-trash-alt"></span>
-    </button>
-</div>
-
+@if (editable()) {
+    <div class="ctrl-div">
+        <button mat-mini-fab type="button" color="primary" (click)="showDetail(0)"
+                [matTooltip]="'COMMON_ADD' | translate">
+            <span class="fas fa-plus"></span>
+        </button>
+        <button mat-mini-fab
+                type="button"
+                (click)="edit()"
+                [disabled]="!selected"
+                color="accent">
+            <span class="fas fa-pen"></span>
+        </button>
+        <button mat-mini-fab
+                type="button"
+                (click)="deleteSelected()"
+                [disabled]="!selected"
+                color="warn">
+            <span class="fas fa-trash-alt"></span>
+        </button>
+    </div>
+}
 <div class="table-container">
     <div class="cost-div">
         <div>
-            <div  class="b-primary mat__subheader" translate> {{ 'ASSET_FISCAL' }}</div>
+            <div class="b-primary mat__subheader" translate> {{ 'ASSET_FISCAL' }}</div>
             <mat-table mat-table [dataSource]="fiscalCosts" class="content-div">
 
                 <ng-container matColumnDef="typeDescription" style="justify-content: center; text-align: center">
@@ -29,7 +31,7 @@
                         COMMON_TYPE
                     </mat-header-cell>
                     <mat-cell *matCellDef="let e" style="justify-content: center">
-                        {{e.typeDescription}}
+                        {{ e.typeDescription }}
                     </mat-cell>
                 </ng-container>
 
@@ -38,7 +40,7 @@
                         LOGISTICS_AMOUNT
                     </mat-header-cell>
                     <mat-cell *matCellDef="let e" style="justify-content: center">
-                        {{e.amount | number: '1.2-2'}}
+                        {{ e.amount | number: '1.2-2' }}
                     </mat-cell>
                 </ng-container>
 
@@ -59,7 +61,7 @@
                         COMMON_TYPE
                     </mat-header-cell>
                     <mat-cell *matCellDef="let e" style="justify-content: center">
-                        {{e.typeDescription}}
+                        {{ e.typeDescription }}
                     </mat-cell>
                 </ng-container>
 
@@ -68,7 +70,7 @@
                         LOGISTICS_AMOUNT
                     </mat-header-cell>
                     <mat-cell *matCellDef="let e" style="justify-content: center">
-                        {{e.amount | number: '1.2-2'}}
+                        {{ e.amount | number: '1.2-2' }}
                     </mat-cell>
                 </ng-container>
 

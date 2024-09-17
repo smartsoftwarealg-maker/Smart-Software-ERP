@@ -16,6 +16,7 @@ import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
 import { CustomAttributesModule } from '@ss/custom-attributes';
 import { AppArchiveModule } from '@ss/common/app-archive';
 import { QRCodeModule } from 'angularx-qrcode';
+import { BaseChildEntityListComponent } from '@ss/common/ui-base-entity';
 
 @Component({
   selector: 'ss-asset-blocking-list',
@@ -36,97 +37,87 @@ import { QRCodeModule } from 'angularx-qrcode';
         AppArchiveModule,
         QRCodeModule
     ]})
-export class AssetBlockingListComponent implements OnInit {
-    private reportForm = 'Blocking';
-    selected = 0;
-    @Input() editable = true;
-    blockings: Blocking[] = [];
-    public readonly pagination = PaginationModel.newInstance();
-    public displayedColumns = ['decision', 'date', 'fromDate', 'toDate', 'typeDescription'];
+export class AssetBlockingListComponent extends BaseChildEntityListComponent<Blocking> {
+    override displayedColumns = ['decision', 'date', 'fromDate', 'toDate', 'typeDescription'];
 
 
-    constructor(private entitySrv: AssetBlockingService,
-                private snackBarSrv: SnackBarService,
-                private route: ActivatedRoute,
-                private router: Router,
-                private confirmationSrv: ConfirmationDialogService,
-                private defReportSrv: DefaultReportService,
-                private shellSrv: ShellService) {
+    constructor(private entitySrv: AssetBlockingService) {
+        super(entitySrv, 'Blocking');
     }
-
-    ngOnInit() {
-        this.pagination.onChange = () => this.refresh();
-        this.refresh();
-    }
-
-    @Input()
-    set assetId(id: number) {
-        this.entitySrv.setParentId(id);
-    }
-
-    public select(id: number): void {
-        this.selected = id;
-    }
-
-    public deleteSelected(): void {
-        if (this.selected && this.selected > 0) {
-            this.confirmationSrv
-                .confirmDelete()
-                .pipe(switchMap(answer => {
-                    const a = this.blockings.filter(x => x.id === this.selected)[0];
-                    return answer && a && a.id ? this.entitySrv.remove(a.id) : of({count: 0});
-                }))
-                .subscribe({
-                    next: res => {
-                        this.snackBarSrv.showSuccessMessage();
-                        this.refresh();
-                    },
-                    error: err => {
-                        this.snackBarSrv.showFailureMessage();
-                        throw err;
-                    }
-                });
-        } else {
-            this.snackBarSrv.showMessage('COMMON_NO_SELECTION');
-        }
-    }
-
-    public edit() {
-        this.showDetail(this.selected);
-    }
-
-    public showDetail(id: number) {
-        this.router.navigate([id], { relativeTo: this.route }).then();
-    }
-
-    ngOnDestroy() {
-    }
-
-    public refresh() {
-        this.selected = 0;
-        this.entitySrv
-            .getList(this.pagination.page - 1, this.pagination.pageSize)
-            .subscribe(res => {
-                this.blockings = res.body;
-                this.pagination.elementCount = res.itemCount;
-            });
-    }
-
-    public selectReport() {
-        this.defReportSrv
-            .open(this.shellSrv.getApp(), this.reportForm)
-            .subscribe(resp => {
-                if (resp.count > 0) {
-                    this.snackBarSrv.showSuccessMessage();
-                }
-            });
-    }
-    public viewReport() {
-        this.defReportSrv
-            .viewReport(this.reportForm, this.selected)
-            .subscribe(res => {
-                const fileURL = URL.createObjectURL(new Blob([res], { type: 'application/pdf' }));
-                window.open(fileURL, '_blank');
-            });
-    }
+    //
+    // ngOnInit() {
+    //     this.pagination.onChange = () => this.refresh();
+    //     this.refresh();
+    // }
+    //
+    // @Input()
+    // set assetId(id: number) {
+    //     this.entitySrv.setParentId(id);
+    // }
+    //
+    // public select(id: number): void {
+    //     this.selected = id;
+    // }
+    //
+    // public deleteSelected(): void {
+    //     if (this.selected && this.selected > 0) {
+    //         this.confirmationSrv
+    //             .confirmDelete()
+    //             .pipe(switchMap(answer => {
+    //                 const a = this.blockings.filter(x => x.id === this.selected)[0];
+    //                 return answer && a && a.id ? this.entitySrv.remove(a.id) : of({count: 0});
+    //             }))
+    //             .subscribe({
+    //                 next: res => {
+    //                     this.snackBarSrv.showSuccessMessage();
+    //                     this.refresh();
+    //                 },
+    //                 error: err => {
+    //                     this.snackBarSrv.showFailureMessage();
+    //                     throw err;
+    //                 }
+    //             });
+    //     } else {
+    //         this.snackBarSrv.showMessage('COMMON_NO_SELECTION');
+    //     }
+    // }
+    //
+    // public edit() {
+    //     this.showDetail(this.selected);
+    // }
+    //
+    // public showDetail(id: number) {
+    //     this.router.navigate([id], { relativeTo: this.route }).then();
+    // }
+    //
+    // ngOnDestroy() {
+    // }
+    //
+    // public refresh() {
+    //     this.selected = 0;
+    //     this.entitySrv
+    //         .getList(this.pagination.page - 1, this.pagination.pageSize)
+    //         .subscribe(res => {
+    //             this.blockings = res.body;
+    //             this.pagination.elementCount = res.itemCount;
+    //         });
+    // }
+    //
+    // public selectReport() {
+    //     this.defReportSrv
+    //         .open(this.shellSrv.getApp(), this.reportForm)
+    //         .subscribe(resp => {
+    //             if (resp.count > 0) {
+    //                 this.snackBarSrv.showSuccessMessage();
+    //             }
+    //         });
+    // }
+    // public viewReport() {
+    //     this.defReportSrv
+    //         .viewReport(this.reportForm, this.selected)
+    //         .subscribe(res => {
+    //             const fileURL = URL.createObjectURL(new Blob([res], { type: 'application/pdf' }));
+    //             window.open(fileURL, '_blank');
+    //         });
+    // }
 }
