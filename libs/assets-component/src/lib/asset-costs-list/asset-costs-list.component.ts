@@ -106,7 +106,7 @@ export class AssetCostsListComponent implements OnInit {
 
     public showDetail(id: number) {
         this.router.navigate([id], { relativeTo: this.route })
-            .then();
+            .then(res => console.log('detail shown'));
     }
 
     ngOnDestroy() {

@@ -134,20 +134,24 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> impl
     depreciationColumns = ['year', 'depreciation', 'totalDepreciation', 'remaining'];
     readonly LOCAL_ASSET_ARCHIVE = ASSET_ARCHIVES;
 
-    readonly ARCHIVE_ROUT = 0;
-    readonly COSTS_ROUT = 1;
-    readonly REVALUATIONS_ROUT = 2;
-    readonly BLOCKINGS_ROUT = 3;
-    readonly DEPRECIATION_RATE_ROUT = 4;
+    readonly COSTS_ROUT = 4;
+    readonly REVALUATIONS_ROUT = 5;
+    readonly BLOCKINGS_ROUT = 6;
+    readonly DEPRECIATION_RATE_ROUT = 9;
+    readonly ARCHIVE_ROUT = 10;
 
-    activePanel: -1 | 0 | 1 | 2 | 3 | 4 = -1;
+    #panelIndexs = [0, 0, 0, 0, 1, 2, 3, 0, 0, 4, 5, 0];
+
     private PANELS = [
         ARCHIVE_ROUTE_URL,     // 0
         "costs",               // 1
         "revaluations",        // 2
         "blockings",           // 3
-        "depreciation-rate"    // 4
+        "depreciation-rate",   // 4
+        ARCHIVE_ROUTE_URL,     // 5
     ];
+
+    activePanel: number;
 
     constructor(
         public detailSrv: AssetsService,
@@ -170,17 +174,19 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> impl
         this.receptionLookup.onObjectSelected = o => this.onReceptionChange(o);
     }
 
-    showPanel(panel: -1 | 0 | 1 | 2 | 3 | 4) {
+    showPanel(panel: number) {
         this.activePanel = panel;
-        const dest = this.PANELS[panel];
-        if (this.router.url.indexOf(dest) < 0) {
-            this.router
-                .navigate([dest], {relativeTo: this.route})
-                .then(_ => {
-                    if (this.outlet?.component instanceof AssetCostsListComponent) {
-                        (<AssetCostsListComponent>this.outlet?.component).isEditable = this.isEditable;
-                    }
-                });
+        if (this.#panelIndexs[panel] > 0) {
+            const dest = this.PANELS[this.#panelIndexs[panel]];
+            if (this.router.url.indexOf(dest) < 0) {
+                this.router
+                    .navigate([dest], { relativeTo: this.route })
+                    .then(_ => {
+                        if (this.outlet?.component instanceof AssetCostsListComponent) {
+                            (<AssetCostsListComponent>this.outlet?.component).isEditable = this.isEditable;
+                        }
+                    });
+            }
         }
     }
 
