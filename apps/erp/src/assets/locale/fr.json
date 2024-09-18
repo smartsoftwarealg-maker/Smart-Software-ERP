@@ -51,6 +51,11 @@
     "BatchAssetInventory":          "Inventaire 2",
     "UnidentifiedInventory":       "Inventaire non identifié",
     "ASSTree":                      "Arbre immobibilisation",
+    "Accident":                     "Accident",
+    "Activation":                   "Activation",
+    "Career":                       "Carriere",
+    "Child":                        "Enfant",
+
 
 
     "MAIN_MENU": "Menu principal",
