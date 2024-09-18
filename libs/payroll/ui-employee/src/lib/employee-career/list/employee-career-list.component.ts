@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {Career, EmployeeCareerService} from '@ss/payroll/api-employee';
 import { BaseChildEntityListComponent } from '@ss/common/ui-base-entity';
 
@@ -26,10 +26,6 @@ export class EmployeeCareerListComponent extends BaseChildEntityListComponent<Ca
         super(entitySrv, 'Career');
     }
 
-    @Input()
-    set personId(id: number) {
-        this.entitySrv.setParentId(id);
-    }
 
     reorder() {
         this.entitySrv

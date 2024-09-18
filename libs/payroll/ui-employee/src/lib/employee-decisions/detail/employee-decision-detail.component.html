@@ -1,51 +1,57 @@
-<div class="button_div size" *ngIf="form">
-    <button mat-mini-fab (click)="save()"
-            color="accent" *ngIf="isEditable">
-        <i class="fas fa-save"></i>
-    </button>
-    <button mat-mini-fab (click)="cancel()"
-            color="warn">
-        <i class="fas fa-redo"></i>
-    </button>
-</div>
+@if (form) {
+    <mat-card class="form-container">
+        <mat-card-header>
+            <div class="button_div">
+                <button mat-mini-fab (click)="save()"
+                        color="accent" *ngIf="isEditable">
+                    <i class="fas fa-save"></i>
+                </button>
+                <button mat-mini-fab (click)="cancel()"
+                        color="warn">
+                    <i class="fas fa-redo"></i>
+                </button>
+            </div>
 
-<mat-card class="form-container">
-    <form *ngIf="form" novalidate [formGroup]="form" style="min-height: 100%; display: unset">
+        </mat-card-header>
+        <mat-card-content>
+            <form [formGroup]="form" style="min-height: 100%; display: unset">
 
-        <mat-form-field floatLabel="always" class="default-50 sm-100">
-            <mat-label translate>PAYROLL_REFERENCE</mat-label>
-            <input matInput formControlName="dec_reference" type="text" required>
-        </mat-form-field>
+                <mat-form-field floatLabel="always" class="default-50 sm-100">
+                    <mat-label translate>PAYROLL_REFERENCE</mat-label>
+                    <input matInput formControlName="dec_reference" type="text" required>
+                </mat-form-field>
 
-        <mat-form-field floatLabel="always" class="default-50 sm-100">
-            <mat-label translate>PAYROLL_DATE</mat-label>
-            <ss-date-picker [required]="true" formControlName="dec_date"></ss-date-picker>
-        </mat-form-field>
+                <mat-form-field floatLabel="always" class="default-50 sm-100">
+                    <mat-label translate>PAYROLL_DATE</mat-label>
+                    <ss-date-picker [required]="true" formControlName="dec_date"></ss-date-picker>
+                </mat-form-field>
 
-        <mat-form-field floatLabel="always" class="default-50 sm-100">
-            <mat-label translate>PAYROLL_APPLICATION_DATE</mat-label>
-            <ss-date-picker [required]="true" formControlName="application_date"></ss-date-picker>
-        </mat-form-field>
+                <mat-form-field floatLabel="always" class="default-50 sm-100">
+                    <mat-label translate>PAYROLL_APPLICATION_DATE</mat-label>
+                    <ss-date-picker [required]="true" formControlName="application_date"></ss-date-picker>
+                </mat-form-field>
 
-        <mat-form-field class="default-50 sm-100">
-            <mat-label translate>COMMON_MOTIVE</mat-label>
-            <ss-auto-complete matInput
-                              formControlName="dec_motive"
-                              [model]="decisionLookup">
-            </ss-auto-complete>
-        </mat-form-field>
-
-
-        <mat-form-field floatLabel="always" class="default-50 sm-100">
-            <mat-label translate>PAYROLL_APPLICATION_PERIOD</mat-label>
-            <input matInput formControlName="application_period" type="number">
-        </mat-form-field>
-
-        <mat-form-field floatLabel="always" class="default-50 sm-100">
-            <mat-label translate>COMMON_MEMO</mat-label>
-            <input matInput formControlName="dec_header" type="text">
-        </mat-form-field>
+                <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>COMMON_MOTIVE</mat-label>
+                    <ss-auto-complete matInput
+                                      formControlName="dec_motive"
+                                      [model]="decisionLookup">
+                    </ss-auto-complete>
+                </mat-form-field>
 
 
-    </form>
-</mat-card>
+                <mat-form-field floatLabel="always" class="default-50 sm-100">
+                    <mat-label translate>PAYROLL_APPLICATION_PERIOD</mat-label>
+                    <input matInput formControlName="application_period" type="number">
+                </mat-form-field>
+
+                <mat-form-field floatLabel="always" class="default-50 sm-100">
+                    <mat-label translate>COMMON_MEMO</mat-label>
+                    <input matInput formControlName="dec_header" type="text">
+                </mat-form-field>
+
+
+            </form>
+        </mat-card-content>
+    </mat-card>
+}
