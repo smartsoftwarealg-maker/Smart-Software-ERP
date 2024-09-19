@@ -6,6 +6,9 @@ import {HttpParams} from '@angular/common/http';
 import { DateUtil } from "@ss/costing/costing-utils";
 
 export class LtmBaseTestingClass extends BaseEntityService<LTMTesting> {
+    #_from = new Date();
+    #_to   = new Date();
+
     constructor(protected override httpSrv: HttpService, public override url: string, public override parentUrl: string) {
         super(httpSrv, url, parentUrl);
     }
@@ -31,6 +34,21 @@ export class LtmBaseTestingClass extends BaseEntityService<LTMTesting> {
 
     deleteAll(ids: number[]): Observable<{ count: number }> {
         return this.httpSrv.remove('/ltm/testings', ids);
+    }
+
+    get from() {
+        return this.#_from;
+    }
+    get to() {
+        return this.#_to;
+    }
+
+    set from(d: Date) {
+        this.#_from = d || new Date();
+    }
+
+    set to(d: Date) {
+        this.#_to = d || new Date();
     }
 }
 

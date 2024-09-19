@@ -6,9 +6,9 @@ import {
     OnInit,
     signal
 } from '@angular/core';
-import { CHEMICAL_TEST, DEPOSIT_TEST, LTMBatch, LTMTest, PHYSICAL_TEST, RAW_MATERIAL_TEST } from '../ltm-api';
+import { CHEMICAL_TEST, DEPOSIT_TEST, LTMBatch, PHYSICAL_TEST, RAW_MATERIAL_TEST } from '../ltm-api';
 import { KeepOnToolbar, ShellService, SnackBarService, ToolbarButton } from '@ss/common/ui-shell';
-import { ActivatedRoute, Router, RouterLink, RouterOutlet, UrlTree } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink, RouterOutlet } from '@angular/router';
 import {
     AbstractControl,
     FormArray,
@@ -35,9 +35,6 @@ import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common
 import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
 import { LTMSiloService } from '../services/ltm-silo.service';
 import { LtmSupplierService } from '../services/ltm-supplier.service';
-import { LtmBleacherService } from '../services/ltm-bleacher.service';
-import { LtmZoneService } from '../services/ltm-zone.service';
-import { LtmDepositService } from '../services/ltm-deposit.service';
 import { LtmPickupPointService } from '../services/ltm-pickup-point.service';
 import { LtmCenterMatterService } from '../services/ltm-center-matter.service';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
@@ -445,7 +442,7 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
                 this.shellSrv.setLoading(true);
                 this.entitySrv
                     .saveBatch(formValue)
-                    .pipe(tap(res => {
+                    .pipe(tap(() => {
                             if (!formValue.id) {
                                 this.refreshData();
                             }

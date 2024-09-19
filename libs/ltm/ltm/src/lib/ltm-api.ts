@@ -46,10 +46,12 @@ export interface LTMTestingAnomaly {
     matterId: number;
     anomalyId: number;
     userId: number;
+    pickupPoint?: number;
     memo?: string;
     anomalyDescription?: string;
     userDescription?: string;
     matterDescription?: string;
+    ppDescription?: string;
 }
 
 export interface LTMMixtureDetail {
@@ -214,6 +216,7 @@ export interface LTMAbnormalTest {
     value: number;
     min: number;
     max: number;
+    pickPoint?: string;
 }
 
 export interface LTMProduct {

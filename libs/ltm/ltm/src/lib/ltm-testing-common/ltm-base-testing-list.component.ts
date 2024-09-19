@@ -14,6 +14,7 @@ import { LtmBaseTestingClass } from '../services/ltm-base-testing.class';
 import { LtmMatterTestService } from '../services/ltm-matter-test.service';
 import { LtmCenterMatterService } from '../services/ltm-center-matter.service';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
+import { callback } from 'chart.js/helpers';
 
 @Directive()
 export class LtmBaseTestingListComponent extends BaseEntityListComponent<LTMTesting> implements OnInit {
@@ -22,9 +23,9 @@ export class LtmBaseTestingListComponent extends BaseEntityListComponent<LTMTest
     private matterTestSrv = inject(LtmMatterTestService);
 
     lines$: Observable<LTMLine[]> = null;
-    matterCtrl = new FormControl<number>(0);
-    fromCtrl = new FormControl<Date>(new Date());
-    toCtrl = new FormControl<Date>(new Date());
+    matterCtrl   = new FormControl<number>(0);
+    fromCtrl     = new FormControl<Date>(new Date());
+    toCtrl       = new FormControl<Date>(new Date());
     matterLookup = new DefaultAutoCompleteModel(this.matterSrv);
 
     constructor(
@@ -80,13 +81,15 @@ export class LtmBaseTestingListComponent extends BaseEntityListComponent<LTMTest
 
     override ngOnInit() {
         super.ngOnInit();
+        this.fromCtrl.setValue(this.entitySrv.from);
+        this.toCtrl.setValue(this.entitySrv.to);
         this.subscriptions.push(
             this.fromCtrl
                 .valueChanges
                 .pipe(
                     debounceTime(300),
                     distinctUntilChanged(),
-                    filter(() => !this.fromCtrl.value)
+                    filter(() => this.fromCtrl.value !== null)
                 ).subscribe(() => this.refresh())
         );
         this.subscriptions
@@ -96,8 +99,14 @@ export class LtmBaseTestingListComponent extends BaseEntityListComponent<LTMTest
                 .pipe(
                     debounceTime(300),
                     distinctUntilChanged(),
-                    filter(() => !this.toCtrl.value)
+                    filter(() => this.toCtrl.value !== null)
                 ).subscribe(() => this.refresh())
         );
+    }
+
+    override refresh(callback?: () => void) {
+        this.entitySrv.from = this.fromCtrl.value;
+        this.entitySrv.to   = this.toCtrl.value;
+        super.refresh(callback);
     }
 }

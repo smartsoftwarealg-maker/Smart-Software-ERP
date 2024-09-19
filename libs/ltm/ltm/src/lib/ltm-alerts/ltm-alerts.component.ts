@@ -51,7 +51,7 @@ export class LtmAlertsComponent extends BaseEntityListComponent<LTMAbnormalTest>
         click: () => this.showAlerts()
     };
 
-    displayedColumns = ['matter', 'test', 'time', 'value', 'min', 'max'];
+    displayedColumns = ['matter', 'test',  'time', 'value', 'min', 'max'];
     formBuilder = inject(FormBuilder);
     form = this.formBuilder.group({
         from: [new Date(new Date().getTime() - 24 * 3600 * 1000)],

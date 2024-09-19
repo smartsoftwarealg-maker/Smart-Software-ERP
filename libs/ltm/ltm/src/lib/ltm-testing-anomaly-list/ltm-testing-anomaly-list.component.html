@@ -28,6 +28,13 @@
             </mat-cell>
         </ng-container>
 
+        <ng-container matColumnDef="ppDescription">
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>LTM_PICKUP_POINT</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.ppDescription}}
+            </mat-cell>
+        </ng-container>
+
         <ng-container matColumnDef="matterDescription">
             <mat-header-cell *matHeaderCellDef mat-sort-header translate>LTM_MATTER</mat-header-cell>
             <mat-cell *matCellDef="let e">
