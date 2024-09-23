@@ -38,11 +38,19 @@ import { LtmSupplierService } from '../services/ltm-supplier.service';
 import { LtmPickupPointService } from '../services/ltm-pickup-point.service';
 import { LtmCenterMatterService } from '../services/ltm-center-matter.service';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import _default from 'chart.js/dist/core/core.interaction';
+import index = _default.modes.index;
 
 function sampleNoValidatorFn(sampleMode: boolean): ValidatorFn {
     return (control: AbstractControl): ValidationErrors | null => {
         return sampleMode && !control.value ? { message: 'COMMON_REQUIRED' } : null;
     };
+}
+
+type VarianceControl = {
+    variable: string;
+    description: string;
+    formula: string;
 }
 
 @Component({
@@ -126,7 +134,9 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
     totalsLabels: string[] = [];
     totalsLimits: number[][] = [];
     variables: string[] = [];
+    varianceControls: VarianceControl[] = [];
     formulas: string[] = [];
+    invalidIndexes: number[] = [];
     // selectedPeriodicity = 0;
 
     formBuilder = inject(FormBuilder);
@@ -246,6 +256,7 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
     }
 
     private refreshFormulas() {
+        this.validateVarianceControls();
         const values = this.variables.map((v, i) => {
             return v ? this.tests.at(i)?.value.value : 0;
         });
@@ -257,18 +268,45 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
             this.missingVariables.map(v => `const ${v} = 0;`).join('\n') +
             '\n' +
             this.formulas.map((f, i) => `result[${i}] = ${f};`).join('\n');
-
         try {
             eval(program);
         } catch (e: any) { /* empty */
         }
         this.totals.controls.forEach((c, i) => {
             c.setValue({ value: +((result[i] || 0).toFixed(2)) });
-            // c.markAsTouched({onlySelf: false})
-            // c.markAsDirty({onlySelf: false});
         });
     }
 
+    private validateVarianceControls() {
+        this.invalidIndexes = [];
+        this.varianceControls
+            .forEach(vc => {
+                    const formulas = vc.formula
+                        .split(new RegExp('[+()/]'))
+                        .filter(c => c.startsWith('v'));
+
+                    const indexes = formulas.map(f => this.variables.indexOf(f)).filter(i => i >= 0 && this.tests.at(i).value.value > 0);
+                    if (indexes.length > 0) {
+                        const values = indexes.map(i => <number>this.tests.at(i).value.value);
+                        const avg    = values.reduce((a, b) => a + b) / indexes.length;
+                        const tmp    = values.map(v => Math.abs(v - avg) );
+                        const vars   = values.map(v => Math.abs(v - avg) > avg / 10.0);
+                        indexes.forEach(i => (<FormGroup>this.tests.at(i)).controls['value'].setErrors(null));
+                        vars.forEach((v, i) => {
+                            if (v) {
+                                const idx = indexes[i];
+                                this.invalidIndexes.push(idx);
+                                const fg: FormGroup = <FormGroup>this.tests.at(idx);
+                                fg.controls['value'].setErrors({ 'invalid': true });
+                                fg.controls['value'].markAsTouched();
+                                fg.controls['value'].markAsDirty();
+                            }
+                        });
+                    }
+                }
+            );
+
+    }
 
     get tests(): FormArray {
         return this.form.controls['tests'] as FormArray;
@@ -294,7 +332,7 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
                             this.variables.push(t.variable);
                         }
                         const valueArr = batch.tests.filter(b => b.testId === t.testId);
-                        const value = valueArr.length>0? valueArr[0]: {id: 0, testId: 0, value: 0, parentId: 0};
+                        const value    = valueArr.length>0? valueArr[0]: {id: 0, testId: 0, value: 0, parentId: 0};
                         const testForm: FormGroup<{
                             id: FormControl<number>,
                             testId: FormControl<number>,
@@ -317,6 +355,9 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
                         this.totalsLabels.push(t.testDescription);
                         this.totalsLimits.push([t.minValue, t.maxValue || 999]);
                         this.formulas.push(t.formula);
+                        if (t.varianceControl) {
+                            this.varianceControls.push({variable: t.variable, description: t.testDescription, formula: t.formula});
+                        }
                         const testForm = this.formBuilder.group({
                             value: [{ value: 0, disabled: true }, [Validators.min(t.minValue), Validators.max(t.maxValue || 999)]],
                         }, {updateOn: 'change'});
@@ -393,28 +434,12 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
         this.refreshData();
     }
 
-    // private delete() {
-    //     const value: LTMBatch = <LTMBatch>this.form.getRawValue();
-    //     value.sampleNo = this.testingMode() === PHYSICAL_TEST? this.searchForm.controls.sampleNo.value : null;
-    //     if (value.timeStamp) {
-    //         value.timeStamp = dateToYmdStr(this.searchForm.controls.date.value) + ' ' + this.searchForm.controls.hour.value + ':00:00';
-    //
-    //         this.confirmationSrv
-    //             .confirmDelete()
-    //             .pipe(switchMap(b => b ? this.entitySrv.deleteBatch(<LTMBatch>value) : of({ count: -1 })))
-    //             .subscribe(res => {
-    //                 if (res.count >= 0) {
-    //                     this.snackBarSrv.showSuccessMessage();
-    //                     this.refreshData();
-    //                 }
-    //             });
-    //     }
-    // }
 
     private validateFormulas() {
         return this.totals.controls.map((c, i) => {
             const limits = this.totalsLimits[i];
             const valid = c.value.value >= limits[0] && c.value.value <= limits[1];
+
             if (!valid) {
                 const ctrl = (<FormGroup>c).controls['value'];
                 ctrl.enable();
@@ -448,7 +473,7 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
                             }
                         }))
                     .subscribe({
-                        next: batch => {
+                        next: () => {
                             this.shellSrv.setLoading(false);
                             this.snackBarSrv.showSuccessMessage();
                             this.tests.markAsPristine();
@@ -462,15 +487,6 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
         }
     }
 
-    // clearPeriod() {
-    //     this.searchForm.controls.period.setValue(0);
-    //     this.onPeriod(0);
-    // }
-
-    // onPeriod(e: number) {
-    //   this.selectedPeriodicity = e;
-    //   this.refreshData();
-    // }
 
     private savedData(): Observable<LTMBatch> {
         const params = this.form.getRawValue();
@@ -482,69 +498,10 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
                 res.tests = res.tests.map(t => {
                     return { id: t.id, testId: t.testId, value: t.value, parentId: t.parentId };
                 });
-
                 return res;
             }));
     }
 
-    // onHour() {
-    //     // this.searchForm.disable();
-    //     // const value: LTMBatch = <LTMBatch>this.form.getRawValue();
-    //     // const tests = value.tests;
-    //     // if (tests.length > 0) {
-    //     //     tests.forEach(e => e.value = 0);
-    //     //     this.tests.setValue(tests);
-    //     // }
-    //     // const date = new Date(this.searchForm.controls.date.value);
-    //     // date.setHours(date.getHours(), 0, 0, 0);
-    //     // this.form.controls.timeStamp.setValue(date);
-    //     // this.form.controls.parentId.setValue(this.searchForm.controls.matterId.value);
-    //     // if (this.sampleMode()) {
-    //     //     this.form.controls.sampleNo.setValue(this.sampleMode()? this.searchForm.controls.sampleNo.value : null, {onlySelf: true, emitEvent: false});
-    //     // }
-    //     this.refreshData();
-    // }
-    // private onHour_() {
-    //     this.savedData()
-    //         .subscribe(batch => {
-    //             this.form.controls.id.setValue(batch.id);
-    //             this.form.controls.timeStamp.setValue(<Date>batch.timeStamp);
-    //             this.form.controls.spoilageHour.setValue(batch.spoilageHour);
-    //             this.form.controls.silo.setValue(batch.silo);
-    //             this.form.controls.sampleNo.setValue(batch.sampleNo);
-    //             this.form.controls.breakageHour.setValue(batch.breakageHour);
-    //             this.form.controls.parentId.setValue(batch.parentId);
-    //             this.searchForm.controls.matterId.setValue(batch.parentId, {onlySelf: true, emitEvent: false});
-    //             if (this.sampleMode()) {
-    //                 this.matterTestSrv.setParentId(batch.parentId || 0);
-    //                 if (batch.id) {
-    //                     this.form.controls.parentId.disable();
-    //                     this.searchForm.controls.matterId.disable();
-    //                 } else {
-    //                     this.form.controls.parentId.enable();
-    //                     this.searchForm.controls.matterId.enable();
-    //                 }
-    //             }
-    //             if (!this.matterTestSrv.getParentId()) {
-    //                 this.matterTestSrv.setParentId(0);
-    //             }
-    //             if (batch.tests.length > 0) {
-    //                 const idSet = this.tests.controls.map(c => <number>(<FormGroup>c).controls['testId'].value);
-    //                 const values = batch.tests.filter(bt => idSet.find(id => id === bt.testId) >= 0)
-    //                 console.log(this.tests.controls);
-    //                 this.tests.setValue(values.sort((a, b) => a.testId - b.testId));
-    //             }
-    //
-    //             this.editButton.visible = !!batch.id && !!batch.parentId && (!this.sampleMode() || !!this.searchForm.controls.sampleNo.value);
-    //             this.deleteButton.disabled = !batch.id;
-    //             this.addButton.visible = !batch.id &&
-    //                 (!!batch.parentId || this.sampleMode()) &&
-    //                 (!this.sampleMode() || !!this.searchForm.controls.sampleNo.value) &&
-    //                 this.tests.length > 0;
-    //             this.searchForm.enable();
-    //             this.hour()?.nativeElement?.focus();
-    //         });
-    // }
 
     private goBack() {
         this.router.navigate(['..'], { relativeTo: this.activatedRoute }).then();
@@ -559,32 +516,4 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
                 }
             });
     }
-
-    // private edit() {
-    //     this.editInProgress.set(true);
-    //     this.searchForm.disable({ onlySelf: true, emitEvent: false });
-    //     this.searchForm.controls.sampleNo.enable({onlySelf: true, emitEvent: false})
-    //     this.deleteButton.disabled = true;
-    //     this.cancelButton.disabled = false;
-    //     this.saveButton.disabled = false;
-    //     this.tests.controls.forEach((c, i) => {
-    //         c.enable();
-    //     })
-    //     this.editButton.visible = false;
-    //     this.addButton.visible = false;
-    //     if (this.testingMode() === PHYSICAL_TEST) {
-    //         this.form.controls.sampleNo.setValue(this.searchForm.controls.sampleNo.value);
-    //     }
-    // }
-    // private endEdit() {
-    //     this.editInProgress.set(false);
-    //     this.searchForm.enable({ onlySelf: true, emitEvent: false });
-    //     this.editButton.visible = true;
-    //     this.addButton.visible = false;
-    //     this.cancelButton.disabled = true;
-    //     this.saveButton.disabled = true;
-    //     this.deleteButton.disabled = !this.form.getRawValue().id;
-    //     this.tests.controls.forEach((c, i) => c.disable());
-    // }
-
 }

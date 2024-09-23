@@ -71,7 +71,8 @@ export class LtmTestDetailComponent extends BaseEntityDetailComponent<LTMTest> {
             unit:              [b.unit],
             min:               [b.min],
             max:               [b.max],
-            testType:          [b.testType]
+            testType:          [b.testType],
+            varianceControl:   [b.varianceControl || false]
         });
     }
 }

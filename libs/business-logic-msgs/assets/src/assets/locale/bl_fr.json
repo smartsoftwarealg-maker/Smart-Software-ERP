@@ -7,7 +7,7 @@
     "SAME_CURRENCY_TRANSFER":             "Même transfert de devise. S'il vous plaît, différentes devises",
     "MISSING_AGENT_ACCOUNTNO":            "Numéro de compte manquant",
     "CUSTOMER_NOT_FOUND":                 "Client non trouvé",
-    "INVALID_DATA":                       "Données non valides spécifiées",
+    "INVALID_DATA":                       "Données non valides",
     "MISSING_STORE":                      "Le magasin spécifié n'existe pas",
     "UNAVAILABLE_INVENTORY":              "Stock indisponible",
     "UNAVAILABLE_INSTANT_INVENTORY":      "Inventaire instantané indisponible. Veuillez vérifier les dates d'entrée",

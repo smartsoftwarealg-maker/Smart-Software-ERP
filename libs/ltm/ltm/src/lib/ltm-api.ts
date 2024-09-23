@@ -98,6 +98,7 @@ export interface LTMTest {
     chemicalFormula?: string;
     showGraph: boolean;
     showInCertificate: boolean;
+    varianceControl: boolean;
     showKPI: boolean;
     testType?: number;
     unit?: number;
@@ -121,6 +122,7 @@ export interface LTMMatterTest {
     variable?: string;
     formula?: string;
     orderNo: number;
+    varianceControl: boolean;
 }
 
 

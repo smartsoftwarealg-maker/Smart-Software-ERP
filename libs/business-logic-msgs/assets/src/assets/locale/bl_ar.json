@@ -7,7 +7,7 @@
     "SAME_CURRENCY_TRANSFER":       "تحويل العملة نفسها. من فضلك ، عملات مختلفة" ,
     "MISSING_AGENT_ACCOUNTNO":      "رقم الحساب مفقود" ,
     "CUSTOMER_NOT_FOUND":           "العميل غير موجود" ,
-    "INVALID_DATA":                 "البيانات المحددة غير صالحة" ,
+    "INVALID_DATA":                 "البيانات المدخلة غير صالحة" ,
     "MISSING_STORE":                "المخزن المحدد غير موجود" ,
     "UNAVAILABLE_INVENTORY":        "مخزون غير متوفر",
     "UNAVAILABLE_INSTANT_INVENTORY":"جرد فوري غير متوفر. من فضلك ، تحقق من تواريخ الإدخال" ,
