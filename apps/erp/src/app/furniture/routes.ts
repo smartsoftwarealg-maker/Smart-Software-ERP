@@ -29,7 +29,7 @@ import {
 import {
     ArticleTypeDetailComponent,
     ArticleTypeListComponent
-} from '../../../../../libs/common/ui-lookup/src/lib/components/article-type.component';
+} from '@ss/common/ui-lookup';
 import { ReportViewComponent } from '@ss/common/ui-report-param';
 
 export const furnitureRoutes: Routes = [

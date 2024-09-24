@@ -25,7 +25,7 @@ export * from './lib/ltm-testing-anomaly-list/ltm-testing-anomaly-list.component
 export * from './lib/services/ltm-testing.service';
 export * from './lib/ltm-silo-detail/ltm-silo-detail.component';
 export * from './lib/ltm-silo-list/ltm-silo-list.component';
-export * from './lib/ltm-alerts/ltm-alerts.component';
+export * from './lib/ltm-alerts-list/ltm-alerts.component';
 export * from './lib/services/ltm-abnormal-test.service';
 export * from './lib/ltm-equiment-detail/ltm-equipment-detail.component';
 export * from './lib/ltm-equipment-list/ltm-equipment-list.component';
@@ -50,3 +50,8 @@ export * from './lib/ltm-testing-list/ltm-rm-testing-list.component';
 export * from './lib/ltm-testing-list/ltm-physical-testing-list.component';
 export * from './lib/ltm-testing-list/ltm-deposit-testing-list.component';
 export * from './lib/ltm-api';
+export * from './lib/ltm-alerts-detail/ltm-alerts-detail.component';
+export * from './lib/ltm-mixture-pickup-points-list/ltm-mixture-pickup-points-list.component';
+export * from './lib/ltm-mixture-pickup-points-detail/ltm-mixture-pickup-points-detail.component';
+export * from './lib/ltm-correction-action-detail/ltm-correction-action-detail.component';
+export * from './lib/ltm-correction-action-list/ltm-correction-action-list.component';

@@ -26,6 +26,7 @@
 .mat-column-id,
 .mat-column-variable,
 .mat-column-showKPI,
+.mat-column-varianceControl,
 .mat-column-showGraph {
     flex: 1 1 70px;
     justify-content: center;
@@ -40,5 +41,5 @@ mat-table {
 .container {
     margin-top: 8px;
     overflow: auto;
-    height: calc(100% - 64px);
+    height: calc(100% - 72px);
 }

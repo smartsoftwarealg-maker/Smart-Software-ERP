@@ -76,7 +76,7 @@
         <mat-row class="selectable"
                  *matRowDef="let row; columns: displayedColumns;"
                  [class.selected]="row.id == selected"
-                 (click)="select(row?.id)" ></mat-row>
+                 (click)="selectRow(row)" ></mat-row>
     </mat-table>
 </div>
 <div class="content_div b-b-background">

@@ -1,0 +1,41 @@
+@if (form) {
+    <mat-card>
+        <form [formGroup]="form">
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>LTM_MATTER</mat-label>
+                <input matInput formControlName="matter" type="text">
+            </mat-form-field>
+
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>LTM_TEST</mat-label>
+                <input matInput formControlName="test" type="text">
+            </mat-form-field>
+
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>COMMON_VALUE</mat-label>
+                <input matInput formControlName="value" type="number">
+            </mat-form-field>
+
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>COMMON_DATE</mat-label>
+                <ss-date-picker [required]=true
+                                formControlName="time"
+                                [type]="'datetime'">
+                </ss-date-picker>
+            </mat-form-field>
+
+            <mat-form-field class="default-50">
+                <mat-label translate>LTM_CORRECTION_ACTION</mat-label>
+                <ss-auto-complete matInput
+                                  [model]="actionLookup"
+                                  formControlName="correctionAction">
+                </ss-auto-complete>
+            </mat-form-field>
+
+            <mat-form-field class="default-100">
+                <mat-label translate>COMMON_MEMO</mat-label>
+                <input matInput formControlName="memo" type="text">
+            </mat-form-field>
+         </form>
+    </mat-card>
+}

@@ -27,7 +27,7 @@ import {
     LTM_BLEACHER_URL,
     LTM_ZONE_URL,
     LTM_DEPOSIT_URL,
-    LTM_SUPPLIER_URL, LTM_DEPOSIT_TEST_URL, LTM_RAW_MATERIAL_TEST_URL
+    LTM_SUPPLIER_URL, LTM_DEPOSIT_TEST_URL, LTM_RAW_MATERIAL_TEST_URL, LTM_CORRECTION_ACTION_URL
 } from '../common';
 
 import {
@@ -75,7 +75,11 @@ import {
     PHYSICAL_TEST,
     DEPOSIT_TEST,
     RAW_MATERIAL_TEST,
-    LtmPhysicalTestingListComponent, LtmDepositTestingListComponent, LtmRmTestingListComponent
+    LtmPhysicalTestingListComponent,
+    LtmDepositTestingListComponent,
+    LtmRmTestingListComponent,
+    LtmAlertsDetailComponent,
+    LtmCorrectionActionListComponent, LtmCorrectionActionDetailComponent
 } from '@ss/ltm/ltm';
 import {loginGuard} from '../erp-guards';
 import {DashboardComponent} from '@ss/dashboard';
@@ -86,15 +90,17 @@ import {
 } from '@ss/ltm/ltm';
 import { LtmSupplierDetailComponent } from '@ss/ltm/ltm';
 import {
-    LtmMixturePickupPointsListComponent
-} from '../../../../../libs/ltm/ltm/src/lib/ltm-mixture-pickup-points-list/ltm-mixture-pickup-points-list.component';
-import {
+    LtmMixturePickupPointsListComponent,
     LtmMixturePickupPointsDetailComponent
-} from '../../../../../libs/ltm/ltm/src/lib/ltm-mixture-pickup-points-detail/ltm-mixture-pickup-points-detail.component';
+} from '@ss/ltm/ltm';
 
 export const ltmRoutes: Routes = [
     {
-        path: LTM_ALERT_URL, component: LtmAlertsComponent, canActivate: [loginGuard]
+        path: LTM_ALERT_URL,
+        children: [
+            { path: LIST_URL, component: LtmAlertsComponent, canActivate: [loginGuard]},
+            { path: ':id', component: LtmAlertsDetailComponent, canActivate: [loginGuard] }
+        ]
     },
     {
         path: LTM_CHARTS_URL, component: LtmReportComponent, canActivate: [loginGuard]
@@ -344,6 +350,23 @@ export const ltmRoutes: Routes = [
                 canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService],
                 data: { testingMode: DEPOSIT_TEST }
+            },
+            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
+        ]
+    },
+    {
+        path: LTM_CORRECTION_ACTION_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: LtmCorrectionActionListComponent,
+                canActivate: [loginGuard]
+            },
+            {
+                path: ':id',
+                component: LtmCorrectionActionDetailComponent,
+                canActivate: [loginGuard],
+                canDeactivate: [CanDeactivateService]
             },
             { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
         ]
