@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, DestroyRef, inject } from '@angular/core';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import { LTMTestingAnomaly } from "../ltm-api";
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
@@ -18,6 +18,8 @@ import { CommonUiHourPickerModule } from "@ss/common/ui-hour-picker";
 import { LtmTestingAnomalyService } from "../services/ltm-testing-anomaly.service";
 import { callback } from 'chart.js/helpers';
 import { Observable } from 'rxjs';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 
 @Component({
     selector: 'ss-ltm-testing-anomaly-list',
@@ -40,11 +42,13 @@ import { Observable } from 'rxjs';
     ],
 })
 export class LtmTestingAnomalyListComponent extends BaseEntityListComponent<LTMTestingAnomaly> {
-    private TODAY = new Date();
+    #destroyRef = inject(DestroyRef);
+    #TODAY = new Date();
 
-    displayedColumns = ['date', 'matterDescription', 'anomalyDescription', 'memo', 'userDescription'];
-    from = new FormControl<Date>(this.TODAY);
-    to   = new FormControl<Date>(this.TODAY);
+
+    displayedColumns = ['date', 'matterDescription', 'anomalyDescription', 'memo', 'pickupPointDescription', 'userDescription'];
+    from = new FormControl<Date>(this.#TODAY);
+    to   = new FormControl<Date>(this.#TODAY);
 
     constructor(
         public override entitySrv: LtmTestingAnomalyService,
@@ -64,5 +68,31 @@ export class LtmTestingAnomalyListComponent extends BaseEntityListComponent<LTMT
         const to   = dateToYmdStr(this.to.value);
         const filter = `${this.filter||''}//${from}~${to}`
         return this.entitySrv.getPage(this.pagination, filter, this.sortBy);
+    }
+
+    override ngOnInit() {
+        super.ngOnInit();
+        this.from.setValue(this.entitySrv.from);
+        this.to.setValue(this.entitySrv.to);
+        this.from
+            .valueChanges
+            .pipe(
+                takeUntilDestroyed(this.#destroyRef),
+                debounceTime(300),
+                distinctUntilChanged()
+            ).subscribe(() => this.doRefresh())
+        this.to
+            .valueChanges
+            .pipe(
+                takeUntilDestroyed(this.#destroyRef),
+                debounceTime(300),
+                distinctUntilChanged()
+            ).subscribe(() => this.doRefresh())
+    }
+
+    private doRefresh() {
+        this.entitySrv.from = this.from.value;
+        this.entitySrv.to   = this.to.value;
+        this.refresh();
     }
 }

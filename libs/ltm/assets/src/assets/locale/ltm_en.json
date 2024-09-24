@@ -60,5 +60,9 @@
     "BLEACHER":           "Bleacher",
     "ZONE":               "Zone",
     "DEPOSIT":            "Deposit",
-    "STANDARD_NAME":      "Standard name"
+    "STANDARD_NAME":      "Standard name",
+    "CORRECTION_ACTIONS": "Correction actions",
+    "CORRECTION_ACTION":  "Correction action",
+    "VARIANCE_CONTROL":   "Variance control",
+    "VC":                 "VC"
 }

@@ -17,6 +17,7 @@ import { LtmAnomalyService } from "../services/ltm-anomaly.service";
 import { LTMTestingAnomaly } from "../ltm-api";
 import { LtmTestingAnomalyService } from "../services/ltm-testing-anomaly.service";
 import { LtmMatterService } from "../services/ltm-matter.service";
+import { LtmPickupPointService } from '../services/ltm-pickup-point.service';
 
 @Component({
     selector: 'ss-ltm-test-detail',
@@ -39,12 +40,14 @@ import { LtmMatterService } from "../services/ltm-matter.service";
     ]
 })
 export class LtmTestingAnomalyDetailComponent extends BaseEntityDetailComponent<LTMTestingAnomaly> {
+    #pickupPointSrv = inject(LtmPickupPointService);
     private loginSrv = inject(LoginService);
     private anomalySrv = inject(LtmAnomalyService);
     private matterSrv = inject(LtmMatterService);
 
     anomalyLookup = new DefaultAutoCompleteModel(this.anomalySrv);
     matterLookup = new DefaultAutoCompleteModel(this.matterSrv);
+    pickupPointLookup = new DefaultAutoCompleteModel(this.#pickupPointSrv)
 
     constructor(
         public override entitySrv: LtmTestingAnomalyService,
@@ -58,13 +61,14 @@ export class LtmTestingAnomalyDetailComponent extends BaseEntityDetailComponent<
 
     public override setupForm(b: LTMTestingAnomaly) {
         return this.formBuilder.group({
-            id:        [b.id],
-            centerId:  [b.centerId || this.loginSrv.appCtx.center],
-            memo:      [b.memo],
-            date:      [b.date || new Date(), Validators.required],
-            userId:    [b.userId || this.loginSrv.appCtx.id],
-            matterId:  [b.matterId],
-            anomalyId: [b.anomalyId]
+            id:          [b.id],
+            centerId:    [b.centerId || this.loginSrv.appCtx.center],
+            memo:        [b.memo],
+            date:        [b.date || new Date(), Validators.required],
+            userId:      [b.userId || this.loginSrv.appCtx.id],
+            matterId:    [b.matterId],
+            anomalyId:   [b.anomalyId],
+            pickupPoint: [b.pickupPoint],
         });
     }
 

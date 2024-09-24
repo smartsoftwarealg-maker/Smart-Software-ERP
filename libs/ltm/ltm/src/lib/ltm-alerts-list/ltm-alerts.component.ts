@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, DestroyRef, inject } from '@angular/core';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import { KeepOnToolbar, ShellService, SnackBarService, ToolbarButton } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router, RouterOutlet } from "@angular/router";
@@ -16,7 +16,9 @@ import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
 import { CommonUiHourPickerModule } from "@ss/common/ui-hour-picker";
 import { LTMAbnormalTest } from '../ltm-api';
 import { LtmAbnormalTestService } from '../services/ltm-abnormal-test.service';
-import { Subscription } from 'rxjs';
+import { filter, Subscription } from 'rxjs';
+import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
     selector: 'ss-ltm-alerts-list',
@@ -39,6 +41,8 @@ import { Subscription } from 'rxjs';
     ],
 })
 export class LtmAlertsComponent extends BaseEntityListComponent<LTMAbnormalTest> {
+    #destroyRef = inject(DestroyRef);
+
     private abnormalTestSrv = inject(LtmAbnormalTestService);
     private subscription: Subscription|null = null;
 
@@ -51,10 +55,10 @@ export class LtmAlertsComponent extends BaseEntityListComponent<LTMAbnormalTest>
         click: () => this.showAlerts()
     };
 
-    displayedColumns = ['matter', 'test', 'time', 'value', 'min', 'max'];
+    displayedColumns = ['matter', 'test',  'time', 'value', 'min', 'max'];
     formBuilder = inject(FormBuilder);
     form = this.formBuilder.group({
-        from: [new Date(new Date().getTime() - 24 * 3600 * 1000)],
+        from: [new Date(new Date().getTime() - 24 * 3600 * 1000 * 30 )],
         to:   [new Date()],
     })
 
@@ -112,8 +116,34 @@ export class LtmAlertsComponent extends BaseEntityListComponent<LTMAbnormalTest>
     }
     override ngOnInit() {
         this.addButton.visible = false;
-        this.editButton.visible = false;
+        // this.editButton.visible = false;
         this.deleteButton.visible = false;
         super.ngOnInit();
+
+        this.form
+            .controls
+            .from
+            .valueChanges
+            .pipe(
+                takeUntilDestroyed(this.#destroyRef),
+                filter(() => this.form.controls.from.value !== null),
+                debounceTime(300),
+                distinctUntilChanged()
+            ).subscribe(() => this.refresh());
+
+        this.form
+            .controls
+            .to
+            .valueChanges
+            .pipe(
+                takeUntilDestroyed(this.#destroyRef),
+                filter(() => this.form.controls.to.value !== null),
+                debounceTime(300),
+                distinctUntilChanged()
+            ).subscribe(() => this.refresh());
+    }
+
+    override showDetail(id: number) {
+        this.router.navigate([id], {relativeTo: this.route}).then()
     }
 }

@@ -1,19 +1,18 @@
 
-:host {
-    display: inline-block;
-    width: 100%;
+mat-card {
+    width: 80%;
+    max-width: 450px;
+    margin: .5em auto;
+    padding: 1em;
+    border-radius: 1.4em;
 }
 
-.form-container {
-    display: block;
-    max-width: 640px;
-    margin: auto;
-}
 
 
 .button_div {
     display: flex;
     gap: 1em;
     justify-content: flex-end;
+    padding: .5em 1em;
 }
 

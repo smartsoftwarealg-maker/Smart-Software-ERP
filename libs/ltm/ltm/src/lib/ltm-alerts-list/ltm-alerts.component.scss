@@ -4,14 +4,15 @@
     margin: 0 auto;
 }
 
-.mat-column-matter,
-.mat-column-test {
+.mat-column-matter {
     flex: 3 1 200px;
     border-left: gray solid 1px;
     padding-left: 4px;
 }
 
-.mat-column-time {
+.mat-column-pickupPoint,
+.mat-column-time,
+.mat-column-test {
     flex: 1 1 150px;
     border-left: gray solid 1px;
     padding-left: 4px;

@@ -1,4 +1,4 @@
-$table_width: 1020px;
+$table_width: 1200px;
 
 :host {
     display: inline-block;
@@ -6,10 +6,6 @@ $table_width: 1020px;
 }
 
 // keep the material design specs
-.mat-row, .mat-header-row {
-    padding-right: 16px;
-    padding-left: 16px;
-}
 
 .table-container {
     width: 100%;
@@ -19,8 +15,8 @@ $table_width: 1020px;
     overflow-y: auto;
 }
 mat-table {
-    width: 1200px;
-    min-height: 180px;
+    width: 900px;
+    min-height: 25em;
 }
 
 .buttons {

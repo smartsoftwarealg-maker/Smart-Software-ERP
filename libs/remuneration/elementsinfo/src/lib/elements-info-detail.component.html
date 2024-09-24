@@ -1,47 +1,53 @@
 <mat-card>
     <mat-card-content>
-        <form *ngIf="form !== null" novalidate [formGroup]="form">
+        @if (form !== null) {
+            <form [formGroup]="form">
 
-            <mat-form-field class="default-50 sm-100" >
-                <mat-label translate>REMUN_FIELD</mat-label>
-                <input matInput formControlName="field" type="text"  readonly>
-                <mat-error *ngIf="form.controls['field'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
-            </mat-form-field>
+                <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>REMUN_FIELD</mat-label>
+                    <input matInput formControlName="field" type="text" readonly>
+                    <mat-error *ngIf="form.controls['field'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
+                </mat-form-field>
 
-            <mat-form-field id="description" class="default-50 sm-100">
-                <mat-label translate>COMMON_DESCRIPTION</mat-label>
-                <input matInput formControlName="description" type="text" autofocus required>
-                <mat-error *ngIf="form.controls['description'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
-            </mat-form-field>
+                <mat-form-field id="description" class="default-50 sm-100">
+                    <mat-label translate>COMMON_DESCRIPTION</mat-label>
+                    <input matInput formControlName="description" type="text" autofocus required>
+                    <mat-error *ngIf="form.controls['description'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
+                </mat-form-field>
 
-            <div class="default-100">
-                <mat-checkbox formControlName="fixed" translate>REMUN_FIXED</mat-checkbox>
-            </div>
+                <div class="default-50">
+                    <mat-checkbox formControlName="fixed" translate>REMUN_FIXED</mat-checkbox>
+                </div>
 
 
-            <div class="default-100">
-                <mat-checkbox formControlName="specialFixed" translate>REMUN_SPECIAL_FIXED</mat-checkbox>
-            </div>
+                <div class="default-50">
+                    <mat-checkbox formControlName="specialFixed" translate>REMUN_SPECIAL_FIXED</mat-checkbox>
+                </div>
 
-            <div class="default-100">
-                <mat-checkbox formControlName="common" translate>REMUN_COLLECTIVE</mat-checkbox>
-            </div>
+                <div class="default-50">
+                    <mat-checkbox formControlName="common" translate>REMUN_COLLECTIVE</mat-checkbox>
+                </div>
 
-            <span class="default-100"></span>
-            <mat-form-field class="default-50 sm-100">
-                <mat-label translate>REMUN_MIN</mat-label>
-                <input matInput formControlName="minValue" type="number" >
-                <mat-error *ngIf="form.controls['minValue'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
-            </mat-form-field>
+                <span class="default-50"></span>
+                <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>REMUN_MIN</mat-label>
+                    <input matInput formControlName="minValue" type="number">
+                    @if (form.controls['minValue'].invalid) {
+                        <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+                    }
+                </mat-form-field>
 
-            <mat-form-field class="default-50 sm-100">
-                <mat-label translate>REMUN_MIN</mat-label>
-                <input matInput formControlName="maxValue" type="number" >
-                <mat-error *ngIf="form.controls['maxValue'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
-            </mat-form-field>
+                <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>REMUN_MIN</mat-label>
+                    <input matInput formControlName="maxValue" type="number">
+                    @if (form.controls['maxValue'].invalid) {
+                        <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+                    }
 
-        </form>
+                </mat-form-field>
 
+            </form>
+        }
     </mat-card-content>
 </mat-card>
 

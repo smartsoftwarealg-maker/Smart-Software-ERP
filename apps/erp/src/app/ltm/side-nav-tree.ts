@@ -14,7 +14,7 @@ import {
     ABS_LTM_TEST_TYPE_URL,
     ABS_LTM_TESTINGS_ANOMALIES_URL, ABS_LTM_TESTINGS_URL,
     ABS_LTM_TESTS_URL,
-    ABS_LTM_UNIT_URL, ABS_LTM_ZONES_URL
+    ABS_LTM_UNIT_URL, ABS_LTM_ZONES_URL, ABS_LTM_CORRECTION_ACTIONS_URL
 } from '../common';
 
 export const ltmNavTree: SideNavNode = {
@@ -46,11 +46,17 @@ export const ltmNavTree: SideNavNode = {
             accessRights: 'LTMDeposit'
         },
         {
-            name: 'LTM_SUPPLIERS',
-            icon: 'fa-solid fa-truck-field',
-            route: ABS_LTM_SUPPLIER_URL,
-            accessRights: 'LTMSupplier'
+            name: 'LTM_CORRECTION_ACTIONS',
+            icon: 'fa-solid fa-eraser',
+            route: ABS_LTM_CORRECTION_ACTIONS_URL,
+            accessRights: 'LTMCorrectionAction'
         },
+        // {
+        //     name: 'LTM_SUPPLIERS',
+        //     icon: 'fa-solid fa-truck-field',
+        //     route: ABS_LTM_SUPPLIER_URL,
+        //     accessRights: 'LTMSupplier'
+        // },
         {
             name: 'LTM_NORMS',
             icon: 'fa-solid fa-ruler-triangle',

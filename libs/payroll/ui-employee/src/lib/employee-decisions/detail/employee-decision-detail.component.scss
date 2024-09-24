@@ -1,14 +1,20 @@
 
-.form-container {
-    display: block;
+mat-card {
+    width: 80%;
     max-width: 900px;
-    margin: 0 auto;
+    margin: 0.5em auto;
     border-radius: 1.4em;
+    padding: 1em;
 }
 
 .button_div {
+    width: 100%;
     display: flex;
     gap: 1em;
     justify-content: flex-end;
     padding: 4px;
+}
+
+mat-card-header {
+    padding: .5em 1em;
 }

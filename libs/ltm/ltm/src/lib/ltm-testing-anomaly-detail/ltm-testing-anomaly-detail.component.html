@@ -1,5 +1,6 @@
 <mat-card>
-    <form *ngIf="form !== null" novalidate [formGroup]="form">
+    @if (form !== null) {
+        <form  [formGroup]="form">
 
         <mat-form-field class="default-50 sm-100">
             <mat-label translate>COMMON_DATE</mat-label>
@@ -22,10 +23,20 @@
             </ss-auto-complete>
         </mat-form-field>
 
+        <mat-form-field id="matterType" class="default-100">
+            <mat-label translate>LTM_PICKUP_POINT</mat-label>
+            <ss-auto-complete matInput
+                              formControlName="pickupPoint"
+                              [model]="pickupPointLookup">
+            </ss-auto-complete>
+        </mat-form-field>
+
+
         <mat-form-field class="default-100">
             <mat-label translate>COMMON_DESCRIPTION</mat-label>
             <input matInput formControlName="memo" type="text" >
         </mat-form-field>
 
     </form>
+    }
 </mat-card>

@@ -1,7 +1,11 @@
-<div *ngIf="!disabled && !readOnly" class="b-b-background img-container mat-elevation-z6" [matMenuTriggerFor]="menu">
-    <i *ngIf="!safeUrl" style="font-size: 32px" class="fas fa-image f-b-disabled-btn"></i>
-    <img [src]="safeUrl" [alt]="alt">
-</div>
+@if (!disabled && !readOnly) {
+    <div class="b-b-background img-container mat-elevation-z6" [matMenuTriggerFor]="menu">
+        @if (!safeUrl) {
+            <i style="font-size: 32px" class="fas fa-image f-b-disabled-btn"></i>
+        }
+        <img [src]="safeUrl" [alt]="alt">
+    </div>
+}
 <div *ngIf="disabled || readOnly" class="b-b-background img-container mat-elevation-z6">
     <i *ngIf="!safeUrl" style="font-size: 32px" class="fas fa-image f-b-disabled-btn"></i>
     <img [src]="safeUrl" [alt]="alt">
@@ -19,4 +23,4 @@
     </button>
 </mat-menu>
 
-<input style="display: none" #fileInput id="file-upload" type="file"/>
+<input style="display: none" #fileInput id="file-upload" type="file" />

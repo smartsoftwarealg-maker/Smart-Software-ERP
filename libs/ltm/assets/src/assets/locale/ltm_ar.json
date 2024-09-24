@@ -60,5 +60,9 @@
     "BLEACHER":            "المبيض",
     "ZONE":               "المنطقة",
     "DEPOSIT":            "المنجم",
-    "STANDARD_NAME":      "الاسم القياسي"
+    "STANDARD_NAME":      "الاسم القياسي",
+    "CORRECTION_ACTION":  "خطوة التصحيح ",
+    "CORRECTION_ACTIONS":  "خطوات التصحيح ",
+    "VARIANCE_CONTROL":   "تحكم الانحراف",
+    "VC":                "ت ا"
 }

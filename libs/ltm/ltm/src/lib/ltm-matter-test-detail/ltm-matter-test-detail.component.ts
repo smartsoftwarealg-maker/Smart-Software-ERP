@@ -50,17 +50,18 @@ export class LtmMatterTestDetailComponent implements OnInit {
     periodicityLookup = new DefaultAutoCompleteModel(this.periodicitySrv);
     testLookup = new DefaultAutoCompleteModel(this.testSrv);
     form = this.fb.group( {
-        id:          [0],
-        testId:      [0,    Validators.required],
-        parentId:    [0,    Validators.required],
-        minValue:    [0,    Validators.required],
-        maxValue:    [0,    Validators.required],
-        normMin:     [0],
-        normMax:     [0],
-        optValue:    [0,    Validators.required],
-        periodicity: [0,    Validators.required],
-        orderNo:     [0,    Validators.required],
-        centerId:    [this.loginSrv.appCtx.center]
+        id:              [0],
+        testId:          [0,    Validators.required],
+        parentId:        [0,    Validators.required],
+        minValue:        [0,    Validators.required],
+        maxValue:        [0,    Validators.required],
+        normMin:         [0],
+        normMax:         [0],
+        optValue:        [0,    Validators.required],
+        periodicity:     [0,    Validators.required],
+        orderNo:         [0,    Validators.required],
+        centerId:        [this.loginSrv.appCtx.center],
+        varianceControl: [false]
     });
 
     constructor(private entitySrv: LtmMatterTestService,
@@ -92,7 +93,6 @@ export class LtmMatterTestDetailComponent implements OnInit {
     }
 
     save() {
-        console.log(this.form.getRawValue())
         this.entitySrv
             .save(this.form.getRawValue())
             .subscribe(res => {

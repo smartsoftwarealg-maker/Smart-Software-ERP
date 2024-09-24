@@ -29,6 +29,13 @@
             </mat-cell>
         </ng-container>
 
+        <ng-container matColumnDef="pickupPoint">
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>LTM_PICKUP_POINT</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.pickupPoint}}
+            </mat-cell>
+        </ng-container>
+
         <ng-container matColumnDef="test">
             <mat-header-cell *matHeaderCellDef mat-sort-header translate>LTM_TEST</mat-header-cell>
             <mat-cell *matCellDef="let e">
@@ -66,7 +73,10 @@
 
 
         <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
-        <mat-row class="selectable" *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        <mat-row class="selectable"
+                 *matRowDef="let row; columns: displayedColumns;"
+                 [class.selected]="row.id == selected"
+                 (click)="selectRow(row)" ></mat-row>
     </mat-table>
 </div>
 <div class="content_div b-b-background">

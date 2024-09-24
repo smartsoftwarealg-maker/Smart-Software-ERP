@@ -22,6 +22,15 @@
             </mat-cell>
         </ng-container>
 
+        <ng-container matColumnDef="varianceControl">
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>LTM_VC</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                <mat-checkbox [class.mat-checkbox-disabled]="false" disabled="true"
+                              [checked]="e.varianceControl">
+                </mat-checkbox>
+            </mat-cell>
+        </ng-container>
+
         <ng-container matColumnDef="variable">
             <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_VARIABLE</mat-header-cell>
             <mat-cell *matCellDef="let e">

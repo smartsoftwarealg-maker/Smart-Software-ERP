@@ -21,10 +21,12 @@ ss-image-input {
 .info__div {
     display: flex;
     flex-direction: row;
-    align-items: center;
     justify-content: center;
     flex-wrap: nowrap;
     overflow: hidden;
+    gap: .5em;
+    align-items: stretch;
+    margin-bottom: .5em;
 }
 
 .img__div {
@@ -32,6 +34,13 @@ ss-image-input {
     display: flex;
     flex-direction: column;
     justify-items: center;
+}
+mat-card {
+    padding: .5em;
+    border-radius: 1.4em;
+}
+mat-card-footer {
+    font-size: 1.7em;
 }
 
 .person__div {

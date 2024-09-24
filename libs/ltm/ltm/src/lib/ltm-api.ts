@@ -7,6 +7,7 @@ export const LTM_EQUIPMENT_URL        = '/lookups/ltm_equipment';
 export const LTM_BLEACHER_URL        = '/lookups/ltm_bleachers';
 export const LTM_ZONE_URL        = '/lookups/ltm_zones';
 export const LTM_DEPOSIT_URL        = '/lookups/ltm_deposits';
+export const LTM_CORRECTIONS_ACTIONS_URL        = '/lookups/ltm_correction_actions';
 export const LTM_SUPPLIER_URL        = '/lookups/ltm_suppliers';
 export const LTM_NORM_URL        = '/lookups/ltm_norms';
 export const LTM_PRODUCT_LOOKUP_URL        = '/lookups/ltm_products';
@@ -29,6 +30,8 @@ export const LTM_CENTER_MATTER_URL      = '/ltm/center-matters';
 export const LRM_PERIODICITY_URL = '/lookups/ltm_periodicities';
 export const LTM_LINE_SELECT_URL = '/ltm/ltm_selection';
 export const LTM_SAMPLES_URL = '/ltm/samples';
+export const LTM_LINES_URL = '/lines';
+
 
 
 export interface LTMMixture {
@@ -46,10 +49,12 @@ export interface LTMTestingAnomaly {
     matterId: number;
     anomalyId: number;
     userId: number;
+    pickupPoint?: number;
     memo?: string;
     anomalyDescription?: string;
     userDescription?: string;
     matterDescription?: string;
+    pickupPointDescription?: string;
 }
 
 export interface LTMMixtureDetail {
@@ -96,6 +101,7 @@ export interface LTMTest {
     chemicalFormula?: string;
     showGraph: boolean;
     showInCertificate: boolean;
+    varianceControl: boolean;
     showKPI: boolean;
     testType?: number;
     unit?: number;
@@ -119,6 +125,7 @@ export interface LTMMatterTest {
     variable?: string;
     formula?: string;
     orderNo: number;
+    varianceControl: boolean;
 }
 
 
@@ -214,6 +221,9 @@ export interface LTMAbnormalTest {
     value: number;
     min: number;
     max: number;
+    memo?: string;
+    correctionAction?: number;
+    pickPoint?: string;
 }
 
 export interface LTMProduct {

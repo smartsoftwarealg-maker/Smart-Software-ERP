@@ -60,5 +60,9 @@
     "BLEACHER":           "Gradin",
     "ZONE":               "Zone",
     "DEPOSIT":            "Gisement",
-    "STANDARD_NAME":      "Nom standard"
+    "STANDARD_NAME":      "Nom standard",
+    "CORRECTION_ACTIONS":  "Actions de correction",
+    "CORRECTION_ACTION":  "Action de correction",
+    "VARIANCE_CONTROL":   "Contrôle de variance",
+    "VC":                 "VC"
 }

@@ -38,7 +38,7 @@ import { CommonUiHourPickerModule } from "@ss/common/ui-hour-picker";
     ],
 })
 export class LtmTestListComponent extends BaseEntityListComponent<LTMTest> {
-    displayedColumns = ['variable', 'description', 'descriptionAr', 'chemicalFormula', 'formula', 'showGraph', 'showKPI'];
+    displayedColumns = ['variable', 'description', 'descriptionAr', 'chemicalFormula', 'formula', 'showGraph', 'showKPI', 'varianceControl'];
 
     constructor(
         public override entitySrv: LtmTestService,

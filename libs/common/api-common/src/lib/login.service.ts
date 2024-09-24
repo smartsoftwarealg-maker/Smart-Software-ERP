@@ -37,12 +37,10 @@ export class LoginService {
     private _customerLogin: LoginType = LoginType.USER;
     public appCtx: AppContext = null;
     public connectionError = false;
-    public errorMessage = '';
+    public errorMessage: string|null = null;
     public wrongData = false;
     public licenseErrorType: LicenseErrorType = null;
 
-    constructor() {
-    }
 
     get isLoggedIn(): boolean {
         return this.appCtx != null && (this.appCtx.id !== null || this.appCtx.agentId != null || this.appCtx.personId != null);
@@ -113,8 +111,9 @@ export class LoginService {
 
     public async logout(): Promise<any> {
         const promise = this.router && !this.#homePage? this.router.navigate(['/' + LOGIN_URL]).then() : Promise.resolve(true).then();
-        let fulfilled = await promise;
+        const fulfilled = await promise;
         if (fulfilled) {
+            this.errorMessage = null;
             this.mainPageSrv.clear();
             this.appCtx = null;
             localStorage.removeItem(AUTH_TOKEN);

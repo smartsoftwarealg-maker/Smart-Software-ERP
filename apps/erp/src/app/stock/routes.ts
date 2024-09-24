@@ -107,7 +107,7 @@ import { ArticleDetailComponent, ArticleListComponent, ReferenceCorrectionCompon
 import {
     ArticleTypeDetailComponent,
     ArticleTypeListComponent
-} from '../../../../../libs/common/ui-lookup/src/lib/components/article-type.component';
+} from '@ss/common/ui-lookup';
 
 export const mainRoutes: Routes = [
     {
