@@ -1,10 +1,9 @@
 import {Component} from '@angular/core';
 import {UntypedFormGroup} from '@angular/forms';
 import {
-    BaseTransactionLinesDetailComponent, DOC_DELIVERY, TransactionLine,
-    TransactionLinesService
+    BaseTransactionLinesDetailComponent, DOC_DELIVERY, TransactionLine
 } from '@ss/logistics/api-transaction';
-import { DeliveryLinesService } from '../../../../api-delivery/src/lib/delivery-lines.service';
+import { DeliveryLinesService } from '@ss/sales/api-delivery';
 
 @Component({
     selector: 'ss-delivery-lines-detail',
