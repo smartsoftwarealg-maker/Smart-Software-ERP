@@ -61,8 +61,10 @@
     "ZONE":               "المنطقة",
     "DEPOSIT":            "المنجم",
     "STANDARD_NAME":      "الاسم القياسي",
-    "CORRECTION_ACTION":  "خطوة التصحيح ",
-    "CORRECTION_ACTIONS":  "خطوات التصحيح ",
+    "CORRECTION_ACTION":  "إجراء التصحيح ",
+    "CORRECTION_ACTIONS":  "إجراآت التصحيح ",
     "VARIANCE_CONTROL":   "تحكم الانحراف",
-    "VC":                "ت ا"
+    "VC":                "ت ا",
+    "ACTION_NUMBER":      "رقم الإجراء",
+    "REPORTED_BY":        "تبليغ بواسطة"
 }

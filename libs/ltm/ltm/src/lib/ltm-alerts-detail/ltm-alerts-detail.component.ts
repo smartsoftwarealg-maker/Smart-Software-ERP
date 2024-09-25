@@ -3,19 +3,20 @@ import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, RouterOutlet } from "@angular/router";
 import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
-import { MaterialModule } from "@ss/common/api-common";
+import { MaterialModule, UserService } from '@ss/common/api-common';
 import { CommonModule } from "@angular/common";
 import { CommonUiLangModule } from "@ss/common/ui-lang";
 import { UiPaginationModule } from "@ss/common/ui-pagination";
 import { ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 
 import { AppArchiveModule } from '@ss/common/app-archive';
-import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
+import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel, UserLookup } from '@ss/common/ui-auto-complete';
 import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
 import { CommonUiHourPickerModule } from '@ss/common/ui-hour-picker';
 import { LTMAbnormalTest } from '../ltm-api';
 import { LtmAbnormalTestService } from '@ss/ltm/ltm';
 import { LtmCorrectionActionService } from '../services/ltm-correction-action.service';
+import { UserListService } from '@ss/common/api-users';
 
 @Component({
     selector: 'ss-ltm-alerts-detail',
@@ -39,8 +40,10 @@ import { LtmCorrectionActionService } from '../services/ltm-correction-action.se
 })
 export class LtmAlertsDetailComponent extends BaseEntityDetailComponent<LTMAbnormalTest> {
     #actionSrv = inject(LtmCorrectionActionService);
+    #userSrv  = inject(UserListService);
 
     actionLookup = new DefaultAutoCompleteModel(this.#actionSrv);
+    userLookup   = new UserLookup(this.#userSrv);
 
     constructor(
         public override entitySrv: LtmAbnormalTestService,
@@ -63,6 +66,8 @@ export class LtmAlertsDetailComponent extends BaseEntityDetailComponent<LTMAbnor
             max:              [{ value: e.max,     disabled: true }],
             memo:             [{ value: e.memo,    disabled: false }],
             correctionAction: [{ value: e.correctionAction, disabled: false }],
+            actionNo:         [{ value: e.actionNo, disabled: false }],
+            reportedBy:       [{ value: e.reportedBy, disabled: false }]
         })
     }
 
