@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import {UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {Article, ArticleAutoCompleteModel, ArticleService, LotAutoCompleteModel, QtyPrice} from '@ss/master-data/api-article';
-import { LookupsService, LotsService, Store } from '@ss/common/api-lookup';
+import { LotsService, Store } from '@ss/common/api-lookup';
 import { Observable, of, switchMap } from 'rxjs';
 import {tap} from 'rxjs/operators';
 import {LoginService} from '@ss/common/api-common';
@@ -15,21 +15,23 @@ import {
     DOC_CORRECTION_OUT, DOC_DELIVERY, DOC_INVOICE,
     DOC_RECEPTION,
     DOC_SEPARATOR_200,
-    DOC_SEPARATOR_800
+    DOC_SEPARATOR_800, Transaction
 } from './transaction';
 import { AbstractEntityComponent } from '@ss/common/ui-base-entity';
 import { TransactionLinesClass } from './transaction-lines.class';
 import { ArticleLocationService } from '@ss/master-data/api-article';
+import { CostCenterService } from '@ss/logistics/api-cost-center';
+import { DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
 
 @Directive()
 export abstract class BaseTransactionLinesDetailComponent extends AbstractEntityComponent<TransactionLine> implements OnInit {
+    #costCenterSrv = inject(CostCenterService);
     private locationSrv = inject(ArticleLocationService);
     private loginSrv  =  inject(LoginService);
     private optionSrv =  inject(OptionService);
     private formBuilder = inject(UntypedFormBuilder);
     private articleSrv = inject(ArticleService);
     private lotSrv = inject(LotsService);
-    private lookupsSrv = inject(LookupsService);
     private route = inject(ActivatedRoute);
     private router = inject(Router);
 
@@ -46,18 +48,19 @@ export abstract class BaseTransactionLinesDetailComponent extends AbstractEntity
     mainStore = 0;
     saveDisabled = false;
     articleStock = 0.0;
-    articleLookup: ArticleAutoCompleteModel = null;
-    storeLookup: LotAutoCompleteModel = null;
+    articleLookup: ArticleAutoCompleteModel = new ArticleAutoCompleteModel(this.articleSrv);
+    storeLookup: LotAutoCompleteModel = new LotAutoCompleteModel(this.lotSrv);
+    cCenterLookup = new DefaultAutoCompleteModel(this.#costCenterSrv);
 
     protected constructor(public entitySrv: TransactionLinesClass, protected document: number) {
         super(entitySrv);
-        this.articleLookup = new ArticleAutoCompleteModel(this.articleSrv);
-        this.storeLookup   = new LotAutoCompleteModel(this.lotSrv);
+        // this.articleLookup = new ArticleAutoCompleteModel(this.articleSrv);
+        // this.storeLookup   = new LotAutoCompleteModel(this.lotSrv);
         this.articleLookup.onObjectSelected = (a) => { this.onArticle(a); this.setSalesPrice(); };
         this.storeLookup.onObjectSelected =  (s) => { this.onStore(s); this.setSalesPrice(); };
     }
 
-    preload(): Observable<any> {
+    preload(): Observable<Transaction> {
         return this.route
             .parent
             .parent
@@ -67,9 +70,9 @@ export abstract class BaseTransactionLinesDetailComponent extends AbstractEntity
                     this.parentId = +p.get('id') || 0;
                     this.entitySrv.setParentId(this.parentId);
                 }),
-                switchMap(_ => this.optionSrv.get(this.loginSrv.appCtx.center)),
+                switchMap(() => this.optionSrv.get(this.loginSrv.appCtx.center)),
                 tap(res => this.mainStore = res.mainStore),
-                switchMap(_ => this.entitySrv.getTransaction(this.parentId)),
+                switchMap(() => this.entitySrv.getTransaction(this.parentId)),
                 tap(transac => this.agentId = transac.agent),
             );
     }
@@ -219,6 +222,7 @@ export abstract class BaseTransactionLinesDetailComponent extends AbstractEntity
             charge2:      [b.charge2 || 0],
             charge3:      [b.charge3 || 0],
             charge4:      [b.charge4 || 0],
+            costCenter:   [b.costCenter],
         });
     }
     public get id() {
