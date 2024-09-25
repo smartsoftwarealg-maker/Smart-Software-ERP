@@ -24,11 +24,24 @@
                 </ss-date-picker>
             </mat-form-field>
 
-            <mat-form-field class="default-50">
+            <mat-form-field class="default-50 sm-100">
                 <mat-label translate>LTM_CORRECTION_ACTION</mat-label>
                 <ss-auto-complete matInput
                                   [model]="actionLookup"
                                   formControlName="correctionAction">
+                </ss-auto-complete>
+            </mat-form-field>
+
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>LTM_ACTION_NUMBER</mat-label>
+                <input matInput formControlName="actionNo" type="text">
+            </mat-form-field>
+
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>LTM_REPORTED_BY</mat-label>
+                <ss-auto-complete matInput
+                                  [model]="userLookup"
+                                  formControlName="reportedBy">
                 </ss-auto-complete>
             </mat-form-field>
 

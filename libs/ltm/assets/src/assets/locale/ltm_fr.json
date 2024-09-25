@@ -64,5 +64,7 @@
     "CORRECTION_ACTIONS":  "Actions de correction",
     "CORRECTION_ACTION":  "Action de correction",
     "VARIANCE_CONTROL":   "Contrôle de variance",
-    "VC":                 "VC"
+    "VC":                 "VC",
+    "ACTION_NUMBER":      "N° d'action",
+    "REPORTED_BY":        "Signé par"
 }

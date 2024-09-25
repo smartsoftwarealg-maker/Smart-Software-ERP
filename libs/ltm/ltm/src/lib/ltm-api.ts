@@ -222,7 +222,9 @@ export interface LTMAbnormalTest {
     min: number;
     max: number;
     memo?: string;
+    reportedBy?: number;
     correctionAction?: number;
+    actionNo?: string;
     pickPoint?: string;
 }
 
