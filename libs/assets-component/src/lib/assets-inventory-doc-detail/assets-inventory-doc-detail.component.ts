@@ -97,22 +97,24 @@ export class AssetsInventoryDocDetailComponent extends BaseEntityDetailComponent
         this.officeSrv.setParentId(b.buildingId||0);
         const today = new Date();
         return  this.formBuilder.group({
-            id:            [b.id],
-            centerId:      [b.centerId || this.loginSrv.appCtx.center],
-            inventoryYear: [b.inventoryYear || 0],
-            creationDate:  [b.creationDate || today],
-            description:   [b.description, Validators.required],
-            userId:        [b.userId || this.loginSrv.appCtx.id],
-            accountNo:     [b.accountNo],
-            minValue:      [b.minValue||0],
-            maxValue:      [b.maxValue|999999999],
-            buildingId:    [b.buildingId],
-            locationId:    [b.locationId],
-            officeId:      [b.officeId],
-            classId:       [b.classId],
-            beneficiary:   [b.beneficiary],
-            receptionNo:   [b.receptionNo],
-            closed:        [b.closed||false]
+            id:              [b.id],
+            centerId:        [b.centerId || this.loginSrv.appCtx.center],
+            inventoryYear:   [b.inventoryYear || 0],
+            creationDate:    [b.creationDate || today],
+            description:     [b.description, Validators.required],
+            userId:          [b.userId || this.loginSrv.appCtx.id],
+            accountNo:       [b.accountNo],
+            minValue:        [b.minValue||0],
+            maxValue:        [b.maxValue|60001],
+            buildingId:      [b.buildingId],
+            locationId:      [b.locationId],
+            officeId:        [b.officeId],
+            classId:         [b.classId],
+            beneficiary:     [b.beneficiary],
+            receptionNo:     [b.receptionNo],
+            closed:          [b.closed||false],
+            acquisitionFrom: [b.acquisitionFrom],
+            acquisitionTo:   [b.acquisitionTo],
         });
     }
 

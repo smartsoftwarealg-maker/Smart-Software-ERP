@@ -14,7 +14,7 @@ import {
     SS_TRUCKS_URL,
     LOGISTICS_AGENT_URL,
     LOGISTICS_VAT_URL,
-    LOGISTICS_PAY_METHOD_URL, SALES_CATEGORY_URL, DASHBOARD_URL, SS_COMPLAINTS_URL
+    LOGISTICS_PAY_METHOD_URL, SALES_CATEGORY_URL, DASHBOARD_URL, SS_COMPLAINTS_URL, COMMON_REPORTS_URL
 } from '../common';
 import {ProjectListComponent, ProjectDetailComponent} from '@ss/scheduled-sales/projects';
 import {ArticleDetailComponent, ArticleListComponent} from '@ss/scheduled-sales/article';
@@ -46,6 +46,7 @@ import { AGENT_ARCHIVES } from '@ss/common/app-archive';
 import { PayMethodDetailComponent, PayMethodListComponent } from '@ss/logistics/ui-pay-method';
 import { DashboardComponent } from '@ss/dashboard';
 import { CustomerComplaintsDetailComponent, CustomerComplaintsListComponent } from '@customer-complaints-list';
+import { ReportViewComponent } from '@ss/common/ui-report-param';
 
 export const scheduledSalesRoutes: Routes = [
     {
@@ -303,6 +304,13 @@ export const scheduledSalesRoutes: Routes = [
                 canDeactivate: [CanDeactivateService],
             },
         ]
+    },
+
+    {
+        path: COMMON_REPORTS_URL,
+        data: { reportBase: 'ssales' },
+        component: ReportViewComponent,
+        canActivate: [loginGuard]
     },
 
     {path: '', redirectTo: ABS_INDEX_URL, pathMatch: 'full'},
