@@ -23,7 +23,6 @@ import { DefaultReportService } from '@ss/common/ui-default-report-component';
 import { Office, OfficeService } from '@ss/common/api-lookup';
 import { FormBuilder, FormControl } from '@angular/forms';
 import { AssetListInventoryService } from '../services/asset-list-inventory.service';
-import { MatDialog } from '@angular/material/dialog';
 import { AssetInventoryDocService } from '../services/asset-inventory-doc.service';
 import { AssetsBuildingService } from '../services/assets-building.service';
 import { AccountService, AccountStringAutocompleteModel } from '@ss/accounting/api-accounts';
@@ -31,6 +30,7 @@ import { AssetLocationService } from '../services/asset-location.service';
 import { AssetClassService } from '../services/asset-class.service';
 import { Agent, ConsumerService } from '@ss/logistics/api-agent';
 import { AssetReceptionService } from '../services/asset-reception.service';
+import { AssetOpenInventoryDocService } from '../services/asset-open-inventory-doc.service';
 
 @Component({
     selector: 'ss-asset-list-inventory',
@@ -62,15 +62,14 @@ export class AssetListInventoryComponent extends BaseEntityListComponent<Invento
     private consumerSrv  = inject(ConsumerService);
     private receptionSrv = inject(AssetReceptionService);
 
-    private dialog = inject(MatDialog);
-    private officeSrv = inject(OfficeService);
-    private inventoryDocSrv = inject(AssetInventoryDocService);
+    // private dialog = inject(MatDialog);
+    private officeSrv       = inject(OfficeService);
+    private inventoryDocSrv = inject(AssetOpenInventoryDocService);
 
     officeLookup       = new DefaultAutoCompleteModel(this.officeSrv);
     inventoryDocLookup = new DefaultAutoCompleteModel(this.inventoryDocSrv);
 
-    inventoryDoc = new FormControl<number>(0);
-
+    inventoryDoc      = new FormControl<number>(0);
     accountLookup     = new AccountStringAutocompleteModel(this.accountSrv)
     locationLookup    = new DefaultAutoCompleteModel(this.locationSrv);
     buildingLookup    = new DefaultAutoCompleteModel(this.buildingSrv);
@@ -107,8 +106,9 @@ export class AssetListInventoryComponent extends BaseEntityListComponent<Invento
         'acquisitionDate',
         'receptionNumber',
         'comment',
+        'newBuildingDescription',
         'newOfficeDescription',
-        'newBuildingDescription'
+        'newBeneficiaryDescription',
 ];
 
     constructor(public listSrv: AssetListInventoryService,
@@ -137,6 +137,7 @@ export class AssetListInventoryComponent extends BaseEntityListComponent<Invento
         this.receptionLookup.onObjectSelected = r => this.formGroup.controls.receptionNo.setValue(r?.id||0);
         this.accountLookup.onObjectSelected = a => this.formGroup.controls.accountNo.setValue(a?.accountNo||'');
         this.locationLookup.onObjectSelected = l => this.onLocation(l);
+        this.pagination.pageSize = 10;
     }
 
     private onLocation(l: AssetLocation) {
@@ -233,18 +234,25 @@ export class AssetListInventoryComponent extends BaseEntityListComponent<Invento
         e.documentId = this.documentId;
         this.listSrv
             .update(e)
-            .subscribe(res =>  e.inventoryId = e.inventoryId? null : res  );
+            .subscribe(res =>  {
+                e.inventoryId = e.inventoryId? null : res;
+                this.selectRow(e);
+            }  );
     }
 
     override ngOnInit() {
-        this.addButton.visible = false;
+        this.addButton.visible    = false;
         this.deleteButton.visible = false;
         super.ngOnInit();
     }
 
     override selectRow(row: InventoryAsset) {
         super.selectRow(row);
-        console.log(row?.inventoryId)
         this.editButton.visible = (row?.inventoryId||0) > 0;
     }
+
+    override showDetail(id: number) {
+        super.showDetail(this.selectedRow.inventoryId||0);
+    }
 }
+

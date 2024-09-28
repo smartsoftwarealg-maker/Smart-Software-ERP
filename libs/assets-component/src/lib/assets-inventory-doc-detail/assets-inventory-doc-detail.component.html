@@ -1,6 +1,6 @@
 @if (form !== null) {
     <mat-card>
-        <form novalidate [formGroup]="form">
+        <form [formGroup]="form">
 
             <mat-form-field id="description" class="default-50 sm-100">
                 <mat-label translate>ADMINISTRATION_DESCRIPTION</mat-label>
@@ -85,6 +85,16 @@
                 @if (form.controls['maxValue'].invalid) {
                     <mat-error translate>COMMON_MIN_VALUE</mat-error>
                 }
+            </mat-form-field>
+
+            <mat-form-field class="default-50 sm-100">
+                <mat-label>{{ 'ASSET_ACQUISITION_DATE'|translate}}, {{ 'COMMON_FROM'|translate}}</mat-label>
+                <ss-date-picker formControlName="acquisitionFrom"></ss-date-picker>
+            </mat-form-field>
+
+            <mat-form-field class="default-50 sm-100">
+                <mat-label>{{ 'ASSET_ACQUISITION_DATE'|translate}}, {{ 'COMMON_TO'|translate}}</mat-label>
+                <ss-date-picker formControlName="acquisitionTo"></ss-date-picker>
             </mat-form-field>
 
             <div  class="default-50 sm-100">

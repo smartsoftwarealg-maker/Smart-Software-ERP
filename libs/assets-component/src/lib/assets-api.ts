@@ -326,10 +326,14 @@ export interface InventoryAsset {
     newOfficeId?: string;
     inventoryId?: number;
     documentId?: number;
+    newBeneficiary?: number;
     locationDescription?: string;
     buildingDescription?: string;
     officeDescription?: string;
+    newBuildingDescription?: string;
+    newOfficeDescription?: string;
     updateLocation?: boolean;
+    newBeneficiaryDescription?: string;
 }
 
 export interface AssetInventoryDoc {
@@ -354,6 +358,8 @@ export interface AssetInventoryDoc {
     buildingDescription?: string;
     locationDescription?: string;
     officeDescription?: string;
+    acquisitionFrom?: Date;
+    acquisitionTo?: Date;
 }
 
 export interface AssetInventoryFilter {

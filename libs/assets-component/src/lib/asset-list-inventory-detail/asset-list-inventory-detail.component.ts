@@ -21,6 +21,7 @@ import { AppArchiveModule } from '@ss/common/app-archive';
 import { QRCodeModule } from 'angularx-qrcode';
 import { AssetListInventoryService } from '../services/asset-list-inventory.service';
 import { AssetsBuildingService } from '../services/assets-building.service';
+import { Agent, ConsumerService } from '@ss/logistics/api-agent';
 
 @Component({
     selector: 'ss-asset-list-inventory-detail',
@@ -45,13 +46,15 @@ import { AssetsBuildingService } from '../services/assets-building.service';
 })
 export class AssetListInventoryDetailComponent extends BaseEntityDetailComponent<InventoryAsset> {
     #buildingSrv = inject(AssetsBuildingService);
-    #officeSrv = inject(OfficeService);
+    #officeSrv   = inject(OfficeService);
     #locationSrv = inject(AssetLocationService);
+    #consumerSrv = inject(ConsumerService);
 
     // locationLookup = new DefaultAutoCompleteModel(this.locationSrv);
-    buildingLookup = new DefaultAutoCompleteModel(this.#buildingSrv);
-    officeLookup   = new DefaultAutoCompleteModel(this.#officeSrv);
-    locationLookup = new DefaultAutoCompleteModel(this.#locationSrv);
+    buildingLookup   = new DefaultAutoCompleteModel(this.#buildingSrv);
+    officeLookup      = new DefaultAutoCompleteModel(this.#officeSrv);
+    locationLookup    = new DefaultAutoCompleteModel(this.#locationSrv);
+    beneficiaryLookup = new DefaultAutoCompleteModel<Agent>(this.#consumerSrv, 'id', 'denomination');
 
     constructor(
         public override entitySrv: AssetListInventoryService,
@@ -85,6 +88,7 @@ export class AssetListInventoryDetailComponent extends BaseEntityDetailComponent
             locationId:     [null],
             newOfficeId:    [b.newOfficeId],
             newBuildingId:  [b.newBuildingId],
+            newBeneficiary: [b.newBeneficiary],
             updateLocation: [true]
         });
     }
