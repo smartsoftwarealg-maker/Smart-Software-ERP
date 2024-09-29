@@ -1,32 +1,35 @@
-<div class="size_div header_div" *ngIf="selectedTabIndex === 0">
-    <mat-form-field appearance="fill">
-        <mat-label><span translate>REMUN_INPUT_FILTERS</span></mat-label>
-        <mat-select (selectionChange)="selectInput($event)" [value]="infoSrv.selectedInput">
-            <mat-option *ngFor="let i of infoSrv.inputFilter" [value]="i.id">
-                {{ i.description }}
-            </mat-option>
-        </mat-select>
-    </mat-form-field>
-    <mat-radio-group aria-label="Select an option">
-        <mat-radio-button value="1"
-                          [checked]="infoSrv.selectionMode === 1 "
-                          (click)="setSelectionMode(1)"
-                          translate>COMMON_VARIABLE
-        </mat-radio-button>
-        <mat-radio-button value="2"
-                          [checked]="infoSrv.selectionMode === 2 "
-                          (click)="setSelectionMode(2)"
-                          translate>REMUN_FIXED
-        </mat-radio-button>
-    </mat-radio-group>
-</div>
-<mat-tab-group class="size_div" (selectedIndexChange)="onTabChange($event)">
-    <mat-tab>
-        <ng-template mat-tab-label>
-            <span translate>REMUN_ELEMENTS_ENTRY</span>
-        </ng-template>
+@if (selectedTabIndex() === 0) {
+    <mat-card class="size_div">
+        <div class="header_div">
+            <mat-form-field appearance="fill">
+                <mat-label><span translate>REMUN_INPUT_FILTERS</span></mat-label>
+                <mat-select (selectionChange)="selectInput($event)" [value]="infoSrv.selectedInput">
+                    <mat-option *ngFor="let i of infoSrv.inputFilter" [value]="i.id">
+                        {{ i.description }}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-radio-group aria-label="Select an option">
+                <mat-radio-button value="1"
+                                  [checked]="infoSrv.selectionMode === 1 "
+                                  (click)="setSelectionMode(1)"
+                                  translate>COMMON_VARIABLE
+                </mat-radio-button>
+                <mat-radio-button value="2"
+                                  [checked]="infoSrv.selectionMode === 2 "
+                                  (click)="setSelectionMode(2)"
+                                  translate>REMUN_FIXED
+                </mat-radio-button>
+            </mat-radio-group>
+        </div>
+    </mat-card>
+}
+<mat-tab-group class="size_div" (selectedIndexChange)="onTabChange($event)"
+               [dynamicHeight]="true"
+               animationDuration="2000ms">
+    <mat-tab label="{{'REMUN_ELEMENTS_ENTRY'|translate}}">
 
-        <div class="emp__div">
+        <div class="emp__div size_div">
             <mat-table mat-table [dataSource]="data"
                        [ngStyle]="{ 'width.px': mainTableWidth }">
 
@@ -46,28 +49,28 @@
                 <ng-container matColumnDef="id">
                     <mat-header-cell *matHeaderCellDef translate>PAYROLL_ID</mat-header-cell>
                     <mat-cell *matCellDef="let e">
-                        {{e.id}}
+                        {{ e.id }}
                     </mat-cell>
                 </ng-container>
 
                 <ng-container matColumnDef="firstName">
                     <mat-header-cell *matHeaderCellDef translate>COMMON_FIRST_NAME</mat-header-cell>
                     <mat-cell *matCellDef="let e">
-                        {{e.firstName}}
+                        {{ e.firstName }}
                     </mat-cell>
                 </ng-container>
 
                 <ng-container matColumnDef="lastName">
                     <mat-header-cell *matHeaderCellDef translate>COMMON_LAST_NAME</mat-header-cell>
                     <mat-cell *matCellDef="let e">
-                        {{e.lastName}}
+                        {{ e.lastName }}
                     </mat-cell>
                 </ng-container>
 
                 <ng-container matColumnDef="post">
                     <mat-header-cell *matHeaderCellDef translate>PAYROLL_POST</mat-header-cell>
                     <mat-cell *matCellDef="let e">
-                        {{e.post}}
+                        {{ e.post }}
                     </mat-cell>
                 </ng-container>
 
@@ -75,7 +78,7 @@
                               matColumnDef="{{ infoSrv.dataCols[i].field }}">
                     <mat-header-cell *matHeaderCellDef>{{ infoSrv.dataCols[i].description }}</mat-header-cell>
                     <mat-cell *matCellDef="let e" class="number-cell">
-                        {{ e.elements[i] | number: '1.2-2'}}
+                        {{ e.elements[i] | number: '1.2-2' }}
                     </mat-cell>
                 </ng-container>
 
@@ -84,16 +87,11 @@
                          *matRowDef="let row; columns: displayedColumns;"></mat-row>
             </mat-table>
         </div>
-        <div class="pagination-container b-b-background">
-            <ss-pagination [paginationModel]="pagination"></ss-pagination>
-        </div>
+        <ss-pagination class="size_div" [paginationModel]="pagination"></ss-pagination>
     </mat-tab>
-    <mat-tab>
-        <ng-template mat-tab-label>
-            <span translate>REMUN_PAY_SLIP</span>
-        </ng-template>
-        <div class="pay-slip">
-            <div class="slip-image">
+    <mat-tab label="{{'REMUN_PAY_SLIP'|translate}}">
+        <div class="pay__slip">
+            <mat-card class="slip__image">
                 <ss-image-input width="160px"
                                 height="200px"
                                 [imageModel]="selectedRow?.imageModel || null"
@@ -113,91 +111,93 @@
                         <span class="bold-element">: {{ selectedRow?.firstName }}</span>
                     </div>
                 </div>
+            </mat-card>
+            <div class="slip__div">
+                <mat-table mat-table [dataSource]="paySlip" class="slip-table">
+
+                    <ng-container matColumnDef="formula">
+                        <mat-header-cell *matHeaderCellDef translate>COMMON_FORMULA</mat-header-cell>
+                        <mat-cell *matCellDef="let e">
+                            {{ e.formula }}
+                        </mat-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="description">
+                        <mat-header-cell *matHeaderCellDef translate>COMMON_DESCRIPTION</mat-header-cell>
+                        <mat-cell *matCellDef="let e">
+                            {{ e.description | translate }}
+                        </mat-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="base">
+                        <mat-header-cell *matHeaderCellDef translate>REMUN_BASE</mat-header-cell>
+                        <mat-cell *matCellDef="let e" class="number-cell">
+                            {{ e.base | number: '1.2-2' }}
+                        </mat-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="rate">
+                        <mat-header-cell *matHeaderCellDef translate>COMMON_RATE</mat-header-cell>
+                        <mat-cell *matCellDef="let e" class="number-cell">
+                            {{ e.rate | number: '1.2-2' }}
+                        </mat-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="gain" class="slip__amount">
+                        <mat-header-cell *matHeaderCellDef translate>REMUN_GAIN</mat-header-cell>
+                        <mat-cell *matCellDef="let e" class="number-cell">
+                            {{ (e.value > 0.0 ? e.value : 0.0) | number: '1.2-2' }}
+                        </mat-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="deduction" class="slip__amount">
+                        <mat-header-cell *matHeaderCellDef translate>REMUN_DEDUCTION</mat-header-cell>
+                        <mat-cell *matCellDef="let e" class="number-cell">
+                            {{ (e.value > 0.0 ? 0.0 : -e.value) | number: '1.2-2' }}
+                        </mat-cell>
+                    </ng-container>
+
+                    <mat-header-row *matHeaderRowDef="slipColumns; sticky: true"></mat-header-row>
+                    <mat-row class="selectable" *matRowDef="let row; columns: slipColumns;"></mat-row>
+                </mat-table>
             </div>
-            <mat-table mat-table [dataSource]="paySlip" class="slip-table">
-
-                <ng-container matColumnDef="formula">
-                    <mat-header-cell *matHeaderCellDef translate>COMMON_FORMULA</mat-header-cell>
-                    <mat-cell *matCellDef="let e">
-                        {{ e.formula }}
-                    </mat-cell>
-                </ng-container>
-
-                <ng-container matColumnDef="description">
-                    <mat-header-cell *matHeaderCellDef translate>COMMON_DESCRIPTION</mat-header-cell>
-                    <mat-cell *matCellDef="let e">
-                        {{e.description | translate }}
-                    </mat-cell>
-                </ng-container>
-
-                <ng-container matColumnDef="base">
-                    <mat-header-cell *matHeaderCellDef translate>REMUN_BASE</mat-header-cell>
-                    <mat-cell *matCellDef="let e" class="number-cell">
-                        {{e.base | number: '1.2-2'}}
-                    </mat-cell>
-                </ng-container>
-
-                <ng-container matColumnDef="rate">
-                    <mat-header-cell *matHeaderCellDef translate>COMMON_RATE</mat-header-cell>
-                    <mat-cell *matCellDef="let e" class="number-cell">
-                        {{e.rate | number: '1.2-2'}}
-                    </mat-cell>
-                </ng-container>
-
-                <ng-container matColumnDef="gain">
-                    <mat-header-cell *matHeaderCellDef translate>REMUN_GAIN</mat-header-cell>
-                    <mat-cell *matCellDef="let e" class="number-cell">
-                        {{ (e.value > 0.0 ? e.value : 0.0) | number: '1.2-2'}}
-                    </mat-cell>
-                </ng-container>
-
-                <ng-container matColumnDef="deduction">
-                    <mat-header-cell *matHeaderCellDef translate>REMUN_DEDUCTION</mat-header-cell>
-                    <mat-cell *matCellDef="let e" class="number-cell">
-                        {{ (e.value > 0.0 ? 0.0 : -e.value) | number: '1.2-2'}}
-                    </mat-cell>
-                </ng-container>
-
-
-                <mat-header-row *matHeaderRowDef="slipColumns; sticky: true"></mat-header-row>
-                <mat-row class="selectable" *matRowDef="let row; columns: slipColumns;"></mat-row>
-            </mat-table>
         </div>
     </mat-tab>
-    <mat-tab>
-        <ng-template mat-tab-label>
-            <span translate>REMUN_COLLECTIVE</span>
-        </ng-template>
+    <mat-tab label="{{'REMUN_COLLECTIVE'|translate}}">
         <div class="collective">
-            <form *ngIf="form !== null" novalidate [formGroup]="form">
-                <mat-form-field class="default-50 small-100">
-                    <mat-label translate>REMUN_FIELD</mat-label>
-                    <ss-auto-complete matInput
-                                      [required]="true"
-                                      [model]="commonElementsLookup"
-                                      formControlName="field">
-                    </ss-auto-complete>
-                </mat-form-field>
-                <mat-form-field class="default-50 small-100">
-                    <mat-label translate>COMMON_VALUE</mat-label>
-                    <input matInput
-                           class="default-100"
-                           formControlName="value"
-                           type="number"
-                           step="0.01">
-                </mat-form-field>
-                <div class="button-div default-100">
-                    <button mat-raised-button color="primary" (click)="updateCommon()" translate>REMUN_UPDATE_ALL
-                    </button>
-                </div>
-            </form>
+            @if (form !== null) {
+                <mat-card>
+                    <form [formGroup]="form">
+                        <mat-form-field class="default-50 small-100">
+                            <mat-label translate>REMUN_FIELD</mat-label>
+                            <ss-auto-complete matInput
+                                              [required]="true"
+                                              [model]="commonElementsLookup"
+                                              formControlName="field">
+                            </ss-auto-complete>
+                        </mat-form-field>
+                        <mat-form-field class="default-50 small-100">
+                            <mat-label translate>COMMON_VALUE</mat-label>
+                            <input matInput
+                                   class="default-100"
+                                   formControlName="value"
+                                   type="number"
+                                   step="0.01">
+                        </mat-form-field>
+                        <div class="button-div default-100">
+                            <button mat-raised-button color="primary" (click)="updateCommon()" translate>
+                                REMUN_UPDATE_ALL
+                            </button>
+                        </div>
+                    </form>
+                </mat-card>
+            }
         </div>
     </mat-tab>
-    <mat-tab>
-        <ng-template mat-tab-label>
-            <span translate>COMMON_JOURNAL</span>
-        </ng-template>
-        <div class="journal-table">
+
+    <mat-tab label="{{'COMMON_JOURNAL'|translate}}">
+
+        <div class="journal__table">
             <mat-table mat-table [dataSource]="journalData"
                        [ngStyle]="{ 'width.px': slipTableWidth }">
 
@@ -211,7 +211,7 @@
                 <ng-container matColumnDef="firstName">
                     <mat-header-cell *matHeaderCellDef translate>COMMON_FIRST_NAME</mat-header-cell>
                     <mat-cell *matCellDef="let e">
-                        {{e.firstName}}
+                        {{ e.firstName }}
                     </mat-cell>
                 </ng-container>
 
@@ -222,12 +222,12 @@
                     </mat-cell>
                 </ng-container>
 
-                <ng-contain *ngFor="let h of headers; let i = index;" matColumnDef="{{ h }}">
+                <ng-container *ngFor="let h of headers; let i = index;" matColumnDef="{{ h }}">
                     <mat-header-cell *matHeaderCellDef translate>{{ h }}</mat-header-cell>
                     <mat-cell *matCellDef="let e" class="number-cell" [class.total-cell]="e.id === 0">
                         {{ e.data[i] | number: '1.2-2' }}
                     </mat-cell>
-                </ng-contain>
+                </ng-container>
 
                 <mat-header-row *matHeaderRowDef="journalColumns; sticky: true"></mat-header-row>
                 <mat-row [class.selectable]="row.id !== 0"

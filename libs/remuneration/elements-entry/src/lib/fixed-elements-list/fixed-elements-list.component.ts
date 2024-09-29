@@ -6,10 +6,10 @@ import {ActivatedRoute, Router} from '@angular/router';
 import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import { HttpService, MaterialModule, PaginatorPersistenceService } from "@ss/common/api-common";
-import {Observable, of} from 'rxjs';
+import { Observable, of, tap } from 'rxjs';
 import {HttpParams} from '@angular/common/http';
 import { CommonUiImageInputModule, ImageModel } from "@ss/common/ui-image-input";
-import {FixedElementsEntryService} from './fixed-elements-entry.service';
+import {FixedElementsEntryService} from '../services/fixed-elements-entry.service';
 import {PayrollMonthService} from '@ss/remuneration/payroll-month';
 import { EmployeeService } from '@ss/employee-services/employee-services';
 import { CommonModule } from "@angular/common";
@@ -58,8 +58,8 @@ export class FixedElementsListComponent extends BaseEntityListComponent<ELine> {
         private employeeSrv: EmployeeService,
         private monthSelectorSrv: PayrollMonthService,
         private httpSrv: HttpService) {
-        super(infoSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv,'REMUN_ELEMENTS_ENTRY');
-        this.pagination.pageSize = 15;
+        super(infoSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv,'PAYROLL_FIXED_ELEMENTS');
+        this.pagination.pageSize = 5;
     }
 
     override getPage(): Observable<ELine[]> {

@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {ELine, MJournal, PaymentElement} from '../elements-entry-api';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
@@ -55,7 +55,7 @@ export class ElementsEntryListComponent extends BaseEntityListComponent<ELine> i
 
     commonElementsLookup = new DefaultAutoCompleteModel(this.commonFieldSrv, 'field');
     form: UntypedFormGroup = null;
-    selectedTabIndex = 0;
+    selectedTabIndex = signal(0);
     mainTableWidth = 900;
     slipTableWidth = 500;
 
@@ -136,7 +136,7 @@ export class ElementsEntryListComponent extends BaseEntityListComponent<ELine> i
     }
 
     onTabChange(index: number) {
-        this.selectedTabIndex = index;
+        this.selectedTabIndex.set(index);
         if (this.JOURNAL_IDX === index) {
             this.shellSrv.setLoading(true);
             this.infoSrv
