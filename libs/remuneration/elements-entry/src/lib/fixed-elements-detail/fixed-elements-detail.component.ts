@@ -9,7 +9,7 @@ import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from "@ss
 import { LookupsService } from '@ss/common/api-lookup';
 import { HttpService, MaterialModule } from "@ss/common/api-common";
 import { Observable } from 'rxjs';
-import { FixedElementsEntryService } from './fixed-elements-entry.service';
+import { FixedElementsEntryService } from '../services/fixed-elements-entry.service';
 import { EmployeeService } from "@ss/employee-services/employee-services";
 import { CommonModule } from "@angular/common";
 import { CommonUiLangModule } from "@ss/common/ui-lang";

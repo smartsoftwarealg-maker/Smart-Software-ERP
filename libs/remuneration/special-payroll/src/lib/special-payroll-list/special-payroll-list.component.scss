@@ -1,11 +1,13 @@
 .container {
     width: 80%;
-    max-width: 900px;
-    margin: 0 auto;
+    max-width: 1000px;
+    margin: .5em auto;
 }
-.main-table {
-    min-height: calc(100% - 64px);
+.main__table {
+    min-height: calc(100% - 72px);
+    overflow-y: auto;
 }
+
 mat-table {
     width: 100%;
 }

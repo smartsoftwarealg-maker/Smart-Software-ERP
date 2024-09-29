@@ -4,7 +4,20 @@
     margin: 4px auto;
 }
 
+.emp__div {
+    width: 100%;
+    height: calc(100% - 90px);
+    min-height: calc(100vh - 350px);
+    margin-top: .5em;
+    overflow: auto;
+}
+
+.journal__table {
+    overflow-x: auto;
+}
+
 .header_div {
+    width: 100%;
     display: flex;
     gap: 8px;
     align-items: center;
@@ -14,13 +27,13 @@
 
 .table__div {
     overflow-x: auto;
-    height: calc(100vh - 300px);
+    //height: calc(100% - 300px);
 }
 
 .main-table {
     margin-top: 8px;
     flex-grow: 1;
-    min-height: 100%;
+    //min-height: 100%;
 }
 
 .pagination-container {
@@ -45,7 +58,7 @@ mat-form-field {
 }
 
 .mat-column-photo {
-    flex: 0 0 80px;
+    flex: 1 1 80px;
 }
 
 .the_tabs {
@@ -56,26 +69,33 @@ mat-form-field {
     width: 100%;
 }
 
-.journal-table {
-    width: 100vw;
+mat-table {
+    min-width: calc(100% - 4px);
 }
 
-.pay-slip {
+.pay__slip {
     width: 100%;
-    height: calc(100vh - 220px);
+    min-height: calc(100vh - 200px);
     display: flex;
     flex-flow: row;
     padding-top: 16px;
+    align-items: stretch;
 }
+
 .slip-table {
     width: 100%;
 }
 
-.slip-image {
+.slip__image {
     gap: 10px;
     display: flex;
     flex-flow: column;
     min-width: 220px;
+    height: 100%;
+    ss-image-input {
+        margin: 1em auto;
+    }
+    background: transparent;
 }
 .slip-info {
     min-height: 100px;
@@ -104,24 +124,23 @@ mat-form-field {
 }
 
 .mat-column-id {
-    flex: 0 1 70px;
+    flex: 1 1 70px;
     max-width: 70px;
 }
 
 .mat-column-lastName,
-.mat-column-firstName,
- {
-    flex: 0 0 100px;
+.mat-column-firstName {
+    flex: 2 1 100px;
 }
 
 .mat-column-post {
-    flex: 0 0 300px;
+    flex: 3 1 300px;
     font-size: small;
 }
 
 .collective {
     width: 100%;
-    height: calc(100vh - 200px);
+    height: calc(100% - 200px);
     padding-top: 16px;
     max-width: 700px;
     margin: 0 auto;
@@ -137,6 +156,45 @@ mat-form-field {
     font-weight: bolder;
 }
 
-mat-tab-group {
-    height: calc(100% - 100px);
+
+mat-card {
+    padding: .7em;
+    border-radius: 1.4em;
+}
+
+.slip__div {
+    width: 100%;
+    min-height: calc(100vh - 180px);
+    overflow-x: auto;
+    mat-table {
+        width: 100%;
+        height: 100%;
+        min-width: 900px;
+    }
+}
+
+.slip__div {
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+}
+
+.slip__amount {
+    padding: .5em 0;
+}
+
+mat-row:last-child {
+    font-weight: bolder;
+    font-size: 1.1em;
+}
+
+.mat-column-description {
+    flex: 1 2 200px;
+}
+
+.mat-column-base,
+.mat-column-rate,
+.mat-column-gain,
+.mat-column-deduction {
+    flex: 1 1 100px;
 }

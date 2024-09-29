@@ -44,6 +44,7 @@ export class SpecialPayrollDetailComponent extends BaseEntityDetailComponent<Spe
         override confirmationSrv: ConfirmationDialogService) {
         super(detailSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'REMUN_SPECIAL_PAYROLLS');
         this.pagingModel.onChange = () => this.refresh();
+        this.pagingModel.pageSize = 10;
     }
 
     private refresh() {
