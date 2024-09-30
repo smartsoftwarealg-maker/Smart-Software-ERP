@@ -3,36 +3,36 @@
 
         <ng-container matColumnDef="description">
             <mat-header-cell *matHeaderCellDef mat-sort-header translate>ADMINISTRATION_DESCRIPTION</mat-header-cell>
-            <mat-cell *matCellDef="let e" >
-                {{e.description}}
+            <mat-cell *matCellDef="let e">
+                {{ e.description }}
             </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="officeDescription">
             <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_OFFICE</mat-header-cell>
-            <mat-cell *matCellDef="let e" >
-                {{e.officeDescription}}
+            <mat-cell *matCellDef="let e">
+                {{ e.officeDescription }}
             </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="buildingDescription">
             <mat-header-cell *matHeaderCellDef mat-sort-header translate>ASSET_BUILDINGS</mat-header-cell>
-            <mat-cell *matCellDef="let e" >
-                {{e.buildingDescription}}
+            <mat-cell *matCellDef="let e">
+                {{ e.buildingDescription }}
             </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="locationDescription">
             <mat-header-cell *matHeaderCellDef mat-sort-header translate>ASSET_SITE</mat-header-cell>
-            <mat-cell *matCellDef="let e" >
-                {{e.locationDescription}}
+            <mat-cell *matCellDef="let e">
+                {{ e.locationDescription }}
             </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="creationDate">
             <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_DATE</mat-header-cell>
-            <mat-cell *matCellDef="let e" >
-                {{e.creationDate | date: 'dd/MM/yyyy'}}
+            <mat-cell *matCellDef="let e">
+                {{ e.creationDate | date: 'dd/MM/yyyy' }}
             </mat-cell>
         </ng-container>
 
@@ -60,19 +60,73 @@
             <ng-template mat-tab-label>
                 <span translate>ASSET_RECORDED_ARTICLES</span>
             </ng-template>
-             <ss-asset-recorded-inventory-report [documentId]="selectedRow" [recorded]="selectedTab() === 0"></ss-asset-recorded-inventory-report>
+            <ss-asset-recorded-inventory-report [documentId]="selectedRow"
+                                                [recorded]="selectedTab() === 0"></ss-asset-recorded-inventory-report>
         </mat-tab>
         <mat-tab>
             <ng-template mat-tab-label>
                 <span translate>ASSET_MISSING_ARTICLES</span>
             </ng-template>
-                <ss-asset-recorded-inventory-report [documentId]="selectedRow" [recorded]="selectedTab() === 0"></ss-asset-recorded-inventory-report>
+            <ss-asset-recorded-inventory-report [documentId]="selectedRow"
+                                                [recorded]="selectedTab() === 0"></ss-asset-recorded-inventory-report>
         </mat-tab>
         <mat-tab>
             <ng-template mat-tab-label>
                 <span translate>ASSET_UNIDENTIFIED_INVENTORY</span>
             </ng-template>
-            <ss-asset-unidentified-child-inventory-list [documentId]="selected||0"></ss-asset-unidentified-child-inventory-list>
+            <ss-asset-unidentified-child-inventory-list
+                [documentId]="selected||0"></ss-asset-unidentified-child-inventory-list>
+        </mat-tab>
+
+        <mat-tab>
+            <ng-template mat-tab-label>
+                <span translate>ASSET_UNIDENTIFIED_INVENTORY</span>
+            </ng-template>
+            <ss-asset-unidentified-child-inventory-list
+                [documentId]="selected||0"></ss-asset-unidentified-child-inventory-list>
+        </mat-tab>
+
+        <mat-tab>
+            <ng-template mat-tab-label>
+                <span translate>COMMON_SUMMARY</span>
+            </ng-template>
+
+            <div class="summary__div">
+                <mat-table mat-table [dataSource]="summaryData" class="main-table" >
+
+                    <ng-container matColumnDef="total">
+                        <mat-header-cell *matHeaderCellDef  translate>COMMON_TOTAL</mat-header-cell>
+                        <mat-cell *matCellDef="let e">
+                            {{ e.total }}
+                        </mat-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="counted">
+                        <mat-header-cell *matHeaderCellDef  translate>ASSET_RECORDED_ARTICLES</mat-header-cell>
+                        <mat-cell *matCellDef="let e">
+                            {{ e.counted }}
+                        </mat-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="missing">
+                        <mat-header-cell *matHeaderCellDef  translate>ASSET_MISSING_ARTICLES</mat-header-cell>
+                        <mat-cell *matCellDef="let e">
+                            {{ e.missing }}
+                        </mat-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="unidentified">
+                        <mat-header-cell *matHeaderCellDef  translate>ASSET_UNIDENTIFIED_INVENTORY</mat-header-cell>
+                        <mat-cell *matCellDef="let e">
+                            {{ e.unidentified }}
+                        </mat-cell>
+                    </ng-container>
+
+                    <mat-header-row *matHeaderRowDef="summaryColumns; sticky: true"></mat-header-row>
+                    <mat-row *matRowDef="let row; columns: summaryColumns;"></mat-row>
+                </mat-table>
+            </div>
+
         </mat-tab>
 
     </mat-tab-group>

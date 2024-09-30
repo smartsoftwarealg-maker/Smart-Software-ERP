@@ -14,5 +14,6 @@
     "PRESENCE":         "Présence",
     "ABSENCE":          "Absence",
     "LATENESS":         "Retard",
-    "HOLIDAY_REQUEST":  "Demande congé"
+    "HOLIDAY_REQUEST":  "Demande congé",
+    "ABSENCE_MOTIVES":  "Motifs absence"
 }
