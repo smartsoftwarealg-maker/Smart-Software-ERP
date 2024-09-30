@@ -348,5 +348,6 @@
     "OTHER":                      "Autre",
     "CLOSED":                     "Clôturée",
     "PRINTED":                    "imprimée",
-    "VERSION":                    "Version"
+    "VERSION":                    "Version",
+    "SUMMARY":                    "Sommaire"
 }

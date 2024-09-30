@@ -345,5 +345,6 @@
     "OTHER":                      "Other",
     "CLOSED":                     "Closed",
     "PRINTED":                    "Printed",
-    "VERSION":                    "Version"
+    "VERSION":                    "Version",
+    "SUMMARY":                    "Summary"
 }

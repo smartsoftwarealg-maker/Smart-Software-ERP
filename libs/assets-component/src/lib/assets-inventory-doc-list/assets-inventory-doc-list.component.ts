@@ -1,6 +1,6 @@
 import { Component, inject, signal } from '@angular/core';
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
-import { AssetInventoryDoc } from '../assets-api';
+import { AssetInventoryDoc, CountSummary } from '../assets-api';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { DefaultReportService} from '@ss/common/ui-default-report-component';
@@ -22,6 +22,7 @@ import {
 import {
     AssetUnidentifiedChildInventoryListComponent
 } from '../asset-unidentified-child-inventory-list/asset-unidentified-child-inventory-list.component';
+import { AssetCountSummaryService } from '../services/asset-count-summary.service';
 
 @Component({
     selector: 'ss-assets-inventory-doc-list',
@@ -46,6 +47,8 @@ import {
     ]
 })
 export class AssetsInventoryDocListComponent extends BaseEntityListComponent<AssetInventoryDoc> {
+    #summarySrv = inject(AssetCountSummaryService);
+
     selectedTab = signal(0);
     displayedColumns = [
         'description',
@@ -55,6 +58,9 @@ export class AssetsInventoryDocListComponent extends BaseEntityListComponent<Ass
         'officeDescription',
         'closed'
     ];
+
+    summaryData: CountSummary[] = [];
+    summaryColumns = ['total', 'counted', 'missing', 'unidentified'];
 
     constructor(public listSrv: AssetInventoryDocService,
                 public override shellSrv: ShellService,
@@ -78,5 +84,12 @@ export class AssetsInventoryDocListComponent extends BaseEntityListComponent<Ass
 
     onTab(e: number) {
         this.selectedTab.set(e);
+    }
+
+    override selectRow(row: AssetInventoryDoc) {
+        super.selectRow(row);
+        this.#summarySrv
+            .get(row.id)
+            .subscribe(data => this.summaryData = [data]);
     }
 }

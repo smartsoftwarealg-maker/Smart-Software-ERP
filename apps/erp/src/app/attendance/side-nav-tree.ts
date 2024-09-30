@@ -6,7 +6,7 @@ import {
     ABS_ATTENDANCE_MACHINES_URL,
     ABS_ATTENDANCE_WORKSHIFTS_URL,
     ABS_SHIFT_ASSIGNMENTS_URL
-} from "../common";
+} from '../common';
 
 export const attendanceNavTree: SideNavNode = {
     name: 'ATTENDANCE',

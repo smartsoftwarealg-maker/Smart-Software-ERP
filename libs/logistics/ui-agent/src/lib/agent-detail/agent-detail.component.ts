@@ -66,6 +66,7 @@ import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
 
 })
 export class AgentDetailComponent extends BaseEntityDetailComponent<Agent> implements OnInit {
+    private defaultAgentType = 0;
     private dialog  = inject(MatDialog);
     private router = inject(Router);
     private isParamSrv = inject(IsParamService);
@@ -145,6 +146,7 @@ export class AgentDetailComponent extends BaseEntityDetailComponent<Agent> imple
                     this.entitySrv.setURL(isCustomer? CUSTOMER_URL : isSupplier? SUPPLIER_URL : isTransporter? TRANSPORTER_URL : AGENT_URL);
                     this.shellSrv.setTitle(isCustomer? 'LOGISTICS_CUSTOMER': isSupplier ? 'LOGISTICS_SUPPLIER' : isTransporter? 'LOGISTICS_TRANSPORTER': 'COMMON_AGENTS');
                     this.agentTypeLookup = isSupplier? new SupplierLookup(this.agentTypeSrv): isCustomer? new CustomerLookup(this.agentTypeSrv) : isTransporter? new TransporterLookup(this.agentTypeSrv)  : this.agentTypeLookup;
+                    this.defaultAgentType = isSupplier? 2: isTransporter? 5 : 0;
                 })
             );
     }
@@ -200,7 +202,7 @@ export class AgentDetailComponent extends BaseEntityDetailComponent<Agent> imple
             bank: [a.bank],
             bankAccount: [a.bankAccount],
             swift: [a.swift],
-            agentType: [a.agentType],
+            agentType: [a.agentType||this.defaultAgentType],
             companyType: [a.companyType],
             email: [a.email, Validators.email],
             website: [a.website, Validators.pattern(urlRegExp)],

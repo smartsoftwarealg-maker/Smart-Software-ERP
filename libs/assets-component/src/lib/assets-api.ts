@@ -362,6 +362,14 @@ export interface AssetInventoryDoc {
     acquisitionTo?: Date;
 }
 
+export interface CountSummary {
+    id: number;
+    total: number;
+    counted: number;
+    missing: number;
+    unidentified: number;
+}
+
 export interface AssetInventoryFilter {
     id: number;
     accountNo?: string;
