@@ -141,6 +141,13 @@
             </mat-cell>
         </ng-container>
 
+        <ng-container matColumnDef="assignmentNo">
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>ASSET_APPOINTMENT_NUMBER</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{ e.assignmentNo }}
+            </mat-cell>
+        </ng-container>
+
         <ng-container matColumnDef="comment">
             <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_MEMO</mat-header-cell>
             <mat-cell *matCellDef="let e">

@@ -101,14 +101,15 @@ export class AssetListInventoryComponent extends BaseEntityListComponent<Invento
         'locationDescription',
         'buildingDescription',
         'officeDescription',
-        'date',
-        'userDescription',
         'acquisitionDate',
         'receptionNumber',
-        'comment',
+        'assignmentNo',
+        'date',
+        'userDescription',
         'newBuildingDescription',
         'newOfficeDescription',
         'newBeneficiaryDescription',
+        'comment',
 ];
 
     constructor(public listSrv: AssetListInventoryService,
