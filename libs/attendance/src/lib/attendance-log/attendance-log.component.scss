@@ -21,9 +21,15 @@ mat-header-cell {
 mat-row {
     height: 80px!important;
 }
+.spinner__div {
+    max-width: 800px;
+    margin: 5em auto;
+    display: flex;
+    justify-content: center;
+}
 mat-cell {
     height: 80px;
-    font-size: 0.7em;
+    font-size: 0.8em;
     display: flex;
     flex-direction: column;
     align-content: center;

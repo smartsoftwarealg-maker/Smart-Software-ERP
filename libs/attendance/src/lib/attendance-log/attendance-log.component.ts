@@ -1,4 +1,4 @@
-import {Component, inject, OnInit} from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import {AttendanceLogService} from '../attendance-log.service';
 import {ShellService} from '@ss/common/ui-shell';
 import {FormBuilder, Validators} from '@angular/forms';
@@ -46,15 +46,16 @@ export class AttendanceLogComponent implements OnInit {
     columns = this.FIXED_COLS;
     varHeaders: string[] = [];
     displayedCols = this.headers;
-    processing = false;
+    processing = signal(false);
     ngOnInit() {
         registerLocaleData(localeFr);
         registerLocaleData(localeAr);
         this.shellSrv.setGoBackPath('..', this.route);
+        this.shellSrv.setTitle('ATTENDANCE');
     }
 
     refresh() {
-        this.processing = false;
+        this.processing.set(true);
         const value = this.form.value;
         this.attendanceLog
             .getReport(value.type, value.id, value.from, value.to)
@@ -77,9 +78,9 @@ export class AttendanceLogComponent implements OnInit {
                 this.tableWidth = this.data.length == 0 ? 390 : this.data[0].attendance.length * 110 + 390;
                 this.displayedCols = this.FIXED_COLS.concat(this.varHeaders.map((_, i) => `e${i}`));
                 this.columns = this.displayedCols;
-                this.processing = false;
+                this.processing.set(false);
             }, error: err => {
-                    this.processing = false;
+                    this.processing.set(false);
                     throw err;
                 }});
     }

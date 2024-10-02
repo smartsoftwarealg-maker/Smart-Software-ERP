@@ -1,55 +1,65 @@
 <mat-card>
-    <form *ngIf="form" [formGroup]="form">
-        <mat-form-field class="default-50">
-            <input matInput type="number" formControlName="id">
-        </mat-form-field>
+    @if (form) {
+        <form [formGroup]="form">
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>COMMON_ID</mat-label>
+                <input matInput formControlName="id" type="text" autofocus>
+            </mat-form-field>
 
-        <mat-form-field class="default-50">
-            <mat-label translate>COMMON_TYPE</mat-label>
-            <mat-select formControlName="type" required>
-                <mat-option *ngFor="let v of types" [value]="v.id">
-                    {{v ? v.description : ''}}
-                </mat-option>
-            </mat-select>
-            <mat-error
-                *ngIf="form.controls['type'].invalid" translate>COMMON_FIELD_REQUIRED
-            </mat-error>
-        </mat-form-field>
+            <mat-form-field class="default-50  sm-100">
+                <mat-label translate>COMMON_TYPE</mat-label>
+                <mat-select formControlName="type" required>
+                    @for (v of types; track v.id) {
+                        <mat-option [value]="v.id">
+                            {{ v ? v.description : '' }}
+                        </mat-option>
+                    }
+                </mat-select>
+                @if (form.controls['type'].invalid) {
+                    <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+                }
+            </mat-form-field>
 
-        <mat-form-field class="default-50">
-            <mat-label translate>COMMON_FROM</mat-label>
-            <ss-date-picker formControlName="from"></ss-date-picker>
-        </mat-form-field>
+            <mat-form-field class="default-50  sm-100">
+                <mat-label translate>COMMON_FROM</mat-label>
+                <ss-date-picker formControlName="from"></ss-date-picker>
+            </mat-form-field>
 
-        <mat-form-field class="default-50">
-            <mat-label translate>COMMON_TO</mat-label>
-            <ss-date-picker formControlName="to"></ss-date-picker>
-        </mat-form-field>
+            <mat-form-field class="default-50  sm-100">
+                <mat-label translate>COMMON_TO</mat-label>
+                <ss-date-picker formControlName="to"></ss-date-picker>
+            </mat-form-field>
 
-        <span class="default-50"></span>
-        <button mat-raised-button color="primary" type="button" (click)="refresh()" [disabled]="processing">
-            {{ 'COMMON_REFRESH' | translate }}
-        </button>
+            <span class="default-50  sm-100"></span>
+            <button mat-raised-button color="primary" type="button" (click)="refresh()" [disabled]="processing()">
+                {{ 'COMMON_REFRESH' | translate }}
+            </button>
 
-    </form>
+        </form>
+    }
 </mat-card>
+@if (processing()) {
+    <div class="spinner__div">
+        <mat-spinner></mat-spinner>
+    </div>
+} @else {
+    <div class="table_div">
+        <mat-table mat-table [dataSource]="data" class="main-table" [ngStyle]="{'min-width.px': tableWidth }">
 
-<div class="table_div">
-    <mat-table mat-table [dataSource]="data" class="main-table" [ngStyle]="{'min-width.px': tableWidth }">
+            <ng-container *ngFor="let h of columns; let i = index" matColumnDef="{{ columns[i] }}">
+                <mat-header-cell *matHeaderCellDef> {{ i <= 3 ? headers[i] : varHeaders[i - 4] }}</mat-header-cell>
+                <mat-cell *matCellDef="let e" [ngStyle]="{'background-color': i >= 4? e.hexColors[i - 4] : 'inherit'}">
+                    <span *ngIf="i <= 3; else detail"> {{ e[columns[i]] }}</span>
+                    <ng-template #detail>
+                        <div *ngFor="let s of e.attendance[i - 4]"> {{ s }}</div>
+                    </ng-template>
 
-        <ng-container *ngFor="let h of columns; let i = index" matColumnDef="{{ columns[i] }}">
-            <mat-header-cell *matHeaderCellDef> {{ i <= 3 ? headers[i] : varHeaders[i - 4] }} </mat-header-cell>
-            <mat-cell *matCellDef="let e" [ngStyle]="{'background-color': i >= 4? e.hexColors[i - 4] : 'inherit'}">
-                <span *ngIf="i <= 3; else detail"> {{ e[columns[i]] }}</span>
-                <ng-template #detail>
-                        <div *ngFor="let s of e.attendance[i - 4]"> {{ s }} </div>
-                </ng-template>
+                </mat-cell>
+            </ng-container>
 
-            </mat-cell>
-        </ng-container>
-
-        <mat-header-row *matHeaderRowDef="columns; sticky: true"></mat-header-row>
-        <mat-row class="selectable" [class.selected]="row.id == selected?.id" (click)="select(row)"
-                 *matRowDef="let row; columns: columns;"></mat-row>
-    </mat-table>
-</div>
+            <mat-header-row *matHeaderRowDef="columns; sticky: true"></mat-header-row>
+            <mat-row class="selectable" [class.selected]="row.id == selected?.id" (click)="select(row)"
+                     *matRowDef="let row; columns: columns;"></mat-row>
+        </mat-table>
+    </div>
+}
