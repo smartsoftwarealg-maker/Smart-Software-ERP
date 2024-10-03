@@ -333,6 +333,7 @@ export interface InventoryAsset {
     newBuildingDescription?: string;
     newOfficeDescription?: string;
     updateLocation?: boolean;
+    assignmentNo?: number;
     newBeneficiaryDescription?: string;
 }
 

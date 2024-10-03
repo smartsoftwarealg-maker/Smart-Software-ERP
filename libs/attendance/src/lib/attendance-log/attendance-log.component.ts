@@ -1,4 +1,4 @@
-import {Component, inject, OnInit} from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import {AttendanceLogService} from '../attendance-log.service';
 import {ShellService} from '@ss/common/ui-shell';
 import {FormBuilder, Validators} from '@angular/forms';
@@ -46,21 +46,26 @@ export class AttendanceLogComponent implements OnInit {
     columns = this.FIXED_COLS;
     varHeaders: string[] = [];
     displayedCols = this.headers;
-    processing = false;
+    processing = signal(false);
     ngOnInit() {
         registerLocaleData(localeFr);
         registerLocaleData(localeAr);
         this.shellSrv.setGoBackPath('..', this.route);
+        this.shellSrv.setTitle('ATTENDANCE');
     }
 
     refresh() {
-        this.processing = false;
+        this.processing.set(true);
         const value = this.form.value;
         this.attendanceLog
             .getReport(value.type, value.id, value.from, value.to)
             .subscribe({
                 next: res => {
                 this.data = res;
+                this.varHeaders = this.getVariableHeaders(new Date(value.from), new Date(value.to));
+                this.tableWidth = this.data.length == 0 ? 390 : this.data[0].attendance.length * 110 + 390;
+                this.displayedCols = this.FIXED_COLS.concat(this.varHeaders.map((_, i) => `e${i}`));
+                this.columns = this.displayedCols;
                 this.data.forEach(e => e.hexColors = e.colors.map((c, i) => {
                     if (e.weekends && e.weekends[i]) {
                         return 'pink'
@@ -73,13 +78,9 @@ export class AttendanceLogComponent implements OnInit {
                     }
                     // return 'c'
                 }));
-                this.varHeaders = this.getVariableHeaders(new Date(value.from), new Date(value.to));
-                this.tableWidth = this.data.length == 0 ? 390 : this.data[0].attendance.length * 110 + 390;
-                this.displayedCols = this.FIXED_COLS.concat(this.varHeaders.map((_, i) => `e${i}`));
-                this.columns = this.displayedCols;
-                this.processing = false;
+                this.processing.set(false);
             }, error: err => {
-                    this.processing = false;
+                    this.processing.set(false);
                     throw err;
                 }});
     }
@@ -87,7 +88,8 @@ export class AttendanceLogComponent implements OnInit {
     private getVariableHeaders(from: Date, to: Date): string[] {
         const dDay = new Date(from);
         dDay.setDate(dDay.getDate() - 1);
-        return  Array.from({length: (to.getDate() - from.getDate() + 1)}, (v, k) => k)
+        const length = Math.round((to.getTime() - from.getTime()) / (24 * 60 * 60 * 1000));
+        return  Array.from({length: length }, (v, k) => k)
             .map(i => {
                 dDay.setDate(dDay.getDate() + 1);
                 dDay.setHours(0, 0, 0);
