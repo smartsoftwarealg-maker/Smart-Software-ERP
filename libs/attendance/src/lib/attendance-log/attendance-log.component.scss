@@ -14,24 +14,45 @@ mat-card {
     overflow: auto;
 }
 
-mat-cell,
-mat-header-cell {
-    min-width: 110px;
-}
+
 mat-row {
     height: 80px!important;
 }
+
 .spinner__div {
     max-width: 800px;
     margin: 5em auto;
     display: flex;
     justify-content: center;
 }
+
+mat-header-cell,
+mat-cell {
+    min-width: 120px;
+    opacity: 1;
+}
 mat-cell {
     height: 80px;
-    font-size: 0.8em;
+    font-size: 0.9em;
     display: flex;
     flex-direction: column;
     align-content: center;
     justify-content: center;
+}
+
+mat-table {
+    width: 100%;
+    min-width: 1000px;
+}
+
+.mat-column-id {
+    flex: 1 1 90px;
+}
+
+.mat-column-firstName,
+.mat-column-lastName {
+    flex: 1 1 120px;
+}
+.mat-column-post {
+    flex: 1 1 150px;
 }

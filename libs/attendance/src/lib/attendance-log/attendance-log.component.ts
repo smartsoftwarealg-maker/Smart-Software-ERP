@@ -62,6 +62,10 @@ export class AttendanceLogComponent implements OnInit {
             .subscribe({
                 next: res => {
                 this.data = res;
+                this.varHeaders = this.getVariableHeaders(new Date(value.from), new Date(value.to));
+                this.tableWidth = this.data.length == 0 ? 390 : this.data[0].attendance.length * 110 + 390;
+                this.displayedCols = this.FIXED_COLS.concat(this.varHeaders.map((_, i) => `e${i}`));
+                this.columns = this.displayedCols;
                 this.data.forEach(e => e.hexColors = e.colors.map((c, i) => {
                     if (e.weekends && e.weekends[i]) {
                         return 'pink'
@@ -74,10 +78,6 @@ export class AttendanceLogComponent implements OnInit {
                     }
                     // return 'c'
                 }));
-                this.varHeaders = this.getVariableHeaders(new Date(value.from), new Date(value.to));
-                this.tableWidth = this.data.length == 0 ? 390 : this.data[0].attendance.length * 110 + 390;
-                this.displayedCols = this.FIXED_COLS.concat(this.varHeaders.map((_, i) => `e${i}`));
-                this.columns = this.displayedCols;
                 this.processing.set(false);
             }, error: err => {
                     this.processing.set(false);
@@ -88,7 +88,8 @@ export class AttendanceLogComponent implements OnInit {
     private getVariableHeaders(from: Date, to: Date): string[] {
         const dDay = new Date(from);
         dDay.setDate(dDay.getDate() - 1);
-        return  Array.from({length: (to.getDate() - from.getDate() + 1)}, (v, k) => k)
+        const length = Math.round((to.getTime() - from.getTime()) / (24 * 60 * 60 * 1000));
+        return  Array.from({length: length }, (v, k) => k)
             .map(i => {
                 dDay.setDate(dDay.getDate() + 1);
                 dDay.setHours(0, 0, 0);

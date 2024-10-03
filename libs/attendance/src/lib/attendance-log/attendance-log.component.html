@@ -44,18 +44,34 @@
     </div>
 } @else {
     <div class="table_div">
-        <mat-table mat-table [dataSource]="data" class="main-table" [ngStyle]="{'min-width.px': tableWidth }">
+        <mat-table mat-table [dataSource]="data" class="main-table">
+            @for (h of columns; track h; let i = $index) {
+                <ng-container matColumnDef="{{ columns[i] }}">
+                    <mat-header-cell *matHeaderCellDef> {{ i <= 3 ? headers[i] : varHeaders[i - 4] }}</mat-header-cell>
+                    <mat-cell *matCellDef="let e"
+                              [ngStyle]="{'background-color': i >= 4? e.hexColors[i - 4] : 'inherit'}">
+                        @if (i <= 3) {
+                            {{ e[columns[i]] }}
+                        } @else {
+                            @for (s of e.attendance[i - 4]; track s) {
+                               <div> {{ s }} </div>
+                            }
+                        }
 
-            <ng-container *ngFor="let h of columns; let i = index" matColumnDef="{{ columns[i] }}">
-                <mat-header-cell *matHeaderCellDef> {{ i <= 3 ? headers[i] : varHeaders[i - 4] }}</mat-header-cell>
-                <mat-cell *matCellDef="let e" [ngStyle]="{'background-color': i >= 4? e.hexColors[i - 4] : 'inherit'}">
-                    <span *ngIf="i <= 3; else detail"> {{ e[columns[i]] }}</span>
-                    <ng-template #detail>
-                        <div *ngFor="let s of e.attendance[i - 4]"> {{ s }}</div>
-                    </ng-template>
+                    </mat-cell>
+                </ng-container>
 
-                </mat-cell>
-            </ng-container>
+            }
+            <!--            <ng-container *ngFor="let h of columns; let i = index" matColumnDef="{{ columns[i] }}">-->
+            <!--                <mat-header-cell *matHeaderCellDef> {{ i <= 3 ? headers[i] : varHeaders[i - 4] }}</mat-header-cell>-->
+            <!--                <mat-cell *matCellDef="let e" [ngStyle]="{'background-color': i >= 4? e.hexColors[i - 4] : 'inherit'}">-->
+            <!--                    <span *ngIf="i <= 3; else detail"> {{ e[columns[i]] }}</span>-->
+            <!--                    <ng-template #detail>-->
+            <!--                        <div *ngFor="let s of e.attendance[i - 4]"> {{ s }}</div>-->
+            <!--                    </ng-template>-->
+
+            <!--                </mat-cell>-->
+            <!--            </ng-container>-->
 
             <mat-header-row *matHeaderRowDef="columns; sticky: true"></mat-header-row>
             <mat-row class="selectable" [class.selected]="row.id == selected?.id" (click)="select(row)"
