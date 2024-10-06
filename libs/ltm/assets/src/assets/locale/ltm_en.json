@@ -66,5 +66,6 @@
     "VARIANCE_CONTROL":   "Variance control",
     "VC":                 "VC",
     "ACTION_NUMBER":      "Action number",
-    "REPORTED_BY":        "Reported by"
+    "REPORTED_BY":        "Reported by",
+    "TEST_NORMS":         "Test norms"
 }

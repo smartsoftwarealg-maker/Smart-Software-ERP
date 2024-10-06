@@ -1,0 +1,33 @@
+.size {
+    width: 90%;
+    max-width: 800px;
+    margin: 8px auto;
+}
+
+.table_div {
+    min-height: calc(100% - 80px);
+}
+
+.detail__div {
+    padding-left: 20em;
+}
+
+.test__div {
+    width: 13em;
+}
+
+.number__div {
+    width: 7em;
+    margin-left: auto;
+    text-align: end;
+}
+
+.matter__div {
+    display: flex;
+    align-items: center;
+    gap: 1em;
+}
+
+tr {
+    height: 2em;
+}

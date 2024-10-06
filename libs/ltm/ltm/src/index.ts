@@ -33,7 +33,7 @@ export * from './lib/ltm-product-lookup-detail/ltm-product-lookup-detail.compone
 export * from './lib/ltm-product-lookup-list/ltm-product-lookup-list.component';
 export * from './lib/ltm-pickup-point-detail/ltm-pickup-point-detail.component';
 export * from './lib/ltm-pickup-point-list/ltm-pickup-point-list.component';
-export * from './lib/ltm-norm-list/ltm-norm-list.component';
+export * from './lib/ltm-norm-tree/ltm-norm-tree.component';
 export * from './lib/ltm-norm-detail/ltm-norm-detail.component';
 export * from './lib/services/ltm-product.service';
 export * from './lib/ltm-product-list/ltm-product-list.component';
@@ -55,3 +55,4 @@ export * from './lib/ltm-mixture-pickup-points-list/ltm-mixture-pickup-points-li
 export * from './lib/ltm-mixture-pickup-points-detail/ltm-mixture-pickup-points-detail.component';
 export * from './lib/ltm-correction-action-detail/ltm-correction-action-detail.component';
 export * from './lib/ltm-correction-action-list/ltm-correction-action-list.component';
+export * from './lib/ltm-norm-tree/ltm-norm-tree.component';
