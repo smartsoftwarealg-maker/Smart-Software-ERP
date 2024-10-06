@@ -27,7 +27,11 @@ import {
     LTM_BLEACHER_URL,
     LTM_ZONE_URL,
     LTM_DEPOSIT_URL,
-    LTM_SUPPLIER_URL, LTM_DEPOSIT_TEST_URL, LTM_RAW_MATERIAL_TEST_URL, LTM_CORRECTION_ACTION_URL
+    LTM_SUPPLIER_URL,
+    LTM_DEPOSIT_TEST_URL,
+    LTM_RAW_MATERIAL_TEST_URL,
+    LTM_CORRECTION_ACTION_URL,
+    LTM_NORM_TREE_TREE
 } from '../common';
 
 import {
@@ -61,7 +65,7 @@ import {
     LtmEquipmentDetailComponent,
     LtmPickupPointListComponent,
     LtmPickupPointDetailComponent,
-    LtmNormListComponent,
+    LtmNormTreeComponent,
     LtmNormDetailComponent,
     LtmProductDetailComponent,
     LtmProductListComponent,
@@ -133,10 +137,11 @@ export const ltmRoutes: Routes = [
     {
         path: LTM_NORM_URL,
         children: [
-            { path: LIST_URL, component: LtmNormListComponent, canActivate: [loginGuard]},
+            { path: LIST_URL, component: LtmNormTreeComponent, canActivate: [loginGuard]},
             { path: ':id', component: LtmNormDetailComponent, canActivate: [loginGuard] }
         ]
     },
+    { path: LTM_NORM_TREE_TREE, component: LtmNormTreeComponent, canActivate: [loginGuard] },
     {
         path: LTM_ANOMALIES_URL,
         children: [

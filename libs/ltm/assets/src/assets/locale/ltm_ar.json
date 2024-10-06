@@ -66,5 +66,6 @@
     "VARIANCE_CONTROL":   "تحكم الانحراف",
     "VC":                "ت ا",
     "ACTION_NUMBER":      "رقم الإجراء",
-    "REPORTED_BY":        "تبليغ بواسطة"
+    "REPORTED_BY":        "تبليغ بواسطة",
+    "TEST_NORMS":         "معايير الاختبار"
 }

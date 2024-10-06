@@ -208,7 +208,10 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
                 .pipe(
                     debounceTime(300),
                     distinctUntilChanged()
-                ).subscribe(() => this.refreshFormulas())
+                ).subscribe(() => {
+                    this.refreshFormulas();
+                    this.validateVarianceControls();
+                })
         );
 
         merge(
@@ -256,7 +259,6 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
     }
 
     private refreshFormulas() {
-        this.validateVarianceControls();
         const values = this.variables.map((v, i) => {
             return v ? this.tests.at(i)?.value.value : 0;
         });
@@ -288,10 +290,11 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
                     const indexes = formulas.map(f => this.variables.indexOf(f)).filter(i => i >= 0 && this.tests.at(i).value.value > 0);
                     if (indexes.length > 0) {
                         const values = indexes.map(i => <number>this.tests.at(i).value.value);
-                        const avg    = values.reduce((a, b) => a + b) / indexes.length;
-                        const tmp    = values.map(v => Math.abs(v - avg) );
+                        const avg    = Math.round(values.reduce((a, b) => a + b) * 10 / indexes.length) / 10;
                         const vars   = values.map(v => Math.abs(v - avg) > avg / 10.0);
                         indexes.forEach(i => (<FormGroup>this.tests.at(i)).controls['value'].setErrors(null));
+                        const vcIndex = this.formulas.indexOf(vc.formula);
+                        (<FormGroup>this.totals.controls.at(vcIndex)).controls['value'].setValue(avg);
                         vars.forEach((v, i) => {
                             if (v) {
                                 const idx = indexes[i];
@@ -365,7 +368,6 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
                     });
 
                 this.formulas = this.formulas.map(f => this.replaceFormulas(f));
-
             });
     }
     private onPeriod() {

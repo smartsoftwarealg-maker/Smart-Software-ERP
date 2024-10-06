@@ -31,6 +31,7 @@ export const LRM_PERIODICITY_URL = '/lookups/ltm_periodicities';
 export const LTM_LINE_SELECT_URL = '/ltm/ltm_selection';
 export const LTM_SAMPLES_URL = '/ltm/samples';
 export const LTM_LINES_URL = '/lines';
+export const LTM_NORM_TREE_URL     = '/ltm/norm-tree';
 
 
 
@@ -252,6 +253,19 @@ export interface LTMMixturePickupPoint {
     parentId: number;
     pickupPoint: number;
     pickPointDescription?: string;
+}
+
+export interface TestNorm {
+    test: string;
+    min: number;
+    max: number;
+}
+
+export interface NormTree {
+    id: number;
+    matter: string;
+    testNorm: TestNorm[];
+    expanded?: boolean;
 }
 
 export const CHEMICAL_TEST = 1;

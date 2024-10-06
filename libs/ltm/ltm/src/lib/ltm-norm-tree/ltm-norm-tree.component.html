@@ -1,0 +1,40 @@
+<div class="table_div size">
+    <mat-table mat-table [dataSource]="data" class="main-table" matSort (matSortChange)="sort($event)">
+
+        <ng-container matColumnDef="matter">
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>ADMINISTRATION_DESCRIPTION</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                <div>
+                    <div class="matter__div">
+                        <button mat-icon-button
+                                (click)="toggle(e)">
+                            <mat-icon class="mat-icon-rtl-mirror">
+                                {{e.expanded ? '-' : '+'}}
+                            </mat-icon>
+                        </button>
+                        {{ e.matter }}
+                    </div>
+                    @if (e.expanded) {
+                        <table class="detail__div">
+                            @for (r of e.testNorm; track r.test) {
+                                <tr class="selectable">
+                                    <td class="test__div" > {{ r.test }}</td>
+                                    <td class="number__div" > {{ r.min | number: '1.2-2' }}</td>
+                                    <td class="number__div" > {{ r.max | number: '1.2-2' }}</td>
+                                </tr>
+                            }
+                        </table>
+                    }
+                </div>
+            </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+        <mat-row (click)="selectRow(row)"
+                 *matRowDef="let row; columns: displayedColumns;">
+        </mat-row>
+    </mat-table>
+</div>
+<div class="size b-b-background">
+    <ss-pagination [paginationModel]="pagination"></ss-pagination>
+</div>

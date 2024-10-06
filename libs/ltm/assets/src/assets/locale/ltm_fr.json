@@ -66,5 +66,6 @@
     "VARIANCE_CONTROL":   "Contrôle de variance",
     "VC":                 "VC",
     "ACTION_NUMBER":      "N° d'action",
-    "REPORTED_BY":        "Signé par"
+    "REPORTED_BY":        "Signé par",
+    "TEST_NORMS":         "Normes de tests"
 }

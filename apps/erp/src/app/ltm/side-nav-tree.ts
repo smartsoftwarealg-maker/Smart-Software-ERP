@@ -8,13 +8,11 @@ import {
     ABS_LTM_LINES_URL,
     ABS_LTM_MATTERS_URL,
     ABS_LTM_MIXTURES_URL, ABS_LTM_NORM_URL,
-    ABS_LTM_PERIODICITIES_URL, ABS_LTM_PICKUP_POINTS_URL, ABS_LTM_PRODUCT_URL, ABS_LTM_RAW_TESTINGS_URL,
+    ABS_LTM_PERIODICITIES_URL, ABS_LTM_PICKUP_POINTS_URL, ABS_LTM_RAW_TESTINGS_URL,
     ABS_LTM_REPORTS_URL,
-    ABS_LTM_PHYSICAL_TESTINGS_URL, ABS_LTM_SILO_URL, ABS_LTM_SUPPLIER_URL,
-    ABS_LTM_TEST_TYPE_URL,
-    ABS_LTM_TESTINGS_ANOMALIES_URL, ABS_LTM_TESTINGS_URL,
-    ABS_LTM_TESTS_URL,
-    ABS_LTM_UNIT_URL, ABS_LTM_ZONES_URL, ABS_LTM_CORRECTION_ACTIONS_URL
+    ABS_LTM_PHYSICAL_TESTINGS_URL, ABS_LTM_SILO_URL, ABS_LTM_TEST_TYPE_URL,
+    ABS_LTM_TESTINGS_ANOMALIES_URL, ABS_LTM_TESTS_URL,
+    ABS_LTM_UNIT_URL, ABS_LTM_ZONES_URL, ABS_LTM_CORRECTION_ACTIONS_URL, ABS_LTM_NORM_TREE_URL
 } from '../common';
 
 export const ltmNavTree: SideNavNode = {
@@ -61,7 +59,13 @@ export const ltmNavTree: SideNavNode = {
             name: 'LTM_NORMS',
             icon: 'fa-solid fa-ruler-triangle',
             route: ABS_LTM_NORM_URL,
-            accessRights: 'Silo'
+            accessRights: 'Test'
+        },
+        {
+            name: 'LTM_TEST_NORMS',
+            icon: 'fa-regular fa-list-tree',
+            route: ABS_LTM_NORM_TREE_URL,
+            accessRights: 'Test'
         },
         {
             name: 'LTM_SILOS',
