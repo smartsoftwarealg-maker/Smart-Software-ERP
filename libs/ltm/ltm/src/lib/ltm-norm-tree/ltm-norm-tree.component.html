@@ -16,6 +16,11 @@
                     </div>
                     @if (e.expanded) {
                         <table class="detail__div">
+                            <tr class="b-primary">
+                                <th class="test__div"   translate> LTM_TEST </th>
+                                <th class="header__div" translate> COMMON_MIN  </th>
+                                <th class="header__div" translate> COMMON_MAX  </th>
+                            </tr>
                             @for (r of e.testNorm; track r.test) {
                                 <tr class="selectable">
                                     <td class="test__div" > {{ r.test }}</td>
