@@ -120,42 +120,46 @@
             }
         </mat-card-content>
     </mat-card>
-    <mat-card class="content__div">
-        <div formArrayName="tests" class="group_div">
-
-            <div *ngFor="let f of tests.controls; let i = index">
-                <div [formGroupName]="i">
-                    <mat-form-field class="input_div">
-                        <mat-hint><span translate>LTM_RANGE</span>: {{ limits[i][0] }}- {{ limits[i][1] }}</mat-hint>
-                        <mat-label translate>{{ labels[i] }}</mat-label>
-                        <input matInput formControlName="value" type="number" (click)="$event.target.select()">
-                        @if (tests.controls[i].errors || true) {
-                            <mat-error translate>BL_INVALID_DATA</mat-error>
-                        }
-                    </mat-form-field>
-                </div>
+    <div class="content__div">
+        <mat-card >
+            <div formArrayName="tests" class="group_div test__div">
+                @for (f of tests.controls; track f; let i = $index) {
+                    <div [formGroupName]="i">
+                        <mat-form-field class="input_div">
+                            <mat-hint><span translate>LTM_RANGE</span>: {{ limits[i][0] }}- {{ limits[i][1] }}
+                            </mat-hint>
+                            <mat-label translate>{{ labels[i] }}</mat-label>
+                            <input matInput formControlName="value" type="number" (click)="$event.target.select()">
+                            @if (tests.controls[i].errors || true) {
+                                <mat-error translate>BL_INVALID_DATA</mat-error>
+                            }
+                        </mat-form-field>
+                    </div>
+                }
             </div>
-        </div>
-    </mat-card>
+        </mat-card>
+        <mat-card class="formula_card">
+            <mat-card-header class="b-primary"> {{ 'COMMON_FORMULAS'|translate }}</mat-card-header>
+            @if (totalsForm) {
+                <form [formGroup]="totalsForm">
+                    <div formArrayName="totals" class="group_div">
+                        @for (f of totals.controls; track f; let i = $index) {
+                            <div [formGroupName]="i">
+                                <mat-form-field class="input_div" [class.invalid]="f.errors">
+                                    <mat-hint><span translate>LTM_RANGE</span>: {{ totalsLimits[i][0] }}
+                                        - {{ totalsLimits[i][1] }}
+                                    </mat-hint>
+                                    <mat-label translate>{{ totalsLabels[i] }}</mat-label>
+                                    <input matInput formControlName="value" type="number" readonly>
+                                    <mat-error translate>BL_INVALID_DATA</mat-error>
+                                </mat-form-field>
+                            </div>
+                        }
+                    </div>
+                </form>
+            }
+        </mat-card>
+    </div>
 </form>
 
-<mat-card class="formula_card">
-    <mat-card-header> {{ 'COMMON_FORMULAS'|translate }}</mat-card-header>
 
-    <form *ngIf="totalsForm" [formGroup]="totalsForm">
-        <div formArrayName="totals" class="group_div">
-            <div *ngFor="let f of totals.controls; let i = index">
-                <div [formGroupName]="i">
-                    <mat-form-field class="input_div" [class.invalid]="f.errors">
-                        <mat-hint><span translate>LTM_RANGE</span>: {{ totalsLimits[i][0] }}
-                            - {{ totalsLimits[i][1] }}
-                        </mat-hint>
-                        <mat-label translate>{{ totalsLabels[i] }}</mat-label>
-                        <input matInput formControlName="value" type="number" readonly>
-                        <mat-error translate>BL_INVALID_DATA</mat-error>
-                    </mat-form-field>
-                </div>
-            </div>
-        </div>
-    </form>
-</mat-card>
