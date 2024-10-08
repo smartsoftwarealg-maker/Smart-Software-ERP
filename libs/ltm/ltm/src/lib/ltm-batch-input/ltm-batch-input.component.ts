@@ -40,6 +40,7 @@ import { LtmCenterMatterService } from '../services/ltm-center-matter.service';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import _default from 'chart.js/dist/core/core.interaction';
 import index = _default.modes.index;
+import { LtmTestScheduleService } from '../services/ltm-test-schedule.service';
 
 function sampleNoValidatorFn(sampleMode: boolean): ValidatorFn {
     return (control: AbstractControl): ValidationErrors | null => {
@@ -109,6 +110,8 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
     protected readonly PHYSICAL_TEST = PHYSICAL_TEST;
     protected readonly RAW_MATERIAL_TEST = RAW_MATERIAL_TEST;
     protected readonly DEPOSIT_TEST = DEPOSIT_TEST;
+
+    readonly scheduleSrv = inject(LtmTestScheduleService);
 
     public saveButton: ToolbarButton = {
         icon: 'fas fa-save',
@@ -182,6 +185,7 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit() {
+        this.scheduleSrv.setParentId(this.id());
         this.testSrv
             .getList(0, 999, null, 'variable')
             .subscribe(
@@ -245,7 +249,6 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
         } else {
             this.form.controls.sampleNo.removeValidators(Validators.required);
         }
-        // }
     }
 
     private validate() {
@@ -390,8 +393,10 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
 
         this.savedData()
             .subscribe(batch => {
+                this.scheduleSrv.setParentId(batch.id || 0);
+
                 const date = new Date(batch.timeStamp);
-                this.form.controls.id.setValue(batch.id);
+                this.form.controls.id.setValue(batch.id||0);
                 this.form.controls.timeStamp.setValue(date);
                 this.form.controls.hour.setValue(date.getHours());
                 this.form.controls.spoilageHour.setValue(batch.spoilageHour);
@@ -405,9 +410,10 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
                 this.form.controls.sampleNo.setValue(batch.sampleNo);
                 this.form.controls.breakageHour.setValue(batch.breakageHour);
                 this.form.controls.parentId.setValue(batch.parentId || this.matterTestSrv.getParentId());
-                if (this.testingMode() === PHYSICAL_TEST) {
+
+                // if (this.testingMode() === PHYSICAL_TEST) {
                     this.matterTestSrv.setParentId(batch.parentId || this.matterTestSrv.getParentId());
-                }
+                // }
                 if (batch.id) {
                     this.form.controls.parentId.disable();
                 } else {

@@ -349,5 +349,6 @@
     "CLOSED":                     "Clôturée",
     "PRINTED":                    "imprimée",
     "VERSION":                    "Version",
-    "SUMMARY":                    "Sommaire"
+    "SUMMARY":                    "Sommaire",
+    "DUE_DAY":                    "Jour d"
 }

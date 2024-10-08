@@ -45,11 +45,11 @@
                 <!-- use a disabled button to provide padding for tree leaf -->
                 <button mat-icon-button disabled></button>
                 <tr style="width: 100%">
-                    <td style="width: 15em">
+                    <td style="width: 16em">
                         {{ node.name | translate }}
                     </td>
-                    <td style="width: 3em">
-                        {{ node.version }}
+                    <td style="width: 8em">
+                        {{ node.schema?.creationDate | date: 'dd/MM/yy' }}
                     </td>
                 </tr>
 
@@ -65,7 +65,7 @@
                         <span translate>{{ 'COMMON_' + node.name }}</span>
                     </td>
                     <td style="width: 3em" translate>
-                        {{ 'COMMON_VERSION' }}
+                        {{ 'COMMON_DATE' }}
                     </td>
                 </tr>
 

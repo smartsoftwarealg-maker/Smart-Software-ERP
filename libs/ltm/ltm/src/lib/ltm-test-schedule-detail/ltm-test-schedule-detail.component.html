@@ -1,0 +1,36 @@
+<mat-card>
+    <mat-card-header>
+        <div class="ctrl_div default-100">
+            <button mat-mini-fab color="primary"
+                    [matTooltip]="'COMMON_SAVE' | translate"
+                    (click)="save()"
+                    [disabled]="!form?.valid">
+                <i class="fas fa-save"></i>
+            </button>
+            <button mat-mini-fab
+                    color="warn"
+                    [matTooltip]="'COMMON_CANCEL' | translate"
+                    translate (click)="cancel()">
+                <i class="fas fa-redo"></i>
+            </button>
+        </div>
+    </mat-card-header>
+    <mat-card-content>
+        @if (form !== null) {
+            <form novalidate [formGroup]="form">
+
+                <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>LTM_DUE_DAY</mat-label>
+                    <input matInput formControlName="dueDay" type="number" min="1" max="31">
+                </mat-form-field>
+
+                <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>LTM_TEST_DATE</mat-label>
+                    <ss-date-picker formControlName="testDate" [type]="'date'">
+                    </ss-date-picker>
+                </mat-form-field>
+
+            </form>
+        }
+    </mat-card-content>
+</mat-card>

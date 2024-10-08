@@ -1,11 +1,12 @@
 .size {
     width: 90%;
-    max-width: 800px;
+    max-width: 900px;
     margin: 8px auto;
 }
 
 .table_div {
     min-height: calc(100% - 80px);
+    overflow-x: auto;
 }
 
 .detail__div {
@@ -13,7 +14,7 @@
 }
 
 .test__div {
-    width: 13em;
+    width: 20em;
 }
 
 .number__div {
@@ -30,6 +31,10 @@
     gap: 1em;
 }
 
-tr {
-    height: 2em;
+tr, td {
+    height: 2.4em;
+}
+
+mat-table {
+    min-width: 850px;
 }
