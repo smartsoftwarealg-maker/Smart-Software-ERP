@@ -25,18 +25,18 @@ export const ltmNavTree: SideNavNode = {
             route: ABS_LTM_UNIT_URL,
             accessRights: 'LTMMPeriod'
         },
-        {
-            name: 'LTM_BLEACHERS',
-            icon: 'fa-solid fa-brush',
-            route: ABS_LTM_BLEACHERS_URL,
-            accessRights: 'LTMBleacher'
-        },
-        {
-            name: 'LTM_ZONES',
-            icon: 'fa-solid fa-location-dot',
-            route: ABS_LTM_ZONES_URL,
-            accessRights: 'LTMZone'
-        },
+        // {
+        //     name: 'LTM_BLEACHERS',
+        //     icon: 'fa-solid fa-brush',
+        //     route: ABS_LTM_BLEACHERS_URL,
+        //     accessRights: 'LTMBleacher'
+        // },
+        // {
+        //     name: 'LTM_ZONES',
+        //     icon: 'fa-solid fa-location-dot',
+        //     route: ABS_LTM_ZONES_URL,
+        //     accessRights: 'LTMZone'
+        // },
         {
             name: 'LTM_DEPOSITS',
             icon: 'fa-solid fa-bucket',

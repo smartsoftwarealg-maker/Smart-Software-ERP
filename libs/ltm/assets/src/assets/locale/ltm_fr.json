@@ -67,5 +67,7 @@
     "VC":                 "VC",
     "ACTION_NUMBER":      "N° d'action",
     "REPORTED_BY":        "Signé par",
-    "TEST_NORMS":         "Normes de tests"
+    "TEST_NORMS":         "Normes de tests",
+    "DUE_DAY":           "Jour d'écheance",
+    "TEST_DATE":          "Date du test"
 }

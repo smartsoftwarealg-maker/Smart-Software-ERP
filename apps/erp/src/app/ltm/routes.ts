@@ -83,7 +83,10 @@ import {
     LtmDepositTestingListComponent,
     LtmRmTestingListComponent,
     LtmAlertsDetailComponent,
-    LtmCorrectionActionListComponent, LtmCorrectionActionDetailComponent
+    LtmCorrectionActionListComponent,
+    LtmCorrectionActionDetailComponent,
+    LtmTestScheduleListComponent,
+    LtmTestScheduleDetailComponent
 } from '@ss/ltm/ltm';
 import {loginGuard} from '../erp-guards';
 import {DashboardComponent} from '@ss/dashboard';
@@ -97,6 +100,7 @@ import {
     LtmMixturePickupPointsListComponent,
     LtmMixturePickupPointsDetailComponent
 } from '@ss/ltm/ltm';
+import { LtmNormListComponent } from '../../../../../libs/ltm/ltm/src/lib/ltm-norm-list/ltm-norm-list.component';
 
 export const ltmRoutes: Routes = [
     {
@@ -115,7 +119,6 @@ export const ltmRoutes: Routes = [
             { path: LIST_URL, component: LineMatterListComponent, canActivate: [loginGuard]},
             { path: ':id',
                 component: LineMatterDetailComponent,
-                canActivate: [loginGuard],
                 children: [
                     { path: '', component: LtmMatterTestListComponent, pathMatch: 'full'},
                     { path: 'detail',
@@ -123,7 +126,8 @@ export const ltmRoutes: Routes = [
                             { path: ':id', component: LtmMatterTestDetailComponent }
                         ]
                     }
-                ]
+                ],
+                canActivate: [loginGuard],
             }
         ]
     },
@@ -137,7 +141,7 @@ export const ltmRoutes: Routes = [
     {
         path: LTM_NORM_URL,
         children: [
-            { path: LIST_URL, component: LtmNormTreeComponent, canActivate: [loginGuard]},
+            { path: LIST_URL, component: LtmNormListComponent, canActivate: [loginGuard]},
             { path: ':id', component: LtmNormDetailComponent, canActivate: [loginGuard] }
         ]
     },
@@ -318,7 +322,7 @@ export const ltmRoutes: Routes = [
                 component: LtmBatchInputComponent,
                 canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService],
-                data: { testingMode: CHEMICAL_TEST }
+                data: { testingMode: CHEMICAL_TEST },
             },
             { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
         ]
@@ -336,7 +340,16 @@ export const ltmRoutes: Routes = [
                 component: LtmBatchInputComponent,
                 canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService],
-                data: { testingMode: PHYSICAL_TEST }
+                data: { testingMode: PHYSICAL_TEST },
+                children: [
+                    { path: '', redirectTo: 'schedules', pathMatch: 'full'},
+                    { path: 'schedules',
+                        children: [
+                            { path: '', component: LtmTestScheduleListComponent, pathMatch: 'full'},
+                            { path: ':id', component: LtmTestScheduleDetailComponent }
+                        ]
+                    },
+                ]
             },
             { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
         ]

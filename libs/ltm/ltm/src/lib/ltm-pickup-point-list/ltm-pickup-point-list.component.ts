@@ -39,7 +39,7 @@ import { LTMPickupPoint } from '../ltm-api';
     ],
 })
 export class LtmPickupPointListComponent extends BaseEntityListComponent<LTMPickupPoint> {
-    displayedColumns = ['description', 'equipmentDescription', 'bleacherDescription', 'zoneDescription'];
+    displayedColumns = ['description', 'equipmentDescription'];
 
     constructor(
         public override entitySrv: LtmPickupPointService,

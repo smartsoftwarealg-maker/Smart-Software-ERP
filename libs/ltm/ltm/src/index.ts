@@ -56,3 +56,5 @@ export * from './lib/ltm-mixture-pickup-points-detail/ltm-mixture-pickup-points-
 export * from './lib/ltm-correction-action-detail/ltm-correction-action-detail.component';
 export * from './lib/ltm-correction-action-list/ltm-correction-action-list.component';
 export * from './lib/ltm-norm-tree/ltm-norm-tree.component';
+export * from './lib/ltm-test-schedule-detail/ltm-test-schedule-detail.component';
+export * from './lib/ltm-test-schedule-list/ltm-test-schedule-list.component';

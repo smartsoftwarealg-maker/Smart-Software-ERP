@@ -268,8 +268,17 @@ export interface NormTree {
     expanded?: boolean;
 }
 
+export interface LTMTestSchedule {
+    id: number;
+    parentId: number;
+    dueDay: number;
+    testDate?: Date;
+    nextDate: Date;
+}
+
 export const CHEMICAL_TEST = 1;
 export const PHYSICAL_TEST = 2;
 export const DEPOSIT_TEST = 3;
 export const RAW_MATERIAL_TEST = 4;
+
 

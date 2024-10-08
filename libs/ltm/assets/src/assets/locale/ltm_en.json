@@ -67,5 +67,7 @@
     "VC":                 "VC",
     "ACTION_NUMBER":      "Action number",
     "REPORTED_BY":        "Reported by",
-    "TEST_NORMS":         "Test norms"
+    "TEST_NORMS":         "Test norms",
+    "DUE_DAY":            "Due day",
+    "TEST_DATE":          "Test date"
 }
