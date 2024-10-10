@@ -9,7 +9,6 @@ import {purchasesNavTree} from '../app/purchases/side-nav-tree';
 import {stockNavTree} from '../app/stock/side-nav-tree';
 import {salesNavTree} from '../app/sales/side-nav-tree';
 import {financeNavTree} from '../app/finance/side-nav-tree';
-import {webArchNavTree} from '../app/web-arch/side-nav-tree';
 import {dashboardNavTree} from '../app/dashboard/side-nav-tree';
 import {CanActivateService, INDEX_PAGE_URL} from '@ss/common/api-common';
 import {contractsNavTree} from '../app/contracts/side-nav-tree';
@@ -17,7 +16,6 @@ import {MainPageComponent} from '@ss/common/ui-main-page';
 import {
     ACCOUNTING_APP_URL,
     ADMINISTRATION_APP_URL,
-    MISSIONS_APP_URL,
     CONTRACTS_APP_URL,
     DASHBOARD_APP_URL,
     FINANCE_APP_URL,
@@ -27,10 +25,11 @@ import {
     SALES_APP_URL,
     STOCK_APP_URL,
     WEBARCH_APP_URL,
-    WORK_FLOW_APP_URL,
+    WORK_FLOW_APP_URL, ARCH_VIEWER_URL
 } from '../app/common';
 import {Routes} from '@angular/router';
 import {workflowNavTree} from '../app/workflow/side-nav-tree';
+import { aaNavTree } from '../app/archive-viewer/side-nav-tree';
 
 export const environment = {
     production: false,
@@ -45,11 +44,10 @@ export const navBar = [
     contractsNavTree,
     salesNavTree,
     financeNavTree,
-    webArchNavTree,
     dashboardNavTree,
     // shoppingCartNavTree,
     workflowNavTree,
-    // aaNavTree,
+    aaNavTree
 ];
 
 export const langAssets = [
@@ -77,10 +75,10 @@ export const appRoutes: Routes =  [
         component: MainPageComponent,
         canActivate: [CanActivateService]
     },
-    // {
-    //     path: ARCH_VIEWER_URL,
-    //     loadChildren: () => import('../app/archive-viewer/archive-viewer.module').then(m => m.ArchiveViewerModule)
-    // },
+    {
+        path: ARCH_VIEWER_URL,
+        loadChildren: () => import('../app/archive-viewer/archive-viewer.module').then(m => m.ArchiveViewerModule)
+    },
     {
         path: ORGANIZATIONS_APP_URL,
         loadChildren: () => import('../app/organizations/organizations.module').then(m => m.OrganizationsModule)

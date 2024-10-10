@@ -36,6 +36,11 @@
                     },
                     {
                         "glob": "**/*",
+                        "input": "libs/sales/assets/src/assets",
+                        "output": "assets"
+                    },
+                    {
+                        "glob": "**/*",
                         "input": "libs/administration/assets/src/assets",
                         "output": "assets"
                     },
