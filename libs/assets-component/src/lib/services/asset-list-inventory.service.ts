@@ -18,7 +18,9 @@ import { map } from 'rxjs/operators';
 })
 
 export class AssetListInventoryService extends BaseEntityService<InventoryAsset> {
-    private _document: AssetInventoryFilter|null = null;
+    #_document: AssetInventoryFilter|null = null;
+    #_lastDoc: AssetInventoryDoc|null = null;
+
 
     constructor(protected override httpSrv: HttpService) {
         super(httpSrv, ASSET_INVENTORY_URL);
@@ -35,18 +37,18 @@ export class AssetListInventoryService extends BaseEntityService<InventoryAsset>
     }
 
     override getPage(pageModel: PaginationModel, filter?: string, sortBy?: string, extraPrams?: HttpParams): Observable<InventoryAsset[]> {
-        if (this._document) {
+        if (this.#_document) {
             const values = new Map<string, number|string|null> ([
-                ['officeId',    this._document.officeId],
-                ['locationId',  this._document.locationId],
-                ['buildingId',  this._document.buildingId],
-                ['minValue',    this._document.minValue],
-                ['maxValue',    this._document.maxValue],
-                ['classId',     this._document.classId],
-                ['classId',     this._document.classId],
-                ['beneficiary', this._document.beneficiary],
-                ['receptionNo', this._document.receptionNo],
-                ['accountNo',   this._document.accountNo],
+                ['officeId',    this.#_document.officeId],
+                ['locationId',  this.#_document.locationId],
+                ['buildingId',  this.#_document.buildingId],
+                ['minValue',    this.#_document.minValue],
+                ['maxValue',    this.#_document.maxValue],
+                ['classId',     this.#_document.classId],
+                ['classId',     this.#_document.classId],
+                ['beneficiary', this.#_document.beneficiary],
+                ['receptionNo', this.#_document.receptionNo],
+                ['accountNo',   this.#_document.accountNo],
                 ['documentId', this.document?.documentId]
             ]);
            extraPrams = this.setParams(extraPrams||new HttpParams(), values);
@@ -55,10 +57,18 @@ export class AssetListInventoryService extends BaseEntityService<InventoryAsset>
     }
 
     set document(doc: AssetInventoryFilter) {
-        this._document = doc;
+        this.#_document = doc;
     }
     get document(): AssetInventoryFilter|null {
-        return this._document;
+        return this.#_document;
+    }
+
+    get lastDoc(): AssetInventoryDoc|null {
+        return this.#_lastDoc;
+    }
+
+    set lastDoc(doc: AssetInventoryDoc|null) {
+        this.#_lastDoc = doc;
     }
 
     override update(a: InventoryAsset): Observable<number> {

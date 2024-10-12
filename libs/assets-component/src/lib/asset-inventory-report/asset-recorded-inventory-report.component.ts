@@ -53,11 +53,15 @@ export class AssetRecordedInventoryReportComponent implements OnInit {
         'locationDescription',
         'buildingDescription',
         'officeDescription',
-        'date',
-        'userDescription',
         'acquisitionDate',
         'receptionNumber',
-        'comment'
+        'assignmentNo',
+        'date',
+        'userDescription',
+        'newBuildingDescription',
+        'newOfficeDescription',
+        'newBeneficiaryDescription',
+        'comment',
     ];
     pagination = PaginationModel.newInstance({pageSize: 5, page: 1, elementCount: 0});
 

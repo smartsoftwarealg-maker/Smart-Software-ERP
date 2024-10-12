@@ -23,7 +23,6 @@ import { DefaultReportService } from '@ss/common/ui-default-report-component';
 import { Office, OfficeService } from '@ss/common/api-lookup';
 import { FormBuilder, FormControl } from '@angular/forms';
 import { AssetListInventoryService } from '../services/asset-list-inventory.service';
-import { AssetInventoryDocService } from '../services/asset-inventory-doc.service';
 import { AssetsBuildingService } from '../services/assets-building.service';
 import { AccountService, AccountStringAutocompleteModel } from '@ss/accounting/api-accounts';
 import { AssetLocationService } from '../services/asset-location.service';
@@ -34,8 +33,8 @@ import { AssetOpenInventoryDocService } from '../services/asset-open-inventory-d
 
 @Component({
     selector: 'ss-asset-list-inventory',
-    templateUrl: './asset-list-inventory.component.html',
-    styleUrls: ['./asset-list-inventory.component.scss'],
+    templateUrl: './asset-q-r-inventory.component.html',
+    styleUrls: ['./asset-q-r-inventory.component.scss'],
     standalone: true,
     imports: [
         CommonModule,
@@ -52,7 +51,7 @@ import { AssetOpenInventoryDocService } from '../services/asset-open-inventory-d
         QRCodeModule
     ],
 })
-export class AssetListInventoryComponent extends BaseEntityListComponent<InventoryAsset> implements OnInit {
+export class AssetQRInventoryComponent extends BaseEntityListComponent<InventoryAsset> implements OnInit {
     private documentId   = 0;
     private fb           = inject(FormBuilder);
     private buildingSrv  = inject(AssetsBuildingService);
@@ -155,8 +154,8 @@ export class AssetListInventoryComponent extends BaseEntityListComponent<Invento
         this.formGroup.controls.buildingId.setValue(b.id||0);
     }
 
-
     private onDocument(d: AssetInventoryDoc) {
+        this.listSrv.lastDoc = d;
         this.documentId = d?.id || 0;
         this.formGroup.controls.documentId.setValue(this.documentId);
         this.isEditable.set(!d?.closed);
@@ -245,6 +244,10 @@ export class AssetListInventoryComponent extends BaseEntityListComponent<Invento
         this.addButton.visible    = false;
         this.deleteButton.visible = false;
         super.ngOnInit();
+        if (this.listSrv.lastDoc?.id) {
+            this.onDocument(this.listSrv.lastDoc);
+            this.inventoryDoc.setValue(this.listSrv.lastDoc?.id, {onlySelf: true, emitEvent: false});
+        }
     }
 
     override selectRow(row: InventoryAsset) {
