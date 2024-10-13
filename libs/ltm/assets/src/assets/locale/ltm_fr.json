@@ -69,5 +69,6 @@
     "REPORTED_BY":        "Signé par",
     "TEST_NORMS":         "Normes de tests",
     "DUE_DAY":           "Jour d'écheance",
-    "TEST_DATE":          "Date du test"
+    "TEST_DATE":          "Date du test",
+    "PENDING_TESTS":      "Tests en attente"
 }

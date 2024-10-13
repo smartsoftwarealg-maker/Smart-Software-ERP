@@ -69,5 +69,6 @@
     "REPORTED_BY":        "Reported by",
     "TEST_NORMS":         "Test norms",
     "DUE_DAY":            "Due day",
-    "TEST_DATE":          "Test date"
+    "TEST_DATE":          "Test date",
+    "PENDING_TESTS":      "Pending tests"
 }
