@@ -31,6 +31,10 @@ export class LtmPhysicalTestingService extends LtmBaseTestingClass {
         const searchStr = this.#_open?((filter||'') + '_0_'): filter;
         return super.getList(page, pageSize, searchStr, sortBy, extraPrams);
     }
+
+    getPendingCount(): Observable<{ count: number}> {
+        return this.httpSrv.get<{ count: number}>(`/ltm/pending-tests`);
+    }
 }
 
 
