@@ -26,6 +26,7 @@ export class LtmBaseTestingListComponent extends BaseEntityListComponent<LTMTest
     matterCtrl   = new FormControl<number>(0);
     fromCtrl     = new FormControl<Date>(new Date());
     toCtrl       = new FormControl<Date>(new Date());
+    openOnly     = new FormControl<boolean>(false);
     matterLookup = new DefaultAutoCompleteModel(this.matterSrv);
 
     constructor(

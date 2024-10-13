@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, DestroyRef, inject } from '@angular/core';
 import { ShellService, SnackBarService } from "@ss/common/ui-shell";
 import { ActivatedRoute, Router, RouterOutlet } from "@angular/router";
 import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
@@ -8,7 +8,7 @@ import { LtmTestingService } from '../services/ltm-testing.service';
 import { CommonModule } from '@angular/common';
 import { CommonUiLangModule } from '@ss/common/ui-lang';
 import { UiPaginationModule } from "@ss/common/ui-pagination";
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormControl, ReactiveFormsModule } from '@angular/forms';
 
 import { AppArchiveModule } from "@ss/common/app-archive";
 import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
@@ -16,6 +16,8 @@ import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
 import { CommonUiHourPickerModule } from "@ss/common/ui-hour-picker";
 import { LtmBaseTestingListComponent } from '../ltm-testing-common/ltm-base-testing-list.component';
 import { LtmPhysicalTestingService } from '../services/ltm-physical-testing.service';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 
 @Component({
     selector: "ss-physical-ltm-testing-list",
@@ -39,6 +41,8 @@ import { LtmPhysicalTestingService } from '../services/ltm-physical-testing.serv
 })
 
 export class LtmPhysicalTestingListComponent extends LtmBaseTestingListComponent {
+    #_destroyRef = inject(DestroyRef);
+
     displayedColumns = ['sampleNo', 'matterDescription',  'timeStamp', 'equipmentDescription', 'pickupDescription', 'siloDescription'];
     constructor(
         public override entitySrv: LtmPhysicalTestingService,
@@ -58,5 +62,19 @@ export class LtmPhysicalTestingListComponent extends LtmBaseTestingListComponent
             router,
             pagPersistSrv,
             'LTM_PHYSICAL_TESTINGS');
+    }
+
+    override ngOnInit() {
+        super.ngOnInit();
+        this.openOnly
+            .valueChanges
+            .pipe(takeUntilDestroyed(this.#_destroyRef),
+                  debounceTime(300),
+                 distinctUntilChanged()
+            ).subscribe(res => {
+                this.entitySrv.open = res;
+                this.refresh();
+        });
+        this.openOnly.setValue(this.entitySrv.open||false, {onlySelf: true, emitEvent: false});
     }
 }
