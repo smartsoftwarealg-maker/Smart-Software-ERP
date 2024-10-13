@@ -1,6 +1,6 @@
 import { Component, inject, OnInit } from '@angular/core';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
-import { CommonUiImageInputModule, ImageModel } from "@ss/common/ui-image-input";
+import {  ImageModel } from "@ss/common/ui-image-input";
 import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from "@ss/common/ui-auto-complete";
 import {
     ClassService,
@@ -52,7 +52,7 @@ import { ColorPickerModule } from "ngx-color-picker";
 
         LogisticsUiDocImportModule,
         LogisticsUiStockInfoModule,
-        CommonUiImageInputModule,
+
         CommonUiColorSelectModule,
         ColorPickerModule
     ]

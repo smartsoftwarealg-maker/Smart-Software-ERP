@@ -11,7 +11,7 @@ import {Observable, of, switchMap, tap} from 'rxjs';
 import {HttpParams} from '@angular/common/http';
 import {MatSelectChange} from '@angular/material/select';
 import { EmployeeService } from '@ss/employee-services/employee-services';
-import { CommonUiImageInputModule, ImageModel } from "@ss/common/ui-image-input";
+import { ImageInputComponent, ImageModel } from '@ss/common/ui-image-input';
 import {PayrollMonthService} from '@ss/remuneration/payroll-month';
 import { ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup } from "@angular/forms";
 import {CommonElementsService} from '../services/common-elements.service';
@@ -38,7 +38,7 @@ import { RemunerationInputFiltersModule } from "@ss/remuneration/input-filters";
         CommonUiDatepickerModule,
         CommonUiAutoCompleteModule,
         RemunerationInputFiltersModule,
-        CommonUiImageInputModule
+        ImageInputComponent
     ],
 
 })

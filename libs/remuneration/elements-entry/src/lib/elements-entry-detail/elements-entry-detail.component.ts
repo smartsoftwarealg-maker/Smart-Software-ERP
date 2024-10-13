@@ -14,7 +14,7 @@ import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from "@ss
 import {LookupsService} from '@ss/common/api-lookup';
 import {ElementsEntryService} from '../services/elements-entry.service';
 import {MatSelectChange} from '@angular/material/select';
-import { CommonUiImageInputModule, ImageModel } from "@ss/common/ui-image-input";
+import { ImageInputComponent, ImageModel } from '@ss/common/ui-image-input';
 import { HttpService, MaterialModule } from "@ss/common/api-common";
 import { EmployeeService } from '@ss/employee-services/employee-services';
 import { CommonModule } from "@angular/common";
@@ -45,7 +45,7 @@ type Employee = {
         CommonUiDatepickerModule,
         CommonUiAutoCompleteModule,
         RemunerationInputFiltersModule,
-        CommonUiImageInputModule
+        ImageInputComponent
     ],
 })
 export class ElementsEntryDetailComponent extends BaseEntityDetailComponent<ELine> implements OnInit {

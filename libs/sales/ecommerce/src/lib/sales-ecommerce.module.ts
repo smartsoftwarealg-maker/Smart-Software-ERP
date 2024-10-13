@@ -11,7 +11,7 @@ import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
 
 import { LogisticsUiDocImportModule } from '@ss/logistics/ui-doc-import';
 import { HeaderPageComponent, MainPageComponent} from '@ss/sales/ecommerce';
-import { CommonUiImageInputModule } from '@ss/common/ui-image-input';
+
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { UiThemeModule } from '@ss/common/ui-theme';
@@ -20,6 +20,7 @@ import { SalesAdsDetailComponent } from './sales-ads-detail/sales-ads-detail.com
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { SalesConfirmationComponent } from './sales-confirmation/sales-confirmation.component';
 import { SalesAcknowledgementComponent } from './sales-acknowledgement/sales-acknowledgement.component';
+import { ImageInputComponent } from '@ss/common/ui-image-input';
 
 @NgModule({
     imports: [
@@ -35,9 +36,10 @@ import { SalesAcknowledgementComponent } from './sales-acknowledgement/sales-ack
         CommonUiAutoCompleteModule,
 
         LogisticsUiDocImportModule,
-        CommonUiImageInputModule,
+
         BrowserAnimationsModule,
         UiThemeModule,
+        ImageInputComponent
     ],
     declarations: [
         MainPageComponent,

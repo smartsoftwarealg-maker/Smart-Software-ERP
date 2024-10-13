@@ -41,13 +41,13 @@ import {AssetBlockingService} from "../services/asset-blocking.service";
 import {DepreciationRateService} from "../services/depreciation-rate.service";
 import { CommonModule } from '@angular/common';
 import { CommonUiLangModule } from '@ss/common/ui-lang';
-import { CommonUiImageInputModule } from '@ss/common/ui-image-input';
 import { UiPaginationModule } from '@ss/common/ui-pagination';
 import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
 import { CustomAttributesModule } from '@ss/custom-attributes';
 import { QRCodeModule } from 'angularx-qrcode';
 import { AssetAppointmentListComponent } from '../asset-appointment-list/asset-appointment-list.component';
 import { AssetCostsListComponent } from '../asset-costs-list/asset-costs-list.component';
+import { ImageInputComponent } from '@ss/common/ui-image-input';
 
 @Component({
     selector: 'ss-assets-detail',
@@ -58,7 +58,7 @@ import { AssetCostsListComponent } from '../asset-costs-list/asset-costs-list.co
         CommonModule,
         MaterialModule,
         CommonUiLangModule,
-        CommonUiImageInputModule,
+        ImageInputComponent,
         UiPaginationModule,
         CommonUiConfirmationDialogModule,
         CommonUiAutoCompleteModule,

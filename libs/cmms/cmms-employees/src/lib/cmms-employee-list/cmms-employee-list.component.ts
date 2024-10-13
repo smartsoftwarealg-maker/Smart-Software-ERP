@@ -9,7 +9,7 @@ import { HttpService, MaterialModule, PaginatorPersistenceService } from '@ss/co
 import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { DefaultReportService } from '@ss/common/ui-default-report-component';
 import { Observable, of } from 'rxjs';
-import { CommonUiImageInputModule, ImageModel } from '@ss/common/ui-image-input';
+import { ImageModel } from '@ss/common/ui-image-input';
 import { CommonUiLangModule } from '@ss/common/ui-lang';
 import { UiPaginationModule } from '@ss/common/ui-pagination';
 import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
@@ -28,8 +28,7 @@ import { CmmsEmployeeService } from '../services/cmms-employee.service';
         CommonUiDatepickerModule,
         RouterModule,
         CommonUiAutoCompleteModule,
-        LookupModule,
-        CommonUiImageInputModule
+        LookupModule
     ],
     templateUrl: './cmms-employee-list.component.html',
     styleUrls: ['./cmms-employee-list.component.scss'],

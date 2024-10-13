@@ -12,7 +12,7 @@ import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { DefaultReportService } from '@ss/common/ui-default-report-component';
 import { debounceTime, distinctUntilChanged, Observable, of, switchMap, tap } from 'rxjs';
-import { CommonUiImageInputModule, ImageModel } from '@ss/common/ui-image-input';
+import {  ImageModel } from '@ss/common/ui-image-input';
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
 import { Cart, Cartline } from '@ss/sales/shopping-cart';
@@ -47,7 +47,7 @@ import { LogisticsUiStockInfoModule } from '@ss/logistics/ui-stock-info';
 
         SalesUiDeliveryLinesModule,
         LogisticsUiDocImportModule,
-        CommonUiImageInputModule,
+
         LogisticsUiStockInfoModule
     ]
 

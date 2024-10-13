@@ -10,7 +10,7 @@ import {AssetsTransferService} from '../services/assets-transfer.service';
 import { IsParamService, MaterialModule, UserRightsService } from '@ss/common/api-common';
 import { CommonModule } from '@angular/common';
 import { CommonUiLangModule } from '@ss/common/ui-lang';
-import { CommonUiImageInputModule } from '@ss/common/ui-image-input';
+
 import { UiPaginationModule } from '@ss/common/ui-pagination';
 import { CommonUiConfirmationDialogModule } from '@ss/common/ui-confirmation-dialog';
 import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
@@ -28,7 +28,7 @@ import { QRCodeModule } from 'angularx-qrcode';
         CommonModule,
         MaterialModule,
         CommonUiLangModule,
-        CommonUiImageInputModule,
+
         UiPaginationModule,
         CommonUiConfirmationDialogModule,
         CommonUiAutoCompleteModule,

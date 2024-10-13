@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {MaterialModule} from '@ss/common/api-common';
 import {CommonUiLangModule} from '@ss/common/ui-lang';
-import {CommonUiImageInputModule} from '@ss/common/ui-image-input';
+
 import {UiPaginationModule} from '@ss/common/ui-pagination';
 import {CommonUiConfirmationDialogModule} from '@ss/common/ui-confirmation-dialog';
 import {CommonUiDatepickerModule} from '@ss/common/ui-datepicker';
@@ -16,7 +16,7 @@ import {MissionPreparationListComponent} from './mission-preparation-list/missio
         CommonModule,
         MaterialModule,
         CommonUiLangModule,
-        CommonUiImageInputModule,
+
         UiPaginationModule,
         CommonUiConfirmationDialogModule,
         CommonUiDatepickerModule,

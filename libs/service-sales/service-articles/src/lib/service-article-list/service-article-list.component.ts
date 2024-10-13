@@ -8,21 +8,21 @@ import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { DefaultReportService } from '@ss/common/ui-default-report-component';
 import { PaginatorPersistenceService } from '@ss/common/api-common';
 import { ServiceArticleService } from '../service-article.service';
-import { CommonUiImageInputModule } from '@ss/common/ui-image-input';
+
 import { CommonUiLangModule } from '@ss/common/ui-lang';
 
 import { MatTableModule } from '@angular/material/table';
 import { UiPaginationModule } from '@ss/common/ui-pagination';
 import { MatSortModule } from '@angular/material/sort';
+import { ImageInputComponent } from '@ss/common/ui-image-input';
 
 @Component({
     selector: 'ss-service-article-list',
     standalone: true,
     imports: [
         CommonModule,
-        CommonUiImageInputModule,
+        ImageInputComponent,
         CommonUiLangModule,
-
         MatTableModule,
         UiPaginationModule,
         MatSortModule],

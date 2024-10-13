@@ -9,7 +9,7 @@ import {
     MaritalStatus
 } from '@ss/common/api-lookup';
 import { AppArchiveModule, AppArchiveService, EMPLOYEE_ARCHIVES } from '@ss/common/app-archive';
-import { CommonUiImageInputModule, ImageModel } from '@ss/common/ui-image-input';
+import {  ImageModel } from '@ss/common/ui-image-input';
 import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
 import {
     AbstractControl,
@@ -49,7 +49,7 @@ import { DriverVehicleService } from '../services/driver-vehicle.service';
         AppArchiveModule,
         CommonUiAutoCompleteModule,
         CommonUiDatepickerModule,
-        CommonUiImageInputModule,
+
         CommonUiLangModule,
         FormsModule,
         MatButtonModule,

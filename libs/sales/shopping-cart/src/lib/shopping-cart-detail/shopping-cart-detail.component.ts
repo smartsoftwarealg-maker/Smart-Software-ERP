@@ -14,7 +14,7 @@ import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { DefaultReportService } from '@ss/common/ui-default-report-component';
 import { Observable, of, Subscription, switchMap, tap } from 'rxjs';
-import { CommonUiImageInputModule, ImageModel } from '@ss/common/ui-image-input';
+import {  ImageModel } from '@ss/common/ui-image-input';
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
 import { CommonModule } from '@angular/common';
@@ -45,7 +45,7 @@ import { LogisticsUiStockInfoModule } from '@ss/logistics/ui-stock-info';
 
         SalesUiDeliveryLinesModule,
         LogisticsUiDocImportModule,
-        CommonUiImageInputModule,
+
         LogisticsUiStockInfoModule
     ]
 })

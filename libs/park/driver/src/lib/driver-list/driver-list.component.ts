@@ -11,7 +11,7 @@ import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { DefaultReportService } from '@ss/common/ui-default-report-component';
 import { DriverService } from '../services/driver.service';
 import { Observable, of } from 'rxjs';
-import { CommonUiImageInputModule, ImageModel } from '@ss/common/ui-image-input';
+import {  ImageModel } from '@ss/common/ui-image-input';
 import { CommonUiLangModule } from '@ss/common/ui-lang';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
@@ -23,7 +23,7 @@ import { UiPaginationModule } from '@ss/common/ui-pagination';
     standalone: true,
     imports: [
         CommonModule,
-        CommonUiImageInputModule,
+
         CommonUiLangModule,
         MatSortModule,
         MatTableModule,

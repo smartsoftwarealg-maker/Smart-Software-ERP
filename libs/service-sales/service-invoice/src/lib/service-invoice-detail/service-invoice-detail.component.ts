@@ -16,7 +16,7 @@ import {
     DOC_SALES_ORDER
 } from '@ss/logistics/api-transaction';
 import { CommonModule } from '@angular/common';
-import { CommonUiImageInputModule } from '@ss/common/ui-image-input';
+
 import { CommonUiLangModule } from '@ss/common/ui-lang';
 
 import { MatTableModule } from '@angular/material/table';
@@ -34,7 +34,7 @@ import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
     standalone: true,
     imports: [
         CommonModule,
-        CommonUiImageInputModule,
+
         CommonUiLangModule,
 
         MatTableModule,

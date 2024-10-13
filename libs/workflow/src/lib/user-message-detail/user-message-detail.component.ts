@@ -16,7 +16,7 @@ import { UiPaginationModule } from '@ss/common/ui-pagination';
 import { CommonUiLangModule } from '@ss/common/ui-lang';
 import { RemunerationPaymonthEditorModule } from '@ss/remuneration/paymonth-editor';
 import { CommonPayrollModule } from '@ss/payroll-common';
-import { CommonUiImageInputModule } from '@ss/common/ui-image-input';
+
 import { OrgChartModule } from 'angular13-organization-chart';
 
 @Component({
@@ -32,7 +32,7 @@ import { OrgChartModule } from 'angular13-organization-chart';
         CommonUiAutoCompleteModule,
         RemunerationPaymonthEditorModule,
         CommonPayrollModule,
-        CommonUiImageInputModule,
+
         OrgChartModule,
     ],
 })

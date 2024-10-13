@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CommonUiImageInputModule } from '@ss/common/ui-image-input';
+
 import { CommonUiLangModule } from '@ss/common/ui-lang';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
@@ -21,7 +21,7 @@ import { VehicleService } from '../services/vehicle.service';
     standalone: true,
     imports: [
         CommonModule,
-        CommonUiImageInputModule,
+
         CommonUiLangModule,
         MatSortModule,
         MatTableModule,

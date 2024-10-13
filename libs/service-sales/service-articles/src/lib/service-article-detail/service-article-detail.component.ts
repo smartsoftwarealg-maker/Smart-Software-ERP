@@ -18,7 +18,7 @@ import { ClassService, LookupsService } from '@ss/common/api-lookup';
 import { HttpService } from '@ss/common/api-common';
 import { ServiceArticleService } from '../service-article.service';
 import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
-import { CommonUiImageInputModule } from '@ss/common/ui-image-input';
+
 import { CommonUiLangModule } from '@ss/common/ui-lang';
 import { MatCardModule } from '@angular/material/card';
 import { MatCheckboxModule } from '@angular/material/checkbox';
@@ -34,7 +34,7 @@ import { StockUiArticleStoreModule } from '@ss/stock/article-store';
     imports: [
         CommonModule,
         CommonUiAutoCompleteModule,
-        CommonUiImageInputModule,
+
         CommonUiLangModule,
         FormsModule,
         MatCardModule,

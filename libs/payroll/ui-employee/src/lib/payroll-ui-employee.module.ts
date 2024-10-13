@@ -5,7 +5,7 @@ import { UiPaginationModule } from '@ss/common/ui-pagination';
 import { CommonUiLangModule } from '@ss/common/ui-lang';
 import { EmployeeListComponent } from './employee-list/employee-list.component';
 import { EmployeeDetailComponent } from './employee-detail/employee-detail.component';
-import { CommonUiImageInputModule } from '@ss/common/ui-image-input';
+
 import { CommonUiConfirmationDialogModule } from '@ss/common/ui-confirmation-dialog';
 import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
 import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
@@ -36,20 +36,22 @@ import { PersonListComponent } from './person-list/person-list.component';
 import { PaymentInfoComponent } from './payment-info/payment-info.component';
 import {CustomAttributesModule} from '@ss/custom-attributes';
 import {AppArchiveModule} from '@ss/common/app-archive';
+import { ImageInputComponent } from '@ss/common/ui-image-input';
 
 @NgModule({
     imports: [
         CommonModule,
         MaterialModule,
         CommonUiLangModule,
-        CommonUiImageInputModule,
+
         UiPaginationModule,
         CommonUiConfirmationDialogModule,
         CommonUiAutoCompleteModule,
         CommonUiDatepickerModule,
         RouterModule,
         CustomAttributesModule,
-        AppArchiveModule
+        AppArchiveModule,
+        ImageInputComponent
     ],
     exports: [
         EmployeeListComponent,
