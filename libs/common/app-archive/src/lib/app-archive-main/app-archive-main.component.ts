@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, inject, Input, OnInit, ViewChild } from '@angular/core';
 import {AppArchiveService} from '../app-archive.service';
 import { ActivatedRoute, Router, RouterOutlet } from '@angular/router';
 
@@ -7,11 +7,9 @@ import { ActivatedRoute, Router, RouterOutlet } from '@angular/router';
     templateUrl: './app-archive-main.component.html',
     styleUrls: ['./app-archive-main.component.scss']
 })
-export class AppArchiveMainComponent implements OnInit {
+export class AppArchiveMainComponent {
     @ViewChild(RouterOutlet) outlet: RouterOutlet;
-
-    constructor(public archiveSrv: AppArchiveService, private route: ActivatedRoute) {
-    }
+    public archiveSrv = inject(AppArchiveService);
 
     protected refresh() {
         if (this.outlet && this.outlet.isActivated && this.outlet.component) {
@@ -38,14 +36,5 @@ export class AppArchiveMainComponent implements OnInit {
     @Input()
     set appId(id: number) {
         this.archiveSrv.appId = id || 0;
-    }
-
-
-    ngOnInit(): void {
-        this.route.queryParamMap.subscribe(param => {
-            const appId = +param.get('appId') || 0;
-            if (appId > 0) {
-            }
-        });
     }
 }

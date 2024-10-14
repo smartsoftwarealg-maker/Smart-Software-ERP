@@ -37,11 +37,12 @@ export class AppArchiveListComponent implements OnInit {
             .queryParamMap
             .subscribe(param => {
                 const appId = +param.get("appId") || 0;
-                this.entitySrv.setParentId(0);
                 if (appId > 0) {
                     this.entitySrv.appId = appId;
                     const id = +param.get("documentId") || 0;
-                    this.entitySrv.setParentId(id);
+                    if (id > 0) {
+                        this.entitySrv.setParentId(id);
+                    }
                     const editable = param.get("editable");
                     this.entitySrv.editable = editable && editable.toLowerCase() === "true";
                 }

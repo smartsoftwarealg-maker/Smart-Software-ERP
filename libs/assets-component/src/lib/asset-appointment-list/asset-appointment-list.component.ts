@@ -47,7 +47,6 @@ export class AssetAppointmentListComponent extends BaseChildEntityListComponent<
     ];
 
 
-    public readonly pagination = PaginationModel.newInstance();
 
     constructor(
         public entitySrv: AssetAppointmentService) {

@@ -4,7 +4,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {ImageUploaderUtil, LoginService} from '@ss/common/api-common';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {AppArchiveService} from '../app-archive.service';
-import {concatMap, from, of, switchMap, zip} from 'rxjs';
+import { concatMap, from, of, switchMap, tap, zip } from 'rxjs';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {AppArchiveDocumentService} from '@ss/common/api-lookup';
 import {AppArchive} from '../app-archive-api';
@@ -25,8 +25,6 @@ export class AppArchiveDetailComponent implements OnInit {
     constructor(private service: AppArchiveService,
                 private router: Router,
                 private route: ActivatedRoute,
-                private loginSrv: LoginService,
-                private shellSrv: ShellService,
                 private snackBarSrv: SnackBarService) {}
 
     ngOnInit(): void {

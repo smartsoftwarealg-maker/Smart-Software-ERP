@@ -4,7 +4,7 @@ import { ActivatedRoute, Router } from "@angular/router";
 import { ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
 import { BaseEntityService } from "@ss/common/api-base-entity";
 import { LoginService, PaginationModel, Right } from "@ss/common/api-common";
-import { map, Observable, of } from "rxjs";
+import { map, Observable, of, tap } from 'rxjs';
 import { Sort } from "@angular/material/sort";
 import { DefaultReportService } from "@ss/common/ui-default-report-component";
 
@@ -82,6 +82,7 @@ export class BaseChildEntityListComponent<T extends { id: number }> implements O
 
     protected refresh() {
         this.data$ = this.detailSrv.getPage(this.paginator);
+
         this.emptyData$ = this.data$.pipe(map(res => res.length === 0));
     }
 
