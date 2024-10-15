@@ -14,7 +14,7 @@ import { UiPaginationModule } from "@ss/common/ui-pagination";
 
 import { CommonUiAutoCompleteModule } from "@ss/common/ui-auto-complete";
 import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
-import { AppArchiveModule } from "@ss/common/app-archive";
+
 
 @Component({
   selector: 'ss-file-selector',
@@ -32,7 +32,7 @@ import { AppArchiveModule } from "@ss/common/app-archive";
         CommonUiAutoCompleteModule,
         CommonUiDatepickerModule,
         CommonUiConfirmationDialogModule,
-        AppArchiveModule
+
     ],
 })
 export class FileSelectorComponent extends BaseEntityListComponent<ACCFile> implements OnInit {

@@ -1,19 +1,28 @@
 @if (!disabled && !readOnly) {
-    <div class="b-b-background img-container mat-elevation-z6" [matMenuTriggerFor]="menu">
+    <div class="img-container mat-elevation-z6" [matMenuTriggerFor]="menu">
         @if (!safeUrl) {
             <i style="font-size: 32px" class="fas fa-image f-b-disabled-btn"></i>
+        } @else {
+            <img [src]="safeUrl" [alt]="alt">
+        }
+    </div>
+} @else {
+    <div class="img-container mat-elevation-z6">
+        @if (!safeUrl) {
+           <i style="font-size: 32px" class="fas fa-image f-b-disabled-btn"></i>
         }
         <img [src]="safeUrl" [alt]="alt">
+        @if (disabled) {
+            <div class="disable-panel"></div>
+        }
     </div>
 }
-<div *ngIf="disabled || readOnly" class="b-b-background img-container mat-elevation-z6">
-    <i *ngIf="!safeUrl" style="font-size: 32px" class="fas fa-image f-b-disabled-btn"></i>
-    <img [src]="safeUrl" [alt]="alt">
-    <div class="disable-panel" *ngIf="disabled"></div>
-</div>
 
 <mat-menu [xPosition]="langSrv.rtl ? 'after' : 'before'" yPosition="below" overlapTrigger="false" #menu="matMenu">
-    <button (click)="fileInput.click()" type="button" mat-menu-item class="img-menu-item">
+    <button (click)="fileInput.click()"
+            type="button"
+            mat-menu-item
+            class="img-menu-item">
         <i class="fas fa-pen img-menu-icon"></i>
         <span class="img-menu-text" translate>COMMON_EDIT</span>
     </button>

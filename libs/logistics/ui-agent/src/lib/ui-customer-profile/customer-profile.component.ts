@@ -8,7 +8,7 @@ import { CommonModule } from '@angular/common';
 import { CommonUiLangModule } from '@ss/common/ui-lang';
 import { UiPaginationModule } from '@ss/common/ui-pagination';
 import { CommonUiConfirmationDialogModule } from '@ss/common/ui-confirmation-dialog';
-import { AppArchiveModule } from '@ss/common/app-archive';
+
 import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
 import { CustomAttributesModule } from '@ss/custom-attributes';
 import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
@@ -26,7 +26,7 @@ import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
         ReactiveFormsModule,
         CommonUiConfirmationDialogModule,
 
-        AppArchiveModule,
+
         CommonUiAutoCompleteModule,
         CustomAttributesModule,
         DocInfoComponent

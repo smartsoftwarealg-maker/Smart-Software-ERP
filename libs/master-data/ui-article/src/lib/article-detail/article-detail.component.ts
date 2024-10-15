@@ -17,7 +17,7 @@ import {
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
-import { CommonUiImageInputModule, ImageModel } from '@ss/common/ui-image-input';
+import { ImageInputComponent, ImageModel } from '@ss/common/ui-image-input';
 import { HttpService, MaterialModule } from '@ss/common/api-common';
 import { CommonModule } from '@angular/common';
 import { CommonUiLangModule } from '@ss/common/ui-lang';
@@ -40,10 +40,11 @@ import { LogisticsUiStockInfoModule } from '@ss/logistics/ui-stock-info';
         StockUiArticleStoreModule,
 
         RouterModule,
-        CommonUiImageInputModule,
+
         CommonUiAutoCompleteModule,
-        LogisticsUiStockInfoModule
-    ],
+        LogisticsUiStockInfoModule,
+        ImageInputComponent
+    ]
 })
 export class ArticleDetailComponent extends BaseEntityDetailComponent<Article> implements OnInit {
     private classSrv =  inject(ClassService);

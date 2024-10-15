@@ -1,139 +1,144 @@
-<mat-card>
-    <mat-card-content>
-        <form *ngIf="form !== null" novalidate [formGroup]="form">
-            <mat-form-field id="code">
-                <mat-label translate>COMMON_SEARCH</mat-label>
-                <input matInput formControlName="filter" type="text" autofocus maxlength="20">
-                <mat-error *ngIf="form.controls['filter'].invalid" translate>FIELD_REQUIRED</mat-error>
-            </mat-form-field>
+@if (form !== null) {
+    <mat-card class="size">
+        <mat-card-content>
+            <form [formGroup]="form">
+                <mat-form-field id="code">
+                    <mat-label translate>COMMON_SEARCH</mat-label>
+                    <input matInput formControlName="filter" type="text" autofocus maxlength="20">
+                    @if (form.controls['filter'].invalid) {
+                        <mat-error translate>COMMON_REQUIRED</mat-error>
+                    }
+                </mat-form-field>
 
-            <mat-form-field>
-                <mat-label translate>COMMON_FROM</mat-label>
-                <input matInput formControlName="from" type="text" required>
-                <mat-error *ngIf="form.controls['from'].invalid" translate>COMMON_FIELD_REQUIRED
-                </mat-error>
-            </mat-form-field>
+                <mat-form-field>
+                    <mat-label translate>COMMON_FROM</mat-label>
+                    <input matInput formControlName="from" type="text" required>
+                    @if (form.controls['from'].invalid) {
+                        <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+                    }
+                </mat-form-field>
 
-            <mat-form-field>
-                <mat-label translate>COMMON_TO</mat-label>
-                <input matInput formControlName="to" type="text" required>
-                <mat-error *ngIf="form.controls['to'].invalid" translate>COMMON_FIELD_REQUIRED
-                </mat-error>
-            </mat-form-field>
+                <mat-form-field>
+                    <mat-label translate>COMMON_TO</mat-label>
+                    <input matInput formControlName="to" type="text" required>
+                    <mat-error *ngIf="form.controls['to'].invalid" translate>COMMON_FIELD_REQUIRED
+                    </mat-error>
+                </mat-form-field>
 
-            <div id="responsible" class="default-100 sm-100">
                 <mat-checkbox formControlName="consolidated" translate>COMMON_CONSOLIDATED</mat-checkbox>
-            </div>
 
-            <button mat-raised-button
-                    color="primary"
-                    [disabled]="!form.valid"
-                    (click)="refresh()"
-                    translate>COMMON_REFRESH
-            </button>
-        </form>
-    </mat-card-content>
+                <button mat-raised-button
+                        color="primary"
+                        [disabled]="!form.valid"
+                        (click)="refresh()"
+                        translate>COMMON_REFRESH
+                </button>
+            </form>
+        </mat-card-content>
+    </mat-card>
+}
+<mat-tab-group class="size" [dynamicHeight]="true">
+    <mat-tab>
+        <ng-template mat-tab-label>
+            <span translate>COMMON_BALANCE</span>
+        </ng-template>
+        <div class="container_div">
+            <mat-table mat-table [dataSource]="balanceData" class="main-table">
 
-    <mat-tab-group>
-        <mat-tab>
-            <ng-template mat-tab-label>
-                <span translate>COMMON_BALANCE</span>
-            </ng-template>
-            <div class="container_div">
-                <mat-table mat-table [dataSource]="balanceData" class="main-table">
+                <ng-container matColumnDef="accountNo">
+                    <mat-header-cell *matHeaderCellDef translate>COMMON_ACCOUNTNO</mat-header-cell>
+                    <mat-cell *matCellDef="let e">
+                        {{ e.accountNo }}
+                    </mat-cell>
+                </ng-container>
 
-                    <ng-container matColumnDef="accountNo">
-                        <mat-header-cell *matHeaderCellDef translate>COMMON_ACCOUNTNO</mat-header-cell>
-                        <mat-cell *matCellDef="let e">
-                            {{e.accountNo}}
-                        </mat-cell>
-                    </ng-container>
+                <ng-container matColumnDef="description">
+                    <mat-header-cell *matHeaderCellDef translate>ADMINISTRATION_DESCRIPTION</mat-header-cell>
+                    <mat-cell *matCellDef="let e">
+                        {{ e.description }}
+                    </mat-cell>
+                </ng-container>
 
-                    <ng-container matColumnDef="description">
-                        <mat-header-cell *matHeaderCellDef translate>ADMINISTRATION_DESCRIPTION</mat-header-cell>
-                        <mat-cell *matCellDef="let e">
-                            {{e.description}}
-                        </mat-cell>
-                    </ng-container>
+                <ng-container matColumnDef="customer">
+                    <mat-header-cell *matHeaderCellDef translate>LOGISTICS_CUSTOMER</mat-header-cell>
+                    <mat-cell *matCellDef="let e">
+                        {{ e.customer }}
+                    </mat-cell>
+                </ng-container>
 
-                    <ng-container matColumnDef="customer">
-                        <mat-header-cell *matHeaderCellDef translate>LOGISTICS_CUSTOMER</mat-header-cell>
-                        <mat-cell *matCellDef="let e">
-                            {{e.customer}}
-                        </mat-cell>
-                    </ng-container>
+                <ng-container matColumnDef="oldDebit">
+                    <mat-header-cell *matHeaderCellDef translate>ACC_OLD_DEBIT</mat-header-cell>
+                    <mat-cell *matCellDef="let e">
+                        {{ e.oldDebit | number: '1.2-2' }}
+                    </mat-cell>
+                </ng-container>
 
-                    <ng-container matColumnDef="oldDebit">
-                        <mat-header-cell *matHeaderCellDef translate>ACC_OLD_DEBIT</mat-header-cell>
-                        <mat-cell *matCellDef="let e">
-                            {{e.oldDebit | number: '1.2-2'}}
-                        </mat-cell>
-                    </ng-container>
+                <ng-container matColumnDef="oldCredit">
+                    <mat-header-cell *matHeaderCellDef translate>ACC_OLD_CREDIT</mat-header-cell>
+                    <mat-cell *matCellDef="let e">
+                        {{ e.oldCredit | number: '1.2-2' }}
+                    </mat-cell>
+                </ng-container>
 
-                    <ng-container matColumnDef="oldCredit">
-                        <mat-header-cell *matHeaderCellDef translate>ACC_OLD_CREDIT</mat-header-cell>
-                        <mat-cell *matCellDef="let e">
-                            {{e.oldCredit | number: '1.2-2'}}
-                        </mat-cell>
-                    </ng-container>
+                <ng-container matColumnDef="curDebit">
+                    <mat-header-cell *matHeaderCellDef translate>ACC_CUR_DEBIT</mat-header-cell>
+                    <mat-cell *matCellDef="let e">
+                        {{ e.curDebit | number: '1.2-2' }}
+                    </mat-cell>
+                </ng-container>
 
-                    <ng-container matColumnDef="curDebit">
-                        <mat-header-cell *matHeaderCellDef translate>ACC_CUR_DEBIT</mat-header-cell>
-                        <mat-cell *matCellDef="let e">
-                            {{e.curDebit | number: '1.2-2'}}
-                        </mat-cell>
-                    </ng-container>
+                <ng-container matColumnDef="curCredit">
+                    <mat-header-cell *matHeaderCellDef translate>ACC_CUR_CREDIT</mat-header-cell>
+                    <mat-cell *matCellDef="let e">
+                        {{ e.curCredit | number: '1.2-2' }}
+                    </mat-cell>
+                </ng-container>
 
-                    <ng-container matColumnDef="curCredit">
-                        <mat-header-cell *matHeaderCellDef translate>ACC_CUR_CREDIT</mat-header-cell>
-                        <mat-cell *matCellDef="let e">
-                            {{e.curCredit | number: '1.2-2'}}
-                        </mat-cell>
-                    </ng-container>
+                <ng-container matColumnDef="totDebit">
+                    <mat-header-cell *matHeaderCellDef translate>ACC_TOTAL_DEBIT</mat-header-cell>
+                    <mat-cell *matCellDef="let e">
+                        {{ e.totDebit | number: '1.2-2' }}
+                    </mat-cell>
+                </ng-container>
 
-                    <ng-container matColumnDef="totDebit">
-                        <mat-header-cell *matHeaderCellDef translate>ACC_TOTAL_DEBIT</mat-header-cell>
-                        <mat-cell *matCellDef="let e">
-                            {{e.totDebit | number: '1.2-2'}}
-                        </mat-cell>
-                    </ng-container>
+                <ng-container matColumnDef="totCredit">
+                    <mat-header-cell *matHeaderCellDef translate>ACC_TOTAL_CREDIT</mat-header-cell>
+                    <mat-cell *matCellDef="let e">
+                        {{ e.totCredit | number: '1.2-2' }}
+                    </mat-cell>
+                </ng-container>
 
-                    <ng-container matColumnDef="totCredit">
-                        <mat-header-cell *matHeaderCellDef translate>ACC_TOTAL_CREDIT</mat-header-cell>
-                        <mat-cell *matCellDef="let e">
-                            {{e.totCredit | number: '1.2-2'}}
-                        </mat-cell>
-                    </ng-container>
+                <ng-container matColumnDef="debit">
+                    <mat-header-cell *matHeaderCellDef translate>ACC_DEBIT</mat-header-cell>
+                    <mat-cell *matCellDef="let e">
+                        {{ e.debit | number: '1.2-2' }}
+                    </mat-cell>
+                </ng-container>
 
-                    <ng-container matColumnDef="debit">
-                        <mat-header-cell *matHeaderCellDef translate>ACC_DEBIT</mat-header-cell>
-                        <mat-cell *matCellDef="let e">
-                            {{e.debit | number: '1.2-2'}}
-                        </mat-cell>
-                    </ng-container>
+                <ng-container matColumnDef="credit">
+                    <mat-header-cell *matHeaderCellDef translate>ACC_CREDIT</mat-header-cell>
+                    <mat-cell *matCellDef="let e">
+                        {{ e.credit | number: '1.2-2' }}
+                    </mat-cell>
+                </ng-container>
 
-                    <ng-container matColumnDef="credit">
-                        <mat-header-cell *matHeaderCellDef translate>ACC_CREDIT</mat-header-cell>
-                        <mat-cell *matCellDef="let e">
-                            {{e.credit | number: '1.2-2'}}
-                        </mat-cell>
-                    </ng-container>
+                <mat-header-row *matHeaderRowDef="balanceCols; sticky: true"></mat-header-row>
+                <mat-row class="selectable"
+                         [class.selected]="row.accountNo === selectedAccount"
+                         (click)="selectBalance(row)"
+                         *matRowDef="let row; columns: balanceCols;"></mat-row>
+            </mat-table>
+        </div>
+        <div class="pagination-container b-b-background">
+            <ss-pagination [paginationModel]="balancePaginator"></ss-pagination>
+        </div>
+    </mat-tab>
+    <mat-tab>
+        <ng-template mat-tab-label>
+            <span translate>ACC_GL</span>
+        </ng-template>
 
-                    <mat-header-row *matHeaderRowDef="balanceCols; sticky: true"></mat-header-row>
-                    <mat-row class="selectable" [class.selected]="row.accountNo == selectedAccount"
-                             (click)="selectBalance(row)"
-                             *matRowDef="let row; columns: balanceCols;"></mat-row>
-                </mat-table>
-            </div>
-            <div class="pagination-container b-b-background">
-                <ss-pagination [paginationModel]="balancePaginator"></ss-pagination>
-            </div>
-        </mat-tab>
-        <mat-tab>
-            <ng-template mat-tab-label>
-                <span translate>ACC_GL</span>
-            </ng-template>
-
+        <div class="container_div">
             <mat-table mat-table [dataSource]="glData" class="main-table">
 
                 <ng-container matColumnDef="accountNo">
@@ -181,25 +186,25 @@
                 <ng-container matColumnDef="debit">
                     <mat-header-cell *matHeaderCellDef translate>ACC_DEBIT</mat-header-cell>
                     <mat-cell *matCellDef="let e">
-                        {{e.debit | number: '1.2-2'}}
+                        {{ e.debit | number: '1.2-2' }}
                     </mat-cell>
                 </ng-container>
 
                 <ng-container matColumnDef="credit">
                     <mat-header-cell *matHeaderCellDef translate>ACC_CREDIT</mat-header-cell>
                     <mat-cell *matCellDef="let e">
-                        {{e.credit | number: '1.2-2'}}
+                        {{ e.credit | number: '1.2-2' }}
                     </mat-cell>
                 </ng-container>
 
                 <mat-header-row *matHeaderRowDef="glCols; sticky: true"></mat-header-row>
-                <mat-row class="selectable" [class.selected]="row.accountno == selectedAccount" (click)="selectGL(row)"
+                <mat-row class="selectable"
+                         [class.selected]="row.accountNo === glAccount" (click)="selectGL(row)"
                          *matRowDef="let row; columns: glCols;"></mat-row>
             </mat-table>
-            <div class="pagination-container b-b-background">
-                <ss-pagination [paginationModel]="glPaginator"></ss-pagination>
-            </div>
-        </mat-tab>
-    </mat-tab-group>
-
-</mat-card>
+        </div>
+        <div class="pagination-container b-b-background">
+            <ss-pagination [paginationModel]="glPaginator"></ss-pagination>
+        </div>
+    </mat-tab>
+</mat-tab-group>

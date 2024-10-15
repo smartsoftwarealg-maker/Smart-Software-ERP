@@ -9,7 +9,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
 import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
 import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
-import { AppArchiveModule } from '@ss/common/app-archive';
+
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { DefaultReportService } from '@ss/common/ui-default-report-component';
@@ -31,8 +31,7 @@ import { CProduct, slideToRight } from '@ss/costing/costing-utils';
 
         CommonUiAutoCompleteModule,
         CommonUiDatepickerModule,
-        CommonUiConfirmationDialogModule,
-        AppArchiveModule
+        CommonUiConfirmationDialogModule
     ],
     animations: [slideToRight]
 })

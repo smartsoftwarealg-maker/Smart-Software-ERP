@@ -14,7 +14,7 @@ import { ReactiveFormsModule } from "@angular/forms";
 
 import { CommonUiAutoCompleteModule } from "@ss/common/ui-auto-complete";
 import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
-import { AppArchiveModule } from "@ss/common/app-archive";
+
 
 @Component({
   selector: 'ss-acc-project-list',
@@ -32,7 +32,7 @@ import { AppArchiveModule } from "@ss/common/app-archive";
         CommonUiAutoCompleteModule,
         CommonUiDatepickerModule,
         CommonUiConfirmationDialogModule,
-        AppArchiveModule
+
     ],
 })
 export class AccProjectListComponent extends BaseEntityListComponent<Lookup> {

@@ -8,7 +8,7 @@ import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import { HttpService, MaterialModule, PaginatorPersistenceService } from "@ss/common/api-common";
 import { Observable, of, tap } from 'rxjs';
 import {HttpParams} from '@angular/common/http';
-import { CommonUiImageInputModule, ImageModel } from "@ss/common/ui-image-input";
+import { ImageInputComponent, ImageModel } from '@ss/common/ui-image-input';
 import {FixedElementsEntryService} from '../services/fixed-elements-entry.service';
 import {PayrollMonthService} from '@ss/remuneration/payroll-month';
 import { EmployeeService } from '@ss/employee-services/employee-services';
@@ -35,7 +35,7 @@ import { RemunerationInputFiltersModule } from "@ss/remuneration/input-filters";
         CommonUiDatepickerModule,
         CommonUiAutoCompleteModule,
         RemunerationInputFiltersModule,
-        CommonUiImageInputModule
+        ImageInputComponent
     ],
 })
 export class FixedElementsListComponent extends BaseEntityListComponent<ELine> {

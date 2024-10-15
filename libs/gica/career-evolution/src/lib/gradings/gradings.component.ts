@@ -31,7 +31,7 @@ import { Grade } from '../gica-careers-api';
 import { HttpService, LoginService, PaginationModel } from '@ss/common/api-common';
 import { map, Observable, of, Subscription, tap } from 'rxjs';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
-import { CommonUiImageInputModule, ImageModel } from '@ss/common/ui-image-input';
+import { ImageModel } from '@ss/common/ui-image-input';
 
 @Component({
     selector: 'ss-gica-gradings',
@@ -57,7 +57,7 @@ import { CommonUiImageInputModule, ImageModel } from '@ss/common/ui-image-input'
         MatInput,
         MatLabel,
         ReactiveFormsModule,
-        MatButton, MatHeaderCellDef, MatProgressSpinner, CommonUiAutoCompleteModule, MatHint, CommonUiImageInputModule],
+        MatButton, MatHeaderCellDef, MatProgressSpinner, CommonUiAutoCompleteModule, MatHint],
     templateUrl: './gradings.component.html',
     styleUrl: './gradings.component.css'
 })

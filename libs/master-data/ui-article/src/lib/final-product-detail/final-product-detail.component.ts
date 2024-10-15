@@ -9,7 +9,7 @@ import { ClassService, LookupsService, MarkService, Unit, Vat } from '@ss/common
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
-import { CommonUiImageInputModule, ImageModel } from '@ss/common/ui-image-input';
+import { ImageInputComponent, ImageModel } from '@ss/common/ui-image-input';
 import { HttpService, MaterialModule } from '@ss/common/api-common';
 import { CommonModule } from '@angular/common';
 import { CommonUiLangModule } from '@ss/common/ui-lang';
@@ -34,9 +34,9 @@ import { MatCardModule } from '@angular/material/card';
         UiPaginationModule,
         CommonUiConfirmationDialogModule,
         StockUiArticleStoreModule,
-
+        ImageInputComponent,
         RouterModule,
-        CommonUiImageInputModule,
+
         CommonUiAutoCompleteModule,
         LogisticsUiStockInfoModule,
         MatCardModule

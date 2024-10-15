@@ -7,7 +7,7 @@ import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from '@ss
 import { StockUiArticleStoreModule } from '@ss/stock/article-store';
 
 import { ActivatedRoute, RouterModule } from '@angular/router';
-import { CommonUiImageInputModule } from '@ss/common/ui-image-input';
+
 import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
 import { LogisticsUiStockInfoModule } from '@ss/logistics/ui-stock-info';
 import { Article, ArticleAutoCompleteModel, ArticleService } from '@ss/master-data/api-article';
@@ -28,7 +28,7 @@ import { tap } from 'rxjs/operators';
         StockUiArticleStoreModule,
 
         RouterModule,
-        CommonUiImageInputModule,
+
         CommonUiAutoCompleteModule,
         LogisticsUiStockInfoModule
     ],

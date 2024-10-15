@@ -9,7 +9,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ArticleService } from '@ss/master-data/api-article';
 import { LotsService } from '@ss/common/api-lookup';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
-import { CommonUiImageInputModule } from '@ss/common/ui-image-input';
+
 import { CommonUiLangModule } from '@ss/common/ui-lang';
 
 import { MatTableModule } from '@angular/material/table';
@@ -26,7 +26,7 @@ import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
     standalone: true,
     imports: [
         CommonModule,
-        CommonUiImageInputModule,
+
         CommonUiLangModule,
 
         MatTableModule,

@@ -14,18 +14,15 @@ import { LoginService, MaterialModule } from '@ss/common/api-common';
 import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
 import {Agent, ConsumerService} from "@ss/logistics/api-agent";
 import {MatExpansionPanel} from '@angular/material/expansion';
-import { AccountAutocompleteModel, AccountService, AccountStringAutocompleteModel } from '@ss/accounting/api-accounts';
+import { AccountService, AccountStringAutocompleteModel } from '@ss/accounting/api-accounts';
 import {map} from 'rxjs/operators';
 import {AssetLocationService} from '@ss/assets-component';
 import {AssetClassService} from '@ss/assets-component';
 import {BaseEntityService} from '@ss/common/api-base-entity';
 import {AssetReceptionService} from '@ss/assets-component';
-import {
-    AppArchiveModule
-} from '@ss/common/app-archive';
 import { CommonModule } from '@angular/common';
 import { CommonUiLangModule } from '@ss/common/ui-lang';
-import { CommonUiImageInputModule } from '@ss/common/ui-image-input';
+
 import { UiPaginationModule } from '@ss/common/ui-pagination';
 import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
 import { CustomAttributesModule } from '@ss/custom-attributes';
@@ -41,14 +38,13 @@ import { AssetsBuildingService } from '@ss/assets-component';
         CommonModule,
         MaterialModule,
         CommonUiLangModule,
-        CommonUiImageInputModule,
+
         UiPaginationModule,
         CommonUiConfirmationDialogModule,
         CommonUiAutoCompleteModule,
         CommonUiDatepickerModule,
         RouterModule,
-        CustomAttributesModule,
-        AppArchiveModule
+        CustomAttributesModule
     ]
 })
 export class AssetsInventoryDocDetailComponent extends BaseEntityDetailComponent<AssetInventoryDoc> implements OnInit {

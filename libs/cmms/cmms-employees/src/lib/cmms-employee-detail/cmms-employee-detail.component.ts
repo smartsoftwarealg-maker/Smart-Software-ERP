@@ -10,7 +10,7 @@ import {
     NationalityService
 } from '@ss/common/api-lookup';
 import { AppArchiveService, EMPLOYEE_ARCHIVES } from '@ss/common/app-archive';
-import { CommonUiImageInputModule, ImageModel } from '@ss/common/ui-image-input';
+import { ImageInputComponent, ImageModel } from '@ss/common/ui-image-input';
 import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
 import {
     ReactiveFormsModule,
@@ -47,7 +47,6 @@ import { CmmsEmployeeService } from '../services/cmms-employee.service';
         CommonModule,
         CommonUiAutoCompleteModule,
         CommonUiDatepickerModule,
-        CommonUiImageInputModule,
         CommonUiLangModule,
         MatButtonModule,
         MatCheckboxModule,
@@ -59,7 +58,8 @@ import { CmmsEmployeeService } from '../services/cmms-employee.service';
         MatSelectModule,
         MaterialModule,
         ReactiveFormsModule,
-        RouterOutlet
+        RouterOutlet,
+        ImageInputComponent
     ],
     templateUrl: './cmms-employee-detail.component.html',
     styleUrls: ['./cmms-employee-detail.component.scss'],

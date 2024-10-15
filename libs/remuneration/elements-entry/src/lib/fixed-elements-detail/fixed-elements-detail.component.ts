@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { ELine } from '../elements-entry-api';
-import { CommonUiImageInputModule, ImageModel } from "@ss/common/ui-image-input";
+import { ImageInputComponent, ImageModel } from '@ss/common/ui-image-input';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute } from '@angular/router';
 import { ReactiveFormsModule, UntypedFormArray, UntypedFormBuilder, UntypedFormGroup } from "@angular/forms";
@@ -40,7 +40,7 @@ type Employee = {
         CommonUiDatepickerModule,
         CommonUiAutoCompleteModule,
         RemunerationInputFiltersModule,
-        CommonUiImageInputModule
+        ImageInputComponent
     ],
 })
 export class FixedElementsDetailComponent extends BaseEntityDetailComponent<ELine> {

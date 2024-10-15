@@ -2,19 +2,35 @@ import { Component, inject, OnInit } from '@angular/core';
 import { Lookup, RoleService } from '@ss/common/api-lookup';
 import { APPLICATIONS } from '../app-archive-api';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterModule } from '@angular/router';
 import { AppArchiveService } from '../app-archive.service';
-import { FormControl } from '@angular/forms';
-import { DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
-import { AccessRight, LoginService, Role } from '@ss/common/api-common';
+import { FormControl, ReactiveFormsModule } from '@angular/forms';
+import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
+import { AccessRight, LoginService, MaterialModule, Role } from '@ss/common/api-common';
 import { AccessRightsService } from '@ss/common/api-access-rights';
 import { switchMap, tap } from 'rxjs';
+import { CommonModule } from '@angular/common';
+import { CommonUiLangModule } from '@ss/common/ui-lang';
+import { UiPaginationModule } from '@ss/common/ui-pagination';
+import { CommonUiConfirmationDialogModule } from '@ss/common/ui-confirmation-dialog';
+import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
 
 @Component({
     selector: 'ss-app-archive-rights',
     templateUrl: './app-archive-rights.component.html',
     styleUrls: ['./app-archive-rights.component.scss'],
-})
+    standalone: true,
+    imports: [
+    CommonModule,
+    RouterModule,
+    MaterialModule,
+    CommonUiLangModule,
+    UiPaginationModule,
+    ReactiveFormsModule,
+    CommonUiConfirmationDialogModule,
+    CommonUiAutoCompleteModule,
+    CommonUiDatepickerModule
+]})
 export class AppArchiveRightsComponent implements OnInit {
     private accessRightSrv = inject(AccessRightsService);
     private archiveSrv = inject(AppArchiveService);

@@ -11,9 +11,9 @@ import { FixedElementsEntryService } from '@ss/remuneration/elements-entry';
 import { VehicleService } from '../services/vehicle.service';
 import { VehicleTypeService } from '@ss/common/api-lookup';
 import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
-import { AppArchiveModule, AppArchiveService, PARK_ARCHIVES } from '@ss/common/app-archive';
+import {  AppArchiveService, PARK_ARCHIVES } from '@ss/common/app-archive';
 import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
-import { CommonUiImageInputModule } from '@ss/common/ui-image-input';
+
 import { CommonUiLangModule } from '@ss/common/ui-lang';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
@@ -37,10 +37,10 @@ import { VehicleMissionService } from '../services/vehicle-mission.service';
     standalone: true,
     imports: [
         CommonModule,
-        AppArchiveModule,
+
         CommonUiAutoCompleteModule,
         CommonUiDatepickerModule,
-        CommonUiImageInputModule,
+
         CommonUiLangModule,
         FormsModule,
         MatButtonModule,

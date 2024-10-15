@@ -13,7 +13,7 @@ import { ReactiveFormsModule } from "@angular/forms";
 
 import { CommonUiAutoCompleteModule } from "@ss/common/ui-auto-complete";
 import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
-import { AppArchiveModule } from "@ss/common/app-archive";
+
 
 @Component({
   selector: 'ss-acc-file-list',
@@ -30,8 +30,7 @@ import { AppArchiveModule } from "@ss/common/app-archive";
 
         CommonUiAutoCompleteModule,
         CommonUiDatepickerModule,
-        CommonUiConfirmationDialogModule,
-        AppArchiveModule
+        CommonUiConfirmationDialogModule
     ],
 })
 export class AccFileListComponent extends BaseEntityListComponent<ACCFile> {

@@ -1,4 +1,4 @@
-import { Component, inject, OnDestroy, OnInit, ViewChild } from "@angular/core";
+import { Component, inject, OnDestroy, OnInit, signal, ViewChild } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router, RouterModule, RouterOutlet } from "@angular/router";
 import {
     AccFileService,
@@ -24,7 +24,8 @@ import { UiPaginationModule } from "@ss/common/ui-pagination";
 
 import { CommonUiAutoCompleteModule } from "@ss/common/ui-auto-complete";
 import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
-import { AppArchiveModule } from "@ss/common/app-archive";
+import { AppArchiveMainComponent } from '@ss/common/app-archive';
+
 
 @Component({
     selector: 'ss-transaction-list',
@@ -42,8 +43,9 @@ import { AppArchiveModule } from "@ss/common/app-archive";
         CommonUiAutoCompleteModule,
         CommonUiDatepickerModule,
         CommonUiConfirmationDialogModule,
-        AppArchiveModule
-    ],
+        AppArchiveMainComponent
+
+    ]
 })
 export class TransactionListComponent extends BaseEntityListComponent<ACCTransaction> implements OnDestroy, OnInit {
     private fileSrv = inject(AccFileService);
@@ -54,7 +56,8 @@ export class TransactionListComponent extends BaseEntityListComponent<ACCTransac
 
     transactionMode = true;
     public math = Math;
-    isRoot = true;
+    isRoot = signal(true);
+    isArchive = signal(false);
     selectedJournal = 0;
     journalFilter = new FormControl<string>('');
     journalList: Journal[] = [];
@@ -106,6 +109,7 @@ export class TransactionListComponent extends BaseEntityListComponent<ACCTransac
                 .subscribe(event => {
                     if (event instanceof NavigationEnd) {
                         const isRoot = event.url === '/app/accounting/transactions';
+                        this.isArchive.set(event.url.indexOf('/archive') > 0);
                         if (isRoot) {
                             this.transactionSaved();
                         }
@@ -131,7 +135,7 @@ export class TransactionListComponent extends BaseEntityListComponent<ACCTransac
 
 
     private setDefaultButtons(isRoot: boolean) {
-        this.isRoot = isRoot;
+        this.isRoot.set(isRoot);
         this.addButton.visible = isRoot && this.selectedJournal > 0;
         this.editButton.visible = isRoot;
         this.deleteButton.visible = isRoot;

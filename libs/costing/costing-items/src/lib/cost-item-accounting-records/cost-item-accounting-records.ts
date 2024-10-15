@@ -14,7 +14,7 @@ import { FormControl, ReactiveFormsModule, Validators } from "@angular/forms";
 
 import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
 import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
-import { AppArchiveModule } from '@ss/common/app-archive';
+
 import { AccRecordService } from "../acc-record.service";
 import { callback } from "chart.js/helpers";
 import { debounceTime, distinctUntilChanged, switchMap } from "rxjs/operators";
@@ -34,8 +34,7 @@ import { debounceTime, distinctUntilChanged, switchMap } from "rxjs/operators";
 
     CommonUiAutoCompleteModule,
     CommonUiDatepickerModule,
-    CommonUiConfirmationDialogModule,
-    AppArchiveModule
+    CommonUiConfirmationDialogModule
   ],
   animations: [slideToRight]
 })

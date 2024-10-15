@@ -17,7 +17,7 @@ import { CdkTextareaAutosize } from '@angular/cdk/text-field';
 import { LoginService, MaterialModule } from '@ss/common/api-common';
 import { MatRadioButton, MatRadioGroup, MatRadioModule } from '@angular/material/radio';
 import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
-import { CommonUiImageInputModule } from '@ss/common/ui-image-input';
+
 import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatExpansionModule } from '@angular/material/expansion';
@@ -31,7 +31,7 @@ import { MatSelectModule } from '@angular/material/select';
         CommonModule,
         CommonUiAutoCompleteModule,
         CommonUiDatepickerModule,
-        CommonUiImageInputModule,
+
         CommonUiLangModule,
         MatButtonModule,
         MatCheckboxModule,

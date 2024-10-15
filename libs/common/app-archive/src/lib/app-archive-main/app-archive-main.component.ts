@@ -1,17 +1,36 @@
-import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, inject, Input, OnInit, ViewChild } from '@angular/core';
 import {AppArchiveService} from '../app-archive.service';
-import { ActivatedRoute, Router, RouterOutlet } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule, RouterOutlet } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { MaterialModule } from '@ss/common/api-common';
+import { CommonUiLangModule } from '@ss/common/ui-lang';
+import { UiPaginationModule } from '@ss/common/ui-pagination';
+import { ReactiveFormsModule } from '@angular/forms';
+import { CommonUiConfirmationDialogModule } from '@ss/common/ui-confirmation-dialog';
+import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
+import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
 
 @Component({
     selector: 'ss-app-archive-main',
     templateUrl: './app-archive-main.component.html',
-    styleUrls: ['./app-archive-main.component.scss']
-})
-export class AppArchiveMainComponent implements OnInit {
-    @ViewChild(RouterOutlet) outlet: RouterOutlet;
+    styleUrls: ['./app-archive-main.component.scss'],
+    standalone: true,
+    imports: [
+        CommonModule,
+        RouterModule,
+        MaterialModule,
+        CommonUiLangModule,
+        UiPaginationModule,
+        ReactiveFormsModule,
+        CommonUiConfirmationDialogModule,
+        CommonUiAutoCompleteModule,
+        CommonUiDatepickerModule
+    ],
 
-    constructor(public archiveSrv: AppArchiveService, private route: ActivatedRoute) {
-    }
+})
+export class AppArchiveMainComponent {
+    @ViewChild(RouterOutlet) outlet: RouterOutlet;
+    public archiveSrv = inject(AppArchiveService);
 
     protected refresh() {
         if (this.outlet && this.outlet.isActivated && this.outlet.component) {
@@ -38,14 +57,5 @@ export class AppArchiveMainComponent implements OnInit {
     @Input()
     set appId(id: number) {
         this.archiveSrv.appId = id || 0;
-    }
-
-
-    ngOnInit(): void {
-        this.route.queryParamMap.subscribe(param => {
-            const appId = +param.get('appId') || 0;
-            if (appId > 0) {
-            }
-        });
     }
 }

@@ -1,16 +1,34 @@
 import { Component, inject, Input, OnInit } from "@angular/core";
-import {ActivatedRoute, Router} from '@angular/router';
-import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
+import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { ShellService, SnackBarService } from "@ss/common/ui-shell";
-import {ImageUploaderUtil, PaginationModel} from '@ss/common/api-common';
+import { ImageUploaderUtil, MaterialModule, PaginationModel } from '@ss/common/api-common';
 import {AppArchiveService} from '../app-archive.service';
 import {AppArchive} from '../app-archive-api';
 import { of, switchMap, tap } from "rxjs";
+import { CommonModule } from '@angular/common';
+import { CommonUiLangModule } from '@ss/common/ui-lang';
+import { UiPaginationModule } from '@ss/common/ui-pagination';
+import { ReactiveFormsModule } from '@angular/forms';
+import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
+import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
 
 @Component({
     selector: 'ss-app-archive-list',
     templateUrl: './app-archive-list.component.html',
-    styleUrls: ['./app-archive-list.component.scss']
+    styleUrls: ['./app-archive-list.component.scss'],
+    standalone: true,
+    imports: [
+        CommonModule,
+        RouterModule,
+        MaterialModule,
+        CommonUiLangModule,
+        UiPaginationModule,
+        ReactiveFormsModule,
+        CommonUiConfirmationDialogModule,
+        CommonUiAutoCompleteModule,
+        CommonUiDatepickerModule
+    ],
 })
 export class AppArchiveListComponent implements OnInit {
     private _id = 0;
@@ -37,11 +55,12 @@ export class AppArchiveListComponent implements OnInit {
             .queryParamMap
             .subscribe(param => {
                 const appId = +param.get("appId") || 0;
-                this.entitySrv.setParentId(0);
                 if (appId > 0) {
                     this.entitySrv.appId = appId;
                     const id = +param.get("documentId") || 0;
-                    this.entitySrv.setParentId(id);
+                    if (id > 0) {
+                        this.entitySrv.setParentId(id);
+                    }
                     const editable = param.get("editable");
                     this.entitySrv.editable = editable && editable.toLowerCase() === "true";
                 }

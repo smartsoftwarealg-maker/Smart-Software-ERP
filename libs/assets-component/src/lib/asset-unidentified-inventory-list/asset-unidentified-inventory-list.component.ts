@@ -14,12 +14,12 @@ import { MatDialog } from '@angular/material/dialog';
 import { InventoryImportComponent } from '../inventory-import/inventory-import.component';
 import { CommonModule } from '@angular/common';
 import { CommonUiLangModule } from '@ss/common/ui-lang';
-import { CommonUiImageInputModule } from '@ss/common/ui-image-input';
+
 import { UiPaginationModule } from '@ss/common/ui-pagination';
 import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
 import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
 import { CustomAttributesModule } from '@ss/custom-attributes';
-import { AppArchiveModule } from '@ss/common/app-archive';
+
 import { QRCodeModule } from 'angularx-qrcode';
 import { AssetUnidentifiedInventoryService } from '../services/asset-unidentified-inventory.service';
 import { AssetInventoryDocService } from '../services/asset-inventory-doc.service';
@@ -34,14 +34,14 @@ import { FormControl } from '@angular/forms';
         CommonModule,
         MaterialModule,
         CommonUiLangModule,
-        CommonUiImageInputModule,
+
         UiPaginationModule,
         CommonUiConfirmationDialogModule,
         CommonUiAutoCompleteModule,
         CommonUiDatepickerModule,
         RouterModule,
         CustomAttributesModule,
-        AppArchiveModule,
+
         QRCodeModule
     ]
 

@@ -6,7 +6,7 @@ import {RouterModule} from '@angular/router';
 import { MaterialModule } from '@ss/common/api-common';
 import { UiPaginationModule } from '@ss/common/ui-pagination';
 import { CommonUiLangModule } from '@ss/common/ui-lang';
-import { CommonUiImageInputModule } from '@ss/common/ui-image-input';
+
 import { CommonUiConfirmationDialogModule } from '@ss/common/ui-confirmation-dialog';
 import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
 import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
@@ -16,7 +16,7 @@ import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
         CommonModule,
         MaterialModule,
         CommonUiLangModule,
-        CommonUiImageInputModule,
+
         UiPaginationModule,
         CommonUiConfirmationDialogModule,
         CommonUiDatepickerModule,

@@ -10,7 +10,7 @@ import { CommonUiLangModule } from '@ss/common/ui-lang';
 import { UiPaginationModule } from "@ss/common/ui-pagination";
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 
-import { AppArchiveModule } from "@ss/common/app-archive";
+
 import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
 import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
 import { CommonUiHourPickerModule } from "@ss/common/ui-hour-picker";
@@ -32,7 +32,7 @@ import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
         ReactiveFormsModule,
         CommonUiConfirmationDialogModule,
 
-        AppArchiveModule,
+
         CommonUiAutoCompleteModule,
         CommonUiDatepickerModule,
         RouterOutlet,

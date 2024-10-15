@@ -1,18 +1,35 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { ShellService } from '@ss/common/ui-shell';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterModule } from '@angular/router';
 import { Lookup } from '@ss/common/api-lookup';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { AppArchiveService } from '../app-archive.service';
-import { ImageUploaderUtil, LoginService, PaginationModel } from '@ss/common/api-common';
+import { ImageUploaderUtil, LoginService, MaterialModule, PaginationModel } from '@ss/common/api-common';
 import { Observable, of } from 'rxjs';
 import { AppArchive, AppArchiveObs, APPLICATIONS } from '../app-archive-api';
-import { DatePipe } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
+import { CommonUiLangModule } from '@ss/common/ui-lang';
+import { UiPaginationModule } from '@ss/common/ui-pagination';
+import { CommonUiConfirmationDialogModule } from '@ss/common/ui-confirmation-dialog';
+import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
+import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
 
 @Component({
     selector: 'ss-app-archive-viewer',
     templateUrl: './app-archive-viewer.component.html',
-    styleUrls: ['./app-archive-viewer.component.scss']
+    styleUrls: ['./app-archive-viewer.component.scss'],
+    standalone: true,
+    imports: [
+        CommonModule,
+        RouterModule,
+        MaterialModule,
+        CommonUiLangModule,
+        UiPaginationModule,
+        ReactiveFormsModule,
+        CommonUiConfirmationDialogModule,
+        CommonUiAutoCompleteModule,
+        CommonUiDatepickerModule
+    ]
 })
 export class AppArchiveViewerComponent implements OnInit {
     private loginSrv = inject(LoginService);

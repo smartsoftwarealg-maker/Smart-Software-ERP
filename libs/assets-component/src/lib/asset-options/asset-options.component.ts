@@ -14,11 +14,10 @@ import { MatCheckboxChange } from '@angular/material/checkbox';
 import { tap } from 'rxjs/operators';
 import { CommonModule } from '@angular/common';
 import { CommonUiLangModule } from '@ss/common/ui-lang';
-import { CommonUiImageInputModule } from '@ss/common/ui-image-input';
 import { UiPaginationModule } from '@ss/common/ui-pagination';
 import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
 import { CustomAttributesModule } from '@ss/custom-attributes';
-import { AppArchiveModule } from '@ss/common/app-archive';
+
 import { QRCodeModule } from 'angularx-qrcode';
 
 @Component({
@@ -30,14 +29,13 @@ import { QRCodeModule } from 'angularx-qrcode';
         CommonModule,
         MaterialModule,
         CommonUiLangModule,
-        CommonUiImageInputModule,
         UiPaginationModule,
         CommonUiConfirmationDialogModule,
         CommonUiAutoCompleteModule,
         CommonUiDatepickerModule,
         RouterModule,
         CustomAttributesModule,
-        AppArchiveModule,
+
         QRCodeModule
     ]
 

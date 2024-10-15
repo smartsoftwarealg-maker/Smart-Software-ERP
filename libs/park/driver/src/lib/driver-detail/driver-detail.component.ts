@@ -8,8 +8,8 @@ import {
     LookupsService,
     MaritalStatus
 } from '@ss/common/api-lookup';
-import { AppArchiveModule, AppArchiveService, EMPLOYEE_ARCHIVES } from '@ss/common/app-archive';
-import { CommonUiImageInputModule, ImageModel } from '@ss/common/ui-image-input';
+import { AppArchiveMainComponent, AppArchiveService, EMPLOYEE_ARCHIVES } from '@ss/common/app-archive';
+import {  ImageModel } from '@ss/common/ui-image-input';
 import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
 import {
     AbstractControl,
@@ -46,10 +46,10 @@ import { DriverVehicleService } from '../services/driver-vehicle.service';
     standalone: true,
     imports: [
         CommonModule,
-        AppArchiveModule,
+
         CommonUiAutoCompleteModule,
         CommonUiDatepickerModule,
-        CommonUiImageInputModule,
+
         CommonUiLangModule,
         FormsModule,
         MatButtonModule,
@@ -61,7 +61,8 @@ import { DriverVehicleService } from '../services/driver-vehicle.service';
         MatRadioModule,
         MatSelectModule,
         ReactiveFormsModule,
-        DriverLicenseMainComponent
+        DriverLicenseMainComponent,
+        AppArchiveMainComponent
     ],
     templateUrl: './driver-detail.component.html',
     styleUrls: ['./driver-detail.component.css']

@@ -32,7 +32,7 @@ import { CommonUiLangModule } from "@ss/common/ui-lang";
 import { UiPaginationModule } from "@ss/common/ui-pagination";
 
 import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
-import { AppArchiveModule } from "@ss/common/app-archive";
+
 
 @Component({
     selector: 'ss-transaction-lines-detail',
@@ -50,7 +50,7 @@ import { AppArchiveModule } from "@ss/common/app-archive";
         CommonUiAutoCompleteModule,
         CommonUiDatepickerModule,
         CommonUiConfirmationDialogModule,
-        AppArchiveModule
+
     ],
 })
 export class TransactionLinesDetailComponent implements OnInit {
@@ -120,21 +120,21 @@ export class TransactionLinesDetailComponent implements OnInit {
 
     setupForm(e: ACCTransactionLine): UntypedFormGroup {
         return  this.formBuilder.group({
-            id: [((e.fileId * SCALE + e.oid) * SCALE + e.lineNumber) || 0],
-            fileId:     [e.fileId || this.loginSrv.appCtx.accFile],
-            oid:        [e.oid || this.transactionId],
-            accountNo:  [e.accountNo],
-            customer:   [e.customer],
-            lineNumber: [e.lineNumber || 1],
-            c_o_d:      [e.c_o_d],
-            balance:    [e.balance],
-            debit:      [{ value: e.balance > 0? e.balance : 0.0, disabled: e.balance < 0 }],
-            credit: [{ value: e.balance < 0? -e.balance : 0.0, disabled: e.balance > 0 } ],
-            reference: [e.reference],
-            checkNo: [e.checkNo],
-            description: [e.description, Validators.required],
-            customerId: [e.customerId],
-            accountId: [e.accountId, Validators.required],
+            id:           [((e.fileId * SCALE + e.oid) * SCALE + e.lineNumber) || 0],
+            fileId:       [e.fileId || this.loginSrv.appCtx.accFile],
+            oid:          [e.oid || this.transactionId],
+            accountNo:    [e.accountNo],
+            customer:     [e.customer],
+            lineNumber:   [e.lineNumber || 1],
+            c_o_d:        [e.c_o_d],
+            balance:      [e.balance],
+            debit:        [{ value: e.balance > 0? e.balance : 0.0, disabled: e.balance < 0 }],
+            credit:       [{ value: e.balance < 0? -e.balance : 0.0, disabled: e.balance > 0 } ],
+            reference:    [e.reference],
+            checkNo:      [e.checkNo],
+            description:  [e.description, Validators.required],
+            customerId:   [e.customerId],
+            accountId:    [e.accountId, Validators.required],
             costCenterId: [e.costCenterId]
         }, { validators: this.formValidator });
     }
@@ -160,7 +160,7 @@ export class TransactionLinesDetailComponent implements OnInit {
                     return <ACCTransactionLine> {
                         id: 0,
                         description: res.description,
-                        balance: -(res.balance || 0)
+                        balance:     -(res.balance || 0)
                     }
                 }));
         }

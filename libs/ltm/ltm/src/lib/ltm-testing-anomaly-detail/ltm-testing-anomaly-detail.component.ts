@@ -10,7 +10,7 @@ import { dateTimeToYmdStr, LoginService, MaterialModule } from '@ss/common/api-c
 import { CommonUiLangModule } from "@ss/common/ui-lang";
 import { UiPaginationModule } from "@ss/common/ui-pagination";
 
-import { AppArchiveModule } from "@ss/common/app-archive";
+
 import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
 import { CommonUiHourPickerModule } from "@ss/common/ui-hour-picker";
 import { LtmAnomalyService } from "../services/ltm-anomaly.service";
@@ -32,7 +32,7 @@ import { LtmPickupPointService } from '../services/ltm-pickup-point.service';
         ReactiveFormsModule,
         CommonUiConfirmationDialogModule,
 
-        AppArchiveModule,
+
         CommonUiAutoCompleteModule,
         CommonUiDatepickerModule,
         RouterOutlet,

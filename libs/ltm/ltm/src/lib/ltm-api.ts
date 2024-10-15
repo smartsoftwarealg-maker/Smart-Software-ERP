@@ -43,6 +43,12 @@ export interface LTMMixture {
     descriptionAr?: string;
 }
 
+export interface LTMAnomaly {
+    id: number;
+    centerId: number;
+    description: string;
+    descriptionAr?: string;
+}
 export interface LTMTestingAnomaly {
     id: number;
     centerId: number;

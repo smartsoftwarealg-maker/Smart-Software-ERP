@@ -1,12 +1,12 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AppArchiveModule, CMMS_ROUTING_ARCHIVES } from '@ss/common/app-archive';
+import { AppArchiveMainComponent, CMMS_ROUTING_ARCHIVES } from '@ss/common/app-archive';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
     selector: 'ss-rounting-archive',
     standalone: true,
-    imports: [CommonModule, AppArchiveModule],
+    imports: [CommonModule, AppArchiveMainComponent],
     templateUrl: './cmms-routing-archive.component.html',
     styleUrls: ['./cmms-routing-archive.component.css'],
 })

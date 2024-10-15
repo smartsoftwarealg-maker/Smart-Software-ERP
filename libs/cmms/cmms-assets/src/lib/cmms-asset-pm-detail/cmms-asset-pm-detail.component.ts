@@ -2,7 +2,7 @@ import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { Asset } from '../services/asset-api';
-import { AGENT_ARCHIVES, AppArchiveModule, AppArchiveService } from '@ss/common/app-archive';
+import { AGENT_ARCHIVES,  AppArchiveService } from '@ss/common/app-archive';
 import { ActivatedRoute, Router, RouterOutlet } from '@angular/router';
 import { IsParamService, LoginService, MaterialModule } from '@ss/common/api-common';
 import { AssetEndsService } from '@ss/accounting/accounting-api';
@@ -40,7 +40,7 @@ import { CMMSAssetTriggerService } from '@ss/cmms/asset-triggers';
 @Component({
     selector: 'ss-cmms-asset-detail',
     standalone: true,
-    imports: [CommonModule, AppArchiveModule, CommonUiAutoCompleteModule, CommonUiDatepickerModule, CommonUiLangModule, CustomAttributesModule, FormsModule, MatButtonModule, MatExpansionModule, MatFormFieldModule, MatInputModule, MatOptionModule, MatSelectModule, MatTableModule, MatTooltipModule, QRCodeModule, ReactiveFormsModule, RouterOutlet, MaterialModule],
+    imports: [CommonModule,  CommonUiAutoCompleteModule, CommonUiDatepickerModule, CommonUiLangModule, CustomAttributesModule, FormsModule, MatButtonModule, MatExpansionModule, MatFormFieldModule, MatInputModule, MatOptionModule, MatSelectModule, MatTableModule, MatTooltipModule, QRCodeModule, ReactiveFormsModule, RouterOutlet, MaterialModule],
     templateUrl: './cmms-asset-pm-detail.component.html',
     styleUrls: ['./cmms-asset-pm-detail.component.scss'],
 })

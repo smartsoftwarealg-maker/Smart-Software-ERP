@@ -16,23 +16,23 @@ import { BankExpenseListComponent } from './bank-expense-list/bank-expense-list.
 import { BankExpenseDetailComponent } from './bank-expense-detail/bank-expense-detail.component';
 import { TransactionLineListComponent } from './transaction-line-list/transaction-line-list.component';
 import { TransactionLineDetailComponent } from './transaction-line-detail/transaction-line-detail.component';
-import { AppArchiveModule } from "@ss/common/app-archive";
+import { AppArchiveMainComponent } from '@ss/common/app-archive';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    MaterialModule,
-    CommonUiLangModule,
-    UiPaginationModule,
-    ReactiveFormsModule,
-    CommonUiConfirmationDialogModule,
-    RouterModule,
-    StockUiConsumptionLinesModule,
-    CommonUiDatepickerModule,
-    CommonUiAutoCompleteModule,
-    LogisticsUiStockInfoModule,
-    AppArchiveModule
-  ],
+    imports: [
+        CommonModule,
+        MaterialModule,
+        CommonUiLangModule,
+        UiPaginationModule,
+        ReactiveFormsModule,
+        CommonUiConfirmationDialogModule,
+        RouterModule,
+        StockUiConsumptionLinesModule,
+        CommonUiDatepickerModule,
+        CommonUiAutoCompleteModule,
+        LogisticsUiStockInfoModule,
+        AppArchiveMainComponent
+    ],
     declarations: [
         TransactionListComponent,
         TransactionDetailComponent,

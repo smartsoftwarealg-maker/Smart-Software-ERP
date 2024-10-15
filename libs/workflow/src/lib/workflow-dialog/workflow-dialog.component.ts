@@ -12,7 +12,7 @@ import { CommonUiLangModule } from '@ss/common/ui-lang';
 import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
 import { RemunerationPaymonthEditorModule } from '@ss/remuneration/paymonth-editor';
 import { CommonPayrollModule } from '@ss/payroll-common';
-import { CommonUiImageInputModule } from '@ss/common/ui-image-input';
+
 import { OrgChartModule } from 'angular13-organization-chart';
 
 type MBData = {
@@ -35,7 +35,7 @@ type MBData = {
         CommonUiAutoCompleteModule,
         RemunerationPaymonthEditorModule,
         CommonPayrollModule,
-        CommonUiImageInputModule,
+
         OrgChartModule,
     ],
 })

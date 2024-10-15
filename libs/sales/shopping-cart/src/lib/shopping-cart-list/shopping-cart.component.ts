@@ -7,7 +7,7 @@ import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from '@ss
 import { DefaultReportService } from '@ss/common/ui-default-report-component';
 import { LookupsService, MarkService } from '@ss/common/api-lookup';
 import { HttpService, MaterialModule, PaginationModel, PaginatorPersistenceService } from '@ss/common/api-common';
-import { CommonUiImageInputModule, ImageModel } from '@ss/common/ui-image-input';
+import { ImageInputComponent, ImageModel } from '@ss/common/ui-image-input';
 import { Observable, of, switchMap, tap } from 'rxjs';
 import { ShoppingCartService } from '../shopping-cart.service';
 import { Cartline } from '../cartline';
@@ -39,8 +39,8 @@ import { LogisticsUiStockInfoModule } from '@ss/logistics/ui-stock-info';
 
         SalesUiDeliveryLinesModule,
         LogisticsUiDocImportModule,
-        CommonUiImageInputModule,
-        LogisticsUiStockInfoModule
+        LogisticsUiStockInfoModule,
+        ImageInputComponent
     ]
 
 })

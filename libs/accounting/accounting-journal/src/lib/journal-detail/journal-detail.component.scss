@@ -1,8 +1,11 @@
+mat-card {
+    border-radius: 1.4em;
+}
 .container {
     height: 100%;
     width: 96%;
     max-width: 800px;
-    margin: 0 auto;
+    margin: 8px auto;
     display: flex;
     row-gap: 10px;
     flex-direction: column;
@@ -27,4 +30,9 @@
 
 .user-lookup {
     min-width: 300px;
+}
+
+.header__div {
+    height: 3em;
+    padding: 1em 1em 0;
 }
