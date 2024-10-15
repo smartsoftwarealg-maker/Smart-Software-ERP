@@ -16,7 +16,7 @@ import { FormControl, ReactiveFormsModule } from "@angular/forms";
 
 import { CommonUiAutoCompleteModule } from "@ss/common/ui-auto-complete";
 import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
-import { AppArchiveModule } from "@ss/common/app-archive";
+
 import { debounceTime, distinctUntilChanged } from "rxjs/operators";
 import { Sort } from "@angular/material/sort";
 
@@ -36,7 +36,7 @@ import { Sort } from "@angular/material/sort";
         CommonUiAutoCompleteModule,
         CommonUiDatepickerModule,
         CommonUiConfirmationDialogModule,
-        AppArchiveModule
+
     ],
 })
 export class TransactionLinesListComponent implements OnInit {

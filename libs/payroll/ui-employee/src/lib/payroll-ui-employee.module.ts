@@ -35,7 +35,6 @@ import { EmployeeDecisionListComponent } from './employee-decisions/list/employe
 import { PersonListComponent } from './person-list/person-list.component';
 import { PaymentInfoComponent } from './payment-info/payment-info.component';
 import {CustomAttributesModule} from '@ss/custom-attributes';
-import {AppArchiveModule} from '@ss/common/app-archive';
 import { ImageInputComponent } from '@ss/common/ui-image-input';
 
 @NgModule({
@@ -50,7 +49,7 @@ import { ImageInputComponent } from '@ss/common/ui-image-input';
         CommonUiDatepickerModule,
         RouterModule,
         CustomAttributesModule,
-        AppArchiveModule,
+
         ImageInputComponent
     ],
     exports: [

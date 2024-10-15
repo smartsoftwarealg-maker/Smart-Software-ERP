@@ -15,7 +15,7 @@ import { LoginService, MaterialModule } from '@ss/common/api-common';
 import { CommonUiLangModule } from "@ss/common/ui-lang";
 import { UiPaginationModule } from "@ss/common/ui-pagination";
 
-import { AppArchiveModule } from "@ss/common/app-archive";
+
 import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
 import { CommonUiHourPickerModule } from "@ss/common/ui-hour-picker";
 
@@ -32,7 +32,7 @@ import { CommonUiHourPickerModule } from "@ss/common/ui-hour-picker";
         ReactiveFormsModule,
         CommonUiConfirmationDialogModule,
 
-        AppArchiveModule,
+
         CommonUiAutoCompleteModule,
         CommonUiDatepickerModule,
         RouterOutlet,

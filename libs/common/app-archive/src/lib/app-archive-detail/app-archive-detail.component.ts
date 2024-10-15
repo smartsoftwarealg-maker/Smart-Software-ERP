@@ -1,18 +1,35 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { FormBuilder, UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
-import {ActivatedRoute, Router} from '@angular/router';
-import {ImageUploaderUtil, LoginService} from '@ss/common/api-common';
+import { FormBuilder, ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
+import { ImageUploaderUtil, LoginService, MaterialModule } from '@ss/common/api-common';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {AppArchiveService} from '../app-archive.service';
 import { concatMap, from, of, switchMap, tap, zip } from 'rxjs';
-import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
+import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
 import {AppArchiveDocumentService} from '@ss/common/api-lookup';
 import {AppArchive} from '../app-archive-api';
+import { CommonModule } from '@angular/common';
+import { CommonUiLangModule } from '@ss/common/ui-lang';
+import { UiPaginationModule } from '@ss/common/ui-pagination';
+import { CommonUiConfirmationDialogModule } from '@ss/common/ui-confirmation-dialog';
+import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
 
 @Component({
     selector: 'ss-agent-archive-detail',
     templateUrl: './app-archive-detail.component.html',
-    styleUrls: ['./app-archive-detail.component.scss']
+    styleUrls: ['./app-archive-detail.component.scss'],
+    standalone: true,
+    imports: [
+        CommonModule,
+        RouterModule,
+        MaterialModule,
+        CommonUiLangModule,
+        UiPaginationModule,
+        ReactiveFormsModule,
+        CommonUiConfirmationDialogModule,
+        CommonUiAutoCompleteModule,
+        CommonUiDatepickerModule
+    ]
 })
 export class AppArchiveDetailComponent implements OnInit {
     private withQueryParams = false;

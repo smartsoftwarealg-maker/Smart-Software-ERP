@@ -13,7 +13,7 @@ import { CommonUiConfirmationDialogModule } from '@ss/common/ui-confirmation-dia
 import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
 import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
 import { CustomAttributesModule } from '@ss/custom-attributes';
-import { AppArchiveModule } from '@ss/common/app-archive';
+
 import { QRCodeModule } from 'angularx-qrcode';
 
 @Component({
@@ -32,7 +32,7 @@ import { QRCodeModule } from 'angularx-qrcode';
         CommonUiDatepickerModule,
         RouterModule,
         CustomAttributesModule,
-        AppArchiveModule,
+
         QRCodeModule
     ]})
 export class AgentAssetsListComponent implements OnInit {

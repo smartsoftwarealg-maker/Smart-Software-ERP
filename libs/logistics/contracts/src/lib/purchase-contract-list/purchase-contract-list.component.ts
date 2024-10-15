@@ -11,7 +11,7 @@ import { Agent, AgentLookupModel, AgentService, SupplierService } from "@ss/logi
 import { CommonModule } from '@angular/common';
 import { CommonUiLangModule } from "@ss/common/ui-lang";
 import { UiPaginationModule } from '@ss/common/ui-pagination';
-import { AppArchiveModule } from "@ss/common/app-archive";
+
 import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
 import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from "@ss/common/ui-auto-complete";
 import { PurchaseContractService } from "../purchase-contract.service";
@@ -28,7 +28,7 @@ import { PurchaseContractService } from "../purchase-contract.service";
         UiPaginationModule,
         ReactiveFormsModule,
         CommonUiConfirmationDialogModule,
-        AppArchiveModule,
+
         CommonUiDatepickerModule,
         CommonUiAutoCompleteModule,
         RouterModule,

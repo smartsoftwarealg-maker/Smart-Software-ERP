@@ -4,14 +4,17 @@
             <mat-form-field id="code">
                 <mat-label translate>COMMON_SEARCH</mat-label>
                 <input matInput formControlName="filter" type="text" autofocus maxlength="20">
-                <mat-error *ngIf="form.controls['filter'].invalid" translate>FIELD_REQUIRED</mat-error>
+                @if (form.controls['filter'].invalid) {
+                    <mat-error translate>COMMON_REQUIRED</mat-error>
+                }
             </mat-form-field>
 
             <mat-form-field>
                 <mat-label translate>COMMON_FROM</mat-label>
                 <input matInput formControlName="from" type="text" required>
-                <mat-error *ngIf="form.controls['from'].invalid" translate>COMMON_FIELD_REQUIRED
-                </mat-error>
+                @if (form.controls['from'].invalid) {
+                    <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+                }
             </mat-form-field>
 
             <mat-form-field>

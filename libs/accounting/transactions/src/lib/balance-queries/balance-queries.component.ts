@@ -1,18 +1,18 @@
-import { Component, inject, OnInit } from "@angular/core";
-import {Balance, BalanceQueryService, GL} from '@ss/accounting/accounting-api';
-import { FormBuilder, ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup, Validators } from "@angular/forms";
-import { MaterialModule, PaginationModel } from "@ss/common/api-common";
-import {HttpParams} from '@angular/common/http';
-import {ShellService} from '@ss/common/ui-shell';
-import { ActivatedRoute, RouterModule } from "@angular/router";
-import { CommonModule } from "@angular/common";
-import { CommonUiLangModule } from "@ss/common/ui-lang";
-import { UiPaginationModule } from "@ss/common/ui-pagination";
+import { Component, inject, OnInit } from '@angular/core';
+import { Balance, BalanceQueryService, GL } from '@ss/accounting/accounting-api';
+import { FormBuilder, ReactiveFormsModule, UntypedFormGroup, Validators } from '@angular/forms';
+import { MaterialModule, PaginationModel } from '@ss/common/api-common';
+import { HttpParams } from '@angular/common/http';
+import { ShellService } from '@ss/common/ui-shell';
+import { ActivatedRoute, RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { CommonUiLangModule } from '@ss/common/ui-lang';
+import { UiPaginationModule } from '@ss/common/ui-pagination';
 
-import { CommonUiAutoCompleteModule } from "@ss/common/ui-auto-complete";
-import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
-import { CommonUiConfirmationDialogModule } from "@ss/common/ui-confirmation-dialog";
-import { AppArchiveModule } from "@ss/common/app-archive";
+import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
+import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
+import { CommonUiConfirmationDialogModule } from '@ss/common/ui-confirmation-dialog';
+
 
 @Component({
     selector: 'ss-balance-queries',
@@ -30,7 +30,7 @@ import { AppArchiveModule } from "@ss/common/app-archive";
         CommonUiAutoCompleteModule,
         CommonUiDatepickerModule,
         CommonUiConfirmationDialogModule,
-        AppArchiveModule
+
     ],
 })
 export class BalanceQueriesComponent implements OnInit {
@@ -76,7 +76,7 @@ export class BalanceQueriesComponent implements OnInit {
 
     ngOnInit(): void {
         this.form = this.fb.group({
-            filter: ['', Validators.required],
+            filter: [''],
             from:   [1, [Validators.required, Validators.min(1), Validators.max(12)]],
             to:     [12, [Validators.required, Validators.min(1), Validators.max(12)]],
             consolidated: [false, Validators.required]
@@ -91,12 +91,11 @@ export class BalanceQueriesComponent implements OnInit {
 
     private getParams(): HttpParams {
         const formValue = this.form.value;
-        const params = new HttpParams()
+        return new HttpParams()
             .set('filter', formValue.filter.trim())
             .set('from', formValue.from)
             .set('to', formValue.to)
             .set('consolidated', formValue.consolidated);
-        return params;
     }
     private refreshBalance() {
         this.querySrv

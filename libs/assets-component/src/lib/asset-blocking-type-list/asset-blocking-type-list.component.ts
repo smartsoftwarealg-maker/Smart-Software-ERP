@@ -14,7 +14,7 @@ import { UiPaginationModule } from '@ss/common/ui-pagination';
 import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
 import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
 import { CustomAttributesModule } from '@ss/custom-attributes';
-import { AppArchiveModule } from '@ss/common/app-archive';
+
 import { QRCodeModule } from 'angularx-qrcode';
 
 @Component({
@@ -33,7 +33,7 @@ import { QRCodeModule } from 'angularx-qrcode';
         CommonUiDatepickerModule,
         RouterModule,
         CustomAttributesModule,
-        AppArchiveModule,
+
         QRCodeModule
     ]})
 export class AssetBlockingTypeListComponent extends BaseEntityListComponent<Lookup> {

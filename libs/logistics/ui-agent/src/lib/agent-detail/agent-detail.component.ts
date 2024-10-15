@@ -33,7 +33,7 @@ import {MatExpansionPanel} from '@angular/material/expansion';
 import { FormValidators, IsParamService, LoginService, MaterialModule } from '@ss/common/api-common';
 import {BankService} from '@ss/administration/api-bank';
 import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel, Id } from '@ss/common/ui-auto-complete';
-import { AGENT_ARCHIVES, AppArchiveModule, AppArchiveService } from '@ss/common/app-archive';
+import { AGENT_ARCHIVES, AppArchiveMainComponent, AppArchiveService } from '@ss/common/app-archive';
 import { MatSelectionListChange } from '@angular/material/list';
 import { CenterService } from '@ss/administration/api-center';
 import { MatDialog } from '@angular/material/dialog';
@@ -58,11 +58,12 @@ import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
         ReactiveFormsModule,
         CommonUiConfirmationDialogModule,
 
-        AppArchiveModule,
+
         CommonUiAutoCompleteModule,
         CustomAttributesModule,
-        DocInfoComponent
-    ],
+        DocInfoComponent,
+        AppArchiveMainComponent
+    ]
 
 })
 export class AgentDetailComponent extends BaseEntityDetailComponent<Agent> implements OnInit {

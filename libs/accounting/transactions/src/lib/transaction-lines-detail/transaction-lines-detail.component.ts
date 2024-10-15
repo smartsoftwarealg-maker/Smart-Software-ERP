@@ -32,7 +32,7 @@ import { CommonUiLangModule } from "@ss/common/ui-lang";
 import { UiPaginationModule } from "@ss/common/ui-pagination";
 
 import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
-import { AppArchiveModule } from "@ss/common/app-archive";
+
 
 @Component({
     selector: 'ss-transaction-lines-detail',
@@ -50,7 +50,7 @@ import { AppArchiveModule } from "@ss/common/app-archive";
         CommonUiAutoCompleteModule,
         CommonUiDatepickerModule,
         CommonUiConfirmationDialogModule,
-        AppArchiveModule
+
     ],
 })
 export class TransactionLinesDetailComponent implements OnInit {

@@ -15,7 +15,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
 import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
-import { AppArchiveModule } from '@ss/common/app-archive';
+
 
 @Component({
   selector: "ss-costing-item-list",
@@ -32,8 +32,7 @@ import { AppArchiveModule } from '@ss/common/app-archive';
 
     CommonUiAutoCompleteModule,
     CommonUiDatepickerModule,
-    CommonUiConfirmationDialogModule,
-    AppArchiveModule
+    CommonUiConfirmationDialogModule
   ],
   animations: [slideToRight]
 })

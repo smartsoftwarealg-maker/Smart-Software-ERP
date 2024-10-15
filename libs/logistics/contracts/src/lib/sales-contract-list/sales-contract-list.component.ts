@@ -13,7 +13,7 @@ import {debounceTime, distinctUntilChanged} from 'rxjs/operators';
 import { CommonModule } from "@angular/common";
 import { CommonUiLangModule } from "@ss/common/ui-lang";
 import { UiPaginationModule } from "@ss/common/ui-pagination";
-import { AppArchiveModule } from "@ss/common/app-archive";
+
 import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
 import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from "@ss/common/ui-auto-complete";
 
@@ -29,7 +29,7 @@ import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from "@ss/common
         UiPaginationModule,
         ReactiveFormsModule,
         CommonUiConfirmationDialogModule,
-        AppArchiveModule,
+
         CommonUiDatepickerModule,
         CommonUiAutoCompleteModule,
         RouterModule,

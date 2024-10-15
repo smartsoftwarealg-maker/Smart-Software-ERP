@@ -10,7 +10,7 @@ import {CommonUiAutoCompleteModule} from '@ss/common/ui-auto-complete';
 import {CommonUiDatepickerModule} from '@ss/common/ui-datepicker';
 import {RouterModule} from '@angular/router';
 import {CustomAttributesModule} from '@ss/custom-attributes';
-import {AppArchiveModule} from '@ss/common/app-archive';
+import { AppArchiveMainComponent } from '@ss/common/app-archive';
 
 @NgModule({
     imports: [
@@ -24,7 +24,7 @@ import {AppArchiveModule} from '@ss/common/app-archive';
         CommonUiDatepickerModule,
         RouterModule,
         CustomAttributesModule,
-        AppArchiveModule
+        AppArchiveMainComponent
     ],
     declarations: [DocumentArchiveComponent],
 })

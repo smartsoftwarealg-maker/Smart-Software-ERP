@@ -13,7 +13,7 @@ import { UiPaginationModule } from "@ss/common/ui-pagination";
 
 import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
 import { CommonUiConfirmationDialogModule } from "@ss/common/ui-confirmation-dialog";
-import { AppArchiveModule } from "@ss/common/app-archive";
+
 
 @Component({
     selector: 'ss-depreciation-generation',
@@ -30,7 +30,7 @@ import { AppArchiveModule } from "@ss/common/app-archive";
         CommonUiAutoCompleteModule,
         CommonUiDatepickerModule,
         CommonUiConfirmationDialogModule,
-        AppArchiveModule
+
     ],
 })
 export class DepreciationGenerationComponent implements OnInit {

@@ -13,7 +13,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
 import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
-import { AppArchiveModule } from '@ss/common/app-archive';
+
 import { CKey, slideToRight } from '@ss/costing/costing-utils';
 
 @Component({
@@ -31,8 +31,7 @@ import { CKey, slideToRight } from '@ss/costing/costing-utils';
 
         CommonUiAutoCompleteModule,
         CommonUiDatepickerModule,
-        CommonUiConfirmationDialogModule,
-        AppArchiveModule
+        CommonUiConfirmationDialogModule
     ],
     animations: [slideToRight]
 })

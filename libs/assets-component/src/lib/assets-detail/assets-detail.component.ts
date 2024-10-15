@@ -33,7 +33,7 @@ import {
     AGENT_ARCHIVES,
     AppArchiveService,
     ASSET_ARCHIVES,
-    ARCHIVE_ROUTE_URL, AppArchiveModule
+    ARCHIVE_ROUTE_URL,
 } from '@ss/common/app-archive';
 import {AssetCostsService} from "../services/asset-costs.service";
 import {AssetRevaluationService} from "../services/asset-revaluation.service";
@@ -65,7 +65,7 @@ import { ImageInputComponent } from '@ss/common/ui-image-input';
         CommonUiDatepickerModule,
         RouterModule,
         CustomAttributesModule,
-        AppArchiveModule,
+
         QRCodeModule,
         AssetAppointmentListComponent
     ]

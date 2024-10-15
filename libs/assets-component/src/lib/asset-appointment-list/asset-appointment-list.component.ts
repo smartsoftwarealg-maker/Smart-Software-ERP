@@ -14,7 +14,7 @@ import { UiPaginationModule } from '@ss/common/ui-pagination';
 import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
 import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
 import { CustomAttributesModule } from '@ss/custom-attributes';
-import { AppArchiveModule } from '@ss/common/app-archive';
+
 import { QRCodeModule } from 'angularx-qrcode';
 import { BaseChildEntityListComponent } from '@ss/common/ui-base-entity';
 
@@ -34,7 +34,7 @@ import { BaseChildEntityListComponent } from '@ss/common/ui-base-entity';
         CommonUiDatepickerModule,
         RouterModule,
         CustomAttributesModule,
-        AppArchiveModule,
+
         QRCodeModule
     ]})
 export class AssetAppointmentListComponent extends BaseChildEntityListComponent<ASSAppointment> {

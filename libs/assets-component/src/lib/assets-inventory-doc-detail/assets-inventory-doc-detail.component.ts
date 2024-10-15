@@ -20,9 +20,6 @@ import {AssetLocationService} from '@ss/assets-component';
 import {AssetClassService} from '@ss/assets-component';
 import {BaseEntityService} from '@ss/common/api-base-entity';
 import {AssetReceptionService} from '@ss/assets-component';
-import {
-    AppArchiveModule
-} from '@ss/common/app-archive';
 import { CommonModule } from '@angular/common';
 import { CommonUiLangModule } from '@ss/common/ui-lang';
 
@@ -47,8 +44,7 @@ import { AssetsBuildingService } from '@ss/assets-component';
         CommonUiAutoCompleteModule,
         CommonUiDatepickerModule,
         RouterModule,
-        CustomAttributesModule,
-        AppArchiveModule
+        CustomAttributesModule
     ]
 })
 export class AssetsInventoryDocDetailComponent extends BaseEntityDetailComponent<AssetInventoryDoc> implements OnInit {

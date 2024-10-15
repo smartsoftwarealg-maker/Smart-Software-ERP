@@ -20,6 +20,7 @@ import { FurnitureReceptionDetailComponent } from './furniture-reception-detail/
 import { RouterOutlet } from '@angular/router';
 import { FurnitureSalesListComponent } from './furniture-sales-list/furniture-sales-list.component';
 import { FurnitureSalesDetailComponent } from './furniture-sales-detail/furniture-sales-detail.component';
+import { AppArchiveMainComponent } from '@ss/common/app-archive';
 
 @NgModule({
     imports: [
@@ -32,6 +33,7 @@ import { FurnitureSalesDetailComponent } from './furniture-sales-detail/furnitur
         CommonPayrollModule,
         CommonUiDatepickerModule,
         RouterOutlet,
+        AppArchiveMainComponent
     ],
     declarations: [
         FurnitureReceiverListComponent,

@@ -1,40 +1,47 @@
 <mat-card class="form_container">
-    <form *ngIf="form" novalidate [formGroup]="form">
+    @if (form) {
+        <form [formGroup]="form">
 
-        <mat-form-field class="default-50 sm-100">
-            <mat-label translate>COMMON_DESCRIPTION</mat-label>
-            <input matInput formControlName="description" type="text" required maxlength="128">
-            <mat-error *ngIf="form.controls['description'].invalid" translate>
-                COMMON_FIELD_REQUIRED
-            </mat-error>
-        </mat-form-field>
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>COMMON_DESCRIPTION</mat-label>
+                <input matInput formControlName="description" type="text" required maxlength="128">
+                <mat-error *ngIf="form.controls['description'].invalid" translate>
+                    COMMON_FIELD_REQUIRED
+                </mat-error>
+            </mat-form-field>
 
-        <mat-form-field class="default-50 sm-100">
-            <mat-label translate>TRS_JOURNAL_TYPE</mat-label>
-            <mat-select formControlName="jType" (valueChange)="onJournalType($event)" required>
-                <mat-option *ngFor="let p of journalTypes" [value]="p.id">
-                    {{ 'COMMON_' + p.description | translate }}
-                </mat-option>
-            </mat-select>
-        </mat-form-field>
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>TRS_JOURNAL_TYPE</mat-label>
+                <mat-select formControlName="jType" (valueChange)="onJournalType($event)" required>
+                    @for (p of banks; track p.id) {
+                        <mat-option [value]="p.id">
+                            {{ 'COMMON_' + p.description | translate }}
+                        </mat-option>
+                    }
+                </mat-select>
+            </mat-form-field>
 
-        <mat-form-field class="default-50 sm-100">
-            <mat-label translate>COMMON_BANK</mat-label>
-            <mat-select formControlName="bankId" >
-                <mat-option *ngFor="let p of banks" [value]="p.id">
-                    {{ p.description }}
-                </mat-option>
-            </mat-select>
-        </mat-form-field>
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>COMMON_BANK</mat-label>
+                <mat-select formControlName="bankId">
+                    @for (p of banks; track p.id) {
+                        <mat-option [value]="p.id">
+                            {{ p.description }}
+                        </mat-option>
+                    }
+                </mat-select>
+            </mat-form-field>
 
-        <mat-form-field class="default-50 sm-100">
-            <mat-label translate>TRS_BANK_ACCOUNT</mat-label>
-            <input matInput formControlName="bankAccount" type="text" maxlength="32">
-        </mat-form-field>
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>TRS_BANK_ACCOUNT</mat-label>
+                <input matInput formControlName="bankAccount" type="text" maxlength="32">
+            </mat-form-field>
 
-        <div style="height: 16px"></div>
+            <div style="height: 16px"></div>
 
-    </form>
+        </form>
+    }
 </mat-card>
-
-<router-outlet *ngIf="id > 0"></router-outlet>
+@if (id > 0) {
+    <router-outlet></router-outlet>
+}

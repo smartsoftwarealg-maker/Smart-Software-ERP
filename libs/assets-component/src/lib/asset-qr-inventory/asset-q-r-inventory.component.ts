@@ -17,7 +17,7 @@ import { CommonUiLangModule } from '@ss/common/ui-lang';
 import { UiPaginationModule } from '@ss/common/ui-pagination';
 import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
 import { CustomAttributesModule } from '@ss/custom-attributes';
-import { AppArchiveModule } from '@ss/common/app-archive';
+
 import { QRCodeModule } from 'angularx-qrcode';
 import { DefaultReportService } from '@ss/common/ui-default-report-component';
 import { Office, OfficeService } from '@ss/common/api-lookup';
@@ -47,7 +47,7 @@ import { AssetOpenInventoryDocService } from '../services/asset-open-inventory-d
         CommonUiDatepickerModule,
         RouterModule,
         CustomAttributesModule,
-        AppArchiveModule,
+
         QRCodeModule
     ],
 })

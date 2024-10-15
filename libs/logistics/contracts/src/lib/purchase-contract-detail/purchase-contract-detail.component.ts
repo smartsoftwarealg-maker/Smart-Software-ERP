@@ -17,10 +17,11 @@ import {Article, ArticleService} from '@ss/master-data/api-article';
 import { CommonModule } from "@angular/common";
 import { CommonUiLangModule } from "@ss/common/ui-lang";
 import { UiPaginationModule } from "@ss/common/ui-pagination";
-import { AppArchiveModule } from "@ss/common/app-archive";
+
 import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
 import { PurchaseContractService } from "../purchase-contract.service";
 import { ContractArticleMainComponent } from "../contract-article-main/contract-article-main.component";
+import { AppArchiveMainComponent } from '@ss/common/app-archive';
 
 @Component({
     selector: 'ss-purchase-contract-detail',
@@ -34,11 +35,12 @@ import { ContractArticleMainComponent } from "../contract-article-main/contract-
         UiPaginationModule,
         ReactiveFormsModule,
         CommonUiConfirmationDialogModule,
-        AppArchiveModule,
+
         CommonUiDatepickerModule,
         CommonUiAutoCompleteModule,
         RouterModule,
-        ContractArticleMainComponent
+        ContractArticleMainComponent,
+        AppArchiveMainComponent
     ]
 })
 export class PurchaseContractDetailComponent extends BaseEntityDetailComponent<Project> {

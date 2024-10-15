@@ -30,7 +30,6 @@ import { dateToYmdStr, LoginService, MaterialModule } from '@ss/common/api-commo
 import { CommonModule } from '@angular/common';
 import { CommonUiLangModule } from '@ss/common/ui-lang';
 import { UiPaginationModule } from '@ss/common/ui-pagination';
-import { AppArchiveModule } from '@ss/common/app-archive';
 import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
 import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
 import { LTMSiloService } from '../services/ltm-silo.service';
@@ -67,7 +66,7 @@ type VarianceControl = {
         ReactiveFormsModule,
         CommonUiConfirmationDialogModule,
 
-        AppArchiveModule,
+
         CommonUiAutoCompleteModule,
         CommonUiDatepickerModule,
         RouterOutlet,

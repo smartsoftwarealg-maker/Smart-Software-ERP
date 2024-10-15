@@ -17,7 +17,7 @@ import {Article, ArticleService} from '@ss/master-data/api-article';
 import { CommonModule } from "@angular/common";
 import { CommonUiLangModule } from "@ss/common/ui-lang";
 import { UiPaginationModule } from "@ss/common/ui-pagination";
-import { AppArchiveModule, CONTRACT_ARCHIVES } from "@ss/common/app-archive";
+import { AppArchiveMainComponent, CONTRACT_ARCHIVES } from '@ss/common/app-archive';
 import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
 import { ContractArticleMainComponent } from "../contract-article-main/contract-article-main.component";
 
@@ -33,11 +33,12 @@ import { ContractArticleMainComponent } from "../contract-article-main/contract-
         UiPaginationModule,
         ReactiveFormsModule,
         CommonUiConfirmationDialogModule,
-        AppArchiveModule,
+
         CommonUiDatepickerModule,
         CommonUiAutoCompleteModule,
         RouterModule,
-        ContractArticleMainComponent
+        ContractArticleMainComponent,
+        AppArchiveMainComponent
     ]
 })
 export class SalesContractDetailComponent extends BaseEntityDetailComponent<Project> {

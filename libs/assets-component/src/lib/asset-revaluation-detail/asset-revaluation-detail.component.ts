@@ -14,7 +14,7 @@ import { CommonUiConfirmationDialogModule } from '@ss/common/ui-confirmation-dia
 import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
 import { RouterModule } from '@angular/router';
 import { CustomAttributesModule } from '@ss/custom-attributes';
-import { AppArchiveModule } from '@ss/common/app-archive';
+
 import { QRCodeModule } from 'angularx-qrcode';
 
 @Component({
@@ -33,7 +33,7 @@ import { QRCodeModule } from 'angularx-qrcode';
         CommonUiDatepickerModule,
         RouterModule,
         CustomAttributesModule,
-        AppArchiveModule,
+
         QRCodeModule
     ]
 })

@@ -14,7 +14,7 @@ import { UiPaginationModule } from "@ss/common/ui-pagination";
 import { CommonUiAutoCompleteModule } from "@ss/common/ui-auto-complete";
 import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
 import { CustomAttributesModule } from "@ss/custom-attributes";
-import { AppArchiveModule } from '@ss/common/app-archive';
+
 
 @Component({
     selector: "ss-asset-class-detail",
@@ -31,7 +31,7 @@ import { AppArchiveModule } from '@ss/common/app-archive';
         CommonUiDatepickerModule,
         RouterModule,
         CustomAttributesModule,
-        AppArchiveModule
+
     ],
 
     styleUrls: ["./asset-class-detail.component.scss"]

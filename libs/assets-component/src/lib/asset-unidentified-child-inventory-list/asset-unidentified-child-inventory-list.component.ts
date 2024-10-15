@@ -10,7 +10,7 @@ import { UiPaginationModule } from '@ss/common/ui-pagination';
 import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
 import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
 import { CustomAttributesModule } from '@ss/custom-attributes';
-import { AppArchiveModule } from '@ss/common/app-archive';
+
 import { QRCodeModule } from 'angularx-qrcode';
 import { AssetUnidentifiedInventoryService } from '@ss/assets-component';
 
@@ -30,7 +30,7 @@ import { AssetUnidentifiedInventoryService } from '@ss/assets-component';
         CommonUiDatepickerModule,
         RouterModule,
         CustomAttributesModule,
-        AppArchiveModule,
+
         QRCodeModule
     ]
 })

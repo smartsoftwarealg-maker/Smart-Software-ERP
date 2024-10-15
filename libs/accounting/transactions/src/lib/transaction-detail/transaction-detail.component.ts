@@ -16,7 +16,7 @@ import { LoginService, MaterialModule } from "@ss/common/api-common";
 import { filter, Observable, of, Subscription } from 'rxjs';
 import {switchMap, tap} from 'rxjs/operators';
 import { CommonUiDatepickerModule, maxDate, minDate } from "@ss/common/ui-datepicker";
-import { ACC_TRANSACTION_ARCHIVES, AppArchiveModule } from "@ss/common/app-archive";
+import { ACC_TRANSACTION_ARCHIVES } from "@ss/common/app-archive";
 import { CommonModule } from "@angular/common";
 import { CommonUiLangModule } from "@ss/common/ui-lang";
 import { UiPaginationModule } from "@ss/common/ui-pagination";
@@ -35,11 +35,9 @@ import { CommonUiAutoCompleteModule } from "@ss/common/ui-auto-complete";
         CommonUiLangModule,
         UiPaginationModule,
         ReactiveFormsModule,
-
         CommonUiAutoCompleteModule,
         CommonUiDatepickerModule,
-        CommonUiConfirmationDialogModule,
-        AppArchiveModule
+        CommonUiConfirmationDialogModule
     ],
 })
 export class TransactionDetailComponent implements OnInit, OnDestroy {

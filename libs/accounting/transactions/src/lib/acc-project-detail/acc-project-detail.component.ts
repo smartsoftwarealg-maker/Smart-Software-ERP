@@ -12,7 +12,7 @@ import { CommonUiLangModule } from "@ss/common/ui-lang";
 import { UiPaginationModule } from "@ss/common/ui-pagination";
 import { CommonUiAutoCompleteModule } from "@ss/common/ui-auto-complete";
 import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
-import { AppArchiveModule } from "@ss/common/app-archive";
+
 
 @Component({
   selector: 'ss-acc-project-detail',
@@ -29,7 +29,7 @@ import { AppArchiveModule } from "@ss/common/app-archive";
         CommonUiAutoCompleteModule,
         CommonUiDatepickerModule,
         CommonUiConfirmationDialogModule,
-        AppArchiveModule
+
     ],
 })
 export class AccProjectDetailComponent extends BaseEntityDetailComponent<Lookup> {

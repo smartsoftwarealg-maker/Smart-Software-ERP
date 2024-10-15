@@ -24,7 +24,8 @@ import { UiPaginationModule } from "@ss/common/ui-pagination";
 
 import { CommonUiAutoCompleteModule } from "@ss/common/ui-auto-complete";
 import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
-import { AppArchiveModule } from "@ss/common/app-archive";
+import { AppArchiveMainComponent } from '@ss/common/app-archive';
+
 
 @Component({
     selector: 'ss-transaction-list',
@@ -42,8 +43,9 @@ import { AppArchiveModule } from "@ss/common/app-archive";
         CommonUiAutoCompleteModule,
         CommonUiDatepickerModule,
         CommonUiConfirmationDialogModule,
-        AppArchiveModule
-    ],
+        AppArchiveMainComponent
+
+    ]
 })
 export class TransactionListComponent extends BaseEntityListComponent<ACCTransaction> implements OnDestroy, OnInit {
     private fileSrv = inject(AccFileService);
