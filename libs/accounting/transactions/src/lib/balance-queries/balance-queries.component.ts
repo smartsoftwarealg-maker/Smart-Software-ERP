@@ -39,6 +39,7 @@ export class BalanceQueriesComponent implements OnInit {
     public glPaginator      = PaginationModel.newInstance();
 
     selectedAccount: string | null = null;
+    glAccount: string | null = null;
     form: UntypedFormGroup = null;
     balanceCols = [
         'accountNo',
@@ -72,6 +73,7 @@ export class BalanceQueriesComponent implements OnInit {
                 private route: ActivatedRoute) {
         this.balancePaginator.onChange = () => this.refreshBalance();
         this.glPaginator.onChange = () => this.refreshGL();
+        this.glPaginator.pageSize = this.balancePaginator.pageSize = 15;
     }
 
     ngOnInit(): void {
@@ -120,6 +122,6 @@ export class BalanceQueriesComponent implements OnInit {
         this.selectedAccount = row?.accountNo;
     }
     selectGL(row: GL) {
-        this.selectedAccount = row?.accountNo;
+        this.glAccount = row?.accountNo;
     }
 }
