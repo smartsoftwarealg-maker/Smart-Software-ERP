@@ -350,5 +350,6 @@
     "PRINTED":                    "imprimée",
     "VERSION":                    "Version",
     "SUMMARY":                    "Sommaire",
-    "DUE_DAY":                    "Jour d"
+    "DUE_DAY":                    "Jour d",
+    "PASSWORD_RESET":             "Réinitialisation mot de passe"
 }

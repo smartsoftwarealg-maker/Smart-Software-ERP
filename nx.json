@@ -39,7 +39,11 @@
             "inputs": ["production", "^production"]
         },
         "lint": {
-            "inputs": ["default", "{workspaceRoot}/.eslintrc.json"]
+            "inputs": [
+                "default",
+                "{workspaceRoot}/.eslintrc.json",
+                "{workspaceRoot}/eslint.config.js"
+            ]
         },
         "e2e": {
             "inputs": ["default", "^production"]
@@ -65,7 +69,8 @@
             "!{projectRoot}/.eslintrc.json",
             "!{projectRoot}/**/?(*.)+(spec|test).[jt]s?(x)?(.snap)",
             "!{projectRoot}/tsconfig.spec.json",
-            "!{projectRoot}/jest.config.[jt]s"
+            "!{projectRoot}/jest.config.[jt]s",
+            "!{projectRoot}/eslint.config.js"
         ]
     },
     "plugins": [

@@ -1,0 +1,61 @@
+import { Component, inject, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { ShellService, SnackBarService } from '@ss/common/ui-shell';
+import { LoginService, MaterialModule, UserService } from '@ss/common/api-common';
+import { ActivatedRoute } from '@angular/router';
+import { CommonUiLangModule } from '@ss/common/ui-lang';
+import { UiPaginationModule } from '@ss/common/ui-pagination';
+import { FormBuilder, ReactiveFormsModule, UntypedFormBuilder } from '@angular/forms';
+import { CommonUiConfirmationDialogModule } from '@ss/common/ui-confirmation-dialog';
+import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
+import { Agent, CustomerService } from '@ss/logistics/api-agent';
+
+@Component({
+    selector: 'ss-password-reset',
+    standalone: true,
+    imports: [
+        CommonModule,
+        MaterialModule,
+        CommonUiLangModule,
+        UiPaginationModule,
+        ReactiveFormsModule,
+        CommonUiConfirmationDialogModule,
+        CommonUiAutoCompleteModule
+    ],
+    templateUrl: './password-reset.component.html',
+    styleUrl: './password-reset.component.scss',
+})
+export class PasswordResetComponent implements OnInit {
+    #password: string|null = null;
+    #snackBarSrv = inject(SnackBarService);
+    #shellSrv =  inject(ShellService);
+    #route =  inject(ActivatedRoute);
+    #fb =  inject(FormBuilder);
+    #userSrv = inject(UserService);
+    #customerSrv = inject(CustomerService);
+
+    customerLookup = new DefaultAutoCompleteModel<Agent>(this.#customerSrv, 'id', 'denomination');
+    form = this.#fb.group ({
+        id:           [0],
+        agentId:      [null],
+        password:     [this.#password],
+        confirmation: [this.#password]
+    });
+
+    ngOnInit() {
+        this.#shellSrv.setTitle('COMMON_PASSWORD_RESET');
+        this.#shellSrv.setGoBackPath('../..', this.#route);
+    }
+
+    updatePassword() {
+        const value = this.form.getRawValue();
+        console.log(value);
+        this.#userSrv
+            .updatePassword(value)
+            .subscribe(res => {
+                if (res.count > 0) {
+                    this.#snackBarSrv.showSuccessMessage();
+                }
+            });
+    }
+}

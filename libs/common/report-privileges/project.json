@@ -3,8 +3,8 @@
     "$schema": "../../../node_modules/nx/schemas/project-schema.json",
     "sourceRoot": "libs/common/report-privileges/src",
     "prefix": "ss",
-    "tags": [],
     "projectType": "library",
+    "tags": [],
     "targets": {
         "test": {
             "executor": "@nx/jest:jest",

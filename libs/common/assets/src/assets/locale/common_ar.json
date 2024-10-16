@@ -345,5 +345,6 @@
     "CLOSED":                     "مغلق",
     "PRINTED":                    "مطبوع",
     "VERSION":                    "النسخة",
-    "SUMMARY":                    "ملخص"
+    "SUMMARY":                    "ملخص",
+    "PASSWORD_RESET":             "اعادة تعيين كلمة المرور"
 }

@@ -346,5 +346,6 @@
     "CLOSED":                     "Closed",
     "PRINTED":                    "Printed",
     "VERSION":                    "Version",
-    "SUMMARY":                    "Summary"
+    "SUMMARY":                    "Summary",
+    "PASSWORD_RESET":            "Password reset"
 }
