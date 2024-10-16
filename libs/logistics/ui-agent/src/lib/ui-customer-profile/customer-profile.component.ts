@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {Agent, AgentService} from '@ss/logistics/api-agent';
 import { ReactiveFormsModule, UntypedFormBuilder, UntypedFormControl, UntypedFormGroup } from '@angular/forms';
@@ -25,8 +25,6 @@ import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
         UiPaginationModule,
         ReactiveFormsModule,
         CommonUiConfirmationDialogModule,
-
-
         CommonUiAutoCompleteModule,
         CustomAttributesModule,
         DocInfoComponent
@@ -34,17 +32,18 @@ import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
 
 })
 export class CustomerProfileComponent implements OnInit {
+    private shellSrv =  inject(ShellService);
+    private loginSrv =  inject(LoginService);
+    public route =  inject(ActivatedRoute);
+    private fb =  inject(UntypedFormBuilder);
+    public snackBarSrv =  inject(SnackBarService);
+    private agentSrv =  inject(AgentService);
+
     form: UntypedFormGroup = null;
     agent: Agent = null;
     pwd1 = new UntypedFormControl();
     pwd2 = new UntypedFormControl();
 
-    constructor(private shellSrv: ShellService,
-              private loginSrv: LoginService,
-              public route: ActivatedRoute,
-              private fb: UntypedFormBuilder,
-              public snackBarSrv: SnackBarService,
-              private agentSrv: AgentService) { }
 
     ngOnInit(): void {
         this.shellSrv.setTitle('COMMON_PROFILE');

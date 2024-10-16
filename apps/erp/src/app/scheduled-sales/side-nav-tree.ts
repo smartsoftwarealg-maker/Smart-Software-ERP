@@ -14,7 +14,7 @@ import {
     ABS_SCHEDULED_SALES_DASHBOARD_URL,
     ABS_CUSTOMER_COMPLAINTS_URL,
     ABS_CMMS_REPORTS_URL,
-    ABS_SCHEDULED_SALES_REPORTS_URL
+    ABS_SCHEDULED_SALES_REPORTS_URL, ABS_SCHEDULED_SALES_PASSWORD_RESET_URL
 } from '../common';
 import {SideNavNode} from '@ss/common/api-common';
 
@@ -130,6 +130,12 @@ export const scheduledSalesNavTree: SideNavNode = {
             icon: 'fa-solid fa-gauge-min',
             route: ABS_SCHEDULED_SALES_DASHBOARD_URL,
             accessRights: 'Dashboard'
+        },
+        {
+            name: 'COMMON_PASSWORD_RESET',
+            icon: 'fa-solid fa-empty-set',
+            route: ABS_SCHEDULED_SALES_PASSWORD_RESET_URL,
+            accessRights: 'User'
         },
         {
             name: 'COMMON_REPORTS',

@@ -311,8 +311,10 @@ export const SS_SCHEDULE_URL             = 'schedules';
 export const SS_PARTNER_SCHEDULE_URL     = 'partner-schedules';
 export const SS_SALES_MODE_URL           = 'sales-modes';
 export const SS_TRUCKS_URL               = 'supplier-trucks';
-export const SERVICE_ORDER_URL = 'service-order';
-export const INVOICE_DUPLICATE_URL = 'service-duplicate';
+export const SERVICE_ORDER_URL           = 'service-order';
+export const INVOICE_DUPLICATE_URL       = 'service-duplicate';
+export const PASSWORD_RESET_URL          = 'password-reset';
+
 
 // Missions
 export const MISSION_PREPARATION_URL = 'missions';
@@ -619,6 +621,7 @@ export const ABS_SCHEDULED_SALES_CATEGORY     = '/' + [MAIN_PAGE_URL, SCHEDULED_
 export const ABS_SCHEDULED_SALES_DASHBOARD_URL     = '/' + [MAIN_PAGE_URL, SCHEDULED_SALES_APP_URL, DASHBOARD_URL].join('/');
 export const ABS_CUSTOMER_COMPLAINTS_URL = '/' + [MAIN_PAGE_URL, SCHEDULED_SALES_APP_URL, SS_COMPLAINTS_URL].join('/');
 export const ABS_SCHEDULED_SALES_REPORTS_URL = '/' + [MAIN_PAGE_URL, SCHEDULED_SALES_APP_URL, COMMON_REPORTS_URL].join('/');
+export const ABS_SCHEDULED_SALES_PASSWORD_RESET_URL = '/' + [MAIN_PAGE_URL, SCHEDULED_SALES_APP_URL, PASSWORD_RESET_URL].join('/');
 
 
 

@@ -683,6 +683,7 @@
             "logistics/ui-document-sources": [
                 "libs/logistics/ui-document-sources/src/index.ts"
             ],
+            "@ss/scheduled-sales/password-reset": ["libs/scheduled-sales/password-reset/src/index.ts"],
             "payroll/payroll-options": [
                 "libs/payroll/payroll-options/src/index.ts"
             ],

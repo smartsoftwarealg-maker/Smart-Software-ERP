@@ -14,7 +14,12 @@ import {
     SS_TRUCKS_URL,
     LOGISTICS_AGENT_URL,
     LOGISTICS_VAT_URL,
-    LOGISTICS_PAY_METHOD_URL, SALES_CATEGORY_URL, DASHBOARD_URL, SS_COMPLAINTS_URL, COMMON_REPORTS_URL
+    LOGISTICS_PAY_METHOD_URL,
+    SALES_CATEGORY_URL,
+    DASHBOARD_URL,
+    SS_COMPLAINTS_URL,
+    COMMON_REPORTS_URL,
+    PASSWORD_RESET_URL
 } from '../common';
 import {ProjectListComponent, ProjectDetailComponent} from '@ss/scheduled-sales/projects';
 import {ArticleDetailComponent, ArticleListComponent} from '@ss/scheduled-sales/article';
@@ -47,6 +52,7 @@ import { PayMethodDetailComponent, PayMethodListComponent } from '@ss/logistics/
 import { DashboardComponent } from '@ss/dashboard';
 import { CustomerComplaintsDetailComponent, CustomerComplaintsListComponent } from '@customer-complaints-list';
 import { ReportViewComponent } from '@ss/common/ui-report-param';
+import { PasswordResetComponent } from '@ss/scheduled-sales/password-reset';
 
 export const scheduledSalesRoutes: Routes = [
     {
@@ -286,6 +292,12 @@ export const scheduledSalesRoutes: Routes = [
     {
         path: DASHBOARD_URL,
         component: DashboardComponent,
+        canActivate: [loginGuard],
+    },
+
+    {
+        path: PASSWORD_RESET_URL,
+        component: PasswordResetComponent,
         canActivate: [loginGuard],
     },
 
