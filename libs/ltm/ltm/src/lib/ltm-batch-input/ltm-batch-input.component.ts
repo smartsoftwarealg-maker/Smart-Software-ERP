@@ -4,7 +4,7 @@ import {
     input,
     OnDestroy,
     OnInit,
-    signal
+    signal, ViewChild
 } from '@angular/core';
 import { CHEMICAL_TEST, DEPOSIT_TEST, LTMBatch, PHYSICAL_TEST, RAW_MATERIAL_TEST } from '../ltm-api';
 import { KeepOnToolbar, ShellService, SnackBarService, ToolbarButton } from '@ss/common/ui-shell';
@@ -40,6 +40,7 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import _default from 'chart.js/dist/core/core.interaction';
 import index = _default.modes.index;
 import { LtmTestScheduleService } from '../services/ltm-test-schedule.service';
+import { LtmTestScheduleListComponent } from '../ltm-test-schedule-list/ltm-test-schedule-list.component';
 
 function sampleNoValidatorFn(sampleMode: boolean): ValidatorFn {
     return (control: AbstractControl): ValidationErrors | null => {
@@ -111,6 +112,7 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
     protected readonly DEPOSIT_TEST = DEPOSIT_TEST;
 
     readonly scheduleSrv = inject(LtmTestScheduleService);
+    @ViewChild(RouterOutlet) outlet: RouterOutlet | null = null;
 
     public saveButton: ToolbarButton = {
         icon: 'fas fa-save',
@@ -482,9 +484,11 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
                     .subscribe({
                         next: () => {
                             this.shellSrv.setLoading(false);
-                            this.snackBarSrv.showSuccessMessage();
                             this.tests.markAsPristine();
-                            this.goBack();
+                            if (this.isTestScheduledIfPhysical()) {
+                                this.snackBarSrv.showSuccessMessage();
+                                this.goBack();
+                            }
                         }, error: err => {
                             this.shellSrv.setLoading(false);
                             throw err;
@@ -494,6 +498,11 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
         }
     }
 
+    private isTestScheduledIfPhysical() {
+        return this.outlet == null ||
+               !(this.outlet.component instanceof LtmTestScheduleListComponent) ||
+               this.outlet.component.detailCount() > 1;
+    }
 
     private savedData(): Observable<LTMBatch> {
         const params = this.form.getRawValue();
@@ -515,12 +524,14 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
     }
 
     private cancel() {
-        this.confirmationSrv
-            .confirmDontSave()
-            .subscribe(yes => {
-                if (yes) {
-                    this.goBack();
-                }
-            });
+        if (this.isTestScheduledIfPhysical()) {
+            this.confirmationSrv
+                .confirmDontSave()
+                .subscribe(yes => {
+                    if (yes) {
+                        this.goBack();
+                    }
+                });
+        }
     }
 }
