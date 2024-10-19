@@ -162,7 +162,7 @@
     </div>
 </form>
 
-@if (scheduleSrv.getParentId() > 0 && testingMode() === PHYSICAL_TEST) {
+@if (testingMode() === PHYSICAL_TEST) {
     <mat-card>
         <router-outlet></router-outlet>
     </mat-card>

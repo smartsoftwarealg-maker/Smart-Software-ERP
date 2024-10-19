@@ -43,4 +43,8 @@ export class LtmTestScheduleListComponent extends BaseChildEntityListComponent<L
         super(detailSrv, 'LTMTestSchedule');
         this.paginator.pageSize = 100;
     }
+
+    detailCount() {
+        return this.paginator?.elementCount || 0;
+    }
 }

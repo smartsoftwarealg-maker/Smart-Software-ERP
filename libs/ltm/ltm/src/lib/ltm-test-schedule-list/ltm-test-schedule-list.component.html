@@ -1,4 +1,5 @@
-<div class="content__div button__div">
+@if (detailSrv.getParentId() > 0) {
+    <div class="content__div button__div">
     <!--    <mat-form-field>-->
     <!--        <mat-label translate>COMMON_SEARCH</mat-label>-->
     <!--        <input matInput [formControl]="searchText" type="text">-->
@@ -19,6 +20,7 @@
         <span class="fas fa-trash-alt"></span>
     </button>
 </div>
+}
 <div class="table__div content__div">
     <mat-table mat-table matSort [dataSource]="data$ | async" class="main-table" (matSortChange)="sort($event)">
 

@@ -384,7 +384,7 @@
                         }
                     ]
                 },
-                "prodssales": {
+                "ssales": {
                     "fileReplacements": [
                         {
                             "replace": "apps/erp/src/environments/environment.ts",
@@ -804,7 +804,7 @@
                         }
                     ]
                 },
-                "prodssales": {
+                "ssales": {
                     "fileReplacements": [
                         {
                             "replace": "apps/erp/src/environments/environment.ts",
@@ -1175,7 +1175,7 @@
                         }
                     ]
                 },
-                "prodssales": {
+                "ssales": {
                     "fileReplacements": [
                         {
                             "replace": "apps/erp/src/environments/environment.ts",
