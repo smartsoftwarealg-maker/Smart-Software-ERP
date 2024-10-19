@@ -200,7 +200,6 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
         this.shellSrv.setTitle(this.TITLES[this.testingMode() - 1]);
         this.refreshData();
 
-        // this.shellSrv.setGoBackPath('..', this.route);
 
         const rights = this.shellSrv.getCurrentNodeRights();
         if (rights.edit) {
@@ -472,23 +471,31 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
         } else {
             if (formValue.parentId && formValue.centerId) {
                 formValue.timeStamp = dateToYmdStr(formValue.timeStamp) + ' ' + this.form.controls.hour.value + ':00:00';
-                formValue.sampleNo = this.form.controls.sampleNo.value;
+                // formValue.sampleNo = this.form.controls.sampleNo.value;
                 this.shellSrv.setLoading(true);
                 this.entitySrv
                     .saveBatch(formValue)
-                    .pipe(tap(() => {
-                            if (!formValue.id) {
-                                this.refreshData();
-                            }
-                        }))
+                    // .pipe(tap(() => {
+                    //         if (!formValue.id) {
+                    //             this.refreshData();
+                    //             this.form.controls.sampleNo.setValue(formValue.sampleNo, {onlySelf: true, emitEvent: false});
+                    //         }
+                    //     }))
                     .subscribe({
-                        next: () => {
+                        next: res => {
                             this.shellSrv.setLoading(false);
                             this.tests.markAsPristine();
                             if (this.isTestScheduledIfPhysical()) {
                                 this.snackBarSrv.showSuccessMessage();
                                 this.goBack();
+                            } else {
+                                if (formValue.id < 1) {
+                                    this.router.navigate(['..', res?.id], { relativeTo: this.activatedRoute })
+                                        .then(() => this.refreshData())
+                                        .then();
+                                }
                             }
+
                         }, error: err => {
                             this.shellSrv.setLoading(false);
                             throw err;
