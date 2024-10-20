@@ -47,10 +47,11 @@ export class LtmTestScheduleDetailComponent extends BaseChildEntityDetailCompone
 
     setupForm(e: LTMTestSchedule): UntypedFormGroup {
         return this.fb.group({
-            id:       [e.id],
-            parentId: [e.parentId || this.entitySrv.getParentId()],
-            dueDay:   [e.dueDay],
-            testDate: [e.testDate],
+            id:        [e.id],
+            parentId:  [e.parentId || this.entitySrv.getParentId()],
+            dueDay:    [e.dueDay],
+            testDate:  [e.testDate],
+            startDate: [e.startDate],
         });
     }
 }

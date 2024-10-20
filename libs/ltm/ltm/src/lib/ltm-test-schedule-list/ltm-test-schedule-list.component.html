@@ -38,6 +38,13 @@
             </mat-cell>
         </ng-container>
 
+        <ng-container matColumnDef="startDate">
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_START_DATE</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.startDate | date: 'dd/MM/yyyy'}}
+            </mat-cell>
+        </ng-container>
+
         <ng-container matColumnDef="testDate">
             <mat-header-cell *matHeaderCellDef mat-sort-header translate>LTM_TEST_DATE</mat-header-cell>
             <mat-cell *matCellDef="let e">

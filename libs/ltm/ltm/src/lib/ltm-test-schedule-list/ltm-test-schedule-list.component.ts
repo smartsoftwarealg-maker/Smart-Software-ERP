@@ -37,7 +37,7 @@ import { LtmTestScheduleService } from '../services/ltm-test-schedule.service';
     ],
 })
 export class LtmTestScheduleListComponent extends BaseChildEntityListComponent<LTMTestSchedule> {
-    override displayedColumns = ['dueDay', 'nextDate', 'testDate'];
+    override displayedColumns = ['startDate', 'dueDay', 'nextDate', 'testDate'];
 
     constructor(protected override detailSrv: LtmTestScheduleService) {
         super(detailSrv, 'LTMTestSchedule');

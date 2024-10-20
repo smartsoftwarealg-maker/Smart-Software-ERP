@@ -346,5 +346,6 @@
     "PRINTED":                    "مطبوع",
     "VERSION":                    "النسخة",
     "SUMMARY":                    "ملخص",
-    "PASSWORD_RESET":             "اعادة تعيين كلمة المرور"
+    "PASSWORD_RESET":             "اعادة تعيين كلمة المرور",
+    "START_DATE":                 "تاريخ البدء"
 }
