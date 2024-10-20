@@ -493,7 +493,6 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
                                     this.router.navigate(['..', res?.id], { relativeTo: this.activatedRoute })
                                         .then(() => this.refreshData())
                                         .then();
-                                    this.confirmationSrv.confirm('LTM_TESTING', 'LTM_SCHEDULED_TESTS_MISSING');
                                 }
                             }
 
@@ -541,7 +540,7 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
                     }
                 });
         } else {
-            this.confirmationSrv.confirm('LTM_TESTING', 'LTM_SCHEDULED_TESTS_MISSING');
+            this.snackBarSrv.showMessage('LTM_SCHEDULED_TESTS_MISSING');
         }
     }
 }

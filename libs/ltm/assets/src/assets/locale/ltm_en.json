@@ -70,5 +70,6 @@
     "TEST_NORMS":         "Test norms",
     "DUE_DAY":            "Due day",
     "TEST_DATE":          "Test date",
-    "PENDING_TESTS":      "Pending tests"
+    "PENDING_TESTS":      "Pending tests",
+    "SCHEDULED_TESTS_MISSING": "Scheduled tests missing"
 }

@@ -1,6 +1,6 @@
 {
     "name": "ss",
-    "version": "1.55.3",
+    "version": "1.55.4",
     "license": "PRIVATE",
     "scripts": {
         "ng": "nx",
@@ -45,7 +45,7 @@
         "@capacitor/core": "^6.1.2",
         "@capacitor/filesystem": "^6.0.1",
         "@capacitor/ios": "^6.1.2",
-        "@muaazh/datepicker": "^18.0.5",
+        "@muaazh/datepicker": "^18.0.0",
         "@nx/angular": "20.0.3",
         "angular13-organization-chart": "^2.0.1",
         "angularx-qrcode": "^18.0.2",
@@ -89,7 +89,6 @@
         "@typescript-eslint/parser": "8.10.0",
         "@typescript-eslint/utils": "^8.10.0",
         "angular-eslint": "^18.3.1",
-        "codelyzer": "~6.0.2",
         "cypress": "^13.15.0",
         "dotenv": "16.4.5",
         "eslint": "^9.13.0",
