@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { NativeDateAdapter } from '@muaazh/datepicker/core';
+import { NativeDateAdapter } from '@muaazh/angular-datepicker/core';
 import { isString, isDate, pad2, pad4, strToDateTime } from './utils';
 
 
