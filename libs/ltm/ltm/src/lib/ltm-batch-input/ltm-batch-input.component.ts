@@ -539,6 +539,8 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
                         this.goBack();
                     }
                 });
+        } else {
+            this.snackBarSrv.showMessage('LTM_SCHEDULED_TESTS_MISSING');
         }
     }
 }

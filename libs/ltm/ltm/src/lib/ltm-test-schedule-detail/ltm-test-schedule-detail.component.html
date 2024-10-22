@@ -17,12 +17,19 @@
     </mat-card-header>
     <mat-card-content>
         @if (form !== null) {
-            <form novalidate [formGroup]="form">
+            <form [formGroup]="form">
+
+                <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>COMMON_START_DATE</mat-label>
+                    <ss-date-picker formControlName="startDate" [type]="'date'">
+                    </ss-date-picker>
+                </mat-form-field>
 
                 <mat-form-field class="default-50 sm-100">
                     <mat-label translate>LTM_DUE_DAY</mat-label>
                     <input matInput formControlName="dueDay" type="number" min="1" max="31">
                 </mat-form-field>
+
 
                 <mat-form-field class="default-50 sm-100">
                     <mat-label translate>LTM_TEST_DATE</mat-label>

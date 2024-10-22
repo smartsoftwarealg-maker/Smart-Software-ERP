@@ -70,5 +70,6 @@
     "TEST_NORMS":         "Normes de tests",
     "DUE_DAY":           "Jour d'écheance",
     "TEST_DATE":          "Date du test",
-    "PENDING_TESTS":      "Tests en attente"
+    "PENDING_TESTS":      "Tests en attente",
+    "SCHEDULED_TESTS_MISSING": "Tests planifiés manquants"
 }

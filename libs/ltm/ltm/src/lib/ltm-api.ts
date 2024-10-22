@@ -278,6 +278,7 @@ export interface LTMTestSchedule {
     id: number;
     parentId: number;
     dueDay: number;
+    startDate?: Date;
     testDate?: Date;
     nextDate: Date;
 }

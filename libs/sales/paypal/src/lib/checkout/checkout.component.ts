@@ -4,7 +4,6 @@ import {Cartline, Total} from '@ss/sales/shopping-cart';
 import {CheckoutService} from '../checkout.service';
 import {FormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
-import {validate} from 'codelyzer/walkerFactory/walkerFn';
 
 @Component({
     selector: 'ss-checkout',
