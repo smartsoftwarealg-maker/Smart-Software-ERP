@@ -175,7 +175,8 @@ export interface LTMBatch {
 }
 
 export interface Data {
-    key: string;
+    time: string;
+    key?: string;
     testId: number;
     description: string;
     value: number;
