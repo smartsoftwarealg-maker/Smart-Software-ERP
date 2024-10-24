@@ -1,4 +1,4 @@
-import {Component, inject} from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import {EmployeeService} from '@ss/employee-services/employee-services';
 import {AbstractControl, UntypedFormArray, UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
 import { ActivatedRoute, Router, RouterEvent } from '@angular/router';
@@ -47,6 +47,7 @@ import {EmployeeDiplomaService} from '../employee-diplomas/employee-diploma.serv
 import {EmployeeTrainingService} from '../employee-trainings/employee-training.service';
 import {PunishmentService} from '../employee-punishments/punishment.service';
 import { UserListService } from "@ss/common/api-users";
+import { ElementsInfo } from '@ss/remuneration/elementsinfo';
 
 @Component({
     selector: 'ss-employee-detail',
@@ -123,6 +124,7 @@ export class EmployeeDetailComponent extends BaseEntityDetailComponent<Employee>
         {id: 4, description: 'PAYROLL_POST'},
     ];
     bloodGroups$ = this.bloodGroupSrv.getList(0, 50).pipe(map(res => res.body));
+    elementDescriptions = signal<string[]>([]);
 
     constructor(
         public override shellSrv: ShellService,
@@ -197,39 +199,37 @@ export class EmployeeDetailComponent extends BaseEntityDetailComponent<Employee>
         this.archiveSrv.appId = EMPLOYEE_ARCHIVES;
         this.loadFixedElements().subscribe();
         this.imageModel.setImageUrl(this.employeeSrv.getPhotoUrl(this.id), false);
-        if (!p.id) {
-            p.sex = 1;
-        }
+        this.elementDescriptions.set(this.infoSrv.loadDataCols().map(e => e.description));
 
         return this.formBuilder.group({
             // birth info
-            id: [p.id],
-            firstName: [p.firstName, Validators.compose([Validators.required, Validators.maxLength(64)])],
-            lastName: [p.lastName, Validators.compose([Validators.required, Validators.maxLength(64)])],
-            sex: [p.sex, Validators.required],
-            birthDate: [p.birthDate, Validators.required],
-            birthPlace: [p.birthPlace, Validators.compose([Validators.required, Validators.maxLength(64)])],
-            father: [p.father, Validators.maxLength(64)],
-            mother: [p.mother, Validators.maxLength(64)],
-            nationality: [p.nationality],
-            // social inf  o
-            address1: [p.address1, Validators.maxLength(128)],
-            email: [p.email, Validators.maxLength(64)],
-            phone: [p.phone, Validators.maxLength(32)],
-            mobile: [p.mobile, Validators.maxLength(32)],
-            ss_Number: [p.ss_Number],
+            id:            [p.id],
+            firstName:     [p.firstName, Validators.compose([Validators.required, Validators.maxLength(64)])],
+            lastName:      [p.lastName, Validators.compose([Validators.required, Validators.maxLength(64)])],
+            sex:           [p.sex||1, Validators.required],
+            birthDate:     [p.birthDate, Validators.required],
+            birthPlace:    [p.birthPlace, Validators.compose([Validators.required, Validators.maxLength(64)])],
+            father:        [p.father, Validators.maxLength(64)],
+            mother:        [p.mother, Validators.maxLength(64)],
+            nationality:   [p.nationality],
+            // social inf    o
+            address1:      [p.address1, Validators.maxLength(128)],
+            email:         [p.email, Validators.maxLength(64)],
+            phone:         [p.phone, Validators.maxLength(32)],
+            mobile:        [p.mobile, Validators.maxLength(32)],
+            ss_Number:     [p.ss_Number],
             maritalStatus: [p.maritalStatus],
             // arabic info
-            firstNameAr: [p.firstNameAr, Validators.maxLength(64)],
-            lastNameAr: [p.lastNameAr, Validators.maxLength(64)],
-            birthPlaceAr: [p.birthPlaceAr, Validators.maxLength(64)],
-            fatherAr: [p.fatherAr, Validators.maxLength(64)],
-            motherAr: [p.motherAr, Validators.maxLength(64)],
-            birthCity: [p.birthCity],
-            is_driver: [p.is_driver || false, Validators.required],
-            cmmsPerson: [p.cmmsPerson || false, Validators.required],
-            blood_group: [p.blood_group],
-            userId: [p.userId]
+            firstNameAr:   [p.firstNameAr, Validators.maxLength(64)],
+            lastNameAr:    [p.lastNameAr, Validators.maxLength(64)],
+            birthPlaceAr:  [p.birthPlaceAr, Validators.maxLength(64)],
+            fatherAr:      [p.fatherAr, Validators.maxLength(64)],
+            motherAr:      [p.motherAr, Validators.maxLength(64)],
+            birthCity:     [p.birthCity],
+            is_driver:     [p.is_driver || false, Validators.required],
+            cmmsPerson:    [p.cmmsPerson || false, Validators.required],
+            blood_group:   [p.blood_group],
+            userId:        [p.userId]
         });
     }
 

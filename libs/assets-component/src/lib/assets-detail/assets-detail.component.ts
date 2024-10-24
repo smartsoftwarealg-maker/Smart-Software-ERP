@@ -33,7 +33,7 @@ import {
     AGENT_ARCHIVES,
     AppArchiveService,
     ASSET_ARCHIVES,
-    ARCHIVE_ROUTE_URL,
+    ARCHIVE_ROUTE_URL, AppArchiveListComponent
 } from '@ss/common/app-archive';
 import {AssetCostsService} from "../services/asset-costs.service";
 import {AssetRevaluationService} from "../services/asset-revaluation.service";
@@ -191,6 +191,7 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> impl
     }
 
     setupForm(b: Asset): UntypedFormGroup {
+        this.archiveSrv.setParentId(b.id||0);
         this.assetCostsSrv.setParentId(b.id||0);
         this.assetRevaluationSrv.setParentId(b.id);
         this.assetBlockingSrv.setParentId(b.id);
@@ -306,8 +307,8 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> impl
     }
 
     override ngOnInit() {
-        this.archiveSrv.appId = ASSET_ARCHIVES;
         super.ngOnInit();
+        this.archiveSrv.appId = ASSET_ARCHIVES;
         this.shellSrv.addButton(this.importBtn);
     }
 

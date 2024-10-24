@@ -37,8 +37,9 @@ export class FixedElementsEntryService extends BaseEntityService<ELine> {
     loadDataCols(): ElementsInfo[] {
         if (this.dataCols.length < 2) {
             this.dataCols = this.elements
-                .filter(e => e.fixed === true)
-                .sort((a, b) => a.description.localeCompare(b.description));
+                .filter(e => e.fixed)
+                .sort((a, b) => a.description.localeCompare(b.description))
+                .map(e => { e.field = e.field.toLowerCase(); return e; });
         }
         return this.dataCols;
     }
