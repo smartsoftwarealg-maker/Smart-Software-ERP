@@ -53,7 +53,7 @@ export const logisticsAdminNavTree: SideNavNode = {
             name: 'LOGISTICS_TRANSPORTERS',
             icon: 'fa-solid fa-van-shuttle',
             route: ABS_LOGISTICS_TRANSPORTER_URL,
-            accessRights: 'Customer'
+            accessRights: 'Transporter'
         },
         {
             name: 'COMMON_VAT',

@@ -19,9 +19,8 @@
         </mat-form-field>
 
         <div id="responsible">
-            <mat-checkbox [formControl]="openOnly" translate>LTM_PENDING_TESTS</mat-checkbox>
+            <mat-checkbox [formControl]="openOnly" translate (click)="refresh()">LTM_PENDING_TESTS</mat-checkbox>
         </div>
-
     </div>
 </mat-card>
 <div class="content_div table__container">
