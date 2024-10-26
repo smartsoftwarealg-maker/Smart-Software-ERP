@@ -316,10 +316,12 @@
                 @if (elementsForm !== null) {
                     <form [formGroup]="elementsForm">
                         <div formGroupName="elements" class="elements">
-                            <mat-form-field *ngFor="let g of elementsFormArray.controls; let i = index">
-                                <mat-label translate> {{ infoSrv.loadDataCols()[i]['description'] }}</mat-label>
+                            @for (g of elementsFormArray.controls; track g; let i = $index) {
+                            <mat-form-field>
+                                <mat-label> {{ elementDescriptions()[i] }}</mat-label>
                                 <input matInput formControlName="{{ i }}" type="number">
                             </mat-form-field>
+                            }
                         </div>
                     </form>
                 }

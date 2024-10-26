@@ -93,7 +93,7 @@ export class InputFilterDetailComponent extends BaseEntityDetailComponent<InputF
     private buildSelectionArray() {
         this.selectionArray = this.selection?
             this.selection
-            .split('e')
+            .split('[eE]')
             .filter(e => e !== '')
             .map(e => `e${e} ${this.elements.find(f => f.field === 'e' + e)?.description || ''}`) :
         [];
