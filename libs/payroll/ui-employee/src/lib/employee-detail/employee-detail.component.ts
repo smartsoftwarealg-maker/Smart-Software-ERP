@@ -181,7 +181,9 @@ export class EmployeeDetailComponent extends BaseEntityDetailComponent<Employee>
     private loadFixedElements(): Observable<ELine> {
         return this.infoSrv
             .load()
-            .pipe(switchMap(() => this.infoSrv.get(this.queryId)),
+            .pipe(
+                tap(() => this.elementDescriptions.set(this.infoSrv.loadDataCols().map(e => e.description))),
+                switchMap(() => this.infoSrv.get(this.queryId)),
                 tap(res => {
                     const elements = res.elements.length === 0 ?
                         this.infoSrv.loadDataCols().map(() => 0.0) :

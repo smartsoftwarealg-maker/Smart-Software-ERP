@@ -31,8 +31,8 @@
             </div>
 
             <span class="default-100 sm-100"></span>
-            <div class="default-50 sm-50"> <span translate>REMUN_MIN</span>: {{ minMonth}}</div>
-            <div class="default-50 sm-50"> <span translate>REMUN_MAX</span>: {{ maxMonth}}</div>
+            <div class="default-50 sm-50"> <span translate>REMUN_MIN</span>: <span class="mm__span">{{ minMonth-(minMonth/100).toFixed(0)*100 }}/{{ (minMonth/100).toFixed(0) }} </span> </div>
+            <div class="default-50 sm-50"> <span translate>REMUN_MAX</span>: <span class="mm__span">{{ maxMonth-(maxMonth/100).toFixed(0)*100 }}/{{ (maxMonth/100).toFixed(0) }} </span> </div>
             <span class="default-100 sm-100"></span>
 
             <div *ngIf="!processing" class="default-50 sm-50" >
