@@ -10,7 +10,7 @@
 </div>
 
 <mat-card>
-    @if (form) {
+    @defer (when form) {
         <form novalidate [formGroup]="form">
 
             <mat-form-field class="default-50 sm-100">

@@ -30,11 +30,10 @@ import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 })
 export class MedicalAidsDetailComponent extends BaseEntityDetailComponent<SocialAid> {
     #medicalAidTypeSrv = inject(MedicalAidTypesService);
-    private employeeSrv  = inject(SocialEmployeeService);
-    // private activitySrv = inject(SocialActivityService);
-    private loginSrv  = inject(LoginService);
+    #employeeSrv  = inject(SocialEmployeeService);
+    #loginSrv  = inject(LoginService);
 
-    employeeLookup = new PersonAutocompleteClass(this.employeeSrv);
+    employeeLookup = new PersonAutocompleteClass(this.#employeeSrv);
     medicalAidTypeLookup = new DefaultAutoCompleteModel(this.#medicalAidTypeSrv);
     // activityLookup = new DefaultAutoCompleteModel(this.activitySrv);
 
@@ -51,7 +50,7 @@ export class MedicalAidsDetailComponent extends BaseEntityDetailComponent<Social
     public override setupForm(b: SocialAid): UntypedFormGroup {
         const form = this.formBuilder.group({
             id:               [b.id],
-            centerId:         [{value: b.centerId || this.loginSrv.appCtx.center, disabled: true}, Validators.required],
+            centerId:         [{value: b.centerId || this.#loginSrv.appCtx.center, disabled: true}, Validators.required],
             aidType:          [b.aidType||0],
             date:             [b.date || new Date(), Validators.required],
             number:           [{ value: b.number||0, disabled: true }],

@@ -6,7 +6,7 @@ import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute } from '@angular/router';
 import { ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
-import { SocialActivityService } from '@social/social-api';
+import { SocialActivity, SocialActivityLookupService, SocialActivityService } from '@social/social-api';
 import { CommonUiLangModule } from '@ss/common/ui-lang';
 import { MatCard, MatCardContent } from '@angular/material/card';
 import { MatError, MatFormField, MatLabel } from '@angular/material/form-field';
@@ -19,7 +19,7 @@ import { MatInput } from '@angular/material/input';
     templateUrl: './social-activities-detail.component.html',
     styleUrl: './social-activities-detail.component.scss',
 })
-export class SocialActivitiesDetailComponent extends BaseEntityDetailComponent<Lookup> {
+export class SocialActivitiesDetailComponent extends BaseEntityDetailComponent<SocialActivity> {
     constructor(
         public override entitySrv: SocialActivityService,
         public override shellSrv: ShellService,
@@ -31,11 +31,12 @@ export class SocialActivitiesDetailComponent extends BaseEntityDetailComponent<L
         super(entitySrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'SOCIAL_ACTIVITIES');
     }
 
-    setupForm(e: Lookup): UntypedFormGroup {
+    setupForm(e: SocialActivity): UntypedFormGroup {
         return this.formBuilder.group({
             id:            [e.id],
             description:   [e.description, [Validators.required, Validators.min(3)]],
             descriptionAr: [e.descriptionAr],
+            value:         [e.value],
         });
     }
 }

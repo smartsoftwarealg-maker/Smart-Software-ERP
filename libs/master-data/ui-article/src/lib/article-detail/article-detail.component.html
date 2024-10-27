@@ -6,7 +6,7 @@
                                 style="display: inline-block;">
                 </ss-image-input>
             </div>
-            @if (form) {
+            @defer (when form) {
                 <form [formGroup]="form">
                     <div style="height: 16px"></div>
 

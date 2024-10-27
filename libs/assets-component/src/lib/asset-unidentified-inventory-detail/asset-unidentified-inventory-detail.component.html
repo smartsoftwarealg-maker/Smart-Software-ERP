@@ -1,6 +1,6 @@
 <mat-card>
     <mat-card-content>
-        @if (form) {
+        @defer (when form) {
             <form [formGroup]="form">
 <!--                <mat-form-field class="default-100" autofocus>-->
 <!--                    <mat-label translate>ASSET_INVENTORY_DOCUMENT</mat-label>-->

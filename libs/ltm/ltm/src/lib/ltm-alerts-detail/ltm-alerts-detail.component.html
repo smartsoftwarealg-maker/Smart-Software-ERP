@@ -1,4 +1,4 @@
-@if (form) {
+@defer (when form) {
     <mat-card>
         <form [formGroup]="form">
             <mat-form-field class="default-50 sm-100">
@@ -25,10 +25,10 @@
             </mat-form-field>
 
             <mat-form-field class="default-50 sm-100">
-                <mat-label translate>LTM_CORRECTION_ACTION</mat-label>
+                <mat-label translate>COMMON_CONTRACT</mat-label>
                 <ss-auto-complete matInput
-                                  [model]="actionLookup"
-                                  formControlName="correctionAction">
+                                  [model]="normLookup"
+                                  formControlName="normId">
                 </ss-auto-complete>
             </mat-form-field>
 

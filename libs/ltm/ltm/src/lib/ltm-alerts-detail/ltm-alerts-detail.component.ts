@@ -17,6 +17,7 @@ import { LTMAbnormalTest } from '../ltm-api';
 import { LtmAbnormalTestService } from '@ss/ltm/ltm';
 import { LtmCorrectionActionService } from '../services/ltm-correction-action.service';
 import { UserListService } from '@ss/common/api-users';
+import { LtmNormService } from '../services/ltm-norm.service';
 
 @Component({
     selector: 'ss-ltm-alerts-detail',
@@ -41,9 +42,11 @@ import { UserListService } from '@ss/common/api-users';
 export class LtmAlertsDetailComponent extends BaseEntityDetailComponent<LTMAbnormalTest> {
     #actionSrv = inject(LtmCorrectionActionService);
     #userSrv  = inject(UserListService);
+    #normSrv = inject(LtmNormService);
 
     actionLookup = new DefaultAutoCompleteModel(this.#actionSrv);
     userLookup   = new UserLookup(this.#userSrv);
+    normLookup = new DefaultAutoCompleteModel(this.#normSrv);
 
     constructor(
         public override entitySrv: LtmAbnormalTestService,
@@ -67,7 +70,8 @@ export class LtmAlertsDetailComponent extends BaseEntityDetailComponent<LTMAbnor
             memo:             [{ value: e.memo,    disabled: false }],
             correctionAction: [{ value: e.correctionAction, disabled: false }],
             actionNo:         [{ value: e.actionNo, disabled: false }],
-            reportedBy:       [{ value: e.reportedBy, disabled: false }]
+            reportedBy:       [{ value: e.reportedBy, disabled: false }],
+            normId:           [{ value: e.normId,  disabled: false }],
         })
     }
 

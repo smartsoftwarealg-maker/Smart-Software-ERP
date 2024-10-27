@@ -70,3 +70,10 @@ export interface Reimbursement {
     reference?: string;
     date?: Date;
 }
+
+export interface SocialActivity {
+    id: number;
+    description: string;
+    descriptionAr?: string;
+    value?: number;
+}

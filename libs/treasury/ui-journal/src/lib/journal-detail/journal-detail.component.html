@@ -1,5 +1,5 @@
 <mat-card class="form_container">
-    @if (form) {
+    @defer (when form) {
         <form [formGroup]="form">
 
             <mat-form-field class="default-50 sm-100">
