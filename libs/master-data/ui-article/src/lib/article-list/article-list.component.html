@@ -78,6 +78,13 @@
             </mat-cell>
         </ng-container>
 
+        <ng-container matColumnDef="subClassDescription">
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>STOCK_SUBCLASS</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.subClassDescription}}
+            </mat-cell>
+        </ng-container>
+
         <ng-container matColumnDef="unitDescription">
             <mat-header-cell *matHeaderCellDef mat-sort-header translate>STOCK_UNIT</mat-header-cell>
             <mat-cell *matCellDef="let e">

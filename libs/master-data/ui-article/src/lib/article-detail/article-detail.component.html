@@ -49,6 +49,15 @@
                         </mat-error>
                     </mat-form-field>
 
+                    <mat-form-field class="default-50 sm-100">
+                        <mat-label translate>STOCK_SUBCLASS</mat-label>
+                        <ss-auto-complete matInput
+                                          [required]="true"
+                                          [model]="subClassLookup"
+                                          formControlName="subClass">
+                        </ss-auto-complete>
+                    </mat-form-field>
+
 
                     <mat-form-field class="default-50 sm-100">
                         <mat-label translate>STOCK_MARK</mat-label>

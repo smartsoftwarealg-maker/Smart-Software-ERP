@@ -48,6 +48,7 @@ export interface Article {
     awp?: number;
     appId: number;
     salesUnit: number;
+    subClass?: number;
     imageModel?: ImageModel;
     vatValue?: number;
     notForSale: boolean;
@@ -55,6 +56,7 @@ export interface Article {
     routingId?: number;
     classDescription?: string;
     markDescription?: string;
+    subclassDescription?: string;
     minQty?: number;
     maxQty?: number;
     unitDescription?: string;
