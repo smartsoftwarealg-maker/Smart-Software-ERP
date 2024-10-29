@@ -77,3 +77,9 @@ export interface SocialActivity {
     descriptionAr?: string;
     value?: number;
 }
+export interface MedicalAid {
+    id: number;
+    description: string;
+    descriptionAr?: string;
+    value?: number;
+}

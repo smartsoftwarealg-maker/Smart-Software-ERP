@@ -2,7 +2,7 @@ import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
 import {
-    MEDICAL_AIDS_TYPE,
+    MEDICAL_AIDS_TYPE, MedicalAid,
     MedicalAidTypesService,
     SocialAid, SocialEmployeeService
 } from '@social/social-api';
@@ -45,6 +45,7 @@ export class MedicalAidsDetailComponent extends BaseEntityDetailComponent<Social
         public override formBuilder: UntypedFormBuilder,
         public override confirmationSrv: ConfirmationDialogService) {
         super(entitySrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'SOCIAL_MEDICAL_AIDS');
+        this.medicalAidTypeLookup.onObjectSelected = t => this.onMedicalTypeChange(t);
     }
 
     public override setupForm(b: SocialAid): UntypedFormGroup {
@@ -83,6 +84,16 @@ export class MedicalAidsDetailComponent extends BaseEntityDetailComponent<Social
         const value = this.form.getRawValue();
         delete value.rate;
         return value;
+    }
+
+    private onMedicalTypeChange(a: MedicalAid) {
+        const amount = this.form.controls['amount'];
+        amount.setValue(a.value||0);
+        if (a.value) {
+            amount.disable({onlySelf: true});
+        } else {
+            amount.enable({onlySelf: true});
+        }
     }
 }
 

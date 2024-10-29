@@ -6,7 +6,7 @@ import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute } from '@angular/router';
 import { ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
-import { MedicalAidTypesService, SocialActivityService } from '@social/social-api';
+import { MedicalAid, MedicalAidTypesService, SocialActivityService } from '@social/social-api';
 import { CommonUiLangModule } from '@ss/common/ui-lang';
 import { MatCard, MatCardContent } from '@angular/material/card';
 import { MatError, MatFormField, MatLabel } from '@angular/material/form-field';
@@ -19,7 +19,7 @@ import { MatInput } from '@angular/material/input';
     templateUrl: './medical-aid-types-detail.component.html',
     styleUrl: './medical-aid-types-detail.component.scss',
 })
-export class MedicalAidTypesDetailComponent extends BaseEntityDetailComponent<Lookup> {
+export class MedicalAidTypesDetailComponent extends BaseEntityDetailComponent<MedicalAid> {
     constructor(
         public override entitySrv: MedicalAidTypesService,
         public override shellSrv: ShellService,
@@ -31,11 +31,12 @@ export class MedicalAidTypesDetailComponent extends BaseEntityDetailComponent<Lo
         super(entitySrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'SOCIAL_MEDICAL_AIDS');
     }
 
-    setupForm(e: Lookup): UntypedFormGroup {
+    setupForm(e: MedicalAid): UntypedFormGroup {
         return this.formBuilder.group({
             id:            [e.id],
             description:   [e.description, [Validators.required, Validators.min(3)]],
             descriptionAr: [e.descriptionAr],
+            value:         [e.value],
         });
     }
 }

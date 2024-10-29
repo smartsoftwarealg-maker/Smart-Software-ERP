@@ -64,7 +64,13 @@ export class SocialWorksDetailComponent extends BaseEntityDetailComponent<Social
     }
 
     private onActivity(a: SocialActivity) {
-        this.form.controls['amount'].setValue(a.value);
+        const amount = this.form.controls['amount'];
+        amount.setValue(a.value||0);
+        if (a.value) {
+            amount.disable({onlySelf: true});
+        } else {
+            amount.enable({onlySelf: true});
+        }
     }
 
 }
