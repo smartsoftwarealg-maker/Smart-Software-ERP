@@ -63,7 +63,7 @@ export class AccessRightsListComponent extends BaseEntityListComponent<AccessRig
             defReportSrv,
             pagPersistSrv,
             'COMMON_ACCESS_RIGHTS');
-        this.pagination.pageSize = 20;
+        this.pagination.pageSize = 15;
     }
 
     override ngOnInit() {

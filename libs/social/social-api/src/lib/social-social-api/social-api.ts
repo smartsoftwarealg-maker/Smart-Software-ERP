@@ -11,6 +11,7 @@ export const SOCIAL_ACTIVITIES_URL = '/social/social_activities';
 export const ACTIVITIES_URL = '/social/activities';
 export const MEDICAL_AIDS_URL = '/social/medical-aids';
 export const REIMBURSEMENTS_URL = '/reimbursements';
+export const SOCIAL_EMPLOYEES_URL = '/social/employees';
 
 // Classes
 export interface SocialAid {

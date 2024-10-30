@@ -10,7 +10,7 @@ import { CommonUiLangModule } from '@ss/common/ui-lang';
 import { CostingOhService } from '@ss/costing/costing-projects';
 
 @Component({
-    selector: 'ss-costing-pool-list',
+    selector: 'ss-costing-oh-line',
     standalone: true,
     imports: [
         CommonModule,

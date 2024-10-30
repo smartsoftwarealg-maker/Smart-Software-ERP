@@ -20,11 +20,13 @@ import { MatError, MatFormField, MatLabel } from '@angular/material/form-field';
 import { MatInput } from '@angular/material/input';
 import { MedicalAidService } from '@social/social-api';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
+import { AidHistoryComponent } from '@social/aid-history';
+import { PersonAidHistoryService } from '../../../../social-api/src/lib/services/person-aid-history.service';
 
 @Component({
     selector: 'ss-medical-aids-detail',
     standalone: true,
-    imports: [CommonModule, CommonUiAutoCompleteModule, CommonUiDatepickerModule, CommonUiLangModule, MatCard, MatCardContent, MatError, MatFormField, MatInput, MatLabel, ReactiveFormsModule],
+    imports: [CommonModule, CommonUiAutoCompleteModule, CommonUiDatepickerModule, CommonUiLangModule, MatCard, MatCardContent, MatError, MatFormField, MatInput, MatLabel, ReactiveFormsModule, AidHistoryComponent],
     templateUrl: './medical-aids-detail.component.html',
     styleUrl: './medical-aids-detail.component.scss',
 })
@@ -32,6 +34,7 @@ export class MedicalAidsDetailComponent extends BaseEntityDetailComponent<Social
     #medicalAidTypeSrv = inject(MedicalAidTypesService);
     #employeeSrv  = inject(SocialEmployeeService);
     #loginSrv  = inject(LoginService);
+    #personAidHistorySrv = inject(PersonAidHistoryService);
 
     employeeLookup = new PersonAutocompleteClass(this.#employeeSrv);
     medicalAidTypeLookup = new DefaultAutoCompleteModel(this.#medicalAidTypeSrv);
@@ -46,9 +49,11 @@ export class MedicalAidsDetailComponent extends BaseEntityDetailComponent<Social
         public override confirmationSrv: ConfirmationDialogService) {
         super(entitySrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'SOCIAL_MEDICAL_AIDS');
         this.medicalAidTypeLookup.onObjectSelected = t => this.onMedicalTypeChange(t);
+        this.employeeLookup.onObjectSelected = e => this.#personAidHistorySrv.setParentId(e.id||0);
     }
 
     public override setupForm(b: SocialAid): UntypedFormGroup {
+        this.#personAidHistorySrv.setParentId(b.personId||0);
         const form = this.formBuilder.group({
             id:               [b.id],
             centerId:         [{value: b.centerId || this.#loginSrv.appCtx.center, disabled: true}, Validators.required],

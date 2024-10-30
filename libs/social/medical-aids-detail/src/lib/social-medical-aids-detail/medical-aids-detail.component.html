@@ -1,7 +1,7 @@
 @defer (when form) {
     <mat-card class="mat__card__900">
         <mat-card-content>
-            <form novalidate [formGroup]="form">
+            <form [formGroup]="form">
 
                 <mat-form-field class="default-50 sm-100">
                     <mat-label translate>COMMON_DATE</mat-label>
@@ -38,7 +38,8 @@
 
                 <mat-form-field class="default-50 sm-100">
                     <mat-label translate>COMMON_RATE</mat-label>
-                    <input matInput formControlName="rate" type="number" required step="1" class="number" min="5" max="100">
+                    <input matInput formControlName="rate" type="number" required step="1" class="number" min="5"
+                           max="100">
                 </mat-form-field>
 
 
@@ -61,4 +62,9 @@
 
         </mat-card-content>
     </mat-card>
+    @if (form.controls['personId'].value > 0) {
+        <div class="mat__card__900">
+            <ss-aid-history [id]="form.controls['personId'].value"></ss-aid-history>
+        </div>
+    }
 }

@@ -16,7 +16,7 @@ import { BaseChildEntityListComponent } from "@ss/common/ui-base-entity";
 import { LtmMixtureDetailService } from "../services/ltm-mixture-detail.service";
 
 @Component({
-    selector: 'ss-ltm-matter-test-list',
+    selector: 'ss-ltm-mixture-detai-list',
     templateUrl: './ltm-mixture-detail-list.component.html',
     styleUrls: ['./ltm-mixture-detail-list.component.scss'],
     standalone: true,

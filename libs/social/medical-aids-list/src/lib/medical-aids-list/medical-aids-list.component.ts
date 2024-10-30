@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
-import { SocialAid, SocialWorksService } from '@social/social-api';
+import { SocialAid } from '@social/social-api';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { DefaultReportService } from '@ss/common/ui-default-report-component';
 import { PaginatorPersistenceService } from '@ss/common/api-common';
-import { MedicalAidService } from '../../../../social-api/src/lib/services/medical-aid.service';
+import { MedicalAidService } from '@social/social-api';
 import { CommonUiLangModule } from '@ss/common/ui-lang';
 import {
     MatCell,
