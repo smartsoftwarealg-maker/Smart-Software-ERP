@@ -9,7 +9,7 @@ export const EMPLOYEE_URL = '/social/employees';
 export const SOCIAL_AIDS_URL = '/social/aids';
 export const SOCIAL_ACTIVITIES_URL = '/social/social_activities';
 export const ACTIVITIES_URL = '/social/activities';
-export const MEDICAL_AIDS_URL = '/social/medical_aids';
+export const MEDICAL_AIDS_URL = '/social/medical-aids';
 export const REIMBURSEMENTS_URL = '/reimbursements';
 
 // Classes

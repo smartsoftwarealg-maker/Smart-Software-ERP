@@ -76,6 +76,18 @@ export class MedicalAidsDetailComponent extends BaseEntityDetailComponent<Social
                         this.form.controls['amount'].setValue(refAmount * res / 100.0);
                     }
                 }));
+        this.subscriptions.push(
+            form.controls['referenceAmount']
+                .valueChanges
+                .pipe(
+                    debounceTime(300),
+                    distinctUntilChanged(),
+                ).subscribe(res => {
+                    if (res) {
+                        const rate = this.form.controls['rate']?.value || 0;
+                        this.form.controls['amount'].setValue(rate * res / 100.0);
+                    }
+                }));
 
         return form;
     }
@@ -87,7 +99,7 @@ export class MedicalAidsDetailComponent extends BaseEntityDetailComponent<Social
     }
 
     private onMedicalTypeChange(a: MedicalAid) {
-        const amount = this.form.controls['amount'];
+        const amount = this.form.controls['rate'];
         amount.setValue(a.value||0);
         if (a.value) {
             amount.disable({onlySelf: true});
