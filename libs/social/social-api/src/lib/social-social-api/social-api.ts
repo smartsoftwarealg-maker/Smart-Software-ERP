@@ -84,3 +84,20 @@ export interface MedicalAid {
     descriptionAr?: string;
     value?: number;
 }
+
+export interface EDOHeader {
+    id: number;
+    centerId: number;
+    number: number;
+    date: Date;
+    description?: string;
+}
+
+export interface EDOLine {
+    id: number;
+    parentId: number;
+    aidId: number;
+    description?: string;
+    firstName?: string;
+    lastName?: string;
+}

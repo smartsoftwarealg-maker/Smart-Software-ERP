@@ -14,5 +14,6 @@
     "PAYMENT_COUNTS":    "Payments count",
     "ACTIVITY_AMOUNTS":  "Activity amounts",
     "ANNUAL_COUNTS":     "Annual installment counts",
-    "ANNUAL_AMOUNTS":    "Annual amounts"
+    "ANNUAL_AMOUNTS":    "Annual amounts",
+    "EDO_LIST":          "EDO list"
 }

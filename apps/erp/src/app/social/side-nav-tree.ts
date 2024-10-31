@@ -1,7 +1,7 @@
 import { SideNavNode } from '@ss/common/api-common';
 import {
     ABS_MEDICAL_AIDS_URL, ABS_REIMBURSEMENT_URL,
-    ABS_SOCIAL_ACTIVITIES_URL, ABS_SOCIAL_DASHBOARD_URL, ABS_SOCIAL_EDO_URL,
+    ABS_SOCIAL_ACTIVITIES_URL, ABS_SOCIAL_DASHBOARD_URL, ABS_SOCIAL_EDO_HEADER_URL, ABS_SOCIAL_EDO_URL,
     ABS_SOCIAL_MEDICAL_AIDS_URL,
     ABS_SOCIAL_WORKS_URL
 } from './constants';
@@ -49,6 +49,13 @@ export const socialNavTree: SideNavNode = {
             icon: 'fa-solid fa-money-check',
             route: ABS_REIMBURSEMENT_URL,
             accessRights: 'Reimbursement'
+        },
+
+        {
+            name: 'SOCIAL_EDO_LIST',
+            icon: 'fa-solid fa-money-bill-transfer',
+            route: ABS_SOCIAL_EDO_HEADER_URL,
+            accessRights: 'EDO'
         },
 
         {

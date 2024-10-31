@@ -10,6 +10,7 @@ export const SOCIAL_DASHBOARD_URL = 'dashboard';
 export const SOCIAL_REIMBURSEMENT_URL = 'reimbursement';
 export const SOCIAL_REIMBURSEMENT_LIST_URL = 'reimbursement-list';
 export const SOCIAL_REIMBURSEMENT_DETAIL_URL = 'reimbursement-detail';
+export const SOCIAL_EDO_HEADERS = 'edo-headers';
 
 
 export const ABS_SOCIAL_ACTIVITIES_URL = `/${MAIN_PAGE_URL}/social/${SOCIAL_ACTIVITIES_URL}`;
@@ -19,3 +20,4 @@ export const ABS_MEDICAL_AIDS_URL = `/${MAIN_PAGE_URL}/social/${MEDICAL_AIDS_URL
 export const ABS_SOCIAL_EDO_URL = `/${MAIN_PAGE_URL}/social/${SOCIAL_EDO_URL}`;
 export const ABS_SOCIAL_DASHBOARD_URL = `/${MAIN_PAGE_URL}/social/${SOCIAL_DASHBOARD_URL}`;
 export const ABS_REIMBURSEMENT_URL = `/${MAIN_PAGE_URL}/social/${SOCIAL_REIMBURSEMENT_URL}`;
+export const ABS_SOCIAL_EDO_HEADER_URL = `/${MAIN_PAGE_URL}/social/${SOCIAL_EDO_HEADERS}`;

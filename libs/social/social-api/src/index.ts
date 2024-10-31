@@ -9,3 +9,7 @@ export * from './lib/services/employee-aid.service';
 export * from './lib/services/social-employee-service';
 export * from './lib/services/medical-aid.service';
 export * from './lib/services/social-activity.service';
+export * from './lib/services/edo-header.service';
+export * from './lib/services/edo-line.service';
+export * from './lib/services/person-aid-history.service';
+export * from './lib/services/pending-edo.service';

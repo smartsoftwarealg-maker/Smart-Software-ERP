@@ -1,0 +1,19 @@
+.detail__div {
+    width: 96%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    gap: 1em;
+    justify-content: space-between;
+}
+
+@media (width <= 600px) {
+    .detail__div {
+        display: block;
+    }
+}
+
+ss-social-edo-lines,
+ss-pending-edo {
+    flex: 1 1 50%;
+}

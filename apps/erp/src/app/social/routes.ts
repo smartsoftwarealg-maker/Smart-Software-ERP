@@ -9,7 +9,7 @@ import {
 } from '@social/social-lookups';
 import {
     MEDICAL_AIDS_URL,
-    SOCIAL_ACTIVITIES_URL, SOCIAL_DASHBOARD_URL,
+    SOCIAL_ACTIVITIES_URL, SOCIAL_DASHBOARD_URL, SOCIAL_EDO_HEADERS,
     SOCIAL_EDO_URL,
     SOCIAL_MEDICAL_AIDS_URL, SOCIAL_REIMBURSEMENT_URL,
     SOCIAL_WORKS_URL
@@ -25,6 +25,12 @@ import {
     SocialReimbursementsDetailComponent,
     SocialReimbursementsListComponent
 } from 'social/reimbursements';
+import {
+    SocialEdoHeaderListComponent
+} from '../../../../../libs/social/edo/src/lib/social-edo-header-list/social-edo-header-list.component';
+import {
+    SocialEdoHeaderDetailComponent
+} from '../../../../../libs/social/edo/src/lib/social-edo-header-detail/social-edo-header-detail.component';
 
 export const socialRoutes: Routes = [
     {
@@ -71,6 +77,22 @@ export const socialRoutes: Routes = [
             {
                 path: ':id',
                 component: SocialWorksDetailComponent,
+                canActivate: [loginGuard],
+                canDeactivate: [CanDeactivateService],
+            },
+        ]
+    },
+    {
+        path: SOCIAL_EDO_HEADERS,
+        children: [
+            {
+                path: LIST_URL,
+                component: SocialEdoHeaderListComponent,
+                canActivate: [loginGuard],
+            },
+            {
+                path: ':id',
+                component: SocialEdoHeaderDetailComponent,
                 canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService],
             },

@@ -14,5 +14,6 @@
     "PAYMENT_COUNTS":    "عدد الدفعات",
     "ACTIVITY_AMOUNTS":  "مبالغ النشاط",
     "ANNUAL_COUNTS":     "مجموع الأقساط",
-    "ANNUAL_AMOUNTS":    "مجموع المصاريف"
+    "ANNUAL_AMOUNTS":    "مجموع المصاريف",
+    "EDO_LIST":          "قائمة المدفوعات"
 }
