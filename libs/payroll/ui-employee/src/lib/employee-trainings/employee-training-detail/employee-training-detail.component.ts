@@ -28,23 +28,23 @@ export class EmployeeTrainingDetailComponent extends BaseChildEntityDetailCompon
 
     override setupForm(a: Training): UntypedFormGroup {
         return this.form = this.formBuilder.group({
-            id: a.id,
-            parentId: [a.parentId || this.trainingSrv.getParentId()],
-            motive: [a.motive, Validators.required],
-            reference: [a.reference],
-            ref_date: [a.ref_date],
-            from_date: [a.from_date, Validators.required],
-            to_date: a.to_date,
-            day_count: a.day_count,
-            training: a.training,
-            trainer: a.trainer,
-            location: a.location,
-            diploma_id: a.diploma_id,
-            mission_expenses: a.mission_expenses || 0.0,
-            trn_expenses: a.trn_expenses || 0.0,
-            extra_expenses: a.extra_expenses,
-            judicial_frame: a.judicial_frame,
-            center: [a.center || this.loginSrv.appCtx.center]
+            id:               [a.id],
+            parentId:         [a.parentId || this.trainingSrv.getParentId()],
+            motive:           [a.motive, Validators.required],
+            reference:        [a.reference],
+            ref_date:         [a.ref_date||new Date()],
+            from_date:        [a.from_date, Validators.required],
+            to_date:          [a.to_date],
+            day_count:        [a.day_count],
+            training:         [a.training],
+            trainer:          [a.trainer],
+            location:         [a.location],
+            diploma_id:       [a.diploma_id],
+            mission_expenses: [a.mission_expenses || 0.0],
+            trn_expenses:     [a.trn_expenses || 0.0],
+            extra_expenses:   [a.extra_expenses],
+            judicial_frame:   [a.judicial_frame],
+            center:           [a.center || this.loginSrv.appCtx.center]
         });
     }
 }

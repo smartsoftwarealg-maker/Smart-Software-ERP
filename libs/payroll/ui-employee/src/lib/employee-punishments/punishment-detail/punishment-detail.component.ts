@@ -32,7 +32,7 @@ export class PunishmentDetailComponent extends BaseChildEntityDetailComponent<Pu
             parentId:       [a.parentId || this.detailSrv.getParentId()],
             centerId:       [this.loginSrv.appCtx.center],
             number:         [a.number],
-            date:           [a.date],
+            date:           [a.date||new Date()],
             punishmentType: [a.punishmentType, Validators.required],
             fault:          [a.fault, Validators.required],
             faultType:      [a.faultType, Validators.required],

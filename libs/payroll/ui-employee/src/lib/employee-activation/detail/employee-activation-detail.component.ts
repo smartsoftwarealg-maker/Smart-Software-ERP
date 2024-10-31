@@ -25,7 +25,7 @@ export class EmployeeActivationDetailComponent extends BaseChildEntityDetailComp
 
     constructor(
         public entitySrv: EmployeeActivationService) {
-        super(entitySrv, 'EmployeeActivation');
+        super(entitySrv, 'Activation');
     }
 
     override setupForm(a: EmployeeActivation): UntypedFormGroup {

@@ -30,7 +30,7 @@
                 <mat-error *ngIf="form.controls['subject'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
             </mat-form-field>
 
-            <mat-form-field class="default-25 sm-100">
+            <mat-form-field class="default-50 sm-100">
                 <mat-label translate>PAYROLL_FROM</mat-label>
                 <ss-date-picker [required]=true formControlName="from_date"></ss-date-picker>
                 <mat-error *ngIf="form.controls['from_date'].hasError('required')" translate>
@@ -38,15 +38,13 @@
                 </mat-error>
             </mat-form-field>
 
-            <div class="filler default-25"></div>
-            <mat-form-field class="default-25 sm-100">
+            <mat-form-field class="default-50 sm-100">
                 <mat-label translate>PAYROLL_TO</mat-label>
                 <ss-date-picker [required]=true formControlName="to_date"></ss-date-picker>
                 <mat-error *ngIf="form.controls['to_date'].hasError('required')" translate>
                     COMMON_FIELD_REQUIRED
                 </mat-error>
             </mat-form-field>
-            <div class="filler default-25"></div>
 
             <mat-form-field class="default-50 sm-100">
                 <mat-label translate>PAYROLL_TRN_PROVIDER</mat-label>

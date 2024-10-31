@@ -98,7 +98,7 @@ export class PaymentDetailComponent extends AbstractEntityView<Payment, BackendD
         this.form = this.formBuilder.group({
             agent: this.record.agent,
             amount: [this.record.amount, Validators.required],
-            date: [this.record.date],
+            date: [this.record.date||new Date()],
             payMethod: [this.record.payMethod, Validators.required],
             bankId: this.record.bankId,
             checkBank: this.record.checkBank,

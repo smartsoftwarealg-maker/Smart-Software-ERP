@@ -23,7 +23,7 @@ export class EmployeeChildDetailComponent extends BaseChildEntityDetailComponent
             id: a.id,
             parentId:   [a.parentId || this.employeeChildrenSrv.getParentId()],
             name:       [a.name, Validators.required],
-            sex:        [a.sex],
+            sex:        [a.sex||1],
             birthPlace: [a.birthPlace],
             birthDate: [a.birthDate]
         });

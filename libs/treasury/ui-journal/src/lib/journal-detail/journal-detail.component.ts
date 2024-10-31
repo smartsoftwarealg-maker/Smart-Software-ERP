@@ -50,17 +50,17 @@ export class JournalDetailComponent extends BaseEntityDetailComponent<Journal> i
     public override setupForm(a: Journal) {
         this.id = a.id;
         return this.formBuilder.group({
-            id: [a.id],
+            id:          [a.id],
             description: [a.description, Validators.required],
-            jType: [a.jType || 1, Validators.required],
-            bankId: [{ value: a.bankId, disabled: a.jType === 2 }],
-            bankAccount: [{ value: a.bankAccount, disabled: (a.jType || 1) !== 1 }],
-            centerId: [a.centerId || this.loginSrv.appCtx.center]
+            jType:       [a.jType || 1, Validators.required],
+            bankId:      [{ value: a.bankId, disabled: (a.jType || 1) === 1 }],
+            bankAccount: [{ value: a.bankAccount, disabled: (a.jType || 1) === 1 }],
+            centerId:    [a.centerId || this.loginSrv.appCtx.center]
         });
     }
 
     onJournalType(event: number) {
-        if (event === 1) {
+        if (event === 2) {
             this.form.controls['bankId']?.enable({onlySelf: true});
             this.form.controls['bankAccount']?.enable({onlySelf: true});
         } else {

@@ -2,18 +2,18 @@
     @defer (when form) {
         <form [formGroup]="form">
 
-            <mat-form-field class="default-50 sm-100">
+            <mat-form-field class="default-100">
                 <mat-label translate>COMMON_DESCRIPTION</mat-label>
                 <input matInput formControlName="description" type="text" required maxlength="128">
-                <mat-error *ngIf="form.controls['description'].invalid" translate>
-                    COMMON_FIELD_REQUIRED
-                </mat-error>
+                @if (form.controls['description'].invalid) {
+                    <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+                }
             </mat-form-field>
 
-            <mat-form-field class="default-50 sm-100">
+            <mat-form-field class="default-100">
                 <mat-label translate>TRS_JOURNAL_TYPE</mat-label>
                 <mat-select formControlName="jType" (valueChange)="onJournalType($event)" required>
-                    @for (p of banks; track p.id) {
+                    @for (p of journalTypes; track p.id) {
                         <mat-option [value]="p.id">
                             {{ 'COMMON_' + p.description | translate }}
                         </mat-option>
@@ -21,7 +21,7 @@
                 </mat-select>
             </mat-form-field>
 
-            <mat-form-field class="default-50 sm-100">
+            <mat-form-field class="default-100">
                 <mat-label translate>COMMON_BANK</mat-label>
                 <mat-select formControlName="bankId">
                     @for (p of banks; track p.id) {
@@ -32,7 +32,7 @@
                 </mat-select>
             </mat-form-field>
 
-            <mat-form-field class="default-50 sm-100">
+            <mat-form-field class="default-100">
                 <mat-label translate>TRS_BANK_ACCOUNT</mat-label>
                 <input matInput formControlName="bankAccount" type="text" maxlength="32">
             </mat-form-field>

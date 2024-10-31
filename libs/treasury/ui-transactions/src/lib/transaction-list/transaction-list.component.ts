@@ -11,6 +11,7 @@ import {Journal, UserJournalsService} from '@ss/treasury/api-journal';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {Observable} from 'rxjs';
 import { MatRadioChange } from '@angular/material/radio';
+import { AppArchiveService } from '@ss/common/app-archive';
 
 @Component({
     selector: 'ss-transaction-list',
@@ -18,7 +19,8 @@ import { MatRadioChange } from '@angular/material/radio';
     styleUrls: ['./transaction-list.component.scss'],
 })
 export class TransactionListComponent extends BaseEntityListComponent<TTransaction> implements OnInit {
-    private journalSrv = inject(UserJournalsService);
+    #archiveSrv = inject(AppArchiveService);
+    #journalSrv = inject(UserJournalsService);
 
     private readonly CASH_COLS = [
         'description',
@@ -44,7 +46,7 @@ export class TransactionListComponent extends BaseEntityListComponent<TTransacti
 
     dateFilter    = new FormControl<Date>(new Date());
     journalFilter = new FormControl<number>(0);
-    journalLookup = new DefaultAutoCompleteModel(this.journalSrv);
+    journalLookup = new DefaultAutoCompleteModel(this.#journalSrv);
     summary$: Observable<Summary[]> = null;
     displayedColumns = this.CASH_COLS;
     mode: 1|2 = 1;
@@ -106,4 +108,8 @@ export class TransactionListComponent extends BaseEntityListComponent<TTransacti
         this.mode = +e.value === 2? 2 : 1;
     }
 
+    override select(id: number) {
+        super.select(id);
+        this.#archiveSrv.setParentId(id);
+    }
 }

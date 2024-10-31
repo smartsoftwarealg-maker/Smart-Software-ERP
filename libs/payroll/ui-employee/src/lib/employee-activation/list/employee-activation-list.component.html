@@ -41,7 +41,7 @@
             </mat-header-cell>
             <mat-cell *matCellDef="let e">
                 <mat-checkbox [class.mat-checkbox-disabled]="false" disabled="true"
-                              [checked]="e.suspended">
+                              [checked]="e.activityStatus > 0">
                 </mat-checkbox>
             </mat-cell>
         </ng-container>

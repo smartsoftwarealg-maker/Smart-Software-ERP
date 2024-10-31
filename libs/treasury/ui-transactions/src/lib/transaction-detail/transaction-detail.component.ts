@@ -36,7 +36,7 @@ export class TransactionDetailComponent extends BaseEntityDetailComponent<TTrans
 
     override ngOnInit() {
         if (!this.entitySrv.journalId) {
-            this.router.navigate(['/app/treasury/transactions']);
+            this.router.navigate(['/app/treasury/transactions']).then();
         }
         this.subscriptions.push(
             this.router
