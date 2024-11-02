@@ -172,7 +172,7 @@ export class TransactionDetailComponent implements OnInit, OnDestroy {
     }
 
     public canDeactivate(): Observable<boolean> {
-        if (this.form != null && this.form.touched) {
+        if (this.form != null && this.form.touched && !this.isClosed) {
             return this.confirmationSrv.confirmDontSave();
         }
         return of(true);
