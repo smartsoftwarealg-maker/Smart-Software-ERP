@@ -1,4 +1,4 @@
-@if (form) {
+@defer (when form) {
     <div class="size_div employee_div">
         <div class="person-photo">
             <ss-image-input width="120px" height="120px" [imageModel]="employee.imageModel"
@@ -14,7 +14,7 @@
     </div>
 }
 <mat-card class="size_div">
-    @if (form) {
+    @defer (when form) {
         <form [formGroup]="form">
             <div formGroupName="elements" class="elements">
                 <mat-form-field *ngFor="let g of elementsForm.controls; let i = index">

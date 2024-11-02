@@ -42,8 +42,8 @@ import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
 })
 export class ArticleListComponent extends BaseEntityListComponent<Article> implements OnInit {
     filterCtrl = new FormControl<number>(this.entitySrv.getParentId());
-    private STOCK_COLS = ['image', 'reference', 'description2', 'markDescription', 'classDescription', 'unitDescription'];
-    private SALES_COLS = ['image', 'reference', 'description2', 'markDescription', 'classDescription', 'unitDescription'];
+    private STOCK_COLS = ['image', 'reference', 'description2', 'markDescription', 'classDescription', 'subClassDescription', 'unitDescription'];
+    private SALES_COLS = ['image', 'reference', 'description2', 'markDescription', 'classDescription', 'subClassDescription', 'unitDescription'];
     displayedColumns = this.STOCK_COLS;
 
     constructor(

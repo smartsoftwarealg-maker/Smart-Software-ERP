@@ -232,6 +232,7 @@ export interface LTMAbnormalTest {
     memo?: string;
     reportedBy?: number;
     correctionAction?: number;
+    normId?: number;
     actionNo?: string;
     pickPoint?: string;
 }

@@ -15,6 +15,13 @@
             </mat-cell>
         </ng-container>
 
+        <ng-container matColumnDef="value">
+            <mat-header-cell *matHeaderCellDef translate>COMMON_VALUE</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.value | number: '1.0-0'}}
+            </mat-cell>
+        </ng-container>
+
 
         <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
         <mat-row class="selectable" [class.selected]="row.id === selected" (click)="select(row.id)"

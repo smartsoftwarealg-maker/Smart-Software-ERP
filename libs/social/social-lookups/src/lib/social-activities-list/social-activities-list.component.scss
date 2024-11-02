@@ -21,9 +21,13 @@
     flex-grow: 0;
 }
 
+.mat-column-value {
+    flex: 1 1 100px;
+    justify-content: end;
+}
 .mat-column-description,
 .mat-column-descriptionAr {
-    flex: 2 0 290px;
+    flex: 2 1 290px;
     padding-right: 8px !important;
     padding-left: 8px !important;
 }

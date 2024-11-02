@@ -49,6 +49,7 @@ export class AppArchiveMainComponent {
     @Input()
     set id(objectId: number) {
         this.archiveSrv.setParentId(objectId);
+        this.refresh();
     }
     get id() {
         return this.archiveSrv.getParentId();

@@ -1,5 +1,5 @@
 <mat-card>
-    @if (form) {
+    @defer (when form) {
         <form [formGroup]="form">
             <mat-form-field class="default-50 sm-100">
                 <mat-label translate>COMMON_ID</mat-label>

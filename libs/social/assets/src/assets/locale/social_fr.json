@@ -14,5 +14,6 @@
     "PAYMENT_COUNTS":    "Nombre de paiements",
     "ACTIVITY_AMOUNTS":  "Montants d'activité",
     "ANNUAL_COUNTS":     "Nombre de versements annuels",
-    "ANNUAL_AMOUNTS":    "Montants annuels"
+    "ANNUAL_AMOUNTS":    "Montants annuels",
+    "EDO_LIST":          "Liste d'EDI"
 }

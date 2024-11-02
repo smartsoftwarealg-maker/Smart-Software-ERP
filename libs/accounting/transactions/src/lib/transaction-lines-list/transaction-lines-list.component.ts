@@ -1,5 +1,6 @@
-import { Component, DestroyRef, OnInit } from "@angular/core";
+import { Component, DestroyRef, inject, OnInit } from '@angular/core';
 import {
+    AccFileService,
     AccPoliciesService, ACCPolicy,
     ACCTransactionLine, AccTransactionLineService, SCALE
 } from '@ss/accounting/accounting-api';
@@ -40,11 +41,10 @@ import { Sort } from "@angular/material/sort";
     ],
 })
 export class TransactionLinesListComponent implements OnInit {
-    private susbscription: Subscription = null;
-    data: ACCTransactionLine[] = [];
+    private fileSrv = inject(AccFileService);
+    private subscription: Subscription = null;
     private accPolicy: ACCPolicy = null;
-    pagination = PaginationModel.newInstance({page: 0, pageSize: 5, elementCount: 0});
-    searchText = new FormControl<string>('');
+
     private COLUMNS = [
         'lineNumber',
         'accountNo',
@@ -58,6 +58,10 @@ export class TransactionLinesListComponent implements OnInit {
 
     selected= 0;
     parentId: number = null;
+    data: ACCTransactionLine[] = [];
+    pagination = PaginationModel.newInstance({page: 0, pageSize: 5, elementCount: 0});
+    searchText = new FormControl<string>('');
+    readonly isClosed = this.fileSrv.accFile.closed;
 
     constructor(
         public entitySrv: AccTransactionLineService,
@@ -72,7 +76,7 @@ export class TransactionLinesListComponent implements OnInit {
         private policySrv: AccPoliciesService,
         private destroyRef: DestroyRef) {
         this.pagination.onChange = () => this.refresh();
-        this.destroyRef.onDestroy(() => this.susbscription?.unsubscribe());
+        this.destroyRef.onDestroy(() => this.subscription?.unsubscribe());
     }
 
     ngOnInit() {
@@ -97,7 +101,7 @@ export class TransactionLinesListComponent implements OnInit {
                 this.accPolicy = res;
                 this.displayedColumns = this.COLUMNS.filter(e => this.accPolicy?.manualCashFlow || e !== 'c_o_d');
             });
-        this.susbscription = this.searchText
+        this.subscription = this.searchText
             .valueChanges
             .pipe(
                 debounceTime(300),

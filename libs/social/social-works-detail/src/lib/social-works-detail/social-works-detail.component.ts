@@ -2,7 +2,7 @@ import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
 import {
-    SOCIAL_WORKS_TYPE,
+    SOCIAL_WORKS_TYPE, SocialActivity,
     SocialActivityService,
     SocialAid,
     SocialEmployeeService,
@@ -29,12 +29,12 @@ import { MatInput } from '@angular/material/input';
     styleUrl: './social-works-detail.component.scss'
 })
 export class SocialWorksDetailComponent extends BaseEntityDetailComponent<SocialAid> {
-    private employeeSrv  = inject(SocialEmployeeService);
-    private activitySrv = inject(SocialActivityService);
-    private loginSrv  = inject(LoginService);
+    #employeeSrv  = inject(SocialEmployeeService);
+    #activitySrv = inject(SocialActivityService);
+    #loginSrv  = inject(LoginService);
 
-    employeeLookup = new PersonAutocompleteClass(this.employeeSrv);
-    activityLookup = new DefaultAutoCompleteModel(this.activitySrv);
+    employeeLookup = new PersonAutocompleteClass(this.#employeeSrv);
+    activityLookup = new DefaultAutoCompleteModel(this.#activitySrv);
 
     constructor(
         public override entitySrv: SocialWorksService,
@@ -44,22 +44,33 @@ export class SocialWorksDetailComponent extends BaseEntityDetailComponent<Social
         public override formBuilder: UntypedFormBuilder,
         public override confirmationSrv: ConfirmationDialogService) {
         super(entitySrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'SOCIAL_WORKS');
+        this.activityLookup.onObjectSelected = a => this.onActivity(a);
     }
 
     public override setupForm(b: SocialAid): UntypedFormGroup {
         return this.formBuilder.group({
             id:               [b.id],
-            centerId:         [{value: b.centerId || this.loginSrv.appCtx.center, disabled: true}, Validators.required],
+            centerId:         [{value: b.centerId || this.#loginSrv.appCtx.center, disabled: true}, Validators.required],
             aidType:          [b.aidType, Validators.required],
             date:             [b.date || new Date(), Validators.required],
             number:           [{ value: b.number, disabled: true }, Validators.required],
             personId:         [b.personId, Validators.required],
-            amount:           [b.amount, Validators.required],
+            amount:           [{ value: b.amount, disabled: true }, Validators.required],
             medicalAidType:   [b.medicalAidType],
             installmentCount: [b.installmentCount],
             description:      [b.description],
             parentId:         [b.parentId || SOCIAL_WORKS_TYPE]
         });
+    }
+
+    private onActivity(a: SocialActivity) {
+        const amount = this.form.controls['amount'];
+        amount.setValue(a.value||0);
+        if (a.value) {
+            amount.disable({onlySelf: true});
+        } else {
+            amount.enable({onlySelf: true});
+        }
     }
 
 }

@@ -7,7 +7,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { DefaultReportService } from '@ss/common/ui-default-report-component';
 import { PaginatorPersistenceService } from '@ss/common/api-common';
-import { SocialActivityService } from '@social/social-api';
+import { SocialActivity, SocialActivityLookupService, SocialActivityService } from '@social/social-api';
 import { CommonUiLangModule } from '@ss/common/ui-lang';
 import {
     MatCell,
@@ -26,10 +26,11 @@ import { UiPaginationModule } from '@ss/common/ui-pagination';
     templateUrl: './social-activities-list.component.html',
     styleUrl: './social-activities-list.component.scss',
 })
-export class SocialActivitiesListComponent extends BaseEntityListComponent<Lookup> {
+export class SocialActivitiesListComponent extends BaseEntityListComponent<SocialActivity> {
     displayedColumns = [
         'description',
         'descriptionAr',
+        'value'
     ]
     constructor(
         public override entitySrv: SocialActivityService,

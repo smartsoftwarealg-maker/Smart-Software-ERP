@@ -1,6 +1,6 @@
 <mat-card>
     <mat-card-content>
-        @if (form) {
+        @defer (when form) {
             <form novalidate [formGroup]="form">
                 <mat-form-field id="memo" class="default-100">
                     <mat-label translate>REMUN_IEP_FORMULA</mat-label>

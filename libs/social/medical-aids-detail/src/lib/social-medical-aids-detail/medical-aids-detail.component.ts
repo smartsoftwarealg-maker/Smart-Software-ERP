@@ -2,7 +2,7 @@ import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
 import {
-    MEDICAL_AIDS_TYPE,
+    MEDICAL_AIDS_TYPE, MedicalAid,
     MedicalAidTypesService,
     SocialAid, SocialEmployeeService
 } from '@social/social-api';
@@ -20,21 +20,23 @@ import { MatError, MatFormField, MatLabel } from '@angular/material/form-field';
 import { MatInput } from '@angular/material/input';
 import { MedicalAidService } from '@social/social-api';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
+import { AidHistoryComponent } from '@social/aid-history';
+import { PersonAidHistoryService } from '../../../../social-api/src/lib/services/person-aid-history.service';
 
 @Component({
     selector: 'ss-medical-aids-detail',
     standalone: true,
-    imports: [CommonModule, CommonUiAutoCompleteModule, CommonUiDatepickerModule, CommonUiLangModule, MatCard, MatCardContent, MatError, MatFormField, MatInput, MatLabel, ReactiveFormsModule],
+    imports: [CommonModule, CommonUiAutoCompleteModule, CommonUiDatepickerModule, CommonUiLangModule, MatCard, MatCardContent, MatError, MatFormField, MatInput, MatLabel, ReactiveFormsModule, AidHistoryComponent],
     templateUrl: './medical-aids-detail.component.html',
     styleUrl: './medical-aids-detail.component.scss',
 })
 export class MedicalAidsDetailComponent extends BaseEntityDetailComponent<SocialAid> {
     #medicalAidTypeSrv = inject(MedicalAidTypesService);
-    private employeeSrv  = inject(SocialEmployeeService);
-    // private activitySrv = inject(SocialActivityService);
-    private loginSrv  = inject(LoginService);
+    #employeeSrv  = inject(SocialEmployeeService);
+    #loginSrv  = inject(LoginService);
+    #personAidHistorySrv = inject(PersonAidHistoryService);
 
-    employeeLookup = new PersonAutocompleteClass(this.employeeSrv);
+    employeeLookup = new PersonAutocompleteClass(this.#employeeSrv);
     medicalAidTypeLookup = new DefaultAutoCompleteModel(this.#medicalAidTypeSrv);
     // activityLookup = new DefaultAutoCompleteModel(this.activitySrv);
 
@@ -46,12 +48,15 @@ export class MedicalAidsDetailComponent extends BaseEntityDetailComponent<Social
         public override formBuilder: UntypedFormBuilder,
         public override confirmationSrv: ConfirmationDialogService) {
         super(entitySrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'SOCIAL_MEDICAL_AIDS');
+        this.medicalAidTypeLookup.onObjectSelected = t => this.onMedicalTypeChange(t);
+        this.employeeLookup.onObjectSelected = e => this.#personAidHistorySrv.setParentId(e.id||0);
     }
 
     public override setupForm(b: SocialAid): UntypedFormGroup {
+        this.#personAidHistorySrv.setParentId(b.personId||0);
         const form = this.formBuilder.group({
             id:               [b.id],
-            centerId:         [{value: b.centerId || this.loginSrv.appCtx.center, disabled: true}, Validators.required],
+            centerId:         [{value: b.centerId || this.#loginSrv.appCtx.center, disabled: true}, Validators.required],
             aidType:          [b.aidType||0],
             date:             [b.date || new Date(), Validators.required],
             number:           [{ value: b.number||0, disabled: true }],
@@ -76,6 +81,18 @@ export class MedicalAidsDetailComponent extends BaseEntityDetailComponent<Social
                         this.form.controls['amount'].setValue(refAmount * res / 100.0);
                     }
                 }));
+        this.subscriptions.push(
+            form.controls['referenceAmount']
+                .valueChanges
+                .pipe(
+                    debounceTime(300),
+                    distinctUntilChanged(),
+                ).subscribe(res => {
+                    if (res) {
+                        const rate = this.form.controls['rate']?.value || 0;
+                        this.form.controls['amount'].setValue(rate * res / 100.0);
+                    }
+                }));
 
         return form;
     }
@@ -84,6 +101,16 @@ export class MedicalAidsDetailComponent extends BaseEntityDetailComponent<Social
         const value = this.form.getRawValue();
         delete value.rate;
         return value;
+    }
+
+    private onMedicalTypeChange(a: MedicalAid) {
+        const amount = this.form.controls['rate'];
+        amount.setValue(a.value||0);
+        if (a.value) {
+            amount.disable({onlySelf: true});
+        } else {
+            amount.enable({onlySelf: true});
+        }
     }
 }
 

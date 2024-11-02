@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, inject, input, OnInit, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatListOption, MatListSubheaderCssMatStyler, MatSelectionList } from '@angular/material/list';
 import { FormsModule, ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
@@ -16,9 +16,10 @@ import { MatInput, MatInputModule } from '@angular/material/input';
 import { MatOption } from '@angular/material/autocomplete';
 import { MatSelect } from '@angular/material/select';
 import { Lookup } from '@ss/common/api-lookup';
-import { SocialEDOService } from '@social/social-api';
+import { EdoHeaderService, SocialEDOService } from '@social/social-api';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
+import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
 
 @Component({
     selector: 'ss-social-edo',
@@ -42,13 +43,16 @@ import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
         MatFormFieldModule,
         MatInputModule,
         MatDatepickerModule,
-        CommonUiDatepickerModule
+        CommonUiDatepickerModule,
+        CommonUiAutoCompleteModule
     ],
     templateUrl: './social-edo.component.html',
     styleUrl: './social-edo.component.scss'
 })
 export class SocialEdoComponent implements OnInit {
-    @ViewChild('blist') blist: MatSelectionList;
+    #edoHeaderSrv = inject(EdoHeaderService);
+
+    @ViewChild('bList') bList: MatSelectionList;
     form: UntypedFormGroup = null;
     curYear = new Date().getFullYear();
     curMonth = new Date().getMonth();
@@ -56,6 +60,9 @@ export class SocialEdoComponent implements OnInit {
     receivingBanks: Lookup[] = [];
     selectedBanks = '';
     edoText: string = '';
+
+    edoHeaderLookup = new DefaultAutoCompleteModel(this.#edoHeaderSrv);
+    edoId = input<number>(0);
 
     constructor(private shellSrv: ShellService,
         private edoSrv: SocialEDOService,
@@ -81,10 +88,9 @@ export class SocialEdoComponent implements OnInit {
     }
 
     generate() {
-        const selection = this.blist.selectedOptions.selected.map(e => e.value);
+        const selection = this.bList.selectedOptions.selected.map(e => e.value);
         this.shellSrv.setLoading(true);
         this.form.value['bank'] = this.receivingBanks.length > 0? this.receivingBanks[0].id: 0;
-        console.log(this.form.value);
         this.edoSrv
             .generate(this.form.value, selection)
             .subscribe({
@@ -106,7 +112,7 @@ export class SocialEdoComponent implements OnInit {
     save() {
         const filename = `${this.form.value.month}-${this.form.value.year}.txt`;
         this.form.value['bank'] = this.receivingBanks.length > 0? this.receivingBanks[0].id: 0;
-        const selection = this.blist.selectedOptions.selected.map(e => e.value);
+        const selection = this.bList.selectedOptions.selected.map(e => e.value);
         this.shellSrv.setLoading(true);
         this.edoSrv
             .generate(this.form.value, selection)
@@ -137,15 +143,14 @@ export class SocialEdoComponent implements OnInit {
 
     private buildForm(bank: number) {
         this.form = this.formBuilder.group({
-            month:       [this.curMonth,                   Validators.required],
-            year:        [this.curYear,                    Validators.required],
             description: ['',                              Validators.required],
             formula:     ['c990',                          Validators.required],
             bank:        [{ value: bank, disabled: true }, Validators.required],
             date:        [new Date(),                      Validators.required],
             reference:   [1,                               Validators.required],
             special:     ['0',                             [Validators.required, Validators.minLength(1)]],
-            all: [false]
+            edoId:       [+(this.edoId()||'0'),              Validators.required],
+            all:         [false]
         });
     }
 }

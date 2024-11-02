@@ -25,7 +25,7 @@ import {
     ABS_STOCK_REPORT_RIGHT_URL,
     ABS_REFERENCE_CORRECTION_URL,
     ABS_STOCK_RESERVATION_URL,
-    ABS_STOCK_ARTICLE_TYPES_URL, ABS_STOCK_MARKS_URL
+    ABS_STOCK_ARTICLE_TYPES_URL, ABS_STOCK_MARKS_URL, ABS_STOCK_SUBCLASSES_URL
 } from '../common';
 import {SideNavNode} from '@ss/common/api-common';
 
@@ -39,6 +39,12 @@ export const stockNavTree: SideNavNode = {
             icon: 'fa-solid fa-family',
             route: ABS_STOCK_CLASSES_URL,
             accessRights: 'Klass'
+        },
+        {
+            name: 'COMMON_SUBCLASSES',
+            icon: 'fa-solid fa-folder-tree',
+            route: ABS_STOCK_SUBCLASSES_URL,
+            accessRights: 'Subclass'
         },
         {
             name: 'COMMON_TYPES',

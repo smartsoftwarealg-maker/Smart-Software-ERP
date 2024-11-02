@@ -13,20 +13,15 @@ export class SocialEDOService {
     private loginSrv = inject(LoginService);
 
     generate(edo: EDO, bankList: number[]): Observable<string[]> {
-        const mm = +edo.month;
-        const yy = +edo.year;
-        const period = yy * 100 + mm;
         const params = new HttpParams()
             .set('mode', 'b') // b for bank
             .set('description', edo.description)
             .set('reference', edo.reference)
-            .set('month', mm)
-            .set('year', yy)
             .set('banks', bankList.join(','))
-            .set('bank', edo.bank + '')
+            .set('bank', edo.bank)
+            .set('edoId', edo.edoId)
             .set('date', dateToYmdStr(new Date(edo.date)));
-        return this.httpSrv
-            .get<string[]>('/social/edo', params);
+        return this.httpSrv.get<string[]>('/social/edo', params);
     }
 
     getCenterBank(): Observable<number> {

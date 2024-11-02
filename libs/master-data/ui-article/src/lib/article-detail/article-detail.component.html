@@ -6,7 +6,7 @@
                                 style="display: inline-block;">
                 </ss-image-input>
             </div>
-            @if (form) {
+            @defer (when form) {
                 <form [formGroup]="form">
                     <div style="height: 16px"></div>
 
@@ -47,6 +47,14 @@
                         <mat-error
                             *ngIf="form.controls['klass'].hasError('required')" translate>COMMON_FIELD_REQUIRED
                         </mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field class="default-50 sm-100">
+                        <mat-label translate>STOCK_SUBCLASS</mat-label>
+                        <ss-auto-complete matInput
+                                          [model]="subClassLookup"
+                                          formControlName="subClass">
+                        </ss-auto-complete>
                     </mat-form-field>
 
 

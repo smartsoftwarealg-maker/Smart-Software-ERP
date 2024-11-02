@@ -1,6 +1,6 @@
 <mat-card>
     <mat-card-content>
-        @if (form) {
+        @defer (when form) {
             <form novalidate [formGroup]="form">
                 <mat-form-field id="code" class="default-50">
                     <mat-label translate>ADMINISTRATION_CODE</mat-label>

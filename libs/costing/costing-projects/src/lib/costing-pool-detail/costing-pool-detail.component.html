@@ -1,4 +1,4 @@
-@if (form) {
+@defer (when form) {
     <div class="size button__div">
         @if (isEditable) {
             <button mat-mini-fab (click)="save()" color="primary" [disabled]="childEditMode">

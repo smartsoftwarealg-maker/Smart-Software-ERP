@@ -24,6 +24,13 @@
                     </mat-error>
                 </mat-form-field>
 
+                <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>COMMON_CITY</mat-label>
+                    <ss-auto-complete matInput
+                                      [model]="cityLookup"
+                                      formControlName="city">
+                    </ss-auto-complete>
+                </mat-form-field>
 
                 <div id="group" class="default-50 sm-100">
                     <mat-checkbox formControlName="isPublic" translate>LOGISTICS_IS_PUBLIC</mat-checkbox>
@@ -207,7 +214,6 @@
                     <mat-label translate>ADMINISTRATION_LOGO</mat-label>
                     <input matInput formControlName="logo" type="text">
                 </mat-form-field>
-
 
 
             </mat-expansion-panel>

@@ -10,7 +10,7 @@ import { CommonUiLangModule } from '@ss/common/ui-lang';
 import { CProductLineService } from '../services/product-line.service';
 
 @Component({
-    selector: 'ss-costing-pool-list',
+    selector: 'ss-product-line-list',
     standalone: true,
     imports: [
         CommonModule,

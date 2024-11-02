@@ -8,6 +8,13 @@
             </mat-cell>
         </ng-container>
 
+        <ng-container matColumnDef="value">
+            <mat-header-cell *matHeaderCellDef translate>COMMON_VALUE</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.value | number: '1.0-0'}}
+            </mat-cell>
+        </ng-container>
+
         <ng-container matColumnDef="descriptionAr">
             <mat-header-cell *matHeaderCellDef translate>COMMON_DESCRIPTION_AR</mat-header-cell>
             <mat-cell *matCellDef="let e">

@@ -9,8 +9,9 @@ export const EMPLOYEE_URL = '/social/employees';
 export const SOCIAL_AIDS_URL = '/social/aids';
 export const SOCIAL_ACTIVITIES_URL = '/social/social_activities';
 export const ACTIVITIES_URL = '/social/activities';
-export const MEDICAL_AIDS_URL = '/social/medical_aids';
+export const MEDICAL_AIDS_URL = '/social/medical-aids';
 export const REIMBURSEMENTS_URL = '/reimbursements';
+export const SOCIAL_EMPLOYEES_URL = '/social/employees';
 
 // Classes
 export interface SocialAid {
@@ -69,4 +70,34 @@ export interface Reimbursement {
     parentId: number;
     reference?: string;
     date?: Date;
+}
+
+export interface SocialActivity {
+    id: number;
+    description: string;
+    descriptionAr?: string;
+    value?: number;
+}
+export interface MedicalAid {
+    id: number;
+    description: string;
+    descriptionAr?: string;
+    value?: number;
+}
+
+export interface EDOHeader {
+    id: number;
+    centerId: number;
+    number: number;
+    date: Date;
+    description?: string;
+}
+
+export interface EDOLine {
+    id: number;
+    parentId: number;
+    aidId: number;
+    description?: string;
+    firstName?: string;
+    lastName?: string;
 }

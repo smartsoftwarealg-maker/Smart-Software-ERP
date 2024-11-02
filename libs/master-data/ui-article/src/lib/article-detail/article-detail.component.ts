@@ -9,7 +9,7 @@ import {
     ArticleTypeService,
     ClassService,
     LookupsService,
-    MarkService,
+    MarkService, SubclassService,
     UnitService,
     Vat,
     VatService
@@ -47,6 +47,7 @@ import { LogisticsUiStockInfoModule } from '@ss/logistics/ui-stock-info';
     ]
 })
 export class ArticleDetailComponent extends BaseEntityDetailComponent<Article> implements OnInit {
+    private subClassSrv =  inject(SubclassService);
     private classSrv =  inject(ClassService);
     private markSrv  =  inject(MarkService);
     private unitSrv  =  inject(UnitService);
@@ -57,6 +58,7 @@ export class ArticleDetailComponent extends BaseEntityDetailComponent<Article> i
     aid = 0;
 
     classLookup = new DefaultAutoCompleteModel(this.classSrv);
+    subClassLookup = new DefaultAutoCompleteModel(this.subClassSrv);
     unitLookup = new DefaultAutoCompleteModel(this.unitSrv);
     markLookup = new DefaultAutoCompleteModel(this.markSrv);
     typeLookup = new DefaultAutoCompleteModel(this.typeSrv);
@@ -107,6 +109,7 @@ export class ArticleDetailComponent extends BaseEntityDetailComponent<Article> i
             vat:          [a.vat],
             blocked:      [a.blocked],
             articleType:  [a.articleType],
+            subClass:     [a.subClass]
         });
     }
 

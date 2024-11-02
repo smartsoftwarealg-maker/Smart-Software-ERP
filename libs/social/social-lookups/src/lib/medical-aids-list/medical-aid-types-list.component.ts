@@ -30,6 +30,7 @@ export class MedicalAidTypesListComponent extends BaseEntityListComponent<Lookup
     displayedColumns = [
         'description',
         'descriptionAr',
+        'value'
     ]
     constructor(
         public override entitySrv: MedicalAidTypesService,

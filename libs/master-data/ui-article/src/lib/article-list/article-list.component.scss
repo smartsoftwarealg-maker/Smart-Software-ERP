@@ -34,6 +34,13 @@
     max-width: 80px;
 }
 
+.mat-column-unitDescription,
+.mat-column-markDescription,
+.mat-column-classDescription,
+.mat-column-subClassDescription {
+    flex: 1 1 120px;
+}
+
 .mat-column-description2 {
     flex: 1 0 350px;
     padding-right: 8px !important;

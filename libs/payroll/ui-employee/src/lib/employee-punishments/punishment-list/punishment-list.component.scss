@@ -1,21 +1,10 @@
 
 .table-container {
-    width: 96%;
-    display: block;
-    margin: 0 auto;
-    min-width: 1200px;
-    overflow-y: auto;
+    overflow-x: auto;
     min-height: 300px;
+    display: block;
 }
 
-.table-container {
-    width: 100%;
-    display: block;
-    margin: auto;
-    min-width: 900px;
-    overflow: auto;
-    min-height: 300px;
-}
 
 mat-table {
     width: 100%;
@@ -23,19 +12,27 @@ mat-table {
     min-height: 180px;
 }
 
-.buttons {
-    margin: 8px auto;
-    width: 150px;
-    text-align: center;
+.button__div {
     display: flex;
-    justify-content: space-between;
+    gap: 1em;
+    justify-content: center;
+    padding-bottom: .5em;
+}
+
+.table-container,
+.button__div {
+    width: 96%;
+    margin: 0 auto;
+    max-width: 1200px;
+}
+.mat-column-typeName,
+.mat-column-faultName {
+    flex: 2 1 120px;
 }
 
 .mat-column-sanction,
-.mat-column-typeName,
-.mat-column-faultName,
 .mat-column-memo {
-    flex: 2 1 120px;
+    flex: 2 1 220px;
 }
 
 .mat-column-date,

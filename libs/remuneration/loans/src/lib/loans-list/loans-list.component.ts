@@ -1,25 +1,42 @@
 import { Component, OnInit } from '@angular/core';
-import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
-import {Consumption, Loan} from '../loans-class';
-import {InputFiltersService} from '@ss/remuneration/input-filters';
-import {ShellService, SnackBarService} from '@ss/common/ui-shell';
-import {ActivatedRoute, Router} from '@angular/router';
-import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import {DefaultReportService} from '@ss/common/ui-default-report-component';
-import {PaginatorPersistenceService} from '@ss/common/api-common';
-import {LoansService} from '../loans.service';
-import {LoansConsumptionService} from '../loans-consumption.service';
+import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
+import { Consumption, Loan } from '../loans-class';
+import { InputFiltersService } from '@ss/remuneration/input-filters';
+import { ShellService, SnackBarService } from '@ss/common/ui-shell';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
+import { DefaultReportService } from '@ss/common/ui-default-report-component';
+import { MaterialModule, PaginatorPersistenceService } from '@ss/common/api-common';
+import { LoansService } from '../loans.service';
+import { LoansConsumptionService } from '../loans-consumption.service';
+import { CommonModule } from '@angular/common';
+import { UiPaginationModule } from '@ss/common/ui-pagination';
+import { CommonUiLangModule } from '@ss/common/ui-lang';
+import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
+import { RemunerationPaymonthEditorModule } from '@ss/remuneration/paymonth-editor';
+import { CommonPayrollModule } from '@ss/payroll-common';
+
 @Component({
-  selector: 'ss-loans-list',
-  templateUrl: './loans-list.component.html',
-  styleUrls: ['./loans-list.component.scss']
+    selector: 'ss-loans-list',
+    templateUrl: './loans-list.component.html',
+    styleUrls: ['./loans-list.component.scss'],
+    standalone: true,
+    imports: [
+        CommonModule,
+        MaterialModule,
+        UiPaginationModule,
+        CommonUiLangModule,
+        CommonUiAutoCompleteModule,
+        RemunerationPaymonthEditorModule,
+        CommonPayrollModule
+    ]
 })
 export class LoansListComponent extends BaseEntityListComponent<Loan> {
     consumptionList: Consumption[] = [];
     consumptionColumns = [
         'paymonth',
         'consumption',
-        'remaining',
+        'remaining'
     ];
 
     displayedColumns = [
@@ -45,13 +62,13 @@ export class LoansListComponent extends BaseEntityListComponent<Loan> {
         public override pagPersistSrv: PaginatorPersistenceService,
         private consumptionSrv: LoansConsumptionService) {
         super(infoSrv,
-              shellSrv,
-              snackBarSrv,
-              route,
-              router,
-              confirmationSrv,
-              defReportSrv,
-              pagPersistSrv,
+            shellSrv,
+            snackBarSrv,
+            route,
+            router,
+            confirmationSrv,
+            defReportSrv,
+            pagPersistSrv,
             'PAYROLL_LOANS');
         this.pagination.pageSize = 15;
     }

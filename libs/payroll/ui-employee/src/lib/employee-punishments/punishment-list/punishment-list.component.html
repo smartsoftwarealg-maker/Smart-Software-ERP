@@ -1,20 +1,25 @@
-<div class="buttons" *ngIf="isEditable">
-    <button mat-mini-fab color="primary" (click)="showDetail(0)" [matTooltip]="'COMMON_ADD' | translate">
-        <span class="fas fa-plus"></span>
-    </button>
+<div class="button__div">
+    @if (isEditable) {
+        <button mat-mini-fab color="primary"
+                (click)="showDetail(0)"
+                [matTooltip]="'COMMON_ADD' | translate">
+            <span class="fas fa-plus"></span>
+        </button>
+    }
     <button mat-mini-fab (click)="edit()"
             [matTooltip]="'COMMON_EDIT' | translate"
             [disabled]="!selectedId"
             color="accent">
         <span class="fas fa-pen"></span>
     </button>
-    <button mat-mini-fab (click)="deleteSelected()" [matTooltip]="'COMMON_DELETE' | translate"
-            [disabled]="!selectedId"
-            color="warn">
-        <span class="fas fa-trash-alt"></span>
-    </button>
+    @if (isEditable) {
+        <button mat-mini-fab (click)="deleteSelected()" [matTooltip]="'COMMON_DELETE' | translate"
+                [disabled]="!selectedId"
+                color="warn">
+            <span class="fas fa-trash-alt"></span>
+        </button>
+    }
 </div>
-
 
 <div class="table-container">
     <mat-table mat-table [dataSource]="data$ | async" class="content-div">
@@ -24,7 +29,7 @@
                 COMMON_NUMBER
             </mat-header-cell>
             <mat-cell *matCellDef="let e" style="justify-content: center">
-                {{e.number}}
+                {{ e.number }}
             </mat-cell>
         </ng-container>
 
@@ -33,16 +38,16 @@
                 COMMON_DATE
             </mat-header-cell>
             <mat-cell *matCellDef="let e" style="justify-content: center">
-                {{e.date | date: 'dd/MM/yyyy' }}
+                {{ e.date | date: 'dd/MM/yyyy' }}
             </mat-cell>
         </ng-container>
 
-        <ng-container matColumnDef="sanction" >
+        <ng-container matColumnDef="sanction">
             <mat-header-cell *matHeaderCellDef translate style="justify-content: center">
                 PAYROLL_PUNISHMENT
             </mat-header-cell>
             <mat-cell *matCellDef="let e" style="justify-content: center">
-                {{e.sanction}}
+                {{ e.sanction }}
             </mat-cell>
         </ng-container>
 
@@ -52,7 +57,7 @@
                 COMMON_TYPE
             </mat-header-cell>
             <mat-cell *matCellDef="let e">
-                {{e.typeName}}
+                {{ e.typeName }}
             </mat-cell>
         </ng-container>
 
@@ -61,7 +66,7 @@
                 PAYROLL_FAULT
             </mat-header-cell>
             <mat-cell *matCellDef="let e">
-                {{e.faultName}}
+                {{ e.faultName }}
             </mat-cell>
         </ng-container>
 
@@ -71,7 +76,7 @@
                 COMMON_MEMO
             </mat-header-cell>
             <mat-cell *matCellDef="let e">
-                {{e.memo}}
+                {{ e.memo }}
             </mat-cell>
         </ng-container>
 
@@ -80,7 +85,6 @@
         <mat-row class="selectable" [class.selected]="row.id == selectedId" (click)="select(row.id)"
                  *matRowDef="let row; columns: displayedColumns;"></mat-row>
     </mat-table>
-
 </div>
 
 <div class="pagination-container b-b-background">

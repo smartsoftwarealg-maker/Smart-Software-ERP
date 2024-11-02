@@ -28,6 +28,7 @@ export interface Center {
     fundId: number;
     severe: boolean;
     isPublic: boolean;
+    city?: number;
 }
 
 

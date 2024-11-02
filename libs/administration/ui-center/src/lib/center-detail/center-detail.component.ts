@@ -1,9 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute } from '@angular/router';
 import { AbstractControl, ReactiveFormsModule, UntypedFormBuilder, Validators } from '@angular/forms';
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
-import { Bank, Fund, LookupsService } from '@ss/common/api-lookup';
+import { Bank, CityService, Fund, LookupsService } from '@ss/common/api-lookup';
 import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { Center, CenterService } from '@ss/administration/api-center';
 import { MatExpansionPanel } from '@angular/material/expansion';
@@ -14,6 +14,7 @@ import { LoginService, MaterialModule } from '@ss/common/api-common';
 import { CommonModule } from '@angular/common';
 import { CommonUiLangModule } from '@ss/common/ui-lang';
 import { UiPaginationModule } from '@ss/common/ui-pagination';
+import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
 
 
 @Component({
@@ -28,12 +29,16 @@ import { UiPaginationModule } from '@ss/common/ui-pagination';
         UiPaginationModule,
         ReactiveFormsModule,
         CommonUiConfirmationDialogModule,
-    ],
+        CommonUiAutoCompleteModule
+    ]
 })
 export class CenterDetailComponent extends BaseEntityDetailComponent<Center> {
+    #citySrv = inject(CityService);
 
     public funds: Fund[];
     public banks: Bank[];
+
+    cityLookup = new DefaultAutoCompleteModel(this.#citySrv);
 
     constructor(
         private loginSrv: LoginService,
@@ -64,33 +69,34 @@ export class CenterDetailComponent extends BaseEntityDetailComponent<Center> {
         const urlRegExp = new RegExp(/[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)?/gi);
 
         return this.formBuilder.group({
-            id: [b.id],
-            description: [b.description, Validators.required],
-            address: [b.address, Validators.required],
-            isPublic: [!!b.isPublic],
-            severe: [!!b.severe],
-            ssNumber: [b.ssNumber],
-            phone: [b.phone],
-            email: [b.email, Validators.email],
-            fax: [b.fax],
-            articleNo: [b.articleNo],
-            bank: [b.bank],
-            descriptionAr: [b.descriptionAr],
-            nis: [b.nis],
-            nif: [b.nif],
-            bankAccount: [b.bankAccount],
-            logo: [b.logo],
-            company: [b.company | this.loginSrv.appCtx.company],
-            activity: [b.activity],
-            activityCode: [b.activityCode],
-            payMonth: [b.payMonth],
-            bankRib: [b.bankRib],
-            abbreviation: [b.abbreviation, Validators.maxLength(3)],
-            fiscalId: [b.fiscalId],
-            commReg: [b.commReg],
-            addressAr: [b.addressAr],
-            fundId: [b.fundId],
-            monthValidated: [b.monthValidated]
+            id:             [b.id],
+            description:    [b.description, Validators.required],
+            address:        [b.address, Validators.required],
+            isPublic:       [!!b.isPublic],
+            severe:         [!!b.severe],
+            ssNumber:       [b.ssNumber],
+            phone:          [b.phone],
+            email:          [b.email, Validators.email],
+            fax:            [b.fax],
+            articleNo:      [b.articleNo],
+            bank:           [b.bank],
+            descriptionAr:  [b.descriptionAr],
+            nis:            [b.nis],
+            nif:            [b.nif],
+            bankAccount:    [b.bankAccount],
+            logo:           [b.logo],
+            company:        [b.company | this.loginSrv.appCtx.company],
+            activity:       [b.activity],
+            activityCode:   [b.activityCode],
+            payMonth:       [b.payMonth],
+            bankRib:        [b.bankRib],
+            abbreviation:   [b.abbreviation, Validators.maxLength(3)],
+            fiscalId:       [b.fiscalId],
+            commReg:        [b.commReg],
+            addressAr:      [b.addressAr],
+            fundId:         [b.fundId],
+            monthValidated: [b.monthValidated],
+            city:           [b.city],
         });
     }
 

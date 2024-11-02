@@ -48,7 +48,11 @@
             "@scheduled-sales/products-page": [
                 "libs/scheduled-sales/products-page/src/index.ts"
             ],
+            "@social/aid-history": ["libs/social/aid-history/src/index.ts"],
             "@social/edo": ["libs/social/edo/src/index.ts"],
+            "@social/loans": [
+                "libs/social/consolidated-loan-list/src/index.ts"
+            ],
             "@social/medical-aids-detail": [
                 "libs/social/medical-aids-detail/src/index.ts"
             ],
@@ -556,6 +560,9 @@
             "@ss/scheduled-sales/article": [
                 "libs/scheduled-sales/article/src/index.ts"
             ],
+            "@ss/scheduled-sales/password-reset": [
+                "libs/scheduled-sales/password-reset/src/index.ts"
+            ],
             "@ss/scheduled-sales/projects": [
                 "libs/scheduled-sales/projects/src/index.ts"
             ],
@@ -683,7 +690,6 @@
             "logistics/ui-document-sources": [
                 "libs/logistics/ui-document-sources/src/index.ts"
             ],
-            "@ss/scheduled-sales/password-reset": ["libs/scheduled-sales/password-reset/src/index.ts"],
             "payroll/payroll-options": [
                 "libs/payroll/payroll-options/src/index.ts"
             ],
