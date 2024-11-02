@@ -1,4 +1,6 @@
-export const LOAN_URL = '/payroll/loans';
+export const LOAN_PAYROLL_CENTERS = '/payroll/centers';
+export const LOAN_LOANS = '/loans';
+export const LOAN_PAYROLL_LOANS_URLS = '/payroll/loans';
 export const CONSUMPTION_URL = '/consumptions';
 
 export interface Consumption {

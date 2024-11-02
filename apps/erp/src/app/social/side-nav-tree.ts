@@ -1,10 +1,16 @@
 import { SideNavNode } from '@ss/common/api-common';
 import {
-    ABS_MEDICAL_AIDS_URL, ABS_REIMBURSEMENT_URL,
-    ABS_SOCIAL_ACTIVITIES_URL, ABS_SOCIAL_DASHBOARD_URL, ABS_SOCIAL_EDO_HEADER_URL, ABS_SOCIAL_EDO_URL,
+    ABS_MEDICAL_AIDS_URL,
+    ABS_REIMBURSEMENT_URL,
+    ABS_SOCIAL_ACTIVITIES_URL,
+    ABS_SOCIAL_DASHBOARD_URL,
+    ABS_SOCIAL_EDO_HEADER_URL,
+    ABS_SOCIAL_EDO_URL,
+    ABS_SOCIAL_LOANS_URL,
     ABS_SOCIAL_MEDICAL_AIDS_URL,
     ABS_SOCIAL_WORKS_URL
 } from './constants';
+import { ABS_LOANS_URL } from '../common';
 
 export const socialNavTree: SideNavNode = {
     name: 'SOCIAL_APP',
@@ -65,6 +71,12 @@ export const socialNavTree: SideNavNode = {
             accessRights: 'EDO'
         },
 
+        {
+            name: 'PAYROLL_LOANS',
+            icon: 'fas fa-user-edit',
+            route: ABS_SOCIAL_LOANS_URL,
+            accessRights: 'Loan'
+        },
     ],
     accessRights: 'SOCIAL'
 };

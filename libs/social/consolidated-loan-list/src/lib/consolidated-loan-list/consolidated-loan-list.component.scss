@@ -1,0 +1,56 @@
+.container {
+    width: 98%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 10px;
+}
+
+.right_div {
+    height: 60%;
+    width: 100%;
+    flex: 2 1 60%;
+    display: flex;
+    flex-direction: column;
+}
+.main-table {
+    flex: 2 1 auto;
+    overflow-x: auto;
+}
+.content-div {
+    flex-grow: 1;
+    overflow-x: auto;
+}
+.pagination-container {
+    flex-grow: 0;
+}
+.master {
+    width: 100%;
+    min-width: 1200px;
+}
+
+.consumption {
+    height: 35%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.mat-column-employee,
+.mat-column-date,
+.mat-column-number {
+    flex: 1 1 90px;
+    justify-self: center;
+}
+
+.mat-column-description {
+    flex: 1 0 150px;
+}
+.mat-column-lastName,
+.mat-column-firstName,
+.mat-column-amount,
+.mat-column-taken_amount,
+.mat-column-monthConsumed {
+    flex: 1 0 90px;
+    text-align: end;
+}
+

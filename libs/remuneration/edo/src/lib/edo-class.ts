@@ -9,5 +9,6 @@ export interface EDO {
     date: Date;
     reference: number;
     special: number;
+    edoId: number;
     all: boolean;
 }

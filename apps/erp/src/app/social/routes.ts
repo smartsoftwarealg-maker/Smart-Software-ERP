@@ -10,7 +10,7 @@ import {
 import {
     MEDICAL_AIDS_URL,
     SOCIAL_ACTIVITIES_URL, SOCIAL_DASHBOARD_URL, SOCIAL_EDO_HEADERS,
-    SOCIAL_EDO_URL,
+    SOCIAL_EDO_URL, SOCIAL_LOANS_URL,
     SOCIAL_MEDICAL_AIDS_URL, SOCIAL_REIMBURSEMENT_URL,
     SOCIAL_WORKS_URL
 } from './constants';
@@ -27,10 +27,12 @@ import {
 } from 'social/reimbursements';
 import {
     SocialEdoHeaderListComponent
-} from '../../../../../libs/social/edo/src/lib/social-edo-header-list/social-edo-header-list.component';
+} from '@social/edo';
 import {
     SocialEdoHeaderDetailComponent
-} from '../../../../../libs/social/edo/src/lib/social-edo-header-detail/social-edo-header-detail.component';
+} from '@social/edo';
+import { LoansDetailComponent } from '@ss/remuneration/loans';
+import { ConsolidatedLoanListComponent } from '@social/loans';
 
 export const socialRoutes: Routes = [
     {
@@ -80,6 +82,23 @@ export const socialRoutes: Routes = [
                 canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService],
             },
+        ]
+    },
+    {
+        path: SOCIAL_LOANS_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: ConsolidatedLoanListComponent,
+                canActivate: [loginGuard],
+            },
+            {
+                path: ':id',
+                component: LoansDetailComponent,
+                canActivate: [loginGuard],
+                canDeactivate: [CanDeactivateService],
+            },
+            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
         ]
     },
     {

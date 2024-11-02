@@ -312,12 +312,12 @@ export const mainRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: LoansListComponent,
-                canActivate: [loginGuard, payrollGuard],
+                canActivate: [loginGuard],
             },
             {
                 path: ':id',
                 component: LoansDetailComponent,
-                canActivate: [loginGuard, payrollGuard],
+                canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService],
             },
             { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }

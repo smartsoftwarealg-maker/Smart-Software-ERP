@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {BaseEntityService} from '@ss/common/api-base-entity';
-import {Loan, LOAN_URL} from './loans-class';
+import {Loan, LOAN_PAYROLL_LOANS_URLS} from './loans-class';
 import {HttpService} from '@ss/common/api-common';
 
 @Injectable({
@@ -8,6 +8,6 @@ import {HttpService} from '@ss/common/api-common';
 })
 export class LoansService extends BaseEntityService<Loan> {
   constructor(protected override httpSrv: HttpService) {
-      super(httpSrv, LOAN_URL);
+      super(httpSrv, LOAN_PAYROLL_LOANS_URLS);
   }
 }

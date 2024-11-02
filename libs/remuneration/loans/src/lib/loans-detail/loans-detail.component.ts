@@ -1,16 +1,20 @@
 import { Component, inject, OnInit } from '@angular/core';
-import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
-import {Loan} from '../loans-class';
-import {ShellService, SnackBarService} from '@ss/common/ui-shell';
-import {ActivatedRoute} from '@angular/router';
-import {UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
-import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import {LoansService} from '../loans.service';
-import {LoginService} from '@ss/common/api-common';
-import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
-import {ElementTypesService} from '@ss/remuneration/element-types';
+import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
+import { Loan } from '../loans-class';
+import { ShellService, SnackBarService } from '@ss/common/ui-shell';
+import { ActivatedRoute } from '@angular/router';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
+import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
+import { LoansService } from '../loans.service';
+import { LoginService, MaterialModule } from '@ss/common/api-common';
+import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
+import { ElementTypesService } from '@ss/remuneration/element-types';
 import { EmployeeService, PersonAutocompleteClass } from '@ss/employee-services/employee-services';
-import { LoanTypeService } from "@ss/payroll-common";
+import { CommonPayrollModule, LoanTypeService } from '@ss/payroll-common';
+import { CommonModule } from '@angular/common';
+import { UiPaginationModule } from '@ss/common/ui-pagination';
+import { CommonUiLangModule } from '@ss/common/ui-lang';
+import { RemunerationPaymonthEditorModule } from '@ss/remuneration/paymonth-editor';
 
 type Period = {
     year: number;
@@ -18,14 +22,24 @@ type Period = {
 }
 
 @Component({
-  selector: 'ss-loans-detail',
-  templateUrl: './loans-detail.component.html',
-  styleUrls: ['./loans-detail.component.scss']
+    selector: 'ss-loans-detail',
+    templateUrl: './loans-detail.component.html',
+    styleUrls: ['./loans-detail.component.scss'],
+    standalone: true,
+    imports: [
+        CommonModule,
+        MaterialModule,
+        UiPaginationModule,
+        CommonUiLangModule,
+        CommonUiAutoCompleteModule,
+        RemunerationPaymonthEditorModule,
+        CommonPayrollModule
+    ]
 })
 export class LoansDetailComponent extends BaseEntityDetailComponent<Loan> {
-    private employeeSrv  = inject(EmployeeService);
-    private loginSrv  = inject(LoginService);
-    private elementTypeSrv  = inject(ElementTypesService);
+    private employeeSrv = inject(EmployeeService);
+    private loginSrv = inject(LoginService);
+    private elementTypeSrv = inject(ElementTypesService);
     private loanSrv = inject(LoanTypeService);
     employeeAutoCompleteModel = new PersonAutocompleteClass(this.employeeSrv);
     loanLookup = new DefaultAutoCompleteModel(this.loanSrv);
