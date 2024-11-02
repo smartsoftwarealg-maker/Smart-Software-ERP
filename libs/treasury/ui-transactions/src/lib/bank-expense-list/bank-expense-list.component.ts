@@ -35,8 +35,8 @@ export class BankExpenseListComponent extends BaseEntityListComponent<TTransacti
         ];
 
     private readonly BANK_COLS = [
-        'reference',
-        'reference2',
+        // 'reference',
+        // 'reference2',
         'description',
         'agentName',
         'groupName',
@@ -51,7 +51,7 @@ export class BankExpenseListComponent extends BaseEntityListComponent<TTransacti
     journalFilter: FormControl<number | null> = null;
     journalLookup: DefaultAutoCompleteModel<Journal> = new DefaultAutoCompleteModel(this.journalSrv);
     summary$: Observable<Summary[]> = null;
-
+    selectedJournal: string|null = null;
     displayedColumns = this.CASH_COLS;
 
     constructor(
@@ -99,6 +99,10 @@ export class BankExpenseListComponent extends BaseEntityListComponent<TTransacti
         return false;
     }
 
+    onSummary(s: Summary) {
+        this.selectedJournal = s.journal;
+        this.openPeriod(s.period);
+    }
     openPeriod(period: number) {
         const date = new Date(+(period / 10000).toFixed(0), +((period / 100) % 100).toFixed(0) - 1, +(period % 100).toFixed(0));
         this.onDate(date);

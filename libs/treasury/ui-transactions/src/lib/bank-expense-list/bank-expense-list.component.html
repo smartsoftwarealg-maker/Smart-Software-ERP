@@ -15,26 +15,29 @@
         </mat-form-field>
 
         <div class="summary_table_div">
-            <table *ngIf="summary$">
-                <tr class="b-primary">
-                    <th translate>TRS_PERIOD</th>
-                    <th translate>COMMON_BALANCE</th>
-                    <th translate>COMMON_TOTAL</th>
-                    <th></th>
-                </tr>
-                <tr *ngFor="let s of summary$ | async" class="selectable">
-                    <td style="min-width: 8em"> {{ ('0' + (s.period % 100).toFixed(0)).substring(0, 2) }}/
-                        {{ ('0' + ((s.period / 100) % 100).toFixed(0)).substring(0, 2)}}/
-                        {{ (s.period / 10000).toFixed(0)}}
-                    </td>
-                    <td style="text-align: right"> {{ s.balance | number: '1.2-2' }}</td>
-                    <td style="text-align: right"> {{ s.rTotal | number: '1.2-2' }}</td>
-                    <td style="padding: 0; max-width: 24px;">
-                        <button mat-icon-button (click)="openPeriod(s.period)" color="primary"><i
-                            class="fa-solid fa-file-pen"></i></button>
-                    </td>
-                </tr>
-            </table>
+            @if (summary$) {
+                <table>
+                    <tr class="b-primary">
+                        <th translate>TRS_PERIOD</th>
+                        <th translate>COMMON_BALANCE</th>
+                        <th translate>COMMON_TOTAL</th>
+                        <th style="width: 3em">&nbsp;</th>
+                    </tr>
+                    @for (s of summary$ | async; track s.journal) {
+                    <tr class="selectable" [class.selected]="s.journal === selectedJournal" (click)="onSummary(s)">
+                        <td style="min-width: 8em"> {{ ('0' + (s.period % 100).toFixed(0)).substring(0, 2) }}/
+                            {{ ('0' + ((s.period / 100) % 100).toFixed(0)).substring(0, 2) }}/
+                            {{ (s.period / 10000).toFixed(0) }}
+                        </td>
+                        <td style="text-align: right"> {{ s.balance | number: '1.2-2' }}</td>
+                        <td style="text-align: right"> {{ s.rTotal | number: '1.2-2' }}</td>
+                        <td style="padding: 0; max-width: 24px;">
+                            <button mat-icon-button (click)="openPeriod(s.period)" color="primary"><i class="fa-solid fa-file-pen"></i></button>
+                        </td>
+                    </tr>
+                    }
+                </table>
+            }
         </div>
     </div>
 </div>
@@ -45,63 +48,63 @@
         <ng-container matColumnDef="reference">
             <mat-header-cell *matHeaderCellDef translate>COMMON_CHECKNO</mat-header-cell>
             <mat-cell *matCellDef="let e">
-                {{e.reference}}
+                {{ e.reference }}
             </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="reference2">
             <mat-header-cell *matHeaderCellDef translate>COMMON_BANK</mat-header-cell>
             <mat-cell *matCellDef="let e">
-                {{e.reference2}}
+                {{ e.reference2 }}
             </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="agentName">
             <mat-header-cell *matHeaderCellDef translate>COMMON_AGENT</mat-header-cell>
             <mat-cell *matCellDef="let e">
-                {{e.agentName}}
+                {{ e.agentName }}
             </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="pieceno">
             <mat-header-cell *matHeaderCellDef translate>TRS_PIECENO</mat-header-cell>
             <mat-cell *matCellDef="let e">
-                {{e.pieceno}}
+                {{ e.pieceno }}
             </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="description">
             <mat-header-cell *matHeaderCellDef translate>ADMINISTRATION_DESCRIPTION</mat-header-cell>
             <mat-cell *matCellDef="let e">
-                {{e.description}}
+                {{ e.description }}
             </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="groupName">
             <mat-header-cell *matHeaderCellDef translate>TRS_NATURE</mat-header-cell>
             <mat-cell *matCellDef="let e">
-                {{e.groupName}}
+                {{ e.groupName }}
             </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="memo">
             <mat-header-cell *matHeaderCellDef translate>COMMON_MEMO</mat-header-cell>
             <mat-cell *matCellDef="let e">
-                {{e.memo}}
+                {{ e.memo }}
             </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="income">
             <mat-header-cell *matHeaderCellDef translate>TRS_INCOME</mat-header-cell>
             <mat-cell *matCellDef="let e">
-                {{(e.balance > 0 ? e.balance : 0) | number: '1.2-2'}}
+                {{ (e.balance > 0 ? e.balance : 0) | number: '1.2-2' }}
             </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="expenses">
             <mat-header-cell *matHeaderCellDef translate>TRS_EXPENSE</mat-header-cell>
             <mat-cell *matCellDef="let e">
-                {{(e.balance > 0 ? 0.0 : -e.balance) | number: '1.2-2'}}
+                {{ (e.balance > 0 ? 0.0 : -e.balance) | number: '1.2-2' }}
             </mat-cell>
         </ng-container>
 

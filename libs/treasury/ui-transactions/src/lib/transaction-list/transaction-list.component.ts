@@ -108,8 +108,9 @@ export class TransactionListComponent extends BaseEntityListComponent<TTransacti
         this.mode = +e.value === 2? 2 : 1;
     }
 
-    override select(id: number) {
-        super.select(id);
-        this.#archiveSrv.setParentId(id);
-    }
+    //
+    // override selectRow(row: TTransaction) {
+    //     super.selectRow(row);
+    //     this.#archiveSrv.setParentId(row?.id||0);
+    // }
 }
