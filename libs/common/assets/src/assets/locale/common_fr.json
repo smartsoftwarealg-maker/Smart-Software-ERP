@@ -350,5 +350,6 @@
     "SUMMARY":                    "Sommaire",
     "DUE_DAY":                    "Jour d",
     "PASSWORD_RESET":             "Réinitialisation mot de passe",
-    "START_DATE":                 "date de début"
+    "START_DATE":                 "date de début",
+    "COSTING":                    "Coûts"
 }

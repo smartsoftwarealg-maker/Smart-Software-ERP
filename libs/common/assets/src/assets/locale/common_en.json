@@ -346,5 +346,6 @@
     "VERSION":                    "Version",
     "SUMMARY":                    "Summary",
     "PASSWORD_RESET":            "Password reset",
-    "START_DATE":                 "Start date"
+    "START_DATE":                 "Start date",
+    "COSTING":                    "Costing"
 }
