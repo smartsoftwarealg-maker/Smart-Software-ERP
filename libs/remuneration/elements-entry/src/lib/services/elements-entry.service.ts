@@ -78,4 +78,8 @@ export class ElementsEntryService extends BaseEntityService<ELine> {
     getPage(pageModel: PaginationModel, filter?: string, sortBy?: string, extraPrams?: HttpParams): Observable<ELine[]> {
         return super.getPage(pageModel, filter, sortBy, extraPrams);
     }
+
+    public excel(): Observable<Blob> {
+        return this.httpSrv.getBlob('/payroll/excel');
+    }
 }

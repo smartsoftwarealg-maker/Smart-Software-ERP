@@ -34,7 +34,6 @@ export class EmployeeContractListComponent extends BaseChildEntityListComponent<
 
     public readonly pagination = PaginationModel.newInstance();
     public data: Contract[] = [];
-    public selected = 0;
 
     constructor(public entitySrv: EmployeeContractService) {
         super(entitySrv, 'Contract');
