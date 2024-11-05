@@ -32,17 +32,19 @@ export const accountingNavTree: SideNavNode = {
             name: 'ACC_FILES',
             icon: 'fas fa-folders',
             route: ABS_ACC_FILES_URL,
-            accessRights: 'ACCJournal'
+            accessRights: 'ACCFile'
         },
         {
             name: 'ACC_FILE_SELECTOR',
             icon: 'fa-solid fa-folder-open',
-            route: ABS_ACC_FILE_SELECTION_URL
+            route: ABS_ACC_FILE_SELECTION_URL,
+            accessRights: 'ACCTransaction'
         },
         {
             name: 'ACC_PERIOD_SELECTION',
             icon: 'fa-solid fa-folder-open',
-            route: ABS_ACC_PERIOD_SELECTION_URL
+            route: ABS_ACC_PERIOD_SELECTION_URL,
+            accessRights: 'ACCFile'
         },
         {
             name: 'COMMON_JOURNALS',
@@ -78,7 +80,7 @@ export const accountingNavTree: SideNavNode = {
             name: 'ACC_CASH_FLOW',
             icon: 'fa-solid fa-cash-register',
             route: ABS_ACC_CASHFLOW_ACCOUNT_URL,
-            accessRights: 'Cashflow'
+            accessRights: 'CashFlowAcc'
         },
         {
             name: 'COMMON_TRANSACTIONS',
@@ -96,11 +98,13 @@ export const accountingNavTree: SideNavNode = {
             name: 'ACC_GENERATION',
             icon: 'fa-solid fa-gears',
             route: ABS_GENERATION_URL,
+            accessRights: 'ACCTransaction'
         },
         {
             name: 'ACC_REOPENING',
             icon: 'fa-solid fa-door-open',
             route: ABS_REOPEN_URL,
+            accessRights: 'ACCTransaction'
         },
         {
             name: 'COMMON_REPORTS',
@@ -112,6 +116,7 @@ export const accountingNavTree: SideNavNode = {
             name: 'ACC_BALANCE_QUERIES',
             icon: 'fa-solid fa-database',
             route: ABS_BALANCE_QUERIES_URL,
+            accessRights: 'ACCTransaction'
         },
         {
             name: 'COMMON_OPTIONS',

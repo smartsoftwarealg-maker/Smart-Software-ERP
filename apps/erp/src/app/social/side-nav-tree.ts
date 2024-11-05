@@ -33,21 +33,21 @@ export const socialNavTree: SideNavNode = {
             name: 'SOCIAL_MEDICAL_TYPES',
             icon: 'fa-solid fa-user-doctor-hair',
             route: ABS_SOCIAL_MEDICAL_AIDS_URL,
-            accessRights: 'MedicalAid'
+            accessRights: 'SocialAid'
         },
 
         {
             name: 'SOCIAL_WORKS',
             icon: 'fa-solid fa-hands-holding-child',
             route: ABS_SOCIAL_WORKS_URL,
-            accessRights: 'SocialWork'
+            accessRights: 'SocialAid'
         },
 
         {
             name: 'SOCIAL_MEDICAL_AIDS',
             icon: 'fa-solid fa-stretcher',
             route: ABS_MEDICAL_AIDS_URL,
-            accessRights: 'SocialWork'
+            accessRights: 'SocialAid'
         },
 
         {

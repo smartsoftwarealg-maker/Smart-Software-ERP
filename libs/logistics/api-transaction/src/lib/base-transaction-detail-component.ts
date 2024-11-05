@@ -226,7 +226,6 @@ export abstract class BaseTransactionDetailComponent extends BaseEntityDetailCom
         this.importBtn.disabled = this.requireAgentToImportDocument() && (b.agent === null || b.agent === undefined);
         this.detailSrv.editable = this.isEditable;
         this.transaction = b;
-        console.log('_______________________________pay method', b.payMethod);
         return this.formBuilder.group({
             id: [b.id],
             document: [b.document || 0],

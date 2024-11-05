@@ -217,9 +217,12 @@ export class TransactionLinesDetailComponent implements OnInit {
         }
 
         const val = this.form.getRawValue();
+        const old = val.balance;
         val.balance = val.debit || 0 - val.credit || 0;
-        delete val.debit;
-        delete val.credit;
+        if (old * val.balance < 0) {
+            debugger;
+            console.log(old, val.balance, val.debit, val.credit);
+        }
         if (this.entitySrv.getParentId() != null) {
             val.id = this.id;
             const obs: Observable<any> = val.id === 0

@@ -116,5 +116,7 @@
     "EXCHANGE":        "Money Exchange",
     "COSTING":         "Costing",
     "GICACARRER":      "Career advancements",
-    "SOCIAL_APP":      "Social works"
+    "SOCIAL_APP":      "Social works",
+    "SOCIAL":          "Social works",
+    "AAVIEWER":        "APPArchive"
 }
