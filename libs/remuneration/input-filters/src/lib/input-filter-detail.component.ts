@@ -21,7 +21,7 @@ export class InputFilterDetailComponent extends BaseEntityDetailComponent<InputF
 
     elements: ElementsInfo[]         = [];
     filteredElements: ElementsInfo[] = [];
-    selectionArray: string[]         = [];
+    selectionArray: ElementsInfo[]         = [];
     selection = '';
 
     constructor(
@@ -38,12 +38,13 @@ export class InputFilterDetailComponent extends BaseEntityDetailComponent<InputF
 
     public override setupForm(e: InputFilter): UntypedFormGroup {
         this.selection = e.selection;
-        this.buildSelectionArray();
-        return this.formBuilder.group({
-            id: [e.id || 0],
+        this.form =  this.formBuilder.group({
+            id:          [e.id || 0],
             description: [e.description, Validators.required],
-            selection: [e.selection || '', Validators.required],
+            selection:   [e.selection || '', Validators.required],
         });
+        this.buildSelectionArray();
+        return this.form;
     }
 
     override ngOnInit() {
@@ -53,9 +54,6 @@ export class InputFilterDetailComponent extends BaseEntityDetailComponent<InputF
             .subscribe(res => {
                 this.elements = res.body
                     .sort((a, b) => a.description? a.description?.localeCompare(b.description) : -1);
-                const searchText = this.filter.value || '';
-                this.filteredElements = this.elements.filter(e => searchText === '' || e.description?.indexOf(searchText) >= 0);
-                this.buildSelectionArray();
             });
         this.subscriptions.push(
             this.filter
@@ -63,11 +61,14 @@ export class InputFilterDetailComponent extends BaseEntityDetailComponent<InputF
                 .pipe(
                     debounceTime(300),
                     distinctUntilChanged()
-                ).subscribe(value => this.filteredElements =
-                this.elements
-                  .filter(e => (value === '' ||
-                    e.description?.toLowerCase().indexOf(value.toLowerCase()) >= 0 ||
-                    e.field?.toLowerCase().indexOf(value.toLowerCase()) >= 0)))
+                ).subscribe(value => {
+                this.filteredElements =
+                    this.elements
+                        .filter(e => (value === '' ||
+                            e.description?.toLowerCase().indexOf(value.toLowerCase()) >= 0 ||
+                            e.field?.toLowerCase().indexOf(value.toLowerCase()) >= 0));
+                this.buildSelectionArray();
+            })
         );
     }
 
@@ -91,12 +92,11 @@ export class InputFilterDetailComponent extends BaseEntityDetailComponent<InputF
     }
 
     private buildSelectionArray() {
-        this.selectionArray = this.selection?
-            this.selection
-            .split('[eE]')
-            .filter(e => e !== '')
-            .map(e => `e${e} ${this.elements.find(f => f.field === 'e' + e)?.description || ''}`) :
-        [];
+        const searchText = this.filter.value || '';
+        const selection = this.form?.controls['selection'].value || '';
+        this.filteredElements = this.elements.filter(e => (searchText === '' || e.description?.indexOf(searchText) >= 0) &&
+                                  selection.indexOf(e.field) < 0);
+        this.selectionArray = this.elements.filter(e => selection.indexOf(e.field) >= 0);
     }
 
     override readForm(): InputFilter {

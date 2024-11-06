@@ -63,6 +63,7 @@
     "DEPRECIATION_RATE":        "Taux d'amortissement",
     "USEFUL_LIFE":              "Vie utile",
     "File":                      "Exercise",
-    "STOCK_ACCOUNTS":           "Comptes de stock"
+    "STOCK_ACCOUNTS":           "Comptes de stock",
+    "CUSTOMER_CODE_REQUIRED":   "Code client requis"
 }
 
