@@ -61,5 +61,6 @@
     "INVALID_AGENT_UPDATE":          "This agent cannot be updated because the document contains detail from another agent's document. Please, delete the detail and then update the agent.",
     "INVALID_SCHEDULE_DATE":         "Invalid schedule date. Either the project is expired or the schedule date is not within the project's period.",
     "DUPLICATE_TEST":                "Duplicate test",
-    "LONG_INPUT_FILTER":             "Very long text. Please, reduce the length of the text to be less than 1600 characters."
+    "LONG_INPUT_FILTER":             "Very long text. Please, reduce the length of the text to be less than 1600 characters.",
+    "USED_FORMULA":                  "Used formula cannot be deleted."
 }
