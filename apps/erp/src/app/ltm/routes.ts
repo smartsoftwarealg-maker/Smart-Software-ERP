@@ -31,7 +31,7 @@ import {
     LTM_DEPOSIT_TEST_URL,
     LTM_RAW_MATERIAL_TEST_URL,
     LTM_CORRECTION_ACTION_URL,
-    LTM_NORM_TREE_TREE
+    LTM_NORM_TREE_TREE, LTM_TEST_EQUIPMENT_URL
 } from '../common';
 
 import {
@@ -100,7 +100,12 @@ import {
     LtmMixturePickupPointsListComponent,
     LtmMixturePickupPointsDetailComponent
 } from '@ss/ltm/ltm';
-import { LtmNormListComponent } from '../../../../../libs/ltm/ltm/src/lib/ltm-norm-list/ltm-norm-list.component';
+import { LtmNormListComponent } from '@ss/ltm/ltm';
+import {
+    TestEquipmentDetailComponent,
+    TestEquipmentListComponent, TestEquipmentTestDetailComponent,
+    TestEquipmentTestListComponent
+} from '@social/test-equipment';
 
 export const ltmRoutes: Routes = [
     {
@@ -124,6 +129,25 @@ export const ltmRoutes: Routes = [
                     { path: 'detail',
                         children: [
                             { path: ':id', component: LtmMatterTestDetailComponent }
+                        ]
+                    }
+                ],
+                canActivate: [loginGuard],
+            }
+        ]
+    },
+    {
+        path: LTM_TEST_EQUIPMENT_URL,
+        children: [
+            { path: LIST_URL, component: TestEquipmentListComponent, canActivate: [loginGuard]},
+            { path: ':id',
+                component: TestEquipmentDetailComponent,
+                children: [
+                    { path: '', redirectTo: 'detail', pathMatch: 'full'},
+                    { path: 'detail',
+                        children: [
+                            { path: '', component: TestEquipmentTestListComponent, pathMatch: 'full'},
+                            { path: ':id', component: TestEquipmentTestDetailComponent }
                         ]
                     }
                 ],

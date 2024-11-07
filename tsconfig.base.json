@@ -72,6 +72,9 @@
             "@social/social-works-list": [
                 "libs/social/social-works-list/src/index.ts"
             ],
+            "@social/test-equipment": [
+                "libs/ltm/test-equipment-list/src/index.ts"
+            ],
             "@ss/accounting/acc-policies": [
                 "libs/accounting/acc-policies/src/index.ts"
             ],

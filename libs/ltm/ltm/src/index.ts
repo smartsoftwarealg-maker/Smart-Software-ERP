@@ -59,3 +59,4 @@ export * from './lib/ltm-norm-tree/ltm-norm-tree.component';
 export * from './lib/ltm-test-schedule-detail/ltm-test-schedule-detail.component';
 export * from './lib/ltm-test-schedule-list/ltm-test-schedule-list.component';
 export * from './lib/services/ltm-physical-testing.service';
+export * from './lib/ltm-norm-list/ltm-norm-list.component';
