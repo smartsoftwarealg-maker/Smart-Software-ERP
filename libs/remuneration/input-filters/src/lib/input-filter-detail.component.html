@@ -1,4 +1,4 @@
-<form *ngIf="form !== null" novalidate [formGroup]="form" class="container">
+<form *ngIf="form !== null" [formGroup]="form" class="container">
 
   <mat-form-field id="description" class="description">
     <mat-label translate>COMMON_DESCRIPTION</mat-label>
@@ -9,14 +9,14 @@
   <mat-form-field id="selection" class="selection">
     <mat-label translate>REMUN_SELECTION</mat-label>
     <input matInput formControlName="selection" type="text" required readonly>
-    <mat-error *ngIf="form.controls['description'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
+    <mat-error *ngIf="form.controls['selection'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
   </mat-form-field>
 
   <div class="llist">
     <mat-toolbar mat-subheader class="b-primary" translate> {{ 'REMUN_SELECTION' }}</mat-toolbar>
     <mat-selection-list #llist>
-      <mat-list-option *ngFor="let s of selectionArray" [value]="s">
-        {{ s }}
+      <mat-list-option *ngFor="let e of selectionArray" [value]="e.field">
+          {{e.field}} {{ e.description }}
       </mat-list-option>
     </mat-selection-list>
   </div>
