@@ -1,3 +1,9 @@
+export const CHEMICAL_TEST = 1;
+export const PHYSICAL_TEST = 2;
+export const DEPOSIT_TEST = 3;
+export const RAW_MATERIAL_TEST = 4;
+
+
 export const LTM_TESTINGS_URL    = '/ltm/testings';
 export const LTM_LINE_URL        = '/ltm/lines';
 export const LTM_ABNORMAL_TESTS_URL        = '/ltm/abnormal-tests';
@@ -285,9 +291,43 @@ export interface LTMTestSchedule {
     nextDate: Date;
 }
 
-export const CHEMICAL_TEST = 1;
-export const PHYSICAL_TEST = 2;
-export const DEPOSIT_TEST = 3;
-export const RAW_MATERIAL_TEST = 4;
+export interface LTMTestingEquipment {
+    id: number;
+    centerId: number;
+    description: string;
+}
+
+export interface LTMTestEquipmentTest {
+    id: number;
+    parentId: number;
+    testId: number;
+    testDescription?: string;
+}
+
+export interface LTMEquipmentTesting {
+    id: number;
+    centerId: number;
+    equipmentId: number;
+    time: Date;
+    userId: number;
+    equipmentDescription?: string;
+    userDescription?: string;
+}
+
+export interface LTMEquipmentTestingLine {
+    id: number;
+    parentId: number;
+    testId: number;
+    value: number;
+    userId: number;
+    testDescription?: string;
+}
+
+export interface LTMTestEquipmentTestingInput {
+    id: number;
+    test: LTMEquipmentTesting;
+    lines: LTMEquipmentTestingLine[];
+}
+
 
 

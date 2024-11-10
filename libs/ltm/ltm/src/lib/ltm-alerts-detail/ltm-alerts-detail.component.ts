@@ -13,11 +13,11 @@ import { ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup } from '@angu
 import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel, UserLookup } from '@ss/common/ui-auto-complete';
 import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
 import { CommonUiHourPickerModule } from '@ss/common/ui-hour-picker';
-import { LTMAbnormalTest } from '../ltm-api';
-import { LtmAbnormalTestService } from '@ss/ltm/ltm';
-import { LtmCorrectionActionService } from '../services/ltm-correction-action.service';
+import { LTMAbnormalTest } from '@ltm/ltm-api';
+import { LtmAbnormalTestService } from '@ltm/ltm-api';
+import { LtmCorrectionActionService } from '@ltm/ltm-api';
 import { UserListService } from '@ss/common/api-users';
-import { LtmNormService } from '../services/ltm-norm.service';
+import { LtmNormService } from '@ltm/ltm-api';
 
 @Component({
     selector: 'ss-ltm-alerts-detail',

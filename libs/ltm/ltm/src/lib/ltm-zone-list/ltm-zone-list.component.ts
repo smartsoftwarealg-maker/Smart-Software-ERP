@@ -14,9 +14,8 @@ import { ReactiveFormsModule } from "@angular/forms";
 import { CommonUiAutoCompleteModule } from "@ss/common/ui-auto-complete";
 import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
 import { CommonUiHourPickerModule } from "@ss/common/ui-hour-picker";
-import { LtmProductService } from '@ss/ltm/ltm';
 import { Lookup } from '@ss/common/api-lookup';
-import { LtmZoneService } from '../services/ltm-zone.service';
+import { LtmZoneService } from '@ltm/ltm-api';
 
 @Component({
     selector: 'ss-ltm-zone-list',

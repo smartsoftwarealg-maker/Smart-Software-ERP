@@ -5,7 +5,7 @@ import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import { ActivatedRoute, RouterOutlet } from "@angular/router";
 import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
 import { ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup, Validators } from "@angular/forms";
-import {LtmPeriodicityService} from '../services/ltm-periodicity.service';
+import {LtmPeriodicityService} from '@ltm/ltm-api';
 import { CommonModule } from "@angular/common";
 import { MaterialModule } from "@ss/common/api-common";
 import { CommonUiLangModule } from "@ss/common/ui-lang";

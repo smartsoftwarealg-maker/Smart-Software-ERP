@@ -1,21 +1,19 @@
 import {Component} from '@angular/core';
-import {LTMMixture} from '../ltm-api';
+import {LTMMixture} from '@ltm/ltm-api';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import { ActivatedRoute, Router, RouterOutlet } from "@angular/router";
 import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
 import { MaterialModule, PaginatorPersistenceService } from "@ss/common/api-common";
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { DefaultReportService } from '@ss/common/ui-default-report-component';
-import { LtmMixtureService } from "../services/ltm-mixture.service";
-import { CommonModule } from "@angular/common";
-import { CommonUiLangModule } from "@ss/common/ui-lang";
-import { UiPaginationModule } from "@ss/common/ui-pagination";
-import { ReactiveFormsModule } from "@angular/forms";
-
-
-import { CommonUiAutoCompleteModule } from "@ss/common/ui-auto-complete";
-import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
-import { CommonUiHourPickerModule } from "@ss/common/ui-hour-picker";
+import { LtmMixtureService } from '@ltm/ltm-api';
+import { CommonModule } from '@angular/common';
+import { CommonUiLangModule } from '@ss/common/ui-lang';
+import { UiPaginationModule } from '@ss/common/ui-pagination';
+import { ReactiveFormsModule } from '@angular/forms';
+import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
+import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
+import { CommonUiHourPickerModule } from '@ss/common/ui-hour-picker';
 
 @Component({
     selector: 'ss-ltm-mixture-list',

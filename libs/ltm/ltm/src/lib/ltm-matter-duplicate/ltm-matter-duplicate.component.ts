@@ -1,9 +1,9 @@
 import { Component, Inject, inject, signal } from "@angular/core";
-import { LTMLineMatter, LTMMatter } from '../ltm-api';
+import { LTMLineMatter, LTMMatter } from '@ltm/ltm-api';
 import { RouterOutlet } from "@angular/router";
 import { CommonUiConfirmationDialogModule } from "@ss/common/ui-confirmation-dialog";
 import { MaterialModule } from "@ss/common/api-common";
-import {LtmMatterService} from '../services/ltm-matter.service';
+import {LtmMatterService} from '@ltm/ltm-api';
 import { CommonModule } from "@angular/common";
 import { CommonUiLangModule } from "@ss/common/ui-lang";
 import { UiPaginationModule } from "@ss/common/ui-pagination";

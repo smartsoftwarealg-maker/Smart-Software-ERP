@@ -5,7 +5,6 @@ import { ActivatedRoute, Router, RouterOutlet } from "@angular/router";
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
 import { MaterialModule, PaginatorPersistenceService } from "@ss/common/api-common";
-import {LtmMatterService} from '../services/ltm-matter.service';
 import { CommonModule } from "@angular/common";
 import { CommonUiLangModule } from "@ss/common/ui-lang";
 import { UiPaginationModule } from "@ss/common/ui-pagination";
@@ -16,8 +15,7 @@ import { CommonUiAutoCompleteModule } from "@ss/common/ui-auto-complete";
 import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
 import { CommonUiHourPickerModule } from "@ss/common/ui-hour-picker";
 import { Lookup } from '@ss/common/api-lookup';
-import { LTMSiloService } from '../services/ltm-silo.service';
-import { LtmNormService } from '../services/ltm-norm.service';
+import { LtmNormService } from '@ltm/ltm-api';
 
 @Component({
     selector: 'ss-ltm-norm-list',

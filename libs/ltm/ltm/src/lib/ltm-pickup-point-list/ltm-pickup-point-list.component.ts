@@ -13,9 +13,8 @@ import { ReactiveFormsModule } from "@angular/forms";
 import { CommonUiAutoCompleteModule } from "@ss/common/ui-auto-complete";
 import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
 import { CommonUiHourPickerModule } from "@ss/common/ui-hour-picker";
-import { Lookup } from "@ss/common/api-lookup";
-import { LtmPickupPointService } from '../services/ltm-pickup-point.service';
-import { LTMPickupPoint } from '../ltm-api';
+import { LtmPickupPointService } from '@ltm/ltm-api';
+import { LTMPickupPoint } from '@ltm/ltm-api';
 
 @Component({
     selector: 'ss-ltm-pickup-point-list',

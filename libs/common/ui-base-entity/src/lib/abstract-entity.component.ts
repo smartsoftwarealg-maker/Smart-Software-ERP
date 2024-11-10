@@ -57,10 +57,14 @@ export abstract class AbstractEntityComponent<T extends { id: number }> implemen
             error: err => {
                 this.snackBarSrv.showFailureMessage();
                 this.shellSrv.setLoading(false);
-                this.form?.reset(val);
+                this.resetForm(val);
                 throw err;
             }
         });
+    }
+
+    protected resetForm<T>(val: T) {
+        this.form?.reset(val);
     }
 
     protected isValidForm() {

@@ -1,12 +1,12 @@
 import { Component, inject, Inject } from "@angular/core";
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
-import {LTMTest} from '../ltm-api';
+import {LTMTest} from '@ltm/ltm-api';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import { ActivatedRoute, RouterOutlet } from "@angular/router";
 import { ReactiveFormsModule, UntypedFormBuilder, Validators } from "@angular/forms";
 import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
-import {LtmTestService} from '../services/ltm-test.service';
-import { LtmTestTypeService } from "../services/ltm-test-type.service";
+import {LtmTestService} from '@ltm/ltm-api';
+import { LtmTestTypeService } from '@ltm/ltm-api';
 import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from "@ss/common/ui-auto-complete";
 import { Lookup, UnitService } from '@ss/common/api-lookup';
 import { CommonModule } from "@angular/common";

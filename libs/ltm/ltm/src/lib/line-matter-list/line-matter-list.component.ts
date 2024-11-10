@@ -1,10 +1,10 @@
 import { Component, inject } from '@angular/core';
-import { LTMLineMatter, LTMMatter } from '../ltm-api';
+import { LTMLineMatter } from '@ltm/ltm-api';
 import { KeepOnToolbar, ShellService, SnackBarService, ToolbarButton } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router, RouterOutlet } from "@angular/router";
 import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
 import { MaterialModule, PaginatorPersistenceService } from "@ss/common/api-common";
-import {LtmLineMatterService} from '../services/ltm-line-matter.service';
+import {LtmLineMatterService} from '@ltm/ltm-api';
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { DefaultReportService } from '@ss/common/ui-default-report-component';
 import { CommonModule } from "@angular/common";

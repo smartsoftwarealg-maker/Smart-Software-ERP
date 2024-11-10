@@ -2,9 +2,11 @@ import { inject, NgModule } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { ltmRoutes } from './routes';
 import { KeepOnToolbar, ShellService, ToolbarButton } from '@ss/common/ui-shell';
-import { LtmAbnormalTestService } from '@ss/ltm/ltm';
 import { Subscription } from 'rxjs';
-import { LtmPhysicalTestingService } from '@ss/ltm/ltm';
+import { LtmAbnormalTestService } from '@ltm/ltm-api';
+import {
+    LtmPhysicalTestingService
+} from '@ltm/ltm-api';
 
 @NgModule({
     imports: [

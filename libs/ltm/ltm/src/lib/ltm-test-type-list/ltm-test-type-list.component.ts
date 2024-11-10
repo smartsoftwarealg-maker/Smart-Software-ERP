@@ -6,7 +6,7 @@ import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from "@ss
 import { DefaultReportService } from '@ss/common/ui-default-report-component';
 import { MaterialModule, PaginatorPersistenceService } from "@ss/common/api-common";
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
-import { LtmTestTypeService } from '../services/ltm-test-type.service';
+import { LtmTestTypeService } from '@ltm/ltm-api';
 import { CommonModule } from "@angular/common";
 import { CommonUiLangModule } from "@ss/common/ui-lang";
 import { UiPaginationModule } from "@ss/common/ui-pagination";

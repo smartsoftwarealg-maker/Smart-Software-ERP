@@ -15,9 +15,7 @@ import { CommonUiAutoCompleteModule } from "@ss/common/ui-auto-complete";
 import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
 import { CommonUiHourPickerModule } from "@ss/common/ui-hour-picker";
 import { Lookup } from '@ss/common/api-lookup';
-import { LtmZoneService } from '../services/ltm-zone.service';
-import { LtmDepositService } from '../services/ltm-deposit.service';
-import { LtmCorrectionActionService } from '../services/ltm-correction-action.service';
+import { LtmCorrectionActionService } from '@ltm/ltm-api';
 
 @Component({
     selector: 'ss-ltm-correction-action-list',

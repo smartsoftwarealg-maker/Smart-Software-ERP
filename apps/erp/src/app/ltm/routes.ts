@@ -31,7 +31,7 @@ import {
     LTM_DEPOSIT_TEST_URL,
     LTM_RAW_MATERIAL_TEST_URL,
     LTM_CORRECTION_ACTION_URL,
-    LTM_NORM_TREE_TREE
+    LTM_NORM_TREE_TREE, LTM_TEST_EQUIPMENT_URL, LTM_TEST_EQUIPMENT_TESTING_URL
 } from '../common';
 
 import {
@@ -75,10 +75,6 @@ import {
     LtmZoneDetailComponent,
     LtmDepositDetailComponent,
     LtmDepositListComponent,
-    CHEMICAL_TEST,
-    PHYSICAL_TEST,
-    DEPOSIT_TEST,
-    RAW_MATERIAL_TEST,
     LtmPhysicalTestingListComponent,
     LtmDepositTestingListComponent,
     LtmRmTestingListComponent,
@@ -100,7 +96,16 @@ import {
     LtmMixturePickupPointsListComponent,
     LtmMixturePickupPointsDetailComponent
 } from '@ss/ltm/ltm';
-import { LtmNormListComponent } from '../../../../../libs/ltm/ltm/src/lib/ltm-norm-list/ltm-norm-list.component';
+import { LtmNormListComponent } from '@ss/ltm/ltm';
+import {
+    TestEquipmentDetailComponent,
+    TestEquipmentListComponent, TestEquipmentTestDetailComponent, TestEquipmentTestingInputListComponent,
+    TestEquipmentTestListComponent
+} from '@ltm/test-equipment';
+import { CHEMICAL_TEST, DEPOSIT_TEST, PHYSICAL_TEST, RAW_MATERIAL_TEST } from '@ltm/ltm-api';
+import {
+    TestEquipmentTestingInputDetailComponent
+} from '../../../../../libs/ltm/test-equipment-list/src/lib/test-equipment-testing-input-detail/test-equipment-testing-input-detail.component';
 
 export const ltmRoutes: Routes = [
     {
@@ -128,6 +133,33 @@ export const ltmRoutes: Routes = [
                     }
                 ],
                 canActivate: [loginGuard],
+            }
+        ]
+    },
+    {
+        path: LTM_TEST_EQUIPMENT_URL,
+        children: [
+            { path: LIST_URL, component: TestEquipmentListComponent, canActivate: [loginGuard]},
+            { path: ':id',
+                component: TestEquipmentDetailComponent,
+                children: [
+                    { path: '', redirectTo: 'detail', pathMatch: 'full'},
+                    { path: 'detail',
+                        children: [
+                            { path: '', component: TestEquipmentTestListComponent, pathMatch: 'full'},
+                            { path: ':id', component: TestEquipmentTestDetailComponent }
+                        ]
+                    }
+                ],
+                canActivate: [loginGuard],
+            }
+        ]
+    },
+    {
+        path: LTM_TEST_EQUIPMENT_TESTING_URL,
+        children: [
+            { path: LIST_URL, component: TestEquipmentTestingInputListComponent, canActivate: [loginGuard]},
+            { path: ':id', component: TestEquipmentTestingInputDetailComponent,  canActivate: [loginGuard],
             }
         ]
     },

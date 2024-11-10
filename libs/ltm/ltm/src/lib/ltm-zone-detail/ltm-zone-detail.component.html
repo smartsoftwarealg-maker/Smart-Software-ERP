@@ -7,4 +7,6 @@
 
     </form>
 </mat-card>
-<router-outlet *ngIf="form !== null && id"></router-outlet>
+@if (form !== null && id) {
+    <router-outlet></router-outlet>
+}

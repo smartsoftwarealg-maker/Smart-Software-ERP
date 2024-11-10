@@ -1,0 +1,27 @@
+.table-container,
+.ctrl-div {
+    width: 90%;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.table-container {
+    overflow-x: auto;
+}
+
+.mat-column-description {
+    flex: 1 1 200px;
+    border-left: gray solid 1px;
+    padding-left: 4px;
+}
+
+.ctrl-div {
+    padding: 8px 0;
+    display: flex;
+    justify-content: flex-end;
+    gap: .5em;
+}
+
+mat-table {
+    width: 100%;
+}

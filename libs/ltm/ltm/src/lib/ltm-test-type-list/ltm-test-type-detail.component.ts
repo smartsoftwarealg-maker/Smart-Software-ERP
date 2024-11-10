@@ -4,7 +4,7 @@ import { ActivatedRoute, RouterOutlet } from "@angular/router";
 import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
 import { ReactiveFormsModule, UntypedFormBuilder } from "@angular/forms";
 import { BaseLookupDetailClass } from "../lookup-detail-template/base-lookup-detail.class";
-import { LtmTestTypeService } from "../services/ltm-test-type.service";
+import { LtmTestTypeService } from '@ltm/ltm-api';
 import { CommonModule } from "@angular/common";
 import { MaterialModule } from "@ss/common/api-common";
 import { CommonUiLangModule } from "@ss/common/ui-lang";

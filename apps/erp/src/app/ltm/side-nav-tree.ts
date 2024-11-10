@@ -2,17 +2,30 @@ import {SideNavNode} from '@ss/common/api-common';
 import {
     ABS_LTM_ALERT_URL,
     ABS_LTM_ANOMALY_URL,
-    ABS_LTM_BATCH_TESTINGS_URL, ABS_LTM_BLEACHERS_URL,
+    ABS_LTM_BATCH_TESTINGS_URL,
     ABS_LTM_CHARTS_URL,
-    ABS_LTM_DASHBOARD_URL, ABS_LTM_DEPOSIT_TESTINGS_URL, ABS_LTM_DEPOSIT_URL, ABS_LTM_EQUIPMENT_URL,
+    ABS_LTM_DASHBOARD_URL,
+    ABS_LTM_DEPOSIT_TESTINGS_URL,
+    ABS_LTM_DEPOSIT_URL,
+    ABS_LTM_EQUIPMENT_URL,
     ABS_LTM_LINES_URL,
     ABS_LTM_MATTERS_URL,
-    ABS_LTM_MIXTURES_URL, ABS_LTM_NORM_URL,
-    ABS_LTM_PERIODICITIES_URL, ABS_LTM_PICKUP_POINTS_URL, ABS_LTM_RAW_TESTINGS_URL,
+    ABS_LTM_MIXTURES_URL,
+    ABS_LTM_NORM_URL,
+    ABS_LTM_PERIODICITIES_URL,
+    ABS_LTM_PICKUP_POINTS_URL,
+    ABS_LTM_RAW_TESTINGS_URL,
     ABS_LTM_REPORTS_URL,
-    ABS_LTM_PHYSICAL_TESTINGS_URL, ABS_LTM_SILO_URL, ABS_LTM_TEST_TYPE_URL,
-    ABS_LTM_TESTINGS_ANOMALIES_URL, ABS_LTM_TESTS_URL,
-    ABS_LTM_UNIT_URL, ABS_LTM_ZONES_URL, ABS_LTM_CORRECTION_ACTIONS_URL, ABS_LTM_NORM_TREE_URL
+    ABS_LTM_PHYSICAL_TESTINGS_URL,
+    ABS_LTM_SILO_URL,
+    ABS_LTM_TEST_TYPE_URL,
+    ABS_LTM_TESTINGS_ANOMALIES_URL,
+    ABS_LTM_TESTS_URL,
+    ABS_LTM_UNIT_URL,
+    ABS_LTM_CORRECTION_ACTIONS_URL,
+    ABS_LTM_NORM_TREE_URL,
+    ABS_LTM_TEST_EQUIPMENT_URL,
+    ABS_LTM_EQUIPMENT_TESTINGS_URL
 } from '../common';
 
 export const ltmNavTree: SideNavNode = {
@@ -77,14 +90,14 @@ export const ltmNavTree: SideNavNode = {
             name: 'COMMON_EQUIPMENT',
             icon: 'fa-solid fa-conveyor-belt-arm',
             route: ABS_LTM_EQUIPMENT_URL,
-            accessRights: 'LTMEquipment'
+            accessRights: 'LTMTestingEquipment'
         },
-        // {
-        //     name: 'COMMON_PRODUCTS',
-        //     icon: 'fa-solid fa-cart-shopping',
-        //     route: ABS_LTM_PRODUCT_URL,
-        //     accessRights: 'LTMProduct'
-        // },
+        {
+            name: 'LTM_TEST_EQUIPMENT',
+            icon: 'fa-solid fa-toolbox',
+            route: ABS_LTM_TEST_EQUIPMENT_URL,
+            accessRights: 'LTMTestEquipmentTest'
+        },
 
         {
             name: 'LTM_PICKUP_POINTS',
@@ -186,6 +199,14 @@ export const ltmNavTree: SideNavNode = {
             route: ABS_LTM_TESTINGS_ANOMALIES_URL,
             accessRights: 'LTMTestingAnomaly'
         },
+
+        {
+            name: 'LTM_EQUIPMENT_TESTINGS',
+            icon: 'fa-solid fa-microscope',
+            route: ABS_LTM_EQUIPMENT_TESTINGS_URL,
+            accessRights: 'LTMEquipmentTesting'
+        },
+
 
         {
             name: 'COMMON_CHARTS',

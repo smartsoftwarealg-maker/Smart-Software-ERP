@@ -14,7 +14,7 @@ import { UiPaginationModule } from "@ss/common/ui-pagination";
 
 import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
 import { CommonUiHourPickerModule } from "@ss/common/ui-hour-picker";
-import { LtmSupplierService } from '../services/ltm-supplier.service';
+import { LtmSupplierService } from '@ltm/ltm-api';
 
 @Component({
     selector: 'ss-ltm-supplier-detail',

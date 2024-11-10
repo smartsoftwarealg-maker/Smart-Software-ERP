@@ -6,7 +6,7 @@ import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router, RouterEvent} from '@angular/router';
 import {UntypedFormBuilder, Validators} from '@angular/forms';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import {SupplierService} from '@ss/logistics/api-agent';
+import { ConsumerService, SupplierService } from '@ss/logistics/api-agent';
 import {LoginService} from '@ss/common/api-common';
 import {filter} from 'rxjs';
 import {FurnitureAssignmentsService} from '../furniture-assignments.service';
@@ -18,7 +18,7 @@ import {FurnitureAssignmentsService} from '../furniture-assignments.service';
 })
 export class FurnitureAssignmentDetailComponent extends BaseEntityDetailComponent<FurnitureTransaction> implements OnInit {
     private router = inject(Router);
-    private supplierSrv = inject(SupplierService);
+    private supplierSrv = inject(ConsumerService);
     private loginSrv = inject(LoginService);
 
     supplierLookup = new DefaultAutoCompleteModel(this.supplierSrv, 'id', 'denomination');

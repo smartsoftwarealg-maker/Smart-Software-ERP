@@ -1,0 +1,35 @@
+@if (form !== null) {
+    <mat-card>
+        <form [formGroup]="form">
+            <div formGroupName="test">
+                <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>COMMON_DATE</mat-label>
+                    <ss-date-picker formControlName="time"></ss-date-picker>
+                </mat-form-field>
+
+                <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>COMMON_EQUIPMENT</mat-label>
+                    <ss-auto-complete matInput
+                                      [model]="equipmentLookup"
+                                      formControlName="equipmentId">
+                    </ss-auto-complete>
+                </mat-form-field>
+            </div>
+            @if (tests.controls.length > 0) {
+                <fieldset formGroupName="lines">
+                    <legend><span translate>LTM_TESTS</span>:</legend>
+                    @for (f of tests.controls; track f; let i = $index) {
+                        <mat-form-field class="input_div">
+                            <mat-label translate>{{ equipmentTests[i].testDescription }}</mat-label>
+                            <input matInput [formControlName]="i" type="number" step="1">
+                            @if (tests.controls[i].errors || true) {
+                                <mat-error translate>BL_INVALID_DATA</mat-error>
+                            }
+                        </mat-form-field>
+                    }
+                </fieldset>
+            }
+            <!--            <pre>{{form?.value | json }}</pre>-->
+        </form>
+    </mat-card>
+}

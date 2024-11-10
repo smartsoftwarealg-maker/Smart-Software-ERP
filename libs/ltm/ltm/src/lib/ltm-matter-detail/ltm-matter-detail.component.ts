@@ -1,12 +1,12 @@
 import { Component, inject, OnInit } from '@angular/core';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
-import {LTMMatter} from '../ltm-api';
+import {LTMMatter} from '@ltm/ltm-api';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import { ActivatedRoute, NavigationEnd, Router, RouterEvent, RouterOutlet } from "@angular/router";
 import { ReactiveFormsModule, UntypedFormBuilder, Validators } from "@angular/forms";
 import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
-import {LtmMatterService} from '../services/ltm-matter.service';
-import {LtmMatterTestService} from '../services/ltm-matter-test.service';
+import {LtmMatterService} from '@ltm/ltm-api';
+import {LtmMatterTestService} from '@ltm/ltm-api';
 import {filter, Observable} from 'rxjs';
 import { CommonModule } from "@angular/common";
 import { MaterialModule } from "@ss/common/api-common";
