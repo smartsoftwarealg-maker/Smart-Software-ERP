@@ -201,8 +201,8 @@ export const ltmNavTree: SideNavNode = {
         },
 
         {
-            name: 'LTM_EQUIPMENT_TESTINGS',
-            icon: 'fa-solid fa-microscope',
+            name: 'LTM_TEST_EQUIPMENT_TESTING',
+            icon: 'fa-regular fa-screwdriver-wrench',
             route: ABS_LTM_EQUIPMENT_TESTINGS_URL,
             accessRights: 'LTMEquipmentTesting'
         },
