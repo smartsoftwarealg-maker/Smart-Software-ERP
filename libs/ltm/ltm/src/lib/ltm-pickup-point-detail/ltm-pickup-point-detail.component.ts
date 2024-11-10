@@ -11,11 +11,9 @@ import { CommonUiLangModule } from "@ss/common/ui-lang";
 import { UiPaginationModule } from "@ss/common/ui-pagination";
 import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
 import { CommonUiHourPickerModule } from "@ss/common/ui-hour-picker";
-import { LtmPickupPointService } from '../services/ltm-pickup-point.service';
-import { LTMPickupPoint } from '../ltm-api';
-import { LtmEquipmentService } from '../services/ltm-equipment.service';
-import { LtmBleacherService } from '../services/ltm-bleacher.service';
-import { LtmZoneService } from '../services/ltm-zone.service';
+import { LtmPickupPointService } from '@ltm/ltm-api';
+import { LTMPickupPoint } from '@ltm/ltm-api';
+import { LtmEquipmentService } from '@ltm/ltm-api';
 
 @Component({
     selector: 'ss-ltm-product-detail',
@@ -38,12 +36,8 @@ import { LtmZoneService } from '../services/ltm-zone.service';
 })
 export class LtmPickupPointDetailComponent extends BaseEntityDetailComponent<LTMPickupPoint> {
     private equipmentSrv = inject(LtmEquipmentService);
-    private bleacherSrv = inject(LtmBleacherService);
-    private zoneSrv = inject(LtmZoneService);
 
     equipmentLookup = new DefaultAutoCompleteModel(this.equipmentSrv);
-    bleacherLookup = new DefaultAutoCompleteModel(this.bleacherSrv);
-    zoneLookup = new DefaultAutoCompleteModel(this.zoneSrv);
 
     constructor(
         public override entitySrv: LtmPickupPointService,

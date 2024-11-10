@@ -2,24 +2,24 @@ import { Component, inject, OnDestroy, OnInit } from "@angular/core";
 import { KeepOnToolbar, ShellService, ToolbarButton } from '@ss/common/ui-shell';
 import { ActivatedRoute, RouterOutlet } from '@angular/router';
 import { filter, map, Observable, of, Subscription } from "rxjs";
-import {Data, LTMLineMatter} from '../ltm-api';
+import {Data, LTMLineMatter} from '@ltm/ltm-api';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
-import {LtmLineMatterService} from '../services/ltm-line-matter.service';
+import {LtmLineMatterService} from '@ltm/ltm-api';
 import {Chart, ChartItem, registerables} from 'chart.js';
-import {LtmTestingService} from '../services/ltm-testing.service';
+import {LtmTestingService} from '@ltm/ltm-api';
 import {ChartConfiguration} from 'chart.js/dist/types';
-import {LtmMatterTestService} from '../services/ltm-matter-test.service';
-import { LanguageService, MaterialModule } from "@ss/common/api-common";
+import {LtmMatterTestService} from '@ltm/ltm-api';
+import { LanguageService, MaterialModule } from '@ss/common/api-common';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
-import { Lookup } from "@ss/common/api-lookup";
-import { CommonModule } from "@angular/common";
-import { CommonUiLangModule } from "@ss/common/ui-lang";
-import { UiPaginationModule } from "@ss/common/ui-pagination";
-import { CommonUiConfirmationDialogModule } from "@ss/common/ui-confirmation-dialog";
+import { Lookup } from '@ss/common/api-lookup';
+import { CommonModule } from '@angular/common';
+import { CommonUiLangModule } from '@ss/common/ui-lang';
+import { UiPaginationModule } from '@ss/common/ui-pagination';
+import { CommonUiConfirmationDialogModule } from '@ss/common/ui-confirmation-dialog';
 
-import { CommonUiAutoCompleteModule } from "@ss/common/ui-auto-complete";
-import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
-import { CommonUiHourPickerModule } from "@ss/common/ui-hour-picker";
+import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
+import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
+import { CommonUiHourPickerModule } from '@ss/common/ui-hour-picker';
 
 @Component({
     selector: 'ss-ltm-report',
@@ -33,8 +33,6 @@ import { CommonUiHourPickerModule } from "@ss/common/ui-hour-picker";
         UiPaginationModule,
         ReactiveFormsModule,
         CommonUiConfirmationDialogModule,
-
-
         CommonUiAutoCompleteModule,
         CommonUiDatepickerModule,
         RouterOutlet,

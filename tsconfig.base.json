@@ -53,6 +53,7 @@
             "@social/loans": [
                 "libs/social/consolidated-loan-list/src/index.ts"
             ],
+            "@ltm/ltm-api": ["libs/ltm/ltm-api/src/index.ts"],
             "@social/medical-aids-detail": [
                 "libs/social/medical-aids-detail/src/index.ts"
             ],
@@ -72,7 +73,7 @@
             "@social/social-works-list": [
                 "libs/social/social-works-list/src/index.ts"
             ],
-            "@social/test-equipment": [
+            "@ltm/test-equipment": [
                 "libs/ltm/test-equipment-list/src/index.ts"
             ],
             "@ss/accounting/acc-policies": [

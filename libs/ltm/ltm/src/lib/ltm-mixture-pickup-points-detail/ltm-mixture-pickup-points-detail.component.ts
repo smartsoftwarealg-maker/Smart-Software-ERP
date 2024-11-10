@@ -5,7 +5,7 @@ import { RouterOutlet } from "@angular/router";
 import { CommonUiConfirmationDialogModule } from "@ss/common/ui-confirmation-dialog";
 import {
     LTMMixturePickupPoint
-} from '../ltm-api';
+} from '@ltm/ltm-api';
 import { CommonModule } from "@angular/common";
 import { MaterialModule } from "@ss/common/api-common";
 import { CommonUiLangModule } from "@ss/common/ui-lang";
@@ -14,8 +14,8 @@ import { UiPaginationModule } from "@ss/common/ui-pagination";
 import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
 import { CommonUiHourPickerModule } from "@ss/common/ui-hour-picker";
 import { BaseChildEntityDetailComponent } from "@ss/common/ui-base-entity";
-import { LtmMixturePickupPointService } from '../services/ltm-mixture-pickup-point.service';
-import { LtmPickupPointService } from '../services/ltm-pickup-point.service';
+import { LtmMixturePickupPointService } from '@ltm/ltm-api';
+import { LtmPickupPointService } from '@ltm/ltm-api';
 
 @Component({
     selector: 'ss-ltm-mixture-pp-detail',

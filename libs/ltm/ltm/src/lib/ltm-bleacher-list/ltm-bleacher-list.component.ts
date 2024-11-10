@@ -14,9 +14,8 @@ import { ReactiveFormsModule } from "@angular/forms";
 import { CommonUiAutoCompleteModule } from "@ss/common/ui-auto-complete";
 import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
 import { CommonUiHourPickerModule } from "@ss/common/ui-hour-picker";
-import { LtmProductService } from '@ss/ltm/ltm';
 import { Lookup } from '@ss/common/api-lookup';
-import { LtmBleacherService } from '../services/ltm-bleacher.service';
+import { LtmBleacherService } from '@ltm/ltm-api';
 
 @Component({
     selector: 'ss-ltm-bleacher-list',

@@ -4,7 +4,7 @@ import { ActivatedRoute, Router, RouterOutlet } from "@angular/router";
 import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
 import { DefaultReportService } from "@ss/common/ui-default-report-component";
 import { MaterialModule, PaginatorPersistenceService } from '@ss/common/api-common';
-import { LtmTestingService } from '../services/ltm-testing.service';
+import { LtmTestingService } from '@ltm/ltm-api';
 import { CommonModule } from '@angular/common';
 import { CommonUiLangModule } from '@ss/common/ui-lang';
 import { UiPaginationModule } from "@ss/common/ui-pagination";

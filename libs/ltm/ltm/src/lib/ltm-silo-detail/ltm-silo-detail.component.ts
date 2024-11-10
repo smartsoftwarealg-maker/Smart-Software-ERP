@@ -13,7 +13,7 @@ import { UiPaginationModule } from "@ss/common/ui-pagination";
 import { CommonUiAutoCompleteModule } from "@ss/common/ui-auto-complete";
 import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
 import { CommonUiHourPickerModule } from "@ss/common/ui-hour-picker";
-import { LTMSiloService } from '../services/ltm-silo.service';
+import { LTMSiloService } from '@ltm/ltm-api';
 import { Lookup } from '@ss/common/api-lookup';
 
 @Component({

@@ -13,8 +13,8 @@ import { UiPaginationModule } from "@ss/common/ui-pagination";
 
 import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
 import { CommonUiHourPickerModule } from "@ss/common/ui-hour-picker";
-import { LtmAnomalyService } from "../services/ltm-anomaly.service";
-import { LTMAnomaly } from '../ltm-api';
+import { LtmAnomalyService } from '@ltm/ltm-api';
+import { LTMAnomaly } from '@ltm/ltm-api';
 
 @Component({
     selector: 'ss-ltm-anomaly-detail',

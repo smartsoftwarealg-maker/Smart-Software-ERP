@@ -386,7 +386,8 @@ export const LTM_BLEACHER_URL   = 'ltm-bleachers';
 export const LTM_ZONE_URL   = 'ltm-zones';
 export const LTM_DEPOSIT_URL   = 'ltm-deposit';
 export const LTM_SUPPLIER_URL   = 'ltm-suppliers';
-export const LTM_CORRECTION_ACTION_URL = 'ltm-correction-actionS';
+export const LTM_CORRECTION_ACTION_URL = 'ltm-correction-actions';
+export const LTM_TEST_EQUIPMENT_TESTING_URL = 'ltm-equipment-testing';
 
 // CMMS
 export const CMMS_PERMIT_TYPE_URL        = 'permit-types';
@@ -715,6 +716,7 @@ export const ABS_LTM_DASHBOARD_URL            = '/' + [MAIN_PAGE_URL, LTM_APP_UR
 export const ABS_LTM_UNIT_URL            = '/' + [MAIN_PAGE_URL, LTM_APP_URL, LTM_UNIT_URL].join('/');
 export const ABS_LTM_ANOMALY_URL            = '/' + [MAIN_PAGE_URL, LTM_APP_URL, LTM_ANOMALIES_URL].join('/');
 export const ABS_LTM_TESTINGS_ANOMALIES_URL            = '/' + [MAIN_PAGE_URL, LTM_APP_URL, LTM_TESTING_ANOMALIES_URL].join('/');
+export const ABS_LTM_EQUIPMENT_TESTINGS_URL            = '/' + [MAIN_PAGE_URL, LTM_APP_URL, LTM_TEST_EQUIPMENT_TESTING_URL].join('/');
 export const ABS_LTM_SILO_URL            = '/' + [MAIN_PAGE_URL, LTM_APP_URL, LTM_SILOS_URL].join('/');
 export const ABS_LTM_ALERT_URL            = '/' + [MAIN_PAGE_URL, LTM_APP_URL, LTM_ALERT_URL].join('/');
 export const ABS_LTM_PRODUCT_URL            = '/' + [MAIN_PAGE_URL, LTM_APP_URL, LTM_PRODUCTS_URL].join('/');

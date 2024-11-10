@@ -1,6 +1,6 @@
 import { Component, DestroyRef, inject } from '@angular/core';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
-import { LTMTestingAnomaly } from "../ltm-api";
+import { LTMTestingAnomaly } from "../../../../ltm-api/src/lib/ltm-api";
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import { ActivatedRoute, Router, RouterOutlet } from "@angular/router";
 import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
@@ -15,7 +15,7 @@ import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { CommonUiAutoCompleteModule } from "@ss/common/ui-auto-complete";
 import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
 import { CommonUiHourPickerModule } from "@ss/common/ui-hour-picker";
-import { LtmTestingAnomalyService } from "../services/ltm-testing-anomaly.service";
+import { LtmTestingAnomalyService } from '@ltm/ltm-api';
 import { callback } from 'chart.js/helpers';
 import { Observable } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';

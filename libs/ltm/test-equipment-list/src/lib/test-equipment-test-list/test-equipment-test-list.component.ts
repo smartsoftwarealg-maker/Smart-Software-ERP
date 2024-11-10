@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BaseChildEntityListComponent } from '@ss/common/ui-base-entity';
-import { LTMTestEquipmentTest } from '@ss/ltm/ltm';
 import { CommonUiLangModule } from '@ss/common/ui-lang';
 import {
     MatCell,
@@ -16,6 +15,7 @@ import { UiPaginationModule } from '@ss/common/ui-pagination';
 import { LtmEquipmentTestService } from '../services/ltm-equipment-test.service';
 import { MatTooltip } from '@angular/material/tooltip';
 import { MatMiniFabButton } from '@angular/material/button';
+import { LTMTestEquipmentTest } from '@ltm/ltm-api';
 
 @Component({
     selector: 'ss-test-equipment-test-list',

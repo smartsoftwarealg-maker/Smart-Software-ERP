@@ -1,7 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BaseChildEntityDetailComponent } from '@ss/common/ui-base-entity';
-import { LTMTestEquipmentTest } from '@ss/ltm/ltm';
 import { CommonUiLangModule } from '@ss/common/ui-lang';
 import {
     MatCell,
@@ -22,7 +21,7 @@ import { MatError, MatFormField, MatLabel } from '@angular/material/form-field';
 import { MatInput } from '@angular/material/input';
 import { MatMiniFabButton } from '@angular/material/button';
 import { MaterialModule } from '@ss/common/api-common';
-import { LtmTestService } from '../../../../ltm/src/lib/services/ltm-test.service';
+import { LTMTestEquipmentTest, LtmTestService } from '@ltm/ltm-api';
 
 @Component({
     selector: 'ss-test-equipment-test-detail',

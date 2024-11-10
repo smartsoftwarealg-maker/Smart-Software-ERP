@@ -1,7 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
-import { LTMTestingEquipment } from '@ss/ltm/ltm';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, RouterOutlet } from '@angular/router';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
@@ -23,7 +22,8 @@ import { MatFormField, MatLabel } from '@angular/material/form-field';
 import { MatInput } from '@angular/material/input';
 import { LtmEquipmentTestService } from '../services/ltm-equipment-test.service';
 import { Observable } from 'rxjs';
-import { LtmEquipmentService } from '../services/ltm-equipment.service';
+import { LtmTestingEquipmentService } from '../services/ltm-testing-equipment.service';
+import { LTMTestingEquipment } from '@ltm/ltm-api';
 
 @Component({
     selector: 'ss-test-equipment-detail',
@@ -37,7 +37,7 @@ export class TestEquipmentDetailComponent extends BaseEntityDetailComponent<LTMT
     #equipmentTestSrv = inject(LtmEquipmentTestService);
 
     constructor(
-        public override entitySrv: LtmEquipmentService,
+        public override entitySrv: LtmTestingEquipmentService,
         public override shellSrv: ShellService,
         public override snackBarSrv: SnackBarService,
         public override route: ActivatedRoute,

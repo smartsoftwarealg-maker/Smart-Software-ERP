@@ -2,7 +2,7 @@ import { Component } from "@angular/core";
 import { MaterialModule } from "@ss/common/api-common";
 import { RouterOutlet } from "@angular/router";
 import { CommonUiConfirmationDialogModule } from "@ss/common/ui-confirmation-dialog";
-import { LTMMixtureDetail } from "../ltm-api";
+import { LTMMixtureDetail } from "../../../../ltm-api/src/lib/ltm-api";
 import { ReactiveFormsModule } from "@angular/forms";
 import { CommonModule } from "@angular/common";
 import { CommonUiLangModule } from "@ss/common/ui-lang";
@@ -13,7 +13,7 @@ import { CommonUiAutoCompleteModule } from "@ss/common/ui-auto-complete";
 import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
 import { CommonUiHourPickerModule } from "@ss/common/ui-hour-picker";
 import { BaseChildEntityListComponent } from "@ss/common/ui-base-entity";
-import { LtmMixtureDetailService } from "../services/ltm-mixture-detail.service";
+import { LtmMixtureDetailService } from '@ltm/ltm-api';
 
 @Component({
     selector: 'ss-ltm-mixture-detai-list',

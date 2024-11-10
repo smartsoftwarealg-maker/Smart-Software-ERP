@@ -4,18 +4,17 @@ import { ActivatedRoute, Router, RouterOutlet } from "@angular/router";
 import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
 import { DefaultReportService } from "@ss/common/ui-default-report-component";
 import { MaterialModule, PaginatorPersistenceService } from '@ss/common/api-common';
-import { LtmTestingService } from '../services/ltm-testing.service';
 import { CommonModule } from '@angular/common';
 import { CommonUiLangModule } from '@ss/common/ui-lang';
 import { UiPaginationModule } from "@ss/common/ui-pagination";
-import { FormControl, ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
 import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
 import { CommonUiHourPickerModule } from "@ss/common/ui-hour-picker";
 import { LtmBaseTestingListComponent } from '../ltm-testing-common/ltm-base-testing-list.component';
-import { LtmPhysicalTestingService } from '../services/ltm-physical-testing.service';
+import { LtmPhysicalTestingService } from '@ltm/ltm-api';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 

@@ -1,13 +1,12 @@
 import { Component, inject } from '@angular/core';
 import { ReactiveFormsModule, UntypedFormBuilder } from "@angular/forms";
 import { ActivatedRoute, NavigationEnd, Router, RouterEvent, RouterOutlet } from '@angular/router';
-import { LTMLineMatter, LTMMatter } from '../ltm-api';
-import {LtmLineMatterService} from '../services/ltm-line-matter.service';
+import { LTMLineMatter,  } from '@ltm/ltm-api';
+import {LtmMatterService, LtmLineMatterService, LtmProductLookupService} from '@ltm/ltm-api';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
-import { LoginService, MaterialModule } from "@ss/common/api-common";
-import { LtmMatterService } from '../services/ltm-matter.service';
+import { LoginService, MaterialModule } from '@ss/common/api-common';
 import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from "@ss/common/ui-auto-complete";
 import { CommonModule } from "@angular/common";
 import { CommonUiLangModule } from "@ss/common/ui-lang";
@@ -15,11 +14,8 @@ import { UiPaginationModule } from "@ss/common/ui-pagination";
 
 import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
 import { CommonUiHourPickerModule } from '@ss/common/ui-hour-picker';
-import { LtmProductLookupService } from '../services/ltm-product-lookup.service';
-import { LtmMatterTestService } from '../services/ltm-matter-test.service';
+import { LtmMatterTestService, LtmPickupPointService, LtmNormService } from '@ltm/ltm-api';
 import {filter } from 'rxjs';
-import { LtmPickupPointService } from '../services/ltm-pickup-point.service';
-import { LtmNormService } from '../services/ltm-norm.service';
 
 @Component({
     selector: 'ss-line-matter-detail',

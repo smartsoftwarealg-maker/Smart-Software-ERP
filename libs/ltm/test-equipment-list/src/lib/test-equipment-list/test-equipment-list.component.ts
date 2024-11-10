@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
-import { LTMTestingEquipment } from '@ss/ltm/ltm';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
@@ -18,7 +17,8 @@ import {
 } from '@angular/material/table';
 import { MatSort, MatSortHeader } from '@angular/material/sort';
 import { UiPaginationModule } from '@ss/common/ui-pagination';
-import { LtmEquipmentService } from '../services/ltm-equipment.service';
+import { LtmTestingEquipmentService } from '../services/ltm-testing-equipment.service';
+import { LTMTestingEquipment } from '@ltm/ltm-api';
 
 @Component({
     selector: 'ss-test-equipment-list',
@@ -32,7 +32,7 @@ export class TestEquipmentListComponent extends BaseEntityListComponent<LTMTesti
 
 
     constructor(
-        public override entitySrv: LtmEquipmentService,
+        public override entitySrv: LtmTestingEquipmentService,
         public override shellSrv: ShellService,
         public override snackBarSrv: SnackBarService,
         public override route: ActivatedRoute,

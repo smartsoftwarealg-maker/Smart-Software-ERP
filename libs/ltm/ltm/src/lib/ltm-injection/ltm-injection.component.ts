@@ -4,15 +4,13 @@ import {finalize, Subscription} from 'rxjs';
 import { ReactiveFormsModule, UntypedFormBuilder, Validators } from "@angular/forms";
 import {MatDialogRef} from '@angular/material/dialog';
 import {HttpEventType} from '@angular/common/http';
-import {LtmLineMatterService} from '../services/ltm-line-matter.service';
-import {LtmInjectionService} from '../services/ltm-injection.service';
+import {LtmInjectionService} from '@ltm/ltm-api';
 import { LanguageService, MaterialModule } from "@ss/common/api-common";
-import { MatRadioChange } from "@angular/material/radio";
-import { INJResult } from "../ltm-api";
+import { INJResult } from '@ltm/ltm-api';
 import { CommonModule } from "@angular/common";
 import { CommonUiLangModule } from "@ss/common/ui-lang";
 import { UiPaginationModule } from "@ss/common/ui-pagination";
-import { CommonUiConfirmationDialogModule } from "@ss/common/ui-confirmation-dialog";
+import { CommonUiConfirmationDialogModule } from '@ss/common/ui-confirmation-dialog';
 
 
 import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
@@ -45,7 +43,7 @@ export class LtmInjectionComponent {
     @Input() requiredFileType = '.xlsx';
     isEditable = false;
 
-    result: INJResult | null = null; // {found: ['foo', '111111', '2222', '33333', '4444', '5555', '6666', '7777', '4444', '5555', '6666', '7777'], missing: ['baz', 'aaa', 'bbb', 'ccc', 'ddd', 'eee', 'ffff', 'ggg', 'hhh', 'iiii', 'jjjj', 'kkkk', 'llll', 'mmm']};
+    result: INJResult | null = null;
     fileName = '';
     uploadProgress = 0;
     uploadSub: Subscription;

@@ -72,5 +72,6 @@
     "TEST_DATE":          "Test date",
     "PENDING_TESTS":      "Pending tests",
     "SCHEDULED_TESTS_MISSING": "Scheduled tests missing",
-    "TEST_EQUIPMENT":     "Test equipment"
+    "TEST_EQUIPMENT":     "Test equipment",
+    "TEST_EQUIPMENT_TESTING": "Equipment testing"
 }

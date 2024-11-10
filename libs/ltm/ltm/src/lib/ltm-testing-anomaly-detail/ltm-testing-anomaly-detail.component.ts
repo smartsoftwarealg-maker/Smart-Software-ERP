@@ -13,11 +13,11 @@ import { UiPaginationModule } from "@ss/common/ui-pagination";
 
 import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
 import { CommonUiHourPickerModule } from "@ss/common/ui-hour-picker";
-import { LtmAnomalyService } from "../services/ltm-anomaly.service";
-import { LTMTestingAnomaly } from "../ltm-api";
-import { LtmTestingAnomalyService } from "../services/ltm-testing-anomaly.service";
-import { LtmMatterService } from "../services/ltm-matter.service";
-import { LtmPickupPointService } from '../services/ltm-pickup-point.service';
+import { LtmAnomalyService } from '@ltm/ltm-api';
+import { LTMTestingAnomaly } from '@ltm/ltm-api';
+import { LtmTestingAnomalyService } from '@ltm/ltm-api';
+import { LtmMatterService } from '@ltm/ltm-api';
+import { LtmPickupPointService } from '@ltm/ltm-api';
 
 @Component({
     selector: 'ss-ltm-test-detail',

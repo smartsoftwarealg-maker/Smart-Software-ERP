@@ -15,7 +15,7 @@ import { CommonUiAutoCompleteModule } from "@ss/common/ui-auto-complete";
 import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
 import { CommonUiHourPickerModule } from "@ss/common/ui-hour-picker";
 import { Lookup } from "@ss/common/api-lookup";
-import { LtmProductLookupService } from '../services/ltm-product-lookup.service';
+import { LtmProductLookupService } from '@ltm/ltm-api';
 
 @Component({
     selector: 'ss-ltm-product-lookup-list',

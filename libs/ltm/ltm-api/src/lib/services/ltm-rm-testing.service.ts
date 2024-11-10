@@ -7,7 +7,7 @@ import { LtmBaseTestingClass } from './ltm-base-testing.class';
     providedIn: 'root'
 })
 export class LtmRmTestingService extends LtmBaseTestingClass {
-
+    // Raw Material testing
     constructor(protected override httpSrv: HttpService) {
         super(httpSrv, LTM_RM_TESTING_URL, LTM_MATTER_URL);
     }

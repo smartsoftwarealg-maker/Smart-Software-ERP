@@ -72,5 +72,6 @@
     "DUE_DATE":           "تاريخ الانتهاء",
     "PENDING_TESTS":      "الاختبارات المعلقة",
     "SCHEDULED_TESTS_MISSING": "الاختبارات المجدولة المفقودة",
-    "TEST_EQUIPMENT":     "معدات الاختبار"
+    "TEST_EQUIPMENT":     "معدات الاختبار",
+    "TEST_EQUIPMENT_TESTING": "اختبار المعدات"
 }

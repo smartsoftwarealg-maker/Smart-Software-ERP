@@ -1,4 +1,4 @@
-import { Component, inject, Inject } from "@angular/core";
+import { Component } from "@angular/core";
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import { ActivatedRoute, RouterOutlet } from "@angular/router";
@@ -10,13 +10,9 @@ import { CommonModule } from "@angular/common";
 import { MaterialModule } from "@ss/common/api-common";
 import { CommonUiLangModule } from "@ss/common/ui-lang";
 import { UiPaginationModule } from "@ss/common/ui-pagination";
-
-
 import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
 import { CommonUiHourPickerModule } from "@ss/common/ui-hour-picker";
-import { LtmProductService } from '@ss/ltm/ltm';
-import { LtmDepositService } from '../services/ltm-deposit.service';
-import { LtmCorrectionActionService } from '../services/ltm-correction-action.service';
+import { LtmCorrectionActionService } from '@ltm/ltm-api';
 
 @Component({
     selector: 'ss-ltm-correction-action-detail',
