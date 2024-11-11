@@ -1,9 +1,12 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ShellService } from '@ss/common/ui-shell';
+import { Component, OnInit, OnDestroy, inject } from '@angular/core';
+import { BadgeButton, KeepOnToolbar, ShellService } from '@ss/common/ui-shell';
 import { Router } from '@angular/router';
-import { LanguageService, MainPageService, SideNavNode } from '@ss/common/api-common';
+import { HttpService, LanguageService, MainPageService, SideNavNode } from '@ss/common/api-common';
 import { CommonModule } from "@angular/common";
 import { CommonUiLangModule } from "@ss/common/ui-lang";
+import { WorkflowInboxService } from '@ss/workflow';
+import { BadgeButtonService } from '@ss/common/ui-shell';
+import { catchError, of } from 'rxjs';
 
 
 @Component({
@@ -17,18 +20,38 @@ import { CommonUiLangModule } from "@ss/common/ui-lang";
     ],
 })
 export class MainPageComponent implements OnInit, OnDestroy {
+    #httpSrv = inject(HttpService);
+    #badgeSrv = inject(BadgeButtonService);
+    #workflowSrv = inject(WorkflowInboxService);
+    #router = inject(Router);
+    #badgeBtn: BadgeButton = {
+        badgeId: 1,
+        countObservable: this.#workflowSrv.countInbox(),
+        icon: 'fa-solid fa-envelopes-bulk',
+        label: 'ADMINISTRATION_WORKFLOW_INBOX',
+        disabled: false,
+        visible: true,
+        keepOnToolbar: KeepOnToolbar.ALWAYS,
+        click: () => this.#router.navigate(['/app/administration/workflow-inbox']).then(() => this.#badgeBtn.visible = false)
+    };
+
 
     public searchResult: SideNavNode[] = null;
 
     constructor(public srv: MainPageService,
                 public shellSrv: ShellService,
-                private router: Router,
                 public langSrv: LanguageService) {
     }
 
     ngOnInit(): void {
         this.updateGoBackButton();
         this.shellSrv.setTitle(this.shellSrv.applicationTitle);
+        if (!this.shellSrv.companyName) {
+            this.#httpSrv
+                .get<any>('/ccenter')
+                .pipe(catchError(() =>  of({ description: '' })))
+                .subscribe(res => this.shellSrv.setCompanyName(res['description'] || ''));
+        }
         this.shellSrv.enableSearch(
             'SEARCH_APP',
             e => e.subscribe(
@@ -45,6 +68,7 @@ export class MainPageComponent implements OnInit, OnDestroy {
             ),
             false // focus the search field for this component
         );
+        this.#badgeSrv.addBadgeButton(this.#badgeBtn);
     }
 
     searchTree(tree: SideNavNode, searchWords: string[], result: SideNavNode[]) {
@@ -66,7 +90,7 @@ export class MainPageComponent implements OnInit, OnDestroy {
             this.srv.display = node.children;
             this.updateGoBackButton();
         } else if (node.route) {
-            this.router.navigateByUrl(node.route).then();
+            this.#router.navigateByUrl(node.route).then();
         }
         this.clearSearch();
     }

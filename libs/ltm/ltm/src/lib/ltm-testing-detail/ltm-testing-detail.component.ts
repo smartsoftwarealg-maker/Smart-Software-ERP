@@ -15,8 +15,8 @@ import { CommonModule } from "@angular/common";
 import { CommonUiLangModule } from "@ss/common/ui-lang";
 import { UiPaginationModule } from "@ss/common/ui-pagination";
 
-import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
-import { CommonUiHourPickerModule } from "@ss/common/ui-hour-picker";
+import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
+import { CommonUiHourPickerModule } from '@ss/common/ui-hour-picker';
 
 @Component({
     selector: 'ss-ltm-testing-detail',

@@ -66,7 +66,6 @@ export class AssetLocationsListComponent extends BaseEntityListComponent<AssetLo
             'ASSET_LOCATIONS');
         this.pagination.pageSize = 10;
         this.title = this.route.snapshot?.data['title'] || this.title;
-        console.log(this.route.snapshot?.data);
     }
 
 }

@@ -3,7 +3,7 @@ import {BaseEntityService} from '@ss/common/api-base-entity';
 import { Inbox, INBOX_COUNT, INBOX_URL } from "./workflow-api";
 import {HttpService, PaginationModel} from '@ss/common/api-common';
 import {HttpParams} from '@angular/common/http';
-import { catchError, Observable, of } from "rxjs";
+import { catchError, Observable, of, repeat } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -22,7 +22,10 @@ export class WorkflowInboxService extends BaseEntityService<Inbox> {
     countInbox(): Observable<{ count: number }> {
         return this.httpSrv
             .get<{ count: number }>(INBOX_COUNT)
-            .pipe(catchError(() => of({ count: 0})));
+            .pipe(
+                repeat( { delay: 3_600_000 }),
+                catchError(() => of({ count: 0}))
+            );
     }
 
     override getPage(pageModel: PaginationModel, filter?: string, sortBy?: string, extraPrams?: HttpParams): Observable<Inbox[]> {

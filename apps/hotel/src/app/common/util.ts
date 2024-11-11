@@ -56,7 +56,6 @@ export function timeToStr(date: Date) {
             + TIME_SEPARATOR
             + pad2(date.getSeconds());
     } catch (e) {
-        console.log('_____________________________error', e);
         return null;
     }
 }

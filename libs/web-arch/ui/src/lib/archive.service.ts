@@ -56,7 +56,6 @@ export class ArchiveService extends BaseEntityService<ArchiveDocument> {
     public getPlaceHolder(doc: ArchiveDocument): string {
         const docType: string = doc?.metadata['docType'] || '';
         const ext = docType.substring(docType.lastIndexOf('.') + 1);
-        console.log(docType, this.TN_MAP.get(ext));
         return this.TN_MAP.get(ext);
     }
 

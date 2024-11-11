@@ -55,10 +55,4 @@ export class GenerationAccountsDetailComponent extends BaseEntityDetailComponent
             description: [b.description, Validators.required],
         });
     }
-
-    override readForm(): GenerationAccount {
-        console.log('value', this.form.getRawValue());
-        return this.form.getRawValue();
-    }
-
 }

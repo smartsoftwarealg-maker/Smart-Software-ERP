@@ -37,15 +37,17 @@ export class SnackBarService {
     }
 
     public showResult(obsrv: Observable<any>): void {
-        const s = obsrv.subscribe(() => {
-            this.showSuccessMessage();
-            if (s != null) {
-                s.unsubscribe();
-            }
-        }, e => {
-            this.showFailureMessage(e);
-            if (s != null) {
-                s.unsubscribe();
+        const s = obsrv.subscribe({
+            next: () => {
+                this.showSuccessMessage();
+                if (s != null) {
+                    s.unsubscribe();
+                }
+            }, error: e => {
+                this.showFailureMessage(e);
+                if (s != null) {
+                    s.unsubscribe();
+                }
             }
         });
     }

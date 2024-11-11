@@ -12,14 +12,27 @@ import {
 } from '@angular/core';
 import { ShellService } from './shell.service';
 import { NestedTreeControl } from '@angular/cdk/tree';
-import { CENTER_SELECT_URL, LanguageService, LoginService, SideNavNode } from '@ss/common/api-common';
+import { CENTER_SELECT_URL, LanguageService, LoginService, MaterialModule, SideNavNode } from '@ss/common/api-common';
 import {UserRightsService} from '@ss/common/api-common';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { UiLogoutModule } from '@ss/common/ui-logout';
+import { CommonUiLangModule } from '@ss/common/ui-lang';
+import { UiThemeModule } from '@ss/common/ui-theme';
 
 @Component({
     selector: 'ss-shell',
     templateUrl: './shell.component.html',
-    styleUrls: ['./shell.component.scss']
+    styleUrls: ['./shell.component.scss'],
+    standalone: true,
+    imports: [
+        CommonModule,
+        RouterModule,
+        MaterialModule,
+        UiLogoutModule,
+        CommonUiLangModule,
+        UiThemeModule
+    ],
 })
 export class ShellComponent implements OnInit, OnDestroy, AfterViewInit, AfterViewChecked {
     private router = inject(Router);

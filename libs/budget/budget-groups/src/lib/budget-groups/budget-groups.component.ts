@@ -211,7 +211,6 @@ export class BudgetGroupsComponent implements OnInit, OnDestroy {
     onAccountDrop(event: DragEvent) {
         event.preventDefault();
         const id = +event.dataTransfer.getData("text");
-        console.log('id', id, event.target);
         // this.selectedPayment = this.treeControl.dataNodes.find(n => n.id === id);
         // this.cancelPayments();
         // console.log('drop payment: ', id);

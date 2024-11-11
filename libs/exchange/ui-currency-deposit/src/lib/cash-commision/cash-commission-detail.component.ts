@@ -42,7 +42,6 @@ export class CashCommissionDetailComponent extends BaseEntityDetailComponent<Dep
 
 
     public override setupForm(b: Deposit) {
-        console.log('&^^^^^^^^^^^^^^^^', this.loginSrv.appCtx);
         const debit = b.amount > 0 ? b.amount : 0;
         const credit = b.amount < 0 ? -b.amount : 0;
         this.customerId = b.customerId;
@@ -99,7 +98,6 @@ export class CashCommissionDetailComponent extends BaseEntityDetailComponent<Dep
     override readForm(): Deposit {
         const value = super.readForm();
         value.amount = 0;
-        console.log('^^^^^^^^^^^^^^^^^', this.loginSrv.appCtx.id);
         value.userId = this.loginSrv.appCtx.id;
         value.centerId = this.loginSrv.appCtx.center;
         return value;

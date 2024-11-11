@@ -504,9 +504,10 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
     }
 
     private isTestScheduledIfPhysical() {
-        return this.outlet == null ||
-               !(this.outlet.component instanceof LtmTestScheduleListComponent) ||
-               this.outlet.component.detailCount() > 1;
+        return this.form.controls.id.value === 0 ||
+            this.outlet == null ||
+            !(this.outlet.component instanceof LtmTestScheduleListComponent) ||
+            this.outlet.component.detailCount() > 1;
     }
 
     private savedData(): Observable<LTMBatch> {

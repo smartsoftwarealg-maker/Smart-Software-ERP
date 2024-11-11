@@ -237,7 +237,6 @@ export class ArchiveDetailComponent implements OnInit {
     }
 
     onSelect(event: any) {
-        console.log('event', event);
     }
 }
 

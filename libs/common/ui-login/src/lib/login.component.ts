@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import {ABS_INDEX_URL, LoginService, LoginType} from '@ss/common/api-common';
 import {DeviceDetectorService} from 'ngx-device-detector';
@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
         license: [''],
         keep:    [true]
     });
-    loading = false;
+    loading = signal(false);
     updating = false;
 
     constructor() {
@@ -49,7 +49,6 @@ export class LoginComponent implements OnInit {
             try {
                 this.user = JSON.parse(storage);
             } catch (e) {
-                alert(e);
                 this.user = {username: '', password: ''};
             }
         }
@@ -63,6 +62,7 @@ export class LoginComponent implements OnInit {
     }
 
     public onSubmit() {
+        this.loading.set(true);
         const tmp = this.form.value;
         this.user.username = tmp.user;
         this.user.password = tmp.pass;
@@ -71,7 +71,6 @@ export class LoginComponent implements OnInit {
             document.onmousemove = () => this.resetTimer();
             document.onkeydown = () => this.resetTimer();
         }
-        this.loading = true;
         if (this.loginSrv.customerLogin === LoginType.CUSTOMER) {
             this.loginSrv.agentLogin('/customers/login', this.user, this.isPhone, this.onLoadingFinished);
         } else {
@@ -94,7 +93,7 @@ export class LoginComponent implements OnInit {
         }),  20 * 60 * 1000);
     }
     onLoadingFinished = () => {
-        this.loading = false;
+        this.loading.set(false);
     };
 
     onTheme(e: string) {
