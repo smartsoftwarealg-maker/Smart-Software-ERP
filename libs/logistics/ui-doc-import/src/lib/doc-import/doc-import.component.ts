@@ -69,7 +69,7 @@ export class DocImportComponent implements OnInit {
 
     private refresh() {
         this.docImportService
-            .getList(this.document.value, 0, this.agentId, this.paginator.page - 1, this.paginator.pageSize)
+            .getList(this.document.value, this.searchNumber.value, this.agentId, this.paginator.page - 1, this.paginator.pageSize)
             .subscribe(res => {
                 this.importList = res.body;
                 this.paginator.elementCount = res.itemCount;

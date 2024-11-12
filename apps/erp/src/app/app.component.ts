@@ -25,7 +25,8 @@ export class AppComponent implements OnInit {
     loaded = false;
 
     ngOnInit() {
-        this.shellSrv.setApplicationTitle('Smart ERP 1.56.3');
+        this.shellSrv.setApplicationTitle('Smart ERP 1.56.4');
+        this.shellSrv.setSideNavDataSource(navBar);
         this.httpSrv
             .init()
             .pipe(
@@ -46,8 +47,7 @@ export class AppComponent implements OnInit {
             ).subscribe({
                 next: () => {
                     this.loaded = true;
-                    this.shellSrv.setSideNavDataSource(navBar);
-                    // this.shellSrv.filterSideNav();
+                    this.shellSrv.filterSideNav();
                 },
                 error: () => this.loginSrv.logout().then()
             });

@@ -6,7 +6,6 @@ import { CommonModule } from "@angular/common";
 import { CommonUiLangModule } from "@ss/common/ui-lang";
 import { WorkflowInboxService } from '@ss/workflow';
 import { BadgeButtonService } from '@ss/common/ui-shell';
-import { catchError, of } from 'rxjs';
 
 
 @Component({
@@ -20,7 +19,6 @@ import { catchError, of } from 'rxjs';
     ],
 })
 export class MainPageComponent implements OnInit, OnDestroy {
-    #httpSrv = inject(HttpService);
     #badgeSrv = inject(BadgeButtonService);
     #workflowSrv = inject(WorkflowInboxService);
     #router = inject(Router);
@@ -46,12 +44,7 @@ export class MainPageComponent implements OnInit, OnDestroy {
     ngOnInit(): void {
         this.updateGoBackButton();
         this.shellSrv.setTitle(this.shellSrv.applicationTitle);
-        if (!this.shellSrv.companyName) {
-            this.#httpSrv
-                .get<any>('/ccenter')
-                .pipe(catchError(() =>  of({ description: '' })))
-                .subscribe(res => this.shellSrv.setCompanyName(res['description'] || ''));
-        }
+
         this.shellSrv.enableSearch(
             'SEARCH_APP',
             e => e.subscribe(

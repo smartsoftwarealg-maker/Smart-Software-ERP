@@ -4,6 +4,7 @@ import {ABS_INDEX_URL, LoginService, LoginType} from '@ss/common/api-common';
 import {DeviceDetectorService} from 'ngx-device-detector';
 import {Router} from '@angular/router';
 import { ThemeService } from '@ss/common/ui-theme';
+import { ShellService } from '@ss/common/ui-shell';
 
 type User = {
     username: string, password: string
@@ -14,6 +15,7 @@ type User = {
     styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
+    private shellSrv = inject(ShellService);
     private time = 0;
     private themeSrv = inject(ThemeService);
     private formBuilder = inject(FormBuilder);
@@ -94,6 +96,7 @@ export class LoginComponent implements OnInit {
     }
     onLoadingFinished = () => {
         this.loading.set(false);
+        this.shellSrv.filterSideNav();
     };
 
     onTheme(e: string) {

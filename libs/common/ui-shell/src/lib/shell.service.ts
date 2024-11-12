@@ -163,7 +163,8 @@ export class ShellService {
                 .filter(e => e !== '')
                 .splice(0, 3)
                 .join('/');
-        return this.navData.map(n => this.getNavNodeByUrl(url, n)).filter(n => !!n)[0];
+        // return this.navData.map(n => this.getNavNodeByUrl(url, n)).filter(n => !!n)[0];
+        return this.navTree.map(n => this.getNavNodeByUrl(url, n)).filter(n => !!n)[0];
     }
 
     private getNavNodeByUrl(url: string, node: SideNavNode): SideNavNode {
@@ -261,17 +262,18 @@ export class ShellService {
     }
 
     public filterSideNav() {
-        this.sideNavDataSrc.data = this.navData = this.filterSideNavByVisibility(this.filterNavTree(this.navTree));
-        this.generateNavColors(this.navData);
-        this.mainPageSrv.display = this.navData;
-        this.updateShell();
+        if (this.loginSrv.appCtx) {
+            this.navData = this.filterSideNavByVisibility(this.filterNavTree(this.navTree));
+            this.sideNavDataSrc.data = this.navData;
+            this.generateNavColors(this.navData);
+            this.mainPageSrv.display = this.navData;
+            this.updateShell();
+        }
     }
 
     public setSideNavDataSource(tree: SideNavNode[]) {
         this.navTree = tree;
-        if (this.loginSrv.appCtx) {
-            this.filterSideNav();
-        }
+        this.filterSideNav();
     }
 
     private generateNavColors(tree: SideNavNode[]): void {
@@ -455,13 +457,13 @@ export class ShellService {
         this.title = null;
         this.goBackFn = null;
         this.disableSearch(false);
-        this.buttons = [];
+        this.buttons = this.#badgeButtonSrv.getButtons();
         this.isLoading = false;
         this.isError = false;
+        // this.#badgeButtonSrv
+        //     .getButtons()
+        //     .forEach(b => this.addBadgeButton(b));
         this.updateShell();
-        this.#badgeButtonSrv
-            .getButtons()
-            .forEach(b => this.addBadgeButton(b));
     }
 
     /**
