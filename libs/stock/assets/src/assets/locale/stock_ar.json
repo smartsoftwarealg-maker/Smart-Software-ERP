@@ -65,5 +65,6 @@
     "REPLACING_REFERENCE":      "المرجع البديل",
     "REPLACE_REFERENCE":        "استبدال المرجع",
     "FINAL_PRODUCTS":           "المنتجات النهائية",
-    "SUBCLASS":                "الفئة الفرعية"
+    "SUBCLASS":                "الفئة الفرعية",
+    "PURCHASE_UNIT":           "وحدة الشراء"
 }

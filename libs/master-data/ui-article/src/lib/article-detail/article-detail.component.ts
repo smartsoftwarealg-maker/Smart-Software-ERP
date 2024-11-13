@@ -60,6 +60,7 @@ export class ArticleDetailComponent extends BaseEntityDetailComponent<Article> i
     classLookup = new DefaultAutoCompleteModel(this.classSrv);
     subClassLookup = new DefaultAutoCompleteModel(this.subClassSrv);
     unitLookup = new DefaultAutoCompleteModel(this.unitSrv);
+    purchaseUnitLookup = new DefaultAutoCompleteModel(this.unitSrv);
     markLookup = new DefaultAutoCompleteModel(this.markSrv);
     typeLookup = new DefaultAutoCompleteModel(this.typeSrv);
 
@@ -102,6 +103,7 @@ export class ArticleDetailComponent extends BaseEntityDetailComponent<Article> i
             minQty:       [a.minQty],
             klass:        [a.klass],
             salesUnit:    [a.salesUnit],
+            purchaseUnit: [a.purchaseUnit],
             price1:       [a.price1 || 0],
             reference:    [a.reference, Validators.required],
             appId:        [a.appId || this.articleSrv.getParentId()],

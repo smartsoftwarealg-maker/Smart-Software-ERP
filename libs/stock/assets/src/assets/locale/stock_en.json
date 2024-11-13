@@ -66,5 +66,6 @@
     "REPLACING_REFERENCE":      "Replacing reference",
     "REPLACE_REFERENCE":        "Replace reference",
    "FINAL_PRODUCTS":           "Final products",
-    "SUBCLASS":                "Subclass"
+    "SUBCLASS":                "Subclass",
+    "PURCHASE_UNIT":           "Purchase unit"
 }
