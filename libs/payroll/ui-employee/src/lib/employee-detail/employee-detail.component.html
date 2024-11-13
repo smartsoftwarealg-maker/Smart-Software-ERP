@@ -46,7 +46,7 @@
                                 </mat-error>
                             </mat-form-field>
 
-                            <mat-form-field class="default-50 sm-100">
+                            <mat-form-field class="default-25 sm-50">
                                 <mat-label translate>PAYROLL_BIRTH_DATE</mat-label>
                                 <ss-date-picker [required]=true formControlName="birthDate"></ss-date-picker>
                                 <mat-error *ngIf="form.controls['birthDate'].hasError('required')" translate>
@@ -54,7 +54,7 @@
                                 </mat-error>
                             </mat-form-field>
 
-                            <mat-form-field id="birthPlace" class="default-50 sm-100">
+                            <mat-form-field id="birthPlace" class="default-25 sm-50">
                                 <mat-label translate>PAYROLL_BIRTH_PLACE</mat-label>
                                 <input matInput formControlName="birthPlace" type="text" maxlength="64" required>
                                 <mat-error *ngIf="form.controls['birthPlace'].hasError('required')" translate>
@@ -66,12 +66,12 @@
                                 </mat-error>
                             </mat-form-field>
 
-                            <mat-form-field class="default-50 sm-100">
+                            <mat-form-field class="default-25 sm-50">
                                 <mat-label translate>COMMON_CITY</mat-label>
                                 <ss-auto-complete [model]="cityLookup" formControlName="birthCity"></ss-auto-complete>
                             </mat-form-field>
 
-                            <mat-radio-group formControlName="sex" class="default-50 sm-100">
+                            <mat-radio-group formControlName="sex" class="default-25 sm-50">
                                 <mat-radio-button [value]=1 translate style="margin: 8px;"
                                                   [checked]="form.controls['sex'].value === 1">PAYROLL_MALE
                                 </mat-radio-button>
@@ -103,7 +103,7 @@
                                 </mat-error>
                             </mat-form-field>
 
-                            <mat-form-field floatLabel="always" class="default-50 sm-100">
+                            <mat-form-field floatLabel="always" class="default-25 sm-50">
                                 <mat-label translate>COMMON_MARITAL_STATUS</mat-label>
                                 <mat-select formControlName="maritalStatus">
                                     <mat-option [value]="null"></mat-option>
@@ -113,13 +113,21 @@
                                 </mat-select>
                             </mat-form-field>
 
-                            <mat-form-field id="ss_Number" class="default-50 sm-100">
+                            <mat-form-field id="ss_Number" class="default-25 sm-50">
                                 <mat-label translate>PAYROLL_SS_NUMBER</mat-label>
                                 <input matInput formControlName="ss_Number" type="text" maxlength="32">
                                 <mat-error *ngIf="form.controls['ss_Number'].hasError('maxlength')"
                                            [translate]="{maxLen: 32}">
                                     COMMON_FIELD_MAX_LENGTH
                                 </mat-error>
+                            </mat-form-field>
+
+                            <mat-form-field id="mutualno" class="default-25 sm-50">
+                                <mat-label translate>PAYROLL_MUTUAL_NUMBER</mat-label>
+                                <input matInput formControlName="mutualno" type="text" maxlength="32">
+                                @if (form.controls['mutualno'].hasError('maxlength')) {
+                                    <mat-error [translate]="{maxLen: 32}">COMMON_FIELD_MAX_LENGTH</mat-error>
+                                }
                             </mat-form-field>
 
                         </div>
@@ -215,9 +223,9 @@
                             </mat-error>
                         </mat-form-field>
 
-                        <mat-checkbox class="default-50 sm-100" formControlName="is_driver" translate>PAYROLL_IS_DRIVER
+                        <mat-checkbox class="default-25 sm-50" formControlName="is_driver" translate>PAYROLL_IS_DRIVER
                         </mat-checkbox>
-                        <mat-checkbox class="default-50 sm-100" formControlName="cmmsPerson" translate>
+                        <mat-checkbox class="default-25 sm-50" formControlName="cmmsPerson" translate>
                             PAYROLL_CMMS_PERSON
                         </mat-checkbox>
                     </mat-tab>
