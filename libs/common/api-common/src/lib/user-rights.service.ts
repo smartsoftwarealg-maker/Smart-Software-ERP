@@ -22,17 +22,18 @@ export class UserRightsService {
 
     public load(): Observable<DocRight[]> {
         return this.loginSrv.isLoggedIn?
-            this.httpSrv.get<Lookup[]>(FORMS_URL)
-                .pipe(switchMap(() => {
-                    return this.httpSrv.get<DocRight[]>('/rights');
-                }),
-                tap((res: DocRight[]) =>
-                    res.forEach(e => this.rightsMap.set(e.document, { read: e.read, write: e.write, edit: e.edit, delete: e.delete}))
-                )) : of([]);
+            this.httpSrv
+                .get<DocRight[]>('/rights')
+                .pipe(tap((res: DocRight[]) =>  res.forEach(e => this.rightsMap.set(e.document, { read: e.read, write: e.write, edit: e.edit, delete: e.delete})))):
+            of([]);
     }
 
     get rights(): Map<string, Right> {
         return this.rightsMap;
+    }
+
+    loadMap(res: DocRight[]) {
+        res.forEach(e => this.rightsMap.set(e.document, { read: e.read, write: e.write, edit: e.edit, delete: e.delete}));
     }
 
     canUserPass(component: string): boolean {

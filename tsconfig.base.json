@@ -33,6 +33,10 @@
             "@logistics/parts-reservation": [
                 "libs/logistics/parts-reservation/src/index.ts"
             ],
+            "@ltm/ltm-api": ["libs/ltm/ltm-api/src/index.ts"],
+            "@ltm/test-equipment": [
+                "libs/ltm/test-equipment-list/src/index.ts"
+            ],
             "@scheduled-sales/customer-history": [
                 "libs/scheduled-sales/customer-history/src/index.ts"
             ],
@@ -53,7 +57,6 @@
             "@social/loans": [
                 "libs/social/consolidated-loan-list/src/index.ts"
             ],
-            "@ltm/ltm-api": ["libs/ltm/ltm-api/src/index.ts"],
             "@social/medical-aids-detail": [
                 "libs/social/medical-aids-detail/src/index.ts"
             ],
@@ -72,9 +75,6 @@
             ],
             "@social/social-works-list": [
                 "libs/social/social-works-list/src/index.ts"
-            ],
-            "@ltm/test-equipment": [
-                "libs/ltm/test-equipment-list/src/index.ts"
             ],
             "@ss/accounting/acc-policies": [
                 "libs/accounting/acc-policies/src/index.ts"
@@ -590,6 +590,9 @@
             ],
             "@ss/service-sales/service-proforma": [
                 "libs/service-sales/service-proforma/src/index.ts"
+            ],
+            "@ss/social/mutual-requests": [
+                "libs/social/mutual-requests/src/index.ts"
             ],
             "@ss/stock/api-article-store": [
                 "libs/stock/api-article-store/src/index.ts"

@@ -72,13 +72,13 @@ export const ltmNavTree: SideNavNode = {
             name: 'LTM_NORMS',
             icon: 'fa-solid fa-ruler-triangle',
             route: ABS_LTM_NORM_URL,
-            accessRights: 'Test'
+            accessRights: 'LTMNorm'
         },
         {
             name: 'LTM_TEST_NORMS',
             icon: 'fa-regular fa-list-tree',
             route: ABS_LTM_NORM_TREE_URL,
-            accessRights: 'Test'
+            accessRights: 'NormTree'
         },
         {
             name: 'LTM_SILOS',

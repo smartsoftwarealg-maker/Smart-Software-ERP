@@ -12,7 +12,7 @@ import {
     distinctUntilChanged,
     map,
     startWith,
-    switchMap
+    switchMap, tap
 } from 'rxjs/operators';
 import {MatStepper} from '@angular/material/stepper';
 import {UserRightsService} from '@ss/common/api-common';
@@ -124,8 +124,9 @@ export class CenterSelectComponent implements OnInit {
             this.loading = true;
             this.loginSrv
                 .centerLogin(this.selectedCenter)
-                .pipe(switchMap(_ => this.rightsSrv.load()))
-                .subscribe({
+                .pipe(switchMap(_ => this.rightsSrv.load()),
+                      tap(res => this.rightsSrv.loadMap(res))
+                ).subscribe({
                     next: () => {
                         // this.endLoading(); // don't show shit, because we are leaving anyway
                         const dest = !this.loginSrv.appCtx? PROFILE_PAGE_URL : INDEX_PAGE_URL;

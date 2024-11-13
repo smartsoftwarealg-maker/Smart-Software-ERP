@@ -109,6 +109,8 @@ export interface MutualRequestLine {
     mutualType: number;
     employeeId: number;
     folderCount: number;
+    firstName?: string;
+    lastName?: string;
 }
 
 export interface MutualRequest {
