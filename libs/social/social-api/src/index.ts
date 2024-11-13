@@ -13,3 +13,5 @@ export * from './lib/services/edo-header.service';
 export * from './lib/services/edo-line.service';
 export * from './lib/services/person-aid-history.service';
 export * from './lib/services/pending-edo.service';
+export * from './lib/services/mutual-request.service';
+export * from './lib/services/mutual-request-line.service';
