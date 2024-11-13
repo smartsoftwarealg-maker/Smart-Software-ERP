@@ -200,7 +200,6 @@ export class OrganizationsComponent implements OnInit {
     }
 
     select(node: OrgTreeNode, level: Level) {
-        console.log('selected =', node);
         if (level === this.selectedLevel && this.selected != null && node.id === this.selected.id) {
             this.deselect();
             this.updateUi();

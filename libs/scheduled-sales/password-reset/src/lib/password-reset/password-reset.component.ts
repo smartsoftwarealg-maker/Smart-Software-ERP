@@ -49,7 +49,6 @@ export class PasswordResetComponent implements OnInit {
 
     updatePassword() {
         const value = this.form.getRawValue();
-        console.log(value);
         this.#userSrv
             .updatePassword(value)
             .subscribe(res => {

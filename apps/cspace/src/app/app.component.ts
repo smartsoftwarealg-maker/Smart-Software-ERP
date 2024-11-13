@@ -32,10 +32,10 @@ export class AppComponent implements OnInit {
         this.shellSrv.setApplicationTitle('Customer Space 1.5');
         this.httpSrv
             .init()
-            .pipe(switchMap(_ => this.loginSrv.loadContext()),
+            .pipe(// switchMap(_ => this.loginSrv.loadContext()),
                 switchMap(() => this.langSrv.init()),
                 switchMap(_ => this.langSrv.addSources(langAssets)),
-                switchMap(_ => this.httpSrv.get<any>('/ccenter')),
+                // switchMap(_ => this.httpSrv.get<any>('/ccenter')),
                 catchError(_ => of({ description: '' })),
                 tap(res => this.shellSrv.setCompanyName(res['description'] || '')))
             .subscribe(() => {

@@ -79,7 +79,6 @@ export class CustomerComplaintsDetailComponent extends BaseEntityDetailComponent
     override readForm(): CustomerComplaint {
         const value = this.form.getRawValue();
         value.complaintType = +value.complaintType;
-        console.log(value);
         return value;
     }
 }

@@ -6,6 +6,7 @@ import {DocImportService} from '../doc-import.service';
 import { FormControl } from '@angular/forms';
 import {switchMap} from 'rxjs/operators';
 import { Subscription } from 'rxjs';
+import { PaginationModel } from '@ss/common/api-common';
 
 @Component({
     selector: 'ss-doc-import',
@@ -21,28 +22,36 @@ export class DocImportComponent implements OnInit {
     public   importList: ImportInfo[] = [];
     readonly displayedColumns = ['number', 'date', 'reference', 'refDate'];
 
-    public   document = new FormControl<number>(0);
-    public   searchNumber = new FormControl<number>(0);
+    public  document = new FormControl<number>(0);
+    public  searchNumber = new FormControl<number>(0);
     public  importInfo: ImportInfo = null;
+    paginator = PaginationModel.newInstance({page: 0, pageSize: 10, elementCount: 0 });
 
 
     constructor(@Inject(MAT_DIALOG_DATA) private data: { documentList: Lookup[], agentId?: number }) {
         this.documentList = data.documentList;
         this.agentId = data.agentId;
+        this.paginator.onChange = () => this.refresh();
     }
 
     ngOnInit(): void {
         this.subscriptions.push(
             this.document
                 .valueChanges
-                .pipe(switchMap(docCode => this.docImportService.getList(docCode, this.searchNumber.value, this.agentId)))
-                .subscribe(res => this.importList = res));
+                .pipe(switchMap(docCode => this.docImportService.getList(docCode, this.searchNumber.value||0, this.agentId, 0, 50)))
+                .subscribe(res => {
+                    this.importList = res.body;
+                    this.paginator.elementCount = res.itemCount;
+                }));
 
         this.subscriptions.push(
             this.searchNumber
                 .valueChanges
-                .pipe(switchMap(numb => this.docImportService.getList(this.document.value, numb, this.agentId)))
-                .subscribe(res => this.importList = res));
+                .pipe(switchMap(numb => this.docImportService.getList(this.document.value, (numb||0), this.agentId, 0, 50)))
+                .subscribe(res => {
+                    this.importList = res.body;
+                    this.paginator.elementCount = res.itemCount;
+                }));
     }
 
     public close() {
@@ -56,5 +65,14 @@ export class DocImportComponent implements OnInit {
 
     selectRow(row: ImportInfo) {
         this.importInfo = row;
+    }
+
+    private refresh() {
+        this.docImportService
+            .getList(this.document.value, this.searchNumber.value, this.agentId, this.paginator.page - 1, this.paginator.pageSize)
+            .subscribe(res => {
+                this.importList = res.body;
+                this.paginator.elementCount = res.itemCount;
+            });
     }
 }

@@ -116,7 +116,6 @@ export class OfficeSearchComponent implements OnDestroy, OnInit {
     }
 
     private findFloors() {
-        console.log(this.isCMMS);
         this.officeSrv
             .floors(this.locationFF.value || 0, this.buildingFF.value || 0)
             .subscribe(res => {

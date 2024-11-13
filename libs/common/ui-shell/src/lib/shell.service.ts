@@ -1,7 +1,7 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UntypedFormControl } from '@angular/forms';
-import { Observable, Subscription } from 'rxjs';
+import { asyncScheduler, Observable, observeOn, Subscription } from 'rxjs';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { MatTreeNestedDataSource } from '@angular/material/tree';
 import {
@@ -15,6 +15,7 @@ import {
     UserRightsService,
     MainPageService
 } from '@ss/common/api-common';
+import { BadgeButtonService } from './badge-button-service';
 
 export function cloneDeep<T>(obj: T): T {
     return JSON.parse(JSON.stringify(obj)) as T;
@@ -41,6 +42,11 @@ export interface ToolbarButton {
     visible: boolean;
     keepOnToolbar: KeepOnToolbar; // used to be boolean, true -> ALWAYS, false -> DYNAMIC
     menuItems?: MenuItem[];
+}
+
+export interface BadgeButton extends ToolbarButton {
+    badgeId: number;
+    countObservable: Observable<{ count: number }>;
     badgeCount?: number;
 }
 
@@ -57,6 +63,7 @@ export interface MenuItem {
     providedIn: 'root'
 })
 export class ShellService {
+    #badgeButtonSrv = inject(BadgeButtonService);
     private _application = '';
     private navTree: SideNavNode[] = [];
 
@@ -104,12 +111,13 @@ export class ShellService {
     protected readonly sideNavDataSrc = new MatTreeNestedDataSource<SideNavNode>();
     public navData: SideNavNode[] = [];
 
-    constructor(public langSrv: LanguageService,
-        public router: Router,
-        public mainPageSrv: MainPageService,
-        private rightsSrv: UserRightsService,
-        private loginSrv: LoginService) {
-    }
+    public langSrv = inject(LanguageService);
+    public router = inject(Router);
+    public mainPageSrv = inject(MainPageService);
+    private rightsSrv = inject(UserRightsService);
+    private loginSrv = inject(LoginService);
+
+    constructor() {}
 
     /* LOADING */
 
@@ -155,7 +163,8 @@ export class ShellService {
                 .filter(e => e !== '')
                 .splice(0, 3)
                 .join('/');
-        return this.navData.map(n => this.getNavNodeByUrl(url, n)).filter(n => !!n)[0];
+        // return this.navData.map(n => this.getNavNodeByUrl(url, n)).filter(n => !!n)[0];
+        return this.navTree.map(n => this.getNavNodeByUrl(url, n)).filter(n => !!n)[0];
     }
 
     private getNavNodeByUrl(url: string, node: SideNavNode): SideNavNode {
@@ -253,17 +262,18 @@ export class ShellService {
     }
 
     public filterSideNav() {
-        this.sideNavDataSrc.data = this.navData = this.filterSideNavByVisibility(this.filterNavTree(this.navTree));
-        this.generateNavColors(this.navData);
-        this.mainPageSrv.display = this.navData;
-        this.updateShell();
+        if (this.loginSrv.appCtx) {
+            this.navData = this.filterSideNavByVisibility(this.filterNavTree(this.navTree));
+            this.sideNavDataSrc.data = this.navData;
+            this.generateNavColors(this.navData);
+            this.mainPageSrv.display = this.navData;
+            this.updateShell();
+        }
     }
 
     public setSideNavDataSource(tree: SideNavNode[]) {
         this.navTree = tree;
-        if (this.loginSrv.appCtx) {
-            this.filterSideNav();
-        }
+        this.filterSideNav();
     }
 
     private generateNavColors(tree: SideNavNode[]): void {
@@ -419,7 +429,6 @@ export class ShellService {
     public enableSearch(inputLabel: string, subFn: (a: Observable<any>) => any, focusField = false): void {
         this.searchInputLabel = inputLabel;
         if (this.hasSearch) {
-            console.log('Search called twice!!');
             // alert(
             //     'Dear developer, you have called enableSearch twice in a row,\n\t1. either you have not cleared the shellService state by calling .reset()\n\t2. or you called the function twice in the same component.\n\t\tContact muaaz.h.is@gmail.com for more information'
             // );
@@ -448,9 +457,12 @@ export class ShellService {
         this.title = null;
         this.goBackFn = null;
         this.disableSearch(false);
-        this.buttons = [];
+        this.buttons = this.#badgeButtonSrv.getButtons();
         this.isLoading = false;
         this.isError = false;
+        // this.#badgeButtonSrv
+        //     .getButtons()
+        //     .forEach(b => this.addBadgeButton(b));
         this.updateShell();
     }
 
@@ -473,6 +485,10 @@ export class ShellService {
         }
         this.buttons.push(btn);
         this.updateShell();
+    }
+    public addBadgeButton(btn: BadgeButton) {
+       // btn.visible = false;
+       this.addButton(btn);
     }
 
     public removeButton(buttonLabel: string): void {
@@ -573,6 +589,10 @@ export class ShellService {
     setCompanyName(name: string) {
         this._companyName.title = name;
         this.updateShell();
+    }
+
+    get companyName(): string {
+        return this._companyName?.title||null;
     }
 
     setGoBackEnabled(enable: boolean) {

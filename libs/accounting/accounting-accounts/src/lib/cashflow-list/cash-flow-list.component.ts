@@ -99,7 +99,6 @@ export class CashFlowListComponent extends BaseEntityListComponent<AnnexCode> {
 
     add(e: PendingTreasury) {
         if (this.selectedCode != null && this.loginSrv.appCtx.accYear > 1000) {
-            console.log(e, this.loginSrv.appCtx.accYear);
             const data = {
                 id: 0,
                 code: this.selectedCode,
@@ -110,7 +109,6 @@ export class CashFlowListComponent extends BaseEntityListComponent<AnnexCode> {
             this.cashFlowSrv
                 .add(data)
                 .subscribe(res => {
-                    console.log
                     if (res > 0) {
                         this.pendingData = this.pendingData.filter(x => x.accountNo != e.accountNo);
                         this.accountList?.refresh();

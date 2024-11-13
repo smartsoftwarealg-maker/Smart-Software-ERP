@@ -13,7 +13,6 @@ export class TransactionDetailGuard implements CanActivate {
     canActivate(
         route: ActivatedRouteSnapshot,
         state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-        console.log('id: ', this.srv.journalId);
         return this.srv.journalId? true : this.router.createUrlTree(['/app/treasury/transactions']);
     }
 

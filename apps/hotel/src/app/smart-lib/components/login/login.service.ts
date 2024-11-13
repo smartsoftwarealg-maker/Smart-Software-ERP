@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import {mergeMap, Observable, of} from 'rxjs';
 import { Router } from '@angular/router';
 import { catchError, map, switchMap, tap } from 'rxjs/operators';
@@ -36,6 +36,9 @@ export interface PersonResponse {
 
 @Injectable()
 export class LoginService {
+    #httpSrv = inject(HttpService);
+    #decSrv = inject(DecService);
+
     public agent: Agent = null;
     public person: Person = null;
     public hasPassword = false;
@@ -44,8 +47,7 @@ export class LoginService {
     private bUserLogin = false;
     private loggedIn = false;
 
-    constructor(private httpSrv: HttpService,
-        public userSrv: UserService,
+    constructor(public userSrv: UserService,
         private decSrv: DecService,
         public router: Router) {
     }
@@ -55,10 +57,10 @@ export class LoginService {
     }
 
     public reLogin(): Observable<boolean> {
-        return this.httpSrv
+        return this.#httpSrv
             .init()
             .pipe(mergeMap(_ =>
-                this.httpSrv.get<any>('/relogin')
+                this.#httpSrv.get<any>('/relogin')
                     .pipe(
                         tap(res2 => this.loginFromStorage()),
                         catchError(err => {
@@ -91,12 +93,11 @@ export class LoginService {
 
     public select(agent: Agent): void {
         this.agent = null;
-        this
-            .httpSrv
+        this.#httpSrv
             .put(`/agents/${agent.id}/select`)
             .subscribe(res => {
                 // localStorage.setItem('auth_token', res['payload']);
-                this.httpSrv.updateAuthToken(res.payload);
+                this.#httpSrv.updateAuthToken(res.payload);
                 this.agent = agent;
                 localStorage.setItem('agent', JSON.stringify(this.agent));
                 this.userSrv.context.agentId = agent.id;
@@ -104,19 +105,18 @@ export class LoginService {
     }
 
     public centerLogin(center: number): Observable<string> {
-        return this
-            .httpSrv
+        return this.#httpSrv
             .get<string>('/clogin/' + center)
             .pipe(tap<string>(res => {
-                this.httpSrv.updateAuthToken(res);
+                this.#httpSrv.updateAuthToken(res);
                 // localStorage.setItem('auth_token', res);
             }));
     }
 
     // public setPayrollMonth(month: number): Observable<any> {
-    //     return this.httpSrv
+    //     return this.#httpSrv
     //         .put('/payroll/month', { 'payMonth': month })
-    //         .pipe(tap(res => this.httpSrv.updateAuthToken(res)));
+    //         .pipe(tap(res => this.#httpSrv.updateAuthToken(res)));
     // }
 
     public logout() {
@@ -149,12 +149,11 @@ export class LoginService {
         this.loggedIn = false;
         this.wrongData = false;
         this.licenseErrorType = null;
-        this
-            .httpSrv
+        this.#httpSrv
             .doLogin('/login', user)
             .pipe(switchMap((jwt: string) => {
-                this.httpSrv.updateAuthToken(jwt);
-                return this.httpSrv
+                this.#httpSrv.updateAuthToken(jwt);
+                return this.#httpSrv
                     .get<any>('/cuser')
                     .pipe(
                         tap((usr: User) => {
@@ -167,40 +166,43 @@ export class LoginService {
                         })
                     );
             }))
-            .subscribe(res => {
-                if (!this.licenseErrorType) {
-                    this.bUserLogin = true;
-                    this.loggedIn = true;
-                    localStorage.setItem('userInfo-login', 'true');
-                    this.hasPassword = user.password !== '';
-                    localStorage.setItem('has-pwd', this.hasPassword + '');
-                    this.router.navigate(['/' + CENTER_SELECT_URL]);
-                }
-                if (onFinish != null) {
-                    onFinish();
-                }
-            }, err => {
-                if (err.status === 401) {
-                    localStorage.setItem('userInfo-login', 'false');
-                    this.wrongData = !this.licenseErrorType;
-                    if (this.licenseErrorType) {
-                        if (onFinish != null) {
-                            onFinish();
-                        }
-                    } else if (onFinish != null) {
-                        onFinish();
+            .subscribe({
+                next: res => {
+                    if (!this.licenseErrorType) {
+                        this.bUserLogin = true;
+                        this.loggedIn = true;
+                        localStorage.setItem('userInfo-login', 'true');
+                        this.hasPassword = user.password !== '';
+                        localStorage.setItem('has-pwd', this.hasPassword + '');
+                        this.router.navigate(['/' + CENTER_SELECT_URL]).then();
                     }
-                } else {
                     if (onFinish != null) {
                         onFinish();
                     }
-                    throw err;
+                },
+                error: err => {
+                    if (err.status === 401) {
+                        localStorage.setItem('userInfo-login', 'false');
+                        this.wrongData = !this.licenseErrorType;
+                        if (this.licenseErrorType) {
+                            if (onFinish != null) {
+                                onFinish();
+                            }
+                        } else if (onFinish != null) {
+                            onFinish();
+                        }
+                    } else {
+                        if (onFinish != null) {
+                            onFinish();
+                        }
+                        throw err;
+                    }
                 }
             });
     }
 
     public updateUserLicense(license: string): Observable<number> {
-        return this.httpSrv.put('/users/license', { license });
+        return this.#httpSrv.put('/users/license', { license });
     }
 
 }

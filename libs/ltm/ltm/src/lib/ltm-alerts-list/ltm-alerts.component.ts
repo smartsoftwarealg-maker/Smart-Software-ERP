@@ -97,23 +97,24 @@ export class LtmAlertsComponent extends BaseEntityListComponent<LTMAbnormalTest>
             );
     }
 
-    showAlertBadge() {
-            const TODAY = new Date(new Date().getTime() - 24 * 3600 * 1000);
-            this.subscription = this.abnormalTestSrv
-                .refresh(TODAY, new Date(), 0, 49)
-                .subscribe(res => {
-                    if (res.itemCount > 0) {
-                        this.badgeBtn.badgeCount = res.itemCount;
-                        this.shellSrv.addButton(this.badgeBtn);
-                    }
-                });
-    }
+    // showAlertBadge() {
+    //         const TODAY = new Date(new Date().getTime() - 24 * 3600 * 1000);
+    //         this.subscription = this.abnormalTestSrv
+    //             .refresh(TODAY, new Date(), 0, 49)
+    //             .subscribe(res => {
+    //                 if (res.itemCount > 0) {
+    //                     this.badgeBtn.badgeCount = res.itemCount;
+    //                     this.shellSrv.addButton(this.badgeBtn);
+    //                 }
+    //             });
+    // }
 
     private showAlerts() {
         this.shellSrv.removeButton('LTM_ALERTS');
         this.subscription?.unsubscribe();
         this.router.navigate(['/app/ltm/ltm-alerts']).then();
     }
+
     override ngOnInit() {
         this.addButton.visible = false;
         // this.editButton.visible = false;

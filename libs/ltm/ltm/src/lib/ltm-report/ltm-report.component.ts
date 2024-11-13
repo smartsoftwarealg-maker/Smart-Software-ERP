@@ -107,7 +107,6 @@ export class LtmReportComponent implements OnInit, OnDestroy {
                 filter(() => !this.processing),
                 distinctUntilChanged()
             ).subscribe(res => {
-                console.log(res);
                 return this.matters$ = this._matters$.pipe(map(e => e.filter(d => !res || d.matterDescription?.toLowerCase().indexOf(res.toLowerCase()) >= 0)))
             });
 

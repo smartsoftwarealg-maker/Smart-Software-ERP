@@ -4,7 +4,7 @@ import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, RouterOutlet } from '@angular/router';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
-import { LoginService, MaterialModule } from '@ss/common/api-common';
+import { dateTimeToStr, dateTimeToTime, LoginService, MaterialModule } from '@ss/common/api-common';
 import { CommonUiLangModule } from '@ss/common/ui-lang';
 import {
     MatCell,
@@ -69,14 +69,16 @@ export class TestEquipmentTestingInputDetailComponent extends BaseEntityDetailCo
 
     public override setupForm(b: LTMTestEquipmentTestingInput): UntypedFormGroup {
         this.equipmentTests = b.lines?.map(e => { return { id: e.id, parentId: e.parentId, testId: e.testId,  value: e.value, testDescription: e.testDescription } }) ;
+        const date = typeof b.test?.time === 'string'? new Date(b.test?.time): b.test?.time||new Date();
         return this.formBuilder.group({
             id:            [b.test?.id||0],
             test: this.formBuilder.group({
                 id:          [b.test?.id||0, Validators.required],
                 equipmentId: [{ value: b.test?.equipmentId||0, disabled: b.test?.id > 0 }, Validators.required],
-                time:        [b.test?.time|| new Date(), Validators.required],
+                time:        [date, Validators.required],
                 centerId:    [b.test?.centerId||this.#loginSrv.appCtx.center, Validators.required],
                 userId:      [b.test?.userId||this.#loginSrv.appCtx.id, Validators.required],
+                hour:        [date.getHours()||0]
             }),
             lines: this.formBuilder.array(b.lines? b.lines?.map(e => new FormControl<number>(e.value)): [])
         });
@@ -104,6 +106,8 @@ export class TestEquipmentTestingInputDetailComponent extends BaseEntityDetailCo
 
     override readForm(): LTMTestEquipmentTestingInput {
         const value = this.form.getRawValue();
+        value.test.time.setHours(value.test.hour, 0, 0, 0);
+        value.test.time = dateTimeToStr(value.test.time);
         const values = this.tests.value as number[];
         const lines: LTMEquipmentTestingLine[] = values.map((v, i) => {
             return {

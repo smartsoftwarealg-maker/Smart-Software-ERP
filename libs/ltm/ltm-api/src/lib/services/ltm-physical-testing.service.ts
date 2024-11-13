@@ -3,7 +3,7 @@ import { LTM_MATTER_URL, LTM_PHYSICAL_TESTING_URL, LTMTesting } from '../ltm-api
 import { HttpService } from '@ss/common/api-common';
 import { LtmBaseTestingClass } from './ltm-base-testing.class';
 import { HttpParams } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { catchError, Observable, of, repeat } from 'rxjs';
 import { AssetInventoryDoc } from '@ss/assets-component';
 
 @Injectable({
@@ -33,7 +33,10 @@ export class LtmPhysicalTestingService extends LtmBaseTestingClass {
     }
 
     getPendingCount(): Observable<{ count: number}> {
-        return this.httpSrv.get<{ count: number}>(`/ltm/pending-tests`);
+        return this.httpSrv
+            .get<{ count: number}>(`/ltm/pending-tests`)
+            .pipe(repeat( { delay: 120_000 }),
+                  catchError(() => of({ count: 0})));
     }
 }
 

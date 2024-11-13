@@ -1,62 +1,18 @@
-
-<!--<div class="b-b-app-bar login-container">-->
-
-<!--    <mat-spinner *ngIf="loading"></mat-spinner>-->
-<!--    <form *ngIf="!loading" novalidate [formGroup]="form">-->
-<!--        <div class="card mat-elevation-z8 b-b-card">-->
-<!--            <mat-form-field floatLabel="always">-->
-<!--                <mat-label translate>COMMON_USERNAME</mat-label>-->
-<!--                <i class="fas fa-user margin-end-8" matPrefix></i>-->
-<!--                <input formControlName="user" name="username" autofocus matInput required>-->
-<!--            </mat-form-field>-->
-
-<!--            <mat-form-field floatLabel="always">-->
-<!--                <mat-label translate>COMMON_PASSWORD</mat-label>-->
-<!--                <i class="fas fa-lock margin-end-8" matPrefix></i>-->
-<!--                <input formControlName="pass" name="password" matInput type="password">-->
-<!--            </mat-form-field>-->
-
-<!--            <mat-form-field *ngIf="loginSrv.licenseErrorType">-->
-<!--                <mat-label translate>COMMON_LOGIN_LICENSE</mat-label>-->
-<!--                <i class="fas fa-key margin-end-8" matPrefix></i>-->
-<!--                <input matInput type="text" autocomplete="off" formControlName="license" name="license" />-->
-<!--                <mat-hint align="start"><strong class="mat-error" translate>COMMON_LOGIN_INVALID_LICENSE</strong></mat-hint>-->
-<!--            </mat-form-field>-->
-
-<!--            <div *ngIf="loginSrv.wrongData" class="mat-error login-failed">-->
-<!--                <strong translate>COMMON_LOGIN_WRONG_USERNAME_PASSWORD</strong>-->
-<!--            </div>-->
-
-<!--            <div *ngIf="loginSrv.connectionError" class="mat-error login-failed">-->
-<!--                <strong translate>COMMON_CONNECTION_ERROR</strong>-->
-<!--            </div>-->
-
-<!--            <div class="buttons">-->
-
-<!--                <div class="icon-buttons">-->
-<!--                    <ss-theme-select></ss-theme-select>-->
-<!--                    <ss-language-select></ss-language-select>-->
-<!--                </div>-->
-
-<!--                <button mat-raised-button [disabled]="updating || !form.valid" color="primary" (click)="onSubmit()">-->
-<!--                    <span translate>COMMON_LOGIN</span>-->
-<!--                </button>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </form>-->
-<!--</div>-->
-
-<div class="container">
+<div class="container" [ngStyle]="{ 'cursor': loading() ? 'wait': 'auto' }">
     <div class="screen">
         <div class="screen__content">
             <form class="login" novalidate [formGroup]="form">
                 <div class="login__field">
                     <i class="login__icon fas fa-user"></i>
-                    <input type="text" class="login__input" [placeholder]="'COMMON_USERNAME' | translate" formControlName="user">
+                    <input type="text" class="login__input" [placeholder]="'COMMON_USERNAME' | translate"
+                           formControlName="user"
+                           [ngStyle]="{ 'cursor': loading() ? 'wait': 'auto' }">
                 </div>
                 <div class="login__field">
                     <i class="login__icon fas fa-lock"></i>
-                    <input type="password" autocomplete="off" class="login__input" [placeholder]="'COMMON_PASSWORD'|translate" formControlName="pass">
+                    <input type="password" autocomplete="off" class="login__input"
+                           [placeholder]="'COMMON_PASSWORD'|translate" formControlName="pass"
+                           [ngStyle]="{ 'cursor': loading() ? 'wait': 'auto' }">
                 </div>
 
                 <div class="login__field">
@@ -68,17 +24,16 @@
                         <strong translate>COMMON_CONNECTION_ERROR</strong>
                     </div>
                 }
-                @if (loginSrv.errorMessage) {
+
+                @if (loginSrv.wrongData) {
                     <div class="connection__error">
-                        <strong>{{ loginSrv.errorMessage }}</strong>
+                        <strong translate>COMMON_LOGIN_WRONG_USERNAME_PASSWORD</strong>
                     </div>
                 }
-
-                <div *ngIf="loginSrv.wrongData" class="connection__error">
-                    <strong translate>COMMON_LOGIN_WRONG_USERNAME_PASSWORD</strong>
-                </div>
-
-                <button class="button login__submit" (click)="onSubmit()">
+                <button class="button login__submit"
+                        (click)="onSubmit()"
+                        [disabled]="loading() == true"
+                        [ngStyle]="{ 'cursor': loading() ? 'wait': 'auto' }">
                     <span class="button__text" translate>COMMON_LOGIN</span>
                     <i class="button__icon fas fa-chevron-right"></i>
                 </button>

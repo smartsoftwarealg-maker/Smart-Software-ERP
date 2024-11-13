@@ -96,7 +96,6 @@ export class VacationPlanningDetailListComponent implements OnInit {
         this.selectedId = row ? row.id : null;
         this.editButton.disabled = !this.selectedId || this.selectedId < 1;
         this.deleteButton.disabled = this.editButton.disabled;
-        console.log('selected', row, this.selectedId);
     }
 
     add() {

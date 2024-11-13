@@ -1,8 +1,8 @@
 import { inject, NgModule } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { ltmRoutes } from './routes';
-import { KeepOnToolbar, ShellService, ToolbarButton } from '@ss/common/ui-shell';
-import { Subscription } from 'rxjs';
+import { BadgeButton, BadgeButtonService, KeepOnToolbar, ShellService } from '@ss/common/ui-shell';
+import { catchError, map, of, repeat } from 'rxjs';
 import { LtmAbnormalTestService } from '@ltm/ltm-api';
 import {
     LtmPhysicalTestingService
@@ -16,60 +16,41 @@ import {
 export class LTMModule {
     #PENDING = 'LTM_PENDING_TESTS'
     #ALERTS  = 'LTM_ALERTS'
+    #badgeButtonSrv = inject(BadgeButtonService);
     private shellSrv = inject(ShellService);
     private router = inject(Router);
     private abnormalTestSrv = inject(LtmAbnormalTestService);
-    private subscription: Subscription|null = null;
-    private subscription2: Subscription|null = null;
     private physicalTestSrv = inject(LtmPhysicalTestingService);
 
-    private badgeBtn: ToolbarButton = {
+    private anomalyBtn: BadgeButton = {
+        badgeId: 3,
+        countObservable: this.abnormalTestSrv
+            .refresh(new Date(new Date().getTime() - 24 * 3600 * 1000), new Date(), 0, 49)
+            .pipe(map(res => ({ count: res.itemCount })),
+                repeat( { delay: 120_000 }),
+                catchError(() => of({ count: 0})) ),
         icon: 'fa-solid fa-sensor-triangle-exclamation',
         label: this.#ALERTS,
         disabled: false,
         visible: true,
         keepOnToolbar: KeepOnToolbar.ALWAYS,
-        click: () => this.showAlerts()
+        click: () => this.router.navigate(['/app/ltm/ltm-alerts']).then(() => this.anomalyBtn.visible = false)
     };
 
-    private pendingBtn: ToolbarButton = {
+    private pendingBtn: BadgeButton = {
+        badgeId: 2,
+        countObservable: this.physicalTestSrv.getPendingCount(),
         icon: 'fa-solid fa-sensor-triangle-exclamation',
         label: this.#PENDING,
         disabled: false,
         visible: true,
         keepOnToolbar: KeepOnToolbar.ALWAYS,
-        click: () => this.showPendingTests()
+        click: () => this.router.navigate(['/app/ltm/ltm-sample']).then(() => this.pendingBtn.visible = false)
     };
 
     constructor() {
-        this.subscription = this.abnormalTestSrv
-            .refresh(new Date(new Date().getTime() - 24 * 3600 * 1000), new Date(), 0, 49)
-            .subscribe(res => {
-                if (res.itemCount > 0) {
-                    this.badgeBtn.badgeCount = res.itemCount;
-                    this.shellSrv.addButton(this.badgeBtn);
-                }
-            });
-        this.subscription2 = this.physicalTestSrv
-            .getPendingCount()
-            .subscribe(res => {
-                if (res.count > 0) {
-                    this.pendingBtn.badgeCount = res.count;
-                    this.shellSrv.addButton(this.pendingBtn);
-                }
-            });
-    }
-
-    private showAlerts() {
-        this.shellSrv.removeButton(this.#ALERTS);
-        this.router.navigate(['/app/ltm/ltm-alerts']).then();
-        this.subscription?.unsubscribe();
-    }
-
-    private showPendingTests() {
-        this.shellSrv.removeButton(this.#PENDING);
-        this.router.navigate(['/app/ltm/ltm-sample']).then();
-        this.subscription2?.unsubscribe();
+        this.#badgeButtonSrv.addBadgeButton(this.anomalyBtn);
+        this.#badgeButtonSrv.addBadgeButton(this.pendingBtn);
     }
 
 }

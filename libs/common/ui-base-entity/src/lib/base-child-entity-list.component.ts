@@ -4,9 +4,9 @@ import { ActivatedRoute, Router } from "@angular/router";
 import { ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
 import { BaseEntityService } from "@ss/common/api-base-entity";
 import { LoginService, PaginationModel, Right } from "@ss/common/api-common";
-import { map, Observable, of, tap } from 'rxjs';
+import { map, Observable, of } from 'rxjs';
 import { Sort } from "@angular/material/sort";
-import { DefaultReportService } from "@ss/common/ui-default-report-component";
+import { DefaultReportService } from '@ss/common/ui-default-report-component';
 
 @Directive()
 export class BaseChildEntityListComponent<T extends { id: number }> implements OnInit {

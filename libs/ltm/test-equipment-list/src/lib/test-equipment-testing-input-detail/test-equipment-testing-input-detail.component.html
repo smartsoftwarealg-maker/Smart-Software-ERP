@@ -7,6 +7,11 @@
                     <ss-date-picker formControlName="time"></ss-date-picker>
                 </mat-form-field>
 
+                <mat-form-field class="hour default-50 sm-100">
+                    <mat-label translate>COMMON_HOURS</mat-label>
+                    <input matInput formControlName="hour" type="number" min="0" max="23" class="hour_input">
+                </mat-form-field>
+
                 <mat-form-field class="default-50 sm-100">
                     <mat-label translate>COMMON_EQUIPMENT</mat-label>
                     <ss-auto-complete matInput

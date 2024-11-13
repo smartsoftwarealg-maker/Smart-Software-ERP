@@ -77,13 +77,11 @@ export class JournalDetailComponent extends BaseEntityDetailComponent<Journal> {
             .subscribe(res => {
                 this.users = res.body;
                 this.paginator.elementCount = res.itemCount;
-                console.log('users', this.users)
             });
     }
 
     userSelectionChanged(ev: MatSelectionListChange) {
         this.selectedUser = ev.options[0].value;
-        console.log('id', this.selectedUser)
     }
 
     addUser() {

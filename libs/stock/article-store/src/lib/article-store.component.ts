@@ -129,7 +129,6 @@ export class ArticleStoreComponent implements OnInit {
 
     removeStore() {
         if (this.selectedStore) {
-            console.log('selected', this.selectedStore);
             this.articleStoreSrv
                 .remove(this.selectedStore.id)
                 .subscribe(() => {

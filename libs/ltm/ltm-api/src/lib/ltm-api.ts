@@ -308,7 +308,7 @@ export interface LTMEquipmentTesting {
     id: number;
     centerId: number;
     equipmentId: number;
-    time: Date;
+    time: Date|string;
     userId: number;
     equipmentDescription?: string;
     userDescription?: string;

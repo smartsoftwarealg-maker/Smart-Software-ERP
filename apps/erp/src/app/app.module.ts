@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { RouterModule, Routes } from '@angular/router';
 import { UiLoginModule } from '@ss/common/ui-login';
 import { UiErrorHandlerModule } from '@ss/common/ui-error-handler';
-import { ShellComponent, UiShellModule } from '@ss/common/ui-shell';
+import { ShellComponent } from '@ss/common/ui-shell';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AUTH_2FA_URL, LOGIN_URL, MAIN_PAGE_URL, UPDATE_PASSWORD_URL } from '@ss/common/api-common';
 import {CommonUiLangModule} from '@ss/common/ui-lang';
@@ -39,7 +39,6 @@ const routes: Routes = [
         // Smart Software modules
         UiThemeModule,
         UiErrorHandlerModule,
-        UiShellModule,
         CommonUiLangModule,
         // modules with routes
         UiLoginModule,

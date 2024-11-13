@@ -213,7 +213,6 @@ export class HttpTestService {
                 this.baseUrl = conf.baseUrl; // backward compatibility shit (microsoft is shit)
             }
         }
-        console.log('Backend: ', this.baseUrl);
     }
 
     // noinspection JSUnusedGlobalSymbols

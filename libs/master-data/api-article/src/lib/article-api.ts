@@ -48,6 +48,7 @@ export interface Article {
     awp?: number;
     appId: number;
     salesUnit: number;
+    purchaseUnit?: number;
     subClass?: number;
     imageModel?: ImageModel;
     vatValue?: number;

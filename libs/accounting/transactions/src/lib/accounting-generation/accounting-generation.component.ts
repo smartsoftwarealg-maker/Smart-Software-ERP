@@ -191,7 +191,6 @@ export class AccountingGenerationComponent implements OnInit, OnDestroy {
                     this.processing = false;
                     this.cashData  = res;
                     this.shellSrv.setLoading(false);
-                    console.log('data', this.cashData);
                 }, error: err => {
                     this.processing = false;
                     this.shellSrv.setLoading(false);

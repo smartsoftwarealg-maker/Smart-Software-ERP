@@ -43,7 +43,6 @@ export class DriverVehiclesDetailComponent extends BaseChildEntityDetailComponen
     vehicleLookup = new DefaultAutoCompleteModel(this.vehicleSrv);
 
     setupForm(e: DriverVehicle): UntypedFormGroup {
-        console.log(e);
         return this.fb.group( {
             id:          [e.id],
             vehicleId:   [e.vehicleId],

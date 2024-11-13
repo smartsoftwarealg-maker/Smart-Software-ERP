@@ -220,7 +220,8 @@ export class ReportViewComponent extends BaseEntityListComponent<ReportParam> im
                     this.leftPaneHidden = true;
                 }
                 this.generating = false;
-            }, error: err => {
+            },
+            error: err => {
                 this.generating = false;
                 this.leftPaneHidden = false;
                 if (err.error) {

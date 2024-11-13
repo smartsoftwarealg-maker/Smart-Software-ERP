@@ -464,7 +464,6 @@ export class LanguageService {
 
     parseNumber(input: string): number {
         const str = input || '0';
-        console.log(str, this.currentLanguage.thousandSeparator, str.indexOf(this.currentLanguage.thousandSeparator));
         return +str.split(this.currentLanguage.thousandSeparator).join('')
             .split(this.currentLanguage.decimalPoint).join('.');
     }

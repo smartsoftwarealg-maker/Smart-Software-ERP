@@ -43,7 +43,6 @@ export class BomDialogComponent {
     bom: BOM|null = null;
 
     constructor(private dialogRef: MatDialogRef<BomDialogComponent>, @Inject(MAT_DIALOG_DATA) private data: BOM) {
-        console.log(data);
         this.form.controls['id'].setValue(data.id || 0);
         this.form.controls['price'].setValue(data.price || 0);
         this.form.controls['qty'].setValue(data.qty || 0);

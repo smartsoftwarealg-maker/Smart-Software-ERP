@@ -38,7 +38,6 @@ export class DepartmentDetailComponent extends BaseEntityDetailComponent<Departm
     }
 
     override setupForm(a: Department): UntypedFormGroup {
-        console.log(a);
         return this.form = this.formBuilder.group({
             id:          [a.id||0],
             description: [a.description, Validators.compose([Validators.required, Validators.minLength(3), Validators.maxLength(64)])],
