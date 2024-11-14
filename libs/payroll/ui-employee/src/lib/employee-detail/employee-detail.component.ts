@@ -231,6 +231,7 @@ export class EmployeeDetailComponent extends BaseEntityDetailComponent<Employee>
             is_driver:     [p.is_driver || false, Validators.required],
             cmmsPerson:    [p.cmmsPerson || false, Validators.required],
             blood_group:   [p.blood_group],
+            mutualno:      [p.mutualno],
             userId:        [p.userId]
         });
     }

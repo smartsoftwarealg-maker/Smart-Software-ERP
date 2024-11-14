@@ -19,35 +19,22 @@ export class AppComponent implements OnInit {
     private httpSrv = inject(HttpService);
     private shellSrv = inject(ShellService);
     private loginSrv = inject(LoginService);
-    private rightsSrv = inject(UserRightsService);
 
     public langSrv = inject(LanguageService);
     loaded = false;
 
     ngOnInit() {
-        this.shellSrv.setApplicationTitle('Smart ERP 1.56.5');
-        this.shellSrv.setSideNavDataSource(navBar);
+        this.shellSrv.setApplicationTitle('Smart ERP 1.57.0');
         this.httpSrv
             .init()
             .pipe(
                 // switchMap(() => this.loginSrv.loadContext()),
-                switchMap(() => this.rightsSrv.load()),
                 switchMap(() => this.langSrv.init()),
                 switchMap(() => this.langSrv.addSources(langAssets)),
-                // switchMap(() => this.httpSrv.get('/ccenter')),
-                // catchError(() =>  of({ description: '' })),
-                // tap(res => this.shellSrv.setCompanyName(res['description'] || '')),
-                // switchMap(res => res['description']? this.workflowSrv.countInbox() : of({ count: 0 })),
-                // tap(res => {
-                //     if (res.count > 0) {
-                //         this.badgeBtn.badgeCount = res.count;
-                //         this.shellSrv.addButton(this.badgeBtn);
-                //     }
-                // })
             ).subscribe({
                 next: () => {
+                    this.shellSrv.setSideNavDataSource(navBar);
                     this.loaded = true;
-                    this.shellSrv.filterSideNav();
                 },
                 error: () => this.loginSrv.logout().then()
             });

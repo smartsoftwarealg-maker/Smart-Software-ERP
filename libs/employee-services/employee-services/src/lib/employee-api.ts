@@ -70,7 +70,7 @@ export interface Employee extends IEmployee {
     mservice: number;
     educationalLevel: number;
     diploma: number;
-    mutualNumber: string;
+    mutualno: string;
     post?: string;
     fullName?: string;
     imageModel?: ImageModel;

@@ -26,7 +26,8 @@ import { CommonModule } from '@angular/common';
 import { UiLogoutModule } from '@ss/common/ui-logout';
 import { CommonUiLangModule } from '@ss/common/ui-lang';
 import { UiThemeModule } from '@ss/common/ui-theme';
-import { catchError, of } from 'rxjs';
+import { catchError, of, switchMap, tap } from 'rxjs';
+import { debug } from '@capacitor/assets/dist/util/log';
 
 @Component({
     selector: 'ss-shell',
@@ -44,6 +45,7 @@ import { catchError, of } from 'rxjs';
 })
 export class ShellComponent implements OnInit, OnDestroy, AfterViewInit, AfterViewChecked {
     #httpSrv = inject(HttpService);
+    #rightsSrv = inject(UserRightsService);
     private router = inject(Router);
 
     // todo: disable all buttons on toolbar when loading
@@ -60,26 +62,22 @@ export class ShellComponent implements OnInit, OnDestroy, AfterViewInit, AfterVi
         public loginSrv: LoginService,
         public langSrv: LanguageService,
         public shellSrv: ShellService,
-        protected cdRef: ChangeDetectorRef,
-        private rightsSrv: UserRightsService) { }
+        protected cdRef: ChangeDetectorRef) { }
 
     ngOnInit() {
-        this.shellSrv.filterSideNav();
-        if (!this.shellSrv.companyName) {
-            this.#httpSrv
-                .get<any>('/ccenter')
-                .pipe(catchError(() =>  of({ description: '' })))
-                .subscribe(res => this.shellSrv.setCompanyName(res['description'] || ''));
-        }
+        this.#rightsSrv
+            .load()
+            .pipe(
+                tap(() => this.shellSrv.filterSideNav()),
+                switchMap(() => this.shellSrv.companyName? of({ description: this.shellSrv.companyName }) : this.#httpSrv.get<any>('/ccenter')),
+                catchError(() =>  of({ description: '' }))
+            ).subscribe(res => {
+                this.shellSrv.setCompanyName(res['description'] || '');
+                this.shellSrv.filterSideNav();
+        });
         this.shellSrv.setUpdateShellFn(null);
         this.shellSrv.setShowToolbarFn(this.showToolbar);
         this.check();
-        this.rightsSrv
-            .load()
-            .subscribe(() => {
-                // this.shellSrv.setSideNavDataSource(navBar);
-                this.shellSrv.filterSideNav();
-            });
     }
 
     ngOnDestroy() {

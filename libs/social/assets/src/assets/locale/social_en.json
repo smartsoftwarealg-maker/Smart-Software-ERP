@@ -15,5 +15,9 @@
     "ACTIVITY_AMOUNTS":  "Activity amounts",
     "ANNUAL_COUNTS":     "Annual installment counts",
     "ANNUAL_AMOUNTS":    "Annual amounts",
-    "EDO_LIST":          "EDO list"
+    "EDO_LIST":          "EDO list",
+    "MUTUAL_TYPES":      "Mutual types",
+    "MUTUAL_REQUESTS":   "Mutual requests",
+    "FOLDER_COUNT":      "Folder count",
+    "MUTUAL_TYPE":       "Mutual type"
 }

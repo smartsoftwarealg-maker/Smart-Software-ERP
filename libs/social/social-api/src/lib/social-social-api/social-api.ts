@@ -78,6 +78,7 @@ export interface SocialActivity {
     descriptionAr?: string;
     value?: number;
 }
+
 export interface MedicalAid {
     id: number;
     description: string;
@@ -101,3 +102,23 @@ export interface EDOLine {
     firstName?: string;
     lastName?: string;
 }
+
+export interface MutualRequestLine {
+    id: number;
+    parentId: number;
+    mutualType: number;
+    employeeId: number;
+    folderCount: number;
+    firstName?: string;
+    lastName?: string;
+    mutualNo?: number;
+}
+
+export interface MutualRequest {
+    id: number;
+    centerId: number;
+    serialNumber: number;
+    date: Date;
+    description: string;
+}
+
