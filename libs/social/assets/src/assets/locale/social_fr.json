@@ -15,5 +15,9 @@
     "ACTIVITY_AMOUNTS":  "Montants d'activité",
     "ANNUAL_COUNTS":     "Nombre de versements annuels",
     "ANNUAL_AMOUNTS":    "Montants annuels",
-    "EDO_LIST":          "Liste d'EDI"
+    "EDO_LIST":          "Liste d'EDI",
+    "MUTUAL_TYPES":      "Types mutuels",
+    "MUTUAL_REQUESTS":   "Demandes mutuelles",
+    "FOLDER_COUNT":      "Nombre de dossiers",
+    "MUTUAL_TYPE":       "Type mutuel"
 }

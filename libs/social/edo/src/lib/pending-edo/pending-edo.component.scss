@@ -1,0 +1,26 @@
+.mat-column-number,
+.mat-column-action {
+    flex: 1 1 50px;
+    justify-content: center;
+}
+
+.mat-column-date,
+.mat-column-amount,
+.mat-column-firstName,
+.mat-column-lastName {
+    flex: 1 1 110px;
+}
+.mat-column-description,
+.mat-column-typeDescription {
+    flex: 1 1 150px;
+}
+
+.table__container {
+    overflow-x: auto;
+    height: calc(100% - 90px);
+}
+
+mat-table {
+    min-width: 1000px;
+    height: 100%;
+}

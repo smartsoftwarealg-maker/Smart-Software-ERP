@@ -1,0 +1,21 @@
+
+.table__container {
+    overflow-x: auto;
+    height: 100%;
+}
+.mat-column-action {
+    flex: 1 1 70px;
+}
+
+.mat-column-firstName,
+.mat-column-lastName {
+    flex: 1 1 120px;
+}
+.mat-column-amount {
+    flex: 1 1 100px;
+}
+
+mat-table {
+    min-width: 400px;
+    height: 100%;
+}

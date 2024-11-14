@@ -1,9 +1,7 @@
 import { Component, output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BaseChildEntityListComponent } from '@ss/common/ui-base-entity';
-import { EDOLine, SocialAid } from '@social/social-api';
-import { AssetAppointmentService } from '../../../../../assets-component/src/lib/services/asset-appointment.service';
-import { PersonAidHistoryService } from '../../../../social-api/src/lib/services/person-aid-history.service';
+import {EDOLine} from '@social/social-api';
 import { CommonUiLangModule } from '@ss/common/ui-lang';
 import {
     MatCell,
@@ -16,8 +14,7 @@ import {
 import { MatTooltip } from '@angular/material/tooltip';
 import { UiPaginationModule } from '@ss/common/ui-pagination';
 import { MatMiniFabButton } from '@angular/material/button';
-import { EdoLineService } from '../../../../social-api/src/lib/services/edo-line.service';
-import { map } from 'rxjs';
+import { EdoLineService } from '@social/social-api';
 
 @Component({
     selector: 'ss-social-edo-lines',

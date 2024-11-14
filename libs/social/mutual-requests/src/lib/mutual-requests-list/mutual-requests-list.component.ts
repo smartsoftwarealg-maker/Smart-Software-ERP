@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { BaseChildEntityListComponent, BaseEntityListComponent } from '@ss/common/ui-base-entity';
-import { MutualRequest, MutualRequestLine, MutualRequestLineService, MutualRequestService } from '@social/social-api';
+import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
+import { MutualRequest, MutualRequestService } from '@social/social-api';
 import { BankService } from '@ss/administration/api-bank';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -19,23 +19,39 @@ import {
 } from '@angular/material/table';
 import { MatSort, MatSortHeader } from '@angular/material/sort';
 import { UiPaginationModule } from '@ss/common/ui-pagination';
-import { LtmMixtureDetailService } from '@ltm/ltm-api';
 
 @Component({
     selector: 'ss-mutual-requests',
     standalone: true,
     imports: [CommonModule, CommonUiLangModule, MatCell, MatCellDef, MatColumnDef, MatHeaderCell, MatHeaderRow, MatHeaderRowDef, MatRow, MatRowDef, MatSort, MatSortHeader, MatTable, UiPaginationModule, MatHeaderCellDef],
-    templateUrl: './mutual-requests-line-list.component.html',
-    styleUrl: './mutual-requests-line-list.component.scss',
+    templateUrl: './mutual-requests-list.component.html',
+    styleUrl: './mutual-requests-list.component.scss',
 })
-export class MutualRequestsLineListComponent extends BaseChildEntityListComponent<MutualRequestLine> {
-    override displayedColumns = [
-        'firstName',
-        'lastName',
-        'folderCount',
+export class MutualRequestsListComponent extends BaseEntityListComponent<MutualRequest> {
+    displayedColumns = [
+        'date',
+        'serialNumber',
+        'description',
     ];
 
-    constructor(protected override detailSrv: MutualRequestLineService) {
-        super(detailSrv, 'MutualRequestLine');
+    constructor(
+        public override entitySrv: MutualRequestService,
+        public override shellSrv: ShellService,
+        public override snackBarSrv: SnackBarService,
+        public override route: ActivatedRoute,
+        public override router: Router,
+        public override defReportSrv: DefaultReportService,
+        public override confirmationSrv: ConfirmationDialogService,
+        public override pagPersistSrv: PaginatorPersistenceService) {
+        super(entitySrv,
+            shellSrv,
+            snackBarSrv,
+            route,
+            router,
+            confirmationSrv,
+            defReportSrv,
+            pagPersistSrv,
+            'SOCIAL_MUTUAL_REQUESTS');
+        this.pagination.pageSize = 15;
     }
 }

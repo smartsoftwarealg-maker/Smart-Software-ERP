@@ -1,13 +1,18 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
-import { MutualRequest, MutualRequestService } from '@social/social-api';
-import { BankService } from '@ss/administration/api-bank';
+import { Lookup } from '@ss/common/api-lookup';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router } from '@angular/router';
-import { DefaultReportService } from '@ss/common/ui-default-report-component';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
+import { DefaultReportService } from '@ss/common/ui-default-report-component';
 import { PaginatorPersistenceService } from '@ss/common/api-common';
+import {
+    MutualTypeService,
+    SocialActivity,
+    SocialActivityLookupService,
+    SocialActivityService
+} from '@social/social-api';
 import { CommonUiLangModule } from '@ss/common/ui-lang';
 import {
     MatCell,
@@ -17,41 +22,30 @@ import {
     MatHeaderRow,
     MatHeaderRowDef, MatRow, MatRowDef, MatTable
 } from '@angular/material/table';
-import { MatSort, MatSortHeader } from '@angular/material/sort';
 import { UiPaginationModule } from '@ss/common/ui-pagination';
 
 @Component({
-    selector: 'ss-mutual-requests',
+    selector: 'ss-mutual-type-list',
     standalone: true,
-    imports: [CommonModule, CommonUiLangModule, MatCell, MatCellDef, MatColumnDef, MatHeaderCell, MatHeaderRow, MatHeaderRowDef, MatRow, MatRowDef, MatSort, MatSortHeader, MatTable, UiPaginationModule, MatHeaderCellDef],
-    templateUrl: './mutual-requests-list.component.html',
-    styleUrl: './mutual-requests-list.component.scss',
+    imports: [CommonModule, CommonUiLangModule, MatCell, MatCellDef, MatColumnDef, MatHeaderCell, MatHeaderRow, MatHeaderRowDef, MatRow, MatRowDef, MatTable, UiPaginationModule, MatHeaderCellDef],
+    templateUrl: './mutual-type-list.component.html',
+    styleUrl: './mutual-type-list.component.scss',
 })
-export class MutualRequestsListComponent extends BaseEntityListComponent<MutualRequest> {
+export class MutualTypeListComponent extends BaseEntityListComponent<SocialActivity> {
     displayedColumns = [
-        'date',
-        'serialNumber',
         'description',
-    ];
-
+        'descriptionAr',
+    ]
     constructor(
-        public override entitySrv: MutualRequestService,
+        public override entitySrv: MutualTypeService,
         public override shellSrv: ShellService,
         public override snackBarSrv: SnackBarService,
         public override route: ActivatedRoute,
-        public override router: Router,
-        public override defReportSrv: DefaultReportService,
         public override confirmationSrv: ConfirmationDialogService,
+        public override defReportSrv: DefaultReportService,
+        public override router: Router,
         public override pagPersistSrv: PaginatorPersistenceService) {
-        super(entitySrv,
-            shellSrv,
-            snackBarSrv,
-            route,
-            router,
-            confirmationSrv,
-            defReportSrv,
-            pagPersistSrv,
-            'SOCIAL_MUTUAL_REQUEST');
+        super(entitySrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv,'SOCIAL_MUTUAL_TYPES');
         this.pagination.pageSize = 15;
     }
 }

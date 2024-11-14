@@ -3,15 +3,15 @@ import { ABS_INDEX_URL, CanDeactivateService, LIST_URL } from '@ss/common/api-co
 import { loginGuard } from '../erp-guards';
 import {
     MedicalAidTypesDetailComponent,
-    MedicalAidTypesListComponent,
+    MedicalAidTypesListComponent, MutualTypeDetailComponent, MutualTypeListComponent,
     SocialActivitiesDetailComponent,
     SocialActivitiesListComponent
 } from '@social/social-lookups';
 import {
-    MEDICAL_AIDS_URL,
+    MEDICAL_AIDS_URL, MUTUAL_REQUEST_URL,
     SOCIAL_ACTIVITIES_URL, SOCIAL_DASHBOARD_URL, SOCIAL_EDO_HEADERS,
     SOCIAL_EDO_URL, SOCIAL_LOANS_URL,
-    SOCIAL_MEDICAL_AIDS_URL, SOCIAL_REIMBURSEMENT_URL,
+    SOCIAL_MEDICAL_AIDS_URL, SOCIAL_MUTUAL_TYPE_URL, SOCIAL_REIMBURSEMENT_URL,
     SOCIAL_WORKS_URL
 } from './constants';
 import { SocialWorksDetailComponent } from '@social/social-works-detail';
@@ -33,8 +33,33 @@ import {
 } from '@social/edo';
 import { LoansDetailComponent } from '@ss/remuneration/loans';
 import { ConsolidatedLoanListComponent } from '@social/loans';
+import {
+    MutualRequestsDetailComponent,
+    MutualRequestsLineListComponent,
+    MutualRequestsListComponent
+} from '@ss/social/mutual-requests';
+import {
+    MutualRequestsLineDetailComponent
+} from '@ss/social/mutual-requests';
+import { TestEquipmentTestDetailComponent, TestEquipmentTestListComponent } from '@ltm/test-equipment';
 
 export const socialRoutes: Routes = [
+    {
+        path: SOCIAL_MUTUAL_TYPE_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: MutualTypeListComponent,
+                canActivate: [loginGuard],
+            },
+            {
+                path: ':id',
+                component: MutualTypeDetailComponent,
+                canActivate: [loginGuard],
+                canDeactivate: [CanDeactivateService],
+            },
+        ]
+    },
     {
         path: SOCIAL_ACTIVITIES_URL,
         children: [
@@ -152,6 +177,26 @@ export const socialRoutes: Routes = [
             },
         ]
     },
+    {
+        path: MUTUAL_REQUEST_URL,
+        children: [
+            { path: LIST_URL, component: MutualRequestsListComponent, canActivate: [loginGuard]},
+            { path: ':id',
+                component: MutualRequestsDetailComponent,
+                children: [
+                    { path: '', redirectTo: 'detail', pathMatch: 'full'},
+                    { path: 'detail',
+                        children: [
+                            { path: '', component: MutualRequestsLineListComponent, pathMatch: 'full'},
+                            { path: ':id', component: MutualRequestsLineDetailComponent }
+                        ]
+                    }
+                ],
+                canActivate: [loginGuard],
+            }
+        ]
+    },
+
 
     { path: '', redirectTo: ABS_INDEX_URL, pathMatch: 'full' },
     { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' }

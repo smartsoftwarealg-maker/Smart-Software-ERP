@@ -1,10 +1,10 @@
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BaseEntityDetailComponent, BaseEntityListComponent } from '@ss/common/ui-base-entity';
-import { MutualRequest, MutualRequestService } from '@social/social-api';
+import { MutualRequest, MutualRequestLineService, MutualRequestService } from '@social/social-api';
 import { BankService } from '@ss/administration/api-bank';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterOutlet } from '@angular/router';
 import { DefaultReportService } from '@ss/common/ui-default-report-component';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { LoginService, MaterialModule, PaginatorPersistenceService } from '@ss/common/api-common';
@@ -28,11 +28,38 @@ import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
 @Component({
     selector: 'ss-mutual-requests',
     standalone: true,
-    imports: [CommonModule, CommonUiLangModule, MatCell, MatCellDef, MatColumnDef, MatHeaderCell, MatHeaderRow, MatHeaderRowDef, MatRow, MatRowDef, MatSort, MatSortHeader, MatTable, UiPaginationModule, MatHeaderCellDef, MatCard, MatCardContent, MatError, MatFormField, MatInput, MatLabel, MaterialModule, ReactiveFormsModule, CommonUiDatepickerModule],
+    imports: [
+        CommonModule,
+        CommonUiLangModule,
+        MatCell,
+        MatCellDef,
+        MatColumnDef,
+        MatHeaderCell,
+        MatHeaderRow,
+        MatHeaderRowDef,
+        MatRow,
+        MatRowDef,
+        MatSort,
+        MatSortHeader,
+        MatTable,
+        UiPaginationModule,
+        MatHeaderCellDef,
+        MatCard,
+        MatCardContent,
+        MatError,
+        MatFormField,
+        MatInput,
+        MatLabel,
+        MaterialModule,
+        ReactiveFormsModule,
+        CommonUiDatepickerModule,
+        RouterOutlet
+    ],
     templateUrl: './mutual-requests-detail.component.html',
     styleUrl: './mutual-requests-detail.component.scss'
 })
 export class MutualRequestsDetailComponent extends BaseEntityDetailComponent<MutualRequest> {
+    #detailSrv = inject(MutualRequestLineService);
     #loginSrv = inject(LoginService);
 
     constructor(
@@ -42,12 +69,13 @@ export class MutualRequestsDetailComponent extends BaseEntityDetailComponent<Mut
         public override route: ActivatedRoute,
         public override formBuilder: UntypedFormBuilder,
         public override confirmationSrv: ConfirmationDialogService) {
-        super(entitySrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'SOCIAL_MUTUAL_REQUEST');
+        super(entitySrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'SOCIAL_MUTUAL_REQUESTS');
     }
 
     public override setupForm(e: MutualRequest): UntypedFormGroup {
+        this.#detailSrv.setParentId(e.id || 0);
         return this.formBuilder.group({
-            id: [e.id],
+            id:           [e.id],
             serialNumber: [{ value: e.serialNumber||0, disabled: true }],
             description:  [e.description],
             date:         [e.date || new Date(), Validators.required],

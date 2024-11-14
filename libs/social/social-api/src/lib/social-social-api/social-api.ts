@@ -111,6 +111,7 @@ export interface MutualRequestLine {
     folderCount: number;
     firstName?: string;
     lastName?: string;
+    mutualNo?: number;
 }
 
 export interface MutualRequest {

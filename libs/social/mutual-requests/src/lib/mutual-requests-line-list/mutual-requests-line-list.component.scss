@@ -1,0 +1,41 @@
+.content__div {
+    width: 100%;
+    max-width: 900px;
+    margin: 4px auto;
+}
+
+.button__div {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1em;
+}
+
+.mat-column-firstName,
+.mat-column-lastName  {
+    flex: 1 1 150px;
+}
+
+.mat-column-folderCount  {
+    flex: 1 1 120px;
+}
+
+.mat-column-mutualNo {
+    flex: 1 1 100px;
+}
+
+.content-div {
+    min-width: 600px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.mat-subheader {
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.2em;
+    padding: 5px 0;
+}
+
+mat-table {
+    min-width: 600px;
+}

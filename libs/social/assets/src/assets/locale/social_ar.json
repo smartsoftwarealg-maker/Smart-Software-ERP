@@ -15,5 +15,9 @@
     "ACTIVITY_AMOUNTS":  "مبالغ النشاط",
     "ANNUAL_COUNTS":     "مجموع الأقساط",
     "ANNUAL_AMOUNTS":    "مجموع المصاريف",
-    "EDO_LIST":          "قائمة المدفوعات"
+    "EDO_LIST":          "قائمة المدفوعات",
+    "MUTUAL_TYPES":      "أنواع التعاضد",
+    "MUTUAL_REQUESTS":   "طلبات التعاضد",
+    "FOLDER_COUNT":      "عدد الملفات",
+    "MUTUAL_TYPE":       "نوع التعاضد"
 }
