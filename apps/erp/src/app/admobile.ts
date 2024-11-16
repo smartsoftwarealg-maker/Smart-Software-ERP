@@ -21,7 +21,7 @@ export async function initialize(): Promise<void> {
             adSize: BannerAdSize.BANNER,
             position: BannerAdPosition.BOTTOM_CENTER,
             margin: 0,
-        // isTesting: true
+         isTesting: false
         // npa: true
         };
         await AdMob.showBanner(options);

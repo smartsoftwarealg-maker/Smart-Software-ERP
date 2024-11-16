@@ -1,4 +1,4 @@
-<div #shellDiv class="sidenav-container" >
+<div #shellDiv class="sidenav-container">
 
     <mat-sidenav-container [hasBackdrop]="!showSideNav" [dir]="langSrv.dir" class="sidenav-container">
         <mat-sidenav #navBar [mode]="showSideNav ? 'side' : 'over'" [opened]="showSideNav" class="z-side-bar b-primary">
@@ -7,34 +7,37 @@
                 <div class="brand mat-elevation-z6">
                     <img class="brand-icon" width="56px" height="56px" src="./assets/logo.png">
                     <div class="app-name">
-                        {{shellSrv.applicationTitle}}
+                        {{ shellSrv.applicationTitle }}
                     </div>
                 </div>
 
                 <div class="side-nav-tree-container">
-                    <mat-tree [dataSource]="shellSrv.sideNavDataSource" [treeControl]="treeControl" class="side-nav-tree">
+                    <mat-tree [dataSource]="shellSrv.sideNavDataSource" [treeControl]="treeControl"
+                              class="side-nav-tree">
                         <!-- This is the tree node template for leaf nodes -->
                         <mat-tree-node *matTreeNodeDef="let node" matTreeNodeToggle (click)="navBar.toggle()">
-                            <li class="mat-tree-node b-primary selectable-tree-item" [routerLink]="node.route" (click)="scrollTo($event)">
+                            <li class="mat-tree-node b-primary selectable-tree-item" [routerLink]="node.route"
+                                (click)="scrollTo($event)">
                                 <!-- use a disabled button to provide padding for tree leaf -->
                                 <button mat-icon-button disabled></button>
                                 <div class="nav-tree-icon" [style.backgroundColor]="node.backgroundColor">
                                     <i *ngIf="node.icon" [class]="node.icon"></i>
                                 </div>
-                                <span class="margin-start-8" translate>{{node.name}}</span>
+                                <span class="margin-start-8" translate>{{ node.name }}</span>
                             </li>
                         </mat-tree-node>
                         <!-- This is the tree node template for expandable nodes -->
                         <mat-nested-tree-node *matTreeNodeDef="let node; when: hasChild">
                             <li>
-                                <div class="mat-tree-node b-primary selectable-tree-item" matTreeNodeToggle  (click)="scrollTo($event)">
+                                <div class="mat-tree-node b-primary selectable-tree-item" matTreeNodeToggle
+                                     (click)="scrollTo($event)">
                                     <button mat-icon-button>
                                         <i class="{{treeControl.isExpanded(node) ? 'fas fa-chevron-down' : (langSrv.rtl ? 'fas fa-chevron-left' : 'fas fa-chevron-right')}}"></i>
                                     </button>
                                     <div class="nav-tree-icon" [style.backgroundColor]="node.backgroundColor">
                                         <i *ngIf="node.icon" [class]="node.icon"></i>
                                     </div>
-                                    <span class="margin-start-8" translate>{{node.name}}</span>
+                                    <span class="margin-start-8" translate>{{ node.name }}</span>
                                 </div>
                                 <ul [class.side-nav-tree-invisible]="!treeControl.isExpanded(node)" class="b-primary">
                                     <ng-container matTreeNodeOutlet></ng-container>
@@ -55,7 +58,7 @@
                     </button>
 
                     <button mat-icon-button
-                        (click)="toolbar.classList.remove('smll-search-mode')" class="exit-search-btn">
+                            (click)="toolbar.classList.remove('smll-search-mode')" class="exit-search-btn">
                         <i *ngIf="langSrv.rtl" class="fas fa-arrow-right"></i>
                         <i *ngIf="!langSrv.rtl" class="fas fa-arrow-left"></i>
                     </button>
@@ -65,23 +68,24 @@
                             mat-icon-button
                             (click)="shellSrv.goBack()"
                             [disabled]="shellSrv.loading || !shellSrv.goBackEnabled"
-                        class="hidden-during-search">
+                            class="hidden-during-search">
                         <i *ngIf="langSrv.rtl" class="fas fa-arrow-right"></i>
                         <i *ngIf="!langSrv.rtl" class="fas fa-arrow-left"></i>
                     </button>
 
-                    <div class="shell-title" translate>{{shellSrv.shellTitle}}</div>
+                    <div class="shell-title" translate>{{ shellSrv.shellTitle }}</div>
 
                     <button mat-icon-button *ngIf="shellSrv.hasSearch" class="small-only smll-search-button"
-                        (click)="toolbar.classList.add('smll-search-mode')"
-                        matTooltip="{{shellSrv.searchInputTitle | translate}}">
+                            (click)="toolbar.classList.add('smll-search-mode')"
+                            matTooltip="{{shellSrv.searchInputTitle | translate}}">
                         <i class="far fa-search"></i>
                     </button>
 
                     <div class="ss-form-field large-only" *ngIf="shellSrv.hasSearch">
                         <mat-form-field floatLabel="always">
-                            <mat-label translate>{{shellSrv.searchInputTitle}}</mat-label>
-                            <input [formControl]="shellSrv.searchFormControl" matInput type="text" id="shellSearchField">
+                            <mat-label translate>{{ shellSrv.searchInputTitle }}</mat-label>
+                            <input [formControl]="shellSrv.searchFormControl" matInput type="text"
+                                   id="shellSearchField">
                         </mat-form-field>
                     </div>
 
@@ -99,10 +103,10 @@
                                     <ng-container *ngFor="let mt of b.menuItems">
                                         <button *ngIf="mt.visible" mat-menu-item (click)="mt.click()"
                                                 [disabled]="mt.disabled">
-                                                [disabled]="mt.disabled">
-                                            <i [class]="mt.icon" ></i>
+                                            [disabled]="mt.disabled">
+                                            <i [class]="mt.icon"></i>
 
-                                            {{mt.label | translate}}
+                                            {{ mt.label | translate }}
                                         </button>
                                     </ng-container>
                                 </mat-menu>
@@ -111,14 +115,14 @@
                                 <button mat-icon-button matTooltip="{{b.label | translate}}" *ngIf="b.visible"
                                         (click)="b.click()" [disabled]="b.disabled" class="hidden-during-search"
                                         [class.large-only]="b.disabled || (b.keepOnToolbar != 1)">
-                                    <i [class]="b.icon" *ngIf="b.badgeCount > 0; else regular"
-                                       matBadge="{{b.badgeCount}}"
-                                       matBadgeColor="warn"
-                                       matBadgeSize="medium">
-                                    </i>
-                                    <ng-template #regular>
+                                    @if (b.badgeCount > 0) {
+                                        <i [class]="b.icon"
+                                           matBadge="{{ b.badgeCount }}"
+                                           matBadgeColor="warn">
+                                        </i>
+                                    } @else {
                                         <i [class]="b.icon"></i>
-                                    </ng-template>
+                                    }
                                 </button>
                             </ng-template>
                         </ng-container>
@@ -135,20 +139,21 @@
                 <div class="toolbar-inner">
                     <div *ngFor="let n of shellSrv.labels" class="shell-label margin-end-8 large-only">
                         <div *ngIf="n.icon" class="label-icon"><i [class]="n.icon"></i></div>
-                        <div *ngIf="n.title" class="label-title margin-start-4">{{n.title}}</div>
-                        <div *ngIf="n.text" class="label-text margin-start-4">{{n.text}}</div>
+                        <div *ngIf="n.title" class="label-title margin-start-4">{{ n.title }}</div>
+                        <div *ngIf="n.text" class="label-text margin-start-4">{{ n.text }}</div>
                     </div>
 
                     <div class="toolbar-username margin-end-8">
                         <div class="user-icon">
                             <i class="fas fa-user-alt"></i>
                         </div>
-                        <div class="user-name margin-start-4">{{loginSrv.appCtx?.fullName}}</div>
+                        <div class="user-name margin-start-4">{{ loginSrv.appCtx?.fullName }}</div>
                     </div>
                 </div>
             </div>
             <!--app-nav-bar (menuToggle)="navBar.toggle()"></app-nav-bar-->
-            <div class="b-b-app-bar static-container" [class.hidden]="shellSrv.loading || shellSrv.error" #routerContainer>
+            <div class="b-b-app-bar static-container" [class.hidden]="shellSrv.loading || shellSrv.error"
+                 #routerContainer>
                 <router-outlet></router-outlet>
                 <div class="b-b-app-bar static-container-bottom-padding"></div>
             </div>
@@ -167,18 +172,20 @@
             <ng-container *ngFor="let b of shellSrv.buttons">
                 <ng-container *ngIf="b.visible">
                     <ng-template [ngIf]="b.menuItems">
-                        <div class="settings-item" mat-menu-item (click)="trigger.toggleMenu()" [class.small-only]="b.keepOnToolbar != 2">
-                            <div class="icon" (click)="$event.stopPropagation()" [matMenuTriggerFor]="menu" #trigger="matMenuTrigger">
+                        <div class="settings-item" mat-menu-item (click)="trigger.toggleMenu()"
+                             [class.small-only]="b.keepOnToolbar != 2">
+                            <div class="icon" (click)="$event.stopPropagation()" [matMenuTriggerFor]="menu"
+                                 #trigger="matMenuTrigger">
                                 <i [class]="b.icon"></i>
                             </div>
-                            <span class="text" translate>{{b.label}}</span>
+                            <span class="text" translate>{{ b.label }}</span>
                         </div>
                         <mat-menu #menu>
                             <ng-container *ngFor="let mt of b.menuItems">
                                 <button *ngIf="mt.visible" mat-menu-item (click)="mt.click(); menuTrigger.closeMenu();"
                                         [disabled]="mt.disabled">
                                     <i [class]="mt.icon"></i>
-                                    {{mt.label | translate}}
+                                    {{ mt.label | translate }}
                                 </button>
                             </ng-container>
                         </mat-menu>
@@ -186,11 +193,11 @@
 
                     <ng-template [ngIf]="!b.menuItems">
                         <div type="button" mat-menu-item class="settings-item" [class.small-only]="b.keepOnToolbar != 2"
-                                [class]="{'f-b-disabled-btn': b.disabled, 'disable-events': b.disabled}"
-                                (click)="b.click(); menuTrigger.closeMenu();">
+                             [class]="{'f-b-disabled-btn': b.disabled, 'disable-events': b.disabled}"
+                             (click)="b.click(); menuTrigger.closeMenu();">
                             <div class="icon">
                                 <i [class]="b.icon"></i>
-                                <span class="text" translate>{{b.label}}</span>
+                                <span class="text" translate>{{ b.label }}</span>
                             </div>
                         </div>
                     </ng-template>
@@ -204,17 +211,18 @@
 
                 <ng-template [ngIf]="b.menuItems">
                     <div class="settings-item" mat-menu-item (click)="trigger.toggleMenu()">
-                        <div class="icon" (click)="$event.stopPropagation()" [matMenuTriggerFor]="menu" #trigger="matMenuTrigger">
+                        <div class="icon" (click)="$event.stopPropagation()" [matMenuTriggerFor]="menu"
+                             #trigger="matMenuTrigger">
                             <i [class]="b.icon"></i>
                         </div>
-                        <span class="text" translate>{{b.label}}</span>
+                        <span class="text" translate>{{ b.label }}</span>
                     </div>
                     <mat-menu #menu>
                         <ng-container *ngFor="let mt of b.menuItems">
                             <button *ngIf="mt.visible" mat-menu-item (click)="mt.click(); menuTrigger.closeMenu();"
                                     [disabled]="mt.disabled">
                                 <i [class]="mt.icon"></i>
-                                {{mt.label | translate}}
+                                {{ mt.label | translate }}
                             </button>
                         </ng-container>
                     </mat-menu>
@@ -222,12 +230,12 @@
 
                 <ng-template [ngIf]="!b.menuItems">
                     <div type="button" mat-menu-item *ngIf="b.visible" class="settings-item"
-                            [class]="{'f-b-disabled-btn': b.disabled, 'disable-events': b.disabled}"
-                            (click)="b.click(); menuTrigger.closeMenu();">
+                         [class]="{'f-b-disabled-btn': b.disabled, 'disable-events': b.disabled}"
+                         (click)="b.click(); menuTrigger.closeMenu();">
                         <div class="icon">
                             <i [class]="b.icon"></i>
                         </div>
-                        <span class="text" translate>{{b.label}}</span>
+                        <span class="text" translate>{{ b.label }}</span>
                     </div>
                 </ng-template>
 
@@ -235,14 +243,14 @@
 
             <mat-divider *ngIf="shellSrv.appButtons.length"></mat-divider>
 
-<!--            <div type="button" mat-menu-item class="settings-item small-only">-->
-<!--                <div class="icon">-->
-<!--                    <i class="fas fa-user-alt"></i>-->
-<!--                </div>-->
-<!--                <span class="text" style="font-weight: bold;" translate>{{loginSrv.appCtx?.fullName}}</span>-->
-<!--            </div>-->
+            <!--            <div type="button" mat-menu-item class="settings-item small-only">-->
+            <!--                <div class="icon">-->
+            <!--                    <i class="fas fa-user-alt"></i>-->
+            <!--                </div>-->
+            <!--                <span class="text" style="font-weight: bold;" translate>{{loginSrv.appCtx?.fullName}}</span>-->
+            <!--            </div>-->
 
-<!--            <mat-divider class="small-only"></mat-divider>-->
+            <!--            <mat-divider class="small-only"></mat-divider>-->
 
             <div type="button" mat-menu-item class="settings-item" (click)="langBtn.click()">
                 <ss-language-select class="icon" (click)="$event.stopPropagation()" #langBtn></ss-language-select>

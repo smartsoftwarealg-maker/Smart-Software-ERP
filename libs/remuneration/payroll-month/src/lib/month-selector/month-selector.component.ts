@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from "@angular/core";
+import { Component, computed, inject, OnInit, signal } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup, Validators } from "@angular/forms";
 import {PayrollMonthService} from '../payroll-month.service';
 import {ActivatedRoute, Router} from '@angular/router';
@@ -23,8 +23,13 @@ export class MonthSelectorComponent implements OnInit {
     private shellSrv  = inject(ShellService);
 
     specialList: Special[] = [];
-    minMonth = 0;
-    maxMonth = 0;
+    minMonth = signal(0);
+    maxMonth = signal(0);
+    minMM = computed(() => this.minMonth() % 100);
+    minYY = computed(() => +((this.minMonth() / 100).toFixed(0)));
+    maxMM = computed(() => this.maxMonth() % 100);
+    maxYY = computed(() => +((this.maxMonth() / 100).toFixed(0)));
+
     form: UntypedFormGroup | null = null;
     processing = false;
 
@@ -36,12 +41,12 @@ export class MonthSelectorComponent implements OnInit {
             this.specialSrv.getList(0, 50))
             .subscribe({
                 next: res => {
-                    this.minMonth = res[0].month;
-                    this.maxMonth = res[1].month;
+                    this.minMonth.set(res[0].month);
+                    this.maxMonth.set(res[1].month);
                     const min = +(res[0].month / 100).toFixed(0);
                     const max = +(res[1].month / 100).toFixed(0);
-                    const curYear = (+((res[2].payMonth || this.maxMonth) / 100) % 10000).toFixed(0);
-                    const curMonth = +((res[2].payMonth || this.maxMonth) % 100).toFixed(0);
+                    const curYear = (+((res[2].payMonth || this.maxMonth()) / 100) % 10000).toFixed(0);
+                    const curMonth = +((res[2].payMonth || this.maxMonth()) % 100).toFixed(0);
                     this.specialList = res[3].body;
                     this.specialList.push({
                         id: 0,
@@ -76,7 +81,7 @@ export class MonthSelectorComponent implements OnInit {
         }
         const payMonth = special && special > 0? special: year * 100 + month;
         const normalMonth = payMonth % 1000000;
-        if (normalMonth >= this.minMonth && normalMonth <= this.maxMonth) {
+        if (normalMonth >= this.minMonth() && normalMonth <= this.maxMonth()) {
             this.selectorSrv
                 .selectMonth(payMonth)
                 .pipe(switchMap(_ => this.selectorSrv.curMonthLabel()),

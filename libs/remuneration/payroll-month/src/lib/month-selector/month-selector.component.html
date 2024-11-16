@@ -23,7 +23,7 @@
             <div *ngIf="!processing" class="default-50 sm-50" >
                 <button mat-raised-button color="primary"
                         type="button"
-                        [disabled]="+form.controls['year'].value * 100 + (+form.controls['month'].value)> maxMonth"
+                        [disabled]="+form.controls['year'].value * 100 + (+form.controls['month'].value) > maxMonth()"
                         (click)="select(true)">
                     <i class="fa-solid fa-truck-ramp-box"></i>
                     {{ 'REMUN_LOAD_SPECIAL' | translate }}
@@ -31,14 +31,14 @@
             </div>
 
             <span class="default-100 sm-100"></span>
-            <div class="default-50 sm-50"> <span translate>REMUN_MIN</span>: <span class="mm__span">{{ minMonth-(minMonth/100).toFixed(0)*100 }}/{{ (minMonth/100).toFixed(0) }} </span> </div>
-            <div class="default-50 sm-50"> <span translate>REMUN_MAX</span>: <span class="mm__span">{{ maxMonth-(maxMonth/100).toFixed(0)*100 }}/{{ (maxMonth/100).toFixed(0) }} </span> </div>
+            <div class="default-50 sm-50"> <span translate>REMUN_MIN</span>: <span class="mm__span">{{ minMM() }}/{{ minYY() }} </span> </div>
+            <div class="default-50 sm-50"> <span translate>REMUN_MAX</span>: <span class="mm__span">{{ maxMM() }}/{{ maxYY() }} </span> </div>
             <span class="default-100 sm-100"></span>
 
             <div *ngIf="!processing" class="default-50 sm-50" >
                 <button mat-raised-button color="primary"
                         type="button"
-                        [disabled]="+form.controls['year'].value * 100 + (+form.controls['month'].value)> maxMonth"
+                        [disabled]="+form.controls['year'].value * 100 + (+form.controls['month'].value)> maxMonth()"
                         (click)="select(false)">
                     <i class="fa-solid fa-check"></i>
                     {{ 'REMUN_SELECT_MONTH' | translate }}

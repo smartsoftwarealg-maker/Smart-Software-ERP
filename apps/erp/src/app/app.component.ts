@@ -28,7 +28,6 @@ export class AppComponent implements OnInit {
         this.httpSrv
             .init()
             .pipe(
-                // switchMap(() => this.loginSrv.loadContext()),
                 switchMap(() => this.langSrv.init()),
                 switchMap(() => this.langSrv.addSources(langAssets)),
             ).subscribe({
