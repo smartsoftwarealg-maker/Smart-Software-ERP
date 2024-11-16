@@ -1,11 +1,12 @@
 import { Component, OnInit, OnDestroy, inject } from '@angular/core';
 import { BadgeButton, KeepOnToolbar, ShellService } from '@ss/common/ui-shell';
 import { Router } from '@angular/router';
-import { HttpService, LanguageService, MainPageService, SideNavNode } from '@ss/common/api-common';
+import { LanguageService, MainPageService, SideNavNode } from '@ss/common/api-common';
 import { CommonModule } from "@angular/common";
 import { CommonUiLangModule } from "@ss/common/ui-lang";
 import { WorkflowInboxService } from '@ss/workflow';
 import { BadgeButtonService } from '@ss/common/ui-shell';
+import { AdMobileService } from './ad-mobile.service';
 
 
 @Component({
@@ -19,6 +20,7 @@ import { BadgeButtonService } from '@ss/common/ui-shell';
     ],
 })
 export class MainPageComponent implements OnInit, OnDestroy {
+    #adMobileSrv = inject(AdMobileService);
     #badgeSrv = inject(BadgeButtonService);
     #workflowSrv = inject(WorkflowInboxService);
     #router = inject(Router);
@@ -62,6 +64,7 @@ export class MainPageComponent implements OnInit, OnDestroy {
             false // focus the search field for this component
         );
         this.#badgeSrv.addBadgeButton(this.#badgeBtn);
+        this.#adMobileSrv.initialize();
     }
 
     searchTree(tree: SideNavNode, searchWords: string[], result: SideNavNode[]) {

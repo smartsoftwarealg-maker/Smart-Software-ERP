@@ -15,7 +15,6 @@ import { initialize } from './admobile';
     styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
-    private deviceSrv = inject(DeviceDetectorService);
     private httpSrv = inject(HttpService);
     private shellSrv = inject(ShellService);
     private loginSrv = inject(LoginService);
@@ -24,7 +23,7 @@ export class AppComponent implements OnInit {
     loaded = false;
 
     ngOnInit() {
-        this.shellSrv.setApplicationTitle('Smart ERP 1.57.0');
+        this.shellSrv.setApplicationTitle('Smart ERP 1.57.1');
         this.httpSrv
             .init()
             .pipe(
@@ -37,10 +36,6 @@ export class AppComponent implements OnInit {
                 },
                 error: () => this.loginSrv.logout().then()
             });
-
-        if (this.deviceSrv.isMobile()) {
-            initialize().then(() => {});
-        }
     }
 
 }
