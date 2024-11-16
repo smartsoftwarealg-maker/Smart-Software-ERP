@@ -41,12 +41,10 @@ export class AppComponent implements OnInit {
         this.shellSrv.setSideNavDataSource(empSpaceNavTree);
         this.httpSrv
             .init()
-            .pipe(switchMap(_ => this.loginSrv.loadContext()),
+            .pipe(
                 switchMap(() => this.langSrv.init()),
                 switchMap(_ => this.langSrv.addSources(this.langAssets)),
-                switchMap(_ => this.httpSrv.get<any>('/ccenter')),
-                catchError(_ => of({ description: '' })),
-                tap(res => this.shellSrv.setCompanyName(res['description'] || '')))
+                )
             .subscribe(() => {
                 this.loaded = true;
                 this.shellSrv.setSideNavDataSource(empSpaceNavTree);

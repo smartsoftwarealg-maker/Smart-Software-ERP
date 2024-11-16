@@ -225,16 +225,19 @@ export class TransactionLinesDetailComponent implements OnInit {
         if (this.entitySrv.getParentId() != null) {
             val.id = this.id;
             const obs: Observable<any> = val.id === 0
-                ? this.entitySrv.add(val).pipe(tap(i => {
-                    this.id = i;
-                    val.id = i;
-                }))
+                ? this.entitySrv
+                    .add(val)
+                    .pipe(tap(i => {
+                        this.id = i;
+                        val.id = i;
+                    }))
                 : this.entitySrv.update(val);
             obs.subscribe({
                 next: () => {
                     this.form.markAsUntouched();
                     this.snackBarSrv.showSuccessMessage();
-                    this.shellSrv.goBack();
+                    // this.shellSrv.goBack();
+                    this.cancel();
                 },
                 error: err => {
                     this.snackBarSrv.showFailureMessage();

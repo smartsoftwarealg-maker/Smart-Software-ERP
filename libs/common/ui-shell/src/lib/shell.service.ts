@@ -42,12 +42,12 @@ export interface ToolbarButton {
     visible: boolean;
     keepOnToolbar: KeepOnToolbar; // used to be boolean, true -> ALWAYS, false -> DYNAMIC
     menuItems?: MenuItem[];
+    badgeCount?: number;
 }
 
 export interface BadgeButton extends ToolbarButton {
     badgeId: number;
     countObservable: Observable<{ count: number }>;
-    badgeCount?: number;
 }
 
 export interface MenuItem {
