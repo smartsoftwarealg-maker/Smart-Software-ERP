@@ -63,6 +63,19 @@
     "DEPRECIATION_RATE":        "Taux d'amortissement",
     "USEFUL_LIFE":              "Vie utile",
     "File":                      "Exercice",
-    "STOCK_ACCOUNTS":           "Comptes de stock"
+    "STOCK_ACCOUNTS":           "Comptes de stock",
+    "F8":                       "T8/1",
+    "F82":                      "T8/2",
+    "F12":                      "T12",
+    "F13":                      "T13",
+    "DENOMINATION":             "Denomination",
+    "LOSS":                     "perte de valeur",
+    "DEBT":                     "Dette",
+    "SUBSIDIARY":               "Filiale",
+    "INITIAL_VALUE":            "Valeur initiale",
+    "REF_AMOUNT":               "Montant de versement",
+    "TURNOVER":                 "Chiffre d'affaires",
+    "EXEMPTION":                "Exemption",
+    "TAX_RATE":                 "Taux de taxe"
 }
 

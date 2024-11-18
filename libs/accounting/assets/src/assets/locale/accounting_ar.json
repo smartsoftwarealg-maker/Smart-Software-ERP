@@ -64,5 +64,18 @@
     "USEFUL_LIFE":              "العمر الإنتاجي",
     "FILE":                     "الدفتر",
     "STOCK_ACCOUNTS":           "حسابات المخزون",
-    "CUSTOMER_CODE_REQUIRED":   "رمز العميل مطلوب"
+    "CUSTOMER_CODE_REQUIRED":   "رمز العميل مطلوب",
+    "F8":                       "ج1/8",
+    "F82":                      "ج1/8",
+    "F12":                      "ج12",
+    "F13":                      "ج13",
+    "DEF_COST_CENTER":           "التسمية",
+    "LOSS":                     "الخسائر",
+    "DEBT":                     "الدين",
+    "SUBSIDIARY":               "المؤسسات الفرعية",
+    "INITIAL_VALUE":            "قيمة البدء",
+    "REF_AMOUNT":               "القيمة المراجعة",
+    "TURNOVER":                 "حجم الأعمال",
+    "EXEMPTION":                "الخصومات",
+    "TAX_RATE":                 "معدل الضريبة"
 }

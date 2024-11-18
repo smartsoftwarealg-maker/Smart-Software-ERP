@@ -1,0 +1,30 @@
+.size {
+    width: 90%;
+    max-width: 1000px;
+    margin: 4px auto 0;
+}
+
+.div_table {
+    height: calc(100% - 96px);
+    overflow: auto;
+}
+
+.mat-column-agentDescription {
+    flex: 2 0 200px;
+    border-left: white thin solid;
+}
+
+.mat-column-modeDescription,
+.mat-column-amount,
+.mat-column-vat,
+.mat-column-reference,
+.mat-column-refDate {
+    flex: 1 1 100px;
+    justify-content: flex-end;
+    border-left: grey thin solid;
+}
+
+mat-table {
+    width: 100%;
+    min-width: 800px;
+}

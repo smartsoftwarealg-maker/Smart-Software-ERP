@@ -1,8 +1,6 @@
 import { inject, Injectable } from '@angular/core';
-import { BaseEntityService } from '@ss/common/api-base-entity';
-import { AIDS_URL, MEDICAL_AIDS_TYPE, SocialAid, TYPES_URL } from '@social/social-api';
-import { dateToYmdStr, HttpService, LanguageService, LoginService } from '@ss/common/api-common';
-import { EDO } from '../../../../../remuneration/edo/src/lib/edo-class';
+import { dateToYmdStr, HttpService, LoginService } from '@ss/common/api-common';
+import { EDO } from '@ss/remuneration/edo';
 import { Observable } from 'rxjs';
 import { HttpParams } from '@angular/common/http';
 import { map } from 'rxjs/operators';

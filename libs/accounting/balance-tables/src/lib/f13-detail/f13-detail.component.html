@@ -1,0 +1,44 @@
+@if (form !== null) {
+    <mat-card>
+        <mat-card-content>
+            <form [formGroup]="form">
+
+
+                <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>COMMON_MUNICIPALITY</mat-label>
+                    <input matInput formControlName="municipality" type="text" required>
+                    @if (form.controls['municipality'].invalid) {
+                        <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+                    }
+                </mat-form-field>
+
+                <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>ACC_TURNOVER</mat-label>
+                    <input matInput formControlName="turnover" type="number" required>
+                    @if (form.controls['turnover'].invalid) {
+                        <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+                    }
+                </mat-form-field>
+
+                <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>ACC_EXEMPTION</mat-label>
+                    <input matInput formControlName="exemption" type="number" required>
+                    @if (form.controls['exemption'].invalid) {
+                        <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+                    }
+                </mat-form-field>
+
+                <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>ACC_TAX_RATE</mat-label>
+                    <input matInput formControlName="taxRate" type="number" required min="0" max="80">
+                    @if (form.controls['taxRate'].invalid) {
+                        <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+                    }
+                </mat-form-field>
+
+
+            </form>
+
+        </mat-card-content>
+    </mat-card>
+}

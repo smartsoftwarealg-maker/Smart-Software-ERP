@@ -347,5 +347,7 @@
     "SUMMARY":                    "Summary",
     "PASSWORD_RESET":            "Password reset",
     "START_DATE":                 "Start date",
-    "COSTING":                    "Costing"
+    "COSTING":                    "Costing",
+    "PAY_MODE":                   "Pay mode",
+    "MUNICIPALITY":               "Municipality"
 }

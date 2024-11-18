@@ -1,6 +1,6 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
-import {LTMMixture} from '../../../../ltm-api/src/lib/ltm-api';
+import {LTMMixture} from '@ltm/ltm-api';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import { ActivatedRoute, NavigationEnd, Router, RouterEvent, RouterOutlet } from "@angular/router";
 import { ReactiveFormsModule, UntypedFormBuilder, Validators } from "@angular/forms";

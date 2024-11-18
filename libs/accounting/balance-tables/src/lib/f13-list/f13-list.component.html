@@ -1,0 +1,54 @@
+<div class="div_table size">
+    <mat-table mat-table [dataSource]="data" class="main-table" matSort (matSortChange)="sort($event)">
+
+        <ng-container matColumnDef="municipality">
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>{{ 'COMMON_MUNICIPALITY' }}</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.municipality}}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="reference">
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>{{ 'COMMON_REFERENCE' }}</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.reference}}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="turnover">
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>{{ 'ACC_TURNOVER' }}</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.turnover | number: '1.2-2' }}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="exemption">
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>ACC_EXEMPTION</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{ e.exemption | number: '1.2-2' }}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="taxRate">
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>ACC_TAX_RATE</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{ e.taxRate | number: '1.2-2' }}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="modeDescription">
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_PAY_MODE</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{ e.modeDescription }}
+            </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+        <mat-row class="selectable" [class.selected]="row.id == selected" (click)="select(row.id)"
+                 *matRowDef="let row; columns: displayedColumns;">
+        </mat-row>
+    </mat-table>
+</div>
+<div class="size b-b-background">
+    <ss-pagination [paginationModel]="pagination"></ss-pagination>
+</div>

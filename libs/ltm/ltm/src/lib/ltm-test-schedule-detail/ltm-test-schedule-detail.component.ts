@@ -3,7 +3,7 @@ import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from "@ss/common
 import { FormBuilder, ReactiveFormsModule, UntypedFormGroup } from "@angular/forms";
 import { RouterOutlet } from "@angular/router";
 import { CommonUiConfirmationDialogModule } from "@ss/common/ui-confirmation-dialog";
-import { LTMMixtureDetail, LTMTestSchedule } from '../../../../ltm-api/src/lib/ltm-api';
+import { LTMMixtureDetail, LTMTestSchedule } from '@ltm/ltm-api';
 import { CommonModule } from "@angular/common";
 import { MaterialModule } from "@ss/common/api-common";
 import { CommonUiLangModule } from "@ss/common/ui-lang";

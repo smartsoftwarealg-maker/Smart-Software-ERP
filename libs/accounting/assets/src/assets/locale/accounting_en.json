@@ -64,5 +64,18 @@
     "USEFUL_LIFE":              "Useful life",
     "FILE":                     "File",
     "STOCK_ACCOUNTS":           "Stock accounts",
-    "CUSTOMER_CODE_REQUIRED":   "Customer code required"
+    "CUSTOMER_CODE_REQUIRED":   "Customer code required",
+    "F8":                       "T8/1",
+    "F82":                      "T8/2",
+    "F12":                      "T12",
+    "F13":                      "T13",
+    "DENOMINATION":             "Denomination",
+    "LOSS":                     "Loss",
+    "DEBT":                     "Debt",
+    "SUBSIDIARY":               "Subsidiary",
+    "INITIAL_VALUE":            "Initial value",
+    "REF_AMOUNT":               "Reference amount",
+    "TURNOVER":                 "Turnover",
+    "EXEMPTION":                "Exemption",
+    "TAX_RATE":                 "Tax rate"
 }
