@@ -2,7 +2,7 @@ import {SideNavNode} from '@ss/common/api-common';
 import {
     ABS_ACC_ACCOUNT_URL,
     ABS_ACC_ASSET_ACCOUNT_URL,
-    ABS_ACC_CASHFLOW_ACCOUNT_URL,
+    ABS_ACC_CASHFLOW_ACCOUNT_URL, ABS_ACC_F12_URL, ABS_ACC_F13_URL, ABS_ACC_F82_URL, ABS_ACC_F8_URL,
     ABS_ACC_FILE_SELECTION_URL,
     ABS_ACC_FILES_URL,
     ABS_ACC_GENERATION_ACCOUNT_URL,
@@ -105,6 +105,30 @@ export const accountingNavTree: SideNavNode = {
             icon: 'fa-solid fa-door-open',
             route: ABS_REOPEN_URL,
             accessRights: 'ACCTransaction'
+        },
+        {
+            name: 'ACC_F8',
+            icon: 'fa-solid fa-table',
+            route: ABS_ACC_F8_URL,
+            accessRights: 'F8'
+        },
+        {
+            name: 'ACC_F82',
+            icon: 'fa-light fa-table',
+            route: ABS_ACC_F82_URL,
+            accessRights: 'F8'
+        },
+        {
+            name: 'ACC_F12',
+            icon: 'fa-solid fa-table-cells',
+            route: ABS_ACC_F12_URL,
+            accessRights: 'F12'
+        },
+        {
+            name: 'ACC_F13',
+            icon: 'fa-solid fa-table-list',
+            route: ABS_ACC_F13_URL,
+            accessRights: 'F13'
         },
         {
             name: 'COMMON_REPORTS',

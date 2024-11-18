@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BaseTransactionDetailComponent } from '@ss/logistics/api-transaction';
 import { CCGroup, Lookup } from '@ss/common/api-lookup';
-import { PurchaseRequestService } from '../../../../../purchases/ui-purchase-request/src/lib/purchase-request.service';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router, RouterOutlet } from '@angular/router';
 import { FormsModule, ReactiveFormsModule, UntypedFormBuilder } from '@angular/forms';

@@ -9,8 +9,8 @@ import {tap} from 'rxjs/operators';
 import {DeliveryService} from '@ss/sales/api-delivery';
 import {LoginService} from '@ss/common/api-common';
 import {MatDialog} from '@angular/material/dialog';
-import { BaseTransactionDetailComponent, TransactionLinesService } from '@ss/logistics/api-transaction';
-import { DeliveryLinesService } from '../../../../api-delivery/src/lib/delivery-lines.service';
+import { BaseTransactionDetailComponent } from '@ss/logistics/api-transaction';
+import { DeliveryLinesService } from '@ss/sales/api-delivery';
 
 
 @Component({

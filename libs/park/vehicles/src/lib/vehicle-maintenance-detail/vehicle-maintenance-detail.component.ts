@@ -11,7 +11,6 @@ import { LookupModule } from '@ss/common/api-lookup';
 import { BaseChildEntityDetailComponent } from "@ss/common/ui-base-entity";
 import { VehicleMaintenance } from "../vehicle-api";
 import { FormBuilder, UntypedFormGroup, Validators } from "@angular/forms";
-import { DriverLicenseService } from "../../../../driver/src/lib/services/driver-license.service";
 import { VehicleMaintenanceService } from "../services/vehicle-maintenance.service";
 import { Agent, SupplierService } from "@ss/logistics/api-agent";
 

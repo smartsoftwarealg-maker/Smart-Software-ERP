@@ -1,4 +1,4 @@
-import { Component, inject, OnDestroy, OnInit } from '@angular/core';
+import { Component, inject, OnDestroy, OnInit, signal } from '@angular/core';
 import {
     AccFileService,
     AccPoliciesService,
@@ -43,7 +43,7 @@ import { CommonUiAutoCompleteModule } from "@ss/common/ui-auto-complete";
 export class TransactionDetailComponent implements OnInit, OnDestroy {
     private fileSrv = inject(AccFileService);
     private subscriptions: Subscription[] = [];
-    readonly isClosed = this.fileSrv.accFile.closed;
+    readonly isClosed = signal<boolean>(this.fileSrv.accFile.closed);
     protected readonly ACC_TRANSACTION_ARCHIVES = ACC_TRANSACTION_ARCHIVES;
     isOnEdit = false;
     form: UntypedFormGroup = null;
@@ -172,7 +172,7 @@ export class TransactionDetailComponent implements OnInit, OnDestroy {
     }
 
     public canDeactivate(): Observable<boolean> {
-        if (this.form != null && this.form.touched && !this.isClosed) {
+        if (this.form != null && this.form.touched && !this.isClosed()) {
             return this.confirmationSrv.confirmDontSave();
         }
         return of(true);

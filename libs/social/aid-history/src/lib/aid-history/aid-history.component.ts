@@ -2,8 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BaseChildEntityListComponent } from '@ss/common/ui-base-entity';
 import { SocialAid } from '@social/social-api';
-import { AssetAppointmentService } from '../../../../../assets-component/src/lib/services/asset-appointment.service';
-import { PersonAidHistoryService } from '../../../../social-api/src/lib/services/person-aid-history.service';
+import { PersonAidHistoryService } from '@social/social-api';
 import { CommonUiLangModule } from '@ss/common/ui-lang';
 import {
     MatCell,

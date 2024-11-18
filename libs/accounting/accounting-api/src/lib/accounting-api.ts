@@ -100,7 +100,7 @@ export interface ACCTransaction {
     projectId?: number;
     debit?: number;
     credit?: number;
-    projectName?: string;
+    projectName?: string
 }
 
 export interface PieceSummary {

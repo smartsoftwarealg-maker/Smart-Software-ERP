@@ -21,7 +21,7 @@ import { MatInput } from '@angular/material/input';
 import { MedicalAidService } from '@social/social-api';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { AidHistoryComponent } from '@social/aid-history';
-import { PersonAidHistoryService } from '../../../../social-api/src/lib/services/person-aid-history.service';
+import { PersonAidHistoryService } from '@social/social-api';
 
 @Component({
     selector: 'ss-medical-aids-detail',

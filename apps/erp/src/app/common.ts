@@ -454,6 +454,10 @@ export const ACC_PERIOD_SELECTOR_URL  = 'period-select';
 export const ACC_FILES_URL            = 'acc-files';
 export const ACC_PROJECTS_URL         = 'acc-projects';
 export const ACC_BALANCE_QUERIES_URL  = 'balance-queries';
+export const ACC_F8_URL   = 'f-8';
+export const ACC_F82_URL  = 'f-82';
+export const ACC_F12_URL  = 'f-12';
+export const ACC_F13_URL  = 'f-13';
 
 // park
 export const PARK_DRIVER_URL = 'drivers';
@@ -571,6 +575,10 @@ export const ABS_ACC_REPORTS_URL = '/' + [MAIN_PAGE_URL, ACCOUNTING_APP_URL, COM
 export const ABS_GENERATION_URL = '/' + [MAIN_PAGE_URL, ACCOUNTING_APP_URL, ACC_GENERATION_URL].join('/');
 export const ABS_REOPEN_URL = '/' + [MAIN_PAGE_URL, ACCOUNTING_APP_URL, ACC_REOPEN_URL].join('/');
 export const ABS_BALANCE_QUERIES_URL = '/' + [MAIN_PAGE_URL, ACCOUNTING_APP_URL, ACC_BALANCE_QUERIES_URL].join('/');
+export const ABS_ACC_F8_URL = '/' + [MAIN_PAGE_URL, ACCOUNTING_APP_URL, ACC_F8_URL].join('/');
+export const ABS_ACC_F82_URL = '/' + [MAIN_PAGE_URL, ACCOUNTING_APP_URL, ACC_F82_URL].join('/');
+export const ABS_ACC_F12_URL = '/' + [MAIN_PAGE_URL, ACCOUNTING_APP_URL, ACC_F12_URL].join('/');
+export const ABS_ACC_F13_URL = '/' + [MAIN_PAGE_URL, ACCOUNTING_APP_URL, ACC_F13_URL].join('/');
 
 //Budget
 export const ABS_BUDGET_BUDGET_URL = '/' + [MAIN_PAGE_URL, BUDGET_APP_URL, BUDGET_BUDGET_URL].join('/');

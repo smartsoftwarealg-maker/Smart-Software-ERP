@@ -39,7 +39,7 @@
     </form>
 
     <div mat-subheader class="ctrl default-100">
-        <button mat-flat-button color="primary" (click)="save()" translate [disabled]="!form?.valid || isClosed"
+        <button mat-flat-button color="primary" (click)="save()" translate [disabled]="!form?.valid || isClosed()"
                 *ngIf="!isOnEdit">
             <i class="fas fa-save"></i>
             COMMON_SAVE

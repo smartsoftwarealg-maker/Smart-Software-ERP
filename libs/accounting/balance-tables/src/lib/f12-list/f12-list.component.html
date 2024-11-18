@@ -1,0 +1,61 @@
+<div class="div_table size">
+    <mat-table mat-table [dataSource]="data" class="main-table" matSort (matSortChange)="sort($event)">
+
+        <ng-container matColumnDef="agentDescription">
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>{{ 'COMMON_AGENT' }}</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.agentDescription}}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="reference">
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>{{ 'COMMON_REFERENCE' }}</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.reference}}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="value1">
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>{{ 'ACCOUNTING_DEBT' }}</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.value1 | number: '1.2-2' }}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="refDate">
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>{{ 'COMMON_DATE' }}</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.refDate | date: 'dd-MM-yyyy' }}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="amount">
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_AMOUNT</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{ e.amount | number: '1.2-2' }}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="vat">
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_VAT</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{ e.vat | number: '1.2-2' }}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="modeDescription">
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_PAY_MODE</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{ e.modeDescription }}
+            </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+        <mat-row class="selectable" [class.selected]="row.id == selected" (click)="select(row.id)"
+                 *matRowDef="let row; columns: displayedColumns;">
+        </mat-row>
+    </mat-table>
+</div>
+<div class="size b-b-background">
+    <ss-pagination [paginationModel]="pagination"></ss-pagination>
+</div>

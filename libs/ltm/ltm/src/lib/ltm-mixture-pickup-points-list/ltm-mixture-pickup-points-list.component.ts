@@ -2,7 +2,7 @@ import { Component } from "@angular/core";
 import { MaterialModule } from "@ss/common/api-common";
 import { RouterOutlet } from "@angular/router";
 import { CommonUiConfirmationDialogModule } from "@ss/common/ui-confirmation-dialog";
-import { LTMMixtureDetail, LTMMixturePickupPoint } from '../../../../ltm-api/src/lib/ltm-api';
+import { LTMMixtureDetail, LTMMixturePickupPoint } from '@ltm/ltm-api';
 import { ReactiveFormsModule } from "@angular/forms";
 import { CommonModule } from "@angular/common";
 import { CommonUiLangModule } from "@ss/common/ui-lang";

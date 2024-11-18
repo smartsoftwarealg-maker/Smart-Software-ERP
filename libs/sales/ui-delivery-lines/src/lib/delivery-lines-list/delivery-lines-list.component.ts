@@ -7,7 +7,7 @@ import {LotsService} from '@ss/common/api-lookup';
 import {
     BaseTransactionLinesListComponent
 } from '@ss/logistics/api-transaction';
-import { DeliveryLinesService } from '../../../../api-delivery/src/lib/delivery-lines.service';
+import { DeliveryLinesService } from '@ss/sales/api-delivery';
 
 @Component({
     selector: 'ss-delivery-lines-list',

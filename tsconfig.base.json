@@ -91,6 +91,9 @@
             "@ss/accounting/api-accounts": [
                 "libs/accounting/api-accounts/src/index.ts"
             ],
+            "@ss/accounting/balance-tables": [
+                "libs/accounting/balance-tables/src/index.ts"
+            ],
             "@ss/accounting/transactions": [
                 "libs/accounting/transactions/src/index.ts"
             ],

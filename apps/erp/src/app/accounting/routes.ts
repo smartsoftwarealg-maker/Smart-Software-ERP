@@ -2,12 +2,22 @@ import {Routes} from '@angular/router';
 import {AccountDetailComponent, AccountListComponent} from '@ss/logistics/ui-account';
 import {
     ACC_BALANCE_QUERIES_URL,
-    ACC_DEPRECIATION_GEN_URL,
-    ACC_FILE_SELECTOR_URL, ACC_FILES_URL, ACC_GENERATION_URL,
-    ACC_JOURNALS_URL, ACC_PERIOD_SELECTOR_URL,
-    ACC_POLICIES_URL, ACC_PROJECTS_URL, ACC_REOPEN_URL,
-    ACC_TRANSACTIONS_URL, ASSET_ACCOUNT_URL, CASHFLOW_ACCOUNTS_URL,
-    COMMON_ACCOUNT_URL, COMMON_REPORTS_URL, GENERATION_ACCOUNT_URL, TRANSAC_ACCOUNT_URL
+    ACC_DEPRECIATION_GEN_URL, ACC_F12_URL, ACC_F13_URL, ACC_F82_URL, ACC_F8_URL,
+    ACC_FILE_SELECTOR_URL,
+    ACC_FILES_URL,
+    ACC_GENERATION_URL,
+    ACC_JOURNALS_URL,
+    ACC_PERIOD_SELECTOR_URL,
+    ACC_POLICIES_URL,
+    ACC_PROJECTS_URL,
+    ACC_REOPEN_URL,
+    ACC_TRANSACTIONS_URL,
+    ASSET_ACCOUNT_URL,
+    CASHFLOW_ACCOUNTS_URL,
+    COMMON_ACCOUNT_URL,
+    COMMON_REPORTS_URL,
+    GENERATION_ACCOUNT_URL,
+    TRANSAC_ACCOUNT_URL
 } from '../common';
 import {ABS_INDEX_URL, CanDeactivateService, LIST_URL} from '@ss/common/api-common';
 import {AccPoliciesComponent} from '@ss/accounting/acc-policies';
@@ -46,6 +56,12 @@ import {
     AppArchiveDetailComponent,
     AppArchiveListComponent
 } from '@ss/common/app-archive';
+import {
+    F12DetailComponent,
+    F12ListComponent, F13DetailComponent, F13ListComponent, F82DetailComponent, F82ListComponent,
+    F8DetailComponent,
+    F8ListComponent
+} from '@ss/accounting/balance-tables';
 
 export const accRoutes: Routes = [
     {
@@ -286,6 +302,70 @@ export const accRoutes: Routes = [
             },
             {path: '', redirectTo: LIST_URL, pathMatch: 'full'},
             {path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full'}
+        ]
+    },
+    {
+        path: ACC_F8_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: F8ListComponent,
+                canActivate: [loginGuard, accountingGuard]
+            },
+            {
+                path: ':id',
+                component: F8DetailComponent,
+                canActivate: [loginGuard],
+                canDeactivate: [CanDeactivateService]
+            },
+        ]
+    },
+    {
+        path: ACC_F82_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: F82ListComponent,
+                canActivate: [loginGuard, accountingGuard]
+            },
+            {
+                path: ':id',
+                component: F82DetailComponent,
+                canActivate: [loginGuard],
+                canDeactivate: [CanDeactivateService]
+            },
+        ]
+    },
+    {
+        path: ACC_F12_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: F12ListComponent,
+                canActivate: [loginGuard, accountingGuard]
+            },
+            {
+                path: ':id',
+                component: F12DetailComponent,
+                canActivate: [loginGuard],
+                canDeactivate: [CanDeactivateService]
+            },
+        ]
+    },
+    {
+        path: ACC_F13_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: F13ListComponent,
+                canActivate: [loginGuard, accountingGuard]
+            },
+            {
+                path: ':id',
+                component: F13DetailComponent,
+                canActivate: [loginGuard],
+                canDeactivate: [CanDeactivateService]
+            },
         ]
     },
     {
