@@ -9,5 +9,4 @@ export class MedicalAidService extends BaseEntityService<SocialAid> {
         super(httpSrv, AIDS_URL, TYPES_URL);
         this.setParentId(MEDICAL_AIDS_TYPE);
     }
-
 }

@@ -19,5 +19,8 @@
     "MUTUAL_TYPES":      "Types mutuels",
     "MUTUAL_REQUESTS":   "Demandes mutuelles",
     "FOLDER_COUNT":      "Nombre de dossiers",
-    "MUTUAL_TYPE":       "Type mutuel"
+    "MUTUAL_TYPE":       "Type mutuel",
+    "MUTUAL_AIDS":      "Mutuelles",
+    "MUTUAL_REJECTIONS":  "Rejets mutuels",
+    "MUTUAL_REJECTION":  "Rejets mutuel"
 }

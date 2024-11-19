@@ -1,5 +1,6 @@
 export const SOCIAL_WORKS_TYPE = 1;
 export const MEDICAL_AIDS_TYPE = 2;
+export const MUTUAL_AIDS_TYPE  = 3;
 export const REIMBURSEMENT = 'Reimbursement';
 
 //URLs
@@ -28,6 +29,7 @@ export interface SocialAid {
     parentId: number;
     firstName?: string;
     lastName?: string;
+    mutualno?: string;
     description?: string;
     typeDescription?: string;
     medicalTypeDescription?: string;
@@ -112,6 +114,8 @@ export interface MutualRequestLine {
     firstName?: string;
     lastName?: string;
     mutualNo?: number;
+    rejectionId?: number;
+    rejectedDescription?: string;
 }
 
 export interface MutualRequest {

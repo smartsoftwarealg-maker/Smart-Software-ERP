@@ -19,7 +19,7 @@ import {
 import { UiPaginationModule } from '@ss/common/ui-pagination';
 
 @Component({
-    selector: 'ss-social-social-works-list',
+    selector: 'ss-social-works-list',
     standalone: true,
     imports: [CommonModule, CommonUiLangModule, MatCell, MatCellDef, MatColumnDef, MatHeaderCell, MatHeaderRow, MatHeaderRowDef, MatRow, MatRowDef, MatTable, UiPaginationModule, MatHeaderCellDef],
     templateUrl: './social-aids-list.component.html',

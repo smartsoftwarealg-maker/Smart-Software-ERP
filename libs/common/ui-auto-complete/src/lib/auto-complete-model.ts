@@ -21,6 +21,7 @@ export interface AutoCompleteModel<T> {
 }
 
 export class DefaultAutoCompleteModel<T> implements AutoCompleteModel<T> {
+    #searchLength = 49;
     public options: T[];
     public cache: T;
     public filterLoadedData = (x: T[]) => x.filter(e => e && e[this.descriptionField]);
@@ -39,7 +40,7 @@ export class DefaultAutoCompleteModel<T> implements AutoCompleteModel<T> {
 
     getById = (id: Id) => id === null || id === undefined? of(null) : this.entitySrv.get(id);
 
-    filter = (filter: string) => this.entitySrv.getList(0, 49, filter, this.descriptionField).pipe(map(x => this.filterLoadedData(x.body)));
+    filter = (filter: string) => this.entitySrv.getList(0, this.#searchLength, filter, this.descriptionField).pipe(map(x => this.filterLoadedData(x.body)));
 
     isPerfectMatch = (obj: any, filter: string) => !!filter && !!obj && !!obj[this.descriptionField] && obj[this.descriptionField].toUpperCase() === filter.toUpperCase();
     clear() {
@@ -53,6 +54,10 @@ export class DefaultAutoCompleteModel<T> implements AutoCompleteModel<T> {
             entity['description'] = entry;
             return this.entitySrv.save(entity as T);
         } else return of(0);
+    }
+
+    set searchLength(v: number) {
+        this.#searchLength = v;
     }
 }
 

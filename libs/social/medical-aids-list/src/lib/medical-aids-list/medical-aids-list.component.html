@@ -15,6 +15,14 @@
             </mat-cell>
         </ng-container>
 
+        <ng-container matColumnDef="mutualno">
+            <mat-header-cell *matHeaderCellDef translate>PAYROLL_MUTUAL_NUMBER</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.mutualno}}
+            </mat-cell>
+        </ng-container>
+
+
         <ng-container matColumnDef="firstName">
             <mat-header-cell *matHeaderCellDef translate>COMMON_FIRST_NAME</mat-header-cell>
             <mat-cell *matCellDef="let e">

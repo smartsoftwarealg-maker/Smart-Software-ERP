@@ -50,6 +50,7 @@ export class MedicalAidsDetailComponent extends BaseEntityDetailComponent<Social
         super(entitySrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'SOCIAL_MEDICAL_AIDS');
         this.medicalAidTypeLookup.onObjectSelected = t => this.onMedicalTypeChange(t);
         this.employeeLookup.onObjectSelected = e => this.#personAidHistorySrv.setParentId(e.id||0);
+        this.employeeLookup.searchLength = 100;
     }
 
     public override setupForm(b: SocialAid): UntypedFormGroup {

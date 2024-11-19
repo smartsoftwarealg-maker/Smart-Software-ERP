@@ -594,6 +594,7 @@
             "@ss/service-sales/service-proforma": [
                 "libs/service-sales/service-proforma/src/index.ts"
             ],
+            "@ss/social/mutual-aids": ["libs/social/mutual-aids/src/index.ts"],
             "@ss/social/mutual-requests": [
                 "libs/social/mutual-requests/src/index.ts"
             ],
