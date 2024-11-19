@@ -97,9 +97,10 @@ export class InputFilterDetailComponent extends BaseEntityDetailComponent<InputF
     private buildSelectionArray() {
         const searchText = this.filter.value || '';
         const selection = (this.form?.controls['selection'].value || '').toLowerCase();
-        this.filteredElements = this.elements.filter(e => searchText === '' ||
+        this.filteredElements = this.elements.filter(e => (searchText === '' ||
                                                                       e.description?.toLowerCase().indexOf(searchText) >= 0 ||
-                                                                      e.field?.toLowerCase().indexOf(searchText) >= 0);
+                                                                      e.field?.toLowerCase().indexOf(searchText) >= 0) &&
+                                                                      selection.indexOf(e.field) < 0);
         this.selectionArray = this.elements.filter(e => selection.indexOf(e.field) >= 0);
     }
 

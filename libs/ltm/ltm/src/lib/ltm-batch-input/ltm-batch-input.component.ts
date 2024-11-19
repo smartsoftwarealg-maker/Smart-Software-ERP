@@ -473,17 +473,11 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
                 this.shellSrv.setLoading(true);
                 this.entitySrv
                     .saveBatch(formValue)
-                    // .pipe(tap(() => {
-                    //         if (!formValue.id) {
-                    //             this.refreshData();
-                    //             this.form.controls.sampleNo.setValue(formValue.sampleNo, {onlySelf: true, emitEvent: false});
-                    //         }
-                    //     }))
                     .subscribe({
                         next: res => {
                             this.shellSrv.setLoading(false);
                             this.tests.markAsPristine();
-                            if (this.isTestScheduledIfPhysical()) {
+                            if (this.isTestScheduledPhysical()) {
                                 this.snackBarSrv.showSuccessMessage();
                                 this.goBack();
                             } else {
@@ -503,11 +497,12 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
         }
     }
 
-    private isTestScheduledIfPhysical() {
-        return this.form.controls.id.value === 0 ||
-            this.outlet == null ||
-            !(this.outlet.component instanceof LtmTestScheduleListComponent) ||
-            this.outlet.component.detailCount() > 1;
+    private isTestScheduledPhysical() {
+        return this.testingMode() !== PHYSICAL_TEST ||
+            (this.form.controls.id.value > 0 &&
+            this.outlet !== null &&
+            this.outlet.component instanceof LtmTestScheduleListComponent &&
+            this.outlet.component.detailCount() > 1);
     }
 
     private savedData(): Observable<LTMBatch> {
@@ -530,16 +525,20 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
     }
 
     private cancel() {
-        if (this.isTestScheduledIfPhysical()) {
-            this.confirmationSrv
-                .confirmDontSave()
-                .subscribe(yes => {
-                    if (yes) {
-                        this.goBack();
-                    }
-                });
+        if (this.form?.pristine) {
+            this.goBack();
         } else {
-            this.snackBarSrv.showMessage('LTM_SCHEDULED_TESTS_MISSING');
+            if (this.isTestScheduledPhysical() || this.form.controls.id.value === 0) {
+                this.confirmationSrv
+                    .confirmDontSave()
+                    .subscribe(yes => {
+                        if (yes) {
+                            this.goBack();
+                        }
+                    });
+            } else {
+                this.snackBarSrv.showMessage('LTM_SCHEDULED_TESTS_MISSING');
+            }
         }
     }
 }

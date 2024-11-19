@@ -207,7 +207,10 @@ export interface LTMTesting {
     equipmentDescription?: string;
     zoneDescription?: string;
     supplierDescription?: string;
-    depositDescription?: string;}
+    depositDescription?: string;
+    actionTaken: boolean;
+    responsibleDescription?: string;
+}
 
 export interface LTMTestInjection {
     line: number;
