@@ -4,3 +4,5 @@ export * from './lib/medical-aid-types-detail/medical-aid-types-detail.component
 export * from './lib/medical-aids-list/medical-aid-types-list.component';
 export * from './lib/mutual-type-list/mutual-type-list.component';
 export * from './lib/mutual-type-detail/mutual-type-detail.component';
+export * from './lib/mutual-rejections-detail/mutual-rejections-detail.component';
+export * from './lib/mutual-rejections-list/mutual-rejections-list.component';

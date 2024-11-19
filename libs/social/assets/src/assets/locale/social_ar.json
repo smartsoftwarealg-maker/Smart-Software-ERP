@@ -19,5 +19,8 @@
     "MUTUAL_TYPES":      "أنواع التعاضد",
     "MUTUAL_REQUESTS":   "طلبات التعاضد",
     "FOLDER_COUNT":      "عدد الملفات",
-    "MUTUAL_TYPE":       "نوع التعاضد"
+    "MUTUAL_TYPE":       "نوع التعاضد",
+    "MUTUAL_AIDS":       "مساعدات التعاضد",
+    "MUTUAL_REJECTIONS": "رفض التعاضد",
+    "MUTUAL_REJECTION": "رفض التعاضد"
 }

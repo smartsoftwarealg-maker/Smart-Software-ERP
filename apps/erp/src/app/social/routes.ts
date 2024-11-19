@@ -3,16 +3,20 @@ import { ABS_INDEX_URL, CanDeactivateService, LIST_URL } from '@ss/common/api-co
 import { loginGuard } from '../erp-guards';
 import {
     MedicalAidTypesDetailComponent,
-    MedicalAidTypesListComponent, MutualTypeDetailComponent, MutualTypeListComponent,
+    MedicalAidTypesListComponent,
+    MutualRejectionsDetailComponent,
+    MutualRejectionsListComponent,
+    MutualTypeDetailComponent,
+    MutualTypeListComponent,
     SocialActivitiesDetailComponent,
     SocialActivitiesListComponent
 } from '@social/social-lookups';
 import {
-    MEDICAL_AIDS_URL, MUTUAL_REQUEST_URL,
+    MEDICAL_AIDS_URL, SOCIAL_MUTUAL_AIDS_URL, MUTUAL_REQUEST_URL,
     SOCIAL_ACTIVITIES_URL, SOCIAL_DASHBOARD_URL, SOCIAL_EDO_HEADERS,
     SOCIAL_EDO_URL, SOCIAL_LOANS_URL,
     SOCIAL_MEDICAL_AIDS_URL, SOCIAL_MUTUAL_TYPE_URL, SOCIAL_REIMBURSEMENT_URL,
-    SOCIAL_WORKS_URL
+    SOCIAL_WORKS_URL, MUTUAL_REJECTIONS_URL
 } from './constants';
 import { SocialWorksDetailComponent } from '@social/social-works-detail';
 import { SocialAidsListComponent } from '@social/social-works-list';
@@ -41,7 +45,7 @@ import {
 import {
     MutualRequestsLineDetailComponent
 } from '@ss/social/mutual-requests';
-import { TestEquipmentTestDetailComponent, TestEquipmentTestListComponent } from '@ltm/test-equipment';
+import { MutualAidsDetailComponent, MutualAidsListComponent } from '@ss/social/mutual-aids';
 
 export const socialRoutes: Routes = [
     {
@@ -92,6 +96,22 @@ export const socialRoutes: Routes = [
             },
         ]
     },
+    {
+        path: MUTUAL_REJECTIONS_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: MutualRejectionsListComponent,
+                canActivate: [loginGuard],
+            },
+            {
+                path: ':id',
+                component: MutualRejectionsDetailComponent,
+                canActivate: [loginGuard],
+                canDeactivate: [CanDeactivateService],
+            },
+        ]
+    },
 
     {
         path: SOCIAL_WORKS_URL,
@@ -104,6 +124,23 @@ export const socialRoutes: Routes = [
             {
                 path: ':id',
                 component: SocialWorksDetailComponent,
+                canActivate: [loginGuard],
+                canDeactivate: [CanDeactivateService],
+            },
+        ]
+    },
+
+    {
+        path: SOCIAL_MUTUAL_AIDS_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: MutualAidsListComponent,
+                canActivate: [loginGuard],
+            },
+            {
+                path: ':id',
+                component: MutualAidsDetailComponent,
                 canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService],
             },

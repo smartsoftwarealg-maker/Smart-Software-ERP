@@ -69,12 +69,13 @@ export const langAssets = [
     ['assets/locale/social_',         'SOCIAL_'],
     ['assets/locale/logistics_',      'LOGISTICS_'],
     ['assets/locale/purchases_',      'PURCHASES_'],
+    ['assets/locale/sales_',          'SALES_'],
     ['assets/locale/bl_',             'BL_'],
     ['assets/locale/remuneration_',   'REMUN_'],
     ['assets/locale/accounting_',     'ACC_'],
     ['assets/locale/webarch_',        'WAR_'],
     ['assets/locale/assets_',         'ASSET_'],
-    ['assets/locale/sales_',          'SALES_'],
+    ['assets/locale/treasury_',       'TRS_'],
 ];
 
 export const appRoutes: Routes =  [

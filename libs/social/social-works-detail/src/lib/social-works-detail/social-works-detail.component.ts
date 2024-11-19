@@ -45,6 +45,7 @@ export class SocialWorksDetailComponent extends BaseEntityDetailComponent<Social
         public override confirmationSrv: ConfirmationDialogService) {
         super(entitySrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'SOCIAL_WORKS');
         this.activityLookup.onObjectSelected = a => this.onActivity(a);
+        this.employeeLookup.searchLength = 100;
     }
 
     public override setupForm(b: SocialAid): UntypedFormGroup {

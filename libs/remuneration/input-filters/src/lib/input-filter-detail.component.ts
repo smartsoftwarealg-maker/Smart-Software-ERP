@@ -54,6 +54,7 @@ export class InputFilterDetailComponent extends BaseEntityDetailComponent<InputF
             .subscribe(res => {
                 this.elements = res.body
                     .sort((a, b) => a.description? a.description?.localeCompare(b.description) : -1);
+                this.doFilter('');
             });
         this.subscriptions.push(
             this.filter
@@ -61,15 +62,17 @@ export class InputFilterDetailComponent extends BaseEntityDetailComponent<InputF
                 .pipe(
                     debounceTime(300),
                     distinctUntilChanged()
-                ).subscribe(value => {
-                this.filteredElements =
-                    this.elements
-                        .filter(e => (value === '' ||
-                            e.description?.toLowerCase().indexOf(value.toLowerCase()) >= 0 ||
-                            e.field?.toLowerCase().indexOf(value.toLowerCase()) >= 0));
-                this.buildSelectionArray();
-            })
+                ).subscribe(value => this.doFilter(value||''))
         );
+    }
+
+    private doFilter(value: string) {
+        this.filteredElements =
+            this.elements
+                .filter(e => (value === '' ||
+                    e.description?.toLowerCase().indexOf(value.toLowerCase()) >= 0 ||
+                    e.field?.toLowerCase().indexOf(value.toLowerCase()) >= 0));
+        this.buildSelectionArray();
     }
 
     addElements(sel: SelectionModel<any>) {
@@ -93,9 +96,10 @@ export class InputFilterDetailComponent extends BaseEntityDetailComponent<InputF
 
     private buildSelectionArray() {
         const searchText = this.filter.value || '';
-        const selection = this.form?.controls['selection'].value || '';
-        this.filteredElements = this.elements.filter(e => (searchText === '' || e.description?.indexOf(searchText) >= 0) &&
-                                  selection.indexOf(e.field) < 0);
+        const selection = (this.form?.controls['selection'].value || '').toLowerCase();
+        this.filteredElements = this.elements.filter(e => searchText === '' ||
+                                                                      e.description?.toLowerCase().indexOf(searchText) >= 0 ||
+                                                                      e.field?.toLowerCase().indexOf(searchText) >= 0);
         this.selectionArray = this.elements.filter(e => selection.indexOf(e.field) >= 0);
     }
 

@@ -36,6 +36,7 @@ export class MutualRequestsLineListComponent extends BaseChildEntityListComponen
         'lastName',
         'mutualNo',
         'folderCount',
+        'rejectionDescription'
     ];
 
     constructor(protected override detailSrv: MutualRequestLineService) {

@@ -5,7 +5,13 @@ import {
     BaseChildEntityListComponent,
     BaseEntityListComponent
 } from '@ss/common/ui-base-entity';
-import { MutualRequest, MutualRequestLine, MutualRequestLineService, MutualRequestService } from '@social/social-api';
+import {
+    MutualRequest,
+    MutualRequestLine,
+    MutualRequestLineService,
+    MutualRequestService,
+    SocialEmployeeService
+} from '@social/social-api';
 import { BankService } from '@ss/administration/api-bank';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -74,12 +80,14 @@ import { MatCalendarHeader } from '@angular/material/datepicker';
     styleUrl: './mutual-requests-line-detail.component.scss'
 })
 export class MutualRequestsLineDetailComponent extends BaseChildEntityDetailComponent<MutualRequestLine> {
-    #personSrv = inject(EmployeeService);
+    #rejectionSrv = inject(MutualRequestService);
+    #personSrv  = inject(SocialEmployeeService);
     #mutualTypeSrv = inject(MutualTypeService);
     #fb = inject(FormBuilder);
 
     personLookup = new PersonAutocompleteClass(this.#personSrv);
     mutualTypeLookup = new DefaultAutoCompleteModel(this.#mutualTypeSrv);
+    rejectionLookup = new DefaultAutoCompleteModel(this.#rejectionSrv);
 
     constructor(protected override entitySrv: MutualRequestLineService) {
         super(entitySrv, 'MutualRequestLine');
@@ -90,7 +98,8 @@ export class MutualRequestsLineDetailComponent extends BaseChildEntityDetailComp
             parentId:    [e.parentId||this.entitySrv.getParentId(), Validators.required],
             folderCount: [e.folderCount, Validators.required],
             employeeId:  [e.employeeId, Validators.required],
-            mutualType:  [e.mutualType, Validators.required]
+            mutualType:  [e.mutualType, Validators.required],
+            rejectionId: [e.rejectionId]
         })
     }
 }

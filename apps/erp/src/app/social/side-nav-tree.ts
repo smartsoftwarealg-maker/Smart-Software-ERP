@@ -1,6 +1,6 @@
 import { SideNavNode } from '@ss/common/api-common';
 import {
-    ABS_MEDICAL_AIDS_URL, ABS_MUTUAL_REQUEST_URL,
+    ABS_MEDICAL_AIDS_URL, ABS_MUTUAL_AIDS_URL, ABS_MUTUAL_REJECTION_URL, ABS_MUTUAL_REQUEST_URL,
     ABS_REIMBURSEMENT_URL,
     ABS_SOCIAL_ACTIVITIES_URL,
     ABS_SOCIAL_DASHBOARD_URL,
@@ -34,6 +34,12 @@ export const socialNavTree: SideNavNode = {
             route: ABS_SOCIAL_MUTUAL_TYPES_URL,
             accessRights: 'MutualType'
         },
+        {
+            name: 'SOCIAL_MUTUAL_REJECTIONS',
+            icon: 'fa-solid fa-xmark-to-slot',
+            route: ABS_MUTUAL_REJECTION_URL,
+            accessRights: 'MutualRejection'
+        },
 
         {
             name: 'SOCIAL_MEDICAL_TYPES',
@@ -53,6 +59,13 @@ export const socialNavTree: SideNavNode = {
             name: 'SOCIAL_MEDICAL_AIDS',
             icon: 'fa-solid fa-stretcher',
             route: ABS_MEDICAL_AIDS_URL,
+            accessRights: 'SocialAid'
+        },
+
+        {
+            name: 'SOCIAL_MUTUAL_AIDS',
+            icon: 'fa-solid fa-handshake',
+            route: ABS_MUTUAL_AIDS_URL,
             accessRights: 'SocialAid'
         },
 

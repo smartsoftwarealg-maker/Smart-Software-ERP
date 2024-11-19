@@ -33,6 +33,7 @@ export class MedicalAidsListComponent extends BaseEntityListComponent<SocialAid>
         'date',
         'firstName',
         'lastName',
+        'mutualno',
         'amount',
         'installmentCount'
     ];

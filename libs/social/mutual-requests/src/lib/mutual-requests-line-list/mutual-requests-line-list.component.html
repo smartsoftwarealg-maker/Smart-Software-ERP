@@ -64,6 +64,14 @@
             </mat-cell>
         </ng-container>
 
+        <ng-container matColumnDef="rejectionDescription">
+            <mat-header-cell *matHeaderCellDef translate>SOCIAL_MUTUAL_REJECTION</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.rejectionDescription}}
+            </mat-cell>
+        </ng-container>
+
+
 
         <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
         <mat-row class="selectable" [class.selected]="row.id == selectedId" (click)="select(row.id)"

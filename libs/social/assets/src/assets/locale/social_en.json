@@ -19,5 +19,8 @@
     "MUTUAL_TYPES":      "Mutual types",
     "MUTUAL_REQUESTS":   "Mutual requests",
     "FOLDER_COUNT":      "Folder count",
-    "MUTUAL_TYPE":       "Mutual type"
+    "MUTUAL_TYPE":       "Mutual type",
+    "MUTUAL_AIDS":       "Mutual aids",
+    "MUTUAL_REJECTIONS": "Mutual rejections",
+    "MUTUAL_REJECTION": "Mutual rejection"
 }
