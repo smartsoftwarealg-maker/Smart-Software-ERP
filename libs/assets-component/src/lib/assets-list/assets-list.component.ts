@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import { Component, signal } from '@angular/core';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {Asset} from '../assets-api';
 import {KeepOnToolbar, ShellService, SnackBarService, ToolbarButton} from '@ss/common/ui-shell';
@@ -70,8 +70,6 @@ export class AssetsListComponent extends BaseEntityListComponent<Asset> {
         // 'residualValue',
     ];
 
-    displayedColumns = this.DEF_COLS;
-
     private duplicateBtn: ToolbarButton = {
         disabled: true,
         icon: 'fa-solid fa-copy',
@@ -80,6 +78,19 @@ export class AssetsListComponent extends BaseEntityListComponent<Asset> {
         visible: true,
         click: () => this.duplicate(),
     }
+
+    private activeOnlyBtn: ToolbarButton = {
+        disabled: false,
+        icon: 'fa-solid fa-toggle-off',
+        keepOnToolbar: KeepOnToolbar.DYNAMIC,
+        label: 'ASSET_SHOW_ALL',
+        visible: true,
+        click: () => this.toggleActivity(),
+    }
+
+    displayedColumns = this.DEF_COLS;
+    activeOnly = signal(false);
+
 
     constructor(public listSrv: AssetsService,
                 public override shellSrv: ShellService,
@@ -101,6 +112,7 @@ export class AssetsListComponent extends BaseEntityListComponent<Asset> {
             pagPersistSrv,
             'ASSETS');
         this.pagination.pageSize = 10;
+        this.listSrv.activeOnly = false;
     }
 
     override preload(): Observable<any> {
@@ -112,6 +124,7 @@ export class AssetsListComponent extends BaseEntityListComponent<Asset> {
     override ngOnInit() {
         super.ngOnInit();
         this.shellSrv.addButton(this.duplicateBtn);
+        this.shellSrv.addButton(this.activeOnlyBtn);
     }
 
     private duplicate() {
@@ -138,4 +151,11 @@ export class AssetsListComponent extends BaseEntityListComponent<Asset> {
         this.deleteButton.disabled = row.isFinal;
     }
 
+    private toggleActivity() {
+        this.listSrv.toggleActivity();
+        this.activeOnly.set(this.listSrv.activeOnly);
+        this.activeOnlyBtn.label = this.listSrv.activeOnly ? 'ASSET_SHOW_ALL' : 'ASSET_SHOW_ACTIVE_ONLY';
+        this.activeOnlyBtn.icon = this.listSrv.activeOnly ? 'fa-solid fa-toggle-on' : 'fa-solid fa-toggle-off';
+        this.refresh();
+    }
 }

@@ -78,5 +78,7 @@
     "NEW_OFFICE": "مكتب جديد",
     "NEW_BUILDING": "مبنى جديد",
     "ACCOUNTING_TYPE": "نوع المحاسبة",
-    "NEW_BENEFICIARY": "مستفيد جديد"
+    "NEW_BENEFICIARY": "مستفيد جديد",
+    "SHOW_ALL": "اظهار الكل",
+    "SHOW_ACTIVE_ONLY": "اظهار الحالي فقط"
 }

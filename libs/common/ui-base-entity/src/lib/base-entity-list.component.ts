@@ -310,7 +310,6 @@ export class BaseEntityListComponent<T extends { id: number, email?: string }> i
         this.entitySrv
             .excel(this.filter)
             .subscribe(blob => {
-                // saveAs(blob, this.entitySrv.constructor.name + '.xlsx');
                 if (blob && blob.size > 100) {
                     const link = document.createElement('a');
                     link.href = window.URL.createObjectURL(blob);
