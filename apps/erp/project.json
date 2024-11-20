@@ -134,7 +134,29 @@
                         "output": "assets"
                     }
                 ],
-                "styles": ["apps/erp/src/styles.scss"],
+                "styles": [
+                    "apps/erp/src/styles.scss",
+                    {
+                        "input": "apps/erp/src/theme-0.scss",
+                        "bundleName": "theme-0",
+                        "inject": false
+                    },
+                    {
+                        "input": "apps/erp/src/theme-1.scss",
+                        "bundleName": "theme-1",
+                        "inject": false
+                    },
+                    {
+                        "input": "apps/erp/src/theme-2.scss",
+                        "bundleName": "theme-2",
+                        "inject": false
+                    },
+                    {
+                        "input": "apps/erp/src/theme-3.scss",
+                        "bundleName": "theme-3",
+                        "inject": true
+                    }
+                ],
                 "stylePreprocessorOptions": {
                     "includePaths": ["node_modules"]
                 },
@@ -554,7 +576,29 @@
                         "output": "assets"
                     }
                 ],
-                "styles": ["apps/erp/src/styles.scss"],
+                "styles": [
+                    "apps/erp/src/styles.scss",
+                    {
+                        "input": "apps/erp/src/theme-0.scss",
+                        "bundleName": "theme-0",
+                        "inject": false
+                    },
+                    {
+                        "input": "apps/erp/src/theme-1.scss",
+                        "bundleName": "theme-1",
+                        "inject": false
+                    },
+                    {
+                        "input": "apps/erp/src/theme-2.scss",
+                        "bundleName": "theme-2",
+                        "inject": false
+                    },
+                    {
+                        "input": "apps/erp/src/theme-3.scss",
+                        "bundleName": "theme-3",
+                        "inject": true
+                    }
+                ],
                 "stylePreprocessorOptions": {
                     "includePaths": ["node_modules"]
                 },
@@ -952,7 +996,29 @@
                         "output": "assets"
                     }
                 ],
-                "styles": ["apps/erp/src/styles.scss"],
+                "styles": [
+                    "apps/erp/src/styles.scss",
+                    {
+                        "input": "apps/erp/src/theme-0.scss",
+                        "bundleName": "theme-0",
+                        "inject": false
+                    },
+                    {
+                        "input": "apps/erp/src/theme-1.scss",
+                        "bundleName": "theme-1",
+                        "inject": false
+                    },
+                    {
+                        "input": "apps/erp/src/theme-2.scss",
+                        "bundleName": "theme-2",
+                        "inject": false
+                    },
+                    {
+                        "input": "apps/erp/src/theme-3.scss",
+                        "bundleName": "theme-3",
+                        "inject": true
+                    }
+                ],
                 "stylePreprocessorOptions": {
                     "includePaths": ["node_modules"]
                 },

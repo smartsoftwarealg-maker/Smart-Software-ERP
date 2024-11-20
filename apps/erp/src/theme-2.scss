@@ -1,0 +1,11 @@
+
+@use '@angular/material/prebuilt-themes/purple-green.css';
+
+@use 'styles.scss';
+
+$background: #212121;
+$foreground: #F0F0c4;
+$primary: #7b1fa2;
+$accent: #69f0ae;
+
+@include styles.themes-patches($primary, $accent, $foreground, $background);

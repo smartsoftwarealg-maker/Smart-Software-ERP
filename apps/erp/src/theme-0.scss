@@ -1,0 +1,11 @@
+
+@use '@angular/material/prebuilt-themes/indigo-pink.css';
+
+@use 'styles.scss';
+
+$background: #F0F0D4;
+$foreground: #212121;
+$primary: #3f51b5;
+$accent: #ff4081;
+
+@include styles.themes-patches($primary, $accent, $foreground, $background);

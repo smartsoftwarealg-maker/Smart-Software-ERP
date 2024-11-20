@@ -36,8 +36,6 @@ export class LoginComponent implements OnInit {
     public license: string = null;
     readonly isPhone: boolean;
 
-    currentTheme: string = 'string-1';
-
     form = this.formBuilder.group({
         user:    ['', Validators.required],
         pass:    [''],
@@ -64,7 +62,6 @@ export class LoginComponent implements OnInit {
         if (this.loginSrv.isLoggedIn) {
             this.router.navigate([ABS_INDEX_URL]).then();
         }
-        this.currentTheme = this.themeSrv.getCurrentThemeName();
         if (this.time) {
             clearTimeout(this.time);
         }
@@ -106,7 +103,4 @@ export class LoginComponent implements OnInit {
         this.shellSrv.filterSideNav();
     };
 
-    onTheme(e: string) {
-        this.currentTheme = e;
-    }
 }

@@ -18,53 +18,105 @@
 
     display: flex;
     flex-direction: row;
-    align-items: center; 
+    align-items: center;
     justify-content: center;
     flex-wrap: wrap;
 }
 
 .theme-button {
-    width: 40px;
-    height: 40px;
-    margin: 4px;
-    padding: 0 !important;
-    border: 1px solid;
+    width: 48px;
+    height: 48px;
+    flex-basis: 48px;
+    border-radius: 24px;
+    padding: 0;
     position: relative;
-    border-radius: 50%;
-    cursor: pointer;
+    margin: 8px;
+}
 
-    &:hover {
-        border: 2px solid;
+.theme-bg {
+    pointer-events: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 48px;
+    height: 48px;
+    border-radius: 24px;
+}
+
+.theme-pri {
+    pointer-events: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 48px;
+    height: 24px;
+    border-radius: 24px 24px 0 0;
+}
+
+.theme-clickable {
+    top: 0;
+    right: 0;
+    z-index: 90000;
+    width: 48px;
+    height: 48px;
+    border-radius: 24px;
+}
+
+
+// themes
+
+// ========================================================================================================
+// theme-0
+// ========================================================================================================
+.theme-0-bg {
+    background-color: #F0F0D4;
+    :hover {
+        background-color: #F0F0D4;
     }
+}
 
-    .bg-p {
-        border-radius: 50%;
-        overflow: hidden;
-        width: 16px;
-        height: 16px;
-        position: absolute;
-        top: 2px;
-        right: 12px;
+.theme-0-bg-p {
+    background-color: #3f51b5;
+}
+
+// ========================================================================================================
+// theme-1
+// ========================================================================================================
+.theme-1-bg {
+    background-color: #212121;
+    :hover {
+        background-color: #212121;
     }
+}
 
-    .bg-a {
-        border-radius: 50%;
-        overflow: hidden;
-        width: 16px;
-        height: 16px;
-        position: absolute;
-        bottom: 6px;
-        right: 4px;
+.theme-1-bg-p {
+    background-color: #c2185b;
+}
+
+// ========================================================================================================
+// theme-2
+// ========================================================================================================
+.theme-2-bg {
+    background-color: #212121;
+    :hover {
+        background-color: #212121;
     }
+}
 
-    .bg-w {
-        border-radius: 50%;
-        overflow: hidden;
-        width: 16px;
-        height: 16px;
-        position: absolute;
-        bottom: 6px;
-        left: 4px;
+.theme-2-bg-p {
+    background-color: #7b1fa2;
+}
+
+// ========================================================================================================
+// theme-3
+// ========================================================================================================
+.theme-3-bg {
+    background-color: #F0F0D4;
+    :hover {
+        background-color: #F0F0D4;
     }
+}
 
+.theme-3-bg-p {
+    background-color: #673ab7;
 }
