@@ -73,5 +73,9 @@
     "PENDING_TESTS":      "الاختبارات المعلقة",
     "SCHEDULED_TESTS_MISSING": "الاختبارات المجدولة المفقودة",
     "TEST_EQUIPMENT":     "معدات الاختبار",
-    "TEST_EQUIPMENT_TESTING": "اختبار المعدات"
+    "TEST_EQUIPMENT_TESTING": "اختبار المعدات",
+    "ACTION_DATE":        "تاريخ الاجراء",
+    "VALIDATED_BY":       "تم التحقق بواسطة",
+    "VALIDATION_DATE":    "تاريخ التحقق",
+    "REPORT_DATE":        "تاريخ التقرير"
 }

@@ -73,5 +73,9 @@
     "PENDING_TESTS":      "Pending tests",
     "SCHEDULED_TESTS_MISSING": "Scheduled tests missing",
     "TEST_EQUIPMENT":     "Test equipment",
-    "TEST_EQUIPMENT_TESTING": "Equipment testing"
+    "TEST_EQUIPMENT_TESTING": "Equipment testing",
+    "ACTION_DATE":        "Action date",
+    "VALIDATED_BY":       "Validated by",
+    "VALIDATION_DATE":    "Validation date",
+    "REPORT_DATE":        "Report date"
 }

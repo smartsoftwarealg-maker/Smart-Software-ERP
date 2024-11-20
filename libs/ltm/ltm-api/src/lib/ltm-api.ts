@@ -240,9 +240,13 @@ export interface LTMAbnormalTest {
     max: number;
     memo?: string;
     reportedBy?: number;
+    reportDate?: Date;
     correctionAction?: number;
     normId?: number;
     actionNo?: string;
+    actionDate?: Date;
+    responsibleId?: number;
+    validationDate?: Date;
     pickPoint?: string;
 }
 

@@ -36,6 +36,13 @@
                 <mat-label translate>LTM_ACTION_NUMBER</mat-label>
                 <input matInput formControlName="actionNo" type="text">
             </mat-form-field>
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>LTM_ACTION_DATE</mat-label>
+                <ss-date-picker [required]=true
+                                formControlName="actionDate"
+                                [type]="'date'">
+                </ss-date-picker>
+            </mat-form-field>
 
             <mat-form-field class="default-50 sm-100">
                 <mat-label translate>LTM_REPORTED_BY</mat-label>
@@ -43,6 +50,28 @@
                                   [model]="userLookup"
                                   formControlName="reportedBy">
                 </ss-auto-complete>
+            </mat-form-field>
+
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>LTM_REPORT_DATE</mat-label>
+                <ss-date-picker formControlName="reportDate"
+                                [type]="'date'">
+                </ss-date-picker>
+            </mat-form-field>
+
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>LTM_VALIDATED_BY</mat-label>
+                <ss-auto-complete matInput
+                                  [model]="responsibleLookup"
+                                  formControlName="responsibleId">
+                </ss-auto-complete>
+            </mat-form-field>
+
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>LTM_VALIDATION_DATE</mat-label>
+                <ss-date-picker formControlName="validationDate"
+                                [type]="'date'">
+                </ss-date-picker>
             </mat-form-field>
 
             <mat-form-field class="default-100">
