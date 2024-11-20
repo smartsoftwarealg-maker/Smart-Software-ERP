@@ -31,11 +31,8 @@ import { LtmNormService } from '@ltm/ltm-api';
         UiPaginationModule,
         ReactiveFormsModule,
         CommonUiConfirmationDialogModule,
-
-
         CommonUiAutoCompleteModule,
         CommonUiDatepickerModule,
-        RouterOutlet,
         CommonUiHourPickerModule
     ]
 })
@@ -47,6 +44,7 @@ export class LtmAlertsDetailComponent extends BaseEntityDetailComponent<LTMAbnor
     actionLookup = new DefaultAutoCompleteModel(this.#actionSrv);
     userLookup   = new UserLookup(this.#userSrv);
     normLookup = new DefaultAutoCompleteModel(this.#normSrv);
+    responsibleLookup = new UserLookup(this.#userSrv);
 
     constructor(
         public override entitySrv: LtmAbnormalTestService,
@@ -72,6 +70,10 @@ export class LtmAlertsDetailComponent extends BaseEntityDetailComponent<LTMAbnor
             actionNo:         [{ value: e.actionNo, disabled: false }],
             reportedBy:       [{ value: e.reportedBy, disabled: false }],
             normId:           [{ value: e.normId,  disabled: false }],
+            responsibleId:    [{ value: e.responsibleId, disabled: false }],
+            actionDate:       [{ value: e.actionDate, disabled: false }],
+            validationDate:   [{ value: e.validationDate, disabled: false }],
+            reportDate:       [{ value: e.reportDate, disabled: false }],
         })
     }
 

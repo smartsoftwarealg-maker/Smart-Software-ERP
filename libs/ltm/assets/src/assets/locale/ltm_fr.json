@@ -73,5 +73,9 @@
     "PENDING_TESTS":      "Tests en attente",
     "SCHEDULED_TESTS_MISSING": "Tests planifiés manquants",
     "TEST_EQUIPMENT":     "Equipement de tests",
-    "TEST_EQUIPMENT_TESTING": "Test equipements"
+    "TEST_EQUIPMENT_TESTING": "Test equipements",
+    "ACTION_DATE":        "Date d'action",
+    "VALIDATED_BY":       "Validé par",
+    "VALIDATION_DATE":    "Date de validation",
+    "REPORT_DATE":        "Date de rapport"
 }

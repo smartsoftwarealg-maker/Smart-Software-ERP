@@ -207,7 +207,10 @@ export interface LTMTesting {
     equipmentDescription?: string;
     zoneDescription?: string;
     supplierDescription?: string;
-    depositDescription?: string;}
+    depositDescription?: string;
+    actionTaken: boolean;
+    responsibleDescription?: string;
+}
 
 export interface LTMTestInjection {
     line: number;
@@ -237,9 +240,13 @@ export interface LTMAbnormalTest {
     max: number;
     memo?: string;
     reportedBy?: number;
+    reportDate?: Date;
     correctionAction?: number;
     normId?: number;
     actionNo?: string;
+    actionDate?: Date;
+    responsibleId?: number;
+    validationDate?: Date;
     pickPoint?: string;
 }
 
