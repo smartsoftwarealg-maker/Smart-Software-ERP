@@ -6,8 +6,7 @@ import {
     ACCTransaction,
     AccTransactionLineService,
     AccTransactionService,
-    Journal, SCALE
-} from '@ss/accounting/accounting-api';
+    Journal} from '@ss/accounting/accounting-api';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
@@ -165,19 +164,12 @@ export class TransactionListComponent extends BaseEntityListComponent<ACCTransac
 
     override selectRow(row: ACCTransaction) {
         if (this.isRoot) {
-            row.id = (row.fileId || 0) * SCALE + (row.oid || 0);
             super.selectRow(row);
         }
-        // this.navigate();
     }
 
     override edit() {
         this.navigate();
-        // if (this.selected) {
-        //     this.router
-        //         .navigate(['.'], {relativeTo: this.route})
-        //         .then(res => this.router.navigate([this.selected], {relativeTo: this.route}));
-        // }
     }
 
 
@@ -192,7 +184,6 @@ export class TransactionListComponent extends BaseEntityListComponent<ACCTransac
             .findByJournal(this.entitySrv.getParentId(), this.pagination.page, this.pagination.pageSize)
             .subscribe(res => {
                 this.data = res.body;
-                this.data.forEach(e => e.id = e.fileId * SCALE + e.oid);
                 this.pagination.elementCount = res.itemCount;
             });
     }
@@ -202,7 +193,6 @@ export class TransactionListComponent extends BaseEntityListComponent<ACCTransac
             .findByJournal(this.selectedJournal, this.pagination.page, this.pagination.pageSize)
             .subscribe(res => {
                 this.data = res.body;
-                this.data.forEach(e => e.id = e.fileId * SCALE + e.oid);
                 this.pagination.elementCount = res.itemCount;
             });
         // this.router

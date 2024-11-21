@@ -19,7 +19,7 @@ export const ACC_ACC_BALANCE_URL    = '/accounting/balance';
 export const ACC_ACCOUNTING_GL_URL  = '/accounting/gl';
 export const TRANSAC_ACCOUNT_URL    = '/accounting/transac-accounts';
 export const CASH_FLOW_ACCOUNTS_URL = '/cash-accounts';
-export const SCALE                  = 100000;
+export const SCALE                  = 10_000;
 
 export interface ACCPolicy {
     id: number;
@@ -110,6 +110,7 @@ export interface PieceSummary {
 
 export interface ACCTransactionLine {
     id: number;
+    parentId: number;
     fileId: number;
     oid: number;
     lineNumber: number;

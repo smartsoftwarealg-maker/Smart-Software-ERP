@@ -45,7 +45,7 @@ export class TransactionDetailComponent implements OnInit, OnDestroy {
     private subscriptions: Subscription[] = [];
     readonly isClosed = signal<boolean>(this.fileSrv.accFile.closed);
     protected readonly ACC_TRANSACTION_ARCHIVES = ACC_TRANSACTION_ARCHIVES;
-    isOnEdit = false;
+    isOnEdit = signal(false);
     form: UntypedFormGroup = null;
     id = 0;
     isEmpty = false;
@@ -82,9 +82,9 @@ export class TransactionDetailComponent implements OnInit, OnDestroy {
                         id: 0,
                         fileId: this.fileSrv.accFile.id,
                         oid: 0,
-                        pieceMonth: 0,
+                        pieceMonth: 1,
                         journalno: this.journalId,
-                        pieceNo: 0,
+                        pieceNo: 1,
                         isBudget: false})))
             .subscribe(ent => this.setupForm(ent));
 
@@ -92,7 +92,7 @@ export class TransactionDetailComponent implements OnInit, OnDestroy {
             this.router.events.pipe(
                 filter((e: any): e is RouterEvent => e instanceof RouterEvent)
             ).subscribe((e: RouterEvent) => {
-                this.isOnEdit = e.url.indexOf('/detail/') > 1;
+                this.isOnEdit.set(e.url.indexOf('/detail/') > 1);
             }));
     }
 
@@ -111,20 +111,21 @@ export class TransactionDetailComponent implements OnInit, OnDestroy {
             tap(res => this.projects = res));
     }
 
-    setupForm(e: ACCTransaction) {
+    private setupForm(e: ACCTransaction) {
         e.fileId = e.fileId || this.loginSrv.appCtx?.accFile;
-        e.id = e.oid? e.fileId * SCALE + (e.oid || 0) : 0;
+        // e.id = e.oid? e.fileId * SCALE + (e.oid || 0) : 0;
         this.isEmpty = e.debit < 0.001 && e.credit < 0.001;
+        this.detailSrv.setParentId(e.id||0);
         this.form = this.formBuilder.group({
             id:         [e.id],
             oid:        [e.oid || 0],
             pieceDate:  [e.pieceDate || this.maxDate, [Validators.required, maxDate(this.maxDate), minDate(this.minDate)]],
-            pieceNo:    [ { value: e.pieceNo || 0, disabled: !this.accPolicy.manualNumbering }, Validators.required],
+            pieceNo:    [{ value: e.pieceNo || 1, disabled: !this.accPolicy.manualNumbering }],
             folio:      [e.folio],
             projectId:  [e.projectId],
             piecemonth: [e.pieceMonth || this.loginSrv.appCtx.accPeriod],
             journalno:  [+e.journalno],
-            isBudget:   [e.isBudget || !e.id, Validators.required],
+            isBudget:   [e.isBudget || false, Validators.required],
             fileId:     [e.fileId],
         });
     }
@@ -148,9 +149,6 @@ export class TransactionDetailComponent implements OnInit, OnDestroy {
                     }
                 }
             });
-    }
-    protected goBack() {
-        // this.cancel();
     }
 
     public deleteSelected(): void {
