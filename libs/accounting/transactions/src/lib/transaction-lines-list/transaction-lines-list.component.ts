@@ -1,8 +1,8 @@
-import { Component, DestroyRef, inject, OnInit } from '@angular/core';
+import { Component, DestroyRef, inject, OnInit, signal } from '@angular/core';
 import {
     AccFileService,
     AccPoliciesService, ACCPolicy,
-    ACCTransactionLine, AccTransactionLineService, SCALE
+    ACCTransactionLine, AccTransactionLineService
 } from '@ss/accounting/accounting-api';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import { ActivatedRoute, Router, RouterModule } from "@angular/router";
@@ -61,7 +61,7 @@ export class TransactionLinesListComponent implements OnInit {
     data: ACCTransactionLine[] = [];
     pagination = PaginationModel.newInstance({page: 0, pageSize: 5, elementCount: 0});
     searchText = new FormControl<string>('');
-    readonly isClosed = this.fileSrv.accFile.closed;
+    readonly isClosed = signal<boolean>(this.fileSrv.accFile.closed);
 
     constructor(
         public entitySrv: AccTransactionLineService,
@@ -110,7 +110,6 @@ export class TransactionLinesListComponent implements OnInit {
     }
 
     selectRow(row: ACCTransactionLine) {
-        row.id = (row.fileId * SCALE + row.oid) * SCALE + row.lineNumber;
         this.selected = row?.id || 0;
     }
 

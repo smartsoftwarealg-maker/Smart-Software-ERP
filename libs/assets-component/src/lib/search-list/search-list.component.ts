@@ -132,6 +132,7 @@ export class SearchListComponent extends BaseEntityListComponent<Asset> implemen
             pagPersistSrv,
             'COMMON_SEARCH');
         this.pagination.pageSize = 10;
+        this.listSrv.activeOnly = false;
     }
 
     override preload(): Observable<any> {

@@ -100,8 +100,8 @@ export class InputFilterDetailComponent extends BaseEntityDetailComponent<InputF
         this.filteredElements = this.elements.filter(e => (searchText === '' ||
                                                                       e.description?.toLowerCase().indexOf(searchText) >= 0 ||
                                                                       e.field?.toLowerCase().indexOf(searchText) >= 0) &&
-                                                                      selection.indexOf(e.field) < 0);
-        this.selectionArray = this.elements.filter(e => selection.indexOf(e.field) >= 0);
+                                                                      selection.indexOf(e.field.toLowerCase()) < 0);
+        this.selectionArray = this.elements.filter(e => selection.indexOf(e.field.toLowerCase()) >= 0);
     }
 
     override readForm(): InputFilter {

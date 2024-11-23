@@ -97,6 +97,7 @@ export class AssetExcelInjectionComponent implements OnInit {
                 public snackBarSrv: SnackBarService,
                 private shellSrv: ShellService,
                 private activatedRoute: ActivatedRoute) {
+        this.injectSrv.activeOnly = false;
     }
 
     ngOnInit(): void {

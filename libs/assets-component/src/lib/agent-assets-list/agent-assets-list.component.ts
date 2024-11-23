@@ -56,6 +56,7 @@ export class AgentAssetsListComponent implements OnInit {
                 private route: ActivatedRoute,
                 private router: Router,
                 private assetSrv: AssetsService) {
+        assetSrv.activeOnly = false;
     }
 
     ngOnInit() {

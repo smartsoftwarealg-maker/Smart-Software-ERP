@@ -102,6 +102,7 @@ export class AssetAppointmentDocDetailComponent extends BaseEntityDetailComponen
         this.beneficiaryLookup.onObjectSelected = e => this.activity = e.activityDescription;
         this.officeAutoCompleteModel.onObjectSelected = o => this.onOfficeChange(o);
         this.assetLookupModel.onObjectSelected = o => this.geoLocation = o?.geolocation;
+        this.assetSrv.activeOnly = false;
     }
 
     public override setupForm(b: ASSAppointmentHeader) {

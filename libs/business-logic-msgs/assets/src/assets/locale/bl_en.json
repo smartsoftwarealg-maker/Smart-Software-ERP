@@ -62,5 +62,6 @@
     "INVALID_SCHEDULE_DATE":         "Invalid schedule date. Either the project is expired or the schedule date is not within the project's period.",
     "DUPLICATE_TEST":                "Duplicate test",
     "LONG_INPUT_FILTER":             "Very long text. Please, reduce the length of the text to be less than 1600 characters.",
-    "USED_FORMULA":                  "Used formula cannot be deleted."
+    "USED_FORMULA":                  "Used formula cannot be deleted.",
+    "INVALID_DATE":                  "Invalid date."
 }

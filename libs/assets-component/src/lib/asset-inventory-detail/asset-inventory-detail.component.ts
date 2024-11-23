@@ -66,6 +66,7 @@ export class AssetInventoryDetailComponent extends BaseEntityDetailComponent<Ass
         public override confirmationSrv: ConfirmationDialogService,
         public lookupsSrv: LookupsService) {
         super(entitySrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'INVENTORY');
+        this.assetSrv.activeOnly = false;
     }
 
     public override setupForm(b: AssetInventory) {

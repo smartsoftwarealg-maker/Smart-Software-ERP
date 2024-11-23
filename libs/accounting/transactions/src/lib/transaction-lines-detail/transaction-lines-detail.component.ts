@@ -72,6 +72,7 @@ export class TransactionLinesDetailComponent implements OnInit {
     id = 0;
     transactionId = 0;
     fileId = 0;
+    parentId = 0;
     selectedAccount: Account = null;
     isCloded = this.fileSrv.accFile.closed;
     private formValidator: ValidatorFn =
@@ -120,7 +121,8 @@ export class TransactionLinesDetailComponent implements OnInit {
 
     setupForm(e: ACCTransactionLine): UntypedFormGroup {
         return  this.formBuilder.group({
-            id:           [((e.fileId * SCALE + e.oid) * SCALE + e.lineNumber) || 0],
+            id:           [e.id || 0],
+            parentId:     [e.parentId||this.parentId],
             fileId:       [e.fileId || this.loginSrv.appCtx.accFile],
             oid:          [e.oid || this.transactionId],
             accountNo:    [e.accountNo],
@@ -183,6 +185,7 @@ export class TransactionLinesDetailComponent implements OnInit {
                 switchMap(_ => this.route.parent.parent.params),
                 tap(p => {
                     const id = +p['id'] || 0;
+                    this.parentId = id;
                     this.transactionId = id % SCALE;
                     this.fileId = +(id / SCALE).toFixed(0);
                 }),

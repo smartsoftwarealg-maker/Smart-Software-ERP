@@ -9,6 +9,7 @@ import {HttpParams} from '@angular/common/http';
     providedIn: 'root'
 })
 export class AssetsService extends BaseEntityService<Asset> {
+    #_activeOnly = false;
 
     constructor(protected override httpSrv: HttpService, private langSrv: LanguageService) {
         super(httpSrv, ASSETS_URL);
@@ -71,5 +72,29 @@ export class AssetsService extends BaseEntityService<Asset> {
 
     getAgentAssets(agentId: number): Observable<Asset[]> {
         return this.httpSrv.get<Asset[]>(`/assets/agents/${agentId}/list`);
+    }
+
+    set activeOnly(value: boolean) {
+        this.#_activeOnly = value;
+    }
+
+    get activeOnly(): boolean {
+        return this.#_activeOnly;
+    }
+
+    override getList(page: number, pageSize: number, filter?: string, sortBy?: string, extraPrams?: HttpParams): Observable<{
+        itemCount: number;
+        body: Asset[]
+    }> {
+        const newFilter = this.#_activeOnly ? `${filter||''}__(a)__` : filter;
+        return super.getList(page, pageSize, newFilter, sortBy, extraPrams);
+    }
+
+    toggleActivity() {
+        this.#_activeOnly = !this.#_activeOnly;
+    }
+
+    override excel(filter?: string): Observable<Blob> {
+        return super.excel(this.#_activeOnly ? `${filter||''}__(a)__` : filter);
     }
 }

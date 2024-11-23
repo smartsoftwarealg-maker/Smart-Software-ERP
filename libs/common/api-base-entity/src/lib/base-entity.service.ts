@@ -3,8 +3,6 @@ import {Observable, of} from 'rxjs';
 import {HttpParams} from '@angular/common/http';
 import {HttpService, isString, PaginationModel} from '@ss/common/api-common';
 import {Sort} from '@angular/material/sort';
-import { SnackBarService } from "@ss/common/ui-shell";
-import { inject } from "@angular/core";
 
 export class BaseEntityService<T> {
     private _sortColumn: string = null;

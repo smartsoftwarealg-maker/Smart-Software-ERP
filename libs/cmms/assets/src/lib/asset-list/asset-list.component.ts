@@ -55,6 +55,7 @@ export class AssetListComponent extends BaseEntityListComponent<Asset> {
             pagPersistSrv,
             'ASSETS');
         this.pagination.pageSize = 10;
+        this.listSrv.activeOnly = false;
     }
 
     override selectRow(row: Asset) {
