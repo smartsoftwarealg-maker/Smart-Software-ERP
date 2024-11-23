@@ -2,21 +2,28 @@ import { Component } from '@angular/core';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
-import {UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import { Lookup, LookupsService } from '@ss/common/api-lookup';
 import {LoginService} from '@ss/common/api-common';
 import {Observable, of} from 'rxjs';
-import {MatExpansionPanel} from '@angular/material/expansion';
+import { MatExpansionPanel, MatAccordion, MatExpansionPanelHeader, MatExpansionPanelTitle } from '@angular/material/expansion';
 import { AccJournalsService, AccPoliciesService, AccProjectService, Journal } from '@ss/accounting/accounting-api';
 import {ACCPolicy} from '@ss/accounting/accounting-api';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
-import {MatCheckboxChange} from '@angular/material/checkbox';
+import { MatCheckboxChange, MatCheckbox } from '@angular/material/checkbox';
+import { NgIf } from '@angular/common';
+import { TranslateDirective } from '../../../../common/ui-lang/src/lib/translate.directive';
+import { MatFormField, MatLabel } from '@angular/material/form-field';
+import { UiAutoCompleteComponent } from '../../../../common/ui-auto-complete/src/lib/auto-complete.component';
+import { MatInput } from '@angular/material/input';
 
 @Component({
     selector: 'ss-acc-policies',
     templateUrl: './acc-policies.component.html',
-    styleUrls: ['./acc-policies.component.scss']
+    styleUrls: ['./acc-policies.component.scss'],
+    standalone: true,
+    imports: [NgIf, FormsModule, ReactiveFormsModule, MatAccordion, MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelTitle, TranslateDirective, MatCheckbox, MatFormField, MatLabel, UiAutoCompleteComponent, MatInput]
 })
 export class AccPoliciesComponent extends BaseEntityDetailComponent<ACCPolicy> {
     journalLookup: DefaultAutoCompleteModel<Journal> = null;

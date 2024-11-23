@@ -3,15 +3,23 @@ import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {VacationPlanning} from '../vacation-planning-api';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
-import {UntypedFormBuilder, UntypedFormGroup} from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {LookupsService} from '@ss/common/api-lookup';
 import {VacationPlanningService} from '@ss/remuneration/vacation-planning';
+import { MatCard } from '@angular/material/card';
+import { NgIf } from '@angular/common';
+import { MatFormField, MatLabel } from '@angular/material/form-field';
+import { TranslateDirective } from '../../../../../common/ui-lang/src/lib/translate.directive';
+import { MatInput } from '@angular/material/input';
+import { VacationPlanningDetailListComponent } from '../vacation-planning-detail-list/vacation-planning-detail-list.component';
 
 @Component({
     selector: 'ss-vacation-planning-detail',
     templateUrl: './vacation-planning-detail.component.html',
-    styleUrls: ['./vacation-planning-detail.component.scss']
+    styleUrls: ['./vacation-planning-detail.component.scss'],
+    standalone: true,
+    imports: [MatCard, NgIf, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, VacationPlanningDetailListComponent]
 })
 export class VacationPlanningDetailComponent extends BaseEntityDetailComponent<VacationPlanning> implements OnInit {
 

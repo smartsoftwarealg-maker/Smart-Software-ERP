@@ -8,8 +8,8 @@ describe('UiCustomerProfileComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ UiCustomerProfileComponent ]
-    })
+    declarations: [UiCustomerProfileComponent]
+})
     .compileComponents();
   });
 

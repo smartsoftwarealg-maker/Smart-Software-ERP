@@ -1,10 +1,15 @@
 import { Component, Inject } from '@angular/core';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogRef, MatDialogContent, MatDialogActions } from '@angular/material/dialog';
+import { TranslateDirective } from '../../../../../../libs/common/ui-lang/src/lib/translate.directive';
+import { CdkScrollable } from '@angular/cdk/scrolling';
+import { MatButton } from '@angular/material/button';
 
 @Component({
     selector: 'ss-confirmation-dialog',
     templateUrl: './confirmation-dialog.component.html',
-    styleUrls: ['./confirmation-dialog.component.scss']
+    styleUrls: ['./confirmation-dialog.component.scss'],
+    standalone: true,
+    imports: [TranslateDirective, CdkScrollable, MatDialogContent, MatDialogActions, MatButton]
 })
 export class ConfirmationDialogComponent {
 

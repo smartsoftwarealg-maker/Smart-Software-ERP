@@ -4,11 +4,8 @@ import { IdiotPageComponent } from './idiot-page.component';
 import {MaterialModule} from "@ss/common/api-common";
 
 @NgModule({
-  imports: [CommonModule,
-            MaterialModule],
-  declarations: [
-    IdiotPageComponent
-  ],
+    imports: [CommonModule,
+        MaterialModule, IdiotPageComponent],
     exports: [
         IdiotPageComponent
     ]

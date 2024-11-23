@@ -1,10 +1,15 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {ABS_INDEX_URL, LoginService, LoginType} from '@ss/common/api-common';
 import {DeviceDetectorService} from 'ngx-device-detector';
 import {Router} from '@angular/router';
 import { ThemeService } from '@ss/common/ui-theme';
 import { ShellService } from '@ss/common/ui-shell';
+import { NgStyle } from '@angular/common';
+import { TranslateDirective } from '../../../ui-lang/src/lib/translate.directive';
+import { ThemeSelect } from '../../../ui-theme/src/lib/theme-select.component';
+import { LanguageSelectComponent } from '../../../ui-lang/src/lib/language-select.component';
+import { TranslatePipe } from '../../../ui-lang/src/lib/translate.pipe';
 
 type User = {
     username: string, password: string
@@ -12,7 +17,9 @@ type User = {
 @Component({
     selector: 'ss-login',
     templateUrl: './login.component.html',
-    styleUrls: ['./login.component.scss']
+    styleUrls: ['./login.component.scss'],
+    standalone: true,
+    imports: [NgStyle, FormsModule, ReactiveFormsModule, TranslateDirective, ThemeSelect, LanguageSelectComponent, TranslatePipe]
 })
 export class LoginComponent implements OnInit {
     private shellSrv = inject(ShellService);

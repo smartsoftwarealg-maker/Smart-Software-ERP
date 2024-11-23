@@ -1,12 +1,19 @@
 import { Component, ElementRef, inject, Input, OnInit, ViewChild } from '@angular/core';
 import {ExtendedPaginationModel, isString, LanguageService, PaginationModel} from '@ss/common/api-common';
+import { NgStyle } from '@angular/common';
+import { MatIconButton, MatMiniFabButton } from '@angular/material/button';
+import { MatMenuTrigger, MatMenu, MatMenuItem } from '@angular/material/menu';
+import { MatInput } from '@angular/material/input';
+import { TranslateDirective } from '../../../ui-lang/src/lib/translate.directive';
 
 
 
 @Component({
     selector: 'ss-pagination',
     templateUrl: './pagination.component.html',
-    styleUrls: ['./pagination.component.scss']
+    styleUrls: ['./pagination.component.scss'],
+    standalone: true,
+    imports: [NgStyle, MatIconButton, MatMiniFabButton, MatMenuTrigger, MatInput, TranslateDirective, MatMenu, MatMenuItem]
 })
 export class PaginationComponent implements OnInit {
     public langSrv = inject(LanguageService);

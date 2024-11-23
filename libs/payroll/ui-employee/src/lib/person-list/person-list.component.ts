@@ -10,6 +10,11 @@ import { ImageModel } from '@ss/common/ui-image-input';
 import { HttpService, LanguageService, PaginatorPersistenceService } from '@ss/common/api-common';
 import { DefaultReportService } from '@ss/common/ui-default-report-component';
 import { PersonSummary as IPersonSummary } from '@ss/employee-services/employee-services';
+import { MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRow, MatRowDef, MatRow } from '@angular/material/table';
+import { MatSort, MatSortHeader } from '@angular/material/sort';
+import { TranslateDirective } from '../../../../../common/ui-lang/src/lib/translate.directive';
+import { ImageInputComponent } from '../../../../../common/ui-image-input/src/lib/image-input.component';
+import { PaginationComponent } from '../../../../../common/ui-pagination/src/lib/pagination.component';
 
 interface Lookup {
     id: number;
@@ -25,7 +30,9 @@ interface PersonSummary extends IPersonSummary {
 @Component({
     selector: 'ss-person-list',
     styleUrls: ['./person-list.component.scss'],
-    templateUrl: './person-list.component.html'
+    templateUrl: './person-list.component.html',
+    standalone: true,
+    imports: [MatTable, MatSort, MatColumnDef, MatHeaderCellDef, MatHeaderCell, TranslateDirective, MatCellDef, MatCell, ImageInputComponent, MatSortHeader, MatHeaderRow, MatRowDef, MatRow, PaginationComponent]
 })
 export class PersonListComponent extends BaseEntityListComponent<IPersonSummary> implements OnInit {
     activePersonnel = true;

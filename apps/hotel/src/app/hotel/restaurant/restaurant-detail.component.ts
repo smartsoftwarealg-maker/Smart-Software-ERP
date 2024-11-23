@@ -13,6 +13,17 @@ import { AgentACModel, BookingStates, FullServiceDataSource } from './restaurant
 import { UserService } from '../../smart-lib/components/login/user.service';
 import { HttpService } from '../../smart-lib/common/http.service';
 import { deepCopy } from '../../smart-lib/common/util';
+import { NgIf, NgFor, NgClass } from '@angular/common';
+import { LoadingSpinnerComponent } from '../../smart-lib/components/loading-spinner/loading-spinner.component';
+import { FatalErrorComponent } from '../../smart-lib/components/fatal-error/fatal-error.component';
+import { MatMiniFabButton, MatIconButton, MatButton } from '@angular/material/button';
+import { TranslateDirective } from '../../../../../../libs/common/ui-lang/src/lib/translate.directive';
+import { AutoCompleteComponent } from '../../common/auto-complete/auto-complete.component';
+import { MatFormField, MatLabel } from '@angular/material/form-field';
+import { MatSelect } from '@angular/material/select';
+import { MatOption } from '@angular/material/core';
+import { SaveBarComponent } from '../../common/save-bar/save-bar.component';
+import { ImageInputComponent } from '../../common/image-input/image-input.component';
 
 const payModeCash = 66;
 const roomsByBookingUrl = '/hotels/roomsByBooking';
@@ -59,7 +70,9 @@ function calculateVAT(inv: FullService) {
 @Component({
     selector: 'app-restaurant-dtl',
     templateUrl: './restaurant-detail.component.html',
-    styleUrls: ['./restaurant-detail.component.scss']
+    styleUrls: ['./restaurant-detail.component.scss'],
+    standalone: true,
+    imports: [NgIf, LoadingSpinnerComponent, FatalErrorComponent, MatMiniFabButton, TranslateDirective, AutoCompleteComponent, MatFormField, MatLabel, MatSelect, NgFor, MatOption, MatIconButton, SaveBarComponent, MatButton, NgClass, ImageInputComponent]
 })
 // tslint:disable-next-line:max-line-length
 export class RestaurantDetailComponent extends AbstractEntityView<FullService, BackendDataSource<FullService>> implements OnInit, OnDestroy {

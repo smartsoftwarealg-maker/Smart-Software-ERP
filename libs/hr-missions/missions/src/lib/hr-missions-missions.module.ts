@@ -16,15 +16,11 @@ import {MissionPreparationListComponent} from './mission-preparation-list/missio
         CommonModule,
         MaterialModule,
         CommonUiLangModule,
-
         UiPaginationModule,
         CommonUiConfirmationDialogModule,
         CommonUiDatepickerModule,
         CommonUiAutoCompleteModule,
-        RouterModule
-    ],
-
-    declarations: [
+        RouterModule,
         MissionPreparationDetailComponent,
         MissionPreparationListComponent
     ]

@@ -24,12 +24,8 @@ import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
         RouterModule,
         CommonUiDatepickerModule,
         CommonUiAutoCompleteModule,
-
         LogisticsUiStockInfoModule,
-        DocInfoComponent
-    ],
-
-    declarations: [OrderListComponent,
+        DocInfoComponent, OrderListComponent,
         OrderDetailComponent]
 })
 export class SalesUiSalesOrderModule {}

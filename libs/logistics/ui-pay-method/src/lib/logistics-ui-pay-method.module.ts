@@ -17,15 +17,13 @@ import {CommonUiAutoCompleteModule} from '@ss/common/ui-auto-complete';
         UiPaginationModule,
         CommonUiAutoCompleteModule,
         ReactiveFormsModule,
-        CommonUiConfirmationDialogModule
+        CommonUiConfirmationDialogModule,
+        PayMethodListComponent,
+        PayMethodDetailComponent
     ],
-  declarations: [
-      PayMethodListComponent,
-      PayMethodDetailComponent
-  ],
-  exports: [
-      PayMethodListComponent,
-      PayMethodDetailComponent
-  ]
+    exports: [
+        PayMethodListComponent,
+        PayMethodDetailComponent
+    ]
 })
 export class LogisticsUiPayMethodModule {}

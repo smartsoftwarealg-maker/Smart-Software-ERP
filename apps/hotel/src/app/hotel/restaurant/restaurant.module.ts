@@ -11,8 +11,8 @@ import { CanDeactivateService, RestaurantDetailComponent } from './restaurant-de
 import { AutoCompleteModule } from '../../common/auto-complete/auto-complete.module';
 import { ImageInputModule } from '../../common/image-input/image-input.module';
 import { SaveBarModule } from '../../common/save-bar/save-bar.module';
-import { SmartCommonModule } from '../../smart-lib/common/smart-common.module';
-import { FatalErrorModule } from '../../smart-lib/components/fatal-error/fatal-error.module';
+
+
 import { LoadingSpinnerModule } from '../../smart-lib/components/loading-spinner/loading-spinner.module';
 import { CanActivateService } from '../../smart-lib/components/login/can-activte.service';
 import { LanguageService } from '@ss/common/api-common';
@@ -38,22 +38,18 @@ const routes: Routes = [
 
 @NgModule({
     imports: [
-        CommonModule,
-        SmartCommonModule,
-        MaterialModule,
-        FatalErrorModule,
-        LoadingSpinnerModule,
-        ListToolbarModule,
-        PaginationModule,
-        AutoCompleteModule,
-        ImageInputModule,
-        RouterModule.forChild(routes),
-        SaveBarModule
-    ],
-    declarations: [
-        RestaurantListComponent,
-        RestaurantDetailComponent,
-    ],
+    CommonModule,
+    MaterialModule,
+    LoadingSpinnerModule,
+    ListToolbarModule,
+    PaginationModule,
+    AutoCompleteModule,
+    ImageInputModule,
+    RouterModule.forChild(routes),
+    SaveBarModule,
+    RestaurantListComponent,
+    RestaurantDetailComponent
+],
     providers: [
         RestaurantService,
         CanDeactivateService,

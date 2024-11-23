@@ -1,18 +1,28 @@
 import { Component, inject } from '@angular/core';
 import { BaseChildEntityDetailComponent } from '@ss/common/ui-base-entity';
 import {Punishment} from '../punishment-api';
-import { FormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
+import { FormBuilder, UntypedFormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {
     ProfessionalFaultService,
     PunishmentTypeService
 } from '@ss/payroll/api-employee';
 import {PunishmentService} from '../punishment.service';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
+import { NgIf } from '@angular/common';
+import { MatMiniFabButton } from '@angular/material/button';
+import { MatCard } from '@angular/material/card';
+import { MatFormField, MatLabel, MatError } from '@angular/material/form-field';
+import { TranslateDirective } from '../../../../../../common/ui-lang/src/lib/translate.directive';
+import { MatInput } from '@angular/material/input';
+import { DatePickerComponent } from '../../../../../../common/ui-datepicker/src/lib/date-picker.component';
+import { UiAutoCompleteComponent } from '../../../../../../common/ui-auto-complete/src/lib/auto-complete.component';
 
 @Component({
     selector: 'ss-punishment-detail',
     templateUrl: './punishment-detail.component.html',
-    styleUrls: ['./punishment-detail.component.scss']
+    styleUrls: ['./punishment-detail.component.scss'],
+    standalone: true,
+    imports: [NgIf, MatMiniFabButton, MatCard, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, MatError, DatePickerComponent, UiAutoCompleteComponent]
 })
 export class PunishmentDetailComponent extends BaseChildEntityDetailComponent<Punishment> {
     private formBuilder = inject(FormBuilder);

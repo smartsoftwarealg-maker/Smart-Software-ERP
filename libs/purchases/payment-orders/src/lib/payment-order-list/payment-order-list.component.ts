@@ -8,11 +8,17 @@ import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {PaginatorPersistenceService} from '@ss/common/api-common';
 import {PaymentOrderService} from '../payment-order.service';
+import { MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from '@angular/material/table';
+import { TranslateDirective } from '../../../../../common/ui-lang/src/lib/translate.directive';
+import { PaginationComponent } from '../../../../../common/ui-pagination/src/lib/pagination.component';
+import { DecimalPipe, DatePipe } from '@angular/common';
 
 @Component({
-  selector: 'ss-payment-order-list',
-  templateUrl: './payment-order-list.component.html',
-  styleUrls: ['./payment-order-list.component.scss']
+    selector: 'ss-payment-order-list',
+    templateUrl: './payment-order-list.component.html',
+    styleUrls: ['./payment-order-list.component.scss'],
+    standalone: true,
+    imports: [MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, TranslateDirective, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, PaginationComponent, DecimalPipe, DatePipe]
 })
 export class PaymentOrderListComponent extends BaseEntityListComponent<PaymentOrder> {
     displayedColumns = [

@@ -3,11 +3,17 @@ import {CashFlowAcc, CashFlowAccountService} from '@ss/accounting/accounting-api
 import {ActivatedRoute, Router} from '@angular/router';
 import {LoginService, PaginationModel} from '@ss/common/api-common';
 import {SnackBarService} from '@ss/common/ui-shell';
+import { MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from '@angular/material/table';
+import { TranslateDirective } from '../../../../../common/ui-lang/src/lib/translate.directive';
+import { MatIconButton } from '@angular/material/button';
+import { PaginationComponent } from '../../../../../common/ui-pagination/src/lib/pagination.component';
 
 @Component({
-  selector: 'ss-cash-flow-account-list',
-  templateUrl: './cash-flow-account-list.component.html',
-  styleUrls: ['./cash-flow-account-list.component.scss']
+    selector: 'ss-cash-flow-account-list',
+    templateUrl: './cash-flow-account-list.component.html',
+    styleUrls: ['./cash-flow-account-list.component.scss'],
+    standalone: true,
+    imports: [MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, TranslateDirective, MatCellDef, MatCell, MatIconButton, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, PaginationComponent]
 })
 export class CashFlowAccountListComponent implements OnInit {
     private filter: string = '';

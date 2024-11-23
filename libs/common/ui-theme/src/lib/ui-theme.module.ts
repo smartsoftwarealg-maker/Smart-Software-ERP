@@ -5,8 +5,7 @@ import { ThemeSelect } from './theme-select.component';
 import { MaterialModule } from '@ss/common/api-common';
 
 @NgModule({
-    imports: [CommonModule, MaterialModule],
-    declarations: [ThemeDirective, ThemeSelect],
+    imports: [CommonModule, MaterialModule, ThemeDirective, ThemeSelect],
     exports: [ThemeDirective, ThemeSelect],
 })
 export class UiThemeModule { }

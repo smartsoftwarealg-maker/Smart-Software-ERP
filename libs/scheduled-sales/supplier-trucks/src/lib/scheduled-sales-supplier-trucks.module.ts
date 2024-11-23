@@ -20,7 +20,7 @@ import {CommonUiAutoCompleteModule} from '@ss/common/ui-auto-complete';
         CommonUiConfirmationDialogModule,
         CommonUiDatepickerModule,
         CommonUiAutoCompleteModule,
+        SupplierTrucksListComponent, SupplierTrucksDetailComponent,
     ],
-    declarations: [SupplierTrucksListComponent, SupplierTrucksDetailComponent],
 })
 export class ScheduledSalesSupplierTrucksModule {}

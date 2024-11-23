@@ -25,8 +25,6 @@ import { CheckMatchingListComponent } from './check-matching-list/check-matching
         CommonUiDatepickerModule,
         RouterModule,
         CommonUiAutoCompleteModule,
-    ],
-    declarations: [
         CheckListComponent,
         CheckDetailComponent,
         AgentDenominationPipe,

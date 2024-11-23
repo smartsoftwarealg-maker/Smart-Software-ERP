@@ -3,18 +3,38 @@ import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {Budget} from '../budget-api';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
-import {UntypedFormBuilder, Validators} from '@angular/forms';
+import { UntypedFormBuilder, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {BudgetService} from '../budget.service';
 import {ACCFile, AccFileService} from '@ss/accounting/accounting-api';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {Observable} from 'rxjs';
 import {switchMap, tap} from 'rxjs/operators';
+import { MatCard, MatCardContent } from "@angular/material/card";
+import { NgIf } from "@angular/common";
+import { MatFormField, MatLabel, MatError } from "@angular/material/form-field";
+import { TranslateDirective } from "../../../../../common/ui-lang/src/lib/translate.directive";
+import { UiAutoCompleteComponent } from "../../../../../common/ui-auto-complete/src/lib/auto-complete.component";
+import { MatInput } from "@angular/material/input";
 
 @Component({
     selector: 'ss-budget-detail',
     templateUrl: './budget-detail.component.html',
     styleUrls: ['./budget-detail.component.scss'],
+    standalone: true,
+    imports: [
+        MatCard,
+        MatCardContent,
+        NgIf,
+        FormsModule,
+        ReactiveFormsModule,
+        MatFormField,
+        MatLabel,
+        TranslateDirective,
+        UiAutoCompleteComponent,
+        MatError,
+        MatInput,
+    ],
 })
 export class BudgetDetailComponent extends BaseEntityDetailComponent<Budget> {
     private fileSrv = inject(AccFileService);

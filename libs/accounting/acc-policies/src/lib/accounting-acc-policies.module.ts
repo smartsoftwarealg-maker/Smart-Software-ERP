@@ -16,10 +16,8 @@ import {CommonUiAutoCompleteModule} from '@ss/common/ui-auto-complete';
         UiPaginationModule,
         ReactiveFormsModule,
         CommonUiAutoCompleteModule,
-        CommonUiConfirmationDialogModule
-    ],
-    declarations: [
-      AccPoliciesComponent
+        CommonUiConfirmationDialogModule,
+        AccPoliciesComponent
     ],
     exports: [
         AccPoliciesComponent

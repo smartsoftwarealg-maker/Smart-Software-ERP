@@ -3,15 +3,26 @@ import {
     EmploymentTypeService,
     SuspensionReasonService
 } from '@ss/common/api-lookup';
-import { FormBuilder, UntypedFormGroup } from '@angular/forms';
+import { FormBuilder, UntypedFormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EmployeeActivationService, EmployeeActivation } from '@ss/payroll/api-employee';
 import { BaseChildEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { map } from 'rxjs/operators';
+import { MatMiniFabButton } from '@angular/material/button';
+import { MatCard, MatCardContent } from '@angular/material/card';
+import { MatFormField, MatLabel } from '@angular/material/form-field';
+import { TranslateDirective } from '../../../../../../common/ui-lang/src/lib/translate.directive';
+import { DatePickerComponent } from '../../../../../../common/ui-datepicker/src/lib/date-picker.component';
+import { MatSelect } from '@angular/material/select';
+import { MatOption } from '@angular/material/core';
+import { NgFor, AsyncPipe } from '@angular/common';
+import { MatCheckbox } from '@angular/material/checkbox';
 
 @Component({
     selector: 'ss-emp-active-detail',
     templateUrl: './employee-activation-detail.component.html',
-    styleUrls: ['./employee-activation-detail.component.scss']
+    styleUrls: ['./employee-activation-detail.component.scss'],
+    standalone: true,
+    imports: [MatMiniFabButton, MatCard, MatCardContent, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, DatePickerComponent, MatSelect, MatOption, NgFor, MatCheckbox, AsyncPipe]
 })
 export class EmployeeActivationDetailComponent extends BaseChildEntityDetailComponent<EmployeeActivation> {
     private suspensionReasonSrv = inject(SuspensionReasonService);

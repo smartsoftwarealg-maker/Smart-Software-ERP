@@ -11,11 +11,9 @@ import {UiPaginationModule} from '@ss/common/ui-pagination';
         CommonModule,
         MaterialModule,
         UiPaginationModule,
-        CommonUiLangModule
-    ],
-    declarations: [
-      ElementsInfoComponent,
-      ElementsInfoDetailComponent
+        CommonUiLangModule,
+        ElementsInfoComponent,
+        ElementsInfoDetailComponent
     ],
 })
 export class RemunerationElementsinfoModule {}

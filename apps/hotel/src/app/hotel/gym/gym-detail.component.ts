@@ -8,12 +8,23 @@ import { DisplayableService, FullService, Room, ServiceDetail } from '../hotel-a
 import { AgentACModel, FullServiceDataSource } from './gym-api';
 import { dateTimeToStr, LoadingState, strToDateTime } from '../../common/util';
 import { map, switchMap } from 'rxjs/operators';
-import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BookingStates } from '../restaurant/restaurant-api';
 import { Right } from '../../smart-lib/common/models';
 import { UserService } from '../../smart-lib/components/login/user.service';
 import { deepCopy } from '../../smart-lib/common/util';
 import { HttpService } from '../../smart-lib/common/http.service';
+import { TranslateDirective } from '../../../../../../libs/common/ui-lang/src/lib/translate.directive';
+import { NgIf, NgFor } from '@angular/common';
+import { LoadingSpinnerComponent } from '../../smart-lib/components/loading-spinner/loading-spinner.component';
+import { FatalErrorComponent } from '../../smart-lib/components/fatal-error/fatal-error.component';
+import { AutoCompleteComponent } from '../../common/auto-complete/auto-complete.component';
+import { MatFormField, MatLabel } from '@angular/material/form-field';
+import { MatSelect } from '@angular/material/select';
+import { MatOption } from '@angular/material/core';
+import { DatePickerComponent } from '../../common/date-picker/date-picker.component';
+import { SaveBarComponent } from '../../common/save-bar/save-bar.component';
+import { MatButton } from '@angular/material/button';
 
 const millisecondsInMin = 60000;
 
@@ -62,7 +73,9 @@ function minutesBetweenInstants(from: number, to: number): number {
 @Component({
     selector: 'app-hotel-gym-dtl',
     templateUrl: './gym-detail.component.html',
-    styleUrls: ['./gym-detail.component.scss']
+    styleUrls: ['./gym-detail.component.scss'],
+    standalone: true,
+    imports: [TranslateDirective, NgIf, LoadingSpinnerComponent, FatalErrorComponent, FormsModule, ReactiveFormsModule, AutoCompleteComponent, MatFormField, MatLabel, MatSelect, NgFor, MatOption, DatePickerComponent, SaveBarComponent, MatButton]
 })
 export class GymDetailComponent implements OnInit {
 

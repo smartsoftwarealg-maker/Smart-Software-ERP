@@ -6,11 +6,17 @@ import {CCGroup, Currency, CurrencyService, LookupsService} from '@ss/common/api
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {PaginatorPersistenceService} from '@ss/common/api-common';
+import { MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from '@angular/material/table';
+import { TranslateDirective } from '../../../../common/ui-lang/src/lib/translate.directive';
+import { PaginationComponent } from '../../../../common/ui-pagination/src/lib/pagination.component';
+import { DecimalPipe } from '@angular/common';
 
 @Component({
     selector: 'ss-cost-center-list',
     styleUrls: ['./currency-list.component.scss'],
-    templateUrl: './currency-list.component.html'
+    templateUrl: './currency-list.component.html',
+    standalone: true,
+    imports: [MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, TranslateDirective, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, PaginationComponent, DecimalPipe]
 })
 export class CurrencyListComponent extends BaseEntityListComponent<Currency> {
 

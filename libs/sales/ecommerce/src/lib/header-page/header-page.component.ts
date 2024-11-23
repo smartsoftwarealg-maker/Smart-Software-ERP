@@ -1,14 +1,43 @@
 import {Component, EventEmitter, inject, Input, OnDestroy, OnInit, Output} from '@angular/core';
-import { CommonModule } from '@angular/common';
-import {FormControl} from '@angular/forms';
+import { CommonModule, NgIf } from '@angular/common';
+import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {CartService} from '../cart.service';
 import {Subscription} from 'rxjs';
 import {debounceTime, distinctUntilChanged} from 'rxjs/operators';
+import { MatFormField, MatLabel } from '@angular/material/form-field';
+import { TranslateDirective } from '../../../../../common/ui-lang/src/lib/translate.directive';
+import { MatInput } from '@angular/material/input';
+import { MatIconButton } from '@angular/material/button';
+import { MatTooltip } from '@angular/material/tooltip';
+import { MatBadge } from '@angular/material/badge';
+import { MatMenuTrigger, MatMenu, MatMenuItem } from '@angular/material/menu';
+import { LanguageSelectComponent } from '../../../../../common/ui-lang/src/lib/language-select.component';
+import { ThemeSelect } from '../../../../../common/ui-theme/src/lib/theme-select.component';
+import { TranslatePipe } from '../../../../../common/ui-lang/src/lib/translate.pipe';
 
 @Component({
     selector: 'ss-header-page',
     templateUrl: './header-page.component.html',
     styleUrls: ['./header-page.component.scss'],
+    standalone: true,
+    imports: [
+        NgIf,
+        MatFormField,
+        MatLabel,
+        TranslateDirective,
+        MatInput,
+        FormsModule,
+        ReactiveFormsModule,
+        MatIconButton,
+        MatTooltip,
+        MatBadge,
+        MatMenuTrigger,
+        MatMenu,
+        MatMenuItem,
+        LanguageSelectComponent,
+        ThemeSelect,
+        TranslatePipe,
+    ],
 })
 export class HeaderPageComponent implements OnInit, OnDestroy {
     @Output() refresh   = new EventEmitter<string>();

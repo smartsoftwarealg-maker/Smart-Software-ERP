@@ -1,13 +1,19 @@
 import {Component, Inject, OnInit} from '@angular/core';
-import {UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {ConfirmationDialogService} from '../../common/confirmation-dialog/confirmation-dialog.service';
 import {RoomOption} from '../hotel-api';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { TranslateDirective } from '../../../../../../libs/common/ui-lang/src/lib/translate.directive';
+import { MatFormField, MatLabel } from '@angular/material/form-field';
+import { MatInput } from '@angular/material/input';
+import { SaveBarComponent } from '../../common/save-bar/save-bar.component';
 
 @Component({
     selector: 'app-room-options-detail',
     templateUrl: './room-options-detail.component.html',
-    styleUrls: ['./room-options-detail.component.scss']
+    styleUrls: ['./room-options-detail.component.scss'],
+    standalone: true,
+    imports: [TranslateDirective, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, MatInput, SaveBarComponent]
 })
 export class RoomOptionsDetailComponent implements OnInit {
     public form: UntypedFormGroup = null;

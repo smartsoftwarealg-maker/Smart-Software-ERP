@@ -3,14 +3,44 @@ import { ExtraCostService } from '../services/extra-cost.service';
 import { PaginationModel } from '@ss/common/api-common';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { COST_TYPES, ExtraCost, VALUE_TYPES } from '@ss/logistics/api-transaction';
-import { Sort } from '@angular/material/sort';
+import { Sort, MatSort, MatSortHeader } from '@angular/material/sort';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
+import { NgIf, DecimalPipe, DatePipe } from '@angular/common';
+import { MatMiniFabButton } from '@angular/material/button';
+import { MatTooltip } from '@angular/material/tooltip';
+import { MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from '@angular/material/table';
+import { TranslateDirective } from '../../../../../common/ui-lang/src/lib/translate.directive';
+import { PaginationComponent } from '../../../../../common/ui-pagination/src/lib/pagination.component';
+import { TranslatePipe } from '../../../../../common/ui-lang/src/lib/translate.pipe';
 
 @Component({
     selector: 'ss-extra-costs-list',
     templateUrl: './extra-cost-list.component.html',
     styleUrls: ['./extra-cost-list.component.scss'],
+    standalone: true,
+    imports: [
+        NgIf,
+        MatMiniFabButton,
+        MatTooltip,
+        MatTable,
+        MatSort,
+        MatColumnDef,
+        MatHeaderCellDef,
+        MatHeaderCell,
+        MatSortHeader,
+        TranslateDirective,
+        MatCellDef,
+        MatCell,
+        MatHeaderRowDef,
+        MatHeaderRow,
+        MatRowDef,
+        MatRow,
+        PaginationComponent,
+        DecimalPipe,
+        DatePipe,
+        TranslatePipe,
+    ],
 })
 export class ExtraCostListComponent implements OnInit {
     private snackBarSrv = inject(SnackBarService);

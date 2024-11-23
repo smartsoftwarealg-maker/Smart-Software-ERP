@@ -34,14 +34,10 @@ import { ImageInputComponent } from '@ss/common/ui-image-input';
         RouterModule,
         CommonUiDatepickerModule,
         CommonUiAutoCompleteModule,
-
         LogisticsUiDocImportModule,
-
         BrowserAnimationsModule,
         UiThemeModule,
-        ImageInputComponent
-    ],
-    declarations: [
+        ImageInputComponent,
         MainPageComponent,
         SalesAdsListComponent,
         SalesAdsDetailComponent,

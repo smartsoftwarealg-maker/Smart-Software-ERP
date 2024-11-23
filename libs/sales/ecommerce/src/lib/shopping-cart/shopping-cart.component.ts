@@ -4,11 +4,30 @@ import {ImageUploaderUtil} from '@ss/common/api-common';
 import {FormControl} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 import {AvailableArticle} from '@ss/master-data/api-article';
+import { HeaderPageComponent } from '../header-page/header-page.component';
+import { NgFor, DecimalPipe } from '@angular/common';
+import { MatCard } from '@angular/material/card';
+import { ImageInputComponent } from '../../../../../common/ui-image-input/src/lib/image-input.component';
+import { MatIconButton, MatButton } from '@angular/material/button';
+import { TranslateDirective } from '../../../../../common/ui-lang/src/lib/translate.directive';
+import { TranslatePipe } from '../../../../../common/ui-lang/src/lib/translate.pipe';
 
 @Component({
     selector: 'ss-shopping-cart',
     templateUrl: './shopping-cart.component.html',
     styleUrls: ['./shopping-cart.component.scss', '../main-page/main-page.component.scss'],
+    standalone: true,
+    imports: [
+        HeaderPageComponent,
+        NgFor,
+        MatCard,
+        ImageInputComponent,
+        MatIconButton,
+        TranslateDirective,
+        MatButton,
+        DecimalPipe,
+        TranslatePipe,
+    ],
 })
 export class ShoppingCartComponent implements OnInit {
     private router     = inject(Router);

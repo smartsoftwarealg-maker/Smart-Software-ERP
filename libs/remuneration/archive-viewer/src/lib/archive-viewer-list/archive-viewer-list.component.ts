@@ -10,14 +10,55 @@ import {ArchiveViewerService} from '../archive-viewer.service';
 import {PayrollMonthService} from '@ss/remuneration/payroll-month';
 import {debounceTime, distinctUntilChanged, zip} from 'rxjs';
 import {Formula, PayrollFormulasService} from '@ss/remuneration/payroll-formulas';
-import {FormControl} from '@angular/forms';
+import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {SelectionModel} from '@angular/cdk/collections';
-import {MatListOption} from '@angular/material/list';
+import { MatListOption, MatSelectionList } from '@angular/material/list';
+import { TranslateDirective } from '../../../../../common/ui-lang/src/lib/translate.directive';
+import { MatFormField, MatLabel } from '@angular/material/form-field';
+import { MatInput } from '@angular/material/input';
+import { MatCheckbox } from '@angular/material/checkbox';
+import { MatButton } from '@angular/material/button';
+import { MatTabGroup, MatTab, MatTabLabel } from '@angular/material/tabs';
+import { NgFor, NgStyle, DecimalPipe } from '@angular/common';
+import { MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from '@angular/material/table';
+import { PaginationComponent } from '../../../../../common/ui-pagination/src/lib/pagination.component';
+import { TranslatePipe } from '../../../../../common/ui-lang/src/lib/translate.pipe';
 
 @Component({
     selector: 'ss-archive-viewer',
     templateUrl: './archive-viewer-list.component.html',
     styleUrls: ['./archive-viewer-list.component.scss'],
+    standalone: true,
+    imports: [
+        TranslateDirective,
+        MatFormField,
+        MatLabel,
+        MatInput,
+        FormsModule,
+        ReactiveFormsModule,
+        MatCheckbox,
+        MatButton,
+        MatTabGroup,
+        MatTab,
+        MatTabLabel,
+        MatSelectionList,
+        NgFor,
+        MatListOption,
+        MatTable,
+        NgStyle,
+        MatColumnDef,
+        MatHeaderCellDef,
+        MatHeaderCell,
+        MatCellDef,
+        MatCell,
+        MatHeaderRowDef,
+        MatHeaderRow,
+        MatRowDef,
+        MatRow,
+        PaginationComponent,
+        DecimalPipe,
+        TranslatePipe,
+    ],
 })
 export class ArchiveViewerListComponent extends BaseEntityListComponent<PAYArchive> implements OnInit {
     private INFO_COLUMNS = [

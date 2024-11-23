@@ -2,21 +2,53 @@ import { Component, inject, OnInit } from '@angular/core';
 import {BudgetTransferDetail} from '../budget-movement-api';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
-import {UntypedFormBuilder, Validators} from '@angular/forms';
+import { UntypedFormBuilder, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {switchMap, tap} from 'rxjs/operators';
 import {Observable, of} from 'rxjs';
 import {BudgetTransferService} from '../budget-transfer.service';
 import {Budget, BudgetService} from '@ss/budget/budget';
-import {MatSelectChange} from '@angular/material/select';
+import { MatSelectChange, MatSelect } from '@angular/material/select';
 import {BudgetPlanningService} from '@ss/budget/budget-planning';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {BudgetTransferDetailService} from '../budget-transfer-detail.service';
+import { NgIf, NgFor, AsyncPipe } from '@angular/common';
+import { MatCard, MatCardHeader, MatCardContent } from '@angular/material/card';
+import { MatMiniFabButton } from '@angular/material/button';
+import { MatTooltip } from '@angular/material/tooltip';
+import { TranslateDirective } from '../../../../../common/ui-lang/src/lib/translate.directive';
+import { MatFormField, MatLabel, MatError } from '@angular/material/form-field';
+import { MatOption } from '@angular/material/core';
+import { UiAutoCompleteComponent } from '../../../../../common/ui-auto-complete/src/lib/auto-complete.component';
+import { MatInput } from '@angular/material/input';
+import { TranslatePipe } from '../../../../../common/ui-lang/src/lib/translate.pipe';
 
 @Component({
     selector: 'ss-budget-line-detail',
     templateUrl: './budget-transfer-line-detail.component.html',
     styleUrls: ['./budget-transfer-line-detail.component.scss'],
+    standalone: true,
+    imports: [
+        NgIf,
+        MatCard,
+        MatCardHeader,
+        MatMiniFabButton,
+        MatTooltip,
+        TranslateDirective,
+        MatCardContent,
+        FormsModule,
+        ReactiveFormsModule,
+        MatFormField,
+        MatLabel,
+        MatSelect,
+        NgFor,
+        MatOption,
+        UiAutoCompleteComponent,
+        MatInput,
+        MatError,
+        AsyncPipe,
+        TranslatePipe,
+    ],
 })
 export class BudgetTransferLineDetailComponent implements OnInit {
     private entitySrv = inject(BudgetTransferService);

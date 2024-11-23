@@ -1,6 +1,6 @@
 import {Mission} from '../missions-api.class';
 import {ActivatedRoute} from '@angular/router';
-import {UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MissionsService} from '../missions.service';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
@@ -14,11 +14,22 @@ import {TrajectoryService} from '../trajectory.service';
 import {LoginService} from '@ss/common/api-common';
 import { Component, inject } from "@angular/core";
 import { PersonAutocompleteClass } from "@ss/employee-services/employee-services";
+import { NgIf } from '@angular/common';
+import { MatFormField, MatLabel, MatError, MatSuffix } from '@angular/material/form-field';
+import { TranslateDirective } from '../../../../../common/ui-lang/src/lib/translate.directive';
+import { MatInput } from '@angular/material/input';
+import { UiAutoCompleteComponent } from '../../../../../common/ui-auto-complete/src/lib/auto-complete.component';
+import { MatDatepickerModule } from '@muaazh/angular-datepicker';
+import { MatSelect } from '@angular/material/select';
+import { MatOption } from '@angular/material/core';
+import { MatCheckbox } from '@angular/material/checkbox';
 
 @Component({
     selector: 'ss-mission-preparation-detail',
     templateUrl: './mission-preparation-detail.component.html',
-    styleUrls: ['./mission-preparation-detail.component.scss']
+    styleUrls: ['./mission-preparation-detail.component.scss'],
+    standalone: true,
+    imports: [NgIf, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, MatError, UiAutoCompleteComponent, MatDatepickerModule, MatSuffix, MatSelect, MatOption, MatCheckbox]
 })
 export class MissionPreparationDetailComponent extends BaseEntityDetailComponent<Mission> {
     // private lookupsSrv  = inject(LookupsService);

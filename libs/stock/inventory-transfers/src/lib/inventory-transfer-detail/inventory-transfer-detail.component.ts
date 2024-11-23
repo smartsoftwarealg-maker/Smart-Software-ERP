@@ -5,8 +5,8 @@ import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {LanguageService, LoginService, User} from '@ss/common/api-common';
 import {Agent} from '@ss/logistics/api-agent';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
-import {ActivatedRoute, Router} from '@angular/router';
-import {UntypedFormBuilder} from '@angular/forms';
+import { ActivatedRoute, Router, RouterOutlet } from '@angular/router';
+import { UntypedFormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {UserListService} from '@ss/common/api-users';
 import {Observable} from 'rxjs';
@@ -14,11 +14,22 @@ import {tap} from 'rxjs/operators';
 import {TransferService} from '../transfer.service';
 import {BranchService} from '@ss/logistics/api-agent';
 import {MatDialog} from '@angular/material/dialog';
+import { MatCard, MatCardContent } from '@angular/material/card';
+import { NgIf } from '@angular/common';
+import { MatFormField, MatLabel, MatError } from '@angular/material/form-field';
+import { TranslateDirective } from '../../../../../common/ui-lang/src/lib/translate.directive';
+import { MatInput } from '@angular/material/input';
+import { DatePickerComponent } from '../../../../../common/ui-datepicker/src/lib/date-picker.component';
+import { UiAutoCompleteComponent } from '../../../../../common/ui-auto-complete/src/lib/auto-complete.component';
+import { MatTabGroup, MatTab, MatTabLabel } from '@angular/material/tabs';
+import { CdkTextareaAutosize } from '@angular/cdk/text-field';
 
 @Component({
     selector: 'ss-inventory-transfer-detail',
     templateUrl: './inventory-transfer-detail.component.html',
-    styleUrls: ['../../../../../common/assets/src/assets/transac-detail.scss']
+    styleUrls: ['../../../../../common/assets/src/assets/transac-detail.scss'],
+    standalone: true,
+    imports: [MatCard, MatCardContent, NgIf, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, MatError, DatePickerComponent, UiAutoCompleteComponent, MatTabGroup, MatTab, MatTabLabel, CdkTextareaAutosize, RouterOutlet]
 })
 export class InventoryTransferDetailComponent extends BaseTransactionDetailComponent {
 

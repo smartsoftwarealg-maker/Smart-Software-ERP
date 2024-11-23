@@ -1,12 +1,18 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ConfirmationDialogService } from '../confirmation-dialog/confirmation-dialog.service';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { TranslateDirective } from '../../../../../../libs/common/ui-lang/src/lib/translate.directive';
+import { MatFormField, MatLabel } from '@angular/material/form-field';
+import { MatInput } from '@angular/material/input';
+import { SaveBarComponent } from '../save-bar/save-bar.component';
 
 @Component({
     selector: 'app-vat-detail',
     templateUrl: './vat-detail.component.html',
-    styleUrls: ['./vat-detail.component.scss']
+    styleUrls: ['./vat-detail.component.scss'],
+    standalone: true,
+    imports: [TranslateDirective, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, MatInput, SaveBarComponent]
 })
 export class VatDetailComponent implements OnInit {
     public form: UntypedFormGroup = null;

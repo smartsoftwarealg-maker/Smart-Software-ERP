@@ -1,12 +1,35 @@
 import { Component, inject, Inject, OnInit } from "@angular/core";
-import { FormBuilder, UntypedFormBuilder, Validator, Validators } from "@angular/forms";
+import { FormBuilder, UntypedFormBuilder, Validator, Validators, FormsModule, ReactiveFormsModule } from "@angular/forms";
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {BudgetGroupTree} from '../budget-groups-api';
+import { MatCard } from "@angular/material/card";
+import { MatFormField, MatLabel, MatError } from "@angular/material/form-field";
+import { TranslateDirective } from "../../../../../common/ui-lang/src/lib/translate.directive";
+import { MatInput } from "@angular/material/input";
+import { NgIf } from "@angular/common";
+import { MatCheckbox } from "@angular/material/checkbox";
+import { MatButton } from "@angular/material/button";
+import { TranslatePipe } from "../../../../../common/ui-lang/src/lib/translate.pipe";
 
 @Component({
     selector: 'ss-budget-groups-add-dlg',
     templateUrl: './budget-groups-add-dlg.component.html',
     styleUrls: ['./budget-groups-add-dlg.component.scss'],
+    standalone: true,
+    imports: [
+        MatCard,
+        FormsModule,
+        ReactiveFormsModule,
+        MatFormField,
+        MatLabel,
+        TranslateDirective,
+        MatInput,
+        NgIf,
+        MatError,
+        MatCheckbox,
+        MatButton,
+        TranslatePipe,
+    ],
 })
 export class BudgetGroupsAddDlgComponent {
     private fb = inject(FormBuilder);

@@ -10,18 +10,16 @@ import {CommonUiDatepickerModule} from "@ss/common/ui-datepicker";
 import {CommonUiAutoCompleteModule} from "@ss/common/ui-auto-complete";
 
 @NgModule({
-  imports: [
-      CommonModule,
-      MaterialModule,
-      CommonUiLangModule,
-      UiPaginationModule,
-      ReactiveFormsModule,
-      CommonUiConfirmationDialogModule,
-      CommonUiDatepickerModule,
-      CommonUiAutoCompleteModule,
-  ],
-  declarations: [
-    AccessRightsListComponent,
-  ],
+    imports: [
+        CommonModule,
+        MaterialModule,
+        CommonUiLangModule,
+        UiPaginationModule,
+        ReactiveFormsModule,
+        CommonUiConfirmationDialogModule,
+        CommonUiDatepickerModule,
+        CommonUiAutoCompleteModule,
+        AccessRightsListComponent,
+    ],
 })
 export class CommonUiAccessRightsModule {}

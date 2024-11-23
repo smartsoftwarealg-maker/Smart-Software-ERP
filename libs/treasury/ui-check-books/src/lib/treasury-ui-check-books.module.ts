@@ -18,9 +18,9 @@ import { CheckBookListComponent } from './check-book-list/check-book-list.compon
         UiPaginationModule,
         CommonUiConfirmationDialogModule,
         RouterModule,
-        CommonUiAutoCompleteModule
+        CommonUiAutoCompleteModule,
+        BankDescriptionPipe, CheckBookDetailComponent, CheckBookListComponent
     ],
-    declarations: [BankDescriptionPipe, CheckBookDetailComponent, CheckBookListComponent],
     exports: [CheckBookDetailComponent, CheckBookListComponent]
 })
 export class TreasuryUiCheckBooksModule {}

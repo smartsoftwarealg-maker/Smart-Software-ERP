@@ -2,6 +2,12 @@ import { Component } from '@angular/core';
 import { LoadingState } from '../../../../common/util';
 import { Observable } from 'rxjs';
 import { HttpService } from '../../../../smart-lib/common/http.service';
+import { MatIconButton, MatMiniFabButton } from '@angular/material/button';
+import { MatTooltip } from '@angular/material/tooltip';
+import { MatMenuTrigger, MatMenu } from '@angular/material/menu';
+import { TranslateDirective } from '../../../../../../../../libs/common/ui-lang/src/lib/translate.directive';
+import { MatProgressSpinner } from '@angular/material/progress-spinner';
+import { TranslatePipe } from '../../../../../../../../libs/common/ui-lang/src/lib/translate.pipe';
 
 interface Statistics {
     roomCount: number;
@@ -21,7 +27,9 @@ interface Statistics {
 @Component({
     selector: 'app-booking-stats',
     templateUrl: './statistics.component.html',
-    styleUrls: ['./statistics.component.scss']
+    styleUrls: ['./statistics.component.scss'],
+    standalone: true,
+    imports: [MatIconButton, MatTooltip, MatMenuTrigger, MatMenu, TranslateDirective, MatProgressSpinner, MatMiniFabButton, TranslatePipe]
 })
 export class StatisticsComponent {
 

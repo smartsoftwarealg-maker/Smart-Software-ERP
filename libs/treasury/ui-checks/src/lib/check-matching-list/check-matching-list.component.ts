@@ -6,12 +6,45 @@ import {LookupsService} from '@ss/common/api-lookup';
 import {HttpService, PaginationModel, PaginatorPersistenceService} from '@ss/common/api-common';
 import {BankService} from '@ss/administration/api-bank';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
-import {FormControl} from '@angular/forms';
+import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatFormField, MatLabel } from "@angular/material/form-field";
+import { TranslateDirective } from "../../../../../common/ui-lang/src/lib/translate.directive";
+import { UiAutoCompleteComponent } from "../../../../../common/ui-auto-complete/src/lib/auto-complete.component";
+import { MatRadioGroup, MatRadioButton } from "@angular/material/radio";
+import { MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from "@angular/material/table";
+import { MatCheckbox } from "@angular/material/checkbox";
+import { PaginationComponent } from "../../../../../common/ui-pagination/src/lib/pagination.component";
+import { DecimalPipe, DatePipe } from "@angular/common";
 
 @Component({
     selector: 'ss-check-matching-list',
     templateUrl: './check-matching-list.component.html',
     styleUrls: ['./check-matching-list.component.scss'],
+    standalone: true,
+    imports: [
+        MatFormField,
+        MatLabel,
+        TranslateDirective,
+        UiAutoCompleteComponent,
+        FormsModule,
+        ReactiveFormsModule,
+        MatRadioGroup,
+        MatRadioButton,
+        MatTable,
+        MatColumnDef,
+        MatHeaderCellDef,
+        MatHeaderCell,
+        MatCellDef,
+        MatCell,
+        MatCheckbox,
+        MatHeaderRowDef,
+        MatHeaderRow,
+        MatRowDef,
+        MatRow,
+        PaginationComponent,
+        DecimalPipe,
+        DatePipe,
+    ],
 })
 export class CheckMatchingListComponent implements OnInit, OnDestroy {
     private bankSrv = inject(BankService);

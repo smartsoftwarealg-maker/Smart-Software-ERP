@@ -3,7 +3,7 @@ import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import { PersonShift, WorkShift } from "../attendance-api";
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
-import {UntypedFormBuilder, Validators} from '@angular/forms';
+import { UntypedFormBuilder, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {PersonShiftService} from '../person-shift.service';
 import { EmployeeService } from '@ss/employee-services/employee-services';
@@ -11,11 +11,31 @@ import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {WorkshiftService} from '../workshift.service';
 import { Service, ServiceService } from "@ss/common/api-lookup";
 import { PersonAutocompleteClass } from '@ss/employee-services/employee-services';
+import { MatCard, MatCardContent } from '@angular/material/card';
+import { MatFormField, MatLabel, MatError } from '@angular/material/form-field';
+import { TranslateDirective } from '../../../../common/ui-lang/src/lib/translate.directive';
+import { UiAutoCompleteComponent } from '../../../../common/ui-auto-complete/src/lib/auto-complete.component';
+import { NgIf } from '@angular/common';
+import { DatePickerComponent } from '../../../../common/ui-datepicker/src/lib/date-picker.component';
 
 @Component({
     selector: 'ss-person-shift-detail',
     templateUrl: './person-shift-detail.component.html',
     styleUrls: ['./person-shift-detail.component.scss'],
+    standalone: true,
+    imports: [
+        MatCard,
+        MatCardContent,
+        FormsModule,
+        ReactiveFormsModule,
+        MatFormField,
+        MatLabel,
+        TranslateDirective,
+        UiAutoCompleteComponent,
+        NgIf,
+        MatError,
+        DatePickerComponent,
+    ],
 })
 export class PersonShiftDetailComponent extends BaseEntityDetailComponent<PersonShift> {
     employeeLookup: PersonAutocompleteClass = null;

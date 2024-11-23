@@ -23,11 +23,7 @@ import {LogisticsUiStockInfoModule} from '@ss/logistics/ui-stock-info';
         RouterModule,
         CommonUiDatepickerModule,
         CommonUiAutoCompleteModule,
-
-        LogisticsUiStockInfoModule],
-    declarations: [
-      PaymentOrderListComponent,
-      PaymentOrderDetailComponent
-    ],
+        LogisticsUiStockInfoModule, PaymentOrderListComponent,
+        PaymentOrderDetailComponent],
 })
 export class PurchasesPaymentOrdersModule {}

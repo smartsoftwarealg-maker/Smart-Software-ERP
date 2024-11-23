@@ -14,6 +14,17 @@ import {AbstractEntityView} from '../../common/base-classes/abstract-entity-view
 import { UserService } from '../../smart-lib/components/login/user.service';
 import { deepCopy } from '../../smart-lib/common/util';
 import { HttpService } from '../../smart-lib/common/http.service';
+import { NgIf, NgFor } from '@angular/common';
+import { LoadingSpinnerComponent } from '../../smart-lib/components/loading-spinner/loading-spinner.component';
+import { FatalErrorComponent } from '../../smart-lib/components/fatal-error/fatal-error.component';
+import { MatMiniFabButton, MatIconButton, MatButton } from '@angular/material/button';
+import { TranslateDirective } from '../../../../../../libs/common/ui-lang/src/lib/translate.directive';
+import { AutoCompleteComponent } from '../../common/auto-complete/auto-complete.component';
+import { MatFormField, MatLabel } from '@angular/material/form-field';
+import { MatSelect } from '@angular/material/select';
+import { MatOption } from '@angular/material/core';
+import { SaveBarComponent } from '../../common/save-bar/save-bar.component';
+import { ImageInputComponent } from '../../common/image-input/image-input.component';
 
 const payModeCash = 66;
 const roomsByBookingUrl = '/hotels/roomsByBooking';
@@ -58,7 +69,9 @@ function calculateVAT(inv: FullService) {
 @Component({
     selector: 'app-foyer-detail',
     templateUrl: './foyer-detail.component.html',
-    styleUrls: ['./foyer-detail.component.scss']
+    styleUrls: ['./foyer-detail.component.scss'],
+    standalone: true,
+    imports: [NgIf, LoadingSpinnerComponent, FatalErrorComponent, MatMiniFabButton, TranslateDirective, AutoCompleteComponent, MatFormField, MatLabel, MatSelect, NgFor, MatOption, MatIconButton, SaveBarComponent, MatButton, ImageInputComponent]
 })
 // tslint:disable-next-line:max-line-length
 export class FoyerDetailComponent extends AbstractEntityView<FullService, BackendDataSource<FullService>> implements OnInit, OnDestroy {

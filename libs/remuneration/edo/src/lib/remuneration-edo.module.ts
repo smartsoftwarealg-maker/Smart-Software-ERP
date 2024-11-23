@@ -18,10 +18,8 @@ import {CommonUiAutoCompleteModule} from '@ss/common/ui-auto-complete';
         ReactiveFormsModule,
         CommonUiConfirmationDialogModule,
         CommonUiDatepickerModule,
-        CommonUiAutoCompleteModule
-    ],
-    declarations: [
-      EdoComponent
+        CommonUiAutoCompleteModule,
+        EdoComponent
     ],
 })
 export class RemunerationEdoModule {}

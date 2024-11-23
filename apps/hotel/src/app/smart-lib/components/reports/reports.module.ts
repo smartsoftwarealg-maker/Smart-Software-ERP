@@ -26,9 +26,7 @@ import { CommonUiLangModule } from '@ss/common/ui-lang';
         PaginationModule,
         SaveBarModule,
         MaterialModule,
-        CommonUiLangModule
-    ],
-    declarations: [
+        CommonUiLangModule,
         ReportViewerComponent,
         ReportSelectorComponent,
         ReportViewComponent,

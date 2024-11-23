@@ -21,7 +21,17 @@ import { OfficesListComponent } from './offices/list/offices-list.component';
 import { ImageInputComponent } from '@ss/common/ui-image-input';
 
 @NgModule({
-    declarations: [
+    imports: [
+        CommonModule,
+        CommonUiLangModule,
+        OrgChartModule,
+        MaterialModule,
+        CommonUiAutoCompleteModule,
+        UiPaginationModule,
+        CommonUiConfirmationDialogModule,
+        CommonUiAutoCompleteModule,
+        RouterModule,
+        ImageInputComponent,
         OrganizationsComponent,
         OrganizationsDetailComponent,
         DivisionsListComponent,
@@ -32,19 +42,6 @@ import { ImageInputComponent } from '@ss/common/ui-image-input';
         ServicesListComponent,
         OfficeDetailComponent,
         OfficesListComponent
-    ],
-    imports: [
-        CommonModule,
-        CommonUiLangModule,
-        OrgChartModule,
-        MaterialModule,
-
-        CommonUiAutoCompleteModule,
-        UiPaginationModule,
-        CommonUiConfirmationDialogModule,
-        CommonUiAutoCompleteModule,
-        RouterModule,
-        ImageInputComponent
     ],
     exports: [
         OrganizationsComponent,

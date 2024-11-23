@@ -19,15 +19,13 @@ import {CommonUiDatepickerModule} from "@ss/common/ui-datepicker";
         CommonUiAutoCompleteModule,
         CommonUiDatepickerModule,
         ReactiveFormsModule,
-        CommonUiConfirmationDialogModule
-    ],
-    declarations: [
-      PaymentsListComponent,
-      PaymentsDetailComponent
+        CommonUiConfirmationDialogModule,
+        PaymentsListComponent,
+        PaymentsDetailComponent
     ],
     exports: [
-      PaymentsListComponent,
-      PaymentsDetailComponent
+        PaymentsListComponent,
+        PaymentsDetailComponent
     ],
 })
 export class LogisticsPaymentsModule {}

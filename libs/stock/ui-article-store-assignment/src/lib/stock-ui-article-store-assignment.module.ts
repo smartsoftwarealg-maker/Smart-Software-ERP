@@ -19,12 +19,11 @@ import {ArticleStoreAssignmentComponent} from "./article-store-assignment.compon
         UiPaginationModule,
         CommonUiConfirmationDialogModule,
         StockUiArticleStoreModule,
-
         RouterModule,
         CommonUiAutoCompleteModule,
-        LogisticsUiStockInfoModule
+        LogisticsUiStockInfoModule,
+        ArticleStoreAssignmentComponent
     ],
-    declarations: [ArticleStoreAssignmentComponent],
     exports: [ArticleStoreAssignmentComponent]
 })
 export class StockUiArticleStoreAssignmentModule {}

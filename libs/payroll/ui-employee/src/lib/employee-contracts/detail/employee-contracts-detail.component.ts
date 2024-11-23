@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { UntypedFormGroup, UntypedFormBuilder, Validators } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormBuilder, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BaseChildEntityDetailComponent } from '@ss/common/ui-base-entity';
 import {Contract, ContractMotiveService, EmployeeContractService} from '@ss/payroll/api-employee';
 import {
@@ -15,12 +15,22 @@ import {
 } from '@ss/common/api-lookup';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import { GridService } from '@ss/payroll/salary-grid';
+import { NgIf } from '@angular/common';
+import { MatMiniFabButton } from '@angular/material/button';
+import { MatCard, MatCardContent } from '@angular/material/card';
+import { MatFormField, MatLabel, MatError } from '@angular/material/form-field';
+import { TranslateDirective } from '../../../../../../common/ui-lang/src/lib/translate.directive';
+import { MatInput } from '@angular/material/input';
+import { DatePickerComponent } from '../../../../../../common/ui-datepicker/src/lib/date-picker.component';
+import { UiAutoCompleteComponent } from '../../../../../../common/ui-auto-complete/src/lib/auto-complete.component';
 
 
 @Component({
     selector: 'ss-emp-contract-detail',
     templateUrl: './employee-contracts-detail.component.html',
-    styleUrls: ['./employee-contracts-detail.component.scss']
+    styleUrls: ['./employee-contracts-detail.component.scss'],
+    standalone: true,
+    imports: [NgIf, MatMiniFabButton, MatCard, MatCardContent, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, DatePickerComponent, MatError, UiAutoCompleteComponent]
 })
 export class EmployeeContractsDetailComponent extends BaseChildEntityDetailComponent<Contract> {
     private gridSrv = inject(GridService);

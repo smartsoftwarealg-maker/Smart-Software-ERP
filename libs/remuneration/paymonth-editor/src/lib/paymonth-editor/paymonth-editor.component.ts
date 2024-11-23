@@ -1,21 +1,18 @@
 import { Component, ElementRef, HostBinding, inject, Input, OnDestroy, Optional, Self } from "@angular/core";
-import {
-    ControlValueAccessor,
-    UntypedFormBuilder,
-    UntypedFormGroup,
-    NgControl,
-    Validators,
-    FormBuilder
-} from "@angular/forms";
+import { ControlValueAccessor, UntypedFormBuilder, UntypedFormGroup, NgControl, Validators, FormBuilder, FormsModule, ReactiveFormsModule } from "@angular/forms";
 import {MatFormFieldControl} from '@angular/material/form-field';
 import {Subject, Subscription} from 'rxjs';
 import {coerceBooleanProperty} from '@angular/cdk/coercion';
+import { NgIf } from "@angular/common";
+import { MatInput } from "@angular/material/input";
 
 @Component({
     selector: 'ss-paymonth-editor',
     templateUrl: './paymonth-editor.component.html',
-    providers: [{provide: MatFormFieldControl, useExisting: PaymonthEditorComponent}],
-    styleUrls: ['./paymonth-editor.component.scss']
+    providers: [{ provide: MatFormFieldControl, useExisting: PaymonthEditorComponent }],
+    styleUrls: ['./paymonth-editor.component.scss'],
+    standalone: true,
+    imports: [NgIf, FormsModule, ReactiveFormsModule, MatInput]
 })
 export class PaymonthEditorComponent implements MatFormFieldControl<number>, OnDestroy, ControlValueAccessor {
     static nextId = 0;

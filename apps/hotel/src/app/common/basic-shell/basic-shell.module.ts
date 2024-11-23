@@ -13,8 +13,6 @@ import { MaterialModule } from '../../smart-lib/components/material.module';
         NavBarModule,
         SideNavModule,
         RouterModule,
-    ],
-    declarations: [
         BasicShellComponent,
     ],
     exports: [

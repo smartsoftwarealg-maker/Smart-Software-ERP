@@ -10,7 +10,7 @@ import { CENTER_SELECT_URL } from './center-select-constants';
 import { CanActivateService } from '../login/can-activte.service';
 import { LoadingSpinnerModule } from '../loading-spinner/loading-spinner.module';
 import { HttpClientModule } from '@angular/common/http';
-import { SmartCommonModule } from '../../common/smart-common.module';
+
 import { LanguageService } from '@ss/common/api-common';
 
 const routes: Routes = [
@@ -23,16 +23,15 @@ const routes: Routes = [
 
 @NgModule({
     imports: [
-        CommonModule,
-        ReactiveFormsModule,
-        LanguageModule,
-        MaterialModule,
-        HttpClientModule,
-        LoadingSpinnerModule,
-        SmartCommonModule,
-        RouterModule.forChild(routes)
-    ],
-    declarations: [CenterSelectComponent],
+    CommonModule,
+    ReactiveFormsModule,
+    LanguageModule,
+    MaterialModule,
+    HttpClientModule,
+    LoadingSpinnerModule,
+    RouterModule.forChild(routes),
+    CenterSelectComponent
+],
     exports: [CenterSelectComponent],
     providers: [
         CentersService

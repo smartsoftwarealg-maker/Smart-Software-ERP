@@ -18,9 +18,7 @@ import {CacoComponent} from './caco/caco.component';
         ReactiveFormsModule,
         CommonUiConfirmationDialogModule,
         CommonUiDatepickerModule,
-        CommonUiAutoCompleteModule
-    ],
-    declarations: [
+        CommonUiAutoCompleteModule,
         CacoComponent
     ],
 })

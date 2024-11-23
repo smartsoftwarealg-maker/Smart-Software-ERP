@@ -9,11 +9,17 @@ import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {StockInfoService} from '../../stock-info.service';
 import {Observable} from 'rxjs';
 import {StockInfo} from './stock-info';
+import { MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from '@angular/material/table';
+import { TranslateDirective } from '../../../../common/ui-lang/src/lib/translate.directive';
+import { PaginationComponent } from '../../../../common/ui-pagination/src/lib/pagination.component';
+import { DecimalPipe } from '@angular/common';
 
 @Component({
-  selector: 'ss-stock-info',
-  templateUrl: './ui-stock-info.component.html',
-  styleUrls: ['./ui-stock-info.component.scss']
+    selector: 'ss-stock-info',
+    templateUrl: './ui-stock-info.component.html',
+    styleUrls: ['./ui-stock-info.component.scss'],
+    standalone: true,
+    imports: [MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, TranslateDirective, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, PaginationComponent, DecimalPipe]
 })
 export class UiStockInfoComponent implements OnInit {
     public readonly pagination = PaginationModel.newInstance();

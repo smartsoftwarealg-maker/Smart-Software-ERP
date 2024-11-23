@@ -7,12 +7,8 @@ import {EmailSenderComponent} from "./ui-email-sender/email-sender.component";
 
 @NgModule({
     imports: [CommonModule,
-              MaterialModule,
-              CommonUiLangModule
-            ],
-  declarations: [
-    DefaultReportComponent,
-    EmailSenderComponent
-  ],
+        MaterialModule,
+        CommonUiLangModule, DefaultReportComponent,
+        EmailSenderComponent],
 })
 export class CommonUiDefaultReportModule {}

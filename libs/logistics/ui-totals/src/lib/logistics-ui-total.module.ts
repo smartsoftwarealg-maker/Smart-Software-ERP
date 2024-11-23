@@ -17,9 +17,7 @@ import {TotalComponent} from "./total.component";
         ReactiveFormsModule,
         CommonUiConfirmationDialogModule,
         CommonUiDatepickerModule,
-    ],
-    declarations: [
-        TotalComponent
+        TotalComponent,
     ],
     exports: [
         TotalComponent

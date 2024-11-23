@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
-import {UntypedFormBuilder, Validators} from '@angular/forms';
+import { UntypedFormBuilder, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {Currency, CurrencyService, LookupsService} from '@ss/common/api-lookup';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
@@ -10,11 +10,21 @@ import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {AgentLookupModel, AgentService} from '@ss/logistics/api-agent';
 import {LoginService} from '@ss/common/api-common';
 import {concatMap} from 'rxjs/operators';
+import { MatCard, MatCardContent } from '@angular/material/card';
+import { NgIf } from '@angular/common';
+import { MatFormField, MatLabel, MatError } from '@angular/material/form-field';
+import { TranslateDirective } from '../../../../../common/ui-lang/src/lib/translate.directive';
+import { DatePickerComponent } from '../../../../../common/ui-datepicker/src/lib/date-picker.component';
+import { UiAutoCompleteComponent } from '../../../../../common/ui-auto-complete/src/lib/auto-complete.component';
+import { MatInput } from '@angular/material/input';
+import { ExcDocInfoComponent } from '../../../../ui-info/src/lib/exc-doc-info.component';
 
 @Component({
     selector: 'ss-commission-detail',
     styleUrls: ['./cash-commission-detail.component.scss'],
-    templateUrl: './cash-commission-detail.component.html'
+    templateUrl: './cash-commission-detail.component.html',
+    standalone: true,
+    imports: [MatCard, MatCardContent, NgIf, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, DatePickerComponent, UiAutoCompleteComponent, MatError, MatInput, ExcDocInfoComponent]
 })
 export class CashCommissionDetailComponent extends BaseEntityDetailComponent<Deposit> {
     private currencySrv = inject(CurrencyService);

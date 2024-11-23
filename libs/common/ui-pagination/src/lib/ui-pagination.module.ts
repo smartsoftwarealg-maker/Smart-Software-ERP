@@ -8,9 +8,7 @@ import {CommonUiLangModule} from '@ss/common/ui-lang';
     imports: [
         CommonModule,
         MaterialModule,
-        CommonUiLangModule
-    ],
-    declarations: [
+        CommonUiLangModule,
         PaginationComponent
     ],
     exports: [

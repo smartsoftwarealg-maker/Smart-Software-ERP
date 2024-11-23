@@ -5,7 +5,8 @@ import {LanguageService} from '@ss/common/api-common';
 
 @Directive({
     // tslint:disable-next-line:directive-selector
-    selector: '[l10nTranslate],[translate]'
+    selector: '[l10nTranslate],[translate]',
+    standalone: true
 })
 export class TranslateDirective extends BaseDirective implements OnInit { //1
 

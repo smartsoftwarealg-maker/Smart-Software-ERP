@@ -10,12 +10,18 @@ import {
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {AgentService} from '@ss/logistics/api-agent';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
+import { MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from '@angular/material/table';
+import { TranslateDirective } from '../../../../../common/ui-lang/src/lib/translate.directive';
+import { NgClass, DecimalPipe } from '@angular/common';
+import { PaginationComponent } from '../../../../../common/ui-pagination/src/lib/pagination.component';
 
 @Component({
     selector: 'ss-global-balance',
     styleUrls: ['./global-balance.component.scss',
-                '../../../../../common/assets/src/assets/main-container.scss'],
-    templateUrl: './global-balance.component.html'
+        '../../../../../common/assets/src/assets/main-container.scss'],
+    templateUrl: './global-balance.component.html',
+    standalone: true,
+    imports: [MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, TranslateDirective, MatCellDef, MatCell, NgClass, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, PaginationComponent, DecimalPipe]
 })
 export class GlobalBalanceComponent extends BaseEntityListComponent<GBalance> {
     agentId = 0;

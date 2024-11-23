@@ -9,11 +9,31 @@ import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {PaginatorPersistenceService} from '@ss/common/api-common';
 import {FurnitureAssignmentsService} from '../furniture-assignments.service';
 import {FurnitureReceptionService} from '../furniture-reception.service';
+import { MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from '@angular/material/table';
+import { TranslateDirective } from '../../../../../common/ui-lang/src/lib/translate.directive';
+import { PaginationComponent } from '../../../../../common/ui-pagination/src/lib/pagination.component';
+import { DatePipe } from '@angular/common';
 
 @Component({
     selector: 'ss-furniture-reception-list',
     templateUrl: './furniture-reception-list.component.html',
     styleUrls: ['./furniture-reception-list.component.scss'],
+    standalone: true,
+    imports: [
+        MatTable,
+        MatColumnDef,
+        MatHeaderCellDef,
+        MatHeaderCell,
+        TranslateDirective,
+        MatCellDef,
+        MatCell,
+        MatHeaderRowDef,
+        MatHeaderRow,
+        MatRowDef,
+        MatRow,
+        PaginationComponent,
+        DatePipe,
+    ],
 })
 export class FurnitureReceptionListComponent extends BaseEntityListComponent<FurnitureTransaction> {
 

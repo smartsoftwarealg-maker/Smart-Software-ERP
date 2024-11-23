@@ -7,11 +7,31 @@ import {PaginatorPersistenceService} from '@ss/common/api-common';
 import {ShiftTimingService} from '../shift-timing.service';
 import {Timing} from '../attendance-api';
 import {of, switchMap} from 'rxjs';
+import { MatMiniFabButton } from '@angular/material/button';
+import { MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from '@angular/material/table';
+import { TranslateDirective } from '../../../../common/ui-lang/src/lib/translate.directive';
+import { DatePipe } from '@angular/common';
 
 @Component({
     selector: 'ss-shift-timing-list',
     templateUrl: './shift-timing-list.component.html',
     styleUrls: ['./shift-timing-list.component.scss'],
+    standalone: true,
+    imports: [
+        MatMiniFabButton,
+        MatTable,
+        MatColumnDef,
+        MatHeaderCellDef,
+        MatHeaderCell,
+        TranslateDirective,
+        MatCellDef,
+        MatCell,
+        MatHeaderRowDef,
+        MatHeaderRow,
+        MatRowDef,
+        MatRow,
+        DatePipe,
+    ],
 })
 export class ShiftTimingListComponent implements OnInit {
     selected: Timing = null;

@@ -4,7 +4,10 @@ import { Observable, of } from 'rxjs';
 import { HttpService } from '@ss/common/api-common';
 import { Lookup } from '@ss/logistics/ui-doc-import';
 
-@Pipe({ name: 'lookup' })
+@Pipe({
+    name: 'lookup',
+    standalone: true
+})
 export class LookupDescriptionPipe implements PipeTransform {
 
     constructor(private httpSrv: HttpService) { }

@@ -10,10 +10,8 @@ import {CommonUiLangModule} from '@ss/common/ui-lang';
         CommonModule,
         MaterialModule,
         UiPaginationModule,
-        CommonUiLangModule
-    ],
-    declarations: [
-      ExcelInjectionComponent
+        CommonUiLangModule,
+        ExcelInjectionComponent
     ],
 })
 export class RemunerationExcelInjectionModule {}

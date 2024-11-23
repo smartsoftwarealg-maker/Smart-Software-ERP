@@ -6,7 +6,7 @@ import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { HttpErrorResponse } from '@angular/common/http';
 import { MatDialogConfig, MatDialog } from '@angular/material/dialog';
 import { OrganizationsDetailComponent } from './organizations-detail.component';
-import { TreeNode } from 'angular13-organization-chart';
+import { TreeNode, OrgChartModule } from 'angular13-organization-chart';
 import { EmployeeService } from '@ss/employee-services/employee-services';
 import { ImageModel } from '@ss/common/ui-image-input';
 import { ActivatedRoute } from '@angular/router';
@@ -14,6 +14,9 @@ import { DivisionService, DepartmentService, ServiceService, OfficeService, Divi
 import { switchMap, tap } from 'rxjs/operators';
 import { Level } from './common';
 import { Employee } from '@ss/employee-services/employee-services';
+import { NgIf } from '@angular/common';
+import { MatIconButton } from '@angular/material/button';
+import { ImageInputComponent } from '../../../../../common/ui-image-input/src/lib/image-input.component';
 
 interface OrgTreeNode extends TreeNode {
     id: number;
@@ -28,7 +31,9 @@ interface OrgTreeNode extends TreeNode {
 @Component({
     selector: 'ss-organizations',
     styleUrls: ['./organizations.component.scss'],
-    templateUrl: 'organizations.component.html'
+    templateUrl: 'organizations.component.html',
+    standalone: true,
+    imports: [NgIf, OrgChartModule, MatIconButton, ImageInputComponent]
 })
 export class OrganizationsComponent implements OnInit {
 

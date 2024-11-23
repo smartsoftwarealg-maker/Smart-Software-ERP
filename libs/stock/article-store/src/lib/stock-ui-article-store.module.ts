@@ -20,9 +20,7 @@ import {ArticleStoreComponent} from './article-store.component';
         CommonUiConfirmationDialogModule,
         CommonUiDatepickerModule,
         CommonUiAutoCompleteModule,
-    ],
-    declarations: [
-        ArticleStoreComponent
+        ArticleStoreComponent,
     ],
     exports: [
         ArticleStoreComponent

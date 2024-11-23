@@ -4,23 +4,60 @@ import {KeepOnToolbar, ShellService, SnackBarService, ToolbarButton} from '@ss/c
 import {ActivatedRoute} from '@angular/router';
 import {BudgetAccount, BudgetGroupTree} from '../budget-groups-api';
 import {NestedTreeControl} from '@angular/cdk/tree';
-import {MatTreeNestedDataSource} from '@angular/material/tree';
-import {MatRadioChange} from '@angular/material/radio';
+import { MatTreeNestedDataSource, MatTree, MatTreeNodeDef, MatTreeNode, MatTreeNodePadding, MatNestedTreeNode, MatTreeNodeToggle, MatTreeNodeOutlet } from '@angular/material/tree';
+import { MatRadioChange, MatRadioGroup, MatRadioButton } from '@angular/material/radio';
 import {MatDialog} from '@angular/material/dialog';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {BudgetGroupsAddDlgComponent} from '../budget-groups-add-dlg/budget-groups-add-dlg.component';
 import {of, Subscription, switchMap} from 'rxjs';
 import {HttpErrorResponse} from '@angular/common/http';
 import {Account, AccountService} from '@ss/accounting/api-accounts';
-import {FormControl} from '@angular/forms';
+import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {debounceTime, distinctUntilChanged} from 'rxjs/operators';
 import {BudgetAccountService} from '../budget-account.service';
 import {LanguageService} from '@ss/common/api-common';
+import { TranslateDirective } from "../../../../../common/ui-lang/src/lib/translate.directive";
+import { MatIconButton, MatButton } from "@angular/material/button";
+import { MatIcon } from "@angular/material/icon";
+import { MatList, MatListItem } from "@angular/material/list";
+import { NgFor } from "@angular/common";
+import { MatTooltip } from "@angular/material/tooltip";
+import { MatCard } from "@angular/material/card";
+import { MatFormField, MatLabel } from "@angular/material/form-field";
+import { MatInput } from "@angular/material/input";
+import { TranslatePipe } from "../../../../../common/ui-lang/src/lib/translate.pipe";
 
 @Component({
     selector: 'ss-budget-groups',
     templateUrl: './budget-groups.component.html',
     styleUrls: ['./budget-groups.component.scss'],
+    standalone: true,
+    imports: [
+        MatRadioGroup,
+        MatRadioButton,
+        TranslateDirective,
+        MatTree,
+        MatTreeNodeDef,
+        MatTreeNode,
+        MatTreeNodePadding,
+        MatNestedTreeNode,
+        MatIconButton,
+        MatTreeNodeToggle,
+        MatIcon,
+        MatTreeNodeOutlet,
+        MatList,
+        NgFor,
+        MatListItem,
+        MatTooltip,
+        MatCard,
+        MatFormField,
+        MatLabel,
+        MatInput,
+        FormsModule,
+        ReactiveFormsModule,
+        MatButton,
+        TranslatePipe,
+    ],
 })
 export class BudgetGroupsComponent implements OnInit, OnDestroy {
     private entitySrv  = inject(BudgetGroupsService);

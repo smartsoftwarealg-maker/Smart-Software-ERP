@@ -6,17 +6,54 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import { APP_TREASURY, PaginatorPersistenceService } from "@ss/common/api-common";
-import {FormControl} from '@angular/forms';
+import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {Journal, UserJournalsService} from '@ss/treasury/api-journal';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {Observable} from 'rxjs';
 import { MatRadioChange } from '@angular/material/radio';
 import { AppArchiveService } from '@ss/common/app-archive';
+import { MatCard } from '@angular/material/card';
+import { MatDatepickerModule } from '@muaazh/angular-datepicker';
+import { MatHint, MatFormField, MatLabel } from '@angular/material/form-field';
+import { TranslateDirective } from '../../../../../common/ui-lang/src/lib/translate.directive';
+import { UiAutoCompleteComponent } from '../../../../../common/ui-auto-complete/src/lib/auto-complete.component';
+import { NgIf, NgFor, AsyncPipe, DecimalPipe } from '@angular/common';
+import { MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from '@angular/material/table';
+import { PaginationComponent } from '../../../../../common/ui-pagination/src/lib/pagination.component';
+import { AppArchiveMainComponent } from '../../../../../common/app-archive/src/lib/app-archive-main/app-archive-main.component';
 
 @Component({
     selector: 'ss-transaction-list',
     templateUrl: './transaction-list.component.html',
     styleUrls: ['./transaction-list.component.scss'],
+    standalone: true,
+    imports: [
+        MatCard,
+        MatDatepickerModule,
+        MatHint,
+        MatFormField,
+        MatLabel,
+        TranslateDirective,
+        UiAutoCompleteComponent,
+        FormsModule,
+        ReactiveFormsModule,
+        NgIf,
+        NgFor,
+        MatTable,
+        MatColumnDef,
+        MatHeaderCellDef,
+        MatHeaderCell,
+        MatCellDef,
+        MatCell,
+        MatHeaderRowDef,
+        MatHeaderRow,
+        MatRowDef,
+        MatRow,
+        PaginationComponent,
+        AppArchiveMainComponent,
+        AsyncPipe,
+        DecimalPipe,
+    ],
 })
 export class TransactionListComponent extends BaseEntityListComponent<TTransaction> implements OnInit {
     #archiveSrv = inject(AppArchiveService);

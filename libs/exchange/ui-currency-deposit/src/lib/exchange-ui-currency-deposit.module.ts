@@ -25,10 +25,7 @@ import {CurrencyTransferDetailComponent} from "./currency-transfer/currency-tran
         CommonUiConfirmationDialogModule,
         CommonUiDatepickerModule,
         CommonUiAutoCompleteModule,
-        ExchangeUiInfoModule
-    ],
-
-    declarations: [
+        ExchangeUiInfoModule,
         DepositListComponent,
         DepositDetailComponent,
         CashCommissionListComponent,
@@ -36,7 +33,6 @@ import {CurrencyTransferDetailComponent} from "./currency-transfer/currency-tran
         CurrencyTransferListComponent,
         CurrencyTransferDetailComponent
     ],
-
     exports: [
         DepositListComponent,
         DepositDetailComponent,

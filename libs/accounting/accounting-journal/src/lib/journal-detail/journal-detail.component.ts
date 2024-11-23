@@ -2,7 +2,7 @@ import { Component, inject, OnInit } from '@angular/core';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
-import {UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators} from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {Lookup, LookupsService} from '@ss/common/api-lookup';
 import {
@@ -15,15 +15,24 @@ import {
 import {CenterService} from '@ss/administration/api-center';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {LoginService, PaginationModel, User} from '@ss/common/api-common';
-import {MatSelectionListChange} from '@angular/material/list';
+import { MatSelectionListChange, MatListSubheaderCssMatStyler, MatSelectionList, MatListOption } from '@angular/material/list';
 import {UserListService} from '@ss/common/api-users';
 import {of, switchMap, tap} from 'rxjs';
 import {BankService} from '@ss/administration/api-bank';
+import { MatCard, MatCardContent } from '@angular/material/card';
+import { NgIf, NgFor } from '@angular/common';
+import { MatFormField, MatLabel, MatError } from '@angular/material/form-field';
+import { TranslateDirective } from '../../../../../common/ui-lang/src/lib/translate.directive';
+import { MatInput } from '@angular/material/input';
+import { UiAutoCompleteComponent } from '../../../../../common/ui-auto-complete/src/lib/auto-complete.component';
+import { MatMiniFabButton } from '@angular/material/button';
 
 @Component({
     selector: 'ss-journal-detail',
     templateUrl: './journal-detail.component.html',
-    styleUrls: ['./journal-detail.component.scss']
+    styleUrls: ['./journal-detail.component.scss'],
+    standalone: true,
+    imports: [MatCard, MatCardContent, NgIf, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, MatError, UiAutoCompleteComponent, MatListSubheaderCssMatStyler, MatMiniFabButton, MatSelectionList, NgFor, MatListOption]
 })
 export class JournalDetailComponent extends BaseEntityDetailComponent<Journal> {
     private centerSrv  = inject(CenterService);

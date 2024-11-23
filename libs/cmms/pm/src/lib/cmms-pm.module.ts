@@ -17,22 +17,22 @@ import { MatSortModule } from "@angular/material/sort";
 import { CmmsGanttComponent } from "@ss/cmms/cmms-charts";
 
 @NgModule({
-  imports: [
-    CommonModule,
-    CommonUiLangModule,
-    MatTableModule,
-    UiPaginationModule,
-    CommonUiAutoCompleteModule,
-    FormsModule,
-    MatFormFieldModule,
-    ReactiveFormsModule,
-    MatCardModule,
-    MatInputModule,
-    CommonUiDatepickerModule,
-    MatButtonModule,
-    MatSortModule,
-    CmmsGanttComponent
-  ],
-    declarations: [PmListComponent, PMDetailComponent, CmmsAlertListComponent],
+    imports: [
+        CommonModule,
+        CommonUiLangModule,
+        MatTableModule,
+        UiPaginationModule,
+        CommonUiAutoCompleteModule,
+        FormsModule,
+        MatFormFieldModule,
+        ReactiveFormsModule,
+        MatCardModule,
+        MatInputModule,
+        CommonUiDatepickerModule,
+        MatButtonModule,
+        MatSortModule,
+        CmmsGanttComponent,
+        PmListComponent, PMDetailComponent, CmmsAlertListComponent
+    ],
 })
 export class CmmsPmModule {}

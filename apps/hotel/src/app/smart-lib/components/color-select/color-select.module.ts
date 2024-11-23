@@ -4,16 +4,13 @@ import { ColorSelectComponent } from './color-select.component';
 import { MaterialModule } from '../material.module';
 
 @NgModule({
-    declarations: [
-        ColorSelectComponent
-    ],
     exports: [
         ColorSelectComponent
     ],
     imports: [
         CommonModule,
         MaterialModule,
-        // BrowserAnimationsModule,
+        ColorSelectComponent,
     ]
 })
 export class ColorSelectModule {

@@ -8,11 +8,17 @@ import {PaginationModel, PaginatorPersistenceService} from '@ss/common/api-commo
 import {Observable, of, zip} from 'rxjs';
 import {map, switchMap, tap} from 'rxjs/operators';
 import {VacationPlanningDetailService} from "@ss/remuneration/vacation-planning";
+import { MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from '@angular/material/table';
+import { TranslateDirective } from '../../../../../common/ui-lang/src/lib/translate.directive';
+import { PaginationComponent } from '../../../../../common/ui-pagination/src/lib/pagination.component';
+import { DatePipe } from '@angular/common';
 
 @Component({
-  selector: 'ss-vacation-planning-detail-list',
-  templateUrl: './vacation-planning-detail-list.component.html',
-  styleUrls: ['./vacation-planning-detail-list.component.scss']
+    selector: 'ss-vacation-planning-detail-list',
+    templateUrl: './vacation-planning-detail-list.component.html',
+    styleUrls: ['./vacation-planning-detail-list.component.scss'],
+    standalone: true,
+    imports: [MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, TranslateDirective, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, PaginationComponent, DatePipe]
 })
 export class VacationPlanningDetailListComponent implements OnInit {
     public addButton: ToolbarButton = {

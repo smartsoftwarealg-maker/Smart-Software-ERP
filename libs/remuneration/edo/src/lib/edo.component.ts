@@ -1,13 +1,23 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {ShellService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
-import {UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {BankService} from '@ss/administration/api-bank';
 import {SelectionModel} from '@angular/cdk/collections';
-import {MatSelectionList} from '@angular/material/list';
+import { MatSelectionList, MatListSubheaderCssMatStyler, MatListOption } from '@angular/material/list';
 import {EdoService} from './edo.service';
 import {switchMap, tap} from 'rxjs';
 import {PayrollMonthService} from '@ss/remuneration/payroll-month';
+import { MatCard } from '@angular/material/card';
+import { NgIf, NgFor } from '@angular/common';
+import { MatFormField, MatLabel, MatError } from '@angular/material/form-field';
+import { TranslateDirective } from '../../../../common/ui-lang/src/lib/translate.directive';
+import { MatInput } from '@angular/material/input';
+import { DatePickerComponent } from '../../../../common/ui-datepicker/src/lib/date-picker.component';
+import { MatSelect } from '@angular/material/select';
+import { MatOption } from '@angular/material/core';
+import { MatButton } from '@angular/material/button';
+import { TranslatePipe } from '../../../../common/ui-lang/src/lib/translate.pipe';
 
 interface Lookup {
     id: number;
@@ -17,7 +27,9 @@ interface Lookup {
 @Component({
     selector: 'ss-edo',
     templateUrl: './edo.component.html',
-    styleUrls: ['./edo.component.scss']
+    styleUrls: ['./edo.component.scss'],
+    standalone: true,
+    imports: [MatCard, NgIf, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, MatError, DatePickerComponent, MatSelect, NgFor, MatOption, MatButton, MatListSubheaderCssMatStyler, MatSelectionList, MatListOption, TranslatePipe]
 })
 export class EdoComponent implements OnInit {
     @ViewChild('blist') blist: MatSelectionList

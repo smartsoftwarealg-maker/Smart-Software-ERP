@@ -5,7 +5,9 @@ import { ColorSelectComponent } from '../color-select/color-select.component';
 @Component({
     selector: 'ss-theme-select',
     templateUrl: './theme-select.component.html',
-    styleUrls: ['./theme-select.component.scss']
+    styleUrls: ['./theme-select.component.scss'],
+    standalone: true,
+    imports: [ColorSelectComponent]
 })
 export class ThemeSelectComponent {
 

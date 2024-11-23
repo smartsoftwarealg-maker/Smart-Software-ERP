@@ -26,16 +26,13 @@ import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
         CommonUiConfirmationDialogModule,
         CommonUiDatepickerModule,
         CommonUiAutoCompleteModule,
-
         LogisticsUiStockInfoModule,
         RouterOutlet,
-        DocInfoComponent
-    ],
-    declarations: [
+        DocInfoComponent,
         PurchaseRequestListComponent,
         PurchaseRequestDetailComponent,
         PurchaseRequestLinesDetailComponent,
-        PurchaseRequestLinesListComponent,
+        PurchaseRequestLinesListComponent
     ],
 })
 export class PurchasesUiPurchaseRequestModule {}

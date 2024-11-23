@@ -30,12 +30,9 @@ import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
         CommonUiConfirmationDialogModule,
         CommonUiDatepickerModule,
         CommonUiAutoCompleteModule,
-
         LogisticsUiStockInfoModule,
         RouterOutlet,
-        DocInfoComponent
-    ],
-    declarations: [
+        DocInfoComponent,
         InventoryTransferListComponent,
         InventoryTransferDetailComponent,
         InventoryTransferLinesDetailComponent,
@@ -43,7 +40,7 @@ import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
         TransferReceptionListComponent,
         TransferReceptionDetailComponent,
         TransferReceptionLinesListComponent,
-        TransferReceptionLinesDetailComponent,
+        TransferReceptionLinesDetailComponent
     ],
 })
 export class StockInventoryTransfersModule {}

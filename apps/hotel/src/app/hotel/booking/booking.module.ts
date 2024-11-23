@@ -8,7 +8,7 @@ import { PaginationModule } from '../../common/pagination/pagination.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BookingThComponent } from './booking-view/table/header.component';
 import { TimelineComponent } from './booking-view/table/timeline.component';
-import { FitTextModule } from '../../common/fit-text/fit-text.module';
+
 import { DatePickerModule } from '../../common/date-picker/date-picker.module';
 import { RoomOptionsFilterComponent } from './booking-view/room-options-filter/room-options-filter.component';
 import { NotificationsComponent } from './booking-view/notifications/notifications.component';
@@ -19,9 +19,9 @@ import { ReservedRoomComponent } from './booking-detail/reserved-room/reserved-r
 import { AddReservedRoomComponent } from './booking-detail/add-reserved-room/add-reserved-room.component';
 import { SaveBarModule } from '../../common/save-bar/save-bar.module';
 import { CanActivateService } from '../../smart-lib/components/login/can-activte.service';
-import { FatalErrorModule } from '../../smart-lib/components/fatal-error/fatal-error.module';
+
 import { LoadingSpinnerModule } from '../../smart-lib/components/loading-spinner/loading-spinner.module';
-import { SmartCommonModule } from '../../smart-lib/common/smart-common.module';
+
 import { ColorSelectModule } from '../../smart-lib/components/color-select/color-select.module';
 import { LanguageService } from '@ss/common/api-common';
 import { MaterialModule } from '../../smart-lib/components/material.module';
@@ -46,32 +46,27 @@ const routes: Routes = [
 
 @NgModule({
     imports: [
-        CommonModule,
-        MaterialModule,
-        AutoCompleteModule,
-        FatalErrorModule,
-        LoadingSpinnerModule,
-        PaginationModule,
-        FormsModule,
-        ReactiveFormsModule,
-        SmartCommonModule,
-        FitTextModule,
-        DatePickerModule,
-        ColorSelectModule,
-        SaveBarModule,
-        RouterModule.forChild(routes),
-    ],
-    declarations: [
-        BookingViewComponent,
-        BookingThComponent,
-        TimelineComponent,
-        StatisticsComponent,
-        RoomOptionsFilterComponent,
-        NotificationsComponent,
-        BookingDetailComponent,
-        ReservedRoomComponent,
-        AddReservedRoomComponent
-    ],
+    CommonModule,
+    MaterialModule,
+    AutoCompleteModule,
+    LoadingSpinnerModule,
+    PaginationModule,
+    FormsModule,
+    ReactiveFormsModule,
+    DatePickerModule,
+    ColorSelectModule,
+    SaveBarModule,
+    RouterModule.forChild(routes),
+    BookingViewComponent,
+    BookingThComponent,
+    TimelineComponent,
+    StatisticsComponent,
+    RoomOptionsFilterComponent,
+    NotificationsComponent,
+    BookingDetailComponent,
+    ReservedRoomComponent,
+    AddReservedRoomComponent,
+],
     providers: [
         BookingService,
         CanDeactivateService

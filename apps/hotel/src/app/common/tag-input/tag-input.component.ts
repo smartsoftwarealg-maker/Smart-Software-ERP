@@ -11,8 +11,11 @@ import {
     ValidationErrors,
     Validator
 } from '@angular/forms';
-import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
+import { MatAutocompleteSelectedEvent, MatAutocomplete } from '@angular/material/autocomplete';
 import { LanguageService } from '@ss/common/api-common';
+import { MatFormField, MatLabel } from '@angular/material/form-field';
+import { NgClass, NgFor } from '@angular/common';
+import { MatOption } from '@angular/material/core';
 
 @Component({
     selector: 'app-tag-input',
@@ -29,8 +32,9 @@ import { LanguageService } from '@ss/common/api-common';
             useExisting: forwardRef(() => TagInputComponent),
             multi: true,
         }
-    ]
-
+    ],
+    standalone: true,
+    imports: [MatFormField, NgClass, MatLabel, MatAutocomplete, NgFor, MatOption]
 })
 export class TagInputComponent implements OnInit, AfterViewInit, OnDestroy, ControlValueAccessor, Validator {
 

@@ -6,11 +6,19 @@ import {HttpEventType} from '@angular/common/http';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {PayrollMonthService} from '@ss/remuneration/payroll-month';
+import { NgIf } from '@angular/common';
+import { TranslateDirective } from '../../../../common/ui-lang/src/lib/translate.directive';
+import { MatMiniFabButton, MatButton } from '@angular/material/button';
+import { MatCheckbox } from '@angular/material/checkbox';
+import { MatProgressBar } from '@angular/material/progress-bar';
+import { TranslatePipe } from '../../../../common/ui-lang/src/lib/translate.pipe';
 
 @Component({
-  selector: 'ss-excel-injection',
-  templateUrl: './excel-injection.component.html',
-  styleUrls: ['./excel-injection.component.scss']
+    selector: 'ss-excel-injection',
+    templateUrl: './excel-injection.component.html',
+    styleUrls: ['./excel-injection.component.scss'],
+    standalone: true,
+    imports: [NgIf, TranslateDirective, MatMiniFabButton, MatCheckbox, MatButton, MatProgressBar, TranslatePipe]
 })
 export class ExcelInjectionComponent implements OnInit {
     updatable = false;

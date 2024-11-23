@@ -1,16 +1,28 @@
 import { Component, inject, Inject, Input } from '@angular/core';
 import { finalize, Subscription } from 'rxjs';
-import { UntypedFormBuilder, Validators } from '@angular/forms';
+import { UntypedFormBuilder, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpEventType } from '@angular/common/http';
 import { InventoryImportService } from '../inventory-import.service';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
 import { LotsService, Store } from '@ss/common/api-lookup';
+import { TranslateDirective } from '../../../../../common/ui-lang/src/lib/translate.directive';
+import { NgIf, NgFor } from '@angular/common';
+import { MatMiniFabButton, MatButton } from '@angular/material/button';
+import { MatProgressBar } from '@angular/material/progress-bar';
+import { MatCard } from '@angular/material/card';
+import { MatFormField, MatLabel } from '@angular/material/form-field';
+import { UiAutoCompleteComponent } from '../../../../../common/ui-auto-complete/src/lib/auto-complete.component';
+import { MatSelect } from '@angular/material/select';
+import { MatOption } from '@angular/material/core';
+import { TranslatePipe } from '../../../../../common/ui-lang/src/lib/translate.pipe';
 
 @Component({
     selector: 'ss-inventory-import',
     templateUrl: './inventory-import.component.html',
-    styleUrls: ['./inventory-import.component.scss']
+    styleUrls: ['./inventory-import.component.scss'],
+    standalone: true,
+    imports: [TranslateDirective, NgIf, MatMiniFabButton, MatProgressBar, MatCard, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, UiAutoCompleteComponent, MatSelect, NgFor, MatOption, MatButton, TranslatePipe]
 })
 export class InventoryImportComponent {
     private fb = inject(UntypedFormBuilder);

@@ -6,11 +6,31 @@ import {of, switchMap} from 'rxjs';
 import {FurnitureTransactionDetail} from '../furniture-api';
 import {FurnitureTransactionLineService} from '../furniture-transaction-line.service';
 import {FurnitureReceptionService} from '../furniture-reception.service';
+import { MatMiniFabButton } from '@angular/material/button';
+import { MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from '@angular/material/table';
+import { TranslateDirective } from '../../../../../common/ui-lang/src/lib/translate.directive';
+import { DecimalPipe } from '@angular/common';
 
 @Component({
     selector: 'ss-furniture-reception-line-list',
     templateUrl: './furniture-reception-line-list.component.html',
     styleUrls: ['./furniture-reception-line-list.component.scss'],
+    standalone: true,
+    imports: [
+        MatMiniFabButton,
+        MatTable,
+        MatColumnDef,
+        MatHeaderCellDef,
+        MatHeaderCell,
+        TranslateDirective,
+        MatCellDef,
+        MatCell,
+        MatHeaderRowDef,
+        MatHeaderRow,
+        MatRowDef,
+        MatRow,
+        DecimalPipe,
+    ],
 })
 export class FurnitureReceptionLineListComponent implements OnInit {
     parentId = 0;

@@ -7,13 +7,21 @@ import { DisplayableGymService, FullServiceDataSource, gymPendingUrl } from './g
 import { Right } from '../../smart-lib/common/models';
 import { UserService } from '../../smart-lib/components/login/user.service';
 import { HttpService } from '../../smart-lib/common/http.service';
+import { ListToolbarComponent } from '../../common/list-toolbar/list-toolbar.component';
+import { MatIconButton } from '@angular/material/button';
+import { MatTooltip } from '@angular/material/tooltip';
+import { NgIf, NgFor } from '@angular/common';
+import { PaginationComponent } from '../../common/pagination/pagination.component';
+import { TranslatePipe } from '../../../../../../libs/common/ui-lang/src/lib/translate.pipe';
 
 const payModeCash = 66;
 
 @Component({
     selector: 'app-gym-live',
     templateUrl: './gym-live.component.html',
-    styleUrls: ['./gym-live.component.scss']
+    styleUrls: ['./gym-live.component.scss'],
+    standalone: true,
+    imports: [ListToolbarComponent, MatIconButton, MatTooltip, NgIf, NgFor, PaginationComponent, TranslatePipe]
 })
 export class GymLiveComponent implements OnInit, OnDestroy {
 

@@ -5,17 +5,39 @@ import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {AgentLookupModel, AgentService} from '@ss/logistics/api-agent';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
-import {UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {LoginService} from '@ss/common/api-common';
 import {TreasuryGroupService} from '@ss/common/api-lookup';
 import {MatRadioChange} from '@angular/material/radio';
 import {Observable, of} from 'rxjs';
+import { MatCard, MatCardContent } from "@angular/material/card";
+import { NgIf } from "@angular/common";
+import { MatFormField, MatLabel, MatError } from "@angular/material/form-field";
+import { TranslateDirective } from "../../../../../common/ui-lang/src/lib/translate.directive";
+import { MatInput } from "@angular/material/input";
+import { DatePickerComponent } from "../../../../../common/ui-datepicker/src/lib/date-picker.component";
+import { UiAutoCompleteComponent } from "../../../../../common/ui-auto-complete/src/lib/auto-complete.component";
 
 @Component({
     selector: 'ss-bank-expense-detail',
     templateUrl: './bank-expense-detail.component.html',
     styleUrls: ['./../transaction-detail/transaction-detail.component.scss'],
+    standalone: true,
+    imports: [
+        MatCard,
+        MatCardContent,
+        NgIf,
+        FormsModule,
+        ReactiveFormsModule,
+        MatFormField,
+        MatLabel,
+        TranslateDirective,
+        MatInput,
+        DatePickerComponent,
+        MatError,
+        UiAutoCompleteComponent,
+    ],
 })
 export class BankExpenseDetailComponent extends BaseEntityDetailComponent<TTransaction> {
     private agentSrv =  inject(AgentService);

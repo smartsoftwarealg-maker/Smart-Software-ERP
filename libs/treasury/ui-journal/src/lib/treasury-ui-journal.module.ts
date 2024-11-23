@@ -21,9 +21,9 @@ import { JournalDetailComponent } from './journal-detail/journal-detail.componen
         CommonUiDatepickerModule,
         RouterModule,
         CommonUiAutoCompleteModule,
-        LookupModule
+        LookupModule,
+        JournalListComponent, JournalDetailComponent
     ],
-    declarations: [JournalListComponent, JournalDetailComponent],
     exports: [JournalListComponent, JournalDetailComponent]
 })
 export class TreasuryUiJournalModule {}

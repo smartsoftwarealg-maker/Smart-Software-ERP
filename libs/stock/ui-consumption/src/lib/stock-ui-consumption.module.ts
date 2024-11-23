@@ -31,13 +31,10 @@ import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
         CommonUiConfirmationDialogModule,
         RouterModule,
         StockUiConsumptionLinesModule,
-
         CommonUiDatepickerModule,
         CommonUiAutoCompleteModule,
         LogisticsUiStockInfoModule,
-        DocInfoComponent
-    ],
-    declarations: [
+        DocInfoComponent,
         ConsumptionListComponent,
         ConsumptionDetailComponent,
         ConsumptionCancellationDetailComponent,

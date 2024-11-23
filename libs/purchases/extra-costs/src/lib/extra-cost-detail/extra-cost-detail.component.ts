@@ -3,18 +3,48 @@ import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ExtraCostService } from '../services/extra-cost.service';
-import { FormBuilder, FormControl, UntypedFormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, UntypedFormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { COST_TYPES, ExtraCost, VALUE_TYPES } from '@ss/logistics/api-transaction';
 import { of, switchMap, tap } from 'rxjs';
 import { ArticleAutoCompleteModel, ServiceArticleService } from '@ss/master-data/api-article';
 import { AbstractEntityComponent } from '@ss/common/ui-base-entity';
 import { Agent, SupplierService } from '@ss/logistics/api-agent';
 import { DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
+import { NgIf, NgFor } from '@angular/common';
+import { MatMiniFabButton } from '@angular/material/button';
+import { MatCard } from '@angular/material/card';
+import { MatFormField, MatLabel, MatError } from '@angular/material/form-field';
+import { TranslateDirective } from '../../../../../common/ui-lang/src/lib/translate.directive';
+import { UiAutoCompleteComponent } from '../../../../../common/ui-auto-complete/src/lib/auto-complete.component';
+import { MatInput } from '@angular/material/input';
+import { MatCheckbox } from '@angular/material/checkbox';
+import { MatSelect } from '@angular/material/select';
+import { MatOption } from '@angular/material/core';
+import { TranslatePipe } from '../../../../../common/ui-lang/src/lib/translate.pipe';
 
 @Component({
     selector: 'ss-extra-cost-detail',
     templateUrl: './extra-cost-detail.component.html',
     styleUrls: ['./extra-cost-detail.component.scss'],
+    standalone: true,
+    imports: [
+        NgIf,
+        MatMiniFabButton,
+        MatCard,
+        FormsModule,
+        ReactiveFormsModule,
+        MatFormField,
+        MatLabel,
+        TranslateDirective,
+        UiAutoCompleteComponent,
+        MatError,
+        MatInput,
+        MatCheckbox,
+        MatSelect,
+        NgFor,
+        MatOption,
+        TranslatePipe,
+    ],
 })
 export class ExtraCostDetailComponent extends AbstractEntityComponent<ExtraCost> implements OnInit {
     private supplierSrv = inject(SupplierService);

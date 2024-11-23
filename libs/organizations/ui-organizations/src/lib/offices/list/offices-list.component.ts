@@ -8,12 +8,40 @@ import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { OfficeService, Office } from '@ss/common/api-lookup';
 import { AssetBuilding, AssetLocation, AssetLocationService, AssetsBuildingService } from "@ss/assets-component";
 import { CodeDescriptionAutoCompleteModel, DefaultAutoCompleteModel } from "@ss/common/ui-auto-complete";
-import { FormControl } from "@angular/forms";
+import { FormControl, FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { MatFormField, MatLabel } from "@angular/material/form-field";
+import { TranslateDirective } from "../../../../../../common/ui-lang/src/lib/translate.directive";
+import { UiAutoCompleteComponent } from "../../../../../../common/ui-auto-complete/src/lib/auto-complete.component";
+import { MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from "@angular/material/table";
+import { MatSort, MatSortHeader } from "@angular/material/sort";
+import { PaginationComponent } from "../../../../../../common/ui-pagination/src/lib/pagination.component";
 
 @Component({
     selector: 'ss-offices-list',
     templateUrl: './offices-list.component.html',
     styleUrls: ['./offices-list.component.scss'],
+    standalone: true,
+    imports: [
+        MatFormField,
+        MatLabel,
+        TranslateDirective,
+        UiAutoCompleteComponent,
+        FormsModule,
+        ReactiveFormsModule,
+        MatTable,
+        MatSort,
+        MatColumnDef,
+        MatHeaderCellDef,
+        MatHeaderCell,
+        MatSortHeader,
+        MatCellDef,
+        MatCell,
+        MatHeaderRowDef,
+        MatHeaderRow,
+        MatRowDef,
+        MatRow,
+        PaginationComponent,
+    ],
 })
 export class OfficesListComponent extends BaseEntityListComponent<Office> {
     private locationSrv = inject(AssetLocationService);

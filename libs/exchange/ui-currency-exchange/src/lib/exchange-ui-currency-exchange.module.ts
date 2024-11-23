@@ -21,14 +21,10 @@ import {ExchangeDetailComponent} from './exchange-detail.component';
         CommonUiConfirmationDialogModule,
         CommonUiDatepickerModule,
         CommonUiAutoCompleteModule,
-        ExchangeUiInfoModule
-    ],
-
-    declarations: [
+        ExchangeUiInfoModule,
         ExchangeListComponent,
         ExchangeDetailComponent
     ],
-
     exports: [
         ExchangeListComponent,
         ExchangeDetailComponent

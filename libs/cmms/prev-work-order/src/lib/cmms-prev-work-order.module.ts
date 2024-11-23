@@ -28,9 +28,7 @@ import { PrevWorkOrderDetailComponent } from "./prev-work-order-detail/prev-work
         MatInputModule,
         CommonUiDatepickerModule,
         MatButtonModule,
-        MaterialModule
-    ],
-    declarations: [
+        MaterialModule,
         PrevWorkOrderListComponent,
         PrevWorkOrderDetailComponent
     ],

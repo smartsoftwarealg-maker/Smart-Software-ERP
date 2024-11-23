@@ -36,13 +36,10 @@ import {
         CommonUiLangModule,
         UiPaginationModule,
         ReactiveFormsModule,
-
         CommonUiAutoCompleteModule,
         CommonUiConfirmationDialogModule,
         CommonUiDatepickerModule,
         RouterOutlet,
-    ],
-    declarations: [
         WorkShiftListComponent,
         WorkShiftDetailComponent,
         AttendanceMachineDetailComponent,
@@ -59,7 +56,7 @@ import {
         HolidayRequestListComponent,
         HolidayRequestDetailComponent,
         AbsenceMotiveListComponent,
-        AbsenceMotiveDetailComponent
+        AbsenceMotiveDetailComponent,
     ],
 })
 export class AttendanceModule {}

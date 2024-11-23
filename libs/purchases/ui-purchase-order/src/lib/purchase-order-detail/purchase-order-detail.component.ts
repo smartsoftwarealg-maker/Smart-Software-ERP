@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import {KeepOnToolbar, ShellService, SnackBarService, ToolbarButton} from '@ss/common/ui-shell';
-import { ActivatedRoute, Router } from '@angular/router';
-import { FormGroup, UntypedFormBuilder } from '@angular/forms';
+import { ActivatedRoute, Router, RouterOutlet } from '@angular/router';
+import { FormGroup, UntypedFormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {CCGroup, Lookup, LookupsService} from '@ss/common/api-lookup';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import { Observable, of, switchMap } from 'rxjs';
@@ -15,11 +15,22 @@ import {PurchaseOrderService} from '@ss/purchases/api-purchase-order';
 import {MatDialog} from '@angular/material/dialog';
 import { PurchaseOrderLinesService } from '../purchase-order-lines.service';
 import { Project } from '@ss/logistics/contracts';
+import { MatCard, MatCardContent } from '@angular/material/card';
+import { MatFormField, MatLabel, MatError } from '@angular/material/form-field';
+import { TranslateDirective } from '../../../../../common/ui-lang/src/lib/translate.directive';
+import { MatInput } from '@angular/material/input';
+import { DatePickerComponent } from '../../../../../common/ui-datepicker/src/lib/date-picker.component';
+import { UiAutoCompleteComponent } from '../../../../../common/ui-auto-complete/src/lib/auto-complete.component';
+import { NgIf } from '@angular/common';
+import { MatTabGroup, MatTab, MatTabLabel } from '@angular/material/tabs';
+import { CdkTextareaAutosize } from '@angular/cdk/text-field';
 
 @Component({
     selector: 'ss-ui-order-detail',
     templateUrl: './purchase-order-detail.component.html',
-    styleUrls: ['../../../../../common/assets/src/assets/transac-detail.scss']
+    styleUrls: ['../../../../../common/assets/src/assets/transac-detail.scss'],
+    standalone: true,
+    imports: [MatCard, MatCardContent, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, DatePickerComponent, UiAutoCompleteComponent, NgIf, MatError, MatTabGroup, MatTab, MatTabLabel, CdkTextareaAutosize, RouterOutlet]
 })
 export class PurchaseOrderDetailComponent extends BaseTransactionDetailComponent {
 

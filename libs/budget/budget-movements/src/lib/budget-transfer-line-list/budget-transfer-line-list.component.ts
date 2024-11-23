@@ -6,11 +6,31 @@ import {BudgetTransferDetail} from '../budget-movement-api';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {PaginationModel} from '@ss/common/api-common';
 import {BudgetTransferDetailService} from '../budget-transfer-detail.service';
+import { MatMiniFabButton } from '@angular/material/button';
+import { MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from '@angular/material/table';
+import { TranslateDirective } from '../../../../../common/ui-lang/src/lib/translate.directive';
+import { DecimalPipe } from '@angular/common';
 
 @Component({
     selector: 'ss-budget-line-list',
     templateUrl: './budget-transfer-line-list.component.html',
     styleUrls: ['./budget-transfer-line-list.component.scss'],
+    standalone: true,
+    imports: [
+        MatMiniFabButton,
+        MatTable,
+        MatColumnDef,
+        MatHeaderCellDef,
+        MatHeaderCell,
+        TranslateDirective,
+        MatCellDef,
+        MatCell,
+        MatHeaderRowDef,
+        MatHeaderRow,
+        MatRowDef,
+        MatRow,
+        DecimalPipe,
+    ],
 })
 export class BudgetTransferLineListComponent implements OnInit {
     parentId = 0;

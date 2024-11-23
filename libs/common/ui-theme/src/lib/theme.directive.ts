@@ -2,7 +2,8 @@ import { Directive, ElementRef, Renderer2, OnInit } from '@angular/core';
 import { ThemeService } from './theme.service';
 
 @Directive({
-    selector: '[ssTheme]'
+    selector: '[ssTheme]',
+    standalone: true
 })
 export class ThemeDirective implements OnInit {
 

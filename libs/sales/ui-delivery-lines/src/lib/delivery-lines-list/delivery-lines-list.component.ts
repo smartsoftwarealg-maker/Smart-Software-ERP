@@ -8,11 +8,24 @@ import {
     BaseTransactionLinesListComponent
 } from '@ss/logistics/api-transaction';
 import { DeliveryLinesService } from '@ss/sales/api-delivery';
+import { MatFormField, MatLabel } from '@angular/material/form-field';
+import { TranslateDirective } from '../../../../../common/ui-lang/src/lib/translate.directive';
+import { MatInput } from '@angular/material/input';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgIf, DecimalPipe } from '@angular/common';
+import { MatMiniFabButton, MatIconButton } from '@angular/material/button';
+import { MatTooltip } from '@angular/material/tooltip';
+import { MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from '@angular/material/table';
+import { PaginationComponent } from '../../../../../common/ui-pagination/src/lib/pagination.component';
+import { DocInfoComponent } from '../../../../../logistics/ui-doc-info/src/lib/doc-info/doc-info.component';
+import { TranslatePipe } from '../../../../../common/ui-lang/src/lib/translate.pipe';
 
 @Component({
     selector: 'ss-delivery-lines-list',
     styleUrls: ['../../../../../common/assets/src/assets/transac-lines-list.scss'],
-    templateUrl: './delivery-lines-list.component.html'
+    templateUrl: './delivery-lines-list.component.html',
+    standalone: true,
+    imports: [MatFormField, MatLabel, TranslateDirective, MatInput, FormsModule, ReactiveFormsModule, NgIf, MatMiniFabButton, MatTooltip, MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatIconButton, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, PaginationComponent, DocInfoComponent, DecimalPipe, TranslatePipe]
 })
 export class DeliveryLinesListComponent extends BaseTransactionLinesListComponent implements OnInit {
 

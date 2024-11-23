@@ -2,11 +2,24 @@ import {Component, Input, OnInit} from '@angular/core';
 import {BookingService} from '../../booking.service';
 import {BookingRoom, BookingRoomGuest, ChargingCost, Room, RoomType} from '../../../hotel-api';
 import {LoadingState} from '../../../../common/util';
+import { NgIf, NgFor } from '@angular/common';
+import { LoadingSpinnerComponent } from '../../../../smart-lib/components/loading-spinner/loading-spinner.component';
+import { FatalErrorComponent } from '../../../../smart-lib/components/fatal-error/fatal-error.component';
+import { MatIconButton } from '@angular/material/button';
+import { TranslateDirective } from '../../../../../../../../libs/common/ui-lang/src/lib/translate.directive';
+import { MatFormField, MatLabel } from '@angular/material/form-field';
+import { MatInput } from '@angular/material/input';
+import { FormsModule } from '@angular/forms';
+import { MatAutocompleteTrigger, MatAutocomplete } from '@angular/material/autocomplete';
+import { MatOption } from '@angular/material/core';
+import { MatTooltip } from '@angular/material/tooltip';
 
 @Component({
     selector: 'app-reserved-room',
     templateUrl: './reserved-room.component.html',
-    styleUrls: ['./reserved-room.component.scss']
+    styleUrls: ['./reserved-room.component.scss'],
+    standalone: true,
+    imports: [NgIf, LoadingSpinnerComponent, FatalErrorComponent, MatIconButton, TranslateDirective, MatFormField, MatLabel, MatInput, FormsModule, MatAutocompleteTrigger, MatAutocomplete, NgFor, MatOption, MatTooltip]
 })
 export class ReservedRoomComponent implements OnInit {
 

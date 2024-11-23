@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { UntypedFormGroup, UntypedFormBuilder, Validators } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormBuilder, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { tap, switchMap } from 'rxjs/operators';
 import { BaseChildEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { Career, EmployeeCareerService } from '@ss/payroll/api-employee';
@@ -22,11 +22,23 @@ import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import { EmployeeLookupService } from '@ss/remuneration/special-payroll';
 import { EmployeeService, PersonAutocompleteClass } from "@ss/employee-services/employee-services";
 import { CostCenterService } from '@ss/logistics/api-cost-center';
+import { NgIf, NgFor } from '@angular/common';
+import { MatMiniFabButton } from '@angular/material/button';
+import { MatCard, MatCardContent } from '@angular/material/card';
+import { MatFormField, MatLabel } from '@angular/material/form-field';
+import { TranslateDirective } from '../../../../../../common/ui-lang/src/lib/translate.directive';
+import { MatInput } from '@angular/material/input';
+import { DatePickerComponent } from '../../../../../../common/ui-datepicker/src/lib/date-picker.component';
+import { MatSelect } from '@angular/material/select';
+import { MatOption } from '@angular/material/core';
+import { UiAutoCompleteComponent } from '../../../../../../common/ui-auto-complete/src/lib/auto-complete.component';
 
 @Component({
     selector: 'ss-emp-career-detail',
     templateUrl: './employee-career-detail.component.html',
-    styleUrls: ['./employee-career-detail.component.scss']
+    styleUrls: ['./employee-career-detail.component.scss'],
+    standalone: true,
+    imports: [NgIf, MatMiniFabButton, MatCard, MatCardContent, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, DatePickerComponent, MatSelect, MatOption, UiAutoCompleteComponent, NgFor]
 })
 export class EmployeeCareerDetailComponent extends BaseChildEntityDetailComponent<Career> {
     private costCenterSrv = inject(CostCenterService);

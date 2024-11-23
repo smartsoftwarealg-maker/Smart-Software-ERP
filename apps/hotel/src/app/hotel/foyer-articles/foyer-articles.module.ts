@@ -13,9 +13,9 @@ import { ImageInputModule } from '../../common/image-input/image-input.module';
 import { FoyerArticlesService } from './foyer-articles.service';
 import { CanDeactivateService, FoyerArticlesDetailComponent } from './foyer-articles-detail.component';
 import { CanActivateService } from '../../smart-lib/components/login/can-activte.service';
-import { SmartCommonModule } from '../../smart-lib/common/smart-common.module';
+
 import { LoadingSpinnerModule } from '../../smart-lib/components/loading-spinner/loading-spinner.module';
-import { FatalErrorModule } from '../../smart-lib/components/fatal-error/fatal-error.module';
+
 import { LanguageService } from '@ss/common/api-common';
 import { MaterialModule } from '../../smart-lib/components/material.module';
 
@@ -39,25 +39,21 @@ const routes: Routes = [
 
 @NgModule({
     imports: [
-        CommonModule,
-        FormsModule,
-        ReactiveFormsModule,
-        MaterialModule,
-        HttpClientModule,
-        SmartCommonModule,
-        PaginationModule,
-        LoadingSpinnerModule,
-        FatalErrorModule,
-        ListToolbarModule,
-        SaveBarModule,
-        RouterModule.forChild(routes),
-        AutoCompleteModule,
-        ImageInputModule
-    ],
-    declarations: [
-        FoyerArticlesListComponent,
-        FoyerArticlesDetailComponent
-    ],
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MaterialModule,
+    HttpClientModule,
+    PaginationModule,
+    LoadingSpinnerModule,
+    ListToolbarModule,
+    SaveBarModule,
+    RouterModule.forChild(routes),
+    AutoCompleteModule,
+    ImageInputModule,
+    FoyerArticlesListComponent,
+    FoyerArticlesDetailComponent
+],
     providers: [
         FoyerArticlesService,
         CanDeactivateService

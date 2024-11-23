@@ -27,12 +27,10 @@ import { ReviewComponent } from './review/review.component';
         RouterModule,
         CommonUiDatepickerModule,
         CommonUiAutoCompleteModule,
-
         SalesUiDeliveryLinesModule,
         LogisticsUiDocImportModule,
-
         LogisticsUiStockInfoModule,
+        CheckoutComponent, ReviewComponent,
     ],
-    declarations: [CheckoutComponent, ReviewComponent],
 })
 export class SalesPaypalModule {}

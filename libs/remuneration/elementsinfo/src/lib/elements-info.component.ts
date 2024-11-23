@@ -7,11 +7,19 @@ import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import {PaginatorPersistenceService} from '@ss/common/api-common';
 import {ElementsInfoService} from './elements-info.service';
+import { MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from '@angular/material/table';
+import { MatSort, MatSortHeader } from '@angular/material/sort';
+import { TranslateDirective } from '../../../../common/ui-lang/src/lib/translate.directive';
+import { MatCheckbox } from '@angular/material/checkbox';
+import { PaginationComponent } from '../../../../common/ui-pagination/src/lib/pagination.component';
+import { DecimalPipe } from '@angular/common';
 
 @Component({
-  selector: 'ss-elements-info',
-  templateUrl: './elements-info.component.html',
-  styleUrls: ['./elements-info.component.scss']
+    selector: 'ss-elements-info',
+    templateUrl: './elements-info.component.html',
+    styleUrls: ['./elements-info.component.scss'],
+    standalone: true,
+    imports: [MatTable, MatSort, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatSortHeader, TranslateDirective, MatCellDef, MatCell, MatCheckbox, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, PaginationComponent, DecimalPipe]
 })
 export class ElementsInfoComponent extends BaseEntityListComponent<ElementsInfo> {
     displayedColumns = [

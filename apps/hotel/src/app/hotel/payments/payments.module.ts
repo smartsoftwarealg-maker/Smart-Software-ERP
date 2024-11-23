@@ -9,9 +9,9 @@ import { SaveBarModule } from '../../common/save-bar/save-bar.module';
 import { NavService } from '../../common/nav.service';
 import { AutoCompleteModule } from '../../common/auto-complete/auto-complete.module';
 import { CanActivateService } from '../../smart-lib/components/login/can-activte.service';
-import { SmartCommonModule } from '../../smart-lib/common/smart-common.module';
+
 import { LoadingSpinnerModule } from '../../smart-lib/components/loading-spinner/loading-spinner.module';
-import { FatalErrorModule } from '../../smart-lib/components/fatal-error/fatal-error.module';
+
 import { MaterialModule } from '../../smart-lib/components/material.module';
 import { PaymentListComponent } from './payment-list.component';
 import { PaymentDetailComponent, CanDeactivateService } from './payment-detail.component';
@@ -45,26 +45,22 @@ const routes: Routes = [
 ];
 @NgModule({
     imports: [
-        CommonModule,
-        FormsModule,
-        ReactiveFormsModule,
-        MaterialModule,
-        HttpClientModule,
-        SmartCommonModule,
-        PaginationModule,
-        LoadingSpinnerModule,
-        FatalErrorModule,
-        ListToolbarModule,
-        SaveBarModule,
-        RouterModule.forChild(routes),
-        AutoCompleteModule,
-        DatePickerModule
-    ],
-    declarations: [
-        PaymentListComponent,
-        PaymentDetailComponent,
-        RedirectToParentComponent,
-    ],
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MaterialModule,
+    HttpClientModule,
+    PaginationModule,
+    LoadingSpinnerModule,
+    ListToolbarModule,
+    SaveBarModule,
+    RouterModule.forChild(routes),
+    AutoCompleteModule,
+    DatePickerModule,
+    PaymentListComponent,
+    PaymentDetailComponent,
+    RedirectToParentComponent
+],
     exports: [
         PaymentDetailComponent
     ],

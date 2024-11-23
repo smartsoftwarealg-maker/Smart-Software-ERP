@@ -3,9 +3,9 @@ import { VatListComponent } from './vat-list.component';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { SmartCommonModule } from '../../smart-lib/common/smart-common.module';
+
 import { PaginationModule } from '../pagination/pagination.module';
-import { FatalErrorModule } from '../../smart-lib/components/fatal-error/fatal-error.module';
+
 import { ListToolbarModule } from '../list-toolbar/list-toolbar.module';
 import { VatDetailComponent } from './vat-detail.component';
 import { SaveBarModule } from '../save-bar/save-bar.module';
@@ -27,23 +27,19 @@ const routes: Routes = [
 
 @NgModule({
     imports: [
-        CommonModule,
-        FormsModule,
-        ReactiveFormsModule,
-        MaterialModule,
-        HttpClientModule,
-        SmartCommonModule,
-        PaginationModule,
-        LoadingSpinnerModule,
-        FatalErrorModule,
-        ListToolbarModule,
-        SaveBarModule,
-        RouterModule.forChild(routes)
-    ],
-    declarations: [
-        VatListComponent,
-        VatDetailComponent
-    ],
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MaterialModule,
+    HttpClientModule,
+    PaginationModule,
+    LoadingSpinnerModule,
+    ListToolbarModule,
+    SaveBarModule,
+    RouterModule.forChild(routes),
+    VatListComponent,
+    VatDetailComponent
+],
     exports: [
         VatListComponent,
         VatDetailComponent

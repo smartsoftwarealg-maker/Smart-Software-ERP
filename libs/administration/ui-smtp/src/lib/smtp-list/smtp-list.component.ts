@@ -6,11 +6,16 @@ import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {Smtp, SmtpService} from '@ss/administration/api-smtp';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import {PaginatorPersistenceService} from '@ss/common/api-common';
+import { MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from '@angular/material/table';
+import { TranslateDirective } from '../../../../../common/ui-lang/src/lib/translate.directive';
+import { PaginationComponent } from '../../../../../common/ui-pagination/src/lib/pagination.component';
 
 @Component({
     selector: 'ss-smtp-list',
     styleUrls: ['./smtp-list.component.scss'],
-    templateUrl: './smtp-list.component.html'
+    templateUrl: './smtp-list.component.html',
+    standalone: true,
+    imports: [MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, TranslateDirective, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, PaginationComponent]
 })
 export class SmtpListComponent extends BaseEntityListComponent<Smtp> {
 

@@ -8,11 +8,18 @@ import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { DefaultReportService } from '@ss/common/ui-default-report-component';
 import { HttpService, PaginatorPersistenceService, ymdToDmy, removeTimeForDateStr } from '@ss/common/api-common';
 import { Observable, of } from 'rxjs';
+import { MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from '@angular/material/table';
+import { TranslateDirective } from '../../../../common/ui-lang/src/lib/translate.directive';
+import { MatCheckbox } from '@angular/material/checkbox';
+import { PaginationComponent } from '../../../../common/ui-pagination/src/lib/pagination.component';
+import { DecimalPipe } from '@angular/common';
 
 @Component({
     selector: 'ss-checks-list',
     styleUrls: ['./check-list.component.scss'],
-    templateUrl: './check-list.component.html'
+    templateUrl: './check-list.component.html',
+    standalone: true,
+    imports: [MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, TranslateDirective, MatCellDef, MatCell, MatCheckbox, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, PaginationComponent, DecimalPipe]
 })
 export class CheckListComponent extends BaseEntityListComponent<Check> implements OnInit {
 

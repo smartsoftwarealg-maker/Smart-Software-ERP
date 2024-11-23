@@ -1,7 +1,14 @@
 import { Component, Input } from '@angular/core';
-import { PaginationModel } from '../../../../common/pagination/pagination.component';
+import { PaginationModel, PaginationComponent } from '../../../../common/pagination/pagination.component';
 import { LanguageService } from '@ss/common/api-common';
 import { HttpService } from '../../../../smart-lib/common/http.service';
+import { MatBadge } from '@angular/material/badge';
+import { MatIconButton } from '@angular/material/button';
+import { MatTooltip } from '@angular/material/tooltip';
+import { MatMenuTrigger, MatMenu } from '@angular/material/menu';
+import { TranslateDirective } from '../../../../../../../../libs/common/ui-lang/src/lib/translate.directive';
+import { NgFor, NgClass } from '@angular/common';
+import { TranslatePipe } from '../../../../../../../../libs/common/ui-lang/src/lib/translate.pipe';
 
 enum NotificationType {
     GUEST_OVERSTAYED = 1,
@@ -24,7 +31,9 @@ export interface Notification {
 @Component({
     selector: 'app-htl-bk-notification',
     templateUrl: 'notifications.component.html',
-    styleUrls: ['notifications.component.scss']
+    styleUrls: ['notifications.component.scss'],
+    standalone: true,
+    imports: [MatBadge, MatIconButton, MatTooltip, MatMenuTrigger, MatMenu, TranslateDirective, NgFor, NgClass, PaginationComponent, TranslatePipe]
 })
 export class NotificationsComponent {
 

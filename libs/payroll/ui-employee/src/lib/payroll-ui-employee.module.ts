@@ -42,29 +42,13 @@ import { ImageInputComponent } from '@ss/common/ui-image-input';
         CommonModule,
         MaterialModule,
         CommonUiLangModule,
-
         UiPaginationModule,
         CommonUiConfirmationDialogModule,
         CommonUiAutoCompleteModule,
         CommonUiDatepickerModule,
         RouterModule,
         CustomAttributesModule,
-
-        ImageInputComponent
-    ],
-    exports: [
-        EmployeeListComponent,
-        EmployeeDetailComponent,
-        EmployeeActivationDetailComponent,
-        EmployeeContractsDetailComponent,
-        EmployeeWifeDetailComponent,
-        EmployeeChildDetailComponent,
-        EmployeeLanguagesDetailComponent,
-        EmployeeOldCareerDetailComponent,
-        EmployeeDecisionDetailComponent,
-        PersonListComponent,
-    ],
-    declarations: [
+        ImageInputComponent,
         EmployeeListComponent,
         EmployeeDetailComponent,
         EmployeeActivationListComponent,
@@ -90,7 +74,19 @@ import { ImageInputComponent } from '@ss/common/ui-image-input';
         EmployeeDecisionDetailComponent,
         EmployeeDecisionListComponent,
         PersonListComponent,
-        PaymentInfoComponent,
+        PaymentInfoComponent
+    ],
+    exports: [
+        EmployeeListComponent,
+        EmployeeDetailComponent,
+        EmployeeActivationDetailComponent,
+        EmployeeContractsDetailComponent,
+        EmployeeWifeDetailComponent,
+        EmployeeChildDetailComponent,
+        EmployeeLanguagesDetailComponent,
+        EmployeeOldCareerDetailComponent,
+        EmployeeDecisionDetailComponent,
+        PersonListComponent,
     ],
 })
 export class PayrollUiEmployeeModule {}

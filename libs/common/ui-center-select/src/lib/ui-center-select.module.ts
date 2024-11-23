@@ -19,9 +19,7 @@ const routes: Routes = [
         CommonModule,
         MaterialModule,
         CommonUiLangModule,
-        RouterModule.forChild(routes)
-    ],
-    declarations: [
+        RouterModule.forChild(routes),
         CenterSelectComponent
     ],
     exports: [

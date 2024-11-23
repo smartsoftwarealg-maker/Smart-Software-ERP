@@ -3,15 +3,27 @@ import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {Lookup} from '../lookup';
 import {ImportInfo} from '../import-info';
 import {DocImportService} from '../doc-import.service';
-import { FormControl } from '@angular/forms';
+import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {switchMap} from 'rxjs/operators';
 import { Subscription } from 'rxjs';
 import { PaginationModel } from '@ss/common/api-common';
+import { MatFormField, MatLabel } from "@angular/material/form-field";
+import { TranslateDirective } from "../../../../../common/ui-lang/src/lib/translate.directive";
+import { MatSelect } from "@angular/material/select";
+import { NgFor, DatePipe } from "@angular/common";
+import { MatOption } from "@angular/material/core";
+import { MatInput } from "@angular/material/input";
+import { MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from "@angular/material/table";
+import { MatButton } from "@angular/material/button";
+import { PaginationComponent } from "../../../../../common/ui-pagination/src/lib/pagination.component";
+import { TranslatePipe } from "../../../../../common/ui-lang/src/lib/translate.pipe";
 
 @Component({
     selector: 'ss-doc-import',
     templateUrl: './doc-import.component.html',
-    styleUrls: ['./doc-import.component.scss']
+    styleUrls: ['./doc-import.component.scss'],
+    standalone: true,
+    imports: [MatFormField, MatLabel, TranslateDirective, MatSelect, FormsModule, ReactiveFormsModule, NgFor, MatOption, MatInput, MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, MatButton, PaginationComponent, DatePipe, TranslatePipe]
 })
 export class DocImportComponent implements OnInit {
     private dialogRef = inject(MatDialogRef<DocImportComponent>);

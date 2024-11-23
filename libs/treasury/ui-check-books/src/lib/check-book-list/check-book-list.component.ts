@@ -8,11 +8,18 @@ import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { DefaultReportService } from '@ss/common/ui-default-report-component';
 import { HttpService, PaginatorPersistenceService, ymdToDmy, removeTimeForDateStr } from '@ss/common/api-common';
 import { Observable, of } from 'rxjs';
+import { MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from '@angular/material/table';
+import { TranslateDirective } from '../../../../../common/ui-lang/src/lib/translate.directive';
+import { PaginationComponent } from '../../../../../common/ui-pagination/src/lib/pagination.component';
+import { AsyncPipe } from '@angular/common';
+import { BankDescriptionPipe } from '@ss/administration/api-bank';
 
 @Component({
     selector: 'ss-check-book-list',
     styleUrls: ['./check-book-list.component.scss'],
-    templateUrl: './check-book-list.component.html'
+    templateUrl: './check-book-list.component.html',
+    standalone: true,
+    imports: [MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, TranslateDirective, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, PaginationComponent, AsyncPipe, BankDescriptionPipe]
 })
 export class CheckBookListComponent extends BaseEntityListComponent<CheckBook> implements OnInit {
 

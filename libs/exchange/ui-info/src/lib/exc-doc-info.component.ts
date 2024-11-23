@@ -1,6 +1,8 @@
 import {Component, ElementRef, Input, ViewChild} from '@angular/core';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-import {ActivatedRoute, Router} from '@angular/router';
+import { ActivatedRoute, Router, RouterLinkActive, RouterLink, RouterOutlet } from '@angular/router';
+import { MatToolbar } from '@angular/material/toolbar';
+import { TranslateDirective } from '../../../../common/ui-lang/src/lib/translate.directive';
 
 interface Entry {
     name: string,
@@ -12,7 +14,9 @@ interface Entry {
 @Component({
     selector: 'ss-exc-doc-info',
     templateUrl: './exc-doc-info.component.html',
-    styleUrls: ['./exc-doc-info.component.scss']
+    styleUrls: ['./exc-doc-info.component.scss'],
+    standalone: true,
+    imports: [MatToolbar, RouterLinkActive, RouterLink, TranslateDirective, RouterOutlet]
 })
 
 export class ExcDocInfoComponent {

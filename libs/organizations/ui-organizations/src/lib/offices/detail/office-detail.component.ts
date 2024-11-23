@@ -1,6 +1,6 @@
 import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
-import { UntypedFormGroup, UntypedFormBuilder, Validators } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormBuilder, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
@@ -8,11 +8,19 @@ import { HttpService } from '@ss/common/api-common';
 import { OfficeService, Office } from '@ss/common/api-lookup';
 import { DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
 import { AssetsBuildingService } from '@ss/assets-component';
+import { MatCard } from '@angular/material/card';
+import { NgIf } from '@angular/common';
+import { MatFormField, MatLabel, MatError } from '@angular/material/form-field';
+import { TranslateDirective } from '../../../../../../common/ui-lang/src/lib/translate.directive';
+import { UiAutoCompleteComponent } from '../../../../../../common/ui-auto-complete/src/lib/auto-complete.component';
+import { MatInput } from '@angular/material/input';
 
 @Component({
-  selector: 'ss-office-detail',
-  templateUrl: './office-detail.component.html',
-  styleUrls: ['./office-detail.component.scss']
+    selector: 'ss-office-detail',
+    templateUrl: './office-detail.component.html',
+    styleUrls: ['./office-detail.component.scss'],
+    standalone: true,
+    imports: [MatCard, NgIf, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, UiAutoCompleteComponent, MatInput, MatError]
 })
 export class OfficeDetailComponent extends BaseEntityDetailComponent<Office> implements OnInit, OnDestroy {
   private buildingSrv = inject(AssetsBuildingService);

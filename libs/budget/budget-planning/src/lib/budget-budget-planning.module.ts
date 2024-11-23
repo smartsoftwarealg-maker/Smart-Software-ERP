@@ -16,10 +16,9 @@ import {CommonUiConfirmationDialogModule} from '@ss/common/ui-confirmation-dialo
         CommonUiLangModule,
         UiPaginationModule,
         ReactiveFormsModule,
-
         CommonUiAutoCompleteModule,
         CommonUiConfirmationDialogModule,
+        BudgetPlanningComponent, BudgetPlanningAddDlgComponent,
     ],
-    declarations: [BudgetPlanningComponent, BudgetPlanningAddDlgComponent],
 })
 export class BudgetBudgetPlanningModule {}

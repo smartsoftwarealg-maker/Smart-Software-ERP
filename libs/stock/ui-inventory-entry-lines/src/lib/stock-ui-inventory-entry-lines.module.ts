@@ -23,15 +23,12 @@ import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
         RouterModule,
         ReactiveFormsModule,
         CommonUiConfirmationDialogModule,
-
         LogisticsUiStockInfoModule,
         CommonUiDatepickerModule,
         CommonUiAutoCompleteModule,
-        DocInfoComponent
-    ],
-    declarations: [
+        DocInfoComponent,
         InventoryEntryLinesListComponent,
-        InventoryEntryLinesDetailComponent,
+        InventoryEntryLinesDetailComponent
     ],
     exports: [
         InventoryEntryLinesListComponent,

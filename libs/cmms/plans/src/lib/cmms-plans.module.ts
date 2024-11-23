@@ -16,10 +16,6 @@ import { MaterialModule } from '@ss/common/api-common';
 import { RouterOutlet } from '@angular/router';
 
 @NgModule({
-    declarations: [
-        CMMSPlanListComponent,
-        CMMSPlanDetailComponent
-    ],
     imports: [
         CommonModule,
         CommonUiLangModule,
@@ -31,7 +27,9 @@ import { RouterOutlet } from '@angular/router';
         MatInputModule,
         MaterialModule,
         ReactiveFormsModule,
-        RouterOutlet
+        RouterOutlet,
+        CMMSPlanListComponent,
+        CMMSPlanDetailComponent
     ]
 })
 export class CmmsPlansModule {}

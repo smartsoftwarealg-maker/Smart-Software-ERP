@@ -10,11 +10,36 @@ import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {BudgetService} from '@ss/budget/budget';
 import {BudgetTransferService} from '../budget-transfer.service';
+import { MatList, MatListItem } from '@angular/material/list';
+import { NgFor, DecimalPipe, DatePipe } from '@angular/common';
+import { MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from '@angular/material/table';
+import { TranslateDirective } from '../../../../../common/ui-lang/src/lib/translate.directive';
+import { PaginationComponent } from '../../../../../common/ui-pagination/src/lib/pagination.component';
 
 @Component({
     selector: 'ss-budget-transfer-list',
     templateUrl: './budget-transfer-list.component.html',
     styleUrls: ['./budget-transfer-list.component.scss'],
+    standalone: true,
+    imports: [
+        MatList,
+        NgFor,
+        MatListItem,
+        MatTable,
+        MatColumnDef,
+        MatHeaderCellDef,
+        MatHeaderCell,
+        TranslateDirective,
+        MatCellDef,
+        MatCell,
+        MatHeaderRowDef,
+        MatHeaderRow,
+        MatRowDef,
+        MatRow,
+        PaginationComponent,
+        DecimalPipe,
+        DatePipe,
+    ],
 })
 export class BudgetTransferListComponent extends BaseEntityListComponent<BudgetTransfer> implements OnInit {
     selectedPlanningId = 0;

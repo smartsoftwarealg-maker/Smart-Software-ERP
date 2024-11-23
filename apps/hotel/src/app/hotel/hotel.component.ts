@@ -1,14 +1,18 @@
 import { Component } from '@angular/core';
-import { Route, Routes } from '@angular/router';
+import { Route, Routes, RouterLink } from '@angular/router';
 import { BasicShellComponent } from '../common/basic-shell/basic-shell.component';
 import { LanguageService } from '@ss/common/api-common';
 import { CanActivateService } from '../smart-lib/components/login/can-activte.service';
 import { ReportViewComponent } from '../smart-lib/components/reports/report-view/report-view.component';
+import { NgFor } from '@angular/common';
+import { TranslateDirective } from '../../../../../libs/common/ui-lang/src/lib/translate.directive';
 
 @Component({
     selector: 'app-hotel-main',
     templateUrl: './hotel.component.html',
-    styleUrls: ['./hotel.component.scss']
+    styleUrls: ['./hotel.component.scss'],
+    standalone: true,
+    imports: [NgFor, TranslateDirective, RouterLink]
 })
 export class HotelComponent {
 

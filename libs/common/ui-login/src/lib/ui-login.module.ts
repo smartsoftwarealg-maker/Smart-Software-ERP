@@ -17,8 +17,8 @@ const routes: Routes = [{ path: LOGIN_URL, component: LoginComponent }];
         CommonUiLangModule,
         UiThemeModule,
         RouterModule.forChild(routes),
+        LoginComponent, EmployeeProfileComponent,
     ],
-    declarations: [LoginComponent, EmployeeProfileComponent],
     exports: [LoginComponent],
 })
 export class UiLoginModule {}

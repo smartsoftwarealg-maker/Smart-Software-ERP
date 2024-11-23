@@ -1,18 +1,26 @@
 import { Component, DestroyRef, inject, OnInit, signal } from '@angular/core';
 import {DbUpdaterService} from '../db-updater.service';
-import {MatListOption} from '@angular/material/list';
+import { MatListOption, MatSelectionList } from '@angular/material/list';
 import {catchError, concatMap, delay, from, map, Observable, of, switchMap, tap} from 'rxjs';
 import {ShellService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Route} from '@angular/router';
 import {DBResponse} from '../db-updater-api';
-import { FormControl } from '@angular/forms';
+import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
+import { MatProgressBar } from '@angular/material/progress-bar';
+import { MatFormField, MatLabel } from '@angular/material/form-field';
+import { TranslateDirective } from '../../../../../common/ui-lang/src/lib/translate.directive';
+import { MatInput } from '@angular/material/input';
+import { MatButton } from '@angular/material/button';
+import { TranslatePipe } from '../../../../../common/ui-lang/src/lib/translate.pipe';
 
 @Component({
     selector: 'ss-db-updater',
     templateUrl: './db-updater.component.html',
-    styleUrls: ['./db-updater.component.scss']
+    styleUrls: ['./db-updater.component.scss'],
+    standalone: true,
+    imports: [MatProgressBar, MatFormField, MatLabel, TranslateDirective, MatInput, FormsModule, ReactiveFormsModule, MatSelectionList, MatListOption, MatButton, TranslatePipe]
 })
 export class DbUpdaterComponent implements OnInit {
     #destroyRef = inject(DestroyRef);

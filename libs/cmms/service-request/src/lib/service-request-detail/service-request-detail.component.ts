@@ -2,16 +2,50 @@ import { Component, inject } from '@angular/core';
 import { CMMSWorkDetail, INSPECTION, IS_NOT_INSPECTION, Work, WORK_TYPES } from '@ss/cmms/cmms-api';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router } from '@angular/router';
-import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { DOC_WORK_ORDER } from '@ss/logistics/api-transaction';
 import { CMMSServiceRequestService } from '../c-m-m-s-service-request.service';
 import { CMMSWorkOrderService } from '@ss/cmms/work-order';
+import { MatCard, MatCardContent } from '@angular/material/card';
+import { NgIf, NgFor } from '@angular/common';
+import { MatFormField, MatLabel, MatError } from '@angular/material/form-field';
+import { TranslateDirective } from '../../../../../common/ui-lang/src/lib/translate.directive';
+import { DatePickerComponent } from '../../../../../common/ui-datepicker/src/lib/date-picker.component';
+import { MatInput } from '@angular/material/input';
+import { UiAutoCompleteComponent } from '../../../../../common/ui-auto-complete/src/lib/auto-complete.component';
+import { MatSelect } from '@angular/material/select';
+import { MatOption } from '@angular/material/core';
+import { MatAccordion, MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelTitle } from '@angular/material/expansion';
+import { TranslatePipe } from '../../../../../common/ui-lang/src/lib/translate.pipe';
 
 @Component({
     selector: 'ss-service-request-detail',
     templateUrl: './service-request-detail.component.html',
     styleUrls: ['./service-request-detail.component.css'],
+    standalone: true,
+    imports: [
+        MatCard,
+        MatCardContent,
+        NgIf,
+        FormsModule,
+        ReactiveFormsModule,
+        MatFormField,
+        MatLabel,
+        TranslateDirective,
+        DatePickerComponent,
+        MatInput,
+        UiAutoCompleteComponent,
+        MatError,
+        MatSelect,
+        NgFor,
+        MatOption,
+        MatAccordion,
+        MatExpansionPanel,
+        MatExpansionPanelHeader,
+        MatExpansionPanelTitle,
+        TranslatePipe,
+    ],
 })
 export class ServiceRequestDetailComponent extends CMMSWorkDetail {
     private router = inject(Router);

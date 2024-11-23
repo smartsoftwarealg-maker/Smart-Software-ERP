@@ -27,7 +27,7 @@ const shoppingRoutes: Routes = [
 ];
 
 @NgModule({
-    declarations: [AppComponent, NxWelcomeComponent],
+    declarations: [AppComponent],
     imports: [
         CommonModule,
         BrowserModule,
@@ -38,7 +38,8 @@ const shoppingRoutes: Routes = [
         UiThemeModule,
         UiErrorHandlerModule,
         BrowserAnimationsModule,
-        CommonUiLangModule
+        CommonUiLangModule,
+        NxWelcomeComponent
     ],
     providers: [],
     bootstrap: [AppComponent],

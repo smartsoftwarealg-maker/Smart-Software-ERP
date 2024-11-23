@@ -1,10 +1,13 @@
 import {Component} from '@angular/core';
 import {LoginService} from './login.service';
+import { MatIconButton } from '@angular/material/button';
 
 @Component({
     selector: 'ss-logout',
     templateUrl: './logout.component.html',
-    styleUrls: ['./logout.component.scss']
+    styleUrls: ['./logout.component.scss'],
+    standalone: true,
+    imports: [MatIconButton]
 })
 export class LogoutComponent {
     constructor(public loginSrv: LoginService) {

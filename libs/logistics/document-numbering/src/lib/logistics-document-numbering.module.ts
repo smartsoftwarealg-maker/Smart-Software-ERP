@@ -18,11 +18,9 @@ import {CommonUiAutoCompleteModule} from '@ss/common/ui-auto-complete';
         UiPaginationModule,
         ReactiveFormsModule,
         CommonUiAutoCompleteModule,
-        CommonUiConfirmationDialogModule
-    ],
-    declarations: [
-      DocumentNumberingListComponent,
-      DocumentNumberingDetailComponent
+        CommonUiConfirmationDialogModule,
+        DocumentNumberingListComponent,
+        DocumentNumberingDetailComponent
     ],
 })
 export class LogisticsDocumentNumberingModule {}

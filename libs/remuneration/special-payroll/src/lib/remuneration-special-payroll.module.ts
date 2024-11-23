@@ -24,11 +24,9 @@ import { ImageInputComponent } from '@ss/common/ui-image-input';
         CommonUiDatepickerModule,
         CommonUiAutoCompleteModule,
         ImageInputComponent,
-        RemunerationSpecialPayrollCommonModule
-    ],
-    declarations: [
-      SpecialPayrollListComponent,
-      SpecialPayrollDetailComponent
+        RemunerationSpecialPayrollCommonModule,
+        SpecialPayrollListComponent,
+        SpecialPayrollDetailComponent
     ],
 })
 export class RemunerationSpecialPayrollModule {}

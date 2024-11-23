@@ -8,11 +8,16 @@ import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import {LookupsService} from '@ss/common/api-lookup';
 import {PaginatorPersistenceService} from '@ss/common/api-common';
 import {DocumentNumberingService} from '../document-numbering.service';
+import { MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from '@angular/material/table';
+import { TranslateDirective } from '../../../../../common/ui-lang/src/lib/translate.directive';
+import { PaginationComponent } from '../../../../../common/ui-pagination/src/lib/pagination.component';
 
 @Component({
-  selector: 'ss-document-numbering-list',
-  templateUrl: './document-numbering-list.component.html',
-  styleUrls: ['./document-numbering-list.component.scss']
+    selector: 'ss-document-numbering-list',
+    templateUrl: './document-numbering-list.component.html',
+    styleUrls: ['./document-numbering-list.component.scss'],
+    standalone: true,
+    imports: [MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, TranslateDirective, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, PaginationComponent]
 })
 export class DocumentNumberingListComponent extends BaseEntityListComponent<LDocument> {
     displayedColumns = [

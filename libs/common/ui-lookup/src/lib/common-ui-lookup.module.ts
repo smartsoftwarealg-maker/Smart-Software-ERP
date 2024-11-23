@@ -67,33 +67,23 @@ import { CareerMotiveDetailComponent, CareerMotiveListComponent } from './compon
         CommonUiLangModule,
         UiPaginationModule,
         CommonUiAutoCompleteModule,
-        CommonUiConfirmationDialogModule
-    ],
-    declarations: [
+        CommonUiConfirmationDialogModule,
         WilayaDetailComponent,
         WilayaListComponent,
-
         PostDetailComponent,
         PostListComponent,
-
         MaritalStatusDetailComponent,
         MaritalStatusListComponent,
-
         EducationLevelListComponent,
         EducationLevelDetailComponent,
-
         DiplomaListComponent,
         DiplomaDetailComponent,
-
         CategoryDetailComponent,
         CategoryListComponent,
-
         NationalityDetailComponent,
         NationalityListComponent,
-
         ServiceListComponent,
         ServiceDetailComponent,
-
         UnitListComponent,
         UnitDetailComponent,
         MarkListComponent,
@@ -179,29 +169,20 @@ import { CareerMotiveDetailComponent, CareerMotiveListComponent } from './compon
     exports: [
         WilayaDetailComponent,
         WilayaListComponent,
-
         PostDetailComponent,
         PostListComponent,
-
         MaritalStatusDetailComponent,
         MaritalStatusListComponent,
-
         EducationLevelListComponent,
         EducationLevelDetailComponent,
-
         DiplomaListComponent,
         DiplomaDetailComponent,
-
         CategoryDetailComponent,
         CategoryListComponent,
-
         NationalityDetailComponent,
         NationalityListComponent,
-
         ServiceListComponent,
         ServiceDetailComponent,
-
-
         UnitListComponent,
         UnitDetailComponent,
         MarkListComponent,
@@ -278,7 +259,6 @@ import { CareerMotiveDetailComponent, CareerMotiveListComponent } from './compon
         InsuranceAgencyDetailComponent,
         CareerMotiveListComponent,
         CareerMotiveDetailComponent
-
     ]
 })
 export class CommonUiLookupModule { }

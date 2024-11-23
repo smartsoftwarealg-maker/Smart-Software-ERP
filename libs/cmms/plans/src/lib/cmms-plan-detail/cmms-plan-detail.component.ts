@@ -3,15 +3,40 @@ import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { CMMSPlan } from '@ss/cmms/cmms-api';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute } from '@angular/router';
-import { FormGroup, UntypedFormBuilder, Validators } from '@angular/forms';
+import { FormGroup, UntypedFormBuilder, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { CMMSPlanService } from '../cmms-plan.service';
 import { Lookup } from '@ss/common/api-lookup';
+import { NgIf, NgFor } from '@angular/common';
+import { MatCard, MatCardContent } from '@angular/material/card';
+import { MatFormField, MatLabel, MatError } from '@angular/material/form-field';
+import { TranslateDirective } from '../../../../../common/ui-lang/src/lib/translate.directive';
+import { MatInput } from '@angular/material/input';
+import { MatSelect } from '@angular/material/select';
+import { MatOption } from '@angular/material/core';
+import { TranslatePipe } from '../../../../../common/ui-lang/src/lib/translate.pipe';
 
 @Component({
     selector: 'ss-cmms-plan-detail',
     templateUrl: './cmms-plan-detail.component.html',
     styleUrls: ['./cmms-plan-detail.component.css'],
+    standalone: true,
+    imports: [
+        NgIf,
+        MatCard,
+        MatCardContent,
+        FormsModule,
+        ReactiveFormsModule,
+        MatFormField,
+        MatLabel,
+        TranslateDirective,
+        MatInput,
+        MatError,
+        MatSelect,
+        NgFor,
+        MatOption,
+        TranslatePipe,
+    ],
 })
 export class CMMSPlanDetailComponent extends BaseEntityDetailComponent<CMMSPlan> {
     readonly TYPES: Lookup[] = [

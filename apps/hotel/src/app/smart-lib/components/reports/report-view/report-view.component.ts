@@ -6,11 +6,26 @@ import { map } from 'rxjs/operators';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { HttpService } from '../../../common/http.service';
 import { Observable } from "rxjs";
+import { NgIf, NgStyle, NgFor } from '@angular/common';
+import { MatFormField, MatSuffix, MatLabel } from '@angular/material/form-field';
+import { MatSelect } from '@angular/material/select';
+import { FormsModule } from '@angular/forms';
+import { MatOption } from '@angular/material/core';
+import { MatProgressSpinner } from '@angular/material/progress-spinner';
+import { MatInput } from '@angular/material/input';
+import { MatDatepickerInput, MatDatepickerToggle, MatDatepicker } from '@angular/material/datepicker';
+import { MatCheckbox } from '@angular/material/checkbox';
+import { MatButton, MatMiniFabButton } from '@angular/material/button';
+import { TranslateDirective } from '../../../../../../../../libs/common/ui-lang/src/lib/translate.directive';
+import { TranslatePipe } from '../../../../../../../../libs/common/ui-lang/src/lib/translate.pipe';
+import { SafePipe } from '../safe.directive';
 
 @Component({
     selector: 'ss-report-catalog',
     templateUrl: './report-view.component.html',
-    styleUrls: ['./report-view.component.scss']
+    styleUrls: ['./report-view.component.scss'],
+    standalone: true,
+    imports: [NgIf, NgStyle, MatFormField, MatSelect, FormsModule, NgFor, MatOption, MatProgressSpinner, MatInput, MatDatepickerInput, MatDatepickerToggle, MatSuffix, MatDatepicker, MatCheckbox, MatButton, TranslateDirective, MatLabel, MatMiniFabButton, TranslatePipe, SafePipe]
 })
 export class ReportViewComponent implements OnInit, OnDestroy {
     private uuid = '';

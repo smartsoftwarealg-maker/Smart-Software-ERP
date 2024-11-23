@@ -1,15 +1,33 @@
 import { Component } from '@angular/core';
-import { UntypedFormBuilder, UntypedFormControl, UntypedFormGroup } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { LoginService } from '@ss/common/api-common';
 import { ActivatedRoute } from '@angular/router';
 import { EmployeeService } from '@ss/employee-services/employee-services';
 import { Employee } from '@ss/employee-services/employee-services';
+import { NgIf } from '@angular/common';
+import { MatCard } from '@angular/material/card';
+import { MatFormField, MatLabel } from '@angular/material/form-field';
+import { TranslateDirective } from '../../../../ui-lang/src/lib/translate.directive';
+import { MatInput } from '@angular/material/input';
+import { MatButton } from '@angular/material/button';
 
 @Component({
     selector: 'ss-employee-profile',
     templateUrl: './employee-profile.component.html',
     styleUrls: ['./employee-profile.component.scss'],
+    standalone: true,
+    imports: [
+        NgIf,
+        MatCard,
+        FormsModule,
+        ReactiveFormsModule,
+        MatFormField,
+        MatLabel,
+        TranslateDirective,
+        MatInput,
+        MatButton,
+    ],
 })
 export class EmployeeProfileComponent {
     private employee: Employee = null;

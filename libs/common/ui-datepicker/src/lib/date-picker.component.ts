@@ -29,6 +29,9 @@ import {
 } from '@ss/common/api-common';
 import { Subject } from 'rxjs';
 import {MatCalendarType} from '@muaazh/angular-datepicker/lib/calendar.types';
+import { MatInput } from '@angular/material/input';
+import { MatDatepickerModule } from '@muaazh/angular-datepicker';
+import { MatIconButton } from '@angular/material/button';
 
 @Component({
     selector: 'ss-date-picker',
@@ -36,7 +39,9 @@ import {MatCalendarType} from '@muaazh/angular-datepicker/lib/calendar.types';
     styleUrls: ['./date-picker.component.scss'],
     providers: [
         { provide: MatFormFieldControl, useExisting: DatePickerComponent }
-    ]
+    ],
+    standalone: true,
+    imports: [MatInput, MatDatepickerModule, MatIconButton]
 })
 export class DatePickerComponent implements MatFormFieldControl<Date>, DoCheck, OnInit, OnDestroy, ControlValueAccessor {
 

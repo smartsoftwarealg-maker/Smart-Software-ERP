@@ -5,10 +5,20 @@ import {LoginService} from '@ss/common/api-common';
 import {ERR, Option, OptionService} from '@ss/logistics/ui-options';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
-import {UntypedFormBuilder, Validators} from '@angular/forms';
+import { UntypedFormBuilder, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {Observable} from 'rxjs';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
+import { MatCard, MatCardContent } from '@angular/material/card';
+import { NgIf, NgFor, DatePipe } from '@angular/common';
+import { MatFormField, MatLabel, MatError } from '@angular/material/form-field';
+import { TranslateDirective } from '../../../../../common/ui-lang/src/lib/translate.directive';
+import { MatSelect } from '@angular/material/select';
+import { MatOption } from '@angular/material/core';
+import { DatePickerComponent } from '../../../../../common/ui-datepicker/src/lib/date-picker.component';
+import { MatButton } from '@angular/material/button';
+import { MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from '@angular/material/table';
+import { TranslatePipe } from '../../../../../common/ui-lang/src/lib/translate.pipe';
 
 interface EvalPrice {
     id: any,
@@ -19,6 +29,35 @@ interface EvalPrice {
     selector: 'ss-price-recalculation',
     templateUrl: './price-recalculation.component.html',
     styleUrls: ['./price-recalculation.component.scss'],
+    standalone: true,
+    imports: [
+        MatCard,
+        MatCardContent,
+        NgIf,
+        FormsModule,
+        ReactiveFormsModule,
+        MatFormField,
+        MatLabel,
+        TranslateDirective,
+        MatSelect,
+        NgFor,
+        MatOption,
+        MatError,
+        DatePickerComponent,
+        MatButton,
+        MatTable,
+        MatColumnDef,
+        MatHeaderCellDef,
+        MatHeaderCell,
+        MatCellDef,
+        MatCell,
+        MatHeaderRowDef,
+        MatHeaderRow,
+        MatRowDef,
+        MatRow,
+        DatePipe,
+        TranslatePipe,
+    ],
 })
 export class PriceRecalculationComponent extends BaseEntityDetailComponent<Option> implements OnInit {
     private storeNameSrv =  inject(LotsService);

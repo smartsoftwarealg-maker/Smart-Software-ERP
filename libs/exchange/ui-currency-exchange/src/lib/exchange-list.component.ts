@@ -10,12 +10,18 @@ import {AgentService} from '@ss/logistics/api-agent';
 import {CurrencyExchangeService, Exchange} from '@ss/exchange/api-currency-exchange';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import {PaginatorPersistenceService} from '@ss/common/api-common';
+import { MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from '@angular/material/table';
+import { TranslateDirective } from '../../../../common/ui-lang/src/lib/translate.directive';
+import { PaginationComponent } from '../../../../common/ui-pagination/src/lib/pagination.component';
+import { DecimalPipe, DatePipe } from '@angular/common';
 
 @Component({
     selector: 'ss-exchange-list',
     styleUrls: ['./exchange-list.component.scss',
-                '../../../../common/assets/src/assets/main-container.scss'],
-    templateUrl: './exchange-list.component.html'
+        '../../../../common/assets/src/assets/main-container.scss'],
+    templateUrl: './exchange-list.component.html',
+    standalone: true,
+    imports: [MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, TranslateDirective, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, PaginationComponent, DecimalPipe, DatePipe]
 })
 export class ExchangeListComponent extends BaseEntityListComponent<Exchange> {
 

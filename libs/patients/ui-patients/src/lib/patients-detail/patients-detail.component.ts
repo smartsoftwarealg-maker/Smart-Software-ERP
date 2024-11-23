@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Observable, of} from 'rxjs';
 import {catchError, switchMap, tap} from 'rxjs/operators';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
-import {AbstractControl, UntypedFormBuilder, UntypedFormControl, Validators} from '@angular/forms';
+import { AbstractControl, UntypedFormBuilder, UntypedFormControl, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {
     Activity,
     AgentPrice,
@@ -19,13 +19,24 @@ import {FormValidators, LoginService} from '@ss/common/api-common';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import {MatExpansionPanel} from '@angular/material/expansion';
+import { MatExpansionPanel, MatAccordion, MatExpansionPanelHeader, MatExpansionPanelTitle } from '@angular/material/expansion';
 import {Patient, PatientService} from '@ss/patients/api-patient';
+import { NgIf, NgFor } from '@angular/common';
+import { TranslateDirective } from '../../../../../common/ui-lang/src/lib/translate.directive';
+import { MatFormField, MatLabel, MatError } from '@angular/material/form-field';
+import { MatInput } from '@angular/material/input';
+import { DatePickerComponent } from '../../../../../common/ui-datepicker/src/lib/date-picker.component';
+import { MatRadioGroup, MatRadioButton } from '@angular/material/radio';
+import { Dir } from '@angular/cdk/bidi';
+import { MatSelect } from '@angular/material/select';
+import { MatOption } from '@angular/material/core';
 
 @Component({
     selector: 'ss-patients-detail',
     templateUrl: './patients-detail.component.html',
-    styleUrls: ['./patients-detail.component.scss']
+    styleUrls: ['./patients-detail.component.scss'],
+    standalone: true,
+    imports: [NgIf, FormsModule, ReactiveFormsModule, MatAccordion, MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelTitle, TranslateDirective, MatFormField, MatLabel, MatInput, MatError, DatePickerComponent, MatRadioGroup, MatRadioButton, Dir, MatSelect, MatOption, NgFor]
 })
 export class PatientsDetailComponent extends  BaseEntityDetailComponent<Patient> {
     pwd1 = new UntypedFormControl();

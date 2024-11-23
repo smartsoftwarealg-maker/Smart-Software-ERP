@@ -9,9 +9,7 @@ import { MaterialModule } from '../../smart-lib/components/material.module';
         CommonModule,
         MaterialModule,
         FormsModule,
-        ReactiveFormsModule
-    ],
-    declarations: [
+        ReactiveFormsModule,
         AutoCompleteComponent
     ],
     exports: [

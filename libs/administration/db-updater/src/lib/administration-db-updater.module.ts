@@ -9,17 +9,15 @@ import {CommonUiConfirmationDialogModule} from '@ss/common/ui-confirmation-dialo
 import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    MaterialModule,
-    CommonUiLangModule,
-    UiPaginationModule,
-    ReactiveFormsModule,
-    CommonUiConfirmationDialogModule,
-    CommonUiAutoCompleteModule
-  ],
-    declarations: [
-      DbUpdaterComponent
+    imports: [
+        CommonModule,
+        MaterialModule,
+        CommonUiLangModule,
+        UiPaginationModule,
+        ReactiveFormsModule,
+        CommonUiConfirmationDialogModule,
+        CommonUiAutoCompleteModule,
+        DbUpdaterComponent
     ],
 })
 export class AdministrationDbUpdaterModule {}

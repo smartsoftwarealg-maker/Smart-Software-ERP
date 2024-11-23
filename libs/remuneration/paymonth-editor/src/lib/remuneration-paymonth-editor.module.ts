@@ -10,9 +10,7 @@ import {CommonUiLangModule} from '@ss/common/ui-lang';
         CommonModule,
         MaterialModule,
         CommonUiLangModule,
-    ],
-    declarations: [
-        PaymonthEditorComponent
+        PaymonthEditorComponent,
     ],
     exports: [
         PaymonthEditorComponent

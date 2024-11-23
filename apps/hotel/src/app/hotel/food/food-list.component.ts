@@ -10,13 +10,23 @@ import { LanguageService } from '@ss/common/api-common';
 import { UserService } from '../../smart-lib/components/login/user.service';
 import { HttpService } from '../../smart-lib/common/http.service';
 import { deepCopy } from '../../smart-lib/common/util';
+import { ListToolbarComponent } from '../../common/list-toolbar/list-toolbar.component';
+import { NgIf } from '@angular/common';
+import { LoadingSpinnerComponent } from '../../smart-lib/components/loading-spinner/loading-spinner.component';
+import { FatalErrorComponent } from '../../smart-lib/components/fatal-error/fatal-error.component';
+import { MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from '@angular/material/table';
+import { MatSort, MatSortHeader } from '@angular/material/sort';
+import { TranslateDirective } from '../../../../../../libs/common/ui-lang/src/lib/translate.directive';
+import { PaginationComponent } from '../../common/pagination/pagination.component';
 
 const foodUrl = '/hotels/food';
 
 @Component({
     selector: 'app-food',
     templateUrl: './food-list.component.html',
-    styleUrls: ['./food-list.component.scss']
+    styleUrls: ['./food-list.component.scss'],
+    standalone: true,
+    imports: [ListToolbarComponent, NgIf, LoadingSpinnerComponent, FatalErrorComponent, MatTable, MatSort, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatSortHeader, TranslateDirective, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, PaginationComponent]
 })
 export class FoodListComponent extends AbstractEntityList<Food, BackendDataSource<Food>> implements OnInit, OnDestroy {
 
