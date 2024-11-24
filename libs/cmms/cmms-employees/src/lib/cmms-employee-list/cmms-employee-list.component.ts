@@ -4,7 +4,7 @@ import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { Employee } from '@ss/employee-services/employee-services';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
-import { LookupModule, LookupsService } from '@ss/common/api-lookup';
+import { LookupsService } from '@ss/common/api-lookup';
 import { HttpService, MaterialModule, PaginatorPersistenceService } from '@ss/common/api-common';
 import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { DefaultReportService } from '@ss/common/ui-default-report-component';
@@ -28,7 +28,6 @@ import { CmmsEmployeeService } from '../services/cmms-employee.service';
         CommonUiDatepickerModule,
         RouterModule,
         CommonUiAutoCompleteModule,
-        LookupModule
     ],
     templateUrl: './cmms-employee-list.component.html',
     styleUrls: ['./cmms-employee-list.component.scss'],

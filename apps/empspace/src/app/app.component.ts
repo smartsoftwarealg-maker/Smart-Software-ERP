@@ -14,6 +14,7 @@ import { EmpSpaceAdmobClass } from '@ss/remuneration/employee-space';
     selector: 'ss-root',
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss'],
+    standalone: true,
 })
 export class AppComponent implements OnInit {
     private deviceSrv = inject(DeviceDetectorService);

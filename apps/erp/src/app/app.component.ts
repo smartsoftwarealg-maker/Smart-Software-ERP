@@ -5,14 +5,26 @@ import { LanguageService } from '@ss/common/api-common';
 import { BadgeButton, KeepOnToolbar, ShellService } from '@ss/common/ui-shell';
 import {langAssets, navBar} from '../environments/environment';
 import { WorkflowInboxService } from '@ss/workflow';
-import { Router } from '@angular/router';
+import { Router, RouterOutlet } from '@angular/router';
 import { DeviceDetectorService } from 'ngx-device-detector';
 import { initialize } from './admobile';
+import { ThemeDirective } from '../../../../libs/common/ui-theme/src/lib/theme.directive';
+import { Dir } from '@angular/cdk/bidi';
+import { MatProgressSpinner } from '@angular/material/progress-spinner';
+import { MessageComponent } from '../../../../libs/common/ui-error-handler/src/lib/error-message.component';
 
 @Component({
     selector: 'ss-root',
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss'],
+    standalone: true,
+    imports: [
+        ThemeDirective,
+        Dir,
+        RouterOutlet,
+        MatProgressSpinner,
+        MessageComponent,
+    ],
 })
 export class AppComponent implements OnInit {
     private httpSrv = inject(HttpService);
@@ -23,7 +35,7 @@ export class AppComponent implements OnInit {
     loaded = false;
 
     ngOnInit() {
-        this.shellSrv.setApplicationTitle('Smart ERP 1.57.10');
+        this.shellSrv.setApplicationTitle('Smart ERP 1.58.0');
         this.httpSrv
             .init()
             .pipe(

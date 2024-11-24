@@ -11,7 +11,7 @@ import { MaterialModule } from '@ss/common/api-common';
 import { UiPaginationModule } from '@ss/common/ui-pagination';
 import { CommonUiConfirmationDialogModule } from '@ss/common/ui-confirmation-dialog';
 import { RouterModule } from '@angular/router';
-import { LookupModule } from '@ss/common/api-lookup';
+
 
 @Component({
     selector: 'ss-driver-license-detail',
@@ -25,7 +25,6 @@ import { LookupModule } from '@ss/common/api-lookup';
         CommonUiDatepickerModule,
         RouterModule,
         CommonUiAutoCompleteModule,
-        LookupModule,
         CommonUiDatepickerModule
     ],
     templateUrl: './driver-license-detail.component.html',

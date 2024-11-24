@@ -51,7 +51,8 @@ const routes: Routes = [
     { path: '**', redirectTo: LOGIN_URL, pathMatch: 'full' }, // not found
 ];
 
-@NgModule({
+@NgModule(/* TODO(standalone-migration): clean up removed NgModule class manually. 
+{
     declarations:
         [
             AppComponent
@@ -79,7 +80,7 @@ const routes: Routes = [
             DeviceDetectorService
         ],
     bootstrap: [AppComponent]
-})
+} */)
 export class AppModule {
     constructor(private navSrv: NavService,
         private router: Router, private langSrv: LanguageService) {

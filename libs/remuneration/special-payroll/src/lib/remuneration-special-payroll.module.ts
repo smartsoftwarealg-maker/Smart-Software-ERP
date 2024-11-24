@@ -9,7 +9,6 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {CommonUiConfirmationDialogModule} from '@ss/common/ui-confirmation-dialog';
 import {CommonUiDatepickerModule} from '@ss/common/ui-datepicker';
 import {CommonUiAutoCompleteModule} from '@ss/common/ui-auto-complete';
-import {RemunerationSpecialPayrollCommonModule} from '@ss/remuneration/special-payroll-common';
 import { ImageInputComponent } from '@ss/common/ui-image-input';
 
 
@@ -24,7 +23,6 @@ import { ImageInputComponent } from '@ss/common/ui-image-input';
         CommonUiDatepickerModule,
         CommonUiAutoCompleteModule,
         ImageInputComponent,
-        RemunerationSpecialPayrollCommonModule,
         SpecialPayrollListComponent,
         SpecialPayrollDetailComponent
     ],

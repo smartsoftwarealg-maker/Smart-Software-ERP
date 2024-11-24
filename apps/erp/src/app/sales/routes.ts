@@ -72,7 +72,7 @@ export const mainRoutes: Routes = [
                     {
                         path: 'lines-detail',
                         children: [
-                            { path: ':id', component: DeliveryCancellationLinesDetailComponent },
+                            { path: ':id', component: DeliveryCancellationLinesDetailComponent, canDeactivate: [CanDeactivateService] },
                         ]
                     },
                     ...docInfoRoutes
@@ -103,7 +103,7 @@ export const mainRoutes: Routes = [
                     {
                         path: 'lines-detail',
                         children: [
-                            { path: ':id', component: DeliveryCancellationLinesDetailComponent },
+                            { path: ':id', component: DeliveryCancellationLinesDetailComponent, canDeactivate: [CanDeactivateService] },
                         ]
                     },
                     ...docInfoRoutes
@@ -134,7 +134,7 @@ export const mainRoutes: Routes = [
                     {
                         path: 'lines-detail',
                         children: [
-                            { path: ':id', component: InvoiceLinesDetailComponent },
+                            { path: ':id', component: InvoiceLinesDetailComponent, canDeactivate: [CanDeactivateService] },
                         ]
                     },
                     ...docInfoRoutes
@@ -165,7 +165,7 @@ export const mainRoutes: Routes = [
                     {
                         path: 'lines-detail',
                         children: [
-                            { path: ':id', component: DeliveryLinesDetailComponent },
+                            { path: ':id', component: DeliveryLinesDetailComponent, canDeactivate: [CanDeactivateService] },
                         ]
                     },
                     ...docInfoRoutes
@@ -196,7 +196,7 @@ export const mainRoutes: Routes = [
                     {
                         path: 'lines-detail',
                         children: [
-                            { path: ':id', component: OrderLinesDetailComponent },
+                            { path: ':id', component: OrderLinesDetailComponent, canDeactivate: [CanDeactivateService] },
                         ]
                     },
                     ...docInfoRoutes
@@ -227,7 +227,7 @@ export const mainRoutes: Routes = [
                     {
                         path: 'lines-detail',
                         children: [
-                            { path: ':id', component: ProformaLinesDetailComponent },
+                            { path: ':id', component: ProformaLinesDetailComponent, canDeactivate: [CanDeactivateService] },
                         ]
                     },
                     ...docInfoRoutes
@@ -277,7 +277,7 @@ export const mainRoutes: Routes = [
                                 path: 'archive',
                                 children: [
                                     {path: '', component: AppArchiveListComponent, pathMatch: 'full', data: { appId: AGENT_ARCHIVES } },
-                                    {path: ':id', component: AppArchiveDetailComponent, data: { appId: AGENT_ARCHIVES }},
+                                    {path: ':id', component: AppArchiveDetailComponent, canDeactivate: [CanDeactivateService], data: { appId: AGENT_ARCHIVES }},
                                 ]
                             }
                         ]

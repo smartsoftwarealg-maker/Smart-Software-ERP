@@ -11,7 +11,6 @@ import { UiPaginationModule } from "@ss/common/ui-pagination";
 import { CommonUiConfirmationDialogModule } from "@ss/common/ui-confirmation-dialog";
 import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
 import { RouterModule } from "@angular/router";
-import { LookupModule } from "@ss/common/api-lookup";
 
 @Component({
   selector: 'ss-journal-user-detail',
@@ -25,7 +24,6 @@ import { LookupModule } from "@ss/common/api-lookup";
       CommonUiDatepickerModule,
       RouterModule,
       CommonUiAutoCompleteModule,
-      LookupModule
   ],
   templateUrl: './journal-user-detail.component.html',
   styleUrls: ['./journal-user-detail.component.css']

@@ -290,28 +290,28 @@ export const hrRoutes: Routes = [
                                 path: 'archive',
                                 children: [
                                     {path: '', component: AppArchiveListComponent, pathMatch: 'full', data: { appId: EMPLOYEE_ARCHIVES } },
-                                    {path: ':id', component: AppArchiveDetailComponent, data: { appId: EMPLOYEE_ARCHIVES }},
+                                    {path: ':id', component: AppArchiveDetailComponent, data: { appId: EMPLOYEE_ARCHIVES }, canDeactivate: [CanDeactivateService]},
                                 ]
                             },
                             {
                                 path: ACTIVATION_ROUTE_URL,
                                 children: [
                                     { path: '', component: EmployeeActivationListComponent, pathMatch: 'full'},
-                                    { path: ':id', component: EmployeeActivationDetailComponent }
+                                    { path: ':id', component: EmployeeActivationDetailComponent, canDeactivate: [CanDeactivateService] }
                                 ]
                             },
                             {
                                 path: CAREER_ROUTE_URL,
                                 children: [
                                     { path: '', component: EmployeeCareerListComponent, pathMatch: 'full' },
-                                    { path: ':id', component: EmployeeCareerDetailComponent }
+                                    { path: ':id', component: EmployeeCareerDetailComponent, canDeactivate: [CanDeactivateService] }
                                 ]
                             },
                             {
                                 path: OLD_CAREER_ROUTE_URL,
                                 children: [
                                     { path: '', component: EmployeeOldCareerListComponent, pathMatch: 'full' },
-                                    { path: ':id', component: EmployeeOldCareerDetailComponent }
+                                    { path: ':id', component: EmployeeOldCareerDetailComponent, canDeactivate: [CanDeactivateService] }
                                 ]
                             },
                             {
@@ -335,49 +335,49 @@ export const hrRoutes: Routes = [
                                         component: EmployeeWivesListComponent,
                                         pathMatch: 'full'
                                     },
-                                    { path: ':id', component: EmployeeWifeDetailComponent }
+                                    { path: ':id', component: EmployeeWifeDetailComponent, canDeactivate: [CanDeactivateService] }
                                 ]
                             },
                             {
                                 path: CHILDREN_ROUTE_URL,
                                 children: [
                                     { path: '', component: EmployeeChildrenListComponent, pathMatch: 'full' },
-                                    { path: ':id', component: EmployeeChildDetailComponent }
+                                    { path: ':id', component: EmployeeChildDetailComponent, canDeactivate: [CanDeactivateService] }
                                 ]
                             },
                             {
                                 path: DIPLOMA_ROUTE_URL,
                                 children: [
                                     { path: '', component: EmployeeDiplomaListComponent, pathMatch: 'full'},
-                                    { path: ':id', component: EmployeeDiplomaDetailComponent }
+                                    { path: ':id', component: EmployeeDiplomaDetailComponent, canDeactivate: [CanDeactivateService] }
                                 ]
                             },
                             {
                                 path: TRAINING_ROUTE_URL,
                                 children: [
                                     { path: '', component: EmployeeTrainingListComponent, pathMatch: 'full' },
-                                    { path: ':id', component: EmployeeTrainingDetailComponent }
+                                    { path: ':id', component: EmployeeTrainingDetailComponent, canDeactivate: [CanDeactivateService] }
                                 ]
                             },
                             {
                                 path: PUNISHMENT_ROUTE_URL,
                                 children: [
                                     { path: '', component: PunishmentListComponent, pathMatch: 'full' },
-                                    { path: ':id', component: PunishmentDetailComponent }
+                                    { path: ':id', component: PunishmentDetailComponent, canDeactivate: [CanDeactivateService] }
                                 ]
                             },
                             {
                                 path: LANGUAGES_ROUTE_URL,
                                 children: [
                                     { path: '', component: EmployeeLanguagesListComponent, pathMatch: 'full' },
-                                    { path: ':id', component: EmployeeLanguagesDetailComponent }
+                                    { path: ':id', component: EmployeeLanguagesDetailComponent, canDeactivate: [CanDeactivateService] }
                                 ]
                             },
                             {
                                 path: DECISION_ROUTE_URL,
                                 children: [
                                     { path: '', component: EmployeeDecisionListComponent, pathMatch: 'full' },
-                                    { path: ':id', component: EmployeeDecisionDetailComponent }
+                                    { path: ':id', component: EmployeeDecisionDetailComponent, canDeactivate: [CanDeactivateService] }
                                 ]
                             }
                         ]
@@ -409,28 +409,28 @@ export const hrRoutes: Routes = [
                                 path: 'archive',
                                 children: [
                                     {path: '', component: AppArchiveListComponent, pathMatch: 'full', data: { appId: EMPLOYEE_ARCHIVES } },
-                                    {path: ':id', component: AppArchiveDetailComponent, data: { appId: EMPLOYEE_ARCHIVES }},
+                                    {path: ':id', component: AppArchiveDetailComponent, data: { appId: EMPLOYEE_ARCHIVES }, canDeactivate: [CanDeactivateService]},
                                 ]
                             },
                             {
                                 path: ACTIVATION_ROUTE_URL,
                                 children: [
                                     { path: '', component: EmployeeActivationListComponent, pathMatch: 'full'},
-                                    { path: ':id', component: EmployeeActivationDetailComponent }
+                                    { path: ':id', component: EmployeeActivationDetailComponent, canDeactivate: [CanDeactivateService] }
                                 ]
                             },
                             {
                                 path: CAREER_ROUTE_URL,
                                 children: [
                                     { path: '', component: EmployeeCareerListComponent, pathMatch: 'full' },
-                                    { path: ':id', component: EmployeeCareerDetailComponent }
+                                    { path: ':id', component: EmployeeCareerDetailComponent, canDeactivate: [CanDeactivateService] }
                                 ]
                             },
                             {
                                 path: OLD_CAREER_ROUTE_URL,
                                 children: [
                                     { path: '', component: EmployeeOldCareerListComponent, pathMatch: 'full' },
-                                    { path: ':id', component: EmployeeOldCareerDetailComponent }
+                                    { path: ':id', component: EmployeeOldCareerDetailComponent, canDeactivate: [CanDeactivateService] }
                                 ]
                             },
                             {
@@ -442,7 +442,7 @@ export const hrRoutes: Routes = [
                                         pathMatch: 'full'
                                     },
                                     {
-                                        path: ':id', component: EmployeeContractsDetailComponent,
+                                        path: ':id', component: EmployeeContractsDetailComponent, canDeactivate: [CanDeactivateService],
                                     }
                                 ]
                             },
@@ -454,49 +454,49 @@ export const hrRoutes: Routes = [
                                         component: EmployeeWivesListComponent,
                                         pathMatch: 'full'
                                     },
-                                    { path: ':id', component: EmployeeWifeDetailComponent }
+                                    { path: ':id', component: EmployeeWifeDetailComponent, canDeactivate: [CanDeactivateService] }
                                 ]
                             },
                             {
                                 path: CHILDREN_ROUTE_URL,
                                 children: [
                                     { path: '', component: EmployeeChildrenListComponent, pathMatch: 'full' },
-                                    { path: ':id', component: EmployeeChildDetailComponent }
+                                    { path: ':id', component: EmployeeChildDetailComponent, canDeactivate: [CanDeactivateService] }
                                 ]
                             },
                             {
                                 path: DIPLOMA_ROUTE_URL,
                                 children: [
                                     { path: '', component: EmployeeDiplomaListComponent, pathMatch: 'full'},
-                                    { path: ':id', component: EmployeeDiplomaDetailComponent }
+                                    { path: ':id', component: EmployeeDiplomaDetailComponent, canDeactivate: [CanDeactivateService] }
                                 ]
                             },
                             {
                                 path: TRAINING_ROUTE_URL,
                                 children: [
                                     { path: '', component: EmployeeTrainingListComponent, pathMatch: 'full' },
-                                    { path: ':id', component: EmployeeTrainingDetailComponent }
+                                    { path: ':id', component: EmployeeTrainingDetailComponent, canDeactivate: [CanDeactivateService] }
                                 ]
                             },
                             {
                                 path: PUNISHMENT_ROUTE_URL,
                                 children: [
                                     { path: '', component: PunishmentListComponent, pathMatch: 'full' },
-                                    { path: ':id', component: PunishmentDetailComponent }
+                                    { path: ':id', component: PunishmentDetailComponent, canDeactivate: [CanDeactivateService] }
                                 ]
                             },
                             {
                                 path: LANGUAGES_ROUTE_URL,
                                 children: [
                                     { path: '', component: EmployeeLanguagesListComponent, pathMatch: 'full' },
-                                    { path: ':id', component: EmployeeLanguagesDetailComponent }
+                                    { path: ':id', component: EmployeeLanguagesDetailComponent, canDeactivate: [CanDeactivateService] }
                                 ]
                             },
                             {
                                 path: DECISION_ROUTE_URL,
                                 children: [
                                     { path: '', component: EmployeeDecisionListComponent, pathMatch: 'full' },
-                                    { path: ':id', component: EmployeeDecisionDetailComponent }
+                                    { path: ':id', component: EmployeeDecisionDetailComponent, canDeactivate: [CanDeactivateService] }
                                 ]
                             }
                         ]

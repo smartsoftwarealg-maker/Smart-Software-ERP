@@ -395,4 +395,10 @@ export interface UnidentifiedInventory {
     count: number;
     buildingDescription?: string;
     classDescription?: string;
+    officeId?: number;
+    beneficiaryId?: number;
+    serialNo?: string;
+    memo?: string;
+    officeDescription?: string;
+    beneficiaryDescription?: string;
 }

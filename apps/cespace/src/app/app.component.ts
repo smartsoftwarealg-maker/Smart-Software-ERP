@@ -10,6 +10,7 @@ import {AdmobClass} from '@ss/common/api-admob';
     selector: 'ss-root',
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss'],
+    standalone: true,
 })
 export class AppComponent implements OnInit {
 

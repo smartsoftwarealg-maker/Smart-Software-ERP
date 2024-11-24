@@ -48,7 +48,6 @@ export class LtmSiloDetailComponent extends BaseEntityDetailComponent<Lookup> im
     }
 
     public override setupForm(b: Lookup) {
-
         return this.formBuilder.group({
             id:            [b.id],
             description:   [b.description, Validators.required],

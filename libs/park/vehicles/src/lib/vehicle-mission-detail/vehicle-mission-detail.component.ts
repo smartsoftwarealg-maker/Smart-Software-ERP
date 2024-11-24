@@ -7,7 +7,7 @@ import { CommonUiConfirmationDialogModule } from '@ss/common/ui-confirmation-dia
 import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
 import { RouterModule } from '@angular/router';
 import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
-import { LookupModule, Destination, DestinationService } from '@ss/common/api-lookup';
+import { Destination, DestinationService } from '@ss/common/api-lookup';
 import { BaseChildEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { VehicleMission, VehicleState } from '../vehicle-api';
 import { FormBuilder, UntypedFormGroup } from '@angular/forms';
@@ -28,7 +28,6 @@ import { ParkPersonService } from '../services/park-person.service';
         CommonUiDatepickerModule,
         RouterModule,
         CommonUiAutoCompleteModule,
-        LookupModule,
         CommonUiDatepickerModule
     ],
     templateUrl: './vehicle-mission-detail.component.html',

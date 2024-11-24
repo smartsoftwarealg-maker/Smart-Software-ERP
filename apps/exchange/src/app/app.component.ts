@@ -9,6 +9,7 @@ import {exchangeNavTree, fileNavTree} from './exchange/side-nav-tree';
     selector: 'ss-root',
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss'],
+    standalone: true,
 })
 export class AppComponent implements OnInit {
     loaded = true;
