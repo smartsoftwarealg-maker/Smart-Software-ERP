@@ -74,7 +74,7 @@ import {
     DepreciationRateDetailComponent,
     AssetsTransferComponent,
     AssetTreeComponent,
-    AssetQRInventoryComponent,
+    AssetQRInventoryListComponent,
     AssetUnidentifiedInventoryListComponent,
     AssetUnidentifiedInventoryDetailComponent, AssetListInventoryDetailComponent
 } from '@ss/assets-component';
@@ -458,7 +458,7 @@ export const mainRoutes: Routes = [
         children: [
             {
                 path: LIST_URL,
-                component: AssetQRInventoryComponent,
+                component: AssetQRInventoryListComponent,
                 canActivate: [loginGuard]
             },
             {

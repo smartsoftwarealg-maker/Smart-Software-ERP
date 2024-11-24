@@ -5,7 +5,7 @@ import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { UntypedFormBuilder, Validators } from '@angular/forms';
 import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
-import { LookupsService } from '@ss/common/api-lookup';
+import { LookupsService, OfficeService } from '@ss/common/api-lookup';
 import { MaterialModule } from '@ss/common/api-common';
 import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
 import { AssetClassService, AssetLocationService, AssetsBuildingService } from '@ss/assets-component';
@@ -41,6 +41,7 @@ import { AssetInventoryDocService } from '../services/asset-inventory-doc.servic
     ]
 })
 export class AssetUnidentifiedInventoryDetailComponent extends BaseEntityDetailComponent<UnidentifiedInventory> {
+    #officeSrv = inject(OfficeService);
     #locationSrv     = inject(AssetLocationService);
     #buildingSrv     = inject(AssetsBuildingService);
     #classSrv        = inject(AssetClassService);
@@ -50,6 +51,7 @@ export class AssetUnidentifiedInventoryDetailComponent extends BaseEntityDetailC
     classLookup    = new DefaultAutoCompleteModel(this.#classSrv);
     locationLookup = new DefaultAutoCompleteModel(this.#locationSrv);
     inventoryDocLookup = new DefaultAutoCompleteModel(this.#inventoryDocSrv);
+    officeLookup = new DefaultAutoCompleteModel(this.#officeSrv);
 
     constructor(
         public override entitySrv: AssetUnidentifiedInventoryService,
@@ -61,12 +63,15 @@ export class AssetUnidentifiedInventoryDetailComponent extends BaseEntityDetailC
         public lookupsSrv: LookupsService) {
         super(entitySrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'ASSET_UNIDENTIFIED_INVENTORY');
         this.#buildingSrv.setParentId(0);
+        this.#officeSrv.setParentId(0);
         this.inventoryDocLookup.onObjectSelected = o => this.onDocument(o);
         this.locationLookup.onObjectSelected = o => this.#buildingSrv.setParentId(o?.id||0);
+        this.buildingLookup.onObjectSelected = b => this.#officeSrv.setParentId(b?.id||0);
     }
 
     public override setupForm(b: UnidentifiedInventory) {
         this.id = this.id || 0;
+        this.#officeSrv.setParentId(b?.buildingId||0);
         return this.formBuilder.group({
             id:           [b.id || 0],
             parentId:     [b.parentId || this.entitySrv.getParentId(), Validators.required],
@@ -75,7 +80,10 @@ export class AssetUnidentifiedInventoryDetailComponent extends BaseEntityDetailC
             count:        [b.count || 1, Validators.required],
             creationDate: [b.creationDate || new Date()],
             locationId:   [0, Validators.required],
-            userId:       [0]
+            officeId:     [b.officeId],
+            userId:       [0],
+            serialNo:     [b.serialNo],
+            memo:         [b.memo],
         });
     }
 

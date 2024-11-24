@@ -182,7 +182,7 @@
             </mat-header-cell>
             <mat-cell *matCellDef="let e">
                 <mat-checkbox [checked]="(e.inventoryId||0) > 0" (click)="update(e)"
-                              [disabled]="!isEditable()"></mat-checkbox>
+                              [disabled]="!isEditable() || (currentUser !== e.userId && !isResponsible)"></mat-checkbox>
             </mat-cell>
         </ng-container>
 

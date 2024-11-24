@@ -163,9 +163,15 @@ $ss-green: (
     }
 
     i {
-        font-size: small;
+        font-size: medium;
     }
 
+    .mat-badge-content {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: .65em !important;
+    }
     .number {
         text-align: end;
         font-weight: bold;

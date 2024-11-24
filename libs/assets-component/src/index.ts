@@ -45,7 +45,7 @@ export * from './lib/asset-tree/asset-tree.component';
 export * from './lib/services/asset-class.service';
 export * from './lib/asset-search-dialog/asset-search-dialog.component';
 export * from './lib/office-search/office-search.component';
-export * from './lib/asset-qr-inventory/asset-q-r-inventory.component';
+export * from './lib/asset-qr-inventory/asset-q-r-inventory-list.component';
 export * from './lib/assets-inventory-doc-list/assets-inventory-doc-list.component';
 export * from './lib/assets-inventory-doc-detail/assets-inventory-doc-detail.component';
 export * from './lib/asset-unidentified-inventory-detail/asset-unidentified-inventory-detail.component';

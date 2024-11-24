@@ -10,23 +10,12 @@
 <!--                    </ss-auto-complete>-->
 <!--                </mat-form-field>-->
 
-                <mat-form-field class="default-100" >
-                    <mat-label translate>COMMON_LOCATION</mat-label>
-                    <ss-auto-complete matInput
-                                      formControlName="locationId"
-                                      [model]="locationLookup">
-                    </ss-auto-complete>
+                <mat-form-field class="default-50">
+                    <mat-label translate>ASSET_SERIAL_NUMBER</mat-label>
+                    <input matInput formControlName="serialNo" type="text" minlength="1" maxlength="20">
                 </mat-form-field>
 
-                <mat-form-field class="default-100">
-                    <mat-label translate>ASSET_SITE</mat-label>
-                    <ss-auto-complete matInput
-                                      [model]="buildingLookup"
-                                      formControlName="buildingId">
-                    </ss-auto-complete>
-                </mat-form-field>
-
-                <mat-form-field class="default-100">
+                <mat-form-field class="default-50 sm-100">
                     <mat-label translate>COMMON_CLASS</mat-label>
                     <ss-auto-complete matInput
                                       [model]="classLookup"
@@ -36,7 +25,38 @@
 
                 <mat-form-field class="default-50">
                     <mat-label translate>COMMON_COUNT</mat-label>
-                    <input matInput formControlName="count" type="number" min="1" max="100">
+                    <input matInput formControlName="count" type="number" max="100">
+                </mat-form-field>
+
+
+                <mat-form-field class="default-50 sm-100" >
+                    <mat-label translate>COMMON_LOCATION</mat-label>
+                    <ss-auto-complete matInput
+                                      formControlName="locationId"
+                                      [model]="locationLookup">
+                    </ss-auto-complete>
+                </mat-form-field>
+
+
+                <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>ASSET_SITE</mat-label>
+                    <ss-auto-complete matInput
+                                      [model]="buildingLookup"
+                                      formControlName="buildingId">
+                    </ss-auto-complete>
+                </mat-form-field>
+
+                <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>COMMON_OFFICE</mat-label>
+                    <ss-auto-complete matInput
+                                      [model]="officeLookup"
+                                      formControlName="officeId">
+                    </ss-auto-complete>
+                </mat-form-field>
+
+                <mat-form-field class="default-100">
+                    <mat-label translate>COMMON_MEMO</mat-label>
+                    <input matInput formControlName="memo" type="text" >
                 </mat-form-field>
 
             </form>

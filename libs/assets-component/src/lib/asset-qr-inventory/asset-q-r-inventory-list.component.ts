@@ -9,7 +9,7 @@ import {
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
-import { MaterialModule, PaginatorPersistenceService } from '@ss/common/api-common';
+import { LoginService, MaterialModule, PaginatorPersistenceService } from '@ss/common/api-common';
 import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
 import { CommonModule } from '@angular/common';
 import { CommonUiLangModule } from '@ss/common/ui-lang';
@@ -33,8 +33,8 @@ import { AssetOpenInventoryDocService } from '../services/asset-open-inventory-d
 
 @Component({
     selector: 'ss-asset-list-inventory',
-    templateUrl: './asset-q-r-inventory.component.html',
-    styleUrls: ['./asset-q-r-inventory.component.scss'],
+    templateUrl: './asset-q-r-inventory-list.component.html',
+    styleUrls: ['./asset-q-r-inventory-list.component.scss'],
     standalone: true,
     imports: [
         CommonModule,
@@ -51,15 +51,16 @@ import { AssetOpenInventoryDocService } from '../services/asset-open-inventory-d
         QRCodeModule
     ],
 })
-export class AssetQRInventoryComponent extends BaseEntityListComponent<InventoryAsset> implements OnInit {
-    private documentId   = 0;
-    private fb           = inject(FormBuilder);
-    private buildingSrv  = inject(AssetsBuildingService);
-    private accountSrv   = inject(AccountService);
-    private locationSrv  = inject(AssetLocationService);
-    private classSrv     = inject(AssetClassService);
-    private consumerSrv  = inject(ConsumerService);
-    private receptionSrv = inject(AssetReceptionService);
+export class AssetQRInventoryListComponent extends BaseEntityListComponent<InventoryAsset> implements OnInit {
+    #loginSrv      = inject(LoginService);
+    #documentId   = 0;
+    #fb           = inject(FormBuilder);
+    #buildingSrv  = inject(AssetsBuildingService);
+    #accountSrv   = inject(AccountService);
+    #locationSrv  = inject(AssetLocationService);
+    #classSrv     = inject(AssetClassService);
+    #consumerSrv  = inject(ConsumerService);
+    #receptionSrv = inject(AssetReceptionService);
 
     // private dialog = inject(MatDialog);
     private officeSrv       = inject(OfficeService);
@@ -69,16 +70,18 @@ export class AssetQRInventoryComponent extends BaseEntityListComponent<Inventory
     inventoryDocLookup = new DefaultAutoCompleteModel(this.inventoryDocSrv);
 
     inventoryDoc      = new FormControl<number>(0);
-    accountLookup     = new AccountStringAutocompleteModel(this.accountSrv)
-    locationLookup    = new DefaultAutoCompleteModel(this.locationSrv);
-    buildingLookup    = new DefaultAutoCompleteModel(this.buildingSrv);
-    classLookup       = new DefaultAutoCompleteModel(this.classSrv);
-    beneficiaryLookup = new DefaultAutoCompleteModel<Agent>(this.consumerSrv, 'id', 'denomination');
-    receptionLookup   = new DefaultAutoCompleteModel(this.receptionSrv);
+    accountLookup     = new AccountStringAutocompleteModel(this.#accountSrv)
+    locationLookup    = new DefaultAutoCompleteModel(this.#locationSrv);
+    buildingLookup    = new DefaultAutoCompleteModel(this.#buildingSrv);
+    classLookup       = new DefaultAutoCompleteModel(this.#classSrv);
+    beneficiaryLookup = new DefaultAutoCompleteModel<Agent>(this.#consumerSrv, 'id', 'denomination');
+    receptionLookup   = new DefaultAutoCompleteModel(this.#receptionSrv);
 
+    readonly currentUser = this.#loginSrv.appCtx.id;
+    readonly isResponsible = this.#loginSrv.appCtx.responsible;
     isEditable = signal(false);
 
-    formGroup   = this.fb.group({
+    formGroup   = this.#fb.group({
         id:           [0],
         documentId:   [0],
         officeId:     [0],
@@ -141,7 +144,7 @@ export class AssetQRInventoryComponent extends BaseEntityListComponent<Inventory
     }
 
     private onLocation(l: AssetLocation) {
-        this.buildingSrv.setParentId(l.id||0);
+        this.#buildingSrv.setParentId(l.id||0);
         this.formGroup.controls.locationId.setValue(l.id||0);
     }
 
@@ -156,10 +159,10 @@ export class AssetQRInventoryComponent extends BaseEntityListComponent<Inventory
 
     private onDocument(d: AssetInventoryDoc) {
         this.listSrv.lastDoc = d;
-        this.documentId = d?.id || 0;
-        this.formGroup.controls.documentId.setValue(this.documentId);
+        this.#documentId = d?.id || 0;
+        this.formGroup.controls.documentId.setValue(this.#documentId);
         this.isEditable.set(!d?.closed);
-        this.buildingSrv.setParentId(d.locationId||0);
+        this.#buildingSrv.setParentId(d.locationId||0);
         this.officeSrv.setParentId(d.buildingId||0);
         this.listSrv.document = {
             id:          d.id,
@@ -225,13 +228,13 @@ export class AssetQRInventoryComponent extends BaseEntityListComponent<Inventory
 
     override refresh(callback?: () => void) {
         const formValue = this.formGroup.getRawValue();
-        formValue.id = this.documentId;
+        formValue.id = this.#documentId;
         this.listSrv.document = formValue;
         super.refresh(callback);
     }
 
     update(e: InventoryAsset) {
-        e.documentId = this.documentId;
+        e.documentId = this.#documentId;
         this.listSrv
             .update(e)
             .subscribe(res =>  {
