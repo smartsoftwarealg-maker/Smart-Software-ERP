@@ -17,10 +17,9 @@ import { BudgetGroupsAddDlgComponent } from './budget-groups-add-dlg/budget-grou
         CommonUiLangModule,
         UiPaginationModule,
         ReactiveFormsModule,
-
         CommonUiAutoCompleteModule,
         CommonUiConfirmationDialogModule,
+        BudgetGroupsComponent, BudgetGroupsAddDlgComponent,
     ],
-    declarations: [BudgetGroupsComponent, BudgetGroupsAddDlgComponent],
 })
 export class BudgetBudgetGroupsModule {}

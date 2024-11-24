@@ -11,8 +11,8 @@ import { SaveBarModule } from '../../common/save-bar/save-bar.module';
 import { FoyerService } from './foyer-service';
 import { CanDeactivateService, FoyerDetailComponent } from './foyer-detail.component';
 import { CanActivateService } from '../../smart-lib/components/login/can-activte.service';
-import { SmartCommonModule } from '../../smart-lib/common/smart-common.module';
-import { FatalErrorModule } from '../../smart-lib/components/fatal-error/fatal-error.module';
+
+
 import { LoadingSpinnerModule } from '../../smart-lib/components/loading-spinner/loading-spinner.module';
 import { LanguageService } from '@ss/common/api-common';
 import { MaterialModule } from '../../smart-lib/components/material.module';
@@ -37,22 +37,18 @@ const routes: Routes = [
 
 @NgModule({
     imports: [
-        CommonModule,
-        SmartCommonModule,
-        MaterialModule,
-        FatalErrorModule,
-        LoadingSpinnerModule,
-        ListToolbarModule,
-        PaginationModule,
-        AutoCompleteModule,
-        ImageInputModule,
-        RouterModule.forChild(routes),
-        SaveBarModule
-    ],
-    declarations: [
-        FoyerListComponent,
-        FoyerDetailComponent
-    ],
+    CommonModule,
+    MaterialModule,
+    LoadingSpinnerModule,
+    ListToolbarModule,
+    PaginationModule,
+    AutoCompleteModule,
+    ImageInputModule,
+    RouterModule.forChild(routes),
+    SaveBarModule,
+    FoyerListComponent,
+    FoyerDetailComponent
+],
     providers: [
         FoyerService,
         CanDeactivateService

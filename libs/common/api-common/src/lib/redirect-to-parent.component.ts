@@ -6,7 +6,8 @@ import { ActivatedRoute, Router } from '@angular/router';
  */
 @Component({
     selector: 'ss-hack-go-back-to-parent',
-    template: ''
+    template: '',
+    standalone: true
 })
 export class RedirectToParentComponent implements OnInit {
 

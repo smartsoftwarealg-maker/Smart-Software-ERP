@@ -4,17 +4,27 @@ import {InputFilter} from './input-filter-api';
 import {ElementsInfo, ElementsInfoService} from '@ss/remuneration/elementsinfo';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
-import {FormControl, UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
+import { FormControl, UntypedFormBuilder, UntypedFormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {LookupsService} from '@ss/common/api-lookup';
 import {InputFiltersService} from './input-filters.service';
 import {SelectionModel} from '@angular/cdk/collections';
 import { debounceTime, distinctUntilChanged, tap } from "rxjs/operators";
+import { NgIf, NgFor } from '@angular/common';
+import { MatFormField, MatLabel, MatError } from '@angular/material/form-field';
+import { TranslateDirective } from '../../../../common/ui-lang/src/lib/translate.directive';
+import { MatInput } from '@angular/material/input';
+import { MatToolbar } from '@angular/material/toolbar';
+import { MatListSubheaderCssMatStyler, MatSelectionList, MatListOption } from '@angular/material/list';
+import { MatMiniFabButton } from '@angular/material/button';
+import { TranslatePipe } from '../../../../common/ui-lang/src/lib/translate.pipe';
 
 @Component({
     selector: 'ss-input-filter-detail',
     templateUrl: './input-filter-detail.component.html',
-    styleUrls: ['./input-filter-detail.component.scss']
+    styleUrls: ['./input-filter-detail.component.scss'],
+    standalone: true,
+    imports: [NgIf, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, MatError, MatToolbar, MatListSubheaderCssMatStyler, MatSelectionList, NgFor, MatListOption, MatMiniFabButton, TranslatePipe]
 })
 export class InputFilterDetailComponent extends BaseEntityDetailComponent<InputFilter> {
     filter = new FormControl<string|null>('');

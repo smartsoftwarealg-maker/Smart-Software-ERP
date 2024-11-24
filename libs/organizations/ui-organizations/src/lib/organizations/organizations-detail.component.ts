@@ -1,15 +1,22 @@
 import { Component, Inject, OnInit, Injectable } from '@angular/core';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogRef, MatDialogContent, MatDialogActions } from '@angular/material/dialog';
 import { Lookup, Organization } from '@ss/organizations/api-organizations';
 import { BaseEntityService } from '@ss/common/api-base-entity';
 import { HttpService, LoginService } from '@ss/common/api-common';
-import { Validators, UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
+import { Validators, UntypedFormBuilder, UntypedFormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SnackBarService } from '@ss/common/ui-shell';
 import { Level } from './common';
 import { OrganizationsService } from '@ss/organizations/api-organizations';
 import { DivisionService, DepartmentService, ServiceService, OfficeService } from '@ss/common/api-lookup';
 import { tap, switchMap } from 'rxjs/operators';
 import { of } from 'rxjs';
+import { TranslateDirective } from '../../../../../common/ui-lang/src/lib/translate.directive';
+import { CdkScrollable } from '@angular/cdk/scrolling';
+import { NgIf, NgFor } from '@angular/common';
+import { MatFormField, MatLabel } from '@angular/material/form-field';
+import { MatSelect } from '@angular/material/select';
+import { MatOption } from '@angular/material/core';
+import { MatMiniFabButton } from '@angular/material/button';
 
 @Injectable()
 class LookupService extends BaseEntityService<Lookup> {
@@ -24,7 +31,9 @@ class LookupService extends BaseEntityService<Lookup> {
     styleUrls: ['./organizations-detail.component.scss'],
     providers: [
         LookupService
-    ]
+    ],
+    standalone: true,
+    imports: [TranslateDirective, CdkScrollable, MatDialogContent, NgIf, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, MatSelect, NgFor, MatOption, MatDialogActions, MatMiniFabButton]
 })
 export class OrganizationsDetailComponent {
 

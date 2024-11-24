@@ -1,7 +1,7 @@
 import { Component, inject, signal } from '@angular/core';
 import {EmployeeService} from '@ss/employee-services/employee-services';
-import {AbstractControl, UntypedFormArray, UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
-import { ActivatedRoute, Router, RouterEvent } from '@angular/router';
+import { AbstractControl, UntypedFormArray, UntypedFormBuilder, UntypedFormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ActivatedRoute, Router, RouterEvent, RouterOutlet } from '@angular/router';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ImageModel} from '@ss/common/ui-image-input';
 import {
@@ -48,11 +48,28 @@ import {EmployeeTrainingService} from '../employee-trainings/employee-training.s
 import {PunishmentService} from '../employee-punishments/punishment.service';
 import { UserListService } from "@ss/common/api-users";
 import { ElementsInfo } from '@ss/remuneration/elementsinfo';
+import { MatCard, MatCardContent, MatCardFooter } from '@angular/material/card';
+import { ImageInputComponent } from '../../../../../common/ui-image-input/src/lib/image-input.component';
+import { TranslateDirective } from '../../../../../common/ui-lang/src/lib/translate.directive';
+import { MatTabGroup, MatTab } from '@angular/material/tabs';
+import { MatFormField, MatLabel, MatError } from '@angular/material/form-field';
+import { MatInput } from '@angular/material/input';
+import { NgIf, NgFor, AsyncPipe } from '@angular/common';
+import { DatePickerComponent } from '../../../../../common/ui-datepicker/src/lib/date-picker.component';
+import { UiAutoCompleteComponent } from '../../../../../common/ui-auto-complete/src/lib/auto-complete.component';
+import { MatRadioGroup, MatRadioButton } from '@angular/material/radio';
+import { MatSelect } from '@angular/material/select';
+import { MatOption } from '@angular/material/core';
+import { MatCheckbox } from '@angular/material/checkbox';
+import { MatButton } from '@angular/material/button';
+import { TranslatePipe } from '../../../../../common/ui-lang/src/lib/translate.pipe';
 
 @Component({
     selector: 'ss-employee-detail',
     styleUrls: ['./employee-detail.component.scss'],
-    templateUrl: './employee-detail.component.html'
+    templateUrl: './employee-detail.component.html',
+    standalone: true,
+    imports: [FormsModule, ReactiveFormsModule, MatCard, MatCardContent, ImageInputComponent, MatCardFooter, TranslateDirective, MatTabGroup, MatTab, MatFormField, MatLabel, MatInput, NgIf, MatError, DatePickerComponent, UiAutoCompleteComponent, MatRadioGroup, MatRadioButton, MatSelect, MatOption, NgFor, MatCheckbox, RouterOutlet, MatButton, AsyncPipe, TranslatePipe]
 })
 export class EmployeeDetailComponent extends BaseEntityDetailComponent<Employee> {
     private lookupsSrv = inject(LookupsService);

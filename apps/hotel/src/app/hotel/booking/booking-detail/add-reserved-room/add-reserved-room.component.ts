@@ -2,12 +2,22 @@ import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { BookingService, RoomACModel } from '../../booking.service';
 import { BookingRoom, Room } from '../../../hotel-api';
 import { HttpService } from '../../../../smart-lib/common/http.service';
-import { MatCheckboxChange } from '@angular/material/checkbox';
+import { MatCheckboxChange, MatCheckbox } from '@angular/material/checkbox';
+import { MatIconButton } from '@angular/material/button';
+import { AutoCompleteComponent } from '../../../../common/auto-complete/auto-complete.component';
+import { TranslateDirective } from '../../../../../../../../libs/common/ui-lang/src/lib/translate.directive';
+import { MatFormField, MatLabel } from '@angular/material/form-field';
+import { MatSelect } from '@angular/material/select';
+import { FormsModule } from '@angular/forms';
+import { MatOption } from '@angular/material/core';
+import { NgFor } from '@angular/common';
 
 @Component({
     selector: 'app-add-reserved-room',
     templateUrl: './add-reserved-room.component.html',
-    styleUrls: ['./add-reserved-room.component.scss']
+    styleUrls: ['./add-reserved-room.component.scss'],
+    standalone: true,
+    imports: [MatIconButton, AutoCompleteComponent, TranslateDirective, MatFormField, MatLabel, MatSelect, FormsModule, MatOption, NgFor, MatCheckbox]
 })
 export class AddReservedRoomComponent implements OnInit, OnDestroy {
 

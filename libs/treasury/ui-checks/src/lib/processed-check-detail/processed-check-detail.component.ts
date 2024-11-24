@@ -4,15 +4,36 @@ import {ProcessedCheck, ProcessedCheckService} from '@ss/treasury/api-checks';
 import {HttpService, LoginService} from '@ss/common/api-common';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
-import {FormBuilder, Validators} from '@angular/forms';
+import { FormBuilder, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {BankService} from '@ss/administration/api-bank';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
+import { MatCard } from "@angular/material/card";
+import { NgIf } from "@angular/common";
+import { MatFormField, MatLabel, MatError } from "@angular/material/form-field";
+import { TranslateDirective } from "../../../../../common/ui-lang/src/lib/translate.directive";
+import { UiAutoCompleteComponent } from "../../../../../common/ui-auto-complete/src/lib/auto-complete.component";
+import { MatInput } from "@angular/material/input";
+import { DatePickerComponent } from "../../../../../common/ui-datepicker/src/lib/date-picker.component";
 
 @Component({
     selector: 'ss-processed-check-detail',
     templateUrl: './processed-check-detail.component.html',
     styleUrls: ['./processed-check-detail.component.scss'],
+    standalone: true,
+    imports: [
+        MatCard,
+        NgIf,
+        FormsModule,
+        ReactiveFormsModule,
+        MatFormField,
+        MatLabel,
+        TranslateDirective,
+        UiAutoCompleteComponent,
+        MatInput,
+        MatError,
+        DatePickerComponent,
+    ],
 })
 export class ProcessedCheckDetailComponent extends BaseEntityDetailComponent<ProcessedCheck> implements OnInit {
     private loginSrv  = inject(LoginService);

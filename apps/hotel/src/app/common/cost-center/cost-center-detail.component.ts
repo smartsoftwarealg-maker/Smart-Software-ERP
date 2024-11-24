@@ -1,13 +1,19 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ConfirmationDialogService } from '../confirmation-dialog/confirmation-dialog.service';
 import { CostCenter } from './cost-center';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { TranslateDirective } from '../../../../../../libs/common/ui-lang/src/lib/translate.directive';
+import { MatFormField, MatLabel } from '@angular/material/form-field';
+import { MatInput } from '@angular/material/input';
+import { SaveBarComponent } from '../save-bar/save-bar.component';
 
 @Component({
     selector: 'app-cost-center-detail',
     templateUrl: './cost-center-detail.component.html',
-    styleUrls: ['./cost-center-detail.component.scss']
+    styleUrls: ['./cost-center-detail.component.scss'],
+    standalone: true,
+    imports: [TranslateDirective, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, MatInput, SaveBarComponent]
 })
 export class CostCenterDetailComponent implements OnInit {
     public form: UntypedFormGroup = null;

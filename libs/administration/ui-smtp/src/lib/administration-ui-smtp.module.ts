@@ -16,9 +16,9 @@ import {SmtpListComponent} from "./smtp-list/smtp-list.component";
         CommonUiLangModule,
         UiPaginationModule,
         ReactiveFormsModule,
-        CommonUiConfirmationDialogModule
+        CommonUiConfirmationDialogModule,
+        SmtpListComponent, SmtpDetailComponent
     ],
-    declarations: [SmtpListComponent, SmtpDetailComponent],
     exports: []
 })
 export class AdministrationUiSmtpModule {}

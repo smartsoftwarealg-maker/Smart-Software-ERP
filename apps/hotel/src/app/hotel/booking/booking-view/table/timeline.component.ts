@@ -3,11 +3,17 @@ import { compareDate } from '../../../../common/util';
 import { Room } from '../../../hotel-api';
 import { dateDiff } from '../../booking.service';
 import { BookingStates } from '../../booking-api';
+import { NgClass, NgFor } from '@angular/common';
+import { MatTooltip } from '@angular/material/tooltip';
+import { FitTextDirective } from '../../../../common/fit-text/fit-text.directive';
+import { TranslatePipe } from '../../../../../../../../libs/common/ui-lang/src/lib/translate.pipe';
 
 @Component({
     selector: 'app-booking-timeline',
     templateUrl: './timeline.component.html',
-    styleUrls: ['./timeline.component.scss']
+    styleUrls: ['./timeline.component.scss'],
+    standalone: true,
+    imports: [NgClass, MatTooltip, NgFor, FitTextDirective, TranslatePipe]
 })
 export class TimelineComponent {
 

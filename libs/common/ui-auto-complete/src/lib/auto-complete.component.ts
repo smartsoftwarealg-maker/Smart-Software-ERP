@@ -12,14 +12,19 @@ import {
     Optional,
     Self
 } from '@angular/core';
-import { ControlValueAccessor, UntypedFormControl, NgControl } from '@angular/forms';
-import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
+import { ControlValueAccessor, UntypedFormControl, NgControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatAutocompleteSelectedEvent, MatAutocompleteTrigger, MatAutocomplete } from '@angular/material/autocomplete';
 import { MatFormFieldControl } from '@angular/material/form-field';
 import { isString } from '@ss/common/api-common';
 import { of, Subject, Subscription } from 'rxjs';
 import { debounceTime, distinctUntilChanged, filter, switchMap, tap } from 'rxjs/operators';
 import { AutoCompleteModel, Id } from './auto-complete-model';
 import { SnackBarService } from '@ss/common/ui-shell';
+import { NgIf, NgFor } from '@angular/common';
+import { MatInput } from '@angular/material/input';
+import { MatOption } from '@angular/material/core';
+import { TranslateDirective } from '../../../ui-lang/src/lib/translate.directive';
+import { TranslatePipe } from '../../../ui-lang/src/lib/translate.pipe';
 
 @Component({
     selector: 'ss-auto-complete',
@@ -27,7 +32,9 @@ import { SnackBarService } from '@ss/common/ui-shell';
     styleUrls: ['./auto-complete.component.scss'],
     providers: [
         { provide: MatFormFieldControl, useExisting: UiAutoCompleteComponent }
-    ]
+    ],
+    standalone: true,
+    imports: [NgIf, MatInput, FormsModule, MatAutocompleteTrigger, ReactiveFormsModule, MatAutocomplete, NgFor, MatOption, TranslateDirective, TranslatePipe]
 })
 export class UiAutoCompleteComponent implements ControlValueAccessor, MatFormFieldControl<Id>, DoCheck, OnInit, OnDestroy {
     private snackBarSrv = inject(SnackBarService);

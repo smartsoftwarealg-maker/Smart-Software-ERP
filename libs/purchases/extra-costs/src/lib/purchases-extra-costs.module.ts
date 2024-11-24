@@ -24,7 +24,6 @@ import { TextFieldModule } from '@angular/cdk/text-field';
         CommonModule,
         CommonModule,
         CommonUiLangModule,
-
         MatSortModule,
         MatTableModule,
         UiPaginationModule,
@@ -38,9 +37,7 @@ import { TextFieldModule } from '@angular/cdk/text-field';
         ReactiveFormsModule,
         TextFieldModule,
         RouterOutlet,
-        RouterLink
-    ],
-    declarations: [
+        RouterLink,
         ExtraCostMainComponent,
         ExtraCostListComponent,
         ExtraCostDetailComponent

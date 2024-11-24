@@ -1,7 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import {KeepOnToolbar, ShellService, SnackBarService, ToolbarButton} from '@ss/common/ui-shell';
-import {ActivatedRoute, Router} from '@angular/router';
-import {UntypedFormBuilder} from '@angular/forms';
+import { ActivatedRoute, Router, RouterOutlet } from '@angular/router';
+import { UntypedFormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {CCGroup, Lookup, LookupsService} from '@ss/common/api-lookup';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {Observable, of, switchMap} from 'rxjs';
@@ -15,11 +15,23 @@ import {
 } from '@ss/logistics/api-transaction';
 import {MatDialog} from '@angular/material/dialog';
 import {OrderLinesListComponent} from '@ss/sales/ui-order-lines';
+import { MatCard, MatCardContent } from '@angular/material/card';
+import { NgIf } from '@angular/common';
+import { MatFormField, MatLabel, MatError } from '@angular/material/form-field';
+import { TranslateDirective } from '../../../../../common/ui-lang/src/lib/translate.directive';
+import { MatInput } from '@angular/material/input';
+import { DatePickerComponent } from '../../../../../common/ui-datepicker/src/lib/date-picker.component';
+import { UiAutoCompleteComponent } from '../../../../../common/ui-auto-complete/src/lib/auto-complete.component';
+import { MatCheckbox } from '@angular/material/checkbox';
+import { MatTabGroup, MatTab, MatTabLabel } from '@angular/material/tabs';
+import { CdkTextareaAutosize } from '@angular/cdk/text-field';
 
 @Component({
     selector: 'ss-ui-order-detail',
     templateUrl: './order-detail.component.html',
-    styleUrls: ['../../../../../common/assets/src/assets/transac-detail.scss']
+    styleUrls: ['../../../../../common/assets/src/assets/transac-detail.scss'],
+    standalone: true,
+    imports: [MatCard, MatCardContent, NgIf, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, MatError, DatePickerComponent, UiAutoCompleteComponent, MatCheckbox, MatTabGroup, MatTab, MatTabLabel, CdkTextareaAutosize, RouterOutlet]
 })
 export class OrderDetailComponent extends BaseTransactionDetailComponent {
     @ViewChild(OrderLinesListComponent) orderList: OrderLinesListComponent;

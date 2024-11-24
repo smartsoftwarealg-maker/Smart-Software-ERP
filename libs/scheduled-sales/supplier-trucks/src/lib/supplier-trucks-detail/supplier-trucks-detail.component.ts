@@ -2,17 +2,37 @@ import { Component, inject } from '@angular/core';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
-import {UntypedFormBuilder, Validators} from '@angular/forms';
+import { UntypedFormBuilder, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {LookupsService} from '@ss/common/api-lookup';
 import {SupplierTruck, SupplierTruckService} from '@ss/scheduled-sales/api-scheduled-sales';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {SupplierService} from '@ss/logistics/api-agent';
+import { MatCard, MatCardContent } from '@angular/material/card';
+import { NgIf } from '@angular/common';
+import { MatFormField, MatLabel, MatError } from '@angular/material/form-field';
+import { TranslateDirective } from '../../../../../common/ui-lang/src/lib/translate.directive';
+import { UiAutoCompleteComponent } from '../../../../../common/ui-auto-complete/src/lib/auto-complete.component';
+import { MatInput } from '@angular/material/input';
 
 @Component({
     selector: 'ss-supplier-trucks-detail',
     templateUrl: './supplier-trucks-detail.component.html',
     styleUrls: ['./supplier-trucks-detail.component.scss'],
+    standalone: true,
+    imports: [
+        MatCard,
+        MatCardContent,
+        NgIf,
+        FormsModule,
+        ReactiveFormsModule,
+        MatFormField,
+        MatLabel,
+        TranslateDirective,
+        UiAutoCompleteComponent,
+        MatError,
+        MatInput,
+    ],
 })
 export class SupplierTrucksDetailComponent extends BaseEntityDetailComponent<SupplierTruck> {
     private supplierSrv = inject(SupplierService);

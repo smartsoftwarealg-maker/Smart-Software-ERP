@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ConfirmationDialogService } from '../../common/confirmation-dialog/confirmation-dialog.service';
 import { Room } from '../hotel-api';
 import { Observable, of } from 'rxjs';
@@ -13,13 +13,25 @@ import { LoadingState } from '../../common/util';
 import { UserService } from '../../smart-lib/components/login/user.service';
 import { HttpService } from '../../smart-lib/common/http.service';
 import { isNumber, isString } from '@ss/common/api-common';
+import { TranslateDirective } from '../../../../../../libs/common/ui-lang/src/lib/translate.directive';
+import { NgIf, NgFor } from '@angular/common';
+import { LoadingSpinnerComponent } from '../../smart-lib/components/loading-spinner/loading-spinner.component';
+import { FatalErrorComponent } from '../../smart-lib/components/fatal-error/fatal-error.component';
+import { MatFormField, MatLabel } from '@angular/material/form-field';
+import { MatInput } from '@angular/material/input';
+import { MatSelect } from '@angular/material/select';
+import { MatOption } from '@angular/material/core';
+import { TagInputComponent } from '../../common/tag-input/tag-input.component';
+import { SaveBarComponent } from '../../common/save-bar/save-bar.component';
 
 const roomsUrl = '/hotels/rooms';
 
 @Component({
     selector: 'app-rooms-detail',
     templateUrl: './rooms-detail.component.html',
-    styleUrls: ['./rooms-detail.component.scss']
+    styleUrls: ['./rooms-detail.component.scss'],
+    standalone: true,
+    imports: [TranslateDirective, NgIf, LoadingSpinnerComponent, FatalErrorComponent, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, MatInput, MatSelect, NgFor, MatOption, TagInputComponent, SaveBarComponent]
 })
 export class RoomsDetailComponent extends AbstractEntityView<Room, BackendDataSource<Room>> implements OnInit, OnDestroy {
 

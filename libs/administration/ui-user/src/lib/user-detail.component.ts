@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
-import {UntypedFormBuilder, UntypedFormControl, Validators} from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormControl, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import { LookupsService, RoleService } from '@ss/common/api-lookup';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
@@ -15,15 +15,26 @@ import {
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {CenterService} from '@ss/administration/api-center';
 import { switchMap, tap } from 'rxjs/operators';
-import {MatSelectionListChange} from '@angular/material/list';
+import { MatSelectionListChange, MatSelectionList, MatListOption } from '@angular/material/list';
 import {of} from 'rxjs';
 import {UserListService} from '@ss/common/api-users';
+import { MatCard, MatCardHeader, MatCardContent } from '@angular/material/card';
+import { NgIf, NgClass, NgFor } from '@angular/common';
+import { MatFormField, MatLabel, MatError } from '@angular/material/form-field';
+import { TranslateDirective } from '../../../../common/ui-lang/src/lib/translate.directive';
+import { MatInput } from '@angular/material/input';
+import { MatCheckbox } from '@angular/material/checkbox';
+import { MatAccordion, MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelTitle } from '@angular/material/expansion';
+import { MatButton, MatMiniFabButton } from '@angular/material/button';
+import { UiAutoCompleteComponent } from '../../../../common/ui-auto-complete/src/lib/auto-complete.component';
 
 
 @Component({
     selector: 'ss-bank-detail',
     styleUrls: ['./user-detail.component.scss'],
-    templateUrl: './user-detail.component.html'
+    templateUrl: './user-detail.component.html',
+    standalone: true,
+    imports: [MatCard, MatCardHeader, MatCardContent, NgIf, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, MatError, MatCheckbox, MatAccordion, MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelTitle, MatButton, NgClass, MatSelectionList, NgFor, MatListOption, MatMiniFabButton, UiAutoCompleteComponent]
 })
 export class UserDetailComponent extends BaseEntityDetailComponent<User> {
     private userSrv = inject(UserService);

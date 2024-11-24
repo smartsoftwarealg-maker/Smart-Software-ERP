@@ -14,17 +14,27 @@ import {
     startWith,
     switchMap, tap
 } from 'rxjs/operators';
-import {MatStepper} from '@angular/material/stepper';
+import { MatStepper, MatStepperIcon, MatStep, MatStepLabel } from '@angular/material/stepper';
 import {UserRightsService} from '@ss/common/api-common';
 import {ShellService} from '@ss/common/ui-shell';
-import { FormControl } from '@angular/forms';
+import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Observable } from 'rxjs';
-import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
+import { MatAutocompleteSelectedEvent, MatAutocompleteTrigger, MatAutocomplete } from '@angular/material/autocomplete';
+import { NgClass, NgIf, NgFor, AsyncPipe } from '@angular/common';
+import { TranslateDirective } from '../../../ui-lang/src/lib/translate.directive';
+import { MatFormField, MatLabel } from '@angular/material/form-field';
+import { MatSelect } from '@angular/material/select';
+import { MatOption } from '@angular/material/core';
+import { MatInput } from '@angular/material/input';
+import { MatButton } from '@angular/material/button';
+import { TranslatePipe } from '../../../ui-lang/src/lib/translate.pipe';
 
 @Component({
     selector: 'ss-company-center-login',
     templateUrl: './center-select.component.html',
-    styleUrls: ['./center-select.component.scss']
+    styleUrls: ['./center-select.component.scss'],
+    standalone: true,
+    imports: [MatStepper, NgClass, MatStepperIcon, MatStep, MatStepLabel, NgIf, TranslateDirective, MatFormField, MatSelect, NgFor, MatOption, MatLabel, MatInput, FormsModule, MatAutocompleteTrigger, ReactiveFormsModule, MatAutocomplete, MatButton, AsyncPipe, TranslatePipe]
 })
 export class CenterSelectComponent implements OnInit {
     private ccListSrv = inject(CenterService);

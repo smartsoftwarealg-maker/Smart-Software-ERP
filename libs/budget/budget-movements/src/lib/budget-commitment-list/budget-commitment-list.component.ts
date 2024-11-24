@@ -9,11 +9,35 @@ import {PaginationModel, PaginatorPersistenceService} from '@ss/common/api-commo
 import {BudgetCommitmentService} from '../budget-commitment.service';
 import {BudgetPlanningService, BudgetPlanningTree} from '@ss/budget/budget-planning';
 import {BudgetService} from '@ss/budget/budget';
+import { MatList, MatListItem } from '@angular/material/list';
+import { NgFor, DecimalPipe } from '@angular/common';
+import { MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from '@angular/material/table';
+import { TranslateDirective } from '../../../../../common/ui-lang/src/lib/translate.directive';
+import { PaginationComponent } from '../../../../../common/ui-pagination/src/lib/pagination.component';
 
 @Component({
     selector: 'ss-budget-commitment-list',
     templateUrl: './budget-commitment-list.component.html',
     styleUrls: ['./budget-commitment-list.component.scss'],
+    standalone: true,
+    imports: [
+        MatList,
+        NgFor,
+        MatListItem,
+        MatTable,
+        MatColumnDef,
+        MatHeaderCellDef,
+        MatHeaderCell,
+        TranslateDirective,
+        MatCellDef,
+        MatCell,
+        MatHeaderRowDef,
+        MatHeaderRow,
+        MatRowDef,
+        MatRow,
+        PaginationComponent,
+        DecimalPipe,
+    ],
 })
 export class BudgetCommitmentListComponent extends BaseEntityListComponent<BudgetCommitment> implements OnInit {
     selectedPlanningId = 0;

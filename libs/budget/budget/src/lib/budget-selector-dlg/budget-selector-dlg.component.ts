@@ -4,11 +4,28 @@ import {Budget} from '../budget-api';
 import {PaginationModel} from '@ss/common/api-common';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ShellService} from '@ss/common/ui-shell';
+import { MatCard, MatCardTitle } from '@angular/material/card';
+import { TranslateDirective } from '../../../../../common/ui-lang/src/lib/translate.directive';
+import { MatList, MatListItem } from '@angular/material/list';
+import { NgFor } from '@angular/common';
+import { MatButton } from '@angular/material/button';
+import { TranslatePipe } from '../../../../../common/ui-lang/src/lib/translate.pipe';
 
 @Component({
     selector: 'ss-budget-selector-dlg',
     templateUrl: './budget-selector-dlg.component.html',
     styleUrls: ['./budget-selector-dlg.component.scss'],
+    standalone: true,
+    imports: [
+        MatCard,
+        MatCardTitle,
+        TranslateDirective,
+        MatList,
+        NgFor,
+        MatListItem,
+        MatButton,
+        TranslatePipe,
+    ],
 })
 export class BudgetSelectorDlgComponent implements OnInit {
     data: Budget[] = [];

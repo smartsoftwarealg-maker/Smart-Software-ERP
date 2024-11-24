@@ -13,13 +13,24 @@ import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {LoginService, PaginatorPersistenceService} from '@ss/common/api-common';
 import {switchMap, tap} from 'rxjs';
-import {UntypedFormControl} from '@angular/forms';
+import { UntypedFormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {CashFlowAccountListComponent} from '../cash-flow-account-list/cash-flow-account-list.component';
+import { MatList, MatListItem } from '@angular/material/list';
+import { NgFor, DecimalPipe } from '@angular/common';
+import { MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from '@angular/material/table';
+import { MatSort } from '@angular/material/sort';
+import { TranslateDirective } from '../../../../../common/ui-lang/src/lib/translate.directive';
+import { MatIconButton, MatButton } from '@angular/material/button';
+import { MatFormField, MatLabel } from '@angular/material/form-field';
+import { MatInput } from '@angular/material/input';
+import { MatCheckbox } from '@angular/material/checkbox';
 
 @Component({
-  selector: 'ss-cashflow-accounts-list',
-  templateUrl: './cash-flow-list.component.html',
-  styleUrls: ['./cash-flow-list.component.scss']
+    selector: 'ss-cashflow-accounts-list',
+    templateUrl: './cash-flow-list.component.html',
+    styleUrls: ['./cash-flow-list.component.scss'],
+    standalone: true,
+    imports: [MatList, NgFor, MatListItem, MatTable, MatSort, MatColumnDef, MatHeaderCellDef, MatHeaderCell, TranslateDirective, MatCellDef, MatCell, MatIconButton, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, CashFlowAccountListComponent, MatFormField, MatLabel, MatInput, FormsModule, ReactiveFormsModule, MatCheckbox, MatButton, DecimalPipe]
 })
 export class CashFlowListComponent extends BaseEntityListComponent<AnnexCode> {
     @ViewChild(CashFlowAccountListComponent) accountList: CashFlowAccountListComponent;

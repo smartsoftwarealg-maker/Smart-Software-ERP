@@ -1,5 +1,9 @@
 import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { LanguageService, isString } from '@ss/common/api-common';
+import { MatIconButton } from '@angular/material/button';
+import { NgFor, NgIf } from '@angular/common';
+import { MatMenuTrigger, MatMenu, MatMenuItem } from '@angular/material/menu';
+import { TranslateDirective } from '../../../../../../libs/common/ui-lang/src/lib/translate.directive';
 
 interface PageButton {
     page: number;
@@ -128,7 +132,9 @@ export class ExtendedPaginationModel extends PaginationModel {
 @Component({
     selector: 'app-pagination',
     templateUrl: './pagination.component.html',
-    styleUrls: ['./pagination.component.scss']
+    styleUrls: ['./pagination.component.scss'],
+    standalone: true,
+    imports: [MatIconButton, NgFor, MatMenuTrigger, TranslateDirective, NgIf, MatMenu, MatMenuItem]
 })
 export class PaginationComponent implements OnInit {
 

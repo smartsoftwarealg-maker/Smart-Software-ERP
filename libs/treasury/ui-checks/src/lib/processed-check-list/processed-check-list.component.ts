@@ -11,11 +11,34 @@ import {MatDialog} from '@angular/material/dialog';
 import {
     ProcessedCheckInjectionDialogComponent
 } from '../processed-check-injection-dialog/processed-check-injection-dialog.component';
+import { MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from '@angular/material/table';
+import { TranslateDirective } from '../../../../../common/ui-lang/src/lib/translate.directive';
+import { MatCheckbox } from '@angular/material/checkbox';
+import { PaginationComponent } from '../../../../../common/ui-pagination/src/lib/pagination.component';
+import { DecimalPipe, DatePipe } from '@angular/common';
 
 @Component({
     selector: 'ss-processed-check-list',
     templateUrl: './processed-check-list.component.html',
     styleUrls: ['./processed-check-list.component.scss'],
+    standalone: true,
+    imports: [
+        MatTable,
+        MatColumnDef,
+        MatHeaderCellDef,
+        MatHeaderCell,
+        TranslateDirective,
+        MatCellDef,
+        MatCell,
+        MatCheckbox,
+        MatHeaderRowDef,
+        MatHeaderRow,
+        MatRowDef,
+        MatRow,
+        PaginationComponent,
+        DecimalPipe,
+        DatePipe,
+    ],
 })
 export class ProcessedCheckListComponent extends BaseEntityListComponent<ProcessedCheck> implements OnInit {
     private injectBtn: ToolbarButton = {

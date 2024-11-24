@@ -8,7 +8,8 @@ import {
 
 
 @Directive({
-    selector: '[ssVCenter]'
+    selector: '[ssVCenter]',
+    standalone: true
 })
 export class VCenterDirective implements OnInit, AfterViewChecked {
 

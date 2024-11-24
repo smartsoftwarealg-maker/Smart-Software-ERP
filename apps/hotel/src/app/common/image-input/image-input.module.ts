@@ -6,9 +6,7 @@ import { MaterialModule } from '../../smart-lib/components/material.module';
 @NgModule({
     imports: [
         CommonModule,
-        MaterialModule
-    ],
-    declarations: [
+        MaterialModule,
         ImageInputComponent
     ],
     exports: [

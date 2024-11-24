@@ -3,7 +3,7 @@ import { SnackBarService } from '../../common/snack-bar.service';
 import { BackendDataSource } from '../../common/base-classes/backend-data-source';
 import { AbstractEntityList } from '../../common/base-classes/abstract-entity-list';
 import { ChargingCost, RoomType } from '../hotel-api';
-import { PaginationModel } from '../../common/pagination/pagination.component';
+import { PaginationModel, PaginationComponent } from '../../common/pagination/pagination.component';
 import { LanguageService } from '@ss/common/api-common';
 import { UserService } from '../../smart-lib/components/login/user.service';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
@@ -12,6 +12,13 @@ import { HttpService } from '../../smart-lib/common/http.service';
 import { BookingCostDetailComponent } from './booking-costs-detail.component';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
+import { ListToolbarComponent } from '../../common/list-toolbar/list-toolbar.component';
+import { NgIf } from '@angular/common';
+import { LoadingSpinnerComponent } from '../../smart-lib/components/loading-spinner/loading-spinner.component';
+import { FatalErrorComponent } from '../../smart-lib/components/fatal-error/fatal-error.component';
+import { MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from '@angular/material/table';
+import { MatSort, MatSortHeader } from '@angular/material/sort';
+import { TranslateDirective } from '../../../../../../libs/common/ui-lang/src/lib/translate.directive';
 
 
 
@@ -21,7 +28,9 @@ const roomTypesUrl = '/hotels/roomTypes';
 @Component({
     selector: 'app-booking-costs',
     templateUrl: './booking-costs-list.component.html',
-    styleUrls: ['./booking-costs-list.component.scss']
+    styleUrls: ['./booking-costs-list.component.scss'],
+    standalone: true,
+    imports: [ListToolbarComponent, NgIf, LoadingSpinnerComponent, FatalErrorComponent, MatTable, MatSort, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatSortHeader, TranslateDirective, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, PaginationComponent]
 })
 // tslint:disable-next-line:max-line-length
 export class BookingCostListComponent extends AbstractEntityList<ChargingCost, BackendDataSource<ChargingCost>> implements OnInit, OnDestroy {

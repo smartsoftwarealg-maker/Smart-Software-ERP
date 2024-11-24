@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from "@angular/core";
 import { ShellService, SnackBarService, KeepOnToolbar } from '@ss/common/ui-shell';
-import { UntypedFormGroup, UntypedFormBuilder, Validators } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormBuilder, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
@@ -9,11 +9,19 @@ import { Observable } from 'rxjs';
 import { Service, ServiceService } from '@ss/common/api-lookup';
 import { EmployeeService } from '@ss/employee-services/employee-services';
 import { PersonAutocompleteClass } from '@ss/employee-services/employee-services';
+import { MatCard } from "@angular/material/card";
+import { NgIf } from "@angular/common";
+import { MatFormField, MatLabel, MatError } from "@angular/material/form-field";
+import { TranslateDirective } from "../../../../../common/ui-lang/src/lib/translate.directive";
+import { MatInput } from "@angular/material/input";
+import { UiAutoCompleteComponent } from "../../../../../common/ui-auto-complete/src/lib/auto-complete.component";
 
 @Component({
     selector: 'ss-service-detail',
     templateUrl: './service-detail.component.html',
-    styleUrls: ['./service-detail.component.scss']
+    styleUrls: ['./service-detail.component.scss'],
+    standalone: true,
+    imports: [MatCard, NgIf, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, MatError, UiAutoCompleteComponent]
 })
 export class ServiceDetailComponent extends BaseEntityDetailComponent<Service> implements OnInit, OnDestroy {
     public saving: boolean = false;

@@ -14,9 +14,9 @@ import {AgentBalanceComponent} from "./agent-balance.component";
         CommonUiLangModule,
         UiPaginationModule,
         ReactiveFormsModule,
-        CommonUiConfirmationDialogModule
+        CommonUiConfirmationDialogModule,
+        AgentBalanceComponent
     ],
-    declarations: [AgentBalanceComponent],
     exports: [AgentBalanceComponent]
 })
 export class LogisticsUiAccountModule {

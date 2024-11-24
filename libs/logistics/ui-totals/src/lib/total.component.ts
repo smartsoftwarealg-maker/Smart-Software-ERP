@@ -6,11 +6,17 @@ import {ArticleService} from '@ss/master-data/api-article';
 import {PaginationModel} from '@ss/common/api-common';
 import {Total, TotalService} from '@ss/logistics/api-totals';
 import {LanguageService} from '@ss/common/api-common';
+import { MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from '@angular/material/table';
+import { TranslateDirective } from '../../../../common/ui-lang/src/lib/translate.directive';
+import { PaginationComponent } from '../../../../common/ui-pagination/src/lib/pagination.component';
+import { DecimalPipe } from '@angular/common';
 
 @Component({
     selector: 'ss-total',
     styleUrls: ['./total.component.scss'],
-    templateUrl: './total.component.html'
+    templateUrl: './total.component.html',
+    standalone: true,
+    imports: [MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, TranslateDirective, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, PaginationComponent, DecimalPipe]
 })
 export class TotalComponent implements OnInit {
 

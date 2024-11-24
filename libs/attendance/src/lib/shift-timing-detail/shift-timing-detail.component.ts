@@ -1,5 +1,5 @@
 import { Component, inject, OnInit } from "@angular/core";
-import {FormBuilder, Validators} from '@angular/forms';
+import { FormBuilder, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {ShiftTimingService} from '../shift-timing.service';
 import {switchMap, tap} from 'rxjs/operators';
 import {of} from 'rxjs';
@@ -7,11 +7,36 @@ import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Timing} from '../attendance-api';
 import {SnackBarService} from '@ss/common/ui-shell';
+import { MatCard, MatCardHeader, MatCardContent } from "@angular/material/card";
+import { MatMiniFabButton } from "@angular/material/button";
+import { MatTooltip } from "@angular/material/tooltip";
+import { TranslateDirective } from "../../../../common/ui-lang/src/lib/translate.directive";
+import { NgIf } from "@angular/common";
+import { MatFormField, MatLabel, MatError } from "@angular/material/form-field";
+import { DatePickerComponent } from "../../../../common/ui-datepicker/src/lib/date-picker.component";
+import { TranslatePipe } from "../../../../common/ui-lang/src/lib/translate.pipe";
 
 @Component({
     selector: 'ss-shift-timing-detail',
     templateUrl: './shift-timing-detail.component.html',
     styleUrls: ['./shift-timing-detail.component.scss'],
+    standalone: true,
+    imports: [
+        MatCard,
+        MatCardHeader,
+        MatMiniFabButton,
+        MatTooltip,
+        TranslateDirective,
+        MatCardContent,
+        NgIf,
+        FormsModule,
+        ReactiveFormsModule,
+        MatFormField,
+        MatLabel,
+        DatePickerComponent,
+        MatError,
+        TranslatePipe,
+    ],
 })
 export class ShiftTimingDetailComponent implements OnInit {
     private entitySrv = inject(ShiftTimingService);

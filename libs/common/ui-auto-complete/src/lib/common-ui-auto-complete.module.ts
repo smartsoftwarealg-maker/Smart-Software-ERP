@@ -15,9 +15,9 @@ import {CommonUiLangModule} from '@ss/common/ui-lang';
         CommonUiLangModule,
         MatFormFieldModule,
         MatAutocompleteModule,
-        MatInputModule
+        MatInputModule,
+        UiAutoCompleteComponent
     ],
-    declarations: [UiAutoCompleteComponent],
     exports: [UiAutoCompleteComponent],
 })
 export class CommonUiAutoCompleteModule {

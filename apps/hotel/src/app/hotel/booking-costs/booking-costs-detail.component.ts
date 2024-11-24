@@ -1,13 +1,22 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ConfirmationDialogService } from '../../common/confirmation-dialog/confirmation-dialog.service';
 import { ChargingCost, RoomType } from '../hotel-api';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { TranslateDirective } from '../../../../../../libs/common/ui-lang/src/lib/translate.directive';
+import { MatFormField, MatLabel } from '@angular/material/form-field';
+import { MatInput } from '@angular/material/input';
+import { MatSelect } from '@angular/material/select';
+import { NgFor } from '@angular/common';
+import { MatOption } from '@angular/material/core';
+import { SaveBarComponent } from '../../common/save-bar/save-bar.component';
 
 @Component({
     selector: 'app-charging-cost-detail',
     templateUrl: './booking-costs-detail.component.html',
-    styleUrls: ['./booking-costs-detail.component.scss']
+    styleUrls: ['./booking-costs-detail.component.scss'],
+    standalone: true,
+    imports: [TranslateDirective, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, MatInput, MatSelect, NgFor, MatOption, SaveBarComponent]
 })
 export class BookingCostDetailComponent implements OnInit {
     public form: UntypedFormGroup = null;

@@ -1,13 +1,34 @@
 import { Component, inject, Inject } from "@angular/core";
-import { FormBuilder, UntypedFormGroup } from "@angular/forms";
+import { FormBuilder, UntypedFormGroup, FormsModule, ReactiveFormsModule } from "@angular/forms";
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {BudgetPlanningTree} from '../budget-planning-api';
 import {BudgetService} from '@ss/budget/budget';
+import { MatCard } from "@angular/material/card";
+import { MatFormField, MatLabel, MatError } from "@angular/material/form-field";
+import { TranslateDirective } from "../../../../../common/ui-lang/src/lib/translate.directive";
+import { MatInput } from "@angular/material/input";
+import { NgIf } from "@angular/common";
+import { MatButton } from "@angular/material/button";
+import { TranslatePipe } from "../../../../../common/ui-lang/src/lib/translate.pipe";
 
 @Component({
     selector: 'ss-budget-planning-add-dlg',
     templateUrl: './budget-planning-add-dlg.component.html',
     styleUrls: ['./budget-planning-add-dlg.component.scss'],
+    standalone: true,
+    imports: [
+        MatCard,
+        FormsModule,
+        ReactiveFormsModule,
+        MatFormField,
+        MatLabel,
+        TranslateDirective,
+        MatInput,
+        NgIf,
+        MatError,
+        MatButton,
+        TranslatePipe,
+    ],
 })
 export class BudgetPlanningAddDlgComponent {
     private budgetSrv = inject(BudgetService);

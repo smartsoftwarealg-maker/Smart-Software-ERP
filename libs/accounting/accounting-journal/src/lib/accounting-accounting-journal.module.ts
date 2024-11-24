@@ -16,13 +16,10 @@ import {CommonUiConfirmationDialogModule} from '@ss/common/ui-confirmation-dialo
         CommonUiLangModule,
         UiPaginationModule,
         ReactiveFormsModule,
-
         CommonUiAutoCompleteModule,
-        CommonUiConfirmationDialogModule
-    ],
-    declarations: [
-      JournalListComponent,
-      JournalDetailComponent
+        CommonUiConfirmationDialogModule,
+        JournalListComponent,
+        JournalDetailComponent
     ],
 })
 export class AccountingAccountingJournalModule {}

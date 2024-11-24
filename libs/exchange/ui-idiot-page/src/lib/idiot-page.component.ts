@@ -2,11 +2,15 @@ import { Component, OnInit } from '@angular/core';
 import {DomSanitizer, SafeHtml} from "@angular/platform-browser";
 import {ReportParamsService, ReportViewData} from "@ss/common/api-reports";
 import {ShellService} from "@ss/common/ui-shell";
+import { NgIf } from '@angular/common';
+import { MatProgressSpinner } from '@angular/material/progress-spinner';
 
 @Component({
-  selector: 'ss-idiot-page',
-  templateUrl: './idiot-page.component.html',
-  styleUrls: ['./idiot-page.component.scss']
+    selector: 'ss-idiot-page',
+    templateUrl: './idiot-page.component.html',
+    styleUrls: ['./idiot-page.component.scss'],
+    standalone: true,
+    imports: [NgIf, MatProgressSpinner]
 })
 export class IdiotPageComponent implements OnInit {
     htmlSrc: SafeHtml = null;

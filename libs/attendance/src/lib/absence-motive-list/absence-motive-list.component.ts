@@ -5,14 +5,35 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { DefaultReportService } from '@ss/common/ui-default-report-component';
 import { PaginatorPersistenceService } from '@ss/common/api-common';
-import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Lookup } from '@ss/common/api-lookup';
 import { AbsenceMotiveService } from '../absence-motive.service';
+import { MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from '@angular/material/table';
+import { TranslateDirective } from '../../../../common/ui-lang/src/lib/translate.directive';
+import { PaginationComponent } from '../../../../common/ui-pagination/src/lib/pagination.component';
+import { NgIf } from '@angular/common';
+import { MatFormField, MatLabel } from '@angular/material/form-field';
+import { MatInput } from '@angular/material/input';
 
 @Component({
     selector: 'ss-absence-motive-list',
     templateUrl: './absence-motive-list.component.html',
     styleUrls: ['./absence-motive-list.component.scss'],
+    standalone: true,
+    imports: [
+        MatTable,
+        MatColumnDef,
+        MatHeaderCellDef,
+        MatHeaderCell,
+        TranslateDirective,
+        MatCellDef,
+        MatCell,
+        MatHeaderRowDef,
+        MatHeaderRow,
+        MatRowDef,
+        MatRow,
+        PaginationComponent,
+    ],
 })
 export class AbsenceMotiveListComponent extends BaseEntityListComponent<Lookup> {
 
@@ -60,7 +81,9 @@ export class AbsenceMotiveListComponent extends BaseEntityListComponent<Lookup> 
             height: 100px;
             display: flex;
             flex-flow: column;
-        }`]
+        }`],
+    standalone: true,
+    imports: [NgIf, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput]
 })
 export class AbsenceMotiveDetailComponent extends BaseEntityDetailComponent<Lookup> {
     constructor(

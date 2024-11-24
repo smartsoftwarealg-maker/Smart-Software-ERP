@@ -8,9 +8,9 @@ import { HttpClientModule } from "@angular/common/http";
     imports: [
         CommonModule,
         MaterialModule,
-        HttpClientModule
+        HttpClientModule,
+        LanguageSelectComponent
     ],
-    declarations: [LanguageSelectComponent],
     exports: [LanguageSelectComponent]
 })
 export class LanguageModule {

@@ -3,7 +3,7 @@ import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {VacationPlanning, VacationPlanningDetail} from '../vacation-planning-api';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
-import {UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {HttpService} from '@ss/common/api-common';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {LookupsService} from '@ss/common/api-lookup';
@@ -13,11 +13,21 @@ import {Lookup} from '@ss/logistics/ui-doc-import';
 import {query} from '@angular/animations';
 import {Observable, zip} from 'rxjs';
 import {tap} from 'rxjs/operators';
+import { MatCard } from '@angular/material/card';
+import { NgIf, NgFor } from '@angular/common';
+import { MatFormField, MatLabel, MatError } from '@angular/material/form-field';
+import { TranslateDirective } from '../../../../../common/ui-lang/src/lib/translate.directive';
+import { MatSelect } from '@angular/material/select';
+import { MatOption } from '@angular/material/core';
+import { MatInput } from '@angular/material/input';
+import { DatePickerComponent } from '../../../../../common/ui-datepicker/src/lib/date-picker.component';
 
 @Component({
-  selector: 'ss-vacation-planning-detail-detail',
-  templateUrl: './vacation-planning-detail-detail.component.html',
-  styleUrls: ['./vacation-planning-detail-detail.component.scss']
+    selector: 'ss-vacation-planning-detail-detail',
+    templateUrl: './vacation-planning-detail-detail.component.html',
+    styleUrls: ['./vacation-planning-detail-detail.component.scss'],
+    standalone: true,
+    imports: [MatCard, NgIf, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatSelect, NgFor, MatOption, MatInput, DatePickerComponent, MatError]
 })
 export class VacationPlanningDetailDetailComponent extends BaseEntityDetailComponent<VacationPlanningDetail> implements OnInit {
     vacationTypes: Array<Lookup> = [];

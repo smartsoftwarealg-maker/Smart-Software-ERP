@@ -2,18 +2,27 @@ import { Component, OnInit } from '@angular/core';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { CheckBookService, CheckBook } from '@ss/treasury/api-check-books';
 import { ActivatedRoute, Router } from '@angular/router';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { HttpService, LoginService } from '@ss/common/api-common';
 import { Observable } from 'rxjs';
 import { LookupsService, Bank } from '@ss/common/api-lookup';
 import { switchMap, tap } from 'rxjs/operators';
+import { MatCard } from '@angular/material/card';
+import { NgIf, NgFor } from '@angular/common';
+import { MatFormField, MatLabel } from '@angular/material/form-field';
+import { TranslateDirective } from '../../../../../common/ui-lang/src/lib/translate.directive';
+import { MatSelect } from '@angular/material/select';
+import { MatOption } from '@angular/material/core';
+import { MatInput } from '@angular/material/input';
 
 @Component({
     selector: 'ss-check-book-detail',
     styleUrls: ['./check-book-detail.component.scss'],
-    templateUrl: './check-book-detail.component.html'
+    templateUrl: './check-book-detail.component.html',
+    standalone: true,
+    imports: [MatCard, NgIf, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatSelect, NgFor, MatOption, MatInput]
 })
 export class CheckBookDetailComponent extends BaseEntityDetailComponent<CheckBook> implements OnInit {
 

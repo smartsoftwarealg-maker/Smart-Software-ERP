@@ -12,15 +12,29 @@ import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import {AccessRightsService} from '@ss/common/api-access-rights';
 import {LookupsService, RoleService} from '@ss/common/api-lookup';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
-import { FormControl, FormGroup, UntypedFormBuilder, UntypedFormControl, UntypedFormGroup } from "@angular/forms";
+import { FormControl, FormGroup, UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, FormsModule, ReactiveFormsModule } from "@angular/forms";
 import {switchMap} from 'rxjs/operators';
 import {Observable} from 'rxjs';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
+import { MatFormField, MatLabel } from '@angular/material/form-field';
+import { TranslateDirective } from '../../../../ui-lang/src/lib/translate.directive';
+import { MatSelect } from '@angular/material/select';
+import { NgFor, NgIf, NgClass } from '@angular/common';
+import { MatOption } from '@angular/material/core';
+import { MatList, MatListItem } from '@angular/material/list';
+import { UiAutoCompleteComponent } from '../../../../ui-auto-complete/src/lib/auto-complete.component';
+import { MatSlideToggle } from '@angular/material/slide-toggle';
+import { MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from '@angular/material/table';
+import { MatCheckbox } from '@angular/material/checkbox';
+import { PaginationComponent } from '../../../../ui-pagination/src/lib/pagination.component';
+import { TranslatePipe } from '../../../../ui-lang/src/lib/translate.pipe';
 
 @Component({
     selector: 'ss-access-rights',
     templateUrl: './access-rights-list.component.html',
-    styleUrls: ['./access-rights-list.component.scss']
+    styleUrls: ['./access-rights-list.component.scss'],
+    standalone: true,
+    imports: [MatFormField, MatLabel, TranslateDirective, MatSelect, NgFor, MatOption, NgIf, MatList, MatListItem, NgClass, FormsModule, ReactiveFormsModule, UiAutoCompleteComponent, MatSlideToggle, MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatCheckbox, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, PaginationComponent, TranslatePipe]
 })
 export class AccessRightsListComponent extends BaseEntityListComponent<AccessRight> {
     private roleSrv = inject(RoleService);

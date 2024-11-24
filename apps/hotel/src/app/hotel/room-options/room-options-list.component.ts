@@ -4,19 +4,28 @@ import { AbstractEntityList } from '../../common/base-classes/abstract-entity-li
 import { BackendDataSource } from '../../common/base-classes/backend-data-source';
 import { SnackBarService } from '../../common/snack-bar.service';
 import { RoomOptionsDetailComponent } from './room-options-detail.component';
-import { PaginationModel } from '../../common/pagination/pagination.component';
+import { PaginationModel, PaginationComponent } from '../../common/pagination/pagination.component';
 import { deepCopy } from '../../smart-lib/common/util';
 import { LanguageService } from '@ss/common/api-common';
 import { UserService } from '../../smart-lib/components/login/user.service';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { HttpService } from '../../smart-lib/common/http.service';
+import { ListToolbarComponent } from '../../common/list-toolbar/list-toolbar.component';
+import { NgIf } from '@angular/common';
+import { LoadingSpinnerComponent } from '../../smart-lib/components/loading-spinner/loading-spinner.component';
+import { FatalErrorComponent } from '../../smart-lib/components/fatal-error/fatal-error.component';
+import { MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from '@angular/material/table';
+import { MatSort, MatSortHeader } from '@angular/material/sort';
+import { TranslateDirective } from '../../../../../../libs/common/ui-lang/src/lib/translate.directive';
 
 const roomOptionsUrl = '/hotels/roomOptions';
 
 @Component({
     selector: 'app-room-options-list',
     templateUrl: './room-options-list.component.html',
-    styleUrls: ['./room-options-list.component.scss']
+    styleUrls: ['./room-options-list.component.scss'],
+    standalone: true,
+    imports: [ListToolbarComponent, NgIf, LoadingSpinnerComponent, FatalErrorComponent, MatTable, MatSort, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatSortHeader, TranslateDirective, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, PaginationComponent]
 })
 export class RoomOptionsListComponent extends AbstractEntityList<RoomOption, BackendDataSource<RoomOption>> implements OnInit, OnDestroy {
 

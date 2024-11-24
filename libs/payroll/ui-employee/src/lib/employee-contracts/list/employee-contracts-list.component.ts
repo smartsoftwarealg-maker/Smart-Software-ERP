@@ -2,11 +2,21 @@ import { Component } from '@angular/core';
 import { EmployeeContractService, Contract } from '@ss/payroll/api-employee';
 import { PaginationModel } from '@ss/common/api-common';
 import { BaseChildEntityListComponent } from '@ss/common/ui-base-entity';
+import { MatMiniFabButton } from '@angular/material/button';
+import { MatTooltip } from '@angular/material/tooltip';
+import { MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from '@angular/material/table';
+import { TranslateDirective } from '../../../../../../common/ui-lang/src/lib/translate.directive';
+import { MatCheckbox } from '@angular/material/checkbox';
+import { PaginationComponent } from '../../../../../../common/ui-pagination/src/lib/pagination.component';
+import { AsyncPipe, DecimalPipe, DatePipe } from '@angular/common';
+import { TranslatePipe } from '../../../../../../common/ui-lang/src/lib/translate.pipe';
 
 @Component({
     selector: 'ss-employee-contracts',
     templateUrl: './employee-contracts-list.component.html',
-    styleUrls: ['./employee-contracts-list.component.scss']
+    styleUrls: ['./employee-contracts-list.component.scss'],
+    standalone: true,
+    imports: [MatMiniFabButton, MatTooltip, MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, TranslateDirective, MatCellDef, MatCell, MatCheckbox, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, PaginationComponent, AsyncPipe, DecimalPipe, DatePipe, TranslatePipe]
 })
 export class EmployeeContractListComponent extends BaseChildEntityListComponent<Contract> {
     editable = true;

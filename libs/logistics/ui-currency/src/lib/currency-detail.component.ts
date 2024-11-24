@@ -1,16 +1,23 @@
 import {Component} from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
-import {UntypedFormBuilder, Validators} from '@angular/forms';
+import { UntypedFormBuilder, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {CCGroup, Currency, CurrencyService, LookupsService} from '@ss/common/api-lookup';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
+import { MatCard, MatCardContent } from '@angular/material/card';
+import { NgIf } from '@angular/common';
+import { MatFormField, MatLabel, MatError } from '@angular/material/form-field';
+import { TranslateDirective } from '../../../../common/ui-lang/src/lib/translate.directive';
+import { MatInput } from '@angular/material/input';
 
 
 @Component({
     selector: 'ss-cost-center-detail',
     styleUrls: ['./currency-detail.component.scss'],
-    templateUrl: './currency-detail.component.html'
+    templateUrl: './currency-detail.component.html',
+    standalone: true,
+    imports: [MatCard, MatCardContent, NgIf, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, MatError]
 })
 export class CurrencyDetailComponent extends BaseEntityDetailComponent<Currency> {
 

@@ -1,7 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import {KeepOnToolbar, ShellService, SnackBarService, ToolbarButton} from '@ss/common/ui-shell';
-import {ActivatedRoute, Router} from '@angular/router';
-import {UntypedFormBuilder} from '@angular/forms';
+import { ActivatedRoute, Router, RouterOutlet } from '@angular/router';
+import { UntypedFormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {Lookup} from '@ss/common/api-lookup';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {InventoryEntryService} from '@ss/stock/api-inventory-entry';
@@ -11,12 +11,22 @@ import {MatDialog} from '@angular/material/dialog';
 import {InventoryLinesListComponent} from '@ss/stock/ui-inventory-lines';
 import {InventoryImportComponent} from '@ss/logistics/ui-doc-import';
 import { InventoryEntryLinesService } from '@ss/stock/api-inventory-entry-lines';
+import { MatCard, MatCardContent } from '@angular/material/card';
+import { NgIf } from '@angular/common';
+import { MatFormField, MatLabel, MatError } from '@angular/material/form-field';
+import { TranslateDirective } from '../../../../../common/ui-lang/src/lib/translate.directive';
+import { MatInput } from '@angular/material/input';
+import { DatePickerComponent } from '../../../../../common/ui-datepicker/src/lib/date-picker.component';
+import { UiAutoCompleteComponent } from '../../../../../common/ui-auto-complete/src/lib/auto-complete.component';
+import { CdkTextareaAutosize } from '@angular/cdk/text-field';
 
 
 @Component({
     selector: 'ss-inventory-entry-detail',
     styleUrls: ['../../../../../common/assets/src/assets/transac-detail.scss'],
-    templateUrl: './inventory-entry-detail.component.html'
+    templateUrl: './inventory-entry-detail.component.html',
+    standalone: true,
+    imports: [MatCard, MatCardContent, NgIf, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, DatePickerComponent, UiAutoCompleteComponent, MatError, CdkTextareaAutosize, RouterOutlet]
 })
 export class InventoryEntryDetailComponent extends BaseTransactionDetailComponent {
     @ViewChild(InventoryLinesListComponent) _detail: InventoryLinesListComponent;

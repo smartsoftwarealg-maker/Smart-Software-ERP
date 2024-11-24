@@ -1,14 +1,23 @@
 import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
-import { UntypedFormControl } from '@angular/forms';
+import { UntypedFormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { ConfirmationDialogService } from '../confirmation-dialog/confirmation-dialog.service';
 import { Right } from '../../smart-lib/common/models';
 import { Subscription } from 'rxjs';
+import { MatFormField, MatLabel } from '@angular/material/form-field';
+import { TranslateDirective } from '../../../../../../libs/common/ui-lang/src/lib/translate.directive';
+import { MatInput } from '@angular/material/input';
+import { NgIf } from '@angular/common';
+import { MatIconButton } from '@angular/material/button';
+import { MatTooltip } from '@angular/material/tooltip';
+import { TranslatePipe } from '../../../../../../libs/common/ui-lang/src/lib/translate.pipe';
 
 @Component({
     selector: 'app-list-toolbar',
     templateUrl: './list-toolbar.component.html',
-    styleUrls: ['./list-toolbar.component.scss']
+    styleUrls: ['./list-toolbar.component.scss'],
+    standalone: true,
+    imports: [MatFormField, MatLabel, TranslateDirective, MatInput, FormsModule, ReactiveFormsModule, NgIf, MatIconButton, MatTooltip, TranslatePipe]
 })
 export class ListToolbarComponent implements OnInit, OnDestroy {
 

@@ -81,7 +81,7 @@ export const routes: Routes = [
                     {
                         path: 'lines-detail',
                         children: [
-                            { path: ':id', component: QuotationLinesDetailComponent },
+                            { path: ':id', component: QuotationLinesDetailComponent, canDeactivate: [CanDeactivateService] },
                         ]
                     },
                     ...docInfoRoutes

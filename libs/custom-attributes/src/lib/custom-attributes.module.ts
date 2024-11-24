@@ -18,15 +18,12 @@ import {CommonUiDefaultReportModule} from '@ss/common/ui-default-report-componen
         CommonModule,
         MaterialModule,
         CommonUiLangModule,
-
         UiPaginationModule,
         CommonUiConfirmationDialogModule,
         CommonUiAutoCompleteModule,
         CommonUiDatepickerModule,
         CommonUiDefaultReportModule,
         RouterModule,
-    ],
-    declarations: [
         AttributesListComponent,
         AttributesDetailComponent,
         ChildAttributesComponent,

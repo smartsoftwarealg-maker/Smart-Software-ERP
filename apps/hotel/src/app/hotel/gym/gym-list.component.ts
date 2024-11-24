@@ -11,6 +11,17 @@ import { UserService } from '../../smart-lib/components/login/user.service';
 import { HttpService } from '../../smart-lib/common/http.service';
 import { deepCopy } from '../../smart-lib/common/util';
 import { LanguageService } from '@ss/common/api-common';
+import { ListToolbarComponent } from '../../common/list-toolbar/list-toolbar.component';
+import { MatIconButton } from '@angular/material/button';
+import { MatTooltip } from '@angular/material/tooltip';
+import { NgIf } from '@angular/common';
+import { LoadingSpinnerComponent } from '../../smart-lib/components/loading-spinner/loading-spinner.component';
+import { FatalErrorComponent } from '../../smart-lib/components/fatal-error/fatal-error.component';
+import { MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from '@angular/material/table';
+import { MatSort, MatSortHeader } from '@angular/material/sort';
+import { TranslateDirective } from '../../../../../../libs/common/ui-lang/src/lib/translate.directive';
+import { PaginationComponent } from '../../common/pagination/pagination.component';
+import { TranslatePipe } from '../../../../../../libs/common/ui-lang/src/lib/translate.pipe';
 
 const payModeCash = 66;
 
@@ -48,7 +59,9 @@ function calculateGeneralTotal(inv: FullService) {
 @Component({
     selector: 'app-gym-list',
     templateUrl: './gym-list.component.html',
-    styleUrls: ['./gym-list.component.scss']
+    styleUrls: ['./gym-list.component.scss'],
+    standalone: true,
+    imports: [ListToolbarComponent, MatIconButton, MatTooltip, NgIf, LoadingSpinnerComponent, FatalErrorComponent, MatTable, MatSort, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatSortHeader, TranslateDirective, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, PaginationComponent, TranslatePipe]
 })
 // tslint:disable-next-line:max-line-length
 export class GymListComponent extends AbstractEntityList<DisplayableService, BackendDataSource<DisplayableService>> implements OnInit, OnDestroy {

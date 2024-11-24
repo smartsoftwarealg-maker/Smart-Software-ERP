@@ -4,18 +4,27 @@ import {LoginService} from '@ss/common/api-common';
 import {LookupsService, PayModeService} from '@ss/common/api-lookup';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
-import {UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {PaymentsDetailService} from '../services/payments-detail.service';
 import {BankService} from '@ss/administration/api-bank';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {Payment} from '@ss/logistics/api-common';
 import {AgentLookupModel, AgentService} from '@ss/logistics/api-agent';
+import { MatCard, MatCardContent } from '@angular/material/card';
+import { NgIf } from '@angular/common';
+import { MatFormField, MatLabel, MatError } from '@angular/material/form-field';
+import { TranslateDirective } from '../../../../../common/ui-lang/src/lib/translate.directive';
+import { DatePickerComponent } from '../../../../../common/ui-datepicker/src/lib/date-picker.component';
+import { UiAutoCompleteComponent } from '../../../../../common/ui-auto-complete/src/lib/auto-complete.component';
+import { MatInput } from '@angular/material/input';
 
 @Component({
     selector: 'ss-payments-detail',
     templateUrl: './payments-detail.component.html',
-    styleUrls: ['./payments-detail.component.scss']
+    styleUrls: ['./payments-detail.component.scss'],
+    standalone: true,
+    imports: [MatCard, MatCardContent, NgIf, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, DatePickerComponent, UiAutoCompleteComponent, MatInput, MatError]
 })
 export class PaymentsDetailComponent extends BaseEntityDetailComponent<Payment> {
     private typeSrv  = inject(PayModeService);

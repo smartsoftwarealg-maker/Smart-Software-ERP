@@ -33,9 +33,7 @@ import { AppArchiveMainComponent } from '@ss/common/app-archive';
         CommonPayrollModule,
         CommonUiDatepickerModule,
         RouterOutlet,
-        AppArchiveMainComponent
-    ],
-    declarations: [
+        AppArchiveMainComponent,
         FurnitureReceiverListComponent,
         FurnitureReceiverDetailComponent,
         FurnitureDetailComponent,
@@ -47,7 +45,7 @@ import { AppArchiveMainComponent } from '@ss/common/app-archive';
         FurnitureAssignmentDetailComponent,
         FurnitureAssignmentListComponent,
         FurnitureSalesListComponent,
-        FurnitureSalesDetailComponent,
+        FurnitureSalesDetailComponent
     ],
 })
 export class FurnitureFurnitureModule {}

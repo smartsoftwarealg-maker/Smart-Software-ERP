@@ -1,14 +1,22 @@
 import { Component, OnInit } from '@angular/core';
-import { MatDialogRef } from '@angular/material/dialog';
+import { MatDialogRef, MatDialogContent, MatDialogActions } from '@angular/material/dialog';
 import { ReportCatalog } from '../report-catalog';
 import { HttpService } from '../../../common/http.service';
-import { PaginationModel } from '../../../../common/pagination/pagination.component';
+import { PaginationModel, PaginationComponent } from '../../../../common/pagination/pagination.component';
+import { TranslateDirective } from '../../../../../../../../libs/common/ui-lang/src/lib/translate.directive';
+import { CdkScrollable } from '@angular/cdk/scrolling';
+import { MatList, MatListItem } from '@angular/material/list';
+import { NgFor, NgClass } from '@angular/common';
+import { MatDivider } from '@angular/material/divider';
+import { MatButton } from '@angular/material/button';
 
 
 @Component({
     selector: 'ss-report-selector',
     styleUrls: ['./report-selector.component.css'],
-    templateUrl: './report-selector.component.html'
+    templateUrl: './report-selector.component.html',
+    standalone: true,
+    imports: [TranslateDirective, CdkScrollable, MatDialogContent, MatList, NgFor, MatListItem, NgClass, MatDivider, PaginationComponent, MatDialogActions, MatButton]
 })
 export class ReportSelectorComponent {
 

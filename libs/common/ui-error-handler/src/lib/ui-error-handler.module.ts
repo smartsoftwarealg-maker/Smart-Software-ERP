@@ -9,13 +9,13 @@ import { CommonUiLangModule } from '@ss/common/ui-lang';
     imports: [
         CommonModule,
         MatButtonModule,
-        CommonUiLangModule
+        CommonUiLangModule,
+        ErrorMessageComponent
     ],
-    declarations: [ErrorMessageComponent],
     exports: [ErrorMessageComponent],
     providers: [
         CustomErrorHandler,
-        {provide: ErrorHandler, useClass: CustomErrorHandler}
+        { provide: ErrorHandler, useClass: CustomErrorHandler }
     ],
 })
 export class UiErrorHandlerModule { }

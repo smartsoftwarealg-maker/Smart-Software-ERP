@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, ActivatedRouteSnapshot, CanDeactivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
 import { SnackBarService } from '../../common/snack-bar.service';
-import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ConfirmationDialogService } from '../../common/confirmation-dialog/confirmation-dialog.service';
 import { AbstractEntityView } from '../../common/base-classes/abstract-entity-view';
 import { BackendDataSource } from '../../common/base-classes/backend-data-source';
@@ -12,13 +12,23 @@ import { switchMap } from 'rxjs/operators';
 import { Agent } from '../../smart-lib/common/models';
 import { UserService } from '../../smart-lib/components/login/user.service';
 import { HttpService } from '../../smart-lib/common/http.service';
+import { TranslateDirective } from '../../../../../../libs/common/ui-lang/src/lib/translate.directive';
+import { NgIf } from '@angular/common';
+import { LoadingSpinnerComponent } from '../../smart-lib/components/loading-spinner/loading-spinner.component';
+import { FatalErrorComponent } from '../../smart-lib/components/fatal-error/fatal-error.component';
+import { MatFormField, MatLabel } from '@angular/material/form-field';
+import { MatInput } from '@angular/material/input';
+import { MatCheckbox } from '@angular/material/checkbox';
+import { SaveBarComponent } from '../../common/save-bar/save-bar.component';
 
 const agentsUrl = '/agents';
 
 @Component({
     selector: 'app-htl-client-detail',
     templateUrl: './clients-detail.component.html',
-    styleUrls: ['./clients-detail.component.scss']
+    styleUrls: ['./clients-detail.component.scss'],
+    standalone: true,
+    imports: [TranslateDirective, NgIf, LoadingSpinnerComponent, FatalErrorComponent, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, MatInput, MatCheckbox, SaveBarComponent]
 })
 export class ClientsDetailComponent extends AbstractEntityView<Agent, BackendDataSource<Agent>> implements OnInit, OnDestroy {
 

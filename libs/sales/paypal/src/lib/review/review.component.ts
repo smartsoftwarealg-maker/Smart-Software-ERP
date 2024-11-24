@@ -3,11 +3,25 @@ import {CheckoutService} from '../checkout.service';
 import {ActivatedRoute, Route, Router} from '@angular/router';
 import {of, switchMap} from 'rxjs';
 import {Order, Review} from '@ss/sales/shopping-cart';
+import { NgIf } from '@angular/common';
+import { MatCard, MatCardActions } from '@angular/material/card';
+import { TranslateDirective } from '../../../../../common/ui-lang/src/lib/translate.directive';
+import { MatButton } from '@angular/material/button';
+import { TranslatePipe } from '../../../../../common/ui-lang/src/lib/translate.pipe';
 
 @Component({
     selector: 'ss-review',
     templateUrl: './review.component.html',
     styleUrls: ['./review.component.scss'],
+    standalone: true,
+    imports: [
+        NgIf,
+        MatCard,
+        TranslateDirective,
+        MatCardActions,
+        MatButton,
+        TranslatePipe,
+    ],
 })
 export class ReviewComponent implements OnInit {
     private paymentId: string | null = null;

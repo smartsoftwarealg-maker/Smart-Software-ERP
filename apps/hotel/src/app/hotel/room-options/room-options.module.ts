@@ -9,9 +9,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { PaginationModule } from '../../common/pagination/pagination.module';
 import { ListToolbarModule } from '../../common/list-toolbar/list-toolbar.module';
 import { SaveBarModule } from '../../common/save-bar/save-bar.module';
-import { SmartCommonModule } from '../../smart-lib/common/smart-common.module';
+
 import { LoadingSpinnerModule } from '../../smart-lib/components/loading-spinner/loading-spinner.module';
-import { FatalErrorModule } from '../../smart-lib/components/fatal-error/fatal-error.module';
+
 import { LanguageService } from '@ss/common/api-common';
 import { CanActivateService } from '../../smart-lib/components/login/can-activte.service';
 import { MaterialModule } from '../../smart-lib/components/material.module';
@@ -28,23 +28,19 @@ const routes: Routes = [
 
 @NgModule({
     imports: [
-        CommonModule,
-        FormsModule,
-        ReactiveFormsModule,
-        MaterialModule,
-        HttpClientModule,
-        SmartCommonModule,
-        PaginationModule,
-        LoadingSpinnerModule,
-        FatalErrorModule,
-        ListToolbarModule,
-        SaveBarModule,
-        RouterModule.forChild(routes)
-    ],
-    declarations: [
-        RoomOptionsListComponent,
-        RoomOptionsDetailComponent
-    ],
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MaterialModule,
+    HttpClientModule,
+    PaginationModule,
+    LoadingSpinnerModule,
+    ListToolbarModule,
+    SaveBarModule,
+    RouterModule.forChild(routes),
+    RoomOptionsListComponent,
+    RoomOptionsDetailComponent
+],
     exports: [
         RoomOptionsListComponent,
         RoomOptionsDetailComponent

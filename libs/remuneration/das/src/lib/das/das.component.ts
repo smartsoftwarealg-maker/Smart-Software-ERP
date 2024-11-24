@@ -1,13 +1,22 @@
 import {Component, OnInit} from '@angular/core';
 import {ShellService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
-import {UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {zip} from 'rxjs';
 import {DasService} from '../das.service';
 import {Fund, LookupsService} from '@ss/common/api-lookup';
 import {ElementsInfoService} from '@ss/remuneration/elementsinfo';
 import {Formula, PayrollFormulasService} from '@ss/remuneration/payroll-formulas';
 import {LoginService} from '@ss/common/api-common';
+import { MatCard } from '@angular/material/card';
+import { NgIf, NgFor } from '@angular/common';
+import { MatFormField, MatLabel, MatError } from '@angular/material/form-field';
+import { TranslateDirective } from '../../../../../common/ui-lang/src/lib/translate.directive';
+import { MatInput } from '@angular/material/input';
+import { MatSelect } from '@angular/material/select';
+import { MatOption } from '@angular/material/core';
+import { MatButton } from '@angular/material/button';
+import { TranslatePipe } from '../../../../../common/ui-lang/src/lib/translate.pipe';
 
 interface Lookup {
     id: number;
@@ -17,7 +26,9 @@ interface Lookup {
 @Component({
     selector: 'ss-edo',
     templateUrl: './das.component.html',
-    styleUrls: ['./das.component.scss']
+    styleUrls: ['./das.component.scss'],
+    standalone: true,
+    imports: [MatCard, NgIf, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, MatError, MatSelect, NgFor, MatOption, MatButton, TranslatePipe]
 })
 export class DasComponent implements OnInit {
     form: UntypedFormGroup = null;

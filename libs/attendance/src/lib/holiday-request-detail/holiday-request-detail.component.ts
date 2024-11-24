@@ -3,7 +3,7 @@ import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {HolidayRequest} from '@ss/payroll/api-employee';
 import { KeepOnToolbar, ShellService, SnackBarService, ToolbarButton } from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
-import {UntypedFormBuilder, Validators} from '@angular/forms';
+import { UntypedFormBuilder, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {HolidayRequestService} from '../holiday-request.service';
 import {LoginService} from '@ss/common/api-common';
@@ -11,11 +11,33 @@ import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {HolidayTypeService} from '../holiday-type.service';
 import { HOLIDAY_REQUEST, WorkflowDialogComponent } from '@ss/workflow';
 import { MatDialog } from '@angular/material/dialog';
+import { MatCard, MatCardContent } from '@angular/material/card';
+import { NgIf } from '@angular/common';
+import { MatFormField, MatLabel, MatError } from '@angular/material/form-field';
+import { TranslateDirective } from '../../../../common/ui-lang/src/lib/translate.directive';
+import { MatInput } from '@angular/material/input';
+import { UiAutoCompleteComponent } from '../../../../common/ui-auto-complete/src/lib/auto-complete.component';
+import { DatePickerComponent } from '../../../../common/ui-datepicker/src/lib/date-picker.component';
 
 @Component({
     selector: 'ss-holiday-request-dist',
     templateUrl: './holiday-request-detail.component.html',
     styleUrls: ['./holiday-request-detail.component.scss'],
+    standalone: true,
+    imports: [
+        MatCard,
+        MatCardContent,
+        NgIf,
+        FormsModule,
+        ReactiveFormsModule,
+        MatFormField,
+        MatLabel,
+        TranslateDirective,
+        MatInput,
+        UiAutoCompleteComponent,
+        MatError,
+        DatePickerComponent,
+    ],
 })
 export class HolidayRequestDetailComponent extends BaseEntityDetailComponent<HolidayRequest>{
     protected dialog = inject(MatDialog);

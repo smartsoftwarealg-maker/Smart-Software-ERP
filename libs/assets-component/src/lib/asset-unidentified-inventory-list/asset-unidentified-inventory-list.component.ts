@@ -55,8 +55,12 @@ export class AssetUnidentifiedInventoryListComponent extends BaseEntityListCompo
     displayedColumns = [
         'creationDate',
         'buildingDescription',
+        'count',
+        'serialNo',
         'classDescription',
-        'count'
+        'officeDescription',
+        'beneficiaryDescription',
+        'memo'
     ];
 
     constructor(

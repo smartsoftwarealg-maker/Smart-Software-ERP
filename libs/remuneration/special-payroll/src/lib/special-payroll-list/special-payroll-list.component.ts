@@ -7,11 +7,16 @@ import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import {PaginatorPersistenceService} from '@ss/common/api-common';
 import {Special, SpecialPayrollService} from '@ss/remuneration/special-payroll-common';
 import {PayrollMonthService} from '@ss/remuneration/payroll-month';
+import { MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from '@angular/material/table';
+import { TranslateDirective } from '../../../../../common/ui-lang/src/lib/translate.directive';
+import { PaginationComponent } from '../../../../../common/ui-pagination/src/lib/pagination.component';
 
 @Component({
-  selector: 'ss-special-payroll-list',
-  templateUrl: './special-payroll-list.component.html',
-  styleUrls: ['./special-payroll-list.component.scss']
+    selector: 'ss-special-payroll-list',
+    templateUrl: './special-payroll-list.component.html',
+    styleUrls: ['./special-payroll-list.component.scss'],
+    standalone: true,
+    imports: [MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, TranslateDirective, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, PaginationComponent]
 })
 export class SpecialPayrollListComponent extends BaseEntityListComponent<Special> implements OnInit {
     displayedColumns = ['description', 'paymonth'];

@@ -7,11 +7,29 @@ import {PaginatorPersistenceService} from '@ss/common/api-common';
 import {SalesAdsService} from '../sales-ads.service';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {Lookup} from '@ss/common/api-lookup';
+import { MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from '@angular/material/table';
+import { TranslateDirective } from '../../../../../common/ui-lang/src/lib/translate.directive';
+import { PaginationComponent } from '../../../../../common/ui-pagination/src/lib/pagination.component';
 
 @Component({
     selector: 'ss-sales-ads-list',
     templateUrl: './sales-ads-list.component.html',
     styleUrls: ['./sales-ads-list.component.scss'],
+    standalone: true,
+    imports: [
+        MatTable,
+        MatColumnDef,
+        MatHeaderCellDef,
+        MatHeaderCell,
+        TranslateDirective,
+        MatCellDef,
+        MatCell,
+        MatHeaderRowDef,
+        MatHeaderRow,
+        MatRowDef,
+        MatRow,
+        PaginationComponent,
+    ],
 })
 export class SalesAdsListComponent  extends BaseEntityListComponent<Lookup>{
 

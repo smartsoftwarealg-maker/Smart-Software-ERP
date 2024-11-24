@@ -8,11 +8,29 @@ import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {DepartmentService, Department} from '@ss/common/api-lookup';
 import {Observable, of} from 'rxjs';
 import { EmployeeService } from '@ss/employee-services/employee-services';
+import { MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from '@angular/material/table';
+import { TranslateDirective } from '../../../../../common/ui-lang/src/lib/translate.directive';
+import { PaginationComponent } from '../../../../../common/ui-pagination/src/lib/pagination.component';
 
 @Component({
     selector: 'ss-departments-list',
     templateUrl: './departments-list.component.html',
     styleUrls: ['../divisions/divisions-list.component.scss'],
+    standalone: true,
+    imports: [
+        MatTable,
+        MatColumnDef,
+        MatHeaderCellDef,
+        MatHeaderCell,
+        TranslateDirective,
+        MatCellDef,
+        MatCell,
+        MatHeaderRowDef,
+        MatHeaderRow,
+        MatRowDef,
+        MatRow,
+        PaginationComponent,
+    ],
 })
 export class DepartmentsListComponent extends BaseEntityListComponent<Department> {
     displayedColumns = [

@@ -21,9 +21,7 @@ import {GlobalBalanceComponent} from "./ui-global-balance/global-balance.compone
         UiPaginationModule,
         RouterModule,
         ReactiveFormsModule,
-        CommonUiConfirmationDialogModule
-    ],
-    declarations: [
+        CommonUiConfirmationDialogModule,
         ExcDocInfoComponent,
         BalanceComponent,
         CbalanceComponent,

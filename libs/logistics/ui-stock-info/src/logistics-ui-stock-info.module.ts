@@ -16,9 +16,9 @@ import {CommonUiConfirmationDialogModule} from '@ss/common/ui-confirmation-dialo
         UiPaginationModule,
         RouterModule,
         ReactiveFormsModule,
-        CommonUiConfirmationDialogModule
+        CommonUiConfirmationDialogModule,
+        UiStockInfoComponent
     ],
-  declarations: [UiStockInfoComponent],
-  exports: [UiStockInfoComponent]
+    exports: [UiStockInfoComponent]
 })
 export class LogisticsUiStockInfoModule {}

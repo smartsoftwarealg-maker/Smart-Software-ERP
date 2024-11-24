@@ -8,11 +8,16 @@ import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {Patient, PatientService} from '@ss/patients/api-patient';
+import { MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from '@angular/material/table';
+import { TranslateDirective } from '../../../../../common/ui-lang/src/lib/translate.directive';
+import { DatePipe } from '@angular/common';
 
 @Component({
     selector: 'ss-agent-list',
     styleUrls: ['./patients-list.component.scss'],
-    templateUrl: './patients-list.component.html'
+    templateUrl: './patients-list.component.html',
+    standalone: true,
+    imports: [MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, TranslateDirective, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, DatePipe]
 })
 export class PatientsListComponent extends BaseEntityListComponent<Patient> {
 

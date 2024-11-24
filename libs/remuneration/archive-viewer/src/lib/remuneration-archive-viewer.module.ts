@@ -18,8 +18,8 @@ import {ArchiveViewerListComponent} from './archive-viewer-list/archive-viewer-l
         ReactiveFormsModule,
         CommonUiConfirmationDialogModule,
         CommonUiDatepickerModule,
-        CommonUiAutoCompleteModule
+        CommonUiAutoCompleteModule,
+        ArchiveViewerListComponent
     ],
-    declarations: [ArchiveViewerListComponent],
 })
 export class RemunerationArchiveViewerModule {}

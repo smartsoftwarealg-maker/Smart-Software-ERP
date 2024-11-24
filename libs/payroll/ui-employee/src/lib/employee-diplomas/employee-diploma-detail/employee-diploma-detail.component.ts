@@ -2,16 +2,26 @@ import { Component, inject } from '@angular/core';
 import { BaseChildEntityDetailComponent } from '@ss/common/ui-base-entity';
 import {SubjectService} from '@ss/payroll/api-employee';
 import {PersonDiploma} from '../employee-diploma-api';
-import { FormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
+import { FormBuilder, UntypedFormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {DiplomaService, EducationLevelService} from '@ss/common/api-lookup';
 import {EmployeeDiplomaService} from '../employee-diploma.service';
 import {SupplierService} from '@ss/logistics/api-agent';
 import { DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
+import { NgIf } from '@angular/common';
+import { MatMiniFabButton } from '@angular/material/button';
+import { MatCard, MatCardContent } from '@angular/material/card';
+import { MatFormField, MatLabel, MatError } from '@angular/material/form-field';
+import { TranslateDirective } from '../../../../../../common/ui-lang/src/lib/translate.directive';
+import { UiAutoCompleteComponent } from '../../../../../../common/ui-auto-complete/src/lib/auto-complete.component';
+import { DatePickerComponent } from '../../../../../../common/ui-datepicker/src/lib/date-picker.component';
+import { MatInput } from '@angular/material/input';
 
 @Component({
     selector: 'ss-employee-diploma-detail',
     templateUrl: './employee-diploma-detail.component.html',
-    styleUrls: ['./employee-diploma-detail.component.scss']
+    styleUrls: ['./employee-diploma-detail.component.scss'],
+    standalone: true,
+    imports: [NgIf, MatMiniFabButton, MatCard, MatCardContent, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, UiAutoCompleteComponent, MatError, DatePickerComponent, MatInput]
 })
 export class EmployeeDiplomaDetailComponent extends BaseChildEntityDetailComponent<PersonDiploma> {
     private formBuilder = inject(FormBuilder);

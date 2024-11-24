@@ -7,9 +7,18 @@ import { DefaultReportService } from '@ss/common/ui-default-report-component';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { PaginatorPersistenceService } from '@ss/common/api-common';
 import { CMMSAlertService } from '../services/cmms-alert.service';
-import { FormControl } from '@angular/forms';
+import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
 import { of } from 'rxjs';
+import { MatFormField, MatLabel } from '@angular/material/form-field';
+import { TranslateDirective } from '../../../../../common/ui-lang/src/lib/translate.directive';
+import { DatePickerComponent } from '../../../../../common/ui-datepicker/src/lib/date-picker.component';
+import { MatButton } from '@angular/material/button';
+import { MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from '@angular/material/table';
+import { MatSort, MatSortHeader } from '@angular/material/sort';
+import { PaginationComponent } from '../../../../../common/ui-pagination/src/lib/pagination.component';
+import { DatePipe } from '@angular/common';
+import { TranslatePipe } from '../../../../../common/ui-lang/src/lib/translate.pipe';
 
 @Component({
     selector: 'ss-cmms-alert-list',
@@ -17,6 +26,31 @@ import { of } from 'rxjs';
     styleUrls: [
         '../pm-list/pm-list.component.css',
         './cmms-alert-list.component.css'
+    ],
+    standalone: true,
+    imports: [
+        MatFormField,
+        MatLabel,
+        TranslateDirective,
+        DatePickerComponent,
+        FormsModule,
+        ReactiveFormsModule,
+        MatButton,
+        MatTable,
+        MatSort,
+        MatColumnDef,
+        MatHeaderCellDef,
+        MatHeaderCell,
+        MatSortHeader,
+        MatCellDef,
+        MatCell,
+        MatHeaderRowDef,
+        MatHeaderRow,
+        MatRowDef,
+        MatRow,
+        PaginationComponent,
+        DatePipe,
+        TranslatePipe,
     ],
 })
 export class CmmsAlertListComponent extends BaseEntityListComponent<PM> implements OnInit {

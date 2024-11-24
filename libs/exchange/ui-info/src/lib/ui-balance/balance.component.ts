@@ -9,11 +9,17 @@ import {LanguageService} from '@ss/common/api-common';
 import {ArticleLotsService} from '@ss/stock/api-article-store';
 import {switchMap} from 'rxjs/operators';
 import {Balance, CurrencyDepositService} from '@ss/exchange/api-currency-deposit';
+import { MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from '@angular/material/table';
+import { TranslateDirective } from '../../../../../common/ui-lang/src/lib/translate.directive';
+import { PaginationComponent } from '../../../../../common/ui-pagination/src/lib/pagination.component';
+import { DecimalPipe } from '@angular/common';
 
 @Component({
     selector: 'ss-balance',
     styleUrls: ['./balance.component.scss'],
-    templateUrl: './balance.component.html'
+    templateUrl: './balance.component.html',
+    standalone: true,
+    imports: [MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, TranslateDirective, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, PaginationComponent, DecimalPipe]
 })
 export class BalanceComponent implements OnInit {
     agentId = 0;

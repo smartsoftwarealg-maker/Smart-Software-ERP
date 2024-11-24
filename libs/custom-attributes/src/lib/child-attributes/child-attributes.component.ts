@@ -1,5 +1,5 @@
 import { Component, inject, Input, OnDestroy, OnInit } from '@angular/core';
-import {UntypedFormControl} from '@angular/forms';
+import { UntypedFormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {debounceTime, distinctUntilChanged, switchMap} from 'rxjs/operators';
 import {of, Subscription} from 'rxjs';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
@@ -9,13 +9,26 @@ import {AttributesService} from '../attributes.service';
 import {ChildAttributesService} from '../child-attributes.service';
 import {AttributeLookupService} from '../attribute-lookup.service';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import {DatePipe} from '@angular/common';
+import { DatePipe, NgIf, NgFor, NgSwitch, NgSwitchCase } from '@angular/common';
 import {LanguageService} from '@ss/common/api-common';
+import { MatMiniFabButton } from '@angular/material/button';
+import { MatTooltip } from '@angular/material/tooltip';
+import { MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from '@angular/material/table';
+import { TranslateDirective } from '../../../../common/ui-lang/src/lib/translate.directive';
+import { MatFormField, MatLabel } from '@angular/material/form-field';
+import { MatSelect } from '@angular/material/select';
+import { MatOption } from '@angular/material/core';
+import { MatInput } from '@angular/material/input';
+import { UiAutoCompleteComponent } from '../../../../common/ui-auto-complete/src/lib/auto-complete.component';
+import { DatePickerComponent } from '../../../../common/ui-datepicker/src/lib/date-picker.component';
+import { TranslatePipe } from '../../../../common/ui-lang/src/lib/translate.pipe';
 
 @Component({
     selector: 'ss-child-attributes',
     templateUrl: './child-attributes.component.html',
-    styleUrls: ['./child-attributes.component.scss']
+    styleUrls: ['./child-attributes.component.scss'],
+    standalone: true,
+    imports: [NgIf, MatMiniFabButton, MatTooltip, MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, TranslateDirective, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, MatFormField, MatLabel, MatSelect, FormsModule, ReactiveFormsModule, NgFor, MatOption, NgSwitch, NgSwitchCase, MatInput, UiAutoCompleteComponent, DatePickerComponent, TranslatePipe]
 })
 export class ChildAttributesComponent implements OnInit, OnDestroy {
     private attribSrv  = inject(AttributesService);

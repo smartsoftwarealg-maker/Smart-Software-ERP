@@ -10,9 +10,7 @@ import {TranslateDirective} from './translate.directive';
     imports: [
         CommonModule,
         HttpClientModule,
-        MaterialModule
-    ],
-    declarations: [
+        MaterialModule,
         LanguageSelectComponent,
         TranslatePipe,
         TranslateDirective

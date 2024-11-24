@@ -9,10 +9,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { ConfirmationDialogModule } from './common/confirmation-dialog/confirmation-dialog.module';
 import { MAIN_PAGE_URL, LOGIN_URL } from './smart-lib/components/login/login-constants';
 import { ThemeModule } from './smart-lib/components/theme/theme.module';
-import { SmartCommonModule } from './smart-lib/common/smart-common.module';
+
 import { LoadingSpinnerModule } from './smart-lib/components/loading-spinner/loading-spinner.module';
 import { LanguageModule } from './smart-lib/components/language/language.module';
-import { FatalErrorModule } from './smart-lib/components/fatal-error/fatal-error.module';
+
 import { LoginModule } from './smart-lib/components/login/login.module';
 import { CenterSelectModule } from './smart-lib/components/center-select/center-select.module';
 import { CustomErrorHandler } from './smart-lib/components/error-handler/custom-error-handler';
@@ -51,37 +51,36 @@ const routes: Routes = [
     { path: '**', redirectTo: LOGIN_URL, pathMatch: 'full' }, // not found
 ];
 
-@NgModule({
+@NgModule(/* TODO(standalone-migration): clean up removed NgModule class manually. 
+{
     declarations:
         [
             AppComponent
         ],
     imports:
         [
-            // node_modules
-            BrowserModule,
-            BrowserAnimationsModule,
-            MaterialModule,
-            HttpClientModule,
-            ConfirmationDialogModule,
-            // smart-lib
-            ThemeModule,
-            SmartCommonModule,
-            LoadingSpinnerModule,
-            LanguageModule,
-            FatalErrorModule,
-            LoginModule,
-            CenterSelectModule,
-            ErrorHandlerModule,
-            RouterModule.forRoot(routes, { enableTracing: false }),
-        ],
+    // node_modules
+    BrowserModule,
+    BrowserAnimationsModule,
+    MaterialModule,
+    HttpClientModule,
+    ConfirmationDialogModule,
+    // smart-lib
+    ThemeModule,
+    LoadingSpinnerModule,
+    LanguageModule,
+    LoginModule,
+    CenterSelectModule,
+    ErrorHandlerModule,
+    RouterModule.forRoot(routes, { enableTracing: false }),
+],
     providers:
         [
             { provide: ErrorHandler, useClass: CustomErrorHandler },
             DeviceDetectorService
         ],
     bootstrap: [AppComponent]
-})
+} */)
 export class AppModule {
     constructor(private navSrv: NavService,
         private router: Router, private langSrv: LanguageService) {

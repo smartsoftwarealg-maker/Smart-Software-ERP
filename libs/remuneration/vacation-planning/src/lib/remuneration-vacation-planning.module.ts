@@ -15,13 +15,11 @@ import {CommonUiDatepickerModule} from '@ss/common/ui-datepicker';
         MaterialModule,
         UiPaginationModule,
         CommonUiLangModule,
-        CommonUiDatepickerModule
-    ],
-    declarations: [
-      VacationPlanningListComponent,
-      VacationPlanningDetailListComponent,
-      VacationPlanningDetailComponent,
-      VacationPlanningDetailDetailComponent
+        CommonUiDatepickerModule,
+        VacationPlanningListComponent,
+        VacationPlanningDetailListComponent,
+        VacationPlanningDetailComponent,
+        VacationPlanningDetailDetailComponent
     ],
 })
 export class RemunerationVacationPlanningModule {}

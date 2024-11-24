@@ -12,6 +12,23 @@ import { LanguageService, isString } from '@ss/common/api-common';
 import { Agent } from '../../../smart-lib/common/models';
 import { HttpService } from '../../../smart-lib/common/http.service';
 import { deepCopy } from '../../../smart-lib/common/util';
+import { NgIf, NgFor, NgClass } from '@angular/common';
+import { LoadingSpinnerComponent } from '../../../smart-lib/components/loading-spinner/loading-spinner.component';
+import { FatalErrorComponent } from '../../../smart-lib/components/fatal-error/fatal-error.component';
+import { ColorSelectComponent } from '../../../smart-lib/components/color-select/color-select.component';
+import { TranslateDirective } from '../../../../../../../libs/common/ui-lang/src/lib/translate.directive';
+import { DatePickerComponent } from '../../../common/date-picker/date-picker.component';
+import { MatFormField, MatLabel } from '@angular/material/form-field';
+import { MatInput } from '@angular/material/input';
+import { AutoCompleteComponent } from '../../../common/auto-complete/auto-complete.component';
+import { MatSelect } from '@angular/material/select';
+import { MatOption } from '@angular/material/core';
+import { MatButton } from '@angular/material/button';
+import { ReservedRoomComponent } from './reserved-room/reserved-room.component';
+import { AddReservedRoomComponent } from './add-reserved-room/add-reserved-room.component';
+import { MatCheckbox } from '@angular/material/checkbox';
+import { SaveBarComponent } from '../../../common/save-bar/save-bar.component';
+import { TranslatePipe } from '../../../../../../../libs/common/ui-lang/src/lib/translate.pipe';
 
 const foodAppCode = 12;
 const foyerAppCode = 14;
@@ -85,7 +102,9 @@ const colors: any[] = [
 @Component({
     selector: 'app-htl-booking-detail',
     templateUrl: './booking-detail.component.html',
-    styleUrls: ['./booking-detail.component.scss']
+    styleUrls: ['./booking-detail.component.scss'],
+    standalone: true,
+    imports: [NgIf, LoadingSpinnerComponent, FatalErrorComponent, ColorSelectComponent, TranslateDirective, DatePickerComponent, MatFormField, MatLabel, MatInput, AutoCompleteComponent, MatSelect, NgFor, MatOption, MatButton, ReservedRoomComponent, AddReservedRoomComponent, NgClass, MatCheckbox, SaveBarComponent, TranslatePipe]
 })
 export class BookingDetailComponent implements OnInit, OnDestroy {
 

@@ -3,15 +3,50 @@ import {TransactionLineService, TTransactionLine} from '@ss/treasury/api-transac
 import {ActivatedRoute, Router} from '@angular/router';
 import {debounceTime, distinctUntilChanged, switchMap} from 'rxjs/operators';
 import {PaginationModel} from '@ss/common/api-common';
-import {FormControl} from '@angular/forms';
+import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {SnackBarService} from '@ss/common/ui-shell';
 import {Subscription} from 'rxjs';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
+import { NgIf, DecimalPipe, DatePipe } from '@angular/common';
+import { MatFormField, MatLabel } from '@angular/material/form-field';
+import { TranslateDirective } from '../../../../../common/ui-lang/src/lib/translate.directive';
+import { MatInput } from '@angular/material/input';
+import { MatMiniFabButton } from '@angular/material/button';
+import { MatTooltip } from '@angular/material/tooltip';
+import { MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from '@angular/material/table';
+import { PaginationComponent } from '../../../../../common/ui-pagination/src/lib/pagination.component';
+import { TranslatePipe } from '../../../../../common/ui-lang/src/lib/translate.pipe';
 
 @Component({
     selector: 'ss-transaction-line-list',
     templateUrl: './transaction-line-list.component.html',
     styleUrls: ['./transaction-line-list.component.scss'],
+    standalone: true,
+    imports: [
+        NgIf,
+        MatFormField,
+        MatLabel,
+        TranslateDirective,
+        MatInput,
+        FormsModule,
+        ReactiveFormsModule,
+        MatMiniFabButton,
+        MatTooltip,
+        MatTable,
+        MatColumnDef,
+        MatHeaderCellDef,
+        MatHeaderCell,
+        MatCellDef,
+        MatCell,
+        MatHeaderRowDef,
+        MatHeaderRow,
+        MatRowDef,
+        MatRow,
+        PaginationComponent,
+        DecimalPipe,
+        DatePipe,
+        TranslatePipe,
+    ],
 })
 export class TransactionLineListComponent implements OnInit, OnDestroy {
     private subscription: Subscription = null;

@@ -8,11 +8,17 @@ import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import {LookupsService} from '@ss/common/api-lookup';
 import {PaginatorPersistenceService} from '@ss/common/api-common';
 import {AssetAccountService} from '@ss/accounting/accounting-api';
+import { MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from '@angular/material/table';
+import { TranslateDirective } from '../../../../../common/ui-lang/src/lib/translate.directive';
+import { PaginationComponent } from '../../../../../common/ui-pagination/src/lib/pagination.component';
+import { DecimalPipe } from '@angular/common';
 
 @Component({
-  selector: 'ss-asset-accounts-list',
-  templateUrl: './asset-accounts-list.component.html',
-  styleUrls: ['./asset-accounts-list.component.scss']
+    selector: 'ss-asset-accounts-list',
+    templateUrl: './asset-accounts-list.component.html',
+    styleUrls: ['./asset-accounts-list.component.scss'],
+    standalone: true,
+    imports: [MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, TranslateDirective, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, PaginationComponent, DecimalPipe]
 })
 export class AssetAccountsListComponent extends BaseEntityListComponent<Account> {
 

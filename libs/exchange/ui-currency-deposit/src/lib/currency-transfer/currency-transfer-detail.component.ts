@@ -1,7 +1,7 @@
 import { Component, inject } from "@angular/core";
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
-import {UntypedFormBuilder, Validators} from '@angular/forms';
+import { UntypedFormBuilder, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {Currency, CurrencyService, LookupsService} from '@ss/common/api-lookup';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
@@ -14,11 +14,21 @@ import {
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {Agent, AgentLookupModel, AgentService} from '@ss/logistics/api-agent';
 import {LoginService} from '@ss/common/api-common';
+import { MatCard, MatCardContent } from "@angular/material/card";
+import { NgIf } from "@angular/common";
+import { MatFormField, MatLabel, MatError } from "@angular/material/form-field";
+import { TranslateDirective } from "../../../../../common/ui-lang/src/lib/translate.directive";
+import { DatePickerComponent } from "../../../../../common/ui-datepicker/src/lib/date-picker.component";
+import { UiAutoCompleteComponent } from "../../../../../common/ui-auto-complete/src/lib/auto-complete.component";
+import { MatInput } from "@angular/material/input";
+import { ExcDocInfoComponent } from "../../../../ui-info/src/lib/exc-doc-info.component";
 
 @Component({
     selector: 'ss-transfer-detail',
     styleUrls: ['./currency-transfer-detail.component.scss'],
-    templateUrl: './currency-transfer-detail.component.html'
+    templateUrl: './currency-transfer-detail.component.html',
+    standalone: true,
+    imports: [MatCard, MatCardContent, NgIf, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, DatePickerComponent, UiAutoCompleteComponent, MatInput, MatError, ExcDocInfoComponent]
 })
 export class CurrencyTransferDetailComponent extends BaseEntityDetailComponent<Deposit> {
     private agentService = inject(AgentService);

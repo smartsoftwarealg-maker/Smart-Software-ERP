@@ -12,7 +12,7 @@ import { UiPaginationModule } from '@ss/common/ui-pagination';
 import { CommonUiConfirmationDialogModule } from '@ss/common/ui-confirmation-dialog';
 import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
 import { RouterModule } from '@angular/router';
-import { LookupModule } from '@ss/common/api-lookup';
+
 
 @Component({
     selector: 'ss-driver-vehicles-detail',
@@ -26,7 +26,6 @@ import { LookupModule } from '@ss/common/api-lookup';
         CommonUiDatepickerModule,
         RouterModule,
         CommonUiAutoCompleteModule,
-        LookupModule,
         CommonUiDatepickerModule
     ],
     templateUrl: './driver-vehicles-detail.component.html',

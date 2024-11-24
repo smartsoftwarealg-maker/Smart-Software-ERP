@@ -46,7 +46,8 @@ const routes: Routes = [
     {path: '**', redirectTo: LOGIN_URL, pathMatch: 'full'}
 ]
 
-@NgModule({
+@NgModule(/* TODO(standalone-migration): clean up removed NgModule class manually. 
+{
     declarations: [AppComponent],
     imports: [
         BrowserModule,
@@ -65,7 +66,7 @@ const routes: Routes = [
     ],
     providers: [],
     bootstrap: [AppComponent],
-})
+} */)
 export class AppModule {
     constructor(private langSrv: LanguageService) {
         langSrv.addSource('assets/locale/', '');

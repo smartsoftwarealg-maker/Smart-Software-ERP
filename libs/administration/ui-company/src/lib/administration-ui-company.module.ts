@@ -16,9 +16,9 @@ import {CompanyListComponent} from "./company-list.component";
         CommonUiLangModule,
         UiPaginationModule,
         ReactiveFormsModule,
-        CommonUiConfirmationDialogModule
+        CommonUiConfirmationDialogModule,
+        CompanyListComponent, CompanyDetailComponent
     ],
-    declarations: [CompanyListComponent, CompanyDetailComponent],
     exports: []
 })
 export class AdministrationUiCompanyModule {}

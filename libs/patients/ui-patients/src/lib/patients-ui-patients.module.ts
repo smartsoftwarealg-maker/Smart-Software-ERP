@@ -16,16 +16,11 @@ import {CommonUiDatepickerModule} from "@ss/common/ui-datepicker";
         UiPaginationModule,
         ReactiveFormsModule,
         CommonUiDatepickerModule,
-        CommonUiConfirmationDialogModule
-    ],
-    declarations: [
-      PatientsListComponent,
-      PatientsDetailComponent
-    ],
+        CommonUiConfirmationDialogModule, PatientsListComponent,
+        PatientsDetailComponent],
     exports: [
-      PatientsListComponent,
-      PatientsDetailComponent
+        PatientsListComponent,
+        PatientsDetailComponent
     ],
-
 })
 export class PatientsUiPatientsModule {}

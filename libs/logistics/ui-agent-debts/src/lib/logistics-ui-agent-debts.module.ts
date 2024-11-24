@@ -14,9 +14,9 @@ import {AgentDebtsComponent} from "./agent-debts.component";
         CommonUiLangModule,
         UiPaginationModule,
         ReactiveFormsModule,
-        CommonUiConfirmationDialogModule
+        CommonUiConfirmationDialogModule,
+        AgentDebtsComponent
     ],
-    declarations: [AgentDebtsComponent],
     exports: [AgentDebtsComponent]
 })
 export class LogisticsUiAgentDebtsModule {

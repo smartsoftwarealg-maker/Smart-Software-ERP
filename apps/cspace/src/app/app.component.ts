@@ -7,11 +7,22 @@ import {cSpaceNavTree} from "./cspace/side-nav-tree";
 import { homePage, langAssets } from '../environments/environment';
 import { DeviceDetectorService } from 'ngx-device-detector';
 import { initialize } from './admobile';
+import { NgIf } from '@angular/common';
+import { ThemeDirective } from '../../../../libs/common/ui-theme/src/lib/theme.directive';
+import { RouterOutlet } from '@angular/router';
+import { MessageComponent } from '../../../../libs/common/ui-error-handler/src/lib/error-message.component';
 
 @Component({
     selector: 'ss-root',
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss'],
+    standalone: true,
+    imports: [
+        NgIf,
+        ThemeDirective,
+        RouterOutlet,
+        MessageComponent,
+    ],
 })
 export class AppComponent implements OnInit {
     private deviceSrv = inject(DeviceDetectorService);

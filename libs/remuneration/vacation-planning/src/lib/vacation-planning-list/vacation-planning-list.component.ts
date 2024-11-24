@@ -7,13 +7,25 @@ import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import {PaginatorPersistenceService} from '@ss/common/api-common';
 import {VacationPlanningService} from '../vacation-planning.service';
-import {UntypedFormControl} from '@angular/forms';
-import {MatSelectChange} from '@angular/material/select';
+import { UntypedFormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatSelectChange, MatSelect } from '@angular/material/select';
+import { MatFormField, MatLabel } from '@angular/material/form-field';
+import { TranslateDirective } from '../../../../../common/ui-lang/src/lib/translate.directive';
+import { NgFor, DecimalPipe } from '@angular/common';
+import { MatOption } from '@angular/material/core';
+import { MatInput } from '@angular/material/input';
+import { MatButton } from '@angular/material/button';
+import { MatTooltip } from '@angular/material/tooltip';
+import { MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from '@angular/material/table';
+import { PaginationComponent } from '../../../../../common/ui-pagination/src/lib/pagination.component';
+import { TranslatePipe } from '../../../../../common/ui-lang/src/lib/translate.pipe';
 
 @Component({
-  selector: 'ss-vacation-planning-list',
-  templateUrl: './vacation-planning-list.component.html',
-  styleUrls: ['./vacation-planning-list.component.scss']
+    selector: 'ss-vacation-planning-list',
+    templateUrl: './vacation-planning-list.component.html',
+    styleUrls: ['./vacation-planning-list.component.scss'],
+    standalone: true,
+    imports: [MatFormField, MatLabel, TranslateDirective, MatSelect, FormsModule, ReactiveFormsModule, NgFor, MatOption, MatInput, MatButton, MatTooltip, MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, PaginationComponent, DecimalPipe, TranslatePipe]
 })
 export class VacationPlanningListComponent extends BaseEntityListComponent<VacationPlanning> {
     private readonly THIS_YEAR = new Date().getFullYear();

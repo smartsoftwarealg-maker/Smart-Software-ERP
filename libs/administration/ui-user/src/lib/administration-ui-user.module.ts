@@ -19,10 +19,7 @@ import { MatCardModule } from '@angular/material/card';
         CommonUiAutoCompleteModule,
         ReactiveFormsModule,
         CommonUiConfirmationDialogModule,
-        MatCardModule
-    ],
-
-    declarations: [
+        MatCardModule,
         UserListComponent,
         UserDetailComponent
     ]

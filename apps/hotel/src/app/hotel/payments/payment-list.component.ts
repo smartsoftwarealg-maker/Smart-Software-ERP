@@ -12,11 +12,21 @@ import { HttpService } from '../../smart-lib/common/http.service';
 import { LoadingState } from '../../common/util';
 import { PaymentService } from './payment.service';
 import { Payment, paymentsUrl, agentsUrl } from './payment-api';
+import { ListToolbarComponent } from "../../common/list-toolbar/list-toolbar.component";
+import { NgIf, NgClass } from "@angular/common";
+import { LoadingSpinnerComponent } from "../../smart-lib/components/loading-spinner/loading-spinner.component";
+import { FatalErrorComponent } from "../../smart-lib/components/fatal-error/fatal-error.component";
+import { MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from "@angular/material/table";
+import { MatSort, MatSortHeader } from "@angular/material/sort";
+import { TranslateDirective } from "../../../../../../libs/common/ui-lang/src/lib/translate.directive";
+import { PaginationComponent } from "../../common/pagination/pagination.component";
 
 @Component({
     selector: 'ss-app-payment-list',
     styleUrls: ['./payment-list.component.scss'],
-    templateUrl: './payment-list.component.html'
+    templateUrl: './payment-list.component.html',
+    standalone: true,
+    imports: [ListToolbarComponent, NgIf, LoadingSpinnerComponent, FatalErrorComponent, MatTable, MatSort, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatSortHeader, TranslateDirective, MatCellDef, MatCell, NgClass, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, PaginationComponent]
 })
 export class PaymentListComponent extends AbstractEntityList<Payment, BackendDataSource<Payment>> implements OnInit, OnDestroy {
 

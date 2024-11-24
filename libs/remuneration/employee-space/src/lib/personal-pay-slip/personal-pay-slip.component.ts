@@ -1,6 +1,6 @@
 import { Component, inject, OnDestroy, OnInit } from "@angular/core";
 import { ElementsEntryService, PaymentElement } from '@ss/remuneration/elements-entry';
-import { FormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
+import { FormBuilder, UntypedFormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { of, Subscription, switchMap, tap, zip } from 'rxjs';
 import { PayrollMonthService } from '@ss/remuneration/payroll-month';
 import { Special, SpecialPayrollService } from '@ss/remuneration/special-payroll-common';
@@ -8,11 +8,51 @@ import { LanguageService, LoginService } from '@ss/common/api-common';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { ActivatedRoute } from '@angular/router';
+import { NgIf, NgFor, DecimalPipe } from "@angular/common";
+import { MatCard, MatCardContent } from "@angular/material/card";
+import { MatFormField, MatLabel } from "@angular/material/form-field";
+import { TranslateDirective } from "../../../../../common/ui-lang/src/lib/translate.directive";
+import { MatInput } from "@angular/material/input";
+import { MatSelect } from "@angular/material/select";
+import { MatOption } from "@angular/material/core";
+import { MatButton } from "@angular/material/button";
+import { MatProgressBar } from "@angular/material/progress-bar";
+import { MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from "@angular/material/table";
+import { TranslatePipe } from "../../../../../common/ui-lang/src/lib/translate.pipe";
 
 @Component({
     selector: 'ss-personal-pay-slip',
     templateUrl: './personal-pay-slip.component.html',
     styleUrls: ['./personal-pay-slip.component.scss'],
+    standalone: true,
+    imports: [
+        NgIf,
+        MatCard,
+        MatCardContent,
+        FormsModule,
+        ReactiveFormsModule,
+        MatFormField,
+        MatLabel,
+        TranslateDirective,
+        MatInput,
+        MatSelect,
+        NgFor,
+        MatOption,
+        MatButton,
+        MatProgressBar,
+        MatTable,
+        MatColumnDef,
+        MatHeaderCellDef,
+        MatHeaderCell,
+        MatCellDef,
+        MatCell,
+        MatHeaderRowDef,
+        MatHeaderRow,
+        MatRowDef,
+        MatRow,
+        DecimalPipe,
+        TranslatePipe,
+    ],
 })
 export class PersonalPaySlipComponent implements OnInit, OnDestroy {
     private subscription: Subscription[] = [];

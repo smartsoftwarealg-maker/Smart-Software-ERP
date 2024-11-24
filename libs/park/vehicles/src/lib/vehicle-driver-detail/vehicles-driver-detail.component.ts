@@ -10,7 +10,7 @@ import { UiPaginationModule } from '@ss/common/ui-pagination';
 import { CommonUiConfirmationDialogModule } from '@ss/common/ui-confirmation-dialog';
 import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
 import { RouterModule } from '@angular/router';
-import { LookupModule } from '@ss/common/api-lookup';
+
 import { PersonAutocompleteClass } from '@ss/employee-services/employee-services';
 import { VehicleDriver } from '../vehicle-api';
 import { VehicleDriverService } from '../services/vehicle-driver.service';
@@ -28,7 +28,6 @@ import { ParkPersonService } from '../services/park-person.service';
         CommonUiDatepickerModule,
         RouterModule,
         CommonUiAutoCompleteModule,
-        LookupModule,
         CommonUiDatepickerModule
     ],
     templateUrl: './vehicles-driver-detail.component.html',

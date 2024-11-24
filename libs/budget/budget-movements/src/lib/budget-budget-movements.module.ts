@@ -23,13 +23,10 @@ import {BudgetTransferLineDetailComponent} from './budget-transfer-line-detail/b
         CommonUiLangModule,
         UiPaginationModule,
         ReactiveFormsModule,
-
         CommonUiAutoCompleteModule,
         CommonUiConfirmationDialogModule,
         CommonUiDatepickerModule,
         RouterOutlet,
-    ],
-    declarations: [
         BudgetCommitmentListComponent,
         BudgetCommitmentDetailComponent,
         BudgetTransferListComponent,

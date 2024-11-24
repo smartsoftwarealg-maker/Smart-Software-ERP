@@ -26,11 +26,9 @@ import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
         StockUiInventoryExitLinesModule,
         RouterModule,
         CommonUiDatepickerModule,
-        CommonUiAutoCompleteModule
-    ],
-    declarations: [
+        CommonUiAutoCompleteModule,
         InventoryExitListComponent,
-        InventoryExitDetailComponent,
+        InventoryExitDetailComponent
     ],
     exports: [
         InventoryExitListComponent,

@@ -8,11 +8,17 @@ import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import {PaginatorPersistenceService} from '@ss/common/api-common';
 import {PayrollFormulasService} from './payroll-formulas.service';
+import { MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from '@angular/material/table';
+import { MatSort, MatSortHeader } from '@angular/material/sort';
+import { TranslateDirective } from '../../../../common/ui-lang/src/lib/translate.directive';
+import { PaginationComponent } from '../../../../common/ui-pagination/src/lib/pagination.component';
 
 @Component({
-  selector: 'ss-formula-list',
-  templateUrl: './formula-list.component.html',
-  styleUrls: ['./formula-list.component.scss']
+    selector: 'ss-formula-list',
+    templateUrl: './formula-list.component.html',
+    styleUrls: ['./formula-list.component.scss'],
+    standalone: true,
+    imports: [MatTable, MatSort, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatSortHeader, TranslateDirective, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, PaginationComponent]
 })
 export class FormulaListComponent extends BaseEntityListComponent<Formula> {
     displayedColumns = [

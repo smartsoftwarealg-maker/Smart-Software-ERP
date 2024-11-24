@@ -2,14 +2,36 @@ import { Component, inject, OnInit } from "@angular/core";
 import {TransactionLineService, TTransactionLine} from '@ss/treasury/api-transactions';
 import {SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
-import {FormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
+import { FormBuilder, UntypedFormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {switchMap} from 'rxjs/operators';
 import {of} from 'rxjs';
+import { MatMiniFabButton } from "@angular/material/button";
+import { MatCard, MatCardContent } from "@angular/material/card";
+import { NgIf } from "@angular/common";
+import { MatFormField, MatLabel, MatError } from "@angular/material/form-field";
+import { TranslateDirective } from "../../../../../common/ui-lang/src/lib/translate.directive";
+import { MatInput } from "@angular/material/input";
+import { DatePickerComponent } from "../../../../../common/ui-datepicker/src/lib/date-picker.component";
 
 @Component({
     selector: 'ss-transaction-line-detail',
     templateUrl: './transaction-line-detail.component.html',
     styleUrls: ['./transaction-line-detail.component.scss'],
+    standalone: true,
+    imports: [
+        MatMiniFabButton,
+        MatCard,
+        MatCardContent,
+        NgIf,
+        FormsModule,
+        ReactiveFormsModule,
+        MatFormField,
+        MatLabel,
+        TranslateDirective,
+        MatInput,
+        MatError,
+        DatePickerComponent,
+    ],
 })
 export class TransactionLineDetailComponent implements OnInit {
     private fb = inject(FormBuilder);

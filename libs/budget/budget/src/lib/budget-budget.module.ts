@@ -18,11 +18,8 @@ import { BudgetSelectorDlgComponent } from './budget-selector-dlg/budget-selecto
         CommonUiLangModule,
         UiPaginationModule,
         ReactiveFormsModule,
-
         CommonUiAutoCompleteModule,
         CommonUiConfirmationDialogModule,
-    ],
-    declarations: [
         BudgetListComponent,
         BudgetDetailComponent,
         BudgetSelectorDlgComponent,

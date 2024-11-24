@@ -28,12 +28,9 @@ import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
         RouterModule,
         CommonUiDatepickerModule,
         CommonUiAutoCompleteModule,
-
         LogisticsUiDocImportModule,
         LogisticsUiStockInfoModule,
-        DocInfoComponent
-    ],
-    declarations: [
+        DocInfoComponent,
         InvoiceListComponent,
         InvoiceDetailComponent,
         InvoiceLinesDetailComponent,

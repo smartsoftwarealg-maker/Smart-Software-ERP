@@ -1,14 +1,31 @@
 import { Component, inject, Inject, OnInit } from "@angular/core";
-import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogRef, MatDialogActions } from '@angular/material/dialog';
 import {Cartline, Total} from '@ss/sales/shopping-cart';
 import {CheckoutService} from '../checkout.service';
-import {FormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
+import { FormBuilder, UntypedFormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {Router} from '@angular/router';
+import { TranslateDirective } from "../../../../../common/ui-lang/src/lib/translate.directive";
+import { NgIf } from "@angular/common";
+import { MatFormField, MatLabel } from "@angular/material/form-field";
+import { MatInput } from "@angular/material/input";
+import { MatButton } from "@angular/material/button";
 
 @Component({
     selector: 'ss-checkout',
     templateUrl: './checkout.component.html',
     styleUrls: ['./checkout.component.scss'],
+    standalone: true,
+    imports: [
+        TranslateDirective,
+        NgIf,
+        FormsModule,
+        ReactiveFormsModule,
+        MatFormField,
+        MatLabel,
+        MatInput,
+        MatDialogActions,
+        MatButton,
+    ],
 })
 export class CheckoutComponent implements OnInit {
     private fb = inject(FormBuilder);

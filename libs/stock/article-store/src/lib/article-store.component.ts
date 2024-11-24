@@ -6,8 +6,18 @@ import {Article} from '@ss/master-data/api-article';
 import {PaginationModel} from '@ss/common/api-common';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {LotsService, Store} from '@ss/common/api-lookup';
-import {FormControl, FormGroup} from '@angular/forms';
+import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ArticleStore, ArticleStoresService } from '@ss/stock/api-article-store';
+import { MatCard } from '@angular/material/card';
+import { MatFormField, MatLabel, MatError } from '@angular/material/form-field';
+import { TranslateDirective } from '../../../../common/ui-lang/src/lib/translate.directive';
+import { UiAutoCompleteComponent } from '../../../../common/ui-auto-complete/src/lib/auto-complete.component';
+import { NgIf } from '@angular/common';
+import { MatMiniFabButton } from '@angular/material/button';
+import { MatTooltip } from '@angular/material/tooltip';
+import { MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from '@angular/material/table';
+import { PaginationComponent } from '../../../../common/ui-pagination/src/lib/pagination.component';
+import { TranslatePipe } from '../../../../common/ui-lang/src/lib/translate.pipe';
 
 interface StoreForm {
     id: FormControl<number>;
@@ -26,7 +36,9 @@ interface StoreForm {
 @Component({
     selector: 'ss-article-store',
     styleUrls: ['./article-store.component.scss'],
-    templateUrl: './article-store.component.html'
+    templateUrl: './article-store.component.html',
+    standalone: true,
+    imports: [MatCard, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, UiAutoCompleteComponent, NgIf, MatError, MatMiniFabButton, MatTooltip, MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, PaginationComponent, TranslatePipe]
 })
 export class ArticleStoreComponent implements OnInit {
     private lotsService = inject(LotsService);

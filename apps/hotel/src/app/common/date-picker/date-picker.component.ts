@@ -2,6 +2,10 @@ import { Component, ElementRef, EventEmitter, forwardRef, Input, Output, ViewChi
 import { AbstractControl, ControlValueAccessor, NG_VALIDATORS, NG_VALUE_ACCESSOR, ValidationErrors, Validator } from '@angular/forms';
 import { dateTimeToStr, dateToStr, strToDate, strToDateTime } from '../util';
 import { isString } from '@ss/common/api-common';
+import { NgClass, NgIf } from '@angular/common';
+import { MatFormField, MatLabel, MatSuffix } from '@angular/material/form-field';
+import { MatInput } from '@angular/material/input';
+import { MatDatepickerInput, MatDatepickerToggle, MatDatepicker } from '@angular/material/datepicker';
 
 @Component({
     selector: 'app-date-picker',
@@ -18,7 +22,9 @@ import { isString } from '@ss/common/api-common';
             useExisting: forwardRef(() => DatePickerComponent),
             multi: true,
         }
-    ]
+    ],
+    standalone: true,
+    imports: [NgClass, MatFormField, MatLabel, NgIf, MatInput, MatDatepickerInput, MatDatepickerToggle, MatSuffix, MatDatepicker]
 })
 export class DatePickerComponent implements ControlValueAccessor, Validator {
 

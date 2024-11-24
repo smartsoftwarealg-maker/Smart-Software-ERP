@@ -1,5 +1,5 @@
 import { Component, inject, OnInit } from "@angular/core";
-import {FormControl} from '@angular/forms';
+import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {Observable} from 'rxjs';
 import {
@@ -14,11 +14,46 @@ import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {PaginatorPersistenceService} from '@ss/common/api-common';
 import {Journal, JournalService, UserJournalsService} from '@ss/treasury/api-journal';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
+import { MatCard } from "@angular/material/card";
+import { MatDatepickerModule } from "@muaazh/angular-datepicker";
+import { MatHint, MatFormField, MatLabel } from "@angular/material/form-field";
+import { TranslateDirective } from "../../../../../common/ui-lang/src/lib/translate.directive";
+import { UiAutoCompleteComponent } from "../../../../../common/ui-auto-complete/src/lib/auto-complete.component";
+import { MatIconButton } from "@angular/material/button";
+import { MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from "@angular/material/table";
+import { PaginationComponent } from "../../../../../common/ui-pagination/src/lib/pagination.component";
+import { AsyncPipe, DecimalPipe } from "@angular/common";
 
 @Component({
     selector: 'ss-bank-expense-list',
     templateUrl: './bank-expense-list.component.html',
     styleUrls: ['../transaction-list/transaction-list.component.scss'],
+    standalone: true,
+    imports: [
+        MatCard,
+        MatDatepickerModule,
+        MatHint,
+        MatFormField,
+        MatLabel,
+        TranslateDirective,
+        UiAutoCompleteComponent,
+        FormsModule,
+        ReactiveFormsModule,
+        MatIconButton,
+        MatTable,
+        MatColumnDef,
+        MatHeaderCellDef,
+        MatHeaderCell,
+        MatCellDef,
+        MatCell,
+        MatHeaderRowDef,
+        MatHeaderRow,
+        MatRowDef,
+        MatRow,
+        PaginationComponent,
+        AsyncPipe,
+        DecimalPipe,
+    ],
 })
 export class BankExpenseListComponent extends BaseEntityListComponent<TTransaction> implements OnInit {
     private journalSrv = inject(UserJournalsService);

@@ -3,15 +3,23 @@ import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {ElementsInfo} from './elements-info-api';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
-import {UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {LookupsService} from '@ss/common/api-lookup';
 import {ElementsInfoService} from './elements-info.service';
+import { MatCard, MatCardContent } from '@angular/material/card';
+import { MatFormField, MatLabel, MatError } from '@angular/material/form-field';
+import { TranslateDirective } from '../../../../common/ui-lang/src/lib/translate.directive';
+import { MatInput } from '@angular/material/input';
+import { NgIf } from '@angular/common';
+import { MatCheckbox } from '@angular/material/checkbox';
 
 @Component({
-  selector: 'ss-elements-info-detail',
-  templateUrl: './elements-info-detail.component.html',
-  styleUrls: ['./elements-info-detail.component.scss']
+    selector: 'ss-elements-info-detail',
+    templateUrl: './elements-info-detail.component.html',
+    styleUrls: ['./elements-info-detail.component.scss'],
+    standalone: true,
+    imports: [MatCard, MatCardContent, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, NgIf, MatError, MatCheckbox]
 })
 export class ElementsInfoDetailComponent extends BaseEntityDetailComponent<ElementsInfo> {
 

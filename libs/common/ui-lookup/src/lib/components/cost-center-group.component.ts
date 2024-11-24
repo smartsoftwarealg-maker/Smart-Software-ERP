@@ -13,7 +13,7 @@ import { UiPaginationModule } from '@ss/common/ui-pagination';
 import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
 
 @Component({
-    selector: 'ss-mark-list',
+    selector: 'ss-cc-group-list',
     templateUrl: '../base-templates/list-template.html',
     standalone: true,
     imports: [
@@ -46,7 +46,7 @@ export class CostCenterGroupListComponent extends BaseEntityListComponent<Lookup
 }
 
 @Component({
-    selector: 'ss-mark-detail',
+    selector: 'ss-cc-group-detail',
     templateUrl: '../base-templates/detail-template.html',
     standalone: true,
     imports: [

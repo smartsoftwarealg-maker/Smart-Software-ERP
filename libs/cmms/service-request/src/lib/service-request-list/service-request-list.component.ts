@@ -10,11 +10,36 @@ import { CMMSServiceRequestService } from '../c-m-m-s-service-request.service';
 import { CMMSWorkOrderService } from '@ss/cmms/work-order';
 import { DOC_WORK_ORDER } from '@ss/logistics/api-transaction';
 import { of, switchMap } from 'rxjs';
+import { MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from '@angular/material/table';
+import { MatSort, MatSortHeader } from '@angular/material/sort';
+import { TranslateDirective } from '../../../../../common/ui-lang/src/lib/translate.directive';
+import { PaginationComponent } from '../../../../../common/ui-pagination/src/lib/pagination.component';
+import { DatePipe } from '@angular/common';
+import { TranslatePipe } from '../../../../../common/ui-lang/src/lib/translate.pipe';
 
 @Component({
     selector: 'ss-service-request-list',
     templateUrl: './service-request-list.component.html',
     styleUrls: ['./service-request-list.component.css'],
+    standalone: true,
+    imports: [
+        MatTable,
+        MatSort,
+        MatColumnDef,
+        MatHeaderCellDef,
+        MatHeaderCell,
+        MatSortHeader,
+        TranslateDirective,
+        MatCellDef,
+        MatCell,
+        MatHeaderRowDef,
+        MatHeaderRow,
+        MatRowDef,
+        MatRow,
+        PaginationComponent,
+        DatePipe,
+        TranslatePipe,
+    ],
 })
 export class ServiceRequestListComponent extends BaseEntityListComponent<Work> implements OnInit {
     private workOrderSrv = inject(CMMSWorkOrderService);

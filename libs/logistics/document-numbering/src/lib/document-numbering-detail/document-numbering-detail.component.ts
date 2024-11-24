@@ -3,17 +3,25 @@ import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {LDocument} from '../document-api';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
-import {UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {DocumentNumberingService} from '../document-numbering.service';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {DefinitionLookupService} from '../definition-lookup.service';
 import {LoginService} from '@ss/common/api-common';
+import { MatCard, MatCardContent } from '@angular/material/card';
+import { NgIf } from '@angular/common';
+import { MatFormField, MatLabel, MatError } from '@angular/material/form-field';
+import { TranslateDirective } from '../../../../../common/ui-lang/src/lib/translate.directive';
+import { UiAutoCompleteComponent } from '../../../../../common/ui-auto-complete/src/lib/auto-complete.component';
+import { MatInput } from '@angular/material/input';
 
 @Component({
     selector: 'ss-document-numbering-detail',
     templateUrl: './document-numbering-detail.component.html',
-    styleUrls: ['./document-numbering-detail.component.scss']
+    styleUrls: ['./document-numbering-detail.component.scss'],
+    standalone: true,
+    imports: [MatCard, MatCardContent, NgIf, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, UiAutoCompleteComponent, MatInput, MatError]
 })
 export class DocumentNumberingDetailComponent extends BaseEntityDetailComponent<LDocument> implements OnInit {
     private definitionSrv = inject(DefinitionLookupService);

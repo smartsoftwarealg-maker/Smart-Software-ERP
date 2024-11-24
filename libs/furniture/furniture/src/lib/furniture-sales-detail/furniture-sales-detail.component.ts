@@ -3,18 +3,41 @@ import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {FurnitureTransaction} from '../furniture-api';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
-import {ActivatedRoute, Router, RouterEvent} from '@angular/router';
-import {UntypedFormBuilder, Validators} from '@angular/forms';
+import { ActivatedRoute, Router, RouterEvent, RouterOutlet } from '@angular/router';
+import { UntypedFormBuilder, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {SupplierService} from '@ss/logistics/api-agent';
 import {LoginService} from '@ss/common/api-common';
 import {filter} from 'rxjs';
 import {FurnitureSalesService} from '../furniture-sales.service';
+import { MatCard, MatCardContent } from '@angular/material/card';
+import { NgIf } from '@angular/common';
+import { MatFormField, MatLabel, MatError } from '@angular/material/form-field';
+import { TranslateDirective } from '../../../../../common/ui-lang/src/lib/translate.directive';
+import { MatInput } from '@angular/material/input';
+import { DatePickerComponent } from '../../../../../common/ui-datepicker/src/lib/date-picker.component';
+import { UiAutoCompleteComponent } from '../../../../../common/ui-auto-complete/src/lib/auto-complete.component';
 
 @Component({
     selector: 'ss-furniture-sales-detail',
     templateUrl: './furniture-sales-detail.component.html',
     styleUrls: ['./furniture-sales-detail.component.scss'],
+    standalone: true,
+    imports: [
+        MatCard,
+        MatCardContent,
+        NgIf,
+        FormsModule,
+        ReactiveFormsModule,
+        MatFormField,
+        MatLabel,
+        TranslateDirective,
+        MatInput,
+        MatError,
+        DatePickerComponent,
+        UiAutoCompleteComponent,
+        RouterOutlet,
+    ],
 })
 export class FurnitureSalesDetailComponent extends BaseEntityDetailComponent<FurnitureTransaction> implements OnInit {
     private router  = inject(Router);

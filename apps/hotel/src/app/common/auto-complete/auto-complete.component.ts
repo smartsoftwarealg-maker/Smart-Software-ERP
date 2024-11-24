@@ -1,17 +1,14 @@
 import {Component, forwardRef, Input, OnDestroy, OnInit} from '@angular/core';
 import {LoadingState} from '../util';
-import {
-    AbstractControl,
-    ControlValueAccessor,
-    UntypedFormControl,
-    NG_VALIDATORS,
-    NG_VALUE_ACCESSOR,
-    ValidationErrors,
-    Validator
-} from '@angular/forms';
+import { AbstractControl, ControlValueAccessor, UntypedFormControl, NG_VALIDATORS, NG_VALUE_ACCESSOR, ValidationErrors, Validator, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {AutoCompleteModel} from './auto-complete-model';
 import {debounceTime, distinctUntilChanged} from 'rxjs/operators';
 import {Subscription} from 'rxjs';
+import { MatFormField, MatLabel } from '@angular/material/form-field';
+import { NgIf, NgFor } from '@angular/common';
+import { MatInput } from '@angular/material/input';
+import { MatAutocompleteTrigger, MatAutocomplete } from '@angular/material/autocomplete';
+import { MatOption } from '@angular/material/core';
 
 @Component({
     selector: 'app-auto-complete',
@@ -28,7 +25,9 @@ import {Subscription} from 'rxjs';
             useExisting: forwardRef(() => AutoCompleteComponent),
             multi: true,
         }
-    ]
+    ],
+    standalone: true,
+    imports: [MatFormField, MatLabel, NgIf, MatInput, FormsModule, MatAutocompleteTrigger, ReactiveFormsModule, MatAutocomplete, NgFor, MatOption]
 })
 export class AutoCompleteComponent implements OnInit, OnDestroy, Validator, ControlValueAccessor {
 

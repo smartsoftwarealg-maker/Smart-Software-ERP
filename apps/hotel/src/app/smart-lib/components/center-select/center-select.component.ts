@@ -6,13 +6,22 @@ import { UserService } from '../login/user.service';
 import {switchMap, tap} from 'rxjs/operators';
 import { MAIN_PAGE_URL, PROFILE_PAGE_URL } from '../login/login-constants';
 import { Center, Company } from '../../common/models';
-import { MatStepper } from '@angular/material/stepper';
+import { MatStepper, MatStepperIcon, MatStep, MatStepLabel } from '@angular/material/stepper';
 import {ShellService} from '@ss/common/ui-shell';
+import { NgIf, NgClass, NgFor } from '@angular/common';
+import { LoadingSpinnerComponent } from '../loading-spinner/loading-spinner.component';
+import { TranslateDirective } from '../../../../../../../libs/common/ui-lang/src/lib/translate.directive';
+import { MatFormField } from '@angular/material/form-field';
+import { MatSelect } from '@angular/material/select';
+import { MatOption } from '@angular/material/core';
+import { MatButton } from '@angular/material/button';
 
 @Component({
     selector: 'ss-company-center-login',
     templateUrl: './center-select.component.html',
-    styleUrls: ['./center-select.component.scss']
+    styleUrls: ['./center-select.component.scss'],
+    standalone: true,
+    imports: [NgIf, LoadingSpinnerComponent, MatStepper, NgClass, MatStepperIcon, MatStep, MatStepLabel, TranslateDirective, MatFormField, MatSelect, NgFor, MatOption, MatButton]
 })
 export class CenterSelectComponent implements OnInit {
 

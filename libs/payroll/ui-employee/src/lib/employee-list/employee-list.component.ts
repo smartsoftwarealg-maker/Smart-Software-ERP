@@ -10,12 +10,21 @@ import { ImageModel } from '@ss/common/ui-image-input';
 import { HttpService, LanguageService, PaginatorPersistenceService } from '@ss/common/api-common';
 import { DefaultReportService } from '@ss/common/ui-default-report-component';
 import { Employee } from '@ss/employee-services/employee-services';
+import { MatTabGroup, MatTab, MatTabLabel } from '@angular/material/tabs';
+import { TranslateDirective } from '../../../../../common/ui-lang/src/lib/translate.directive';
+import { NgFor, NgIf } from '@angular/common';
+import { ImageInputComponent } from '../../../../../common/ui-image-input/src/lib/image-input.component';
+import { MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from '@angular/material/table';
+import { MatSort, MatSortHeader } from '@angular/material/sort';
+import { PaginationComponent } from '../../../../../common/ui-pagination/src/lib/pagination.component';
 
 
 @Component({
     selector: 'ss-employee-list',
     styleUrls: ['./employee-list.component.scss'],
-    templateUrl: './employee-list.component.html'
+    templateUrl: './employee-list.component.html',
+    standalone: true,
+    imports: [MatTabGroup, MatTab, MatTabLabel, TranslateDirective, NgFor, ImageInputComponent, NgIf, MatTable, MatSort, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatSortHeader, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, PaginationComponent]
 })
 export class EmployeeListComponent extends BaseEntityListComponent<Employee> implements OnInit {
     activePersonnel = true;

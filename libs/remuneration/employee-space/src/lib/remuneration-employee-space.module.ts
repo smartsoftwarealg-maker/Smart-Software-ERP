@@ -13,7 +13,6 @@ import { MaterialModule } from '@ss/common/api-common';
 import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
-    imports: [CommonModule, CommonUiLangModule, MatButtonModule, MatCardModule, MatFormFieldModule, MatInputModule, MatOptionModule, MatProgressBarModule, MatSelectModule, MaterialModule, ReactiveFormsModule],
-    declarations: [PersonalPaySlipComponent],
+    imports: [CommonModule, CommonUiLangModule, MatButtonModule, MatCardModule, MatFormFieldModule, MatInputModule, MatOptionModule, MatProgressBarModule, MatSelectModule, MaterialModule, ReactiveFormsModule, PersonalPaySlipComponent],
 })
 export class RemunerationEmployeeSpaceModule {}

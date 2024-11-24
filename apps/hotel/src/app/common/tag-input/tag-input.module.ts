@@ -9,9 +9,7 @@ import { MaterialModule } from '../../smart-lib/components/material.module';
     imports: [
         CommonModule,
         MaterialModule,
-        ReactiveFormsModule
-    ],
-    declarations: [
+        ReactiveFormsModule,
         TagInputComponent
     ],
     exports: [

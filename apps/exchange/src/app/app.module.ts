@@ -42,7 +42,8 @@ const routes: Routes = [
     { path: '**', redirectTo: LOGIN_URL, pathMatch: 'full' }
 ];
 
-@NgModule({
+@NgModule(/* TODO(standalone-migration): clean up removed NgModule class manually. 
+{
     declarations: [
         AppComponent
     ],
@@ -62,7 +63,7 @@ const routes: Routes = [
         UiCenterSelectModule
     ],
     bootstrap: [AppComponent],
-})
+} */)
 export class AppModule {
 
     constructor(private langSrv: LanguageService) {

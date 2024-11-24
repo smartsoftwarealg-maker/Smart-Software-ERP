@@ -20,13 +20,9 @@ import {CurrencyDetailComponent} from './currency-detail.component';
         CommonUiConfirmationDialogModule,
         CommonUiDatepickerModule,
         CommonUiAutoCompleteModule,
-    ],
-
-    declarations: [
         CurrencyListComponent,
-        CurrencyDetailComponent
+        CurrencyDetailComponent,
     ],
-
     exports: [
         CurrencyListComponent,
         CurrencyDetailComponent

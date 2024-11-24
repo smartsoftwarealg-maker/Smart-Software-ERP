@@ -15,20 +15,16 @@ import { PaymonthPipe } from './paymonth.pipe';
         CommonModule,
         MaterialModule,
         CommonUiLangModule,
-
         UiPaginationModule,
         CommonUiConfirmationDialogModule,
         CommonUiDatepickerModule,
         CommonUiAutoCompleteModule,
-        RouterModule
+        RouterModule,
+        PaymonthPipe
     ],
     exports: [
         PaymonthPipe
-    ],
-    declarations: [
-
-    PaymonthPipe
-  ]
+    ]
 })
 export class CommonPayrollModule {
 }

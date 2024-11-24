@@ -3,12 +3,30 @@ import { BookingService } from '../booking.service';
 import { dateToStr, LoadingState, strToDateTime } from '../../../common/util';
 import { Booking, Room } from '../../hotel-api';
 import { debounceTime, distinctUntilChanged, switchMap, tap, map } from 'rxjs/operators';
-import { PaginationModel } from '../../../common/pagination/pagination.component';
+import { PaginationModel, PaginationComponent } from '../../../common/pagination/pagination.component';
 import { Observable, Subscription } from 'rxjs';
 import { NotificationsComponent } from './notifications/notifications.component';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AgentACModel } from '../booking-api';
 import { HttpService } from '../../../smart-lib/common/http.service';
+import { AutoCompleteComponent } from '../../../common/auto-complete/auto-complete.component';
+import { TranslateDirective } from '../../../../../../../libs/common/ui-lang/src/lib/translate.directive';
+import { MatIconButton } from '@angular/material/button';
+import { MatTooltip } from '@angular/material/tooltip';
+import { DatePickerComponent } from '../../../common/date-picker/date-picker.component';
+import { MatFormField, MatLabel } from '@angular/material/form-field';
+import { MatSelect } from '@angular/material/select';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatOption } from '@angular/material/core';
+import { NgFor, NgIf } from '@angular/common';
+import { MatInput } from '@angular/material/input';
+import { RoomOptionsFilterComponent } from './room-options-filter/room-options-filter.component';
+import { StatisticsComponent } from './statistics/statistics.component';
+import { LoadingSpinnerComponent } from '../../../smart-lib/components/loading-spinner/loading-spinner.component';
+import { FatalErrorComponent } from '../../../smart-lib/components/fatal-error/fatal-error.component';
+import { BookingThComponent } from './table/header.component';
+import { TimelineComponent } from './table/timeline.component';
+import { TranslatePipe } from '../../../../../../../libs/common/ui-lang/src/lib/translate.pipe';
 
 interface RoomWB extends Room {
     bookings: Booking[];
@@ -19,7 +37,9 @@ const fullBookingUrl = '/hotels/fullBooking';
 @Component({
     selector: 'app-booking',
     templateUrl: './booking-view.component.html',
-    styleUrls: ['./booking-view.component.scss']
+    styleUrls: ['./booking-view.component.scss'],
+    standalone: true,
+    imports: [AutoCompleteComponent, TranslateDirective, MatIconButton, MatTooltip, DatePickerComponent, MatFormField, MatLabel, MatSelect, FormsModule, MatOption, NgFor, MatInput, ReactiveFormsModule, RoomOptionsFilterComponent, NotificationsComponent, StatisticsComponent, NgIf, LoadingSpinnerComponent, FatalErrorComponent, BookingThComponent, TimelineComponent, PaginationComponent, TranslatePipe]
 })
 export class BookingViewComponent implements OnInit, OnDestroy, AfterViewInit {
 

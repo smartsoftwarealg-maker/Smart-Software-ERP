@@ -4,8 +4,7 @@ import { LogoutComponent } from './logout.component';
 import { MaterialModule } from '@ss/common/api-common';
 
 @NgModule({
-    imports: [CommonModule, MaterialModule],
-    declarations: [LogoutComponent],
+    imports: [CommonModule, MaterialModule, LogoutComponent],
     exports: [LogoutComponent]
 })
 export class UiLogoutModule { }

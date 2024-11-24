@@ -1,10 +1,13 @@
 import { Component, Input } from '@angular/core';
 import { compareDate } from '../../../../common/util';
+import { NgFor, DatePipe } from '@angular/common';
 
 @Component({
     selector: 'app-booking-timeline-header',
     templateUrl: './header.component.html',
-    styleUrls: ['./header.component.scss']
+    styleUrls: ['./header.component.scss'],
+    standalone: true,
+    imports: [NgFor, DatePipe]
 })
 export class BookingThComponent {
     //

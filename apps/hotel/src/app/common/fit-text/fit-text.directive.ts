@@ -15,6 +15,7 @@ import {
  */
 @Directive({
     selector: '[appFitText]',
+    standalone: true,
 })
 export class FitTextDirective implements AfterViewInit, OnInit, OnChanges {
 

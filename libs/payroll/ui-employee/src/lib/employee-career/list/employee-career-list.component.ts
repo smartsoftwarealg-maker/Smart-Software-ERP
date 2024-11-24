@@ -1,11 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 import {Career, EmployeeCareerService} from '@ss/payroll/api-employee';
 import { BaseChildEntityListComponent } from '@ss/common/ui-base-entity';
+import { MatMiniFabButton } from '@angular/material/button';
+import { MatTooltip } from '@angular/material/tooltip';
+import { NgIf, AsyncPipe } from '@angular/common';
+import { MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from '@angular/material/table';
+import { TranslateDirective } from '../../../../../../common/ui-lang/src/lib/translate.directive';
+import { PaginationComponent } from '../../../../../../common/ui-pagination/src/lib/pagination.component';
+import { TranslatePipe } from '../../../../../../common/ui-lang/src/lib/translate.pipe';
 
 @Component({
     selector: 'ss-employee-career',
     templateUrl: './employee-career-list.component.html',
-    styleUrls: ['./employee-career-list.component.scss']
+    styleUrls: ['./employee-career-list.component.scss'],
+    standalone: true,
+    imports: [MatMiniFabButton, MatTooltip, NgIf, MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, TranslateDirective, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, PaginationComponent, AsyncPipe, TranslatePipe]
 })
 export class EmployeeCareerListComponent extends BaseChildEntityListComponent<Career> implements OnInit {
 

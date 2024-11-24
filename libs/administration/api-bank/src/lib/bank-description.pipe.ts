@@ -3,7 +3,10 @@ import { map, catchError } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { BankService } from './bank.service';
 
-@Pipe({ name: 'bankDescription' })
+@Pipe({
+    name: 'bankDescription',
+    standalone: true
+})
 export class BankDescriptionPipe implements PipeTransform {
 
     constructor(private agentSrv: BankService) { }

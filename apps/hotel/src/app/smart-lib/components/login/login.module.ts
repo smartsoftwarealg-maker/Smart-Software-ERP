@@ -7,7 +7,7 @@ import { LanguageModule } from '../language/language.module';
 import { CanActivateService } from './can-activte.service';
 import { MaterialModule } from '../material.module';
 import { ThemeModule } from '../theme/theme.module';
-import { SmartCommonModule } from '../../common/smart-common.module';
+
 import { RouterModule, Routes } from '@angular/router';
 import { LOGIN_URL } from './login-constants';
 import { DecService } from './dec.service';
@@ -21,34 +21,27 @@ const routes: Routes = [
 ];
 
 @NgModule({
-    imports:
-        [
-            CommonModule,
-            FormsModule,
-            MaterialModule,
-            HttpClientModule,
-            ThemeModule,
-            LanguageModule,
-            SmartCommonModule,
-            RouterModule.forChild(routes),
-            LoadingSpinnerModule
-        ],
-    declarations:
-        [
-            LoginComponent,
-            LogoutComponent
-        ],
-    exports:
-        [
-            LoginComponent,
-            LogoutComponent
-        ],
-    providers:
-        [
-            LoginService,
-            CanActivateService,
-            DecService
-        ]
+    imports: [
+    CommonModule,
+    FormsModule,
+    MaterialModule,
+    HttpClientModule,
+    ThemeModule,
+    LanguageModule,
+    RouterModule.forChild(routes),
+    LoadingSpinnerModule,
+    LoginComponent,
+    LogoutComponent
+],
+    exports: [
+        LoginComponent,
+        LogoutComponent
+    ],
+    providers: [
+        LoginService,
+        CanActivateService,
+        DecService
+    ]
 })
 
 export class LoginModule {

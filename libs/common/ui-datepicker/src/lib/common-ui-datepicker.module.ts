@@ -9,9 +9,7 @@ import {MaterialModule} from "@ss/common/api-common";
         CommonModule,
         MaterialModule,
         FormsModule,
-        ReactiveFormsModule
-    ],
-    declarations: [
+        ReactiveFormsModule,
         DatePickerComponent
     ],
     exports: [

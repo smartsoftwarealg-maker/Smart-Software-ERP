@@ -101,7 +101,7 @@ export const furnitureRoutes: Routes = [
                     { path: '', component: FurnitureReceptionLineListComponent, pathMatch: 'full'},
                     { path: 'detail',
                         children: [
-                            { path: ':id', component: FurnitureReceptionLineDetailComponent }
+                            { path: ':id', component: FurnitureReceptionLineDetailComponent, canDeactivate: [CanDeactivateService] }
                         ]
                     }
                 ]
@@ -126,7 +126,7 @@ export const furnitureRoutes: Routes = [
                     { path: '', component: FurnitureReceptionLineListComponent, pathMatch: 'full'},
                     { path: 'detail',
                         children: [
-                            { path: ':id', component: FurnitureReceptionLineDetailComponent }
+                            { path: ':id', component: FurnitureReceptionLineDetailComponent, canDeactivate: [CanDeactivateService] }
                         ]
                     }
                 ]
@@ -151,7 +151,7 @@ export const furnitureRoutes: Routes = [
                     { path: '', component: FurnitureReceptionLineListComponent, pathMatch: 'full'},
                     { path: 'detail',
                         children: [
-                            { path: ':id', component: FurnitureReceptionLineDetailComponent }
+                            { path: ':id', component: FurnitureReceptionLineDetailComponent, canDeactivate: [CanDeactivateService] }
                         ]
                     }
                 ]

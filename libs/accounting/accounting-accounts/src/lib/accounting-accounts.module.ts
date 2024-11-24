@@ -24,18 +24,16 @@ import { CashFlowAccountListComponent } from './cash-flow-account-list/cash-flow
         UiPaginationModule,
         ReactiveFormsModule,
         CommonUiAutoCompleteModule,
-        CommonUiConfirmationDialogModule
-    ],
-    declarations: [
-      AssetAccountsListComponent,
-      AssetAccountsDetailComponent,
-      TransacAccountsDetailComponent,
-      TransacAccountsListComponent,
-      GenerationAccountsListComponent,
-      GenerationAccountsDetailComponent,
-      CashFlowDetailComponent,
-      CashFlowListComponent,
-      CashFlowAccountListComponent
+        CommonUiConfirmationDialogModule,
+        AssetAccountsListComponent,
+        AssetAccountsDetailComponent,
+        TransacAccountsDetailComponent,
+        TransacAccountsListComponent,
+        GenerationAccountsListComponent,
+        GenerationAccountsDetailComponent,
+        CashFlowDetailComponent,
+        CashFlowListComponent,
+        CashFlowAccountListComponent
     ],
 })
 export class AccountingAccountsModule {}

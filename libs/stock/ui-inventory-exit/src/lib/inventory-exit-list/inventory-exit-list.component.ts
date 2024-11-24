@@ -8,11 +8,19 @@ import { Transaction } from '@ss/logistics/api-transaction';
 import { InventoryService } from '@ss/stock/api-inventory';
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { InventoryExitService } from "@ss/stock/api-inventory-exit";
+import { MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from '@angular/material/table';
+import { MatSort, MatSortHeader } from '@angular/material/sort';
+import { TranslateDirective } from '../../../../../common/ui-lang/src/lib/translate.directive';
+import { PaginationComponent } from '../../../../../common/ui-pagination/src/lib/pagination.component';
+import { DocInfoComponent } from '../../../../../logistics/ui-doc-info/src/lib/doc-info/doc-info.component';
+import { DatePipe } from '@angular/common';
 
 @Component({
     selector: 'ss-inventory-exit-list',
     styleUrls: ['../../../../../common/assets/src/assets/transac-list.scss'],
-    templateUrl: './inventory-exit-list.component.html'
+    templateUrl: './inventory-exit-list.component.html',
+    standalone: true,
+    imports: [MatTable, MatSort, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatSortHeader, TranslateDirective, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, PaginationComponent, DocInfoComponent, DatePipe]
 })
 export class InventoryExitListComponent extends BaseEntityListComponent<Transaction> {
     displayedColumns = [

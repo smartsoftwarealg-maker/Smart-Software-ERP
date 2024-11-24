@@ -1,13 +1,22 @@
 import { Component, inject } from '@angular/core';
-import { UntypedFormGroup, Validators, FormBuilder } from '@angular/forms';
+import { UntypedFormGroup, Validators, FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BaseChildEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { Language } from '@ss/common/api-lookup';
 import { PersonLanguage, EmployeeLanguagesService } from '@ss/payroll/api-employee';
+import { NgIf, NgFor } from '@angular/common';
+import { MatMiniFabButton } from '@angular/material/button';
+import { MatCard } from '@angular/material/card';
+import { MatFormField, MatLabel } from '@angular/material/form-field';
+import { TranslateDirective } from '../../../../../../common/ui-lang/src/lib/translate.directive';
+import { MatSelect } from '@angular/material/select';
+import { MatOption } from '@angular/material/core';
 
 @Component({
     selector: 'ss-emp-languages-detail',
     templateUrl: './employee-languages-detail.component.html',
-    styleUrls: ['./employee-languages-detail.component.scss']
+    styleUrls: ['./employee-languages-detail.component.scss'],
+    standalone: true,
+    imports: [NgIf, MatMiniFabButton, MatCard, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatSelect, NgFor, MatOption]
 })
 export class EmployeeLanguagesDetailComponent extends BaseChildEntityDetailComponent<PersonLanguage> {
     private formBuilder = inject(FormBuilder);

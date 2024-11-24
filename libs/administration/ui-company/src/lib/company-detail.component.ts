@@ -1,18 +1,25 @@
 import {Component} from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
-import {AbstractControl, UntypedFormBuilder, Validators} from '@angular/forms';
+import { AbstractControl, UntypedFormBuilder, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {LookupsService} from '@ss/common/api-lookup';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {Company, CompanyService} from '@ss/administration/api-company';
-import {MatExpansionPanel} from '@angular/material/expansion';
+import { MatExpansionPanel, MatAccordion, MatExpansionPanelHeader, MatExpansionPanelTitle } from '@angular/material/expansion';
+import { NgIf } from '@angular/common';
+import { TranslateDirective } from '../../../../common/ui-lang/src/lib/translate.directive';
+import { MatFormField, MatLabel, MatError } from '@angular/material/form-field';
+import { MatInput } from '@angular/material/input';
+import { MatCheckbox } from '@angular/material/checkbox';
 
 
 @Component({
     selector: 'ss-company-detail',
     styleUrls: ['./company-detail.component.scss'],
-    templateUrl: './company-detail.component.html'
+    templateUrl: './company-detail.component.html',
+    standalone: true,
+    imports: [NgIf, FormsModule, ReactiveFormsModule, MatAccordion, MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelTitle, TranslateDirective, MatFormField, MatLabel, MatInput, MatError, MatCheckbox]
 })
 export class CompanyDetailComponent extends BaseEntityDetailComponent<Company> {
 

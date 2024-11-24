@@ -2,9 +2,9 @@ import { Component, inject, OnInit } from '@angular/core';
 import {of} from 'rxjs';
 import {BudgetService} from '@ss/budget/budget';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
-import {UntypedFormBuilder, Validators} from '@angular/forms';
+import { UntypedFormBuilder, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
-import {ActivatedRoute, Router} from '@angular/router';
+import { ActivatedRoute, Router, RouterOutlet } from '@angular/router';
 import {BudgetPlanningService} from '@ss/budget/budget-planning';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {switchMap, tap} from 'rxjs/operators';
@@ -13,11 +13,38 @@ import {FurnitureService} from '../furniture.service';
 import {FurnitureTransactionDetail} from '../furniture-api';
 import {FurnitureReceptionService} from '../furniture-reception.service';
 import {FurnitureTransactionLineService} from '../furniture-transaction-line.service';
+import { MatCard, MatCardHeader, MatCardContent } from '@angular/material/card';
+import { MatMiniFabButton } from '@angular/material/button';
+import { MatTooltip } from '@angular/material/tooltip';
+import { TranslateDirective } from '../../../../../common/ui-lang/src/lib/translate.directive';
+import { NgIf } from '@angular/common';
+import { MatFormField, MatLabel } from '@angular/material/form-field';
+import { UiAutoCompleteComponent } from '../../../../../common/ui-auto-complete/src/lib/auto-complete.component';
+import { MatInput } from '@angular/material/input';
+import { TranslatePipe } from '../../../../../common/ui-lang/src/lib/translate.pipe';
 
 @Component({
     selector: 'ss-furniture-reception-line-detail',
     templateUrl: './furniture-reception-line-detail.component.html',
     styleUrls: ['./furniture-reception-line-detail.component.scss'],
+    standalone: true,
+    imports: [
+        MatCard,
+        MatCardHeader,
+        MatMiniFabButton,
+        MatTooltip,
+        TranslateDirective,
+        MatCardContent,
+        NgIf,
+        FormsModule,
+        ReactiveFormsModule,
+        MatFormField,
+        MatLabel,
+        UiAutoCompleteComponent,
+        MatInput,
+        RouterOutlet,
+        TranslatePipe,
+    ],
 })
 export class FurnitureReceptionLineDetailComponent implements OnInit {
     private entitySrv  = inject(FurnitureReceptionService);

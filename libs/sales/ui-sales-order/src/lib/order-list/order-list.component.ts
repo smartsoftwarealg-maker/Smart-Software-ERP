@@ -7,11 +7,20 @@ import {SalesOrderService} from '@ss/sales/api-sales-order';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import { Transaction } from '@ss/logistics/api-transaction';
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
+import { MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from '@angular/material/table';
+import { MatSort, MatSortHeader } from '@angular/material/sort';
+import { TranslateDirective } from '../../../../../common/ui-lang/src/lib/translate.directive';
+import { MatCheckbox } from '@angular/material/checkbox';
+import { PaginationComponent } from '../../../../../common/ui-pagination/src/lib/pagination.component';
+import { DocInfoComponent } from '../../../../../logistics/ui-doc-info/src/lib/doc-info/doc-info.component';
+import { DatePipe } from '@angular/common';
 
 @Component({
     selector: 'ss-ui-order',
     templateUrl: './order-list.component.html',
-    styleUrls: ['../../../../../common/assets/src/assets/transac-list.scss']
+    styleUrls: ['../../../../../common/assets/src/assets/transac-list.scss'],
+    standalone: true,
+    imports: [MatTable, MatSort, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatSortHeader, TranslateDirective, MatCellDef, MatCell, MatCheckbox, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, PaginationComponent, DocInfoComponent, DatePipe]
 })
 export class OrderListComponent  extends BaseEntityListComponent<Transaction> {
     displayedColumns = [

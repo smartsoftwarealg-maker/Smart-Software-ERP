@@ -23,17 +23,9 @@ import { ImportReceptionLinesMainComponent } from './import-reception-lines-main
 import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
 
 @NgModule({
-    declarations: [
-        ImportReceptionListComponent,
-        ImportReceptionDetailComponent,
-        ImportReceptionLinesDetailComponent,
-        ImportReceptionLinesListComponent,
-        ImportReceptionLinesMainComponent,
-    ],
     imports: [
         CommonModule,
         CommonUiLangModule,
-
         MatSortModule,
         MatTableModule,
         UiPaginationModule,
@@ -48,7 +40,12 @@ import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
         TextFieldModule,
         RouterOutlet,
         RouterLink,
-        DocInfoComponent
+        DocInfoComponent,
+        ImportReceptionListComponent,
+        ImportReceptionDetailComponent,
+        ImportReceptionLinesDetailComponent,
+        ImportReceptionLinesListComponent,
+        ImportReceptionLinesMainComponent
     ]
 })
 export class PurchasesImportedPurchasesModule {}

@@ -7,11 +7,16 @@ import {ConfirmationDialogService} from "@ss/common/ui-confirmation-dialog";
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import {PaginatorPersistenceService} from '@ss/common/api-common';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
+import { MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from '@angular/material/table';
+import { TranslateDirective } from '../../../../../common/ui-lang/src/lib/translate.directive';
+import { PaginationComponent } from '../../../../../common/ui-pagination/src/lib/pagination.component';
 
 @Component({
     selector: 'ss-mission-preparation',
     templateUrl: './mission-preparation-list.component.html',
-    styleUrls: ['./mission-preparation-list.component.scss']
+    styleUrls: ['./mission-preparation-list.component.scss'],
+    standalone: true,
+    imports: [MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, TranslateDirective, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, PaginationComponent]
 })
 export class MissionPreparationListComponent extends BaseEntityListComponent<Mission> {
     displayedColumns = [

@@ -74,7 +74,7 @@ import {
     DepreciationRateDetailComponent,
     AssetsTransferComponent,
     AssetTreeComponent,
-    AssetQRInventoryComponent,
+    AssetQRInventoryListComponent,
     AssetUnidentifiedInventoryListComponent,
     AssetUnidentifiedInventoryDetailComponent, AssetListInventoryDetailComponent
 } from '@ss/assets-component';
@@ -129,35 +129,35 @@ export const mainRoutes: Routes = [
                                 path: 'archive',
                                 children: [
                                     { path: '', component: AppArchiveListComponent, pathMatch: 'full', data: { appId: ASSET_ARCHIVES } },
-                                    { path: ':id', component: AppArchiveDetailComponent, data: { appId: ASSET_ARCHIVES } },
+                                    { path: ':id', component: AppArchiveDetailComponent, data: { appId: ASSET_ARCHIVES }, canDeactivate: [CanDeactivateService] },
                                 ]
                             },
                             {
                                 path: 'costs',
                                 children: [
                                     {path: '', component: AssetCostsListComponent, pathMatch: 'full'},
-                                    {path: ':id', component: AssetCostsDetailComponent},
+                                    {path: ':id', component: AssetCostsDetailComponent, canDeactivate: [CanDeactivateService]},
                                 ]
                             },
                             {
                                 path: 'revaluations',
                                 children: [
                                     {path: '', component: AssetRevaluationListComponent, pathMatch: 'full'},
-                                    {path: ':id', component: AssetRevaluationDetailComponent},
+                                    {path: ':id', component: AssetRevaluationDetailComponent, canDeactivate: [CanDeactivateService]},
                                 ]
                             },
                             {
                                 path: 'blockings',
                                 children: [
                                     {path: '', component: AssetBlockingListComponent, pathMatch: 'full'},
-                                    {path: ':id', component: AssetBlockingDetailComponent},
+                                    {path: ':id', component: AssetBlockingDetailComponent, canDeactivate: [CanDeactivateService]},
                                 ]
                             },
                             {
                                 path: 'depreciation-rate',
                                 children: [
                                     {path: '', component: DepreciationRateListComponent, pathMatch: 'full'},
-                                    {path: ':id', component: DepreciationRateDetailComponent},
+                                    {path: ':id', component: DepreciationRateDetailComponent, canDeactivate: [CanDeactivateService]},
                                 ]
                             }
                         ]
@@ -458,7 +458,7 @@ export const mainRoutes: Routes = [
         children: [
             {
                 path: LIST_URL,
-                component: AssetQRInventoryComponent,
+                component: AssetQRInventoryListComponent,
                 canActivate: [loginGuard]
             },
             {

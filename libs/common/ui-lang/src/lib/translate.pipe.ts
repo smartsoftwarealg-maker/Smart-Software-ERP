@@ -4,7 +4,8 @@ import {LanguageService} from '@ss/common/api-common';
 
 @Pipe({
     name: 'translate',
-    pure: true
+    pure: true,
+    standalone: true
 })
 export class TranslatePipe implements PipeTransform {
 

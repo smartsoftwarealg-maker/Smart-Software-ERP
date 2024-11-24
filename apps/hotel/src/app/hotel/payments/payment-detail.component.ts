@@ -1,7 +1,7 @@
 import { CanDeactivate, RouterStateSnapshot, UrlTree, ActivatedRouteSnapshot, Router, ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { UntypedFormGroup, UntypedFormBuilder, Validators } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormBuilder, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ConfirmationDialogService } from '../../common/confirmation-dialog/confirmation-dialog.service';
 import { Payment, agentsUrl, paymentsUrl, AgentACModel } from './payment-api';
 import { HttpService } from '../../smart-lib/common/http.service';
@@ -13,11 +13,24 @@ import { AbstractEntityView } from '../../common/base-classes/abstract-entity-vi
 import { LoadingState } from '../../common/util';
 import { switchMap } from 'rxjs/operators';
 import { isString } from '@ss/common/api-common';
+import { TranslateDirective } from '../../../../../../libs/common/ui-lang/src/lib/translate.directive';
+import { NgIf, NgFor } from '@angular/common';
+import { LoadingSpinnerComponent } from '../../smart-lib/components/loading-spinner/loading-spinner.component';
+import { FatalErrorComponent } from '../../smart-lib/components/fatal-error/fatal-error.component';
+import { AutoCompleteComponent } from '../../common/auto-complete/auto-complete.component';
+import { MatFormField, MatLabel } from '@angular/material/form-field';
+import { MatSelect } from '@angular/material/select';
+import { MatOption } from '@angular/material/core';
+import { DatePickerComponent } from '../../common/date-picker/date-picker.component';
+import { MatInput } from '@angular/material/input';
+import { SaveBarComponent } from '../../common/save-bar/save-bar.component';
 
 @Component({
     selector: 'ss-payment-detail',
     styleUrls: ['./payment-detail.component.scss'],
-    templateUrl: './payment-detail.component.html'
+    templateUrl: './payment-detail.component.html',
+    standalone: true,
+    imports: [TranslateDirective, NgIf, LoadingSpinnerComponent, FatalErrorComponent, FormsModule, ReactiveFormsModule, AutoCompleteComponent, MatFormField, MatLabel, MatSelect, NgFor, MatOption, DatePickerComponent, MatInput, SaveBarComponent]
 })
 export class PaymentDetailComponent extends AbstractEntityView<Payment, BackendDataSource<Payment>> implements OnInit, OnDestroy {
 

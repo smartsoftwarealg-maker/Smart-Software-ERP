@@ -105,14 +105,14 @@ import {
 import { CHEMICAL_TEST, DEPOSIT_TEST, PHYSICAL_TEST, RAW_MATERIAL_TEST } from '@ltm/ltm-api';
 import {
     TestEquipmentTestingInputDetailComponent
-} from '../../../../../libs/ltm/test-equipment-list/src/lib/test-equipment-testing-input-detail/test-equipment-testing-input-detail.component';
+} from '@ltm/test-equipment';
 
 export const ltmRoutes: Routes = [
     {
         path: LTM_ALERT_URL,
         children: [
             { path: LIST_URL, component: LtmAlertsComponent, canActivate: [loginGuard]},
-            { path: ':id', component: LtmAlertsDetailComponent, canActivate: [loginGuard] }
+            { path: ':id', component: LtmAlertsDetailComponent, canActivate: [loginGuard], canDeactivate: [CanDeactivateService] }
         ]
     },
     {
@@ -133,6 +133,7 @@ export const ltmRoutes: Routes = [
                     }
                 ],
                 canActivate: [loginGuard],
+                canDeactivate: [CanDeactivateService]
             }
         ]
     },
@@ -152,6 +153,7 @@ export const ltmRoutes: Routes = [
                     }
                 ],
                 canActivate: [loginGuard],
+                canDeactivate: [CanDeactivateService]
             }
         ]
     },
@@ -159,58 +161,57 @@ export const ltmRoutes: Routes = [
         path: LTM_TEST_EQUIPMENT_TESTING_URL,
         children: [
             { path: LIST_URL, component: TestEquipmentTestingInputListComponent, canActivate: [loginGuard]},
-            { path: ':id', component: TestEquipmentTestingInputDetailComponent,  canActivate: [loginGuard],
-            }
+            { path: ':id', component: TestEquipmentTestingInputDetailComponent,  canActivate: [loginGuard], canDeactivate: [CanDeactivateService]            }
         ]
     },
     {
         path: LTM_SILOS_URL,
         children: [
             { path: LIST_URL, component: LtmSiloListComponent, canActivate: [loginGuard]},
-            { path: ':id', component: LtmSiloDetailComponent, canActivate: [loginGuard] }
+            { path: ':id', component: LtmSiloDetailComponent, canActivate: [loginGuard], canDeactivate: [CanDeactivateService] }
         ]
     },
     {
         path: LTM_NORM_URL,
         children: [
             { path: LIST_URL, component: LtmNormListComponent, canActivate: [loginGuard]},
-            { path: ':id', component: LtmNormDetailComponent, canActivate: [loginGuard] }
+            { path: ':id', component: LtmNormDetailComponent, canActivate: [loginGuard], canDeactivate: [CanDeactivateService] }
         ]
     },
-    { path: LTM_NORM_TREE_TREE, component: LtmNormTreeComponent, canActivate: [loginGuard] },
+    { path: LTM_NORM_TREE_TREE, component: LtmNormTreeComponent, canActivate: [loginGuard], canDeactivate: [CanDeactivateService] },
     {
         path: LTM_ANOMALIES_URL,
         children: [
             { path: LIST_URL, component: LtmAnomalyListComponent, canActivate: [loginGuard]},
-            { path: ':id', component: LtmAnomalyDetailComponent, canActivate: [loginGuard] }
+            { path: ':id', component: LtmAnomalyDetailComponent, canActivate: [loginGuard], canDeactivate: [CanDeactivateService] }
         ]
     },
     {
         path: LTM_EQUIPMENT_URL,
         children: [
             { path: LIST_URL, component: LtmEquipmentListComponent, canActivate: [loginGuard]},
-            { path: ':id', component: LtmEquipmentDetailComponent, canActivate: [loginGuard] }
+            { path: ':id', component: LtmEquipmentDetailComponent, canActivate: [loginGuard], canDeactivate: [CanDeactivateService] }
         ]
     },
     {
         path: LTM_PRODUCTS_URL,
         children: [
             { path: LIST_URL, component: LtmProductListComponent, canActivate: [loginGuard]},
-            { path: ':id', component: LtmProductDetailComponent, canActivate: [loginGuard] }
+            { path: ':id', component: LtmProductDetailComponent, canActivate: [loginGuard], canDeactivate: [CanDeactivateService] }
         ]
     },
     {
         path: LTM_PICKUP_POINTS_URL,
         children: [
             { path: LIST_URL, component: LtmPickupPointListComponent, canActivate: [loginGuard]},
-            { path: ':id', component: LtmPickupPointDetailComponent, canActivate: [loginGuard] }
+            { path: ':id', component: LtmPickupPointDetailComponent, canActivate: [loginGuard], canDeactivate: [CanDeactivateService] }
         ]
     },
     {
         path: LTM_TESTING_ANOMALIES_URL,
         children: [
             { path: LIST_URL, component: LtmTestingAnomalyListComponent, canActivate: [loginGuard]},
-            { path: ':id', component: LtmTestingAnomalyDetailComponent, canActivate: [loginGuard] }
+            { path: ':id', component: LtmTestingAnomalyDetailComponent, canActivate: [loginGuard], canDeactivate: [CanDeactivateService] }
         ]
     },
     {
@@ -246,13 +247,13 @@ export const ltmRoutes: Routes = [
                     { path: 'm-matters',
                         children: [
                             { path: '', component: LtmMixtureDetailListComponent, pathMatch: 'full'},
-                            { path: ':id', component: LtmMixtureDetailDetailComponent }
+                            { path: ':id', component: LtmMixtureDetailDetailComponent, canDeactivate: [CanDeactivateService] }
                         ]
                     },
                     { path: 'm-pickups',
                         children: [
                             { path: '', component: LtmMixturePickupPointsListComponent, pathMatch: 'full'},
-                            { path: ':id', component: LtmMixturePickupPointsDetailComponent }
+                            { path: ':id', component: LtmMixturePickupPointsDetailComponent, canDeactivate: [CanDeactivateService] }
                         ]
                     }
                 ]
@@ -378,7 +379,7 @@ export const ltmRoutes: Routes = [
                     { path: 'schedules',
                         children: [
                             { path: '', component: LtmTestScheduleListComponent, pathMatch: 'full'},
-                            { path: ':id', component: LtmTestScheduleDetailComponent }
+                            { path: ':id', component: LtmTestScheduleDetailComponent, canDeactivate: [CanDeactivateService] }
                         ]
                     },
                 ]

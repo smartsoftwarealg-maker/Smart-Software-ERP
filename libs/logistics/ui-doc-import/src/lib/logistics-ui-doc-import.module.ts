@@ -15,9 +15,9 @@ import {CommonUiAutoCompleteModule} from '@ss/common/ui-auto-complete';
         CommonUiLangModule,
         UiPaginationModule,
         ReactiveFormsModule,
-        CommonUiAutoCompleteModule
+        CommonUiAutoCompleteModule,
+        DocImportComponent, InventoryImportComponent
     ],
-    declarations: [DocImportComponent, InventoryImportComponent],
     exports: [DocImportComponent],
 })
 export class LogisticsUiDocImportModule {}

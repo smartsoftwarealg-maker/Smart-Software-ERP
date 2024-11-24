@@ -5,11 +5,17 @@ import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {PaginationModel} from '@ss/common/api-common';
 import {AgentDebts, AgentDebtsService} from '@ss/logistics/api-agent-debts';
 import {HttpParams} from '@angular/common/http';
+import { MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from '@angular/material/table';
+import { TranslateDirective } from '../../../../common/ui-lang/src/lib/translate.directive';
+import { PaginationComponent } from '../../../../common/ui-pagination/src/lib/pagination.component';
+import { DecimalPipe } from '@angular/common';
 
 @Component({
     selector: 'ss-agent-debts',
     styleUrls: ['./agent-debts.component.scss'],
-    templateUrl: './agent-debts.component.html'
+    templateUrl: './agent-debts.component.html',
+    standalone: true,
+    imports: [MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, TranslateDirective, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, PaginationComponent, DecimalPipe]
 })
 export class AgentDebtsComponent implements OnInit {
     public readonly pagination = PaginationModel.newInstance();

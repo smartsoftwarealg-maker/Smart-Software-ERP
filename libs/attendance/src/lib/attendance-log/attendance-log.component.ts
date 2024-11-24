@@ -1,19 +1,58 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
 import {AttendanceLogService} from '../attendance-log.service';
 import {ShellService} from '@ss/common/ui-shell';
-import {FormBuilder, Validators} from '@angular/forms';
+import { FormBuilder, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {ATTReport, TYPES} from '../attendance-api';
 import {ActivatedRoute} from '@angular/router';
-import {DatePipe} from '@angular/common';
+import { DatePipe, NgStyle } from '@angular/common';
 import {LanguageService} from '@ss/common/api-common';
 import localeFr from '@angular/common/locales/fr';
 import localeAr from '@angular/common/locales/ar';
 import { registerLocaleData } from '@angular/common';
+import { MatCard } from '@angular/material/card';
+import { MatFormField, MatLabel, MatError } from '@angular/material/form-field';
+import { TranslateDirective } from '../../../../common/ui-lang/src/lib/translate.directive';
+import { MatInput } from '@angular/material/input';
+import { MatSelect } from '@angular/material/select';
+import { MatOption } from '@angular/material/core';
+import { DatePickerComponent } from '../../../../common/ui-datepicker/src/lib/date-picker.component';
+import { MatButton } from '@angular/material/button';
+import { MatProgressSpinner } from '@angular/material/progress-spinner';
+import { MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from '@angular/material/table';
+import { TranslatePipe } from '../../../../common/ui-lang/src/lib/translate.pipe';
 
 @Component({
     selector: 'ss-attendance-log',
     templateUrl: './attendance-log.component.html',
     styleUrls: ['./attendance-log.component.scss'],
+    standalone: true,
+    imports: [
+        MatCard,
+        FormsModule,
+        ReactiveFormsModule,
+        MatFormField,
+        MatLabel,
+        TranslateDirective,
+        MatInput,
+        MatSelect,
+        MatOption,
+        MatError,
+        DatePickerComponent,
+        MatButton,
+        MatProgressSpinner,
+        MatTable,
+        MatColumnDef,
+        MatHeaderCellDef,
+        MatHeaderCell,
+        MatCellDef,
+        MatCell,
+        NgStyle,
+        MatHeaderRowDef,
+        MatHeaderRow,
+        MatRowDef,
+        MatRow,
+        TranslatePipe,
+    ],
 })
 export class AttendanceLogComponent implements OnInit {
     private langSrv       = inject(LanguageService);

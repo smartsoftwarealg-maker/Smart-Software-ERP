@@ -27,15 +27,12 @@ import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
         RouterModule,
         CommonUiDatepickerModule,
         CommonUiAutoCompleteModule,
-
         SalesUiDeliveryLinesModule,
         LogisticsUiDocImportModule,
         LogisticsUiStockInfoModule,
-        DocInfoComponent
-    ],
-    declarations: [
+        DocInfoComponent,
         DeliveryListComponent,
-        DeliveryDetailComponent,
+        DeliveryDetailComponent
     ],
     exports: [
         DeliveryDetailComponent

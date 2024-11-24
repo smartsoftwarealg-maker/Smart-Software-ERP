@@ -7,8 +7,8 @@ import {MaterialModule} from '@ss/common/api-common';
     imports: [
         CommonModule,
         MaterialModule,
+        ColorSelectComponent,
     ],
-    declarations: [ColorSelectComponent],
     exports: [ColorSelectComponent]
 })
 export class CommonUiColorSelectModule {}

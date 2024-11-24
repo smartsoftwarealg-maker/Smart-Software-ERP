@@ -1,19 +1,28 @@
 import { Component, inject, OnInit } from "@angular/core";
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { JournalService, Journal, JournalUserService } from "@ss/treasury/api-journal";
-import { ActivatedRoute, Router } from '@angular/router';
-import { FormBuilder, Validators } from '@angular/forms';
+import { ActivatedRoute, Router, RouterOutlet } from '@angular/router';
+import { FormBuilder, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import {HttpService, LoginService} from '@ss/common/api-common';
 import { Observable } from 'rxjs';
 import { LookupsService, Bank } from '@ss/common/api-lookup';
 import { tap } from 'rxjs/operators';
+import { MatCard } from "@angular/material/card";
+import { MatFormField, MatLabel, MatError } from "@angular/material/form-field";
+import { TranslateDirective } from "../../../../../common/ui-lang/src/lib/translate.directive";
+import { MatInput } from "@angular/material/input";
+import { MatSelect } from "@angular/material/select";
+import { MatOption } from "@angular/material/core";
+import { TranslatePipe } from "../../../../../common/ui-lang/src/lib/translate.pipe";
 
 @Component({
     selector: 'ss-journal-detail',
     styleUrls: ['./journal-detail.component.scss'],
-    templateUrl: './journal-detail.component.html'
+    templateUrl: './journal-detail.component.html',
+    standalone: true,
+    imports: [MatCard, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, MatError, MatSelect, MatOption, RouterOutlet, TranslatePipe]
 })
 export class JournalDetailComponent extends BaseEntityDetailComponent<Journal> implements OnInit {
     private journalUserSrv = inject(JournalUserService);

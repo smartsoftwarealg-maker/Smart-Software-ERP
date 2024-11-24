@@ -3,11 +3,17 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {PaginationModel} from '@ss/common/api-common';
 import {switchMap} from 'rxjs/operators';
 import {CurrencyDepositService} from '@ss/exchange/api-currency-deposit';
+import { MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from '@angular/material/table';
+import { TranslateDirective } from '../../../../../common/ui-lang/src/lib/translate.directive';
+import { PaginationComponent } from '../../../../../common/ui-pagination/src/lib/pagination.component';
+import { DecimalPipe, DatePipe } from '@angular/common';
 
 @Component({
     selector: 'ss-history',
     styleUrls: ['./history.component.scss'],
-    templateUrl: './history.component.html'
+    templateUrl: './history.component.html',
+    standalone: true,
+    imports: [MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, TranslateDirective, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, PaginationComponent, DecimalPipe, DatePipe]
 })
 export class HistoryComponent implements OnInit {
 

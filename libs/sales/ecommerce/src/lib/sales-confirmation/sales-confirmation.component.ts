@@ -1,16 +1,46 @@
 import {Component, inject, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {CartService} from '../cart.service';
-import {FormBuilder, Validators} from '@angular/forms';
+import { FormBuilder, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {Confirmation, Product} from '../ecommerce-api';
 import {SnackBarService} from '@ss/common/ui-shell';
+import { HeaderPageComponent } from '../header-page/header-page.component';
+import { MatCard } from '@angular/material/card';
+import { NgIf, NgFor, DecimalPipe } from '@angular/common';
+import { MatFormField, MatLabel } from '@angular/material/form-field';
+import { TranslateDirective } from '../../../../../common/ui-lang/src/lib/translate.directive';
+import { MatInput } from '@angular/material/input';
+import { CdkTextareaAutosize } from '@angular/cdk/text-field';
+import { MatButton } from '@angular/material/button';
+import { MatProgressSpinner } from '@angular/material/progress-spinner';
+import { ImageInputComponent } from '../../../../../common/ui-image-input/src/lib/image-input.component';
+import { TranslatePipe } from '../../../../../common/ui-lang/src/lib/translate.pipe';
 
 @Component({
     selector: 'ss-sales-confirmation',
     templateUrl: './sales-confirmation.component.html',
     styleUrls: ['./sales-confirmation.component.scss',
-                '../main-page/main-page.component.scss',
-                '../shopping-cart/shopping-cart.component.scss'],
+        '../main-page/main-page.component.scss',
+        '../shopping-cart/shopping-cart.component.scss'],
+    standalone: true,
+    imports: [
+        HeaderPageComponent,
+        MatCard,
+        NgIf,
+        FormsModule,
+        ReactiveFormsModule,
+        MatFormField,
+        MatLabel,
+        TranslateDirective,
+        MatInput,
+        CdkTextareaAutosize,
+        MatButton,
+        MatProgressSpinner,
+        NgFor,
+        ImageInputComponent,
+        DecimalPipe,
+        TranslatePipe,
+    ],
 })
 export class SalesConfirmationComponent implements OnInit {
     private router     = inject(Router);

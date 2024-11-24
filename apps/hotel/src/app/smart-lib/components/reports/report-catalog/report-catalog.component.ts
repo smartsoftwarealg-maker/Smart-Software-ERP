@@ -2,13 +2,18 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { ReportCatalogService } from './report-catalog.service';
 import { ReportCatalogDataSource } from './report-catalog-data-source';
 import { ActivatedRoute, Router } from '@angular/router';
-import { PaginationModel } from '../../../../common/pagination/pagination.component';
+import { PaginationModel, PaginationComponent } from '../../../../common/pagination/pagination.component';
 import { SnackBarService } from '../../../../common/snack-bar.service'
+import { MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from '@angular/material/table';
+import { MatSort, MatSortHeader } from '@angular/material/sort';
+import { TranslateDirective } from '../../../../../../../../libs/common/ui-lang/src/lib/translate.directive';
 
 @Component({
     selector: 'ss-report-catalog',
     templateUrl: './report-catalog.component.html',
-    styleUrls: ['./report-catalog.component.css']
+    styleUrls: ['./report-catalog.component.css'],
+    standalone: true,
+    imports: [MatTable, MatSort, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatSortHeader, TranslateDirective, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, PaginationComponent]
 })
 export class ReportCatalogComponent implements OnInit {
 

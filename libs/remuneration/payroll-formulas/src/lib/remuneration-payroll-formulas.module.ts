@@ -13,11 +13,9 @@ import {CommonUiAutoCompleteModule} from '@ss/common/ui-auto-complete';
         MaterialModule,
         UiPaginationModule,
         CommonUiLangModule,
-        CommonUiAutoCompleteModule
-    ],
-    declarations: [
-      FormulaListComponent,
-      FormulaDetailComponent
+        CommonUiAutoCompleteModule,
+        FormulaListComponent,
+        FormulaDetailComponent
     ],
 })
 export class RemunerationPayrollFormulasModule {}

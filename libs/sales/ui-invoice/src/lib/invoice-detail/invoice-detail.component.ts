@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
-import {ActivatedRoute, Router} from '@angular/router';
-import {UntypedFormBuilder} from '@angular/forms';
+import { ActivatedRoute, Router, RouterOutlet } from '@angular/router';
+import { UntypedFormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CCGroup, Lookup } from '@ss/common/api-lookup';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {Observable} from 'rxjs';
@@ -15,11 +15,22 @@ import {
     DOC_QUOTATION,
     DOC_SALES_ORDER
 } from '@ss/logistics/api-transaction';
+import { MatCard, MatCardContent } from '@angular/material/card';
+import { NgIf } from '@angular/common';
+import { MatFormField, MatLabel, MatError } from '@angular/material/form-field';
+import { TranslateDirective } from '../../../../../common/ui-lang/src/lib/translate.directive';
+import { MatInput } from '@angular/material/input';
+import { DatePickerComponent } from '../../../../../common/ui-datepicker/src/lib/date-picker.component';
+import { UiAutoCompleteComponent } from '../../../../../common/ui-auto-complete/src/lib/auto-complete.component';
+import { MatTabGroup, MatTab, MatTabLabel } from '@angular/material/tabs';
+import { CdkTextareaAutosize } from '@angular/cdk/text-field';
 
 @Component({
     selector: 'ss-invoice-detail',
     templateUrl: './invoice-detail.component.html',
-    styleUrls: ['../../../../../common/assets/src/assets/transac-detail.scss']
+    styleUrls: ['../../../../../common/assets/src/assets/transac-detail.scss'],
+    standalone: true,
+    imports: [MatCard, MatCardContent, NgIf, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, MatError, DatePickerComponent, UiAutoCompleteComponent, MatTabGroup, MatTab, MatTabLabel, CdkTextareaAutosize, RouterOutlet]
 })
 export class InvoiceDetailComponent extends BaseTransactionDetailComponent implements OnInit {
     public groups: CCGroup[];

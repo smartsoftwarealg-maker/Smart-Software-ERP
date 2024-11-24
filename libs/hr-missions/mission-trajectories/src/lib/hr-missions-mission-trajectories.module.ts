@@ -16,16 +16,13 @@ import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
         CommonModule,
         MaterialModule,
         CommonUiLangModule,
-
         UiPaginationModule,
         CommonUiConfirmationDialogModule,
         CommonUiDatepickerModule,
         CommonUiAutoCompleteModule,
-        RouterModule
-    ],
-    declarations: [
-      TrajectoryListComponent,
-      TrajectoryDetailComponent
+        RouterModule,
+        TrajectoryListComponent,
+        TrajectoryDetailComponent
     ],
 })
 export class HrMissionsMissionTrajectoriesModule {}

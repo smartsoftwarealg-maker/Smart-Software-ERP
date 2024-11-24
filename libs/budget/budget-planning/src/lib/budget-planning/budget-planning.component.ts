@@ -8,18 +8,42 @@ import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {LanguageService} from '@ss/common/api-common';
 import {ActivatedRoute} from '@angular/router';
 import {BudgetPlanningService} from '../budget-planning.service';
-import {MatRadioChange} from '@angular/material/radio';
+import { MatRadioChange, MatRadioGroup, MatRadioButton } from '@angular/material/radio';
 import {BudgetPlanningTree, FlatBudgetPlanningTree} from '../budget-planning-api';
 import {BudgetService} from '@ss/budget/budget';
 import {of, switchMap} from 'rxjs';
 import {BudgetPlanningAddDlgComponent} from '../budget-planning-add-dlg/budget-planning-add-dlg.component';
 import {BudgetAccountService} from '@ss/budget/budget-groups';
+import { TranslateDirective } from '../../../../../common/ui-lang/src/lib/translate.directive';
+import { MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from '@angular/material/table';
+import { MatIconButton } from '@angular/material/button';
+import { MatIcon } from '@angular/material/icon';
+import { DecimalPipe } from '@angular/common';
 
 
 @Component({
     selector: 'ss-budget-planning',
     templateUrl: './budget-planning.component.html',
     styleUrls: ['./budget-planning.component.scss'],
+    standalone: true,
+    imports: [
+        MatRadioGroup,
+        MatRadioButton,
+        TranslateDirective,
+        MatTable,
+        MatColumnDef,
+        MatHeaderCellDef,
+        MatHeaderCell,
+        MatCellDef,
+        MatCell,
+        MatIconButton,
+        MatIcon,
+        MatHeaderRowDef,
+        MatHeaderRow,
+        MatRowDef,
+        MatRow,
+        DecimalPipe,
+    ],
 })
 export class BudgetPlanningComponent implements OnInit, OnDestroy {
     private AMOUNT_COLS = ['code', 'description', 'reqAmount', 'amount', 'closingAmount', 'complement'];

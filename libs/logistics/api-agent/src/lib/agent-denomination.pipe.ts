@@ -3,7 +3,10 @@ import { AgentService } from './agent.service';
 import { map, catchError } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 
-@Pipe({ name: 'denomination' })
+@Pipe({
+    name: 'denomination',
+    standalone: true
+})
 export class AgentDenominationPipe implements PipeTransform {
 
     constructor(private agentSrv: AgentService) { }

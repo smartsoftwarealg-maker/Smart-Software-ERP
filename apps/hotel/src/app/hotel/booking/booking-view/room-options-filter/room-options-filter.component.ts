@@ -1,12 +1,21 @@
 import { Component, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 import { BookingService } from '../../booking.service';
-import { MatMenuTrigger } from '@angular/material/menu';
+import { MatMenuTrigger, MatMenu } from '@angular/material/menu';
 import { LanguageService } from '@ss/common/api-common';
+import { MatBadge } from '@angular/material/badge';
+import { MatIconButton, MatMiniFabButton } from '@angular/material/button';
+import { MatTooltip } from '@angular/material/tooltip';
+import { TranslateDirective } from '../../../../../../../../libs/common/ui-lang/src/lib/translate.directive';
+import { NgFor } from '@angular/common';
+import { MatCheckbox } from '@angular/material/checkbox';
+import { TranslatePipe } from '../../../../../../../../libs/common/ui-lang/src/lib/translate.pipe';
 
 @Component({
     selector: 'app-room-options-filter',
     templateUrl: 'room-options-filter.component.html',
-    styleUrls: ['room-options-filter.component.scss']
+    styleUrls: ['room-options-filter.component.scss'],
+    standalone: true,
+    imports: [MatBadge, MatIconButton, MatTooltip, MatMenuTrigger, MatMenu, TranslateDirective, NgFor, MatCheckbox, MatMiniFabButton, TranslatePipe]
 })
 export class RoomOptionsFilterComponent {
 

@@ -2,16 +2,28 @@ import { Component, inject, Input } from '@angular/core';
 import { DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
 import { LotsService } from '@ss/common/api-lookup';
 import { finalize, Subscription } from 'rxjs';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { HttpEventType } from '@angular/common/http';
 import { ProcessedCheckService } from '@ss/treasury/api-checks';
 import { BankService } from '@ss/administration/api-bank';
+import { TranslateDirective } from '../../../../../common/ui-lang/src/lib/translate.directive';
+import { NgIf, NgFor } from '@angular/common';
+import { MatMiniFabButton, MatButton } from '@angular/material/button';
+import { MatProgressBar } from '@angular/material/progress-bar';
+import { MatCard } from '@angular/material/card';
+import { MatFormField, MatLabel } from '@angular/material/form-field';
+import { UiAutoCompleteComponent } from '../../../../../common/ui-auto-complete/src/lib/auto-complete.component';
+import { MatSelect } from '@angular/material/select';
+import { MatOption } from '@angular/material/core';
+import { TranslatePipe } from '../../../../../common/ui-lang/src/lib/translate.pipe';
 
 @Component({
     selector: 'ss-processed-check-injection-dialog',
     templateUrl: './processed-check-injection-dialog.component.html',
-    styleUrls: ['./processed-check-injection-dialog.component.scss']
+    styleUrls: ['./processed-check-injection-dialog.component.scss'],
+    standalone: true,
+    imports: [TranslateDirective, NgIf, MatMiniFabButton, MatProgressBar, MatCard, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, UiAutoCompleteComponent, MatSelect, NgFor, MatOption, MatButton, TranslatePipe]
 })
 export class ProcessedCheckInjectionDialogComponent {
     private bankSrv = inject(BankService);

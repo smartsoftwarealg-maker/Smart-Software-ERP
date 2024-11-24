@@ -1,13 +1,22 @@
 import { Component, inject } from '@angular/core';
-import { FormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
+import { FormBuilder, UntypedFormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BaseChildEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { Wife, EmployeeWivesService } from '@ss/payroll/api-employee';
+import { NgIf } from '@angular/common';
+import { MatMiniFabButton } from '@angular/material/button';
+import { MatCard, MatCardContent } from '@angular/material/card';
+import { MatFormField, MatLabel } from '@angular/material/form-field';
+import { TranslateDirective } from '../../../../../../common/ui-lang/src/lib/translate.directive';
+import { MatInput } from '@angular/material/input';
+import { DatePickerComponent } from '../../../../../../common/ui-datepicker/src/lib/date-picker.component';
 
 
 @Component({
     selector: 'ss-emp-wife-detail',
     templateUrl: './employee-wife-detail.component.html',
-    styleUrls: ['./employee-wife-detail.component.scss']
+    styleUrls: ['./employee-wife-detail.component.scss'],
+    standalone: true,
+    imports: [NgIf, MatMiniFabButton, MatCard, MatCardContent, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, DatePickerComponent]
 })
 export class EmployeeWifeDetailComponent extends BaseChildEntityDetailComponent<Wife> {
     private formBuilder = inject(FormBuilder);

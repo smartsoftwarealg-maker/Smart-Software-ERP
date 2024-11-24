@@ -20,7 +20,6 @@ import { RouterOutlet } from "@angular/router";
 import { MatButtonModule } from "@angular/material/button";
 
 @NgModule({
-    imports: [CommonModule, CommonUiLangModule, MatSortModule, MatTableModule, UiPaginationModule, CommonUiAutoCompleteModule, CommonUiDatepickerModule, MatCardModule, MatFormFieldModule, MatInputModule, MatTabsModule, ReactiveFormsModule, MatOptionModule, MatSelectModule, MatExpansionModule, RouterOutlet, MatButtonModule],
-    declarations: [ServiceRequestListComponent, ServiceRequestDetailComponent],
+    imports: [CommonModule, CommonUiLangModule, MatSortModule, MatTableModule, UiPaginationModule, CommonUiAutoCompleteModule, CommonUiDatepickerModule, MatCardModule, MatFormFieldModule, MatInputModule, MatTabsModule, ReactiveFormsModule, MatOptionModule, MatSelectModule, MatExpansionModule, RouterOutlet, MatButtonModule, ServiceRequestListComponent, ServiceRequestDetailComponent],
 })
 export class CmmsServiceRequestModule {}

@@ -31,15 +31,13 @@ import { AppArchiveMainComponent } from '@ss/common/app-archive';
         CommonUiDatepickerModule,
         CommonUiAutoCompleteModule,
         LogisticsUiStockInfoModule,
-        AppArchiveMainComponent
-    ],
-    declarations: [
+        AppArchiveMainComponent,
         TransactionListComponent,
         TransactionDetailComponent,
         BankExpenseListComponent,
         BankExpenseDetailComponent,
         TransactionLineListComponent,
-        TransactionLineDetailComponent,
+        TransactionLineDetailComponent
     ],
 })
 export class TreasuryUiTransactionsModule {}

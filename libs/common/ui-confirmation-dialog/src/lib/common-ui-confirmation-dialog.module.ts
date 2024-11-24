@@ -9,9 +9,7 @@ import {CommonUiLangModule} from '@ss/common/ui-lang';
     imports: [
         CommonModule,
         CommonUiLangModule,
-        MaterialModule
-    ],
-    declarations: [
+        MaterialModule,
         ConfirmationDialogComponent
     ],
     exports: [

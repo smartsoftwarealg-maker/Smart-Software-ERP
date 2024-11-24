@@ -2,11 +2,17 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { map } from 'rxjs/operators';
 import { HttpService } from '../../../common/http.service';
+import { TranslateDirective } from '../../../../../../../../libs/common/ui-lang/src/lib/translate.directive';
+import { NgIf } from '@angular/common';
+import { MatButton } from '@angular/material/button';
+import { SafePipe } from '../safe.directive';
 
 @Component({
     selector: 'ss-report-viewer',
     templateUrl: './report-viewer.component.html',
-    styleUrls: ['./report-viewer.component.scss']
+    styleUrls: ['./report-viewer.component.scss'],
+    standalone: true,
+    imports: [TranslateDirective, NgIf, MatButton, SafePipe]
 })
 export class ReportViewerComponent implements OnDestroy {
     public url = '/reports/view';

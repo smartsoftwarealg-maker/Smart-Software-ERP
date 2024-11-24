@@ -2,6 +2,8 @@ import {Component, ElementRef, forwardRef, Input, OnInit, ViewChild} from '@angu
 import {DomSanitizer, SafeResourceUrl} from '@angular/platform-browser';
 import {AbstractControl, NG_VALIDATORS, ValidationErrors, Validator} from '@angular/forms';
 import {HttpService} from '../../smart-lib/common/http.service';
+import { NgIf } from '@angular/common';
+import { MatMiniFabButton } from '@angular/material/button';
 
 // interface IConfig {
 //     baseUrl: string;
@@ -17,7 +19,9 @@ import {HttpService} from '../../smart-lib/common/http.service';
             useExisting: forwardRef(() => ImageInputComponent),
             multi: true,
         }
-    ]
+    ],
+    standalone: true,
+    imports: [NgIf, MatMiniFabButton]
 })
 
 export class ImageInputComponent implements OnInit, Validator {

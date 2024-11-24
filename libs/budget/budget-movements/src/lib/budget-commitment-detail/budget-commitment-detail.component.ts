@@ -3,18 +3,39 @@ import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {BudgetCommitment, PlanningInfo} from '../budget-movement-api';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
-import {UntypedFormBuilder, Validators} from '@angular/forms';
+import { UntypedFormBuilder, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {BudgetCommitmentService} from '../budget-commitment.service';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {Agent, SupplierService} from '@ss/logistics/api-agent';
-import {DecimalPipe} from '@angular/common';
+import { DecimalPipe, NgIf } from '@angular/common';
 import {LanguageService} from '@ss/common/api-common';
+import { MatCard, MatCardContent } from "@angular/material/card";
+import { MatFormField, MatLabel, MatError } from "@angular/material/form-field";
+import { TranslateDirective } from "../../../../../common/ui-lang/src/lib/translate.directive";
+import { MatInput } from "@angular/material/input";
+import { DatePickerComponent } from "../../../../../common/ui-datepicker/src/lib/date-picker.component";
+import { UiAutoCompleteComponent } from "../../../../../common/ui-auto-complete/src/lib/auto-complete.component";
 
 @Component({
     selector: 'ss-budget-commitment-detail',
     templateUrl: './budget-commitment-detail.component.html',
     styleUrls: ['./budget-commitment-detail.component.scss'],
+    standalone: true,
+    imports: [
+        MatCard,
+        MatCardContent,
+        NgIf,
+        FormsModule,
+        ReactiveFormsModule,
+        MatFormField,
+        MatLabel,
+        TranslateDirective,
+        MatInput,
+        MatError,
+        DatePickerComponent,
+        UiAutoCompleteComponent,
+    ],
 })
 export class BudgetCommitmentDetailComponent extends BaseEntityDetailComponent<BudgetCommitment> {
     private activatedRoute = inject(ActivatedRoute);

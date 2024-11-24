@@ -8,14 +8,44 @@ import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import { LoginService, PaginatorPersistenceService } from '@ss/common/api-common';
 import {HolidayRequestService} from '../holiday-request.service';
 import { DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
-import { FormControl } from '@angular/forms';
+import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HolidayTypeService } from '../holiday-type.service';
 import { Lookup } from '@ss/common/api-lookup';
+import { MatFormField, MatLabel } from '@angular/material/form-field';
+import { TranslateDirective } from '../../../../common/ui-lang/src/lib/translate.directive';
+import { UiAutoCompleteComponent } from '../../../../common/ui-auto-complete/src/lib/auto-complete.component';
+import { MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from '@angular/material/table';
+import { MatSort, MatSortHeader } from '@angular/material/sort';
+import { PaginationComponent } from '../../../../common/ui-pagination/src/lib/pagination.component';
+import { DatePipe } from '@angular/common';
 
 @Component({
     selector: 'ss-holiday-request-list',
     templateUrl: './holiday-request-list.component.html',
     styleUrls: ['./holiday-request-list.component.scss'],
+    standalone: true,
+    imports: [
+        MatFormField,
+        MatLabel,
+        TranslateDirective,
+        UiAutoCompleteComponent,
+        FormsModule,
+        ReactiveFormsModule,
+        MatTable,
+        MatSort,
+        MatColumnDef,
+        MatHeaderCellDef,
+        MatHeaderCell,
+        MatSortHeader,
+        MatCellDef,
+        MatCell,
+        MatHeaderRowDef,
+        MatHeaderRow,
+        MatRowDef,
+        MatRow,
+        PaginationComponent,
+        DatePipe,
+    ],
 })
 export class HolidayRequestListComponent extends BaseEntityListComponent<HolidayRequest> implements OnInit {
     private loginSrv = inject(LoginService);

@@ -7,17 +7,44 @@ import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {PaginatorPersistenceService, Person} from '@ss/common/api-common';
 import {PersonShiftService} from '../person-shift.service';
-import {FormControl} from '@angular/forms';
+import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EmployeeService, IEmployee } from "@ss/employee-services/employee-services";
 import {Service, ServiceService} from '@ss/common/api-lookup';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import { PersonAutocompleteClass } from "@ss/employee-services/employee-services";
 import { Employee } from '@ss/employee-services/employee-services';
+import { MatFormField, MatLabel } from "@angular/material/form-field";
+import { TranslateDirective } from "../../../../common/ui-lang/src/lib/translate.directive";
+import { UiAutoCompleteComponent } from "../../../../common/ui-auto-complete/src/lib/auto-complete.component";
+import { MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from "@angular/material/table";
+import { PaginationComponent } from "../../../../common/ui-pagination/src/lib/pagination.component";
+import { DatePipe } from "@angular/common";
 
 @Component({
     selector: 'ss-person-shift-list',
     templateUrl: './person-shift-list.component.html',
     styleUrls: ['./person-shift-list.component.scss'],
+    standalone: true,
+    imports: [
+        MatFormField,
+        MatLabel,
+        TranslateDirective,
+        UiAutoCompleteComponent,
+        FormsModule,
+        ReactiveFormsModule,
+        MatTable,
+        MatColumnDef,
+        MatHeaderCellDef,
+        MatHeaderCell,
+        MatCellDef,
+        MatCell,
+        MatHeaderRowDef,
+        MatHeaderRow,
+        MatRowDef,
+        MatRow,
+        PaginationComponent,
+        DatePipe,
+    ],
 })
 export class PersonShiftListComponent extends BaseEntityListComponent<PersonShift> {
     private selectedService = 0;

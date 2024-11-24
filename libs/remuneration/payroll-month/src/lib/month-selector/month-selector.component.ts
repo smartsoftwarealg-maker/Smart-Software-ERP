@@ -1,16 +1,28 @@
 import { Component, computed, inject, OnInit, signal } from '@angular/core';
-import { UntypedFormBuilder, UntypedFormGroup, Validators } from "@angular/forms";
+import { UntypedFormBuilder, UntypedFormGroup, Validators, FormsModule, ReactiveFormsModule } from "@angular/forms";
 import {PayrollMonthService} from '../payroll-month.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {of, switchMap, tap, zip} from 'rxjs';
 import {Special, SpecialPayrollService} from '@ss/remuneration/special-payroll-common';
 import {LanguageService} from '@ss/common/api-common';
+import { NgIf, NgFor } from '@angular/common';
+import { MatCard, MatCardContent } from '@angular/material/card';
+import { MatFormField, MatLabel } from '@angular/material/form-field';
+import { TranslateDirective } from '../../../../../common/ui-lang/src/lib/translate.directive';
+import { MatInput } from '@angular/material/input';
+import { MatSelect } from '@angular/material/select';
+import { MatOption } from '@angular/material/core';
+import { MatButton } from '@angular/material/button';
+import { MatProgressBar } from '@angular/material/progress-bar';
+import { TranslatePipe } from '../../../../../common/ui-lang/src/lib/translate.pipe';
 
 @Component({
     selector: 'ss-month-selector',
     templateUrl: './month-selector.component.html',
-    styleUrls: ['./month-selector.component.scss']
+    styleUrls: ['./month-selector.component.scss'],
+    standalone: true,
+    imports: [NgIf, MatCard, MatCardContent, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, MatSelect, NgFor, MatOption, MatButton, MatProgressBar, TranslatePipe]
 })
 export class MonthSelectorComponent implements OnInit {
     private selectorSrv  = inject(PayrollMonthService);

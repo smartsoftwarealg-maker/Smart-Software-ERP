@@ -111,20 +111,24 @@
                                     </ng-container>
                                 </mat-menu>
                             </ng-template>
-                            <ng-template [ngIf]="!b.menuItems">
-                                <button mat-icon-button matTooltip="{{b.label | translate}}" *ngIf="b.visible"
-                                        (click)="b.click()" [disabled]="b.disabled" class="hidden-during-search"
-                                        [class.large-only]="b.disabled || (b.keepOnToolbar != 1)">
-                                    @if (b.badgeCount > 0) {
-                                        <i [class]="b.icon"
-                                           matBadge="{{ b.badgeCount }}"
-                                           matBadgeColor="warn">
-                                        </i>
-                                    } @else {
-                                        <i [class]="b.icon"></i>
+                            @if (!b.menuItems && b.visible) {
+                                    @if (b.visible) {
+                                        <button mat-icon-button matTooltip="{{b.label | translate}}"
+                                                (click)="b.click()"
+                                                [disabled]="b.disabled"
+                                                class="hidden-during-search"
+                                                [class.large-only]="b.disabled || (b.keepOnToolbar != 1)">
+                                            @if (b.badgeCount > 0) {
+                                                <i [class]="b.icon"
+                                                   matBadge="{{ b.badgeCount }}"
+                                                   matBadgeColor="warn">
+                                                </i>
+                                            } @else {
+                                                <i [class]="b.icon"></i>
+                                            }
+                                        </button>
                                     }
-                                </button>
-                            </ng-template>
+                            }
                         </ng-container>
                     </ng-container>
 

@@ -13,8 +13,8 @@ import { RoomsService } from './rooms.service';
 import { CommonUiLangModule } from '@ss/common/ui-lang';
 import { LoadingSpinnerModule } from '../../smart-lib/components/loading-spinner/loading-spinner.module';
 import { CanActivateService } from '../../smart-lib/components/login/can-activte.service';
-import { SmartCommonModule } from '../../smart-lib/common/smart-common.module';
-import { FatalErrorModule } from '../../smart-lib/components/fatal-error/fatal-error.module';
+
+
 import { MaterialModule } from '../../smart-lib/components/material.module';
 import { LanguageService } from '@ss/common/api-common';
 
@@ -37,23 +37,19 @@ const routes: Routes = [
 
 @NgModule({
     imports: [
-        CommonModule,
-        SmartCommonModule,
-        FatalErrorModule,
-        ListToolbarModule,
-        LoadingSpinnerModule,
-        CommonUiLangModule,
-        MaterialModule,
-        PaginationModule,
-        ReactiveFormsModule,
-        SaveBarModule,
-        RouterModule.forChild(routes),
-        TagInputModule,
-    ],
-    declarations: [
-        RoomsListComponent,
-        RoomsDetailComponent
-    ],
+    CommonModule,
+    ListToolbarModule,
+    LoadingSpinnerModule,
+    CommonUiLangModule,
+    MaterialModule,
+    PaginationModule,
+    ReactiveFormsModule,
+    SaveBarModule,
+    RouterModule.forChild(routes),
+    TagInputModule,
+    RoomsListComponent,
+    RoomsDetailComponent,
+],
     exports: [
         RoomsListComponent,
         RoomsDetailComponent

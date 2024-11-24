@@ -6,11 +6,24 @@ import { ConsumptionCancellationLinesService } from '@ss/stock/api-consumption-l
 import {ArticleService} from '@ss/master-data/api-article';
 import {LotsService} from '@ss/common/api-lookup';
 import {BaseTransactionLinesListComponent} from '@ss/logistics/api-transaction';
+import { NgIf, DecimalPipe } from '@angular/common';
+import { MatFormField, MatLabel } from '@angular/material/form-field';
+import { TranslateDirective } from '../../../../../common/ui-lang/src/lib/translate.directive';
+import { MatInput } from '@angular/material/input';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatMiniFabButton, MatIconButton } from '@angular/material/button';
+import { MatTooltip } from '@angular/material/tooltip';
+import { MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from '@angular/material/table';
+import { PaginationComponent } from '../../../../../common/ui-pagination/src/lib/pagination.component';
+import { DocInfoComponent } from '../../../../../logistics/ui-doc-info/src/lib/doc-info/doc-info.component';
+import { TranslatePipe } from '../../../../../common/ui-lang/src/lib/translate.pipe';
 
 @Component({
     selector: 'ss-consumption-cancellation-lines-list',
     styleUrls: ['../../../../../common/assets/src/assets/transac-lines-list.scss'],
-    templateUrl: './consumption-cancellation-lines-list.component.html'
+    templateUrl: './consumption-cancellation-lines-list.component.html',
+    standalone: true,
+    imports: [NgIf, MatFormField, MatLabel, TranslateDirective, MatInput, FormsModule, ReactiveFormsModule, MatMiniFabButton, MatTooltip, MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatIconButton, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, PaginationComponent, DocInfoComponent, DecimalPipe, TranslatePipe]
 })
 export class ConsumptionCancellationLinesListComponent extends BaseTransactionLinesListComponent implements OnInit {
     displayedColumns = [

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {KeepOnToolbar, ShellService, SnackBarService, ToolbarButton} from '@ss/common/ui-shell';
-import {ActivatedRoute, Router} from '@angular/router';
-import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
+import { ActivatedRoute, Router, RouterOutlet } from '@angular/router';
+import { UntypedFormBuilder, UntypedFormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {Lookup} from '@ss/common/api-lookup';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {InventoryService} from '@ss/stock/api-inventory';
@@ -10,11 +10,21 @@ import {LoginService} from '@ss/common/api-common';
 import {InventoryImportComponent} from '@ss/logistics/ui-doc-import';
 import {MatDialog} from '@angular/material/dialog';
 import { InventoryLinesService } from '@ss/stock/api-inventory-lines';
+import { MatCard, MatCardContent } from '@angular/material/card';
+import { NgIf } from '@angular/common';
+import { MatFormField, MatLabel, MatError } from '@angular/material/form-field';
+import { TranslateDirective } from '../../../../../common/ui-lang/src/lib/translate.directive';
+import { MatInput } from '@angular/material/input';
+import { DatePickerComponent } from '../../../../../common/ui-datepicker/src/lib/date-picker.component';
+import { UiAutoCompleteComponent } from '../../../../../common/ui-auto-complete/src/lib/auto-complete.component';
+import { CdkTextareaAutosize } from '@angular/cdk/text-field';
 
 @Component({
     selector: 'ss-inventory-detail',
     styleUrls: ['../../../../../common/assets/src/assets/transac-detail.scss'],
-    templateUrl: './inventory-detail.component.html'
+    templateUrl: './inventory-detail.component.html',
+    standalone: true,
+    imports: [MatCard, MatCardContent, NgIf, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, MatError, DatePickerComponent, UiAutoCompleteComponent, CdkTextareaAutosize, RouterOutlet]
 })
 export class InventoryDetailComponent extends BaseTransactionDetailComponent implements OnInit {
     private invImportBtn: ToolbarButton = {

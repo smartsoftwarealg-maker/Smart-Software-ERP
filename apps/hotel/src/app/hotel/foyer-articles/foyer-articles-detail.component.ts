@@ -7,13 +7,23 @@ import { FoyerArticle } from '../hotel-api';
 import { BackendDataSource } from '../../common/base-classes/backend-data-source';
 import { SnackBarService } from '../../common/snack-bar.service';
 import { switchMap } from 'rxjs/operators';
-import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoadingState } from '../../common/util';
 import { AccountsACModel } from './foyer-api';
 import { ImageInputComponent } from '../../common/image-input/image-input.component';
 import { FoyerArticlesService } from './foyer-articles.service';
 import { UserService } from '../../smart-lib/components/login/user.service';
 import { HttpService } from '../../smart-lib/common/http.service';
+import { TranslateDirective } from '../../../../../../libs/common/ui-lang/src/lib/translate.directive';
+import { NgIf, NgFor } from '@angular/common';
+import { LoadingSpinnerComponent } from '../../smart-lib/components/loading-spinner/loading-spinner.component';
+import { FatalErrorComponent } from '../../smart-lib/components/fatal-error/fatal-error.component';
+import { MatFormField, MatLabel } from '@angular/material/form-field';
+import { MatInput } from '@angular/material/input';
+import { MatSelect } from '@angular/material/select';
+import { MatOption } from '@angular/material/core';
+import { AutoCompleteComponent } from '../../common/auto-complete/auto-complete.component';
+import { SaveBarComponent } from '../../common/save-bar/save-bar.component';
 
 const foyerArticlesUrl = '/hotels/foyerArticles';
 const foyerAppCode = 14;
@@ -21,7 +31,9 @@ const foyerAppCode = 14;
 @Component({
     selector: 'app-foyer-article-dtl',
     templateUrl: './foyer-articles-detail.component.html',
-    styleUrls: ['./foyer-articles-detail.component.scss']
+    styleUrls: ['./foyer-articles-detail.component.scss'],
+    standalone: true,
+    imports: [TranslateDirective, NgIf, LoadingSpinnerComponent, FatalErrorComponent, FormsModule, ReactiveFormsModule, ImageInputComponent, MatFormField, MatLabel, MatInput, MatSelect, NgFor, MatOption, AutoCompleteComponent, SaveBarComponent]
 })
 // tslint:disable-next-line:max-line-length
 export class FoyerArticlesDetailComponent extends AbstractEntityView<FoyerArticle, BackendDataSource<FoyerArticle>> implements OnInit, OnDestroy {

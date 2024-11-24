@@ -8,11 +8,19 @@ import { DefaultReportService } from '@ss/common/ui-default-report-component';
 import { HttpService, PaginatorPersistenceService} from '@ss/common/api-common';
 //import { Observable, of } from 'rxjs';
 import { Journal, JournalService } from '@ss/treasury/api-journal';
+import { MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from '@angular/material/table';
+import { TranslateDirective } from '../../../../../common/ui-lang/src/lib/translate.directive';
+import { PaginationComponent } from '../../../../../common/ui-pagination/src/lib/pagination.component';
+import { AsyncPipe } from '@angular/common';
+import { TranslatePipe } from '../../../../../common/ui-lang/src/lib/translate.pipe';
+import { LookupDescriptionPipe } from '../../../../../common/api-lookup/src/lib/lookup-description.pipe';
 
 @Component({
     selector: 'ss-journal-list',
     styleUrls: ['./journal-list.component.scss'],
-    templateUrl: './journal-list.component.html'
+    templateUrl: './journal-list.component.html',
+    standalone: true,
+    imports: [MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, TranslateDirective, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, PaginationComponent, AsyncPipe, TranslatePipe, LookupDescriptionPipe]
 })
 export class JournalListComponent extends BaseEntityListComponent<Journal> implements OnInit {
 

@@ -1,12 +1,16 @@
 import { Component, EventEmitter, Input, Output, ViewChild } from '@angular/core';
-import { MatMenuTrigger } from '@angular/material/menu';
+import { MatMenuTrigger, MatMenu } from '@angular/material/menu';
 import { LanguageService } from '@ss/common/api-common';
+import { NgIf, NgFor } from '@angular/common';
+import { MatIconButton } from '@angular/material/button';
 
 @Component({
     selector: 'ss-color-select',
     templateUrl: './color-select.component.html',
     styleUrls: ['./color-select.component.scss'],
-    exportAs: 'colorSelect'
+    exportAs: 'colorSelect',
+    standalone: true,
+    imports: [NgIf, MatMenuTrigger, MatIconButton, MatMenu, NgFor]
 })
 export class ColorSelectComponent {
 

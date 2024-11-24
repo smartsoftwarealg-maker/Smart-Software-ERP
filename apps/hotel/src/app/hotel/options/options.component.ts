@@ -5,11 +5,34 @@ import { SnackBarService } from '../../common/snack-bar.service';
 import { Vat } from '../../common/vat/vat-api';
 import { Observable } from 'rxjs';
 import { HttpService } from '../../smart-lib/common/http.service';
+import { NgIf, NgFor } from '@angular/common';
+import { LoadingSpinnerComponent } from '../../smart-lib/components/loading-spinner/loading-spinner.component';
+import { MatFormField, MatLabel } from '@angular/material/form-field';
+import { TranslateDirective } from '../../../../../../libs/common/ui-lang/src/lib/translate.directive';
+import { MatSelect } from '@angular/material/select';
+import { FormsModule } from '@angular/forms';
+import { MatOption } from '@angular/material/core';
+import { MatInput } from '@angular/material/input';
+import { MatMiniFabButton } from '@angular/material/button';
 
 @Component({
     selector: 'app-hotel-options',
     templateUrl: './options.component.html',
     styleUrls: ['./options.component.scss'],
+    standalone: true,
+    imports: [
+        NgIf,
+        LoadingSpinnerComponent,
+        MatFormField,
+        MatLabel,
+        TranslateDirective,
+        MatSelect,
+        FormsModule,
+        NgFor,
+        MatOption,
+        MatInput,
+        MatMiniFabButton,
+    ],
 })
 export class OptionsComponent implements OnInit {
 
