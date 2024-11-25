@@ -15,7 +15,7 @@ import {
     ASSET_ACCOUNT_URL,
     CASHFLOW_ACCOUNTS_URL,
     COMMON_ACCOUNT_URL,
-    COMMON_REPORTS_URL,
+    COMMON_REPORTS_URL, DASHBOARD_URL,
     GENERATION_ACCOUNT_URL,
     TRANSAC_ACCOUNT_URL
 } from '../common';
@@ -62,6 +62,7 @@ import {
     F8DetailComponent,
     F8ListComponent
 } from '@ss/accounting/balance-tables';
+import { DashboardComponent } from '@ss/dashboard';
 
 export const accRoutes: Routes = [
     {
@@ -373,6 +374,13 @@ export const accRoutes: Routes = [
         component: BalanceQueriesComponent,
         canActivate: [loginGuard, accountingGuard]
     },
+
+    {
+        path: DASHBOARD_URL,
+        component: DashboardComponent,
+        canActivate: [loginGuard, accountingGuard],
+    },
+
     {path: '', redirectTo: ABS_INDEX_URL, pathMatch: 'full'},
     {path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full'}
 ];
