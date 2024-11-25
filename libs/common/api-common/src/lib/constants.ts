@@ -10,6 +10,7 @@ export const APP_SALES = 7;
 export const APP_TREASURY = 8;
 export const APP_LTM = 9;
 export const APP_SCHEDULED_SALES = 10;
+export const APP_ACCOUNTING = 11;
 
 export const INDEX_PAGE_URL = 'index';
 export const MAIN_PAGE_URL = 'app';
@@ -32,6 +33,7 @@ export const APPLICATIONS_URL = '/applications';
 
 export const APPLICATIONS: Lookup[] = [
     { id: APP_DASHBOARD,       description: 'DASHBOARD' },
+    { id: APP_ACCOUNTING,      description: 'ACCOUNTING'},
     { id: APP_PURCHASE,        description: 'PURCHASES' },
     { id: APP_STOCK,           description: 'STOCK'     },
     { id: APP_SALES,           description: 'SALES'     },

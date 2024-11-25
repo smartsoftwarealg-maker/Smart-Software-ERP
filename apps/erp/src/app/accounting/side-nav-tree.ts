@@ -2,7 +2,12 @@ import {SideNavNode} from '@ss/common/api-common';
 import {
     ABS_ACC_ACCOUNT_URL,
     ABS_ACC_ASSET_ACCOUNT_URL,
-    ABS_ACC_CASHFLOW_ACCOUNT_URL, ABS_ACC_F12_URL, ABS_ACC_F13_URL, ABS_ACC_F82_URL, ABS_ACC_F8_URL,
+    ABS_ACC_CASHFLOW_ACCOUNT_URL,
+    ABS_ACC_DASHBOARD_URL,
+    ABS_ACC_F12_URL,
+    ABS_ACC_F13_URL,
+    ABS_ACC_F82_URL,
+    ABS_ACC_F8_URL,
     ABS_ACC_FILE_SELECTION_URL,
     ABS_ACC_FILES_URL,
     ABS_ACC_GENERATION_ACCOUNT_URL,
@@ -11,9 +16,13 @@ import {
     ABS_ACC_PROJECT_URL,
     ABS_ACC_REPORTS_URL,
     ABS_ACC_TRANSAC_ACCOUNT_URL,
-    ABS_ACC_TRANSACTIONS_URL, ABS_BALANCE_QUERIES_URL,
-    ABS_DEPRECIATION_GENERATION_URL, ABS_GENERATION_URL,
-    ABS_POLICIES_URL, ABS_REOPEN_URL
+    ABS_ACC_TRANSACTIONS_URL,
+    ABS_BALANCE_QUERIES_URL,
+    ABS_DASHBOARD_URL,
+    ABS_DEPRECIATION_GENERATION_URL,
+    ABS_GENERATION_URL,
+    ABS_POLICIES_URL,
+    ABS_REOPEN_URL
 } from '../common';
 
 
@@ -147,6 +156,12 @@ export const accountingNavTree: SideNavNode = {
             icon: 'fas fa-tools',
             route: ABS_POLICIES_URL,
             accessRights: 'ACCPolicy'
+        },
+        {
+            name: 'COMMON_DASHBOARD',
+            icon: 'fa-solid fa-gauge-min',
+            route: ABS_ACC_DASHBOARD_URL,
+            accessRights: 'Dashboard'
         },
     ]
 }
