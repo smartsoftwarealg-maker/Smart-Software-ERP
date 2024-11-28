@@ -4,12 +4,12 @@ import {SalesMode, SalesModeService} from '@ss/scheduled-sales/api-scheduled-sal
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
 import { ReactiveFormsModule, UntypedFormBuilder, Validators } from "@angular/forms";
-import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
+import {  ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
 import {LookupsService} from '@ss/common/api-lookup';
 import { CommonModule } from "@angular/common";
 import { MaterialModule } from "@ss/common/api-common";
-import { CommonUiLangModule } from "@ss/common/ui-lang";
-import { UiPaginationModule } from "@ss/common/ui-pagination";
+
+
 import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
 import { CommonUiAutoCompleteModule } from "@ss/common/ui-auto-complete";
 
@@ -21,10 +21,10 @@ import { CommonUiAutoCompleteModule } from "@ss/common/ui-auto-complete";
     imports: [
         CommonModule,
         MaterialModule,
-        CommonUiLangModule,
-        UiPaginationModule,
+
+
         ReactiveFormsModule,
-        CommonUiConfirmationDialogModule,
+
         CommonUiDatepickerModule,
         CommonUiAutoCompleteModule,
     ],

@@ -7,10 +7,10 @@ import { FormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { CMMSAssetTriggerService } from '../cmms-asset-trigger.service';
 import { AssetsService } from '@ss/assets-component';
 import { CommonModule } from '@angular/common';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
+
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
-import { UiPaginationModule } from '@ss/common/ui-pagination';
+
 import { MaterialModule } from '@ss/common/api-common';
 
 @Component({
@@ -20,10 +20,10 @@ import { MaterialModule } from '@ss/common/api-common';
     standalone: true,
     imports: [
         CommonModule,
-        CommonUiLangModule,
+
         MatSortModule,
         MatTableModule,
-        UiPaginationModule,
+
         MaterialModule,
         CommonUiAutoCompleteModule
     ],

@@ -8,11 +8,11 @@ import { FurnitureReceptionListComponent } from './furniture-reception-list/furn
 import { FurnitureReceptionLineListComponent } from './furniture-reception-line-list/furniture-reception-line-list.component';
 import { FurnitureReceptionLineDetailComponent } from './furniture-reception-line-detail/furniture-reception-line-detail.component';
 import { MaterialModule } from '@ss/common/api-common';
-import { UiPaginationModule } from '@ss/common/ui-pagination';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
+
+
 import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
 import { RemunerationPaymonthEditorModule } from '@ss/remuneration/paymonth-editor';
-import { CommonPayrollModule } from '@ss/payroll-common';
+
 import { FurnitureAssignmentDetailComponent } from './furniture-assignment-detail/furniture-assignment-detail.component';
 import { FurnitureAssignmentListComponent } from './furniture-assignment-list/furniture-assignment-list.component';
 import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
@@ -26,11 +26,11 @@ import { AppArchiveMainComponent } from '@ss/common/app-archive';
     imports: [
         CommonModule,
         MaterialModule,
-        UiPaginationModule,
-        CommonUiLangModule,
+
+
         CommonUiAutoCompleteModule,
         RemunerationPaymonthEditorModule,
-        CommonPayrollModule,
+
         CommonUiDatepickerModule,
         RouterOutlet,
         AppArchiveMainComponent,

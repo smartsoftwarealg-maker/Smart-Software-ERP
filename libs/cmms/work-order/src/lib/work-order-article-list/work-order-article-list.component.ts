@@ -3,9 +3,9 @@ import { CommonModule } from '@angular/common';
 import { BaseChildEntityListComponent } from '@ss/common/ui-base-entity';
 import { WorkArticle } from '@ss/cmms/cmms-api';
 import { CMMSWorkOrderArticleService } from '../services/c-m-m-s-work-order-article.service';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
+
 import { MatTableModule } from '@angular/material/table';
-import { UiPaginationModule } from '@ss/common/ui-pagination';
+
 import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -18,15 +18,17 @@ import { MatDialog } from '@angular/material/dialog';
 import {
     WorkOrderArticleReservationComponent
 } from '../work-order-article-reservation/work-order-article-reservation.component';
+import { TranslatePipe } from '@ss/common/ui-lang';
+import { PaginationComponent } from '@ss/common/ui-pagination';
 
 @Component({
     selector: 'ss-work-order-article-list',
     standalone: true,
     imports: [
         CommonModule,
-        CommonUiLangModule,
+
         MatTableModule,
-        UiPaginationModule,
+
         CommonUiAutoCompleteModule,
         FormsModule,
         MatFormFieldModule,
@@ -35,7 +37,9 @@ import {
         MatInputModule,
         CommonUiDatepickerModule,
         MatButtonModule,
-        MaterialModule
+        MaterialModule,
+        TranslatePipe,
+        PaginationComponent
     ],
     templateUrl: './work-order-article-list.component.html',
     styleUrls: ['./work-order-article-list.component.css'],

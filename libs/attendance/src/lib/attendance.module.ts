@@ -5,12 +5,12 @@ import { WorkShiftDetailComponent } from './work-shift-detail/work-shift-detail.
 import { AttendanceMachineDetailComponent } from './attendance-machine-detail/attendance-machine-detail.component';
 import { AttendanceMachineListComponent } from './attendance-machine-list/attendance-machine-list.component';
 import { MaterialModule } from '@ss/common/api-common';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
-import { UiPaginationModule } from '@ss/common/ui-pagination';
+
+
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
-import { CommonUiConfirmationDialogModule } from '@ss/common/ui-confirmation-dialog';
+
 import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
 import { PersonShiftListComponent } from './person-shift-list/person-shift-list.component';
 import { PersonShiftDetailComponent } from './person-shift-detail/person-shift-detail.component';
@@ -33,11 +33,11 @@ import {
     imports: [
         CommonModule,
         MaterialModule,
-        CommonUiLangModule,
-        UiPaginationModule,
+
+
         ReactiveFormsModule,
         CommonUiAutoCompleteModule,
-        CommonUiConfirmationDialogModule,
+
         CommonUiDatepickerModule,
         RouterOutlet,
         WorkShiftListComponent,

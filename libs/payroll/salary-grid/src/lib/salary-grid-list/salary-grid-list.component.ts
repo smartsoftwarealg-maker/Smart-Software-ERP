@@ -9,11 +9,12 @@ import { ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
 import { MaterialModule, PaginatorPersistenceService } from "@ss/common/api-common";
 import { GridService } from "../grid.service";
 import { CommonModule } from "@angular/common";
-import { UiPaginationModule } from "@ss/common/ui-pagination";
-import { CommonUiLangModule } from "@ss/common/ui-lang";
+
+
 import { CommonUiAutoCompleteModule } from "@ss/common/ui-auto-complete";
 import { RemunerationPaymonthEditorModule } from "@ss/remuneration/paymonth-editor";
-import { CommonPayrollModule } from "@ss/payroll-common";
+import { PaginationComponent } from '@ss/common/ui-pagination';
+
 
 @Component({
     selector: "ss-salary-grid-list",
@@ -23,11 +24,11 @@ import { CommonPayrollModule } from "@ss/payroll-common";
     imports: [
         CommonModule,
         MaterialModule,
-        UiPaginationModule,
-        CommonUiLangModule,
+
+
         CommonUiAutoCompleteModule,
         RemunerationPaymonthEditorModule,
-        CommonPayrollModule
+        PaginationComponent
     ]
 })
 export class SalaryGridListComponent extends BaseEntityListComponent<Grid> {

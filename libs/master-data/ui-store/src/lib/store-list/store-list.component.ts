@@ -6,18 +6,20 @@ import { switchMap, tap } from 'rxjs/operators';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import { Observable } from 'rxjs';
 import {LookupsService, Vat} from '@ss/common/api-lookup';
-import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
+import {  ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import { MaterialModule, PaginatorPersistenceService } from "@ss/common/api-common";
 import { CommonModule } from "@angular/common";
-import { CommonUiLangModule } from "@ss/common/ui-lang";
-import { UiPaginationModule } from "@ss/common/ui-pagination";
+
+
 import { ReactiveFormsModule } from "@angular/forms";
 
 import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
 import { CommonUiAutoCompleteModule } from "@ss/common/ui-auto-complete";
 import { StockUiArticleStoreModule } from "@ss/stock/article-store";
 import { Article, ArticleService } from '@ss/master-data/api-article';
+import { PaginationComponent } from '@ss/common/ui-pagination';
+import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
 
 @Component({
     selector: 'ss-store-list',
@@ -27,16 +29,18 @@ import { Article, ArticleService } from '@ss/master-data/api-article';
     imports: [
         CommonModule,
         MaterialModule,
-        CommonUiLangModule,
-        UiPaginationModule,
+
+
         RouterModule,
         ReactiveFormsModule,
 
-        CommonUiConfirmationDialogModule,
+
         CommonUiDatepickerModule,
         CommonUiAutoCompleteModule,
-        StockUiArticleStoreModule
-    ],
+        StockUiArticleStoreModule,
+        PaginationComponent,
+        DocInfoComponent
+    ]
 })
 export class StoreListComponent extends BaseEntityListComponent<Article> {
 

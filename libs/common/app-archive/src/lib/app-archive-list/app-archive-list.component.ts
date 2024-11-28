@@ -1,14 +1,14 @@
 import { Component, inject, Input, OnInit } from "@angular/core";
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
-import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
+import {  ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { ShellService, SnackBarService } from "@ss/common/ui-shell";
 import { ImageUploaderUtil, MaterialModule, PaginationModel } from '@ss/common/api-common';
 import {AppArchiveService} from '../app-archive.service';
 import {AppArchive} from '../app-archive-api';
 import { of, switchMap, tap } from "rxjs";
 import { CommonModule } from '@angular/common';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
-import { UiPaginationModule } from '@ss/common/ui-pagination';
+
+
 import { ReactiveFormsModule } from '@angular/forms';
 import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
 import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
@@ -22,10 +22,10 @@ import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
         CommonModule,
         RouterModule,
         MaterialModule,
-        CommonUiLangModule,
-        UiPaginationModule,
+
+
         ReactiveFormsModule,
-        CommonUiConfirmationDialogModule,
+
         CommonUiAutoCompleteModule,
         CommonUiDatepickerModule
     ],

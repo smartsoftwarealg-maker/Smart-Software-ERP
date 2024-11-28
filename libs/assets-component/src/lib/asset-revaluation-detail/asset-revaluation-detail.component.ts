@@ -7,10 +7,10 @@ import {AssetRevaluationService} from '../services/asset-revaluation.service';
 import {AssetRevaluationLookupService} from '../services/asset-revaluation-lookup.service';
 import { CommonModule } from '@angular/common';
 import { MaterialModule } from '@ss/common/api-common';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
 
-import { UiPaginationModule } from '@ss/common/ui-pagination';
-import { CommonUiConfirmationDialogModule } from '@ss/common/ui-confirmation-dialog';
+
+
+
 import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
 import { RouterModule } from '@angular/router';
 import { CustomAttributesModule } from '@ss/custom-attributes';
@@ -25,10 +25,10 @@ import { QRCodeModule } from 'angularx-qrcode';
     imports: [
         CommonModule,
         MaterialModule,
-        CommonUiLangModule,
 
-        UiPaginationModule,
-        CommonUiConfirmationDialogModule,
+
+
+
         CommonUiAutoCompleteModule,
         CommonUiDatepickerModule,
         RouterModule,

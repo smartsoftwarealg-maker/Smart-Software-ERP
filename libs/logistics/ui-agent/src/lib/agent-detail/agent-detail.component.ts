@@ -28,7 +28,7 @@ import {
     CUSTOMER_URL,
     SUPPLIER_URL, TRANSPORTER_URL
 } from '@ss/logistics/api-agent';
-import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
+import {  ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import {MatExpansionPanel} from '@angular/material/expansion';
 import { FormValidators, IsParamService, LoginService, MaterialModule } from '@ss/common/api-common';
 import {BankService} from '@ss/administration/api-bank';
@@ -40,8 +40,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { AgentImportComponent } from '../agent-import/agent-import.component';
 import { AgentPriceService } from '@ss/logistics/api-agent-price';
 import { CommonModule } from '@angular/common';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
-import { UiPaginationModule } from '@ss/common/ui-pagination';
+
+
 import { CustomAttributesModule } from '@ss/custom-attributes';
 import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
 
@@ -53,10 +53,10 @@ import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
     imports: [
         CommonModule,
         MaterialModule,
-        CommonUiLangModule,
-        UiPaginationModule,
+
+
         ReactiveFormsModule,
-        CommonUiConfirmationDialogModule,
+
 
 
         CommonUiAutoCompleteModule,

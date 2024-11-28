@@ -19,7 +19,7 @@ import {
     ValidatorFn,
     Validators
 } from '@angular/forms';
-import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
+import {  ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { LtmMatterTestService } from '@ltm/ltm-api';
 import { LtmBatchService } from '@ltm/ltm-api';
 import { LtmPeriodicityService } from '@ltm/ltm-api';
@@ -28,8 +28,6 @@ import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { LtmTestService } from '@ltm/ltm-api';
 import { dateToYmdStr, LoginService, MaterialModule } from '@ss/common/api-common';
 import { CommonModule } from '@angular/common';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
-import { UiPaginationModule } from '@ss/common/ui-pagination';
 import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
 import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
 import { LTMSiloService } from '@ltm/ltm-api';
@@ -39,6 +37,8 @@ import { LtmCenterMatterService } from '@ltm/ltm-api';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { LtmTestScheduleService } from '@ltm/ltm-api';
 import { LtmTestScheduleListComponent } from '../ltm-test-schedule-list/ltm-test-schedule-list.component';
+import { PaginationComponent } from '@ss/common/ui-pagination';
+import { TranslatePipe } from '@ss/common/ui-lang';
 
 function sampleNoValidatorFn(sampleMode: boolean): ValidatorFn {
     return (control: AbstractControl): ValidationErrors | null => {
@@ -60,16 +60,13 @@ type VarianceControl = {
     imports: [
         CommonModule,
         MaterialModule,
-        CommonUiLangModule,
-        UiPaginationModule,
+        PaginationComponent,
         ReactiveFormsModule,
-        CommonUiConfirmationDialogModule,
-
-
         CommonUiAutoCompleteModule,
         CommonUiDatepickerModule,
         RouterOutlet,
-        RouterLink
+        RouterLink,
+        TranslatePipe
     ]
 })
 export class LtmBatchInputComponent implements OnInit, OnDestroy {

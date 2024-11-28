@@ -7,9 +7,9 @@ import { DefaultReportService } from '@ss/common/ui-default-report-component';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { MaterialModule, PaginatorPersistenceService } from '@ss/common/api-common';
 import { CommonModule } from '@angular/common';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
+
 import { MatTableModule } from '@angular/material/table';
-import { UiPaginationModule } from '@ss/common/ui-pagination';
+
 import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -18,6 +18,7 @@ import { MatInputModule } from '@angular/material/input';
 import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
 import { MatButtonModule } from '@angular/material/button';
 import { CMMSInspectionOrderService } from '../services/c-m-m-s-inspection-order.service';
+import { PaginationComponent } from '@ss/common/ui-pagination';
 
 @Component({
     selector: 'ss-inspection-list',
@@ -26,9 +27,9 @@ import { CMMSInspectionOrderService } from '../services/c-m-m-s-inspection-order
     standalone: true,
     imports: [
         CommonModule,
-        CommonUiLangModule,
+
         MatTableModule,
-        UiPaginationModule,
+
         CommonUiAutoCompleteModule,
         FormsModule,
         MatFormFieldModule,
@@ -37,8 +38,9 @@ import { CMMSInspectionOrderService } from '../services/c-m-m-s-inspection-order
         MatInputModule,
         CommonUiDatepickerModule,
         MatButtonModule,
-        MaterialModule
-    ],
+        MaterialModule,
+        PaginationComponent
+    ]
 })
 export class InspectionOrderListComponent extends BaseEntityListComponent<Work> implements OnInit {
     public types = WORK_TYPES;

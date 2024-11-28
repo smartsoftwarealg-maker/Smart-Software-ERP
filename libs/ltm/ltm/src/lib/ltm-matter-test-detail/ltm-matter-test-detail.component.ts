@@ -3,8 +3,8 @@ import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from "@ss/common
 import { FormBuilder, ReactiveFormsModule, Validators } from "@angular/forms";
 import { ActivatedRoute, Router, RouterOutlet } from "@angular/router";
 import {SnackBarService} from '@ss/common/ui-shell';
-import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
-import {switchMap, tap} from 'rxjs/operators';
+import {  ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
+import {switchMap} from 'rxjs/operators';
 import {of} from 'rxjs';
 import {LTMMatterTest} from '@ltm/ltm-api';
 import {LtmTestService} from '@ltm/ltm-api';
@@ -12,12 +12,13 @@ import {LtmMatterTestService} from '@ltm/ltm-api';
 import {LtmPeriodicityService} from '@ltm/ltm-api';
 import { CommonModule } from "@angular/common";
 import { LoginService, MaterialModule } from '@ss/common/api-common';
-import { CommonUiLangModule } from "@ss/common/ui-lang";
-import { UiPaginationModule } from "@ss/common/ui-pagination";
+
+import { PaginationComponent } from '@ss/common/ui-pagination';
 
 
 import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
 import { CommonUiHourPickerModule } from "@ss/common/ui-hour-picker";
+import { TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-ltm-matter-test-detail',
@@ -27,17 +28,14 @@ import { CommonUiHourPickerModule } from "@ss/common/ui-hour-picker";
     imports: [
         CommonModule,
         MaterialModule,
-        CommonUiLangModule,
-        UiPaginationModule,
-        ReactiveFormsModule,
-        CommonUiConfirmationDialogModule,
 
+        ReactiveFormsModule,
 
         CommonUiAutoCompleteModule,
         CommonUiDatepickerModule,
-        RouterOutlet,
-        CommonUiHourPickerModule
-    ],
+        CommonUiHourPickerModule,
+        TranslatePipe
+    ]
 })
 export class LtmMatterTestDetailComponent implements OnInit {
     private loginSrv = inject(LoginService);

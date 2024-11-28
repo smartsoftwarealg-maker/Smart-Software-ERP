@@ -1,20 +1,10 @@
 import {NgModule} from '@angular/core';
-import {BrowserModule} from '@angular/platform-browser';
 
-import {AppComponent} from './app.component';
 import {RouterModule, Routes} from '@angular/router';
-import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
-import {HttpClientModule} from "@angular/common/http";
-import {UiThemeModule} from "@ss/common/ui-theme";
-import {UiErrorHandlerModule} from "@ss/common/ui-error-handler";
 import {ShellComponent, UiShellModule} from "@ss/common/ui-shell";
-import {CommonUiLangModule} from "@ss/common/ui-lang";
 import { MainPageComponent} from "@ss/common/ui-main-page";
-import {UiLoginModule} from "@ss/common/ui-login";
-import {UiCenterSelectModule} from "@ss/common/ui-center-select";
 import {ADMINISTRATION_APP_URL, FINANCE_APP_URL, PATIENTS_APP_URL} from './common';
 import {CanActivateService, INDEX_PAGE_URL, LanguageService, LOGIN_URL, MAIN_PAGE_URL} from "@ss/common/api-common";
-import {LogisticsUiAgentModule} from "@ss/logistics/ui-agent";
 
 const routes: Routes = [
     {
@@ -46,7 +36,7 @@ const routes: Routes = [
     {path: '**', redirectTo: LOGIN_URL, pathMatch: 'full'}
 ]
 
-@NgModule(/* TODO(standalone-migration): clean up removed NgModule class manually. 
+@NgModule(/* TODO(standalone-migration): clean up removed NgModule class manually.
 {
     declarations: [AppComponent],
     imports: [
@@ -58,9 +48,10 @@ const routes: Routes = [
         UiThemeModule,
         UiErrorHandlerModule,
         UiShellModule,
-        CommonUiLangModule,
+        PaginationComponent,
 
         UiLoginModule,
+
         UiCenterSelectModule,
         LogisticsUiAgentModule
     ],
@@ -78,5 +69,4 @@ export class AppModule {
         langSrv.addSource('assets/locale/missions_', 'MISSIONS_');
         langSrv.addSource('assets/locale/bl_', 'BL_');
     }
-
 }

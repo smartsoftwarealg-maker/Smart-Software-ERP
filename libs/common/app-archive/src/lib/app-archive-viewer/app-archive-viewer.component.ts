@@ -8,9 +8,9 @@ import { ImageUploaderUtil, LoginService, MaterialModule, PaginationModel } from
 import { Observable, of } from 'rxjs';
 import { AppArchive, AppArchiveObs, APPLICATIONS } from '../app-archive-api';
 import { CommonModule, DatePipe } from '@angular/common';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
-import { UiPaginationModule } from '@ss/common/ui-pagination';
-import { CommonUiConfirmationDialogModule } from '@ss/common/ui-confirmation-dialog';
+
+
+
 import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
 import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
 
@@ -23,10 +23,10 @@ import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
         CommonModule,
         RouterModule,
         MaterialModule,
-        CommonUiLangModule,
-        UiPaginationModule,
+
+
         ReactiveFormsModule,
-        CommonUiConfirmationDialogModule,
+
         CommonUiAutoCompleteModule,
         CommonUiDatepickerModule
     ]

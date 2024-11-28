@@ -5,18 +5,19 @@ import {LookupsService} from '@ss/common/api-lookup';
 import {Observable, switchMap} from 'rxjs';
 import {tap} from 'rxjs/operators';
 import { Agent, AGENT_URL, AgentService, CUSTOMER_URL, SUPPLIER_URL, TRANSPORTER_URL } from '@ss/logistics/api-agent';
-import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
+import {  ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import { IsParamService, MaterialModule, PaginatorPersistenceService } from '@ss/common/api-common';
 import { CommonModule } from '@angular/common';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
-import { UiPaginationModule } from '@ss/common/ui-pagination';
+
+
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
 import { CustomAttributesModule } from '@ss/custom-attributes';
 import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
+import { PaginationComponent } from '@ss/common/ui-pagination';
 
 //import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 
@@ -28,16 +29,16 @@ import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
     imports: [
         CommonModule,
         MaterialModule,
-        CommonUiLangModule,
-        UiPaginationModule,
+
+
         ReactiveFormsModule,
-        CommonUiConfirmationDialogModule,
 
 
         CommonUiAutoCompleteModule,
         CustomAttributesModule,
-        DocInfoComponent
-    ],
+        DocInfoComponent,
+        PaginationComponent
+    ]
 
 })
 export class AgentListComponent extends BaseEntityListComponent<Agent> {

@@ -7,9 +7,9 @@ import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { DOC_WORK_ORDER } from '@ss/logistics/api-transaction';
 import { Observable } from 'rxjs';
 import { CommonModule } from '@angular/common';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
+
 import { MatTableModule } from '@angular/material/table';
-import { UiPaginationModule } from '@ss/common/ui-pagination';
+
 import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatCardModule } from '@angular/material/card';
@@ -29,9 +29,9 @@ import { CMMSInspectionService } from '../services/c-m-m-s-inspection.service';
     standalone: true,
     imports: [
         CommonModule,
-        CommonUiLangModule,
+
         MatTableModule,
-        UiPaginationModule,
+
         CommonUiAutoCompleteModule,
         FormsModule,
         MatFormFieldModule,

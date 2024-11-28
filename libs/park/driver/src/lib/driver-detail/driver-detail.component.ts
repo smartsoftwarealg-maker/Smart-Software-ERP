@@ -27,7 +27,7 @@ import { Observable, switchMap } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
 import { MatExpansionModule, MatExpansionPanel } from '@angular/material/expansion';
 import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
+
 import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -50,7 +50,7 @@ import { DriverVehicleService } from '../services/driver-vehicle.service';
         CommonUiAutoCompleteModule,
         CommonUiDatepickerModule,
 
-        CommonUiLangModule,
+
         FormsModule,
         MatButtonModule,
         MatCheckboxModule,

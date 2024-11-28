@@ -7,11 +7,11 @@ import { LotsService } from '@ss/common/api-lookup';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
-import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
+import {  ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { PartsRequestLineService } from '../services/parts-request-line.service';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
 
-import { UiPaginationModule } from '@ss/common/ui-pagination';
+
+
 import { ArticleService } from '@ss/master-data/api-article';
 import { MaterialModule } from '@ss/common/api-common';
 import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
@@ -22,12 +22,12 @@ import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
     imports: [
         CommonModule,
         MaterialModule,
-        CommonUiLangModule,
-        UiPaginationModule,
+
+
         RouterModule,
         ReactiveFormsModule,
 
-        CommonUiConfirmationDialogModule,
+
         CommonUiDatepickerModule,
         CommonUiAutoCompleteModule,
         DocInfoComponent

@@ -3,7 +3,7 @@ import { BadgeButton, KeepOnToolbar, ShellService } from '@ss/common/ui-shell';
 import { Router } from '@angular/router';
 import { LanguageService, MainPageService, SideNavNode } from '@ss/common/api-common';
 import { CommonModule } from "@angular/common";
-import { CommonUiLangModule } from "@ss/common/ui-lang";
+
 import { WorkflowInboxService } from '@ss/workflow';
 import { BadgeButtonService } from '@ss/common/ui-shell';
 import { AdMobileService } from './ad-mobile.service';
@@ -16,7 +16,6 @@ import { AdMobileService } from './ad-mobile.service';
     standalone: true,
     imports: [
         CommonModule,
-        CommonUiLangModule
     ],
 })
 export class MainPageComponent implements OnInit, OnDestroy {

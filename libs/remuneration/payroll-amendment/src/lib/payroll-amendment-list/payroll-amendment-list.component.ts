@@ -10,10 +10,11 @@ import {PayrollAmendmentService} from '../payroll-amendment.service';
 import {of, switchMap, tap} from 'rxjs';
 import {PayrollMonthService} from '@ss/remuneration/payroll-month';
 import { CommonModule } from '@angular/common';
-import { UiPaginationModule } from '@ss/common/ui-pagination';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
+
+
 import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
 import { RemunerationPaymonthEditorModule } from '@ss/remuneration/paymonth-editor';
+import { PaginationComponent } from '@ss/common/ui-pagination';
 
 @Component({
   selector: 'ss-payroll-amendment-list',
@@ -23,10 +24,11 @@ import { RemunerationPaymonthEditorModule } from '@ss/remuneration/paymonth-edit
     imports: [
         CommonModule,
         MaterialModule,
-        UiPaginationModule,
-        CommonUiLangModule,
+
+
         CommonUiAutoCompleteModule,
-        RemunerationPaymonthEditorModule
+        RemunerationPaymonthEditorModule,
+        PaginationComponent
     ]
 })
 export class PayrollAmendmentListComponent extends BaseEntityListComponent<Amendment> implements OnInit {

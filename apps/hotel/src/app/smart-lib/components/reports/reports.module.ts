@@ -15,7 +15,8 @@ import { ReportCatalogService } from './report-catalog/report-catalog.service';
 import { SaveBarModule } from '../../../common/save-bar/save-bar.module';
 import { MaterialModule } from '../material.module';
 import { PaginationModule } from '../../../common/pagination/pagination.module';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
+import { PaginationComponent } from '@ss/common/ui-pagination';
+
 
 @NgModule({
     imports: [
@@ -26,7 +27,7 @@ import { CommonUiLangModule } from '@ss/common/ui-lang';
         PaginationModule,
         SaveBarModule,
         MaterialModule,
-        CommonUiLangModule,
+        PaginationComponent,
         ReportViewerComponent,
         ReportSelectorComponent,
         ReportViewComponent,

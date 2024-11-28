@@ -1,12 +1,12 @@
 import { Component, Inject, inject, signal } from "@angular/core";
 import { LTMLineMatter, LTMMatter } from '@ltm/ltm-api';
 import { RouterOutlet } from "@angular/router";
-import { CommonUiConfirmationDialogModule } from "@ss/common/ui-confirmation-dialog";
+
 import { MaterialModule } from "@ss/common/api-common";
 import {LtmMatterService} from '@ltm/ltm-api';
 import { CommonModule } from "@angular/common";
-import { CommonUiLangModule } from "@ss/common/ui-lang";
-import { UiPaginationModule } from "@ss/common/ui-pagination";
+
+
 import { FormControl, ReactiveFormsModule } from "@angular/forms";
 
 
@@ -14,6 +14,7 @@ import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common
 import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
 import { CommonUiHourPickerModule } from "@ss/common/ui-hour-picker";
 import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material/dialog";
+import { TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-ltm-matter-list',
@@ -23,17 +24,16 @@ import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material/dialog";
     imports: [
         CommonModule,
         MaterialModule,
-        CommonUiLangModule,
-        UiPaginationModule,
+
         ReactiveFormsModule,
-        CommonUiConfirmationDialogModule,
 
 
         CommonUiAutoCompleteModule,
         CommonUiDatepickerModule,
         RouterOutlet,
-        CommonUiHourPickerModule
-    ],
+        CommonUiHourPickerModule,
+        TranslatePipe
+    ]
 })
 export class LtmMatterDuplicateComponent {
     private dialogRef = inject(MatDialogRef<LtmMatterDuplicateComponent>);

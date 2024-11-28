@@ -6,10 +6,8 @@ import { CMMSRoutingPartService } from '@ss/cmms/lookups';
 import { ArticleService } from 'libs/master-data/api-article/src';
 import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from 'libs/common/ui-auto-complete/src';
 import { CommonModule } from '@angular/common';
-import { CommonUiLangModule } from 'libs/common/ui-lang/src';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
-import { UiPaginationModule } from 'libs/common/ui-pagination/src';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -23,10 +21,10 @@ import { RouterOutlet } from '@angular/router';
     standalone: true,
     imports: [
         CommonModule,
-        CommonUiLangModule,
+
         MatSortModule,
         MatTableModule,
-        UiPaginationModule,
+
         MatCardModule,
         MatFormFieldModule,
         MatInputModule,

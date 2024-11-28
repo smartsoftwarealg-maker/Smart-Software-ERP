@@ -8,17 +8,19 @@ import { Asset, ASSTree, TAsset } from '../assets-api';
 import { NestedTreeControl } from "@angular/cdk/tree";
 import { MatTreeModule, MatTreeNestedDataSource } from '@angular/material/tree';
 import { AssetsService } from '../services/assets.service';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
+
 import { FormControl } from '@angular/forms';
-import { UiPaginationModule } from '@ss/common/ui-pagination';
+
 import { ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
 import { switchMap, tap } from "rxjs/operators";
 import { of } from "rxjs";
+import { TranslatePipe } from '@ss/common/ui-lang';
+import { PaginationComponent } from '@ss/common/ui-pagination';
 
 @Component({
     selector: "ss-asset-tree",
     standalone: true,
-    imports: [CommonModule, MaterialModule, MatTreeModule, CommonUiLangModule, UiPaginationModule],
+    imports: [CommonModule, MaterialModule, MatTreeModule, TranslatePipe, PaginationComponent],
     templateUrl: "./asset-tree.component.html",
     styleUrls: ["./asset-tree.component.css"]
 })

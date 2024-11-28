@@ -1,12 +1,12 @@
 import { Component, inject } from '@angular/core';
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
-import { ActivatedRoute, RouterOutlet } from "@angular/router";
-import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
-import { MaterialModule, UserService } from '@ss/common/api-common';
+import { ActivatedRoute } from "@angular/router";
+import {  ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
+import { MaterialModule } from '@ss/common/api-common';
 import { CommonModule } from "@angular/common";
-import { CommonUiLangModule } from "@ss/common/ui-lang";
-import { UiPaginationModule } from "@ss/common/ui-pagination";
+
+
 import { ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 
 
@@ -27,10 +27,9 @@ import { LtmNormService } from '@ltm/ltm-api';
     imports: [
         CommonModule,
         MaterialModule,
-        CommonUiLangModule,
-        UiPaginationModule,
+
         ReactiveFormsModule,
-        CommonUiConfirmationDialogModule,
+
         CommonUiAutoCompleteModule,
         CommonUiDatepickerModule,
         CommonUiHourPickerModule

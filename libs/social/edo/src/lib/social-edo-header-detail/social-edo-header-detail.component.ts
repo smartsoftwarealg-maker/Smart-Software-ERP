@@ -11,7 +11,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
+
 import { MatCard, MatCardContent } from '@angular/material/card';
 import { MatError, MatFormField, MatLabel } from '@angular/material/form-field';
 import { MatInput } from '@angular/material/input';
@@ -20,13 +20,14 @@ import { EdoHeaderService } from '@social/social-api';
 import { EdoLineService } from '@social/social-api';
 import { PendingEdoComponent } from '../pending-edo/pending-edo.component';
 import { SocialEdoLinesComponent } from '../pending-edo-lines/social-edo-lines.component';
+import { PaginationComponent } from '@ss/common/ui-pagination';
 
 @Component({
     imports: [
         CommonModule,
         CommonUiAutoCompleteModule,
         CommonUiDatepickerModule,
-        CommonUiLangModule,
+        PaginationComponent,
         MatCard,
         MatCardContent,
         MatError,

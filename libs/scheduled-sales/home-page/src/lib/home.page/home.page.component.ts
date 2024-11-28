@@ -10,7 +10,7 @@ import {
 import { ShellService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { MatButton } from '@angular/material/button';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
+
 import { LoginService } from '@ss/common/api-common';
 import { ScheduledSalesHeaderComponent } from '@scheduled-sales/header';
 
@@ -23,7 +23,7 @@ import { ScheduledSalesHeaderComponent } from '@scheduled-sales/header';
         MatCardTitle,
         MatCardContent,
         MatButton,
-        CommonUiLangModule,
+
         MatCardFooter,
         RouterOutlet,
         RouterLink,

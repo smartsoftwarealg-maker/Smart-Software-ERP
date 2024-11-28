@@ -7,7 +7,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { DefaultReportService } from '@ss/common/ui-default-report-component';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { PaginatorPersistenceService } from '@ss/common/api-common';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
+
 import {
     MatCell,
     MatCellDef,
@@ -17,14 +17,15 @@ import {
     MatHeaderRowDef, MatRow, MatRowDef, MatTable
 } from '@angular/material/table';
 import { MatSort, MatSortHeader } from '@angular/material/sort';
-import { UiPaginationModule } from '@ss/common/ui-pagination';
+
 import { F12Service } from '../services/f12-service';
 import { AccFileService } from '@ss/accounting/accounting-api';
+import { PaginationComponent } from '@ss/common/ui-pagination';
 
 @Component({
     imports: [
         CommonModule,
-        CommonUiLangModule,
+
         MatCell,
         MatCellDef,
         MatColumnDef,
@@ -36,8 +37,10 @@ import { AccFileService } from '@ss/accounting/accounting-api';
         MatSort,
         MatSortHeader,
         MatTable,
-        UiPaginationModule,
-        MatHeaderCellDef],
+
+        MatHeaderCellDef,
+        PaginationComponent
+    ],
     selector: 'ss-f12-list',
     standalone: true,
     styleUrl: './f12-list.component.scss',

@@ -4,10 +4,12 @@ import { BaseChildEntityListComponent } from '@ss/common/ui-base-entity';
 import { OH } from '@ss/costing/costing-utils';
 import { RouterModule } from '@angular/router';
 import { MaterialModule } from '@ss/common/api-common';
-import { CommonUiConfirmationDialogModule } from '@ss/common/ui-confirmation-dialog';
-import { UiPaginationModule } from '@ss/common/ui-pagination';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
+
+
+
 import { CostingOhService } from '@ss/costing/costing-projects';
+import { TranslatePipe } from '@ss/common/ui-lang';
+import { PaginationComponent } from '@ss/common/ui-pagination';
 
 @Component({
     selector: 'ss-costing-oh-line',
@@ -16,9 +18,8 @@ import { CostingOhService } from '@ss/costing/costing-projects';
         CommonModule,
         RouterModule,
         MaterialModule,
-        CommonUiConfirmationDialogModule,
-        UiPaginationModule,
-        CommonUiLangModule
+        TranslatePipe,
+        PaginationComponent
     ],
     templateUrl: './costing-oh-line.component.html',
     styleUrl: './costing-oh-line.component.scss',

@@ -6,8 +6,8 @@ import { FormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
 import { RouterModule } from '@angular/router';
 import { MaterialModule } from '@ss/common/api-common';
-import { CommonUiConfirmationDialogModule } from '@ss/common/ui-confirmation-dialog';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
+
+
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { ProductLineKeysService } from '@ss/costing/costing-projects';
 import { CostingOhService } from '@ss/costing/costing-projects';
@@ -20,8 +20,6 @@ import { CostingKeyService } from '@ss/costing/costing-keys';
         CommonModule,
         RouterModule,
         MaterialModule,
-        CommonUiConfirmationDialogModule,
-        CommonUiLangModule,
         MatAutocompleteModule,
         CommonUiAutoCompleteModule,
     ],

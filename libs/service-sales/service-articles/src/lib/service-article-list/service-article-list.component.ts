@@ -9,12 +9,13 @@ import { DefaultReportService } from '@ss/common/ui-default-report-component';
 import { PaginatorPersistenceService } from '@ss/common/api-common';
 import { ServiceArticleService } from '../service-article.service';
 
-import { CommonUiLangModule } from '@ss/common/ui-lang';
+
 
 import { MatTableModule } from '@angular/material/table';
-import { UiPaginationModule } from '@ss/common/ui-pagination';
+
 import { MatSortModule } from '@angular/material/sort';
 import { ImageInputComponent } from '@ss/common/ui-image-input';
+import { PaginationComponent } from '@ss/common/ui-pagination';
 
 @Component({
     selector: 'ss-service-article-list',
@@ -22,10 +23,12 @@ import { ImageInputComponent } from '@ss/common/ui-image-input';
     imports: [
         CommonModule,
         ImageInputComponent,
-        CommonUiLangModule,
+
         MatTableModule,
-        UiPaginationModule,
-        MatSortModule],
+
+        MatSortModule,
+        PaginationComponent
+    ],
     templateUrl: './service-article-list.component.html',
     styleUrls: ['./service-article-list.component.css']
 })

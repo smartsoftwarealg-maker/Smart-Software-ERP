@@ -1,26 +1,28 @@
 import { Component, Inject, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MaterialModule } from '@ss/common/api-common';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
+
 import { MatButtonModule } from '@angular/material/button';
 import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
-import { UiPaginationModule } from '@ss/common/ui-pagination';
+
 import { ArticleService, BOM } from '@ss/master-data/api-article';
 import { FormBuilder, Validators } from '@angular/forms';
 import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-bom-dialog',
     standalone: true,
     imports: [
         CommonModule,
-        CommonUiLangModule,
+
         MatButtonModule,
         MaterialModule,
         CommonUiDatepickerModule,
-        UiPaginationModule,
-        CommonUiAutoCompleteModule
+
+        CommonUiAutoCompleteModule,
+        TranslatePipe
     ],
     templateUrl: './bom-dialog.component.html',
     styleUrl: './bom-dialog.component.css',

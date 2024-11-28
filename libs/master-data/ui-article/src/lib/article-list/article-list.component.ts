@@ -5,20 +5,21 @@ import { ArticleService, Article } from '@ss/master-data/api-article';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {Observable, of} from 'rxjs';
 import {LookupsService} from '@ss/common/api-lookup';
-import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
+import {  ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import {  ImageModel } from '@ss/common/ui-image-input';
 import { HttpService, MaterialModule, PaginatorPersistenceService } from '@ss/common/api-common';
 import {FormControl} from '@angular/forms';
 import {debounceTime, distinctUntilChanged} from 'rxjs/operators';
 import { CommonModule } from '@angular/common';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
-import { UiPaginationModule } from '@ss/common/ui-pagination';
+
+
 import { StockUiArticleStoreModule } from '@ss/stock/article-store';
 
 import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
-import { LogisticsUiStockInfoModule } from '@ss/logistics/ui-stock-info';
+import { UiStockInfoComponent } from '@ss/logistics/ui-stock-info';
 import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
+import { PaginationComponent } from '@ss/common/ui-pagination';
 
 @Component({
     selector: 'ss-article-list',
@@ -28,16 +29,16 @@ import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
     imports: [
         CommonModule,
         MaterialModule,
-        CommonUiLangModule,
-        UiPaginationModule,
-        CommonUiConfirmationDialogModule,
+
+
         StockUiArticleStoreModule,
 
         RouterModule,
 
         CommonUiAutoCompleteModule,
-        LogisticsUiStockInfoModule,
-        DocInfoComponent
+        UiStockInfoComponent,
+        DocInfoComponent,
+        PaginationComponent
     ]
 })
 export class ArticleListComponent extends BaseEntityListComponent<Article> implements OnInit {

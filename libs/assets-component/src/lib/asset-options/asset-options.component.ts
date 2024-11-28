@@ -5,7 +5,7 @@ import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
-import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
+import {  ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { LookupsService } from '@ss/common/api-lookup';
 import { LoginService, MaterialModule } from '@ss/common/api-common';
 import { Observable, switchMap } from 'rxjs';
@@ -13,8 +13,8 @@ import { MatExpansionPanel } from '@angular/material/expansion';
 import { MatCheckboxChange } from '@angular/material/checkbox';
 import { tap } from 'rxjs/operators';
 import { CommonModule } from '@angular/common';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
-import { UiPaginationModule } from '@ss/common/ui-pagination';
+
+
 import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
 import { CustomAttributesModule } from '@ss/custom-attributes';
 
@@ -28,9 +28,9 @@ import { QRCodeModule } from 'angularx-qrcode';
     imports: [
         CommonModule,
         MaterialModule,
-        CommonUiLangModule,
-        UiPaginationModule,
-        CommonUiConfirmationDialogModule,
+
+
+
         CommonUiAutoCompleteModule,
         CommonUiDatepickerModule,
         RouterModule,

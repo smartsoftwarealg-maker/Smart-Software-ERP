@@ -17,10 +17,10 @@ import {
 } from '@ss/logistics/api-transaction';
 import { CommonModule } from '@angular/common';
 
-import { CommonUiLangModule } from '@ss/common/ui-lang';
+
 
 import { MatTableModule } from '@angular/material/table';
-import { UiPaginationModule } from '@ss/common/ui-pagination';
+
 import { MatSortModule } from '@angular/material/sort';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -35,10 +35,10 @@ import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
     imports: [
         CommonModule,
 
-        CommonUiLangModule,
+
 
         MatTableModule,
-        UiPaginationModule,
+
         MatSortModule,
         MatButtonModule,
         MatFormFieldModule,

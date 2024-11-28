@@ -4,16 +4,17 @@ import {ACCFile, AccFileService, PeriodSelectorService} from '@ss/accounting/acc
 import {KeepOnToolbar, ShellService, SnackBarService, ToolbarButton} from '@ss/common/ui-shell';
 import { ActivatedRoute, Router, RouterModule } from "@angular/router";
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
-import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
+import {  ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
 import { LoginService, MaterialModule, PaginatorPersistenceService } from "@ss/common/api-common";
 import {switchMap, tap} from 'rxjs';
 import { ReactiveFormsModule, UntypedFormControl, Validators } from "@angular/forms";
 import { CommonModule } from "@angular/common";
-import { CommonUiLangModule } from "@ss/common/ui-lang";
-import { UiPaginationModule } from "@ss/common/ui-pagination";
+
+
 
 import { CommonUiAutoCompleteModule } from "@ss/common/ui-auto-complete";
 import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
+import { PaginationComponent } from '@ss/common/ui-pagination';
 
 
 @Component({
@@ -25,15 +26,16 @@ import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
         CommonModule,
         RouterModule,
         MaterialModule,
-        CommonUiLangModule,
-        UiPaginationModule,
+
+
         ReactiveFormsModule,
 
         CommonUiAutoCompleteModule,
         CommonUiDatepickerModule,
-        CommonUiConfirmationDialogModule,
+        PaginationComponent
 
-    ],
+
+    ]
 })
 export class FileSelectorComponent extends BaseEntityListComponent<ACCFile> implements OnInit {
     private MONTHS = ['JANUARY', 'FEBRUARY', 'MARCH', 'APRIL', 'MAY', 'JUNE', 'JULY', 'AUGUST', 'SEPTEMBER', 'OCTOBER', 'NOVEMBER', 'DECEMBER'];

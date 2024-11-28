@@ -2,16 +2,16 @@ import { Component } from '@angular/core';
 import { Lookup } from '@ss/common/api-lookup';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router } from '@angular/router';
-import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
+import {  ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { DefaultReportService } from '@ss/common/ui-default-report-component';
 import { MaterialModule, PaginatorPersistenceService } from '@ss/common/api-common';
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { CommonModule } from '@angular/common';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
-import { UiPaginationModule } from '@ss/common/ui-pagination';
+
 import { ReactiveFormsModule } from '@angular/forms';
 import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
 import { PhysicianSpecialtyService } from '../services/physician-specialty.service';
+import { PaginationComponent } from '@ss/common/ui-pagination';
 
 @Component({
     selector: 'ss-physician-specialty-list',
@@ -21,11 +21,9 @@ import { PhysicianSpecialtyService } from '../services/physician-specialty.servi
     imports: [
         CommonModule,
         MaterialModule,
-        CommonUiLangModule,
-        UiPaginationModule,
         ReactiveFormsModule,
-        CommonUiConfirmationDialogModule,
-        CommonUiAutoCompleteModule
+        CommonUiAutoCompleteModule,
+        PaginationComponent
     ],
 })
 export class SpecialtyListComponent extends BaseEntityListComponent<Lookup> {

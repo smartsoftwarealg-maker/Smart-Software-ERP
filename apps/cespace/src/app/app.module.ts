@@ -6,7 +6,7 @@ import {AppComponent} from './app.component';
 import {RouterModule, Routes} from '@angular/router';
 import {UiLoginModule} from '@ss/common/ui-login';
 import {HttpClientModule} from '@angular/common/http';
-import {CommonUiLangModule} from '@ss/common/ui-lang';
+
 import {
     CanActivateService,
     INDEX_PAGE_URL,
@@ -45,7 +45,7 @@ const routes: Routes = [
     { path: '**', redirectTo: LOGIN_URL, pathMatch: 'full' }
 ];
 
-@NgModule(/* TODO(standalone-migration): clean up removed NgModule class manually. 
+@NgModule(/* TODO(standalone-migration): clean up removed NgModule class manually.
 {
     declarations: [
         AppComponent
@@ -59,7 +59,7 @@ const routes: Routes = [
         UiThemeModule,
         UiErrorHandlerModule,
         UiShellModule,
-        CommonUiLangModule,
+        PaginationComponent,
 
         ExchangeUiIdiotPageModule,
         // modules with routes

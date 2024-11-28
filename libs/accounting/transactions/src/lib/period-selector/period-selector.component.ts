@@ -4,13 +4,13 @@ import {PeriodSelectorService, PeriodSummary} from '@ss/accounting/accounting-ap
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import { ActivatedRoute, Router, RouterModule } from "@angular/router";
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
-import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
+import {  ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
 import { LoginService, MaterialModule, PaginatorPersistenceService } from "@ss/common/api-common";
 import { ReactiveFormsModule, UntypedFormControl, Validators } from "@angular/forms";
 import {Observable, tap} from 'rxjs';
 import { CommonModule } from "@angular/common";
-import { CommonUiLangModule } from "@ss/common/ui-lang";
-import { UiPaginationModule } from "@ss/common/ui-pagination";
+
+
 
 import { CommonUiAutoCompleteModule } from "@ss/common/ui-auto-complete";
 import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
@@ -25,13 +25,13 @@ import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
         CommonModule,
         RouterModule,
         MaterialModule,
-        CommonUiLangModule,
-        UiPaginationModule,
+
+
         ReactiveFormsModule,
 
         CommonUiAutoCompleteModule,
         CommonUiDatepickerModule,
-        CommonUiConfirmationDialogModule,
+
 
     ],
 })

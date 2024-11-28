@@ -3,14 +3,13 @@ import { CostCenterGroupService, Lookup } from '@ss/common/api-lookup';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import {BaseEntityDetailComponent, BaseEntityListComponent} from '@ss/common/ui-base-entity';
-import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
+import {  ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import {UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import { MaterialModule, PaginatorPersistenceService } from '@ss/common/api-common';
 import { CommonModule } from '@angular/common';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
-import { UiPaginationModule } from '@ss/common/ui-pagination';
 import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
+import { PaginationComponent } from '@ss/common/ui-pagination';
 
 @Component({
     selector: 'ss-cc-group-list',
@@ -21,10 +20,9 @@ import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
         MaterialModule,
         RouterModule,
         MaterialModule,
-        CommonUiLangModule,
-        UiPaginationModule,
+        PaginationComponent,
         CommonUiAutoCompleteModule,
-        CommonUiConfirmationDialogModule
+        PaginationComponent
     ],
     styleUrls: ['../base-templates/list-template.scss']
 })
@@ -54,10 +52,10 @@ export class CostCenterGroupListComponent extends BaseEntityListComponent<Lookup
         MaterialModule,
         RouterModule,
         MaterialModule,
-        CommonUiLangModule,
-        UiPaginationModule,
+
+
         CommonUiAutoCompleteModule,
-        CommonUiConfirmationDialogModule
+
     ],
     styleUrls: ['../base-templates/detail-template.scss']
 })

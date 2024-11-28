@@ -3,20 +3,21 @@ import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
-import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
+import {  ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { MaterialModule, PaginationModel, PaginatorPersistenceService } from '@ss/common/api-common';
 import {AssetAppointmentDocService} from '../services/asset-appointment-doc.service';
 import {ASSAppointmentHeader, AssetAppointmentLine} from '../assets-api';
 import {AssetAppointmentLineService} from '../services/asset-appointment-line.service';
 import { CommonModule } from '@angular/common';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
 
-import { UiPaginationModule } from '@ss/common/ui-pagination';
+
+
 import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
 import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
 import { CustomAttributesModule } from '@ss/custom-attributes';
 
 import { QRCodeModule } from 'angularx-qrcode';
+import { PaginationComponent } from '@ss/common/ui-pagination';
 
 @Component({
   selector: 'ss-asset-appointment-doc-list',
@@ -26,16 +27,15 @@ import { QRCodeModule } from 'angularx-qrcode';
     imports: [
         CommonModule,
         MaterialModule,
-        CommonUiLangModule,
 
-        UiPaginationModule,
-        CommonUiConfirmationDialogModule,
+
         CommonUiAutoCompleteModule,
         CommonUiDatepickerModule,
         RouterModule,
         CustomAttributesModule,
 
-        QRCodeModule
+        QRCodeModule,
+        PaginationComponent
     ]})
 export class AssetAppointmentDocListComponent extends BaseEntityListComponent<ASSAppointmentHeader> {
     detailData: AssetAppointmentLine[] = [];

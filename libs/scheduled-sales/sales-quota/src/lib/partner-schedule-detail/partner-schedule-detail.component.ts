@@ -7,15 +7,16 @@ import {Agent, CustomerService} from '@ss/logistics/api-agent';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
 import { ReactiveFormsModule, UntypedFormBuilder, Validators } from "@angular/forms";
-import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
+import {  ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
 import {LookupsService} from '@ss/common/api-lookup';
 import { LoginService, MaterialModule } from "@ss/common/api-common";
 import {debounceTime, distinctUntilChanged} from 'rxjs/operators';
 import {switchMap, tap} from 'rxjs';
 import {MatSelectChange} from '@angular/material/select';
-import { CommonUiLangModule } from "@ss/common/ui-lang";
-import { UiPaginationModule } from "@ss/common/ui-pagination";
+
+
 import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
+import { TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-partner-schedule-detail',
@@ -25,13 +26,14 @@ import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
     imports: [
         CommonModule,
         MaterialModule,
-        CommonUiLangModule,
-        UiPaginationModule,
+
+
         ReactiveFormsModule,
-        CommonUiConfirmationDialogModule,
+
         CommonUiDatepickerModule,
         CommonUiAutoCompleteModule,
-    ],
+        TranslatePipe
+    ]
 })
 export class PartnerScheduleDetailComponent extends BaseEntityDetailComponent<Schedule> {
     private loginSrv  = inject(LoginService);

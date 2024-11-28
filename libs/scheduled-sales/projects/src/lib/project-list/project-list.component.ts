@@ -4,16 +4,17 @@ import {SSProject} from '@ss/scheduled-sales/api-scheduled-sales';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
-import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
+import {  ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { MaterialModule, PaginatorPersistenceService } from '@ss/common/api-common';
 import {ProjectService} from '../project.service';
 import { CommonModule } from '@angular/common';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
-import { UiPaginationModule } from '@ss/common/ui-pagination';
+
+
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
 import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
 import { Agent, CustomerService } from '@ss/logistics/api-agent';
+import { PaginationComponent } from '@ss/common/ui-pagination';
 
 @Component({
     selector: 'ss-project-list',
@@ -23,13 +24,14 @@ import { Agent, CustomerService } from '@ss/logistics/api-agent';
     imports: [
         CommonModule,
         MaterialModule,
-        CommonUiLangModule,
-        UiPaginationModule,
+
+
         ReactiveFormsModule,
-        CommonUiConfirmationDialogModule,
+
         CommonUiDatepickerModule,
-        CommonUiAutoCompleteModule
-    ],
+        CommonUiAutoCompleteModule,
+        PaginationComponent
+    ]
 })
 export class ProjectListComponent extends BaseEntityListComponent<SSProject> {
     private customerSrv = inject(CustomerService);

@@ -33,7 +33,7 @@ import { MatExpansionModule, MatExpansionPanel } from '@angular/material/expansi
 import { Observable } from 'rxjs';
 import { CmmsAssetService } from '../services/cmms-asset.service';
 import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
+
 import { CustomAttributesModule } from '@ss/custom-attributes';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -51,7 +51,7 @@ import { CMMSAssetTriggerService } from '@ss/cmms/asset-triggers';
 @Component({
     selector: 'ss-cmms-asset-detail',
     standalone: true,
-    imports: [CommonModule,  CommonUiAutoCompleteModule, CommonUiDatepickerModule, CommonUiLangModule, CustomAttributesModule, FormsModule, MatButtonModule, MatExpansionModule, MatFormFieldModule, MatInputModule, MatOptionModule, MatSelectModule, MatTableModule, MatTooltipModule, QRCodeModule, ReactiveFormsModule, RouterOutlet, MaterialModule],
+    imports: [CommonModule,  CommonUiAutoCompleteModule, CommonUiDatepickerModule,  CustomAttributesModule, FormsModule, MatButtonModule, MatExpansionModule, MatFormFieldModule, MatInputModule, MatOptionModule, MatSelectModule, MatTableModule, MatTooltipModule, QRCodeModule, ReactiveFormsModule, RouterOutlet, MaterialModule],
     templateUrl: './cmms-asset-detail.component.html',
     styleUrls: ['./cmms-asset-detail.component.scss'],
 })

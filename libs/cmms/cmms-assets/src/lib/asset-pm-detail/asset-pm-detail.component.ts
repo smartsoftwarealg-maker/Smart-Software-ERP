@@ -7,7 +7,7 @@ import { FormBuilder, ReactiveFormsModule, UntypedFormGroup, Validators } from '
 import { MaterialModule } from '@ss/common/api-common';
 import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
 import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
+
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -29,7 +29,7 @@ import { CMMSRoutingService } from '@ss/master-data/cmms-routing';
         CommonModule,
         CommonUiAutoCompleteModule,
         CommonUiDatepickerModule,
-        CommonUiLangModule,
+
         MatCardModule,
         MatFormFieldModule,
         MatInputModule,

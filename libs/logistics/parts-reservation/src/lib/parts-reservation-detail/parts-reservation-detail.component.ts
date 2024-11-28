@@ -14,7 +14,7 @@ import { tap } from 'rxjs/operators';
 import { ReservationService } from '../services/reservation.service';
 import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
 import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
+
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -24,7 +24,7 @@ import { ReservationLinesService } from "../services/reservation-lines.service";
 @Component({
     selector: 'ss-parts-reservation-detail',
     standalone: true,
-    imports: [CommonModule, CommonUiAutoCompleteModule, CommonUiDatepickerModule, CommonUiLangModule, MatCardModule, MatFormFieldModule, MatInputModule, ReactiveFormsModule, RouterOutlet, TextFieldModule],
+    imports: [CommonModule, CommonUiAutoCompleteModule, CommonUiDatepickerModule,  MatCardModule, MatFormFieldModule, MatInputModule, ReactiveFormsModule, RouterOutlet, TextFieldModule],
     templateUrl: './parts-reservation-detail.component.html',
     styleUrls: ['../../../../../common/assets/src/assets/transac-detail.scss']
 })

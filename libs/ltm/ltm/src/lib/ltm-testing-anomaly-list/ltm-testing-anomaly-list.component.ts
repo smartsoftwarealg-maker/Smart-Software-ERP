@@ -3,23 +3,19 @@ import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import { LTMTestingAnomaly } from '@ltm/ltm-api';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import { ActivatedRoute, Router, RouterOutlet } from "@angular/router";
-import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
+import {  ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import { dateToYmdStr, MaterialModule, PaginatorPersistenceService } from '@ss/common/api-common';
 import { CommonModule } from "@angular/common";
-import { CommonUiLangModule } from "@ss/common/ui-lang";
-import { UiPaginationModule } from "@ss/common/ui-pagination";
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
-
-
 import { CommonUiAutoCompleteModule } from "@ss/common/ui-auto-complete";
 import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
 import { CommonUiHourPickerModule } from "@ss/common/ui-hour-picker";
 import { LtmTestingAnomalyService } from '@ltm/ltm-api';
-import { callback } from 'chart.js/helpers';
 import { Observable } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
+import { PaginationComponent } from '@ss/common/ui-pagination';
 
 @Component({
     selector: 'ss-ltm-testing-anomaly-list',
@@ -29,12 +25,8 @@ import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
     imports: [
         CommonModule,
         MaterialModule,
-        CommonUiLangModule,
-        UiPaginationModule,
+        PaginationComponent,
         ReactiveFormsModule,
-        CommonUiConfirmationDialogModule,
-
-
         CommonUiAutoCompleteModule,
         CommonUiDatepickerModule,
         RouterOutlet,

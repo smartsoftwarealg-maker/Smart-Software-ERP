@@ -4,9 +4,9 @@ import { BaseChildEntityListComponent } from '@ss/common/ui-base-entity';
 import { CPoolKey } from '@ss/costing/costing-utils';
 import { RouterModule } from '@angular/router';
 import { MaterialModule } from '@ss/common/api-common';
-import { CommonUiConfirmationDialogModule } from '@ss/common/ui-confirmation-dialog';
-import { UiPaginationModule } from '@ss/common/ui-pagination';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
+
+
+
 import { CostingPoolKeysService } from '@ss/costing/costing-projects';
 import { FormBuilder, Validators } from '@angular/forms';
 import { CostingKeyService } from '@ss/costing/costing-keys';
@@ -19,9 +19,9 @@ import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common
         CommonModule,
         RouterModule,
         MaterialModule,
-        CommonUiConfirmationDialogModule,
-        UiPaginationModule,
-        CommonUiLangModule,
+
+
+
         CommonUiAutoCompleteModule
     ],
     templateUrl: './costing-pool-keys.component.html',

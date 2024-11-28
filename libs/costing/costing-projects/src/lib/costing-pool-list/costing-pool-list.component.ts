@@ -5,9 +5,9 @@ import { CPool } from '@ss/costing/costing-utils';
 import { CostingPoolService } from '../services/costing-pool.service';
 import { RouterModule } from '@angular/router';
 import { MaterialModule } from '@ss/common/api-common';
-import { CommonUiConfirmationDialogModule } from '@ss/common/ui-confirmation-dialog';
-import { UiPaginationModule } from '@ss/common/ui-pagination';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
+import { TranslatePipe } from '@ss/common/ui-lang';
+import { PaginationComponent } from '@ss/common/ui-pagination';
+
 
 @Component({
     selector: 'ss-costing-pool-list',
@@ -16,9 +16,8 @@ import { CommonUiLangModule } from '@ss/common/ui-lang';
         CommonModule,
         RouterModule,
         MaterialModule,
-        CommonUiConfirmationDialogModule,
-        UiPaginationModule,
-        CommonUiLangModule
+        TranslatePipe,
+        PaginationComponent
     ],
     templateUrl: './costing-pool-list.component.html',
     styleUrl: './costing-pool-list.component.css',

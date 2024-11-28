@@ -6,7 +6,7 @@ import {
 } from '@ss/logistics/api-transaction';
 import { PartsRequestLineService } from '../services/parts-request-line.service';
 import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
+
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -17,7 +17,7 @@ import { TextFieldModule } from '@angular/cdk/text-field';
 @Component({
     selector: 'ss-parts-request-line-detail',
     standalone: true,
-    imports: [CommonModule, CommonUiAutoCompleteModule, CommonUiLangModule, FormsModule, MatButtonModule, MatCardModule, MatFormFieldModule, MatInputModule, ReactiveFormsModule, TextFieldModule],
+    imports: [CommonModule, CommonUiAutoCompleteModule,  FormsModule, MatButtonModule, MatCardModule, MatFormFieldModule, MatInputModule, ReactiveFormsModule, TextFieldModule],
     templateUrl: './parts-request-line-detail.component.html',
     styleUrls: ['../../../../../common/assets/src/assets/transac-lines-detail.scss'],
 })

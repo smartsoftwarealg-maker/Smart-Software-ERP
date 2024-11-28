@@ -13,7 +13,7 @@ import { MainPageComponent } from '@ss/common/ui-main-page';
 import { PATIENTS_APP_URL, FINANCE_APP_URL, ADMINISTRATION_APP_URL } from './app/common';
 import { UiThemeModule } from '@ss/common/ui-theme';
 import { UiErrorHandlerModule } from '@ss/common/ui-error-handler';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
+
 import { UiLoginModule } from '@ss/common/ui-login';
 import { UiCenterSelectModule } from '@ss/common/ui-center-select';
 import { LogisticsUiAgentModule } from '@ss/logistics/ui-agent';
@@ -56,9 +56,9 @@ if (environment.production) {
 
 bootstrapApplication(AppComponent, {
     providers: [
-        importProvidersFrom(BrowserModule, 
+        importProvidersFrom(BrowserModule,
         // Smart Software modules
-        UiThemeModule, UiErrorHandlerModule, UiShellModule, CommonUiLangModule, UiLoginModule, UiCenterSelectModule, LogisticsUiAgentModule),
+        UiThemeModule, UiErrorHandlerModule, UiShellModule, PaginationComponent, UiLoginModule, UiCenterSelectModule, LogisticsUiAgentModule),
         provideAnimations(),
         provideHttpClient(withInterceptorsFromDi()),
         provideRouter(routes),

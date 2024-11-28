@@ -7,7 +7,7 @@ import {
     OfferLinesService
 } from "@ss/logistics/api-transaction";
 import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
+
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -20,7 +20,7 @@ import { Service, ServiceArticleService } from '@ss/service-sales/service-articl
 @Component({
     selector: 'ss-service-proforma-line-detail',
     standalone: true,
-    imports: [CommonModule, CommonUiAutoCompleteModule, CommonUiLangModule, MatButtonModule, MatCardModule, MatFormFieldModule, MatInputModule, MaterialModule, ReactiveFormsModule, TextFieldModule],
+    imports: [CommonModule, CommonUiAutoCompleteModule,  MatButtonModule, MatCardModule, MatFormFieldModule, MatInputModule, MaterialModule, ReactiveFormsModule, TextFieldModule],
     templateUrl: './service-proforma-line-detail.component.html',
     styleUrls: ['./service-proforma-line-detail.component.css']
 })

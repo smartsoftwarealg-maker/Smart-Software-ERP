@@ -3,11 +3,11 @@ import { CommonModule } from '@angular/common';
 import { ImportReceptionListComponent } from './import-reception-list/import-reception-list.component';
 import { ImportReceptionDetailComponent } from './import-reception-detail/import-reception-detail.component';
 import { ImportReceptionLinesDetailComponent } from './import-reception-lines-detail/import-reception-lines-detail.component';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
+
 
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
-import { UiPaginationModule } from '@ss/common/ui-pagination';
+
 import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
 import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
 import { MatCardModule } from '@angular/material/card';
@@ -25,10 +25,10 @@ import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
 @NgModule({
     imports: [
         CommonModule,
-        CommonUiLangModule,
+
         MatSortModule,
         MatTableModule,
-        UiPaginationModule,
+
         CommonUiAutoCompleteModule,
         CommonUiDatepickerModule,
         MatCardModule,

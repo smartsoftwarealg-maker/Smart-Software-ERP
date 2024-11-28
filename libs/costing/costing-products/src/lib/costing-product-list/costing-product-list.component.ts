@@ -2,19 +2,20 @@ import {Component, HostBinding, OnInit} from '@angular/core';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { MaterialModule, PaginatorPersistenceService } from '@ss/common/api-common';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
-import { UiPaginationModule } from '@ss/common/ui-pagination';
+
+
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
 import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
-import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
+import {  ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { DefaultReportService } from '@ss/common/ui-default-report-component';
 import { CostingProductService } from '../costing-product.service';
 import { CProduct, slideToRight } from '@ss/costing/costing-utils';
+import { PaginationComponent } from '@ss/common/ui-pagination';
 
 @Component({
     selector: 'ss-costing-product-list',
@@ -25,13 +26,14 @@ import { CProduct, slideToRight } from '@ss/costing/costing-utils';
         CommonModule,
         RouterModule,
         MaterialModule,
-        CommonUiLangModule,
-        UiPaginationModule,
+
+
         ReactiveFormsModule,
 
         CommonUiAutoCompleteModule,
         CommonUiDatepickerModule,
-        CommonUiConfirmationDialogModule
+        PaginationComponent
+
     ],
     animations: [slideToRight]
 })

@@ -3,13 +3,13 @@ import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
 import { ReactiveFormsModule, UntypedFormBuilder, Validators } from '@angular/forms';
 //import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
-import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
+import {  ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import {Bank, BankService} from '@ss/administration/api-bank';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import { CommonModule } from '@angular/common';
 import { MaterialModule } from '@ss/common/api-common';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
-import { UiPaginationModule } from '@ss/common/ui-pagination';
+
+
 
 
 @Component({
@@ -18,10 +18,10 @@ import { UiPaginationModule } from '@ss/common/ui-pagination';
     imports: [
         CommonModule,
         MaterialModule,
-        CommonUiLangModule,
-        UiPaginationModule,
+
+
         ReactiveFormsModule,
-        CommonUiConfirmationDialogModule
+
     ],
     styleUrls: ['./bank-detail.component.scss'],
     templateUrl: './bank-detail.component.html'

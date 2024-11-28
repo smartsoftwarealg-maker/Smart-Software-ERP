@@ -7,7 +7,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { SocialActivity, SocialActivityLookupService, SocialActivityService } from '@social/social-api';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
+
 import { MatCard, MatCardContent } from '@angular/material/card';
 import { MatError, MatFormField, MatLabel } from '@angular/material/form-field';
 import { MatInput } from '@angular/material/input';
@@ -15,7 +15,7 @@ import { MatInput } from '@angular/material/input';
 @Component({
     selector: 'ss-social-activities-detail',
     standalone: true,
-    imports: [CommonModule, CommonUiLangModule, MatCard, MatCardContent, MatError, MatFormField, MatInput, MatLabel, ReactiveFormsModule],
+    imports: [CommonModule,  MatCard, MatCardContent, MatError, MatFormField, MatInput, MatLabel, ReactiveFormsModule],
     templateUrl: './social-activities-detail.component.html',
     styleUrl: './social-activities-detail.component.scss',
 })

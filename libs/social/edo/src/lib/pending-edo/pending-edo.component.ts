@@ -2,7 +2,7 @@ import { Component, inject, input, output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BaseChildEntityListComponent } from '@ss/common/ui-base-entity';
 import { SocialActivityService, SocialAid } from '@social/social-api';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
+
 import {
     MatCell,
     MatCellDef,
@@ -11,21 +11,36 @@ import {
     MatHeaderRow,
     MatHeaderRowDef, MatRow, MatRowDef, MatTable
 } from '@angular/material/table';
-import { MatTooltip } from '@angular/material/tooltip';
-import { UiPaginationModule } from '@ss/common/ui-pagination';
-import { MatButton, MatMiniFabButton } from '@angular/material/button';
+
+import { MatMiniFabButton } from '@angular/material/button';
 import { PendingEdoService } from '@social/social-api';
-import { map, of, switchMap } from 'rxjs';
-import { LoginService, MaterialModule } from '@ss/common/api-common';
-import { PersonAutocompleteClass } from '@ss/employee-services/employee-services';
+import { switchMap } from 'rxjs';
+import { MaterialModule } from '@ss/common/api-common';
 import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
 import { FormControl } from '@angular/forms';
 import { MatFormField, MatLabel } from '@angular/material/form-field';
+import { PaginationComponent } from '@ss/common/ui-pagination';
 
 @Component({
     selector: 'ss-pending-edo',
     standalone: true,
-    imports: [CommonModule, CommonUiLangModule, MatCell, MatCellDef, MatColumnDef, MatHeaderCell, MatHeaderRow, MatHeaderRowDef, MatRow, MatRowDef, MatTable, MatTooltip, UiPaginationModule, MatHeaderCellDef, MatMiniFabButton, MatButton, MatFormField, CommonUiAutoCompleteModule, MatLabel, MaterialModule],
+    imports: [
+        CommonModule,
+        PaginationComponent,
+        MatCell,
+        MatCellDef,
+        MatColumnDef,
+        MatHeaderCell,
+        MatHeaderRow,
+        MatHeaderRowDef,
+        MatRow,
+        MatRowDef,
+        MatTable, MatHeaderCellDef,
+        MatMiniFabButton,
+        MatFormField,
+        CommonUiAutoCompleteModule,
+        MatLabel,
+        MaterialModule],
     templateUrl: './pending-edo.component.html',
     styleUrl: './pending-edo.component.scss',
 })

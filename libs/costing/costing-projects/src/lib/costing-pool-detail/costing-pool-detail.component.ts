@@ -9,8 +9,8 @@ import { CostingKeyService } from '@ss/costing/costing-keys';
 import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
 import { RouterModule } from '@angular/router';
 import { MaterialModule } from '@ss/common/api-common';
-import { CommonUiConfirmationDialogModule } from '@ss/common/ui-confirmation-dialog';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
+
+
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { CostingPoolKeysService } from '../services/costing-pool-keys.service';
 import { CostingPoolKeysComponent } from '../costing-pool-keys/costing-pool-keys.component';
@@ -26,8 +26,8 @@ import { CostingPoolsCostsService } from '../services/costing-pools-costs.servic
         CommonModule,
         RouterModule,
         MaterialModule,
-        CommonUiConfirmationDialogModule,
-        CommonUiLangModule,
+
+
         MatAutocompleteModule,
         CommonUiAutoCompleteModule,
         CostingPoolKeysComponent,

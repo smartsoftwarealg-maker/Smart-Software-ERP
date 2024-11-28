@@ -3,14 +3,14 @@ import { ImageModel } from './image-model';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { LanguageService, MaterialModule } from '@ss/common/api-common';
 import { CommonModule } from '@angular/common';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
+
 
 @Component({
     selector: 'ss-image-input',
     templateUrl: 'image-input.component.html',
     styleUrls: ['image-input.component.scss'],
     standalone: true,
-    imports: [CommonModule, MaterialModule, CommonUiLangModule]
+    imports: [CommonModule, MaterialModule, ]
 })
 export class ImageInputComponent implements OnInit, OnDestroy, AfterContentInit {
 

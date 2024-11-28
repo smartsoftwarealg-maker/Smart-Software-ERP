@@ -6,7 +6,7 @@ import { FormBuilder, FormsModule, ReactiveFormsModule, UntypedFormGroup, Valida
 import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
 import { PersonLocationService } from '../services/person-location.service';
 import { AssetLocationService } from '@ss/assets-component';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
+
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -14,7 +14,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 @Component({
     selector: 'ss-person-location-detail',
     standalone: true,
-    imports: [CommonModule, CommonUiAutoCompleteModule, CommonUiLangModule, FormsModule, MatButtonModule, MatCardModule, MatFormFieldModule, ReactiveFormsModule],
+    imports: [CommonModule, CommonUiAutoCompleteModule,  FormsModule, MatButtonModule, MatCardModule, MatFormFieldModule, ReactiveFormsModule],
     templateUrl: './person-location-detail.component.html',
     styleUrls: ['./person-location-detail.component.css'],
 })

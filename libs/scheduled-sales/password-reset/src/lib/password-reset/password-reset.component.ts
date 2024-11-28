@@ -3,10 +3,10 @@ import { CommonModule } from '@angular/common';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { LoginService, MaterialModule, UserService } from '@ss/common/api-common';
 import { ActivatedRoute } from '@angular/router';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
-import { UiPaginationModule } from '@ss/common/ui-pagination';
+
+
 import { FormBuilder, ReactiveFormsModule, UntypedFormBuilder } from '@angular/forms';
-import { CommonUiConfirmationDialogModule } from '@ss/common/ui-confirmation-dialog';
+
 import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
 import { Agent, CustomerService } from '@ss/logistics/api-agent';
 
@@ -16,10 +16,10 @@ import { Agent, CustomerService } from '@ss/logistics/api-agent';
     imports: [
         CommonModule,
         MaterialModule,
-        CommonUiLangModule,
-        UiPaginationModule,
+
+
         ReactiveFormsModule,
-        CommonUiConfirmationDialogModule,
+
         CommonUiAutoCompleteModule
     ],
     templateUrl: './password-reset.component.html',

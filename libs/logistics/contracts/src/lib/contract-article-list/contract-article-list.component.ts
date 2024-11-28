@@ -5,14 +5,15 @@ import {map, of, switchMap} from 'rxjs';
 import {ContractArticleService} from '../contract-article.service';
 import { MaterialModule, PaginationModel } from "@ss/common/api-common";
 import {SnackBarService} from '@ss/common/ui-shell';
-import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
+import {  ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
 import { CommonModule } from "@angular/common";
-import { CommonUiLangModule } from "@ss/common/ui-lang";
-import { UiPaginationModule } from "@ss/common/ui-pagination";
+
+
 import { ReactiveFormsModule } from "@angular/forms";
 
 import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
 import { CommonUiAutoCompleteModule } from "@ss/common/ui-auto-complete";
+import { PaginationComponent } from '@ss/common/ui-pagination';
 
 @Component({
     selector: 'ss-contract-article-list',
@@ -22,15 +23,16 @@ import { CommonUiAutoCompleteModule } from "@ss/common/ui-auto-complete";
     imports: [
         CommonModule,
         MaterialModule,
-        CommonUiLangModule,
-        UiPaginationModule,
+
+
         ReactiveFormsModule,
-        CommonUiConfirmationDialogModule,
+
 
         CommonUiDatepickerModule,
         CommonUiAutoCompleteModule,
         RouterModule,
-    ],
+        PaginationComponent
+    ]
 })
 export class ContractArticleListComponent implements OnInit {
     selected: ProjectArticle | null = null;

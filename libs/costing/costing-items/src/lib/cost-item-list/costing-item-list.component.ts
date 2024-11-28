@@ -6,15 +6,16 @@ import { BaseEntityListComponent } from 'libs/common/ui-base-entity/src';
 import { MaterialModule, PaginatorPersistenceService } from '@ss/common/api-common';
 import { ShellService, SnackBarService } from "@ss/common/ui-shell";
 import { DefaultReportService } from '@ss/common/ui-default-report-component';
-import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
+import {  ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { CostingItemService } from "../costing-item.service";
 import { CommonModule } from '@angular/common';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
-import { UiPaginationModule } from "@ss/common/ui-pagination";
+
+
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
 import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
+import { PaginationComponent } from '@ss/common/ui-pagination';
 
 
 @Component({
@@ -22,18 +23,19 @@ import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
   templateUrl: "./costing-item-list.component.html",
   styleUrls: ["./costing-item-list.component.scss"],
   standalone: true,
-  imports: [
-    CommonModule,
-    RouterModule,
-    MaterialModule,
-    CommonUiLangModule,
-    UiPaginationModule,
-    ReactiveFormsModule,
+    imports: [
+        CommonModule,
+        RouterModule,
+        MaterialModule,
 
-    CommonUiAutoCompleteModule,
-    CommonUiDatepickerModule,
-    CommonUiConfirmationDialogModule
-  ],
+
+        ReactiveFormsModule,
+
+        CommonUiAutoCompleteModule,
+        CommonUiDatepickerModule,
+        PaginationComponent
+
+    ],
   animations: [slideToRight]
 })
 export class CostingItemListComponent extends BaseEntityListComponent<CItem> implements OnInit {

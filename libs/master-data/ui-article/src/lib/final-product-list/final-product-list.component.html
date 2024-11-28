@@ -3,10 +3,10 @@
         <mat-label translate>LOGISTICS_APPID</mat-label>
         <mat-select [formControl]="filterCtrl">
             <mat-option [value]="0"></mat-option>
-            <mat-option [value]="1"> {{'LOGISTICS_CEMENT'|translate}} </mat-option>
-            <mat-option [value]="2"> {{'LOGISTICS_PARTS'|translate}} </mat-option>
-            <mat-option [value]="3"> {{'FOOD'|translate}} </mat-option>
-            <mat-option [value]="4"> {{'LOGISTICS_FURNITURE'|translate}} </mat-option>
+            <mat-option [value]="1"> {{ 'LOGISTICS_CEMENT'|translate }}</mat-option>
+            <mat-option [value]="2"> {{ 'LOGISTICS_PARTS'|translate }}</mat-option>
+            <mat-option [value]="3"> {{ 'FOOD'|translate }}</mat-option>
+            <mat-option [value]="4"> {{ 'LOGISTICS_FURNITURE'|translate }}</mat-option>
         </mat-select>
     </mat-form-field>
 </div>
@@ -32,42 +32,42 @@
         <ng-container matColumnDef="reference">
             <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_REFERENCE</mat-header-cell>
             <mat-cell *matCellDef="let e">
-                {{e.reference}}
+                {{ e.reference }}
             </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="description2">
             <mat-header-cell *matHeaderCellDef mat-sort-header translate>LOGISTICS_DESCRIPTION</mat-header-cell>
             <mat-cell *matCellDef="let e">
-                {{e.description2}}
+                {{ e.description2 }}
             </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="price1">
             <mat-header-cell *matHeaderCellDef mat-sort-header translate>LOGISTICS_PRICE</mat-header-cell>
             <mat-cell *matCellDef="let e" style="justify-content: flex-end; direction: ltr;">
-                {{ e.price1 | number: '1.2-2'}}
+                {{ e.price1 | number: '1.2-2' }}
             </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="awp">
             <mat-header-cell *matHeaderCellDef mat-sort-header translate>LOGISTICS_AWP</mat-header-cell>
             <mat-cell *matCellDef="let e" style="justify-content: flex-end; direction: ltr;">
-                {{ e.awp | number: '1.2-2'}}
+                {{ e.awp | number: '1.2-2' }}
             </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="routingValue">
             <mat-header-cell *matHeaderCellDef mat-sort-header translate>CMMS_LABOR_COST</mat-header-cell>
             <mat-cell *matCellDef="let e" style="justify-content: flex-end; direction: ltr;">
-                {{ e.routingValue | number: '1.2-2'}}
+                {{ e.routingValue | number: '1.2-2' }}
             </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="bomValue">
             <mat-header-cell *matHeaderCellDef mat-sort-header translate>COST_DIRECT_MATERIAL</mat-header-cell>
             <mat-cell *matCellDef="let e" style="justify-content: flex-end; direction: ltr;">
-                {{ e.bomValue | number: '1.2-2'}}
+                {{ e.bomValue | number: '1.2-2' }}
             </mat-cell>
         </ng-container>
 
@@ -81,21 +81,21 @@
         <ng-container matColumnDef="markDescription">
             <mat-header-cell *matHeaderCellDef mat-sort-header translate>STOCK_MARK</mat-header-cell>
             <mat-cell *matCellDef="let e">
-                {{e.markDescription}}
+                {{ e.markDescription }}
             </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="laborHours">
             <mat-header-cell *matHeaderCellDef mat-sort-header translate>CMMS_LABOR_HOURS</mat-header-cell>
             <mat-cell *matCellDef="let e">
-                {{e.laborHours | number: '1.2-2' }}
+                {{ e.laborHours | number: '1.2-2' }}
             </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="unitDescription">
             <mat-header-cell *matHeaderCellDef mat-sort-header translate>STOCK_UNIT</mat-header-cell>
             <mat-cell *matCellDef="let e">
-                {{e.unitDescription}}
+                {{ e.unitDescription }}
             </mat-cell>
         </ng-container>
 
@@ -110,11 +110,13 @@
 </div>
 
 <div class="doc-info">
-    <ss-doc-info
-        *ngIf="selected" [displayedGroups]="['article']"
-        [params]="{ articleId: selectedRow?.id,
+    @if (selected) {
+        <ss-doc-info
+            [displayedGroups]="['article']"
+            [params]="{ articleId: selectedRow?.id,
                     articleUseStoreSearch : true,
                     articleReference: selectedRow?.reference
                   }">
-    </ss-doc-info>
+        </ss-doc-info>
+    }
 </div>

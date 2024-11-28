@@ -10,7 +10,7 @@ import {
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
 import { ReactiveFormsModule, UntypedFormBuilder, Validators } from "@angular/forms";
-import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
+import {  ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
 import {LookupsService} from '@ss/common/api-lookup';
 import { LoginService, MaterialModule } from "@ss/common/api-common";
 import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from "@ss/common/ui-auto-complete";
@@ -19,10 +19,11 @@ import { CommonModule, DatePipe } from "@angular/common";
 import {MatSelectChange} from '@angular/material/select';
 import {switchMap, tap} from 'rxjs';
 import {debounceTime, distinctUntilChanged} from 'rxjs/operators';
-import { CommonUiLangModule } from "@ss/common/ui-lang";
-import { UiPaginationModule } from "@ss/common/ui-pagination";
+
+
 import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
 import { ProjectService } from '@ss/scheduled-sales/projects';
+import { TranslatePipe } from '@ss/common/ui-lang';
 
 // type Article = { id: number, reference: string, description: string};
 
@@ -34,13 +35,14 @@ import { ProjectService } from '@ss/scheduled-sales/projects';
     imports: [
         CommonModule,
         MaterialModule,
-        CommonUiLangModule,
-        UiPaginationModule,
+
+
         ReactiveFormsModule,
-        CommonUiConfirmationDialogModule,
+
         CommonUiDatepickerModule,
         CommonUiAutoCompleteModule,
-    ],
+        TranslatePipe
+    ]
 })
 export class SalesScheduleDetailComponent extends BaseEntityDetailComponent<Schedule> {
     private loginSrv    = inject(LoginService);

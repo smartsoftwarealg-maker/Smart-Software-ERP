@@ -12,11 +12,12 @@ import { DefaultReportService } from '@ss/common/ui-default-report-component';
 import { DriverService } from '../services/driver.service';
 import { Observable, of } from 'rxjs';
 import {  ImageModel } from '@ss/common/ui-image-input';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
+
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { MatTabsModule } from '@angular/material/tabs';
-import { UiPaginationModule } from '@ss/common/ui-pagination';
+import { PaginationComponent } from '@ss/common/ui-pagination';
+
 
 @Component({
     selector: 'ss-driver-list',
@@ -24,11 +25,12 @@ import { UiPaginationModule } from '@ss/common/ui-pagination';
     imports: [
         CommonModule,
 
-        CommonUiLangModule,
+
         MatSortModule,
         MatTableModule,
         MatTabsModule,
-        UiPaginationModule],
+        PaginationComponent
+    ],
     templateUrl: './driver-list.component.html',
     styleUrls: ['./driver-list.component.scss']
 })

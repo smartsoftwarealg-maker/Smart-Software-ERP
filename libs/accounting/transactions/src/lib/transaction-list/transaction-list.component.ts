@@ -9,7 +9,7 @@ import {
     Journal} from '@ss/accounting/accounting-api';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
-import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
+import {  ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
 import { LoginService, MaterialModule, PaginatorPersistenceService } from "@ss/common/api-common";
 import {MatSelectionListChange} from '@angular/material/list';
 import {switchMap, tap} from 'rxjs';
@@ -18,12 +18,13 @@ import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import { FormControl, ReactiveFormsModule } from "@angular/forms";
 import { MatRadioChange } from '@angular/material/radio';
 import { CommonModule } from "@angular/common";
-import { CommonUiLangModule } from "@ss/common/ui-lang";
-import { UiPaginationModule } from "@ss/common/ui-pagination";
+
+
 
 import { CommonUiAutoCompleteModule } from "@ss/common/ui-auto-complete";
 import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
 import { AppArchiveMainComponent } from '@ss/common/app-archive';
+import { PaginationComponent } from '@ss/common/ui-pagination';
 
 
 @Component({
@@ -35,14 +36,15 @@ import { AppArchiveMainComponent } from '@ss/common/app-archive';
         CommonModule,
         RouterModule,
         MaterialModule,
-        CommonUiLangModule,
-        UiPaginationModule,
+
+
         ReactiveFormsModule,
 
         CommonUiAutoCompleteModule,
         CommonUiDatepickerModule,
-        CommonUiConfirmationDialogModule,
-        AppArchiveMainComponent
+
+        AppArchiveMainComponent,
+        PaginationComponent
 
     ]
 })

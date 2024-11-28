@@ -5,10 +5,8 @@ import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { ReactiveFormsModule, UntypedFormBuilder } from '@angular/forms';
 import { BaseLookupDetailClass } from '../detail-template/base-lookup-detail.class';
 import { CommonModule } from '@angular/common';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
-import { UiPaginationModule } from '@ss/common/ui-pagination';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -23,10 +21,8 @@ import { CMMSPermitTypeService } from '../services/cmms-permit-type.service';
     standalone: true,
     imports: [
         CommonModule,
-        CommonUiLangModule,
         MatSortModule,
         MatTableModule,
-        UiPaginationModule,
         MatCardModule,
         MatFormFieldModule,
         MatInputModule,

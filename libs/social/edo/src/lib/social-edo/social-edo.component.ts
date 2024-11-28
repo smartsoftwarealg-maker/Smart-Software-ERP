@@ -8,7 +8,7 @@ import { PayrollMonthService } from '@ss/remuneration/payroll-month';
 import { BankService } from '@ss/administration/api-bank';
 import { switchMap, tap } from 'rxjs';
 import { SelectionModel } from '@angular/cdk/collections';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
+
 import { MatButton } from '@angular/material/button';
 import { MatCard } from '@angular/material/card';
 import { MatError, MatFormField, MatFormFieldModule, MatLabel } from '@angular/material/form-field';
@@ -26,7 +26,7 @@ import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common
     standalone: true,
     imports: [
         CommonModule,
-        CommonUiLangModule,
+
         FormsModule,
         MatButton,
         MatCard,

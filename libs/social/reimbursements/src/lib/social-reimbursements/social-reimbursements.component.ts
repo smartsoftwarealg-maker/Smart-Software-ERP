@@ -8,8 +8,8 @@ import {
 } from '@social/social-api';
 import { IEmployee, PersonAutocompleteClass } from '@ss/employee-services/employee-services';
 import { dateToYmdStr, MaterialModule, PaginationModel } from '@ss/common/api-common';
-import { UiPaginationModule } from '@ss/common/ui-pagination';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
+
+
 import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
 import { RemunerationPaymonthEditorModule } from '@ss/remuneration/paymonth-editor';
 import { ActivatedRoute, RouterOutlet } from '@angular/router';
@@ -18,6 +18,7 @@ import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
 import { map, Observable, of } from 'rxjs';
 import { SocialReimbursementsListComponent } from '../social-reimbursements-list/social-reimbursements-list.component';
 import { ShellService } from '@ss/common/ui-shell';
+import { PaginationComponent } from '@ss/common/ui-pagination';
 
 @Component({
     selector: 'ss-social-reimbursements',
@@ -25,13 +26,14 @@ import { ShellService } from '@ss/common/ui-shell';
     imports: [
         CommonModule,
         MaterialModule,
-        UiPaginationModule,
-        CommonUiLangModule,
+
+
         CommonUiAutoCompleteModule,
         RemunerationPaymonthEditorModule,
         RouterOutlet,
         CommonUiDatepickerModule,
-        SocialReimbursementsListComponent
+        SocialReimbursementsListComponent,
+        PaginationComponent
     ],
     templateUrl: './social-reimbursements.component.html',
     styleUrl: './social-reimbursements.component.scss',

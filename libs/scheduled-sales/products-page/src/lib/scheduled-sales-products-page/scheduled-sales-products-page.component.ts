@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { MatCard, MatCardContent, MatCardFooter, MatCardHeader, MatCardTitle } from '@angular/material/card';
 import { MatButton } from '@angular/material/button';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
+
 import { LanguageService } from '@ss/common/api-common';
 
 type Product =  {
@@ -15,7 +15,7 @@ type Product =  {
 @Component({
     selector: 'ss-scheduled-sales-products-page',
     standalone: true,
-    imports: [CommonModule, MatCard, MatCardHeader, MatCardTitle, MatCardContent, MatButton, CommonUiLangModule, MatCardFooter, RouterOutlet, RouterLink],
+    imports: [CommonModule, MatCard, MatCardHeader, MatCardTitle, MatCardContent, MatButton,  MatCardFooter, RouterOutlet, RouterLink],
     templateUrl: './scheduled-sales-products-page.component.html',
     styleUrl: './scheduled-sales-products-page.component.scss',
 })

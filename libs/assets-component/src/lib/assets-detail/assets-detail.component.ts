@@ -4,7 +4,7 @@ import {Asset, AssetReception, Depreciation, OfficeAutoComplete} from '../assets
 import {KeepOnToolbar, ShellService, SnackBarService, ToolbarButton} from '@ss/common/ui-shell';
 import { ActivatedRoute, Router, RouterModule, RouterOutlet } from '@angular/router';
 import {UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
-import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
+import {  ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import {
     FurnitureStatusService,
     Lookup,
@@ -40,8 +40,8 @@ import {AssetRevaluationService} from "../services/asset-revaluation.service";
 import {AssetBlockingService} from "../services/asset-blocking.service";
 import {DepreciationRateService} from "../services/depreciation-rate.service";
 import { CommonModule } from '@angular/common';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
-import { UiPaginationModule } from '@ss/common/ui-pagination';
+
+
 import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
 import { CustomAttributesModule } from '@ss/custom-attributes';
 import { QRCodeModule } from 'angularx-qrcode';
@@ -57,10 +57,10 @@ import { ImageInputComponent } from '@ss/common/ui-image-input';
     imports: [
         CommonModule,
         MaterialModule,
-        CommonUiLangModule,
+
         ImageInputComponent,
-        UiPaginationModule,
-        CommonUiConfirmationDialogModule,
+
+
         CommonUiAutoCompleteModule,
         CommonUiDatepickerModule,
         RouterModule,

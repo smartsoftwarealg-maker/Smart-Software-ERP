@@ -10,9 +10,9 @@ import { AccessRight, LoginService, MaterialModule, Role } from '@ss/common/api-
 import { AccessRightsService } from '@ss/common/api-access-rights';
 import { switchMap, tap } from 'rxjs';
 import { CommonModule } from '@angular/common';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
-import { UiPaginationModule } from '@ss/common/ui-pagination';
-import { CommonUiConfirmationDialogModule } from '@ss/common/ui-confirmation-dialog';
+
+
+
 import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
 
 @Component({
@@ -24,10 +24,10 @@ import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
     CommonModule,
     RouterModule,
     MaterialModule,
-    CommonUiLangModule,
-    UiPaginationModule,
+
+
     ReactiveFormsModule,
-    CommonUiConfirmationDialogModule,
+
     CommonUiAutoCompleteModule,
     CommonUiDatepickerModule
 ]})

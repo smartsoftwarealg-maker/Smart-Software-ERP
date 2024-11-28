@@ -7,9 +7,9 @@ import { LanguageService, MaterialModule, PaginationModel } from '@ss/common/api
 import {ShellService} from "@ss/common/ui-shell";
 import { debounceTime, distinctUntilChanged, switchMap, takeUntil } from 'rxjs/operators';
 import { CommonModule } from '@angular/common';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
-import { UiPaginationModule } from '@ss/common/ui-pagination';
-import { CommonUiConfirmationDialogModule } from '@ss/common/ui-confirmation-dialog';
+
+
+
 import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
@@ -32,10 +32,10 @@ interface LogFlatNode {
     imports: [
         CommonModule,
         MaterialModule,
-        CommonUiLangModule,
-        UiPaginationModule,
+
+
         ReactiveFormsModule,
-        CommonUiConfirmationDialogModule,
+
         CommonUiDatepickerModule,
     ],
 

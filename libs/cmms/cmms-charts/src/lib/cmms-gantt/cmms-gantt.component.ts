@@ -6,14 +6,14 @@ import { ActivatedRoute } from '@angular/router';
 import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
 import { MaterialModule } from '@ss/common/api-common';
 import { FormControl } from '@angular/forms';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
+
 import { Gantt } from '../chart-api';
 import { Chart, ChartConfiguration, ChartItem, registerables } from 'chart.js';
 
 @Component({
     selector: 'ss-cmms-gantt',
     standalone: true,
-    imports: [CommonModule, CommonUiDatepickerModule, MaterialModule, CommonUiLangModule],
+    imports: [CommonModule, CommonUiDatepickerModule, MaterialModule],
     templateUrl: './cmms-gantt.component.html',
     styleUrls: ['./cmms-gantt.component.css'],
 })

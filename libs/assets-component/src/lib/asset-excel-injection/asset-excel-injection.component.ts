@@ -7,10 +7,10 @@ import {AssetsService} from '../services/assets.service';
 import {UntypedFormBuilder, Validators} from '@angular/forms';
 import { MaterialModule, UserRightsService } from '@ss/common/api-common';
 import { CommonModule } from '@angular/common';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
 
-import { UiPaginationModule } from '@ss/common/ui-pagination';
-import { CommonUiConfirmationDialogModule } from '@ss/common/ui-confirmation-dialog';
+
+
+
 import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
 import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
 import { CustomAttributesModule } from '@ss/custom-attributes';
@@ -25,10 +25,10 @@ import { QRCodeModule } from 'angularx-qrcode';
     imports: [
         CommonModule,
         MaterialModule,
-        CommonUiLangModule,
 
-        UiPaginationModule,
-        CommonUiConfirmationDialogModule,
+
+
+
         CommonUiAutoCompleteModule,
         CommonUiDatepickerModule,
         RouterModule,

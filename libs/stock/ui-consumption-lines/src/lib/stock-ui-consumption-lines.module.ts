@@ -3,14 +3,14 @@ import {CommonModule} from '@angular/common';
 import {ConsumptionLinesListComponent} from './consumption-lines-list/consumption-lines-list.component';
 import {ConsumptionLinesDetailComponent} from './consumption-lines-detail/consumption-lines-detail.component';
 import {MaterialModule} from '@ss/common/api-common';
-import {CommonUiLangModule} from '@ss/common/ui-lang';
-import {UiPaginationModule} from '@ss/common/ui-pagination';
+
+
 import {ReactiveFormsModule} from '@angular/forms';
-import {CommonUiConfirmationDialogModule} from '@ss/common/ui-confirmation-dialog';
+
 import {CommonUiDatepickerModule} from '@ss/common/ui-datepicker';
 import {CommonUiAutoCompleteModule} from '@ss/common/ui-auto-complete';
 import {RouterModule} from '@angular/router';
-import {LogisticsUiStockInfoModule} from '@ss/logistics/ui-stock-info';
+import {UiStockInfoComponent} from '@ss/logistics/ui-stock-info';
 import {
     ConsumptionCancellationLinesListComponent
 } from './consumption-cancellation-lines-list/consumption-cancellation-lines-list.component';
@@ -23,14 +23,14 @@ import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
     imports: [
         CommonModule,
         MaterialModule,
-        CommonUiLangModule,
-        UiPaginationModule,
+
+
         ReactiveFormsModule,
         RouterModule,
-        CommonUiConfirmationDialogModule,
+
         CommonUiDatepickerModule,
         CommonUiAutoCompleteModule,
-        LogisticsUiStockInfoModule,
+        UiStockInfoComponent,
         DocInfoComponent,
         ConsumptionLinesListComponent,
         ConsumptionLinesDetailComponent,

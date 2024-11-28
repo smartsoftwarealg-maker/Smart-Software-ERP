@@ -2,10 +2,10 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DocumentArchiveComponent } from './document-archive/document-archive.component';
 import {MaterialModule} from '@ss/common/api-common';
-import {CommonUiLangModule} from '@ss/common/ui-lang';
 
-import {UiPaginationModule} from '@ss/common/ui-pagination';
-import {CommonUiConfirmationDialogModule} from '@ss/common/ui-confirmation-dialog';
+
+
+
 import {CommonUiAutoCompleteModule} from '@ss/common/ui-auto-complete';
 import {CommonUiDatepickerModule} from '@ss/common/ui-datepicker';
 import {RouterModule} from '@angular/router';
@@ -16,10 +16,10 @@ import { AppArchiveMainComponent } from '@ss/common/app-archive';
     imports: [
         CommonModule,
         MaterialModule,
-        CommonUiLangModule,
 
-        UiPaginationModule,
-        CommonUiConfirmationDialogModule,
+
+
+
         CommonUiAutoCompleteModule,
         CommonUiDatepickerModule,
         RouterModule,

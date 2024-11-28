@@ -1,21 +1,19 @@
 import { enableProdMode, importProvidersFrom } from '@angular/core';
-
-
 import { environment, appRoutes } from './environments/environment';
 import { BrowserModule, bootstrapApplication } from '@angular/platform-browser';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { withRouterConfig, provideRouter, Routes, withComponentInputBinding } from '@angular/router';
+import { provideRouter, Routes, withComponentInputBinding } from '@angular/router';
 import { MAIN_PAGE_URL, UPDATE_PASSWORD_URL, AUTH_2FA_URL, LOGIN_URL } from '@ss/common/api-common';
 import { ShellComponent } from '@ss/common/ui-shell';
 import { PasswordUpdateComponent, Auth2FAConfirmationComponent } from '@ss/auth-2fa';
 import { UiThemeModule } from '@ss/common/ui-theme';
 import { UiErrorHandlerModule } from '@ss/common/ui-error-handler';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
 import { UiLoginModule } from '@ss/common/ui-login';
 import { UiCenterSelectModule } from '@ss/common/ui-center-select';
 import { ColorPickerModule } from 'ngx-color-picker';
 import { AppComponent } from './app/app.component';
+import { PaginationComponent } from '@ss/common/ui-pagination';
 
 const routes: Routes = [
     {
@@ -39,7 +37,7 @@ bootstrapApplication(AppComponent, {
     providers: [
         importProvidersFrom(BrowserModule, MatProgressSpinnerModule,
         // Smart Software modules
-        UiThemeModule, UiErrorHandlerModule, CommonUiLangModule,
+        UiThemeModule, UiErrorHandlerModule, PaginationComponent,
         // modules with routes
         UiLoginModule, UiCenterSelectModule, ColorPickerModule),
         provideAnimations(),

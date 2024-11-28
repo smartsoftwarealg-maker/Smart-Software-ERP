@@ -3,13 +3,13 @@ import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import { ActivatedRoute, RouterOutlet } from "@angular/router";
 import { ReactiveFormsModule, UntypedFormBuilder, Validators } from "@angular/forms";
-import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
+import {  ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
 import { CommonUiAutoCompleteModule } from "@ss/common/ui-auto-complete";
 import { Lookup } from '@ss/common/api-lookup';
 import { CommonModule } from "@angular/common";
 import { MaterialModule } from "@ss/common/api-common";
-import { CommonUiLangModule } from "@ss/common/ui-lang";
-import { UiPaginationModule } from "@ss/common/ui-pagination";
+
+import { PaginationComponent } from '@ss/common/ui-pagination';
 
 
 import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
@@ -24,10 +24,10 @@ import { LtmBleacherService } from '@ltm/ltm-api';
     imports: [
         CommonModule,
         MaterialModule,
-        CommonUiLangModule,
-        UiPaginationModule,
+        PaginationComponent,
+
         ReactiveFormsModule,
-        CommonUiConfirmationDialogModule,
+
 
 
         CommonUiAutoCompleteModule,

@@ -4,7 +4,7 @@ import { LTMLineMatter, LTMTesting } from '@ltm/ltm-api';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import { ActivatedRoute, Router, RouterOutlet } from "@angular/router";
 import { ReactiveFormsModule, UntypedFormBuilder, Validators } from "@angular/forms";
-import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
+import {  ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
 import {LtmTestingService} from '@ltm/ltm-api';
 import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from "@ss/common/ui-auto-complete";
 import {LtmMatterTestLookupService} from '@ltm/ltm-api';
@@ -12,9 +12,6 @@ import { LoginService, MaterialModule } from "@ss/common/api-common";
 import { LtmLineMatterService } from '@ltm/ltm-api';
 import { LtmLineMatterLookup } from '@ltm/ltm-api';
 import { CommonModule } from "@angular/common";
-import { CommonUiLangModule } from "@ss/common/ui-lang";
-import { UiPaginationModule } from "@ss/common/ui-pagination";
-
 import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
 import { CommonUiHourPickerModule } from '@ss/common/ui-hour-picker';
 
@@ -26,12 +23,7 @@ import { CommonUiHourPickerModule } from '@ss/common/ui-hour-picker';
     imports: [
         CommonModule,
         MaterialModule,
-        CommonUiLangModule,
-        UiPaginationModule,
         ReactiveFormsModule,
-        CommonUiConfirmationDialogModule,
-
-
         CommonUiAutoCompleteModule,
         CommonUiDatepickerModule,
         RouterOutlet,

@@ -5,14 +5,14 @@ import { InventoryTransferDetailComponent } from './inventory-transfer-detail/in
 import { InventoryTransferLinesDetailComponent } from './inventory-transfer-lines-detail/inventory-transfer-lines-detail.component';
 import { InventoryTransferLinesListComponent } from './inventory-transfer-lines-list/inventory-transfer-lines-list.component';
 import { MaterialModule } from '@ss/common/api-common';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
-import { UiPaginationModule } from '@ss/common/ui-pagination';
+
+
 import { ReactiveFormsModule } from '@angular/forms';
-import { CommonUiConfirmationDialogModule } from '@ss/common/ui-confirmation-dialog';
+
 import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
 import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
 
-import { LogisticsUiStockInfoModule } from '@ss/logistics/ui-stock-info';
+import { UiStockInfoComponent } from '@ss/logistics/ui-stock-info';
 import { TransferReceptionListComponent } from './transfer-reception-list/transfer-reception-list.component';
 import { TransferReceptionDetailComponent } from './transfer-reception-detail/transfer-reception-detail.component';
 import { TransferReceptionLinesListComponent } from './transfer-reception-lines-list/transfer-reception-lines-list.component';
@@ -24,13 +24,13 @@ import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
     imports: [
         CommonModule,
         MaterialModule,
-        CommonUiLangModule,
-        UiPaginationModule,
+
+
         ReactiveFormsModule,
-        CommonUiConfirmationDialogModule,
+
         CommonUiDatepickerModule,
         CommonUiAutoCompleteModule,
-        LogisticsUiStockInfoModule,
+        UiStockInfoComponent,
         RouterOutlet,
         DocInfoComponent,
         InventoryTransferListComponent,

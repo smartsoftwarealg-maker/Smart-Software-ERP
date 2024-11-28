@@ -8,14 +8,15 @@ import { ActivatedRoute, RouterModule } from "@angular/router";
 import { FormControl, FormGroup, ReactiveFormsModule } from "@angular/forms";
 import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from "@ss/common/ui-auto-complete";
 import {LotsService, Store} from '@ss/common/api-lookup';
-import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
+import {  ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
 import {of, switchMap} from 'rxjs';
 import { CommonModule } from "@angular/common";
-import { CommonUiLangModule } from "@ss/common/ui-lang";
-import { UiPaginationModule } from "@ss/common/ui-pagination";
+
+
 
 import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
 import { StockUiArticleStoreModule } from "@ss/stock/article-store";
+import { PaginationComponent } from '@ss/common/ui-pagination';
 
 @Component({
     selector: 'ss-user-stores',
@@ -23,18 +24,19 @@ import { StockUiArticleStoreModule } from "@ss/stock/article-store";
     styleUrls: ['./user-stores.component.scss'],
     standalone: true,
     imports: [
-    CommonModule,
-    MaterialModule,
-    CommonUiLangModule,
-    UiPaginationModule,
-    RouterModule,
-    ReactiveFormsModule,
+        CommonModule,
+        MaterialModule,
 
-    CommonUiConfirmationDialogModule,
-    CommonUiDatepickerModule,
-    CommonUiAutoCompleteModule,
-    StockUiArticleStoreModule
-],})
+
+        RouterModule,
+        ReactiveFormsModule,
+
+
+        CommonUiDatepickerModule,
+        CommonUiAutoCompleteModule,
+        StockUiArticleStoreModule,
+        PaginationComponent
+    ]})
 export class UserStoresComponent implements OnInit, OnDestroy {
     private loginSrv =  inject(LoginService);
     private lotsService =  inject(LotsService);

@@ -4,7 +4,7 @@ import {
     BaseTransactionLinesDetailComponent, DOC_INVOICE_CANCELLATION, TransactionLinesService
 } from '@ss/logistics/api-transaction';
 import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
+
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -19,7 +19,7 @@ import { Service, ServiceArticleService } from '@ss/service-sales/service-articl
     standalone: true,
     imports: [CommonModule,
         CommonUiAutoCompleteModule,
-        CommonUiLangModule,
+
         MatButtonModule,
         MatCardModule,
         MatFormFieldModule,

@@ -1,15 +1,15 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
-import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
-import {LTMMixture} from '@ltm/ltm-api';
-import {ShellService, SnackBarService} from '@ss/common/ui-shell';
+import { BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
+import { LTMMixture} from '@ltm/ltm-api';
+import { ShellService, SnackBarService} from '@ss/common/ui-shell';
 import { ActivatedRoute, NavigationEnd, Router, RouterEvent, RouterOutlet } from "@angular/router";
 import { ReactiveFormsModule, UntypedFormBuilder, Validators } from "@angular/forms";
-import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
-import {filter, Observable} from 'rxjs';
+import { ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
+import { Observable} from 'rxjs';
 import { CommonModule } from "@angular/common";
 import { LoginService, MaterialModule } from "@ss/common/api-common";
-import { CommonUiLangModule } from "@ss/common/ui-lang";
-import { UiPaginationModule } from "@ss/common/ui-pagination";
+
+
 
 
 import { CommonUiAutoCompleteModule } from "@ss/common/ui-auto-complete";
@@ -18,6 +18,7 @@ import { CommonUiHourPickerModule } from "@ss/common/ui-hour-picker";
 import { LtmMixtureService } from '@ltm/ltm-api';
 import { LtmMixtureDetailService } from '@ltm/ltm-api';
 import { LtmMixturePickupPointService } from '@ltm/ltm-api';
+import { PaginationComponent } from '@ss/common/ui-pagination';
 
 @Component({
     selector: 'ss-ltm-mixture-detail',
@@ -27,12 +28,8 @@ import { LtmMixturePickupPointService } from '@ltm/ltm-api';
     imports: [
         CommonModule,
         MaterialModule,
-        CommonUiLangModule,
-        UiPaginationModule,
+        PaginationComponent,
         ReactiveFormsModule,
-        CommonUiConfirmationDialogModule,
-
-
         CommonUiAutoCompleteModule,
         CommonUiDatepickerModule,
         RouterOutlet,

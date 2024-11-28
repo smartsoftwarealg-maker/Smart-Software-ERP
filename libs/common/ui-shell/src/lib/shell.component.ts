@@ -24,10 +24,11 @@ import {UserRightsService} from '@ss/common/api-common';
 import { Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { UiLogoutModule } from '@ss/common/ui-logout';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
+
 import { UiThemeModule } from '@ss/common/ui-theme';
 import { catchError, of, switchMap, tap } from 'rxjs';
 import { debug } from '@capacitor/assets/dist/util/log';
+import { LanguageSelectComponent } from '../../../ui-lang/src/lib/language-select.component';
 
 @Component({
     selector: 'ss-shell',
@@ -39,9 +40,10 @@ import { debug } from '@capacitor/assets/dist/util/log';
         RouterModule,
         MaterialModule,
         UiLogoutModule,
-        CommonUiLangModule,
-        UiThemeModule
-    ],
+
+        UiThemeModule,
+        LanguageSelectComponent
+    ]
 })
 export class ShellComponent implements OnInit, OnDestroy, AfterViewInit, AfterViewChecked {
     #httpSrv = inject(HttpService);

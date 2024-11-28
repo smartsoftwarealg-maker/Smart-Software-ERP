@@ -6,12 +6,13 @@ import { HttpParams } from '@angular/common/http';
 import { ShellService } from '@ss/common/ui-shell';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
-import { UiPaginationModule } from '@ss/common/ui-pagination';
+
+
 
 import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
 import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
-import { CommonUiConfirmationDialogModule } from '@ss/common/ui-confirmation-dialog';
+import { PaginationComponent } from '@ss/common/ui-pagination';
+
 
 
 @Component({
@@ -23,15 +24,16 @@ import { CommonUiConfirmationDialogModule } from '@ss/common/ui-confirmation-dia
         CommonModule,
         RouterModule,
         MaterialModule,
-        CommonUiLangModule,
-        UiPaginationModule,
+
+
         ReactiveFormsModule,
 
         CommonUiAutoCompleteModule,
         CommonUiDatepickerModule,
-        CommonUiConfirmationDialogModule,
+        PaginationComponent
 
-    ],
+
+    ]
 })
 export class BalanceQueriesComponent implements OnInit {
     private fb = inject(FormBuilder);

@@ -5,8 +5,8 @@ import { F12 } from '../services/balance-tables.api';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
-import { UiPaginationModule } from '@ss/common/ui-pagination';
+
+
 import { ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { MatCard, MatCardContent } from '@angular/material/card';
 import { MatError, MatFormField, MatLabel } from '@angular/material/form-field';
@@ -24,8 +24,8 @@ import { AccFileService } from '@ss/accounting/accounting-api';
     standalone: true,
     imports: [
         CommonModule,
-        CommonUiLangModule,
-        UiPaginationModule,
+
+
         MatCard,
         MatCardContent,
         MatError,

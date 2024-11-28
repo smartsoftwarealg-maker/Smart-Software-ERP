@@ -5,7 +5,7 @@ import { LoginService, MaterialModule } from '@ss/common/api-common';
 import { PayrollOptionsService } from './payroll-options.service';
 import { RoleService } from '@ss/common/api-lookup';
 import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
+
 import { MatCard, MatCardContent } from '@angular/material/card';
 import { MatError, MatFormField, MatLabel } from '@angular/material/form-field';
 import { MatInput } from '@angular/material/input';
@@ -19,7 +19,7 @@ import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 @Component({
     selector: 'ss-payroll-options',
     standalone: true,
-    imports: [CommonModule, CommonUiLangModule, MatCard, MatCardContent, MatError, MatFormField, MatInput, MatLabel, MaterialModule, ReactiveFormsModule, CommonUiAutoCompleteModule],
+    imports: [CommonModule,  MatCard, MatCardContent, MatError, MatFormField, MatInput, MatLabel, MaterialModule, ReactiveFormsModule, CommonUiAutoCompleteModule],
     templateUrl: './payroll-options.component.html',
     styleUrl: './payroll-options.component.scss'
 })

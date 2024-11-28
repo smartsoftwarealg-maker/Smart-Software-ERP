@@ -8,9 +8,9 @@ import {LtmInjectionService} from '@ltm/ltm-api';
 import { LanguageService, MaterialModule } from "@ss/common/api-common";
 import { INJResult } from '@ltm/ltm-api';
 import { CommonModule } from "@angular/common";
-import { CommonUiLangModule } from "@ss/common/ui-lang";
-import { UiPaginationModule } from "@ss/common/ui-pagination";
-import { CommonUiConfirmationDialogModule } from '@ss/common/ui-confirmation-dialog';
+
+
+
 
 
 import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
@@ -25,10 +25,10 @@ import { CommonUiHourPickerModule } from "@ss/common/ui-hour-picker";
     imports: [
         CommonModule,
         MaterialModule,
-        CommonUiLangModule,
-        UiPaginationModule,
+        PaginationComponent,
+
         ReactiveFormsModule,
-        CommonUiConfirmationDialogModule,
+
 
         CommonUiAutoCompleteModule,
         CommonUiDatepickerModule,

@@ -7,16 +7,18 @@ import { ArticleService } from '@ss/master-data/api-article';
 import { LotsService } from '@ss/common/api-lookup';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 
-import { CommonUiLangModule } from '@ss/common/ui-lang';
+
 
 import { MatTableModule } from '@angular/material/table';
-import { UiPaginationModule } from '@ss/common/ui-pagination';
+
 import { MatSortModule } from '@angular/material/sort';
 import { MatButtonModule } from "@angular/material/button";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from "@angular/material/input";
 import { MaterialModule } from "@ss/common/api-common";
 import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
+import { PaginationComponent } from '@ss/common/ui-pagination';
+import { TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-service-order-line-list',
@@ -24,16 +26,17 @@ import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
     imports: [
         CommonModule,
 
-        CommonUiLangModule,
 
         MatTableModule,
-        UiPaginationModule,
+
         MatSortModule,
         MatButtonModule,
         MatFormFieldModule,
         MatInputModule,
         MaterialModule,
-        DocInfoComponent
+        DocInfoComponent,
+        PaginationComponent,
+        TranslatePipe
     ],
     templateUrl: './service-order-line-list.component.html',
     styleUrls: ['./service-order-line-list.component.scss']

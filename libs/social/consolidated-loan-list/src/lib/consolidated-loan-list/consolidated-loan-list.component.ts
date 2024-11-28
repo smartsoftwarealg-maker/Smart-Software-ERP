@@ -6,14 +6,12 @@ import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { DefaultReportService } from '@ss/common/ui-default-report-component';
 import { MaterialModule, PaginatorPersistenceService } from '@ss/common/api-common';
 import { CommonModule } from '@angular/common';
-import { UiPaginationModule } from '@ss/common/ui-pagination';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
 import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
 import { RemunerationPaymonthEditorModule } from '@ss/remuneration/paymonth-editor';
-import { CommonPayrollModule } from '@ss/payroll-common';
 import { Consumption, Loan } from '@ss/remuneration/loans';
 import { LoansConsumptionService } from '@ss/remuneration/loans';
 import { ConsolidatedLoansService } from '../consolidated-loans.service';
+import { PaginationComponent } from '@ss/common/ui-pagination';
 
 @Component({
     selector: 'ss-consolidated-loan-list',
@@ -23,11 +21,9 @@ import { ConsolidatedLoansService } from '../consolidated-loans.service';
     imports: [
         CommonModule,
         MaterialModule,
-        UiPaginationModule,
-        CommonUiLangModule,
         CommonUiAutoCompleteModule,
         RemunerationPaymonthEditorModule,
-        CommonPayrollModule
+        PaginationComponent
     ]
 })
 export class ConsolidatedLoanListComponent extends BaseEntityListComponent<Loan> {

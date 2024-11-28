@@ -2,10 +2,10 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ServiceRequestListComponent } from './service-request-list/service-request-list.component';
 import { ServiceRequestDetailComponent } from './service-request-detail/service-request-detail.component';
-import { CommonUiLangModule } from "@ss/common/ui-lang";
+
 import { MatSortModule } from "@angular/material/sort";
 import { MatTableModule } from "@angular/material/table";
-import { UiPaginationModule } from "@ss/common/ui-pagination";
+
 import { CommonUiAutoCompleteModule } from "@ss/common/ui-auto-complete";
 import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
 import { MatCardModule } from "@angular/material/card";
@@ -20,6 +20,6 @@ import { RouterOutlet } from "@angular/router";
 import { MatButtonModule } from "@angular/material/button";
 
 @NgModule({
-    imports: [CommonModule, CommonUiLangModule, MatSortModule, MatTableModule, UiPaginationModule, CommonUiAutoCompleteModule, CommonUiDatepickerModule, MatCardModule, MatFormFieldModule, MatInputModule, MatTabsModule, ReactiveFormsModule, MatOptionModule, MatSelectModule, MatExpansionModule, RouterOutlet, MatButtonModule, ServiceRequestListComponent, ServiceRequestDetailComponent],
+    imports: [CommonModule,  MatSortModule, MatTableModule,  CommonUiAutoCompleteModule, CommonUiDatepickerModule, MatCardModule, MatFormFieldModule, MatInputModule, MatTabsModule, ReactiveFormsModule, MatOptionModule, MatSelectModule, MatExpansionModule, RouterOutlet, MatButtonModule, ServiceRequestListComponent, ServiceRequestDetailComponent],
 })
 export class CmmsServiceRequestModule {}

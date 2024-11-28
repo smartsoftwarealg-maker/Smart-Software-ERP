@@ -4,7 +4,7 @@ import { AssetInventory, AssetInventoryDoc, UnidentifiedInventory } from '../ass
 import { KeepOnToolbar, ShellService, SnackBarService, ToolbarButton } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { DefaultReportService } from '@ss/common/ui-default-report-component';
-import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
+import {  ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { LoginService, MaterialModule, PaginatorPersistenceService } from '@ss/common/api-common';
 import { AssetInventoryService } from '../services/asset-inventory.service';
 import { AccPoliciesService } from '@ss/accounting/accounting-api';
@@ -13,9 +13,9 @@ import { tap } from 'rxjs/operators';
 import { MatDialog } from '@angular/material/dialog';
 import { InventoryImportComponent } from '../inventory-import/inventory-import.component';
 import { CommonModule } from '@angular/common';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
 
-import { UiPaginationModule } from '@ss/common/ui-pagination';
+
+
 import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
 import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
 import { CustomAttributesModule } from '@ss/custom-attributes';
@@ -24,6 +24,7 @@ import { QRCodeModule } from 'angularx-qrcode';
 import { AssetUnidentifiedInventoryService } from '../services/asset-unidentified-inventory.service';
 import { AssetInventoryDocService } from '../services/asset-inventory-doc.service';
 import { FormControl } from '@angular/forms';
+import { PaginationComponent } from '@ss/common/ui-pagination';
 
 @Component({
     selector: 'ss-asset-unidentified-inventory-list',
@@ -33,16 +34,15 @@ import { FormControl } from '@angular/forms';
     imports: [
         CommonModule,
         MaterialModule,
-        CommonUiLangModule,
 
-        UiPaginationModule,
-        CommonUiConfirmationDialogModule,
+
         CommonUiAutoCompleteModule,
         CommonUiDatepickerModule,
         RouterModule,
         CustomAttributesModule,
 
-        QRCodeModule
+        QRCodeModule,
+        PaginationComponent
     ]
 
 })

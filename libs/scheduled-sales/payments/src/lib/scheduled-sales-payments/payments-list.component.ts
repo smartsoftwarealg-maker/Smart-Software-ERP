@@ -8,7 +8,7 @@ import { HttpService, LanguageService, LoginService, PaginatorPersistenceService
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { DefaultReportService } from '@ss/common/ui-default-report-component';
 import { Payment, SSPaymentService } from '@ss/scheduled-sales/api-scheduled-sales';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
+
 import {
     MatCell,
     MatCellDef,
@@ -18,7 +18,7 @@ import {
     MatHeaderRowDef, MatRow, MatRowDef, MatTable
 } from '@angular/material/table';
 import { MatSort, MatSortHeader } from '@angular/material/sort';
-import { UiPaginationModule } from '@ss/common/ui-pagination';
+
 import { MatCheckbox } from '@angular/material/checkbox';
 
 @Component({
@@ -26,7 +26,7 @@ import { MatCheckbox } from '@angular/material/checkbox';
     standalone: true,
     imports: [
         CommonModule,
-        CommonUiLangModule,
+
         MatCell,
         MatCellDef,
         MatColumnDef,
@@ -38,7 +38,7 @@ import { MatCheckbox } from '@angular/material/checkbox';
         MatSort,
         MatSortHeader,
         MatTable,
-        UiPaginationModule,
+
         MatCheckbox,
         MatHeaderCellDef
     ],

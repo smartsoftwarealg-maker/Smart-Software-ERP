@@ -2,9 +2,9 @@ import { Component, inject, OnInit, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { MaterialModule } from '@ss/common/api-common';
-import { CommonUiConfirmationDialogModule } from '@ss/common/ui-confirmation-dialog';
-import { UiPaginationModule } from '@ss/common/ui-pagination';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
+
+
+
 import { CACCReport } from '@ss/costing/costing-utils';
 import { catchError, tap } from 'rxjs';
 import { CostingAccountingService } from '../services/costing-accounting.service';
@@ -21,9 +21,9 @@ import { ShellService } from '@ss/common/ui-shell';
         CommonModule,
         RouterModule,
         MaterialModule,
-        CommonUiConfirmationDialogModule,
-        UiPaginationModule,
-        CommonUiLangModule,
+
+
+
         CommonUiLookupModule
     ],
     templateUrl: './costing-accounting.component.html',

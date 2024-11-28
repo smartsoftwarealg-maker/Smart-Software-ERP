@@ -2,9 +2,9 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MaterialModule } from '@ss/common/api-common';
 import { RouterModule } from '@angular/router';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
-import { UiPaginationModule } from '@ss/common/ui-pagination';
-import { CommonUiConfirmationDialogModule } from '@ss/common/ui-confirmation-dialog';
+
+
+
 import { PostListComponent, PostDetailComponent } from './components/post.component';
 import { MaritalStatusListComponent, MaritalStatusDetailComponent } from './components/marital-status.component';
 import { SubclassListComponent, SubclassDetailComponent } from './components/subclass.component';
@@ -64,10 +64,10 @@ import { CareerMotiveDetailComponent, CareerMotiveListComponent } from './compon
         MaterialModule,
         RouterModule,
         MaterialModule,
-        CommonUiLangModule,
-        UiPaginationModule,
+
+
         CommonUiAutoCompleteModule,
-        CommonUiConfirmationDialogModule,
+
         WilayaDetailComponent,
         WilayaListComponent,
         PostDetailComponent,
@@ -244,7 +244,7 @@ import { CareerMotiveDetailComponent, CareerMotiveListComponent } from './compon
         AwardProcedureDetailComponent,
         AwardProcedureListComponent,
         CommonUiAutoCompleteModule,
-        CommonUiConfirmationDialogModule,
+
         ArticleTypeListComponent,
         ArticleTypeDetailComponent,
         BloodGroupListComponent,

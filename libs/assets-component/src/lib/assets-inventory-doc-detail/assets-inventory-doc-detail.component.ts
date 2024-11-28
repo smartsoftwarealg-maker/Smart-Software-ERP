@@ -4,7 +4,7 @@ import { AssetInventoryDoc, AssetReception, OfficeAutoComplete } from '../assets
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import {UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
-import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
+import {  ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import {
     LookupsService,
     Office,
@@ -21,9 +21,9 @@ import {AssetClassService} from '@ss/assets-component';
 import {BaseEntityService} from '@ss/common/api-base-entity';
 import {AssetReceptionService} from '@ss/assets-component';
 import { CommonModule } from '@angular/common';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
 
-import { UiPaginationModule } from '@ss/common/ui-pagination';
+
+
 import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
 import { CustomAttributesModule } from '@ss/custom-attributes';
 import { AssetInventoryDocService } from '../services/asset-inventory-doc.service';
@@ -37,10 +37,10 @@ import { AssetsBuildingService } from '@ss/assets-component';
     imports: [
         CommonModule,
         MaterialModule,
-        CommonUiLangModule,
 
-        UiPaginationModule,
-        CommonUiConfirmationDialogModule,
+
+
+
         CommonUiAutoCompleteModule,
         CommonUiDatepickerModule,
         RouterModule,

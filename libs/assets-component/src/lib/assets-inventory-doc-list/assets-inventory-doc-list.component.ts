@@ -4,12 +4,12 @@ import { AssetInventoryDoc, CountSummary } from '../assets-api';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { DefaultReportService} from '@ss/common/ui-default-report-component';
-import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
+import {  ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { MaterialModule, PaginationModel, PaginatorPersistenceService } from '@ss/common/api-common';
 import { CommonModule } from '@angular/common';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
 
-import { UiPaginationModule } from '@ss/common/ui-pagination';
+
+
 import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
 import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
 import { CustomAttributesModule } from '@ss/custom-attributes';
@@ -23,6 +23,7 @@ import {
     AssetUnidentifiedChildInventoryListComponent
 } from '../asset-unidentified-child-inventory-list/asset-unidentified-child-inventory-list.component';
 import { AssetCountSummaryService } from '../services/asset-count-summary.service';
+import { PaginationComponent } from '@ss/common/ui-pagination';
 
 @Component({
     selector: 'ss-assets-inventory-doc-list',
@@ -32,10 +33,8 @@ import { AssetCountSummaryService } from '../services/asset-count-summary.servic
     imports: [
         CommonModule,
         MaterialModule,
-        CommonUiLangModule,
 
-        UiPaginationModule,
-        CommonUiConfirmationDialogModule,
+
         CommonUiAutoCompleteModule,
         CommonUiDatepickerModule,
         RouterModule,
@@ -43,7 +42,8 @@ import { AssetCountSummaryService } from '../services/asset-count-summary.servic
 
         QRCodeModule,
         AssetRecordedInventoryReportComponent,
-        AssetUnidentifiedChildInventoryListComponent
+        AssetUnidentifiedChildInventoryListComponent,
+        PaginationComponent
     ]
 })
 export class AssetsInventoryDocListComponent extends BaseEntityListComponent<AssetInventoryDoc> {

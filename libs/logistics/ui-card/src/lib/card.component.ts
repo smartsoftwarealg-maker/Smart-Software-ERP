@@ -1,7 +1,7 @@
 import { Component, inject, OnInit } from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
-import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
+import {  ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import {Card, CardService} from '@ss/logistics/api-card';
 import {ArticleService} from '@ss/master-data/api-article';
 import { MaterialModule, PaginationModel } from '@ss/common/api-common';
@@ -11,9 +11,10 @@ import { ReactiveFormsModule, UntypedFormControl, UntypedFormGroup } from '@angu
 import {ArticleLotsService} from '@ss/stock/api-article-store';
 import {LanguageService} from '@ss/common/api-common';
 import { CommonModule } from '@angular/common';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
-import { UiPaginationModule } from '@ss/common/ui-pagination';
+
+
 import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
+import { PaginationComponent } from '@ss/common/ui-pagination';
 
 @Component({
     selector: 'ss-card',
@@ -23,13 +24,14 @@ import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
     imports: [
         CommonModule,
         MaterialModule,
-        CommonUiLangModule,
-        UiPaginationModule,
+
+
         ReactiveFormsModule,
-        CommonUiConfirmationDialogModule,
+
         CommonUiDatepickerModule,
         CommonUiAutoCompleteModule,
-    ],
+        PaginationComponent
+    ]
 
 })
 export class CardComponent implements OnInit {

@@ -4,7 +4,7 @@ import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute } from '@angular/router';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
+
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -23,7 +23,7 @@ import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
     imports: [
         CommonModule,
         CommonUiAutoCompleteModule,
-        CommonUiLangModule,
+
         MatCardModule,
         MatFormFieldModule,
         ReactiveFormsModule,

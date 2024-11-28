@@ -9,24 +9,25 @@ import { filter, Observable } from 'rxjs';
 import { AppArchiveService, CMMS_ROUTING_ARCHIVES } from '@ss/common/app-archive';
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { CommonModule } from '@angular/common';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
+
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
-import { UiPaginationModule } from '@ss/common/ui-pagination';
+
 import { MaterialModule } from '@ss/common/api-common';
 import { CMMSRoutingDetailService } from '@ss/master-data/cmms-routing';
+import { TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-cmms-routing-detail',
     standalone: true,
     imports: [CommonModule,
-        CommonUiLangModule,
+
         MatCheckboxModule,
         MatSortModule,
         MatTableModule,
-        UiPaginationModule,
-        MaterialModule, RouterOutlet
+
+        MaterialModule, RouterOutlet, TranslatePipe
     ],
     templateUrl: 'cmms-checklist-detail.component.html',
     styleUrls: ['cmms-checklist-detail.component.css']

@@ -6,10 +6,10 @@ import { BaseEntityListComponent } from 'libs/common/ui-base-entity/src';
 import { MaterialModule, PaginatorPersistenceService } from '@ss/common/api-common';
 import { ShellService, SnackBarService } from "@ss/common/ui-shell";
 import { DefaultReportService } from '@ss/common/ui-default-report-component';
-import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
+import {  ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { CommonModule } from '@angular/common';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
-import { UiPaginationModule } from "@ss/common/ui-pagination";
+
+
 import { FormControl, ReactiveFormsModule, Validators } from "@angular/forms";
 
 import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
@@ -18,24 +18,26 @@ import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
 import { AccRecordService } from "../acc-record.service";
 import { callback } from "chart.js/helpers";
 import { debounceTime, distinctUntilChanged, switchMap } from "rxjs/operators";
+import { PaginationComponent } from '@ss/common/ui-pagination';
 
 @Component({
   selector: "ss-costing-item-list",
   templateUrl: './cost-item-accounting-records.html',
   styleUrls: ['./cost-item-accounting-records.scss'],
   standalone: true,
-  imports: [
-    CommonModule,
-    RouterModule,
-    MaterialModule,
-    CommonUiLangModule,
-    UiPaginationModule,
-    ReactiveFormsModule,
+    imports: [
+        CommonModule,
+        RouterModule,
+        MaterialModule,
 
-    CommonUiAutoCompleteModule,
-    CommonUiDatepickerModule,
-    CommonUiConfirmationDialogModule
-  ],
+
+        ReactiveFormsModule,
+
+        CommonUiAutoCompleteModule,
+        CommonUiDatepickerModule,
+        PaginationComponent
+
+    ],
   animations: [slideToRight]
 })
 export class CostItemAccountingRecords extends BaseEntityListComponent<ACCRecord> implements OnInit {

@@ -4,7 +4,6 @@ import { DocStatus, UserMessage } from "../workflow-api";
 import { DocStatusService } from "../doc-status.service";
 import { UserListService } from "@ss/common/api-users";
 import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel, UserLookup } from '@ss/common/ui-auto-complete';
-import { UserMessageService } from "../user-message.service";
 import { ShellService, SnackBarService } from "@ss/common/ui-shell";
 import { ActivatedRoute } from "@angular/router";
 import { UntypedFormBuilder, UntypedFormGroup, Validators } from "@angular/forms";
@@ -13,10 +12,9 @@ import { LookupsService } from "@ss/common/api-lookup";
 import { UserReceivedMessageService } from "../user-received-message.service";
 import { CommonModule } from '@angular/common';
 import { MaterialModule } from '@ss/common/api-common';
-import { UiPaginationModule } from '@ss/common/ui-pagination';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
+
 import { RemunerationPaymonthEditorModule } from '@ss/remuneration/paymonth-editor';
-import { CommonPayrollModule } from '@ss/payroll-common';
+
 
 import { OrgChartModule } from 'angular13-organization-chart';
 
@@ -28,11 +26,10 @@ import { OrgChartModule } from 'angular13-organization-chart';
     imports: [
         CommonModule,
         MaterialModule,
-        UiPaginationModule,
-        CommonUiLangModule,
+
         CommonUiAutoCompleteModule,
         RemunerationPaymonthEditorModule,
-        CommonPayrollModule,
+
 
         OrgChartModule,
     ],

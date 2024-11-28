@@ -13,7 +13,7 @@ import { MainPageComponent } from '@ss/common/ui-main-page';
 import { EXCHANGE_APP_URL } from './app/common';
 import { UiThemeModule } from '@ss/common/ui-theme';
 import { UiErrorHandlerModule } from '@ss/common/ui-error-handler';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
+
 import { ExchangeUiIdiotPageModule } from '@ss/exchange/ui-idiot-page';
 import { UiLoginModule } from '@ss/common/ui-login';
 import { UiCenterSelectModule } from '@ss/common/ui-center-select';
@@ -48,9 +48,9 @@ if (environment.production) {
 
 bootstrapApplication(AppComponent, {
     providers: [
-        importProvidersFrom(BrowserModule, 
+        importProvidersFrom(BrowserModule,
         // Smart Software modules
-        UiThemeModule, UiErrorHandlerModule, UiShellModule, CommonUiLangModule, ExchangeUiIdiotPageModule, 
+        UiThemeModule, UiErrorHandlerModule, UiShellModule, ExchangeUiIdiotPageModule,
         // modules with routes
         UiLoginModule, UiCenterSelectModule),
         provideAnimations(),

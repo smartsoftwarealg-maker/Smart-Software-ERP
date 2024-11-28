@@ -4,7 +4,7 @@ import { MaterialModule } from '@ss/common/api-common';
 import { CENTER_SELECT_URL, CanActivateService } from '@ss/common/api-common';
 import { CenterSelectComponent } from './center-select.component';
 import { Routes, RouterModule } from '@angular/router';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
+
 
 const routes: Routes = [
     {
@@ -18,7 +18,7 @@ const routes: Routes = [
     imports: [
         CommonModule,
         MaterialModule,
-        CommonUiLangModule,
+
         RouterModule.forChild(routes),
         CenterSelectComponent
     ],

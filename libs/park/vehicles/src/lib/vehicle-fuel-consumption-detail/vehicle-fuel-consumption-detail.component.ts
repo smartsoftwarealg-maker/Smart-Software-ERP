@@ -8,7 +8,7 @@ import { EmployeeService, PersonAutocompleteClass } from '@ss/employee-services/
 import { FuelTypeService } from '@ss/common/api-lookup';
 import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
 import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
+
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -22,7 +22,7 @@ import { MaterialModule } from '@ss/common/api-common';
         CommonModule,
         CommonUiAutoCompleteModule,
         CommonUiDatepickerModule,
-        CommonUiLangModule,
+
         MatButtonModule,
         MatCardModule,
         MatFormFieldModule,

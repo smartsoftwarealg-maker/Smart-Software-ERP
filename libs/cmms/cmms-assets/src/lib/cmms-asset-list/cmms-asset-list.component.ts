@@ -8,18 +8,17 @@ import { DefaultReportService } from '@ss/common/ui-default-report-component';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { PaginatorPersistenceService } from '@ss/common/api-common';
 import { CmmsAssetService } from '../services/cmms-asset.service';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
-import { UiPaginationModule } from '@ss/common/ui-pagination';
+import { PaginationComponent } from '@ss/common/ui-pagination';
+
 
 @Component({
     imports: [
         CommonModule,
-        CommonUiLangModule,
         MatSortModule,
         MatTableModule,
-        UiPaginationModule
+        PaginationComponent
     ],
     selector: 'ss-cmms-asset-list',
     standalone: true,

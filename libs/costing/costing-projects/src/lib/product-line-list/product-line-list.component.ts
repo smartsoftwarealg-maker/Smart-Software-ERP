@@ -4,10 +4,12 @@ import { BaseChildEntityListComponent } from '@ss/common/ui-base-entity';
 import { CProductLine } from '@ss/costing/costing-utils';
 import { RouterModule } from '@angular/router';
 import { MaterialModule } from '@ss/common/api-common';
-import { CommonUiConfirmationDialogModule } from '@ss/common/ui-confirmation-dialog';
-import { UiPaginationModule } from '@ss/common/ui-pagination';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
+
+
+
 import { CProductLineService } from '../services/product-line.service';
+import { TranslatePipe } from '@ss/common/ui-lang';
+import { PaginationComponent } from '@ss/common/ui-pagination';
 
 @Component({
     selector: 'ss-product-line-list',
@@ -16,9 +18,8 @@ import { CProductLineService } from '../services/product-line.service';
         CommonModule,
         RouterModule,
         MaterialModule,
-        CommonUiConfirmationDialogModule,
-        UiPaginationModule,
-        CommonUiLangModule
+        TranslatePipe,
+        PaginationComponent
     ],
     templateUrl: './product-line-list.component.html',
     styleUrls: ['./product-line-list.component.css'],

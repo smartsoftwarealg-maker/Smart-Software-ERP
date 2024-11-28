@@ -12,10 +12,10 @@ import {UserDocumentService} from '../user-document.service';
 import {DefinitionLookupService} from '@ss/logistics/document-numbering';
 import { CommonModule } from '@angular/common';
 import { MaterialModule } from '@ss/common/api-common';
-import { UiPaginationModule } from '@ss/common/ui-pagination';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
+
+
 import { RemunerationPaymonthEditorModule } from '@ss/remuneration/paymonth-editor';
-import { CommonPayrollModule } from '@ss/payroll-common';
+
 
 import { OrgChartModule } from 'angular13-organization-chart';
 
@@ -27,11 +27,11 @@ import { OrgChartModule } from 'angular13-organization-chart';
     imports: [
         CommonModule,
         MaterialModule,
-        UiPaginationModule,
-        CommonUiLangModule,
+
+
         CommonUiAutoCompleteModule,
         RemunerationPaymonthEditorModule,
-        CommonPayrollModule,
+
 
         OrgChartModule,
     ],

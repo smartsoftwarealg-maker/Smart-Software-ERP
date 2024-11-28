@@ -4,11 +4,11 @@ import { ExtraCostMainComponent } from './extra-cost-main/extra-cost-main.compon
 import { ExtraCostListComponent } from './extra-cost-list/extra-cost-list.component';
 import { ExtraCostDetailComponent } from './extra-cost-detail/extra-cost-detail.component';
 import { RouterLink, RouterOutlet } from '@angular/router';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
+
 
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
-import { UiPaginationModule } from '@ss/common/ui-pagination';
+
 import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
 import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
 import { MatCardModule } from '@angular/material/card';
@@ -23,10 +23,10 @@ import { TextFieldModule } from '@angular/cdk/text-field';
     imports: [
         CommonModule,
         CommonModule,
-        CommonUiLangModule,
+
         MatSortModule,
         MatTableModule,
-        UiPaginationModule,
+
         CommonUiAutoCompleteModule,
         CommonUiDatepickerModule,
         MatCardModule,

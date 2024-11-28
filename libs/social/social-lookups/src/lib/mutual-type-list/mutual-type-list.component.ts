@@ -13,7 +13,7 @@ import {
     SocialActivityLookupService,
     SocialActivityService
 } from '@social/social-api';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
+
 import {
     MatCell,
     MatCellDef,
@@ -22,12 +22,13 @@ import {
     MatHeaderRow,
     MatHeaderRowDef, MatRow, MatRowDef, MatTable
 } from '@angular/material/table';
-import { UiPaginationModule } from '@ss/common/ui-pagination';
+import { PaginationComponent } from '@ss/common/ui-pagination';
+
 
 @Component({
     selector: 'ss-mutual-type-list',
     standalone: true,
-    imports: [CommonModule, CommonUiLangModule, MatCell, MatCellDef, MatColumnDef, MatHeaderCell, MatHeaderRow, MatHeaderRowDef, MatRow, MatRowDef, MatTable, UiPaginationModule, MatHeaderCellDef],
+    imports: [CommonModule, MatCell, MatCellDef, MatColumnDef, MatHeaderCell, MatHeaderRow, MatHeaderRowDef, MatRow, MatRowDef, MatTable, MatHeaderCellDef, PaginationComponent],
     templateUrl: './mutual-type-list.component.html',
     styleUrl: './mutual-type-list.component.scss',
 })

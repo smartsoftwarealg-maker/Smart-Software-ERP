@@ -15,16 +15,16 @@ import {
     VatService
 } from '@ss/common/api-lookup';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
-import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
+import {  ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
 import { ImageInputComponent, ImageModel } from '@ss/common/ui-image-input';
 import { HttpService, MaterialModule } from '@ss/common/api-common';
 import { CommonModule } from '@angular/common';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
-import { UiPaginationModule } from '@ss/common/ui-pagination';
+
+
 import { StockUiArticleStoreModule } from '@ss/stock/article-store';
 
-import { LogisticsUiStockInfoModule } from '@ss/logistics/ui-stock-info';
+import { UiStockInfoComponent } from '@ss/logistics/ui-stock-info';
 
 @Component({
     selector: 'ss-article-detail',
@@ -34,15 +34,15 @@ import { LogisticsUiStockInfoModule } from '@ss/logistics/ui-stock-info';
     imports: [
         CommonModule,
         MaterialModule,
-        CommonUiLangModule,
-        UiPaginationModule,
-        CommonUiConfirmationDialogModule,
+
+
+
         StockUiArticleStoreModule,
 
         RouterModule,
 
         CommonUiAutoCompleteModule,
-        LogisticsUiStockInfoModule,
+        UiStockInfoComponent,
         ImageInputComponent
     ]
 })

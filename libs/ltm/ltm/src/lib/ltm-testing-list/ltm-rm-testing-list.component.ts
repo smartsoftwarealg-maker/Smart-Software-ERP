@@ -1,20 +1,17 @@
 import { Component } from '@angular/core';
 import { ShellService, SnackBarService } from "@ss/common/ui-shell";
 import { ActivatedRoute, Router, RouterOutlet } from "@angular/router";
-import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
+import {  ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
 import { DefaultReportService } from "@ss/common/ui-default-report-component";
 import { MaterialModule, PaginatorPersistenceService } from '@ss/common/api-common';
 import { CommonModule } from '@angular/common';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
-import { UiPaginationModule } from "@ss/common/ui-pagination";
 import { ReactiveFormsModule } from '@angular/forms';
-
-
 import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
 import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
 import { CommonUiHourPickerModule } from "@ss/common/ui-hour-picker";
 import { LtmBaseTestingListComponent } from '../ltm-testing-common/ltm-base-testing-list.component';
 import { LtmRmTestingService } from '@ltm/ltm-api';
+import { PaginationComponent } from '@ss/common/ui-pagination';
 
 @Component({
     selector: "ss-ltm-rm-testing-list",
@@ -24,12 +21,8 @@ import { LtmRmTestingService } from '@ltm/ltm-api';
     imports: [
         CommonModule,
         MaterialModule,
-        CommonUiLangModule,
-        UiPaginationModule,
+        PaginationComponent,
         ReactiveFormsModule,
-        CommonUiConfirmationDialogModule,
-
-
         CommonUiAutoCompleteModule,
         CommonUiDatepickerModule,
         RouterOutlet,

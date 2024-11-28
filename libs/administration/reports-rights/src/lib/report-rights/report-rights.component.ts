@@ -3,9 +3,9 @@ import { CommonModule } from '@angular/common';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { MaterialModule } from '@ss/common/api-common';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
-import { UiPaginationModule } from '@ss/common/ui-pagination';
-import { CommonUiConfirmationDialogModule } from '@ss/common/ui-confirmation-dialog';
+
+
+
 import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
 import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
 import { NestedTreeControl } from '@angular/cdk/tree';
@@ -18,6 +18,7 @@ import { FormControl } from '@angular/forms';
 import { ReportReportService } from '../role-report.service';
 import { Observable, switchMap } from 'rxjs';
 import { RoleReport } from '../report-rights-api';
+import { TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-report-rights',
@@ -25,12 +26,12 @@ import { RoleReport } from '../report-rights-api';
     imports: [
         CommonModule,
         MaterialModule,
-        CommonUiLangModule,
-        UiPaginationModule,
-        CommonUiConfirmationDialogModule,
+
+
         RouterModule,
         CommonUiDatepickerModule,
-        CommonUiAutoCompleteModule
+        CommonUiAutoCompleteModule,
+        TranslatePipe
     ],
     templateUrl: './report-rights.component.html',
     styleUrls: ['./report-rights.component.scss'],

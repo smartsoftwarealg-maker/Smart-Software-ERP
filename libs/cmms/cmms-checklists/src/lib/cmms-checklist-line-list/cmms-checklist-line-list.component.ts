@@ -3,16 +3,18 @@ import { CommonModule } from '@angular/common';
 import { BaseChildEntityListComponent } from '@ss/common/ui-base-entity';
 import { RoutingDetail } from '@ss/cmms/cmms-api';
 import { CMMSRoutingDetailService } from '@ss/master-data/cmms-routing';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
+
 import { MatButtonModule } from '@angular/material/button';
 import { MatTableModule } from '@angular/material/table';
-import { UiPaginationModule } from '@ss/common/ui-pagination';
+
 import { MaterialModule } from '@ss/common/api-common';
+import { PaginationComponent } from '@ss/common/ui-pagination';
+import { TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-cmms-checklist-line-list',
     standalone: true,
-    imports: [CommonModule, CommonUiLangModule, MatButtonModule, MatTableModule, UiPaginationModule, MaterialModule],
+    imports: [CommonModule, MatButtonModule, MatTableModule, MaterialModule, PaginationComponent, TranslatePipe],
     templateUrl: './cmms-checklist-line-list.component.html',
     styleUrls: ['./cmms-checklist-line-list.component.css'],
 })

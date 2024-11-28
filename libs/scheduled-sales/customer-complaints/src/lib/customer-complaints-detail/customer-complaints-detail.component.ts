@@ -9,7 +9,7 @@ import { CustomerComplaint } from '../customer-complaint.class';
 import { CustomerComplaintsService } from '../customer-complaint.service';
 import { ComplaintTypeService } from '../complaint-type.service';
 import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
+
 import { MatCard, MatCardContent } from '@angular/material/card';
 import { MatError, MatFormField, MatFormFieldModule, MatLabel } from '@angular/material/form-field';
 import { MatInput, MatInputModule } from '@angular/material/input';
@@ -32,7 +32,7 @@ import { MatSelectModule } from '@angular/material/select';
         CommonUiAutoCompleteModule,
         CommonUiDatepickerModule,
 
-        CommonUiLangModule,
+
         MatButtonModule,
         MatCheckboxModule,
         MatExpansionModule,

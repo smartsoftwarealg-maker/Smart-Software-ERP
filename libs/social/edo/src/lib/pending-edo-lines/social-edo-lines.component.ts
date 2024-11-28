@@ -2,7 +2,7 @@ import { Component, output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BaseChildEntityListComponent } from '@ss/common/ui-base-entity';
 import {EDOLine} from '@social/social-api';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
+
 import {
     MatCell,
     MatCellDef,
@@ -11,15 +11,29 @@ import {
     MatHeaderRow,
     MatHeaderRowDef, MatRow, MatRowDef, MatTable
 } from '@angular/material/table';
-import { MatTooltip } from '@angular/material/tooltip';
-import { UiPaginationModule } from '@ss/common/ui-pagination';
+
 import { MatMiniFabButton } from '@angular/material/button';
 import { EdoLineService } from '@social/social-api';
+import { PaginationComponent } from '@ss/common/ui-pagination';
 
 @Component({
     selector: 'ss-social-edo-lines',
     standalone: true,
-    imports: [CommonModule, CommonUiLangModule, MatCell, MatCellDef, MatColumnDef, MatHeaderCell, MatHeaderRow, MatHeaderRowDef, MatRow, MatRowDef, MatTable, MatTooltip, UiPaginationModule, MatHeaderCellDef, MatMiniFabButton],
+    imports: [
+        CommonModule,
+        PaginationComponent,
+        MatCell,
+        MatCellDef,
+        MatColumnDef,
+        MatHeaderCell,
+        MatHeaderRow,
+        MatHeaderRowDef,
+        MatRow,
+        MatRowDef,
+        MatTable,
+        MatHeaderCellDef,
+        MatMiniFabButton
+    ],
     templateUrl: './social-edo-lines.component.html',
     styleUrl: './social-edo-lines.component.scss',
 })

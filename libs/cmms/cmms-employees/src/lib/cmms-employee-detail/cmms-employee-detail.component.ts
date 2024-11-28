@@ -26,7 +26,7 @@ import { HttpService, MaterialModule } from '@ss/common/api-common';
 import { FixedElementsEntryService } from '@ss/remuneration/elements-entry';
 import { Observable, of, switchMap } from 'rxjs';
 import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
+
 import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatExpansionModule } from '@angular/material/expansion';
@@ -47,7 +47,7 @@ import { CmmsEmployeeService } from '../services/cmms-employee.service';
         CommonModule,
         CommonUiAutoCompleteModule,
         CommonUiDatepickerModule,
-        CommonUiLangModule,
+
         MatButtonModule,
         MatCheckboxModule,
         MatExpansionModule,

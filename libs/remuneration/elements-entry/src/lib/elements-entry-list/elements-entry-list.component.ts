@@ -3,7 +3,7 @@ import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {ELine, MJournal, PaymentElement} from '../elements-entry-api';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
-import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
+import {  ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import { HttpService, MaterialModule, PaginatorPersistenceService } from "@ss/common/api-common";
 import {ElementsEntryService} from '../services/elements-entry.service';
@@ -17,10 +17,12 @@ import { ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup } from "@angu
 import {CommonElementsService} from '../services/common-elements.service';
 import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from "@ss/common/ui-auto-complete";
 import { CommonModule } from "@angular/common";
-import { CommonUiLangModule } from "@ss/common/ui-lang";
-import { UiPaginationModule } from "@ss/common/ui-pagination";
+
+
 import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
 import { RemunerationInputFiltersModule } from "@ss/remuneration/input-filters";
+import { TranslatePipe } from '@ss/common/ui-lang';
+import { PaginationComponent } from '@ss/common/ui-pagination';
 
 
 @Component({
@@ -31,15 +33,17 @@ import { RemunerationInputFiltersModule } from "@ss/remuneration/input-filters";
     imports: [
         CommonModule,
         MaterialModule,
-        CommonUiLangModule,
-        UiPaginationModule,
+
+
         ReactiveFormsModule,
-        CommonUiConfirmationDialogModule,
+
         CommonUiDatepickerModule,
         CommonUiAutoCompleteModule,
         RemunerationInputFiltersModule,
-        ImageInputComponent
-    ],
+        ImageInputComponent,
+        TranslatePipe,
+        PaginationComponent
+    ]
 
 })
 export class ElementsEntryListComponent extends BaseEntityListComponent<ELine> implements OnInit {

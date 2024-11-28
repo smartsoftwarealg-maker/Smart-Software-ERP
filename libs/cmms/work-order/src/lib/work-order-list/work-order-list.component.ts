@@ -8,9 +8,8 @@ import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { MaterialModule, PaginatorPersistenceService } from '@ss/common/api-common';
 import { CMMSWorkOrderService } from '../services/c-m-m-s-work-order.service';
 import { CommonModule } from '@angular/common';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
 import { MatTableModule } from '@angular/material/table';
-import { UiPaginationModule } from '@ss/common/ui-pagination';
+import { PaginationComponent } from '@ss/common/ui-pagination';
 import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -26,9 +25,8 @@ import { MatButtonModule } from '@angular/material/button';
     standalone: true,
     imports: [
         CommonModule,
-        CommonUiLangModule,
+        PaginationComponent,
         MatTableModule,
-        UiPaginationModule,
         CommonUiAutoCompleteModule,
         FormsModule,
         MatFormFieldModule,

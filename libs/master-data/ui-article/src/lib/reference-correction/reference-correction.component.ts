@@ -1,20 +1,21 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MaterialModule } from '@ss/common/api-common';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
-import { UiPaginationModule } from '@ss/common/ui-pagination';
-import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
+
+
+import {  ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { StockUiArticleStoreModule } from '@ss/stock/article-store';
 
 import { ActivatedRoute, RouterModule } from '@angular/router';
 
 import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
-import { LogisticsUiStockInfoModule } from '@ss/logistics/ui-stock-info';
+import { UiStockInfoComponent } from '@ss/logistics/ui-stock-info';
 import { Article, ArticleAutoCompleteModel, ArticleService } from '@ss/master-data/api-article';
 import { FormControl } from '@angular/forms';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { of, switchMap } from 'rxjs';
 import { tap } from 'rxjs/operators';
+import { TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-reference-correction',
@@ -22,15 +23,15 @@ import { tap } from 'rxjs/operators';
     imports: [
         CommonModule,
         MaterialModule,
-        CommonUiLangModule,
-        UiPaginationModule,
-        CommonUiConfirmationDialogModule,
+
+
         StockUiArticleStoreModule,
 
         RouterModule,
 
         CommonUiAutoCompleteModule,
-        LogisticsUiStockInfoModule
+        UiStockInfoComponent,
+        TranslatePipe
     ],
     templateUrl: './reference-correction.component.html',
     styleUrls: ['./reference-correction.component.css'],

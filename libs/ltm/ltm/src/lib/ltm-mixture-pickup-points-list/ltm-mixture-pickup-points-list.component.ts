@@ -1,19 +1,16 @@
 import { Component } from "@angular/core";
 import { MaterialModule } from "@ss/common/api-common";
 import { RouterOutlet } from "@angular/router";
-import { CommonUiConfirmationDialogModule } from "@ss/common/ui-confirmation-dialog";
-import { LTMMixtureDetail, LTMMixturePickupPoint } from '@ltm/ltm-api';
+import { LTMMixturePickupPoint } from '@ltm/ltm-api';
 import { ReactiveFormsModule } from "@angular/forms";
 import { CommonModule } from "@angular/common";
-import { CommonUiLangModule } from "@ss/common/ui-lang";
-import { UiPaginationModule } from "@ss/common/ui-pagination";
-
-
 import { CommonUiAutoCompleteModule } from "@ss/common/ui-auto-complete";
 import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
 import { CommonUiHourPickerModule } from "@ss/common/ui-hour-picker";
 import { BaseChildEntityListComponent } from "@ss/common/ui-base-entity";
 import { LtmMixturePickupPointService } from '@ltm/ltm-api';
+import { PaginationComponent } from '@ss/common/ui-pagination';
+import { TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-ltm-mixture-pp-test-list',
@@ -23,17 +20,14 @@ import { LtmMixturePickupPointService } from '@ltm/ltm-api';
     imports: [
         CommonModule,
         MaterialModule,
-        CommonUiLangModule,
-        UiPaginationModule,
+        PaginationComponent,
         ReactiveFormsModule,
-        CommonUiConfirmationDialogModule,
-
-
         CommonUiAutoCompleteModule,
         CommonUiDatepickerModule,
         RouterOutlet,
-        CommonUiHourPickerModule
-    ],
+        CommonUiHourPickerModule,
+        TranslatePipe
+    ]
 })
 export class LtmMixturePickupPointsListComponent extends BaseChildEntityListComponent<LTMMixturePickupPoint> {
     override displayedColumns = ['matterDescription'];

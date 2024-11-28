@@ -1,1 +1,1 @@
-export * from './lib/ui-pagination.module';
+export * from './lib/pagination.component';

@@ -4,7 +4,7 @@ import { LoginComponent } from './login.component';
 import { MaterialModule } from '@ss/common/api-common';
 import { LOGIN_URL } from '@ss/common/api-common';
 import { Routes, RouterModule } from '@angular/router';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
+
 import { UiThemeModule } from '@ss/common/ui-theme';
 import { EmployeeProfileComponent } from './employee-profile/employee-profile.component';
 
@@ -14,7 +14,7 @@ const routes: Routes = [{ path: LOGIN_URL, component: LoginComponent }];
     imports: [
         CommonModule,
         MaterialModule,
-        CommonUiLangModule,
+
         UiThemeModule,
         RouterModule.forChild(routes),
         LoginComponent, EmployeeProfileComponent,

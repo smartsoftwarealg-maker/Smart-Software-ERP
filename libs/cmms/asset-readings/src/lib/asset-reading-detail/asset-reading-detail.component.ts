@@ -9,10 +9,10 @@ import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common
 import { CMMSMeterService } from '@ss/cmms/lookups';
 import { AssetReading } from '@ss/cmms/cmms-api';
 import { CommonModule } from '@angular/common';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
+
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
-import { UiPaginationModule } from '@ss/common/ui-pagination';
+
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -25,10 +25,10 @@ import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
     standalone: true,
     imports: [
         CommonModule,
-        CommonUiLangModule,
+
         MatSortModule,
         MatTableModule,
-        UiPaginationModule,
+
         MatCardModule,
         MatFormFieldModule,
         MatInputModule,

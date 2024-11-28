@@ -1,6 +1,6 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
+
 import {
     MatCell,
     MatCellDef,
@@ -10,7 +10,7 @@ import {
     MatHeaderRowDef, MatRow, MatRowDef, MatTable
 } from '@angular/material/table';
 import { MatSort, MatSortHeader, Sort } from '@angular/material/sort';
-import { UiPaginationModule } from '@ss/common/ui-pagination';
+
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { MatCard, MatCardContent } from '@angular/material/card';
 import { MatError, MatFormField, MatLabel } from '@angular/material/form-field';
@@ -30,7 +30,7 @@ import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
     selector: 'ss-gica-deduction-report',
     standalone: true,
     imports: [CommonModule,
-        CommonUiLangModule,
+
         MatCell,
         MatCellDef,
         MatColumnDef,
@@ -42,7 +42,7 @@ import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
         MatSort,
         MatSortHeader,
         MatTable,
-        UiPaginationModule,
+
         MatCard,
         MatCardContent,
         MatError,

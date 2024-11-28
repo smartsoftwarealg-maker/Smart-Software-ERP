@@ -5,15 +5,15 @@ import { ImageInputComponent, ImageModel } from '@ss/common/ui-image-input';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute } from '@angular/router';
 import { ReactiveFormsModule, UntypedFormArray, UntypedFormBuilder, UntypedFormGroup } from "@angular/forms";
-import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
+import {  ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
 import { LookupsService } from '@ss/common/api-lookup';
 import { HttpService, MaterialModule } from "@ss/common/api-common";
 import { Observable } from 'rxjs';
 import { FixedElementsEntryService } from '../services/fixed-elements-entry.service';
 import { EmployeeService } from "@ss/employee-services/employee-services";
 import { CommonModule } from "@angular/common";
-import { CommonUiLangModule } from "@ss/common/ui-lang";
-import { UiPaginationModule } from "@ss/common/ui-pagination";
+
+
 import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
 import { CommonUiAutoCompleteModule } from "@ss/common/ui-auto-complete";
 import { RemunerationInputFiltersModule } from "@ss/remuneration/input-filters";
@@ -33,10 +33,10 @@ type Employee = {
     imports: [
         CommonModule,
         MaterialModule,
-        CommonUiLangModule,
-        UiPaginationModule,
+
+
         ReactiveFormsModule,
-        CommonUiConfirmationDialogModule,
+
         CommonUiDatepickerModule,
         CommonUiAutoCompleteModule,
         RemunerationInputFiltersModule,

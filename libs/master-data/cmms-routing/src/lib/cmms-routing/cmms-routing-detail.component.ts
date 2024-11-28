@@ -9,11 +9,11 @@ import { CMMSRoutingPartService } from '@ss/cmms/lookups';
 import { AppArchiveService, CMMS_ROUTING_ARCHIVES } from '@ss/common/app-archive';
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { CommonModule } from '@angular/common';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
+
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
-import { UiPaginationModule } from '@ss/common/ui-pagination';
+
 import { MaterialModule } from '@ss/common/api-common';
 import { CMMSRoutingDetailService } from '../services/cmms-routing-detail.service';
 import { CMMSRoutingService } from '../services/cmms.routing.service';
@@ -21,7 +21,7 @@ import { CMMSRoutingService } from '../services/cmms.routing.service';
 @Component({
     selector: 'ss-cmms-routing-detail',
     standalone: true,
-    imports: [CommonModule, CommonUiLangModule, MatCheckboxModule, MatSortModule, MatTableModule, UiPaginationModule, MaterialModule, RouterOutlet],
+    imports: [CommonModule,  MatCheckboxModule, MatSortModule, MatTableModule,  MaterialModule, RouterOutlet],
     templateUrl: './cmms-routing-detail.component.html',
     styleUrls: ['./cmms-routing-detail.component.css']
 })

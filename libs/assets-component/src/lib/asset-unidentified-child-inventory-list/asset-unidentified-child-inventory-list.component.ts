@@ -1,18 +1,19 @@
 import { Component, effect, inject, input, OnInit } from '@angular/core';
 import { UnidentifiedInventory } from '../assets-api';
 import { RouterModule } from '@angular/router';
-import { CommonUiConfirmationDialogModule } from '@ss/common/ui-confirmation-dialog';
+
 import { MaterialModule, PaginationModel } from '@ss/common/api-common';
 import { CommonModule } from '@angular/common';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
 
-import { UiPaginationModule } from '@ss/common/ui-pagination';
+
+
 import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
 import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
 import { CustomAttributesModule } from '@ss/custom-attributes';
 
 import { QRCodeModule } from 'angularx-qrcode';
 import { AssetUnidentifiedInventoryService } from '@ss/assets-component';
+import { PaginationComponent } from '@ss/common/ui-pagination';
 
 @Component({
     selector: 'ss-asset-unidentified-child-inventory-list',
@@ -22,16 +23,15 @@ import { AssetUnidentifiedInventoryService } from '@ss/assets-component';
     imports: [
         CommonModule,
         MaterialModule,
-        CommonUiLangModule,
 
-        UiPaginationModule,
-        CommonUiConfirmationDialogModule,
+
         CommonUiAutoCompleteModule,
         CommonUiDatepickerModule,
         RouterModule,
         CustomAttributesModule,
 
-        QRCodeModule
+        QRCodeModule,
+        PaginationComponent
     ]
 })
 export class AssetUnidentifiedChildInventoryListComponent  implements OnInit {

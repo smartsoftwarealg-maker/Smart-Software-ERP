@@ -5,22 +5,25 @@ import { Article, BOMTree } from '@ss/master-data/api-article';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import { map, Observable, of } from 'rxjs';
 import {LookupsService} from '@ss/common/api-lookup';
-import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
+import {  ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
-import {  ImageModel } from '@ss/common/ui-image-input';
+import { ImageInputComponent, ImageModel } from '@ss/common/ui-image-input';
 import { HttpService, MaterialModule, PaginatorPersistenceService } from '@ss/common/api-common';
 import {FormControl} from '@angular/forms';
 import {debounceTime, distinctUntilChanged} from 'rxjs/operators';
 import { CommonModule } from '@angular/common';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
-import { UiPaginationModule } from '@ss/common/ui-pagination';
+
+
 import { StockUiArticleStoreModule } from '@ss/stock/article-store';
 
 import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
-import { LogisticsUiStockInfoModule } from '@ss/logistics/ui-stock-info';
+import { UiStockInfoComponent } from '@ss/logistics/ui-stock-info';
 import { FinalProductService } from '@ss/master-data/api-article';
 import { BomService } from '../bom.service';
 import { CMMSRoutingDetailService } from '@ss/master-data/cmms-routing';
+import { PaginationComponent } from '@ss/common/ui-pagination';
+import { TranslatePipe } from '@ss/common/ui-lang';
+import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
 
 @Component({
     selector: 'ss-product-list',
@@ -30,16 +33,19 @@ import { CMMSRoutingDetailService } from '@ss/master-data/cmms-routing';
     imports: [
         CommonModule,
         MaterialModule,
-        CommonUiLangModule,
-        UiPaginationModule,
-        CommonUiConfirmationDialogModule,
+
+
         StockUiArticleStoreModule,
 
         RouterModule,
 
         CommonUiAutoCompleteModule,
-        LogisticsUiStockInfoModule
-    ],
+        UiStockInfoComponent,
+        PaginationComponent,
+        ImageInputComponent,
+        TranslatePipe,
+        DocInfoComponent
+    ]
 })
 export class FinalProductListComponent extends BaseEntityListComponent<Article> implements OnInit {
     private routingDetailSrv = inject(CMMSRoutingDetailService);

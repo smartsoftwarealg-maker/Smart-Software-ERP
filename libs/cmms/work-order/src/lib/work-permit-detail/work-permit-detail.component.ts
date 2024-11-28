@@ -6,13 +6,13 @@ import { CMMSWorkPermitService } from '../services/c-m-m-s-work-permit.service';
 import { FormBuilder, FormsModule, ReactiveFormsModule, UntypedFormGroup, Validators } from '@angular/forms';
 import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from "@ss/common/ui-auto-complete";
 import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
+
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatTableModule } from '@angular/material/table';
-import { UiPaginationModule } from '@ss/common/ui-pagination';
+
 import { MaterialModule } from '@ss/common/api-common';
 import { PersonAutocompleteClass } from "@ss/employee-services/employee-services";
 import { CMMSPermitTypeService } from "@ss/cmms/lookups";
@@ -22,9 +22,7 @@ import { CMMSPermitTypeService } from "@ss/cmms/lookups";
     standalone: true,
     imports: [
         CommonModule,
-        CommonUiLangModule,
         MatTableModule,
-        UiPaginationModule,
         CommonUiAutoCompleteModule,
         FormsModule,
         MatFormFieldModule,

@@ -7,7 +7,7 @@ import { LanguageService } from '@ss/common/api-common';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { DocumentSourcesService } from './document-sources.service';
 import { Observable, of } from 'rxjs';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
+
 import {
     MatCell,
     MatCellDef,
@@ -17,13 +17,13 @@ import {
     MatHeaderRowDef, MatRow, MatRowDef, MatTable
 } from '@angular/material/table';
 import { MatSort, MatSortHeader, Sort } from '@angular/material/sort';
-import { UiPaginationModule } from '@ss/common/ui-pagination';
+
 import { Source } from './document-sources.api';
 
 @Component({
     selector: 'ss-document-sources',
     standalone: true,
-    imports: [CommonModule, CommonUiLangModule, MatCell, MatCellDef, MatColumnDef, MatHeaderCell, MatHeaderRow, MatHeaderRowDef, MatRow, MatRowDef, MatSort, MatSortHeader, MatTable, UiPaginationModule, MatHeaderCellDef],
+    imports: [CommonModule,  MatCell, MatCellDef, MatColumnDef, MatHeaderCell, MatHeaderRow, MatHeaderRowDef, MatRow, MatRowDef, MatSort, MatSortHeader, MatTable,  MatHeaderCellDef],
     templateUrl: './document-sources.component.html',
     styleUrl: './document-sources.component.scss',
 })

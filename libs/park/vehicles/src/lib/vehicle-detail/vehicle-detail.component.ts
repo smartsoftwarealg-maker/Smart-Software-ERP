@@ -14,7 +14,7 @@ import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common
 import {  AppArchiveService, PARK_ARCHIVES } from '@ss/common/app-archive';
 import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
 
-import { CommonUiLangModule } from '@ss/common/ui-lang';
+
 import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatExpansionModule } from '@angular/material/expansion';
@@ -41,7 +41,7 @@ import { VehicleMissionService } from '../services/vehicle-mission.service';
         CommonUiAutoCompleteModule,
         CommonUiDatepickerModule,
 
-        CommonUiLangModule,
+
         FormsModule,
         MatButtonModule,
         MatCheckboxModule,

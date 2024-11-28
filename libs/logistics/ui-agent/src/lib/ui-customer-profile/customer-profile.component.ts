@@ -5,9 +5,9 @@ import { ReactiveFormsModule, UntypedFormBuilder, UntypedFormControl, UntypedFor
 import { LoginService, MaterialModule } from '@ss/common/api-common';
 import {ActivatedRoute} from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
-import { UiPaginationModule } from '@ss/common/ui-pagination';
-import { CommonUiConfirmationDialogModule } from '@ss/common/ui-confirmation-dialog';
+
+
+
 
 import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
 import { CustomAttributesModule } from '@ss/custom-attributes';
@@ -21,10 +21,10 @@ import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
     imports: [
         CommonModule,
         MaterialModule,
-        CommonUiLangModule,
-        UiPaginationModule,
+
+
         ReactiveFormsModule,
-        CommonUiConfirmationDialogModule,
+
         CommonUiAutoCompleteModule,
         CustomAttributesModule,
         DocInfoComponent

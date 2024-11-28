@@ -6,7 +6,7 @@ import { FormBuilder, ReactiveFormsModule, UntypedFormGroup, Validators } from '
 import { MatCard } from '@angular/material/card';
 import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
 import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
+
 import { MatError, MatFormField, MatLabel } from '@angular/material/form-field';
 import { MatInput } from '@angular/material/input';
 import { MaterialModule } from '@ss/common/api-common';
@@ -20,7 +20,7 @@ import { convertToParamMap, ParamMap } from '@angular/router';
         MatCard,
         CommonUiAutoCompleteModule,
         CommonUiDatepickerModule,
-        CommonUiLangModule,
+
         MatError,
         MatFormField,
         MatInput,

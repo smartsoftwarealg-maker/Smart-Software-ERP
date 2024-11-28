@@ -11,10 +11,9 @@ import { DefaultReportService } from '@ss/common/ui-default-report-component';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { UserReceivedMessageService } from '../user-received-message.service';
 import { CommonModule } from '@angular/common';
-import { UiPaginationModule } from '@ss/common/ui-pagination';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
+import { PaginationComponent } from '@ss/common/ui-pagination';
 import { RemunerationPaymonthEditorModule } from '@ss/remuneration/paymonth-editor';
-import { CommonPayrollModule } from '@ss/payroll-common';
+
 
 import { OrgChartModule } from 'angular13-organization-chart';
 
@@ -26,12 +25,9 @@ import { OrgChartModule } from 'angular13-organization-chart';
     imports: [
         CommonModule,
         MaterialModule,
-        UiPaginationModule,
-        CommonUiLangModule,
         CommonUiAutoCompleteModule,
         RemunerationPaymonthEditorModule,
-        CommonPayrollModule,
-
+        PaginationComponent,
         OrgChartModule,
     ],
 })
