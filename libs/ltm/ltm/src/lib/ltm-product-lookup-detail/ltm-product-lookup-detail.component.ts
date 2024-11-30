@@ -8,13 +8,10 @@ import { CommonUiAutoCompleteModule } from "@ss/common/ui-auto-complete";
 import { Lookup } from '@ss/common/api-lookup';
 import { CommonModule } from "@angular/common";
 import { MaterialModule } from "@ss/common/api-common";
-
-import { PaginationComponent } from '@ss/common/ui-pagination';
-
-
 import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
 import { CommonUiHourPickerModule } from "@ss/common/ui-hour-picker";
 import { LtmProductLookupService } from '@ltm/ltm-api';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-ltm-product-lookup-detail',
@@ -24,7 +21,7 @@ import { LtmProductLookupService } from '@ltm/ltm-api';
     imports: [
         CommonModule,
         MaterialModule,
-
+        TranslateDirective,
         ReactiveFormsModule,
         CommonUiAutoCompleteModule,
         CommonUiDatepickerModule,

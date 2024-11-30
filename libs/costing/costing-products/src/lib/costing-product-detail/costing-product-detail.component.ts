@@ -11,6 +11,7 @@ import { CProduct, slideToRight } from '@ss/costing/costing-utils';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { CostingProductService } from '../costing-product.service';
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
+import { TranslateDirective } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-costing-product-detail',
@@ -21,10 +22,8 @@ import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
         CommonModule,
         RouterModule,
         MaterialModule,
-
-
+        TranslateDirective,
         ReactiveFormsModule,
-
         CommonUiAutoCompleteModule,
         CommonUiDatepickerModule,
     ],

@@ -23,6 +23,7 @@ import { CommonModule } from "@angular/common";
 import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
 import { CommonUiAutoCompleteModule } from "@ss/common/ui-auto-complete";
 import { RemunerationInputFiltersModule } from "@ss/remuneration/input-filters";
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 type Employee = {
     id: number;
@@ -38,10 +39,9 @@ type Employee = {
     imports: [
         CommonModule,
         MaterialModule,
-
-
+        TranslateDirective,
+        TranslatePipe,
         ReactiveFormsModule,
-
         CommonUiDatepickerModule,
         CommonUiAutoCompleteModule,
         RemunerationInputFiltersModule,

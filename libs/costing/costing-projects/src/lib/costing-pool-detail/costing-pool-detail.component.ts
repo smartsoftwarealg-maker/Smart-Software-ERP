@@ -18,6 +18,7 @@ import { CProductLineCostComponent } from '../product-line-costs/product-line-it
 import { ProductLineKeysComponent } from '../product-line-keys/product-line-keys.component';
 import { CostingPoolCostComponent } from '../costing-pools-costs/costing-pool-costs.component';
 import { CostingPoolsCostsService } from '../services/costing-pools-costs.service';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-costing-pool-detail',
@@ -26,8 +27,8 @@ import { CostingPoolsCostsService } from '../services/costing-pools-costs.servic
         CommonModule,
         RouterModule,
         MaterialModule,
-
-
+        TranslateDirective,
+        TranslatePipe,
         MatAutocompleteModule,
         CommonUiAutoCompleteModule,
         CostingPoolKeysComponent,

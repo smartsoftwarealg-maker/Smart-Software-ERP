@@ -24,6 +24,7 @@ import {
 } from '../asset-unidentified-child-inventory-list/asset-unidentified-child-inventory-list.component';
 import { AssetCountSummaryService } from '../services/asset-count-summary.service';
 import { PaginationComponent } from '@ss/common/ui-pagination';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-assets-inventory-doc-list',
@@ -33,13 +34,12 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
     imports: [
         CommonModule,
         MaterialModule,
-
-
+        TranslateDirective,
+        TranslatePipe,
         CommonUiAutoCompleteModule,
         CommonUiDatepickerModule,
         RouterModule,
         CustomAttributesModule,
-
         QRCodeModule,
         AssetRecordedInventoryReportComponent,
         AssetUnidentifiedChildInventoryListComponent,

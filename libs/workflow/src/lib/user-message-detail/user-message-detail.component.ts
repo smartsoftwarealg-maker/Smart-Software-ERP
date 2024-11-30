@@ -18,6 +18,7 @@ import { RemunerationPaymonthEditorModule } from '@ss/remuneration/paymonth-edit
 
 
 import { OrgChartModule } from 'angular13-organization-chart';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-user-message-detail',
@@ -27,12 +28,10 @@ import { OrgChartModule } from 'angular13-organization-chart';
     imports: [
         CommonModule,
         MaterialModule,
-
-
+        TranslateDirective,
+        TranslatePipe,
         CommonUiAutoCompleteModule,
         RemunerationPaymonthEditorModule,
-
-
         OrgChartModule,
     ],
 })

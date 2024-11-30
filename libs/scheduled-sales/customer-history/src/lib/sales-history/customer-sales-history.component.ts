@@ -19,6 +19,7 @@ import { SalesRecord } from '@ss/scheduled-sales/api-scheduled-sales';
 import { DefaultReportService } from '@ss/common/ui-default-report-component';
 import { SalesHistoryService } from './sales-history.service';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-customer-history',
@@ -28,17 +29,14 @@ import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
     imports: [
         CommonModule,
         MaterialModule,
-
-
+        TranslateDirective,
+        TranslatePipe,
         ReactiveFormsModule,
-
         RouterModule,
         CommonUiDatepickerModule,
         CommonUiAutoCompleteModule,
-
         LogisticsUiDocImportModule,
         UiStockInfoComponent,
-
         CommonUiColorSelectModule,
         ColorPickerModule
     ]

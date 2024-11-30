@@ -45,6 +45,7 @@ import { DateAdapter } from '@muaazh/angular-datepicker/core';
 import { MatDatepickerModule } from '@muaazh/angular-datepicker';
 import { MatNativeDateModule } from '@muaazh/angular-datepicker/core';
 import { SimpleDateAdapter } from './custom-date-adapter';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @NgModule({
     exports: [
@@ -93,7 +94,6 @@ import { SimpleDateAdapter } from './custom-date-adapter';
         MatTreeModule,
         PortalModule,
         ScrollingModule,
-
     ],
     providers: [
         {

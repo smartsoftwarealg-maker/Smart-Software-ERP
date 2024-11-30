@@ -10,6 +10,7 @@ import { MaterialModule } from '@ss/common/api-common';
 import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
 import { PhysicianService } from '../services/physician.service';
 import { BaseLookupDetailClass } from './detail-template/base-lookup-detail.class';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-physician-detail',
@@ -19,10 +20,7 @@ import { BaseLookupDetailClass } from './detail-template/base-lookup-detail.clas
     imports: [
         CommonModule,
         MaterialModule,
-
-
         ReactiveFormsModule,
-
         CommonUiAutoCompleteModule
     ],
 })

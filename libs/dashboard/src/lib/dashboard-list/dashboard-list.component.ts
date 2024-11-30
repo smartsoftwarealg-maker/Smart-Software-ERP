@@ -26,7 +26,7 @@ import { CommonModule } from '@angular/common';
 import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
 import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
 import { PaginationComponent } from '@ss/common/ui-pagination';
-import { TranslatePipe } from '@ss/common/ui-lang';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-dashboard-list',
@@ -36,10 +36,9 @@ import { TranslatePipe } from '@ss/common/ui-lang';
     imports: [
         CommonModule,
         MaterialModule,
-
-
+        TranslateDirective,
+        TranslatePipe,
         ReactiveFormsModule,
-
         CommonUiDatepickerModule,
         CommonUiAutoCompleteModule,
         PaginationComponent,

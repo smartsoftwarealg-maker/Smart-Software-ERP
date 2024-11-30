@@ -22,6 +22,7 @@ import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
 import { PurchaseContractService } from "../purchase-contract.service";
 import { ContractArticleMainComponent } from "../contract-article-main/contract-article-main.component";
 import { AppArchiveMainComponent } from '@ss/common/app-archive';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-purchase-contract-detail',
@@ -31,11 +32,9 @@ import { AppArchiveMainComponent } from '@ss/common/app-archive';
     imports: [
         CommonModule,
         MaterialModule,
-
-
+        TranslateDirective,
+        TranslatePipe,
         ReactiveFormsModule,
-
-
         CommonUiDatepickerModule,
         CommonUiAutoCompleteModule,
         RouterModule,

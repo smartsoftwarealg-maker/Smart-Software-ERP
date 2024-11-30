@@ -21,6 +21,7 @@ import { CommonModule } from "@angular/common";
 
 import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
 import { CustomerService } from "@ss/logistics/api-agent";
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 interface EvalPrice {
     id: any,
@@ -33,12 +34,11 @@ interface EvalPrice {
     imports: [
         CommonModule,
         MaterialModule,
-
-
+        TranslateDirective,
+        TranslatePipe,
         CommonUiAutoCompleteModule,
         ReactiveFormsModule,
         CommonUiDatepickerModule,
-
     ],
     styleUrls: ["./options-detail.component.scss"],
     templateUrl: "./options-detail.component.html"

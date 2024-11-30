@@ -7,17 +7,17 @@ import {MaterialModule} from '@ss/common/api-common';
 
 import {ReactiveFormsModule} from '@angular/forms';
 import {CommonUiAutoCompleteModule} from '@ss/common/ui-auto-complete';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 
 @NgModule({
     imports: [
         CommonModule,
         MaterialModule,
-
-
+        TranslateDirective,
+        TranslatePipe,
         ReactiveFormsModule,
         CommonUiAutoCompleteModule,
-
         BudgetPlanningComponent, BudgetPlanningAddDlgComponent,
     ],
 })

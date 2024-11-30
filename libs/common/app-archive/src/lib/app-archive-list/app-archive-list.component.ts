@@ -12,6 +12,7 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
 import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-app-archive-list',
@@ -22,13 +23,12 @@ import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
         CommonModule,
         RouterModule,
         MaterialModule,
-
-
+        TranslateDirective,
         ReactiveFormsModule,
-
         CommonUiAutoCompleteModule,
-        CommonUiDatepickerModule
-    ],
+        CommonUiDatepickerModule,
+        TranslatePipe
+    ]
 })
 export class AppArchiveListComponent implements OnInit {
     private _id = 0;

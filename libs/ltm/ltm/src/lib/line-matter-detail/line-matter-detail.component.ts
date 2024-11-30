@@ -9,10 +9,11 @@ import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { LoginService, MaterialModule } from '@ss/common/api-common';
 import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from "@ss/common/ui-auto-complete";
 import { CommonModule } from "@angular/common";
-import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
+import { DatePickerComponent } from '@ss/common/ui-datepicker';
 import { CommonUiHourPickerModule } from '@ss/common/ui-hour-picker';
 import { LtmMatterTestService, LtmPickupPointService, LtmNormService } from '@ltm/ltm-api';
 import {filter } from 'rxjs';
+import { TranslateDirective } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-line-matter-detail',
@@ -23,9 +24,9 @@ import {filter } from 'rxjs';
         CommonModule,
         MaterialModule,
         ReactiveFormsModule,
-
+        TranslateDirective,
         CommonUiAutoCompleteModule,
-        CommonUiDatepickerModule,
+        DatePickerComponent,
         RouterOutlet,
         CommonUiHourPickerModule
     ],

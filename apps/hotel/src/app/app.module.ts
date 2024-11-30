@@ -1,24 +1,8 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { ErrorHandler, NgModule } from '@angular/core';
-import { AppComponent } from './app.component';
-import { Router, RouterModule, Routes } from '@angular/router';
-import { DeviceDetectorService } from 'ngx-device-detector';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgModule } from '@angular/core';
+import { Router, Routes } from '@angular/router';
 import { NavService } from './common/nav.service';
-import { HttpClientModule } from '@angular/common/http';
-import { ConfirmationDialogModule } from './common/confirmation-dialog/confirmation-dialog.module';
 import { MAIN_PAGE_URL, LOGIN_URL } from './smart-lib/components/login/login-constants';
-import { ThemeModule } from './smart-lib/components/theme/theme.module';
-
-import { LoadingSpinnerModule } from './smart-lib/components/loading-spinner/loading-spinner.module';
-import { LanguageModule } from './smart-lib/components/language/language.module';
-
-import { LoginModule } from './smart-lib/components/login/login.module';
-import { CenterSelectModule } from './smart-lib/components/center-select/center-select.module';
-import { CustomErrorHandler } from './smart-lib/components/error-handler/custom-error-handler';
-import { ErrorHandlerModule } from './smart-lib/components/error-handler/error-handler.module';
 import { LanguageService } from '@ss/common/api-common';
-import { MaterialModule } from './smart-lib/components/material.module';
 
 export interface Application {
     name: string;
@@ -51,7 +35,7 @@ const routes: Routes = [
     { path: '**', redirectTo: LOGIN_URL, pathMatch: 'full' }, // not found
 ];
 
-@NgModule(/* TODO(standalone-migration): clean up removed NgModule class manually. 
+@NgModule(/* TODO(standalone-migration): clean up removed NgModule class manually.
 {
     declarations:
         [

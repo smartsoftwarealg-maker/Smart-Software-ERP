@@ -14,7 +14,7 @@ import { RouterModule } from '@angular/router';
 import { CustomAttributesModule } from '@ss/custom-attributes';
 
 import { QRCodeModule } from 'angularx-qrcode';
-import { TranslatePipe } from '@ss/common/ui-lang';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-duplicate-dialog',
@@ -24,13 +24,12 @@ import { TranslatePipe } from '@ss/common/ui-lang';
     imports: [
         CommonModule,
         MaterialModule,
-
-
+        TranslateDirective,
+        TranslatePipe,
         CommonUiAutoCompleteModule,
         CommonUiDatepickerModule,
         RouterModule,
         CustomAttributesModule,
-
         QRCodeModule,
         TranslatePipe
     ]

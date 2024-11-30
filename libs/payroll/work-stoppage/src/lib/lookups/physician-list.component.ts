@@ -13,6 +13,7 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
 import { PaginationComponent } from '@ss/common/ui-pagination';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-physician-list',
@@ -22,10 +23,9 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
     imports: [
         CommonModule,
         MaterialModule,
-
-
+        TranslateDirective,
+        TranslatePipe,
         ReactiveFormsModule,
-
         CommonUiAutoCompleteModule,
         PaginationComponent
     ]

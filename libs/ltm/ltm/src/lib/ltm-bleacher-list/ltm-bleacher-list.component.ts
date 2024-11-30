@@ -13,6 +13,7 @@ import { CommonUiHourPickerModule } from "@ss/common/ui-hour-picker";
 import { Lookup } from '@ss/common/api-lookup';
 import { LtmBleacherService } from '@ltm/ltm-api';
 import { PaginationComponent } from '@ss/common/ui-pagination';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-ltm-bleacher-list',
@@ -26,8 +27,9 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
         ReactiveFormsModule,
         CommonUiAutoCompleteModule,
         CommonUiDatepickerModule,
-        RouterOutlet,
-        CommonUiHourPickerModule
+        CommonUiHourPickerModule,
+        TranslateDirective,
+        TranslatePipe
     ],
 })
 export class LtmBleacherListComponent extends BaseEntityListComponent<Lookup> {

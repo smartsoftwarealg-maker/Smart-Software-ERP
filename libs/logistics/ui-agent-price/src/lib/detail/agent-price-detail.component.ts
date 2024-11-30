@@ -8,9 +8,7 @@ import {  ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import {AgentPriceService} from '@ss/logistics/api-agent-price';
 import { CommonModule } from '@angular/common';
 import { MaterialModule } from '@ss/common/api-common';
-
-
-
+import { TranslateDirective } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-agent-price-detail',
@@ -20,10 +18,8 @@ import { MaterialModule } from '@ss/common/api-common';
     imports: [
         CommonModule,
         MaterialModule,
-
-
+        TranslateDirective,
         ReactiveFormsModule,
-
     ],
 
 })

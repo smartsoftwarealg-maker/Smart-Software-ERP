@@ -13,6 +13,7 @@ import { ReactiveFormsModule } from "@angular/forms";
 import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
 import { CommonUiAutoCompleteModule } from "@ss/common/ui-auto-complete";
 import { PaginationComponent } from '@ss/common/ui-pagination';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-sales-mode-list',
@@ -22,10 +23,9 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
     imports: [
         CommonModule,
         MaterialModule,
-
-
+        TranslateDirective,
+        TranslatePipe,
         ReactiveFormsModule,
-
         CommonUiDatepickerModule,
         CommonUiAutoCompleteModule,
         PaginationComponent

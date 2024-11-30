@@ -10,6 +10,7 @@ import { CommonModule } from '@angular/common';
 
 
 import { ReactiveFormsModule } from '@angular/forms';
+import { TranslateDirective } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-agent-price-list',
@@ -19,8 +20,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     imports: [
         CommonModule,
         MaterialModule,
-
-
+        TranslateDirective,
         ReactiveFormsModule,
 
     ],

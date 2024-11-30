@@ -19,6 +19,7 @@ import { AccRecordService } from "../acc-record.service";
 import { callback } from "chart.js/helpers";
 import { debounceTime, distinctUntilChanged, switchMap } from "rxjs/operators";
 import { PaginationComponent } from '@ss/common/ui-pagination';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
   selector: "ss-costing-item-list",
@@ -29,8 +30,8 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
         CommonModule,
         RouterModule,
         MaterialModule,
-
-
+        TranslateDirective,
+        TranslatePipe,
         ReactiveFormsModule,
 
         CommonUiAutoCompleteModule,

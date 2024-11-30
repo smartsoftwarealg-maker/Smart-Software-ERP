@@ -13,6 +13,7 @@ import { RemunerationPaymonthEditorModule } from '@ss/remuneration/paymonth-edit
 
 
 import { OrgChartModule } from 'angular13-organization-chart';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 type MBData = {
     amount: number;
@@ -29,10 +30,10 @@ type MBData = {
     imports: [
         CommonModule,
         MaterialModule,
-
+        TranslateDirective,
+        TranslatePipe,
         CommonUiAutoCompleteModule,
         RemunerationPaymonthEditorModule,
-
         OrgChartModule,
     ],
 })

@@ -11,6 +11,7 @@ import { CommonModule } from '@angular/common';
 
 import { ReactiveFormsModule } from '@angular/forms';
 import { PaginationComponent } from '@ss/common/ui-pagination';
+import { TranslateDirective } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-bank-list',
@@ -18,11 +19,9 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
     imports: [
         CommonModule,
         MaterialModule,
-
-
         ReactiveFormsModule,
-        PaginationComponent
-
+        PaginationComponent,
+        TranslateDirective,
     ],
     styleUrls: ['./bank-list.component.scss'],
     templateUrl: './bank-list.component.html'
@@ -51,7 +50,7 @@ export class BankListComponent extends BaseEntityListComponent<Bank> {
             confirmationSrv,
             defReportSrv,
             pagPersistSrv,
-            'ADMINISTRATION_BANK');
+            'COMMON_BANK');
         this.pagination.pageSize = 15;
     }
 }

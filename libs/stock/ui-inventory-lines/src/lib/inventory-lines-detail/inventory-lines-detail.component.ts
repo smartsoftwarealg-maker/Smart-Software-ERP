@@ -4,15 +4,12 @@ import {
 } from '@ss/logistics/api-transaction';
 import { CommonModule } from '@angular/common';
 import { MaterialModule } from '@ss/common/api-common';
-
-
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
-
-
 import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
 import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
 import { InventoryLinesService } from "@ss/stock/api-inventory-lines";
+import { TranslateDirective } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-inventory-lines-detail',
@@ -22,12 +19,9 @@ import { InventoryLinesService } from "@ss/stock/api-inventory-lines";
     imports: [
         CommonModule,
         MaterialModule,
-
-
+        TranslateDirective,
         RouterModule,
         ReactiveFormsModule,
-
-
         CommonUiDatepickerModule,
         CommonUiAutoCompleteModule,
     ],

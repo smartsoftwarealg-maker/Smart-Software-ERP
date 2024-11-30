@@ -20,6 +20,7 @@ import { TurnoverService } from '../services/turnover.service';
 import { Turnover } from '@ss/scheduled-sales/api-scheduled-sales';
 import { switchMap, tap } from 'rxjs';
 import { Chart, ChartItem, registerables } from 'chart.js';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-customer-history',
@@ -29,10 +30,9 @@ import { Chart, ChartItem, registerables } from 'chart.js';
     imports: [
         CommonModule,
         MaterialModule,
-
-
-        ReactiveFormsModule,
-
+        TranslateDirective,
+        TranslatePipe,
+        ReactiveFormsMdule,
         RouterModule,
         CommonUiDatepickerModule,
         CommonUiAutoCompleteModule,

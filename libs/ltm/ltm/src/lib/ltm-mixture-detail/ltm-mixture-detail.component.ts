@@ -19,6 +19,7 @@ import { LtmMixtureService } from '@ltm/ltm-api';
 import { LtmMixtureDetailService } from '@ltm/ltm-api';
 import { LtmMixturePickupPointService } from '@ltm/ltm-api';
 import { PaginationComponent } from '@ss/common/ui-pagination';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-ltm-mixture-detail',
@@ -28,12 +29,12 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
     imports: [
         CommonModule,
         MaterialModule,
-        PaginationComponent,
         ReactiveFormsModule,
         CommonUiAutoCompleteModule,
         CommonUiDatepickerModule,
         RouterOutlet,
-        CommonUiHourPickerModule
+        CommonUiHourPickerModule,
+        TranslateDirective
     ],
 })
 export class LtmMixtureDetailComponent extends BaseEntityDetailComponent<LTMMixture> implements OnInit {

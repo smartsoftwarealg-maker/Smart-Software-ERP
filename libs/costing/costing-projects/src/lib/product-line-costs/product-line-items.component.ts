@@ -11,6 +11,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
 import { CostingItemService } from '@ss/costing/costing-items';
 import { ProductLineCostsService } from '../services/product-line-costs.service';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-product-line-items',
@@ -19,9 +20,8 @@ import { ProductLineCostsService } from '../services/product-line-costs.service'
         CommonModule,
         RouterModule,
         MaterialModule,
-
-
-
+        TranslateDirective,
+        TranslatePipe,
         CommonUiAutoCompleteModule
     ],
     templateUrl: './product-line-items.component.html',

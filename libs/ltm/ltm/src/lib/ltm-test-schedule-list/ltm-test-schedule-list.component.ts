@@ -10,6 +10,7 @@ import { CommonUiHourPickerModule } from "@ss/common/ui-hour-picker";
 import { BaseChildEntityListComponent } from "@ss/common/ui-base-entity";
 import { LtmTestScheduleService } from '@ltm/ltm-api';
 import { PaginationComponent } from '@ss/common/ui-pagination';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-ltm-test-schedule-list',
@@ -24,7 +25,9 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
         CommonUiAutoCompleteModule,
         CommonUiDatepickerModule,
         RouterOutlet,
-        CommonUiHourPickerModule
+        CommonUiHourPickerModule,
+        TranslateDirective,
+        TranslatePipe
     ],
 })
 export class LtmTestScheduleListComponent extends BaseChildEntityListComponent<LTMTestSchedule> {

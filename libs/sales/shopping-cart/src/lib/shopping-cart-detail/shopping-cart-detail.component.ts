@@ -27,6 +27,7 @@ import { SalesUiDeliveryLinesModule } from '@ss/sales/ui-delivery-lines';
 import { LogisticsUiDocImportModule } from '@ss/logistics/ui-doc-import';
 import { UiStockInfoComponent } from '@ss/logistics/ui-stock-info';
 import { PaginationComponent } from '@ss/common/ui-pagination';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-shopping-cart-detail',
@@ -36,14 +37,12 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
     imports: [
         CommonModule,
         MaterialModule,
-
-
+        TranslateDirective,
+        TranslatePipe,
         ReactiveFormsModule,
-
         RouterModule,
         CommonUiDatepickerModule,
         CommonUiAutoCompleteModule,
-
         SalesUiDeliveryLinesModule,
         LogisticsUiDocImportModule,
 

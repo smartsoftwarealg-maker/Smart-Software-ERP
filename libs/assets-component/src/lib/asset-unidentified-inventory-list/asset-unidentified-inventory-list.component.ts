@@ -25,6 +25,7 @@ import { AssetUnidentifiedInventoryService } from '../services/asset-unidentifie
 import { AssetInventoryDocService } from '../services/asset-inventory-doc.service';
 import { FormControl } from '@angular/forms';
 import { PaginationComponent } from '@ss/common/ui-pagination';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-asset-unidentified-inventory-list',
@@ -34,13 +35,12 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
     imports: [
         CommonModule,
         MaterialModule,
-
-
+        TranslateDirective,
+        TranslatePipe,
         CommonUiAutoCompleteModule,
         CommonUiDatepickerModule,
         RouterModule,
         CustomAttributesModule,
-
         QRCodeModule,
         PaginationComponent
     ]

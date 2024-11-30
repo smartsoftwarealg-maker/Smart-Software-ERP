@@ -11,6 +11,7 @@ import { CostingPoolKeysService } from '@ss/costing/costing-projects';
 import { FormBuilder, Validators } from '@angular/forms';
 import { CostingKeyService } from '@ss/costing/costing-keys';
 import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-costing-pool-keys',
@@ -19,9 +20,8 @@ import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common
         CommonModule,
         RouterModule,
         MaterialModule,
-
-
-
+        TranslateDirective,
+        TranslatePipe,
         CommonUiAutoCompleteModule
     ],
     templateUrl: './costing-pool-keys.component.html',

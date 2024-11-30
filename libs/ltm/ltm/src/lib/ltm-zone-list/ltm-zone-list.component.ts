@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
-import { ActivatedRoute, Router, RouterOutlet } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import {  ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import { MaterialModule, PaginatorPersistenceService } from "@ss/common/api-common";
@@ -13,6 +13,7 @@ import { CommonUiHourPickerModule } from "@ss/common/ui-hour-picker";
 import { Lookup } from '@ss/common/api-lookup';
 import { LtmZoneService } from '@ltm/ltm-api';
 import { PaginationComponent } from '@ss/common/ui-pagination';
+import { TranslateDirective } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-ltm-zone-list',
@@ -26,7 +27,7 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
         ReactiveFormsModule,
         CommonUiAutoCompleteModule,
         CommonUiDatepickerModule,
-        RouterOutlet,
+        TranslateDirective,
         CommonUiHourPickerModule
     ],
 })

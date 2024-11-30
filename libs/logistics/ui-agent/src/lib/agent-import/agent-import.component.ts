@@ -14,6 +14,7 @@ import { MaterialModule } from '@ss/common/api-common';
 
 import { CustomAttributesModule } from '@ss/custom-attributes';
 import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-agent-import',
@@ -23,15 +24,11 @@ import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
     imports: [
         CommonModule,
         MaterialModule,
-
-
+        TranslateDirective,
+        TranslatePipe,
         ReactiveFormsModule,
-
-
-
         CommonUiAutoCompleteModule,
-        CustomAttributesModule,
-        DocInfoComponent
+        CustomAttributesModule
     ],
 
 })

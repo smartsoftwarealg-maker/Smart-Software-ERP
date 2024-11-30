@@ -17,6 +17,7 @@ import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
 import { UiStockInfoComponent } from '@ss/logistics/ui-stock-info';
 import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
 import { PaginationComponent } from '@ss/common/ui-pagination';
+import { TranslateDirective } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-reception-list',
@@ -26,15 +27,10 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
     imports: [
         CommonModule,
         MaterialModule,
-
-
         ReactiveFormsModule,
-
         CommonUiDatepickerModule,
         CommonUiAutoCompleteModule,
-
-        UiStockInfoComponent,
-        RouterOutlet,
+        TranslateDirective,
         DocInfoComponent,
         PaginationComponent
     ]

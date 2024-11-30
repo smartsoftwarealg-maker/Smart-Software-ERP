@@ -9,6 +9,7 @@ import {  ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import {Account, ACCOUNT_TYPES, AccountService} from '@ss/accounting/api-accounts';
 import { CommonModule } from '@angular/common';
 import { MaterialModule } from '@ss/common/api-common';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 
 
@@ -21,8 +22,8 @@ import { MaterialModule } from '@ss/common/api-common';
     imports: [
         CommonModule,
         MaterialModule,
-
-
+        TranslateDirective,
+        TranslatePipe,
         ReactiveFormsModule,
 
     ],

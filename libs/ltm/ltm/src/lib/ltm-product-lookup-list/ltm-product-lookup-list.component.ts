@@ -13,6 +13,7 @@ import { CommonUiHourPickerModule } from "@ss/common/ui-hour-picker";
 import { Lookup } from "@ss/common/api-lookup";
 import { LtmProductLookupService } from '@ltm/ltm-api';
 import { PaginationComponent } from '@ss/common/ui-pagination';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-ltm-product-lookup-list',
@@ -27,7 +28,9 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
         CommonUiAutoCompleteModule,
         CommonUiDatepickerModule,
         RouterOutlet,
-        CommonUiHourPickerModule
+        CommonUiHourPickerModule,
+        TranslateDirective,
+        TranslatePipe
     ],
 })
 export class LtmProductLookupListComponent extends BaseEntityListComponent<Lookup> {

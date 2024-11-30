@@ -8,15 +8,12 @@ import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import { MaterialModule, PaginatorPersistenceService } from "@ss/common/api-common";
 import {LtmPeriodicityService} from '@ltm/ltm-api';
 import { CommonModule } from "@angular/common";
-
-
 import { ReactiveFormsModule } from "@angular/forms";
-
-
 import { CommonUiAutoCompleteModule } from "@ss/common/ui-auto-complete";
 import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
 import { CommonUiHourPickerModule } from "@ss/common/ui-hour-picker";
 import { PaginationComponent } from '@ss/common/ui-pagination';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-ltm-periodicities-list',
@@ -30,7 +27,8 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
         ReactiveFormsModule,
         CommonUiAutoCompleteModule,
         CommonUiDatepickerModule,
-        RouterOutlet,
+        TranslateDirective,
+        TranslatePipe,
         CommonUiHourPickerModule
     ],
 })

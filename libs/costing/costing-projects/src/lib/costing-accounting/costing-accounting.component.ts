@@ -13,6 +13,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { CommonUiLookupModule } from '@ss/common/ui-lookup';
 import { DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
 import { ShellService } from '@ss/common/ui-shell';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-costing-reports',
@@ -21,9 +22,8 @@ import { ShellService } from '@ss/common/ui-shell';
         CommonModule,
         RouterModule,
         MaterialModule,
-
-
-
+        TranslateDirective,
+        TranslatePipe,
         CommonUiLookupModule
     ],
     templateUrl: './costing-accounting.component.html',

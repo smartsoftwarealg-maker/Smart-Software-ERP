@@ -16,6 +16,7 @@ import { DefaultReportService } from '@ss/common/ui-default-report-component';
 import { CostingProductService } from '../costing-product.service';
 import { CProduct, slideToRight } from '@ss/costing/costing-utils';
 import { PaginationComponent } from '@ss/common/ui-pagination';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-costing-product-list',
@@ -26,10 +27,9 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
         CommonModule,
         RouterModule,
         MaterialModule,
-
-
+        TranslateDirective,
+        TranslatePipe,
         ReactiveFormsModule,
-
         CommonUiAutoCompleteModule,
         CommonUiDatepickerModule,
         PaginationComponent

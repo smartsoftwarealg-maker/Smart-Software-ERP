@@ -28,6 +28,7 @@ import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
 import { CustomAttributesModule } from '@ss/custom-attributes';
 import { AssetInventoryDocService } from '../services/asset-inventory-doc.service';
 import { AssetsBuildingService } from '@ss/assets-component';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-assets-inventory-doc-detail',
@@ -37,10 +38,8 @@ import { AssetsBuildingService } from '@ss/assets-component';
     imports: [
         CommonModule,
         MaterialModule,
-
-
-
-
+        TranslateDirective,
+        TranslatePipe,
         CommonUiAutoCompleteModule,
         CommonUiDatepickerModule,
         RouterModule,

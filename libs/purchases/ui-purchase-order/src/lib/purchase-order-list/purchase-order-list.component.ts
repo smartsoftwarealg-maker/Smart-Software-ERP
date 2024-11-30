@@ -38,6 +38,7 @@ import { DocInfoComponent } from '../../../../../logistics/ui-doc-info/src/lib/d
         NgIf,
         DocInfoComponent,
         DatePipe,
+        TranslateDirective
     ],
 })
 export class PurchaseOrderListComponent extends BaseEntityListComponent<Transaction> {

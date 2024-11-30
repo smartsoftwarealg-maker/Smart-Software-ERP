@@ -1,11 +1,5 @@
-import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
-import {UiCenterSelectModule} from '@ss/common/ui-center-select';
-import {UiThemeModule} from '@ss/common/ui-theme';
-import {AppComponent} from './app.component';
-import {RouterModule, Routes} from '@angular/router';
-import {UiLoginModule} from '@ss/common/ui-login';
-import {HttpClientModule} from '@angular/common/http';
+import {Routes} from '@angular/router';
 
 import {
     CanActivateService,
@@ -16,12 +10,9 @@ import {
     LoginType,
     MAIN_PAGE_URL
 } from '@ss/common/api-common';
-import {UiErrorHandlerModule} from '@ss/common/ui-error-handler';
 import {ShellComponent, UiShellModule} from '@ss/common/ui-shell';
 import {EXCHANGE_APP_URL} from './common';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { MainPageComponent} from "@ss/common/ui-main-page";
-import {ExchangeUiIdiotPageModule} from "@ss/exchange/ui-idiot-page";
 
 const routes: Routes = [
     {

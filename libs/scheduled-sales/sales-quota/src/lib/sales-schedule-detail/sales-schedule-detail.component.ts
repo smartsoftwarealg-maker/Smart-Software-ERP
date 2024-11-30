@@ -23,7 +23,7 @@ import {debounceTime, distinctUntilChanged} from 'rxjs/operators';
 
 import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
 import { ProjectService } from '@ss/scheduled-sales/projects';
-import { TranslatePipe } from '@ss/common/ui-lang';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 // type Article = { id: number, reference: string, description: string};
 
@@ -35,10 +35,9 @@ import { TranslatePipe } from '@ss/common/ui-lang';
     imports: [
         CommonModule,
         MaterialModule,
-
-
+        TranslateDirective,
+        TranslatePipe,
         ReactiveFormsModule,
-
         CommonUiDatepickerModule,
         CommonUiAutoCompleteModule,
         TranslatePipe

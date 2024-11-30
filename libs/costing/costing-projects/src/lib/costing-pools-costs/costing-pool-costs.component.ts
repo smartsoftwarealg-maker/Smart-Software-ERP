@@ -11,6 +11,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
 import { CostingItemService } from '@ss/costing/costing-items';
 import { CostingPoolsCostsService } from '../services/costing-pools-costs.service';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-costing-pools-costs',
@@ -19,9 +20,8 @@ import { CostingPoolsCostsService } from '../services/costing-pools-costs.servic
         CommonModule,
         RouterModule,
         MaterialModule,
-
-
-
+        TranslateDirective,
+        TranslatePipe,
         CommonUiAutoCompleteModule
     ],
     templateUrl: './costing-pool-costs.component.html',

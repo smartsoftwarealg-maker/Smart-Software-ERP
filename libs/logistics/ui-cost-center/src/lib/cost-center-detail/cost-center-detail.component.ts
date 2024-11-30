@@ -10,6 +10,7 @@ import {Observable} from 'rxjs';
 import {tap} from 'rxjs/operators';
 import { CommonModule } from '@angular/common';
 import { MaterialModule } from '@ss/common/api-common';
+import { TranslateDirective } from '@ss/common/ui-lang';
 
 
 
@@ -22,10 +23,8 @@ import { MaterialModule } from '@ss/common/api-common';
     imports: [
         CommonModule,
         MaterialModule,
-
-
+        TranslateDirective,
         ReactiveFormsModule,
-
     ],
 })
 export class CostCenterDetailComponent extends BaseEntityDetailComponent<CostCenter> {

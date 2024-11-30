@@ -4,7 +4,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { NavService } from '../../common/nav.service';
 import { FoodListComponent } from './food-list.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
 import { PaginationModule } from '../../common/pagination/pagination.module';
 import { ListToolbarModule } from '../../common/list-toolbar/list-toolbar.module';
 import { SaveBarModule } from '../../common/save-bar/save-bar.module';
@@ -13,7 +12,6 @@ import { CanDeactivateService, FoodDetailComponent } from './food-detail.compone
 import { AutoCompleteModule } from '../../common/auto-complete/auto-complete.module';
 import { ImageInputModule } from '../../common/image-input/image-input.module';
 import { CanActivateService } from '../../smart-lib/components/login/can-activte.service';
-
 import { LoadingSpinnerModule } from '../../smart-lib/components/loading-spinner/loading-spinner.module';
 
 import { LanguageService } from '@ss/common/api-common';
@@ -42,7 +40,6 @@ const routes: Routes = [
     FormsModule,
     ReactiveFormsModule,
     MaterialModule,
-    HttpClientModule,
     PaginationModule,
     LoadingSpinnerModule,
     ListToolbarModule,

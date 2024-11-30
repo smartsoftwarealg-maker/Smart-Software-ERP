@@ -11,6 +11,7 @@ import { MaterialModule } from "@ss/common/api-common";
 import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
 import { CommonUiHourPickerModule } from "@ss/common/ui-hour-picker";
 import { LtmDepositService } from '@ltm/ltm-api';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-ltm-deposit-detail',
@@ -23,7 +24,8 @@ import { LtmDepositService } from '@ltm/ltm-api';
         ReactiveFormsModule,
         CommonUiAutoCompleteModule,
         CommonUiDatepickerModule,
-        CommonUiHourPickerModule
+        CommonUiHourPickerModule,
+        TranslateDirective
     ],
 })
 export class LtmDepositDetailComponent extends BaseEntityDetailComponent<Lookup> {

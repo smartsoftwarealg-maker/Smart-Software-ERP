@@ -21,6 +21,7 @@ import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
 import { debounceTime, distinctUntilChanged } from "rxjs/operators";
 import { Sort } from "@angular/material/sort";
 import { PaginationComponent } from '@ss/common/ui-pagination';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-transaction-lines-list',
@@ -31,8 +32,8 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
         CommonModule,
         RouterModule,
         MaterialModule,
-
-
+        TranslateDirective,
+        TranslatePipe,
         ReactiveFormsModule,
 
         CommonUiAutoCompleteModule,

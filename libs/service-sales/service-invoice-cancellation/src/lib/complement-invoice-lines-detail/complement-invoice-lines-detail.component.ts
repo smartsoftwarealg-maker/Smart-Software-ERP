@@ -15,6 +15,7 @@ import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common
 
 import { LogisticsUiDocImportModule } from '@ss/logistics/ui-doc-import';
 import { ServiceArticleService } from '@ss/service-sales/service-articles';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-invoice-lines-detail',
@@ -24,14 +25,12 @@ import { ServiceArticleService } from '@ss/service-sales/service-articles';
     imports: [
         CommonModule,
         MaterialModule,
-
-
+        TranslateDirective,
+        TranslatePipe,
         ReactiveFormsModule,
-
         RouterModule,
         CommonUiDatepickerModule,
         CommonUiAutoCompleteModule,
-
         LogisticsUiDocImportModule
     ],
 })

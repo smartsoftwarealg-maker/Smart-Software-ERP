@@ -16,6 +16,7 @@ import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
 import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from "@ss/common/ui-auto-complete";
 import { PurchaseContractService } from "../purchase-contract.service";
 import { PaginationComponent } from '@ss/common/ui-pagination';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-purchase-contract-list',
@@ -25,11 +26,9 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
     imports: [
         CommonModule,
         MaterialModule,
-
-
+        TranslateDirective,
+        TranslatePipe,
         ReactiveFormsModule,
-
-
         CommonUiDatepickerModule,
         CommonUiAutoCompleteModule,
         RouterModule,

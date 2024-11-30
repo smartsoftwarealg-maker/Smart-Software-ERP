@@ -16,6 +16,7 @@ import { PhysicianSpecialtyService } from '../services/physician-specialty.servi
 import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
 import { EmployeeService, PersonAutocompleteClass } from '@ss/employee-services/employee-services';
 import { AbsenceMotiveService } from '@ss/attendance';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-work-stoppage-detail',
@@ -23,10 +24,9 @@ import { AbsenceMotiveService } from '@ss/attendance';
     imports: [
         CommonModule,
         MaterialModule,
-
-
+        TranslateDirective,
+        TranslatePipe,
         ReactiveFormsModule,
-
         CommonUiAutoCompleteModule,
         CommonUiDatepickerModule
     ],

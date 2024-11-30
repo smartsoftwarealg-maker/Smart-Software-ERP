@@ -9,6 +9,7 @@ import { FormBuilder, ReactiveFormsModule, UntypedFormBuilder } from '@angular/f
 
 import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
 import { Agent, CustomerService } from '@ss/logistics/api-agent';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-password-reset',
@@ -16,10 +17,9 @@ import { Agent, CustomerService } from '@ss/logistics/api-agent';
     imports: [
         CommonModule,
         MaterialModule,
-
-
+        TranslateDirective,
+        TranslatePipe,
         ReactiveFormsModule,
-
         CommonUiAutoCompleteModule
     ],
     templateUrl: './password-reset.component.html',

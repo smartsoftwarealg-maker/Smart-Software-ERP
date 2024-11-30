@@ -12,6 +12,7 @@ import {Observable} from 'rxjs';
 import {TraceabilityService} from '@ss/common/ui-traceability';
 import {MatSelectChange} from '@angular/material/select';
 import { CommonModule } from '@angular/common';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 
 
@@ -24,10 +25,8 @@ import { CommonModule } from '@angular/common';
     imports: [
         CommonModule,
         MaterialModule,
-
-
+        TranslateDirective,
         ReactiveFormsModule,
-
     ],
 })
 export class ReportCatalogDetailComponent extends BaseEntityDetailComponent<ReportsCatalog> implements OnInit {

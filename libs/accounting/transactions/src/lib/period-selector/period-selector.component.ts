@@ -14,6 +14,7 @@ import { CommonModule } from "@angular/common";
 
 import { CommonUiAutoCompleteModule } from "@ss/common/ui-auto-complete";
 import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 
 @Component({
@@ -25,8 +26,8 @@ import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
         CommonModule,
         RouterModule,
         MaterialModule,
-
-
+        TranslateDirective,
+        TranslatePipe,
         ReactiveFormsModule,
 
         CommonUiAutoCompleteModule,

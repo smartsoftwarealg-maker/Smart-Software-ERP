@@ -11,6 +11,7 @@ import { NgIf } from '@angular/common';
 import { ThemeDirective } from '../../../../libs/common/ui-theme/src/lib/theme.directive';
 import { RouterOutlet } from '@angular/router';
 import { MessageComponent } from '../../../../libs/common/ui-error-handler/src/lib/error-message.component';
+import { TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-root',
@@ -21,7 +22,7 @@ import { MessageComponent } from '../../../../libs/common/ui-error-handler/src/l
         NgIf,
         ThemeDirective,
         RouterOutlet,
-        MessageComponent,
+        MessageComponent
     ],
 })
 export class AppComponent implements OnInit {

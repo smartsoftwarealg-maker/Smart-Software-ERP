@@ -29,6 +29,7 @@ import { UiThemeModule } from '@ss/common/ui-theme';
 import { catchError, of, switchMap, tap } from 'rxjs';
 import { debug } from '@capacitor/assets/dist/util/log';
 import { LanguageSelectComponent } from '../../../ui-lang/src/lib/language-select.component';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-shell',
@@ -40,9 +41,10 @@ import { LanguageSelectComponent } from '../../../ui-lang/src/lib/language-selec
         RouterModule,
         MaterialModule,
         UiLogoutModule,
-
         UiThemeModule,
-        LanguageSelectComponent
+        LanguageSelectComponent,
+        TranslatePipe,
+        TranslateDirective
     ]
 })
 export class ShellComponent implements OnInit, OnDestroy, AfterViewInit, AfterViewChecked {

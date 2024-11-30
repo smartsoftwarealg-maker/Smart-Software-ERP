@@ -20,6 +20,7 @@ import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
 import { UiStockInfoComponent } from '@ss/logistics/ui-stock-info';
 import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
 import { PaginationComponent } from '@ss/common/ui-pagination';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-article-list',
@@ -29,16 +30,15 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
     imports: [
         CommonModule,
         MaterialModule,
-
-
+        TranslateDirective,
+        TranslatePipe,
         StockUiArticleStoreModule,
-
         RouterModule,
-
         CommonUiAutoCompleteModule,
         UiStockInfoComponent,
         DocInfoComponent,
-        PaginationComponent
+        PaginationComponent,
+        TranslateDirective
     ]
 })
 export class ArticleListComponent extends BaseEntityListComponent<Article> implements OnInit {

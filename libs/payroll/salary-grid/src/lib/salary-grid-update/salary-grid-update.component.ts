@@ -11,6 +11,7 @@ import { RemunerationPaymonthEditorModule } from "@ss/remuneration/paymonth-edit
 import { PayrollMonthService } from "@ss/remuneration/payroll-month";
 import { GridService } from "../grid.service";
 import { ShellService, SnackBarService } from "@ss/common/ui-shell";
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: "ss-salary-grid-update",
@@ -20,12 +21,10 @@ import { ShellService, SnackBarService } from "@ss/common/ui-shell";
     imports: [
         CommonModule,
         MaterialModule,
-
-
+        TranslateDirective,
+        TranslatePipe,
         CommonUiAutoCompleteModule,
-        RemunerationPaymonthEditorModule,
-
-        RouterOutlet
+        RemunerationPaymonthEditorModule
     ]
 })
 export class SalaryGridUpdateComponent implements OnInit {

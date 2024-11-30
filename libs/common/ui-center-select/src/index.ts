@@ -1,1 +1,1 @@
-export * from './lib/ui-center-select.module';
+export * from './lib/center-select.component';

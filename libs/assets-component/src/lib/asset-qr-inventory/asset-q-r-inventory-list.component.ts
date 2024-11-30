@@ -31,6 +31,7 @@ import { Agent, ConsumerService } from '@ss/logistics/api-agent';
 import { AssetReceptionService } from '../services/asset-reception.service';
 import { AssetOpenInventoryDocService } from '../services/asset-open-inventory-doc.service';
 import { PaginationComponent } from '@ss/common/ui-pagination';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-asset-list-inventory',
@@ -40,13 +41,12 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
     imports: [
         CommonModule,
         MaterialModule,
-
-
+        TranslateDirective,
+        TranslatePipe,
         CommonUiAutoCompleteModule,
         CommonUiDatepickerModule,
         RouterModule,
         CustomAttributesModule,
-
         QRCodeModule,
         PaginationComponent
     ]

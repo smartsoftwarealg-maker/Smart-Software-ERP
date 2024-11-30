@@ -18,6 +18,7 @@ import { QRCodeModule } from 'angularx-qrcode';
 import { AssetRecordedInventoryService } from '../services/asset-recorded-inventory.service';
 import { Sort } from '@angular/material/sort';
 import { PaginationComponent } from '@ss/common/ui-pagination';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-asset-recorded-inventory-report',
@@ -27,8 +28,8 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
     imports: [
         CommonModule,
         MaterialModule,
-
-
+        TranslateDirective,
+        TranslatePipe,
         CommonUiAutoCompleteModule,
         CommonUiDatepickerModule,
         RouterModule,

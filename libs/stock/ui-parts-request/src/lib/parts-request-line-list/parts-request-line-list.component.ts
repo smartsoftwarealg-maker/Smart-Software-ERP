@@ -17,13 +17,14 @@ import { MaterialModule } from '@ss/common/api-common';
 import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
 import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
 import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     imports: [
         CommonModule,
         MaterialModule,
-
-
+        TranslateDirective,
+        TranslatePipe,
         RouterModule,
         ReactiveFormsModule,
 

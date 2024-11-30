@@ -13,6 +13,7 @@ import { MaterialModule } from "@ss/common/api-common";
 
 import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
 import { CommonUiAutoCompleteModule } from "@ss/common/ui-auto-complete";
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 
 @Component({
@@ -23,11 +24,9 @@ import { CommonUiAutoCompleteModule } from "@ss/common/ui-auto-complete";
     imports: [
         CommonModule,
         MaterialModule,
-
-
+        TranslateDirective,
+        TranslatePipe,
         ReactiveFormsModule,
-
-
         CommonUiDatepickerModule,
         CommonUiAutoCompleteModule,
         RouterModule,

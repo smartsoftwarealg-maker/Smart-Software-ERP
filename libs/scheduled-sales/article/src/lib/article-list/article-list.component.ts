@@ -18,6 +18,7 @@ import { UiStockInfoComponent } from "@ss/logistics/ui-stock-info";
 import { CommonUiColorSelectModule } from "@ss/common/ui-color-select";
 import { ColorPickerModule } from "ngx-color-picker";
 import { PaginationComponent } from '@ss/common/ui-pagination';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: "ss-article-list-ss",
@@ -27,20 +28,18 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
     imports: [
         CommonModule,
         MaterialModule,
-
-
+        TranslateDirective,
+        TranslatePipe,
         ReactiveFormsModule,
-
         RouterModule,
         CommonUiDatepickerModule,
         CommonUiAutoCompleteModule,
-
         LogisticsUiDocImportModule,
         UiStockInfoComponent,
-
         CommonUiColorSelectModule,
         ColorPickerModule,
-        PaginationComponent
+        PaginationComponent,
+        TranslateDirective
     ]
 
 })

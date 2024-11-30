@@ -11,6 +11,7 @@ import { MaterialModule } from '@ss/common/api-common';
 
 
 import { RouterModule } from '@angular/router';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 
 @Component({
@@ -19,9 +20,7 @@ import { RouterModule } from '@angular/router';
     imports: [
         CommonModule,
         MaterialModule,
-
-
-
+        TranslateDirective,
         CommonUiDatepickerModule,
         RouterModule,
         CommonUiAutoCompleteModule,

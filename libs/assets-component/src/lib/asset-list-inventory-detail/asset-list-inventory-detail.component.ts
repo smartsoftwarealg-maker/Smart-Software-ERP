@@ -22,6 +22,7 @@ import { QRCodeModule } from 'angularx-qrcode';
 import { AssetListInventoryService } from '../services/asset-list-inventory.service';
 import { AssetsBuildingService } from '../services/assets-building.service';
 import { Agent, ConsumerService } from '@ss/logistics/api-agent';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-asset-list-inventory-detail',
@@ -31,15 +32,12 @@ import { Agent, ConsumerService } from '@ss/logistics/api-agent';
     imports: [
         CommonModule,
         MaterialModule,
-
-
-
-
+        TranslateDirective,
+        TranslatePipe,
         CommonUiAutoCompleteModule,
         CommonUiDatepickerModule,
         RouterModule,
         CustomAttributesModule,
-
         QRCodeModule
     ]
 

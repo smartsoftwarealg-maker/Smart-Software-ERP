@@ -13,6 +13,7 @@ import { MaterialModule } from "@ss/common/api-common";
 import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
 import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
 import { CommonUiHourPickerModule } from "@ss/common/ui-hour-picker";
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-ltm-matter-detail',
@@ -25,7 +26,8 @@ import { CommonUiHourPickerModule } from "@ss/common/ui-hour-picker";
         ReactiveFormsModule,
         CommonUiAutoCompleteModule,
         CommonUiDatepickerModule,
-        CommonUiHourPickerModule
+        CommonUiHourPickerModule,
+        TranslateDirective
     ],
 })
 export class LtmMatterDetailComponent extends BaseEntityDetailComponent<LTMMatter> implements OnInit {

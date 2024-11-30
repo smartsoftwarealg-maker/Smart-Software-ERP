@@ -16,7 +16,7 @@ import {MatSelectChange} from '@angular/material/select';
 
 
 import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
-import { TranslatePipe } from '@ss/common/ui-lang';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-partner-schedule-detail',
@@ -26,10 +26,9 @@ import { TranslatePipe } from '@ss/common/ui-lang';
     imports: [
         CommonModule,
         MaterialModule,
-
-
+        TranslateDirective,
+        TranslatePipe,
         ReactiveFormsModule,
-
         CommonUiDatepickerModule,
         CommonUiAutoCompleteModule,
         TranslatePipe

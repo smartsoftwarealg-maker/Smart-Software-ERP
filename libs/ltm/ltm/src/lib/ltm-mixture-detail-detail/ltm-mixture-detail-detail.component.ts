@@ -11,7 +11,7 @@ import { BaseChildEntityDetailComponent } from "@ss/common/ui-base-entity";
 import { LtmMixtureDetailService } from '@ltm/ltm-api';
 import { LtmMatterService } from '@ltm/ltm-api';
 import { PaginationComponent } from '@ss/common/ui-pagination';
-import { TranslatePipe } from '@ss/common/ui-lang';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-ltm-matter-test-detail',
@@ -21,12 +21,11 @@ import { TranslatePipe } from '@ss/common/ui-lang';
     imports: [
         CommonModule,
         MaterialModule,
-        PaginationComponent,
         ReactiveFormsModule,
         CommonUiAutoCompleteModule,
         CommonUiDatepickerModule,
-        RouterOutlet,
         CommonUiHourPickerModule,
+        TranslateDirective,
         TranslatePipe
     ]
 })

@@ -12,6 +12,7 @@ import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common
 import { ProductLineKeysService } from '@ss/costing/costing-projects';
 import { CostingItemService } from '@ss/costing/costing-items';
 import { CostingKeyService } from '@ss/costing/costing-keys';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-product-line-keys',
@@ -20,9 +21,8 @@ import { CostingKeyService } from '@ss/costing/costing-keys';
         CommonModule,
         RouterModule,
         MaterialModule,
-
-
-
+        TranslateDirective,
+        TranslatePipe,
         CommonUiAutoCompleteModule
     ],
     templateUrl: './product-line-keys.component.html',

@@ -22,7 +22,7 @@ import { FinalProductService } from '@ss/master-data/api-article';
 import { BomService } from '../bom.service';
 import { CMMSRoutingDetailService } from '@ss/master-data/cmms-routing';
 import { PaginationComponent } from '@ss/common/ui-pagination';
-import { TranslatePipe } from '@ss/common/ui-lang';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
 
 @Component({
@@ -33,12 +33,10 @@ import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
     imports: [
         CommonModule,
         MaterialModule,
-
-
+        TranslateDirective,
+        TranslatePipe,
         StockUiArticleStoreModule,
-
         RouterModule,
-
         CommonUiAutoCompleteModule,
         UiStockInfoComponent,
         PaginationComponent,

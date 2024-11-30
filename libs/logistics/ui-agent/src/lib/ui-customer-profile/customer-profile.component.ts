@@ -5,13 +5,9 @@ import { ReactiveFormsModule, UntypedFormBuilder, UntypedFormControl, UntypedFor
 import { LoginService, MaterialModule } from '@ss/common/api-common';
 import {ActivatedRoute} from '@angular/router';
 import { CommonModule } from '@angular/common';
-
-
-
-
 import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
 import { CustomAttributesModule } from '@ss/custom-attributes';
-import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
+import { TranslateDirective } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-ui-customer-profile',
@@ -21,13 +17,10 @@ import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
     imports: [
         CommonModule,
         MaterialModule,
-
-
+        TranslateDirective,
         ReactiveFormsModule,
-
         CommonUiAutoCompleteModule,
-        CustomAttributesModule,
-        DocInfoComponent
+        CustomAttributesModule
     ],
 
 })

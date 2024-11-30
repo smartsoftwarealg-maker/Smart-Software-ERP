@@ -14,6 +14,7 @@ import { CustomAttributesModule } from '@ss/custom-attributes';
 import { QRCodeModule } from 'angularx-qrcode';
 import { AssetUnidentifiedInventoryService } from '@ss/assets-component';
 import { PaginationComponent } from '@ss/common/ui-pagination';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-asset-unidentified-child-inventory-list',
@@ -23,8 +24,8 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
     imports: [
         CommonModule,
         MaterialModule,
-
-
+        TranslateDirective,
+        TranslatePipe,
         CommonUiAutoCompleteModule,
         CommonUiDatepickerModule,
         RouterModule,

@@ -11,15 +11,12 @@ import { LtmMatterService } from '@ltm/ltm-api';
 import { FormControl, ReactiveFormsModule } from "@angular/forms";
 import { debounceTime, distinctUntilChanged } from "rxjs/operators";
 import { CommonModule } from "@angular/common";
-
-
-
-
 import { CommonUiAutoCompleteModule } from "@ss/common/ui-auto-complete";
 import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
 import { CommonUiHourPickerModule } from "@ss/common/ui-hour-picker";
 import { MatCheckboxChange } from '@angular/material/checkbox';
 import { PaginationComponent } from '@ss/common/ui-pagination';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-ltm-matter-test-list',
@@ -34,7 +31,9 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
         CommonUiAutoCompleteModule,
         CommonUiDatepickerModule,
         RouterOutlet,
-        CommonUiHourPickerModule
+        CommonUiHourPickerModule,
+        TranslateDirective,
+        TranslatePipe
     ],
 })
 export class LtmMatterTestListComponent implements OnInit {

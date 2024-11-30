@@ -16,6 +16,7 @@ import { filter, Subscription } from 'rxjs';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { PaginationComponent } from '@ss/common/ui-pagination';
+import { TranslateDirective } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-ltm-alerts-list',
@@ -29,7 +30,7 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
         ReactiveFormsModule,
         CommonUiAutoCompleteModule,
         CommonUiDatepickerModule,
-        RouterOutlet,
+        TranslateDirective,
         CommonUiHourPickerModule
     ],
 })

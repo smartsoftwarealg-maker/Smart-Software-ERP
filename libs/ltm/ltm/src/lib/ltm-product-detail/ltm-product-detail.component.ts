@@ -11,6 +11,7 @@ import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
 import { CommonUiHourPickerModule } from '@ss/common/ui-hour-picker';
 import { LTMProduct } from '@ltm/ltm-api';
 import { LtmProductService } from '@ltm/ltm-api';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-ltm-product-detail',
@@ -23,8 +24,8 @@ import { LtmProductService } from '@ltm/ltm-api';
         ReactiveFormsModule,
         CommonUiAutoCompleteModule,
         CommonUiDatepickerModule,
-        RouterOutlet,
-        CommonUiHourPickerModule
+        CommonUiHourPickerModule,
+        TranslateDirective
     ],
 })
 export class LtmProductDetailComponent extends BaseEntityDetailComponent<LTMProduct> {

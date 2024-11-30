@@ -5,7 +5,6 @@ import { NavService } from '../../common/nav.service';
 import { RoomOptionsListComponent } from './room-options-list.component';
 import { RoomOptionsDetailComponent } from './room-options-detail.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
 import { PaginationModule } from '../../common/pagination/pagination.module';
 import { ListToolbarModule } from '../../common/list-toolbar/list-toolbar.module';
 import { SaveBarModule } from '../../common/save-bar/save-bar.module';
@@ -32,7 +31,6 @@ const routes: Routes = [
     FormsModule,
     ReactiveFormsModule,
     MaterialModule,
-    HttpClientModule,
     PaginationModule,
     LoadingSpinnerModule,
     ListToolbarModule,

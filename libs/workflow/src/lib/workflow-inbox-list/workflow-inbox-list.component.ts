@@ -15,6 +15,7 @@ import { RemunerationPaymonthEditorModule } from '@ss/remuneration/paymonth-edit
 
 
 import { OrgChartModule } from 'angular13-organization-chart';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-workflow-inbox-list',
@@ -27,7 +28,9 @@ import { OrgChartModule } from 'angular13-organization-chart';
         CommonUiAutoCompleteModule,
         RemunerationPaymonthEditorModule,
         OrgChartModule,
-        PaginationComponent
+        PaginationComponent,
+        TranslatePipe,
+        TranslateDirective
     ]
 })
 export class WorkflowInboxListComponent extends BaseEntityListComponent<Inbox> implements OnInit {

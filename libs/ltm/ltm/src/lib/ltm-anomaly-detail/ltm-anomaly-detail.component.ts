@@ -12,6 +12,7 @@ import { CommonUiHourPickerModule } from "@ss/common/ui-hour-picker";
 import { LtmAnomalyService } from '@ltm/ltm-api';
 import { LTMAnomaly } from '@ltm/ltm-api';
 import { PaginationComponent } from '@ss/common/ui-pagination';
+import { TranslateDirective } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-ltm-anomaly-detail',
@@ -21,12 +22,11 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
     imports: [
         CommonModule,
         MaterialModule,
-        PaginationComponent,
         ReactiveFormsModule,
         CommonUiAutoCompleteModule,
         CommonUiDatepickerModule,
-        RouterOutlet,
-        CommonUiHourPickerModule
+        CommonUiHourPickerModule,
+        TranslateDirective
     ],
 })
 export class LtmAnomalyDetailComponent extends BaseEntityDetailComponent<LTMAnomaly> {

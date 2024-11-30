@@ -8,14 +8,13 @@ import { Transaction } from '@ss/logistics/api-transaction';
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { DeliveryCancellationService } from '@ss/sales/api-delivery-cancellation';
 import { CommonModule } from '@angular/common';
-
-
 import { ReactiveFormsModule } from '@angular/forms';
 import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
 import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
 import { LogisticsUiDocImportModule } from '@ss/logistics/ui-doc-import';
 import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
 import { PaginationComponent } from '@ss/common/ui-pagination';
+import { TranslateDirective } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-delivery-cancellation-list',
@@ -25,10 +24,8 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
     imports: [
         CommonModule,
         MaterialModule,
-
-
+        TranslateDirective,
         ReactiveFormsModule,
-
         RouterModule,
         CommonUiDatepickerModule,
         CommonUiAutoCompleteModule,

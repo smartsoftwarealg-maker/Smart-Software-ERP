@@ -19,6 +19,7 @@ import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
 import { CustomAttributesModule } from '@ss/custom-attributes';
 
 import { QRCodeModule } from 'angularx-qrcode';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-depreciation-rate-detail',
@@ -28,10 +29,7 @@ import { QRCodeModule } from 'angularx-qrcode';
     imports: [
         CommonModule,
         MaterialModule,
-
-
-
-
+        TranslateDirective,
         CommonUiAutoCompleteModule,
         CommonUiDatepickerModule,
         RouterModule,

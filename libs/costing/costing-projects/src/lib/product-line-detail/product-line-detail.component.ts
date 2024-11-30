@@ -17,6 +17,7 @@ import {
 } from '../product-line-keys/product-line-keys.component';
 import { ProductLineCostsService } from '../services/product-line-costs.service';
 import { CProductLineCostComponent } from '../product-line-costs/product-line-items.component';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-product-line-detail',
@@ -25,8 +26,8 @@ import { CProductLineCostComponent } from '../product-line-costs/product-line-it
         CommonModule,
         RouterModule,
         MaterialModule,
-
-
+        TranslateDirective,
+        TranslatePipe,
         MatAutocompleteModule,
         CommonUiAutoCompleteModule,
         ProductLineKeysComponent,

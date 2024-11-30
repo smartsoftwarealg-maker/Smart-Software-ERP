@@ -18,7 +18,7 @@ import { FormControl } from '@angular/forms';
 import { ReportReportService } from '../role-report.service';
 import { Observable, switchMap } from 'rxjs';
 import { RoleReport } from '../report-rights-api';
-import { TranslatePipe } from '@ss/common/ui-lang';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-report-rights',
@@ -26,12 +26,11 @@ import { TranslatePipe } from '@ss/common/ui-lang';
     imports: [
         CommonModule,
         MaterialModule,
-
-
+        TranslatePipe,
         RouterModule,
         CommonUiDatepickerModule,
         CommonUiAutoCompleteModule,
-        TranslatePipe
+        TranslateDirective
     ],
     templateUrl: './report-rights.component.html',
     styleUrls: ['./report-rights.component.scss'],

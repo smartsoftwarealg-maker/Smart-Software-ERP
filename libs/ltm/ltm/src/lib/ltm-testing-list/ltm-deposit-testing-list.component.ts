@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ShellService, SnackBarService } from "@ss/common/ui-shell";
-import { ActivatedRoute, Router, RouterOutlet } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import {  ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
 import { DefaultReportService } from "@ss/common/ui-default-report-component";
 import { MaterialModule, PaginatorPersistenceService } from '@ss/common/api-common';
@@ -15,6 +15,7 @@ import { CommonUiHourPickerModule } from "@ss/common/ui-hour-picker";
 import { LtmBaseTestingListComponent } from '../ltm-testing-common/ltm-base-testing-list.component';
 import { LtmDepositTestingService } from '@ltm/ltm-api';
 import { PaginationComponent } from '@ss/common/ui-pagination';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: "ss-ltm-deposit-testing-list",
@@ -25,13 +26,10 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
         CommonModule,
         MaterialModule,
         PaginationComponent,
-
+        TranslateDirective,
         ReactiveFormsModule,
-
-
         CommonUiAutoCompleteModule,
         CommonUiDatepickerModule,
-        RouterOutlet,
         CommonUiHourPickerModule,
         PaginationComponent
     ]

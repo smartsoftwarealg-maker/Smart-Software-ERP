@@ -13,6 +13,7 @@ import { CommonUiHourPickerModule } from "@ss/common/ui-hour-picker";
 import { LtmPickupPointService } from '@ltm/ltm-api';
 import { LTMPickupPoint } from '@ltm/ltm-api';
 import { PaginationComponent } from '@ss/common/ui-pagination';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-ltm-pickup-point-list',
@@ -26,7 +27,8 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
         ReactiveFormsModule,
         CommonUiAutoCompleteModule,
         CommonUiDatepickerModule,
-        RouterOutlet,
+        TranslateDirective,
+        TranslatePipe,
         CommonUiHourPickerModule
     ],
 })

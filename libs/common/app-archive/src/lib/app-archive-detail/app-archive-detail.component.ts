@@ -13,6 +13,7 @@ import { CommonModule } from '@angular/common';
 
 
 import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-agent-archive-detail',
@@ -23,8 +24,7 @@ import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
         CommonModule,
         RouterModule,
         MaterialModule,
-
-
+        TranslateDirective,
         ReactiveFormsModule,
 
         CommonUiAutoCompleteModule,

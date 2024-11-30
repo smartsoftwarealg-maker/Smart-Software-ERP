@@ -17,6 +17,7 @@ import { RemunerationPaymonthEditorModule } from "@ss/remuneration/paymonth-edit
 
 import { GridRankService } from "../grid-rank.service";
 import { Observable } from "rxjs";
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: "ss-salary-grid-detail",
@@ -26,8 +27,8 @@ import { Observable } from "rxjs";
     imports: [
         CommonModule,
         MaterialModule,
-
-
+        TranslateDirective,
+        TranslatePipe,
         CommonUiAutoCompleteModule,
         RemunerationPaymonthEditorModule,
 

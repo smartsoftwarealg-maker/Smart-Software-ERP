@@ -25,14 +25,11 @@ import {Observable} from 'rxjs';
 import {tap} from 'rxjs/operators';
 import {Article, SSArticleService} from '@ss/scheduled-sales/api-scheduled-sales';
 import { CommonModule } from "@angular/common";
-
-
 import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
-
 import { LogisticsUiDocImportModule } from "@ss/logistics/ui-doc-import";
-import { UiStockInfoComponent } from "@ss/logistics/ui-stock-info";
 import { CommonUiColorSelectModule } from "@ss/common/ui-color-select";
 import { ColorPickerModule } from "ngx-color-picker";
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: "ss-article-detail",
@@ -42,17 +39,13 @@ import { ColorPickerModule } from "ngx-color-picker";
     imports: [
         CommonModule,
         MaterialModule,
-
-
+        TranslateDirective,
+        TranslatePipe,
         ReactiveFormsModule,
-
         RouterModule,
         CommonUiDatepickerModule,
         CommonUiAutoCompleteModule,
-
         LogisticsUiDocImportModule,
-        UiStockInfoComponent,
-
         CommonUiColorSelectModule,
         ColorPickerModule
     ]

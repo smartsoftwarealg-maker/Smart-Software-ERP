@@ -4,19 +4,16 @@ import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import {  ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import {ArticleService} from '@ss/master-data/api-article';
 import {LotsService} from '@ss/common/api-lookup';
-import {BaseTransactionLinesListComponent, TransactionLinesService} from "@ss/logistics/api-transaction";
-import {OfferLinesService} from '@ss/logistics/api-transaction';
+import {BaseTransactionLinesListComponent} from "@ss/logistics/api-transaction";
 import { CommonModule } from '@angular/common';
 import { MaterialModule } from '@ss/common/api-common';
-
-
 import { ReactiveFormsModule } from '@angular/forms';
 import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
 import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
 import { UiStockInfoComponent } from '@ss/logistics/ui-stock-info';
 import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
 import { SalesProformaLinesService } from '../sales-proforma-lines.service';
-import { TranslatePipe } from '@ss/common/ui-lang';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 import { PaginationComponent } from '@ss/common/ui-pagination';
 
 @Component({
@@ -27,10 +24,9 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
     imports: [
         CommonModule,
         MaterialModule,
-
-
+        TranslateDirective,
+        TranslatePipe,
         ReactiveFormsModule,
-
         RouterModule,
         CommonUiDatepickerModule,
         CommonUiAutoCompleteModule,

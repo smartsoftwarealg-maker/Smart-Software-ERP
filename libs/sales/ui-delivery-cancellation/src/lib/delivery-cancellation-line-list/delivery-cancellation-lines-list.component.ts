@@ -15,6 +15,7 @@ import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
 import { LogisticsUiDocImportModule } from '@ss/logistics/ui-doc-import';
 import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
 import { DeliveryCancellationLinesService } from '../delivery-cancellation-lines.service';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-delivery-cancellation-lines-list',
@@ -24,14 +25,12 @@ import { DeliveryCancellationLinesService } from '../delivery-cancellation-lines
     imports: [
         CommonModule,
         MaterialModule,
-
-
+        TranslateDirective,
+        TranslatePipe,
         ReactiveFormsModule,
-
         RouterModule,
         CommonUiDatepickerModule,
         CommonUiAutoCompleteModule,
-
         LogisticsUiDocImportModule,
         DocInfoComponent
     ],

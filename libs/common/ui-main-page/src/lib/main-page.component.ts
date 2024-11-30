@@ -7,6 +7,7 @@ import { CommonModule } from "@angular/common";
 import { WorkflowInboxService } from '@ss/workflow';
 import { BadgeButtonService } from '@ss/common/ui-shell';
 import { AdMobileService } from './ad-mobile.service';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 
 @Component({
@@ -16,6 +17,8 @@ import { AdMobileService } from './ad-mobile.service';
     standalone: true,
     imports: [
         CommonModule,
+        TranslateDirective,
+        TranslateDirective
     ],
 })
 export class MainPageComponent implements OnInit, OnDestroy {

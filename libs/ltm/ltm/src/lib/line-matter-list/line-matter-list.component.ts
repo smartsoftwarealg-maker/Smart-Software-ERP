@@ -15,6 +15,7 @@ import { CommonUiHourPickerModule } from "@ss/common/ui-hour-picker";
 import { LtmMatterDuplicateComponent } from '../ltm-matter-duplicate/ltm-matter-duplicate.component';
 import { MatDialog } from '@angular/material/dialog';
 import { PaginationComponent } from '@ss/common/ui-pagination';
+import { TranslateDirective } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-line-matter-list',
@@ -26,8 +27,7 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
         MaterialModule,
         PaginationComponent,
         ReactiveFormsModule,
-
-
+        TranslateDirective,
 
         CommonUiAutoCompleteModule,
         CommonUiDatepickerModule,

@@ -14,6 +14,7 @@ import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
 import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
 
 import { LogisticsUiDocImportModule } from '@ss/logistics/ui-doc-import';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-invoice-lines-detail',
@@ -23,8 +24,8 @@ import { LogisticsUiDocImportModule } from '@ss/logistics/ui-doc-import';
     imports: [
         CommonModule,
         MaterialModule,
-
-
+        TranslateDirective,
+        TranslatePipe,
         ReactiveFormsModule,
 
         RouterModule,

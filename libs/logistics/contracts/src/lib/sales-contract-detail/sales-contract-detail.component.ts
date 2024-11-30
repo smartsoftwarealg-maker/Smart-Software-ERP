@@ -20,6 +20,7 @@ import { CommonModule } from "@angular/common";
 import { AppArchiveMainComponent, CONTRACT_ARCHIVES } from '@ss/common/app-archive';
 import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
 import { ContractArticleMainComponent } from "../contract-article-main/contract-article-main.component";
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-sales-contract-detail',
@@ -29,11 +30,9 @@ import { ContractArticleMainComponent } from "../contract-article-main/contract-
     imports: [
         CommonModule,
         MaterialModule,
-
-
+        TranslateDirective,
+        TranslatePipe,
         ReactiveFormsModule,
-
-
         CommonUiDatepickerModule,
         CommonUiAutoCompleteModule,
         RouterModule,

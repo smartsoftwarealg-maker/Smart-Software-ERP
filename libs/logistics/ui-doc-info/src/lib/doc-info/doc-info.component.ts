@@ -8,6 +8,7 @@ import { MaterialModule } from '@ss/common/api-common';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { UiStockInfoComponent } from '@ss/logistics/ui-stock-info';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 interface Entry {
     name: string,
@@ -24,12 +25,9 @@ interface Entry {
     imports: [
         CommonModule,
         MaterialModule,
-
-
+        TranslateDirective,
         RouterModule,
-        ReactiveFormsModule,
-
-        UiStockInfoComponent
+        ReactiveFormsModule
     ],
 })
 

@@ -11,16 +11,15 @@ import { ImageInputComponent, ImageModel } from '@ss/common/ui-image-input';
 import { Observable, of, switchMap, tap } from 'rxjs';
 import { ShoppingCartService } from '../shopping-cart.service';
 import { Cartline } from '../cartline';
-import { FormControl, ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-
-
 import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
 import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
 import { SalesUiDeliveryLinesModule } from '@ss/sales/ui-delivery-lines';
 import { LogisticsUiDocImportModule } from '@ss/logistics/ui-doc-import';
 import { UiStockInfoComponent } from '@ss/logistics/ui-stock-info';
 import { PaginationComponent } from '@ss/common/ui-pagination';
+import { TranslateDirective } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-shopping-cart',
@@ -30,17 +29,13 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
     imports: [
         CommonModule,
         MaterialModule,
-
-
+        TranslateDirective,
         ReactiveFormsModule,
-
         RouterModule,
         CommonUiDatepickerModule,
         CommonUiAutoCompleteModule,
-
         SalesUiDeliveryLinesModule,
         LogisticsUiDocImportModule,
-        UiStockInfoComponent,
         ImageInputComponent,
         PaginationComponent
     ]

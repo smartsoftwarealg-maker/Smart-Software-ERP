@@ -1,6 +1,6 @@
 import { Component, DestroyRef, inject } from '@angular/core';
 import { ShellService, SnackBarService } from "@ss/common/ui-shell";
-import { ActivatedRoute, Router, RouterOutlet } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import {  ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
 import { DefaultReportService } from "@ss/common/ui-default-report-component";
 import { MaterialModule, PaginatorPersistenceService } from '@ss/common/api-common';
@@ -14,6 +14,7 @@ import { LtmPhysicalTestingService } from '@ltm/ltm-api';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { PaginationComponent } from '@ss/common/ui-pagination';
+import { TranslateDirective } from '@ss/common/ui-lang';
 
 @Component({
     selector: "ss-physical-ltm-testing-list",
@@ -27,7 +28,7 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
         ReactiveFormsModule,
         CommonUiAutoCompleteModule,
         CommonUiDatepickerModule,
-        RouterOutlet,
+        TranslateDirective,
         CommonUiHourPickerModule
     ]
 })

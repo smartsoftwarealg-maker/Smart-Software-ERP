@@ -25,6 +25,7 @@ import { CommonModule } from '@angular/common';
 import { StockUiArticleStoreModule } from '@ss/stock/article-store';
 
 import { UiStockInfoComponent } from '@ss/logistics/ui-stock-info';
+import { TranslateDirective } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-article-detail',
@@ -34,15 +35,10 @@ import { UiStockInfoComponent } from '@ss/logistics/ui-stock-info';
     imports: [
         CommonModule,
         MaterialModule,
-
-
-
         StockUiArticleStoreModule,
-
         RouterModule,
-
+        TranslateDirective,
         CommonUiAutoCompleteModule,
-        UiStockInfoComponent,
         ImageInputComponent
     ]
 })

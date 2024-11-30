@@ -16,6 +16,8 @@ import { CommonModule } from "@angular/common";
 import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
 import { RouterOutlet } from "@angular/router";
 import { CommonUiHourPickerModule } from "@ss/common/ui-hour-picker";
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
+import { PaginationComponent } from '@ss/common/ui-pagination';
 
 @Component({
     selector: 'ss-ltm-injection',
@@ -25,14 +27,11 @@ import { CommonUiHourPickerModule } from "@ss/common/ui-hour-picker";
     imports: [
         CommonModule,
         MaterialModule,
-        PaginationComponent,
-
+        TranslateDirective,
+        TranslatePipe,
         ReactiveFormsModule,
-
-
         CommonUiAutoCompleteModule,
         CommonUiDatepickerModule,
-        RouterOutlet,
         CommonUiHourPickerModule
     ],
 })

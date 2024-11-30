@@ -1,6 +1,6 @@
 import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef, MatDialogContent, MatDialogActions } from '@angular/material/dialog';
-import { TranslateDirective } from '../../../../../../libs/common/ui-lang/src/lib/translate.directive';
+import { TranslateDirective } from '@ss/common/ui-lang';
 import { CdkScrollable } from '@angular/cdk/scrolling';
 import { MatButton } from '@angular/material/button';
 

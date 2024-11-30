@@ -11,6 +11,7 @@ import { RouterModule } from '@angular/router';
 import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
 import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
 import { UiStockInfoComponent } from '@ss/logistics/ui-stock-info';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-archive-element',
@@ -20,14 +21,12 @@ import { UiStockInfoComponent } from '@ss/logistics/ui-stock-info';
     imports: [
         CommonModule,
         MaterialModule,
-
-
+        TranslateDirective,
         ReactiveFormsModule,
-
         RouterModule,
         CommonUiDatepickerModule,
-        CommonUiAutoCompleteModule,
-        UiStockInfoComponent]
+        CommonUiAutoCompleteModule
+    ]
 })
 export class ArchiveElementComponent {
     readonly MB = 1024 * 1024;

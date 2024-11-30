@@ -17,6 +17,7 @@ import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
 import { CustomAttributesModule } from '@ss/custom-attributes';
 
 import { QRCodeModule } from 'angularx-qrcode';
+import { TranslateDirective } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-asset-cost-type-detail',
@@ -26,15 +27,11 @@ import { QRCodeModule } from 'angularx-qrcode';
     imports: [
         CommonModule,
         MaterialModule,
-
-
-
-
+        TranslateDirective,
         CommonUiAutoCompleteModule,
         CommonUiDatepickerModule,
         RouterModule,
         CustomAttributesModule,
-
         QRCodeModule
     ]
 })

@@ -14,6 +14,7 @@ import { LtmLineMatterLookup } from '@ltm/ltm-api';
 import { CommonModule } from "@angular/common";
 import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
 import { CommonUiHourPickerModule } from '@ss/common/ui-hour-picker';
+import { TranslateDirective } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-ltm-testing-detail',
@@ -26,8 +27,8 @@ import { CommonUiHourPickerModule } from '@ss/common/ui-hour-picker';
         ReactiveFormsModule,
         CommonUiAutoCompleteModule,
         CommonUiDatepickerModule,
-        RouterOutlet,
-        CommonUiHourPickerModule
+        CommonUiHourPickerModule,
+        TranslateDirective
     ],
 })
 export class LtmTestingDetailComponent extends BaseEntityDetailComponent<LTMTesting> implements OnInit {

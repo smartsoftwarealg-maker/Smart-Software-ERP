@@ -12,14 +12,14 @@ import {CommonUiDatepickerModule} from '@ss/common/ui-datepicker';
 import {CommonUiAutoCompleteModule} from '@ss/common/ui-auto-complete';
 
 import {UiStockInfoComponent} from '@ss/logistics/ui-stock-info';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @NgModule({
     imports: [CommonModule,
         MaterialModule,
-
-
+        TranslateDirective,
+        TranslatePipe,
         ReactiveFormsModule,
-
         RouterModule,
         CommonUiDatepickerModule,
         CommonUiAutoCompleteModule,

@@ -15,6 +15,7 @@ import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
 import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from "@ss/common/ui-auto-complete";
 import { Agent, CustomerService } from '@ss/logistics/api-agent';
 import { callback } from 'chart.js/helpers';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-sales-quota-list',
@@ -24,10 +25,9 @@ import { callback } from 'chart.js/helpers';
     imports: [
         CommonModule,
         MaterialModule,
-
-
+        TranslateDirective,
+        TranslatePipe,
         ReactiveFormsModule,
-
         CommonUiDatepickerModule,
         CommonUiAutoCompleteModule,
     ],

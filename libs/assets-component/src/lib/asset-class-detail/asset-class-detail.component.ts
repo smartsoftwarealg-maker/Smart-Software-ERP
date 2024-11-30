@@ -14,6 +14,7 @@ import { MaterialModule } from "@ss/common/api-common";
 import { CommonUiAutoCompleteModule } from "@ss/common/ui-auto-complete";
 import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
 import { CustomAttributesModule } from "@ss/custom-attributes";
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 
 @Component({
@@ -23,15 +24,12 @@ import { CustomAttributesModule } from "@ss/custom-attributes";
     imports: [
         CommonModule,
         MaterialModule,
-
-
-
-
+        TranslateDirective,
+        TranslatePipe,
         CommonUiAutoCompleteModule,
         CommonUiDatepickerModule,
         RouterModule,
         CustomAttributesModule,
-
     ],
 
     styleUrls: ["./asset-class-detail.component.scss"]

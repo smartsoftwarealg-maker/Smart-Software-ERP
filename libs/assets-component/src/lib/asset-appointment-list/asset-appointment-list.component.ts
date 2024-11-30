@@ -18,6 +18,7 @@ import { CustomAttributesModule } from '@ss/custom-attributes';
 import { QRCodeModule } from 'angularx-qrcode';
 import { BaseChildEntityListComponent } from '@ss/common/ui-base-entity';
 import { PaginationComponent } from '@ss/common/ui-pagination';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-asset-appointment-list',
@@ -27,8 +28,8 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
     imports: [
         CommonModule,
         MaterialModule,
-
-
+        TranslateDirective,
+        TranslatePipe,
         CommonUiAutoCompleteModule,
         CommonUiDatepickerModule,
         RouterModule,

@@ -26,6 +26,7 @@ import { CenterService } from '@ss/administration/api-center';
 import { DashboardCenterService } from '../services/dashboard-center.service';
 import { MatSelectionListChange } from '@angular/material/list';
 import { Observable, tap } from 'rxjs';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-dashboard-detail',
@@ -35,8 +36,8 @@ import { Observable, tap } from 'rxjs';
     imports: [
         CommonModule,
         MaterialModule,
-
-
+        TranslateDirective,
+        TranslatePipe,
         ReactiveFormsModule,
 
         CommonUiDatepickerModule,

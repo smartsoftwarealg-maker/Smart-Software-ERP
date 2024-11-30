@@ -21,6 +21,7 @@ import { FinalProductService } from '@ss/master-data/api-article';
 import { CMMSRoutingService } from '@ss/master-data/cmms-routing';
 import { BomService } from '../bom.service';
 import { MatCardModule } from '@angular/material/card';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-article-detail',
@@ -30,9 +31,8 @@ import { MatCardModule } from '@angular/material/card';
     imports: [
         CommonModule,
         MaterialModule,
-
-
-
+        TranslateDirective,
+        TranslatePipe,
         StockUiArticleStoreModule,
         ImageInputComponent,
         RouterModule,

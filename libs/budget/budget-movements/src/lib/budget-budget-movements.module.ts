@@ -15,16 +15,16 @@ import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
 import {RouterOutlet} from '@angular/router';
 import {BudgetTransferLineListComponent} from './budget-transfer-line-list/budget-transfer-line-list.component';
 import {BudgetTransferLineDetailComponent} from './budget-transfer-line-detail/budget-transfer-line-detail.component';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @NgModule({
     imports: [
         CommonModule,
         MaterialModule,
-
-
+        TranslateDirective,
+        TranslatePipe,
         ReactiveFormsModule,
         CommonUiAutoCompleteModule,
-
         CommonUiDatepickerModule,
         RouterOutlet,
         BudgetCommitmentListComponent,

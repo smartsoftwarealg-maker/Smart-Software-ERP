@@ -9,6 +9,7 @@ import { ReactiveFormsModule } from "@angular/forms";
 
 import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
 import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-contract-article-main',
@@ -18,11 +19,7 @@ import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
     imports: [
         CommonModule,
         MaterialModule,
-
-
         ReactiveFormsModule,
-
-
         CommonUiDatepickerModule,
         CommonUiAutoCompleteModule,
         RouterModule,

@@ -15,6 +15,7 @@ import { LTMTestingAnomaly } from '@ltm/ltm-api';
 import { LtmTestingAnomalyService } from '@ltm/ltm-api';
 import { LtmMatterService } from '@ltm/ltm-api';
 import { LtmPickupPointService } from '@ltm/ltm-api';
+import { TranslateDirective } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-ltm-test-detail',
@@ -24,14 +25,10 @@ import { LtmPickupPointService } from '@ltm/ltm-api';
     imports: [
         CommonModule,
         MaterialModule,
-
         ReactiveFormsModule,
-
-
-
+        TranslateDirective,
         CommonUiAutoCompleteModule,
         CommonUiDatepickerModule,
-        RouterOutlet,
         CommonUiHourPickerModule
     ]
 })

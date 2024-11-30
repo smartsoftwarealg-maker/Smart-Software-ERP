@@ -44,6 +44,7 @@ import { CommonModule } from '@angular/common';
 
 import { CustomAttributesModule } from '@ss/custom-attributes';
 import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-agent-detail',
@@ -53,15 +54,10 @@ import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
     imports: [
         CommonModule,
         MaterialModule,
-
-
+        TranslateDirective,
         ReactiveFormsModule,
-
-
-
         CommonUiAutoCompleteModule,
         CustomAttributesModule,
-        DocInfoComponent,
         AppArchiveMainComponent
     ]
 

@@ -13,11 +13,9 @@ import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common
 import { Tag } from '../tags/tag';
 import { MatSelectionList } from '@angular/material/list';
 import { CommonModule } from '@angular/common';
-
-
-
 import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
 import { UiStockInfoComponent } from '@ss/logistics/ui-stock-info';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-archive-detail',
@@ -27,14 +25,12 @@ import { UiStockInfoComponent } from '@ss/logistics/ui-stock-info';
     imports: [
         CommonModule,
         MaterialModule,
-
-
+        TranslateDirective,
         ReactiveFormsModule,
-
         RouterModule,
         CommonUiDatepickerModule,
-        CommonUiAutoCompleteModule,
-        UiStockInfoComponent]
+        CommonUiAutoCompleteModule
+    ]
 })
 export class ArchiveDetailComponent implements OnInit {
     private service = inject( ArchiveService);

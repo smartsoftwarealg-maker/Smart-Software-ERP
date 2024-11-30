@@ -33,6 +33,7 @@ import { CommonModule } from '@angular/common';
 import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
 
 import { QRCodeModule } from 'angularx-qrcode';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-asset-appointment-doc-detail',
@@ -42,10 +43,8 @@ import { QRCodeModule } from 'angularx-qrcode';
     imports: [
         CommonModule,
         MaterialModule,
-
-
-
-
+        TranslateDirective,
+        TranslatePipe,
         CommonUiAutoCompleteModule,
         CommonUiDatepickerModule,
         RouterModule,

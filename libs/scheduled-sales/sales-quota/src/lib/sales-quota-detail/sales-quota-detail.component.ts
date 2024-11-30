@@ -13,6 +13,7 @@ import { CommonModule } from "@angular/common";
 
 
 import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-sales-quota-detail',
@@ -22,10 +23,9 @@ import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
     imports: [
         CommonModule,
         MaterialModule,
-
-
+        TranslateDirective,
+        TranslatePipe,
         ReactiveFormsModule,
-
         CommonUiDatepickerModule,
         CommonUiAutoCompleteModule,
     ],

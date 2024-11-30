@@ -17,6 +17,7 @@ import { RouterModule } from '@angular/router';
 import { CustomAttributesModule } from '@ss/custom-attributes';
 
 import { QRCodeModule } from 'angularx-qrcode';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-office-search',
@@ -26,15 +27,12 @@ import { QRCodeModule } from 'angularx-qrcode';
     imports: [
         CommonModule,
         MaterialModule,
-
-
-
-
+        TranslateDirective,
+        TranslatePipe,
         CommonUiAutoCompleteModule,
         CommonUiDatepickerModule,
         RouterModule,
         CustomAttributesModule,
-
         QRCodeModule
     ]
 

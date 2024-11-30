@@ -14,6 +14,7 @@ import { CommonModule } from '@angular/common';
 
 import { ReactiveFormsModule } from '@angular/forms';
 import { PaginationComponent } from '@ss/common/ui-pagination';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-cost-center-list',
@@ -23,8 +24,8 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
     imports: [
         CommonModule,
         MaterialModule,
-
-
+        TranslateDirective,
+        TranslatePipe,
         ReactiveFormsModule,
         PaginationComponent
 

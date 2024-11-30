@@ -10,7 +10,7 @@ import { CommonUiHourPickerModule } from "@ss/common/ui-hour-picker";
 import { BaseChildEntityListComponent } from "@ss/common/ui-base-entity";
 import { LtmMixturePickupPointService } from '@ltm/ltm-api';
 import { PaginationComponent } from '@ss/common/ui-pagination';
-import { TranslatePipe } from '@ss/common/ui-lang';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-ltm-mixture-pp-test-list',
@@ -24,8 +24,8 @@ import { TranslatePipe } from '@ss/common/ui-lang';
         ReactiveFormsModule,
         CommonUiAutoCompleteModule,
         CommonUiDatepickerModule,
-        RouterOutlet,
         CommonUiHourPickerModule,
+        TranslateDirective,
         TranslatePipe
     ]
 })

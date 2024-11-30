@@ -8,7 +8,7 @@ import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
 import { CommonUiHourPickerModule } from "@ss/common/ui-hour-picker";
 import { BaseChildEntityDetailComponent } from "@ss/common/ui-base-entity";
 import { LtmTestScheduleService } from '@ltm/ltm-api';
-import { TranslatePipe } from '@ss/common/ui-lang';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-ltm-test-schedule-detail',
@@ -22,6 +22,7 @@ import { TranslatePipe } from '@ss/common/ui-lang';
         CommonUiAutoCompleteModule,
         CommonUiDatepickerModule,
         CommonUiHourPickerModule,
+        TranslateDirective,
         TranslatePipe
     ]
 })

@@ -14,6 +14,7 @@ import { CommonModule } from '@angular/common';
 
 
 import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-app-archive-rights',
@@ -24,8 +25,8 @@ import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
     CommonModule,
     RouterModule,
     MaterialModule,
-
-
+    TranslateDirective,
+    TranslatePipe,
     ReactiveFormsModule,
 
     CommonUiAutoCompleteModule,

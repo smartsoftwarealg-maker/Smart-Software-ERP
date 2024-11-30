@@ -15,7 +15,7 @@ import { FormControl } from '@angular/forms';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { of, switchMap } from 'rxjs';
 import { tap } from 'rxjs/operators';
-import { TranslatePipe } from '@ss/common/ui-lang';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-reference-correction',
@@ -23,12 +23,10 @@ import { TranslatePipe } from '@ss/common/ui-lang';
     imports: [
         CommonModule,
         MaterialModule,
-
-
+        TranslateDirective,
+        TranslatePipe,
         StockUiArticleStoreModule,
-
         RouterModule,
-
         CommonUiAutoCompleteModule,
         UiStockInfoComponent,
         TranslatePipe

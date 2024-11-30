@@ -18,6 +18,7 @@ import { LtmAbnormalTestService } from '@ltm/ltm-api';
 import { LtmCorrectionActionService } from '@ltm/ltm-api';
 import { UserListService } from '@ss/common/api-users';
 import { LtmNormService } from '@ltm/ltm-api';
+import { TranslateDirective } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-ltm-alerts-detail',
@@ -27,7 +28,7 @@ import { LtmNormService } from '@ltm/ltm-api';
     imports: [
         CommonModule,
         MaterialModule,
-
+        TranslateDirective,
         ReactiveFormsModule,
 
         CommonUiAutoCompleteModule,

@@ -1,20 +1,14 @@
 import { Component, Inject, inject, signal } from "@angular/core";
 import { LTMLineMatter, LTMMatter } from '@ltm/ltm-api';
-import { RouterOutlet } from "@angular/router";
-
 import { MaterialModule } from "@ss/common/api-common";
 import {LtmMatterService} from '@ltm/ltm-api';
 import { CommonModule } from "@angular/common";
-
-
 import { FormControl, ReactiveFormsModule } from "@angular/forms";
-
-
 import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
 import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
 import { CommonUiHourPickerModule } from "@ss/common/ui-hour-picker";
 import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material/dialog";
-import { TranslatePipe } from '@ss/common/ui-lang';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-ltm-matter-list',
@@ -24,13 +18,10 @@ import { TranslatePipe } from '@ss/common/ui-lang';
     imports: [
         CommonModule,
         MaterialModule,
-
+        TranslateDirective,
         ReactiveFormsModule,
-
-
         CommonUiAutoCompleteModule,
         CommonUiDatepickerModule,
-        RouterOutlet,
         CommonUiHourPickerModule,
         TranslatePipe
     ]

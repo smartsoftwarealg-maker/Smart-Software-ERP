@@ -19,6 +19,7 @@ import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { CostingKeyService } from '../costing-key.service';
 import { CKey, slideToRight } from '@ss/costing/costing-utils';
+import { TranslateDirective } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-costing-key-detail',
@@ -29,10 +30,8 @@ import { CKey, slideToRight } from '@ss/costing/costing-utils';
         CommonModule,
         RouterModule,
         MaterialModule,
-
-
+        TranslateDirective,
         ReactiveFormsModule,
-
         CommonUiAutoCompleteModule,
         CommonUiDatepickerModule,
 

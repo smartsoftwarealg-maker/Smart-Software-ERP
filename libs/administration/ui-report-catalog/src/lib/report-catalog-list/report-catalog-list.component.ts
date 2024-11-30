@@ -12,6 +12,7 @@ import {HttpParams} from '@angular/common/http';
 import { MaterialModule, PaginatorPersistenceService } from '@ss/common/api-common';
 import { CommonModule } from '@angular/common';
 import { PaginationComponent } from '@ss/common/ui-pagination';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 
 
@@ -23,8 +24,8 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
     imports: [
         CommonModule,
         MaterialModule,
-
-
+        TranslateDirective,
+        TranslatePipe,
         ReactiveFormsModule,
         PaginationComponent
 

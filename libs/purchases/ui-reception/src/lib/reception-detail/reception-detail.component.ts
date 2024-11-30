@@ -16,6 +16,7 @@ import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
 
 import { UiStockInfoComponent } from '@ss/logistics/ui-stock-info';
 import { ReceptionLinesService } from '../reception-lines.service';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 
 @Component({
@@ -26,14 +27,11 @@ import { ReceptionLinesService } from '../reception-lines.service';
     imports: [
         CommonModule,
         MaterialModule,
-
-
+        TranslateDirective,
+        TranslatePipe,
         ReactiveFormsModule,
-
         CommonUiDatepickerModule,
         CommonUiAutoCompleteModule,
-
-        UiStockInfoComponent,
         RouterOutlet
     ],
 })

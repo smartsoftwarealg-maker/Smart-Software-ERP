@@ -15,6 +15,7 @@ import { CommonModule } from '@angular/common';
 
 
 import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
+import { TranslateDirective } from '@ss/common/ui-lang';
 
 
 @Component({
@@ -25,8 +26,7 @@ import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common
     imports: [
         CommonModule,
         MaterialModule,
-
-
+        TranslateDirective,
         ReactiveFormsModule,
 
         CommonUiAutoCompleteModule

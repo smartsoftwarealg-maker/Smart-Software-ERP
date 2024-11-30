@@ -13,6 +13,7 @@ import { CommonUiHourPickerModule } from '@ss/common/ui-hour-picker';
 import { LtmNormTreeService } from '@ltm/ltm-api';
 import { NormTree } from '@ltm/ltm-api';
 import { PaginationComponent } from '@ss/common/ui-pagination';
+import { TranslateDirective } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-ltm-norm-tree',
@@ -22,6 +23,7 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
     imports: [
         CommonModule,
         MaterialModule,
+        TranslateDirective,
         PaginationComponent,
         ReactiveFormsModule,
         CommonUiAutoCompleteModule,

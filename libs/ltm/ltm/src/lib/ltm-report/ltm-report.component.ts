@@ -21,7 +21,7 @@ import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
 import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
 import { CommonUiHourPickerModule } from '@ss/common/ui-hour-picker';
 import { PaginationComponent } from '@ss/common/ui-pagination';
-import { TranslatePipe } from '@ss/common/ui-lang';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-ltm-report',
@@ -37,6 +37,7 @@ import { TranslatePipe } from '@ss/common/ui-lang';
         CommonUiDatepickerModule,
         RouterOutlet,
         CommonUiHourPickerModule,
+        TranslateDirective,
         TranslatePipe
     ]
 })

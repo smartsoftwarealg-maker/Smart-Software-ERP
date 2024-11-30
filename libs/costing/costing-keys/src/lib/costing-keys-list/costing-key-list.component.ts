@@ -7,15 +7,13 @@ import {  ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { MaterialModule, PaginatorPersistenceService } from '@ss/common/api-common';
 import { CostingKeyService } from '../costing-key.service';
 import { CommonModule } from '@angular/common';
-
-
 import { ReactiveFormsModule } from '@angular/forms';
-
 import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
 import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
 
 import { CKey, slideToRight } from '@ss/costing/costing-utils';
 import { PaginationComponent } from '@ss/common/ui-pagination';
+import { TranslateDirective } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-costing-key-list',
@@ -26,8 +24,7 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
         CommonModule,
         RouterModule,
         MaterialModule,
-
-
+        TranslateDirective,
         ReactiveFormsModule,
 
         CommonUiAutoCompleteModule,

@@ -10,10 +10,9 @@ import { PasswordUpdateComponent, Auth2FAConfirmationComponent } from '@ss/auth-
 import { UiThemeModule } from '@ss/common/ui-theme';
 import { UiErrorHandlerModule } from '@ss/common/ui-error-handler';
 import { UiLoginModule } from '@ss/common/ui-login';
-import { UiCenterSelectModule } from '@ss/common/ui-center-select';
 import { ColorPickerModule } from 'ngx-color-picker';
 import { AppComponent } from './app/app.component';
-import { PaginationComponent } from '@ss/common/ui-pagination';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 
 const routes: Routes = [
     {
@@ -37,10 +36,11 @@ bootstrapApplication(AppComponent, {
     providers: [
         importProvidersFrom(BrowserModule, MatProgressSpinnerModule,
         // Smart Software modules
-        UiThemeModule, UiErrorHandlerModule, PaginationComponent,
+        UiThemeModule, UiErrorHandlerModule,
         // modules with routes
-        UiLoginModule, UiCenterSelectModule, ColorPickerModule),
+        UiLoginModule, ColorPickerModule),
         provideAnimations(),
+        provideHttpClient(withInterceptorsFromDi()),
         provideRouter(routes, withComponentInputBinding()),
     ]
 })

@@ -17,6 +17,7 @@ import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
 import { LogisticsUiDocImportModule } from '@ss/logistics/ui-doc-import';
 import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
 import { PaginationComponent } from '@ss/common/ui-pagination';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-invoice-cancellation-list',
@@ -26,10 +27,8 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
     imports: [
         CommonModule,
         MaterialModule,
-
-
+        TranslateDirective,
         ReactiveFormsModule,
-
         RouterModule,
         CommonUiDatepickerModule,
         CommonUiAutoCompleteModule,

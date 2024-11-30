@@ -48,6 +48,7 @@ import { QRCodeModule } from 'angularx-qrcode';
 import { AssetAppointmentListComponent } from '../asset-appointment-list/asset-appointment-list.component';
 import { AssetCostsListComponent } from '../asset-costs-list/asset-costs-list.component';
 import { ImageInputComponent } from '@ss/common/ui-image-input';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-assets-detail',
@@ -57,15 +58,13 @@ import { ImageInputComponent } from '@ss/common/ui-image-input';
     imports: [
         CommonModule,
         MaterialModule,
-
+        TranslateDirective,
+        TranslatePipe,
         ImageInputComponent,
-
-
         CommonUiAutoCompleteModule,
         CommonUiDatepickerModule,
         RouterModule,
         CustomAttributesModule,
-
         QRCodeModule,
         AssetAppointmentListComponent
     ]

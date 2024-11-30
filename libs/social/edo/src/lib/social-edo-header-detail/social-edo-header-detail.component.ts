@@ -1,21 +1,17 @@
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
-import {
-    EDOHeader
-} from '@social/social-api';
+import { EDOHeader } from '@social/social-api';
 import { LoginService } from '@ss/common/api-common';
 import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute } from '@angular/router';
 import { ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
-import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
-
+import { DatePickerComponent } from '@ss/common/ui-datepicker';
 import { MatCard, MatCardContent } from '@angular/material/card';
-import { MatError, MatFormField, MatLabel } from '@angular/material/form-field';
+import { MatFormField, MatLabel } from '@angular/material/form-field';
 import { MatInput } from '@angular/material/input';
-import { AidHistoryComponent } from '@social/aid-history';
 import { EdoHeaderService } from '@social/social-api';
 import { EdoLineService } from '@social/social-api';
 import { PendingEdoComponent } from '../pending-edo/pending-edo.component';
@@ -26,18 +22,16 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
     imports: [
         CommonModule,
         CommonUiAutoCompleteModule,
-        CommonUiDatepickerModule,
-        PaginationComponent,
+        DatePickerComponent,
         MatCard,
         MatCardContent,
-        MatError,
         MatFormField,
         MatInput,
         MatLabel,
         ReactiveFormsModule,
-        AidHistoryComponent,
         PendingEdoComponent,
-        SocialEdoLinesComponent],
+        SocialEdoLinesComponent
+    ],
     selector: 'ss-edo-header-detail',
     standalone: true,
     styleUrl: './social-edo-header-detail.component.scss',

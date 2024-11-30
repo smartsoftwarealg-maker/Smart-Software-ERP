@@ -2,7 +2,7 @@ import { Component, DestroyRef, inject } from '@angular/core';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import { LTMTestingAnomaly } from '@ltm/ltm-api';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
-import { ActivatedRoute, Router, RouterOutlet } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import {  ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import { dateToYmdStr, MaterialModule, PaginatorPersistenceService } from '@ss/common/api-common';
@@ -16,6 +16,7 @@ import { Observable } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { PaginationComponent } from '@ss/common/ui-pagination';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-ltm-testing-anomaly-list',
@@ -29,8 +30,9 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
         ReactiveFormsModule,
         CommonUiAutoCompleteModule,
         CommonUiDatepickerModule,
-        RouterOutlet,
-        CommonUiHourPickerModule
+        CommonUiHourPickerModule,
+        TranslateDirective,
+        TranslatePipe
     ],
 })
 export class LtmTestingAnomalyListComponent extends BaseEntityListComponent<LTMTestingAnomaly> {

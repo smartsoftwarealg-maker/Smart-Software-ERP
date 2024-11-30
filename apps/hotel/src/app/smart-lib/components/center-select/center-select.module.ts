@@ -27,7 +27,6 @@ const routes: Routes = [
     ReactiveFormsModule,
     LanguageModule,
     MaterialModule,
-    HttpClientModule,
     LoadingSpinnerModule,
     RouterModule.forChild(routes),
     CenterSelectComponent

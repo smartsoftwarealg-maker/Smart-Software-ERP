@@ -9,13 +9,10 @@ import {MatDialog} from '@angular/material/dialog';
 import {InvoiceCancellationService} from '@ss/sales/api-invoice-cancellation';
 import { BaseTransactionDetailComponent, TransactionLinesService } from '@ss/logistics/api-transaction';
 import { CommonModule } from '@angular/common';
-
-
 import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
 import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
-
 import { LogisticsUiDocImportModule } from '@ss/logistics/ui-doc-import';
-
+import { TranslateDirective } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-invoice-cancellation-detail',
@@ -25,10 +22,8 @@ import { LogisticsUiDocImportModule } from '@ss/logistics/ui-doc-import';
     imports: [
         CommonModule,
         MaterialModule,
-
-
+        TranslateDirective,
         ReactiveFormsModule,
-
         RouterModule,
         CommonUiDatepickerModule,
         CommonUiAutoCompleteModule,

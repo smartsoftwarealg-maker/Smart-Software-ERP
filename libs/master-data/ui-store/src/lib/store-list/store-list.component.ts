@@ -20,6 +20,7 @@ import { StockUiArticleStoreModule } from "@ss/stock/article-store";
 import { Article, ArticleService } from '@ss/master-data/api-article';
 import { PaginationComponent } from '@ss/common/ui-pagination';
 import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-store-list',
@@ -29,12 +30,10 @@ import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
     imports: [
         CommonModule,
         MaterialModule,
-
-
+        TranslateDirective,
+        TranslatePipe,
         RouterModule,
         ReactiveFormsModule,
-
-
         CommonUiDatepickerModule,
         CommonUiAutoCompleteModule,
         StockUiArticleStoreModule,

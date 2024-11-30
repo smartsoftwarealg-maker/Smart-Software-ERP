@@ -15,6 +15,7 @@ import { CommonModule } from '@angular/common';
 import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
 import { RemunerationPaymonthEditorModule } from '@ss/remuneration/paymonth-editor';
 import { PaginationComponent } from '@ss/common/ui-pagination';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
   selector: 'ss-payroll-amendment-list',
@@ -24,8 +25,8 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
     imports: [
         CommonModule,
         MaterialModule,
-
-
+        TranslateDirective,
+        TranslatePipe,
         CommonUiAutoCompleteModule,
         RemunerationPaymonthEditorModule,
         PaginationComponent

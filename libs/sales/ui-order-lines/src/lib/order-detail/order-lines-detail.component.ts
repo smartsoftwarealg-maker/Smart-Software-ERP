@@ -5,14 +5,10 @@ import {
 import { SalesOrderLinesService } from '@ss/logistics/api-transaction';
 import { CommonModule } from '@angular/common';
 import { MaterialModule } from '@ss/common/api-common';
-
-
 import { ReactiveFormsModule } from '@angular/forms';
-
 import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
 import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
-import { UiStockInfoComponent } from '@ss/logistics/ui-stock-info';
-import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-order-lines-detail',
@@ -21,14 +17,10 @@ import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
     standalone: true,
     imports: [CommonModule,
         MaterialModule,
-
-
+        TranslateDirective,
         ReactiveFormsModule,
-
         CommonUiDatepickerModule,
-        CommonUiAutoCompleteModule,
-
-        UiStockInfoComponent, DocInfoComponent
+        CommonUiAutoCompleteModule
     ],
 
 })

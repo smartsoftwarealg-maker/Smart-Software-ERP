@@ -10,6 +10,7 @@ import { MaterialModule, PaginatorPersistenceService } from '@ss/common/api-comm
 import { CommonModule } from '@angular/common';
 import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
 import { PaginationComponent } from '@ss/common/ui-pagination';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-cc-group-list',
@@ -52,8 +53,8 @@ export class CostCenterGroupListComponent extends BaseEntityListComponent<Lookup
         MaterialModule,
         RouterModule,
         MaterialModule,
-
-
+        TranslateDirective,
+        TranslatePipe,
         CommonUiAutoCompleteModule,
 
     ],

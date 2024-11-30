@@ -7,11 +7,9 @@ import { DriverVehicleService } from '../services/driver-vehicle.service';
 import { VehicleService } from '../services/vehicle.service';
 import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
 import { MaterialModule } from '@ss/common/api-common';
-
-
-
 import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
 import { RouterModule } from '@angular/router';
+import { TranslateDirective } from '@ss/common/ui-lang';
 
 
 @Component({
@@ -20,9 +18,7 @@ import { RouterModule } from '@angular/router';
     imports: [
         CommonModule,
         MaterialModule,
-
-
-
+        TranslateDirective,
         CommonUiDatepickerModule,
         RouterModule,
         CommonUiAutoCompleteModule,

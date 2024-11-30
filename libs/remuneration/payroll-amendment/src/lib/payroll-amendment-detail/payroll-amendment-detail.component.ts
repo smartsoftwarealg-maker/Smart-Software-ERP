@@ -16,6 +16,7 @@ import { CommonModule } from '@angular/common';
 
 import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
 import { RemunerationPaymonthEditorModule } from '@ss/remuneration/paymonth-editor';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-payroll-amendment-detail',
@@ -25,8 +26,8 @@ import { RemunerationPaymonthEditorModule } from '@ss/remuneration/paymonth-edit
     imports: [
         CommonModule,
         MaterialModule,
-
-
+        TranslateDirective,
+        TranslatePipe,
         CommonUiAutoCompleteModule,
         RemunerationPaymonthEditorModule
     ]

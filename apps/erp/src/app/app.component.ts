@@ -12,6 +12,7 @@ import { ThemeDirective } from '../../../../libs/common/ui-theme/src/lib/theme.d
 import { Dir } from '@angular/cdk/bidi';
 import { MatProgressSpinner } from '@angular/material/progress-spinner';
 import { MessageComponent } from '../../../../libs/common/ui-error-handler/src/lib/error-message.component';
+import { TranslateDirective } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-root',
@@ -23,7 +24,7 @@ import { MessageComponent } from '../../../../libs/common/ui-error-handler/src/l
         Dir,
         RouterOutlet,
         MatProgressSpinner,
-        MessageComponent,
+        MessageComponent
     ],
 })
 export class AppComponent implements OnInit {

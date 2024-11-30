@@ -6,6 +6,7 @@ import { LanguageService, MaterialModule } from '@ss/common/api-common';
 import { CProduct, CReport } from '@ss/costing/costing-utils';
 import { CostingReportService } from '../services/costing-report.service';
 import { Chart, ChartItem, registerables } from 'chart.js';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 interface ChartConfig {
     id: string;
@@ -20,7 +21,7 @@ interface ChartConfig {
         CommonModule,
         RouterModule,
         MaterialModule,
-
+        TranslateDirective,
     ],
     templateUrl: './costing-reports.component.html',
     styleUrl: './costing-reports.component.css',

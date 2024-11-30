@@ -29,7 +29,6 @@ import { LtmTestService } from '@ltm/ltm-api';
 import { dateToYmdStr, LoginService, MaterialModule } from '@ss/common/api-common';
 import { CommonModule } from '@angular/common';
 import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
-import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
 import { LTMSiloService } from '@ltm/ltm-api';
 import { LtmSupplierService } from '@ltm/ltm-api';
 import { LtmPickupPointService } from '@ltm/ltm-api';
@@ -37,8 +36,8 @@ import { LtmCenterMatterService } from '@ltm/ltm-api';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { LtmTestScheduleService } from '@ltm/ltm-api';
 import { LtmTestScheduleListComponent } from '../ltm-test-schedule-list/ltm-test-schedule-list.component';
-import { PaginationComponent } from '@ss/common/ui-pagination';
-import { TranslatePipe } from '@ss/common/ui-lang';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
+import { DatePickerComponent } from '@ss/common/ui-datepicker';
 
 function sampleNoValidatorFn(sampleMode: boolean): ValidatorFn {
     return (control: AbstractControl): ValidationErrors | null => {
@@ -60,12 +59,12 @@ type VarianceControl = {
     imports: [
         CommonModule,
         MaterialModule,
-        PaginationComponent,
+        TranslateDirective,
+        TranslatePipe,
         ReactiveFormsModule,
         CommonUiAutoCompleteModule,
-        CommonUiDatepickerModule,
+        DatePickerComponent,
         RouterOutlet,
-        RouterLink,
         TranslatePipe
     ]
 })

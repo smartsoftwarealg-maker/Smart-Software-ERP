@@ -16,6 +16,7 @@ import { RemunerationPaymonthEditorModule } from '@ss/remuneration/paymonth-edit
 
 import { OrgChartModule } from 'angular13-organization-chart';
 import { PaginationComponent } from '@ss/common/ui-pagination';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-user-message-list',
@@ -25,12 +26,10 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
     imports: [
         CommonModule,
         MaterialModule,
-
-
+        TranslateDirective,
+        TranslatePipe,
         CommonUiAutoCompleteModule,
         RemunerationPaymonthEditorModule,
-
-
         OrgChartModule,
         PaginationComponent
     ]

@@ -12,6 +12,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
 import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-circulation',
@@ -21,10 +22,9 @@ import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
     imports: [
         CommonModule,
         MaterialModule,
-
-
+        TranslateDirective,
+        TranslatePipe,
         ReactiveFormsModule,
-
         CommonUiDatepickerModule,
         CommonUiAutoCompleteModule,
     ],

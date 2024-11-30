@@ -14,6 +14,7 @@ import { CommonUiAutoCompleteModule } from "@ss/common/ui-auto-complete";
 import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
 import { CommonUiHourPickerModule } from "@ss/common/ui-hour-picker";
 import { MatDialog } from "@angular/material/dialog";
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-ltm-matter-list',
@@ -24,12 +25,12 @@ import { MatDialog } from "@angular/material/dialog";
         CommonModule,
         MaterialModule,
         PaginationComponent,
-
         ReactiveFormsModule,
-
         CommonUiAutoCompleteModule,
         CommonUiDatepickerModule,
-        CommonUiHourPickerModule
+        CommonUiHourPickerModule,
+        TranslateDirective,
+        TranslatePipe
     ],
 })
 export class LtmMatterListComponent  extends BaseEntityListComponent<LTMMatter> implements OnInit {

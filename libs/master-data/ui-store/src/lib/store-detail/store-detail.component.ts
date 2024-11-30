@@ -16,6 +16,7 @@ import { MaterialModule } from "@ss/common/api-common";
 
 import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
 import { StockUiArticleStoreModule } from "@ss/stock/article-store";
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-article-detail',
@@ -25,8 +26,8 @@ import { StockUiArticleStoreModule } from "@ss/stock/article-store";
     imports: [
         CommonModule,
         MaterialModule,
-
-
+        TranslateDirective,
+        TranslatePipe,
         RouterModule,
         ReactiveFormsModule,
 

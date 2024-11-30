@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { Lookup, LookupsService } from '@ss/common/api-lookup';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
@@ -16,6 +16,7 @@ import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
 import { CustomAttributesModule } from '@ss/custom-attributes';
 
 import { QRCodeModule } from 'angularx-qrcode';
+import { TranslateDirective } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-end-types-detail',
@@ -25,10 +26,7 @@ import { QRCodeModule } from 'angularx-qrcode';
     imports: [
         CommonModule,
         MaterialModule,
-
-
-
-
+        TranslateDirective,
         CommonUiAutoCompleteModule,
         CommonUiDatepickerModule,
         RouterModule,

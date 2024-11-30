@@ -12,6 +12,7 @@ import { CommonModule } from '@angular/common';
 
 import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { TranslateDirective } from '@ss/common/ui-lang';
 
 
 /** Flat node with expandable and level information */
@@ -32,10 +33,8 @@ interface LogFlatNode {
     imports: [
         CommonModule,
         MaterialModule,
-
-
+        TranslateDirective,
         ReactiveFormsModule,
-
         CommonUiDatepickerModule,
     ],
 

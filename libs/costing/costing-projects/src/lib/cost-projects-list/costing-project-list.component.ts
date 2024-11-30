@@ -13,7 +13,7 @@ import { KeepOnToolbar, ShellService, SnackBarService, ToolbarButton } from '@ss
 import { CostingReportsComponent } from '../costing-reports/costing-reports.component';
 import { CostingReportService } from '../services/costing-report.service';
 import { PaginationComponent } from '@ss/common/ui-pagination';
-import { TranslatePipe } from '@ss/common/ui-lang';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-costing-project-list',
@@ -24,8 +24,8 @@ import { TranslatePipe } from '@ss/common/ui-lang';
         CommonModule,
         RouterModule,
         MaterialModule,
-
-
+        TranslateDirective,
+        TranslatePipe,
         CostingReportsComponent,
         PaginationComponent,
         TranslatePipe

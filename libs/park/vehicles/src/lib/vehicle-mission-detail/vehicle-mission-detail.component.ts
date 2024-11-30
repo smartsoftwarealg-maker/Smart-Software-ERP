@@ -1,9 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MaterialModule, LoginService } from '@ss/common/api-common';
-
-
-
+import { MaterialModule } from '@ss/common/api-common';
 import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
 import { RouterModule } from '@angular/router';
 import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
@@ -15,6 +12,7 @@ import { VehicleMissionService } from '../services/vehicle-mission.service';
 import { VehicleStateService } from '../services/vehicle-state.service';
 import { PersonAutocompleteClass, EmployeeService } from '@ss/employee-services/employee-services';
 import { ParkPersonService } from '../services/park-person.service';
+import { TranslateDirective } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-vehicle-mission-detail',
@@ -22,9 +20,7 @@ import { ParkPersonService } from '../services/park-person.service';
     imports: [
         CommonModule,
         MaterialModule,
-
-
-
+        TranslateDirective,
         CommonUiDatepickerModule,
         RouterModule,
         CommonUiAutoCompleteModule,
