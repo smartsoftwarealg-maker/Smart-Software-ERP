@@ -25,7 +25,7 @@ import {
     PersonAutocompleteClass,
     SubordinateService
 } from '@ss/employee-services/employee-services';
-import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
+
 import { GradeService } from '../services/grade.service';
 import { Grade } from '../gica-careers-api';
 import { HttpService, LoginService, PaginationModel } from '@ss/common/api-common';
@@ -59,7 +59,7 @@ import { TranslatePipe } from '@ss/common/ui-lang';
         MatInput,
         MatLabel,
         ReactiveFormsModule,
-        MatButton, MatHeaderCellDef, MatProgressSpinner, CommonUiAutoCompleteModule, MatHint, PaginationComponent, ImageInputComponent, TranslatePipe],
+        MatButton, MatHeaderCellDef, MatProgressSpinner,  MatHint, PaginationComponent, ImageInputComponent, TranslatePipe],
     templateUrl: './gradings.component.html',
     styleUrl: './gradings.component.css'
 })

@@ -11,11 +11,8 @@ import { ElementInfoLookupModel } from "../element-info-lookup-model";
 import { HttpService, MaterialModule } from "@ss/common/api-common";
 import { ElementType } from "@ss/payroll-common";
 import { CommonModule } from "@angular/common";
-
-
-import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
-import { CommonUiAutoCompleteModule } from "@ss/common/ui-auto-complete";
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
+import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 
 @Component({
     selector: "ss-element-types-detail",
@@ -26,10 +23,8 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         CommonModule,
         MaterialModule,
         TranslateDirective,
-        TranslatePipe,
         ReactiveFormsModule,
-        CommonUiDatepickerModule,
-        CommonUiAutoCompleteModule
+        UiAutoCompleteComponent
     ]
 
 })

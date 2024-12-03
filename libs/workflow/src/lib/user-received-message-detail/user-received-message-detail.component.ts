@@ -3,7 +3,7 @@ import { BaseEntityDetailComponent } from "@ss/common/ui-base-entity";
 import { DocStatus, UserMessage } from "../workflow-api";
 import { DocStatusService } from "../doc-status.service";
 import { UserListService } from "@ss/common/api-users";
-import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel, UserLookup } from '@ss/common/ui-auto-complete';
+import {  DefaultAutoCompleteModel, UserLookup } from '@ss/common/ui-auto-complete';
 import { ShellService, SnackBarService } from "@ss/common/ui-shell";
 import { ActivatedRoute } from "@angular/router";
 import { UntypedFormBuilder, UntypedFormGroup, Validators } from "@angular/forms";
@@ -13,7 +13,7 @@ import { UserReceivedMessageService } from "../user-received-message.service";
 import { CommonModule } from '@angular/common';
 import { MaterialModule } from '@ss/common/api-common';
 
-import { RemunerationPaymonthEditorModule } from '@ss/remuneration/paymonth-editor';
+
 
 
 import { OrgChartModule } from 'angular13-organization-chart';
@@ -29,8 +29,8 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         MaterialModule,
         TranslateDirective,
         TranslatePipe,
-        CommonUiAutoCompleteModule,
-        RemunerationPaymonthEditorModule,
+
+
         OrgChartModule,
     ],
 })

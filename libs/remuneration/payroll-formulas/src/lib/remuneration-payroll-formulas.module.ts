@@ -5,7 +5,7 @@ import { FormulaDetailComponent } from './formula-detail.component';
 import {MaterialModule} from '@ss/common/api-common';
 
 
-import {CommonUiAutoCompleteModule} from '@ss/common/ui-auto-complete';
+import {UiAutoCompleteComponent} from '@ss/common/ui-auto-complete';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @NgModule({
@@ -14,7 +14,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         MaterialModule,
         TranslateDirective,
         TranslatePipe,
-        CommonUiAutoCompleteModule,
+
         FormulaListComponent,
         FormulaDetailComponent
     ],

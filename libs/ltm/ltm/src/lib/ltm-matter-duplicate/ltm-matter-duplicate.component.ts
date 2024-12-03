@@ -4,9 +4,7 @@ import { MaterialModule } from "@ss/common/api-common";
 import {LtmMatterService} from '@ltm/ltm-api';
 import { CommonModule } from "@angular/common";
 import { FormControl, ReactiveFormsModule } from "@angular/forms";
-import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
-import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
-import { CommonUiHourPickerModule } from "@ss/common/ui-hour-picker";
+import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material/dialog";
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
@@ -20,10 +18,9 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         MaterialModule,
         TranslateDirective,
         ReactiveFormsModule,
-        CommonUiAutoCompleteModule,
-        CommonUiDatepickerModule,
-        CommonUiHourPickerModule,
-        TranslatePipe
+
+        TranslatePipe,
+        UiAutoCompleteComponent
     ]
 })
 export class LtmMatterDuplicateComponent {

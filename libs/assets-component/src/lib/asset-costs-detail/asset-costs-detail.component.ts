@@ -10,14 +10,14 @@ import {LookupsService} from '@ss/common/api-lookup';
 import {AssetCostsService} from '../services/asset-costs.service';
 import {Observable} from 'rxjs';
 import {switchMap} from 'rxjs/operators';
-import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
+import {  DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
 import {AssetCostsTypeService} from '../services/asset-costs-type.service';
 import { CommonModule } from '@angular/common';
 
 
 
-import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
-import { CustomAttributesModule } from '@ss/custom-attributes';
+import { DatePickerComponent } from '@ss/common/ui-datepicker';
+
 
 import { QRCodeModule } from 'angularx-qrcode';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
@@ -32,10 +32,10 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         MaterialModule,
         TranslateDirective,
         TranslatePipe,
-        CommonUiAutoCompleteModule,
-        CommonUiDatepickerModule,
+
+        DatePickerComponent,
         RouterModule,
-        CustomAttributesModule,
+
         QRCodeModule
     ]})
 export class AssetCostsDetailComponent extends BaseChildEntityDetailComponent<AssetCost> implements OnInit {

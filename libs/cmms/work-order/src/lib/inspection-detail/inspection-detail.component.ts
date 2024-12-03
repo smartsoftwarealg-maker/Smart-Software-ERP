@@ -8,17 +8,18 @@ import { DOC_WORK_ORDER } from '@ss/logistics/api-transaction';
 import { Observable } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { MatTableModule } from '@angular/material/table';
-import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
+
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
-import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
+import { DatePickerComponent } from '@ss/common/ui-datepicker';
 import { MatButtonModule } from '@angular/material/button';
 import { MaterialModule } from '@ss/common/api-common';
 import { CMMSInspectionOrderService } from '../services/c-m-m-s-inspection-order.service';
 import { InspectionDetailListComponent } from '../inspection-detail-list/inspection-detail-list.component';
 import { CMMSInspectionService } from '../services/c-m-m-s-inspection.service';
 import { PaginationComponent } from '@ss/common/ui-pagination';
+import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 
 @Component({
     selector: 'ss-inspection-detail',
@@ -29,17 +30,18 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
         CommonModule,
         PaginationComponent,
         MatTableModule,
-        CommonUiAutoCompleteModule,
+
         FormsModule,
         MatFormFieldModule,
         ReactiveFormsModule,
         MatCardModule,
         MatInputModule,
-        CommonUiDatepickerModule,
+        DatePickerComponent,
         MatButtonModule,
         MaterialModule,
         RouterOutlet,
-        InspectionDetailListComponent
+        InspectionDetailListComponent,
+        UiAutoCompleteComponent
     ]
 })
 export class InspectionDetailComponent extends CMMSWorkDetail implements OnInit {

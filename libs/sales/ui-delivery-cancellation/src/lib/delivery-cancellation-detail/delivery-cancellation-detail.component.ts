@@ -9,9 +9,9 @@ import {MatDialog} from '@angular/material/dialog';
 import {DeliveryCancellationService} from '@ss/sales/api-delivery-cancellation';
 import { BaseTransactionDetailComponent, TransactionLinesService } from '@ss/logistics/api-transaction';
 import { CommonModule } from '@angular/common';
-import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
-import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
-import { LogisticsUiDocImportModule } from '@ss/logistics/ui-doc-import';
+import { DatePickerComponent } from '@ss/common/ui-datepicker';
+
+
 import { DeliveryCancellationLinesService } from '../delivery-cancellation-lines.service';
 import { TranslateDirective } from '@ss/common/ui-lang';
 
@@ -26,9 +26,9 @@ import { TranslateDirective } from '@ss/common/ui-lang';
         TranslateDirective,
         ReactiveFormsModule,
         RouterModule,
-        CommonUiDatepickerModule,
-        CommonUiAutoCompleteModule,
-        LogisticsUiDocImportModule
+        DatePickerComponent,
+
+
     ],
 
 })

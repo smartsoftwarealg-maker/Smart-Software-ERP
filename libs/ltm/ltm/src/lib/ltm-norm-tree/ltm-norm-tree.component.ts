@@ -7,9 +7,6 @@ import {  ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
 import { MaterialModule, PaginatorPersistenceService } from "@ss/common/api-common";
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
-import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
-import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
-import { CommonUiHourPickerModule } from '@ss/common/ui-hour-picker';
 import { LtmNormTreeService } from '@ltm/ltm-api';
 import { NormTree } from '@ltm/ltm-api';
 import { PaginationComponent } from '@ss/common/ui-pagination';
@@ -25,10 +22,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
         MaterialModule,
         TranslateDirective,
         PaginationComponent,
-        ReactiveFormsModule,
-        CommonUiAutoCompleteModule,
-        CommonUiDatepickerModule,
-        CommonUiHourPickerModule
+        ReactiveFormsModule
     ],
 })
 export class LtmNormTreeComponent extends BaseEntityListComponent<NormTree> implements OnInit {

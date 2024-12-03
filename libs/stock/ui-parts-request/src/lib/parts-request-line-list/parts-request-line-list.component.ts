@@ -14,8 +14,8 @@ import { PartsRequestLineService } from '../services/parts-request-line.service'
 
 import { ArticleService } from '@ss/master-data/api-article';
 import { MaterialModule } from '@ss/common/api-common';
-import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
-import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
+import { DatePickerComponent } from '@ss/common/ui-datepicker';
+
 import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
@@ -29,8 +29,8 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         ReactiveFormsModule,
 
 
-        CommonUiDatepickerModule,
-        CommonUiAutoCompleteModule,
+        DatePickerComponent,
+
         DocInfoComponent
     ],
     selector: 'ss-parts-request-line-list',

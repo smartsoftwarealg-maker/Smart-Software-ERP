@@ -9,7 +9,7 @@ import {Timing} from '../attendance-api';
 import {of, switchMap} from 'rxjs';
 import { MatMiniFabButton } from '@angular/material/button';
 import { MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from '@angular/material/table';
-import { TranslateDirective } from '../../../../common/ui-lang/src/lib/translate.directive';
+import { TranslateDirective } from '@ss/common/ui-lang';
 import { DatePipe } from '@angular/common';
 
 @Component({

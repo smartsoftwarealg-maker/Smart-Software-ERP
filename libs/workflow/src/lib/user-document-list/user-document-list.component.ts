@@ -9,11 +9,11 @@ import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import { MaterialModule, PaginatorPersistenceService } from '@ss/common/api-common';
 import {UserListService} from '@ss/common/api-users';
 import {UserDocumentService} from '../user-document.service';
-import { CommonUiAutoCompleteModule, UserLookup } from '@ss/common/ui-auto-complete';
+import { UiAutoCompleteComponent, UserLookup } from '@ss/common/ui-auto-complete';
 import { CommonModule } from '@angular/common';
 
 
-import { RemunerationPaymonthEditorModule } from '@ss/remuneration/paymonth-editor';
+
 
 
 import { OrgChartModule } from 'angular13-organization-chart';
@@ -29,11 +29,9 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         CommonModule,
         MaterialModule,
         TranslateDirective,
-        TranslatePipe,
-        CommonUiAutoCompleteModule,
-        RemunerationPaymonthEditorModule,
         OrgChartModule,
-        PaginationComponent
+        PaginationComponent,
+        UiAutoCompleteComponent
     ]
 })
 export class UserDocumentListComponent extends BaseEntityListComponent<UserDocument> {

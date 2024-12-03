@@ -11,7 +11,7 @@ import { CommonModule } from '@angular/common';
 
 
 import { ReactiveFormsModule } from '@angular/forms';
-import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
+
 import { PaginationComponent } from '@ss/common/ui-pagination';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
@@ -26,7 +26,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         TranslateDirective,
         TranslatePipe,
         ReactiveFormsModule,
-        CommonUiAutoCompleteModule,
+
         PaginationComponent
     ]
 })

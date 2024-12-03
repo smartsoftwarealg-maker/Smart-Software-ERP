@@ -9,8 +9,8 @@ import { MaterialModule, PaginatorPersistenceService } from '@ss/common/api-comm
 import { LoansService } from '../loans.service';
 import { LoansConsumptionService } from '../loans-consumption.service';
 import { CommonModule } from '@angular/common';
-import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
-import { RemunerationPaymonthEditorModule } from '@ss/remuneration/paymonth-editor';
+
+
 import { PaginationComponent } from '@ss/common/ui-pagination';
 import { PaymonthPipe } from '@ss/payroll-common';
 
@@ -23,8 +23,8 @@ import { PaymonthPipe } from '@ss/payroll-common';
     imports: [
         CommonModule,
         MaterialModule,
-        CommonUiAutoCompleteModule,
-        RemunerationPaymonthEditorModule,
+
+
         PaginationComponent,
         PaymonthPipe
     ]

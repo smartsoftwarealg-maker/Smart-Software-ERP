@@ -5,12 +5,8 @@ import {  ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { ReactiveFormsModule, UntypedFormBuilder } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { MaterialModule } from '@ss/common/api-common';
-
-
-import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
 import { PhysicianService } from '../services/physician.service';
 import { BaseLookupDetailClass } from './detail-template/base-lookup-detail.class';
-import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-physician-detail',
@@ -20,8 +16,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     imports: [
         CommonModule,
         MaterialModule,
-        ReactiveFormsModule,
-        CommonUiAutoCompleteModule
+        ReactiveFormsModule
     ],
 })
 export class PhysicianDetailComponent extends BaseLookupDetailClass {

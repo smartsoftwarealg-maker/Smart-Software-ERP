@@ -4,9 +4,11 @@
             <mat-form-field appearance="fill">
                 <mat-label><span translate>REMUN_INPUT_FILTERS</span></mat-label>
                 <mat-select (selectionChange)="selectInput($event)" [value]="infoSrv.selectedInput">
-                    <mat-option *ngFor="let i of infoSrv.inputFilter" [value]="i.id">
-                        {{ i.description }}
-                    </mat-option>
+                    @for (i of infoSrv.inputFilter; track i.id) {
+                        <mat-option [value]="i.id">
+                            {{ i.description }}
+                        </mat-option>
+                    }
                 </mat-select>
             </mat-form-field>
             <mat-radio-group aria-label="Select an option">
@@ -194,6 +196,9 @@
             }
         </div>
     </mat-tab>
+    <!--    <mat-tab label="{{'REMUN_LEAVE_CALCUATOR'|translate}}">-->
+    <!--        <ss-leave-planning-calculator/>-->
+    <!--    </mat-tab>-->
 
     <mat-tab label="{{'COMMON_JOURNAL'|translate}}">
 

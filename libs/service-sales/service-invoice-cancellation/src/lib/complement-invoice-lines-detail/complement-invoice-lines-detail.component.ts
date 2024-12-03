@@ -10,10 +10,9 @@ import { MaterialModule } from '@ss/common/api-common';
 import { ReactiveFormsModule, UntypedFormGroup } from '@angular/forms';
 
 import { RouterModule } from '@angular/router';
-import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
-import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
+import { DatePickerComponent } from '@ss/common/ui-datepicker';
+import {  DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
 
-import { LogisticsUiDocImportModule } from '@ss/logistics/ui-doc-import';
 import { ServiceArticleService } from '@ss/service-sales/service-articles';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
@@ -26,12 +25,10 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         CommonModule,
         MaterialModule,
         TranslateDirective,
-        TranslatePipe,
         ReactiveFormsModule,
         RouterModule,
-        CommonUiDatepickerModule,
-        CommonUiAutoCompleteModule,
-        LogisticsUiDocImportModule
+
+
     ],
 })
 export class ComplementInvoiceLinesDetailComponent extends BaseTransactionLinesDetailComponent implements OnInit, OnDestroy {

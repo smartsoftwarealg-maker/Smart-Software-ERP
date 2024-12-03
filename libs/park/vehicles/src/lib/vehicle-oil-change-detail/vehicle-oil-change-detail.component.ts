@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
-import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
+
+import { DatePickerComponent } from '@ss/common/ui-datepicker';
 
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -18,8 +18,8 @@ import { VehicleOilChangeService } from '../services/vehicle-oil-change.service'
     standalone: true,
     imports: [
         CommonModule,
-        CommonUiAutoCompleteModule,
-        CommonUiDatepickerModule,
+
+        DatePickerComponent,
 
         MatButtonModule,
         MatCardModule,

@@ -7,12 +7,10 @@ import { CommonModule } from '@angular/common';
 import { MaterialModule } from '@ss/common/api-common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
-import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
-import { UiStockInfoComponent } from '@ss/logistics/ui-stock-info';
-import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
+import { DatePickerComponent } from '@ss/common/ui-datepicker';
 import { SalesProformaLinesService } from '../sales-proforma-lines.service';
 import { TranslateDirective } from '@ss/common/ui-lang';
+import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 
 @Component({
     selector: 'ss-proforma-lines-detail',
@@ -25,8 +23,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
         TranslateDirective,
         ReactiveFormsModule,
         RouterModule,
-        CommonUiDatepickerModule,
-        CommonUiAutoCompleteModule
+        UiAutoCompleteComponent
     ],
 })
 export class ProformaLinesDetailComponent extends BaseTransactionLinesDetailComponent implements OnInit, OnDestroy {

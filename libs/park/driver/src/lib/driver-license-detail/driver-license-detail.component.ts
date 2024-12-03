@@ -4,9 +4,9 @@ import { BaseChildEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { DriverLicense } from '../driver-api';
 import { DriverLicenseService } from '../services/driver-license.service';
 import { FormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
-import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
 
-import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
+
+import { DatePickerComponent } from '@ss/common/ui-datepicker';
 import { MaterialModule } from '@ss/common/api-common';
 
 
@@ -21,10 +21,10 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         CommonModule,
         MaterialModule,
         TranslateDirective,
-        CommonUiDatepickerModule,
+        DatePickerComponent,
         RouterModule,
-        CommonUiAutoCompleteModule,
-        CommonUiDatepickerModule
+
+        DatePickerComponent
     ],
     templateUrl: './driver-license-detail.component.html',
     styleUrls: ['./driver-license-detail.component.css']

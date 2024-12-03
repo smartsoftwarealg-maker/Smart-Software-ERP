@@ -28,15 +28,15 @@ import {
     LTMTestingEquipment
 } from '@ltm/ltm-api';
 import { LtmEquipmentTestingInputService } from '../services/ltm-equipment-testing-input.service';
-import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
-import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
+import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
+import { DatePickerComponent } from '@ss/common/ui-datepicker';
 import { debug } from '@capacitor/assets/dist/util/log';
 import { PaginationComponent } from '@ss/common/ui-pagination';
 
 @Component({
     selector: 'ss-test-equipment-testing-input-detail',
     standalone: true,
-    imports: [CommonModule,  MatCard, MatFormField, MatInput, MatLabel, MaterialModule, ReactiveFormsModule, CommonUiAutoCompleteModule, CommonUiDatepickerModule],
+    imports: [CommonModule, MatCard, MatFormField, MatInput, MatLabel, MaterialModule, ReactiveFormsModule, DatePickerComponent, UiAutoCompleteComponent],
     templateUrl: './test-equipment-testing-input-detail.component.html',
     styleUrl: './test-equipment-testing-input-detail.component.scss'
 })

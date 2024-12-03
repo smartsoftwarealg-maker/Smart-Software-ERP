@@ -7,18 +7,11 @@ import { ReactiveFormsModule, UntypedFormBuilder, Validators } from "@angular/fo
 import {  ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
 import {LtmTestService} from '@ltm/ltm-api';
 import { LtmTestTypeService } from '@ltm/ltm-api';
-import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from "@ss/common/ui-auto-complete";
+import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { Lookup, UnitService } from '@ss/common/api-lookup';
 import { CommonModule } from "@angular/common";
 import { MaterialModule } from "@ss/common/api-common";
-
-
-
-
-import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
-import { CommonUiHourPickerModule } from "@ss/common/ui-hour-picker";
-import { PaginationComponent } from '@ss/common/ui-pagination';
-import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
+import { TranslateDirective } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-ltm-test-detail',
@@ -29,11 +22,9 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         CommonModule,
         MaterialModule,
         ReactiveFormsModule,
-        CommonUiAutoCompleteModule,
-        CommonUiDatepickerModule,
-        CommonUiHourPickerModule,
-        TranslateDirective
-    ],
+        TranslateDirective,
+        UiAutoCompleteComponent
+    ]
 })
 export class LtmTestDetailComponent extends BaseEntityDetailComponent<LTMTest> {
     private typeSrv = inject(LtmTestTypeService);

@@ -6,7 +6,7 @@ import {UserStore} from '@ss/master-data/api-article';
 import {KeepOnToolbar, ShellService, SnackBarService, ToolbarButton} from '@ss/common/ui-shell';
 import { ActivatedRoute, RouterModule } from "@angular/router";
 import { FormControl, FormGroup, ReactiveFormsModule } from "@angular/forms";
-import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from "@ss/common/ui-auto-complete";
+import {  DefaultAutoCompleteModel } from "@ss/common/ui-auto-complete";
 import {LotsService, Store} from '@ss/common/api-lookup';
 import {  ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
 import {of, switchMap} from 'rxjs';
@@ -14,8 +14,8 @@ import { CommonModule } from "@angular/common";
 
 
 
-import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
-import { StockUiArticleStoreModule } from "@ss/stock/article-store";
+import { DatePickerComponent } from "@ss/common/ui-datepicker";
+
 import { PaginationComponent } from '@ss/common/ui-pagination';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
@@ -31,9 +31,9 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         TranslatePipe,
         RouterModule,
         ReactiveFormsModule,
-        CommonUiDatepickerModule,
-        CommonUiAutoCompleteModule,
-        StockUiArticleStoreModule,
+        DatePickerComponent,
+
+
         PaginationComponent
     ]})
 export class UserStoresComponent implements OnInit, OnDestroy {

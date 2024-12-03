@@ -1,9 +1,9 @@
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MaterialModule } from '@ss/common/api-common';
-import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
+import { DatePickerComponent } from '@ss/common/ui-datepicker';
 import { RouterModule } from '@angular/router';
-import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
+import {  DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
 import { Destination, DestinationService } from '@ss/common/api-lookup';
 import { BaseChildEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { VehicleMission, VehicleState } from '../vehicle-api';
@@ -21,10 +21,10 @@ import { TranslateDirective } from '@ss/common/ui-lang';
         CommonModule,
         MaterialModule,
         TranslateDirective,
-        CommonUiDatepickerModule,
+        DatePickerComponent,
         RouterModule,
-        CommonUiAutoCompleteModule,
-        CommonUiDatepickerModule
+
+        DatePickerComponent
     ],
     templateUrl: './vehicle-mission-detail.component.html',
     styleUrls: ['./vehicle-mission-detail.component.css']

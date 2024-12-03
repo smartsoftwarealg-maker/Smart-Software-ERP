@@ -12,8 +12,8 @@ import { DefaultReportService } from '@ss/common/ui-default-report-component';
 import { PersonSummary as IPersonSummary } from '@ss/employee-services/employee-services';
 import { MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRow, MatRowDef, MatRow } from '@angular/material/table';
 import { MatSort, MatSortHeader } from '@angular/material/sort';
-import { TranslateDirective } from '../../../../../common/ui-lang/src/lib/translate.directive';
-import { ImageInputComponent } from '../../../../../common/ui-image-input/src/lib/image-input.component';
+import { TranslateDirective } from '@ss/common/ui-lang';
+import { ImageInputComponent } from '@ss/common/ui-image-input';
 import { PaginationComponent } from '../../../../../common/ui-pagination/src/lib/pagination.component';
 
 interface Lookup {

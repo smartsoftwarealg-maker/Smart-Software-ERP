@@ -15,7 +15,7 @@ import {
 } from '@ss/common/api-lookup';
 import {AssetsService} from '../services/assets.service';
 import { IsParamService, LoginService, MaterialModule } from '@ss/common/api-common';
-import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
+import {  DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
 import {Agent, AgentService, ConsumerService, CustomerService, SupplierService} from "@ss/logistics/api-agent";
 import {MatExpansionPanel} from '@angular/material/expansion';
 import {Account, AccountAutocompleteModel, AccountService} from '@ss/accounting/api-accounts';
@@ -42,8 +42,8 @@ import {DepreciationRateService} from "../services/depreciation-rate.service";
 import { CommonModule } from '@angular/common';
 
 
-import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
-import { CustomAttributesModule } from '@ss/custom-attributes';
+import { DatePickerComponent } from '@ss/common/ui-datepicker';
+
 import { QRCodeModule } from 'angularx-qrcode';
 import { AssetAppointmentListComponent } from '../asset-appointment-list/asset-appointment-list.component';
 import { AssetCostsListComponent } from '../asset-costs-list/asset-costs-list.component';
@@ -60,11 +60,10 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         MaterialModule,
         TranslateDirective,
         TranslatePipe,
-        ImageInputComponent,
-        CommonUiAutoCompleteModule,
-        CommonUiDatepickerModule,
+
+        DatePickerComponent,
         RouterModule,
-        CustomAttributesModule,
+
         QRCodeModule,
         AssetAppointmentListComponent
     ]

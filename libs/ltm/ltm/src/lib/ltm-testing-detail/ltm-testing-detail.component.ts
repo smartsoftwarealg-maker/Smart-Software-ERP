@@ -6,14 +6,13 @@ import { ActivatedRoute, Router, RouterOutlet } from "@angular/router";
 import { ReactiveFormsModule, UntypedFormBuilder, Validators } from "@angular/forms";
 import {  ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
 import {LtmTestingService} from '@ltm/ltm-api';
-import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from "@ss/common/ui-auto-complete";
+import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import {LtmMatterTestLookupService} from '@ltm/ltm-api';
 import { LoginService, MaterialModule } from "@ss/common/api-common";
 import { LtmLineMatterService } from '@ltm/ltm-api';
 import { LtmLineMatterLookup } from '@ltm/ltm-api';
 import { CommonModule } from "@angular/common";
-import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
-import { CommonUiHourPickerModule } from '@ss/common/ui-hour-picker';
+import { DatePickerComponent } from '@ss/common/ui-datepicker';
 import { TranslateDirective } from '@ss/common/ui-lang';
 
 @Component({
@@ -25,11 +24,10 @@ import { TranslateDirective } from '@ss/common/ui-lang';
         CommonModule,
         MaterialModule,
         ReactiveFormsModule,
-        CommonUiAutoCompleteModule,
-        CommonUiDatepickerModule,
-        CommonUiHourPickerModule,
-        TranslateDirective
-    ],
+        DatePickerComponent,
+        TranslateDirective,
+        UiAutoCompleteComponent
+    ]
 })
 export class LtmTestingDetailComponent extends BaseEntityDetailComponent<LTMTesting> implements OnInit {
     private router  = inject(Router);

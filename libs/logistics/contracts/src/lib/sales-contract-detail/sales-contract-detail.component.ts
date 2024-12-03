@@ -7,7 +7,7 @@ import { ReactiveFormsModule, UntypedFormBuilder, Validators } from "@angular/fo
 import {  ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
 import { AwardProcedureService, LookupsService, ProjectMotiveService, WilayaService } from "@ss/common/api-lookup";
 import {SalesContractService} from '../sales-contract.service';
-import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from "@ss/common/ui-auto-complete";
+import {  DefaultAutoCompleteModel } from "@ss/common/ui-auto-complete";
 import {AgentService} from '@ss/logistics/api-agent';
 import {ProjectTypeService} from '@ss/common/api-lookup';
 import { LoginService, MaterialModule } from "@ss/common/api-common";
@@ -18,7 +18,7 @@ import { CommonModule } from "@angular/common";
 
 
 import { AppArchiveMainComponent, CONTRACT_ARCHIVES } from '@ss/common/app-archive';
-import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
+import { DatePickerComponent } from "@ss/common/ui-datepicker";
 import { ContractArticleMainComponent } from "../contract-article-main/contract-article-main.component";
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
@@ -33,8 +33,8 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         TranslateDirective,
         TranslatePipe,
         ReactiveFormsModule,
-        CommonUiDatepickerModule,
-        CommonUiAutoCompleteModule,
+        DatePickerComponent,
+
         RouterModule,
         ContractArticleMainComponent,
         AppArchiveMainComponent

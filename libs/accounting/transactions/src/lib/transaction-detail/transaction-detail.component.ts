@@ -14,10 +14,10 @@ import {Lookup, LookupsService} from '@ss/common/api-lookup';
 import { LoginService, MaterialModule } from "@ss/common/api-common";
 import { filter, Observable, of, Subscription } from 'rxjs';
 import {switchMap, tap} from 'rxjs/operators';
-import { CommonUiDatepickerModule, maxDate, minDate } from "@ss/common/ui-datepicker";
+import { DatePickerComponent, maxDate, minDate } from "@ss/common/ui-datepicker";
 import { ACC_TRANSACTION_ARCHIVES } from "@ss/common/app-archive";
 import { CommonModule } from "@angular/common";
-import { CommonUiAutoCompleteModule } from "@ss/common/ui-auto-complete";
+
 
 @Component({
     selector: 'ss-transaction-detail',
@@ -29,8 +29,7 @@ import { CommonUiAutoCompleteModule } from "@ss/common/ui-auto-complete";
         RouterModule,
         MaterialModule,
         ReactiveFormsModule,
-        CommonUiAutoCompleteModule,
-        CommonUiDatepickerModule,
+        DatePickerComponent,
     ],
 })
 export class TransactionDetailComponent implements OnInit, OnDestroy {

@@ -1,4 +1,4 @@
-import { Component, inject, Input, OnInit } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { DefaultReportService } from '@ss/common/ui-default-report-component';
@@ -9,17 +9,11 @@ import { AssetBuilding, AssetLocation } from '../assets-api';
 import { AssetsBuildingService } from '../services/assets-building.service';
 import { AssetLocationService } from '../services/asset-location.service';
 import { FormControl } from '@angular/forms';
-import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
+import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { CommonModule } from '@angular/common';
-
-
-
-import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
-import { CustomAttributesModule } from '@ss/custom-attributes';
-
 import { QRCodeModule } from 'angularx-qrcode';
 import { PaginationComponent } from '@ss/common/ui-pagination';
-import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
+import { TranslateDirective } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-asset-building-list',
@@ -30,14 +24,10 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         CommonModule,
         MaterialModule,
         TranslateDirective,
-        TranslatePipe,
-        CommonUiAutoCompleteModule,
-        CommonUiDatepickerModule,
         RouterModule,
-        CustomAttributesModule,
-
         QRCodeModule,
-        PaginationComponent
+        PaginationComponent,
+        UiAutoCompleteComponent
     ]
 
 })

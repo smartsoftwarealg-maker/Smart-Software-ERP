@@ -4,8 +4,8 @@ import { BaseChildEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { REIMBURSEMENT, Reimbursement, ReimbursementService } from '@social/social-api';
 import { FormBuilder, ReactiveFormsModule, UntypedFormGroup, Validators } from '@angular/forms';
 import { MatCard } from '@angular/material/card';
-import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
-import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
+
+import { DatePickerComponent } from '@ss/common/ui-datepicker';
 
 import { MatError, MatFormField, MatLabel } from '@angular/material/form-field';
 import { MatInput } from '@angular/material/input';
@@ -18,8 +18,8 @@ import { convertToParamMap, ParamMap } from '@angular/router';
     standalone: true,
     imports: [CommonModule,
         MatCard,
-        CommonUiAutoCompleteModule,
-        CommonUiDatepickerModule,
+
+        DatePickerComponent,
 
         MatError,
         MatFormField,

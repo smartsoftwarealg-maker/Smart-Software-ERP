@@ -11,8 +11,9 @@ import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MaterialModule } from '@ss/common/api-common';
-import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
+
 import { CMMSFunctionService } from '../services/cmms.function.service';
+import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 
 @Component({
     selector: 'ss-cmms-function-detail',
@@ -27,7 +28,7 @@ import { CMMSFunctionService } from '../services/cmms.function.service';
         MaterialModule,
         ReactiveFormsModule,
         RouterOutlet,
-        CommonUiAutoCompleteModule
+        UiAutoCompleteComponent
     ],
     templateUrl: '../detail-template/cmms-fault-detail.component.html',
     styleUrls: ['../detail-template/cmms-fault-detail.component.css'],

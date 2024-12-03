@@ -8,17 +8,9 @@ import { ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
 import { Observable} from 'rxjs';
 import { CommonModule } from "@angular/common";
 import { LoginService, MaterialModule } from "@ss/common/api-common";
-
-
-
-
-import { CommonUiAutoCompleteModule } from "@ss/common/ui-auto-complete";
-import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
-import { CommonUiHourPickerModule } from "@ss/common/ui-hour-picker";
 import { LtmMixtureService } from '@ltm/ltm-api';
 import { LtmMixtureDetailService } from '@ltm/ltm-api';
 import { LtmMixturePickupPointService } from '@ltm/ltm-api';
-import { PaginationComponent } from '@ss/common/ui-pagination';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
@@ -30,10 +22,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         CommonModule,
         MaterialModule,
         ReactiveFormsModule,
-        CommonUiAutoCompleteModule,
-        CommonUiDatepickerModule,
         RouterOutlet,
-        CommonUiHourPickerModule,
         TranslateDirective
     ],
 })

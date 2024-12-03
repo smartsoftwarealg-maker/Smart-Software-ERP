@@ -8,9 +8,9 @@ import { MaterialModule, PaginatorPersistenceService } from '@ss/common/api-comm
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
-import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
 import { SocialActivityService } from '../services/social-activity.service';
 import { PaginationComponent } from '@ss/common/ui-pagination';
+import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 
 @Component({
     selector: 'ss-activities-list',
@@ -22,7 +22,7 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
         MaterialModule,
         PaginationComponent,
         ReactiveFormsModule,
-        CommonUiAutoCompleteModule
+        UiAutoCompleteComponent
     ],
 })
 export class ActivityListComponent extends BaseEntityListComponent<Lookup> {

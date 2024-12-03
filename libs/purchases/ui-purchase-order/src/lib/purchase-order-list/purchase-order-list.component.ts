@@ -10,7 +10,7 @@ import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { PurchaseOrderService } from "@ss/purchases/api-purchase-order";
 import { MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from '@angular/material/table';
 import { MatSort, MatSortHeader } from '@angular/material/sort';
-import { TranslateDirective } from '../../../../../common/ui-lang/src/lib/translate.directive';
+import { TranslateDirective } from '@ss/common/ui-lang';
 import { PaginationComponent } from '../../../../../common/ui-pagination/src/lib/pagination.component';
 import { NgIf, DatePipe } from '@angular/common';
 import { DocInfoComponent } from '../../../../../logistics/ui-doc-info/src/lib/doc-info/doc-info.component';

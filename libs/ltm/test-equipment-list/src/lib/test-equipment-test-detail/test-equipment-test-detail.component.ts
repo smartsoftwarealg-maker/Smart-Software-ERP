@@ -5,7 +5,7 @@ import { BaseChildEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { LtmEquipmentTestService } from '../services/ltm-equipment-test.service';
 import { MatTooltip } from '@angular/material/tooltip';
 import { FormBuilder, ReactiveFormsModule, UntypedFormGroup, Validators } from '@angular/forms';
-import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
+import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { MatCard, MatCardContent, MatCardHeader } from '@angular/material/card';
 import { MatFormField, MatLabel } from '@angular/material/form-field';
 import { MatMiniFabButton } from '@angular/material/button';
@@ -16,7 +16,7 @@ import { TranslatePipe } from '@ss/common/ui-lang';
 @Component({
     selector: 'ss-test-equipment-test-detail',
     standalone: true,
-    imports: [CommonModule, MatTooltip, CommonUiAutoCompleteModule, MatCard, MatCardContent, MatCardHeader, MatFormField, MatLabel, MatMiniFabButton, MaterialModule, ReactiveFormsModule, TranslatePipe],
+    imports: [CommonModule, MatTooltip, MatCard, MatCardContent, MatCardHeader, MatFormField, MatLabel, MatMiniFabButton, MaterialModule, ReactiveFormsModule, TranslatePipe, UiAutoCompleteComponent],
     templateUrl: './test-equipment-test-detail.component.html',
     styleUrl: './test-equipment-test-detail.component.scss'
 })

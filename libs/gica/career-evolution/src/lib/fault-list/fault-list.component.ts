@@ -27,8 +27,9 @@ import { FormControl } from '@angular/forms';
 import { EmployeeService, IEmployee, PersonAutocompleteClass } from '@ss/employee-services/employee-services';
 import { MatFormField } from '@angular/material/form-field';
 import { CommonUiLookupModule } from '@ss/common/ui-lookup';
-import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
+
 import { PaginationComponent } from '@ss/common/ui-pagination';
+import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 
 @Component({
     selector: 'ss-gica-fault-list',
@@ -36,7 +37,7 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
     imports: [CommonModule,
 
         MaterialModule,
-        CommonUiAutoCompleteModule,
+
         MatCell,
         MatCellDef,
         MatColumnDef,
@@ -51,7 +52,7 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
 
         MatHeaderCellDef,
         MatFormField,
-        CommonUiLookupModule, PaginationComponent],
+        CommonUiLookupModule, PaginationComponent, UiAutoCompleteComponent],
     templateUrl: './fault-list.component.html',
     styleUrl: './fault-list.component.css',
 })

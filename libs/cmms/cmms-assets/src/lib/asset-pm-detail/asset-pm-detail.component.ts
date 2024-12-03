@@ -5,8 +5,8 @@ import { PM } from '@ss/cmms/cmms-api';
 import { AssetPmService } from '../services/asset-pm.service';
 import { FormBuilder, ReactiveFormsModule, UntypedFormGroup, Validators } from '@angular/forms';
 import { MaterialModule } from '@ss/common/api-common';
-import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
-import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
+import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
+import { DatePickerComponent } from '@ss/common/ui-datepicker';
 
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -27,15 +27,17 @@ import { CMMSRoutingService } from '@ss/master-data/cmms-routing';
     standalone: true,
     imports: [
         CommonModule,
-        CommonUiAutoCompleteModule,
-        CommonUiDatepickerModule,
+
+        DatePickerComponent,
 
         MatCardModule,
         MatFormFieldModule,
         MatInputModule,
         ReactiveFormsModule,
         MatButtonModule,
-        MaterialModule],
+        MaterialModule,
+        UiAutoCompleteComponent
+    ],
     templateUrl: './asset-pm-detail.component.html',
     styleUrls: ['./asset-pm-detail.component.css'],
 })

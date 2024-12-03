@@ -1,5 +1,5 @@
 import { Component, inject, Input } from '@angular/core';
-import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from "@ss/common/ui-auto-complete";
+import {  DefaultAutoCompleteModel } from "@ss/common/ui-auto-complete";
 import {finalize, Subscription} from 'rxjs';
 import { ReactiveFormsModule, UntypedFormBuilder, Validators } from "@angular/forms";
 import {MatDialogRef} from '@angular/material/dialog';
@@ -8,16 +8,8 @@ import {LtmInjectionService} from '@ltm/ltm-api';
 import { LanguageService, MaterialModule } from "@ss/common/api-common";
 import { INJResult } from '@ltm/ltm-api';
 import { CommonModule } from "@angular/common";
-
-
-
-
-
-import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
-import { RouterOutlet } from "@angular/router";
-import { CommonUiHourPickerModule } from "@ss/common/ui-hour-picker";
+import { DatePickerComponent } from "@ss/common/ui-datepicker";
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
-import { PaginationComponent } from '@ss/common/ui-pagination';
 
 @Component({
     selector: 'ss-ltm-injection',
@@ -30,9 +22,7 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
         TranslateDirective,
         TranslatePipe,
         ReactiveFormsModule,
-        CommonUiAutoCompleteModule,
-        CommonUiDatepickerModule,
-        CommonUiHourPickerModule
+        DatePickerComponent
     ],
 })
 export class LtmInjectionComponent {

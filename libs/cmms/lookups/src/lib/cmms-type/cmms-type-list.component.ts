@@ -16,7 +16,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { ReactiveFormsModule } from '@angular/forms';
-import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
+
 import { PaginationComponent } from '@ss/common/ui-pagination';
 
 @Component({
@@ -35,7 +35,7 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
         MaterialModule,
         ReactiveFormsModule,
         RouterOutlet,
-        CommonUiAutoCompleteModule,
+
         PaginationComponent
     ]
 })

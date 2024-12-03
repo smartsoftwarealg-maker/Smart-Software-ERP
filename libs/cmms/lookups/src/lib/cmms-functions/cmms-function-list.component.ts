@@ -13,9 +13,10 @@ import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { ReactiveFormsModule } from '@angular/forms';
-import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
+
 import { CMMSFunctionService } from '../services/cmms.function.service';
 import { PaginationComponent } from '@ss/common/ui-pagination';
+import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 
 @Component({
     selector: 'ss-cmms-function-list',
@@ -32,7 +33,7 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
         MatInputModule,
         MaterialModule,
         ReactiveFormsModule,
-        CommonUiAutoCompleteModule
+        UiAutoCompleteComponent
     ],
 })
 export class CMMSFunctionListComponent extends BaseEntityListComponent<Lookup> {

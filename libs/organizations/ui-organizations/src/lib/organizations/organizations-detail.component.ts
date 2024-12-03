@@ -10,7 +10,7 @@ import { OrganizationsService } from '@ss/organizations/api-organizations';
 import { DivisionService, DepartmentService, ServiceService, OfficeService } from '@ss/common/api-lookup';
 import { tap, switchMap } from 'rxjs/operators';
 import { of } from 'rxjs';
-import { TranslateDirective } from '../../../../../common/ui-lang/src/lib/translate.directive';
+import { TranslateDirective } from '@ss/common/ui-lang';
 import { CdkScrollable } from '@angular/cdk/scrolling';
 import { NgIf, NgFor } from '@angular/common';
 import { MatFormField, MatLabel } from '@angular/material/form-field';

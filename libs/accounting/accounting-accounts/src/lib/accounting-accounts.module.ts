@@ -5,7 +5,7 @@ import {MaterialModule} from '@ss/common/api-common';
 
 
 import {ReactiveFormsModule} from '@angular/forms';
-import {CommonUiAutoCompleteModule} from '@ss/common/ui-auto-complete';
+import {UiAutoCompleteComponent} from '@ss/common/ui-auto-complete';
 
 import { AssetAccountsDetailComponent } from './asset-accounts-detail/asset-accounts-detail.component';
 import { TransacAccountsDetailComponent } from './transac-accounts-detail/transac-accounts-detail.component';
@@ -23,7 +23,7 @@ import { CashFlowAccountListComponent } from './cash-flow-account-list/cash-flow
 
 
         ReactiveFormsModule,
-        CommonUiAutoCompleteModule,
+
 
         AssetAccountsListComponent,
         AssetAccountsDetailComponent,

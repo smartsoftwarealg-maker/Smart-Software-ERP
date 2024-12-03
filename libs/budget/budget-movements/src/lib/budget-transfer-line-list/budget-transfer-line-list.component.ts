@@ -8,7 +8,7 @@ import {PaginationModel} from '@ss/common/api-common';
 import {BudgetTransferDetailService} from '../budget-transfer-detail.service';
 import { MatMiniFabButton } from '@angular/material/button';
 import { MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from '@angular/material/table';
-import { TranslateDirective } from '../../../../../common/ui-lang/src/lib/translate.directive';
+import { TranslateDirective } from '@ss/common/ui-lang';
 import { DecimalPipe } from '@angular/common';
 
 @Component({

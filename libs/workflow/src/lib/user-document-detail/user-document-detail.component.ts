@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {UserDocument} from '../workflow-api';
-import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel, UserLookup } from '@ss/common/ui-auto-complete';
+import {  DefaultAutoCompleteModel, UserLookup } from '@ss/common/ui-auto-complete';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
 import {UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
@@ -14,7 +14,7 @@ import { CommonModule } from '@angular/common';
 import { MaterialModule } from '@ss/common/api-common';
 
 
-import { RemunerationPaymonthEditorModule } from '@ss/remuneration/paymonth-editor';
+
 
 
 import { OrgChartModule } from 'angular13-organization-chart';
@@ -30,8 +30,8 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         MaterialModule,
         TranslateDirective,
         TranslatePipe,
-        CommonUiAutoCompleteModule,
-        RemunerationPaymonthEditorModule,
+
+
         OrgChartModule,
     ],
 })

@@ -8,7 +8,7 @@ import { MaterialModule } from '@ss/common/api-common';
 
 
 import { FormBuilder, Validators } from '@angular/forms';
-import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
+import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { ProductLineKeysService } from '@ss/costing/costing-projects';
 import { CostingItemService } from '@ss/costing/costing-items';
 import { CostingKeyService } from '@ss/costing/costing-keys';
@@ -23,7 +23,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         MaterialModule,
         TranslateDirective,
         TranslatePipe,
-        CommonUiAutoCompleteModule
+        UiAutoCompleteComponent
     ],
     templateUrl: './product-line-keys.component.html',
     styleUrl: './product-line-keys.component.css',

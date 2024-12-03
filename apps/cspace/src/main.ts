@@ -10,7 +10,7 @@ import { MAIN_PAGE_URL, INDEX_PAGE_URL, CanActivateService, LOGIN_URL } from '@s
 import { ShellComponent } from '@ss/common/ui-shell';
 import { MainPageComponent } from '@ss/common/ui-main-page';
 import { CSPACE_APP_URL } from './app/common';
-import { UiThemeModule } from '@ss/common/ui-theme';
+import { ThemeSelect } from '@ss/common/ui-theme';
 import { UiErrorHandlerModule } from '@ss/common/ui-error-handler';
 
 import { UiLoginModule } from '@ss/common/ui-login';

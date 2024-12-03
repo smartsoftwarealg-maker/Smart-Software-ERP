@@ -11,8 +11,8 @@ import { MaterialModule } from "@ss/common/api-common";
 
 
 
-import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
-import { CommonUiAutoCompleteModule } from "@ss/common/ui-auto-complete";
+import { DatePickerComponent } from "@ss/common/ui-datepicker";
+
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 
@@ -27,8 +27,8 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         TranslateDirective,
         TranslatePipe,
         ReactiveFormsModule,
-        CommonUiDatepickerModule,
-        CommonUiAutoCompleteModule,
+        DatePickerComponent,
+
         RouterModule,
     ],
 

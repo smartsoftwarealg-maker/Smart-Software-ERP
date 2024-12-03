@@ -10,10 +10,6 @@ import {WorkflowInboxService} from '../workflow-inbox.service';
 import { CommonModule } from '@angular/common';
 import { PaginationComponent } from '@ss/common/ui-pagination';
 
-import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
-import { RemunerationPaymonthEditorModule } from '@ss/remuneration/paymonth-editor';
-
-
 import { OrgChartModule } from 'angular13-organization-chart';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
@@ -25,8 +21,6 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     imports: [
         CommonModule,
         MaterialModule,
-        CommonUiAutoCompleteModule,
-        RemunerationPaymonthEditorModule,
         OrgChartModule,
         PaginationComponent,
         TranslatePipe,

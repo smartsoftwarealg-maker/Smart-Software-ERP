@@ -7,7 +7,7 @@ import {ReactiveFormsModule} from '@angular/forms';
 
 import {UserListComponent} from './user-list.component';
 import {UserDetailComponent} from './user-detail.component';
-import {CommonUiAutoCompleteModule} from '@ss/common/ui-auto-complete';
+import {UiAutoCompleteComponent} from '@ss/common/ui-auto-complete';
 import { MatCardModule } from '@angular/material/card';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
@@ -17,7 +17,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         MaterialModule,
         TranslateDirective,
         TranslatePipe,
-        CommonUiAutoCompleteModule,
+
         ReactiveFormsModule,
         MatCardModule,
         UserListComponent,

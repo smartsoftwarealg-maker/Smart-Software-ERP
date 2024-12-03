@@ -9,13 +9,11 @@ import {SSProject} from '@ss/scheduled-sales/api-scheduled-sales';
 import {ProjectService} from '../project.service';
 import { LoginService, MaterialModule } from '@ss/common/api-common';
 import {Agent, CustomerService} from '@ss/logistics/api-agent';
-import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
+import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import {WorkMasterService, SectorService} from '@ss/common/api-lookup';
 import { CommonModule } from '@angular/common';
-
-
-import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
-import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
+import { DatePickerComponent } from '@ss/common/ui-datepicker';
+import { TranslateDirective } from '@ss/common/ui-lang';
 
 @Component({
   selector: 'ss-project-detail',
@@ -26,10 +24,9 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         CommonModule,
         MaterialModule,
         TranslateDirective,
-        TranslatePipe,
         ReactiveFormsModule,
-        CommonUiDatepickerModule,
-        CommonUiAutoCompleteModule
+        DatePickerComponent,
+        UiAutoCompleteComponent
     ],
 })
 export class ProjectDetailComponent extends BaseEntityDetailComponent<SSProject> {

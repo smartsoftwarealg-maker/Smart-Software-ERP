@@ -9,8 +9,8 @@ import { UntypedFormBuilder, UntypedFormGroup, Validators, FormsModule, Reactive
 import { Lookup } from '@ss/common/api-lookup';
 import { AbsenceMotiveService } from '../absence-motive.service';
 import { MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from '@angular/material/table';
-import { TranslateDirective } from '../../../../common/ui-lang/src/lib/translate.directive';
-import { PaginationComponent } from '../../../../common/ui-pagination/src/lib/pagination.component';
+import { TranslateDirective } from '@ss/common/ui-lang';
+import { PaginationComponent } from '@ss/common/ui-pagination';
 import { NgIf } from '@angular/common';
 import { MatFormField, MatLabel } from '@angular/material/form-field';
 import { MatInput } from '@angular/material/input';

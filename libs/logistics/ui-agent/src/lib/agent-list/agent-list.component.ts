@@ -10,12 +10,7 @@ import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import { IsParamService, MaterialModule, PaginatorPersistenceService } from '@ss/common/api-common';
 import { CommonModule } from '@angular/common';
-
-
 import { ReactiveFormsModule } from '@angular/forms';
-
-import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
-import { CustomAttributesModule } from '@ss/custom-attributes';
 import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
 import { PaginationComponent } from '@ss/common/ui-pagination';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
@@ -31,11 +26,10 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         CommonModule,
         MaterialModule,
         TranslateDirective,
-        TranslatePipe,
         ReactiveFormsModule,
         TranslateDirective,
-        CommonUiAutoCompleteModule,
-        CustomAttributesModule,
+
+
         DocInfoComponent,
         PaginationComponent
     ]

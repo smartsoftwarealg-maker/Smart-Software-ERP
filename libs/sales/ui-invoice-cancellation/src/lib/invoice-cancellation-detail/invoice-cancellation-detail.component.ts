@@ -9,9 +9,9 @@ import {MatDialog} from '@angular/material/dialog';
 import {InvoiceCancellationService} from '@ss/sales/api-invoice-cancellation';
 import { BaseTransactionDetailComponent, TransactionLinesService } from '@ss/logistics/api-transaction';
 import { CommonModule } from '@angular/common';
-import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
-import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
-import { LogisticsUiDocImportModule } from '@ss/logistics/ui-doc-import';
+import { DatePickerComponent } from '@ss/common/ui-datepicker';
+
+
 import { TranslateDirective } from '@ss/common/ui-lang';
 
 @Component({
@@ -25,10 +25,10 @@ import { TranslateDirective } from '@ss/common/ui-lang';
         TranslateDirective,
         ReactiveFormsModule,
         RouterModule,
-        CommonUiDatepickerModule,
-        CommonUiAutoCompleteModule,
+        DatePickerComponent,
 
-        LogisticsUiDocImportModule
+
+
     ],
 })
 export class InvoiceCancellationDetailComponent extends BaseTransactionDetailComponent implements OnInit {

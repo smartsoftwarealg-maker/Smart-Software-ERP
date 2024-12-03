@@ -1,7 +1,7 @@
 import {Component, ChangeDetectorRef} from '@angular/core';
-import { CustomErrorHandlerService } from './custom-error-handler.service';
+import { CustomErrorHandlerService } from '@ss/common/ui-error-handler';
 import { NgIf } from '@angular/common';
-import { TranslateDirective } from '../../../ui-lang/src/lib/translate.directive';
+import { TranslateDirective } from '@ss/common/ui-lang';
 import { MatMiniFabButton } from '@angular/material/button';
 
 @Component({

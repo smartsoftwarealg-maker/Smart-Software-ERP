@@ -1,10 +1,11 @@
+
 import { Component, inject } from '@angular/core';
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { UserMessage } from '../workflow-api';
 import { LoginService, MaterialModule, PaginatorPersistenceService } from '@ss/common/api-common';
 import { UserListService } from '@ss/common/api-users';
 import { FormControl } from '@angular/forms';
-import { CommonUiAutoCompleteModule, UserLookup } from '@ss/common/ui-auto-complete';
+import { UiAutoCompleteComponent, UserLookup } from '@ss/common/ui-auto-complete';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DefaultReportService } from '@ss/common/ui-default-report-component';
@@ -12,10 +13,8 @@ import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { UserReceivedMessageService } from '../user-received-message.service';
 import { CommonModule } from '@angular/common';
 import { PaginationComponent } from '@ss/common/ui-pagination';
-import { RemunerationPaymonthEditorModule } from '@ss/remuneration/paymonth-editor';
-
-
 import { OrgChartModule } from 'angular13-organization-chart';
+import { TranslateDirective } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-user-received-message-list',
@@ -25,10 +24,10 @@ import { OrgChartModule } from 'angular13-organization-chart';
     imports: [
         CommonModule,
         MaterialModule,
-        CommonUiAutoCompleteModule,
-        RemunerationPaymonthEditorModule,
+        TranslateDirective,
         PaginationComponent,
         OrgChartModule,
+        UiAutoCompleteComponent
     ],
 })
 export class UserReceivedMessageListComponent  extends BaseEntityListComponent<UserMessage> {

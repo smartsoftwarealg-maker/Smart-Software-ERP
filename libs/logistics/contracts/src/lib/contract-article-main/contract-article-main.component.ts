@@ -7,8 +7,8 @@ import { MaterialModule } from "@ss/common/api-common";
 import { ReactiveFormsModule } from "@angular/forms";
 
 
-import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
-import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
+import { DatePickerComponent } from "@ss/common/ui-datepicker";
+
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
@@ -20,8 +20,8 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         CommonModule,
         MaterialModule,
         ReactiveFormsModule,
-        CommonUiDatepickerModule,
-        CommonUiAutoCompleteModule,
+        DatePickerComponent,
+
         RouterModule,
     ],
 })

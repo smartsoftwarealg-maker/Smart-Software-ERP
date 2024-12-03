@@ -9,7 +9,7 @@ import { MatTree, MatTreeNestedDataSource } from '@angular/material/tree';
 import { MatButtonModule } from '@angular/material/button';
 
 import { LanguageService, MaterialModule } from '@ss/common/api-common';
-import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
+import { DatePickerComponent } from '@ss/common/ui-datepicker';
 
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { BomDialogComponent } from '../bom-dialog/bom-dialog.component';
@@ -19,7 +19,7 @@ import { map, of, switchMap } from 'rxjs';
 @Component({
     selector: 'ss-bom',
     standalone: true,
-    imports: [CommonModule,  MatButtonModule, MaterialModule, CommonUiDatepickerModule],
+    imports: [CommonModule,  MatButtonModule, MaterialModule, DatePickerComponent],
     templateUrl: './bom.component.html',
     styleUrl: './bom.component.css',
 })

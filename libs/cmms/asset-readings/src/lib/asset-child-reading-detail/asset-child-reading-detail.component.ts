@@ -4,7 +4,7 @@ import {
 } from '@ss/common/ui-base-entity';
 import { FormBuilder, ReactiveFormsModule, UntypedFormGroup, Validators } from '@angular/forms';
 import { CMMSAssetReadingService } from '../cmms-asset-reading.service';
-import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
+import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { CMMSMeterService } from '@ss/cmms/lookups';
 import { AssetReading } from '@ss/cmms/cmms-api';
 import { CommonModule } from '@angular/common';
@@ -15,7 +15,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
+import { DatePickerComponent } from '@ss/common/ui-datepicker';
 import { MatButtonModule } from '@angular/material/button';
 import { of, switchMap, tap } from 'rxjs';
 
@@ -34,9 +34,10 @@ import { of, switchMap, tap } from 'rxjs';
         MatFormFieldModule,
         MatInputModule,
         ReactiveFormsModule,
-        CommonUiDatepickerModule,
-        CommonUiAutoCompleteModule,
-        MatButtonModule
+        DatePickerComponent,
+
+        MatButtonModule,
+        UiAutoCompleteComponent
     ]
 })
 export class AssetChildReadingDetailComponent extends BaseChildEntityDetailComponent<AssetReading> implements OnInit {

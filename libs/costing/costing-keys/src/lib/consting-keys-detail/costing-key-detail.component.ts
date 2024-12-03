@@ -11,8 +11,8 @@ import { MaterialModule } from '@ss/common/api-common';
 
 
 
-import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
-import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
+
+import { DatePickerComponent } from '@ss/common/ui-datepicker';
 import {  ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
@@ -32,8 +32,8 @@ import { TranslateDirective } from '@ss/common/ui-lang';
         MaterialModule,
         TranslateDirective,
         ReactiveFormsModule,
-        CommonUiAutoCompleteModule,
-        CommonUiDatepickerModule,
+
+        DatePickerComponent,
 
     ],
     animations: [slideToRight]

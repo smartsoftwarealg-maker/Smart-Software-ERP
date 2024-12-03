@@ -28,7 +28,7 @@ import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { LtmTestService } from '@ltm/ltm-api';
 import { dateToYmdStr, LoginService, MaterialModule } from '@ss/common/api-common';
 import { CommonModule } from '@angular/common';
-import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
+import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { LTMSiloService } from '@ltm/ltm-api';
 import { LtmSupplierService } from '@ltm/ltm-api';
 import { LtmPickupPointService } from '@ltm/ltm-api';
@@ -62,10 +62,10 @@ type VarianceControl = {
         TranslateDirective,
         TranslatePipe,
         ReactiveFormsModule,
-        CommonUiAutoCompleteModule,
         DatePickerComponent,
         RouterOutlet,
-        TranslatePipe
+        TranslatePipe,
+        UiAutoCompleteComponent
     ]
 })
 export class LtmBatchInputComponent implements OnInit, OnDestroy {
@@ -270,6 +270,7 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
         try {
             eval(program);
         } catch (e: any) { /* empty */
+            console.log(e);
         }
         this.totals.controls.forEach((c, i) => {
             c.setValue({ value: +((result[i] || 0).toFixed(2)) });

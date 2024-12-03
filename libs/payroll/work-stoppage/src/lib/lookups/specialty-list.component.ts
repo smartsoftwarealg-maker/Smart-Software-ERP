@@ -9,7 +9,7 @@ import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { CommonModule } from '@angular/common';
 
 import { ReactiveFormsModule } from '@angular/forms';
-import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
+
 import { PhysicianSpecialtyService } from '../services/physician-specialty.service';
 import { PaginationComponent } from '@ss/common/ui-pagination';
 
@@ -22,7 +22,7 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
         CommonModule,
         MaterialModule,
         ReactiveFormsModule,
-        CommonUiAutoCompleteModule,
+
         PaginationComponent
     ],
 })

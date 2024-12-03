@@ -9,7 +9,7 @@ import {  ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { LookupsService } from '@ss/common/api-lookup';
 import { LoginService, MaterialModule } from '@ss/common/api-common';
 import { ConsumerService, SupplierService } from '@ss/logistics/api-agent';
-import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
+import {  DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
 import { MatDialog } from '@angular/material/dialog';
 import { WorkflowDialogComponent } from '@ss/workflow';
 import { AppArchiveMainComponent, ASSET_RECEPTIONS_ARCHIVES } from '@ss/common/app-archive';
@@ -18,8 +18,8 @@ import { CommonModule } from '@angular/common';
 
 
 
-import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
-import { CustomAttributesModule } from '@ss/custom-attributes';
+import { DatePickerComponent } from '@ss/common/ui-datepicker';
+
 import { QRCodeModule } from 'angularx-qrcode';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
@@ -33,10 +33,10 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         MaterialModule,
         TranslateDirective,
         TranslatePipe,
-        CommonUiAutoCompleteModule,
-        CommonUiDatepickerModule,
+
+        DatePickerComponent,
         RouterModule,
-        CustomAttributesModule,
+
         QRCodeModule,
         AppArchiveMainComponent
     ]

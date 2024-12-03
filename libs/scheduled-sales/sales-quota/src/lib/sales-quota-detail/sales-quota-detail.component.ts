@@ -6,13 +6,13 @@ import {ActivatedRoute} from '@angular/router';
 import { ReactiveFormsModule, UntypedFormBuilder, Validators } from "@angular/forms";
 import {  ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
 import {DiscountService, LookupsService} from '@ss/common/api-lookup';
-import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from "@ss/common/ui-auto-complete";
+import {  DefaultAutoCompleteModel } from "@ss/common/ui-auto-complete";
 import {Agent, CustomerService} from '@ss/logistics/api-agent';
 import { LoginService, MaterialModule } from "@ss/common/api-common";
 import { CommonModule } from "@angular/common";
 
 
-import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
+import { DatePickerComponent } from "@ss/common/ui-datepicker";
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
@@ -26,8 +26,8 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         TranslateDirective,
         TranslatePipe,
         ReactiveFormsModule,
-        CommonUiDatepickerModule,
-        CommonUiAutoCompleteModule,
+        DatePickerComponent,
+
     ],
 })
 export class SalesQuotaDetailComponent extends BaseEntityDetailComponent<Quota> {

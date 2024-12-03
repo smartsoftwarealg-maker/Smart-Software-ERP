@@ -25,8 +25,8 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { CommonUiAutoCompleteModule } from "@ss/common/ui-auto-complete";
-import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
+
+import { DatePickerComponent } from "@ss/common/ui-datepicker";
 
 
 @Component({
@@ -44,8 +44,8 @@ import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
         MatFormFieldModule,
         MatInputModule,
         MaterialModule,
-        CommonUiAutoCompleteModule,
-        CommonUiDatepickerModule,
+
+        DatePickerComponent,
         RouterOutlet
     ],
     templateUrl: './service-invoice-detail.component.html',

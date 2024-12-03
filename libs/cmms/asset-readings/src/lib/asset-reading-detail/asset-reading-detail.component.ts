@@ -5,7 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { CMMSAssetReadingService } from '../cmms-asset-reading.service';
-import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
+import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { CMMSMeterService } from '@ss/cmms/lookups';
 import { AssetReading } from '@ss/cmms/cmms-api';
 import { CommonModule } from '@angular/common';
@@ -16,7 +16,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
+import { DatePickerComponent } from '@ss/common/ui-datepicker';
 
 @Component({
     selector: 'ss-asset-reading-detail',
@@ -33,8 +33,8 @@ import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
         MatFormFieldModule,
         MatInputModule,
         ReactiveFormsModule,
-        CommonUiDatepickerModule,
-        CommonUiAutoCompleteModule
+        DatePickerComponent,
+        UiAutoCompleteComponent
     ],
 })
 export class AssetReadingDetailComponent extends BaseEntityDetailComponent<AssetReading> {

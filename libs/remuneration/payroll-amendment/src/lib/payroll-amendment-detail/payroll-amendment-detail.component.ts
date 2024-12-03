@@ -13,9 +13,6 @@ import { PayrollUtil } from '@ss/payroll-common';
 import { EmployeeService, PersonAutocompleteClass } from '@ss/employee-services/employee-services';
 import { CommonModule } from '@angular/common';
 
-
-import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
-import { RemunerationPaymonthEditorModule } from '@ss/remuneration/paymonth-editor';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
@@ -27,9 +24,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         CommonModule,
         MaterialModule,
         TranslateDirective,
-        TranslatePipe,
-        CommonUiAutoCompleteModule,
-        RemunerationPaymonthEditorModule
+
     ]
 
 })

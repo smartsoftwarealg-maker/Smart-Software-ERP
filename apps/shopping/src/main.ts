@@ -8,7 +8,7 @@ import { BrowserModule, bootstrapApplication } from '@angular/platform-browser';
 import { withEnabledBlockingInitialNavigation, provideRouter, Routes, RouterModule } from '@angular/router';
 import { MainPageComponent, ShoppingCartComponent, ShoppingGuard, SalesAcknowledgementComponent, SalesConfirmationComponent } from '@ss/sales/ecommerce';
 import { withInterceptorsFromDi, provideHttpClient } from '@angular/common/http';
-import { UiThemeModule } from '@ss/common/ui-theme';
+import { ThemeSelect } from '@ss/common/ui-theme';
 import { UiErrorHandlerModule } from '@ss/common/ui-error-handler';
 import { provideAnimations } from '@angular/platform-browser/animations';
 

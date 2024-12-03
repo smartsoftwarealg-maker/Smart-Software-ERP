@@ -8,13 +8,13 @@ import {UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {LookupsService} from '@ss/common/api-lookup';
 import {UserMessageService} from '../user-message.service';
-import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel, UserLookup } from '@ss/common/ui-auto-complete';
+import {  DefaultAutoCompleteModel, UserLookup } from '@ss/common/ui-auto-complete';
 import {UserListService} from '@ss/common/api-users';
 import { CommonModule } from '@angular/common';
 import { MaterialModule } from '@ss/common/api-common';
 
 
-import { RemunerationPaymonthEditorModule } from '@ss/remuneration/paymonth-editor';
+
 
 
 import { OrgChartModule } from 'angular13-organization-chart';
@@ -30,8 +30,8 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         MaterialModule,
         TranslateDirective,
         TranslatePipe,
-        CommonUiAutoCompleteModule,
-        RemunerationPaymonthEditorModule,
+
+
         OrgChartModule,
     ],
 })

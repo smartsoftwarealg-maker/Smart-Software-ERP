@@ -8,7 +8,7 @@ import { MatTree, MatTreeNestedDataSource } from '@angular/material/tree';
 import { MatButtonModule } from '@angular/material/button';
 
 import { LanguageService, MaterialModule } from '@ss/common/api-common';
-import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
+import { DatePickerComponent } from '@ss/common/ui-datepicker';
 
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { BomDialogComponent } from '../bom-dialog/bom-dialog.component';
@@ -24,7 +24,7 @@ import { TranslatePipe } from '@ss/common/ui-lang';
 
         MatButtonModule,
         MaterialModule,
-        CommonUiDatepickerModule,
+        DatePickerComponent,
         TranslatePipe
     ],
     templateUrl: './child-bom.component.html',

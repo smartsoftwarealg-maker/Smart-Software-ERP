@@ -21,11 +21,9 @@ import { CommonModule } from '@angular/common';
 
 
 import { ReactiveFormsModule } from '@angular/forms';
-import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
-import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
+
 import { SalesUiDeliveryLinesModule } from '@ss/sales/ui-delivery-lines';
-import { LogisticsUiDocImportModule } from '@ss/logistics/ui-doc-import';
-import { UiStockInfoComponent } from '@ss/logistics/ui-stock-info';
+
 import { PaginationComponent } from '@ss/common/ui-pagination';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
@@ -41,12 +39,8 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         TranslatePipe,
         ReactiveFormsModule,
         RouterModule,
-        CommonUiDatepickerModule,
-        CommonUiAutoCompleteModule,
-        SalesUiDeliveryLinesModule,
-        LogisticsUiDocImportModule,
 
-        UiStockInfoComponent,
+        SalesUiDeliveryLinesModule,
         PaginationComponent
     ]
 })

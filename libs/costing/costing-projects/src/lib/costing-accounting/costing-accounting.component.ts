@@ -9,9 +9,9 @@ import { CACCReport } from '@ss/costing/costing-utils';
 import { catchError, tap } from 'rxjs';
 import { CostingAccountingService } from '../services/costing-accounting.service';
 import { CostingProjectService } from '../services/costing-project.service';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CommonUiLookupModule } from '@ss/common/ui-lookup';
-import { DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
+import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { ShellService } from '@ss/common/ui-shell';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
@@ -24,7 +24,9 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         MaterialModule,
         TranslateDirective,
         TranslatePipe,
-        CommonUiLookupModule
+        CommonUiLookupModule,
+        UiAutoCompleteComponent,
+        ReactiveFormsModule
     ],
     templateUrl: './costing-accounting.component.html',
     styleUrl: './costing-accounting.component.css',

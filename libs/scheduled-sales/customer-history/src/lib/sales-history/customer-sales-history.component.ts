@@ -6,13 +6,12 @@ import { LoginService, MaterialModule, PaginatorPersistenceService } from '@ss/c
 import { CommonModule } from "@angular/common";
 
 
-import { FormBuilder, FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
-import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
-import { CommonUiAutoCompleteModule } from "@ss/common/ui-auto-complete";
+import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { DatePickerComponent } from "@ss/common/ui-datepicker";
 
-import { LogisticsUiDocImportModule } from "@ss/logistics/ui-doc-import";
+
 import { UiStockInfoComponent } from "@ss/logistics/ui-stock-info";
-import { CommonUiColorSelectModule } from "@ss/common/ui-color-select";
+import { ColorSelectComponent } from "@ss/common/ui-color-select";
 import { ColorPickerModule } from "ngx-color-picker";
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { SalesRecord } from '@ss/scheduled-sales/api-scheduled-sales';
@@ -33,11 +32,10 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         TranslatePipe,
         ReactiveFormsModule,
         RouterModule,
-        CommonUiDatepickerModule,
-        CommonUiAutoCompleteModule,
-        LogisticsUiDocImportModule,
+        DatePickerComponent,
+
         UiStockInfoComponent,
-        CommonUiColorSelectModule,
+        ColorSelectComponent,
         ColorPickerModule
     ]
 })

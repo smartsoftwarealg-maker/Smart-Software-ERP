@@ -1,4 +1,5 @@
 export const VACATION_PLANNING_URL = '/vacations';
+export const PAID_LEAVE_URL = '/payroll/leave';
 
 export class VacationPlanning {
     id: number;
@@ -20,4 +21,36 @@ export class VacationPlanningDetail {
     reference?: number;
     planning_id: number;
     description?: string;
+}
+
+export interface VFormula {
+    id: number;
+    variable: string;
+    description: string;
+}
+
+export interface VTake {
+    employee: number;
+    days: number;
+}
+
+export interface VHistory {
+    employee: number;
+    name: string;
+    post?: string;
+    year: number;
+    earned: number;
+    earned2: number;
+    taken: number;
+    taken2: number;
+    rest: number;
+    days: number;
+    toTake: number;
+}
+
+export interface VUpdate {
+    year: number;
+    ssFormula: string;
+    irgFormula: string;
+    list: VTake[];
 }

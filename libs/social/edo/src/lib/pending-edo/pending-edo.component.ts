@@ -16,7 +16,7 @@ import { MatMiniFabButton } from '@angular/material/button';
 import { PendingEdoService } from '@social/social-api';
 import { switchMap } from 'rxjs';
 import { MaterialModule } from '@ss/common/api-common';
-import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
+import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { FormControl } from '@angular/forms';
 import { MatFormField, MatLabel } from '@angular/material/form-field';
 import { PaginationComponent } from '@ss/common/ui-pagination';
@@ -38,9 +38,8 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
         MatTable, MatHeaderCellDef,
         MatMiniFabButton,
         MatFormField,
-        CommonUiAutoCompleteModule,
         MatLabel,
-        MaterialModule],
+        MaterialModule, UiAutoCompleteComponent],
     templateUrl: './pending-edo.component.html',
     styleUrl: './pending-edo.component.scss',
 })

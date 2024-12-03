@@ -1,7 +1,7 @@
 import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BaseTransactionLinesDetailComponent, DOC_SALES_ORDER, OfferLinesService } from '@ss/logistics/api-transaction';
-import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
+import {  DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
 
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -15,7 +15,7 @@ import { Service, ServiceArticleService } from '@ss/service-sales/service-articl
 @Component({
     selector: 'ss-service-order-line-detail',
     standalone: true,
-    imports: [CommonModule, CommonUiAutoCompleteModule,  MatButtonModule, MatCardModule, MatFormFieldModule, MatInputModule, MaterialModule, ReactiveFormsModule, TextFieldModule],
+    imports: [CommonModule,   MatButtonModule, MatCardModule, MatFormFieldModule, MatInputModule, MaterialModule, ReactiveFormsModule, TextFieldModule],
     templateUrl: './service-order-line-detail.component.html',
     styleUrls: ['./service-order-line-detail.component.css']
 })

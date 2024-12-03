@@ -7,9 +7,7 @@ import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import { MaterialModule, PaginatorPersistenceService } from "@ss/common/api-common";
 import { CommonModule } from "@angular/common";
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
-import { CommonUiAutoCompleteModule } from "@ss/common/ui-auto-complete";
-import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
-import { CommonUiHourPickerModule } from "@ss/common/ui-hour-picker";
+import { DatePickerComponent } from "@ss/common/ui-datepicker";
 import { LTMAbnormalTest } from '@ltm/ltm-api';
 import { LtmAbnormalTestService } from '@ltm/ltm-api';
 import { filter, Subscription } from 'rxjs';
@@ -28,32 +26,19 @@ import { TranslateDirective } from '@ss/common/ui-lang';
         MaterialModule,
         PaginationComponent,
         ReactiveFormsModule,
-        CommonUiAutoCompleteModule,
-        CommonUiDatepickerModule,
-        TranslateDirective,
-        CommonUiHourPickerModule
+        DatePickerComponent,
+        TranslateDirective
     ],
 })
 export class LtmAlertsComponent extends BaseEntityListComponent<LTMAbnormalTest> {
     #destroyRef = inject(DestroyRef);
-
-    private abnormalTestSrv = inject(LtmAbnormalTestService);
-    private subscription: Subscription|null = null;
-
-    private badgeBtn: ToolbarButton = {
-        icon: 'fa-solid fa-sensor-triangle-exclamation',
-        label: 'LTM_ALERTS',
-        disabled: false,
-        visible: true,
-        keepOnToolbar: KeepOnToolbar.ALWAYS,
-        click: () => this.showAlerts()
-    };
 
     displayedColumns = ['matter', 'test',  'time', 'value', 'min', 'max', 'pickupPoint'];
     formBuilder = inject(FormBuilder);
     form = this.formBuilder.group({
         from: [new Date(new Date().getTime() - 24 * 3600 * 1000 * 30 )],
         to:   [new Date()],
+        open: [false]
     })
 
     constructor(
@@ -75,7 +60,7 @@ export class LtmAlertsComponent extends BaseEntityListComponent<LTMAbnormalTest>
         this.shellSrv.setLoading(this.canShowProcessingStatus());
         this.select(0);
         this.entitySrv
-            .refresh(formValue.from, formValue.to, this.pagination.page - 1, this.pagination.pageSize, this.shellSrv.getSearchText())
+            .refresh(formValue.from, formValue.to, formValue.open, this.pagination.page - 1, this.pagination.pageSize, this.shellSrv.getSearchText())
             .subscribe({
                     next: data => {
                         this.shellSrv.setLoading(false); // stop the animation
@@ -103,11 +88,11 @@ export class LtmAlertsComponent extends BaseEntityListComponent<LTMAbnormalTest>
     //             });
     // }
 
-    private showAlerts() {
-        this.shellSrv.removeButton('LTM_ALERTS');
-        this.subscription?.unsubscribe();
-        this.router.navigate(['/app/ltm/ltm-alerts']).then();
-    }
+    // private showAlerts() {
+    //     this.shellSrv.removeButton('LTM_ALERTS');
+    //     this.subscription?.unsubscribe();
+    //     this.router.navigate(['/app/ltm/ltm-alerts']).then();
+    // }
 
     override ngOnInit() {
         this.addButton.visible = false;
@@ -115,30 +100,28 @@ export class LtmAlertsComponent extends BaseEntityListComponent<LTMAbnormalTest>
         this.deleteButton.visible = false;
         super.ngOnInit();
 
+        this.form.controls.from.setValue(this.entitySrv.from);
+        this.form.controls.to.setValue(this.entitySrv.to);
+
         this.form
-            .controls
-            .from
             .valueChanges
             .pipe(
                 takeUntilDestroyed(this.#destroyRef),
-                filter(() => this.form.controls.from.value !== null),
+                filter(() => this.form.controls.from.value !== null && this.form.controls.to.value !== null),
                 debounceTime(300),
                 distinctUntilChanged()
             ).subscribe(() => this.refresh());
 
-        this.form
-            .controls
-            .to
-            .valueChanges
-            .pipe(
-                takeUntilDestroyed(this.#destroyRef),
-                filter(() => this.form.controls.to.value !== null),
-                debounceTime(300),
-                distinctUntilChanged()
-            ).subscribe(() => this.refresh());
+
     }
 
     override showDetail(id: number) {
         this.router.navigate([id], {relativeTo: this.route}).then()
+    }
+
+    override ngOnDestroy() {
+        const formValue = this.form.value;
+        this.entitySrv.from = formValue.from;
+        this.entitySrv.to = formValue.to;
     }
 }

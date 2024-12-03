@@ -3,9 +3,9 @@ import { CommonModule } from '@angular/common';
 import { BaseChildEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { FormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { VehicleService } from '../services/vehicle.service';
-import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
+import {  DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
 import { MaterialModule } from '@ss/common/api-common';
-import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
+import { DatePickerComponent } from '@ss/common/ui-datepicker';
 import { RouterModule } from '@angular/router';
 import { PersonAutocompleteClass } from '@ss/employee-services/employee-services';
 import { VehicleDriver } from '../vehicle-api';
@@ -20,10 +20,10 @@ import { TranslateDirective } from '@ss/common/ui-lang';
         CommonModule,
         MaterialModule,
         TranslateDirective,
-        CommonUiDatepickerModule,
+        DatePickerComponent,
         RouterModule,
-        CommonUiAutoCompleteModule,
-        CommonUiDatepickerModule
+
+        DatePickerComponent
     ],
     templateUrl: './vehicles-driver-detail.component.html',
     styleUrls: ['./vehicles-driver-detail.component.css']

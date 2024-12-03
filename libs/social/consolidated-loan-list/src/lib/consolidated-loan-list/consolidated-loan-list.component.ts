@@ -6,8 +6,8 @@ import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { DefaultReportService } from '@ss/common/ui-default-report-component';
 import { MaterialModule, PaginatorPersistenceService } from '@ss/common/api-common';
 import { CommonModule } from '@angular/common';
-import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
-import { RemunerationPaymonthEditorModule } from '@ss/remuneration/paymonth-editor';
+
+
 import { Consumption, Loan } from '@ss/remuneration/loans';
 import { LoansConsumptionService } from '@ss/remuneration/loans';
 import { ConsolidatedLoansService } from '../consolidated-loans.service';
@@ -21,8 +21,8 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
     imports: [
         CommonModule,
         MaterialModule,
-        CommonUiAutoCompleteModule,
-        RemunerationPaymonthEditorModule,
+
+
         PaginationComponent
     ]
 })

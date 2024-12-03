@@ -12,8 +12,8 @@ import { CommonModule } from '@angular/common';
 
 
 import { ReactiveFormsModule } from '@angular/forms';
-import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
-import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
+import { DatePickerComponent } from '@ss/common/ui-datepicker';
+
 import { PaginationComponent } from '@ss/common/ui-pagination';
 
 @Component({
@@ -26,8 +26,8 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
         MaterialModule,
         ReactiveFormsModule,
         RouterModule,
-        CommonUiDatepickerModule,
-        CommonUiAutoCompleteModule,
+        DatePickerComponent,
+
         PaginationComponent
     ]
 })

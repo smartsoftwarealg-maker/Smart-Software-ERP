@@ -6,8 +6,8 @@ import {MaterialModule} from "@ss/common/api-common";
 
 import {ReactiveFormsModule} from "@angular/forms";
 
-import {CommonUiDatepickerModule} from "@ss/common/ui-datepicker";
-import {CommonUiAutoCompleteModule} from "@ss/common/ui-auto-complete";
+import {DatePickerComponent} from "@ss/common/ui-datepicker";
+import {UiAutoCompleteComponent} from "@ss/common/ui-auto-complete";
 
 @NgModule({
     imports: [
@@ -17,8 +17,8 @@ import {CommonUiAutoCompleteModule} from "@ss/common/ui-auto-complete";
 
         ReactiveFormsModule,
 
-        CommonUiDatepickerModule,
-        CommonUiAutoCompleteModule,
+        DatePickerComponent,
+
         AccessRightsListComponent,
     ],
 })

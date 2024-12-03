@@ -9,12 +9,10 @@ import { ServiceService } from '@ss/common/api-lookup';
 import { LanguageService, LoginService, MaterialModule } from '@ss/common/api-common';
 import { AgentLookupModel, AgentService } from '@ss/logistics/api-agent';
 import { ShellService } from '@ss/common/ui-shell';
-import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
+import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { Tag } from '../tags/tag';
 import { MatSelectionList } from '@angular/material/list';
 import { CommonModule } from '@angular/common';
-import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
-import { UiStockInfoComponent } from '@ss/logistics/ui-stock-info';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
@@ -28,8 +26,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         TranslateDirective,
         ReactiveFormsModule,
         RouterModule,
-        CommonUiDatepickerModule,
-        CommonUiAutoCompleteModule
+        UiAutoCompleteComponent
     ]
 })
 export class ArchiveDetailComponent implements OnInit {

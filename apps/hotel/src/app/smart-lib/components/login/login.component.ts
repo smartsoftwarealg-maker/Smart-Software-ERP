@@ -7,7 +7,7 @@ import { LoadingSpinnerComponent } from '../loading-spinner/loading-spinner.comp
 import { VCenterDirective } from '../../common/v-center.directive';
 import { FormsModule } from '@angular/forms';
 import { MatFormField, MatPrefix, MatError, MatHint } from '@angular/material/form-field';
-import { TranslateDirective } from '../../../../../../../libs/common/ui-lang/src/lib/translate.directive';
+import { TranslateDirective } from '@ss/common/ui-lang';
 import { MatInput } from '@angular/material/input';
 import { MatButton } from '@angular/material/button';
 import { ThemeSelectComponent } from '../theme/theme-select.component';

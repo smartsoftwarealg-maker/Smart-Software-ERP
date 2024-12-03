@@ -10,14 +10,9 @@ import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import {  ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { LoginService, MaterialModule, PaginatorPersistenceService } from '@ss/common/api-common';
-import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
+import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { CommonModule } from '@angular/common';
-
-
-
-import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
-import { CustomAttributesModule } from '@ss/custom-attributes';
-
+import { DatePickerComponent } from '@ss/common/ui-datepicker';
 import { QRCodeModule } from 'angularx-qrcode';
 import { DefaultReportService } from '@ss/common/ui-default-report-component';
 import { Office, OfficeService } from '@ss/common/api-lookup';
@@ -43,12 +38,11 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         MaterialModule,
         TranslateDirective,
         TranslatePipe,
-        CommonUiAutoCompleteModule,
-        CommonUiDatepickerModule,
+        DatePickerComponent,
         RouterModule,
-        CustomAttributesModule,
         QRCodeModule,
-        PaginationComponent
+        PaginationComponent,
+        UiAutoCompleteComponent
     ]
 })
 export class AssetQRInventoryListComponent extends BaseEntityListComponent<InventoryAsset> implements OnInit {

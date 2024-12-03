@@ -2,7 +2,7 @@ import { Component, inject, OnInit } from "@angular/core";
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {Article, Quota, Schedule, ScheduleService} from '@ss/scheduled-sales/api-scheduled-sales';
 import { CommonModule, DatePipe } from "@angular/common";
-import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from "@ss/common/ui-auto-complete";
+import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import {Agent, CustomerService} from '@ss/logistics/api-agent';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
@@ -15,7 +15,7 @@ import {switchMap, tap} from 'rxjs';
 import {MatSelectChange} from '@angular/material/select';
 
 
-import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
+import { DatePickerComponent } from "@ss/common/ui-datepicker";
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
@@ -29,9 +29,9 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         TranslateDirective,
         TranslatePipe,
         ReactiveFormsModule,
-        CommonUiDatepickerModule,
-        CommonUiAutoCompleteModule,
-        TranslatePipe
+        DatePickerComponent,
+        TranslatePipe,
+        UiAutoCompleteComponent
     ]
 })
 export class PartnerScheduleDetailComponent extends BaseEntityDetailComponent<Schedule> {

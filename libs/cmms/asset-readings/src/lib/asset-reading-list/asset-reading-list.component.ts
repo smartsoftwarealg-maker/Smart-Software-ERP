@@ -6,7 +6,7 @@ import { DefaultReportService } from '@ss/common/ui-default-report-component';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { PaginatorPersistenceService } from '@ss/common/api-common';
 import { CMMSAssetReadingService } from '../cmms-asset-reading.service';
-import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from "@ss/common/ui-auto-complete";
+import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { AssetsService } from '@ss/assets-component';
 import { FormControl, ReactiveFormsModule } from "@angular/forms";
 import { AssetReading } from '@ss/cmms/cmms-api';
@@ -31,8 +31,8 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
         MatFormFieldModule,
         MatInputModule,
         ReactiveFormsModule,
-        CommonUiAutoCompleteModule,
-        PaginationComponent
+        PaginationComponent,
+        UiAutoCompleteComponent
     ]
 })
 export class AssetReadingListComponent extends BaseEntityListComponent<AssetReading> implements OnInit {

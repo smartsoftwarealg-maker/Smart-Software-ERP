@@ -13,7 +13,7 @@ import { ReactiveFormsModule, UntypedFormBuilder, Validators } from "@angular/fo
 import {  ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
 import {LookupsService} from '@ss/common/api-lookup';
 import { LoginService, MaterialModule } from "@ss/common/api-common";
-import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from "@ss/common/ui-auto-complete";
+import {  DefaultAutoCompleteModel } from "@ss/common/ui-auto-complete";
 import {Agent, CustomerService} from '@ss/logistics/api-agent';
 import { CommonModule, DatePipe } from "@angular/common";
 import {MatSelectChange} from '@angular/material/select';
@@ -21,7 +21,7 @@ import {switchMap, tap} from 'rxjs';
 import {debounceTime, distinctUntilChanged} from 'rxjs/operators';
 
 
-import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
+import { DatePickerComponent } from "@ss/common/ui-datepicker";
 import { ProjectService } from '@ss/scheduled-sales/projects';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
@@ -38,8 +38,8 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         TranslateDirective,
         TranslatePipe,
         ReactiveFormsModule,
-        CommonUiDatepickerModule,
-        CommonUiAutoCompleteModule,
+        DatePickerComponent,
+
         TranslatePipe
     ]
 })

@@ -3,12 +3,11 @@ import { CommonModule } from '@angular/common';
 import { MatListOption, MatListSubheaderCssMatStyler, MatSelectionList } from '@angular/material/list';
 import { FormsModule, ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { ShellService } from '@ss/common/ui-shell';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterOutlet } from '@angular/router';
 import { PayrollMonthService } from '@ss/remuneration/payroll-month';
 import { BankService } from '@ss/administration/api-bank';
 import { switchMap, tap } from 'rxjs';
 import { SelectionModel } from '@angular/cdk/collections';
-
 import { MatButton } from '@angular/material/button';
 import { MatCard } from '@angular/material/card';
 import { MatError, MatFormField, MatFormFieldModule, MatLabel } from '@angular/material/form-field';
@@ -18,16 +17,19 @@ import { MatSelect } from '@angular/material/select';
 import { Lookup } from '@ss/common/api-lookup';
 import { EdoHeaderService, SocialEDOService } from '@social/social-api';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
-import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
+import { DatePickerComponent } from '@ss/common/ui-datepicker';
+import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
+import { HourPickerComponent } from '@ss/common/ui-hour-picker';
+import { MaterialModule } from '@ss/common/api-common';
 
 @Component({
     selector: 'ss-social-edo',
     standalone: true,
     imports: [
         CommonModule,
-
         FormsModule,
+        MaterialModule,
         MatButton,
         MatCard,
         MatError,
@@ -43,8 +45,11 @@ import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common
         MatFormFieldModule,
         MatInputModule,
         MatDatepickerModule,
-        CommonUiDatepickerModule,
-        CommonUiAutoCompleteModule
+        DatePickerComponent,
+        UiAutoCompleteComponent,
+        TranslatePipe,
+        TranslateDirective,
+
     ],
     templateUrl: './social-edo.component.html',
     styleUrl: './social-edo.component.scss'
@@ -142,6 +147,7 @@ export class SocialEdoComponent implements OnInit {
     }
 
     private buildForm(bank: number) {
+        console.log(bank);
         this.form = this.formBuilder.group({
             description: ['',                              Validators.required],
             formula:     ['c990',                          Validators.required],

@@ -10,7 +10,7 @@ import { CommonModule } from '@angular/common';
 
 
 
-import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
+import { DatePickerComponent } from '@ss/common/ui-datepicker';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { TranslateDirective } from '@ss/common/ui-lang';
 
@@ -35,7 +35,7 @@ interface LogFlatNode {
         MaterialModule,
         TranslateDirective,
         ReactiveFormsModule,
-        CommonUiDatepickerModule,
+        DatePickerComponent,
     ],
 
 })

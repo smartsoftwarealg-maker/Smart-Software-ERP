@@ -2,7 +2,7 @@ import { Component, inject, Inject, OnDestroy, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Lookup, Office, OfficeService } from '@ss/common/api-lookup';
 import { AssetLocationService, AssetsBuildingService } from '@ss/assets-component';
-import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
+import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { FormControl } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
@@ -12,9 +12,9 @@ import { MaterialModule } from '@ss/common/api-common';
 
 
 
-import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
+import { DatePickerComponent } from '@ss/common/ui-datepicker';
 import { RouterModule } from '@angular/router';
-import { CustomAttributesModule } from '@ss/custom-attributes';
+
 
 import { QRCodeModule } from 'angularx-qrcode';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
@@ -29,11 +29,10 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         MaterialModule,
         TranslateDirective,
         TranslatePipe,
-        CommonUiAutoCompleteModule,
-        CommonUiDatepickerModule,
+        DatePickerComponent,
         RouterModule,
-        CustomAttributesModule,
-        QRCodeModule
+        QRCodeModule,
+        UiAutoCompleteComponent
     ]
 
 })

@@ -4,8 +4,8 @@ import {DeliveryLinesListComponent} from './delivery-lines-list/delivery-lines-l
 import {DeliveryLinesDetailComponent} from './delivery-lines-detail/delivery-lines-detail.component';
 import {MaterialModule} from '@ss/common/api-common';
 import {ReactiveFormsModule} from '@angular/forms';
-import {CommonUiDatepickerModule} from '@ss/common/ui-datepicker';
-import {CommonUiAutoCompleteModule} from '@ss/common/ui-auto-complete';
+import {DatePickerComponent} from '@ss/common/ui-datepicker';
+import {UiAutoCompleteComponent} from '@ss/common/ui-auto-complete';
 
 import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
 
@@ -14,8 +14,8 @@ import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
         CommonModule,
         MaterialModule,
         ReactiveFormsModule,
-        CommonUiDatepickerModule,
-        CommonUiAutoCompleteModule,
+        DatePickerComponent,
+
         DocInfoComponent,
         DeliveryLinesListComponent,
         DeliveryLinesDetailComponent

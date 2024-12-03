@@ -1,11 +1,10 @@
 import { Component, inject } from '@angular/core';
-import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
+
 import { FormBuilder, ReactiveFormsModule, UntypedFormGroup } from "@angular/forms";
 import { LTMTestSchedule } from '@ltm/ltm-api';
 import { CommonModule } from "@angular/common";
 import { MaterialModule } from "@ss/common/api-common";
-import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
-import { CommonUiHourPickerModule } from "@ss/common/ui-hour-picker";
+import { DatePickerComponent } from "@ss/common/ui-datepicker";
 import { BaseChildEntityDetailComponent } from "@ss/common/ui-base-entity";
 import { LtmTestScheduleService } from '@ltm/ltm-api';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
@@ -19,9 +18,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         CommonModule,
         MaterialModule,
         ReactiveFormsModule,
-        CommonUiAutoCompleteModule,
-        CommonUiDatepickerModule,
-        CommonUiHourPickerModule,
+        DatePickerComponent,
         TranslateDirective,
         TranslatePipe
     ]

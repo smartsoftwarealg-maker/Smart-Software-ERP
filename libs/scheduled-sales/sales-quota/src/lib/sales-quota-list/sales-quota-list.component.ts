@@ -11,8 +11,8 @@ import { CommonModule } from '@angular/common';
 
 
 import { FormControl, ReactiveFormsModule } from "@angular/forms";
-import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
-import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from "@ss/common/ui-auto-complete";
+import { DatePickerComponent } from '@ss/common/ui-datepicker';
+import {  DefaultAutoCompleteModel } from "@ss/common/ui-auto-complete";
 import { Agent, CustomerService } from '@ss/logistics/api-agent';
 import { callback } from 'chart.js/helpers';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
@@ -28,8 +28,8 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         TranslateDirective,
         TranslatePipe,
         ReactiveFormsModule,
-        CommonUiDatepickerModule,
-        CommonUiAutoCompleteModule,
+        DatePickerComponent,
+
     ],
 })
 export class SalesQuotaListComponent extends BaseEntityListComponent<Quota> {

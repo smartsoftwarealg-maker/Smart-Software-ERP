@@ -25,7 +25,7 @@ import { PayModeService } from '@ss/common/api-lookup';
 import { SupplierService } from '@ss/logistics/api-agent';
 import { DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
 import { CommonUiLookupModule } from '@ss/common/ui-lookup';
-import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
+import { DatePickerComponent } from '@ss/common/ui-datepicker';
 import { F13Service } from '../services/f13-service';
 import { AccFileService } from '@ss/accounting/accounting-api';
 
@@ -44,7 +44,7 @@ import { AccFileService } from '@ss/accounting/accounting-api';
         MatLabel,
         ReactiveFormsModule,
         CommonUiLookupModule,
-        CommonUiDatepickerModule
+        DatePickerComponent
     ],
     templateUrl: './f13-detail.component.html',
     styleUrl: './f13-detail.component.scss'

@@ -10,9 +10,6 @@ import { MaterialModule, PaginatorPersistenceService } from "@ss/common/api-comm
 import { GridService } from "../grid.service";
 import { CommonModule } from "@angular/common";
 
-
-import { CommonUiAutoCompleteModule } from "@ss/common/ui-auto-complete";
-import { RemunerationPaymonthEditorModule } from "@ss/remuneration/paymonth-editor";
 import { PaginationComponent } from '@ss/common/ui-pagination';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
@@ -27,8 +24,8 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         MaterialModule,
         TranslateDirective,
         TranslatePipe,
-        CommonUiAutoCompleteModule,
-        RemunerationPaymonthEditorModule,
+
+
         PaginationComponent
     ]
 })

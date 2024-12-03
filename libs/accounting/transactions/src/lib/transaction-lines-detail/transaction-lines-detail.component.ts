@@ -24,14 +24,14 @@ import { LoginService, MaterialModule } from "@ss/common/api-common";
 import { map, Observable, of } from "rxjs";
 import {switchMap, tap} from 'rxjs/operators';
 import {Account, AccountAutocompleteModel, AccountService} from '@ss/accounting/api-accounts';
-import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from "@ss/common/ui-auto-complete";
+import {  DefaultAutoCompleteModel } from "@ss/common/ui-auto-complete";
 import {AgentService} from '@ss/logistics/api-agent';
 import {CostCenterService} from '@ss/logistics/api-cost-center';
 import { CommonModule } from "@angular/common";
 
 
 
-import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
+import { DatePickerComponent } from "@ss/common/ui-datepicker";
 import { TranslateDirective } from '@ss/common/ui-lang';
 
 
@@ -47,8 +47,8 @@ import { TranslateDirective } from '@ss/common/ui-lang';
         TranslateDirective,
         ReactiveFormsModule,
 
-        CommonUiAutoCompleteModule,
-        CommonUiDatepickerModule,
+
+        DatePickerComponent,
 
 
     ],

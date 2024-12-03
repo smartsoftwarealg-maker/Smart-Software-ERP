@@ -7,13 +7,9 @@ import { DefaultReportService} from '@ss/common/ui-default-report-component';
 import { MaterialModule, PaginatorPersistenceService } from "@ss/common/api-common";
 import { CommonModule } from "@angular/common";
 import { ReactiveFormsModule } from "@angular/forms";
-import { CommonUiAutoCompleteModule } from "@ss/common/ui-auto-complete";
-import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
-import { CommonUiHourPickerModule } from "@ss/common/ui-hour-picker";
 import { Lookup } from "@ss/common/api-lookup";
 import { LtmAnomalyService } from '@ltm/ltm-api';
 import { PaginationComponent } from '@ss/common/ui-pagination';
-import { TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-ltm-anomaly-list',
@@ -24,12 +20,7 @@ import { TranslatePipe } from '@ss/common/ui-lang';
         CommonModule,
         MaterialModule,
         PaginationComponent,
-        ReactiveFormsModule,
-        CommonUiAutoCompleteModule,
-        CommonUiDatepickerModule,
-        CommonUiHourPickerModule,
-        TranslatePipe,
-        TranslatePipe
+        ReactiveFormsModule
     ],
 })
 export class LtmAnomalyListComponent extends BaseEntityListComponent<Lookup> {

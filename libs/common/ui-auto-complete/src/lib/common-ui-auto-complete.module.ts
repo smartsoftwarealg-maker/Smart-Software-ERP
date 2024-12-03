@@ -20,5 +20,5 @@ import {MatInputModule} from '@angular/material/input';
     ],
     exports: [UiAutoCompleteComponent],
 })
-export class CommonUiAutoCompleteModule {
+export class UiAutoCompleteComponent {
 }

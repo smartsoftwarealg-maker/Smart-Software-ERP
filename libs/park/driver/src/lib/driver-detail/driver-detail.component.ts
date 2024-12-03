@@ -10,7 +10,7 @@ import {
 } from '@ss/common/api-lookup';
 import { AppArchiveMainComponent, AppArchiveService, EMPLOYEE_ARCHIVES } from '@ss/common/app-archive';
 import {  ImageModel } from '@ss/common/ui-image-input';
-import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
+import {  DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
 import {
     AbstractControl,
     FormsModule, ReactiveFormsModule,
@@ -26,7 +26,7 @@ import { FixedElementsEntryService } from '@ss/remuneration/elements-entry';
 import { Observable, switchMap } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
 import { MatExpansionModule, MatExpansionPanel } from '@angular/material/expansion';
-import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
+import { DatePickerComponent } from '@ss/common/ui-datepicker';
 
 import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
@@ -47,8 +47,8 @@ import { DriverVehicleService } from '../services/driver-vehicle.service';
     imports: [
         CommonModule,
 
-        CommonUiAutoCompleteModule,
-        CommonUiDatepickerModule,
+
+        DatePickerComponent,
 
 
         FormsModule,

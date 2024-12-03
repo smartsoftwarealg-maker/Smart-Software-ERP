@@ -1,5 +1,5 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from "@ss/common/ui-auto-complete";
+import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { FormBuilder, ReactiveFormsModule, Validators } from "@angular/forms";
 import { ActivatedRoute, Router, RouterOutlet } from "@angular/router";
 import {SnackBarService} from '@ss/common/ui-shell';
@@ -12,12 +12,6 @@ import {LtmMatterTestService} from '@ltm/ltm-api';
 import {LtmPeriodicityService} from '@ltm/ltm-api';
 import { CommonModule } from "@angular/common";
 import { LoginService, MaterialModule } from '@ss/common/api-common';
-
-import { PaginationComponent } from '@ss/common/ui-pagination';
-
-
-import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
-import { CommonUiHourPickerModule } from "@ss/common/ui-hour-picker";
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
@@ -30,10 +24,8 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         MaterialModule,
         TranslateDirective,
         ReactiveFormsModule,
-        CommonUiAutoCompleteModule,
-        CommonUiDatepickerModule,
-        CommonUiHourPickerModule,
-        TranslatePipe
+        TranslatePipe,
+        UiAutoCompleteComponent
     ]
 })
 export class LtmMatterTestDetailComponent implements OnInit {

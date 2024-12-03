@@ -8,7 +8,7 @@ import {PaginatorPersistenceService} from '@ss/common/api-common';
 import {Special, SpecialPayrollService} from '@ss/remuneration/special-payroll-common';
 import {PayrollMonthService} from '@ss/remuneration/payroll-month';
 import { MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from '@angular/material/table';
-import { TranslateDirective } from '../../../../../common/ui-lang/src/lib/translate.directive';
+import { TranslateDirective } from '@ss/common/ui-lang';
 import { PaginationComponent } from '../../../../../common/ui-pagination/src/lib/pagination.component';
 
 @Component({

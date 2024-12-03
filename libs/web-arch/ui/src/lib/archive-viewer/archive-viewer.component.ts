@@ -6,14 +6,8 @@ import {of} from 'rxjs';
 import {ShellService} from '@ss/common/ui-shell';
 import { LanguageService, MaterialModule } from '@ss/common/api-common';
 import { CommonModule } from '@angular/common';
-
-
 import { ReactiveFormsModule } from '@angular/forms';
 
-import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
-import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
-import { UiStockInfoComponent } from '@ss/logistics/ui-stock-info';
-import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-archive-viewer',
@@ -23,12 +17,8 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     imports: [
         CommonModule,
         MaterialModule,
-        TranslateDirective,
-        TranslatePipe,
         ReactiveFormsModule,
-        RouterModule,
-        CommonUiDatepickerModule,
-        CommonUiAutoCompleteModule
+        RouterModule
     ]
 })
 export class ArchiveViewerComponent implements OnInit {

@@ -1,6 +1,5 @@
 export * from './lib/main-page/main-page.component';
 export * from './lib/header-page/header-page.component';
-export * from './lib/sales-ecommerce.module';
 export * from './lib/sales-ads-detail/sales-ads-detail.component';
 export * from './lib/sales-ads-list/sales-ads-list.component';
 export * from './lib/sales-ads.service';

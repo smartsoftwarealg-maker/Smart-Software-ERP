@@ -10,10 +10,10 @@ import { WorkStoppageService } from '../services/work-stoppage.service';
 import { LoginService, MaterialModule } from '@ss/common/api-common';
 
 
-import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
+import {  DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
 import { PhysicianService } from '../services/physician.service';
 import { PhysicianSpecialtyService } from '../services/physician-specialty.service';
-import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
+import { DatePickerComponent } from '@ss/common/ui-datepicker';
 import { EmployeeService, PersonAutocompleteClass } from '@ss/employee-services/employee-services';
 import { AbsenceMotiveService } from '@ss/attendance';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
@@ -27,8 +27,8 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         TranslateDirective,
         TranslatePipe,
         ReactiveFormsModule,
-        CommonUiAutoCompleteModule,
-        CommonUiDatepickerModule
+
+        DatePickerComponent
     ],
     templateUrl: './work-stoppage-detail.component.html',
     styleUrls: ['./work-stoppage-detail.component.css']

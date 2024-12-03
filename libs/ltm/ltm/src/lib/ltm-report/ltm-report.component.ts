@@ -13,14 +13,7 @@ import { LanguageService, MaterialModule } from '@ss/common/api-common';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { Lookup } from '@ss/common/api-lookup';
 import { CommonModule } from '@angular/common';
-
-
-
-
-import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
-import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
-import { CommonUiHourPickerModule } from '@ss/common/ui-hour-picker';
-import { PaginationComponent } from '@ss/common/ui-pagination';
+import { DatePickerComponent } from '@ss/common/ui-datepicker';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
@@ -31,12 +24,8 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     imports: [
         CommonModule,
         MaterialModule,
-        PaginationComponent,
         ReactiveFormsModule,
-        CommonUiAutoCompleteModule,
-        CommonUiDatepickerModule,
-        RouterOutlet,
-        CommonUiHourPickerModule,
+        DatePickerComponent,
         TranslateDirective,
         TranslatePipe
     ]

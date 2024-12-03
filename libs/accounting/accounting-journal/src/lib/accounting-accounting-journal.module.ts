@@ -6,7 +6,7 @@ import {MaterialModule} from '@ss/common/api-common';
 
 
 import {ReactiveFormsModule} from '@angular/forms';
-import {CommonUiAutoCompleteModule} from '@ss/common/ui-auto-complete';
+import {UiAutoCompleteComponent} from '@ss/common/ui-auto-complete';
 
 
 @NgModule({
@@ -16,7 +16,7 @@ import {CommonUiAutoCompleteModule} from '@ss/common/ui-auto-complete';
 
 
         ReactiveFormsModule,
-        CommonUiAutoCompleteModule,
+
 
         JournalListComponent,
         JournalDetailComponent

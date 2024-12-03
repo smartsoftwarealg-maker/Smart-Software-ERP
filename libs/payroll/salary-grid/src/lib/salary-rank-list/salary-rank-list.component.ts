@@ -3,8 +3,8 @@ import { BaseChildEntityListComponent } from "@ss/common/ui-base-entity";
 import { GridRank } from "../grid-api";
 import { MaterialModule } from "@ss/common/api-common";
 import { CommonModule } from "@angular/common";
-import { CommonUiAutoCompleteModule } from "@ss/common/ui-auto-complete";
-import { RemunerationPaymonthEditorModule } from "@ss/remuneration/paymonth-editor";
+
+
 import { GridRankService } from "../grid-rank.service";
 import { PaginationComponent } from '@ss/common/ui-pagination';
 import { TranslatePipe } from '@ss/common/ui-lang';
@@ -17,8 +17,8 @@ import { TranslatePipe } from '@ss/common/ui-lang';
     imports: [
         CommonModule,
         MaterialModule,
-        CommonUiAutoCompleteModule,
-        RemunerationPaymonthEditorModule,
+
+
         PaginationComponent,
         TranslatePipe
     ]

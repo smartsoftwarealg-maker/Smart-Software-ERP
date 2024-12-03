@@ -9,7 +9,7 @@ import { PaginatorPersistenceService } from '@ss/common/api-common';
 import { CMMSPMService } from '../services/cmms-p-m.service';
 import { MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from '@angular/material/table';
 import { MatSort, MatSortHeader } from '@angular/material/sort';
-import { TranslateDirective } from '../../../../../common/ui-lang/src/lib/translate.directive';
+import { TranslateDirective } from '@ss/common/ui-lang';
 import { PaginationComponent } from '../../../../../common/ui-pagination/src/lib/pagination.component';
 import { DatePipe } from '@angular/common';
 

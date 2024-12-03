@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { BaseChildEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { PersonLocation } from '../employee-api';
 import { FormBuilder, FormsModule, ReactiveFormsModule, UntypedFormGroup, Validators } from '@angular/forms';
-import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
+import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { PersonLocationService } from '../services/person-location.service';
 import { AssetLocationService } from '@ss/assets-component';
 
@@ -14,7 +14,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 @Component({
     selector: 'ss-person-location-detail',
     standalone: true,
-    imports: [CommonModule, CommonUiAutoCompleteModule,  FormsModule, MatButtonModule, MatCardModule, MatFormFieldModule, ReactiveFormsModule],
+    imports: [CommonModule, FormsModule, MatButtonModule, MatCardModule, MatFormFieldModule, ReactiveFormsModule, UiAutoCompleteComponent],
     templateUrl: './person-location-detail.component.html',
     styleUrls: ['./person-location-detail.component.css'],
 })

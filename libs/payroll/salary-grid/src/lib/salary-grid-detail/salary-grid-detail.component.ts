@@ -12,8 +12,8 @@ import { CommonModule } from "@angular/common";
 import { MaterialModule } from "@ss/common/api-common";
 
 
-import { CommonUiAutoCompleteModule } from "@ss/common/ui-auto-complete";
-import { RemunerationPaymonthEditorModule } from "@ss/remuneration/paymonth-editor";
+
+
 
 import { GridRankService } from "../grid-rank.service";
 import { Observable } from "rxjs";
@@ -29,8 +29,8 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         MaterialModule,
         TranslateDirective,
         TranslatePipe,
-        CommonUiAutoCompleteModule,
-        RemunerationPaymonthEditorModule,
+
+
 
         RouterOutlet
     ]

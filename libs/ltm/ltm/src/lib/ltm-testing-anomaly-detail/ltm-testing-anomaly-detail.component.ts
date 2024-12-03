@@ -1,15 +1,13 @@
 import { Component, inject, Inject } from "@angular/core";
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
-import { ActivatedRoute, RouterOutlet } from "@angular/router";
+import { ActivatedRoute } from '@angular/router';
 import { ReactiveFormsModule, UntypedFormBuilder, Validators } from "@angular/forms";
 import {  ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
-import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from "@ss/common/ui-auto-complete";
-import { CommonModule } from "@angular/common";
+import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
+import { CommonModule } from '@angular/common';
 import { dateTimeToYmdStr, LoginService, MaterialModule } from '@ss/common/api-common';
-
-import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
-import { CommonUiHourPickerModule } from "@ss/common/ui-hour-picker";
+import { DatePickerComponent } from "@ss/common/ui-datepicker";
 import { LtmAnomalyService } from '@ltm/ltm-api';
 import { LTMTestingAnomaly } from '@ltm/ltm-api';
 import { LtmTestingAnomalyService } from '@ltm/ltm-api';
@@ -27,9 +25,8 @@ import { TranslateDirective } from '@ss/common/ui-lang';
         MaterialModule,
         ReactiveFormsModule,
         TranslateDirective,
-        CommonUiAutoCompleteModule,
-        CommonUiDatepickerModule,
-        CommonUiHourPickerModule
+        DatePickerComponent,
+        UiAutoCompleteComponent
     ]
 })
 export class LtmTestingAnomalyDetailComponent extends BaseEntityDetailComponent<LTMTestingAnomaly> {

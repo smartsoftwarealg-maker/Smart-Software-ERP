@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { AccPoliciesComponent } from './acc-policies.component';
 import {MaterialModule} from '@ss/common/api-common';
 import {ReactiveFormsModule} from '@angular/forms';
-import {CommonUiAutoCompleteModule} from '@ss/common/ui-auto-complete';
+import {UiAutoCompleteComponent} from '@ss/common/ui-auto-complete';
 
 @NgModule({
     imports: [
@@ -12,7 +12,7 @@ import {CommonUiAutoCompleteModule} from '@ss/common/ui-auto-complete';
 
 
         ReactiveFormsModule,
-        CommonUiAutoCompleteModule,
+
 
         AccPoliciesComponent
     ],

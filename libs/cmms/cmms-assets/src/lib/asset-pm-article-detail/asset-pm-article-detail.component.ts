@@ -4,14 +4,14 @@ import { BaseChildEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { WorkArticle } from '@ss/cmms/cmms-api';
 import { FormBuilder, FormsModule, ReactiveFormsModule, UntypedFormGroup } from '@angular/forms';
 import { ArticleService } from '@ss/master-data/api-article';
-import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
+import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 
 import { MatTableModule } from '@angular/material/table';
 
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
-import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
+import { DatePickerComponent } from '@ss/common/ui-datepicker';
 import { MatButtonModule } from '@angular/material/button';
 import { MaterialModule } from '@ss/common/api-common';
 import { PMPart } from '../services/asset-api';
@@ -26,15 +26,16 @@ import { of, switchMap, tap } from 'rxjs';
 
         MatTableModule,
 
-        CommonUiAutoCompleteModule,
+
         FormsModule,
         MatFormFieldModule,
         ReactiveFormsModule,
         MatCardModule,
         MatInputModule,
-        CommonUiDatepickerModule,
+        DatePickerComponent,
         MatButtonModule,
-        MaterialModule
+        MaterialModule,
+        UiAutoCompleteComponent
     ],
     templateUrl: './asset-pm-article-detail.component.html',
     styleUrls: ['./asset-pm-article-detail.component.css'],

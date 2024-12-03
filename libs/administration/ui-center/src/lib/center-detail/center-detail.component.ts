@@ -14,7 +14,7 @@ import { LoginService, MaterialModule } from '@ss/common/api-common';
 import { CommonModule } from '@angular/common';
 
 
-import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
+import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { TranslateDirective } from '@ss/common/ui-lang';
 
 
@@ -28,8 +28,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
         MaterialModule,
         TranslateDirective,
         ReactiveFormsModule,
-
-        CommonUiAutoCompleteModule
+        UiAutoCompleteComponent
     ]
 })
 export class CenterDetailComponent extends BaseEntityDetailComponent<Center> {

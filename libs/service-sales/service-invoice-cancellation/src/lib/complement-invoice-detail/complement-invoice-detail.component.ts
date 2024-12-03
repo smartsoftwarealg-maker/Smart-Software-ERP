@@ -11,10 +11,10 @@ import { BaseTransactionDetailComponent, TransactionLinesService } from '@ss/log
 import { CommonModule } from '@angular/common';
 
 
-import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
-import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
+import { DatePickerComponent } from '@ss/common/ui-datepicker';
 
-import { LogisticsUiDocImportModule } from '@ss/logistics/ui-doc-import';
+
+
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
@@ -29,10 +29,10 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         TranslatePipe,
         ReactiveFormsModule,
         RouterModule,
-        CommonUiDatepickerModule,
-        CommonUiAutoCompleteModule,
+        DatePickerComponent,
 
-        LogisticsUiDocImportModule
+
+
     ],
 })
 export class ComplementInvoiceDetailComponent extends BaseTransactionDetailComponent implements OnInit {

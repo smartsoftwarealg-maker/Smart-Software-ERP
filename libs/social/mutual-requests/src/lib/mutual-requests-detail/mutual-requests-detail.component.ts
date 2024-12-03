@@ -23,7 +23,7 @@ import { ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup, Validators }
 import { MatCard, MatCardContent } from '@angular/material/card';
 import { MatError, MatFormField, MatLabel } from '@angular/material/form-field';
 import { MatInput } from '@angular/material/input';
-import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
+import { DatePickerComponent } from '@ss/common/ui-datepicker';
 
 @Component({
     selector: 'ss-mutual-requests',
@@ -52,7 +52,7 @@ import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
         MatLabel,
         MaterialModule,
         ReactiveFormsModule,
-        CommonUiDatepickerModule,
+        DatePickerComponent,
         RouterOutlet
     ],
     templateUrl: './mutual-requests-detail.component.html',

@@ -4,12 +4,10 @@ import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import { ActivatedRoute, RouterOutlet } from "@angular/router";
 import { ReactiveFormsModule, UntypedFormBuilder, Validators } from "@angular/forms";
 import {  ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
-import { CommonUiAutoCompleteModule } from "@ss/common/ui-auto-complete";
+
 import { Lookup } from '@ss/common/api-lookup';
 import { CommonModule } from "@angular/common";
 import { MaterialModule } from "@ss/common/api-common";
-import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
-import { CommonUiHourPickerModule } from "@ss/common/ui-hour-picker";
 import { LtmEquipmentService } from '@ltm/ltm-api';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
@@ -22,9 +20,6 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         CommonModule,
         MaterialModule,
         ReactiveFormsModule,
-        CommonUiAutoCompleteModule,
-        CommonUiDatepickerModule,
-        CommonUiHourPickerModule,
         TranslateDirective
     ],
 })

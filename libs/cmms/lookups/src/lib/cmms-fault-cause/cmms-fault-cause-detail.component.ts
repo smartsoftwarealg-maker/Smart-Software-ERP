@@ -6,16 +6,12 @@ import { ReactiveFormsModule, UntypedFormBuilder } from '@angular/forms';
 import { BaseLookupDetailClass } from '../detail-template/base-lookup-detail.class';
 import { CMMSFaultCauseService } from '../services/cmms.fault.cause.service';
 import { CommonModule } from '@angular/common';
-
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
-
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MaterialModule } from '@ss/common/api-common';
-import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
-import { PaginationComponent } from '@ss/common/ui-pagination';
 
 @Component({
     selector: 'ss-cmms-fault-cause-detail',
@@ -24,17 +20,14 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
     standalone: true,
     imports: [
         CommonModule,
-        PaginationComponent,
         MatSortModule,
         MatTableModule,
-
         MatCardModule,
         MatFormFieldModule,
         MatInputModule,
         MaterialModule,
         ReactiveFormsModule,
-        RouterOutlet,
-        CommonUiAutoCompleteModule
+        RouterOutlet
     ],
 })
 export class CmmsFaultCauseDetailComponent extends BaseLookupDetailClass {

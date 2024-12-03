@@ -12,11 +12,12 @@ import { CommonModule } from "@angular/common";
 import { DragDropModule } from "@angular/cdk/drag-drop";
 
 
-import { CommonUiAutoCompleteModule } from "@ss/common/ui-auto-complete";
-import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
+
+import { DatePickerComponent } from "@ss/common/ui-datepicker";
 
 import {PaginationModel} from '@ss/common/api-common';
 import { PaginationComponent } from '@ss/common/ui-pagination';
+import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 
 interface FlatPaymentNode {
     expandable: boolean;
@@ -46,9 +47,8 @@ interface PaymentTree {
         MaterialModule,
 
 
-        CommonUiAutoCompleteModule,
-        CommonUiDatepickerModule,
-        ReactiveFormsModule, PaginationComponent
+        DatePickerComponent,
+        ReactiveFormsModule, PaginationComponent, UiAutoCompleteComponent
 
     ]
 })

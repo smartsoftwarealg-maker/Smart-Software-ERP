@@ -25,7 +25,7 @@ import { MatSort, MatSortHeader } from '@angular/material/sort';
 import { FormControl } from '@angular/forms';
 import { MatFormField } from '@angular/material/form-field';
 import { CommonUiLookupModule } from '@ss/common/ui-lookup';
-import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
+import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { CriterionService } from '../services/criterion.service';
 import { Category, CategoryService } from '@ss/common/api-lookup';
 import { PaginationComponent } from '@ss/common/ui-pagination';
@@ -33,10 +33,9 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
 @Component({
     selector: 'ss-gica-criteria-list',
     standalone: true,
-    imports: [CommonModule,
-
+    imports: [
+        CommonModule,
         MaterialModule,
-        CommonUiAutoCompleteModule,
         MatCell,
         MatCellDef,
         MatColumnDef,
@@ -51,7 +50,7 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
 
         MatHeaderCellDef,
         MatFormField,
-        CommonUiLookupModule, PaginationComponent],
+        CommonUiLookupModule, PaginationComponent, UiAutoCompleteComponent],
     templateUrl: './criteria-list.component.html',
     styleUrl: './criteria-list.component.css',
 })

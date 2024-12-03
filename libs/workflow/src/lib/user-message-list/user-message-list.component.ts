@@ -9,13 +9,8 @@ import {UserMessage} from '../workflow-api';
 import {UserMessageService} from '../user-message.service';
 import {UserListService} from '@ss/common/api-users';
 import {FormControl} from '@angular/forms';
-import { CommonUiAutoCompleteModule, UserLookup } from '@ss/common/ui-auto-complete';
+import { UiAutoCompleteComponent, UserLookup } from '@ss/common/ui-auto-complete';
 import { CommonModule } from '@angular/common';
-
-
-import { RemunerationPaymonthEditorModule } from '@ss/remuneration/paymonth-editor';
-
-
 import { OrgChartModule } from 'angular13-organization-chart';
 import { PaginationComponent } from '@ss/common/ui-pagination';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
@@ -29,11 +24,9 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         CommonModule,
         MaterialModule,
         TranslateDirective,
-        TranslatePipe,
-        CommonUiAutoCompleteModule,
-        RemunerationPaymonthEditorModule,
         OrgChartModule,
-        PaginationComponent
+        PaginationComponent,
+        UiAutoCompleteComponent
     ]
 })
 export class UserMessageListComponent extends BaseEntityListComponent<UserMessage> {

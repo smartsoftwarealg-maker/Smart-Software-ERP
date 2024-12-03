@@ -3,7 +3,7 @@ import {finalize, Subscription} from 'rxjs';
 import {UntypedFormBuilder, Validators} from '@angular/forms';
 import {HttpEventType} from '@angular/common/http';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
-import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
+import {  DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
 import {LotsService, Store} from '@ss/common/api-lookup';
 import {AssetInventoryService} from '../services/asset-inventory.service';
 import { CommonModule } from '@angular/common';
@@ -12,9 +12,9 @@ import { MaterialModule } from '@ss/common/api-common';
 
 
 
-import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
+import { DatePickerComponent } from '@ss/common/ui-datepicker';
 import { RouterModule } from '@angular/router';
-import { CustomAttributesModule } from '@ss/custom-attributes';
+
 
 import { QRCodeModule } from 'angularx-qrcode';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
@@ -29,10 +29,10 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         MaterialModule,
         TranslateDirective,
         TranslatePipe,
-        CommonUiAutoCompleteModule,
-        CommonUiDatepickerModule,
+
+        DatePickerComponent,
         RouterModule,
-        CustomAttributesModule,
+
 
         QRCodeModule
     ]

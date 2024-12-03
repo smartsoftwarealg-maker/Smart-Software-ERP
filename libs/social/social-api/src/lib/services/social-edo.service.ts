@@ -23,7 +23,7 @@ export class SocialEDOService {
     }
 
     getCenterBank(): Observable<number> {
-        return this.httpSrv.get<any>(`/companies/${this.loginSrv.appCtx.company}/centers/${this.loginSrv.appCtx.center}`)
+        return this.httpSrv.get<any>(`/companies/${this.loginSrv?.appCtx?.company||0}/centers/${this.loginSrv.appCtx.center}`)
             .pipe(map(res => res['bank'] || 0));
     }
 

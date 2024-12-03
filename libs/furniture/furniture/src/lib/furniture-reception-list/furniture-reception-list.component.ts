@@ -10,7 +10,7 @@ import {PaginatorPersistenceService} from '@ss/common/api-common';
 import {FurnitureAssignmentsService} from '../furniture-assignments.service';
 import {FurnitureReceptionService} from '../furniture-reception.service';
 import { MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from '@angular/material/table';
-import { TranslateDirective } from '../../../../../common/ui-lang/src/lib/translate.directive';
+import { TranslateDirective } from '@ss/common/ui-lang';
 import { PaginationComponent } from '../../../../../common/ui-pagination/src/lib/pagination.component';
 import { DatePipe } from '@angular/common';
 

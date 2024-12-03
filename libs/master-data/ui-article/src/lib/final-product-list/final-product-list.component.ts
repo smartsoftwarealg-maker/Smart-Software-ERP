@@ -14,9 +14,9 @@ import {debounceTime, distinctUntilChanged} from 'rxjs/operators';
 import { CommonModule } from '@angular/common';
 
 
-import { StockUiArticleStoreModule } from '@ss/stock/article-store';
 
-import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
+
+
 import { UiStockInfoComponent } from '@ss/logistics/ui-stock-info';
 import { FinalProductService } from '@ss/master-data/api-article';
 import { BomService } from '../bom.service';
@@ -35,9 +35,9 @@ import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
         MaterialModule,
         TranslateDirective,
         TranslatePipe,
-        StockUiArticleStoreModule,
+
         RouterModule,
-        CommonUiAutoCompleteModule,
+
         UiStockInfoComponent,
         PaginationComponent,
         ImageInputComponent,

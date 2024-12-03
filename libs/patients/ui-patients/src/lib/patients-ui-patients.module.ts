@@ -7,7 +7,7 @@ import {MaterialModule} from "@ss/common/api-common";
 
 import {ReactiveFormsModule} from "@angular/forms";
 
-import {CommonUiDatepickerModule} from "@ss/common/ui-datepicker";
+import {DatePickerComponent} from "@ss/common/ui-datepicker";
 
 @NgModule({
     imports: [CommonModule,
@@ -15,7 +15,7 @@ import {CommonUiDatepickerModule} from "@ss/common/ui-datepicker";
 
 
         ReactiveFormsModule,
-        CommonUiDatepickerModule,
+        DatePickerComponent,
          PatientsListComponent,
         PatientsDetailComponent],
     exports: [

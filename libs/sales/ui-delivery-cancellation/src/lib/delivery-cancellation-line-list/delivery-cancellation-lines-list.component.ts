@@ -10,9 +10,9 @@ import { MaterialModule } from '@ss/common/api-common';
 
 
 import { ReactiveFormsModule } from '@angular/forms';
-import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
-import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
-import { LogisticsUiDocImportModule } from '@ss/logistics/ui-doc-import';
+import { DatePickerComponent } from '@ss/common/ui-datepicker';
+
+
 import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
 import { DeliveryCancellationLinesService } from '../delivery-cancellation-lines.service';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
@@ -29,9 +29,8 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         TranslatePipe,
         ReactiveFormsModule,
         RouterModule,
-        CommonUiDatepickerModule,
-        CommonUiAutoCompleteModule,
-        LogisticsUiDocImportModule,
+        DatePickerComponent,
+
         DocInfoComponent
     ],
 })

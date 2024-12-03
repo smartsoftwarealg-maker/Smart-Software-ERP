@@ -7,9 +7,9 @@ import { CommonModule } from '@angular/common';
 
 
 
-import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
-import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
-import { CustomAttributesModule } from '@ss/custom-attributes';
+import {  DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
+import { DatePickerComponent } from '@ss/common/ui-datepicker';
+
 
 import { QRCodeModule } from 'angularx-qrcode';
 import { AssetUnidentifiedInventoryService } from '@ss/assets-component';
@@ -25,11 +25,8 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         CommonModule,
         MaterialModule,
         TranslateDirective,
-        TranslatePipe,
-        CommonUiAutoCompleteModule,
-        CommonUiDatepickerModule,
+
         RouterModule,
-        CustomAttributesModule,
 
         QRCodeModule,
         PaginationComponent
@@ -47,7 +44,12 @@ export class AssetUnidentifiedChildInventoryListComponent  implements OnInit {
         'creationDate',
         'buildingDescription',
         'classDescription',
-        'count'
+        'count',
+        'serialNo',
+        'classDescription',
+        'officeDescription',
+        'beneficiaryDescription',
+        'memo'
     ];
     selected = 0;
     data: UnidentifiedInventory[] = [];

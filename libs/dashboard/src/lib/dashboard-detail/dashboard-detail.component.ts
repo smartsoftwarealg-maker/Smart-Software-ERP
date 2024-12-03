@@ -20,8 +20,8 @@ import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
 import { CommonModule } from '@angular/common';
 
 
-import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
-import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
+import { DatePickerComponent } from '@ss/common/ui-datepicker';
+import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { CenterService } from '@ss/administration/api-center';
 import { DashboardCenterService } from '../services/dashboard-center.service';
 import { MatSelectionListChange } from '@angular/material/list';
@@ -40,8 +40,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         TranslatePipe,
         ReactiveFormsModule,
 
-        CommonUiDatepickerModule,
-        CommonUiAutoCompleteModule
+        UiAutoCompleteComponent
     ],
 })
 export class DashboardDetailComponent extends BaseEntityDetailComponent<Dashboard> implements OnInit {

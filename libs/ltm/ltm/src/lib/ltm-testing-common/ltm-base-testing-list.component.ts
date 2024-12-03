@@ -8,7 +8,7 @@ import { DefaultReportService } from "@ss/common/ui-default-report-component";
 import { dateToStr, PaginatorPersistenceService } from '@ss/common/api-common';
 import { filter, map, Observable } from 'rxjs';
 import { LtmLineService } from '@ltm/ltm-api';
-import { FormControl } from '@angular/forms';
+import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
 import { LtmBaseTestingClass } from '@ltm/ltm-api';
 import { LtmMatterTestService } from '@ltm/ltm-api';

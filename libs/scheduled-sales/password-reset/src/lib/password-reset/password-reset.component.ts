@@ -1,15 +1,12 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
-import { LoginService, MaterialModule, UserService } from '@ss/common/api-common';
+import { MaterialModule, UserService } from '@ss/common/api-common';
 import { ActivatedRoute } from '@angular/router';
-
-
 import { FormBuilder, ReactiveFormsModule, UntypedFormBuilder } from '@angular/forms';
-
-import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
+import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { Agent, CustomerService } from '@ss/logistics/api-agent';
-import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
+import { TranslateDirective } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-password-reset',
@@ -18,9 +15,8 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         CommonModule,
         MaterialModule,
         TranslateDirective,
-        TranslatePipe,
         ReactiveFormsModule,
-        CommonUiAutoCompleteModule
+        UiAutoCompleteComponent
     ],
     templateUrl: './password-reset.component.html',
     styleUrl: './password-reset.component.scss',

@@ -8,13 +8,13 @@ import {UntypedFormBuilder, Validators} from '@angular/forms';
 import { ClassService, LookupsService, MarkService, Unit, Vat } from '@ss/common/api-lookup';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {  ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
-import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
+import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { ImageInputComponent, ImageModel } from '@ss/common/ui-image-input';
 import { HttpService, MaterialModule } from '@ss/common/api-common';
 import { CommonModule } from '@angular/common';
 
 
-import { StockUiArticleStoreModule } from '@ss/stock/article-store';
+
 
 import { UiStockInfoComponent } from '@ss/logistics/ui-stock-info';
 import { FinalProductService } from '@ss/master-data/api-article';
@@ -32,15 +32,11 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         CommonModule,
         MaterialModule,
         TranslateDirective,
-        TranslatePipe,
-        StockUiArticleStoreModule,
         ImageInputComponent,
         RouterModule,
-
-        CommonUiAutoCompleteModule,
-        UiStockInfoComponent,
-        MatCardModule
-    ],
+        MatCardModule,
+        UiAutoCompleteComponent
+    ]
 })
 export class FinalProductDetailComponent extends BaseEntityDetailComponent<Article> implements OnInit {
     private routingSrv = inject(CMMSRoutingService);

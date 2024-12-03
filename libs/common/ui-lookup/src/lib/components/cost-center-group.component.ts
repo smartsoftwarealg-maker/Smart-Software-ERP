@@ -8,7 +8,7 @@ import {UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import { MaterialModule, PaginatorPersistenceService } from '@ss/common/api-common';
 import { CommonModule } from '@angular/common';
-import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
+
 import { PaginationComponent } from '@ss/common/ui-pagination';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
@@ -22,7 +22,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         RouterModule,
         MaterialModule,
         PaginationComponent,
-        CommonUiAutoCompleteModule,
+
         PaginationComponent
     ],
     styleUrls: ['../base-templates/list-template.scss']
@@ -55,7 +55,7 @@ export class CostCenterGroupListComponent extends BaseEntityListComponent<Lookup
         MaterialModule,
         TranslateDirective,
         TranslatePipe,
-        CommonUiAutoCompleteModule,
+
 
     ],
     styleUrls: ['../base-templates/detail-template.scss']

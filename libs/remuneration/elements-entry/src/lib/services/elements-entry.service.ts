@@ -34,6 +34,7 @@ export class ElementsEntryService extends BaseEntityService<ELine> {
     }
 
     load() {
+        debugger;
         if (this.inputFilter.length == 0 || this.elements.length == 0) {
             zip(this.inputFilterSrv.getList(0, 50),
                 this.elementInfoSrv.getList(0, 2000))

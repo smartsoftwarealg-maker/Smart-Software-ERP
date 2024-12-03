@@ -14,9 +14,9 @@ import { EmployeeService } from "@ss/employee-services/employee-services";
 import { CommonModule } from "@angular/common";
 
 
-import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
-import { CommonUiAutoCompleteModule } from "@ss/common/ui-auto-complete";
-import { RemunerationInputFiltersModule } from "@ss/remuneration/input-filters";
+import { DatePickerComponent } from "@ss/common/ui-datepicker";
+
+
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 type Employee = {
@@ -35,11 +35,8 @@ type Employee = {
         CommonModule,
         MaterialModule,
         TranslateDirective,
-        TranslatePipe,
         ReactiveFormsModule,
-        CommonUiDatepickerModule,
-        CommonUiAutoCompleteModule,
-        RemunerationInputFiltersModule,
+
         ImageInputComponent
     ],
 })

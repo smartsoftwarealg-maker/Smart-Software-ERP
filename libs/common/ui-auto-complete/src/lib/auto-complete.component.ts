@@ -23,8 +23,8 @@ import { SnackBarService } from '@ss/common/ui-shell';
 import { NgIf, NgFor } from '@angular/common';
 import { MatInput } from '@angular/material/input';
 import { MatOption } from '@angular/material/core';
-import { TranslateDirective } from '../../../ui-lang/src/lib/translate.directive';
-import { TranslatePipe } from '../../../ui-lang/src/lib/translate.pipe';
+import { TranslateDirective } from '@ss/common/ui-lang';
+import { TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-auto-complete',

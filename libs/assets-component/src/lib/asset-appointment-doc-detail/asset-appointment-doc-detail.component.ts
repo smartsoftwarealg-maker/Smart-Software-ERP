@@ -8,12 +8,12 @@ import {  ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import {LookupsService, Office, OfficeService} from '@ss/common/api-lookup';
 import {AssetAppointmentDocService} from '../services/asset-appointment-doc.service';
 import { LoginService, MaterialModule, PaginationModel } from '@ss/common/api-common';
-import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
+import {  DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
 import {
     ASSET_MODULE,
     ATTRIB_TYPE_LOOKUP,
     AttribTempl,
-    AttributesService, CustomAttributesModule
+    AttributesService,
 } from '@ss/custom-attributes';
 import {switchMap} from 'rxjs/operators';
 import {tap} from 'rxjs/operators';
@@ -30,7 +30,7 @@ import { CommonModule } from '@angular/common';
 
 
 
-import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
+import { DatePickerComponent } from '@ss/common/ui-datepicker';
 
 import { QRCodeModule } from 'angularx-qrcode';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
@@ -45,10 +45,10 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         MaterialModule,
         TranslateDirective,
         TranslatePipe,
-        CommonUiAutoCompleteModule,
-        CommonUiDatepickerModule,
+
+        DatePickerComponent,
         RouterModule,
-        CustomAttributesModule,
+
 
         QRCodeModule
     ]})

@@ -1,15 +1,12 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {
-    BaseTransactionLinesDetailComponent, DOC_QUOTATION
-} from "@ss/logistics/api-transaction";
+import {BaseTransactionLinesDetailComponent, DOC_QUOTATION} from "@ss/logistics/api-transaction";
 import {OfferLinesService} from '@ss/logistics/api-transaction';
 import { CommonModule } from '@angular/common';
 import { MaterialModule } from '@ss/common/api-common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
-import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
 import { TranslateDirective } from '@ss/common/ui-lang';
+import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 
 @Component({
     selector: 'ss-quotation-lines-detail',
@@ -22,8 +19,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
         TranslateDirective,
         ReactiveFormsModule,
         RouterModule,
-        CommonUiDatepickerModule,
-        CommonUiAutoCompleteModule
+        UiAutoCompleteComponent
     ],
 })
 export class QuotationLinesDetailComponent extends BaseTransactionLinesDetailComponent implements OnInit, OnDestroy {

@@ -11,12 +11,7 @@ import { MAIN_PAGE_URL, INDEX_PAGE_URL, CanActivateService, LOGIN_URL } from '@s
 import { ShellComponent, UiShellModule } from '@ss/common/ui-shell';
 import { MainPageComponent } from '@ss/common/ui-main-page';
 import { EXCHANGE_APP_URL } from './app/common';
-import { UiThemeModule } from '@ss/common/ui-theme';
-import { UiErrorHandlerModule } from '@ss/common/ui-error-handler';
-
 import { ExchangeUiIdiotPageModule } from '@ss/exchange/ui-idiot-page';
-import { UiLoginModule } from '@ss/common/ui-login';
-import { UiCenterSelectModule } from '@ss/common/ui-center-select';
 import { AppComponent } from './app/app.component';
 
 const routes: Routes = [
@@ -48,14 +43,9 @@ if (environment.production) {
 
 bootstrapApplication(AppComponent, {
     providers: [
-        importProvidersFrom(BrowserModule,
-        // Smart Software modules
-        UiThemeModule, UiErrorHandlerModule, UiShellModule, ExchangeUiIdiotPageModule,
-        // modules with routes
-        UiLoginModule, UiCenterSelectModule),
+        importProvidersFrom(BrowserModule),
         provideAnimations(),
         provideHttpClient(withInterceptorsFromDi()),
         provideRouter(routes),
     ]
-})
-  .catch((err) => console.error(err));
+}).catch((err) => console.error(err));

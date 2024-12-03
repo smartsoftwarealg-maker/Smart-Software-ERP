@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { EDOHeader } from '@social/social-api';
 import { LoginService } from '@ss/common/api-common';
-import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
+
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute } from '@angular/router';
 import { ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
@@ -16,12 +16,11 @@ import { EdoHeaderService } from '@social/social-api';
 import { EdoLineService } from '@social/social-api';
 import { PendingEdoComponent } from '../pending-edo/pending-edo.component';
 import { SocialEdoLinesComponent } from '../pending-edo-lines/social-edo-lines.component';
-import { PaginationComponent } from '@ss/common/ui-pagination';
 
 @Component({
     imports: [
         CommonModule,
-        CommonUiAutoCompleteModule,
+
         DatePickerComponent,
         MatCard,
         MatCardContent,

@@ -6,7 +6,7 @@ import { FormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { CostingPoolService } from '../services/costing-pool.service';
 import { CostCenterService } from '@ss/logistics/api-cost-center';
 import { CostingKeyService } from '@ss/costing/costing-keys';
-import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
+import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { RouterModule } from '@angular/router';
 import { MaterialModule } from '@ss/common/api-common';
 
@@ -30,11 +30,12 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         TranslateDirective,
         TranslatePipe,
         MatAutocompleteModule,
-        CommonUiAutoCompleteModule,
+
         CostingPoolKeysComponent,
         CProductLineCostComponent,
         ProductLineKeysComponent,
-        CostingPoolCostComponent
+        CostingPoolCostComponent,
+        UiAutoCompleteComponent
     ],
     templateUrl: './costing-pool-detail.component.html',
     styleUrl: './costing-pool-detail.component.css'

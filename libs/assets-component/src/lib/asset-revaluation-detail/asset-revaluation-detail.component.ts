@@ -1,7 +1,7 @@
 import {Component, inject, OnInit} from '@angular/core';
 import {BaseChildEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {AssetRevaluation} from '../assets-api';
-import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
+import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import {UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
 import {AssetRevaluationService} from '../services/asset-revaluation.service';
 import {AssetRevaluationLookupService} from '../services/asset-revaluation-lookup.service';
@@ -11,9 +11,9 @@ import { MaterialModule } from '@ss/common/api-common';
 
 
 
-import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
+import { DatePickerComponent } from '@ss/common/ui-datepicker';
 import { RouterModule } from '@angular/router';
-import { CustomAttributesModule } from '@ss/custom-attributes';
+
 
 import { QRCodeModule } from 'angularx-qrcode';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
@@ -27,12 +27,10 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         CommonModule,
         MaterialModule,
         TranslateDirective,
-        TranslatePipe,
-        CommonUiAutoCompleteModule,
-        CommonUiDatepickerModule,
         RouterModule,
-        CustomAttributesModule,
-        QRCodeModule
+
+        QRCodeModule,
+        UiAutoCompleteComponent
     ]
 })
 export class AssetRevaluationDetailComponent extends BaseChildEntityDetailComponent<AssetRevaluation> implements OnInit {

@@ -20,8 +20,8 @@ import { ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup, Validators }
 import { MatCard, MatCardContent } from '@angular/material/card';
 import { MatError, MatFormField, MatLabel } from '@angular/material/form-field';
 import { MatInput } from '@angular/material/input';
-import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
-import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
+
+import { DatePickerComponent } from '@ss/common/ui-datepicker';
 import { CriterionService } from '../services/criterion.service';
 import { MatListOption, MatSelectionList } from "@angular/material/list";
 import { MatOption } from "@angular/material/autocomplete";
@@ -30,7 +30,7 @@ import { MatSelect } from "@angular/material/select";
 @Component({
     selector: 'ss-gica-criteria-detail',
     standalone: true,
-    imports: [CommonModule,  MatCell, MatCellDef, MatColumnDef, MatHeaderCell, MatHeaderRow, MatHeaderRowDef, MatRow, MatRowDef, MatSort, MatSortHeader, MatTable,  MatCard, MatCardContent, MatError, MatFormField, MatInput, MatLabel, ReactiveFormsModule, CommonUiAutoCompleteModule, CommonUiDatepickerModule, MatListOption, MatSelectionList, MatOption, MatSelect],
+    imports: [CommonModule,  MatCell, MatCellDef, MatColumnDef, MatHeaderCell, MatHeaderRow, MatHeaderRowDef, MatRow, MatRowDef, MatSort, MatSortHeader, MatTable,  MatCard, MatCardContent, MatError, MatFormField, MatInput, MatLabel, ReactiveFormsModule,  DatePickerComponent, MatListOption, MatSelectionList, MatOption, MatSelect],
     templateUrl: './criteria-detail.component.html',
     styleUrl: './criteria-detail.component.css'
 })

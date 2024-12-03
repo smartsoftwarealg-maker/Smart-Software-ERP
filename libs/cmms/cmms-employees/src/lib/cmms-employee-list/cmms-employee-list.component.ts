@@ -12,8 +12,8 @@ import { Observable, of } from 'rxjs';
 import { ImageInputComponent, ImageModel } from '@ss/common/ui-image-input';
 
 
-import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
-import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
+import { DatePickerComponent } from '@ss/common/ui-datepicker';
+
 import { CmmsEmployeeService } from '../services/cmms-employee.service';
 import { PaginationComponent } from '@ss/common/ui-pagination';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
@@ -26,9 +26,9 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         MaterialModule,
         TranslateDirective,
         TranslatePipe,
-        CommonUiDatepickerModule,
+        DatePickerComponent,
         RouterModule,
-        CommonUiAutoCompleteModule,
+
         PaginationComponent,
         ImageInputComponent
     ],

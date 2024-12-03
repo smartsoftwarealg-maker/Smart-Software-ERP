@@ -1,7 +1,7 @@
 import { Component, inject, OnInit } from '@angular/core';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {  ImageModel } from "@ss/common/ui-image-input";
-import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from "@ss/common/ui-auto-complete";
+import {  DefaultAutoCompleteModel } from "@ss/common/ui-auto-complete";
 import {
     ClassService,
     LookupsService,
@@ -25,9 +25,6 @@ import {Observable} from 'rxjs';
 import {tap} from 'rxjs/operators';
 import {Article, SSArticleService} from '@ss/scheduled-sales/api-scheduled-sales';
 import { CommonModule } from "@angular/common";
-import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
-import { LogisticsUiDocImportModule } from "@ss/logistics/ui-doc-import";
-import { CommonUiColorSelectModule } from "@ss/common/ui-color-select";
 import { ColorPickerModule } from "ngx-color-picker";
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
@@ -43,10 +40,6 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         TranslatePipe,
         ReactiveFormsModule,
         RouterModule,
-        CommonUiDatepickerModule,
-        CommonUiAutoCompleteModule,
-        LogisticsUiDocImportModule,
-        CommonUiColorSelectModule,
         ColorPickerModule
     ]
 })

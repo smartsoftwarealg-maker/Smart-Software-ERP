@@ -7,8 +7,8 @@ import { slideToRight } from "@ss/costing/costing-utils";
 import { CItem } from '@ss/costing/costing-utils';
 import { CommonModule } from "@angular/common";
 import { MaterialModule } from "@ss/common/api-common";
-import { CommonUiAutoCompleteModule } from "@ss/common/ui-auto-complete";
-import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
+
+import { DatePickerComponent } from "@ss/common/ui-datepicker";
 import {  ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { BaseEntityDetailComponent } from "@ss/common/ui-base-entity";
 import { ShellService, SnackBarService } from "@ss/common/ui-shell";
@@ -28,8 +28,8 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     TranslateDirective,
     ReactiveFormsModule,
 
-    CommonUiAutoCompleteModule,
-    CommonUiDatepickerModule,
+
+    DatePickerComponent,
 
   ],
   animations: [slideToRight]

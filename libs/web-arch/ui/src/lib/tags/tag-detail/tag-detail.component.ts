@@ -1,22 +1,15 @@
 import { Component, HostBinding, OnInit, ViewChild } from '@angular/core';
-import { Observable } from 'rxjs';
-import { switchMap, tap } from 'rxjs/operators';
 import { ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { Tag } from '../tag';
-import { Service, ServiceService } from '@ss/common/api-lookup';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import {  ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { TagService } from '../tag-list/tag.service';
 import { CommonModule } from '@angular/common';
 import { MaterialModule } from '@ss/common/api-common';
-
-
-import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
-import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
-import { UiStockInfoComponent } from '@ss/logistics/ui-stock-info';
-import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
+import { TranslateDirective } from '@ss/common/ui-lang';
+import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 
 @Component({
     selector: 'ss-tag-detail',
@@ -27,11 +20,8 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         CommonModule,
         MaterialModule,
         TranslateDirective,
-        TranslatePipe,
         ReactiveFormsModule,
-        RouterModule,
-        CommonUiDatepickerModule,
-        CommonUiAutoCompleteModule
+        RouterModule
     ]
 })
 export class TagDetailComponent extends BaseEntityDetailComponent<Tag> {

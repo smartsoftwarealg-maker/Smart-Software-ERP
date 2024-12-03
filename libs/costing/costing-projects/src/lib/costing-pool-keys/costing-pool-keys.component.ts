@@ -4,13 +4,10 @@ import { BaseChildEntityListComponent } from '@ss/common/ui-base-entity';
 import { CPoolKey } from '@ss/costing/costing-utils';
 import { RouterModule } from '@angular/router';
 import { MaterialModule } from '@ss/common/api-common';
-
-
-
 import { CostingPoolKeysService } from '@ss/costing/costing-projects';
 import { FormBuilder, Validators } from '@angular/forms';
 import { CostingKeyService } from '@ss/costing/costing-keys';
-import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
+import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
@@ -22,7 +19,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         MaterialModule,
         TranslateDirective,
         TranslatePipe,
-        CommonUiAutoCompleteModule
+        UiAutoCompleteComponent
     ],
     templateUrl: './costing-pool-keys.component.html',
     styleUrl: './costing-pool-keys.component.css',

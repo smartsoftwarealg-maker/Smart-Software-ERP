@@ -16,16 +16,12 @@ import {
 } from '@ss/common/api-lookup';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {  ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
-import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
+import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { ImageInputComponent, ImageModel } from '@ss/common/ui-image-input';
 import { HttpService, MaterialModule } from '@ss/common/api-common';
 import { CommonModule } from '@angular/common';
-
-
-import { StockUiArticleStoreModule } from '@ss/stock/article-store';
-
-import { UiStockInfoComponent } from '@ss/logistics/ui-stock-info';
 import { TranslateDirective } from '@ss/common/ui-lang';
+import { ArticleStoreComponent } from '@ss/stock/article-store';
 
 @Component({
     selector: 'ss-article-detail',
@@ -35,11 +31,11 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     imports: [
         CommonModule,
         MaterialModule,
-        StockUiArticleStoreModule,
         RouterModule,
         TranslateDirective,
-        CommonUiAutoCompleteModule,
-        ImageInputComponent
+        ImageInputComponent,
+        UiAutoCompleteComponent,
+        ArticleStoreComponent
     ]
 })
 export class ArticleDetailComponent extends BaseEntityDetailComponent<Article> implements OnInit {

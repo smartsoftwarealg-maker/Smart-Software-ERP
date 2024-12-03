@@ -1,7 +1,7 @@
 <div class="container">
     <mat-card>
         @if (form !== null) {
-            <form novalidate [formGroup]="form">
+            <form [formGroup]="form">
 
                 <mat-form-field class="default-25 sm-50">
                     <mat-label translate>COMMON_NUMBER</mat-label>
@@ -19,14 +19,15 @@
                 </mat-form-field>
 
                 <mat-form-field class="default-50 sm-100">
-                    <mat-label translate>COMMON_DATE</mat-label>
-                    <ss-date-picker [required]=true formControlName="date"></ss-date-picker>
-                    @if (form.controls['date']?.hasError('required')) {
-                        <mat-error translate>
+                        <mat-label translate>COMMON_DATE</mat-label>
+                        <ss-date-picker [required]=true
+                                        formControlName="date"
+                                        [type]="'date'">
+                        </ss-date-picker>
+                        <mat-error *ngIf="form.controls['date'].hasError('required')" translate>
                             COMMON_FIELD_REQUIRED
                         </mat-error>
-                    }
-                </mat-form-field>
+                    </mat-form-field>
 
                 @if (receivingBanks?.length > 0) {
                         <mat-form-field class="default-50 sm-100">

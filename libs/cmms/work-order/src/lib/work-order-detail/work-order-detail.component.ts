@@ -12,11 +12,11 @@ import { CommonModule } from '@angular/common';
 
 import { MatTableModule } from '@angular/material/table';
 
-import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
+
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
-import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
+import { DatePickerComponent } from '@ss/common/ui-datepicker';
 import { MatButtonModule } from '@angular/material/button';
 import { MaterialModule } from '@ss/common/api-common';
 import { CMMSWorkOrderArticleService } from '../services/c-m-m-s-work-order-article.service';
@@ -34,13 +34,13 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
         CommonModule,
         PaginationComponent,
         MatTableModule,
-        CommonUiAutoCompleteModule,
+
         FormsModule,
         MatFormFieldModule,
         ReactiveFormsModule,
         MatCardModule,
         MatInputModule,
-        CommonUiDatepickerModule,
+        DatePickerComponent,
         MatButtonModule,
         MaterialModule,
         RouterOutlet

@@ -6,8 +6,8 @@ import { MaterialModule, PaginatorPersistenceService } from '@ss/common/api-comm
 
 import { ReactiveFormsModule } from '@angular/forms';
 
-import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
-import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
+
+import { DatePickerComponent } from '@ss/common/ui-datepicker';
 import {  ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
@@ -30,8 +30,8 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         TranslateDirective,
         TranslatePipe,
         ReactiveFormsModule,
-        CommonUiAutoCompleteModule,
-        CommonUiDatepickerModule,
+
+        DatePickerComponent,
         PaginationComponent
 
     ],

@@ -12,10 +12,10 @@ import { DecimalPipe, NgIf } from '@angular/common';
 import {LanguageService} from '@ss/common/api-common';
 import { MatCard, MatCardContent } from "@angular/material/card";
 import { MatFormField, MatLabel, MatError } from "@angular/material/form-field";
-import { TranslateDirective } from "../../../../../common/ui-lang/src/lib/translate.directive";
+import { TranslateDirective } from '@ss/common/ui-lang';
 import { MatInput } from "@angular/material/input";
-import { DatePickerComponent } from "../../../../../common/ui-datepicker/src/lib/date-picker.component";
-import { UiAutoCompleteComponent } from "../../../../../common/ui-auto-complete/src/lib/auto-complete.component";
+import { DatePickerComponent } from '@ss/common/ui-datepicker';
+import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 
 @Component({
     selector: 'ss-budget-commitment-detail',

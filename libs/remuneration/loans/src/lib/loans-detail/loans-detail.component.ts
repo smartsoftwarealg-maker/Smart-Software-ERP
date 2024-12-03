@@ -7,14 +7,11 @@ import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { LoansService } from '../loans.service';
 import { LoginService, MaterialModule } from '@ss/common/api-common';
-import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
+import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { ElementTypesService } from '@ss/remuneration/element-types';
 import { EmployeeService, PersonAutocompleteClass } from '@ss/employee-services/employee-services';
 import {  LoanTypeService } from '@ss/payroll-common';
 import { CommonModule } from '@angular/common';
-
-
-import { RemunerationPaymonthEditorModule } from '@ss/remuneration/paymonth-editor';
 
 type Period = {
     year: number;
@@ -29,8 +26,7 @@ type Period = {
     imports: [
         CommonModule,
         MaterialModule,
-        CommonUiAutoCompleteModule,
-        RemunerationPaymonthEditorModule
+        UiAutoCompleteComponent
     ]
 })
 export class LoansDetailComponent extends BaseEntityDetailComponent<Loan> {

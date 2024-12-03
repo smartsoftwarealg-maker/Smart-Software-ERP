@@ -7,12 +7,9 @@ import { CommonModule, DecimalPipe } from '@angular/common';
 
 
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
-import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
-import { CommonUiAutoCompleteModule } from "@ss/common/ui-auto-complete";
+import { DatePickerComponent } from "@ss/common/ui-datepicker";
 
-import { LogisticsUiDocImportModule } from "@ss/logistics/ui-doc-import";
-import { UiStockInfoComponent } from "@ss/logistics/ui-stock-info";
-import { CommonUiColorSelectModule } from "@ss/common/ui-color-select";
+
 import { ColorPickerModule } from "ngx-color-picker";
 import { CustomerBalanceService } from '../services/customer-balance.service';
 import { ScheduleBalanceService } from '../services/schedule-balance.service';
@@ -21,6 +18,7 @@ import { Turnover } from '@ss/scheduled-sales/api-scheduled-sales';
 import { switchMap, tap } from 'rxjs';
 import { Chart, ChartItem, registerables } from 'chart.js';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
+import { ColorSelectComponent } from '@ss/common/ui-color-select';
 
 @Component({
     selector: 'ss-customer-history',
@@ -31,16 +29,10 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         CommonModule,
         MaterialModule,
         TranslateDirective,
+        ReactiveFormsModule,
         TranslatePipe,
-        ReactiveFormsMdule,
         RouterModule,
-        CommonUiDatepickerModule,
-        CommonUiAutoCompleteModule,
-
-        LogisticsUiDocImportModule,
-        UiStockInfoComponent,
-
-        CommonUiColorSelectModule,
+        ColorSelectComponent,
         ColorPickerModule
     ]
 

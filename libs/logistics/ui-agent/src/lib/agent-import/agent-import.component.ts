@@ -1,7 +1,7 @@
 import { Component, Inject, inject, Input } from '@angular/core';
 import { ReactiveFormsModule, UntypedFormBuilder, Validators } from '@angular/forms';
 import { LotsService, Store } from '@ss/common/api-lookup';
-import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
+import {  DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
 import { finalize, Subscription } from 'rxjs';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { HttpEventType } from '@angular/common/http';
@@ -12,7 +12,7 @@ import { MaterialModule } from '@ss/common/api-common';
 
 
 
-import { CustomAttributesModule } from '@ss/custom-attributes';
+
 import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
@@ -27,8 +27,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         TranslateDirective,
         TranslatePipe,
         ReactiveFormsModule,
-        CommonUiAutoCompleteModule,
-        CustomAttributesModule
+
     ],
 
 })

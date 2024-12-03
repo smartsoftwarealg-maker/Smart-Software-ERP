@@ -28,7 +28,7 @@ import { ActivityDetailComponent, ActivityListComponent } from './components/act
 import { RoleDetailComponent, RoleListComponent } from './components/role.component';
 import { EmploymentTypeListComponent, EmploymentTypeDetailComponent } from './components/employment-type.component';
 import { SuspensionReasonListComponent, SuspensionReasonDetailComponent } from './components/suspension-reason.component';
-import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
+
 import {DivisionDetailComponent, DivisionListComponent} from './components/division.component';
 import { DepartmentDetailComponent, DepartmentListComponent } from './components/department.component';
 import {SalesCategoryDetailComponent, SalesCategoryListComponent} from './components/sales.category.component';
@@ -66,7 +66,7 @@ import { CareerMotiveDetailComponent, CareerMotiveListComponent } from './compon
         MaterialModule,
 
 
-        CommonUiAutoCompleteModule,
+
 
         WilayaDetailComponent,
         WilayaListComponent,
@@ -243,7 +243,7 @@ import { CareerMotiveDetailComponent, CareerMotiveListComponent } from './compon
         ProjectMotiveListComponent,
         AwardProcedureDetailComponent,
         AwardProcedureListComponent,
-        CommonUiAutoCompleteModule,
+
 
         ArticleTypeListComponent,
         ArticleTypeDetailComponent,

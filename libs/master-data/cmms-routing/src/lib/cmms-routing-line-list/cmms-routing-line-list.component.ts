@@ -13,7 +13,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MaterialModule } from '@ss/common/api-common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterOutlet } from '@angular/router';
-import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
+
 import { PaginationComponent } from '@ss/common/ui-pagination';
 import { TranslatePipe } from '@ss/common/ui-lang';
 
@@ -34,7 +34,7 @@ import { TranslatePipe } from '@ss/common/ui-lang';
         MaterialModule,
         ReactiveFormsModule,
         RouterOutlet,
-        CommonUiAutoCompleteModule,
+
         PaginationComponent,
         TranslatePipe
     ]

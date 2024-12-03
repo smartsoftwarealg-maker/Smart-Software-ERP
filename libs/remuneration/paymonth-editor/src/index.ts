@@ -1,1 +1,1 @@
-export * from './lib/remuneration-paymonth-editor.module';
+export * from './lib/paymonth-editor/paymonth-editor.component';

@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { BaseChildEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { OH } from '@ss/costing/costing-utils';
 import { FormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
-import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
+import {  DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
 import { RouterModule } from '@angular/router';
 import { MaterialModule } from '@ss/common/api-common';
 
@@ -21,7 +21,7 @@ import { CostingKeyService } from '@ss/costing/costing-keys';
         RouterModule,
         MaterialModule,
         MatAutocompleteModule,
-        CommonUiAutoCompleteModule,
+
     ],
     templateUrl: './costing-oh-detail.component.html',
     styleUrls: ['./costing-oh-detail.component.scss']

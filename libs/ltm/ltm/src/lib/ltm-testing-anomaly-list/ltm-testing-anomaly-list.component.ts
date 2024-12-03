@@ -8,15 +8,13 @@ import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import { dateToYmdStr, MaterialModule, PaginatorPersistenceService } from '@ss/common/api-common';
 import { CommonModule } from "@angular/common";
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
-import { CommonUiAutoCompleteModule } from "@ss/common/ui-auto-complete";
-import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
-import { CommonUiHourPickerModule } from "@ss/common/ui-hour-picker";
+import { DatePickerComponent } from "@ss/common/ui-datepicker";
 import { LtmTestingAnomalyService } from '@ltm/ltm-api';
 import { Observable } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { PaginationComponent } from '@ss/common/ui-pagination';
-import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
+import { TranslateDirective } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-ltm-testing-anomaly-list',
@@ -28,11 +26,8 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         MaterialModule,
         PaginationComponent,
         ReactiveFormsModule,
-        CommonUiAutoCompleteModule,
-        CommonUiDatepickerModule,
-        CommonUiHourPickerModule,
-        TranslateDirective,
-        TranslatePipe
+        DatePickerComponent,
+        TranslateDirective
     ],
 })
 export class LtmTestingAnomalyListComponent extends BaseEntityListComponent<LTMTestingAnomaly> {

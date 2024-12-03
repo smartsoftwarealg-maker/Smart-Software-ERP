@@ -5,7 +5,7 @@ import {  ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import {Card, CardService} from '@ss/logistics/api-card';
 import {ArticleService} from '@ss/master-data/api-article';
 import { MaterialModule, PaginationModel } from '@ss/common/api-common';
-import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
+import {  DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
 import {Store} from '@ss/common/api-lookup';
 import { ReactiveFormsModule, UntypedFormControl, UntypedFormGroup } from '@angular/forms';
 import {ArticleLotsService} from '@ss/stock/api-article-store';
@@ -13,7 +13,7 @@ import {LanguageService} from '@ss/common/api-common';
 import { CommonModule } from '@angular/common';
 
 
-import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
+import { DatePickerComponent } from '@ss/common/ui-datepicker';
 import { PaginationComponent } from '@ss/common/ui-pagination';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
@@ -28,8 +28,8 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         TranslateDirective,
         TranslatePipe,
         ReactiveFormsModule,
-        CommonUiDatepickerModule,
-        CommonUiAutoCompleteModule,
+        DatePickerComponent,
+
         PaginationComponent
     ]
 

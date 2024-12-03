@@ -25,7 +25,7 @@ export class LTMModule {
     private anomalyBtn: BadgeButton = {
         badgeId: 3,
         countObservable: this.abnormalTestSrv
-            .refresh(new Date(new Date().getTime() - 24 * 3600 * 1000), new Date(), 0, 49)
+            .refresh(new Date(new Date().getTime() - 24 * 3600 * 1000), new Date(), false, 0, 49)
             .pipe(map(res => ({ count: res.itemCount })),
                 repeat( { delay: 120_000 }),
                 catchError(() => of({ count: 0})) ),

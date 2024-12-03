@@ -6,13 +6,13 @@ import {
 import { RouterModule } from '@angular/router';
 
 import { MaterialModule, PaginationModel } from '@ss/common/api-common';
-import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
+
 import { CommonModule } from '@angular/common';
 
 
 
-import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
-import { CustomAttributesModule } from '@ss/custom-attributes';
+import { DatePickerComponent } from '@ss/common/ui-datepicker';
+
 
 import { QRCodeModule } from 'angularx-qrcode';
 import { AssetRecordedInventoryService } from '../services/asset-recorded-inventory.service';
@@ -29,11 +29,8 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         CommonModule,
         MaterialModule,
         TranslateDirective,
-        TranslatePipe,
-        CommonUiAutoCompleteModule,
-        CommonUiDatepickerModule,
+
         RouterModule,
-        CustomAttributesModule,
 
         QRCodeModule,
         PaginationComponent

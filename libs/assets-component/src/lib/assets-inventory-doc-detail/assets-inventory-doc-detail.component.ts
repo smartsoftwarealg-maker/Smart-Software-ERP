@@ -11,7 +11,7 @@ import {
     OfficeService
 } from '@ss/common/api-lookup';
 import { LoginService, MaterialModule } from '@ss/common/api-common';
-import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
+import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import {Agent, ConsumerService} from "@ss/logistics/api-agent";
 import {MatExpansionPanel} from '@angular/material/expansion';
 import { AccountService, AccountStringAutocompleteModel } from '@ss/accounting/api-accounts';
@@ -24,8 +24,8 @@ import { CommonModule } from '@angular/common';
 
 
 
-import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
-import { CustomAttributesModule } from '@ss/custom-attributes';
+import { DatePickerComponent } from '@ss/common/ui-datepicker';
+
 import { AssetInventoryDocService } from '../services/asset-inventory-doc.service';
 import { AssetsBuildingService } from '@ss/assets-component';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
@@ -40,10 +40,10 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         MaterialModule,
         TranslateDirective,
         TranslatePipe,
-        CommonUiAutoCompleteModule,
-        CommonUiDatepickerModule,
+        DatePickerComponent,
         RouterModule,
-        CustomAttributesModule
+
+        UiAutoCompleteComponent
     ]
 })
 export class AssetsInventoryDocDetailComponent extends BaseEntityDetailComponent<AssetInventoryDoc> implements OnInit {

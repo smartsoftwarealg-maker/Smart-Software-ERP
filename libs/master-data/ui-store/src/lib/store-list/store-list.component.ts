@@ -10,13 +10,9 @@ import {  ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import { MaterialModule, PaginatorPersistenceService } from "@ss/common/api-common";
 import { CommonModule } from "@angular/common";
-
-
 import { ReactiveFormsModule } from "@angular/forms";
+import { DatePickerComponent } from "@ss/common/ui-datepicker";
 
-import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
-import { CommonUiAutoCompleteModule } from "@ss/common/ui-auto-complete";
-import { StockUiArticleStoreModule } from "@ss/stock/article-store";
 import { Article, ArticleService } from '@ss/master-data/api-article';
 import { PaginationComponent } from '@ss/common/ui-pagination';
 import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
@@ -31,12 +27,9 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         CommonModule,
         MaterialModule,
         TranslateDirective,
-        TranslatePipe,
         RouterModule,
         ReactiveFormsModule,
-        CommonUiDatepickerModule,
-        CommonUiAutoCompleteModule,
-        StockUiArticleStoreModule,
+
         PaginationComponent,
         DocInfoComponent
     ]

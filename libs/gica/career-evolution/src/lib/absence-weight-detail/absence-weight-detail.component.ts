@@ -22,7 +22,7 @@ import { MatError, MatFormField, MatLabel } from '@angular/material/form-field';
 import { MatInput } from '@angular/material/input';
 import { AbsenceWeightService } from '../services/absence-weight.service';
 import { ElementsInfoService } from '@ss/remuneration/elementsinfo';
-import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
+import {  DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
 import { MatTooltip } from '@angular/material/tooltip';
 import { MatOption } from '@angular/material/autocomplete';
 import { MatSelect } from '@angular/material/select';
@@ -30,7 +30,7 @@ import { MatSelect } from '@angular/material/select';
 @Component({
     selector: 'ss-gica-scale-detail',
     standalone: true,
-    imports: [CommonModule,  MatCell, MatCellDef, MatColumnDef, MatHeaderCell, MatHeaderRow, MatHeaderRowDef, MatRow, MatRowDef, MatSort, MatSortHeader, MatTable,  MatCard, MatCardContent, MatError, MatFormField, MatInput, MatLabel, ReactiveFormsModule, CommonUiAutoCompleteModule, MatTooltip, MatOption, MatSelect],
+    imports: [CommonModule,  MatCell, MatCellDef, MatColumnDef, MatHeaderCell, MatHeaderRow, MatHeaderRowDef, MatRow, MatRowDef, MatSort, MatSortHeader, MatTable,  MatCard, MatCardContent, MatError, MatFormField, MatInput, MatLabel, ReactiveFormsModule,  MatTooltip, MatOption, MatSelect],
     templateUrl: './absence-weight-detail.component.html',
     styleUrl: './absence-weight-detail.component.css'
 })

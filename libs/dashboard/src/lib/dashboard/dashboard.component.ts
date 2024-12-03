@@ -25,13 +25,13 @@ import {
 } from '@ss/common/api-common';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import {AgentLookupModel, AgentService} from '@ss/logistics/api-agent';
-import { CommonUiAutoCompleteModule, Id } from '@ss/common/ui-auto-complete';
+import {  Id } from '@ss/common/ui-auto-complete';
 import { Chart, ChartConfiguration, ChartItem, registerables } from "chart.js";
 import { debounceTime, distinctUntilChanged } from "rxjs/operators";
 import { CommonModule } from '@angular/common';
 
 
-import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
+import { DatePickerComponent } from '@ss/common/ui-datepicker';
 import { PaginationComponent } from '@ss/common/ui-pagination';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
@@ -46,8 +46,8 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         TranslateDirective,
         TranslatePipe,
         ReactiveFormsModule,
-        CommonUiDatepickerModule,
-        CommonUiAutoCompleteModule,
+        DatePickerComponent,
+
         PaginationComponent
     ]
 })

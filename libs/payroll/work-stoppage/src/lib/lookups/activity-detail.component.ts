@@ -5,12 +5,9 @@ import {  ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { ReactiveFormsModule, UntypedFormBuilder } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { MaterialModule } from '@ss/common/api-common';
-
-
-import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
 import { BaseLookupDetailClass } from './detail-template/base-lookup-detail.class';
 import { SocialActivityService } from '../services/social-activity.service';
-import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
+import { TranslateDirective } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-activities-detail',
@@ -21,9 +18,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         CommonModule,
         MaterialModule,
         TranslateDirective,
-        TranslatePipe,
-        ReactiveFormsModule,
-        CommonUiAutoCompleteModule
+        ReactiveFormsModule
     ],
 })
 export class ActivityDetailComponent extends BaseLookupDetailClass {

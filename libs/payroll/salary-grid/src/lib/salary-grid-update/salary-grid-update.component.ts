@@ -5,8 +5,8 @@ import { CommonModule } from "@angular/common";
 import { LoginService, MaterialModule } from "@ss/common/api-common";
 
 
-import { CommonUiAutoCompleteModule } from "@ss/common/ui-auto-complete";
-import { RemunerationPaymonthEditorModule } from "@ss/remuneration/paymonth-editor";
+
+
 
 import { PayrollMonthService } from "@ss/remuneration/payroll-month";
 import { GridService } from "../grid.service";
@@ -23,8 +23,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         MaterialModule,
         TranslateDirective,
         TranslatePipe,
-        CommonUiAutoCompleteModule,
-        RemunerationPaymonthEditorModule
+
     ]
 })
 export class SalaryGridUpdateComponent implements OnInit {

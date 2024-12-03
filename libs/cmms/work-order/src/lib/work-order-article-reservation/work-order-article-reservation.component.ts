@@ -6,12 +6,12 @@ import { WorkArticle } from '@ss/cmms/cmms-api';
 
 import { MatTableModule } from '@angular/material/table';
 
-import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
+
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
-import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
+import { DatePickerComponent } from '@ss/common/ui-datepicker';
 import { MatButtonModule } from '@angular/material/button';
 import { MaterialModule } from '@ss/common/api-common';
 import { MatSelectionList } from '@angular/material/list';
@@ -26,13 +26,13 @@ import { CMMSWorkOrderArticleService } from '@ss/cmms/work-order';
 
         MatTableModule,
 
-        CommonUiAutoCompleteModule,
+
         FormsModule,
         MatFormFieldModule,
         ReactiveFormsModule,
         MatCardModule,
         MatInputModule,
-        CommonUiDatepickerModule,
+        DatePickerComponent,
         MatButtonModule,
         MaterialModule
     ],

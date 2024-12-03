@@ -8,8 +8,8 @@ import { MaterialModule } from '@ss/common/api-common';
 
 
 
-import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
-import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
+import { DatePickerComponent } from '@ss/common/ui-datepicker';
+
 
 @NgModule({
     imports: [
@@ -18,8 +18,8 @@ import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
 
 
 
-        CommonUiDatepickerModule,
-        CommonUiAutoCompleteModule,
+        DatePickerComponent,
+
         RouterModule,
         TrajectoryListComponent,
         TrajectoryDetailComponent

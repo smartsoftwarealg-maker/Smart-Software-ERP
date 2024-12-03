@@ -4,8 +4,8 @@ import { BaseChildEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { CmmsPersonService, WorkPermit } from "@ss/cmms/cmms-api";
 import { CMMSWorkPermitService } from '../services/c-m-m-s-work-permit.service';
 import { FormBuilder, FormsModule, ReactiveFormsModule, UntypedFormGroup, Validators } from '@angular/forms';
-import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from "@ss/common/ui-auto-complete";
-import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
+import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
+import { DatePickerComponent } from '@ss/common/ui-datepicker';
 
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -23,15 +23,16 @@ import { CMMSPermitTypeService } from "@ss/cmms/lookups";
     imports: [
         CommonModule,
         MatTableModule,
-        CommonUiAutoCompleteModule,
+
         FormsModule,
         MatFormFieldModule,
         ReactiveFormsModule,
         MatCardModule,
         MatInputModule,
-        CommonUiDatepickerModule,
+        DatePickerComponent,
         MatButtonModule,
-        MaterialModule
+        MaterialModule,
+        UiAutoCompleteComponent
     ],
     templateUrl: './work-permit-detail.component.html',
     styleUrl: './work-permit-detail.component.css'

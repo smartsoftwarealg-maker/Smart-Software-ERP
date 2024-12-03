@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ChartService } from '../chart.service';
 import { ShellService } from '@ss/common/ui-shell';
 import { ActivatedRoute } from '@angular/router';
-import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
+import { DatePickerComponent } from '@ss/common/ui-datepicker';
 import { MaterialModule } from '@ss/common/api-common';
 import { FormControl } from '@angular/forms';
 
@@ -13,7 +13,7 @@ import { Chart, ChartConfiguration, ChartItem, registerables } from 'chart.js';
 @Component({
     selector: 'ss-cmms-gantt',
     standalone: true,
-    imports: [CommonModule, CommonUiDatepickerModule, MaterialModule],
+    imports: [CommonModule, DatePickerComponent, MaterialModule],
     templateUrl: './cmms-gantt.component.html',
     styleUrls: ['./cmms-gantt.component.css'],
 })

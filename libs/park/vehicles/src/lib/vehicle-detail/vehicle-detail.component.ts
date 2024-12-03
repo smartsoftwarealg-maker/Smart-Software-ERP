@@ -10,9 +10,9 @@ import { HttpService, LoginService, MaterialModule } from '@ss/common/api-common
 import { FixedElementsEntryService } from '@ss/remuneration/elements-entry';
 import { VehicleService } from '../services/vehicle.service';
 import { VehicleTypeService } from '@ss/common/api-lookup';
-import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
+import {  DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
 import {  AppArchiveService, PARK_ARCHIVES } from '@ss/common/app-archive';
-import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
+import { DatePickerComponent } from '@ss/common/ui-datepicker';
 
 
 import { MatButtonModule } from '@angular/material/button';
@@ -38,8 +38,8 @@ import { VehicleMissionService } from '../services/vehicle-mission.service';
     imports: [
         CommonModule,
 
-        CommonUiAutoCompleteModule,
-        CommonUiDatepickerModule,
+
+        DatePickerComponent,
 
 
         FormsModule,

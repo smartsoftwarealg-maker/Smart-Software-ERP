@@ -1,4 +1,3 @@
-export * from './lib/attendance.module';
 export * from './lib/attendance-machine-list/attendance-machine-list.component';
 export * from './lib/attendance-machine-detail/attendance-machine-detail.component';
 export * from './lib/work-shift-list/work-shift-list.component';

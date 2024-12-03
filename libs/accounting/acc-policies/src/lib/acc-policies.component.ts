@@ -13,9 +13,9 @@ import {ACCPolicy} from '@ss/accounting/accounting-api';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import { MatCheckboxChange, MatCheckbox } from '@angular/material/checkbox';
 import { NgIf } from '@angular/common';
-import { TranslateDirective } from '../../../../common/ui-lang/src/lib/translate.directive';
+import { TranslateDirective } from '@ss/common/ui-lang';
 import { MatFormField, MatLabel } from '@angular/material/form-field';
-import { UiAutoCompleteComponent } from '../../../../common/ui-auto-complete/src/lib/auto-complete.component';
+import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { MatInput } from '@angular/material/input';
 
 @Component({

@@ -8,8 +8,8 @@ import { MaterialModule, PaginatorPersistenceService } from '@ss/common/api-comm
 import { CostingKeyService } from '../costing-key.service';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
-import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
-import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
+
+import { DatePickerComponent } from '@ss/common/ui-datepicker';
 
 import { CKey, slideToRight } from '@ss/costing/costing-utils';
 import { PaginationComponent } from '@ss/common/ui-pagination';
@@ -27,8 +27,8 @@ import { TranslateDirective } from '@ss/common/ui-lang';
         TranslateDirective,
         ReactiveFormsModule,
 
-        CommonUiAutoCompleteModule,
-        CommonUiDatepickerModule,
+
+        DatePickerComponent,
         PaginationComponent
 
     ],

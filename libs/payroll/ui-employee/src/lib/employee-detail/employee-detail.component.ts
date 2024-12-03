@@ -47,22 +47,21 @@ import {EmployeeDiplomaService} from '../employee-diplomas/employee-diploma.serv
 import {EmployeeTrainingService} from '../employee-trainings/employee-training.service';
 import {PunishmentService} from '../employee-punishments/punishment.service';
 import { UserListService } from "@ss/common/api-users";
-import { ElementsInfo } from '@ss/remuneration/elementsinfo';
 import { MatCard, MatCardContent, MatCardFooter } from '@angular/material/card';
-import { ImageInputComponent } from '../../../../../common/ui-image-input/src/lib/image-input.component';
-import { TranslateDirective } from '../../../../../common/ui-lang/src/lib/translate.directive';
+import { ImageInputComponent } from '@ss/common/ui-image-input';
+import { TranslateDirective } from '@ss/common/ui-lang';
 import { MatTabGroup, MatTab } from '@angular/material/tabs';
 import { MatFormField, MatLabel, MatError } from '@angular/material/form-field';
 import { MatInput } from '@angular/material/input';
 import { NgIf, NgFor, AsyncPipe } from '@angular/common';
-import { DatePickerComponent } from '../../../../../common/ui-datepicker/src/lib/date-picker.component';
-import { UiAutoCompleteComponent } from '../../../../../common/ui-auto-complete/src/lib/auto-complete.component';
+import { DatePickerComponent } from '@ss/common/ui-datepicker';
+import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { MatRadioGroup, MatRadioButton } from '@angular/material/radio';
 import { MatSelect } from '@angular/material/select';
 import { MatOption } from '@angular/material/core';
 import { MatCheckbox } from '@angular/material/checkbox';
 import { MatButton } from '@angular/material/button';
-import { TranslatePipe } from '../../../../../common/ui-lang/src/lib/translate.pipe';
+import { TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-employee-detail',

@@ -9,9 +9,8 @@ import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { DefaultReportService } from '@ss/common/ui-default-report-component';
 import { CommonModule } from "@angular/common";
 import { ReactiveFormsModule } from "@angular/forms";
-import { CommonUiAutoCompleteModule } from "@ss/common/ui-auto-complete";
-import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
-import { CommonUiHourPickerModule } from "@ss/common/ui-hour-picker";
+
+import { DatePickerComponent } from "@ss/common/ui-datepicker";
 import { LtmMatterDuplicateComponent } from '../ltm-matter-duplicate/ltm-matter-duplicate.component';
 import { MatDialog } from '@angular/material/dialog';
 import { PaginationComponent } from '@ss/common/ui-pagination';
@@ -28,11 +27,6 @@ import { TranslateDirective } from '@ss/common/ui-lang';
         PaginationComponent,
         ReactiveFormsModule,
         TranslateDirective,
-
-        CommonUiAutoCompleteModule,
-        CommonUiDatepickerModule,
-        RouterOutlet,
-        CommonUiHourPickerModule
     ],
 })
 export class LineMatterListComponent extends BaseEntityListComponent<LTMLineMatter> {

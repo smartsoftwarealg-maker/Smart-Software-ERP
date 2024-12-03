@@ -14,8 +14,9 @@ import { MatCardModule } from "@angular/material/card";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from "@angular/material/input";
 import { MaterialModule } from "@ss/common/api-common";
-import { CommonUiAutoCompleteModule } from "@ss/common/ui-auto-complete";
+
 import { PaginationComponent } from '@ss/common/ui-pagination';
+import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 
 @Component({
     selector: 'ss-cmms-meter-detail',
@@ -32,7 +33,7 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
         MaterialModule,
         ReactiveFormsModule,
         RouterOutlet,
-        CommonUiAutoCompleteModule
+        UiAutoCompleteComponent
     ],
 })
 export class CMMSMeterDetailComponent extends BaseLookupDetailClass {

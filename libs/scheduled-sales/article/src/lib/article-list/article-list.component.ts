@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
-import {LookupsService, Mark, Unit, Vat} from '@ss/common/api-lookup';
+import {LookupsService} from '@ss/common/api-lookup';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import { ActivatedRoute, Router, RouterModule } from "@angular/router";
 import {  ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
@@ -8,17 +8,11 @@ import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import { HttpService, MaterialModule, PaginatorPersistenceService } from "@ss/common/api-common";
 import {Article, SSArticleService} from '@ss/scheduled-sales/api-scheduled-sales';
 import { CommonModule } from "@angular/common";
-
-
 import { ReactiveFormsModule } from "@angular/forms";
-import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
-import { CommonUiAutoCompleteModule } from "@ss/common/ui-auto-complete";
-import { LogisticsUiDocImportModule } from "@ss/logistics/ui-doc-import";
-import { UiStockInfoComponent } from "@ss/logistics/ui-stock-info";
-import { CommonUiColorSelectModule } from "@ss/common/ui-color-select";
+import { ColorSelectComponent } from "@ss/common/ui-color-select";
 import { ColorPickerModule } from "ngx-color-picker";
 import { PaginationComponent } from '@ss/common/ui-pagination';
-import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
+import { TranslateDirective } from '@ss/common/ui-lang';
 
 @Component({
     selector: "ss-article-list-ss",
@@ -29,14 +23,9 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         CommonModule,
         MaterialModule,
         TranslateDirective,
-        TranslatePipe,
         ReactiveFormsModule,
         RouterModule,
-        CommonUiDatepickerModule,
-        CommonUiAutoCompleteModule,
-        LogisticsUiDocImportModule,
-        UiStockInfoComponent,
-        CommonUiColorSelectModule,
+        ColorSelectComponent,
         ColorPickerModule,
         PaginationComponent,
         TranslateDirective

@@ -1,7 +1,7 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { BaseChildEntityListComponent } from '@ss/common/ui-base-entity';
 import { CMMSAssetReadingService } from '../cmms-asset-reading.service';
-import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
+import {  DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
 import { AssetsService } from '@ss/assets-component';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { AssetReading } from '@ss/cmms/cmms-api';
@@ -13,7 +13,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
+import { DatePickerComponent } from '@ss/common/ui-datepicker';
 import { MatButtonModule } from '@angular/material/button';
 import { MaterialModule } from '@ss/common/api-common';
 import { TranslatePipe } from '@ss/common/ui-lang';
@@ -34,8 +34,8 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
         MatFormFieldModule,
         MatInputModule,
         ReactiveFormsModule,
-        CommonUiDatepickerModule,
-        CommonUiAutoCompleteModule,
+        DatePickerComponent,
+
         MatButtonModule,
         MaterialModule,
         TranslatePipe,

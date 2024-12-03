@@ -11,7 +11,7 @@ import { DivisionsListComponent } from './divisions/divisions-list.component';
 import { DivisionDetailComponent } from './divisions/division-detail.component';
 
 import { RouterModule } from '@angular/router';
-import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
+
 import { DepartmentDetailComponent } from './departments/department-detail.component';
 import { DepartmentsListComponent } from './departments/departments-list.component';
 import { ServiceDetailComponent } from './services/service-detail.component';
@@ -26,10 +26,10 @@ import { ImageInputComponent } from '@ss/common/ui-image-input';
 
         OrgChartModule,
         MaterialModule,
-        CommonUiAutoCompleteModule,
 
 
-        CommonUiAutoCompleteModule,
+
+
         RouterModule,
         ImageInputComponent,
         OrganizationsComponent,

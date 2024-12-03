@@ -1,19 +1,12 @@
-import { Component, inject, Inject } from "@angular/core";
+import { Component } from "@angular/core";
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
-import { ActivatedRoute, RouterOutlet } from "@angular/router";
+import { ActivatedRoute } from "@angular/router";
 import { ReactiveFormsModule, UntypedFormBuilder, Validators } from "@angular/forms";
 import {  ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
-import { CommonUiAutoCompleteModule } from "@ss/common/ui-auto-complete";
 import { Lookup } from '@ss/common/api-lookup';
 import { CommonModule } from "@angular/common";
 import { MaterialModule } from "@ss/common/api-common";
-
-import { PaginationComponent } from '@ss/common/ui-pagination';
-
-
-import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
-import { CommonUiHourPickerModule } from "@ss/common/ui-hour-picker";
 import { LtmBleacherService } from '@ltm/ltm-api';
 import { TranslateDirective } from '@ss/common/ui-lang';
 
@@ -26,10 +19,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
         CommonModule,
         MaterialModule,
         ReactiveFormsModule,
-        TranslateDirective,
-        CommonUiAutoCompleteModule,
-        CommonUiDatepickerModule,
-        CommonUiHourPickerModule
+        TranslateDirective
     ],
 })
 export class LtmBleacherDetailComponent extends BaseEntityDetailComponent<Lookup> {

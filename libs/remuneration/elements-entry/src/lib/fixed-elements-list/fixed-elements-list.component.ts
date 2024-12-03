@@ -16,9 +16,8 @@ import { CommonModule } from "@angular/common";
 
 
 import { ReactiveFormsModule } from "@angular/forms";
-import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
-import { CommonUiAutoCompleteModule } from "@ss/common/ui-auto-complete";
-import { RemunerationInputFiltersModule } from "@ss/remuneration/input-filters";
+import { DatePickerComponent } from "@ss/common/ui-datepicker";
+
 import { PaginationComponent } from '@ss/common/ui-pagination';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
@@ -31,11 +30,8 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         CommonModule,
         MaterialModule,
         TranslateDirective,
-        TranslatePipe,
         ReactiveFormsModule,
-        CommonUiDatepickerModule,
-        CommonUiAutoCompleteModule,
-        RemunerationInputFiltersModule,
+
         ImageInputComponent,
         PaginationComponent
     ]

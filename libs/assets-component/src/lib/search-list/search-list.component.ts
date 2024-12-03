@@ -10,7 +10,7 @@ import { IsParamService, LanguageService, MaterialModule, PaginatorPersistenceSe
 import { Observable } from 'rxjs';
 import { debounceTime, distinctUntilChanged, map, tap } from 'rxjs/operators';
 import { UntypedFormBuilder } from '@angular/forms';
-import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
+import {  DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
 import { ConsumerService, SupplierService } from '@ss/logistics/api-agent';
 import { AssetLocationService } from '../services/asset-location.service';
 import { OfficeSearchComponent } from '../office-search/office-search.component';
@@ -21,8 +21,8 @@ import { CommonModule } from '@angular/common';
 
 
 
-import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
-import { CustomAttributesModule } from '@ss/custom-attributes';
+import { DatePickerComponent } from '@ss/common/ui-datepicker';
+
 
 import { QRCodeModule } from 'angularx-qrcode';
 import { PaginationComponent } from '@ss/common/ui-pagination';
@@ -38,10 +38,10 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         MaterialModule,
         TranslateDirective,
         TranslatePipe,
-        CommonUiAutoCompleteModule,
-        CommonUiDatepickerModule,
+
+        DatePickerComponent,
         RouterModule,
-        CustomAttributesModule,
+
         QRCodeModule,
         PaginationComponent
     ]

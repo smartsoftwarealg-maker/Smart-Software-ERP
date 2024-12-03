@@ -13,10 +13,10 @@ import { ShoppingCartService } from '../shopping-cart.service';
 import { Cartline } from '../cartline';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
-import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
+import { DatePickerComponent } from '@ss/common/ui-datepicker';
+
 import { SalesUiDeliveryLinesModule } from '@ss/sales/ui-delivery-lines';
-import { LogisticsUiDocImportModule } from '@ss/logistics/ui-doc-import';
+
 import { UiStockInfoComponent } from '@ss/logistics/ui-stock-info';
 import { PaginationComponent } from '@ss/common/ui-pagination';
 import { TranslateDirective } from '@ss/common/ui-lang';
@@ -32,10 +32,8 @@ import { TranslateDirective } from '@ss/common/ui-lang';
         TranslateDirective,
         ReactiveFormsModule,
         RouterModule,
-        CommonUiDatepickerModule,
-        CommonUiAutoCompleteModule,
+
         SalesUiDeliveryLinesModule,
-        LogisticsUiDocImportModule,
         ImageInputComponent,
         PaginationComponent
     ]

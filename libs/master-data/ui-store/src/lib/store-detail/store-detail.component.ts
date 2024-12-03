@@ -4,19 +4,14 @@ import {Article, ArticleService} from '@ss/master-data/api-article';
 import { ActivatedRoute, Router, RouterModule } from "@angular/router";
 import {switchMap, tap} from 'rxjs/operators';
 import {Observable} from 'rxjs';
-import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from "@angular/forms";
-import {LookupsService, Mark, Store, LotsService, Vat} from '@ss/common/api-lookup';
+import { FormBuilder, ReactiveFormsModule, Validators } from "@angular/forms";
+import {LookupsService, Mark, Vat} from '@ss/common/api-lookup';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {  ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
-import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from "@ss/common/ui-auto-complete";
 import { CommonModule } from "@angular/common";
 import { MaterialModule } from "@ss/common/api-common";
-
-
-
-import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
-import { StockUiArticleStoreModule } from "@ss/stock/article-store";
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
+import { ArticleStoreComponent } from '@ss/stock/article-store';
 
 @Component({
     selector: 'ss-article-detail',
@@ -27,15 +22,10 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         CommonModule,
         MaterialModule,
         TranslateDirective,
-        TranslatePipe,
         RouterModule,
         ReactiveFormsModule,
-
-
-        CommonUiDatepickerModule,
-        CommonUiAutoCompleteModule,
-        StockUiArticleStoreModule
-    ],
+        ArticleStoreComponent
+    ]
 })
 export class StoreDetailComponent extends BaseEntityDetailComponent<Article> implements OnInit {
 

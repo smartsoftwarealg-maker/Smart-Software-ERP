@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { BaseChildEntityListComponent } from '@ss/common/ui-base-entity';
 import { AssetTrigger } from '@ss/cmms/cmms-api';
-import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
+
 import { MaterialModule } from '@ss/common/api-common';
 import { CMMSAssetTriggerService } from '../cmms-asset-trigger.service';
 import { CommonModule } from '@angular/common';
@@ -24,7 +24,7 @@ import { TranslatePipe } from '@ss/common/ui-lang';
         MatTableModule,
 
         MaterialModule,
-        CommonUiAutoCompleteModule,
+
         PaginationComponent,
         TranslatePipe
     ]

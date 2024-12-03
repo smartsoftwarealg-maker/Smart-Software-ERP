@@ -34,8 +34,8 @@ import { MatTooltip } from '@angular/material/tooltip';
 import { FormBuilder, ReactiveFormsModule, UntypedFormGroup, Validators } from '@angular/forms';
 import { EmployeeService, PersonAutocompleteClass } from '@ss/employee-services/employee-services';
 import { MutualTypeService } from '@social/social-api';
-import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
-import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
+import {  DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
+import { DatePickerComponent } from '@ss/common/ui-datepicker';
 import { MatCard, MatCardContent } from '@angular/material/card';
 import { MatError, MatFormField, MatLabel } from '@angular/material/form-field';
 import { MatInput } from '@angular/material/input';
@@ -62,8 +62,8 @@ import { MatCalendarHeader } from '@angular/material/datepicker';
 
         MatHeaderCellDef,
         MatTooltip,
-        CommonUiAutoCompleteModule,
-        CommonUiDatepickerModule,
+
+        DatePickerComponent,
         MatCard,
         MatCardContent,
         MatError,
