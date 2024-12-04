@@ -11,21 +11,21 @@ import { ShoppingCartService } from '../shopping-cart.service';
 import { ArticleService } from '@ss/master-data/api-article';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
-import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
+import {  ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { DefaultReportService } from '@ss/common/ui-default-report-component';
 import { Observable, of, Subscription, switchMap, tap } from 'rxjs';
 import {  ImageModel } from '@ss/common/ui-image-input';
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
 import { CommonModule } from '@angular/common';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
-import { UiPaginationModule } from '@ss/common/ui-pagination';
+
+
 import { ReactiveFormsModule } from '@angular/forms';
-import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
-import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
+
 import { SalesUiDeliveryLinesModule } from '@ss/sales/ui-delivery-lines';
-import { LogisticsUiDocImportModule } from '@ss/logistics/ui-doc-import';
-import { LogisticsUiStockInfoModule } from '@ss/logistics/ui-stock-info';
+
+import { PaginationComponent } from '@ss/common/ui-pagination';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-shopping-cart-detail',
@@ -35,18 +35,13 @@ import { LogisticsUiStockInfoModule } from '@ss/logistics/ui-stock-info';
     imports: [
         CommonModule,
         MaterialModule,
-        CommonUiLangModule,
-        UiPaginationModule,
+        TranslateDirective,
+        TranslatePipe,
         ReactiveFormsModule,
-        CommonUiConfirmationDialogModule,
         RouterModule,
-        CommonUiDatepickerModule,
-        CommonUiAutoCompleteModule,
 
         SalesUiDeliveryLinesModule,
-        LogisticsUiDocImportModule,
-
-        LogisticsUiStockInfoModule
+        PaginationComponent
     ]
 })
 export class ShoppingCartDetailComponent extends BaseEntityListComponent<Cartline> {

@@ -1,6 +1,6 @@
-<mat-card >
+<mat-card>
     <form [formGroup]="form">
-        <mat-form-field class="default-50 sm-100">
+        <mat-form-field>
             <mat-label translate>COMMON_FROM</mat-label>
             <ss-date-picker [required]=true
                             formControlName="from"
@@ -8,7 +8,7 @@
             </ss-date-picker>
         </mat-form-field>
 
-        <mat-form-field class="default-50 sm-100">
+        <mat-form-field>
             <mat-label translate>COMMON_TO</mat-label>
             <ss-date-picker [required]=true
                             formControlName="to"
@@ -16,6 +16,7 @@
             </ss-date-picker>
         </mat-form-field>
 
+        <mat-checkbox formControlName="open" translate>LTM_NON_VALIDATED</mat-checkbox>
     </form>
 </mat-card>
 <div class="content_div container">
@@ -25,49 +26,49 @@
         <ng-container matColumnDef="matter">
             <mat-header-cell *matHeaderCellDef mat-sort-header translate>LTM_MATTER</mat-header-cell>
             <mat-cell *matCellDef="let e">
-                {{e.matter}}
+                {{ e.matter }}
             </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="pickupPoint">
             <mat-header-cell *matHeaderCellDef mat-sort-header translate>LTM_PICKUP_POINT</mat-header-cell>
             <mat-cell *matCellDef="let e">
-                {{e.pickupPoint}}
+                {{ e.pickupPoint }}
             </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="test">
             <mat-header-cell *matHeaderCellDef mat-sort-header translate>LTM_TEST</mat-header-cell>
             <mat-cell *matCellDef="let e">
-                {{e.test}}
+                {{ e.test }}
             </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="time">
             <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_TIME</mat-header-cell>
             <mat-cell *matCellDef="let e">
-                {{e.time | date: 'dd/MM/yyyy HH:mm' }}
+                {{ e.time | date: 'dd/MM/yyyy HH:mm' }}
             </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="value">
             <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_VALUE</mat-header-cell>
             <mat-cell *matCellDef="let e">
-                {{e.value | number: '1.2-2' }}
+                {{ e.value | number: '1.2-2' }}
             </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="min">
             <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_MIN</mat-header-cell>
             <mat-cell *matCellDef="let e">
-                {{e.min | number: '1.2-2' }}
+                {{ e.min | number: '1.2-2' }}
             </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="max">
             <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_MAX</mat-header-cell>
             <mat-cell *matCellDef="let e">
-                {{e.max | number: '1.2-2' }}
+                {{ e.max | number: '1.2-2' }}
             </mat-cell>
         </ng-container>
 
@@ -76,7 +77,7 @@
         <mat-row class="selectable"
                  *matRowDef="let row; columns: displayedColumns;"
                  [class.selected]="row.id == selected"
-                 (click)="selectRow(row)" ></mat-row>
+                 (click)="selectRow(row)"></mat-row>
     </mat-table>
 </div>
 <div class="content_div b-b-background">

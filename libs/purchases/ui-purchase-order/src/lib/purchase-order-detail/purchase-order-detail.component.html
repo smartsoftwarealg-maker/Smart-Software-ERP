@@ -176,4 +176,7 @@
     </mat-card-content>
 </mat-card>
 <!--<ss-order-lines-list class="detail-list" [isEditable]="isEditable" *ngIf="!isLoading && formId"></ss-order-lines-list>-->
-<router-outlet *ngIf="formId"></router-outlet>
+@if (formId) {
+    <router-outlet></router-outlet>
+}
+

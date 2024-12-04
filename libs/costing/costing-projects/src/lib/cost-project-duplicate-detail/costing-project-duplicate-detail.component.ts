@@ -7,11 +7,12 @@ import {
 } from '@ss/costing/costing-utils';
 import { CommonModule } from '@angular/common';
 import { LoginService, MaterialModule } from '@ss/common/api-common';
-import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
+import {  ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
+
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { CostingProjectService } from '../services/costing-project.service';
+import { TranslatePipe } from '@ss/common/ui-lang';
 
 
 @Component({
@@ -24,8 +25,7 @@ import { CostingProjectService } from '../services/costing-project.service';
         CommonModule,
         RouterModule,
         MaterialModule,
-        CommonUiConfirmationDialogModule,
-        CommonUiLangModule
+        TranslatePipe
     ]
 })
 export class CostingProjectDuplicateDetailComponent extends BaseEntityDetailComponent<CProject> implements  OnInit {

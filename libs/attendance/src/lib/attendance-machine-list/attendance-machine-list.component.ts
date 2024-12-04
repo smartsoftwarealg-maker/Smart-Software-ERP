@@ -9,8 +9,8 @@ import {PaginatorPersistenceService} from '@ss/common/api-common';
 import {AttendanceMachineService} from '../attendance-machine.service';
 import { MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
-import { TranslateDirective } from '../../../../common/ui-lang/src/lib/translate.directive';
-import { PaginationComponent } from '../../../../common/ui-pagination/src/lib/pagination.component';
+import { TranslateDirective } from '@ss/common/ui-lang';
+import { PaginationComponent } from '@ss/common/ui-pagination';
 
 @Component({
     selector: 'ss-attendance-machine-list',

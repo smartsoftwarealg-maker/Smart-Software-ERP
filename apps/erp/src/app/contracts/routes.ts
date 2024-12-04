@@ -37,7 +37,8 @@ export const mainRoutes: Routes = [
         children: [
             {
                 path: LIST_URL,
-                component: AwardProcedureListComponent
+                component: AwardProcedureListComponent,
+                canActivate: [loginGuard],
             },
             {
                 path: ':id',
@@ -53,7 +54,8 @@ export const mainRoutes: Routes = [
         children: [
             {
                 path: LIST_URL,
-                component: ProjectMotiveListComponent
+                component: ProjectMotiveListComponent,
+                canActivate: [loginGuard],
             },
             {
                 path: ':id',
@@ -70,7 +72,8 @@ export const mainRoutes: Routes = [
         children: [
             {
                 path: LIST_URL,
-                component: ProjectTypeListComponent
+                component: ProjectTypeListComponent,
+                canActivate: [loginGuard],
             },
             {
                 path: ':id',
@@ -88,6 +91,7 @@ export const mainRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: SalesContractListComponent,
+                canActivate: [loginGuard],
             },
             {
                 path: ':id',
@@ -121,6 +125,7 @@ export const mainRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: PurchaseContractListComponent,
+                canActivate: [loginGuard],
             },
             {
                 path: ':id',

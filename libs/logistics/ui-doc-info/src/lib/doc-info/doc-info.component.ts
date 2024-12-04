@@ -3,11 +3,12 @@ import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import {DOCUMENT_ARCHIVES} from '@ss/common/app-archive';
 import { CommonModule } from '@angular/common';
 import { MaterialModule } from '@ss/common/api-common';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
-import { UiPaginationModule } from '@ss/common/ui-pagination';
+
+
 import { ReactiveFormsModule } from '@angular/forms';
-import { CommonUiConfirmationDialogModule } from '@ss/common/ui-confirmation-dialog';
-import { LogisticsUiStockInfoModule } from '@ss/logistics/ui-stock-info';
+
+import { UiStockInfoComponent } from '@ss/logistics/ui-stock-info';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 interface Entry {
     name: string,
@@ -24,12 +25,9 @@ interface Entry {
     imports: [
         CommonModule,
         MaterialModule,
-        CommonUiLangModule,
-        UiPaginationModule,
+        TranslateDirective,
         RouterModule,
-        ReactiveFormsModule,
-        CommonUiConfirmationDialogModule,
-        LogisticsUiStockInfoModule
+        ReactiveFormsModule
     ],
 })
 

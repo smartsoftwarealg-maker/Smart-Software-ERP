@@ -11,17 +11,16 @@ import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import {PaginatorPersistenceService} from '@ss/common/api-common';
-import {Journal, JournalService, UserJournalsService} from '@ss/treasury/api-journal';
+import { MaterialModule, PaginatorPersistenceService } from '@ss/common/api-common';
+import {Journal, UserJournalsService} from '@ss/treasury/api-journal';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
-import { MatCard } from "@angular/material/card";
 import { MatDatepickerModule } from "@muaazh/angular-datepicker";
 import { MatHint, MatFormField, MatLabel } from "@angular/material/form-field";
-import { TranslateDirective } from "../../../../../common/ui-lang/src/lib/translate.directive";
-import { UiAutoCompleteComponent } from "../../../../../common/ui-auto-complete/src/lib/auto-complete.component";
+import { TranslateDirective } from '@ss/common/ui-lang';
+import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { MatIconButton } from "@angular/material/button";
 import { MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from "@angular/material/table";
-import { PaginationComponent } from "../../../../../common/ui-pagination/src/lib/pagination.component";
+import { PaginationComponent } from '@ss/common/ui-pagination';
 import { AsyncPipe, DecimalPipe } from "@angular/common";
 
 @Component({
@@ -30,7 +29,7 @@ import { AsyncPipe, DecimalPipe } from "@angular/common";
     styleUrls: ['../transaction-list/transaction-list.component.scss'],
     standalone: true,
     imports: [
-        MatCard,
+        MaterialModule,
         MatDatepickerModule,
         MatHint,
         MatFormField,

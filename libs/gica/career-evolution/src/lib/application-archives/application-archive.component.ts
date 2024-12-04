@@ -1,6 +1,6 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
+
 import {
     MatCell,
     MatCellDef,
@@ -10,7 +10,7 @@ import {
     MatHeaderRowDef, MatRow, MatRowDef, MatTable
 } from '@angular/material/table';
 import { MatSort, MatSortHeader, Sort } from '@angular/material/sort';
-import { UiPaginationModule } from '@ss/common/ui-pagination';
+
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { MatCard, MatCardContent } from '@angular/material/card';
 import { MatError, MatFormField, MatLabel } from '@angular/material/form-field';
@@ -24,12 +24,13 @@ import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute } from '@angular/router';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { ArchiveService } from '../services/archive.service';
+import { TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-gica-application-archives',
     standalone: true,
     imports: [CommonModule,
-        CommonUiLangModule,
+
         MatCell,
         MatCellDef,
         MatColumnDef,
@@ -41,7 +42,7 @@ import { ArchiveService } from '../services/archive.service';
         MatSort,
         MatSortHeader,
         MatTable,
-        UiPaginationModule,
+
         MatCard,
         MatCardContent,
         MatError,
@@ -49,7 +50,7 @@ import { ArchiveService } from '../services/archive.service';
         MatInput,
         MatLabel,
         ReactiveFormsModule,
-        MatButton, MatHeaderCellDef],
+        MatButton, MatHeaderCellDef, TranslatePipe],
     templateUrl: './application-archive.component.html',
     styleUrl: './application-archive.component.css'
 })

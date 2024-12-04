@@ -6,16 +6,16 @@ import { InventoryImportService } from '../inventory-import.service';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
 import { LotsService, Store } from '@ss/common/api-lookup';
-import { TranslateDirective } from '../../../../../common/ui-lang/src/lib/translate.directive';
+import { TranslateDirective } from '@ss/common/ui-lang';
 import { NgIf, NgFor } from '@angular/common';
 import { MatMiniFabButton, MatButton } from '@angular/material/button';
 import { MatProgressBar } from '@angular/material/progress-bar';
 import { MatCard } from '@angular/material/card';
 import { MatFormField, MatLabel } from '@angular/material/form-field';
-import { UiAutoCompleteComponent } from '../../../../../common/ui-auto-complete/src/lib/auto-complete.component';
+import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { MatSelect } from '@angular/material/select';
 import { MatOption } from '@angular/material/core';
-import { TranslatePipe } from '../../../../../common/ui-lang/src/lib/translate.pipe';
+import { TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-inventory-import',

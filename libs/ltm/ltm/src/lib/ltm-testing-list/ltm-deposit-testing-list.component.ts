@@ -1,19 +1,17 @@
 import { Component } from '@angular/core';
 import { ShellService, SnackBarService } from "@ss/common/ui-shell";
-import { ActivatedRoute, Router, RouterOutlet } from "@angular/router";
-import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
+import { ActivatedRoute, Router } from "@angular/router";
+import { ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
 import { DefaultReportService } from "@ss/common/ui-default-report-component";
 import { MaterialModule, PaginatorPersistenceService } from '@ss/common/api-common';
 import { CommonModule } from '@angular/common';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
-import { UiPaginationModule } from "@ss/common/ui-pagination";
 import { ReactiveFormsModule } from '@angular/forms';
-
-import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
-import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
-import { CommonUiHourPickerModule } from "@ss/common/ui-hour-picker";
+import { DatePickerComponent } from "@ss/common/ui-datepicker";
 import { LtmBaseTestingListComponent } from '../ltm-testing-common/ltm-base-testing-list.component';
 import { LtmDepositTestingService } from '@ltm/ltm-api';
+import { PaginationComponent } from '@ss/common/ui-pagination';
+import { TranslateDirective } from '@ss/common/ui-lang';
+import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 
 @Component({
     selector: "ss-ltm-deposit-testing-list",
@@ -23,15 +21,12 @@ import { LtmDepositTestingService } from '@ltm/ltm-api';
     imports: [
         CommonModule,
         MaterialModule,
-        CommonUiLangModule,
-        UiPaginationModule,
+        PaginationComponent,
+        TranslateDirective,
         ReactiveFormsModule,
-        CommonUiConfirmationDialogModule,
-
-        CommonUiAutoCompleteModule,
-        CommonUiDatepickerModule,
-        RouterOutlet,
-        CommonUiHourPickerModule
+        DatePickerComponent,
+        PaginationComponent,
+        UiAutoCompleteComponent
     ]
 })
 

@@ -1,22 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
-import {LookupsService, Mark, Unit, Vat} from '@ss/common/api-lookup';
+import {LookupsService} from '@ss/common/api-lookup';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import { ActivatedRoute, Router, RouterModule } from "@angular/router";
-import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
+import {  ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import { HttpService, MaterialModule, PaginatorPersistenceService } from "@ss/common/api-common";
 import {Article, SSArticleService} from '@ss/scheduled-sales/api-scheduled-sales';
 import { CommonModule } from "@angular/common";
-import { CommonUiLangModule } from "@ss/common/ui-lang";
-import { UiPaginationModule } from "@ss/common/ui-pagination";
 import { ReactiveFormsModule } from "@angular/forms";
-import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
-import { CommonUiAutoCompleteModule } from "@ss/common/ui-auto-complete";
-import { LogisticsUiDocImportModule } from "@ss/logistics/ui-doc-import";
-import { LogisticsUiStockInfoModule } from "@ss/logistics/ui-stock-info";
-import { CommonUiColorSelectModule } from "@ss/common/ui-color-select";
+import { ColorSelectComponent } from "@ss/common/ui-color-select";
 import { ColorPickerModule } from "ngx-color-picker";
+import { PaginationComponent } from '@ss/common/ui-pagination';
+import { TranslateDirective } from '@ss/common/ui-lang';
 
 @Component({
     selector: "ss-article-list-ss",
@@ -26,19 +22,13 @@ import { ColorPickerModule } from "ngx-color-picker";
     imports: [
         CommonModule,
         MaterialModule,
-        CommonUiLangModule,
-        UiPaginationModule,
+        TranslateDirective,
         ReactiveFormsModule,
-        CommonUiConfirmationDialogModule,
         RouterModule,
-        CommonUiDatepickerModule,
-        CommonUiAutoCompleteModule,
-
-        LogisticsUiDocImportModule,
-        LogisticsUiStockInfoModule,
-
-        CommonUiColorSelectModule,
-        ColorPickerModule
+        ColorSelectComponent,
+        ColorPickerModule,
+        PaginationComponent,
+        TranslateDirective
     ]
 
 })

@@ -5,12 +5,12 @@ import { AssetsService } from '../services/assets.service';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { DefaultReportService } from '@ss/common/ui-default-report-component';
-import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
+import {  ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { IsParamService, LanguageService, MaterialModule, PaginatorPersistenceService } from '@ss/common/api-common';
 import { Observable } from 'rxjs';
 import { debounceTime, distinctUntilChanged, map, tap } from 'rxjs/operators';
 import { UntypedFormBuilder } from '@angular/forms';
-import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
+import {  DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
 import { ConsumerService, SupplierService } from '@ss/logistics/api-agent';
 import { AssetLocationService } from '../services/asset-location.service';
 import { OfficeSearchComponent } from '../office-search/office-search.component';
@@ -18,13 +18,15 @@ import { MatDialog } from '@angular/material/dialog';
 import { Office, OfficeService } from '@ss/common/api-lookup';
 import { BaseEntityService } from '@ss/common/api-base-entity';
 import { CommonModule } from '@angular/common';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
 
-import { UiPaginationModule } from '@ss/common/ui-pagination';
-import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
-import { CustomAttributesModule } from '@ss/custom-attributes';
+
+
+import { DatePickerComponent } from '@ss/common/ui-datepicker';
+
 
 import { QRCodeModule } from 'angularx-qrcode';
+import { PaginationComponent } from '@ss/common/ui-pagination';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-search-list',
@@ -34,16 +36,14 @@ import { QRCodeModule } from 'angularx-qrcode';
     imports: [
         CommonModule,
         MaterialModule,
-        CommonUiLangModule,
+        TranslateDirective,
+        TranslatePipe,
 
-        UiPaginationModule,
-        CommonUiConfirmationDialogModule,
-        CommonUiAutoCompleteModule,
-        CommonUiDatepickerModule,
+        DatePickerComponent,
         RouterModule,
-        CustomAttributesModule,
 
-        QRCodeModule
+        QRCodeModule,
+        PaginationComponent
     ]
 
 })

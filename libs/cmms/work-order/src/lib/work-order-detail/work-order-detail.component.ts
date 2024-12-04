@@ -9,20 +9,21 @@ import { DOC_WORK_ORDER } from '@ss/logistics/api-transaction';
 import { RequestImportComponent } from '@ss/cmms/cmms-ui';
 import { Observable, of, switchMap, tap } from 'rxjs';
 import { CommonModule } from '@angular/common';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
+
 import { MatTableModule } from '@angular/material/table';
-import { UiPaginationModule } from '@ss/common/ui-pagination';
-import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
+
+
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
-import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
+import { DatePickerComponent } from '@ss/common/ui-datepicker';
 import { MatButtonModule } from '@angular/material/button';
 import { MaterialModule } from '@ss/common/api-common';
 import { CMMSWorkOrderArticleService } from '../services/c-m-m-s-work-order-article.service';
 import { CMMSWorkPersonService } from '../services/c-m-m-s-work-person.service';
 import { CMMSAssetReadingService } from '@ss/cmms/asset-readings';
 import { CMMSWorkPermitService } from '../services/c-m-m-s-work-permit.service';
+import { PaginationComponent } from '@ss/common/ui-pagination';
 
 @Component({
     selector: 'ss-work-order-detail',
@@ -31,16 +32,15 @@ import { CMMSWorkPermitService } from '../services/c-m-m-s-work-permit.service';
     standalone: true,
     imports: [
         CommonModule,
-        CommonUiLangModule,
+        PaginationComponent,
         MatTableModule,
-        UiPaginationModule,
-        CommonUiAutoCompleteModule,
+
         FormsModule,
         MatFormFieldModule,
         ReactiveFormsModule,
         MatCardModule,
         MatInputModule,
-        CommonUiDatepickerModule,
+        DatePickerComponent,
         MatButtonModule,
         MaterialModule,
         RouterOutlet

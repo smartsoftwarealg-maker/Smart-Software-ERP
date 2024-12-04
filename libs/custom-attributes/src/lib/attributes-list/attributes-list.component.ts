@@ -11,13 +11,13 @@ import { UntypedFormControl, FormsModule, ReactiveFormsModule } from '@angular/f
 import {Subscription} from 'rxjs';
 import {debounceTime, distinctUntilChanged} from 'rxjs/operators';
 import { MatFormField, MatLabel } from '@angular/material/form-field';
-import { TranslateDirective } from '../../../../common/ui-lang/src/lib/translate.directive';
+import { TranslateDirective } from '@ss/common/ui-lang';
 import { MatSelect } from '@angular/material/select';
 import { NgFor } from '@angular/common';
 import { MatOption } from '@angular/material/core';
 import { MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from '@angular/material/table';
-import { PaginationComponent } from '../../../../common/ui-pagination/src/lib/pagination.component';
-import { TranslatePipe } from '../../../../common/ui-lang/src/lib/translate.pipe';
+import { PaginationComponent } from '@ss/common/ui-pagination';
+import { TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-attributes-list',

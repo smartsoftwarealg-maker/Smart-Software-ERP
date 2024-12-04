@@ -5,7 +5,7 @@ import { F12, F13 } from '../services/balance-tables.api';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
+
 import {
     MatCell,
     MatCellDef,
@@ -15,7 +15,7 @@ import {
     MatHeaderRowDef, MatRow, MatRowDef, MatTable
 } from '@angular/material/table';
 import { MatSort, MatSortHeader } from '@angular/material/sort';
-import { UiPaginationModule } from '@ss/common/ui-pagination';
+
 import { ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { MatCard, MatCardContent } from '@angular/material/card';
 import { MatError, MatFormField, MatLabel } from '@angular/material/form-field';
@@ -25,7 +25,7 @@ import { PayModeService } from '@ss/common/api-lookup';
 import { SupplierService } from '@ss/logistics/api-agent';
 import { DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
 import { CommonUiLookupModule } from '@ss/common/ui-lookup';
-import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
+import { DatePickerComponent } from '@ss/common/ui-datepicker';
 import { F13Service } from '../services/f13-service';
 import { AccFileService } from '@ss/accounting/accounting-api';
 
@@ -34,8 +34,8 @@ import { AccFileService } from '@ss/accounting/accounting-api';
     standalone: true,
     imports: [
         CommonModule,
-        CommonUiLangModule,
-        UiPaginationModule,
+
+
         MatCard,
         MatCardContent,
         MatError,
@@ -44,7 +44,7 @@ import { AccFileService } from '@ss/accounting/accounting-api';
         MatLabel,
         ReactiveFormsModule,
         CommonUiLookupModule,
-        CommonUiDatepickerModule
+        DatePickerComponent
     ],
     templateUrl: './f13-detail.component.html',
     styleUrl: './f13-detail.component.scss'

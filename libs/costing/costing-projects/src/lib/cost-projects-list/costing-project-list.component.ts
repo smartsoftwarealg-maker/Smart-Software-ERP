@@ -3,15 +3,17 @@ import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { CostingProjectService } from '../services/costing-project.service';
 import { MaterialModule, PaginatorPersistenceService } from '@ss/common/api-common';
-import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
+import {  ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { CProject, DateUtil, slideToRight } from '@ss/costing/costing-utils';
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { DefaultReportService } from '@ss/common/ui-default-report-component';
 import { KeepOnToolbar, ShellService, SnackBarService, ToolbarButton } from '@ss/common/ui-shell';
-import { UiPaginationModule } from '@ss/common/ui-pagination';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
+
+
 import { CostingReportsComponent } from '../costing-reports/costing-reports.component';
 import { CostingReportService } from '../services/costing-report.service';
+import { PaginationComponent } from '@ss/common/ui-pagination';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-costing-project-list',
@@ -22,10 +24,11 @@ import { CostingReportService } from '../services/costing-report.service';
         CommonModule,
         RouterModule,
         MaterialModule,
-        CommonUiConfirmationDialogModule,
-        UiPaginationModule,
-        CommonUiLangModule,
-        CostingReportsComponent
+        TranslateDirective,
+        TranslatePipe,
+        CostingReportsComponent,
+        PaginationComponent,
+        TranslatePipe
     ],
     animations: [slideToRight]
 })

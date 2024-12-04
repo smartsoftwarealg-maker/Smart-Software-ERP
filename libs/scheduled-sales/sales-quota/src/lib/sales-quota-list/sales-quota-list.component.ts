@@ -4,17 +4,18 @@ import { Quota } from '@ss/scheduled-sales/api-scheduled-sales';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DefaultReportService } from '@ss/common/ui-default-report-component';
-import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
+import {  ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { LoginService, MaterialModule, PaginatorPersistenceService } from '@ss/common/api-common';
 import { SSQuotaService } from '@ss/scheduled-sales/api-scheduled-sales';
 import { CommonModule } from '@angular/common';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
-import { UiPaginationModule } from '@ss/common/ui-pagination';
+
+
 import { FormControl, ReactiveFormsModule } from "@angular/forms";
-import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
-import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from "@ss/common/ui-auto-complete";
+import { DatePickerComponent } from '@ss/common/ui-datepicker';
+import {  DefaultAutoCompleteModel } from "@ss/common/ui-auto-complete";
 import { Agent, CustomerService } from '@ss/logistics/api-agent';
 import { callback } from 'chart.js/helpers';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-sales-quota-list',
@@ -24,12 +25,11 @@ import { callback } from 'chart.js/helpers';
     imports: [
         CommonModule,
         MaterialModule,
-        CommonUiLangModule,
-        UiPaginationModule,
+        TranslateDirective,
+        TranslatePipe,
         ReactiveFormsModule,
-        CommonUiConfirmationDialogModule,
-        CommonUiDatepickerModule,
-        CommonUiAutoCompleteModule,
+        DatePickerComponent,
+
     ],
 })
 export class SalesQuotaListComponent extends BaseEntityListComponent<Quota> {

@@ -3,11 +3,11 @@ import { CommonModule } from '@angular/common';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { MaterialModule } from '@ss/common/api-common';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
-import { UiPaginationModule } from '@ss/common/ui-pagination';
-import { CommonUiConfirmationDialogModule } from '@ss/common/ui-confirmation-dialog';
-import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
-import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
+
+
+
+import { DatePickerComponent } from '@ss/common/ui-datepicker';
+import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { NestedTreeControl } from '@angular/cdk/tree';
 import { MatTreeNestedDataSource } from '@angular/material/tree';
 import {
@@ -18,6 +18,7 @@ import { FormControl } from '@angular/forms';
 import { ReportReportService } from '../role-report.service';
 import { Observable, switchMap } from 'rxjs';
 import { RoleReport } from '../report-rights-api';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-report-rights',
@@ -25,12 +26,11 @@ import { RoleReport } from '../report-rights-api';
     imports: [
         CommonModule,
         MaterialModule,
-        CommonUiLangModule,
-        UiPaginationModule,
-        CommonUiConfirmationDialogModule,
+        TranslatePipe,
         RouterModule,
-        CommonUiDatepickerModule,
-        CommonUiAutoCompleteModule
+        DatePickerComponent,
+        UiAutoCompleteComponent,
+        TranslateDirective
     ],
     templateUrl: './report-rights.component.html',
     styleUrls: ['./report-rights.component.scss'],

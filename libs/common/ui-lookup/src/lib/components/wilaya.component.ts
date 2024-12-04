@@ -2,22 +2,22 @@ import {Component} from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import {Wilaya, WilayaService} from '@ss/common/api-lookup';
-import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
+import {  ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { UntypedFormBuilder, UntypedFormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import {BaseEntityDetailComponent, BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import { MaterialModule, PaginatorPersistenceService } from '@ss/common/api-common';
 import { CommonModule, NgIf } from '@angular/common';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
-import { UiPaginationModule } from '@ss/common/ui-pagination';
-import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
+
+
+
 import { MatCard } from '@angular/material/card';
 import { MatFormField, MatLabel } from '@angular/material/form-field';
-import { TranslateDirective } from '../../../../ui-lang/src/lib/translate.directive';
+import { TranslateDirective } from '@ss/common/ui-lang';
 import { MatInput } from '@angular/material/input';
 import { MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from '@angular/material/table';
 import { MatSort, MatSortHeader } from '@angular/material/sort';
-import { PaginationComponent } from '../../../../ui-pagination/src/lib/pagination.component';
+import { PaginationComponent } from '@ss/common/ui-pagination';
 
 
 @Component({
@@ -53,7 +53,7 @@ export class WilayaListComponent extends BaseEntityListComponent<Wilaya> {
     templateUrl: '../base-templates/detail-template.html',
     styleUrls: ['../base-templates/detail-template.scss'],
     standalone: true,
-    imports: [MatCard, NgIf, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput]
+    imports: [MaterialModule, MatCard, NgIf, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput]
 })
 export class WilayaDetailComponent extends BaseEntityDetailComponent<Wilaya> {
 

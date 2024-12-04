@@ -5,22 +5,23 @@ import { AssetReception } from '../assets-api';
 import { UntypedFormBuilder, Validators } from '@angular/forms';
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { AssetReceptionService } from '../services/asset-reception.service';
-import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
+import {  ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { LookupsService } from '@ss/common/api-lookup';
 import { LoginService, MaterialModule } from '@ss/common/api-common';
 import { ConsumerService, SupplierService } from '@ss/logistics/api-agent';
-import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
+import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { MatDialog } from '@angular/material/dialog';
 import { WorkflowDialogComponent } from '@ss/workflow';
 import { AppArchiveMainComponent, ASSET_RECEPTIONS_ARCHIVES } from '@ss/common/app-archive';
 import { ASSET_RECEPTION } from '@ss/workflow';
 import { CommonModule } from '@angular/common';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
 
-import { UiPaginationModule } from '@ss/common/ui-pagination';
-import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
-import { CustomAttributesModule } from '@ss/custom-attributes';
+
+
+import { DatePickerComponent } from '@ss/common/ui-datepicker';
+
 import { QRCodeModule } from 'angularx-qrcode';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-asset-receptions-detail',
@@ -30,17 +31,12 @@ import { QRCodeModule } from 'angularx-qrcode';
     imports: [
         CommonModule,
         MaterialModule,
-        CommonUiLangModule,
-
-        UiPaginationModule,
-        CommonUiConfirmationDialogModule,
-        CommonUiAutoCompleteModule,
-        CommonUiDatepickerModule,
+        TranslateDirective,
+        DatePickerComponent,
         RouterModule,
-        CustomAttributesModule,
-
         QRCodeModule,
-        AppArchiveMainComponent
+        AppArchiveMainComponent,
+        UiAutoCompleteComponent
     ]
 
 })

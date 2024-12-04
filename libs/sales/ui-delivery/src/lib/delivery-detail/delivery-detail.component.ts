@@ -7,17 +7,17 @@ import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {Observable} from 'rxjs';
 import {tap} from 'rxjs/operators';
 import {DeliveryService} from '@ss/sales/api-delivery';
-import {LoginService} from '@ss/common/api-common';
+import { LoginService, MaterialModule } from '@ss/common/api-common';
 import {MatDialog} from '@angular/material/dialog';
 import { BaseTransactionDetailComponent } from '@ss/logistics/api-transaction';
 import { DeliveryLinesService } from '@ss/sales/api-delivery';
 import { MatCard, MatCardContent } from '@angular/material/card';
 import { MatFormField, MatLabel, MatError } from '@angular/material/form-field';
-import { TranslateDirective } from '../../../../../common/ui-lang/src/lib/translate.directive';
+import { TranslateDirective } from '@ss/common/ui-lang';
 import { MatInput } from '@angular/material/input';
 import { NgIf } from '@angular/common';
-import { DatePickerComponent } from '../../../../../common/ui-datepicker/src/lib/date-picker.component';
-import { UiAutoCompleteComponent } from '../../../../../common/ui-auto-complete/src/lib/auto-complete.component';
+import { DatePickerComponent } from '@ss/common/ui-datepicker';
+import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { MatTabGroup, MatTab, MatTabLabel } from '@angular/material/tabs';
 import { CdkTextareaAutosize } from '@angular/cdk/text-field';
 
@@ -27,7 +27,7 @@ import { CdkTextareaAutosize } from '@angular/cdk/text-field';
     templateUrl: './delivery-detail.component.html',
     styleUrls: ['../../../../../common/assets/src/assets/transac-detail.scss'],
     standalone: true,
-    imports: [MatCard, MatCardContent, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, NgIf, MatError, DatePickerComponent, UiAutoCompleteComponent, MatTabGroup, MatTab, MatTabLabel, CdkTextareaAutosize, RouterOutlet]
+    imports: [MaterialModule, MatCard, MatCardContent, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, NgIf, MatError, DatePickerComponent, UiAutoCompleteComponent, MatTabGroup, MatTab, MatTabLabel, CdkTextareaAutosize, RouterOutlet]
 })
 export class DeliveryDetailComponent extends BaseTransactionDetailComponent implements OnInit {
     // private payMethodSrv =  inject(PayMethodService);

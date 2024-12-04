@@ -1,25 +1,20 @@
 import { Component, inject, OnInit } from '@angular/core';
-import {BaseChildEntityDetailComponent, BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
+import {BaseChildEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {Blocking} from '../assets-api';
-import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
-import {ShellService, SnackBarService} from '@ss/common/ui-shell';
-import { ActivatedRoute, RouterModule } from '@angular/router';
-import {UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
-import { HttpService, MaterialModule } from '@ss/common/api-common';
-import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
-import {LookupsService} from '@ss/common/api-lookup';
-import {Observable} from 'rxjs';
-import {switchMap} from 'rxjs/operators';
+import {  DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
+import { RouterModule } from '@angular/router';
+import { ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
+import { MaterialModule } from '@ss/common/api-common';
 import {AssetBlockingService} from '../services/asset-blocking.service';
 import {AssetBlockingTypeService} from '../services/asset-blocking-type.service';
 import { CommonModule } from '@angular/common';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
 
-import { UiPaginationModule } from '@ss/common/ui-pagination';
-import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
-import { CustomAttributesModule } from '@ss/custom-attributes';
+
+import { DatePickerComponent } from '@ss/common/ui-datepicker';
+
 
 import { QRCodeModule } from 'angularx-qrcode';
+import { TranslateDirective } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-asset-blocking-detail',
@@ -28,15 +23,12 @@ import { QRCodeModule } from 'angularx-qrcode';
     standalone: true,
     imports: [
         CommonModule,
+        ReactiveFormsModule,
         MaterialModule,
-        CommonUiLangModule,
+        TranslateDirective,
 
-        UiPaginationModule,
-        CommonUiConfirmationDialogModule,
-        CommonUiAutoCompleteModule,
-        CommonUiDatepickerModule,
+        DatePickerComponent,
         RouterModule,
-        CustomAttributesModule,
 
         QRCodeModule
     ]})

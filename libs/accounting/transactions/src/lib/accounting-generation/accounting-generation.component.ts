@@ -10,15 +10,16 @@ import {
     PAYRow,
     TDocument
 } from '@ss/accounting/accounting-api';
-import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from "@ss/common/ui-auto-complete";
+import {  DefaultAutoCompleteModel } from "@ss/common/ui-auto-complete";
 import {Subscription} from 'rxjs';
 import {debounceTime, distinctUntilChanged} from 'rxjs/operators';
 import {HttpParams} from '@angular/common/http';
 import { CommonModule } from "@angular/common";
-import { CommonUiLangModule } from "@ss/common/ui-lang";
-import { UiPaginationModule } from "@ss/common/ui-pagination";
-import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
-import { CommonUiConfirmationDialogModule } from "@ss/common/ui-confirmation-dialog";
+
+
+import { DatePickerComponent } from "@ss/common/ui-datepicker";
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
+
 
 
 @Component({
@@ -30,12 +31,12 @@ import { CommonUiConfirmationDialogModule } from "@ss/common/ui-confirmation-dia
         CommonModule,
         RouterModule,
         MaterialModule,
-        CommonUiLangModule,
-        UiPaginationModule,
+        TranslateDirective,
+        TranslatePipe,
         ReactiveFormsModule,
-        CommonUiAutoCompleteModule,
-        CommonUiDatepickerModule,
-        CommonUiConfirmationDialogModule,
+
+        DatePickerComponent,
+
 
     ],
 })

@@ -5,14 +5,14 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
-import { HttpService, LoginService } from '@ss/common/api-common';
+import { HttpService, LoginService, MaterialModule } from '@ss/common/api-common';
 import { AgentLookupModel, AgentService } from '@ss/logistics/api-agent';
 import { MatCard } from '@angular/material/card';
 import { NgIf } from '@angular/common';
 import { MatFormField, MatLabel, MatError } from '@angular/material/form-field';
-import { TranslateDirective } from '../../../../common/ui-lang/src/lib/translate.directive';
+import { TranslateDirective } from '@ss/common/ui-lang';
 import { MatInput } from '@angular/material/input';
-import { UiAutoCompleteComponent } from '../../../../common/ui-auto-complete/src/lib/auto-complete.component';
+import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { DatePickerComponent } from '../../../../common/ui-datepicker/src/lib/date-picker.component';
 import { MatCheckbox } from '@angular/material/checkbox';
 
@@ -21,7 +21,7 @@ import { MatCheckbox } from '@angular/material/checkbox';
     styleUrls: ['./check-detail.component.scss'],
     templateUrl: './check-detail.component.html',
     standalone: true,
-    imports: [MatCard, NgIf, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, UiAutoCompleteComponent, MatError, DatePickerComponent, MatCheckbox]
+    imports: [MaterialModule, MatCard, NgIf, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, UiAutoCompleteComponent, MatError, DatePickerComponent, MatCheckbox]
 })
 export class CheckDetailComponent extends BaseEntityDetailComponent<Check> implements OnInit {
 

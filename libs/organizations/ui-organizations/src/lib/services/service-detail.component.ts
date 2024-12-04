@@ -4,7 +4,7 @@ import { UntypedFormGroup, UntypedFormBuilder, Validators, FormsModule, Reactive
 import { ActivatedRoute } from '@angular/router';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
-import { HttpService } from '@ss/common/api-common';
+import { HttpService, MaterialModule } from '@ss/common/api-common';
 import { Observable } from 'rxjs';
 import { Service, ServiceService } from '@ss/common/api-lookup';
 import { EmployeeService } from '@ss/employee-services/employee-services';
@@ -21,7 +21,7 @@ import { UiAutoCompleteComponent } from "../../../../../common/ui-auto-complete/
     templateUrl: './service-detail.component.html',
     styleUrls: ['./service-detail.component.scss'],
     standalone: true,
-    imports: [MatCard, NgIf, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, MatError, UiAutoCompleteComponent]
+    imports: [MaterialModule, MatCard, NgIf, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, MatError, UiAutoCompleteComponent]
 })
 export class ServiceDetailComponent extends BaseEntityDetailComponent<Service> implements OnInit, OnDestroy {
     public saving: boolean = false;

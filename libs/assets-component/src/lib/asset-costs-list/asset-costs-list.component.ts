@@ -2,20 +2,22 @@ import { Component, Input, OnInit, signal } from '@angular/core';
 import {SnackBarService} from '@ss/common/ui-shell';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { LanguageService, MaterialModule, PaginationModel } from '@ss/common/api-common';
-import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
+import {  ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import {AssetCostsService} from '../services/asset-costs.service';
 import {AssetCost} from '../assets-api';
 import {of, switchMap} from 'rxjs';
 import { CommonModule } from '@angular/common';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
 
-import { UiPaginationModule } from '@ss/common/ui-pagination';
-import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
-import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
-import { CustomAttributesModule } from '@ss/custom-attributes';
+
+
+
+import { DatePickerComponent } from '@ss/common/ui-datepicker';
+
 
 import { QRCodeModule } from 'angularx-qrcode';
+import { PaginationComponent } from '@ss/common/ui-pagination';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-asset-costs-list',
@@ -25,16 +27,14 @@ import { QRCodeModule } from 'angularx-qrcode';
     imports: [
         CommonModule,
         MaterialModule,
-        CommonUiLangModule,
+        TranslateDirective,
+        TranslatePipe,
 
-        UiPaginationModule,
-        CommonUiConfirmationDialogModule,
-        CommonUiAutoCompleteModule,
-        CommonUiDatepickerModule,
+        DatePickerComponent,
         RouterModule,
-        CustomAttributesModule,
 
-        QRCodeModule
+        QRCodeModule,
+        PaginationComponent
     ]})
 export class AssetCostsListComponent implements OnInit {
     editable = signal(true);

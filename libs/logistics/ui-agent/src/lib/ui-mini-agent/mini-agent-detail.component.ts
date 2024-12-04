@@ -2,14 +2,10 @@ import {Component} from '@angular/core';
 import {AgentDetailComponent} from '../agent-detail/agent-detail.component';
 import { CommonModule } from '@angular/common';
 import { MaterialModule } from '@ss/common/api-common';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
-import { UiPaginationModule } from '@ss/common/ui-pagination';
 import { ReactiveFormsModule } from '@angular/forms';
-import { CommonUiConfirmationDialogModule } from '@ss/common/ui-confirmation-dialog';
 
-import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
-import { CustomAttributesModule } from '@ss/custom-attributes';
-import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
+
+import { TranslateDirective } from '@ss/common/ui-lang';
 
 
 @Component({
@@ -20,15 +16,8 @@ import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
     imports: [
         CommonModule,
         MaterialModule,
-        CommonUiLangModule,
-        UiPaginationModule,
+        TranslateDirective,
         ReactiveFormsModule,
-        CommonUiConfirmationDialogModule,
-
-
-        CommonUiAutoCompleteModule,
-        CustomAttributesModule,
-        DocInfoComponent
     ],
 })
 export class MiniAgentDetailComponent extends AgentDetailComponent {

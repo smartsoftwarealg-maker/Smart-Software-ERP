@@ -7,7 +7,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { DefaultReportService } from '@ss/common/ui-default-report-component';
 import { PaginatorPersistenceService } from '@ss/common/api-common';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
+
 import {
     MatCell,
     MatCellDef,
@@ -16,12 +16,14 @@ import {
     MatHeaderRow,
     MatHeaderRowDef, MatRow, MatRowDef, MatTable
 } from '@angular/material/table';
-import { UiPaginationModule } from '@ss/common/ui-pagination';
+import { PaginationComponent } from '@ss/common/ui-pagination';
+import { TranslateDirective } from '@ss/common/ui-lang';
+
 
 @Component({
     selector: 'ss-social-works-list',
     standalone: true,
-    imports: [CommonModule, CommonUiLangModule, MatCell, MatCellDef, MatColumnDef, MatHeaderCell, MatHeaderRow, MatHeaderRowDef, MatRow, MatRowDef, MatTable, UiPaginationModule, MatHeaderCellDef],
+    imports: [CommonModule, TranslateDirective, MatCell, MatCellDef, MatColumnDef, MatHeaderCell, MatHeaderRow, MatHeaderRowDef, MatRow, MatRowDef, MatTable, MatHeaderCellDef, PaginationComponent],
     templateUrl: './social-aids-list.component.html',
     styleUrl: '../../../../social-api/src/lib/aids.styles.scss',
 })

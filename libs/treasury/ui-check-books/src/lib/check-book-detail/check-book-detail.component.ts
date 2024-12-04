@@ -5,14 +5,14 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
-import { HttpService, LoginService } from '@ss/common/api-common';
+import { HttpService, LoginService, MaterialModule } from '@ss/common/api-common';
 import { Observable } from 'rxjs';
 import { LookupsService, Bank } from '@ss/common/api-lookup';
-import { switchMap, tap } from 'rxjs/operators';
+import { tap } from 'rxjs/operators';
 import { MatCard } from '@angular/material/card';
 import { NgIf, NgFor } from '@angular/common';
 import { MatFormField, MatLabel } from '@angular/material/form-field';
-import { TranslateDirective } from '../../../../../common/ui-lang/src/lib/translate.directive';
+import { TranslateDirective } from '@ss/common/ui-lang';
 import { MatSelect } from '@angular/material/select';
 import { MatOption } from '@angular/material/core';
 import { MatInput } from '@angular/material/input';
@@ -22,7 +22,7 @@ import { MatInput } from '@angular/material/input';
     styleUrls: ['./check-book-detail.component.scss'],
     templateUrl: './check-book-detail.component.html',
     standalone: true,
-    imports: [MatCard, NgIf, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatSelect, NgFor, MatOption, MatInput]
+    imports: [MaterialModule, MatCard, NgIf, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatSelect, NgFor, MatOption, MatInput]
 })
 export class CheckBookDetailComponent extends BaseEntityDetailComponent<CheckBook> implements OnInit {
 

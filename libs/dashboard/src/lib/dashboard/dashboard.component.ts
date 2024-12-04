@@ -4,7 +4,7 @@ import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {Dashboard} from '../dashboard';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
-import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
+import {  ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import { Lookup, LookupsService } from "@ss/common/api-lookup";
 import {switchMap, tap} from 'rxjs';
@@ -25,13 +25,15 @@ import {
 } from '@ss/common/api-common';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import {AgentLookupModel, AgentService} from '@ss/logistics/api-agent';
-import { CommonUiAutoCompleteModule, Id } from '@ss/common/ui-auto-complete';
+import {  Id } from '@ss/common/ui-auto-complete';
 import { Chart, ChartConfiguration, ChartItem, registerables } from "chart.js";
 import { debounceTime, distinctUntilChanged } from "rxjs/operators";
 import { CommonModule } from '@angular/common';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
-import { UiPaginationModule } from '@ss/common/ui-pagination';
-import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
+
+
+import { DatePickerComponent } from '@ss/common/ui-datepicker';
+import { PaginationComponent } from '@ss/common/ui-pagination';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-dashboard',
@@ -41,13 +43,13 @@ import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
     imports: [
         CommonModule,
         MaterialModule,
-        CommonUiLangModule,
-        UiPaginationModule,
+        TranslateDirective,
+        TranslatePipe,
         ReactiveFormsModule,
-        CommonUiConfirmationDialogModule,
-        CommonUiDatepickerModule,
-        CommonUiAutoCompleteModule
-    ],
+        DatePickerComponent,
+
+        PaginationComponent
+    ]
 })
 export class DashboardComponent extends BaseEntityListComponent<Dashboard> {
     private agentSrv = inject(AgentService);

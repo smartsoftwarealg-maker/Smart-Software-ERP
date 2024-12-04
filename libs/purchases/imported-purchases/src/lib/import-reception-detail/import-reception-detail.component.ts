@@ -6,7 +6,7 @@ import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router, RouterOutlet } from '@angular/router';
 import { UntypedFormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
-import { LoginService } from '@ss/common/api-common';
+import { LoginService, MaterialModule } from '@ss/common/api-common';
 import { MatDialog } from '@angular/material/dialog';
 import { Lookup } from '@ss/common/api-lookup';
 import { ImportReceptionService } from '../services/import-reception.service';
@@ -14,10 +14,10 @@ import { ExtraCostService } from '@ss/purchases/extra-costs';
 import { MatCard, MatCardContent } from '@angular/material/card';
 import { NgIf } from '@angular/common';
 import { MatFormField, MatLabel, MatError } from '@angular/material/form-field';
-import { TranslateDirective } from '../../../../../common/ui-lang/src/lib/translate.directive';
+import { TranslateDirective } from '@ss/common/ui-lang';
 import { MatInput } from '@angular/material/input';
-import { DatePickerComponent } from '../../../../../common/ui-datepicker/src/lib/date-picker.component';
-import { UiAutoCompleteComponent } from '../../../../../common/ui-auto-complete/src/lib/auto-complete.component';
+import { DatePickerComponent } from '@ss/common/ui-datepicker';
+import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { MatTabGroup, MatTab, MatTabLabel } from '@angular/material/tabs';
 import { CdkTextareaAutosize } from '@angular/cdk/text-field';
 
@@ -27,7 +27,7 @@ import { CdkTextareaAutosize } from '@angular/cdk/text-field';
     styleUrls: ['../../../../../common/assets/src/assets/transac-detail.scss',
         './import-reception-detail.component.scss'],
     standalone: true,
-    imports: [MatCard, MatCardContent, NgIf, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, DatePickerComponent, UiAutoCompleteComponent, MatError, MatTabGroup, MatTab, MatTabLabel, CdkTextareaAutosize, RouterOutlet]
+    imports: [MaterialModule, MatCard, MatCardContent, NgIf, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, DatePickerComponent, UiAutoCompleteComponent, MatError, MatTabGroup, MatTab, MatTabLabel, CdkTextareaAutosize, RouterOutlet]
 })
 export class ImportReceptionDetailComponent extends BaseTransactionDetailComponent implements OnInit {
     private URLs = ['./lines-list', './costs-list'];

@@ -5,14 +5,15 @@ import { FormBuilder, FormControl, ReactiveFormsModule, UntypedFormGroup, Valida
 import {filter, map, of, switchMap, tap} from 'rxjs';
 import {ArticleAutoCompleteModel, ArticleService} from '@ss/master-data/api-article';
 import {SnackBarService} from '@ss/common/ui-shell';
-import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
+import {  ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
 import { CommonModule } from "@angular/common";
 import { MaterialModule } from "@ss/common/api-common";
-import { CommonUiLangModule } from "@ss/common/ui-lang";
-import { UiPaginationModule } from "@ss/common/ui-pagination";
 
-import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
-import { CommonUiAutoCompleteModule } from "@ss/common/ui-auto-complete";
+
+
+import { DatePickerComponent } from "@ss/common/ui-datepicker";
+
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 
 @Component({
@@ -23,13 +24,11 @@ import { CommonUiAutoCompleteModule } from "@ss/common/ui-auto-complete";
     imports: [
         CommonModule,
         MaterialModule,
-        CommonUiLangModule,
-        UiPaginationModule,
+        TranslateDirective,
+        TranslatePipe,
         ReactiveFormsModule,
-        CommonUiConfirmationDialogModule,
+        DatePickerComponent,
 
-        CommonUiDatepickerModule,
-        CommonUiAutoCompleteModule,
         RouterModule,
     ],
 

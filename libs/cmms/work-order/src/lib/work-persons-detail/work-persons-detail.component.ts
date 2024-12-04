@@ -1,14 +1,14 @@
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
+
 import { MatTableModule } from '@angular/material/table';
-import { UiPaginationModule } from '@ss/common/ui-pagination';
-import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
+
+
 import { FormBuilder, FormsModule, ReactiveFormsModule, UntypedFormGroup, Validators } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
-import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
+import { DatePickerComponent } from '@ss/common/ui-datepicker';
 import { MatButtonModule } from '@angular/material/button';
 import { MaterialModule } from '@ss/common/api-common';
 import { BaseChildEntityDetailComponent } from '@ss/common/ui-base-entity';
@@ -16,24 +16,26 @@ import { WorkPerson } from '@ss/cmms/cmms-api';
 import { CMMSWorkPersonService } from '../services/c-m-m-s-work-person.service';
 import { PersonAutocompleteClass } from '@ss/employee-services/employee-services';
 import { CmmsPersonService } from '@ss/cmms/cmms-api';
+import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 
 @Component({
     selector: 'ss-work-persons-detail',
     standalone: true,
     imports: [
         CommonModule,
-        CommonUiLangModule,
+
         MatTableModule,
-        UiPaginationModule,
-        CommonUiAutoCompleteModule,
+
+
         FormsModule,
         MatFormFieldModule,
         ReactiveFormsModule,
         MatCardModule,
         MatInputModule,
-        CommonUiDatepickerModule,
+        DatePickerComponent,
         MatButtonModule,
-        MaterialModule
+        MaterialModule,
+        UiAutoCompleteComponent
     ],
     templateUrl: './work-persons-detail.component.html',
     styleUrls: ['./work-persons-detail.component.css'],

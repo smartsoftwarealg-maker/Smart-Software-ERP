@@ -5,9 +5,9 @@ import { VehicleDamage } from '../vehicle-api';
 import { VehicleDamageService } from '../services/vehicle-damage.service';
 import { FormBuilder, ReactiveFormsModule, UntypedFormGroup, Validators } from '@angular/forms';
 import { EmployeeService, PersonAutocompleteClass } from '@ss/employee-services/employee-services';
-import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
-import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
+
+import { DatePickerComponent } from '@ss/common/ui-datepicker';
+
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -16,7 +16,7 @@ import { MatInputModule } from '@angular/material/input';
 @Component({
     selector: 'ss-vehicle-damage-detail',
     standalone: true,
-    imports: [CommonModule, CommonUiAutoCompleteModule, CommonUiDatepickerModule, CommonUiLangModule, MatButtonModule, MatCardModule, MatFormFieldModule, MatInputModule, ReactiveFormsModule],
+    imports: [CommonModule,  DatePickerComponent,  MatButtonModule, MatCardModule, MatFormFieldModule, MatInputModule, ReactiveFormsModule],
     templateUrl: './vehicle-damage-detail.component.html',
     styleUrls: ['./vehicle-damage-detail.component.css']
 })

@@ -7,19 +7,21 @@ import {
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import { ActivatedRoute, Router, RouterModule } from "@angular/router";
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
-import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
+import {  ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
 import { LoginService, MaterialModule, PaginationModel, PaginatorPersistenceService } from "@ss/common/api-common";
 import { of, Subscription, switchMap, tap } from "rxjs";
 import { CommonModule } from "@angular/common";
-import { CommonUiLangModule } from "@ss/common/ui-lang";
-import { UiPaginationModule } from "@ss/common/ui-pagination";
+
+
 import { FormControl, ReactiveFormsModule } from "@angular/forms";
 
-import { CommonUiAutoCompleteModule } from "@ss/common/ui-auto-complete";
-import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
+
+import { DatePickerComponent } from "@ss/common/ui-datepicker";
 
 import { debounceTime, distinctUntilChanged } from "rxjs/operators";
 import { Sort } from "@angular/material/sort";
+import { PaginationComponent } from '@ss/common/ui-pagination';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-transaction-lines-list',
@@ -30,15 +32,16 @@ import { Sort } from "@angular/material/sort";
         CommonModule,
         RouterModule,
         MaterialModule,
-        CommonUiLangModule,
-        UiPaginationModule,
+        TranslateDirective,
+        TranslatePipe,
         ReactiveFormsModule,
 
-        CommonUiAutoCompleteModule,
-        CommonUiDatepickerModule,
-        CommonUiConfirmationDialogModule,
 
-    ],
+        DatePickerComponent,
+        PaginationComponent
+
+
+    ]
 })
 export class TransactionLinesListComponent implements OnInit {
     private fileSrv = inject(AccFileService);

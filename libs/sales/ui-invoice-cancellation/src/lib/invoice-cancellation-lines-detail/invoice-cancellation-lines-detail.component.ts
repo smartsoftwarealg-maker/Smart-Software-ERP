@@ -5,15 +5,12 @@ import {
 } from '@ss/logistics/api-transaction';
 import { CommonModule } from '@angular/common';
 import { MaterialModule } from '@ss/common/api-common';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
-import { UiPaginationModule } from '@ss/common/ui-pagination';
 import { ReactiveFormsModule } from '@angular/forms';
-import { CommonUiConfirmationDialogModule } from '@ss/common/ui-confirmation-dialog';
 import { RouterModule } from '@angular/router';
-import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
-import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
+import { DatePickerComponent } from '@ss/common/ui-datepicker';
 
-import { LogisticsUiDocImportModule } from '@ss/logistics/ui-doc-import';
+
+import { TranslateDirective } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-invoice-lines-detail',
@@ -23,15 +20,12 @@ import { LogisticsUiDocImportModule } from '@ss/logistics/ui-doc-import';
     imports: [
         CommonModule,
         MaterialModule,
-        CommonUiLangModule,
-        UiPaginationModule,
+        TranslateDirective,
         ReactiveFormsModule,
-        CommonUiConfirmationDialogModule,
         RouterModule,
-        CommonUiDatepickerModule,
-        CommonUiAutoCompleteModule,
+        DatePickerComponent,
 
-        LogisticsUiDocImportModule
+
     ],
 })
 export class InvoiceCancellationLinesDetailComponent extends BaseTransactionLinesDetailComponent implements OnInit, OnDestroy {

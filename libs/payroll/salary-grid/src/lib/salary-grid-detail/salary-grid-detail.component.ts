@@ -10,13 +10,14 @@ import { LookupsService } from "@ss/common/api-lookup";
 import { GridService } from "../grid.service";
 import { CommonModule } from "@angular/common";
 import { MaterialModule } from "@ss/common/api-common";
-import { UiPaginationModule } from "@ss/common/ui-pagination";
-import { CommonUiLangModule } from "@ss/common/ui-lang";
-import { CommonUiAutoCompleteModule } from "@ss/common/ui-auto-complete";
-import { RemunerationPaymonthEditorModule } from "@ss/remuneration/paymonth-editor";
-import { CommonPayrollModule } from "@ss/payroll-common";
+
+
+
+
+
 import { GridRankService } from "../grid-rank.service";
 import { Observable } from "rxjs";
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: "ss-salary-grid-detail",
@@ -26,11 +27,11 @@ import { Observable } from "rxjs";
     imports: [
         CommonModule,
         MaterialModule,
-        UiPaginationModule,
-        CommonUiLangModule,
-        CommonUiAutoCompleteModule,
-        RemunerationPaymonthEditorModule,
-        CommonPayrollModule,
+        TranslateDirective,
+        TranslatePipe,
+
+
+
         RouterOutlet
     ]
 })

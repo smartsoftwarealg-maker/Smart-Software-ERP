@@ -4,12 +4,13 @@ import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import {UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
-import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
+import {  ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { CommonModule } from '@angular/common';
 import { MaterialModule } from '@ss/common/api-common';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
-import { UiPaginationModule } from '@ss/common/ui-pagination';
-import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
+
+
+
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 
 @Component({
@@ -21,10 +22,10 @@ import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
         MaterialModule,
         RouterModule,
         MaterialModule,
-        CommonUiLangModule,
-        UiPaginationModule,
-        CommonUiAutoCompleteModule,
-        CommonUiConfirmationDialogModule
+        TranslateDirective,
+        TranslatePipe,
+
+
     ],
     styleUrls: ['./vat-detail.component.scss']
 })

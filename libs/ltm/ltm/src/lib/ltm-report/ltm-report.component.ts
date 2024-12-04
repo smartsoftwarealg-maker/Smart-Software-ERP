@@ -13,13 +13,8 @@ import { LanguageService, MaterialModule } from '@ss/common/api-common';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { Lookup } from '@ss/common/api-lookup';
 import { CommonModule } from '@angular/common';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
-import { UiPaginationModule } from '@ss/common/ui-pagination';
-import { CommonUiConfirmationDialogModule } from '@ss/common/ui-confirmation-dialog';
-
-import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
-import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
-import { CommonUiHourPickerModule } from '@ss/common/ui-hour-picker';
+import { DatePickerComponent } from '@ss/common/ui-datepicker';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-ltm-report',
@@ -29,15 +24,11 @@ import { CommonUiHourPickerModule } from '@ss/common/ui-hour-picker';
     imports: [
         CommonModule,
         MaterialModule,
-        CommonUiLangModule,
-        UiPaginationModule,
         ReactiveFormsModule,
-        CommonUiConfirmationDialogModule,
-        CommonUiAutoCompleteModule,
-        CommonUiDatepickerModule,
-        RouterOutlet,
-        CommonUiHourPickerModule
-    ],
+        DatePickerComponent,
+        TranslateDirective,
+        TranslatePipe
+    ]
 })
 export class LtmReportComponent implements OnInit, OnDestroy {
     private shellSrv = inject(ShellService);

@@ -1,20 +1,14 @@
 import { Component, inject } from '@angular/core';
-import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from "@ss/common/ui-auto-complete";
+import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { FormBuilder, ReactiveFormsModule, UntypedFormGroup } from "@angular/forms";
 import { RouterOutlet } from "@angular/router";
-import { CommonUiConfirmationDialogModule } from "@ss/common/ui-confirmation-dialog";
 import { LTMMixtureDetail } from '@ltm/ltm-api';
 import { CommonModule } from "@angular/common";
 import { MaterialModule } from "@ss/common/api-common";
-import { CommonUiLangModule } from "@ss/common/ui-lang";
-import { UiPaginationModule } from "@ss/common/ui-pagination";
-
-
-import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
-import { CommonUiHourPickerModule } from "@ss/common/ui-hour-picker";
 import { BaseChildEntityDetailComponent } from "@ss/common/ui-base-entity";
 import { LtmMixtureDetailService } from '@ltm/ltm-api';
 import { LtmMatterService } from '@ltm/ltm-api';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-ltm-matter-test-detail',
@@ -24,17 +18,11 @@ import { LtmMatterService } from '@ltm/ltm-api';
     imports: [
         CommonModule,
         MaterialModule,
-        CommonUiLangModule,
-        UiPaginationModule,
         ReactiveFormsModule,
-        CommonUiConfirmationDialogModule,
-
-
-        CommonUiAutoCompleteModule,
-        CommonUiDatepickerModule,
-        RouterOutlet,
-        CommonUiHourPickerModule
-    ],
+        TranslateDirective,
+        TranslatePipe,
+        UiAutoCompleteComponent
+    ]
 })
 export class LtmMixtureDetailDetailComponent extends BaseChildEntityDetailComponent<LTMMixtureDetail> {
     private articleSrv = inject(LtmMatterService);

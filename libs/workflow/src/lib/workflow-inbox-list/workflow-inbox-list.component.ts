@@ -8,13 +8,10 @@ import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import { MaterialModule, PaginatorPersistenceService } from '@ss/common/api-common';
 import {WorkflowInboxService} from '../workflow-inbox.service';
 import { CommonModule } from '@angular/common';
-import { UiPaginationModule } from '@ss/common/ui-pagination';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
-import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
-import { RemunerationPaymonthEditorModule } from '@ss/remuneration/paymonth-editor';
-import { CommonPayrollModule } from '@ss/payroll-common';
+import { PaginationComponent } from '@ss/common/ui-pagination';
 
 import { OrgChartModule } from 'angular13-organization-chart';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-workflow-inbox-list',
@@ -24,14 +21,11 @@ import { OrgChartModule } from 'angular13-organization-chart';
     imports: [
         CommonModule,
         MaterialModule,
-        UiPaginationModule,
-        CommonUiLangModule,
-        CommonUiAutoCompleteModule,
-        RemunerationPaymonthEditorModule,
-        CommonPayrollModule,
-
         OrgChartModule,
-    ],
+        PaginationComponent,
+        TranslatePipe,
+        TranslateDirective
+    ]
 })
 export class WorkflowInboxListComponent extends BaseEntityListComponent<Inbox> implements OnInit {
     displayedColumns = [

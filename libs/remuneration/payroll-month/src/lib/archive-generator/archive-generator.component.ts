@@ -9,11 +9,11 @@ import {ArchiveGeneratorService} from '../archive-generator.service';
 import { NgIf } from '@angular/common';
 import { MatCard, MatCardContent } from '@angular/material/card';
 import { MatFormField, MatLabel } from '@angular/material/form-field';
-import { TranslateDirective } from '../../../../../common/ui-lang/src/lib/translate.directive';
+import { TranslateDirective } from '@ss/common/ui-lang';
 import { MatInput } from '@angular/material/input';
 import { MatButton } from '@angular/material/button';
 import { MatProgressBar } from '@angular/material/progress-bar';
-import { TranslatePipe } from '../../../../../common/ui-lang/src/lib/translate.pipe';
+import { TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-archive-generator',

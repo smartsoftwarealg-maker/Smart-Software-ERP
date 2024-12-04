@@ -3,8 +3,8 @@ import { CommonModule } from '@angular/common';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute } from '@angular/router';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
+
+
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -14,7 +14,7 @@ import { Insert, Invoice } from '../services-api';
 import { LoginService, MaterialModule } from '@ss/common/api-common';
 import { HttpParams } from '@angular/common/http';
 import { MatSelectionList } from '@angular/material/list';
-import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
+import { DatePickerComponent } from '@ss/common/ui-datepicker';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 
 @Component({
@@ -22,14 +22,14 @@ import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
     standalone: true,
     imports: [
         CommonModule,
-        CommonUiAutoCompleteModule,
-        CommonUiLangModule,
+
+
         MatCardModule,
         MatFormFieldModule,
         ReactiveFormsModule,
         MatInputModule,
         MaterialModule,
-        CommonUiDatepickerModule
+        DatePickerComponent
     ],
     templateUrl: './invoice-duplication.component.html',
     styleUrls: ['./invoice-duplication.component.css'],

@@ -5,11 +5,11 @@ import {PaginationModel} from '@ss/common/api-common';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ShellService} from '@ss/common/ui-shell';
 import { MatCard, MatCardTitle } from '@angular/material/card';
-import { TranslateDirective } from '../../../../../common/ui-lang/src/lib/translate.directive';
+import { TranslateDirective } from '@ss/common/ui-lang';
 import { MatList, MatListItem } from '@angular/material/list';
 import { NgFor } from '@angular/common';
 import { MatButton } from '@angular/material/button';
-import { TranslatePipe } from '../../../../../common/ui-lang/src/lib/translate.pipe';
+import { TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-budget-selector-dlg',

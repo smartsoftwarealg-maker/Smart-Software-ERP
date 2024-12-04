@@ -9,7 +9,7 @@ import { DefaultReportService } from '@ss/common/ui-default-report-component';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { PaginatorPersistenceService } from '@ss/common/api-common';
 import { F8Service } from '../services/f8-service';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
+
 import {
     MatCell,
     MatCellDef,
@@ -19,7 +19,7 @@ import {
     MatHeaderRowDef, MatRow, MatRowDef, MatTable
 } from '@angular/material/table';
 import { MatSort, MatSortHeader } from '@angular/material/sort';
-import { UiPaginationModule } from '@ss/common/ui-pagination';
+
 import { type } from 'node:os';
 import { ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { MatCard, MatCardContent } from '@angular/material/card';
@@ -31,7 +31,7 @@ import { AccFileService } from '@ss/accounting/accounting-api';
 @Component({
     selector: 'ss-f82-detail',
     standalone: true,
-    imports: [CommonModule, CommonUiLangModule, MatCell, MatCellDef, MatColumnDef, MatHeaderCell, MatHeaderRow, MatHeaderRowDef, MatRow, MatRowDef, MatSort, MatSortHeader, MatTable, UiPaginationModule, MatHeaderCellDef, MatCard, MatCardContent, MatError, MatFormField, MatInput, MatLabel, ReactiveFormsModule],
+    imports: [CommonModule,  MatCell, MatCellDef, MatColumnDef, MatHeaderCell, MatHeaderRow, MatHeaderRowDef, MatRow, MatRowDef, MatSort, MatSortHeader, MatTable,  MatHeaderCellDef, MatCard, MatCardContent, MatError, MatFormField, MatInput, MatLabel, ReactiveFormsModule],
     templateUrl: './f82-detail.component.html',
     styleUrl: './f82-detail.component.scss'
 })

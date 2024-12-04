@@ -6,32 +6,36 @@ import {CCGroup, Lookup, LookupsService} from '@ss/common/api-lookup';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {Observable, of, switchMap} from 'rxjs';
 import {tap} from 'rxjs/operators';
-import {fillObject, LoginService} from '@ss/common/api-common';
+import { fillObject, LoginService, MaterialModule } from '@ss/common/api-common';
 import {SalesOrderService} from '@ss/sales/api-sales-order';
 import {
     BaseTransactionDetailComponent, BaseTransactionLinesListComponent, DOC_QUOTATION, SalesOrderLinesService,
-    Transaction,
-    TransactionLinesService
+    Transaction
 } from '@ss/logistics/api-transaction';
 import {MatDialog} from '@angular/material/dialog';
 import {OrderLinesListComponent} from '@ss/sales/ui-order-lines';
-import { MatCard, MatCardContent } from '@angular/material/card';
-import { NgIf } from '@angular/common';
-import { MatFormField, MatLabel, MatError } from '@angular/material/form-field';
-import { TranslateDirective } from '../../../../../common/ui-lang/src/lib/translate.directive';
-import { MatInput } from '@angular/material/input';
-import { DatePickerComponent } from '../../../../../common/ui-datepicker/src/lib/date-picker.component';
-import { UiAutoCompleteComponent } from '../../../../../common/ui-auto-complete/src/lib/auto-complete.component';
-import { MatCheckbox } from '@angular/material/checkbox';
-import { MatTabGroup, MatTab, MatTabLabel } from '@angular/material/tabs';
+import { JsonPipe, NgIf } from '@angular/common';
+import { TranslateDirective } from '@ss/common/ui-lang';
+import { DatePickerComponent } from '@ss/common/ui-datepicker';
+import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { CdkTextareaAutosize } from '@angular/cdk/text-field';
 
 @Component({
+    imports: [
+        MaterialModule,
+        NgIf,
+        FormsModule,
+        ReactiveFormsModule,
+        TranslateDirective,
+        DatePickerComponent,
+        UiAutoCompleteComponent,
+        CdkTextareaAutosize,
+        RouterOutlet,
+        JsonPipe],
     selector: 'ss-ui-order-detail',
-    templateUrl: './order-detail.component.html',
-    styleUrls: ['../../../../../common/assets/src/assets/transac-detail.scss'],
     standalone: true,
-    imports: [MatCard, MatCardContent, NgIf, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, MatError, DatePickerComponent, UiAutoCompleteComponent, MatCheckbox, MatTabGroup, MatTab, MatTabLabel, CdkTextareaAutosize, RouterOutlet]
+    styleUrls: ['../../../../../common/assets/src/assets/transac-detail.scss'],
+    templateUrl: './order-detail.component.html'
 })
 export class OrderDetailComponent extends BaseTransactionDetailComponent {
     @ViewChild(OrderLinesListComponent) orderList: OrderLinesListComponent;

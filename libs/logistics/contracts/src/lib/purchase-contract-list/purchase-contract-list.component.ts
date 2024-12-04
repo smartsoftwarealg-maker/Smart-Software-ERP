@@ -4,17 +4,19 @@ import {Project} from '../contract-api.class';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import { ActivatedRoute, Router, RouterModule } from "@angular/router";
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
-import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
+import {  ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
 import { MaterialModule, PaginatorPersistenceService } from "@ss/common/api-common";
 import { FormControl, ReactiveFormsModule } from "@angular/forms";
 import { Agent, AgentLookupModel, AgentService, SupplierService } from "@ss/logistics/api-agent";
 import { CommonModule } from '@angular/common';
-import { CommonUiLangModule } from "@ss/common/ui-lang";
-import { UiPaginationModule } from '@ss/common/ui-pagination';
 
-import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
-import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from "@ss/common/ui-auto-complete";
+
+
+import { DatePickerComponent } from "@ss/common/ui-datepicker";
+import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { PurchaseContractService } from "../purchase-contract.service";
+import { PaginationComponent } from '@ss/common/ui-pagination';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-purchase-contract-list',
@@ -24,15 +26,12 @@ import { PurchaseContractService } from "../purchase-contract.service";
     imports: [
         CommonModule,
         MaterialModule,
-        CommonUiLangModule,
-        UiPaginationModule,
+        TranslateDirective,
         ReactiveFormsModule,
-        CommonUiConfirmationDialogModule,
-
-        CommonUiDatepickerModule,
-        CommonUiAutoCompleteModule,
         RouterModule,
-    ],
+        PaginationComponent,
+        UiAutoCompleteComponent
+    ]
 })
 export class PurchaseContractListComponent extends BaseEntityListComponent<Project> {
     private agentSrv = inject(SupplierService);

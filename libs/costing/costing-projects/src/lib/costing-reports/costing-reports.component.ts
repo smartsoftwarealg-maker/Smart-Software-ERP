@@ -2,12 +2,11 @@ import { Component, inject, OnInit, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { LanguageService, MaterialModule } from '@ss/common/api-common';
-import { CommonUiConfirmationDialogModule } from '@ss/common/ui-confirmation-dialog';
-import { UiPaginationModule } from '@ss/common/ui-pagination';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
+
 import { CProduct, CReport } from '@ss/costing/costing-utils';
 import { CostingReportService } from '../services/costing-report.service';
 import { Chart, ChartItem, registerables } from 'chart.js';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 interface ChartConfig {
     id: string;
@@ -22,9 +21,7 @@ interface ChartConfig {
         CommonModule,
         RouterModule,
         MaterialModule,
-        CommonUiConfirmationDialogModule,
-        UiPaginationModule,
-        CommonUiLangModule
+        TranslateDirective,
     ],
     templateUrl: './costing-reports.component.html',
     styleUrl: './costing-reports.component.css',

@@ -4,7 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { AbstractControl, ReactiveFormsModule, UntypedFormBuilder, Validators } from '@angular/forms';
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { Bank, CityService, Fund, LookupsService } from '@ss/common/api-lookup';
-import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
+import {  ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { Center, CenterService } from '@ss/administration/api-center';
 import { MatExpansionPanel } from '@angular/material/expansion';
 import { catchError, Observable, of } from 'rxjs';
@@ -12,9 +12,10 @@ import { switchMap, tap } from 'rxjs/operators';
 import { UserListService } from '@ss/common/api-users';
 import { LoginService, MaterialModule } from '@ss/common/api-common';
 import { CommonModule } from '@angular/common';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
-import { UiPaginationModule } from '@ss/common/ui-pagination';
-import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
+
+
+import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
+import { TranslateDirective } from '@ss/common/ui-lang';
 
 
 @Component({
@@ -25,11 +26,9 @@ import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common
     imports: [
         CommonModule,
         MaterialModule,
-        CommonUiLangModule,
-        UiPaginationModule,
+        TranslateDirective,
         ReactiveFormsModule,
-        CommonUiConfirmationDialogModule,
-        CommonUiAutoCompleteModule
+        UiAutoCompleteComponent
     ]
 })
 export class CenterDetailComponent extends BaseEntityDetailComponent<Center> {

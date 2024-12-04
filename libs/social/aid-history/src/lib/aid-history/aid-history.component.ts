@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { BaseChildEntityListComponent } from '@ss/common/ui-base-entity';
 import { SocialAid } from '@social/social-api';
 import { PersonAidHistoryService } from '@social/social-api';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
+
 import {
     MatCell,
     MatCellDef,
@@ -13,13 +13,14 @@ import {
     MatHeaderRowDef, MatRow, MatRowDef, MatTable
 } from '@angular/material/table';
 import { MatTooltip } from '@angular/material/tooltip';
-import { UiPaginationModule } from '@ss/common/ui-pagination';
+
 import { MatMiniFabButton } from '@angular/material/button';
+import { PaginationComponent } from '@ss/common/ui-pagination';
 
 @Component({
     selector: 'ss-aid-history',
     standalone: true,
-    imports: [CommonModule, CommonUiLangModule, MatCell, MatCellDef, MatColumnDef, MatHeaderCell, MatHeaderRow, MatHeaderRowDef, MatRow, MatRowDef, MatTable, MatTooltip, UiPaginationModule, MatHeaderCellDef, MatMiniFabButton],
+    imports: [CommonModule, MatCell, MatCellDef, MatColumnDef, MatHeaderCell, MatHeaderRow, MatHeaderRowDef, MatRow, MatRowDef, MatTable, MatTooltip, MatHeaderCellDef, MatMiniFabButton, PaginationComponent],
     templateUrl: './aid-history.component.html',
     styleUrl: './aid-history.component.scss',
 })

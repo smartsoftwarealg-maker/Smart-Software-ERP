@@ -14,7 +14,7 @@ import {
 } from '@ss/accounting/accounting-api';
 import {CenterService} from '@ss/administration/api-center';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
-import {LoginService, PaginationModel, User} from '@ss/common/api-common';
+import { LoginService, MaterialModule, PaginationModel, User } from '@ss/common/api-common';
 import { MatSelectionListChange, MatListSubheaderCssMatStyler, MatSelectionList, MatListOption } from '@angular/material/list';
 import {UserListService} from '@ss/common/api-users';
 import {of, switchMap, tap} from 'rxjs';
@@ -22,9 +22,9 @@ import {BankService} from '@ss/administration/api-bank';
 import { MatCard, MatCardContent } from '@angular/material/card';
 import { NgIf, NgFor } from '@angular/common';
 import { MatFormField, MatLabel, MatError } from '@angular/material/form-field';
-import { TranslateDirective } from '../../../../../common/ui-lang/src/lib/translate.directive';
+import { TranslateDirective } from '@ss/common/ui-lang';
 import { MatInput } from '@angular/material/input';
-import { UiAutoCompleteComponent } from '../../../../../common/ui-auto-complete/src/lib/auto-complete.component';
+import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { MatMiniFabButton } from '@angular/material/button';
 
 @Component({
@@ -32,7 +32,7 @@ import { MatMiniFabButton } from '@angular/material/button';
     templateUrl: './journal-detail.component.html',
     styleUrls: ['./journal-detail.component.scss'],
     standalone: true,
-    imports: [MatCard, MatCardContent, NgIf, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, MatError, UiAutoCompleteComponent, MatListSubheaderCssMatStyler, MatMiniFabButton, MatSelectionList, NgFor, MatListOption]
+    imports: [MaterialModule, MatCard, MatCardContent, NgIf, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, MatError, UiAutoCompleteComponent, MatListSubheaderCssMatStyler, MatMiniFabButton, MatSelectionList, NgFor, MatListOption]
 })
 export class JournalDetailComponent extends BaseEntityDetailComponent<Journal> {
     private centerSrv  = inject(CenterService);

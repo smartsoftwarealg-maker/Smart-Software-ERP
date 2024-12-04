@@ -8,16 +8,17 @@ import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { DefaultReportService } from '@ss/common/ui-default-report-component';
 import { PaginatorPersistenceService } from '@ss/common/api-common';
 import { PartsRequestService } from '../services/parts-request.service';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
+
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
-import { UiPaginationModule } from '@ss/common/ui-pagination';
+
 import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
+import { PaginationComponent } from '@ss/common/ui-pagination';
 
 @Component({
     selector: 'ss-parts-request-list',
     standalone: true,
-    imports: [CommonModule, CommonUiLangModule, MatSortModule, MatTableModule, UiPaginationModule, DocInfoComponent],
+    imports: [CommonModule, MatSortModule, MatTableModule, DocInfoComponent, PaginationComponent],
     templateUrl: './parts-request-list.component.html',
     styleUrls: ['../../../../../common/assets/src/assets/transac-list.scss'],
 })

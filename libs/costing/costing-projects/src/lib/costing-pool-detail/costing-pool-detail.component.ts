@@ -6,11 +6,11 @@ import { FormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { CostingPoolService } from '../services/costing-pool.service';
 import { CostCenterService } from '@ss/logistics/api-cost-center';
 import { CostingKeyService } from '@ss/costing/costing-keys';
-import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
+import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { RouterModule } from '@angular/router';
 import { MaterialModule } from '@ss/common/api-common';
-import { CommonUiConfirmationDialogModule } from '@ss/common/ui-confirmation-dialog';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
+
+
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { CostingPoolKeysService } from '../services/costing-pool-keys.service';
 import { CostingPoolKeysComponent } from '../costing-pool-keys/costing-pool-keys.component';
@@ -18,6 +18,7 @@ import { CProductLineCostComponent } from '../product-line-costs/product-line-it
 import { ProductLineKeysComponent } from '../product-line-keys/product-line-keys.component';
 import { CostingPoolCostComponent } from '../costing-pools-costs/costing-pool-costs.component';
 import { CostingPoolsCostsService } from '../services/costing-pools-costs.service';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-costing-pool-detail',
@@ -26,14 +27,15 @@ import { CostingPoolsCostsService } from '../services/costing-pools-costs.servic
         CommonModule,
         RouterModule,
         MaterialModule,
-        CommonUiConfirmationDialogModule,
-        CommonUiLangModule,
+        TranslateDirective,
+        TranslatePipe,
         MatAutocompleteModule,
-        CommonUiAutoCompleteModule,
+
         CostingPoolKeysComponent,
         CProductLineCostComponent,
         ProductLineKeysComponent,
-        CostingPoolCostComponent
+        CostingPoolCostComponent,
+        UiAutoCompleteComponent
     ],
     templateUrl: './costing-pool-detail.component.html',
     styleUrl: './costing-pool-detail.component.css'

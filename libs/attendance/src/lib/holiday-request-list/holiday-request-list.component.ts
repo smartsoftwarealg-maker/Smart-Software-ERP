@@ -12,11 +12,11 @@ import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HolidayTypeService } from '../holiday-type.service';
 import { Lookup } from '@ss/common/api-lookup';
 import { MatFormField, MatLabel } from '@angular/material/form-field';
-import { TranslateDirective } from '../../../../common/ui-lang/src/lib/translate.directive';
-import { UiAutoCompleteComponent } from '../../../../common/ui-auto-complete/src/lib/auto-complete.component';
+import { TranslateDirective } from '@ss/common/ui-lang';
+import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from '@angular/material/table';
 import { MatSort, MatSortHeader } from '@angular/material/sort';
-import { PaginationComponent } from '../../../../common/ui-pagination/src/lib/pagination.component';
+import { PaginationComponent } from '@ss/common/ui-pagination';
 import { DatePipe } from '@angular/common';
 
 @Component({

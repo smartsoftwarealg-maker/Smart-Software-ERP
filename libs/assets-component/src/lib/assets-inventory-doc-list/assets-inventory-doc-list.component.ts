@@ -4,15 +4,15 @@ import { AssetInventoryDoc, CountSummary } from '../assets-api';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { DefaultReportService} from '@ss/common/ui-default-report-component';
-import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
+import {  ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { MaterialModule, PaginationModel, PaginatorPersistenceService } from '@ss/common/api-common';
 import { CommonModule } from '@angular/common';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
 
-import { UiPaginationModule } from '@ss/common/ui-pagination';
-import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
-import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
-import { CustomAttributesModule } from '@ss/custom-attributes';
+
+
+
+import { DatePickerComponent } from '@ss/common/ui-datepicker';
+
 
 import { QRCodeModule } from 'angularx-qrcode';
 import { AssetInventoryDocService } from '../services/asset-inventory-doc.service';
@@ -23,6 +23,8 @@ import {
     AssetUnidentifiedChildInventoryListComponent
 } from '../asset-unidentified-child-inventory-list/asset-unidentified-child-inventory-list.component';
 import { AssetCountSummaryService } from '../services/asset-count-summary.service';
+import { PaginationComponent } from '@ss/common/ui-pagination';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-assets-inventory-doc-list',
@@ -32,18 +34,16 @@ import { AssetCountSummaryService } from '../services/asset-count-summary.servic
     imports: [
         CommonModule,
         MaterialModule,
-        CommonUiLangModule,
+        TranslateDirective,
+        TranslatePipe,
 
-        UiPaginationModule,
-        CommonUiConfirmationDialogModule,
-        CommonUiAutoCompleteModule,
-        CommonUiDatepickerModule,
+        DatePickerComponent,
         RouterModule,
-        CustomAttributesModule,
 
         QRCodeModule,
         AssetRecordedInventoryReportComponent,
-        AssetUnidentifiedChildInventoryListComponent
+        AssetUnidentifiedChildInventoryListComponent,
+        PaginationComponent
     ]
 })
 export class AssetsInventoryDocListComponent extends BaseEntityListComponent<AssetInventoryDoc> {

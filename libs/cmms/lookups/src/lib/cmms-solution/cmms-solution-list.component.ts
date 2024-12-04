@@ -8,15 +8,15 @@ import { MaterialModule, PaginatorPersistenceService } from "@ss/common/api-comm
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { CMMSSolutionService } from '../services/cmms.solution.service';
 import { CommonModule } from "@angular/common";
-import { CommonUiLangModule } from "@ss/common/ui-lang";
 import { MatSortModule } from "@angular/material/sort";
 import { MatTableModule } from "@angular/material/table";
-import { UiPaginationModule } from "@ss/common/ui-pagination";
 import { MatCardModule } from "@angular/material/card";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from "@angular/material/input";
 import { ReactiveFormsModule } from "@angular/forms";
-import { CommonUiAutoCompleteModule } from "@ss/common/ui-auto-complete";
+
+import { PaginationComponent } from '@ss/common/ui-pagination';
+import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 
 @Component({
     selector: 'ss-cmms-solution-list',
@@ -25,17 +25,16 @@ import { CommonUiAutoCompleteModule } from "@ss/common/ui-auto-complete";
     standalone: true,
     imports: [
         CommonModule,
-        CommonUiLangModule,
+        PaginationComponent,
         MatSortModule,
         MatTableModule,
-        UiPaginationModule,
         MatCardModule,
         MatFormFieldModule,
         MatInputModule,
         MaterialModule,
         ReactiveFormsModule,
         RouterOutlet,
-        CommonUiAutoCompleteModule
+        UiAutoCompleteComponent
     ],
 })
 export class CMMSSolutionListComponent extends BaseEntityListComponent<Lookup> {

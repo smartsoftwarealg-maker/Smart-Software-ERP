@@ -1,6 +1,6 @@
 import { Component, DestroyRef, inject, OnInit, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
+
 import {
     MatCell,
     MatCellDef,
@@ -10,7 +10,7 @@ import {
     MatHeaderRowDef, MatRow, MatRowDef, MatTable
 } from '@angular/material/table';
 import { MatSort, MatSortHeader, Sort } from '@angular/material/sort';
-import { UiPaginationModule } from '@ss/common/ui-pagination';
+
 import { FormArray, FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatCard, MatCardContent } from '@angular/material/card';
 import { MatError, MatFormField, MatHint, MatLabel } from '@angular/material/form-field';
@@ -25,19 +25,22 @@ import {
     PersonAutocompleteClass,
     SubordinateService
 } from '@ss/employee-services/employee-services';
-import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
+
 import { GradeService } from '../services/grade.service';
 import { Grade } from '../gica-careers-api';
-import { HttpService, LoginService, PaginationModel } from '@ss/common/api-common';
+import { HttpService, LoginService, MaterialModule, PaginationModel } from '@ss/common/api-common';
 import { map, Observable, of, Subscription, tap } from 'rxjs';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
-import { ImageModel } from '@ss/common/ui-image-input';
+import { ImageInputComponent, ImageModel } from '@ss/common/ui-image-input';
+import { PaginationComponent } from '@ss/common/ui-pagination';
+import { TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-gica-gradings',
     standalone: true,
-    imports: [CommonModule,
-        CommonUiLangModule,
+    imports: [
+        CommonModule,
+        MaterialModule,
         MatCell,
         MatCellDef,
         MatColumnDef,
@@ -49,15 +52,15 @@ import { ImageModel } from '@ss/common/ui-image-input';
         MatSort,
         MatSortHeader,
         MatTable,
-        UiPaginationModule,
-        MatCard,
-        MatCardContent,
-        MatError,
         MatFormField,
         MatInput,
         MatLabel,
         ReactiveFormsModule,
-        MatButton, MatHeaderCellDef, MatProgressSpinner, CommonUiAutoCompleteModule, MatHint],
+        MatHeaderCellDef,
+        PaginationComponent,
+        ImageInputComponent,
+        TranslatePipe
+    ],
     templateUrl: './gradings.component.html',
     styleUrl: './gradings.component.css'
 })

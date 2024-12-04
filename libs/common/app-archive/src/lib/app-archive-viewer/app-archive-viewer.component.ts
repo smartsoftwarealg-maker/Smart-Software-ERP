@@ -8,11 +8,12 @@ import { ImageUploaderUtil, LoginService, MaterialModule, PaginationModel } from
 import { Observable, of } from 'rxjs';
 import { AppArchive, AppArchiveObs, APPLICATIONS } from '../app-archive-api';
 import { CommonModule, DatePipe } from '@angular/common';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
-import { UiPaginationModule } from '@ss/common/ui-pagination';
-import { CommonUiConfirmationDialogModule } from '@ss/common/ui-confirmation-dialog';
-import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
-import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
+
+
+
+
+import { DatePickerComponent } from '@ss/common/ui-datepicker';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-app-archive-viewer',
@@ -23,12 +24,12 @@ import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
         CommonModule,
         RouterModule,
         MaterialModule,
-        CommonUiLangModule,
-        UiPaginationModule,
+        TranslateDirective,
+        TranslatePipe,
         ReactiveFormsModule,
-        CommonUiConfirmationDialogModule,
-        CommonUiAutoCompleteModule,
-        CommonUiDatepickerModule
+
+
+        DatePickerComponent
     ]
 })
 export class AppArchiveViewerComponent implements OnInit {

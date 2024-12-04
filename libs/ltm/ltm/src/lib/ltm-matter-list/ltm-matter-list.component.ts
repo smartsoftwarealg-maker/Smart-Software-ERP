@@ -1,23 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {LTMMatter} from '@ltm/ltm-api';
-import { KeepOnToolbar, ShellService, SnackBarService, ToolbarButton } from "@ss/common/ui-shell";
-import { ActivatedRoute, Router, RouterOutlet } from "@angular/router";
+import { ShellService, SnackBarService } from "@ss/common/ui-shell";
+import { ActivatedRoute, Router } from "@angular/router";
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
-import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
+import {  ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
 import { MaterialModule, PaginatorPersistenceService } from "@ss/common/api-common";
 import {LtmMatterService} from '@ltm/ltm-api';
 import { CommonModule } from "@angular/common";
-import { CommonUiLangModule } from "@ss/common/ui-lang";
-import { UiPaginationModule } from "@ss/common/ui-pagination";
+import { PaginationComponent } from '@ss/common/ui-pagination';
 import { ReactiveFormsModule } from "@angular/forms";
 
-
-import { CommonUiAutoCompleteModule } from "@ss/common/ui-auto-complete";
-import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
-import { CommonUiHourPickerModule } from "@ss/common/ui-hour-picker";
 import { MatDialog } from "@angular/material/dialog";
-import { LtmMatterDuplicateComponent } from "../ltm-matter-duplicate/ltm-matter-duplicate.component";
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-ltm-matter-list',
@@ -27,16 +22,9 @@ import { LtmMatterDuplicateComponent } from "../ltm-matter-duplicate/ltm-matter-
     imports: [
         CommonModule,
         MaterialModule,
-        CommonUiLangModule,
-        UiPaginationModule,
+        PaginationComponent,
         ReactiveFormsModule,
-        CommonUiConfirmationDialogModule,
-
-
-        CommonUiAutoCompleteModule,
-        CommonUiDatepickerModule,
-        RouterOutlet,
-        CommonUiHourPickerModule
+        TranslateDirective
     ],
 })
 export class LtmMatterListComponent  extends BaseEntityListComponent<LTMMatter> implements OnInit {

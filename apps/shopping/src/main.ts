@@ -8,11 +8,12 @@ import { BrowserModule, bootstrapApplication } from '@angular/platform-browser';
 import { withEnabledBlockingInitialNavigation, provideRouter, Routes, RouterModule } from '@angular/router';
 import { MainPageComponent, ShoppingCartComponent, ShoppingGuard, SalesAcknowledgementComponent, SalesConfirmationComponent } from '@ss/sales/ecommerce';
 import { withInterceptorsFromDi, provideHttpClient } from '@angular/common/http';
-import { UiThemeModule } from '@ss/common/ui-theme';
+import { ThemeSelect } from '@ss/common/ui-theme';
 import { UiErrorHandlerModule } from '@ss/common/ui-error-handler';
 import { provideAnimations } from '@angular/platform-browser/animations';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
+
 import { AppComponent } from './app/app.component';
+import { TranslatePipe } from '@ss/common/ui-lang';
 
 const shoppingRoutes: Routes = [
     {path: '', component: MainPageComponent, pathMatch: 'full'},
@@ -31,7 +32,7 @@ if (environment.production) {
 
 bootstrapApplication(AppComponent, {
     providers: [
-        importProvidersFrom(CommonModule, BrowserModule, RouterModule, UiThemeModule, UiErrorHandlerModule, CommonUiLangModule),
+        importProvidersFrom(CommonModule, BrowserModule, RouterModule, UiThemeModule, UiErrorHandlerModule, TranslatePipe),
         provideRouter(shoppingRoutes, withEnabledBlockingInitialNavigation()),
         provideHttpClient(withInterceptorsFromDi()),
         provideHttpClient(withInterceptorsFromDi()),

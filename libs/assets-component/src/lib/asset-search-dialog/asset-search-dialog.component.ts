@@ -6,16 +6,18 @@ import { UntypedFormControl } from '@angular/forms';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { MaterialModule, PaginationModel } from '@ss/common/api-common';
 import { CommonModule } from '@angular/common';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
 
-import { UiPaginationModule } from '@ss/common/ui-pagination';
-import { CommonUiConfirmationDialogModule } from '@ss/common/ui-confirmation-dialog';
-import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
-import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
+
+
+
+
+import { DatePickerComponent } from '@ss/common/ui-datepicker';
 import { RouterModule } from '@angular/router';
-import { CustomAttributesModule } from '@ss/custom-attributes';
+
 
 import { QRCodeModule } from 'angularx-qrcode';
+import { PaginationComponent } from '@ss/common/ui-pagination';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-asset-search-dialog',
@@ -25,16 +27,15 @@ import { QRCodeModule } from 'angularx-qrcode';
     imports: [
         CommonModule,
         MaterialModule,
-        CommonUiLangModule,
+        TranslateDirective,
+        TranslatePipe,
 
-        UiPaginationModule,
-        CommonUiConfirmationDialogModule,
-        CommonUiAutoCompleteModule,
-        CommonUiDatepickerModule,
+        DatePickerComponent,
         RouterModule,
-        CustomAttributesModule,
 
-        QRCodeModule
+
+        QRCodeModule,
+        PaginationComponent
     ]
 
 })

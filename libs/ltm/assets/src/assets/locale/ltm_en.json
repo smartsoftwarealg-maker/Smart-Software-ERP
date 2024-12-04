@@ -77,5 +77,6 @@
     "ACTION_DATE":        "Action date",
     "VALIDATED_BY":       "Validated by",
     "VALIDATION_DATE":    "Validation date",
-    "REPORT_DATE":        "Report date"
+    "REPORT_DATE":        "Report date",
+    "NON_VALIDATED":     "Non validated"
 }

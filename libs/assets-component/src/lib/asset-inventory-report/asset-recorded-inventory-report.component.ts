@@ -4,19 +4,21 @@ import {
     InventoryAsset
 } from '../assets-api';
 import { RouterModule } from '@angular/router';
-import { CommonUiConfirmationDialogModule } from '@ss/common/ui-confirmation-dialog';
-import { MaterialModule, PaginationModel } from '@ss/common/api-common';
-import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
-import { CommonModule } from '@angular/common';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
 
-import { UiPaginationModule } from '@ss/common/ui-pagination';
-import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
-import { CustomAttributesModule } from '@ss/custom-attributes';
+import { MaterialModule, PaginationModel } from '@ss/common/api-common';
+
+import { CommonModule } from '@angular/common';
+
+
+
+import { DatePickerComponent } from '@ss/common/ui-datepicker';
+
 
 import { QRCodeModule } from 'angularx-qrcode';
 import { AssetRecordedInventoryService } from '../services/asset-recorded-inventory.service';
 import { Sort } from '@angular/material/sort';
+import { PaginationComponent } from '@ss/common/ui-pagination';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-asset-recorded-inventory-report',
@@ -26,16 +28,12 @@ import { Sort } from '@angular/material/sort';
     imports: [
         CommonModule,
         MaterialModule,
-        CommonUiLangModule,
+        TranslateDirective,
 
-        UiPaginationModule,
-        CommonUiConfirmationDialogModule,
-        CommonUiAutoCompleteModule,
-        CommonUiDatepickerModule,
         RouterModule,
-        CustomAttributesModule,
 
-        QRCodeModule
+        QRCodeModule,
+        PaginationComponent
     ]
 })
 export class AssetRecordedInventoryReportComponent implements OnInit {

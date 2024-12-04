@@ -7,10 +7,10 @@ import {AvailableArticle} from '@ss/master-data/api-article';
 import { HeaderPageComponent } from '../header-page/header-page.component';
 import { NgFor, DecimalPipe } from '@angular/common';
 import { MatCard } from '@angular/material/card';
-import { ImageInputComponent } from '../../../../../common/ui-image-input/src/lib/image-input.component';
+import { ImageInputComponent } from '@ss/common/ui-image-input';
 import { MatIconButton, MatButton } from '@angular/material/button';
-import { TranslateDirective } from '../../../../../common/ui-lang/src/lib/translate.directive';
-import { TranslatePipe } from '../../../../../common/ui-lang/src/lib/translate.pipe';
+import { TranslateDirective } from '@ss/common/ui-lang';
+import { TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-shopping-cart',

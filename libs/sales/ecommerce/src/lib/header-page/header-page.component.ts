@@ -5,7 +5,7 @@ import {CartService} from '../cart.service';
 import {Subscription} from 'rxjs';
 import {debounceTime, distinctUntilChanged} from 'rxjs/operators';
 import { MatFormField, MatLabel } from '@angular/material/form-field';
-import { TranslateDirective } from '../../../../../common/ui-lang/src/lib/translate.directive';
+import { TranslateDirective } from '@ss/common/ui-lang';
 import { MatInput } from '@angular/material/input';
 import { MatIconButton } from '@angular/material/button';
 import { MatTooltip } from '@angular/material/tooltip';
@@ -13,7 +13,7 @@ import { MatBadge } from '@angular/material/badge';
 import { MatMenuTrigger, MatMenu, MatMenuItem } from '@angular/material/menu';
 import { LanguageSelectComponent } from '../../../../../common/ui-lang/src/lib/language-select.component';
 import { ThemeSelect } from '../../../../../common/ui-theme/src/lib/theme-select.component';
-import { TranslatePipe } from '../../../../../common/ui-lang/src/lib/translate.pipe';
+import { TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-header-page',

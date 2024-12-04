@@ -1,19 +1,19 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { DefaultReportService } from '@ss/common/ui-default-report-component';
-import { MaterialModule, PaginatorPersistenceService } from '@ss/common/api-common';
+import { MaterialModule, PaginationModel, PaginatorPersistenceService } from '@ss/common/api-common';
 import { CommonModule } from '@angular/common';
-import { UiPaginationModule } from '@ss/common/ui-pagination';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
-import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
-import { RemunerationPaymonthEditorModule } from '@ss/remuneration/paymonth-editor';
-import { CommonPayrollModule } from '@ss/payroll-common';
+
+
 import { Consumption, Loan } from '@ss/remuneration/loans';
 import { LoansConsumptionService } from '@ss/remuneration/loans';
 import { ConsolidatedLoansService } from '../consolidated-loans.service';
+import { PaginationComponent } from '@ss/common/ui-pagination';
+import { TranslateDirective } from '@ss/common/ui-lang';
+import { PaymonthPipe } from '@ss/payroll-common';
 
 @Component({
     selector: 'ss-consolidated-loan-list',
@@ -23,14 +23,12 @@ import { ConsolidatedLoansService } from '../consolidated-loans.service';
     imports: [
         CommonModule,
         MaterialModule,
-        UiPaginationModule,
-        CommonUiLangModule,
-        CommonUiAutoCompleteModule,
-        RemunerationPaymonthEditorModule,
-        CommonPayrollModule
+        TranslateDirective,
+        PaginationComponent,
+        PaymonthPipe
     ]
 })
-export class ConsolidatedLoanListComponent extends BaseEntityListComponent<Loan> {
+export class ConsolidatedLoanListComponent extends BaseEntityListComponent<Loan> implements OnInit {
     consumptionList: Consumption[] = [];
     consumptionColumns = [
         'paymonth',
@@ -49,6 +47,7 @@ export class ConsolidatedLoanListComponent extends BaseEntityListComponent<Loan>
         'number',
         'monthConsumed'
     ];
+    public readonly detailPagination = PaginationModel.newInstance();
 
     constructor(
         public infoSrv: ConsolidatedLoansService,
@@ -70,13 +69,29 @@ export class ConsolidatedLoanListComponent extends BaseEntityListComponent<Loan>
             pagPersistSrv,
             'PAYROLL_LOANS');
         this.pagination.pageSize = 15;
+        this.detailPagination.onChange = () => this.refreshDetail();
+        this.detailPagination.pageSize = 50;
+    }
+
+    private refreshDetail() {
+        this.consumptionSrv
+            .getList(this.detailPagination.page - 1, this.detailPagination.pageSize)
+            .subscribe(res => {
+                this.consumptionList = res.body;
+                this.detailPagination.elementCount = res.itemCount;
+            });
     }
 
     override selectRow(row: Loan) {
         super.selectRow(row);
         this.consumptionSrv.setParentId(this.selected);
-        this.consumptionSrv
-            .getList(0, 50)
-            .subscribe(res => this.consumptionList = res.body);
+        this.refreshDetail();
+    }
+
+    override ngOnInit() {
+        this.addButton.visible = false;
+        this.editButton.visible = false;
+        this.deleteButton.visible = false;
+        super.ngOnInit();
     }
 }

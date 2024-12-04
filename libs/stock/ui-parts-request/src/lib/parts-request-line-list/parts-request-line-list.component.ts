@@ -7,29 +7,30 @@ import { LotsService } from '@ss/common/api-lookup';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
-import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
+import {  ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { PartsRequestLineService } from '../services/parts-request-line.service';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
 
-import { UiPaginationModule } from '@ss/common/ui-pagination';
+
+
 import { ArticleService } from '@ss/master-data/api-article';
 import { MaterialModule } from '@ss/common/api-common';
-import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
-import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
+import { DatePickerComponent } from '@ss/common/ui-datepicker';
+
 import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     imports: [
         CommonModule,
         MaterialModule,
-        CommonUiLangModule,
-        UiPaginationModule,
+        TranslateDirective,
+        TranslatePipe,
         RouterModule,
         ReactiveFormsModule,
 
-        CommonUiConfirmationDialogModule,
-        CommonUiDatepickerModule,
-        CommonUiAutoCompleteModule,
+
+        DatePickerComponent,
+
         DocInfoComponent
     ],
     selector: 'ss-parts-request-line-list',

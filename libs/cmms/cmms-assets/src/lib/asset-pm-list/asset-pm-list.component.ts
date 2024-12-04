@@ -3,17 +3,19 @@ import { CommonModule } from '@angular/common';
 import { BaseChildEntityListComponent } from '@ss/common/ui-base-entity';
 import { PM } from '@ss/cmms/cmms-api';
 import { AssetPmService } from '../services/asset-pm.service';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
+
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
-import { UiPaginationModule } from '@ss/common/ui-pagination';
+
 import { MatButtonModule } from '@angular/material/button';
 import { MaterialModule } from '@ss/common/api-common';
+import { TranslatePipe } from '@ss/common/ui-lang';
+import { PaginationComponent } from '@ss/common/ui-pagination';
 
 @Component({
     selector: 'ss-asset-pm-list',
     standalone: true,
-    imports: [CommonModule, CommonUiLangModule, MatSortModule, MatTableModule, UiPaginationModule, MatButtonModule, MaterialModule],
+    imports: [CommonModule, MatSortModule, MatTableModule, MatButtonModule, MaterialModule, TranslatePipe, PaginationComponent],
     templateUrl: './asset-pm-list.component.html',
     styleUrls: ['./asset-pm-list.component.css'],
 })

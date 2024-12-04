@@ -8,7 +8,7 @@ import { Employee } from '@ss/employee-services/employee-services';
 import { NgIf } from '@angular/common';
 import { MatCard } from '@angular/material/card';
 import { MatFormField, MatLabel } from '@angular/material/form-field';
-import { TranslateDirective } from '../../../../ui-lang/src/lib/translate.directive';
+import { TranslateDirective } from '@ss/common/ui-lang';
 import { MatInput } from '@angular/material/input';
 import { MatButton } from '@angular/material/button';
 

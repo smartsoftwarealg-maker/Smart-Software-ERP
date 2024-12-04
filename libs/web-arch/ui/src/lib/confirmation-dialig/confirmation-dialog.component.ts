@@ -2,14 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { LanguageService, MaterialModule } from '@ss/common/api-common';
 import { CommonModule } from '@angular/common';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
-import { UiPaginationModule } from '@ss/common/ui-pagination';
 import { ReactiveFormsModule } from '@angular/forms';
-import { CommonUiConfirmationDialogModule } from '@ss/common/ui-confirmation-dialog';
 import { RouterModule } from '@angular/router';
-import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
-import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
-import { LogisticsUiStockInfoModule } from '@ss/logistics/ui-stock-info';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-confirmation-dialig',
@@ -19,14 +14,10 @@ import { LogisticsUiStockInfoModule } from '@ss/logistics/ui-stock-info';
     imports: [
         CommonModule,
         MaterialModule,
-        CommonUiLangModule,
-        UiPaginationModule,
+        TranslateDirective,
         ReactiveFormsModule,
-        CommonUiConfirmationDialogModule,
-        RouterModule,
-        CommonUiDatepickerModule,
-        CommonUiAutoCompleteModule,
-        LogisticsUiStockInfoModule]
+        RouterModule
+    ]
 
 })
 

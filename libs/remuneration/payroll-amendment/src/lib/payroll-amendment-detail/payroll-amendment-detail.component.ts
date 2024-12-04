@@ -12,10 +12,10 @@ import { ElementInfoLookupModel } from '@ss/remuneration/element-types';
 import { PayrollUtil } from '@ss/payroll-common';
 import { EmployeeService, PersonAutocompleteClass } from '@ss/employee-services/employee-services';
 import { CommonModule } from '@angular/common';
-import { UiPaginationModule } from '@ss/common/ui-pagination';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
-import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
-import { RemunerationPaymonthEditorModule } from '@ss/remuneration/paymonth-editor';
+
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
+import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
+import { PaymonthEditorComponent } from '@ss/remuneration/paymonth-editor';
 
 @Component({
     selector: 'ss-payroll-amendment-detail',
@@ -25,10 +25,9 @@ import { RemunerationPaymonthEditorModule } from '@ss/remuneration/paymonth-edit
     imports: [
         CommonModule,
         MaterialModule,
-        UiPaginationModule,
-        CommonUiLangModule,
-        CommonUiAutoCompleteModule,
-        RemunerationPaymonthEditorModule
+        TranslateDirective,
+        UiAutoCompleteComponent,
+        PaymonthEditorComponent
     ]
 
 })

@@ -5,15 +5,12 @@ import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { AppArchiveService } from '../app-archive.service';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
-import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
-import { AccessRight, LoginService, MaterialModule, Role } from '@ss/common/api-common';
+import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
+import { AccessRight, MaterialModule, Role } from '@ss/common/api-common';
 import { AccessRightsService } from '@ss/common/api-access-rights';
 import { switchMap, tap } from 'rxjs';
 import { CommonModule } from '@angular/common';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
-import { UiPaginationModule } from '@ss/common/ui-pagination';
-import { CommonUiConfirmationDialogModule } from '@ss/common/ui-confirmation-dialog';
-import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-app-archive-rights',
@@ -21,16 +18,14 @@ import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
     styleUrls: ['./app-archive-rights.component.scss'],
     standalone: true,
     imports: [
-    CommonModule,
-    RouterModule,
-    MaterialModule,
-    CommonUiLangModule,
-    UiPaginationModule,
-    ReactiveFormsModule,
-    CommonUiConfirmationDialogModule,
-    CommonUiAutoCompleteModule,
-    CommonUiDatepickerModule
-]})
+        CommonModule,
+        RouterModule,
+        MaterialModule,
+        TranslateDirective,
+        TranslatePipe,
+        ReactiveFormsModule,
+        UiAutoCompleteComponent
+    ]})
 export class AppArchiveRightsComponent implements OnInit {
     private accessRightSrv = inject(AccessRightsService);
     private archiveSrv = inject(AppArchiveService);

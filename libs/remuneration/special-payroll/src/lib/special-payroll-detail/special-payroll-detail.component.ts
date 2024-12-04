@@ -4,7 +4,7 @@ import {KeepOnToolbar, ShellService, SnackBarService, ToolbarButton} from '@ss/c
 import { ActivatedRoute, Router } from "@angular/router";
 import { FormControl, UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import {LoginService, PaginationModel} from '@ss/common/api-common';
+import { LoginService, MaterialModule, PaginationModel } from '@ss/common/api-common';
 import {ElementsEntryService, ELine} from '@ss/remuneration/elements-entry';
 import {map, of, switchMap, tap} from 'rxjs';
 import {PayrollMonthService} from '@ss/remuneration/payroll-month';
@@ -14,24 +14,24 @@ import {HttpParams} from '@angular/common/http';
 import {EmployeeLookupService} from '../employee-lookup.service';
 import { MatCard } from '@angular/material/card';
 import { MatFormField, MatLabel, MatError } from '@angular/material/form-field';
-import { TranslateDirective } from '../../../../../common/ui-lang/src/lib/translate.directive';
+import { TranslateDirective } from '@ss/common/ui-lang';
 import { MatInput } from '@angular/material/input';
 import { NgIf } from '@angular/common';
-import { UiAutoCompleteComponent } from '../../../../../common/ui-auto-complete/src/lib/auto-complete.component';
+import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { MatMiniFabButton } from '@angular/material/button';
 import { MatTooltip } from '@angular/material/tooltip';
 import { MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from '@angular/material/table';
-import { ImageInputComponent } from '../../../../../common/ui-image-input/src/lib/image-input.component';
+import { ImageInputComponent } from '@ss/common/ui-image-input';
 import { PaginationComponent } from '../../../../../common/ui-pagination/src/lib/pagination.component';
 import { MatProgressSpinner } from '@angular/material/progress-spinner';
-import { TranslatePipe } from '../../../../../common/ui-lang/src/lib/translate.pipe';
+import { TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-special-payroll-detail',
     templateUrl: './special-payroll-detail.component.html',
     styleUrls: ['./special-payroll-detail.component.scss'],
     standalone: true,
-    imports: [MatCard, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, NgIf, MatError, UiAutoCompleteComponent, MatMiniFabButton, MatTooltip, MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, ImageInputComponent, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, PaginationComponent, MatProgressSpinner, TranslatePipe]
+    imports: [MaterialModule, MatCard, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, NgIf, MatError, UiAutoCompleteComponent, MatMiniFabButton, MatTooltip, MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, ImageInputComponent, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, PaginationComponent, MatProgressSpinner, TranslatePipe]
 })
 export class SpecialPayrollDetailComponent extends BaseEntityDetailComponent<Special> implements OnInit, OnDestroy {
     private router = inject(Router);

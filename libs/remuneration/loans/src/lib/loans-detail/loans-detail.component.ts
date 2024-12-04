@@ -7,14 +7,13 @@ import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { LoansService } from '../loans.service';
 import { LoginService, MaterialModule } from '@ss/common/api-common';
-import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
+import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { ElementTypesService } from '@ss/remuneration/element-types';
 import { EmployeeService, PersonAutocompleteClass } from '@ss/employee-services/employee-services';
-import { CommonPayrollModule, LoanTypeService } from '@ss/payroll-common';
+import {  LoanTypeService } from '@ss/payroll-common';
 import { CommonModule } from '@angular/common';
-import { UiPaginationModule } from '@ss/common/ui-pagination';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
-import { RemunerationPaymonthEditorModule } from '@ss/remuneration/paymonth-editor';
+import { TranslateDirective } from '@ss/common/ui-lang';
+import { PaymonthEditorComponent } from '@ss/remuneration/paymonth-editor';
 
 type Period = {
     year: number;
@@ -29,11 +28,9 @@ type Period = {
     imports: [
         CommonModule,
         MaterialModule,
-        UiPaginationModule,
-        CommonUiLangModule,
-        CommonUiAutoCompleteModule,
-        RemunerationPaymonthEditorModule,
-        CommonPayrollModule
+        UiAutoCompleteComponent,
+        TranslateDirective,
+        PaymonthEditorComponent
     ]
 })
 export class LoansDetailComponent extends BaseEntityDetailComponent<Loan> {

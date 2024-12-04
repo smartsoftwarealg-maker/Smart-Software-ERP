@@ -3,17 +3,19 @@ import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {Lookup, Mark, MarkService} from '@ss/common/api-lookup';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import { ActivatedRoute, Router, RouterModule } from "@angular/router";
-import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
+import {  ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import { MaterialModule, PaginatorPersistenceService } from "@ss/common/api-common";
 import {AccProjectService} from '@ss/accounting/accounting-api';
 import { CommonModule } from "@angular/common";
-import { CommonUiLangModule } from "@ss/common/ui-lang";
-import { UiPaginationModule } from "@ss/common/ui-pagination";
+
+
 import { ReactiveFormsModule } from "@angular/forms";
 
-import { CommonUiAutoCompleteModule } from "@ss/common/ui-auto-complete";
-import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
+
+import { DatePickerComponent } from "@ss/common/ui-datepicker";
+import { PaginationComponent } from '@ss/common/ui-pagination';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 
 @Component({
@@ -25,15 +27,16 @@ import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
         CommonModule,
         RouterModule,
         MaterialModule,
-        CommonUiLangModule,
-        UiPaginationModule,
+        TranslateDirective,
+        TranslatePipe,
         ReactiveFormsModule,
 
-        CommonUiAutoCompleteModule,
-        CommonUiDatepickerModule,
-        CommonUiConfirmationDialogModule,
 
-    ],
+        DatePickerComponent,
+        PaginationComponent
+
+
+    ]
 })
 export class AccProjectListComponent extends BaseEntityListComponent<Lookup> {
 

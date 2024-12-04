@@ -54,6 +54,16 @@
                     </ss-auto-complete>
                 </mat-form-field>
 
+                <div class="default-50 sm-100">
+                    <mat-form-field>
+                        <mat-label translate>ASSET_BENEFICIARY</mat-label>
+                        <ss-auto-complete matInput
+                                          [model]="beneficiaryLookup"
+                                          formControlName="beneficiaryId">
+                        </ss-auto-complete>
+                    </mat-form-field>
+                </div>
+
                 <mat-form-field class="default-100">
                     <mat-label translate>COMMON_MEMO</mat-label>
                     <input matInput formControlName="memo" type="text" >

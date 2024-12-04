@@ -6,17 +6,17 @@ import {Lookup} from '@ss/common/api-lookup';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {InventoryService} from '@ss/stock/api-inventory';
 import { BaseTransactionDetailComponent, Transaction } from '@ss/logistics/api-transaction';
-import {LoginService} from '@ss/common/api-common';
+import { LoginService, MaterialModule } from '@ss/common/api-common';
 import {InventoryImportComponent} from '@ss/logistics/ui-doc-import';
 import {MatDialog} from '@angular/material/dialog';
 import { InventoryLinesService } from '@ss/stock/api-inventory-lines';
 import { MatCard, MatCardContent } from '@angular/material/card';
 import { NgIf } from '@angular/common';
 import { MatFormField, MatLabel, MatError } from '@angular/material/form-field';
-import { TranslateDirective } from '../../../../../common/ui-lang/src/lib/translate.directive';
+import { TranslateDirective } from '@ss/common/ui-lang';
 import { MatInput } from '@angular/material/input';
-import { DatePickerComponent } from '../../../../../common/ui-datepicker/src/lib/date-picker.component';
-import { UiAutoCompleteComponent } from '../../../../../common/ui-auto-complete/src/lib/auto-complete.component';
+import { DatePickerComponent } from '@ss/common/ui-datepicker';
+import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { CdkTextareaAutosize } from '@angular/cdk/text-field';
 
 @Component({
@@ -24,7 +24,7 @@ import { CdkTextareaAutosize } from '@angular/cdk/text-field';
     styleUrls: ['../../../../../common/assets/src/assets/transac-detail.scss'],
     templateUrl: './inventory-detail.component.html',
     standalone: true,
-    imports: [MatCard, MatCardContent, NgIf, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, MatError, DatePickerComponent, UiAutoCompleteComponent, CdkTextareaAutosize, RouterOutlet]
+    imports: [MaterialModule, MatCard, MatCardContent, NgIf, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, MatError, DatePickerComponent, UiAutoCompleteComponent, CdkTextareaAutosize, RouterOutlet]
 })
 export class InventoryDetailComponent extends BaseTransactionDetailComponent implements OnInit {
     private invImportBtn: ToolbarButton = {

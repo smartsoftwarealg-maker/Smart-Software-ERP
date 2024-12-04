@@ -4,14 +4,11 @@ import { HttpService, LanguageService, MaterialModule } from '@ss/common/api-com
 import {ShellService, SnackBarService} from "@ss/common/ui-shell";
 import {MatDialog} from "@angular/material/dialog";
 import {ActivatedRoute} from "@angular/router";
-import {CHART_TREE, CMMS_WORK_ORDER, WorkflowChartNode, WorkflowChartTree} from '../workflow-api'
+import {CHART_TREE, CMMS_WORK_ORDER, WorkflowChartTree} from '../workflow-api'
 import { CommonModule } from '@angular/common';
-import { UiPaginationModule } from '@ss/common/ui-pagination';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
-import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
-import { RemunerationPaymonthEditorModule } from '@ss/remuneration/paymonth-editor';
-import { CommonPayrollModule } from '@ss/payroll-common';
 
+
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 
 interface WorkflowTreeNode extends TreeNode {
@@ -29,11 +26,6 @@ interface WorkflowTreeNode extends TreeNode {
     imports: [
         CommonModule,
         MaterialModule,
-        UiPaginationModule,
-        CommonUiLangModule,
-        CommonUiAutoCompleteModule,
-        RemunerationPaymonthEditorModule,
-        CommonPayrollModule,
 
         OrgChartModule,
     ],

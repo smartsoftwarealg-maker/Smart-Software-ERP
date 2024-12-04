@@ -2,20 +2,21 @@ import { Component, inject, OnInit } from "@angular/core";
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {Article, Quota, Schedule, ScheduleService} from '@ss/scheduled-sales/api-scheduled-sales';
 import { CommonModule, DatePipe } from "@angular/common";
-import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from "@ss/common/ui-auto-complete";
+import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import {Agent, CustomerService} from '@ss/logistics/api-agent';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
 import { ReactiveFormsModule, UntypedFormBuilder, Validators } from "@angular/forms";
-import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
+import {  ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
 import {LookupsService} from '@ss/common/api-lookup';
 import { LoginService, MaterialModule } from "@ss/common/api-common";
 import {debounceTime, distinctUntilChanged} from 'rxjs/operators';
 import {switchMap, tap} from 'rxjs';
 import {MatSelectChange} from '@angular/material/select';
-import { CommonUiLangModule } from "@ss/common/ui-lang";
-import { UiPaginationModule } from "@ss/common/ui-pagination";
-import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
+
+
+import { DatePickerComponent } from "@ss/common/ui-datepicker";
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-partner-schedule-detail',
@@ -25,13 +26,13 @@ import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
     imports: [
         CommonModule,
         MaterialModule,
-        CommonUiLangModule,
-        UiPaginationModule,
+        TranslateDirective,
+        TranslatePipe,
         ReactiveFormsModule,
-        CommonUiConfirmationDialogModule,
-        CommonUiDatepickerModule,
-        CommonUiAutoCompleteModule,
-    ],
+        DatePickerComponent,
+        TranslatePipe,
+        UiAutoCompleteComponent
+    ]
 })
 export class PartnerScheduleDetailComponent extends BaseEntityDetailComponent<Schedule> {
     private loginSrv  = inject(LoginService);

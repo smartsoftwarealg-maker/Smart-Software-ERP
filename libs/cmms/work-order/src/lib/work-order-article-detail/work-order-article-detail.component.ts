@@ -5,14 +5,14 @@ import { WorkArticle } from '@ss/cmms/cmms-api';
 import { CMMSWorkOrderArticleService } from '../services/c-m-m-s-work-order-article.service';
 import { FormBuilder, FormsModule, ReactiveFormsModule, UntypedFormGroup } from '@angular/forms';
 import { ArticleService } from '@ss/master-data/api-article';
-import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
+import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
+
 import { MatTableModule } from '@angular/material/table';
-import { UiPaginationModule } from '@ss/common/ui-pagination';
+
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
-import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
+import { DatePickerComponent } from '@ss/common/ui-datepicker';
 import { MatButtonModule } from '@angular/material/button';
 import { MaterialModule } from '@ss/common/api-common';
 
@@ -21,18 +21,19 @@ import { MaterialModule } from '@ss/common/api-common';
     standalone: true,
     imports: [
         CommonModule,
-        CommonUiLangModule,
+
         MatTableModule,
-        UiPaginationModule,
-        CommonUiAutoCompleteModule,
+
+
         FormsModule,
         MatFormFieldModule,
         ReactiveFormsModule,
         MatCardModule,
         MatInputModule,
-        CommonUiDatepickerModule,
+        DatePickerComponent,
         MatButtonModule,
-        MaterialModule
+        MaterialModule,
+        UiAutoCompleteComponent
     ],
     templateUrl: './work-order-article-detail.component.html',
     styleUrls: ['./work-order-article-detail.component.css'],

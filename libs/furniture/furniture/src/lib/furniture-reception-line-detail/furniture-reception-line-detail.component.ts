@@ -16,12 +16,12 @@ import {FurnitureTransactionLineService} from '../furniture-transaction-line.ser
 import { MatCard, MatCardHeader, MatCardContent } from '@angular/material/card';
 import { MatMiniFabButton } from '@angular/material/button';
 import { MatTooltip } from '@angular/material/tooltip';
-import { TranslateDirective } from '../../../../../common/ui-lang/src/lib/translate.directive';
+import { TranslateDirective } from '@ss/common/ui-lang';
 import { NgIf } from '@angular/common';
 import { MatFormField, MatLabel } from '@angular/material/form-field';
-import { UiAutoCompleteComponent } from '../../../../../common/ui-auto-complete/src/lib/auto-complete.component';
+import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { MatInput } from '@angular/material/input';
-import { TranslatePipe } from '../../../../../common/ui-lang/src/lib/translate.pipe';
+import { TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-furniture-reception-line-detail',

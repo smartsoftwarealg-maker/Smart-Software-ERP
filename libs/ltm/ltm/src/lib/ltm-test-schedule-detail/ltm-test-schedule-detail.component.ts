@@ -1,17 +1,13 @@
 import { Component, inject } from '@angular/core';
-import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from "@ss/common/ui-auto-complete";
+
 import { FormBuilder, ReactiveFormsModule, UntypedFormGroup } from "@angular/forms";
-import { RouterOutlet } from "@angular/router";
-import { CommonUiConfirmationDialogModule } from "@ss/common/ui-confirmation-dialog";
-import { LTMMixtureDetail, LTMTestSchedule } from '@ltm/ltm-api';
+import { LTMTestSchedule } from '@ltm/ltm-api';
 import { CommonModule } from "@angular/common";
 import { MaterialModule } from "@ss/common/api-common";
-import { CommonUiLangModule } from "@ss/common/ui-lang";
-import { UiPaginationModule } from "@ss/common/ui-pagination";
-import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
-import { CommonUiHourPickerModule } from "@ss/common/ui-hour-picker";
+import { DatePickerComponent } from "@ss/common/ui-datepicker";
 import { BaseChildEntityDetailComponent } from "@ss/common/ui-base-entity";
 import { LtmTestScheduleService } from '@ltm/ltm-api';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-ltm-test-schedule-detail',
@@ -21,17 +17,11 @@ import { LtmTestScheduleService } from '@ltm/ltm-api';
     imports: [
         CommonModule,
         MaterialModule,
-        CommonUiLangModule,
-        UiPaginationModule,
         ReactiveFormsModule,
-        CommonUiConfirmationDialogModule,
-
-
-        CommonUiAutoCompleteModule,
-        CommonUiDatepickerModule,
-        RouterOutlet,
-        CommonUiHourPickerModule
-    ],
+        DatePickerComponent,
+        TranslateDirective,
+        TranslatePipe
+    ]
 })
 export class LtmTestScheduleDetailComponent extends BaseChildEntityDetailComponent<LTMTestSchedule> {
     private fb = inject(FormBuilder);

@@ -1,20 +1,20 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MaterialModule } from '@ss/common/api-common';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
-import { UiPaginationModule } from '@ss/common/ui-pagination';
-import { ReactiveFormsModule } from '@angular/forms';
-import { CommonUiConfirmationDialogModule } from '@ss/common/ui-confirmation-dialog';
-import { RouterModule } from '@angular/router';
-import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
-import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
 
-import { LogisticsUiDocImportModule } from '@ss/logistics/ui-doc-import';
+
+import { ReactiveFormsModule } from '@angular/forms';
+
+import { RouterModule } from '@angular/router';
+import { DatePickerComponent } from '@ss/common/ui-datepicker';
+
+
+
 import { HeaderPageComponent, MainPageComponent} from '@ss/sales/ecommerce';
 
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { UiThemeModule } from '@ss/common/ui-theme';
+import { ThemeSelect } from '@ss/common/ui-theme';
 import { SalesAdsListComponent } from './sales-ads-list/sales-ads-list.component';
 import { SalesAdsDetailComponent } from './sales-ads-detail/sales-ads-detail.component';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
@@ -27,14 +27,13 @@ import { ImageInputComponent } from '@ss/common/ui-image-input';
         CommonModule,
         MaterialModule,
         BrowserModule,
-        CommonUiLangModule,
-        UiPaginationModule,
+
+
         ReactiveFormsModule,
-        CommonUiConfirmationDialogModule,
+
         RouterModule,
-        CommonUiDatepickerModule,
-        CommonUiAutoCompleteModule,
-        LogisticsUiDocImportModule,
+        DatePickerComponent,
+
         BrowserAnimationsModule,
         UiThemeModule,
         ImageInputComponent,

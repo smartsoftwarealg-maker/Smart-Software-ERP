@@ -7,10 +7,10 @@ import { BOM, BOMTree } from '@ss/master-data/api-article';
 import { NestedTreeControl } from '@angular/cdk/tree';
 import { MatTree, MatTreeNestedDataSource } from '@angular/material/tree';
 import { MatButtonModule } from '@angular/material/button';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
+
 import { LanguageService, MaterialModule } from '@ss/common/api-common';
-import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
-import { UiPaginationModule } from '@ss/common/ui-pagination';
+import { DatePickerComponent } from '@ss/common/ui-datepicker';
+
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { BomDialogComponent } from '../bom-dialog/bom-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
@@ -19,7 +19,7 @@ import { map, of, switchMap } from 'rxjs';
 @Component({
     selector: 'ss-bom',
     standalone: true,
-    imports: [CommonModule, CommonUiLangModule, MatButtonModule, MaterialModule, CommonUiDatepickerModule, UiPaginationModule],
+    imports: [CommonModule,  MatButtonModule, MaterialModule, DatePickerComponent],
     templateUrl: './bom.component.html',
     styleUrl: './bom.component.css',
 })

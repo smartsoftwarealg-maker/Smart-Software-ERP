@@ -1,101 +1,109 @@
 <div class="b-primary info-div size">
-    <div class="default-50 sm-100 header">{{ 'COMMON_OLD_BALANCE'| translate }}: <span class="amount"> {{ balance() | number: '1.2-2' }}  </span></div>
-    <div class="default-50 sm-100 header">{{ 'SCH_REMAINING_QTY' | translate }} : <span class="amount">{{ remainingQty() | number: '1.2-2' }}</span></div>
-    <div class="default-50 header">{{ 'SCH_SCHEDULED_QTY' | translate }} : <span class="amount">{{ qty() | number: '1.2-2' }}</span></div>
-    <div class="default-50 header">{{ 'LOGISTICS_PRICE' | translate }}: <span class="amount">{{ price() | number: '1.2-2' }}</span></div>
-    <div class="default-50 header">{{ 'COMMON_AMOUNT' | translate }} : <span class="amount">{{ qty() * price() | number: '1.2-2' }}</span></div>
-    <div class="default-50 sm-100 header">{{ 'COMMON_BALANCE' | translate }} : <span class="amount">{{ balance() - qty() * price() | number: '1.2-2' }}</span></div>
+    <div class="default-50 sm-100 header">{{ 'COMMON_OLD_BALANCE'| translate }}: <span
+        class="amount"> {{ balance() | number: '1.2-2' }}  </span></div>
+    <div class="default-50 sm-100 header">{{ 'SCH_REMAINING_QTY' | translate }} : <span
+        class="amount">{{ remainingQty() | number: '1.2-2' }}</span></div>
+    <div class="default-50 header">{{ 'SCH_SCHEDULED_QTY' | translate }} : <span
+        class="amount">{{ qty() | number: '1.2-2' }}</span></div>
+    <div class="default-50 header">{{ 'LOGISTICS_PRICE' | translate }}: <span
+        class="amount">{{ price() | number: '1.2-2' }}</span></div>
+    <div class="default-50 header">{{ 'COMMON_AMOUNT' | translate }} : <span
+        class="amount">{{ qty() * price() | number: '1.2-2' }}</span></div>
+    <div class="default-50 sm-100 header">{{ 'COMMON_BALANCE' | translate }} : <span
+        class="amount">{{ balance() - qty() * price() | number: '1.2-2' }}</span></div>
 </div>
 
-<mat-card>
-    <form *ngIf="form !== null" novalidate [formGroup]="form" class="size">
-        <mat-form-field class="default-50 sm-100">
-            <mat-label translate>COMMON_DATE</mat-label>
-            <ss-date-picker formControlName="salesDate"></ss-date-picker>
-        </mat-form-field>
+@if (form !== null) {
+    <mat-card>
+        <form [formGroup]="form" class="size">
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>COMMON_DATE</mat-label>
+                <ss-date-picker formControlName="salesDate"></ss-date-picker>
+            </mat-form-field>
 
-        <mat-form-field class="default-50 sm-100" autofocus>
-            <mat-label translate>LOGISTICS_CUSTOMER</mat-label>
-            <ss-auto-complete matInput
-                              [required]="true"
-                              [model]="customerLookup"
-                              formControlName="parentId">
-            </ss-auto-complete>
-        </mat-form-field>
+            <mat-form-field class="default-50 sm-100" autofocus>
+                <mat-label translate>LOGISTICS_CUSTOMER</mat-label>
+                <ss-auto-complete matInput
+                                  [required]="true"
+                                  [model]="customerLookup"
+                                  formControlName="parentId">
+                </ss-auto-complete>
+            </mat-form-field>
 
-        <mat-form-field class="default-50 sm-100" autofocus>
-            <mat-label translate>COMMON_PROJECT</mat-label>
-            <ss-auto-complete matInput
-                              [required]="true"
-                              [model]="projectLookup"
-                              formControlName="projectId">
-            </ss-auto-complete>
-        </mat-form-field>
+            <mat-form-field class="default-50 sm-100" autofocus>
+                <mat-label translate>COMMON_PROJECT</mat-label>
+                <ss-auto-complete matInput
+                                  [required]="true"
+                                  [model]="projectLookup"
+                                  formControlName="projectId">
+                </ss-auto-complete>
+            </mat-form-field>
 
-        <mat-form-field class="default-50 sm-100">
-            <mat-label translate>COMMON_PRODUCT</mat-label>
-            <ss-auto-complete matInput
-                              [required]="true"
-                              [model]="articleLookup"
-                              formControlName="productRef">
-            </ss-auto-complete>
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>COMMON_PRODUCT</mat-label>
+                <ss-auto-complete matInput
+                                  [required]="true"
+                                  [model]="articleLookup"
+                                  formControlName="productRef">
+                </ss-auto-complete>
 
-            @if (form.controls['productRef'].invalid) {
-                <mat-error translate>COMMON_FIELD_REQUIRED </mat-error>
-            }
-        </mat-form-field>
-
-        <mat-form-field class="default-50 sm-100">
-            <mat-label translate>SCH_SCHEDULED_QTY</mat-label>
-            <mat-select formControlName="qty" required (selectionChange)="onQty($event)">
-                @for (v of quantities(); track v) {
-                    <mat-option [value]="v">
-                        {{ v }}
-                    </mat-option>
+                @if (form.controls['productRef'].invalid) {
+                    <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
                 }
-            </mat-select>
-            @if (form.controls['qty'].invalid) {
-                <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
-            }
-        </mat-form-field>
+            </mat-form-field>
 
-        <mat-form-field class="default-50 sm-100">
-            <mat-label translate>COMMON_VAT</mat-label>
-            <mat-select formControlName="vat" required >
-                @for (v of vats(); track v) {
-                    <mat-option [value]="v">
-                        {{ v }}
-                    </mat-option>
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>SCH_SCHEDULED_QTY</mat-label>
+                <mat-select formControlName="qty" required (selectionChange)="onQty($event)">
+                    @for (v of quantities(); track v) {
+                        <mat-option [value]="v">
+                            {{ v }}
+                        </mat-option>
+                    }
+                </mat-select>
+                @if (form.controls['qty'].invalid) {
+                    <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
                 }
-            </mat-select>
-            @if (form.controls['vat'].invalid) {
-                <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
-            }
-        </mat-form-field>
+            </mat-form-field>
 
-        <mat-form-field class="default-50 sm-100">
-            <mat-label translate>LOGISTICS_DISCOUNT</mat-label>
-            <mat-select formControlName="discount" required >
-                @for (v of discounts(); track v) {
-                    <mat-option [value]="v">
-                        {{ v }}
-                    </mat-option>
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>COMMON_VAT</mat-label>
+                <mat-select formControlName="vat" required>
+                    @for (v of vats(); track v) {
+                        <mat-option [value]="v">
+                            {{ v }}
+                        </mat-option>
+                    }
+                </mat-select>
+                @if (form.controls['vat'].invalid) {
+                    <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
                 }
-            </mat-select>
-            @if (form.controls['discount'].invalid) {
-                <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
-            }
-        </mat-form-field>
+            </mat-form-field>
 
-        <div class="default-50 sm-100" >
-            <mat-checkbox formControlName="isPrinted" translate>COMMON_PRINTED</mat-checkbox>
-        </div>
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>LOGISTICS_DISCOUNT</mat-label>
+                <mat-select formControlName="discount" required>
+                    @for (v of discounts(); track v) {
+                        <mat-option [value]="v">
+                            {{ v }}
+                        </mat-option>
+                    }
+                </mat-select>
+                @if (form.controls['discount'].invalid) {
+                    <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+                }
+            </mat-form-field>
 
-        <div class="default-50 sm-100" >
-            <mat-checkbox formControlName="canceled" translate>COMMON_CANCELED</mat-checkbox>
-        </div>
+            <div class="default-50 sm-100">
+                <mat-checkbox formControlName="isPrinted" translate>COMMON_PRINTED</mat-checkbox>
+            </div>
+
+            <div class="default-50 sm-100">
+                <mat-checkbox formControlName="canceled" translate>COMMON_CANCELED</mat-checkbox>
+            </div>
 
 
-    </form>
+        </form>
 
-</mat-card>
+    </mat-card>
+}

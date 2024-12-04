@@ -1,19 +1,20 @@
 import { Component, Inject, inject, Input } from '@angular/core';
 import { ReactiveFormsModule, UntypedFormBuilder, Validators } from '@angular/forms';
 import { LotsService, Store } from '@ss/common/api-lookup';
-import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
+import {  DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
 import { finalize, Subscription } from 'rxjs';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { HttpEventType } from '@angular/common/http';
 import { AgentImportService } from '../agent-import.service';
 import { CommonModule } from '@angular/common';
 import { MaterialModule } from '@ss/common/api-common';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
-import { UiPaginationModule } from '@ss/common/ui-pagination';
-import { CommonUiConfirmationDialogModule } from '@ss/common/ui-confirmation-dialog';
 
-import { CustomAttributesModule } from '@ss/custom-attributes';
+
+
+
+
 import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-agent-import',
@@ -23,15 +24,10 @@ import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
     imports: [
         CommonModule,
         MaterialModule,
-        CommonUiLangModule,
-        UiPaginationModule,
+        TranslateDirective,
+        TranslatePipe,
         ReactiveFormsModule,
-        CommonUiConfirmationDialogModule,
 
-
-        CommonUiAutoCompleteModule,
-        CustomAttributesModule,
-        DocInfoComponent
     ],
 
 })

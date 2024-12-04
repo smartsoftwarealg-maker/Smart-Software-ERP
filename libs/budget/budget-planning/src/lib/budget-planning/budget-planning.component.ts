@@ -14,7 +14,7 @@ import {BudgetService} from '@ss/budget/budget';
 import {of, switchMap} from 'rxjs';
 import {BudgetPlanningAddDlgComponent} from '../budget-planning-add-dlg/budget-planning-add-dlg.component';
 import {BudgetAccountService} from '@ss/budget/budget-groups';
-import { TranslateDirective } from '../../../../../common/ui-lang/src/lib/translate.directive';
+import { TranslateDirective } from '@ss/common/ui-lang';
 import { MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from '@angular/material/table';
 import { MatIconButton } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';

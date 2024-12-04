@@ -7,20 +7,21 @@ import {Observable} from 'rxjs';
 import {UntypedFormBuilder, Validators} from '@angular/forms';
 import { ClassService, LookupsService, MarkService, Unit, Vat } from '@ss/common/api-lookup';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
-import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
-import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
+import {  ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
+import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { ImageInputComponent, ImageModel } from '@ss/common/ui-image-input';
 import { HttpService, MaterialModule } from '@ss/common/api-common';
 import { CommonModule } from '@angular/common';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
-import { UiPaginationModule } from '@ss/common/ui-pagination';
-import { StockUiArticleStoreModule } from '@ss/stock/article-store';
 
-import { LogisticsUiStockInfoModule } from '@ss/logistics/ui-stock-info';
+
+
+
+import { UiStockInfoComponent } from '@ss/logistics/ui-stock-info';
 import { FinalProductService } from '@ss/master-data/api-article';
 import { CMMSRoutingService } from '@ss/master-data/cmms-routing';
 import { BomService } from '../bom.service';
 import { MatCardModule } from '@angular/material/card';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-article-detail',
@@ -30,17 +31,12 @@ import { MatCardModule } from '@angular/material/card';
     imports: [
         CommonModule,
         MaterialModule,
-        CommonUiLangModule,
-        UiPaginationModule,
-        CommonUiConfirmationDialogModule,
-        StockUiArticleStoreModule,
+        TranslateDirective,
         ImageInputComponent,
         RouterModule,
-
-        CommonUiAutoCompleteModule,
-        LogisticsUiStockInfoModule,
-        MatCardModule
-    ],
+        MatCardModule,
+        UiAutoCompleteComponent
+    ]
 })
 export class FinalProductDetailComponent extends BaseEntityDetailComponent<Article> implements OnInit {
     private routingSrv = inject(CMMSRoutingService);

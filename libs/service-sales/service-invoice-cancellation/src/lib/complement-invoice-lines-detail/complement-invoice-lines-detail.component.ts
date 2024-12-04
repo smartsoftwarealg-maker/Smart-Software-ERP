@@ -5,16 +5,16 @@ import {
 } from '@ss/logistics/api-transaction';
 import { CommonModule } from '@angular/common';
 import { MaterialModule } from '@ss/common/api-common';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
-import { UiPaginationModule } from '@ss/common/ui-pagination';
-import { ReactiveFormsModule, UntypedFormGroup } from '@angular/forms';
-import { CommonUiConfirmationDialogModule } from '@ss/common/ui-confirmation-dialog';
-import { RouterModule } from '@angular/router';
-import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
-import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
 
-import { LogisticsUiDocImportModule } from '@ss/logistics/ui-doc-import';
+
+import { ReactiveFormsModule, UntypedFormGroup } from '@angular/forms';
+
+import { RouterModule } from '@angular/router';
+import { DatePickerComponent } from '@ss/common/ui-datepicker';
+import {  DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
+
 import { ServiceArticleService } from '@ss/service-sales/service-articles';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-invoice-lines-detail',
@@ -24,15 +24,11 @@ import { ServiceArticleService } from '@ss/service-sales/service-articles';
     imports: [
         CommonModule,
         MaterialModule,
-        CommonUiLangModule,
-        UiPaginationModule,
+        TranslateDirective,
         ReactiveFormsModule,
-        CommonUiConfirmationDialogModule,
         RouterModule,
-        CommonUiDatepickerModule,
-        CommonUiAutoCompleteModule,
 
-        LogisticsUiDocImportModule
+
     ],
 })
 export class ComplementInvoiceLinesDetailComponent extends BaseTransactionLinesDetailComponent implements OnInit, OnDestroy {

@@ -7,13 +7,10 @@ import {MailBox, UserMessage} from '../workflow-api';
 import {MailBoxService} from '../mail-box.service';
 import {FormControl} from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { UiPaginationModule } from '@ss/common/ui-pagination';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
-import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
-import { RemunerationPaymonthEditorModule } from '@ss/remuneration/paymonth-editor';
-import { CommonPayrollModule } from '@ss/payroll-common';
+
 
 import { OrgChartModule } from 'angular13-organization-chart';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 type MBData = {
     amount: number;
@@ -30,11 +27,8 @@ type MBData = {
     imports: [
         CommonModule,
         MaterialModule,
-        UiPaginationModule,
-        CommonUiLangModule,
-        CommonUiAutoCompleteModule,
-        RemunerationPaymonthEditorModule,
-        CommonPayrollModule,
+        TranslateDirective,
+        TranslatePipe,
 
         OrgChartModule,
     ],

@@ -3,33 +3,29 @@ import {CommonModule} from '@angular/common';
 import {DeliveryListComponent} from './delivery-list/delivery-list.component';
 import {DeliveryDetailComponent} from './delivery-detail/delivery-detail.component';
 import {MaterialModule} from '@ss/common/api-common';
-import {CommonUiLangModule} from '@ss/common/ui-lang';
-import {UiPaginationModule} from '@ss/common/ui-pagination';
+
+
 import {ReactiveFormsModule} from '@angular/forms';
-import {CommonUiConfirmationDialogModule} from '@ss/common/ui-confirmation-dialog';
+
 import {RouterModule} from '@angular/router';
-import {CommonUiDatepickerModule} from '@ss/common/ui-datepicker';
-import {CommonUiAutoCompleteModule} from '@ss/common/ui-auto-complete';
+import {DatePickerComponent} from '@ss/common/ui-datepicker';
+import {UiAutoCompleteComponent} from '@ss/common/ui-auto-complete';
 
 import {SalesUiDeliveryLinesModule} from '@ss/sales/ui-delivery-lines';
-import {LogisticsUiDocImportModule} from '@ss/logistics/ui-doc-import';
-import {LogisticsUiStockInfoModule} from '@ss/logistics/ui-stock-info';
+import {UiStockInfoComponent} from '@ss/logistics/ui-stock-info';
 import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
 
 @NgModule({
     imports: [
         CommonModule,
         MaterialModule,
-        CommonUiLangModule,
-        UiPaginationModule,
+
         ReactiveFormsModule,
-        CommonUiConfirmationDialogModule,
         RouterModule,
-        CommonUiDatepickerModule,
-        CommonUiAutoCompleteModule,
+        DatePickerComponent,
+
         SalesUiDeliveryLinesModule,
-        LogisticsUiDocImportModule,
-        LogisticsUiStockInfoModule,
+        UiStockInfoComponent,
         DocInfoComponent,
         DeliveryListComponent,
         DeliveryDetailComponent

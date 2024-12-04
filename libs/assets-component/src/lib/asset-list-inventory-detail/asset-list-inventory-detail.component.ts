@@ -1,27 +1,20 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
-import { AssetBuilding, AssetLocation, InventoryAsset } from '../assets-api';
-import { Bank, BankService } from '@ss/administration/api-bank';
+import { AssetBuilding, InventoryAsset } from '../assets-api';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, RouterModule } from '@angular/router';
-import { UntypedFormBuilder, Validators } from '@angular/forms';
-import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
+import { UntypedFormBuilder } from '@angular/forms';
+import {  ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { LookupsService, OfficeService } from '@ss/common/api-lookup';
 import { AssetLocationService } from '../services/asset-location.service';
-import { LoginService, MaterialModule } from '@ss/common/api-common';
-import { Observable } from 'rxjs';
+import { MaterialModule } from '@ss/common/api-common';
 import { CommonModule } from '@angular/common';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
-
-import { UiPaginationModule } from '@ss/common/ui-pagination';
-import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
-import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
-import { CustomAttributesModule } from '@ss/custom-attributes';
-
+import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { QRCodeModule } from 'angularx-qrcode';
 import { AssetListInventoryService } from '../services/asset-list-inventory.service';
 import { AssetsBuildingService } from '../services/assets-building.service';
 import { Agent, ConsumerService } from '@ss/logistics/api-agent';
+import { TranslateDirective } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-asset-list-inventory-detail',
@@ -31,16 +24,10 @@ import { Agent, ConsumerService } from '@ss/logistics/api-agent';
     imports: [
         CommonModule,
         MaterialModule,
-        CommonUiLangModule,
-
-        UiPaginationModule,
-        CommonUiConfirmationDialogModule,
-        CommonUiAutoCompleteModule,
-        CommonUiDatepickerModule,
+        TranslateDirective,
         RouterModule,
-        CustomAttributesModule,
-
-        QRCodeModule
+        QRCodeModule,
+        UiAutoCompleteComponent
     ]
 
 })

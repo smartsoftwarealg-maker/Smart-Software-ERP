@@ -3,7 +3,7 @@ import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { Article, ArticleService, AVAILABLE_ARTICLES_URL } from '@ss/master-data/api-article';
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
-import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
+import {  ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { DefaultReportService } from '@ss/common/ui-default-report-component';
 import { LookupsService, MarkService } from '@ss/common/api-lookup';
 import { HttpService, MaterialModule, PaginationModel, PaginatorPersistenceService } from '@ss/common/api-common';
@@ -11,15 +11,15 @@ import { ImageInputComponent, ImageModel } from '@ss/common/ui-image-input';
 import { Observable, of, switchMap, tap } from 'rxjs';
 import { ShoppingCartService } from '../shopping-cart.service';
 import { Cartline } from '../cartline';
-import { FormControl, ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
-import { UiPaginationModule } from '@ss/common/ui-pagination';
-import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
-import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
+import { DatePickerComponent } from '@ss/common/ui-datepicker';
+
 import { SalesUiDeliveryLinesModule } from '@ss/sales/ui-delivery-lines';
-import { LogisticsUiDocImportModule } from '@ss/logistics/ui-doc-import';
-import { LogisticsUiStockInfoModule } from '@ss/logistics/ui-stock-info';
+
+import { UiStockInfoComponent } from '@ss/logistics/ui-stock-info';
+import { PaginationComponent } from '@ss/common/ui-pagination';
+import { TranslateDirective } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-shopping-cart',
@@ -29,18 +29,13 @@ import { LogisticsUiStockInfoModule } from '@ss/logistics/ui-stock-info';
     imports: [
         CommonModule,
         MaterialModule,
-        CommonUiLangModule,
-        UiPaginationModule,
+        TranslateDirective,
         ReactiveFormsModule,
-        CommonUiConfirmationDialogModule,
         RouterModule,
-        CommonUiDatepickerModule,
-        CommonUiAutoCompleteModule,
 
         SalesUiDeliveryLinesModule,
-        LogisticsUiDocImportModule,
-        LogisticsUiStockInfoModule,
-        ImageInputComponent
+        ImageInputComponent,
+        PaginationComponent
     ]
 
 })

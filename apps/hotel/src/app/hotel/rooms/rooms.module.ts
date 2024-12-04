@@ -10,13 +10,14 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { SaveBarModule } from '../../common/save-bar/save-bar.module';
 import { TagInputModule } from '../../common/tag-input/tag-input.module';
 import { RoomsService } from './rooms.service';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
+
 import { LoadingSpinnerModule } from '../../smart-lib/components/loading-spinner/loading-spinner.module';
 import { CanActivateService } from '../../smart-lib/components/login/can-activte.service';
 
 
 import { MaterialModule } from '../../smart-lib/components/material.module';
 import { LanguageService } from '@ss/common/api-common';
+import { PaginationComponent } from '@ss/common/ui-pagination';
 
 const routes: Routes = [
     {
@@ -40,7 +41,7 @@ const routes: Routes = [
     CommonModule,
     ListToolbarModule,
     LoadingSpinnerModule,
-    CommonUiLangModule,
+    PaginationComponent,
     MaterialModule,
     PaginationModule,
     ReactiveFormsModule,

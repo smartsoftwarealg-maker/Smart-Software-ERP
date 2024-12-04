@@ -1,13 +1,10 @@
 import { Component, inject, OnInit } from '@angular/core';
-import {HttpService, LoginService, UserRightsService} from '@ss/common/api-common';
-import {switchMap, tap} from 'rxjs/operators';
+import {HttpService, LoginService} from '@ss/common/api-common';
+import {switchMap} from 'rxjs/operators';
 import { LanguageService } from '@ss/common/api-common';
-import { BadgeButton, KeepOnToolbar, ShellService } from '@ss/common/ui-shell';
+import { ShellService } from '@ss/common/ui-shell';
 import {langAssets, navBar} from '../environments/environment';
-import { WorkflowInboxService } from '@ss/workflow';
-import { Router, RouterOutlet } from '@angular/router';
-import { DeviceDetectorService } from 'ngx-device-detector';
-import { initialize } from './admobile';
+import { RouterOutlet } from '@angular/router';
 import { ThemeDirective } from '../../../../libs/common/ui-theme/src/lib/theme.directive';
 import { Dir } from '@angular/cdk/bidi';
 import { MatProgressSpinner } from '@angular/material/progress-spinner';
@@ -23,7 +20,7 @@ import { MessageComponent } from '../../../../libs/common/ui-error-handler/src/l
         Dir,
         RouterOutlet,
         MatProgressSpinner,
-        MessageComponent,
+        MessageComponent
     ],
 })
 export class AppComponent implements OnInit {
@@ -35,7 +32,7 @@ export class AppComponent implements OnInit {
     loaded = false;
 
     ngOnInit() {
-        this.shellSrv.setApplicationTitle('Smart ERP 1.58.3');
+        this.shellSrv.setApplicationTitle('Smart ERP 1.59.1');
         this.httpSrv
             .init()
             .pipe(

@@ -4,7 +4,7 @@ import {Asset, AssetReception, Depreciation, OfficeAutoComplete} from '../assets
 import {KeepOnToolbar, ShellService, SnackBarService, ToolbarButton} from '@ss/common/ui-shell';
 import { ActivatedRoute, Router, RouterModule, RouterOutlet } from '@angular/router';
 import {UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
-import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
+import {  ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import {
     FurnitureStatusService,
     Lookup,
@@ -15,7 +15,7 @@ import {
 } from '@ss/common/api-lookup';
 import {AssetsService} from '../services/assets.service';
 import { IsParamService, LoginService, MaterialModule } from '@ss/common/api-common';
-import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
+import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import {Agent, AgentService, ConsumerService, CustomerService, SupplierService} from "@ss/logistics/api-agent";
 import {MatExpansionPanel} from '@angular/material/expansion';
 import {Account, AccountAutocompleteModel, AccountService} from '@ss/accounting/api-accounts';
@@ -40,14 +40,16 @@ import {AssetRevaluationService} from "../services/asset-revaluation.service";
 import {AssetBlockingService} from "../services/asset-blocking.service";
 import {DepreciationRateService} from "../services/depreciation-rate.service";
 import { CommonModule } from '@angular/common';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
-import { UiPaginationModule } from '@ss/common/ui-pagination';
-import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
-import { CustomAttributesModule } from '@ss/custom-attributes';
+
+
+import { DatePickerComponent } from '@ss/common/ui-datepicker';
+
 import { QRCodeModule } from 'angularx-qrcode';
 import { AssetAppointmentListComponent } from '../asset-appointment-list/asset-appointment-list.component';
 import { AssetCostsListComponent } from '../asset-costs-list/asset-costs-list.component';
 import { ImageInputComponent } from '@ss/common/ui-image-input';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
+import { ChildAttributesComponent } from '@ss/custom-attributes';
 
 @Component({
     selector: 'ss-assets-detail',
@@ -57,17 +59,14 @@ import { ImageInputComponent } from '@ss/common/ui-image-input';
     imports: [
         CommonModule,
         MaterialModule,
-        CommonUiLangModule,
-        ImageInputComponent,
-        UiPaginationModule,
-        CommonUiConfirmationDialogModule,
-        CommonUiAutoCompleteModule,
-        CommonUiDatepickerModule,
+        TranslateDirective,
+        TranslatePipe,
+        DatePickerComponent,
         RouterModule,
-        CustomAttributesModule,
-
         QRCodeModule,
-        AssetAppointmentListComponent
+        AssetAppointmentListComponent,
+        UiAutoCompleteComponent,
+        ChildAttributesComponent
     ]
 })
 export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> implements OnInit {

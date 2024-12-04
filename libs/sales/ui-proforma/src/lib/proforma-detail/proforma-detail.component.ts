@@ -3,21 +3,19 @@ import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { ReactiveFormsModule, UntypedFormBuilder } from '@angular/forms';
 import {CCGroup, Lookup, LookupsService} from '@ss/common/api-lookup';
-import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
+import {  ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import {Observable} from 'rxjs';
 import {tap} from 'rxjs/operators';
 import { LoginService, MaterialModule } from '@ss/common/api-common';
-import { BaseTransactionDetailComponent, OfferLinesService } from "@ss/logistics/api-transaction";
+import { BaseTransactionDetailComponent } from "@ss/logistics/api-transaction";
 import {SalesProformaService} from '../sales-proforma.service';
 import {MatDialog} from '@angular/material/dialog';
 import { CommonModule } from '@angular/common';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
-import { UiPaginationModule } from '@ss/common/ui-pagination';
-import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
-import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
-import { LogisticsUiStockInfoModule } from '@ss/logistics/ui-stock-info';
-import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
+import { DatePickerComponent } from '@ss/common/ui-datepicker';
+
 import { SalesProformaLinesService } from '../sales-proforma-lines.service';
+import { TranslateDirective } from '@ss/common/ui-lang';
+import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 
 @Component({
     selector: 'ss-proforma-detail',
@@ -27,15 +25,11 @@ import { SalesProformaLinesService } from '../sales-proforma-lines.service';
     imports: [
         CommonModule,
         MaterialModule,
-        CommonUiLangModule,
-        UiPaginationModule,
+        TranslateDirective,
         ReactiveFormsModule,
-        CommonUiConfirmationDialogModule,
         RouterModule,
-        CommonUiDatepickerModule,
-        CommonUiAutoCompleteModule,
-        LogisticsUiStockInfoModule,
-        DocInfoComponent
+        DatePickerComponent,
+        UiAutoCompleteComponent
     ],
 })
 export class ProformaDetailComponent extends BaseTransactionDetailComponent {

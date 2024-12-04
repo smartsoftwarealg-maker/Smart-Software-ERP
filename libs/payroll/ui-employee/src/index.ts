@@ -1,4 +1,3 @@
-export * from './lib/payroll-ui-employee.module';
 export * from './lib/employee-detail/employee-detail.component';
 export * from './lib/employee-list/employee-list.component';
 export * from './lib/employee-activation/detail/employee-activation-detail.component';

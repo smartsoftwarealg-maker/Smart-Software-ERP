@@ -2,19 +2,15 @@ import { Component } from '@angular/core';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import { ActivatedRoute, Router, RouterOutlet } from "@angular/router";
-import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
+import {  ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import { MaterialModule, PaginatorPersistenceService } from "@ss/common/api-common";
 import { CommonModule } from "@angular/common";
-import { CommonUiLangModule } from "@ss/common/ui-lang";
-import { UiPaginationModule } from "@ss/common/ui-pagination";
 import { ReactiveFormsModule } from "@angular/forms";
-
-import { CommonUiAutoCompleteModule } from "@ss/common/ui-auto-complete";
-import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
-import { CommonUiHourPickerModule } from "@ss/common/ui-hour-picker";
 import { LtmPickupPointService } from '@ltm/ltm-api';
 import { LTMPickupPoint } from '@ltm/ltm-api';
+import { PaginationComponent } from '@ss/common/ui-pagination';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-ltm-pickup-point-list',
@@ -24,15 +20,10 @@ import { LTMPickupPoint } from '@ltm/ltm-api';
     imports: [
         CommonModule,
         MaterialModule,
-        CommonUiLangModule,
-        UiPaginationModule,
+        PaginationComponent,
         ReactiveFormsModule,
-        CommonUiConfirmationDialogModule,
 
-        CommonUiAutoCompleteModule,
-        CommonUiDatepickerModule,
-        RouterOutlet,
-        CommonUiHourPickerModule
+        TranslateDirective,
     ],
 })
 export class LtmPickupPointListComponent extends BaseEntityListComponent<LTMPickupPoint> {

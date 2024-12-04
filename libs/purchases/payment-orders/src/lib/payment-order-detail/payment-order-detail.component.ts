@@ -7,7 +7,7 @@ import { UntypedFormBuilder, UntypedFormGroup, Validators, FormsModule, Reactive
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import { LookupsService, LotsService, PayModeService, Store } from "@ss/common/api-lookup";
 import {PaymentOrderService} from '../payment-order.service';
-import { IsParamService, LoginService } from "@ss/common/api-common";
+import { IsParamService, LoginService, MaterialModule } from '@ss/common/api-common';
 import { Agent, AgentService, ConsumerService } from "@ss/logistics/api-agent";
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import { Observable, switchMap, tap } from "rxjs";
@@ -15,17 +15,17 @@ import { BankService } from "@ss/administration/api-bank";
 import { MatCard, MatCardContent } from '@angular/material/card';
 import { NgIf } from '@angular/common';
 import { MatFormField, MatLabel, MatError } from '@angular/material/form-field';
-import { TranslateDirective } from '../../../../../common/ui-lang/src/lib/translate.directive';
+import { TranslateDirective } from '@ss/common/ui-lang';
 import { MatInput } from '@angular/material/input';
-import { DatePickerComponent } from '../../../../../common/ui-datepicker/src/lib/date-picker.component';
-import { UiAutoCompleteComponent } from '../../../../../common/ui-auto-complete/src/lib/auto-complete.component';
+import { DatePickerComponent } from '@ss/common/ui-datepicker';
+import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 
 @Component({
     selector: 'ss-payment-order-detail',
     templateUrl: './payment-order-detail.component.html',
     styleUrls: ['./payment-order-detail.component.scss'],
     standalone: true,
-    imports: [MatCard, MatCardContent, NgIf, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, DatePickerComponent, MatError, UiAutoCompleteComponent]
+    imports: [MaterialModule, MatCard, MatCardContent, NgIf, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, DatePickerComponent, MatError, UiAutoCompleteComponent]
 })
 export class PaymentOrderDetailComponent extends BaseEntityDetailComponent<PaymentOrder> {
     private bankSrv = inject(BankService);

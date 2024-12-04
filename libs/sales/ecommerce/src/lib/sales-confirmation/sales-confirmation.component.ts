@@ -8,13 +8,13 @@ import { HeaderPageComponent } from '../header-page/header-page.component';
 import { MatCard } from '@angular/material/card';
 import { NgIf, NgFor, DecimalPipe } from '@angular/common';
 import { MatFormField, MatLabel } from '@angular/material/form-field';
-import { TranslateDirective } from '../../../../../common/ui-lang/src/lib/translate.directive';
+import { TranslateDirective } from '@ss/common/ui-lang';
 import { MatInput } from '@angular/material/input';
 import { CdkTextareaAutosize } from '@angular/cdk/text-field';
 import { MatButton } from '@angular/material/button';
 import { MatProgressSpinner } from '@angular/material/progress-spinner';
-import { ImageInputComponent } from '../../../../../common/ui-image-input/src/lib/image-input.component';
-import { TranslatePipe } from '../../../../../common/ui-lang/src/lib/translate.pipe';
+import { ImageInputComponent } from '@ss/common/ui-image-input';
+import { TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-sales-confirmation',

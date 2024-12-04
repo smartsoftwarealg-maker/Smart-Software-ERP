@@ -11,16 +11,17 @@ import {
     Currency,
     CurrencyService
 } from "@ss/common/api-lookup";
-import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
-import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from "@ss/common/ui-auto-complete";
+import {  ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
+import {  DefaultAutoCompleteModel } from "@ss/common/ui-auto-complete";
 import { Option } from "./option.class";
 import { OptionService } from "./option.service";
 import { LoginService, MaterialModule } from "@ss/common/api-common";
 import { CommonModule } from "@angular/common";
-import { CommonUiLangModule } from "@ss/common/ui-lang";
-import { UiPaginationModule } from "@ss/common/ui-pagination";
-import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
+
+
+import { DatePickerComponent } from "@ss/common/ui-datepicker";
 import { CustomerService } from "@ss/logistics/api-agent";
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 interface EvalPrice {
     id: any,
@@ -33,12 +34,11 @@ interface EvalPrice {
     imports: [
         CommonModule,
         MaterialModule,
-        CommonUiLangModule,
-        UiPaginationModule,
-        CommonUiAutoCompleteModule,
+        TranslateDirective,
+        TranslatePipe,
+
         ReactiveFormsModule,
-        CommonUiDatepickerModule,
-        CommonUiConfirmationDialogModule
+        DatePickerComponent,
     ],
     styleUrls: ["./options-detail.component.scss"],
     templateUrl: "./options-detail.component.html"

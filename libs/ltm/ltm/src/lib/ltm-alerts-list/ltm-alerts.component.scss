@@ -44,3 +44,12 @@ mat-card {
     padding-top: 12px;
     border-radius: 1.4em;
 }
+
+form {
+    display: flex;
+    gap: 1em;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 0 1em;
+}

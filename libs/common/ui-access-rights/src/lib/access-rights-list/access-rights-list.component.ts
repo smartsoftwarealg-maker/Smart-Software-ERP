@@ -17,17 +17,17 @@ import {switchMap} from 'rxjs/operators';
 import {Observable} from 'rxjs';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import { MatFormField, MatLabel } from '@angular/material/form-field';
-import { TranslateDirective } from '../../../../ui-lang/src/lib/translate.directive';
+import { TranslateDirective } from '@ss/common/ui-lang';
 import { MatSelect } from '@angular/material/select';
 import { NgFor, NgIf, NgClass } from '@angular/common';
 import { MatOption } from '@angular/material/core';
 import { MatList, MatListItem } from '@angular/material/list';
-import { UiAutoCompleteComponent } from '../../../../ui-auto-complete/src/lib/auto-complete.component';
+import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { MatSlideToggle } from '@angular/material/slide-toggle';
 import { MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from '@angular/material/table';
 import { MatCheckbox } from '@angular/material/checkbox';
-import { PaginationComponent } from '../../../../ui-pagination/src/lib/pagination.component';
-import { TranslatePipe } from '../../../../ui-lang/src/lib/translate.pipe';
+import { PaginationComponent } from '@ss/common/ui-pagination';
+import { TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-access-rights',

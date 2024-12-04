@@ -43,7 +43,6 @@ const routes: Routes = [
     FormsModule,
     ReactiveFormsModule,
     MaterialModule,
-    HttpClientModule,
     PaginationModule,
     LoadingSpinnerModule,
     ListToolbarModule,

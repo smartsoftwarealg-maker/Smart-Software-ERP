@@ -7,17 +7,14 @@ import { slideToRight } from "@ss/costing/costing-utils";
 import { CItem } from '@ss/costing/costing-utils';
 import { CommonModule } from "@angular/common";
 import { MaterialModule } from "@ss/common/api-common";
-import { CommonUiLangModule } from "@ss/common/ui-lang";
-import { UiPaginationModule } from "@ss/common/ui-pagination";
 
-import { CommonUiAutoCompleteModule } from "@ss/common/ui-auto-complete";
-import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
-import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
-
+import { DatePickerComponent } from "@ss/common/ui-datepicker";
+import {  ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { BaseEntityDetailComponent } from "@ss/common/ui-base-entity";
 import { ShellService, SnackBarService } from "@ss/common/ui-shell";
 import { CostingItemService } from "../costing-item.service";
 import { AccountAutocompleteModel, AccountService } from "@ss/accounting/api-accounts";
+import { TranslateDirective } from '@ss/common/ui-lang';
 
 @Component({
   selector: "ss-costing-item-detail",
@@ -28,13 +25,12 @@ import { AccountAutocompleteModel, AccountService } from "@ss/accounting/api-acc
     CommonModule,
     RouterModule,
     MaterialModule,
-    CommonUiLangModule,
-    UiPaginationModule,
+    TranslateDirective,
     ReactiveFormsModule,
 
-    CommonUiAutoCompleteModule,
-    CommonUiDatepickerModule,
-    CommonUiConfirmationDialogModule
+
+    DatePickerComponent,
+
   ],
   animations: [slideToRight]
 })

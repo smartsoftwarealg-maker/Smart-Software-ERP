@@ -4,16 +4,16 @@ import {ASSAppointmentHeader, AssetAppointmentLine} from '../assets-api';
 import {KeepOnToolbar, ShellService, SnackBarService, ToolbarButton} from '@ss/common/ui-shell';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import {UntypedFormBuilder, UntypedFormControl, Validators} from '@angular/forms';
-import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
+import {  ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import {LookupsService, Office, OfficeService} from '@ss/common/api-lookup';
 import {AssetAppointmentDocService} from '../services/asset-appointment-doc.service';
 import { LoginService, MaterialModule, PaginationModel } from '@ss/common/api-common';
-import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
+import {  DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
 import {
     ASSET_MODULE,
     ATTRIB_TYPE_LOOKUP,
     AttribTempl,
-    AttributesService, CustomAttributesModule
+    AttributesService,
 } from '@ss/custom-attributes';
 import {switchMap} from 'rxjs/operators';
 import {tap} from 'rxjs/operators';
@@ -27,12 +27,13 @@ import {MatDialog} from '@angular/material/dialog';
 import {WorkflowDialogComponent} from '@ss/workflow';
 import { ASSET_APPOINTMENT } from '@ss/workflow';
 import { CommonModule } from '@angular/common';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
 
-import { UiPaginationModule } from '@ss/common/ui-pagination';
-import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
+
+
+import { DatePickerComponent } from '@ss/common/ui-datepicker';
 
 import { QRCodeModule } from 'angularx-qrcode';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-asset-appointment-doc-detail',
@@ -42,14 +43,12 @@ import { QRCodeModule } from 'angularx-qrcode';
     imports: [
         CommonModule,
         MaterialModule,
-        CommonUiLangModule,
+        TranslateDirective,
+        TranslatePipe,
 
-        UiPaginationModule,
-        CommonUiConfirmationDialogModule,
-        CommonUiAutoCompleteModule,
-        CommonUiDatepickerModule,
+        DatePickerComponent,
         RouterModule,
-        CustomAttributesModule,
+
 
         QRCodeModule
     ]})

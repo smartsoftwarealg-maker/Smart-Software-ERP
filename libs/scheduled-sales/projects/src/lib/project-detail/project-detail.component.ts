@@ -3,18 +3,17 @@ import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
 import { ReactiveFormsModule, UntypedFormBuilder, Validators } from '@angular/forms';
-import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
+import {  ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import {Activity, ActivityService, LookupsService, WilayaService} from '@ss/common/api-lookup';
 import {SSProject} from '@ss/scheduled-sales/api-scheduled-sales';
 import {ProjectService} from '../project.service';
 import { LoginService, MaterialModule } from '@ss/common/api-common';
 import {Agent, CustomerService} from '@ss/logistics/api-agent';
-import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
+import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import {WorkMasterService, SectorService} from '@ss/common/api-lookup';
 import { CommonModule } from '@angular/common';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
-import { UiPaginationModule } from '@ss/common/ui-pagination';
-import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
+import { DatePickerComponent } from '@ss/common/ui-datepicker';
+import { TranslateDirective } from '@ss/common/ui-lang';
 
 @Component({
   selector: 'ss-project-detail',
@@ -24,12 +23,10 @@ import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
     imports: [
         CommonModule,
         MaterialModule,
-        CommonUiLangModule,
-        UiPaginationModule,
+        TranslateDirective,
         ReactiveFormsModule,
-        CommonUiConfirmationDialogModule,
-        CommonUiDatepickerModule,
-        CommonUiAutoCompleteModule
+        DatePickerComponent,
+        UiAutoCompleteComponent
     ],
 })
 export class ProjectDetailComponent extends BaseEntityDetailComponent<SSProject> {

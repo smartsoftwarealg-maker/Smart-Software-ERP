@@ -1,6 +1,7 @@
+@if (form) {
     <mat-card>
         <mat-card-content>
-            <form *ngIf="form !== null" novalidate [formGroup]="form">
+            <form [formGroup]="form">
 
                 <mat-form-field id="number" class="default-25 sm-100">
                     <mat-label translate>STOCK_NUMBER</mat-label>
@@ -123,9 +124,13 @@
                         </mat-form-field>
                     </mat-tab>
                 </mat-tab-group>
-<!--                <pre>{{form.value | json }}</pre>-->
+                <!--                <pre>{{form.value | json }}</pre>-->
 
             </form>
         </mat-card-content>
     </mat-card>
-    <router-outlet *ngIf="formId"></router-outlet>
+}
+@if (formId) {
+    <router-outlet></router-outlet>
+}
+

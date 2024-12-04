@@ -4,18 +4,20 @@ import {Project} from '../contract-api.class';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import { ActivatedRoute, Router, RouterModule } from "@angular/router";
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
-import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
+import {  ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
 import { LanguageService, MaterialModule, PaginatorPersistenceService } from "@ss/common/api-common";
 import {SalesContractService} from '../sales-contract.service';
 import { FormControl, ReactiveFormsModule } from "@angular/forms";
 import { Agent, AgentLookupModel, AgentService, CustomerService } from "@ss/logistics/api-agent";
 import {debounceTime, distinctUntilChanged} from 'rxjs/operators';
 import { CommonModule } from "@angular/common";
-import { CommonUiLangModule } from "@ss/common/ui-lang";
-import { UiPaginationModule } from "@ss/common/ui-pagination";
 
-import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
-import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from "@ss/common/ui-auto-complete";
+
+
+import { DatePickerComponent } from "@ss/common/ui-datepicker";
+import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
+import { PaginationComponent } from '@ss/common/ui-pagination';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-sales-contract-list',
@@ -25,15 +27,15 @@ import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from "@ss/common
     imports: [
         CommonModule,
         MaterialModule,
-        CommonUiLangModule,
-        UiPaginationModule,
+        TranslateDirective,
+        TranslatePipe,
         ReactiveFormsModule,
-        CommonUiConfirmationDialogModule,
+        DatePickerComponent,
 
-        CommonUiDatepickerModule,
-        CommonUiAutoCompleteModule,
         RouterModule,
-    ],
+        PaginationComponent,
+        UiAutoCompleteComponent
+    ]
 })
 export class SalesContractListComponent extends BaseEntityListComponent<Project> {
     private agentSrv = inject(CustomerService);

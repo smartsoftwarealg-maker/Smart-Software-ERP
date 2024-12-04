@@ -77,5 +77,6 @@
     "ACTION_DATE":        "تاريخ الاجراء",
     "VALIDATED_BY":       "تم التحقق بواسطة",
     "VALIDATION_DATE":    "تاريخ التحقق",
-    "REPORT_DATE":        "تاريخ التقرير"
+    "REPORT_DATE":        "تاريخ التقرير",
+    "NON_VALIDATED":     "غير محقق"
 }

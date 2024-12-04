@@ -3,7 +3,7 @@ import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
 import { ReactiveFormsModule, UntypedFormBuilder, Validators } from '@angular/forms';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
-import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
+import {  ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import {ReportCatalogService, ReportsCatalog} from '@ss/administration/api-report-catalog';
 import { LIST_URL, MaterialModule } from '@ss/common/api-common';
 import {ReportAppsService, ReportListService} from '@ss/common/api-reports';
@@ -12,8 +12,9 @@ import {Observable} from 'rxjs';
 import {TraceabilityService} from '@ss/common/ui-traceability';
 import {MatSelectChange} from '@angular/material/select';
 import { CommonModule } from '@angular/common';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
-import { UiPaginationModule } from '@ss/common/ui-pagination';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
+
+
 
 
 @Component({
@@ -24,10 +25,8 @@ import { UiPaginationModule } from '@ss/common/ui-pagination';
     imports: [
         CommonModule,
         MaterialModule,
-        CommonUiLangModule,
-        UiPaginationModule,
+        TranslateDirective,
         ReactiveFormsModule,
-        CommonUiConfirmationDialogModule
     ],
 })
 export class ReportCatalogDetailComponent extends BaseEntityDetailComponent<ReportsCatalog> implements OnInit {

@@ -3,18 +3,15 @@ import { CommonModule } from '@angular/common';
 import { BaseChildEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { FormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { VehicleService } from '../services/vehicle.service';
-import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
+import {  DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
 import { MaterialModule } from '@ss/common/api-common';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
-import { UiPaginationModule } from '@ss/common/ui-pagination';
-import { CommonUiConfirmationDialogModule } from '@ss/common/ui-confirmation-dialog';
-import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
+import { DatePickerComponent } from '@ss/common/ui-datepicker';
 import { RouterModule } from '@angular/router';
-
 import { PersonAutocompleteClass } from '@ss/employee-services/employee-services';
 import { VehicleDriver } from '../vehicle-api';
 import { VehicleDriverService } from '../services/vehicle-driver.service';
 import { ParkPersonService } from '../services/park-person.service';
+import { TranslateDirective } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-driver-vehicles-detail',
@@ -22,13 +19,11 @@ import { ParkPersonService } from '../services/park-person.service';
     imports: [
         CommonModule,
         MaterialModule,
-        CommonUiLangModule,
-        UiPaginationModule,
-        CommonUiConfirmationDialogModule,
-        CommonUiDatepickerModule,
+        TranslateDirective,
+        DatePickerComponent,
         RouterModule,
-        CommonUiAutoCompleteModule,
-        CommonUiDatepickerModule
+
+        DatePickerComponent
     ],
     templateUrl: './vehicles-driver-detail.component.html',
     styleUrls: ['./vehicles-driver-detail.component.css']

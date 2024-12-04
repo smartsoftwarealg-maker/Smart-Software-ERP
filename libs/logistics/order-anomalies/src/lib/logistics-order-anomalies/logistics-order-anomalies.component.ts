@@ -4,13 +4,15 @@ import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { OrderAnomaly } from './api-order-anomalies';
 import { KeepOnToolbar, ShellService, SnackBarService, ToolbarButton } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router } from '@angular/router';
-import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
+import {  ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { DefaultReportService } from '@ss/common/ui-default-report-component';
 import { MaterialModule, PaginatorPersistenceService } from '@ss/common/api-common';
 import { OrderAnomaliesService } from './order-anomalies.service';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
-import { UiPaginationModule } from '@ss/common/ui-pagination';
+
+
 import { ReactiveFormsModule } from '@angular/forms';
+import { PaginationComponent } from '@ss/common/ui-pagination';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-logistics-order-anomalies',
@@ -18,10 +20,11 @@ import { ReactiveFormsModule } from '@angular/forms';
     imports: [
         CommonModule,
         MaterialModule,
-        CommonUiLangModule,
-        UiPaginationModule,
+        TranslateDirective,
+        TranslatePipe,
         ReactiveFormsModule,
-        CommonUiConfirmationDialogModule
+        PaginationComponent
+
     ],
     templateUrl: './logistics-order-anomalies.component.html',
     styleUrl: './logistics-order-anomalies.component.css',

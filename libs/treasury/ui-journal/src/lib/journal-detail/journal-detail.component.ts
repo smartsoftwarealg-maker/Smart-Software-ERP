@@ -5,7 +5,7 @@ import { ActivatedRoute, Router, RouterOutlet } from '@angular/router';
 import { FormBuilder, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
-import {HttpService, LoginService} from '@ss/common/api-common';
+import { HttpService, LoginService, MaterialModule } from '@ss/common/api-common';
 import { Observable } from 'rxjs';
 import { LookupsService, Bank } from '@ss/common/api-lookup';
 import { tap } from 'rxjs/operators';
@@ -22,7 +22,7 @@ import { TranslatePipe } from "../../../../../common/ui-lang/src/lib/translate.p
     styleUrls: ['./journal-detail.component.scss'],
     templateUrl: './journal-detail.component.html',
     standalone: true,
-    imports: [MatCard, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, MatError, MatSelect, MatOption, RouterOutlet, TranslatePipe]
+    imports: [MaterialModule, MatCard, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, MatError, MatSelect, MatOption, RouterOutlet, TranslatePipe]
 })
 export class JournalDetailComponent extends BaseEntityDetailComponent<Journal> implements OnInit {
     private journalUserSrv = inject(JournalUserService);

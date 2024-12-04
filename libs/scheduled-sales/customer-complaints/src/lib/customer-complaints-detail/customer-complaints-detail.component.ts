@@ -8,15 +8,15 @@ import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { CustomerComplaint } from '../customer-complaint.class';
 import { CustomerComplaintsService } from '../customer-complaint.service';
 import { ComplaintTypeService } from '../complaint-type.service';
-import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
+import {  DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
+
 import { MatCard, MatCardContent } from '@angular/material/card';
 import { MatError, MatFormField, MatFormFieldModule, MatLabel } from '@angular/material/form-field';
 import { MatInput, MatInputModule } from '@angular/material/input';
 import { CdkTextareaAutosize } from '@angular/cdk/text-field';
 import { LoginService, MaterialModule } from '@ss/common/api-common';
 import { MatRadioButton, MatRadioGroup, MatRadioModule } from '@angular/material/radio';
-import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
+import { DatePickerComponent } from '@ss/common/ui-datepicker';
 
 import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
@@ -29,10 +29,10 @@ import { MatSelectModule } from '@angular/material/select';
     standalone: true,
     imports: [
         CommonModule,
-        CommonUiAutoCompleteModule,
-        CommonUiDatepickerModule,
 
-        CommonUiLangModule,
+        DatePickerComponent,
+
+
         MatButtonModule,
         MatCheckboxModule,
         MatExpansionModule,

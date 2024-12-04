@@ -4,18 +4,16 @@ import { ActivatedRoute, NavigationEnd, Router, RouterEvent, RouterOutlet } from
 import { LTMLineMatter,  } from '@ltm/ltm-api';
 import {LtmMatterService, LtmLineMatterService, LtmProductLookupService} from '@ltm/ltm-api';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
-import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
+import {  ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { LoginService, MaterialModule } from '@ss/common/api-common';
-import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from "@ss/common/ui-auto-complete";
+import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { CommonModule } from "@angular/common";
-import { CommonUiLangModule } from "@ss/common/ui-lang";
-import { UiPaginationModule } from "@ss/common/ui-pagination";
-
-import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
-import { CommonUiHourPickerModule } from '@ss/common/ui-hour-picker';
+import { DatePickerComponent } from '@ss/common/ui-datepicker';
+import { HourPickerComponent } from '@ss/common/ui-hour-picker';
 import { LtmMatterTestService, LtmPickupPointService, LtmNormService } from '@ltm/ltm-api';
 import {filter } from 'rxjs';
+import { TranslateDirective } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-line-matter-detail',
@@ -25,16 +23,13 @@ import {filter } from 'rxjs';
     imports: [
         CommonModule,
         MaterialModule,
-        CommonUiLangModule,
-        UiPaginationModule,
         ReactiveFormsModule,
-        CommonUiConfirmationDialogModule,
-
-        CommonUiAutoCompleteModule,
-        CommonUiDatepickerModule,
+        TranslateDirective,
+        DatePickerComponent,
         RouterOutlet,
-        CommonUiHourPickerModule
-    ],
+        HourPickerComponent,
+        UiAutoCompleteComponent
+    ]
 })
 export class LineMatterDetailComponent extends BaseEntityDetailComponent<LTMLineMatter> {
     private testSrv =  inject(LtmMatterTestService);

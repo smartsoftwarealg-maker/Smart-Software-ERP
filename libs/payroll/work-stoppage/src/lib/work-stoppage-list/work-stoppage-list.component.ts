@@ -8,17 +8,19 @@ import { DefaultReportService } from '@ss/common/ui-default-report-component';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { MaterialModule, PaginatorPersistenceService } from '@ss/common/api-common';
 import { WorkStoppageService } from '../services/work-stoppage.service';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
+
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
-import { UiPaginationModule } from '@ss/common/ui-pagination';
+
 import { Lookup } from '@ss/common/api-lookup';
 import { FormControl, FormsModule } from '@angular/forms';
+import { PaginationComponent } from '@ss/common/ui-pagination';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-work-stoppage-list',
     standalone: true,
-    imports: [CommonModule, CommonUiLangModule, MatSortModule, MatTableModule, UiPaginationModule, FormsModule, MaterialModule],
+    imports: [CommonModule, MatSortModule, MatTableModule, FormsModule, MaterialModule, PaginationComponent, TranslatePipe, TranslateDirective],
     templateUrl: './work-stoppage-list.component.html',
     styleUrls: ['./work-stoppage-list.component.css']
 })

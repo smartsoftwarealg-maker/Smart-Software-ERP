@@ -11,13 +11,14 @@ import {PayrollMonthService} from '@ss/remuneration/payroll-month';
 import { MatCard } from '@angular/material/card';
 import { NgIf, NgFor } from '@angular/common';
 import { MatFormField, MatLabel, MatError } from '@angular/material/form-field';
-import { TranslateDirective } from '../../../../common/ui-lang/src/lib/translate.directive';
+import { TranslateDirective } from '@ss/common/ui-lang';
 import { MatInput } from '@angular/material/input';
 import { DatePickerComponent } from '../../../../common/ui-datepicker/src/lib/date-picker.component';
 import { MatSelect } from '@angular/material/select';
 import { MatOption } from '@angular/material/core';
 import { MatButton } from '@angular/material/button';
-import { TranslatePipe } from '../../../../common/ui-lang/src/lib/translate.pipe';
+import { TranslatePipe } from '@ss/common/ui-lang';
+import { MaterialModule } from '@ss/common/api-common';
 
 interface Lookup {
     id: number;
@@ -29,7 +30,7 @@ interface Lookup {
     templateUrl: './edo.component.html',
     styleUrls: ['./edo.component.scss'],
     standalone: true,
-    imports: [MatCard, NgIf, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, MatError, DatePickerComponent, MatSelect, NgFor, MatOption, MatButton, MatListSubheaderCssMatStyler, MatSelectionList, MatListOption, TranslatePipe]
+    imports: [MaterialModule, MatCard, NgIf, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, MatError, DatePickerComponent, MatSelect, NgFor, MatOption, MatButton, MatListSubheaderCssMatStyler, MatSelectionList, MatListOption, TranslatePipe]
 })
 export class EdoComponent implements OnInit {
     @ViewChild('blist') blist: MatSelectionList

@@ -1,7 +1,7 @@
 import { Component, inject, OnInit } from '@angular/core';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {  ImageModel } from "@ss/common/ui-image-input";
-import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from "@ss/common/ui-auto-complete";
+import {  DefaultAutoCompleteModel } from "@ss/common/ui-auto-complete";
 import {
     ClassService,
     LookupsService,
@@ -19,20 +19,14 @@ import {
     ValidatorFn,
     Validators
 } from "@angular/forms";
-import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
+import {  ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
 import { HttpService, MaterialModule } from "@ss/common/api-common";
 import {Observable} from 'rxjs';
 import {tap} from 'rxjs/operators';
 import {Article, SSArticleService} from '@ss/scheduled-sales/api-scheduled-sales';
 import { CommonModule } from "@angular/common";
-import { CommonUiLangModule } from "@ss/common/ui-lang";
-import { UiPaginationModule } from "@ss/common/ui-pagination";
-import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
-
-import { LogisticsUiDocImportModule } from "@ss/logistics/ui-doc-import";
-import { LogisticsUiStockInfoModule } from "@ss/logistics/ui-stock-info";
-import { CommonUiColorSelectModule } from "@ss/common/ui-color-select";
 import { ColorPickerModule } from "ngx-color-picker";
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: "ss-article-detail",
@@ -42,18 +36,10 @@ import { ColorPickerModule } from "ngx-color-picker";
     imports: [
         CommonModule,
         MaterialModule,
-        CommonUiLangModule,
-        UiPaginationModule,
+        TranslateDirective,
+        TranslatePipe,
         ReactiveFormsModule,
-        CommonUiConfirmationDialogModule,
         RouterModule,
-        CommonUiDatepickerModule,
-        CommonUiAutoCompleteModule,
-
-        LogisticsUiDocImportModule,
-        LogisticsUiStockInfoModule,
-
-        CommonUiColorSelectModule,
         ColorPickerModule
     ]
 })

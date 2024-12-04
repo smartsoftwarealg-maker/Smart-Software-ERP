@@ -4,17 +4,15 @@ import { ElementsInfoService } from "@ss/remuneration/elementsinfo";
 import { ShellService, SnackBarService } from "@ss/common/ui-shell";
 import { ActivatedRoute } from "@angular/router";
 import { ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup, Validators } from "@angular/forms";
-import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
+import {  ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
 import { LookupsService } from "@ss/common/api-lookup";
 import { ElementTypesService } from "../services/element-types.service";
 import { ElementInfoLookupModel } from "../element-info-lookup-model";
 import { HttpService, MaterialModule } from "@ss/common/api-common";
 import { ElementType } from "@ss/payroll-common";
 import { CommonModule } from "@angular/common";
-import { CommonUiLangModule } from "@ss/common/ui-lang";
-import { UiPaginationModule } from "@ss/common/ui-pagination";
-import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
-import { CommonUiAutoCompleteModule } from "@ss/common/ui-auto-complete";
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
+import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 
 @Component({
     selector: "ss-element-types-detail",
@@ -24,12 +22,9 @@ import { CommonUiAutoCompleteModule } from "@ss/common/ui-auto-complete";
     imports: [
         CommonModule,
         MaterialModule,
-        CommonUiLangModule,
-        UiPaginationModule,
+        TranslateDirective,
         ReactiveFormsModule,
-        CommonUiConfirmationDialogModule,
-        CommonUiDatepickerModule,
-        CommonUiAutoCompleteModule
+        UiAutoCompleteComponent
     ]
 
 })

@@ -10,14 +10,14 @@ import { CMMSWorkOrderService } from '@ss/cmms/work-order';
 import { MatCard, MatCardContent } from '@angular/material/card';
 import { NgIf, NgFor } from '@angular/common';
 import { MatFormField, MatLabel, MatError } from '@angular/material/form-field';
-import { TranslateDirective } from '../../../../../common/ui-lang/src/lib/translate.directive';
-import { DatePickerComponent } from '../../../../../common/ui-datepicker/src/lib/date-picker.component';
+import { TranslateDirective } from '@ss/common/ui-lang';
+import { DatePickerComponent } from '@ss/common/ui-datepicker';
 import { MatInput } from '@angular/material/input';
-import { UiAutoCompleteComponent } from '../../../../../common/ui-auto-complete/src/lib/auto-complete.component';
+import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { MatSelect } from '@angular/material/select';
 import { MatOption } from '@angular/material/core';
 import { MatAccordion, MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelTitle } from '@angular/material/expansion';
-import { TranslatePipe } from '../../../../../common/ui-lang/src/lib/translate.pipe';
+import { TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-service-request-detail',

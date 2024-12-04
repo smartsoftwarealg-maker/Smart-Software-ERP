@@ -161,4 +161,7 @@
     </mat-tab>
 </mat-tab-group>
 
-<router-outlet *ngIf="formId"></router-outlet>
+@if (formId) {
+    <router-outlet></router-outlet>
+}
+

@@ -2,20 +2,11 @@ import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
-import { ActivatedRoute, RouterOutlet } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
-import { dateTimeToStr, dateTimeToTime, LoginService, MaterialModule } from '@ss/common/api-common';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
-import {
-    MatCell,
-    MatCellDef,
-    MatColumnDef,
-    MatHeaderCell,
-    MatHeaderRow,
-    MatHeaderRowDef, MatRow, MatRowDef, MatTable
-} from '@angular/material/table';
-import { MatSort, MatSortHeader } from '@angular/material/sort';
-import { UiPaginationModule } from '@ss/common/ui-pagination';
+import { dateTimeToStr, LoginService, MaterialModule } from '@ss/common/api-common';
+
+
 import {
     FormArray,
     FormControl,
@@ -37,14 +28,15 @@ import {
     LTMTestingEquipment
 } from '@ltm/ltm-api';
 import { LtmEquipmentTestingInputService } from '../services/ltm-equipment-testing-input.service';
-import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
-import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
+import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
+import { DatePickerComponent } from '@ss/common/ui-datepicker';
 import { debug } from '@capacitor/assets/dist/util/log';
+import { PaginationComponent } from '@ss/common/ui-pagination';
 
 @Component({
     selector: 'ss-test-equipment-testing-input-detail',
     standalone: true,
-    imports: [CommonModule, CommonUiLangModule, MatCell, MatCellDef, MatColumnDef, MatHeaderCell, MatHeaderRow, MatHeaderRowDef, MatRow, MatRowDef, MatSort, MatSortHeader, MatTable, UiPaginationModule, MatCard, MatFormField, MatInput, MatLabel, MaterialModule, ReactiveFormsModule, RouterOutlet, CommonUiAutoCompleteModule, CommonUiDatepickerModule],
+    imports: [CommonModule, MatCard, MatFormField, MatInput, MatLabel, MaterialModule, ReactiveFormsModule, DatePickerComponent, UiAutoCompleteComponent],
     templateUrl: './test-equipment-testing-input-detail.component.html',
     styleUrl: './test-equipment-testing-input-detail.component.scss'
 })

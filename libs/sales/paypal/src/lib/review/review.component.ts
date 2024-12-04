@@ -5,9 +5,9 @@ import {of, switchMap} from 'rxjs';
 import {Order, Review} from '@ss/sales/shopping-cart';
 import { NgIf } from '@angular/common';
 import { MatCard, MatCardActions } from '@angular/material/card';
-import { TranslateDirective } from '../../../../../common/ui-lang/src/lib/translate.directive';
+import { TranslateDirective } from '@ss/common/ui-lang';
 import { MatButton } from '@angular/material/button';
-import { TranslatePipe } from '../../../../../common/ui-lang/src/lib/translate.pipe';
+import { TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-review',

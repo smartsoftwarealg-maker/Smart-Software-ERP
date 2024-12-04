@@ -1,4 +1,3 @@
-export * from './lib/furniture-furniture.module';
 export * from './lib/furniture-api';
 export * from './lib/furniture-detail/furniture-detail.component';
 export * from './lib/furniture-receiver-list/furniture-receiver-list.component';

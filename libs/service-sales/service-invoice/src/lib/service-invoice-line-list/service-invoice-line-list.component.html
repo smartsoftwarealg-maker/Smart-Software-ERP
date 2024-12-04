@@ -27,7 +27,7 @@
             <ng-container matColumnDef="position">
                 <mat-header-cell *matHeaderCellDef translate>COMMON_POSITION</mat-header-cell>
                 <mat-cell *matCellDef="let e">
-                    {{e.position}}
+                    {{ e.position }}
                 </mat-cell>
             </ng-container>
 
@@ -55,34 +55,34 @@
             <ng-container matColumnDef="qtyOrdered">
                 <mat-header-cell *matHeaderCellDef translate>LOGISTICS_QTY_ORDERED</mat-header-cell>
                 <mat-cell *matCellDef="let e">
-                    {{ e.qtyOrdered | number : '1.2-3'}}
+                    {{ e.qtyOrdered | number : '1.2-3' }}
                 </mat-cell>
             </ng-container>
 
             <ng-container matColumnDef="qtySatisfied">
                 <mat-header-cell *matHeaderCellDef translate>LOGISTICS_QTY_SATISFIED</mat-header-cell>
                 <mat-cell *matCellDef="let e">
-                    {{ e.qtySatisfied | number : '1.2-3'}}
+                    {{ e.qtySatisfied | number : '1.2-3' }}
                 </mat-cell>
             </ng-container>
 
             <ng-container matColumnDef="total">
                 <mat-header-cell *matHeaderCellDef translate>COMMON_TOTAL</mat-header-cell>
                 <mat-cell *matCellDef="let e">
-                    {{ e.price * e.qtySatisfied | number : '1.2-3'}}
+                    {{ e.price * e.qtySatisfied | number : '1.2-3' }}
                 </mat-cell>
             </ng-container>
 
             <ng-container matColumnDef="price">
                 <mat-header-cell *matHeaderCellDef translate>LOGISTICS_PRICE</mat-header-cell>
                 <mat-cell *matCellDef="let e">
-                    {{ e.price | number : '1.2-2'}}
+                    {{ e.price | number : '1.2-2' }}
                 </mat-cell>
             </ng-container>
             <ng-container matColumnDef="vat">
                 <mat-header-cell *matHeaderCellDef translate>LOGISTICS_VAT</mat-header-cell>
                 <mat-cell *matCellDef="let e">
-                    {{ e.vat | number : '1.2-2'}}
+                    {{ e.vat | number : '1.2-2' }}
                 </mat-cell>
             </ng-container>
 
@@ -110,16 +110,17 @@
     </div>
 
     <div class="doc-info">
-        <ss-doc-info
-            *ngIf="selectedId"
-            [displayedGroups]="['article', 'document']"
-            [params]="{
+        @if (selectedId) {
+            <ss-doc-info
+                [displayedGroups]="['article', 'document']"
+                [params]="{
                         documentId: selectedRow?.transacId,
                         detailId: selectedRow?.id,
                         documentURL:'/inventory',
                         articleReference: selectedRow?.reference,
                         articleStoreId: selectedRow?.store
                     }">
-        </ss-doc-info>
+            </ss-doc-info>
+        }
     </div>
 </div>

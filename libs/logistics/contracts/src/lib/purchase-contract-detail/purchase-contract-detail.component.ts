@@ -4,10 +4,10 @@ import {Project} from '../contract-api.class';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import { ActivatedRoute, Router, RouterModule } from "@angular/router";
 import { ReactiveFormsModule, UntypedFormBuilder, Validators } from "@angular/forms";
-import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
+import {  ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
 import { AwardProcedureService, LookupsService, ProjectMotiveService, WilayaService } from "@ss/common/api-lookup";
 import {SalesContractService} from '../sales-contract.service';
-import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from "@ss/common/ui-auto-complete";
+import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { AgentService, SupplierService } from "@ss/logistics/api-agent";
 import {ProjectTypeService} from '@ss/common/api-lookup';
 import { LoginService, MaterialModule } from "@ss/common/api-common";
@@ -15,13 +15,14 @@ import {MatExpansionPanel} from '@angular/material/expansion';
 import {ContractArticleService} from '../contract-article.service';
 import {Article, ArticleService} from '@ss/master-data/api-article';
 import { CommonModule } from "@angular/common";
-import { CommonUiLangModule } from "@ss/common/ui-lang";
-import { UiPaginationModule } from "@ss/common/ui-pagination";
 
-import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
+
+
+import { DatePickerComponent } from "@ss/common/ui-datepicker";
 import { PurchaseContractService } from "../purchase-contract.service";
 import { ContractArticleMainComponent } from "../contract-article-main/contract-article-main.component";
 import { AppArchiveMainComponent } from '@ss/common/app-archive';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-purchase-contract-detail',
@@ -31,16 +32,13 @@ import { AppArchiveMainComponent } from '@ss/common/app-archive';
     imports: [
         CommonModule,
         MaterialModule,
-        CommonUiLangModule,
-        UiPaginationModule,
+        TranslateDirective,
         ReactiveFormsModule,
-        CommonUiConfirmationDialogModule,
-
-        CommonUiDatepickerModule,
-        CommonUiAutoCompleteModule,
+        DatePickerComponent,
         RouterModule,
         ContractArticleMainComponent,
-        AppArchiveMainComponent
+        AppArchiveMainComponent,
+        UiAutoCompleteComponent
     ]
 })
 export class PurchaseContractDetailComponent extends BaseEntityDetailComponent<Project> {

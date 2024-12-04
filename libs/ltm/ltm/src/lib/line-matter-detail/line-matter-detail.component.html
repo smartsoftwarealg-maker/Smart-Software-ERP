@@ -1,25 +1,25 @@
-<mat-card>
-    <mat-card-content>
-        <form *ngIf="form !== null" novalidate [formGroup]="form">
-            <mat-form-field class="default-100">
-                <mat-label translate>LTM_MATTER</mat-label>
-                <ss-auto-complete matInput
-                                  formControlName="matterId"
-                                  [model]="matterLookup">
-                </ss-auto-complete>
-            </mat-form-field>
+@if (form !== null) {
+    <mat-card>
+        <mat-card-content>
+            <form [formGroup]="form">
+                <mat-form-field class="default-100">
+                    <mat-label translate>LTM_MATTER</mat-label>
+                    <ss-auto-complete matInput
+                                      formControlName="matterId"
+                                      [model]="matterLookup">
+                    </ss-auto-complete>
+                </mat-form-field>
 
-            <mat-form-field class="default-50 sm-100">
-                <mat-label translate>LTM_NORM</mat-label>
-                <ss-auto-complete matInput
-                                  [model]="normLookup"
-                                  formControlName="norm">
-                </ss-auto-complete>
-            </mat-form-field>
-        </form>
-    </mat-card-content>
-</mat-card>
-
-@if (form && id) {
+                <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>LTM_NORM</mat-label>
+                    <ss-auto-complete matInput
+                                      [model]="normLookup"
+                                      formControlName="norm">
+                    </ss-auto-complete>
+                </mat-form-field>
+            </form>
+        </mat-card-content>
+    </mat-card>
+} @if (form && id) {
     <router-outlet></router-outlet>
 }

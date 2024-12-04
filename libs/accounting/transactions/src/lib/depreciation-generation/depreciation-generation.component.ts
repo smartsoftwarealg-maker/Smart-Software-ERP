@@ -6,13 +6,14 @@ import {DepreciationRow} from './depreciation-row';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import { ActivatedRoute, RouterModule } from "@angular/router";
 import {AccJournalsService, Journal} from '@ss/accounting/accounting-api';
-import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from "@ss/common/ui-auto-complete";
+import {  DefaultAutoCompleteModel } from "@ss/common/ui-auto-complete";
 import { CommonModule } from "@angular/common";
-import { CommonUiLangModule } from "@ss/common/ui-lang";
-import { UiPaginationModule } from "@ss/common/ui-pagination";
 
-import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
-import { CommonUiConfirmationDialogModule } from "@ss/common/ui-confirmation-dialog";
+
+
+import { DatePickerComponent } from "@ss/common/ui-datepicker";
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
+
 
 
 @Component({
@@ -24,12 +25,12 @@ import { CommonUiConfirmationDialogModule } from "@ss/common/ui-confirmation-dia
         CommonModule,
         RouterModule,
         MaterialModule,
-        CommonUiLangModule,
-        UiPaginationModule,
+        TranslateDirective,
+        TranslatePipe,
         ReactiveFormsModule,
-        CommonUiAutoCompleteModule,
-        CommonUiDatepickerModule,
-        CommonUiConfirmationDialogModule,
+
+        DatePickerComponent,
+
 
     ],
 })

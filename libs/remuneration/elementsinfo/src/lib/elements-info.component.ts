@@ -9,9 +9,9 @@ import {PaginatorPersistenceService} from '@ss/common/api-common';
 import {ElementsInfoService} from './elements-info.service';
 import { MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from '@angular/material/table';
 import { MatSort, MatSortHeader } from '@angular/material/sort';
-import { TranslateDirective } from '../../../../common/ui-lang/src/lib/translate.directive';
+import { TranslateDirective } from '@ss/common/ui-lang';
 import { MatCheckbox } from '@angular/material/checkbox';
-import { PaginationComponent } from '../../../../common/ui-pagination/src/lib/pagination.component';
+import { PaginationComponent } from '@ss/common/ui-pagination';
 import { DecimalPipe } from '@angular/common';
 
 @Component({

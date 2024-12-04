@@ -1,19 +1,13 @@
 import { Component } from '@angular/core';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, RouterOutlet } from "@angular/router";
-import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
+import {  ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
 import { ReactiveFormsModule, UntypedFormBuilder } from "@angular/forms";
 import { BaseLookupDetailClass } from "../lookup-detail-template/base-lookup-detail.class";
 import { LtmTestTypeService } from '@ltm/ltm-api';
 import { CommonModule } from "@angular/common";
 import { MaterialModule } from "@ss/common/api-common";
-import { CommonUiLangModule } from "@ss/common/ui-lang";
-import { UiPaginationModule } from "@ss/common/ui-pagination";
-
-
-import { CommonUiAutoCompleteModule } from "@ss/common/ui-auto-complete";
-import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
-import { CommonUiHourPickerModule } from "@ss/common/ui-hour-picker";
+import { TranslateDirective } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-cmms-fault-detail',
@@ -23,16 +17,9 @@ import { CommonUiHourPickerModule } from "@ss/common/ui-hour-picker";
     imports: [
         CommonModule,
         MaterialModule,
-        CommonUiLangModule,
-        UiPaginationModule,
         ReactiveFormsModule,
-        CommonUiConfirmationDialogModule,
-
-
-        CommonUiAutoCompleteModule,
-        CommonUiDatepickerModule,
         RouterOutlet,
-        CommonUiHourPickerModule
+        TranslateDirective
     ],
 })
 export class LtmTestTypeDetailComponent extends BaseLookupDetailClass {

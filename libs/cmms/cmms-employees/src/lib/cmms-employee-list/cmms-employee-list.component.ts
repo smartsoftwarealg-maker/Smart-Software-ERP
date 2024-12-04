@@ -6,15 +6,17 @@ import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { LookupsService } from '@ss/common/api-lookup';
 import { HttpService, MaterialModule, PaginatorPersistenceService } from '@ss/common/api-common';
-import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
+import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { DefaultReportService } from '@ss/common/ui-default-report-component';
 import { Observable, of } from 'rxjs';
-import { ImageModel } from '@ss/common/ui-image-input';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
-import { UiPaginationModule } from '@ss/common/ui-pagination';
-import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
-import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
+import { ImageInputComponent, ImageModel } from '@ss/common/ui-image-input';
+
+
+import { DatePickerComponent } from '@ss/common/ui-datepicker';
+
 import { CmmsEmployeeService } from '../services/cmms-employee.service';
+import { PaginationComponent } from '@ss/common/ui-pagination';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-cmms-employee-list',
@@ -22,12 +24,13 @@ import { CmmsEmployeeService } from '../services/cmms-employee.service';
     imports: [
         CommonModule,
         MaterialModule,
-        CommonUiLangModule,
-        UiPaginationModule,
-        CommonUiConfirmationDialogModule,
-        CommonUiDatepickerModule,
+        TranslateDirective,
+        TranslatePipe,
+        DatePickerComponent,
         RouterModule,
-        CommonUiAutoCompleteModule,
+
+        PaginationComponent,
+        ImageInputComponent
     ],
     templateUrl: './cmms-employee-list.component.html',
     styleUrls: ['./cmms-employee-list.component.scss'],

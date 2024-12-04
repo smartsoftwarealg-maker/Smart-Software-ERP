@@ -4,15 +4,10 @@ import {
 } from '@ss/logistics/api-transaction';
 import { CommonModule } from '@angular/common';
 import { MaterialModule } from '@ss/common/api-common';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
-import { UiPaginationModule } from '@ss/common/ui-pagination';
 import { ReactiveFormsModule } from '@angular/forms';
-import { CommonUiConfirmationDialogModule } from '@ss/common/ui-confirmation-dialog';
-import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
-import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
+import { DatePickerComponent } from '@ss/common/ui-datepicker';
 
-import { LogisticsUiStockInfoModule } from '@ss/logistics/ui-stock-info';
-import { RouterOutlet } from '@angular/router';
+import { TranslateDirective } from '@ss/common/ui-lang';
 import { ReceptionLinesService } from '../reception-lines.service';
 
 @Component({
@@ -23,15 +18,11 @@ import { ReceptionLinesService } from '../reception-lines.service';
     imports: [
         CommonModule,
         MaterialModule,
-        CommonUiLangModule,
-        UiPaginationModule,
+        TranslateDirective,
         ReactiveFormsModule,
-        CommonUiConfirmationDialogModule,
-        CommonUiDatepickerModule,
-        CommonUiAutoCompleteModule,
+        DatePickerComponent,
 
-        LogisticsUiStockInfoModule,
-        RouterOutlet
+
     ],
 })
 export class ReceptionLinesDetailComponent extends BaseTransactionLinesDetailComponent implements OnInit, OnDestroy {

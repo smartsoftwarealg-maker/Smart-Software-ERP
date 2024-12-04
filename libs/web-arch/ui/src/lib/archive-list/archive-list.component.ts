@@ -6,16 +6,18 @@ import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {ArchiveDocument} from '../archive-document';
 import {KeepOnToolbar, ShellService, SnackBarService, ToolbarButton} from '@ss/common/ui-shell';
 import {LookupsService} from '@ss/common/api-lookup';
-import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
+import {  ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import {ArchiveService} from '../archive.service';
 import {Observable, of} from 'rxjs';
 import { CommonModule } from '@angular/common';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
-import { UiPaginationModule } from '@ss/common/ui-pagination';
-import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
-import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
-import { LogisticsUiStockInfoModule } from '@ss/logistics/ui-stock-info';
+
+
+import { DatePickerComponent } from '@ss/common/ui-datepicker';
+
+import { UiStockInfoComponent } from '@ss/logistics/ui-stock-info';
+import { PaginationComponent } from '@ss/common/ui-pagination';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-archive-list',
@@ -25,14 +27,15 @@ import { LogisticsUiStockInfoModule } from '@ss/logistics/ui-stock-info';
     imports: [
         CommonModule,
         MaterialModule,
-        CommonUiLangModule,
-        UiPaginationModule,
+        TranslateDirective,
+        TranslatePipe,
         ReactiveFormsModule,
-        CommonUiConfirmationDialogModule,
         RouterModule,
-        CommonUiDatepickerModule,
-        CommonUiAutoCompleteModule,
-        LogisticsUiStockInfoModule]
+        DatePickerComponent,
+
+        UiStockInfoComponent,
+        PaginationComponent
+    ]
 })
 export class ArchiveListComponent extends BaseEntityListComponent<ArchiveDocument> implements OnInit {
     rights = {create: true, del: true, edit: true};

@@ -1,12 +1,9 @@
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MaterialModule, LoginService } from '@ss/common/api-common';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
-import { UiPaginationModule } from '@ss/common/ui-pagination';
-import { CommonUiConfirmationDialogModule } from '@ss/common/ui-confirmation-dialog';
-import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
+import { MaterialModule } from '@ss/common/api-common';
+import { DatePickerComponent } from '@ss/common/ui-datepicker';
 import { RouterModule } from '@angular/router';
-import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
+import {  DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
 import { Destination, DestinationService } from '@ss/common/api-lookup';
 import { BaseChildEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { VehicleMission, VehicleState } from '../vehicle-api';
@@ -15,6 +12,7 @@ import { VehicleMissionService } from '../services/vehicle-mission.service';
 import { VehicleStateService } from '../services/vehicle-state.service';
 import { PersonAutocompleteClass, EmployeeService } from '@ss/employee-services/employee-services';
 import { ParkPersonService } from '../services/park-person.service';
+import { TranslateDirective } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-vehicle-mission-detail',
@@ -22,13 +20,11 @@ import { ParkPersonService } from '../services/park-person.service';
     imports: [
         CommonModule,
         MaterialModule,
-        CommonUiLangModule,
-        UiPaginationModule,
-        CommonUiConfirmationDialogModule,
-        CommonUiDatepickerModule,
+        TranslateDirective,
+        DatePickerComponent,
         RouterModule,
-        CommonUiAutoCompleteModule,
-        CommonUiDatepickerModule
+
+        DatePickerComponent
     ],
     templateUrl: './vehicle-mission-detail.component.html',
     styleUrls: ['./vehicle-mission-detail.component.css']

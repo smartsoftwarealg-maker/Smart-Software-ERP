@@ -1,24 +1,24 @@
 import { Component, inject } from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import { ActivatedRoute, Router, RouterModule } from "@angular/router";
-import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
+import {  ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { LoginService, MaterialModule, PaginatorPersistenceService } from '@ss/common/api-common';
 import { CommonModule } from "@angular/common";
-import { CommonUiLangModule } from "@ss/common/ui-lang";
-import { UiPaginationModule } from "@ss/common/ui-pagination";
-import { FormBuilder, FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
-import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
-import { CommonUiAutoCompleteModule } from "@ss/common/ui-auto-complete";
 
-import { LogisticsUiDocImportModule } from "@ss/logistics/ui-doc-import";
-import { LogisticsUiStockInfoModule } from "@ss/logistics/ui-stock-info";
-import { CommonUiColorSelectModule } from "@ss/common/ui-color-select";
+
+import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { DatePickerComponent } from "@ss/common/ui-datepicker";
+
+
+import { UiStockInfoComponent } from "@ss/logistics/ui-stock-info";
+import { ColorSelectComponent } from "@ss/common/ui-color-select";
 import { ColorPickerModule } from "ngx-color-picker";
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { SalesRecord } from '@ss/scheduled-sales/api-scheduled-sales';
 import { DefaultReportService } from '@ss/common/ui-default-report-component';
 import { SalesHistoryService } from './sales-history.service';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-customer-history',
@@ -28,18 +28,14 @@ import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
     imports: [
         CommonModule,
         MaterialModule,
-        CommonUiLangModule,
-        UiPaginationModule,
+        TranslateDirective,
+        TranslatePipe,
         ReactiveFormsModule,
-        CommonUiConfirmationDialogModule,
         RouterModule,
-        CommonUiDatepickerModule,
-        CommonUiAutoCompleteModule,
+        DatePickerComponent,
 
-        LogisticsUiDocImportModule,
-        LogisticsUiStockInfoModule,
-
-        CommonUiColorSelectModule,
+        UiStockInfoComponent,
+        ColorSelectComponent,
         ColorPickerModule
     ]
 })

@@ -18,20 +18,21 @@ import {
 } from '@ss/accounting/accounting-api';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import { ActivatedRoute, Router, RouterModule } from "@angular/router";
-import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
+import {  ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
 import {LookupsService} from '@ss/common/api-lookup';
 import { LoginService, MaterialModule } from "@ss/common/api-common";
 import { map, Observable, of } from "rxjs";
 import {switchMap, tap} from 'rxjs/operators';
 import {Account, AccountAutocompleteModel, AccountService} from '@ss/accounting/api-accounts';
-import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from "@ss/common/ui-auto-complete";
+import {  DefaultAutoCompleteModel } from "@ss/common/ui-auto-complete";
 import {AgentService} from '@ss/logistics/api-agent';
 import {CostCenterService} from '@ss/logistics/api-cost-center';
 import { CommonModule } from "@angular/common";
-import { CommonUiLangModule } from "@ss/common/ui-lang";
-import { UiPaginationModule } from "@ss/common/ui-pagination";
 
-import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
+
+
+import { DatePickerComponent } from "@ss/common/ui-datepicker";
+import { TranslateDirective } from '@ss/common/ui-lang';
 
 
 @Component({
@@ -43,13 +44,12 @@ import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
         CommonModule,
         RouterModule,
         MaterialModule,
-        CommonUiLangModule,
-        UiPaginationModule,
+        TranslateDirective,
         ReactiveFormsModule,
 
-        CommonUiAutoCompleteModule,
-        CommonUiDatepickerModule,
-        CommonUiConfirmationDialogModule,
+
+        DatePickerComponent,
+
 
     ],
 })

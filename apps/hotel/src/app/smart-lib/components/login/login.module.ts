@@ -13,7 +13,6 @@ import { LOGIN_URL } from './login-constants';
 import { DecService } from './dec.service';
 import { LogoutComponent } from './logout.component';
 import { LoadingSpinnerModule } from '../loading-spinner/loading-spinner.module';
-import { HttpClientModule } from '@angular/common/http';
 import { LanguageService } from '@ss/common/api-common';
 
 const routes: Routes = [
@@ -25,7 +24,6 @@ const routes: Routes = [
     CommonModule,
     FormsModule,
     MaterialModule,
-    HttpClientModule,
     ThemeModule,
     LanguageModule,
     RouterModule.forChild(routes),

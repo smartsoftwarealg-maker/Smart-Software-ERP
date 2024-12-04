@@ -3,11 +3,11 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {CartService} from '../cart.service';
 import { HeaderPageComponent } from '../header-page/header-page.component';
 import { NgIf, NgFor, DecimalPipe } from '@angular/common';
-import { TranslateDirective } from '../../../../../common/ui-lang/src/lib/translate.directive';
+import { TranslateDirective } from '@ss/common/ui-lang';
 import { MatButton } from '@angular/material/button';
 import { MatCard } from '@angular/material/card';
-import { ImageInputComponent } from '../../../../../common/ui-image-input/src/lib/image-input.component';
-import { TranslatePipe } from '../../../../../common/ui-lang/src/lib/translate.pipe';
+import { ImageInputComponent } from '@ss/common/ui-image-input';
+import { TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-sales-acknowledgement',

@@ -9,15 +9,11 @@ import { ServiceService } from '@ss/common/api-lookup';
 import { LanguageService, LoginService, MaterialModule } from '@ss/common/api-common';
 import { AgentLookupModel, AgentService } from '@ss/logistics/api-agent';
 import { ShellService } from '@ss/common/ui-shell';
-import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
+import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { Tag } from '../tags/tag';
 import { MatSelectionList } from '@angular/material/list';
 import { CommonModule } from '@angular/common';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
-import { UiPaginationModule } from '@ss/common/ui-pagination';
-import { CommonUiConfirmationDialogModule } from '@ss/common/ui-confirmation-dialog';
-import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
-import { LogisticsUiStockInfoModule } from '@ss/logistics/ui-stock-info';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-archive-detail',
@@ -27,14 +23,11 @@ import { LogisticsUiStockInfoModule } from '@ss/logistics/ui-stock-info';
     imports: [
         CommonModule,
         MaterialModule,
-        CommonUiLangModule,
-        UiPaginationModule,
+        TranslateDirective,
         ReactiveFormsModule,
-        CommonUiConfirmationDialogModule,
         RouterModule,
-        CommonUiDatepickerModule,
-        CommonUiAutoCompleteModule,
-        LogisticsUiStockInfoModule]
+        UiAutoCompleteComponent
+    ]
 })
 export class ArchiveDetailComponent implements OnInit {
     private service = inject( ArchiveService);

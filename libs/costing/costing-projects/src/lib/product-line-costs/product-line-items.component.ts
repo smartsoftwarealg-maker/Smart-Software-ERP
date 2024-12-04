@@ -4,13 +4,14 @@ import { BaseChildEntityListComponent } from '@ss/common/ui-base-entity';
 import { CLineCost } from '@ss/costing/costing-utils';
 import { RouterModule } from '@angular/router';
 import { MaterialModule } from '@ss/common/api-common';
-import { CommonUiConfirmationDialogModule } from '@ss/common/ui-confirmation-dialog';
-import { UiPaginationModule } from '@ss/common/ui-pagination';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
+
+
+
 import { FormBuilder, Validators } from '@angular/forms';
-import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
+import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { CostingItemService } from '@ss/costing/costing-items';
 import { ProductLineCostsService } from '../services/product-line-costs.service';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-product-line-items',
@@ -19,10 +20,9 @@ import { ProductLineCostsService } from '../services/product-line-costs.service'
         CommonModule,
         RouterModule,
         MaterialModule,
-        CommonUiConfirmationDialogModule,
-        UiPaginationModule,
-        CommonUiLangModule,
-        CommonUiAutoCompleteModule
+        TranslateDirective,
+        TranslatePipe,
+        UiAutoCompleteComponent
     ],
     templateUrl: './product-line-items.component.html',
     styleUrl: './product-line-items.component.css',

@@ -2,22 +2,19 @@ import { Component, inject } from '@angular/core';
 import { LTMLineMatter } from '@ltm/ltm-api';
 import { KeepOnToolbar, ShellService, SnackBarService, ToolbarButton } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router, RouterOutlet } from "@angular/router";
-import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
+import {  ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
 import { MaterialModule, PaginatorPersistenceService } from "@ss/common/api-common";
 import {LtmLineMatterService} from '@ltm/ltm-api';
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { DefaultReportService } from '@ss/common/ui-default-report-component';
 import { CommonModule } from "@angular/common";
-import { CommonUiLangModule } from "@ss/common/ui-lang";
-import { UiPaginationModule } from "@ss/common/ui-pagination";
 import { ReactiveFormsModule } from "@angular/forms";
 
-
-import { CommonUiAutoCompleteModule } from "@ss/common/ui-auto-complete";
-import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
-import { CommonUiHourPickerModule } from "@ss/common/ui-hour-picker";
+import { DatePickerComponent } from "@ss/common/ui-datepicker";
 import { LtmMatterDuplicateComponent } from '../ltm-matter-duplicate/ltm-matter-duplicate.component';
 import { MatDialog } from '@angular/material/dialog';
+import { PaginationComponent } from '@ss/common/ui-pagination';
+import { TranslateDirective } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-line-matter-list',
@@ -27,16 +24,9 @@ import { MatDialog } from '@angular/material/dialog';
     imports: [
         CommonModule,
         MaterialModule,
-        CommonUiLangModule,
-        UiPaginationModule,
+        PaginationComponent,
         ReactiveFormsModule,
-        CommonUiConfirmationDialogModule,
-
-
-        CommonUiAutoCompleteModule,
-        CommonUiDatepickerModule,
-        RouterOutlet,
-        CommonUiHourPickerModule
+        TranslateDirective,
     ],
 })
 export class LineMatterListComponent extends BaseEntityListComponent<LTMLineMatter> {

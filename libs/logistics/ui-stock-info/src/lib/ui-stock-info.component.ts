@@ -1,17 +1,24 @@
 import { Component, OnInit } from '@angular/core';
 import {PaginationModel} from '@ss/common/api-common';
-import {Circulation, CirculationService} from '@ss/logistics/api-circulation';
 import {SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
-import {ArticleService} from '@ss/master-data/api-article';
 import {LanguageService} from '@ss/common/api-common';
-import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {StockInfoService} from '../../stock-info.service';
-import {Observable} from 'rxjs';
 import {StockInfo} from './stock-info';
-import { MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from '@angular/material/table';
-import { TranslateDirective } from '../../../../common/ui-lang/src/lib/translate.directive';
-import { PaginationComponent } from '../../../../common/ui-pagination/src/lib/pagination.component';
+import {
+    MatTable,
+    MatColumnDef,
+    MatHeaderCellDef,
+    MatHeaderCell,
+    MatCellDef,
+    MatCell,
+    MatHeaderRowDef,
+    MatHeaderRow,
+    MatRowDef,
+    MatRow
+} from '@angular/material/table';
+import { TranslateDirective } from '@ss/common/ui-lang';
+import { PaginationComponent } from '@ss/common/ui-pagination';
 import { DecimalPipe } from '@angular/common';
 
 @Component({

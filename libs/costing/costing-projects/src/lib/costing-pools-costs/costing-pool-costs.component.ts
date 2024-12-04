@@ -4,13 +4,14 @@ import { BaseChildEntityListComponent } from '@ss/common/ui-base-entity';
 import { CPoolCost } from '@ss/costing/costing-utils';
 import { RouterModule } from '@angular/router';
 import { MaterialModule } from '@ss/common/api-common';
-import { CommonUiConfirmationDialogModule } from '@ss/common/ui-confirmation-dialog';
-import { UiPaginationModule } from '@ss/common/ui-pagination';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
+
+
+
 import { FormBuilder, Validators } from '@angular/forms';
-import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
+import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { CostingItemService } from '@ss/costing/costing-items';
 import { CostingPoolsCostsService } from '../services/costing-pools-costs.service';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-costing-pools-costs',
@@ -19,10 +20,9 @@ import { CostingPoolsCostsService } from '../services/costing-pools-costs.servic
         CommonModule,
         RouterModule,
         MaterialModule,
-        CommonUiConfirmationDialogModule,
-        UiPaginationModule,
-        CommonUiLangModule,
-        CommonUiAutoCompleteModule
+        TranslateDirective,
+        TranslatePipe,
+        UiAutoCompleteComponent
     ],
     templateUrl: './costing-pool-costs.component.html',
     styleUrl: './costing-pool-costs.component.css',

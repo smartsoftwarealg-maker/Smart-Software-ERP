@@ -10,12 +10,15 @@ import {Accounting, Debt, Payment} from "@ss/logistics/api-common";
 import {ActivatedRoute} from "@angular/router";
 import { CommonModule } from "@angular/common";
 import { DragDropModule } from "@angular/cdk/drag-drop";
-import { CommonUiLangModule } from "@ss/common/ui-lang";
-import { UiPaginationModule } from "@ss/common/ui-pagination";
-import { CommonUiAutoCompleteModule } from "@ss/common/ui-auto-complete";
-import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
-import { CommonUiConfirmationDialogModule } from '@ss/common/ui-confirmation-dialog';
+
+
+
+import { DatePickerComponent } from "@ss/common/ui-datepicker";
+
 import {PaginationModel} from '@ss/common/api-common';
+import { PaginationComponent } from '@ss/common/ui-pagination';
+import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 interface FlatPaymentNode {
     expandable: boolean;
@@ -43,13 +46,10 @@ interface PaymentTree {
     imports: [CommonModule,
         DragDropModule,
         MaterialModule,
-        CommonUiLangModule,
-        UiPaginationModule,
-        CommonUiAutoCompleteModule,
-        CommonUiDatepickerModule,
-        ReactiveFormsModule,
-        CommonUiConfirmationDialogModule
-    ],
+        TranslateDirective,
+        DatePickerComponent,
+        ReactiveFormsModule, PaginationComponent, UiAutoCompleteComponent
+    ]
 })
 export class PaymentCompensationComponent implements OnInit {
     private shellSrv  = inject( ShellService);

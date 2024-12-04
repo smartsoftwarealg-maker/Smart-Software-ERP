@@ -1,21 +1,19 @@
 import {Component} from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
-import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
+import {  ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { MaterialModule, PaginatorPersistenceService } from '@ss/common/api-common';
-import {InvoiceCancellationService} from '@ss/sales/api-invoice-cancellation';
-import {DefaultReportService} from '@ss/common/ui-default-report-component';
+import { InvoiceCancellationService } from '@ss/sales/api-invoice-cancellation';
+import { DefaultReportService } from '@ss/common/ui-default-report-component';
 import { Transaction } from '@ss/logistics/api-transaction';
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { CommonModule } from '@angular/common';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
-import { UiPaginationModule } from '@ss/common/ui-pagination';
 import { ReactiveFormsModule } from '@angular/forms';
-import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
-import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
+import { DatePickerComponent } from '@ss/common/ui-datepicker';
 
-import { LogisticsUiDocImportModule } from '@ss/logistics/ui-doc-import';
 import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
+import { PaginationComponent } from '@ss/common/ui-pagination';
+import { TranslateDirective } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-invoice-cancellation-list',
@@ -25,16 +23,13 @@ import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
     imports: [
         CommonModule,
         MaterialModule,
-        CommonUiLangModule,
-        UiPaginationModule,
+        TranslateDirective,
         ReactiveFormsModule,
-        CommonUiConfirmationDialogModule,
         RouterModule,
-        CommonUiDatepickerModule,
-        CommonUiAutoCompleteModule,
+        DatePickerComponent,
 
-        LogisticsUiDocImportModule,
-        DocInfoComponent
+        DocInfoComponent,
+        PaginationComponent
     ]
 })
 export class InvoiceCancellationListComponent extends BaseEntityListComponent<Transaction> {

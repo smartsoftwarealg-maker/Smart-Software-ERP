@@ -1,18 +1,20 @@
 import { Component, effect, inject, input, OnInit } from '@angular/core';
 import { UnidentifiedInventory } from '../assets-api';
 import { RouterModule } from '@angular/router';
-import { CommonUiConfirmationDialogModule } from '@ss/common/ui-confirmation-dialog';
+
 import { MaterialModule, PaginationModel } from '@ss/common/api-common';
 import { CommonModule } from '@angular/common';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
 
-import { UiPaginationModule } from '@ss/common/ui-pagination';
-import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
-import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
-import { CustomAttributesModule } from '@ss/custom-attributes';
+
+
+import {  DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
+import { DatePickerComponent } from '@ss/common/ui-datepicker';
+
 
 import { QRCodeModule } from 'angularx-qrcode';
 import { AssetUnidentifiedInventoryService } from '@ss/assets-component';
+import { PaginationComponent } from '@ss/common/ui-pagination';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-asset-unidentified-child-inventory-list',
@@ -22,16 +24,12 @@ import { AssetUnidentifiedInventoryService } from '@ss/assets-component';
     imports: [
         CommonModule,
         MaterialModule,
-        CommonUiLangModule,
+        TranslateDirective,
 
-        UiPaginationModule,
-        CommonUiConfirmationDialogModule,
-        CommonUiAutoCompleteModule,
-        CommonUiDatepickerModule,
         RouterModule,
-        CustomAttributesModule,
 
-        QRCodeModule
+        QRCodeModule,
+        PaginationComponent
     ]
 })
 export class AssetUnidentifiedChildInventoryListComponent  implements OnInit {
@@ -46,7 +44,12 @@ export class AssetUnidentifiedChildInventoryListComponent  implements OnInit {
         'creationDate',
         'buildingDescription',
         'classDescription',
-        'count'
+        'count',
+        'serialNo',
+        'classDescription',
+        'officeDescription',
+        'beneficiaryDescription',
+        'memo'
     ];
     selected = 0;
     data: UnidentifiedInventory[] = [];

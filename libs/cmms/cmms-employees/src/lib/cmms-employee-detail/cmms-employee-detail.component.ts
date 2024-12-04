@@ -11,7 +11,7 @@ import {
 } from '@ss/common/api-lookup';
 import { AppArchiveService, EMPLOYEE_ARCHIVES } from '@ss/common/app-archive';
 import { ImageInputComponent, ImageModel } from '@ss/common/ui-image-input';
-import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
+import {  DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
 import {
     ReactiveFormsModule,
     UntypedFormBuilder,
@@ -25,8 +25,8 @@ import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { HttpService, MaterialModule } from '@ss/common/api-common';
 import { FixedElementsEntryService } from '@ss/remuneration/elements-entry';
 import { Observable, of, switchMap } from 'rxjs';
-import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
+import { DatePickerComponent } from '@ss/common/ui-datepicker';
+
 import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatExpansionModule } from '@angular/material/expansion';
@@ -45,9 +45,9 @@ import { CmmsEmployeeService } from '../services/cmms-employee.service';
     standalone: true,
     imports: [
         CommonModule,
-        CommonUiAutoCompleteModule,
-        CommonUiDatepickerModule,
-        CommonUiLangModule,
+
+        DatePickerComponent,
+
         MatButtonModule,
         MatCheckboxModule,
         MatExpansionModule,

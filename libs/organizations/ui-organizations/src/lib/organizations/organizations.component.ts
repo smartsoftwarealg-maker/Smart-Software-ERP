@@ -16,7 +16,7 @@ import { Level } from './common';
 import { Employee } from '@ss/employee-services/employee-services';
 import { NgIf } from '@angular/common';
 import { MatIconButton } from '@angular/material/button';
-import { ImageInputComponent } from '../../../../../common/ui-image-input/src/lib/image-input.component';
+import { ImageInputComponent } from '@ss/common/ui-image-input';
 
 interface OrgTreeNode extends TreeNode {
     id: number;

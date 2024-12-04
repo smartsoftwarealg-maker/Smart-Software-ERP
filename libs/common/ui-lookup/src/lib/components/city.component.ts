@@ -7,17 +7,17 @@ import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import { UntypedFormBuilder, UntypedFormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
-import {PaginatorPersistenceService} from '@ss/common/api-common';
+import { MaterialModule, PaginatorPersistenceService } from '@ss/common/api-common';
 import { DairaService } from '@ss/common/api-lookup';
 import { MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from '@angular/material/table';
-import { TranslateDirective } from '../../../../ui-lang/src/lib/translate.directive';
-import { PaginationComponent } from '../../../../ui-pagination/src/lib/pagination.component';
+import { TranslateDirective } from '@ss/common/ui-lang';
+import { PaginationComponent } from '@ss/common/ui-pagination';
 import { MatCard } from '@angular/material/card';
 import { NgIf } from '@angular/common';
 import { MatFormField, MatLabel, MatError } from '@angular/material/form-field';
 import { MatInput } from '@angular/material/input';
 import { Dir } from '@angular/cdk/bidi';
-import { UiAutoCompleteComponent } from '../../../../ui-auto-complete/src/lib/auto-complete.component';
+import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 
 
 @Component({
@@ -51,7 +51,7 @@ export class CityListComponent extends BaseEntityListComponent<City> {
     templateUrl: '../city/city-detail.component.html',
     styleUrls: ['../base-templates/detail-template.scss'],
     standalone: true,
-    imports: [MatCard, NgIf, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, MatError, Dir, UiAutoCompleteComponent]
+    imports: [MaterialModule, MatCard, NgIf, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, MatError, Dir, UiAutoCompleteComponent]
 })
 export class CityDetailComponent extends BaseEntityDetailComponent<City> {
     private wilayaSrv  = inject(WilayaService);

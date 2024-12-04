@@ -25,16 +25,16 @@ import {
     OfficeAutoComplete
 } from '@ss/assets-component';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
-import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
+import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { FormsModule, ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { map, switchMap, tap } from 'rxjs/operators';
 import { MatExpansionModule, MatExpansionPanel } from '@angular/material/expansion';
 import { Observable } from 'rxjs';
 import { CmmsAssetService } from '../services/cmms-asset.service';
-import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
-import { CustomAttributesModule } from '@ss/custom-attributes';
+import { DatePickerComponent } from '@ss/common/ui-datepicker';
+
+
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -47,11 +47,12 @@ import { CMMSFunctionService } from '@ss/cmms/lookups';
 import { BaseEntityService } from '@ss/common/api-base-entity';
 import { AssetPmService } from '../services/asset-pm.service';
 import { CMMSAssetTriggerService } from '@ss/cmms/asset-triggers';
+import { TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-cmms-asset-detail',
     standalone: true,
-    imports: [CommonModule,  CommonUiAutoCompleteModule, CommonUiDatepickerModule, CommonUiLangModule, CustomAttributesModule, FormsModule, MatButtonModule, MatExpansionModule, MatFormFieldModule, MatInputModule, MatOptionModule, MatSelectModule, MatTableModule, MatTooltipModule, QRCodeModule, ReactiveFormsModule, RouterOutlet, MaterialModule],
+    imports: [CommonModule, DatePickerComponent, FormsModule, MatButtonModule, MatExpansionModule, MatFormFieldModule, MatInputModule, MatOptionModule, MatSelectModule, MatTableModule, MatTooltipModule, QRCodeModule, ReactiveFormsModule, RouterOutlet, MaterialModule, UiAutoCompleteComponent, TranslatePipe],
     templateUrl: './cmms-asset-detail.component.html',
     styleUrls: ['./cmms-asset-detail.component.scss'],
 })

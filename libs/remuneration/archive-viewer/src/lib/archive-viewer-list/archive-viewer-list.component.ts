@@ -13,7 +13,7 @@ import {Formula, PayrollFormulasService} from '@ss/remuneration/payroll-formulas
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {SelectionModel} from '@angular/cdk/collections';
 import { MatListOption, MatSelectionList } from '@angular/material/list';
-import { TranslateDirective } from '../../../../../common/ui-lang/src/lib/translate.directive';
+import { TranslateDirective } from '@ss/common/ui-lang';
 import { MatFormField, MatLabel } from '@angular/material/form-field';
 import { MatInput } from '@angular/material/input';
 import { MatCheckbox } from '@angular/material/checkbox';
@@ -22,7 +22,7 @@ import { MatTabGroup, MatTab, MatTabLabel } from '@angular/material/tabs';
 import { NgFor, NgStyle, DecimalPipe } from '@angular/common';
 import { MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from '@angular/material/table';
 import { PaginationComponent } from '../../../../../common/ui-pagination/src/lib/pagination.component';
-import { TranslatePipe } from '../../../../../common/ui-lang/src/lib/translate.pipe';
+import { TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-archive-viewer',

@@ -29,6 +29,7 @@ mat-card {
     padding: 1em 1em 0;
 }
 
+.mat-column-assignmentNo,
 .mat-column-locationDescription,
 .mat-column-buildingDescription,
 .mat-column-officeDescription,
@@ -58,7 +59,7 @@ mat-card {
     font-size: 1.5em;
 }
 .mat-column-description {
-    flex: 3 1 220px;
+    flex: 3 1 200px;
     padding-left: 4px;
 }
 

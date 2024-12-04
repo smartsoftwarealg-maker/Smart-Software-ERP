@@ -5,12 +5,13 @@ import { SnackBarService } from '@ss/common/ui-shell';
 import { ESender, LanguageService, LoginService } from '@ss/common/api-common';
 import { Router } from '@angular/router';
 import { CommonModule } from "@angular/common";
-import { CommonUiLangModule } from "@ss/common/ui-lang";
+
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from "@angular/material/input";
 import { MatButtonModule } from "@angular/material/button";
 import { MatProgressBarModule } from "@angular/material/progress-bar";
 import { MatCardModule } from "@angular/material/card";
+import { TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-code-confirmation',
@@ -18,14 +19,14 @@ import { MatCardModule } from "@angular/material/card";
     styleUrls: ['./auth2-f-a-confirmation.component.scss'],
     standalone: true,
     imports: [CommonModule,
-        CommonUiLangModule,
+
         FormsModule,
         MatFormFieldModule,
         MatInputModule,
         ReactiveFormsModule,
         MatButtonModule,
         MatProgressBarModule,
-        MatCardModule]
+        MatCardModule, TranslatePipe]
 })
 export class Auth2FAConfirmationComponent {
     private THIRTY_MINUTES = 30 * 30;

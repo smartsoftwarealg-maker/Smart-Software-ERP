@@ -28,11 +28,11 @@ import {
     CUSTOMER_URL,
     SUPPLIER_URL, TRANSPORTER_URL
 } from '@ss/logistics/api-agent';
-import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
+import {  ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import {MatExpansionPanel} from '@angular/material/expansion';
 import { FormValidators, IsParamService, LoginService, MaterialModule } from '@ss/common/api-common';
 import {BankService} from '@ss/administration/api-bank';
-import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel, Id } from '@ss/common/ui-auto-complete';
+import { DefaultAutoCompleteModel, Id, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { AGENT_ARCHIVES, AppArchiveMainComponent, AppArchiveService } from '@ss/common/app-archive';
 import { MatSelectionListChange } from '@angular/material/list';
 import { CenterService } from '@ss/administration/api-center';
@@ -40,10 +40,12 @@ import { MatDialog } from '@angular/material/dialog';
 import { AgentImportComponent } from '../agent-import/agent-import.component';
 import { AgentPriceService } from '@ss/logistics/api-agent-price';
 import { CommonModule } from '@angular/common';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
-import { UiPaginationModule } from '@ss/common/ui-pagination';
-import { CustomAttributesModule } from '@ss/custom-attributes';
+
+
+
 import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
+import { ChildAttributesComponent } from '@ss/custom-attributes';
 
 @Component({
     selector: 'ss-agent-detail',
@@ -53,16 +55,13 @@ import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
     imports: [
         CommonModule,
         MaterialModule,
-        CommonUiLangModule,
-        UiPaginationModule,
+        TranslateDirective,
         ReactiveFormsModule,
-        CommonUiConfirmationDialogModule,
 
 
-        CommonUiAutoCompleteModule,
-        CustomAttributesModule,
-        DocInfoComponent,
-        AppArchiveMainComponent
+        AppArchiveMainComponent,
+        UiAutoCompleteComponent,
+        ChildAttributesComponent
     ]
 
 })

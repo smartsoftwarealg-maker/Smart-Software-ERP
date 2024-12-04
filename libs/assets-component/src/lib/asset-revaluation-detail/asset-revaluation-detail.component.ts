@@ -1,21 +1,22 @@
 import {Component, inject, OnInit} from '@angular/core';
 import {BaseChildEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {AssetRevaluation} from '../assets-api';
-import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
+import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import {UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
 import {AssetRevaluationService} from '../services/asset-revaluation.service';
 import {AssetRevaluationLookupService} from '../services/asset-revaluation-lookup.service';
 import { CommonModule } from '@angular/common';
 import { MaterialModule } from '@ss/common/api-common';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
 
-import { UiPaginationModule } from '@ss/common/ui-pagination';
-import { CommonUiConfirmationDialogModule } from '@ss/common/ui-confirmation-dialog';
-import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
+
+
+
+import { DatePickerComponent } from '@ss/common/ui-datepicker';
 import { RouterModule } from '@angular/router';
-import { CustomAttributesModule } from '@ss/custom-attributes';
+
 
 import { QRCodeModule } from 'angularx-qrcode';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-asset-revaluation-detail',
@@ -25,16 +26,11 @@ import { QRCodeModule } from 'angularx-qrcode';
     imports: [
         CommonModule,
         MaterialModule,
-        CommonUiLangModule,
-
-        UiPaginationModule,
-        CommonUiConfirmationDialogModule,
-        CommonUiAutoCompleteModule,
-        CommonUiDatepickerModule,
+        TranslateDirective,
         RouterModule,
-        CustomAttributesModule,
 
-        QRCodeModule
+        QRCodeModule,
+        UiAutoCompleteComponent
     ]
 })
 export class AssetRevaluationDetailComponent extends BaseChildEntityDetailComponent<AssetRevaluation> implements OnInit {

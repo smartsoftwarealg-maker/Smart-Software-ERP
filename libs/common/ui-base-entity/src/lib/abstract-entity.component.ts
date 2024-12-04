@@ -46,7 +46,6 @@ export abstract class AbstractEntityComponent<T extends { id: number }> implemen
                     }
                 }),
                 switchMap(() => this.uploadAttachments(val.id)));
-
         obs.subscribe({
             next: () => {
                 this.shellSrv.setLoading(false);
@@ -58,6 +57,7 @@ export abstract class AbstractEntityComponent<T extends { id: number }> implemen
                 this.snackBarSrv.showFailureMessage();
                 this.shellSrv.setLoading(false);
                 this.resetForm(val);
+                debugger;
                 throw err;
             }
         });

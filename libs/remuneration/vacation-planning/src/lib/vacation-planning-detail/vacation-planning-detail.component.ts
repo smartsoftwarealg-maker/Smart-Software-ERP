@@ -10,16 +10,17 @@ import {VacationPlanningService} from '@ss/remuneration/vacation-planning';
 import { MatCard } from '@angular/material/card';
 import { NgIf } from '@angular/common';
 import { MatFormField, MatLabel } from '@angular/material/form-field';
-import { TranslateDirective } from '../../../../../common/ui-lang/src/lib/translate.directive';
+import { TranslateDirective } from '@ss/common/ui-lang';
 import { MatInput } from '@angular/material/input';
 import { VacationPlanningDetailListComponent } from '../vacation-planning-detail-list/vacation-planning-detail-list.component';
+import { MaterialModule } from '@ss/common/api-common';
 
 @Component({
     selector: 'ss-vacation-planning-detail',
     templateUrl: './vacation-planning-detail.component.html',
     styleUrls: ['./vacation-planning-detail.component.scss'],
     standalone: true,
-    imports: [MatCard, NgIf, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, VacationPlanningDetailListComponent]
+    imports: [MaterialModule, MatCard, NgIf, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, VacationPlanningDetailListComponent]
 })
 export class VacationPlanningDetailComponent extends BaseEntityDetailComponent<VacationPlanning> implements OnInit {
 

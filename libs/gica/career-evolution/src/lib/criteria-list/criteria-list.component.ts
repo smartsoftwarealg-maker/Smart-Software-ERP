@@ -7,7 +7,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { DefaultReportService } from '@ss/common/ui-default-report-component';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { MaterialModule, PaginatorPersistenceService } from '@ss/common/api-common';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
+
 import {
     MatCell,
     MatCellDef,
@@ -21,21 +21,21 @@ import {
     MatTable
 } from '@angular/material/table';
 import { MatSort, MatSortHeader } from '@angular/material/sort';
-import { UiPaginationModule } from '@ss/common/ui-pagination';
+
 import { FormControl } from '@angular/forms';
 import { MatFormField } from '@angular/material/form-field';
 import { CommonUiLookupModule } from '@ss/common/ui-lookup';
-import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
+import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { CriterionService } from '../services/criterion.service';
 import { Category, CategoryService } from '@ss/common/api-lookup';
+import { PaginationComponent } from '@ss/common/ui-pagination';
 
 @Component({
     selector: 'ss-gica-criteria-list',
     standalone: true,
-    imports: [CommonModule,
-        CommonUiLangModule,
+    imports: [
+        CommonModule,
         MaterialModule,
-        CommonUiAutoCompleteModule,
         MatCell,
         MatCellDef,
         MatColumnDef,
@@ -47,10 +47,10 @@ import { Category, CategoryService } from '@ss/common/api-lookup';
         MatSort,
         MatSortHeader,
         MatTable,
-        UiPaginationModule,
+
         MatHeaderCellDef,
         MatFormField,
-        CommonUiLookupModule],
+        CommonUiLookupModule, PaginationComponent, UiAutoCompleteComponent],
     templateUrl: './criteria-list.component.html',
     styleUrl: './criteria-list.component.css',
 })

@@ -4,24 +4,20 @@ import {
     AccPoliciesService,
     ACCPolicy,
     ACCTransaction, AccTransactionLineService,
-    AccTransactionService,
-    SCALE
+    AccTransactionService
 } from '@ss/accounting/accounting-api';
 import { ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup, Validators } from "@angular/forms";
 import {SnackBarService} from '@ss/common/ui-shell';
 import { ActivatedRoute, Router, RouterEvent, RouterModule } from "@angular/router";
-import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
+import { ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
 import {Lookup, LookupsService} from '@ss/common/api-lookup';
 import { LoginService, MaterialModule } from "@ss/common/api-common";
 import { filter, Observable, of, Subscription } from 'rxjs';
 import {switchMap, tap} from 'rxjs/operators';
-import { CommonUiDatepickerModule, maxDate, minDate } from "@ss/common/ui-datepicker";
+import { DatePickerComponent, maxDate, minDate } from "@ss/common/ui-datepicker";
 import { ACC_TRANSACTION_ARCHIVES } from "@ss/common/app-archive";
 import { CommonModule } from "@angular/common";
-import { CommonUiLangModule } from "@ss/common/ui-lang";
-import { UiPaginationModule } from "@ss/common/ui-pagination";
 
-import { CommonUiAutoCompleteModule } from "@ss/common/ui-auto-complete";
 
 @Component({
     selector: 'ss-transaction-detail',
@@ -32,12 +28,8 @@ import { CommonUiAutoCompleteModule } from "@ss/common/ui-auto-complete";
         CommonModule,
         RouterModule,
         MaterialModule,
-        CommonUiLangModule,
-        UiPaginationModule,
         ReactiveFormsModule,
-        CommonUiAutoCompleteModule,
-        CommonUiDatepickerModule,
-        CommonUiConfirmationDialogModule
+        DatePickerComponent,
     ],
 })
 export class TransactionDetailComponent implements OnInit, OnDestroy {

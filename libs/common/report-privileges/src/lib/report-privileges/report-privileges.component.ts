@@ -4,10 +4,10 @@ import { RPrivilege } from './report-privilege.api';
 import { KeepOnToolbar, ShellService, SnackBarService, ToolbarButton } from '@ss/common/ui-shell';
 import { ActivatedRoute } from '@angular/router';
 import { ReportPrivilegeService } from './report-privilege.service';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
+
 import { MatSortModule, Sort } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
-import { UiPaginationModule } from '@ss/common/ui-pagination';
+
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { ReportNode, ReportTreeService } from '@ss/common/api-reports';
 import { map, Observable, switchMap, zip } from 'rxjs';
@@ -15,7 +15,7 @@ import { map, Observable, switchMap, zip } from 'rxjs';
 @Component({
     selector: 'lib-common-report-privileges',
     standalone: true,
-    imports: [CommonModule, CommonUiLangModule, MatSortModule, MatTableModule, UiPaginationModule, MatCheckboxModule],
+    imports: [CommonModule,  MatSortModule, MatTableModule,  MatCheckboxModule],
     templateUrl: './report-privileges.component.html',
     styleUrls: ['./report-privileges.component.css'],
 })

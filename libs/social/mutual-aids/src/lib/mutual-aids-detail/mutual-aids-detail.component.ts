@@ -14,19 +14,20 @@ import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute } from '@angular/router';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { EmployeeService, PersonAutocompleteClass } from '@ss/employee-services/employee-services';
-import { LoginService } from '@ss/common/api-common';
-import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
-import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
+import { LoginService, MaterialModule } from '@ss/common/api-common';
+import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
+import { DatePickerComponent } from '@ss/common/ui-datepicker';
+
 import { MatCard, MatCardContent } from '@angular/material/card';
 import { MatError, MatFormField, MatLabel } from '@angular/material/form-field';
 import { MatInput } from '@angular/material/input';
 import { MutualAidService } from '../../../../social-api/src/lib/services/mutual-aid.service';
+import { TranslateDirective } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-mutual-aids-detail',
     standalone: true,
-    imports: [CommonModule, CommonUiAutoCompleteModule, CommonUiDatepickerModule, CommonUiLangModule, MatCard, MatCardContent, MatError, MatFormField, MatLabel, ReactiveFormsModule, MatInput],
+    imports: [CommonModule, TranslateDirective, MaterialModule, DatePickerComponent, MatCard, MatCardContent, MatError, MatFormField, MatLabel, ReactiveFormsModule, MatInput, UiAutoCompleteComponent],
     templateUrl: './mutual-aids-detail.component.html',
     styleUrl: './mutual-aids-detail.component.scss'
 })

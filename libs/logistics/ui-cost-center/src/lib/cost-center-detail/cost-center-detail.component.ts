@@ -4,14 +4,15 @@ import {ActivatedRoute} from '@angular/router';
 import { ReactiveFormsModule, UntypedFormBuilder, Validators } from '@angular/forms';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {CCGroup, LookupsService} from '@ss/common/api-lookup';
-import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
+import {  ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import {CostCenter, CostCenterService} from '@ss/logistics/api-cost-center';
 import {Observable} from 'rxjs';
 import {tap} from 'rxjs/operators';
 import { CommonModule } from '@angular/common';
 import { MaterialModule } from '@ss/common/api-common';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
-import { UiPaginationModule } from '@ss/common/ui-pagination';
+import { TranslateDirective } from '@ss/common/ui-lang';
+
+
 
 
 @Component({
@@ -22,10 +23,8 @@ import { UiPaginationModule } from '@ss/common/ui-pagination';
     imports: [
         CommonModule,
         MaterialModule,
-        CommonUiLangModule,
-        UiPaginationModule,
+        TranslateDirective,
         ReactiveFormsModule,
-        CommonUiConfirmationDialogModule
     ],
 })
 export class CostCenterDetailComponent extends BaseEntityDetailComponent<CostCenter> {

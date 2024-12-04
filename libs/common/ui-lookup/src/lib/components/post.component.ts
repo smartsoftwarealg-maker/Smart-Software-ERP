@@ -6,19 +6,19 @@ import {BaseEntityDetailComponent, BaseEntityListComponent} from '@ss/common/ui-
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import { UntypedFormBuilder, UntypedFormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
-import {PaginatorPersistenceService} from '@ss/common/api-common';
+import { MaterialModule, PaginatorPersistenceService } from '@ss/common/api-common';
 import { GridService } from '@ss/payroll/salary-grid';
 import { DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
 import { MatCard } from '@angular/material/card';
 import { NgIf } from '@angular/common';
 import { MatFormField, MatLabel } from '@angular/material/form-field';
-import { TranslateDirective } from '../../../../ui-lang/src/lib/translate.directive';
+import { TranslateDirective } from '@ss/common/ui-lang';
 import { MatInput } from '@angular/material/input';
-import { UiAutoCompleteComponent } from '../../../../ui-auto-complete/src/lib/auto-complete.component';
+import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { MatCheckbox } from '@angular/material/checkbox';
 import { MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from '@angular/material/table';
 import { MatSort, MatSortHeader } from '@angular/material/sort';
-import { PaginationComponent } from '../../../../ui-pagination/src/lib/pagination.component';
+import { PaginationComponent } from '@ss/common/ui-pagination';
 
 
 @Component({
@@ -112,7 +112,7 @@ export class PostListComponent extends BaseEntityListComponent<Post> {
     </mat-card>`,
     styleUrls: ['../base-templates/detail-template.scss'],
     standalone: true,
-    imports: [MatCard, NgIf, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, UiAutoCompleteComponent, MatCheckbox]
+    imports: [MaterialModule, MatCard, NgIf, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, UiAutoCompleteComponent, MatCheckbox]
 })
 export class PostDetailComponent extends BaseEntityDetailComponent<Post> {
     private gridService = inject(GridService);

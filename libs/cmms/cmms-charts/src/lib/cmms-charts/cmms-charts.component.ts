@@ -13,13 +13,14 @@ import {
     SimpleBarsChartConfig, Pmp, Mttr, Mtts
 } from '../chart-api';
 import {forkJoin, switchMap, tap} from 'rxjs';
-import {CommonUiLangModule} from '@ss/common/ui-lang';
+
 import {ChartConfiguration} from 'chart.js/dist/types';
+import { TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-cmms-charts',
     standalone: true,
-    imports: [CommonModule, MaterialModule, CommonUiLangModule],
+    imports: [CommonModule, MaterialModule, TranslatePipe],
     templateUrl: './cmms-charts.component.html',
     styleUrls: ['./cmms-charts.component.scss']
 })

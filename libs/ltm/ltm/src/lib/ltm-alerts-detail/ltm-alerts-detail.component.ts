@@ -1,23 +1,19 @@
 import { Component, inject } from '@angular/core';
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
-import { ActivatedRoute, RouterOutlet } from "@angular/router";
-import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
-import { MaterialModule, UserService } from '@ss/common/api-common';
+import { ActivatedRoute } from "@angular/router";
+import {  ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
+import { MaterialModule } from '@ss/common/api-common';
 import { CommonModule } from "@angular/common";
-import { CommonUiLangModule } from "@ss/common/ui-lang";
-import { UiPaginationModule } from "@ss/common/ui-pagination";
 import { ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
-
-
-import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel, UserLookup } from '@ss/common/ui-auto-complete';
-import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
-import { CommonUiHourPickerModule } from '@ss/common/ui-hour-picker';
+import { DefaultAutoCompleteModel, UiAutoCompleteComponent, UserLookup } from '@ss/common/ui-auto-complete';
 import { LTMAbnormalTest } from '@ltm/ltm-api';
 import { LtmAbnormalTestService } from '@ltm/ltm-api';
 import { LtmCorrectionActionService } from '@ltm/ltm-api';
 import { UserListService } from '@ss/common/api-users';
 import { LtmNormService } from '@ltm/ltm-api';
+import { TranslateDirective } from '@ss/common/ui-lang';
+import { DatePickerComponent } from '@ss/common/ui-datepicker';
 
 @Component({
     selector: 'ss-ltm-alerts-detail',
@@ -27,13 +23,10 @@ import { LtmNormService } from '@ltm/ltm-api';
     imports: [
         CommonModule,
         MaterialModule,
-        CommonUiLangModule,
-        UiPaginationModule,
+        TranslateDirective,
         ReactiveFormsModule,
-        CommonUiConfirmationDialogModule,
-        CommonUiAutoCompleteModule,
-        CommonUiDatepickerModule,
-        CommonUiHourPickerModule
+        DatePickerComponent,
+        UiAutoCompleteComponent
     ]
 })
 export class LtmAlertsDetailComponent extends BaseEntityDetailComponent<LTMAbnormalTest> {

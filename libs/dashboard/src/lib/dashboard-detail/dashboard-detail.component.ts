@@ -5,7 +5,7 @@ import {DashboardService} from '../services/dashboard.service';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import { FormControl, ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
-import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
+import {  ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import {Lookup, LookupsService} from '@ss/common/api-lookup';
 import {
     APP_ASSET,
@@ -18,14 +18,15 @@ import {
 } from '@ss/common/api-common';
 import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
 import { CommonModule } from '@angular/common';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
-import { UiPaginationModule } from '@ss/common/ui-pagination';
-import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
-import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
+
+
+import { DatePickerComponent } from '@ss/common/ui-datepicker';
+import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { CenterService } from '@ss/administration/api-center';
 import { DashboardCenterService } from '../services/dashboard-center.service';
 import { MatSelectionListChange } from '@angular/material/list';
 import { Observable, tap } from 'rxjs';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-dashboard-detail',
@@ -35,12 +36,11 @@ import { Observable, tap } from 'rxjs';
     imports: [
         CommonModule,
         MaterialModule,
-        CommonUiLangModule,
-        UiPaginationModule,
+        TranslateDirective,
+        TranslatePipe,
         ReactiveFormsModule,
-        CommonUiConfirmationDialogModule,
-        CommonUiDatepickerModule,
-        CommonUiAutoCompleteModule
+
+        UiAutoCompleteComponent
     ],
 })
 export class DashboardDetailComponent extends BaseEntityDetailComponent<Dashboard> implements OnInit {

@@ -1,24 +1,21 @@
-import { Component, inject } from '@angular/core';
+import { Component } from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import { ActivatedRoute, Router, RouterOutlet } from '@angular/router';
 import { UntypedFormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import {Lookup, LookupsService} from '@ss/common/api-lookup';
+import {Lookup} from '@ss/common/api-lookup';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {InventoryExitService} from '@ss/stock/api-inventory-exit';
-import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
-import {LanguageService, LoginService, User} from '@ss/common/api-common';
-import {UserListService} from '@ss/common/api-users';
-import { BaseTransactionDetailComponent, TransactionLinesService } from "@ss/logistics/api-transaction";
+import { LoginService, MaterialModule } from '@ss/common/api-common';
+import { BaseTransactionDetailComponent } from "@ss/logistics/api-transaction";
 import {MatDialog} from '@angular/material/dialog';
-import { InventoryLinesService } from "@ss/stock/api-inventory-lines";
 import { InventoryExitLinesService } from "@ss/stock/api-inventory-exit-lines";
 import { MatCard, MatCardContent } from '@angular/material/card';
 import { NgIf } from '@angular/common';
 import { MatFormField, MatLabel, MatError } from '@angular/material/form-field';
-import { TranslateDirective } from '../../../../../common/ui-lang/src/lib/translate.directive';
+import { TranslateDirective } from '@ss/common/ui-lang';
 import { MatInput } from '@angular/material/input';
-import { DatePickerComponent } from '../../../../../common/ui-datepicker/src/lib/date-picker.component';
-import { UiAutoCompleteComponent } from '../../../../../common/ui-auto-complete/src/lib/auto-complete.component';
+import { DatePickerComponent } from '@ss/common/ui-datepicker';
+import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { CdkTextareaAutosize } from '@angular/cdk/text-field';
 
 @Component({
@@ -26,7 +23,7 @@ import { CdkTextareaAutosize } from '@angular/cdk/text-field';
     styleUrls: ['../../../../../common/assets/src/assets/transac-detail.scss'],
     templateUrl: './inventory-exit-detail.component.html',
     standalone: true,
-    imports: [MatCard, MatCardContent, NgIf, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, DatePickerComponent, UiAutoCompleteComponent, MatError, CdkTextareaAutosize, RouterOutlet]
+    imports: [MaterialModule, MatCard, MatCardContent, NgIf, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, DatePickerComponent, UiAutoCompleteComponent, MatError, CdkTextareaAutosize, RouterOutlet]
 })
 export class InventoryExitDetailComponent extends BaseTransactionDetailComponent {
 

@@ -3,11 +3,11 @@ import { CommonModule } from '@angular/common';
 import { BaseChildEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { CProductLine } from '@ss/costing/costing-utils';
 import { FormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
-import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
+import {  DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
 import { RouterModule } from '@angular/router';
 import { MaterialModule } from '@ss/common/api-common';
-import { CommonUiConfirmationDialogModule } from '@ss/common/ui-confirmation-dialog';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
+
+
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { CProductLineService } from '../services/product-line.service';
 import { ArticleService } from '@ss/master-data/api-article';
@@ -17,6 +17,7 @@ import {
 } from '../product-line-keys/product-line-keys.component';
 import { ProductLineCostsService } from '../services/product-line-costs.service';
 import { CProductLineCostComponent } from '../product-line-costs/product-line-items.component';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-product-line-detail',
@@ -25,10 +26,10 @@ import { CProductLineCostComponent } from '../product-line-costs/product-line-it
         CommonModule,
         RouterModule,
         MaterialModule,
-        CommonUiConfirmationDialogModule,
-        CommonUiLangModule,
+        TranslateDirective,
+        TranslatePipe,
         MatAutocompleteModule,
-        CommonUiAutoCompleteModule,
+
         ProductLineKeysComponent,
         CProductLineCostComponent
     ],

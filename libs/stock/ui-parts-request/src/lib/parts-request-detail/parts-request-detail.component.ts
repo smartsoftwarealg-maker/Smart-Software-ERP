@@ -12,9 +12,9 @@ import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { PartsRequestService } from '../services/parts-request.service';
 import { PartsRequestLineService } from '../services/parts-request-line.service';
-import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
-import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
+
+import { DatePickerComponent } from '@ss/common/ui-datepicker';
+
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -23,7 +23,7 @@ import { TextFieldModule } from '@angular/cdk/text-field';
 @Component({
     selector: 'ss-parts-request-detail',
     standalone: true,
-    imports: [CommonModule, CommonUiAutoCompleteModule, CommonUiDatepickerModule, CommonUiLangModule, FormsModule, MatCardModule, MatFormFieldModule, MatInputModule, ReactiveFormsModule, RouterOutlet, TextFieldModule],
+    imports: [CommonModule,  DatePickerComponent,  FormsModule, MatCardModule, MatFormFieldModule, MatInputModule, ReactiveFormsModule, RouterOutlet, TextFieldModule],
     templateUrl: './parts-request-detail.component.html',
     styleUrls: ['../../../../../common/assets/src/assets/transac-detail.scss']
 })

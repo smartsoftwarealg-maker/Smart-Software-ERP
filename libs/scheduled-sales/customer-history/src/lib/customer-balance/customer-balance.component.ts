@@ -1,18 +1,15 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
 import {ShellService} from '@ss/common/ui-shell';
 import { ActivatedRoute, RouterModule } from "@angular/router";
-import { CommonUiConfirmationDialogModule } from "@ss/common/ui-confirmation-dialog";
+
 import { LanguageService, LoginService, MaterialModule } from '@ss/common/api-common';
 import { CommonModule, DecimalPipe } from '@angular/common';
-import { CommonUiLangModule } from "@ss/common/ui-lang";
-import { UiPaginationModule } from "@ss/common/ui-pagination";
-import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
-import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
-import { CommonUiAutoCompleteModule } from "@ss/common/ui-auto-complete";
 
-import { LogisticsUiDocImportModule } from "@ss/logistics/ui-doc-import";
-import { LogisticsUiStockInfoModule } from "@ss/logistics/ui-stock-info";
-import { CommonUiColorSelectModule } from "@ss/common/ui-color-select";
+
+import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
+import { DatePickerComponent } from "@ss/common/ui-datepicker";
+
+
 import { ColorPickerModule } from "ngx-color-picker";
 import { CustomerBalanceService } from '../services/customer-balance.service';
 import { ScheduleBalanceService } from '../services/schedule-balance.service';
@@ -20,6 +17,8 @@ import { TurnoverService } from '../services/turnover.service';
 import { Turnover } from '@ss/scheduled-sales/api-scheduled-sales';
 import { switchMap, tap } from 'rxjs';
 import { Chart, ChartItem, registerables } from 'chart.js';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
+import { ColorSelectComponent } from '@ss/common/ui-color-select';
 
 @Component({
     selector: 'ss-customer-history',
@@ -29,18 +28,11 @@ import { Chart, ChartItem, registerables } from 'chart.js';
     imports: [
         CommonModule,
         MaterialModule,
-        CommonUiLangModule,
-        UiPaginationModule,
+        TranslateDirective,
         ReactiveFormsModule,
-        CommonUiConfirmationDialogModule,
+        TranslatePipe,
         RouterModule,
-        CommonUiDatepickerModule,
-        CommonUiAutoCompleteModule,
-
-        LogisticsUiDocImportModule,
-        LogisticsUiStockInfoModule,
-
-        CommonUiColorSelectModule,
+        ColorSelectComponent,
         ColorPickerModule
     ]
 

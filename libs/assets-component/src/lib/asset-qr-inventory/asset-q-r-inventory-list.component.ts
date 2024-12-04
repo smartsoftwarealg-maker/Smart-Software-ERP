@@ -8,16 +8,11 @@ import {
 } from '../assets-api';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
-import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
+import {  ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { LoginService, MaterialModule, PaginatorPersistenceService } from '@ss/common/api-common';
-import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
+import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { CommonModule } from '@angular/common';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
-
-import { UiPaginationModule } from '@ss/common/ui-pagination';
-import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
-import { CustomAttributesModule } from '@ss/custom-attributes';
-
+import { DatePickerComponent } from '@ss/common/ui-datepicker';
 import { QRCodeModule } from 'angularx-qrcode';
 import { DefaultReportService } from '@ss/common/ui-default-report-component';
 import { Office, OfficeService } from '@ss/common/api-lookup';
@@ -30,6 +25,8 @@ import { AssetClassService } from '../services/asset-class.service';
 import { Agent, ConsumerService } from '@ss/logistics/api-agent';
 import { AssetReceptionService } from '../services/asset-reception.service';
 import { AssetOpenInventoryDocService } from '../services/asset-open-inventory-doc.service';
+import { PaginationComponent } from '@ss/common/ui-pagination';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-asset-list-inventory',
@@ -39,17 +36,14 @@ import { AssetOpenInventoryDocService } from '../services/asset-open-inventory-d
     imports: [
         CommonModule,
         MaterialModule,
-        CommonUiLangModule,
-
-        UiPaginationModule,
-        CommonUiConfirmationDialogModule,
-        CommonUiAutoCompleteModule,
-        CommonUiDatepickerModule,
+        TranslateDirective,
+        TranslatePipe,
+        DatePickerComponent,
         RouterModule,
-        CustomAttributesModule,
-
-        QRCodeModule
-    ],
+        QRCodeModule,
+        PaginationComponent,
+        UiAutoCompleteComponent
+    ]
 })
 export class AssetQRInventoryListComponent extends BaseEntityListComponent<InventoryAsset> implements OnInit {
     #loginSrv      = inject(LoginService);

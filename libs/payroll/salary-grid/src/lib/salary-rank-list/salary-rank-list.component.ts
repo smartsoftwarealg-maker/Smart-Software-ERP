@@ -3,12 +3,11 @@ import { BaseChildEntityListComponent } from "@ss/common/ui-base-entity";
 import { GridRank } from "../grid-api";
 import { MaterialModule } from "@ss/common/api-common";
 import { CommonModule } from "@angular/common";
-import { UiPaginationModule } from "@ss/common/ui-pagination";
-import { CommonUiLangModule } from "@ss/common/ui-lang";
-import { CommonUiAutoCompleteModule } from "@ss/common/ui-auto-complete";
-import { RemunerationPaymonthEditorModule } from "@ss/remuneration/paymonth-editor";
-import { CommonPayrollModule } from "@ss/payroll-common";
+
+
 import { GridRankService } from "../grid-rank.service";
+import { PaginationComponent } from '@ss/common/ui-pagination';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: "ss-salary-grid-list",
@@ -18,11 +17,9 @@ import { GridRankService } from "../grid-rank.service";
     imports: [
         CommonModule,
         MaterialModule,
-        UiPaginationModule,
-        CommonUiLangModule,
-        CommonUiAutoCompleteModule,
-        RemunerationPaymonthEditorModule,
-        CommonPayrollModule
+        PaginationComponent,
+        TranslatePipe,
+        TranslateDirective
     ]
 })
 export class SalaryRankListComponent extends BaseChildEntityListComponent<GridRank> {

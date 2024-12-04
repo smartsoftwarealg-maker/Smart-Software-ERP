@@ -11,9 +11,9 @@ import { HttpService, LanguageService, PaginatorPersistenceService } from '@ss/c
 import { DefaultReportService } from '@ss/common/ui-default-report-component';
 import { Employee } from '@ss/employee-services/employee-services';
 import { MatTabGroup, MatTab, MatTabLabel } from '@angular/material/tabs';
-import { TranslateDirective } from '../../../../../common/ui-lang/src/lib/translate.directive';
+import { TranslateDirective } from '@ss/common/ui-lang';
 import { NgFor, NgIf } from '@angular/common';
-import { ImageInputComponent } from '../../../../../common/ui-image-input/src/lib/image-input.component';
+import { ImageInputComponent } from '@ss/common/ui-image-input';
 import { MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from '@angular/material/table';
 import { MatSort, MatSortHeader } from '@angular/material/sort';
 import { PaginationComponent } from '../../../../../common/ui-pagination/src/lib/pagination.component';

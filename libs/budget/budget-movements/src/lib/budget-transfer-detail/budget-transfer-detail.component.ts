@@ -15,9 +15,9 @@ import {BudgetService} from '@ss/budget/budget';
 import {filter} from 'rxjs';
 import { MatCard, MatCardContent } from '@angular/material/card';
 import { MatFormField, MatLabel, MatError } from '@angular/material/form-field';
-import { TranslateDirective } from '../../../../../common/ui-lang/src/lib/translate.directive';
+import { TranslateDirective } from '@ss/common/ui-lang';
 import { MatInput } from '@angular/material/input';
-import { DatePickerComponent } from '../../../../../common/ui-datepicker/src/lib/date-picker.component';
+import { DatePickerComponent } from '@ss/common/ui-datepicker';
 
 @Component({
     selector: 'ss-budget-transfer-detail',

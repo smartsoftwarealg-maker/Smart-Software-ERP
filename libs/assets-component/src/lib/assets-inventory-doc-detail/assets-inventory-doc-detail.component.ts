@@ -4,14 +4,14 @@ import { AssetInventoryDoc, AssetReception, OfficeAutoComplete } from '../assets
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import {UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
-import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
+import {  ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import {
     LookupsService,
     Office,
     OfficeService
 } from '@ss/common/api-lookup';
 import { LoginService, MaterialModule } from '@ss/common/api-common';
-import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
+import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import {Agent, ConsumerService} from "@ss/logistics/api-agent";
 import {MatExpansionPanel} from '@angular/material/expansion';
 import { AccountService, AccountStringAutocompleteModel } from '@ss/accounting/api-accounts';
@@ -21,13 +21,14 @@ import {AssetClassService} from '@ss/assets-component';
 import {BaseEntityService} from '@ss/common/api-base-entity';
 import {AssetReceptionService} from '@ss/assets-component';
 import { CommonModule } from '@angular/common';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
 
-import { UiPaginationModule } from '@ss/common/ui-pagination';
-import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
-import { CustomAttributesModule } from '@ss/custom-attributes';
+
+
+import { DatePickerComponent } from '@ss/common/ui-datepicker';
+
 import { AssetInventoryDocService } from '../services/asset-inventory-doc.service';
 import { AssetsBuildingService } from '@ss/assets-component';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-assets-inventory-doc-detail',
@@ -37,14 +38,12 @@ import { AssetsBuildingService } from '@ss/assets-component';
     imports: [
         CommonModule,
         MaterialModule,
-        CommonUiLangModule,
-
-        UiPaginationModule,
-        CommonUiConfirmationDialogModule,
-        CommonUiAutoCompleteModule,
-        CommonUiDatepickerModule,
+        TranslateDirective,
+        TranslatePipe,
+        DatePickerComponent,
         RouterModule,
-        CustomAttributesModule
+
+        UiAutoCompleteComponent
     ]
 })
 export class AssetsInventoryDocDetailComponent extends BaseEntityDetailComponent<AssetInventoryDoc> implements OnInit {

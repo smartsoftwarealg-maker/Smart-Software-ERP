@@ -110,4 +110,7 @@
     </mat-card-content>
 </mat-card>
 
-<router-outlet *ngIf="formId"></router-outlet>
+@if (formId) {
+    <router-outlet></router-outlet>
+}
+

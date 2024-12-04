@@ -4,21 +4,17 @@ import { AssetInventoryDoc, UnidentifiedInventory } from '../assets-api';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { UntypedFormBuilder, Validators } from '@angular/forms';
-import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
+import {  ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { LookupsService, OfficeService } from '@ss/common/api-lookup';
 import { MaterialModule } from '@ss/common/api-common';
-import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
+import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { AssetClassService, AssetLocationService, AssetsBuildingService } from '@ss/assets-component';
 import { CommonModule } from '@angular/common';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
-
-import { UiPaginationModule } from '@ss/common/ui-pagination';
-import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
-import { CustomAttributesModule } from '@ss/custom-attributes';
-
 import { QRCodeModule } from 'angularx-qrcode';
 import { AssetUnidentifiedInventoryService } from '../services/asset-unidentified-inventory.service';
 import { AssetInventoryDocService } from '../services/asset-inventory-doc.service';
+import { TranslateDirective } from '@ss/common/ui-lang';
+import { Agent, ConsumerService } from '@ss/logistics/api-agent';
 
 @Component({
     selector: 'ss-asset-unidentified-inventory',
@@ -28,19 +24,14 @@ import { AssetInventoryDocService } from '../services/asset-inventory-doc.servic
     imports: [
         CommonModule,
         MaterialModule,
-        CommonUiLangModule,
-
-        UiPaginationModule,
-        CommonUiConfirmationDialogModule,
-        CommonUiAutoCompleteModule,
-        CommonUiDatepickerModule,
+        TranslateDirective,
         RouterModule,
-        CustomAttributesModule,
-
-        QRCodeModule
+        QRCodeModule,
+        UiAutoCompleteComponent
     ]
 })
 export class AssetUnidentifiedInventoryDetailComponent extends BaseEntityDetailComponent<UnidentifiedInventory> {
+    #consumerSrv = inject(ConsumerService);
     #officeSrv = inject(OfficeService);
     #locationSrv     = inject(AssetLocationService);
     #buildingSrv     = inject(AssetsBuildingService);
@@ -52,6 +43,7 @@ export class AssetUnidentifiedInventoryDetailComponent extends BaseEntityDetailC
     locationLookup = new DefaultAutoCompleteModel(this.#locationSrv);
     inventoryDocLookup = new DefaultAutoCompleteModel(this.#inventoryDocSrv);
     officeLookup = new DefaultAutoCompleteModel(this.#officeSrv);
+    beneficiaryLookup = new DefaultAutoCompleteModel<Agent>(this.#consumerSrv, 'id', 'denomination');
 
     constructor(
         public override entitySrv: AssetUnidentifiedInventoryService,
@@ -73,17 +65,18 @@ export class AssetUnidentifiedInventoryDetailComponent extends BaseEntityDetailC
         this.id = this.id || 0;
         this.#officeSrv.setParentId(b?.buildingId||0);
         return this.formBuilder.group({
-            id:           [b.id || 0],
-            parentId:     [b.parentId || this.entitySrv.getParentId(), Validators.required],
-            classId:      [b.classId, Validators.required],
-            buildingId:   [b.buildingId, Validators.required],
-            count:        [b.count || 1, Validators.required],
-            creationDate: [b.creationDate || new Date()],
-            locationId:   [0, Validators.required],
-            officeId:     [b.officeId],
-            userId:       [0],
-            serialNo:     [b.serialNo],
-            memo:         [b.memo],
+            id:            [b.id || 0],
+            parentId:      [b.parentId || this.entitySrv.getParentId(), Validators.required],
+            classId:       [b.classId, Validators.required],
+            buildingId:    [b.buildingId, Validators.required],
+            count:         [b.count || 1, Validators.required],
+            creationDate:  [b.creationDate || new Date()],
+            locationId:    [0, Validators.required],
+            officeId:      [b.officeId],
+            userId:        [0],
+            serialNo:      [b.serialNo],
+            beneficiaryId: [b.beneficiaryId],
+            memo:          [b.memo],
         });
     }
 

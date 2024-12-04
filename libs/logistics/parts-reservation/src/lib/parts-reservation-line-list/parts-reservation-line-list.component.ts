@@ -7,21 +7,21 @@ import { ArticleService } from '@ss/master-data/api-article';
 import { LotsService } from '@ss/common/api-lookup';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { ReservationLinesService } from '../services/reservation-lines.service';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
+
 
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatTableModule } from '@angular/material/table';
 import { ReactiveFormsModule } from '@angular/forms';
-import { UiPaginationModule } from '@ss/common/ui-pagination';
+
 import { MaterialModule } from '@ss/common/api-common';
 import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
 
 @Component({
     selector: 'ss-parts-reservation-line-list',
     standalone: true,
-    imports: [CommonModule, CommonUiLangModule, MatButtonModule, MatFormFieldModule, MatInputModule, MatTableModule, ReactiveFormsModule, UiPaginationModule, MaterialModule, DocInfoComponent],
+    imports: [CommonModule,  MatButtonModule, MatFormFieldModule, MatInputModule, MatTableModule, ReactiveFormsModule,  MaterialModule, DocInfoComponent],
     styleUrls: ['../../../../../common/assets/src/assets/transac-lines-list.scss'],
     templateUrl: './parts-reservation-line-list.component.html',
 })

@@ -19,7 +19,7 @@ import {
     ValidatorFn,
     Validators
 } from '@angular/forms';
-import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
+import {  ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { LtmMatterTestService } from '@ltm/ltm-api';
 import { LtmBatchService } from '@ltm/ltm-api';
 import { LtmPeriodicityService } from '@ltm/ltm-api';
@@ -28,10 +28,7 @@ import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { LtmTestService } from '@ltm/ltm-api';
 import { dateToYmdStr, LoginService, MaterialModule } from '@ss/common/api-common';
 import { CommonModule } from '@angular/common';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
-import { UiPaginationModule } from '@ss/common/ui-pagination';
-import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
-import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
+import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { LTMSiloService } from '@ltm/ltm-api';
 import { LtmSupplierService } from '@ltm/ltm-api';
 import { LtmPickupPointService } from '@ltm/ltm-api';
@@ -39,6 +36,8 @@ import { LtmCenterMatterService } from '@ltm/ltm-api';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { LtmTestScheduleService } from '@ltm/ltm-api';
 import { LtmTestScheduleListComponent } from '../ltm-test-schedule-list/ltm-test-schedule-list.component';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
+import { DatePickerComponent } from '@ss/common/ui-datepicker';
 
 function sampleNoValidatorFn(sampleMode: boolean): ValidatorFn {
     return (control: AbstractControl): ValidationErrors | null => {
@@ -60,16 +59,13 @@ type VarianceControl = {
     imports: [
         CommonModule,
         MaterialModule,
-        CommonUiLangModule,
-        UiPaginationModule,
+        TranslateDirective,
+        TranslatePipe,
         ReactiveFormsModule,
-        CommonUiConfirmationDialogModule,
-
-
-        CommonUiAutoCompleteModule,
-        CommonUiDatepickerModule,
+        DatePickerComponent,
         RouterOutlet,
-        RouterLink
+        TranslatePipe,
+        UiAutoCompleteComponent
     ]
 })
 export class LtmBatchInputComponent implements OnInit, OnDestroy {
@@ -274,6 +270,7 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
         try {
             eval(program);
         } catch (e: any) { /* empty */
+            console.log(e);
         }
         this.totals.controls.forEach((c, i) => {
             c.setValue({ value: +((result[i] || 0).toFixed(2)) });

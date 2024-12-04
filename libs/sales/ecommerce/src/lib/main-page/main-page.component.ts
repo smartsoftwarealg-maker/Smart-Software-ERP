@@ -14,10 +14,10 @@ import { HeaderPageComponent } from '../header-page/header-page.component';
 import { MatList, MatListItem } from '@angular/material/list';
 import { NgFor, NgIf, AsyncPipe, DecimalPipe } from '@angular/common';
 import { MatButton, MatIconButton } from '@angular/material/button';
-import { TranslateDirective } from '../../../../../common/ui-lang/src/lib/translate.directive';
+import { TranslateDirective } from '@ss/common/ui-lang';
 import { MatCard } from '@angular/material/card';
-import { ImageInputComponent } from '../../../../../common/ui-image-input/src/lib/image-input.component';
-import { TranslatePipe } from '../../../../../common/ui-lang/src/lib/translate.pipe';
+import { ImageInputComponent } from '@ss/common/ui-image-input';
+import { TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-main-page',

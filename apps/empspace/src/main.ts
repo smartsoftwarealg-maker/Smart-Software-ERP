@@ -12,9 +12,9 @@ import { ShellComponent, UiShellModule } from '@ss/common/ui-shell';
 import { MainPageComponent } from '@ss/common/ui-main-page';
 import { EMPSPACE_APP_URL } from './app/common';
 import { PasswordUpdateComponent, Auth2FAConfirmationComponent } from '@ss/auth-2fa';
-import { UiThemeModule } from '@ss/common/ui-theme';
+import { ThemeSelect } from '@ss/common/ui-theme';
 import { UiErrorHandlerModule } from '@ss/common/ui-error-handler';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
+
 import { UiLoginModule } from '@ss/common/ui-login';
 import { UiCenterSelectModule } from '@ss/common/ui-center-select';
 import { AppComponent } from './app/app.component';
@@ -50,9 +50,9 @@ if (environment.production) {
 
 bootstrapApplication(AppComponent, {
     providers: [
-        importProvidersFrom(BrowserModule, 
+        importProvidersFrom(BrowserModule,
         // Smart Software modules
-        UiThemeModule, UiErrorHandlerModule, UiShellModule, CommonUiLangModule, 
+        UiThemeModule, UiErrorHandlerModule, UiShellModule,
         // modules with routes
         UiLoginModule, UiCenterSelectModule),
         provideAnimations(),

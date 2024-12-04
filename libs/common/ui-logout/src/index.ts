@@ -1,1 +1,1 @@
-export * from './lib/ui-logout.module';
+export * from './lib/logout.component';

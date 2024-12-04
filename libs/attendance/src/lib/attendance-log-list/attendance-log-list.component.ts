@@ -5,12 +5,12 @@ import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import {PaginatorPersistenceService} from '@ss/common/api-common';
+import { MaterialModule, PaginatorPersistenceService } from '@ss/common/api-common';
 import {SignatureService} from '../signature.service';
 import { MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
-import { TranslateDirective } from '../../../../common/ui-lang/src/lib/translate.directive';
-import { PaginationComponent } from '../../../../common/ui-pagination/src/lib/pagination.component';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
+import { PaginationComponent } from '@ss/common/ui-pagination';
 import { DatePipe } from '@angular/common';
 
 @Component({
@@ -19,20 +19,10 @@ import { DatePipe } from '@angular/common';
     styleUrls: ['./attendance-log-list.component.scss'],
     standalone: true,
     imports: [
-        MatTable,
-        MatSort,
-        MatColumnDef,
-        MatHeaderCellDef,
-        MatHeaderCell,
+        MaterialModule,
         TranslateDirective,
-        MatCellDef,
-        MatCell,
-        MatHeaderRowDef,
-        MatHeaderRow,
-        MatRowDef,
-        MatRow,
         PaginationComponent,
-        DatePipe,
+        DatePipe
     ],
 })
 export class AttendanceLogListComponent extends BaseEntityListComponent<ATTSignature> {

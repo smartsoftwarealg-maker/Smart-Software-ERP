@@ -3,19 +3,21 @@ import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router, RouterOutlet } from '@angular/router';
 import { ReactiveFormsModule, UntypedFormBuilder } from '@angular/forms';
 import { Lookup } from '@ss/common/api-lookup';
-import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
+import {  ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { BaseTransactionDetailComponent, TransactionLinesService } from '@ss/logistics/api-transaction';
 import { ReceptionService } from '@ss/purchases/api-reception';
 import { LoginService, MaterialModule } from '@ss/common/api-common';
 import { MatDialog } from '@angular/material/dialog';
 import { CommonModule } from '@angular/common';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
-import { UiPaginationModule } from '@ss/common/ui-pagination';
-import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
-import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
 
-import { LogisticsUiStockInfoModule } from '@ss/logistics/ui-stock-info';
+
+import { DatePickerComponent } from '@ss/common/ui-datepicker';
+
+
+import { UiStockInfoComponent } from '@ss/logistics/ui-stock-info';
 import { ReceptionLinesService } from '../reception-lines.service';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
+import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 
 
 @Component({
@@ -26,16 +28,12 @@ import { ReceptionLinesService } from '../reception-lines.service';
     imports: [
         CommonModule,
         MaterialModule,
-        CommonUiLangModule,
-        UiPaginationModule,
+        TranslateDirective,
         ReactiveFormsModule,
-        CommonUiConfirmationDialogModule,
-        CommonUiDatepickerModule,
-        CommonUiAutoCompleteModule,
-
-        LogisticsUiStockInfoModule,
-        RouterOutlet
-    ],
+        DatePickerComponent,
+        RouterOutlet,
+        UiAutoCompleteComponent
+    ]
 })
 export class ReceptionDetailComponent extends BaseTransactionDetailComponent implements OnInit {
 

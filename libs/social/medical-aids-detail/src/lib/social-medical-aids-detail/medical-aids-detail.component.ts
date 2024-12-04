@@ -7,14 +7,14 @@ import {
     SocialAid, SocialEmployeeService
 } from '@social/social-api';
 import { PersonAutocompleteClass } from '@ss/employee-services/employee-services';
-import { LoginService } from '@ss/common/api-common';
-import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
+import { LoginService, MaterialModule } from '@ss/common/api-common';
+import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute } from '@angular/router';
 import { ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
-import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
+import { DatePickerComponent } from '@ss/common/ui-datepicker';
+
 import { MatCard, MatCardContent } from '@angular/material/card';
 import { MatError, MatFormField, MatLabel } from '@angular/material/form-field';
 import { MatInput } from '@angular/material/input';
@@ -22,11 +22,13 @@ import { MedicalAidService } from '@social/social-api';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { AidHistoryComponent } from '@social/aid-history';
 import { PersonAidHistoryService } from '@social/social-api';
+import { TranslateDirective } from '@ss/common/ui-lang';
+
 
 @Component({
     selector: 'ss-medical-aids-detail',
     standalone: true,
-    imports: [CommonModule, CommonUiAutoCompleteModule, CommonUiDatepickerModule, CommonUiLangModule, MatCard, MatCardContent, MatError, MatFormField, MatInput, MatLabel, ReactiveFormsModule, AidHistoryComponent],
+    imports: [CommonModule, MaterialModule, TranslateDirective, DatePickerComponent, MatCard, MatCardContent, MatError, MatFormField, MatInput, MatLabel, ReactiveFormsModule, AidHistoryComponent, UiAutoCompleteComponent],
     templateUrl: './medical-aids-detail.component.html',
     styleUrl: './medical-aids-detail.component.scss',
 })

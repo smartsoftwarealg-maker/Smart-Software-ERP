@@ -11,9 +11,9 @@ import { MAIN_PAGE_URL, INDEX_PAGE_URL, CanActivateService, LOGIN_URL } from '@s
 import { ShellComponent, UiShellModule } from '@ss/common/ui-shell';
 import { MainPageComponent } from '@ss/common/ui-main-page';
 import { ADMINISTRATION_APP_URL, EXCHANGE_APP_URL } from './app/common';
-import { UiThemeModule } from '@ss/common/ui-theme';
+import { ThemeSelect } from '@ss/common/ui-theme';
 import { UiErrorHandlerModule } from '@ss/common/ui-error-handler';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
+
 import { UiLoginModule } from '@ss/common/ui-login';
 import { UiCenterSelectModule } from '@ss/common/ui-center-select';
 import { AppComponent } from './app/app.component';
@@ -51,9 +51,9 @@ if (environment.production) {
 
 bootstrapApplication(AppComponent, {
     providers: [
-        importProvidersFrom(BrowserModule, 
+        importProvidersFrom(BrowserModule,
         // Smart Software modules
-        UiThemeModule, UiErrorHandlerModule, UiShellModule, CommonUiLangModule, 
+        UiThemeModule, UiErrorHandlerModule, UiShellModule, PaginationComponent,
         // modules with routes
         UiLoginModule, UiCenterSelectModule),
         provideAnimations(),

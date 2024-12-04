@@ -2,17 +2,18 @@ import { Component, inject, OnInit, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { MaterialModule } from '@ss/common/api-common';
-import { CommonUiConfirmationDialogModule } from '@ss/common/ui-confirmation-dialog';
-import { UiPaginationModule } from '@ss/common/ui-pagination';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
+
+
+
 import { CACCReport } from '@ss/costing/costing-utils';
 import { catchError, tap } from 'rxjs';
 import { CostingAccountingService } from '../services/costing-accounting.service';
 import { CostingProjectService } from '../services/costing-project.service';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CommonUiLookupModule } from '@ss/common/ui-lookup';
-import { DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
+import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { ShellService } from '@ss/common/ui-shell';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-costing-reports',
@@ -21,10 +22,11 @@ import { ShellService } from '@ss/common/ui-shell';
         CommonModule,
         RouterModule,
         MaterialModule,
-        CommonUiConfirmationDialogModule,
-        UiPaginationModule,
-        CommonUiLangModule,
-        CommonUiLookupModule
+        TranslateDirective,
+        TranslatePipe,
+        CommonUiLookupModule,
+        UiAutoCompleteComponent,
+        ReactiveFormsModule
     ],
     templateUrl: './costing-accounting.component.html',
     styleUrl: './costing-accounting.component.css',

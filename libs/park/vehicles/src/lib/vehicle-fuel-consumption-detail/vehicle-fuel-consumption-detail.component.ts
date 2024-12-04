@@ -6,9 +6,9 @@ import { VehicleFuelConsumptionService } from '../services/vehicle-fuel-consumpt
 import { FormBuilder, ReactiveFormsModule, UntypedFormGroup, Validators } from '@angular/forms';
 import { EmployeeService, PersonAutocompleteClass } from '@ss/employee-services/employee-services';
 import { FuelTypeService } from '@ss/common/api-lookup';
-import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
-import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
+import {  DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
+import { DatePickerComponent } from '@ss/common/ui-datepicker';
+
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -20,9 +20,9 @@ import { MaterialModule } from '@ss/common/api-common';
     standalone: true,
     imports: [
         CommonModule,
-        CommonUiAutoCompleteModule,
-        CommonUiDatepickerModule,
-        CommonUiLangModule,
+
+        DatePickerComponent,
+
         MatButtonModule,
         MatCardModule,
         MatFormFieldModule,

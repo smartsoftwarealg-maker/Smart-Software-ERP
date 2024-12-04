@@ -3,16 +3,18 @@ import { CommonModule } from '@angular/common';
 import { BaseChildEntityListComponent } from '@ss/common/ui-base-entity';
 import { VehicleOilChangeService } from '../services/vehicle-oil-change.service';
 import { OilChange } from '../vehicle-api';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
+
 import { MatButtonModule } from '@angular/material/button';
 import { MatTableModule } from '@angular/material/table';
-import { UiPaginationModule } from '@ss/common/ui-pagination';
+
 import { MaterialModule } from '@ss/common/api-common';
+import { PaginationComponent } from '@ss/common/ui-pagination';
+import { TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-vehicle-oil-change-list',
     standalone: true,
-    imports: [CommonModule, CommonUiLangModule, MatButtonModule, MatTableModule, UiPaginationModule, MaterialModule],
+    imports: [CommonModule, MatButtonModule, MatTableModule, MaterialModule, PaginationComponent, TranslatePipe],
     templateUrl: './vehicle-oil-change-list.component.html',
     styleUrls: ['./vehicle-oil-change-list.component.css']
 })

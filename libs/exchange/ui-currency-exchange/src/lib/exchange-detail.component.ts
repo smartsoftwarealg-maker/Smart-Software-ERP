@@ -23,7 +23,7 @@ import { MatInput } from "@angular/material/input";
     styleUrls: ['./exchange-detail.component.scss'],
     templateUrl: './exchange-detail.component.html',
     standalone: true,
-    imports: [MatCard, MatCardContent, NgIf, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, DatePickerComponent, UiAutoCompleteComponent, MatInput, MatError]
+    imports: [MaterialModule, MatCard, MatCardContent, NgIf, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, DatePickerComponent, UiAutoCompleteComponent, MatInput, MatError]
 })
 export class ExchangeDetailComponent extends BaseEntityDetailComponent<Exchange> implements OnInit {
     private agentService =  inject(AgentService);

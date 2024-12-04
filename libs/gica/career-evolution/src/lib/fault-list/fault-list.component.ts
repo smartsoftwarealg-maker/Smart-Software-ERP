@@ -7,7 +7,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { DefaultReportService } from '@ss/common/ui-default-report-component';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { MaterialModule, PaginatorPersistenceService } from '@ss/common/api-common';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
+
 import {
     MatCell,
     MatCellDef,
@@ -21,21 +21,23 @@ import {
     MatTable
 } from '@angular/material/table';
 import { MatSort, MatSortHeader } from '@angular/material/sort';
-import { UiPaginationModule } from '@ss/common/ui-pagination';
+
 import { FaultService } from '../services/fault.service';
 import { FormControl } from '@angular/forms';
 import { EmployeeService, IEmployee, PersonAutocompleteClass } from '@ss/employee-services/employee-services';
 import { MatFormField } from '@angular/material/form-field';
 import { CommonUiLookupModule } from '@ss/common/ui-lookup';
-import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
+
+import { PaginationComponent } from '@ss/common/ui-pagination';
+import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 
 @Component({
     selector: 'ss-gica-fault-list',
     standalone: true,
     imports: [CommonModule,
-        CommonUiLangModule,
+
         MaterialModule,
-        CommonUiAutoCompleteModule,
+
         MatCell,
         MatCellDef,
         MatColumnDef,
@@ -47,10 +49,10 @@ import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
         MatSort,
         MatSortHeader,
         MatTable,
-        UiPaginationModule,
+
         MatHeaderCellDef,
         MatFormField,
-        CommonUiLookupModule],
+        CommonUiLookupModule, PaginationComponent, UiAutoCompleteComponent],
     templateUrl: './fault-list.component.html',
     styleUrl: './fault-list.component.css',
 })

@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CommonUiLangModule } from '@ss/common/ui-lang';
+
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
-import { UiPaginationModule } from '@ss/common/ui-pagination';
+
 import { CmmsChecklistService } from '@ss/cmms/lookups';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -13,11 +13,12 @@ import { DefaultReportService } from '@ss/common/ui-default-report-component';
 import { PaginatorPersistenceService } from '@ss/common/api-common';
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { Lookup } from '@ss/common/api-lookup';
+import { PaginationComponent } from '@ss/common/ui-pagination';
 
 @Component({
     selector: 'ss-cmms-checklist',
     standalone: true,
-    imports: [CommonModule, CommonUiLangModule, MatCheckboxModule, MatSortModule, MatTableModule, UiPaginationModule],
+    imports: [CommonModule, MatCheckboxModule, MatSortModule, MatTableModule, PaginationComponent],
     templateUrl: './cmms-checklist-list.component.html',
     styleUrls: ['./cmms-checklist-list.component.css'],
 })
