@@ -16,20 +16,22 @@ import { HttpParams } from '@angular/common/http';
 import { MatSelectionList } from '@angular/material/list';
 import { DatePickerComponent } from '@ss/common/ui-datepicker';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-invoice-duplication',
     standalone: true,
     imports: [
         CommonModule,
-
-
+        MaterialModule,
+        TranslateDirective,
         MatCardModule,
         MatFormFieldModule,
         ReactiveFormsModule,
         MatInputModule,
         MaterialModule,
-        DatePickerComponent
+        DatePickerComponent,
+        TranslatePipe
     ],
     templateUrl: './invoice-duplication.component.html',
     styleUrls: ['./invoice-duplication.component.css'],

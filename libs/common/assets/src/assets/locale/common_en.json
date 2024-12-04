@@ -349,5 +349,6 @@
     "START_DATE":                 "Start date",
     "COSTING":                    "Costing",
     "PAY_MODE":                   "Pay mode",
-    "MUNICIPALITY":               "Municipality"
+    "MUNICIPALITY":               "Municipality",
+    "ACCOUNTING_APP":             "Accounting"
 }

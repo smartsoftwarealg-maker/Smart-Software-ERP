@@ -1,17 +1,20 @@
 import {SideNavNode} from '@ss/common/api-common';
 import {
     ABS_ADMINISTRATION_WORKFLOW_INBOX_URL,
-    ABS_FINANCE_CCOMPENSATIONS,
-    ABS_FINANCE_CPAYMENTS,
-    ABS_SALES_AGENT_URL, ABS_SERVICE_CLASSES_URL,
+    ABS_SALES_AGENT_URL,
+    ABS_SERVICE_CLASSES_URL,
     ABS_SALES_DASHBOARD_URL,
     ABS_SALES_DUPLICATION_URL,
     ABS_SALES_SERVICE_URL,
     ABS_SERVICE_INVOICE_CANCEL_URL,
     ABS_SERVICE_INVOICE_URL,
     ABS_SERVICE_ORDER_URL,
-    ABS_SERVICE_PROFORMA_URL, ABS_SERVICE_REPORTS_URL, ABS_COMPLEMENT_INVOICE_URL
-} from "../common";
+    ABS_SERVICE_PROFORMA_URL,
+    ABS_SERVICE_REPORTS_URL,
+    ABS_COMPLEMENT_INVOICE_URL,
+    ABS_SERVICES_COMPENSATIONS,
+    ABS_SERVICE_PAYMENTS
+} from '../common';
 
 export const ssalesNavTree: SideNavNode = {
     name: 'COMMON_SERVICES',
@@ -74,13 +77,13 @@ export const ssalesNavTree: SideNavNode = {
         {
             name: 'COMMON_PAYMENTS',
             icon: 'fas fa-coins',
-            route: ABS_FINANCE_CPAYMENTS,
-            accessRights: 'SPayment'
+            route: ABS_SERVICE_PAYMENTS,
+            accessRights: 'Payment'
         },
         {
             name: 'LOGISTICS_PAYMENT_COMPENSATION',
             icon: 'fas fa-coins',
-            route: ABS_FINANCE_CCOMPENSATIONS,
+            route: ABS_SERVICES_COMPENSATIONS,
             accessRights: 'Accounting'
         },
         // {

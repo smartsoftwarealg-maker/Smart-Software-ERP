@@ -9,6 +9,10 @@ import {
     docInfoRoutes,
     INVOICE_DUPLICATE_URL,
     LOGISTICS_AGENT_URL,
+    LOGISTICS_COMPENSATION_URL,
+    LOGISTICS_CPAYMENTS_URL,
+    LOGISTICS_PAYMENTS_URL,
+    LOGISTICS_SPAYMENTS_URL, PAYMENT_ORDER,
     SALES_PROFORMA_URL,
     SALES_SERVICE_ARTICLE_URL,
     SERVICE_CLASSES_URL,
@@ -59,6 +63,9 @@ import {
 } from '@ss/service-sales/service-invoice-cancellation';
 import { AGENT_ARCHIVES } from '@ss/common/app-archive';
 import { ClassDetailComponent, ClassListComponent } from '@ss/common/ui-lookup';
+import { PaymentCompensationComponent } from '@ss/logistics/payment-compensation';
+import { PaymentsDetailComponent, PaymentsListComponent } from '@ss/logistics/payments';
+import { PaymentOrderDetailComponent, PaymentOrderListComponent } from '@ss/purchases/payment-orders';
 
 export const ssalesRoutes: Routes = [
     {
@@ -303,6 +310,86 @@ export const ssalesRoutes: Routes = [
             { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
         ]
     },
+    {
+        path: LOGISTICS_COMPENSATION_URL,
+        component: PaymentCompensationComponent
+    },
+    {
+        path: LOGISTICS_PAYMENTS_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: PaymentsListComponent,
+                canActivate: [loginGuard]
+            },
+            {
+                path: ':id',
+                component: PaymentsDetailComponent,
+                canActivate: [loginGuard],
+                canDeactivate: [CanDeactivateService]
+            },
+            { path: '', redirectTo: LIST_URL, pathMatch: 'full' },
+            { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' }
+        ]
+    },
+    {
+        path: LOGISTICS_SPAYMENTS_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: PaymentsListComponent,
+                canActivate: [loginGuard],
+                data: { url: '/spayments', agents: '/customers' }
+            },
+            {
+                path: ':id',
+                component: PaymentsDetailComponent,
+                canActivate: [loginGuard],
+                canDeactivate: [CanDeactivateService],
+                data: { url: '/spayments', agents: '/suppliers' }
+            },
+            { path: '', redirectTo: LIST_URL, pathMatch: 'full' },
+            { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' }
+        ]
+    },
+    {
+        path: LOGISTICS_CPAYMENTS_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: PaymentsListComponent,
+                canActivate: [loginGuard],
+                data: { url: '/cpayments', agents: '/customers' }
+            },
+            {
+                path: ':id',
+                component: PaymentsDetailComponent,
+                canActivate: [loginGuard],
+                canDeactivate: [CanDeactivateService],
+                data: { url: '/cpayments', agents: '/customers' }
+            },
+            { path: '', redirectTo: LIST_URL, pathMatch: 'full' },
+            { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' }
+        ]
+    },
+    {
+        path: PAYMENT_ORDER,
+        children: [
+            {
+                path: LIST_URL,
+                component: PaymentOrderListComponent,
+                canActivate: [loginGuard]
+            },
+            {
+                path: ':id',
+                component: PaymentOrderDetailComponent,
+                canActivate: [loginGuard],
+                canDeactivate: [CanDeactivateService]
+            },
+            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
+        ]
+    },
+
     { path: '', redirectTo: ABS_INDEX_URL, pathMatch: 'full' },
     { path: '**', redirectTo: ABS_INDEX_URL }
 ];

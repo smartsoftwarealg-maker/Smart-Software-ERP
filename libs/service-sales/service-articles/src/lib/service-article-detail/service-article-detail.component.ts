@@ -16,8 +16,6 @@ import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { ClassService, LookupsService } from '@ss/common/api-lookup';
 import { ServiceArticleService } from '../service-article.service';
 import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
-
-
 import { MatCardModule } from '@angular/material/card';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatFormFieldModule } from '@angular/material/form-field';

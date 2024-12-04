@@ -353,5 +353,6 @@
     "START_DATE":                 "date de début",
     "COSTING":                    "Coûts",
     "PAY_MODE":                   "Mode de paiement",
-    "MUNICIPALITY":               "Commune"
+    "MUNICIPALITY":               "Commune",
+    "ACCOUNTING_APP":             "Comptabilité",
 }

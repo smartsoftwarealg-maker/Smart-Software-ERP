@@ -29,7 +29,7 @@ import {
 export const accountingNavTree: SideNavNode = {
     name: 'ACCOUNTING',
     icon: 'fa-solid fa-money-bill-trend-up',
-    accessRights: 'ACCOUNTING',
+    accessRights: 'ACCOUNTING_APP',
     children: [
         {
             name: 'COMMON_PROJECTS',
