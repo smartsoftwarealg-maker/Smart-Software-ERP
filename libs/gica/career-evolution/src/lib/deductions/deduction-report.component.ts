@@ -25,6 +25,8 @@ import { ActivatedRoute } from '@angular/router';
 import { MatProgressSpinner } from '@angular/material/progress-spinner';
 import { DeductionService } from '../services/deduction.service';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
+import { TranslatePipe } from '@ss/common/ui-lang';
+import { PaginationComponent } from '@ss/common/ui-pagination';
 
 @Component({
     selector: 'ss-gica-deduction-report',
@@ -50,7 +52,7 @@ import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
         MatInput,
         MatLabel,
         ReactiveFormsModule,
-        MatButton, MatHeaderCellDef, MatProgressSpinner],
+        MatButton, MatHeaderCellDef, MatProgressSpinner, TranslatePipe, PaginationComponent],
     templateUrl: './deduction-report.component.html',
     styleUrl: './deduction-report.component.css'
 })

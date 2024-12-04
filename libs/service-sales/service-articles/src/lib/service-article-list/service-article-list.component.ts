@@ -16,6 +16,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
 import { ImageInputComponent } from '@ss/common/ui-image-input';
 import { PaginationComponent } from '@ss/common/ui-pagination';
+import { TranslateDirective } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-service-article-list',
@@ -23,9 +24,8 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
     imports: [
         CommonModule,
         ImageInputComponent,
-
+        TranslateDirective,
         MatTableModule,
-
         MatSortModule,
         PaginationComponent
     ],

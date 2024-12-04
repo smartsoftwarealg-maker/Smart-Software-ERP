@@ -11,8 +11,8 @@ import { MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, Ma
 import { MatSort, MatSortHeader } from '@angular/material/sort';
 import { TranslateDirective } from '@ss/common/ui-lang';
 import { MatCheckbox } from '@angular/material/checkbox';
-import { PaginationComponent } from '../../../../../common/ui-pagination/src/lib/pagination.component';
-import { DocInfoComponent } from '../../../../../logistics/ui-doc-info/src/lib/doc-info/doc-info.component';
+import { PaginationComponent } from '@ss/common/ui-pagination';
+import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
 import { DatePipe } from '@angular/common';
 
 @Component({

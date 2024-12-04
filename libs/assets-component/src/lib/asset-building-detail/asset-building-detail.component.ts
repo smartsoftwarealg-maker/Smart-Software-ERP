@@ -11,14 +11,8 @@ import { CodeDescriptionAutoCompleteModel, UiAutoCompleteComponent } from '@ss/c
 import {AssetLocationService} from '../services/asset-location.service';
 import { CommonModule } from '@angular/common';
 import { MaterialModule } from '@ss/common/api-common';
-
-
-
-import { DatePickerComponent } from '@ss/common/ui-datepicker';
-
-
 import { QRCodeModule } from 'angularx-qrcode';
-import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
+import { TranslateDirective } from '@ss/common/ui-lang';
 
 @Component({
   selector: 'ss-asset-building-detail',
@@ -29,13 +23,9 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         CommonModule,
         MaterialModule,
         TranslateDirective,
-        TranslatePipe,
-
-        DatePickerComponent,
         RouterModule,
-
-
-        QRCodeModule
+        QRCodeModule,
+        UiAutoCompleteComponent
     ]})
 export class AssetBuildingDetailComponent extends BaseEntityDetailComponent<AssetBuilding> {
     private router = inject(Router);

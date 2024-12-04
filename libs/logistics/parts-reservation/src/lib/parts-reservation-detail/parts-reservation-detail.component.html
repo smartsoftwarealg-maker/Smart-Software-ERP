@@ -66,4 +66,7 @@
 </mat-card>
 
 <!--<ss-consumption-lines-list *ngIf="formId" [isEditable]="isEditable"></ss-consumption-lines-list>-->
-<router-outlet *ngIf="formId"></router-outlet>
+@if (formId) {
+    <router-outlet></router-outlet>
+}
+

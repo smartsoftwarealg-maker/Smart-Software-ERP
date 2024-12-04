@@ -23,15 +23,16 @@ import {
     MatHeaderRow,
     MatHeaderRowDef, MatRow, MatRowDef, MatTable
 } from '@angular/material/table';
-import { History } from '@ss/exchange/api-currency-deposit';
 import { VHistory } from '../vacation-planning-api';
+import { MatProgressSpinner } from '@angular/material/progress-spinner';
+import { MaterialModule } from '@ss/common/api-common';
 
 @Component({
     selector: 'ss-leave-planning-calculator',
     templateUrl: './leave-planning-calculator.component.html',
     styleUrls: ['./leave-planning-calculator.component.scss'],
     standalone: true,
-    imports: [MatCard, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, VacationPlanningDetailListComponent, MatOption, MatSelect, NgForOf, MatCardContent, JsonPipe, MatIconButton, AsyncPipe, DatePipe, DecimalPipe, MatCell, MatCellDef, MatColumnDef, MatHeaderCell, MatHeaderRow, MatHeaderRowDef, MatMiniFabButton, MatRow, MatRowDef, MatTable, MatHeaderCellDef]
+    imports: [MaterialModule, MatCard, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, VacationPlanningDetailListComponent, MatOption, MatSelect, NgForOf, MatCardContent, JsonPipe, MatIconButton, AsyncPipe, DatePipe, DecimalPipe, MatCell, MatCellDef, MatColumnDef, MatHeaderCell, MatHeaderRow, MatHeaderRowDef, MatMiniFabButton, MatRow, MatRowDef, MatTable, MatHeaderCellDef, MatProgressSpinner]
 })
 export class LeavePlanningCalculatorComponent implements OnInit {
     #calcSrv = inject(LeavePlanningCalculatorService);
@@ -44,7 +45,7 @@ export class LeavePlanningCalculatorComponent implements OnInit {
         ssFormula2: [''],
         irgFormula: [''],
     })
-    selectedYear = signal(this.#THIS_YEAR - 1);
+    processing = signal(false);
     period  = new FormControl<number>(  this.#THIS_YEAR);
 
     periods: number[] = [
@@ -85,9 +86,15 @@ export class LeavePlanningCalculatorComponent implements OnInit {
 
     onSubmit() {
         const value = this.form.value;
+        this.processing.set(true);
+        this.form.disable();
         this.#calcSrv
             .history(0, value.year, value.ssFormula, value.irgFormula)
-            .subscribe(res => this.history.set(res));
+            .subscribe(res => {
+                this.history.set(res);
+                this.processing.set(false);
+                this.form.enable();
+            });
     }
 
     select(h: VHistory) {

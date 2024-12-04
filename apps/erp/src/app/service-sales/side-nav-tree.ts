@@ -81,7 +81,7 @@ export const ssalesNavTree: SideNavNode = {
             name: 'LOGISTICS_PAYMENT_COMPENSATION',
             icon: 'fas fa-coins',
             route: ABS_FINANCE_CCOMPENSATIONS,
-            accessRights: 'CPayment'
+            accessRights: 'Accounting'
         },
         // {
         //     name: 'SALES_ADS',

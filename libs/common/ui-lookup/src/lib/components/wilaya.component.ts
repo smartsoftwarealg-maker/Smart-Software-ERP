@@ -53,7 +53,7 @@ export class WilayaListComponent extends BaseEntityListComponent<Wilaya> {
     templateUrl: '../base-templates/detail-template.html',
     styleUrls: ['../base-templates/detail-template.scss'],
     standalone: true,
-    imports: [MatCard, NgIf, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput]
+    imports: [MaterialModule, MatCard, NgIf, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput]
 })
 export class WilayaDetailComponent extends BaseEntityDetailComponent<Wilaya> {
 

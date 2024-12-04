@@ -20,7 +20,6 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { DatePickerComponent } from '@ss/common/ui-datepicker';
 import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
-import { HourPickerComponent } from '@ss/common/ui-hour-picker';
 import { MaterialModule } from '@ss/common/api-common';
 
 @Component({
@@ -28,19 +27,8 @@ import { MaterialModule } from '@ss/common/api-common';
     standalone: true,
     imports: [
         CommonModule,
-        FormsModule,
         MaterialModule,
-        MatButton,
-        MatCard,
-        MatError,
-        MatFormField,
-        MatInput,
-        MatLabel,
-        MatListOption,
-        MatListSubheaderCssMatStyler,
-        MatOption,
-        MatSelect,
-        MatSelectionList,
+        FormsModule,
         ReactiveFormsModule,
         MatFormFieldModule,
         MatInputModule,
@@ -49,7 +37,6 @@ import { MaterialModule } from '@ss/common/api-common';
         UiAutoCompleteComponent,
         TranslatePipe,
         TranslateDirective,
-
     ],
     templateUrl: './social-edo.component.html',
     styleUrl: './social-edo.component.scss'

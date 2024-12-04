@@ -6,7 +6,7 @@ import { CCGroup, Lookup } from '@ss/common/api-lookup';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {Observable} from 'rxjs';
 import {tap} from 'rxjs/operators';
-import {LoginService} from '@ss/common/api-common';
+import { LoginService, MaterialModule } from '@ss/common/api-common';
 import {MatDialog} from '@angular/material/dialog';
 import { InvoiceLinesService, InvoiceService } from '@ss/sales/api-invoice';
 import {
@@ -30,7 +30,7 @@ import { CdkTextareaAutosize } from '@angular/cdk/text-field';
     templateUrl: './invoice-detail.component.html',
     styleUrls: ['../../../../../common/assets/src/assets/transac-detail.scss'],
     standalone: true,
-    imports: [MatCard, MatCardContent, NgIf, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, MatError, DatePickerComponent, UiAutoCompleteComponent, MatTabGroup, MatTab, MatTabLabel, CdkTextareaAutosize, RouterOutlet]
+    imports: [MaterialModule, NgIf, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, MatError, DatePickerComponent, UiAutoCompleteComponent, MatTabGroup, MatTab, MatTabLabel, CdkTextareaAutosize, RouterOutlet]
 })
 export class InvoiceDetailComponent extends BaseTransactionDetailComponent implements OnInit {
     public groups: CCGroup[];

@@ -7,7 +7,7 @@ import { ReactiveFormsModule, UntypedFormBuilder, Validators } from "@angular/fo
 import {  ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
 import { AwardProcedureService, LookupsService, ProjectMotiveService, WilayaService } from "@ss/common/api-lookup";
 import {SalesContractService} from '../sales-contract.service';
-import {  DefaultAutoCompleteModel } from "@ss/common/ui-auto-complete";
+import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import {AgentService} from '@ss/logistics/api-agent';
 import {ProjectTypeService} from '@ss/common/api-lookup';
 import { LoginService, MaterialModule } from "@ss/common/api-common";
@@ -37,7 +37,8 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
         RouterModule,
         ContractArticleMainComponent,
-        AppArchiveMainComponent
+        AppArchiveMainComponent,
+        UiAutoCompleteComponent
     ]
 })
 export class SalesContractDetailComponent extends BaseEntityDetailComponent<Project> {

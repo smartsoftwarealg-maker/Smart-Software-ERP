@@ -19,11 +19,12 @@ import {
 
 import { MutualAidService } from '../../../../social-api/src/lib/services/mutual-aid.service';
 import { PaginationComponent } from '@ss/common/ui-pagination';
+import { TranslateDirective } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-mutual-works-list',
     standalone: true,
-    imports: [CommonModule, MatCell, MatCellDef, MatColumnDef, MatHeaderCell, MatHeaderRow, MatHeaderRowDef, MatRow, MatRowDef, MatTable, MatHeaderCellDef, PaginationComponent],
+    imports: [CommonModule, TranslateDirective, MatCell, MatCellDef, MatColumnDef, MatHeaderCell, MatHeaderRow, MatHeaderRowDef, MatRow, MatRowDef, MatTable, MatHeaderCellDef, PaginationComponent],
     templateUrl: './mutual-aids-list.component.html',
     styleUrl: '../../../../social-api/src/lib/aids.styles.scss',
 })

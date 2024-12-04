@@ -4,7 +4,7 @@ import { UntypedFormGroup, UntypedFormBuilder, Validators, FormsModule, Reactive
 import { ActivatedRoute, Router } from '@angular/router';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
-import { HttpService } from '@ss/common/api-common';
+import { HttpService, MaterialModule } from '@ss/common/api-common';
 import { OfficeService, Office } from '@ss/common/api-lookup';
 import { DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
 import { AssetsBuildingService } from '@ss/assets-component';
@@ -20,7 +20,7 @@ import { MatInput } from '@angular/material/input';
     templateUrl: './office-detail.component.html',
     styleUrls: ['./office-detail.component.scss'],
     standalone: true,
-    imports: [MatCard, NgIf, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, UiAutoCompleteComponent, MatInput, MatError]
+    imports: [MaterialModule, MatCard, NgIf, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, UiAutoCompleteComponent, MatInput, MatError]
 })
 export class OfficeDetailComponent extends BaseEntityDetailComponent<Office> implements OnInit, OnDestroy {
   private buildingSrv = inject(AssetsBuildingService);

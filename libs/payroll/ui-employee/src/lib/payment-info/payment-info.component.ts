@@ -16,13 +16,14 @@ import { MatOption } from '@angular/material/core';
 import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { MatInput } from '@angular/material/input';
 import { MatButton } from '@angular/material/button';
+import { MaterialModule } from '@ss/common/api-common';
 
 @Component({
     selector: 'ss-payment-info',
     templateUrl: './payment-info.component.html',
     styleUrls: ['./payment-info.component.scss'],
     standalone: true,
-    imports: [MatCard, MatCardContent, NgIf, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatSelect, MatOption, NgFor, MatError, UiAutoCompleteComponent, MatInput, MatButton]
+    imports: [MaterialModule, MatCard, MatCardContent, NgIf, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatSelect, MatOption, NgFor, MatError, UiAutoCompleteComponent, MatInput, MatButton]
 })
 export class PaymentInfoComponent {
     private lookupsSrv =  inject(LookupsService);

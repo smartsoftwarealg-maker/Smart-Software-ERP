@@ -6,7 +6,7 @@ import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import { UntypedFormBuilder, UntypedFormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import {BaseEntityDetailComponent, BaseEntityListComponent} from '@ss/common/ui-base-entity';
-import {PaginatorPersistenceService} from '@ss/common/api-common';
+import { MaterialModule, PaginatorPersistenceService } from '@ss/common/api-common';
 import { MatCard } from '@angular/material/card';
 import { NgIf } from '@angular/common';
 import { MatFormField, MatLabel } from '@angular/material/form-field';
@@ -49,7 +49,7 @@ export class DiscountListComponent extends BaseEntityListComponent<Lookup> {
     templateUrl: '../base-templates/detail-template.html',
     styleUrls: ['../base-templates/detail-template.scss'],
     standalone: true,
-    imports: [MatCard, NgIf, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput]
+    imports: [MaterialModule, MatCard, NgIf, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput]
 })
 export class DiscountDetailComponent extends BaseEntityDetailComponent<Lookup> {
 

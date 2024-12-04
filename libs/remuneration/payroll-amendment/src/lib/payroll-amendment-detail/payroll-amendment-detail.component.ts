@@ -14,6 +14,8 @@ import { EmployeeService, PersonAutocompleteClass } from '@ss/employee-services/
 import { CommonModule } from '@angular/common';
 
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
+import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
+import { PaymonthEditorComponent } from '@ss/remuneration/paymonth-editor';
 
 @Component({
     selector: 'ss-payroll-amendment-detail',
@@ -24,7 +26,8 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         CommonModule,
         MaterialModule,
         TranslateDirective,
-
+        UiAutoCompleteComponent,
+        PaymonthEditorComponent
     ]
 
 })

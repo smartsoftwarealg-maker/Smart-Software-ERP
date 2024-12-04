@@ -9,7 +9,7 @@ import {  ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { LookupsService } from '@ss/common/api-lookup';
 import { LoginService, MaterialModule } from '@ss/common/api-common';
 import { ConsumerService, SupplierService } from '@ss/logistics/api-agent';
-import {  DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
+import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { MatDialog } from '@angular/material/dialog';
 import { WorkflowDialogComponent } from '@ss/workflow';
 import { AppArchiveMainComponent, ASSET_RECEPTIONS_ARCHIVES } from '@ss/common/app-archive';
@@ -32,13 +32,11 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         CommonModule,
         MaterialModule,
         TranslateDirective,
-        TranslatePipe,
-
         DatePickerComponent,
         RouterModule,
-
         QRCodeModule,
-        AppArchiveMainComponent
+        AppArchiveMainComponent,
+        UiAutoCompleteComponent
     ]
 
 })

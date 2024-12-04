@@ -81,35 +81,55 @@
 </mat-card>
 
 @if (id > 0) {
-    <mat-accordion>
-        <mat-expansion-panel #articles
-                             expanded="false"
-                             [class.b-primary-expansion-panel]="articles.expanded"
-                             class="width-div"
-                             (afterExpand)="panelOpened('articles')">
-            <mat-expansion-panel-header>
-                <mat-panel-title translate>
-                    LOGISTICS_ARTICLES
-                </mat-panel-title>
-            </mat-expansion-panel-header>
+    <mat-tab-group class="detail__div" [dynamicHeight]="true">
+        <mat-tab class="width-div">
+            <ng-template mat-tab-label>
+                <span translate>LOGISTICS_ARTICLES</span>
+            </ng-template>
             @if (shownPanel === 'articles') {
                 <ss-contract-article-main></ss-contract-article-main>
             }
-        </mat-expansion-panel>
+        </mat-tab>
 
-        <mat-expansion-panel #archivePanel
-                             [class.b-primary-expansion-panel]="archivePanel.expanded"
-                             class="width-div"
-                             (afterExpand)="panelOpened('archives')">
-            <mat-expansion-panel-header>
-                <mat-panel-title translate>
-                    COMMON_ARCHIVE
-                </mat-panel-title>
-            </mat-expansion-panel-header>
+        <mat-tab class="width-div">
+            <ng-template mat-tab-label>
+                <span translate>COMMON_ARCHIVE</span>
+            </ng-template>
+
             @if (shownPanel === 'archives') {
                 <ss-app-archive-main [id]="id" [appId]="CONTRACT_ARCHIVES" [editable]="isEditable"></ss-app-archive-main>
             }
-        </mat-expansion-panel>
+        </mat-tab>
+    </mat-tab-group>
+<!--    <mat-accordion>-->
+<!--        <mat-expansion-panel #articles-->
+<!--                             expanded="false"-->
+<!--                             [class.b-primary-expansion-panel]="articles.expanded"-->
+<!--                             class="width-div"-->
+<!--                             (afterExpand)="panelOpened('articles')">-->
+<!--            <mat-expansion-panel-header>-->
+<!--                <mat-panel-title translate>-->
+<!--                    LOGISTICS_ARTICLES-->
+<!--                </mat-panel-title>-->
+<!--            </mat-expansion-panel-header>-->
+<!--            @if (shownPanel === 'articles') {-->
+<!--                <ss-contract-article-main></ss-contract-article-main>-->
+<!--            }-->
+<!--        </mat-expansion-panel>-->
 
-    </mat-accordion>
+<!--        <mat-expansion-panel #archivePanel-->
+<!--                             [class.b-primary-expansion-panel]="archivePanel.expanded"-->
+<!--                             class="width-div"-->
+<!--                             (afterExpand)="panelOpened('archives')">-->
+<!--            <mat-expansion-panel-header>-->
+<!--                <mat-panel-title translate>-->
+<!--                    COMMON_ARCHIVE-->
+<!--                </mat-panel-title>-->
+<!--            </mat-expansion-panel-header>-->
+<!--            @if (shownPanel === 'archives') {-->
+<!--                <ss-app-archive-main [id]="id" [appId]="CONTRACT_ARCHIVES" [editable]="isEditable"></ss-app-archive-main>-->
+<!--            }-->
+<!--        </mat-expansion-panel>-->
+
+<!--    </mat-accordion>-->
 }

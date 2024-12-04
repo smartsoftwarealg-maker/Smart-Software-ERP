@@ -24,7 +24,7 @@ import { ExcDocInfoComponent } from '../../../../ui-info/src/lib/exc-doc-info.co
     styleUrls: ['./cash-commission-detail.component.scss'],
     templateUrl: './cash-commission-detail.component.html',
     standalone: true,
-    imports: [MatCard, MatCardContent, NgIf, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, DatePickerComponent, UiAutoCompleteComponent, MatError, MatInput, ExcDocInfoComponent]
+    imports: [MaterialModule, MatCard, MatCardContent, NgIf, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, DatePickerComponent, UiAutoCompleteComponent, MatError, MatInput, ExcDocInfoComponent]
 })
 export class CashCommissionDetailComponent extends BaseEntityDetailComponent<Deposit> {
     private currencySrv = inject(CurrencyService);

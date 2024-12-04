@@ -18,6 +18,7 @@ import { MatSelect } from '@angular/material/select';
 import { MatOption } from '@angular/material/core';
 import { MatButton } from '@angular/material/button';
 import { TranslatePipe } from '@ss/common/ui-lang';
+import { MaterialModule } from '@ss/common/api-common';
 
 interface Lookup {
     id: number;
@@ -29,7 +30,7 @@ interface Lookup {
     templateUrl: './edo.component.html',
     styleUrls: ['./edo.component.scss'],
     standalone: true,
-    imports: [MatCard, NgIf, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, MatError, DatePickerComponent, MatSelect, NgFor, MatOption, MatButton, MatListSubheaderCssMatStyler, MatSelectionList, MatListOption, TranslatePipe]
+    imports: [MaterialModule, MatCard, NgIf, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, MatError, DatePickerComponent, MatSelect, NgFor, MatOption, MatButton, MatListSubheaderCssMatStyler, MatSelectionList, MatListOption, TranslatePipe]
 })
 export class EdoComponent implements OnInit {
     @ViewChild('blist') blist: MatSelectionList

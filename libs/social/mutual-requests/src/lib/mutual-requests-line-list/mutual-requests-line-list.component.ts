@@ -16,13 +16,16 @@ import { MatSort, MatSortHeader } from '@angular/material/sort';
 import { MatTooltip } from '@angular/material/tooltip';
 import { MatMiniFabButton } from '@angular/material/button';
 import { PaginationComponent } from '@ss/common/ui-pagination';
-import { TranslatePipe } from '@ss/common/ui-lang';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
+import { MaterialModule } from '@ss/common/api-common';
 
 @Component({
     selector: 'ss-mutual-requests-line-list',
     standalone: true,
     imports: [
         CommonModule,
+        MaterialModule,
+        TranslateDirective,
         PaginationComponent,
         MatCell,
         MatCellDef,
@@ -31,7 +34,13 @@ import { TranslatePipe } from '@ss/common/ui-lang';
         MatHeaderRow,
         MatHeaderRowDef,
         MatRow,
-        MatRowDef, MatSort, MatSortHeader, MatTable, MatHeaderCellDef, MatTooltip, MatMiniFabButton, TranslatePipe],
+        MatRowDef,
+        MatTable,
+        MatHeaderCellDef,
+        MatTooltip,
+        MatMiniFabButton,
+        TranslatePipe
+    ],
     templateUrl: './mutual-requests-line-list.component.html',
     styleUrl: './mutual-requests-line-list.component.scss',
 })

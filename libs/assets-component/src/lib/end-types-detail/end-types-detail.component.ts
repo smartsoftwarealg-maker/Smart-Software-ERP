@@ -27,11 +27,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
         CommonModule,
         MaterialModule,
         TranslateDirective,
-
-        DatePickerComponent,
         RouterModule,
-
-
         QRCodeModule
     ]
 })

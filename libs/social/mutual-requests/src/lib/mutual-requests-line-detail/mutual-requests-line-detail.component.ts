@@ -2,79 +2,39 @@ import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
     BaseChildEntityDetailComponent,
-    BaseChildEntityListComponent,
-    BaseEntityListComponent
 } from '@ss/common/ui-base-entity';
 import {
-    MutualRequest,
     MutualRequestLine,
     MutualRequestLineService,
     MutualRequestService,
     SocialEmployeeService
 } from '@social/social-api';
-import { BankService } from '@ss/administration/api-bank';
-import { ShellService, SnackBarService } from '@ss/common/ui-shell';
-import { ActivatedRoute, Router } from '@angular/router';
-import { DefaultReportService } from '@ss/common/ui-default-report-component';
-import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
-import { MaterialModule, PaginatorPersistenceService } from '@ss/common/api-common';
+import { MaterialModule } from '@ss/common/api-common';
 
-import {
-    MatCell,
-    MatCellDef,
-    MatColumnDef,
-    MatHeaderCell, MatHeaderCellDef,
-    MatHeaderRow,
-    MatHeaderRowDef, MatRow, MatRowDef, MatTable
-} from '@angular/material/table';
-import { MatSort, MatSortHeader } from '@angular/material/sort';
-
-import { LtmMixtureDetailService } from '@ltm/ltm-api';
-import { MatTooltip } from '@angular/material/tooltip';
 import { FormBuilder, ReactiveFormsModule, UntypedFormGroup, Validators } from '@angular/forms';
-import { EmployeeService, PersonAutocompleteClass } from '@ss/employee-services/employee-services';
+import { PersonAutocompleteClass } from '@ss/employee-services/employee-services';
 import { MutualTypeService } from '@social/social-api';
-import {  DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
-import { DatePickerComponent } from '@ss/common/ui-datepicker';
+import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { MatCard, MatCardContent } from '@angular/material/card';
-import { MatError, MatFormField, MatLabel } from '@angular/material/form-field';
+import { MatFormField, MatLabel } from '@angular/material/form-field';
 import { MatInput } from '@angular/material/input';
-import { MatTab, MatTabGroup } from '@angular/material/tabs';
-import { MatCalendarHeader } from '@angular/material/datepicker';
+import { TranslateDirective } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-mutual-requests-line-detail',
     standalone: true,
     imports: [
         CommonModule,
-
-        MatCell,
-        MatCellDef,
-        MatColumnDef,
-        MatHeaderCell,
-        MatHeaderRow,
-        MatHeaderRowDef,
-        MatRow,
-        MatRowDef,
-        MatSort,
-        MatSortHeader,
-        MatTable,
-
-        MatHeaderCellDef,
-        MatTooltip,
-
-        DatePickerComponent,
+        MaterialModule,
+        TranslateDirective,
         MatCard,
         MatCardContent,
-        MatError,
         MatFormField,
         MatInput,
         MatLabel,
-        MatTab,
-        MatTabGroup,
         MaterialModule,
         ReactiveFormsModule,
-        MatCalendarHeader
+        UiAutoCompleteComponent
     ],
     templateUrl: './mutual-requests-line-detail.component.html',
     styleUrl: './mutual-requests-line-detail.component.scss'

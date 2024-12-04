@@ -2,7 +2,7 @@ import { Component, inject, OnInit } from '@angular/core';
 import {BaseTransactionDetailComponent, Transaction} from '@ss/logistics/api-transaction';
 import {CCGroup, Lookup, LookupsService, PayMethod} from '@ss/common/api-lookup';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
-import {LoginService, User} from '@ss/common/api-common';
+import { LoginService, MaterialModule, User } from '@ss/common/api-common';
 import {Agent, SupplierService} from '@ss/logistics/api-agent';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import { ActivatedRoute, Router, RouterOutlet } from '@angular/router';
@@ -29,7 +29,7 @@ import { CdkTextareaAutosize } from '@angular/cdk/text-field';
     templateUrl: './purchase-request-detail.component.html',
     styleUrls: ['../../../../../common/assets/src/assets/transac-detail.scss'],
     standalone: true,
-    imports: [MatCard, MatCardContent, NgIf, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, DatePickerComponent, UiAutoCompleteComponent, MatError, CdkTextareaAutosize, RouterOutlet]
+    imports: [MaterialModule, MatCard, MatCardContent, NgIf, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, DatePickerComponent, UiAutoCompleteComponent, MatError, CdkTextareaAutosize, RouterOutlet]
 })
 export class PurchaseRequestDetailComponent extends BaseTransactionDetailComponent implements OnInit {
     public groups: CCGroup[];

@@ -16,6 +16,7 @@ import { DatePickerComponent } from '@ss/common/ui-datepicker';
 import { UiStockInfoComponent } from '@ss/logistics/ui-stock-info';
 import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
+import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 
 @Component({
     selector: 'ss-proforma-detail',
@@ -29,10 +30,8 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         ReactiveFormsModule,
         RouterModule,
         DatePickerComponent,
-
-        UiStockInfoComponent,
-        DocInfoComponent
-    ],
+        UiAutoCompleteComponent
+    ]
 })
 export class QuotationDetailComponent extends BaseTransactionDetailComponent {
 

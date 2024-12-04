@@ -7,7 +7,7 @@ import {DasService} from '../das.service';
 import {Fund, LookupsService} from '@ss/common/api-lookup';
 import {ElementsInfoService} from '@ss/remuneration/elementsinfo';
 import {Formula, PayrollFormulasService} from '@ss/remuneration/payroll-formulas';
-import {LoginService} from '@ss/common/api-common';
+import { LoginService, MaterialModule } from '@ss/common/api-common';
 import { MatCard } from '@angular/material/card';
 import { NgIf, NgFor } from '@angular/common';
 import { MatFormField, MatLabel, MatError } from '@angular/material/form-field';
@@ -28,7 +28,7 @@ interface Lookup {
     templateUrl: './das.component.html',
     styleUrls: ['./das.component.scss'],
     standalone: true,
-    imports: [MatCard, NgIf, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, MatError, MatSelect, NgFor, MatOption, MatButton, TranslatePipe]
+    imports: [MaterialModule, MatCard, NgIf, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, MatError, MatSelect, NgFor, MatOption, MatButton, TranslatePipe]
 })
 export class DasComponent implements OnInit {
     form: UntypedFormGroup = null;

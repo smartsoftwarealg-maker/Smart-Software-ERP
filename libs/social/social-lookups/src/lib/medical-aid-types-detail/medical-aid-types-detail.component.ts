@@ -11,11 +11,13 @@ import { MedicalAid, MedicalAidTypesService, SocialActivityService } from '@soci
 import { MatCard, MatCardContent } from '@angular/material/card';
 import { MatError, MatFormField, MatLabel } from '@angular/material/form-field';
 import { MatInput } from '@angular/material/input';
+import { TranslateDirective } from '@ss/common/ui-lang';
+import { MaterialModule } from '@ss/common/api-common';
 
 @Component({
     selector: 'ss-medical-aids-detail',
     standalone: true,
-    imports: [CommonModule,  MatCard, MatCardContent, MatError, MatFormField, MatInput, MatLabel, ReactiveFormsModule],
+    imports: [CommonModule, TranslateDirective, MaterialModule, MatCardContent, MatError, MatFormField, MatInput, MatLabel, ReactiveFormsModule],
     templateUrl: './medical-aid-types-detail.component.html',
     styleUrl: './medical-aid-types-detail.component.scss',
 })

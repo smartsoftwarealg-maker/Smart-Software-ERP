@@ -16,11 +16,13 @@ import {
 import { MatCard, MatCardContent } from '@angular/material/card';
 import { MatError, MatFormField, MatLabel } from '@angular/material/form-field';
 import { MatInput } from '@angular/material/input';
+import { MaterialModule } from '@ss/common/api-common';
+import { TranslateDirective } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-mutual-type-detail',
     standalone: true,
-    imports: [CommonModule,  MatCard, MatCardContent, MatError, MatFormField, MatInput, MatLabel, ReactiveFormsModule],
+    imports: [CommonModule, TranslateDirective, MaterialModule, MatCard, MatCardContent, MatError, MatFormField, MatInput, MatLabel, ReactiveFormsModule],
     templateUrl: './mutual-type-detail.component.html',
     styleUrl: './mutual-type-detail.component.scss',
 })

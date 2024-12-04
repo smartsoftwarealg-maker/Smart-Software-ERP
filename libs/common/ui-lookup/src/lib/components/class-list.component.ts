@@ -11,7 +11,7 @@ import {
     GenerationAccountAutocompleteModel
 } from '@ss/accounting/api-accounts';
 import {GenerationAccountService} from '@ss/accounting/api-accounts';
-import {PaginatorPersistenceService} from '@ss/common/api-common';
+import { MaterialModule, PaginatorPersistenceService } from '@ss/common/api-common';
 import { MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from '@angular/material/table';
 import { TranslateDirective } from '@ss/common/ui-lang';
 import { PaginationComponent } from '@ss/common/ui-pagination';
@@ -64,7 +64,7 @@ export class ClassListComponent extends BaseEntityListComponent<Class> {
         }
         `],
     standalone: true,
-    imports: [MatCard, NgIf, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, UiAutoCompleteComponent]
+    imports: [MaterialModule, MatCard, NgIf, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, UiAutoCompleteComponent]
 })
 export class ClassDetailComponent extends BaseEntityDetailComponent<Class> {
     private accountSrv =  inject(GenerationAccountService);

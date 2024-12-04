@@ -15,7 +15,7 @@ import {
 } from '@ss/common/api-lookup';
 import {AssetsService} from '../services/assets.service';
 import { IsParamService, LoginService, MaterialModule } from '@ss/common/api-common';
-import {  DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
+import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import {Agent, AgentService, ConsumerService, CustomerService, SupplierService} from "@ss/logistics/api-agent";
 import {MatExpansionPanel} from '@angular/material/expansion';
 import {Account, AccountAutocompleteModel, AccountService} from '@ss/accounting/api-accounts';
@@ -49,6 +49,7 @@ import { AssetAppointmentListComponent } from '../asset-appointment-list/asset-a
 import { AssetCostsListComponent } from '../asset-costs-list/asset-costs-list.component';
 import { ImageInputComponent } from '@ss/common/ui-image-input';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
+import { ChildAttributesComponent } from '@ss/custom-attributes';
 
 @Component({
     selector: 'ss-assets-detail',
@@ -60,12 +61,12 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         MaterialModule,
         TranslateDirective,
         TranslatePipe,
-
         DatePickerComponent,
         RouterModule,
-
         QRCodeModule,
-        AssetAppointmentListComponent
+        AssetAppointmentListComponent,
+        UiAutoCompleteComponent,
+        ChildAttributesComponent
     ]
 })
 export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> implements OnInit {

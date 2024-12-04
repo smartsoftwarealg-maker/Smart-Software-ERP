@@ -13,6 +13,7 @@ import { DatePickerComponent } from '@ss/common/ui-datepicker';
 
 
 import { TranslateDirective } from '@ss/common/ui-lang';
+import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 
 @Component({
     selector: 'ss-invoice-cancellation-detail',
@@ -26,10 +27,10 @@ import { TranslateDirective } from '@ss/common/ui-lang';
         ReactiveFormsModule,
         RouterModule,
         DatePickerComponent,
+        UiAutoCompleteComponent
 
 
-
-    ],
+    ]
 })
 export class InvoiceCancellationDetailComponent extends BaseTransactionDetailComponent implements OnInit {
     constructor(

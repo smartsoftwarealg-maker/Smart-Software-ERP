@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BaseTransactionDetailComponent, TransactionLinesService } from "@ss/logistics/api-transaction";
 import {CCGroup, Lookup} from '@ss/common/api-lookup';
-import {LoginService} from '@ss/common/api-common';
+import { LoginService, MaterialModule } from '@ss/common/api-common';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import { ActivatedRoute, Router, RouterOutlet } from '@angular/router';
 import { UntypedFormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -25,7 +25,7 @@ import { CdkTextareaAutosize } from '@angular/cdk/text-field';
     templateUrl: './transfer-reception-detail.component.html',
     styleUrls: ['../../../../../common/assets/src/assets/transac-detail.scss'],
     standalone: true,
-    imports: [MatCard, MatCardContent, NgIf, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, MatError, DatePickerComponent, UiAutoCompleteComponent, MatTabGroup, MatTab, MatTabLabel, CdkTextareaAutosize, RouterOutlet]
+    imports: [MaterialModule, MatCard, MatCardContent, NgIf, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, MatError, DatePickerComponent, UiAutoCompleteComponent, MatTabGroup, MatTab, MatTabLabel, CdkTextareaAutosize, RouterOutlet]
 })
 export class TransferReceptionDetailComponent extends BaseTransactionDetailComponent implements OnInit {
     public groups: CCGroup[];

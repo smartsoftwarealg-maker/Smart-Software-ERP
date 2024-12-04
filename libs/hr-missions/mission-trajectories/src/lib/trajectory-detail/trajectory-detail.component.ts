@@ -11,13 +11,14 @@ import { NgIf } from '@angular/common';
 import { MatFormField, MatLabel, MatError } from '@angular/material/form-field';
 import { TranslateDirective } from '@ss/common/ui-lang';
 import { MatInput } from '@angular/material/input';
+import { MaterialModule } from '@ss/common/api-common';
 
 @Component({
     selector: 'ss-trajectory-detail',
     templateUrl: './trajectory-detail.component.html',
     styleUrls: ['./trajectory-detail.component.scss'],
     standalone: true,
-    imports: [MatCard, MatCardContent, NgIf, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, MatError]
+    imports: [MaterialModule, MatCard, MatCardContent, NgIf, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, MatError]
 })
 export class TrajectoryDetailComponent extends BaseEntityDetailComponent<Trajectory>{
     constructor(

@@ -6,24 +6,29 @@ import { KeepOnToolbar, ShellService, SnackBarService, ToolbarButton } from '@ss
 import { ActivatedRoute, Router } from '@angular/router';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { DefaultReportService } from '@ss/common/ui-default-report-component';
-import { PaginatorPersistenceService } from '@ss/common/api-common';
+import { MaterialModule, PaginatorPersistenceService } from '@ss/common/api-common';
 
 import {
     MatCell,
     MatCellDef,
     MatColumnDef,
-    MatHeaderCell, MatHeaderCellDef,
+    MatHeaderCell,
+    MatHeaderCellDef,
     MatHeaderRow,
-    MatHeaderRowDef, MatRow, MatRowDef, MatTable
+    MatHeaderRowDef,
+    MatRow,
+    MatRowDef,
+    MatTable,
 } from '@angular/material/table';
 
 import { EdoHeaderService } from '@social/social-api';
 import { PaginationComponent } from '@ss/common/ui-pagination';
+import { TranslateDirective } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-social-edo-header-list',
     standalone: true,
-    imports: [CommonModule, MatCell, MatCellDef, MatColumnDef, MatHeaderCell, MatHeaderRow, MatHeaderRowDef, MatRow, MatRowDef, MatTable, MatHeaderCellDef, PaginationComponent],
+    imports: [CommonModule, MaterialModule, TranslateDirective, MatCell, MatCellDef, MatColumnDef, MatHeaderCell, MatHeaderRow, MatHeaderRowDef, MatRow, MatRowDef, MatTable, MatHeaderCellDef, PaginationComponent],
     templateUrl: './social-edo-header-list.component.html',
     styleUrl: './social-edo-header-list.component.scss',
 })

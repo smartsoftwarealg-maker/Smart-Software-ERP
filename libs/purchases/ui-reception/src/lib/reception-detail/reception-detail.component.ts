@@ -17,6 +17,7 @@ import { DatePickerComponent } from '@ss/common/ui-datepicker';
 import { UiStockInfoComponent } from '@ss/logistics/ui-stock-info';
 import { ReceptionLinesService } from '../reception-lines.service';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
+import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 
 
 @Component({
@@ -28,12 +29,11 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         CommonModule,
         MaterialModule,
         TranslateDirective,
-        TranslatePipe,
         ReactiveFormsModule,
         DatePickerComponent,
-
-        RouterOutlet
-    ],
+        RouterOutlet,
+        UiAutoCompleteComponent
+    ]
 })
 export class ReceptionDetailComponent extends BaseTransactionDetailComponent implements OnInit {
 

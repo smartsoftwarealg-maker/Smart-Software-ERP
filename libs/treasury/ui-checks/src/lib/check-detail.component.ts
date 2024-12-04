@@ -5,7 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
-import { HttpService, LoginService } from '@ss/common/api-common';
+import { HttpService, LoginService, MaterialModule } from '@ss/common/api-common';
 import { AgentLookupModel, AgentService } from '@ss/logistics/api-agent';
 import { MatCard } from '@angular/material/card';
 import { NgIf } from '@angular/common';
@@ -21,7 +21,7 @@ import { MatCheckbox } from '@angular/material/checkbox';
     styleUrls: ['./check-detail.component.scss'],
     templateUrl: './check-detail.component.html',
     standalone: true,
-    imports: [MatCard, NgIf, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, UiAutoCompleteComponent, MatError, DatePickerComponent, MatCheckbox]
+    imports: [MaterialModule, MatCard, NgIf, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, UiAutoCompleteComponent, MatError, DatePickerComponent, MatCheckbox]
 })
 export class CheckDetailComponent extends BaseEntityDetailComponent<Check> implements OnInit {
 

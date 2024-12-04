@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { UntypedFormGroup, Validators, FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BaseChildEntityDetailComponent } from '@ss/common/ui-base-entity';
-import { LoginService } from '@ss/common/api-common';
+import { LoginService, MaterialModule } from '@ss/common/api-common';
 import {EmployeeDecisionService, Decision, DecisionMotiveService} from '@ss/payroll/api-employee';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import { MatCard, MatCardHeader, MatCardContent } from '@angular/material/card';
@@ -18,7 +18,7 @@ import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
     templateUrl: './employee-decision-detail.component.html',
     styleUrls: ['./employee-decision-detail.component.scss'],
     standalone: true,
-    imports: [MatCard, MatCardHeader, NgIf, MatMiniFabButton, MatCardContent, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, DatePickerComponent, UiAutoCompleteComponent]
+    imports: [MaterialModule, MatCard, MatCardHeader, NgIf, MatMiniFabButton, MatCardContent, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, DatePickerComponent, UiAutoCompleteComponent]
 })
 export class EmployeeDecisionDetailComponent extends BaseChildEntityDetailComponent<Decision> {
     private formBuilder = inject(FormBuilder);

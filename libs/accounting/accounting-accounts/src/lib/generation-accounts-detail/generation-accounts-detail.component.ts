@@ -16,13 +16,14 @@ import { MatFormField, MatLabel, MatError } from '@angular/material/form-field';
 import { TranslateDirective } from '@ss/common/ui-lang';
 import { MatInput } from '@angular/material/input';
 import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
+import { MaterialModule } from '@ss/common/api-common';
 
 @Component({
     selector: 'ss-generation-accounts-detail',
     templateUrl: './generation-accounts-detail.component.html',
     styleUrls: ['./generation-accounts-detail.component.scss'],
     standalone: true,
-    imports: [MatCard, MatCardContent, NgIf, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, MatError, UiAutoCompleteComponent]
+    imports: [MaterialModule, MatCard, MatCardContent, NgIf, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, MatError, UiAutoCompleteComponent]
 })
 export class GenerationAccountsDetailComponent extends BaseEntityDetailComponent<GenerationAccount> {
     private accountSrv = inject(AccountService);

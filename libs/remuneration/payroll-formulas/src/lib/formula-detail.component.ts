@@ -10,7 +10,7 @@ import {LookupsService} from '@ss/common/api-lookup';
 import {PayrollFormulasService} from './payroll-formulas.service';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import { MonthSelectorComponent } from "@ss/remuneration/payroll-month";
-import { LoginService } from "@ss/common/api-common";
+import { LoginService, MaterialModule } from '@ss/common/api-common';
 import { MatCard, MatCardContent } from '@angular/material/card';
 import { NgIf } from '@angular/common';
 import { MatFormField, MatLabel, MatError } from '@angular/material/form-field';
@@ -25,7 +25,7 @@ import { MatOption } from '@angular/material/core';
     templateUrl: './formula-detail.component.html',
     styleUrls: ['./formula-detail.component.scss'],
     standalone: true,
-    imports: [MatCard, MatCardContent, NgIf, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, MatError, UiAutoCompleteComponent, MatSelect, MatOption]
+    imports: [MaterialModule, MatCard, MatCardContent, NgIf, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, MatError, UiAutoCompleteComponent, MatSelect, MatOption]
 })
 export class FormulaDetailComponent extends BaseEntityDetailComponent<Formula> {
     private loginSrv = inject(LoginService);

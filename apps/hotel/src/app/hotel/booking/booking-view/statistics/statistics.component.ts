@@ -8,6 +8,7 @@ import { MatMenuTrigger, MatMenu } from '@angular/material/menu';
 import { TranslateDirective } from '../../../../../../../../libs/common/ui-lang/src/lib/translate.directive';
 import { MatProgressSpinner } from '@angular/material/progress-spinner';
 import { TranslatePipe } from '../../../../../../../../libs/common/ui-lang/src/lib/translate.pipe';
+import { MaterialModule } from '@ss/common/api-common';
 
 interface Statistics {
     roomCount: number;
@@ -29,7 +30,7 @@ interface Statistics {
     templateUrl: './statistics.component.html',
     styleUrls: ['./statistics.component.scss'],
     standalone: true,
-    imports: [MatIconButton, MatTooltip, MatMenuTrigger, MatMenu, TranslateDirective, MatProgressSpinner, MatMiniFabButton, TranslatePipe]
+    imports: [MaterialModule, TranslatePipe]
 })
 export class StatisticsComponent {
 

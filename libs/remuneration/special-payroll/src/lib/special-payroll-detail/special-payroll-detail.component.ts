@@ -4,7 +4,7 @@ import {KeepOnToolbar, ShellService, SnackBarService, ToolbarButton} from '@ss/c
 import { ActivatedRoute, Router } from "@angular/router";
 import { FormControl, UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import {LoginService, PaginationModel} from '@ss/common/api-common';
+import { LoginService, MaterialModule, PaginationModel } from '@ss/common/api-common';
 import {ElementsEntryService, ELine} from '@ss/remuneration/elements-entry';
 import {map, of, switchMap, tap} from 'rxjs';
 import {PayrollMonthService} from '@ss/remuneration/payroll-month';
@@ -31,7 +31,7 @@ import { TranslatePipe } from '@ss/common/ui-lang';
     templateUrl: './special-payroll-detail.component.html',
     styleUrls: ['./special-payroll-detail.component.scss'],
     standalone: true,
-    imports: [MatCard, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, NgIf, MatError, UiAutoCompleteComponent, MatMiniFabButton, MatTooltip, MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, ImageInputComponent, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, PaginationComponent, MatProgressSpinner, TranslatePipe]
+    imports: [MaterialModule, MatCard, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, NgIf, MatError, UiAutoCompleteComponent, MatMiniFabButton, MatTooltip, MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, ImageInputComponent, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, PaginationComponent, MatProgressSpinner, TranslatePipe]
 })
 export class SpecialPayrollDetailComponent extends BaseEntityDetailComponent<Special> implements OnInit, OnDestroy {
     private router = inject(Router);

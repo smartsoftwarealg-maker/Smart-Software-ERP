@@ -4,7 +4,7 @@ import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import { ActivatedRoute, Router, RouterEvent, RouterOutlet } from '@angular/router';
 import { UntypedFormBuilder, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import {LoginService} from '@ss/common/api-common';
+import { LoginService, MaterialModule } from '@ss/common/api-common';
 import {FurnitureReceptionService} from '../furniture-reception.service';
 import {FurnitureTransaction} from '../furniture-api';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
@@ -24,7 +24,7 @@ import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
     styleUrls: ['./furniture-reception-detail.component.scss'],
     standalone: true,
     imports: [
-        MatCard,
+        MaterialModule,
         MatCardContent,
         NgIf,
         FormsModule,

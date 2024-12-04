@@ -6,7 +6,7 @@ import {BaseEntityDetailComponent, BaseEntityListComponent} from '@ss/common/ui-
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import { UntypedFormBuilder, UntypedFormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
-import {PaginatorPersistenceService} from '@ss/common/api-common';
+import { MaterialModule, PaginatorPersistenceService } from '@ss/common/api-common';
 import {JudicialFrameService} from '@ss/payroll/api-employee';
 import { MatCard } from '@angular/material/card';
 import { NgIf } from '@angular/common';
@@ -54,7 +54,7 @@ export class JudicialFrameListComponent extends BaseEntityListComponent<Lookup> 
     templateUrl: '../base-templates/detail-template.html',
     styleUrls: ['../base-templates/detail-template.scss'],
     standalone: true,
-    imports: [MatCard, NgIf, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput]
+    imports: [MaterialModule, MatCard, NgIf, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput]
 })
 export class JudicialFrameDetailComponent extends BaseEntityDetailComponent<Lookup> {
 

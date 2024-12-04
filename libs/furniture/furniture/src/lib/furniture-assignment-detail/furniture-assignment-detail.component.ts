@@ -7,7 +7,7 @@ import { ActivatedRoute, Router, RouterEvent, RouterOutlet } from '@angular/rout
 import { UntypedFormBuilder, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import { ConsumerService, SupplierService } from '@ss/logistics/api-agent';
-import {LoginService} from '@ss/common/api-common';
+import { LoginService, MaterialModule } from '@ss/common/api-common';
 import {filter} from 'rxjs';
 import {FurnitureAssignmentsService} from '../furniture-assignments.service';
 import { MatCard, MatCardContent } from '@angular/material/card';
@@ -24,7 +24,7 @@ import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
     styleUrls: ['./furniture-assignment-detail.component.scss'],
     standalone: true,
     imports: [
-        MatCard,
+        MaterialModule,
         MatCardContent,
         NgIf,
         FormsModule,

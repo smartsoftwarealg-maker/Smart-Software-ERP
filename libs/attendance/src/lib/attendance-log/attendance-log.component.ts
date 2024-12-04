@@ -5,7 +5,7 @@ import { FormBuilder, Validators, FormsModule, ReactiveFormsModule } from '@angu
 import {ATTReport, TYPES} from '../attendance-api';
 import {ActivatedRoute} from '@angular/router';
 import { DatePipe, NgStyle } from '@angular/common';
-import {LanguageService} from '@ss/common/api-common';
+import { LanguageService, MaterialModule } from '@ss/common/api-common';
 import localeFr from '@angular/common/locales/fr';
 import localeAr from '@angular/common/locales/ar';
 import { registerLocaleData } from '@angular/common';
@@ -15,7 +15,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
 import { MatInput } from '@angular/material/input';
 import { MatSelect } from '@angular/material/select';
 import { MatOption } from '@angular/material/core';
-import { DatePickerComponent } from '../../../../common/ui-datepicker/src/lib/date-picker.component';
+import { DatePickerComponent } from '@ss/common/ui-datepicker';
 import { MatButton } from '@angular/material/button';
 import { MatProgressSpinner } from '@angular/material/progress-spinner';
 import { MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from '@angular/material/table';
@@ -27,25 +27,11 @@ import { TranslatePipe } from '@ss/common/ui-lang';
     styleUrls: ['./attendance-log.component.scss'],
     standalone: true,
     imports: [
-        MatCard,
+        MaterialModule,
         FormsModule,
         ReactiveFormsModule,
-        MatFormField,
-        MatLabel,
         TranslateDirective,
-        MatInput,
-        MatSelect,
-        MatOption,
-        MatError,
         DatePickerComponent,
-        MatButton,
-        MatProgressSpinner,
-        MatTable,
-        MatColumnDef,
-        MatHeaderCellDef,
-        MatHeaderCell,
-        MatCellDef,
-        MatCell,
         NgStyle,
         MatHeaderRowDef,
         MatHeaderRow,

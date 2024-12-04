@@ -7,7 +7,7 @@ import { CommonModule } from "@angular/common";
 
 import { GridRankService } from '../grid-rank.service';
 import { FormBuilder, UntypedFormGroup, Validators } from "@angular/forms";
-import { TranslateDirective } from '@ss/common/ui-lang';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: "ss-salary-grid-list",
@@ -17,9 +17,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     imports: [
         CommonModule,
         MaterialModule,
-        TranslateDirective,
-
-
+        TranslateDirective
     ]
 })
 

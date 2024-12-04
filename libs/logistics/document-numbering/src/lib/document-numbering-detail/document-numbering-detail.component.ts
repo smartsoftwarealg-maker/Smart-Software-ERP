@@ -8,7 +8,7 @@ import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {DocumentNumberingService} from '../document-numbering.service';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {DefinitionLookupService} from '../definition-lookup.service';
-import {LoginService} from '@ss/common/api-common';
+import { LoginService, MaterialModule } from '@ss/common/api-common';
 import { MatCard, MatCardContent } from '@angular/material/card';
 import { NgIf } from '@angular/common';
 import { MatFormField, MatLabel, MatError } from '@angular/material/form-field';
@@ -21,7 +21,7 @@ import { MatInput } from '@angular/material/input';
     templateUrl: './document-numbering-detail.component.html',
     styleUrls: ['./document-numbering-detail.component.scss'],
     standalone: true,
-    imports: [MatCard, MatCardContent, NgIf, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, UiAutoCompleteComponent, MatInput, MatError]
+    imports: [MaterialModule, MatCard, MatCardContent, NgIf, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, UiAutoCompleteComponent, MatInput, MatError]
 })
 export class DocumentNumberingDetailComponent extends BaseEntityDetailComponent<LDocument> implements OnInit {
     private definitionSrv = inject(DefinitionLookupService);

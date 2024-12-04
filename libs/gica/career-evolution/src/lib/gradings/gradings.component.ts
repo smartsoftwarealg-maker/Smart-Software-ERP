@@ -28,7 +28,7 @@ import {
 
 import { GradeService } from '../services/grade.service';
 import { Grade } from '../gica-careers-api';
-import { HttpService, LoginService, PaginationModel } from '@ss/common/api-common';
+import { HttpService, LoginService, MaterialModule, PaginationModel } from '@ss/common/api-common';
 import { map, Observable, of, Subscription, tap } from 'rxjs';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { ImageInputComponent, ImageModel } from '@ss/common/ui-image-input';
@@ -38,8 +38,9 @@ import { TranslatePipe } from '@ss/common/ui-lang';
 @Component({
     selector: 'ss-gica-gradings',
     standalone: true,
-    imports: [CommonModule,
-
+    imports: [
+        CommonModule,
+        MaterialModule,
         MatCell,
         MatCellDef,
         MatColumnDef,
@@ -51,15 +52,15 @@ import { TranslatePipe } from '@ss/common/ui-lang';
         MatSort,
         MatSortHeader,
         MatTable,
-
-        MatCard,
-        MatCardContent,
-        MatError,
         MatFormField,
         MatInput,
         MatLabel,
         ReactiveFormsModule,
-        MatButton, MatHeaderCellDef, MatProgressSpinner,  MatHint, PaginationComponent, ImageInputComponent, TranslatePipe],
+        MatHeaderCellDef,
+        PaginationComponent,
+        ImageInputComponent,
+        TranslatePipe
+    ],
     templateUrl: './gradings.component.html',
     styleUrl: './gradings.component.css'
 })

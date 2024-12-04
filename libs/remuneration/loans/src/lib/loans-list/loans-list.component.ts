@@ -13,6 +13,7 @@ import { CommonModule } from '@angular/common';
 
 import { PaginationComponent } from '@ss/common/ui-pagination';
 import { PaymonthPipe } from '@ss/payroll-common';
+import { TranslateDirective } from '@ss/common/ui-lang';
 
 
 @Component({
@@ -23,8 +24,7 @@ import { PaymonthPipe } from '@ss/payroll-common';
     imports: [
         CommonModule,
         MaterialModule,
-
-
+        TranslateDirective,
         PaginationComponent,
         PaymonthPipe
     ]

@@ -24,29 +24,17 @@ import { MatCard, MatCardContent } from '@angular/material/card';
 import { MatError, MatFormField, MatLabel } from '@angular/material/form-field';
 import { MatInput } from '@angular/material/input';
 import { DatePickerComponent } from '@ss/common/ui-datepicker';
+import { TranslateDirective } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-mutual-requests',
     standalone: true,
     imports: [
         CommonModule,
-
-        MatCell,
-        MatCellDef,
-        MatColumnDef,
-        MatHeaderCell,
-        MatHeaderRow,
-        MatHeaderRowDef,
-        MatRow,
-        MatRowDef,
-        MatSort,
-        MatSortHeader,
-        MatTable,
-
-        MatHeaderCellDef,
+        MaterialModule,
+        TranslateDirective,
         MatCard,
         MatCardContent,
-        MatError,
         MatFormField,
         MatInput,
         MatLabel,

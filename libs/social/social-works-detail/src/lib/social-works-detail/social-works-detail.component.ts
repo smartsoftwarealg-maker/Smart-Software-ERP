@@ -13,18 +13,19 @@ import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute } from '@angular/router';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { PersonAutocompleteClass } from '@ss/employee-services/employee-services';
-import { LoginService } from '@ss/common/api-common';
+import { LoginService, MaterialModule } from '@ss/common/api-common';
 import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { DatePickerComponent } from '@ss/common/ui-datepicker';
 
 import { MatCard, MatCardContent } from '@angular/material/card';
 import { MatError, MatFormField, MatLabel } from '@angular/material/form-field';
 import { MatInput } from '@angular/material/input';
+import { TranslateDirective } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-social-works-detail',
     standalone: true,
-    imports: [CommonModule, DatePickerComponent, MatCard, MatCardContent, MatError, MatFormField, MatLabel, ReactiveFormsModule, MatInput, UiAutoCompleteComponent],
+    imports: [CommonModule, MaterialModule, TranslateDirective, DatePickerComponent, MatCard, MatCardContent, MatError, MatFormField, MatLabel, ReactiveFormsModule, MatInput, UiAutoCompleteComponent],
     templateUrl: './social-works-detail.component.html',
     styleUrl: './social-works-detail.component.scss'
 })

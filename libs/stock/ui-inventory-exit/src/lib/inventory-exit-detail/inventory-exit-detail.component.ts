@@ -5,7 +5,7 @@ import { UntypedFormBuilder, FormsModule, ReactiveFormsModule } from '@angular/f
 import {Lookup} from '@ss/common/api-lookup';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {InventoryExitService} from '@ss/stock/api-inventory-exit';
-import {LoginService} from '@ss/common/api-common';
+import { LoginService, MaterialModule } from '@ss/common/api-common';
 import { BaseTransactionDetailComponent } from "@ss/logistics/api-transaction";
 import {MatDialog} from '@angular/material/dialog';
 import { InventoryExitLinesService } from "@ss/stock/api-inventory-exit-lines";
@@ -23,7 +23,7 @@ import { CdkTextareaAutosize } from '@angular/cdk/text-field';
     styleUrls: ['../../../../../common/assets/src/assets/transac-detail.scss'],
     templateUrl: './inventory-exit-detail.component.html',
     standalone: true,
-    imports: [MatCard, MatCardContent, NgIf, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, DatePickerComponent, UiAutoCompleteComponent, MatError, CdkTextareaAutosize, RouterOutlet]
+    imports: [MaterialModule, MatCard, MatCardContent, NgIf, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, DatePickerComponent, UiAutoCompleteComponent, MatError, CdkTextareaAutosize, RouterOutlet]
 })
 export class InventoryExitDetailComponent extends BaseTransactionDetailComponent {
 

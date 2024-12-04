@@ -6,7 +6,7 @@ import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import { UntypedFormBuilder, UntypedFormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import {BaseEntityDetailComponent, BaseEntityListComponent} from '@ss/common/ui-base-entity';
-import {LoginService, PaginatorPersistenceService} from '@ss/common/api-common';
+import { LoginService, MaterialModule, PaginatorPersistenceService } from '@ss/common/api-common';
 import {OptionService} from '@ss/logistics/ui-options';
 import {Observable, tap} from 'rxjs';
 import { MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from '@angular/material/table';
@@ -49,7 +49,7 @@ export class StoreNameListComponent extends BaseEntityListComponent<Store> {
     templateUrl: '../base-templates/detail-template.html',
     styleUrls: ['../base-templates/detail-template.scss'],
     standalone: true,
-    imports: [MatCard, NgIf, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput]
+    imports: [MaterialModule, MatCard, NgIf, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput]
 })
 export class StoreNameDetailComponent extends BaseEntityDetailComponent<Store> {
     private mainStore = 0;

@@ -14,7 +14,7 @@ import {
 } from '@ss/accounting/accounting-api';
 import {CenterService} from '@ss/administration/api-center';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
-import {LoginService, PaginationModel, User} from '@ss/common/api-common';
+import { LoginService, MaterialModule, PaginationModel, User } from '@ss/common/api-common';
 import { MatSelectionListChange, MatListSubheaderCssMatStyler, MatSelectionList, MatListOption } from '@angular/material/list';
 import {UserListService} from '@ss/common/api-users';
 import {of, switchMap, tap} from 'rxjs';
@@ -32,7 +32,7 @@ import { MatMiniFabButton } from '@angular/material/button';
     templateUrl: './journal-detail.component.html',
     styleUrls: ['./journal-detail.component.scss'],
     standalone: true,
-    imports: [MatCard, MatCardContent, NgIf, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, MatError, UiAutoCompleteComponent, MatListSubheaderCssMatStyler, MatMiniFabButton, MatSelectionList, NgFor, MatListOption]
+    imports: [MaterialModule, MatCard, MatCardContent, NgIf, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, MatError, UiAutoCompleteComponent, MatListSubheaderCssMatStyler, MatMiniFabButton, MatSelectionList, NgFor, MatListOption]
 })
 export class JournalDetailComponent extends BaseEntityDetailComponent<Journal> {
     private centerSrv  = inject(CenterService);

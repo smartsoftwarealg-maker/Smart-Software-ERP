@@ -18,12 +18,13 @@ import {
     MatHeaderRowDef, MatRow, MatRowDef, MatTable
 } from '@angular/material/table';
 import { PaginationComponent } from '@ss/common/ui-pagination';
+import { TranslateDirective } from '@ss/common/ui-lang';
 
 
 @Component({
     selector: 'ss-medical-aids',
     standalone: true,
-    imports: [CommonModule, MatCell, MatCellDef, MatColumnDef, MatHeaderCell, MatHeaderRow, MatHeaderRowDef, MatRow, MatRowDef, MatTable, MatHeaderCellDef, PaginationComponent],
+    imports: [CommonModule, TranslateDirective, MatCell, MatCellDef, MatColumnDef, MatHeaderCell, MatHeaderRow, MatHeaderRowDef, MatRow, MatRowDef, MatTable, MatHeaderCellDef, PaginationComponent],
     templateUrl: './medical-aid-types-list.component.html',
     styleUrl: './medical-aid-types-list.component.scss',
 })

@@ -11,11 +11,11 @@ import {
     Validators
 } from '@angular/forms';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { ClassService, LookupsService } from '@ss/common/api-lookup';
 import { ServiceArticleService } from '../service-article.service';
-import {  DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
+import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 
 
 import { MatCardModule } from '@angular/material/card';
@@ -24,15 +24,14 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatOptionModule } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
-
+import { TranslateDirective } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-service-article-detail',
     standalone: true,
     imports: [
         CommonModule,
-
-
+        TranslateDirective,
         FormsModule,
         MatCardModule,
         MatCheckboxModule,
@@ -41,6 +40,7 @@ import { MatSelectModule } from '@angular/material/select';
         MatOptionModule,
         MatSelectModule,
         ReactiveFormsModule,
+        UiAutoCompleteComponent
     ],
     templateUrl: './service-article-detail.component.html',
     styleUrls: ['./service-article-detail.component.css']

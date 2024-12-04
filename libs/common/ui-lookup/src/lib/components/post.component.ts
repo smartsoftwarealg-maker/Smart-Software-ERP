@@ -6,7 +6,7 @@ import {BaseEntityDetailComponent, BaseEntityListComponent} from '@ss/common/ui-
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import { UntypedFormBuilder, UntypedFormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
-import {PaginatorPersistenceService} from '@ss/common/api-common';
+import { MaterialModule, PaginatorPersistenceService } from '@ss/common/api-common';
 import { GridService } from '@ss/payroll/salary-grid';
 import { DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
 import { MatCard } from '@angular/material/card';
@@ -112,7 +112,7 @@ export class PostListComponent extends BaseEntityListComponent<Post> {
     </mat-card>`,
     styleUrls: ['../base-templates/detail-template.scss'],
     standalone: true,
-    imports: [MatCard, NgIf, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, UiAutoCompleteComponent, MatCheckbox]
+    imports: [MaterialModule, MatCard, NgIf, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, UiAutoCompleteComponent, MatCheckbox]
 })
 export class PostDetailComponent extends BaseEntityDetailComponent<Post> {
     private gridService = inject(GridService);

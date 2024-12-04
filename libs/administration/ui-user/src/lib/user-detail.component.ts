@@ -6,7 +6,7 @@ import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import { LookupsService, RoleService } from '@ss/common/api-lookup';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {
-    LoginService,
+    LoginService, MaterialModule,
     Role,
     User,
     UserCenter,
@@ -34,7 +34,7 @@ import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
     styleUrls: ['./user-detail.component.scss'],
     templateUrl: './user-detail.component.html',
     standalone: true,
-    imports: [MatCard, MatCardHeader, MatCardContent, NgIf, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, MatError, MatCheckbox, MatAccordion, MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelTitle, MatButton, NgClass, MatSelectionList, NgFor, MatListOption, MatMiniFabButton, UiAutoCompleteComponent]
+    imports: [MaterialModule, MatCard, MatCardHeader, MatCardContent, NgIf, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, MatError, MatCheckbox, MatAccordion, MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelTitle, MatButton, NgClass, MatSelectionList, NgFor, MatListOption, MatMiniFabButton, UiAutoCompleteComponent]
 })
 export class UserDetailComponent extends BaseEntityDetailComponent<User> {
     private userSrv = inject(UserService);

@@ -4,6 +4,12 @@
     margin: 4px auto;
 }
 
+.calculator__div {
+    height: calc(100vh - 180px);
+    max-height: calc(100vh - 180px);
+    overflow: auto;
+}
+
 .emp__div {
     width: 100%;
     height: calc(100% - 90px);
@@ -39,6 +45,7 @@
 .pagination-container {
     flex-grow: 0;
 }
+
 
 mat-form-field {
     flex: 1 1 150px;
@@ -187,6 +194,7 @@ mat-row:last-child {
     font-weight: bolder;
     font-size: 1.1em;
 }
+
 
 .mat-column-description {
     flex: 1 2 200px;

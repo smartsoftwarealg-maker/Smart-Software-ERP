@@ -24,7 +24,7 @@ import { ExcDocInfoComponent } from '../../../ui-info/src/lib/exc-doc-info.compo
     styleUrls: ['./deposit-detail.component.scss'],
     templateUrl: './deposit-detail.component.html',
     standalone: true,
-    imports: [MatCard, MatCardContent, NgIf, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, DatePickerComponent, UiAutoCompleteComponent, MatInput, MatError, MatCheckbox, ExcDocInfoComponent]
+    imports: [MaterialModule, MatCard, MatCardContent, NgIf, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, DatePickerComponent, UiAutoCompleteComponent, MatInput, MatError, MatCheckbox, ExcDocInfoComponent]
 })
 export class DepositDetailComponent extends BaseEntityDetailComponent<Deposit> {
     private agentService =  inject(AgentService);

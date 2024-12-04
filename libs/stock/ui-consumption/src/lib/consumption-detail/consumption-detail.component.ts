@@ -7,7 +7,7 @@ import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { ConsumptionService } from '@ss/stock/api-consumption';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
-import { LoginService } from '@ss/common/api-common';
+import { LoginService, MaterialModule } from '@ss/common/api-common';
 import {
     BaseTransactionDetailComponent,
     DOC_RESERVATION
@@ -29,7 +29,7 @@ import { CdkTextareaAutosize } from '@angular/cdk/text-field';
     templateUrl: './consumption-detail.component.html',
     styleUrls: ['../../../../../common/assets/src/assets/transac-detail.scss'],
     standalone: true,
-    imports: [MatCard, MatCardContent, NgIf, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, DatePickerComponent, UiAutoCompleteComponent, MatError, CdkTextareaAutosize, RouterOutlet]
+    imports: [MaterialModule, MatCard, MatCardContent, NgIf, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, DatePickerComponent, UiAutoCompleteComponent, MatError, CdkTextareaAutosize, RouterOutlet]
 })
 export class ConsumptionDetailComponent extends BaseTransactionDetailComponent {
     public groups: CCGroup[];

@@ -32,7 +32,7 @@ import {  ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import {MatExpansionPanel} from '@angular/material/expansion';
 import { FormValidators, IsParamService, LoginService, MaterialModule } from '@ss/common/api-common';
 import {BankService} from '@ss/administration/api-bank';
-import {  DefaultAutoCompleteModel, Id } from '@ss/common/ui-auto-complete';
+import { DefaultAutoCompleteModel, Id, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { AGENT_ARCHIVES, AppArchiveMainComponent, AppArchiveService } from '@ss/common/app-archive';
 import { MatSelectionListChange } from '@angular/material/list';
 import { CenterService } from '@ss/administration/api-center';
@@ -45,6 +45,7 @@ import { CommonModule } from '@angular/common';
 
 import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
+import { ChildAttributesComponent } from '@ss/custom-attributes';
 
 @Component({
     selector: 'ss-agent-detail',
@@ -58,7 +59,9 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         ReactiveFormsModule,
 
 
-        AppArchiveMainComponent
+        AppArchiveMainComponent,
+        UiAutoCompleteComponent,
+        ChildAttributesComponent
     ]
 
 })

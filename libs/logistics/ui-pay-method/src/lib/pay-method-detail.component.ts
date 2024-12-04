@@ -13,6 +13,7 @@ import { MatFormField, MatLabel, MatError } from '@angular/material/form-field';
 import { TranslateDirective } from '@ss/common/ui-lang';
 import { MatInput } from '@angular/material/input';
 import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
+import { MaterialModule } from '@ss/common/api-common';
 
 
 @Component({
@@ -20,7 +21,7 @@ import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
     styleUrls: ['./pay-method-detail.component.scss'],
     templateUrl: './pay-method-detail.component.html',
     standalone: true,
-    imports: [MatCard, MatCardContent, NgIf, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, MatError, UiAutoCompleteComponent]
+    imports: [MaterialModule, MatCard, MatCardContent, NgIf, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, MatError, UiAutoCompleteComponent]
 })
 export class PayMethodDetailComponent extends BaseEntityDetailComponent<PayMethod> {
     public payModeAutoCompleteModel: DefaultAutoCompleteModel<PayMode> = null;

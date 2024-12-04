@@ -13,13 +13,14 @@ import { MatFormField, MatLabel, MatError } from '@angular/material/form-field';
 import { TranslateDirective } from '@ss/common/ui-lang';
 import { MatInput } from '@angular/material/input';
 import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
+import { MaterialModule } from '@ss/common/api-common';
 
 @Component({
     selector: 'ss-transac-accounts-detail',
     templateUrl: './transac-accounts-detail.component.html',
     styleUrls: ['./transac-accounts-detail.component.scss'],
     standalone: true,
-    imports: [MatCard, MatCardContent, NgIf, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, MatError, UiAutoCompleteComponent]
+    imports: [MaterialModule, MatCard, MatCardContent, NgIf, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, MatError, UiAutoCompleteComponent]
 })
 export class TransacAccountsDetailComponent extends BaseEntityDetailComponent<TransacAccount> {
     private accountSrv = inject(AccountService);

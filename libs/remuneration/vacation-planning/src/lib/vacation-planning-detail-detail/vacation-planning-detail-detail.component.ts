@@ -4,7 +4,7 @@ import {VacationPlanning, VacationPlanningDetail} from '../vacation-planning-api
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
 import { UntypedFormBuilder, UntypedFormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import {HttpService} from '@ss/common/api-common';
+import { HttpService, MaterialModule } from '@ss/common/api-common';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {LookupsService} from '@ss/common/api-lookup';
 import {FixedElementsEntryService} from '@ss/remuneration/elements-entry';
@@ -27,7 +27,7 @@ import { DatePickerComponent } from '@ss/common/ui-datepicker';
     templateUrl: './vacation-planning-detail-detail.component.html',
     styleUrls: ['./vacation-planning-detail-detail.component.scss'],
     standalone: true,
-    imports: [MatCard, NgIf, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatSelect, NgFor, MatOption, MatInput, DatePickerComponent, MatError]
+    imports: [MaterialModule, MatCard, NgIf, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatSelect, NgFor, MatOption, MatInput, DatePickerComponent, MatError]
 })
 export class VacationPlanningDetailDetailComponent extends BaseEntityDetailComponent<VacationPlanningDetail> implements OnInit {
     vacationTypes: Array<Lookup> = [];

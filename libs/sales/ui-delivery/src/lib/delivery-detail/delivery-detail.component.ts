@@ -7,7 +7,7 @@ import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {Observable} from 'rxjs';
 import {tap} from 'rxjs/operators';
 import {DeliveryService} from '@ss/sales/api-delivery';
-import {LoginService} from '@ss/common/api-common';
+import { LoginService, MaterialModule } from '@ss/common/api-common';
 import {MatDialog} from '@angular/material/dialog';
 import { BaseTransactionDetailComponent } from '@ss/logistics/api-transaction';
 import { DeliveryLinesService } from '@ss/sales/api-delivery';
@@ -27,7 +27,7 @@ import { CdkTextareaAutosize } from '@angular/cdk/text-field';
     templateUrl: './delivery-detail.component.html',
     styleUrls: ['../../../../../common/assets/src/assets/transac-detail.scss'],
     standalone: true,
-    imports: [MatCard, MatCardContent, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, NgIf, MatError, DatePickerComponent, UiAutoCompleteComponent, MatTabGroup, MatTab, MatTabLabel, CdkTextareaAutosize, RouterOutlet]
+    imports: [MaterialModule, MatCard, MatCardContent, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, NgIf, MatError, DatePickerComponent, UiAutoCompleteComponent, MatTabGroup, MatTab, MatTabLabel, CdkTextareaAutosize, RouterOutlet]
 })
 export class DeliveryDetailComponent extends BaseTransactionDetailComponent implements OnInit {
     // private payMethodSrv =  inject(PayMethodService);

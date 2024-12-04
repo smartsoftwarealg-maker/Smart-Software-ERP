@@ -20,6 +20,7 @@ import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui
 import { FormControl } from '@angular/forms';
 import { MatFormField, MatLabel } from '@angular/material/form-field';
 import { PaginationComponent } from '@ss/common/ui-pagination';
+import { TranslateDirective } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-pending-edo',
@@ -39,7 +40,10 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
         MatMiniFabButton,
         MatFormField,
         MatLabel,
-        MaterialModule, UiAutoCompleteComponent],
+        MaterialModule,
+        UiAutoCompleteComponent,
+        TranslateDirective
+    ],
     templateUrl: './pending-edo.component.html',
     styleUrl: './pending-edo.component.scss',
 })

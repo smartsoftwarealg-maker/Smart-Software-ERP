@@ -18,12 +18,13 @@ import {
     MatHeaderRowDef, MatRow, MatRowDef, MatTable
 } from '@angular/material/table';
 import { PaginationComponent } from '@ss/common/ui-pagination';
+import { TranslateDirective } from '@ss/common/ui-lang';
 
 
 @Component({
     selector: 'ss-social-activities',
     standalone: true,
-    imports: [CommonModule, MatCell, MatCellDef, MatColumnDef, MatHeaderCell, MatHeaderRow, MatHeaderRowDef, MatRow, MatRowDef, MatTable, MatHeaderCellDef, PaginationComponent],
+    imports: [CommonModule, TranslateDirective, MatCell, MatCellDef, MatColumnDef, MatHeaderCell, MatHeaderRow, MatHeaderRowDef, MatRow, MatRowDef, MatTable, MatHeaderCellDef, PaginationComponent],
     templateUrl: './social-activities-list.component.html',
     styleUrl: './social-activities-list.component.scss',
 })

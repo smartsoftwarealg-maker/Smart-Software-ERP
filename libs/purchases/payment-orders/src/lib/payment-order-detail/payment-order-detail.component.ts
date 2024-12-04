@@ -7,7 +7,7 @@ import { UntypedFormBuilder, UntypedFormGroup, Validators, FormsModule, Reactive
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import { LookupsService, LotsService, PayModeService, Store } from "@ss/common/api-lookup";
 import {PaymentOrderService} from '../payment-order.service';
-import { IsParamService, LoginService } from "@ss/common/api-common";
+import { IsParamService, LoginService, MaterialModule } from '@ss/common/api-common';
 import { Agent, AgentService, ConsumerService } from "@ss/logistics/api-agent";
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import { Observable, switchMap, tap } from "rxjs";
@@ -25,7 +25,7 @@ import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
     templateUrl: './payment-order-detail.component.html',
     styleUrls: ['./payment-order-detail.component.scss'],
     standalone: true,
-    imports: [MatCard, MatCardContent, NgIf, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, DatePickerComponent, MatError, UiAutoCompleteComponent]
+    imports: [MaterialModule, MatCard, MatCardContent, NgIf, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, DatePickerComponent, MatError, UiAutoCompleteComponent]
 })
 export class PaymentOrderDetailComponent extends BaseEntityDetailComponent<PaymentOrder> {
     private bankSrv = inject(BankService);

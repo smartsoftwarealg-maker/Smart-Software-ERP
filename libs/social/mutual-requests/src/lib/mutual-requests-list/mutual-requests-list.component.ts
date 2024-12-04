@@ -19,6 +19,7 @@ import {
 } from '@angular/material/table';
 import { MatSort, MatSortHeader } from '@angular/material/sort';
 import { PaginationComponent } from '@ss/common/ui-pagination';
+import { TranslateDirective } from '@ss/common/ui-lang';
 
 
 @Component({
@@ -36,7 +37,8 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
         MatSort,
         MatSortHeader,
         MatTable,
-        MatHeaderCellDef
+        MatHeaderCellDef,
+        TranslateDirective
     ],
     selector: 'ss-mutual-requests',
     standalone: true,

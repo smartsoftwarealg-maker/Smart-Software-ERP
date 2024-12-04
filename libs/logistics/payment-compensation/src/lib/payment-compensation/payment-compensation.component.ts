@@ -18,6 +18,7 @@ import { DatePickerComponent } from "@ss/common/ui-datepicker";
 import {PaginationModel} from '@ss/common/api-common';
 import { PaginationComponent } from '@ss/common/ui-pagination';
 import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 interface FlatPaymentNode {
     expandable: boolean;
@@ -45,11 +46,9 @@ interface PaymentTree {
     imports: [CommonModule,
         DragDropModule,
         MaterialModule,
-
-
+        TranslateDirective,
         DatePickerComponent,
         ReactiveFormsModule, PaginationComponent, UiAutoCompleteComponent
-
     ]
 })
 export class PaymentCompensationComponent implements OnInit {

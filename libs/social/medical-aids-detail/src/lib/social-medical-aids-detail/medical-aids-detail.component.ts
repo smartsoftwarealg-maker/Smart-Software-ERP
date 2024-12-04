@@ -7,7 +7,7 @@ import {
     SocialAid, SocialEmployeeService
 } from '@social/social-api';
 import { PersonAutocompleteClass } from '@ss/employee-services/employee-services';
-import { LoginService } from '@ss/common/api-common';
+import { LoginService, MaterialModule } from '@ss/common/api-common';
 import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute } from '@angular/router';
@@ -22,11 +22,13 @@ import { MedicalAidService } from '@social/social-api';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { AidHistoryComponent } from '@social/aid-history';
 import { PersonAidHistoryService } from '@social/social-api';
+import { TranslateDirective } from '@ss/common/ui-lang';
+
 
 @Component({
     selector: 'ss-medical-aids-detail',
     standalone: true,
-    imports: [CommonModule, DatePickerComponent, MatCard, MatCardContent, MatError, MatFormField, MatInput, MatLabel, ReactiveFormsModule, AidHistoryComponent, UiAutoCompleteComponent],
+    imports: [CommonModule, MaterialModule, TranslateDirective, DatePickerComponent, MatCard, MatCardContent, MatError, MatFormField, MatInput, MatLabel, ReactiveFormsModule, AidHistoryComponent, UiAutoCompleteComponent],
     templateUrl: './medical-aids-detail.component.html',
     styleUrl: './medical-aids-detail.component.scss',
 })

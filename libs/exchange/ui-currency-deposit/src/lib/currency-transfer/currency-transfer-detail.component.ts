@@ -28,7 +28,7 @@ import { ExcDocInfoComponent } from "../../../../ui-info/src/lib/exc-doc-info.co
     styleUrls: ['./currency-transfer-detail.component.scss'],
     templateUrl: './currency-transfer-detail.component.html',
     standalone: true,
-    imports: [MatCard, MatCardContent, NgIf, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, DatePickerComponent, UiAutoCompleteComponent, MatInput, MatError, ExcDocInfoComponent]
+    imports: [MaterialModule, MatCard, MatCardContent, NgIf, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, DatePickerComponent, UiAutoCompleteComponent, MatInput, MatError, ExcDocInfoComponent]
 })
 export class CurrencyTransferDetailComponent extends BaseEntityDetailComponent<Deposit> {
     private agentService = inject(AgentService);

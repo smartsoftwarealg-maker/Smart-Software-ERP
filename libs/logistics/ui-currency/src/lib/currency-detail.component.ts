@@ -17,7 +17,7 @@ import { MatInput } from '@angular/material/input';
     styleUrls: ['./currency-detail.component.scss'],
     templateUrl: './currency-detail.component.html',
     standalone: true,
-    imports: [MatCard, MatCardContent, NgIf, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, MatError]
+    imports: [MaterialModule, MatCard, MatCardContent, NgIf, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, MatError]
 })
 export class CurrencyDetailComponent extends BaseEntityDetailComponent<Currency> {
 
