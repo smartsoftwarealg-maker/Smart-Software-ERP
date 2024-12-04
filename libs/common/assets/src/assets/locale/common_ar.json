@@ -348,5 +348,6 @@
     "START_DATE":                 "تاريخ البدء",
     "COSTING":                    "التكلفة",
     "PAY_MODE":                   "طريقة الدفع",
-    "MUNICIPALITY":               "البلدية"
+    "MUNICIPALITY":               "البلدية",
+    "ACCOUNTING_APP":             "المحاسبة"
 }
