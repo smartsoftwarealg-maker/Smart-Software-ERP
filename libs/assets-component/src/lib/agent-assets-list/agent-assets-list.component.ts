@@ -6,17 +6,7 @@ import {AssetsService} from '../services/assets.service';
 import {Sort} from '@angular/material/sort';
 import { CommonModule } from '@angular/common';
 import { MaterialModule } from '@ss/common/api-common';
-
-
-
-
-
-import { DatePickerComponent } from '@ss/common/ui-datepicker';
-
-
-import { QRCodeModule } from 'angularx-qrcode';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
-import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 
 @Component({
     selector: 'ss-agent-assets-list',
@@ -28,8 +18,6 @@ import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
         MaterialModule,
         TranslateDirective,
         RouterModule,
-
-        QRCodeModule
     ]})
 export class AgentAssetsListComponent implements OnInit {
     agentId = 0;

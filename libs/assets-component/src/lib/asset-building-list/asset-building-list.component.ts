@@ -11,7 +11,7 @@ import { AssetLocationService } from '../services/asset-location.service';
 import { FormControl } from '@angular/forms';
 import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { CommonModule } from '@angular/common';
-import { QRCodeModule } from 'angularx-qrcode';
+
 import { PaginationComponent } from '@ss/common/ui-pagination';
 import { TranslateDirective } from '@ss/common/ui-lang';
 
@@ -25,7 +25,6 @@ import { TranslateDirective } from '@ss/common/ui-lang';
         MaterialModule,
         TranslateDirective,
         RouterModule,
-        QRCodeModule,
         PaginationComponent,
         UiAutoCompleteComponent
     ]

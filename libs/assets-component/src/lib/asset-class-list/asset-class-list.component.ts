@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {  Component} from '@angular/core';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {AssetClass} from '../assets-api';
 import {AssetClassService} from '../services/asset-class.service';
@@ -8,16 +8,8 @@ import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import {  ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { MaterialModule, PaginatorPersistenceService } from '@ss/common/api-common';
 import { CommonModule } from '@angular/common';
-
-
-
-
-import { DatePickerComponent } from '@ss/common/ui-datepicker';
-
-
-import { QRCodeModule } from 'angularx-qrcode';
 import { PaginationComponent } from '@ss/common/ui-pagination';
-import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
+import { TranslateDirective } from '@ss/common/ui-lang';
 
 @Component({
   selector: 'ss-asset-class-list',
@@ -28,11 +20,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         CommonModule,
         MaterialModule,
         TranslateDirective,
-
-        DatePickerComponent,
         RouterModule,
-
-        QRCodeModule,
         PaginationComponent
     ]})
 export class AssetClassListComponent extends BaseEntityListComponent<AssetClass> {

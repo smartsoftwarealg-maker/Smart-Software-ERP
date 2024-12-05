@@ -15,7 +15,7 @@ import { MaterialModule } from '@ss/common/api-common';
 import { DatePickerComponent } from '@ss/common/ui-datepicker';
 
 
-import { QRCodeModule } from 'angularx-qrcode';
+
 import { TranslateDirective } from '@ss/common/ui-lang';
 
 @Component({
@@ -28,7 +28,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
         MaterialModule,
         TranslateDirective,
         RouterModule,
-        QRCodeModule
+
     ]
 })
 export class EndTypesDetailComponent extends BaseEntityDetailComponent<Lookup> {

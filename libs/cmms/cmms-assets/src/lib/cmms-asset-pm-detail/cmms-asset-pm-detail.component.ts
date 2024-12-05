@@ -32,7 +32,6 @@ import { MatOptionModule } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
 import { MatTableModule } from '@angular/material/table';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { QRCodeModule } from 'angularx-qrcode';
 import { CMMSFunctionService } from '@ss/cmms/lookups';
 import { AssetPmService } from '../services/asset-pm.service';
 import { CMMSAssetTriggerService } from '@ss/cmms/asset-triggers';
@@ -40,7 +39,7 @@ import { CMMSAssetTriggerService } from '@ss/cmms/asset-triggers';
 @Component({
     selector: 'ss-cmms-asset-detail',
     standalone: true,
-    imports: [CommonModule,   DatePickerComponent,   FormsModule, MatButtonModule, MatExpansionModule, MatFormFieldModule, MatInputModule, MatOptionModule, MatSelectModule, MatTableModule, MatTooltipModule, QRCodeModule, ReactiveFormsModule, RouterOutlet, MaterialModule],
+    imports: [CommonModule, FormsModule, MatButtonModule, MatExpansionModule, MatFormFieldModule, MatInputModule, MatOptionModule, MatSelectModule, MatTableModule, MatTooltipModule,  ReactiveFormsModule, RouterOutlet, MaterialModule],
     templateUrl: './cmms-asset-pm-detail.component.html',
     styleUrls: ['./cmms-asset-pm-detail.component.scss'],
 })

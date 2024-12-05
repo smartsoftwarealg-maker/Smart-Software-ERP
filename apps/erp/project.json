@@ -1282,7 +1282,7 @@
         "serve": {
             "executor": "@angular-devkit/build-angular:dev-server",
             "options": {
-                "browserTarget": "erp:build",
+                "buildTarget": "erp:build",
                 "host": "localhost",
                 "ssl": false,
                 "sslKey": "./cert.key",
@@ -1290,20 +1290,20 @@
             },
             "configurations": {
                 "production": {
-                    "browserTarget": "erp:build:production"
+                    "buildTarget": "erp:build:production"
                 },
                 "development": {
-                    "browserTarget": "erp:build:development"
+                    "buildTarget": "erp:build:development"
                 },
                 "devssales": {
-                    "browserTarget": "erp:build:devssales"
+                    "buildTarget": "erp:build:devssales"
                 }
             }
         },
         "extract-i18n": {
             "executor": "@angular-devkit/build-angular:extract-i18n",
             "options": {
-                "browserTarget": "erp:build"
+                "buildTarget": "erp:build"
             }
         },
         "lint": {

@@ -11,7 +11,7 @@ import { CodeDescriptionAutoCompleteModel, UiAutoCompleteComponent } from '@ss/c
 import {AssetLocationService} from '../services/asset-location.service';
 import { CommonModule } from '@angular/common';
 import { MaterialModule } from '@ss/common/api-common';
-import { QRCodeModule } from 'angularx-qrcode';
+
 import { TranslateDirective } from '@ss/common/ui-lang';
 
 @Component({
@@ -24,7 +24,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
         MaterialModule,
         TranslateDirective,
         RouterModule,
-        QRCodeModule,
+
         UiAutoCompleteComponent
     ]})
 export class AssetBuildingDetailComponent extends BaseEntityDetailComponent<AssetBuilding> {

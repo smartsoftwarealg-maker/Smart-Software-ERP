@@ -44,7 +44,7 @@ import { CommonModule } from '@angular/common';
 
 import { DatePickerComponent } from '@ss/common/ui-datepicker';
 
-import { QRCodeModule } from 'angularx-qrcode';
+
 import { AssetAppointmentListComponent } from '../asset-appointment-list/asset-appointment-list.component';
 import { AssetCostsListComponent } from '../asset-costs-list/asset-costs-list.component';
 import { ImageInputComponent } from '@ss/common/ui-image-input';
@@ -63,7 +63,6 @@ import { ChildAttributesComponent } from '@ss/custom-attributes';
         TranslatePipe,
         DatePickerComponent,
         RouterModule,
-        QRCodeModule,
         AssetAppointmentListComponent,
         UiAutoCompleteComponent,
         ChildAttributesComponent
@@ -313,6 +312,7 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> impl
 
     private setClassListener(form: UntypedFormGroup) {
         if (this.isAQS) {
+            console.log('aqs---------------------', this.isAQS)
             const subs = form
                 .controls['assetClass']
                 .valueChanges

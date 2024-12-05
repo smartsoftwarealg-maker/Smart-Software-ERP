@@ -42,7 +42,7 @@ import { MatOptionModule } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
 import { MatTableModule } from '@angular/material/table';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { QRCodeModule } from 'angularx-qrcode';
+
 import { CMMSFunctionService } from '@ss/cmms/lookups';
 import { BaseEntityService } from '@ss/common/api-base-entity';
 import { AssetPmService } from '../services/asset-pm.service';
@@ -52,7 +52,7 @@ import { TranslatePipe } from '@ss/common/ui-lang';
 @Component({
     selector: 'ss-cmms-asset-detail',
     standalone: true,
-    imports: [CommonModule, DatePickerComponent, FormsModule, MatButtonModule, MatExpansionModule, MatFormFieldModule, MatInputModule, MatOptionModule, MatSelectModule, MatTableModule, MatTooltipModule, QRCodeModule, ReactiveFormsModule, RouterOutlet, MaterialModule, UiAutoCompleteComponent, TranslatePipe],
+    imports: [CommonModule, DatePickerComponent, FormsModule, MatButtonModule, MatExpansionModule, MatFormFieldModule, MatInputModule, MatOptionModule, MatSelectModule, MatTableModule, MatTooltipModule,  ReactiveFormsModule, RouterOutlet, MaterialModule, UiAutoCompleteComponent, TranslatePipe],
     templateUrl: './cmms-asset-detail.component.html',
     styleUrls: ['./cmms-asset-detail.component.scss'],
 })
