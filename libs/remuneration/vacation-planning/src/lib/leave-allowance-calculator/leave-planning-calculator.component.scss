@@ -12,10 +12,11 @@
     align-items: center;
     font-size: 5em;
 }
+
 .table__container {
     width: 100%;
     height: calc(100% - 200px);
-    border: green solid 4px;
+    overflow-x: auto;
 }
 
 .leave__form {
@@ -37,7 +38,11 @@
 }
 
 .mat-column-earned,
+.mat-column-earned2,
+.mat-column-earned3,
 .mat-column-taken,
+.mat-column-taken2,
+.mat-column-taken3,
 .mat-column-rest,
 .mat-column-days,
 .mat-column-toTake {
@@ -48,5 +53,6 @@
 }
 
 mat-table {
-    min-width: 1000px;
+    width: 100%;
+    min-width: 1200px;
 }

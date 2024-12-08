@@ -15,7 +15,7 @@ import {
     OfficeAutoComplete
 } from '@ss/assets-component';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
-import {  DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
+import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { FormsModule, ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { switchMap, tap } from 'rxjs/operators';
@@ -39,7 +39,7 @@ import { CMMSAssetTriggerService } from '@ss/cmms/asset-triggers';
 @Component({
     selector: 'ss-cmms-asset-detail',
     standalone: true,
-    imports: [CommonModule, FormsModule, MatButtonModule, MatExpansionModule, MatFormFieldModule, MatInputModule, MatOptionModule, MatSelectModule, MatTableModule, MatTooltipModule,  ReactiveFormsModule, RouterOutlet, MaterialModule],
+    imports: [CommonModule, FormsModule, MatButtonModule, MatExpansionModule, MatFormFieldModule, MatInputModule, MatOptionModule, MatSelectModule, MatTableModule, MatTooltipModule, ReactiveFormsModule, RouterOutlet, MaterialModule, UiAutoCompleteComponent],
     templateUrl: './cmms-asset-pm-detail.component.html',
     styleUrls: ['./cmms-asset-pm-detail.component.scss'],
 })
