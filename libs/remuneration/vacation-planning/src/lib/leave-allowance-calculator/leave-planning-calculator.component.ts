@@ -60,10 +60,11 @@ import { map } from 'rxjs/operators';
         MatProgressSpinner
     ]
 })
-export class LeavePlanningCalculatorComponent implements OnInit {
+export class LeavePlanningCalculatorComponent {
     #calcSrv = inject(LeavePlanningCalculatorService);
     #fb = inject(FormBuilder)
 
+    selection = signal<Set<number>>(new Set());
     readonly #THIS_YEAR = new Date().getFullYear();
     form = this.#fb.group({
         year:  [this.#THIS_YEAR - 1],
@@ -108,10 +109,9 @@ export class LeavePlanningCalculatorComponent implements OnInit {
         'taken3',
         'rest',
         'days',
-        'toTake'
+        'toTake',
+        'selection'
     ];
-    ngOnInit() {
-    }
 
 
     onSubmit() {
@@ -129,5 +129,17 @@ export class LeavePlanningCalculatorComponent implements OnInit {
 
     select(h: VHistory) {
         this.selectedId = h?.employee||0;
+        this.selection.update(c => {
+            c.has(this.selectedId) ? c.delete(this.selectedId) : c.add(this.selectedId);
+            return new Set([...c]);
+        })
+    }
+
+    selectAll() {
+        this.selection.set(new Set([...this.history().map(h => h.employee)]));
+    }
+
+    unselectAll() {
+        this.selection.set(new Set());
     }
 }
