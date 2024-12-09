@@ -13,7 +13,7 @@ import { LoginService, MaterialModule, PaginatorPersistenceService } from '@ss/c
 import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { CommonModule } from '@angular/common';
 import { DatePickerComponent } from '@ss/common/ui-datepicker';
-import { QRCodeModule } from 'angularx-qrcode';
+
 import { DefaultReportService } from '@ss/common/ui-default-report-component';
 import { Office, OfficeService } from '@ss/common/api-lookup';
 import { FormBuilder, FormControl } from '@angular/forms';
@@ -40,7 +40,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         TranslatePipe,
         DatePickerComponent,
         RouterModule,
-        QRCodeModule,
+
         PaginationComponent,
         UiAutoCompleteComponent
     ]

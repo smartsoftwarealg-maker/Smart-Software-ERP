@@ -4,46 +4,73 @@ import {
     FormControl,
     ReactiveFormsModule, FormBuilder
 } from '@angular/forms';
-import { MatCard, MatCardContent } from '@angular/material/card';
-import { AsyncPipe, DatePipe, DecimalPipe, JsonPipe, NgForOf } from '@angular/common';
+import { MatCard } from '@angular/material/card';
+import { DecimalPipe } from '@angular/common';
 import { MatFormField, MatLabel } from '@angular/material/form-field';
 import { TranslateDirective } from '@ss/common/ui-lang';
-import { MatInput } from '@angular/material/input';
-import { VacationPlanningDetailListComponent } from '../vacation-planning-detail-list/vacation-planning-detail-list.component';
 import { MatOption } from '@angular/material/autocomplete';
 import { MatSelect } from '@angular/material/select';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { LeavePlanningCalculatorService } from '../leave-allowance-calculator.service';
-import { MatIconButton, MatMiniFabButton } from '@angular/material/button';
+import { MatMiniFabButton } from '@angular/material/button';
 import {
     MatCell,
     MatCellDef,
     MatColumnDef,
-    MatHeaderCell, MatHeaderCellDef,
+    MatHeaderCell,
+    MatHeaderCellDef,
     MatHeaderRow,
-    MatHeaderRowDef, MatRow, MatRowDef, MatTable
+    MatHeaderRowDef,
+    MatRow,
+    MatRowDef,
+    MatTable
 } from '@angular/material/table';
 import { VHistory } from '../vacation-planning-api';
 import { MatProgressSpinner } from '@angular/material/progress-spinner';
 import { MaterialModule } from '@ss/common/api-common';
+import { map } from 'rxjs/operators';
 
 @Component({
     selector: 'ss-leave-planning-calculator',
     templateUrl: './leave-planning-calculator.component.html',
     styleUrls: ['./leave-planning-calculator.component.scss'],
     standalone: true,
-    imports: [MaterialModule, MatCard, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, VacationPlanningDetailListComponent, MatOption, MatSelect, NgForOf, MatCardContent, JsonPipe, MatIconButton, AsyncPipe, DatePipe, DecimalPipe, MatCell, MatCellDef, MatColumnDef, MatHeaderCell, MatHeaderRow, MatHeaderRowDef, MatMiniFabButton, MatRow, MatRowDef, MatTable, MatHeaderCellDef, MatProgressSpinner]
+    imports: [
+        MaterialModule,
+        MatCard,
+        FormsModule,
+        ReactiveFormsModule,
+        MatFormField,
+        MatLabel,
+        TranslateDirective,
+        MatOption,
+        MatSelect,
+        DecimalPipe,
+        MatCell,
+        MatCellDef,
+        MatColumnDef,
+        MatHeaderCell,
+        MatHeaderRow,
+        MatHeaderRowDef,
+        MatMiniFabButton,
+        MatRow,
+        MatRowDef,
+        MatTable,
+        MatHeaderCellDef,
+        MatProgressSpinner
+    ]
 })
-export class LeavePlanningCalculatorComponent implements OnInit {
+export class LeavePlanningCalculatorComponent {
     #calcSrv = inject(LeavePlanningCalculatorService);
     #fb = inject(FormBuilder)
 
+    selection = signal<Set<number>>(new Set());
     readonly #THIS_YEAR = new Date().getFullYear();
     form = this.#fb.group({
-        year:       [this.#THIS_YEAR - 1],
-        ssFormula:  [''],
-        ssFormula2: [''],
-        irgFormula: [''],
+        year:  [this.#THIS_YEAR - 1],
+        base1: [''],
+        base2: [''],
+        base3: [''],
     })
     processing = signal(false);
     period  = new FormControl<number>(  this.#THIS_YEAR);
@@ -63,9 +90,9 @@ export class LeavePlanningCalculatorComponent implements OnInit {
         this.#THIS_YEAR + 1,
     ];
 
-    ssFformulas = toSignal(this.#calcSrv.formulas());
-    ssFformulas2 = toSignal(this.#calcSrv.formulas());
-    irgFformulas = toSignal(this.#calcSrv.formulas());
+    base1 = toSignal(this.#calcSrv.formulas());
+    base2 = toSignal(this.#calcSrv.formulas().pipe(map(res => res.filter(v => v.variable?.startsWith('a')))));
+    base3 = toSignal(this.#calcSrv.formulas().pipe(map(res => res.filter(v => v.variable?.startsWith('b')))));
     history = signal<VHistory[]>([]);
 
     selectedId = 0;
@@ -75,13 +102,16 @@ export class LeavePlanningCalculatorComponent implements OnInit {
         'name',
         'post',
         'earned',
+        'earned2',
+        'earned3',
         'taken',
+        'taken2',
+        'taken3',
         'rest',
         'days',
-        'toTake'
+        'toTake',
+        'selection'
     ];
-    ngOnInit() {
-    }
 
 
     onSubmit() {
@@ -89,7 +119,7 @@ export class LeavePlanningCalculatorComponent implements OnInit {
         this.processing.set(true);
         this.form.disable();
         this.#calcSrv
-            .history(0, value.year, value.ssFormula, value.irgFormula)
+            .history(0, value.year, value.base1, value.base2, value.base3)
             .subscribe(res => {
                 this.history.set(res);
                 this.processing.set(false);
@@ -98,6 +128,18 @@ export class LeavePlanningCalculatorComponent implements OnInit {
     }
 
     select(h: VHistory) {
-        this.selectedId = h.employee;
+        this.selectedId = h?.employee||0;
+        this.selection.update(c => {
+            c.has(this.selectedId) ? c.delete(this.selectedId) : c.add(this.selectedId);
+            return new Set([...c]);
+        })
+    }
+
+    selectAll() {
+        this.selection.set(new Set([...this.history().map(h => h.employee)]));
+    }
+
+    unselectAll() {
+        this.selection.set(new Set());
     }
 }

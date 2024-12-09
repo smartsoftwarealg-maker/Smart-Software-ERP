@@ -11,7 +11,7 @@ import {
 } from '@ss/common/api-lookup';
 import { AppArchiveService, EMPLOYEE_ARCHIVES } from '@ss/common/app-archive';
 import { ImageInputComponent, ImageModel } from '@ss/common/ui-image-input';
-import {  DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
+import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import {
     ReactiveFormsModule,
     UntypedFormBuilder,
@@ -59,7 +59,8 @@ import { CmmsEmployeeService } from '../services/cmms-employee.service';
         MaterialModule,
         ReactiveFormsModule,
         RouterOutlet,
-        ImageInputComponent
+        ImageInputComponent,
+        UiAutoCompleteComponent
     ],
     templateUrl: './cmms-employee-detail.component.html',
     styleUrls: ['./cmms-employee-detail.component.scss'],

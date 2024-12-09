@@ -15,7 +15,7 @@ import { DatePickerComponent } from '@ss/common/ui-datepicker';
 import { RouterModule } from '@angular/router';
 
 
-import { QRCodeModule } from 'angularx-qrcode';
+
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
@@ -29,7 +29,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         TranslateDirective,
         RouterModule,
 
-        QRCodeModule,
+
         UiAutoCompleteComponent
     ]
 })

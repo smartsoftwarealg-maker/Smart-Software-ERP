@@ -24,6 +24,7 @@ import { CMMSWorkPersonService } from '../services/c-m-m-s-work-person.service';
 import { CMMSAssetReadingService } from '@ss/cmms/asset-readings';
 import { CMMSWorkPermitService } from '../services/c-m-m-s-work-permit.service';
 import { PaginationComponent } from '@ss/common/ui-pagination';
+import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 
 @Component({
     selector: 'ss-work-order-detail',
@@ -43,7 +44,8 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
         DatePickerComponent,
         MatButtonModule,
         MaterialModule,
-        RouterOutlet
+        RouterOutlet,
+        UiAutoCompleteComponent
     ]
 })
 export class WorkOrderDetailComponent extends CMMSWorkDetail {

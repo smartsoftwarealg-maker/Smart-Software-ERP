@@ -20,7 +20,7 @@ import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui
 import { DatePickerComponent } from '@ss/common/ui-datepicker';
 
 
-import { QRCodeModule } from 'angularx-qrcode';
+
 import { AssetUnidentifiedInventoryService } from '../services/asset-unidentified-inventory.service';
 import { AssetInventoryDocService } from '../services/asset-inventory-doc.service';
 import { FormControl } from '@angular/forms';
@@ -37,7 +37,6 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         MaterialModule,
         TranslateDirective,
         RouterModule,
-        QRCodeModule,
         PaginationComponent,
         UiAutoCompleteComponent
     ]

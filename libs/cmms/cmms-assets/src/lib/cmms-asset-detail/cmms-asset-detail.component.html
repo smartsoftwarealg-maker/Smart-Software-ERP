@@ -106,7 +106,8 @@
     <mat-label translate>CMMS_FUNCTION</mat-label>
     <ss-auto-complete matInput
                       [model]="functionLookup"
-                      formControlName="function"></ss-auto-complete>
+                      formControlName="function">
+    </ss-auto-complete>
     <mat-error *ngIf="form.controls['function'].invalid" translate>COMMON_FUNCTION</mat-error>
   </mat-form-field>
 

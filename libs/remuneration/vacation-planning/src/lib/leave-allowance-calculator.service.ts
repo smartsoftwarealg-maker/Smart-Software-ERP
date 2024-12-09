@@ -18,11 +18,12 @@ import {Observable} from 'rxjs';
 export class LeavePlanningCalculatorService {
     #httpSrv = inject(HttpService);
 
-    history(id: number, year: number, ssFormula: string, irgFormula: string): Observable<VHistory[]> {
+    history(id: number, year: number, base1: string, base2?: string, base3?: string): Observable<VHistory[]> {
         const params = new HttpParams()
             .set('year', year.toString())
-            .set('ssFormula', ssFormula)
-            .set('irgFormula', irgFormula);
+            .set('base1', base1)
+            .set('base2', base2??'(^^)')
+            .set('base3', base3??'(^^)');
         return this.#httpSrv.get<VHistory[]>(`${PAID_LEAVE_URL}/history`, params);
     }
 

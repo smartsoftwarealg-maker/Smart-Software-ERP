@@ -14,7 +14,7 @@ import { CommonModule } from '@angular/common';
 import { DatePickerComponent } from '@ss/common/ui-datepicker';
 
 
-import { QRCodeModule } from 'angularx-qrcode';
+
 import { AssetRecordedInventoryService } from '../services/asset-recorded-inventory.service';
 import { Sort } from '@angular/material/sort';
 import { PaginationComponent } from '@ss/common/ui-pagination';
@@ -32,7 +32,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
         RouterModule,
 
-        QRCodeModule,
+
         PaginationComponent
     ]
 })

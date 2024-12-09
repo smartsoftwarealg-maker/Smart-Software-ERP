@@ -5,7 +5,7 @@ import { ImageUploaderUtil, LoginService, MaterialModule } from '@ss/common/api-
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {AppArchiveService} from '../app-archive.service';
 import { concatMap, from, of, switchMap, tap, zip } from 'rxjs';
-import {  DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
+import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import {AppArchiveDocumentService} from '@ss/common/api-lookup';
 import {AppArchive} from '../app-archive-api';
 import { CommonModule } from '@angular/common';
@@ -28,7 +28,8 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         ReactiveFormsModule,
 
 
-        DatePickerComponent
+        DatePickerComponent,
+        UiAutoCompleteComponent
     ]
 })
 export class AppArchiveDetailComponent implements OnInit {

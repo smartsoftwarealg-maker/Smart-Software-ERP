@@ -12,10 +12,11 @@
     align-items: center;
     font-size: 5em;
 }
+
 .table__container {
     width: 100%;
     height: calc(100% - 200px);
-    border: green solid 4px;
+    overflow-x: auto;
 }
 
 .leave__form {
@@ -37,16 +38,40 @@
 }
 
 .mat-column-earned,
+.mat-column-earned2,
+.mat-column-earned3,
 .mat-column-taken,
-.mat-column-rest,
-.mat-column-days,
-.mat-column-toTake {
+.mat-column-taken2,
+.mat-column-taken3,
+.mat-column-rest {
     flex: 1 1 120px;
     justify-content: flex-end;
     border-left: gray solid 1px;
     padding-left: 4px
 }
 
+.mat-column-selection,
+.mat-column-days {
+    flex: 1 1 4em;
+    justify-content: center;
+    border-left: gray solid 1px;
+}
+
+.mat-column-toTake {
+    flex: 1 1 2em;
+    justify-content: center;
+    border-left: gray solid 1px;
+}
+
 mat-table {
-    min-width: 1000px;
+    width: 100%;
+    min-width: 1200px;
+}
+
+.button__div {
+}
+.button__div > i {
+    //display: flex;
+    //justify-content: center;
+    //align-items: center;
 }

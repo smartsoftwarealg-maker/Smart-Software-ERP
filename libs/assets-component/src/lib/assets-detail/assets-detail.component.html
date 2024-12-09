@@ -127,12 +127,6 @@
                 <mat-label translate>ASSET_ITEM_COUNT</mat-label>
                 <input matInput formControlName="itemCount" type="number">
             </mat-form-field>
-            <div class="qr">
-                <span translate>ASSET_BAR_CODE</span>
-                <qrcode [qrdata]="form.controls['reference'].value" [width]="64"
-                        [errorCorrectionLevel]="'M'" [title]="'ASSET_BAR_CODE'|translate">
-                </qrcode>
-            </div>
         </div>
 
         <mat-tab-group (selectedIndexChange)="showPanel($event)" [dynamicHeight]="true">

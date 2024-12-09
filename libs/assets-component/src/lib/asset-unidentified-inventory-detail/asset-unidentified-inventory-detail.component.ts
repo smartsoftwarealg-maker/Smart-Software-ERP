@@ -10,7 +10,7 @@ import { MaterialModule } from '@ss/common/api-common';
 import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { AssetClassService, AssetLocationService, AssetsBuildingService } from '@ss/assets-component';
 import { CommonModule } from '@angular/common';
-import { QRCodeModule } from 'angularx-qrcode';
+
 import { AssetUnidentifiedInventoryService } from '../services/asset-unidentified-inventory.service';
 import { AssetInventoryDocService } from '../services/asset-inventory-doc.service';
 import { TranslateDirective } from '@ss/common/ui-lang';
@@ -26,7 +26,7 @@ import { Agent, ConsumerService } from '@ss/logistics/api-agent';
         MaterialModule,
         TranslateDirective,
         RouterModule,
-        QRCodeModule,
+
         UiAutoCompleteComponent
     ]
 })

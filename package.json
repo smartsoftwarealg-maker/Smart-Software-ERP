@@ -1,6 +1,6 @@
 {
     "name": "ss",
-    "version": "1.59.1",
+    "version": "1.60.1",
     "license": "PRIVATE",
     "scripts": {
         "ng": "nx",
@@ -48,7 +48,6 @@
         "@muaazh/angular-datepicker": "^18.2.1",
         "@nx/angular": "20.0.7",
         "angular13-organization-chart": "^2.0.1",
-        "angularx-qrcode": "^18.0.2",
         "chart.js": "^4.4.6",
         "file-saver": "^2.0.5",
         "hammerjs": "^2.0.8",

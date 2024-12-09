@@ -13,7 +13,7 @@ import { CommonModule } from '@angular/common';
 import { DatePickerComponent } from '@ss/common/ui-datepicker';
 
 
-import { QRCodeModule } from 'angularx-qrcode';
+
 import { TranslateDirective } from '@ss/common/ui-lang';
 
 @Component({
@@ -30,7 +30,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
         DatePickerComponent,
         RouterModule,
 
-        QRCodeModule
+
     ]})
 export class AssetBlockingDetailComponent extends BaseChildEntityDetailComponent<Blocking> implements OnInit {
     private typeLookupSrv = inject(AssetBlockingTypeService);

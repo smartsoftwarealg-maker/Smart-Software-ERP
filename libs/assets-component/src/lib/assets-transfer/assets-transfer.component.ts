@@ -17,7 +17,7 @@ import { CommonModule } from '@angular/common';
 import { DatePickerComponent } from '@ss/common/ui-datepicker';
 
 
-import { QRCodeModule } from 'angularx-qrcode';
+
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 
@@ -31,7 +31,7 @@ import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
         MaterialModule,
         TranslateDirective,
         RouterModule,
-        QRCodeModule,
+
         UiAutoCompleteComponent
     ]
 })

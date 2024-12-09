@@ -14,7 +14,7 @@ import { CommonModule } from '@angular/common';
 import { DatePickerComponent } from '@ss/common/ui-datepicker';
 
 
-import { QRCodeModule } from 'angularx-qrcode';
+
 import { AssetInventoryDocService } from '../services/asset-inventory-doc.service';
 import {
     AssetRecordedInventoryReportComponent
@@ -40,7 +40,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         DatePickerComponent,
         RouterModule,
 
-        QRCodeModule,
+
         AssetRecordedInventoryReportComponent,
         AssetUnidentifiedChildInventoryListComponent,
         PaginationComponent
