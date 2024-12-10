@@ -8,7 +8,7 @@ import {  ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import {LookupsService, Office, OfficeService} from '@ss/common/api-lookup';
 import {AssetAppointmentDocService} from '../services/asset-appointment-doc.service';
 import { LoginService, MaterialModule, PaginationModel } from '@ss/common/api-common';
-import {  DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
+import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import {
     ASSET_MODULE,
     ATTRIB_TYPE_LOOKUP,
@@ -34,6 +34,7 @@ import { DatePickerComponent } from '@ss/common/ui-datepicker';
 
 
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
+import { PaginationComponent } from '@ss/common/ui-pagination';
 
 @Component({
     selector: 'ss-asset-appointment-doc-detail',
@@ -45,12 +46,10 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         MaterialModule,
         TranslateDirective,
         TranslatePipe,
-
         DatePickerComponent,
         RouterModule,
-
-
-
+        UiAutoCompleteComponent,
+        PaginationComponent
     ]})
 export class AssetAppointmentDocDetailComponent extends BaseEntityDetailComponent<ASSAppointmentHeader>{
     private officeSrv = inject(OfficeService);

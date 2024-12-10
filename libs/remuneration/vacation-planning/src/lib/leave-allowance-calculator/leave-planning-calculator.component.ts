@@ -7,7 +7,7 @@ import {
 import { MatCard } from '@angular/material/card';
 import { DecimalPipe } from '@angular/common';
 import { MatFormField, MatLabel } from '@angular/material/form-field';
-import { TranslateDirective } from '@ss/common/ui-lang';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 import { MatOption } from '@angular/material/autocomplete';
 import { MatSelect } from '@angular/material/select';
 import { toSignal } from '@angular/core/rxjs-interop';
@@ -57,7 +57,8 @@ import { map } from 'rxjs/operators';
         MatRowDef,
         MatTable,
         MatHeaderCellDef,
-        MatProgressSpinner
+        MatProgressSpinner,
+        TranslatePipe
     ]
 })
 export class LeavePlanningCalculatorComponent {
