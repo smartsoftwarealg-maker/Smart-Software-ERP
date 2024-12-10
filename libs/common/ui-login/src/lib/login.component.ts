@@ -6,10 +6,9 @@ import {Router} from '@angular/router';
 import { ThemeService } from '@ss/common/ui-theme';
 import { ShellService } from '@ss/common/ui-shell';
 import { NgStyle } from '@angular/common';
-import { TranslateDirective } from '../../../ui-lang/src/lib/translate.directive';
-import { ThemeSelect } from '../../../ui-theme/src/lib/theme-select.component';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
+import { ThemeSelectComponent } from '@ss/common/ui-theme';
 import { LanguageSelectComponent } from '../../../ui-lang/src/lib/language-select.component';
-import { TranslatePipe } from '../../../ui-lang/src/lib/translate.pipe';
 
 type User = {
     username: string, password: string
@@ -19,7 +18,7 @@ type User = {
     templateUrl: './login.component.html',
     styleUrls: ['./login.component.scss'],
     standalone: true,
-    imports: [NgStyle, FormsModule, ReactiveFormsModule, TranslateDirective, ThemeSelect, LanguageSelectComponent, TranslatePipe]
+    imports: [NgStyle, FormsModule, ReactiveFormsModule, TranslateDirective, ThemeSelectComponent, LanguageSelectComponent, TranslatePipe]
 })
 export class LoginComponent implements OnInit {
     private shellSrv = inject(ShellService);

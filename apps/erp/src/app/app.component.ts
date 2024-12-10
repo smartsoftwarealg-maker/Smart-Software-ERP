@@ -5,10 +5,9 @@ import { LanguageService } from '@ss/common/api-common';
 import { ShellService } from '@ss/common/ui-shell';
 import {langAssets, navBar} from '../environments/environment';
 import { RouterOutlet } from '@angular/router';
-import { ThemeDirective } from '../../../../libs/common/ui-theme/src/lib/theme.directive';
 import { Dir } from '@angular/cdk/bidi';
 import { MatProgressSpinner } from '@angular/material/progress-spinner';
-import { MessageComponent } from '../../../../libs/common/ui-error-handler/src/lib/error-message.component';
+import { MessageComponent } from '@ss/common/ui-error-handler';
 
 @Component({
     selector: 'ss-root',
@@ -16,7 +15,6 @@ import { MessageComponent } from '../../../../libs/common/ui-error-handler/src/l
     styleUrls: ['./app.component.scss'],
     standalone: true,
     imports: [
-        ThemeDirective,
         Dir,
         RouterOutlet,
         MatProgressSpinner,

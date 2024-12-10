@@ -28,7 +28,7 @@ import { LogoutComponent } from '@ss/common/ui-logout';
 import { catchError, of, switchMap, tap } from 'rxjs';
 import { LanguageSelectComponent } from '../../../ui-lang/src/lib/language-select.component';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
-import { ThemeSelect } from '@ss/common/ui-theme';
+import { ThemeSelectComponent } from '@ss/common/ui-theme';
 
 @Component({
     selector: 'ss-shell',
@@ -40,7 +40,7 @@ import { ThemeSelect } from '@ss/common/ui-theme';
         RouterModule,
         MaterialModule,
         LogoutComponent,
-        ThemeSelect,
+        ThemeSelectComponent,
         LanguageSelectComponent,
         TranslatePipe,
         TranslateDirective

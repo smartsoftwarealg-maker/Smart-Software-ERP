@@ -14,7 +14,7 @@ import { HeaderPageComponent, MainPageComponent} from '@ss/sales/ecommerce';
 
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ThemeSelect } from '@ss/common/ui-theme';
+import { ThemeSelectComponent } from '@ss/common/ui-theme';
 import { SalesAdsListComponent } from './sales-ads-list/sales-ads-list.component';
 import { SalesAdsDetailComponent } from './sales-ads-detail/sales-ads-detail.component';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
@@ -35,7 +35,7 @@ import { ImageInputComponent } from '@ss/common/ui-image-input';
         DatePickerComponent,
 
         BrowserAnimationsModule,
-        UiThemeModule,
+        ThemeSelectComponent,
         ImageInputComponent,
         MainPageComponent,
         SalesAdsListComponent,
