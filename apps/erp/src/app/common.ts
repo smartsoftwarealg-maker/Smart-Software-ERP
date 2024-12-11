@@ -448,6 +448,7 @@ export const ACC_JOURNALS_URL         = 'journals';
 export const ACC_TRANSACTIONS_URL     = 'transactions';
 export const ACC_FILE_SELECTOR_URL    = 'file-select';
 export const ACC_GENERATION_URL       = 'acc-generation';
+export const ACC_SALES_INJECTION_URL  = 'sales-injection';
 export const ACC_DEPRECIATION_GEN_URL = 'deprec-gen';
 export const ACC_REOPEN_URL           = 'acc-reopen';
 export const ACC_PERIOD_SELECTOR_URL  = 'period-select';
@@ -580,6 +581,7 @@ export const ABS_ACC_F82_URL = '/' + [MAIN_PAGE_URL, ACCOUNTING_APP_URL, ACC_F82
 export const ABS_ACC_F12_URL = '/' + [MAIN_PAGE_URL, ACCOUNTING_APP_URL, ACC_F12_URL].join('/');
 export const ABS_ACC_F13_URL = '/' + [MAIN_PAGE_URL, ACCOUNTING_APP_URL, ACC_F13_URL].join('/');
 export const ABS_ACC_DASHBOARD_URL = '/' + [MAIN_PAGE_URL, ACCOUNTING_APP_URL, DASHBOARD_URL].join('/');
+export const ABS_SALES_GENERATION_URL = '/' + [MAIN_PAGE_URL, ACCOUNTING_APP_URL, ACC_SALES_INJECTION_URL].join('/');
 
 //Budget
 export const ABS_BUDGET_BUDGET_URL = '/' + [MAIN_PAGE_URL, BUDGET_APP_URL, BUDGET_BUDGET_URL].join('/');

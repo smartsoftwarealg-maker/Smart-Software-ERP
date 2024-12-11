@@ -77,5 +77,6 @@
     "REF_AMOUNT":               "القيمة المراجعة",
     "TURNOVER":                 "حجم الأعمال",
     "EXEMPTION":                "الخصومات",
-    "TAX_RATE":                 "معدل الضريبة"
+    "TAX_RATE":                 "معدل الضريبة",
+    "SALES_INJECTION":          "توليد البيع"
 }

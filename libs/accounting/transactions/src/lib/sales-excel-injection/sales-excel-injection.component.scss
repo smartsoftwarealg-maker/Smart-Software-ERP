@@ -1,0 +1,59 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+mat-card {
+    border-radius: 1.4em;
+    padding: 1em;
+    margin-top: .5em;
+}
+.container {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    height: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+}
+.button__div {
+    display: flex;
+    justify-content: space-between;
+}
+
+.ctrl-div {
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 8px 10px;
+    margin-top: 4px;
+}
+.ctrl-div button {
+    margin-left: 20px;
+}
+
+.file-input {
+    display: none;
+}
+
+.file-upload {
+    width: 98%;
+    margin: 0 auto;
+    display: flex;
+    padding: .5em;
+    justify-content: space-between;
+}
+
+.text-area {
+    text-decoration: none;
+    border: none;
+    width: 96%;
+    margin: 8px auto;
+    flex-grow: 2;
+    padding: 10px;
+}
+
+.icon {
+    margin-right: 8px;
+}
+button {
+    padding: 0 8px;
+}

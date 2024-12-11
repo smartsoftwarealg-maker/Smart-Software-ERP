@@ -22,7 +22,7 @@ import {
     ABS_DEPRECIATION_GENERATION_URL,
     ABS_GENERATION_URL,
     ABS_POLICIES_URL,
-    ABS_REOPEN_URL
+    ABS_REOPEN_URL, ABS_SALES_GENERATION_URL
 } from '../common';
 
 
@@ -107,6 +107,12 @@ export const accountingNavTree: SideNavNode = {
             name: 'ACC_GENERATION',
             icon: 'fa-solid fa-gears',
             route: ABS_GENERATION_URL,
+            accessRights: 'ACCTransaction'
+        },
+        {
+            name: 'ACC_SALES_INJECTION',
+            icon: 'fa-solid fa-file-excel',
+            route: ABS_SALES_GENERATION_URL,
             accessRights: 'ACCTransaction'
         },
         {
