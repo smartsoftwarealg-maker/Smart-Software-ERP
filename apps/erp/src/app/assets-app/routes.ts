@@ -232,7 +232,8 @@ export const mainRoutes: Routes = [
         children: [
             {
                 path: LIST_URL,
-                component: ActivityListComponent
+                component: ActivityListComponent,
+                canActivate: [loginGuard]
             },
             {
                 path: ':id',
@@ -248,7 +249,8 @@ export const mainRoutes: Routes = [
         children: [
             {
                 path: LIST_URL,
-                component: AssetBuildingListComponent
+                component: AssetBuildingListComponent,
+                canActivate: [loginGuard]
             },
             {
                 path: ':id',
@@ -439,19 +441,23 @@ export const mainRoutes: Routes = [
     },
     {
         path: ASSET_OPTIONS_URL,
-        component: AssetOptionsComponent
+        component: AssetOptionsComponent,
+        canActivate: [loginGuard]
     },
     {
         path: ASSET_TRANSFER_URL,
         component: AssetsTransferComponent,
+        canActivate: [loginGuard]
     },
     {
         path: ASSETS_SEARCH_URL,
-        component: SearchListComponent
+        component: SearchListComponent,
+        canActivate: [loginGuard]
     },
     {
         path: ASSETS_INJECTION_URL,
-        component: AssetExcelInjectionComponent
+        component: AssetExcelInjectionComponent,
+        canActivate: [loginGuard]
     },
     {
         path: ASSET_QR_INVENTORY_URL,
@@ -522,7 +528,7 @@ export const mainRoutes: Routes = [
     {
         path: ASSET_RECEPTIONS_URL,
         component: AssetReceptionsComponent,
-
+        canActivate: [loginGuard]
     },
     {
         path: LOGISTICS_AGENT_URL,
@@ -621,7 +627,8 @@ export const mainRoutes: Routes = [
         children: [
             {
                 path: LIST_URL,
-                component: MarkListComponent
+                component: MarkListComponent,
+                canActivate: [loginGuard]
             },
             {
                 path: ':id',

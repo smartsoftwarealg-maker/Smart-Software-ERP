@@ -17,6 +17,7 @@ import {switchMap, tap} from 'rxjs/operators';
 import { DatePickerComponent, maxDate, minDate } from "@ss/common/ui-datepicker";
 import { ACC_TRANSACTION_ARCHIVES } from "@ss/common/app-archive";
 import { CommonModule } from "@angular/common";
+import { TranslatePipe } from '@ss/common/ui-lang';
 
 
 @Component({
@@ -30,7 +31,8 @@ import { CommonModule } from "@angular/common";
         MaterialModule,
         ReactiveFormsModule,
         DatePickerComponent,
-    ],
+        TranslatePipe
+    ]
 })
 export class TransactionDetailComponent implements OnInit, OnDestroy {
     private fileSrv = inject(AccFileService);

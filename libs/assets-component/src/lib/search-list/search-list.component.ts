@@ -10,9 +10,8 @@ import { IsParamService, LanguageService, MaterialModule, PaginatorPersistenceSe
 import { Observable } from 'rxjs';
 import { debounceTime, distinctUntilChanged, map, tap } from 'rxjs/operators';
 import { UntypedFormBuilder } from '@angular/forms';
-import {  DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
+import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { ConsumerService, SupplierService } from '@ss/logistics/api-agent';
-import { AssetLocationService } from '../services/asset-location.service';
 import { OfficeSearchComponent } from '../office-search/office-search.component';
 import { MatDialog } from '@angular/material/dialog';
 import { Office, OfficeService } from '@ss/common/api-lookup';
@@ -38,12 +37,10 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         MaterialModule,
         TranslateDirective,
         TranslatePipe,
-
         DatePickerComponent,
         RouterModule,
-
-
-        PaginationComponent
+        PaginationComponent,
+        UiAutoCompleteComponent
     ]
 
 })

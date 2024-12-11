@@ -30,12 +30,8 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         TranslateDirective,
         TranslatePipe,
         ReactiveFormsModule,
-
-
         DatePickerComponent,
         PaginationComponent
-
-
     ]
 })
 export class FileSelectorComponent extends BaseEntityListComponent<ACCFile> implements OnInit {

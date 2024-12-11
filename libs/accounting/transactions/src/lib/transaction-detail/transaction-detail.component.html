@@ -48,17 +48,17 @@
                     translate [disabled]="!form?.valid || isClosed()"
                     *ngIf="!isOnEdit()">
                 <i class="fas fa-save"></i>
-                COMMON_SAVE
+                {{ 'COMMON_SAVE' | translate }}
             </button>
             <button mat-flat-button color="accent" translate (click)="cancel()" *ngIf="!isOnEdit()">
                 <i class="fas fa-redo"></i>
-                COMMON_CANCEL
+                {{'COMMON_CANCEL'|translate}}
             </button>
 
-            <button (click)="deleteSelected()" *ngIf="isEmpty && id > 0" translate>
-                <i class="fas fa-trash-can"></i>
-                COMMON_DELETE
-            </button>
+<!--            <button (click)="deleteSelected()" *ngIf="isEmpty && id > 0" translate>-->
+<!--                <i class="fas fa-trash-can"></i>-->
+<!--                {{ 'COMMON_DELETE'|translate }}-->
+<!--            </button>-->
         </div>
     </mat-card>
     <div *ngIf="id" class="right_div">

@@ -77,5 +77,6 @@
     "REF_AMOUNT":               "Reference amount",
     "TURNOVER":                 "Turnover",
     "EXEMPTION":                "Exemption",
-    "TAX_RATE":                 "Tax rate"
+    "TAX_RATE":                 "Tax rate",
+    "SALES_INJECTION":          "Sales injection"
 }

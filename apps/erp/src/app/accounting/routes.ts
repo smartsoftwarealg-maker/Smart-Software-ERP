@@ -10,7 +10,7 @@ import {
     ACC_PERIOD_SELECTOR_URL,
     ACC_POLICIES_URL,
     ACC_PROJECTS_URL,
-    ACC_REOPEN_URL,
+    ACC_REOPEN_URL, ACC_SALES_INJECTION_URL,
     ACC_TRANSACTIONS_URL,
     ASSET_ACCOUNT_URL,
     CASHFLOW_ACCOUNTS_URL,
@@ -37,7 +37,7 @@ import {
     AccountingGenerationComponent,
     AccountingReopenComponent,
     CanCloseOpener,
-    BalanceQueriesComponent
+    BalanceQueriesComponent, SalesExcelInjectionComponent
 } from '@ss/accounting/transactions';
 import {
     AssetAccountsListComponent,
@@ -63,6 +63,7 @@ import {
     F8ListComponent
 } from '@ss/accounting/balance-tables';
 import { DashboardComponent } from '@ss/dashboard';
+import { ScheduledSalesExcelInjectionService } from '@ss/accounting/accounting-api';
 
 export const accRoutes: Routes = [
     {
@@ -78,6 +79,11 @@ export const accRoutes: Routes = [
     {
         path: ACC_DEPRECIATION_GEN_URL,
         component: DepreciationGenerationComponent,
+        canActivate: [loginGuard, accountingGuard]
+    },
+    {
+        path: ACC_SALES_INJECTION_URL,
+        component: SalesExcelInjectionComponent,
         canActivate: [loginGuard, accountingGuard]
     },
     {

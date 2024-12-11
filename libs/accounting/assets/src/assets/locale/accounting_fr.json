@@ -76,6 +76,7 @@
     "REF_AMOUNT":               "Montant de versement",
     "TURNOVER":                 "Chiffre d'affaires",
     "EXEMPTION":                "Exemption",
-    "TAX_RATE":                 "Taux de taxe"
+    "TAX_RATE":                 "Taux de taxe",
+    "SALES_INJECTION":          "Injection vente"
 }
 
