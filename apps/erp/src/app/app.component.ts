@@ -8,6 +8,7 @@ import { RouterOutlet } from '@angular/router';
 import { Dir } from '@angular/cdk/bidi';
 import { MatProgressSpinner } from '@angular/material/progress-spinner';
 import { MessageComponent } from '@ss/common/ui-error-handler';
+import { ThemeService } from '@ss/common/ui-theme';
 
 @Component({
     selector: 'ss-root',
@@ -25,11 +26,13 @@ export class AppComponent implements OnInit {
     private httpSrv = inject(HttpService);
     private shellSrv = inject(ShellService);
     private loginSrv = inject(LoginService);
+    private themeSrv = inject(ThemeService);
 
     public langSrv = inject(LanguageService);
     loaded = false;
 
     ngOnInit() {
+        this.themeSrv.load();
         this.shellSrv.setApplicationTitle('Smart ERP 1.60.5');
         this.httpSrv
             .init()
