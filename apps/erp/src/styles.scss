@@ -18,6 +18,10 @@ body {
 @mixin themes-patches($primary, $accent, $foreground, $background) {
     $warn: #bf0c0c;
 
+    body {
+        background-color: $background;
+    }
+
     // icons
     .mat-form-field.ng-invalid.ng-touched {
         .warn-when-invalid {
