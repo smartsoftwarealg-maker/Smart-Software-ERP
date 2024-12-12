@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
     providedIn: 'root',
 })
 export class ThemeService {
-    DEFAULT_THEME = 'theme-1';
+    DEFAULT_THEME = 'theme-2';
     THEME_KEY = 'theme';
 
     constructor() {}
@@ -12,6 +12,7 @@ export class ThemeService {
     load() {
         const savedTheme =
             localStorage.getItem(this.THEME_KEY) || this.DEFAULT_THEME;
+        this.selectTheme(savedTheme);
     }
 
     save(theme: string) {

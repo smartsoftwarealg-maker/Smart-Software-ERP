@@ -69,9 +69,10 @@
 // theme-0
 // ========================================================================================================
 .theme-0-bg {
-    background-color: #F0F0D4;
+    background-color: #fafaf0;
+
     :hover {
-        background-color: #F0F0D4;
+        background-color: #fafaf0;
     }
 }
 
@@ -84,6 +85,7 @@
 // ========================================================================================================
 .theme-1-bg {
     background-color: #212121;
+
     :hover {
         background-color: #212121;
     }
@@ -98,6 +100,7 @@
 // ========================================================================================================
 .theme-2-bg {
     background-color: #212121;
+
     :hover {
         background-color: #212121;
     }
@@ -111,12 +114,63 @@
 // theme-3
 // ========================================================================================================
 .theme-3-bg {
-    background-color: #F0F0D4;
+    background-color: #fafaf0;
+
     :hover {
-        background-color: #F0F0D4;
+        background-color: #fafaf0;
     }
 }
 
 .theme-3-bg-p {
     background-color: #673ab7;
+}
+
+.theme-circle {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    animation: rotate-slowly 64s infinite;
+    animation-delay: 0s;
+    animation-timing-function: linear;
+    overflow: hidden;
+    position: relative;
+
+    * {
+        border: none;
+    }
+}
+
+.theme-circle .a1 {
+    width: 50%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.theme-circle .a2 {
+    width: 50%;
+    height: 50%;
+    position: absolute;
+    border-radius: 50%;
+    top: 0;
+    right: 25%;
+}
+
+.theme-circle .b1 {
+    width: 50%;
+    height: 50%;
+    position: absolute;
+    border-radius: 50%;
+    bottom: 0;
+    right: 25%;
+}
+
+@keyframes rotate-slowly {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(-360deg);
+    }
 }

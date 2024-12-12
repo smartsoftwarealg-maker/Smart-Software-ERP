@@ -10,7 +10,7 @@ import { NgFor } from '@angular/common';
     styleUrls: ['./theme-select.component.scss'],
     templateUrl: './theme-select.component.html',
     standalone: true,
-    imports: [MatIconButton, MatMenuTrigger, MatMenu, NgFor, MatMenuItem]
+    imports: [MatIconButton, MatMenuTrigger, MatMenu, MatMenuItem]
 })
 export class ThemeSelectComponent {
     @Output() onTheme = new EventEmitter<string>();
