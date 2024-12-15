@@ -6,22 +6,43 @@ import {
     MatCell,
     MatCellDef,
     MatColumnDef,
-    MatHeaderCell, MatHeaderCellDef,
+    MatHeaderCell,
+    MatHeaderCellDef,
     MatHeaderRow,
-    MatHeaderRowDef, MatRow, MatRowDef, MatTable
+    MatHeaderRowDef,
+    MatRow,
+    MatRowDef,
+    MatTable
 } from '@angular/material/table';
-import { MatSort, MatSortHeader } from '@angular/material/sort';
 
 import { LtmEquipmentTestService } from '../services/ltm-equipment-test.service';
 import { MatTooltip } from '@angular/material/tooltip';
 import { MatMiniFabButton } from '@angular/material/button';
 import { LTMTestEquipmentTest } from '@ltm/ltm-api';
 import { PaginationComponent } from '@ss/common/ui-pagination';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-test-equipment-test-list',
     standalone: true,
-    imports: [CommonModule, PaginationComponent, MatCell, MatCellDef, MatColumnDef, MatHeaderCell, MatHeaderRow, MatHeaderRowDef, MatRow, MatRowDef, MatSort, MatSortHeader, MatTable,  MatTooltip, MatHeaderCellDef, MatMiniFabButton],
+    imports: [
+        CommonModule,
+        PaginationComponent,
+        MatCell,
+        MatCellDef,
+        MatColumnDef,
+        MatHeaderCell,
+        MatHeaderRow,
+        MatHeaderRowDef,
+        MatRow,
+        MatRowDef,
+        MatTable,
+        MatTooltip,
+        MatHeaderCellDef,
+        MatMiniFabButton,
+        TranslatePipe,
+        TranslateDirective
+    ],
     templateUrl: './test-equipment-test-list.component.html',
     styleUrl: './test-equipment-test-list.component.scss',
 })

@@ -32,11 +32,12 @@ import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui
 import { DatePickerComponent } from '@ss/common/ui-datepicker';
 import { debug } from '@capacitor/assets/dist/util/log';
 import { PaginationComponent } from '@ss/common/ui-pagination';
+import { TranslateDirective } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-test-equipment-testing-input-detail',
     standalone: true,
-    imports: [CommonModule, MatCard, MatFormField, MatInput, MatLabel, MaterialModule, ReactiveFormsModule, DatePickerComponent, UiAutoCompleteComponent],
+    imports: [CommonModule, MatCard, MatFormField, MatInput, MatLabel, MaterialModule, ReactiveFormsModule, DatePickerComponent, UiAutoCompleteComponent, TranslateDirective],
     templateUrl: './test-equipment-testing-input-detail.component.html',
     styleUrl: './test-equipment-testing-input-detail.component.scss'
 })

@@ -1,7 +1,7 @@
 import { Component, DestroyRef, inject } from '@angular/core';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
-import { KeepOnToolbar, ShellService, SnackBarService, ToolbarButton } from '@ss/common/ui-shell';
-import { ActivatedRoute, Router, RouterOutlet } from "@angular/router";
+import { ShellService, SnackBarService } from '@ss/common/ui-shell';
+import { ActivatedRoute, Router } from "@angular/router";
 import {  ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import { MaterialModule, PaginatorPersistenceService } from "@ss/common/api-common";
@@ -10,7 +10,7 @@ import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { DatePickerComponent } from "@ss/common/ui-datepicker";
 import { LTMAbnormalTest } from '@ltm/ltm-api';
 import { LtmAbnormalTestService } from '@ltm/ltm-api';
-import { filter, Subscription } from 'rxjs';
+import { filter } from 'rxjs';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { PaginationComponent } from '@ss/common/ui-pagination';
@@ -76,23 +76,6 @@ export class LtmAlertsComponent extends BaseEntityListComponent<LTMAbnormalTest>
             );
     }
 
-    // showAlertBadge() {
-    //         const TODAY = new Date(new Date().getTime() - 24 * 3600 * 1000);
-    //         this.subscription = this.abnormalTestSrv
-    //             .refresh(TODAY, new Date(), 0, 49)
-    //             .subscribe(res => {
-    //                 if (res.itemCount > 0) {
-    //                     this.badgeBtn.badgeCount = res.itemCount;
-    //                     this.shellSrv.addButton(this.badgeBtn);
-    //                 }
-    //             });
-    // }
-
-    // private showAlerts() {
-    //     this.shellSrv.removeButton('LTM_ALERTS');
-    //     this.subscription?.unsubscribe();
-    //     this.router.navigate(['/app/ltm/ltm-alerts']).then();
-    // }
 
     override ngOnInit() {
         this.addButton.visible = false;
@@ -111,8 +94,6 @@ export class LtmAlertsComponent extends BaseEntityListComponent<LTMAbnormalTest>
                 debounceTime(300),
                 distinctUntilChanged()
             ).subscribe(() => this.refresh());
-
-
     }
 
     override showDetail(id: number) {
@@ -120,6 +101,7 @@ export class LtmAlertsComponent extends BaseEntityListComponent<LTMAbnormalTest>
     }
 
     override ngOnDestroy() {
+        super.ngOnDestroy();
         const formValue = this.form.value;
         this.entitySrv.from = formValue.from;
         this.entitySrv.to = formValue.to;
