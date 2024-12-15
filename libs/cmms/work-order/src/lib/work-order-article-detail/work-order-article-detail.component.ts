@@ -30,7 +30,7 @@ import { MaterialModule } from '@ss/common/api-common';
         ReactiveFormsModule,
         MatCardModule,
         MatInputModule,
-        DatePickerComponent,
+       
         MatButtonModule,
         MaterialModule,
         UiAutoCompleteComponent

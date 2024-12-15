@@ -28,9 +28,9 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
         TranslatePipe,
         ReactiveFormsModule,
         RouterModule,
-        DatePickerComponent,
+       
 
-        UiStockInfoComponent,
+       
         DocInfoComponent,
         TranslatePipe,
         PaginationComponent

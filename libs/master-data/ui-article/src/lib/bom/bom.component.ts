@@ -19,7 +19,7 @@ import { map, of, switchMap } from 'rxjs';
 @Component({
     selector: 'ss-bom',
     standalone: true,
-    imports: [CommonModule,  MatButtonModule, MaterialModule, DatePickerComponent],
+    imports: [CommonModule,  MatButtonModule, MaterialModule],
     templateUrl: './bom.component.html',
     styleUrl: './bom.component.css',
 })

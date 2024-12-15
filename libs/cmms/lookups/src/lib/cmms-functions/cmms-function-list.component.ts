@@ -32,8 +32,7 @@ import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
         MatFormFieldModule,
         MatInputModule,
         MaterialModule,
-        ReactiveFormsModule,
-        UiAutoCompleteComponent
+        ReactiveFormsModule
     ],
 })
 export class CMMSFunctionListComponent extends BaseEntityListComponent<Lookup> {

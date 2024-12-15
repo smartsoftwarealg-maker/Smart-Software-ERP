@@ -20,12 +20,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         CommonModule,
         RouterModule,
         MaterialModule,
-        TranslateDirective,
-        TranslatePipe,
-        ReactiveFormsModule,
-
-
-        DatePickerComponent
+        ReactiveFormsModule
     ],
 
 })

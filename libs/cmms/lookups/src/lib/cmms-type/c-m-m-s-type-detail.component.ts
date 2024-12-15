@@ -25,7 +25,7 @@ import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
     standalone: true,
     imports: [
         CommonModule,
-        PaginationComponent,
+
         MatSortModule,
         MatTableModule,
         MatCardModule,
@@ -33,8 +33,7 @@ import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
         MatInputModule,
         MaterialModule,
         ReactiveFormsModule,
-        RouterOutlet,
-        UiAutoCompleteComponent
+        RouterOutlet
     ],
 })
 export class CMMSTypeDetailComponent extends BaseLookupDetailClass {

@@ -29,7 +29,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     ReactiveFormsModule,
 
 
-    DatePickerComponent,
+   
 
   ],
   animations: [slideToRight]

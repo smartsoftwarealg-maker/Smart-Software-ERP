@@ -25,7 +25,7 @@ import { MatInput } from '@angular/material/input';
 @Component({
     selector: 'ss-gica-motive-detail',
     standalone: true,
-    imports: [CommonModule,  MatCell, MatCellDef, MatColumnDef, MatHeaderCell, MatHeaderRow, MatHeaderRowDef, MatRow, MatRowDef, MatSort, MatSortHeader, MatTable,  MatCard, MatCardContent, MatError, MatFormField, MatInput, MatLabel, ReactiveFormsModule],
+    imports: [CommonModule,   MatCard, MatCardContent, MatError, MatFormField, MatInput, MatLabel, ReactiveFormsModule],
     templateUrl: './fault-motive-detail.component.html',
     styleUrl: './fault-motive-detail.component.css'
 })

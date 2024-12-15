@@ -21,8 +21,7 @@ import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
         CommonModule,
         MaterialModule,
         PaginationComponent,
-        ReactiveFormsModule,
-        UiAutoCompleteComponent
+        ReactiveFormsModule
     ],
 })
 export class ActivityListComponent extends BaseEntityListComponent<Lookup> {

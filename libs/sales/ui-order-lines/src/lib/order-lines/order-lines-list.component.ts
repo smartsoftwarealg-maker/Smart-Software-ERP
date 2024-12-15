@@ -25,10 +25,10 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
         TranslateDirective,
         TranslatePipe,
         ReactiveFormsModule,
-        DatePickerComponent,
+       
 
 
-        UiStockInfoComponent, DocInfoComponent, TranslatePipe, PaginationComponent
+        DocInfoComponent, TranslatePipe, PaginationComponent
     ]
 })
 export class OrderLinesListComponent extends BaseTransactionLinesListComponent implements OnInit {

@@ -4,14 +4,10 @@ import { BaseChildEntityListComponent } from '@ss/common/ui-base-entity';
 
 import {
     MatCell,
-    MatCellDef,
     MatColumnDef,
     MatHeaderCell,
-    MatHeaderCellDef,
     MatHeaderRow,
-    MatHeaderRowDef,
     MatRow,
-    MatRowDef,
     MatTable
 } from '@angular/material/table';
 
@@ -29,16 +25,12 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         CommonModule,
         PaginationComponent,
         MatCell,
-        MatCellDef,
         MatColumnDef,
         MatHeaderCell,
         MatHeaderRow,
-        MatHeaderRowDef,
         MatRow,
-        MatRowDef,
         MatTable,
         MatTooltip,
-        MatHeaderCellDef,
         MatMiniFabButton,
         TranslatePipe,
         TranslateDirective

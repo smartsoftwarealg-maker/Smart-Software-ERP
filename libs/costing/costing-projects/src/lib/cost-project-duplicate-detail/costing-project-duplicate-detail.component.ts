@@ -24,8 +24,7 @@ import { TranslatePipe } from '@ss/common/ui-lang';
     imports: [
         CommonModule,
         RouterModule,
-        MaterialModule,
-        TranslatePipe
+        MaterialModule
     ]
 })
 export class CostingProjectDuplicateDetailComponent extends BaseEntityDetailComponent<CProject> implements  OnInit {

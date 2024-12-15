@@ -35,7 +35,7 @@ interface EvalPrice {
         CommonModule,
         MaterialModule,
         TranslateDirective,
-        TranslatePipe,
+       
 
         ReactiveFormsModule,
         DatePickerComponent,

@@ -34,7 +34,7 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
         MatFormFieldModule,
         MatInputModule,
         ReactiveFormsModule,
-        DatePickerComponent,
+       
 
         MatButtonModule,
         MaterialModule,

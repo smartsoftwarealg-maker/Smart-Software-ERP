@@ -32,7 +32,20 @@ import { TranslateDirective } from '@ss/common/ui-lang';
 @Component({
     selector: 'ss-gica-scale-detail',
     standalone: true,
-    imports: [CommonModule, MaterialModule, MatCard, MatCardContent, MatError, MatFormField, MatInput, MatLabel, ReactiveFormsModule, TranslateDirective, MatOption, MatSelect, UiAutoCompleteComponent],
+    imports: [
+        CommonModule,
+        MaterialModule,
+        MatCard,
+        MatCardContent,
+        MatFormField,
+        MatInput,
+        MatLabel,
+        ReactiveFormsModule,
+        TranslateDirective,
+        MatOption,
+        MatSelect,
+        UiAutoCompleteComponent
+    ],
     templateUrl: './absence-weight-detail.component.html',
     styleUrl: './absence-weight-detail.component.css'
 })

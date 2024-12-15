@@ -43,8 +43,7 @@ import { AccFileService } from '@ss/accounting/accounting-api';
         MatInput,
         MatLabel,
         ReactiveFormsModule,
-        CommonUiLookupModule,
-        DatePickerComponent
+        CommonUiLookupModule
     ],
     templateUrl: './f13-detail.component.html',
     styleUrl: './f13-detail.component.scss'

@@ -27,8 +27,7 @@ import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
         MatInputModule,
         MaterialModule,
         ReactiveFormsModule,
-        RouterOutlet,
-        UiAutoCompleteComponent
+        RouterOutlet
     ],
     templateUrl: '../detail-template/cmms-fault-detail.component.html',
     styleUrls: ['../detail-template/cmms-fault-detail.component.css'],
