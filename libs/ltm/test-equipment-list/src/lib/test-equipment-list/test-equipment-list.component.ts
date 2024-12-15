@@ -20,11 +20,27 @@ import { MatSort, MatSortHeader } from '@angular/material/sort';
 import { LtmTestingEquipmentService } from '../services/ltm-testing-equipment.service';
 import { LTMTestingEquipment } from '@ltm/ltm-api';
 import { PaginationComponent } from '@ss/common/ui-pagination';
+import { TranslateDirective } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-test-equipment-list',
     standalone: true,
-    imports: [CommonModule, PaginationComponent, MatCell, MatCellDef, MatColumnDef, MatHeaderCell, MatHeaderRow, MatHeaderRowDef, MatRow, MatRowDef, MatSort, MatSortHeader, MatTable,  MatHeaderCellDef],
+    imports: [CommonModule,
+              PaginationComponent,
+              MatCell,
+              MatCellDef,
+              MatColumnDef,
+              MatHeaderCell,
+              MatHeaderRow,
+              MatHeaderRowDef,
+              MatRow,
+              MatRowDef,
+              MatSort,
+              MatSortHeader,
+              MatTable,
+              MatHeaderCellDef,
+              TranslateDirective
+    ],
     templateUrl: './test-equipment-list.component.html',
     styleUrl: './test-equipment-list.component.scss',
 })

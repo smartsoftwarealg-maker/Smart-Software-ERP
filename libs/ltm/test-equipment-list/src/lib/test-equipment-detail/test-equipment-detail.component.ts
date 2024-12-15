@@ -13,11 +13,21 @@ import { LtmEquipmentTestService } from '../services/ltm-equipment-test.service'
 import { Observable } from 'rxjs';
 import { LtmTestingEquipmentService } from '../services/ltm-testing-equipment.service';
 import { LTMTestingEquipment } from '@ltm/ltm-api';
+import { TranslateDirective } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-test-equipment-detail',
     standalone: true,
-    imports: [CommonModule, MatCard, MatFormField, MatInput, MatLabel, MaterialModule, ReactiveFormsModule, RouterOutlet],
+    imports: [CommonModule,
+        MatCard,
+        MatFormField,
+        MatInput,
+        MatLabel,
+        MaterialModule,
+        ReactiveFormsModule,
+        RouterOutlet,
+        TranslateDirective
+    ],
     templateUrl: './test-equipment-detail.component.html',
     styleUrl: './test-equipment-detail.component.scss'
 })

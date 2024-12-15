@@ -24,6 +24,7 @@ import { DefaultReportService } from '@ss/common/ui-default-report-component';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { PaginatorPersistenceService } from '@ss/common/api-common';
 import { PaginationComponent } from '@ss/common/ui-pagination';
+import { TranslateDirective } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-test-equipment-testing-input-list',
@@ -40,7 +41,8 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
         MatRow,
         MatRowDef,
         MatTable,
-        MatHeaderCellDef
+        MatHeaderCellDef,
+        TranslateDirective
     ],
     templateUrl: './test-equipment-testing-input-list.component.html',
     styleUrl: './test-equipment-testing-input-list.component.scss',
