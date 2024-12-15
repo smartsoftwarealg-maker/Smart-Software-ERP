@@ -16,12 +16,8 @@ body {
 // Use these classes to style your components
 
 @mixin themes-patches() {
-    $background-l: #FAFAF0;
-    $background-d: #212121;
 
-    $foreground-l: #010101;
-    $foreground-d: #FEFEFE;
-
+    // No longer used?
     //body {
     //    background-color: $background;
     //}
@@ -82,9 +78,15 @@ body {
 
     // background
 
-    .b-b-app-bar { background-color: light-dark($background-l, $background-d); }
+    .b-b-app-bar {
+        background-color: var(--mat-sys-surface);
+        color: var(--mat-sys-on-surface);
+    }
 
-    .b-b-background { background-color: light-dark($background-l, $background-d); }
+    .b-b-background {
+        background-color: var(--mat-sys-background);
+        color: var(--mat-sys-on-background);
+    }
 
     .selectable {
         cursor: pointer;
