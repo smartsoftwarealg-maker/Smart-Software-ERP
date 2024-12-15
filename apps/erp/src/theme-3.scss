@@ -1,11 +1,5 @@
+@use '@angular/material/prebuilt-themes/magenta-violet.css';
 
-@use '@angular/material/prebuilt-themes/deeppurple-amber.css';
+@use 'styles.scss' as mainStyles;
 
-@use 'styles.scss';
-
-$background: #fafaf0;
-$foreground: #212121;
-$primary: #673ab7;
-$accent: #ffd740;
-
-@include styles.themes-patches($primary, $accent, $foreground, $background);
+@include mainStyles.themes-patches();

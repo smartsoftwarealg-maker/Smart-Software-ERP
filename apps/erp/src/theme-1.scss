@@ -1,11 +1,5 @@
+@use '@angular/material/prebuilt-themes/cyan-orange.css';
 
-@use '@angular/material/prebuilt-themes/pink-bluegrey.css';
+@use 'styles.scss' as mainStyles;
 
-@use 'styles.scss';
-
-$background: #212121;
-$foreground: #F0F0c4;
-$primary: #c2185b;
-$accent: #b0bec5;
-
-@include styles.themes-patches($primary, $accent, $foreground, $background);
+@include mainStyles.themes-patches();

@@ -1,11 +1,5 @@
+@use '@angular/material/prebuilt-themes/rose-red.css';
 
-@use '@angular/material/prebuilt-themes/indigo-pink.css';
+@use 'styles.scss' as mainStyles;
 
-@use 'styles.scss';
-
-$background: #fafaf0;
-$foreground: #212121;
-$primary: #3f51b5;
-$accent: #ff4081;
-
-@include styles.themes-patches($primary, $accent, $foreground, $background);
+@include mainStyles.themes-patches();
