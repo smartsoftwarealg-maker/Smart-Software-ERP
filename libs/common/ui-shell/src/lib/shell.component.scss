@@ -1,6 +1,7 @@
 
 :host {
     display: block;
+    --mat-sidenav-container-width: 320px;
 }
 
 .z-side-bar {
@@ -10,9 +11,9 @@
 }
 
 @media (max-width: 599px) {
-    .shell-side-nav {
-        width: 280px;
-    }
+    //.shell-side-nav {
+    //    width: 280px;
+    //}
 
     .large-only {
         display: none !important;
@@ -20,9 +21,9 @@
 }
 
 @media (min-width: 600px) {
-    .shell-side-nav {
-        width: 260px;
-    }
+    //.shell-side-nav {
+    //    width: 360px;
+    //}
 
     .small-only {
         display: none !important;
@@ -405,6 +406,9 @@
 }
 
 .nav-tree-icon {
+    i {
+        color: white;
+    }
     border-radius: 8px;
     display: inline-block;
     flex-basis: 40px;
