@@ -29,6 +29,7 @@ import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui
 import { CriterionService } from '../services/criterion.service';
 import { Category, CategoryService } from '@ss/common/api-lookup';
 import { PaginationComponent } from '@ss/common/ui-pagination';
+import { TranslateDirective } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-gica-criteria-list',
@@ -47,10 +48,13 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
         MatSort,
         MatSortHeader,
         MatTable,
-
+        TranslateDirective,
         MatHeaderCellDef,
         MatFormField,
-        CommonUiLookupModule, PaginationComponent, UiAutoCompleteComponent],
+        CommonUiLookupModule,
+        PaginationComponent,
+        UiAutoCompleteComponent
+    ],
     templateUrl: './criteria-list.component.html',
     styleUrl: './criteria-list.component.css',
 })

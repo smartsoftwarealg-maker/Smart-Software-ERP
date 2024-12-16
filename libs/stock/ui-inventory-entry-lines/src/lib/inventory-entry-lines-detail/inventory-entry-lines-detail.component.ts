@@ -12,6 +12,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
 import { MatInput } from '@angular/material/input';
 import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { CdkTextareaAutosize } from '@angular/cdk/text-field';
+import { MaterialModule } from '@ss/common/api-common';
 
 
 @Component({
@@ -19,7 +20,7 @@ import { CdkTextareaAutosize } from '@angular/cdk/text-field';
     styleUrls: ['../../../../../common/assets/src/assets/transac-lines-detail.scss'],
     templateUrl: './inventory-entry-lines-detail.component.html',
     standalone: true,
-    imports: [NgIf, MatMiniFabButton, MatCard, MatCardContent, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, UiAutoCompleteComponent, MatError, CdkTextareaAutosize]
+    imports: [NgIf, MaterialModule, MatMiniFabButton, MatCard, MatCardContent, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, UiAutoCompleteComponent, MatError, CdkTextareaAutosize]
 })
 export class InventoryEntryLinesDetailComponent extends BaseTransactionLinesDetailComponent implements OnInit, OnDestroy {
     constructor(public detailSrv: TransactionLinesService) {

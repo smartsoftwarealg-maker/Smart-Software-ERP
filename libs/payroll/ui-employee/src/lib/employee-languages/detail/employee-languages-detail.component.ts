@@ -10,13 +10,14 @@ import { MatFormField, MatLabel } from '@angular/material/form-field';
 import { TranslateDirective } from '@ss/common/ui-lang';
 import { MatSelect } from '@angular/material/select';
 import { MatOption } from '@angular/material/core';
+import { MaterialModule } from '@ss/common/api-common';
 
 @Component({
     selector: 'ss-emp-languages-detail',
     templateUrl: './employee-languages-detail.component.html',
     styleUrls: ['./employee-languages-detail.component.scss'],
     standalone: true,
-    imports: [NgIf, MatMiniFabButton, MatCard, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatSelect, NgFor, MatOption]
+    imports: [NgIf, MaterialModule, MatMiniFabButton, MatCard, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatSelect, NgFor, MatOption]
 })
 export class EmployeeLanguagesDetailComponent extends BaseChildEntityDetailComponent<PersonLanguage> {
     private formBuilder = inject(FormBuilder);

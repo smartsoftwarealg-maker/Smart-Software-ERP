@@ -14,13 +14,14 @@ import { TranslateDirective } from '@ss/common/ui-lang';
 import { MatInput } from '@angular/material/input';
 import { DatePickerComponent } from '@ss/common/ui-datepicker';
 import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
+import { MaterialModule } from '@ss/common/api-common';
 
 @Component({
     selector: 'ss-employee-training-dist',
     templateUrl: './employee-training-detail.component.html',
     styleUrls: ['./employee-training-detail.component.scss'],
     standalone: true,
-    imports: [NgIf, MatMiniFabButton, MatCard, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, DatePickerComponent, MatError, UiAutoCompleteComponent]
+    imports: [NgIf, MaterialModule, MatMiniFabButton, MatCard, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, DatePickerComponent, MatError, UiAutoCompleteComponent]
 })
 export class EmployeeTrainingDetailComponent extends BaseChildEntityDetailComponent<Training> {
     private formBuilder = inject(FormBuilder);

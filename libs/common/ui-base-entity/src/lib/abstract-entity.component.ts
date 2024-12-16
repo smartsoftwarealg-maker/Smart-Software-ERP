@@ -56,8 +56,6 @@ export abstract class AbstractEntityComponent<T extends { id: number }> implemen
             error: err => {
                 this.snackBarSrv.showFailureMessage();
                 this.shellSrv.setLoading(false);
-                this.resetForm(val);
-                debugger;
                 throw err;
             }
         });

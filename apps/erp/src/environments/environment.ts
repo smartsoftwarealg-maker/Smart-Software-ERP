@@ -11,7 +11,6 @@ import {salesNavTree} from '../app/sales/side-nav-tree';
 import {financeNavTree} from '../app/finance/side-nav-tree';
 import {hrNavTree} from '../app/hr/side-nav-tree';
 import {payrollNavTree} from '../app/payroll/side-nav-tree';
-import {webArchNavTree} from '../app/web-arch/side-nav-tree';
 import {accountingNavTree} from '../app/accounting/side-nav-tree';
 import {assetsNavTree} from '../app/assets-app/side-nav-tree';
 import {treasuryNavTree} from '../app/treasury/side-nav-tree';
@@ -65,7 +64,6 @@ import { ssalesNavTree } from '../app/service-sales/side-nav-tree';
 import { costingNavTree } from '../app/costing/side-nav-tree';
 import { gicaNavTree } from '../app/gica/side-nav-tree';
 import { socialNavTree } from '../app/social/side-nav-tree';
-import { preInitService } from '../../../../libs/ltm/ltm/src/lib/ltm-preinit/preinit.service';
 
 export const environment = {
     production: false,

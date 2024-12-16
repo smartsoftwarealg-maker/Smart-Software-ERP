@@ -12,7 +12,6 @@ import {
 import { MatSort, MatSortHeader, Sort } from '@angular/material/sort';
 
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
-import { MatCard, MatCardContent } from '@angular/material/card';
 import { MatError, MatFormField, MatLabel } from '@angular/material/form-field';
 import { MatInput } from '@angular/material/input';
 import { ReportService } from '../services/report.service';
@@ -20,17 +19,19 @@ import { map, Observable, of, switchMap, tap } from 'rxjs';
 import { HttpParams } from '@angular/common/http';
 import { Report } from '../gica-careers-api';
 import { MatButton } from '@angular/material/button';
-import { PaginationModel } from '@ss/common/api-common';
+import { MaterialModule, PaginationModel } from '@ss/common/api-common';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute } from '@angular/router';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { MatProgressSpinner } from '@angular/material/progress-spinner';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-gica-applications',
     standalone: true,
-    imports: [CommonModule,
-
+    imports: [
+        CommonModule,
+        MaterialModule,
         MatCell,
         MatCellDef,
         MatColumnDef,
@@ -42,15 +43,15 @@ import { MatProgressSpinner } from '@angular/material/progress-spinner';
         MatSort,
         MatSortHeader,
         MatTable,
-
-        MatCard,
-        MatCardContent,
-        MatError,
+        TranslateDirective,
+        TranslatePipe,
         MatFormField,
         MatInput,
         MatLabel,
         ReactiveFormsModule,
-        MatButton, MatHeaderCellDef, MatProgressSpinner],
+        MatButton,
+        MatHeaderCellDef,
+        MatProgressSpinner],
     templateUrl: './application.component.html',
     styleUrl: './application.component.css'
 })

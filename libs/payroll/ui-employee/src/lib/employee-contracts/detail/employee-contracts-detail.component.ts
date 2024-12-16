@@ -23,6 +23,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
 import { MatInput } from '@angular/material/input';
 import { DatePickerComponent } from '@ss/common/ui-datepicker';
 import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
+import { MaterialModule } from '@ss/common/api-common';
 
 
 @Component({
@@ -30,7 +31,7 @@ import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
     templateUrl: './employee-contracts-detail.component.html',
     styleUrls: ['./employee-contracts-detail.component.scss'],
     standalone: true,
-    imports: [NgIf, MatMiniFabButton, MatCard, MatCardContent, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, DatePickerComponent, MatError, UiAutoCompleteComponent]
+    imports: [NgIf, MaterialModule, MatMiniFabButton, MatCard, MatCardContent, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, DatePickerComponent, MatError, UiAutoCompleteComponent]
 })
 export class EmployeeContractsDetailComponent extends BaseChildEntityDetailComponent<Contract> {
     private gridSrv = inject(GridService);

@@ -26,7 +26,6 @@ export class MessageComponent {
                 this.ref.detectChanges();
             }
         }, 1000);
-        debugger;
     }
 
 

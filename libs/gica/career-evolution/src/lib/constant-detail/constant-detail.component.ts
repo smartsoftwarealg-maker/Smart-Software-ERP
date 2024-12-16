@@ -21,13 +21,25 @@ import { MatCard, MatCardContent } from '@angular/material/card';
 import { MatError, MatFormField, MatLabel } from '@angular/material/form-field';
 import { MatInput } from '@angular/material/input';
 import { ConstantService } from '../services/constant.service';
-import { LoginService } from '@ss/common/api-common';
+import { LoginService, MaterialModule } from '@ss/common/api-common';
 import { Observable } from 'rxjs';
+import { TranslateDirective } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-gica-constant-detail',
     standalone: true,
-    imports: [CommonModule,  MatCell, MatCellDef, MatColumnDef, MatHeaderCell, MatHeaderRow, MatHeaderRowDef, MatRow, MatRowDef, MatSort, MatSortHeader, MatTable,  MatCard, MatCardContent, MatError, MatFormField, MatInput, MatLabel, ReactiveFormsModule],
+    imports: [
+        CommonModule,
+        MaterialModule,
+        MatCard,
+        MatCardContent,
+        MatError,
+        MatFormField,
+        MatInput,
+        MatLabel,
+        ReactiveFormsModule,
+        TranslateDirective
+    ],
     templateUrl: './constant-detail.component.html',
     styleUrl: './constant-detail.component.css'
 })

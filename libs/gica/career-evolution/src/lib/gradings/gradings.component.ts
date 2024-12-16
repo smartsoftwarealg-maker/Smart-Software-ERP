@@ -33,7 +33,7 @@ import { map, Observable, of, Subscription, tap } from 'rxjs';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { ImageInputComponent, ImageModel } from '@ss/common/ui-image-input';
 import { PaginationComponent } from '@ss/common/ui-pagination';
-import { TranslatePipe } from '@ss/common/ui-lang';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-gica-gradings',
@@ -59,7 +59,8 @@ import { TranslatePipe } from '@ss/common/ui-lang';
         MatHeaderCellDef,
         PaginationComponent,
         ImageInputComponent,
-        TranslatePipe
+        TranslatePipe,
+        TranslateDirective
     ],
     templateUrl: './gradings.component.html',
     styleUrl: './gradings.component.css'

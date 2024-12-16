@@ -5,32 +5,17 @@ import { Criterion } from '../gica-careers-api';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute } from '@angular/router';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
-
-import {
-    MatCell,
-    MatCellDef,
-    MatColumnDef,
-    MatHeaderCell,
-    MatHeaderRow,
-    MatHeaderRowDef, MatRow, MatRowDef, MatTable
-} from '@angular/material/table';
-import { MatSort, MatSortHeader } from '@angular/material/sort';
-
-import { ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
-import { MatCard, MatCardContent } from '@angular/material/card';
-import { MatError, MatFormField, MatLabel } from '@angular/material/form-field';
-import { MatInput } from '@angular/material/input';
-
-import { DatePickerComponent } from '@ss/common/ui-datepicker';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { CriterionService } from '../services/criterion.service';
-import { MatListOption, MatSelectionList } from "@angular/material/list";
 import { MatOption } from "@angular/material/autocomplete";
 import { MatSelect } from "@angular/material/select";
+import { MaterialModule } from '@ss/common/api-common';
+import { TranslateDirective } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-gica-criteria-detail',
     standalone: true,
-    imports: [CommonModule,  MatCell, MatCellDef, MatColumnDef, MatHeaderCell, MatHeaderRow, MatHeaderRowDef, MatRow, MatRowDef, MatSort, MatSortHeader, MatTable,  MatCard, MatCardContent, MatError, MatFormField, MatInput, MatLabel, ReactiveFormsModule,  DatePickerComponent, MatListOption, MatSelectionList, MatOption, MatSelect],
+    imports: [CommonModule,  MaterialModule, MatOption, MatSelect, TranslateDirective],
     templateUrl: './criteria-detail.component.html',
     styleUrl: './criteria-detail.component.css'
 })

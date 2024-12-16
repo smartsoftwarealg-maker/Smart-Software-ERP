@@ -198,5 +198,6 @@
     "WEIGHTS":               "Coefficients",
     "DISCIPLINE":            "Discipline",
     "ABSENCE":               "Absence",
-    "DEDUCTION_REPORT":      "Etat Abattement"
+    "DEDUCTION_REPORT":      "Etat Abattement",
+    "CAREER_CRITERIA":       "Critères"
 }

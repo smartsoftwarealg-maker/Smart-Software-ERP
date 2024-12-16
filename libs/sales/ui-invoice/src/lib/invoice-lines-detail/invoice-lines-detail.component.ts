@@ -12,13 +12,14 @@ import { TranslateDirective } from '@ss/common/ui-lang';
 import { MatInput } from '@angular/material/input';
 import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { CdkTextareaAutosize } from '@angular/cdk/text-field';
+import { MaterialModule } from '@ss/common/api-common';
 
 @Component({
     selector: 'ss-invoice-lines-detail',
     styleUrls: ['../../../../../common/assets/src/assets/transac-lines-detail.scss'],
     templateUrl: './invoice-lines-detail.component.html',
     standalone: true,
-    imports: [NgIf, MatMiniFabButton, MatCard, MatCardContent, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, UiAutoCompleteComponent, MatError, MatHint, CdkTextareaAutosize]
+    imports: [NgIf, MaterialModule, MatMiniFabButton, MatCard, MatCardContent, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, UiAutoCompleteComponent, MatError, MatHint, CdkTextareaAutosize]
 })
 export class InvoiceLinesDetailComponent extends BaseTransactionLinesDetailComponent implements OnInit, OnDestroy {
     constructor(

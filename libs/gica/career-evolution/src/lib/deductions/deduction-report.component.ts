@@ -5,34 +5,35 @@ import {
     MatCell,
     MatCellDef,
     MatColumnDef,
-    MatHeaderCell, MatHeaderCellDef,
+    MatHeaderCell,
     MatHeaderRow,
-    MatHeaderRowDef, MatRow, MatRowDef, MatTable
+    MatHeaderRowDef,
+    MatRow,
+    MatRowDef,
+    MatTable
 } from '@angular/material/table';
 import { MatSort, MatSortHeader, Sort } from '@angular/material/sort';
 
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
-import { MatCard, MatCardContent } from '@angular/material/card';
-import { MatError, MatFormField, MatLabel } from '@angular/material/form-field';
+import { MatFormField, MatLabel } from '@angular/material/form-field';
 import { MatInput } from '@angular/material/input';
 import { map, Observable, of, switchMap, tap } from 'rxjs';
 import { HttpParams } from '@angular/common/http';
 import { Deduction, Report } from '../gica-careers-api';
 import { MatButton } from '@angular/material/button';
-import { PaginationModel } from '@ss/common/api-common';
+import { MaterialModule, PaginationModel } from '@ss/common/api-common';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute } from '@angular/router';
 import { MatProgressSpinner } from '@angular/material/progress-spinner';
 import { DeductionService } from '../services/deduction.service';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
-import { TranslatePipe } from '@ss/common/ui-lang';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 import { PaginationComponent } from '@ss/common/ui-pagination';
 
 @Component({
-    selector: 'ss-gica-deduction-report',
-    standalone: true,
-    imports: [CommonModule,
-
+    imports: [
+        CommonModule,
+        MaterialModule,
         MatCell,
         MatCellDef,
         MatColumnDef,
@@ -44,17 +45,20 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
         MatSort,
         MatSortHeader,
         MatTable,
-
-        MatCard,
-        MatCardContent,
-        MatError,
         MatFormField,
         MatInput,
         MatLabel,
         ReactiveFormsModule,
-        MatButton, MatHeaderCellDef, MatProgressSpinner, TranslatePipe, PaginationComponent],
-    templateUrl: './deduction-report.component.html',
-    styleUrl: './deduction-report.component.css'
+        MatButton,
+        MatProgressSpinner,
+        TranslatePipe,
+        TranslateDirective,
+        PaginationComponent
+    ],
+    selector: 'ss-gica-deduction-report',
+    standalone: true,
+    styleUrl: './deduction-report.component.css',
+    templateUrl: './deduction-report.component.html'
 })
 export class DeductionReportComponent implements OnInit {
     private snackBarSrv = inject(SnackBarService);

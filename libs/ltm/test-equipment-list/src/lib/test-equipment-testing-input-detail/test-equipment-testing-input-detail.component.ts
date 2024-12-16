@@ -4,7 +4,7 @@ import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute } from '@angular/router';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
-import { dateTimeToStr, LoginService, MaterialModule } from '@ss/common/api-common';
+import { dateTimeToStr, LoginService, MaterialModule, strToDate } from '@ss/common/api-common';
 
 
 import {
@@ -99,6 +99,7 @@ export class TestEquipmentTestingInputDetailComponent extends BaseEntityDetailCo
 
     override readForm(): LTMTestEquipmentTestingInput {
         const value = this.form.getRawValue();
+        value.test.time = strToDate(value.test.time);
         value.test.time.setHours(value.test.hour, 0, 0, 0);
         value.test.time = dateTimeToStr(value.test.time);
         const values = this.tests.value as number[];

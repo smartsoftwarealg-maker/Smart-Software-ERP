@@ -1,33 +1,35 @@
 @if (!processing()) {
-    <div class="input_div">
-        <div>
-            <mat-form-field class="default-50 sm-100">
-                <mat-label translate>PAYROLL_YEAR</mat-label>
-                <input matInput [formControl]="year" type="number" required step="1">
-            </mat-form-field>
+    <mat-card>
+        <div class="input_div">
+            <div>
+                <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>PAYROLL_YEAR</mat-label>
+                    <input matInput [formControl]="year" type="number" required step="1">
+                </mat-form-field>
 
-            <button mat-raised-button color="primary" type="button" (click)="refresh()">
-                <i class="fa-solid fa-arrows-rotate"></i>
-                {{ 'COMMON_REFRESH' | translate }}
-            </button>
-        </div>
-        @if (data$) {
-            <div class="btn_div">
-                @if (dataLength() > 0) {
-                    <button mat-raised-button color="accent" type="button" (click)="apply()">
-                        <i class="fa-solid fa-ballot-check"></i>
-                        {{ 'COMMON_APPLY' | translate }}
-                    </button>
-                }
-                @if (dataLength() === 0) {
-                    <button mat-raised-button color="warn" type="button" (click)="delete()">
-                        <i class="fa-solid fa-trash-can-list"></i>
-                        {{ 'COMMON_DELETE' | translate }}
-                    </button>
-                }
+                <button mat-raised-button color="primary" type="button" (click)="refresh()">
+                    <i class="fa-solid fa-arrows-rotate"></i>
+                    {{ 'COMMON_REFRESH' | translate }}
+                </button>
             </div>
-        }
-    </div>
+            @if (data$) {
+                <div class="btn_div">
+                    @if (dataLength() > 0) {
+                        <button mat-raised-button color="accent" type="button" (click)="apply()">
+                            <i class="fa-solid fa-ballot-check"></i>
+                            {{ 'COMMON_APPLY' | translate }}
+                        </button>
+                    }
+                    @if (dataLength() === 0) {
+                        <button mat-raised-button color="warn" type="button" (click)="delete()">
+                            <i class="fa-solid fa-trash-can-list"></i>
+                            {{ 'COMMON_DELETE' | translate }}
+                        </button>
+                    }
+                </div>
+            }
+        </div>
+    </mat-card>
 }
 @if (data$ && !processing()) {
     <div class="div_table size">
@@ -80,7 +82,7 @@
         <ss-pagination [paginationModel]="paginator"></ss-pagination>
     </div>
 }
-@if(processing()) {
+@if (processing()) {
     <div class="processing_div">
         <mat-spinner></mat-spinner>
     </div>
