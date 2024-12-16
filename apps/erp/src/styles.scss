@@ -1,3 +1,4 @@
+@use '@angular/material' as mat;
 
 html {
     --mat-toolbar-container-background-color: var(--mat-sys-primary-container);
@@ -21,6 +22,10 @@ body {
 // Use these classes to style your components
 
 @mixin themes-patches() {
+
+    .cdk-overlay-pane {
+        @include mat.elevation(6, var(--mat-sys-secondary-fixed-dim), 0.1);
+    }
 
     body {
         background-color: var(--mat-sys-surface-bright);

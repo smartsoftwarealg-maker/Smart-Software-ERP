@@ -71,7 +71,7 @@ mat-tree {
     user-select: none;
     cursor: move;
     &.cdk-drag-preview {
-        @include mat.elevation(12);
+        @include mat.elevation(6, var(--mat-sys-secondary-fixed-dim), 0.1);
     }
     &.cdk-drag-placeholder {
         opacity: 0;

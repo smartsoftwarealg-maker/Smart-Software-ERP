@@ -116,16 +116,19 @@
 
 
 
-
-
+.theme-border {
+    width: 44px;
+    height: 44px;
+    padding: 2px;
+}
 
 .theme-circle {
-    width: 48px;
-    height: 48px;
+    width: 44px;
+    height: 44px;
     border-radius: 50%;
-    animation: rotate-slowly 64s infinite;
-    animation-delay: 0s;
-    animation-timing-function: linear;
+    //animation: rotate-slowly 64s infinite;
+    //animation-delay: 0s;
+    //animation-timing-function: linear;
     overflow: hidden;
     position: relative;
 
@@ -160,11 +163,12 @@
     right: 25%;
 }
 
-@keyframes rotate-slowly {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(-360deg);
-    }
-}
+//
+//@keyframes rotate-slowly {
+//    from {
+//        transform: rotate(0deg);
+//    }
+//    to {
+//        transform: rotate(-360deg);
+//    }
+//}
