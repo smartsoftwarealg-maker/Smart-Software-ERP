@@ -1,41 +1,52 @@
 <div class="container" [ngStyle]="{ 'cursor': loading() ? 'wait': 'auto' }">
     <div class="screen b-b-background">
-        <form class="login" novalidate [formGroup]="form">
-            <div class="login__field">
+        <form class="login-form" novalidate [formGroup]="form">
+
+            <div class="form-spacer"></div>
+
+            <div class="login_field">
                 <i class="fas fa-user"></i>
                 <input type="text" class="login__input" [placeholder]="'COMMON_USERNAME' | translate"
                        formControlName="user"
                        [ngStyle]="{ 'cursor': loading() ? 'wait': 'auto' }">
+                <div class="counter-icon"></div>
             </div>
-            <div class="login__field">
+
+            <div class="login_field">
                 <i class="fas fa-lock"></i>
                 <input type="password" autocomplete="off" class="login__input"
                        [placeholder]="'COMMON_PASSWORD'|translate" formControlName="pass"
                        [ngStyle]="{ 'cursor': loading() ? 'wait': 'auto' }">
+                <div class="counter-icon"></div>
             </div>
 
-            <div class="login__field">
+            <div class="remember-me">
                 <input type="checkbox" id="checkbox1" formControlName="keep">
                 <label for="checkbox1" translate>COMMON_KEEP_ME_SIGNED</label>
             </div>
-            @if (loginSrv.connectionError) {
-                <div class="connection__error">
-                    <strong translate>COMMON_CONNECTION_ERROR</strong>
-                </div>
-            }
 
-            @if (loginSrv.wrongData) {
-                <div class="connection__error">
-                    <strong translate>COMMON_LOGIN_WRONG_USERNAME_PASSWORD</strong>
-                </div>
-            }
-            <button class="button login__submit"
-                    (click)="onSubmit()"
-                    [disabled]="loading() == true"
-                    [ngStyle]="{ 'cursor': loading() ? 'wait': 'auto' }">
-                <span class="button__text" translate>COMMON_LOGIN</span>
-                <i class="fas fa-chevron-right"></i>
-            </button>
+            <div class="login-button-container">
+                <button mat-flat-button
+                        (click)="onSubmit()"
+                        [disabled]="loading() == true"
+                        [ngStyle]="{ 'cursor': loading() ? 'wait': 'auto' }">
+                    <span translate>COMMON_LOGIN</span>
+                </button>
+            </div>
+
+            <div class="form-spacer">
+                @if (loginSrv.connectionError) {
+                    <div class="connection__error">
+                        <strong translate>COMMON_CONNECTION_ERROR</strong>
+                    </div>
+                }
+
+                @if (loginSrv.wrongData) {
+                    <div class="connection__error">
+                        <strong translate>COMMON_LOGIN_WRONG_USERNAME_PASSWORD</strong>
+                    </div>
+                }
+            </div>
         </form>
 
         <div class="option-buttons">
