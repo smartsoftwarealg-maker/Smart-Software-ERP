@@ -25,7 +25,7 @@ import {
     ABS_LTM_CORRECTION_ACTIONS_URL,
     ABS_LTM_NORM_TREE_URL,
     ABS_LTM_TEST_EQUIPMENT_URL,
-    ABS_LTM_EQUIPMENT_TESTINGS_URL
+    ABS_LTM_EQUIPMENT_TESTINGS_URL, ABS_LTM_PRODUCT_TYPE_URL
 } from '../common';
 
 export const ltmNavTree: SideNavNode = {
@@ -79,6 +79,12 @@ export const ltmNavTree: SideNavNode = {
             icon: 'fa-regular fa-list-tree',
             route: ABS_LTM_NORM_TREE_URL,
             accessRights: 'NormTree'
+        },
+        {
+            name: 'LTM_PRODUCT_TYPE',
+            icon: 'fa-solid fa-diagram-subtask',
+            route: ABS_LTM_PRODUCT_TYPE_URL,
+            accessRights: 'ProductType'
         },
         {
             name: 'LTM_SILOS',
