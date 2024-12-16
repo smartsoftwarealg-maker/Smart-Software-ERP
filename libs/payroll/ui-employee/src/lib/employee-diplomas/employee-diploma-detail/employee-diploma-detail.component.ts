@@ -15,13 +15,14 @@ import { TranslateDirective } from '@ss/common/ui-lang';
 import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { DatePickerComponent } from '@ss/common/ui-datepicker';
 import { MatInput } from '@angular/material/input';
+import { MaterialModule } from '@ss/common/api-common';
 
 @Component({
     selector: 'ss-employee-diploma-detail',
     templateUrl: './employee-diploma-detail.component.html',
     styleUrls: ['./employee-diploma-detail.component.scss'],
     standalone: true,
-    imports: [NgIf, MatMiniFabButton, MatCard, MatCardContent, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, UiAutoCompleteComponent, MatError, DatePickerComponent, MatInput]
+    imports: [NgIf, MaterialModule, MatMiniFabButton, MatCard, MatCardContent, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, UiAutoCompleteComponent, MatError, DatePickerComponent, MatInput]
 })
 export class EmployeeDiplomaDetailComponent extends BaseChildEntityDetailComponent<PersonDiploma> {
     private formBuilder = inject(FormBuilder);

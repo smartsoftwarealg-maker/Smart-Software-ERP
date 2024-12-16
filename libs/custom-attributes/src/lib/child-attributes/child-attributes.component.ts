@@ -10,7 +10,7 @@ import {ChildAttributesService} from '../child-attributes.service';
 import {AttributeLookupService} from '../attribute-lookup.service';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import { DatePipe, NgIf, NgFor, NgSwitch, NgSwitchCase } from '@angular/common';
-import {LanguageService} from '@ss/common/api-common';
+import { LanguageService, MaterialModule } from '@ss/common/api-common';
 import { MatMiniFabButton } from '@angular/material/button';
 import { MatTooltip } from '@angular/material/tooltip';
 import { MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from '@angular/material/table';
@@ -20,7 +20,7 @@ import { MatSelect } from '@angular/material/select';
 import { MatOption } from '@angular/material/core';
 import { MatInput } from '@angular/material/input';
 import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
-import { DatePickerComponent } from '../../../../common/ui-datepicker/src/lib/date-picker.component';
+import { DatePickerComponent } from '@ss/common/ui-datepicker';
 import { TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
@@ -28,7 +28,7 @@ import { TranslatePipe } from '@ss/common/ui-lang';
     templateUrl: './child-attributes.component.html',
     styleUrls: ['./child-attributes.component.scss'],
     standalone: true,
-    imports: [NgIf, MatMiniFabButton, MatTooltip, MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, TranslateDirective, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, MatFormField, MatLabel, MatSelect, FormsModule, ReactiveFormsModule, NgFor, MatOption, NgSwitch, NgSwitchCase, MatInput, UiAutoCompleteComponent, DatePickerComponent, TranslatePipe]
+    imports: [NgIf, MaterialModule, MatMiniFabButton, MatTooltip, MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, TranslateDirective, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, MatFormField, MatLabel, MatSelect, FormsModule, ReactiveFormsModule, NgFor, MatOption, NgSwitch, NgSwitchCase, MatInput, UiAutoCompleteComponent, DatePickerComponent, TranslatePipe]
 })
 export class ChildAttributesComponent implements OnInit, OnDestroy {
     private attribSrv  = inject(AttributesService);
@@ -37,7 +37,7 @@ export class ChildAttributesComponent implements OnInit, OnDestroy {
     private confirmationSrv  = inject(ConfirmationDialogService);
     private snackBarSrv  = inject(SnackBarService);
 
-    private langSrv = inject(LanguageService);
+    // private langSrv = inject(LanguageService);
     private datePipe = new DatePipe('en');
     private _parentId: 1 | 2 | 3 | 4 = 2;
     private subscriptions: Subscription[] = [];

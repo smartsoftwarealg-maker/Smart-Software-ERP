@@ -13,22 +13,22 @@
     <mat-card-content>
         <form *ngIf="form" novalidate [formGroup]="form" style="min-height: 100%; display: unset">
 
-            <mat-form-field floatLabel="always" class="default-50 sm-100">
+            <mat-form-field floatLabel="always" class="default-25 sm-50">
                 <mat-label translate>COMMON_DECISION</mat-label>
                 <input matInput formControlName="decision" type="text">
             </mat-form-field>
 
-            <mat-form-field class="default-50 sm-100">
+            <mat-form-field class="default-25 sm-50">
                 <mat-label translate>COMMON_DATE</mat-label>
                 <ss-date-picker required="true" formControlName="decision_date"></ss-date-picker>
             </mat-form-field>
 
-            <mat-form-field class="default-50 sm-100">
+            <mat-form-field class="default-25 sm-50">
                 <mat-label translate>PAYROLL_FROM</mat-label>
                 <ss-date-picker formControlName="from_date"></ss-date-picker>
             </mat-form-field>
 
-            <mat-form-field floatLabel="always" class="default-50 sm-100">
+            <mat-form-field floatLabel="always" class="default-25 sm-50">
                 <mat-label translate>PAYROLL_TO</mat-label>
                 <ss-date-picker formControlName="to_date"></ss-date-picker>
             </mat-form-field>
@@ -58,7 +58,7 @@
                 </mat-form-field>
             </div>
 
-            <mat-form-field floatLabel="always" class="default-50 sm-100">
+            <mat-form-field floatLabel="always" class="default-50 sm-50">
                 <mat-label translate>PAYROLL_CAREER_MOTIVES</mat-label>
                 <ss-auto-complete matInput
                                   formControlName="motive"
@@ -107,7 +107,15 @@
                 </ss-auto-complete>
             </mat-form-field>
 
-            <mat-form-field floatLabel="always" class="default-25 sm-50">
+            <mat-form-field floatLabel="always" class="default-50 sm-100">
+                <mat-label translate>COMMON_COST_CENTER</mat-label>
+                <ss-auto-complete matInput
+                                  formControlName="cost_center"
+                                  [model]="costCenterLookup">
+                </ss-auto-complete>
+            </mat-form-field>
+
+            <mat-form-field floatLabel="always" class="default-25 sm-100">
                 <mat-label translate>PAYROLL_CATEGORY</mat-label>
                 <mat-select formControlName="prof_category">
                     <mat-option *ngFor="let v of categories" [value]="v.id">
@@ -121,7 +129,7 @@
                 <input matInput formControlName="salary_rank" type="number" style="text-align: end;">
             </mat-form-field>
 
-            <mat-form-field floatLabel="always" class="default-25 sm-50">
+            <mat-form-field floatLabel="always" class="default-25 sm-100">
                 <mat-label translate>PAYROLL_SALARY_GRID</mat-label>
                 <mat-select formControlName="salary_grid">
                     <mat-option *ngFor="let v of salaryGrid" [value]="v.id">
@@ -130,22 +138,15 @@
                 </mat-select>
             </mat-form-field>
 
-            <mat-form-field floatLabel="always" class="default-25 sm-50">
-                <mat-label translate>COMMON_COST_CENTER</mat-label>
-                <ss-auto-complete matInput
-                                  formControlName="cost_center"
-                                  [model]="costCenterLookup">
-                </ss-auto-complete>
-            </mat-form-field>
 
 
-            <mat-form-field floatLabel="always" class="default-25 sm-50">
+            <mat-form-field floatLabel="always" class="default-25 sm-100">
                 <mat-label translate>PAYROLL_TRIAL_PERIOD</mat-label>
                 <input matInput formControlName="trial_period" type="number" style="text-align: end;">
             </mat-form-field>
             <!--        <pre>{{form.value | json}}</pre>-->
 
-            <mat-form-field floatLabel="always" class="default-50 sm-100">
+            <mat-form-field floatLabel="always" class="default-25 sm-100">
                 <mat-label translate>ADMINISTRATION_RESPONSIBLE</mat-label>
                 <ss-auto-complete matInput
                                   formControlName="responsible"

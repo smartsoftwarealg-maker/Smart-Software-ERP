@@ -10,13 +10,14 @@ import { TranslateDirective } from '@ss/common/ui-lang';
 import { MatInput } from '@angular/material/input';
 import { MatRadioGroup, MatRadioButton } from '@angular/material/radio';
 import { DatePickerComponent } from '@ss/common/ui-datepicker';
+import { MaterialModule } from '@ss/common/api-common';
 
 @Component({
     selector: 'ss-emp-child-detail',
     templateUrl: './employee-child-detail.component.html',
     styleUrls: ['./employee-child-detail.component.scss'],
     standalone: true,
-    imports: [NgIf, MatMiniFabButton, MatCard, MatCardContent, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, MatRadioGroup, MatRadioButton, DatePickerComponent]
+    imports: [NgIf, MaterialModule, MatMiniFabButton, MatCard, MatCardContent, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, MatRadioGroup, MatRadioButton, DatePickerComponent]
 })
 export class EmployeeChildDetailComponent extends BaseChildEntityDetailComponent<Child> {
     private formBuilder = inject(FormBuilder);

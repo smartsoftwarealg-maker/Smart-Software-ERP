@@ -19,18 +19,19 @@ import { map, Observable, of, switchMap, tap } from 'rxjs';
 import { HttpParams } from '@angular/common/http';
 import { Application, Report } from '../gica-careers-api';
 import { MatButton } from '@angular/material/button';
-import { PaginationModel } from '@ss/common/api-common';
+import { MaterialModule, PaginationModel } from '@ss/common/api-common';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute } from '@angular/router';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { ArchiveService } from '../services/archive.service';
-import { TranslatePipe } from '@ss/common/ui-lang';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-gica-application-archives',
     standalone: true,
-    imports: [CommonModule,
-
+    imports: [
+        CommonModule,
+        MaterialModule,
         MatCell,
         MatCellDef,
         MatColumnDef,
@@ -42,7 +43,6 @@ import { TranslatePipe } from '@ss/common/ui-lang';
         MatSort,
         MatSortHeader,
         MatTable,
-
         MatCard,
         MatCardContent,
         MatError,
@@ -50,7 +50,11 @@ import { TranslatePipe } from '@ss/common/ui-lang';
         MatInput,
         MatLabel,
         ReactiveFormsModule,
-        MatButton, MatHeaderCellDef, TranslatePipe],
+        MatButton,
+        MatHeaderCellDef,
+        TranslatePipe,
+        TranslateDirective
+    ],
     templateUrl: './application-archive.component.html',
     styleUrl: './application-archive.component.css'
 })

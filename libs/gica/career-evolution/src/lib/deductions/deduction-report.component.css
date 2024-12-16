@@ -1,7 +1,10 @@
-.input_div, .size {
+mat-card {
+    border-radius: 1.4em;
+}
+mat-card, .input_div, .size {
     width: 90%;
     max-width: 1000px;
-    margin: 0 auto;
+    margin: .5em auto;
 }
 
 .input_div {

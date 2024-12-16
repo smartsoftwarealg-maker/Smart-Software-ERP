@@ -1,12 +1,14 @@
-
-
+mat-card,
+ctrl_div,
 .ctrl_div,
-fiorm,
 .container__div,
 fieldset {
     width: 90%;
     max-width: 1200px;
     margin: 8px auto;
+}
+mat-card {
+    border-radius: 1.4em;
 }
 .table_div {
     height: calc(100% - 260px);

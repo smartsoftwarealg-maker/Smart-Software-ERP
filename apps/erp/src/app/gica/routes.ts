@@ -24,7 +24,8 @@ import {
     CriteriaListComponent,
     CriteriaDetailComponent,
     AbsenceWeightListComponent,
-    AbsenceWeightDetailComponent, DeductionReportComponent
+    AbsenceWeightDetailComponent,
+    DeductionReportComponent
 } from '@gica/career-evolution';
 import { inject } from '@angular/core';
 import {
@@ -45,9 +46,9 @@ export const gicaRoutes: Routes = [
     {
         path: GICA_GRADING_URL, component: GradingsComponent, canActivate: [loginGuard], data: { gradingMode: true }
     },
-    {
-        path: GICA_DEGRADING_URL, component: GradingsComponent, canActivate: [loginGuard], data: { gradingMode: false }
-    },
+    // {
+    //     path: GICA_DEGRADING_URL, component: GradingsComponent, canActivate: [loginGuard], data: { gradingMode: false }
+    // },
     {
         path: GICA_REPORTS_URL, component: ApplicationComponent, canActivate: [loginGuard]
     },

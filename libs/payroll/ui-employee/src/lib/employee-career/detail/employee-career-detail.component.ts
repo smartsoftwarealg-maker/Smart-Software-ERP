@@ -19,7 +19,6 @@ import {
 } from '@ss/common/api-lookup';
 import {GridService} from '@ss/payroll/salary-grid';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
-import { EmployeeLookupService } from '@ss/remuneration/special-payroll';
 import { EmployeeService, PersonAutocompleteClass } from "@ss/employee-services/employee-services";
 import { CostCenterService } from '@ss/logistics/api-cost-center';
 import { NgIf, NgFor } from '@angular/common';
@@ -32,13 +31,31 @@ import { DatePickerComponent } from '@ss/common/ui-datepicker';
 import { MatSelect } from '@angular/material/select';
 import { MatOption } from '@angular/material/core';
 import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
+import { MaterialModule } from '@ss/common/api-common';
 
 @Component({
     selector: 'ss-emp-career-detail',
     templateUrl: './employee-career-detail.component.html',
     styleUrls: ['./employee-career-detail.component.scss'],
     standalone: true,
-    imports: [NgIf, MatMiniFabButton, MatCard, MatCardContent, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, DatePickerComponent, MatSelect, MatOption, UiAutoCompleteComponent, NgFor]
+    imports: [
+        NgIf,
+        MaterialModule,
+        MatMiniFabButton,
+        MatCard,
+        MatCardContent,
+        FormsModule,
+        ReactiveFormsModule,
+        MatFormField,
+        MatLabel,
+        TranslateDirective,
+        MatInput,
+        DatePickerComponent,
+        MatSelect,
+        MatOption,
+        UiAutoCompleteComponent,
+        NgFor
+    ]
 })
 export class EmployeeCareerDetailComponent extends BaseChildEntityDetailComponent<Career> {
     private costCenterSrv = inject(CostCenterService);
@@ -77,7 +94,6 @@ export class EmployeeCareerDetailComponent extends BaseChildEntityDetailComponen
 
     setupForm(a: Career): UntypedFormGroup {
         this.preload();
-        // this.entity = a;
         return this.form = this.formBuilder.group({
             id:            [a.id],
             parentId:      [a.parentId || this.employeeCareerSrv.getParentId()],

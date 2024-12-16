@@ -21,7 +21,7 @@ import { MatMiniFabButton } from '@angular/material/button';
         }
     ],
     standalone: true,
-    imports: [NgIf, MatMiniFabButton]
+    imports: [NgIf, MaterialModule, MatMiniFabButton]
 })
 
 export class ImageInputComponent implements OnInit, Validator {

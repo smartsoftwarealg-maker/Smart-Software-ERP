@@ -16,13 +16,14 @@ import { MatSelect } from '@angular/material/select';
 import { MatOption } from '@angular/material/core';
 import { NgFor, AsyncPipe } from '@angular/common';
 import { MatCheckbox } from '@angular/material/checkbox';
+import { MaterialModule } from '@ss/common/api-common';
 
 @Component({
     selector: 'ss-emp-active-detail',
     templateUrl: './employee-activation-detail.component.html',
     styleUrls: ['./employee-activation-detail.component.scss'],
     standalone: true,
-    imports: [MatMiniFabButton, MatCard, MatCardContent, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, DatePickerComponent, MatSelect, MatOption, NgFor, MatCheckbox, AsyncPipe]
+    imports: [MatMiniFabButton, MaterialModule, MatCard, MatCardContent, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, DatePickerComponent, MatSelect, MatOption, NgFor, MatCheckbox, AsyncPipe]
 })
 export class EmployeeActivationDetailComponent extends BaseChildEntityDetailComponent<EmployeeActivation> {
     private suspensionReasonSrv = inject(SuspensionReasonService);

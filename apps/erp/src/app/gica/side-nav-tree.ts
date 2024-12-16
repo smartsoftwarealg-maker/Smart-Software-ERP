@@ -82,5 +82,5 @@ export const gicaNavTree: SideNavNode = {
         },
 
     ],
-    accessRights: 'LTM'
+    accessRights: 'GICACARRER'
 };

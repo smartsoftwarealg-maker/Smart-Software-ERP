@@ -9,6 +9,7 @@ import { MatFormField, MatLabel } from '@angular/material/form-field';
 import { TranslateDirective } from '@ss/common/ui-lang';
 import { MatInput } from '@angular/material/input';
 import { DatePickerComponent } from '@ss/common/ui-datepicker';
+import { MaterialModule } from '@ss/common/api-common';
 
 
 @Component({
@@ -16,7 +17,7 @@ import { DatePickerComponent } from '@ss/common/ui-datepicker';
     templateUrl: './employee-wife-detail.component.html',
     styleUrls: ['./employee-wife-detail.component.scss'],
     standalone: true,
-    imports: [NgIf, MatMiniFabButton, MatCard, MatCardContent, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, DatePickerComponent]
+    imports: [NgIf, MaterialModule, MatMiniFabButton, MatCard, MatCardContent, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, DatePickerComponent]
 })
 export class EmployeeWifeDetailComponent extends BaseChildEntityDetailComponent<Wife> {
     private formBuilder = inject(FormBuilder);
