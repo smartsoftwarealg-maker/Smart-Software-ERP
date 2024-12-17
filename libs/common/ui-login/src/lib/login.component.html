@@ -1,54 +1,58 @@
-<div class="container">
-    <div class="screen">
-        <div class="screen-content">
-            <form class="login" novalidate [formGroup]="form">
-                <div class="login-field">
-                    <i class="login-icon fas fa-user"></i>
-                    <input type="text" class="login-input" [placeholder]="'COMMON_USERNAME' | translate" formControlName="user">
+@if (loading()) {
+    <ss-loading-spinner></ss-loading-spinner>
+} @else {
+    <div class="container">
+        <div class="screen">
+            <div class="screen-content">
+                <form class="login" novalidate [formGroup]="form">
+                    <div class="login-field">
+                        <i class="login-icon fas fa-user"></i>
+                        <input type="text" class="login-input" [placeholder]="'COMMON_USERNAME' | translate" formControlName="user">
+                    </div>
+                    <div class="login-field">
+                        <i class="login-icon fas fa-lock"></i>
+                        <input type="password" class="login-input" [placeholder]="'COMMON_PASSWORD' | translate" formControlName="pass">
+                    </div>
+
+                    <div class="remember-me">
+                        <input type="checkbox" id="checkbox1" formControlName="keep">
+                        <label for="checkbox1" translate>COMMON_KEEP_ME_SIGNED</label>
+                    </div>
+
+                    <button class="button login-submit" (click)="onSubmit()">
+                        <span class="button-text" translate>COMMON_LOGIN</span>
+                        <i class="button-icon fas fa-chevron-right"></i>
+                    </button>
+                </form>
+
+                <div>
+                    <div class="error-message">
+                        @if (loginSrv.connectionError) {
+                            <div class="connection__error">
+                                <strong translate>COMMON_CONNECTION_ERROR</strong>
+                            </div>
+                        }
+
+                        @if (loginSrv.wrongData) {
+                            <div class="connection__error">
+                                <strong translate>COMMON_LOGIN_WRONG_USERNAME_PASSWORD</strong>
+                            </div>
+                        }
+                    </div>
                 </div>
-                <div class="login-field">
-                    <i class="login-icon fas fa-lock"></i>
-                    <input type="password" class="login-input" [placeholder]="'COMMON_PASSWORD' | translate" formControlName="pass">
-                </div>
 
-                <div class="remember-me">
-                    <input type="checkbox" id="checkbox1" formControlName="keep">
-                    <label for="checkbox1" translate>COMMON_KEEP_ME_SIGNED</label>
-                </div>
-
-                <button class="button login-submit" (click)="onSubmit()">
-                    <span class="button-text" translate>COMMON_LOGIN</span>
-                    <i class="button-icon fas fa-chevron-right"></i>
-                </button>
-            </form>
-
-            <div>
-                <div class="error-message">
-                    @if (loginSrv.connectionError) {
-                        <div class="connection__error">
-                            <strong translate>COMMON_CONNECTION_ERROR</strong>
-                        </div>
-                    }
-
-                    @if (loginSrv.wrongData) {
-                        <div class="connection__error">
-                            <strong translate>COMMON_LOGIN_WRONG_USERNAME_PASSWORD</strong>
-                        </div>
-                    }
+                <div class="social-login">
+                    <div class="social-icons">
+                        <ss-language-select style="margin: 4px"></ss-language-select>
+                    </div>
                 </div>
             </div>
-
-            <div class="social-login">
-                <div class="social-icons">
-                    <ss-language-select style="margin: 4px"></ss-language-select>
-                </div>
+            <div class="screen-background">
+                <span class="screen-background-shape screen-background-shape4"></span>
+                <span class="screen-background-shape screen-background-shape3"></span>
+                <span class="screen-background-shape screen-background-shape2"></span>
+                <span class="screen-background-shape screen-background-shape1"></span>
             </div>
-        </div>
-        <div class="screen-background">
-            <span class="screen-background-shape screen-background-shape4"></span>
-            <span class="screen-background-shape screen-background-shape3"></span>
-            <span class="screen-background-shape screen-background-shape2"></span>
-            <span class="screen-background-shape screen-background-shape1"></span>
         </div>
     </div>
-</div>
+}

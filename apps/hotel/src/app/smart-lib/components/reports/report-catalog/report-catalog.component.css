@@ -1,8 +1,0 @@
-.form_container {
-    width: 90%;
-    height: 100%;
-    max-width: 800px;
-    display: grid;
-    grid-template-rows: 64px auto 64px;
-    margin: auto;
-}
