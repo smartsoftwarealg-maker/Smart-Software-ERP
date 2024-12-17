@@ -126,12 +126,16 @@
 }
 
 .login-field {
-    padding: 20px 0px;
+    padding: 20px 0;
     position: relative;
 
     input {
         background-color: white;
     }
+}
+
+.remember-me {
+    padding: 0 0 20px;
 }
 
 .login-icon {

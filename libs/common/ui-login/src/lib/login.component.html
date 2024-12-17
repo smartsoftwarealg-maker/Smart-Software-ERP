@@ -10,6 +10,12 @@
                     <i class="login-icon fas fa-lock"></i>
                     <input type="password" class="login-input" [placeholder]="'COMMON_PASSWORD' | translate" formControlName="pass">
                 </div>
+
+                <div class="remember-me">
+                    <input type="checkbox" id="checkbox1" formControlName="keep">
+                    <label for="checkbox1" translate>COMMON_KEEP_ME_SIGNED</label>
+                </div>
+
                 <button class="button login-submit" (click)="onSubmit()">
                     <span class="button-text" translate>COMMON_LOGIN</span>
                     <i class="button-icon fas fa-chevron-right"></i>
