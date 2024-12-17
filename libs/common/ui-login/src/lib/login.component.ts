@@ -1,15 +1,13 @@
-import { Component, inject, OnInit, signal } from '@angular/core';
+import { Component, inject, OnDestroy, OnInit, signal } from '@angular/core';
 import { FormBuilder, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {ABS_INDEX_URL, LoginService, LoginType} from '@ss/common/api-common';
 import {DeviceDetectorService} from 'ngx-device-detector';
 import {Router} from '@angular/router';
 import { ThemeService } from '@ss/common/ui-theme';
 import { ShellService } from '@ss/common/ui-shell';
-import { NgStyle } from '@angular/common';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
-import { ThemeSelectComponent } from '@ss/common/ui-theme';
-import { LanguageSelectComponent } from '../../../ui-lang/src/lib/language-select.component';
-import { MatButton } from '@angular/material/button';
+import { LanguageSelectComponent } from '@ss/common/ui-lang';
+import { LoadingSpinnerComponent } from '../../../ui-loading-spinner/src';
 
 type User = {
     username: string, password: string
@@ -20,14 +18,12 @@ type User = {
     styleUrls: ['./login.component.scss'],
     standalone: true,
     imports: [
-        NgStyle,
         FormsModule,
         ReactiveFormsModule,
         TranslateDirective,
-        ThemeSelectComponent,
         LanguageSelectComponent,
         TranslatePipe,
-        MatButton,
+        LoadingSpinnerComponent,
     ],
 })
 export class LoginComponent implements OnInit {
@@ -52,7 +48,6 @@ export class LoginComponent implements OnInit {
         keep: [true],
     });
     loading = signal(false);
-    updating = false;
 
     constructor() {
         const os = this.deviceSrv.getDeviceInfo().os.toLocaleLowerCase();
@@ -73,6 +68,7 @@ export class LoginComponent implements OnInit {
             }
         }
         if (this.loginSrv.isLoggedIn) {
+            this.loading.set(true);
             this.router.navigate([ABS_INDEX_URL]).then();
         }
         if (this.time) {
