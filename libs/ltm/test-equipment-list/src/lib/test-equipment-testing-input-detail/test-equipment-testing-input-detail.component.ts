@@ -99,9 +99,8 @@ export class TestEquipmentTestingInputDetailComponent extends BaseEntityDetailCo
 
     override readForm(): LTMTestEquipmentTestingInput {
         const value = this.form.getRawValue();
-        value.test.time = strToDate(value.test.time);
+        value.test.time = new Date(dateTimeToStr(value.test.time));
         value.test.time.setHours(value.test.hour, 0, 0, 0);
-        value.test.time = dateTimeToStr(value.test.time);
         const values = this.tests.value as number[];
         const lines: LTMEquipmentTestingLine[] = values.map((v, i) => {
             return {

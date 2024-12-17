@@ -81,7 +81,7 @@ export const ltmNavTree: SideNavNode = {
             accessRights: 'NormTree'
         },
         {
-            name: 'LTM_PRODUCT_TYPE',
+            name: 'LTM_PRODUCT_TYPES',
             icon: 'fa-solid fa-diagram-subtask',
             route: ABS_LTM_PRODUCT_TYPE_URL,
             accessRights: 'ProductType'

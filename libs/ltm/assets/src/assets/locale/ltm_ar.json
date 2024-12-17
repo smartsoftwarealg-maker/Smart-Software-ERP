@@ -78,5 +78,6 @@
     "VALIDATED_BY":       "تم التحقق بواسطة",
     "VALIDATION_DATE":    "تاريخ التحقق",
     "REPORT_DATE":        "تاريخ التقرير",
-    "NON_VALIDATED":     "غير محقق"
+    "NON_VALIDATED":     "غير محقق",
+    "PRODUCT_TYPES":     "أنواع المنتجات"
 }
