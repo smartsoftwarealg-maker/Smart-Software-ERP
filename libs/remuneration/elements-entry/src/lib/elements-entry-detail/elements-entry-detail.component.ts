@@ -40,9 +40,9 @@ type Employee = {
         CommonModule,
         MaterialModule,
         TranslateDirective,
-        TranslatePipe,
+       
         ReactiveFormsModule,
-        DatePickerComponent,
+       
 
 
         ImageInputComponent

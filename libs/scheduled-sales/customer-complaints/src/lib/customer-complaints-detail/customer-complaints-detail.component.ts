@@ -30,7 +30,7 @@ import { MatSelectModule } from '@angular/material/select';
     imports: [
         CommonModule,
 
-        DatePickerComponent,
+       
 
 
         MatButtonModule,

@@ -30,7 +30,7 @@ import { TranslatePipe } from '@ss/common/ui-lang';
         ReactiveFormsModule,
         MatCardModule,
         MatInputModule,
-        DatePickerComponent,
+       
         MatButtonModule,
         MaterialModule,
         TranslatePipe

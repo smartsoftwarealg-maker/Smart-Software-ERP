@@ -24,7 +24,7 @@ import { TranslatePipe } from '@ss/common/ui-lang';
 
         MatButtonModule,
         MaterialModule,
-        DatePickerComponent,
+       
         TranslatePipe
     ],
     templateUrl: './child-bom.component.html',

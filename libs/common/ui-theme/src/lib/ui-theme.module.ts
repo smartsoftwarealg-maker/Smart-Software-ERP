@@ -1,11 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ThemeDirective } from './theme.directive';
-import { ThemeSelect } from '@ss/common/ui-theme';
+import { ThemeSelectComponent } from './theme-select.component';
 import { MaterialModule } from '@ss/common/api-common';
 
 @NgModule({
-    imports: [CommonModule, MaterialModule, ThemeDirective, ThemeSelect],
-    exports: [],
+    imports: [CommonModule, MaterialModule, ThemeSelectComponent],
+    exports: []
 })
 export class UiThemeModule { }

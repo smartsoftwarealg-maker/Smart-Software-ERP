@@ -29,8 +29,7 @@ import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
         MatInputModule,
         MaterialModule,
         ReactiveFormsModule,
-        RouterOutlet,
-        UiAutoCompleteComponent
+        RouterOutlet
     ],
 })
 export class CMMSStatusDetailComponent extends BaseLookupDetailClass {

@@ -28,12 +28,12 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         CommonModule,
         MaterialModule,
         TranslateDirective,
-        TranslatePipe,
+       
         ReactiveFormsModule,
         RouterModule,
-        DatePickerComponent,
+       
 
-        UiStockInfoComponent,
+       
         PaginationComponent
     ]
 })

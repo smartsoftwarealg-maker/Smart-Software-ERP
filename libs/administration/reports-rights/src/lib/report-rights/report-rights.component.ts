@@ -28,7 +28,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         MaterialModule,
         TranslatePipe,
         RouterModule,
-        DatePickerComponent,
+       
         UiAutoCompleteComponent,
         TranslateDirective
     ],

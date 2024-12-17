@@ -31,7 +31,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
 
 
 
-        DatePickerComponent,
+       
         RouterModule,
 
 

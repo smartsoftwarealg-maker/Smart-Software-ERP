@@ -28,7 +28,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
         ReactiveFormsModule,
 
 
-        DatePickerComponent,
+       
         PaginationComponent
 
     ],

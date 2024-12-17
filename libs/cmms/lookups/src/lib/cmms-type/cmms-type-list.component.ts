@@ -34,7 +34,7 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
         MatInputModule,
         MaterialModule,
         ReactiveFormsModule,
-        RouterOutlet,
+       
 
         PaginationComponent
     ]

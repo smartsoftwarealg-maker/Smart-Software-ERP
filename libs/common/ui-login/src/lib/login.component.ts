@@ -6,10 +6,10 @@ import {Router} from '@angular/router';
 import { ThemeService } from '@ss/common/ui-theme';
 import { ShellService } from '@ss/common/ui-shell';
 import { NgStyle } from '@angular/common';
-import { TranslateDirective } from '../../../ui-lang/src/lib/translate.directive';
-import { ThemeSelect } from '../../../ui-theme/src/lib/theme-select.component';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
+import { ThemeSelectComponent } from '@ss/common/ui-theme';
 import { LanguageSelectComponent } from '../../../ui-lang/src/lib/language-select.component';
-import { TranslatePipe } from '../../../ui-lang/src/lib/translate.pipe';
+import { MatButton } from '@angular/material/button';
 
 type User = {
     username: string, password: string
@@ -19,7 +19,16 @@ type User = {
     templateUrl: './login.component.html',
     styleUrls: ['./login.component.scss'],
     standalone: true,
-    imports: [NgStyle, FormsModule, ReactiveFormsModule, TranslateDirective, ThemeSelect, LanguageSelectComponent, TranslatePipe]
+    imports: [
+        NgStyle,
+        FormsModule,
+        ReactiveFormsModule,
+        TranslateDirective,
+        ThemeSelectComponent,
+        LanguageSelectComponent,
+        TranslatePipe,
+        MatButton,
+    ],
 })
 export class LoginComponent implements OnInit {
     private shellSrv = inject(ShellService);
@@ -31,25 +40,27 @@ export class LoginComponent implements OnInit {
     private readonly USER_DATA = 'USER_DATA';
 
     protected loginSrv = inject(LoginService);
-    public user: User = {username: '', password: ''};
+    public user: User = { username: '', password: '' };
 
     public license: string = null;
     readonly isPhone: boolean;
 
-    currentTheme: string = 'string-1';
-
     form = this.formBuilder.group({
-        user:    ['', Validators.required],
-        pass:    [''],
+        user: ['', Validators.required],
+        pass: [''],
         license: [''],
-        keep:    [true]
+        keep: [true],
     });
     loading = signal(false);
     updating = false;
 
     constructor() {
         const os = this.deviceSrv.getDeviceInfo().os.toLocaleLowerCase();
-        this.isPhone = this.deviceSrv.isMobile() || this.deviceSrv.isTablet() || os === 'android' || os === 'ios';
+        this.isPhone =
+            this.deviceSrv.isMobile() ||
+            this.deviceSrv.isTablet() ||
+            os === 'android' ||
+            os === 'ios';
     }
 
     ngOnInit(): void {
@@ -58,13 +69,12 @@ export class LoginComponent implements OnInit {
             try {
                 this.user = JSON.parse(storage);
             } catch (e) {
-                this.user = {username: '', password: ''};
+                this.user = { username: '', password: '' };
             }
         }
         if (this.loginSrv.isLoggedIn) {
             this.router.navigate([ABS_INDEX_URL]).then();
         }
-        this.currentTheme = this.themeSrv.getCurrentThemeName();
         if (this.time) {
             clearTimeout(this.time);
         }
@@ -81,12 +91,26 @@ export class LoginComponent implements OnInit {
             document.onkeydown = () => this.resetTimer();
         }
         if (this.loginSrv.customerLogin === LoginType.CUSTOMER) {
-            this.loginSrv.agentLogin('/customers/login', this.user, this.isPhone, this.onLoadingFinished);
+            this.loginSrv.agentLogin(
+                '/customers/login',
+                this.user,
+                this.isPhone,
+                this.onLoadingFinished,
+            );
         } else {
             if (this.loginSrv.customerLogin === LoginType.USER) {
-                this.loginSrv.userLogin(this.user, this.isPhone, this.onLoadingFinished);
+                this.loginSrv.userLogin(
+                    this.user,
+                    this.isPhone,
+                    this.onLoadingFinished,
+                );
             } else {
-                this.loginSrv.agentLogin('/persons/login', this.user, this.isPhone, this.onLoadingFinished);
+                this.loginSrv.agentLogin(
+                    '/persons/login',
+                    this.user,
+                    this.isPhone,
+                    this.onLoadingFinished,
+                );
             }
         }
         localStorage.setItem(this.USER_DATA, JSON.stringify(this.user));
@@ -96,17 +120,17 @@ export class LoginComponent implements OnInit {
         if (this.time) {
             clearTimeout(this.time);
         }
-        this.time = window.setTimeout(() => this.loginSrv.logout().then(() => {
-            document.onmousemove = null;
-            document.onkeydown   = null;
-        }),  20 * 60 * 1000);
+        this.time = window.setTimeout(
+            () =>
+                this.loginSrv.logout().then(() => {
+                    document.onmousemove = null;
+                    document.onkeydown = null;
+                }),
+            20 * 60 * 1000,
+        );
     }
     onLoadingFinished = () => {
         this.loading.set(false);
         this.shellSrv.filterSideNav();
     };
-
-    onTheme(e: string) {
-        this.currentTheme = e;
-    }
 }

@@ -1,10 +1,15 @@
 
 :host {
-    width: 40px;
-    height: 40px;
-    display: inline-block;
+    width: 48px;
+    height: 48px;
+    display: inline-flex;
     margin: 0;
     padding: 0;
+
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
 }
 
 .theme-btn {
@@ -18,53 +23,152 @@
 
     display: flex;
     flex-direction: row;
-    align-items: center; 
+    align-items: center;
     justify-content: center;
     flex-wrap: wrap;
 }
 
 .theme-button {
-    width: 40px;
-    height: 40px;
-    margin: 4px;
-    padding: 0 !important;
-    border: 1px solid;
+    width: 48px;
+    height: 48px;
+    flex-basis: 48px;
+    border-radius: 24px;
+    padding: 0;
     position: relative;
-    border-radius: 50%;
-    cursor: pointer;
-
-    &:hover {
-        border: 2px solid;
-    }
-
-    .bg-p {
-        border-radius: 50%;
-        overflow: hidden;
-        width: 16px;
-        height: 16px;
-        position: absolute;
-        top: 2px;
-        right: 12px;
-    }
-
-    .bg-a {
-        border-radius: 50%;
-        overflow: hidden;
-        width: 16px;
-        height: 16px;
-        position: absolute;
-        bottom: 6px;
-        right: 4px;
-    }
-
-    .bg-w {
-        border-radius: 50%;
-        overflow: hidden;
-        width: 16px;
-        height: 16px;
-        position: absolute;
-        bottom: 6px;
-        left: 4px;
-    }
-
+    margin: 8px;
 }
+
+.theme-bg {
+    pointer-events: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 48px;
+    height: 48px;
+    border-radius: 24px;
+}
+
+.theme-pri {
+    pointer-events: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 48px;
+    height: 24px;
+    border-radius: 24px 24px 0 0;
+}
+
+.theme-clickable {
+    top: 0;
+    right: 0;
+    z-index: 90000;
+    width: 48px;
+    height: 48px;
+    border-radius: 24px;
+}
+
+
+// themes
+
+// ========================================================================================================
+// theme-0
+// ========================================================================================================
+.theme-0-bg {
+    background-color: #fafaf0;
+}
+
+.theme-0-bg-p {
+    background-color: #ba005c;
+}
+
+// ========================================================================================================
+// theme-1
+// ========================================================================================================
+.theme-1-bg {
+    background-color: #d7e3ff;
+}
+
+.theme-1-bg-p {
+    background-color: #005cbb;
+}
+
+// ========================================================================================================
+// theme-2
+// ========================================================================================================
+.theme-2-bg {
+    background-color: #212121;
+}
+
+.theme-2-bg-p {
+    background-color: #00dddd;
+}
+
+// ========================================================================================================
+// theme-3
+// ========================================================================================================
+.theme-3-bg {
+    background-color: #212121;
+}
+
+.theme-3-bg-p {
+    background-color: #ffabf3;
+}
+
+
+
+.theme-border {
+    width: 44px;
+    height: 44px;
+    padding: 2px;
+}
+
+.theme-circle {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    //animation: rotate-slowly 64s infinite;
+    //animation-delay: 0s;
+    //animation-timing-function: linear;
+    overflow: hidden;
+    position: relative;
+
+    * {
+        border: none;
+    }
+}
+
+.theme-circle .a1 {
+    width: 50%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.theme-circle .a2 {
+    width: 50%;
+    height: 50%;
+    position: absolute;
+    border-radius: 50%;
+    top: 0;
+    right: 25%;
+}
+
+.theme-circle .b1 {
+    width: 50%;
+    height: 50%;
+    position: absolute;
+    border-radius: 50%;
+    bottom: 0;
+    right: 25%;
+}
+
+//
+//@keyframes rotate-slowly {
+//    from {
+//        transform: rotate(0deg);
+//    }
+//    to {
+//        transform: rotate(-360deg);
+//    }
+//}

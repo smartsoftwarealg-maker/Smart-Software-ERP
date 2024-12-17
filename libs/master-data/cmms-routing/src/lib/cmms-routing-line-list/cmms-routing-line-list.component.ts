@@ -33,7 +33,7 @@ import { TranslatePipe } from '@ss/common/ui-lang';
         MatInputModule,
         MaterialModule,
         ReactiveFormsModule,
-        RouterOutlet,
+       
 
         PaginationComponent,
         TranslatePipe

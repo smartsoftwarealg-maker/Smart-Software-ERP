@@ -28,7 +28,7 @@ import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
     standalone: true,
     imports: [
         CommonModule,
-        PaginationComponent,
+       
         MatTableModule,
 
         FormsModule,
@@ -39,7 +39,7 @@ import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
         DatePickerComponent,
         MatButtonModule,
         MaterialModule,
-        RouterOutlet,
+       
         InspectionDetailListComponent,
         UiAutoCompleteComponent
     ]

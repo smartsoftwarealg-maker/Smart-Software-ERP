@@ -28,7 +28,8 @@ import { TranslateDirective } from '@ss/common/ui-lang';
 @Component({
     selector: 'ss-gica-scale-detail',
     standalone: true,
-    imports: [CommonModule,
+    imports: [
+        CommonModule,
         MaterialModule,
         MatCard,
         MatCardContent,
@@ -37,7 +38,8 @@ import { TranslateDirective } from '@ss/common/ui-lang';
         MatInput,
         MatLabel,
         ReactiveFormsModule,
-        TranslateDirective],
+        TranslateDirective
+    ],
     templateUrl: './scale-detail.component.html',
     styleUrl: './scale-detail.component.css'
 })

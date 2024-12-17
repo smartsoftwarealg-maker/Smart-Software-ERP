@@ -29,7 +29,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         TranslatePipe,
         RouterModule,
         ReactiveFormsModule,
-        DatePickerComponent,
+       
 
         DocInfoComponent
     ]

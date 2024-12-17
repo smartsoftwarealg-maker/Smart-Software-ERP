@@ -26,7 +26,7 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
         MaterialModule,
         ReactiveFormsModule,
         RouterModule,
-        DatePickerComponent,
+       
 
         PaginationComponent
     ]

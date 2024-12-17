@@ -20,7 +20,7 @@ import { ReceptionLinesService } from '../reception-lines.service';
         MaterialModule,
         TranslateDirective,
         ReactiveFormsModule,
-        DatePickerComponent,
+       
 
 
     ],

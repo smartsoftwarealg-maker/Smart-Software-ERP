@@ -32,10 +32,10 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         RouterModule,
         MaterialModule,
         TranslateDirective,
-        TranslatePipe,
+       
         ReactiveFormsModule,
 
-        DatePickerComponent,
+       
 
 
     ],

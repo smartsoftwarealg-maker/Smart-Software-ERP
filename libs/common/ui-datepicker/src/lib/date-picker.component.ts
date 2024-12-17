@@ -28,7 +28,7 @@ import {
     dateToYmdStr, dateTimeToTime
 } from '@ss/common/api-common';
 import { Subject } from 'rxjs';
-import {MatCalendarType} from '@muaazh/angular-datepicker/lib/calendar.types';
+import { MatCalendarType } from '@muaazh/angular-datepicker';
 import { MatInput } from '@angular/material/input';
 import { MatDatepickerModule } from '@muaazh/angular-datepicker';
 import { MatIconButton } from '@angular/material/button';

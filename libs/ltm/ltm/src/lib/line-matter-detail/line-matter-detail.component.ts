@@ -25,9 +25,9 @@ import { TranslateDirective } from '@ss/common/ui-lang';
         MaterialModule,
         ReactiveFormsModule,
         TranslateDirective,
-        DatePickerComponent,
+       
         RouterOutlet,
-        HourPickerComponent,
+       
         UiAutoCompleteComponent
     ]
 })

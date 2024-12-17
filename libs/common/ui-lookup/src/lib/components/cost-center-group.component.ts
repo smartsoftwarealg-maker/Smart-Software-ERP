@@ -54,7 +54,7 @@ export class CostCenterGroupListComponent extends BaseEntityListComponent<Lookup
         RouterModule,
         MaterialModule,
         TranslateDirective,
-        TranslatePipe,
+       
 
 
     ],

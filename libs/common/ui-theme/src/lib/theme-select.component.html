@@ -4,10 +4,16 @@
 
 <mat-menu [xPosition]="langSrv.rtl ? 'before' : 'after'" yPosition="below" overlapTrigger="false" #menu="matMenu">
     <div class="themes-menu">
-        <div mat-menu-item *ngFor="let t of themes" class="theme-button {{t}}-bg " (click)="setTheme(t)">
-            <div class="{{t}}-bg-p bg-p"></div>
-            <div class="{{t}}-bg-w bg-w"></div>
-            <div class="{{t}}-bg-a bg-a"></div>
-        </div>
+        @for (t of themes; track t) {
+            <div mat-menu-item class="theme-button" (click)="setTheme(t)">
+                <div class="theme-border {{t}}-bg-p">
+                    <div class="theme-circle {{t}}-bg">
+                        <div class="a1 {{t}}-bg-p theme-pri"></div>
+                        <div class="a2 {{t}}-bg-p theme-pri"></div>
+                        <div class="b1 {{t}}-bg"></div>
+                    </div>
+                </div>
+            </div>
+        }
     </div>
 </mat-menu>

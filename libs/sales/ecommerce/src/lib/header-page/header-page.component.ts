@@ -12,7 +12,7 @@ import { MatTooltip } from '@angular/material/tooltip';
 import { MatBadge } from '@angular/material/badge';
 import { MatMenuTrigger, MatMenu, MatMenuItem } from '@angular/material/menu';
 import { LanguageSelectComponent } from '../../../../../common/ui-lang/src/lib/language-select.component';
-import { ThemeSelect } from '../../../../../common/ui-theme/src/lib/theme-select.component';
+import { ThemeSelectComponent } from '@ss/common/ui-theme';
 import { TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
@@ -35,7 +35,7 @@ import { TranslatePipe } from '@ss/common/ui-lang';
         MatMenu,
         MatMenuItem,
         LanguageSelectComponent,
-        ThemeSelect,
+        ThemeSelectComponent,
         TranslatePipe,
     ],
 })

@@ -25,7 +25,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
         TranslateDirective,
         ReactiveFormsModule,
         RouterModule,
-        ColorSelectComponent,
+       
         ColorPickerModule,
         PaginationComponent,
         TranslateDirective

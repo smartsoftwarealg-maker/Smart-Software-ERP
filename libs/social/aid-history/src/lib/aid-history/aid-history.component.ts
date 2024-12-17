@@ -20,7 +20,7 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
 @Component({
     selector: 'ss-aid-history',
     standalone: true,
-    imports: [CommonModule, MatCell, MatCellDef, MatColumnDef, MatHeaderCell, MatHeaderRow, MatHeaderRowDef, MatRow, MatRowDef, MatTable, MatTooltip, MatHeaderCellDef, MatMiniFabButton, PaginationComponent],
+    imports: [CommonModule, MatCell, MatCellDef, MatColumnDef, MatHeaderCell, MatHeaderRow, MatHeaderRowDef, MatRow, MatRowDef, MatTable, MatHeaderCellDef, PaginationComponent],
     templateUrl: './aid-history.component.html',
     styleUrl: './aid-history.component.scss',
 })

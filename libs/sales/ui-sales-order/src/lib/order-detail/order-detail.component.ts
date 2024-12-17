@@ -31,7 +31,7 @@ import { CdkTextareaAutosize } from '@angular/cdk/text-field';
         UiAutoCompleteComponent,
         CdkTextareaAutosize,
         RouterOutlet,
-        JsonPipe],
+       ],
     selector: 'ss-ui-order-detail',
     standalone: true,
     styleUrls: ['../../../../../common/assets/src/assets/transac-detail.scss'],

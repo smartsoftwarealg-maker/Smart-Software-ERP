@@ -32,7 +32,7 @@ import { CMMSWorkOrderArticleService } from '@ss/cmms/work-order';
         ReactiveFormsModule,
         MatCardModule,
         MatInputModule,
-        DatePickerComponent,
+       
         MatButtonModule,
         MaterialModule
     ],

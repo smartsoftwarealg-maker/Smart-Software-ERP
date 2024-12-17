@@ -22,7 +22,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
         TranslateDirective,
         RouterModule,
         ReactiveFormsModule,
-        DatePickerComponent,
+       
 
     ],
 })

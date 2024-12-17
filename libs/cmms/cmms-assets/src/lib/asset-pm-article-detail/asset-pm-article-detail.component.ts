@@ -32,7 +32,7 @@ import { of, switchMap, tap } from 'rxjs';
         ReactiveFormsModule,
         MatCardModule,
         MatInputModule,
-        DatePickerComponent,
+       
         MatButtonModule,
         MaterialModule,
         UiAutoCompleteComponent
