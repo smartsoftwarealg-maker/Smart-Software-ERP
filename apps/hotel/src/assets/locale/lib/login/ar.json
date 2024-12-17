@@ -1,8 +1,0 @@
-{
-  "LOGIN": "تسجيل الدخول",
-  "USERNAME": "اسم المستخدم",
-  "PASSWORD": "كلمة المرور",
-  "LICENSE": "رخصة",
-  "INVALID_LICENSE": "رخصة غير صالحة",
-  "WRONG_USERNAME_PASSWORD":"هناك خطأ في اسم المستعمل أو كلمة المرور"
-}

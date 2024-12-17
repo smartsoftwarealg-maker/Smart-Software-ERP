@@ -1,8 +1,0 @@
-{
-  "LOGIN": "Login",
-  "USERNAME": "Username",
-  "PASSWORD": "Password",
-  "LICENSE": "License",
-  "INVALID_LICENSE": "Invalid license",
-  "WRONG_USERNAME_PASSWORD":"Wrong username or password"
-}

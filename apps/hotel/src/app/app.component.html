@@ -1,6 +1,0 @@
-<!--<div ssTheme class="full-height" [dir]="dirSrv.dir">-->
-<div ssTheme class="app-root-container">
-    <ss-loading-spinner *ngIf="loadingState == 'L'"></ss-loading-spinner>
-    <ss-fatal-error *ngIf="loadingState == 'E'"></ss-fatal-error>
-    <router-outlet *ngIf="loadingState == 'C'" style="display: block"></router-outlet>
-</div>
