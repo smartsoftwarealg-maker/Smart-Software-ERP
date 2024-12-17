@@ -11,7 +11,7 @@ import {
     MatTable
 } from '@angular/material/table';
 
-import { LtmEquipmentTestService } from '../services/ltm-equipment-test.service';
+import { LtmEquipmentTestService } from '../../../../product-liberation/src/lib/services/ltm-equipment-test.service';
 import { MatTooltip } from '@angular/material/tooltip';
 import { MatMiniFabButton } from '@angular/material/button';
 import { LTMTestEquipmentTest } from '@ltm/ltm-api';

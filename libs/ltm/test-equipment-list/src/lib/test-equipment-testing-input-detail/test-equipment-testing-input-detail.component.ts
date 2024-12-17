@@ -18,16 +18,16 @@ import {
 import { MatCard } from '@angular/material/card';
 import { MatFormField, MatLabel } from '@angular/material/form-field';
 import { MatInput } from '@angular/material/input';
-import { LtmEquipmentTestService } from '../services/ltm-equipment-test.service';
+import { LtmEquipmentTestService } from '../../../../product-liberation/src/lib/services/ltm-equipment-test.service';
 import { Observable } from 'rxjs';
-import { LtmTestingEquipmentService } from '../services/ltm-testing-equipment.service';
+import { LtmTestingEquipmentService } from '../../../../product-liberation/src/lib/services/ltm-testing-equipment.service';
 import {
     LTMEquipmentTestingLine,
     LTMTestEquipmentTest,
     LTMTestEquipmentTestingInput,
     LTMTestingEquipment
 } from '@ltm/ltm-api';
-import { LtmEquipmentTestingInputService } from '../services/ltm-equipment-testing-input.service';
+import { LtmEquipmentTestingInputService } from '../../../../product-liberation/src/lib/services/ltm-equipment-testing-input.service';
 import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { DatePickerComponent } from '@ss/common/ui-datepicker';
 import { debug } from '@capacitor/assets/dist/util/log';

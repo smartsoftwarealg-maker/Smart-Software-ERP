@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BaseChildEntityDetailComponent } from '@ss/common/ui-base-entity';
-import { LtmEquipmentTestService } from '../services/ltm-equipment-test.service';
+import { LtmEquipmentTestService } from '../../../../product-liberation/src/lib/services/ltm-equipment-test.service';
 import { MatTooltip } from '@angular/material/tooltip';
 import { FormBuilder, ReactiveFormsModule, UntypedFormGroup, Validators } from '@angular/forms';
 import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';

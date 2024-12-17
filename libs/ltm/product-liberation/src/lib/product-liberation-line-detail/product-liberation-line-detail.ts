@@ -16,7 +16,7 @@ import { LTMTestingEquipment } from '@ltm/ltm-api';
 import { TranslateDirective } from '@ss/common/ui-lang';
 
 @Component({
-    selector: 'ss-test-equipment-detail',
+    selector: 'ss-product-liberation-line-detail',
     standalone: true,
     imports: [CommonModule,
         MatCard,
@@ -28,10 +28,10 @@ import { TranslateDirective } from '@ss/common/ui-lang';
         RouterOutlet,
         TranslateDirective
     ],
-    templateUrl: './test-equipment-detail.component.html',
-    styleUrl: './test-equipment-detail.component.scss'
+    templateUrl: './product-liberation-line-detail.html',
+    styleUrl: './product-liberation-line-detail.scss'
 })
-export class TestEquipmentDetailComponent extends BaseEntityDetailComponent<LTMTestingEquipment> {
+export class ProductLiberationLineDetail extends BaseEntityDetailComponent<LTMTestingEquipment> {
     #loginSrv = inject(LoginService);
     #equipmentTestSrv = inject(LtmEquipmentTestService);
 

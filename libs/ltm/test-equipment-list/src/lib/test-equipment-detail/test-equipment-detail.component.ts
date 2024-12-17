@@ -9,9 +9,9 @@ import { ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup, Validators }
 import { MatCard } from '@angular/material/card';
 import { MatFormField, MatLabel } from '@angular/material/form-field';
 import { MatInput } from '@angular/material/input';
-import { LtmEquipmentTestService } from '../services/ltm-equipment-test.service';
+import { LtmEquipmentTestService } from '../../../../product-liberation/src/lib/services/ltm-equipment-test.service';
 import { Observable } from 'rxjs';
-import { LtmTestingEquipmentService } from '../services/ltm-testing-equipment.service';
+import { LtmTestingEquipmentService } from '../../../../product-liberation/src/lib/services/ltm-testing-equipment.service';
 import { LTMTestingEquipment } from '@ltm/ltm-api';
 import { TranslateDirective } from '@ss/common/ui-lang';
 
