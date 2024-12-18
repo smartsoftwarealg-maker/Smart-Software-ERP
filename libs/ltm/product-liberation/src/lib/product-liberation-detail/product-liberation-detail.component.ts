@@ -37,7 +37,7 @@ import { DatePickerComponent } from '@ss/common/ui-datepicker';
         RouterOutlet,
         TranslateDirective,
         DatePickerComponent,
-      TranslatePipe,
+
     ],
     templateUrl: './product-liberation-detail.component.html',
     styleUrl: './product-liberation-detail.component.scss',

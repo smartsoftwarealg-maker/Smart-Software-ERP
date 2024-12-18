@@ -26,7 +26,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     ],
 })
 export class LtmProductListComponent extends BaseEntityListComponent<LTMProduct> {
-    displayedColumns = ['code', 'description'];
+    displayedColumns = ['description'];
 
     constructor(
         public override entitySrv: LtmProductService,

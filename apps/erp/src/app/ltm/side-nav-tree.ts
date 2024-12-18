@@ -27,8 +27,7 @@ import {
     ABS_LTM_TEST_EQUIPMENT_URL,
     ABS_LTM_EQUIPMENT_TESTINGS_URL,
     ABS_LTM_PRODUCT_TYPE_URL,
-    LTM_PRODUCT_LIBERATION_ROUTE_URL,
-    ABS_LTM_PRODUCT_LIBERATION_URL
+    ABS_LTM_PRODUCT_LIBERATION_URL, ABS_LTM_PRODUCT_URL
 } from '../common';
 
 export const ltmNavTree: SideNavNode = {
@@ -41,12 +40,12 @@ export const ltmNavTree: SideNavNode = {
             route: ABS_LTM_UNIT_URL,
             accessRights: 'LTMMPeriod'
         },
-        // {
-        //     name: 'LTM_BLEACHERS',
-        //     icon: 'fa-solid fa-brush',
-        //     route: ABS_LTM_BLEACHERS_URL,
-        //     accessRights: 'LTMBleacher'
-        // },
+        {
+            name: 'COMMON_PRODUCTS',
+            icon: 'fa-solid fa-brush',
+            route: ABS_LTM_PRODUCT_URL,
+            accessRights: 'LTMProduct'
+        },
         // {
         //     name: 'LTM_ZONES',
         //     icon: 'fa-solid fa-location-dot',
@@ -217,7 +216,7 @@ export const ltmNavTree: SideNavNode = {
         },
         {
             name: 'LTM_PRODUCT_LIBERATION',
-            icon: 'fa-solid fa-chart-fft',
+            icon: 'fa-solid fa-highlighter-line',
             route: ABS_LTM_PRODUCT_LIBERATION_URL,
             accessRights: 'ProductLiberation'
         },
