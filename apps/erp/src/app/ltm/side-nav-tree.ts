@@ -25,7 +25,10 @@ import {
     ABS_LTM_CORRECTION_ACTIONS_URL,
     ABS_LTM_NORM_TREE_URL,
     ABS_LTM_TEST_EQUIPMENT_URL,
-    ABS_LTM_EQUIPMENT_TESTINGS_URL
+    ABS_LTM_EQUIPMENT_TESTINGS_URL,
+    ABS_LTM_PRODUCT_TYPE_URL,
+    LTM_PRODUCT_LIBERATION_ROUTE_URL,
+    ABS_LTM_PRODUCT_LIBERATION_URL
 } from '../common';
 
 export const ltmNavTree: SideNavNode = {
@@ -79,6 +82,12 @@ export const ltmNavTree: SideNavNode = {
             icon: 'fa-regular fa-list-tree',
             route: ABS_LTM_NORM_TREE_URL,
             accessRights: 'NormTree'
+        },
+        {
+            name: 'LTM_PRODUCT_TYPES',
+            icon: 'fa-solid fa-diagram-subtask',
+            route: ABS_LTM_PRODUCT_TYPE_URL,
+            accessRights: 'ProductType'
         },
         {
             name: 'LTM_SILOS',
@@ -206,8 +215,12 @@ export const ltmNavTree: SideNavNode = {
             route: ABS_LTM_EQUIPMENT_TESTINGS_URL,
             accessRights: 'LTMEquipmentTesting'
         },
-
-
+        {
+            name: 'LTM_PRODUCT_LIBERATION',
+            icon: 'fa-solid fa-chart-fft',
+            route: ABS_LTM_PRODUCT_LIBERATION_URL,
+            accessRights: 'ProductLiberation'
+        },
         {
             name: 'COMMON_CHARTS',
             icon: 'fa-solid fa-chart-simple',

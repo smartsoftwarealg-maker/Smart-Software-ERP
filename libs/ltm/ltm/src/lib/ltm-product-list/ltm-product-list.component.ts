@@ -13,7 +13,7 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
 import { TranslateDirective } from '@ss/common/ui-lang';
 
 @Component({
-    selector: 'ss-ltm-product-list-list',
+    selector: 'ss-ltm-product-list',
     templateUrl: './ltm-product-list.component.html',
     styleUrls: ['./ltm-product-list.component.scss'],
     standalone: true,

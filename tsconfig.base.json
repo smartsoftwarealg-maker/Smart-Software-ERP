@@ -389,6 +389,9 @@
             ],
             "@ss/ltm/assets": ["libs/ltm/assets/src/index.ts"],
             "@ss/ltm/ltm": ["libs/ltm/ltm/src/index.ts"],
+            "@ss/ltm/product-liberation": [
+                "libs/ltm/product-liberation/src/index.ts"
+            ],
             "@ss/master-data/api-article": [
                 "libs/master-data/api-article/src/index.ts"
             ],

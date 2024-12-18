@@ -379,6 +379,7 @@ export const LTM_EQUIPMENT_URL          = 'ltm-equipment';
 export const LTM_PRODUCTS_URL           = 'ltm-products';
 export const LTM_TESTING_ANOMALIES_URL   = 'ltm-testing-anomalies';
 export const LTM_SILOS_URL   = 'ltm-silos';
+export const LTM_PRODUCT_TYPE_URL   = 'ltm-product-types';
 export const LTM_NORM_URL   = 'ltm-norms';
 export const LTM_NORM_TREE_TREE   = 'ltm-norm-tree';
 export const LTM_PICKUP_POINTS_URL   = 'ltm-pickup-points';
@@ -388,6 +389,7 @@ export const LTM_DEPOSIT_URL   = 'ltm-deposit';
 export const LTM_SUPPLIER_URL   = 'ltm-suppliers';
 export const LTM_CORRECTION_ACTION_URL = 'ltm-correction-actions';
 export const LTM_TEST_EQUIPMENT_TESTING_URL = 'ltm-equipment-testing';
+export const LTM_PRODUCT_LIBERATION_ROUTE_URL = 'ltm-liberation';
 
 // CMMS
 export const CMMS_PERMIT_TYPE_URL        = 'permit-types';
@@ -741,6 +743,8 @@ export const ABS_LTM_DEPOSIT_URL       = '/' + [MAIN_PAGE_URL, LTM_APP_URL, LTM_
 export const ABS_LTM_SUPPLIER_URL       = '/' + [MAIN_PAGE_URL, LTM_APP_URL, LTM_SUPPLIER_URL].join('/');
 export const ABS_LTM_CORRECTION_ACTIONS_URL       = '/' + [MAIN_PAGE_URL, LTM_APP_URL, LTM_CORRECTION_ACTION_URL].join('/');
 export const ABS_LTM_TEST_EQUIPMENT_URL       = '/' + [MAIN_PAGE_URL, LTM_APP_URL, LTM_TEST_EQUIPMENT_URL].join('/');
+export const ABS_LTM_PRODUCT_TYPE_URL       = '/' + [MAIN_PAGE_URL, LTM_APP_URL, LTM_PRODUCT_TYPE_URL].join('/');
+export const ABS_LTM_PRODUCT_LIBERATION_URL       = '/' + [MAIN_PAGE_URL, LTM_APP_URL, LTM_PRODUCT_LIBERATION_ROUTE_URL].join('/');
 // GICA
 export const ABS_GICA_WEIGHTS_URL       = '/' + [MAIN_PAGE_URL, GICA_APP_URL, GICA_WEIGHTS_URL].join('/');
 export const ABS_GICA_FAULTS_URL       = '/' + [MAIN_PAGE_URL, GICA_APP_URL, GICA_FAULTS_URL].join('/');

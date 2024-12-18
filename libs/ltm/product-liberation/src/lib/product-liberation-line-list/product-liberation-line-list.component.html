@@ -1,0 +1,72 @@
+@if (isEditable) {
+  <div class="ctrl-div">
+    <button mat-mini-fab
+            type="button"
+            [matTooltip]="'COMMON_ADD' | translate"
+            color="primary" (click)="showDetail(0)">
+      <span class="fas fa-plus"></span>
+    </button>
+    <button mat-mini-fab
+            type="button"
+            (click)="edit()"
+            [disabled]="!selectedId"
+            color="accent">
+      <span class="fas fa-pen"></span>
+    </button>
+    <button mat-mini-fab
+            type="button"
+            (click)="deleteSelected()"
+            [disabled]="!selectedId"
+            color="warn">
+      <span class="fas fa-trash-alt"></span>
+    </button>
+    <!--        <button mat-mini-fab-->
+    <!--                type="button"-->
+    <!--                (click)="selectReport()"-->
+    <!--                [matTooltip]="'COMMON_SELECT_REPORT' | translate"-->
+    <!--                color="warn">-->
+    <!--            <span class="fas fa-folders"></span>-->
+    <!--        </button>-->
+    <!--        <button mat-mini-fab-->
+    <!--                type="button"-->
+    <!--                (click)="viewReport()"-->
+    <!--                [matTooltip]="'COMMON_PRINT_REPORT' | translate"-->
+    <!--                color="warn">-->
+    <!--            <span class="fas fa-print"></span>-->
+    <!--        </button>-->
+  </div>
+}
+
+<div class="table-container">
+  <mat-table mat-table [dataSource]="data$|async" class="main-table">
+    <ng-container matColumnDef="product">
+      <mat-header-cell *matHeaderCellDef translate>COMMON_DESCRIPTION</mat-header-cell>
+      <mat-cell *matCellDef="let e">
+        {{ e.productDescription }}
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="silo">
+      <mat-header-cell *matHeaderCellDef translate>LTM_SILO</mat-header-cell>
+      <mat-cell *matCellDef="let e">
+        {{ e.siloDescription }}
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="type">
+      <mat-header-cell *matHeaderCellDef translate>COMMON_TYPE</mat-header-cell>
+      <mat-cell *matCellDef="let e">
+        {{ e.typeDescription }}
+      </mat-cell>
+    </ng-container>
+
+
+    <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+    <mat-row class="selectable" [class.selected]="row.id == selectedId" (click)="select(row.id)"
+             *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+</div>
+
+<div class="pagination-container b-b-background">
+  <ss-pagination [paginationModel]="paginator"></ss-pagination>
+</div>

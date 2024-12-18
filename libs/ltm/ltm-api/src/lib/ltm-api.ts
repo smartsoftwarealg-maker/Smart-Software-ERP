@@ -17,7 +17,7 @@ export const LTM_CORRECTIONS_ACTIONS_URL        = '/lookups/ltm_correction_actio
 export const LTM_SUPPLIER_URL        = '/lookups/ltm_suppliers';
 export const LTM_NORM_URL        = '/lookups/ltm_norms';
 export const LTM_PRODUCT_LOOKUP_URL        = '/lookups/ltm_products';
-export const LTM_PRODUCTS_URL        = '/ltm/products';
+export const LTM_PRODUCTS_URL        = '/lookups/ltm_products';
 export const LTM_PICKUP_POINTS_URL        = '/ltm/pickup-points';
 export const LTM_PICKUP_POINTS_CHILD_URL        = '/pickup-points';
 export const LTM_TESTING_ANOMALIES_URL        = '/ltm/testing-anomalies';
@@ -38,6 +38,12 @@ export const LTM_LINE_SELECT_URL = '/ltm/ltm_selection';
 export const LTM_SAMPLES_URL = '/ltm/samples';
 export const LTM_LINES_URL = '/lines';
 export const LTM_NORM_TREE_URL     = '/ltm/norm-tree';
+export const LTM_PRODUCT_LIBERATION_URL     = '/ltm/product-liberation';
+export const LTM_PRODUCT_LIBERATION_LINE_URL     = '/ltm/liberation';
+export const LTM_PRODUCT_LIBERATION_PRODUCTS_URL     = '/products';
+export const LTM_PRODUCT_LIBERATION_PRODUCT_TYPE_URL     = '/lookups/ltm_product_types';
+
+
 
 
 
@@ -337,4 +343,19 @@ export interface LTMTestEquipmentTestingInput {
 }
 
 
+export interface LTMProductLiberationLine {
+    id: number;
+    parentId: number;
+    productId: number;
+    siloId: number;
+    typeId: number;
+    productDescription?: string;
+    siloDescription?: string;
+    typeDescription?: string}
 
+export interface  LTMProductLiberation {
+    id: number;
+    centerId: number;
+    date: Date,
+    description?: string;
+}
