@@ -79,5 +79,6 @@
     "VALIDATION_DATE":    "تاريخ التحقق",
     "REPORT_DATE":        "تاريخ التقرير",
     "NON_VALIDATED":     "غير محقق",
-    "PRODUCT_TYPES":     "أنواع المنتجات"
+    "PRODUCT_TYPES":     "أنواع المنتجات",
+    "PRODUCT_LIBERATION":     "تحرير المنتج"
 }

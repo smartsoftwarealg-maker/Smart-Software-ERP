@@ -1,0 +1,23 @@
+.content_div {
+    width: 90%;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.mat-column-description {
+    flex: 3 1 200px;
+    border-left: gray solid 1px;
+    padding-left: 4px;
+}
+
+
+mat-table {
+    width: 98%;
+    min-width: 600px;
+}
+
+.container {
+    margin-top: 8px;
+    overflow: auto;
+    height: calc(100% - 64px);
+}

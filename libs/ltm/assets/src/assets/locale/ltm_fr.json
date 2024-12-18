@@ -79,5 +79,6 @@
     "VALIDATION_DATE":    "Date de validation",
     "REPORT_DATE":        "Date de rapport",
     "NON_VALIDATED":      "Non validé",
-    "PRODUCT_TYPES":      "Types de produits"
+    "PRODUCT_TYPES":      "Types de produits",
+    "PRODUCT_LIBERATION":      "libération du produit"
 }

@@ -12,11 +12,11 @@ import {
 } from '@angular/material/table';
 import { MatSort, MatSortHeader } from '@angular/material/sort';
 
-import { LtmEquipmentTestService } from '../../../../product-liberation/src/lib/services/ltm-equipment-test.service';
+import { LtmEquipmentTestService } from '../services/ltm-equipment-test.service';
 import { MatTooltip } from '@angular/material/tooltip';
 import { MatMiniFabButton } from '@angular/material/button';
 import { LTMEquipmentTesting, LTMTestEquipmentTest } from '@ltm/ltm-api';
-import { LtmEquipmentTestingService } from '../../../../product-liberation/src/lib/services/ltm-equipment-testing.service';
+import { LtmEquipmentTestingService } from '../services/ltm-equipment-testing.service';
 import { BudgetService } from '@ss/budget/budget';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router } from '@angular/router';

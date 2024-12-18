@@ -31,7 +31,11 @@ import {
     LTM_DEPOSIT_TEST_URL,
     LTM_RAW_MATERIAL_TEST_URL,
     LTM_CORRECTION_ACTION_URL,
-    LTM_NORM_TREE_TREE, LTM_TEST_EQUIPMENT_URL, LTM_TEST_EQUIPMENT_TESTING_URL, LTM_PRODUCT_TYPE_URL
+    LTM_NORM_TREE_TREE,
+    LTM_TEST_EQUIPMENT_URL,
+    LTM_TEST_EQUIPMENT_TESTING_URL,
+    LTM_PRODUCT_TYPE_URL,
+    LTM_PRODUCT_LIBERATION_ROUTE_URL
 } from '../common';
 
 import {
@@ -102,10 +106,21 @@ import {
     TestEquipmentListComponent, TestEquipmentTestDetailComponent, TestEquipmentTestingInputListComponent,
     TestEquipmentTestListComponent
 } from '@ltm/test-equipment';
-import { CHEMICAL_TEST, DEPOSIT_TEST, PHYSICAL_TEST, RAW_MATERIAL_TEST } from '@ltm/ltm-api';
+import {
+    CHEMICAL_TEST,
+    DEPOSIT_TEST,
+    LTM_PRODUCT_LIBERATION_LINE_URL, LTM_PRODUCT_LIBERATION_URL,
+    PHYSICAL_TEST,
+    RAW_MATERIAL_TEST
+} from '@ltm/ltm-api';
 import {
     TestEquipmentTestingInputDetailComponent
 } from '@ltm/test-equipment';
+import {
+    ProductLiberationDetailComponent, ProductLiberationLineDetailComponent,
+    ProductLiberationLineListComponent,
+    ProductLiberationListComponent
+} from '@ss/ltm/product-liberation';
 
 export const ltmRoutes: Routes = [
     {
@@ -177,6 +192,39 @@ export const ltmRoutes: Routes = [
             { path: LIST_URL, component: LtmProductTypeListComponent, canActivate: [loginGuard]},
             { path: ':id', component: LtmProductTypeDetailComponent, canActivate: [loginGuard], canDeactivate: [CanDeactivateService] }
         ]
+    },
+    {
+        path: LTM_PRODUCT_LIBERATION_ROUTE_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: ProductLiberationListComponent,
+                canActivate: [loginGuard],
+            },
+            {
+                path: ':id',
+                component: ProductLiberationDetailComponent,
+                children: [
+                    { path: '', redirectTo: 'detail', pathMatch: 'full' },
+                    {
+                        path: 'detail',
+                        children: [
+                            {
+                                path: '',
+                                component: ProductLiberationLineListComponent,
+                                pathMatch: 'full',
+                            },
+                            {
+                                path: ':id',
+                                component: ProductLiberationLineDetailComponent,
+                            },
+                        ],
+                    },
+                ],
+                canActivate: [loginGuard],
+                canDeactivate: [CanDeactivateService],
+            },
+        ],
     },
     {
         path: LTM_NORM_URL,
