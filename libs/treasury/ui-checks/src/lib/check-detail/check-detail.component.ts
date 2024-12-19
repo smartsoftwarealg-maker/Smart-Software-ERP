@@ -13,7 +13,7 @@ import { MatFormField, MatLabel, MatError } from '@angular/material/form-field';
 import { TranslateDirective } from '@ss/common/ui-lang';
 import { MatInput } from '@angular/material/input';
 import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
-import { DatePickerComponent } from '../../../../common/ui-datepicker/src/lib/date-picker.component';
+import { DatePickerComponent } from '@ss/common/ui-datepicker';
 import { MatCheckbox } from '@angular/material/checkbox';
 
 @Component({
@@ -21,7 +21,20 @@ import { MatCheckbox } from '@angular/material/checkbox';
     styleUrls: ['./check-detail.component.scss'],
     templateUrl: './check-detail.component.html',
     standalone: true,
-    imports: [MaterialModule, MatCard, NgIf, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, UiAutoCompleteComponent, MatError, DatePickerComponent, MatCheckbox]
+    imports: [MaterialModule,
+        MaterialModule,
+        MatCard,
+        NgIf,
+        FormsModule,
+        ReactiveFormsModule,
+        MatFormField,
+        MatLabel,
+        TranslateDirective,
+        MatInput,
+        UiAutoCompleteComponent,
+        MatError,
+        DatePickerComponent,
+        MatCheckbox]
 })
 export class CheckDetailComponent extends BaseEntityDetailComponent<Check> implements OnInit {
 

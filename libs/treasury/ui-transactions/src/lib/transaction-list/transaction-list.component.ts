@@ -18,9 +18,17 @@ import { MatHint, MatFormField, MatLabel } from '@angular/material/form-field';
 import { TranslateDirective } from '@ss/common/ui-lang';
 import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { NgIf, NgFor, AsyncPipe, DecimalPipe } from '@angular/common';
-import { MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from '@angular/material/table';
-import { PaginationComponent } from '../../../../../common/ui-pagination/src/lib/pagination.component';
-import { AppArchiveMainComponent } from '../../../../../common/app-archive/src/lib/app-archive-main/app-archive-main.component';
+import {
+    MatTable,
+    MatColumnDef,
+    MatHeaderCell,
+    MatCell,
+    MatHeaderRow,
+    MatRow,
+    MatCellDef, MatHeaderCellDef, MatHeaderRowDef, MatRowDef
+} from '@angular/material/table';
+import { PaginationComponent } from '@ss/common/ui-pagination';
+import { AppArchiveMainComponent } from '@ss/common/app-archive';
 
 @Component({
     selector: 'ss-transaction-list',
@@ -41,19 +49,19 @@ import { AppArchiveMainComponent } from '../../../../../common/app-archive/src/l
         NgFor,
         MatTable,
         MatColumnDef,
-        MatHeaderCellDef,
         MatHeaderCell,
-        MatCellDef,
         MatCell,
-        MatHeaderRowDef,
         MatHeaderRow,
-        MatRowDef,
         MatRow,
         PaginationComponent,
         AppArchiveMainComponent,
         AsyncPipe,
         DecimalPipe,
-    ],
+        MatCellDef,
+        MatHeaderCellDef,
+        MatHeaderRowDef,
+        MatRowDef
+    ]
 })
 export class TransactionListComponent extends BaseEntityListComponent<TTransaction> implements OnInit {
     #archiveSrv = inject(AppArchiveService);

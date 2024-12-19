@@ -28,7 +28,6 @@ type MBData = {
         CommonModule,
         MaterialModule,
         TranslateDirective,
-
         OrgChartModule,
     ],
 })

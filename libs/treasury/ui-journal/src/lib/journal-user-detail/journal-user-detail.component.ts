@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { BaseChildEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { JournalUser, JournalUserService } from '@ss/treasury/api-journal';
 import { FormBuilder, UntypedFormGroup, Validators } from "@angular/forms";
-import {  UserLookup } from '@ss/common/ui-auto-complete';
+import { UiAutoCompleteComponent, UserLookup } from '@ss/common/ui-auto-complete';
 import { UserListService } from '@ss/common/api-users';
 import { MaterialModule } from '@ss/common/api-common';
 
@@ -11,20 +11,19 @@ import { MaterialModule } from '@ss/common/api-common';
 
 import { DatePickerComponent } from "@ss/common/ui-datepicker";
 import { RouterModule } from "@angular/router";
+import { TranslateDirective } from '@ss/common/ui-lang';
 
 @Component({
   selector: 'ss-journal-user-detail',
   standalone: true,
-  imports: [
-      CommonModule,
-      MaterialModule,
+    imports: [
+        CommonModule,
+        MaterialModule,
+        TranslateDirective,
+        RouterModule,
+        UiAutoCompleteComponent
 
-
-
-     
-      RouterModule,
-
-  ],
+    ],
   templateUrl: './journal-user-detail.component.html',
   styleUrls: ['./journal-user-detail.component.css']
 })

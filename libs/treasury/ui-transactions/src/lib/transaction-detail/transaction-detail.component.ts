@@ -6,7 +6,7 @@ import { ActivatedRoute, NavigationEnd, Router, RouterOutlet } from '@angular/ro
 import { UntypedFormBuilder, UntypedFormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {TreasuryGroupService} from '@ss/common/api-lookup';
-import {LoginService} from '@ss/common/api-common';
+import { LoginService, MaterialModule } from '@ss/common/api-common';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {AgentLookupModel, AgentService} from '@ss/logistics/api-agent';
 import {filter} from 'rxjs/operators';
@@ -26,6 +26,7 @@ import { MatCheckbox } from '@angular/material/checkbox';
     standalone: true,
     imports: [
         MatCard,
+        MaterialModule,
         MatCardContent,
         NgIf,
         FormsModule,

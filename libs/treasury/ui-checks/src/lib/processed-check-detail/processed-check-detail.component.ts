@@ -1,7 +1,7 @@
 import { Component, inject, OnInit } from "@angular/core";
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {ProcessedCheck, ProcessedCheckService} from '@ss/treasury/api-checks';
-import {HttpService, LoginService} from '@ss/common/api-common';
+import { HttpService, LoginService, MaterialModule } from '@ss/common/api-common';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import { FormBuilder, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -11,10 +11,10 @@ import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import { MatCard } from "@angular/material/card";
 import { NgIf } from "@angular/common";
 import { MatFormField, MatLabel, MatError } from "@angular/material/form-field";
-import { TranslateDirective } from "../../../../../common/ui-lang/src/lib/translate.directive";
-import { UiAutoCompleteComponent } from "../../../../../common/ui-auto-complete/src/lib/auto-complete.component";
+import { TranslateDirective } from '@ss/common/ui-lang';
+import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { MatInput } from "@angular/material/input";
-import { DatePickerComponent } from "../../../../../common/ui-datepicker/src/lib/date-picker.component";
+import { DatePickerComponent } from '@ss/common/ui-datepicker';
 
 @Component({
     selector: 'ss-processed-check-detail',
@@ -22,6 +22,7 @@ import { DatePickerComponent } from "../../../../../common/ui-datepicker/src/lib
     styleUrls: ['./processed-check-detail.component.scss'],
     standalone: true,
     imports: [
+        MaterialModule,
         MatCard,
         NgIf,
         FormsModule,
