@@ -29,16 +29,13 @@ import { Subject } from 'rxjs';
 import { MatCalendarType } from '@muaazh/angular-datepicker';
 import { MatInput } from '@angular/material/input';
 import { MatDatepickerModule } from '@muaazh/angular-datepicker';
-import { DateAdapter } from '@muaazh/angular-datepicker/core';
-import { SimpleDateAdapter } from '../../../api-common/src/lib/custom-date-adapter';
 
 @Component({
     selector: 'ss-date-picker',
     templateUrl: './date-picker.component.html',
     styleUrls: ['./date-picker.component.scss'],
     providers: [
-        { provide: MatFormFieldControl, useExisting: DatePickerComponent },
-        { provide: DateAdapter, useClass: SimpleDateAdapter }
+        { provide: MatFormFieldControl, useExisting: DatePickerComponent }
     ],
     standalone: true,
     imports: [MatInput, MatDatepickerModule, MatSuffix]
