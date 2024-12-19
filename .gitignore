@@ -51,3 +51,4 @@ NX/
 /android/gradle/
 /android/.idea/
 apps/cspace/android/.idea/
+package-lock.json
