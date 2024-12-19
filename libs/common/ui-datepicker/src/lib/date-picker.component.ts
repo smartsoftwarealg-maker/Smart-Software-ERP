@@ -6,7 +6,6 @@ import {
     ElementRef, EventEmitter,
     HostBinding,
     Input,
-    OnChanges,
     OnDestroy,
     OnInit,
     Optional,
@@ -18,12 +17,11 @@ import {
     ControlValueAccessor,
     NgControl
 } from '@angular/forms';
-import { MatFormFieldControl } from '@angular/material/form-field';
+import { MatFormFieldControl, MatSuffix } from '@angular/material/form-field';
 import {
     isString,
     strToDate,
     strToDateTime,
-    removeTimeForDateStr,
     dateTimeToYmdStr,
     dateToYmdStr, dateTimeToTime
 } from '@ss/common/api-common';
@@ -31,17 +29,19 @@ import { Subject } from 'rxjs';
 import { MatCalendarType } from '@muaazh/angular-datepicker';
 import { MatInput } from '@angular/material/input';
 import { MatDatepickerModule } from '@muaazh/angular-datepicker';
-import { MatIconButton } from '@angular/material/button';
+import { DateAdapter } from '@muaazh/angular-datepicker/core';
+import { SimpleDateAdapter } from '../../../api-common/src/lib/custom-date-adapter';
 
 @Component({
     selector: 'ss-date-picker',
     templateUrl: './date-picker.component.html',
     styleUrls: ['./date-picker.component.scss'],
     providers: [
-        { provide: MatFormFieldControl, useExisting: DatePickerComponent }
+        { provide: MatFormFieldControl, useExisting: DatePickerComponent },
+        { provide: DateAdapter, useClass: SimpleDateAdapter }
     ],
     standalone: true,
-    imports: [MatInput, MatDatepickerModule, MatIconButton]
+    imports: [MatInput, MatDatepickerModule, MatSuffix]
 })
 export class DatePickerComponent implements MatFormFieldControl<Date>, DoCheck, OnInit, OnDestroy, ControlValueAccessor {
 
@@ -157,7 +157,7 @@ export class DatePickerComponent implements MatFormFieldControl<Date>, DoCheck, 
     lastErrorState = false;
 
     @Input()
-        outputFormat: 'dateObject' | 'dateStr' = 'dateStr'; // todo: add 'datetime'
+    outputFormat: 'dateObject' | 'dateStr' = 'dateStr'; // todo: add 'datetime'
 
     @ViewChild('textField', { static: true }) textField: ElementRef;
 

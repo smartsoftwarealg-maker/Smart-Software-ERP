@@ -1,22 +1,28 @@
 
 :host {
-    display: inline-block;
+    display: flex;
     width: 100%;
+    flex-basis: 100%;
+    align-items: center;
+    justify-content: center;
 }
 
-input {
-    display: inline-block;
-    width: 100%;
-}
-
-.toggleButton {
+mat-datepicker-toggle {
+    width: 40px;
+    height: 40px;
     position: absolute;
-    top: 0;
-    width: 28px;
-    height: 28px;
-    line-height: 28px;
-    text-align: center;
-    margin: 0 !important;
-    padding: 0 !important;
-    overflow: hidden;
+    bottom: 8px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
+
+mat-datepicker-toggle:dir(rtl) {
+    left: -16px;
+}
+
+mat-datepicker-toggle:dir(ltr) {
+    right: -16px;
+}
+
