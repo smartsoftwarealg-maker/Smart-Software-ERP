@@ -596,7 +596,7 @@
                     {
                         "input": "apps/erp/src/theme-3.scss",
                         "bundleName": "theme-3",
-                        "inject": true
+                        "inject": false
                     }
                 ],
                 "stylePreprocessorOptions": {
@@ -1016,7 +1016,7 @@
                     {
                         "input": "apps/erp/src/theme-3.scss",
                         "bundleName": "theme-3",
-                        "inject": true
+                        "inject": false
                     }
                 ],
                 "stylePreprocessorOptions": {
