@@ -6,7 +6,6 @@ import {
     ElementRef, EventEmitter,
     HostBinding,
     Input,
-    OnChanges,
     OnDestroy,
     OnInit,
     Optional,
@@ -18,12 +17,11 @@ import {
     ControlValueAccessor,
     NgControl
 } from '@angular/forms';
-import { MatFormFieldControl } from '@angular/material/form-field';
+import { MatFormFieldControl, MatSuffix } from '@angular/material/form-field';
 import {
     isString,
     strToDate,
     strToDateTime,
-    removeTimeForDateStr,
     dateTimeToYmdStr,
     dateToYmdStr, dateTimeToTime
 } from '@ss/common/api-common';
@@ -31,7 +29,6 @@ import { Subject } from 'rxjs';
 import { MatCalendarType } from '@muaazh/angular-datepicker';
 import { MatInput } from '@angular/material/input';
 import { MatDatepickerModule } from '@muaazh/angular-datepicker';
-import { MatIconButton } from '@angular/material/button';
 
 @Component({
     selector: 'ss-date-picker',
@@ -41,7 +38,7 @@ import { MatIconButton } from '@angular/material/button';
         { provide: MatFormFieldControl, useExisting: DatePickerComponent }
     ],
     standalone: true,
-    imports: [MatInput, MatDatepickerModule, MatIconButton]
+    imports: [MatInput, MatDatepickerModule, MatSuffix]
 })
 export class DatePickerComponent implements MatFormFieldControl<Date>, DoCheck, OnInit, OnDestroy, ControlValueAccessor {
 
@@ -157,7 +154,7 @@ export class DatePickerComponent implements MatFormFieldControl<Date>, DoCheck, 
     lastErrorState = false;
 
     @Input()
-        outputFormat: 'dateObject' | 'dateStr' = 'dateStr'; // todo: add 'datetime'
+    outputFormat: 'dateObject' | 'dateStr' = 'dateStr'; // todo: add 'datetime'
 
     @ViewChild('textField', { static: true }) textField: ElementRef;
 
