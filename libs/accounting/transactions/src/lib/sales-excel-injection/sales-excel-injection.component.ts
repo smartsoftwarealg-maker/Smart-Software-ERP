@@ -20,7 +20,6 @@ import { FormControl } from '@angular/forms';
     styleUrls: ['./sales-excel-injection.component.scss'],
     standalone: true,
     imports: [
-        NgIf,
         TranslateDirective,
         MatMiniFabButton,
         MatButton,

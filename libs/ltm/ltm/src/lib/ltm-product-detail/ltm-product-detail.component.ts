@@ -41,7 +41,6 @@ export class LtmProductDetailComponent extends BaseEntityDetailComponent<LTMProd
             id:            [b.id],
             description:   [b.description, Validators.required],
             descriptionAr: [b.descriptionAr],
-            code:          [b.code],
         });
     }
 }

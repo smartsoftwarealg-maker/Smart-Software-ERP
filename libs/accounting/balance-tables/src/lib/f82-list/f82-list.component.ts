@@ -2,13 +2,11 @@ import { Component, inject, input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { F8 } from '../services/balance-tables.api';
-import { BankService } from '@ss/administration/api-bank';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DefaultReportService } from '@ss/common/ui-default-report-component';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { PaginatorPersistenceService } from '@ss/common/api-common';
-import { F8Service } from '../services/f8-service';
 
 import {
     MatCell,
@@ -20,7 +18,6 @@ import {
 } from '@angular/material/table';
 import { MatSort, MatSortHeader } from '@angular/material/sort';
 
-import { type } from 'node:os';
 import { F82Service } from '../services/f82-service';
 import { AccFileService } from '@ss/accounting/accounting-api';
 import { PaginationComponent } from '@ss/common/ui-pagination';

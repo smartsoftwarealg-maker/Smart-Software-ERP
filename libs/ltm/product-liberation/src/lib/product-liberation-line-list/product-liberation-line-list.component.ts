@@ -3,14 +3,13 @@ import { CommonModule } from '@angular/common';
 import { BaseChildEntityListComponent, BaseEntityListComponent } from '@ss/common/ui-base-entity';
 
 import {
-    MatCell,
-    MatCellDef,
+    MatCell, MatCellDef,
     MatColumnDef,
     MatHeaderCell, MatHeaderCellDef,
-    MatHeaderRow,
-    MatHeaderRowDef, MatRow, MatRowDef, MatTable
+    MatHeaderRow, MatHeaderRowDef,
+    MatRow, MatRowDef,
+    MatTable
 } from '@angular/material/table';
-import { MatSort, MatSortHeader } from '@angular/material/sort';
 import {
     LTMProductLiberationLine, LtmProductLiberationLineService, LtmProductLiberationService, LTMTestEquipmentTest
 } from '@ltm/ltm-api';
@@ -26,21 +25,19 @@ import { MatMiniFabButton } from '@angular/material/button';
         CommonModule,
         PaginationComponent,
         MatCell,
-        MatCellDef,
         MatColumnDef,
         MatHeaderCell,
         MatHeaderRow,
-        MatHeaderRowDef,
         MatRow,
-        MatRowDef,
-        MatSort,
-        MatSortHeader,
         MatTable,
-        MatHeaderCellDef,
         TranslateDirective,
         TranslatePipe,
         MatTooltip,
         MatMiniFabButton,
+        MatHeaderCellDef,
+        MatCellDef,
+        MatHeaderRowDef,
+        MatRowDef
     ],
     templateUrl: './product-liberation-line-list.component.html',
     styleUrl: './product-liberation-line-list.component.scss',
