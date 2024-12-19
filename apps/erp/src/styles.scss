@@ -1,4 +1,5 @@
 @use '@angular/material' as mat;
+@use '@muaazh/angular-datepicker/_theming.css';
 
 html {
     --mat-toolbar-container-background-color: var(--mat-sys-primary-container);
