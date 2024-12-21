@@ -12,6 +12,7 @@ import { MatFormField, MatLabel, MatError } from "@angular/material/form-field";
 import { TranslateDirective } from "../../../../../common/ui-lang/src/lib/translate.directive";
 import { MatInput } from "@angular/material/input";
 import { DatePickerComponent } from "../../../../../common/ui-datepicker/src/lib/date-picker.component";
+import { MaterialModule } from '@ss/common/api-common';
 
 @Component({
     selector: 'ss-transaction-line-detail',
@@ -20,6 +21,7 @@ import { DatePickerComponent } from "../../../../../common/ui-datepicker/src/lib
     standalone: true,
     imports: [
         MatMiniFabButton,
+        MaterialModule,
         MatCard,
         MatCardContent,
         NgIf,

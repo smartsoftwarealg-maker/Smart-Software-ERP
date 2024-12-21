@@ -14,6 +14,7 @@ import { MaterialModule } from "@ss/common/api-common";
 import { DatePickerComponent } from "@ss/common/ui-datepicker";
 
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
+import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 
 
 @Component({
@@ -25,12 +26,13 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         CommonModule,
         MaterialModule,
         TranslateDirective,
-       
+
         ReactiveFormsModule,
-       
+
 
         RouterModule,
-    ],
+        UiAutoCompleteComponent
+    ]
 
 })
 export class ContractArticleDetailComponent implements OnInit {

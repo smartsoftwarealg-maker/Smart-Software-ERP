@@ -12,13 +12,10 @@ import {
 import { MatSort, MatSortHeader, Sort } from '@angular/material/sort';
 
 import { FormArray, FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { MatCard, MatCardContent } from '@angular/material/card';
-import { MatError, MatFormField, MatHint, MatLabel } from '@angular/material/form-field';
+import { MatFormField, MatLabel } from '@angular/material/form-field';
 import { MatInput } from '@angular/material/input';
-import { MatButton } from '@angular/material/button';
 import { KeepOnToolbar, ShellService, SnackBarService, ToolbarButton } from '@ss/common/ui-shell';
 import { ActivatedRoute } from '@angular/router';
-import { MatProgressSpinner } from '@angular/material/progress-spinner';
 import {
     Employee, EmployeeService,
     IEmployee,
@@ -106,8 +103,8 @@ export class GradingsComponent implements OnInit {
     imageModel = new ImageModel(this.httpSrv);
 
     subordinateLookup  = new PersonAutocompleteClass(this.subordinateSrv);
-    employeeCtrl = new FormControl<number>(0);
-    yearCtrl = new FormControl<number>({ value: this.CUR_YEAR, disabled: true });
+    // employeeCtrl = new FormControl<number>(0);
+    yearCtrl = new FormControl<number>({ value: this.CUR_YEAR, disabled: false }, [Validators.min(2023)]);
     gradeCtrl = new FormControl<number>(1 );
     searchCtrl = new FormControl<string>('');
 
@@ -188,7 +185,7 @@ export class GradingsComponent implements OnInit {
         this.grades.clear();
         this.labels = [];
         this.gradingSrv
-            .get(this.CUR_YEAR, e?.id, this.gradeCtrl.value)
+            .get(this.yearCtrl.value, e?.id, this.gradeCtrl.value)
             .subscribe(res => {
                 this.executionIndex = this.gradeCtrl.value;
                 res.forEach(g => {
@@ -196,7 +193,7 @@ export class GradingsComponent implements OnInit {
                     const temp = this.fb.group({
                         id:          [g.id],
                         centerId:    [g.centerId || this.loginSrv.appCtx.center],
-                        year:        [this.CUR_YEAR],
+                        year:        [this.yearCtrl.value],
                         employeeId:  [e?.id],
                         criterion:   [g.criterion],
                         description: [g.description],

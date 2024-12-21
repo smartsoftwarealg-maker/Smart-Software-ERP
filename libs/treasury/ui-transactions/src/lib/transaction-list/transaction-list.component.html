@@ -1,6 +1,6 @@
 <div class="header-div">
     <mat-card class="calendar_div">
-        <mat-calendar [selected]="entitySrv.date"  (dateChanged)="onDate($event)">
+        <mat-calendar [selected]="entitySrv.date"  (selectedChange)="onDate($event)">
             <mat-hint>dd/MM/yyyy</mat-hint>
         </mat-calendar>
     </mat-card>
