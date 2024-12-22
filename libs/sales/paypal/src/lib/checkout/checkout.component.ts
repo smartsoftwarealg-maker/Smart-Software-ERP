@@ -4,7 +4,7 @@ import {Cartline, Total} from '@ss/sales/shopping-cart';
 import {CheckoutService} from '../checkout.service';
 import { FormBuilder, UntypedFormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {Router} from '@angular/router';
-import { TranslateDirective } from "../../../../../common/ui-lang/src/lib/translate.directive";
+import { TranslateDirective } from '@ss/common/ui-lang';
 import { NgIf } from "@angular/common";
 import { MatFormField, MatLabel } from "@angular/material/form-field";
 import { MatInput } from "@angular/material/input";

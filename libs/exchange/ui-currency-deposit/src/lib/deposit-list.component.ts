@@ -14,7 +14,7 @@ import { MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, Ma
 import { TranslateDirective } from '@ss/common/ui-lang';
 import { MatCheckbox } from '@angular/material/checkbox';
 import { PaginationComponent } from '@ss/common/ui-pagination';
-import { ExcDocInfoComponent } from '../../../ui-info/src/lib/exc-doc-info.component';
+import { ExcDocInfoComponent } from '@ss/exchange/ui-info';
 import { DecimalPipe, DatePipe } from '@angular/common';
 
 @Component({

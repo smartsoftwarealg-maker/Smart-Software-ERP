@@ -3,9 +3,8 @@ import {HttpService, LanguageService, LoginService} from '@ss/common/api-common'
 import {catchError, switchMap, tap} from 'rxjs/operators';
 import {langAssets} from '../environments/environment';
 import { NgIf } from '@angular/common';
-import { ThemeDirective } from '../../../../libs/common/ui-theme/src/lib/theme.directive';
 import { RouterOutlet } from '@angular/router';
-import { MessageComponent } from '../../../../libs/common/ui-error-handler/src/lib/error-message.component';
+import { MessageComponent } from '@ss/common/ui-error-handler';
 
 @Component({
     selector: 'ss-root',
@@ -14,7 +13,6 @@ import { MessageComponent } from '../../../../libs/common/ui-error-handler/src/l
     standalone: true,
     imports: [
         NgIf,
-        ThemeDirective,
         RouterOutlet,
         MessageComponent,
     ],

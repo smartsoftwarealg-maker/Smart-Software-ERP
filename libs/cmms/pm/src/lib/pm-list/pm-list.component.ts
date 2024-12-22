@@ -10,7 +10,7 @@ import { CMMSPMService } from '../services/cmms-p-m.service';
 import { MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from '@angular/material/table';
 import { MatSort, MatSortHeader } from '@angular/material/sort';
 import { TranslateDirective } from '@ss/common/ui-lang';
-import { PaginationComponent } from '../../../../../common/ui-pagination/src/lib/pagination.component';
+import { PaginationComponent } from '@ss/common/ui-pagination';
 import { DatePipe } from '@angular/common';
 
 @Component({
@@ -22,11 +22,9 @@ import { DatePipe } from '@angular/common';
         MatTable,
         MatSort,
         MatColumnDef,
-        MatHeaderCellDef,
         MatHeaderCell,
         MatSortHeader,
         TranslateDirective,
-        MatCellDef,
         MatCell,
         MatHeaderRowDef,
         MatHeaderRow,
