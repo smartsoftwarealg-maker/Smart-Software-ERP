@@ -8,7 +8,7 @@ import {BankService} from '@ss/administration/api-bank';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormField, MatLabel } from "@angular/material/form-field";
-import { TranslateDirective } from "../../../../../common/ui-lang/src/lib/translate.directive";
+import { TranslateDirective } from '@ss/common/ui-lang';
 import { UiAutoCompleteComponent } from "../../../../../common/ui-auto-complete/src/lib/auto-complete.component";
 import { MatRadioGroup, MatRadioButton } from "@angular/material/radio";
 import { MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from "@angular/material/table";

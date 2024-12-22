@@ -1,13 +1,15 @@
-mat-card,
 ctrl_div,
 .ctrl_div,
 .container__div,
 fieldset {
-    width: 90%;
+    width: 96%;
     max-width: 1200px;
     margin: 8px auto;
 }
 mat-card {
+    width: 90%;
+    max-width: 800px;
+    margin: 1em auto;
     border-radius: 1.4em;
 }
 .table_div {
@@ -52,8 +54,7 @@ legend {
         display: flex;
         gap: 1em;
         flex-wrap: nowrap;
-        width: 100%;
-        height: calc(100% - 110px);
+        height: calc(100% - 120px);
     }
 
 }

@@ -21,7 +21,7 @@ import { MatButton } from '@angular/material/button';
 import { MatTabGroup, MatTab, MatTabLabel } from '@angular/material/tabs';
 import { NgFor, NgStyle, DecimalPipe } from '@angular/common';
 import { MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from '@angular/material/table';
-import { PaginationComponent } from '../../../../../common/ui-pagination/src/lib/pagination.component';
+import { PaginationComponent } from '@ss/common/ui-pagination';
 import { TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({

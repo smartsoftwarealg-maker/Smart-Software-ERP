@@ -10,7 +10,7 @@ import { HttpService, PaginatorPersistenceService, ymdToDmy, removeTimeForDateSt
 import { Observable, of } from 'rxjs';
 import { MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from '@angular/material/table';
 import { TranslateDirective } from '@ss/common/ui-lang';
-import { PaginationComponent } from '../../../../../common/ui-pagination/src/lib/pagination.component';
+import { PaginationComponent } from '@ss/common/ui-pagination';
 import { AsyncPipe } from '@angular/common';
 import { BankDescriptionPipe } from '@ss/administration/api-bank';
 

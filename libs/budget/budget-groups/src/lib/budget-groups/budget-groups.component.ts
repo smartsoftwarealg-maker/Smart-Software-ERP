@@ -16,7 +16,7 @@ import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {debounceTime, distinctUntilChanged} from 'rxjs/operators';
 import {BudgetAccountService} from '../budget-account.service';
 import {LanguageService} from '@ss/common/api-common';
-import { TranslateDirective } from "../../../../../common/ui-lang/src/lib/translate.directive";
+import { TranslateDirective } from '@ss/common/ui-lang';
 import { MatIconButton, MatButton } from "@angular/material/button";
 import { MatIcon } from "@angular/material/icon";
 import { MatList, MatListItem } from "@angular/material/list";
@@ -25,7 +25,7 @@ import { MatTooltip } from "@angular/material/tooltip";
 import { MatCard } from "@angular/material/card";
 import { MatFormField, MatLabel } from "@angular/material/form-field";
 import { MatInput } from "@angular/material/input";
-import { TranslatePipe } from "../../../../../common/ui-lang/src/lib/translate.pipe";
+import { TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-budget-groups',
@@ -264,7 +264,7 @@ export class BudgetGroupsComponent implements OnInit, OnDestroy {
                 accountNo: account[0].accountNo,
                 balanceType: 3,
                 balanceSign: 1,
-                description: account[0].description
+                accountDescription: account[0].description
             }
             this.budgetAccountSrv
                 .save(budgetAccount)
@@ -323,7 +323,7 @@ export class BudgetGroupsComponent implements OnInit, OnDestroy {
                 accountNo: account[0].accountNo,
                 balanceType: 3,
                 balanceSign: 1,
-                description: account[0].description
+                accountDescription: account[0].description
             }
             this.budgetAccountSrv
                 .save(budgetAccount)
