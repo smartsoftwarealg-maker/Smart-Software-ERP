@@ -166,6 +166,8 @@ body {
             @extend .b-warn;
         }
     }
+
+    @include mat.all-component-densities(0);
 }
 
 .mat-mdc-header-cell,

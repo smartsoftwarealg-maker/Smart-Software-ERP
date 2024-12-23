@@ -1,5 +1,15 @@
-@use '@angular/material/prebuilt-themes/cyan-orange.css';
-
+@use '@angular/material' as mat;
 @use 'styles.scss' as mainStyles;
+
+html {
+    @include mat.theme((
+        color: (
+            primary: mat.$violet-palette,
+            theme-type: light,
+        ),
+        typography: Roboto,
+        density: 0
+    ));
+}
 
 @include mainStyles.themes-patches();
