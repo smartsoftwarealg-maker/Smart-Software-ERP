@@ -9,6 +9,7 @@ import { DatePickerComponent } from '@ss/common/ui-datepicker';
 
 import { TranslateDirective } from '@ss/common/ui-lang';
 import { ReceptionLinesService } from '../reception-lines.service';
+import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 
 @Component({
     selector: 'ss-reception-lines-detail',
@@ -20,10 +21,8 @@ import { ReceptionLinesService } from '../reception-lines.service';
         MaterialModule,
         TranslateDirective,
         ReactiveFormsModule,
-       
-
-
-    ],
+        UiAutoCompleteComponent
+    ]
 })
 export class ReceptionLinesDetailComponent extends BaseTransactionLinesDetailComponent implements OnInit, OnDestroy {
     constructor(public receptionLinesSrv: ReceptionLinesService) {
