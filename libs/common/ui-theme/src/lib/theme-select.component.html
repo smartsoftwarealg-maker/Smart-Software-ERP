@@ -6,11 +6,11 @@
     <div class="themes-menu">
         @for (t of themes; track t) {
             <div mat-menu-item class="theme-button" (click)="setTheme(t)">
-                <div class="theme-border {{t}}-bg-p">
-                    <div class="theme-circle {{t}}-bg">
-                        <div class="a1 {{t}}-bg-p theme-pri"></div>
-                        <div class="a2 {{t}}-bg-p theme-pri"></div>
-                        <div class="b1 {{t}}-bg"></div>
+                <div class="theme-border {{t}}">
+                    <div class="theme-circle theme-color-a">
+                        <div class="a1 theme-color-b"></div>
+                        <div class="a2 theme-color-b"></div>
+                        <div class="b1 theme-color-a"></div>
                     </div>
                 </div>
             </div>
