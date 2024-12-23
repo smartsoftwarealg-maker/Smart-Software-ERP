@@ -13,7 +13,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
 import { PaginationComponent } from '@ss/common/ui-pagination';
 import { AsyncPipe } from '@angular/common';
 import { TranslatePipe } from '@ss/common/ui-lang';
-import { LookupDescriptionPipe } from '../../../../../common/api-lookup/src/lib/lookup-description.pipe';
+import { LookupDescriptionPipe } from '@ss/common/api-lookup';
 
 @Component({
     selector: 'ss-journal-list',

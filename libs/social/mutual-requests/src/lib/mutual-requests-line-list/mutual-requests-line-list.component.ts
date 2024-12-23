@@ -32,11 +32,8 @@ import { MaterialModule } from '@ss/common/api-common';
         MatColumnDef,
         MatHeaderCell,
         MatHeaderRow,
-        MatHeaderRowDef,
         MatRow,
-        MatRowDef,
         MatTable,
-        MatHeaderCellDef,
         MatTooltip,
         MatMiniFabButton,
         TranslatePipe

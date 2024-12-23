@@ -23,7 +23,6 @@
     <div class="container_div">
         <mat-table mat-table [dataSource]="data" class="main-table">
 
-
             <ng-container matColumnDef="position">
                 <mat-header-cell *matHeaderCellDef translate>COMMON_POSITION</mat-header-cell>
                 <mat-cell *matCellDef="let e">
@@ -78,6 +77,7 @@
                     {{ e.price | number : '1.2-2'}}
                 </mat-cell>
             </ng-container>
+
             <ng-container matColumnDef="vat">
                 <mat-header-cell *matHeaderCellDef translate>LOGISTICS_VAT</mat-header-cell>
                 <mat-cell *matCellDef="let e">
@@ -97,7 +97,6 @@
                     </button>
                 </mat-cell>
             </ng-container>
-
 
             <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
             <mat-row class="selectable" [class.selected]="row.id === selectedId" (click)="select(row)"

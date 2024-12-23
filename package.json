@@ -1,6 +1,6 @@
 {
     "name": "ss",
-    "version": "1.70.5",
+    "version": "1.70.6",
     "license": "PRIVATE",
     "scripts": {
         "ng": "nx",
@@ -45,7 +45,7 @@
         "@capacitor/core": "6.2.0",
         "@capacitor/filesystem": "6.0.2",
         "@capacitor/ios": "6.2.0",
-        "@muaazh/angular-datepicker": "19.0.12",
+        "@muaazh/angular-datepicker": "19.0.13",
         "@nx/angular": "20.3.0",
         "angular13-organization-chart": "2.0.1",
         "chart.js": "4.4.7",

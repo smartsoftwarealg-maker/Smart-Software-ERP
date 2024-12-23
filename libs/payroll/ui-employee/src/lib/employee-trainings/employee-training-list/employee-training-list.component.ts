@@ -6,9 +6,9 @@ import { MatMiniFabButton } from '@angular/material/button';
 import { MatTooltip } from '@angular/material/tooltip';
 import { MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from '@angular/material/table';
 import { TranslateDirective } from '@ss/common/ui-lang';
-import { PaginationComponent } from '../../../../../../common/ui-pagination/src/lib/pagination.component';
+import { PaginationComponent } from '@ss/common/ui-pagination';
 import { AsyncPipe, DecimalPipe, DatePipe } from '@angular/common';
-import { TranslatePipe } from '../../../../../../common/ui-lang/src/lib/translate.pipe';
+import { TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-employee-training-list',

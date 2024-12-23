@@ -10,6 +10,7 @@ import {Accounting, Debt, Payment} from '@ss/logistics/api-common';
     providedIn: 'root'
 })
 export class AgentService extends BaseEntityExtendedService<Agent> {
+    #_activeOnly = false;
 
     constructor(protected override httpSrv: HttpService) {
         super(httpSrv, AGENT_URL);
@@ -52,4 +53,19 @@ export class AgentService extends BaseEntityExtendedService<Agent> {
     cancelPayment(payId: number): Observable<{ count: number }> {
         return this.httpSrv.remove(`/payments/compensations/${payId}`);
     }
- }
+
+    set  activeOnly(activeOnly: boolean) {
+        this.#_activeOnly = activeOnly;
+    }
+    get activeOnly(): boolean {
+        return this.#_activeOnly;
+    }
+
+    getList(page: number, pageSize: number, filter?: string, sortBy?: string, extraPrams?: HttpParams): Observable<{
+        itemCount: number;
+        body: Agent[]
+    }> {
+        const searh = this.#_activeOnly? (filter?? '') + '__a__' : filter;
+        return super.getList(page, pageSize, searh, sortBy, extraPrams);
+    }
+}

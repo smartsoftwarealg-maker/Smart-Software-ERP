@@ -23,7 +23,7 @@ import { MatInput } from '@angular/material/input';
 import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { DatePickerComponent } from '@ss/common/ui-datepicker';
 import { MatCheckbox } from '@angular/material/checkbox';
-import { AppArchiveMainComponent } from '../../../../../common/app-archive/src/lib/app-archive-main/app-archive-main.component';
+import { AppArchiveMainComponent } from '@ss/common/app-archive';
 
 @Component({
     selector: 'ss-furniture-detail',
