@@ -4,7 +4,6 @@
 html {
     --mat-toolbar-container-background-color: var(--mat-sys-primary-container);
     --mat-toolbar-container-text-color: var(--mat-sys-on-primary-container);
-    @include mat.all-component-densities(0);
 }
 
 body {
@@ -167,6 +166,8 @@ body {
             @extend .b-warn;
         }
     }
+
+    @include mat.all-component-densities(0);
 }
 
 .mat-mdc-header-cell,
