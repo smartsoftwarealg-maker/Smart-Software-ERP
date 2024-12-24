@@ -78,7 +78,5 @@
     "NEW_OFFICE": "Nouveau bureau",
     "NEW_BUILDING": "Nouveau batiment",
     "ACCOUNTING_TYPE": "Type de comptabilité",
-    "NEW_BENEFICIARY": "Nouveau bénéficiaire",
-    "SHOW_ALL": "Afficher tout",
-    "SHOW_ACTIVE_ONLY": "Afficher uniquement les actifs actifs"
+    "NEW_BENEFICIARY": "Nouveau bénéficiaire"
 }

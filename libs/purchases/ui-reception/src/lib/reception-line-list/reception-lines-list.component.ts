@@ -1,20 +1,17 @@
 import {Component, OnInit,} from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
-import { ActivatedRoute, Router, RouterOutlet } from '@angular/router';
-import {  ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import {ArticleService} from '@ss/master-data/api-article';
 import {LotsService} from '@ss/common/api-lookup';
-import {
-    BaseTransactionLinesListComponent
-} from '@ss/logistics/api-transaction';
+import { BaseTransactionLinesListComponent } from '@ss/logistics/api-transaction';
 import { CommonModule } from '@angular/common';
 import { MaterialModule } from '@ss/common/api-common';
 import { ReactiveFormsModule } from '@angular/forms';
-import { DatePickerComponent } from '@ss/common/ui-datepicker';
-
 import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
 import { ReceptionLinesService } from '../reception-lines.service';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
+import { PaginationComponent } from '@ss/common/ui-pagination';
 
 @Component({
     selector: 'ss-reception-lines-list',
@@ -27,9 +24,8 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         TranslateDirective,
         TranslatePipe,
         ReactiveFormsModule,
-       
-
-        DocInfoComponent
+        DocInfoComponent,
+        PaginationComponent
     ]
 })
 export class ReceptionLinesListComponent  extends BaseTransactionLinesListComponent implements OnInit {

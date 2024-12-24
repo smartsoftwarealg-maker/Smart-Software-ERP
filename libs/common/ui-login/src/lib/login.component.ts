@@ -1,4 +1,4 @@
-import { Component, inject, OnDestroy, OnInit, signal } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import { FormBuilder, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {ABS_INDEX_URL, LoginService, LoginType} from '@ss/common/api-common';
 import {DeviceDetectorService} from 'ngx-device-detector';
@@ -29,7 +29,6 @@ type User = {
 export class LoginComponent implements OnInit {
     private shellSrv = inject(ShellService);
     private time = 0;
-    private themeSrv = inject(ThemeService);
     private formBuilder = inject(FormBuilder);
     private router = inject(Router);
     protected deviceSrv = inject(DeviceDetectorService);
@@ -42,7 +41,7 @@ export class LoginComponent implements OnInit {
     readonly isPhone: boolean;
 
     form = this.formBuilder.group({
-        user: ['', Validators.required],
+        user: ['', [Validators.required, Validators.min(3)]],
         pass: [''],
         license: [''],
         keep: [true],

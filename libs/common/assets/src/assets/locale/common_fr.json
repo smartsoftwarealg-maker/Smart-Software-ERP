@@ -354,5 +354,6 @@
     "COSTING":                    "Coûts",
     "PAY_MODE":                   "Mode de paiement",
     "MUNICIPALITY":               "Commune",
-    "ACCOUNTING_APP":             "Comptabilité"
+    "ACCOUNTING_APP":             "Comptabilité",
+    "SHOW_ACTIVE_ONLY": "Afficher uniquement les actifs actifs"
 }

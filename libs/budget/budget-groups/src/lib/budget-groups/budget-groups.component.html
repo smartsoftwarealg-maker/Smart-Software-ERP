@@ -17,7 +17,7 @@
                                (dragstart)="onStart($event, node?.id+ '')"
                                [class.selected]="node.id == selectedGroup?.id"
                                (click)="select(node)">
-                    {{node.code}} {{node.description}}
+                    {{ node.code }} {{ node.description }}
                 </mat-tree-node>
                 <mat-nested-tree-node *matTreeNodeDef="let node; when: hasChild">
                     <div class="mat-tree-node"
@@ -30,10 +30,10 @@
                         <button mat-icon-button matTreeNodeToggle
                                 [attr.aria-label]="'Toggle ' + node.description">
                             <mat-icon class="mat-icon-rtl-mirror">
-                                {{treeControl.isExpanded(node) ? '-' : '+'}}
+                                {{ treeControl.isExpanded(node) ? '-' : '+' }}
                             </mat-icon>
                         </button>
-                        {{node.code}} {{node.description}}
+                        {{ node.code }} {{ node.description }}
                     </div>
                     <div [class.example-tree-invisible]="!treeControl.isExpanded(node)"
                          role="group">
@@ -44,18 +44,19 @@
         </div>
         <div class="group_accounts">
             <mat-list>
-                <mat-list-item *ngFor="let a of budgetAccountData"
-                               [class.selected]="a?.id === selectedBudgetAccount?.id"
-                               (click)="selectBudgetAccount(a)">
-                    <button mat-icon-button
-                            (click)="deleteBudgetAccount(a.id)"
-                            matTooltip="{{ 'COMMON_DELETE' | translate }}"
-                            [disabled]="!a?.id">
-                        <i class="fa-solid fa-trash-slash"></i>
-                    </button>
+                @for (a of budgetAccountData; track a.id) {
+                    <mat-list-item [class.selected]="a?.id === selectedBudgetAccount?.id"
+                                   (click)="selectBudgetAccount(a)">
+                        <button mat-icon-button
+                                (click)="deleteBudgetAccount(a.id)"
+                                matTooltip="{{ 'COMMON_DELETE' | translate }}"
+                                [disabled]="!a?.id">
+                            <i class="fa-solid fa-trash-slash"></i>
+                        </button>
 
-                    {{ a.accountNo + ' ' + a.accountDescription }}
-                </mat-list-item>
+                        {{ a.accountNo }} {{a.accountDescription }}
+                    </mat-list-item>
+                }
             </mat-list>
         </div>
     </div>

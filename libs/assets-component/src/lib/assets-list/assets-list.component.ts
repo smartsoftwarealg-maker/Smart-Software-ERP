@@ -32,13 +32,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         CommonModule,
         MaterialModule,
         TranslateDirective,
-       
-
-       
         RouterModule,
-
-
-
         PaginationComponent
     ]
 })
@@ -85,7 +79,7 @@ export class AssetsListComponent extends BaseEntityListComponent<Asset> {
         disabled: false,
         icon: 'fa-solid fa-toggle-off',
         keepOnToolbar: KeepOnToolbar.DYNAMIC,
-        label: 'ASSET_SHOW_ALL',
+        label: 'COMMON_SHOW_ALL',
         visible: true,
         click: () => this.toggleActivity(),
     }
@@ -156,7 +150,7 @@ export class AssetsListComponent extends BaseEntityListComponent<Asset> {
     private toggleActivity() {
         this.listSrv.toggleActivity();
         this.activeOnly.set(this.listSrv.activeOnly);
-        this.activeOnlyBtn.label = this.listSrv.activeOnly ? 'ASSET_SHOW_ALL' : 'ASSET_SHOW_ACTIVE_ONLY';
+        this.activeOnlyBtn.label = this.listSrv.activeOnly ? 'COMMON_SHOW_ALL' : 'COMMON_SHOW_ACTIVE_ONLY';
         this.activeOnlyBtn.icon = this.listSrv.activeOnly ? 'fa-solid fa-toggle-on' : 'fa-solid fa-toggle-off';
         this.refresh();
     }

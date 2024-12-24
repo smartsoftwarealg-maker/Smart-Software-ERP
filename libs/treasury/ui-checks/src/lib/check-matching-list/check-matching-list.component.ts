@@ -9,11 +9,11 @@ import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormField, MatLabel } from "@angular/material/form-field";
 import { TranslateDirective } from '@ss/common/ui-lang';
-import { UiAutoCompleteComponent } from "../../../../../common/ui-auto-complete/src/lib/auto-complete.component";
+import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { MatRadioGroup, MatRadioButton } from "@angular/material/radio";
 import { MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from "@angular/material/table";
 import { MatCheckbox } from "@angular/material/checkbox";
-import { PaginationComponent } from "../../../../../common/ui-pagination/src/lib/pagination.component";
+import { PaginationComponent } from '@ss/common/ui-pagination';
 import { DecimalPipe, DatePipe } from "@angular/common";
 
 @Component({

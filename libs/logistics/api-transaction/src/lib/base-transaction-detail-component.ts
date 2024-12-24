@@ -277,6 +277,10 @@ export abstract class BaseTransactionDetailComponent extends BaseEntityDetailCom
         if (this.showImportButton()) {
             this.shellSrv.addButton(this.importBtn);
         }
+
+        this.customerSrv.activeOnly = true;
+        this.agentSrv.activeOnly = true;
+        this.supplierSrv.activeOnly = true;
     }
 
     protected disableControls(url: string) {

@@ -299,6 +299,10 @@ export class BudgetGroupsComponent implements OnInit, OnDestroy {
         this.selectedBudgetAccount = ba;
     }
 
+    updateBudgetAccount(id: number) {
+
+    }
+
     deleteBudgetAccount(id: number) {
         if (id) {
             this.confirmationSrv
