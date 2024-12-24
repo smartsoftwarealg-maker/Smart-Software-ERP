@@ -349,5 +349,6 @@
     "COSTING":                    "التكلفة",
     "PAY_MODE":                   "طريقة الدفع",
     "MUNICIPALITY":               "البلدية",
-    "ACCOUNTING_APP":             "المحاسبة"
+    "ACCOUNTING_APP":             "المحاسبة",
+    "SHOW_ACTIVE_ONLY":           "اظهار الحالي فقط"
 }

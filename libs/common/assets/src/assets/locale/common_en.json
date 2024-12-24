@@ -350,5 +350,6 @@
     "COSTING":                    "Costing",
     "PAY_MODE":                   "Pay mode",
     "MUNICIPALITY":               "Municipality",
-    "ACCOUNTING_APP":             "Accounting"
+    "ACCOUNTING_APP":             "Accounting",
+    "SHOW_ACTIVE_ONLY": "Show active only"
 }

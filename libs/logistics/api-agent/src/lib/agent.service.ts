@@ -5,12 +5,12 @@ import {Agent, AGENT_URL} from './agent-api';
 import {Observable, of} from 'rxjs';
 import {HttpParams} from '@angular/common/http';
 import {Accounting, Debt, Payment} from '@ss/logistics/api-common';
+import { BaseAgentClass } from './base-agent.class';
 
 @Injectable({
     providedIn: 'root'
 })
-export class AgentService extends BaseEntityExtendedService<Agent> {
-    #_activeOnly = false;
+export class AgentService extends BaseAgentClass {
 
     constructor(protected override httpSrv: HttpService) {
         super(httpSrv, AGENT_URL);
@@ -54,18 +54,4 @@ export class AgentService extends BaseEntityExtendedService<Agent> {
         return this.httpSrv.remove(`/payments/compensations/${payId}`);
     }
 
-    set  activeOnly(activeOnly: boolean) {
-        this.#_activeOnly = activeOnly;
-    }
-    get activeOnly(): boolean {
-        return this.#_activeOnly;
-    }
-
-    getList(page: number, pageSize: number, filter?: string, sortBy?: string, extraPrams?: HttpParams): Observable<{
-        itemCount: number;
-        body: Agent[]
-    }> {
-        const searh = this.#_activeOnly? (filter?? '') + '__a__' : filter;
-        return super.getList(page, pageSize, searh, sortBy, extraPrams);
-    }
 }

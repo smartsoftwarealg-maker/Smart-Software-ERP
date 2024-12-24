@@ -12,7 +12,7 @@ import { CommonModule } from '@angular/common';
 
 import { DatePickerComponent } from '@ss/common/ui-datepicker';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { TranslateDirective } from '@ss/common/ui-lang';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 import { PaginationComponent } from '@ss/common/ui-pagination';
 
 
@@ -37,7 +37,8 @@ interface LogFlatNode {
         TranslateDirective,
         ReactiveFormsModule,
         DatePickerComponent,
-        PaginationComponent
+        PaginationComponent,
+        TranslatePipe
     ]
 
 })
