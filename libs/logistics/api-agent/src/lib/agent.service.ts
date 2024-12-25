@@ -54,4 +54,9 @@ export class AgentService extends BaseAgentClass {
         return this.httpSrv.remove(`/payments/compensations/${payId}`);
     }
 
+    getNextCode(prefix: string, agentType: number): Observable<{ code: string }> {
+        const params = new HttpParams().set('prefix', prefix).set('agentType', agentType.toString());
+        return this.httpSrv.get<{ code: string }>(`/agents/next-code`, params);
+    }
+
 }

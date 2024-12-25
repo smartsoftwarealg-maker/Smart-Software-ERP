@@ -9,6 +9,9 @@ import { MatFormField, MatLabel } from '@angular/material/form-field';
 import { MatMiniFabButton } from '@angular/material/button';
 import { MaterialModule } from '@ss/common/api-common';
 import {
+    LtmCenterMatterService,
+    LtmLineMatterLookup,
+    LtmLineMatterService,
     LTMProductLiberationLine,
     LtmProductLiberationLineService,
     LtmProductService, LtmProductTypeService, LTMSiloService,
@@ -38,14 +41,15 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     styleUrl: './product-liberation-line-detail.component.scss'
 })
 export class ProductLiberationLineDetailComponent extends BaseChildEntityDetailComponent<LTMProductLiberationLine> {
+    #matterSrv =  inject(LtmCenterMatterService);
     #fb = inject(FormBuilder);
     #productSrv = inject(LtmProductService);
     #siloSrv = inject(LTMSiloService);
     #productTypeSrv = inject(LtmProductTypeService);
 
-    productLookup = new DefaultAutoCompleteModel(this.#productSrv);
     siloLookup = new DefaultAutoCompleteModel(this.#siloSrv);
     productTypeLookup = new DefaultAutoCompleteModel(this.#productTypeSrv);
+    matterLookup = new DefaultAutoCompleteModel(this.#matterSrv);
 
     constructor(public override entitySrv: LtmProductLiberationLineService) {
         super(entitySrv, 'LTMProductLiberationLine');

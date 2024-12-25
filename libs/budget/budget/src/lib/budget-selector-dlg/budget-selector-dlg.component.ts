@@ -53,6 +53,6 @@ export class BudgetSelectorDlgComponent implements OnInit {
     selectBudget() {
         this.budgetSrv.budget = this.selectedBudget;
         this.shellSrv.setLabels([ { title: this.selectedBudget.description}])
-        this.router.navigate(['../'], { relativeTo: this.activatedRoute });
+        this.router.navigate(['../'], { relativeTo: this.activatedRoute }).then();
     }
 }

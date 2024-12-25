@@ -40,12 +40,12 @@ export const ltmNavTree: SideNavNode = {
             route: ABS_LTM_UNIT_URL,
             accessRights: 'LTMMPeriod'
         },
-        {
-            name: 'COMMON_PRODUCTS',
-            icon: 'fa-solid fa-brush',
-            route: ABS_LTM_PRODUCT_URL,
-            accessRights: 'LTMProduct'
-        },
+        // {
+        //     name: 'COMMON_PRODUCTS',
+        //     icon: 'fa-solid fa-brush',
+        //     route: ABS_LTM_PRODUCT_URL,
+        //     accessRights: 'LTMProduct'
+        // },
         // {
         //     name: 'LTM_ZONES',
         //     icon: 'fa-solid fa-location-dot',
