@@ -26,7 +26,6 @@ interface WorkflowTreeNode extends TreeNode {
     imports: [
         CommonModule,
         MaterialModule,
-
         OrgChartModule,
     ],
 })

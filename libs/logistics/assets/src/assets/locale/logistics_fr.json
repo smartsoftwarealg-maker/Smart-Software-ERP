@@ -173,5 +173,6 @@
     "DELIVERY_TIME":        "Temps de livraison",
     "INVOICING":            "Facturation",
     "ORDER_VOLUME":         "Volume de commande",
-    "NEXT_CODE":            "Code suivant"
+    "NEXT_CODE":            "Code suivant",
+    "PPRICE":               "Cout unitaire"
 }
