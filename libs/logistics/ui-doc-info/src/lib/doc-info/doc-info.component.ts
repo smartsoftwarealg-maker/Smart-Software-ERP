@@ -118,12 +118,6 @@ export class DocInfoComponent {
                     url: 'stock',
                     paramsProvided: (p: string[]) => p.includes('articleReference')
                 },
-                {
-                    name: 'sources',
-                    description: 'LOGISTICS_SOURCES',
-                    url: 'sources',
-                    paramsProvided: (p: string[]) => p.includes('documentId')
-                },
             ]
         },
     ];

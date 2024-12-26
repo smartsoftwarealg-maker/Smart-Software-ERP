@@ -1,12 +1,13 @@
 <mat-card class="content_div">
     <mat-card-title> <span translate class="title">BUD_SELECT_BUDGET</span></mat-card-title>
     <mat-list>
-        <mat-list-item *ngFor="let b of data"
-                       [class.selected]="b.id === selectedBudget?.id"
+        @for (b of data; track b.id) {
+        <mat-list-item [class.selected]="b.id === selectedBudget?.id"
                        (click)="select(b)"
                        class="selectable" >
             {{ b.description }}
         </mat-list-item>
+        }
     </mat-list>
 </mat-card>
 <div class="content_div button__div" >

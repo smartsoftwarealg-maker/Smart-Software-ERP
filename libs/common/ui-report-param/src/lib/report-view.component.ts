@@ -50,7 +50,7 @@ import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
         CommonModule,
         MaterialModule,
         TranslateDirective,
-       
+
         RouterModule,
         DatePickerComponent,
         UiAutoCompleteComponent
@@ -126,6 +126,7 @@ export class ReportViewComponent extends BaseEntityListComponent<ReportParam> im
             .getReportsTree(app, this.shellSrv.getSearchText())
             .subscribe((res: ReportNode) => {
                 this.reportTree.data = this.parseTree(res.list, '');
+                console.log(this.reportTree.data)
             });
     }
 

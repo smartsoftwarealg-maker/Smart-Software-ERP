@@ -24,7 +24,7 @@ import {
     BudgetTransferLineListComponent,
     BudgetTransferListComponent
 } from '@ss/budget/budget-movements';
-import {budgetGuard, loginGuard} from '../erp-guards';
+import { accountingGuard, budgetGuard, loginGuard } from '../erp-guards';
 import {DashboardComponent} from '@ss/dashboard';
 import {ReportViewComponent} from '@ss/common/ui-report-param';
 
@@ -103,7 +103,7 @@ export const budgetRoutes: Routes = [
     {
         path: COMMON_REPORTS_URL,
         component: ReportViewComponent,
-        canActivate: [loginGuard],
+        canActivate: [loginGuard, BudgetSelectorGuard],
         data: { reportBase: 'budget' }
     },
 

@@ -8,7 +8,7 @@ import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { CustomerComplaint } from '../customer-complaint.class';
 import { CustomerComplaintsService } from '../customer-complaint.service';
 import { ComplaintTypeService } from '../complaint-type.service';
-import {  DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
+import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 
 import { MatCard, MatCardContent } from '@angular/material/card';
 import { MatError, MatFormField, MatFormFieldModule, MatLabel } from '@angular/material/form-field';
@@ -30,8 +30,6 @@ import { MatSelectModule } from '@angular/material/select';
     imports: [
         CommonModule,
 
-       
-
 
         MatButtonModule,
         MatCheckboxModule,
@@ -42,7 +40,8 @@ import { MatSelectModule } from '@angular/material/select';
         MatRadioModule,
         MatSelectModule,
         MaterialModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        UiAutoCompleteComponent
     ],
     templateUrl: './customer-complaints-detail.component.html',
     styleUrl: './customer-complaints-detail.component.css',

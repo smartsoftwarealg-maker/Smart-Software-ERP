@@ -46,6 +46,7 @@ import { CommonModule } from '@angular/common';
 import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 import { ChildAttributesComponent } from '@ss/custom-attributes';
+import { nextValueFrom } from 'nx/src/adapter/rxjs-for-await';
 
 @Component({
     selector: 'ss-agent-detail',
@@ -56,9 +57,8 @@ import { ChildAttributesComponent } from '@ss/custom-attributes';
         CommonModule,
         MaterialModule,
         TranslateDirective,
+        TranslatePipe,
         ReactiveFormsModule,
-
-
         AppArchiveMainComponent,
         UiAutoCompleteComponent,
         ChildAttributesComponent
@@ -373,6 +373,15 @@ export class AgentDetailComponent extends BaseEntityDetailComponent<Agent> imple
                 });
         }
     }
+
+    loadNextCode() {
+        const formValue = this.form.getRawValue();
+        this.agentSrv.getNextCode(formValue.customerCode, formValue.agentType).subscribe(res => {
+            this.form.controls['customerCode'].setValue(res.code);
+        })
+    }
+
+    protected readonly nextValueFrom = nextValueFrom;
 }
 
 class CustomerLookup extends DefaultAutoCompleteModel<Lookup> {

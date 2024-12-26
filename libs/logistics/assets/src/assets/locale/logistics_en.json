@@ -174,5 +174,6 @@
     "PACKAGING":            "Packing",
     "DELIVERY_TIME":        "Delivery time",
     "INVOICING":            "Invoicing",
-    "ORDER_VOLUME":         "Order volume"
+    "ORDER_VOLUME":         "Order volume",
+    "NEXT_CODE":            "Next code"
 }

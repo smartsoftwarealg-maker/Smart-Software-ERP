@@ -5,7 +5,7 @@ import {  ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import {Card, CardService} from '@ss/logistics/api-card';
 import {ArticleService} from '@ss/master-data/api-article';
 import { MaterialModule, PaginationModel } from '@ss/common/api-common';
-import {  DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
+import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import {Store} from '@ss/common/api-lookup';
 import { ReactiveFormsModule, UntypedFormControl, UntypedFormGroup } from '@angular/forms';
 import {ArticleLotsService} from '@ss/stock/api-article-store';
@@ -28,9 +28,10 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         TranslateDirective,
         TranslatePipe,
         ReactiveFormsModule,
-       
 
-        PaginationComponent
+
+        PaginationComponent,
+        UiAutoCompleteComponent
     ]
 
 })

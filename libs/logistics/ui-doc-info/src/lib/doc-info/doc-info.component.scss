@@ -10,7 +10,14 @@
 #doc-info.mat-card mat-card-content {
     margin: 0 !important;
     height: calc(100% - 0px);
-    padding: 0px;
+    padding: 0;
+}
+#doc-info {
+    margin-top: 2px;
+}
+mat-toolbar {
+    margin-bottom: 2px;
+
 }
 mat-card {
     padding: 0;
