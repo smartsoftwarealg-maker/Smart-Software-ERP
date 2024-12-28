@@ -143,7 +143,7 @@ export function dateToDmyStr(date: Date) {
 }
 
 export function dateToYmdStr(date: Date | string): string {
-    if (typeof date === 'string' || date instanceof String) {
+    if (!date || typeof date === 'string' || date instanceof String) {
         return <string>date;
     } else {
         return pad4(date.getFullYear())

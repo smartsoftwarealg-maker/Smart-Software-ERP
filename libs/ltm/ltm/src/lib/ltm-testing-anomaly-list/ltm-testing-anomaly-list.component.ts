@@ -10,7 +10,7 @@ import { CommonModule } from "@angular/common";
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { DatePickerComponent } from "@ss/common/ui-datepicker";
 import { LtmTestingAnomalyService } from '@ltm/ltm-api';
-import { Observable } from 'rxjs';
+import { filter, Observable } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { PaginationComponent } from '@ss/common/ui-pagination';
@@ -66,6 +66,7 @@ export class LtmTestingAnomalyListComponent extends BaseEntityListComponent<LTMT
         this.from
             .valueChanges
             .pipe(
+                filter(() => this.from.value !== null && this.to.value !== null),
                 takeUntilDestroyed(this.#destroyRef),
                 debounceTime(300),
                 distinctUntilChanged()
@@ -73,6 +74,7 @@ export class LtmTestingAnomalyListComponent extends BaseEntityListComponent<LTMT
         this.to
             .valueChanges
             .pipe(
+                filter(() => this.from.value !== null && this.to.value !== null),
                 takeUntilDestroyed(this.#destroyRef),
                 debounceTime(300),
                 distinctUntilChanged()
