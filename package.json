@@ -1,6 +1,6 @@
 {
     "name": "ss",
-    "version": "1.70.14",
+    "version": "1.71.1",
     "license": "PRIVATE",
     "scripts": {
         "ng": "nx",
@@ -45,7 +45,7 @@
         "@capacitor/core": "6.2.0",
         "@capacitor/filesystem": "6.0.2",
         "@capacitor/ios": "6.2.0",
-        "@muaazh/angular-datepicker": "19.0.102",
+        "@muaazh/angular-datepicker": "19.0.118",
         "@nx/angular": "20.3.0",
         "angular13-organization-chart": "2.0.1",
         "chart.js": "4.4.7",
@@ -81,7 +81,7 @@
         "@nx/workspace": "20.3.0",
         "@schematics/angular": "19.0.6",
         "@swc-node/register": "1.10.9",
-        "@swc/core": "1.10.1",
+        "@swc/core": "1.10.3",
         "@swc/helpers": "0.5.15",
         "@types/jest": "29.5.14",
         "@types/node": "22.10.2",

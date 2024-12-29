@@ -8,7 +8,7 @@ import {
     ABS_GICA_WEIGHTS_URL,
     ABS_GICA_REPORTS_URL,
     ABS_GICA_SCALE_URL,
-    ABS_GICA_DEDUCTION_REPORT_URL
+    ABS_GICA_DEDUCTION_REPORT_URL, ABS_HR_REPORTS_URL, ABS_GICA_REPORTING_URL
 } from '../common';
 
 export const gicaNavTree: SideNavNode = {
@@ -81,6 +81,12 @@ export const gicaNavTree: SideNavNode = {
             accessRights: 'GCArchive'
         },
 
+        {
+            name: 'COMMON_REPORTS',
+            icon: 'fa-solid fa-file-chart-column',
+            route: ABS_GICA_REPORTING_URL,
+            accessRights: 'Report'
+        },
     ],
     accessRights: 'GICACARRER'
 };

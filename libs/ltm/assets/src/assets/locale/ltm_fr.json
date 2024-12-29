@@ -80,5 +80,8 @@
     "REPORT_DATE":        "Date de rapport",
     "NON_VALIDATED":      "Non validé",
     "PRODUCT_TYPES":      "Types de produits",
-    "PRODUCT_LIBERATION":      "libération du produit"
+    "PRODUCT_LIBERATION":      "libération du produit",
+    "VARIANCE":           "Variance",
+    "DATA_MODE":          "Mode de données",
+    "DISTRIBUTION_MODE":  "Mode de distribution"
 }
