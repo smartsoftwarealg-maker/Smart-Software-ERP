@@ -756,6 +756,7 @@ export const ABS_GICA_GRADING_URL       = '/' + [MAIN_PAGE_URL, GICA_APP_URL, GI
 export const ABS_GICA_DEGRADING_URL       = '/' + [MAIN_PAGE_URL, GICA_APP_URL, GICA_DEGRADING_URL].join('/');
 export const ABS_GICA_CRITERIA_URL       = '/' + [MAIN_PAGE_URL, GICA_APP_URL, GICA_CRITERIA_URL].join('/');
 export const ABS_GICA_DEDUCTION_REPORT_URL       = '/' + [MAIN_PAGE_URL, GICA_APP_URL, GICA_DEDUCTIONS_URL].join('/');
+export const ABS_GICA_REPORTING_URL       = '/' + [MAIN_PAGE_URL, GICA_APP_URL, COMMON_REPORTS_URL].join('/');
 
 
 // CMMS

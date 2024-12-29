@@ -1,4 +1,4 @@
-import { Component, inject, OnDestroy, OnInit } from "@angular/core";
+import { Component, inject, OnDestroy, OnInit, signal } from '@angular/core';
 import { KeepOnToolbar, ShellService, ToolbarButton } from '@ss/common/ui-shell';
 import { ActivatedRoute, RouterOutlet } from '@angular/router';
 import { filter, map, Observable, of, Subscription } from "rxjs";
@@ -44,6 +44,25 @@ export class LtmReportComponent implements OnInit, OnDestroy {
         visible: true,
         click: () => this.menuOpened = !this.menuOpened
     };
+    private distributionMode = signal(false);
+    private distributionChartBtn: ToolbarButton = {
+        disabled: false,
+        icon: 'fa-solid fa-chart-area',
+        keepOnToolbar: KeepOnToolbar.DYNAMIC,
+        label: 'LTM_DISTRIBUTION_MODE',
+        visible: !this.distributionMode(),
+        click: () => this.toggleChartMode()
+    };
+
+    private dataChartBtn: ToolbarButton = {
+        disabled: false,
+        icon: 'fa-solid fa-chart-mixed',
+        keepOnToolbar: KeepOnToolbar.DYNAMIC,
+        label: 'LTM_DATA_MODE',
+        visible: this.distributionMode(),
+        click: () => this.toggleChartMode()
+    };
+
     private lightBtn: ToolbarButton = {
         disabled: false,
         icon: 'fa-duotone fa-moon',
@@ -103,6 +122,8 @@ export class LtmReportComponent implements OnInit, OnDestroy {
 
         this.shellSrv.addButton(this.menuBtn);
         this.shellSrv.addButton(this.lightBtn);
+        this.shellSrv.addButton(this.dataChartBtn);
+        this.shellSrv.addButton(this.distributionChartBtn);
     }
 
     onMatter(m: LTMLineMatter) {
@@ -143,7 +164,7 @@ export class LtmReportComponent implements OnInit, OnDestroy {
                 const ctx = <ChartItem>document.getElementById(c);
                 const test = data.filter(t => t.description === c);
                 if (test.length > 0) {
-                    const data = this.chartData(test);
+                    const data = this.distributionMode() ? this.distributionChartData(test) : this.chartData(test);
                     return new Chart(ctx, data);
                 } else {
                     return null;
@@ -151,6 +172,7 @@ export class LtmReportComponent implements OnInit, OnDestroy {
             });
         this.processing = false;
     }
+
 
     private chartData(data: Data[]): ChartConfiguration {
         return {
@@ -207,6 +229,58 @@ export class LtmReportComponent implements OnInit, OnDestroy {
     }
 
 
+    private distributionChartData(data: Data[]): ChartConfiguration {
+        const mean = data.reduce((a, b) => a + b.value, 0) / data.length;
+        const deviations = data.map(d => d.value - mean);
+        const mid = Math.min(50,  +(data.length / 4).toFixed(0));
+        const min = deviations.reduce((a, b) => Math.min(a, b), data[0].value);
+        const max = deviations.reduce((a, b) => Math.max(a, b), data[0].value);
+        const steps = [...Array(2 * mid + 1).keys()];
+        const delta = (max - min) / steps.length;
+        const t = steps.map(s => min + s * delta);
+        const tmp = t.map(s => deviations.filter(d => Math.abs(d -s)  < delta).length);
+        return {
+            type: 'line' ,
+            data: {
+                labels: steps.filter(i => tmp[i] > 0).map((_, i) => deviations[i].toFixed(2)),
+                datasets: [
+                    {
+                        label: data[0].description,
+                        data: tmp.filter(v => v > 0),
+                        backgroundColor: ['green'],
+                        borderColor: ['green']
+                    },
+                ],
+            },
+            options: {
+                plugins: {
+                    legend: {
+                        display: true,
+                        labels: {
+                            boxHeight: 32,
+                            color: 'green'
+                        },
+                    }
+                },
+                scales: {
+                    x: {
+                        title: {
+                            display: true,
+                            text: this.langSrv.translate('LTM_VARIANCE')
+                        },
+                        ticks: {
+                            autoSkip: false,
+                            maxRotation: 45,
+                            minRotation: 45
+                        }
+
+                    }
+                }
+            }
+        };
+    }
+
+
     ngOnDestroy(): void {
         this.subscription?.unsubscribe();
     }
@@ -237,5 +311,14 @@ export class LtmReportComponent implements OnInit, OnDestroy {
                     throw err;
                 }
             });
+    }
+
+    private toggleChartMode() {
+        this.distributionMode.update(mode => !mode);
+        this.distributionChartBtn.visible = !this.distributionMode();
+        this.dataChartBtn.visible = this.distributionMode();
+        if (this.selectedMatter !== null) {
+            this.onMatter(this.selectedMatter);
+        }
     }
 }

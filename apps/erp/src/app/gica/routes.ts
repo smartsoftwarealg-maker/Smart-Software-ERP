@@ -10,7 +10,7 @@ import {
     GICA_REPORTS_URL,
     GICA_HISTORY_URL,
     GICA_GRADING_URL,
-    GICA_CRITERIA_URL, GICA_DEGRADING_URL, GICA_DEDUCTIONS_URL
+    GICA_CRITERIA_URL, GICA_DEGRADING_URL, GICA_DEDUCTIONS_URL, COMMON_REPORTS_URL
 } from '../common';
 
 import {loginGuard} from '../erp-guards';
@@ -31,6 +31,7 @@ import { inject } from '@angular/core';
 import {
     ConstantDetailComponent
 } from '@gica/career-evolution';
+import { ReportViewComponent } from '@ss/common/ui-report-param';
 
 
 // export const faultGuard: CanActivateFn = () => inject(FaultService).canActivate();
@@ -68,6 +69,12 @@ export const gicaRoutes: Routes = [
             { path: LIST_URL, component: CriteriaListComponent, canActivate: [loginGuard]},
             { path: ':id', component: CriteriaDetailComponent, canActivate: [loginGuard, criteriaGuard] }
         ]
+    },
+    {
+        path: COMMON_REPORTS_URL,
+        component: ReportViewComponent,
+        canActivate: [loginGuard],
+        data: { reportBase: 'gica' }
     },
     {
         path: GICA_SCALE_URL,

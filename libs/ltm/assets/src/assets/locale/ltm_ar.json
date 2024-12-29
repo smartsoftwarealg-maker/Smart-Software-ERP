@@ -80,5 +80,8 @@
     "REPORT_DATE":        "تاريخ التقرير",
     "NON_VALIDATED":     "غير محقق",
     "PRODUCT_TYPES":     "أنواع المنتجات",
-    "PRODUCT_LIBERATION":     "تحرير المنتج"
+    "PRODUCT_LIBERATION":     "تحرير المنتج",
+    "VARIANCE":               "الانحراف",
+    "DATA_MODE":             "وضع البيانات",
+    "DISTRIBUTION_MODE":     "وضع التوزيع"
 }

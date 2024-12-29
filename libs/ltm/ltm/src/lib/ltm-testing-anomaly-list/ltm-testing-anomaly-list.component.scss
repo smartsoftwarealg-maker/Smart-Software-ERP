@@ -19,11 +19,15 @@
     padding-left: 4px;
 }
 
+.mat-column-date {
+    flex: 1 1 150px;
+    border-left: gray solid 1px;
+}
 .mat-column-pickupPointDescription,
-.mat-column-date,
 .mat-column-userDescription {
     flex: 1 1 120px;
     border-left: gray solid 1px;
+    border-right: gray solid 1px;
 }
 
 mat-table {

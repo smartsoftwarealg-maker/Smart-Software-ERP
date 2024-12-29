@@ -13,6 +13,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { DatePickerComponent } from '@ss/common/ui-datepicker';
 
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
+import { PaginationComponent } from '@ss/common/ui-pagination';
 
 @Component({
     selector: 'ss-circulation',
@@ -24,8 +25,8 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         MaterialModule,
         TranslateDirective,
         ReactiveFormsModule,
-
-    ],
+        PaginationComponent
+    ]
 
 })
 export class CirculationComponent implements OnInit {
