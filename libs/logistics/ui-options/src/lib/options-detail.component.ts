@@ -12,7 +12,7 @@ import {
     CurrencyService
 } from "@ss/common/api-lookup";
 import {  ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
-import {  DefaultAutoCompleteModel } from "@ss/common/ui-auto-complete";
+import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { Option } from "./option.class";
 import { OptionService } from "./option.service";
 import { LoginService, MaterialModule } from "@ss/common/api-common";
@@ -35,10 +35,11 @@ interface EvalPrice {
         CommonModule,
         MaterialModule,
         TranslateDirective,
-       
+
 
         ReactiveFormsModule,
         DatePickerComponent,
+        UiAutoCompleteComponent
     ],
     styleUrls: ["./options-detail.component.scss"],
     templateUrl: "./options-detail.component.html"

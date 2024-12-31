@@ -24,7 +24,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
 @Component({
     selector: 'ss-document-sources',
     standalone: true,
-    imports: [CommonModule,  MatCell, TranslateDirective, MatColumnDef, MatHeaderCell, MatHeaderRow, MatRow, MatSort, MatSortHeader, MatTable],
+    imports: [CommonModule, MatCell, TranslateDirective, MatColumnDef, MatHeaderCell, MatHeaderRow, MatRow, MatSort, MatSortHeader, MatTable, MatHeaderRowDef, MatHeaderCellDef, MatRowDef, MatCellDef],
     templateUrl: './document-sources.component.html',
     styleUrl: './document-sources.component.scss',
 })

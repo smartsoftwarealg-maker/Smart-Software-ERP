@@ -1,22 +1,25 @@
-<div id="doc-info">
-    <mat-toolbar color="primary">
-        <ng-container *ngFor="let entryGroup of getDisplayedEntries()">
+@if (params) {
+    <div id="doc-info">
+        <mat-toolbar color="primary">
+            <ng-container *ngFor="let entryGroup of getDisplayedEntries()">
 
-            <ng-container *ngIf="entryGroup.entries.length > 0">
-                <button mat-button [matMenuTriggerFor]="agentMenu">
-                    <i class="fas fa-bars"></i>
-                    <span class="space" translate>{{entryGroup.description}}</span>
-                </button>
-                <mat-menu #agentMenu="matMenu" yPosition="above">
-                    <button mat-menu-item *ngFor="let e of entryGroup.entries" translate
-                            (click)="select(e)">{{ e.description }}
+                <ng-container *ngIf="entryGroup.entries.length > 0">
+                    <button mat-button [matMenuTriggerFor]="agentMenu">
+                        <i class="fas fa-bars"></i>
+                        <span class="space" translate>{{ entryGroup.description }}</span>
                     </button>
-                </mat-menu>
+                    <mat-menu #agentMenu="matMenu" yPosition="above">
+                        <button mat-menu-item *ngFor="let e of entryGroup.entries" translate
+                                (click)="select(e)">{{ e.description }}
+                        </button>
+                    </mat-menu>
+                </ng-container>
+
             </ng-container>
+            <span class="title" translate> {{ selectedEntry?.description }} </span>
 
-        </ng-container>
-        <span class="title" translate> {{ selectedEntry?.description }} </span>
+        </mat-toolbar>
+        <router-outlet *ngIf="selectedEntry"></router-outlet>
+    </div>
 
-    </mat-toolbar>
-    <router-outlet *ngIf="selectedEntry"></router-outlet>
-</div>
+}

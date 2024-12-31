@@ -103,11 +103,13 @@
 </div>
 
 <div class="doc-info">
+    @if (selected) {
     <ss-doc-info
-        *ngIf="selected" [displayedGroups]="['article']"
+        [displayedGroups]="['article']"
         [params]="{ articleId: selectedRow?.id,
                     articleUseStoreSearch : true,
                     articleReference: selectedRow?.reference
                   }">
     </ss-doc-info>
+    }
 </div>
