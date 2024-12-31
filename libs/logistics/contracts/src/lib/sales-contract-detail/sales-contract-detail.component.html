@@ -72,7 +72,7 @@
 
 
                 <mat-form-field class="default-50 sm-100">
-                    <mat-label translate>LOGISTICS_ARTICLE_NO</mat-label>
+                    <mat-label translate>COMMON_ARTICLE_NO</mat-label>
                     <input matInput formControlName="fiscalId" type="text" maxlength="70">
                 </mat-form-field>
         </form>
@@ -84,7 +84,7 @@
     <mat-tab-group class="detail__div" [dynamicHeight]="true">
         <mat-tab class="width-div">
             <ng-template mat-tab-label>
-                <span translate>LOGISTICS_ARTICLES</span>
+                <span translate>COMMON_ARTICLES</span>
             </ng-template>
             @if (shownPanel === 'articles') {
                 <ss-contract-article-main></ss-contract-article-main>
@@ -109,7 +109,7 @@
 <!--                             (afterExpand)="panelOpened('articles')">-->
 <!--            <mat-expansion-panel-header>-->
 <!--                <mat-panel-title translate>-->
-<!--                    LOGISTICS_ARTICLES-->
+<!--                    COMMON_ARTICLES-->
 <!--                </mat-panel-title>-->
 <!--            </mat-expansion-panel-header>-->
 <!--            @if (shownPanel === 'articles') {-->

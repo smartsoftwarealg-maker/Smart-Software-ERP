@@ -16,17 +16,14 @@ import {
     DOC_SALES_ORDER
 } from '@ss/logistics/api-transaction';
 import { CommonModule } from '@angular/common';
-
-
-
 import { MatTableModule } from '@angular/material/table';
-
 import { MatSortModule } from '@angular/material/sort';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-
 import { DatePickerComponent } from "@ss/common/ui-datepicker";
+import { TranslateDirective } from '@ss/common/ui-lang';
+import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 
 
 @Component({
@@ -34,19 +31,16 @@ import { DatePickerComponent } from "@ss/common/ui-datepicker";
     standalone: true,
     imports: [
         CommonModule,
-
-
-
         MatTableModule,
-
         MatSortModule,
         MatButtonModule,
         MatFormFieldModule,
         MatInputModule,
         MaterialModule,
-
+        TranslateDirective,
         DatePickerComponent,
-        RouterOutlet
+        RouterOutlet,
+        UiAutoCompleteComponent
     ],
     templateUrl: './service-invoice-detail.component.html',
     styleUrls: ['../../../../../common/assets/src/assets/transac-detail.scss']
@@ -65,7 +59,7 @@ export class ServiceInvoiceDetailComponent extends BaseTransactionDetailComponen
         public override formBuilder: UntypedFormBuilder,
         public override confirmationSrv: ConfirmationDialogService,
         protected override dialog: MatDialog) {
-        super(entitySrv, detailSrv, shellSrv, snackBarSrv, route, router, formBuilder, confirmationSrv, loginSrv, dialog, 'SALES_EDIT_INVOICE');
+        super(entitySrv, detailSrv, shellSrv, snackBarSrv, route, router, formBuilder, confirmationSrv, loginSrv, dialog, 'SALES_INVOICE');
     }
 
 

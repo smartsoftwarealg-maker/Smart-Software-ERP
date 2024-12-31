@@ -18,6 +18,7 @@ import { DatePickerComponent } from '@ss/common/ui-datepicker';
 
 import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
+import { PaginationComponent } from '@ss/common/ui-pagination';
 
 @Component({
     selector: 'ss-complement-invoice-cancel-lines-list',
@@ -31,9 +32,9 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         TranslatePipe,
         ReactiveFormsModule,
         RouterModule,
-       
 
-        DocInfoComponent
+        DocInfoComponent,
+        PaginationComponent
     ]
 })
 export class ComplementInvoiceLinesListComponent extends BaseTransactionLinesListComponent implements OnInit {

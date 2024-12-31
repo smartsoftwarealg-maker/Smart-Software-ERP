@@ -21,17 +21,16 @@ import { MatInputModule } from '@angular/material/input';
 import { MaterialModule } from '@ss/common/api-common';
 import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
 import { PaginationComponent } from '@ss/common/ui-pagination';
-import { TranslatePipe } from '@ss/common/ui-lang';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-service-proforma-line-list',
     standalone: true,
     imports: [
         CommonModule,
-
-
+        TranslatePipe,
+        TranslateDirective,
         MatTableModule,
-
         MatSortModule,
         MatButtonModule,
         MatFormFieldModule,

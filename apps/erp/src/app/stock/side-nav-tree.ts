@@ -176,7 +176,7 @@ export const stockNavTree: SideNavNode = {
             name: 'STOCK_ANOMALIES',
             icon: 'fas fa-tasks',
             route: ABS_INVENTORY_ANOMALIES_URL,
-            accessRights: 'Article'
+            accessRights: 'Store'
         },
         {
             name: 'STOCK_REFERENCE_CORRECTION',
