@@ -5,6 +5,7 @@ const DATE_TIME_SEPARATOR = ' ';
 
 import {Router} from '@angular/router';
 import {
+    APP_ACCOUNTING,
     APP_ASSET,
     APP_DASHBOARD,
     APP_HR, APP_LTM,
@@ -360,6 +361,7 @@ export function getApplicationId(router: Router) {
     const urlList = router.url.split('/');
     const app = urlList[2];
     const MAP = new Map<string, number> ([
+        ['accounting', APP_ACCOUNTING],
         ['dashboard', APP_DASHBOARD],
         ['stock', APP_STOCK],
         ['HR', APP_HR],

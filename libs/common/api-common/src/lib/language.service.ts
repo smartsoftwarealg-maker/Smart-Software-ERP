@@ -463,7 +463,7 @@ export class LanguageService {
     }
 
     parseNumber(input: string): number {
-        const str = input || '0';
+        const str = (input || '0').toString();
         return +str.split(this.currentLanguage.thousandSeparator).join('')
             .split(this.currentLanguage.decimalPoint).join('.');
     }
