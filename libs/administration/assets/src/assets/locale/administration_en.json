@@ -80,5 +80,7 @@
     "WORKFLOW_INBOX":      "Inbox",
     "USER_RECEIVED_MESSAGES": "Received messages",
     "POST_FINAL":             "Post final",
-    "WORKFLOW_CHART": "Chart"
+    "WORKFLOW_CHART": "Chart",
+    "SIGNATURE": "Signature",
+    "SIGNER": "Signer"
 }

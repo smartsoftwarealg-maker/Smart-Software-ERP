@@ -68,12 +68,26 @@ export class ProductLiberationDetailComponent extends BaseEntityDetailComponent<
     }
 
     public override setupForm(b: LTMProductLiberation): UntypedFormGroup {
-        return this.formBuilder.group({
+        const form = this.formBuilder.group({
             id:          [b.id],
             description: [b.description, Validators.required],
             centerId:    [b.centerId || this.#loginSrv.appCtx.center],
             date:        [b.date || new Date(), Validators.required],
+            from:        [b.from, Validators.required],
+            to:          [b.to, Validators.required],
+            signer:      [b.signer]
         });
+        if (!b.id) {
+            const sub = this.entitySrv
+                .getList(0, 3, null, '-d')
+                .subscribe(res => {
+                    if (res.body.length) {
+                        form.controls['description'].setValue(res.body[0].description);
+                    }
+                    sub.unsubscribe();
+                });
+        }
+        return form;
     }
 
     override loadEntity(id: number): Observable<LTMProductLiberation> {

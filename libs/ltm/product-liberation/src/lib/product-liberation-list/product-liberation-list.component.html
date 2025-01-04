@@ -15,6 +15,20 @@
             </mat-cell>
         </ng-container>
 
+        <ng-container matColumnDef="from">
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_FROM</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.from | date:'dd/MM/yyyy'}}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="to">
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_TO</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.to | date:'dd/MM/yyyy'}}
+            </mat-cell>
+        </ng-container>
+
 
         <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
         <mat-row class="selectable" [class.selected]="row.id == selected" (click)="select(row.id)"
