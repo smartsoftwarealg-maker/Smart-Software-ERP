@@ -71,7 +71,7 @@
             </mat-form-field>
 
                 <mat-form-field class="default-50 sm-100">
-                    <mat-label translate>LOGISTICS_ARTICLE_NO</mat-label>
+                    <mat-label translate>COMMON_ARTICLE_NO</mat-label>
                     <input matInput formControlName="fiscalId" type="text" maxlength="70">
                 </mat-form-field>
             </form>
@@ -89,7 +89,7 @@
                          (opened)="panelOpened('articles')">
         <mat-expansion-panel-header>
             <mat-panel-title translate>
-                LOGISTICS_ARTICLES
+                COMMON_ARTICLES
             </mat-panel-title>
         </mat-expansion-panel-header>
         <ss-contract-article-main *ngIf="shownPanel === 'articles'"></ss-contract-article-main>

@@ -13,6 +13,7 @@ import {
 } from '@ss/common/app-archive';
 import {AgentAssetsListComponent} from '@ss/assets-component';
 import { DocumentSourcesComponent } from 'logistics/ui-document-sources';
+import { UiTransactionlineQuantitiesComponent } from '@ss/logistics/quantities';
 
 // common
 export const LOOKUPS_URL = 'lookups';
@@ -950,5 +951,9 @@ export const docInfoRoutes: Routes = [
     {
         path: 'sources',
         component: DocumentSourcesComponent
+    },
+    {
+        path: 'quantities',
+        component: UiTransactionlineQuantitiesComponent
     }
 ];

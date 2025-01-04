@@ -16,6 +16,7 @@ import { DatePickerComponent } from '@ss/common/ui-datepicker';
 
 
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
+import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 
 @Component({
     selector: 'ss-complement-invoice-detail',
@@ -26,14 +27,13 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         CommonModule,
         MaterialModule,
         TranslateDirective,
-       
+
         ReactiveFormsModule,
         RouterModule,
         DatePickerComponent,
-
-
-
-    ],
+        TranslateDirective,
+        UiAutoCompleteComponent
+    ]
 })
 export class ComplementInvoiceDetailComponent extends BaseTransactionDetailComponent implements OnInit {
     constructor(

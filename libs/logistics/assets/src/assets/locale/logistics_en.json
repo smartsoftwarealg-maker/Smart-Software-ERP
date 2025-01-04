@@ -175,5 +175,7 @@
     "DELIVERY_TIME":        "Delivery time",
     "INVOICING":            "Invoicing",
     "ORDER_VOLUME":         "Order volume",
-    "NEXT_CODE":            "Next code"
+    "NEXT_CODE":            "Next code",
+    "QUANTITIES":           "Quantities",
+    "QTY_RETURNED":         "Quantity Returned"
 }

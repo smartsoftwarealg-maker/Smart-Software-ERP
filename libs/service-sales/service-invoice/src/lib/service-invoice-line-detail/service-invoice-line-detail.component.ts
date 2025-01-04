@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import {
     BaseTransactionLinesDetailComponent, DOC_INVOICE
 } from '@ss/logistics/api-transaction';
-import {  DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
+import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -14,20 +14,23 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { TextFieldModule } from '@angular/cdk/text-field';
 import { Service, ServiceArticleService } from '@ss/service-sales/service-articles';
 import { InvoiceLinesService } from '@ss/sales/api-invoice';
+import { TranslateDirective } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-service-invoice-line-detail',
     standalone: true,
-    imports: [CommonModule,
-
-
+    imports: [
+        CommonModule,
         MatButtonModule,
         MatCardModule,
         MatFormFieldModule,
         MatInputModule,
         MaterialModule,
         ReactiveFormsModule,
-        TextFieldModule],
+        TextFieldModule,
+        TranslateDirective,
+        UiAutoCompleteComponent
+    ],
     templateUrl: './service-invoice-line-detail.component.html',
     styleUrls: ['./service-invoice-line-detail.component.css']
 })

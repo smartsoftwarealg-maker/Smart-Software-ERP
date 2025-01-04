@@ -17,11 +17,25 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { MaterialModule } from '@ss/common/api-common';
 import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
+import { PaginationComponent } from '@ss/common/ui-pagination';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-parts-reservation-line-list',
     standalone: true,
-    imports: [CommonModule,  MatButtonModule, MatFormFieldModule, MatInputModule, MatTableModule, ReactiveFormsModule,  MaterialModule, DocInfoComponent],
+    imports: [
+        CommonModule,
+        MatButtonModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatTableModule,
+        ReactiveFormsModule,
+        MaterialModule,
+        DocInfoComponent,
+        PaginationComponent,
+        TranslatePipe,
+        TranslateDirective
+    ],
     styleUrls: ['../../../../../common/assets/src/assets/transac-lines-list.scss'],
     templateUrl: './parts-reservation-line-list.component.html',
 })

@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import {
     BaseTransactionLinesDetailComponent, DOC_INVOICE_CANCELLATION, TransactionLinesService
 } from '@ss/logistics/api-transaction';
-import {  DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
+import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -13,20 +13,21 @@ import { MaterialModule } from '@ss/common/api-common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { TextFieldModule } from '@angular/cdk/text-field';
 import { Service, ServiceArticleService } from '@ss/service-sales/service-articles';
+import { TranslateDirective } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-service-cinvoice-line-detail',
     standalone: true,
     imports: [CommonModule,
-
-
         MatButtonModule,
         MatCardModule,
         MatFormFieldModule,
         MatInputModule,
         MaterialModule,
         ReactiveFormsModule,
-        TextFieldModule],
+        TextFieldModule,
+        UiAutoCompleteComponent,
+        TranslateDirective],
     templateUrl: './service-cinvoice-line-detail.component.html',
     styleUrls: ['./service-cinvoice-line-detail.component.css']
 })
