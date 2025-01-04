@@ -174,5 +174,7 @@
     "INVOICING":            "Facturation",
     "ORDER_VOLUME":         "Volume de commande",
     "NEXT_CODE":            "Code suivant",
-    "PPRICE":               "Cout unitaire"
+    "PPRICE":               "Cout unitaire",
+    "QUANTITIES":           "Quantités",
+    "QTY_RETURNED":         "Quantité retournee"
 }

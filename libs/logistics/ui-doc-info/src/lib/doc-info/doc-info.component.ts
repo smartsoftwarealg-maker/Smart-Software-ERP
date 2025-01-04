@@ -129,6 +129,12 @@ export class DocInfoComponent {
                     url: 'sources',
                     paramsProvided: (p: string[]) => p.includes('detailId')
                 },
+                {
+                    name: 'quantities',
+                    description: 'LOGISTICS_QUANTITIES',
+                    url: 'quantities',
+                    paramsProvided: (p: string[]) => p.includes('detailId')
+                },
             ]
         },
     ];

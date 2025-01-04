@@ -343,6 +343,9 @@
                 "libs/logistics/payment-compensation/src/index.ts"
             ],
             "@ss/logistics/payments": ["libs/logistics/payments/src/index.ts"],
+            "@ss/logistics/quantities": [
+                "libs/logistics/ui-transactionline-quantities/src/index.ts"
+            ],
             "@ss/logistics/ui-account": [
                 "libs/logistics/ui-account/src/index.ts"
             ],

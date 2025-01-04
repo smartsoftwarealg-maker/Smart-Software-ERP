@@ -10,11 +10,23 @@ import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from "@angular/material/input";
 import { ReactiveFormsModule } from "@angular/forms";
 import { TextFieldModule } from "@angular/cdk/text-field";
+import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
+import { TranslateDirective } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-parts-reservation-line-detail',
     standalone: true,
-    imports: [CommonModule,   MatButtonModule, MatCardModule, MatFormFieldModule, MatInputModule, ReactiveFormsModule, TextFieldModule],
+    imports: [
+        CommonModule,
+        MatButtonModule,
+        MatCardModule,
+        MatFormFieldModule,
+        MatInputModule,
+        ReactiveFormsModule,
+        TextFieldModule,
+        UiAutoCompleteComponent,
+        TranslateDirective
+    ],
     templateUrl: './parts-reservation-line-detail.component.html',
     styleUrl: '../../../../../common/assets/src/assets/transac-lines-detail.scss',
 })

@@ -172,5 +172,7 @@
     "DELIVERY_TIME":       "وقت التسليم",
     "INVOICING":           "الفواتير",
     "ORDER_VOLUME":        "حجم الطلب",
-    "NEXT_CODE":           "الزمز التالي"
+    "NEXT_CODE":           "الزمز التالي",
+    "QUANTITIES":           "الكميات",
+    "QTY_RETURNED":         "الكمية المرتجعة"
 }

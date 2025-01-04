@@ -8,18 +8,23 @@ import { DefaultReportService } from '@ss/common/ui-default-report-component';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { PaginatorPersistenceService } from '@ss/common/api-common';
 import { ReservationService } from '../services/reservation.service';
-
-
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
-
 import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
 import { PaginationComponent } from '@ss/common/ui-pagination';
+import { TranslateDirective } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-logistics-parts-reservation',
     standalone: true,
-    imports: [CommonModule, MatSortModule, MatTableModule, DocInfoComponent, PaginationComponent],
+    imports: [
+        CommonModule,
+        MatSortModule,
+        MatTableModule,
+        DocInfoComponent,
+        PaginationComponent,
+        TranslateDirective
+    ],
     templateUrl: './parts-reservation-list.component.html',
     styleUrls: ['../../../../../common/assets/src/assets/transac-list.scss'],
 })

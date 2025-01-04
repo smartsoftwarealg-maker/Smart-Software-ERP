@@ -1,6 +1,7 @@
 <mat-card>
     <mat-card-content>
-        <form *ngIf="form !== null" novalidate [formGroup]="form">
+        @if (form !== null) {
+            <form [formGroup]="form">
 
             <mat-form-field id="number" class="default-50 sm-100">
                 <mat-label translate>STOCK_NUMBER</mat-label>
@@ -62,6 +63,7 @@
                 <textarea matInput formControlName="footer" cdkTextareaAutosize="true"></textarea>
             </mat-form-field>
         </form>
+        }
     </mat-card-content>
 </mat-card>
 
