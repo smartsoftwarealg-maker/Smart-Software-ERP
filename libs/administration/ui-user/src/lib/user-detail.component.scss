@@ -77,3 +77,10 @@ mat-form-field {
     flex-grow: 1;
 }
 
+.image {
+    flex: 1 1 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 8px;
+}

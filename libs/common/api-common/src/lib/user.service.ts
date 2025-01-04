@@ -2,6 +2,8 @@ import {Injectable} from '@angular/core';
 import {Observable, of} from 'rxjs';
 import {HttpService} from './http.service';
 import {Password, User, UserCenter, UserRole} from './models';
+import _default from 'chart.js/dist/plugins/plugin.tooltip';
+import numbers = _default.defaults.animations.numbers;
 
 
 @Injectable({
@@ -52,5 +54,9 @@ export class UserService {
 
     loadRoles(id: number): Observable<UserRole[]> {
         return this.httpSrv.get<UserRole[]>(`/users/${id}/roles`);
+    }
+
+    getSignatureURL(id: number) {
+        return id? `/users/${id}/signature` : null;
     }
 }

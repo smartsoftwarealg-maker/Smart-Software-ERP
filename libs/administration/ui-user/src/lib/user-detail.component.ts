@@ -6,6 +6,7 @@ import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import { LookupsService, RoleService } from '@ss/common/api-lookup';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {
+    HttpService,
     LoginService, MaterialModule,
     Role,
     User,
@@ -16,17 +17,18 @@ import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {CenterService} from '@ss/administration/api-center';
 import { switchMap, tap } from 'rxjs/operators';
 import { MatSelectionListChange, MatSelectionList, MatListOption } from '@angular/material/list';
-import {of} from 'rxjs';
+import { Observable, of } from 'rxjs';
 import {UserListService} from '@ss/common/api-users';
 import { MatCard, MatCardHeader, MatCardContent } from '@angular/material/card';
 import { NgIf, NgClass, NgFor } from '@angular/common';
 import { MatFormField, MatLabel, MatError } from '@angular/material/form-field';
-import { TranslateDirective } from '@ss/common/ui-lang';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 import { MatInput } from '@angular/material/input';
 import { MatCheckbox } from '@angular/material/checkbox';
 import { MatAccordion, MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelTitle } from '@angular/material/expansion';
 import { MatButton, MatMiniFabButton } from '@angular/material/button';
 import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
+import { ImageInputComponent, ImageModel } from '@ss/common/ui-image-input';
 
 
 @Component({
@@ -34,18 +36,47 @@ import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
     styleUrls: ['./user-detail.component.scss'],
     templateUrl: './user-detail.component.html',
     standalone: true,
-    imports: [MaterialModule, MatCard, MatCardHeader, MatCardContent, NgIf, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, MatError, MatCheckbox, MatAccordion, MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelTitle, MatButton, NgClass, MatSelectionList, NgFor, MatListOption, MatMiniFabButton, UiAutoCompleteComponent]
+    imports: [
+        MaterialModule,
+        MatCard,
+        MatCardHeader,
+        MatCardContent,
+        NgIf,
+        FormsModule,
+        ReactiveFormsModule,
+        MatFormField,
+        MatLabel,
+        TranslateDirective,
+        MatInput,
+        MatError,
+        MatCheckbox,
+        MatAccordion,
+        MatExpansionPanel,
+        MatExpansionPanelHeader,
+        MatExpansionPanelTitle,
+        MatButton,
+        NgClass,
+        MatSelectionList,
+        NgFor,
+        MatListOption,
+        MatMiniFabButton,
+        UiAutoCompleteComponent,
+        ImageInputComponent
+    ]
 })
 export class UserDetailComponent extends BaseEntityDetailComponent<User> {
-    private userSrv = inject(UserService);
-    private loginSrv = inject(LoginService);
-    private centerSrv = inject(CenterService);
-    private roleServ = inject(RoleService);
+    #httpSrv = inject(HttpService);
+    #userSrv = inject(UserService);
+    #loginSrv = inject(LoginService);
+    #centerSrv = inject(CenterService);
+    #roleServ = inject(RoleService);
+
     pwd1 = new UntypedFormControl();
     pwd2 = new UntypedFormControl();
     validId = false;
     openedPanel = -1;
-    isManager = this.loginSrv.appCtx?.manager;
+    isManager = this.#loginSrv.appCtx?.manager;
+    imageModel: ImageModel|null = null;
 
     userRoles: UserRole[] = [];
     userCenters: UserCenter[] = [];
@@ -55,13 +86,13 @@ export class UserDetailComponent extends BaseEntityDetailComponent<User> {
 
     roleCtrl = new UntypedFormControl();
     centerCtrl = new UntypedFormControl();
-    roleAutoComplete = new DefaultAutoCompleteModel<Role>(this.roleServ);
-    centerAutoComplete = new DefaultAutoCompleteModel<Role>(this.centerSrv);
+    roleAutoComplete = new DefaultAutoCompleteModel<Role>(this.#roleServ);
+    centerAutoComplete = new DefaultAutoCompleteModel<Role>(this.#centerSrv);
 
     private curUser: User;
 
     constructor(
-        private userListSrv: UserListService,
+        public userListSrv: UserListService,
         public override shellSrv: ShellService,
         public override snackBarSrv: SnackBarService,
         public override route: ActivatedRoute,
@@ -69,11 +100,13 @@ export class UserDetailComponent extends BaseEntityDetailComponent<User> {
         public override confirmationSrv: ConfirmationDialogService,
         public lookupsSrv: LookupsService) {
         super(userListSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'ADMINISTRATION_USERS');
-        this.centerSrv.setParentId(this.loginSrv.appCtx.company);
+        this.#centerSrv.setParentId(this.#loginSrv.appCtx.company);
+        this.imageModel = new ImageModel(this.#httpSrv);
     }
 
 
     public override setupForm(b: User) {
+        this.imageModel.setImageUrl(this.#userSrv.getSignatureURL(b.id), false);
         this.saveButton.visible = this.isManager;
         this.curUser = b;
         this.validId = b.id > 0;
@@ -96,7 +129,7 @@ export class UserDetailComponent extends BaseEntityDetailComponent<User> {
     public updatePassword() {
         if (this.pwd1.value === this.pwd2.value && this.curUser != null) {
             this.curUser.password = this.pwd1.value;
-            this.userSrv
+            this.#userSrv
                 .updatePassword( { id: this.curUser.id, password: this.pwd1.value })
                 .subscribe(() => this.snackBarSrv.showMessage('COMMON_SUCCESS', false, false));
         }
@@ -107,8 +140,8 @@ export class UserDetailComponent extends BaseEntityDetailComponent<User> {
             this.confirmationSrv
                 .confirmDelete()
                 .pipe(switchMap(yes => yes?
-                    this.userSrv.deleteRole(this.curUser.id, this.selectedRole) : of({ count: 0 })),
-                switchMap(res => !res || res['count'] > 0? this.userSrv.loadRoles(this.curUser.id) : of(null)))
+                    this.#userSrv.deleteRole(this.curUser.id, this.selectedRole) : of({ count: 0 })),
+                switchMap(res => !res || res['count'] > 0? this.#userSrv.loadRoles(this.curUser.id) : of(null)))
                 .subscribe(res => {
                     if (res) {
                         this.userRoles = res;
@@ -120,9 +153,9 @@ export class UserDetailComponent extends BaseEntityDetailComponent<User> {
 
     addRole() {
         if (this.roleCtrl.value != null) {
-            this.userSrv
+            this.#userSrv
                 .addRole(this.curUser.id, this.roleCtrl.value)
-                .pipe(switchMap(() => this.userSrv.loadRoles(this.curUser.id)))
+                .pipe(switchMap(() => this.#userSrv.loadRoles(this.curUser.id)))
                 .subscribe(res => {
                     this.userRoles = res;
                     this.snackBarSrv.showSuccessMessage();
@@ -139,8 +172,8 @@ export class UserDetailComponent extends BaseEntityDetailComponent<User> {
             this.confirmationSrv
                 .confirmDelete()
                 .pipe(switchMap(yes => yes?
-                    this.userSrv.deleteCenter(this.curUser.id, this.selectedCenter) : of({ count: 0 })),
-                switchMap(res => !res || res['count'] > 0? this.userSrv.loadCenters(this.curUser.id) : of(null)))
+                    this.#userSrv.deleteCenter(this.curUser.id, this.selectedCenter) : of({ count: 0 })),
+                switchMap(res => !res || res['count'] > 0? this.#userSrv.loadCenters(this.curUser.id) : of(null)))
                 .subscribe(res => {
                     if (res) {
                         this.userCenters = res;
@@ -152,9 +185,9 @@ export class UserDetailComponent extends BaseEntityDetailComponent<User> {
 
     addCenter() {
         if (this.centerCtrl.value != null) {
-            this.userSrv
+            this.#userSrv
                 .addCenter(this.curUser.id, this.centerCtrl.value)
-                .pipe(switchMap(() => this.userSrv.loadCenters(this.curUser.id)))
+                .pipe(switchMap(() => this.#userSrv.loadCenters(this.curUser.id)))
                 .subscribe(res => {
                     this.userCenters = res;
                     this.snackBarSrv.showSuccessMessage();
@@ -168,12 +201,16 @@ export class UserDetailComponent extends BaseEntityDetailComponent<User> {
     }
 
     loadCentersAndRoles() {
-        this.userSrv
+        this.#userSrv
             .loadCenters(this.curUser.id)
             .pipe(
                 tap(res => this.userCenters = res),
-                switchMap(() => this.userSrv.loadRoles(this.curUser.id))
+                switchMap(() => this.#userSrv.loadRoles(this.curUser.id))
             ).subscribe(res => this.userRoles = res);
+    }
 
+    uploadAttachments(id?: number): Observable<any> {
+        this.imageModel.setBackendUrl(this.#userSrv.getSignatureURL(id));
+        return this.imageModel.submit('file');
     }
 }

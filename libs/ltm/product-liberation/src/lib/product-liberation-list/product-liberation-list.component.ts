@@ -47,8 +47,10 @@ import { TranslateDirective } from '@ss/common/ui-lang';
 })
 export class ProductLiberationListComponent extends BaseEntityListComponent<LTMProductLiberation> {
     displayedColumns = [
-      'date',
-      'description'
+        'date',
+        'from',
+        'to',
+        'description'
     ];
 
     constructor(

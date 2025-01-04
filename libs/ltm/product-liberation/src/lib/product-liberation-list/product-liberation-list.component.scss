@@ -1,6 +1,6 @@
 .content_div {
     width: 90%;
-    max-width: 800px;
+    max-width: 1200px;
     margin: 0 auto;
 }
 
@@ -9,11 +9,16 @@
     border-left: gray solid 1px;
     padding-left: 4px;
 }
-
+.mat-column-date,
+.mat-column-from,
+.mat-column-to {
+    flex: 1 1 120px;
+    border-left: gray solid 1px;
+}
 
 mat-table {
     width: 98%;
-    min-width: 600px;
+    min-width: 1000px;
 }
 
 .container {

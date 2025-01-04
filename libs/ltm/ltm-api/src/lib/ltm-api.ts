@@ -157,12 +157,12 @@ export interface LTMTestingLine {
     orderNo?: number;
 }
 
-export interface MLTMTestingLine {
-    id: number;
-    parentId: number; //testing_id
-    testId: number;
-    value: number;
-}
+// export interface MLTMTestingLine {
+//     id: number;
+//     parentId: number; //testing_id
+//     testId: number;
+//     value: number;
+// }
 
 export interface LTMBatch {
     id: number;
@@ -357,5 +357,8 @@ export interface  LTMProductLiberation {
     id: number;
     centerId: number;
     date: Date,
+    from: Date,
+    to: Date,
+    signer?: string;
     description?: string;
 }
