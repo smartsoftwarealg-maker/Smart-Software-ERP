@@ -59,10 +59,9 @@ export class ConstantDetailComponent extends BaseEntityDetailComponent<Constant>
         return this.formBuilder.group({
             id:           [b.id],
             centerId:     [b.centerId || this.loginSrv.appCtx.center],
-            yearlyGrade:  [b.yearlyGrade, Validators.required],
-            rate:         [b.rate, [Validators.required, Validators.minLength(4), Validators.maxLength(4)]],
-            maxRate:      [b.maxRate, [Validators.required, Validators.max(100), Validators.min(1)]],
-            passingGrade: [b.passingGrade, [Validators.required, Validators.min(3), Validators.max(50)]],
+            passingGrade: [b.passingGrade, [Validators.required, Validators.min(50), Validators.max(100)]],
+            rate:         [b.rate, Validators.required],
+            deduction:    [b.deduction, Validators.required],
         });
     }
 

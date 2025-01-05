@@ -20,9 +20,8 @@ export interface Motive {
 export interface Constant {
     id: number;
     centerId: number;
-    yearlyGrade: number;
+    deduction: string;
     passingGrade: number;
-    maxRate: number;
     rate: string;
 }
 
@@ -99,5 +98,6 @@ export interface Deduction {
     id: number;
     firstName: string;
     lastName: string;
+    grade: number;
     deduction: number;
 }

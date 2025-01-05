@@ -83,5 +83,6 @@
     "PRODUCT_LIBERATION":     "تحرير المنتج",
     "VARIANCE":               "الانحراف",
     "DATA_MODE":             "وضع البيانات",
-    "DISTRIBUTION_MODE":     "وضع التوزيع"
+    "DISTRIBUTION_MODE":     "وضع التوزيع",
+    "QUALITY_CHIEF":         "رئيس فرع الجودة"
 }

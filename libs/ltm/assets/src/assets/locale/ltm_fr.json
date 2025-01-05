@@ -83,5 +83,6 @@
     "PRODUCT_LIBERATION":      "libération du produit",
     "VARIANCE":           "Variance",
     "DATA_MODE":          "Mode de données",
-    "DISTRIBUTION_MODE":  "Mode de distribution"
+    "DISTRIBUTION_MODE":  "Mode de distribution",
+    "QUALITY_CHIEF":      "Chef de Sce qualité"
 }

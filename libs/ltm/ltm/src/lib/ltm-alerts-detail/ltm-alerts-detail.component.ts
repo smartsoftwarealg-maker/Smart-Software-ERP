@@ -30,14 +30,15 @@ import { DatePickerComponent } from '@ss/common/ui-datepicker';
     ]
 })
 export class LtmAlertsDetailComponent extends BaseEntityDetailComponent<LTMAbnormalTest> {
-    #actionSrv = inject(LtmCorrectionActionService);
+    // #actionSrv = inject(LtmCorrectionActionService);
     #userSrv  = inject(UserListService);
     #normSrv = inject(LtmNormService);
 
-    actionLookup = new DefaultAutoCompleteModel(this.#actionSrv);
+    // actionLookup = new DefaultAutoCompleteModel(this.#actionSrv);
     userLookup   = new UserLookup(this.#userSrv);
     normLookup = new DefaultAutoCompleteModel(this.#normSrv);
     responsibleLookup = new UserLookup(this.#userSrv);
+    qualityChiefLookup  = new UserLookup(this.#userSrv);
 
     constructor(
         public override entitySrv: LtmAbnormalTestService,
@@ -64,6 +65,7 @@ export class LtmAlertsDetailComponent extends BaseEntityDetailComponent<LTMAbnor
             reportedBy:       [{ value: e.reportedBy, disabled: false }],
             normId:           [{ value: e.normId,  disabled: false }],
             responsibleId:    [{ value: e.responsibleId, disabled: false }],
+            qualityChief:     [{ value: e.qualityChief, disabled: false }],
             actionDate:       [{ value: e.actionDate, disabled: false }],
             validationDate:   [{ value: e.validationDate, disabled: false }],
             reportDate:       [{ value: e.reportDate, disabled: false }],
