@@ -1,7 +1,7 @@
 import { Component, inject, OnInit } from '@angular/core';
 import {BaseChildEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {Blocking} from '../assets-api';
-import {  DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
+import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { MaterialModule } from '@ss/common/api-common';
@@ -26,11 +26,9 @@ import { TranslateDirective } from '@ss/common/ui-lang';
         ReactiveFormsModule,
         MaterialModule,
         TranslateDirective,
-
         DatePickerComponent,
         RouterModule,
-
-
+        UiAutoCompleteComponent
     ]})
 export class AssetBlockingDetailComponent extends BaseChildEntityDetailComponent<Blocking> implements OnInit {
     private typeLookupSrv = inject(AssetBlockingTypeService);
