@@ -53,12 +53,12 @@ export const gicaNavTree: SideNavNode = {
             accessRights: 'GGrade'
         },
 
-        {
-            name: 'PAYROLL_GICA_DEGRADING',
-            icon: 'fa-solid fa-thumbs-down',
-            route: ABS_GICA_DEGRADING_URL,
-            accessRights: 'DGrade'
-        },
+        // {
+        //     name: 'PAYROLL_GICA_DEGRADING',
+        //     icon: 'fa-solid fa-thumbs-down',
+        //     route: ABS_GICA_DEGRADING_URL,
+        //     accessRights: 'DGrade'
+        // },
 
         {
             name: 'PAYROLL_DEDUCTION_REPORT',

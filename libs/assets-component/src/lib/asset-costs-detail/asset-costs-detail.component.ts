@@ -10,7 +10,7 @@ import {LookupsService} from '@ss/common/api-lookup';
 import {AssetCostsService} from '../services/asset-costs.service';
 import {Observable} from 'rxjs';
 import {switchMap} from 'rxjs/operators';
-import {  DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
+import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import {AssetCostsTypeService} from '../services/asset-costs-type.service';
 import { CommonModule } from '@angular/common';
 
@@ -31,12 +31,8 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         CommonModule,
         MaterialModule,
         TranslateDirective,
-       
-
-       
         RouterModule,
-
-
+        UiAutoCompleteComponent
     ]})
 export class AssetCostsDetailComponent extends BaseChildEntityDetailComponent<AssetCost> implements OnInit {
     private costTypeLookupSrv =  inject(AssetCostsTypeService);

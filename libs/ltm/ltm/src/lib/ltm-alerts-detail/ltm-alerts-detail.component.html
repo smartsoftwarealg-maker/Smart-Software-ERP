@@ -67,6 +67,14 @@
             </mat-form-field>
 
             <mat-form-field class="default-50 sm-100">
+                <mat-label translate>LTM_QUALITY_CHIEF</mat-label>
+                <ss-auto-complete matInput
+                                  [model]="qualityChiefLookup"
+                                  formControlName="qualityChief">
+                </ss-auto-complete>
+            </mat-form-field>
+
+            <mat-form-field class="default-50 sm-100">
                 <mat-label translate>LTM_VALIDATION_DATE</mat-label>
                 <ss-date-picker formControlName="validationDate"
                                 [type]="'date'">

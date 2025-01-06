@@ -29,11 +29,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         MaterialModule,
         TranslateDirective,
         TranslatePipe,
-
-       
         RouterModule,
-
-
         PaginationComponent
     ]})
 export class AssetCostsListComponent implements OnInit {

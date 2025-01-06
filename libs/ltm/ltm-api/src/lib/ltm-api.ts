@@ -252,6 +252,7 @@ export interface LTMAbnormalTest {
     actionNo?: string;
     actionDate?: Date;
     responsibleId?: number;
+    qualityChief?: number;
     validationDate?: Date;
     pickPoint?: string;
 }

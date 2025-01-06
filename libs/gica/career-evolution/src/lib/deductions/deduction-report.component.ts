@@ -29,6 +29,7 @@ import { DeductionService } from '../services/deduction.service';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 import { PaginationComponent } from '@ss/common/ui-pagination';
+import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 
 @Component({
     imports: [
@@ -70,6 +71,7 @@ export class DeductionReportComponent implements OnInit {
         'id',
         'firstName',
         'lastName',
+        'grade',
         'deduction',
     ];
     selectedReport: Report | null = null;
@@ -78,11 +80,12 @@ export class DeductionReportComponent implements OnInit {
     dataLength = signal(0);
 
     data$:Observable<Deduction[]> | null = null;
-    year = new FormControl<number>({ value: this.today.getFullYear(), disabled: true });
+    year = new FormControl<number>({ value: this.today.getFullYear(), disabled: false });
 
     refresh() {
         const params = new HttpParams().set('year', this.year.value);
-        this.data$ = this.deductionSrv
+        this.data$ = this
+            .deductionSrv
             .getList(this.paginator.page - 1, this.paginator.pageSize, null, this.deductionSrv.sortColumn, params)
             .pipe(
                 tap(res => {
@@ -105,6 +108,12 @@ export class DeductionReportComponent implements OnInit {
         this.paginator.onChange = () => this.refresh();
         this.shellSrv.setTitle('PAYROLL_DEDUCTION_REPORT');
         this.shellSrv.setGoBackPath('..', this.route);
+        this.year
+            .valueChanges
+            .pipe(distinctUntilChanged(),
+                  debounceTime(300))
+            .subscribe(() => this.refresh());
+        this.refresh();
     }
 
     apply() {
