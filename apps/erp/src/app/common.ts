@@ -47,6 +47,7 @@ export const ORGANIZATIONS_APP_URL = 'organizations';
 export const LTM_APP_URL = 'ltm';
 export const COSTING_APP_URL = 'costing';
 export const CMMS_APP_URL = 'cmms';
+export const CRM_APP_URL = 'crm';
 export const PARK_APP_URL = 'park';
 export const ARCH_VIEWER_URL = 'arch-viewer';
 export const SERVICE_SALES = 'service-sales';
