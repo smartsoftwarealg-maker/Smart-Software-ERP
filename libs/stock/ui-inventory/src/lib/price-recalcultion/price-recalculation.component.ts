@@ -1,7 +1,7 @@
 import { Component, inject, OnInit } from '@angular/core';
 import {Currency, CurrencyService, LookupsService, LotsService, Store} from '@ss/common/api-lookup';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
-import {LoginService} from '@ss/common/api-common';
+import { LoginService, MaterialModule } from '@ss/common/api-common';
 import {ERR, Option, OptionService} from '@ss/logistics/ui-options';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
@@ -31,6 +31,7 @@ interface EvalPrice {
     styleUrls: ['./price-recalculation.component.scss'],
     standalone: true,
     imports: [
+        MaterialModule,
         MatCard,
         MatCardContent,
         NgIf,
@@ -38,7 +39,6 @@ interface EvalPrice {
         ReactiveFormsModule,
         MatFormField,
         MatLabel,
-        TranslateDirective,
         MatSelect,
         NgFor,
         MatOption,
@@ -47,17 +47,16 @@ interface EvalPrice {
         MatButton,
         MatTable,
         MatColumnDef,
-        MatHeaderCellDef,
         MatHeaderCell,
-        MatCellDef,
         MatCell,
-        MatHeaderRowDef,
         MatHeaderRow,
-        MatRowDef,
         MatRow,
         DatePipe,
         TranslatePipe,
-    ],
+        TranslateDirective,
+        MatHeaderCellDef,
+        MatCellDef
+    ]
 })
 export class PriceRecalculationComponent extends BaseEntityDetailComponent<Option> implements OnInit {
     private storeNameSrv =  inject(LotsService);

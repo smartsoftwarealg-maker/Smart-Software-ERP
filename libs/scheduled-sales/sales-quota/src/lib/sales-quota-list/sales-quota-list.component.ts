@@ -12,10 +12,11 @@ import { CommonModule } from '@angular/common';
 
 import { FormControl, ReactiveFormsModule } from "@angular/forms";
 import { DatePickerComponent } from '@ss/common/ui-datepicker';
-import {  DefaultAutoCompleteModel } from "@ss/common/ui-auto-complete";
+import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { Agent, CustomerService } from '@ss/logistics/api-agent';
 import { callback } from 'chart.js/helpers';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
+import { PaginationComponent } from '@ss/common/ui-pagination';
 
 @Component({
     selector: 'ss-sales-quota-list',
@@ -26,11 +27,13 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         CommonModule,
         MaterialModule,
         TranslateDirective,
-       
-        ReactiveFormsModule,
-       
 
-    ],
+        ReactiveFormsModule,
+        UiAutoCompleteComponent,
+        PaginationComponent
+
+
+    ]
 })
 export class SalesQuotaListComponent extends BaseEntityListComponent<Quota> {
     private customerSrv = inject(CustomerService);

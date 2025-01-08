@@ -20,6 +20,7 @@ import {
 import { MatSort, MatSortHeader } from '@angular/material/sort';
 
 import { MatCheckbox } from '@angular/material/checkbox';
+import { PaginationComponent } from '@ss/common/ui-pagination';
 
 @Component({
     selector: 'ss-payments-list',
@@ -40,7 +41,8 @@ import { MatCheckbox } from '@angular/material/checkbox';
         MatTable,
 
         MatCheckbox,
-        MatHeaderCellDef
+        MatHeaderCellDef,
+        PaginationComponent
     ],
     templateUrl: './payments-list.component.html',
     styleUrl: './payments-list.component.css',

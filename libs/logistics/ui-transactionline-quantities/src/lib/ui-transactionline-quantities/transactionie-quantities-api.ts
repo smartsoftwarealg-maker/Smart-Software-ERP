@@ -6,4 +6,5 @@ export interface Quantities {
     qtySatisfied: number;
     qtyInvoiced: number;
     qtyReturned: number;
+    pPrice: number;
 }

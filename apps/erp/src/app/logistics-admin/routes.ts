@@ -195,7 +195,8 @@ export const mainRoutes: Routes = [
         children: [
             {
                 path: LIST_URL,
-                component: PayMethodListComponent
+                component: PayMethodListComponent,
+                canActivate: [loginGuard],
             },
             {
                 path: ':id',
@@ -232,7 +233,8 @@ export const mainRoutes: Routes = [
         children: [
             {
                 path: LIST_URL,
-                component: VatListComponent
+                component: VatListComponent,
+                canActivate: [loginGuard],
             },
             {
                 path: ':id',
@@ -248,7 +250,8 @@ export const mainRoutes: Routes = [
         children: [
             {
                 path: LIST_URL,
-                component: AgentTypeListComponent
+                component: AgentTypeListComponent,
+                canActivate: [loginGuard],
             },
             {
                 path: ':id',
@@ -264,7 +267,8 @@ export const mainRoutes: Routes = [
         children: [
             {
                 path: LIST_URL,
-                component: CompanyTypeListComponent
+                component: CompanyTypeListComponent,
+                canActivate: [loginGuard],
             },
             {
                 path: ':id',
@@ -280,7 +284,8 @@ export const mainRoutes: Routes = [
         children: [
             {
                 path: LIST_URL,
-                component: CurrencyListComponent
+                component: CurrencyListComponent,
+                canActivate: [loginGuard],
             },
             {
                 path: ':id',
@@ -296,7 +301,8 @@ export const mainRoutes: Routes = [
         children: [
             {
                 path: LIST_URL,
-                component: ActivityListComponent
+                component: ActivityListComponent,
+                canActivate: [loginGuard],
             },
             {
                 path: ':id',
@@ -312,7 +318,8 @@ export const mainRoutes: Routes = [
         children: [
             {
                 path: LIST_URL,
-                component: SalesCategoryListComponent
+                component: SalesCategoryListComponent,
+                canActivate: [loginGuard],
             },
             {
                 path: ':id',
@@ -328,7 +335,8 @@ export const mainRoutes: Routes = [
         children: [
             {
                 path: LIST_URL,
-                component: DocumentNumberingListComponent
+                component: DocumentNumberingListComponent,
+                canActivate: [loginGuard],
             },
             {
                 path: ':id',
@@ -344,7 +352,8 @@ export const mainRoutes: Routes = [
         children: [
             {
                 path: LIST_URL,
-                component: UnitListComponent
+                component: UnitListComponent,
+                canActivate: [loginGuard],
             },
             {
                 path: ':id',
