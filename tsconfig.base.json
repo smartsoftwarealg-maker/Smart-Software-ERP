@@ -703,6 +703,7 @@
             "@ss/web-arch/assets": ["libs/web-arch/assets/src/index.ts"],
             "@ss/web-arch/ui": ["libs/web-arch/ui/src/index.ts"],
             "@ss/workflow": ["libs/workflow/src/index.ts"],
+            "@ss/crm/assets": ["libs/crm/assets/src/index.ts"],
             "home.page": ["libs/scheduled-sales/home-page/src/index.ts"],
             "logistics/ui-document-sources": [
                 "libs/logistics/ui-document-sources/src/index.ts"
