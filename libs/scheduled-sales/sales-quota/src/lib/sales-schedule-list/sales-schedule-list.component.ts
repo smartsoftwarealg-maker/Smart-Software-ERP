@@ -6,7 +6,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import {  ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
 import { LoginService, MaterialModule, PaginatorPersistenceService } from "@ss/common/api-common";
-import {  DefaultAutoCompleteModel } from "@ss/common/ui-auto-complete";
+import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import {Agent, CustomerService} from '@ss/logistics/api-agent';
 import { FormControl, ReactiveFormsModule } from "@angular/forms";
 import { CommonModule } from "@angular/common";
@@ -25,11 +25,12 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         CommonModule,
         MaterialModule,
         TranslateDirective,
-       
-        ReactiveFormsModule,
-       
 
-        PaginationComponent
+        ReactiveFormsModule,
+
+
+        PaginationComponent,
+        UiAutoCompleteComponent
     ]
 })
 export class SalesScheduleListComponent extends BaseEntityListComponent<Schedule> {

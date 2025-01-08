@@ -30,7 +30,7 @@ import { Quantities } from './transactionie-quantities-api';
     styleUrl: './ui-transactionline-quantities.component.scss',
 })
 export class UiTransactionlineQuantitiesComponent implements OnInit {
-    displayedColumns = signal(['reference', 'description', 'qtyOrdered', 'qtySatisfied', 'qtyInvoiced',   'qtyReturned']);
+    displayedColumns = signal(['reference', 'description', 'qtyOrdered', 'qtySatisfied', 'qtyInvoiced',   'qtyReturned', 'pPrice']);
     selectedId = signal(0);
     data$: Observable<Quantities[]> = of([]);
 

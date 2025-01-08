@@ -20,7 +20,18 @@ import { DecimalPipe, DatePipe } from '@angular/common';
     templateUrl: './payments-list.component.html',
     styleUrls: ['./payments-list.component.scss'],
     standalone: true,
-    imports: [MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, TranslateDirective, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, PaginationComponent, DecimalPipe, DatePipe]
+    imports: [
+        MatTable,
+        MatColumnDef,
+        MatHeaderCell,
+        TranslateDirective,
+        MatCell,
+        MatHeaderRow,
+        MatRow,
+        PaginationComponent,
+        DecimalPipe,
+        DatePipe
+    ]
 })
 export class PaymentsListComponent extends BaseEntityListComponent<Payment> {
     displayedColumns = [

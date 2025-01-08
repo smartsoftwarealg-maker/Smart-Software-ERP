@@ -13,22 +13,16 @@ import { MatButton } from '@angular/material/button';
 
 import { LoginService } from '@ss/common/api-common';
 import { ScheduledSalesHeaderComponent } from '@scheduled-sales/header';
+import { TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-home.page',
     standalone: true,
     imports: [CommonModule,
-        MatCard,
-        MatCardHeader,
-        MatCardTitle,
-        MatCardContent,
-        MatButton,
-
-        MatCardFooter,
         RouterOutlet,
         RouterLink,
         RouterLinkActive,
-        ScheduledSalesHeaderComponent],
+        ScheduledSalesHeaderComponent, TranslatePipe],
     templateUrl: './home.page.component.html',
     styleUrl: './home.page.component.css',
 })

@@ -131,7 +131,8 @@ export const mainRoutes: Routes = [
         children: [
             {
                 path: LIST_URL,
-                component: AppArchiveDocumentListComponent
+                component: AppArchiveDocumentListComponent,
+                canActivate: [loginGuard]
             },
             {
                 path: ':id',
@@ -312,7 +313,8 @@ export const mainRoutes: Routes = [
         children: [
             {
                 path: LIST_URL,
-                component: DocumentNumberingListComponent
+                component: DocumentNumberingListComponent,
+                canActivate: [loginGuard]
             },
             {
                 path: ':id',
@@ -376,7 +378,8 @@ export const mainRoutes: Routes = [
         children: [
             {
                 path: LIST_URL,
-                component: UserDocumentListComponent
+                component: UserDocumentListComponent,
+                canActivate: [loginGuard]
             },
             {
                 path: ':id',
