@@ -8,7 +8,7 @@ import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import { ActivatedRoute, Router, RouterEvent, RouterOutlet } from '@angular/router';
 import { UntypedFormBuilder, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import {LanguageService, LoginService} from '@ss/common/api-common';
+import { LanguageService, LoginService, MaterialModule } from '@ss/common/api-common';
 import {BudgetTransferService} from '../budget-transfer.service';
 import {BudgetPlanningService} from '@ss/budget/budget-planning';
 import {BudgetService} from '@ss/budget/budget';
@@ -26,6 +26,7 @@ import { DatePickerComponent } from '@ss/common/ui-datepicker';
     standalone: true,
     imports: [
         MatCard,
+        MaterialModule,
         MatCardContent,
         NgIf,
         FormsModule,

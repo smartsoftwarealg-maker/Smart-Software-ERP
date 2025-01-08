@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {UserDocument} from '../workflow-api';
-import {  DefaultAutoCompleteModel, UserLookup } from '@ss/common/ui-auto-complete';
+import { DefaultAutoCompleteModel, UiAutoCompleteComponent, UserLookup } from '@ss/common/ui-auto-complete';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
 import {UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
@@ -29,11 +29,11 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         CommonModule,
         MaterialModule,
         TranslateDirective,
-       
 
 
         OrgChartModule,
-    ],
+        UiAutoCompleteComponent
+    ]
 })
 export class UserDocumentDetailComponent extends BaseEntityDetailComponent<UserDocument> {
     private usersSrv =  inject(UserListService);

@@ -3,7 +3,7 @@ import { BaseEntityDetailComponent } from "@ss/common/ui-base-entity";
 import { DocStatus, UserMessage } from "../workflow-api";
 import { DocStatusService } from "../doc-status.service";
 import { UserListService } from "@ss/common/api-users";
-import {  DefaultAutoCompleteModel, UserLookup } from '@ss/common/ui-auto-complete';
+import { DefaultAutoCompleteModel, UiAutoCompleteComponent, UserLookup } from '@ss/common/ui-auto-complete';
 import { ShellService, SnackBarService } from "@ss/common/ui-shell";
 import { ActivatedRoute } from "@angular/router";
 import { UntypedFormBuilder, UntypedFormGroup, Validators } from "@angular/forms";
@@ -28,8 +28,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         CommonModule,
         MaterialModule,
         TranslateDirective,
-
-
+        UiAutoCompleteComponent,
         OrgChartModule,
     ],
 })

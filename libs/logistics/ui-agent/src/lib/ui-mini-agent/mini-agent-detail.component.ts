@@ -6,6 +6,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 
 import { TranslateDirective } from '@ss/common/ui-lang';
+import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 
 
 @Component({
@@ -18,7 +19,8 @@ import { TranslateDirective } from '@ss/common/ui-lang';
         MaterialModule,
         TranslateDirective,
         ReactiveFormsModule,
-    ],
+        UiAutoCompleteComponent
+    ]
 })
 export class MiniAgentDetailComponent extends AgentDetailComponent {
 }

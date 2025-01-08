@@ -13,7 +13,7 @@ import { ReactiveFormsModule, UntypedFormBuilder, Validators } from "@angular/fo
 import {  ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
 import {LookupsService} from '@ss/common/api-lookup';
 import { LoginService, MaterialModule } from "@ss/common/api-common";
-import {  DefaultAutoCompleteModel } from "@ss/common/ui-auto-complete";
+import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import {Agent, CustomerService} from '@ss/logistics/api-agent';
 import { CommonModule, DatePipe } from "@angular/common";
 import {MatSelectChange} from '@angular/material/select';
@@ -40,7 +40,8 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         ReactiveFormsModule,
         DatePickerComponent,
 
-        TranslatePipe
+        TranslatePipe,
+        UiAutoCompleteComponent
     ]
 })
 export class SalesScheduleDetailComponent extends BaseEntityDetailComponent<Schedule> {

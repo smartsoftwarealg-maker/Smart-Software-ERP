@@ -10,12 +10,9 @@ import { MAIN_PAGE_URL, INDEX_PAGE_URL, CanActivateService, LOGIN_URL } from '@s
 import { ShellComponent } from '@ss/common/ui-shell';
 import { MainPageComponent } from '@ss/common/ui-main-page';
 import { CSPACE_APP_URL } from './app/common';
-import { ThemeSelect } from '@ss/common/ui-theme';
-import { UiErrorHandlerModule } from '@ss/common/ui-error-handler';
-
-import { UiLoginModule } from '@ss/common/ui-login';
-import { UiCenterSelectModule } from '@ss/common/ui-center-select';
 import { AppComponent } from './app/app.component';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { ColorPickerModule } from 'ngx-color-picker';
 
 const routes: Routes = [
     {
@@ -46,11 +43,7 @@ if (environment.production) {
 
 bootstrapApplication(AppComponent, {
     providers: [
-        importProvidersFrom(BrowserModule,
-        // Smart Software modules
-        UiThemeModule, UiErrorHandlerModule,
-        // modules with routes
-        UiLoginModule, UiCenterSelectModule),
+        importProvidersFrom(BrowserModule, MatProgressSpinnerModule,  ColorPickerModule),
         provideAnimations(),
         provideRouter(routes),
     ]

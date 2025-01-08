@@ -9,7 +9,7 @@ import {BudgetCommitmentService} from '../budget-commitment.service';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {Agent, SupplierService} from '@ss/logistics/api-agent';
 import { DecimalPipe, NgIf } from '@angular/common';
-import {LanguageService} from '@ss/common/api-common';
+import { LanguageService, MaterialModule } from '@ss/common/api-common';
 import { MatCard, MatCardContent } from "@angular/material/card";
 import { MatFormField, MatLabel, MatError } from "@angular/material/form-field";
 import { TranslateDirective } from '@ss/common/ui-lang';
@@ -24,6 +24,7 @@ import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
     standalone: true,
     imports: [
         MatCard,
+        MaterialModule,
         MatCardContent,
         NgIf,
         FormsModule,
