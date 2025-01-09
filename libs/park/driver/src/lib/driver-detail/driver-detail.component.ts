@@ -9,8 +9,8 @@ import {
     MaritalStatus
 } from '@ss/common/api-lookup';
 import { AppArchiveMainComponent, AppArchiveService, EMPLOYEE_ARCHIVES } from '@ss/common/app-archive';
-import {  ImageModel } from '@ss/common/ui-image-input';
-import {  DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
+import { ImageInputComponent, ImageModel } from '@ss/common/ui-image-input';
+import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import {
     AbstractControl,
     FormsModule, ReactiveFormsModule,
@@ -62,7 +62,9 @@ import { DriverVehicleService } from '../services/driver-vehicle.service';
         MatSelectModule,
         ReactiveFormsModule,
         DriverLicenseMainComponent,
-        AppArchiveMainComponent
+        AppArchiveMainComponent,
+        ImageInputComponent,
+        UiAutoCompleteComponent
     ],
     templateUrl: './driver-detail.component.html',
     styleUrls: ['./driver-detail.component.css']

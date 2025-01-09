@@ -19,6 +19,7 @@ import { ReactiveFormsModule } from "@angular/forms";
 
 import { PaginationComponent } from '@ss/common/ui-pagination';
 import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
+import { TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-cmms-status-list',
@@ -34,7 +35,8 @@ import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
         MatFormFieldModule,
         MatInputModule,
         MaterialModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        TranslatePipe
     ],
 })
 export class CMMSStatusListComponent extends BaseEntityListComponent<Lookup> {

@@ -10,7 +10,7 @@ import {
     PAYRow,
     TDocument
 } from '@ss/accounting/accounting-api';
-import {  DefaultAutoCompleteModel } from "@ss/common/ui-auto-complete";
+import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import {Subscription} from 'rxjs';
 import {debounceTime, distinctUntilChanged} from 'rxjs/operators';
 import {HttpParams} from '@angular/common/http';
@@ -19,6 +19,7 @@ import { CommonModule } from "@angular/common";
 
 import { DatePickerComponent } from "@ss/common/ui-datepicker";
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
+import { PaginationComponent } from '@ss/common/ui-pagination';
 
 
 
@@ -32,13 +33,13 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         RouterModule,
         MaterialModule,
         TranslateDirective,
-       
+
         ReactiveFormsModule,
+        PaginationComponent,
+        UiAutoCompleteComponent
 
-       
 
-
-    ],
+    ]
 })
 export class AccountingGenerationComponent implements OnInit, OnDestroy {
     private loginSrv = inject(LoginService);

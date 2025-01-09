@@ -1,12 +1,14 @@
+
 import { Component } from '@angular/core';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterOutlet } from '@angular/router';
 import {  ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { ReactiveFormsModule, UntypedFormBuilder } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { MaterialModule } from '@ss/common/api-common';
 import { PhysicianService } from '../services/physician.service';
 import { BaseLookupDetailClass } from './detail-template/base-lookup-detail.class';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-physician-detail',
@@ -16,7 +18,9 @@ import { BaseLookupDetailClass } from './detail-template/base-lookup-detail.clas
     imports: [
         CommonModule,
         MaterialModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        TranslateDirective,
+        RouterOutlet
     ],
 })
 export class PhysicianDetailComponent extends BaseLookupDetailClass {

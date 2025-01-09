@@ -1,7 +1,7 @@
 import { Component, inject, OnInit } from '@angular/core';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {  ImageModel } from "@ss/common/ui-image-input";
-import {  DefaultAutoCompleteModel } from "@ss/common/ui-auto-complete";
+import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import {
     ClassService,
     LookupsService,
@@ -40,7 +40,8 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         TranslatePipe,
         ReactiveFormsModule,
         RouterModule,
-        ColorPickerModule
+        ColorPickerModule,
+        UiAutoCompleteComponent
     ]
 })
 export class ArticleDetailComponent  extends BaseEntityDetailComponent<Article> implements OnInit {

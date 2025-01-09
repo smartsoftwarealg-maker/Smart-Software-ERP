@@ -30,7 +30,11 @@ import { DecimalPipe, DatePipe } from '@angular/common';
         MatRow,
         PaginationComponent,
         DecimalPipe,
-        DatePipe
+        DatePipe,
+        MatHeaderCellDef,
+        MatCellDef,
+        MatRowDef,
+        MatHeaderRowDef
     ]
 })
 export class PaymentsListComponent extends BaseEntityListComponent<Payment> {

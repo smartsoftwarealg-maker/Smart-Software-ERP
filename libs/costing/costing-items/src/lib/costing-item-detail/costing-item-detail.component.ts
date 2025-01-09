@@ -15,23 +15,23 @@ import { ShellService, SnackBarService } from "@ss/common/ui-shell";
 import { CostingItemService } from "../costing-item.service";
 import { AccountAutocompleteModel, AccountService } from "@ss/accounting/api-accounts";
 import { TranslateDirective } from '@ss/common/ui-lang';
+import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 
 @Component({
   selector: "ss-costing-item-detail",
   templateUrl: "./costing-item-detail.component.html",
   styleUrls: ["./costing-item-detail.component.scss"],
   standalone: true,
-  imports: [
-    CommonModule,
-    RouterModule,
-    MaterialModule,
-    TranslateDirective,
-    ReactiveFormsModule,
+    imports: [
+        CommonModule,
+        RouterModule,
+        MaterialModule,
+        TranslateDirective,
+        ReactiveFormsModule,
+        UiAutoCompleteComponent
 
 
-   
-
-  ],
+    ],
   animations: [slideToRight]
 })
 export class CostingItemDetailComponent extends BaseEntityDetailComponent<CItem> implements OnInit {

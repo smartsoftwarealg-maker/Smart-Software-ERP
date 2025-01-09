@@ -12,11 +12,12 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 
 @Component({
     selector: 'ss-vehicle-damage-detail',
     standalone: true,
-    imports: [CommonModule,  DatePickerComponent,  MatButtonModule, MatCardModule, MatFormFieldModule, MatInputModule, ReactiveFormsModule],
+    imports: [CommonModule, DatePickerComponent, MatButtonModule, MatCardModule, MatFormFieldModule, MatInputModule, ReactiveFormsModule, UiAutoCompleteComponent],
     templateUrl: './vehicle-damage-detail.component.html',
     styleUrls: ['./vehicle-damage-detail.component.css']
 })

@@ -110,6 +110,6 @@ export const cSpaceRoutes: Routes = [
         data: { reportBase: 'cspace' }
     },
 
-    {path: '', redirectTo: SS_HOME_PAGE_URL, pathMatch: 'full'},
-    {path: '**', redirectTo: SS_HOME_PAGE_URL, pathMatch: 'full'}
+    {path: '', redirectTo: 'login', pathMatch: 'full'},
+    {path: '**', redirectTo: 'login', pathMatch: 'full'}
 ];

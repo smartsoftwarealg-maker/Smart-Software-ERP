@@ -25,6 +25,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { ArchiveService } from '../services/archive.service';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
+import { PaginationComponent } from '@ss/common/ui-pagination';
 
 @Component({
     selector: 'ss-gica-application-archives',
@@ -47,7 +48,8 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         ReactiveFormsModule,
         MatButton,
         TranslatePipe,
-        TranslateDirective
+        TranslateDirective,
+        PaginationComponent
     ],
     templateUrl: './application-archive.component.html',
     styleUrl: './application-archive.component.css'

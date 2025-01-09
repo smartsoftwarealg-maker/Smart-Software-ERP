@@ -17,6 +17,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { CMMSFunctionService } from '../services/cmms.function.service';
 import { PaginationComponent } from '@ss/common/ui-pagination';
 import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
+import { TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-cmms-function-list',
@@ -32,7 +33,8 @@ import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
         MatFormFieldModule,
         MatInputModule,
         MaterialModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        TranslatePipe
     ],
 })
 export class CMMSFunctionListComponent extends BaseEntityListComponent<Lookup> {

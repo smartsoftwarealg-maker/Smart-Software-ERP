@@ -12,6 +12,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { PhysicianSpecialtyService } from '../services/physician-specialty.service';
 import { PaginationComponent } from '@ss/common/ui-pagination';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-physician-specialty-list',
@@ -22,7 +23,8 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
         CommonModule,
         MaterialModule,
         ReactiveFormsModule,
-
+        TranslateDirective,
+        TranslatePipe,
         PaginationComponent
     ],
 })

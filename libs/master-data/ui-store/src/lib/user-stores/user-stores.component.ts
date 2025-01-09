@@ -6,7 +6,7 @@ import {UserStore} from '@ss/master-data/api-article';
 import {KeepOnToolbar, ShellService, SnackBarService, ToolbarButton} from '@ss/common/ui-shell';
 import { ActivatedRoute, RouterModule } from "@angular/router";
 import { FormControl, FormGroup, ReactiveFormsModule } from "@angular/forms";
-import {  DefaultAutoCompleteModel } from "@ss/common/ui-auto-complete";
+import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import {LotsService, Store} from '@ss/common/api-lookup';
 import {  ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
 import {of, switchMap} from 'rxjs';
@@ -31,10 +31,10 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         TranslatePipe,
         RouterModule,
         ReactiveFormsModule,
-       
 
 
-        PaginationComponent
+        PaginationComponent,
+        UiAutoCompleteComponent
     ]})
 export class UserStoresComponent implements OnInit, OnDestroy {
     private loginSrv =  inject(LoginService);

@@ -38,7 +38,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 })
 export class AssetRecordedInventoryReportComponent implements OnInit {
     private listSrv = inject(AssetRecordedInventoryService);
-
+    isEditable = true;
     documentId = input<AssetInventoryDoc>(null);
     recorded   = input<boolean>(false);
     selectedRow: InventoryAsset|null = null;
@@ -101,5 +101,9 @@ export class AssetRecordedInventoryReportComponent implements OnInit {
     ngOnInit() {
         this.data = [];
         this.refresh();
+    }
+
+    update(e: InventoryAsset) {
+        //TODO: find implementation
     }
 }

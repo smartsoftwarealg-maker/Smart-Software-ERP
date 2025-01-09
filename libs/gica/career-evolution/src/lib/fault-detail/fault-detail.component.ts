@@ -22,14 +22,14 @@ import { MatCard, MatCardContent } from '@angular/material/card';
 import { MatError, MatFormField, MatLabel } from '@angular/material/form-field';
 import { MatInput } from '@angular/material/input';
 import { FaultService } from '../services/fault.service';
-import {  DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
+import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { EmployeeService, PersonAutocompleteClass } from '@ss/employee-services/employee-services';
 import { DatePickerComponent } from '@ss/common/ui-datepicker';
 
 @Component({
     selector: 'ss-gica-fault-detail',
     standalone: true,
-    imports: [CommonModule,   MatCard, MatCardContent, MatError, MatFormField, MatInput, MatLabel, ReactiveFormsModule,  DatePickerComponent],
+    imports: [CommonModule, MatCard, MatCardContent, MatError, MatFormField, MatInput, MatLabel, ReactiveFormsModule, DatePickerComponent, UiAutoCompleteComponent],
     templateUrl: './fault-detail.component.html',
     styleUrl: './fault-detail.component.css'
 })

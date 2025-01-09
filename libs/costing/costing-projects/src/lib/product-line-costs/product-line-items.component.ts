@@ -12,6 +12,7 @@ import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui
 import { CostingItemService } from '@ss/costing/costing-items';
 import { ProductLineCostsService } from '../services/product-line-costs.service';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
+import { PaginationComponent } from '@ss/common/ui-pagination';
 
 @Component({
     selector: 'ss-product-line-items',
@@ -22,7 +23,8 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         MaterialModule,
         TranslateDirective,
         TranslatePipe,
-        UiAutoCompleteComponent
+        UiAutoCompleteComponent,
+        PaginationComponent
     ],
     templateUrl: './product-line-items.component.html',
     styleUrl: './product-line-items.component.css',

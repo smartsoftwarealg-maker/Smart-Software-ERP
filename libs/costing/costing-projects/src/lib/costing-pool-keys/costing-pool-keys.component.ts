@@ -9,6 +9,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { CostingKeyService } from '@ss/costing/costing-keys';
 import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
+import { PaginationComponent } from '@ss/common/ui-pagination';
 
 @Component({
     selector: 'ss-costing-pool-keys',
@@ -19,7 +20,8 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         MaterialModule,
         TranslateDirective,
         TranslatePipe,
-        UiAutoCompleteComponent
+        UiAutoCompleteComponent,
+        PaginationComponent
     ],
     templateUrl: './costing-pool-keys.component.html',
     styleUrl: './costing-pool-keys.component.css',

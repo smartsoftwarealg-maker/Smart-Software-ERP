@@ -7,7 +7,6 @@ import { CommonModule, DecimalPipe } from '@angular/common';
 
 
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
-import { DatePickerComponent } from "@ss/common/ui-datepicker";
 
 
 import { ColorPickerModule } from "ngx-color-picker";
@@ -32,7 +31,6 @@ import { ColorSelectComponent } from '@ss/common/ui-color-select';
         ReactiveFormsModule,
         TranslatePipe,
         RouterModule,
-        ColorSelectComponent,
         ColorPickerModule
     ]
 

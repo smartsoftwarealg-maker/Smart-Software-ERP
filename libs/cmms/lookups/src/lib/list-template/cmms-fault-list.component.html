@@ -18,7 +18,8 @@
         <ng-container matColumnDef="isCheckList">
             <mat-header-cell *matHeaderCellDef >{{ 'CMMS_CHECKLIST' | translate }} ?</mat-header-cell>
             <mat-cell *matCellDef="let e">
-                <mat-checkbox [class.mat-checkbox-disabled]="false" disabled="true"
+                <mat-checkbox [class.mat-checkbox-disabled]="false"
+                              disabled="true"
                               [checked]="e.isChecklist">
                 </mat-checkbox>
             </mat-cell>

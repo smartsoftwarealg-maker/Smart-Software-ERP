@@ -14,7 +14,7 @@ import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import {  ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { DefaultReportService } from '@ss/common/ui-default-report-component';
 import { Observable, of, Subscription, switchMap, tap } from 'rxjs';
-import {  ImageModel } from '@ss/common/ui-image-input';
+import { ImageInputComponent, ImageModel } from '@ss/common/ui-image-input';
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
 import { CommonModule } from '@angular/common';
@@ -36,12 +36,13 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         CommonModule,
         MaterialModule,
         TranslateDirective,
-       
+
         ReactiveFormsModule,
         RouterModule,
 
         SalesUiDeliveryLinesModule,
-        PaginationComponent
+        PaginationComponent,
+        ImageInputComponent
     ]
 })
 export class ShoppingCartDetailComponent extends BaseEntityListComponent<Cartline> {

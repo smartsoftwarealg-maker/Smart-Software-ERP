@@ -15,7 +15,7 @@ type Product =  {
 @Component({
     selector: 'ss-scheduled-sales-products-page',
     standalone: true,
-    imports: [CommonModule, MatCard, MatCardHeader, MatCardTitle, MatCardContent, MatButton,  MatCardFooter, RouterOutlet, RouterLink],
+    imports: [CommonModule, MatCard, MatCardHeader, MatCardTitle, MatCardContent,   MatCardFooter],
     templateUrl: './scheduled-sales-products-page.component.html',
     styleUrl: './scheduled-sales-products-page.component.scss',
 })

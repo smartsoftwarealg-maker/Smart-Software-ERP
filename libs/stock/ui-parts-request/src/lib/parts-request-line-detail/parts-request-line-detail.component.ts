@@ -13,11 +13,12 @@ import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { TextFieldModule } from '@angular/cdk/text-field';
+import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 
 @Component({
     selector: 'ss-parts-request-line-detail',
     standalone: true,
-    imports: [CommonModule,   FormsModule, MatButtonModule, MatCardModule, MatFormFieldModule, MatInputModule, ReactiveFormsModule, TextFieldModule],
+    imports: [CommonModule, FormsModule, MatButtonModule, MatCardModule, MatFormFieldModule, MatInputModule, ReactiveFormsModule, TextFieldModule, UiAutoCompleteComponent],
     templateUrl: './parts-request-line-detail.component.html',
     styleUrls: ['../../../../../common/assets/src/assets/transac-lines-detail.scss'],
 })

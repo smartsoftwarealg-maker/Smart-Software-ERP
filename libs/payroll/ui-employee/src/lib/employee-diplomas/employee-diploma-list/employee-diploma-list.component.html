@@ -21,7 +21,7 @@
         </button>
     }
     @if (selectedId > 0 && rights?.edit) {
-        <button mat-mini-fab (click)="reorder()"
+        <button mat-mini-fab
                 color="accent"
                 *ngIf="isEditable"
                 [matTooltip]="'COMMON_REORDER' | translate">

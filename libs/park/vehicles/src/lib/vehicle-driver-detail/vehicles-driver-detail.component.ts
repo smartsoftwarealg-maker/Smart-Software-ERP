@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { BaseChildEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { FormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { VehicleService } from '../services/vehicle.service';
-import {  DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
+import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { MaterialModule } from '@ss/common/api-common';
 import { DatePickerComponent } from '@ss/common/ui-datepicker';
 import { RouterModule } from '@angular/router';
@@ -23,7 +23,8 @@ import { TranslateDirective } from '@ss/common/ui-lang';
         DatePickerComponent,
         RouterModule,
 
-        DatePickerComponent
+        DatePickerComponent,
+        UiAutoCompleteComponent
     ],
     templateUrl: './vehicles-driver-detail.component.html',
     styleUrls: ['./vehicles-driver-detail.component.css']

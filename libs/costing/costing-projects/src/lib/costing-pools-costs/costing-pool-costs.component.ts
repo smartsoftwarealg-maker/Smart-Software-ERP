@@ -12,6 +12,7 @@ import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui
 import { CostingItemService } from '@ss/costing/costing-items';
 import { CostingPoolsCostsService } from '../services/costing-pools-costs.service';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
+import { PaginationComponent } from '@ss/common/ui-pagination';
 
 @Component({
     selector: 'ss-costing-pools-costs',
@@ -22,7 +23,8 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         MaterialModule,
         TranslateDirective,
         TranslatePipe,
-        UiAutoCompleteComponent
+        UiAutoCompleteComponent,
+        PaginationComponent
     ],
     templateUrl: './costing-pool-costs.component.html',
     styleUrl: './costing-pool-costs.component.css',

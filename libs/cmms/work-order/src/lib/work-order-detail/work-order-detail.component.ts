@@ -25,6 +25,7 @@ import { CMMSAssetReadingService } from '@ss/cmms/asset-readings';
 import { CMMSWorkPermitService } from '../services/c-m-m-s-work-permit.service';
 import { PaginationComponent } from '@ss/common/ui-pagination';
 import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
+import { TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-work-order-detail',
@@ -45,7 +46,8 @@ import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
         MatButtonModule,
         MaterialModule,
         RouterOutlet,
-        UiAutoCompleteComponent
+        UiAutoCompleteComponent,
+        TranslatePipe
     ]
 })
 export class WorkOrderDetailComponent extends CMMSWorkDetail {

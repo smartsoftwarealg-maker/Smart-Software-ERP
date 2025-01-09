@@ -14,7 +14,19 @@ import { TranslatePipe } from '@ss/common/ui-lang';
     templateUrl: './employee-decision-list.component.html',
     styleUrls: ['./employee-decision-list.component.scss'],
     standalone: true,
-    imports: [MatMiniFabButton, MatTooltip, NgIf, MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, TranslateDirective, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, PaginationComponent, AsyncPipe, TranslatePipe]
+    imports: [MatMiniFabButton,
+        MatTooltip,
+        NgIf,
+        MatTable,
+        MatColumnDef,
+        MatHeaderCell,
+        TranslateDirective,
+        MatCell,
+        MatHeaderRow,
+        MatRow,
+        PaginationComponent,
+        AsyncPipe,
+        TranslatePipe, MatRowDef, MatHeaderCellDef, MatCellDef, MatHeaderRowDef]
 })
 export class EmployeeDecisionListComponent extends BaseChildEntityListComponent<Decision> {
     @Input() editable = true;

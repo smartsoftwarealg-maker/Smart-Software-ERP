@@ -10,6 +10,7 @@ import { initialize } from './admobile';
 import { NgIf } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { MessageComponent } from '@ss/common/ui-error-handler';
+import { navBar } from '../../../erp/src/environments/environment';
 
 @Component({
     selector: 'ss-root',
@@ -37,16 +38,19 @@ export class AppComponent implements OnInit {
     }
     ngOnInit() {
         this.loginSrv.customerLogin = LoginType.CUSTOMER;
-        this.shellSrv.setApplicationTitle('Customer Space 1.6');
+        this.shellSrv.setApplicationTitle('Customer Space 1.7');
         this.httpSrv
             .init()
             .pipe(
                 switchMap(() => this.langSrv.init()),
-                switchMap(_ => this.langSrv.addSources(langAssets))
-            ).subscribe(() => {
-                this.loaded = true;
+                switchMap(() => this.langSrv.addSources(langAssets)),
+            ).subscribe({
+            next: () => {
                 this.shellSrv.setSideNavDataSource(cSpaceNavTree);
-            });
+                this.loaded = true;
+            },
+            error: () => this.loginSrv.logout().then()
+        });
 
         if (this.deviceSrv.isMobile()) {
             initialize().then(() => {});
