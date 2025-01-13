@@ -223,6 +223,13 @@ export class CmmsAssetDetailComponent extends BaseEntityDetailComponent<Asset> i
             });
     }
 
+    openReception() {
+        const id = this.form.get('receptionId').value || 0;
+        if (id > 0) {
+            this.router.navigate(['../../asset-receptions', id], {relativeTo: this.route}).then();
+        }
+    }
+
     override loadEntity(id: number): Observable<Asset> {
         this.archiveSrv.appId = AGENT_ARCHIVES;
         this.officeSrv.setParentId(id || 0);

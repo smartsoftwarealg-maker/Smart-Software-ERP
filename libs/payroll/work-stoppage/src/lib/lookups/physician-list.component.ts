@@ -26,7 +26,6 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         TranslateDirective,
         TranslatePipe,
         ReactiveFormsModule,
-
         PaginationComponent
     ]
 })

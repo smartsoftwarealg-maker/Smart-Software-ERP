@@ -14,11 +14,12 @@ import { MatTableModule } from '@angular/material/table';
 import { CMMSRoutingService } from '../services/cmms.routing.service';
 import { CMMSRouting } from '@ss/cmms/cmms-api';
 import { PaginationComponent } from '@ss/common/ui-pagination';
+import { TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-cmms-routing-list',
     standalone: true,
-    imports: [CommonModule, MatCheckboxModule, MatSortModule, MatTableModule, PaginationComponent],
+    imports: [CommonModule, MatCheckboxModule, MatSortModule, MatTableModule, PaginationComponent, TranslatePipe],
     templateUrl: './cmms-routing-list.component.html',
     styleUrls: ['../list-template/cmms-fault-list.component.css'],
 })

@@ -10,9 +10,12 @@ mat-card, .input_div, .size {
 .input_div {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    gap: .5em;
 }
 
+.input_div > mat-form-field {
+    max-width: 7em;
+}
 .btn_div {
     display: flex;
     gap: 1em;
@@ -23,17 +26,24 @@ mat-card, .input_div, .size {
     height: calc(100% - 136px)
 }
 
-.mat-column-id,
-.mat-column-age,
+.mat-column-id  {
+    flex: 1 1 90px;
+    justify-content: center;
+}
+
+.mat-column-deduction,
 .mat-column-rate {
     flex: 1 1 100px;
+    justify-content: flex-end;
 }
 
 .mat-column-firstName,
 .mat-column-lastName {
     flex: 2 1 120px;
 }
-
+mat-table {
+    min-width: 700px;
+}
 .processing_div {
     width: 100%;
     height: 100%;

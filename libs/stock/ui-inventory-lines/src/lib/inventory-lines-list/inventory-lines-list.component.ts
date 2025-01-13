@@ -16,6 +16,7 @@ import { DatePickerComponent } from '@ss/common/ui-datepicker';
 
 import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
+import { PaginationComponent } from '@ss/common/ui-pagination';
 
 @Component({
     selector: 'ss-inventory-lines-list',
@@ -29,9 +30,10 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         TranslatePipe,
         RouterModule,
         ReactiveFormsModule,
-       
 
-        DocInfoComponent
+
+        DocInfoComponent,
+        PaginationComponent
     ]
 })
 export class InventoryLinesListComponent extends BaseTransactionLinesListComponent implements OnInit {

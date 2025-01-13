@@ -23,7 +23,6 @@ import { TranslateDirective } from '@ss/common/ui-lang';
         TranslateDirective,
         ReactiveFormsModule,
         PaginationComponent
-
     ]
 })
 export class AccountListComponent extends BaseEntityListComponent<Account> {

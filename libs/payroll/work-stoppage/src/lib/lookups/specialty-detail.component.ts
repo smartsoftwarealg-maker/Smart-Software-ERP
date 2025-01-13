@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterOutlet } from '@angular/router';
 import {  ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { ReactiveFormsModule, UntypedFormBuilder } from '@angular/forms';
 import { CommonModule } from '@angular/common';
@@ -18,8 +18,10 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         CommonModule,
         MaterialModule,
         TranslateDirective,
-        ReactiveFormsModule
-    ],
+        ReactiveFormsModule,
+        TranslateDirective,
+        RouterOutlet
+    ]
 })
 export class SpecialtyDetailComponent extends BaseLookupDetailClass {
     constructor(

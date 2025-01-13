@@ -6,7 +6,7 @@ import { VehicleFuelConsumptionService } from '../services/vehicle-fuel-consumpt
 import { FormBuilder, ReactiveFormsModule, UntypedFormGroup, Validators } from '@angular/forms';
 import { EmployeeService, PersonAutocompleteClass } from '@ss/employee-services/employee-services';
 import { FuelTypeService } from '@ss/common/api-lookup';
-import {  DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
+import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { DatePickerComponent } from '@ss/common/ui-datepicker';
 
 import { MatButtonModule } from '@angular/material/button';
@@ -28,7 +28,9 @@ import { MaterialModule } from '@ss/common/api-common';
         MatFormFieldModule,
         MatInputModule,
         MaterialModule,
-        ReactiveFormsModule],
+        ReactiveFormsModule,
+        UiAutoCompleteComponent
+    ],
     templateUrl: './vehicle-fuel-consumption-detail.component.html',
     styleUrls: ['./vehicle-fuel-consumption-detail.component.css']
 })

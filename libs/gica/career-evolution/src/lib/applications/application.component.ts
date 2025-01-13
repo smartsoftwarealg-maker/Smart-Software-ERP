@@ -25,6 +25,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { MatProgressSpinner } from '@angular/material/progress-spinner';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
+import { PaginationComponent } from '@ss/common/ui-pagination';
 
 @Component({
     selector: 'ss-gica-applications',
@@ -47,7 +48,9 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         MatLabel,
         ReactiveFormsModule,
         MatButton,
-        MatProgressSpinner],
+        MatProgressSpinner,
+        PaginationComponent
+    ],
     templateUrl: './application.component.html',
     styleUrl: './application.component.css'
 })

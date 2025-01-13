@@ -17,7 +17,7 @@
                 <mat-label translate>LTM_PERIOD</mat-label>
                 <mat-select required [formControl]="period">
                     @for (m of periods; track m.id) {
-                        <mat-option [value]="m.id" translate>{{ m.description }}</mat-option>
+                        <mat-option  translate>{{ m.description }}</mat-option>
                     }
                 </mat-select>
             </mat-form-field>

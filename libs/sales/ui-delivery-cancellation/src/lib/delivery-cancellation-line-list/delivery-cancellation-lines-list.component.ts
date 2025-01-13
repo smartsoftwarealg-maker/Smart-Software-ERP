@@ -16,6 +16,7 @@ import { DatePickerComponent } from '@ss/common/ui-datepicker';
 import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
 import { DeliveryCancellationLinesService } from '../delivery-cancellation-lines.service';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
+import { PaginationComponent } from '@ss/common/ui-pagination';
 
 @Component({
     selector: 'ss-delivery-cancellation-lines-list',
@@ -29,10 +30,11 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         TranslatePipe,
         ReactiveFormsModule,
         RouterModule,
-       
 
-        DocInfoComponent
-    ],
+
+        DocInfoComponent,
+        PaginationComponent
+    ]
 })
 export class DeliveryCancellationLinesListComponent extends BaseTransactionLinesListComponent implements OnInit {
     displayedColumns = [

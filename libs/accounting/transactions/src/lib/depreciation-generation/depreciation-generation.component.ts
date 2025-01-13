@@ -6,7 +6,7 @@ import {DepreciationRow} from './depreciation-row';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import { ActivatedRoute, RouterModule } from "@angular/router";
 import {AccJournalsService, Journal} from '@ss/accounting/accounting-api';
-import {  DefaultAutoCompleteModel } from "@ss/common/ui-auto-complete";
+import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { CommonModule } from "@angular/common";
 
 
@@ -26,13 +26,14 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         RouterModule,
         MaterialModule,
         TranslateDirective,
-       
+
         ReactiveFormsModule,
 
         DatePickerComponent,
+        UiAutoCompleteComponent
 
 
-    ],
+    ]
 })
 export class DepreciationGenerationComponent implements OnInit {
     private fb = inject(UntypedFormBuilder);

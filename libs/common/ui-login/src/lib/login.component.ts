@@ -3,7 +3,6 @@ import { FormBuilder, Validators, FormsModule, ReactiveFormsModule } from '@angu
 import {ABS_INDEX_URL, LoginService, LoginType} from '@ss/common/api-common';
 import {DeviceDetectorService} from 'ngx-device-detector';
 import {Router} from '@angular/router';
-import { ThemeService } from '@ss/common/ui-theme';
 import { ShellService } from '@ss/common/ui-shell';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 import { LanguageSelectComponent } from '@ss/common/ui-lang';
@@ -76,7 +75,7 @@ export class LoginComponent implements OnInit {
     }
 
     public onSubmit() {
-        this.loading.set(true);
+        // this.loading.set(true);
         const tmp = this.form.value;
         this.user.username = tmp.user;
         this.user.password = tmp.pass;

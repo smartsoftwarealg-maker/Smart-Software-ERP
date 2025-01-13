@@ -20,6 +20,7 @@ import { InspectionDetailListComponent } from '../inspection-detail-list/inspect
 import { CMMSInspectionService } from '../services/c-m-m-s-inspection.service';
 import { PaginationComponent } from '@ss/common/ui-pagination';
 import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
+import { TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-inspection-detail',
@@ -28,9 +29,7 @@ import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
     standalone: true,
     imports: [
         CommonModule,
-       
         MatTableModule,
-
         FormsModule,
         MatFormFieldModule,
         ReactiveFormsModule,
@@ -39,9 +38,8 @@ import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
         DatePickerComponent,
         MatButtonModule,
         MaterialModule,
-       
         InspectionDetailListComponent,
-        UiAutoCompleteComponent
+        UiAutoCompleteComponent,
     ]
 })
 export class InspectionDetailComponent extends CMMSWorkDetail implements OnInit {

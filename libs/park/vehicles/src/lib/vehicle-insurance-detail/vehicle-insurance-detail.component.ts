@@ -5,7 +5,7 @@ import { VehicleInsurance } from '../vehicle-api';
 import { VehicleInsuranceService } from '../services/vehicle-insurance.service';
 import { FormBuilder, ReactiveFormsModule, UntypedFormGroup, Validators } from "@angular/forms";
 import { InsuranceAgencyService, InsurancePolicyService } from "@ss/common/api-lookup";
-import {  DefaultAutoCompleteModel } from "@ss/common/ui-auto-complete";
+import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { DatePickerComponent } from "@ss/common/ui-datepicker";
 
 import { MatButtonModule } from "@angular/material/button";
@@ -16,7 +16,7 @@ import { MatInputModule } from "@angular/material/input";
 @Component({
     selector: 'ss-vehicle-insurance-detail',
     standalone: true,
-    imports: [CommonModule,  DatePickerComponent,  MatButtonModule, MatCardModule, MatFormFieldModule, MatInputModule, ReactiveFormsModule],
+    imports: [CommonModule, DatePickerComponent, MatButtonModule, MatCardModule, MatFormFieldModule, MatInputModule, ReactiveFormsModule, UiAutoCompleteComponent],
     templateUrl: './vehicle-insurance-detail.component.html',
     styleUrls: ['./vehicle-insurance-detail.component.css']
 })

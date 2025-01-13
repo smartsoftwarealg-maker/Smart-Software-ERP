@@ -14,11 +14,12 @@ import { PaginatorPersistenceService } from '@ss/common/api-common';
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { Lookup } from '@ss/common/api-lookup';
 import { PaginationComponent } from '@ss/common/ui-pagination';
+import { TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-cmms-checklist',
     standalone: true,
-    imports: [CommonModule, MatCheckboxModule, MatSortModule, MatTableModule, PaginationComponent],
+    imports: [CommonModule, MatCheckboxModule, MatSortModule, MatTableModule, PaginationComponent, TranslatePipe],
     templateUrl: './cmms-checklist-list.component.html',
     styleUrls: ['./cmms-checklist-list.component.css'],
 })

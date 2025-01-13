@@ -11,6 +11,7 @@ import { DatePickerComponent } from '@ss/common/ui-datepicker';
 
 
 import { TranslateDirective } from '@ss/common/ui-lang';
+import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 
 @Component({
     selector: 'ss-invoice-lines-detail',
@@ -23,10 +24,10 @@ import { TranslateDirective } from '@ss/common/ui-lang';
         TranslateDirective,
         ReactiveFormsModule,
         RouterModule,
-       
+        UiAutoCompleteComponent
 
 
-    ],
+    ]
 })
 export class InvoiceCancellationLinesDetailComponent extends BaseTransactionLinesDetailComponent implements OnInit, OnDestroy {
     constructor(public inventoryLinesService: TransactionLinesService) {

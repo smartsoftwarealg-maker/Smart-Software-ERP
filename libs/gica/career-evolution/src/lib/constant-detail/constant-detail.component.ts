@@ -24,6 +24,8 @@ import { ConstantService } from '../services/constant.service';
 import { LoginService, MaterialModule } from '@ss/common/api-common';
 import { Observable } from 'rxjs';
 import { TranslateDirective } from '@ss/common/ui-lang';
+import { CareerMotiveService } from '@ss/common/api-lookup';
+import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 
 @Component({
     selector: 'ss-gica-constant-detail',
@@ -38,13 +40,17 @@ import { TranslateDirective } from '@ss/common/ui-lang';
         MatInput,
         MatLabel,
         ReactiveFormsModule,
-        TranslateDirective
+        TranslateDirective,
+        UiAutoCompleteComponent
     ],
     templateUrl: './constant-detail.component.html',
     styleUrl: './constant-detail.component.css'
 })
 export class ConstantDetailComponent extends BaseEntityDetailComponent<Constant> {
-    private loginSrv = inject(LoginService);
+    #careerMotiveSrv = inject(CareerMotiveService);
+    #loginSrv = inject(LoginService);
+
+    motiveLookup = new DefaultAutoCompleteModel(this.#careerMotiveSrv);
 
     constructor(
         public override entitySrv: ConstantService,
@@ -57,15 +63,16 @@ export class ConstantDetailComponent extends BaseEntityDetailComponent<Constant>
     }
     public override setupForm(b: Constant): UntypedFormGroup {
         return this.formBuilder.group({
-            id:           [b.id],
-            centerId:     [b.centerId || this.loginSrv.appCtx.center],
-            passingGrade: [b.passingGrade, [Validators.required, Validators.min(50), Validators.max(100)]],
-            rate:         [b.rate, Validators.required],
-            deduction:    [b.deduction, Validators.required],
+            id:              [b.id],
+            centerId:        [b.centerId || this.#loginSrv.appCtx.center],
+            passingGrade:    [b.passingGrade, [Validators.required, Validators.min(50), Validators.max(100)]],
+            rate:            [b.rate, Validators.required],
+            deduction:       [b.deduction, Validators.required],
+            promotionMotive: [b.promotionMotive]
         });
     }
 
     override loadEntity(id: number): Observable<Constant> {
-        return super.loadEntity(this.loginSrv.appCtx.center);
+        return super.loadEntity(this.#loginSrv.appCtx.center);
     }
 }

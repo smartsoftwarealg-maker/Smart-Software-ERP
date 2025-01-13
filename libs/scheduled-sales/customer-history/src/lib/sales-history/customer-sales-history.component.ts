@@ -30,12 +30,9 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
         CommonModule,
         MaterialModule,
         TranslateDirective,
-        TranslatePipe,
         ReactiveFormsModule,
         RouterModule,
         DatePickerComponent,
-        UiStockInfoComponent,
-        ColorSelectComponent,
         ColorPickerModule,
         PaginationComponent
     ]

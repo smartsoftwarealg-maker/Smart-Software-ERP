@@ -9,7 +9,7 @@ export const GICA_ARCHIVES = '/archives';
 export const GICA_CATEGORIES = '/gica-careers/categories';
 export const GICA_CRITERIA = '/criteria';
 export const GICA_WEIGHTS = '/gica-careers/weights';
-export const GICA_DEDUCTIONS = '/gica-careers/deductions';
+export const GICA_EVOLUTIONS = '/gica-careers/evolutions';
 
 export interface Motive {
     id: number;
@@ -23,6 +23,7 @@ export interface Constant {
     deduction: string;
     passingGrade: number;
     rate: string;
+    promotionMotive?: number;
 }
 
 export interface Fault {

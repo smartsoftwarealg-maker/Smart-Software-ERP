@@ -2,7 +2,6 @@ import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { CustomerComplaint } from '../customer-complaint.class';
-import { BankService } from '@ss/administration/api-bank';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DefaultReportService } from '@ss/common/ui-default-report-component';
@@ -11,21 +10,34 @@ import { LoginService, PaginatorPersistenceService } from '@ss/common/api-common
 import { CustomerComplaintsService } from '../customer-complaint.service';
 
 import {
-    MatCell,
-    MatCellDef,
-    MatColumnDef,
-    MatHeaderCell, MatHeaderCellDef,
-    MatHeaderRow,
-    MatHeaderRowDef, MatRow, MatRowDef, MatTable
+    MatCell, MatCellDef, MatColumnDef,
+    MatHeaderCell, MatHeaderCellDef, MatHeaderRow, MatHeaderRowDef, MatRow, MatRowDef, MatTable
 } from '@angular/material/table';
 import { MatSort, MatSortHeader } from '@angular/material/sort';
 import { PaginationComponent } from '@ss/common/ui-pagination';
+import { TranslateDirective } from '@ss/common/ui-lang';
 
 
 @Component({
     selector: 'ss-customer-complaints-list',
     standalone: true,
-    imports: [CommonModule, MatCell, MatCellDef, MatColumnDef, MatHeaderCell, MatHeaderRow, MatHeaderRowDef, MatRow, MatRowDef, MatSort, MatSortHeader, MatTable, MatHeaderCellDef, PaginationComponent],
+    imports: [
+        CommonModule,
+        MatCell,
+        MatColumnDef,
+        MatHeaderCell,
+        MatHeaderRow,
+        MatRow,
+        MatSort,
+        MatSortHeader,
+        MatTable,
+        PaginationComponent,
+        MatHeaderCellDef,
+        MatCellDef,
+        MatHeaderRowDef,
+        MatRowDef,
+        TranslateDirective
+    ],
     templateUrl: './customer-complaints-list.component.html',
     styleUrl: './customer-complaints-list.component.css',
 })

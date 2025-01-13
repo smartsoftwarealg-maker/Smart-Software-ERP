@@ -11,6 +11,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { SocialActivityService } from '../services/social-activity.service';
 import { PaginationComponent } from '@ss/common/ui-pagination';
 import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-activities-list',
@@ -21,7 +22,9 @@ import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
         CommonModule,
         MaterialModule,
         PaginationComponent,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        TranslateDirective,
+        TranslatePipe,
     ],
 })
 export class ActivityListComponent extends BaseEntityListComponent<Lookup> {

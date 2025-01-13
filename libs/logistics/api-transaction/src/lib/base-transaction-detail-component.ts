@@ -30,9 +30,11 @@ import { DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
 import { TransactionLinesClass } from './transaction-lines.class';
 import { BaseTransactionLinesListComponent } from './base-transaction-lines-list.component';
 import { PurchaseContractService, SalesContractService } from '@ss/logistics/contracts';
+import { OptionService } from '@ss/logistics/ui-options';
 
 @Directive()
 export abstract class BaseTransactionDetailComponent extends BaseEntityDetailComponent<Transaction> implements OnInit {
+    private optionSrv = inject(OptionService);
     private agentSrv = inject(AgentService);
     private payMethodSrv = inject(PayMethodService);
     private usersSrv = inject(UserListService);
@@ -226,7 +228,7 @@ export abstract class BaseTransactionDetailComponent extends BaseEntityDetailCom
         this.importBtn.disabled = this.requireAgentToImportDocument() && (b.agent === null || b.agent === undefined);
         this.detailSrv.editable = this.isEditable;
         this.transaction = b;
-        return this.formBuilder.group({
+        const form = this.formBuilder.group({
             id: [b.id],
             document: [b.document || 0],
             centerId: [0 || this.loginSrv.appCtx.center],
@@ -237,7 +239,7 @@ export abstract class BaseTransactionDetailComponent extends BaseEntityDetailCom
             payMethod: [b.payMethod],
             header: [b.header],
             footer: [b.footer],
-            currency: [b.currency || 10],
+            currency: [b.currency || 1],
             currencyRate: [b.currencyRate || 1],
             discountDescription: [b.discountDescription],
             fixedDiscount: [b.fixedDiscount || 0.0],
@@ -256,6 +258,10 @@ export abstract class BaseTransactionDetailComponent extends BaseEntityDetailCom
             licenseIssuer: [b.licenseIssuer],
             plateNumber: [b.plateNumber]
         });
+        this.optionSrv
+            .get(this.loginSrv.appCtx.center)
+            .subscribe(res => form.controls['currency'].setValue(res.defaultCurrency || 10));
+        return form;
     }
 
     get isManager() {

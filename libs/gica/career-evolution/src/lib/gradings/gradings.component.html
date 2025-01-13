@@ -2,7 +2,7 @@
     <div class="ctrl_div">
         <mat-form-field class="year">
             <mat-label translate>COMMON_YEAR</mat-label>
-            <input matInput [formControl]="yearCtrl" type="number" min="2023" max="2024">
+            <input matInput [formControl]="yearCtrl" type="number" min="currYear - 3" max="currYear">
         </mat-form-field>
         <mat-form-field class="grade">
             <mat-label translate>PAYROLL_GRADE</mat-label>
@@ -54,9 +54,9 @@
                                 style="display: inline-block;">
                 </ss-image-input>
                 <div class="employee-details">
-                    <div style="font-size: 1.5em; text-align: start; font-weight: bolder">{{ emp().id }}</div>
-                    <div style="font-weight: bold;">{{ emp().lastName }} {{ emp().firstName }}</div>
-                    <div style="font-size: 0.7em">{{ emp().post }}</div>
+                    <div style="font-size: 1.5em; text-align: start; font-weight: bolder">{{ emp()?.id }}</div>
+                    <div style="font-weight: bold;">{{ emp()?.lastName }} {{ emp()?.firstName }}</div>
+                    <div style="font-size: 0.7em">{{ emp()?.post }}</div>
                 </div>
             </div>
         }
@@ -70,16 +70,27 @@
                         <legend>{{ labels[i] }}</legend>
                         <mat-form-field>
                             <mat-label>{{ 'PAYROLL_GRADE' | translate }} 1</mat-label>
-                            <input matInput formControlName="grade1" type="number" (click)="$event.target.select()">
+                            <input matInput
+                                   #input1
+                                   formControlName="grade1"
+                                   type="number"
+                                   (click)="input1.select()">
                         </mat-form-field>
                         <mat-form-field>
                             <mat-label>{{ 'PAYROLL_GRADE' | translate }} 2</mat-label>
-                            <input matInput formControlName="grade2" type="number" (click)="$event.target.select()">
+                            <input matInput
+                                   #input2
+                                   formControlName="grade2"
+                                   type="number"
+                                   (click)="input2.select()">
                         </mat-form-field>
                         <mat-form-field>
                             <mat-label>{{ 'PAYROLL_GRADE' | translate }} 3</mat-label>
-                            <input matInput formControlName="finalGrade" type="number"
-                                   (click)="$event.target.select()">
+                            <input matInput
+                                   formControlName="finalGrade"
+                                   type="number"
+                                   #input3
+                                   (click)="input3.select()">
                         </mat-form-field>
                     </fieldset>
                 }

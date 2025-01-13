@@ -9,10 +9,9 @@ import { LanguageService } from '@ss/common/api-common';
 @Component({
     selector: 'ss-scheduled-sales-main-page',
     standalone: true,
-    imports: [CommonModule, MatCard, MatCardHeader, MatCardTitle, MatCardContent, MatButton,  MatCardFooter, RouterOutlet, RouterLink],
+    imports: [CommonModule, MatCard, MatCardContent],
     templateUrl: './scheduled-sales-main-page.component.html',
     styleUrl: './scheduled-sales-main-page.component.scss',
 })
 export class ScheduledSalesMainPageComponent {
-    languageSrv = inject(LanguageService);
 }

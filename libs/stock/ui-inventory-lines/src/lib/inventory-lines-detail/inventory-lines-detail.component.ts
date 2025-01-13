@@ -10,6 +10,7 @@ import { DatePickerComponent } from '@ss/common/ui-datepicker';
 
 import { InventoryLinesService } from "@ss/stock/api-inventory-lines";
 import { TranslateDirective } from '@ss/common/ui-lang';
+import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 
 @Component({
     selector: 'ss-inventory-lines-detail',
@@ -22,9 +23,10 @@ import { TranslateDirective } from '@ss/common/ui-lang';
         TranslateDirective,
         RouterModule,
         ReactiveFormsModule,
-       
+        UiAutoCompleteComponent
 
-    ],
+
+    ]
 })
 export class InventoryLinesDetailComponent extends BaseTransactionLinesDetailComponent implements OnInit, OnDestroy {
     constructor(public inventoryLinesSrv: InventoryLinesService) {

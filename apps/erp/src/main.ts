@@ -42,5 +42,5 @@ bootstrapApplication(AppComponent, {
         { provide: ErrorHandler, useClass: CustomErrorHandler }
     ]
 }).catch((err) => {
-        console.error('main.ts (line 13): ', err);
+        console.error('main.ts (line 45): ', err);
     });

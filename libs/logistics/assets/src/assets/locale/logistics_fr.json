@@ -176,5 +176,6 @@
     "NEXT_CODE":            "Code suivant",
     "PPRICE":               "Cout unitaire",
     "QUANTITIES":           "Quantités",
-    "QTY_RETURNED":         "Quantité retournee"
+    "QTY_RETURNED":         "Quantité retournee",
+    "CHARGE":               "Frais ou remise si négatif"
 }

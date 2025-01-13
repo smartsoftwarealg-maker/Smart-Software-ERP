@@ -1,5 +1,6 @@
 import {
-    Component, DestroyRef,
+    Component,
+    DestroyRef,
     inject,
     input,
     OnDestroy,
