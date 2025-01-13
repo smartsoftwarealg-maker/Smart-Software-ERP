@@ -50,11 +50,7 @@ import { TranslatePipe } from '@ss/common/ui-lang';
         PaginationComponent,
         DocInfoComponent,
         DecimalPipe,
-        TranslatePipe,
-        MatHeaderCellDef,
-        MatCellDef,
-        MatHeaderRowDef,
-        MatRowDef
+        TranslatePipe
     ]
 })
 export class PurchaseOrderLinesListComponent extends  BaseTransactionLinesListComponent implements OnInit {
