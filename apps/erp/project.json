@@ -120,6 +120,11 @@
                     },
                     {
                         "glob": "**/*",
+                        "input": "libs/crm/assets/src/assets",
+                        "output": "assets"
+                    },
+                    {
+                        "glob": "**/*",
                         "input": "libs/park/assets/src/assets",
                         "output": "assets"
                     },
