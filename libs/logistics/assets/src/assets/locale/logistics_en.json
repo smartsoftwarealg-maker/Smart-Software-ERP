@@ -177,5 +177,6 @@
     "ORDER_VOLUME":         "Order volume",
     "NEXT_CODE":            "Next code",
     "QUANTITIES":           "Quantities",
-    "QTY_RETURNED":         "Quantity Returned"
+    "QTY_RETURNED":         "Quantity Returned",
+    "CHARGE":               "Charge or discount if negative"
 }

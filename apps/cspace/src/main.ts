@@ -5,7 +5,7 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { environment } from './environments/environment';
 import { BrowserModule, bootstrapApplication } from '@angular/platform-browser';
 import { provideAnimations } from '@angular/platform-browser/animations';
-import { provideRouter, Routes, withComponentInputBinding } from '@angular/router';
+import { provideRouter, Routes, withComponentInputBinding, withDebugTracing } from '@angular/router';
 import {
     MAIN_PAGE_URL,
     INDEX_PAGE_URL,
@@ -22,7 +22,6 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { ColorPickerModule } from 'ngx-color-picker';
 import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { CustomErrorHandler } from '@ss/common/ui-error-handler';
-import { appRoutes } from '../../erp/src/environments/environment';
 import { LoginComponent } from '@ss/common/ui-login';
 import { CenterSelectComponent } from '@ss/common/ui-center-select';
 import { Auth2FAConfirmationComponent, PasswordUpdateComponent } from '@ss/auth-2fa';
@@ -33,9 +32,16 @@ const routes: Routes = [
         component: ShellComponent,
         children: [
             {
+                path: INDEX_PAGE_URL,
+                component: MainPageComponent,
+                canActivate: [CanActivateService]
+            },
+            {
                 path: CSPACE_APP_URL,
                 loadChildren: () => import("./app/cspace/c-space.module").then(m => m.CSpaceModule)
-            }
+            },
+            { path: '', redirectTo: INDEX_PAGE_URL, pathMatch: 'full' },
+            { path: '**', redirectTo: INDEX_PAGE_URL, pathMatch: 'full' }
         ]
     },
     { path: LOGIN_URL, component: LoginComponent },
@@ -77,7 +83,7 @@ bootstrapApplication(AppComponent, {
         importProvidersFrom(BrowserModule, MatProgressSpinnerModule,  ColorPickerModule),
         provideAnimations(),
         provideHttpClient(withInterceptorsFromDi()),
-        provideRouter(routes, withComponentInputBinding()),
+        provideRouter(routes, withComponentInputBinding()), //, withDebugTracing()
         { provide: ErrorHandler, useClass: CustomErrorHandler }
     ]
 })

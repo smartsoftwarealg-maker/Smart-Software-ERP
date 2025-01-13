@@ -14,4 +14,4 @@ export * from './lib/criteria-detail/criteria-detail.component';
 export * from './lib/services/criterion.service';
 export * from './lib/absence-weight-detail/absence-weight-detail.component';
 export * from './lib/absence-weight-list/absence-weight-list.component';
-export * from './lib/deductions/deduction-report.component';
+export * from './lib/deductions/evolution.component';

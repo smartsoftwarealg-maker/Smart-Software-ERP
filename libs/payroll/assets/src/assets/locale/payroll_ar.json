@@ -199,6 +199,9 @@
     "WEIGHTS":               "أوزان",
     "DISCIPLINE":            "تأديب",
     "ABSENCE":               "غياب",
-    "DEDUCTION_REPORT":      "الخصوم",
-    "CAREER_CRITERIA":       "معايير"
+    "EVOLUTION_REPORT":      "الخصوم",
+    "CAREER_CRITERIA":       "معايير",
+    "GRDE":                  "درجة",
+    "DEDUCTION_FORMULA":     "نموذج الخصم",
+    "PROMOTION_MOTIVE":      "دوافع الترقية"
 }

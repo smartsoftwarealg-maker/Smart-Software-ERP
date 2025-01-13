@@ -84,7 +84,6 @@ export class GradingsComponent implements OnInit {
     };
 
     private httpSrv = inject(HttpService);
-    private CUR_YEAR = new Date().getFullYear() - 1;
     private loginSrv = inject(LoginService);
     private employeeSrv = inject(EmployeeService);
     private subordinateSrv = inject(SubordinateService);
@@ -104,8 +103,9 @@ export class GradingsComponent implements OnInit {
 
     subordinateLookup  = new PersonAutocompleteClass(this.subordinateSrv);
     // employeeCtrl = new FormControl<number>(0);
-    yearCtrl = new FormControl<number>({ value: this.CUR_YEAR, disabled: false }, [Validators.min(2023)]);
-    gradeCtrl = new FormControl<number>(1 );
+    readonly currYear = new Date().getFullYear() - 1;
+    yearCtrl = new FormControl<number>({ value: this.currYear, disabled: false }, [Validators.min(this.currYear - 3)]);
+    gradeCtrl = new FormControl<number>(1);
     searchCtrl = new FormControl<string>('');
 
     form = this.fb.group({
@@ -122,7 +122,7 @@ export class GradingsComponent implements OnInit {
         this.imageModel.readOnly = true;
         this.destroyRef.onDestroy(() => this.subscriptions.forEach(s => s.unsubscribe()));
         this.subordinateLookup.onObjectSelected = e => this.refresh(e);
-        this.shellSrv.setTitle('PAYROLL_GICA_GRADING');
+        this.shellSrv.setTitle('PAYROLL_GRADING');
         this.shellSrv.setGoBackPath('../', this.route);
         this.shellSrv.setButtons([this.refreshButton, this.saveButton, ]);
 

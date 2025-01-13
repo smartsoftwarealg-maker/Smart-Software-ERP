@@ -43,10 +43,8 @@ import { CommonModule } from '@angular/common';
 
 
 
-import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 import { ChildAttributesComponent } from '@ss/custom-attributes';
-import { nextValueFrom } from 'nx/src/adapter/rxjs-for-await';
 
 @Component({
     selector: 'ss-agent-detail',
@@ -381,7 +379,6 @@ export class AgentDetailComponent extends BaseEntityDetailComponent<Agent> imple
         })
     }
 
-    protected readonly nextValueFrom = nextValueFrom;
 }
 
 class CustomerLookup extends DefaultAutoCompleteModel<Lookup> {

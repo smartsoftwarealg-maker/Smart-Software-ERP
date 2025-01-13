@@ -14,7 +14,7 @@
                 <mat-error *ngIf="form.controls['to'].invalid" translate >COMMON_FIELD_REQUIRED</mat-error>
             </mat-form-field>
 
-            <mat-form-field id="rate" class="default-50 sm-100">
+            <mat-form-field id="rate" class="default-100">
                 <mat-label translate>COMMON_RATE</mat-label>
                 <input matInput formControlName="rate" type="number" autofocus required min="0" max="10">
                 <mat-error *ngIf="form.controls['rate'].invalid" translate >COMMON_FIELD_REQUIRED</mat-error>

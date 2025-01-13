@@ -2,7 +2,7 @@
     <div class="ctrl_div">
         <mat-form-field class="year">
             <mat-label translate>COMMON_YEAR</mat-label>
-            <input matInput [formControl]="yearCtrl" type="number" min="2023" max="2024">
+            <input matInput [formControl]="yearCtrl" type="number" min="currYear - 3" max="currYear">
         </mat-form-field>
         <mat-form-field class="grade">
             <mat-label translate>PAYROLL_GRADE</mat-label>

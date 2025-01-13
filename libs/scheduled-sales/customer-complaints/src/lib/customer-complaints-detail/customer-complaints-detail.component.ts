@@ -10,10 +10,8 @@ import { CustomerComplaintsService } from '../customer-complaint.service';
 import { ComplaintTypeService } from '../complaint-type.service';
 import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 
-import { MatCard, MatCardContent } from '@angular/material/card';
 import { MatError, MatFormField, MatFormFieldModule, MatLabel } from '@angular/material/form-field';
 import { MatInput, MatInputModule } from '@angular/material/input';
-import { CdkTextareaAutosize } from '@angular/cdk/text-field';
 import { LoginService, MaterialModule } from '@ss/common/api-common';
 import { MatRadioButton, MatRadioGroup, MatRadioModule } from '@angular/material/radio';
 import { DatePickerComponent } from '@ss/common/ui-datepicker';
@@ -23,14 +21,14 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatOptionModule } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
+import { TranslateDirective } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-customer-complaints-detail',
     standalone: true,
     imports: [
         CommonModule,
-
-
+        MaterialModule,
         MatButtonModule,
         MatCheckboxModule,
         MatExpansionModule,
@@ -41,7 +39,8 @@ import { MatSelectModule } from '@angular/material/select';
         MatSelectModule,
         MaterialModule,
         ReactiveFormsModule,
-        UiAutoCompleteComponent
+        UiAutoCompleteComponent,
+        TranslateDirective
     ],
     templateUrl: './customer-complaints-detail.component.html',
     styleUrl: './customer-complaints-detail.component.css',

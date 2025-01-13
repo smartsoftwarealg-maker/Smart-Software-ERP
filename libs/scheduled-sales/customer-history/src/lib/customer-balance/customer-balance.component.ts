@@ -87,7 +87,7 @@ export class CustomerBalanceComponent implements OnInit {
                     const value = {
                         "debit":  res.debit?.toLocaleString()||'0',
                         "credit": res.credit?.toLocaleString()||'0',
-                        "balance": (res?.credit||0 - res?.debit||0).toLocaleString()
+                        "balance": ((res?.credit||0) - (res?.debit||0)).toLocaleString()
                     };
                     this.balanceForm.setValue(value);
                 }),

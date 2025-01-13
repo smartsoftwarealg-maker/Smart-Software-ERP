@@ -37,6 +37,14 @@
                         <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
                     }
                 </mat-form-field>
+
+                <mat-form-field class="default-100">
+                    <mat-label translate>PAYROLL_PROMOTION_MOTIVE</mat-label>
+                    <ss-auto-complete matInput
+                                      [model]="motiveLookup"
+                                      formControlName="promotionMotive">
+                    </ss-auto-complete>
+                </mat-form-field>
             </form>
 
         </mat-card-content>
