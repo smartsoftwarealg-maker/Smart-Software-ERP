@@ -36,6 +36,7 @@ import { hrNavTree } from '../app/hr/side-nav-tree';
 import { payrollNavTree } from '../app/payroll/side-nav-tree';
 import { treasuryNavTree } from '../app/treasury/side-nav-tree';
 import { assetsNavTree } from '../app/assets-app/side-nav-tree';
+import { salesNavTree } from '../app/sales/side-nav-tree';
 
 export const environment = {
     production: true,
@@ -50,6 +51,7 @@ export const navBar = [
     assetsNavTree,
     socialNavTree,
     ssalesNavTree,
+    salesNavTree,
     financeNavTree,
     hrLookupNavTree,
     hrNavTree,
@@ -103,6 +105,10 @@ export const appRoutes: Routes =  [
     {
         path: ADMINISTRATION_APP_URL,
         loadChildren: () => import('../app/administration/administration.module').then(m => m.AdministrationModule)
+    },
+    {
+        path: SALES_APP_URL,
+        loadChildren: () => import('../app/sales/sales.module').then(m => m.SalesModule)
     },
     {
         path: SERVICE_SALES,
