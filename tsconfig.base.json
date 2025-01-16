@@ -263,6 +263,7 @@
             "@ss/costing/costing-utils": [
                 "libs/costing/costing-utils/src/index.ts"
             ],
+            "@ss/crm/assets": ["libs/crm/assets/src/index.ts"],
             "@ss/custom-attributes": ["libs/custom-attributes/src/index.ts"],
             "@ss/dashboard": ["libs/dashboard/src/index.ts"],
             "@ss/employee-services/employee-services": [
@@ -461,6 +462,9 @@
             ],
             "@ss/purchases/payment-orders": [
                 "libs/purchases/payment-orders/src/index.ts"
+            ],
+            "@ss/purchases/preiceRequest": [
+                "libs/purchases/price-request/src/index.ts"
             ],
             "@ss/purchases/reception-cancellation": [
                 "libs/purchases/reception-cancellation/src/index.ts"
@@ -703,7 +707,6 @@
             "@ss/web-arch/assets": ["libs/web-arch/assets/src/index.ts"],
             "@ss/web-arch/ui": ["libs/web-arch/ui/src/index.ts"],
             "@ss/workflow": ["libs/workflow/src/index.ts"],
-            "@ss/crm/assets": ["libs/crm/assets/src/index.ts"],
             "home.page": ["libs/scheduled-sales/home-page/src/index.ts"],
             "logistics/ui-document-sources": [
                 "libs/logistics/ui-document-sources/src/index.ts"

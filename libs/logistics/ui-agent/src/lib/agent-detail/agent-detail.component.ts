@@ -45,6 +45,7 @@ import { CommonModule } from '@angular/common';
 
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 import { ChildAttributesComponent } from '@ss/custom-attributes';
+import { OptionService } from '@ss/logistics/ui-options';
 
 @Component({
     selector: 'ss-agent-detail',
@@ -64,6 +65,7 @@ import { ChildAttributesComponent } from '@ss/custom-attributes';
 
 })
 export class AgentDetailComponent extends BaseEntityDetailComponent<Agent> implements OnInit {
+    private optionSrv = inject(OptionService);
     private defaultAgentType = 0;
     private dialog  = inject(MatDialog);
     private router = inject(Router);
@@ -136,6 +138,8 @@ export class AgentDetailComponent extends BaseEntityDetailComponent<Agent> imple
             .is('AQS')
             .pipe(
                 tap(res => this.AQS = res),
+                switchMap(()=> this.optionSrv.get(this.loginSrv.appCtx.center)),
+                tap(res => this.optionSrv.options = res),
                 switchMap(() => this.route.data),
                 tap(res => {
                     const isSupplier = res['supplier'];
@@ -186,7 +190,7 @@ export class AgentDetailComponent extends BaseEntityDetailComponent<Agent> imple
             fax: [a.fax],
             contact: [a.contact],
             info: [a.info],
-            currency: [a.currency || 10],
+            currency: [a.currency || this.optionSrv.options?.defaultCurrency],
             taxPayable: [a.taxPayable],
             commRegister: [a.commRegister],
             fiscalID: [a.fiscalID],

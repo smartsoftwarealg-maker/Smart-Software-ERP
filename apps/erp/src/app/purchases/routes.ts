@@ -13,7 +13,7 @@ import {
     LOGISTICS_ARTICLES_URL,
     STOCK_ARTICLE_URL,
     PURCHASE_RECEPTION_CANCELLATION_URL,
-    IMPORT_PURCHASE_RECEPTION_URL, ADMIN_REPORT_RIGHTS_URL
+    IMPORT_PURCHASE_RECEPTION_URL, ADMIN_REPORT_RIGHTS_URL, PRICE_REQUEST_URL
 } from '../common';
 import {
     PurchaseOrderDetailComponent,
@@ -56,6 +56,11 @@ import {
 import { ExtraCostDetailComponent, ExtraCostListComponent } from '@ss/purchases/extra-costs';
 import { ReportRightsComponent } from '@ss/administration/reports-rights';
 import { ArticleDetailComponent, ArticleListComponent } from '@ss/master-data/ui-article';
+import {
+    PriceRequestComponent,
+    PriceRequestDetailComponent, PriceRequestLinesDetailComponent,
+    PriceRequestLinesListComponent
+} from '@ss/purchases/preiceRequest';
 
 export const routes: Routes = [
     {
@@ -120,6 +125,37 @@ export const routes: Routes = [
             },
             {path: '', redirectTo: LIST_URL, pathMatch: 'full'},
             {path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full'}
+        ]
+    },
+    {
+        path: PRICE_REQUEST_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: PriceRequestComponent,
+                canActivate: [loginGuard],
+                children: docInfoRoutes
+            },
+            {
+                path: ':id',
+                component: PriceRequestDetailComponent,
+                canActivate: [loginGuard],
+                canDeactivate: [CanDeactivateService],
+                children: [
+                    { path: '', pathMatch: 'full', redirectTo: 'lines-list' },
+                    { path: 'lines-list',
+                        component: PriceRequestLinesListComponent,
+                        children: docInfoRoutes
+                    },
+                    {
+                        path: 'lines-detail',
+                        children: [
+                            { path: ':id', component: PriceRequestLinesDetailComponent },
+                        ]
+                    },
+                    ...docInfoRoutes
+                ]
+            },
         ]
     },
     {

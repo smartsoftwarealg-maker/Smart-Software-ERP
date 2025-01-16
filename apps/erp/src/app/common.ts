@@ -170,6 +170,7 @@ export const IMPORT_PURCHASE_RECEPTION_URL = 'import-receptions';
 export const PURCHASE_RECEPTION_CANCELLATION_URL = 'creceptions';
 export const PURCHASE_ORDER_URL = 'porders';
 export const PURCHASE_REQUEST_URL = 'prequests';
+export const PRICE_REQUEST_URL = 'price-requests';
 export const PURCHASE_QUOTATION_URL = 'offers';
 export const PAYMENT_ORDER = 'payment-orders';
 
@@ -898,6 +899,7 @@ export const ABS_PURCHASE_QUOTATION_URL = '/' + [MAIN_PAGE_URL, PURCHASES_APP_UR
 export const ABS_PURCHASE_DASHBOARD_URL = '/' + [MAIN_PAGE_URL, PURCHASES_APP_URL, DASHBOARD_URL].join('/');
 export const ABS_PURCHASE_REPORTS_URL = '/' + [MAIN_PAGE_URL, PURCHASES_APP_URL, COMMON_REPORTS_URL].join('/');
 export const ABS_PURCHASE_REPORT_RIGHT_URL = '/' + [MAIN_PAGE_URL, PURCHASES_APP_URL, ADMIN_REPORT_RIGHTS_URL].join('/');
+export const ABS_PRICE_REQUEST_URL = '/' + [MAIN_PAGE_URL, PURCHASES_APP_URL, PRICE_REQUEST_URL].join('/');
 
 //dashboard
 export const ABS_DASHBOARD_URL = '/' + [MAIN_PAGE_URL, DASHBOARD_APP_URL, DASHBOARD_URL].join('/');

@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router, RouterOutlet } from '@angular/router';
-import { ReactiveFormsModule, UntypedFormBuilder } from '@angular/forms';
+import { FormGroup, ReactiveFormsModule, UntypedFormBuilder } from '@angular/forms';
 import { Lookup } from '@ss/common/api-lookup';
 import {  ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
-import { BaseTransactionDetailComponent, TransactionLinesService } from '@ss/logistics/api-transaction';
+import { BaseTransactionDetailComponent, Transaction, TransactionLinesService } from '@ss/logistics/api-transaction';
 import { ReceptionService } from '@ss/purchases/api-reception';
 import { LoginService, MaterialModule } from '@ss/common/api-common';
 import { MatDialog } from '@angular/material/dialog';
@@ -36,8 +36,6 @@ import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
     ]
 })
 export class ReceptionDetailComponent extends BaseTransactionDetailComponent implements OnInit {
-
-
     constructor(
         public override entitySrv: ReceptionService,
         public override detailSrv: ReceptionLinesService,
