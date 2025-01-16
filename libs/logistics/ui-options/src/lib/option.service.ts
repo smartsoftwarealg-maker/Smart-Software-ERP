@@ -11,6 +11,8 @@ export const OPTION_URL = '/logistics/options';
 })
 
 export class OptionService extends BaseEntityExtendedService<Option> {
+    #_options: Option|null = null;
+
     constructor(protected override httpSrv: HttpService) {
         super(httpSrv, OPTION_URL);
     }
@@ -30,5 +32,12 @@ export class OptionService extends BaseEntityExtendedService<Option> {
     //     return from(promise);
     // }
 
+    get options(): Option|null {
+        return this.#_options;
+    }
+
+    set options(o: Option) {
+        this.#_options = o;
+    }
 }
 

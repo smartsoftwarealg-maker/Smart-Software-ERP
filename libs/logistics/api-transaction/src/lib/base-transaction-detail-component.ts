@@ -228,7 +228,7 @@ export abstract class BaseTransactionDetailComponent extends BaseEntityDetailCom
         this.importBtn.disabled = this.requireAgentToImportDocument() && (b.agent === null || b.agent === undefined);
         this.detailSrv.editable = this.isEditable;
         this.transaction = b;
-        const form = this.formBuilder.group({
+        return this.formBuilder.group({
             id: [b.id],
             document: [b.document || 0],
             centerId: [0 || this.loginSrv.appCtx.center],
@@ -239,7 +239,7 @@ export abstract class BaseTransactionDetailComponent extends BaseEntityDetailCom
             payMethod: [b.payMethod],
             header: [b.header],
             footer: [b.footer],
-            currency: [b.currency || 1],
+            currency: [b.currency || this.optionSrv.options?.defaultCurrency],
             currencyRate: [b.currencyRate || 1],
             discountDescription: [b.discountDescription],
             fixedDiscount: [b.fixedDiscount || 0.0],
@@ -256,12 +256,15 @@ export abstract class BaseTransactionDetailComponent extends BaseEntityDetailCom
             license: [b.license],
             licenseDate: [b.licenseDate],
             licenseIssuer: [b.licenseIssuer],
-            plateNumber: [b.plateNumber]
+            plateNumber: [b.plateNumber],
+            deliveryTime: [b.deliveryTime]
         });
-        this.optionSrv
+    }
+
+    preload(): Observable<any> {
+        return this.optionSrv
             .get(this.loginSrv.appCtx.center)
-            .subscribe(res => form.controls['currency'].setValue(res.defaultCurrency || 10));
-        return form;
+            .pipe(tap(res => this.optionSrv.options = res));
     }
 
     get isManager() {

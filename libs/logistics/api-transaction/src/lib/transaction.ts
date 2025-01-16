@@ -93,6 +93,7 @@ export interface Transaction {
     licenseDate?: Date;
     licenseIssuer?: string;
     plateNumber?: string;
+    deliveryTime?: number;
 }
 
 export interface ExtraCost {
