@@ -48,6 +48,6 @@ export class PriceRequestComponent  extends BaseEntityListComponent<Transaction>
         public override confirmationSrv: ConfirmationDialogService,
         public override defReportSrv: DefaultReportService,
         public override pagPersistSrv: PaginatorPersistenceService) {
-        super(inventorySrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv, 'PURCHASES_PURCHASE_REQUEST');
+        super(inventorySrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv, 'PURCHASES_PRICE_REQUEST');
     }
 }
