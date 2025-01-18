@@ -138,7 +138,7 @@ export class AgentDetailComponent extends BaseEntityDetailComponent<Agent> imple
             .is('AQS')
             .pipe(
                 tap(res => this.AQS = res),
-                switchMap(()=> this.optionSrv.get(this.loginSrv.appCtx.center)),
+                switchMap(()=> this.isSales? of(null) : this.optionSrv.get(this.loginSrv.appCtx.center)),
                 tap(res => this.optionSrv.options = res),
                 switchMap(() => this.route.data),
                 tap(res => {
