@@ -50,7 +50,8 @@
                     </mat-error>
                 </mat-form-field>
 
-                <mat-form-field id="currency" class="default-50 sm-100">
+                @if (!isSales) {
+                     <mat-form-field id="currency" class="default-50 sm-100">
                     <mat-label translate>LOGISTICS_CURRENCY</mat-label>
                     <ss-auto-complete matInput
                                       formControlName="currency"
@@ -61,7 +62,7 @@
                         *ngIf="form.controls['currency'].invalid" translate>COMMON_FIELD_REQUIRED
                     </mat-error>
                 </mat-form-field>
-
+                }
 
                 <mat-form-field id="price" class="default-50 sm-100">
                     <mat-label translate>LOGISTICS_PRICE</mat-label>
@@ -419,7 +420,8 @@
                 }
             </mat-expansion-panel>
 
-            <mat-expansion-panel #attributes expanded="false" [class]="getPanelHeaderClass('attributes', attributes)">
+            @if (!isSales) {
+                <mat-expansion-panel #attributes expanded="false" [class]="getPanelHeaderClass('attributes', attributes)">
                 <mat-expansion-panel-header>
                     <mat-panel-title translate>
                         ADMINISTRATION_ATTRIBUTES
@@ -430,7 +432,7 @@
                                      [editable]="isEditable">
                 </ss-child-attributes>
             </mat-expansion-panel>
-
+            }
         </mat-accordion>
     </form>
 </mat-card>
