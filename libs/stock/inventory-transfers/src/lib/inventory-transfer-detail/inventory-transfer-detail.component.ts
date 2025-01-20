@@ -32,9 +32,6 @@ import { CdkTextareaAutosize } from '@angular/cdk/text-field';
     imports: [MaterialModule, MatCard, MatCardContent, NgIf, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, MatError, DatePickerComponent, UiAutoCompleteComponent, MatTabGroup, MatTab, MatTabLabel, CdkTextareaAutosize, RouterOutlet]
 })
 export class InventoryTransferDetailComponent extends BaseTransactionDetailComponent {
-
-    public groups: CCGroup[];
-
     constructor(
         public override detailSrv: TransactionLinesService,
         protected override loginSrv: LoginService,
@@ -47,11 +44,6 @@ export class InventoryTransferDetailComponent extends BaseTransactionDetailCompo
         public override formBuilder: UntypedFormBuilder,
         public override confirmationSrv: ConfirmationDialogService) {
         super(transferService, detailSrv, shellSrv, snackBarSrv, route, router, formBuilder, confirmationSrv, loginSrv, dialog, 'STOCK_TRANSFERS');
-    }
-
-    override preload(): Observable<any> {
-        return this.lookupsSrv.getCCGroups()
-            .pipe(tap(x => this.groups = x));
     }
 
     protected importedDocuments(): Lookup[] {

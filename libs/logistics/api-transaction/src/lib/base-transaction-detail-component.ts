@@ -15,7 +15,7 @@ import { LoginService, User } from '@ss/common/api-common';
 import { MatDialog } from '@angular/material/dialog';
 import { DocImportComponent, DocImportService } from '@ss/logistics/ui-doc-import';
 import { Directive, inject, OnInit, ViewChild } from '@angular/core';
-import { Currency, CurrencyService, Lookup, LookupsService, PayMethod } from '@ss/common/api-lookup';
+import { CCGroup, Currency, CurrencyService, Lookup, LookupsService, PayMethod } from '@ss/common/api-lookup';
 import {
     Agent,
     AgentService,
@@ -85,6 +85,7 @@ export abstract class BaseTransactionDetailComponent extends BaseEntityDetailCom
     public branchLookup = new DefaultAutoCompleteModel(this.branchSrv, 'id', 'denomination');
     public executionRef = 0;
     public formId = 0;
+    public groups: CCGroup[];
 
     protected constructor(
         public entitySrv: BaseEntityService<Transaction>,
@@ -262,9 +263,14 @@ export abstract class BaseTransactionDetailComponent extends BaseEntityDetailCom
     }
 
     preload(): Observable<any> {
-        return this.optionSrv
-            .get(this.loginSrv.appCtx.center)
-            .pipe(tap(res => this.optionSrv.options = res));
+        return this.lookupsSrv.getCCGroups()
+            .pipe(tap(x => this.groups = x),
+                  switchMap(() => this.optionSrv.get(this.loginSrv.appCtx.center)),
+                  tap(res => this.optionSrv.options = res));
+        //
+        // return this.optionSrv
+        //     .get(this.loginSrv.appCtx.center)
+        //     .pipe(tap(res => this.optionSrv.options = res));
     }
 
     get isManager() {

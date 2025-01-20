@@ -46,8 +46,6 @@ import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
     styleUrls: ['../../../../../common/assets/src/assets/transac-detail.scss']
 })
 export class ServiceInvoiceDetailComponent extends BaseTransactionDetailComponent implements OnInit {
-    public groups: CCGroup[];
-
     constructor(
         protected override  loginSrv: LoginService,
         public override detailSrv: InvoiceLinesService,
@@ -62,11 +60,6 @@ export class ServiceInvoiceDetailComponent extends BaseTransactionDetailComponen
         super(entitySrv, detailSrv, shellSrv, snackBarSrv, route, router, formBuilder, confirmationSrv, loginSrv, dialog, 'SALES_INVOICE');
     }
 
-
-    override preload(): Observable<any> {
-        return this.lookupsSrv.getCCGroups()
-            .pipe(tap(x => this.groups = x));
-    }
 
     protected showImportButton(): boolean {
         return true;

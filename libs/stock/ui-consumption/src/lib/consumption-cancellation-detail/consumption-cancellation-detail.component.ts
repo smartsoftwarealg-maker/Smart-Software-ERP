@@ -5,7 +5,7 @@ import { UntypedFormBuilder, FormsModule, ReactiveFormsModule } from '@angular/f
 import { CCGroup, Lookup } from '@ss/common/api-lookup';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { ConsumptionCancellationService } from '@ss/stock/api-consumption';
-import { Observable } from 'rxjs';
+import { Observable, switchMap } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { LoginService, MaterialModule } from '@ss/common/api-common';
 import { BaseTransactionDetailComponent, DOC_CONSUMPTION } from "@ss/logistics/api-transaction";
@@ -28,8 +28,6 @@ import { CdkTextareaAutosize } from '@angular/cdk/text-field';
     imports: [MaterialModule, MatCard, MatCardContent, NgIf, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, DatePickerComponent, UiAutoCompleteComponent, MatError, CdkTextareaAutosize, RouterOutlet]
 })
 export class ConsumptionCancellationDetailComponent extends BaseTransactionDetailComponent {
-    public groups: CCGroup[];
-
     constructor(
         public consumptionSrv: ConsumptionCancellationService,
         public override detailSrv: ConsumptionCancellationLinesService,
@@ -55,10 +53,6 @@ export class ConsumptionCancellationDetailComponent extends BaseTransactionDetai
     }
 
 
-    override preload(): Observable<any> {
-        return this.lookupsSrv.getCCGroups()
-            .pipe(tap(x => this.groups = x));
-    }
 
     protected importedDocuments(): Lookup[] {
         return [ { id: DOC_CONSUMPTION, description: 'STOCK_CONSUMPTION'}];

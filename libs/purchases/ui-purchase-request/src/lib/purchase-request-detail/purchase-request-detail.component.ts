@@ -34,7 +34,6 @@ import { CdkTextareaAutosize } from '@angular/cdk/text-field';
 export class PurchaseRequestDetailComponent extends BaseTransactionDetailComponent implements OnInit {
     #deliveryTimeSrv = inject(DeliveryTimeService);
 
-    groups: CCGroup[];
     deliveryTimeLookup = new DefaultAutoCompleteModel(this.#deliveryTimeSrv);
 
 
@@ -49,11 +48,6 @@ export class PurchaseRequestDetailComponent extends BaseTransactionDetailCompone
                 protected override loginSrv: LoginService,
                 protected override dialog: MatDialog) {
         super(orderService, detailSrv, shellSrv, snackBarSrv, route, router, formBuilder, confirmationSrv, loginSrv, dialog, 'PURCHASES_PURCHASE_REQUEST');
-    }
-
-    override preload(): Observable<any> {
-        return this.lookupsSrv.getCCGroups()
-            .pipe(tap(x => this.groups = x));
     }
 
     protected showImportButton(): boolean {

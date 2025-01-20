@@ -29,9 +29,6 @@ import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
     styleUrls: ['../../../../../common/assets/src/assets/transac-detail.scss']
 })
 export class PartsRequestDetailComponent extends BaseTransactionDetailComponent implements OnInit {
-    public groups: CCGroup[];
-
-
     constructor(public orderService: PartsRequestService,
         public override detailSrv: PartsRequestLineService,
         public override shellSrv: ShellService,
@@ -43,11 +40,6 @@ export class PartsRequestDetailComponent extends BaseTransactionDetailComponent 
         protected override loginSrv: LoginService,
         protected override dialog: MatDialog) {
         super(orderService, detailSrv, shellSrv, snackBarSrv, route, router, formBuilder, confirmationSrv, loginSrv, dialog, 'STOCK_PARTS_REQUEST');
-    }
-
-    override preload(): Observable<any> {
-        return this.lookupsSrv.getCCGroups()
-            .pipe(tap(x => this.groups = x));
     }
 
     protected showImportButton(): boolean {

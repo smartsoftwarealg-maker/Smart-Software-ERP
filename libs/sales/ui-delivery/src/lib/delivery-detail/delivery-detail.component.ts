@@ -33,7 +33,6 @@ export class DeliveryDetailComponent extends BaseTransactionDetailComponent impl
     // private payMethodSrv =  inject(PayMethodService);
     // private agentService = inject(AgentService);
     // private usersSrv = inject(UserListService);
-    public groups: CCGroup[];
 
     // public dealerAutoCompleteModel = new DefaultAutoCompleteModel<User>(this.usersSrv);
     // public agentAutoCompleteModel = new DefaultAutoCompleteModel<Agent>(this.agentService, 'id', 'denomination');
@@ -63,11 +62,6 @@ export class DeliveryDetailComponent extends BaseTransactionDetailComponent impl
             loginSrv,
             dialog,
             'SALES_EDIT_DELIVERY');
-    }
-
-    override preload(): Observable<any> {
-        return this.lookupsSrv.getCCGroups()
-            .pipe(tap(x => this.groups = x));
     }
 
     protected override showImportButton(): boolean {

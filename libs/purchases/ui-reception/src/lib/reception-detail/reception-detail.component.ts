@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router, RouterOutlet } from '@angular/router';
 import { FormGroup, ReactiveFormsModule, UntypedFormBuilder } from '@angular/forms';
@@ -18,6 +18,7 @@ import { UiStockInfoComponent } from '@ss/logistics/ui-stock-info';
 import { ReceptionLinesService } from '../reception-lines.service';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
+import { ExtraCostService } from '@ss/purchases/extra-costs';
 
 
 @Component({
@@ -36,6 +37,10 @@ import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
     ]
 })
 export class ReceptionDetailComponent extends BaseTransactionDetailComponent implements OnInit {
+    private URLs = ['./lines-list', './costs-list'];
+    private costSrv = inject(ExtraCostService);
+    selectedIndex = 0;
+
     constructor(
         public override entitySrv: ReceptionService,
         public override detailSrv: ReceptionLinesService,
@@ -79,5 +84,16 @@ export class ReceptionDetailComponent extends BaseTransactionDetailComponent imp
 
     protected importedDocuments(): Lookup[] {
         return [{ id: 2, description: 'LOGISTICS_PURCHASE_ORDER' }];
+    }
+
+    override finishLoading(e: Transaction) {
+        this.costSrv.setParentId(e?.id);
+        super.finishLoading(e);
+    }
+
+    onTabChange(idx: number) {
+        if (this.saveButton.visible) {
+            this.router.navigate([this.URLs[idx]], { relativeTo: this.route }).then();
+        }
     }
 }

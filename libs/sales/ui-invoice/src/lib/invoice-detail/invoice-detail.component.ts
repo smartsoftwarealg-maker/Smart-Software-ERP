@@ -33,8 +33,6 @@ import { CdkTextareaAutosize } from '@angular/cdk/text-field';
     imports: [MaterialModule, NgIf, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, MatError, DatePickerComponent, UiAutoCompleteComponent, MatTabGroup, MatTab, MatTabLabel, CdkTextareaAutosize, RouterOutlet]
 })
 export class InvoiceDetailComponent extends BaseTransactionDetailComponent implements OnInit {
-    public groups: CCGroup[];
-
     constructor(
         protected loginSrv: LoginService,
         public override entitySrv: InvoiceService,
@@ -49,11 +47,6 @@ export class InvoiceDetailComponent extends BaseTransactionDetailComponent imple
         super(entitySrv, detailSrv, shellSrv, snackBarSrv, route, router, formBuilder, confirmationSrv, loginSrv, dialog, 'SALES_EDIT_INVOICE');
     }
 
-
-    override preload(): Observable<any> {
-        return this.lookupsSrv.getCCGroups()
-            .pipe(tap(x => this.groups = x));
-    }
 
     protected showImportButton(): boolean {
         return true;
