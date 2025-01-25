@@ -34,7 +34,11 @@ import { TranslateDirective } from '@ss/common/ui-lang';
         MatSort,
         MatSortHeader,
         MatTable,
-        TranslateDirective
+        TranslateDirective,
+        MatHeaderCellDef,
+        MatCellDef,
+        MatHeaderRowDef,
+        MatRowDef
     ],
     selector: 'ss-mutual-requests',
     standalone: true,

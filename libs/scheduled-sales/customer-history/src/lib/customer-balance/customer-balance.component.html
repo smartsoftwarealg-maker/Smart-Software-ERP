@@ -7,22 +7,22 @@
             </h1>
         </mat-card-title>
         <mat-card-content>
-        <form [formGroup]="balanceForm" >
-            <mat-form-field class="default-100 input" >
-                <mat-label translate>COMMON_DEBIT</mat-label>
-                <input matInput formControlName="debit" type="test" readonly>
-            </mat-form-field>
+            <form [formGroup]="balanceForm">
+                <mat-form-field class="default-100 input">
+                    <mat-label translate>COMMON_DEBIT</mat-label>
+                    <input matInput formControlName="debit" type="test" readonly>
+                </mat-form-field>
 
-            <mat-form-field class="default-100 input" >
-                <mat-label translate>COMMON_CREDIT</mat-label>
-                <input matInput formControlName="credit" type="test" readonly>
-            </mat-form-field>
+                <mat-form-field class="default-100 input">
+                    <mat-label translate>COMMON_CREDIT</mat-label>
+                    <input matInput formControlName="credit" type="test" readonly>
+                </mat-form-field>
 
-            <mat-form-field class="default-100 input" >
-                <mat-label translate>COMMON_BALANCE</mat-label>
-                <input matInput formControlName="balance" type="test" readonly step="0.01">
-            </mat-form-field>
-        </form>
+                <mat-form-field class="default-100 input">
+                    <mat-label translate>COMMON_BALANCE</mat-label>
+                    <input matInput formControlName="balance" type="test" readonly step="0.01">
+                </mat-form-field>
+            </form>
         </mat-card-content>
     </mat-card>
 
@@ -34,18 +34,18 @@
             </h1>
         </mat-card-title>
         <mat-card-content>
-            <form [formGroup]="scheduleForm" >
-                <mat-form-field class="default-100 input" >
+            <form [formGroup]="scheduleForm">
+                <mat-form-field class="default-100 input">
                     <mat-label translate>SCH_MISSED_SCHEDULES</mat-label>
                     <input matInput formControlName="missed" type="test" readonly>
                 </mat-form-field>
 
-                <mat-form-field class="default-100 input" >
+                <mat-form-field class="default-100 input">
                     <mat-label translate>SCH_INVOICED_SCHEDULES</mat-label>
                     <input matInput formControlName="invoiced" type="test" readonly>
                 </mat-form-field>
 
-                <mat-form-field class="default-100 input" >
+                <mat-form-field class="default-100 input">
                     <mat-label translate>SCH_PENDING_SCHEDULES</mat-label>
                     <input matInput formControlName="pending" type="test" readonly step="0.01">
                 </mat-form-field>
@@ -54,18 +54,33 @@
         </mat-card-content>
     </mat-card>
 
-        <mat-card>
-            <mat-card-content>
-                <div class="chart_div">
-                    <canvas [id]="'monthly'" class="chart"></canvas>
-                </div>
-            </mat-card-content>
-        </mat-card>
+    <mat-card>
+        <mat-card-content>
+            <div class="chart_div">
+                <canvas [id]="'monthly'" class="chart"></canvas>
+            </div>
+        </mat-card-content>
+    </mat-card>
 
     <mat-card>
         <mat-card-content>
             <div class="chart_div">
                 <canvas [id]="'annual'" class="chart"></canvas>
+            </div>
+        </mat-card-content>
+    </mat-card>
+    <mat-card>
+        <mat-card-content>
+            <div class="chart_div">
+                <canvas [id]="'monthly2'" class="chart"></canvas>
+            </div>
+        </mat-card-content>
+    </mat-card>
+
+    <mat-card>
+        <mat-card-content>
+            <div class="chart_div">
+                <canvas [id]="'annual2'" class="chart"></canvas>
             </div>
         </mat-card-content>
     </mat-card>

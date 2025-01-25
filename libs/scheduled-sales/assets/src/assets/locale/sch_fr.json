@@ -20,5 +20,7 @@
     "INVOICED_SCHEDULES": "Perogrammes facturés",
     "PENDING_SCHEDULES":  "Perogrammes en attente",
     "MONTHLY_TURNOVER":   "Chiffre d'affaires mensuel",
-    "ANNUAL_TURNOVER":    "Chiffre d'affaires annuel"
+    "ANNUAL_TURNOVER":    "Chiffre d'affaires annuel",
+    "MONTHLY_PAYMENTS":   "Paiements mensuels",
+    "ANNUAL_PAYMENTS":    "Paiements annuels"
 }

@@ -13,7 +13,7 @@ import { ColorPickerModule } from "ngx-color-picker";
 import { CustomerBalanceService } from '../services/customer-balance.service';
 import { ScheduleBalanceService } from '../services/schedule-balance.service';
 import { TurnoverService } from '../services/turnover.service';
-import { Turnover } from '@ss/scheduled-sales/api-scheduled-sales';
+import { ScheduleBalance, Turnover } from '@ss/scheduled-sales/api-scheduled-sales';
 import { switchMap, tap } from 'rxjs';
 import { Chart, ChartItem, registerables } from 'chart.js';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
@@ -80,8 +80,16 @@ export class CustomerBalanceComponent implements OnInit {
             .monthlyTurnover(this.loginSrv.appCtx.agentId | 0)
             .pipe(
                 tap(res => this.buildBarChart('monthly', 'SCH_MONTHLY_TURNOVER', res)),
+
                 switchMap(() => this.turnoverSrv.annualTurnover(this.loginSrv.appCtx.agentId | 0)),
                 tap(res => this.buildBarChart('annual', 'SCH_ANNUAL_TURNOVER', res)),
+
+                switchMap(() => this.turnoverSrv.annualPayments(this.loginSrv.appCtx.agentId | 0)),
+                tap(res => this.buildBarChart('annual2', 'SCH_ANNUAL_PAYMENTS', res)),
+
+                switchMap(() => this.turnoverSrv.monthlyPayments(this.loginSrv.appCtx.agentId | 0)),
+                tap(res => this.buildBarChart('monthly2', 'SCH_MONTHLY_PAYMENTS', res)),
+
                 switchMap(() => this.balanceSrv.balance(this.loginSrv.appCtx.agentId | 0)),
                 tap( res => {
                     const value = {
@@ -93,7 +101,8 @@ export class CustomerBalanceComponent implements OnInit {
                 }),
                 switchMap(() => this.scheduleBalanceSrv.balance(this.loginSrv.appCtx.agentId | 0))
             )
-            .subscribe(res => {
+            .subscribe(res0 => {
+                const res = res0 as ScheduleBalance;
                 this.scheduleForm.setValue({
                     "missed":  res.missed.toLocaleString(),
                     "invoiced": res.invoiced.toLocaleString(),

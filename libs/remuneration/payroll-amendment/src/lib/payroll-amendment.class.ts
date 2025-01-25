@@ -17,7 +17,7 @@ export interface Amendment {
     applicationMonth: number;
     element: string;
     new_value: number;
-    percentage: boolean;
+    percentage: number;
     month_count?: number;
     rounded?: boolean;
     lastName?: string;

@@ -58,19 +58,20 @@
                 </ss-date-picker>
             </mat-form-field>
 
-            <mat-form-field class="default-50 sm-100">
-                <mat-label translate>LTM_VALIDATED_BY</mat-label>
-                <ss-auto-complete matInput
-                                  [model]="responsibleLookup"
-                                  formControlName="responsibleId">
-                </ss-auto-complete>
-            </mat-form-field>
 
             <mat-form-field class="default-50 sm-100">
                 <mat-label translate>LTM_QUALITY_CHIEF</mat-label>
                 <ss-auto-complete matInput
                                   [model]="qualityChiefLookup"
                                   formControlName="qualityChief">
+                </ss-auto-complete>
+            </mat-form-field>
+
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>LTM_VALIDATED_BY</mat-label>
+                <ss-auto-complete matInput
+                                  [model]="responsibleLookup"
+                                  formControlName="responsibleId">
                 </ss-auto-complete>
             </mat-form-field>
 
