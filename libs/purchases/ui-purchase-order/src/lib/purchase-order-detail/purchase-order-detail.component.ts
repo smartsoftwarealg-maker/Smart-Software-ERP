@@ -43,8 +43,6 @@ export class PurchaseOrderDetailComponent extends BaseTransactionDetailComponent
         click: () => this.importContract(),
     };
 
-    public groups: CCGroup[];
-
     constructor(public orderService: PurchaseOrderService,
                 public override detailSrv: PurchaseOrderLinesService,
                 public override shellSrv: ShellService,
@@ -60,10 +58,11 @@ export class PurchaseOrderDetailComponent extends BaseTransactionDetailComponent
         this.purchaseProjectLookup.onObjectSelected = e => this.onProject(e);
     }
 
-    override preload(): Observable<any> {
-        return this.lookupsSrv.getCCGroups()
-            .pipe(tap(x => this.groups = x));
-    }
+    // override preload(): Observable<any> {
+    //     return this.lookupsSrv.getCCGroups()
+    //         .pipe(tap(x => this.groups = x),
+    //               switchMap(() => super.preload()));
+    // }
 
     override setupForm(b: Transaction): FormGroup {
         this.purchaseProjectSrv.setParentId(b?.agent || 0);

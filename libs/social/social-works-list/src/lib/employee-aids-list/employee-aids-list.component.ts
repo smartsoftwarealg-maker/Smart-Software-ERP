@@ -16,12 +16,13 @@ import {
     MatHeaderRow,
     MatHeaderRowDef, MatRow, MatRowDef, MatTable
 } from '@angular/material/table';
+import { PaginationComponent } from '@ss/common/ui-pagination';
 
 
 @Component({
     selector: 'ss-employee-aids-list',
     standalone: true,
-    imports: [CommonModule,  MatCell, MatCellDef, MatColumnDef, MatHeaderCell, MatHeaderRow, MatHeaderRowDef, MatRow, MatRowDef, MatTable,  MatHeaderCellDef],
+    imports: [CommonModule, MatCell, MatCellDef, MatColumnDef, MatHeaderCell, MatHeaderRow, MatHeaderRowDef, MatRow, MatRowDef, MatTable, MatHeaderCellDef, PaginationComponent],
     templateUrl: './employee-aids-list.component.html',
     styleUrl: '../../../../social-api/src/lib/aids.styles.scss',
 })

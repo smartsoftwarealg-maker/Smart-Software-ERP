@@ -44,8 +44,6 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     styleUrls: ['../../../../../common/assets/src/assets/transac-detail.scss']
 })
 export class PartsReservationDetailComponent extends BaseTransactionDetailComponent {
-    public groups: CCGroup[];
-
     constructor(
         public override entitySrv: ReservationService,
         public override detailSrv: ReservationLinesService,
@@ -68,12 +66,6 @@ export class PartsReservationDetailComponent extends BaseTransactionDetailCompon
             loginSrv,
             dialog,
             'LOGISTICS_RESERVATION');
-    }
-
-
-    override preload(): Observable<CCGroup[]> {
-        return this.lookupsSrv.getCCGroups()
-            .pipe(tap(x => this.groups = x));
     }
 
     protected importedDocuments(): Lookup[] {

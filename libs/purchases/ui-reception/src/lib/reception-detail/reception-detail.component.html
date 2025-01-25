@@ -175,6 +175,19 @@
     </mat-card-content>
 </mat-card>
 
+<mat-tab-group class="detail_div" (selectedIndexChange)="onTabChange($event)" >
+    <mat-tab [disabled]="!saveButton.visible">
+        <ng-template mat-tab-label>
+            <span translate>COMMON_DETAIL</span>
+        </ng-template>
+    </mat-tab>
+    <mat-tab [disabled]="!saveButton.visible">
+        <ng-template mat-tab-label>
+            <span translate>LOGISTICS_EXTRA_COSTS</span>
+        </ng-template>
+    </mat-tab>
+</mat-tab-group>
+
 <!--<ss-reception-lines-list class="detail-list" [isEditable]="isEditable" *ngIf="!isLoading && formId" [parentExecutionRef]="executionRef"></ss-reception-lines-list>-->
 @if (formId) {
    <router-outlet></router-outlet>

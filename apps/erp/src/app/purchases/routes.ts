@@ -205,9 +205,16 @@ export const routes: Routes = [
                 canDeactivate: [CanDeactivateService],
                 children: [
                     { path: '', pathMatch: 'full', redirectTo: 'lines-list' },
+                    { path: 'costs-list', component: ExtraCostListComponent },
                     { path: 'lines-list',
                         component: ReceptionLinesListComponent,
                         children: docInfoRoutes
+                    },
+                    {
+                        path: 'costs-detail',
+                        children: [
+                            { path: ':id', component: ExtraCostDetailComponent }
+                        ]
                     },
                     {
                         path: 'lines-detail',

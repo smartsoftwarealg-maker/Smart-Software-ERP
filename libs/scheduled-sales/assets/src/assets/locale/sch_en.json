@@ -20,5 +20,7 @@
     "INVOICED_SCHEDULES": "Invoiced schedules",
     "PENDING_SCHEDULES":  "Pending schedules",
     "MONTHLY_TURNOVER":   "Monthly turnover",
-    "ANNUAL_TURNOVER":    "Annual turnover"
+    "ANNUAL_TURNOVER":    "Annual turnover",
+    "MONTHLY_PAYMENTS":   "Monthly payments",
+    "ANNUAL_PAYMENTS":    "Annual payments"
 }

@@ -49,7 +49,6 @@ export class OrderDetailComponent extends BaseTransactionDetailComponent {
         click: () => this.importContract(),
     };
     private order: Transaction = null;
-    public groups: CCGroup[];
 
     constructor(public orderService: SalesOrderService,
                 public override detailSrv: SalesOrderLinesService,
@@ -64,12 +63,6 @@ export class OrderDetailComponent extends BaseTransactionDetailComponent {
                 public override dialog: MatDialog) {
         super(orderService, detailSrv, shellSrv, snackBarSrv, route, router, formBuilder, confirmationSrv, loginSrv, dialog, 'SALES_EDIT_ORDER');
         this.agentLookup.onObjectSelected = e => this.purchaseProjectSrv.setParentId(e?.id || 0);
-    }
-
-    override preload(): Observable<any> {
-        return this.lookupsSrv
-            .getCCGroups()
-            .pipe(tap(x => this.groups = x));
     }
 
     override ngOnInit() {

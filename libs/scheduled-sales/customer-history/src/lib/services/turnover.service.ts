@@ -15,4 +15,12 @@ export class TurnoverService {
     annualTurnover(id: number): Observable<Turnover[]> {
         return this.httpSv.get(`/ssales/agents/${id}/annual-turnover`);
     }
+
+    monthlyPayments(id: number): Observable<Turnover[]> {
+        return this.httpSv.get(`/ssales/agents/${id}/monthly-payments`);
+    }
+
+    annualPayments(id: number): Observable<Turnover[]> {
+        return this.httpSv.get(`/ssales/agents/${id}/annual-payments`);
+    }
 }

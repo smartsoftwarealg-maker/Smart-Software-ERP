@@ -16,6 +16,7 @@ import { CommonModule } from '@angular/common';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { PaymonthEditorComponent } from '@ss/remuneration/paymonth-editor';
+import { Lookup } from '@ss/common/api-lookup';
 
 @Component({
     selector: 'ss-payroll-amendment-detail',
@@ -57,13 +58,13 @@ export class PayrollAmendmentDetailComponent extends BaseEntityDetailComponent<A
             employee: [e.employee || 0],
             paymonth: [e.paymonth || this.loginSrv.appCtx.payMonth],
             applicationMonth: [e.applicationMonth || 0, Validators.required],
-            to: [0],
-            element: [e.element || 'e001'],
-            elementId: [e.elementId, Validators.required],
-            new_value: [e.new_value, Validators.required],
-            percentage: [e.percentage || false],
-            lastName: [{ value: e.lastName, disabled: true }],
-            firstName: [{ value: e.firstName, disabled: true }]
+            to:         [0],
+            element:    [e.element || 'e001'],
+            elementId:  [e.elementId, Validators.required],
+            new_value:  [e.new_value, Validators.required],
+            percentage: [e.percentage || 0],
+            lastName:   [{ value: e.lastName, disabled: true }],
+            firstName:  [{ value: e.firstName, disabled: true }]
         });
     }
 

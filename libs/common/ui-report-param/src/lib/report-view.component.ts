@@ -254,7 +254,9 @@ export class ReportViewComponent extends BaseEntityListComponent<ReportParam> im
 
     createList(): ParamValue[] {
         return this.data
-            .filter(p => this.form.controls[p.name] && this.form.controls[p.name].value !== null)
+            .filter(p => this.form.controls[p.name] &&
+                                     this.form.controls[p.name].value !== null &&
+                                     this.form.controls[p.name].value !== '')
             .map(p => {
                 return { name: p.name, value: this.defaultValue(p.name, p.typeName) };
             });
