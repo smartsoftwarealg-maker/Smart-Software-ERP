@@ -22,5 +22,11 @@
     "MONTHLY_TURNOVER":   "Monthly turnover",
     "ANNUAL_TURNOVER":    "Annual turnover",
     "MONTHLY_PAYMENTS":   "Monthly payments",
-    "ANNUAL_PAYMENTS":    "Annual payments"
+    "ANNUAL_PAYMENTS":    "Annual payments",
+    "CSPACE":             "Customer space",
+    "SCHS":               "SCHS",
+    "ECDE":               "ECDE",
+    "SCSG":               "SCSG",
+    "SCAEK":              "SCAKE",
+    "COMPANY_SELECTOR":   "Company selector"
 }

@@ -16,7 +16,7 @@ import {
     CENTER_SELECT_URL,
     HttpService,
     LanguageService,
-    LoginService,
+    LoginService, LoginType,
     MaterialModule,
     SideNavNode
 } from '@ss/common/api-common';
@@ -26,7 +26,7 @@ import { CommonModule } from '@angular/common';
 import { LogoutComponent } from '@ss/common/ui-logout';
 
 import { catchError, of, switchMap, tap } from 'rxjs';
-import { LanguageSelectComponent } from '../../../ui-lang/src/lib/language-select.component';
+import { LanguageSelectComponent } from '@ss/common/ui-lang';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 import { ThemeSelectComponent } from '@ss/common/ui-theme';
 
@@ -155,4 +155,6 @@ export class ShellComponent implements OnInit, OnDestroy, AfterViewInit, AfterVi
     centerSelect() {
         this.router.navigate(['/' + CENTER_SELECT_URL]).then();
     }
+
+    protected readonly LoginType = LoginType;
 }

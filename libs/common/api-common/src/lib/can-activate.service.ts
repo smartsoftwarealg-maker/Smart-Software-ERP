@@ -20,7 +20,6 @@ export class CanActivateService {
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot):
         Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-
         return this.httpSrv
             .init()
             .pipe(

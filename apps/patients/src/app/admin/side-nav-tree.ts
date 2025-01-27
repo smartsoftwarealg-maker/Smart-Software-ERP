@@ -6,7 +6,6 @@ import {
     ABS_ADMINISTRATION_COMPANY_URL, ABS_ADMINISTRATION_COUNTRY_URL, ABS_ADMINISTRATION_REPORT_CATALOG,
     ABS_ADMINISTRATION_ROLE_URL, ABS_ADMINISTRATION_TRACEABILITY_URL, ABS_ADMINISTRATION_USER_URL
 } from '../common';
-import {ABS_ADMINISTRATION_WILAYA_URL} from "../../../../erp/src/app/common";
 
 export const adminNavTree: SideNavNode = {
     name: 'ADMINISTRATION',
@@ -29,12 +28,6 @@ export const adminNavTree: SideNavNode = {
             icon: 'fas fa-user',
             route: ABS_ADMINISTRATION_ROLE_URL,
             accessRights: 'Role'
-        },
-        {
-            name: 'COMMON_WILAYAS',
-            icon: 'fas fa-route-interstate',
-            route: ABS_ADMINISTRATION_WILAYA_URL,
-            accessRights: 'Wilaya'
         },
         {
             name: 'COMMON_CITIES',

@@ -5,8 +5,10 @@
 
 export const environment = {
     production: false,
+    company: '',
+    homePage: '',
+    multiCompany: true
 };
-export const homePage: string|null = 'https://smartsoftware-dz.com/index-en.html';
 export const langAssets = [
     ['assets/locale/', ''],
     ['assets/locale/administration_', 'ADMINISTRATION_'],
