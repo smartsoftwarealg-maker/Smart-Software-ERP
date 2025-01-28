@@ -7,6 +7,7 @@ import { ShellService } from '@ss/common/ui-shell';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 import { LanguageSelectComponent } from '@ss/common/ui-lang';
 import { LoadingSpinnerComponent } from '../../../ui-loading-spinner/src';
+import { Preferences } from '@capacitor/preferences';
 
 type User = {
     username: string, password: string
@@ -77,14 +78,19 @@ export class LoginComponent implements OnInit {
         if (this.#time) {
             clearTimeout(this.#time);
         }
-        if (this.loginSrv.customerLogin === LoginType.CUSTOMER && this.#companySelectorSrv.spaceCompany) {
-            this.#httpSrv.selectCompany(this.#companySelectorSrv.spaceCompany);
-        }
-        if (this.deviceSrv.isDesktop()) {
-           this.#companySelectorSrv.spaceCompany = localStorage.getItem(this.#DEFAULT_COMPANY);
-           this.cSpace.set(this.#companySelectorSrv.spaceCompany);
-        } else {
 
+        if (this.#companySelectorSrv.multiCompany) {
+            this.#companySelectorSrv.spaceCompany = localStorage.getItem(this.#DEFAULT_COMPANY);
+            if (!this.deviceSrv.isDesktop()) {
+                const checkName = async () => {
+                    const { value } = await Preferences.get({ key: this.#DEFAULT_COMPANY });
+                    this.#companySelectorSrv.spaceCompany = value;
+                };
+            }
+            if (this.loginSrv.customerLogin === LoginType.CUSTOMER && this.#companySelectorSrv.spaceCompany) {
+                this.#httpSrv.selectCompany(this.#companySelectorSrv.spaceCompany);
+            }
+            this.cSpace.set(this.#companySelectorSrv.spaceCompany);
         }
     }
 

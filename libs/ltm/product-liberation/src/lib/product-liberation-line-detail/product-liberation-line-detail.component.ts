@@ -57,11 +57,12 @@ export class ProductLiberationLineDetailComponent extends BaseChildEntityDetailC
 
     override setupForm(b: LTMProductLiberationLine): UntypedFormGroup {
         return this.#fb.group({
-            id:       [b.id],
-            parentId: [b.parentId||this.entitySrv.getParentId(), Validators.required],
-            siloId: [b.siloId, Validators.required],
-            typeId: [b.typeId, Validators.required],
-            productId: [b.productId, Validators.required]
+            id:        [b.id],
+            parentId:  [b.parentId||this.entitySrv.getParentId(), Validators.required],
+            siloId:    [b.siloId, Validators.required],
+            typeId:    [b.typeId, Validators.required],
+            productId: [b.productId, Validators.required],
+            memo:      [b.memo]
         })
     }
 }

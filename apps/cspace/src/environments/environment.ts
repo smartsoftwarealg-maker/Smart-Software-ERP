@@ -5,9 +5,9 @@
 
 export const environment = {
     production: false,
-    company: '',
-    homePage: '',
-    multiCompany: true
+    company: 'SCHS',
+    homePage: 'http://www.schs.dz',
+    multiCompany: false
 };
 export const langAssets = [
     ['assets/locale/', ''],

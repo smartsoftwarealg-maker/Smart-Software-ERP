@@ -77,7 +77,7 @@
     "ACTION_DATE":        "Date d'action",
     "VALIDATED_BY":       "Validé par",
     "VALIDATION_DATE":    "Date de validation",
-    "REPORT_DATE":        "Date de rapport",
+    "REPORT_DATE":        "Date de reception",
     "NON_VALIDATED":      "Non validé",
     "PRODUCT_TYPES":      "Types de produits",
     "PRODUCT_LIBERATION":      "libération du produit",
