@@ -6,11 +6,9 @@ import {
     HttpEventType,
     HttpHeaders,
     HttpParams,
-    HttpProgressEvent,
-    HttpXhrBackend,
-    HttpRequest
+    HttpProgressEvent
 } from '@angular/common/http';
-import {catchError, filter, last, map, tap} from 'rxjs/operators';
+import {filter, last, map, tap} from 'rxjs/operators';
 import {of} from 'rxjs';
 import {LoginInfo} from './models';
 import {AppConfigService} from './app-config.service';
@@ -356,6 +354,14 @@ export class HttpService {
     // noinspection JSMethodCanBeStatic
     public getAuthToken(): string {
         return HttpService.getAuthToken();
+    }
+
+    selectCompany(company: string) {
+        if (company === 'SCH_SCHS') {
+            this.baseUrl = 'https://client2.schs.dz';
+        } else if (company === 'SCH_ECDE') {
+            this.baseUrl = 'https://clientecde.gica.dz';
+        }
     }
 }
 

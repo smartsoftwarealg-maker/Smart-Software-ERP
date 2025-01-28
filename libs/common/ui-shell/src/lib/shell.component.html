@@ -247,27 +247,20 @@
 
             <mat-divider *ngIf="shellSrv.appButtons.length"></mat-divider>
 
-            <!--            <div type="button" mat-menu-item class="settings-item small-only">-->
-            <!--                <div class="icon">-->
-            <!--                    <i class="fas fa-user-alt"></i>-->
-            <!--                </div>-->
-            <!--                <span class="text" style="font-weight: bold;" translate>{{loginSrv.appCtx?.fullName}}</span>-->
-            <!--            </div>-->
-
-            <!--            <mat-divider class="small-only"></mat-divider>-->
-
             <div type="button" mat-menu-item class="settings-item" (click)="langBtn.click()">
-                <ss-language-select class="icon" (click)="$event.stopPropagation()" #langBtn></ss-language-select>
+                <ss-language-select class="icon" (click)="$event.stopPropagation()" [showCenterSelection]="false" #langBtn></ss-language-select>
                 <span class="text" translate>COMMON_LANGUAGE_SETTINGS</span>
             </div>
             <div type="button" mat-menu-item class="settings-item" (click)="themeBtn.click()">
                 <ss-theme-select class="icon" (click)="$event.stopPropagation()" #themeBtn></ss-theme-select>
                 <span class="text" translate>COMMON_THEME_SETTINGS</span>
             </div>
-            <div type="button" mat-menu-item class="settings-item" (click)="centerSelect()">
-                <i class="fa-solid fa-door-open simple-btn icon"></i>
-                <span class="text" translate>COMMON_CENTER_CHANGE</span>
-            </div>
+            @if (loginSrv.customerLogin !== LoginType.CUSTOMER) {
+                <div type="button" mat-menu-item class="settings-item" (click)="centerSelect()">
+                    <i class="fa-solid fa-door-open simple-btn icon"></i>
+                    <span class="text" translate>COMMON_CENTER_CHANGE</span>
+                </div>
+            }
             <div type="button" mat-menu-item class="settings-item" (click)="logoutBtn.click()">
                 <ss-logout class="icon" (click)="$event.stopPropagation()" #logoutBtn></ss-logout>
                 <span class="text" translate>COMMON_LOGOUT</span>

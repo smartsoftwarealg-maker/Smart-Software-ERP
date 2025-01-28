@@ -68,7 +68,7 @@ import { gicaNavTree } from '../app/gica/side-nav-tree';
 import { socialNavTree } from '../app/social/side-nav-tree';
 
 export const environment = {
-    production: false,
+    production: false
 };
 
 export const navBar = [

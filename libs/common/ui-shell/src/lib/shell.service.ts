@@ -63,6 +63,7 @@ export interface MenuItem {
     providedIn: 'root'
 })
 export class ShellService {
+
     #badgeButtonSrv = inject(BadgeButtonService);
     private _application = '';
     private navTree: SideNavNode[] = [];

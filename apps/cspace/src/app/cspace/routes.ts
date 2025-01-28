@@ -4,7 +4,7 @@ import {
     SS_PARTNER_SCHEDULE_URL, SS_PAYMENT_URL, SS_QUOTA_URL
 } from '../common';
 import {Routes} from '@angular/router';
-import { CustomerCanActivateService, CanDeactivateService, LIST_URL } from '@ss/common/api-common';
+import { CustomerCanActivateService, CanDeactivateService, LIST_URL, CENTER_SELECT_URL } from '@ss/common/api-common';
 import {ReportViewComponent} from '@ss/common/ui-report-param';
 import {CustomerProfileComponent} from "@ss/logistics/ui-agent";
 import {
@@ -109,6 +109,7 @@ export const cSpaceRoutes: Routes = [
         canActivate: [CustomerCanActivateService],
         data: { reportBase: 'cspace' }
     },
+
 
     {path: '', redirectTo: 'login', pathMatch: 'full'},
     {path: '**', redirectTo: 'login', pathMatch: 'full'}

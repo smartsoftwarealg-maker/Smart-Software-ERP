@@ -22,5 +22,11 @@
     "MONTHLY_TURNOVER":   "Chiffre d'affaires mensuel",
     "ANNUAL_TURNOVER":    "Chiffre d'affaires annuel",
     "MONTHLY_PAYMENTS":   "Paiements mensuels",
-    "ANNUAL_PAYMENTS":    "Paiements annuels"
+    "ANNUAL_PAYMENTS":    "Paiements annuels",
+    "CSPACE":             "Espace client",
+    "SCHS":               "HADJAR SOUD",
+    "ECDE":               "CHLEF",
+    "SCAKE":              "SCAKE",
+    "SG":                 "SCSG",
+    "COMPANY_SELECTOR":   "Sélection de compagnie"
 }

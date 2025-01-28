@@ -25,12 +25,10 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         CommonModule,
         MaterialModule,
         TranslateDirective,
-
         ReactiveFormsModule,
-
-
         PaginationComponent,
-        UiAutoCompleteComponent
+        UiAutoCompleteComponent,
+        TranslatePipe
     ]
 })
 export class SalesScheduleListComponent extends BaseEntityListComponent<Schedule> {

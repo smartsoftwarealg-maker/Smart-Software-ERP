@@ -1,5 +1,4 @@
 import { enableProdMode, ErrorHandler, importProvidersFrom } from '@angular/core';
-import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
 
 import { environment } from './environments/environment';
@@ -51,27 +50,6 @@ const routes: Routes = [
     { path: '', redirectTo: LOGIN_URL, pathMatch: 'full' },
     { path: '**', redirectTo: LOGIN_URL, pathMatch: 'full' }
 ];
-// const routes: Routes = [
-//     {
-//         path: MAIN_PAGE_URL,
-//         component: ShellComponent,
-//         children: [
-//             {
-//                 path: INDEX_PAGE_URL,
-//                 component: MainPageComponent,
-//                 canActivate: [CanActivateService]
-//             },
-//             {
-//                 path: CSPACE_APP_URL,
-//                 loadChildren: () => import("./app/cspace/c-space.module").then(m => m.CSpaceModule)
-//             },
-//             { path: '', redirectTo: INDEX_PAGE_URL, pathMatch: 'full' },
-//             { path: '**', redirectTo: INDEX_PAGE_URL, pathMatch: 'full' }
-//         ]
-//     },
-//     { path: '', redirectTo: LOGIN_URL, pathMatch: 'full' },
-//     { path: '**', redirectTo: LOGIN_URL, pathMatch: 'full' }
-// ];
 
 
 if (environment.production) {

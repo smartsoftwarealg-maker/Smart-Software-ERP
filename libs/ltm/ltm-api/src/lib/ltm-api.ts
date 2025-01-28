@@ -350,6 +350,7 @@ export interface LTMProductLiberationLine {
     productId: number;
     siloId: number;
     typeId: number;
+    memo?: string;
     productDescription?: string;
     siloDescription?: string;
     typeDescription?: string}

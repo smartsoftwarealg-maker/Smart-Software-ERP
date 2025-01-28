@@ -355,5 +355,7 @@
     "PAY_MODE":                   "Mode de paiement",
     "MUNICIPALITY":               "Commune",
     "ACCOUNTING_APP":             "Comptabilité",
-    "SHOW_ACTIVE_ONLY": "Afficher uniquement les actifs actifs"
-}
+    "SHOW_ACTIVE_ONLY": "Afficher uniquement les actifs actifs",
+    "SCHS":               "SOCIETE DES CIMENTS DE HADJAR SOUD",
+    "ECDE":               "CIMENTERIE DE CHLEF",
+    "COMPANY_SELECTOR":   "Sélection de cimentrie"}

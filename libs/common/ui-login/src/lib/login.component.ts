@@ -1,12 +1,13 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
 import { FormBuilder, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import {ABS_INDEX_URL, LoginService, LoginType} from '@ss/common/api-common';
+import { ABS_INDEX_URL, CompanySelectorService, HttpService, LoginService, LoginType } from '@ss/common/api-common';
 import {DeviceDetectorService} from 'ngx-device-detector';
 import {Router} from '@angular/router';
 import { ShellService } from '@ss/common/ui-shell';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 import { LanguageSelectComponent } from '@ss/common/ui-lang';
 import { LoadingSpinnerComponent } from '../../../ui-loading-spinner/src';
+import { Preferences } from '@capacitor/preferences';
 
 type User = {
     username: string, password: string
@@ -26,26 +27,31 @@ type User = {
     ],
 })
 export class LoginComponent implements OnInit {
-    private shellSrv = inject(ShellService);
-    private time = 0;
-    private formBuilder = inject(FormBuilder);
-    private router = inject(Router);
+    #DEFAULT_COMPANY = 'DEFAULT_COMPANY';
+    #httpSrv = inject(HttpService);
+    #companySelectorSrv = inject(CompanySelectorService);
+    #shellSrv = inject(ShellService);
+    #time = 0;
+    #formBuilder = inject(FormBuilder);
+    #router = inject(Router);
+    readonly #USER_DATA = 'USER_DATA';
     protected deviceSrv = inject(DeviceDetectorService);
-    private readonly USER_DATA = 'USER_DATA';
 
     protected loginSrv = inject(LoginService);
     public user: User = { username: '', password: '' };
 
     public license: string = null;
     readonly isPhone: boolean;
+    readonly cSpace = signal(this.#companySelectorSrv.spaceCompany);
 
-    form = this.formBuilder.group({
+    form = this.#formBuilder.group({
         user: ['', [Validators.required, Validators.min(3)]],
         pass: [''],
         license: [''],
         keep: [true],
     });
     loading = signal(false);
+    multiCompany = signal(this.#companySelectorSrv.multiCompany);
 
     constructor() {
         const os = this.deviceSrv.getDeviceInfo().os.toLocaleLowerCase();
@@ -57,7 +63,7 @@ export class LoginComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        const storage = localStorage.getItem(this.USER_DATA);
+        const storage = localStorage.getItem(this.#USER_DATA);
         if (storage) {
             try {
                 this.user = JSON.parse(storage);
@@ -67,12 +73,27 @@ export class LoginComponent implements OnInit {
         }
         if (this.loginSrv.isLoggedIn) {
             this.loading.set(true);
-            this.router.navigate([ABS_INDEX_URL]).then();
+            this.#router.navigate([ABS_INDEX_URL]).then();
         }
-        if (this.time) {
-            clearTimeout(this.time);
+        if (this.#time) {
+            clearTimeout(this.#time);
+        }
+
+        if (this.#companySelectorSrv.multiCompany) {
+            this.#companySelectorSrv.spaceCompany = localStorage.getItem(this.#DEFAULT_COMPANY);
+            if (!this.deviceSrv.isDesktop()) {
+                const checkName = async () => {
+                    const { value } = await Preferences.get({ key: this.#DEFAULT_COMPANY });
+                    this.#companySelectorSrv.spaceCompany = value;
+                };
+            }
+            if (this.loginSrv.customerLogin === LoginType.CUSTOMER && this.#companySelectorSrv.spaceCompany) {
+                this.#httpSrv.selectCompany(this.#companySelectorSrv.spaceCompany);
+            }
+            this.cSpace.set(this.#companySelectorSrv.spaceCompany);
         }
     }
+
 
     public onSubmit() {
         // this.loading.set(true);
@@ -107,14 +128,14 @@ export class LoginComponent implements OnInit {
                 );
             }
         }
-        localStorage.setItem(this.USER_DATA, JSON.stringify(this.user));
+        localStorage.setItem(this.#USER_DATA, JSON.stringify(this.user));
     }
 
     private resetTimer() {
-        if (this.time) {
-            clearTimeout(this.time);
+        if (this.#time) {
+            clearTimeout(this.#time);
         }
-        this.time = window.setTimeout(
+        this.#time = window.setTimeout(
             () =>
                 this.loginSrv.logout().then(() => {
                     document.onmousemove = null;
@@ -125,6 +146,10 @@ export class LoginComponent implements OnInit {
     }
     onLoadingFinished = () => {
         this.loading.set(false);
-        this.shellSrv.filterSideNav();
+        this.#shellSrv.filterSideNav();
     };
+
+    onSelectedCompany(company: string) {
+        this.cSpace.set(company);
+    }
 }

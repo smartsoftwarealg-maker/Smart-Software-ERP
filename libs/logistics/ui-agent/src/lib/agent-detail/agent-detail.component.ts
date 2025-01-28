@@ -155,7 +155,7 @@ export class AgentDetailComponent extends BaseEntityDetailComponent<Agent> imple
         this.form.controls['recordBlocked']
             .valueChanges
             .subscribe(x => {
-                if (x) {
+                if (!x) {
                     this.form.controls['blockingReason'].disable();
                     this.form.controls['blockingReason'].setValue('');
                 } else {

@@ -121,6 +121,48 @@
                     ],
                     "outputHashing": "all"
                 },
+                "schs": {
+                    "budgets": [
+                        {
+                            "type": "initial",
+                            "maximumWarning": "5000kb",
+                            "maximumError": "10mb"
+                        },
+                        {
+                            "type": "anyComponentStyle",
+                            "maximumWarning": "20kb",
+                            "maximumError": "40kb"
+                        }
+                    ],
+                    "fileReplacements": [
+                        {
+                            "replace": "apps/cspace/src/environments/environment.ts",
+                            "with": "apps/cspace/src/environments/environment.schs.ts"
+                        }
+                    ],
+                    "outputHashing": "all"
+                },
+                "ecde": {
+                    "budgets": [
+                        {
+                            "type": "initial",
+                            "maximumWarning": "5000kb",
+                            "maximumError": "10mb"
+                        },
+                        {
+                            "type": "anyComponentStyle",
+                            "maximumWarning": "20kb",
+                            "maximumError": "40kb"
+                        }
+                    ],
+                    "fileReplacements": [
+                        {
+                            "replace": "apps/cspace/src/environments/environment.ts",
+                            "with": "apps/cspace/src/environments/environment.ecde.ts"
+                        }
+                    ],
+                    "outputHashing": "all"
+                },
                 "development": {
                     "buildOptimizer": false,
                     "optimization": false,

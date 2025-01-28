@@ -351,5 +351,9 @@
     "PAY_MODE":                   "Pay mode",
     "MUNICIPALITY":               "Municipality",
     "ACCOUNTING_APP":             "Accounting",
-    "SHOW_ACTIVE_ONLY": "Show active only"
+    "SHOW_ACTIVE_ONLY": "Show active only",
+    "CSPACE":             "Customer space",
+    "SCHS":               "Cement Company of Hadjar Soud",
+    "ECDE":               "Chlef Cement Plant",
+    "COMPANY_SELECTOR":   "Company selector"
 }

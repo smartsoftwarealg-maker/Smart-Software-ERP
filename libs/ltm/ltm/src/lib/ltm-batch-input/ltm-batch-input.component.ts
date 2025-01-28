@@ -459,6 +459,7 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
 
     private save() {
         const formValue: LTMBatch = this.form.getRawValue() as LTMBatch;
+        debugger;
         if (!this.form.valid ||
             (this.form.controls.sampleNo.invalid && this.testingMode() === PHYSICAL_TEST) ||
             !this.validateFormulas() ||

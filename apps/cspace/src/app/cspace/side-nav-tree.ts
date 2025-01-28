@@ -7,13 +7,13 @@ import {SideNavNode} from '@ss/common/api-common';
 
 export const cSpaceNavTree: SideNavNode[] =
     [
-        {
-            name: 'COMMON_HOME',
-            icon: 'fa-solid fa-house',
-            route: ABS_SALES_HOME_URL,
-            accessRights: 'Home',
-            customerRights: {read: true, edit: true, delete: true, write: true}
-        },
+        // {
+        //     name: 'COMMON_HOME',
+        //     icon: 'fa-solid fa-house',
+        //     route: ABS_SALES_HOME_URL,
+        //     accessRights: 'Home',
+        //     customerRights: {read: true, edit: true, delete: true, write: true}
+        // },
         {
             name: 'SCH_QUOTAS',
             icon: 'fa-solid fa-quote-left',
