@@ -163,7 +163,7 @@ export const ltmNavTree: SideNavNode = {
             name: 'LTM_ALERTS',
             icon: 'fa-solid fa-sensor-triangle-exclamation',
             route: ABS_LTM_ALERT_URL,
-            accessRights: 'LTMTesting'
+            accessRights: 'LTMAbnormalTest'
         },
 
         // {

@@ -361,6 +361,10 @@ export class HttpService {
             this.baseUrl = 'https://client2.schs.dz';
         } else if (company === 'SCH_ECDE') {
             this.baseUrl = 'https://clientecde.gica.dz';
+        } else if (company === 'SCH_SG') {
+            this.baseUrl = 'https://client2.sg.dz';
+        } else if (company === 'SCH_SCAKE') {
+            this.baseUrl = 'https://client2.scake.dz';
         }
     }
 }

@@ -18,7 +18,7 @@
 
 .container_div {
     overflow-x: auto;
-    min-height: calc(100% - 90px);
+    min-height: calc(100% - 90px - 64px);
 }
 
 .size, container_div {

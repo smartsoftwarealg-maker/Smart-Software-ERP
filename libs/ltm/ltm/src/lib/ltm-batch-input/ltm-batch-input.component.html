@@ -1,11 +1,18 @@
 <form [formGroup]="form">
     <mat-card class="ctrl__div">
         <mat-card-content>
-            <mat-form-field>
+            <mat-form-field class="default-100">
                 <mat-label translate>LTM_PERIOD</mat-label>
                 <ss-auto-complete matInput
                                   [model]="periodLookup"
                                   [formControl]="periodCtrl">
+                </ss-auto-complete>
+            </mat-form-field>
+            <mat-form-field class="default-100">
+                <mat-label translate>LTM_TEST</mat-label>
+                <ss-auto-complete matInput
+                                  [model]="matterTestLookup"
+                                  [formControl]="matterTestCtrl">
                 </ss-auto-complete>
             </mat-form-field>
 

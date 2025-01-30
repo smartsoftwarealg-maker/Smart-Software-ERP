@@ -13,7 +13,7 @@
 }
 
 .table__div {
-    min-height: calc(100% - 150px);
+    min-height: calc(100% - 150px - 64px);
     overflow-x: auto;
 }
 
