@@ -234,6 +234,11 @@ export abstract class BaseTransactionLinesDetailComponent extends AbstractEntity
     }
 
     save() {
+        if (this.saveButton.disabled) {
+            return;
+        } else {
+            this.saveButton.disabled = true;
+        }
         this.form.markAllAsTouched();
         if (!this.form.valid) {
             this.snackBarSrv.showFailureMessage('COMMON_FORM_NOT_VALID');
@@ -259,6 +264,7 @@ export abstract class BaseTransactionLinesDetailComponent extends AbstractEntity
                     this.snackBarSrv.showFailureMessage();
                     this.shellSrv.setLoading(false);
                     this.form?.reset(val);
+                    this.saveButton.disabled = false;
                     throw err;
                 }
             });

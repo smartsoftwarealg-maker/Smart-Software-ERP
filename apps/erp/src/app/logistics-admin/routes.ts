@@ -14,7 +14,7 @@ import {
     LOGISTICS_ARTICLES_URL,
     STOCK_UNITS_URL,
     LOGISTICS_CUSTOMER_URL,
-    LOGISTICS_SUPPLIER_URL, LOGISTICS_ORDER_ANOMALIES_URL, LOGISTICS_TRANSPORTER_URL
+    LOGISTICS_SUPPLIER_URL, LOGISTICS_ORDER_ANOMALIES_URL, LOGISTICS_TRANSPORTER_URL, DELIVERY_TIME_URL
 } from '../common';
 import {ABS_INDEX_URL, CanDeactivateService, LIST_URL} from '@ss/common/api-common';
 import {Routes} from '@angular/router';
@@ -48,6 +48,10 @@ import {loginGuard} from '../erp-guards';
 import { AGENT_ARCHIVES } from '@ss/common/app-archive';
 import { ArticleDetailComponent, ArticleListComponent } from '@ss/master-data/ui-article';
 import { LogisticsOrderAnomaliesComponent } from '@logistics/order-anomalies';
+import {
+    DeliveryTimeDetailComponent,
+    DeliveryTimeListComponent
+} from '../../../../../libs/common/ui-lookup/src/lib/components/delivery-time.component';
 
 export const mainRoutes: Routes = [
     {
@@ -239,6 +243,23 @@ export const mainRoutes: Routes = [
             {
                 path: ':id',
                 component: VatDetailComponent,
+                canActivate: [loginGuard],
+                canDeactivate: [CanDeactivateService]
+            },
+            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
+        ]
+    },
+    {
+        path: DELIVERY_TIME_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: DeliveryTimeListComponent,
+                canActivate: [loginGuard],
+            },
+            {
+                path: ':id',
+                component: DeliveryTimeDetailComponent,
                 canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService]
             },
