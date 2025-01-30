@@ -177,5 +177,6 @@
     "PPRICE":               "Cout unitaire",
     "QUANTITIES":           "Quantités",
     "QTY_RETURNED":         "Quantité retournee",
-    "CHARGE":               "Frais ou remise si négatif"
+    "CHARGE":               "Frais ou remise si négatif",
+    "DELIVERY_TIMES":       "Délais de livraison"
 }

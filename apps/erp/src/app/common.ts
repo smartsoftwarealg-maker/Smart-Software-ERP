@@ -196,6 +196,7 @@ export const LOGISTICS_ACTIVITY_URL = 'activities';
 export const LOGISTICS_CURRENCY_URL = 'currencies';
 export const FURNITURE_STATUS_URL = 'furniture-states';
 export const LOGISTICS_WORKFLOW_URL = 'workflow-messages';
+export const DELIVERY_TIME_URL = 'delivery-times';
 
 
 // Contracts
@@ -615,6 +616,7 @@ export const ABS_LOGISTICS_CURRENCY = '/' + [MAIN_PAGE_URL, LOGISTICS_APP_URL, L
 export const ABS_LOGISTICS_CATEGORY = '/' + [MAIN_PAGE_URL, LOGISTICS_APP_URL, SALES_CATEGORY_URL].join('/');
 export const ABS_LOGISTICS_UNITS = '/' + [MAIN_PAGE_URL, LOGISTICS_APP_URL, STOCK_UNITS_URL].join('/');
 export const ABS_LOGISTICS_ORDER_ANOMALIES = '/' + [MAIN_PAGE_URL, LOGISTICS_APP_URL, LOGISTICS_ORDER_ANOMALIES_URL].join('/');
+export const ABS_LOGISTICS_DELIVERY_TIMES = '/' + [MAIN_PAGE_URL, LOGISTICS_APP_URL, DELIVERY_TIME_URL].join('/');
 
 // Contracts
 export const ABS_CONTRACTS_PROJECT_TYPE = '/' + [MAIN_PAGE_URL, CONTRACTS_APP_URL,  CONTRACTS_PROJECT_TYPE_URL].join('/');

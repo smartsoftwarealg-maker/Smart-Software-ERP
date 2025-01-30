@@ -178,5 +178,6 @@
     "NEXT_CODE":            "Next code",
     "QUANTITIES":           "Quantities",
     "QTY_RETURNED":         "Quantity Returned",
-    "CHARGE":               "Charge or discount if negative"
+    "CHARGE":               "Charge or discount if negative",
+    "DELIVERY_TIMES":       "Delivery times"
 }
