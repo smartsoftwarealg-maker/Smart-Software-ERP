@@ -1,8 +1,8 @@
 export const environment = {
     production: true,
-    company: 'SCHS',
+    company: 'SCH_SCHS',
     homePage: 'https://www.schs.dz',
-    multiCompany: true
+    multiCompany: false
 };
 // export const homePage: string|null = 'https://www.ecde.dz/';
  export const homePage: string|null = 'https://schs.dz';

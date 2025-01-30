@@ -5,7 +5,7 @@
 }
 
 .div_table {
-    height: calc(100% - 70px);
+    height: calc(100% - 70px - 64px);
     overflow-x: auto;
 }
 

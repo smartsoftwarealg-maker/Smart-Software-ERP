@@ -20,7 +20,7 @@
                                 (click)="scrollTo($event)">
                                 <!-- use a disabled button to provide padding for tree leaf -->
                                 <button mat-icon-button disabled></button>
-                                <div class="nav-tree-icon" [style.backgroundColor]="node.backgroundColor">
+                                <div class="nav-tree-icon" [style.background-color]="node.backgroundColor">
                                     <i *ngIf="node.icon" [class]="node.icon"></i>
                                 </div>
                                 <span class="margin-start-8" translate>{{ node.name }}</span>
@@ -34,7 +34,7 @@
                                     <button mat-icon-button>
                                         <i class="{{treeControl.isExpanded(node) ? 'fas fa-chevron-down' : (langSrv.rtl ? 'fas fa-chevron-left' : 'fas fa-chevron-right')}}"></i>
                                     </button>
-                                    <div class="nav-tree-icon" [style.backgroundColor]="node.backgroundColor">
+                                    <div class="nav-tree-icon" [style.background-color]="node.backgroundColor">
                                         <i *ngIf="node.icon" [class]="node.icon"></i>
                                     </div>
                                     <span class="margin-start-8" translate>{{ node.name }}</span>

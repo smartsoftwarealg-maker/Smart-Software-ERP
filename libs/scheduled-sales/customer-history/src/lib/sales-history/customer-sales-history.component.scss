@@ -5,20 +5,20 @@ form {
 }
 
 mat-card {
-    padding: 0px;
+    padding: 0;
     border-radius: 1.4em;
 }
 mat-table {
     min-width: 1000px;
 }
 .size {
-    width: 90%;
+    width: 96%;
     max-width: 1200px;
     margin: 4px auto 0;
 }
 
 .div_table {
-    height: calc(100% - 184px);
+    height: calc(100% - 184px - 64px);
     overflow: auto;
 }
 
@@ -26,7 +26,8 @@ mat-table {
     width: 100%;
 }
 .content-div {
-    width: 496px;
+    width: 96%;
+    max-width: 700px;
     min-height: 320px;
 }
 
@@ -57,4 +58,12 @@ mat-table {
 .mat-column-licenseNo,
 .mat-column-plateNumber {
     flex: 1 1 150px;
+}
+
+@media (width <= 600px) {
+    .div_table {
+        height: calc(100% - 400px);
+        overflow: auto;
+    }
+
 }
