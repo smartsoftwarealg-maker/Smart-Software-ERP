@@ -34,8 +34,8 @@ export class LtmAlertsDetailComponent extends BaseEntityDetailComponent<LTMAbnor
     #normSrv = inject(LtmNormService);
 
     // actionLookup = new DefaultAutoCompleteModel(this.#actionSrv);
-    userLookup   = new UserLookup(this.#userSrv);
     normLookup = new DefaultAutoCompleteModel(this.#normSrv);
+    userLookup   = new UserLookup(this.#userSrv);
     responsibleLookup = new UserLookup(this.#userSrv);
     qualityChiefLookup  = new UserLookup(this.#userSrv);
 
