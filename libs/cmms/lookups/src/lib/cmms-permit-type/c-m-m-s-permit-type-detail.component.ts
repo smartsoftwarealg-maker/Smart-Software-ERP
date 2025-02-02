@@ -14,6 +14,7 @@ import { MaterialModule } from '@ss/common/api-common';
 
 import { CMMSPermitTypeService } from '../services/cmms-permit-type.service';
 import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
+import { TranslateDirective } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-cmms-permit-type-detail',
@@ -29,7 +30,8 @@ import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
         MatInputModule,
         MaterialModule,
         ReactiveFormsModule,
-        RouterOutlet
+        RouterOutlet,
+        TranslateDirective
     ],
 })
 export class CMMSPermitTypeDetailComponent extends BaseLookupDetailClass {
@@ -40,6 +42,6 @@ export class CMMSPermitTypeDetailComponent extends BaseLookupDetailClass {
         public override route: ActivatedRoute,
         public override confirmationSrv: ConfirmationDialogService,
         public override formBuilder: UntypedFormBuilder) {
-        super(entitySrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'COMMON_PERMIT_TYPES');
+        super(entitySrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'CMMS_PERMIT_TYPES');
     }
 }

@@ -327,8 +327,8 @@ export class UiAutoCompleteComponent implements ControlValueAccessor, MatFormFie
     }
 
     ngOnDestroy() {
-        this.filterSub.unsubscribe();
-        this.stateChanges.complete();
+        this.filterSub?.unsubscribe();
+        this.stateChanges?.complete();
         this.fm.stopMonitoring(this.elRef.nativeElement);
     }
 

@@ -22,7 +22,7 @@ import { CMMSWorkPersonService } from '../services/c-m-m-s-work-person.service';
 import { CMMSInspectionOrderService } from '../services/c-m-m-s-inspection-order.service';
 import { CMMSInspectionService } from '../services/c-m-m-s-inspection.service';
 import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
-import { TranslatePipe } from '@ss/common/ui-lang';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-work-order-detail',
@@ -45,7 +45,8 @@ import { TranslatePipe } from '@ss/common/ui-lang';
         MaterialModule,
         RouterOutlet,
         UiAutoCompleteComponent,
-        TranslatePipe
+        TranslatePipe,
+        TranslateDirective
     ]
 })
 export class InspectionOrderDetailComponent extends CMMSWorkDetail {

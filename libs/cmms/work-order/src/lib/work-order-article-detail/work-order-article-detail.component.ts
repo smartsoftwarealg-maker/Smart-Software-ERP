@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { BaseChildEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { WorkArticle } from '@ss/cmms/cmms-api';
 import { CMMSWorkOrderArticleService } from '../services/c-m-m-s-work-order-article.service';
-import { FormBuilder, FormsModule, ReactiveFormsModule, UntypedFormGroup } from '@angular/forms';
+import { FormBuilder, FormsModule, ReactiveFormsModule, UntypedFormGroup, Validators } from '@angular/forms';
 import { ArticleService } from '@ss/master-data/api-article';
 import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 
@@ -15,6 +15,7 @@ import { MatInputModule } from '@angular/material/input';
 import { DatePickerComponent } from '@ss/common/ui-datepicker';
 import { MatButtonModule } from '@angular/material/button';
 import { MaterialModule } from '@ss/common/api-common';
+import { TranslateDirective } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-work-order-article-detail',
@@ -30,7 +31,7 @@ import { MaterialModule } from '@ss/common/api-common';
         ReactiveFormsModule,
         MatCardModule,
         MatInputModule,
-       
+        TranslateDirective,
         MatButtonModule,
         MaterialModule,
         UiAutoCompleteComponent
@@ -53,7 +54,8 @@ export class WorkOrderArticleDetailComponent extends BaseChildEntityDetailCompon
             id:        [e.id],
             parentId:  [e.parentId || this.entitySrv.getParentId()],
             articleId: [e.articleId],
-            qty:       [e.qty]
+            qty:       [e.qty|0,   Validators.required],
+            price:     [e.price|0, Validators.required]
         });
     }
 }

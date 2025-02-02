@@ -8,12 +8,12 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatTableModule } from '@angular/material/table';
 
 import { MaterialModule } from "@ss/common/api-common";
-import { TranslatePipe } from '@ss/common/ui-lang';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-person-fault-list',
     standalone: true,
-    imports: [CommonModule, MatButtonModule, MatTableModule, MaterialModule, TranslatePipe],
+    imports: [CommonModule, MatButtonModule, MatTableModule, MaterialModule, TranslatePipe, TranslateDirective],
     templateUrl: './person-fault-list.component.html',
     styleUrls: ['./person-fault-list.component.css'],
 })

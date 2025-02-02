@@ -13,6 +13,7 @@ import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from "@angular/material/input";
 import { MaterialModule } from "@ss/common/api-common";
 import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
+import { TranslateDirective } from '@ss/common/ui-lang';
 
 
 @Component({
@@ -30,7 +31,8 @@ import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
         MatInputModule,
         MaterialModule,
         ReactiveFormsModule,
-        RouterOutlet
+        RouterOutlet,
+        TranslateDirective
     ],
 })
 export class CMMSSolutionDetailComponent extends BaseLookupDetailClass {

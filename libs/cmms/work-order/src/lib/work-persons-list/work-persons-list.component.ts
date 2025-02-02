@@ -15,7 +15,7 @@ import { BaseChildEntityListComponent } from '@ss/common/ui-base-entity';
 import { WorkPerson } from '@ss/cmms/cmms-api';
 import { CMMSWorkPersonService } from '../services/c-m-m-s-work-person.service';
 import { PaginationComponent } from '@ss/common/ui-pagination';
-import { TranslatePipe } from '@ss/common/ui-lang';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-work-persons-list',
@@ -30,10 +30,11 @@ import { TranslatePipe } from '@ss/common/ui-lang';
         ReactiveFormsModule,
         MatCardModule,
         MatInputModule,
-       
+
         MatButtonModule,
         MaterialModule,
-        TranslatePipe
+        TranslatePipe,
+        TranslateDirective
     ],
     templateUrl: './work-persons-list.component.html',
     styleUrls: ['./work-persons-list.component.css'],

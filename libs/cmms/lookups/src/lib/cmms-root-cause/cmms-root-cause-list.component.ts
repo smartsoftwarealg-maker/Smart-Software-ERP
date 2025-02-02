@@ -34,7 +34,8 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         MatInputModule,
         MaterialModule,
         ReactiveFormsModule,
-        TranslatePipe
+        TranslatePipe,
+        TranslateDirective
     ],
 })
 export class CMMSRootCauseListComponent extends BaseEntityListComponent<Lookup> {

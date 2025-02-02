@@ -33,6 +33,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         MaterialModule,
         ReactiveFormsModule,
         TranslatePipe,
+        TranslateDirective,
         PaginationComponent
     ],
 })

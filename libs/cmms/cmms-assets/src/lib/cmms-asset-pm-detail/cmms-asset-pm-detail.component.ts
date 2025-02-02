@@ -35,11 +35,12 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { CMMSFunctionService } from '@ss/cmms/lookups';
 import { AssetPmService } from '../services/asset-pm.service';
 import { CMMSAssetTriggerService } from '@ss/cmms/asset-triggers';
+import { TranslateDirective } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-cmms-asset-detail',
     standalone: true,
-    imports: [CommonModule, FormsModule, MatButtonModule, MatExpansionModule, MatFormFieldModule, MatInputModule, MatOptionModule, MatSelectModule, MatTableModule, MatTooltipModule, ReactiveFormsModule, RouterOutlet, MaterialModule, UiAutoCompleteComponent],
+    imports: [CommonModule, FormsModule, MatButtonModule, MatExpansionModule, MatFormFieldModule, MatInputModule, MatOptionModule, MatSelectModule, MatTableModule, MatTooltipModule, ReactiveFormsModule, RouterOutlet, MaterialModule, UiAutoCompleteComponent, TranslateDirective],
     templateUrl: './cmms-asset-pm-detail.component.html',
     styleUrls: ['./cmms-asset-pm-detail.component.scss'],
 })

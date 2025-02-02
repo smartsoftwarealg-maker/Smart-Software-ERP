@@ -12,7 +12,7 @@ import { MaterialModule } from "libs/common/api-common/src";
 import { ReactiveFormsModule } from "@angular/forms";
 import { RouterOutlet } from "@angular/router";
 import { UiAutoCompleteComponent } from "libs/common/ui-auto-complete/src";
-import { TranslatePipe } from '@ss/common/ui-lang';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 import { PaginationComponent } from '@ss/common/ui-pagination';
 
 @Component({
@@ -31,8 +31,7 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
         MatInputModule,
         MaterialModule,
         ReactiveFormsModule,
-       
-
+        TranslateDirective,
         TranslatePipe,
         PaginationComponent
     ]

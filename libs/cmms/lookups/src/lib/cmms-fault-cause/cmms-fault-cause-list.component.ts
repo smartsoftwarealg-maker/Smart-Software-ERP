@@ -17,7 +17,7 @@ import { ReactiveFormsModule } from "@angular/forms";
 
 import { PaginationComponent } from '@ss/common/ui-pagination';
 import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
-import { TranslatePipe } from '@ss/common/ui-lang';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-cmms-fault-cause-list',
@@ -34,7 +34,8 @@ import { TranslatePipe } from '@ss/common/ui-lang';
         MatInputModule,
         MaterialModule,
         ReactiveFormsModule,
-        TranslatePipe
+        TranslatePipe,
+        TranslateDirective
     ],
 })
 export class CMMSFaultCauseListComponent extends BaseEntityListComponent<Lookup> {

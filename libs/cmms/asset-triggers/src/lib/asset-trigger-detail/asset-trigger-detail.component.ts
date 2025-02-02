@@ -25,7 +25,8 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         MatTableModule,
         TranslateDirective,
         MaterialModule,
-        UiAutoCompleteComponent
+        UiAutoCompleteComponent,
+        TranslateDirective
     ],
 })
 export class AssetTriggerDetailComponent extends BaseChildEntityDetailComponent<AssetTrigger> {

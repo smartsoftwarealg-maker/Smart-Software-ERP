@@ -13,6 +13,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MaterialModule } from 'libs/common/api-common/src';
 import { RouterOutlet } from '@angular/router';
+import { TranslateDirective } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-cmms-routing-parts-detail',
@@ -28,7 +29,8 @@ import { RouterOutlet } from '@angular/router';
         MatInputModule,
         MaterialModule,
         ReactiveFormsModule,
-        UiAutoCompleteComponent
+        UiAutoCompleteComponent,
+        TranslateDirective
     ],
 })
 export class CMMSRoutingPartsDetailComponent extends BaseChildEntityDetailComponent<RoutingPart> {

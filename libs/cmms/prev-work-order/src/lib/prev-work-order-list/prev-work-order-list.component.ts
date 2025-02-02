@@ -36,6 +36,7 @@ import { TranslatePipe } from '@ss/common/ui-lang';
         PaginationComponent,
         DatePipe,
         TranslatePipe,
+        TranslateDirective
     ],
 })
 export class PrevWorkOrderListComponent extends BaseEntityListComponent<Work> {

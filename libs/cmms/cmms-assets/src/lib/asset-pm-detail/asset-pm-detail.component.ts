@@ -21,15 +21,15 @@ import { CMMSPlanService } from '@ss/cmms/plans';
 import { AssetsService } from '@ss/assets-component';
 import { MatButtonModule } from '@angular/material/button';
 import { CMMSRoutingService } from '@ss/master-data/cmms-routing';
+import { TranslateDirective } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-asset-pm-detail',
     standalone: true,
     imports: [
         CommonModule,
-
         DatePickerComponent,
-
+        TranslateDirective,
         MatCardModule,
         MatFormFieldModule,
         MatInputModule,
