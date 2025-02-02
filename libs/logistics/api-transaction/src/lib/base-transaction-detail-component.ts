@@ -34,6 +34,7 @@ import { OptionService } from '@ss/logistics/ui-options';
 
 @Directive()
 export abstract class BaseTransactionDetailComponent extends BaseEntityDetailComponent<Transaction> implements OnInit {
+    private CONSUMPTION_DOCUMENT = 260;
     private optionSrv = inject(OptionService);
     private agentSrv = inject(AgentService);
     private payMethodSrv = inject(PayMethodService);
@@ -106,6 +107,9 @@ export abstract class BaseTransactionDetailComponent extends BaseEntityDetailCom
     }
 
     private updateProjectLookups(id: number) {
+        if (this.form.controls['document'].value === this.CONSUMPTION_DOCUMENT) {
+            id = 0;
+        }
         this.purchaseProjectSrv.setParentId(id);
         this.salesProjectSrv.setParentId(id);
         if (id) {
