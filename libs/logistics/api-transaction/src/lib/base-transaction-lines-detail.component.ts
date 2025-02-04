@@ -223,6 +223,7 @@ export abstract class BaseTransactionLinesDetailComponent extends AbstractEntity
             charge3:      [b.charge3 || 0],
             charge4:      [b.charge4 || 0],
             costCenter:   [b.costCenter],
+            pprice:       [b.pprice],
         });
     }
     public get id() {

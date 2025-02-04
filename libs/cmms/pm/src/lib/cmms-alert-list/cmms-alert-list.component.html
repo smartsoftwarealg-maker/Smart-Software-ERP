@@ -17,6 +17,16 @@
 <div class="div_table size">
     <mat-table mat-table [dataSource]="data" class="main-table" matSort (matSortChange)="sort($event)">
 
+        <ng-container matColumnDef="selection">
+            <mat-header-cell *matHeaderCellDef> </mat-header-cell>
+            <mat-cell *matCellDef="let e">
+
+                <mat-checkbox [class.mat-checkbox-disabled]="false" disabled="true"
+                              [checked]="false">
+                </mat-checkbox>
+            </mat-cell>
+        </ng-container>
+
         <ng-container matColumnDef="planDescription">
             <mat-header-cell *matHeaderCellDef mat-sort-header translate>CMMS_PLAN</mat-header-cell>
             <mat-cell *matCellDef="let e">

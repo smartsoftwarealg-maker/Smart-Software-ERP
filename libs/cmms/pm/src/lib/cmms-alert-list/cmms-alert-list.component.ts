@@ -60,6 +60,7 @@ export class CmmsAlertListComponent extends BaseEntityListComponent<PM> implemen
 
     displayedColumns = [
         // 'reference',
+        'selection',
         'description',
         'assetDescription',
         'planDescription',

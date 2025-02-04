@@ -9,8 +9,8 @@ export class CompanySelectorService {
     #homePage: string|null = null;
     #httpSrv = inject(HttpService);
     #homePageMap: Map<string, string> = new Map<string, string>([
-        ['SCH_ECDE', 'https://www.schs.dz'],
-        ['SCH_SCHS', 'https://ecde.gica.dz']
+        ['SCH_ECDE', 'https://ecde.gica.dz'],
+        ['SCH_SCHS', 'https://www.schs.dz']
     ]);
 
     companyList = [
