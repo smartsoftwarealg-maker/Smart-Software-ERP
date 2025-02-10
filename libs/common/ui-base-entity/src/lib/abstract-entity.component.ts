@@ -28,15 +28,15 @@ export abstract class AbstractEntityComponent<T extends { id: number }> implemen
     protected constructor(public entitySrv: BaseEntityService<T>) {}
 
     public save() {
-        if (this.saveButton.disabled) {
-            return;
-        } else {
-            this.saveButton.disabled = true;
-        }
         this.form.markAllAsTouched();
         if (!this.isValidForm()) {
             this.snackBarSrv.showFailureMessage('COMMON_FORM_NOT_VALID');
             return;
+        }
+        if (this.saveButton.disabled) {
+            return;
+        } else {
+            this.saveButton.disabled = true;
         }
         const val = this.readForm();
         // val.id = this.queryId || val.id;

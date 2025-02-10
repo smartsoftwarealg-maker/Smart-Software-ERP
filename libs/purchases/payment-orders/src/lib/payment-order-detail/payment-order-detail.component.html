@@ -29,7 +29,8 @@
                 <mat-label translate>LOGISTICS_SUPPLIER</mat-label>
                 <ss-auto-complete matInput
                                   [model]="supplierLookup"
-                                  formControlName="agent_id"></ss-auto-complete>
+                                  formControlName="agent_id"
+                                  required></ss-auto-complete>
             </mat-form-field>
 
             <mat-form-field class="default-50">
@@ -41,7 +42,7 @@
 
             <mat-form-field class="default-50">
                 <mat-label translate>LOGISTICS_INVOICE_DATE</mat-label>
-                <ss-date-picker formControlName="invoice_date"></ss-date-picker>
+                <ss-date-picker formControlName="invoice_date" required></ss-date-picker>
             </mat-form-field>
 
             <mat-form-field class="default-50 sm-100">
@@ -61,7 +62,7 @@
             </mat-form-field>
 
             <mat-form-field class="default-50 sm-100">
-                <mat-label translate>COMMON_BANK_ACCOUNT</mat-label>
+                <mat-label translate>ADMINISTRATION_BANK_ACCOUNT</mat-label>
                 <input matInput formControlName="bankAccount" type="text" >
             </mat-form-field>
 

@@ -8,6 +8,7 @@ import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import {BaseEntityService} from '@ss/common/api-base-entity';
 import {Sort} from '@angular/material/sort';
+import { LTM_NON_CONFORMITY_DOC } from '@ltm/ltm-api';
 
 @Directive()
 export class BaseEntityListComponent<T extends { id: number, email?: string }> implements OnInit, OnDestroy {
@@ -364,5 +365,9 @@ export class BaseEntityListComponent<T extends { id: number, email?: string }> i
 
     set editable(b: boolean) {
         this._editable = b;
+    }
+
+    get formReport(): string {
+        return this.reportForm;
     }
 }

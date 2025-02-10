@@ -1,0 +1,21 @@
+
+.content__div {
+    width: 96%;
+    max-width: 700px;
+    margin: 4px auto;
+}
+
+.table__div {
+    min-height: calc(100% - 290px);
+}
+
+.button__div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+}
+
+ss-ltm-mixture-pp-test-list {
+    height: 100%;
+}

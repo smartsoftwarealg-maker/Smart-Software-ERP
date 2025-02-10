@@ -1,0 +1,20 @@
+@if (form !== null) {
+    <mat-card>
+        <form novalidate [formGroup]="form">
+            <mat-form-field class="default-100">
+                <mat-label translate>ADMINISTRATION_FULLNAME</mat-label>
+                <input matInput formControlName="fullName" type="text" required autofocus>
+            </mat-form-field>
+
+            <mat-form-field class="default-100">
+                <mat-label translate>ADMINISTRATION_EMAIL</mat-label>
+                <input matInput formControlName="email" type="text" required autofocus>
+            </mat-form-field>
+
+        </form>
+    </mat-card>
+
+    @if (id) {
+        <router-outlet></router-outlet>
+    }
+}

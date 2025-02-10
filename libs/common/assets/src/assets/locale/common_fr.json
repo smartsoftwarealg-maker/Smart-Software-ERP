@@ -358,4 +358,6 @@
     "SHOW_ACTIVE_ONLY": "Afficher uniquement les actifs actifs",
     "SCHS":               "SOCIETE DES CIMENTS DE HADJAR SOUD",
     "ECDE":               "CIMENTERIE DE CHLEF",
-    "COMPANY_SELECTOR":   "Sélection de cimentrie"}
+    "COMPANY_SELECTOR":   "Sélection de cimentrie",
+    "MAILING_LIST":       "Liste d'envoi"
+}

@@ -355,5 +355,6 @@
     "CSPACE":             "Customer space",
     "SCHS":               "Cement Company of Hadjar Soud",
     "ECDE":               "Chlef Cement Plant",
-    "COMPANY_SELECTOR":   "Company selector"
+    "COMPANY_SELECTOR":   "Company selector",
+    "MAILING_LIST":       "Mailing list"
 }

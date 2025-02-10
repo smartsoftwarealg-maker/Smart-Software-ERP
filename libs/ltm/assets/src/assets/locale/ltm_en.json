@@ -84,5 +84,7 @@
     "VARIANCE":               "Variance",
     "DATA_MODE":             "Data mode",
     "DISTRIBUTION_MODE":     "Distribution mode",
-    "QUALITY_CHIEF":         "Realized by"
+    "QUALITY_CHIEF":         "Realized by",
+    "NON_CONFORMITY":        "Non conformity",
+    "QUALITY_CERTIFICATE":   "Certificate of Quality"
 }

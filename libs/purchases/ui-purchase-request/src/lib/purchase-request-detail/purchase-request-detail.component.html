@@ -45,6 +45,14 @@
             </mat-form-field>
 
             <mat-form-field class="default-50 sm-100">
+                <mat-label translate>COMMON_PROJECT</mat-label>
+                <ss-auto-complete matInput
+                                  [model]="salesProjectLookup"
+                                  formControlName="project">
+                </ss-auto-complete>
+            </mat-form-field>
+
+            <mat-form-field class="default-50 sm-100">
                 <mat-label translate>STOCK_DEALER</mat-label>
                 <ss-auto-complete matInput
                                   [required]="true"
@@ -59,8 +67,6 @@
                 </mat-error>
 
             </mat-form-field>
-
-            <div class="default-50 sm-100"></div>
 
             <mat-form-field id="header" class="default-50 sm-100">
                 <mat-label translate>STOCK_HEADER</mat-label>
