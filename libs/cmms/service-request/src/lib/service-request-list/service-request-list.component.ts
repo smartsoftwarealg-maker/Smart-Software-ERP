@@ -5,7 +5,7 @@ import { KeepOnToolbar, ShellService, SnackBarService, ToolbarButton } from '@ss
 import { ActivatedRoute, Router } from '@angular/router';
 import { DefaultReportService } from '@ss/common/ui-default-report-component';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
-import { PaginatorPersistenceService } from '@ss/common/api-common';
+import { MaterialModule, PaginatorPersistenceService } from '@ss/common/api-common';
 import { CMMSServiceRequestService } from '../c-m-m-s-service-request.service';
 import { CMMSWorkOrderService } from '@ss/cmms/work-order';
 import { DOC_WORK_ORDER } from '@ss/logistics/api-transaction';
@@ -23,6 +23,7 @@ import { TranslatePipe } from '@ss/common/ui-lang';
     styleUrls: ['./service-request-list.component.css'],
     standalone: true,
     imports: [
+        MaterialModule,
         MatTable,
         MatSort,
         MatColumnDef,
@@ -39,6 +40,7 @@ import { TranslatePipe } from '@ss/common/ui-lang';
         PaginationComponent,
         DatePipe,
         TranslatePipe,
+        TranslateDirective
     ],
 })
 export class ServiceRequestListComponent extends BaseEntityListComponent<Work> implements OnInit {

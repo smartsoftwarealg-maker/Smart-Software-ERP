@@ -19,7 +19,7 @@ import { DatePickerComponent } from '@ss/common/ui-datepicker';
 import { MatButtonModule } from '@angular/material/button';
 import { CMMSInspectionOrderService } from '../services/c-m-m-s-inspection-order.service';
 import { PaginationComponent } from '@ss/common/ui-pagination';
-import { TranslatePipe } from '@ss/common/ui-lang';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-inspection-list',
@@ -36,7 +36,8 @@ import { TranslatePipe } from '@ss/common/ui-lang';
         MatInputModule,
         MatButtonModule,
         MaterialModule,
-        PaginationComponent
+        PaginationComponent,
+        TranslateDirective
     ]
 })
 export class InspectionOrderListComponent extends BaseEntityListComponent<Work> implements OnInit {

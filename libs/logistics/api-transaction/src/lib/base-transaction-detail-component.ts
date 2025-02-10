@@ -29,12 +29,13 @@ import { UserListService } from '@ss/common/api-users';
 import { DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
 import { TransactionLinesClass } from './transaction-lines.class';
 import { BaseTransactionLinesListComponent } from './base-transaction-lines-list.component';
-import { PurchaseContractService, SalesContractService } from '@ss/logistics/contracts';
+import { Project, PurchaseContractService, SalesContractService } from '@ss/logistics/contracts';
 import { OptionService } from '@ss/logistics/ui-options';
 
 @Directive()
 export abstract class BaseTransactionDetailComponent extends BaseEntityDetailComponent<Transaction> implements OnInit {
     private CONSUMPTION_DOCUMENT = 260;
+    private PURCHASE_REQUEST = 10;
     private optionSrv = inject(OptionService);
     private agentSrv = inject(AgentService);
     private payMethodSrv = inject(PayMethodService);
@@ -78,8 +79,8 @@ export abstract class BaseTransactionDetailComponent extends BaseEntityDetailCom
     public agentLookup = new DefaultAutoCompleteModel<Agent>(this.agentSrv, 'id', 'denomination');
     public customerLookup = new DefaultAutoCompleteModel<Agent>(this.customerSrv, 'id', 'denomination');
     public supplierLookup = new DefaultAutoCompleteModel<Agent>(this.supplierSrv, 'id', 'denomination');
-    public purchaseProjectLookup = new DefaultAutoCompleteModel(this.purchaseProjectSrv);
-    public salesProjectLookup = new DefaultAutoCompleteModel(this.salesProjectSrv);
+    public purchaseProjectLookup = new ProjectLookupModel(this.purchaseProjectSrv);
+    public salesProjectLookup = new ProjectLookupModel(this.salesProjectSrv);
     public currencyCompleteModel = new DefaultAutoCompleteModel<Currency>(this.currencySrv);
     public transporterAutoCompleteModel = new DefaultAutoCompleteModel<Agent>(this.supplierSrv, 'id', 'denomination');
     public consumerLookup = new DefaultAutoCompleteModel<Agent>(this.consumerSrv, 'id', 'denomination');
@@ -107,7 +108,8 @@ export abstract class BaseTransactionDetailComponent extends BaseEntityDetailCom
     }
 
     private updateProjectLookups(id: number) {
-        if (this.form.controls['document'].value === this.CONSUMPTION_DOCUMENT) {
+        const docValue = this.form.controls['document'].value;
+        if (docValue === this.CONSUMPTION_DOCUMENT || docValue === this.PURCHASE_REQUEST)  {
             id = 0;
         }
         this.purchaseProjectSrv.setParentId(id);
@@ -320,4 +322,12 @@ export abstract class BaseTransactionDetailComponent extends BaseEntityDetailCom
         super.finishLoading(e);
         this.updateProjectLookups(e?.agent || 0);
     }
+}
+
+class ProjectLookupModel extends DefaultAutoCompleteModel<Project> {
+    constructor(srv: BaseEntityService<Project>) {
+        super(srv);
+    }
+
+    toString = (x: Project) => x ? `${x.contractNo} - ${x.description}` : null
 }

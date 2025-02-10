@@ -6,7 +6,7 @@ import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router, RouterOutlet } from '@angular/router';
 import { FormsModule, ReactiveFormsModule, UntypedFormBuilder } from '@angular/forms';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
-import { LoginService } from '@ss/common/api-common';
+import { LoginService, MaterialModule } from '@ss/common/api-common';
 import { MatDialog } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
@@ -20,11 +20,12 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { TextFieldModule } from '@angular/cdk/text-field';
 import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
+import { TranslateDirective } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-parts-request-detail',
     standalone: true,
-    imports: [CommonModule, DatePickerComponent, FormsModule, MatCardModule, MatFormFieldModule, MatInputModule, ReactiveFormsModule, RouterOutlet, TextFieldModule, UiAutoCompleteComponent],
+    imports: [CommonModule, MaterialModule, DatePickerComponent, FormsModule, MatCardModule, MatFormFieldModule, MatInputModule, ReactiveFormsModule, RouterOutlet, TextFieldModule, UiAutoCompleteComponent, TranslateDirective],
     templateUrl: './parts-request-detail.component.html',
     styleUrls: ['../../../../../common/assets/src/assets/transac-detail.scss']
 })

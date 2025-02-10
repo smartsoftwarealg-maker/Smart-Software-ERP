@@ -9,12 +9,12 @@ import { MatTableModule } from '@angular/material/table';
 
 import { MaterialModule } from '@ss/common/api-common';
 import { PaginationComponent } from '@ss/common/ui-pagination';
-import { TranslatePipe } from '@ss/common/ui-lang';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-cmms-checklist-line-list',
     standalone: true,
-    imports: [CommonModule, MatButtonModule, MatTableModule, MaterialModule, PaginationComponent, TranslatePipe],
+    imports: [CommonModule, MatButtonModule, MatTableModule, MaterialModule, PaginationComponent, TranslatePipe, TranslateDirective],
     templateUrl: './cmms-checklist-line-list.component.html',
     styleUrls: ['./cmms-checklist-line-list.component.css'],
 })

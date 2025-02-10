@@ -16,7 +16,7 @@ import { MatInputModule } from '@angular/material/input';
 import { DatePickerComponent } from '@ss/common/ui-datepicker';
 import { MatButtonModule } from '@angular/material/button';
 import { MaterialModule } from '@ss/common/api-common';
-import { TranslatePipe } from '@ss/common/ui-lang';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 import { PaginationComponent } from '@ss/common/ui-pagination';
 
 @Component({
@@ -26,27 +26,25 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
     standalone: true,
     imports: [
         CommonModule,
-
         MatSortModule,
         MatTableModule,
-
         MatCardModule,
         MatFormFieldModule,
         MatInputModule,
         ReactiveFormsModule,
-       
-
+        TranslateDirective,
         MatButtonModule,
         MaterialModule,
         TranslatePipe,
-        PaginationComponent
+        TranslateDirective,
+        PaginationComponent,
     ]
 })
 export class AssetChildReadingListComponent extends BaseChildEntityListComponent<AssetReading> implements OnInit {
     private assetSrv = inject(AssetsService);
 
     assetLookup = new DefaultAutoCompleteModel(this.assetSrv);
-    assetCtrl = new FormControl<number>(0);
+    // assetCtrl = new FormControl<number>(0);
 
     override displayedColumns = [
         'meterDescription',

@@ -1,0 +1,25 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    height: calc(100% - 32px);
+    gap: 5px;
+    max-width: 800px;
+    padding: 4px;
+}
+.list {
+    flex-grow: 1;
+    overflow-y: auto;
+}
+
+.ctrl {
+  display: flex;
+  justify-content: space-between;
+}
+
+.crtl__div {
+    display: flex;
+    width: 94%;
+    justify-content: space-between;
+    padding: 4px;
+    gap: 1em;
+}

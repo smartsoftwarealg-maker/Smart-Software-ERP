@@ -9,7 +9,7 @@ import { CommonModule } from '@angular/common';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { PaginationComponent } from '@ss/common/ui-pagination';
-import { TranslatePipe } from '@ss/common/ui-lang';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 
 @Component({
@@ -19,14 +19,12 @@ import { TranslatePipe } from '@ss/common/ui-lang';
     standalone: true,
     imports: [
         CommonModule,
-
         MatSortModule,
         MatTableModule,
-
         MaterialModule,
-
         PaginationComponent,
-        TranslatePipe
+        TranslatePipe,
+        TranslateDirective
     ]
 })
 export class AssetTriggerListComponent extends BaseChildEntityListComponent<AssetTrigger> {

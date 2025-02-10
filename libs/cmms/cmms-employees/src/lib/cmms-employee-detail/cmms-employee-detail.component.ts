@@ -39,6 +39,7 @@ import { PersonFaultService } from '../services/person-fault.service';
 import { PersonLocationService } from '../services/person-location.service';
 import { CmmsPersonService } from '@ss/cmms/cmms-api';
 import { CmmsEmployeeService } from '../services/cmms-employee.service';
+import { TranslateDirective } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-cmms-employee-detail',
@@ -60,7 +61,8 @@ import { CmmsEmployeeService } from '../services/cmms-employee.service';
         ReactiveFormsModule,
         RouterOutlet,
         ImageInputComponent,
-        UiAutoCompleteComponent
+        UiAutoCompleteComponent,
+        TranslateDirective
     ],
     templateUrl: './cmms-employee-detail.component.html',
     styleUrls: ['./cmms-employee-detail.component.scss'],

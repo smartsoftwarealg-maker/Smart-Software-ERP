@@ -9,7 +9,7 @@ import {
 export const financeNavTree: SideNavNode = {
     name: 'COMMON_FINANCE',
     icon: 'fas fa-users-cog',
-    accessRights: 'FINANCE',
+    accessRights: 'PAYMENTS',
     children: [
         {
             name: 'LOGISTICS_PAYMENT_ORDERS',

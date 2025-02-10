@@ -48,7 +48,11 @@ import { TranslatePipe } from '@ss/common/ui-lang';
         AsyncPipe,
         DecimalPipe,
         TranslatePipe,
-    ],
+        MatHeaderCellDef,
+        MatHeaderRowDef,
+        MatRowDef,
+        MatCellDef
+    ]
 })
 export class PrevWorkOrderDetailComponent extends CMMSWorkDetail {
     constructor(

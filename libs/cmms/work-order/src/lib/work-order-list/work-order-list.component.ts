@@ -17,7 +17,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
 import { DatePickerComponent } from '@ss/common/ui-datepicker';
 import { MatButtonModule } from '@angular/material/button';
-import { TranslatePipe } from '@ss/common/ui-lang';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-work-order-list',
@@ -34,10 +34,10 @@ import { TranslatePipe } from '@ss/common/ui-lang';
         ReactiveFormsModule,
         MatCardModule,
         MatInputModule,
-
         MatButtonModule,
         MaterialModule,
-        TranslatePipe
+        TranslatePipe,
+        TranslateDirective
     ]
 })
 export class WorkOrderListComponent extends BaseEntityListComponent<Work> {

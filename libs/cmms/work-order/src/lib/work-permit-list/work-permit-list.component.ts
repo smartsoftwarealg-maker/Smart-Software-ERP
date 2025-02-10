@@ -15,7 +15,7 @@ import { BaseChildEntityListComponent } from '@ss/common/ui-base-entity';
 import { WorkPermit } from '@ss/cmms/cmms-api';
 import { CMMSWorkPermitService } from '../services/c-m-m-s-work-permit.service';
 import { PaginationComponent } from '@ss/common/ui-pagination';
-import { TranslatePipe } from '@ss/common/ui-lang';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-work-permit-list',
@@ -24,16 +24,15 @@ import { TranslatePipe } from '@ss/common/ui-lang';
         CommonModule,
         PaginationComponent,
         MatTableModule,
-
         FormsModule,
         MatFormFieldModule,
         ReactiveFormsModule,
         MatCardModule,
         MatInputModule,
-       
         MatButtonModule,
         MaterialModule,
-        TranslatePipe
+        TranslatePipe,
+        TranslateDirective
     ],
     templateUrl: './work-permit-list.component.html',
     styleUrl: './work-permit-list.component.css',

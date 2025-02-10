@@ -27,7 +27,7 @@ import {
     ABS_LTM_TEST_EQUIPMENT_URL,
     ABS_LTM_EQUIPMENT_TESTINGS_URL,
     ABS_LTM_PRODUCT_TYPE_URL,
-    ABS_LTM_PRODUCT_LIBERATION_URL, ABS_LTM_PRODUCT_URL
+    ABS_LTM_PRODUCT_LIBERATION_URL, ABS_LTM_MAILING_URL
 } from '../common';
 
 export const ltmNavTree: SideNavNode = {
@@ -219,6 +219,12 @@ export const ltmNavTree: SideNavNode = {
             icon: 'fa-solid fa-highlighter-line',
             route: ABS_LTM_PRODUCT_LIBERATION_URL,
             accessRights: 'ProductLiberation'
+        },
+        {
+            name: 'COMMON_MAILING_LIST',
+            icon: 'fa-solid fa-envelopes-bulk',
+            route: ABS_LTM_MAILING_URL,
+            accessRights: 'LTMMailingList'
         },
         {
             name: 'COMMON_CHARTS',

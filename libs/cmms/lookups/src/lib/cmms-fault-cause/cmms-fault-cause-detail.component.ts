@@ -12,6 +12,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MaterialModule } from '@ss/common/api-common';
+import { TranslateDirective } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-cmms-fault-cause-detail',
@@ -27,7 +28,8 @@ import { MaterialModule } from '@ss/common/api-common';
         MatInputModule,
         MaterialModule,
         ReactiveFormsModule,
-        RouterOutlet
+        RouterOutlet,
+        TranslateDirective
     ],
 })
 export class CmmsFaultCauseDetailComponent extends BaseLookupDetailClass {

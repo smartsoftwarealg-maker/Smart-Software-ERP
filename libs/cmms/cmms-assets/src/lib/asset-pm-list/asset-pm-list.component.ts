@@ -9,13 +9,13 @@ import { MatTableModule } from '@angular/material/table';
 
 import { MatButtonModule } from '@angular/material/button';
 import { MaterialModule } from '@ss/common/api-common';
-import { TranslatePipe } from '@ss/common/ui-lang';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 import { PaginationComponent } from '@ss/common/ui-pagination';
 
 @Component({
     selector: 'ss-asset-pm-list',
     standalone: true,
-    imports: [CommonModule, MatSortModule, MatTableModule, MatButtonModule, MaterialModule, TranslatePipe, PaginationComponent],
+    imports: [CommonModule, MatSortModule, MatTableModule, MatButtonModule, MaterialModule, TranslatePipe, PaginationComponent, TranslateDirective],
     templateUrl: './asset-pm-list.component.html',
     styleUrls: ['./asset-pm-list.component.css'],
 })

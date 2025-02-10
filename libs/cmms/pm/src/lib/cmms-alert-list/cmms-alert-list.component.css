@@ -12,6 +12,9 @@
     margin-top: 8px;
 }
 
+.mat-column-assetDescription {
+    flex: 1 1 50px;
+}
 .mat-column-assetDescription,
 .mat-column-description,
 .mat-column-planDescription {

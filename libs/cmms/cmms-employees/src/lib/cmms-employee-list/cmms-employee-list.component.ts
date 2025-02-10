@@ -10,13 +10,9 @@ import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { DefaultReportService } from '@ss/common/ui-default-report-component';
 import { Observable, of } from 'rxjs';
 import { ImageInputComponent, ImageModel } from '@ss/common/ui-image-input';
-
-
-import { DatePickerComponent } from '@ss/common/ui-datepicker';
-
 import { CmmsEmployeeService } from '../services/cmms-employee.service';
 import { PaginationComponent } from '@ss/common/ui-pagination';
-import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
+import { TranslateDirective } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-cmms-employee-list',
@@ -25,12 +21,10 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         CommonModule,
         MaterialModule,
         TranslateDirective,
-       
-       
         RouterModule,
-
         PaginationComponent,
-        ImageInputComponent
+        ImageInputComponent,
+        TranslateDirective
     ],
     templateUrl: './cmms-employee-list.component.html',
     styleUrls: ['./cmms-employee-list.component.scss'],

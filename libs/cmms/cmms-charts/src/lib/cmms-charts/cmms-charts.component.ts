@@ -15,12 +15,12 @@ import {
 import {forkJoin, switchMap, tap} from 'rxjs';
 
 import {ChartConfiguration} from 'chart.js/dist/types';
-import { TranslatePipe } from '@ss/common/ui-lang';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-cmms-charts',
     standalone: true,
-    imports: [CommonModule, MaterialModule, TranslatePipe],
+    imports: [CommonModule, MaterialModule, TranslatePipe, TranslateDirective],
     templateUrl: './cmms-charts.component.html',
     styleUrls: ['./cmms-charts.component.scss']
 })
@@ -88,7 +88,7 @@ export class CMMSChartsComponent implements OnInit {
             past: past.pastDue,
             preDescription: 'CMMS_PRE_DUE',
             pastDescription: 'CMMS_PAST_DUE',
-            chartDescription: 'CMMS_WORK_ORDER'
+            chartDescription: this.langSrv.translate('CMMS_WORK_ORDER')
         };
         this.buildDuePieChart(config);
     }

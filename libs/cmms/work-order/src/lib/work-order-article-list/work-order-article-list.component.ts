@@ -18,7 +18,7 @@ import { MatDialog } from '@angular/material/dialog';
 import {
     WorkOrderArticleReservationComponent
 } from '../work-order-article-reservation/work-order-article-reservation.component';
-import { TranslatePipe } from '@ss/common/ui-lang';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 import { PaginationComponent } from '@ss/common/ui-pagination';
 
 @Component({
@@ -26,16 +26,13 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
     standalone: true,
     imports: [
         CommonModule,
-
         MatTableModule,
-
-
         FormsModule,
         MatFormFieldModule,
         ReactiveFormsModule,
         MatCardModule,
         MatInputModule,
-       
+        TranslateDirective,
         MatButtonModule,
         MaterialModule,
         TranslatePipe,
@@ -47,7 +44,7 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
 export class WorkOrderArticleListComponent extends BaseChildEntityListComponent<WorkArticle> {
     private dialog = inject(MatDialog);
 
-    override displayedColumns = ['reference', 'description', 'qty'];
+    override displayedColumns = ['reference', 'description', 'qty', 'price'];
 
     constructor(protected override detailSrv: CMMSWorkOrderArticleService) {
         super(detailSrv, 'WorkArticle');

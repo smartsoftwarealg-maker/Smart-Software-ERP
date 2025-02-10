@@ -17,6 +17,7 @@ import { MaterialModule } from "@ss/common/api-common";
 
 import { PaginationComponent } from '@ss/common/ui-pagination';
 import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
+import { TranslateDirective } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-cmms-meter-detail',
@@ -32,7 +33,8 @@ import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
         MatInputModule,
         MaterialModule,
         ReactiveFormsModule,
-        RouterOutlet
+        RouterOutlet,
+        TranslateDirective
     ],
 })
 export class CMMSMeterDetailComponent extends BaseLookupDetailClass {

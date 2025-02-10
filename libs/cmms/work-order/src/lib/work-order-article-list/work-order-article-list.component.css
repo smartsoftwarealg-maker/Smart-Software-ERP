@@ -27,7 +27,8 @@ mat-table {
     flex: 1 1 100px;
 }
 
-.mat-column-qty {
+.mat-column-qty,
+.mat-column-price {
     flex: 1 1 100px;
     justify-content: flex-end;
 }

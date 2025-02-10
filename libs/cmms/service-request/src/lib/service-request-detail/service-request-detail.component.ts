@@ -18,6 +18,7 @@ import { MatSelect } from '@angular/material/select';
 import { MatOption } from '@angular/material/core';
 import { MatAccordion, MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelTitle } from '@angular/material/expansion';
 import { TranslatePipe } from '@ss/common/ui-lang';
+import { MaterialModule } from '@ss/common/api-common';
 
 @Component({
     selector: 'ss-service-request-detail',
@@ -25,6 +26,7 @@ import { TranslatePipe } from '@ss/common/ui-lang';
     styleUrls: ['./service-request-detail.component.css'],
     standalone: true,
     imports: [
+        MaterialModule,
         MatCard,
         MatCardContent,
         NgIf,
@@ -45,6 +47,7 @@ import { TranslatePipe } from '@ss/common/ui-lang';
         MatExpansionPanelHeader,
         MatExpansionPanelTitle,
         TranslatePipe,
+        TranslateDirective
     ],
 })
 export class ServiceRequestDetailComponent extends CMMSWorkDetail {
