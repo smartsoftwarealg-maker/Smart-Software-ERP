@@ -35,9 +35,8 @@ export abstract class AbstractEntityComponent<T extends { id: number }> implemen
         }
         if (this.saveButton.disabled) {
             return;
-        } else {
-            this.saveButton.disabled = true;
         }
+        this.saveButton.disabled = true;
         const val = this.readForm();
         // val.id = this.queryId || val.id;
         this.shellSrv.setLoading(true);

@@ -237,9 +237,8 @@ export abstract class BaseTransactionLinesDetailComponent extends AbstractEntity
     save() {
         if (this.saveButton.disabled) {
             return;
-        } else {
-            this.saveButton.disabled = true;
         }
+        this.saveButton.disabled = true;
         this.form.markAllAsTouched();
         if (!this.form.valid) {
             this.snackBarSrv.showFailureMessage('COMMON_FORM_NOT_VALID');

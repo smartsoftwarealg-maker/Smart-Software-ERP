@@ -314,7 +314,7 @@ export abstract class BaseTransactionDetailComponent extends BaseEntityDetailCom
         if (this.form.controls['id'].value > 0) {
             super.goBack();
         } else {
-            this.router.navigate(['..', this.queryId], { relativeTo: this.route }).then();
+            this.router.navigate(['..', this.queryId], { relativeTo: this.route }).then(() => this.saveButton.disabled = false);
         }
     }
 
