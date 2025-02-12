@@ -11,17 +11,11 @@ import { DeviceDetectorService } from 'ngx-device-detector';
     templateUrl: './language-select.component.html',
     styleUrls: ['./language-select.component.scss'],
     standalone: true,
-    imports: [MatIconButton, MatMenuTrigger, MatMenu, MatMenuItem, MaterialModule, ReactiveFormsModule, TranslatePipe]
+    imports: [MatIconButton, MatMenuTrigger, MatMenu, MatMenuItem, MaterialModule, ReactiveFormsModule]
 })
 export class LanguageSelectComponent {
-    #DEFAULT_COMPANY = 'DEFAULT_COMPANY';
-    deviceSrv = inject(DeviceDetectorService);
-    companySelectorSrv = inject(CompanySelectorService);
     langSrv = inject(LanguageService);
-
     @ViewChild('trigger', { static: false }) trigger: MatMenuTrigger;
-    showCenterSelection = input(false);
-    onSelectedCompany = output<string>();
 
     selectLocale(language: string): void {
         this.langSrv.setLanguage(language).subscribe();
@@ -31,21 +25,4 @@ export class LanguageSelectComponent {
         this.trigger.toggleMenu();
     }
 
-    public selectCompany(company: string) {
-        this.onSelectedCompany.emit(company);
-        this.companySelectorSrv.select(company);
-        if (this.deviceSrv.isDesktop()) {
-            localStorage.setItem(this.#DEFAULT_COMPANY, company);
-        } else {
-            // async setObject() {
-            //     await Preferences.set({
-            //         key: 'user',
-            //         value: JSON.stringify({
-            //             id: 1,
-            //             name: 'Max'
-            //         })
-            //     });
-            // }
-        }
-    }
 }

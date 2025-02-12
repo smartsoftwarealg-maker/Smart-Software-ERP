@@ -6,8 +6,9 @@ import {Router} from '@angular/router';
 import { ShellService } from '@ss/common/ui-shell';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 import { LanguageSelectComponent } from '@ss/common/ui-lang';
-import { LoadingSpinnerComponent } from '../../../ui-loading-spinner/src';
+import { LoadingSpinnerComponent } from '@ss/common/ui-loading-spinner';
 import { Preferences } from '@capacitor/preferences';
+import { BackendSelectComponent } from '@ss/common/ui-backend-select';
 
 type User = {
     username: string, password: string
@@ -24,6 +25,8 @@ type User = {
         LanguageSelectComponent,
         TranslatePipe,
         LoadingSpinnerComponent,
+        BackendSelectComponent,
+        BackendSelectComponent,
     ],
 })
 export class LoginComponent implements OnInit {
@@ -80,20 +83,28 @@ export class LoginComponent implements OnInit {
         }
 
         if (this.#companySelectorSrv.multiCompany) {
-            this.#companySelectorSrv.spaceCompany = localStorage.getItem(this.#DEFAULT_COMPANY);
+            this.#companySelectorSrv.spaceCompany = localStorage.getItem(
+                this.#DEFAULT_COMPANY,
+            );
             if (!this.deviceSrv.isDesktop()) {
                 const checkName = async () => {
-                    const { value } = await Preferences.get({ key: this.#DEFAULT_COMPANY });
+                    const { value } = await Preferences.get({
+                        key: this.#DEFAULT_COMPANY,
+                    });
                     this.#companySelectorSrv.spaceCompany = value;
                 };
             }
-            if (this.loginSrv.customerLogin === LoginType.CUSTOMER && this.#companySelectorSrv.spaceCompany) {
-                this.#httpSrv.selectCompany(this.#companySelectorSrv.spaceCompany);
+            if (
+                this.loginSrv.customerLogin === LoginType.CUSTOMER &&
+                this.#companySelectorSrv.spaceCompany
+            ) {
+                this.#httpSrv.selectCompany(
+                    this.#companySelectorSrv.spaceCompany,
+                );
             }
             this.cSpace.set(this.#companySelectorSrv.spaceCompany);
         }
     }
-
 
     public onSubmit() {
         // this.loading.set(true);

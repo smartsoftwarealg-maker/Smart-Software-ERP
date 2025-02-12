@@ -10,20 +10,5 @@
                 {{ l.name }}
             </div>
         }
-        @if (showCenterSelection()) {
-            <div class="company__div">
-                @for (c of companySelectorSrv.companyList; track c) {
-                    <div mat-menu-item
-                         style="text-align: center; width: 140px"
-                         (click)="selectCompany(c)"
-                         translate>
-                        @if (c === companySelectorSrv.spaceCompany) {
-                            <i class="fa-solid fa-check"></i>
-                        }
-                        {{ c|translate }}
-                    </div>
-                }
-            </div>
-        }
     </mat-menu>
 </div>
