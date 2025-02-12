@@ -248,7 +248,7 @@
             <mat-divider *ngIf="shellSrv.appButtons.length"></mat-divider>
 
             <div type="button" mat-menu-item class="settings-item" (click)="langBtn.click()">
-                <ss-language-select class="icon" (click)="$event.stopPropagation()" [showCenterSelection]="false" #langBtn></ss-language-select>
+                <ss-language-select class="icon" (click)="$event.stopPropagation()" #langBtn></ss-language-select>
                 <span class="text" translate>COMMON_LANGUAGE_SETTINGS</span>
             </div>
             <div type="button" mat-menu-item class="settings-item" (click)="themeBtn.click()">

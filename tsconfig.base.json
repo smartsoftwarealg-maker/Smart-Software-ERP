@@ -231,6 +231,8 @@
                 "libs/common/ui-image-input/src/index.ts"
             ],
             "@ss/common/ui-lang": ["libs/common/ui-lang/src/index.ts"],
+            "@ss/common/ui-backend-select": ["libs/common/ui-backend-select/src/index.ts"],
+            "@ss/common/ui-loading-spinner": ["libs/common/ui-loading-spinner/src/index.ts"],
             "@ss/common/ui-login": ["libs/common/ui-login/src/index.ts"],
             "@ss/common/ui-logout": ["libs/common/ui-logout/src/index.ts"],
             "@ss/common/ui-lookup": ["libs/common/ui-lookup/src/index.ts"],
