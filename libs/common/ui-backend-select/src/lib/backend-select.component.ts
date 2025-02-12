@@ -19,7 +19,6 @@ export class BackendSelectComponent {
     langSrv = inject(LanguageService);
     @ViewChild('trigger', { static: false }) trigger: MatMenuTrigger;
 
-    showCenterSelection = input(false);
     onSelectedCompany = output<string>();
     public click(): void {
         this.trigger.toggleMenu();
