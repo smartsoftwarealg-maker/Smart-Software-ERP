@@ -140,6 +140,7 @@ export abstract class AbstractEntityComponent<T extends { id: number }> implemen
     public finishLoading(e: T) {
         this.shellSrv.setLoading(false);
         this.form = this.setupForm(e);
+        this.saveButton.disabled = false;
         if (!this.isEditable && this.form) {
             this.form.disable();
         }

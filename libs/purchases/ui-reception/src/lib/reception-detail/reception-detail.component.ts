@@ -39,7 +39,6 @@ import { ExtraCostService } from '@ss/purchases/extra-costs';
 export class ReceptionDetailComponent extends BaseTransactionDetailComponent implements OnInit {
     private URLs = ['./lines-list', './costs-list'];
     private costSrv = inject(ExtraCostService);
-    selectedIndex = 0;
 
     constructor(
         public override entitySrv: ReceptionService,

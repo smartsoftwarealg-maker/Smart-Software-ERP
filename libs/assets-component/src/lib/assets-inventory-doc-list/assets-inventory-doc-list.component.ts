@@ -5,16 +5,8 @@ import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { DefaultReportService} from '@ss/common/ui-default-report-component';
 import {  ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
-import { MaterialModule, PaginationModel, PaginatorPersistenceService } from '@ss/common/api-common';
+import { MaterialModule, PaginatorPersistenceService } from '@ss/common/api-common';
 import { CommonModule } from '@angular/common';
-
-
-
-
-import { DatePickerComponent } from '@ss/common/ui-datepicker';
-
-
-
 import { AssetInventoryDocService } from '../services/asset-inventory-doc.service';
 import {
     AssetRecordedInventoryReportComponent
@@ -24,7 +16,7 @@ import {
 } from '../asset-unidentified-child-inventory-list/asset-unidentified-child-inventory-list.component';
 import { AssetCountSummaryService } from '../services/asset-count-summary.service';
 import { PaginationComponent } from '@ss/common/ui-pagination';
-import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
+import { TranslateDirective } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-assets-inventory-doc-list',
@@ -35,12 +27,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         CommonModule,
         MaterialModule,
         TranslateDirective,
-       
-
-       
         RouterModule,
-
-
         AssetRecordedInventoryReportComponent,
         AssetUnidentifiedChildInventoryListComponent,
         PaginationComponent

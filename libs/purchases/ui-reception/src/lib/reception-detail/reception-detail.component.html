@@ -69,18 +69,14 @@
                                       [required]="true"
                                       [model]="dealerAutoCompleteModel"
                                       formControlName="dealer"></ss-auto-complete>
-                    <mat-error
-                        *ngIf="form.controls['dealer'].hasError('required')" translate>COMMON_FIELD_REQUIRED
-                    </mat-error>
-                    <mat-error
-                        *ngIf="form.controls['dealer'].hasError('validOption')" translate>COMMON_NO_MATCH
-                    </mat-error>
-
+                    @if (form.controls['dealer'].hasError('required')) {
+                        <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+                    }
                 </mat-form-field>
 
                 <mat-form-field id="altAgent" class="default-50 sm-100">
                     <mat-label translate>COMMON_MEMO</mat-label>
-                    <textarea matInput formControlName="altAgent" rows="2"></textarea>
+                    <textarea matInput formControlName="altAgent" rows="1"></textarea>
                 </mat-form-field>
 
                 <mat-tab-group>
@@ -183,7 +179,7 @@
     </mat-card-content>
 </mat-card>
 
-<mat-tab-group class="detail_div" (selectedIndexChange)="onTabChange($event)" >
+<mat-tab-group class="detail_div" (selectedIndexChange)="onTabChange($event)">
     <mat-tab [disabled]="!saveButton.visible">
         <ng-template mat-tab-label>
             <span translate>COMMON_DETAIL</span>
@@ -198,5 +194,5 @@
 
 <!--<ss-reception-lines-list class="detail-list" [isEditable]="isEditable" *ngIf="!isLoading && formId" [parentExecutionRef]="executionRef"></ss-reception-lines-list>-->
 @if (formId) {
-   <router-outlet></router-outlet>
+    <router-outlet></router-outlet>
 }

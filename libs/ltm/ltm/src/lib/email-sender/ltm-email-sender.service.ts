@@ -7,13 +7,14 @@ import { HttpService, User } from '@ss/common/api-common';
 export class LtmEmailSenderService {
     #httpSrv = inject(HttpService);
 
-    send(document: number, form: string, subject?: string, message?: string, password?: string): Observable<any> {
+    send(id: number, document: number, form: string, subject?: string, message?: string, password?: string): Observable<any> {
         const params = new HttpParams()
             .set('document', document + '')
             .set('form', form)
             .set('password', password)
-            .set('message', message)
-            .set('subject', subject);
+            .set('message', message??'')
+            .set('id', id)
+            .set('subject', subject??'');
         return this.#httpSrv.get<any>('/ltm/email', params);
     }
 
