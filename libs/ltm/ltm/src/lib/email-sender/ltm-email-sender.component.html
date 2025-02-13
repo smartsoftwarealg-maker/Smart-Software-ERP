@@ -3,7 +3,7 @@
         <form [formGroup]="form">
             <mat-form-field class="default-100">
                 <mat-label translate>COMMON_SUBJECT</mat-label>
-                <input matInput formControlName="subject" type="text" autocomplete="none" required autofocus>
+                <input matInput formControlName="subject" type="text"  required autofocus>
             </mat-form-field>
 
             <mat-form-field class="default-100">
@@ -12,13 +12,17 @@
             </mat-form-field>
 
             <mat-form-field class="default-100">
+                <mat-label translate>ADMINISTRATION_USERNAME</mat-label>
+                <input matInput formControlName="email" type="text" maxlength="40">
+            </mat-form-field>
+            <mat-form-field class="default-100">
                 <mat-label translate>ADMINISTRATION_PASSWORD</mat-label>
                 <input matInput formControlName="password" type="password" maxlength="40">
             </mat-form-field>
         </form>
     </mat-card-content>
 </mat-card>
-<div class="ctrl-div">
+<div class="crtl__div">
     <button mat-raised-button color="primary" (click)="send()" translate>COMMON_SEND</button>
     <button mat-raised-button (click)="cancel()" translate>COMMON_CANCEL</button>
 </div>

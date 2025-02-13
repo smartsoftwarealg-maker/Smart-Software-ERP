@@ -1,7 +1,7 @@
 import { Component, inject, Inject, OnInit } from "@angular/core";
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import { FormBuilder, FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MaterialModule } from '@ss/common/api-common';
+import { LoginService, MaterialModule } from '@ss/common/api-common';
 import { TranslateDirective } from '@ss/common/ui-lang';
 import { LtmEmailSenderService } from './ltm-email-sender.service';
 
@@ -15,17 +15,20 @@ import { LtmEmailSenderService } from './ltm-email-sender.service';
 })
 export class LtmEmailSenderComponent implements OnInit {
     #fb = inject(FormBuilder);
+    #loginSrv = inject(LoginService);
     #dialogRef = inject(MatDialogRef<LtmEmailSenderComponent>);
     #emailSenderSrv = inject(LtmEmailSenderService);
     #document = 0;
     #component: string|null = null;
+    #email = new FormControl<string|null>(null);
     #password = new FormControl<string|null>(null);
     #subject = new FormControl<string|null>(null);
     #message = new FormControl<string|null>(null);
 
     form = this.#fb.group({
-        subject: this.#subject,
-        message: this.#message,
+        subject:  this.#subject,
+        message:  this.#message,
+        email:    this.#email,
         password: this.#password
     });
 
@@ -36,6 +39,9 @@ export class LtmEmailSenderComponent implements OnInit {
     }
 
     ngOnInit(): void {
+        this.#emailSenderSrv
+          .getUser(this.#loginSrv.appCtx.id)
+          .subscribe(user => this.#email.setValue(user.email));
     }
 
     public close() {
