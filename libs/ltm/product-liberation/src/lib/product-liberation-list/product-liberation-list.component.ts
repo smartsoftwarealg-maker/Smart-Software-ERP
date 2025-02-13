@@ -83,7 +83,7 @@ export class ProductLiberationListComponent extends BaseEntityListComponent<LTMP
         const dialogRef = this.#dialog.open(LtmEmailSenderComponent,{
             width: '500px',
             height: '30em',
-            data: { document: LTM_PRODUCT_LIBERATION_DOC, form: this.formReport, message: 'test' },
+            data: { id: this.selected||0, document: LTM_PRODUCT_LIBERATION_DOC, form: this.formReport, message: 'test' },
             disableClose: true
         });
         dialogRef.afterClosed().subscribe(res => {

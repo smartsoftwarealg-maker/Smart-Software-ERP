@@ -19,6 +19,7 @@ export class LtmEmailSenderComponent implements OnInit {
     #dialogRef = inject(MatDialogRef<LtmEmailSenderComponent>);
     #emailSenderSrv = inject(LtmEmailSenderService);
     #document = 0;
+    #id = 0;
     #component: string|null = null;
     #email = new FormControl<string|null>(null);
     #password = new FormControl<string|null>(null);
@@ -33,9 +34,10 @@ export class LtmEmailSenderComponent implements OnInit {
     });
 
 
-    constructor(@Inject(MAT_DIALOG_DATA) private data: { document: number, form: string }) {
+    constructor(@Inject(MAT_DIALOG_DATA) private data: { id: number, document: number, form: string }) {
         this.#document = data.document;
         this.#component = data.form;
+        this.#id = data.id;
     }
 
     ngOnInit(): void {
@@ -55,7 +57,7 @@ export class LtmEmailSenderComponent implements OnInit {
     public send() {
         const formValue = this.form.value;
         this.#emailSenderSrv
-            .send(this.#document, this.#component, formValue.subject, formValue.message, formValue.password)
+            .send(this.#id, this.#document, this.#component, formValue.subject, formValue.message, formValue.password)
             .subscribe({
                 next: _ => this.close(),
                 error: err => this.#dialogRef.close(err.toString())
