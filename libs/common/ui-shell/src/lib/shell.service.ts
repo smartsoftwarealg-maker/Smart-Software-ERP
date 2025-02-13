@@ -109,7 +109,6 @@ export class ShellService {
     protected retryCallback: () => void;
     public goBackEnabled = true;
     // side nav data
-    protected readonly sideNavDataSrc = new MatTreeNestedDataSource<SideNavNode>();
     public navData: SideNavNode[] = [];
 
     public langSrv = inject(LanguageService);
@@ -194,7 +193,6 @@ export class ShellService {
     //     this.sideNavDataSrc.data = this.filterSideNavByVisibility(this.navData);
     // }
 
-
     private filterSideNavByVisibility(tree: SideNavNode[]): SideNavNode[] {
         if (tree == null) {
             return null;
@@ -202,7 +200,16 @@ export class ShellService {
         return tree
             .filter(t => t.visible)
             .map(i => {
-                const clone: SideNavNode = cloneDeep(i);
+                const clone: SideNavNode = {
+                    children: i.children,
+                    visible: i.visible,
+                    name: i.name,
+                    icon: i.icon,
+                    accessRights: i.accessRights,
+                    route: i.route,
+                    backgroundColor: i.backgroundColor,
+                    customerRights: i.customerRights
+                }
                 clone.children = this.filterSideNavByVisibility(i.children);
                 return clone;
             });
@@ -233,18 +240,19 @@ export class ShellService {
     }
 
 
-    public getMenuItems(): string[] {
-        if (!this.sideNavDataSrc.data) {
-            return null;
-        }
-        const list: string[] = [];
-        this.getMenuItemsR({
-            icon: null,
-            name: null,
-            children: this.sideNavDataSrc.data
-        }, list);
-        return list;
-    }
+    // Not used?
+    // public getMenuItems(): string[] {
+    //     if (!this.sideNavDataSrc) {
+    //         return null;
+    //     }
+    //     const list: string[] = [];
+    //     this.getMenuItemsR({
+    //         icon: null,
+    //         name: null,
+    //         children: this.sideNavDataSrc
+    //     }, list);
+    //     return list;
+    // }
 
     private getMenuItemsR(n: SideNavNode, output: string[]) {
         if (!n) {
@@ -258,14 +266,13 @@ export class ShellService {
         }
     }
 
-    public get sideNavDataSource(): MatTreeNestedDataSource<SideNavNode> {
-        return this.sideNavDataSrc;
+    public get sideNavDataSource(): SideNavNode[] {
+        return this.navData;
     }
 
     public filterSideNav() {
         if (this.loginSrv.appCtx) {
             this.navData = this.filterSideNavByVisibility(this.filterNavTree(this.navTree));
-            this.sideNavDataSrc.data = this.navData;
             this.generateNavColors(this.navData);
             this.mainPageSrv.display = this.navData;
             this.updateShell();
@@ -275,6 +282,7 @@ export class ShellService {
     public setSideNavDataSource(tree: SideNavNode[]) {
         this.navTree = tree;
         this.filterSideNav();
+        // this.navTree.forEach(t => this.initParents(t.children, t));
     }
 
     private generateNavColors(tree: SideNavNode[]): void {

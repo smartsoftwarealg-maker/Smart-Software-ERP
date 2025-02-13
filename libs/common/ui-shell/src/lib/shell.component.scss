@@ -36,6 +36,20 @@
     }
 }
 
+.tree-node {
+    line-height: 48px;
+    display: flex;
+    align-content: center;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.nav-tree-text {
+    line-height: 20px !important;
+    max-height: 48px !important;
+    overflow: hidden;
+}
+
 .shell-side-nav {
     overflow: hidden;
     height: 100%;
@@ -458,4 +472,3 @@
 .x_large {
     font-size: xxx-large;
 }
-

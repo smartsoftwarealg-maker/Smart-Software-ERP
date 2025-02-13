@@ -11,7 +11,7 @@ import {
     inject
 } from '@angular/core';
 import { ShellService } from './shell.service';
-import { NestedTreeControl } from '@angular/cdk/tree';
+import { CdkTree, NestedTreeControl } from '@angular/cdk/tree';
 import {
     CENTER_SELECT_URL,
     HttpService,
@@ -51,6 +51,9 @@ export class ShellComponent implements OnInit, OnDestroy, AfterViewInit, AfterVi
     #rightsSrv = inject(UserRightsService);
     private router = inject(Router);
 
+    @ViewChild(CdkTree)
+    tree!: CdkTree<SideNavNode>;
+
     // todo: disable all buttons on toolbar when loading
 
     @ViewChild('routerContainer') routerContainer: ElementRef;
@@ -59,7 +62,7 @@ export class ShellComponent implements OnInit, OnDestroy, AfterViewInit, AfterVi
     public showSideNav = false;
     public lastScroll = 0;
     // side nav
-    treeControl = new NestedTreeControl<SideNavNode>(node => node.children);
+    childrenAccessor = (dataNode: SideNavNode) => dataNode.children;
 
     constructor(
         public loginSrv: LoginService,
