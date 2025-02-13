@@ -1,3 +1,6 @@
+import { Observable } from 'rxjs';
+import { DataSource } from '@angular/cdk/collections';
+
 export interface Company {
     id: number;
     description: string;
