@@ -54,7 +54,10 @@
 
                 <div class="social-login">
                     <div class="social-icons">
-                        <ss-language-select style="margin: 4px" [showCenterSelection]="multiCompany()" (onSelectedCompany)="onSelectedCompany($event)"></ss-language-select>
+                        <ss-language-select style="margin: 4px"></ss-language-select>
+                        @if (multiCompany()) {
+                            <ss-backend-select style="margin: 4px" (onSelectedCompany)="onSelectedCompany($event)"></ss-backend-select>
+                        }
                     </div>
                 </div>
             </div>

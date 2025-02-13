@@ -22,42 +22,9 @@ export class HttpService {
     public baseUrl: string;
 
     constructor(public appConfigSrv: AppConfigService, public httpClient: HttpClient) {
-        // this.patchTimeout();
     }
 
-    // private patchTimeout() {
-    //     // patch that shit
-    //     const httpXhrBackend: any = HttpXhrBackend;
-    //     httpXhrBackend.prototype.handle2 = httpXhrBackend.prototype.handle;
-    //     httpXhrBackend.prototype.handle = function (req) {
-    //         try {
-    //             const defaultTimeout = 30000;
-    //             const requestTimeout = +req.headers.get('sstimeout');
-    //             //console.log('$$ req.headers.get(\'sstimeout\') = ' + req.headers.get('sstimeout'));
-    //             req.headers = req.headers.delete('sstimeout');
-    //
-    //             const xhrFactory = this.xhrFactory;
-    //             if (xhrFactory == null) {
-    //                 alert('ERROR: Failed to patch HttpXhrBackend');
-    //             } else {
-    //                 if (xhrFactory.build == null) {
-    //                     alert('ERROR: Failed to patch XhrFactory');
-    //                 } else {
-    //                     xhrFactory.build = function () {
-    //                         const request = new XMLHttpRequest();
-    //                         request.timeout = requestTimeout || defaultTimeout;
-    //                         return request;
-    //                     }
-    //                 }
-    //             }
-    //         } catch (e) {
-    //             console.error(e);
-    //         }
-    //         return this.handle2(req);
-    //     }
-    // }
-
-    static getHeaders() {
+     static getHeaders() {
         return new HttpHeaders({})
             .set('Authorization', this.getAuthToken() || '');
     }
@@ -323,7 +290,7 @@ export class HttpService {
                 rules[i].frontend = this.replaceQMark(rules[i].frontend, host);
                 if (rules[i].frontend === hostUrl || rules[i].frontend === host) {
                     rules[i].backend = this.replaceQMark(rules[i].backend, host);
-                    this.baseUrl = conf.protocol + rules[i].backend;
+                    this.baseUrl = rules[i].backend;
                     ruleFound = true;
                     break;
                 }
@@ -331,12 +298,16 @@ export class HttpService {
         }
         // if no rule is set
         if (!ruleFound) {
-            if (conf.protocol != null && conf.defaultUrl != null) {
-                this.baseUrl = conf.protocol + conf.defaultUrl;
+            if (conf.defaultUrl != null) {
+                this.baseUrl = conf.defaultUrl;
             } else {
                 // old file format is still valid && supported
                 this.baseUrl = conf.baseUrl; // backward compatibility shit (microsoft is shit)
             }
+        }
+
+        if (conf.protocol != null && !this.baseUrl.toLowerCase().startsWith('http')) {
+            this.baseUrl = conf.protocol + this.baseUrl;
         }
     }
 
