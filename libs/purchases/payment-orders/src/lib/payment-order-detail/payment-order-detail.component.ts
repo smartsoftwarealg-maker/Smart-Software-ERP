@@ -83,7 +83,9 @@ export class PaymentOrderDetailComponent extends BaseEntityDetailComponent<Payme
             bankId:            [b.bankId],
             authorizationNo:   [b.authorizationNo],
             authorizationDate: [b.authorizationDate],
-            recordNo:          [b.recordNo]
+            recordNo:          [b.recordNo],
+            orderNumber:       [b.orderNumber],
+            orderDate:         [b.orderDate],
         });
     }
 

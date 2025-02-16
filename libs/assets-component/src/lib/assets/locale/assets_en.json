@@ -50,7 +50,6 @@
     "REQUEST_NUMBER":      "Request number",
     "REQUEST_DATE":        "Request date",
     "ORDER_NUMBER":        "Order number",
-    "ORDER_DATE":          "Order date",
     "DELIVERY_NUMBER":     "Delivery number",
     "DELIVERY_DATE":       "Delivery date",
     "INVOICE_NUMBER":      "Invoice number",

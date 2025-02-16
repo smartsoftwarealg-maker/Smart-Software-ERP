@@ -356,5 +356,7 @@
     "SCHS":               "Cement Company of Hadjar Soud",
     "ECDE":               "Chlef Cement Plant",
     "COMPANY_SELECTOR":   "Company selector",
-    "MAILING_LIST":       "Mailing list"
+    "MAILING_LIST":       "Mailing list",
+    "ORDER_CONTRACT":     "Order/contract",
+    "ORDER_DATE":          "Order date"
 }
