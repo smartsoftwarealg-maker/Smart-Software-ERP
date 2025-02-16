@@ -30,7 +30,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         MaterialModule,
         TranslateDirective,
 
-       
+
         RouterModule,
 
 
@@ -41,7 +41,7 @@ export class AssetBlockingListComponent extends BaseChildEntityListComponent<Blo
     override displayedColumns = ['decision', 'date', 'fromDate', 'toDate', 'typeDescription'];
 
 
-    constructor(private entitySrv: AssetBlockingService) {
+    constructor(protected entitySrv: AssetBlockingService) {
         super(entitySrv, 'Blocking');
     }
     //

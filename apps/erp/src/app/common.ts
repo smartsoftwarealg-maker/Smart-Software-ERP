@@ -205,6 +205,8 @@ export const CONTRACTS_PROJECT_MOTIVE_URL = 'projectMotives';
 export const CONTRACTS_AWARD_PROCEDURE_URL = 'award-procedure';
 export const CONTRACT_PROJECT_URL = 'contracts';
 export const CONTRACTS_PURCHASE_CONTRACT_URL = 'purchase-contracts';
+export const SALES_COMPENSATION_URL = 'sales-compensations';
+
 
 
 // Sales
@@ -645,6 +647,7 @@ export const ABS_SCHEDULED_SALES_DASHBOARD_URL     = '/' + [MAIN_PAGE_URL, SCHED
 export const ABS_CUSTOMER_COMPLAINTS_URL = '/' + [MAIN_PAGE_URL, SCHEDULED_SALES_APP_URL, SS_COMPLAINTS_URL].join('/');
 export const ABS_SCHEDULED_SALES_REPORTS_URL = '/' + [MAIN_PAGE_URL, SCHEDULED_SALES_APP_URL, COMMON_REPORTS_URL].join('/');
 export const ABS_SCHEDULED_SALES_PASSWORD_RESET_URL = '/' + [MAIN_PAGE_URL, SCHEDULED_SALES_APP_URL, PASSWORD_RESET_URL].join('/');
+export const ABS_SALES_COMPENSATIONS_URL = '/' + [MAIN_PAGE_URL, SCHEDULED_SALES_APP_URL, SALES_COMPENSATION_URL].join('/');
 
 
 

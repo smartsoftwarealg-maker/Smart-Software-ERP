@@ -203,6 +203,9 @@
             "@ss/common/ui-auto-complete": [
                 "libs/common/ui-auto-complete/src/index.ts"
             ],
+            "@ss/common/ui-backend-select": [
+                "libs/common/ui-backend-select/src/index.ts"
+            ],
             "@ss/common/ui-base-entity": [
                 "libs/common/ui-base-entity/src/index.ts"
             ],
@@ -231,8 +234,9 @@
                 "libs/common/ui-image-input/src/index.ts"
             ],
             "@ss/common/ui-lang": ["libs/common/ui-lang/src/index.ts"],
-            "@ss/common/ui-backend-select": ["libs/common/ui-backend-select/src/index.ts"],
-            "@ss/common/ui-loading-spinner": ["libs/common/ui-loading-spinner/src/index.ts"],
+            "@ss/common/ui-loading-spinner": [
+                "libs/common/ui-loading-spinner/src/index.ts"
+            ],
             "@ss/common/ui-login": ["libs/common/ui-login/src/index.ts"],
             "@ss/common/ui-logout": ["libs/common/ui-logout/src/index.ts"],
             "@ss/common/ui-lookup": ["libs/common/ui-lookup/src/index.ts"],
@@ -578,6 +582,9 @@
             ],
             "@ss/scheduled-sales/article": [
                 "libs/scheduled-sales/article/src/index.ts"
+            ],
+            "@ss/scheduled-sales/compensations": [
+                "libs/scheduled-sales/compensations/src/index.ts"
             ],
             "@ss/scheduled-sales/password-reset": [
                 "libs/scheduled-sales/password-reset/src/index.ts"

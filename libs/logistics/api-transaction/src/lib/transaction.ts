@@ -93,6 +93,7 @@ export interface Transaction {
     licenseDate?: Date;
     licenseIssuer?: string;
     plateNumber?: string;
+    plateNumber2?: string;
     deliveryTime?: number;
 }
 

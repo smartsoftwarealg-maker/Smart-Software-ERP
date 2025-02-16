@@ -1,0 +1,75 @@
+@if (isEditable) {
+    <div class="size button__div">
+        <button mat-mini-fab
+                type="button"
+                [matTooltip]="'COMMON_ADD' | translate"
+                color="primary" (click)="showDetail(0)">
+            <span class="fas fa-plus"></span>
+        </button>
+        <button mat-mini-fab
+                type="button"
+                (click)="edit()"
+                [disabled]="!selectedId"
+                color="accent">
+            <span class="fas fa-pen"></span>
+        </button>
+        <button mat-mini-fab
+                type="button"
+                (click)="deleteSelected()"
+                [disabled]="!selectedId"
+                color="warn">
+            <span class="fas fa-trash-alt"></span>
+        </button>
+<!--        <button mat-mini-fab-->
+<!--                type="button"-->
+<!--                (click)="selectReport()"-->
+<!--                [matTooltip]="'COMMON_SELECT_REPORT' | translate"-->
+<!--                color="warn">-->
+<!--            <span class="fas fa-folders"></span>-->
+<!--        </button>-->
+<!--        <button mat-mini-fab-->
+<!--                type="button"-->
+<!--                (click)="viewReport()"-->
+<!--                [matTooltip]="'COMMON_PRINT_REPORT' | translate"-->
+<!--                color="warn">-->
+<!--            <span class="fas fa-print"></span>-->
+<!--        </button>-->
+    </div>
+}
+<div class="table__container size">
+    <mat-table mat-table [dataSource]="data$|async" class="main-table">
+
+        <ng-container matColumnDef="description" style="justify-content: center; text-align: center">
+            <mat-header-cell *matHeaderCellDef translate style="justify-content: center">
+                COMMON_DESCRIPTION
+            </mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{ e.description }}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="creationTime" style="justify-content: center; text-align: center">
+            <mat-header-cell *matHeaderCellDef translate style="justify-content: center">
+                COMMON_DATE
+            </mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{ e.creationTime | date: 'dd/MM/yyyy' }}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="amount" style="justify-content: center; text-align: center">
+            <mat-header-cell *matHeaderCellDef translate style="justify-content: center">COMMON_AMOUNT</mat-header-cell>
+            <mat-cell *matCellDef="let e" style="justify-content: center">
+                {{ e.amount | number: '1.2-2' }}
+            </mat-cell>
+        </ng-container>
+
+
+        <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+        <mat-row class="selectable" [class.selected]="row.id == selectedId" (click)="select(row.id)"
+                 *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+    <div class="pagination-container b-b-background">
+        <ss-pagination [paginationModel]="paginator"></ss-pagination>
+    </div>
+</div>

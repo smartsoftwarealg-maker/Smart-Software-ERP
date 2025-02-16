@@ -15,6 +15,6 @@ export class SalesOrderService extends BaseEntityService<Transaction> {
     }
 
     consumeContract(id: number): Observable<any> {
-        return this.httpSrv.post(`/sales-order/${id}/consume-contracts`);
+        return this.httpSrv.post(`/projects/${id}/get-articles`);
     }
 }
