@@ -34,6 +34,16 @@
             </mat-form-field>
 
             <mat-form-field class="default-50">
+                <mat-label translate>COMMON_ORDER_CONTRACT</mat-label>
+                <input matInput formControlName="orderNumber" type="text">
+            </mat-form-field>
+
+            <mat-form-field class="default-50">
+                <mat-label translate>COMMON_ORDER_DATE</mat-label>
+                <ss-date-picker formControlName="orderDate"></ss-date-picker>
+            </mat-form-field>
+
+            <mat-form-field class="default-50">
                 <mat-label translate>LOGISTICS_INVOICE_NUMBER</mat-label>
                 <input matInput formControlName="invoice_number" type="text" required>
                 <mat-error *ngIf="form.controls['invoice_number'].invalid" translate>COMMON_FIELD_REQUIRED
