@@ -127,12 +127,6 @@
             </mat-cell>
         </ng-container>
 
-        <ng-container matColumnDef="serialNo">
-            <mat-header-cell *matHeaderCellDef mat-sort-header translate>ASSET_SERIAL_NUMBER</mat-header-cell>
-            <mat-cell *matCellDef="let e">
-                {{ e.serialNo }}
-            </mat-cell>
-        </ng-container>
 
         <ng-container matColumnDef="receptionNumber">
             <mat-header-cell *matHeaderCellDef mat-sort-header translate>ASSET_RECEPTION_NUMBER</mat-header-cell>
@@ -176,13 +170,24 @@
             </mat-cell>
         </ng-container>
 
+        <ng-container matColumnDef="serialNo">
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>ASSET_SERIAL_NUMBER</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{ e.serialNo }}
+            </mat-cell>
+        </ng-container>
+
         <ng-container matColumnDef="recorded">
-            <mat-header-cell *matHeaderCellDef mat-sort-header translate><i
-                class="fa-solid fa-check-double located"></i>
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>
+                <i class="fa-solid fa-check-double located"></i>
             </mat-header-cell>
             <mat-cell *matCellDef="let e">
-                <mat-checkbox [checked]="(e.inventoryId||0) > 0" (click)="update(e)"
-                              [disabled]="!isEditable() || (currentUser !== e.userId && !isResponsible)"></mat-checkbox>
+                <mat-checkbox [checked]="(e.inventoryId||0) > 0"
+                              (click)="update(e)"
+                              [disabled]="!isEditable() ||
+                                          ((e.userId||0) > 0 && currentUser !== (e.userId||0) && !isResponsible) ||
+                                          ((e.inventoryId||0) > 0 && !isResponsible)" >
+                </mat-checkbox>
             </mat-cell>
         </ng-container>
 
