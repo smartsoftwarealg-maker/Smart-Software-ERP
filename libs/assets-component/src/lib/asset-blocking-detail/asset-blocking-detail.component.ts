@@ -35,8 +35,7 @@ export class AssetBlockingDetailComponent extends BaseChildEntityDetailComponent
     typeLookup = new DefaultAutoCompleteModel(this.typeLookupSrv);
     private formBuilder = inject(UntypedFormBuilder);
 
-    constructor(
-        public assetBlockingSrv: AssetBlockingService) {
+    constructor(public assetBlockingSrv: AssetBlockingService) {
         super(assetBlockingSrv, 'Blocking');
     }
 
@@ -52,23 +51,4 @@ export class AssetBlockingDetailComponent extends BaseChildEntityDetailComponent
             blockingType:   [a.blockingType]
         });
     }
-
-    // protected override getRouteParam(): Observable<any> {
-    //     return this.route
-    //         .parent
-    //         .parent.params
-    //         .pipe(
-    //             switchMap(p => {
-    //                 this.parentId = +p['id'] || 0;
-    //                 this.assetBlockingSrv.setParentId(this.parentId);
-    //                 return super.getRouteParam();
-    //             })
-    //         );
-    // }
-
-
-    // override ngOnInit() {
-    //     super.ngOnInit();
-    //     this.shellSrv.setGoBackPath('..', this.route);
-    // }
 }
