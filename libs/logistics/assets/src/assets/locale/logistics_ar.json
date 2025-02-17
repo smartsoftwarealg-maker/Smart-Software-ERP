@@ -130,6 +130,7 @@
     "DRIVER":          "سائق",
     "DRIVER_LICENSE":  "رخصة السياقة",
     "PLATE_NUMBER":    "رقم اللوحة",
+    "PLATE_NUMBER2":    "رقم المقطورة",
     "PROJECT_TYPES":   "أنواع المشاريع",
     "PROJECT_TYPE":    "نوع المشروع",
     "AWARD_PROCEDURES": "إجراءات المنح",

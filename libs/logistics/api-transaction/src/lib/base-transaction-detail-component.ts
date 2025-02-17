@@ -264,6 +264,7 @@ export abstract class BaseTransactionDetailComponent extends BaseEntityDetailCom
             licenseDate: [b.licenseDate],
             licenseIssuer: [b.licenseIssuer],
             plateNumber: [b.plateNumber],
+            plateNumber2: [b.plateNumber2],
             deliveryTime: [b.deliveryTime]
         });
     }
