@@ -2,8 +2,9 @@ import {Injectable} from '@angular/core';
 import {HttpService} from '@ss/common/api-common';
 import {BaseEntityService} from '@ss/common/api-base-entity';
 import {DELIVERY_URL} from './delivery-api';
-import {Transaction} from '@ss/logistics/api-transaction';
-import { Observable } from 'rxjs';
+import { Transaction, TransactionLine } from '@ss/logistics/api-transaction';
+import { Observable, of } from 'rxjs';
+import { tap } from 'rxjs/operators';
 
 
 @Injectable({
@@ -18,4 +19,5 @@ export class DeliveryService extends BaseEntityService<Transaction> {
     consumeContract(id: number): Observable<any> {
         return this.httpSrv.post(`/projects/${id}/get-articles`);
     }
+
 }

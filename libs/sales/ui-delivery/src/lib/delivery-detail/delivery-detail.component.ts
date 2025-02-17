@@ -1,15 +1,14 @@
-import { Component, OnInit } from '@angular/core';
-import {ShellService, SnackBarService} from '@ss/common/ui-shell';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { KeepOnToolbar, ShellService, SnackBarService, ToolbarButton } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router, RouterOutlet } from '@angular/router';
 import { UntypedFormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import {CCGroup, Lookup, LookupsService} from '@ss/common/api-lookup';
+import { Lookup, LookupsService} from '@ss/common/api-lookup';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import {Observable} from 'rxjs';
-import {tap} from 'rxjs/operators';
+import { of, switchMap } from 'rxjs';
 import {DeliveryService} from '@ss/sales/api-delivery';
 import { LoginService, MaterialModule } from '@ss/common/api-common';
 import {MatDialog} from '@angular/material/dialog';
-import { BaseTransactionDetailComponent } from '@ss/logistics/api-transaction';
+import { BaseTransactionDetailComponent, BaseTransactionLinesListComponent } from '@ss/logistics/api-transaction';
 import { DeliveryLinesService } from '@ss/sales/api-delivery';
 import { MatCard, MatCardContent } from '@angular/material/card';
 import { MatFormField, MatLabel, MatError } from '@angular/material/form-field';
@@ -20,6 +19,7 @@ import { DatePickerComponent } from '@ss/common/ui-datepicker';
 import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { MatTabGroup, MatTab, MatTabLabel } from '@angular/material/tabs';
 import { CdkTextareaAutosize } from '@angular/cdk/text-field';
+import { DeliveryLinesListComponent } from '@ss/sales/ui-delivery-lines';
 
 
 @Component({
@@ -30,6 +30,7 @@ import { CdkTextareaAutosize } from '@angular/cdk/text-field';
     imports: [MaterialModule, MatCard, MatCardContent, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, NgIf, MatError, DatePickerComponent, UiAutoCompleteComponent, MatTabGroup, MatTab, MatTabLabel, CdkTextareaAutosize, RouterOutlet]
 })
 export class DeliveryDetailComponent extends BaseTransactionDetailComponent implements OnInit {
+    @ViewChild(DeliveryLinesListComponent) deliveryList: DeliveryLinesListComponent;
     // private payMethodSrv =  inject(PayMethodService);
     // private agentService = inject(AgentService);
     // private usersSrv = inject(UserListService);
@@ -37,7 +38,14 @@ export class DeliveryDetailComponent extends BaseTransactionDetailComponent impl
     // public dealerAutoCompleteModel = new DefaultAutoCompleteModel<User>(this.usersSrv);
     // public agentAutoCompleteModel = new DefaultAutoCompleteModel<Agent>(this.agentService, 'id', 'denomination');
     // public payModeAutoCompleteModel = new DefaultAutoCompleteModel<PayMethod>(this.payMethodSrv);
-
+    private importContractBtn: ToolbarButton = {
+        disabled: false,
+        icon: 'fa-solid fa-file-arrow-up',
+        keepOnToolbar: KeepOnToolbar.DYNAMIC,
+        label: 'LOGISTICS_IMPORT_CONTRACT',
+        visible: true,
+        click: () => this.importContract(),
+    };
 
     constructor(
         protected loginSrv: LoginService,
@@ -64,6 +72,11 @@ export class DeliveryDetailComponent extends BaseTransactionDetailComponent impl
             'SALES_EDIT_DELIVERY');
     }
 
+    override ngOnInit() {
+        super.ngOnInit();
+        this.shellSrv.addButton(this.importContractBtn);
+    }
+
     protected override showImportButton(): boolean {
         return true;
     }
@@ -80,4 +93,19 @@ export class DeliveryDetailComponent extends BaseTransactionDetailComponent impl
         return [{id: 1025, description: 'SALES_ORDER'}];
     }
 
+    private importContract() {
+        if (!this.importContractBtn.disabled) {
+            this.deliveryService
+                .consumeContract(this.id)
+                .pipe(switchMap(_ => this.deliveryList? this.deliveryList.loadDetailLines() : of(null)),
+                    switchMap(() =>
+                        this.outlet?.component instanceof BaseTransactionLinesListComponent?
+                            this.outlet?.component.loadDetailLines() :
+                            of(0)))
+                .subscribe(_ => {
+                    this.shellSrv.setLoading(false);
+                    this.snackBarSrv.showSuccessMessage();
+                });
+        }
+    }
 }
