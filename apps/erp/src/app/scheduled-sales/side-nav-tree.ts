@@ -120,7 +120,7 @@ export const scheduledSalesNavTree: SideNavNode = {
             customerRights: {read: true, edit: false, delete: false, write: false}
         },
         {
-            name: 'COMMON_COMPENSATIONS',
+            name: 'SCH_COMPENSATIONS',
             icon: 'fa-solid fa-scale-balanced',
             route: ABS_SALES_COMPENSATIONS_URL,
             accessRights: 'Compensation'

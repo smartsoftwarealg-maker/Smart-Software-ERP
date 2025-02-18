@@ -20,15 +20,20 @@ import { MatSort, MatSortHeader } from '@angular/material/sort';
 import { PaginationComponent } from '@ss/common/ui-pagination';
 import { TranslateDirective } from '@ss/common/ui-lang';
 import { CompensationService } from '../services/compensation.service';
+import { InvoicePaymentService } from '../services/invoice-payment.service';
+import { CompensationDetailService } from '../services/compensation-detail.service';
+import { MatRadioButton, MatRadioChange, MatRadioGroup } from '@angular/material/radio';
 
 @Component({
     selector: 'ss-debts',
-    imports: [CommonModule, MatCell, MatCellDef, MatColumnDef, MatHeaderCell, MatHeaderRow, MatHeaderRowDef, MatRow, MatRowDef, MatSort, MatSortHeader, MatTable, PaginationComponent, TranslateDirective, MatHeaderCellDef, RouterOutlet],
+    imports: [CommonModule, MatCell, MatCellDef, MatColumnDef, MatHeaderCell, MatHeaderRow, MatHeaderRowDef, MatRow, MatRowDef, MatSort, MatSortHeader, MatTable, PaginationComponent, TranslateDirective, MatHeaderCellDef, RouterOutlet, MatRadioGroup, MatRadioButton],
     templateUrl: './debts.component.html',
     styleUrl: './debts.component.scss',
 })
 export class DebtsComponent extends BaseEntityListComponent<Debt> {
-    #paymentSrv = inject(CompensationService);
+    #compensationDetailSrv = inject(CompensationDetailService);
+    #compensationSrv = inject(CompensationService);
+    #paymentSrv = inject(InvoicePaymentService);
 
     displayedColumns = ['date', 'invoiceNumber', 'customerCode', 'customerName', 'ftt', 'payment'];
 
@@ -58,9 +63,19 @@ export class DebtsComponent extends BaseEntityListComponent<Debt> {
         super.ngOnInit();
     }
 
-    override select(id: number) {
-        super.select(id);
-        console.log(id);
-        this.#paymentSrv.setParentId(id);
+    override selectRow(d: Debt) {
+        super.selectRow(d);
+        this.#compensationSrv.setParentId(d?.id||0);
+        this.#compensationDetailSrv.setParentId(d?.id||0);
+        this.#paymentSrv.setParentId(d?.agentId||0);
+    }
+
+    onChange(e: MatRadioChange) {
+        this.entitySrv.selectionMode = +e.value as 1|2|3;
+        this.refresh();
+    }
+
+    protected override canShowProcessingStatus(): boolean {
+        return false;
     }
 }

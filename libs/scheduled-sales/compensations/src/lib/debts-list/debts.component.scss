@@ -4,6 +4,10 @@
     margin: 4px auto;
 }
 
+.mode__div {
+    display: flex;
+    justify-content: center;
+}
 .mat-column-customerName {
     flex: 1 1 200px;
 }
@@ -21,7 +25,10 @@
 
 .table__div {
     overflow-x: auto;
+    min-height: 30%;
+    max-height: 50%;
 }
+
 mat-table {
     width: 100%;
     min-width: 900px;

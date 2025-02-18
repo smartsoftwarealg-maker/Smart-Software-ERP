@@ -28,5 +28,6 @@
     "ECDE":               "CHLEF",
     "SCAKE":              "SCAKE",
     "SG":                 "SCSG",
-    "COMPANY_SELECTOR":   "Sélection de compagnie"
+    "COMPANY_SELECTOR":   "Sélection de compagnie",
+    "COMPENSATIONS":      "Compensations"
 }

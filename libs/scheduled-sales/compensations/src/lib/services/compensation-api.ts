@@ -4,6 +4,7 @@ export const COMPENSATIONS_URL = '/compensations';
 
 export interface Compensation {
     id: number;
+    agentId: number;
     parentId: number;
     paymentId: number;
     description?: string;
@@ -13,6 +14,7 @@ export interface Compensation {
 
 export interface Debt {
     id: number;
+    agentId: number;
     invoiceId: number;
     date: Date;
     customerCode?: string;
