@@ -10,7 +10,7 @@ import {
 export const contractsNavTree: SideNavNode = {
     name: 'COMMON_PROJECTS',
     icon: 'fas fa-coins',
-    accessRights: 'Project',
+    accessRights: 'Projects',
     children: [
         {
             name: 'LOGISTICS_PROJECT_TYPES',

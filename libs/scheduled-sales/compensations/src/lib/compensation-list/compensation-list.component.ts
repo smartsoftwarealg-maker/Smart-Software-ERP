@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, computed, effect, Signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BaseChildEntityListComponent } from '@ss/common/ui-base-entity';
 import { Compensation, InvoicePayment } from '../services/compensation-api';
@@ -43,5 +43,10 @@ export class CompensationListComponent extends BaseChildEntityListComponent<Comp
 
     constructor(entitySrv: CompensationService) {
         super(entitySrv, 'InvoicePayment');
+        effect(() => {
+            if (entitySrv.parentSignal() >= 0) {
+                this.refresh();
+            }
+        });
     }
 }

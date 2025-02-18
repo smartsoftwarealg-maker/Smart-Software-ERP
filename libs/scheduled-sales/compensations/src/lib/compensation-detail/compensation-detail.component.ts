@@ -31,8 +31,9 @@ import { MatError, MatFormField, MatLabel } from '@angular/material/form-field';
 import { MatInput } from '@angular/material/input';
 import { DatePickerComponent } from '@ss/common/ui-datepicker';
 import { MatMiniFabButton } from '@angular/material/button';
-import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
+import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { CompensationService } from '../services/compensation.service';
+import { CompensationDetailService } from '../services/compensation-detail.service';
 
 @Component({
     selector: 'ss-invoice-payments',
@@ -41,25 +42,42 @@ import { CompensationService } from '../services/compensation.service';
         MaterialModule,
         TranslateDirective,
         FormsModule,
-        DatePickerComponent
+        DatePickerComponent,
+        UiAutoCompleteComponent
     ],
     templateUrl: './compensation-detail.component.html',
     styleUrl: './compensation-detail.component.scss',
 })
 export class CompensationDetailComponent extends BaseChildEntityDetailComponent<Compensation> {
+    #parentId = 0;
     #formBuilder = inject(UntypedFormBuilder);
+    #paymentSrv = inject(InvoicePaymentService);
 
-    constructor(entitySrv: CompensationService) {
+    paymentLookup = new DefaultAutoCompleteModel(this.#paymentSrv);
+
+    constructor(override entitySrv: CompensationDetailService) {
         super(entitySrv, 'InvoicePayment');
     }
 
-    override setupForm(a: InvoicePayment): UntypedFormGroup {
+    override setupForm(a: Compensation): UntypedFormGroup {
+        this.entitySrv.setParentId(this.#parentId);
         return this.form = this.#formBuilder.group({
             id:           [a.id],
+            agentId:      [a.agentId || this.#paymentSrv.getParentId(), Validators.required],
             parentId:     [a.parentId || this.entitySrv.getParentId(), Validators.required],
-            description:  [a.description, Validators.required],
+            paymentId:    [a.paymentId, Validators.required],
+            description:  [a.description],
             creationTime: [a.creationTime || new Date(), Validators.required],
             amount:       [a.amount, Validators.required],
         });
+    }
+
+    override ngOnInit() {
+        this.#parentId = this.entitySrv.getParentId();
+        if (this.#parentId) {
+            super.ngOnInit();
+        } else {
+            this.router.navigate(['..'], { relativeTo: this.route }).then();
+        }
     }
 }

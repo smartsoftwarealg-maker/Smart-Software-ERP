@@ -358,5 +358,7 @@
     "COMPANY_SELECTOR":   "Company selector",
     "MAILING_LIST":       "Mailing list",
     "ORDER_CONTRACT":     "Order/contract",
-    "ORDER_DATE":          "Order date"
+    "ORDER_DATE":          "Order date",
+    "PAID":                "Paid",
+    "NON_PAID":            "Non paid"
 }

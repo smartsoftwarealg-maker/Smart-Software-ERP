@@ -84,14 +84,15 @@
                     </ss-auto-complete>
                 </mat-form-field>
 
-                <mat-form-field class="default-50 sm-100">
-                    <mat-label translate>LOGISTICS_COMPANY_TYPE</mat-label>
-                    <ss-auto-complete matInput
-                                      formControlName="companyType"
-                                      [model]="companyTypeLookup">
-                    </ss-auto-complete>
-                </mat-form-field>
-
+                @if (!isSales) {
+                    <mat-form-field class="default-50 sm-100">
+                        <mat-label translate>LOGISTICS_COMPANY_TYPE</mat-label>
+                        <ss-auto-complete matInput
+                                          formControlName="companyType"
+                                          [model]="companyTypeLookup">
+                        </ss-auto-complete>
+                    </mat-form-field>
+                }
                 <mat-form-field *ngIf="AQS" class="default-50 sm-100">
                     <mat-label translate>COMMON_DEPARTMENT</mat-label>
                     <ss-auto-complete matInput
