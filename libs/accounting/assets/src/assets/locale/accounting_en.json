@@ -78,5 +78,6 @@
     "TURNOVER":                 "Turnover",
     "EXEMPTION":                "Exemption",
     "TAX_RATE":                 "Tax rate",
-    "SALES_INJECTION":          "Sales injection"
+    "SALES_INJECTION":          "Sales injection",
+    "CONSOLIDATION_CENTERS":    "Consolidation centers"
 }

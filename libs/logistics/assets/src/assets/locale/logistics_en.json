@@ -180,5 +180,7 @@
     "QUANTITIES":           "Quantities",
     "QTY_RETURNED":         "Quantity Returned",
     "CHARGE":               "Charge or discount if negative",
-    "DELIVERY_TIMES":       "Delivery times"
+    "DELIVERY_TIMES":       "Delivery times",
+    "SUPPLIER_COMPENSATION": "Supplier compensations",
+    "CUSTOMER_COMPENSATION": "Customer compensations"
 }

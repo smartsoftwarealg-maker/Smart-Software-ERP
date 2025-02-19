@@ -1,8 +1,8 @@
 import {SideNavNode} from '@ss/common/api-common';
 import {
-    ABS_FINANCE_COMPENSATIONS, ABS_FINANCE_DASHBOARD_URL,
+    ABS_FINANCE_COMPENSATIONS, ABS_FINANCE_CUSTOMER_COMPENSATIONS, ABS_FINANCE_DASHBOARD_URL,
     ABS_FINANCE_PAYMENT_ORDERS,
-    ABS_FINANCE_PAYMENTS, ABS_FINANCE_REPORTS_URL,
+    ABS_FINANCE_PAYMENTS, ABS_FINANCE_REPORTS_URL, ABS_FINANCE_SUPPLIER_COMPENSATIONS,
     ABS_PURCHASE_DASHBOARD_URL, ABS_PURCHASE_REPORTS_URL
 } from '../common';
 
@@ -24,10 +24,16 @@ export const financeNavTree: SideNavNode = {
             accessRights: 'Payment'
         },
         {
-            name: 'LOGISTICS_PAYMENT_COMPENSATION',
-            icon: 'fa-solid fa-scale-balanced',
-            route: ABS_FINANCE_COMPENSATIONS,
-            accessRights: 'Accounting'
+            name: 'LOGISTICS_SUPPLIER_COMPENSATION',
+            icon: 'fa-solid fa-scale-unbalanced-flip',
+            route: ABS_FINANCE_SUPPLIER_COMPENSATIONS,
+            accessRights: 'SCompensation'
+        },
+        {
+            name: 'LOGISTICS_CUSTOMER_COMPENSATION',
+            icon: 'fa-solid fa-scale-unbalanced',
+            route: ABS_FINANCE_CUSTOMER_COMPENSATIONS,
+            accessRights: 'CCompensation'
         },
         {
             name: 'COMMON_DASHBOARD',

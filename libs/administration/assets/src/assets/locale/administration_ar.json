@@ -82,5 +82,6 @@
     "POST_FINAL":             "ما بعد النهائي",
     "WORKFLOW_CHART":          "المخطط",
     "SIGNATURE":               "التوقيع",
-    "SIGNER":                  "الموقع"
+    "SIGNER":                  "الموقع",
+    "HEADQUARTER": "مقر"
 }

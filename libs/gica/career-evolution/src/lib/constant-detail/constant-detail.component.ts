@@ -65,7 +65,7 @@ export class ConstantDetailComponent extends BaseEntityDetailComponent<Constant>
         return this.formBuilder.group({
             id:              [b.id],
             centerId:        [b.centerId || this.#loginSrv.appCtx.center],
-            passingGrade:    [b.passingGrade, [Validators.required, Validators.min(50), Validators.max(100)]],
+            passingGrade:    [b.passingGrade, [Validators.required, Validators.min(0), Validators.max(100)]],
             rate:            [b.rate, Validators.required],
             deduction:       [b.deduction, Validators.required],
             promotionMotive: [b.promotionMotive]

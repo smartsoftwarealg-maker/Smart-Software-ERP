@@ -77,6 +77,7 @@
     "TURNOVER":                 "Chiffre d'affaires",
     "EXEMPTION":                "Exemption",
     "TAX_RATE":                 "Taux de taxe",
-    "SALES_INJECTION":          "Injection vente"
+    "SALES_INJECTION":          "Injection vente",
+    "CONSOLIDATION_CENTERS":    "Centres de consolidation"
 }
 
