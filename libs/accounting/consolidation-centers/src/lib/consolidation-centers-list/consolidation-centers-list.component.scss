@@ -1,0 +1,24 @@
+.div_table {
+    height: calc(100% - 96px);
+    width: 90%;
+    margin: 5px auto;
+    max-width: 900px;
+}
+
+.mat-column-centerDescription {
+    flex: 1 2 250px;
+}
+
+.mat-column-headquarter,
+.mat-column-percentage {
+    flex: 1 1 110px;
+}
+
+.mat-column-percentage {
+    justify-content: flex-end;
+}
+.mat-column-headquarter {
+    justify-content: center;
+}
+
+

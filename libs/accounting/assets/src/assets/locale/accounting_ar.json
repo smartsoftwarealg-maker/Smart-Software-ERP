@@ -78,5 +78,6 @@
     "TURNOVER":                 "حجم الأعمال",
     "EXEMPTION":                "الخصومات",
     "TAX_RATE":                 "معدل الضريبة",
-    "SALES_INJECTION":          "توليد البيع"
+    "SALES_INJECTION":          "توليد البيع",
+    "CONSOLIDATION_CENTERS":    "مراكز التجميع"
 }

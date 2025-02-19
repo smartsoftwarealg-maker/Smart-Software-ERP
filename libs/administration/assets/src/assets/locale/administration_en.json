@@ -82,5 +82,6 @@
     "POST_FINAL":             "Post final",
     "WORKFLOW_CHART": "Chart",
     "SIGNATURE": "Signature",
-    "SIGNER": "Signer"
+    "SIGNER": "Signer",
+    "HEADQUARTER": "Headquarter"
 }

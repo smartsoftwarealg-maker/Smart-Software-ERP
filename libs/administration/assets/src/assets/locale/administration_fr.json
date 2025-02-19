@@ -82,5 +82,6 @@
     "POST_FINAL":             "Après la finale",
     "WORKFLOW_CHART": "Graphique",
     "SIGNATURE": "Signature",
-    "SIGNER": "Signataire"
+    "SIGNER": "Signataire",
+    "HEADQUARTER": "Siege"
 }
