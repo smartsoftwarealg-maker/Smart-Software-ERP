@@ -94,6 +94,28 @@ export class EmployeeCareerDetailComponent extends BaseChildEntityDetailComponen
 
     setupForm(a: Career): UntypedFormGroup {
         this.preload();
+        if (!a.id) {
+            this.employeeCareerSrv
+                .lastCareer()
+                .subscribe(res => {
+                    if (res.length > 0) {
+                        const c = res[0];
+                            this.form.controls['post'].setValue(c.post);
+                            this.form.controls['division'].setValue(c.division);
+                            this.form.controls['department'].setValue(c.department);
+                            this.form.controls['service'].setValue(c.service);
+                            this.form.controls['workshop'].setValue(c.workshop);
+                            this.form.controls['salary_grid'].setValue(c.salary_grid);
+                            this.form.controls['prof_category'].setValue(c.prof_category);
+                            this.form.controls['salary_rank'].setValue(c.salary_rank);
+                            this.form.controls['from_date'].setValue(c.from_date);
+                            this.form.controls['to_date'].setValue(c.to_date);
+                            this.form.controls['trial_period'].setValue(c.trial_period);
+                            this.form.controls['responsible'].setValue(c.responsible);
+                            this.form.controls['cost_center'].setValue(c.cost_center);
+                    }
+                })
+        }
         return this.form = this.formBuilder.group({
             id:            [a.id],
             parentId:      [a.parentId || this.employeeCareerSrv.getParentId()],
@@ -119,7 +141,8 @@ export class EmployeeCareerDetailComponent extends BaseChildEntityDetailComponen
     }
 
     preload() {
-        this.lookupsSrv.getDepartments()
+        this.lookupsSrv
+            .getDepartments()
             .pipe(
                 tap(list => this.departments = list),
                 switchMap(() => this.lookupsSrv.getDivisions()),
@@ -143,5 +166,7 @@ export class EmployeeCareerDetailComponent extends BaseChildEntityDetailComponen
         delete formVal.paymonthM;
         return val;
     }
+
+
 
 }
