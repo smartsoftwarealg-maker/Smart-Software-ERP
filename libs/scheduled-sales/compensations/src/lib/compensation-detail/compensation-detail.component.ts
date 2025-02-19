@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnDestroy, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
     BaseChildEntityDetailComponent,
@@ -23,7 +23,7 @@ import {
 } from '@angular/material/table';
 import { MatSort, MatSortHeader } from '@angular/material/sort';
 import { PaginationComponent } from '@ss/common/ui-pagination';
-import { TranslateDirective } from '@ss/common/ui-lang';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 import { InvoicePaymentService } from '../services/invoice-payment.service';
 import { FormsModule, ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { MatCard, MatCardContent } from '@angular/material/card';
@@ -43,23 +43,26 @@ import { CompensationDetailService } from '../services/compensation-detail.servi
         TranslateDirective,
         FormsModule,
         DatePickerComponent,
-        UiAutoCompleteComponent
+        UiAutoCompleteComponent,
+        TranslatePipe
     ],
     templateUrl: './compensation-detail.component.html',
     styleUrl: './compensation-detail.component.scss',
 })
-export class CompensationDetailComponent extends BaseChildEntityDetailComponent<Compensation> {
+export class CompensationDetailComponent extends BaseChildEntityDetailComponent<Compensation> implements OnDestroy {
     #parentId = 0;
     #formBuilder = inject(UntypedFormBuilder);
     #paymentSrv = inject(InvoicePaymentService);
 
     paymentLookup = new DefaultAutoCompleteModel(this.#paymentSrv);
+    checkAmount = signal<number>(0);
 
     constructor(override entitySrv: CompensationDetailService) {
         super(entitySrv, 'InvoicePayment');
     }
 
     override setupForm(a: Compensation): UntypedFormGroup {
+        this.entitySrv.isEditInProgress = true;
         this.entitySrv.setParentId(this.#parentId);
         return this.form = this.#formBuilder.group({
             id:           [a.id],
@@ -73,6 +76,7 @@ export class CompensationDetailComponent extends BaseChildEntityDetailComponent<
     }
 
     override ngOnInit() {
+        this.paymentLookup.onObjectSelected = p => this.checkAmount.set(p.amount||0);
         this.#parentId = this.entitySrv.getParentId();
         if (this.#parentId) {
             super.ngOnInit();
@@ -80,4 +84,9 @@ export class CompensationDetailComponent extends BaseChildEntityDetailComponent<
             this.router.navigate(['..'], { relativeTo: this.route }).then();
         }
     }
+
+    ngOnDestroy() {
+        this.entitySrv.isEditInProgress = false;
+    }
+
 }
