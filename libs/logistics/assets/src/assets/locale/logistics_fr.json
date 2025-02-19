@@ -179,5 +179,7 @@
     "QUANTITIES":           "Quantités",
     "QTY_RETURNED":         "Quantité retournee",
     "CHARGE":               "Frais ou remise si négatif",
-    "DELIVERY_TIMES":       "Délais de livraison"
+    "DELIVERY_TIMES":       "Délais de livraison",
+    "SUPPLIER_COMPENSATION": "Compensations fournisseurs",
+    "CUSTOMER_COMPENSATION": "Compensations clients"
 }

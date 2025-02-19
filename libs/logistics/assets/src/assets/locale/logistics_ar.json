@@ -177,5 +177,7 @@
     "QUANTITIES":           "الكميات",
     "QTY_RETURNED":         "الكمية المرتجعة",
     "CHARGE":               " رسوم أو خصم إذا كانت سلبية",
-    "DELIVERY_TIMES":      "وقت التسليم"
+    "DELIVERY_TIMES":      "وقت التسليم",
+    "SUPPLIER_COMPENSATION": "تعويضات الموردين",
+    "CUSTOMER_COMPENSATION": "تعويضات الزبائن"
 }
