@@ -1,6 +1,6 @@
 .size {
     width: 96%;
-    max-width: 1200px;
+    max-width: 800px;
     margin: 4px auto;
 }
 .table__container {
@@ -8,7 +8,7 @@
 }
 
 .mat-column-description {
-    flex: 1 1 200px;
+    flex: 1 2 200px;
 }
 .mat-column-creationTime,
 .mat-column-amount {
@@ -24,7 +24,7 @@
 }
 mat-table {
     width: 100%;
-    min-width: 800px;
+    min-width: 700px;
 }
 
 .button__div {

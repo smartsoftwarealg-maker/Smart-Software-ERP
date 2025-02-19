@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, computed, effect, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { Compensation, Debt } from '../services/compensation-api';
@@ -36,6 +36,7 @@ export class DebtsComponent extends BaseEntityListComponent<Debt> {
     #paymentSrv = inject(InvoicePaymentService);
 
     displayedColumns = ['date', 'invoiceNumber', 'customerCode', 'customerName', 'ftt', 'payment'];
+    isEditInProgress = this.#compensationDetailSrv.isEditInProgress;
 
     constructor(
         public override entitySrv: DebtService,
@@ -64,10 +65,12 @@ export class DebtsComponent extends BaseEntityListComponent<Debt> {
     }
 
     override selectRow(d: Debt) {
-        super.selectRow(d);
-        this.#compensationSrv.setParentId(d?.id||0);
-        this.#compensationDetailSrv.setParentId(d?.id||0);
-        this.#paymentSrv.setParentId(d?.agentId||0);
+        if (!this.isEditInProgress()) {
+            super.selectRow(d);
+            this.#compensationSrv.setParentId(d?.id || 0);
+            this.#compensationDetailSrv.setParentId(d?.id || 0);
+            this.#paymentSrv.setParentId(d?.agentId || 0);
+        }
     }
 
     onChange(e: MatRadioChange) {
