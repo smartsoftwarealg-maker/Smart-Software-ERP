@@ -31,6 +31,7 @@ import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { ImageInputComponent, ImageModel } from '@ss/common/ui-image-input';
 import { PaginationComponent } from '@ss/common/ui-pagination';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
     selector: 'ss-gica-gradings',
@@ -117,9 +118,16 @@ export class GradingsComponent implements OnInit {
     paginator = PaginationModel.newInstance({page: 1, pageSize: 10, elementCount: 0});
     data$: Observable<Employee[]> = of([]);
     selectedId = 0;
+    selectedEmployee: Employee|null = null;
 
     ngOnInit(): void {
         this.imageModel.readOnly = true;
+        this.yearCtrl
+            .valueChanges
+            .pipe(debounceTime(300),
+                distinctUntilChanged(),
+                takeUntilDestroyed(this.destroyRef))
+            .subscribe(res => this.refresh(this.selectedEmployee));
         this.destroyRef.onDestroy(() => this.subscriptions.forEach(s => s.unsubscribe()));
         this.subordinateLookup.onObjectSelected = e => this.refresh(e);
         this.shellSrv.setTitle('PAYROLL_GICA_GRADING');
@@ -181,12 +189,12 @@ export class GradingsComponent implements OnInit {
     }
 
     private refresh(e: IEmployee) {
-        this.imageModel.setImageUrl(this.employeeSrv.getPhotoUrl(e.id), false);
+        this.imageModel.setImageUrl(this.employeeSrv.getPhotoUrl(e?.id||0), false);
         this.emp.set(e);
         this.grades.clear();
         this.labels = [];
         this.gradingSrv
-            .get(this.yearCtrl.value, e?.id, this.gradeCtrl.value)
+            .get(this.yearCtrl.value, e?.id||0, this.gradeCtrl.value)
             .subscribe(res => {
                 this.executionIndex = this.gradeCtrl.value;
                 res.forEach(g => {
@@ -194,8 +202,8 @@ export class GradingsComponent implements OnInit {
                     const temp = this.fb.group({
                         id:          [g.id],
                         centerId:    [g.centerId || this.loginSrv.appCtx.center],
-                        year:        [this.yearCtrl.value],
-                        employeeId:  [e?.id],
+                        year:        [this.yearCtrl.value, Validators.max(this.currYear - 5), Validators.max(this.currYear)],
+                        employeeId:  [e?.id||0],
                         criterion:   [g.criterion],
                         description: [g.description],
                         grade1 :     [{ value: g.grade1, disabled: !this.gradingSrv.gradingMode || this.gradeCtrl.value !== 1}],
@@ -226,6 +234,7 @@ export class GradingsComponent implements OnInit {
     }
 
     selectEmployee(emp: Employee) {
+        this.selectedEmployee = emp;
         this.selectedId = emp?.id | 0;
         this.refresh(emp);
     }

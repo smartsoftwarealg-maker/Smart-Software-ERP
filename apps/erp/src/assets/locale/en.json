@@ -55,9 +55,11 @@
     "Activation": "Activation",
     "Career": "Career",
     "Child": "Child",
+    "SProject":        "Project",
+    "PProject":        "Contract",
+
+
     "RREQUEST": "Part request",
-
-
     "MAIN_MENU": "Main Menu",
     "ABOUT": "About",
     "PAYROLL":"Payroll",
@@ -118,5 +120,6 @@
     "GICACARRER":      "Career advancements",
     "SOCIAL_APP":      "Social works",
     "SOCIAL":          "Social works",
-    "AAVIEWER":        "APPArchive"
+    "AAVIEWER":        "APPArchive",
+    "PROJECT":         "Project/Contract"
 }
