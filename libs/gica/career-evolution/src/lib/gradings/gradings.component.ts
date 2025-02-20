@@ -122,7 +122,7 @@ export class GradingsComponent implements OnInit {
         this.imageModel.readOnly = true;
         this.destroyRef.onDestroy(() => this.subscriptions.forEach(s => s.unsubscribe()));
         this.subordinateLookup.onObjectSelected = e => this.refresh(e);
-        this.shellSrv.setTitle('PAYROLL_GRADING');
+        this.shellSrv.setTitle('PAYROLL_GICA_GRADING');
         this.shellSrv.setGoBackPath('../', this.route);
         this.shellSrv.setButtons([this.refreshButton, this.saveButton, ]);
 
@@ -175,6 +175,7 @@ export class GradingsComponent implements OnInit {
             );
         this.refresh({id: 0, firstName: null, lastName: null});
     }
+
     get grades(): FormArray {
         return this.form.controls['grades'] as FormArray;
     }

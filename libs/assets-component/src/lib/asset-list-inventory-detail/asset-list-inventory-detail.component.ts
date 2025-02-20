@@ -70,13 +70,15 @@ export class AssetListInventoryDetailComponent extends BaseEntityDetailComponent
             id:             [b.id],
             inventoryId:    [b.inventoryId],
             centerId:       [b.centerId],
-            reference:      [b.reference],
+            reference:      [{ value: b.reference, disabled: true}],
             comment:        [b.comment],
             locationId:     [null],
             newOfficeId:    [b.newOfficeId],
             newBuildingId:  [b.newBuildingId],
             newBeneficiary: [b.newBeneficiary],
-            updateLocation: [true]
+            updateLocation: [true],
+            description:    [{ value: b.description, disabled: true} ],
+
         });
     }
 

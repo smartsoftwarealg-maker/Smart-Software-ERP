@@ -182,5 +182,7 @@
     "CHARGE":               "Charge or discount if negative",
     "DELIVERY_TIMES":       "Delivery times",
     "SUPPLIER_COMPENSATION": "Supplier compensations",
-    "CUSTOMER_COMPENSATION": "Customer compensations"
+    "CUSTOMER_COMPENSATION": "Customer compensations",
+    "CUSTOMER_PAYMENTS":     "Customer payments",
+    "SUPPLIER_PAYMENTS":     "Supplier payments"
 }
