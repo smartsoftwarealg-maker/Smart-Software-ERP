@@ -27,7 +27,7 @@ import {
     CriteriaDetailComponent,
     AbsenceWeightListComponent,
     AbsenceWeightDetailComponent,
-    EvolutionComponent
+    EvolutionReportComponent
 } from '@gica/career-evolution';
 import { inject } from '@angular/core';
 import {
@@ -41,7 +41,7 @@ export const criteriaGuard: CanActivateFn = () => inject(CriterionService).canAc
 
 export const gicaRoutes: Routes = [
     {
-        path: GICA_EVOLUTIONS_URL, component: EvolutionComponent, canActivate: [loginGuard]
+        path: GICA_EVOLUTIONS_URL, component: EvolutionReportComponent, canActivate: [loginGuard]
     },
     {
         path: GICA_CONSTANTS_URL, component: ConstantDetailComponent, canActivate: [loginGuard]

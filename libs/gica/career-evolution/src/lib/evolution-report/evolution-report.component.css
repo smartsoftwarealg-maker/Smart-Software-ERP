@@ -23,7 +23,7 @@ mat-card, .input_div, .size {
 
 .div_table {
     overflow-y: auto;
-    height: calc(100% - 136px)
+    height: calc(100% - 180px)
 }
 
 .mat-column-id  {

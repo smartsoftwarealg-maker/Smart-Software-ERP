@@ -55,10 +55,10 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
     ],
     selector: 'ss-gica-deduction-report',
     standalone: true,
-    styleUrl: './evolution.component.css',
-    templateUrl: './evolution.component.html'
+    styleUrl: './evolution-report.component.css',
+    templateUrl: './evolution-report.component.html'
 })
-export class EvolutionComponent implements OnInit {
+export class EvolutionReportComponent implements OnInit {
     #destroyRef = inject(DestroyRef);
     #route = inject(ActivatedRoute);
     #shellSrv = inject(ShellService);
