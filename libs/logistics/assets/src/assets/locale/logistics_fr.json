@@ -181,5 +181,7 @@
     "CHARGE":               "Frais ou remise si négatif",
     "DELIVERY_TIMES":       "Délais de livraison",
     "SUPPLIER_COMPENSATION": "Compensations fournisseurs",
-    "CUSTOMER_COMPENSATION": "Compensations clients"
+    "CUSTOMER_COMPENSATION": "Compensations clients",
+    "CUSTOMER_PAYMENTS":     "Paiements clients",
+    "SUPPLIER_PAYMENTS":     "Paiements des fournisseurs"
 }

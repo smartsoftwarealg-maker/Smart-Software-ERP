@@ -2,7 +2,7 @@
     <div class="ctrl_div">
         <mat-form-field class="year">
             <mat-label translate>COMMON_YEAR</mat-label>
-            <input matInput [formControl]="yearCtrl" type="number" min="currYear - 3" max="currYear">
+            <input matInput [formControl]="yearCtrl" type="number" min="{{currYear - 5}}" max="{{currYear}}">
         </mat-form-field>
         <mat-form-field class="grade">
             <mat-label translate>PAYROLL_GRADE</mat-label>
@@ -74,6 +74,8 @@
                                    #input1
                                    formControlName="grade1"
                                    type="number"
+                                   min="0"
+                                   max="{{ maxima[i] }}"
                                    (click)="input1.select()">
                         </mat-form-field>
                         <mat-form-field>

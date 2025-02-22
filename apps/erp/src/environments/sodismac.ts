@@ -160,7 +160,7 @@ export const appRoutes: Routes =  [
 export const APPLICATION_LIST = [
     'ADMINISTRATION', 'DASHBOARD-APP', 'FINANCE', 'HRMASTER',
     'STOCK', 'LOGISTICS', 'LOGISTICS-ADMINISTRATION', 'ORGANIZATION', 'PAYMENTS',
-    'PURCHASES', 'SALES', 'WORKFLOW'];
+    'PURCHASES', 'SALES', 'WORKFLOW', 'PROJECTS'];
 /*
  * For easier debugging in development mode, you can import the following file
  * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.

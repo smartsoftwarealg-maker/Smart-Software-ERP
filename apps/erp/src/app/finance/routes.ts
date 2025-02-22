@@ -63,7 +63,7 @@ export const financeRoutes: Routes = [
                 path: LIST_URL,
                 component: PaymentsListComponent,
                 canActivate: [loginGuard],
-                data: { url: '/spayments', agents: '/customers' }
+                data: { url: '/spayments', agents: '/suppliers' }
             },
             {
                 path: ':id',

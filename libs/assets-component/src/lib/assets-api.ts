@@ -328,6 +328,7 @@ export interface InventoryAsset {
     documentId?: number;
     newBeneficiary?: number;
     locationDescription?: string;
+    description?: string;
     buildingDescription?: string;
     officeDescription?: string;
     newBuildingDescription?: string;

@@ -31,6 +31,7 @@ import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { ImageInputComponent, ImageModel } from '@ss/common/ui-image-input';
 import { PaginationComponent } from '@ss/common/ui-pagination';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
     selector: 'ss-gica-gradings',
@@ -113,6 +114,7 @@ export class GradingsComponent implements OnInit {
         grades: this.fb.array([])
     });
     labels = [''];
+    maxima = [0];
     displayedColumns = ['id', 'lastName', 'firstName'];
     paginator = PaginationModel.newInstance({page: 1, pageSize: 10, elementCount: 0});
     data$: Observable<Employee[]> = of([]);
@@ -120,9 +122,15 @@ export class GradingsComponent implements OnInit {
 
     ngOnInit(): void {
         this.imageModel.readOnly = true;
+        this.yearCtrl
+            .valueChanges
+            .pipe(debounceTime(300),
+                distinctUntilChanged(),
+                takeUntilDestroyed(this.destroyRef))
+            .subscribe(res => this.refresh(this.emp()));
         this.destroyRef.onDestroy(() => this.subscriptions.forEach(s => s.unsubscribe()));
         this.subordinateLookup.onObjectSelected = e => this.refresh(e);
-        this.shellSrv.setTitle('PAYROLL_GRADING');
+        this.shellSrv.setTitle('PAYROLL_GICA_GRADING');
         this.shellSrv.setGoBackPath('../', this.route);
         this.shellSrv.setButtons([this.refreshButton, this.saveButton, ]);
 
@@ -175,17 +183,19 @@ export class GradingsComponent implements OnInit {
             );
         this.refresh({id: 0, firstName: null, lastName: null});
     }
+
     get grades(): FormArray {
         return this.form.controls['grades'] as FormArray;
     }
 
     private refresh(e: IEmployee) {
-        this.imageModel.setImageUrl(this.employeeSrv.getPhotoUrl(e.id), false);
         this.emp.set(e);
+        this.imageModel.setImageUrl(this.employeeSrv.getPhotoUrl(e?.id||0), false);
         this.grades.clear();
         this.labels = [];
+        this.maxima = [];
         this.gradingSrv
-            .get(this.yearCtrl.value, e?.id, this.gradeCtrl.value)
+            .get(this.yearCtrl.value, e?.id||0, this.gradeCtrl.value)
             .subscribe(res => {
                 this.executionIndex = this.gradeCtrl.value;
                 res.forEach(g => {
@@ -193,16 +203,17 @@ export class GradingsComponent implements OnInit {
                     const temp = this.fb.group({
                         id:          [g.id],
                         centerId:    [g.centerId || this.loginSrv.appCtx.center],
-                        year:        [this.yearCtrl.value],
-                        employeeId:  [e?.id],
+                        year:        [this.yearCtrl.value, [Validators.min(this.currYear - 5), Validators.max(this.currYear)]],
+                        employeeId:  [e?.id||0],
                         criterion:   [g.criterion],
                         description: [g.description],
-                        grade1 :     [{ value: g.grade1, disabled: !this.gradingSrv.gradingMode || this.gradeCtrl.value !== 1}],
+                        grade1 :     [{ value: g.grade1, disabled: !this.gradingSrv.gradingMode || this.gradeCtrl.value !== 1}  ],
                         grade2:      [{ value: idx >= 2? g.grade2: 0, disabled: !this.gradingSrv.gradingMode || this.gradeCtrl.value !== 2}],
                         finalGrade:  [{ value: idx >= 3? g.finalGrade : 0, disabled: this.gradeCtrl.value !== 3}],
                         userId:      [this.loginSrv.appCtx.id]
                     });
                     this.grades.push(temp);
+                    this.maxima.push(g.maxGrade||4);
                     this.labels.push(g.description);
                 });
                 this.saveButton.disabled = res.length == 0;
@@ -225,6 +236,7 @@ export class GradingsComponent implements OnInit {
     }
 
     selectEmployee(emp: Employee) {
+        this.emp.set(emp);
         this.selectedId = emp?.id | 0;
         this.refresh(emp);
     }

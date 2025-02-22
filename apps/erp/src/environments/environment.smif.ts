@@ -123,5 +123,5 @@ export const APPLICATION_LIST = [
     'PURCHASES',
     'TREASURY',
     'WORKFLOW',
-    'SOCIAL'
+    'PROJECTS'
 ];

@@ -57,6 +57,10 @@ export class EmployeeListComponent extends BaseEntityListComponent<Employee> imp
         return item.id;
     }
 
+    selectAndEdit(id: number) {
+        this.select(id);
+        this.edit();
+    }
     override ngOnInit(): void {
         this.addButton.visible = this.activePersonnel;
         super.ngOnInit();

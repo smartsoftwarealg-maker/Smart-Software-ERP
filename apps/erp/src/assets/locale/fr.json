@@ -55,6 +55,10 @@
     "Activation":                   "Activation",
     "Career":                       "Carriere",
     "Child":                        "Enfant",
+    "SProject":         "Projct",
+    "PProject":        "Contrat",
+
+
     "RREQUEST":                     "Demande de pieces",
 
 
@@ -118,6 +122,7 @@
     "COSTING":         "Coût",
     "GICACARRER":      "Avencement carrière",
     "SOCIAL_APP":      "œuvres social",
-    "SOCIAL":      "œuvres social",
-    "AAVIEWER":                   "APPArchive"
+    "SOCIAL":          "œuvres social",
+    "AAVIEWER":        "APPArchive",
+    "PROJECT":         "Projet/Contrat"
 }
