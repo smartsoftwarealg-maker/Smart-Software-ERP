@@ -360,5 +360,6 @@
     "ORDER_CONTRACT":     "Order/contract",
     "ORDER_DATE":          "Order date",
     "PAID":                "Paid",
-    "NON_PAID":            "Non paid"
+    "NON_PAID":            "Non paid",
+    "SCRIPT":             "Script"
 }

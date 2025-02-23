@@ -8,7 +8,7 @@ import {
     ABS_GICA_WEIGHTS_URL,
     ABS_GICA_REPORTS_URL,
     ABS_GICA_SCALE_URL,
-    ABS_GICA_EVOLUTION_REPORT_URL, ABS_HR_REPORTS_URL, ABS_GICA_REPORTING_URL
+    ABS_GICA_EVOLUTION_REPORT_URL, ABS_HR_REPORTS_URL, ABS_GICA_REPORTING_URL, ABS_GICA_CAREER_MOTIVES_URL
 } from '../common';
 
 export const gicaNavTree: SideNavNode = {
@@ -26,6 +26,12 @@ export const gicaNavTree: SideNavNode = {
             icon: 'fa-solid fa-stars',
             route: ABS_GICA_CRITERIA_URL,
             accessRights: 'Criterion'
+        },
+        {
+            name: 'PAYROLL_CAREER_MOTIVES',
+            icon: 'fa-solid fa-crosshairs',
+            route: ABS_GICA_CAREER_MOTIVES_URL,
+            accessRights: 'CareerMotive'
         },
         // {
         //     name: 'PAYROLL_WEIGHTS',
@@ -59,6 +65,7 @@ export const gicaNavTree: SideNavNode = {
         //     route: ABS_GICA_DEGRADING_URL,
         //     accessRights: 'DGrade'
         // },
+
 
         {
             name: 'PAYROLL_EVOLUTION_REPORT',

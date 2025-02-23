@@ -202,5 +202,6 @@
     "CAREER_CRITERIA":       "Critères",
     "GRADE":                 "Point",
     "DEDUCTION_FORMULA":     "Formule d'abattement",
-    "PROMOTION_MOTIVE":      "Motifs de promotion"
+    "PROMOTION_MOTIVE":      "Motifs de promotion",
+    "IS_PROMOTION":          "Promotion?"
 }
