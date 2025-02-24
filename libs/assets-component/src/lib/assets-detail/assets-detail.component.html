@@ -2,8 +2,8 @@
     <form [formGroup]="form">
         <mat-form-field id="reference" class="default-25 sm-50">
             <mat-label translate>COMMON_REFERENCE</mat-label>
-            <input matInput formControlName="reference" type="text" autofocus maxlength="16" required>
-            <mat-error *ngIf="form.controls['reference']?.hasError('maxlength')" [translate]="{maxLen: 17}">
+            <input matInput formControlName="reference" type="text" autofocus maxlength="32" required>
+            <mat-error *ngIf="form.controls['reference']?.hasError('maxlength')" [translate]="{maxLen: 32}">
                 COMMON_FIELD_MAX_LENGTH
             </mat-error>
             <mat-error *ngIf="form.controls['reference']?.hasError('minlength')" [translate]="{minLen: minLength}">
