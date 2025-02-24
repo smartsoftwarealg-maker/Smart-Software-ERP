@@ -72,7 +72,8 @@ export class EvolutionReportComponent implements OnInit {
         'lastName',
         'grade',
         'deduction',
-        'rate'
+        'rate',
+        'hireDate'
     ];
     selectedReport: Report | null = null;
 

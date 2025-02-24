@@ -89,6 +89,7 @@ export class ReceptionDetailComponent extends BaseTransactionDetailComponent imp
 
     override ngOnInit() {
         super.ngOnInit();
+        this.shellSrv.addButton(this.importContractBtn);
         this.currencySrv.load().subscribe();
     }
 
@@ -110,6 +111,7 @@ export class ReceptionDetailComponent extends BaseTransactionDetailComponent imp
             this.router.navigate([this.URLs[idx]], { relativeTo: this.route }).then();
         }
     }
+
 
     private importContract() {
         if (!this.importContractBtn.disabled && this.form.controls['project'].value) {
