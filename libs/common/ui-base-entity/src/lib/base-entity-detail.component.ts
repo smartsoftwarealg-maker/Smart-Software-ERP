@@ -12,14 +12,6 @@ import { AbstractEntityComponent } from './abstract-entity.component';
 export abstract class BaseEntityDetailComponent<T extends { id: number }> extends AbstractEntityComponent<T> implements OnInit, OnDestroy {
     public loaded = signal(false);
 
-    public saveButton: ToolbarButton = {
-        icon: 'fas fa-save',
-        label: 'COMMON_SAVE',
-        disabled: false,
-        visible: true,
-        keepOnToolbar: KeepOnToolbar.ALWAYS, // save button is too important to hide
-        click: () => this.save()
-    };
 
     protected constructor(
         public entitySrv: BaseEntityService<T>,

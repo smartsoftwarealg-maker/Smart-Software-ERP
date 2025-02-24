@@ -12,6 +12,7 @@ import { DatePickerComponent } from '@ss/common/ui-datepicker';
 import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
 import { DeliveryCancellationLinesService } from '../delivery-cancellation-lines.service';
 import { TranslateDirective } from '@ss/common/ui-lang';
+import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 
 @Component({
     selector: 'ss-delivery-cancellation-lines-detail',
@@ -24,10 +25,10 @@ import { TranslateDirective } from '@ss/common/ui-lang';
         TranslateDirective,
         ReactiveFormsModule,
         RouterModule,
-       
+        UiAutoCompleteComponent
 
 
-    ],
+    ]
 })
 export class DeliveryCancellationLinesDetailComponent extends BaseTransactionLinesDetailComponent implements OnInit, OnDestroy {
     constructor(

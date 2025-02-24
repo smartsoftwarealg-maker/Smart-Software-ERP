@@ -14,7 +14,7 @@ import {
     LOGISTICS_ARTICLES_URL,
     STOCK_UNITS_URL,
     LOGISTICS_CUSTOMER_URL,
-    LOGISTICS_SUPPLIER_URL, LOGISTICS_ORDER_ANOMALIES_URL, LOGISTICS_TRANSPORTER_URL
+    LOGISTICS_SUPPLIER_URL, LOGISTICS_ORDER_ANOMALIES_URL, LOGISTICS_TRANSPORTER_URL, DELIVERY_TIME_URL
 } from '../common';
 import {ABS_INDEX_URL, CanDeactivateService, LIST_URL} from '@ss/common/api-common';
 import {Routes} from '@angular/router';
@@ -48,6 +48,10 @@ import {loginGuard} from '../erp-guards';
 import { AGENT_ARCHIVES } from '@ss/common/app-archive';
 import { ArticleDetailComponent, ArticleListComponent } from '@ss/master-data/ui-article';
 import { LogisticsOrderAnomaliesComponent } from '@logistics/order-anomalies';
+import {
+    DeliveryTimeDetailComponent,
+    DeliveryTimeListComponent
+} from '../../../../../libs/common/ui-lookup/src/lib/components/delivery-time.component';
 
 export const mainRoutes: Routes = [
     {
@@ -195,7 +199,8 @@ export const mainRoutes: Routes = [
         children: [
             {
                 path: LIST_URL,
-                component: PayMethodListComponent
+                component: PayMethodListComponent,
+                canActivate: [loginGuard],
             },
             {
                 path: ':id',
@@ -232,7 +237,8 @@ export const mainRoutes: Routes = [
         children: [
             {
                 path: LIST_URL,
-                component: VatListComponent
+                component: VatListComponent,
+                canActivate: [loginGuard],
             },
             {
                 path: ':id',
@@ -244,11 +250,29 @@ export const mainRoutes: Routes = [
         ]
     },
     {
+        path: DELIVERY_TIME_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: DeliveryTimeListComponent,
+                canActivate: [loginGuard],
+            },
+            {
+                path: ':id',
+                component: DeliveryTimeDetailComponent,
+                canActivate: [loginGuard],
+                canDeactivate: [CanDeactivateService]
+            },
+            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
+        ]
+    },
+    {
         path: LOGISTICS_AGENT_TYPE_URL,
         children: [
             {
                 path: LIST_URL,
-                component: AgentTypeListComponent
+                component: AgentTypeListComponent,
+                canActivate: [loginGuard],
             },
             {
                 path: ':id',
@@ -264,7 +288,8 @@ export const mainRoutes: Routes = [
         children: [
             {
                 path: LIST_URL,
-                component: CompanyTypeListComponent
+                component: CompanyTypeListComponent,
+                canActivate: [loginGuard],
             },
             {
                 path: ':id',
@@ -280,7 +305,8 @@ export const mainRoutes: Routes = [
         children: [
             {
                 path: LIST_URL,
-                component: CurrencyListComponent
+                component: CurrencyListComponent,
+                canActivate: [loginGuard],
             },
             {
                 path: ':id',
@@ -296,7 +322,8 @@ export const mainRoutes: Routes = [
         children: [
             {
                 path: LIST_URL,
-                component: ActivityListComponent
+                component: ActivityListComponent,
+                canActivate: [loginGuard],
             },
             {
                 path: ':id',
@@ -312,7 +339,8 @@ export const mainRoutes: Routes = [
         children: [
             {
                 path: LIST_URL,
-                component: SalesCategoryListComponent
+                component: SalesCategoryListComponent,
+                canActivate: [loginGuard],
             },
             {
                 path: ':id',
@@ -328,7 +356,8 @@ export const mainRoutes: Routes = [
         children: [
             {
                 path: LIST_URL,
-                component: DocumentNumberingListComponent
+                component: DocumentNumberingListComponent,
+                canActivate: [loginGuard],
             },
             {
                 path: ':id',
@@ -344,7 +373,8 @@ export const mainRoutes: Routes = [
         children: [
             {
                 path: LIST_URL,
-                component: UnitListComponent
+                component: UnitListComponent,
+                canActivate: [loginGuard],
             },
             {
                 path: ':id',

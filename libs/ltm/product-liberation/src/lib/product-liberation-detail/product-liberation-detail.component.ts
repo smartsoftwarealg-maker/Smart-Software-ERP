@@ -2,7 +2,7 @@ import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
-import { ActivatedRoute, RouterOutlet } from '@angular/router';
+import { ActivatedRoute, Router, RouterOutlet } from '@angular/router';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { LoginService, MaterialModule } from '@ss/common/api-common';
 import {
@@ -43,6 +43,8 @@ import { DatePickerComponent } from '@ss/common/ui-datepicker';
     styleUrl: './product-liberation-detail.component.scss',
 })
 export class ProductLiberationDetailComponent extends BaseEntityDetailComponent<LTMProductLiberation> {
+    #activatedRoute = inject(ActivatedRoute);
+    #router = inject(Router)
     #loginSrv = inject(LoginService);
     #liberationLineSrv = inject(LtmProductLiberationLineService);
 
@@ -66,16 +68,38 @@ export class ProductLiberationDetailComponent extends BaseEntityDetailComponent<
     }
 
     public override setupForm(b: LTMProductLiberation): UntypedFormGroup {
-        return this.formBuilder.group({
-            id: [b.id],
+        const form = this.formBuilder.group({
+            id:          [b.id],
             description: [b.description, Validators.required],
-            centerId: [b.centerId || this.#loginSrv.appCtx.center],
-            date: [b.date || new Date(), Validators.required],
+            centerId:    [b.centerId || this.#loginSrv.appCtx.center],
+            date:        [b.date || new Date(), Validators.required],
+            from:        [b.from, Validators.required],
+            to:          [b.to, Validators.required],
+            signer:      [b.signer]
         });
+        if (!b.id) {
+            const sub = this.entitySrv
+                .getList(0, 3, null, '-d')
+                .subscribe(res => {
+                    if (res.body.length) {
+                        form.controls['description'].setValue(res.body[0].description);
+                    }
+                    sub.unsubscribe();
+                });
+        }
+        return form;
     }
 
     override loadEntity(id: number): Observable<LTMProductLiberation> {
         this.#liberationLineSrv.setParentId(id);
         return super.loadEntity(id);
+    }
+
+    protected override goBack() {
+        if (!this.form?.controls['id'].value) {
+            this.#router.navigate(['..', this.queryId], {relativeTo: this.#activatedRoute}).then();
+        } else {
+            super.goBack();
+        }
     }
 }

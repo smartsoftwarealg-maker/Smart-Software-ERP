@@ -1,3 +1,8 @@
+export const LTM_PRODUCT_LIBERATION_DOC = 1;
+export const LTM_NON_CONFORMITY_DOC = 2;
+export const LTM_QUALITY_CERTIFICATE_DOC = 3;
+
+
 export const CHEMICAL_TEST = 1;
 export const PHYSICAL_TEST = 2;
 export const DEPOSIT_TEST = 3;
@@ -42,6 +47,8 @@ export const LTM_PRODUCT_LIBERATION_URL     = '/ltm/product-liberation';
 export const LTM_PRODUCT_LIBERATION_LINE_URL     = '/ltm/liberation';
 export const LTM_PRODUCT_LIBERATION_PRODUCTS_URL     = '/products';
 export const LTM_PRODUCT_LIBERATION_PRODUCT_TYPE_URL     = '/lookups/ltm_product_types';
+export const LTM_MAILING_URL     = '/ltm/mailings';
+export const LTM_MAILING_DOCUMENTS_URL     = '/documents';
 
 
 
@@ -157,12 +164,12 @@ export interface LTMTestingLine {
     orderNo?: number;
 }
 
-export interface MLTMTestingLine {
-    id: number;
-    parentId: number; //testing_id
-    testId: number;
-    value: number;
-}
+// export interface MLTMTestingLine {
+//     id: number;
+//     parentId: number; //testing_id
+//     testId: number;
+//     value: number;
+// }
 
 export interface LTMBatch {
     id: number;
@@ -252,6 +259,7 @@ export interface LTMAbnormalTest {
     actionNo?: string;
     actionDate?: Date;
     responsibleId?: number;
+    qualityChief?: number;
     validationDate?: Date;
     pickPoint?: string;
 }
@@ -349,6 +357,7 @@ export interface LTMProductLiberationLine {
     productId: number;
     siloId: number;
     typeId: number;
+    memo?: string;
     productDescription?: string;
     siloDescription?: string;
     typeDescription?: string}
@@ -357,5 +366,20 @@ export interface  LTMProductLiberation {
     id: number;
     centerId: number;
     date: Date,
+    from: Date,
+    to: Date,
+    signer?: string;
     description?: string;
+}
+
+export interface LTMMailingDocument {
+    id: number;
+    parentId: number;
+    document: number;
+}
+
+export interface LTMMailingList {
+    id: number;
+    fullName: string;
+    email: string;
 }

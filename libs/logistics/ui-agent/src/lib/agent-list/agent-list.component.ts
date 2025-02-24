@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import {ShellService, SnackBarService} from '@ss/common/ui-shell';
+import { KeepOnToolbar, ShellService, SnackBarService, ToolbarButton } from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {LookupsService} from '@ss/common/api-lookup';
 import {Observable, switchMap} from 'rxjs';
@@ -15,7 +15,6 @@ import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
 import { PaginationComponent } from '@ss/common/ui-pagination';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
-//import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 
 @Component({
     selector: 'ss-agent-list',
@@ -28,14 +27,20 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         TranslateDirective,
         ReactiveFormsModule,
         TranslateDirective,
-
-
         DocInfoComponent,
         PaginationComponent
     ]
-
 })
 export class AgentListComponent extends BaseEntityListComponent<Agent> {
+    #activeOnlyBtn: ToolbarButton = {
+        disabled: false,
+        icon: 'fa-solid fa-toggle-off',
+        keepOnToolbar: KeepOnToolbar.DYNAMIC,
+        label: 'COMMON_SHOW_ALL',
+        visible: true,
+        click: () => this.toggleActivity(),
+    }
+
     private isParamSrv = inject(IsParamService);
 
     private isAQS       = false;
@@ -77,6 +82,12 @@ export class AgentListComponent extends BaseEntityListComponent<Agent> {
         this.isAsset = this.route.snapshot?.data['assets'] || false;
     }
 
+    ngOnInit() {
+        super.ngOnInit();
+        this.agentService.activeOnly = true;
+        this.shellSrv.addButton(this.#activeOnlyBtn);
+    }
+
     override preload(): Observable<any> {
         return this.isParamSrv
             .is('AQS')
@@ -93,5 +104,12 @@ export class AgentListComponent extends BaseEntityListComponent<Agent> {
                 this.agentService.setURL(isCustomer? CUSTOMER_URL : isSupplier? SUPPLIER_URL : isTransporter? TRANSPORTER_URL : AGENT_URL);
                 this.shellSrv.setTitle(isCustomer? 'LOGISTICS_CUSTOMER': isSupplier ? 'LOGISTICS_SUPPLIER' : isTransporter ? 'LOGISTICS_TRANSPORTER' : 'COMMON_AGENTS');
             }));
+    }
+
+    private toggleActivity() {
+        this.agentService.toggle();
+        this.#activeOnlyBtn.label = this.agentService.activeOnly ? 'COMMON_SHOW_ALL' : 'COMMON_SHOW_ACTIVE_ONLY';
+        this.#activeOnlyBtn.icon = this.agentService.activeOnly ? 'fa-solid fa-toggle-on' : 'fa-solid fa-toggle-off';
+        this.refresh();
     }
 }

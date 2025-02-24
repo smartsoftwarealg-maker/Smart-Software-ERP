@@ -4,12 +4,12 @@ import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {BudgetGroupTree} from '../budget-groups-api';
 import { MatCard } from "@angular/material/card";
 import { MatFormField, MatLabel, MatError } from "@angular/material/form-field";
-import { TranslateDirective } from "../../../../../common/ui-lang/src/lib/translate.directive";
+import { TranslateDirective } from '@ss/common/ui-lang';
 import { MatInput } from "@angular/material/input";
 import { NgIf } from "@angular/common";
 import { MatCheckbox } from "@angular/material/checkbox";
 import { MatButton } from "@angular/material/button";
-import { TranslatePipe } from "../../../../../common/ui-lang/src/lib/translate.pipe";
+import { TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-budget-groups-add-dlg',

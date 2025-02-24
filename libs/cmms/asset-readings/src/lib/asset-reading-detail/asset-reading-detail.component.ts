@@ -17,6 +17,8 @@ import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { DatePickerComponent } from '@ss/common/ui-datepicker';
+import { TranslateDirective } from '@ss/common/ui-lang';
+import { MaterialModule } from '@ss/common/api-common';
 
 @Component({
     selector: 'ss-asset-reading-detail',
@@ -25,10 +27,10 @@ import { DatePickerComponent } from '@ss/common/ui-datepicker';
     standalone: true,
     imports: [
         CommonModule,
-
+        MaterialModule,
+        TranslateDirective,
         MatSortModule,
         MatTableModule,
-
         MatCardModule,
         MatFormFieldModule,
         MatInputModule,

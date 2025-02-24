@@ -1,5 +1,6 @@
 import {
-    Component, DestroyRef,
+    Component,
+    DestroyRef,
     inject,
     input,
     OnDestroy,
@@ -70,6 +71,7 @@ type VarianceControl = {
 })
 export class LtmBatchInputComponent implements OnInit, OnDestroy {
     #destroyRef = inject(DestroyRef);
+    #selectedTest = 0;
 
     private TITLES = ['LTM_BATCH_TESTINGS', 'LTM_PHYSICAL_TESTINGS', 'LTM_DEPOSIT_TESTINGS', 'LTM_RAW_TESTINGS']
     private activatedRoute = inject(ActivatedRoute);
@@ -95,6 +97,7 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
     // private hour = viewChild<ElementRef>('hour');
 
     periodLookup = new DefaultAutoCompleteModel(this.periodSrv);
+    matterTestLookup = new DefaultAutoCompleteModel(this.matterTestSrv, 'testId', 'testDescription');
     siloLookup = new DefaultAutoCompleteModel(this.siloSrv);
     matterLookup = new DefaultAutoCompleteModel(this.lineMatterSrv);
     supplierLookup = new DefaultAutoCompleteModel(this.supplierSrv);
@@ -139,6 +142,7 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
 
     formBuilder = inject(FormBuilder);
     periodCtrl = new FormControl<number>(0);
+    matterTestCtrl = new FormControl<number>(0);
 
     form = this.formBuilder.group(
         {
@@ -173,6 +177,7 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
         this.periodLookup.onObjectSelected = e => this.onPeriod();
         this.matterLookup.onObjectSelected = e => this.onMatter(e?.id || 0);
         this.form.controls.sampleNo.setValidators(sampleNoValidatorFn(this.testingMode() === PHYSICAL_TEST));
+        this.matterTestLookup.onObjectSelected = e => this.onTest(e?.testId||0);
     }
 
     ngOnDestroy(): void {
@@ -180,6 +185,7 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit() {
+        this.#selectedTest = 0;
         this.scheduleSrv.setParentId(this.id());
         this.testSrv
             .getList(0, 999, null, 'variable')
@@ -318,11 +324,15 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
     }
 
     private showData(batch: LTMBatch) {
-         this.matterTestSrv.getList(0, 900, null, 'id')
-            .subscribe(res => {
+         this.matterTestSrv
+             .getList(0, 900, null, 'id')
+             .subscribe(res => {
                 const testingId = this.form.controls.id.value;
                 const selectedTests = res.body
-                    .filter(t => (this.periodCtrl.value < 1 || this.periodCtrl.value === t.periodicity) && !t.formula)
+                    .filter(t =>
+                        (this.periodCtrl.value < 1 || this.periodCtrl.value === t.periodicity) &&
+                        (this.#selectedTest === 0 || this.#selectedTest === t.testId) &&
+                        !t.formula)
 
                 selectedTests
                     .sort((a, b) => a.testId - b.testId)
@@ -350,7 +360,9 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
                 this.missingVariables = this.missingVariables.filter(v => this.variables.indexOf(v) < 0);
 
                 res.body
-                    .filter(t => (this.periodCtrl.value < 1 || this.periodCtrl.value === t.periodicity) && t.formula && t.testDescription)
+                    .filter(t => (this.periodCtrl.value < 1 || this.periodCtrl.value === t.periodicity) &&
+                                               (this.#selectedTest === 0 || this.#selectedTest === t.testId) &&
+                                               t.formula && t.testDescription)
                     .sort((a, b) => a.id - b.id)
                     .forEach(t => {
                         this.totalsLabels.push(t.testDescription);
@@ -372,6 +384,7 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
         this.refreshData();
         this.validate();
     }
+
     private refreshData() {
         this.tests.clear();
         this.totals.clear();
@@ -407,7 +420,7 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
                 this.form.controls.parentId.setValue(batch.parentId || this.matterTestSrv.getParentId());
 
                 // if (this.testingMode() === PHYSICAL_TEST) {
-                    this.matterTestSrv.setParentId(batch.parentId || this.matterTestSrv.getParentId());
+                this.matterTestSrv.setParentId(batch.parentId || this.matterTestSrv.getParentId());
                 // }
                 if (batch.id) {
                     this.form.controls.parentId.disable();
@@ -433,10 +446,16 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
     }
 
     onMatter(id: number) {
+        this.matterTestCtrl.setValue(0);
+        this.#selectedTest = 0;
         this.matterTestSrv.setParentId(id);
         this.refreshData();
     }
 
+    onTest(id: number) {
+        this.#selectedTest = id;
+        this.refreshData();
+    }
 
     private validateFormulas() {
         return this.totals.controls.map((c, i) => {
@@ -458,6 +477,7 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
 
     private save() {
         const formValue: LTMBatch = this.form.getRawValue() as LTMBatch;
+        debugger;
         if (!this.form.valid ||
             (this.form.controls.sampleNo.invalid && this.testingMode() === PHYSICAL_TEST) ||
             !this.validateFormulas() ||

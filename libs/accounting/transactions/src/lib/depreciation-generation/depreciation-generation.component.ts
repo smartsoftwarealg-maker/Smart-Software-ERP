@@ -1,12 +1,12 @@
 import { Component, inject, OnInit } from "@angular/core";
 import { ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup, Validators } from "@angular/forms";
-import { LoginService, MaterialModule } from "@ss/common/api-common";
+import { LanguageService, LoginService, MaterialModule } from '@ss/common/api-common';
 import {DepreciationGenerationService} from './depreciation-generation.service';
 import {DepreciationRow} from './depreciation-row';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import { ActivatedRoute, RouterModule } from "@angular/router";
 import {AccJournalsService, Journal} from '@ss/accounting/accounting-api';
-import {  DefaultAutoCompleteModel } from "@ss/common/ui-auto-complete";
+import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { CommonModule } from "@angular/common";
 
 
@@ -26,13 +26,14 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         RouterModule,
         MaterialModule,
         TranslateDirective,
-       
+
         ReactiveFormsModule,
 
         DatePickerComponent,
+        UiAutoCompleteComponent
 
 
-    ],
+    ]
 })
 export class DepreciationGenerationComponent implements OnInit {
     private fb = inject(UntypedFormBuilder);
@@ -55,6 +56,7 @@ export class DepreciationGenerationComponent implements OnInit {
 
     ngOnInit(): void {
         this.shellSrv.setGoBackPath('..', this.route);
+        this.shellSrv.setTitle('ACC_DEPRECIATION_GENERATION');
         this.loginSrv
             .loadContext()
             .subscribe(res => {

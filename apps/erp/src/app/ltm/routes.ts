@@ -35,7 +35,7 @@ import {
     LTM_TEST_EQUIPMENT_URL,
     LTM_TEST_EQUIPMENT_TESTING_URL,
     LTM_PRODUCT_TYPE_URL,
-    LTM_PRODUCT_LIBERATION_ROUTE_URL
+    LTM_PRODUCT_LIBERATION_ROUTE_URL, LTM_MAILING_LIST_URL
 } from '../common';
 
 import {
@@ -86,7 +86,11 @@ import {
     LtmCorrectionActionListComponent,
     LtmCorrectionActionDetailComponent,
     LtmTestScheduleListComponent,
-    LtmTestScheduleDetailComponent, LtmProductTypeListComponent, LtmProductTypeDetailComponent
+    LtmTestScheduleDetailComponent,
+    LtmProductTypeListComponent,
+    LtmProductTypeDetailComponent,
+    LtmMailingListComponent,
+    LtmMailingDetailComponent, LtmMailingDocumentsListComponent, LtmMailingDocumentsDetailComponent
 } from '@ss/ltm/ltm';
 import {loginGuard} from '../erp-guards';
 import {DashboardComponent} from '@ss/dashboard';
@@ -109,7 +113,6 @@ import {
 import {
     CHEMICAL_TEST,
     DEPOSIT_TEST,
-    LTM_PRODUCT_LIBERATION_LINE_URL, LTM_PRODUCT_LIBERATION_URL,
     PHYSICAL_TEST,
     RAW_MATERIAL_TEST
 } from '@ltm/ltm-api';
@@ -144,6 +147,26 @@ export const ltmRoutes: Routes = [
                     { path: 'detail',
                         children: [
                             { path: ':id', component: LtmMatterTestDetailComponent }
+                        ]
+                    }
+                ],
+                canActivate: [loginGuard],
+                canDeactivate: [CanDeactivateService]
+            }
+        ]
+    },
+    {
+        path: LTM_MAILING_LIST_URL,
+        children: [
+            { path: LIST_URL, component: LtmMailingListComponent, canActivate: [loginGuard]},
+            { path: ':id',
+                component: LtmMailingDetailComponent,
+                children: [
+                    { path: '', redirectTo: 'detail', pathMatch: 'full'},
+                    { path: 'detail',
+                        children: [
+                            { path: '', component: LtmMailingDocumentsListComponent, pathMatch: 'full'},
+                            { path: ':id', component: LtmMailingDocumentsDetailComponent }
                         ]
                     }
                 ],

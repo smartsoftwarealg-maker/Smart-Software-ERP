@@ -9,7 +9,7 @@ import {Special, SpecialPayrollService} from '@ss/remuneration/special-payroll-c
 import {PayrollMonthService} from '@ss/remuneration/payroll-month';
 import { MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from '@angular/material/table';
 import { TranslateDirective } from '@ss/common/ui-lang';
-import { PaginationComponent } from '../../../../../common/ui-pagination/src/lib/pagination.component';
+import { PaginationComponent } from '@ss/common/ui-pagination';
 
 @Component({
     selector: 'ss-special-payroll-list',

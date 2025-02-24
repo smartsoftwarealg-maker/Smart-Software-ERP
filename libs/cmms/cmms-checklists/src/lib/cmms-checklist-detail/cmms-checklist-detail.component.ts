@@ -16,7 +16,7 @@ import { MatTableModule } from '@angular/material/table';
 
 import { MaterialModule } from '@ss/common/api-common';
 import { CMMSRoutingDetailService } from '@ss/master-data/cmms-routing';
-import { TranslatePipe } from '@ss/common/ui-lang';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-cmms-routing-detail',
@@ -26,8 +26,9 @@ import { TranslatePipe } from '@ss/common/ui-lang';
         MatCheckboxModule,
         MatSortModule,
         MatTableModule,
-
-        MaterialModule, RouterOutlet, TranslatePipe
+        MaterialModule,
+        RouterOutlet,
+        TranslateDirective, TranslatePipe
     ],
     templateUrl: 'cmms-checklist-detail.component.html',
     styleUrls: ['cmms-checklist-detail.component.css']

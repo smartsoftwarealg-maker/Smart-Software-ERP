@@ -5,7 +5,7 @@
         </ng-template>
         <div class="content">
             <div *ngFor="let emp of data; trackBy: trackByFn;" class="employee-card selectable mat-elevation-z6"
-                 [class.selected]="emp.id == selected" (click)="select(emp.id)">
+                 [class.selected]="emp.id == selected" (click)="selectAndEdit(emp.id)">
 
                 <div class="person-photo">
                     <ss-image-input width="120px" height="120px" [imageModel]="emp.imageModel"

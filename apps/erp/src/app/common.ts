@@ -13,6 +13,7 @@ import {
 } from '@ss/common/app-archive';
 import {AgentAssetsListComponent} from '@ss/assets-component';
 import { DocumentSourcesComponent } from 'logistics/ui-document-sources';
+import { UiTransactionlineQuantitiesComponent } from '@ss/logistics/quantities';
 
 // common
 export const LOOKUPS_URL = 'lookups';
@@ -46,6 +47,7 @@ export const ORGANIZATIONS_APP_URL = 'organizations';
 export const LTM_APP_URL = 'ltm';
 export const COSTING_APP_URL = 'costing';
 export const CMMS_APP_URL = 'cmms';
+export const CRM_APP_URL = 'crm';
 export const PARK_APP_URL = 'park';
 export const ARCH_VIEWER_URL = 'arch-viewer';
 export const SERVICE_SALES = 'service-sales';
@@ -168,6 +170,7 @@ export const IMPORT_PURCHASE_RECEPTION_URL = 'import-receptions';
 export const PURCHASE_RECEPTION_CANCELLATION_URL = 'creceptions';
 export const PURCHASE_ORDER_URL = 'porders';
 export const PURCHASE_REQUEST_URL = 'prequests';
+export const PRICE_REQUEST_URL = 'price-requests';
 export const PURCHASE_QUOTATION_URL = 'offers';
 export const PAYMENT_ORDER = 'payment-orders';
 
@@ -193,6 +196,7 @@ export const LOGISTICS_ACTIVITY_URL = 'activities';
 export const LOGISTICS_CURRENCY_URL = 'currencies';
 export const FURNITURE_STATUS_URL = 'furniture-states';
 export const LOGISTICS_WORKFLOW_URL = 'workflow-messages';
+export const DELIVERY_TIME_URL = 'delivery-times';
 
 
 // Contracts
@@ -201,6 +205,8 @@ export const CONTRACTS_PROJECT_MOTIVE_URL = 'projectMotives';
 export const CONTRACTS_AWARD_PROCEDURE_URL = 'award-procedure';
 export const CONTRACT_PROJECT_URL = 'contracts';
 export const CONTRACTS_PURCHASE_CONTRACT_URL = 'purchase-contracts';
+export const SALES_COMPENSATION_URL = 'sales-compensations';
+
 
 
 // Sales
@@ -355,7 +361,7 @@ export const GICA_REPORTS_URL = 'gica-reports';
 export const GICA_HISTORY_URL = 'gica-history';
 export const GICA_GRADING_URL = 'gica-grading';
 export const GICA_DEGRADING_URL = 'gica-degrading';
-export const GICA_DEDUCTIONS_URL = 'gica-deductions';
+export const GICA_EVOLUTIONS_URL = 'gica-evolutions';
 
 
 // LTM
@@ -390,6 +396,8 @@ export const LTM_SUPPLIER_URL   = 'ltm-suppliers';
 export const LTM_CORRECTION_ACTION_URL = 'ltm-correction-actions';
 export const LTM_TEST_EQUIPMENT_TESTING_URL = 'ltm-equipment-testing';
 export const LTM_PRODUCT_LIBERATION_ROUTE_URL = 'ltm-liberation';
+export const LTM_MAILING_LIST_URL = 'ltm-mailings';
+
 
 // CMMS
 export const CMMS_PERMIT_TYPE_URL        = 'permit-types';
@@ -461,6 +469,7 @@ export const ACC_F8_URL   = 'f-8';
 export const ACC_F82_URL  = 'f-82';
 export const ACC_F12_URL  = 'f-12';
 export const ACC_F13_URL  = 'f-13';
+export const ACC_CONSOLIDATION_CENTERS_URL = 'consolidation-centers';
 
 // park
 export const PARK_DRIVER_URL = 'drivers';
@@ -584,6 +593,7 @@ export const ABS_ACC_F12_URL = '/' + [MAIN_PAGE_URL, ACCOUNTING_APP_URL, ACC_F12
 export const ABS_ACC_F13_URL = '/' + [MAIN_PAGE_URL, ACCOUNTING_APP_URL, ACC_F13_URL].join('/');
 export const ABS_ACC_DASHBOARD_URL = '/' + [MAIN_PAGE_URL, ACCOUNTING_APP_URL, DASHBOARD_URL].join('/');
 export const ABS_SALES_GENERATION_URL = '/' + [MAIN_PAGE_URL, ACCOUNTING_APP_URL, ACC_SALES_INJECTION_URL].join('/');
+export const ABS_CONSOLIDATION_CENTERS_URL = '/' + [MAIN_PAGE_URL, ACCOUNTING_APP_URL, ACC_CONSOLIDATION_CENTERS_URL].join('/');
 
 //Budget
 export const ABS_BUDGET_BUDGET_URL = '/' + [MAIN_PAGE_URL, BUDGET_APP_URL, BUDGET_BUDGET_URL].join('/');
@@ -612,6 +622,7 @@ export const ABS_LOGISTICS_CURRENCY = '/' + [MAIN_PAGE_URL, LOGISTICS_APP_URL, L
 export const ABS_LOGISTICS_CATEGORY = '/' + [MAIN_PAGE_URL, LOGISTICS_APP_URL, SALES_CATEGORY_URL].join('/');
 export const ABS_LOGISTICS_UNITS = '/' + [MAIN_PAGE_URL, LOGISTICS_APP_URL, STOCK_UNITS_URL].join('/');
 export const ABS_LOGISTICS_ORDER_ANOMALIES = '/' + [MAIN_PAGE_URL, LOGISTICS_APP_URL, LOGISTICS_ORDER_ANOMALIES_URL].join('/');
+export const ABS_LOGISTICS_DELIVERY_TIMES = '/' + [MAIN_PAGE_URL, LOGISTICS_APP_URL, DELIVERY_TIME_URL].join('/');
 
 // Contracts
 export const ABS_CONTRACTS_PROJECT_TYPE = '/' + [MAIN_PAGE_URL, CONTRACTS_APP_URL,  CONTRACTS_PROJECT_TYPE_URL].join('/');
@@ -638,16 +649,19 @@ export const ABS_SCHEDULED_SALES_DASHBOARD_URL     = '/' + [MAIN_PAGE_URL, SCHED
 export const ABS_CUSTOMER_COMPLAINTS_URL = '/' + [MAIN_PAGE_URL, SCHEDULED_SALES_APP_URL, SS_COMPLAINTS_URL].join('/');
 export const ABS_SCHEDULED_SALES_REPORTS_URL = '/' + [MAIN_PAGE_URL, SCHEDULED_SALES_APP_URL, COMMON_REPORTS_URL].join('/');
 export const ABS_SCHEDULED_SALES_PASSWORD_RESET_URL = '/' + [MAIN_PAGE_URL, SCHEDULED_SALES_APP_URL, PASSWORD_RESET_URL].join('/');
+export const ABS_SALES_COMPENSATIONS_URL = '/' + [MAIN_PAGE_URL, SCHEDULED_SALES_APP_URL, SALES_COMPENSATION_URL].join('/');
 
 
 
 //Finance
 export const ABS_FINANCE_CPAYMENTS = '/' + [MAIN_PAGE_URL, FINANCE_APP_URL, LOGISTICS_CPAYMENTS_URL].join('/');
+export const ABS_FINANCE_SPAYMENTS = '/' + [MAIN_PAGE_URL, FINANCE_APP_URL, LOGISTICS_SPAYMENTS_URL].join('/');
 export const ABS_FINANCE_PAYMENT_ORDERS   = '/' + [MAIN_PAGE_URL, FINANCE_APP_URL, PAYMENT_ORDER].join('/');
 export const ABS_FINANCE_DASHBOARD_URL    = '/' + [MAIN_PAGE_URL, FINANCE_APP_URL, DASHBOARD_URL].join('/');
 export const ABS_FINANCE_PAYMENTS = '/' + [MAIN_PAGE_URL, FINANCE_APP_URL, LOGISTICS_PAYMENTS_URL].join('/');
 export const ABS_FINANCE_COMPENSATIONS = '/' + [MAIN_PAGE_URL, FINANCE_APP_URL, LOGISTICS_COMPENSATION_URL].join('/');
-export const ABS_FINANCE_CCOMPENSATIONS = '/' + [MAIN_PAGE_URL, FINANCE_APP_URL, LOGISTICS_CCOMPENSATION_URL].join('/');
+export const ABS_FINANCE_CUSTOMER_COMPENSATIONS = '/' + [MAIN_PAGE_URL, FINANCE_APP_URL, LOGISTICS_CCOMPENSATION_URL].join('/');
+export const ABS_FINANCE_SUPPLIER_COMPENSATIONS = '/' + [MAIN_PAGE_URL, FINANCE_APP_URL, LOGISTICS_SCOMPENSATION_URL].join('/');
 export const ABS_FINANCE_REPORTS_URL = '/' + [MAIN_PAGE_URL, FINANCE_APP_URL, COMMON_REPORTS_URL].join('/');
 // HR
 export const ABS_HR_CATEGORIES_URL = '/' + [MAIN_PAGE_URL, HR_APP_URL, HR_CATEGORIES_URL].join('/');
@@ -745,6 +759,8 @@ export const ABS_LTM_CORRECTION_ACTIONS_URL       = '/' + [MAIN_PAGE_URL, LTM_AP
 export const ABS_LTM_TEST_EQUIPMENT_URL       = '/' + [MAIN_PAGE_URL, LTM_APP_URL, LTM_TEST_EQUIPMENT_URL].join('/');
 export const ABS_LTM_PRODUCT_TYPE_URL       = '/' + [MAIN_PAGE_URL, LTM_APP_URL, LTM_PRODUCT_TYPE_URL].join('/');
 export const ABS_LTM_PRODUCT_LIBERATION_URL       = '/' + [MAIN_PAGE_URL, LTM_APP_URL, LTM_PRODUCT_LIBERATION_ROUTE_URL].join('/');
+export const ABS_LTM_MAILING_URL       = '/' + [MAIN_PAGE_URL, LTM_APP_URL, LTM_MAILING_LIST_URL].join('/');
+
 // GICA
 export const ABS_GICA_WEIGHTS_URL       = '/' + [MAIN_PAGE_URL, GICA_APP_URL, GICA_WEIGHTS_URL].join('/');
 export const ABS_GICA_FAULTS_URL       = '/' + [MAIN_PAGE_URL, GICA_APP_URL, GICA_FAULTS_URL].join('/');
@@ -755,7 +771,8 @@ export const ABS_GICA_HISTORY_URL       = '/' + [MAIN_PAGE_URL, GICA_APP_URL, GI
 export const ABS_GICA_GRADING_URL       = '/' + [MAIN_PAGE_URL, GICA_APP_URL, GICA_GRADING_URL].join('/');
 export const ABS_GICA_DEGRADING_URL       = '/' + [MAIN_PAGE_URL, GICA_APP_URL, GICA_DEGRADING_URL].join('/');
 export const ABS_GICA_CRITERIA_URL       = '/' + [MAIN_PAGE_URL, GICA_APP_URL, GICA_CRITERIA_URL].join('/');
-export const ABS_GICA_DEDUCTION_REPORT_URL       = '/' + [MAIN_PAGE_URL, GICA_APP_URL, GICA_DEDUCTIONS_URL].join('/');
+export const ABS_GICA_EVOLUTION_REPORT_URL       = '/' + [MAIN_PAGE_URL, GICA_APP_URL, GICA_EVOLUTIONS_URL].join('/');
+export const ABS_GICA_REPORTING_URL       = '/' + [MAIN_PAGE_URL, GICA_APP_URL, COMMON_REPORTS_URL].join('/');
 
 
 // CMMS
@@ -895,6 +912,7 @@ export const ABS_PURCHASE_QUOTATION_URL = '/' + [MAIN_PAGE_URL, PURCHASES_APP_UR
 export const ABS_PURCHASE_DASHBOARD_URL = '/' + [MAIN_PAGE_URL, PURCHASES_APP_URL, DASHBOARD_URL].join('/');
 export const ABS_PURCHASE_REPORTS_URL = '/' + [MAIN_PAGE_URL, PURCHASES_APP_URL, COMMON_REPORTS_URL].join('/');
 export const ABS_PURCHASE_REPORT_RIGHT_URL = '/' + [MAIN_PAGE_URL, PURCHASES_APP_URL, ADMIN_REPORT_RIGHTS_URL].join('/');
+export const ABS_PRICE_REQUEST_URL = '/' + [MAIN_PAGE_URL, PURCHASES_APP_URL, PRICE_REQUEST_URL].join('/');
 
 //dashboard
 export const ABS_DASHBOARD_URL = '/' + [MAIN_PAGE_URL, DASHBOARD_APP_URL, DASHBOARD_URL].join('/');
@@ -949,5 +967,9 @@ export const docInfoRoutes: Routes = [
     {
         path: 'sources',
         component: DocumentSourcesComponent
+    },
+    {
+        path: 'quantities',
+        component: UiTransactionlineQuantitiesComponent
     }
 ];

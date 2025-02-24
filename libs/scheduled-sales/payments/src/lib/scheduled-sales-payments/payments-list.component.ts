@@ -20,6 +20,8 @@ import {
 import { MatSort, MatSortHeader } from '@angular/material/sort';
 
 import { MatCheckbox } from '@angular/material/checkbox';
+import { PaginationComponent } from '@ss/common/ui-pagination';
+import { TranslateDirective } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-payments-list',
@@ -28,19 +30,20 @@ import { MatCheckbox } from '@angular/material/checkbox';
         CommonModule,
 
         MatCell,
-        MatCellDef,
         MatColumnDef,
         MatHeaderCell,
         MatHeaderRow,
-        MatHeaderRowDef,
         MatRow,
-        MatRowDef,
         MatSort,
         MatSortHeader,
         MatTable,
-
         MatCheckbox,
-        MatHeaderCellDef
+        PaginationComponent,
+        MatCellDef,
+        MatHeaderCellDef,
+        MatRowDef,
+        MatHeaderRowDef,
+        TranslateDirective
     ],
     templateUrl: './payments-list.component.html',
     styleUrl: './payments-list.component.css',

@@ -1,9 +1,9 @@
 import { Component, inject, OnInit } from '@angular/core';
 import {BaseTransactionDetailComponent, Transaction} from '@ss/logistics/api-transaction';
-import {CCGroup, Lookup, LookupsService, PayMethod} from '@ss/common/api-lookup';
+import { CCGroup, DeliveryTimeService, Lookup, LookupsService, PayMethod } from '@ss/common/api-lookup';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import { LoginService, MaterialModule, User } from '@ss/common/api-common';
-import {Agent, SupplierService} from '@ss/logistics/api-agent';
+import { Agent, AgentService, SupplierService } from '@ss/logistics/api-agent';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import { ActivatedRoute, Router, RouterOutlet } from '@angular/router';
 import { UntypedFormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -32,7 +32,9 @@ import { CdkTextareaAutosize } from '@angular/cdk/text-field';
     imports: [MaterialModule, MatCard, MatCardContent, NgIf, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, DatePickerComponent, UiAutoCompleteComponent, MatError, CdkTextareaAutosize, RouterOutlet]
 })
 export class PurchaseRequestDetailComponent extends BaseTransactionDetailComponent implements OnInit {
-    public groups: CCGroup[];
+    #deliveryTimeSrv = inject(DeliveryTimeService);
+
+    deliveryTimeLookup = new DefaultAutoCompleteModel(this.#deliveryTimeSrv);
 
 
     constructor(public orderService: PurchaseRequestService,
@@ -46,11 +48,6 @@ export class PurchaseRequestDetailComponent extends BaseTransactionDetailCompone
                 protected override loginSrv: LoginService,
                 protected override dialog: MatDialog) {
         super(orderService, detailSrv, shellSrv, snackBarSrv, route, router, formBuilder, confirmationSrv, loginSrv, dialog, 'PURCHASES_PURCHASE_REQUEST');
-    }
-
-    override preload(): Observable<any> {
-        return this.lookupsSrv.getCCGroups()
-            .pipe(tap(x => this.groups = x));
     }
 
     protected showImportButton(): boolean {

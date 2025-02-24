@@ -13,6 +13,7 @@ import { ProductLineKeysService } from '@ss/costing/costing-projects';
 import { CostingItemService } from '@ss/costing/costing-items';
 import { CostingKeyService } from '@ss/costing/costing-keys';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
+import { PaginationComponent } from '@ss/common/ui-pagination';
 
 @Component({
     selector: 'ss-product-line-keys',
@@ -23,7 +24,8 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         MaterialModule,
         TranslateDirective,
         TranslatePipe,
-        UiAutoCompleteComponent
+        UiAutoCompleteComponent,
+        PaginationComponent
     ],
     templateUrl: './product-line-keys.component.html',
     styleUrl: './product-line-keys.component.css',

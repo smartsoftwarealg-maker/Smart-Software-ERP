@@ -15,7 +15,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { RouterOutlet } from '@angular/router';
 
 import { PaginationComponent } from '@ss/common/ui-pagination';
-import { TranslatePipe } from '@ss/common/ui-lang';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-routing-line-list',
@@ -33,10 +33,9 @@ import { TranslatePipe } from '@ss/common/ui-lang';
         MatInputModule,
         MaterialModule,
         ReactiveFormsModule,
-       
-
         PaginationComponent,
-        TranslatePipe
+        TranslatePipe,
+        TranslateDirective
     ]
 })
 export class CMMSRoutingLineListComponent extends BaseChildEntityListComponent<RoutingDetail> {

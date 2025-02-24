@@ -30,7 +30,9 @@
             </mat-tree>
         </div>
     </div>
-    <div class="report-name"> {{ selectedReport?.name.replaceAll(".jasper", "") }}</div>
+    @if (selectedReport?.name) {
+       <mat-toolbar color="primary" class="report-name"> {{ selectedReport?.name.replaceAll(".jasper", "") }}</mat-toolbar>
+    }
     @if (isReady()) {
         <form (ngSubmit)="generateReport()" [formGroup]="form">
             <div class="size__div">
@@ -83,7 +85,7 @@
                                 </mat-error>
                             </mat-form-field>
                         }
-                        @if (d.typeName == 'java.util.Date') {
+                        @if (d.typeName == 'java.util.Date' || d.typeName == 'java.sql.Date') {
                             <mat-form-field>
                                 <mat-label translate>{{ d.description }}</mat-label>
                                 <ss-date-picker formControlName="{{ d.name }}"></ss-date-picker>

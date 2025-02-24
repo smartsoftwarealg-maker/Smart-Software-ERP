@@ -120,6 +120,11 @@
                     },
                     {
                         "glob": "**/*",
+                        "input": "libs/crm/assets/src/assets",
+                        "output": "assets"
+                    },
+                    {
+                        "glob": "**/*",
                         "input": "libs/park/assets/src/assets",
                         "output": "assets"
                     },
@@ -154,6 +159,26 @@
                     {
                         "input": "apps/erp/src/theme-3.scss",
                         "bundleName": "theme-3",
+                        "inject": false
+                    },
+                    {
+                        "input": "apps/erp/src/theme-4.scss",
+                        "bundleName": "theme-4",
+                        "inject": false
+                    },
+                    {
+                        "input": "apps/erp/src/theme-5.scss",
+                        "bundleName": "theme-5",
+                        "inject": false
+                    },
+                    {
+                        "input": "apps/erp/src/theme-6.scss",
+                        "bundleName": "theme-6",
+                        "inject": false
+                    },
+                    {
+                        "input": "apps/erp/src/theme-7.scss",
+                        "bundleName": "theme-7",
                         "inject": false
                     }
                 ],
@@ -244,6 +269,33 @@
                         }
                     ]
                 },
+                "sct": {
+                    "fileReplacements": [
+                        {
+                            "replace": "apps/erp/src/environments/environment.ts",
+                            "with": "apps/erp/src/environments/environment.sct.ts"
+                        }
+                    ],
+                    "optimization": true,
+                    "outputHashing": "all",
+                    "sourceMap": false,
+                    "namedChunks": true,
+                    "extractLicenses": true,
+                    "vendorChunk": false,
+                    "buildOptimizer": true,
+                    "budgets": [
+                        {
+                            "type": "initial",
+                            "maximumWarning": "20mb",
+                            "maximumError": "100mb"
+                        },
+                        {
+                            "type": "anyComponentStyle",
+                            "maximumWarning": "60kb",
+                            "maximumError": "100kb"
+                        }
+                    ]
+                },
                 "shopping": {
                     "fileReplacements": [
                         {
@@ -276,6 +328,33 @@
                         {
                             "replace": "apps/erp/src/environments/environment.ts",
                             "with": "apps/erp/src/environments/environment.assets.ts"
+                        }
+                    ],
+                    "optimization": true,
+                    "outputHashing": "all",
+                    "sourceMap": false,
+                    "namedChunks": true,
+                    "extractLicenses": true,
+                    "vendorChunk": false,
+                    "buildOptimizer": true,
+                    "budgets": [
+                        {
+                            "type": "initial",
+                            "maximumWarning": "20mb",
+                            "maximumError": "100mb"
+                        },
+                        {
+                            "type": "anyComponentStyle",
+                            "maximumWarning": "60kb",
+                            "maximumError": "100kb"
+                        }
+                    ]
+                },
+                "smif": {
+                    "fileReplacements": [
+                        {
+                            "replace": "apps/erp/src/environments/environment.ts",
+                            "with": "apps/erp/src/environments/environment.smif.ts"
                         }
                     ],
                     "optimization": true,
@@ -596,6 +675,26 @@
                     {
                         "input": "apps/erp/src/theme-3.scss",
                         "bundleName": "theme-3",
+                        "inject": false
+                    },
+                    {
+                        "input": "apps/erp/src/theme-4.scss",
+                        "bundleName": "theme-4",
+                        "inject": false
+                    },
+                    {
+                        "input": "apps/erp/src/theme-5.scss",
+                        "bundleName": "theme-5",
+                        "inject": false
+                    },
+                    {
+                        "input": "apps/erp/src/theme-6.scss",
+                        "bundleName": "theme-6",
+                        "inject": false
+                    },
+                    {
+                        "input": "apps/erp/src/theme-7.scss",
+                        "bundleName": "theme-7",
                         "inject": false
                     }
                 ],
@@ -1016,6 +1115,26 @@
                     {
                         "input": "apps/erp/src/theme-3.scss",
                         "bundleName": "theme-3",
+                        "inject": false
+                    },
+                    {
+                        "input": "apps/erp/src/theme-4.scss",
+                        "bundleName": "theme-4",
+                        "inject": false
+                    },
+                    {
+                        "input": "apps/erp/src/theme-5.scss",
+                        "bundleName": "theme-5",
+                        "inject": false
+                    },
+                    {
+                        "input": "apps/erp/src/theme-6.scss",
+                        "bundleName": "theme-6",
+                        "inject": false
+                    },
+                    {
+                        "input": "apps/erp/src/theme-7.scss",
+                        "bundleName": "theme-7",
                         "inject": false
                     }
                 ],

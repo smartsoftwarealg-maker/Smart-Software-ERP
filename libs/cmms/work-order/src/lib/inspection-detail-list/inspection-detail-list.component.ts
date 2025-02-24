@@ -15,6 +15,7 @@ import { DatePickerComponent } from '@ss/common/ui-datepicker';
 import { MatButtonModule } from '@angular/material/button';
 import { CMMSInspectionService } from '../services/c-m-m-s-inspection.service';
 import { PaginationComponent } from '@ss/common/ui-pagination';
+import { TranslateDirective } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-inspection-detail-list',
@@ -23,16 +24,13 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
     standalone: true,
     imports: [
         CommonModule,
-
         MatTableModule,
-
-
         FormsModule,
         MatFormFieldModule,
         ReactiveFormsModule,
         MatCardModule,
         MatInputModule,
-       
+        TranslateDirective,
         MatButtonModule,
         MaterialModule,
         PaginationComponent

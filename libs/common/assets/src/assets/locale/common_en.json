@@ -332,7 +332,7 @@
     "QUERY":                      "Query",
     "COMPLAINT":                  "Complaint",
     "COMPLAINTS":                 "Complaints",
-    "ANSWER":                     "Response",
+    "RESPONSE":                   "Response",
     "SOCIAL":                     "Social",
     "SCHEDULED_SALES":            "Scheduled sales",
     "HR":                         "HR Management",
@@ -350,5 +350,15 @@
     "COSTING":                    "Costing",
     "PAY_MODE":                   "Pay mode",
     "MUNICIPALITY":               "Municipality",
-    "ACCOUNTING_APP":             "Accounting"
+    "ACCOUNTING_APP":             "Accounting",
+    "SHOW_ACTIVE_ONLY": "Show active only",
+    "CSPACE":             "Customer space",
+    "SCHS":               "Cement Company of Hadjar Soud",
+    "ECDE":               "Chlef Cement Plant",
+    "COMPANY_SELECTOR":   "Company selector",
+    "MAILING_LIST":       "Mailing list",
+    "ORDER_CONTRACT":     "Order/contract",
+    "ORDER_DATE":          "Order date",
+    "PAID":                "Paid",
+    "NON_PAID":            "Non paid"
 }

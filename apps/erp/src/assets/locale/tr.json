@@ -29,7 +29,7 @@
     "PAYMENTS":     "",
     "LOGISTICS":    "",
     "HRMASTER":     "",
-    "INVENTORY":    "",
+    "INVENTORY":    "Stock",
     "HR": "Gestion RH",
     "TREASURY":     "",
     "ORGANIZATIONS": "",

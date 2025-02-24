@@ -28,6 +28,7 @@ import { MatOption } from '@angular/material/autocomplete';
 import { MatSelect } from '@angular/material/select';
 import { MaterialModule } from '@ss/common/api-common';
 import { TranslateDirective } from '@ss/common/ui-lang';
+import { MatRadioButton } from '@angular/material/radio';
 
 @Component({
     selector: 'ss-gica-scale-detail',
@@ -42,8 +43,6 @@ import { TranslateDirective } from '@ss/common/ui-lang';
         MatLabel,
         ReactiveFormsModule,
         TranslateDirective,
-        MatOption,
-        MatSelect,
         UiAutoCompleteComponent
     ],
     templateUrl: './absence-weight-detail.component.html',

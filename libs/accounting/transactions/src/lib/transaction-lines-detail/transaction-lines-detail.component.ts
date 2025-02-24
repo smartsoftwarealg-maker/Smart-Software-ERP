@@ -24,7 +24,7 @@ import { LoginService, MaterialModule } from "@ss/common/api-common";
 import { map, Observable, of } from "rxjs";
 import {switchMap, tap} from 'rxjs/operators';
 import {Account, AccountAutocompleteModel, AccountService} from '@ss/accounting/api-accounts';
-import {  DefaultAutoCompleteModel } from "@ss/common/ui-auto-complete";
+import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import {AgentService} from '@ss/logistics/api-agent';
 import {CostCenterService} from '@ss/logistics/api-cost-center';
 import { CommonModule } from "@angular/common";
@@ -46,12 +46,8 @@ import { TranslateDirective } from '@ss/common/ui-lang';
         MaterialModule,
         TranslateDirective,
         ReactiveFormsModule,
-
-
-       
-
-
-    ],
+        UiAutoCompleteComponent
+    ]
 })
 export class TransactionLinesDetailComponent implements OnInit {
     private ccSrv = inject(CostCenterService);

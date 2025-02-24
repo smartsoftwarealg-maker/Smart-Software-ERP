@@ -1,0 +1,34 @@
+.size {
+    width: 96%;
+    max-width: 800px;
+    margin: 4px auto;
+}
+.table__container {
+    overflow-x: auto;
+}
+
+.mat-column-description {
+    flex: 1 2 200px;
+}
+.mat-column-creationTime,
+.mat-column-amount {
+    flex: 1 1 120px;
+}
+
+.mat-column-amount {
+    justify-content: flex-end;
+}
+
+.table__div {
+    overflow-x: auto;
+}
+mat-table {
+    width: 100%;
+    min-width: 700px;
+}
+
+.button__div {
+    display: flex;
+    justify-content: center;
+    gap: 1em;
+}

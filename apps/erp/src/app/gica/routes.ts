@@ -10,7 +10,9 @@ import {
     GICA_REPORTS_URL,
     GICA_HISTORY_URL,
     GICA_GRADING_URL,
-    GICA_CRITERIA_URL, GICA_DEGRADING_URL, GICA_DEDUCTIONS_URL
+    GICA_CRITERIA_URL,
+    COMMON_REPORTS_URL,
+    GICA_EVOLUTIONS_URL
 } from '../common';
 
 import {loginGuard} from '../erp-guards';
@@ -25,12 +27,13 @@ import {
     CriteriaDetailComponent,
     AbsenceWeightListComponent,
     AbsenceWeightDetailComponent,
-    DeductionReportComponent
+    EvolutionComponent
 } from '@gica/career-evolution';
 import { inject } from '@angular/core';
 import {
     ConstantDetailComponent
 } from '@gica/career-evolution';
+import { ReportViewComponent } from '@ss/common/ui-report-param';
 
 
 // export const faultGuard: CanActivateFn = () => inject(FaultService).canActivate();
@@ -38,7 +41,7 @@ export const criteriaGuard: CanActivateFn = () => inject(CriterionService).canAc
 
 export const gicaRoutes: Routes = [
     {
-        path: GICA_DEDUCTIONS_URL, component: DeductionReportComponent, canActivate: [loginGuard]
+        path: GICA_EVOLUTIONS_URL, component: EvolutionComponent, canActivate: [loginGuard]
     },
     {
         path: GICA_CONSTANTS_URL, component: ConstantDetailComponent, canActivate: [loginGuard]
@@ -68,6 +71,12 @@ export const gicaRoutes: Routes = [
             { path: LIST_URL, component: CriteriaListComponent, canActivate: [loginGuard]},
             { path: ':id', component: CriteriaDetailComponent, canActivate: [loginGuard, criteriaGuard] }
         ]
+    },
+    {
+        path: COMMON_REPORTS_URL,
+        component: ReportViewComponent,
+        canActivate: [loginGuard],
+        data: { reportBase: 'gica' }
     },
     {
         path: GICA_SCALE_URL,

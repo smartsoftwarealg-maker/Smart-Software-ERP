@@ -77,8 +77,14 @@
     "ACTION_DATE":        "Action date",
     "VALIDATED_BY":       "Validated by",
     "VALIDATION_DATE":    "Validation date",
-    "REPORT_DATE":        "Report date",
+    "REPORT_DATE":        "Reception date",
     "NON_VALIDATED":     "Non validated",
     "PRODUCT_TYPES":     "Product types",
-    "PRODUCT_LIBERATION":     "Product liberation"
+    "PRODUCT_LIBERATION":     "Product liberation",
+    "VARIANCE":               "Variance",
+    "DATA_MODE":             "Data mode",
+    "DISTRIBUTION_MODE":     "Distribution mode",
+    "QUALITY_CHIEF":         "Realized by",
+    "NON_CONFORMITY":        "Non conformity",
+    "QUALITY_CERTIFICATE":   "Certificate of Quality"
 }

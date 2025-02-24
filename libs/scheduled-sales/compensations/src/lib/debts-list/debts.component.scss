@@ -1,0 +1,35 @@
+.size {
+    width: 96%;
+    max-width: 1200px;
+    margin: 4px auto;
+}
+
+.mode__div {
+    display: flex;
+    justify-content: center;
+}
+.mat-column-customerName {
+    flex: 1 1 200px;
+}
+.mat-column-customerCode,
+.mat-column-invoiceNumber,
+.mat-column-date,
+.mat-column-ftt,
+.mat-column-payment {
+    flex: 1 1 100px;
+}
+.mat-column-ftt,
+.mat-column-payment {
+    justify-content: flex-end;
+}
+
+.table__div {
+    overflow-x: auto;
+    min-height: 30%;
+    max-height: 50%;
+}
+
+mat-table {
+    width: 100%;
+    min-width: 900px;
+}

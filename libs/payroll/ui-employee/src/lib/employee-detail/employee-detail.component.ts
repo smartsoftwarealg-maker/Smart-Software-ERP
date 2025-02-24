@@ -18,7 +18,7 @@ import { DefaultAutoCompleteModel, UserLookup } from "@ss/common/ui-auto-complet
 import { filter, Observable, of, switchMap } from 'rxjs';
 import {map, tap} from 'rxjs/operators';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
-import { HttpService, UserService } from '@ss/common/api-common';
+import { HttpService, MaterialModule, UserService } from '@ss/common/api-common';
 import {ELine, FixedElementsEntryService} from '@ss/remuneration/elements-entry';
 import {Employee} from '@ss/employee-services/employee-services';
 import {AppArchiveService, EMPLOYEE_ARCHIVES} from '@ss/common/app-archive';
@@ -68,7 +68,34 @@ import { TranslatePipe } from '@ss/common/ui-lang';
     styleUrls: ['./employee-detail.component.scss'],
     templateUrl: './employee-detail.component.html',
     standalone: true,
-    imports: [FormsModule, ReactiveFormsModule, MatCard, MatCardContent, ImageInputComponent, MatCardFooter, TranslateDirective, MatTabGroup, MatTab, MatFormField, MatLabel, MatInput, NgIf, MatError, DatePickerComponent, UiAutoCompleteComponent, MatRadioGroup, MatRadioButton, MatSelect, MatOption, NgFor, MatCheckbox, RouterOutlet, MatButton, AsyncPipe, TranslatePipe]
+    imports: [
+        FormsModule,
+        ReactiveFormsModule,
+        MatCard,
+        MatCardContent,
+        ImageInputComponent,
+        MatCardFooter,
+        TranslateDirective,
+        MatTabGroup,
+        MatTab,
+        MatFormField,
+        MatLabel,
+        MatInput,
+        NgIf,
+        MatError,
+        DatePickerComponent,
+        UiAutoCompleteComponent,
+        MatRadioGroup,
+        MatRadioButton,
+        MatSelect,
+        MatOption,
+        NgFor,
+        MatCheckbox,
+        RouterOutlet,
+        MatButton,
+        AsyncPipe,
+        TranslatePipe,
+        MaterialModule]
 })
 export class EmployeeDetailComponent extends BaseEntityDetailComponent<Employee> {
     private lookupsSrv = inject(LookupsService);

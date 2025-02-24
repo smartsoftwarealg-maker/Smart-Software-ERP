@@ -18,17 +18,14 @@ import { MatInputModule } from "@angular/material/input";
 import { MaterialModule } from "@ss/common/api-common";
 import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
 import { PaginationComponent } from '@ss/common/ui-pagination';
-import { TranslatePipe } from '@ss/common/ui-lang';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-service-order-line-list',
     standalone: true,
     imports: [
         CommonModule,
-
-
         MatTableModule,
-
         MatSortModule,
         MatButtonModule,
         MatFormFieldModule,
@@ -36,7 +33,8 @@ import { TranslatePipe } from '@ss/common/ui-lang';
         MaterialModule,
         DocInfoComponent,
         PaginationComponent,
-        TranslatePipe
+        TranslatePipe,
+        TranslateDirective
     ],
     templateUrl: './service-order-line-list.component.html',
     styleUrls: ['./service-order-line-list.component.scss']

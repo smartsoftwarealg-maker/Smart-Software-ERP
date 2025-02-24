@@ -135,6 +135,7 @@ export interface WorkArticle {
     parentId: number;
     articleId: number;
     qty: number;
+    price: number;
     reference: string;
     description: string;
 }

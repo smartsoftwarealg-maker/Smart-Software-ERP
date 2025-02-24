@@ -39,3 +39,5 @@ export * from './lib/services/ltm-norm-tree.service';
 export * from './lib/services/ltm-product-liberation.service';
 export * from './lib/services/ltm-product-liberation-line.service';
 export * from './lib/services/ltm-product-type.service';
+export * from './lib/services/ltm-mailing.service';
+export * from './lib/services/ltm-mailing-document.service';

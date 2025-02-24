@@ -166,6 +166,8 @@ body {
             @extend .b-warn;
         }
     }
+
+    @include mat.all-component-densities(0);
 }
 
 .mat-mdc-header-cell,
@@ -523,7 +525,7 @@ mat-sidenav-content.mat-drawer-content.mat-sidenav-content {
 }
 
 .table_div {
-    height: calc(100% - 120px);
+    //height: calc(100% - 120px);
     overflow-x: auto;
 }
 

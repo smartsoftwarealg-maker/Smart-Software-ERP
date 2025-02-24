@@ -32,7 +32,6 @@ import { CdkTextareaAutosize } from '@angular/cdk/text-field';
     imports: [MaterialModule, MatCard, MatCardContent, NgIf, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, DatePickerComponent, UiAutoCompleteComponent, MatError, CdkTextareaAutosize, RouterOutlet]
 })
 export class ConsumptionDetailComponent extends BaseTransactionDetailComponent {
-    public groups: CCGroup[];
 
     constructor(
         public consumptionSrv: ConsumptionService,
@@ -58,11 +57,6 @@ export class ConsumptionDetailComponent extends BaseTransactionDetailComponent {
             'STOCK_EDIT_CONSUMPTION');
     }
 
-
-    override preload(): Observable<CCGroup[]> {
-        return this.lookupsSrv.getCCGroups()
-            .pipe(tap(x => this.groups = x));
-    }
 
     protected importedDocuments(): Lookup[] {
         return [{ id: DOC_RESERVATION, description: 'LOGISTICS_RESERVATION'}];

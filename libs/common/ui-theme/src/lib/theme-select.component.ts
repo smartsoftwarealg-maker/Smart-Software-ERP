@@ -21,7 +21,11 @@ export class ThemeSelectComponent {
         'theme-0',
         'theme-1',
         'theme-2',
-        'theme-3'
+        'theme-3',
+        'theme-4',
+        'theme-5',
+        'theme-6',
+        'theme-7'
     ];
 
     constructor(public langSrv: LanguageService, public themeSrv: ThemeService) {

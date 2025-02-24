@@ -1,13 +1,23 @@
-<input #textField class="warn-when-invalid" style="text-align: center;" #element [disabled]="isDisabled" matInput
-       [matDatepicker]="datePicker"
-       [value]="date"
-       (keyup)="onKeyUp($event)"
-       (dateChange)="onDateChanged($event.value)"
-       [min]="minValue" [max]="maxValue"
-       [required]="isRequired"
-       [matDatepickerFilter]="matDatepickerFilter">
-<button class="toggleButton abs-end-0" type="button" [disabled]="isDisabled" mat-icon-button datepicker-toggle
-        (click)="datePicker.open()">
-    <i class="warn-when-invalid far fa-calendar-alt"></i>
-</button>
-<mat-datepicker [twelveHour]="false" [type]="_type" #datePicker ></mat-datepicker>
+<!--<input #textField class="warn-when-invalid" style="text-align: center;" [disabled]="isDisabled" matInput-->
+<!--       [matDatepicker]="datePicker"-->
+<!--       [value]="date"-->
+<!--       (keyup)="onKeyUp($event)"-->
+<!--       (dateChange)="onDateChanged($event.value)"-->
+<!--       [min]="minValue" [max]="maxValue"-->
+<!--       [required]="isRequired"-->
+<!--       [matDatepickerFilter]="matDatepickerFilter">-->
+<!--<mat-datepicker-toggle matIconSuffix [for]="datePicker"></mat-datepicker-toggle>-->
+<!--<mat-datepicker [twelveHour]="false" [type]="_type" #datePicker ></mat-datepicker>-->
+
+    <input matInput class="warn-when-invalid"
+           [matDatepicker]="picker"
+           [disabled]="isDisabled"
+           #textField
+           [value]="date"
+           (keyup)="onKeyUp($event)"
+           (dateChange)="onDateChanged($event.value)"
+           [min]="minValue" [max]="maxValue"
+           [required]="isRequired"
+           [matDatepickerFilter]="matDatepickerFilter">
+    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker  [type]="_type" #picker></mat-datepicker>

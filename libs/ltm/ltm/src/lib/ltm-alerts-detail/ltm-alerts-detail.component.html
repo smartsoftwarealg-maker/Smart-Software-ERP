@@ -6,15 +6,15 @@
                 <input matInput formControlName="matter" type="text">
             </mat-form-field>
 
-            <mat-form-field class="default-50 sm-100">
-                <mat-label translate>LTM_TEST</mat-label>
-                <input matInput formControlName="test" type="text">
-            </mat-form-field>
+<!--            <mat-form-field class="default-50 sm-100">-->
+<!--                <mat-label translate>LTM_TEST</mat-label>-->
+<!--                <input matInput formControlName="test" type="text">-->
+<!--            </mat-form-field>-->
 
-            <mat-form-field class="default-50 sm-100">
-                <mat-label translate>COMMON_VALUE</mat-label>
-                <input matInput formControlName="value" type="number">
-            </mat-form-field>
+<!--            <mat-form-field class="default-50 sm-100">-->
+<!--                <mat-label translate>COMMON_VALUE</mat-label>-->
+<!--                <input matInput formControlName="value" type="number">-->
+<!--            </mat-form-field>-->
 
             <mat-form-field class="default-50 sm-100">
                 <mat-label translate>COMMON_DATE</mat-label>
@@ -33,17 +33,6 @@
             </mat-form-field>
 
             <mat-form-field class="default-50 sm-100">
-                <mat-label translate>LTM_ACTION_NUMBER</mat-label>
-                <input matInput formControlName="actionNo" type="text">
-            </mat-form-field>
-            <mat-form-field class="default-50 sm-100">
-                <mat-label translate>LTM_ACTION_DATE</mat-label>
-                <ss-date-picker formControlName="actionDate"
-                                [type]="'date'">
-                </ss-date-picker>
-            </mat-form-field>
-
-            <mat-form-field class="default-50 sm-100">
                 <mat-label translate>LTM_REPORTED_BY</mat-label>
                 <ss-auto-complete matInput
                                   [model]="userLookup"
@@ -56,6 +45,27 @@
                 <ss-date-picker formControlName="reportDate"
                                 [type]="'date'">
                 </ss-date-picker>
+            </mat-form-field>
+
+
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>LTM_ACTION_NUMBER</mat-label>
+                <input matInput formControlName="actionNo" type="text">
+            </mat-form-field>
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>LTM_ACTION_DATE</mat-label>
+                <ss-date-picker formControlName="actionDate"
+                                [type]="'date'">
+                </ss-date-picker>
+            </mat-form-field>
+
+
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>LTM_QUALITY_CHIEF</mat-label>
+                <ss-auto-complete matInput
+                                  [model]="qualityChiefLookup"
+                                  formControlName="qualityChief">
+                </ss-auto-complete>
             </mat-form-field>
 
             <mat-form-field class="default-50 sm-100">

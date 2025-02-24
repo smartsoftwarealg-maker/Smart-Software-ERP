@@ -13,7 +13,7 @@ import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import { MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from '@angular/material/table';
 import { TranslateDirective } from '@ss/common/ui-lang';
 import { NgClass, DecimalPipe } from '@angular/common';
-import { PaginationComponent } from '../../../../../common/ui-pagination/src/lib/pagination.component';
+import { PaginationComponent } from '@ss/common/ui-pagination';
 
 @Component({
     selector: 'ss-global-balance',

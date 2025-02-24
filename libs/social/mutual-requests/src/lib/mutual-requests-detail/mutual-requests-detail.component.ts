@@ -1,10 +1,10 @@
-import { Component, inject } from '@angular/core';
+import { Component, DestroyRef, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BaseEntityDetailComponent, BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { MutualRequest, MutualRequestLineService, MutualRequestService } from '@social/social-api';
 import { BankService } from '@ss/administration/api-bank';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
-import { ActivatedRoute, Router, RouterOutlet } from '@angular/router';
+import { ActivatedRoute, NavigationEnd, Router, RouterEvent, RouterOutlet } from '@angular/router';
 import { DefaultReportService } from '@ss/common/ui-default-report-component';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { LoginService, MaterialModule, PaginatorPersistenceService } from '@ss/common/api-common';
@@ -25,6 +25,8 @@ import { MatError, MatFormField, MatLabel } from '@angular/material/form-field';
 import { MatInput } from '@angular/material/input';
 import { DatePickerComponent } from '@ss/common/ui-datepicker';
 import { TranslateDirective } from '@ss/common/ui-lang';
+import { filter } from 'rxjs';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
     selector: 'ss-mutual-requests',
@@ -49,6 +51,8 @@ import { TranslateDirective } from '@ss/common/ui-lang';
 export class MutualRequestsDetailComponent extends BaseEntityDetailComponent<MutualRequest> {
     #detailSrv = inject(MutualRequestLineService);
     #loginSrv = inject(LoginService);
+    #destroyRef = inject(DestroyRef);
+    #router = inject(Router);
 
     constructor(
         public override entitySrv: MutualRequestService,
@@ -69,5 +73,26 @@ export class MutualRequestsDetailComponent extends BaseEntityDetailComponent<Mut
             date:         [e.date || new Date(), Validators.required],
             centerId:     [e.centerId||this.#loginSrv.appCtx.center, Validators.required]
         })
+    }
+
+    override ngOnInit() {
+        super.ngOnInit();
+        this.#router
+            .events
+            .pipe(
+                takeUntilDestroyed(this.#destroyRef),
+            filter((e: any): e is RouterEvent => e instanceof RouterEvent)
+        ).subscribe((e: RouterEvent) => {
+            if (e instanceof NavigationEnd) {
+                this.disableControls(e.url);
+            }
+        });
+
+    }
+
+    private disableControls(url: string) {
+        const enabled = url.indexOf('/detail/') < 0;
+        this.saveButton.visible = enabled;
+        this.shellSrv.setGoBackEnabled(enabled);
     }
 }

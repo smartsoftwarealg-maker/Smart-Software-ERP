@@ -19,6 +19,7 @@ import { DefaultReportService } from '@ss/common/ui-default-report-component';
 import { SalesHistoryService } from './sales-history.service';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
+import { PaginationComponent } from '@ss/common/ui-pagination';
 
 @Component({
     selector: 'ss-customer-history',
@@ -29,14 +30,11 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         CommonModule,
         MaterialModule,
         TranslateDirective,
-        TranslatePipe,
         ReactiveFormsModule,
         RouterModule,
         DatePickerComponent,
-
-        UiStockInfoComponent,
-        ColorSelectComponent,
-        ColorPickerModule
+        ColorPickerModule,
+        PaginationComponent
     ]
 })
 export class CustomerSalesHistoryComponent extends BaseEntityListComponent<SalesRecord> {

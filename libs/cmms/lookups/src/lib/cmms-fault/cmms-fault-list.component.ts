@@ -15,6 +15,7 @@ import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from "@angular/material/input";
 import { ReactiveFormsModule } from "@angular/forms";
 import { PaginationComponent } from '@ss/common/ui-pagination';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-cmms-fault-list',
@@ -30,7 +31,9 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
         MatFormFieldModule,
         MatInputModule,
         MaterialModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        TranslatePipe,
+        TranslateDirective
     ],
 })
 export class CMMSFaultListComponent extends BaseEntityListComponent<Lookup> {

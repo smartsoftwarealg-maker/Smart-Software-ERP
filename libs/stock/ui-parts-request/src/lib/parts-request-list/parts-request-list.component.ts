@@ -14,11 +14,12 @@ import { MatTableModule } from '@angular/material/table';
 
 import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
 import { PaginationComponent } from '@ss/common/ui-pagination';
+import { TranslateDirective } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-parts-request-list',
     standalone: true,
-    imports: [CommonModule, MatSortModule, MatTableModule, DocInfoComponent, PaginationComponent],
+    imports: [CommonModule, MatSortModule, MatTableModule, DocInfoComponent, PaginationComponent, TranslateDirective],
     templateUrl: './parts-request-list.component.html',
     styleUrls: ['../../../../../common/assets/src/assets/transac-list.scss'],
 })

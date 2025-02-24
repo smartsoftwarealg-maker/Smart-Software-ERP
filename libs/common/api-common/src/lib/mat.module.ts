@@ -41,11 +41,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatTreeModule } from '@angular/material/tree';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { DateAdapter } from '@muaazh/angular-datepicker/core';
-import { MatDatepickerModule } from '@muaazh/angular-datepicker';
-import { MatNativeDateModule } from '@muaazh/angular-datepicker/core';
-import { SimpleDateAdapter } from './custom-date-adapter';
-import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
+import { MatDatepickerModule, NativeDateModule } from '@muaazh/angular-datepicker';
 
 @NgModule({
     exports: [
@@ -76,7 +72,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         MatInputModule,
         MatListModule,
         MatMenuModule,
-        MatNativeDateModule,
+        NativeDateModule,
         MatProgressBarModule,
         MatProgressSpinnerModule,
         MatRadioModule,
@@ -94,11 +90,6 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         MatTreeModule,
         PortalModule,
         ScrollingModule,
-    ],
-    providers: [
-        {
-            provide: DateAdapter, useClass: SimpleDateAdapter,
-        }
-    ],
+    ]
 })
 export class MaterialModule { }

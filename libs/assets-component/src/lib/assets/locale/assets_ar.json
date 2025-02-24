@@ -11,7 +11,6 @@
     "ACQUISITION_DATE": "تاريخ الاستحواذ",
     "HISTORIC_VALUE": "تاريخ تاريخي",
     "OLD_DEPRECIATION": "الاستهلاك القديم",
-    "ORDER_DATE": "تاريخ الطلب",
     "RECEPTION_DATE": "تاريخ الاستلام",
     "RECEPTION_NUMBER": "رقم الاستقبال",
     "INVOICE_NUMBER": "رقم الفاتورة",
@@ -78,7 +77,5 @@
     "NEW_OFFICE": "مكتب جديد",
     "NEW_BUILDING": "مبنى جديد",
     "ACCOUNTING_TYPE": "نوع المحاسبة",
-    "NEW_BENEFICIARY": "مستفيد جديد",
-    "SHOW_ALL": "اظهار الكل",
-    "SHOW_ACTIVE_ONLY": "اظهار الحالي فقط"
+    "NEW_BENEFICIARY": "مستفيد جديد"
 }

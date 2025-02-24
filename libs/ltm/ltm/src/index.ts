@@ -57,3 +57,7 @@ export * from './lib/ltm-test-schedule-list/ltm-test-schedule-list.component';
 export * from './lib/ltm-norm-list/ltm-norm-list.component';
 export * from './lib/ltm-product-type-detail/ltm-product-type-detail.component';
 export * from './lib/ltm-product-type-list/ltm-product-type-list.component';
+export * from './lib/ltm-mailing-detail/ltm-mailing-detail.component';
+export * from './lib/ltm-mailing-list/ltm-mailing-list.component';
+export * from './lib/ltm-mailing-documents-detail/ltm-mailing-documents-detail.component';
+export * from './lib/ltm-mailing-documents-list/ltm-mailing-documents-list.component';

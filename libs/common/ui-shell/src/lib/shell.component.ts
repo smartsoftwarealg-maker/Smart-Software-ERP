@@ -11,12 +11,12 @@ import {
     inject
 } from '@angular/core';
 import { ShellService } from './shell.service';
-import { NestedTreeControl } from '@angular/cdk/tree';
+import { CdkTree, NestedTreeControl } from '@angular/cdk/tree';
 import {
     CENTER_SELECT_URL,
     HttpService,
     LanguageService,
-    LoginService,
+    LoginService, LoginType,
     MaterialModule,
     SideNavNode
 } from '@ss/common/api-common';
@@ -26,7 +26,7 @@ import { CommonModule } from '@angular/common';
 import { LogoutComponent } from '@ss/common/ui-logout';
 
 import { catchError, of, switchMap, tap } from 'rxjs';
-import { LanguageSelectComponent } from '../../../ui-lang/src/lib/language-select.component';
+import { LanguageSelectComponent } from '@ss/common/ui-lang';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 import { ThemeSelectComponent } from '@ss/common/ui-theme';
 
@@ -51,6 +51,9 @@ export class ShellComponent implements OnInit, OnDestroy, AfterViewInit, AfterVi
     #rightsSrv = inject(UserRightsService);
     private router = inject(Router);
 
+    @ViewChild(CdkTree)
+    tree!: CdkTree<SideNavNode>;
+
     // todo: disable all buttons on toolbar when loading
 
     @ViewChild('routerContainer') routerContainer: ElementRef;
@@ -59,7 +62,7 @@ export class ShellComponent implements OnInit, OnDestroy, AfterViewInit, AfterVi
     public showSideNav = false;
     public lastScroll = 0;
     // side nav
-    treeControl = new NestedTreeControl<SideNavNode>(node => node.children);
+    childrenAccessor = (dataNode: SideNavNode) => dataNode.children;
 
     constructor(
         public loginSrv: LoginService,
@@ -155,4 +158,6 @@ export class ShellComponent implements OnInit, OnDestroy, AfterViewInit, AfterVi
     centerSelect() {
         this.router.navigate(['/' + CENTER_SELECT_URL]).then();
     }
+
+    protected readonly LoginType = LoginType;
 }

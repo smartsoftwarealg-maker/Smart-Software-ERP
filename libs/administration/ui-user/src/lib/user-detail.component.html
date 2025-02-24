@@ -1,141 +1,162 @@
 <mat-card>
     <mat-card-header></mat-card-header>
     <mat-card-content>
-        <form *ngIf="form !== null" novalidate [formGroup]="form">
-            <mat-form-field id="description" class="default-50 sm-100">
-                <mat-label translate>ADMINISTRATION_USERNAME</mat-label>
-                <input matInput formControlName="description" type="text" autofocus required>
-                <mat-error *ngIf="form.controls['description'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
-            </mat-form-field>
+        @if (form !== null) {
+            <form [formGroup]="form">
+                <mat-form-field id="description" class="default-50 sm-100">
+                    <mat-label translate>ADMINISTRATION_USERNAME</mat-label>
+                    <input matInput formControlName="description" type="text" autofocus required>
+                    <mat-error *ngIf="form.controls['description'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
+                </mat-form-field>
 
-            <mat-form-field id="fullName" class="default-50 sm-100">
-                <mat-label translate>ADMINISTRATION_FULLNAME</mat-label>
-                <input matInput formControlName="fullName" type="text" maxlength="40">
-                <mat-error *ngIf="form.controls['fullName'].invalid" translate>COMMON_FIELD_MAX_LENGTH</mat-error>
-            </mat-form-field>
+                <mat-form-field id="fullName" class="default-50 sm-100">
+                    <mat-label translate>ADMINISTRATION_FULLNAME</mat-label>
+                    <input matInput formControlName="fullName" type="text" maxlength="40">
+                    <mat-error *ngIf="form.controls['fullName'].invalid" translate>COMMON_FIELD_MAX_LENGTH</mat-error>
+                </mat-form-field>
 
-            <mat-form-field id="fullNameAr" class="default-50 sm-100">
-                <mat-label translate>PAYROLL_NAME_AR</mat-label>
-                <input matInput formControlName="fullNameAr" type="text" maxlength="40">
-            </mat-form-field>
+                <mat-form-field id="fullNameAr" class="default-50 sm-100">
+                    <mat-label translate>PAYROLL_NAME_AR</mat-label>
+                    <input matInput formControlName="fullNameAr" type="text" maxlength="40">
+                </mat-form-field>
 
-            <mat-form-field id="email" class="default-50 sm-100">
-                <mat-label translate>ADMINISTRATION_EMAIL</mat-label>
-                <input matInput formControlName="email" type="text" maxlength="40">
-            </mat-form-field>
+                <mat-form-field id="email" class="default-50 sm-100">
+                    <mat-label translate>ADMINISTRATION_EMAIL</mat-label>
+                    <input matInput formControlName="email" type="text" maxlength="40">
+                </mat-form-field>
 
-            <div id="manager" class="default-50 sm-100" *ngIf="isManager">
-                <mat-checkbox formControlName="manager" translate>ADMINISTRATION_MANAGER</mat-checkbox>
-            </div>
+                <div id="manager" class="default-50 sm-100" *ngIf="isManager">
+                    <mat-checkbox formControlName="manager" translate>ADMINISTRATION_MANAGER</mat-checkbox>
+                </div>
 
-            <div id="responsible" class="default-50 sm-100" *ngIf="isManager">
-                <mat-checkbox formControlName="responsible" translate>ADMINISTRATION_RESPONSIBLE</mat-checkbox>
-            </div>
+                <div id="responsible" class="default-50 sm-100" *ngIf="isManager">
+                    <mat-checkbox formControlName="responsible" translate>ADMINISTRATION_RESPONSIBLE</mat-checkbox>
+                </div>
 
-            <div id="blocked" class="default-50 sm-100" *ngIf="isManager">
-                <mat-checkbox formControlName="blocked" translate>ADMINISTRATION_BLOCKED</mat-checkbox>
-            </div>
+                <div id="blocked" class="default-50 sm-100" *ngIf="isManager">
+                    <mat-checkbox formControlName="blocked" translate>ADMINISTRATION_BLOCKED</mat-checkbox>
+                </div>
 
 
-        </form>
-
+            </form>
+        }
     </mat-card-content>
 </mat-card>
 
+@if (id) {
+    <mat-accordion>
+        <mat-expansion-panel #passwordPanel
+                             [class.b-primary-expansion-panel]="passwordPanel.expanded">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    <span translate>COMMON_PASSWORD</span>
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <fieldset>
+                <legend><span translate>ADMINISTRATION_UPDATE_PASSWORD</span>:</legend>
+                <mat-form-field class="default-100">
+                    <mat-label translate>ADMINISTRATION_PASSWORD</mat-label>
+                    <input matInput [formControl]="pwd1" type="password" maxlength="40">
+                </mat-form-field>
+                <mat-form-field class="default-100">
+                    <mat-label translate>CONFIRMATION</mat-label>
+                    <input matInput [formControl]="pwd2" type="password" maxlength="40">
+                </mat-form-field>
 
-<mat-accordion *ngIf="id">
-    <mat-expansion-panel #passwordPanel
-                         [class.b-primary-expansion-panel]="passwordPanel.expanded">
-        <mat-expansion-panel-header >
-            <mat-panel-title >
-                <span translate>COMMON_PASSWORD</span>
-            </mat-panel-title>
-        </mat-expansion-panel-header>
-        <fieldset>
-            <legend><span translate>ADMINISTRATION_UPDATE_PASSWORD</span>:</legend>
-            <mat-form-field class="default-100">
-                <mat-label translate>ADMINISTRATION_PASSWORD</mat-label>
-                <input matInput [formControl]="pwd1" type="password" maxlength="40">
-            </mat-form-field>
-            <mat-form-field class="default-100">
-                <mat-label translate>CONFIRMATION</mat-label>
-                <input matInput [formControl]="pwd2" type="password" maxlength="40">
-            </mat-form-field>
+                <div class="button-div">
+                    <button mat-raised-button color="primary" translate
+                            [disabled]="pwd1.value != pwd2.value"
+                            (click)="updatePassword()">UPDATE
+                    </button>
+                </div>
+            </fieldset>
 
-            <div class="button-div">
-                <button mat-raised-button color="primary" translate
-                        [disabled]="pwd1.value != pwd2.value"
-                        (click)="updatePassword()">UPDATE
-                </button>
-            </div>
-        </fieldset>
+        </mat-expansion-panel>
 
-    </mat-expansion-panel>
+        @if (isManager) {
+            <mat-expansion-panel #rolePanel
+                                 [class.b-primary-expansion-panel]="rolePanel.expanded">
+                <mat-expansion-panel-header [ngClass]="{'b-primary':  openedPanel === 1 }">
+                    <mat-panel-title>
+                        <span translate>ADMINISTRATION_ROLES</span>
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <div class="panel__container">
+                    <div class="list-container">
+                        <mat-selection-list color="primary" multiple="false"
+                                            (selectionChange)="roleSelectionChanged($event)">
+                            <mat-list-option *ngFor="let role of userRoles"
+                                             [value]="role.id"> {{ role.description }}
+                            </mat-list-option>
+                        </mat-selection-list>
+                    </div>
+                    <div class="role-ctrl">
+                        <button mat-mini-fab color="accent"
+                                [disabled]="roleAC.value == null"
+                                (click)="addRole()"><i class="fas fa-plus-circle"></i></button>
 
-    <mat-expansion-panel #rolePanel
-                         [class.b-primary-expansion-panel]="rolePanel.expanded"
-                         *ngIf="isManager" >
-        <mat-expansion-panel-header [ngClass]="{'b-primary':  openedPanel === 1 }">
-            <mat-panel-title >
-                <span translate>ADMINISTRATION_ROLES</span>
-            </mat-panel-title>
-        </mat-expansion-panel-header>
-        <div class="list-container">
-            <mat-selection-list color="primary" multiple="false"
-            (selectionChange)="roleSelectionChanged($event)">
-                <mat-list-option *ngFor="let role of userRoles"
-                                 [value]="role.id"> {{ role.description }} </mat-list-option>
-            </mat-selection-list>
-        </div>
-        <div class="role-ctrl">
-            <button mat-mini-fab color="accent"
-            [disabled]="roleAC.value == null"
-            (click)="addRole()"><i class="fas fa-plus-circle"></i></button>
+                        <mat-form-field>
+                            <mat-label translate>ADMINISTRATION_ROLE</mat-label>
+                            <ss-auto-complete matInput
+                                              #roleAC
+                                              [formControl]="roleCtrl"
+                                              [model]="roleAutoComplete">
+                            </ss-auto-complete>
+                        </mat-form-field>
+                        <button mat-mini-fab color="warn" [disabled]="selectedRole < 1" (click)="deleteRole()"><i
+                            class="fas fa-trash-alt"></i></button>
+                    </div>
+                </div>
+            </mat-expansion-panel>
+            <mat-expansion-panel #centerPanel
+                                 [class.b-primary-expansion-panel]="centerPanel.expanded">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        <span translate>ADMINISTRATION_CENTERS</span>
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <div class="panel__container">
+                    <div class="list-container">
+                        <mat-selection-list color="primary" multiple="false"
+                                            (selectionChange)="centerSelectionChanged($event)">
+                            <mat-list-option *ngFor="let center of userCenters"
+                                             [value]="center.id"> {{ center.description }}
+                            </mat-list-option>
+                        </mat-selection-list>
+                    </div>
+                    <div class="role-ctrl">
+                        <button mat-mini-fab color="accent"
+                                [disabled]="centerAC.value == null"
+                                (click)="addCenter()"><i class="fas fa-plus-circle"></i></button>
 
+                        <mat-form-field>
+                            <mat-label translate>ADMINISTRATION_CENTER</mat-label>
+                            <ss-auto-complete matInput
+                                              #centerAC
+                                              [formControl]="centerCtrl"
+                                              [model]="centerAutoComplete">
+                            </ss-auto-complete>
+                        </mat-form-field>
+                        <button mat-mini-fab color="warn" [disabled]="selectedCenter < 1" (click)="deleteCenter()"><i
+                            class="fas fa-trash-alt"></i>
+                        </button>
+                    </div>
+                </div>
+            </mat-expansion-panel>
+            <mat-expansion-panel #signaturePanel
+                                 [class.b-primary-expansion-panel]="centerPanel.expanded">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        <span translate>ADMINISTRATION_SIGNATURE</span>
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <div class="image">
+                    <ss-image-input width="160px" height="200px" [imageModel]="imageModel"
+                                    style="display: inline-block;">
+                    </ss-image-input>
+                </div>
+            </mat-expansion-panel>
 
-            <mat-form-field >
-                <mat-label translate>ADMINISTRATION_ROLE</mat-label>
-                <ss-auto-complete matInput
-                                  #roleAC
-                                  [formControl]="roleCtrl"
-                                  [model]="roleAutoComplete">
-                </ss-auto-complete>
-            </mat-form-field>
-            <button mat-mini-fab color="warn" [disabled]="selectedRole < 1" (click)="deleteRole()"><i class="fas fa-trash-alt"></i>
-            </button>
-        </div>
-    </mat-expansion-panel>
-
-    <mat-expansion-panel #centerPanel
-                         [class.b-primary-expansion-panel]="centerPanel.expanded"
-                         *ngIf="isManager">
-        <mat-expansion-panel-header>
-            <mat-panel-title >
-                <span translate>ADMINISTRATION_CENTERS</span>
-            </mat-panel-title>
-        </mat-expansion-panel-header>
-        <div class="list-container">
-            <mat-selection-list color="primary" multiple="false"
-                                (selectionChange)="centerSelectionChanged($event)">
-                <mat-list-option *ngFor="let center of userCenters"
-                                 [value]="center.id"> {{ center.description }} </mat-list-option>
-            </mat-selection-list>
-        </div>
-        <div class="role-ctrl">
-            <button mat-mini-fab color="accent"
-                    [disabled]="centerAC.value == null"
-                    (click)="addCenter()"><i class="fas fa-plus-circle"></i></button>
-
-            <mat-form-field >
-                <mat-label translate>ADMINISTRATION_CENTER</mat-label>
-                <ss-auto-complete matInput
-                                  #centerAC
-                                  [formControl]="centerCtrl"
-                                  [model]="centerAutoComplete">
-                </ss-auto-complete>
-            </mat-form-field>
-            <button mat-mini-fab color="warn" [disabled]="selectedCenter < 1" (click)="deleteCenter()"><i class="fas fa-trash-alt"></i>
-            </button>
-        </div>
-    </mat-expansion-panel>
-</mat-accordion>
+        }
+    </mat-accordion>
+}

@@ -8,7 +8,7 @@ import {  ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
 import { AwardProcedureService, LookupsService, ProjectMotiveService, WilayaService } from "@ss/common/api-lookup";
 import {SalesContractService} from '../sales-contract.service';
 import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
-import {AgentService} from '@ss/logistics/api-agent';
+import { AgentService, CustomerService } from '@ss/logistics/api-agent';
 import {ProjectTypeService} from '@ss/common/api-lookup';
 import { LoginService, MaterialModule } from "@ss/common/api-common";
 import {MatExpansionPanel} from '@angular/material/expansion';
@@ -31,7 +31,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         CommonModule,
         MaterialModule,
         TranslateDirective,
-       
+
         ReactiveFormsModule,
         DatePickerComponent,
 
@@ -44,7 +44,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 export class SalesContractDetailComponent extends BaseEntityDetailComponent<Project> {
     private wilayaSrv = inject(WilayaService);
     private loginSrv = inject(LoginService);
-    private customerSrv = inject(AgentService);
+    private customerSrv = inject(CustomerService);
     private typeSrv = inject(ProjectTypeService);
     private motiveSrv = inject(ProjectMotiveService);
     private awardSrv = inject(AwardProcedureService);
@@ -67,11 +67,14 @@ export class SalesContractDetailComponent extends BaseEntityDetailComponent<Proj
         public override confirmationSrv: ConfirmationDialogService,
         public lookupsSrv: LookupsService) {
         super(entitySrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'COMMON_PROJECTS');
+        this.entitySrv.setParentId(this.entitySrv.getParentId() || 0);
+        this.customerLookupModel.onObjectSelected = a => this.entitySrv.setParentId(a?.id || 0);
         // this.articleLookup.onObjectSelected = (a) => this.onArticle(a);
     }
 
     public override setupForm(b: Project) {
         const today = new Date();
+        this.entitySrv.setParentId(b.customer || 0);
         return this.formBuilder.group({
             id:             [b.id],
             centerId:       [b.centerId || this.loginSrv.appCtx.center, Validators.required],
@@ -95,7 +98,7 @@ export class SalesContractDetailComponent extends BaseEntityDetailComponent<Proj
 
     override readForm(): Project {
         const value = this.form.getRawValue() as Project;
-        this.entitySrv.setParentId(value.customer | 0);
+        this.entitySrv.setParentId(value.customer || 0);
         return value;
     }
 
@@ -110,13 +113,6 @@ export class SalesContractDetailComponent extends BaseEntityDetailComponent<Proj
         this.shownPanel = panel;
         const next = '/app/contracts/contracts/' + this.id + '/' + panel;
         this.router.navigate([next]).then();
-    }
-    override ngOnInit() {
-        if (this.entitySrv.getParentId()) {
-            super.ngOnInit();
-        } else {
-            this.router.navigate(['../'], { relativeTo: this.route }).then();
-        }
     }
 
     protected readonly CONTRACT_ARCHIVES = CONTRACT_ARCHIVES;

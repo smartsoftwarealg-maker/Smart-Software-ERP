@@ -8,16 +8,16 @@ import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {CurrencyDepositService, DepositType, DepositTypeService, Deposit} from '@ss/exchange/api-currency-deposit';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {AgentLookupModel, AgentService} from '@ss/logistics/api-agent';
-import {LoginService} from '@ss/common/api-common';
+import { LoginService, MaterialModule } from '@ss/common/api-common';
 import { MatCard, MatCardContent } from '@angular/material/card';
 import { NgIf } from '@angular/common';
 import { MatFormField, MatLabel, MatError } from '@angular/material/form-field';
 import { TranslateDirective } from '@ss/common/ui-lang';
-import { DatePickerComponent } from '../../../../common/ui-datepicker/src/lib/date-picker.component';
+import { DatePickerComponent } from '@ss/common/ui-datepicker';
 import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { MatInput } from '@angular/material/input';
 import { MatCheckbox } from '@angular/material/checkbox';
-import { ExcDocInfoComponent } from '../../../ui-info/src/lib/exc-doc-info.component';
+import { ExcDocInfoComponent } from '@ss/exchange/ui-info';
 
 @Component({
     selector: 'ss-deposit-detail',

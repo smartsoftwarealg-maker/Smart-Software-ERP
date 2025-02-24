@@ -1,14 +1,15 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {
-    BaseTransactionLinesDetailComponent, DOC_RECEPTION, TransactionLine
+    BaseTransactionLinesDetailComponent, DOC_RECEPTION, Transaction, TransactionLine
 } from '@ss/logistics/api-transaction';
 import { CommonModule } from '@angular/common';
 import { MaterialModule } from '@ss/common/api-common';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormGroup, ReactiveFormsModule, UntypedFormGroup } from '@angular/forms';
 import { DatePickerComponent } from '@ss/common/ui-datepicker';
 
 import { TranslateDirective } from '@ss/common/ui-lang';
 import { ReceptionLinesService } from '../reception-lines.service';
+import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 
 @Component({
     selector: 'ss-reception-lines-detail',
@@ -20,10 +21,8 @@ import { ReceptionLinesService } from '../reception-lines.service';
         MaterialModule,
         TranslateDirective,
         ReactiveFormsModule,
-       
-
-
-    ],
+        UiAutoCompleteComponent
+    ]
 })
 export class ReceptionLinesDetailComponent extends BaseTransactionLinesDetailComponent implements OnInit, OnDestroy {
     constructor(public receptionLinesSrv: ReceptionLinesService) {
@@ -34,5 +33,11 @@ export class ReceptionLinesDetailComponent extends BaseTransactionLinesDetailCom
         const value =  super.readForm();
         value.qtyInvoiced = value.qtySatisfied;
         return value;
+    }
+
+    setupForm(b: TransactionLine): UntypedFormGroup {
+        const fg = super.setupForm(b);
+        fg.controls['charge']?.setValue(Math.abs(fg.controls['charge']?.value||0));
+        return fg;
     }
 }

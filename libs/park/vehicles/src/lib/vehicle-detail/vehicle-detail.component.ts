@@ -10,8 +10,8 @@ import { HttpService, LoginService, MaterialModule } from '@ss/common/api-common
 import { FixedElementsEntryService } from '@ss/remuneration/elements-entry';
 import { VehicleService } from '../services/vehicle.service';
 import { VehicleTypeService } from '@ss/common/api-lookup';
-import {  DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
-import {  AppArchiveService, PARK_ARCHIVES } from '@ss/common/app-archive';
+import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
+import { AppArchiveMainComponent, AppArchiveService, PARK_ARCHIVES } from '@ss/common/app-archive';
 import { DatePickerComponent } from '@ss/common/ui-datepicker';
 
 
@@ -53,7 +53,9 @@ import { VehicleMissionService } from '../services/vehicle-mission.service';
         MatSelectModule,
         ReactiveFormsModule,
         MaterialModule,
-        RouterOutlet
+        RouterOutlet,
+        UiAutoCompleteComponent,
+        AppArchiveMainComponent
     ],
     templateUrl: './vehicle-detail.component.html',
     styleUrls: ['./vehicle-detail.component.css']

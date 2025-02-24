@@ -1,10 +1,14 @@
 <div class="language-select-container">
-  <button mat-icon-button type="button" [matMenuTriggerFor]="menu" #trigger="matMenuTrigger">
-    <i class="fas fa-globe"></i>
-  </button>
-  <mat-menu [xPosition]="langSrv.rtl ? 'before' : 'after'" yPosition="below" overlapTrigger="false" #menu="matMenu">
-    <div mat-menu-item *ngFor="let l of langSrv.languages" (click)="selectLocale(l.code)" style="text-align: center; width: 140px">
-      {{l.name}}
-    </div>
-  </mat-menu>
+    <button mat-icon-button type="button" [matMenuTriggerFor]="menu" #trigger="matMenuTrigger">
+        <i class="fas fa-globe"></i>
+    </button>
+    <mat-menu [xPosition]="langSrv.rtl ? 'before' : 'after'" yPosition="below" overlapTrigger="false" #menu="matMenu">
+        @for (l of langSrv.languages; track l.code) {
+            <div mat-menu-item
+                 (click)="selectLocale(l.code)"
+                 style="text-align: center; width: 140px">
+                {{ l.name }}
+            </div>
+        }
+    </mat-menu>
 </div>

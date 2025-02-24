@@ -25,3 +25,10 @@ mat-expansion-panel {
     gap: 1em;
     align-items: center;
 }
+
+.customer__div {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 2px;
+    justify-content: center;
+}

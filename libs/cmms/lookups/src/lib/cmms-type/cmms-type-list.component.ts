@@ -18,6 +18,7 @@ import { MatInputModule } from '@angular/material/input';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { PaginationComponent } from '@ss/common/ui-pagination';
+import { TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-cmms-type-list',
@@ -34,9 +35,8 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
         MatInputModule,
         MaterialModule,
         ReactiveFormsModule,
-       
-
-        PaginationComponent
+        PaginationComponent,
+        TranslatePipe
     ]
 })
 export class CMMSTypeListComponent extends BaseEntityListComponent<Lookup> {

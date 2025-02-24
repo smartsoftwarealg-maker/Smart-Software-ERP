@@ -130,6 +130,7 @@
     "DRIVER":          "سائق",
     "DRIVER_LICENSE":  "رخصة السياقة",
     "PLATE_NUMBER":    "رقم اللوحة",
+    "PLATE_NUMBER2":    "رقم المقطورة",
     "PROJECT_TYPES":   "أنواع المشاريع",
     "PROJECT_TYPE":    "نوع المشروع",
     "AWARD_PROCEDURES": "إجراءات المنح",
@@ -171,5 +172,14 @@
     "PACKAGING":           "تعبئة",
     "DELIVERY_TIME":       "وقت التسليم",
     "INVOICING":           "الفواتير",
-    "ORDER_VOLUME":        "حجم الطلب"
+    "ORDER_VOLUME":        "حجم الطلب",
+    "NEXT_CODE":           "الزمز التالي",
+    "QUANTITIES":           "الكميات",
+    "QTY_RETURNED":         "الكمية المرتجعة",
+    "CHARGE":               " رسوم أو خصم إذا كانت سلبية",
+    "DELIVERY_TIMES":      "وقت التسليم",
+    "SUPPLIER_COMPENSATION": "تعويضات الموردين",
+    "CUSTOMER_COMPENSATION": "تعويضات الزبائن",
+    "CUSTOMER_PAYMENTS":     "مدفوعات العملاء",
+    "SUPPLIER_PAYMENTS":     "مدفوعات الموردين"
 }

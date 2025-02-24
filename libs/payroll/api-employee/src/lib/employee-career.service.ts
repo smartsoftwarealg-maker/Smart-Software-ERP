@@ -19,9 +19,12 @@ export class EmployeeCareerService extends BaseEntityService<Career> {
                 map(x => x.body[0])
             );
     }
-
+    public lastCareer(): Observable<Career[]> {
+        return this.httpSrv.get<Career[]>('/careers/last/' + this.getParentId());
+    }
     public reorder(id: number): Observable<{ count: number }> {
         return this.httpSrv.put(`/persons/${id}/careers/reorder`);
     }
+
 
 }

@@ -80,5 +80,8 @@
     "WORKFLOW_INBOX":      "صندوق الوارد",
     "USER_RECEIVED_MESSAGES": "الرسائل المستلمة",
     "POST_FINAL":             "ما بعد النهائي",
-    "WORKFLOW_CHART":          "المخطط"
+    "WORKFLOW_CHART":          "المخطط",
+    "SIGNATURE":               "التوقيع",
+    "SIGNER":                  "الموقع",
+    "HEADQUARTER": "مقر"
 }

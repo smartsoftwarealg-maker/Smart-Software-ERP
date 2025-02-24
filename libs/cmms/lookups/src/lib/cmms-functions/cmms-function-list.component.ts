@@ -17,6 +17,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { CMMSFunctionService } from '../services/cmms.function.service';
 import { PaginationComponent } from '@ss/common/ui-pagination';
 import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-cmms-function-list',
@@ -32,7 +33,9 @@ import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
         MatFormFieldModule,
         MatInputModule,
         MaterialModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        TranslatePipe,
+        TranslateDirective
     ],
 })
 export class CMMSFunctionListComponent extends BaseEntityListComponent<Lookup> {
@@ -46,7 +49,7 @@ export class CMMSFunctionListComponent extends BaseEntityListComponent<Lookup> {
         public override defReportSrv: DefaultReportService,
         public override router: Router,
         public override pagPersistSrv: PaginatorPersistenceService) {
-        super(markSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv, 'CMMS_FUNCTION');
+        super(markSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv, 'CMMS_FUNCTIONS');
     }
 
 }

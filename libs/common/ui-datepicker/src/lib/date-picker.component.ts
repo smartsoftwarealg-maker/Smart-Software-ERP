@@ -6,7 +6,6 @@ import {
     ElementRef, EventEmitter,
     HostBinding,
     Input,
-    OnChanges,
     OnDestroy,
     OnInit,
     Optional,
@@ -18,37 +17,48 @@ import {
     ControlValueAccessor,
     NgControl
 } from '@angular/forms';
-import { MatFormFieldControl } from '@angular/material/form-field';
+import { MatFormFieldControl, MatSuffix } from '@angular/material/form-field';
 import {
     isString,
     strToDate,
     strToDateTime,
-    removeTimeForDateStr,
     dateTimeToYmdStr,
     dateToYmdStr, dateTimeToTime
 } from '@ss/common/api-common';
 import { Subject } from 'rxjs';
-import { MatCalendarType } from '@muaazh/angular-datepicker';
+import { MatCalendarType, MatDatepicker, MatDatepickerInput, MatDatepickerToggle } from '@muaazh/angular-datepicker';
 import { MatInput } from '@angular/material/input';
 import { MatDatepickerModule } from '@muaazh/angular-datepicker';
-import { MatIconButton } from '@angular/material/button';
 
 @Component({
     selector: 'ss-date-picker',
     templateUrl: './date-picker.component.html',
     styleUrls: ['./date-picker.component.scss'],
     providers: [
-        { provide: MatFormFieldControl, useExisting: DatePickerComponent }
+        { provide: MatFormFieldControl, useExisting: DatePickerComponent },
     ],
     standalone: true,
-    imports: [MatInput, MatDatepickerModule, MatIconButton]
+    imports: [
+        MatInput,
+        MatDatepickerModule,
+        MatSuffix,
+        MatDatepickerInput,
+        MatDatepickerToggle,
+        MatDatepicker,
+    ],
 })
-export class DatePickerComponent implements MatFormFieldControl<Date>, DoCheck, OnInit, OnDestroy, ControlValueAccessor {
-
+export class DatePickerComponent
+    implements
+        MatFormFieldControl<Date>,
+        DoCheck,
+        OnInit,
+        OnDestroy,
+        ControlValueAccessor
+{
     constructor(
         @Optional() @Self() public ngControl: NgControl,
         private fm: FocusMonitor,
-        private elRef: ElementRef<HTMLElement>
+        private elRef: ElementRef<HTMLElement>,
     ) {
         this.onChange = this.nop;
         this.onTouched = this.nop;
@@ -57,7 +67,7 @@ export class DatePickerComponent implements MatFormFieldControl<Date>, DoCheck, 
             // the providers) to avoid running into a circular import.
             this.ngControl.valueAccessor = this;
         }
-        fm.monitor(elRef.nativeElement, true).subscribe(origin => {
+        fm.monitor(elRef.nativeElement, true).subscribe((origin) => {
             if (this.focused && !origin) {
                 if (this.textField.nativeElement.value) {
                     if (!strToDate(this.textField.nativeElement.value)) {
@@ -72,7 +82,7 @@ export class DatePickerComponent implements MatFormFieldControl<Date>, DoCheck, 
     }
 
     @Output()
-        dateChange = new EventEmitter<Date>();
+    dateChange = new EventEmitter<Date>();
 
     // @Input()
     // public time: boolean = false;
@@ -107,7 +117,9 @@ export class DatePickerComponent implements MatFormFieldControl<Date>, DoCheck, 
         return this.pPlaceholder;
     }
 
-    get focused() { return this.isFocused; }
+    get focused() {
+        return this.isFocused;
+    }
 
     /** Whether the control is empty. */
     get empty(): boolean {
@@ -132,7 +144,9 @@ export class DatePickerComponent implements MatFormFieldControl<Date>, DoCheck, 
 
     /** Whether the control is disabled. */
 
-    get disabled(): boolean { return this.isDisabled; }
+    get disabled(): boolean {
+        return this.isDisabled;
+    }
 
     @Input()
     set disabled(value: boolean) {
@@ -157,7 +171,7 @@ export class DatePickerComponent implements MatFormFieldControl<Date>, DoCheck, 
     lastErrorState = false;
 
     @Input()
-        outputFormat: 'dateObject' | 'dateStr' = 'dateStr'; // todo: add 'datetime'
+    outputFormat: 'dateObject' | 'dateStr' = 'dateStr'; // todo: add 'datetime'
 
     @ViewChild('textField', { static: true }) textField: ElementRef;
 
@@ -182,7 +196,8 @@ export class DatePickerComponent implements MatFormFieldControl<Date>, DoCheck, 
      */
     readonly stateChanges = new Subject<void>();
     /** The element ID for this control. */
-    @HostBinding() readonly id = `ss-date-picker-${DatePickerComponent.nextId++}`;
+    @HostBinding() readonly id =
+        `ss-date-picker-${DatePickerComponent.nextId++}`;
 
     /** The placeholder for this control. */
 
@@ -204,12 +219,10 @@ export class DatePickerComponent implements MatFormFieldControl<Date>, DoCheck, 
      */
     // @Input('aria-describedby') userAriaDescribedBy: string;
 
-    nop = (x?: any) => { };
-
+    nop = (x?: any) => {};
 
     /** Sets the list of element IDs that currently describe this control. */
-    setDescribedByIds(ids: string[]) {
-    }
+    setDescribedByIds(ids: string[]) {}
 
     /** Handles a click on the control's container. */
     onContainerClick(event: MouseEvent) {
@@ -223,7 +236,10 @@ export class DatePickerComponent implements MatFormFieldControl<Date>, DoCheck, 
         // 1-1-2000 is an example of the shortest valid date (8 chars)
         let value: Date = null;
         if (txt && txt.length > 8) {
-            value = this._type == 'datetime' || this._type === 'time' ? strToDateTime(txt) : strToDate(txt);
+            value =
+                this._type == 'datetime' || this._type === 'time'
+                    ? strToDateTime(txt)
+                    : strToDate(txt);
         }
         try {
             this.onChange(value);
@@ -232,7 +248,6 @@ export class DatePickerComponent implements MatFormFieldControl<Date>, DoCheck, 
         }
         this.stateChanges.next();
     }
-
 
     onDateChanged(d: Date) {
         this.dateChange.emit(d);
@@ -245,11 +260,12 @@ export class DatePickerComponent implements MatFormFieldControl<Date>, DoCheck, 
     }
 
     checkDateRange(): boolean {
-        return this.date == null ||
-        (
-            (this.minDate == null || this.minDate.getTime() <= this.date.getTime())
-            &&
-            (this.maxDate == null || this.maxDate.getTime() >= this.date.getTime())
+        return (
+            this.date == null ||
+            ((this.minDate == null ||
+                this.minDate.getTime() <= this.date.getTime()) &&
+                (this.maxDate == null ||
+                    this.maxDate.getTime() >= this.date.getTime()))
         );
     }
 
@@ -263,8 +279,7 @@ export class DatePickerComponent implements MatFormFieldControl<Date>, DoCheck, 
         } else if (isString(obj)) {
             if (this._type == 'datetime' || this._type === 'time')
                 this.date = strToDateTime(obj as any);
-            else
-                this.date = strToDate(obj as any);
+            else this.date = strToDate(obj as any);
         } else if (obj instanceof Date) {
             this.date = obj;
         } else {
@@ -282,7 +297,7 @@ export class DatePickerComponent implements MatFormFieldControl<Date>, DoCheck, 
     }
 
     registerOnChange(fn: any): void {
-        this.onChange = obj => {
+        this.onChange = (obj) => {
             fn(this.toOutputFormat(obj));
         };
     }
@@ -306,8 +321,7 @@ export class DatePickerComponent implements MatFormFieldControl<Date>, DoCheck, 
         }
     }
 
-    ngOnInit() {
-    }
+    ngOnInit() {}
 
     ngOnDestroy() {
         this.stateChanges.complete();
@@ -319,13 +333,17 @@ export class DatePickerComponent implements MatFormFieldControl<Date>, DoCheck, 
             return null;
         }
         if (this.outputFormat === 'dateStr') {
-            return this._type == 'datetime' ?
-                dateTimeToYmdStr(obj):
-                this._type === 'time'? dateTimeToTime(obj) : dateToYmdStr(obj);
+            return this._type == 'datetime'
+                ? dateTimeToYmdStr(obj)
+                : this._type === 'time'
+                  ? dateTimeToTime(obj)
+                  : dateToYmdStr(obj);
         }
         if (this.outputFormat === 'dateObject') {
             return obj;
         }
-        throw new Error('DatePicker does not know outputFormat: ' + this.outputFormat);
+        throw new Error(
+            'DatePicker does not know outputFormat: ' + this.outputFormat,
+        );
     }
 }

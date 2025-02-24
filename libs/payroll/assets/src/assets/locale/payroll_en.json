@@ -198,6 +198,9 @@
     "WEIGHTS":               "Coefficients",
     "DISCIPLINE":            "Discipline",
     "ABSENCE":               "Absence",
-    "DEDUCTION_REPORT":      "Deduction report",
-    "CAREER_CRITERIA":       "Criteria"
+    "EVOLUTION_REPORT":      "Evolution report",
+    "CAREER_CRITERIA":       "Criteria",
+    "GRADE":                 "Grade",
+    "DEDUCTION_FORMULA":     "Deduction formula",
+    "PROMOTION_MOTIVE":      "Promotion motive"
 }

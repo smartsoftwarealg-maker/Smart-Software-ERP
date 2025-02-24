@@ -40,12 +40,9 @@ import { MatDialog } from '@angular/material/dialog';
 import { AgentImportComponent } from '../agent-import/agent-import.component';
 import { AgentPriceService } from '@ss/logistics/api-agent-price';
 import { CommonModule } from '@angular/common';
-
-
-
-import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 import { ChildAttributesComponent } from '@ss/custom-attributes';
+import { OptionService } from '@ss/logistics/ui-options';
 
 @Component({
     selector: 'ss-agent-detail',
@@ -56,9 +53,8 @@ import { ChildAttributesComponent } from '@ss/custom-attributes';
         CommonModule,
         MaterialModule,
         TranslateDirective,
+        TranslatePipe,
         ReactiveFormsModule,
-
-
         AppArchiveMainComponent,
         UiAutoCompleteComponent,
         ChildAttributesComponent
@@ -66,6 +62,7 @@ import { ChildAttributesComponent } from '@ss/custom-attributes';
 
 })
 export class AgentDetailComponent extends BaseEntityDetailComponent<Agent> implements OnInit {
+    private optionSrv = inject(OptionService);
     private defaultAgentType = 0;
     private dialog  = inject(MatDialog);
     private router = inject(Router);
@@ -138,6 +135,8 @@ export class AgentDetailComponent extends BaseEntityDetailComponent<Agent> imple
             .is('AQS')
             .pipe(
                 tap(res => this.AQS = res),
+                switchMap(()=> this.isSales? of(null) : this.optionSrv.get(this.loginSrv.appCtx.center)),
+                tap(res => this.optionSrv.options = res),
                 switchMap(() => this.route.data),
                 tap(res => {
                     const isSupplier = res['supplier'];
@@ -156,7 +155,7 @@ export class AgentDetailComponent extends BaseEntityDetailComponent<Agent> imple
         this.form.controls['recordBlocked']
             .valueChanges
             .subscribe(x => {
-                if (x) {
+                if (!x) {
                     this.form.controls['blockingReason'].disable();
                     this.form.controls['blockingReason'].setValue('');
                 } else {
@@ -188,7 +187,7 @@ export class AgentDetailComponent extends BaseEntityDetailComponent<Agent> imple
             fax: [a.fax],
             contact: [a.contact],
             info: [a.info],
-            currency: [a.currency || 10],
+            currency: [a.currency || this.optionSrv.options?.defaultCurrency],
             taxPayable: [a.taxPayable],
             commRegister: [a.commRegister],
             fiscalID: [a.fiscalID],
@@ -208,7 +207,7 @@ export class AgentDetailComponent extends BaseEntityDetailComponent<Agent> imple
             website: [a.website, Validators.pattern(urlRegExp)],
             nis: [a.nis],
             nif: [a.nif],
-            debtLimit: [a.debtLimit],
+            debtLimit: [a.debtLimit||0],
             debtTerm: [a.debtTerm, FormValidators.integerValidator],
             payMode: [a.payMode],
             checkDueDays: [a.checkDueDays, FormValidators.integerValidator],
@@ -373,6 +372,14 @@ export class AgentDetailComponent extends BaseEntityDetailComponent<Agent> imple
                 });
         }
     }
+
+    loadNextCode() {
+        const formValue = this.form.getRawValue();
+        this.agentSrv.getNextCode(formValue.customerCode, formValue.agentType).subscribe(res => {
+            this.form.controls['customerCode'].setValue(res.code);
+        })
+    }
+
 }
 
 class CustomerLookup extends DefaultAutoCompleteModel<Lookup> {

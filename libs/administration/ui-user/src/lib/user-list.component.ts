@@ -25,7 +25,6 @@ export class UserListComponent extends BaseEntityListComponent<User> implements 
         ['description', 'fullName', 'manager', 'responsible',  'blocked'] :
         ['description', 'fullName',];
 
-
     constructor(
         public userSrv: UserListService,
         public override shellSrv: ShellService,

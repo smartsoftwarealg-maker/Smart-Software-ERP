@@ -5,6 +5,7 @@ const DATE_TIME_SEPARATOR = ' ';
 
 import {Router} from '@angular/router';
 import {
+    APP_ACCOUNTING,
     APP_ASSET,
     APP_DASHBOARD,
     APP_HR, APP_LTM,
@@ -143,7 +144,7 @@ export function dateToDmyStr(date: Date) {
 }
 
 export function dateToYmdStr(date: Date | string): string {
-    if (typeof date === 'string' || date instanceof String) {
+    if (!date || typeof date === 'string' || date instanceof String) {
         return <string>date;
     } else {
         return pad4(date.getFullYear())
@@ -360,6 +361,7 @@ export function getApplicationId(router: Router) {
     const urlList = router.url.split('/');
     const app = urlList[2];
     const MAP = new Map<string, number> ([
+        ['accounting', APP_ACCOUNTING],
         ['dashboard', APP_DASHBOARD],
         ['stock', APP_STOCK],
         ['HR', APP_HR],

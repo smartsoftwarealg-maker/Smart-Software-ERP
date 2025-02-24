@@ -1,4 +1,4 @@
-import {Component, OnInit} from "@angular/core";
+import { Component, inject, OnInit } from '@angular/core';
 import { OrgChartModule, TreeNode } from 'angular13-organization-chart';
 import { HttpService, LanguageService, MaterialModule } from '@ss/common/api-common';
 import {ShellService, SnackBarService} from "@ss/common/ui-shell";
@@ -6,9 +6,6 @@ import {MatDialog} from "@angular/material/dialog";
 import {ActivatedRoute} from "@angular/router";
 import {CHART_TREE, CMMS_WORK_ORDER, WorkflowChartTree} from '../workflow-api'
 import { CommonModule } from '@angular/common';
-
-
-import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 
 interface WorkflowTreeNode extends TreeNode {
@@ -26,21 +23,15 @@ interface WorkflowTreeNode extends TreeNode {
     imports: [
         CommonModule,
         MaterialModule,
-
         OrgChartModule,
     ],
 })
 export class WorkflowChartComponent implements OnInit {
-
+    private httpSrv = inject( HttpService);
+    private shellSrv = inject( ShellService);
+    private route = inject( ActivatedRoute);
     root: WorkflowTreeNode;
 
-    constructor(private httpSrv: HttpService,
-                private shellSrv: ShellService,
-                private matDialog: MatDialog,
-                private snackBarSrv: SnackBarService,
-                private route: ActivatedRoute,
-                private langSrv: LanguageService) {
-    }
 
     ngOnInit(): void {
         this.refresh();

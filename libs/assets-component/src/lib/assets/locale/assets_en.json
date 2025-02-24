@@ -50,7 +50,6 @@
     "REQUEST_NUMBER":      "Request number",
     "REQUEST_DATE":        "Request date",
     "ORDER_NUMBER":        "Order number",
-    "ORDER_DATE":          "Order date",
     "DELIVERY_NUMBER":     "Delivery number",
     "DELIVERY_DATE":       "Delivery date",
     "INVOICE_NUMBER":      "Invoice number",
@@ -78,7 +77,5 @@
     "NEW_OFFICE": "New office",
     "NEW_BUILDING": "New building",
     "ACCOUNTING_TYPE": "Accounting type",
-    "NEW_BENEFICIARY": "New beneficiary",
-    "SHOW_ALL": "Show all",
-    "SHOW_ACTIVE_ONLY": "Show active only"
+    "NEW_BENEFICIARY": "New beneficiary"
 }

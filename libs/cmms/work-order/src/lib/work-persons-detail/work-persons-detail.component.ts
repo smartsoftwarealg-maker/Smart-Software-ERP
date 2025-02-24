@@ -17,16 +17,15 @@ import { CMMSWorkPersonService } from '../services/c-m-m-s-work-person.service';
 import { PersonAutocompleteClass } from '@ss/employee-services/employee-services';
 import { CmmsPersonService } from '@ss/cmms/cmms-api';
 import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
+import { TranslateDirective } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-work-persons-detail',
     standalone: true,
     imports: [
         CommonModule,
-
         MatTableModule,
-
-
+        TranslateDirective,
         FormsModule,
         MatFormFieldModule,
         ReactiveFormsModule,

@@ -1,7 +1,6 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {
-    BaseTransactionLinesDetailComponent, DOC_CORRECTION_IN,
-    TransactionLinesService
+    BaseTransactionLinesDetailComponent, DOC_CORRECTION_IN
 } from '@ss/logistics/api-transaction';
 import { NgIf } from '@angular/common';
 import { MatMiniFabButton } from '@angular/material/button';
@@ -13,6 +12,7 @@ import { MatInput } from '@angular/material/input';
 import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { CdkTextareaAutosize } from '@angular/cdk/text-field';
 import { MaterialModule } from '@ss/common/api-common';
+import { InventoryEntryLinesService } from '@ss/stock/api-inventory-entry-lines';
 
 
 @Component({
@@ -23,7 +23,7 @@ import { MaterialModule } from '@ss/common/api-common';
     imports: [NgIf, MaterialModule, MatMiniFabButton, MatCard, MatCardContent, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, UiAutoCompleteComponent, MatError, CdkTextareaAutosize]
 })
 export class InventoryEntryLinesDetailComponent extends BaseTransactionLinesDetailComponent implements OnInit, OnDestroy {
-    constructor(public detailSrv: TransactionLinesService) {
+    constructor(public detailSrv: InventoryEntryLinesService) {
         super(detailSrv, DOC_CORRECTION_IN);
     }
 }

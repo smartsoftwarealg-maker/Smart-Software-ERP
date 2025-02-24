@@ -1,7 +1,7 @@
 import { Component, inject, OnInit } from '@angular/core';
 import {BaseChildEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {Blocking} from '../assets-api';
-import {  DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
+import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { MaterialModule } from '@ss/common/api-common';
@@ -26,19 +26,16 @@ import { TranslateDirective } from '@ss/common/ui-lang';
         ReactiveFormsModule,
         MaterialModule,
         TranslateDirective,
-
         DatePickerComponent,
         RouterModule,
-
-
+        UiAutoCompleteComponent
     ]})
 export class AssetBlockingDetailComponent extends BaseChildEntityDetailComponent<Blocking> implements OnInit {
     private typeLookupSrv = inject(AssetBlockingTypeService);
     typeLookup = new DefaultAutoCompleteModel(this.typeLookupSrv);
     private formBuilder = inject(UntypedFormBuilder);
 
-    constructor(
-        public assetBlockingSrv: AssetBlockingService) {
+    constructor(public assetBlockingSrv: AssetBlockingService) {
         super(assetBlockingSrv, 'Blocking');
     }
 
@@ -54,23 +51,4 @@ export class AssetBlockingDetailComponent extends BaseChildEntityDetailComponent
             blockingType:   [a.blockingType]
         });
     }
-
-    // protected override getRouteParam(): Observable<any> {
-    //     return this.route
-    //         .parent
-    //         .parent.params
-    //         .pipe(
-    //             switchMap(p => {
-    //                 this.parentId = +p['id'] || 0;
-    //                 this.assetBlockingSrv.setParentId(this.parentId);
-    //                 return super.getRouteParam();
-    //             })
-    //         );
-    // }
-
-
-    // override ngOnInit() {
-    //     super.ngOnInit();
-    //     this.shellSrv.setGoBackPath('..', this.route);
-    // }
 }

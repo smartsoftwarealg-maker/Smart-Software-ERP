@@ -14,6 +14,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
+import { PaginationComponent } from '@ss/common/ui-pagination';
 
 @Component({
     selector: 'ss-invoice-cancel-lines-list',
@@ -28,7 +29,8 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         ReactiveFormsModule,
         RouterModule,
 
-        DocInfoComponent
+        DocInfoComponent,
+        PaginationComponent
     ]
 })
 export class InvoiceCancellationLinesListComponent extends BaseTransactionLinesListComponent implements OnInit {

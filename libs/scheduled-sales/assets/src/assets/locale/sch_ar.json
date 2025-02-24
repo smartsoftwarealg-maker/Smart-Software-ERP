@@ -20,5 +20,14 @@
     "INVOICED_SCHEDULES": "الجداول المفوترة",
     "PENDING_SCHEDULES":  "الجداول العالقة",
     "MONTHLY_TURNOVER":   "المردود الشهري",
-    "ANNUAL_TURNOVER":    "المردود السنوي"
+    "ANNUAL_TURNOVER":    "المردود السنوي",
+    "MONTHLY_PAYMENTS":   "المدفوعات الشهرية",
+    "ANNUAL_PAYMENTS":    "المدفوعات السنوية",
+    "CSPACE":             "مساحة الزبون",
+    "SCHS":               "  حجار السود",
+    "ECDE":               " اسمنت الشلف",
+    "SCSG":               "سور الغزلان",
+    "SCAEK":              "العين الكبيرة",
+    "COMPANY_SELECTOR":   "اختيار الشركة",
+    "COMPENSATIONS":      "التعويضات"
 }

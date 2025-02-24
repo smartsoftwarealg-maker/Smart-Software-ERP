@@ -17,11 +17,12 @@ import { MatTableModule } from '@angular/material/table';
 import { MaterialModule } from '@ss/common/api-common';
 import { CMMSRoutingDetailService } from '../services/cmms-routing-detail.service';
 import { CMMSRoutingService } from '../services/cmms.routing.service';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-cmms-routing-detail',
     standalone: true,
-    imports: [CommonModule,  MatCheckboxModule, MatSortModule, MatTableModule,  MaterialModule, RouterOutlet],
+    imports: [CommonModule, MatCheckboxModule, MatSortModule, MatTableModule, MaterialModule, RouterOutlet, TranslatePipe, TranslateDirective],
     templateUrl: './cmms-routing-detail.component.html',
     styleUrls: ['./cmms-routing-detail.component.css']
 })

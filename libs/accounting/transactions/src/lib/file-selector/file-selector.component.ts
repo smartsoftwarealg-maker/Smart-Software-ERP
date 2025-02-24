@@ -95,7 +95,7 @@ export class FileSelectorComponent extends BaseEntityListComponent<ACCFile> impl
         this.entitySrv
             .selectFolder(this.selectedRow?.id || 0, this.selectedRow?.fileYear || 0, this.accPeriod.value)
             .pipe(tap(ctx => this.loginSrv.setContext(ctx)))
-            .subscribe(res => {
+            .subscribe(() => {
                 if (this.selectedRow) {
                     this.entitySrv.accFile = this.selectedRow;
                     this.shellSrv.setLabels([{ title: `${this.selectedRow.description}` }]);

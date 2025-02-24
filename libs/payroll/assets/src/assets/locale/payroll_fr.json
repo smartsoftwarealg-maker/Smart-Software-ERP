@@ -198,6 +198,9 @@
     "WEIGHTS":               "Coefficients",
     "DISCIPLINE":            "Discipline",
     "ABSENCE":               "Absence",
-    "DEDUCTION_REPORT":      "Etat Abattement",
-    "CAREER_CRITERIA":       "Critères"
+    "EVOLUTION_REPORT":      "Etat evolution",
+    "CAREER_CRITERIA":       "Critères",
+    "GRADE":                 "Point",
+    "DEDUCTION_FORMULA":     "Formule d'abattement",
+    "PROMOTION_MOTIVE":      "Motifs de promotion"
 }

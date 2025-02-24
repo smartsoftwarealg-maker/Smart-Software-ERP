@@ -2,10 +2,8 @@ import { Component } from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { ReactiveFormsModule, UntypedFormBuilder } from '@angular/forms';
-import {CCGroup, Lookup, LookupsService} from '@ss/common/api-lookup';
-import {  ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
-import {Observable} from 'rxjs';
-import {tap} from 'rxjs/operators';
+import { Lookup, LookupsService} from '@ss/common/api-lookup';
+import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { LoginService, MaterialModule } from '@ss/common/api-common';
 import { BaseTransactionDetailComponent } from "@ss/logistics/api-transaction";
 import {SalesProformaService} from '../sales-proforma.service';
@@ -33,9 +31,6 @@ import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
     ],
 })
 export class ProformaDetailComponent extends BaseTransactionDetailComponent {
-
-    public groups: CCGroup[];
-
     constructor(public proformaSrv: SalesProformaService,
                 public override detailSrv: SalesProformaLinesService,
                 public override shellSrv: ShellService,
@@ -48,11 +43,6 @@ export class ProformaDetailComponent extends BaseTransactionDetailComponent {
                 protected override loginSrv: LoginService,
                 protected override dialog: MatDialog) {
         super(proformaSrv, detailSrv, shellSrv, snackBarSrv, route, router, formBuilder, confirmationSrv,  loginSrv, dialog, 'LOGISTICS_PROFORMA');
-    }
-
-    override preload(): Observable<any> {
-        return this.lookupsSrv.getCCGroups()
-            .pipe(tap(x => this.groups = x));
     }
 
     protected importedDocuments(): Lookup[] {

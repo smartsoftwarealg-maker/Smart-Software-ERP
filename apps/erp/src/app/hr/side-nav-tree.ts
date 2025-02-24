@@ -124,6 +124,7 @@ export const hrNavTree: SideNavNode = {
             name: 'COMMON_DASHBOARD',
             icon: 'fa-solid fa-gauge-min',
             route: ABS_HR_DASHBOARD_URL,
+            accessRights: 'Dashboard'
         },
     ],
     accessRights: 'HRMASTER'

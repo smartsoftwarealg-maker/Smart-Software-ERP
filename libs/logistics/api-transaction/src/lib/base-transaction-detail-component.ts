@@ -15,7 +15,7 @@ import { LoginService, User } from '@ss/common/api-common';
 import { MatDialog } from '@angular/material/dialog';
 import { DocImportComponent, DocImportService } from '@ss/logistics/ui-doc-import';
 import { Directive, inject, OnInit, ViewChild } from '@angular/core';
-import { Currency, CurrencyService, Lookup, LookupsService, PayMethod } from '@ss/common/api-lookup';
+import { CCGroup, Currency, CurrencyService, Lookup, LookupsService, PayMethod } from '@ss/common/api-lookup';
 import {
     Agent,
     AgentService,
@@ -29,10 +29,14 @@ import { UserListService } from '@ss/common/api-users';
 import { DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
 import { TransactionLinesClass } from './transaction-lines.class';
 import { BaseTransactionLinesListComponent } from './base-transaction-lines-list.component';
-import { PurchaseContractService, SalesContractService } from '@ss/logistics/contracts';
+import { Project, PurchaseContractService, SalesContractService } from '@ss/logistics/contracts';
+import { OptionService } from '@ss/logistics/ui-options';
 
 @Directive()
 export abstract class BaseTransactionDetailComponent extends BaseEntityDetailComponent<Transaction> implements OnInit {
+    private CONSUMPTION_DOCUMENT = 260;
+    private PURCHASE_REQUEST = 10;
+    private optionSrv = inject(OptionService);
     private agentSrv = inject(AgentService);
     private payMethodSrv = inject(PayMethodService);
     private usersSrv = inject(UserListService);
@@ -75,14 +79,15 @@ export abstract class BaseTransactionDetailComponent extends BaseEntityDetailCom
     public agentLookup = new DefaultAutoCompleteModel<Agent>(this.agentSrv, 'id', 'denomination');
     public customerLookup = new DefaultAutoCompleteModel<Agent>(this.customerSrv, 'id', 'denomination');
     public supplierLookup = new DefaultAutoCompleteModel<Agent>(this.supplierSrv, 'id', 'denomination');
-    public purchaseProjectLookup = new DefaultAutoCompleteModel(this.purchaseProjectSrv);
-    public salesProjectLookup = new DefaultAutoCompleteModel(this.salesProjectSrv);
+    public purchaseProjectLookup = new ProjectLookupModel(this.purchaseProjectSrv);
+    public salesProjectLookup = new ProjectLookupModel(this.salesProjectSrv);
     public currencyCompleteModel = new DefaultAutoCompleteModel<Currency>(this.currencySrv);
     public transporterAutoCompleteModel = new DefaultAutoCompleteModel<Agent>(this.supplierSrv, 'id', 'denomination');
     public consumerLookup = new DefaultAutoCompleteModel<Agent>(this.consumerSrv, 'id', 'denomination');
     public branchLookup = new DefaultAutoCompleteModel(this.branchSrv, 'id', 'denomination');
     public executionRef = 0;
     public formId = 0;
+    public groups: CCGroup[];
 
     protected constructor(
         public entitySrv: BaseEntityService<Transaction>,
@@ -103,6 +108,10 @@ export abstract class BaseTransactionDetailComponent extends BaseEntityDetailCom
     }
 
     private updateProjectLookups(id: number) {
+        const docValue = this.form.controls['document'].value;
+        if (docValue === this.CONSUMPTION_DOCUMENT || docValue === this.PURCHASE_REQUEST)  {
+            id = 0;
+        }
         this.purchaseProjectSrv.setParentId(id);
         this.salesProjectSrv.setParentId(id);
         if (id) {
@@ -237,7 +246,7 @@ export abstract class BaseTransactionDetailComponent extends BaseEntityDetailCom
             payMethod: [b.payMethod],
             header: [b.header],
             footer: [b.footer],
-            currency: [b.currency || 10],
+            currency: [b.currency || this.optionSrv.options?.defaultCurrency],
             currencyRate: [b.currencyRate || 1],
             discountDescription: [b.discountDescription],
             fixedDiscount: [b.fixedDiscount || 0.0],
@@ -254,8 +263,21 @@ export abstract class BaseTransactionDetailComponent extends BaseEntityDetailCom
             license: [b.license],
             licenseDate: [b.licenseDate],
             licenseIssuer: [b.licenseIssuer],
-            plateNumber: [b.plateNumber]
+            plateNumber: [b.plateNumber],
+            plateNumber2: [b.plateNumber2],
+            deliveryTime: [b.deliveryTime]
         });
+    }
+
+    preload(): Observable<any> {
+        return this.lookupsSrv.getCCGroups()
+            .pipe(tap(x => this.groups = x),
+                  switchMap(() => this.optionSrv.get(this.loginSrv.appCtx.center)),
+                  tap(res => this.optionSrv.options = res));
+        //
+        // return this.optionSrv
+        //     .get(this.loginSrv.appCtx.center)
+        //     .pipe(tap(res => this.optionSrv.options = res));
     }
 
     get isManager() {
@@ -277,6 +299,10 @@ export abstract class BaseTransactionDetailComponent extends BaseEntityDetailCom
         if (this.showImportButton()) {
             this.shellSrv.addButton(this.importBtn);
         }
+
+        this.customerSrv.activeOnly = true;
+        this.agentSrv.activeOnly = true;
+        this.supplierSrv.activeOnly = true;
     }
 
     protected disableControls(url: string) {
@@ -289,7 +315,7 @@ export abstract class BaseTransactionDetailComponent extends BaseEntityDetailCom
         if (this.form.controls['id'].value > 0) {
             super.goBack();
         } else {
-            this.router.navigate(['..', this.queryId], { relativeTo: this.route }).then();
+            this.router.navigate(['..', this.queryId], { relativeTo: this.route }).then(() => this.saveButton.disabled = false);
         }
     }
 
@@ -297,4 +323,12 @@ export abstract class BaseTransactionDetailComponent extends BaseEntityDetailCom
         super.finishLoading(e);
         this.updateProjectLookups(e?.agent || 0);
     }
+}
+
+class ProjectLookupModel extends DefaultAutoCompleteModel<Project> {
+    constructor(srv: BaseEntityService<Project>) {
+        super(srv);
+    }
+
+    toString = (x: Project) => x ? `${x.contractNo} - ${x.description}` : null
 }

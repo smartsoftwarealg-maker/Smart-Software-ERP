@@ -5,7 +5,7 @@ import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DefaultReportService } from '@ss/common/ui-default-report-component';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
-import { PaginatorPersistenceService } from '@ss/common/api-common';
+import { MaterialModule, PaginatorPersistenceService } from '@ss/common/api-common';
 import { CMMSAlertService } from '../services/cmms-alert.service';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
@@ -16,7 +16,7 @@ import { DatePickerComponent } from '@ss/common/ui-datepicker';
 import { MatButton } from '@angular/material/button';
 import { MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from '@angular/material/table';
 import { MatSort, MatSortHeader } from '@angular/material/sort';
-import { PaginationComponent } from '../../../../../common/ui-pagination/src/lib/pagination.component';
+import { PaginationComponent } from '@ss/common/ui-pagination';
 import { DatePipe } from '@angular/common';
 import { TranslatePipe } from '@ss/common/ui-lang';
 
@@ -30,6 +30,7 @@ import { TranslatePipe } from '@ss/common/ui-lang';
     standalone: true,
     imports: [
         MatFormField,
+        MaterialModule,
         MatLabel,
         TranslateDirective,
         DatePickerComponent,
@@ -51,6 +52,7 @@ import { TranslatePipe } from '@ss/common/ui-lang';
         PaginationComponent,
         DatePipe,
         TranslatePipe,
+        TranslateDirective
     ],
 })
 export class CmmsAlertListComponent extends BaseEntityListComponent<PM> implements OnInit {
@@ -58,6 +60,7 @@ export class CmmsAlertListComponent extends BaseEntityListComponent<PM> implemen
 
     displayedColumns = [
         // 'reference',
+        'selection',
         'description',
         'assetDescription',
         'planDescription',

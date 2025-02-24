@@ -47,12 +47,12 @@ import { CMMSFunctionService } from '@ss/cmms/lookups';
 import { BaseEntityService } from '@ss/common/api-base-entity';
 import { AssetPmService } from '../services/asset-pm.service';
 import { CMMSAssetTriggerService } from '@ss/cmms/asset-triggers';
-import { TranslatePipe } from '@ss/common/ui-lang';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-cmms-asset-detail',
     standalone: true,
-    imports: [CommonModule, DatePickerComponent, FormsModule, MatButtonModule, MatExpansionModule, MatFormFieldModule, MatInputModule, MatOptionModule, MatSelectModule, MatTableModule, MatTooltipModule,  ReactiveFormsModule, RouterOutlet, MaterialModule, UiAutoCompleteComponent, TranslatePipe],
+    imports: [CommonModule, DatePickerComponent, FormsModule, MatButtonModule, MatExpansionModule, MatFormFieldModule, MatInputModule, MatOptionModule, MatSelectModule, MatTableModule, MatTooltipModule,  ReactiveFormsModule, RouterOutlet, MaterialModule, UiAutoCompleteComponent, TranslatePipe, TranslateDirective],
     templateUrl: './cmms-asset-detail.component.html',
     styleUrls: ['./cmms-asset-detail.component.scss'],
 })
@@ -221,6 +221,13 @@ export class CmmsAssetDetailComponent extends BaseEntityDetailComponent<Asset> i
                 this.onOfficeChange(res);
                 this.form.controls['office']?.setValue(res?.id);
             });
+    }
+
+    openReception() {
+        const id = this.form.get('receptionId').value || 0;
+        if (id > 0) {
+            this.router.navigate(['../../asset-receptions', id], {relativeTo: this.route}).then();
+        }
     }
 
     override loadEntity(id: number): Observable<Asset> {

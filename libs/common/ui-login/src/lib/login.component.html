@@ -4,27 +4,38 @@
     <div class="container">
         <div class="screen">
             <div class="screen-content">
-                <form class="login" novalidate [formGroup]="form">
+                @if (cSpace()) {
+                    <div class="cspace__div" translate>
+                        <img src="./assets/img/gica.jpg" width="80px">
+                        <div>
+                            <div class="cspace__title" translate>SCH_CSPACE</div>
+                            <div class="cspace__company" translate>{{ cSpace() }}</div>
+                        </div>
+                    </div>
+                }
+
+                <form class="login" [class]="cSpace() ? 'padding_20' : 'padding_120'" novalidate [formGroup]="form">
                     <div class="login-field">
                         <i class="login-icon fas fa-user"></i>
-                        <input type="text" class="login-input" [placeholder]="'COMMON_USERNAME' | translate" formControlName="user">
+                        <input type="text" class="login-input"  autocomplete="username" [placeholder]="'COMMON_USERNAME' | translate"
+                               formControlName="user" min="3">
                     </div>
                     <div class="login-field">
                         <i class="login-icon fas fa-lock"></i>
-                        <input type="password" class="login-input" [placeholder]="'COMMON_PASSWORD' | translate" formControlName="pass">
+                        <input type="password" class="login-input" autocomplete="current-password" [placeholder]="'COMMON_PASSWORD' | translate"
+                               formControlName="pass">
                     </div>
 
-                    <div class="remember-me">
-                        <input type="checkbox" id="checkbox1" formControlName="keep">
-                        <label for="checkbox1" translate>COMMON_KEEP_ME_SIGNED</label>
-                    </div>
+                    <!--                    <div class="remember-me">-->
+                    <!--                        <input type="checkbox" id="checkbox1" formControlName="keep">-->
+                    <!--                        <label for="checkbox1" translate>COMMON_KEEP_ME_SIGNED</label>-->
+                    <!--                    </div>-->
 
-                    <button class="button login-submit" (click)="onSubmit()">
+                    <button class="button login-submit" (click)="onSubmit()" [disabled]="multiCompany() && !cSpace()">
                         <span class="button-text" translate>COMMON_LOGIN</span>
                         <i class="button-icon fas fa-chevron-right"></i>
                     </button>
                 </form>
-
                 <div>
                     <div class="error-message">
                         @if (loginSrv.connectionError) {
@@ -44,6 +55,9 @@
                 <div class="social-login">
                     <div class="social-icons">
                         <ss-language-select style="margin: 4px"></ss-language-select>
+                        @if (multiCompany()) {
+                            <ss-backend-select style="margin: 4px" (onSelectedCompany)="onSelectedCompany($event)"></ss-backend-select>
+                        }
                     </div>
                 </div>
             </div>

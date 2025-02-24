@@ -223,6 +223,7 @@ export abstract class BaseTransactionLinesDetailComponent extends AbstractEntity
             charge3:      [b.charge3 || 0],
             charge4:      [b.charge4 || 0],
             costCenter:   [b.costCenter],
+            pprice:       [b.pprice],
         });
     }
     public get id() {
@@ -234,6 +235,10 @@ export abstract class BaseTransactionLinesDetailComponent extends AbstractEntity
     }
 
     save() {
+        if (this.saveButton.disabled) {
+            return;
+        }
+        this.saveButton.disabled = true;
         this.form.markAllAsTouched();
         if (!this.form.valid) {
             this.snackBarSrv.showFailureMessage('COMMON_FORM_NOT_VALID');
@@ -259,6 +264,7 @@ export abstract class BaseTransactionLinesDetailComponent extends AbstractEntity
                     this.snackBarSrv.showFailureMessage();
                     this.shellSrv.setLoading(false);
                     this.form?.reset(val);
+                    this.saveButton.disabled = false;
                     throw err;
                 }
             });

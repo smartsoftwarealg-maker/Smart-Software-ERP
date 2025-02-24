@@ -1,11 +1,18 @@
 <form [formGroup]="form">
     <mat-card class="ctrl__div">
         <mat-card-content>
-            <mat-form-field>
+            <mat-form-field class="default-100">
                 <mat-label translate>LTM_PERIOD</mat-label>
                 <ss-auto-complete matInput
                                   [model]="periodLookup"
                                   [formControl]="periodCtrl">
+                </ss-auto-complete>
+            </mat-form-field>
+            <mat-form-field class="default-100">
+                <mat-label translate>LTM_TEST</mat-label>
+                <ss-auto-complete matInput
+                                  [model]="matterTestLookup"
+                                  [formControl]="matterTestCtrl">
                 </ss-auto-complete>
             </mat-form-field>
 
@@ -52,40 +59,6 @@
                 </mat-form-field>
 
             }
-            <!--            @else if (testingMode() === RAW_MATERIAL_TEST) {-->
-            <!--                <mat-form-field class="default-100">-->
-            <!--                    <mat-label translate>LTM_SUPPLIER</mat-label>-->
-            <!--                    <ss-auto-complete matInput-->
-            <!--                                      [model]="supplierLookup"-->
-            <!--                                      formControlName="supplier">-->
-            <!--                    </ss-auto-complete>-->
-            <!--                </mat-form-field>-->
-            <!--            }-->
-            <!--            @else if (testingMode() === DEPOSIT_TEST) {-->
-            <!--                <mat-form-field class="default-100">-->
-            <!--                    <mat-label translate>LTM_BLEACHER</mat-label>-->
-            <!--                    <ss-auto-complete matInput-->
-            <!--                                      [model]="bleacherLookup"-->
-            <!--                                      formControlName="bleacher">-->
-            <!--                    </ss-auto-complete>-->
-            <!--                </mat-form-field>-->
-
-            <!--                <mat-form-field class="default-100">-->
-            <!--                    <mat-label translate>LTM_ZONE</mat-label>-->
-            <!--                    <ss-auto-complete matInput-->
-            <!--                                      [model]="zoneLookup"-->
-            <!--                                      formControlName="zone">-->
-            <!--                    </ss-auto-complete>-->
-            <!--                </mat-form-field>-->
-
-            <!--                <mat-form-field class="default-100">-->
-            <!--                    <mat-label translate>LTM_DEPOSIT</mat-label>-->
-            <!--                    <ss-auto-complete matInput-->
-            <!--                                      [model]="depositLookup"-->
-            <!--                                      formControlName="deposit">-->
-            <!--                    </ss-auto-complete>-->
-            <!--                </mat-form-field>-->
-            <!--            }-->
 
             <mat-form-field class="default-100">
                 <mat-label translate>LTM_PICKUP_POINT</mat-label>
@@ -101,14 +74,6 @@
             </mat-form-field>
 
             @if (testingMode() !== DEPOSIT_TEST && testingMode() !== RAW_MATERIAL_TEST) {
-                <!--                <mat-form-field class="default-100">-->
-                    <!--                    <mat-label translate>COMMON_EQUIPMENT</mat-label>-->
-                    <!--                    <ss-auto-complete matInput-->
-                    <!--                                      [model]="equipmentLookup"-->
-                    <!--                                      formControlName="equipment"-->
-                    <!--                                      required>-->
-                    <!--                    </ss-auto-complete>-->
-                    <!--                </mat-form-field>-->
 
                 <mat-form-field class="default-100">
                     <mat-label translate>LTM_SILO</mat-label>
@@ -129,7 +94,11 @@
                             <mat-hint><span translate>LTM_RANGE</span>: {{ limits[i][0] }}- {{ limits[i][1] }}
                             </mat-hint>
                             <mat-label translate>{{ labels[i] }}</mat-label>
-                            <input matInput formControlName="value" type="number" (click)="$event.target.select()">
+                            <input matInput
+                                   #input
+                                   formControlName="value"
+                                   type="number"
+                                   (click)="input.select()">
                             @if (tests.controls[i].errors || true) {
                                 <mat-error translate>BL_INVALID_DATA</mat-error>
                             }

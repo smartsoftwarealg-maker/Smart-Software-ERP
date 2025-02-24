@@ -51,7 +51,49 @@
                     }
 
                 ],
-                "styles": ["apps/cspace/src/styles.scss"],
+                "styles": [
+                    "apps/cspace/src/styles.scss",
+                    {
+                        "input": "apps/erp/src/theme-0.scss",
+                        "bundleName": "theme-0",
+                        "inject": false
+                    },
+                    {
+                        "input": "apps/erp/src/theme-1.scss",
+                        "bundleName": "theme-1",
+                        "inject": false
+                    },
+                    {
+                        "input": "apps/erp/src/theme-2.scss",
+                        "bundleName": "theme-2",
+                        "inject": false
+                    },
+                    {
+                        "input": "apps/erp/src/theme-3.scss",
+                        "bundleName": "theme-3",
+                        "inject": false
+                    },
+                    {
+                        "input": "apps/erp/src/theme-4.scss",
+                        "bundleName": "theme-4",
+                        "inject": false
+                    },
+                    {
+                        "input": "apps/erp/src/theme-5.scss",
+                        "bundleName": "theme-5",
+                        "inject": false
+                    },
+                    {
+                        "input": "apps/erp/src/theme-6.scss",
+                        "bundleName": "theme-6",
+                        "inject": false
+                    },
+                    {
+                        "input": "apps/erp/src/theme-7.scss",
+                        "bundleName": "theme-7",
+                        "inject": false
+                    }
+                ],
                 "stylePreprocessorOptions": {
                     "includePaths": ["node_modules"]
                 },
@@ -59,6 +101,27 @@
             },
             "configurations": {
                 "production": {
+                    "budgets": [
+                        {
+                            "type": "initial",
+                            "maximumWarning": "5000kb",
+                            "maximumError": "12mb"
+                        },
+                        {
+                            "type": "anyComponentStyle",
+                            "maximumWarning": "20kb",
+                            "maximumError": "40kb"
+                        }
+                    ],
+                    "fileReplacements": [
+                        {
+                            "replace": "apps/cspace/src/environments/environment.ts",
+                            "with": "apps/cspace/src/environments/environment.prod.ts"
+                        }
+                    ],
+                    "outputHashing": "all"
+                },
+                "schs": {
                     "budgets": [
                         {
                             "type": "initial",
@@ -74,7 +137,28 @@
                     "fileReplacements": [
                         {
                             "replace": "apps/cspace/src/environments/environment.ts",
-                            "with": "apps/cspace/src/environments/environment.prod.ts"
+                            "with": "apps/cspace/src/environments/environment.schs.ts"
+                        }
+                    ],
+                    "outputHashing": "all"
+                },
+                "ecde": {
+                    "budgets": [
+                        {
+                            "type": "initial",
+                            "maximumWarning": "5000kb",
+                            "maximumError": "10mb"
+                        },
+                        {
+                            "type": "anyComponentStyle",
+                            "maximumWarning": "20kb",
+                            "maximumError": "40kb"
+                        }
+                    ],
+                    "fileReplacements": [
+                        {
+                            "replace": "apps/cspace/src/environments/environment.ts",
+                            "with": "apps/cspace/src/environments/environment.ecde.ts"
                         }
                     ],
                     "outputHashing": "all"
@@ -94,10 +178,10 @@
             "executor": "@angular-devkit/build-angular:dev-server",
             "configurations": {
                 "production": {
-                    "browserTarget": "cspace:build:production"
+                    "buildTarget": "cspace:build:production"
                 },
                 "development": {
-                    "browserTarget": "cspace:build:development"
+                    "buildTarget": "cspace:build:development"
                 }
             },
             "defaultConfiguration": "development"
@@ -105,7 +189,7 @@
         "extract-i18n": {
             "executor": "@angular-devkit/build-angular:extract-i18n",
             "options": {
-                "browserTarget": "cspace:build"
+                "buildTarget": "cspace:build"
             }
         },
         "lint": {

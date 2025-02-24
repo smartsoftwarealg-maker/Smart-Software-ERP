@@ -18,7 +18,7 @@
 }
 
 .themes-menu {
-    width: 130px;
+    width: 260px;
     height: 130px;
 
     display: flex;
@@ -70,48 +70,76 @@
 
 // themes
 
-// ========================================================================================================
-// theme-0
-// ========================================================================================================
-.theme-0-bg {
-    background-color: #fafaf0;
+.theme-0 {
+    .theme-color-a {
+        background-color: #fafaf0;
+    }
+    .theme-color-b {
+        background-color: #ba005c;
+    }
 }
 
-.theme-0-bg-p {
-    background-color: #ba005c;
+.theme-1 {
+    .theme-color-a {
+        background-color: #fafaf0;
+    }
+    .theme-color-b {
+        background-color: #005cbb;
+    }
 }
 
-// ========================================================================================================
-// theme-1
-// ========================================================================================================
-.theme-1-bg {
-    background-color: #d7e3ff;
+.theme-2 {
+    .theme-color-a {
+        background-color: #fafaf0;
+    }
+    .theme-color-b {
+        background-color: #7d00fa;
+    }
 }
 
-.theme-1-bg-p {
-    background-color: #005cbb;
+.theme-3 {
+    .theme-color-a {
+        background-color: #fafaf0;
+    }
+    .theme-color-b {
+        background-color: #326b00;
+    }
 }
 
-// ========================================================================================================
-// theme-2
-// ========================================================================================================
-.theme-2-bg {
-    background-color: #212121;
+.theme-4 {
+    .theme-color-a {
+        background-color: #49454e;
+    }
+    .theme-color-b {
+        background-color: #d5baff;
+    }
 }
 
-.theme-2-bg-p {
-    background-color: #00dddd;
+.theme-5 {
+    .theme-color-a {
+        background-color: #49454e;
+    }
+    .theme-color-b {
+        background-color: #70e000;
+    }
 }
 
-// ========================================================================================================
-// theme-3
-// ========================================================================================================
-.theme-3-bg {
-    background-color: #212121;
+.theme-6 {
+    .theme-color-a {
+        background-color: #49454e;
+    }
+    .theme-color-b {
+        background-color: #00dddd;
+    }
 }
 
-.theme-3-bg-p {
-    background-color: #ffabf3;
+.theme-7 {
+    .theme-color-a {
+        background-color: #49454e;
+    }
+    .theme-color-b {
+        background-color: #ffabf3;
+    }
 }
 
 

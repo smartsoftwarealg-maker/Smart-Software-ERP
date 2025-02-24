@@ -65,9 +65,9 @@
     "CORRECTION_ACTION":  "Action de correction",
     "VARIANCE_CONTROL":   "Contrôle de variance",
     "VC":                 "VC",
-    "ACTION_NUMBER":      "N° d'action",
+    "ACTION_NUMBER":      "N° FNC",
     "REPORTED_BY":        "Signé par",
-    "TEST_NORMS":         "Normes de tests",
+    "TEST_NORMS":         "Consignes de marche",
     "DUE_DAY":           "Jour d'écheance",
     "TEST_DATE":          "Date du test",
     "PENDING_TESTS":      "Tests en attente",
@@ -77,8 +77,14 @@
     "ACTION_DATE":        "Date d'action",
     "VALIDATED_BY":       "Validé par",
     "VALIDATION_DATE":    "Date de validation",
-    "REPORT_DATE":        "Date de rapport",
+    "REPORT_DATE":        "Date de reception",
     "NON_VALIDATED":      "Non validé",
     "PRODUCT_TYPES":      "Types de produits",
-    "PRODUCT_LIBERATION":      "libération du produit"
+    "PRODUCT_LIBERATION":      "libération du produit",
+    "VARIANCE":           "Variance",
+    "DATA_MODE":          "Mode de données",
+    "DISTRIBUTION_MODE":  "Mode de distribution",
+    "QUALITY_CHIEF":      "Réalisé par",
+    "NON_CONFORMITY":     "Non-conformité",
+    "QUALITY_CERTIFICATE": "Certificat de qualité"
 }

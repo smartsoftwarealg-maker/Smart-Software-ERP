@@ -16,7 +16,7 @@ import { NgFor, NgIf } from '@angular/common';
 import { ImageInputComponent } from '@ss/common/ui-image-input';
 import { MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from '@angular/material/table';
 import { MatSort, MatSortHeader } from '@angular/material/sort';
-import { PaginationComponent } from '../../../../../common/ui-pagination/src/lib/pagination.component';
+import { PaginationComponent } from '@ss/common/ui-pagination';
 
 
 @Component({
@@ -57,6 +57,10 @@ export class EmployeeListComponent extends BaseEntityListComponent<Employee> imp
         return item.id;
     }
 
+    selectAndEdit(id: number) {
+        this.select(id);
+        this.edit();
+    }
     override ngOnInit(): void {
         this.addButton.visible = this.activePersonnel;
         super.ngOnInit();

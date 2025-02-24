@@ -17,6 +17,7 @@ import { MatCardModule } from "@angular/material/card";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from "@angular/material/input";
 import { PaginationComponent } from '@ss/common/ui-pagination';
+import { TranslateDirective } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-asset-reading-list',
@@ -32,7 +33,8 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
         MatInputModule,
         ReactiveFormsModule,
         PaginationComponent,
-        UiAutoCompleteComponent
+        UiAutoCompleteComponent,
+        TranslateDirective
     ]
 })
 export class AssetReadingListComponent extends BaseEntityListComponent<AssetReading> implements OnInit {

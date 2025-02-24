@@ -19,11 +19,12 @@ import {
 import { MatSort, MatSortHeader, Sort } from '@angular/material/sort';
 
 import { Source } from './document-sources.api';
+import { TranslateDirective } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-document-sources',
     standalone: true,
-    imports: [CommonModule,  MatCell, MatCellDef, MatColumnDef, MatHeaderCell, MatHeaderRow, MatHeaderRowDef, MatRow, MatRowDef, MatSort, MatSortHeader, MatTable,  MatHeaderCellDef],
+    imports: [CommonModule, MatCell, TranslateDirective, MatColumnDef, MatHeaderCell, MatHeaderRow, MatRow, MatSort, MatSortHeader, MatTable, MatHeaderRowDef, MatHeaderCellDef, MatRowDef, MatCellDef],
     templateUrl: './document-sources.component.html',
     styleUrl: './document-sources.component.scss',
 })

@@ -1,22 +1,21 @@
-import {Component, ViewChild} from '@angular/core';
+import { Component, inject, input, output, ViewChild } from '@angular/core';
 import { MatMenuTrigger, MatMenu, MatMenuItem } from '@angular/material/menu';
-import {LanguageService} from '@ss/common/api-common';
+import { CompanySelectorService, LanguageService, MaterialModule } from '@ss/common/api-common';
 import { MatIconButton } from '@angular/material/button';
-import { NgFor } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
+import { TranslatePipe } from './translate.pipe';
+import { DeviceDetectorService } from 'ngx-device-detector';
 
 @Component({
     selector: 'ss-language-select',
     templateUrl: './language-select.component.html',
     styleUrls: ['./language-select.component.scss'],
     standalone: true,
-    imports: [MatIconButton, MatMenuTrigger, MatMenu, NgFor, MatMenuItem]
+    imports: [MatIconButton, MatMenuTrigger, MatMenu, MatMenuItem, MaterialModule, ReactiveFormsModule]
 })
 export class LanguageSelectComponent {
-
-    @ViewChild('trigger', {static: false}) trigger: MatMenuTrigger;
-
-    constructor(public langSrv: LanguageService) {
-    }
+    langSrv = inject(LanguageService);
+    @ViewChild('trigger', { static: false }) trigger: MatMenuTrigger;
 
     selectLocale(language: string): void {
         this.langSrv.setLanguage(language).subscribe();
@@ -25,4 +24,5 @@ export class LanguageSelectComponent {
     public click(): void {
         this.trigger.toggleMenu();
     }
+
 }

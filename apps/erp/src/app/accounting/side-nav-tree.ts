@@ -17,8 +17,7 @@ import {
     ABS_ACC_REPORTS_URL,
     ABS_ACC_TRANSAC_ACCOUNT_URL,
     ABS_ACC_TRANSACTIONS_URL,
-    ABS_BALANCE_QUERIES_URL,
-    ABS_DASHBOARD_URL,
+    ABS_BALANCE_QUERIES_URL, ABS_CONSOLIDATION_CENTERS_URL,
     ABS_DEPRECIATION_GENERATION_URL,
     ABS_GENERATION_URL,
     ABS_POLICIES_URL,
@@ -156,6 +155,18 @@ export const accountingNavTree: SideNavNode = {
             icon: 'fa-solid fa-database',
             route: ABS_BALANCE_QUERIES_URL,
             accessRights: 'ACCTransaction'
+        },
+        {
+            name: 'ACC_BALANCE_QUERIES',
+            icon: 'fa-solid fa-database',
+            route: ABS_BALANCE_QUERIES_URL,
+            accessRights: 'ACCTransaction'
+        },
+        {
+            name: 'ACC_CONSOLIDATION_CENTERS',
+            icon: 'fa-solid fa-circles-overlap-3',
+            route: ABS_CONSOLIDATION_CENTERS_URL,
+            accessRights: 'ConsolidationCenter'
         },
         {
             name: 'COMMON_OPTIONS',

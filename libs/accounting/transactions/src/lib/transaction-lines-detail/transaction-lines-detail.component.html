@@ -1,6 +1,7 @@
 <mat-card>
     <mat-card-content>
-        <form *ngIf="form !== null" [formGroup]="form" novalidate>
+        @if (form !== null) {
+            <form [formGroup]="form" novalidate>
 
             <mat-form-field class="default-100">
                 <mat-label translate>LOGISTICS_ACCOUNT_NO</mat-label>
@@ -73,7 +74,7 @@
                 <input matInput formControlName="lineNumber" type="number" readonly>
             </mat-form-field>
         </form>
-
+        }
         <div class="ctrl default-100">
             <button mat-flat-button color="primary"  (click)="save()" [disabled]="!form?.valid || isCloded">
                 <i class="fas fa-save"></i>

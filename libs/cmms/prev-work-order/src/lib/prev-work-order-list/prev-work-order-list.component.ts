@@ -10,7 +10,7 @@ import { CMMSPrevWorkOrderService } from '../c-m-m-s-prev-work-order.service';
 import { MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from '@angular/material/table';
 import { MatSort, MatSortHeader } from '@angular/material/sort';
 import { TranslateDirective } from '@ss/common/ui-lang';
-import { PaginationComponent } from '../../../../../common/ui-pagination/src/lib/pagination.component';
+import { PaginationComponent } from '@ss/common/ui-pagination';
 import { DatePipe } from '@angular/common';
 import { TranslatePipe } from '@ss/common/ui-lang';
 
@@ -36,6 +36,7 @@ import { TranslatePipe } from '@ss/common/ui-lang';
         PaginationComponent,
         DatePipe,
         TranslatePipe,
+        TranslateDirective
     ],
 })
 export class PrevWorkOrderListComponent extends BaseEntityListComponent<Work> {

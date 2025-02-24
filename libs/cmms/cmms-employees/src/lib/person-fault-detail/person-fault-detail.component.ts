@@ -10,11 +10,12 @@ import { PersonFaultService } from '../services/person-fault.service';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { TranslateDirective } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-person-fault-detail',
     standalone: true,
-    imports: [CommonModule, FormsModule, MatButtonModule, MatCardModule, MatFormFieldModule, ReactiveFormsModule, UiAutoCompleteComponent],
+    imports: [CommonModule, FormsModule, MatButtonModule, MatCardModule, MatFormFieldModule, ReactiveFormsModule, UiAutoCompleteComponent, TranslateDirective],
     templateUrl: './person-fault-detail.component.html',
     styleUrls: ['./person-fault-detail.component.css'],
 })

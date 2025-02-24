@@ -13,9 +13,17 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgIf, DecimalPipe } from '@angular/common';
 import { MatMiniFabButton, MatIconButton } from '@angular/material/button';
 import { MatTooltip } from '@angular/material/tooltip';
-import { MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from '@angular/material/table';
-import { PaginationComponent } from '../../../../../common/ui-pagination/src/lib/pagination.component';
-import { DocInfoComponent } from '../../../../../logistics/ui-doc-info/src/lib/doc-info/doc-info.component';
+import {
+    MatTable,
+    MatColumnDef,
+    MatHeaderCell,
+    MatCell,
+    MatHeaderRow,
+    MatRow,
+    MatHeaderRowDef, MatRowDef, MatCellDef, MatHeaderCellDef
+} from '@angular/material/table';
+import { PaginationComponent } from '@ss/common/ui-pagination';
+import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
 import { TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
@@ -35,20 +43,20 @@ import { TranslatePipe } from '@ss/common/ui-lang';
         MatTooltip,
         MatTable,
         MatColumnDef,
-        MatHeaderCellDef,
         MatHeaderCell,
-        MatCellDef,
         MatCell,
         MatIconButton,
-        MatHeaderRowDef,
         MatHeaderRow,
-        MatRowDef,
         MatRow,
         PaginationComponent,
         DocInfoComponent,
         DecimalPipe,
         TranslatePipe,
-    ],
+        MatHeaderRowDef,
+        MatRowDef,
+        MatCellDef,
+        MatHeaderCellDef
+    ]
 })
 export class InvoiceLinesListComponent extends BaseTransactionLinesListComponent implements OnInit {
 

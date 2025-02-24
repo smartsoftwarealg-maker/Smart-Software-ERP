@@ -6,18 +6,11 @@ import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {  ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
-import { Lookup, LookupsService } from "@ss/common/api-lookup";
+import { LookupsService } from "@ss/common/api-lookup";
 import {switchMap, tap} from 'rxjs';
 import {
-    APP_ASSET,
     APP_DASHBOARD,
-    APP_HR,
-    APP_LTM,
-    APP_PAYROLL,
-    APP_PURCHASE,
-    APP_SALES, APP_SCHEDULED_SALES,
-    APP_STOCK,
-    APP_TREASURY, APPLICATIONS,
+    APPLICATIONS,
     getApplicationId,
     LanguageService, MaterialModule,
     PaginationModel,
@@ -25,7 +18,7 @@ import {
 } from '@ss/common/api-common';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import {AgentLookupModel, AgentService} from '@ss/logistics/api-agent';
-import {  Id } from '@ss/common/ui-auto-complete';
+import { Id, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { Chart, ChartConfiguration, ChartItem, registerables } from "chart.js";
 import { debounceTime, distinctUntilChanged } from "rxjs/operators";
 import { CommonModule } from '@angular/common';
@@ -48,7 +41,8 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         ReactiveFormsModule,
         DatePickerComponent,
 
-        PaginationComponent
+        PaginationComponent,
+        UiAutoCompleteComponent
     ]
 })
 export class DashboardComponent extends BaseEntityListComponent<Dashboard> {
@@ -149,12 +143,12 @@ export class DashboardComponent extends BaseEntityListComponent<Dashboard> {
                         this.dashboardData = res.body;
                         this.detailPagination.elementCount = res.itemCount;
                         this.chartComponent?.destroy();
-                        if (this.dashboardData.length < 14 && this.dashboardData.length > 0) {
+                        if (this.dashboardData.length < 50 && this.dashboardData.length > 0) {
                             const ctx = <ChartItem>document.getElementById('chart');
                             this.chartComponent = new Chart(ctx, this.chartData());
                         }
                         this.shellSrv.setLoading(false);
-                        this.smallData.set(this.dashboardData.length < 14 && this.dashboardData.length > 0);
+                        this.smallData.set(this.dashboardData.length < 50 && this.dashboardData.length > 0);
                         this.validData.set(this.dashboardData.length > 0);
                     },
                     error: err => {
@@ -231,7 +225,7 @@ export class DashboardComponent extends BaseEntityListComponent<Dashboard> {
                 datasets: [
                     {
                         label: this.selectedRow?.description || '',
-                        data: this.dashboardData.map(a => this.langSrv.parseNumber(a[1])),
+                        data: this.dashboardData.map(a => this.asNumber(a[1])),
                         backgroundColor: ['blue'],
                         borderColor: ['blue']
                     },
@@ -265,6 +259,14 @@ export class DashboardComponent extends BaseEntityListComponent<Dashboard> {
         };
     }
 
+    asNumber(s: string|number): number {
+        if (typeof s === 'string') {
+            const regEx = new RegExp(/[^\d.]/g);
+            return +(s.indexOf(".") > 0? s : s.replaceAll(',', '.')).replaceAll(regEx, '');
+        } else {
+            return s;
+        }
+    }
     public getPage() {
         return this.dashboardSrv.getCenterPage(this.pagination, this.filter);
     }

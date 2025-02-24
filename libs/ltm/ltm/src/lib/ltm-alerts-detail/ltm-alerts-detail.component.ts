@@ -9,7 +9,6 @@ import { ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup } from '@angu
 import { DefaultAutoCompleteModel, UiAutoCompleteComponent, UserLookup } from '@ss/common/ui-auto-complete';
 import { LTMAbnormalTest } from '@ltm/ltm-api';
 import { LtmAbnormalTestService } from '@ltm/ltm-api';
-import { LtmCorrectionActionService } from '@ltm/ltm-api';
 import { UserListService } from '@ss/common/api-users';
 import { LtmNormService } from '@ltm/ltm-api';
 import { TranslateDirective } from '@ss/common/ui-lang';
@@ -30,14 +29,15 @@ import { DatePickerComponent } from '@ss/common/ui-datepicker';
     ]
 })
 export class LtmAlertsDetailComponent extends BaseEntityDetailComponent<LTMAbnormalTest> {
-    #actionSrv = inject(LtmCorrectionActionService);
+    // #actionSrv = inject(LtmCorrectionActionService);
     #userSrv  = inject(UserListService);
     #normSrv = inject(LtmNormService);
 
-    actionLookup = new DefaultAutoCompleteModel(this.#actionSrv);
-    userLookup   = new UserLookup(this.#userSrv);
+    // actionLookup = new DefaultAutoCompleteModel(this.#actionSrv);
     normLookup = new DefaultAutoCompleteModel(this.#normSrv);
+    userLookup   = new UserLookup(this.#userSrv);
     responsibleLookup = new UserLookup(this.#userSrv);
+    qualityChiefLookup  = new UserLookup(this.#userSrv);
 
     constructor(
         public override entitySrv: LtmAbnormalTestService,
@@ -64,6 +64,7 @@ export class LtmAlertsDetailComponent extends BaseEntityDetailComponent<LTMAbnor
             reportedBy:       [{ value: e.reportedBy, disabled: false }],
             normId:           [{ value: e.normId,  disabled: false }],
             responsibleId:    [{ value: e.responsibleId, disabled: false }],
+            qualityChief:     [{ value: e.qualityChief, disabled: false }],
             actionDate:       [{ value: e.actionDate, disabled: false }],
             validationDate:   [{ value: e.validationDate, disabled: false }],
             reportDate:       [{ value: e.reportDate, disabled: false }],

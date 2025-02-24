@@ -12,7 +12,7 @@
     <form novalidate [formGroup]="form" *ngIf="form">
 
         <mat-form-field class="default-100">
-            <mat-label translate>LOGISTICS_ARTICLE</mat-label>
+            <mat-label translate>COMMON_ARTICLE</mat-label>
             <ss-auto-complete matInput
                               [model]="articleLookup"
                               formControlName="articleId"
@@ -25,6 +25,11 @@
         <mat-form-field class="default-50 sm-100">
             <mat-label translate>COMMON_QTY</mat-label>
             <input matInput formControlName="qty" type="number" required>
+        </mat-form-field>
+
+        <mat-form-field class="default-50 sm-100">
+            <mat-label translate>LOGISTICS_PRICE</mat-label>
+            <input matInput formControlName="price" type="number" required>
         </mat-form-field>
 
     </form>

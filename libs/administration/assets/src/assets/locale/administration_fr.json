@@ -46,8 +46,8 @@
     "EDIT_SMTP": "Edit SMTP",
     "SELECT_APP": "Sélectionnez une application",
     "FILENAME": "Nom de fichier",
-    "EDIT_REPORT_CATALOG": "Modifier le catalogue de rapports",
-    "REPORT_CATALOG": "Catalogue de rapports",
+    "EDIT_REPORT_CATALOG": "Modifier le catalogue de etats",
+    "REPORT_CATALOG": "Catalogue des etats",
     "COMPANIES": "Entreprises",
     "CENTERS": "Centres",
     "BANKS": "Banques",
@@ -80,5 +80,8 @@
     "WORKFLOW_INBOX":      "Boîte de réception",
     "USER_RECEIVED_MESSAGES": "Messages reçus",
     "POST_FINAL":             "Après la finale",
-    "WORKFLOW_CHART": "Graphique"
+    "WORKFLOW_CHART": "Graphique",
+    "SIGNATURE": "Signature",
+    "SIGNER": "Signataire",
+    "HEADQUARTER": "Siege"
 }

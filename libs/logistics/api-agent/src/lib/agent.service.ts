@@ -5,11 +5,12 @@ import {Agent, AGENT_URL} from './agent-api';
 import {Observable, of} from 'rxjs';
 import {HttpParams} from '@angular/common/http';
 import {Accounting, Debt, Payment} from '@ss/logistics/api-common';
+import { BaseAgentClass } from './base-agent.class';
 
 @Injectable({
     providedIn: 'root'
 })
-export class AgentService extends BaseEntityExtendedService<Agent> {
+export class AgentService extends BaseAgentClass {
 
     constructor(protected override httpSrv: HttpService) {
         super(httpSrv, AGENT_URL);
@@ -52,4 +53,10 @@ export class AgentService extends BaseEntityExtendedService<Agent> {
     cancelPayment(payId: number): Observable<{ count: number }> {
         return this.httpSrv.remove(`/payments/compensations/${payId}`);
     }
- }
+
+    getNextCode(prefix: string, agentType: number): Observable<{ code: string }> {
+        const params = new HttpParams().set('prefix', prefix).set('agentType', agentType.toString());
+        return this.httpSrv.get<{ code: string }>(`/agents/next-code`, params);
+    }
+
+}

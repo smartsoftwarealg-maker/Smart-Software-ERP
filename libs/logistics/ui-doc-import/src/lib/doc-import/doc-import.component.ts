@@ -8,15 +8,15 @@ import {switchMap} from 'rxjs/operators';
 import { Subscription } from 'rxjs';
 import { PaginationModel } from '@ss/common/api-common';
 import { MatFormField, MatLabel } from "@angular/material/form-field";
-import { TranslateDirective } from "../../../../../common/ui-lang/src/lib/translate.directive";
+import { TranslateDirective } from '@ss/common/ui-lang';
 import { MatSelect } from "@angular/material/select";
 import { NgFor, DatePipe } from "@angular/common";
 import { MatOption } from "@angular/material/core";
 import { MatInput } from "@angular/material/input";
 import { MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from "@angular/material/table";
 import { MatButton } from "@angular/material/button";
-import { PaginationComponent } from "../../../../../common/ui-pagination/src/lib/pagination.component";
-import { TranslatePipe } from "../../../../../common/ui-lang/src/lib/translate.pipe";
+import { PaginationComponent } from '@ss/common/ui-pagination';
+import { TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-doc-import',

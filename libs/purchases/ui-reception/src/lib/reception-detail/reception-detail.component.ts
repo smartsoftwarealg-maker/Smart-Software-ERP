@@ -1,10 +1,15 @@
-import { Component, OnInit } from '@angular/core';
-import { ShellService, SnackBarService } from '@ss/common/ui-shell';
+import { Component, inject, OnInit } from '@angular/core';
+import { KeepOnToolbar, ShellService, SnackBarService, ToolbarButton } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router, RouterOutlet } from '@angular/router';
-import { ReactiveFormsModule, UntypedFormBuilder } from '@angular/forms';
+import { FormGroup, ReactiveFormsModule, UntypedFormBuilder } from '@angular/forms';
 import { Lookup } from '@ss/common/api-lookup';
 import {  ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
-import { BaseTransactionDetailComponent, TransactionLinesService } from '@ss/logistics/api-transaction';
+import {
+    BaseTransactionDetailComponent,
+    BaseTransactionLinesListComponent,
+    Transaction,
+    TransactionLinesService
+} from '@ss/logistics/api-transaction';
 import { ReceptionService } from '@ss/purchases/api-reception';
 import { LoginService, MaterialModule } from '@ss/common/api-common';
 import { MatDialog } from '@angular/material/dialog';
@@ -18,6 +23,8 @@ import { UiStockInfoComponent } from '@ss/logistics/ui-stock-info';
 import { ReceptionLinesService } from '../reception-lines.service';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
+import { ExtraCostService } from '@ss/purchases/extra-costs';
+import { of, switchMap } from 'rxjs';
 
 
 @Component({
@@ -36,7 +43,17 @@ import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
     ]
 })
 export class ReceptionDetailComponent extends BaseTransactionDetailComponent implements OnInit {
+    private URLs = ['./lines-list', './costs-list'];
+    private costSrv = inject(ExtraCostService);
 
+    private importContractBtn: ToolbarButton = {
+        disabled: false,
+        icon: 'fa-solid fa-file-arrow-up',
+        keepOnToolbar: KeepOnToolbar.DYNAMIC,
+        label: 'LOGISTICS_IMPORT_CONTRACT',
+        visible: true,
+        click: () => this.importContract(),
+    };
 
     constructor(
         public override entitySrv: ReceptionService,
@@ -81,5 +98,31 @@ export class ReceptionDetailComponent extends BaseTransactionDetailComponent imp
 
     protected importedDocuments(): Lookup[] {
         return [{ id: 2, description: 'LOGISTICS_PURCHASE_ORDER' }];
+    }
+
+    override finishLoading(e: Transaction) {
+        this.costSrv.setParentId(e?.id);
+        super.finishLoading(e);
+    }
+
+    onTabChange(idx: number) {
+        if (this.saveButton.visible) {
+            this.router.navigate([this.URLs[idx]], { relativeTo: this.route }).then();
+        }
+    }
+
+    private importContract() {
+        if (!this.importContractBtn.disabled && this.form.controls['project'].value) {
+            this.entitySrv
+                .consumeContract(this.id)
+                .pipe(switchMap(() =>
+                    this.outlet?.component instanceof BaseTransactionLinesListComponent?
+                        this.outlet?.component.loadDetailLines() : of(0)))
+                .subscribe(() => {
+                    this.executionRef++;
+                    this.shellSrv.setLoading(false);
+                    this.snackBarSrv.showSuccessMessage();
+                });
+        }
     }
 }

@@ -46,10 +46,7 @@ export class PurchaseContractDetailComponent extends BaseEntityDetailComponent<P
     private loginSrv = inject(LoginService);
     private supplierSrv = inject(SupplierService);
     private typeSrv = inject(ProjectTypeService);
-    private motiveSrv = inject(ProjectMotiveService);
     private awardSrv = inject(AwardProcedureService);
-    private articleSrv = inject(ArticleService);
-    private contractArticleSrv = inject(ContractArticleService);
     shownPanel: string = null;
     supplierLookupModel = new DefaultAutoCompleteModel(this.supplierSrv, 'id', 'denomination');
     typeLookup    = new DefaultAutoCompleteModel(this.typeSrv);
@@ -67,11 +64,14 @@ export class PurchaseContractDetailComponent extends BaseEntityDetailComponent<P
         public override confirmationSrv: ConfirmationDialogService,
         public lookupsSrv: LookupsService) {
         super(entitySrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'COMMON_CONTRACTS');
+        this.entitySrv.setParentId(this.entitySrv.getParentId() || 0);
+        this.supplierLookupModel.onObjectSelected = e => this.entitySrv.setParentId(e.id || 0);
         // this.articleLookup.onObjectSelected = (a) => this.onArticle(a);
     }
 
     public override setupForm(b: Project) {
         const today = new Date();
+        this.entitySrv.setParentId(b.customer || 0);
         return this.formBuilder.group({
             id:             [b.id],
             centerId:       [b.centerId || this.loginSrv.appCtx.center, Validators.required],
@@ -110,14 +110,6 @@ export class PurchaseContractDetailComponent extends BaseEntityDetailComponent<P
         this.shownPanel = panel;
         const next = '/app/contracts/purchase-contracts/' + this.id + '/' + panel;
         this.router.navigate([next]).then();
-    }
-
-    override ngOnInit() {
-        if (this.entitySrv.getParentId()) {
-            super.ngOnInit();
-        } else {
-            this.router.navigate(['../'], { relativeTo: this.route }).then();
-        }
     }
 
 }

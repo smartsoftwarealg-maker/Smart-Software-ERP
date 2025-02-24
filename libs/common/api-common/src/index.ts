@@ -23,3 +23,4 @@ export * from './lib/dec.service';
 export * from './lib/main-page.service';
 export * from './lib/base-lookup.service';
 export * from './lib/customer-can-activate.service';
+export * from './lib/company-selector.service';

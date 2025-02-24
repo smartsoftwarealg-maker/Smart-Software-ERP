@@ -47,6 +47,7 @@ import {
     ATTENDANCE_APP_URL,
     ARCH_VIEWER_URL,
     CMMS_APP_URL,
+    CRM_APP_URL,
     PARK_APP_URL,
     SERVICE_SALES, COSTING_APP_URL, GICA_APP_URL, SOCIAL_APP_URL
 } from '../app/common';
@@ -60,13 +61,14 @@ import {attendanceNavTree} from '../app/attendance/side-nav-tree';
 import { aaNavTree } from '../app/archive-viewer/side-nav-tree';
 import { parkNavTree } from '../app/park/side-nav-tree';
 import { cmmsNavTree } from '../app/cmms/side-nav-tree';
+import { crmNavTree } from '../app/crm/side-nav-tree';
 import { ssalesNavTree } from '../app/service-sales/side-nav-tree';
 import { costingNavTree } from '../app/costing/side-nav-tree';
 import { gicaNavTree } from '../app/gica/side-nav-tree';
 import { socialNavTree } from '../app/social/side-nav-tree';
 
 export const environment = {
-    production: false,
+    production: false
 };
 
 export const navBar = [
@@ -99,6 +101,7 @@ export const navBar = [
     aaNavTree,
     parkNavTree,
     cmmsNavTree,
+    crmNavTree,
     // foodNavTree,
     costingNavTree,
     socialNavTree
@@ -160,6 +163,10 @@ export const appRoutes: Routes =  [
     {
         path: CMMS_APP_URL,
         loadChildren: () => import('../app/cmms/cmms.module').then(m => m.CmmsModule)
+    },
+    {
+        path: CRM_APP_URL,
+        loadChildren: () => import('../app/crm/crm.module').then(m => m.CrmModule)
     },
     {
         path: ATTENDANCE_APP_URL,
@@ -269,7 +276,7 @@ export const APPLICATION_LIST = [
     'ACCOUNTING', 'ADMINISTRATION', 'ASSETS', 'DASHBOARD-APP', 'FINANCE', 'HRMASTER',
     'STOCK', 'LOGISTICS', 'LOGISTICS-ADMINISTRATION', 'ORGANIZATION', 'PAYMENTS',
     'PAYROLL', 'ATTENDANCE', 'PURCHASES', 'SALES', 'WEBARCHIVE', 'TREASURY', 'LTM',
-    'WORKFLOW', 'SOCIAL', 'SCHEDULED_SALES'];
+    'WORKFLOW', 'SOCIAL', 'SCHEDULED_SALES', 'PROJECTS'];
 /*
  * For easier debugging in development mode, you can import the following file
  * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.

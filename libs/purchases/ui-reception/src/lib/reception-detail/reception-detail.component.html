@@ -56,23 +56,27 @@
                 </mat-form-field>
 
                 <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>COMMON_CONTRACT</mat-label>
+                    <ss-auto-complete matInput
+                                      [model]="purchaseProjectLookup"
+                                      formControlName="project">
+                    </ss-auto-complete>
+                </mat-form-field>
+
+                <mat-form-field class="default-50 sm-100">
                     <mat-label translate>STOCK_DEALER</mat-label>
                     <ss-auto-complete matInput
                                       [required]="true"
                                       [model]="dealerAutoCompleteModel"
                                       formControlName="dealer"></ss-auto-complete>
-                    <mat-error
-                        *ngIf="form.controls['dealer'].hasError('required')" translate>COMMON_FIELD_REQUIRED
-                    </mat-error>
-                    <mat-error
-                        *ngIf="form.controls['dealer'].hasError('validOption')" translate>COMMON_NO_MATCH
-                    </mat-error>
-
+                    @if (form.controls['dealer'].hasError('required')) {
+                        <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+                    }
                 </mat-form-field>
 
                 <mat-form-field id="altAgent" class="default-50 sm-100">
                     <mat-label translate>COMMON_MEMO</mat-label>
-                    <textarea matInput formControlName="altAgent" rows="2"></textarea>
+                    <textarea matInput formControlName="altAgent" rows="1"></textarea>
                 </mat-form-field>
 
                 <mat-tab-group>
@@ -168,6 +172,11 @@
                             <input matInput formControlName="plateNumber" type="text">
                         </mat-form-field>
 
+                        <mat-form-field class="default-50 sm-100">
+                            <mat-label translate>LOGISTICS_PLATE_NUMBER2</mat-label>
+                            <input matInput formControlName="plateNumber2" type="text">
+                        </mat-form-field>
+
                     </mat-tab>
                 </mat-tab-group>
             </form>
@@ -175,7 +184,20 @@
     </mat-card-content>
 </mat-card>
 
+<mat-tab-group class="detail_div" (selectedIndexChange)="onTabChange($event)">
+    <mat-tab [disabled]="!saveButton.visible">
+        <ng-template mat-tab-label>
+            <span translate>COMMON_DETAIL</span>
+        </ng-template>
+    </mat-tab>
+    <mat-tab [disabled]="!saveButton.visible">
+        <ng-template mat-tab-label>
+            <span translate>LOGISTICS_EXTRA_COSTS</span>
+        </ng-template>
+    </mat-tab>
+</mat-tab-group>
+
 <!--<ss-reception-lines-list class="detail-list" [isEditable]="isEditable" *ngIf="!isLoading && formId" [parentExecutionRef]="executionRef"></ss-reception-lines-list>-->
 @if (formId) {
-   <router-outlet></router-outlet>
+    <router-outlet></router-outlet>
 }

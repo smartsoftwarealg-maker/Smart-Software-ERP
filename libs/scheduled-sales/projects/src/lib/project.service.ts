@@ -24,5 +24,4 @@ export class ProjectService extends BaseEntityService<SSProject> {
     getQuantities(id: number): Observable<Quantities> {
         return this.httpSrv.get<Quantities>(`/ssales${SS_PROJECT_URL}/${id}/quantities`);
     }
-
 }

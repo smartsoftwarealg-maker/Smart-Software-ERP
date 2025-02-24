@@ -17,7 +17,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
 import { DatePickerComponent } from '@ss/common/ui-datepicker';
 import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { MatInput } from '@angular/material/input';
-import { ExcDocInfoComponent } from '../../../../ui-info/src/lib/exc-doc-info.component';
+import { ExcDocInfoComponent } from '@ss/exchange/ui-info';
 
 @Component({
     selector: 'ss-commission-detail',

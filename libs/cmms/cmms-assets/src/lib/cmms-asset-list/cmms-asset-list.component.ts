@@ -11,6 +11,7 @@ import { CmmsAssetService } from '../services/cmms-asset.service';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { PaginationComponent } from '@ss/common/ui-pagination';
+import { TranslateDirective } from '@ss/common/ui-lang';
 
 
 @Component({
@@ -18,7 +19,8 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
         CommonModule,
         MatSortModule,
         MatTableModule,
-        PaginationComponent
+        PaginationComponent,
+        TranslateDirective
     ],
     selector: 'ss-cmms-asset-list',
     standalone: true,

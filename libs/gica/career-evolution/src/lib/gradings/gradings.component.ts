@@ -12,13 +12,10 @@ import {
 import { MatSort, MatSortHeader, Sort } from '@angular/material/sort';
 
 import { FormArray, FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { MatCard, MatCardContent } from '@angular/material/card';
-import { MatError, MatFormField, MatHint, MatLabel } from '@angular/material/form-field';
+import { MatFormField, MatLabel } from '@angular/material/form-field';
 import { MatInput } from '@angular/material/input';
-import { MatButton } from '@angular/material/button';
 import { KeepOnToolbar, ShellService, SnackBarService, ToolbarButton } from '@ss/common/ui-shell';
 import { ActivatedRoute } from '@angular/router';
-import { MatProgressSpinner } from '@angular/material/progress-spinner';
 import {
     Employee, EmployeeService,
     IEmployee,
@@ -34,6 +31,7 @@ import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { ImageInputComponent, ImageModel } from '@ss/common/ui-image-input';
 import { PaginationComponent } from '@ss/common/ui-pagination';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
     selector: 'ss-gica-gradings',
@@ -87,7 +85,6 @@ export class GradingsComponent implements OnInit {
     };
 
     private httpSrv = inject(HttpService);
-    private CUR_YEAR = new Date().getFullYear() - 1;
     private loginSrv = inject(LoginService);
     private employeeSrv = inject(EmployeeService);
     private subordinateSrv = inject(SubordinateService);
@@ -106,9 +103,10 @@ export class GradingsComponent implements OnInit {
     imageModel = new ImageModel(this.httpSrv);
 
     subordinateLookup  = new PersonAutocompleteClass(this.subordinateSrv);
-    employeeCtrl = new FormControl<number>(0);
-    yearCtrl = new FormControl<number>({ value: this.CUR_YEAR, disabled: true });
-    gradeCtrl = new FormControl<number>(1 );
+    // employeeCtrl = new FormControl<number>(0);
+    readonly currYear = new Date().getFullYear() - 1;
+    yearCtrl = new FormControl<number>({ value: this.currYear, disabled: false }, [Validators.min(this.currYear - 3)]);
+    gradeCtrl = new FormControl<number>(1);
     searchCtrl = new FormControl<string>('');
 
     form = this.fb.group({
@@ -116,6 +114,7 @@ export class GradingsComponent implements OnInit {
         grades: this.fb.array([])
     });
     labels = [''];
+    maxima = [0];
     displayedColumns = ['id', 'lastName', 'firstName'];
     paginator = PaginationModel.newInstance({page: 1, pageSize: 10, elementCount: 0});
     data$: Observable<Employee[]> = of([]);
@@ -123,6 +122,12 @@ export class GradingsComponent implements OnInit {
 
     ngOnInit(): void {
         this.imageModel.readOnly = true;
+        this.yearCtrl
+            .valueChanges
+            .pipe(debounceTime(300),
+                distinctUntilChanged(),
+                takeUntilDestroyed(this.destroyRef))
+            .subscribe(res => this.refresh(this.emp()));
         this.destroyRef.onDestroy(() => this.subscriptions.forEach(s => s.unsubscribe()));
         this.subordinateLookup.onObjectSelected = e => this.refresh(e);
         this.shellSrv.setTitle('PAYROLL_GICA_GRADING');
@@ -178,17 +183,19 @@ export class GradingsComponent implements OnInit {
             );
         this.refresh({id: 0, firstName: null, lastName: null});
     }
+
     get grades(): FormArray {
         return this.form.controls['grades'] as FormArray;
     }
 
     private refresh(e: IEmployee) {
-        this.imageModel.setImageUrl(this.employeeSrv.getPhotoUrl(e.id), false);
         this.emp.set(e);
+        this.imageModel.setImageUrl(this.employeeSrv.getPhotoUrl(e?.id||0), false);
         this.grades.clear();
         this.labels = [];
+        this.maxima = [];
         this.gradingSrv
-            .get(this.CUR_YEAR, e?.id, this.gradeCtrl.value)
+            .get(this.yearCtrl.value, e?.id||0, this.gradeCtrl.value)
             .subscribe(res => {
                 this.executionIndex = this.gradeCtrl.value;
                 res.forEach(g => {
@@ -196,16 +203,17 @@ export class GradingsComponent implements OnInit {
                     const temp = this.fb.group({
                         id:          [g.id],
                         centerId:    [g.centerId || this.loginSrv.appCtx.center],
-                        year:        [this.CUR_YEAR],
-                        employeeId:  [e?.id],
+                        year:        [this.yearCtrl.value, [Validators.min(this.currYear - 5), Validators.max(this.currYear)]],
+                        employeeId:  [e?.id||0],
                         criterion:   [g.criterion],
                         description: [g.description],
-                        grade1 :     [{ value: g.grade1, disabled: !this.gradingSrv.gradingMode || this.gradeCtrl.value !== 1}],
+                        grade1 :     [{ value: g.grade1, disabled: !this.gradingSrv.gradingMode || this.gradeCtrl.value !== 1}  ],
                         grade2:      [{ value: idx >= 2? g.grade2: 0, disabled: !this.gradingSrv.gradingMode || this.gradeCtrl.value !== 2}],
                         finalGrade:  [{ value: idx >= 3? g.finalGrade : 0, disabled: this.gradeCtrl.value !== 3}],
                         userId:      [this.loginSrv.appCtx.id]
                     });
                     this.grades.push(temp);
+                    this.maxima.push(g.maxGrade||4);
                     this.labels.push(g.description);
                 });
                 this.saveButton.disabled = res.length == 0;
@@ -228,6 +236,7 @@ export class GradingsComponent implements OnInit {
     }
 
     selectEmployee(emp: Employee) {
+        this.emp.set(emp);
         this.selectedId = emp?.id | 0;
         this.refresh(emp);
     }

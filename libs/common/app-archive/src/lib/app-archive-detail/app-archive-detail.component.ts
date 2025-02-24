@@ -26,9 +26,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         MaterialModule,
         TranslateDirective,
         ReactiveFormsModule,
-
-
-       
+        TranslateDirective,
         UiAutoCompleteComponent
     ]
 })

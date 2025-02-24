@@ -17,5 +17,7 @@ export interface BudgetAccount {
     accountNo: string;
     balanceType: number;
     balanceSign: number;
-    description?: string;
+    from?: number;
+    to?: number;
+    accountDescription?: string;
 }

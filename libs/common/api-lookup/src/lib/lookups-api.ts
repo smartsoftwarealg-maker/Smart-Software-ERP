@@ -53,6 +53,7 @@ export const PROJECT_MOTIVE_URL = '/lookups/project_motives';
 export const AWARD_PROCEDURE_URL = '/lookups/award_procedures';
 export const PAY_MODE_URL = '/lookups/paymodes';
 export const ACTIVITY_URL = '/lookups/activities';
+export const DELIVERY_TIME_URL = '/lookups/delivery_times';
 export const DISCOUNT_URL = '/lookups/discounts';
 export const SECTOR_URL = '/lookups/sectors';
 export const WORK_MASTER_URL = '/lookups/master_works';

@@ -38,6 +38,7 @@ import { DatePickerComponent } from '@ss/common/ui-datepicker';
         MatError,
         UiAutoCompleteComponent,
         DatePickerComponent,
+        TranslateDirective
     ],
 })
 export class PMDetailComponent extends BaseEntityDetailComponent<PM> {

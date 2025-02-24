@@ -18,6 +18,7 @@ import { DatePickerComponent } from '@ss/common/ui-datepicker';
 
 import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
+import { PaginationComponent } from '@ss/common/ui-pagination';
 
 @Component({
     imports: [
@@ -29,9 +30,8 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         ReactiveFormsModule,
 
 
-       
-
-        DocInfoComponent
+        DocInfoComponent,
+        PaginationComponent
     ],
     selector: 'ss-parts-request-line-list',
     standalone: true,

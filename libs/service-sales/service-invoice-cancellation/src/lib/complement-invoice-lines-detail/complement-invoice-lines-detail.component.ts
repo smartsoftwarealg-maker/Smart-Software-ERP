@@ -11,7 +11,7 @@ import { ReactiveFormsModule, UntypedFormGroup } from '@angular/forms';
 
 import { RouterModule } from '@angular/router';
 import { DatePickerComponent } from '@ss/common/ui-datepicker';
-import {  DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
+import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 
 import { ServiceArticleService } from '@ss/service-sales/service-articles';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
@@ -27,9 +27,9 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         TranslateDirective,
         ReactiveFormsModule,
         RouterModule,
+        UiAutoCompleteComponent
 
-
-    ],
+    ]
 })
 export class ComplementInvoiceLinesDetailComponent extends BaseTransactionLinesDetailComponent implements OnInit, OnDestroy {
     private serviceSrv = inject(ServiceArticleService);

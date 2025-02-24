@@ -1,31 +1,52 @@
 <mat-card>
-    <mat-card-content>
-        <form *ngIf="form !== null" novalidate [formGroup]="form">
+    @if (form !== null) {
+        <mat-card-content>
+            <form novalidate [formGroup]="form">
 
-            <mat-form-field id="description" class="default-100">
-                <mat-label translate>PAYROLL_YEARLY_GRADE</mat-label>
-                <input matInput formControlName="yearlyGrade" type="number" autofocus required>
-                <mat-error *ngIf="form.controls['yearlyGrade'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
-            </mat-form-field>
+                <!--                <mat-form-field id="description" class="default-100">-->
+                <!--                    <mat-label translate>PAYROLL_YEARLY_GRADE</mat-label>-->
+                <!--                    <input matInput formControlName="yearlyGrade" type="number" autofocus required>-->
+                <!--                    <mat-error *ngIf="form.controls['yearlyGrade'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>-->
+                <!--                </mat-form-field>-->
 
-            <mat-form-field id="code" class="default-100">
-                <mat-label translate>PAYROLL_PASSING_GRADE</mat-label>
-                <input matInput formControlName="passingGrade" type="number">
-                <mat-error *ngIf="form.controls['passingGrade'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
-            </mat-form-field>
+                <mat-form-field id="code" class="default-100">
+                    <mat-label translate>PAYROLL_PASSING_GRADE</mat-label>
+                    <input matInput formControlName="passingGrade" type="number">
+                    @if (form.controls['passingGrade']) {
+                        <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+                    }
+                </mat-form-field>
 
-            <mat-form-field id="maxRate" class="default-100">
-                <mat-label translate>PAYROLL_MAX_RATE</mat-label>
-                <input matInput formControlName="maxRate" type="number">
-                <mat-error *ngIf="form.controls['maxRate'].invalid" translate>COMMON_FIELD_MAX_LENGTH</mat-error>
-            </mat-form-field>
+                <!--                <mat-form-field id="maxRate" class="default-100">-->
+                <!--                    <mat-label translate>PAYROLL_MAX_RATE</mat-label>-->
+                <!--                    <input matInput formControlName="maxRate" type="number">-->
+                <!--                    <mat-error *ngIf="form.controls['maxRate'].invalid" translate>COMMON_FIELD_MAX_LENGTH</mat-error>-->
+                <!--                </mat-form-field>-->
 
-            <mat-form-field id="rate" class="default-100">
-                <mat-label translate>PAYROLL_RATE_ELEMENT</mat-label>
-                <input matInput formControlName="rate" type="text">
-                <mat-error *ngIf="form.controls['rate'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
-            </mat-form-field>
-        </form>
+                <mat-form-field id="rate" class="default-100">
+                    <mat-label translate>PAYROLL_RATE_ELEMENT</mat-label>
+                    <input matInput formControlName="rate" type="text">
+                    @if (form.controls['rate'].invalid) {
+                        <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+                    }
+                </mat-form-field>
+                <mat-form-field id="deduction" class="default-100">
+                    <mat-label translate>PAYROLL_DEDUCTION_FORMULA</mat-label>
+                    <input matInput formControlName="deduction" type="text">
+                    @if (form.controls['deduction'].invalid) {
+                        <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+                    }
+                </mat-form-field>
 
-    </mat-card-content>
+                <mat-form-field class="default-100">
+                    <mat-label translate>PAYROLL_PROMOTION_MOTIVE</mat-label>
+                    <ss-auto-complete matInput
+                                      [model]="motiveLookup"
+                                      formControlName="promotionMotive">
+                    </ss-auto-complete>
+                </mat-form-field>
+            </form>
+
+        </mat-card-content>
+    }
 </mat-card>

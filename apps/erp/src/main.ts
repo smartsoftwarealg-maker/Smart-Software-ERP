@@ -3,7 +3,7 @@ import { environment, appRoutes } from './environments/environment';
 import { BrowserModule, bootstrapApplication } from '@angular/platform-browser';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { provideRouter, Routes, withComponentInputBinding } from '@angular/router';
+import { provideRouter, Routes, withComponentInputBinding, withDebugTracing } from '@angular/router';
 import { MAIN_PAGE_URL, UPDATE_PASSWORD_URL, AUTH_2FA_URL, LOGIN_URL, CENTER_SELECT_URL } from '@ss/common/api-common';
 import { ShellComponent } from '@ss/common/ui-shell';
 import { PasswordUpdateComponent, Auth2FAConfirmationComponent } from '@ss/auth-2fa';
@@ -38,9 +38,9 @@ bootstrapApplication(AppComponent, {
         importProvidersFrom(BrowserModule, MatProgressSpinnerModule,  ColorPickerModule),
         provideAnimations(),
         provideHttpClient(withInterceptorsFromDi()),
-        provideRouter(routes, withComponentInputBinding()),
+        provideRouter(routes, withComponentInputBinding()), //, withDebugTracing()
         { provide: ErrorHandler, useClass: CustomErrorHandler }
     ]
 }).catch((err) => {
-        console.error('main.ts (line 13): ', err);
+        console.error('main.ts (line 45): ', err);
     });

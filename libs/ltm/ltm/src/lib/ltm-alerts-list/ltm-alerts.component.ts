@@ -1,6 +1,6 @@
 import { Component, DestroyRef, inject } from '@angular/core';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
-import { ShellService, SnackBarService } from '@ss/common/ui-shell';
+import { KeepOnToolbar, ShellService, SnackBarService, ToolbarButton } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router } from "@angular/router";
 import {  ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
@@ -8,13 +8,15 @@ import { MaterialModule, PaginatorPersistenceService } from "@ss/common/api-comm
 import { CommonModule } from "@angular/common";
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { DatePickerComponent } from "@ss/common/ui-datepicker";
-import { LTMAbnormalTest } from '@ltm/ltm-api';
+import { LTM_NON_CONFORMITY_DOC, LTMAbnormalTest } from '@ltm/ltm-api';
 import { LtmAbnormalTestService } from '@ltm/ltm-api';
 import { filter } from 'rxjs';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { PaginationComponent } from '@ss/common/ui-pagination';
 import { TranslateDirective } from '@ss/common/ui-lang';
+import { MatDialog } from '@angular/material/dialog';
+import { LtmEmailSenderComponent } from '../email-sender/ltm-email-sender.component';
 
 @Component({
     selector: 'ss-ltm-alerts-list',
@@ -31,6 +33,16 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     ],
 })
 export class LtmAlertsComponent extends BaseEntityListComponent<LTMAbnormalTest> {
+    #dialog = inject(MatDialog);
+    #emailBtn: ToolbarButton = {
+        disabled: false,
+        icon: 'fa-solid fa-at',
+        keepOnToolbar: KeepOnToolbar.ALWAYS,
+        label: 'COMMON_EMAIL_REPORT',
+        visible: true,
+        click: () => this.emailTheReport()
+    };
+
     #destroyRef = inject(DestroyRef);
 
     displayedColumns = ['matter', 'test',  'time', 'value', 'min', 'max', 'pickupPoint'];
@@ -82,6 +94,7 @@ export class LtmAlertsComponent extends BaseEntityListComponent<LTMAbnormalTest>
         // this.editButton.visible = false;
         this.deleteButton.visible = false;
         super.ngOnInit();
+        this.shellSrv.addButton(this.#emailBtn);
 
         this.form.controls.from.setValue(this.entitySrv.from);
         this.form.controls.to.setValue(this.entitySrv.to);
@@ -105,5 +118,19 @@ export class LtmAlertsComponent extends BaseEntityListComponent<LTMAbnormalTest>
         const formValue = this.form.value;
         this.entitySrv.from = formValue.from;
         this.entitySrv.to = formValue.to;
+    }
+
+    private emailTheReport() {
+        const dialogRef = this.#dialog.open(LtmEmailSenderComponent,{
+            width: '500px',
+            height: '30em',
+            data: { id: this.selected||0, document: LTM_NON_CONFORMITY_DOC, form: this.formReport, message: 'test' },
+            disableClose: true
+        });
+        dialogRef.afterClosed().subscribe(res => {
+            if (!res) {
+                this.snackBarSrv.showSuccessMessage();
+            }
+        })
     }
 }

@@ -36,24 +36,23 @@ import { TranslatePipe } from '@ss/common/ui-lang';
         DatePickerComponent,
         MatError,
         UiAutoCompleteComponent,
-        NgFor,
         MatTabGroup,
         MatTab,
         MatTable,
         MatColumnDef,
-        MatHeaderCellDef,
         MatHeaderCell,
-        MatCellDef,
         MatCell,
-        MatHeaderRowDef,
         MatHeaderRow,
-        MatRowDef,
         MatRow,
         PaginationComponent,
         AsyncPipe,
         DecimalPipe,
         TranslatePipe,
-    ],
+        MatHeaderCellDef,
+        MatHeaderRowDef,
+        MatRowDef,
+        MatCellDef
+    ]
 })
 export class PrevWorkOrderDetailComponent extends CMMSWorkDetail {
     constructor(

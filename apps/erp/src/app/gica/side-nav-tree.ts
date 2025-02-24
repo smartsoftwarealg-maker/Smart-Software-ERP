@@ -8,7 +8,7 @@ import {
     ABS_GICA_WEIGHTS_URL,
     ABS_GICA_REPORTS_URL,
     ABS_GICA_SCALE_URL,
-    ABS_GICA_DEDUCTION_REPORT_URL
+    ABS_GICA_EVOLUTION_REPORT_URL, ABS_HR_REPORTS_URL, ABS_GICA_REPORTING_URL
 } from '../common';
 
 export const gicaNavTree: SideNavNode = {
@@ -27,12 +27,12 @@ export const gicaNavTree: SideNavNode = {
             route: ABS_GICA_CRITERIA_URL,
             accessRights: 'Criterion'
         },
-        {
-            name: 'PAYROLL_WEIGHTS',
-            icon: 'fa-solid fa-weight-hanging',
-            route: ABS_GICA_WEIGHTS_URL,
-            accessRights: 'AbsenceMotive'
-        },
+        // {
+        //     name: 'PAYROLL_WEIGHTS',
+        //     icon: 'fa-solid fa-weight-hanging',
+        //     route: ABS_GICA_WEIGHTS_URL,
+        //     accessRights: 'AbsenceMotive'
+        // },
         {
             name: 'PAYROLL_SCALE',
             icon: 'fa-solid fa-scale-unbalanced',
@@ -53,34 +53,40 @@ export const gicaNavTree: SideNavNode = {
             accessRights: 'GGrade'
         },
 
-        {
-            name: 'PAYROLL_GICA_DEGRADING',
-            icon: 'fa-solid fa-thumbs-down',
-            route: ABS_GICA_DEGRADING_URL,
-            accessRights: 'DGrade'
-        },
+        // {
+        //     name: 'PAYROLL_GICA_DEGRADING',
+        //     icon: 'fa-solid fa-thumbs-down',
+        //     route: ABS_GICA_DEGRADING_URL,
+        //     accessRights: 'DGrade'
+        // },
 
         {
-            name: 'PAYROLL_DEDUCTION_REPORT',
+            name: 'PAYROLL_EVOLUTION_REPORT',
             icon: 'fa-solid fa-face-angry',
-            route: ABS_GICA_DEDUCTION_REPORT_URL,
+            route: ABS_GICA_EVOLUTION_REPORT_URL,
             accessRights: 'DGrade'
         },
 
-        {
-            name: 'COMMON_UPDATE',
-            icon: 'fa-solid fa-file-chart-column',
-            route: ABS_GICA_REPORTS_URL,
-            accessRights: 'GCReport'
-        },
+        // {
+        //     name: 'COMMON_UPDATE',
+        //     icon: 'fa-solid fa-file-chart-column',
+        //     route: ABS_GICA_REPORTS_URL,
+        //     accessRights: 'GCReport'
+        // },
+        //
+        // {
+        //     name: 'COMMON_HISTORY',
+        //     icon: 'fa-solid fa-file-chart-column',
+        //     route: ABS_GICA_HISTORY_URL,
+        //     accessRights: 'GCArchive'
+        // },
 
         {
-            name: 'COMMON_HISTORY',
+            name: 'COMMON_REPORTS',
             icon: 'fa-solid fa-file-chart-column',
-            route: ABS_GICA_HISTORY_URL,
-            accessRights: 'GCArchive'
+            route: ABS_GICA_REPORTING_URL,
+            accessRights: 'Report'
         },
-
     ],
     accessRights: 'GICACARRER'
 };

@@ -349,5 +349,13 @@
     "COSTING":                    "التكلفة",
     "PAY_MODE":                   "طريقة الدفع",
     "MUNICIPALITY":               "البلدية",
-    "ACCOUNTING_APP":             "المحاسبة"
+    "ACCOUNTING_APP":             "المحاسبة",
+    "SHOW_ACTIVE_ONLY":           "اظهار الحالي فقط",
+    "SCHS":               "شركة اسمنت حجار السود",
+    "ECDE":               "شركة اسمنت الشلف",
+    "COMPANY_SELECTOR":   "اختيار الشركة",
+    "MAILING_LIST":               "قائمة البريد",
+    "ORDER_DATE": "تاريخ الطلب",
+    "PAID": "مدفوع",
+    "NON_PAID": "غير مدفوع"
 }

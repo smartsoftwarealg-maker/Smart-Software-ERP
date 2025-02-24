@@ -299,7 +299,8 @@ export const ssalesRoutes: Routes = [
         children: [
             {
                 path: LIST_URL,
-                component: ClassListComponent
+                component: ClassListComponent,
+                canActivate: [loginGuard],
             },
             {
                 path: ':id',
@@ -312,7 +313,8 @@ export const ssalesRoutes: Routes = [
     },
     {
         path: LOGISTICS_COMPENSATION_URL,
-        component: PaymentCompensationComponent
+        component: PaymentCompensationComponent,
+        canActivate: [loginGuard],
     },
     {
         path: LOGISTICS_PAYMENTS_URL,

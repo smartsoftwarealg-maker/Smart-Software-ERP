@@ -14,6 +14,7 @@ import { MaterialModule } from '@ss/common/api-common';
 
 import { CMMSFunctionService } from '../services/cmms.function.service';
 import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
+import { TranslateDirective } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-cmms-function-detail',
@@ -27,7 +28,8 @@ import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
         MatInputModule,
         MaterialModule,
         ReactiveFormsModule,
-        RouterOutlet
+        RouterOutlet,
+        TranslateDirective
     ],
     templateUrl: '../detail-template/cmms-fault-detail.component.html',
     styleUrls: ['../detail-template/cmms-fault-detail.component.css'],
@@ -40,6 +42,6 @@ export class CMMSFunctionDetailComponent extends BaseLookupDetailClass {
         public override route: ActivatedRoute,
         public override confirmationSrv: ConfirmationDialogService,
         public override formBuilder: UntypedFormBuilder) {
-        super(markSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'CMMS_FUNCTION');
+        super(markSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'CMMS_FUNCTIONS');
     }
 }

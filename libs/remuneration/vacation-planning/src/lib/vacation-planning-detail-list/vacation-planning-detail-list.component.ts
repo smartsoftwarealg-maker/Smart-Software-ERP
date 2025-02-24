@@ -10,7 +10,7 @@ import {map, switchMap, tap} from 'rxjs/operators';
 import {VacationPlanningDetailService} from "@ss/remuneration/vacation-planning";
 import { MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from '@angular/material/table';
 import { TranslateDirective } from '@ss/common/ui-lang';
-import { PaginationComponent } from '../../../../../common/ui-pagination/src/lib/pagination.component';
+import { PaginationComponent } from '@ss/common/ui-pagination';
 import { DatePipe } from '@angular/common';
 
 @Component({

@@ -354,5 +354,14 @@
     "COSTING":                    "Coûts",
     "PAY_MODE":                   "Mode de paiement",
     "MUNICIPALITY":               "Commune",
-    "ACCOUNTING_APP":             "Comptabilité"
+    "ACCOUNTING_APP":             "Comptabilité",
+    "SHOW_ACTIVE_ONLY": "Afficher uniquement les actifs actifs",
+    "SCHS":               "SOCIETE DES CIMENTS DE HADJAR SOUD",
+    "ECDE":               "CIMENTERIE DE CHLEF",
+    "COMPANY_SELECTOR":   "Sélection de cimentrie",
+    "MAILING_LIST":       "Liste d'envoi",
+    "ORDER_CONTRACT":     "Contrat/commande",
+    "ORDER_DATE": "Date du commande",
+    "PAID": "Payé",
+    "NON_PAID": "Non payé"
 }

@@ -1,0 +1,53 @@
+mat-card {
+    border-radius: 1.4em;
+}
+mat-card, .input_div, .size {
+    width: 90%;
+    max-width: 1000px;
+    margin: .5em auto;
+}
+
+.input_div {
+    display: flex;
+    align-items: center;
+    gap: .5em;
+}
+
+.input_div > mat-form-field {
+    max-width: 7em;
+}
+.btn_div {
+    display: flex;
+    gap: 1em;
+}
+
+.div_table {
+    overflow-y: auto;
+    height: calc(100% - 136px)
+}
+
+.mat-column-id  {
+    flex: 1 1 90px;
+    justify-content: center;
+}
+
+.mat-column-deduction,
+.mat-column-rate {
+    flex: 1 1 100px;
+    justify-content: flex-end;
+}
+
+.mat-column-firstName,
+.mat-column-lastName {
+    flex: 2 1 120px;
+}
+mat-table {
+    min-width: 700px;
+}
+.processing_div {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

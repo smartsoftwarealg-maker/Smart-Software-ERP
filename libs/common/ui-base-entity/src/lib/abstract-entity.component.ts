@@ -1,6 +1,6 @@
 import { Directive, inject, OnDestroy, OnInit } from '@angular/core';
 import { switchMap, tap } from 'rxjs/operators';
-import { ShellService, SnackBarService } from '@ss/common/ui-shell';
+import { KeepOnToolbar, ShellService, SnackBarService, ToolbarButton } from '@ss/common/ui-shell';
 import { Observable, of, Subscription } from 'rxjs';
 import { UntypedFormGroup } from '@angular/forms';
 import { BaseEntityService } from '@ss/common/api-base-entity';
@@ -16,6 +16,14 @@ export abstract class AbstractEntityComponent<T extends { id: number }> implemen
     protected subscriptions: Subscription[] = [];
     public form: UntypedFormGroup|null = null;
     public isEditable = true;
+    public saveButton: ToolbarButton = {
+        icon: 'fas fa-save',
+        label: 'COMMON_SAVE',
+        disabled: false,
+        visible: true,
+        keepOnToolbar: KeepOnToolbar.ALWAYS, // save button is too important to hide
+        click: () => this.save()
+    };
 
     protected constructor(public entitySrv: BaseEntityService<T>) {}
 
@@ -25,6 +33,10 @@ export abstract class AbstractEntityComponent<T extends { id: number }> implemen
             this.snackBarSrv.showFailureMessage('COMMON_FORM_NOT_VALID');
             return;
         }
+        if (this.saveButton.disabled) {
+            return;
+        }
+        this.saveButton.disabled = true;
         const val = this.readForm();
         // val.id = this.queryId || val.id;
         this.shellSrv.setLoading(true);
@@ -52,10 +64,12 @@ export abstract class AbstractEntityComponent<T extends { id: number }> implemen
                 this.goBack();
                 this.form.markAsUntouched();
                 this.snackBarSrv.showSuccessMessage();
+                // this.saveButton.disabled = false;
             },
             error: err => {
                 this.snackBarSrv.showFailureMessage();
                 this.shellSrv.setLoading(false);
+                this.saveButton.disabled = false;
                 throw err;
             }
         });
@@ -126,6 +140,7 @@ export abstract class AbstractEntityComponent<T extends { id: number }> implemen
     public finishLoading(e: T) {
         this.shellSrv.setLoading(false);
         this.form = this.setupForm(e);
+        this.saveButton.disabled = false;
         if (!this.isEditable && this.form) {
             this.form.disable();
         }

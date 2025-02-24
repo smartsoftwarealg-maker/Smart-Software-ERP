@@ -34,9 +34,10 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     ]
 })
 export class PurchaseContractListComponent extends BaseEntityListComponent<Project> {
-    private agentSrv = inject(SupplierService);
+    #agentSrv = inject(SupplierService);
+
     agentId     = new FormControl<number>(0);
-    agentLookup = new DefaultAutoCompleteModel(this.agentSrv, 'id', 'denomination');
+    agentLookup = new DefaultAutoCompleteModel(this.#agentSrv, 'id', 'denomination');
     displayedColumns = [
         'contractNo',
         'projDate',
@@ -63,8 +64,8 @@ export class PurchaseContractListComponent extends BaseEntityListComponent<Proje
             confirmationSrv,
             defReportSrv,
             pagPersistSrv,
-                'COMMON_CONTRACTS');
-        this.entitySrv.setParentId(0);
+            'COMMON_CONTRACTS');
+        this.entitySrv.setParentId(this.entitySrv.getParentId() || 0);
         this.agentLookup.onObjectSelected = a => this.onCustomer(a);
     }
 
@@ -77,8 +78,8 @@ export class PurchaseContractListComponent extends BaseEntityListComponent<Proje
 
     override ngOnInit() {
         super.ngOnInit();
-        this.agentId.setValue(this.entitySrv.selectedId);
-        this.entitySrv.setParentId(this.entitySrv.selectedId);
+        this.agentId.setValue(this.entitySrv.getParentId()||0);
+        this.entitySrv.setParentId(this.entitySrv.getParentId() || 0);
         this.refresh();
     }
 }

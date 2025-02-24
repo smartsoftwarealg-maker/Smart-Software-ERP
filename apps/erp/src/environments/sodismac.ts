@@ -25,11 +25,18 @@ import {
     SALES_APP_URL,
     STOCK_APP_URL,
     WEBARCH_APP_URL,
-    WORK_FLOW_APP_URL, ARCH_VIEWER_URL
+    WORK_FLOW_APP_URL, ARCH_VIEWER_URL, MISSIONS_APP_URL, PAYROLL_APP_URL, HR_APP_URL
 } from '../app/common';
 import {Routes} from '@angular/router';
 import {workflowNavTree} from '../app/workflow/side-nav-tree';
 import { aaNavTree } from '../app/archive-viewer/side-nav-tree';
+import { accountingNavTree } from '../app/accounting/side-nav-tree';
+import { assetsNavTree } from '../app/assets-app/side-nav-tree';
+import { hrLookupNavTree } from '../app/hr-lookups/side-nav-tree';
+import { hrNavTree } from '../app/hr/side-nav-tree';
+import { payrollNavTree } from '../app/payroll/side-nav-tree';
+import { attendanceNavTree } from '../app/attendance/side-nav-tree';
+import { missionsNavTree } from '../app/missions/side-nav-tree';
 
 export const environment = {
     production: false,
@@ -44,16 +51,21 @@ export const navBar = [
     contractsNavTree,
     salesNavTree,
     financeNavTree,
-    dashboardNavTree,
-    // shoppingCartNavTree,
+    hrLookupNavTree,
+    hrNavTree,
+    payrollNavTree,
+    attendanceNavTree,
+    missionsNavTree,
+    accountingNavTree,
+    assetsNavTree,
     workflowNavTree,
+    dashboardNavTree,
     aaNavTree
 ];
 
 export const langAssets = [
     ['assets/locale/', ''],
     ['assets/locale/administration_', 'ADMINISTRATION_'],
-    ['assets/locale/sch_', 'SCH_'],
     ['assets/locale/stock_', 'STOCK_'],
     ['assets/locale/payroll_', 'PAYROLL_'],
     ['assets/locale/common_', 'COMMON_'],
@@ -64,9 +76,11 @@ export const langAssets = [
     ['assets/locale/purchases_', 'PURCHASES_'],
     ['assets/locale/bl_', 'BL_'],
     ['assets/locale/webarch_', 'WAR_'],
+    ['assets/locale/missions_', 'MISSION_'],
     ['assets/locale/assets_', 'ASSET_'],
     ['assets/locale/treasury_', 'TRS_'],
     ['assets/locale/accounting_', 'ACC_'],
+    ['assets/locale/social_', 'SOCIAL_'],
 ];
 
 export const appRoutes: Routes =  [
@@ -123,10 +137,18 @@ export const appRoutes: Routes =  [
         path: WEBARCH_APP_URL,
         loadChildren: () => import('../app/web-arch/web-arch.module').then(m => m.WebArchModule)
     },
-    // {
-    //     path: MISSIONS_APP_URL,
-    //     loadChildren: () => import('../app/missions/missions.module').then(m => m.MissionsModule)
-    // },
+    {
+        path: PAYROLL_APP_URL,
+        loadChildren: () => import('../app/payroll/payroll.module').then(m => m.PayrollModule)
+    },
+    {
+        path: HR_APP_URL,
+        loadChildren: () => import('../app/hr/hr.module').then(m => m.HRModule)
+    },
+    {
+        path: MISSIONS_APP_URL,
+        loadChildren: () => import('../app/missions/missions.module').then(m => m.MissionsModule)
+    },
     {
         path: CONTRACTS_APP_URL,
         loadChildren: () => import('../app/contracts/contracts.module').then(m => m.ContractsModule)
@@ -138,7 +160,7 @@ export const appRoutes: Routes =  [
 export const APPLICATION_LIST = [
     'ADMINISTRATION', 'DASHBOARD-APP', 'FINANCE', 'HRMASTER',
     'STOCK', 'LOGISTICS', 'LOGISTICS-ADMINISTRATION', 'ORGANIZATION', 'PAYMENTS',
-    'PURCHASES', 'SALES', 'WORKFLOW'];
+    'PURCHASES', 'SALES', 'WORKFLOW', 'PROJECTS'];
 /*
  * For easier debugging in development mode, you can import the following file
  * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.

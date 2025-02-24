@@ -1,17 +1,14 @@
-import { Component, inject, OnInit } from '@angular/core';
-import { HttpService, LoginService, LoginType } from '@ss/common/api-common';
+import { Component, inject, OnInit, signal } from '@angular/core';
+import { CompanySelectorService, HttpService, LoginService, LoginType } from '@ss/common/api-common';
 import { switchMap } from 'rxjs/operators';
 import {LanguageService} from '@ss/common/api-common';
-import {ShellService} from '@ss/common/ui-shell';
+import { ShellService } from '@ss/common/ui-shell';
 import {cSpaceNavTree} from "./cspace/side-nav-tree";
-import { homePage, langAssets } from '../environments/environment';
+import { environment, langAssets } from '../environments/environment';
 import { DeviceDetectorService } from 'ngx-device-detector';
 import { initialize } from './admobile';
-import { NgIf } from '@angular/common';
-import { ThemeDirective } from '../../../../libs/common/ui-theme/src/lib/theme.directive';
 import { RouterOutlet } from '@angular/router';
-import { MessageComponent } from '../../../../libs/common/ui-error-handler/src/lib/error-message.component';
-import { TranslatePipe } from '@ss/common/ui-lang';
+import { MessageComponent } from '@ss/common/ui-error-handler';
 
 @Component({
     selector: 'ss-root',
@@ -19,39 +16,44 @@ import { TranslatePipe } from '@ss/common/ui-lang';
     styleUrls: ['./app.component.scss'],
     standalone: true,
     imports: [
-        NgIf,
-        ThemeDirective,
         RouterOutlet,
         MessageComponent
     ],
 })
 export class AppComponent implements OnInit {
-    private deviceSrv = inject(DeviceDetectorService);
-    private httpSrv =  inject(HttpService);
-    private shellSrv =  inject(ShellService);
-    langSrv =  inject(LanguageService);
-    private loginSrv =  inject(LoginService);
+    #companySelectorSrv = inject(CompanySelectorService);
+    #deviceSrv = inject(DeviceDetectorService);
+    #httpSrv =  inject(HttpService);
+    #shellSrv =  inject(ShellService);
+    #loginSrv =  inject(LoginService);
 
-    loaded = false;
+    langSrv =  inject(LanguageService);
+    loaded = signal(false);
 
     constructor() {
-        this.loginSrv.customerLogin = LoginType.BOTH;
-        this.loginSrv.homePage = homePage;
+        this.#companySelectorSrv.multiCompany = environment.multiCompany;
+        this.#companySelectorSrv.spaceCompany = environment.company;
+        this.#companySelectorSrv.homePage = environment.homePage;
+        this.#loginSrv.customerLogin = LoginType.BOTH;
     }
+
     ngOnInit() {
-        this.loginSrv.customerLogin = LoginType.CUSTOMER;
-        this.shellSrv.setApplicationTitle('Customer Space 1.6');
-        this.httpSrv
+        this.#loginSrv.customerLogin = LoginType.CUSTOMER;
+        this.#shellSrv.setApplicationTitle('Customer Space 1.9');
+        this.#httpSrv
             .init()
             .pipe(
                 switchMap(() => this.langSrv.init()),
-                switchMap(_ => this.langSrv.addSources(langAssets))
-            ).subscribe(() => {
-                this.loaded = true;
-                this.shellSrv.setSideNavDataSource(cSpaceNavTree);
-            });
+                switchMap(() => this.langSrv.addSources(langAssets)),
+            ).subscribe({
+            next: () => {
+                this.#shellSrv.setSideNavDataSource(cSpaceNavTree);
+                this.loaded.set(true);
+            },
+            error: () => this.#loginSrv.logout().then()
+        });
 
-        if (this.deviceSrv.isMobile()) {
+        if (this.#deviceSrv.isMobile()) {
             initialize().then(() => {});
         }
     }

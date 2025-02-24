@@ -16,6 +16,11 @@ interface Entry {
     url: string,
     paramsProvided: (x: string[]) => boolean
 }
+interface GroupEntry {
+    group: string,
+    description: string,
+    entries: Entry[]
+}
 
 @Component({
     selector: 'ss-doc-info',
@@ -51,7 +56,7 @@ export class DocInfoComponent {
         paramsProvided: (p: string[]) => p.includes('id') && p.includes('appId')
     };
 
-    private entries_: { group: string, description: string, entries: Entry[] }[] = [
+    private entries_: GroupEntry[] = [
         {
             group: 'document',
             description: 'LOGISTICS_DOCUMENT',
@@ -122,7 +127,13 @@ export class DocInfoComponent {
                     name: 'sources',
                     description: 'LOGISTICS_SOURCES',
                     url: 'sources',
-                    paramsProvided: (p: string[]) => p.includes('documentId')
+                    paramsProvided: (p: string[]) => p.includes('detailId')
+                },
+                {
+                    name: 'quantities',
+                    description: 'LOGISTICS_QUANTITIES',
+                    url: 'quantities',
+                    paramsProvided: (p: string[]) => p.includes('detailId')
                 },
             ]
         },
@@ -133,6 +144,10 @@ export class DocInfoComponent {
     @Input() set params(params: any) {
         this.params_ = {...params, appId: DOCUMENT_ARCHIVES, editable: true};
         this.navigate();
+    }
+
+    get params(): any {
+        return this.params_;
     }
 
 
@@ -147,8 +162,13 @@ export class DocInfoComponent {
     }
 
 
-    getDisplayedEntries(): any {
-        return this.entries_.filter(x => this.displayedGroups.includes(x.group));
+    getDisplayedEntries(): GroupEntry[] {
+        return this.entries_
+            .filter(x => this.displayedGroups.includes(x.group))
+            .map(e => {
+                e.entries = e.entries.filter(ee => ee.paramsProvided(Object.keys(this.params_)));
+                return e;
+            });
     }
 
     select(e: any): void {

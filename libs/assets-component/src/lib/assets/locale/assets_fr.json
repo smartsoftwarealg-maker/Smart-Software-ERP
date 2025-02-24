@@ -42,7 +42,6 @@
     "MULTIFUNCTIONAL": "Multifonctionnel",
     "NAC": "V.N.C",
     "OLD_DEPRECIATION": "Ancien amortissement",
-    "ORDER_DATE": "Date du commande",
     "ORDER_NUMBER": "Numéro de commande",
     "ORIGINAL_SUPPLIER": "Fournisseur d'origine",
     "OS": "Système opérateur",
@@ -78,7 +77,5 @@
     "NEW_OFFICE": "Nouveau bureau",
     "NEW_BUILDING": "Nouveau batiment",
     "ACCOUNTING_TYPE": "Type de comptabilité",
-    "NEW_BENEFICIARY": "Nouveau bénéficiaire",
-    "SHOW_ALL": "Afficher tout",
-    "SHOW_ACTIVE_ONLY": "Afficher uniquement les actifs actifs"
+    "NEW_BENEFICIARY": "Nouveau bénéficiaire"
 }

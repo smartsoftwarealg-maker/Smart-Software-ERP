@@ -1,5 +1,5 @@
 <mat-card>
-    <form *ngIf="form" novalidate [formGroup]="form" >
+    <form *ngIf="form" novalidate [formGroup]="form">
         <mat-accordion>
             <mat-expansion-panel #generalPanel expanded="true"
                                  [class]="getPanelHeaderClass('general', generalPanel)">
@@ -17,19 +17,26 @@
                     <mat-error
                         *ngIf="form.controls['denomination'].invalid" translate>COMMON_FIELD_REQUIRED
                     </mat-error>
-
                 </mat-form-field>
 
                 <mat-form-field id="customerCode" class="default-50 sm-100">
                     <mat-label translate>LOGISTICS_CUSTOMER_CODE</mat-label>
-                    <input matInput formControlName="customerCode" type="text">
-                    <mat-error
-                        *ngIf="form.controls['customerCode'].hasError('required')" translate>COMMON_FIELD_REQUIRED
-                    </mat-error>
-                    <mat-error
-                        *ngIf="form.controls['customerCode'].hasError('maxlength')" [translate]="{maxLen: 14}">
-                        COMMON_FIELD_MAX_LENGTH
-                    </mat-error>
+                    <div class="customer__div">
+                        <input matInput formControlName="customerCode" type="text">
+                        @if (form.controls['id'].value > 0) {
+                            <button mat-mini-fab color="accent" matTooltip="{{'LOGISTICS_NEXT_CODE' | translate}}"
+                                    (click)="loadNextCode()">
+                                <i class="fas fa-question"></i>
+                            </button>
+                        }
+                    </div>
+
+                    @if (form.controls['customerCode'].hasError('required')) {
+                        <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+                    }
+                    @if (form.controls['customerCode'].hasError('maxlength')) {
+                        <mat-error [translate]="{maxLen: 14}">COMMON_FIELD_MAX_LENGTH</mat-error>
+                    }
                 </mat-form-field>
 
                 <mat-form-field id="agentType" class="default-50 sm-100">
@@ -43,18 +50,19 @@
                     </mat-error>
                 </mat-form-field>
 
-                <mat-form-field id="currency" class="default-50 sm-100">
+                @if (!isSales) {
+                     <mat-form-field id="currency" class="default-50 sm-100">
                     <mat-label translate>LOGISTICS_CURRENCY</mat-label>
                     <ss-auto-complete matInput
                                       formControlName="currency"
-                                      [canAdd] = "true"
+                                      [canAdd]="true"
                                       [model]="currencyLookup">
                     </ss-auto-complete>
                     <mat-error
                         *ngIf="form.controls['currency'].invalid" translate>COMMON_FIELD_REQUIRED
                     </mat-error>
                 </mat-form-field>
-
+                }
 
                 <mat-form-field id="price" class="default-50 sm-100">
                     <mat-label translate>LOGISTICS_PRICE</mat-label>
@@ -71,19 +79,20 @@
                     <mat-label translate>LOGISTICS_ACTIVITY</mat-label>
                     <ss-auto-complete matInput
                                       formControlName="activity"
-                                      [canAdd] = "true"
+                                      [canAdd]="true"
                                       [model]="activityLookup">
                     </ss-auto-complete>
                 </mat-form-field>
 
-                <mat-form-field class="default-50 sm-100">
-                    <mat-label translate>LOGISTICS_COMPANY_TYPE</mat-label>
-                    <ss-auto-complete matInput
-                                      formControlName="companyType"
-                                      [model]="companyTypeLookup">
-                    </ss-auto-complete>
-                </mat-form-field>
-
+                @if (!isSales) {
+                    <mat-form-field class="default-50 sm-100">
+                        <mat-label translate>LOGISTICS_COMPANY_TYPE</mat-label>
+                        <ss-auto-complete matInput
+                                          formControlName="companyType"
+                                          [model]="companyTypeLookup">
+                        </ss-auto-complete>
+                    </mat-form-field>
+                }
                 <mat-form-field *ngIf="AQS" class="default-50 sm-100">
                     <mat-label translate>COMMON_DEPARTMENT</mat-label>
                     <ss-auto-complete matInput
@@ -373,7 +382,8 @@
                     <mat-selection-list color="primary" multiple="false"
                                         (selectionChange)="centerSelectionChanged($event)">
                         <mat-list-option *ngFor="let c of agentCenters"
-                                         [value]="c.id"> {{ c.centerDescription }} </mat-list-option>
+                                         [value]="c.id"> {{ c.centerDescription }}
+                        </mat-list-option>
                     </mat-selection-list>
                 </div>
                 <div class="center_ctrl">
@@ -382,7 +392,7 @@
                         <i class="fas fa-plus-circle"></i>
                     </button>
 
-                    <mat-form-field >
+                    <mat-form-field>
                         <mat-label translate>ADMINISTRATION_CENTER</mat-label>
                         <ss-auto-complete matInput
                                           #roleAC
@@ -390,7 +400,8 @@
                                           [model]="centerLookup">
                         </ss-auto-complete>
                     </mat-form-field>
-                    <button mat-mini-fab color="warn" [disabled]="selectedCenter < 1" (click)="deleteCenter()"><i class="fas fa-trash-alt"></i>
+                    <button mat-mini-fab color="warn" [disabled]="selectedCenter < 1" (click)="deleteCenter()"><i
+                        class="fas fa-trash-alt"></i>
                     </button>
                 </div>
             </mat-expansion-panel>
@@ -407,10 +418,11 @@
                                          [appId]="LOCAL_AGENT_ARCHIVES"
                                          [editable]="isEditable">
                     </ss-app-archive-main>
-               }
+                }
             </mat-expansion-panel>
 
-            <mat-expansion-panel #attributes expanded="false" [class]="getPanelHeaderClass('attributes', attributes)">
+            @if (!isSales) {
+                <mat-expansion-panel #attributes expanded="false" [class]="getPanelHeaderClass('attributes', attributes)">
                 <mat-expansion-panel-header>
                     <mat-panel-title translate>
                         ADMINISTRATION_ATTRIBUTES
@@ -421,7 +433,7 @@
                                      [editable]="isEditable">
                 </ss-child-attributes>
             </mat-expansion-panel>
-
+            }
         </mat-accordion>
     </form>
 </mat-card>

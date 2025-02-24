@@ -8,6 +8,7 @@ import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import {BaseEntityService} from '@ss/common/api-base-entity';
 import {Sort} from '@angular/material/sort';
+import { LTM_NON_CONFORMITY_DOC } from '@ltm/ltm-api';
 
 @Directive()
 export class BaseEntityListComponent<T extends { id: number, email?: string }> implements OnInit, OnDestroy {
@@ -115,25 +116,31 @@ export class BaseEntityListComponent<T extends { id: number, email?: string }> i
         this.reportForm = node && node.accessRights != undefined ? node.accessRights : null;
         this.defReportButton.visible = this.reportForm != null;
         this.viewReportButton.visible = this.reportForm != null;
-        const rights = !node ? {
+
+        const NO_RIGHTS: Right = {
             read: false,
             write: false,
             edit: false,
             delete: false
-        } as Right :
-            !node.customerRights && !node.accessRights ? {
-                read: true,
-                write: true,
-                edit: true,
-                delete: true
-            } as Right : this.shellSrv.getRights(node);
+        };
+
+        const FULL_RIGHTS: Right = {
+            read: true,
+            write: true,
+            edit: true,
+            delete: true
+        };
+
+
+        const rights = !node ? NO_RIGHTS :
+            !node.customerRights && !node.accessRights ? FULL_RIGHTS: (this.shellSrv.getRights(node)||NO_RIGHTS);
 
         // this.editButton.visible = rights.edit;
-        this.addButton.visible &&= rights.write;
-        this.deleteButton.visible &&= rights.delete;
-        this.editButton.icon = rights.edit ? 'fas fa-pen' : 'fa-solid fa-memo-circle-info';
-        this.editButton.label = rights.edit ? 'COMMON_EDIT_SELECTED' : 'COMMON_DETAIL';
-        this._editable = rights.edit;
+        this.addButton.visible &&= rights?.write??false;
+        this.deleteButton.visible &&= rights?.delete??false;
+        this.editButton.icon = rights?.edit ? 'fas fa-pen' : 'fa-solid fa-memo-circle-info';
+        this.editButton.label = rights?.edit ? 'COMMON_EDIT_SELECTED' : 'COMMON_DETAIL';
+        this._editable = rights?.edit;
 
         this.shellSrv.setTitle(this.title);
         this.shellSrv.setGoBackPath('../..', this.route);
@@ -358,5 +365,9 @@ export class BaseEntityListComponent<T extends { id: number, email?: string }> i
 
     set editable(b: boolean) {
         this._editable = b;
+    }
+
+    get formReport(): string {
+        return this.reportForm;
     }
 }

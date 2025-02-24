@@ -1,7 +1,7 @@
 import {Routes} from '@angular/router';
 import {AccountDetailComponent, AccountListComponent} from '@ss/logistics/ui-account';
 import {
-    ACC_BALANCE_QUERIES_URL,
+    ACC_BALANCE_QUERIES_URL, ACC_CONSOLIDATION_CENTERS_URL,
     ACC_DEPRECIATION_GEN_URL, ACC_F12_URL, ACC_F13_URL, ACC_F82_URL, ACC_F8_URL,
     ACC_FILE_SELECTOR_URL,
     ACC_FILES_URL,
@@ -63,7 +63,7 @@ import {
     F8ListComponent
 } from '@ss/accounting/balance-tables';
 import { DashboardComponent } from '@ss/dashboard';
-import { ScheduledSalesExcelInjectionService } from '@ss/accounting/accounting-api';
+import { ConsolidationCentersDetailComponent, ConsolidationCentersListComponent } from '@ss/accounting/consolidation';
 
 export const accRoutes: Routes = [
     {
@@ -385,6 +385,25 @@ export const accRoutes: Routes = [
         path: DASHBOARD_URL,
         component: DashboardComponent,
         canActivate: [loginGuard, accountingGuard],
+    },
+
+    {
+        path: ACC_CONSOLIDATION_CENTERS_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: ConsolidationCentersListComponent,
+                canActivate: [loginGuard]
+            },
+            {
+                path: ':id',
+                component: ConsolidationCentersDetailComponent,
+                canActivate: [loginGuard],
+                canDeactivate: [CanDeactivateService]
+            },
+            {path: '', redirectTo: LIST_URL, pathMatch: 'full'},
+            {path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full'}
+        ]
     },
 
     {path: '', redirectTo: ABS_INDEX_URL, pathMatch: 'full'},

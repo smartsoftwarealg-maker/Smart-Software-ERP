@@ -15,31 +15,33 @@
 
 </mat-toolbar>
 
-<form *ngIf="form !== null" novalidate [formGroup]="form">
+@if (form) {
+    <form [formGroup]="form">
 
-    <mat-form-field class="default-100">
-        <mat-label translate>LOGISTICS_ARTICLE</mat-label>
-        <ss-auto-complete matInput
-                          [model]="articleLookup"
-                          formControlName="articleId"
-                          required="true">
-        </ss-auto-complete>
-        <mat-error *ngIf="form.controls['articleId'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
-    </mat-form-field>
+        <mat-form-field class="default-100">
+            <mat-label translate>COMMON_ARTICLE</mat-label>
+            <ss-auto-complete matInput
+                              [model]="articleLookup"
+                              formControlName="articleId"
+                              required="true">
+            </ss-auto-complete>
+            <mat-error *ngIf="form.controls['articleId'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
+        </mat-form-field>
 
-    <mat-form-field class="default-50 sm-100">
-        <mat-label translate>COMMON_QTY</mat-label>
-        <input matInput formControlName="qty" type="number"  step="1">
-    </mat-form-field>
+        <mat-form-field class="default-50 sm-100">
+            <mat-label translate>COMMON_QTY</mat-label>
+            <input matInput formControlName="qty" type="number" step="1">
+        </mat-form-field>
 
-    <mat-form-field class="default-50 sm-100">
-        <mat-label translate>LOGISTICS_PRICE</mat-label>
-        <input matInput formControlName="price" type="number"  step="1">
-    </mat-form-field>
+        <mat-form-field class="default-50 sm-100">
+            <mat-label translate>LOGISTICS_PRICE</mat-label>
+            <input matInput formControlName="price" type="number" step="1">
+        </mat-form-field>
 
-    <mat-form-field class="default-50 sm-100">
-        <mat-label translate>COMMON_VAT</mat-label>
-        <input matInput formControlName="vat" type="number"  step="1">
-    </mat-form-field>
+        <mat-form-field class="default-50 sm-100">
+            <mat-label translate>COMMON_VAT</mat-label>
+            <input matInput formControlName="vat" type="number" step="1">
+        </mat-form-field>
 
-</form>
+    </form>
+}

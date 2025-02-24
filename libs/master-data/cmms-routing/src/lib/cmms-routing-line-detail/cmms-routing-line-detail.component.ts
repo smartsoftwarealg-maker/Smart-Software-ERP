@@ -10,6 +10,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MaterialModule } from '@ss/common/api-common';
+import { TranslateDirective } from '@ss/common/ui-lang';
 
 
 @Component({
@@ -25,7 +26,8 @@ import { MaterialModule } from '@ss/common/api-common';
         MatFormFieldModule,
         MatInputModule,
         MaterialModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        TranslateDirective
     ],
 })
 export class CMMSRoutingLineDetailComponent extends BaseChildEntityDetailComponent<RoutingDetail> {

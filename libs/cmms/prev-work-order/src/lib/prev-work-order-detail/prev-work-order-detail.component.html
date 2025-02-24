@@ -28,12 +28,12 @@
                 <mat-error *ngIf="form.controls['description'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
             </mat-form-field>
 
-            <mat-form-field class="default-50">
-                <mat-label translate>COMMON_TYPE</mat-label>
-                <select matNativeControl required formControlName="wrType">
-                    <option *ngFor="let t of cmmsTypes" [value]="t.id"> {{ t.description | translate }} </option>
-                </select>
-            </mat-form-field>
+<!--            <mat-form-field class="default-50">-->
+<!--                <mat-label translate>COMMON_TYPE</mat-label>-->
+<!--                <select matNativeControl required formControlName="wrType">-->
+<!--                    <option *ngFor="let t of cmmsTypes" [value]="t.id"> {{ t.description | translate }} </option>-->
+<!--                </select>-->
+<!--            </mat-form-field>-->
 
             <mat-form-field class="default-50">
                 <mat-label translate>CMMS_PRIORITY</mat-label>

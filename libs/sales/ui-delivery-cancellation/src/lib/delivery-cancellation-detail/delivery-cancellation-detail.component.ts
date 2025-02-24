@@ -29,8 +29,6 @@ import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
         RouterModule,
         DatePickerComponent,
         UiAutoCompleteComponent
-
-
     ]
 
 })
