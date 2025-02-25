@@ -19,7 +19,7 @@ import { MatFormField, MatLabel, MatError, MatSuffix } from '@angular/material/f
 import { TranslateDirective } from '@ss/common/ui-lang';
 import { MatInput } from '@angular/material/input';
 import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
-import { MatDatepickerModule } from '@muaazh/angular-datepicker';
+import { MatDatepickerModule, NativeDateModule } from '@muaazh/angular-datepicker';
 import { MatSelect } from '@angular/material/select';
 import { MatOption } from '@angular/material/core';
 import { MatCheckbox } from '@angular/material/checkbox';
@@ -29,7 +29,7 @@ import { MatCheckbox } from '@angular/material/checkbox';
     templateUrl: './mission-preparation-detail.component.html',
     styleUrls: ['./mission-preparation-detail.component.scss'],
     standalone: true,
-    imports: [NgIf, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, MatError, UiAutoCompleteComponent, MatDatepickerModule, MatSuffix, MatSelect, MatOption, MatCheckbox]
+    imports: [NgIf, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, MatError, UiAutoCompleteComponent, MatDatepickerModule, NativeDateModule, MatSuffix, MatSelect, MatOption, MatCheckbox]
 })
 export class MissionPreparationDetailComponent extends BaseEntityDetailComponent<Mission> {
     // private lookupsSrv  = inject(LookupsService);
