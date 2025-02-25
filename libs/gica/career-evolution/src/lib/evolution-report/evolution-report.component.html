@@ -1,18 +1,27 @@
-@if (!processing()) {
-    <mat-card>
+<mat-card>
+    @if (!processing()) {
         <div class="input_div">
-                <mat-form-field class="default-50 sm-100">
-                    <mat-label translate>PAYROLL_YEAR</mat-label>
-                    <input matInput [formControl]="year" type="number" required step="1">
-                </mat-form-field>
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>PAYROLL_YEAR</mat-label>
+                <input matInput [formControl]="year" type="number" required step="1">
+            </mat-form-field>
 
-                <button mat-raised-button color="primary" type="button" (click)="refresh()">
-                    <i class="fa-solid fa-arrows-rotate"></i>
-                    {{ 'COMMON_REFRESH' | translate }}
-                </button>
+            <button mat-raised-button color="primary" type="button" (click)="refresh()">
+                <i class="fa-solid fa-arrows-rotate"></i>
+                {{ 'COMMON_REFRESH' | translate }}
+            </button>
+
+            <button mat-raised-button color="warn" type="button" (click)="generate()">
+                <i class="fa-solid fa-circle-exclamation"></i>
+                {{ 'COMMON_GENERATE' | translate }}
+            </button>
         </div>
-    </mat-card>
-}
+    } @else {
+        <div class="spinner__div">
+            <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
+        </div>
+    }
+</mat-card>
 @if (data$) {
     <div class="div_table size">
         <mat-table mat-table [dataSource]="data$ | async" class="main-table" matSort (matSortChange)="sort($event)">
@@ -59,12 +68,12 @@
                 </mat-cell>
             </ng-container>
 
-<!--            <ng-container matColumnDef="rate">-->
-<!--                <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_RATE</mat-header-cell>-->
-<!--                <mat-cell *matCellDef="let e">-->
-<!--                    {{ e.rate | number: '1.2-4' }}-->
-<!--                </mat-cell>-->
-<!--            </ng-container>-->
+            <!--            <ng-container matColumnDef="rate">-->
+            <!--                <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_RATE</mat-header-cell>-->
+            <!--                <mat-cell *matCellDef="let e">-->
+            <!--                    {{ e.rate | number: '1.2-4' }}-->
+            <!--                </mat-cell>-->
+            <!--            </ng-container>-->
 
             <ng-container matColumnDef="rate">
                 <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_RATE</mat-header-cell>

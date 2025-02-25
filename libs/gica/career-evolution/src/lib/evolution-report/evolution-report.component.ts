@@ -59,6 +59,8 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
     templateUrl: './evolution-report.component.html'
 })
 export class EvolutionReportComponent implements OnInit {
+    #confirmationSrv = inject(ConfirmationDialogService);
+    #snackBarSrv = inject(SnackBarService);
     #destroyRef = inject(DestroyRef);
     #route = inject(ActivatedRoute);
     #shellSrv = inject(ShellService);
@@ -169,4 +171,26 @@ export class EvolutionReportComponent implements OnInit {
     //             }
     //         });
     // }
+
+    generate() {
+        this.#confirmationSrv
+            .confirm('PAYROLL_GICA_CAREER', 'PAYROLL_GENERATE')
+            .pipe(tap(yes => this.processing.set(yes)),
+                  switchMap(yes => yes? this.#deductionSrv.generate(this.year.value) : of({count: 0 })))
+            .subscribe({
+                next: res => {
+                    this.processing.set(false);
+                    if (res.count) {
+                        this.#snackBarSrv.showSuccessMessage();
+                        this.refresh();
+                    }
+                },
+                error: err => {
+                    this.processing.set(false);
+                    this.#snackBarSrv.showFailureMessage();
+                    //this.shellSrv.setLoading(false);
+                    throw err;
+                }
+            });
+    }
 }
