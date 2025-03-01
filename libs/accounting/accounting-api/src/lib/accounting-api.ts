@@ -19,7 +19,7 @@ export const ACC_ACC_BALANCE_URL    = '/accounting/balance';
 export const ACC_ACCOUNTING_GL_URL  = '/accounting/gl';
 export const TRANSAC_ACCOUNT_URL    = '/accounting/transac-accounts';
 export const CASH_FLOW_ACCOUNTS_URL = '/cash-accounts';
-export const SCALE                  = 10_000;
+export const SCALE                  = 100_000;
 
 export interface ACCPolicy {
     id: number;

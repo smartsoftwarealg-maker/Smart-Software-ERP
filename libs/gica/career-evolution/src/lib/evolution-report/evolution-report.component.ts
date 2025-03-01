@@ -55,10 +55,12 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
     ],
     selector: 'ss-gica-deduction-report',
     standalone: true,
-    styleUrl: './evolution.component.css',
-    templateUrl: './evolution.component.html'
+    styleUrl: './evolution-report.component.css',
+    templateUrl: './evolution-report.component.html'
 })
-export class EvolutionComponent implements OnInit {
+export class EvolutionReportComponent implements OnInit {
+    #confirmationSrv = inject(ConfirmationDialogService);
+    #snackBarSrv = inject(SnackBarService);
     #destroyRef = inject(DestroyRef);
     #route = inject(ActivatedRoute);
     #shellSrv = inject(ShellService);
@@ -72,7 +74,8 @@ export class EvolutionComponent implements OnInit {
         'lastName',
         'grade',
         'deduction',
-        'rate'
+        'rate',
+        'hireDate'
     ];
     selectedReport: Report | null = null;
 
@@ -168,4 +171,26 @@ export class EvolutionComponent implements OnInit {
     //             }
     //         });
     // }
+
+    generate() {
+        this.#confirmationSrv
+            .confirm('PAYROLL_GICA_CAREER', 'PAYROLL_GENERATE')
+            .pipe(tap(yes => this.processing.set(yes)),
+                  switchMap(yes => yes? this.#deductionSrv.generate(this.year.value) : of({count: 0 })))
+            .subscribe({
+                next: res => {
+                    this.processing.set(false);
+                    if (res.count) {
+                        this.#snackBarSrv.showSuccessMessage();
+                        this.refresh();
+                    }
+                },
+                error: err => {
+                    this.processing.set(false);
+                    this.#snackBarSrv.showFailureMessage();
+                    //this.shellSrv.setLoading(false);
+                    throw err;
+                }
+            });
+    }
 }

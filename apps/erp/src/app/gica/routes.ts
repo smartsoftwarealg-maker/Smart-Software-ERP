@@ -12,7 +12,7 @@ import {
     GICA_GRADING_URL,
     GICA_CRITERIA_URL,
     COMMON_REPORTS_URL,
-    GICA_EVOLUTIONS_URL
+    GICA_EVOLUTIONS_URL, GICA_CAREER_MOTIVE_URL
 } from '../common';
 
 import {loginGuard} from '../erp-guards';
@@ -27,7 +27,7 @@ import {
     CriteriaDetailComponent,
     AbsenceWeightListComponent,
     AbsenceWeightDetailComponent,
-    EvolutionComponent
+    EvolutionReportComponent, CareerMotiveListComponent
 } from '@gica/career-evolution';
 import { inject } from '@angular/core';
 import {
@@ -41,7 +41,10 @@ export const criteriaGuard: CanActivateFn = () => inject(CriterionService).canAc
 
 export const gicaRoutes: Routes = [
     {
-        path: GICA_EVOLUTIONS_URL, component: EvolutionComponent, canActivate: [loginGuard]
+        path: GICA_EVOLUTIONS_URL, component: EvolutionReportComponent, canActivate: [loginGuard]
+    },
+    {
+        path: GICA_CAREER_MOTIVE_URL, component: CareerMotiveListComponent, canActivate: [loginGuard]
     },
     {
         path: GICA_CONSTANTS_URL, component: ConstantDetailComponent, canActivate: [loginGuard]

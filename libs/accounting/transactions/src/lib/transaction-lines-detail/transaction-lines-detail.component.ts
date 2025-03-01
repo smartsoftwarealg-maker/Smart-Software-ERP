@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import {
     AbstractControl, ReactiveFormsModule,
     UntypedFormBuilder,
@@ -59,18 +59,6 @@ export class TransactionLinesDetailComponent implements OnInit {
     private accPolicySrv = inject(AccPoliciesService);
     private accountSrv =  inject(AccountService);
 
-    accountLookupModel  = new AccountAutocompleteModel(this.accountSrv);
-    customerLookupModel = new DefaultAutoCompleteModel(this.customerSrv, 'id', 'denomination');
-    ccLookupModel       = new DefaultAutoCompleteModel(this.ccSrv, 'id', 'code');
-    annexCodeLookupMode = new DefaultAutoCompleteModel(this.annexCodeSrv, 'code');
-    accPolicy: ACCPolicy = null;
-    public form: UntypedFormGroup | null = null;
-    id = 0;
-    transactionId = 0;
-    fileId = 0;
-    parentId = 0;
-    selectedAccount: Account = null;
-    isCloded = this.fileSrv.accFile.closed;
     private formValidator: ValidatorFn =
         (group: AbstractControl): ValidationErrors | null => {
             let result = null;
@@ -104,6 +92,20 @@ export class TransactionLinesDetailComponent implements OnInit {
             return result;
         };
 
+    accountLookupModel  = new AccountAutocompleteModel(this.accountSrv);
+    customerLookupModel = new DefaultAutoCompleteModel(this.customerSrv, 'id', 'denomination');
+    ccLookupModel       = new DefaultAutoCompleteModel(this.ccSrv, 'id', 'code');
+    annexCodeLookupMode = new DefaultAutoCompleteModel(this.annexCodeSrv, 'code');
+    accPolicy: ACCPolicy = null;
+    public form: UntypedFormGroup | null = null;
+    id = 0;
+    transactionId = 0;
+    fileId = 0;
+    parentId = 0;
+    selectedAccount: Account = null;
+    isClosed = this.fileSrv.accFile.closed;
+    showCustomer = signal(false);
+
     constructor(
         public entitySrv: AccTransactionLineService,
         public shellSrv: ShellService,
@@ -116,6 +118,7 @@ export class TransactionLinesDetailComponent implements OnInit {
     }
 
     setupForm(e: ACCTransactionLine): UntypedFormGroup {
+        this.showCustomer.set(!!e?.customer);
         return  this.formBuilder.group({
             id:           [e.id || 0],
             parentId:     [e.parentId||this.parentId],
@@ -143,6 +146,7 @@ export class TransactionLinesDetailComponent implements OnInit {
 
     private accountSelected(a: Account) {
         this.selectedAccount = a;
+        this.showCustomer.set(a?.ccRequired||false);
     }
 
 
@@ -170,6 +174,10 @@ export class TransactionLinesDetailComponent implements OnInit {
             .get(e.accountId)
             .subscribe(res => this.selectedAccount = res);
         this.form = this.setupForm(e);
+    }
+
+    private updatePolicy(pol: ACCPolicy) {
+      this.accPolicy = pol;
     }
 
     public load() {

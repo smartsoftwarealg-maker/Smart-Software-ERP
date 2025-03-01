@@ -15,6 +15,7 @@ import { NgIf } from "@angular/common";
 import { MatFormField, MatLabel, MatError } from "@angular/material/form-field";
 import { DatePickerComponent } from "../../../../common/ui-datepicker/src/lib/date-picker.component";
 import { TranslatePipe } from "../../../../common/ui-lang/src/lib/translate.pipe";
+import { MaterialModule } from '@ss/common/api-common';
 
 @Component({
     selector: 'ss-shift-timing-detail',
@@ -23,6 +24,7 @@ import { TranslatePipe } from "../../../../common/ui-lang/src/lib/translate.pipe
     standalone: true,
     imports: [
         MatCard,
+        MaterialModule,
         MatCardHeader,
         MatMiniFabButton,
         MatTooltip,
@@ -54,9 +56,6 @@ export class ShiftTimingDetailComponent implements OnInit {
         breakFrom: [new Date()],
         breakTo:   [new Date()],
     });
-
-    constructor() {
-    }
 
     ngOnInit(): void {
         this.route

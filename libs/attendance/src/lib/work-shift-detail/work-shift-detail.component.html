@@ -10,13 +10,13 @@
 
             <mat-form-field class="default-50">
                 <mat-label translate>ATT_GRACE_TIME</mat-label>
-                <input matInput formControlName="graceTime" type="number"  required>
+                <input matInput formControlName="graceTime" type="number" required>
                 <mat-error *ngIf="form.controls['graceTime'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
             </mat-form-field>
 
             <mat-form-field class="default-50">
                 <mat-label translate>ATT_PERIOD</mat-label>
-                <input matInput formControlName="period" type="number"  required>
+                <input matInput formControlName="period" type="number" required>
                 <mat-error *ngIf="form.controls['period'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
             </mat-form-field>
 
@@ -29,4 +29,6 @@
 
     </mat-card-content>
 </mat-card>
-<router-outlet *ngIf="form !== null" ></router-outlet>
+@if (id > 0) {
+    <router-outlet></router-outlet>
+}

@@ -14,6 +14,7 @@ import { MatFormField, MatLabel, MatError } from '@angular/material/form-field';
 import { TranslateDirective } from '@ss/common/ui-lang';
 import { MatInput } from '@angular/material/input';
 import { DatePickerComponent } from '@ss/common/ui-datepicker';
+import { MaterialModule } from '@ss/common/api-common';
 
 @Component({
     selector: 'ss-work-shift-detail',
@@ -21,6 +22,7 @@ import { DatePickerComponent } from '@ss/common/ui-datepicker';
     styleUrls: ['./work-shift-detail.component.scss'],
     standalone: true,
     imports: [
+        MaterialModule,
         MatCard,
         MatCardContent,
         NgIf,

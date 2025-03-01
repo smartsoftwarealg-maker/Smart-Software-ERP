@@ -40,8 +40,7 @@ import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui
         MatInput,
         MatLabel,
         ReactiveFormsModule,
-        TranslateDirective,
-        UiAutoCompleteComponent
+        TranslateDirective
     ],
     templateUrl: './constant-detail.component.html',
     styleUrl: './constant-detail.component.css'
@@ -63,12 +62,12 @@ export class ConstantDetailComponent extends BaseEntityDetailComponent<Constant>
     }
     public override setupForm(b: Constant): UntypedFormGroup {
         return this.formBuilder.group({
-            id:              [b.id],
-            centerId:        [b.centerId || this.#loginSrv.appCtx.center],
-            passingGrade:    [b.passingGrade, [Validators.required, Validators.min(0), Validators.max(100)]],
-            rate:            [b.rate, Validators.required],
-            deduction:       [b.deduction, Validators.required],
-            promotionMotive: [b.promotionMotive]
+            id:           [b.id],
+            centerId:     [b.centerId || this.#loginSrv.appCtx.center],
+            passingGrade: [b.passingGrade, [Validators.required, Validators.min(0), Validators.max(100)]],
+            rate:         [b.rate, Validators.required],
+            deduction:    [b.deduction, Validators.required],
+            script:       [b.script]
         });
     }
 

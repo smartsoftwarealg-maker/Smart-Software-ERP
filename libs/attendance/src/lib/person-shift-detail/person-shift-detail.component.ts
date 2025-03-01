@@ -17,6 +17,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
 import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { NgIf } from '@angular/common';
 import { DatePickerComponent } from '@ss/common/ui-datepicker';
+import { MaterialModule } from '@ss/common/api-common';
 
 @Component({
     selector: 'ss-person-shift-detail',
@@ -24,6 +25,7 @@ import { DatePickerComponent } from '@ss/common/ui-datepicker';
     styleUrls: ['./person-shift-detail.component.scss'],
     standalone: true,
     imports: [
+        MaterialModule,
         MatCard,
         MatCardContent,
         FormsModule,
@@ -62,7 +64,7 @@ export class PersonShiftDetailComponent extends BaseEntityDetailComponent<Person
         // Make sure to update the template if you edit the configuration here
         return this.formBuilder.group({
             id:               [b.id],
-            parentId:         [{ value: b.parentId || this.entitySrv.getParentId(), disabled: true }, Validators.required],
+            parentId:         [b.parentId || this.entitySrv.getParentId(), Validators.required],
             date:             [b.date,  Validators.required],
             shift:            [b.shift, Validators.required],
             shiftDescription: [b.shiftDescription],

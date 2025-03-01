@@ -202,5 +202,6 @@
     "CAREER_CRITERIA":       "Criteria",
     "GRADE":                 "Grade",
     "DEDUCTION_FORMULA":     "Deduction formula",
-    "PROMOTION_MOTIVE":      "Promotion motive"
+    "PROMOTION_MOTIVE":      "Promotion motive",
+    "IS_PROMOTION":          "Promotion?"
 }

@@ -1,5 +1,5 @@
 .size {
-    width: 100%;
+    width: 98%;
     max-width: 1200px;
     margin: 0 auto;
 }
@@ -12,7 +12,9 @@
     flex: 1 1 40%;
     padding: 4px 0;
 }
-
+.table_div {
+    overflow-x: auto;
+}
 .mat-column-description {
     flex: 2 1 auto;
 }

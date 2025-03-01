@@ -14,7 +14,6 @@ export class DeductionService extends BaseEntityService<Deduction> {
     }
 
     generate(year: number): Observable<{ count: number }> {
-        return this.httpSrv.post(`${GICA_EVOLUTIONS}/${year}`);
+        return this.httpSrv.post(`${GICA_EVOLUTIONS}/generate/${year}`);
     }
-
 }

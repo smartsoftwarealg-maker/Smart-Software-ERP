@@ -362,6 +362,7 @@ export const GICA_HISTORY_URL = 'gica-history';
 export const GICA_GRADING_URL = 'gica-grading';
 export const GICA_DEGRADING_URL = 'gica-degrading';
 export const GICA_EVOLUTIONS_URL = 'gica-evolutions';
+export const GICA_CAREER_MOTIVE_URL = 'gica-career-motives';
 
 
 // LTM
@@ -773,6 +774,7 @@ export const ABS_GICA_DEGRADING_URL       = '/' + [MAIN_PAGE_URL, GICA_APP_URL, 
 export const ABS_GICA_CRITERIA_URL       = '/' + [MAIN_PAGE_URL, GICA_APP_URL, GICA_CRITERIA_URL].join('/');
 export const ABS_GICA_EVOLUTION_REPORT_URL       = '/' + [MAIN_PAGE_URL, GICA_APP_URL, GICA_EVOLUTIONS_URL].join('/');
 export const ABS_GICA_REPORTING_URL       = '/' + [MAIN_PAGE_URL, GICA_APP_URL, COMMON_REPORTS_URL].join('/');
+export const ABS_GICA_CAREER_MOTIVES_URL       = '/' + [MAIN_PAGE_URL, GICA_APP_URL, GICA_CAREER_MOTIVE_URL].join('/');
 
 
 // CMMS

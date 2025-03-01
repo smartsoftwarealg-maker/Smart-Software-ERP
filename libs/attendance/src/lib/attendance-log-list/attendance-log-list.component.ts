@@ -23,7 +23,7 @@ import { DatePipe } from '@angular/common';
         TranslateDirective,
         PaginationComponent,
         DatePipe
-    ],
+    ]
 })
 export class AttendanceLogListComponent extends BaseEntityListComponent<ATTSignature> {
     displayedColumns = [

@@ -203,5 +203,6 @@
     "CAREER_CRITERIA":       "معايير",
     "GRDE":                  "درجة",
     "DEDUCTION_FORMULA":     "نموذج الخصم",
-    "PROMOTION_MOTIVE":      "دوافع الترقية"
+    "PROMOTION_MOTIVE":      "دوافع الترقية",
+    "IS_PROMOTION":          "ترقية"
 }

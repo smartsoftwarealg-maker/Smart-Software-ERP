@@ -5,17 +5,20 @@ import {ABS_MISSION_PREPARATION_URL, ABS_MISSION_TRAJECTORY_URL} from '../common
 export const missionsNavTree: SideNavNode = {
     name: 'MISSIONS',
     icon: 'fas fa-coins',
-    accessRights: 'MISSIONS',
+    accessRights: 'Mission',
     children: [
         {
             name: 'MISSION_TRAJECTORIES',
             icon: 'far fa-bezier-curve',
-            route: ABS_MISSION_TRAJECTORY_URL
+            route: ABS_MISSION_TRAJECTORY_URL,
+            accessRights: 'Trajectory'
         },
         {
             name: 'MISSION_MISSION_PREPARATION',
             icon: 'fas fa-plane',
-            route: ABS_MISSION_PREPARATION_URL
+            route: ABS_MISSION_PREPARATION_URL,
+            accessRights: 'Mission'
+
         },
 
     ]

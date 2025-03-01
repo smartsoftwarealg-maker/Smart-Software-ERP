@@ -21,9 +21,16 @@ mat-card, .input_div, .size {
     gap: 1em;
 }
 
+.spinner__div {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .div_table {
     overflow-y: auto;
-    height: calc(100% - 136px)
+    height: calc(100% - 180px)
 }
 
 .mat-column-id  {

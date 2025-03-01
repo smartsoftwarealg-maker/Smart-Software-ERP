@@ -9,7 +9,7 @@
                 <!--                    <mat-error *ngIf="form.controls['yearlyGrade'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>-->
                 <!--                </mat-form-field>-->
 
-                <mat-form-field id="code" class="default-100">
+                <mat-form-field id="code" class="default-50 sm-100">
                     <mat-label translate>PAYROLL_PASSING_GRADE</mat-label>
                     <input matInput formControlName="passingGrade" type="number">
                     @if (form.controls['passingGrade']) {
@@ -23,14 +23,14 @@
                 <!--                    <mat-error *ngIf="form.controls['maxRate'].invalid" translate>COMMON_FIELD_MAX_LENGTH</mat-error>-->
                 <!--                </mat-form-field>-->
 
-                <mat-form-field id="rate" class="default-100">
+                <mat-form-field id="rate" class="default-50 sm-100">
                     <mat-label translate>PAYROLL_RATE_ELEMENT</mat-label>
                     <input matInput formControlName="rate" type="text">
                     @if (form.controls['rate'].invalid) {
                         <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
                     }
                 </mat-form-field>
-                <mat-form-field id="deduction" class="default-100">
+                <mat-form-field id="deduction" class="default-50 sm-100">
                     <mat-label translate>PAYROLL_DEDUCTION_FORMULA</mat-label>
                     <input matInput formControlName="deduction" type="text">
                     @if (form.controls['deduction'].invalid) {
@@ -38,12 +38,9 @@
                     }
                 </mat-form-field>
 
-                <mat-form-field class="default-100">
-                    <mat-label translate>PAYROLL_PROMOTION_MOTIVE</mat-label>
-                    <ss-auto-complete matInput
-                                      [model]="motiveLookup"
-                                      formControlName="promotionMotive">
-                    </ss-auto-complete>
+                <mat-form-field id="script" class="default-100">
+                    <mat-label translate>COMMON_SCRIPT</mat-label>
+                    <textarea matInput formControlName="script" type="text" rows="15"></textarea>
                 </mat-form-field>
             </form>
 

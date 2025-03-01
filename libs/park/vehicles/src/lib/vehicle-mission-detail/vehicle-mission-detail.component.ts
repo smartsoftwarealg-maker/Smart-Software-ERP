@@ -23,7 +23,6 @@ import { TranslateDirective } from '@ss/common/ui-lang';
         TranslateDirective,
         DatePickerComponent,
         RouterModule,
-
         DatePickerComponent,
         UiAutoCompleteComponent
     ],

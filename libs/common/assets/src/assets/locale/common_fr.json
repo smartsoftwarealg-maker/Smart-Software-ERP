@@ -363,5 +363,7 @@
     "ORDER_CONTRACT":     "Contrat/commande",
     "ORDER_DATE": "Date du commande",
     "PAID": "Payé",
-    "NON_PAID": "Non payé"
+    "NON_PAID": "Non payé",
+    "SCRIPT": "Script",
+    "SOURCE": "Source"
 }

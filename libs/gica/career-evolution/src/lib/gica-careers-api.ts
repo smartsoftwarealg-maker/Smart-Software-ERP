@@ -1,4 +1,5 @@
 export const GICA_MOTIVES = '/gica-careers/motives';
+export const GICA_CAREER_MOTIVES = '/gica-careers/career-motives';
 export const GICA_CONSTANTS = '/gica-careers/parameters';
 export const GICA_FAULTS = '/faults';
 export const GICA_YEARS = '/gica-careers/years';
@@ -17,13 +18,19 @@ export interface Motive {
     dailyGrade: string;
 }
 
+export interface CareerMotive {
+    id: number;
+    description: string;
+    isPromotion: boolean;
+}
+
 export interface Constant {
     id: number;
     centerId: number;
     deduction: string;
     passingGrade: number;
     rate: string;
-    promotionMotive?: number;
+    script?: string;
 }
 
 export interface Fault {
