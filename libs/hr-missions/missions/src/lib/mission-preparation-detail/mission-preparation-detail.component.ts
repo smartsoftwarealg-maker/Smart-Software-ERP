@@ -11,7 +11,7 @@ import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {TransportService} from '../zone.service';
 import {ZoneService} from '../transport.service';
 import {TrajectoryService} from '../trajectory.service';
-import { LoginService, MaterialModule } from '@ss/common/api-common';
+import {LoginService} from '@ss/common/api-common';
 import { Component, inject } from "@angular/core";
 import { PersonAutocompleteClass } from "@ss/employee-services/employee-services";
 import { NgIf } from '@angular/common';
@@ -29,21 +29,7 @@ import { MatCheckbox } from '@angular/material/checkbox';
     templateUrl: './mission-preparation-detail.component.html',
     styleUrls: ['./mission-preparation-detail.component.scss'],
     standalone: true,
-    imports: [NgIf,
-        MaterialModule,
-        FormsModule,
-        ReactiveFormsModule,
-        MatFormField,
-        MatLabel,
-        TranslateDirective,
-        MatInput,
-        MatError,
-        UiAutoCompleteComponent,
-        MatDatepickerModule,
-        MatSuffix,
-        MatSelect,
-        MatOption,
-        MatCheckbox]
+    imports: [NgIf, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, MatError, UiAutoCompleteComponent, MatDatepickerModule, MatSuffix, MatSelect, MatOption, MatCheckbox]
 })
 export class MissionPreparationDetailComponent extends BaseEntityDetailComponent<Mission> {
     // private lookupsSrv  = inject(LookupsService);
@@ -52,7 +38,7 @@ export class MissionPreparationDetailComponent extends BaseEntityDetailComponent
     private trajectorySrv  = inject(TrajectoryService);
     private zoneSrv  = inject(ZoneService);
     private loginSrv  = inject(LoginService);
-    emploeeLookup = new PersonAutocompleteClass(this.employeeSrv);
+    employeeAutoCompleteModel = new PersonAutocompleteClass(this.employeeSrv);
     zoneLookup = new DefaultAutoCompleteModel(this.zoneSrv);
     transportLookup = new DefaultAutoCompleteModel(this.transportSrv);
     trajectoryLookup = new DefaultAutoCompleteModel(this.trajectorySrv);
@@ -76,7 +62,7 @@ export class MissionPreparationDetailComponent extends BaseEntityDetailComponent
             employee: [b.employee, Validators.required],
             reference: [b.reference],
             destination: [b.destination, Validators.required],
-            // thezone: [b.thezone, Validators.required],
+            thezone: [b.thezone, Validators.required],
             motive: [b.motive, Validators.required],
             duration: [b.duration, Validators.required],
             transport_means: [b.transport_means, Validators.required],
@@ -84,8 +70,8 @@ export class MissionPreparationDetailComponent extends BaseEntityDetailComponent
             returnback: [new Date(Date.parse(b.returnback || new Date() + '') || 0)],
             advancement: [b.advancement || 0],
             trajectory: [b.trajectory, Validators.required],
-            meals: [b.meals||false, Validators.required],
-            nights: [b.nights||false, Validators.required],
+            meals: [b.meals, Validators.required],
+            nights: [b.nights, Validators.required],
             mission_status: [b.mission_status || 1, Validators.required],
         });
     }
