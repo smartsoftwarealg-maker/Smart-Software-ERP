@@ -9,17 +9,11 @@ import { LanguageService, MaterialModule } from '@ss/common/api-common';
 import localeFr from '@angular/common/locales/fr';
 import localeAr from '@angular/common/locales/ar';
 import { registerLocaleData } from '@angular/common';
-import { MatCard } from '@angular/material/card';
-import { MatFormField, MatLabel, MatError } from '@angular/material/form-field';
 import { TranslateDirective } from '@ss/common/ui-lang';
-import { MatInput } from '@angular/material/input';
-import { MatSelect } from '@angular/material/select';
-import { MatOption } from '@angular/material/core';
 import { DatePickerComponent } from '@ss/common/ui-datepicker';
-import { MatButton } from '@angular/material/button';
-import { MatProgressSpinner } from '@angular/material/progress-spinner';
-import { MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from '@angular/material/table';
+import {  MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from '@angular/material/table';
 import { TranslatePipe } from '@ss/common/ui-lang';
+import { Lookup } from '@ss/common/api-lookup';
 
 @Component({
     selector: 'ss-attendance-log',
@@ -55,16 +49,21 @@ export class AttendanceLogComponent implements OnInit {
         this.langSrv.translate('PAYROLL_POST')
     ];
     private FIXED_COLS = ['id', 'firstName', 'lastName', 'post'];
+    sources: Lookup[]= [
+        { id: 1, description: 'ATT_DATABASE'},
+        { id: 2, description: 'ATT_ATTENDANCE_MACHINES'}
+    ]
 
     tableWidth            = 390;
     types                 = TYPES
     selected: ATTReport   = null;
     data: ATTReport[]     = [];
     form = this.fb.group({
-        id:   [0],
-        from: [new Date(), Validators.required],
-        to:   [new Date(), Validators.required],
-        type: [1,          Validators.required]
+        id:     [0],
+        from:   [new Date(), Validators.required],
+        to:     [new Date(), Validators.required],
+        type:   [1,          Validators.required],
+        source: [1, Validators.required]
     });
 
     headers = this.FIXED_HEADERS;

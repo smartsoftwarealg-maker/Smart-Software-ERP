@@ -12,12 +12,11 @@ import { EmployeeService, IEmployee } from "@ss/employee-services/employee-servi
 import {Service, ServiceService} from '@ss/common/api-lookup';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import { PersonAutocompleteClass } from "@ss/employee-services/employee-services";
-import { Employee } from '@ss/employee-services/employee-services';
 import { MatFormField, MatLabel } from "@angular/material/form-field";
-import { TranslateDirective } from "../../../../common/ui-lang/src/lib/translate.directive";
-import { UiAutoCompleteComponent } from "../../../../common/ui-auto-complete/src/lib/auto-complete.component";
+import { TranslateDirective } from '@ss/common/ui-lang';
+import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from "@angular/material/table";
-import { PaginationComponent } from "../../../../common/ui-pagination/src/lib/pagination.component";
+import { PaginationComponent } from '@ss/common/ui-pagination';
 import { DatePipe } from "@angular/common";
 
 @Component({

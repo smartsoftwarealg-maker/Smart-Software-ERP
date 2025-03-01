@@ -101,7 +101,7 @@ export const attendanceRoutes: Routes = [
             {
                 path: ':id',
                 component: PersonShiftDetailComponent,
-                canActivate: [loginGuard, detailGuard],
+                canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService],
             },
             { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }

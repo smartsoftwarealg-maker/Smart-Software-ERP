@@ -15,5 +15,8 @@
     "ABSENCE":          "غياب",
     "LATENESS":         "تأخر",
     "HOLIDAY_REQUEST":  "طلب عطلة عيد",
-    "ABSENCE_MOTIVES":  "دواعي الغياب"
+    "ABSENCE_MOTIVES":  "دواعي الغياب",
+    "DAYS":             "يوم",
+    "BREAK_FROM":       "من",
+    "BREAK_TO":         "إلى",
 }

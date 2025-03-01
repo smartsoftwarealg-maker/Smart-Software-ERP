@@ -1,19 +1,21 @@
 .form_container {
     width: 100%;
     height: 100%;
-    max-width: 900px;
+    max-width: 1200px;
     margin: 0 auto;
     overflow-x: auto;
     display: flex;
     flex-direction: column;
 }
-
+.main-table {
+    overflow-x: auto;
+}
 .content-div {
     overflow-x: auto;
     flex-grow: 2;
 }
 mat-table {
-    width: 1000px;
+    min-width: 1000px;
 }
 .pagination-container {
     flex-grow: 0;

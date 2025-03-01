@@ -10,7 +10,21 @@
                 <mat-label translate>COMMON_TYPE</mat-label>
                 <mat-select formControlName="type" required>
                     @for (v of types; track v.id) {
-                        <mat-option [value]="v.id">
+                        <mat-option [value]="v.id" translate>
+                            {{ v ? v.description : '' }}
+                        </mat-option>
+                    }
+                </mat-select>
+                @if (form.controls['type'].invalid) {
+                    <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+                }
+            </mat-form-field>
+
+            <mat-form-field class="default-50  sm-100">
+                <mat-label translate>COMMON_SOURCE</mat-label>
+                <mat-select formControlName="type" required>
+                    @for (v of sources; track v.id) {
+                        <mat-option [value]="v.id" translate>
                             {{ v ? v.description : '' }}
                         </mat-option>
                     }
