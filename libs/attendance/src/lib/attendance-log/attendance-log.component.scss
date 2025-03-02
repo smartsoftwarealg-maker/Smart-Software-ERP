@@ -4,16 +4,32 @@ mat-card {
     margin: 8px auto;
     padding: 16px;
     border-radius: 1.4em;
+    flex: 1 1 70%;
+}
+.input__div {
+    width: 100%;
+    display: flex;
+}
+.ip__div {
+    flex: 1 2 30%;
+    max-height: 10em;
+    overflow-y: auto;
 }
 
 .table_div {
     width: 96%;
-    height: calc(100% - 300px);
+    height: calc(100% - 400px);
+    min-height: 10em;
     max-width: 1400px;
     margin: 8px auto;
     overflow: auto;
 }
 
+.btn__div {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
 
 mat-row {
     height: 80px!important;
@@ -54,5 +70,5 @@ mat-table {
     flex: 1 1 120px;
 }
 .mat-column-post {
-    flex: 1 1 150px;
+    flex: 1 1 180px;
 }

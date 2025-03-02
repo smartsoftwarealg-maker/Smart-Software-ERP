@@ -6,7 +6,7 @@ import {
 import {
     ABSENCE_MOTIVE_URL,
     ATTENDANCE_LOG_URL,
-    ATTENDANCE_MACHINES_URL, HOLIDAY_URL, SHIFT_ASSIGNMENT_URL, WORK_SHIFTS_URL
+    ATTENDANCE_MACHINES_URL, HOLIDAY_URL, MANUAL_ATTENDANCE_URL, SHIFT_ASSIGNMENT_URL, WORK_SHIFTS_URL
 } from '../common';
 
 
@@ -14,7 +14,7 @@ import {detailGuard, loginGuard, timingGuard} from '../erp-guards';
 import {
     AbsenceMotiveDetailComponent,
     AbsenceMotiveListComponent,
-    AttendanceLogComponent,
+    AttendanceLogComponent, AttendanceLogDetailComponent, AttendanceLogListComponent,
     AttendanceMachineDetailComponent,
     AttendanceMachineListComponent, HolidayDetailComponent, HolidayListComponent,
     PersonShiftDetailComponent,
@@ -22,7 +22,7 @@ import {
     ShiftTimingListComponent,
     WorkShiftDetailComponent,
     WorkShiftListComponent
-} from "@ss/attendance";
+} from '@ss/attendance';
 
 
 export const attendanceRoutes: Routes = [
@@ -101,6 +101,23 @@ export const attendanceRoutes: Routes = [
             {
                 path: ':id',
                 component: PersonShiftDetailComponent,
+                canActivate: [loginGuard],
+                canDeactivate: [CanDeactivateService],
+            },
+            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
+        ]
+    },
+    {
+        path: MANUAL_ATTENDANCE_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: AttendanceLogListComponent,
+                canActivate: [loginGuard]
+            },
+            {
+                path: ':id',
+                component: AttendanceLogDetailComponent,
                 canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService],
             },

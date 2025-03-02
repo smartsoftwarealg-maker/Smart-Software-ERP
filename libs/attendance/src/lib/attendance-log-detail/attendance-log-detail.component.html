@@ -1,1 +1,32 @@
-<p>attendance-log-detail works!</p>
+<mat-card>
+    <mat-card-content>
+        @if (form !== null) {
+            <form [formGroup]="form">
+                <mat-form-field class="default-100">
+                    <mat-label translate>PAYROLL_EMPLOYEE</mat-label>
+                    <ss-auto-complete matInput
+                                      [model]="employeeLookup"
+                                      formControlName="personId">
+                    </ss-auto-complete>
+                </mat-form-field>
+
+                <mat-form-field class="default-50">
+                    <mat-label translate>COMMON_DATE</mat-label>
+                    <ss-date-picker formControlName="dateTime" required="true" [type]="'datetime'"></ss-date-picker>
+                    @if (form.controls['dateTime'].invalid) {
+                        <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+                    }
+                </mat-form-field>
+
+                <mat-form-field class="default-100">
+                    <mat-label translate>COMMON_MOTIVE</mat-label>
+                    <ss-auto-complete matInput
+                                      [model]="absenceTypeLookup"
+                                      formControlName="attendanceType">
+                    </ss-auto-complete>
+                </mat-form-field>
+
+            </form>
+        }
+    </mat-card-content>
+</mat-card>

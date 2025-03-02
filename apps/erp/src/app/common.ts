@@ -332,6 +332,7 @@ export const ABSENCE_MOTIVE_URL = 'absence-motives';
 export const WORK_SHIFTS_URL         = 'work-shifts';
 export const SHIFT_ASSIGNMENT_URL    = 'shift-assignments';
 export const ATTENDANCE_LOG_URL      = 'attendance-log';
+export const MANUAL_ATTENDANCE_URL   = 'manual-attendance';
 export const HOLIDAY_URL             = 'holidays';
 
 
@@ -346,6 +347,7 @@ export const ABS_SHIFT_ASSIGNMENTS_URL = '/' + [MAIN_PAGE_URL, ATTENDANCE_APP_UR
 export const ABS_ATTENDANCE_LOG_URL = '/' + [MAIN_PAGE_URL, ATTENDANCE_APP_URL, ATTENDANCE_LOG_URL].join('/');
 export const ABS_ATTENDANCE_HOLIDAY_URL = '/' + [MAIN_PAGE_URL, ATTENDANCE_APP_URL, HOLIDAY_URL].join('/');
 export const ABS_ATTENDANCE_ABSENCE_MOTIVE_URL = '/' + [MAIN_PAGE_URL, ATTENDANCE_APP_URL, ABSENCE_MOTIVE_URL].join('/');
+export const ABS_MANUAL_SIGNATURE_URL = '/' + [MAIN_PAGE_URL, ATTENDANCE_APP_URL, MANUAL_ATTENDANCE_URL].join('/');
 
 //Dashboard
 export const DASHBOARD_QUERY_URL = 'queries';

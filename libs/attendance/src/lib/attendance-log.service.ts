@@ -22,21 +22,22 @@ export class AttendanceLogService extends BaseEntityService<ATTReport> {
         [2, '/attendance/presences'],
         [3, '/attendance/absences'],
         [4, '/attendance/lateness'],
-        [5, '/attendance/shifts'],
+        [5, '/attendance/shifts-log'],
     ]);
     constructor(protected override httpSrv: HttpService, private langSrv: LanguageService) {
         super(httpSrv, ATT_ATTENDANCE);
     }
 
-    getReport(log: number, id: number, from: Date, to: Date): Observable<ATTReport[]> {
+    getReport(log: number, id: number, from: Date, to: Date, ipList: string|null): Observable<ATTReport[]> {
         const params = new HttpParams()
             .set('id', id)
             .set('from', this.langSrv.formatDate(from))
             .set('to', this.langSrv.formatDate(to));
+        const params2 = ipList? params.set("ip", ipList) : params;
         const url = this.urlMap.get(log);
         return url ?
             this.httpSrv
-                .getData<ATTReport>(url, 0, 1000, null, null, params)
+                .getData<ATTReport>(url, 0, 1000, null, null, params2)
                 .pipe(map(res => res.body)) :
             of([]);
     }

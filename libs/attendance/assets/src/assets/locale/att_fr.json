@@ -18,5 +18,6 @@
     "ABSENCE_MOTIVES":  "Motifs absence",
     "DAY":              "Jour",
     "BREAK_FROM":       "Début pause",
-    "BREAK_TO":         "Fin pause"
+    "BREAK_TO":         "Fin pause",
+    "DATABASE":         "Base de données"
 }
