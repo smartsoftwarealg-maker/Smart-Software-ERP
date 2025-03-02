@@ -1,55 +1,58 @@
 <mat-card>
     @defer (when form) {
-        <form [formGroup]="form">
-            <mat-form-field class="default-50 sm-100">
-                <mat-label translate>COMMON_ID</mat-label>
-                <input matInput formControlName="id" type="text" autofocus>
-            </mat-form-field>
+        <div class="input__div">
+            <form [formGroup]="form">
+                <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>COMMON_ID</mat-label>
+                    <input matInput formControlName="id" type="text" autofocus>
+                </mat-form-field>
 
-            <mat-form-field class="default-50  sm-100">
-                <mat-label translate>COMMON_TYPE</mat-label>
-                <mat-select formControlName="type" required>
-                    @for (v of types; track v.id) {
-                        <mat-option [value]="v.id" translate>
-                            {{ v ? v.description : '' }}
-                        </mat-option>
+                <mat-form-field class="default-50  sm-100">
+                    <mat-label translate>COMMON_TYPE</mat-label>
+                    <mat-select formControlName="type" required>
+                        @for (v of types; track v.id) {
+                            <mat-option [value]="v.id" translate>
+                                {{ v ? v.description : '' }}
+                            </mat-option>
+                        }
+                    </mat-select>
+                    @if (form.controls['type'].invalid) {
+                        <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
                     }
-                </mat-select>
-                @if (form.controls['type'].invalid) {
-                    <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
-                }
-            </mat-form-field>
+                </mat-form-field>
 
-            <mat-form-field class="default-50  sm-100">
-                <mat-label translate>COMMON_SOURCE</mat-label>
-                <mat-select formControlName="type" required>
-                    @for (v of sources; track v.id) {
-                        <mat-option [value]="v.id" translate>
-                            {{ v ? v.description : '' }}
-                        </mat-option>
+
+                <mat-form-field class="default-50  sm-100">
+                    <mat-label translate>COMMON_FROM</mat-label>
+                    <ss-date-picker formControlName="from"></ss-date-picker>
+                </mat-form-field>
+
+                <mat-form-field class="default-50  sm-100">
+                    <mat-label translate>COMMON_TO</mat-label>
+                    <ss-date-picker formControlName="to"></ss-date-picker>
+                </mat-form-field>
+
+                <mat-radio-group class="default-100" (change)="toggleSource()">
+                    <mat-radio-button [value]="1" [checked]="fromDatabase()" translate>ATT_DATABASE</mat-radio-button>
+                    <mat-radio-button [value]="2" translate>ATT_MACHINES</mat-radio-button>
+                </mat-radio-group>
+
+                <div class="btn__div default-100">
+                    <button mat-raised-button color="primary" type="button" (click)="refresh()"
+                            [disabled]="processing()">
+                        {{ 'COMMON_REFRESH' | translate }}
+                    </button>
+                </div>
+
+            </form>
+            <div class="ip__list">
+                <mat-selection-list [disabled]="fromDatabase()" (selectionChange)="onSelection($event)">
+                    @for (m of attendanceMachines; track m.id) {
+                        <mat-list-option [value]="m.ipAddress">{{ m.description }}</mat-list-option>
                     }
-                </mat-select>
-                @if (form.controls['type'].invalid) {
-                    <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
-                }
-            </mat-form-field>
-
-            <mat-form-field class="default-50  sm-100">
-                <mat-label translate>COMMON_FROM</mat-label>
-                <ss-date-picker formControlName="from"></ss-date-picker>
-            </mat-form-field>
-
-            <mat-form-field class="default-50  sm-100">
-                <mat-label translate>COMMON_TO</mat-label>
-                <ss-date-picker formControlName="to"></ss-date-picker>
-            </mat-form-field>
-
-            <span class="default-50  sm-100"></span>
-            <button mat-raised-button color="primary" type="button" (click)="refresh()" [disabled]="processing()">
-                {{ 'COMMON_REFRESH' | translate }}
-            </button>
-
-        </form>
+                </mat-selection-list>
+            </div>
+        </div>
     }
 </mat-card>
 @if (processing()) {
@@ -68,7 +71,7 @@
                             {{ e[columns[i]] }}
                         } @else {
                             @for (s of e.attendance[i - 4]; track s) {
-                               <div> {{ s }} </div>
+                                <div> {{ s }}</div>
                             }
                         }
 

@@ -4,7 +4,7 @@ import {
     ABS_ATTENDANCE_HOLIDAY_URL,
     ABS_ATTENDANCE_LOG_URL,
     ABS_ATTENDANCE_MACHINES_URL,
-    ABS_ATTENDANCE_WORKSHIFTS_URL,
+    ABS_ATTENDANCE_WORKSHIFTS_URL, ABS_MANUAL_SIGNATURE_URL,
     ABS_SHIFT_ASSIGNMENTS_URL
 } from '../common';
 
@@ -41,6 +41,12 @@ export const attendanceNavTree: SideNavNode = {
             icon: 'fa-solid fa-user-gear',
             route: ABS_SHIFT_ASSIGNMENTS_URL,
             accessRights: 'PersonShift'
+        },
+        {
+            name: 'ATT_MANUAL_SIGNATURES',
+            icon: 'fa-solid fa-clock',
+            route: ABS_MANUAL_SIGNATURE_URL,
+            accessRights: 'ATTSignature'
         },
         {
             name: 'ATT_ATTENDANCE_LOG',

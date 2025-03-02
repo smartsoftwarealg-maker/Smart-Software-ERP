@@ -22,6 +22,7 @@ export const TYPES: Lookup[] = [
 
 export interface AttendanceMachine {
     id: number;
+    centerId: number,
     ipAddress: string;
     port: string;
     description: string;
