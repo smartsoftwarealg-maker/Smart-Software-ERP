@@ -117,8 +117,11 @@ export class PaymentCompensationListComponent extends BaseEntityListComponent<Pa
 
     joinOrFree(row: Debt) {
         const joint: Joint = { salesId: row.id, paymentId: this.selected, agentId: row.agentId };
-        this.selectedRow.compensation += row.ftt * (row.payment > 0? -1 : 1);
-        (row.payment > 0? this.entitySrv.free(joint) : this.entitySrv.join(joint)).subscribe(() => this.refreshChild());
+        (row.payment > 0? this.entitySrv.free(joint) : this.entitySrv.join(joint))
+            .subscribe(() => {
+                this.refreshChild();
+                this.selectedRow.compensation += row.payment > 0? -row.payment : Math.min(row.ftt, this.selectedRow.amount - this.selectedRow.compensation);
+            });
     }
 
     override refresh(callback?: () => void) {

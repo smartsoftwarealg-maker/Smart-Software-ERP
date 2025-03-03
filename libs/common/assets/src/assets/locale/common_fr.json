@@ -365,5 +365,6 @@
     "PAID": "Payé",
     "NON_PAID": "Non payé",
     "SCRIPT": "Script",
-    "SOURCE": "Source"
+    "SOURCE": "Source",
+    "BANK_RIB": "RIB bancaire"
 }
