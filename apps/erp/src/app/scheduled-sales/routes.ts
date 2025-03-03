@@ -19,7 +19,7 @@ import {
     DASHBOARD_URL,
     SS_COMPLAINTS_URL,
     COMMON_REPORTS_URL,
-    PASSWORD_RESET_URL, SALES_COMPENSATION_URL
+    PASSWORD_RESET_URL, SALES_COMPENSATION_URL, SALES_PAYMENT_COMPENSATION_URL
 } from '../common';
 import {ProjectListComponent, ProjectDetailComponent} from '@ss/scheduled-sales/projects';
 import {ArticleDetailComponent, ArticleListComponent} from '@ss/scheduled-sales/article';
@@ -53,21 +53,26 @@ import { DashboardComponent } from '@ss/dashboard';
 import { CustomerComplaintsDetailComponent, CustomerComplaintsListComponent } from '@customer-complaints-list';
 import { ReportViewComponent } from '@ss/common/ui-report-param';
 import { PasswordResetComponent } from '@ss/scheduled-sales/password-reset';
-import { DebtsComponent } from '@ss/scheduled-sales/compensations';
+import { PaymentCompensationListComponent, DebtsComponent } from '@ss/scheduled-sales/compensations';
 import {
-    CompensationListComponent
+    SalesCompensationListComponent
 } from '@ss/scheduled-sales/compensations';
 import {
-    CompensationDetailComponent
+    SalesCompensationDetailComponent
 } from '@ss/scheduled-sales/compensations';
 
 export const scheduledSalesRoutes: Routes = [
     {
+        path: SALES_PAYMENT_COMPENSATION_URL,
+        component: PaymentCompensationListComponent,
+        canActivate: [loginGuard]
+    },
+    {
         path: SALES_COMPENSATION_URL,
         component: DebtsComponent,
         children: [
-            { path: '', component: CompensationListComponent, pathMatch: 'full' },
-            { path: ':id', component: CompensationDetailComponent }
+            { path: '', component: SalesCompensationListComponent, pathMatch: 'full' },
+            { path: ':id', component: SalesCompensationDetailComponent }
         ],
         canActivate: [loginGuard]
     },

@@ -35,10 +35,10 @@ import { CompensationService } from '../services/compensation.service';
         MatMiniFabButton,
         TranslatePipe,
         MatTooltip],
-    templateUrl: './compensation-list.component.html',
-    styleUrl: './compensation-list.component.scss',
+    templateUrl: './sales-compensation-list.component.html',
+    styleUrl: './sales-compensation-list.component.scss',
 })
-export class CompensationListComponent extends BaseChildEntityListComponent<Compensation> {
+export class SalesCompensationListComponent extends BaseChildEntityListComponent<Compensation> {
     override displayedColumns = ['description', 'creationTime', 'amount'];
 
     constructor(entitySrv: CompensationService) {
