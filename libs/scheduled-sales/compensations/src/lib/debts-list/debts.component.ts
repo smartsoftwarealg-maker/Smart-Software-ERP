@@ -1,4 +1,4 @@
-import { Component, computed, effect, inject } from '@angular/core';
+import { Component, computed, effect, inject, input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { Compensation, Debt } from '../services/compensation-api';
@@ -25,7 +25,7 @@ import { CompensationDetailService } from '../services/compensation-detail.servi
 import { MatRadioButton, MatRadioChange, MatRadioGroup } from '@angular/material/radio';
 
 @Component({
-    selector: 'ss-debts',
+    selector: 'ss-sales-debts',
     imports: [CommonModule, MatCell, MatCellDef, MatColumnDef, MatHeaderCell, MatHeaderRow, MatHeaderRowDef, MatRow, MatRowDef, MatSort, MatSortHeader, MatTable, PaginationComponent, TranslateDirective, MatHeaderCellDef, RouterOutlet, MatRadioGroup, MatRadioButton],
     templateUrl: './debts.component.html',
     styleUrl: './debts.component.scss',

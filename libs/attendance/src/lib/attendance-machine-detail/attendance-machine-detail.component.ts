@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {AttendanceMachine} from '../attendance-api';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
@@ -11,6 +11,7 @@ import { NgIf } from '@angular/common';
 import { MatFormField, MatLabel, MatError } from '@angular/material/form-field';
 import { TranslateDirective } from '@ss/common/ui-lang';
 import { MatInput } from '@angular/material/input';
+import { LoginService } from '@ss/common/api-common';
 
 @Component({
     selector: 'ss-attendance-machine-detail',
@@ -31,6 +32,8 @@ import { MatInput } from '@angular/material/input';
     ],
 })
 export class AttendanceMachineDetailComponent extends BaseEntityDetailComponent<AttendanceMachine> {
+    #loginSrv = inject(LoginService);
+
     constructor(
         public override entitySrv: AttendanceMachineService,
         public override shellSrv: ShellService,
@@ -46,6 +49,7 @@ export class AttendanceMachineDetailComponent extends BaseEntityDetailComponent<
         // Make sure to update the template if you edit the configuration here
         return this.formBuilder.group({
             id:          [b.id],
+            centerId:    [b.centerId||this.#loginSrv.appCtx.center],
             ipAddress:   [b.ipAddress, Validators.required],
             port:        [b.port, Validators.required],
             description: [b.description],

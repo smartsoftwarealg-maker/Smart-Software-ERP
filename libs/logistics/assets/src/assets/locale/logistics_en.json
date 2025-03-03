@@ -184,5 +184,6 @@
     "SUPPLIER_COMPENSATION": "Supplier compensations",
     "CUSTOMER_COMPENSATION": "Customer compensations",
     "CUSTOMER_PAYMENTS":     "Customer payments",
-    "SUPPLIER_PAYMENTS":     "Supplier payments"
+    "SUPPLIER_PAYMENTS":     "Supplier payments",
+    "CHECK_NUMBER":         "Check number"
 }

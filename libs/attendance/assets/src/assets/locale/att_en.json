@@ -18,5 +18,6 @@
     "ABSENCE_MOTIVES":  "Absence motives",
     "DAY":              "Day",
     "BREAK_FROM":       "Break from",
-    "BREAK_TO":         "Break to"
+    "BREAK_TO":         "Break to",
+    "DATABASE":         "Database"
 }

@@ -208,6 +208,12 @@ export interface SalesRecord {
     plateNumber?: string;
 }
 
+export interface Joint {
+    salesId: number;
+    paymentId: number;
+    agentId?: number;
+}
+
 export interface Payment {
     id: number;
     centerId: number;
@@ -226,7 +232,9 @@ export interface Payment {
     destBank?: number;
     creationTime: Date;
     cash: number;
+    compensation: number;
     payMethodDescription?: string;
+    customerCode?: string;
     agentDescription?: string;
     bankDescription?: string;
 }

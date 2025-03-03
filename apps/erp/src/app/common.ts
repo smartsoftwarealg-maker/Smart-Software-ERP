@@ -206,6 +206,7 @@ export const CONTRACTS_AWARD_PROCEDURE_URL = 'award-procedure';
 export const CONTRACT_PROJECT_URL = 'contracts';
 export const CONTRACTS_PURCHASE_CONTRACT_URL = 'purchase-contracts';
 export const SALES_COMPENSATION_URL = 'sales-compensations';
+export const SALES_PAYMENT_COMPENSATION_URL = 'payment-compensations';
 
 
 
@@ -332,6 +333,7 @@ export const ABSENCE_MOTIVE_URL = 'absence-motives';
 export const WORK_SHIFTS_URL         = 'work-shifts';
 export const SHIFT_ASSIGNMENT_URL    = 'shift-assignments';
 export const ATTENDANCE_LOG_URL      = 'attendance-log';
+export const MANUAL_ATTENDANCE_URL   = 'manual-attendance';
 export const HOLIDAY_URL             = 'holidays';
 
 
@@ -346,6 +348,7 @@ export const ABS_SHIFT_ASSIGNMENTS_URL = '/' + [MAIN_PAGE_URL, ATTENDANCE_APP_UR
 export const ABS_ATTENDANCE_LOG_URL = '/' + [MAIN_PAGE_URL, ATTENDANCE_APP_URL, ATTENDANCE_LOG_URL].join('/');
 export const ABS_ATTENDANCE_HOLIDAY_URL = '/' + [MAIN_PAGE_URL, ATTENDANCE_APP_URL, HOLIDAY_URL].join('/');
 export const ABS_ATTENDANCE_ABSENCE_MOTIVE_URL = '/' + [MAIN_PAGE_URL, ATTENDANCE_APP_URL, ABSENCE_MOTIVE_URL].join('/');
+export const ABS_MANUAL_SIGNATURE_URL = '/' + [MAIN_PAGE_URL, ATTENDANCE_APP_URL, MANUAL_ATTENDANCE_URL].join('/');
 
 //Dashboard
 export const DASHBOARD_QUERY_URL = 'queries';
@@ -651,6 +654,7 @@ export const ABS_CUSTOMER_COMPLAINTS_URL = '/' + [MAIN_PAGE_URL, SCHEDULED_SALES
 export const ABS_SCHEDULED_SALES_REPORTS_URL = '/' + [MAIN_PAGE_URL, SCHEDULED_SALES_APP_URL, COMMON_REPORTS_URL].join('/');
 export const ABS_SCHEDULED_SALES_PASSWORD_RESET_URL = '/' + [MAIN_PAGE_URL, SCHEDULED_SALES_APP_URL, PASSWORD_RESET_URL].join('/');
 export const ABS_SALES_COMPENSATIONS_URL = '/' + [MAIN_PAGE_URL, SCHEDULED_SALES_APP_URL, SALES_COMPENSATION_URL].join('/');
+export const ABS_PAYMENT_COMPENSATIONS_URL = '/' + [MAIN_PAGE_URL, SCHEDULED_SALES_APP_URL, SALES_PAYMENT_COMPENSATION_URL].join('/');
 
 
 
