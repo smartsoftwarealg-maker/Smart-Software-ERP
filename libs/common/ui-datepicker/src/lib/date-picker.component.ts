@@ -3,7 +3,8 @@ import { coerceBooleanProperty } from '@angular/cdk/coercion';
 import {
     Component,
     DoCheck,
-    ElementRef, EventEmitter,
+    ElementRef,
+    EventEmitter,
     HostBinding,
     Input,
     OnDestroy,
@@ -11,22 +12,26 @@ import {
     Optional,
     Output,
     Self,
-    ViewChild
+    ViewChild,
 } from '@angular/core';
-import {
-    ControlValueAccessor,
-    NgControl
-} from '@angular/forms';
+import { ControlValueAccessor, NgControl } from '@angular/forms';
 import { MatFormFieldControl, MatSuffix } from '@angular/material/form-field';
 import {
     isString,
     strToDate,
     strToDateTime,
     dateTimeToYmdStr,
-    dateToYmdStr, dateTimeToTime
+    dateToYmdStr,
+    dateTimeToTime,
+    strToTime,
 } from '@ss/common/api-common';
 import { Subject } from 'rxjs';
-import { MatCalendarType, MatDatepicker, MatDatepickerInput, MatDatepickerToggle } from '@muaazh/angular-datepicker';
+import {
+    MatCalendarType,
+    MatDatepicker,
+    MatDatepickerInput,
+    MatDatepickerToggle,
+} from '@muaazh/angular-datepicker';
 import { MatInput } from '@angular/material/input';
 import { MatDatepickerModule } from '@muaazh/angular-datepicker';
 
@@ -70,8 +75,15 @@ export class DatePickerComponent
         fm.monitor(elRef.nativeElement, true).subscribe((origin) => {
             if (this.focused && !origin) {
                 if (this.textField.nativeElement.value) {
-                    if (!strToDate(this.textField.nativeElement.value)) {
-                        this.textField.nativeElement.value = null;
+                    if (this._type === 'time') {
+                        if (!strToTime(this.textField.nativeElement.value)) {
+                            this.textField.nativeElement.value = null;
+                        }
+                    } else {
+                        // this validates dateTime & date
+                        if (!strToDate(this.textField.nativeElement.value)) {
+                            this.textField.nativeElement.value = null;
+                        }
                     }
                 }
                 this.onTouched();
@@ -153,6 +165,7 @@ export class DatePickerComponent
         this.isDisabled = coerceBooleanProperty(value);
         this.stateChanges.next();
     }
+
     static nextId = 0;
     onChange: (date: any) => void;
     onTouched: () => void;
@@ -233,13 +246,13 @@ export class DatePickerComponent
 
     onKeyUp(event: KeyboardEvent): void {
         const txt = (event.target as HTMLInputElement).value;
-        // 1-1-2000 is an example of the shortest valid date (8 chars)
-        let value: Date = null;
-        if (txt && txt.length > 8) {
-            value =
-                this._type == 'datetime' || this._type === 'time'
-                    ? strToDateTime(txt)
-                    : strToDate(txt);
+        let value: Date;
+        if (this._type === 'time') {
+            value = strToTime(txt);
+        } else if (this._type === 'datetime') {
+            value = strToDateTime(txt);
+        } else {
+            value = strToDate(txt);
         }
         try {
             this.onChange(value);
@@ -277,9 +290,13 @@ export class DatePickerComponent
         if (obj == null) {
             this.date = null;
         } else if (isString(obj)) {
-            if (this._type == 'datetime' || this._type === 'time')
+            if (this._type == 'time') {
+                this.date = strToTime(obj as any);
+            } else if (this._type == 'datetime') {
                 this.date = strToDateTime(obj as any);
-            else this.date = strToDate(obj as any);
+            } else {
+                this.date = strToDate(obj as any);
+            }
         } else if (obj instanceof Date) {
             this.date = obj;
         } else {
