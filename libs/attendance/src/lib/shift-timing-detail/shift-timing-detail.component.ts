@@ -10,11 +10,10 @@ import {SnackBarService} from '@ss/common/ui-shell';
 import { MatCard, MatCardHeader, MatCardContent } from "@angular/material/card";
 import { MatMiniFabButton } from "@angular/material/button";
 import { MatTooltip } from "@angular/material/tooltip";
-import { TranslateDirective } from "../../../../common/ui-lang/src/lib/translate.directive";
 import { NgIf } from "@angular/common";
 import { MatFormField, MatLabel, MatError } from "@angular/material/form-field";
-import { DatePickerComponent } from "../../../../common/ui-datepicker/src/lib/date-picker.component";
-import { TranslatePipe } from "../../../../common/ui-lang/src/lib/translate.pipe";
+import { DatePickerComponent } from '@ss/common/ui-datepicker';
+import { TranslatePipe, TranslateDirective } from '@ss/common/ui-lang';
 import { MaterialModule } from '@ss/common/api-common';
 
 @Component({
@@ -96,7 +95,6 @@ export class ShiftTimingDetailComponent implements OnInit {
         value.to = this.toDate(value.to);
         value.breakFrom = this.toDate(value.breakFrom);
         value.breakTo = this.toDate(value.breakTo);
-        // console.log(value);
         this.entitySrv
             .save(value)
             .subscribe(res => {
