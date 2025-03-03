@@ -129,7 +129,7 @@ export const scheduledSalesNavTree: SideNavNode = {
             accessRights: 'Compensation'
         },
         {
-            name: 'SCH_PAYMENT_COMPENSATIONS',
+            name: 'LOGISTICS_PAYMENT_COMPENSATION',
             icon: 'fa-solid fa-scale-unbalanced-flip',
             route: ABS_PAYMENT_COMPENSATIONS_URL,
             accessRights: 'Compensation'
