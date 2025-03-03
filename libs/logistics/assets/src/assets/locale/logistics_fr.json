@@ -183,5 +183,6 @@
     "SUPPLIER_COMPENSATION": "Compensations fournisseurs",
     "CUSTOMER_COMPENSATION": "Compensations clients",
     "CUSTOMER_PAYMENTS":     "Paiements clients",
-    "SUPPLIER_PAYMENTS":     "Paiements des fournisseurs"
+    "SUPPLIER_PAYMENTS":     "Paiements des fournisseurs",
+    "CHECK_NUMBER":         "Numéro de cheque"
 }

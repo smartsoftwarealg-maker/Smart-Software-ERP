@@ -26,5 +26,4 @@ export class DebtService extends BaseEntityService<Debt> {
         const params = (extraPrams||new HttpParams()).set('mode', this.#_selectionMode);
         return super.getList(page, pageSize, filter, sortBy, params);
     }
-
 }

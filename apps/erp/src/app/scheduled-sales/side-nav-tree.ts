@@ -14,7 +14,10 @@ import {
     ABS_SCHEDULED_SALES_DASHBOARD_URL,
     ABS_CUSTOMER_COMPLAINTS_URL,
     ABS_CMMS_REPORTS_URL,
-    ABS_SCHEDULED_SALES_REPORTS_URL, ABS_SCHEDULED_SALES_PASSWORD_RESET_URL, ABS_SALES_COMPENSATIONS_URL
+    ABS_SCHEDULED_SALES_REPORTS_URL,
+    ABS_SCHEDULED_SALES_PASSWORD_RESET_URL,
+    ABS_SALES_COMPENSATIONS_URL,
+    ABS_PAYMENT_COMPENSATIONS_URL
 } from '../common';
 import {SideNavNode} from '@ss/common/api-common';
 
@@ -121,8 +124,14 @@ export const scheduledSalesNavTree: SideNavNode = {
         },
         {
             name: 'SCH_COMPENSATIONS',
-            icon: 'fa-solid fa-scale-balanced',
+            icon: 'fa-solid fa-scale-unbalanced',
             route: ABS_SALES_COMPENSATIONS_URL,
+            accessRights: 'Compensation'
+        },
+        {
+            name: 'SCH_PAYMENT_COMPENSATIONS',
+            icon: 'fa-solid fa-scale-unbalanced-flip',
+            route: ABS_PAYMENT_COMPENSATIONS_URL,
             accessRights: 'Compensation'
         },
         {

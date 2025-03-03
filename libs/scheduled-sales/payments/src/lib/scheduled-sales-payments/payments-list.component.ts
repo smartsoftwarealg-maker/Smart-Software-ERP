@@ -28,7 +28,6 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     standalone: true,
     imports: [
         CommonModule,
-
         MatCell,
         MatColumnDef,
         MatHeaderCell,
