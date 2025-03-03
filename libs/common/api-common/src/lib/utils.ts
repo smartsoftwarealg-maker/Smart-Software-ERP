@@ -236,6 +236,10 @@ export function dateTimeToTime(date: Date | string): string {
     }
 }
 
+export function strToTime(s: string): Date | null {
+    return strToDateTime('1970-01-01 ' + s);
+}
+
 export function strToDate(str: string) {
     const date = strToDateTime(str);
     if (date != null) {
