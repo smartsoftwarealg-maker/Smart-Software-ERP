@@ -99,7 +99,9 @@ export class GradingsComponent implements OnInit {
 
     processing = signal(false);
     gradingMode = signal(true);
-    emp = signal<IEmployee|null>(null);
+    employee  = signal<IEmployee|null>(null);
+    finalGrade = signal(false);
+    gradeDifference = signal(0);
     imageModel = new ImageModel(this.httpSrv);
 
     subordinateLookup  = new PersonAutocompleteClass(this.subordinateSrv);
@@ -127,7 +129,7 @@ export class GradingsComponent implements OnInit {
             .pipe(debounceTime(300),
                 distinctUntilChanged(),
                 takeUntilDestroyed(this.destroyRef))
-            .subscribe(res => this.refresh(this.emp()));
+            .subscribe(res => this.refresh(this.employee()));
         this.destroyRef.onDestroy(() => this.subscriptions.forEach(s => s.unsubscribe()));
         this.subordinateLookup.onObjectSelected = e => this.refresh(e);
         this.shellSrv.setTitle('PAYROLL_GICA_GRADING');
@@ -157,6 +159,7 @@ export class GradingsComponent implements OnInit {
                                 (<FormGroup>c).controls[ctrl].enable({ onlySelf: false });
                             });
                         this.refreshSubordinates();
+                        this.finalGrade.set(res === 3);
                     }
                 }));
 
@@ -189,7 +192,7 @@ export class GradingsComponent implements OnInit {
     }
 
     private refresh(e: IEmployee) {
-        this.emp.set(e);
+        this.employee.set(e);
         this.imageModel.setImageUrl(this.employeeSrv.getPhotoUrl(e?.id||0), false);
         this.grades.clear();
         this.labels = [];
@@ -209,7 +212,7 @@ export class GradingsComponent implements OnInit {
                         description: [g.description],
                         grade1 :     [{ value: g.grade1, disabled: !this.gradingSrv.gradingMode || this.gradeCtrl.value !== 1}  ],
                         grade2:      [{ value: idx >= 2? g.grade2: 0, disabled: !this.gradingSrv.gradingMode || this.gradeCtrl.value !== 2}],
-                        finalGrade:  [{ value: idx >= 3? g.finalGrade : 0, disabled: this.gradeCtrl.value !== 3}],
+                        finalGrade:  [{ value: idx >= 3? g.finalGrade : 0, disabled: this.gradeCtrl.value !== 3 || this.gradeDifference() <= 5}],
                         userId:      [this.loginSrv.appCtx.id]
                     });
                     this.grades.push(temp);
@@ -217,6 +220,9 @@ export class GradingsComponent implements OnInit {
                     this.labels.push(g.description);
                 });
                 this.saveButton.disabled = res.length == 0;
+                const diff = res.reduce((acc, cur) => [acc[0] + cur.grade1, acc[1] + cur.grade2], [0, 0]);
+                this.gradeDifference.set(Math.abs(diff[1] - diff[0]));
+
             });
     }
 
@@ -236,7 +242,7 @@ export class GradingsComponent implements OnInit {
     }
 
     selectEmployee(emp: Employee) {
-        this.emp.set(emp);
+        this.employee.set(emp);
         this.selectedId = emp?.id | 0;
         this.refresh(emp);
     }

@@ -12,6 +12,12 @@ mat-card {
     margin: 1em auto;
     border-radius: 1.4em;
 }
+p {
+    width: 90%;
+    margin: 0.5em auto;
+    padding: 1em;
+    font-weight: bolder;
+}
 .table_div {
     height: calc(100% - 260px);
     overflow-y: auto;

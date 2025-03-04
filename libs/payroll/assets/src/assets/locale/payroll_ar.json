@@ -202,7 +202,8 @@
     "EVOLUTION_REPORT":      "الخصوم",
     "CAREER_CRITERIA":       "معايير",
     "GRDE":                  "درجة",
-    "DEDUCTION_FORMULA":     "نموذج الخصم",
+    "DEDUCTION_FORMULA":     "المعادلة",
     "PROMOTION_MOTIVE":      "دوافع الترقية",
-    "IS_PROMOTION":          "ترقية"
+    "IS_PROMOTION":          "ترقية",
+    "FINAL_MEMO":            "ملحوظة تم تصحيحها من قبل مدير الهيكل في حالة تجاوز الفارق بين المقيّمين الأوائل 05 نقاط"
 }

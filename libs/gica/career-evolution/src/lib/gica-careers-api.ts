@@ -27,7 +27,7 @@ export interface CareerMotive {
 export interface Constant {
     id: number;
     centerId: number;
-    deduction: string;
+    formula: string;
     passingGrade: number;
     rate: string;
     script?: string;
