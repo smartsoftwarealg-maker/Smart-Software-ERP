@@ -66,7 +66,7 @@ export class ConstantDetailComponent extends BaseEntityDetailComponent<Constant>
             centerId:     [b.centerId || this.#loginSrv.appCtx.center],
             passingGrade: [b.passingGrade, [Validators.required, Validators.min(0), Validators.max(100)]],
             rate:         [b.rate, Validators.required],
-            deduction:    [b.deduction, Validators.required],
+            formula:      [b.formula, Validators.required],
             script:       [b.script]
         });
     }

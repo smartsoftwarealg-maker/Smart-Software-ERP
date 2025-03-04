@@ -201,7 +201,8 @@
     "EVOLUTION_REPORT":      "Evolution report",
     "CAREER_CRITERIA":       "Criteria",
     "GRADE":                 "Grade",
-    "DEDUCTION_FORMULA":     "Deduction formula",
+    "DEDUCTION_FORMULA":     "Formula",
     "PROMOTION_MOTIVE":      "Promotion motive",
-    "IS_PROMOTION":          "Promotion?"
+    "IS_PROMOTION":          "Promotion?",
+    "FINAL_MEMO":            "Note Corrected by the director of the structure in the case where the difference of the first raters exceeds 05 points"
 }

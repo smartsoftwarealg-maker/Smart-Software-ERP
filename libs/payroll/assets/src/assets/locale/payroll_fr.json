@@ -201,7 +201,8 @@
     "EVOLUTION_REPORT":      "Etat evolution",
     "CAREER_CRITERIA":       "Critères",
     "GRADE":                 "Point",
-    "DEDUCTION_FORMULA":     "Formule d'abattement",
+    "DEDUCTION_FORMULA":     "Formule",
     "PROMOTION_MOTIVE":      "Motifs de promotion",
-    "IS_PROMOTION":          "Promotion?"
+    "IS_PROMOTION":          "Promotion?",
+    "FINAL_MEMO":            "Note Corrigé par le directeur de la structure dans le cas ou la différence des premiers notateurs dépasse les 05 points"
 }

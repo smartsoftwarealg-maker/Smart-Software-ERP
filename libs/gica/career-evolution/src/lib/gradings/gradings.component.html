@@ -1,18 +1,25 @@
 <mat-card>
-    <div class="ctrl_div">
-        <mat-form-field class="year">
-            <mat-label translate>COMMON_YEAR</mat-label>
-            <input matInput [formControl]="yearCtrl" type="number" min="{{currYear - 5}}" max="{{currYear}}">
-        </mat-form-field>
-        <mat-form-field class="grade">
-            <mat-label translate>PAYROLL_GRADE</mat-label>
-            <input matInput [formControl]="gradeCtrl" type="number" min="1" max="3">
-        </mat-form-field>
-        <mat-form-field class="grade">
-            <mat-label translate>COMMON_SEARCH</mat-label>
-            <input matInput [formControl]="searchCtrl" type="string" (keyup.enter)="refreshSubordinates()">
-        </mat-form-field>
-    </div>
+    <mat-card-content>
+        <div class="ctrl_div">
+            <mat-form-field class="year">
+                <mat-label translate>COMMON_YEAR</mat-label>
+                <input matInput [formControl]="yearCtrl" type="number" min="{{currYear - 5}}" max="{{currYear}}">
+            </mat-form-field>
+            <mat-form-field class="grade">
+                <mat-label translate>PAYROLL_GRADE</mat-label>
+                <input matInput [formControl]="gradeCtrl" type="number" min="1" max="3">
+            </mat-form-field>
+            <mat-form-field class="grade">
+                <mat-label translate>COMMON_SEARCH</mat-label>
+                <input matInput [formControl]="searchCtrl" type="string" (keyup.enter)="refreshSubordinates()">
+            </mat-form-field>
+        </div>
+    </mat-card-content>
+    @if (finalGrade()) {
+        <mat-card-footer>
+            <p  class="f-warn" translate>PAYROLL_FINAL_MEMO</p>
+        </mat-card-footer>
+    }
 </mat-card>
 <div class="container__div">
     <div class="emp__div">
@@ -48,15 +55,15 @@
         </div>
         <ss-pagination [paginationModel]="paginator"></ss-pagination>
 
-        @if (emp()?.id) {
+        @if (employee()?.id) {
             <div class="person-photo employee-card">
                 <ss-image-input width="120px" height="120px" [imageModel]="imageModel"
                                 style="display: inline-block;">
                 </ss-image-input>
                 <div class="employee-details">
-                    <div style="font-size: 1.5em; text-align: start; font-weight: bolder">{{ emp()?.id }}</div>
-                    <div style="font-weight: bold;">{{ emp()?.lastName }} {{ emp()?.firstName }}</div>
-                    <div style="font-size: 0.7em">{{ emp()?.post }}</div>
+                    <div style="font-size: 1.5em; text-align: start; font-weight: bolder">{{ employee()?.id }}</div>
+                    <div style="font-weight: bold;">{{ employee()?.lastName }} {{ employee()?.firstName }}</div>
+                    <div style="font-size: 0.7em">{{ employee()?.post }}</div>
                 </div>
             </div>
         }
