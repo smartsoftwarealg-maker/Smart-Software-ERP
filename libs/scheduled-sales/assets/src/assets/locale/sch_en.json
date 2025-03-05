@@ -30,5 +30,7 @@
     "SCAEK":              "SCAKE",
     "COMPANY_SELECTOR":   "Company selector",
     "COMPENSATIONS":      "Compensations",
-    "ADVANCE":            "Advance"
+    "ADVANCE":            "Advance",
+    "SHIPPING":           "Shipping",
+    "RECEIVER":           "Receiver"
 }

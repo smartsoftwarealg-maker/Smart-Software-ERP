@@ -17,7 +17,7 @@ import {
     ABS_SCHEDULED_SALES_REPORTS_URL,
     ABS_SCHEDULED_SALES_PASSWORD_RESET_URL,
     ABS_SALES_COMPENSATIONS_URL,
-    ABS_PAYMENT_COMPENSATIONS_URL
+    ABS_PAYMENT_COMPENSATIONS_URL, ABS_SALES_INVOICE_VALIDATION_URL
 } from '../common';
 import {SideNavNode} from '@ss/common/api-common';
 
@@ -121,6 +121,12 @@ export const scheduledSalesNavTree: SideNavNode = {
             route: ABS_SCHEDULED_SALES_PARTNER_SCHEDULES,
             accessRights: 'PSchedule',
             customerRights: {read: true, edit: false, delete: false, write: false}
+        },
+        {
+            name: 'SCH_SHIPPING',
+            icon: 'fa-solid fa-square-check',
+            route: ABS_SALES_INVOICE_VALIDATION_URL,
+            accessRights: 'Sale'
         },
         {
             name: 'SCH_COMPENSATIONS',

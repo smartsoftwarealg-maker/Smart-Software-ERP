@@ -34,7 +34,7 @@
             <mat-cell *matCellDef="let e">
                 <mat-checkbox [class.mat-checkbox-disabled]="false"
                               disabled="true"
-                              [checked]="e.document === 1">
+                              [checked]="e.document !== 1">
                 </mat-checkbox>
             </mat-cell>
         </ng-container>

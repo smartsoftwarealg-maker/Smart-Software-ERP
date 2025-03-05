@@ -598,6 +598,9 @@
             "@ss/scheduled-sales/sales-quota": [
                 "libs/scheduled-sales/sales-quota/src/index.ts"
             ],
+            "@ss/scheduled-sales/sales-validation": [
+                "libs/scheduled-sales/invoice-validation/src/index.ts"
+            ],
             "@ss/scheduled-sales/supplier-trucks": [
                 "libs/scheduled-sales/supplier-trucks/src/index.ts"
             ],

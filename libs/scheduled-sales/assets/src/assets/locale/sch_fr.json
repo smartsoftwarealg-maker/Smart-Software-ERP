@@ -30,5 +30,7 @@
     "SG":                 "SCSG",
     "COMPANY_SELECTOR":   "Sélection de compagnie",
     "COMPENSATIONS":      "Compensations",
-    "ADVANCE":            "Avance"
+    "ADVANCE":            "Avance",
+    "SHIPPING":           "Expedition",
+    "RECEIVER":           "Receveur"
 }

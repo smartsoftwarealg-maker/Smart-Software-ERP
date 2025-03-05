@@ -1,7 +1,7 @@
 import { Component, computed, effect, inject, signal, Signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { BaseChildEntityListComponent, BaseEntityListComponent } from '@ss/common/ui-base-entity';
-import { Compensation, Debt, InvoicePayment } from '../services/compensation-api';
+import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
+import { Debt } from '../services/compensation-api';
 import {
     MatCell,
     MatCellDef,
@@ -12,12 +12,7 @@ import {
 } from '@angular/material/table';
 import { PaginationComponent } from '@ss/common/ui-pagination';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
-import { InvoicePaymentService } from '../services/invoice-payment.service';
-import { MatMiniFabButton } from '@angular/material/button';
-import { MatTooltip } from '@angular/material/tooltip';
-import { CompensationService } from '../services/compensation.service';
 import { Joint, Payment, SSPaymentService } from '@ss/scheduled-sales/api-scheduled-sales';
-import { BankService } from '@ss/administration/api-bank';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DefaultReportService } from '@ss/common/ui-default-report-component';
@@ -25,12 +20,10 @@ import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { PaginationModel, PaginatorPersistenceService } from '@ss/common/api-common';
 import { MatSort, MatSortHeader } from '@angular/material/sort';
 import { MatCheckbox } from '@angular/material/checkbox';
-import { DebtsComponent } from '../debts-list/debts.component';
 import { DebtService } from '../services/debt.service';
 import { HttpParams } from '@angular/common/http';
-import { switchMap } from 'rxjs';
-import { callback } from 'chart.js/helpers';
 import { MatRadioButton, MatRadioChange, MatRadioGroup } from '@angular/material/radio';
+import { SsDirectPaymentService } from '@ss/scheduled-sales/api-scheduled-sales';
 
 enum SelectionMode {
     Debt = 1,
@@ -73,7 +66,7 @@ export class PaymentCompensationListComponent extends BaseEntityListComponent<Pa
     selectedChild = 0;
 
     constructor(
-        public override entitySrv: SSPaymentService,
+        public override entitySrv: SsDirectPaymentService,
         public override shellSrv: ShellService,
         public override snackBarSrv: SnackBarService,
         public override route: ActivatedRoute,
@@ -116,17 +109,30 @@ export class PaymentCompensationListComponent extends BaseEntityListComponent<Pa
     }
 
     joinOrFree(row: Debt) {
-        const joint: Joint = { salesId: row.id, paymentId: this.selected, agentId: row.agentId };
-        (row.payment > 0? this.entitySrv.free(joint) : this.entitySrv.join(joint))
-            .subscribe(() => {
-                this.refreshChild();
-                this.selectedRow.compensation += row.payment > 0? -row.payment : Math.min(row.ftt, this.selectedRow.amount - this.selectedRow.compensation);
-            });
+        if (this.#selectionMode() === SelectionMode.Debt) {
+            this.join(row);
+        } else {
+            this.free(row);
+        }
     }
 
-    override refresh(callback?: () => void) {
-        super.refresh(callback);
-        this.selectRow(null);
+    private join(row: Debt) {
+        const joint: Joint = { salesId: row.id, paymentId: this.selected, agentId: row.agentId };
+        const selectedRow = this.selectedRow;
+        this.entitySrv.join(joint)
+            .subscribe(() => {
+                this.refreshChild();
+                this.refresh(() => this.selectRow(selectedRow));
+            });
+    }
+    private free(row: Debt) {
+        const joint: Joint = { salesId: row.id, paymentId: this.selected, agentId: row.agentId };
+        const selectedRow = this.selectedRow;
+        this.entitySrv.free(joint)
+            .subscribe(() => {
+                this.refreshChild();
+                this.refresh(() => this.selectRow(selectedRow));
+            });
     }
 
     onChange(e: MatRadioChange) {

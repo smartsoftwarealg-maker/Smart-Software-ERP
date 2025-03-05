@@ -6,3 +6,4 @@ export * from './lib/sales-mode.service';
 export * from './lib/supplier-truck.service';
 export * from './lib/truck-contract.service';
 export * from './lib/ss-payment.service';
+export * from './lib/ss-direct-payment.service';

@@ -30,5 +30,7 @@
     "SCAEK":              "العين الكبيرة",
     "COMPANY_SELECTOR":   "اختيار الشركة",
     "COMPENSATIONS":      "التعويضات",
-    "ADVANCED":     "مقدم"
+    "ADVANCED":     "مقدم",
+    "SHIPPING":           "شحن",
+    "RECEIVER":           "المستلم"
 }
