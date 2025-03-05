@@ -12,12 +12,12 @@ export class SSPaymentService extends BaseEntityService<Payment>{
     constructor(protected override httpSrv: HttpService) {
         super(httpSrv, SS_PAYMENTS);
     }
-
-    join(joint: Joint): Observable<{ id: number}> {
-        return this.httpSrv.post(`/ssales/debts/join`, joint);
-    }
-
-    free(joint: Joint): Observable<{ id: number}> {
-        return this.httpSrv.remove(`/ssales/debts/free`, joint);
-    }
+    //
+    // join(joint: Joint): Observable<{ id: number}> {
+    //     return this.httpSrv.post(`/ssales/debts/join`, joint);
+    // }
+    //
+    // free(joint: Joint): Observable<{ id: number}> {
+    //     return this.httpSrv.remove(`/ssales/debts/free`, joint);
+    // }
 }

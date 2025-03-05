@@ -19,7 +19,7 @@ import {
     DASHBOARD_URL,
     SS_COMPLAINTS_URL,
     COMMON_REPORTS_URL,
-    PASSWORD_RESET_URL, SALES_COMPENSATION_URL, SALES_PAYMENT_COMPENSATION_URL
+    PASSWORD_RESET_URL, SALES_COMPENSATION_URL, SALES_PAYMENT_COMPENSATION_URL, SALES_INVOICE_VALIDATION_URL
 } from '../common';
 import {ProjectListComponent, ProjectDetailComponent} from '@ss/scheduled-sales/projects';
 import {ArticleDetailComponent, ArticleListComponent} from '@ss/scheduled-sales/article';
@@ -60,8 +60,14 @@ import {
 import {
     SalesCompensationDetailComponent
 } from '@ss/scheduled-sales/compensations';
+import { InvoiceValidationComponent } from '@ss/scheduled-sales/sales-validation';
 
 export const scheduledSalesRoutes: Routes = [
+    {
+        path: SALES_INVOICE_VALIDATION_URL,
+        component: InvoiceValidationComponent,
+        canActivate: [loginGuard]
+    },
     {
         path: SALES_PAYMENT_COMPENSATION_URL,
         component: PaymentCompensationListComponent,

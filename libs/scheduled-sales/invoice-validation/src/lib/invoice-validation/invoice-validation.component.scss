@@ -1,0 +1,64 @@
+.size {
+    width: 90%;
+    max-width: 1200px;
+    margin: 8px auto 0;
+}
+
+mat-card {
+    padding: 0.5em;
+    border-radius: 1.4em;
+}
+
+.div_table {
+    height: calc(100% - 190px);
+    overflow: auto;
+}
+
+.main-table {
+    width: 100%;
+    overflow-x: auto;
+}
+mat-table {
+    width: 100%;
+    min-width: 1000px;
+}
+
+// keep the material design specs
+.mat-row, .mat-header-row {
+    padding-right: 16px;
+    padding-left: 16px;
+}
+
+.mat-column-serialNumber,
+.mat-column-date,
+.mat-column-reference,
+.mat-column-quantity,
+.mat-column-receiverDescription,
+.mat-column-customerCode {
+    flex: 1 1 120px;
+}
+
+.mat-column-quantity {
+    justify-content: center;
+}
+
+
+.mat-column-validationTime {
+    flex: 1 1 150px;
+}
+
+.mat-column-denomination,
+.mat-column-description {
+    flex: 2 1 200px;
+}
+
+
+.pagination-container {
+
+    ss-pagination {
+        left: 0;
+        right: 0;
+        position: sticky;
+        margin: auto;
+    }
+}
