@@ -28,7 +28,7 @@ export interface AttendanceMachine {
     description: string;
 }
 
-export interface AttendanceType {
+export interface AbsenceType {
     id: number;
     description: String,
     descriptionAr?: string;
