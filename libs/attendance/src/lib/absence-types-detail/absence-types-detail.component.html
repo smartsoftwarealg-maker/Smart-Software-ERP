@@ -1,0 +1,31 @@
+<mat-card>
+    <mat-card-content>
+        <form *ngIf="form !== null" novalidate [formGroup]="form">
+
+            <mat-form-field class="default-50">
+                <mat-label translate>ADMINISTRATION_DESCRIPTION</mat-label>
+                <input matInput formControlName="description" type="text" autofocus required>
+                <mat-error *ngIf="form.controls['description'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
+            </mat-form-field>
+
+            <mat-form-field id="letter" class="default-50">
+                <mat-label translate>ATT_LETTER</mat-label>
+                <input matInput formControlName="letter" type="text"  required>
+                <mat-error *ngIf="form.controls['letter'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
+            </mat-form-field>
+
+          <mat-form-field id="color" class="default-50">
+                <mat-label translate>ATT_COLOR</mat-label>
+                <input matInput formControlName="color" type="color"  required>
+                <mat-error *ngIf="form.controls['color'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
+            </mat-form-field>
+
+            <mat-form-field id="descriptionAr" class="default-50">
+                <mat-label translate>ADMINISTRATION_DESCRIPTION</mat-label>
+                <input matInput formControlName="descriptionAr" type="text">
+                <mat-error *ngIf="form.controls['descriptionAr'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
+            </mat-form-field>
+        </form>
+
+    </mat-card-content>
+</mat-card>

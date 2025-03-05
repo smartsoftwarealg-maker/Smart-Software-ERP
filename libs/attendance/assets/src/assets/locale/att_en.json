@@ -19,5 +19,9 @@
     "DAY":              "Day",
     "BREAK_FROM":       "Break from",
     "BREAK_TO":         "Break to",
-    "DATABASE":         "Database"
+    "DATABASE":         "Database",
+    "ABSENCE_TYPES":    "Absence types",
+    "COLOR":            "Color",
+    "FIELD":            "Field",
+    "LETTER":           "Letter"
 }

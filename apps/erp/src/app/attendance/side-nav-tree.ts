@@ -1,5 +1,6 @@
 import {SideNavNode} from '@ss/common/api-common';
 import {
+    ABS_ABSENCE_TYPES_URL,
     ABS_ATTENDANCE_ABSENCE_MOTIVE_URL,
     ABS_ATTENDANCE_HOLIDAY_URL,
     ABS_ATTENDANCE_LOG_URL,
@@ -54,6 +55,12 @@ export const attendanceNavTree: SideNavNode = {
             route: ABS_ATTENDANCE_LOG_URL,
             accessRights: 'Attendance'
         },
+        {
+            name: 'ATT_ABSENCE_TYPES',
+            icon: 'fa-solid fa-person-circle-question',
+            route: ABS_ABSENCE_TYPES_URL,
+            accessRights: 'Attendance'
+        }
     ],
     accessRights: 'ATTENDANCE_APP'
 };
