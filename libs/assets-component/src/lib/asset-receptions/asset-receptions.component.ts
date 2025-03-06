@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
-import { ShellService, SnackBarService } from '@ss/common/ui-shell';
+import { KeepOnToolbar, ShellService, SnackBarService, ToolbarButton } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { DefaultReportService } from '@ss/common/ui-default-report-component';
 import {  ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
@@ -32,12 +32,20 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         TranslatePipe,
         TranslateDirective,
         RouterModule,
-
         PaginationComponent
     ]
 
 })
 export class AssetReceptionsComponent extends BaseEntityListComponent<AssetReception> {
+    public duplicateButton: ToolbarButton = {
+        icon: 'fa-solid fa-layer-plus',
+        label: 'COMMON_ADD',
+        disabled: false,
+        visible: false,
+        keepOnToolbar: KeepOnToolbar.DYNAMIC,
+        click: () => this.duplicate()
+    };
+
     private DEF_COLS = [
         'reference',
         'description',
@@ -101,6 +109,7 @@ export class AssetReceptionsComponent extends BaseEntityListComponent<AssetRecep
         super.ngOnInit();
         // this.editButton.visible = false;
         // this.deleteButton.visible = false;
+        this.shellSrv.addButton(this.duplicateButton);
         this.shellSrv.updateShell();
         this.isParamSrv
             .is('AQS')
@@ -109,6 +118,7 @@ export class AssetReceptionsComponent extends BaseEntityListComponent<AssetRecep
 
     override select(id: number) {
         super.select(id);
+        this.duplicateButton.visible = (id||0) > 0;
         this.entitySrv.getAssets(id || 0).subscribe(res => this.detail = res);
     }
 
@@ -121,5 +131,9 @@ export class AssetReceptionsComponent extends BaseEntityListComponent<AssetRecep
         if (id > 0) {
             this.router.navigate(['../assets', id], { relativeTo: this.route }).then();
         }
+    }
+
+    duplicate() {
+        this.router.navigate([0], {relativeTo: this.route, queryParams: {sourceId: this.selected } }).then();
     }
 }

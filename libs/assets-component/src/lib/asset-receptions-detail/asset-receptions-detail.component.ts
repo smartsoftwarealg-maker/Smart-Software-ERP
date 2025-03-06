@@ -22,6 +22,8 @@ import { DatePickerComponent } from '@ss/common/ui-datepicker';
 
 
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
+import { Observable, of, switchMap } from 'rxjs';
+import { tap } from 'rxjs/operators';
 
 @Component({
     selector: 'ss-asset-receptions-detail',
@@ -54,10 +56,13 @@ export class AssetReceptionsDetailComponent extends BaseEntityDetailComponent<As
         click: () => this.sendMessage()
     };
     private validated = false;
+    private sourceDoc: AssetReception|null = null;
+
     supplierAutoCompleteModel = new DefaultAutoCompleteModel(this.supplierSrv, 'id', 'denomination');
     origSupplierLookup = new DefaultAutoCompleteModel(this.supplierSrv, 'id', 'denomination');
     requesterLookup = new DefaultAutoCompleteModel(this.consumerSrv, 'id', 'denomination');
     LOCAL_RECEPTIONS_ARCHIVES = ASSET_RECEPTIONS_ARCHIVES;
+    sourceId = 0;
 
     constructor(
         public override entitySrv: AssetReceptionService,
@@ -71,36 +76,43 @@ export class AssetReceptionsDetailComponent extends BaseEntityDetailComponent<As
         super(entitySrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'ASSET_RECEPTIONS');
     }
 
+    override ngOnInit() {
+        super.ngOnInit();
+    }
 
     public override setupForm(b: AssetReception) {
         // Make sure to update the template if you edit the configuration here
         if (b.id) {
             this.router.navigate(['archive'], { relativeTo: this.route }).then();
+        } else {
+            b = this.sourceDoc||b;
+            b.id = 0;
+            b.serialNumber = 0;
         }
         this.shellSrv.addButton(this.sendBtn);
         this.saveButton.visible = this.isEditable = this.isEditable && !b.validated;
         this.sendBtn.visible = b.id > 0; //this.isEditable &&
         this.validated = b.validated;
         return this.formBuilder.group({
-            id: [b.id],
-            centerId: [b.centerId || this.loginSrv.appCtx.center],
-            serialNumber: [{ value: b.serialNumber || 1, disabled: true }],
-            receptionDate: [b.receptionDate || new Date(), Validators.required],
-            requester: [b.requester],
-            supplier: [b.supplier, Validators.required],
-            origSupplier: [b.origSupplier],
-            requestNumber: [b.requestNumber],
-            orderNumber: [b.orderNumber],
+            id:             [b.id],
+            centerId:       [b.centerId || this.loginSrv.appCtx.center],
+            serialNumber:   [{ value: b.serialNumber || 1, disabled: true }],
+            receptionDate:  [b.receptionDate || new Date(), Validators.required],
+            requester:      [b.requester],
+            supplier:       [b.supplier, Validators.required],
+            origSupplier:   [b.origSupplier],
+            requestNumber:  [b.requestNumber],
+            orderNumber:    [b.orderNumber],
             deliveryNumber: [b.deliveryNumber],
-            invoiceNumber: [b.invoiceNumber],
-            requestDate: [b.requestDate],
-            memo: [b.memo],
-            orderDate: [b.orderDate],
-            deliveryDate: [b.deliveryDate],
-            invoiceDate: [b.invoiceDate],
-            status: [{ value: b.status, disabled: true }],
-            creatorName: [{ value: b.creatorName, disabled: true }],
-            modifierName: [{ value: b.modifierName, disabled: true }]
+            invoiceNumber:  [b.invoiceNumber],
+            requestDate:    [b.requestDate],
+            memo:           [b.memo],
+            orderDate:      [b.orderDate],
+            deliveryDate:   [b.deliveryDate],
+            invoiceDate:    [b.invoiceDate],
+            status:         [{ value: b.status, disabled: true }],
+            creatorName:    [{ value: b.creatorName, disabled: true }],
+            modifierName:   [{ value: b.modifierName, disabled: true }]
         });
     }
 
@@ -111,6 +123,7 @@ export class AssetReceptionsDetailComponent extends BaseEntityDetailComponent<As
         value.serialNumber = 0;
         return value;
     }
+
 
     // ngOnInit(): void {
     //     this.shellSrv.setGoBackFn(() => this.router.navigate([ABS_ASSET_RECEPTIONS_URL]).then());
@@ -150,6 +163,17 @@ export class AssetReceptionsDetailComponent extends BaseEntityDetailComponent<As
                 }
             });
         }
+    }
+
+    override preload(): Observable<any> {
+        return this.route
+            .queryParams
+            .pipe(switchMap(res => {
+                    this.sourceId = +res['sourceId'] || 0;
+                    return this.sourceId > 0 ? this.entitySrv.get(this.sourceId) : of(null);
+                }),
+                tap(res => this.sourceDoc = res));
+
     }
 
 }
