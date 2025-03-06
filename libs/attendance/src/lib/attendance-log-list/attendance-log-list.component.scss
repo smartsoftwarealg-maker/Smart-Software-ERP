@@ -7,3 +7,18 @@
 .table_div {
     min-height: calc(100% - 180px);
 }
+
+.mat-column-personId {
+    flex: 1 1 90px;
+}
+
+.mat-column-dateTime,
+.mat-column-firstName,
+.mat-column-updaterName,
+.mat-column-lastName {
+    flex: 1 1 150px;
+}
+.mat-column-typeDescription {
+    flex: 1 1 200px;
+}
+
