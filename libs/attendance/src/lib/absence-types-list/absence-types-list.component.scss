@@ -1,0 +1,28 @@
+.size {
+    width: 90%;
+    max-width: 900px;
+    margin: 4px auto;
+}
+
+.table_div {
+    min-height: calc(100% - 96px);
+    overflow-x: auto;
+}
+
+mat-table {
+    min-width: 800px;
+}
+
+.mat-column-description {
+    flex: 3 1 300px;
+}
+
+.mat-column-descriptionAr {
+    flex: 1 1 200px;
+}
+
+.color-circle {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+}

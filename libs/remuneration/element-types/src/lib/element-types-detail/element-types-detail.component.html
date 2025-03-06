@@ -8,14 +8,9 @@
                 <mat-error *ngIf="form.controls['description'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
             </mat-form-field>
 
-<!--            <mat-form-field id="fieldId" class="default-50 sm-100">-->
-<!--                <mat-label translate>REMUN_FIELD</mat-label>-->
-<!--                <input matInput formControlName="fieldId" type="text" autofocus required>-->
-<!--                <mat-error *ngIf="form.controls['fieldId'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>-->
-<!--            </mat-form-field>-->
 
             <mat-form-field class="default-100">
-                <mat-label translate>COMMON_FIELD_REQUIRED</mat-label>
+                <mat-label translate>PAYROLL_FIELD</mat-label>
                 <ss-auto-complete matInput
                                   [required]="true"
                                   [model]="infoLookupModel"

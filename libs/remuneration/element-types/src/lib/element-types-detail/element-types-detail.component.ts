@@ -33,7 +33,7 @@ export class ElementTypesDetailComponent extends BaseEntityDetailComponent<Eleme
     infoLookupModel = new ElementInfoLookupModel(new ElementsInfoService(this.httpSrv));
 
     constructor(
-        private infoSrv: ElementTypesService,
+        public infoSrv: ElementTypesService,
         public override shellSrv: ShellService,
         public override snackBarSrv: SnackBarService,
         public override route: ActivatedRoute,

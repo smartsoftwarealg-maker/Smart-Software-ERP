@@ -6,7 +6,8 @@ import {
 import {
     ABSENCE_MOTIVE_URL,
     ATTENDANCE_LOG_URL,
-    ATTENDANCE_MACHINES_URL, HOLIDAY_URL, MANUAL_ATTENDANCE_URL, SHIFT_ASSIGNMENT_URL, WORK_SHIFTS_URL
+    ATTENDANCE_MACHINES_URL, HOLIDAY_URL, MANUAL_ATTENDANCE_URL, SHIFT_ASSIGNMENT_URL, WORK_SHIFTS_URL,
+    ABSENCE_TYPE_URL
 } from '../common';
 
 
@@ -21,7 +22,9 @@ import {
     PersonShiftListComponent, ShiftTimingDetailComponent,
     ShiftTimingListComponent,
     WorkShiftDetailComponent,
-    WorkShiftListComponent
+    WorkShiftListComponent,
+    AbsenceTypesListComponent,
+    AbsenceTypesDetailComponent,
 } from '@ss/attendance';
 
 
@@ -135,6 +138,23 @@ export const attendanceRoutes: Routes = [
             {
                 path: ':id',
                 component: HolidayDetailComponent,
+                canActivate: [loginGuard],
+                canDeactivate: [CanDeactivateService],
+            },
+            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
+        ]
+    },
+    {
+        path: ABSENCE_TYPE_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: AbsenceTypesListComponent,
+                canActivate: [loginGuard]
+            },
+            {
+                path: ':id',
+                component: AbsenceTypesDetailComponent,
                 canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService],
             },

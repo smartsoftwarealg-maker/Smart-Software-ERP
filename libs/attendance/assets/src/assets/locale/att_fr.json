@@ -19,5 +19,6 @@
     "DAY":              "Jour",
     "BREAK_FROM":       "Début pause",
     "BREAK_TO":         "Fin pause",
-    "DATABASE":         "Base de données"
+    "DATABASE":         "Base de données",
+    "ABSENCE_TYPES":    "Types absence"
 }
