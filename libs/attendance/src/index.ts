@@ -18,3 +18,5 @@ export * from './lib/holiday-request-list/holiday-request-list.component';
 export * from './lib/holiday-request-detail/holiday-request-detail.component';
 export * from './lib/absence-motive-list/absence-motive-list.component';
 export * from './lib/absence-motive.service';
+export * from './lib/absence-types-list/absence-types-list.component';
+export * from './lib/absence-types-detail/absence-types-detail.component';

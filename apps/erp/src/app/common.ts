@@ -337,6 +337,7 @@ export const SHIFT_ASSIGNMENT_URL    = 'shift-assignments';
 export const ATTENDANCE_LOG_URL      = 'attendance-log';
 export const MANUAL_ATTENDANCE_URL   = 'manual-attendance';
 export const HOLIDAY_URL             = 'holidays';
+export const ABSENCE_TYPE_URL = 'absence-types';
 
 
 // Missions
@@ -351,6 +352,7 @@ export const ABS_ATTENDANCE_LOG_URL = '/' + [MAIN_PAGE_URL, ATTENDANCE_APP_URL, 
 export const ABS_ATTENDANCE_HOLIDAY_URL = '/' + [MAIN_PAGE_URL, ATTENDANCE_APP_URL, HOLIDAY_URL].join('/');
 export const ABS_ATTENDANCE_ABSENCE_MOTIVE_URL = '/' + [MAIN_PAGE_URL, ATTENDANCE_APP_URL, ABSENCE_MOTIVE_URL].join('/');
 export const ABS_MANUAL_SIGNATURE_URL = '/' + [MAIN_PAGE_URL, ATTENDANCE_APP_URL, MANUAL_ATTENDANCE_URL].join('/');
+export const ABS_ABSENCE_TYPES_URL = '/' + [MAIN_PAGE_URL, ATTENDANCE_APP_URL, ABSENCE_TYPE_URL].join('/');
 
 //Dashboard
 export const DASHBOARD_QUERY_URL = 'queries';
