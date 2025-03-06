@@ -1,0 +1,17 @@
+mat-card {
+    padding: 8px;
+    border-radius: 1.4em;
+}
+mat-progress-bar,
+mat-card,
+.button_div {
+    width: 90%;
+    max-width: 900px;
+    margin: 4px auto;
+}
+
+.button_div {
+    display: flex;
+    gap: 1em;
+    justify-content: flex-end;
+}

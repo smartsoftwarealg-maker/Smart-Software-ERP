@@ -1,0 +1,42 @@
+<mat-card>
+    <mat-card-content>
+        @if (form) {
+            <form [formGroup]="form" style="min-height: 100%; display: unset">
+                <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>PAYROLL_ID</mat-label>
+                    <input matInput formControlName="id" type="number">
+                </mat-form-field>
+
+                <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>PAYROLL_NEW_ID</mat-label>
+                    <input matInput formControlName="newId" type="number">
+                </mat-form-field>
+
+                <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>COMMON_FIRST_NAME</mat-label>
+                    <input matInput formControlName="firstName" type="text">
+                </mat-form-field>
+
+                <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>COMMON_LAST_NAME</mat-label>
+                    <input matInput formControlName="lastName" type="text">
+                </mat-form-field>
+
+                <div class="default-100 button_div">
+                    <button mat-raised-button color="primary"
+                            type="button"
+                            [disabled]="+form.controls.newId.value === 0 || processing()"
+                            (click)="update()">
+                        <i class="fa-solid fa-check"></i>
+                        {{ 'COMMON_UPDATE' | translate }}
+                    </button>
+                </div>
+
+            </form>
+        }
+    </mat-card-content>
+</mat-card>
+
+@if (processing()) {
+    <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+}

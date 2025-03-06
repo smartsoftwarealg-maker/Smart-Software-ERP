@@ -28,7 +28,7 @@ import {
     HR_ACTIVITY_URL,
     HR_PHYSICIAN_URL,
     HR_SPECIALTY_URL,
-    HR_CAREER_MOTIVE_URL
+    HR_CAREER_MOTIVE_URL, HR_ID_UPDATE_URL
 } from '../common';
 import {
     ABS_INDEX_URL,
@@ -92,7 +92,7 @@ import {
     PersonListComponent,
     PunishmentListComponent,
     EmployeeTrainingListComponent,
-    EmployeeDiplomaListComponent
+    EmployeeDiplomaListComponent, IdUpdateComponent
 } from '@ss/payroll/ui-employee';
 import {
     ACTIVATION_ROUTE_URL,
@@ -822,6 +822,7 @@ export const hrRoutes: Routes = [
             { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
         ]
     },
+    { path: HR_ID_UPDATE_URL, component: IdUpdateComponent, canActivate: [loginGuard] },
     {
         path: HR_SPECIALTY_URL,
         children: [
