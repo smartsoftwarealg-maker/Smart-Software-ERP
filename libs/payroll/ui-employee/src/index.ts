@@ -33,7 +33,7 @@ export * from './lib/employee-wives/list/employee-wives-list.component';
 export * from './lib/employee-wives/detail/employee-wife-detail.component';
 export * from './lib/employee-contracts/list/employee-contracts-list.component';
 export * from './lib/employee-contracts/detail/employee-contracts-detail.component';
-
+export * from './lib/id-update/id-update.component';
 
 
 

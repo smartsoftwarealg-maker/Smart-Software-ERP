@@ -32,4 +32,8 @@ export class EmployeeService extends BaseEntityService<Employee> {
     updatePassword(pwd: Password): Observable<any> {
         return this.httpSrv.post('/password', pwd);
     }
+
+    updateId(oldId: number, newId: number): Observable<{ count: number }> {
+        return this.httpSrv.put('/hr/id-update', {newId: newId, oldId: oldId});
+    }
 }
