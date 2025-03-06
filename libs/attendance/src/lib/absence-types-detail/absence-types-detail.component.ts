@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { AbsenceType } from '../attendance-api';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
@@ -16,6 +16,10 @@ import { MatError, MatFormField, MatLabel } from '@angular/material/form-field';
 import { TranslateDirective } from '@ss/common/ui-lang';
 import { MatInput } from '@angular/material/input';
 import { AbsenceTypesService } from '../absence-types.service';
+import { HttpService } from '@ss/common/api-common';
+import { ElementInfoLookupModel } from '@ss/remuneration/element-types';
+import { ElementsInfoService } from '@ss/remuneration/elementsinfo';
+import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 
 @Component({
     selector: 'ss-absence-types-detail',
@@ -32,10 +36,13 @@ import { AbsenceTypesService } from '../absence-types.service';
         MatLabel,
         TranslateDirective,
         MatInput,
-        MatError,
-    ],
+        MatError
+    ]
 })
 export class AbsenceTypesDetailComponent extends BaseEntityDetailComponent<AbsenceType> {
+    private httpSrv = inject(HttpService);
+    infoLookup = new ElementInfoLookupModel(new ElementsInfoService(this.httpSrv));
+
     constructor(
         public override entitySrv: AbsenceTypesService,
         public override shellSrv: ShellService,
@@ -51,7 +58,7 @@ export class AbsenceTypesDetailComponent extends BaseEntityDetailComponent<Absen
             route,
             formBuilder,
             confirmationSrv,
-            'ABSENCE_TYPES',
+            'ATT_ABSENCE_TYPES',
         );
     }
 

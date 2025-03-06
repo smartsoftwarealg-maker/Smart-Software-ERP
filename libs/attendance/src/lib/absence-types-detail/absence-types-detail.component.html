@@ -10,15 +10,21 @@
 
             <mat-form-field id="letter" class="default-50">
                 <mat-label translate>ATT_LETTER</mat-label>
-                <input matInput formControlName="letter" type="text"  required>
+                <input matInput formControlName="letter" type="text" required>
                 <mat-error *ngIf="form.controls['letter'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
             </mat-form-field>
 
-          <mat-form-field id="color" class="default-50">
+            <mat-form-field id="color" class="default-50">
                 <mat-label translate>ATT_COLOR</mat-label>
-                <input matInput formControlName="color" type="color"  required>
+                <input matInput formControlName="color" type="color" required>
                 <mat-error *ngIf="form.controls['color'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
             </mat-form-field>
+
+            <mat-form-field class="default-50">
+                <mat-label translate>PAYROLL_FIELD</mat-label>
+                <input matInput formControlName="field" type="text" style="text-transform: lowercase">
+            </mat-form-field>
+
 
             <mat-form-field id="descriptionAr" class="default-50">
                 <mat-label translate>ADMINISTRATION_DESCRIPTION</mat-label>

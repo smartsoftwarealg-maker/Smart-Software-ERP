@@ -31,11 +31,17 @@ export const attendanceNavTree: SideNavNode = {
             route: ABS_ATTENDANCE_HOLIDAY_URL,
             accessRights: 'Holiday'
         },
+        // {
+        //     name: 'ATT_ABSENCE_MOTIVES',
+        //     icon: 'fa-solid fa-lights-holiday',
+        //     route: ABS_ATTENDANCE_ABSENCE_MOTIVE_URL,
+        //     accessRights: 'AbsenceMotive'
+        // },
         {
-            name: 'ATT_ABSENCE_MOTIVES',
-            icon: 'fa-solid fa-lights-holiday',
-            route: ABS_ATTENDANCE_ABSENCE_MOTIVE_URL,
-            accessRights: 'AbsenceMotive'
+            name: 'ATT_ABSENCE_TYPES',
+            icon: 'fa-solid fa-person-circle-question',
+            route: ABS_ABSENCE_TYPES_URL,
+            accessRights: 'Attendance'
         },
         {
             name: 'ATT_SHIFT_ASSIGNMENTS',
@@ -55,12 +61,6 @@ export const attendanceNavTree: SideNavNode = {
             route: ABS_ATTENDANCE_LOG_URL,
             accessRights: 'Attendance'
         },
-        {
-            name: 'ATT_ABSENCE_TYPES',
-            icon: 'fa-solid fa-person-circle-question',
-            route: ABS_ABSENCE_TYPES_URL,
-            accessRights: 'Attendance'
-        }
     ],
     accessRights: 'ATTENDANCE_APP'
 };

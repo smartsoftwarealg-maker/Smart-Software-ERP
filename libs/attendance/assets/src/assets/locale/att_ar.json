@@ -19,5 +19,6 @@
     "DAYS":             "يوم",
     "BREAK_FROM":       "من",
     "BREAK_TO":         "إلى",
-    "DATABASE":         "قاعدة البيانات"
+    "DATABASE":         "قاعدة البيانات",
+    "ABSENCE_TYPES":    "نوع الغياب"
 }
