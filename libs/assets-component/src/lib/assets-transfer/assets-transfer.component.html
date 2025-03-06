@@ -46,15 +46,17 @@
             <input matInput formControlName="destinationBuilding" type="text" readonly>
         </mat-form-field>
 
-        <div class="btn-div" *ngIf="editable">
-            <button mat-raised-button
-                    type="button"
-                    color="warn"
-                    [disabled]="!form.valid || form.controls.source.value === form.controls.destination.value"
-                    (click)="transfer()"
-                    translate>COMMON_GENERATE
-            </button>
-        </div>
+        @if (editable) {
+            <div class="btn-div">
+                <button mat-raised-button
+                        type="button"
+                        color="warn"
+                        [disabled]="!form.valid || form.controls.source.value === form.controls.destination.value"
+                        (click)="transfer()"
+                        translate>COMMON_GENERATE
+                </button>
+            </div>
+        }
     </form>
 
 </mat-card>
