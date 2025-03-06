@@ -23,5 +23,7 @@
     "ABSENCE_TYPES":    "Absence types",
     "COLOR":            "Color",
     "FIELD":            "Field",
-    "LETTER":           "Letter"
+    "LETTER":           "Letter",
+    "MANUAL_SIGNATURE": "Manual signature",
+    "MANUAL_SIGNATURES": "Manual signatures"
 }

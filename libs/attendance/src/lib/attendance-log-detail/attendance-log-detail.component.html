@@ -10,14 +10,31 @@
                     </ss-auto-complete>
                 </mat-form-field>
 
-                <mat-form-field class="default-50">
-                    <mat-label translate>COMMON_DATE</mat-label>
-                    <ss-date-picker formControlName="dateTime" required="true" [type]="'datetime'"></ss-date-picker>
-                    @if (form.controls['dateTime'].invalid) {
-                        <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
-                    }
-                </mat-form-field>
+                @if (create) {
+                    <mat-form-field class="default-50">
+                        <mat-label translate>COMMON_FROM</mat-label>
+                        <ss-date-picker formControlName="from" required="true" [type]="'datetime'"></ss-date-picker>
+                        @if (form.controls['from'].invalid) {
+                            <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+                        }
+                    </mat-form-field>
 
+                    <mat-form-field class="default-50">
+                        <mat-label translate>COMMON_TO</mat-label>
+                        <ss-date-picker formControlName="to" [type]="'datetime'"></ss-date-picker>
+                        @if (form.controls['to'].invalid) {
+                            <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+                        }
+                    </mat-form-field>
+                } @else {
+                    <mat-form-field class="default-50">
+                        <mat-label translate>COMMON_DATE</mat-label>
+                        <ss-date-picker formControlName="dateTime" required="true" [type]="'datetime'"></ss-date-picker>
+                        @if (form.controls['dateTime'].invalid) {
+                            <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+                        }
+                    </mat-form-field>
+                }
                 <mat-form-field class="default-100">
                     <mat-label translate>COMMON_MOTIVE</mat-label>
                     <ss-auto-complete matInput

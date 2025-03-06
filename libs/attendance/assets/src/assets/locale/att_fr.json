@@ -20,5 +20,7 @@
     "BREAK_FROM":       "Début pause",
     "BREAK_TO":         "Fin pause",
     "DATABASE":         "Base de données",
-    "ABSENCE_TYPES":    "Types absence"
+    "ABSENCE_TYPES":    "Types absence",
+    "MANUAL_SIGNATURE": "Signature manuelle",
+    "MANUAL_SIGNATURES": "Signature manuelles"
 }
