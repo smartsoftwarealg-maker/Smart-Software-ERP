@@ -31,6 +31,7 @@ export abstract class BaseChildEntityDetailComponent<T extends { id: number, par
     idParamMap(): Observable<ParamMap> {
         return this.route.parent.parent.paramMap;
     }
+
     ngOnInit() {
         this.route
             .paramMap
