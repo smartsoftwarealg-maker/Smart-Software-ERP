@@ -25,7 +25,31 @@ import { TranslatePipe } from '@ss/common/ui-lang';
     styleUrls: ['../../../../../common/assets/src/assets/transac-lines-list.scss'],
     templateUrl: './delivery-lines-list.component.html',
     standalone: true,
-    imports: [MatFormField, MatLabel, TranslateDirective, MatInput, FormsModule, ReactiveFormsModule, NgIf, MatMiniFabButton, MatTooltip, MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatIconButton, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, PaginationComponent, DocInfoComponent, DecimalPipe, TranslatePipe]
+    imports: [
+        MatFormField,
+        MatLabel,
+        TranslateDirective,
+        MatInput,
+        FormsModule,
+        ReactiveFormsModule,
+        MatMiniFabButton,
+        MatTooltip,
+        MatTable,
+        MatColumnDef,
+        MatHeaderCellDef,
+        MatHeaderCell,
+        MatCellDef,
+        MatCell,
+        MatIconButton,
+        MatHeaderRowDef,
+        MatHeaderRow,
+        MatRowDef,
+        MatRow,
+        PaginationComponent,
+        DocInfoComponent,
+        DecimalPipe,
+        TranslatePipe
+    ]
 })
 export class DeliveryLinesListComponent extends BaseTransactionLinesListComponent implements OnInit {
 
