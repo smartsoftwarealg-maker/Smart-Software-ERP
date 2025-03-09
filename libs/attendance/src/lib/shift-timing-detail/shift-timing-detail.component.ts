@@ -37,8 +37,7 @@ import { LtmTestScheduleService } from '@ltm/ltm-api';
         MatLabel,
         DatePickerComponent,
         MatError,
-        TranslatePipe,
-        JsonPipe
+        TranslatePipe
     ]
 })
 export class ShiftTimingDetailComponent extends BaseChildEntityDetailComponent<Timing> {
