@@ -70,44 +70,63 @@ function isTimeValid(h: number, m: number, s: number) {
 }
 
 /*
- * This code is long and stupid, I know. But it allows for mistakes like 2018-01/02 to be valid
+ * This code is a C-style code, I know. But it works and it is readable. Sue me.
  */
-export function strToDateTime(s: string): Date {
-    if (s.match(/^\d+[-\/\.]\d+[-\/\.]\d+$/g)) {
-        const args = s.match(/\d+/g);
-        if (args[0].length == 4) {
-            const ymd = args.map(k => +k);
-            if (isValidDate(ymd[0], ymd[1], ymd[2])) {
-                return new Date(ymd[0], ymd[1] - 1, ymd[2]);
-            }
-        } else if (args[2].length == 4) {
-            const dmy = args.map(k => +k);
-            if (isValidDate(dmy[2], dmy[1], dmy[0])) {
-                return new Date(dmy[2], dmy[1] - 1, dmy[0]);
-            }
+export function strToDateTime(txt: string): Date {
+    if (txt == null) {
+        return null;
+    }
+    if (txt.match(/^[1-2]*\d:[0-5]*\d(:[0-5]\d)?$/)) {
+        txt = '1970-01-01 ' + txt;
+    }
+
+    txt = txt.replaceAll('/', '-').trim();
+
+
+    const hasTime = txt.indexOf(':') > -1;
+    const space = hasTime ? txt.indexOf(' ') : txt.length;
+    if (space < 0) {
+        return null;
+    }
+    const dateStr = txt.substring(0, space).trim();
+    const timeStr = txt.substring(space).trim();
+    const dateArgs = dateStr.split('-');
+    if (dateArgs.length != 3) {
+        return null;
+    }
+    if (dateArgs[2].length == 4) {
+        const y = dateArgs[2];
+        dateArgs[2] = dateArgs[0];
+        dateArgs[0] = y;
+    }
+    if (dateArgs[0].length != 4) {
+        return null;
+    }
+    const y = +dateArgs[0];
+    const M = +dateArgs[1];
+    const d = +dateArgs[2];
+    let H = 0;
+    let m = 0;
+    let s = 0;
+    if (hasTime) {
+        const timeArgs = timeStr.split(':');
+        if (timeArgs.length != 2 && timeArgs.length != 3) {
+            return null;
         }
-    } else if (s.match(/^\d+[-\/\.]\d+[-\/\.]\d+ \d+\:\d+$/g) || s.match(/^\d+[-\/\.]\d+[-\/\.]\d+ \d+\:\d+\:\d+$/g)) {
-        const args = s.match(/\d+/g);
-        if (args.length == 5) {
-            args.push('0');
-        }
-        if (isTimeValid(+args[3], +args[4], +args[5])) {
-            if (args[0].length == 4) {
-                const ymd = args.map(k => +k);
-                if (isValidDate(ymd[0], ymd[1], ymd[2])) {
-                    return new Date(ymd[0], ymd[1] - 1, ymd[2], ymd[3], ymd[4], ymd[5]);
-                }
-            } else if (args[2].length == 4) {
-                const dmy = args.map(k => +k);
-                if (isValidDate(dmy[2], dmy[1], dmy[0])) {
-                    return new Date(dmy[2], dmy[1] - 1, dmy[0], dmy[3], dmy[4], dmy[5]);
-                }
-            }
+        H = +timeArgs[0];
+        m = +timeArgs[1];
+        if (timeArgs.length > 2) {
+            s = +timeArgs[2];
         }
     }
-    return null; // invalid date
+    // validate shit
+    if (y < -9999 || 9999 < y) { return null; }
+    if (M < 1 || 12 < M) { return null; }
+    if (d < 1 || getNumDaysInMonth(y, M) < d) { return null; }
+    if (H < 0 || 23 < H) { return null; }
+    if (m < 0 || 59 < m) { return null; }
+    return new Date(y, M - 1, d, H, m, s);
 }
-
 
 export function dateStrToDmy(s: string) {
     // assume it is a correct date of the format dmy or ymd
@@ -237,7 +256,7 @@ export function dateTimeToTime(date: Date | string): string {
 }
 
 export function strToTime(s: string): Date | null {
-    return strToDateTime('1970-01-01 ' + s);
+    return strToDateTime(s);
 }
 
 export function strToDate(str: string) {
