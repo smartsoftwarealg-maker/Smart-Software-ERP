@@ -182,5 +182,6 @@
     "CUSTOMER_COMPENSATION": "تعويضات الزبائن",
     "CUSTOMER_PAYMENTS":     "مدفوعات العملاء",
     "SUPPLIER_PAYMENTS":     "مدفوعات الموردين",
-    "CHECK_NUMBER":         "رقم الصك"
+    "CHECK_NUMBER":         "رقم الصك",
+    "GUARANTEE":            "ضمان"
 }
