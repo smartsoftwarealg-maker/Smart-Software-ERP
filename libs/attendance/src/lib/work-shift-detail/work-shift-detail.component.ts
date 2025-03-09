@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {WorkShift} from '../attendance-api';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
@@ -7,7 +7,7 @@ import { UntypedFormBuilder, Validators, FormsModule, ReactiveFormsModule } from
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {WorkshiftService} from '../workshift.service';
 import {ShiftTimingService} from '../shift-timing.service';
-import {filter} from 'rxjs';
+import { filter, Observable } from 'rxjs';
 import { MatCard, MatCardContent } from '@angular/material/card';
 import { NgIf } from '@angular/common';
 import { MatFormField, MatLabel, MatError } from '@angular/material/form-field';
@@ -38,6 +38,8 @@ import { MaterialModule } from '@ss/common/api-common';
     ],
 })
 export class WorkShiftDetailComponent extends BaseEntityDetailComponent<WorkShift> {
+    #childSrv = inject(ShiftTimingService);
+
     constructor(
         public override entitySrv: WorkshiftService,
         public override shellSrv: ShellService,
@@ -50,8 +52,8 @@ export class WorkShiftDetailComponent extends BaseEntityDetailComponent<WorkShif
         super(entitySrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'ATT_WORKSHIFTS');
     }
 
-
     public override setupForm(b: WorkShift) {
+        this.#childSrv.period = b?.period || 0;
         this.timingSrv.setParentId(b?.id);
         this.timingSrv.startDate = b?.startDate;
         return this.formBuilder.group({
@@ -64,7 +66,7 @@ export class WorkShiftDetailComponent extends BaseEntityDetailComponent<WorkShif
     }
 
     private disableControls(url: string) {
-        const enabled = url.indexOf('/detail') < 0;
+        const enabled = url.indexOf('/detail/') < 0;
         this.saveButton.visible = enabled;
         this.shellSrv.setGoBackEnabled(enabled);
     }
@@ -75,7 +77,12 @@ export class WorkShiftDetailComponent extends BaseEntityDetailComponent<WorkShif
         this.subscriptions.push(this.router.events
             .pipe(filter((e: any): e is RouterEvent => e instanceof RouterEvent))
             .subscribe((e: RouterEvent) => {
-                this.saveButton.visible = e.url.indexOf('/detail') < 0;
+                this.saveButton.visible = e.url.indexOf('/detail/') < 0;
             }));
+    }
+
+    override loadEntity(id: number): Observable<WorkShift> {
+        this.#childSrv.setParentId(id);
+        return super.loadEntity(id);
     }
 }

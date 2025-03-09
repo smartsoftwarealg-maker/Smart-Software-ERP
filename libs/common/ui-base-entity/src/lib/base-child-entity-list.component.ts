@@ -82,7 +82,6 @@ export class BaseChildEntityListComponent<T extends { id: number }> implements O
 
     refresh() {
         this.data$ = this.detailSrv.getPage(this.paginator);
-
         this.emptyData$ = this.data$.pipe(map(res => res.length === 0));
     }
 

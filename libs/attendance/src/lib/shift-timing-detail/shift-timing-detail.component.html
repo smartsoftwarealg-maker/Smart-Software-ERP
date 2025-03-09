@@ -16,32 +16,36 @@
         </div>
     </mat-card-header>
     <mat-card-content>
-        <form *ngIf="form !== null" novalidate [formGroup]="form">
+        @if (form !== null) {
+            <form [formGroup]="form">
+                <mat-form-field class="default-50">
+                    <mat-label translate>COMMON_FROM</mat-label>
+                    <ss-date-picker [required]=true formControlName="from" [type]="'time'"></ss-date-picker>
+                    @if (form.controls['from'].hasError('required')) {
+                        <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+                    }
+                </mat-form-field>
 
-            <mat-form-field class="default-50">
-                <mat-label translate>COMMON_FROM</mat-label>
-                <ss-date-picker  [required]=true formControlName="from" [type]="'time'" ></ss-date-picker>
-                <mat-error *ngIf="form.controls['from'].hasError('required')" translate>COMMON_FIELD_REQUIRED
-                </mat-error>
-            </mat-form-field>
+                <mat-form-field class="default-50">
+                    <mat-label translate>COMMON_TO</mat-label>
+                    <ss-date-picker [required]=true formControlName="to" [type]="'time'"></ss-date-picker>
+                    @if (form.controls['to'].hasError('required')) {
+                        <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+                    }
+                </mat-form-field>
 
-            <mat-form-field class="default-50">
-                <mat-label translate>COMMON_TO</mat-label>
-                <ss-date-picker [required]=true formControlName="to" [type]="'time'"></ss-date-picker>
-                <mat-error *ngIf="form.controls['to'].hasError('required')" translate>COMMON_FIELD_REQUIRED</mat-error>
-            </mat-form-field>
+                <mat-form-field class="default-50">
+                    <mat-label translate>ATT_BREAK_FROM</mat-label>
+                    <ss-date-picker [required]=false formControlName="breakFrom" [type]="'time'"></ss-date-picker>
+                </mat-form-field>
 
-            <mat-form-field class="default-50">
-                <mat-label translate>ATT_BREAK_FROM</mat-label>
-                <ss-date-picker [required]=false formControlName="breakFrom" [type]="'time'"></ss-date-picker>
-            </mat-form-field>
+                <mat-form-field class="default-50">
+                    <mat-label translate>ATT_BREAK_TO</mat-label>
+                    <ss-date-picker [required]=false formControlName="breakTo" [type]="'time'"></ss-date-picker>
+                </mat-form-field>
 
-            <mat-form-field class="default-50">
-                <mat-label translate>ATT_BREAK_TO</mat-label>
-                <ss-date-picker [required]=false formControlName="breakTo" [type]="'time'"></ss-date-picker>
-            </mat-form-field>
-
-<!--            <pre>{{form?.value | json }}</pre>-->
-        </form>
+<!--                            <pre>{{form?.value | json }}</pre>-->
+            </form>
+        }
     </mat-card-content>
 </mat-card>

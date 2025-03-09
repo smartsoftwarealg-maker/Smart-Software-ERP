@@ -79,16 +79,22 @@ export const attendanceRoutes: Routes = [
             {
                 path: ':id',
                 component: WorkShiftDetailComponent,
-                canActivate: [loginGuard],
-                canDeactivate: [CanDeactivateService],
+                canActivateChild: [loginGuard],
                 children: [
-                    { path: '', component: ShiftTimingListComponent, pathMatch: 'full'},
-                    { path: 'detail',
+                    {   path: '',
+                        redirectTo: 'detail',
+                        pathMatch: 'full',
+                    },
+                    {
+                        path: 'detail',
                         children: [
-                            { path: ':id', component: ShiftTimingDetailComponent, canActivate: [timingGuard] }
+                            { path: '', component: ShiftTimingListComponent, pathMatch: 'full' },
+                            { path: ':id', component: ShiftTimingDetailComponent }
                         ]
                     }
-                ]
+                ],
+                canActivate: [loginGuard],
+                canDeactivate: [CanDeactivateService],
             },
             { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
         ]

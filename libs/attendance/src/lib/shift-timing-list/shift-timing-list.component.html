@@ -1,32 +1,33 @@
 <div class="ctrl_div content_div" >
     <button mat-mini-fab
             type="button"
+            [disabled]="entitySrv.periodExhausted()"
             color="primary" (click)="showDetail(0)">
         <span class="fas fa-plus"></span>
     </button>
     <button mat-mini-fab
             type="button"
             (click)="edit()"
-            [disabled]="!selected"
+            [disabled]="!selectedId"
             color="accent">
         <span class="fas fa-pen"></span>
     </button>
     <button mat-mini-fab
             type="button"
             (click)="deleteSelected()"
-            [disabled]="!selected"
+            [disabled]="!selectedId"
             color="warn">
         <span class="fas fa-trash-alt"></span>
     </button>
 </div>
 
 <div class="table_div size">
-    <mat-table mat-table [dataSource]="data" class="main-table">
+    <mat-table mat-table [dataSource]="data$|async" class="main-table">
 
         <ng-container matColumnDef="date">
             <mat-header-cell *matHeaderCellDef translate>ATT_DAY</mat-header-cell>
             <mat-cell *matCellDef="let e">
-                {{e.date  | date: "EEEE" }}
+                {{e.from | date: "EEEE" }}
             </mat-cell>
         </ng-container>
 
@@ -59,7 +60,7 @@
         </ng-container>
 
         <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
-        <mat-row class="selectable" [class.selected]="row.id == selected?.id" (click)="select(row)"
+        <mat-row class="selectable" [class.selected]="row.id == selectedId" (click)="select(row.id)"
                  *matRowDef="let row; columns: displayedColumns;"></mat-row>
     </mat-table>
 </div>
