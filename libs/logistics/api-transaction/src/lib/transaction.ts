@@ -95,6 +95,8 @@ export interface Transaction {
     plateNumber?: string;
     plateNumber2?: string;
     deliveryTime?: number;
+    vfGuarantee?: number;
+    ftGuarantee?: number;
 }
 
 export interface ExtraCost {
