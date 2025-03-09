@@ -183,5 +183,7 @@
     "CUSTOMER_PAYMENTS":     "مدفوعات العملاء",
     "SUPPLIER_PAYMENTS":     "مدفوعات الموردين",
     "CHECK_NUMBER":         "رقم الصك",
-    "GUARANTEE":            "ضمان"
+    "GUARANTEE":            "ضمان",
+    "VF_GUARANTEE":          "الضمان قبل الضريبة",
+    "FF_GUARANTEE":          "الضمان بعد الضريبة"
 }
