@@ -60,14 +60,14 @@ export const salesNavTree: SideNavNode = {
             route: ABS_SALES_INVOICE_CANCEL_URL,
             accessRights: 'CInvoice'
         },
+        // {
+        //     name: 'LOGISTICS_SUPPLIER_PAYMENTS',
+        //     icon: 'fas fa-coins',
+        //     route: ABS_FINANCE_CPAYMENTS,
+        //     accessRights: 'SPayment'
+        // },
         {
-            name: 'COMMON_PAYMENTS',
-            icon: 'fas fa-coins',
-            route: ABS_FINANCE_CPAYMENTS,
-            accessRights: 'SPayment'
-        },
-        {
-            name: 'COMMON_PAYMENTS',
+            name: 'LOGISTICS_CUSTOMER_PAYMENTS',
             icon: 'fas fa-coins',
             route: ABS_FINANCE_CPAYMENTS,
             accessRights: 'CPayment'
