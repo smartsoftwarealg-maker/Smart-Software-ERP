@@ -186,5 +186,8 @@
     "CUSTOMER_PAYMENTS":     "Customer payments",
     "SUPPLIER_PAYMENTS":     "Supplier payments",
     "CHECK_NUMBER":          "Check number",
-    "GUARANTEE":             "Guarantee"
+    "GUARANTEE":             "Guarantee",
+    "VF_GUARANTEE":          "FV GUARANTEE",
+    "FF_GUARANTEE":          "FF GUARANTEE"
+
 }
