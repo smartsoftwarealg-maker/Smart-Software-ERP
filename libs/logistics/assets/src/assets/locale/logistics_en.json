@@ -187,7 +187,7 @@
     "SUPPLIER_PAYMENTS":     "Supplier payments",
     "CHECK_NUMBER":          "Check number",
     "GUARANTEE":             "Guarantee",
-    "VF_GUARANTEE":          "FV GUARANTEE",
-    "FF_GUARANTEE":          "FF GUARANTEE"
+    "VF_GUARANTEE":          "VAT free Guarantee",
+    "FT_GUARANTEE":          "Full tax guarantee"
 
 }

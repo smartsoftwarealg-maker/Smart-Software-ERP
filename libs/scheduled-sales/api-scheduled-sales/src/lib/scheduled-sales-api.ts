@@ -266,3 +266,32 @@ export interface ValidatedSale {
     receiverId?: number;
     receiverDescription?: string;
 }
+
+export interface SalesPoll {
+    id: number;
+    centerId: number;
+    number?: number;
+    date: Date;
+}
+
+export interface CustomerPoll {
+    id: number;
+    parentId: number; //Poll id
+    customerId: number;
+    questionId: number;
+    satisfactionAnswer?: number;
+    pollAnswer?: string;
+    memo?: string;
+    questionDescription?: string;
+    numberDescription?: number;
+    dateDescription?: Date;
+}
+
+export interface PollQuestion {
+    id: number;
+    description: string;
+    descriptionAr?: string;
+    descriptionEn?: string;
+    answerType: number;
+    showMemo: boolean;
+}
