@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { Bank, BankService } from '@ss/administration/api-bank';
@@ -31,15 +31,18 @@ import { debounceTime, distinctUntilChanged } from 'rxjs';
     selector: 'ss-invoice-validation',
     imports: [CommonModule, MaterialModule, MatCell, MatCellDef, MatColumnDef, MatHeaderCell, MatHeaderRow, MatHeaderRowDef, MatRow, MatRowDef, MatSort, MatSortHeader, MatTable, PaginationComponent, TranslateDirective, MatHeaderCellDef, MatCard, ReactiveFormsModule, DatePickerComponent, MatError, MatFormField, MatLabel, MatInput],
     templateUrl: './invoice-validation.component.html',
-    styleUrl: './invoice-validation.component.scss',
+    styleUrl: './invoice-validation.component.scss'
 })
 export class InvoiceValidationComponent extends BaseEntityListComponent<ValidatedSale> {
     #formBuilder = inject(FormBuilder);
 
-    form = this.#formBuilder.group( {
-        date:   [new Date(), Validators.required],
+    showCheckMark = signal(false);
+
+
+    form = this.#formBuilder.group({
+        date: [new Date(), Validators.required],
         number: [0]
-    })
+    });
 
     displayedColumns = [
         'serialNumber',
@@ -81,8 +84,10 @@ export class InvoiceValidationComponent extends BaseEntityListComponent<Validate
                 if (res.count > 0) {
                     this.refresh();
                     this.snackBarSrv.showSuccessMessage();
+                    this.showCheckMark.set(true);
+                    setTimeout(() => this.showCheckMark.set(false),2000);
                 }
-            })
+            });
     }
 
     override ngOnInit() {
