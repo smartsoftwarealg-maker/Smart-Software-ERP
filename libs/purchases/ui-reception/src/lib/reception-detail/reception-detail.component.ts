@@ -24,7 +24,7 @@ import { ReceptionLinesService } from '../reception-lines.service';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { ExtraCostService } from '@ss/purchases/extra-costs';
-import { of, switchMap } from 'rxjs';
+import { Observable, of, switchMap } from 'rxjs';
 
 
 @Component({
@@ -43,7 +43,8 @@ import { of, switchMap } from 'rxjs';
     ]
 })
 export class ReceptionDetailComponent extends BaseTransactionDetailComponent implements OnInit {
-    private URLs = ['./lines-list', './costs-list'];
+    private extraCostSrv = inject(ExtraCostService);
+    private URLs = ['./lines-list', './extra-costs'];
     private costSrv = inject(ExtraCostService);
 
     private importContractBtn: ToolbarButton = {
@@ -126,5 +127,9 @@ export class ReceptionDetailComponent extends BaseTransactionDetailComponent imp
                     this.snackBarSrv.showSuccessMessage();
                 });
         }
+    }
+    loadEntity(id: number): Observable<Transaction> {
+        this.extraCostSrv.setParentId(id||0);
+        return super.loadEntity(id);
     }
 }

@@ -58,7 +58,6 @@ export class ExtraCostListComponent implements OnInit {
     displayedColumns = [
         'reference',
         'description',
-        'transactDate',
         'amount',
         'vat',
         'supplierName',

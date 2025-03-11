@@ -1,0 +1,48 @@
+.button_div {
+    display: flex;
+    gap: 1em;
+    justify-content: center;
+}
+.button_div,
+.container {
+    width: 96%;
+    max-width: 1400px;
+    margin: 4px auto;
+}
+
+.container {
+    overflow-x: auto;
+    min-height: 320px;
+}
+
+mat-table {
+    width: 100%;
+    min-width: 900px;
+    height: 100%;
+}
+
+.mat-column-valueName,
+.mat-column-costName,
+.mat-column-reference,
+.mat-column-transactDate {
+    flex: 2 1 200px;
+}
+
+.mat-column-supplierName {
+    flex: 2 1 180px;
+}
+
+
+.mat-column-description {
+    flex: 1 1 200px;
+}
+
+.mat-column-amount,
+.mat-column-vat {
+    flex: 1 1 100px;
+    justify-content: flex-end;
+}
+
+mat-header-cell {
+    justify-content: center!important;
+}

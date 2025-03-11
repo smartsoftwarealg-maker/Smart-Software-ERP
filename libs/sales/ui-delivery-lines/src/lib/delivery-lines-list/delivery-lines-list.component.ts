@@ -48,7 +48,8 @@ import { TranslatePipe } from '@ss/common/ui-lang';
         PaginationComponent,
         DocInfoComponent,
         DecimalPipe,
-        TranslatePipe
+        TranslatePipe,
+        NgIf
     ]
 })
 export class DeliveryLinesListComponent extends BaseTransactionLinesListComponent implements OnInit {
