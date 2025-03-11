@@ -76,7 +76,7 @@ export function strToDateTime(txt: string): Date {
     if (txt == null) {
         return null;
     }
-    if (txt.match(/^[1-2]*\d:[0-5]*\d(:[0-5]\d)?$/)) {
+    if (txt.match(/^[0-2]*\d:[0-5]*\d(:[0-5]\d)?$/)) {
         txt = '1970-01-01 ' + txt;
     }
 
