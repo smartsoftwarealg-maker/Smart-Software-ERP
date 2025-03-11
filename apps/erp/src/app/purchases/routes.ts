@@ -53,7 +53,11 @@ import {
     ImportReceptionLinesListComponent,
     ImportReceptionListComponent
 } from '@ss/purchases/imported-purchases';
-import { ExtraCostDetailComponent, ExtraCostListComponent } from '@ss/purchases/extra-costs';
+import {
+    ExtraCostDetailComponent,
+    ExtraCostListComponent,
+    LocalExtraCostDetailComponent, LocalExtraCostListComponent
+} from '@ss/purchases/extra-costs';
 import { ReportRightsComponent } from '@ss/administration/reports-rights';
 import { ArticleDetailComponent, ArticleListComponent } from '@ss/master-data/ui-article';
 import {
@@ -205,16 +209,17 @@ export const routes: Routes = [
                 canDeactivate: [CanDeactivateService],
                 children: [
                     { path: '', pathMatch: 'full', redirectTo: 'lines-list' },
-                    { path: 'costs-list', component: ExtraCostListComponent },
-                    { path: 'lines-list',
-                        component: ReceptionLinesListComponent,
-                        children: docInfoRoutes
+                    {
+                        path: 'extra-costs',
+                        children: [
+                            { path: '', component: LocalExtraCostListComponent, pathMatch: 'full' },
+                            { path: ':id', component: LocalExtraCostDetailComponent }
+                        ],
                     },
                     {
-                        path: 'costs-detail',
-                        children: [
-                            { path: ':id', component: ExtraCostDetailComponent }
-                        ]
+                        path: 'lines-list',
+                        component: ReceptionLinesListComponent,
+                        children: docInfoRoutes
                     },
                     {
                         path: 'lines-detail',

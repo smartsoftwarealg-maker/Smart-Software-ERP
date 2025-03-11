@@ -20,6 +20,7 @@ import { DatePickerComponent } from '@ss/common/ui-datepicker';
 import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { MatTabGroup, MatTab, MatTabLabel } from '@angular/material/tabs';
 import { CdkTextareaAutosize } from '@angular/cdk/text-field';
+import { Observable } from 'rxjs';
 
 @Component({
     selector: 'ss-import-reception-detail',
@@ -30,6 +31,7 @@ import { CdkTextareaAutosize } from '@angular/cdk/text-field';
     imports: [MaterialModule, MatCard, MatCardContent, NgIf, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, DatePickerComponent, UiAutoCompleteComponent, MatError, MatTabGroup, MatTab, MatTabLabel, CdkTextareaAutosize, RouterOutlet]
 })
 export class ImportReceptionDetailComponent extends BaseTransactionDetailComponent implements OnInit {
+    private extraCostSrv = inject(ExtraCostService);
     private URLs = ['./lines-list', './costs-list'];
     private costSrv = inject(ExtraCostService);
     selectedIndex = 0;
@@ -87,5 +89,10 @@ export class ImportReceptionDetailComponent extends BaseTransactionDetailCompone
         if (this.saveButton.visible) {
             this.router.navigate([this.URLs[idx]], { relativeTo: this.route }).then();
         }
+    }
+
+    override loadEntity(id: number): Observable<Transaction> {
+        this.extraCostSrv.setParentId(id||0);
+        return super.loadEntity(id);
     }
 }
