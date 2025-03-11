@@ -85,7 +85,7 @@ export class InvoiceValidationComponent extends BaseEntityListComponent<Validate
                     this.refresh();
                     this.snackBarSrv.showSuccessMessage();
                     this.showCheckMark.set(true);
-                    setTimeout(() => this.showCheckMark.set(false),2000);
+                    setTimeout(() => this.showCheckMark.set(false),3000);
                 }
             });
     }

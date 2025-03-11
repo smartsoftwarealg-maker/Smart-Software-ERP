@@ -80,7 +80,7 @@ mat-table {
     right: 50%;
     transform: translate(50%, 0);
     border-radius: 50%;
-    animation: check-mark-animation 2s linear forwards;
+    animation: check-mark-animation 3s linear forwards;
 
 }
 
@@ -101,5 +101,5 @@ mat-table {
         opacity: 0;
         display: inline-block !important;
     }
-   
+
 }
