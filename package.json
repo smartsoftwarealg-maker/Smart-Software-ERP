@@ -46,7 +46,7 @@
         "@capacitor/filesystem": "7.0.0",
         "@capacitor/ios": "7.0.1",
         "@capacitor/preferences": "^7.0.0",
-        "@muaazh/angular-datepicker": "19.0.137",
+        "@muaazh/angular-datepicker": "19.0.138",
         "@nx/angular": "20.5.0",
         "angular13-organization-chart": "2.0.1",
         "chart.js": "4.4.8",
