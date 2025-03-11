@@ -71,14 +71,6 @@ mat-table {
     border-left: white solid 1px;
 }
 
-mat-header-cell {
-    text-align: center;
-    font-weight: bolder;
-    font-size: 0.70em;
-    justify-content: center;
-    border-left: white solid 1px;
-    font-family: Arial, serif;
-}
 
 .add-button {
     position: absolute;
@@ -100,4 +92,13 @@ mat-header-cell {
         position: sticky;
         margin: auto;
     }
+}
+
+mat-header-cell {
+    text-align: center;
+    font-weight: bolder;
+    font-size: 0.70em;
+    justify-content: center!important;
+    border-left: white solid 1px;
+    font-family: Arial, serif;
 }
