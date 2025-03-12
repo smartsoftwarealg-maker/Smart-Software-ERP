@@ -19,7 +19,12 @@ import {
     DASHBOARD_URL,
     SS_COMPLAINTS_URL,
     COMMON_REPORTS_URL,
-    PASSWORD_RESET_URL, SALES_COMPENSATION_URL, SALES_PAYMENT_COMPENSATION_URL, SALES_INVOICE_VALIDATION_URL
+    PASSWORD_RESET_URL,
+    SALES_COMPENSATION_URL,
+    SALES_PAYMENT_COMPENSATION_URL,
+    SALES_INVOICE_VALIDATION_URL,
+    SS_POLL_QUESTION_URL,
+    SS_SALES_POLL_URL,
 } from '../common';
 import {ProjectListComponent, ProjectDetailComponent} from '@ss/scheduled-sales/projects';
 import {ArticleDetailComponent, ArticleListComponent} from '@ss/scheduled-sales/article';
@@ -51,6 +56,7 @@ import { AGENT_ARCHIVES } from '@ss/common/app-archive';
 import { PayMethodDetailComponent, PayMethodListComponent } from '@ss/logistics/ui-pay-method';
 import { DashboardComponent } from '@ss/dashboard';
 import { CustomerComplaintsDetailComponent, CustomerComplaintsListComponent } from '@customer-complaints-list';
+import { SalesPollDetailComponent, SalesPollListComponent, PollQuestionDetailComponent, PollQuestionListComponent } from '@ss/scheduleds-sales/polls';
 import { ReportViewComponent } from '@ss/common/ui-report-param';
 import { PasswordResetComponent } from '@ss/scheduled-sales/password-reset';
 import { PaymentCompensationListComponent, DebtsComponent } from '@ss/scheduled-sales/compensations';
@@ -350,6 +356,40 @@ export const scheduledSalesRoutes: Routes = [
         data: { reportBase: 'ssales' },
         component: ReportViewComponent,
         canActivate: [loginGuard]
+    },
+
+    {
+        path: SS_SALES_POLL_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: SalesPollListComponent,
+                canActivate: [loginGuard]
+            },
+            {
+                path: ':id',
+                component: SalesPollDetailComponent,
+                canActivate: [loginGuard],
+                canDeactivate: [CanDeactivateService],
+            },
+        ]
+    },
+
+    {
+        path: SS_POLL_QUESTION_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: PollQuestionListComponent,
+                canActivate: [loginGuard]
+            },
+            {
+                path: ':id',
+                component: PollQuestionDetailComponent,
+                canActivate: [loginGuard],
+                canDeactivate: [CanDeactivateService],
+            },
+        ]
     },
 
     {path: '', redirectTo: ABS_INDEX_URL, pathMatch: 'full'},

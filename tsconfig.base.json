@@ -604,6 +604,9 @@
             "@ss/scheduled-sales/supplier-trucks": [
                 "libs/scheduled-sales/supplier-trucks/src/index.ts"
             ],
+            "@ss/scheduleds-sales/polls": [
+                "libs/scheduled-sales/polls/src/index.ts"
+            ],
             "@ss/service-sales/service-articles": [
                 "libs/service-sales/service-articles/src/index.ts"
             ],

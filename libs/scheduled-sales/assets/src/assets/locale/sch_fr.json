@@ -32,5 +32,16 @@
     "COMPENSATIONS":      "Compensations",
     "ADVANCE":            "Avance",
     "SHIPPING":           "Expedition",
-    "RECEIVER":           "Receveur"
+    "RECEIVER":           "Receveur",
+    "SALES_POLLS":        "Sondages sur les ventes",
+    "SALE_POLL":          "Sondage sur les vente",
+    "POLL_QUESTIONS":     "Questions du sondage",
+    "POLL_QUESTION":      "Question du sondage",
+    "ANSWER_TYPES":       "Type de réponses",
+    "ANSWER_TYPE":        "Type de réponse",
+    "SHOW_MEMO":          "Afficher le mémo",
+    "SATISFACTION":       "Satisfaction",
+    "UNSPECIFIED":        "Indéterminée",
+    "BOOLEAN":            "Booléenne",
+    "DESCRIPTION_EN":     "Description (en)"
 }
