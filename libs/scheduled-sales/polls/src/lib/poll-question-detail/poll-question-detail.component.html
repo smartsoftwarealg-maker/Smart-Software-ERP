@@ -2,19 +2,19 @@
     <mat-card-content>
         @if (form !== null) {
             <form novalidate [formGroup]="form">
-                <mat-form-field class="default-50 sm-100">
+                <mat-form-field class="default-100">
                     <mat-label translate>COMMON_DESCRIPTION</mat-label>
-                    <input matInput formControlName="description" type="text" required autofocus>
+                    <textarea matInput formControlName="description" rows="3" required autofocus></textarea>
                 </mat-form-field>
 
-                 <mat-form-field class="default-50 sm-100">
+                 <mat-form-field class="default-100">
                     <mat-label translate>COMMON_DESCRIPTION_AR</mat-label>
-                    <input matInput formControlName="descriptionAr" type="text" autofocus>
+                     <textarea matInput formControlName="descriptionAr" rows="3" autofocus></textarea>
                 </mat-form-field>
 
-                 <mat-form-field class="default-50 sm-100">
+                 <mat-form-field class="default-100">
                     <mat-label translate>SCH_DESCRIPTION_EN</mat-label>
-                    <input matInput formControlName="descriptionEn" type="text" >
+                     <textarea matInput formControlName="descriptionEn" rows="3" ></textarea>
                  </mat-form-field>
 
                  <mat-form-field class="default-50 sm-100">
