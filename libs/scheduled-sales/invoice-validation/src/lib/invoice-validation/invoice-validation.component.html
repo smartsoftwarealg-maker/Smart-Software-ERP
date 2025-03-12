@@ -13,13 +13,13 @@
 
         <mat-form-field class="default-50 sm-100">
             <mat-label translate>COMMON_NUMBER</mat-label>
-            <input matInput formControlName="number" type="number" (keyup.enter)="validate()">
+            <input #number matInput formControlName="number" type="number" (keyup.enter)="validate()" >
         </mat-form-field>
 
     </form>
 
 </mat-card>
-<div class="div_table size">
+<div class="ؤ size">
     <mat-table mat-table [dataSource]="data" class="main-table" matSort (matSortChange)="sort($event)">
 
         <ng-container matColumnDef="serialNumber">
