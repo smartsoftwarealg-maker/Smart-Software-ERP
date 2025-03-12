@@ -129,14 +129,23 @@
                 <input matInput formControlName="salary_rank" type="number" style="text-align: end;">
             </mat-form-field>
 
-            <mat-form-field floatLabel="always" class="default-25 sm-100">
+            <mat-form-field floatLabel="always" class="default-50 sm-50">
                 <mat-label translate>PAYROLL_SALARY_GRID</mat-label>
-                <mat-select formControlName="salary_grid">
-                    <mat-option *ngFor="let v of salaryGrid" [value]="v.id">
-                        {{ v.description }}
-                    </mat-option>
-                </mat-select>
+                <ss-auto-complete matInput
+                                  formControlName="salary_grid"
+                                  [model]="salaryGridLookup">
+                </ss-auto-complete>
             </mat-form-field>
+
+
+<!--            <mat-form-field floatLabel="always" class="default-25 sm-100">-->
+<!--                <mat-label translate>PAYROLL_SALARY_GRID</mat-label>-->
+<!--                <mat-select formControlName="salary_grid">-->
+<!--                    <mat-option *ngFor="let v of salaryGrid" [value]="v.id">-->
+<!--                        {{ v.description }}-->
+<!--                    </mat-option>-->
+<!--                </mat-select>-->
+<!--            </mat-form-field>-->
 
 
 

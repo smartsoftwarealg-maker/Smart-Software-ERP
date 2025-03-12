@@ -48,7 +48,7 @@ export interface User {
 }
 
 export interface AppContext {
-    id: number;
+    id: number; //User id
     userName: string;
     manager: boolean;
     responsible: boolean;
