@@ -23,14 +23,18 @@ mat-table {
 
 .mat-column-valueName,
 .mat-column-costName,
-.mat-column-supplierName,
 .mat-column-reference,
 .mat-column-transactDate {
     flex: 1 1 120px;
 }
 
+.mat-column-supplierName {
+    flex: 1 1 180px;
+}
+
+
 .mat-column-description {
-    flex: 1 1 220px;
+    flex: 1 1 200px;
 }
 
 .mat-column-amount,

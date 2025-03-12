@@ -1,0 +1,49 @@
+.size {
+    width: 90%;
+    max-width: 1200px;
+    margin: 4px auto 0;
+}
+
+.div_table {
+    height: calc(100% - 70px);
+    overflow: auto;
+}
+
+.main-table {
+    width: 100%;
+}
+
+.mat-row,
+.mat-header-row {
+       padding-right: 8px;
+       padding-left: 8px;
+}
+
+.mat-column-description,
+.mat-column-descriptionAr,
+.mat-column-descriptionEn {
+    flex: 1 1 200px ;
+}
+
+
+.mat-column-showMemo,
+.mat-column-answerType {
+    flex: 1 1 100px ;
+}
+
+
+.pagination-container {
+
+    ss-pagination {
+        left: 0;
+        right: 0;
+        position: sticky;
+        margin: auto;
+    }
+}
+
+mat-table {
+    width: 100%;
+    min-width: 1000px;
+    overflow-x: auto;
+}

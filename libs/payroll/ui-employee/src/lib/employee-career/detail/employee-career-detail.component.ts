@@ -77,6 +77,7 @@ export class EmployeeCareerDetailComponent extends BaseChildEntityDetailComponen
     serviceLookup = new DefaultAutoCompleteModel(this.serviceSrv);
     careerMotiveLookup = new DefaultAutoCompleteModel(this.careerMotiveSrv);
     costCenterLookup = new DefaultAutoCompleteModel(this.costCenterSrv);
+    salaryGridLookup = new DefaultAutoCompleteModel(this.gridService);
 
     employeeLookup: PersonAutocompleteClass = new PersonAutocompleteClass(this.employeeSrv);
     // entity: Career;

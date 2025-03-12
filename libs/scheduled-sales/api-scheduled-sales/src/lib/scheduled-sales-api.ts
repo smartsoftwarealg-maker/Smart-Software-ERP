@@ -280,7 +280,7 @@ export interface CustomerPoll {
     customerId: number;
     questionId: number;
     satisfactionAnswer?: number;
-    pollAnswer?: string;
+    bollAnswer?: string;
     memo?: string;
     questionDescription?: string;
     numberDescription?: number;
