@@ -78,6 +78,6 @@ export class PollQuestionListComponent extends BaseEntityListComponent<PollQuest
             pagPersistSrv,
             'SCH_POLL_QUESTIONS',
         );
-        this.pagination.pageSize = 15;
+        this.pagination.pageSize = 10;
     }
 }

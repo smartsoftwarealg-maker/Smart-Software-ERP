@@ -66,7 +66,7 @@ export class SalesPollListComponent extends BaseEntityListComponent<SalesPoll>{
             confirmationSrv,
             defReportSrv,
             pagPersistSrv,
-            'SCH_SALES_POLL');
+            'SCH_SALES_POLLS');
         this.pagination.pageSize = 15;
     }
 

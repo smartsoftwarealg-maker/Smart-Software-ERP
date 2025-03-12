@@ -155,6 +155,19 @@ export const scheduledSalesNavTree: SideNavNode = {
             accessRights: 'Dashboard'
         },
         {
+            name: 'SCH_SALES_POLLS',
+            icon: 'fa-solid fa-poll-people',
+            route: ABS_SCHEDULED_SALES_POLL_URL,
+            accessRights: 'SalesPoll'
+        },
+        {
+            name: 'SCH_POLL_QUESTIONS',
+            icon: 'fa-solid fa-question',
+            route: ABS_SCHEDULED_POLL_QUESTION_URL,
+            accessRights: 'PollQuestion'
+        },
+
+        {
             name: 'COMMON_PASSWORD_RESET',
             icon: 'fa-solid fa-empty-set',
             route: ABS_SCHEDULED_SALES_PASSWORD_RESET_URL,
@@ -164,18 +177,6 @@ export const scheduledSalesNavTree: SideNavNode = {
             name: 'COMMON_REPORTS',
             icon: 'fa-solid fa-file-chart-column',
             route: ABS_SCHEDULED_SALES_REPORTS_URL,
-            accessRights: 'Report'
-        },
-        {
-            name: 'SCH_SALES_POLL',
-            icon: 'fa-solid fa-poll-people',
-            route: ABS_SCHEDULED_SALES_POLL_URL,
-            accessRights: 'Report'
-        },
-        {
-            name: 'SCH_POLL_QUESTIONS',
-            icon: 'fa-solid fa-question',
-            route: ABS_SCHEDULED_POLL_QUESTION_URL,
             accessRights: 'Report'
         },
     ],
