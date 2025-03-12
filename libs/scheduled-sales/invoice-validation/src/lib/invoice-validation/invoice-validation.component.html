@@ -94,3 +94,8 @@
 <div class="size b-b-background">
     <ss-pagination [paginationModel]="pagination"></ss-pagination>
 </div>
+@if (showCheckMark() == 1) {
+    <i class="fa-solid fa-circle-check mark green"></i>
+} @else if (showCheckMark() == 2) {
+    <i class="fa-solid fa-circle-xmark mark red"></i>
+}
