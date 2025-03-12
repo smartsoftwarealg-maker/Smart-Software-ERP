@@ -30,7 +30,18 @@
     "SCAEK":              "العين الكبيرة",
     "COMPANY_SELECTOR":   "اختيار الشركة",
     "COMPENSATIONS":      "التعويضات",
-    "ADVANCED":     "مقدم",
+    "ADVANCED":           "مقدم",
     "SHIPPING":           "شحن",
-    "RECEIVER":           "المستلم"
+    "RECEIVER":           "المستلم",
+    "SALES_POLL":         "استطلاع المبيعات",
+    "SALE_POLL":          "استطلاع المبيع",
+    "POLL_QUESTIONS":     "أسئلة الاستطلاع",
+    "POLL_QUESTION":      "سؤال الاستطلاع",
+    "ANSWER_TYPES":       "أنواع الإجابات",
+    "ANSWER_TYPE":        "نوع الإجابة",
+    "SHOW_MEMO":          "عرض المذكرة",
+    "SATISFACTION":       "الرضا",
+    "UNSPECIFIED":        "غير محدد",
+    "BOOLEAN":            "منطقي",
+    "DESCRIPTION_EN":     "الوصف (انجليزي)"
 }
