@@ -38,7 +38,7 @@ import { isContentEditable } from '@angular-eslint/eslint-plugin-template/dist/u
 export class InvoiceValidationComponent extends BaseEntityListComponent<ValidatedSale> {
     #formBuilder = inject(FormBuilder);
 
-    showCheckMark = signal(false);
+    showCheckMark = signal(0);
 
 
     form = this.#formBuilder.group({
@@ -86,11 +86,15 @@ export class InvoiceValidationComponent extends BaseEntityListComponent<Validate
         this.entitySrv
             .validate(this.form.controls.number.value)
             .subscribe(res => {
+                console.log(res);
                 if (res.count > 0) {
                     this.refresh();
                     this.snackBarSrv.showSuccessMessage();
-                    this.showCheckMark.set(true);
-                    setTimeout(() => this.showCheckMark.set(false), 3000);
+                    this.showCheckMark.set(1);
+                    setTimeout(() => this.showCheckMark.set(0),3000);
+                } else {
+                    this.showCheckMark.set(2);
+                    setTimeout(() => this.showCheckMark.set(0),3000);
                 }
             });
     }
