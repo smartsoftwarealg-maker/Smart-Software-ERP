@@ -126,7 +126,7 @@ export const scheduledSalesNavTree: SideNavNode = {
             name: 'SCH_SHIPPING',
             icon: 'fa-solid fa-square-check',
             route: ABS_SALES_INVOICE_VALIDATION_URL,
-            accessRights: 'Sale'
+            accessRights: 'Validation'
         },
         {
             name: 'SCH_COMPENSATIONS',
