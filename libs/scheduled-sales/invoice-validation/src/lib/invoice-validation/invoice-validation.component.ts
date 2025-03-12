@@ -86,11 +86,10 @@ export class InvoiceValidationComponent extends BaseEntityListComponent<Validate
         this.entitySrv
             .validate(this.form.controls.number.value)
             .subscribe(res => {
-                console.log(res);
                 if (res.count > 0) {
+                    this.showCheckMark.set(1);
                     this.refresh();
                     this.snackBarSrv.showSuccessMessage();
-                    this.showCheckMark.set(1);
                     setTimeout(() => this.showCheckMark.set(0),3000);
                 } else {
                     this.showCheckMark.set(2);
