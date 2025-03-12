@@ -55,7 +55,6 @@ import { SalesPoll } from '@ss/scheduled-sales/api-scheduled-sales';
         MatSelectModule,
         MaterialModule,
         ReactiveFormsModule,
-        UiAutoCompleteComponent,
         TranslateDirective,
         DatePickerComponent,
     ],
@@ -64,7 +63,6 @@ import { SalesPoll } from '@ss/scheduled-sales/api-scheduled-sales';
 })
 export class SalesPollDetailComponent extends BaseEntityDetailComponent<SalesPoll> {
     private loginSrv = inject(LoginService);
-    private salesPollSrv = inject(SalesPollService);
 
     constructor(
         public override entitySrv: SalesPollService,
@@ -81,17 +79,17 @@ export class SalesPollDetailComponent extends BaseEntityDetailComponent<SalesPol
             route,
             formBuilder,
             confirmationSrv,
-            'SCH_SALE_POLL',
+            'SCH_SALE_POLLS',
         );
     }
 
     public override setupForm(b: SalesPoll) {
         // Make sure to update the template if you edit the configuration here
         return this.formBuilder.group({
-            id: [b.id],
+            id:       [b.id],
             centerId: [b.centerId || this.loginSrv.appCtx.center],
-            number: [b.number],
-            date: [b.date],
+            number:   [{ value: b.number||1, disabled: true }, Validators.required],
+            date:     [b.date || new Date(), Validators.required],
         });
     }
 
