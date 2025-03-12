@@ -32,5 +32,16 @@
     "COMPENSATIONS":      "Compensations",
     "ADVANCE":            "Advance",
     "SHIPPING":           "Shipping",
-    "RECEIVER":           "Receiver"
+    "RECEIVER":           "Receiver",
+    "SALES_POLLS":        "Sales polls",
+    "SALE_POLL":          "Sales poll",
+    "POLL_QUESTIONS":     "Poll questions",
+    "POLL_QUESTION":      "Poll question",
+    "ANSWER_TYPES":       "Answer types",
+    "ANSWER_TYPE":        "Answer type",
+    "SHOW_MEMO":          "Show memo",
+    "SATISFACTION":       "Satisfaction",
+    "UNSPECIFIED":        "Unspecified",
+    "BOOLEAN":            "Boolean",
+    "DESCRIPTION_EN":     "Description (en)"
 }

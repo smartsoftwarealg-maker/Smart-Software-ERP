@@ -1,0 +1,35 @@
+<mat-card>
+    <mat-card-content>
+        @if (form !== null) {
+            <form novalidate [formGroup]="form">
+                <mat-form-field class="default-100">
+                    <mat-label translate>COMMON_DESCRIPTION</mat-label>
+                    <textarea matInput formControlName="description" rows="3" required autofocus></textarea>
+                </mat-form-field>
+
+                 <mat-form-field class="default-100">
+                    <mat-label translate>COMMON_DESCRIPTION_AR</mat-label>
+                     <textarea matInput formControlName="descriptionAr" rows="3" autofocus></textarea>
+                </mat-form-field>
+
+                 <mat-form-field class="default-100">
+                    <mat-label translate>SCH_DESCRIPTION_EN</mat-label>
+                     <textarea matInput formControlName="descriptionEn" rows="3" ></textarea>
+                 </mat-form-field>
+
+                 <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>SCH_ANSWER_TYPE</mat-label>
+                    <mat-select matInput formControlName="answerType" type="number" >
+                        <mat-option [value]="0"> <div translate> {{AnswerTypes[0]}}</div> </mat-option>
+                        <mat-option [value]="1"> <div translate> {{AnswerTypes[1]}}</div> </mat-option>
+                        <mat-option [value]="2"> <div translate> {{AnswerTypes[2]}}</div> </mat-option>
+                    </mat-select>
+                 </mat-form-field>
+
+                <div class="default-50 sm-100">
+                    <mat-checkbox formControlName="showMemo" translate>SCH_SHOW_MEMO</mat-checkbox>
+                </div>
+            </form>
+        }
+    </mat-card-content>
+</mat-card>
