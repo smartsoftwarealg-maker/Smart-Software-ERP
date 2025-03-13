@@ -294,4 +294,6 @@ export interface PollQuestion {
     descriptionEn?: string;
     answerType: number;
     showMemo: boolean;
+    isUsed: boolean,
+    isBlocked: boolean
 }
