@@ -1,9 +1,10 @@
-import { Component, inject, input, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Component, inject, input, OnDestroy, OnInit, signal, ViewChild } from '@angular/core';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { LookupsService } from '@ss/common/api-lookup';
 import {  ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { NestedTreeControl } from '@angular/cdk/tree';
+
 import {
     ParamAutoCompleteModel,
     ParamValue,
@@ -60,6 +61,8 @@ export class ReportViewComponent extends BaseEntityListComponent<ReportParam> im
     private deviceService = inject( DeviceDetectorService);
     private paramLookupSrv = inject(ReportParamLookupService);
 
+    isResponsible = signal(false);
+
     @ViewChild('tree', { static: false }) tree: MatTree<unknown>;
 
     private uuid = '';
@@ -107,6 +110,7 @@ export class ReportViewComponent extends BaseEntityListComponent<ReportParam> im
         super(reportService, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv, 'COMMON_REPORTS');
         const os = this.deviceService.getDeviceInfo().os.toLowerCase();
         this.isAndroid = os === 'android' || os === 'ios';
+        this.isResponsible.set(this.loginSrv.appCtx.responsible);
     }
 
     override ngOnInit(): void {
