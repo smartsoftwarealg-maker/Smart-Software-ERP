@@ -31,7 +31,8 @@
         </div>
     </div>
     @if (selectedReport?.name) {
-       <mat-toolbar color="primary" class="report-name"> {{ selectedReport?.name.replaceAll(".jasper", "") }}</mat-toolbar>
+        <mat-toolbar color="primary" class="report-name"> {{ selectedReport?.name.replaceAll(".jasper", "") }}
+        </mat-toolbar>
     }
     @if (isReady()) {
         <form (ngSubmit)="generateReport()" [formGroup]="form">
@@ -114,12 +115,14 @@
                     <i class="far fa-file-pdf"></i>
                     <span translate>COMMON_VIEW_REPORT</span>
                 </button>
-                <button mat-raised-button color="primary"
-                        type="button"
-                        (click)="saveParams()">
-                    <i class="far fa-file-pdf"></i>
-                    <span translate>COMMON_SAVE_PARAMS</span>
-                </button>
+                @if (isResponsible()) {
+                    <button mat-raised-button color="primary"
+                            type="button"
+                            (click)="saveParams()">
+                        <i class="far fa-file-pdf"></i>
+                        <span translate>COMMON_SAVE_PARAMS</span>
+                    </button>
+                }
             </div>
         </form>
     }
