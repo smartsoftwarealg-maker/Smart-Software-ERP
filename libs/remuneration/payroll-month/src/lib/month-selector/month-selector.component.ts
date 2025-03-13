@@ -53,7 +53,6 @@ export class MonthSelectorComponent implements OnInit {
             this.specialSrv.getList(0, 50))
             .subscribe({
                 next: res => {
-                    console.log(res);
                     this.minMonth.set(res[0].month);
                     this.maxMonth.set(res[1].month);
                     const min = +(res[0].month / 100).toFixed(0);

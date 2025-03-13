@@ -164,9 +164,6 @@ export class ReportViewComponent extends BaseEntityListComponent<ReportParam> im
             cc['reportType'] = new FormControl(this.isLTM()? 'HTML' : 'PDF');
             this.form = new FormGroup(cc);
         });
-        if (this.tree) {
-            this.tree.collapseAll();
-        }
     }
 
     parseValueList(valueList: { description: string }[]) {
@@ -316,4 +313,35 @@ export class ReportViewComponent extends BaseEntityListComponent<ReportParam> im
     protected canShowProcessingStatus(): boolean {
         return false;
     }
+
+    saveParams() {
+        this.htmlSrc = null;
+        this.generating = true;
+        this.uuid = this.selectedReport.name.replace('.jasper', '') + '-' + this.loginSrv.appCtx.id + '-' + new Date().getTime();
+        const data: ReportViewData = {
+            app: this.app + this.selectedReport.parent,
+            rType: this.form.value.reportType,
+            fileName: this.selectedReport.name.replace('.jasper', ''),
+            uuid: null,
+            paramList: this.createList()
+        };
+
+
+        this.httpSrv
+            .post(`/reports/save-params`, data)
+            .subscribe({
+            next: res => {
+                this.generating = false;
+                if (res['count']) {
+                    this.snackBarSrv.showSuccessMessage();
+                }
+                this.generating = false;
+            },
+            error: err => {
+                this.generating = false;
+                throw err;
+            }
+        });
+    }
+
 }
