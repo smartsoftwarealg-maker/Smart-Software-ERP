@@ -61,41 +61,41 @@ export class InvoiceValidationComponent extends BaseEntityListComponent<Validate
     ];
 
     constructor(
-        public override entitySrv: InvoiceValidationService,
-        public override shellSrv: ShellService,
-        public override snackBarSrv: SnackBarService,
-        public override route: ActivatedRoute,
-        public override router: Router,
-        public override defReportSrv: DefaultReportService,
-        public override confirmationSrv: ConfirmationDialogService,
-        public override pagPersistSrv: PaginatorPersistenceService) {
+      public override entitySrv: InvoiceValidationService,
+      public override shellSrv: ShellService,
+      public override snackBarSrv: SnackBarService,
+      public override route: ActivatedRoute,
+      public override router: Router,
+      public override defReportSrv: DefaultReportService,
+      public override confirmationSrv: ConfirmationDialogService,
+      public override pagPersistSrv: PaginatorPersistenceService) {
         super(
-            entitySrv,
-            shellSrv,
-            snackBarSrv,
-            route,
-            router,
-            confirmationSrv,
-            defReportSrv,
-            pagPersistSrv,
-            'SCH_SHIPPING');
+          entitySrv,
+          shellSrv,
+          snackBarSrv,
+          route,
+          router,
+          confirmationSrv,
+          defReportSrv,
+          pagPersistSrv,
+          'SCH_SHIPPING');
         this.pagination.pageSize = 15;
     }
 
     validate() {
         this.entitySrv
-            .validate(this.form.controls.number.value)
-            .subscribe(res => {
-                if (res.count > 0) {
-                    this.showCheckMark.set(1);
-                    this.refresh();
-                    this.snackBarSrv.showSuccessMessage();
-                    setTimeout(() => this.showCheckMark.set(0),3000);
-                } else {
-                    this.showCheckMark.set(2);
-                    setTimeout(() => this.showCheckMark.set(0),3000);
-                }
-            });
+          .validate(this.form.controls.number.value)
+          .subscribe(res => {
+              if (res.count > 0) {
+                  this.showCheckMark.set(1);
+                  this.refresh();
+                  this.snackBarSrv.showSuccessMessage();
+                  setTimeout(() => this.showCheckMark.set(0), 3000);
+              } else {
+                  this.showCheckMark.set(2);
+                  setTimeout(() => this.showCheckMark.set(0), 3000);
+              }
+          });
     }
 
     override ngOnInit() {
@@ -105,24 +105,37 @@ export class InvoiceValidationComponent extends BaseEntityListComponent<Validate
         const today = dateToYmdStr(new Date());
 
         this.form
-            .controls
-            .date
-            .valueChanges
-            .pipe(
-                tap(d => {
-                    if (dateToYmdStr(d) === today) {
-                        this.form.controls.number.enable();
-                        setTimeout(() => this.inputEl.nativeElement.focus());
-                    } else {
-                        this.form.controls.number.disable();
-                    }
-                }),
-                debounceTime(300),
-                distinctUntilChanged()
-            )
-            .subscribe(res => {
-                this.entitySrv.date = res;
-                this.refresh();
-            });
+          .controls
+          .date
+          .valueChanges
+          .pipe(
+            tap(d => {
+                if (dateToYmdStr(d) === today) {
+                    this.form.controls.number.enable();
+                    setTimeout(() => this.inputEl.nativeElement.focus());
+                } else {
+                    this.form.controls.number.disable();
+                }
+            }),
+            debounceTime(300),
+            distinctUntilChanged()
+          )
+          .subscribe(res => {
+              this.entitySrv.date = res;
+              this.refresh();
+          });
+    }
+
+
+    public override finishLoading(data: ValidatedSale[]) {
+        this.processLoadedData(data)
+          .subscribe(x => {
+              this.data = x;
+              this.shellSrv.setLoading(false);
+          });
+        setTimeout(() =>{
+            this.form.controls.number.setValue(null);
+            this.inputEl.nativeElement.focus();
+        });
     }
 }
