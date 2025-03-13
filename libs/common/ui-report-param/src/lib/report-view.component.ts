@@ -151,7 +151,7 @@ export class ReportViewComponent extends BaseEntityListComponent<ReportParam> im
     reportSelect(reportNode: ReportNode) {
         this.form = null;
         this.selectedReport = reportNode;
-        this.refresh(() => {
+        super.refresh(() => {
             const cc = {reportType: new FormControl<string>(''), name: new FormControl<string>('')};
 
             this.data.forEach(e => {
