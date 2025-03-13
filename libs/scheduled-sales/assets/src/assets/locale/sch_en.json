@@ -34,7 +34,7 @@
     "SHIPPING":           "Shipping",
     "RECEIVER":           "Receiver",
     "SALES_POLLS":        "Sales polls",
-    "SALE_POLL":          "Sales poll",
+    "SALES_POLL":         "Sales poll",
     "POLL_QUESTIONS":     "Poll questions",
     "POLL_QUESTION":      "Poll question",
     "ANSWER_TYPES":       "Answer types",

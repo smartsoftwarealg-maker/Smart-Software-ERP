@@ -17,6 +17,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
 import { PollQuestion } from '@ss/scheduled-sales/api-scheduled-sales';
 import { PollQuestionService } from '../poll-question.service';
 import { MatCheckbox } from '@angular/material/checkbox';
+import { CustomerComplaint } from '../../../../customer-complaints/src/lib/customer-complaint.class';
 
 export const AnswerTypes = ['SCH_UNSPECIFIED', 'SCH_SATISFACTION', 'SCH_BOOLEAN']
 
@@ -79,5 +80,11 @@ export class PollQuestionListComponent extends BaseEntityListComponent<PollQuest
             'SCH_POLL_QUESTIONS',
         );
         this.pagination.pageSize = 10;
+    }
+
+    override selectRow(row: PollQuestion) {
+        super.selectRow(row);
+        this.editButton.disabled = row.isUsed;
+        console.log(row.isUsed);
     }
 }
