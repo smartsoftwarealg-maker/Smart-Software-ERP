@@ -9,8 +9,6 @@ import { HttpService, MaterialModule, PaginatorPersistenceService } from "@ss/co
 import {Article, SSArticleService} from '@ss/scheduled-sales/api-scheduled-sales';
 import { CommonModule } from "@angular/common";
 import { ReactiveFormsModule } from "@angular/forms";
-import { ColorSelectComponent } from "@ss/common/ui-color-select";
-import { ColorPickerModule } from "ngx-color-picker";
 import { PaginationComponent } from '@ss/common/ui-pagination';
 import { TranslateDirective } from '@ss/common/ui-lang';
 
@@ -25,8 +23,6 @@ import { TranslateDirective } from '@ss/common/ui-lang';
         TranslateDirective,
         ReactiveFormsModule,
         RouterModule,
-       
-        ColorPickerModule,
         PaginationComponent,
         TranslateDirective
     ]

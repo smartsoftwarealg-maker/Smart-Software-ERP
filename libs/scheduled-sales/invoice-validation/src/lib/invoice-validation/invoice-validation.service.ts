@@ -34,4 +34,9 @@ export class InvoiceValidationService extends BaseEntityService<ValidatedSale> {
         const params = (extraPrams || new HttpParams()).set('date', dateToYmdStr(this.#_date));
         return super.getList(page, pageSize, filter, sortBy, params);
     }
+
+    override excel(filter?: string): Observable<Blob> {
+        const params =  new HttpParams().set('date', dateToYmdStr(this.#_date));
+        return this.httpSrv.getBlob(this.getUrl() + '/excel', filter? params.set('filter', filter) : params);
+    }
 }
