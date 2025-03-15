@@ -5,9 +5,11 @@
                 <mat-form-field id="contractNo" class="default-50 sm-100">
                     <mat-label translate>COMMON_NUMBER</mat-label>
                     <input matInput formControlName="contractNo" type="text" autofocus maxlength="15" required>
-                    <mat-error *ngIf="form.controls['contractNo'].invalid" [translate]="{maxLen: 15}">
-                        COMMON_FIELD_MAX_LENGTH
-                    </mat-error>
+                    @if (form.controls['contractNo'].invalid) {
+                        <mat-error [translate]="{maxLen: 15}">
+                            COMMON_FIELD_MAX_LENGTH
+                        </mat-error>
+                    }
                 </mat-form-field>
 
                 <mat-form-field class="default-50 sm-100">
@@ -18,8 +20,9 @@
                 <mat-form-field id="description" class="default-50 sm-100">
                     <mat-label translate>ADMINISTRATION_DESCRIPTION</mat-label>
                     <input matInput formControlName="description" type="text" required>
-                    <mat-error *ngIf="form.controls['description'].invalid" translate>COMMON_FIELD_REQUIRED
-                    </mat-error>
+                    @if (form.controls['description'].invalid) {
+                        <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+                    }
                 </mat-form-field>
 
                 <mat-form-field class="default-50 sm-100">
@@ -28,7 +31,9 @@
                                       [model]="supplierLookupModel"
                                       formControlName="customer">
                     </ss-auto-complete>
-                    <mat-error *ngIf="form.controls['customer'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
+                    @if (form.controls['customer'].invalid) {
+                        <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+                    }
                 </mat-form-field>
 
                 <mat-form-field class="default-50 sm-100">
@@ -76,6 +81,9 @@
                     <mat-label translate>LOGISTICS_ARTICLE_NO</mat-label>
                     <input matInput formControlName="fiscalId" type="text" maxlength="70">
                 </mat-form-field>
+                <div id="manager" class="default-50 sm-100">
+                    <mat-checkbox formControlName="isBlocked" translate>ADMINISTRATION_BLOCKED</mat-checkbox>
+                </div>
             </form>
         }
     </mat-card-content>

@@ -43,6 +43,7 @@ export class DefaultAutoCompleteModel<T> implements AutoCompleteModel<T> {
     filter = (filter: string) => this.entitySrv.getList(0, this.#searchLength, filter, this.descriptionField).pipe(map(x => this.filterLoadedData(x.body)));
 
     isPerfectMatch = (obj: any, filter: string) => !!filter && !!obj && !!obj[this.descriptionField] && obj[this.descriptionField].toUpperCase() === filter.toUpperCase();
+
     clear() {
         this.options = [];
     }

@@ -185,5 +185,6 @@
     "CHECK_NUMBER":         "رقم الصك",
     "GUARANTEE":            "ضمان",
     "VF_GUARANTEE":          "الضمان قبل الضريبة",
-    "FF_GUARANTEE":          "الضمان بعد الضريبة"
+    "FF_GUARANTEE":          "الضمان بعد الضريبة",
+    "PROJECT_BLOCKED":       "المشروع محظور"
 }

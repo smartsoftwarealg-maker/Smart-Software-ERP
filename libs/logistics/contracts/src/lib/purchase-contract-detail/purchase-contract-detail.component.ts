@@ -89,7 +89,8 @@ export class PurchaseContractDetailComponent extends BaseEntityDetailComponent<P
             projMotive:     [b.projMotive],
             salesPurchase:  [2],
             wilaya:         [b.wilaya],
-            fiscalId:       [b.fiscalId]
+            fiscalId:       [b.fiscalId],
+            isBlocked:      [b.isBlocked||false]
         });
     }
 

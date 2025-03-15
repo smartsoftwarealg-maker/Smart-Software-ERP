@@ -14,7 +14,7 @@ import { WorkflowDialogComponent } from '@ss/workflow';
 import { LoginService, User } from '@ss/common/api-common';
 import { MatDialog } from '@angular/material/dialog';
 import { DocImportComponent, DocImportService } from '@ss/logistics/ui-doc-import';
-import { Directive, inject, OnInit, ViewChild } from '@angular/core';
+import { Directive, inject, OnInit, signal, ViewChild } from '@angular/core';
 import { CCGroup, Currency, CurrencyService, Lookup, LookupsService, PayMethod } from '@ss/common/api-lookup';
 import {
     Agent,
@@ -31,6 +31,7 @@ import { TransactionLinesClass } from './transaction-lines.class';
 import { BaseTransactionLinesListComponent } from './base-transaction-lines-list.component';
 import { Project, PurchaseContractService, SalesContractService } from '@ss/logistics/contracts';
 import { OptionService } from '@ss/logistics/ui-options';
+import { sign } from 'chart.js/helpers';
 
 @Directive()
 export abstract class BaseTransactionDetailComponent extends BaseEntityDetailComponent<Transaction> implements OnInit {
@@ -105,6 +106,17 @@ export abstract class BaseTransactionDetailComponent extends BaseEntityDetailCom
         this.agentLookup.onObjectSelected = e => this.updateProjectLookups(e?.id || 0);
         this.supplierLookup.onObjectSelected = e => this.updateProjectLookups(e?.id || 0);
         this.customerLookup.onObjectSelected = e => this.updateProjectLookups(e?.id || 0);
+        this.salesProjectLookup.onObjectSelected = e => this.updateProjectStatus(e);
+        this.purchaseProjectLookup.onObjectSelected = e => this.updateProjectStatus(e);
+    }
+
+    private updateProjectStatus(p: Project) {
+        const blocked = p?.isBlocked;
+        if (blocked) {
+            this.form.controls['project'].setErrors({'blocked': true});
+        } else {
+            this.form.controls['project'].setErrors(null);
+        }
     }
 
     private updateProjectLookups(id: number) {
