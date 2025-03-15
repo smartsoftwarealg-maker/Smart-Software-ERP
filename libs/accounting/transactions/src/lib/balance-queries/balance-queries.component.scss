@@ -9,12 +9,12 @@ form {
     max-width: 1400px;
     margin: 8px auto;
 }
-.container_div {
-    width: 100%;
-    min-height: 60%;
-    overflow: auto;
-}
 
+.table__div {
+    width: 100%;
+    min-height: 33em;
+    overflow-x: auto;
+}
 
 .mat-column-oldDebit,
 .mat-column-oldCredit,
@@ -24,10 +24,14 @@ form {
 .mat-column-totCredit,
 .mat-column-debit,
 .mat-column-credit {
-    flex: 1 1 100px;
+    flex: 1 1 110px;
     border-left: white solid 1px;
     padding-right: 4px;
     justify-content: flex-end;
+}
+
+.mat-column-credit {
+    border-right: white solid 1px;
 }
 
 
@@ -37,7 +41,7 @@ form {
 .mat-column-reference,
 .mat-column-accountNo,
 .mat-column-customer {
-    flex: 1 1 70px;
+    flex: 1 1 80px;
     border-left: white solid 1px;
     padding-left: 4px;
 }
@@ -48,3 +52,8 @@ form {
     padding-left: 4px;
 }
 
+.main-table {
+    width: 100%;
+    min-width: 1200px;
+    min-height: 33em;
+}

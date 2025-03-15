@@ -1,7 +1,6 @@
 import { Component, ElementRef, inject, QueryList, signal, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
-import { Bank, BankService } from '@ss/administration/api-bank';
 import { ValidatedSale } from '@ss/scheduled-sales/api-scheduled-sales';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -26,11 +25,32 @@ import { DatePickerComponent } from '@ss/common/ui-datepicker';
 import { MatError, MatFormField, MatLabel } from '@angular/material/form-field';
 import { MatInput } from '@angular/material/input';
 import { debounceTime, distinctUntilChanged, tap } from 'rxjs';
-import { isContentEditable } from '@angular-eslint/eslint-plugin-template/dist/utils/is-content-editable';
 
 @Component({
     selector: 'ss-invoice-validation',
-    imports: [CommonModule, MaterialModule, MatCell, MatCellDef, MatColumnDef, MatHeaderCell, MatHeaderRow, MatHeaderRowDef, MatRow, MatRowDef, MatSort, MatSortHeader, MatTable, PaginationComponent, TranslateDirective, MatHeaderCellDef, MatCard, ReactiveFormsModule, DatePickerComponent, MatError, MatFormField, MatLabel, MatInput],
+    imports: [CommonModule,
+        MaterialModule,
+        MatCell,
+        MatCellDef,
+        MatColumnDef,
+        MatHeaderCell,
+        MatHeaderRow,
+        MatHeaderRowDef,
+        MatRow,
+        MatRowDef,
+        MatSort,
+        MatSortHeader,
+        MatTable,
+        PaginationComponent,
+        TranslateDirective,
+        MatHeaderCellDef,
+        MatCard,
+        ReactiveFormsModule,
+        DatePickerComponent,
+        MatError,
+        MatFormField,
+        MatLabel,
+        MatInput],
     templateUrl: './invoice-validation.component.html',
     standalone: true,
     styleUrl: './invoice-validation.component.scss'
@@ -91,6 +111,7 @@ export class InvoiceValidationComponent extends BaseEntityListComponent<Validate
                   this.refresh();
                   this.snackBarSrv.showSuccessMessage();
                   setTimeout(() => this.showCheckMark.set(0), 3000);
+                  this.form.controls.number.setValue(null);
               } else {
                   this.showCheckMark.set(2);
                   setTimeout(() => this.showCheckMark.set(0), 3000);

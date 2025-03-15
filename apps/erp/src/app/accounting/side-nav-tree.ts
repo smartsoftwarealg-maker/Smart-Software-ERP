@@ -157,12 +157,6 @@ export const accountingNavTree: SideNavNode = {
             accessRights: 'ACCTransaction'
         },
         {
-            name: 'ACC_BALANCE_QUERIES',
-            icon: 'fa-solid fa-database',
-            route: ABS_BALANCE_QUERIES_URL,
-            accessRights: 'ACCTransaction'
-        },
-        {
             name: 'ACC_CONSOLIDATION_CENTERS',
             icon: 'fa-solid fa-circles-overlap-3',
             route: ABS_CONSOLIDATION_CENTERS_URL,

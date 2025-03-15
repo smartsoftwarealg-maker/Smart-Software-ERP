@@ -13,6 +13,7 @@ import { CommonModule } from '@angular/common';
 import { DatePickerComponent } from '@ss/common/ui-datepicker';
 import { PaginationComponent } from '@ss/common/ui-pagination';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
+import { Sort } from '@angular/material/sort';
 
 
 
@@ -26,14 +27,8 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         RouterModule,
         MaterialModule,
         TranslateDirective,
-       
         ReactiveFormsModule,
-
-
-       
         PaginationComponent
-
-
     ]
 })
 export class BalanceQueriesComponent implements OnInit {
@@ -76,7 +71,7 @@ export class BalanceQueriesComponent implements OnInit {
                 private route: ActivatedRoute) {
         this.balancePaginator.onChange = () => this.refreshBalance();
         this.glPaginator.onChange = () => this.refreshGL();
-        this.glPaginator.pageSize = this.balancePaginator.pageSize = 15;
+        this.glPaginator.pageSize = this.balancePaginator.pageSize = 10;
     }
 
     ngOnInit(): void {
@@ -124,7 +119,17 @@ export class BalanceQueriesComponent implements OnInit {
     selectBalance(row: Balance) {
         this.selectedAccount = row?.accountNo;
     }
+
     selectGL(row: GL) {
         this.glAccount = row?.accountNo;
+    }
+    sortBalance(event: Sort) {
+        this.querySrv.sortColumn = event;
+        this.refreshBalance();
+    }
+    sortGL(event: Sort) {
+        // console.log(event);
+        this.querySrv.sortColumn = event;
+        this.refresh();
     }
 }

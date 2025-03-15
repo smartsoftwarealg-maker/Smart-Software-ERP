@@ -136,11 +136,12 @@ export class TransactionDetailComponent implements OnInit, OnDestroy {
                 if (res) {
                     this.snackBarSrv.showSuccessMessage();
                     const value = this.form.getRawValue();
-                    if (value.id) {
-                        this.form.reset(value);
-                    } else {
-                        this.router.navigate(['/app/accounting/transactions', res]).then();
-                    }
+                    this.cancel();
+                    // if (value.id) {
+                    //     this.form.reset(value);
+                    // } else {
+                    //     this.router.navigate(['/app/accounting/transactions', res]).then();
+                    // }
                 }
             });
     }
