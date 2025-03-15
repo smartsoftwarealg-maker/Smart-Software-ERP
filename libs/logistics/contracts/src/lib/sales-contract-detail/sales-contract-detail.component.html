@@ -75,7 +75,12 @@
                     <mat-label translate>LOGISTICS_ARTICLE_NO</mat-label>
                     <input matInput formControlName="fiscalId" type="text" maxlength="70">
                 </mat-form-field>
-        </form>
+
+                <div id="manager" class="default-50 sm-100">
+                    <mat-checkbox formControlName="isBlocked" translate>ADMINISTRATION_BLOCKED</mat-checkbox>
+                </div>
+
+            </form>
         }
     </mat-card-content>
 </mat-card>

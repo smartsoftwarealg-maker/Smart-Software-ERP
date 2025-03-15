@@ -37,6 +37,9 @@
                                   [model]="projectLookup"
                                   formControlName="projectId">
                 </ss-auto-complete>
+                @if (form.controls['project']?.hasError('blocked')) {
+                    <mat-error translate>LOGISTICS_PROJECT_BLOCKED</mat-error>
+                }
             </mat-form-field>
 
             <mat-form-field class="default-50 sm-100">

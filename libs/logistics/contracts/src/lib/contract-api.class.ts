@@ -42,6 +42,7 @@ export interface Project {
     salesPurchase: number;
     wilayaName?: string;
     fiscalId?: string;
+    isBlocked: boolean;
 }
 
 export interface ProjectArticle {

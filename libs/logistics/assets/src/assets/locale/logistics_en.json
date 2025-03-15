@@ -188,6 +188,7 @@
     "CHECK_NUMBER":          "Check number",
     "GUARANTEE":             "Guarantee",
     "VF_GUARANTEE":          "VAT free Guarantee",
-    "FT_GUARANTEE":          "Full tax guarantee"
+    "FT_GUARANTEE":          "Full tax guarantee",
+    "PROJECT_BLOCKED":       "Project blocked"
 
 }

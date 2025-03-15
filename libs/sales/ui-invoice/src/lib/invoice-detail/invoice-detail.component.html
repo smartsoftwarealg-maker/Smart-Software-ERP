@@ -62,6 +62,9 @@
                                           [model]="salesProjectLookup"
                                           formControlName="project">
                         </ss-auto-complete>
+                        @if (form.controls['project']?.hasError('blocked')) {
+                            <mat-error translate>LOGISTICS_PROJECT_BLOCKED</mat-error>
+                        }
                     </mat-form-field>
 
                     <mat-form-field class="default-50 sm-100">
@@ -70,9 +73,9 @@
                                           [required]="true"
                                           [model]="dealerAutoCompleteModel"
                                           formControlName="dealer"></ss-auto-complete>
-                        <mat-error
-                            *ngIf="form.controls['dealer'].hasError('required')" translate>COMMON_FIELD_REQUIRED
-                        </mat-error>
+                        @if (form.controls['dealer'].hasError('required')) {
+                            <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+                        }
                         <mat-error
                             *ngIf="form.controls['dealer'].hasError('validOption')" translate>COMMON_NO_MATCH
                         </mat-error>
