@@ -25,8 +25,8 @@ import {Observable} from 'rxjs';
 import {tap} from 'rxjs/operators';
 import {Article, SSArticleService} from '@ss/scheduled-sales/api-scheduled-sales';
 import { CommonModule } from "@angular/common";
-import { ColorPickerModule } from "ngx-color-picker";
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
+import { ColorPickerDirective } from 'ngx-color-picker';
 
 @Component({
     selector: "ss-article-detail",
@@ -40,8 +40,8 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         TranslatePipe,
         ReactiveFormsModule,
         RouterModule,
-        ColorPickerModule,
-        UiAutoCompleteComponent
+        UiAutoCompleteComponent,
+        ColorPickerDirective
     ]
 })
 export class ArticleDetailComponent  extends BaseEntityDetailComponent<Article> implements OnInit {

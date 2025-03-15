@@ -18,7 +18,6 @@ import { MainPageComponent } from '@ss/common/ui-main-page';
 import { CSPACE_APP_URL } from './app/common';
 import { AppComponent } from './app/app.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { ColorPickerModule } from 'ngx-color-picker';
 import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { CustomErrorHandler } from '@ss/common/ui-error-handler';
 import { LoginComponent } from '@ss/common/ui-login';

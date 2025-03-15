@@ -7,7 +7,6 @@ import { provideRouter, Routes, withComponentInputBinding, withDebugTracing } fr
 import { MAIN_PAGE_URL, UPDATE_PASSWORD_URL, AUTH_2FA_URL, LOGIN_URL, CENTER_SELECT_URL } from '@ss/common/api-common';
 import { ShellComponent } from '@ss/common/ui-shell';
 import { PasswordUpdateComponent, Auth2FAConfirmationComponent } from '@ss/auth-2fa';
-import { ColorPickerModule } from 'ngx-color-picker';
 import { AppComponent } from './app/app.component';
 import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { LoginComponent } from '@ss/common/ui-login';
@@ -35,7 +34,7 @@ if (environment.production) {
 
 bootstrapApplication(AppComponent, {
     providers: [
-        importProvidersFrom(BrowserModule, MatProgressSpinnerModule,  ColorPickerModule),
+        importProvidersFrom(BrowserModule, MatProgressSpinnerModule),
         provideAnimations(),
         provideHttpClient(withInterceptorsFromDi()),
         provideRouter(routes, withComponentInputBinding()), //, withDebugTracing()
