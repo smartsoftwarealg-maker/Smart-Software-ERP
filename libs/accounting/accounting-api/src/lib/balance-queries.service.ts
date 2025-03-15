@@ -16,6 +16,6 @@ export class BalanceQueryService extends BaseEntityService<Balance> {
 
     getGL(pageModel: PaginationModel, extraPrams?: HttpParams): Observable<{ itemCount: number, body: GL[] }> {
         return this.httpSrv
-            .getData<GL>(ACC_ACCOUNTING_GL_URL, pageModel.page - 1, pageModel.pageSize, null, null, extraPrams);
+            .getData<GL>(ACC_ACCOUNTING_GL_URL, pageModel.page - 1, pageModel.pageSize, null, this.sortColumn, extraPrams);
     }
 }

@@ -83,6 +83,12 @@ export interface JournalUser {
     userName?: string;
 }
 
+export interface JournalSummary {
+    id: number;
+    debit: number;
+    credit: number;
+}
+
 export interface ACCTransaction {
     id: number;
     fileId: number;

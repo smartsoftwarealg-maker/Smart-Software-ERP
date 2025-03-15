@@ -6,7 +6,8 @@ import {
     ACCTransaction,
     AccTransactionLineService,
     AccTransactionService,
-    Journal} from '@ss/accounting/accounting-api';
+    Journal, JournalSummary
+} from '@ss/accounting/accounting-api';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import {  ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
@@ -26,6 +27,7 @@ import { DatePickerComponent } from "@ss/common/ui-datepicker";
 import { AppArchiveMainComponent } from '@ss/common/app-archive';
 import { PaginationComponent } from '@ss/common/ui-pagination';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
+import { toSignal } from '@angular/core/rxjs-interop';
 
 
 @Component({
@@ -55,6 +57,7 @@ export class TransactionListComponent extends BaseEntityListComponent<ACCTransac
     public math = Math;
     isRoot = signal(true);
     isArchive = signal(false);
+    journalSummary = signal<JournalSummary>({ id: 0, debit: 0, credit: 0 });
     selectedJournal = 0;
     journalFilter = new FormControl<string>('');
     journalList: Journal[] = [];
@@ -121,6 +124,7 @@ export class TransactionListComponent extends BaseEntityListComponent<ACCTransac
                     distinctUntilChanged(),
                     switchMap(str => this.journalSrv.getUserJournals(str)))
                 .subscribe(res => this.journalList = res.body));
+
         this.shellSrv.setGoBackFn(() => {
             const idx = this.router.url.lastIndexOf('/detail/');
             const remaining = idx >= 0 ? this.router.url.substring(idx + '/detail/'.length) : '';
@@ -161,8 +165,9 @@ export class TransactionListComponent extends BaseEntityListComponent<ACCTransac
     }
 
     override selectRow(row: ACCTransaction) {
-        if (this.isRoot) {
+        if (this.isRoot()) {
             super.selectRow(row);
+            this.edit();
         }
     }
 
@@ -184,6 +189,9 @@ export class TransactionListComponent extends BaseEntityListComponent<ACCTransac
                 this.data = res.body;
                 this.pagination.elementCount = res.itemCount;
             });
+        this.entitySrv
+            .journalSummary()
+            .subscribe(res => this.journalSummary.set(res));
     }
 
     private refreshTransactions() {
@@ -200,12 +208,16 @@ export class TransactionListComponent extends BaseEntityListComponent<ACCTransac
         //         // this.showButtons();
         //     });
     }
+
     journalSelected(event: MatSelectionListChange) {
         this.selectedJournal = event.options[0].value;
         const journalId = event.options[0].value;
         this.entitySrv.setParentId(journalId);
         this.refreshTransactions();
         this.addButton.visible = journalId > 0;
+        this.entitySrv
+            .journalSummary()
+            .subscribe(res => this.journalSummary.set(res));
     }
 
     protected override canShowProcessingStatus(): boolean {
@@ -220,4 +232,5 @@ export class TransactionListComponent extends BaseEntityListComponent<ACCTransac
     get isEditable() {
         return this.fileSrv.isEditable;
     }
+
 }

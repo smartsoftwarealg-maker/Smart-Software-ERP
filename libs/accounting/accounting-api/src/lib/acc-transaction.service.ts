@@ -3,7 +3,7 @@ import {BaseEntityService} from '@ss/common/api-base-entity';
 import {
     ACC_JOURNALS_URL, ACC_PROJECTS_URL,
     ACC_TRANSACTION_URL,
-    ACCTransaction
+    ACCTransaction, JournalSummary
 } from './accounting-api';
 import {HttpService} from '@ss/common/api-common';
 import {Observable} from 'rxjs';
@@ -26,5 +26,9 @@ export class AccTransactionService extends BaseEntityService<ACCTransaction> {
 
     getProjects(): Observable<Lookup[]> {
         return this.httpSrv.get<Lookup[]>(ACC_PROJECTS_URL + '?page=0-50');
+    }
+
+    journalSummary(): Observable<JournalSummary> {
+        return this.httpSrv.get<JournalSummary>('/accounting/journal-summary?id=' + (this.getParentId()||0));
     }
 }

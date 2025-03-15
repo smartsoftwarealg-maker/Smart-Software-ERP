@@ -42,81 +42,81 @@
         <ng-template mat-tab-label>
             <span translate>COMMON_BALANCE</span>
         </ng-template>
-        <div class="container_div">
-            <mat-table mat-table [dataSource]="balanceData" class="main-table">
+        <div class="table__div">
+            <mat-table mat-table [dataSource]="balanceData" class="main-table" matSort (matSortChange)="sortBalance($event)">
 
                 <ng-container matColumnDef="accountNo">
-                    <mat-header-cell *matHeaderCellDef translate>COMMON_ACCOUNTNO</mat-header-cell>
+                    <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_ACCOUNTNO</mat-header-cell>
                     <mat-cell *matCellDef="let e">
                         {{ e.accountNo }}
                     </mat-cell>
                 </ng-container>
 
                 <ng-container matColumnDef="description">
-                    <mat-header-cell *matHeaderCellDef translate>ADMINISTRATION_DESCRIPTION</mat-header-cell>
+                    <mat-header-cell *matHeaderCellDef mat-sort-header translate>ADMINISTRATION_DESCRIPTION</mat-header-cell>
                     <mat-cell *matCellDef="let e">
                         {{ e.description }}
                     </mat-cell>
                 </ng-container>
 
                 <ng-container matColumnDef="customer">
-                    <mat-header-cell *matHeaderCellDef translate>LOGISTICS_CUSTOMER</mat-header-cell>
+                    <mat-header-cell *matHeaderCellDef mat-sort-header translate>LOGISTICS_CUSTOMER</mat-header-cell>
                     <mat-cell *matCellDef="let e">
                         {{ e.customer }}
                     </mat-cell>
                 </ng-container>
 
                 <ng-container matColumnDef="oldDebit">
-                    <mat-header-cell *matHeaderCellDef translate>ACC_OLD_DEBIT</mat-header-cell>
+                    <mat-header-cell *matHeaderCellDef mat-sort-header translate>ACC_OLD_DEBIT</mat-header-cell>
                     <mat-cell *matCellDef="let e">
                         {{ e.oldDebit | number: '1.2-2' }}
                     </mat-cell>
                 </ng-container>
 
                 <ng-container matColumnDef="oldCredit">
-                    <mat-header-cell *matHeaderCellDef translate>ACC_OLD_CREDIT</mat-header-cell>
+                    <mat-header-cell *matHeaderCellDef mat-sort-header translate>ACC_OLD_CREDIT</mat-header-cell>
                     <mat-cell *matCellDef="let e">
                         {{ e.oldCredit | number: '1.2-2' }}
                     </mat-cell>
                 </ng-container>
 
                 <ng-container matColumnDef="curDebit">
-                    <mat-header-cell *matHeaderCellDef translate>ACC_CUR_DEBIT</mat-header-cell>
+                    <mat-header-cell *matHeaderCellDef mat-sort-header translate>ACC_CUR_DEBIT</mat-header-cell>
                     <mat-cell *matCellDef="let e">
                         {{ e.curDebit | number: '1.2-2' }}
                     </mat-cell>
                 </ng-container>
 
                 <ng-container matColumnDef="curCredit">
-                    <mat-header-cell *matHeaderCellDef translate>ACC_CUR_CREDIT</mat-header-cell>
+                    <mat-header-cell *matHeaderCellDef mat-sort-header translate>ACC_CUR_CREDIT</mat-header-cell>
                     <mat-cell *matCellDef="let e">
                         {{ e.curCredit | number: '1.2-2' }}
                     </mat-cell>
                 </ng-container>
 
                 <ng-container matColumnDef="totDebit">
-                    <mat-header-cell *matHeaderCellDef translate>ACC_TOTAL_DEBIT</mat-header-cell>
+                    <mat-header-cell *matHeaderCellDef mat-sort-header translate>ACC_TOTAL_DEBIT</mat-header-cell>
                     <mat-cell *matCellDef="let e">
                         {{ e.totDebit | number: '1.2-2' }}
                     </mat-cell>
                 </ng-container>
 
                 <ng-container matColumnDef="totCredit">
-                    <mat-header-cell *matHeaderCellDef translate>ACC_TOTAL_CREDIT</mat-header-cell>
+                    <mat-header-cell *matHeaderCellDef mat-sort-header translate>ACC_TOTAL_CREDIT</mat-header-cell>
                     <mat-cell *matCellDef="let e">
                         {{ e.totCredit | number: '1.2-2' }}
                     </mat-cell>
                 </ng-container>
 
                 <ng-container matColumnDef="debit">
-                    <mat-header-cell *matHeaderCellDef translate>ACC_DEBIT</mat-header-cell>
+                    <mat-header-cell *matHeaderCellDef mat-sort-header translate>ACC_DEBIT</mat-header-cell>
                     <mat-cell *matCellDef="let e">
                         {{ e.debit | number: '1.2-2' }}
                     </mat-cell>
                 </ng-container>
 
                 <ng-container matColumnDef="credit">
-                    <mat-header-cell *matHeaderCellDef translate>ACC_CREDIT</mat-header-cell>
+                    <mat-header-cell *matHeaderCellDef mat-sort-header translate>ACC_CREDIT</mat-header-cell>
                     <mat-cell *matCellDef="let e">
                         {{ e.credit | number: '1.2-2' }}
                     </mat-cell>
@@ -138,60 +138,60 @@
             <span translate>ACC_GL</span>
         </ng-template>
 
-        <div class="container_div">
-            <mat-table mat-table [dataSource]="glData" class="main-table">
+        <div class="table__div">
+            <mat-table mat-table [dataSource]="glData" class="main-table" matSort (matSortChange)="sortGL($event)">
 
                 <ng-container matColumnDef="accountNo">
-                    <mat-header-cell *matHeaderCellDef translate>COMMON_ACCOUNTNO</mat-header-cell>
+                    <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_ACCOUNTNO</mat-header-cell>
                     <mat-cell *matCellDef="let e">
                         {{ e.accountNo }}
                     </mat-cell>
                 </ng-container>
 
                 <ng-container matColumnDef="description">
-                    <mat-header-cell *matHeaderCellDef translate>ADMINISTRATION_DESCRIPTION</mat-header-cell>
+                    <mat-header-cell *matHeaderCellDef mat-sort-header translate>ADMINISTRATION_DESCRIPTION</mat-header-cell>
                     <mat-cell *matCellDef="let e">
                         {{ e.description }}
                     </mat-cell>
                 </ng-container>
 
                 <ng-container matColumnDef="pieceNo">
-                    <mat-header-cell *matHeaderCellDef translate>COMMON_NUMBER</mat-header-cell>
+                    <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_NUMBER</mat-header-cell>
                     <mat-cell *matCellDef="let e">
                         {{ e.pieceNo }}
                     </mat-cell>
                 </ng-container>
 
                 <ng-container matColumnDef="journal">
-                    <mat-header-cell *matHeaderCellDef translate>COMMON_JOURNAL</mat-header-cell>
+                    <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_JOURNAL</mat-header-cell>
                     <mat-cell *matCellDef="let e">
                         {{ e.journal }}
                     </mat-cell>
                 </ng-container>
 
                 <ng-container matColumnDef="reference">
-                    <mat-header-cell *matHeaderCellDef translate>COMMON_REFERENCE</mat-header-cell>
+                    <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_REFERENCE</mat-header-cell>
                     <mat-cell *matCellDef="let e">
                         {{ e.reference }}
                     </mat-cell>
                 </ng-container>
 
                 <ng-container matColumnDef="checkNo">
-                    <mat-header-cell *matHeaderCellDef translate>COMMON_CHECKNO</mat-header-cell>
+                    <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_CHECKNO</mat-header-cell>
                     <mat-cell *matCellDef="let e">
                         {{ e.checkNo }}
                     </mat-cell>
                 </ng-container>
 
                 <ng-container matColumnDef="debit">
-                    <mat-header-cell *matHeaderCellDef translate>ACC_DEBIT</mat-header-cell>
+                    <mat-header-cell *matHeaderCellDef mat-sort-header translate>ACC_DEBIT</mat-header-cell>
                     <mat-cell *matCellDef="let e">
                         {{ e.debit | number: '1.2-2' }}
                     </mat-cell>
                 </ng-container>
 
                 <ng-container matColumnDef="credit">
-                    <mat-header-cell *matHeaderCellDef translate>ACC_CREDIT</mat-header-cell>
+                    <mat-header-cell *matHeaderCellDef mat-sort-header translate>ACC_CREDIT</mat-header-cell>
                     <mat-cell *matCellDef="let e">
                         {{ e.credit | number: '1.2-2' }}
                     </mat-cell>
