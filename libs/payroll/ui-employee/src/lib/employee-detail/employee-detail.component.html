@@ -133,6 +133,13 @@
                         </div>
                     </mat-tab>
                     <mat-tab label="{{'ADMINISTRATION_CONTACT'|translate}}">
+                        <mat-form-field id="address1" class="default-50 sm-100">
+                            <mat-label translate>COMMON_ADDRESS</mat-label>
+                            <input matInput formControlName="address1" type="text" maxlength="128" pattern="^[a-zA-Z0-9' ]*$">
+                            @if (form.controls['address1'].hasError('maxlength')) {
+                                <mat-error [translate]="{ maxLen: 128 }"> COMMON_FIELD_MAX_LENGTH </mat-error>
+                            }
+                        </mat-form-field>
                         <mat-form-field id="email" class="default-50 sm-100">
                             <mat-label translate>PAYROLL_EMAIL</mat-label>
                             <input matInput formControlName="email" type="email" maxlength="64">
@@ -153,14 +160,6 @@
                             <mat-label translate>COMMON_MOBILE</mat-label>
                             <input matInput formControlName="mobile" type="text" maxlength="32">
                             <mat-error *ngIf="form.controls['mobile'].hasError('maxlength')" [translate]="{maxLen: 32}">
-                                COMMON_FIELD_MAX_LENGTH
-                            </mat-error>
-                        </mat-form-field>
-                        <mat-form-field id="address1" class="default-50 sm-100">
-                            <mat-label translate>COMMON_ADDRESS</mat-label>
-                            <input matInput formControlName="address1" type="text" maxlength="128">
-                            <mat-error *ngIf="form.controls['address1'].hasError('maxlength')"
-                                       [translate]="{maxLen: 128}">
                                 COMMON_FIELD_MAX_LENGTH
                             </mat-error>
                         </mat-form-field>
