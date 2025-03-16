@@ -5,7 +5,7 @@ import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DefaultReportService } from '@ss/common/ui-default-report-component';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
-import { LoginService, PaginatorPersistenceService } from '@ss/common/api-common';
+import { PaginatorPersistenceService } from '@ss/common/api-common';
 
 import {
     MatCell, MatCellDef, MatColumnDef,
@@ -17,9 +17,9 @@ import { TranslateDirective } from '@ss/common/ui-lang';
 import { PollQuestion } from '@ss/scheduled-sales/api-scheduled-sales';
 import { PollQuestionService } from '../poll-question.service';
 import { MatCheckbox } from '@angular/material/checkbox';
-import { CustomerComplaint } from '../../../../customer-complaints/src/lib/customer-complaint.class';
+import { AnswerTypes } from '@ss/scheduleds-sales/polls';
 
-export const AnswerTypes = ['SCH_UNSPECIFIED', 'SCH_SATISFACTION', 'SCH_BOOLEAN']
+
 
 @Component({
     selector: 'sch-sales-poll-list',
@@ -42,11 +42,11 @@ export const AnswerTypes = ['SCH_UNSPECIFIED', 'SCH_SATISFACTION', 'SCH_BOOLEAN'
         TranslateDirective,
         MatCheckbox,
     ],
-    templateUrl: './poll-question-list.component.html',
-    styleUrl: './poll-question-list.component.css',
+    templateUrl: './poll-questions-list.component.html',
+    styleUrl: './poll-questions-list.component.css',
 })
 
-export class PollQuestionListComponent extends BaseEntityListComponent<PollQuestion> {
+export class PollQuestionsListComponent extends BaseEntityListComponent<PollQuestion> {
 
     displayedColumns = [
         'description',
@@ -56,7 +56,7 @@ export class PollQuestionListComponent extends BaseEntityListComponent<PollQuest
         'showMemo',
     ];
 
-    public AnswerTypes = AnswerTypes //['SS_UNSPECIFIED', 'SS_SATISFACTION', 'SS_BOOLEAN']
+    public AnswerTypes = AnswerTypes
 
     constructor(
         public override entitySrv: PollQuestionService,
