@@ -35,10 +35,8 @@ import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
         MaterialModule,
         TranslateDirective,
         TranslatePipe,
-
+        TranslateDirective,
         RouterModule,
-
-       
         PaginationComponent,
         ImageInputComponent,
         TranslatePipe,

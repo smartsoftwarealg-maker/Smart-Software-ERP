@@ -22,7 +22,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         RouterModule,
         MaterialModule,
         PaginationComponent,
-
+        TranslateDirective,
         PaginationComponent
     ],
     styleUrls: ['../base-templates/list-template.scss']
@@ -54,7 +54,7 @@ export class CostCenterGroupListComponent extends BaseEntityListComponent<Lookup
         RouterModule,
         MaterialModule,
         TranslateDirective,
-       
+
 
 
     ],

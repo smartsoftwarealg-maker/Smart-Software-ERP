@@ -15,11 +15,17 @@ import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { BomDialogComponent } from '../bom-dialog/bom-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 import { map, of, switchMap } from 'rxjs';
+import { TranslateDirective } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-bom',
     standalone: true,
-    imports: [CommonModule,  MatButtonModule, MaterialModule],
+    imports: [
+        CommonModule,
+        MatButtonModule,
+        MaterialModule,
+        TranslateDirective
+    ],
     templateUrl: './bom.component.html',
     styleUrl: './bom.component.css',
 })
