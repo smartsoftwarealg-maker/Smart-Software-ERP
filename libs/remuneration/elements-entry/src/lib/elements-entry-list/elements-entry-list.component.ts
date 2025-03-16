@@ -103,7 +103,7 @@ export class ElementsEntryListComponent extends BaseEntityListComponent<ELine> i
     }
 
     override ngOnInit() {
-        this.deleteButton.visible = false;
+        // this.deleteButton.visible = false;
         this.addButton.visible = false;
         super.ngOnInit();
         this.infoSrv.load();
