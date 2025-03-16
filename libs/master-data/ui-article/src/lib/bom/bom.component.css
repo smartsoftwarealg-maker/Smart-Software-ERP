@@ -84,6 +84,7 @@ tr {
 }
 
 .info_div {
+    padding: 4px 8px;
     display: flex;
     justify-content: space-between;
     width: 80%;
