@@ -130,13 +130,15 @@ export class TransactionDetailComponent implements OnInit, OnDestroy {
     }
 
     save() {
+        const id = this.form.getRawValue().id;
         this.entitySrv
             .save(this.form.getRawValue())
             .subscribe(res => {
                 if (res) {
                     this.snackBarSrv.showSuccessMessage();
-                    const value = this.form.getRawValue();
-                    this.cancel();
+                    if (id > 0) {
+                        this.cancel();
+                    }
                     // if (value.id) {
                     //     this.form.reset(value);
                     // } else {

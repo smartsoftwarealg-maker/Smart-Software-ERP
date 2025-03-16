@@ -18,42 +18,48 @@
                     <mat-error *ngIf="form.controls['description'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
                 </mat-form-field>
 
-                @if (showCustomer()) {
+                @if (customerCodeRequited()) {
                     <mat-form-field class="default-50 sm-100">
                         <mat-label translate>LOGISTICS_CUSTOMER</mat-label>
                         <ss-auto-complete matInput
                                           [model]="customerLookupModel"
+                                          [required]="true"
                                           formControlName="customerId">
                         </ss-auto-complete>
-                        <mat-error *ngIf="form.controls['customerId'].invalid" translate>COMMON_FIELD_REQUIRED
-                        </mat-error>
+                        @if (form.controls['customerId'].invalid) {
+                            <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+                        }
                     </mat-form-field>
                 }
 
-                @if (accPolicy.analyzeAccounts) {
+                @if (referenceRequired()) {
                     <mat-form-field class="default-50">
                         <mat-label translate>COMMON_REFERENCE</mat-label>
                         <input matInput formControlName="reference" type="text">
-                        <mat-error *ngIf="form.controls['reference'].invalid" translate>COMMON_FIELD_REQUIRED
-                        </mat-error>
+                        @if (form.controls['reference'].invalid) {
+                            <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+                        }
                     </mat-form-field>
                 }
-                @if (accPolicy.analyzeChecks) {
+                @if (checkNoRequired()) {
                     <mat-form-field class="default-50">
                         <mat-label translate>COMMON_CHECKNO</mat-label>
                         <input matInput formControlName="checkNo" type="text">
-                        <mat-error *ngIf="form.controls['checkNo'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
+                        @if (form.controls['checkNo'].invalid) {
+                            <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+                        }
                     </mat-form-field>
                 }
 
-                <mat-form-field class="default-50 sm-100" *ngIf="accPolicy?.manualCashFlow; else space">
-                    <mat-label translate>ACC_CASH_FLOW</mat-label>
-                    <ss-auto-complete matInput
-                                      [model]="annexCodeLookupMode"
-                                      formControlName="c_o_d">
-                    </ss-auto-complete>
-                </mat-form-field>
-<!--                <ng-template #space><span class="default-50 sm-100"></span></ng-template>-->
+                @if (accPolicy?.manualCashFlow) {
+                    <mat-form-field class="default-50 sm-100">
+                        <mat-label translate>ACC_CASH_FLOW</mat-label>
+                        <ss-auto-complete matInput
+                                          [model]="annexCodeLookupMode"
+                                          formControlName="c_o_d">
+                        </ss-auto-complete>
+                    </mat-form-field>
+                }
 
                 <mat-form-field class="default-50">
                     <mat-label translate>ACC_DEBIT</mat-label>
@@ -68,7 +74,7 @@
                     <mat-error *ngIf="form.controls['credit'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
                 </mat-form-field>
 
-                @if (accPolicy.use_management) {
+                @if (costCenterRequited()) {
                     <mat-form-field class="default-50 sm-100">
                         <mat-label translate>COMMON_COST_CENTER</mat-label>
                         <ss-auto-complete matInput
@@ -87,14 +93,16 @@
             </form>
         }
         <div class="ctrl default-100">
-            <button mat-flat-button color="primary" (click)="save()" [disabled]="!form?.valid || isClosed">
+            <button mat-flat-button color="primary" (click)="save()" [disabled]="saveDisabled()">
                 <i class="fas fa-save"></i>
                 <span translate> COMMON_SAVE </span>
             </button>
-            <button mat-flat-button color="warn" translate (click)="cancel()">
-                <i class="fas fa-redo"></i>
-                <span translate> COMMON_CANCEL </span>
-            </button>
+            @if (!isClosed) {
+                <button mat-flat-button color="warn" translate (click)="cancel()">
+                    <i class="fas fa-redo"></i>
+                    <span translate> COMMON_CANCEL </span>
+                </button>
+            }
         </div>
         <!--        <div>valid: {{form?.valid}}</div>-->
         <!--        <pre>{{form?.value | json }}</pre>-->

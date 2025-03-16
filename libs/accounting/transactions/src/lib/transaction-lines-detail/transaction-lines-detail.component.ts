@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, signal } from '@angular/core';
+import { Component, computed, inject, OnInit, signal } from '@angular/core';
 import {
     AbstractControl, ReactiveFormsModule,
     UntypedFormBuilder,
@@ -62,8 +62,8 @@ export class TransactionLinesDetailComponent implements OnInit {
     private formValidator: ValidatorFn =
         (group: AbstractControl): ValidationErrors | null => {
             let result = null;
-            if (this.selectedAccount) {
-                if (!group.get('customerId').value && this.selectedAccount?.customerCode) {
+            if (this.selectedAccount()) {
+                if (!group.get('customerId').value && this.selectedAccount()?.customerCode) {
                     group.get('customerId').setErrors({invalid: true});
                     result = {invalid: true};
                 }
@@ -76,15 +76,15 @@ export class TransactionLinesDetailComponent implements OnInit {
                     group.get('credit').setErrors({ invalid: true });
                     result = {invalid: true};
                 }
-                if (!group.get('reference').value && this.selectedAccount?.analyzed) {
+                if (!group.get('reference').value && this.selectedAccount()?.analyzed) {
                     group.get('reference').setErrors({invalid: true});
                     result = {invalid: true};
                 }
-                if (!group.get('costCenterId').value && this.selectedAccount?.ccRequired) {
+                if (!group.get('costCenterId').value && this.selectedAccount()?.ccRequired) {
                     group.get('costCenterId').setErrors({invalid: true});
                     result = {invalid: true};
                 }
-                if (this.selectedAccount.accountNo.startsWith('51') && this.accPolicy?.analyzeChecks && !group.get('checkNo').value) {
+                if (this.selectedAccount()?.accountNo.startsWith('51') && this.accPolicy?.analyzeChecks && !group.get('checkNo').value) {
                     group.get('checkNo').setErrors({invalid: true});
                     result = {invalid: true};
                 }
@@ -102,9 +102,14 @@ export class TransactionLinesDetailComponent implements OnInit {
     transactionId = 0;
     fileId = 0;
     parentId = 0;
-    selectedAccount: Account = null;
-    isClosed = this.fileSrv.accFile.closed;
-    showCustomer = signal(false);
+    selectedAccount  = signal<Account|null>(null);
+    costCenterRequited = computed(() => this.selectedAccount()?.ccRequired === true && this.accPolicy.use_management);
+    customerCodeRequited = computed(() => this.selectedAccount()?.customerCode ||false);
+    referenceRequired = computed(() => this.selectedAccount()?.analyzed && this.accPolicy.analyzeAccounts);
+    checkNoRequired = computed(() => this.selectedAccount()?.accountNo.startsWith('51') && this.accPolicy?.analyzeChecks);
+
+    readonly isClosed = this.fileSrv.accFile.closed;
+    saveDisabled = signal(true);
 
     constructor(
         public entitySrv: AccTransactionLineService,
@@ -118,8 +123,7 @@ export class TransactionLinesDetailComponent implements OnInit {
     }
 
     setupForm(e: ACCTransactionLine): UntypedFormGroup {
-        this.showCustomer.set(!!e?.customer);
-        return  this.formBuilder.group({
+        return this.formBuilder.group({
             id:           [e.id || 0],
             parentId:     [e.parentId||this.parentId],
             fileId:       [e.fileId || this.loginSrv.appCtx.accFile],
@@ -145,8 +149,7 @@ export class TransactionLinesDetailComponent implements OnInit {
     }
 
     private accountSelected(a: Account) {
-        this.selectedAccount = a;
-        this.showCustomer.set(a?.ccRequired||false);
+        this.selectedAccount.set(a);
     }
 
 
@@ -172,13 +175,11 @@ export class TransactionLinesDetailComponent implements OnInit {
     public finishLoading(e: ACCTransactionLine) {
         this.accountSrv
             .get(e.accountId)
-            .subscribe(res => this.selectedAccount = res);
+            .subscribe(res => this.selectedAccount.set(res));
         this.form = this.setupForm(e);
+        this.saveDisabled.set(this.isClosed);
     }
 
-    private updatePolicy(pol: ACCPolicy) {
-      this.accPolicy = pol;
-    }
 
     public load() {
         this.loginSrv

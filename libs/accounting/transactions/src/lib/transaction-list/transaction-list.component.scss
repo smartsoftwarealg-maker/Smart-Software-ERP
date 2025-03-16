@@ -45,6 +45,7 @@
 .list_div {
     overflow-y: auto;
     flex: 1 1 55%;
+    min-height: 10em;
 }
 
 
@@ -127,6 +128,6 @@ mat-header-cell {
 }
 
 .summary__table {
-    margin: 0 .5em;
+    margin: 0 .7em;
     min-height: 2.5em;
 }
