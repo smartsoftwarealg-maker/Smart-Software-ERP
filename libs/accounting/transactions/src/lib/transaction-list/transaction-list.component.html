@@ -16,7 +16,7 @@
                     </mat-list-option>
                 </mat-selection-list>
             </div>
-            <table class="summary__table" [class.f-warn]="math.abs(journalSummary().debit - journalSummary().credit) > 0.01">
+            <table class="summary__table b-primary" [class.f-warn]="math.abs(journalSummary().debit - journalSummary().credit) > 0.01">
                 <tr>
                     <td  class="label" translate><span translate>COMMON_DEBIT</span>:</td>
                     <td> {{ journalSummary().debit | number: '1.2-2'}} </td>
