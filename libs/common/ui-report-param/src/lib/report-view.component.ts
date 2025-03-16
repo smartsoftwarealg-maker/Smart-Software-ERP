@@ -61,6 +61,7 @@ export class ReportViewComponent extends BaseEntityListComponent<ReportParam> im
     private deviceService = inject( DeviceDetectorService);
     private paramLookupSrv = inject(ReportParamLookupService);
 
+    showParameterSaveButton = signal(false);
     isResponsible = signal(false);
 
     @ViewChild('tree', { static: false }) tree: MatTree<unknown>;
@@ -76,7 +77,7 @@ export class ReportViewComponent extends BaseEntityListComponent<ReportParam> im
     pdfSrc: string|null = null;
     htmlSrc: SafeHtml = null;
     generating = false;
-    leftPaneHidden = false;
+    // leftPaneHidden = false;
     isAndroid = false;
     form: UntypedFormGroup = null;
     params: unknown = null;
@@ -212,21 +213,18 @@ export class ReportViewComponent extends BaseEntityListComponent<ReportParam> im
                     setTimeout(() => window.URL.revokeObjectURL(link.href), 5000);
                 } else if (this.form.value.reportType === 'PDF') {
                     if (this.isAndroid) {
-                        this.leftPaneHidden = false;
                         this.writeThenOpenFile(res).then();
                     } else {
-                        this.pdfSrc = URL.createObjectURL(res);
-                        this.leftPaneHidden = true;
+                        window.open(URL.createObjectURL(res), '_blank');
+                        // this.pdfSrc = URL.createObjectURL(res);
                     }
                 } else {
                     this.htmlSrc = this.sanitizer.bypassSecurityTrustHtml(res);
-                    this.leftPaneHidden = true;
                 }
                 this.generating = false;
             },
             error: err => {
                 this.generating = false;
-                this.leftPaneHidden = false;
                 if (err.error) {
                     const json = String.fromCharCode.apply(null, new Uint8Array(err.error));
                     err.error = JSON.parse(json);
@@ -299,12 +297,12 @@ export class ReportViewComponent extends BaseEntityListComponent<ReportParam> im
         return x.getDate() + '-' + (x.getMonth() + 1) + '-' + x.getFullYear();
     }
 
-    public showLeftPane() {
-        this.leftPaneHidden = !this.leftPaneHidden && !this.isAndroid;
-        if (!this.leftPaneHidden) {
-            this.releasePdf();
-        }
-    }
+    // public showLeftPane() {
+    //     this.leftPaneHidden = !this.leftPaneHidden && !this.isAndroid;
+    //     if (!this.leftPaneHidden) {
+    //         this.releasePdf();
+    //     }
+    // }
 
     refresh(callback?: () => void) {
         this.reportsService
@@ -335,7 +333,6 @@ export class ReportViewComponent extends BaseEntityListComponent<ReportParam> im
             .post(`/reports/save-params`, data)
             .subscribe({
             next: res => {
-                this.generating = false;
                 if (res['count']) {
                     this.snackBarSrv.showSuccessMessage();
                 }
@@ -346,6 +343,10 @@ export class ReportViewComponent extends BaseEntityListComponent<ReportParam> im
                 throw err;
             }
         });
+        this.showParameterSaveButton.set(false);
     }
 
+    toggleParameterSaveButton() {
+        this.showParameterSaveButton.set(!this.showParameterSaveButton());
+    }
 }

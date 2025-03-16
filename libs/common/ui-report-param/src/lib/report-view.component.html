@@ -1,4 +1,4 @@
-@if (!leftPaneHidden && !generating) {
+@if (!generating) {
     <div class="main-container">
         <div class="tree-div">
             <mat-tree #tree class="tree" [dataSource]="reportTree" [treeControl]="treeControl">
@@ -116,12 +116,15 @@
                     <span translate>COMMON_VIEW_REPORT</span>
                 </button>
                 @if (isResponsible()) {
-                    <button mat-raised-button color="primary"
-                            type="button"
-                            (click)="saveParams()">
-                        <i class="far fa-file-pdf"></i>
-                        <span translate>COMMON_SAVE_PARAMS</span>
-                    </button>
+                    <mat-checkbox (click)="toggleParameterSaveButton()" translate>COMMON_SAVE_PARAMS</mat-checkbox>
+                    @if (showParameterSaveButton()) {
+                        <button mat-raised-button color="primary"
+                                type="button"
+                                (click)="saveParams()">
+                            <i class="far fa-file-pdf"></i>
+                            <span translate>COMMON_SAVE_PARAMS</span>
+                        </button>
+                    }
                 }
             </div>
         </form>
@@ -146,11 +149,11 @@
             }
         </div>
     </ng-template>
-    @if (!isAndroid) {
-        <button mat-mini-fab class="close-btn" (click)="showLeftPane()" color="warn">
-            <i class="fas fa-times"></i>
-        </button>
-    }
+    <!--    @if (!isAndroid) {-->
+        <!--        <button mat-mini-fab class="close-btn" (click)="showLeftPane()" color="warn">-->
+        <!--            <i class="fas fa-times"></i>-->
+        <!--        </button>-->
+        <!--    }-->
 }
 
 
