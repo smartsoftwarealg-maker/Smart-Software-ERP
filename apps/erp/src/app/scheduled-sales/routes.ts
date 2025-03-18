@@ -56,12 +56,7 @@ import { AGENT_ARCHIVES } from '@ss/common/app-archive';
 import { PayMethodDetailComponent, PayMethodListComponent } from '@ss/logistics/ui-pay-method';
 import { DashboardComponent } from '@ss/dashboard';
 import { CustomerComplaintsDetailComponent, CustomerComplaintsListComponent } from '@customer-complaints-list';
-import {
-    SalesPollDetailComponent,
-    SalesPollListComponent,
-    PollQuestionDetailComponent,
-    PollQuestionsListComponent
-} from '@ss/scheduleds-sales/polls';
+import { SalesPollDetailComponent, SalesPollListComponent, PollQuestionDetailComponent, PollQuestionsListComponent } from '@ss/scheduleds-sales/polls';
 import { ReportViewComponent } from '@ss/common/ui-report-param';
 import { PasswordResetComponent } from '@ss/scheduled-sales/password-reset';
 import { PaymentCompensationListComponent, DebtsComponent } from '@ss/scheduled-sales/compensations';
