@@ -1,7 +1,7 @@
 import {
     COMMON_CUSTOMER_PROFILE_URL,
     CSPACE_REPORTS_URL, SS_COMPLAINTS_URL, SS_CUSTOMER_BALANCE_URL, SS_CUSTOMER_HISTORY_URL, SS_HOME_PAGE_URL,
-    SS_PARTNER_SCHEDULE_URL, SS_PAYMENT_URL, SS_QUOTA_URL
+    SS_PARTNER_SCHEDULE_URL, SS_PAYMENT_URL, SS_QUOTA_URL, SS_CUSTOMER_POLL_URL
 } from '../common';
 import {Routes} from '@angular/router';
 import { CustomerCanActivateService, CanDeactivateService, LIST_URL } from '@ss/common/api-common';
@@ -17,6 +17,7 @@ import { HomePageComponent } from 'home.page';
 import { CustomerComplaintsDetailComponent, CustomerComplaintsListComponent } from '@customer-complaints-list';
 import { ScheduledSalesMainPageComponent } from '@scheduled-sales/main-page';
 import { ScheduledSalesProductsPageComponent } from '@scheduled-sales/products-page';
+import { CustomerPollComponent } from '@ss/scheduleds-sales/polls';
 
 export const cSpaceRoutes: Routes = [
     {
@@ -110,6 +111,11 @@ export const cSpaceRoutes: Routes = [
         data: { reportBase: 'cspace' }
     },
 
+    {
+        path: SS_CUSTOMER_POLL_URL,
+        component: CustomerPollComponent,
+        canActivate: [CustomerCanActivateService],
+    },
 
     {path: '', redirectTo: 'login', pathMatch: 'full'},
     {path: '**', redirectTo: 'login', pathMatch: 'full'}

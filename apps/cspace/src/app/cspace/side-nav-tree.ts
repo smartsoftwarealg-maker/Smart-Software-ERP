@@ -1,7 +1,7 @@
 import {
     ABS_CSPACE_REPORTS_URL,
     ABS_CUSTOMER_BALANCE_URL, ABS_CUSTOMER_COMPLAINTS_URL, ABS_CUSTOMER_HISTORY_URL,
-    ABS_CUSTOMER_PROFILE_URL, ABS_CUSTOMER_SCHEDULES_URL, ABS_PAYMENTS_URL, ABS_SALES_HOME_URL, ABS_SALES_QUOTAS_URL
+    ABS_CUSTOMER_PROFILE_URL, ABS_CUSTOMER_SCHEDULES_URL, ABS_PAYMENTS_URL, ABS_SALES_HOME_URL, ABS_SALES_QUOTAS_URL, ABS_CUSTOMER_POLL_URL
 } from '../common';
 import {SideNavNode} from '@ss/common/api-common';
 
@@ -68,6 +68,13 @@ export const cSpaceNavTree: SideNavNode[] =
             icon: 'fas fa-file-chart-line',
             route: ABS_CUSTOMER_PROFILE_URL,
             accessRights: 'Profile',
+            customerRights: {read: true, edit: true, delete: true, write: true}
+        },
+        {
+            name: 'SCH_CUSTOMER_POLL',
+            icon: 'fa-regular fa-clipboard-question',
+            route: ABS_CUSTOMER_POLL_URL,
+            accessRights: 'CustomerPoll',
             customerRights: {read: true, edit: true, delete: true, write: true}
         }
     ];

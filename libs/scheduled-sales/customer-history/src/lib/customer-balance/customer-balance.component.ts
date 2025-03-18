@@ -4,12 +4,7 @@ import { ActivatedRoute, RouterModule } from "@angular/router";
 
 import { LanguageService, LoginService, MaterialModule } from '@ss/common/api-common';
 import { CommonModule, DecimalPipe } from '@angular/common';
-
-
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
-
-
-import { ColorPickerModule } from "ngx-color-picker";
 import { CustomerBalanceService } from '../services/customer-balance.service';
 import { ScheduleBalanceService } from '../services/schedule-balance.service';
 import { TurnoverService } from '../services/turnover.service';
@@ -17,7 +12,6 @@ import { ScheduleBalance, Turnover } from '@ss/scheduled-sales/api-scheduled-sal
 import { switchMap, tap } from 'rxjs';
 import { Chart, ChartItem, registerables } from 'chart.js';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
-import { ColorSelectComponent } from '@ss/common/ui-color-select';
 
 @Component({
     selector: 'ss-customer-history',
@@ -31,7 +25,6 @@ import { ColorSelectComponent } from '@ss/common/ui-color-select';
         ReactiveFormsModule,
         TranslatePipe,
         RouterModule,
-        ColorPickerModule
     ]
 
 })

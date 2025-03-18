@@ -282,7 +282,11 @@ export interface CustomerPoll {
     satisfactionAnswer?: number;
     bollAnswer?: string;
     memo?: string;
+    answerType: number;
+    showMemo: boolean;
     questionDescription?: string;
+    questionDescriptionAr?: string;
+    questionDescriptionEn?: string;
     numberDescription?: number;
     dateDescription?: Date;
 }

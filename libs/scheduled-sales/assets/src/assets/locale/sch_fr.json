@@ -34,7 +34,7 @@
     "SHIPPING":           "Expedition",
     "RECEIVER":           "Receveur",
     "SALES_POLLS":        "Sondages sur les ventes",
-    "SALE_POLL":          "Sondage sur les vente",
+    "SALES_POLL":         "Sondages sur les vente",
     "POLL_QUESTIONS":     "Questions du sondage",
     "POLL_QUESTION":      "Question du sondage",
     "ANSWER_TYPES":       "Type de réponses",
@@ -43,5 +43,11 @@
     "SATISFACTION":       "Satisfaction",
     "UNSPECIFIED":        "Indéterminée",
     "BOOLEAN":            "Booléenne",
-    "DESCRIPTION_EN":     "Description (en)"
+    "DESCRIPTION_EN":     "Description (en)",
+    "CUSTOMER_POLLS":     "Sondage client",
+    "VERY_SATISFIED":    "Très satisfait",
+    "SATISFIED":         "satisfait(e)",
+    "UNSATISFIED":       "Insatisfait(e)",
+    "THANK_YOU_FOR_PARTICIPATING_IN_THE_POLL" : "Je t'en prie",
+    "YOUR_WELCOME" : "Your welcome"
 }

@@ -34,7 +34,7 @@
     "SHIPPING":           "شحن",
     "RECEIVER":           "المستلم",
     "SALES_POLLS":         "استطلاع المبيعات",
-    "SALE_POLL":          "استطلاع المبيع",
+    "SALES_POLL":          "استطلاع المبيعات",
     "POLL_QUESTIONS":     "أسئلة الاستطلاع",
     "POLL_QUESTION":      "سؤال الاستطلاع",
     "ANSWER_TYPES":       "أنواع الإجابات",
@@ -43,5 +43,11 @@
     "SATISFACTION":       "الرضا",
     "UNSPECIFIED":        "غير محدد",
     "BOOLEAN":            "منطقي",
-    "DESCRIPTION_EN":     "الوصف (انجليزي)"
+    "DESCRIPTION_EN":     "الوصف (انجليزي)",
+    "CUSTOMER_POLL":     "استطلاع رأي العملاء",
+    "VERY_SATISFIED":    "راض جدا",
+    "SATISFIED":         "راض",
+    "UNSATISFIED":       "غير راض",
+    "THANK_YOU_FOR_PARTICIPATING_IN_THE_POLL" : "شكرا لمشاركتك في الاستطلاع",
+    "YOUR_WELCOME" : "على الرحب والسعة"
 }

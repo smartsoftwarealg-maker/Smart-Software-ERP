@@ -11,6 +11,7 @@ export const SS_CUSTOMER_BALANCE_URL     = 'balance';
 export const SS_HOME_PAGE_URL     = 'home';
 export const SS_CUSTOMER_HISTORY_URL     = 'customer-history';
 export const SS_PAYMENT_URL     = 'customer-payments';
+export const SS_CUSTOMER_POLL_URL     = 'customer-poll';
 
 // apps
 export const ADMINISTRATION_APP_URL = 'administration';
@@ -45,4 +46,5 @@ export const ABS_CSPACE_REPORTS_URL = '/' + [MAIN_PAGE_URL, CSPACE_APP_URL, CSPA
 export const ABS_CUSTOMER_COMPLAINTS_URL = '/' + [MAIN_PAGE_URL, CSPACE_APP_URL, SS_COMPLAINTS_URL].join('/');
 export const ABS_PAYMENTS_URL = '/' + [MAIN_PAGE_URL, CSPACE_APP_URL, SS_PAYMENT_URL].join('/');
 export const ABS_SALES_HOME_URL = '/' + [MAIN_PAGE_URL, CSPACE_APP_URL, SS_HOME_PAGE_URL].join('/');
+export const ABS_CUSTOMER_POLL_URL = '/' + [MAIN_PAGE_URL, CSPACE_APP_URL, SS_CUSTOMER_POLL_URL].join('/');
 

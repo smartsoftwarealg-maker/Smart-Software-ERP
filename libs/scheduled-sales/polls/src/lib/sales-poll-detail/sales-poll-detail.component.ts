@@ -79,7 +79,7 @@ export class SalesPollDetailComponent extends BaseEntityDetailComponent<SalesPol
             route,
             formBuilder,
             confirmationSrv,
-            'SCH_SALE_POLLS',
+            'SCH_SALES_POLL',
         );
     }
 

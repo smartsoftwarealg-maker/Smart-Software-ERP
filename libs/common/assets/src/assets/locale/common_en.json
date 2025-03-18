@@ -362,7 +362,9 @@
     "PAID":                "Paid",
     "NON_PAID":            "Non paid",
     "SCRIPT":             "Script",
-    "SOURCE": "Source",
-    "BANK_RIB": "Bank RIB",
-    "SAVE_PARAMS": "Save parameters"
+    "SOURCE":             "Source",
+    "BANK_RIB":           "Bank RIB",
+    "SAVE_PARAMS":        "Save parameters",
+    "BACK":               "Back",
+    "SUBMIT":             "Submit"
 }
