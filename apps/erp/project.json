@@ -137,6 +137,11 @@
                         "glob": "**/*",
                         "input": "libs/social/assets/src/assets",
                         "output": "assets"
+                    },
+                    {
+                        "glob": "**/*",
+                        "input": "libs/production/assets/src/assets",
+                        "output": "assets"
                     }
                 ],
                 "styles": [

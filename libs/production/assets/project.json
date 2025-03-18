@@ -1,0 +1,33 @@
+{
+    "name": "production-assets",
+    "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+    "projectType": "library",
+    "sourceRoot": "libs/production/assets/src",
+    "prefix": "ss",
+    "targets": {
+        "lint": {
+            "executor": "@angular-devkit/build-angular:tslint",
+            "options": {
+                "tsConfig": [
+                    "libs/production/assets/tsconfig.lib.json",
+                    "libs/production/assets/tsconfig.spec.json"
+                ],
+                "exclude": ["**/node_modules/**", "!libs/production/assets/**/*"]
+            }
+        },
+        "test": {
+            "executor": "@nx/jest:jest",
+            "options": {
+                "jestConfig": "libs/production/assets/jest.config.js",
+                "tsConfig": "libs/production/assets/tsconfig.spec.json",
+                "passWithNoTests": true,
+                "setupFile": "libs/production/assets/src/test-setup.ts"
+            }
+        }
+    },
+    "generators": {
+        "@nx/angular:component": {
+            "style": "scss"
+        }
+    }
+}

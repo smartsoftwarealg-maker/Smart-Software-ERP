@@ -62,6 +62,7 @@ export const ATTENDANCE_APP_URL = 'attendance';
 export const SERVICE_APP_URL = 'service-sales';
 export const GICA_APP_URL = 'gica';
 export const SOCIAL_APP_URL = 'social';
+export const PRODUCTION_URL = 'production';
 
 // treasury
 export const TREASURY_AGENT_URL = 'agents';
