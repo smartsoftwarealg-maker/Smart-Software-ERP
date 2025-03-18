@@ -57,7 +57,7 @@ if (environment.production) {
 
 bootstrapApplication(AppComponent, {
     providers: [
-        importProvidersFrom(BrowserModule, MatProgressSpinnerModule,  ColorPickerModule),
+        importProvidersFrom(BrowserModule, MatProgressSpinnerModule),
         provideAnimations(),
         provideHttpClient(withInterceptorsFromDi()),
         provideRouter(routes, withComponentInputBinding()), //, withDebugTracing()

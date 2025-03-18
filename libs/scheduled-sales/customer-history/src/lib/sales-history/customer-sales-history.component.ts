@@ -4,21 +4,14 @@ import { ActivatedRoute, Router, RouterModule } from "@angular/router";
 import {  ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { LoginService, MaterialModule, PaginatorPersistenceService } from '@ss/common/api-common';
 import { CommonModule } from "@angular/common";
-
-
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { DatePickerComponent } from "@ss/common/ui-datepicker";
-
-
-import { UiStockInfoComponent } from "@ss/logistics/ui-stock-info";
-import { ColorSelectComponent } from "@ss/common/ui-color-select";
-import { ColorPickerModule } from "ngx-color-picker";
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { SalesRecord } from '@ss/scheduled-sales/api-scheduled-sales';
 import { DefaultReportService } from '@ss/common/ui-default-report-component';
 import { SalesHistoryService } from './sales-history.service';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
-import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
+import { TranslateDirective } from '@ss/common/ui-lang';
 import { PaginationComponent } from '@ss/common/ui-pagination';
 
 @Component({
@@ -33,7 +26,6 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
         ReactiveFormsModule,
         RouterModule,
         DatePickerComponent,
-        ColorPickerModule,
         PaginationComponent
     ]
 })
