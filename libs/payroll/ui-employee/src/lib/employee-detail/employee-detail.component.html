@@ -136,8 +136,11 @@
                         <mat-form-field id="address1" class="default-50 sm-100">
                             <mat-label translate>COMMON_ADDRESS</mat-label>
                             <input matInput formControlName="address1" type="text" maxlength="128" pattern="^[a-zA-Z0-9' ]*$">
+
                             @if (form.controls['address1'].hasError('maxlength')) {
                                 <mat-error [translate]="{ maxLen: 128 }"> COMMON_FIELD_MAX_LENGTH </mat-error>
+                            } @else if (form.controls['address1'].invalid) {
+                                <mat-error translate> BL_INVALID_DATA </mat-error>
                             }
                         </mat-form-field>
                         <mat-form-field id="email" class="default-50 sm-100">
