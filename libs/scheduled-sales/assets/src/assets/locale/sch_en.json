@@ -43,5 +43,11 @@
     "SATISFACTION":       "Satisfaction",
     "UNSPECIFIED":        "Unspecified",
     "BOOLEAN":            "Boolean",
-    "DESCRIPTION_EN":     "Description (en)"
+    "DESCRIPTION_EN":     "Description (en)",
+    "CUSTOMER_POLL":      "Customer poll",
+    "VERY_SATISFIED":    "Very satisfied",
+    "SATISFIED":         "Satisfied",
+    "UNSATISFIED":       "Unsatisfied",
+    "THANK_YOU_FOR_PARTICIPATING_IN_THE_POLL" : "Thank you for participating in the poll",
+    "YOUR_WELCOME" : "Your welcome"
 }

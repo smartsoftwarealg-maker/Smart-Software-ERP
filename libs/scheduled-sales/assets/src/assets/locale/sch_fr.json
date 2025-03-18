@@ -43,5 +43,11 @@
     "SATISFACTION":       "Satisfaction",
     "UNSPECIFIED":        "Indéterminée",
     "BOOLEAN":            "Booléenne",
-    "DESCRIPTION_EN":     "Description (en)"
+    "DESCRIPTION_EN":     "Description (en)",
+    "CUSTOMER_POLLS":     "Sondage client",
+    "VERY_SATISFIED":    "Très satisfait",
+    "SATISFIED":         "satisfait(e)",
+    "UNSATISFIED":       "Insatisfait(e)",
+    "THANK_YOU_FOR_PARTICIPATING_IN_THE_POLL" : "Je t'en prie",
+    "YOUR_WELCOME" : "Your welcome"
 }

@@ -4,7 +4,7 @@ import { HttpService } from '@ss/common/api-common';
 import { CustomerPoll} from '@ss/scheduled-sales/api-scheduled-sales';
 
 @Injectable({
-    providedIn: 'root'
+    providedIn: 'root',
 })
 export class CustomerPollService extends BaseEntityService<CustomerPoll> {
     constructor(protected override httpSrv: HttpService) {

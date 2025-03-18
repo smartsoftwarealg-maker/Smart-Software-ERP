@@ -72,7 +72,7 @@ export const cSpaceNavTree: SideNavNode[] =
         },
         {
             name: 'SCH_CUSTOMER_POLL',
-            icon: 'fa-solid fa-question',
+            icon: 'fa-regular fa-clipboard-question',
             route: ABS_CUSTOMER_POLL_URL,
             accessRights: 'CustomerPoll',
             customerRights: {read: true, edit: true, delete: true, write: true}

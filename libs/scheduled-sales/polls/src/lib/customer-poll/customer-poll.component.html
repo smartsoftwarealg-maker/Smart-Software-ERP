@@ -1,75 +1,91 @@
-<mat-stepper #stepper class="default-80">
-    @for (c of data; track c.id; let idx = $index) {
-        @if (idx - 3 <= data.length / 3 && idx % 3 == 0) {
-            <mat-step>
-                <ng-template matStepLabel>page {{ idx }}</ng-template>
+<div class="size">
+    @if (showThanksMessage) {
+        <mat-card class="default-80">
+            <mat-card class="thanks-message" appearance="outlined">
+                <mat-card-header>
+                    <mat-card-title></mat-card-title>
+                </mat-card-header>
+                <mat-card-content>
+                    <p translate>SCH_THANK_YOU_FOR_PARTICIPATING_IN_THE_POLL</p>
+                </mat-card-content>
+                <mat-card-footer>
+                    <button mat-flat-button color="secondly" (click)="save()" translate>
+                        SCH_YOUR_WELCOME
+                    </button>
+                </mat-card-footer>
+            </mat-card>
 
-                <div class="default-80 question">{{ idx + 1 }} : <br>
-                    <div class="french">
-                        {{ data[idx].questionDescription }}
-                    </div>
-                </div>
+        </mat-card>
+    } @else {
+        <mat-stepper class="default-100" linear="true">
+            @for (c of data; track c.id; let idx = $index, e = $even) {
+                @if (e) {
+                    <mat-step #step [completed]="isQuestionComplete(idx) && isQuestionComplete(idx+1)">
+                        <ng-template matStepLabel="fa-regular fa-question"></ng-template>
+                        @for (k of [idx, idx + 1]; track k) {
+                            @if (k < data.length) {
+                                <div class="default-100 question">
+                                    <div class="arabic">
+                                        {{ data[k].questionDescriptionAr }}
+                                    </div>
+                                    <div class="french">
+                                        {{ data[k].questionDescription }}
+                                    </div>
+                                    <div class="english">
+                                        {{ data[k].questionDescriptionEn }}
+                                    </div>
 
-                <div class="answer">
-                    <ul>
-                        @for (option of satisfactionAnswer; track option; let i = $index) {
-                            <li>
-                                <input type="radio" name="satisfaction+{{idx}}" (change)="setLocal('S'+idx,i+'')"
-                                       [checked]="getSatisVal(idx) === i ">{{ satisfactionAnswer[i] }}
-                            </li>
+                                    @if (data[k].answerType == SATISFACTION) {
+                                        <ol>
+                                            @for (option of satisfactionAnswer; track option; let i = $index) {
+                                                <li translate>
+                                                    <input type="radio" name="satisfaction{{k}}"
+                                                           (change)="setLocal('SatisfactionQuestionN'+k,i+'')"
+                                                           [checked]="getSatisfactionVal(k) === i "
+                                                           translate>{{ satisfactionAnswer[i] }}
+                                                </li>
+                                            }
+                                        </ol>
+                                    }
+                                    @if (data[k].answerType == BOOLEAN) {
+                                        <ol>
+                                            @for (bool of boolAnswer; track bool; let i = $index) {
+                                                <li translate>
+                                                    <input type="radio" name="boolean{{k}}"
+                                                           (change)="setLocal('BoolQuestionN'+ k,bool)"
+                                                           [checked]="getBoolVal(k) == bool">{{ bool }}
+                                                </li>
+                                            }
+                                        </ol>
+                                    }
+                                    @if (data[k].showMemo) {
+                                        <textarea type="text" rows="3" class="default-100"
+                                                  (change)="setLocal('MemoQuestionN'+k, $event.target.value)"
+                                                  [value]="getMemoVal(k)"></textarea>
+
+                                    }
+                                </div>
+                                <br>
+                            }
                         }
-                    </ul>
 
-                </div>
-
-                <br>
-                @if (idx + 1 < data.length) {
-                    <div class="default-80 question">{{ idx + 2 }} :
-                        <div class="french">
-                            {{ data[idx + 1].questionDescription }}
+                        <div class="actions">
+                            @if (idx + 1 < data.length) {
+                                <button mat-flat-button color="primary" matStepperNext [disabled]="!step.completed"
+                                        translate>COMMON_NEXT
+                                </button>
+                            } @else {
+                                <button mat-flat-button color="secondly" (click)="showThanksMessage=true" translate>
+                                    COMMON_SUBMIT
+                                </button>
+                            }
+                            @if (idx >= 1) {
+                                <button mat-flat-button matStepperPrevious translate>COMMON_BACK</button>
+                            }
                         </div>
-                    </div>
-                    <ul>
-                        <li><input type="radio" name="boolean{{idx+1}}" (change)="setLocal('B'+idx+1,'yes')"
-                                   [checked]="getBoolVal(idx+1) == 'yes'">Yes
-                        </li>
-                        <li><input type="radio" name="boolean{{idx+1}}" (change)="setLocal('B'+idx+1,'no')"
-                                   [checked]="getBoolVal(idx+1) == 'no'">NO
-                        </li>
-                    </ul>
+                    </mat-step>
                 }
-                <br>
-                @if (idx + 2 < data.length) {
-                    <div class="default-80 question">{{ idx + 3 }} : <br>
-                        <div class="french">
-                            {{ data[idx + 2].questionDescription }}
-                        </div>
-                    </div>
-                    <br>
-                    <textarea matInput class="default-25" rows="3"
-                              (selectionchange)="setLocal('M'+idx+2, $event.target.value.toString())"
-                              [value]="getMemoVal(idx+2)"></textarea>
-                }
-                <br>
-                <div>
-                </div>
-                <button mat-button matStepperNext>Next</button>
-                @if (idx >= 3) {
-                    <button mat-button matStepperPrevious>Back</button>
-                }
-            </mat-step>
-
-        }
+            }
+        </mat-stepper>
     }
-    <mat-step>
-        <ng-template matStepLabel>Done</ng-template>
-        Submit your answers ?
-        <div>
-            <button mat-button matStepperPrevious>Back</button>
-            <!--            <button mat-button (click)="stepper.reset()">submit</button>-->
-            <button mat-button (click)="save()">submit</button>
-        </div>
-    </mat-step>
-
-
-</mat-stepper>
+</div>

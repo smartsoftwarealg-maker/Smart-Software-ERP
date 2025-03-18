@@ -9,7 +9,7 @@ import { CommonModule, DecimalPipe } from '@angular/common';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 
 
-import { ColorPickerModule } from "ngx-color-picker";
+import { ColorPickerModule } from 'ngx-color-picker';
 import { CustomerBalanceService } from '../services/customer-balance.service';
 import { ScheduleBalanceService } from '../services/schedule-balance.service';
 import { TurnoverService } from '../services/turnover.service';
