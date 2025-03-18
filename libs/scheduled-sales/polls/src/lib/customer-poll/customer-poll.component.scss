@@ -100,7 +100,7 @@ mat-card-footer {
     height: 100px;
 }
 
-::ng-deep .mat-horizontal-stepper-header-container  {
+:host ::ng-deep .mat-horizontal-stepper-header-container  {
     display: none!important;
     visibility: hidden!important;
     max-height: 0;
