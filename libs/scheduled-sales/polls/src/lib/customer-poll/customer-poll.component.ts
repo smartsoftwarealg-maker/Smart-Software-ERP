@@ -26,6 +26,7 @@ import { CustomerPollService } from '../customer-poll.service';
     styleUrl: './customer-poll.component.scss',
 })
 export class CustomerPollComponent {
+    #_DATA_ = '_DATA_';
     public satisfactionAnswers = [
         'SCH_VERY_SATISFIED',
         'SCH_SATISFIED',
@@ -49,12 +50,29 @@ export class CustomerPollComponent {
     ngOnInit() {
         this.shellSrv.setGoBackPath('../..', this.route);
         this.showThanksMessage = false;
-        this.customerPollSrv.getList(1, 1000).subscribe({
-            next: (res) => {
-                this.data = res.body;
+        const storage = localStorage.getItem(this.#_DATA_);
+        if (storage) {
+            try {
+                this.data = JSON.parse(storage);
                 this.setCanGoNextPage(0);
-            },
-        });
+            } catch (e) {
+                this.data = [];
+            }
+
+        }
+        if ((this.data?.length||0) === 0) {
+            this.customerPollSrv.getList(1, 1000).subscribe({
+                next: (res) => {
+                    this.data = res.body;
+                    this.setStorage();
+                    this.setCanGoNextPage(0);
+                },
+            });
+        }
+    }
+
+    private setStorage() {
+        localStorage.setItem(this.#_DATA_, JSON.stringify(this.data));
     }
 
     setCanGoNextPage(id: number) {
@@ -64,42 +82,33 @@ export class CustomerPollComponent {
     }
 
     public getSatisfactionVal(id: number) {
-        return localStorage.getItem('SatisfactionQuestionN' + id)
-            ? localStorage.getItem('SatisfactionQuestionN' + id)
-            : this.satisfactionAnswers[this.data[id].satisfactionAnswer];
+        return this.data[id].satisfactionAnswer;
     }
 
     public setSatisfactionVal(id: number, answer: number) {
         this.data[id].satisfactionAnswer = answer;
-        localStorage.setItem(
-            'SatisfactionQuestionN' + id,
-            this.satisfactionAnswers[answer],
-        );
+        this.setStorage();
         this.setCanGoNextPage(id % 2 == 0 ? id : id - 1);
     }
 
     public getBoolVal(id: number) {
-        return localStorage.getItem('BoolQuestionN' + id)
-            ? localStorage.getItem('BoolQuestionN' + id)
-            : this.boolAnswers[this.data[id].boolAnswer];
+        return this.data[id].boolAnswer;
     }
 
     public setBoolVal(id: number, answer: number) {
         this.data[id].boolAnswer = answer;
-        localStorage.setItem('BoolQuestionN' + id, this.boolAnswers[answer]);
+        this.setStorage();
         this.setCanGoNextPage(id % 2 == 0 ? id : id - 1);
     }
 
     public getMemoVal(id: number) {
-        return localStorage.getItem('MemoQuestionN' + id)
-            ? localStorage.getItem('MemoQuestionN' + id)
-            : this.data[id].memo;
+        return this.data[id].memo;
     }
 
     public setMemoVal(id: number, value: string) {
         this.data[id].memo = value;
-        localStorage.setItem('MemoQuestionN' + id, value);
         this.setCanGoNextPage(id % 2 == 0 ? id : id - 1);
+        this.setStorage();
     }
 
     public isQuestionComplete(id: number) {
@@ -111,24 +120,16 @@ export class CustomerPollComponent {
         }
 
         if (this.data[id].answerType === 1) {
-            return (
-                this.satisfactionAnswers.indexOf(this.getSatisfactionVal(id)) >
-                -1
-            );
+            return this.data[id].satisfactionAnswer !== null;
         }
 
         if (this.data[id].answerType === 2) {
-            return this.boolAnswers.indexOf(this.getBoolVal(id)) > -1;
+            return this.data[id].boolAnswer !== null;
         }
         return false;
     }
 
     public save() {
-        for (let i = 0; i < this.data.length; i++) {
-            localStorage.removeItem('SatisfactionQuestionN' + i);
-            localStorage.removeItem('BoolQuestionN' + i);
-            localStorage.removeItem('MemoQuestionN' + i);
-        }
         this.shellSrv.setLoading(true);
         const obs = this.httpSrv
             .put('/ssales/customer-poll', this.data)
@@ -138,6 +139,7 @@ export class CustomerPollComponent {
             next: () => {
                 this.shellSrv.setLoading(false);
                 this.showThanksMessage = true;
+                localStorage.removeItem(this.#_DATA_);
                 this.snackBarSrv.showSuccessMessage();
             },
             error: (err) => {

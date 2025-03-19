@@ -57,7 +57,9 @@ textarea {
     gap: 1em;
     justify-content: center;
 }
-
+.actions button {
+    min-width: 10em;
+}
 .mat-horizontal-stepper-wrapper {
     overflow: hidden;
 }
