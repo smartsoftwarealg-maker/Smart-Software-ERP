@@ -48,6 +48,6 @@
     "VERY_SATISFIED":    "Very satisfied",
     "SATISFIED":         "Satisfied",
     "UNSATISFIED":       "Unsatisfied",
-    "THANK_YOU_FOR_PARTICIPATING_IN_THE_POLL" : "Thank you for participating in the poll",
-    "YOUR_WELCOME" : "Your welcome"
+    "POLL_THANKS" : "Thank you for participating in the poll",
+    "YOUR_WELCOME" : "You're welcome"
 }

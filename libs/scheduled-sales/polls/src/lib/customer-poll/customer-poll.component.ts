@@ -52,12 +52,12 @@ export class CustomerPollComponent {
         this.customerPollSrv.getList(1, 1000).subscribe({
             next: (res) => {
                 this.data = res.body;
-                this.isCanGoNextPage(0);
+                this.setCanGoNextPage(0);
             },
         });
     }
 
-    isCanGoNextPage(id: number) {
+    setCanGoNextPage(id: number) {
         this.completeState.set(
             this.isQuestionComplete(id) && this.isQuestionComplete(id + 1),
         );
