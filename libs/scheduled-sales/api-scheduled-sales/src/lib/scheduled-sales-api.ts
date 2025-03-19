@@ -280,7 +280,7 @@ export interface CustomerPoll {
     customerId: number;
     questionId: number;
     satisfactionAnswer?: number;
-    bollAnswer?: string;
+    boolAnswer?: number;
     memo?: string;
     answerType: number;
     showMemo: boolean;
