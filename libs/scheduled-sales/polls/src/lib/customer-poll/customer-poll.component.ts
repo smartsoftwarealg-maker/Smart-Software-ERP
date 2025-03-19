@@ -31,7 +31,7 @@ export class CustomerPollComponent {
         'SCH_SATISFIED',
         'SCH_UNSATISFIED',
     ];
-    public boolAnswers = ['COMMON_YES', 'COMMON_NO'];
+    public boolAnswers = ['COMMON_NO', 'COMMON_YES'];
     public UNSPECIFIED = 0;
     public SATISFACTION = 1;
     public BOOLEAN = 2;
@@ -45,7 +45,6 @@ export class CustomerPollComponent {
     public data: CustomerPoll[];
     public showThanksMessage = false;
     public completeState = signal(false);
-    public loading = true;
 
     ngOnInit() {
         this.shellSrv.setGoBackPath('../..', this.route);
@@ -54,18 +53,8 @@ export class CustomerPollComponent {
             next: (res) => {
                 this.data = res.body;
                 this.setCanGoNextPage(0);
-                this.initialize(res.body);
-                this.loading = false
             },
         });
-    }
-
-    ngOnDestroy() {
-        for (let i = 0; i < this.data.length; i++) {
-            localStorage.removeItem('SatisfactionQuestionN' + i);
-            localStorage.removeItem('BoolQuestionN' + i);
-            localStorage.removeItem('MemoQuestionN' + i);
-        }
     }
 
     setCanGoNextPage(id: number) {
@@ -75,36 +64,40 @@ export class CustomerPollComponent {
     }
 
     public getSatisfactionVal(id: number) {
-        if (!this.loading){
-            return localStorage.getItem('SatisfactionQuestionN' + id);
-        }else return ''
+        return localStorage.getItem('SatisfactionQuestionN' + id)
+            ? localStorage.getItem('SatisfactionQuestionN' + id)
+            : this.satisfactionAnswers[this.data[id].satisfactionAnswer];
     }
 
-    public setSatisfactionVal(id: number, value: string) {
-        localStorage.setItem('SatisfactionQuestionN' + id, value);
+    public setSatisfactionVal(id: number, answer: number) {
+        this.data[id].satisfactionAnswer = answer;
+        localStorage.setItem(
+            'SatisfactionQuestionN' + id,
+            this.satisfactionAnswers[answer],
+        );
         this.setCanGoNextPage(id % 2 == 0 ? id : id - 1);
     }
 
     public getBoolVal(id: number) {
-        if (!this.loading) {
-            return localStorage.getItem('BoolQuestionN' + id);
-        }else return ''
+        return localStorage.getItem('BoolQuestionN' + id)
+            ? localStorage.getItem('BoolQuestionN' + id)
+            : this.boolAnswers[this.data[id].boolAnswer];
     }
 
-    public setBoolVal(id: number, value: string) {
-        localStorage.setItem('BoolQuestionN' + id, value);
+    public setBoolVal(id: number, answer: number) {
+        this.data[id].boolAnswer = answer;
+        localStorage.setItem('BoolQuestionN' + id, this.boolAnswers[answer]);
         this.setCanGoNextPage(id % 2 == 0 ? id : id - 1);
     }
 
     public getMemoVal(id: number) {
-        if (!this.loading) {
-            return '' + localStorage.getItem('MemoQuestionN' + id);
-        } else {
-            return '';
-        }
+        return localStorage.getItem('MemoQuestionN' + id)
+            ? localStorage.getItem('MemoQuestionN' + id)
+            : this.data[id].memo;
     }
 
     public setMemoVal(id: number, value: string) {
+        this.data[id].memo = value;
         localStorage.setItem('MemoQuestionN' + id, value);
         this.setCanGoNextPage(id % 2 == 0 ? id : id - 1);
     }
@@ -118,7 +111,6 @@ export class CustomerPollComponent {
         }
 
         if (this.data[id].answerType === 1) {
-            //console.log(id + '    ' + this.satisfactionAnswers.indexOf(this.getSatisfactionVal(id)))
             return (
                 this.satisfactionAnswers.indexOf(this.getSatisfactionVal(id)) >
                 -1
@@ -131,44 +123,15 @@ export class CustomerPollComponent {
         return false;
     }
 
-    public initialize(data: CustomerPoll[]) {
-        for (let i = 0; i < data.length; i++) {
-            if (data[i].satisfactionAnswer !== null) {
-                localStorage.setItem(
-                    'SatisfactionQuestionN' + i,
-                    this.satisfactionAnswers[data[i].satisfactionAnswer],
-                );
-            }
-            if (data[i].boolAnswer !== null) {
-                localStorage.setItem(
-                    'BoolQuestionN' + i,
-                    this.boolAnswers[data[i].boolAnswer],
-                );
-            }
-            localStorage.setItem('MemoQuestionN' + i, data[i].memo);
-        }
-    }
-
     public save() {
-        let val = this.data;
         for (let i = 0; i < this.data.length; i++) {
-            if (this.getSatisfactionVal(i)) {
-                val[i].satisfactionAnswer = +this.getSatisfactionVal(i);
-                localStorage.removeItem('SatisfactionQuestionN' + i);
-            }
-            if (this.getBoolVal(i)) {
-                val[i].boolAnswer =
-                    this.getBoolVal(i) === this.boolAnswers[0] ? 1 : 0;
-                localStorage.removeItem('BoolQuestionN' + i);
-            }
-            if (this.getMemoVal(i)) {
-                val[i].memo = this.getMemoVal(i);
-                localStorage.removeItem('MemoQuestionN' + i);
-            }
+            localStorage.removeItem('SatisfactionQuestionN' + i);
+            localStorage.removeItem('BoolQuestionN' + i);
+            localStorage.removeItem('MemoQuestionN' + i);
         }
         this.shellSrv.setLoading(true);
         const obs = this.httpSrv
-            .put('/ssales/customer-poll', val)
+            .put('/ssales/customer-poll', this.data)
             .pipe(map((res: { count: number }) => res['count']));
 
         obs.subscribe({

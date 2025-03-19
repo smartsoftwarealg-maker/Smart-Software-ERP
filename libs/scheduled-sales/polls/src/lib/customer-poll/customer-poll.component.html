@@ -39,7 +39,7 @@
                                             @for (option of satisfactionAnswers; track option; let i = $index) {
                                                 <li translate>
                                                     <input type="radio" name="satisfaction{{k}}"
-                                                           (change)="setSatisfactionVal(k,option)"
+                                                           (change)="setSatisfactionVal(k, i)"
                                                            [checked]="getSatisfactionVal(k) === option "
                                                            translate>{{ satisfactionAnswers[i] }}
                                                 </li>
@@ -51,7 +51,7 @@
                                             @for (bool of boolAnswers; track bool; let i = $index) {
                                                 <li translate>
                                                     <input type="radio" name="boolean{{k}}"
-                                                           (change)="setBoolVal(k, bool)"
+                                                           (change)="setBoolVal(k, i)"
                                                            [checked]="getBoolVal(k) == bool">{{ bool }}
                                                 </li>
                                             }
