@@ -1,7 +1,3 @@
-// This file can be replaced during build by using the `fileReplacements` array.
-// `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
-// The list of file replacements can be found in `angular.json`.
-
 import {administrationNavTree} from '../app/administration/side-nav-tree';
 import {organizationsNavTree} from '../app/organizations/side-nav-tree';
 import {logisticsAdminNavTree} from '../app/logistics-admin/side-nav-tree';
@@ -49,7 +45,11 @@ import {
     CMMS_APP_URL,
     CRM_APP_URL,
     PARK_APP_URL,
-    SERVICE_SALES, COSTING_APP_URL, GICA_APP_URL, SOCIAL_APP_URL
+    SERVICE_SALES,
+    COSTING_APP_URL,
+    GICA_APP_URL,
+    SOCIAL_APP_URL,
+    PRODUCTION_URL
 } from '../app/common';
 import {Routes} from '@angular/router';
 import {hrLookupNavTree} from '../app/hr-lookups/side-nav-tree';
@@ -66,6 +66,7 @@ import { ssalesNavTree } from '../app/service-sales/side-nav-tree';
 import { costingNavTree } from '../app/costing/side-nav-tree';
 import { gicaNavTree } from '../app/gica/side-nav-tree';
 import { socialNavTree } from '../app/social/side-nav-tree';
+import { productionNavTree } from '../app/production/side-nav-tree';
 
 export const environment = {
     production: false
@@ -104,7 +105,8 @@ export const navBar = [
     crmNavTree,
     // foodNavTree,
     costingNavTree,
-    socialNavTree
+    socialNavTree,
+    productionNavTree
 ];
 
 export const langAssets = [
@@ -132,6 +134,7 @@ export const langAssets = [
     ['assets/locale/budget_', 'BUD_'],
     ['assets/locale/costing_', 'COST_'],
     ['assets/locale/social_', 'SOCIAL_'],
+    ['assets/locale/production_', 'PROD_'],
 ];
 
 export const appRoutes: Routes =  [
@@ -267,6 +270,10 @@ export const appRoutes: Routes =  [
     {
         path: SOCIAL_APP_URL,
         loadChildren: () => import('../app/social/social.module').then(m => m.SocialModule)
+    },
+    {
+        path: PRODUCTION_URL,
+        loadChildren: () => import('../app/production/production.module').then(m => m.ProductionModule)
     },
     { path: '', redirectTo: INDEX_PAGE_URL, pathMatch: 'full' },
     { path: '**', redirectTo: INDEX_PAGE_URL, pathMatch: 'full' }
