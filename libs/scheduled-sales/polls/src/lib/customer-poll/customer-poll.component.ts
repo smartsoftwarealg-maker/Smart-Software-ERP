@@ -53,6 +53,7 @@ export class CustomerPollComponent {
             next: (res) => {
                 this.data = res.body;
                 this.setCanGoNextPage(0);
+                this.initialize(res.body);
             },
         });
     }
@@ -63,85 +64,81 @@ export class CustomerPollComponent {
         );
     }
 
-    public setLocal(name: string, value: string) {
-        localStorage.setItem(name, value);
-    }
-
-    public getLocal(name: string) {
-        return localStorage.getItem(name);
-    }
-
     public getSatisfactionVal(id: number) {
-        return localStorage.getItem('SatisfactionQuestionN' + id)
-            ? +localStorage.getItem('SatisfactionQuestionN' + id)
-            : this.data[id].satisfactionAnswer != null
-              ? this.data[id].satisfactionAnswer
-              : -1;
+        return localStorage.getItem('SatisfactionQuestionN' + id);
+    }
+
+    public setSatisfactionVal(id: number, value: number) {
+        localStorage.setItem('SatisfactionQuestionN' + id, '' + value);
     }
 
     public getBoolVal(id: number) {
-        return localStorage.getItem('BoolQuestionN' + id) !== null
-            ? localStorage.getItem('BoolQuestionN' + id)
-            : this.data[id].boolAnswer !== null
-              ? this.data[id].boolAnswer
-                  ? this.boolAnswer[0]
-                  : this.boolAnswer[1]
-              : '';
+        return localStorage.getItem('BoolQuestionN' + id);
+    }
+
+    public setBoolVal(id: number, value: string) {
+        localStorage.setItem('BoolQuestionN' + id, value);
     }
 
     public getMemoVal(id: number) {
-        return localStorage.getItem('MemoQuestionN' + id)
-            ? localStorage.getItem('MemoQuestionN' + id)
-            : this.data[id].memo;
+        return '' + localStorage.getItem('MemoQuestionN' + id);
+    }
+
+    public setMemoVal(id: number, value: string) {
+        localStorage.setItem('MemoQuestionN' + id, value);
+        this.setCanGoNextPage(id / 2 == 0 ? id : id - 1);
     }
 
     public isQuestionComplete(id: number) {
         if (id >= this.data.length) {
             return true;
         } // if the question not exist, it will be consider success
-        const satisfactionQuestion =
-            this.data[id].satisfactionAnswer ||
-            localStorage.getItem('SatisfactionQuestionN' + id)
-                ? 1
-                : 0;
+        if (this.data[id].answerType === 0 && this.getMemoVal(id)) {
+            return this.getMemoVal(id) != '' ? true : false;
+        }
 
-        const boolQuestion =
-            this.data[id].boolAnswer ||
-            localStorage.getItem('BoolQuestionN' + id)
-                ? 1
-                : 0;
+        if (this.data[id].answerType === 1) {
+            return this.getSatisfactionVal(id) !== null ? true : false;
+        }
 
-        const memoQuestion =
-            localStorage.getItem('MemoQuestionN' + id) === ''
-                ? 0
-                : this.data[id].memo ||
-                    localStorage.getItem('MemoQuestionN' + id)
-                  ? 1
-                  : 0;
-        return satisfactionQuestion + boolQuestion + memoQuestion >= 1;
+        if (this.data[id].answerType === 2) {
+            return this.getBoolVal(id) != null ? true : false;
+        }
+        return false;
+    }
+
+    public initialize(data: CustomerPoll[]) {
+        for (let i = 0; i < data.length; i++) {
+            if (data[i].satisfactionAnswer !== null) {
+                localStorage.setItem(
+                    'SatisfactionQuestionN' + i,
+                    this.satisfactionAnswer[data[i].satisfactionAnswer],
+                );
+            }
+            if (data[i].boolAnswer !== null) {
+                localStorage.setItem(
+                    'BoolQuestionN' + i,
+                    this.boolAnswer[data[i].boolAnswer],
+                );
+            }
+            localStorage.setItem('MemoQuestionN' + i, data[i].memo);
+        }
     }
 
     public save() {
         let val = this.data;
         for (let i = 0; i < this.data.length; i++) {
-            if (this.getLocal('SatisfactionQuestionN' + i)) {
-                val[i].satisfactionAnswer = +this.getLocal(
-                    'SatisfactionQuestionN' + i,
-                );
+            if (this.getSatisfactionVal(i)) {
+                val[i].satisfactionAnswer = +this.getSatisfactionVal(i);
                 localStorage.removeItem('SatisfactionQuestionN' + i);
             }
-            if (this.getLocal('BoolQuestionN' + i)) {
-                console.log(
-                    this.getLocal('BoolQuestionN' + i) === this.boolAnswer[0],
-                );
+            if (this.getBoolVal(i)) {
                 val[i].boolAnswer =
-                    this.getLocal('BoolQuestionN' + i) === this.boolAnswer[0]
-                        ? 1
-                        : 0;
+                    this.getBoolVal(i) === this.boolAnswer[0] ? 1 : 0;
                 localStorage.removeItem('BoolQuestionN' + i);
             }
-            if (this.getLocal('MemoQuestionN' + i)) {
-                val[i].memo = this.getLocal('MemoQuestionN' + i);
+            if (this.getMemoVal(i)) {
+                val[i].memo = this.getMemoVal(i);
                 localStorage.removeItem('MemoQuestionN' + i);
             }
         }

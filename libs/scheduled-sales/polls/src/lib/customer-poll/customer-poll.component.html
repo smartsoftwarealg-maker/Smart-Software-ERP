@@ -16,7 +16,7 @@
             </mat-card>
         </mat-card>
     } @else {
-        <mat-stepper class="default-100" linear="true" >
+        <mat-stepper class="default-100" linear="true">
             @for (c of data; track c.id; let idx = $index, e = $even) {
                 @if (e) {
                     <mat-step #step [completed]="completeState()">
@@ -39,8 +39,8 @@
                                             @for (option of satisfactionAnswer; track option; let i = $index) {
                                                 <li translate>
                                                     <input type="radio" name="satisfaction{{k}}"
-                                                           (change)="setLocal('SatisfactionQuestionN'+k,i+'') "
-                                                           [checked]="getSatisfactionVal(k) === i "
+                                                           (change)="setSatisfactionVal(k,i)"
+                                                           [checked]="getSatisfactionVal(k) === option "
                                                            translate>{{ satisfactionAnswer[i] }}
                                                 </li>
                                             }
@@ -51,7 +51,7 @@
                                             @for (bool of boolAnswer; track bool; let i = $index) {
                                                 <li translate>
                                                     <input type="radio" name="boolean{{k}}"
-                                                           (change)="setLocal('BoolQuestionN'+ k, bool); setCanGoNextPage(idx) "
+                                                           (change)="setBoolVal(k, bool); setCanGoNextPage(idx) "
                                                            [checked]="getBoolVal(k) == bool">{{ bool }}
                                                 </li>
                                             }
@@ -59,7 +59,7 @@
                                     }
                                     @if (data[k].showMemo) {
                                         <textarea type="text" rows="3" class="default-100"
-                                                  (change)="setLocal('MemoQuestionN'+k, $event.target.value); setCanGoNextPage(idx) "
+                                                  (keyup)="setMemoVal(k, $event.target.value)"
                                                   [value]="getMemoVal(k)">
                                         </textarea>
                                     }
@@ -74,7 +74,8 @@
                                         (click)="setCanGoNextPage(idx+2)" translate>COMMON_NEXT
                                 </button>
                             } @else {
-                                <button mat-flat-button color="secondly" (click)="save()" [disabled]="!completeState()" translate>
+                                <button mat-flat-button color="secondly" (click)="save()" [disabled]="!completeState()"
+                                        translate>
                                     COMMON_SUBMIT
                                 </button>
                             }
