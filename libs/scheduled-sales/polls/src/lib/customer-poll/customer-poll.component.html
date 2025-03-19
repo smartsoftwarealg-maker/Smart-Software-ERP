@@ -1,6 +1,6 @@
 <div class="size">
     @if (showThanksMessage) {
-        <mat-card class="default-80">
+        <mat-card>
             <mat-card class="thanks-message" appearance="outlined">
                 <mat-card-header>
                     <mat-card-title></mat-card-title>
@@ -9,18 +9,17 @@
                     <p translate>SCH_THANK_YOU_FOR_PARTICIPATING_IN_THE_POLL</p>
                 </mat-card-content>
                 <mat-card-footer>
-                    <button mat-flat-button color="secondly" (click)="save()" translate>
+                    <button mat-flat-button color="secondly" (click)="shellSrv.goBack();" translate>
                         SCH_YOUR_WELCOME
                     </button>
                 </mat-card-footer>
             </mat-card>
-
         </mat-card>
     } @else {
         <mat-stepper class="default-100" linear="true">
             @for (c of data; track c.id; let idx = $index, e = $even) {
                 @if (e) {
-                    <mat-step #step [completed]="isQuestionComplete(idx) && isQuestionComplete(idx+1)">
+                    <mat-step #step [completed]="completeState()">
                         <ng-template matStepLabel="fa-regular fa-question"></ng-template>
                         @for (k of [idx, idx + 1]; track k) {
                             @if (k < data.length) {
@@ -40,7 +39,7 @@
                                             @for (option of satisfactionAnswer; track option; let i = $index) {
                                                 <li translate>
                                                     <input type="radio" name="satisfaction{{k}}"
-                                                           (change)="setLocal('SatisfactionQuestionN'+k,i+'')"
+                                                           (change)="setLocal('SatisfactionQuestionN'+k,i+'') ; isCanGoNextPage(idx)"
                                                            [checked]="getSatisfactionVal(k) === i "
                                                            translate>{{ satisfactionAnswer[i] }}
                                                 </li>
@@ -52,7 +51,7 @@
                                             @for (bool of boolAnswer; track bool; let i = $index) {
                                                 <li translate>
                                                     <input type="radio" name="boolean{{k}}"
-                                                           (change)="setLocal('BoolQuestionN'+ k,bool)"
+                                                           (change)="setLocal('BoolQuestionN'+ k,bool) ; isCanGoNextPage(idx)"
                                                            [checked]="getBoolVal(k) == bool">{{ bool }}
                                                 </li>
                                             }
@@ -60,7 +59,7 @@
                                     }
                                     @if (data[k].showMemo) {
                                         <textarea type="text" rows="3" class="default-100"
-                                                  (change)="setLocal('MemoQuestionN'+k, $event.target.value)"
+                                                  (change)="setLocal('MemoQuestionN'+k, $event.target.value) ; isCanGoNextPage(idx)"
                                                   [value]="getMemoVal(k)"></textarea>
 
                                     }
@@ -72,15 +71,17 @@
                         <div class="actions">
                             @if (idx + 1 < data.length) {
                                 <button mat-flat-button color="primary" matStepperNext [disabled]="!step.completed"
-                                        translate>COMMON_NEXT
+                                        (click)="isCanGoNextPage(idx+2)" translate>COMMON_NEXT
                                 </button>
                             } @else {
-                                <button mat-flat-button color="secondly" (click)="showThanksMessage=true" translate>
+                                <button mat-flat-button color="secondly" (click)="save()" translate>
                                     COMMON_SUBMIT
                                 </button>
                             }
                             @if (idx >= 1) {
-                                <button mat-flat-button matStepperPrevious translate>COMMON_BACK</button>
+                                <button mat-flat-button matStepperPrevious (click)="isCanGoNextPage(idx-2)" translate>
+                                    COMMON_BACK
+                                </button>
                             }
                         </div>
                     </mat-step>
@@ -89,3 +90,4 @@
         </mat-stepper>
     }
 </div>
+

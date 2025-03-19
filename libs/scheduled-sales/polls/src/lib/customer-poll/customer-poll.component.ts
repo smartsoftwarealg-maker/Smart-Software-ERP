@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute } from '@angular/router';
@@ -44,6 +44,7 @@ export class CustomerPollComponent {
 
     public data: CustomerPoll[];
     public showThanksMessage = false;
+    public completeState = signal(false);
 
     ngOnInit() {
         this.shellSrv.setGoBackPath('../..', this.route);
@@ -51,9 +52,15 @@ export class CustomerPollComponent {
         this.customerPollSrv.getList(1, 1000).subscribe({
             next: (res) => {
                 this.data = res.body;
-                console.log(res);
+                this.isCanGoNextPage(0);
             },
         });
+    }
+
+    isCanGoNextPage(id: number) {
+        this.completeState.set(
+            this.isQuestionComplete(id) && this.isQuestionComplete(id + 1),
+        );
     }
 
     public setLocal(name: string, value: string) {
@@ -65,23 +72,27 @@ export class CustomerPollComponent {
     }
 
     public getSatisfactionVal(id: number) {
-        return this.data[id].satisfactionAnswer
-            ? this.data[id].satisfactionAnswer
-            : localStorage.getItem('SatisfactionQuestionN' + id)
-              ? +localStorage.getItem('SatisfactionQuestionN' + id)
+        return localStorage.getItem('SatisfactionQuestionN' + id)
+            ? +localStorage.getItem('SatisfactionQuestionN' + id)
+            : this.data[id].satisfactionAnswer != null
+              ? this.data[id].satisfactionAnswer
               : -1;
     }
 
     public getBoolVal(id: number) {
-        return this.data[id].bollAnswer
-            ? this.data[id].bollAnswer
-            : localStorage.getItem('BoolQuestionN' + id);
+        return localStorage.getItem('BoolQuestionN' + id) !== null
+            ? localStorage.getItem('BoolQuestionN' + id)
+            : this.data[id].boolAnswer !== null
+              ? this.data[id].boolAnswer
+                  ? this.boolAnswer[0]
+                  : this.boolAnswer[1]
+              : '';
     }
 
     public getMemoVal(id: number) {
-        return this.data[id].memo
-            ? this.data[id].memo
-            : localStorage.getItem('MemoQuestionN' + id);
+        return localStorage.getItem('MemoQuestionN' + id)
+            ? localStorage.getItem('MemoQuestionN' + id)
+            : this.data[id].memo;
     }
 
     public isQuestionComplete(id: number) {
@@ -95,15 +106,18 @@ export class CustomerPollComponent {
                 : 0;
 
         const boolQuestion =
-            this.data[id].bollAnswer ||
+            this.data[id].boolAnswer ||
             localStorage.getItem('BoolQuestionN' + id)
                 ? 1
                 : 0;
 
         const memoQuestion =
-            this.data[id].memo || localStorage.getItem('MemoQuestionN' + id)
-                ? 1
-                : 0;
+            localStorage.getItem('MemoQuestionN' + id) === ''
+                ? 0
+                : this.data[id].memo ||
+                    localStorage.getItem('MemoQuestionN' + id)
+                  ? 1
+                  : 0;
         return satisfactionQuestion + boolQuestion + memoQuestion >= 1;
     }
 
@@ -117,7 +131,13 @@ export class CustomerPollComponent {
                 localStorage.removeItem('SatisfactionQuestionN' + i);
             }
             if (this.getLocal('BoolQuestionN' + i)) {
-                val[i].bollAnswer = this.getLocal('BoolQuestionN' + i);
+                console.log(
+                    this.getLocal('BoolQuestionN' + i) === this.boolAnswer[0],
+                );
+                val[i].boolAnswer =
+                    this.getLocal('BoolQuestionN' + i) === this.boolAnswer[0]
+                        ? 1
+                        : 0;
                 localStorage.removeItem('BoolQuestionN' + i);
             }
             if (this.getLocal('MemoQuestionN' + i)) {
@@ -133,7 +153,7 @@ export class CustomerPollComponent {
         obs.subscribe({
             next: () => {
                 this.shellSrv.setLoading(false);
-                this.shellSrv.goBack();
+                this.showThanksMessage = true;
                 this.snackBarSrv.showSuccessMessage();
             },
             error: (err) => {
