@@ -36,22 +36,22 @@
 
                                     @if (data[k].answerType == SATISFACTION) {
                                         <ol>
-                                            @for (option of satisfactionAnswer; track option; let i = $index) {
+                                            @for (option of satisfactionAnswers; track option; let i = $index) {
                                                 <li translate>
                                                     <input type="radio" name="satisfaction{{k}}"
-                                                           (change)="setSatisfactionVal(k,i)"
+                                                           (change)="setSatisfactionVal(k,option)"
                                                            [checked]="getSatisfactionVal(k) === option "
-                                                           translate>{{ satisfactionAnswer[i] }}
+                                                           translate>{{ satisfactionAnswers[i] }}
                                                 </li>
                                             }
                                         </ol>
                                     }
                                     @if (data[k].answerType == BOOLEAN) {
                                         <ol>
-                                            @for (bool of boolAnswer; track bool; let i = $index) {
+                                            @for (bool of boolAnswers; track bool; let i = $index) {
                                                 <li translate>
                                                     <input type="radio" name="boolean{{k}}"
-                                                           (change)="setBoolVal(k, bool); setCanGoNextPage(idx) "
+                                                           (change)="setBoolVal(k, bool)"
                                                            [checked]="getBoolVal(k) == bool">{{ bool }}
                                                 </li>
                                             }
