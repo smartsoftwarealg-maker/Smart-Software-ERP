@@ -42,7 +42,7 @@
     "SHOW_MEMO":          "عرض المذكرة",
     "SATISFACTION":       "الرضا",
     "UNSPECIFIED":        "غير محدد",
-    "BOOLEAN":            "منطقي",
+    "BOOLEAN":            "نعم أو لا",
     "DESCRIPTION_EN":     "الوصف (انجليزي)",
     "CUSTOMER_POLL":     "استطلاع رأي العملاء",
     "VERY_SATISFIED":    "راض جدا",

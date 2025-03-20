@@ -42,7 +42,7 @@
     "SHOW_MEMO":          "Show memo",
     "SATISFACTION":       "Satisfaction",
     "UNSPECIFIED":        "Unspecified",
-    "BOOLEAN":            "Boolean",
+    "BOOLEAN":            "Yes/No",
     "DESCRIPTION_EN":     "Description (en)",
     "CUSTOMER_POLL":      "Customer poll",
     "VERY_SATISFIED":    "Very satisfied",
