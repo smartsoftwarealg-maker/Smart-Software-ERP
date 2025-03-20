@@ -16,7 +16,7 @@
             </mat-card>
         </mat-card>
     } @else {
-        <mat-stepper class="default-100" linear="true">
+        <mat-stepper #stepper class="default-100">
             @for (c of data; track c.id; let idx = $index, e = $even) {
                 @if (e) {
                     <mat-step #step [completed]="completeState()">
