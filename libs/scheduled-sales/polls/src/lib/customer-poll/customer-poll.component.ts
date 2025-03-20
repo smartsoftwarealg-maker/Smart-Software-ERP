@@ -102,7 +102,7 @@ export class CustomerPollComponent {
     }
 
     public getMemoVal(id: number) {
-        return this.data[id].memo;
+        return this.data[id].memo? this.data[id].memo : '' ;
     }
 
     public setMemoVal(id: number, value: string) {
@@ -116,7 +116,7 @@ export class CustomerPollComponent {
             return true;
         } // if the question not exist, it will be consider success
         if (this.data[id].answerType === this.UNSPECIFIED && this.getMemoVal(id)) {
-            return this.getMemoVal(id) != '';
+            return this.getMemoVal(id).match(/^\s*$/) === null;
         }
 
         if (this.data[id].answerType === this.SATISFACTION) {
