@@ -457,6 +457,9 @@
             "@ss/payroll/work-stoppage": [
                 "libs/payroll/work-stoppage/src/index.ts"
             ],
+            "@ss/production/production-order": [
+                "libs/production/production-order/src/index.ts"
+            ],
             "@ss/purchases/api-purchase-order": [
                 "libs/purchases/api-purchase-order/src/index.ts"
             ],
