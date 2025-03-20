@@ -115,16 +115,17 @@ export class CustomerPollComponent {
         if (id >= this.data.length) {
             return true;
         } // if the question not exist, it will be consider success
-        if (this.data[id].answerType === 0 && this.getMemoVal(id)) {
+        if (this.data[id].answerType === this.UNSPECIFIED && this.getMemoVal(id)) {
             return this.getMemoVal(id) != '';
         }
 
-        if (this.data[id].answerType === 1) {
-            return this.data[id].satisfactionAnswer !== null;
+        if (this.data[id].answerType === this.SATISFACTION) {
+            console.log('id = '+id + ' and '+this.data[id].satisfactionAnswer)
+            return this.data[id].satisfactionAnswer > 0;
         }
 
-        if (this.data[id].answerType === 2) {
-            return this.data[id].boolAnswer !== null;
+        if (this.data[id].answerType === this.BOOLEAN) {
+            return this.data[id].boolAnswer >= 0 ;
         }
         return false;
     }
