@@ -26,12 +26,13 @@ import { CustomerPollService } from '../customer-poll.service';
     styleUrl: './customer-poll.component.scss',
 })
 export class CustomerPollComponent {
-    public satisfactionAnswer = [
+    #_DATA_ = '_DATA_';
+    public satisfactionAnswers = [
         'SCH_VERY_SATISFIED',
         'SCH_SATISFIED',
         'SCH_UNSATISFIED',
     ];
-    public boolAnswer = ['COMMON_YES', 'COMMON_NO'];
+    public boolAnswers = ['COMMON_NO', 'COMMON_YES'];
     public UNSPECIFIED = 0;
     public SATISFACTION = 1;
     public BOOLEAN = 2;
@@ -49,12 +50,29 @@ export class CustomerPollComponent {
     ngOnInit() {
         this.shellSrv.setGoBackPath('../..', this.route);
         this.showThanksMessage = false;
-        this.customerPollSrv.getList(1, 1000).subscribe({
-            next: (res) => {
-                this.data = res.body;
+        const storage = localStorage.getItem(this.#_DATA_);
+        if (storage) {
+            try {
+                this.data = JSON.parse(storage);
                 this.setCanGoNextPage(0);
-            },
-        });
+            } catch (e) {
+                this.data = [];
+            }
+
+        }
+        if ((this.data?.length||0) === 0) {
+            this.customerPollSrv.getList(1, 1000).subscribe({
+                next: (res) => {
+                    this.data = res.body;
+                    this.setStorage();
+                    this.setCanGoNextPage(0);
+                },
+            });
+        }
+    }
+
+    private setStorage() {
+        localStorage.setItem(this.#_DATA_, JSON.stringify(this.data));
     }
 
     setCanGoNextPage(id: number) {
@@ -63,97 +81,66 @@ export class CustomerPollComponent {
         );
     }
 
-    public setLocal(name: string, value: string) {
-        localStorage.setItem(name, value);
-    }
-
-    public getLocal(name: string) {
-        return localStorage.getItem(name);
-    }
-
     public getSatisfactionVal(id: number) {
-        return localStorage.getItem('SatisfactionQuestionN' + id)
-            ? +localStorage.getItem('SatisfactionQuestionN' + id)
-            : this.data[id].satisfactionAnswer != null
-              ? this.data[id].satisfactionAnswer
-              : -1;
+        return this.data[id].satisfactionAnswer;
+    }
+
+    public setSatisfactionVal(id: number, answer: number) {
+        this.data[id].satisfactionAnswer = answer;
+        this.setStorage();
+        this.setCanGoNextPage(id % 2 == 0 ? id : id - 1);
     }
 
     public getBoolVal(id: number) {
-        return localStorage.getItem('BoolQuestionN' + id) !== null
-            ? localStorage.getItem('BoolQuestionN' + id)
-            : this.data[id].boolAnswer !== null
-              ? this.data[id].boolAnswer
-                  ? this.boolAnswer[0]
-                  : this.boolAnswer[1]
-              : '';
+        return this.data[id].boolAnswer;
+    }
+
+    public setBoolVal(id: number, answer: number) {
+        this.data[id].boolAnswer = answer;
+        this.setStorage();
+        this.setCanGoNextPage(id % 2 == 0 ? id : id - 1);
     }
 
     public getMemoVal(id: number) {
-        return localStorage.getItem('MemoQuestionN' + id)
-            ? localStorage.getItem('MemoQuestionN' + id)
-            : this.data[id].memo;
+        return this.data[id].memo;
+    }
+
+    public setMemoVal(id: number, value: string) {
+        this.data[id].memo = value;
+        this.setCanGoNextPage(id % 2 == 0 ? id : id - 1);
+        this.setStorage();
     }
 
     public isQuestionComplete(id: number) {
         if (id >= this.data.length) {
             return true;
         } // if the question not exist, it will be consider success
-        const satisfactionQuestion =
-            this.data[id].satisfactionAnswer ||
-            localStorage.getItem('SatisfactionQuestionN' + id)
-                ? 1
-                : 0;
+        if (this.data[id].answerType === this.UNSPECIFIED && this.getMemoVal(id)) {
+            return this.getMemoVal(id) != '';
+        }
 
-        const boolQuestion =
-            this.data[id].boolAnswer ||
-            localStorage.getItem('BoolQuestionN' + id)
-                ? 1
-                : 0;
+        if (this.data[id].answerType === this.SATISFACTION) {
+            console.log('id = '+id + ' and '+this.data[id].satisfactionAnswer)
+            return this.data[id].satisfactionAnswer > 0;
+        }
 
-        const memoQuestion =
-            localStorage.getItem('MemoQuestionN' + id) === ''
-                ? 0
-                : this.data[id].memo ||
-                    localStorage.getItem('MemoQuestionN' + id)
-                  ? 1
-                  : 0;
-        return satisfactionQuestion + boolQuestion + memoQuestion >= 1;
+        if (this.data[id].answerType === this.BOOLEAN) {
+            return this.data[id].boolAnswer >= 0 ;
+        }
+        return false;
     }
 
     public save() {
-        let val = this.data;
-        for (let i = 0; i < this.data.length; i++) {
-            if (this.getLocal('SatisfactionQuestionN' + i)) {
-                val[i].satisfactionAnswer = +this.getLocal(
-                    'SatisfactionQuestionN' + i,
-                );
-                localStorage.removeItem('SatisfactionQuestionN' + i);
-            }
-            if (this.getLocal('BoolQuestionN' + i)) {
-                console.log(
-                    this.getLocal('BoolQuestionN' + i) === this.boolAnswer[0],
-                );
-                val[i].boolAnswer =
-                    this.getLocal('BoolQuestionN' + i) === this.boolAnswer[0]
-                        ? 1
-                        : 0;
-                localStorage.removeItem('BoolQuestionN' + i);
-            }
-            if (this.getLocal('MemoQuestionN' + i)) {
-                val[i].memo = this.getLocal('MemoQuestionN' + i);
-                localStorage.removeItem('MemoQuestionN' + i);
-            }
-        }
         this.shellSrv.setLoading(true);
         const obs = this.httpSrv
-            .put('/ssales/customer-poll', val)
+            .put('/ssales/customer-poll', this.data)
             .pipe(map((res: { count: number }) => res['count']));
 
         obs.subscribe({
             next: () => {
                 this.shellSrv.setLoading(false);
                 this.showThanksMessage = true;
+                localStorage.removeItem(this.#_DATA_);
                 this.snackBarSrv.showSuccessMessage();
             },
             error: (err) => {

@@ -16,7 +16,7 @@
             </mat-card>
         </mat-card>
     } @else {
-        <mat-stepper class="default-100" linear="true" >
+        <mat-stepper class="default-100" linear="true">
             @for (c of data; track c.id; let idx = $index, e = $even) {
                 @if (e) {
                     <mat-step #step [completed]="completeState()">
@@ -36,30 +36,30 @@
 
                                     @if (data[k].answerType == SATISFACTION) {
                                         <ol>
-                                            @for (option of satisfactionAnswer; track option; let i = $index) {
+                                            @for (option of satisfactionAnswers; track option; let i = $index) {
                                                 <li translate>
                                                     <input type="radio" name="satisfaction{{k}}"
-                                                           (change)="setLocal('SatisfactionQuestionN'+k,i+'') "
-                                                           [checked]="getSatisfactionVal(k) === i "
-                                                           translate>{{ satisfactionAnswer[i] }}
+                                                           (change)="setSatisfactionVal(k, i + 1)"
+                                                           [checked]="getSatisfactionVal(k) === i + 1"
+                                                           translate>{{ satisfactionAnswers[i] }}
                                                 </li>
                                             }
                                         </ol>
                                     }
                                     @if (data[k].answerType == BOOLEAN) {
                                         <ol>
-                                            @for (bool of boolAnswer; track bool; let i = $index) {
+                                            @for (bool of boolAnswers; track bool; let i = $index) {
                                                 <li translate>
                                                     <input type="radio" name="boolean{{k}}"
-                                                           (change)="setLocal('BoolQuestionN'+ k, bool); setCanGoNextPage(idx) "
-                                                           [checked]="getBoolVal(k) == bool">{{ bool }}
+                                                           (change)="setBoolVal(k, i)"
+                                                           [checked]="getBoolVal(k) === i">{{ bool }}
                                                 </li>
                                             }
                                         </ol>
                                     }
                                     @if (data[k].showMemo) {
                                         <textarea type="text" rows="3" class="default-100"
-                                                  (change)="setLocal('MemoQuestionN'+k, $event.target.value); setCanGoNextPage(idx) "
+                                                  (keyup)="setMemoVal(k, $event.target.value)"
                                                   [value]="getMemoVal(k)">
                                         </textarea>
                                     }
@@ -74,7 +74,8 @@
                                         (click)="setCanGoNextPage(idx+2)" translate>COMMON_NEXT
                                 </button>
                             } @else {
-                                <button mat-flat-button color="secondly" (click)="save()" [disabled]="!completeState()" translate>
+                                <button mat-flat-button color="secondly" (click)="save()" [disabled]="!completeState()"
+                                        translate>
                                     COMMON_SUBMIT
                                 </button>
                             }
