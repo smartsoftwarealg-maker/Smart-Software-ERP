@@ -9,7 +9,7 @@ import {
     ABS_ADMINISTRATION_WORKFLOW_INBOX_URL,
     ABS_STOCK_ARTICLES_URL,
     ABS_PURCHASE_RECEPTION_CANCELLATION_URL,
-    ABS_IMPORT_PURCHASE_RECEPTION_URL, ABS_PURCHASE_REPORT_RIGHT_URL, ABS_PRICE_REQUEST_URL, ABS_FINANCE_SPAYMENTS
+    ABS_IMPORT_PURCHASE_RECEPTION_URL, ABS_PURCHASE_REPORT_RIGHT_URL, ABS_PRICE_REQUEST_URL, ABS_FINANCE_SPAYMENTS, ABS_PRODUCTION_ORDER_URL
 } from '../common';
 import {SideNavNode} from '@ss/common/api-common';
 
@@ -108,5 +108,11 @@ export const purchasesNavTree: SideNavNode = {
             route: ABS_PURCHASE_DASHBOARD_URL,
             accessRights: 'Dashboard'
         },
+        {
+            name: 'PURCHASES_PRODUCTION_ORDER',
+            icon: 'fa-solid fa-industry',
+            route: ABS_PRODUCTION_ORDER_URL,
+            accessRights: 'POrder'
+        }
     ]
 };

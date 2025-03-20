@@ -21,7 +21,7 @@ import {
     PurchaseOrderLinesListComponent,
     PurchaseOrderListComponent
 } from '@ss/purchases/ui-purchase-order';
-import {PURCHASE_RECEPTION_URL, PURCHASE_ORDER_URL} from '../common';
+import {PURCHASE_RECEPTION_URL, PURCHASE_ORDER_URL, PRODUCTION_ORDER_URL} from '../common';
 import {
     ReceptionLinesDetailComponent,
     ReceptionLinesListComponent,
@@ -65,6 +65,11 @@ import {
     PriceRequestDetailComponent, PriceRequestLinesDetailComponent,
     PriceRequestLinesListComponent
 } from '@ss/purchases/preiceRequest';
+import {
+    ProductionOrderDetailComponent,
+    ProductionOrderLinesDetailComponent, ProductionOrderLinesListComponent,
+    ProductionOrderListComponent
+} from '@ss/purchases/production-order';
 
 export const routes: Routes = [
     {
@@ -358,6 +363,39 @@ export const routes: Routes = [
             },
             { path: '', redirectTo: LIST_URL, pathMatch: 'full' },
             { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' }
+        ]
+    },
+    {
+        path: PRODUCTION_ORDER_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: ProductionOrderListComponent,
+                canActivate: [loginGuard],
+                children: docInfoRoutes
+            },
+            {
+                path: ':id',
+                component: ProductionOrderDetailComponent,
+                canActivate: [loginGuard],
+                canDeactivate: [CanDeactivateService],
+                children: [
+                    { path: '', pathMatch: 'full', redirectTo: 'lines-list' },
+                    { path: 'lines-list',
+                        component: ProductionOrderLinesListComponent,
+                        children: docInfoRoutes
+                    },
+                    {
+                        path: 'lines-detail',
+                        children: [
+                            { path: ':id', component: ProductionOrderLinesDetailComponent },
+                        ]
+                    },
+                    ...docInfoRoutes
+                ]
+            },
+            {path: '', redirectTo: LIST_URL, pathMatch: 'full'},
+            {path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full'}
         ]
     },
 ];
