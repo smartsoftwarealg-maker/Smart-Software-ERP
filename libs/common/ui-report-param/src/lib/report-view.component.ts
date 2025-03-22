@@ -219,7 +219,16 @@ export class ReportViewComponent extends BaseEntityListComponent<ReportParam> im
                         // this.pdfSrc = URL.createObjectURL(res);
                     }
                 } else {
-                    this.htmlSrc = this.sanitizer.bypassSecurityTrustHtml(res);
+                    // this.htmlSrc = this.sanitizer.bypassSecurityTrustHtml(res);
+                    const report = `<html lang="en">
+                                  <head>
+                                  <title>${data.fileName}</title>
+                                  </head>
+                                  <body>
+                                    ${res}
+                                  </body>
+                                </html>`
+                    window.open('_blank').document.write(report);
                 }
                 this.generating = false;
             },
