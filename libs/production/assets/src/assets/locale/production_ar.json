@@ -3,5 +3,10 @@
     "PRODUCTIONS":           "الإنتاجات",
     "PRODUCTION_ORDERS":     "طلبات الإنتاج",
     "PRODUCTION_ORDER":      "طلب الإنتاج",
-    "PRODUCTION_MRP":      "تخطيط متطلبات المواد"
+    "PRODUCTION_MRP":      "تخطيط متطلبات المواد",
+    "REFERENCE": "المرجع",
+    "DESCRIPTION": "وصف",
+    "QTY": "الكمية",
+    "PURCHASE_ORDER": "طلب الشراء",
+    "INVENTORY": "الجرد"
 }

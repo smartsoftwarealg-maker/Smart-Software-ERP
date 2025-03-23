@@ -4,4 +4,9 @@
     "PRODUCTION_ORDERS":     "Production",
     "PRODUCTION_ORDER":      "Ordre de production",
     "PRODUCTION_MRP":        "Production MRP"
+    "REFERENCE":             "Reference",
+    "DESCRIPTION":           "Description",
+    "QTY":                   "Qty",
+    "PURCHASE_ORDER":        "Bon de commande",
+    "INVENTORY":             "Inventaire"
 }

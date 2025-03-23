@@ -1,1 +1,44 @@
-<p>Mrp works!</p>
+<div class="container_div">
+    <mat-table mat-table [dataSource]="data"  class="main-table">
+
+        <ng-container matColumnDef="reference">
+            <mat-header-cell *matHeaderCellDef translate>PROD_REFERENCE</mat-header-cell>
+            <mat-cell *matCellDef="let m">
+                {{ m.reference }}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="description">
+            <mat-header-cell *matHeaderCellDef translate>PROD_DESCRIPTION</mat-header-cell>
+            <mat-cell *matCellDef="let m">
+                {{ m.description }}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="qty">
+            <mat-header-cell *matHeaderCellDef translate>PROD_QTY</mat-header-cell>
+            <mat-cell *matCellDef="let m">
+                {{ m.qty }}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="purchaseOrder">
+            <mat-header-cell *matHeaderCellDef translate>PROD_PURCHASE_ORDER</mat-header-cell>
+            <mat-cell *matCellDef="let m">
+                {{ m.purchaseOrder }}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="inventory">
+            <mat-header-cell *matHeaderCellDef translate>PROD_INVENTORY</mat-header-cell>
+            <mat-cell *matCellDef="let m">
+                {{ m.inventory }}
+            </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+        <mat-row class="selectable"
+                 *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+
+</div>
