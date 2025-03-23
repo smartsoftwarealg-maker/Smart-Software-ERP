@@ -54,7 +54,7 @@ export class ProductionOrderDetailComponent extends BaseTransactionDetailCompone
                 public override lookupsSrv: LookupsService,
                 protected override loginSrv: LoginService,
                 protected override dialog: MatDialog) {
-        super(orderService, detailSrv, shellSrv, snackBarSrv, route, router, formBuilder, confirmationSrv, loginSrv, dialog, 'PRODUCTIONS_EDIT_ORDER');
+        super(orderService, detailSrv, shellSrv, snackBarSrv, route, router, formBuilder, confirmationSrv, loginSrv, dialog, 'PROD_PRODUCTION_ORDER');
         this.purchaseProjectLookup.onObjectSelected = e => this.onProject(e);
     }
 
@@ -121,7 +121,7 @@ export class ProductionOrderDetailComponent extends BaseTransactionDetailCompone
 
     protected importedDocuments(): Lookup[] {
         return [
-            { id: DOC_SUPPLIER_QUOTATION, description: 'PRODUCTIONS_QUOTATION'}
+            { id: DOC_SUPPLIER_QUOTATION, description: 'PROD_PRODUCTIONS_QUOTATION'}
         ];
     }
 

@@ -59,6 +59,6 @@ export class ProductionOrderListComponent extends BaseEntityListComponent<Transa
         public override confirmationSrv: ConfirmationDialogService,
         public override defReportSrv: DefaultReportService,
         public override pagPersistSrv: PaginatorPersistenceService) {
-        super(inventorySrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv, 'PRODUCTIONS_ORDERS');
+        super(inventorySrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv, 'PROD_PRODUCTION_ORDERS');
     }
 }

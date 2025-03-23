@@ -12,7 +12,7 @@ import { Directive, inject, OnInit } from '@angular/core';
 import {OptionService} from '@ss/logistics/ui-options';
 import {
     DOC_CONSUMPTION,
-    DOC_CORRECTION_OUT, DOC_DELIVERY, DOC_INVOICE,
+    DOC_CORRECTION_OUT, DOC_DELIVERY, DOC_INVOICE, DOC_PRODUCTION_ORDER,
     DOC_RECEPTION,
     DOC_SEPARATOR_200,
     DOC_SEPARATOR_800, Transaction
@@ -78,7 +78,7 @@ export abstract class BaseTransactionLinesDetailComponent extends AbstractEntity
     }
 
     private updateStockAndValue(res: QtyPrice) {
-        if (this.document === DOC_CONSUMPTION || this.document === DOC_CORRECTION_OUT) {
+        if (this.document === DOC_CONSUMPTION || this.document === DOC_CORRECTION_OUT || this.document === DOC_PRODUCTION_ORDER) {
             this.form.controls['price'].setValue(res.price);
         }
         this.articleStock = res.qty;

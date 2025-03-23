@@ -1,2 +1,6 @@
 {
+    "PRODUCTION":            "إنتاج",
+    "PRODUCTION_ORDERS":     "طلبات الإنتاج",
+    "PRODUCTION_ORDER":      "طلب الإنتاج",
+    "PRODUCTION_MRP":      "تخطيط متطلبات المواد"
 }

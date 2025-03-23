@@ -1,2 +1,6 @@
 {
+    "PRODUCTION":            "Production",
+    "PRODUCTION_ORDERS":     "Production orders",
+    "PRODUCTION_ORDER":      "Production order",
+    "PRODUCTION_MRP":        "Production MRP"
 }
