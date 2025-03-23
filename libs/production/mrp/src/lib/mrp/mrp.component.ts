@@ -28,7 +28,8 @@ export class MrpComponent implements OnInit {
         'description',
         'qty',
         'purchaseOrder',
-        'inventory'
+        'inventory',
+        'toOrder'
     ];
 
     constructor(private http: HttpService, private shellSrv: ShellService) {
@@ -56,4 +57,5 @@ export class MrpComponent implements OnInit {
     }
 
 
+    protected readonly Math = Math;
 }

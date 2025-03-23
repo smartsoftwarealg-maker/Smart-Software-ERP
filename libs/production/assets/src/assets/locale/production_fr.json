@@ -9,4 +9,5 @@
     "QTY":                   "Qty",
     "PURCHASE_ORDER":        "Bon de commande",
     "INVENTORY":             "Inventaire"
+    "TO_ORDER":              "Demande"
 }

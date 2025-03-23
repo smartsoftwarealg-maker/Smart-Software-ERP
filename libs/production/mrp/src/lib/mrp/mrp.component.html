@@ -18,21 +18,28 @@
         <ng-container matColumnDef="qty">
             <mat-header-cell *matHeaderCellDef translate>PROD_QTY</mat-header-cell>
             <mat-cell *matCellDef="let m">
-                {{ m.qty }}
+                {{ m.qty.toFixed(2) }}
             </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="purchaseOrder">
             <mat-header-cell *matHeaderCellDef translate>PROD_PURCHASE_ORDER</mat-header-cell>
             <mat-cell *matCellDef="let m">
-                {{ m.purchaseOrder }}
+                {{ m.purchaseOrder.toFixed(2) }}
             </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="inventory">
             <mat-header-cell *matHeaderCellDef translate>PROD_INVENTORY</mat-header-cell>
             <mat-cell *matCellDef="let m">
-                {{ m.inventory }}
+                {{ m.inventory.toFixed(2) }}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="toOrder">
+            <mat-header-cell *matHeaderCellDef translate>PROD_TO_ORDER</mat-header-cell>
+            <mat-cell *matCellDef="let m">
+                {{ Math.max(m.qty - m.purchaseOrder - m.inventory,0)}}
             </mat-cell>
         </ng-container>
 

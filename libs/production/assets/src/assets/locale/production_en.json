@@ -8,5 +8,6 @@
     "DESCRIPTION": "Description",
     "QTY": "Qty",
     "PURCHASE_ORDER": "Purchase Order",
-    "INVENTORY": "Inventory"
+    "INVENTORY": "Inventory",
+    "TO_ORDER": "Order"
 }

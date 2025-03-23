@@ -8,5 +8,6 @@
     "DESCRIPTION": "وصف",
     "QTY": "الكمية",
     "PURCHASE_ORDER": "طلب الشراء",
-    "INVENTORY": "الجرد"
+    "INVENTORY": "الجرد",
+    "TO_ORDER": "طلب"
 }
