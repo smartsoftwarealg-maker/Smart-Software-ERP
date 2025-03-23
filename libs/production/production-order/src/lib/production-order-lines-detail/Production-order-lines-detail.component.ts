@@ -1,6 +1,6 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {
-    BaseTransactionLinesDetailComponent, DOC_PURCHASE_ORDER
+    BaseTransactionLinesDetailComponent, DOC_PRODUCTION_ORDER
 } from '@ss/logistics/api-transaction';
 import { ProductionOrderLinesService } from '../production-order-services/production-order-lines.service';
 import { NgIf } from '@angular/common';
@@ -16,7 +16,7 @@ import { CdkTextareaAutosize } from '@angular/cdk/text-field';
 @Component({
     selector: 'ss-production-order-lines-detail',
     styleUrls: ['../../../../../common/assets/src/assets/transac-lines-detail.scss'],
-    templateUrl: './Production-order-lines-detail.component.html',
+    templateUrl: './production-order-lines-detail.component.html',
     standalone: true,
     imports: [
         NgIf,
@@ -37,6 +37,6 @@ import { CdkTextareaAutosize } from '@angular/cdk/text-field';
 export class ProductionOrderLinesDetailComponent extends BaseTransactionLinesDetailComponent implements OnInit, OnDestroy  {
 
     constructor(protected detailSrv: ProductionOrderLinesService) {
-        super(detailSrv, DOC_PURCHASE_ORDER);
+        super(detailSrv, DOC_PRODUCTION_ORDER);
     }
 }

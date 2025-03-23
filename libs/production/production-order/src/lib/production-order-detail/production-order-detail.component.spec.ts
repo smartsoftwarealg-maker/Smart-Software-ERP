@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ProductionOrderDetailComponent } from '@ss/purchases/production-order';
+import { ProductionOrderDetailComponent } from '@ss/production/production-order';
 
 describe('UiOrderDetailComponent', () => {
     let component: ProductionOrderDetailComponent;
