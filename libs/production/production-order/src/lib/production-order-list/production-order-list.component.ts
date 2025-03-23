@@ -44,8 +44,7 @@ export class ProductionOrderListComponent extends BaseEntityListComponent<Transa
     displayedColumns = [
         'number',
         'date',
-        'agent',
-        'payMethod',
+        'dealer',
         'reference',
         'referenceDocDate',
         'docStatus'

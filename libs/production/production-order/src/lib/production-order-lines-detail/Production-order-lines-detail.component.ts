@@ -1,6 +1,6 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {
-    BaseTransactionLinesDetailComponent, DOC_PURCHASE_ORDER
+    BaseTransactionLinesDetailComponent, DOC_PRODUCTION_ORDER
 } from '@ss/logistics/api-transaction';
 import { ProductionOrderLinesService } from '../production-order-services/production-order-lines.service';
 import { NgIf } from '@angular/common';
@@ -37,6 +37,6 @@ import { CdkTextareaAutosize } from '@angular/cdk/text-field';
 export class ProductionOrderLinesDetailComponent extends BaseTransactionLinesDetailComponent implements OnInit, OnDestroy  {
 
     constructor(protected detailSrv: ProductionOrderLinesService) {
-        super(detailSrv, DOC_PURCHASE_ORDER);
+        super(detailSrv, DOC_PRODUCTION_ORDER);
     }
 }

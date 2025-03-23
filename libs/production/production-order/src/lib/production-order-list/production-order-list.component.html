@@ -10,14 +10,6 @@
                 </mat-cell>
             </ng-container>
 
-            <ng-container matColumnDef="payMethod">
-                <mat-header-cell *matHeaderCellDef mat-sort-header translate>LOGISTICS_PAY_METHOD</mat-header-cell>
-                <mat-cell *matCellDef="let e">
-                    {{ e.payMethodName }}
-                </mat-cell>
-            </ng-container>
-
-
             <ng-container matColumnDef="date">
                 <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_DATE</mat-header-cell>
                 <mat-cell *matCellDef="let e">
@@ -52,14 +44,6 @@
                     {{ e.dealerName }}
                 </mat-cell>
             </ng-container>
-
-            <ng-container matColumnDef="agent">
-                <mat-header-cell *matHeaderCellDef mat-sort-header translate>LOGISTICS_SUPPLIER</mat-header-cell>
-                <mat-cell *matCellDef="let e">
-                    {{ e.agentName }}
-                </mat-cell>
-            </ng-container>
-
 
             <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
             <mat-row class="selectable"
