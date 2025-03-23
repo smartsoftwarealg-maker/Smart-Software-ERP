@@ -41,7 +41,6 @@ import { ColorPickerDirective } from 'ngx-color-picker';
         ReactiveFormsModule,
         RouterModule,
         UiAutoCompleteComponent,
-        ColorPickerDirective
     ]
 })
 export class ArticleDetailComponent  extends BaseEntityDetailComponent<Article> implements OnInit {

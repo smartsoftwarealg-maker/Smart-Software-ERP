@@ -2,7 +2,7 @@ export default {
     displayName: 'production-order',
     preset: '../../../jest.preset.js',
     setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
-    coverageDirectory: '../../../coverage/libs/purchases/production-order',
+    coverageDirectory: '../../../coverage/libs/production/production-order',
     transform: {
         '^.+\\.(ts|mjs|js|html)$': [
             'jest-preset-angular',

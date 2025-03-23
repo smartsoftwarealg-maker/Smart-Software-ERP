@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import {KeepOnToolbar, ShellService, SnackBarService, ToolbarButton} from '@ss/common/ui-shell';
 import { ActivatedRoute, Router, RouterOutlet } from '@angular/router';
-import { FormGroup, UntypedFormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormGroup, UntypedFormBuilder, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import {CCGroup, Lookup, LookupsService} from '@ss/common/api-lookup';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import { Observable, of, switchMap } from 'rxjs';
@@ -60,7 +60,42 @@ export class ProductionOrderDetailComponent extends BaseTransactionDetailCompone
 
     override setupForm(b: Transaction): FormGroup {
         this.purchaseProjectSrv.setParentId(b?.agent || 0);
-        return super.setupForm(b);
+        if (!b.id) {
+            b.id = 0;
+            b.number = 0;
+            b.userID = this.loginSrv.appCtx.id;
+            b.dealer = b.userID;
+            b.date = new Date();
+        }
+
+        this.detailSrv.setParentId(b.id || 0);
+        this.purchaseProjectSrv.setParentId(b.agent || 0);
+        //this._isManager = this.loginSrv.appCtx.manager;
+        this.formId = b.id || 0;
+
+        this.isEditable = this.isEditable && !b.isValidated;
+        this.saveButton.visible = this.saveButton.visible && !b.isValidated;
+         this.detailSrv.editable = this.isEditable;
+        return this.formBuilder.group({
+            id: [b.id],
+            document: [b.document || 0],
+            centerId: [0 || this.loginSrv.appCtx.center],
+            date: [b.date || new Date(), Validators.required],
+            number: [b.number || 0],
+            reference: [b.reference],
+            referenceDocDate: [b.referenceDocDate],
+            header: [b.header],
+            footer: [b.footer],
+            dealer: [b.dealer, Validators.required],
+            agent: [b.agent],
+            altAgent: [b.altAgent],
+            project: [b.project],
+            locked: [b.locked || false, Validators.required],
+            dirty: [!b.dirty || false, Validators.required],
+            license: [b.license],
+            licenseDate: [b.licenseDate],
+            licenseIssuer: [b.licenseIssuer],
+        });
     }
 
     override ngOnInit() {
@@ -99,7 +134,7 @@ export class ProductionOrderDetailComponent extends BaseTransactionDetailCompone
     }
 
     protected showImportButton(): boolean {
-        return true;
+        return false;
     }
 
     override finishLoading(e: Transaction) {

@@ -492,6 +492,10 @@ export const PARK_FUEL_TYPES_URL = 'fuel-types';
 export const PARK_INSURANCE_POLICIES_URL = 'insurance-policies';
 export const PARK_INSURANCE_AGENCIES_URL = 'insurance-agencies';
 export const PARK_DESTINATION_URL = 'park-destinations';
+
+// production
+export const PRODUCTION_ORDER_URL = 'productions-order';
+
 // #############
 // # FULL URLS #
 // #############
@@ -939,7 +943,9 @@ export const ABS_DASHBOARD_QUERY_URL = '/' + [MAIN_PAGE_URL, DASHBOARD_APP_URL, 
 export const ABS_ARCHIVE_URL = '/' + [MAIN_PAGE_URL, WEBARCH_APP_URL, ARCHIVE_URL].join('/');
 export const ABS_TAG_URL = '/' + [MAIN_PAGE_URL, WEBARCH_APP_URL, TAG_URL].join('/');
 
+ // PRODUCTION
 
+export const ABS_PRODUCTION_ORDER_URL = '/' + [MAIN_PAGE_URL, PRODUCTION_URL, PRODUCTION_ORDER_URL].join('/');
 
 // ######################################
 // #            Other things            #

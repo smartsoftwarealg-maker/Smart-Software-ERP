@@ -5,7 +5,6 @@ import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {PaginatorPersistenceService} from '@ss/common/api-common';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import { Transaction } from '@ss/logistics/api-transaction';
-import { InventoryService } from '@ss/stock/api-inventory';
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { ProductionOrderService } from "../production-order-services/production-order.service";
 import { MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from '@angular/material/table';
@@ -45,8 +44,7 @@ export class ProductionOrderListComponent extends BaseEntityListComponent<Transa
     displayedColumns = [
         'number',
         'date',
-        'agent',
-        'payMethod',
+        'dealer',
         'reference',
         'referenceDocDate',
         'docStatus'
@@ -61,6 +59,6 @@ export class ProductionOrderListComponent extends BaseEntityListComponent<Transa
         public override confirmationSrv: ConfirmationDialogService,
         public override defReportSrv: DefaultReportService,
         public override pagPersistSrv: PaginatorPersistenceService) {
-        super(inventorySrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv, 'PRODUCTIONS_PURCHASE_ORDER');
+        super(inventorySrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv, 'PRODUCTIONS_ORDERS');
     }
 }
