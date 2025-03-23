@@ -40,9 +40,9 @@ type Employee = {
         CommonModule,
         MaterialModule,
         TranslateDirective,
-       
+
         ReactiveFormsModule,
-       
+
 
 
         ImageInputComponent
@@ -106,7 +106,7 @@ export class ElementsEntryDetailComponent extends BaseEntityDetailComponent<ELin
     }
 
     setSelectionMode(mode: number) {
-        this.infoSrv.selectionMode = mode === 2? 2 : 1;
+        this.infoSrv.selectionMode = mode;
         this.infoSrv.loadDataCols();
         this.load();
     }

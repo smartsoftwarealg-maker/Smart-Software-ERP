@@ -13,6 +13,7 @@ import { ElementsInfo, ElementsInfoService } from '@ss/remuneration/elementsinfo
 export class ElementsEntryService extends BaseEntityService<ELine> {
     readonly VARIABLE_MODE = 1;
     readonly FIXED_MODE = 2;
+    readonly INFO_MODE = 3;
     inputFilter: InputFilter[] = [];
     selectedInput = 5;
     selectionMode = 1;
@@ -49,11 +50,12 @@ export class ElementsEntryService extends BaseEntityService<ELine> {
     }
 
     loadDataCols(): ElementsInfo[] {
+        const infoMode = (this.selectionMode === this.INFO_MODE);
         const isFixed = (this.selectionMode === this.FIXED_MODE);
         const selection = this.inputFilter.find(e => e.id == this.selectedInput)?.selection || '';
 
         this.dataCols = this.elements
-            .filter(e => selection.indexOf(e.field) >= 0 && e.fixed == isFixed)
+            .filter(e => selection.indexOf(e.field) >= 0 && e.fixed == isFixed && !infoMode)
             .sort((a, b) => a.description?.localeCompare(b.description) || -1) || [];
         return this.dataCols;
     }
