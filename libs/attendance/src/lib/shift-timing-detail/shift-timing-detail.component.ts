@@ -1,22 +1,21 @@
-import { Component, inject, OnInit } from "@angular/core";
+import { Component, inject } from "@angular/core";
 import { FormBuilder, Validators, FormsModule, ReactiveFormsModule, UntypedFormGroup } from '@angular/forms';
 import { ShiftTimingService } from '../shift-timing.service';
-import { switchMap, tap } from 'rxjs/operators';
-import { map, Observable, of } from 'rxjs';
-import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
-import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { Timing } from '../attendance-api';
-import { SnackBarService } from '@ss/common/ui-shell';
 import { MatCard, MatCardHeader, MatCardContent } from '@angular/material/card';
 import { MatMiniFabButton } from '@angular/material/button';
 import { MatTooltip } from '@angular/material/tooltip';
-import { JsonPipe, NgIf } from '@angular/common';
 import { MatFormField, MatLabel, MatError } from '@angular/material/form-field';
 import { DatePickerComponent } from '@ss/common/ui-datepicker';
 import { TranslatePipe, TranslateDirective } from '@ss/common/ui-lang';
-import { MaterialModule } from '@ss/common/api-common';
+import {
+    dateTimeToStr,
+    dateTimeToTime,
+    isString,
+    MaterialModule,
+    strToDateTime
+} from '@ss/common/api-common';
 import { BaseChildEntityDetailComponent } from '@ss/common/ui-base-entity';
-import { LtmTestScheduleService } from '@ltm/ltm-api';
 
 @Component({
     selector: 'ss-shift-timing-detail',
@@ -62,8 +61,8 @@ export class ShiftTimingDetailComponent extends BaseChildEntityDetailComponent<T
         this.EMPTY_RECORD = {
             id:        0,
             parentId:  this.entitySrv.getParentId(),
-            from:      new Date(),
-            to:        new Date(),
+            from:      strToDateTime('08:00'),
+            to:        strToDateTime('16:00'),
             breakFrom: null,
             breakTo:   null
         }
@@ -111,10 +110,10 @@ export class ShiftTimingDetailComponent extends BaseChildEntityDetailComponent<T
         const form = this.fb.group({
             id:        [e.id],
             parentId:  [e.parentId||this.entitySrv.getParentId(), Validators.required],
-            from:      [e.from,                 Validators.required],
-            to:        [e.to,                   Validators.required],
-            breakFrom: [e.breakFrom],
-            breakTo:   [e.breakTo],
+            from:      [this.toDate(e.from),                 Validators.required],
+            to:        [this.toDate(e.to),                   Validators.required],
+            breakFrom: [this.toDate(e.breakFrom)],
+            breakTo:   [this.toDate(e.breakTo)],
             date:      [e.date]
         });
         if (e.id === 0) {
@@ -124,18 +123,27 @@ export class ShiftTimingDetailComponent extends BaseChildEntityDetailComponent<T
                     if (res.itemCount > 0) {
                         const tmg = res.body[0];
                         tmg.id = 0;
-                        form.controls.from.setValue(new Date(tmg.from));
-                        form.controls.to.setValue(new Date(tmg.to));
-                        form.controls.breakFrom.setValue(tmg.breakFrom? new Date(tmg.breakFrom): null);
-                        form.controls.breakTo.setValue(tmg.breakTo? new Date(tmg.breakTo): null);
+                        form.controls.from.setValue(tmg.from as unknown as string);
+                        form.controls.to.setValue(tmg.to as unknown as string);
+                        form.controls.breakFrom.setValue(tmg.breakFrom as unknown as string);
+                        form.controls.breakTo.setValue(tmg.breakTo as unknown as string);
                     }
                 });
         }
         return form;
     }
 
-    private toDate(str: any) {
-        return str === null? null : new Date('01-01-2023 ' + str.toString() + ':00.000Z');
+    private toDate(val: string | Date) {
+        if (val == null) {
+            return null;
+        }
+        let date: Date;
+        if (isString(val)) {
+            date = strToDateTime(val as string);
+        } else {
+            date = val as Date;
+        }
+        return dateTimeToStr(date);
     }
 
     // save() {
@@ -168,10 +176,10 @@ export class ShiftTimingDetailComponent extends BaseChildEntityDetailComponent<T
 
     override readForm(): Timing {
         const value = super.readForm();
-        value.from = this.toDate(value.from);
-        value.to = this.toDate(value.to);
-        value.breakFrom = this.toDate(value.breakFrom);
-        value.breakTo = this.toDate(value.breakTo);
+        value.from = this.toDate(value.from) as unknown as Date;
+        value.to = this.toDate(value.to) as unknown as Date;
+        value.breakFrom = this.toDate(value.breakFrom) as unknown as Date;
+        value.breakTo = this.toDate(value.breakTo) as unknown as Date;
         value.date = value.date||new Date();
         return value;
     }
