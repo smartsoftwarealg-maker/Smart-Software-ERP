@@ -39,7 +39,7 @@
         <ng-container matColumnDef="toOrder">
             <mat-header-cell *matHeaderCellDef translate>PROD_TO_ORDER</mat-header-cell>
             <mat-cell *matCellDef="let m">
-                {{ Math.max(m.qty - m.purchaseOrder - m.inventory,0)}}
+                {{ Math.max(m.qty - m.purchaseOrder - m.inventory,0).toFixed(2) }}
             </mat-cell>
         </ng-container>
 
