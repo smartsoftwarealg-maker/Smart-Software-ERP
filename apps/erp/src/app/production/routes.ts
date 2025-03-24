@@ -4,14 +4,24 @@ import {
     LIST_URL,
     CanDeactivateService,
 } from '@ss/common/api-common';
-import { docInfoRoutes } from '../common';
+import {
+    docInfoRoutes,
+    PRODUCTION_ORDER_URL,
+    PRODUCTIONS_URL,
+} from '../common';
 import {
     ProductionOrderDetailComponent,
     ProductionOrderLinesDetailComponent,
     ProductionOrderLinesListComponent,
     ProductionOrderListComponent,
 } from '@ss/production/production-order';
-import { PRODUCTION_ORDER_URL } from '../common';
+
+import {
+    ProductionDetailComponent,
+    ProductionLinesDetailComponent,
+    ProductionLinesListComponent,
+    ProductionListComponent,
+} from '@ss/production/production';
 import { loginGuard } from '../erp-guards';
 
 export const prodRoutes: Routes = [
@@ -42,6 +52,43 @@ export const prodRoutes: Routes = [
                             {
                                 path: ':id',
                                 component: ProductionOrderLinesDetailComponent,
+                            },
+                        ],
+                    },
+                    ...docInfoRoutes,
+                ],
+            },
+            { path: '', redirectTo: LIST_URL, pathMatch: 'full' },
+            { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' },
+        ],
+    },
+    {
+        path: PRODUCTIONS_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: ProductionListComponent,
+                canActivate: [loginGuard],
+                children: docInfoRoutes,
+            },
+            {
+                path: ':id',
+                component: ProductionDetailComponent,
+                canActivate: [loginGuard],
+                canDeactivate: [CanDeactivateService],
+                children: [
+                    { path: '', pathMatch: 'full', redirectTo: 'lines-list' },
+                    {
+                        path: 'lines-list',
+                        component: ProductionLinesListComponent,
+                        children: docInfoRoutes,
+                    },
+                    {
+                        path: 'lines-detail',
+                        children: [
+                            {
+                                path: ':id',
+                                component: ProductionLinesDetailComponent,
                             },
                         ],
                     },

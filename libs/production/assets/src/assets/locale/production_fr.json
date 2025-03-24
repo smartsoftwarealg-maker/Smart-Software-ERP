@@ -1,5 +1,6 @@
 {
     "PRODUCTION":            "Ordres de production",
+    "PRODUCTIONS":           "Productions",
     "PRODUCTION_ORDERS":     "Production",
     "PRODUCTION_ORDER":      "Ordre de production",
     "PRODUCTION_MRP":        "Production MRP"
