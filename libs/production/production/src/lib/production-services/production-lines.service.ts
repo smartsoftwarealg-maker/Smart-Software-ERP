@@ -8,6 +8,6 @@ import {TransactionLinesClass} from '@ss/logistics/api-transaction';
 export class ProductionLinesService extends TransactionLinesClass {
 
     constructor(protected override httpSrv: HttpService) {
-        super(httpSrv,  '/detail', '/production');
+        super(httpSrv,  '/detail', '/production/production');
     }
 }
