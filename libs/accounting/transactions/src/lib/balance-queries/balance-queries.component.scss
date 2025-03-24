@@ -34,7 +34,6 @@ form {
     border-right: white solid 1px;
 }
 
-
 .mat-column-journal,
 .mat-column-pieceNo,
 .mat-column-checkNo,
@@ -46,7 +45,8 @@ form {
     padding-left: 4px;
 }
 
-.mat-column-description {
+.mat-column-description,
+.mat-column-denomination {
     flex: 2 1 150px;
     border-left: white solid 1px;
     padding-left: 4px;

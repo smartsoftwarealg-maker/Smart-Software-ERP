@@ -35,7 +35,8 @@ import { LeavePlanningCalculatorComponent } from '@ss/remuneration/vacation-plan
         ImageInputComponent,
         TranslatePipe,
         PaginationComponent,
-        UiAutoCompleteComponent
+        UiAutoCompleteComponent,
+        LeavePlanningCalculatorComponent
     ]
 
 })

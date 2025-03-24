@@ -2,12 +2,14 @@
     <mat-card class="size">
         <mat-card-content>
             <form [formGroup]="form">
-                <mat-form-field id="code">
+                <mat-form-field >
+                    <mat-label translate>COMMON_ACCOUNTNO</mat-label>
+                    <input matInput formControlName="accountNo" type="text" autofocus maxlength="20">
+                </mat-form-field>
+
+                <mat-form-field>
                     <mat-label translate>COMMON_SEARCH</mat-label>
                     <input matInput formControlName="filter" type="text" autofocus maxlength="20">
-                    @if (form.controls['filter'].invalid) {
-                        <mat-error translate>COMMON_REQUIRED</mat-error>
-                    }
                 </mat-form-field>
 
                 <mat-form-field>
@@ -63,6 +65,13 @@
                     <mat-header-cell *matHeaderCellDef mat-sort-header translate>LOGISTICS_CUSTOMER</mat-header-cell>
                     <mat-cell *matCellDef="let e">
                         {{ e.customer }}
+                    </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="denomination">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header translate>LOGISTICS_DENOMINATION</mat-header-cell>
+                    <mat-cell *matCellDef="let e">
+                        {{ e.denomination }}
                     </mat-cell>
                 </ng-container>
 
@@ -180,6 +189,20 @@
                     <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_CHECKNO</mat-header-cell>
                     <mat-cell *matCellDef="let e">
                         {{ e.checkNo }}
+                    </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="customer">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header translate>LOGISTICS_CUSTOMER</mat-header-cell>
+                    <mat-cell *matCellDef="let e">
+                        {{ e.customer }}
+                    </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="denomination">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header translate>LOGISTICS_DENOMINATION</mat-header-cell>
+                    <mat-cell *matCellDef="let e">
+                        {{ e.denomination }}
                     </mat-cell>
                 </ng-container>
 

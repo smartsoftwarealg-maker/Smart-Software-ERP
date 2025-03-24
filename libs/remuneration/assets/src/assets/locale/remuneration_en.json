@@ -81,5 +81,8 @@
     "VACATION_DAYS":     "Vacation days",
     "PERSONAL_ROLE":     "Role of personal information",
     "PAYROLL_ROLE":      "Role of payroll data",
-    "IEP_FORMULA":       "Formula of Professional experience allowance"
+    "IEP_FORMULA":       "Formula of Professional experience allowance",
+    "LEAVE_CALCULATOR":  "Leave calculator",
+    "EARNED":             "Earned",
+    "TO_TAKE":            "To take"
 }

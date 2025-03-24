@@ -50,7 +50,51 @@
 @if (form !== null) {
     <form class="size_div" [formGroup]="form">
         @if (infoSrv.selectionMode === 3) {
-            <h1>info</h1>
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate><span translate>REMUN_FUND1</span>1</mat-label>
+                <ss-auto-complete matInput
+                                  [model]="fund1Lookup"
+                                  formControlName="fund1"
+                                  required="true">
+                </ss-auto-complete>
+            </mat-form-field>
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate><span translate>REMUN_FUND</span>2</mat-label>
+                <ss-auto-complete matInput
+                                  [model]="fund2Lookup"
+                                  formControlName="fund2"
+                                  required="true">
+                </ss-auto-complete>
+            </mat-form-field>
+
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>REMUN_PAY_MODE</mat-label>
+                <ss-auto-complete matInput
+                                  [model]="payModeLookup"
+                                  formControlName="payMode">
+                </ss-auto-complete>
+            </mat-form-field>
+
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>COMMON_BANK</mat-label>
+                <ss-auto-complete matInput
+                                  [model]="bankLookup"
+                                  formControlName="bank">
+                </ss-auto-complete>
+            </mat-form-field>
+
+            <mat-form-field id="accountNo" class="default-50 sm-100">
+                <mat-label translate>LOGISTICS_ACCOUNT_NO</mat-label>
+                <input matInput formControlName="accountNo" type="text">
+            </mat-form-field>
+
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>COMMON_MARITAL_STATUS</mat-label>
+                <ss-auto-complete matInput
+                                  [model]="maritalStatusLookup"
+                                  formControlName="maritalStatus">
+                </ss-auto-complete>
+            </mat-form-field>
         } @else {
             <div formGroupName="elements" class="elements">
                 <mat-form-field *ngFor="let g of elementsForm.controls; let i = index">

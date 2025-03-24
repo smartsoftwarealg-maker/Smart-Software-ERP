@@ -58,7 +58,8 @@ import { map } from 'rxjs/operators';
         MatTable,
         MatHeaderCellDef,
         MatProgressSpinner,
-        TranslatePipe
+        TranslatePipe,
+        TranslateDirective
     ]
 })
 export class LeavePlanningCalculatorComponent {

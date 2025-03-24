@@ -79,5 +79,8 @@
     "VACATION_DAYS":     "أيام الإجازة",
     "PERSONAL_ROLE":     "دور المعلومات الشخصية",
     "PAYROLL_ROLE":      "دور بيانات الرواتب",
-    "IEP_FORMULA":       "صيغة منحة الخبرة المهنية"
+    "IEP_FORMULA":       "صيغة منحة الخبرة المهنية",
+    "LEAVE_CALCULATOR": "محاسبة العطلة",
+    "EARNED": "مكتسب",
+    "TO_TAKE": "المأخوذ"
 }

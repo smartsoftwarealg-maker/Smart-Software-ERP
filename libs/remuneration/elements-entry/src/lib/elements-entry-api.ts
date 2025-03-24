@@ -22,6 +22,13 @@ export interface ELine {
     elements: number[];
     cols?: string;
     imageModel?: ImageModel;
+    fund1?: number;
+    fund2?: number;
+    bank?: number;
+    payMode?: number;
+    accountNo?: string;
+    maritalStatus?: number;
+    eId?: number;
 }
 
 export interface MJournal {
