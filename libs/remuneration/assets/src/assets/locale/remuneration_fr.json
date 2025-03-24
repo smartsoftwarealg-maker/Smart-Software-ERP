@@ -82,5 +82,8 @@
     "VACATION_DAYS":     "Jours de vacances",
     "PERSONAL_ROLE":     "Rôle des informations personnelles",
     "PAYROLL_ROLE":      "Rôle des données de paie",
-    "IEP_FORMULA":       "Formule IEP"
+    "IEP_FORMULA":       "Formule IEP",
+    "LEAVE_CALCULATOR":  "Calculatrice de conges",
+    "EARNED":            "Gagné",
+    "TO_TAKE":           "A prendre"
 }

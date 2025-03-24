@@ -101,14 +101,14 @@
             </ng-container>
 
             <ng-container matColumnDef="earned">
-                <mat-header-cell *matHeaderCellDef translate>PAYROLL_EARNED</mat-header-cell>
+                <mat-header-cell *matHeaderCellDef ><span translate>REMUN_BASE</span> 1</mat-header-cell>
                 <mat-cell *matCellDef="let e">
                     {{ e.earned | number: '1.2-2' }}
                 </mat-cell>
             </ng-container>
 
             <ng-container matColumnDef="earned2">
-                <mat-header-cell *matHeaderCellDef translate>PAYROLL_EARNED</mat-header-cell>
+                <mat-header-cell *matHeaderCellDef ><span translate>REMUN_BASE</span> 2</mat-header-cell>
                 2
                 <mat-cell *matCellDef="let e">
                     {{ e.earned2 | number: '1.2-2' }}
@@ -116,7 +116,7 @@
             </ng-container>
 
             <ng-container matColumnDef="earned3">
-                <mat-header-cell *matHeaderCellDef translate>PAYROLL_EARNED</mat-header-cell>
+                <mat-header-cell *matHeaderCellDef ><span translate>REMUN_BASE</span> 3</mat-header-cell>
                 3
                 <mat-cell *matCellDef="let e">
                     {{ e.earned3 | number: '1.2-2' }}
@@ -124,14 +124,14 @@
             </ng-container>
 
             <ng-container matColumnDef="taken">
-                <mat-header-cell *matHeaderCellDef translate>PAYROLL_EARNED</mat-header-cell>
+                <mat-header-cell *matHeaderCellDef ><span translate>REMUN_EARNED</span> 1</mat-header-cell>
                 <mat-cell *matCellDef="let e">
                     {{ e.taken | number: '1.2-2' }}
                 </mat-cell>
             </ng-container>
 
             <ng-container matColumnDef="taken2">
-                <mat-header-cell *matHeaderCellDef translate>PAYROLL_EARNED</mat-header-cell>
+                <mat-header-cell *matHeaderCellDef ><span translate>REMUN_EARNED</span> 2</mat-header-cell>
                 2
                 <mat-cell *matCellDef="let e">
                     {{ e.taken2 | number: '1.2-2' }}
@@ -139,7 +139,7 @@
             </ng-container>
 
             <ng-container matColumnDef="taken3">
-                <mat-header-cell *matHeaderCellDef translate>PAYROLL_EARNED</mat-header-cell>
+                <mat-header-cell *matHeaderCellDef><span translate>REMUN_EARNED</span> 3</mat-header-cell>
                 3
                 <mat-cell *matCellDef="let e">
                     {{ e.taken3 | number: '1.2-2' }}
@@ -147,7 +147,7 @@
             </ng-container>
 
             <ng-container matColumnDef="rest">
-                <mat-header-cell *matHeaderCellDef translate>COMMON_REST</mat-header-cell>
+                <mat-header-cell *matHeaderCellDef translate>REMUN_REST</mat-header-cell>
                 <mat-cell *matCellDef="let e">
                     {{ e.rest | number: '1.0-2' }}
                 </mat-cell>
@@ -162,7 +162,7 @@
 
 
             <ng-container matColumnDef="toTake">
-                <mat-header-cell *matHeaderCellDef translate>PAYROLL_TO_TAKE</mat-header-cell>
+                <mat-header-cell *matHeaderCellDef translate>REMUN_TO_TAKE</mat-header-cell>
                 <mat-cell *matCellDef="let e">
                     {{ e.toTake | number: '1.0-2' }}
                 </mat-cell>

@@ -43,6 +43,7 @@ export class BalanceQueriesComponent implements OnInit {
         'accountNo',
         'description',
         'customer',
+        'denomination',
         'oldDebit',
         'oldCredit',
         'curDebit',
@@ -59,6 +60,8 @@ export class BalanceQueriesComponent implements OnInit {
         'journal',
         'reference',
         'checkNo',
+        'customer',
+        'denomination',
         'debit',
         'credit'
     ];
@@ -76,9 +79,10 @@ export class BalanceQueriesComponent implements OnInit {
 
     ngOnInit(): void {
         this.form = this.fb.group({
-            filter: [''],
-            from:   [1, [Validators.required, Validators.min(1), Validators.max(12)]],
-            to:     [12, [Validators.required, Validators.min(1), Validators.max(12)]],
+            accountNo: [''],
+            filter:    [''],
+            from:      [1, [Validators.required, Validators.min(1), Validators.max(12)]],
+            to:        [12, [Validators.required, Validators.min(1), Validators.max(12)]],
             consolidated: [false, Validators.required]
         });
         this.shellSrv.setGoBackPath('..', this.route);
@@ -92,6 +96,7 @@ export class BalanceQueriesComponent implements OnInit {
     private getParams(): HttpParams {
         const formValue = this.form.value;
         return new HttpParams()
+            .set('account', formValue.accountNo.trim())
             .set('filter', formValue.filter.trim())
             .set('from', formValue.from)
             .set('to', formValue.to)

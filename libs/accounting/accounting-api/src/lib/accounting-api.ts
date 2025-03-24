@@ -235,6 +235,8 @@ export interface GL {
     journal: string;
     reference?: string;
     checkNo?: string;
+    customer?:   string;
+    denomination?: string;
     debit: number;
     credit: number;
 }
@@ -243,6 +245,7 @@ export interface Balance {
     accountNo:   string;
     description: string;
     customer?:   string;
+    denomination?: string;
     oldDebit:    number;
     oldCredit:   number;
     curDebit:    number;
