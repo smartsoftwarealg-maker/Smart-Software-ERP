@@ -9,6 +9,7 @@ import {
     PRODUCTION_ORDER_URL,
     PRODUCTIONS_URL,
 } from '../common';
+import { docInfoRoutes, PRODUCTION_MRP_URL } from '../common';
 import {
     ProductionOrderDetailComponent,
     ProductionOrderLinesDetailComponent,
@@ -23,8 +24,14 @@ import {
     ProductionListComponent,
 } from '@ss/production/production';
 import { loginGuard } from '../erp-guards';
+import { componentConfigurationGenerator } from '@nx/cypress';
+import { MrpComponent } from '@ss/production/mrp';
 
 export const prodRoutes: Routes = [
+    {
+        path:PRODUCTION_MRP_URL,
+        component: MrpComponent,
+    },
     {
         path: PRODUCTION_ORDER_URL,
         children: [
@@ -34,6 +41,7 @@ export const prodRoutes: Routes = [
                 canActivate: [loginGuard],
                 children: docInfoRoutes,
             },
+
             {
                 path: ':id',
                 component: ProductionOrderDetailComponent,
