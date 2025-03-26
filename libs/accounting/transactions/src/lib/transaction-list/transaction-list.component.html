@@ -35,35 +35,35 @@
                 <mat-table mat-table [dataSource]="data" class="main-table" matSort (matSortChange)="sort($event)" >
 
                     <ng-container matColumnDef="pieceNo">
-                        <mat-header-cell *matHeaderCellDef translate>COMMON_NO_</mat-header-cell>
+                        <mat-header-cell *matHeaderCellDef mat-sort-header [disabled]="!isRoot()" translate>COMMON_NO_</mat-header-cell>
                         <mat-cell *matCellDef="let e" [class.f-warn]="math.abs(e.debit - e.credit) > 0.01">
                             {{ e.pieceNo }}
                         </mat-cell>
                     </ng-container>
 
                     <ng-container matColumnDef="projectName">
-                        <mat-header-cell *matHeaderCellDef translate>COMMON_PROJECT</mat-header-cell>
+                        <mat-header-cell *matHeaderCellDef mat-sort-header [disabled]="!isRoot()" translate>COMMON_PROJECT</mat-header-cell>
                         <mat-cell *matCellDef="let e" [class.f-warn]="math.abs(e.debit - e.credit) > 0.01">
                             {{ e.projectName }}
                         </mat-cell>
                     </ng-container>
 
                     <ng-container matColumnDef="pieceDate">
-                        <mat-header-cell *matHeaderCellDef translate>COMMON_DATE</mat-header-cell>
+                        <mat-header-cell *matHeaderCellDef mat-sort-header [disabled]="!isRoot()" translate>COMMON_DATE</mat-header-cell>
                         <mat-cell *matCellDef="let e" [class.f-warn]="math.abs(e.debit - e.credit) > 0.01">
                             {{ e.pieceDate | date: 'dd/MM/yyyy' }}
                         </mat-cell>
                     </ng-container>
 
                     <ng-container matColumnDef="debit">
-                        <mat-header-cell *matHeaderCellDef translate>ACC_DEBIT</mat-header-cell>
+                        <mat-header-cell *matHeaderCellDef mat-sort-header [disabled]="!isRoot()" translate>ACC_DEBIT</mat-header-cell>
                         <mat-cell *matCellDef="let e" [class.f-warn]="math.abs(e.debit - e.credit) > 0.01">
                             {{ e.debit | number: '1.2-2' }}
                         </mat-cell>
                     </ng-container>
 
                     <ng-container matColumnDef="credit">
-                        <mat-header-cell *matHeaderCellDef translate>ACC_CREDIT</mat-header-cell>
+                        <mat-header-cell *matHeaderCellDef mat-sort-header [disabled]="!isRoot()" translate>ACC_CREDIT</mat-header-cell>
                         <mat-cell *matCellDef="let e" [class.f-warn]="math.abs(e.debit - e.credit) > 0.01">
                             {{ e.credit | number: '1.2-2' }}
                         </mat-cell>

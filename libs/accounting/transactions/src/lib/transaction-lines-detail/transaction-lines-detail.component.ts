@@ -30,8 +30,6 @@ import {CostCenterService} from '@ss/logistics/api-cost-center';
 import { CommonModule } from "@angular/common";
 
 
-
-import { DatePickerComponent } from "@ss/common/ui-datepicker";
 import { TranslateDirective } from '@ss/common/ui-lang';
 
 
@@ -245,6 +243,7 @@ export class TransactionLinesDetailComponent implements OnInit {
                     this.form.markAsUntouched();
                     this.snackBarSrv.showSuccessMessage();
                     // this.shellSrv.goBack();
+                    this.entitySrv.updateStatus();
                     this.cancel();
                 },
                 error: err => {

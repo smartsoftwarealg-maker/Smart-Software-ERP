@@ -1,4 +1,4 @@
-import {Component, ViewChild} from '@angular/core';
+import { Component, DestroyRef, inject, ViewChild } from '@angular/core';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {
     AnnexCode,
@@ -11,36 +11,54 @@ import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import {LoginService, PaginatorPersistenceService} from '@ss/common/api-common';
-import {switchMap, tap} from 'rxjs';
-import { UntypedFormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { LoginService, MaterialModule, PaginatorPersistenceService } from '@ss/common/api-common';
+import { debounceTime, switchMap, tap } from 'rxjs';
+import { UntypedFormControl, FormsModule, ReactiveFormsModule, FormControl } from '@angular/forms';
 import {CashFlowAccountListComponent} from '../cash-flow-account-list/cash-flow-account-list.component';
 import { MatList, MatListItem } from '@angular/material/list';
 import { NgFor, DecimalPipe } from '@angular/common';
 import { MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from '@angular/material/table';
-import { MatSort } from '@angular/material/sort';
+import { MatSort, Sort } from '@angular/material/sort';
 import { TranslateDirective } from '@ss/common/ui-lang';
 import { MatIconButton, MatButton } from '@angular/material/button';
 import { MatFormField, MatLabel } from '@angular/material/form-field';
 import { MatInput } from '@angular/material/input';
 import { MatCheckbox } from '@angular/material/checkbox';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { distinctUntilChanged } from 'rxjs/operators';
+import { callback } from 'chart.js/helpers';
 
 @Component({
     selector: 'ss-cashflow-accounts-list',
     templateUrl: './cash-flow-list.component.html',
     styleUrls: ['./cash-flow-list.component.scss'],
     standalone: true,
-    imports: [MatList, NgFor, MatListItem, MatTable, MatSort, MatColumnDef, MatHeaderCellDef, MatHeaderCell, TranslateDirective, MatCellDef, MatCell, MatIconButton, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, CashFlowAccountListComponent, MatFormField, MatLabel, MatInput, FormsModule, ReactiveFormsModule, MatCheckbox, MatButton, DecimalPipe]
+    imports: [
+        MaterialModule,
+        CashFlowAccountListComponent,
+        MatFormField,
+        MatLabel,
+        MatInput,
+        FormsModule,
+        ReactiveFormsModule,
+        MatCheckbox,
+        MatButton,
+        TranslateDirective,
+        DecimalPipe
+    ]
 })
 export class CashFlowListComponent extends BaseEntityListComponent<AnnexCode> {
+    #destroyRef = inject(DestroyRef);
     @ViewChild(CashFlowAccountListComponent) accountList: CashFlowAccountListComponent;
+
     selectedId = 0;
     selectedCode = '';
     pendingData: PendingTreasury[] = [];
     infoData: TreasuryInfo = { total: 0, located: 0, nonLocated: 0 };
     pendingColumns = ['add', 'accountNo', 'description', 'debit', 'credit'];
 
-    totalDB = new UntypedFormControl();
+    itemSearch = new FormControl<string>('');
+    totalDB = new FormControl();
     locatedDB = new UntypedFormControl();
     nonLocatedDB = new UntypedFormControl();
 
@@ -49,6 +67,7 @@ export class CashFlowListComponent extends BaseEntityListComponent<AnnexCode> {
     nonLocatedCR = new UntypedFormControl();
 
     consolidated = new UntypedFormControl();
+    filteredData: AnnexCode[] = [];
 
     constructor(
         public override entitySrv: AnnexCodeService,
@@ -77,6 +96,14 @@ export class CashFlowListComponent extends BaseEntityListComponent<AnnexCode> {
         this.deleteButton.visible = false;
         this.addButton.visible = false;
         this.editButton.visible = false;
+        this.itemSearch
+            .valueChanges
+            .pipe(
+                debounceTime(300),
+                distinctUntilChanged(),
+                takeUntilDestroyed(this.#destroyRef)
+            )
+            .subscribe(res => this.filteredData = this.data.filter(e => res === '' || e.code.toLowerCase().indexOf(res) >= 0 || e.description?.toLowerCase().indexOf(res) >= 0));
         super.ngOnInit();
     }
 
@@ -98,13 +125,25 @@ export class CashFlowListComponent extends BaseEntityListComponent<AnnexCode> {
                     this.nonLocatedDB.setValue(res.nonLocated > 0 ? res.nonLocated.toLocaleString() : 0);
                     this.nonLocatedCR.setValue(res.nonLocated > 0 ? 0 : (-res.nonLocated).toLocaleString());
                 }),
-                switchMap(_ => this.cashFlowSrv.pending('', false)))
+                switchMap(_ => this.cashFlowSrv.pending('', false, null)))
             .subscribe({
                 next: res => {
                     this.pendingData = res;
                     this.shellSrv.setLoading(false);
                 },
                 error: err => this.shellSrv.setLoading(false)
+            });
+    }
+
+    refreshPendingAccounts(event: Sort) {
+        console.log('refresh pending')
+        this.shellSrv.setLoading(true)
+        const order = event.active? (event.direction === 'desc' ? '-' : '') + event.active : null;
+        this.cashFlowSrv
+            .pending('', this.consolidated.value === true, order)
+            .subscribe(res => {
+                this.pendingData = res;
+                this.shellSrv.setLoading(false);
             });
     }
 
@@ -127,5 +166,9 @@ export class CashFlowListComponent extends BaseEntityListComponent<AnnexCode> {
                     }
                 })
         }
+    }
+
+    override refresh(callback?: () => void) {
+        super.refresh(() => this.filteredData = this.data);
     }
 }

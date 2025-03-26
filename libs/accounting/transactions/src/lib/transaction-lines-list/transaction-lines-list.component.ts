@@ -35,12 +35,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         TranslateDirective,
         TranslatePipe,
         ReactiveFormsModule,
-
-
-       
         PaginationComponent
-
-
     ]
 })
 export class TransactionLinesListComponent implements OnInit {
@@ -129,6 +124,7 @@ export class TransactionLinesListComponent implements OnInit {
                     this.snackBarSrv.showSuccessMessage();
                     this.selected = null;
                 }
+                this.entitySrv.updateStatus();
             });
 
     }

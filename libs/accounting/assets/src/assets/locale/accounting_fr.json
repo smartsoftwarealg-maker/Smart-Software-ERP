@@ -78,6 +78,7 @@
     "EXEMPTION":                "Exemption",
     "TAX_RATE":                 "Taux de taxe",
     "SALES_INJECTION":          "Injection vente",
-    "CONSOLIDATION_CENTERS":    "Centres de consolidation"
+    "CONSOLIDATION_CENTERS":    "Centres de consolidation",
+    "CUSTOMER_CODE_REQUIRED":   "Code client requis"
 }
 

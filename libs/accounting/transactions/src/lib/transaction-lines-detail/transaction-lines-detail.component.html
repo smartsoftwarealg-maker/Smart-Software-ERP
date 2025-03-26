@@ -81,14 +81,15 @@
                                           [model]="ccLookupModel"
                                           formControlName="costCenterId">
                         </ss-auto-complete>
-                        <mat-error *ngIf="form.controls['costCenterId'].invalid" translate>COMMON_FIELD_REQUIRED
-                        </mat-error>
+                        @if (form.controls['costCenterId'].invalid) {
+                            <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+                        }
                     </mat-form-field>
                 }
 
                 <mat-form-field class="default-50">
                     <mat-label translate>ACC_POS</mat-label>
-                    <input matInput formControlName="lineNumber" type="number" readonly>
+                    <input matInput formControlName="lineNumber" type="number">
                 </mat-form-field>
             </form>
         }

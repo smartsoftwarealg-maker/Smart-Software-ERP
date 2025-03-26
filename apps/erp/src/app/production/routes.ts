@@ -4,12 +4,7 @@ import {
     LIST_URL,
     CanDeactivateService,
 } from '@ss/common/api-common';
-import {
-    docInfoRoutes,
-    PRODUCTION_ORDER_URL,
-    PRODUCTIONS_URL,
-} from '../common';
-import { docInfoRoutes, PRODUCTION_MRP_URL } from '../common';
+import { docInfoRoutes, PRODUCTION_ORDER_URL, PRODUCTIONS_URL,PRODUCTION_MRP_URL } from '../common';
 import {
     ProductionOrderDetailComponent,
     ProductionOrderLinesDetailComponent,
@@ -24,7 +19,6 @@ import {
     ProductionListComponent,
 } from '@ss/production/production';
 import { loginGuard } from '../erp-guards';
-import { componentConfigurationGenerator } from '@nx/cypress';
 import { MrpComponent } from '@ss/production/mrp';
 
 export const prodRoutes: Routes = [

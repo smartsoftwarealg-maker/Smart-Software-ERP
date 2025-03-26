@@ -13,9 +13,10 @@ export class CashFlowAccountService extends BaseEntityService<CashFlowAcc> {
         super(httpSrv, CASH_FLOW_ACCOUNTS_URL, ACC_ACC_FILE_URL);
     }
 
-    pending(filter: string, consolidated: boolean): Observable<PendingTreasury[]> {
+    pending(filter: string, consolidated: boolean, sort: string|null): Observable<PendingTreasury[]> {
         const params = new HttpParams()
             .set('filter', filter)
+            .set('sort', sort||'accountNo')
             .set('consolidated', consolidated);
         return this.httpSrv.get<PendingTreasury[]>(`/accounting/pending-treasury`, params);
     }

@@ -353,7 +353,6 @@ export class BaseEntityListComponent<T extends { id: number, email?: string }> i
     }
 
     sort(event: Sort) {
-        // console.log(event);
         this.entitySrv.sortColumn = event;
         this.refresh();
     }
