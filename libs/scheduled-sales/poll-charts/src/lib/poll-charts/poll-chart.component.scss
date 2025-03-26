@@ -1,0 +1,27 @@
+.container__div {
+    display: flex;
+    flex-wrap: wrap;
+    width: 96%;
+    max-width: 1200px;
+    margin: 1em auto;
+    gap: 1em;
+    justify-content: space-around;
+}
+
+.chart__div {
+    flex: 1 1 20%;
+}
+
+.chart {
+    height: 100%;
+    font-size: 5px;
+}
+
+mat-card {
+    padding: 8px;
+    border-radius: 1.4em;
+}
+
+canvas {
+    font-size: 3em;
+}

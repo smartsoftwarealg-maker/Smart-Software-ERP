@@ -19,7 +19,7 @@ import {
     ABS_SALES_COMPENSATIONS_URL,
     ABS_PAYMENT_COMPENSATIONS_URL,
     ABS_SALES_INVOICE_VALIDATION_URL,
-    ABS_SCHEDULED_SALES_POLL_URL, ABS_SCHEDULED_POLL_QUESTION_URL
+    ABS_SCHEDULED_SALES_POLL_URL, ABS_SCHEDULED_POLL_QUESTION_URL, ABS_SCHEDULED_POLL_CHARTS_URL
 } from '../common';
 import {SideNavNode} from '@ss/common/api-common';
 
@@ -178,6 +178,12 @@ export const scheduledSalesNavTree: SideNavNode = {
             icon: 'fa-solid fa-file-chart-column',
             route: ABS_SCHEDULED_SALES_REPORTS_URL,
             accessRights: 'Report'
+        },
+        {
+            name: 'SCH_POLL_CHARTS',
+            icon: 'fa-solid fa-chart-pie-simple',
+            route: ABS_SCHEDULED_POLL_CHARTS_URL,
+            accessRights: 'PollQuestion'
         },
     ],
     accessRights: 'SCHEDULED_SALES',

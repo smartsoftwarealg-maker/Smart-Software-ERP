@@ -324,8 +324,9 @@ export const SS_TRUCKS_URL               = 'supplier-trucks';
 export const SERVICE_ORDER_URL           = 'service-order';
 export const INVOICE_DUPLICATE_URL       = 'service-duplicate';
 export const PASSWORD_RESET_URL          = 'password-reset';
-export const SS_SALES_POLL_URL              = 'sales-poll';
-export const SS_POLL_QUESTION_URL              = 'question-poll';
+export const SS_SALES_POLL_URL           = 'sales-poll';
+export const SS_POLL_QUESTION_URL        = 'question-poll';
+export const SS_POLL_CHARTS_URL          = 'poll-charts';
 
 
 // Missions
@@ -671,7 +672,7 @@ export const ABS_PAYMENT_COMPENSATIONS_URL = '/' + [MAIN_PAGE_URL, SCHEDULED_SAL
 export const ABS_SALES_INVOICE_VALIDATION_URL = '/' + [MAIN_PAGE_URL, SCHEDULED_SALES_APP_URL, SALES_INVOICE_VALIDATION_URL].join('/');
 export const ABS_SCHEDULED_SALES_POLL_URL = '/' + [MAIN_PAGE_URL, SCHEDULED_SALES_APP_URL, SS_SALES_POLL_URL].join('/');
 export const ABS_SCHEDULED_POLL_QUESTION_URL = '/' + [MAIN_PAGE_URL, SCHEDULED_SALES_APP_URL, SS_POLL_QUESTION_URL].join('/');
-
+export const ABS_SCHEDULED_POLL_CHARTS_URL = '/' + [MAIN_PAGE_URL, SCHEDULED_SALES_APP_URL, SS_POLL_CHARTS_URL].join('/');
 
 
 //Finance

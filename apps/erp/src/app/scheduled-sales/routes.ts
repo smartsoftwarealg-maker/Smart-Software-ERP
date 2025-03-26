@@ -1,7 +1,10 @@
 import {
-    ABS_INDEX_URL, CanDeactivateService, CustomerCanActivateService, LIST_URL
+    ABS_INDEX_URL,
+    CanDeactivateService,
+    CustomerCanActivateService,
+    LIST_URL,
 } from '@ss/common/api-common';
-import {Routes} from '@angular/router';
+import { Routes } from '@angular/router';
 import {
     LOGISTICS_ACTIVITY_URL,
     SS_SALES_MODE_URL,
@@ -25,68 +28,96 @@ import {
     SALES_INVOICE_VALIDATION_URL,
     SS_POLL_QUESTION_URL,
     SS_SALES_POLL_URL,
+    SS_POLL_CHARTS_URL,
 } from '../common';
-import {ProjectListComponent, ProjectDetailComponent} from '@ss/scheduled-sales/projects';
-import {ArticleDetailComponent, ArticleListComponent} from '@ss/scheduled-sales/article';
+import {
+    ProjectListComponent,
+    ProjectDetailComponent,
+} from '@ss/scheduled-sales/projects';
+import {
+    ArticleDetailComponent,
+    ArticleListComponent,
+} from '@ss/scheduled-sales/article';
 import {
     PartnerScheduleDetailComponent,
     SalesModeDetailComponent,
     SalesModeListComponent,
     SalesQuotaDetailComponent,
-    SalesQuotaListComponent, SalesScheduleDetailComponent,
-    SalesScheduleListComponent
+    SalesQuotaListComponent,
+    SalesScheduleDetailComponent,
+    SalesScheduleListComponent,
 } from '@ss/scheduled-sales/sales-quota';
 import {
     ActivityDetailComponent,
     ActivityListComponent,
     DiscountDetailComponent,
-    DiscountListComponent, SalesCategoryDetailComponent, SalesCategoryListComponent,
+    DiscountListComponent,
+    SalesCategoryDetailComponent,
+    SalesCategoryListComponent,
     VatDetailComponent,
-    VatListComponent
+    VatListComponent,
 } from '@ss/common/ui-lookup';
-import {SupplierTrucksDetailComponent, SupplierTrucksListComponent} from '@ss/scheduled-sales/supplier-trucks';
+import {
+    SupplierTrucksDetailComponent,
+    SupplierTrucksListComponent,
+} from '@ss/scheduled-sales/supplier-trucks';
 import { loginGuard, ssProjectGuard } from '../erp-guards';
 import {
     AgentDetailComponent,
     AgentListComponent,
     AppArchiveDetailComponent,
-    AppArchiveListComponent
+    AppArchiveListComponent,
 } from '@ss/logistics/ui-agent';
 import { AGENT_ARCHIVES } from '@ss/common/app-archive';
-import { PayMethodDetailComponent, PayMethodListComponent } from '@ss/logistics/ui-pay-method';
+import {
+    PayMethodDetailComponent,
+    PayMethodListComponent,
+} from '@ss/logistics/ui-pay-method';
 import { DashboardComponent } from '@ss/dashboard';
-import { CustomerComplaintsDetailComponent, CustomerComplaintsListComponent } from '@customer-complaints-list';
-import { SalesPollDetailComponent, SalesPollListComponent, PollQuestionDetailComponent, PollQuestionsListComponent } from '@ss/scheduleds-sales/polls';
+import {
+    CustomerComplaintsDetailComponent,
+    CustomerComplaintsListComponent,
+} from '@customer-complaints-list';
+import {
+    SalesPollDetailComponent,
+    SalesPollListComponent,
+    PollQuestionDetailComponent,
+    PollQuestionsListComponent,
+} from '@ss/scheduleds-sales/polls';
 import { ReportViewComponent } from '@ss/common/ui-report-param';
 import { PasswordResetComponent } from '@ss/scheduled-sales/password-reset';
-import { PaymentCompensationListComponent, DebtsComponent } from '@ss/scheduled-sales/compensations';
 import {
-    SalesCompensationListComponent
+    PaymentCompensationListComponent,
+    DebtsComponent,
 } from '@ss/scheduled-sales/compensations';
-import {
-    SalesCompensationDetailComponent
-} from '@ss/scheduled-sales/compensations';
+import { SalesCompensationListComponent } from '@ss/scheduled-sales/compensations';
+import { SalesCompensationDetailComponent } from '@ss/scheduled-sales/compensations';
 import { InvoiceValidationComponent } from '@ss/scheduled-sales/sales-validation';
+import { PollChartComponent } from '@ss/scheduleds-sales/poll-charts';
 
 export const scheduledSalesRoutes: Routes = [
     {
         path: SALES_INVOICE_VALIDATION_URL,
         component: InvoiceValidationComponent,
-        canActivate: [loginGuard]
+        canActivate: [loginGuard],
     },
     {
         path: SALES_PAYMENT_COMPENSATION_URL,
         component: PaymentCompensationListComponent,
-        canActivate: [loginGuard]
+        canActivate: [loginGuard],
     },
     {
         path: SALES_COMPENSATION_URL,
         component: DebtsComponent,
         children: [
-            { path: '', component: SalesCompensationListComponent, pathMatch: 'full' },
-            { path: ':id', component: SalesCompensationDetailComponent }
+            {
+                path: '',
+                component: SalesCompensationListComponent,
+                pathMatch: 'full',
+            },
+            { path: ':id', component: SalesCompensationDetailComponent },
         ],
-        canActivate: [loginGuard]
+        canActivate: [loginGuard],
     },
     {
         path: LOGISTICS_AGENT_URL,
@@ -94,7 +125,7 @@ export const scheduledSalesRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: AgentListComponent,
-                canActivate: [loginGuard]
+                canActivate: [loginGuard],
             },
             {
                 path: ':id',
@@ -104,23 +135,36 @@ export const scheduledSalesRoutes: Routes = [
                         component: AgentDetailComponent,
                         canActivate: [loginGuard],
                         canDeactivate: [CanDeactivateService],
-                        data: {sales: true},
+                        data: { sales: true },
                         children: [
-                            { path: '', redirectTo: 'archive', pathMatch: 'full'},
+                            {
+                                path: '',
+                                redirectTo: 'archive',
+                                pathMatch: 'full',
+                            },
                             {
                                 path: 'archive',
                                 children: [
-                                    {path: '', component: AppArchiveListComponent, pathMatch: 'full', data: { appId: AGENT_ARCHIVES } },
-                                    {path: ':id', component: AppArchiveDetailComponent, data: { appId: AGENT_ARCHIVES }},
-                                ]
-                            }
-                        ]
-                    }
-                ]
+                                    {
+                                        path: '',
+                                        component: AppArchiveListComponent,
+                                        pathMatch: 'full',
+                                        data: { appId: AGENT_ARCHIVES },
+                                    },
+                                    {
+                                        path: ':id',
+                                        component: AppArchiveDetailComponent,
+                                        data: { appId: AGENT_ARCHIVES },
+                                    },
+                                ],
+                            },
+                        ],
+                    },
+                ],
             },
-            {path: '', redirectTo: LIST_URL, pathMatch: 'full'},
-            {path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full'}
-        ]
+            { path: '', redirectTo: LIST_URL, pathMatch: 'full' },
+            { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' },
+        ],
     },
     {
         path: SS_TRUCKS_URL,
@@ -128,16 +172,16 @@ export const scheduledSalesRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: SupplierTrucksListComponent,
-                canActivate: [loginGuard]
+                canActivate: [loginGuard],
             },
             {
                 path: ':id',
                 component: SupplierTrucksDetailComponent,
                 canActivate: [loginGuard],
-                canDeactivate: [CanDeactivateService]
+                canDeactivate: [CanDeactivateService],
             },
-            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
-        ]
+            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' },
+        ],
     },
     {
         path: SS_DISCOUNTS_URL,
@@ -145,23 +189,23 @@ export const scheduledSalesRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: DiscountListComponent,
-                canActivate: [loginGuard]
+                canActivate: [loginGuard],
             },
             {
                 path: ':id',
                 component: DiscountDetailComponent,
                 canActivate: [loginGuard],
-                canDeactivate: [CanDeactivateService]
+                canDeactivate: [CanDeactivateService],
             },
-            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
-        ]
+            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' },
+        ],
     },
 
     {
         path: SS_PARTNER_SCHEDULE_URL,
         component: PartnerScheduleDetailComponent,
         canActivate: [loginGuard],
-        canDeactivate: [CanDeactivateService]
+        canDeactivate: [CanDeactivateService],
     },
 
     {
@@ -170,16 +214,16 @@ export const scheduledSalesRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: SalesScheduleListComponent,
-                canActivate: [loginGuard]
+                canActivate: [loginGuard],
             },
             {
                 path: ':id',
                 component: SalesScheduleDetailComponent,
                 canActivate: [loginGuard],
-                canDeactivate: [CanDeactivateService]
+                canDeactivate: [CanDeactivateService],
             },
-            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
-        ]
+            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' },
+        ],
     },
 
     {
@@ -188,16 +232,16 @@ export const scheduledSalesRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: SalesQuotaListComponent,
-                canActivate: [loginGuard]
+                canActivate: [loginGuard],
             },
             {
                 path: ':id',
                 component: SalesQuotaDetailComponent,
                 canActivate: [loginGuard],
-                canDeactivate: [CanDeactivateService]
+                canDeactivate: [CanDeactivateService],
             },
-            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
-        ]
+            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' },
+        ],
     },
 
     {
@@ -206,16 +250,16 @@ export const scheduledSalesRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: SalesModeListComponent,
-                canActivate: [loginGuard]
+                canActivate: [loginGuard],
             },
             {
                 path: ':id',
                 component: SalesModeDetailComponent,
                 canActivate: [loginGuard],
-                canDeactivate: [CanDeactivateService]
+                canDeactivate: [CanDeactivateService],
             },
-            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
-        ]
+            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' },
+        ],
     },
 
     {
@@ -224,16 +268,16 @@ export const scheduledSalesRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: ProjectListComponent,
-                canActivate: [loginGuard]
+                canActivate: [loginGuard],
             },
             {
                 path: ':id',
                 component: ProjectDetailComponent,
                 canActivate: [loginGuard, ssProjectGuard],
-                canDeactivate: [CanDeactivateService]
+                canDeactivate: [CanDeactivateService],
             },
-            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
-        ]
+            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' },
+        ],
     },
 
     {
@@ -241,16 +285,16 @@ export const scheduledSalesRoutes: Routes = [
         children: [
             {
                 path: LIST_URL,
-                component: ActivityListComponent
+                component: ActivityListComponent,
             },
             {
                 path: ':id',
                 component: ActivityDetailComponent,
                 canActivate: [loginGuard],
-                canDeactivate: [CanDeactivateService]
+                canDeactivate: [CanDeactivateService],
             },
-            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
-        ]
+            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' },
+        ],
     },
 
     {
@@ -259,16 +303,16 @@ export const scheduledSalesRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: ArticleListComponent,
-                canActivate: [loginGuard]
+                canActivate: [loginGuard],
             },
             {
                 path: ':id',
                 component: ArticleDetailComponent,
                 canActivate: [loginGuard],
-                canDeactivate: [CanDeactivateService]
+                canDeactivate: [CanDeactivateService],
             },
-            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
-        ]
+            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' },
+        ],
     },
 
     {
@@ -276,16 +320,16 @@ export const scheduledSalesRoutes: Routes = [
         children: [
             {
                 path: LIST_URL,
-                component: VatListComponent
+                component: VatListComponent,
             },
             {
                 path: ':id',
                 component: VatDetailComponent,
                 canActivate: [loginGuard],
-                canDeactivate: [CanDeactivateService]
+                canDeactivate: [CanDeactivateService],
             },
-            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
-        ]
+            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' },
+        ],
     },
 
     {
@@ -293,16 +337,16 @@ export const scheduledSalesRoutes: Routes = [
         children: [
             {
                 path: LIST_URL,
-                component: PayMethodListComponent
+                component: PayMethodListComponent,
             },
             {
                 path: ':id',
                 component: PayMethodDetailComponent,
                 canActivate: [loginGuard],
-                canDeactivate: [CanDeactivateService]
+                canDeactivate: [CanDeactivateService],
             },
-            {path: '**', redirectTo: LIST_URL, pathMatch: 'full'}
-        ]
+            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' },
+        ],
     },
 
     {
@@ -310,16 +354,16 @@ export const scheduledSalesRoutes: Routes = [
         children: [
             {
                 path: LIST_URL,
-                component: SalesCategoryListComponent
+                component: SalesCategoryListComponent,
             },
             {
                 path: ':id',
                 component: SalesCategoryDetailComponent,
                 canActivate: [loginGuard],
-                canDeactivate: [CanDeactivateService]
+                canDeactivate: [CanDeactivateService],
             },
-            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
-        ]
+            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' },
+        ],
     },
 
     {
@@ -340,7 +384,7 @@ export const scheduledSalesRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: CustomerComplaintsListComponent,
-                canActivate: [CustomerCanActivateService]
+                canActivate: [CustomerCanActivateService],
             },
             {
                 path: ':id',
@@ -348,14 +392,14 @@ export const scheduledSalesRoutes: Routes = [
                 canActivate: [CustomerCanActivateService],
                 canDeactivate: [CanDeactivateService],
             },
-        ]
+        ],
     },
 
     {
         path: COMMON_REPORTS_URL,
         data: { reportBase: 'ssales' },
         component: ReportViewComponent,
-        canActivate: [loginGuard]
+        canActivate: [loginGuard],
     },
 
     {
@@ -364,7 +408,7 @@ export const scheduledSalesRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: SalesPollListComponent,
-                canActivate: [loginGuard]
+                canActivate: [loginGuard],
             },
             {
                 path: ':id',
@@ -372,7 +416,7 @@ export const scheduledSalesRoutes: Routes = [
                 canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService],
             },
-        ]
+        ],
     },
 
     {
@@ -381,7 +425,7 @@ export const scheduledSalesRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: PollQuestionsListComponent,
-                canActivate: [loginGuard]
+                canActivate: [loginGuard],
             },
             {
                 path: ':id',
@@ -389,9 +433,14 @@ export const scheduledSalesRoutes: Routes = [
                 canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService],
             },
-        ]
+        ],
+    },
+    {
+        path: SS_POLL_CHARTS_URL,
+        component: PollChartComponent,
+        canDeactivate: [CanDeactivateService],
     },
 
-    {path: '', redirectTo: ABS_INDEX_URL, pathMatch: 'full'},
-    {path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full'}
+    { path: '', redirectTo: ABS_INDEX_URL, pathMatch: 'full' },
+    { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' },
 ];

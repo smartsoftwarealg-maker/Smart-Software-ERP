@@ -457,13 +457,10 @@
             "@ss/payroll/work-stoppage": [
                 "libs/payroll/work-stoppage/src/index.ts"
             ],
+            "@ss/production/mrp": ["libs/production/mrp/src/index.ts"],
             "@ss/production/production": [
                 "libs/production/production/src/index.ts"
             ],
-            "@ss/production/production-order": [
-                "libs/production/production-order/src/index.ts"
-            ],
-            "@ss/production/mrp": ["libs/production/mrp/src/index.ts"],
             "@ss/production/production-order": [
                 "libs/production/production-order/src/index.ts"
             ],
@@ -613,6 +610,9 @@
             ],
             "@ss/scheduled-sales/supplier-trucks": [
                 "libs/scheduled-sales/supplier-trucks/src/index.ts"
+            ],
+            "@ss/scheduleds-sales/poll-charts": [
+                "libs/scheduled-sales/poll-charts/src/index.ts"
             ],
             "@ss/scheduleds-sales/polls": [
                 "libs/scheduled-sales/polls/src/index.ts"
