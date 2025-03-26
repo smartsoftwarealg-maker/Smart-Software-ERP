@@ -44,10 +44,12 @@
     "UNSPECIFIED":        "Indéterminée",
     "BOOLEAN":            "Oui/Non",
     "DESCRIPTION_EN":     "Description (en)",
-    "CUSTOMER_POLL":     "Sondage client",
-    "VERY_SATISFIED":    "Très satisfait",
-    "SATISFIED":         "satisfait(e)",
-    "UNSATISFIED":       "Insatisfait(e)",
-    "POLL_THANKS" :  "Merci d'avoir participé au sondage",
-    "YOUR_WELCOME" : "Vous êtes les bienvenus"
+    "CUSTOMER_POLL":      "Sondage client",
+    "VERY_SATISFIED":     "Très satisfait(e)",
+    "SATISFIED":          "satisfait(e)",
+    "UNSATISFIED":        "Insatisfait(e)",
+    "POLL_THANKS":        "Merci d'avoir participé au sondage",
+    "YOUR_WELCOME":       "Vous êtes les bienvenus",
+    "POLL_CHARTS":        "GRAPHIQUES DE SONDAGE",
+    "ANNUAL_STATISTICS":  "Statistiques annuelles"
 }
