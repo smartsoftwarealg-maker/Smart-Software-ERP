@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpService } from '@ss/common/api-common';
 import {
@@ -13,6 +13,7 @@ import { MRP, MRP_URL } from '../api/mrp-api';
 import { Observable } from 'rxjs';
 import { ShellService } from '@ss/common/ui-shell';
 import { TranslateDirective } from '@ss/common/ui-lang';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
     selector: 'ss-mrp',
@@ -22,6 +23,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     standalone: true
 })
 export class MrpComponent implements OnInit {
+    private route = inject(ActivatedRoute);
     public data: MRP[] = [];
     displayedColumns: string[] = [
         'reference',
@@ -40,6 +42,8 @@ export class MrpComponent implements OnInit {
     }
 
     ngOnInit(): void {
+        this.shellSrv.setGoBackPath('..', this.route);
+        this.shellSrv.setTitle('Production MRP');
         this.data = [];
         this.shellSrv.setLoading(true);
         this.getData().subscribe({
