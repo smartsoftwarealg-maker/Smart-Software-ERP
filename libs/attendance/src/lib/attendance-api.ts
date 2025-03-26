@@ -73,11 +73,11 @@ export interface ATTReport {
 export interface Timing {
     id: number;
     parentId: number;
-    from: Date;
-    to: Date;
-    breakFrom: Date;
-    breakTo: Date;
-    date?: Date;
+    from: string;
+    to: string;
+    breakFrom: string;
+    breakTo: string;
+    date?: string;
 }
 
 export interface WorkShift {

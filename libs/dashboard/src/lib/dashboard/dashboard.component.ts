@@ -27,6 +27,7 @@ import { CommonModule } from '@angular/common';
 import { DatePickerComponent } from '@ss/common/ui-datepicker';
 import { PaginationComponent } from '@ss/common/ui-pagination';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
+import { Sort } from '@angular/material/sort';
 
 @Component({
     selector: 'ss-dashboard',
@@ -40,7 +41,6 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         TranslatePipe,
         ReactiveFormsModule,
         DatePickerComponent,
-
         PaginationComponent,
         UiAutoCompleteComponent
     ]
@@ -50,22 +50,15 @@ export class DashboardComponent extends BaseEntityListComponent<Dashboard> {
     private langSrv = inject(LanguageService);
     private chartComponent: Chart | null = null;
 
-    applications = APPLICATIONS;
-    // private jsonButton: ToolbarButton = {
-    //     icon:  'fa-solid fa-coffee-bean',
-    //     label: 'COMMON_JSON_EXPORT',
-    //     disabled: false,
-    //     visible: true,
-    //     keepOnToolbar: KeepOnToolbar.DYNAMIC,
-    //     click: () => this.json()
-    // };
 
+    applications = APPLICATIONS;
     showApplications = signal(false);
     headers: string[] = ['test'];
     dashboardData: any[][] = [['test']];
-    detailPagination = PaginationModel.newInstance();
+    detailPagination = PaginationModel.newInstance({page: 1, pageSize: 50, elementCount: 0});
     time = new Date().getTime();
     application = new FormControl<number>(1);
+    filterCtrl         = new FormControl<string>('');
     toDate              = new FormControl(new Date());
     fromDate            = new FormControl(new Date(this.time - 365 * 24 * 3600 * 1000));
     consolidated     = new FormControl<boolean>(false);
@@ -74,7 +67,7 @@ export class DashboardComponent extends BaseEntityListComponent<Dashboard> {
     selectedAgentId: Id = '';
     processing = false;
     light = true;
-    smallData = signal(false);
+    smallData = signal(true);
     validData = signal(false);
 
     constructor(public dashboardSrv: DashboardService,
@@ -114,7 +107,6 @@ export class DashboardComponent extends BaseEntityListComponent<Dashboard> {
     }
 
     override select(id: number) {
-        this.smallData.set(false);
         this.validData.set(false);
         super.select(id || getApplicationId(this.router));
         this.headers = [];
@@ -137,7 +129,8 @@ export class DashboardComponent extends BaseEntityListComponent<Dashboard> {
                         from,
                         to,
                         this.selectedAgentId,
-                        consolidated)))
+                        consolidated,
+                        this.filterCtrl.value)))
                 .subscribe({
                     next: res => {
                         this.dashboardData = res.body;
@@ -148,7 +141,7 @@ export class DashboardComponent extends BaseEntityListComponent<Dashboard> {
                             this.chartComponent = new Chart(ctx, this.chartData());
                         }
                         this.shellSrv.setLoading(false);
-                        this.smallData.set(this.dashboardData.length < 50 && this.dashboardData.length > 0);
+                        this.smallData.set(this.detailPagination.elementCount < 50);
                         this.validData.set(this.dashboardData.length > 0);
                     },
                     error: err => {
@@ -164,7 +157,7 @@ export class DashboardComponent extends BaseEntityListComponent<Dashboard> {
         const to = this.langSrv.formatDate(this.toDate.value);
         this.shellSrv.setLoading(true);
         this.dashboardSrv
-            .getData(this.selected, this.detailPagination.page, this.detailPagination.pageSize, from, to, this.selectedAgentId)
+            .getData(this.selected, this.detailPagination.page, this.detailPagination.pageSize, from, to, this.selectedAgentId, this.consolidated.value, this.filterCtrl.value)
             .subscribe({
                 next: res => {
                     this.dashboardData = res.body;
@@ -269,5 +262,47 @@ export class DashboardComponent extends BaseEntityListComponent<Dashboard> {
     }
     public getPage() {
         return this.dashboardSrv.getCenterPage(this.pagination, this.filter);
+    }
+
+    sort(event: Sort) {
+        const columnIndex = this.headers.indexOf(event.active) + 1;
+
+        event.active = columnIndex + '';
+        this.dashboardSrv.sortColumn = event;
+        const id = this.selected || 0;
+        const from = this.langSrv.formatDate(this.fromDate.value);
+        const to = this.langSrv.formatDate(this.toDate.value);
+        const consolidated = this.consolidated.value;
+
+        this.dashboardSrv.getData(
+                    id,
+                    this.detailPagination.page,
+                    this.detailPagination.pageSize,
+                    from,
+                    to,
+                    this.selectedAgentId,
+                    consolidated,
+                    this.filterCtrl.value)
+            .subscribe({
+                next: res => {
+                    this.dashboardData = res.body;
+                    this.detailPagination.elementCount = res.itemCount;
+                    this.chartComponent?.destroy();
+                    if (res.itemCount < 50) {
+                        const ctx = <ChartItem>document.getElementById('chart');
+                        this.chartComponent = new Chart(ctx, this.chartData());
+                    }
+                    this.smallData.set(this.detailPagination.elementCount < 50);
+                    this.validData.set(this.dashboardData.length > 0);
+                },
+                error: err => {
+                    throw err;
+                }
+            });
+    }
+
+
+    override canShowProcessingStatus() {
+        return false;
     }
 }
