@@ -43,7 +43,7 @@ export class MrpComponent implements OnInit {
 
     ngOnInit(): void {
         this.shellSrv.setGoBackPath('..', this.route);
-        this.shellSrv.setTitle('Production MRP');
+        this.shellSrv.setTitle('PROD_PRODUCTION_MRP');
         this.data = [];
         this.shellSrv.setLoading(true);
         this.getData().subscribe({
