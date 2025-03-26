@@ -5,6 +5,7 @@ import { HttpService, PaginationModel } from '@ss/common/api-common';
 import { Observable } from 'rxjs';
 import { HttpParams } from '@angular/common/http';
 import { map } from 'rxjs/operators';
+import { Sort, SortDirection } from '@angular/material/sort';
 
 @Injectable({
     providedIn: 'root'
@@ -25,9 +26,13 @@ export class DashboardService extends BaseEntityExtendedService<Dashboard> {
         from?: string,
         to?: string,
         agent?: any,
-        consolidated?: boolean): Observable<{ itemCount: number, body: any[][] }> {
+        consolidated?: boolean,
+        filter?: string): Observable<{ itemCount: number, body: any[][] }> {
+
+        const orderBy = this.sortColumn? (this.sortColumn.startsWith('+')? this.sortColumn.substring(1) : this.sortColumn) : null;
+
         let params = new HttpParams();
-        ([['from', from], ['to', to], ['agent', agent], ['consolidated', consolidated]])
+        ([['from', from], ['to', to], ['agent', agent], ['consolidated', consolidated], ['filter', filter], ['order', orderBy]])
             .filter(v => v[1])
             .forEach(v => params = params.set(v[0], v[1]));
         return this.httpSrv.getData<any[]>(`/dashboard/${queryId}/data`, page, size, null, null, params);
