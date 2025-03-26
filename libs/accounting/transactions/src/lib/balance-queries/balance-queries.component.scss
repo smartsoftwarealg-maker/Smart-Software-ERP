@@ -30,6 +30,14 @@ form {
     justify-content: flex-end;
 }
 
+.mat-column-pieceNo,
+.mat-column-lineNumber {
+    flex: 1 1 110px;
+    border-left: white solid 1px;
+    padding-right: 4px;
+    justify-content: center;
+}
+
 .mat-column-credit {
     border-right: white solid 1px;
 }

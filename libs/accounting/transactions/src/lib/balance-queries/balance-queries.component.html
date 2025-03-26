@@ -238,6 +238,13 @@
         <div class="table__div">
             <mat-table mat-table [dataSource]="detailData" class="main-table" matSort (matSortChange)="sortDetail($event)">
 
+                <ng-container matColumnDef="pieceNo">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_NO_</mat-header-cell>
+                    <mat-cell *matCellDef="let e" [class.f-warn]="math.abs(e.debit - e.credit) > 0.01">
+                        {{ selectedGL()?.pieceNo }}
+                    </mat-cell>
+                </ng-container>
+
                 <ng-container matColumnDef="accountNo">
                     <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_ACCOUNTNO</mat-header-cell>
                     <mat-cell *matCellDef="let e">

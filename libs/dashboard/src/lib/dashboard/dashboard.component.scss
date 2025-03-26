@@ -1,5 +1,6 @@
 .chart__div {
     display: flex;
+    height: 35%;
     justify-content: center;
     align-items: flex-end;
 }
@@ -13,39 +14,41 @@
     margin: 0 auto;
     gap: 8px;
 }
+
+.main__container {
+    min-height: 50%;
+    max-height: calc(100vh - 200px);
+}
 .ctrl__div {
     align-items: center;
 }
 
-.main__container {
-    height: calc(100% - 100px);
-}
 
 .list__container {
     flex: 1 1 29%;
+    display: flex;
+    flex-direction: column;
 }
 
 .data__div {
     flex: 2 1 69%;
-    overflow-x: auto;
 }
 
 .list__div,
 .table___div {
-    overflow-y: auto;
+    overflow: auto;
+    flex-grow: 1;
+    max-height: calc(100% - 100px);
 }
 
 .list__div {
     flex-grow: 1;
 }
-.table___div {
-    max-height: 60%;
-    flex-grow: 1;
-    min-height: 55%;
-}
+
 
 .chart__div, canvas {
-    height: 40%;
+    height: 30%;
+    width: 100%;
 }
 
 .hidden {
@@ -66,9 +69,6 @@
     }
     .table___div {
         max-height: 50%;
-    }
-    .chart__div, canvas {
-        height: auto;
     }
     .chart__div {
         margin-top: 1em;
