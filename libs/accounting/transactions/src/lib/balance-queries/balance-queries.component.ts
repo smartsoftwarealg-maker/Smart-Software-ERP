@@ -72,6 +72,7 @@ export class BalanceQueriesComponent implements OnInit {
     ];
 
     detailCols = [
+        'pieceNo',
         'lineNumber',
         'accountNo',
         'description',
@@ -174,4 +175,6 @@ export class BalanceQueriesComponent implements OnInit {
         this.detailSrv.sortColumn = event;
         this.refreshDetail();
     }
+
+    protected readonly math = Math;
 }
