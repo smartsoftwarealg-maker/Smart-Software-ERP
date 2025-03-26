@@ -1,4 +1,4 @@
-import { Component, inject, OnDestroy, OnInit, signal, ViewChild } from '@angular/core';
+import { Component, effect, inject, OnDestroy, OnInit, signal, ViewChild } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router, RouterModule, RouterOutlet } from "@angular/router";
 import {
     AccFileService,
@@ -28,6 +28,7 @@ import { AppArchiveMainComponent } from '@ss/common/app-archive';
 import { PaginationComponent } from '@ss/common/ui-pagination';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 import { toSignal } from '@angular/core/rxjs-interop';
+import { Sort } from '@angular/material/sort';
 
 
 @Component({
@@ -43,7 +44,6 @@ import { toSignal } from '@angular/core/rxjs-interop';
         ReactiveFormsModule,
         AppArchiveMainComponent,
         PaginationComponent
-
     ]
 })
 export class TransactionListComponent extends BaseEntityListComponent<ACCTransaction> implements OnDestroy, OnInit {
@@ -52,6 +52,19 @@ export class TransactionListComponent extends BaseEntityListComponent<ACCTransac
     private detailSrv =  inject(AccTransactionLineService);
     private loginSrv =  inject(LoginService);
     private accPolicySrv =  inject(AccPoliciesService);
+    private updateEffect = effect(() => {
+        if (this.detailSrv.updateCounter() > 0) {
+            if (this.selectedRow) {
+                this.entitySrv
+                    .get(this.selectedRow?.id)
+                    .subscribe(res => {
+                        this.selectedRow.debit = res.debit;
+                        this.selectedRow.credit = res.credit;
+                    });
+            }
+        }
+    });
+
 
     transactionMode = true;
     public math = Math;
@@ -77,6 +90,7 @@ export class TransactionListComponent extends BaseEntityListComponent<ACCTransac
         super(entitySrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv, 'COMMON_TRANSACTIONS');
         entitySrv.setParentId(0);
         this.pagination.onChange = () => this.refreshTransactions();
+
     }
 
     // override preload(): Observable<any> {
@@ -233,4 +247,9 @@ export class TransactionListComponent extends BaseEntityListComponent<ACCTransac
         return this.fileSrv.isEditable;
     }
 
+    override sort(event: Sort) {
+        if (this.isRoot()) {
+            super.sort(event);
+        }
+    }
 }

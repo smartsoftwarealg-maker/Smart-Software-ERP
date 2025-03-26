@@ -85,21 +85,9 @@ export const accountingNavTree: SideNavNode = {
             accessRights: 'Account'
         },
         {
-            name: 'ACC_CASH_FLOW',
-            icon: 'fa-solid fa-cash-register',
-            route: ABS_ACC_CASHFLOW_ACCOUNT_URL,
-            accessRights: 'CashFlowAcc'
-        },
-        {
             name: 'COMMON_TRANSACTIONS',
             icon: 'fas fa-calculator',
             route: ABS_ACC_TRANSACTIONS_URL,
-            accessRights: 'ACCTransaction'
-        },
-        {
-            name: 'ACC_DEPRECIATION_GENERATION',
-            icon: 'fa-solid fa-engine',
-            route: ABS_DEPRECIATION_GENERATION_URL,
             accessRights: 'ACCTransaction'
         },
         {
@@ -113,6 +101,18 @@ export const accountingNavTree: SideNavNode = {
             icon: 'fa-solid fa-file-excel',
             route: ABS_SALES_GENERATION_URL,
             accessRights: 'ACCTransaction'
+        },
+        {
+            name: 'ACC_DEPRECIATION_GENERATION',
+            icon: 'fa-solid fa-engine',
+            route: ABS_DEPRECIATION_GENERATION_URL,
+            accessRights: 'ACCTransaction'
+        },
+        {
+            name: 'ACC_CASH_FLOW',
+            icon: 'fa-solid fa-cash-register',
+            route: ABS_ACC_CASHFLOW_ACCOUNT_URL,
+            accessRights: 'CashFlowAcc'
         },
         {
             name: 'ACC_REOPENING',

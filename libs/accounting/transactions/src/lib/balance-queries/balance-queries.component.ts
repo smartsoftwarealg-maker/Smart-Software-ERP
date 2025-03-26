@@ -1,18 +1,19 @@
-import { Component, inject, OnInit } from '@angular/core';
-import { Balance, BalanceQueryService, GL } from '@ss/accounting/accounting-api';
+import { Component, inject, OnInit, signal } from '@angular/core';
+import {
+    ACCTransactionLine,
+    AccTransactionLineService,
+    Balance,
+    BalanceQueryService,
+    GL
+} from '@ss/accounting/accounting-api';
 import { FormBuilder, ReactiveFormsModule, UntypedFormGroup, Validators } from '@angular/forms';
 import { MaterialModule, PaginationModel } from '@ss/common/api-common';
 import { HttpParams } from '@angular/common/http';
 import { ShellService } from '@ss/common/ui-shell';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
-
-
-
-
-import { DatePickerComponent } from '@ss/common/ui-datepicker';
 import { PaginationComponent } from '@ss/common/ui-pagination';
-import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
+import { TranslateDirective } from '@ss/common/ui-lang';
 import { Sort } from '@angular/material/sort';
 
 
@@ -32,12 +33,16 @@ import { Sort } from '@angular/material/sort';
     ]
 })
 export class BalanceQueriesComponent implements OnInit {
+    private detailSrv = inject(AccTransactionLineService);
     private fb = inject(FormBuilder);
     public balancePaginator = PaginationModel.newInstance();
     public glPaginator      = PaginationModel.newInstance();
+    public detailPaginator  = PaginationModel.newInstance();
 
     selectedAccount: string | null = null;
-    glAccount: string | null = null;
+    selectedGL = signal<GL|null>(null);
+    selectedDetail = signal<ACCTransactionLine|null>(null);
+
     form: UntypedFormGroup = null;
     balanceCols = [
         'accountNo',
@@ -66,15 +71,27 @@ export class BalanceQueriesComponent implements OnInit {
         'credit'
     ];
 
+    detailCols = [
+        'lineNumber',
+        'accountNo',
+        'description',
+        'customer',
+        'reference',
+        'debit',
+        'credit'
+    ]
+
     balanceData: Balance[] = [];
     glData: GL[] = [];
+    detailData: ACCTransactionLine[] = [];
 
     constructor(private querySrv: BalanceQueryService,
                 private shellSrv: ShellService,
                 private route: ActivatedRoute) {
         this.balancePaginator.onChange = () => this.refreshBalance();
         this.glPaginator.onChange = () => this.refreshGL();
-        this.glPaginator.pageSize = this.balancePaginator.pageSize = 10;
+        this.detailPaginator.onChange = () => this.refreshDetail();
+        this.detailPaginator.pageSize = this.glPaginator.pageSize = this.balancePaginator.pageSize = 10;
     }
 
     ngOnInit(): void {
@@ -112,12 +129,12 @@ export class BalanceQueriesComponent implements OnInit {
     }
 
     private refreshGL() {
+        this.detailData = [];
         this.querySrv
             .getGL(this.glPaginator, this.getParams())
             .subscribe(res => {
                 this.glData = res.body;
                 this.glPaginator.elementCount = res.itemCount;
-
             })
     }
 
@@ -126,8 +143,23 @@ export class BalanceQueriesComponent implements OnInit {
     }
 
     selectGL(row: GL) {
-        this.glAccount = row?.accountNo;
+        this.detailPaginator.page = 1
+        this.selectedGL.set(row);
+        this.detailSrv.setParentId(row?.id||0);
+        this.refreshDetail();
     }
+
+    selectDetail(row: ACCTransactionLine) {
+        this.detailPaginator.page = 1
+        this.selectedDetail.set(row);
+    }
+
+    private refreshDetail() {
+        this.detailSrv
+            .getPage(this.detailPaginator, null, null)
+            .subscribe(res => this.detailData = res);
+    }
+
     sortBalance(event: Sort) {
         this.querySrv.sortColumn = event;
         this.refreshBalance();
@@ -136,5 +168,10 @@ export class BalanceQueriesComponent implements OnInit {
         // console.log(event);
         this.querySrv.sortColumn = event;
         this.refresh();
+    }
+    sortDetail(event: Sort) {
+        // console.log(event);
+        this.detailSrv.sortColumn = event;
+        this.refreshDetail();
     }
 }

@@ -17,7 +17,7 @@ import {switchMap, tap} from 'rxjs/operators';
 import { DatePickerComponent, maxDate, minDate } from "@ss/common/ui-datepicker";
 import { ACC_TRANSACTION_ARCHIVES } from "@ss/common/app-archive";
 import { CommonModule } from "@angular/common";
-import { TranslatePipe } from '@ss/common/ui-lang';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 
 @Component({
@@ -31,7 +31,8 @@ import { TranslatePipe } from '@ss/common/ui-lang';
         MaterialModule,
         ReactiveFormsModule,
         DatePickerComponent,
-        TranslatePipe
+        TranslatePipe,
+        TranslateDirective
     ]
 })
 export class TransactionDetailComponent implements OnInit, OnDestroy {
@@ -138,12 +139,9 @@ export class TransactionDetailComponent implements OnInit, OnDestroy {
                     this.snackBarSrv.showSuccessMessage();
                     if (id > 0) {
                         this.cancel();
+                    } else {
+                        this.router.navigate([`/app/accounting/transactions/${res}/detail`]).then()
                     }
-                    // if (value.id) {
-                    //     this.form.reset(value);
-                    // } else {
-                    //     this.router.navigate(['/app/accounting/transactions', res]).then();
-                    // }
                 }
             });
     }

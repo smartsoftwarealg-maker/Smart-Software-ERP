@@ -1,30 +1,23 @@
 <div class="container size">
-    <mat-table mat-table [dataSource]="data" class="main-table">
+    <mat-table mat-table [dataSource]="data" class="main-table" matSort (matSortChange)="sort($event)">
 
         <ng-container matColumnDef="accountNo">
-            <mat-header-cell *matHeaderCellDef translate>LOGISTICS_ACCOUNT_NO</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>LOGISTICS_ACCOUNT_NO</mat-header-cell>
             <mat-cell *matCellDef="let e">
                 {{e.accountNo}}
             </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="description">
-            <mat-header-cell *matHeaderCellDef translate>LOGISTICS_DESCRIPTION</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>LOGISTICS_DESCRIPTION</mat-header-cell>
             <mat-cell *matCellDef="let e">
                 {{e.description}}
             </mat-cell>
         </ng-container>
 
 
-<!--        <ng-container matColumnDef="accType">-->
-<!--            <mat-header-cell *matHeaderCellDef translate>LOGISTICS_ACC_TYPE</mat-header-cell>-->
-<!--            <mat-cell *matCellDef="let e">-->
-<!--                {{accountTypes[e.accType]}}-->
-<!--            </mat-cell>-->
-<!--        </ng-container>-->
-
         <ng-container matColumnDef="analyzed">
-            <mat-header-cell *matHeaderCellDef translate>LOGISTICS_ANALYZED</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>LOGISTICS_ANALYZED</mat-header-cell>
             <mat-cell *matCellDef="let e">
                 <mat-checkbox disabled="true" [checked]="e.analyzed">
                 </mat-checkbox>
@@ -32,21 +25,21 @@
         </ng-container>
 
         <ng-container matColumnDef="customerCode">
-            <mat-header-cell *matHeaderCellDef translate>ACC_CUSTOMER_CODE_REQUIRED</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>ACC_CUSTOMER_CODE_REQUIRED</mat-header-cell>
             <mat-cell *matCellDef="let e">
                 <mat-checkbox disabled="true" [checked]="e.customerCode"></mat-checkbox>
             </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="ccRequired">
-            <mat-header-cell *matHeaderCellDef translate>ACC_CUSTOMER_CODE_REQUIRED</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>ACC_CC_REQUIRED</mat-header-cell>
             <mat-cell *matCellDef="let e">
                 <mat-checkbox disabled="true" [checked]="e.ccRequired"></mat-checkbox>
             </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="budgetAccount">
-            <mat-header-cell *matHeaderCellDef translate>LOGISTICS_BUDGET_ACCOUNT</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>LOGISTICS_BUDGET_ACCOUNT</mat-header-cell>
             <mat-cell *matCellDef="let e">
                 <mat-checkbox disabled="true" [checked]="e.budgetAccount"></mat-checkbox>
             </mat-cell>

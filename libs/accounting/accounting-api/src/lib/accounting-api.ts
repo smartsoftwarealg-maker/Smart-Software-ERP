@@ -229,6 +229,7 @@ export interface ReopenInfo {
 }
 
 export interface GL {
+    id: number;
     accountNo: string;
     description: string;
     pieceNo: number;
