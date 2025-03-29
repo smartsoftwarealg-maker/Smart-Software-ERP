@@ -33,7 +33,7 @@ export class AgentService extends BaseAgentClass {
     }
 
     getPayments(id: number, offset: number, limit: number): Observable<{ body: Payment[], itemCount: number }> {
-        return id? this.httpSrv.getData<{ body: Payment[], itemCount: number }>(`/agents/${id}/payments`, offset, limit) : of({ body: [], itemCount: 0 });
+        return id? this.httpSrv.getData<Payment>(`/agents/${id}/payments`, offset, limit) : of({ body: [], itemCount: 0 });
     }
 
     getCompensations(agentId: number, idList: string): Observable<Accounting[]> {

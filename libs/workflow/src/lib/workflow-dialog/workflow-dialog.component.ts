@@ -10,7 +10,7 @@ import { CommonModule } from '@angular/common';
 
 
 import { OrgChartModule } from 'angular13-organization-chart';
-import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
+import { TranslateDirective } from '@ss/common/ui-lang';
 
 type MBData = {
     amount: number;
