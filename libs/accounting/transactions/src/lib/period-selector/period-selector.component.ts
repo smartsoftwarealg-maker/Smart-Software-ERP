@@ -1,6 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
-import {PeriodSelectorService, PeriodSummary} from '@ss/accounting/accounting-api';
+import {
+    ACCTransaction,
+    AccTransactionLineService, Anomaly,
+    PeriodSelectorService,
+    PeriodSummary
+} from '@ss/accounting/accounting-api';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import { ActivatedRoute, Router, RouterModule } from "@angular/router";
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
@@ -15,6 +20,7 @@ import { CommonModule } from "@angular/common";
 
 import { DatePickerComponent } from "@ss/common/ui-datepicker";
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
+import { PaginationComponent } from '@ss/common/ui-pagination';
 
 
 @Component({
@@ -28,21 +34,20 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         MaterialModule,
         TranslateDirective,
         TranslatePipe,
-        ReactiveFormsModule,
-
-
-       
-
-
-    ],
+        ReactiveFormsModule
+    ]
 })
 export class PeriodSelectorComponent extends BaseEntityListComponent<PeriodSummary> {
+    #transactionSrv = inject(AccTransactionLineService);
+
     private MONTHS = ['JANUARY', 'FEBRUARY', 'MARCH', 'APRIL', 'MAY', 'JUNE', 'JULY', 'AUGUST', 'SEPTEMBER', 'OCTOBER', 'NOVEMBER', 'DECEMBER'];
-    displayedColumns = [
-        'month',
-        'debit',
-        'credit'
-    ];
+
+    displayedColumns = ['month', 'debit', 'credit'];
+
+    anomalyColumns = ['journal', 'pieceNo', 'date', 'pieceNo', 'debit', 'credit'];
+    anomalyData: Anomaly[] = [];
+    selectedAnomaly: ACCTransaction|null = null;
+
     accPeriod = new UntypedFormControl(1, [Validators.required, Validators.max(12), Validators.min(1)]);
     periods: string[] = [];
     constructor(
@@ -99,5 +104,11 @@ export class PeriodSelectorComponent extends BaseEntityListComponent<PeriodSumma
         this.addButton.visible = false;
         super.ngOnInit();
         this.shellSrv.updateShell();
+        this.#transactionSrv.getAnomalies().subscribe(res => this.anomalyData = res);
     }
+
+    selectAnomalyRow(row: ACCTransaction) {
+        this.selectedAnomaly = row;
+    }
+    protected readonly math = Math;
 }

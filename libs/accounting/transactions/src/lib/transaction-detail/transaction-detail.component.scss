@@ -15,11 +15,27 @@ mat-card {
     width: 100%;
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    align-content: center;
     border-top: navy solid 2px;
     padding-top: 8px;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
 }
 
+.button__div,
+.summary__div {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+}
+
+.summary__div {
+    flex: 1 1 70%;
+}
+.button__div {
+    flex: 1 1 30%;
+    gap: .5em;
+}
 .right_div {
     height: calc(100% - 265px);
     width: 90%;
@@ -27,3 +43,11 @@ mat-card {
     margin: 0 auto;
 }
 
+.summary__table {
+    font-size: .8em;
+}
+
+.label {
+    font-weight: bolder;
+    padding: 0 .5em;
+}

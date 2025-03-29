@@ -31,7 +31,8 @@
 }
 
 .data__div {
-    flex: 2 1 69%;
+    flex: 1 1 69%;
+    overflow: hidden;
 }
 
 .list__div,
@@ -41,6 +42,9 @@
     max-height: calc(100% - 100px);
 }
 
+mat-table {
+    min-width: 1000px;
+}
 .list__div {
     flex-grow: 1;
 }
@@ -48,7 +52,8 @@
 
 .chart__div, canvas {
     height: 30%;
-    width: 100%;
+    width: 96%;
+    max-width: 1400px;
 }
 
 .hidden {

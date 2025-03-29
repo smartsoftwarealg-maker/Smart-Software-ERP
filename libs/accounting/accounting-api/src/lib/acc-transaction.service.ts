@@ -1,4 +1,4 @@
-import {Injectable} from '@angular/core';
+import { Injectable, signal } from '@angular/core';
 import {BaseEntityService} from '@ss/common/api-base-entity';
 import {
     ACC_JOURNALS_URL, ACC_PROJECTS_URL,
@@ -14,6 +14,7 @@ import {Lookup} from '@ss/common/api-lookup';
     providedIn: 'root'
 })
 export class AccTransactionService extends BaseEntityService<ACCTransaction> {
+    selectedTransaction = signal<ACCTransaction|null>(null)
 
     constructor(protected override httpSrv: HttpService) {
         super(httpSrv, ACC_TRANSACTION_URL, ACC_JOURNALS_URL);
@@ -30,5 +31,9 @@ export class AccTransactionService extends BaseEntityService<ACCTransaction> {
 
     journalSummary(): Observable<JournalSummary> {
         return this.httpSrv.get<JournalSummary>('/accounting/journal-summary?id=' + (this.getParentId()||0));
+    }
+
+    select(transaction: ACCTransaction) {
+        this.selectedTransaction.set(transaction);
     }
 }

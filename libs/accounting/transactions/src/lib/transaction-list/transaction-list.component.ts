@@ -29,6 +29,7 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { Sort } from '@angular/material/sort';
+import { callback } from 'chart.js/helpers';
 
 
 @Component({
@@ -58,6 +59,7 @@ export class TransactionListComponent extends BaseEntityListComponent<ACCTransac
                 this.entitySrv
                     .get(this.selectedRow?.id)
                     .subscribe(res => {
+                        this.entitySrv.select(res);
                         this.selectedRow.debit = res.debit;
                         this.selectedRow.credit = res.credit;
                     });
@@ -146,12 +148,13 @@ export class TransactionListComponent extends BaseEntityListComponent<ACCTransac
                 this.router.navigate(['/app/accounting']).then();
             }
         });
+
     }
 
 
     private setDefaultButtons(isRoot: boolean) {
         this.isRoot.set(isRoot);
-        this.addButton.visible = isRoot && this.selectedJournal > 0;
+        this.addButton.visible = isRoot && this.selectedJournal > 0 && Math.abs(this.journalSummary()?.debit - this.journalSummary()?.credit) < 0.01;
         this.editButton.visible = isRoot;
         this.deleteButton.visible = isRoot;
         if (isRoot) {
@@ -182,6 +185,7 @@ export class TransactionListComponent extends BaseEntityListComponent<ACCTransac
         if (this.isRoot()) {
             super.selectRow(row);
             this.edit();
+            this.entitySrv.select(row);
         }
     }
 
@@ -228,10 +232,12 @@ export class TransactionListComponent extends BaseEntityListComponent<ACCTransac
         const journalId = event.options[0].value;
         this.entitySrv.setParentId(journalId);
         this.refreshTransactions();
-        this.addButton.visible = journalId > 0;
         this.entitySrv
             .journalSummary()
-            .subscribe(res => this.journalSummary.set(res));
+            .subscribe(res => {
+                this.journalSummary.set(res);
+                this.addButton.visible = journalId > 0 && Math.abs(this.journalSummary()?.debit - this.journalSummary()?.credit) < 0.01;
+            });
     }
 
     protected override canShowProcessingStatus(): boolean {

@@ -25,40 +25,59 @@
             <div class="default-50 check_box" *ngIf="accPolicy?.showBudget">
                 <mat-checkbox formControlName="isBudget" translate>ACC_BUDGETABLE</mat-checkbox>
             </div>
+            @if (accPolicy?.showProjects) {
+                <mat-form-field class="default-50">
+                    <mat-select formControlName="projectId" placeholder="{{'COMMON_PROJECT' | translate}}">
+                        @for (p of projects; track p.id) {
+                            <mat-option [value]="p.id">
+                                {{ p.description }}
+                            </mat-option>
+                        }
+                    </mat-select>
+                </mat-form-field>
+            }
 
-            <mat-form-field class="default-50" *ngIf="accPolicy?.showProjects">
-                <mat-select formControlName="projectId" placeholder="{{'COMMON_PROJECT' | translate}}">
-                    @for (p of projects; track p.id) {
-                        <mat-option [value]="p.id">
-                            {{ p.description }}
-                        </mat-option>
-                    }
-                </mat-select>
-            </mat-form-field>
 
-
-<!--            <pre> {{ form.getRawValue() | json }}</pre>-->
+            <!--            <pre> {{ form.getRawValue() | json }}</pre>-->
 
         </form>
 
         <div mat-subheader class="ctrl default-100">
-            <button mat-flat-button
-                    color="primary"
-                    (click)="save()"
-                    translate [disabled]="!form?.valid || isClosed()"
-                    *ngIf="!isOnEdit()">
-                <i class="fas fa-save"></i>
-                {{ 'COMMON_SAVE' | translate }}
-            </button>
-            <button mat-flat-button color="accent" translate (click)="cancel()" *ngIf="!isOnEdit()">
-                <i class="fas fa-redo"></i>
-                {{'COMMON_CANCEL'|translate}}
-            </button>
+            <div class="summary__div">
+                <table class="summary__table">
+                    <tr>
+                        <td  class="label" translate><span translate>COMMON_DEBIT</span>:</td>
+                        <td> <span [class.f-warn]="warning()">{{ debit()| number: '1.2-2'}}</span> </td>
+                        <td class="label" translate><span translate>COMMON_CREDIT</span>:</td>
+                        <td [class.f-warn]="warning()"> {{ credit() | number: '1.2-2'}} </td>
+                    </tr>
+                    <tr>
+                        <td  class="label" translate><span translate>COMMON_DEBIT</span>:</td>
+                        <td> <span [class.f-warn]="warning()">{{ debitBalance()| number: '1.2-2'}}</span> </td>
+                        <td class="label" translate><span translate>COMMON_CREDIT</span>:</td>
+                        <td [class.f-warn]="warning()"> {{ creditBalance() | number: '1.2-2'}} </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="button__div">
+                <button mat-flat-button
+                        color="primary"
+                        (click)="save()"
+                        translate [disabled]="!form?.valid || isClosed()"
+                        *ngIf="!isOnEdit()">
+                    <i class="fas fa-save"></i>
+                    {{ 'COMMON_SAVE' | translate }}
+                </button>
+                <button mat-flat-button color="accent" translate (click)="cancel()" *ngIf="!isOnEdit()">
+                    <i class="fas fa-redo"></i>
+                    {{ 'COMMON_CANCEL'|translate }}
+                </button>
 
-<!--            <button (click)="deleteSelected()" *ngIf="isEmpty && id > 0" translate>-->
-<!--                <i class="fas fa-trash-can"></i>-->
-<!--                {{ 'COMMON_DELETE'|translate }}-->
-<!--            </button>-->
+                <!--            <button (click)="deleteSelected()" *ngIf="isEmpty && id > 0" translate>-->
+                <!--                <i class="fas fa-trash-can"></i>-->
+                <!--                {{ 'COMMON_DELETE'|translate }}-->
+                <!--            </button>-->
+            </div>
         </div>
     </mat-card>
     <div *ngIf="id" class="right_div">

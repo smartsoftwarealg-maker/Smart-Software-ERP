@@ -11,17 +11,13 @@ import {  ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
 import { LoginService, MaterialModule, PaginationModel, PaginatorPersistenceService } from "@ss/common/api-common";
 import { of, Subscription, switchMap, tap } from "rxjs";
 import { CommonModule } from "@angular/common";
-
-
 import { FormControl, ReactiveFormsModule } from "@angular/forms";
-
-
-import { DatePickerComponent } from "@ss/common/ui-datepicker";
-
 import { debounceTime, distinctUntilChanged } from "rxjs/operators";
 import { Sort } from "@angular/material/sort";
 import { PaginationComponent } from '@ss/common/ui-pagination';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
+import { MatDialog } from '@angular/material/dialog';
+import { PieceDuplicationComponent } from '../piece-duplication/piece-duplication.component';
 
 @Component({
     selector: 'ss-transaction-lines-list',
@@ -39,6 +35,8 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     ]
 })
 export class TransactionLinesListComponent implements OnInit {
+    private selectedRow: ACCTransactionLine|null = null;
+    private dialog = inject(MatDialog);
     private fileSrv = inject(AccFileService);
     private subscription: Subscription = null;
     private accPolicy: ACCPolicy = null;
@@ -54,12 +52,14 @@ export class TransactionLinesListComponent implements OnInit {
         'credit'];
     displayedColumns = this.COLUMNS;
 
-    selected= 0;
+    selected = 0;
     parentId: number = null;
     data: ACCTransactionLine[] = [];
-    pagination = PaginationModel.newInstance({page: 0, pageSize: 5, elementCount: 0});
+    pagination = PaginationModel.newInstance({ page: 1, pageSize: 5, elementCount: 0 });
     searchText = new FormControl<string>('');
     readonly isClosed = signal<boolean>(this.fileSrv.accFile.closed);
+    processing = signal(false);
+    isEmpty = signal(false);
 
     constructor(
         public entitySrv: AccTransactionLineService,
@@ -84,13 +84,14 @@ export class TransactionLinesListComponent implements OnInit {
             .parent
             .params
             .pipe(tap(params => {
-                this.parentId = +params['id'];
-                this.entitySrv.setParentId(this.parentId);
-            }),
-            switchMap(() => this.entitySrv.getList(0, 5)))
+                    this.parentId = +params['id'];
+                    this.entitySrv.setParentId(this.parentId);
+                }),
+                switchMap(() => this.entitySrv.getList(0, 5)))
             .subscribe(res => {
                 this.data = res.body;
                 this.pagination.elementCount = res.itemCount;
+                this.isEmpty.set(this.pagination.elementCount === 0);
             });
 
         this.policySrv
@@ -108,6 +109,7 @@ export class TransactionLinesListComponent implements OnInit {
     }
 
     selectRow(row: ACCTransactionLine) {
+        this.selectedRow = row;
         this.selected = row?.id || 0;
     }
 
@@ -115,7 +117,7 @@ export class TransactionLinesListComponent implements OnInit {
     delete() {
         this.confirmationSrv
             .confirmDelete()
-            .pipe(switchMap(res => res ? this.entitySrv.remove(this.selected) : of({count: -1})),
+            .pipe(switchMap(res => res ? this.entitySrv.remove(this.selected) : of({ count: -1 })),
                 switchMap(res => res.count > 0 ? this.entitySrv.getList(this.pagination.page - 1, this.pagination.pageSize) : of(null)))
             .subscribe(res => {
                 if (res && res.itemCount != null) {
@@ -128,8 +130,9 @@ export class TransactionLinesListComponent implements OnInit {
             });
 
     }
+
     showDetail(id: number) {
-        this.router.navigate([id], {relativeTo: this.route}).then();
+        this.router.navigate([id], { relativeTo: this.route }).then();
     }
 
     refresh() {
@@ -138,11 +141,27 @@ export class TransactionLinesListComponent implements OnInit {
             .subscribe(res => {
                 this.data = res.body;
                 this.pagination.elementCount = res.itemCount;
+                this.isEmpty.set(this.pagination.elementCount === 0);
             });
     }
 
     sort(event: Sort) {
         this.entitySrv.sortColumn = event;
         this.refresh();
+    }
+
+    duplicate() {
+        const dialogRef = this.dialog.open(PieceDuplicationComponent, {
+            width: '500px',
+            height: '21em',
+            data: { destinationId: this.parentId },
+            disableClose: true
+        });
+
+        dialogRef
+            .afterClosed()
+            .subscribe(result => {
+                this.refresh();
+            });
     }
 }
