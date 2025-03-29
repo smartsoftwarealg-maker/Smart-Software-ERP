@@ -366,5 +366,6 @@
     "BANK_RIB":           "Bank RIB",
     "SAVE_PARAMS":        "Save parameters",
     "BACK":               "Back",
-    "SUBMIT":             "Submit"
+    "SUBMIT":             "Submit",
+    "ANOMALIES":         "Anomalies"
 }

@@ -1,5 +1,5 @@
 @if (parentId) {
-    <div class="ctrl-div">
+    <div class="ctrl-div" >
         <mat-form-field>
             <mat-label translate>COMMON_SEARCH</mat-label>
             <input matInput [formControl]="searchText" type="text">
@@ -11,6 +11,14 @@
                     (click)="showDetail(0)"
                     [matTooltip]="'COMMON_ADD' | translate">
                 <span class="fas fa-plus"></span>
+            </button>
+        }
+        @if (!isClosed() && isEmpty()) {
+            <button mat-mini-fab
+                    color="primary"
+                    (click)="duplicate()"
+                    [matTooltip]="'COMMON_DUPLICATE' | translate">
+                <span class="fa-solid fa-layer-plus"></span>
             </button>
         }
         @if (selected > 0) {

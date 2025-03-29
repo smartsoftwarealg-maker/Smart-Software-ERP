@@ -53,10 +53,12 @@ mat-tree {
     grid-area: debts;
     overflow: hidden;
 }
+
 .list__div {
-    height: calc(100% - 80px);
+    height: calc(100% - 90px);
     overflow-y: auto;
 }
+
 .cancel {
     grid-area: cancel;
     justify-self: start;
@@ -79,7 +81,7 @@ mat-tree {
 }
 
 mat-list {
-    height: 100%;
+    height: calc(100% - 90px);
     width: 100%;
 }
 

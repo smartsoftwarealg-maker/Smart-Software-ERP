@@ -363,5 +363,6 @@
     "BANK_RIB":           "رقم الحساب",
     "SAVE_PARAMS":        "حفظ البيانات",
     "BACK":               "الخلف",
-    "SUBMIT":             "قدم"
+    "SUBMIT":             "قدم",
+    "ANOMALIES":         "شذوذ"
 }

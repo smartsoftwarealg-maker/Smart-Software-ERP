@@ -1,4 +1,4 @@
-import { Component, inject, OnDestroy, OnInit, signal } from '@angular/core';
+import { Component, computed, inject, OnDestroy, OnInit, signal } from '@angular/core';
 import {
     AccFileService,
     AccPoliciesService,
@@ -36,10 +36,20 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     ]
 })
 export class TransactionDetailComponent implements OnInit, OnDestroy {
+    private router = inject( Router);
+    private entitySrv = inject(AccTransactionService);
+    private snackBarSrv = inject(SnackBarService);
+    private route = inject(ActivatedRoute);
+    private formBuilder = inject(UntypedFormBuilder);
+    private confirmationSrv = inject(ConfirmationDialogService);
+    private loginSrv = inject(LoginService);
+    private detailSrv = inject(AccTransactionLineService);
+    private accPolicySrv = inject( AccPoliciesService) ;
     private fileSrv = inject(AccFileService);
     private subscriptions: Subscription[] = [];
-    readonly isClosed = signal<boolean>(this.fileSrv.accFile.closed);
     protected readonly ACC_TRANSACTION_ARCHIVES = ACC_TRANSACTION_ARCHIVES;
+
+    readonly isClosed = signal<boolean>(this.fileSrv.accFile.closed);
     isOnEdit = signal(false);
     form: UntypedFormGroup = null;
     id = 0;
@@ -50,18 +60,11 @@ export class TransactionDetailComponent implements OnInit, OnDestroy {
     accPolicy: ACCPolicy = null;
     journalId = 0;
 
-    constructor(
-        private router: Router,
-        public entitySrv: AccTransactionService,
-        public snackBarSrv: SnackBarService,
-        public route: ActivatedRoute,
-        public formBuilder: UntypedFormBuilder,
-        public confirmationSrv: ConfirmationDialogService,
-        public lookupsSrv: LookupsService,
-        private loginSrv: LoginService,
-        public detailSrv: AccTransactionLineService,
-        private accPolicySrv: AccPoliciesService) {
-    }
+    debit = computed(() => this.entitySrv.selectedTransaction()?.debit||0);
+    credit = computed(() => this.entitySrv.selectedTransaction()?.credit||0);
+    debitBalance = computed(() => this.debit() > this.credit() ? this.debit() - this.credit() : 0);
+    creditBalance = computed(() => this.debit() > this.credit() ? 0.0 : this.credit() - this.debit());
+    warning = computed(() => Math.abs(this.debit() - this.credit()) >= 0.01);
 
     ngOnDestroy(): void {
         this.subscriptions.forEach(s => s.unsubscribe());
@@ -124,7 +127,6 @@ export class TransactionDetailComponent implements OnInit, OnDestroy {
             fileId:     [e.fileId],
         });
     }
-
 
     cancel() {
         this.router.navigate(['/app/accounting/transactions']).then();

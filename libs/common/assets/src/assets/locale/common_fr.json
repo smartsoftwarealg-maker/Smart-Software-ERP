@@ -366,5 +366,6 @@
     "SOURCE":             "Source",
     "BANK_RIB":           "RIB bancaire",
     "SAVE_PARAMS":        "Enregistrer les paramètres",
-    "SUBMIT":             "Soumettre"
+    "SUBMIT":             "Soumettre",
+    "ANOMALIES":         "Anomalies"
 }

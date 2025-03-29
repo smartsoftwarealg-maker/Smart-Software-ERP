@@ -89,6 +89,12 @@ export interface JournalSummary {
     credit: number;
 }
 
+export interface Anomaly {
+    journal: string;
+    date: Date;
+    pieceNo: number;
+    balance: number;
+}
 export interface ACCTransaction {
     id: number;
     fileId: number;

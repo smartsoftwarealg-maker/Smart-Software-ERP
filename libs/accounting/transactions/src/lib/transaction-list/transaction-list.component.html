@@ -11,17 +11,19 @@
                 <mat-selection-list [multiple]="false"
                                     (selectionChange)="journalSelected($event)"
                                     [disabled]="!isRoot()">
-                    <mat-list-option *ngFor="let j of journalList" value="{{ j.id }}">
+                    @for (j of journalList; track j.id) {
+                    <mat-list-option value="{{ j.id }}">
                         {{ j.description }}
                     </mat-list-option>
+                    }
                 </mat-selection-list>
             </div>
-            <table class="summary__table b-primary" [class.f-warn]="math.abs(journalSummary().debit - journalSummary().credit) > 0.01">
+            <table class="summary__table b-primary" >
                 <tr>
                     <td  class="label" translate><span translate>COMMON_DEBIT</span>:</td>
-                    <td> {{ journalSummary().debit | number: '1.2-2'}} </td>
-                    <td  class="label" translate><span translate>COMMON_CREDIT</span>:</td>
-                    <td> {{ journalSummary().credit | number: '1.2-2'}} </td>
+                    <td [class.f-accent]="math.abs(journalSummary().debit - journalSummary().credit) > 0.01"> {{ journalSummary().debit | number: '1.2-2'}} </td>
+                    <td class="label" translate><span translate>COMMON_CREDIT</span>:</td>
+                    <td [class.f-accent]="math.abs(journalSummary().debit - journalSummary().credit) > 0.01"> {{ journalSummary().credit | number: '1.2-2'}} </td>
                 </tr>
             </table>
             <mat-radio-group (change)="onMode($event)" [disabled]="!isRoot() && !isArchive()">
