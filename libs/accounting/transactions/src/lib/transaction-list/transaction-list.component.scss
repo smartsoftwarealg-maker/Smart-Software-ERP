@@ -62,13 +62,12 @@
     flex: 1 1 auto;
     overflow-x: auto;
 }
-
-mat-table {
-    min-width: 700px;
+.container_div mat-table {
+    width: 100%;
 }
 
 .mat-column-pieceNo {
-    flex: 0 1 90px;
+    flex: 1 1 90px;
     border-left: white solid thin;
     justify-content: center;
 }

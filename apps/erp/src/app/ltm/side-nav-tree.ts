@@ -114,7 +114,7 @@ export const ltmNavTree: SideNavNode = {
             accessRights: 'LTMPickupPoint'
         },
         {
-            name: 'LTM_ANOMALIES',
+            name: 'COMMON_ANOMALIES',
             icon: 'fa-regular fa-spider-black-widow',
             route: ABS_LTM_ANOMALY_URL,
             accessRights: 'LTMAnomaly'

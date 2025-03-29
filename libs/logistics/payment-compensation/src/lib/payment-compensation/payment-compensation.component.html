@@ -32,13 +32,6 @@
                 <!-- use a disabled button to provide padding for tree leaf -->
                 <button mat-icon-button disabled></button>
                 <table>
-                    <!--                    <thead>-->
-                    <!--                    <tr>-->
-                    <!--                      <th translate>COMMON_DESCRIPTION</th>-->
-                    <!--                      <th translate>COMMON_DEBIT</th>-->
-                    <!--                      <th translate>COMMON_CREDIT</th>-->
-                    <!--                    </tr>-->
-                    <!--                    </thead>-->
                     <tbody>
                     <tr>
                         <td class="td__description">{{ node.description }}</td>
@@ -104,7 +97,7 @@
                                draggable="true"
                                [class.selected]="d?.id === selectedDebt?.id">
                     <div class="debt__div">
-                        <span class="debt_description"> {{ d?.document.substring(0, 50) }} </span>
+                        <span class="debt_description"> {{ d?.document }} </span>
                         <span class="debt_amount"> {{ d?.balance | number: '1.2-2' }} </span>
                     </div>
                 </mat-list-item>

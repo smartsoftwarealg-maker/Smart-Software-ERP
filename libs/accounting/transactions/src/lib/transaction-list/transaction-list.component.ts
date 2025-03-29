@@ -76,7 +76,7 @@ export class TransactionListComponent extends BaseEntityListComponent<ACCTransac
     selectedJournal = 0;
     journalFilter = new FormControl<string>('');
     journalList: Journal[] = [];
-    displayedColumns = ['pieceNo', 'pieceDate', 'debit', 'credit'];
+    displayedColumns = ['pieceNo', 'pieceDate']; // , 'debit', 'credit'
 
     @ViewChild(RouterOutlet) outlet: RouterOutlet;
 

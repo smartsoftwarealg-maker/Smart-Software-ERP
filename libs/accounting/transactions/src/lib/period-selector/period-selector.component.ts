@@ -40,11 +40,23 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
 export class PeriodSelectorComponent extends BaseEntityListComponent<PeriodSummary> {
     #transactionSrv = inject(AccTransactionLineService);
 
-    private MONTHS = ['JANUARY', 'FEBRUARY', 'MARCH', 'APRIL', 'MAY', 'JUNE', 'JULY', 'AUGUST', 'SEPTEMBER', 'OCTOBER', 'NOVEMBER', 'DECEMBER'];
+    private MONTHS = [
+        'JANUARY',
+        'FEBRUARY',
+        'MARCH',
+        'APRIL',
+        'MAY',
+        'JUNE',
+        'JULY',
+        'AUGUST',
+        'SEPTEMBER',
+        'OCTOBER',
+        'NOVEMBER',
+        'DECEMBER'];
 
     displayedColumns = ['month', 'debit', 'credit'];
 
-    anomalyColumns = ['journal', 'pieceNo', 'date', 'pieceNo', 'debit', 'credit'];
+    anomalyColumns = ['journal', 'pieceNo', 'date', 'debit', 'credit'];
     anomalyData: Anomaly[] = [];
     selectedAnomaly: ACCTransaction|null = null;
 

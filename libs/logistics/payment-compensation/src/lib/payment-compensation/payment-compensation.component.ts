@@ -114,7 +114,7 @@ export class PaymentCompensationComponent implements OnInit {
     private paymentToTree(res: Payment[]): PaymentTree[] {
         return res.map(e => {
             const acc: PaymentTree = {
-                description: e.description,
+                description: e.description||e.bank,
                 amount: e.amount,
                 id: e.id
             };
@@ -140,7 +140,7 @@ export class PaymentCompensationComponent implements OnInit {
         return this.agentSrv
             .getDebts(+id)
             .pipe(switchMap(res => {
-                    this.debts = res;
+                    this.debts = res.map(d => ({...d, document: d.document.substring(d.document.indexOf(', ') + 1)}));
                     return this.agentSrv.getPayments(+id, this.pagination.page - 1, this.pagination.pageSize)}),
                 switchMap(res => {
                     this.pagination.elementCount = res.itemCount;

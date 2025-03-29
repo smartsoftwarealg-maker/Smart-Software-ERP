@@ -85,7 +85,7 @@
 
                         <mat-header-row *matHeaderRowDef="anomalyColumns; sticky: true"></mat-header-row>
 
-                        <mat-row class="selectable" [class.selected]="row?.id === selectedAnomaly?.id"
+                        <mat-row class="selectable imbalance" [class.selected]="row?.id === selectedAnomaly?.id"
                                  (click)="selectAnomalyRow(row)"
                                  *matRowDef="let row; columns: anomalyColumns;">
                         </mat-row>
