@@ -15,7 +15,7 @@ export class DuplicationService extends BaseEntityService<Invoice> {
 
     clone(insert: Insert): Observable<{ count: number}> {
         return insert.numbers.length <1?
-            of(0) :
+            of({ count: 0 }) :
             this.httpSrv.post(CLONE, insert);
     }
 }

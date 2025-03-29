@@ -1,8 +1,7 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { OrgChartModule, TreeNode } from 'angular13-organization-chart';
-import { HttpService, LanguageService, MaterialModule } from '@ss/common/api-common';
-import {ShellService, SnackBarService} from "@ss/common/ui-shell";
-import {MatDialog} from "@angular/material/dialog";
+import { HttpService, MaterialModule } from '@ss/common/api-common';
+import {ShellService} from "@ss/common/ui-shell";
 import {ActivatedRoute} from "@angular/router";
 import {CHART_TREE, CMMS_WORK_ORDER, WorkflowChartTree} from '../workflow-api'
 import { CommonModule } from '@angular/common';

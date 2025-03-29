@@ -111,6 +111,9 @@ export class TransactionDetailComponent implements OnInit, OnDestroy {
 
     private setupForm(e: ACCTransaction) {
         e.fileId = e.fileId || this.loginSrv.appCtx?.accFile;
+        if (e.id === 0) {
+            this.entitySrv.select(null);
+        }
         // e.id = e.oid? e.fileId * SCALE + (e.oid || 0) : 0;
         this.isEmpty = e.debit < 0.001 && e.credit < 0.001;
         this.detailSrv.setParentId(e.id||0);
