@@ -1,13 +1,16 @@
 <div class="container__div">
-    <mat-card class="chart__div default-50">
+    <mat-card class="chart__div">
         <canvas  [id]="'Statistics'" class="chart"></canvas>
     </mat-card>
 
-    @for (s of satisArr; track s; let i=$index) {
-        <ss-question-chart [index]="i" type="satisfaction" [satisfaction]="s" class="chart__div default-25 md-50 sm-100"></ss-question-chart>
+    @for (s of satisArr; track s.question; let i=$index) {
+        <mat-card class="chart__div">
+            <ss-question-pie-chart [index]="i" type="satisfaction" [data]="s" class="chart__div chart"></ss-question-pie-chart>
+        </mat-card>
     }
-    @for (s of boolArr ; track s; let i=$index) {
-        <ss-question-chart [index]="i+satisArr.length" type="boolean" [bool]="s" class="chart__div default-25 md-50 sm-100"></ss-question-chart>
+    @for (s of boolArr ; track s.question; let i=$index) {
+        <mat-card class="chart__div">
+            <ss-question-pie-chart [index]="i+satisArr.length" type="boolean" [data]="s" class="chart__div chart"></ss-question-pie-chart>
+        </mat-card>
     }
-
 </div>

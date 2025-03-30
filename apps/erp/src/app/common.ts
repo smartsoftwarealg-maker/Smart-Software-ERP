@@ -327,6 +327,7 @@ export const PASSWORD_RESET_URL          = 'password-reset';
 export const SS_SALES_POLL_URL           = 'sales-poll';
 export const SS_POLL_QUESTION_URL        = 'question-poll';
 export const SS_POLL_CHARTS_URL          = 'poll-charts';
+export const SS_POLL_HISTORY_CHARTS_URL  = 'history-poll-charts';
 
 
 // Missions
@@ -673,6 +674,7 @@ export const ABS_SALES_INVOICE_VALIDATION_URL = '/' + [MAIN_PAGE_URL, SCHEDULED_
 export const ABS_SCHEDULED_SALES_POLL_URL = '/' + [MAIN_PAGE_URL, SCHEDULED_SALES_APP_URL, SS_SALES_POLL_URL].join('/');
 export const ABS_SCHEDULED_POLL_QUESTION_URL = '/' + [MAIN_PAGE_URL, SCHEDULED_SALES_APP_URL, SS_POLL_QUESTION_URL].join('/');
 export const ABS_SCHEDULED_POLL_CHARTS_URL = '/' + [MAIN_PAGE_URL, SCHEDULED_SALES_APP_URL, SS_POLL_CHARTS_URL].join('/');
+export const ABS_SCHEDULED_POLL_HISTORY_CHARTS_URL = '/' + [MAIN_PAGE_URL, SCHEDULED_SALES_APP_URL, SS_POLL_HISTORY_CHARTS_URL].join('/');
 
 
 //Finance

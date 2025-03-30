@@ -16,24 +16,30 @@ export interface Statistics {
 
 export interface QuestionsStatistic {
     question: string;
-    answer: string;
+    questionAr:string;
+    questionFr:string;
+    satisfactionAnswer?: string;
+    boolAnswer?: string;
     count: number;
+    date?: Date;
 }
 
-export interface SatisfactionStatistic {
+export interface AnswersCount {
     question: string;
-    verySatisfied: number;
-    satisfied: number;
-    unSatisfied: number;
+    verySatisfied?: number;
+    satisfied?: number;
+    unSatisfied?: number;
+    yes?: number;
+    no?: number;
 }
 
-export interface BoolStatistic {
+export interface AnswersHistoricCount {
     question: string;
-    yes: number;
-    no: number;
+    years: string[];
+    verySatisfied?: number[];
+    satisfied?: number[];
+    unSatisfied?: number[];
+    yes?: number[];
+    no?: number[];
 }
 
-export interface HistoricStatistics {
-    date: Date;
-    count: number;
-}

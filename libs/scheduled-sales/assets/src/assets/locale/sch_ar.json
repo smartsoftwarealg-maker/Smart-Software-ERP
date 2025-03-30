@@ -48,8 +48,11 @@
     "VERY_SATISFIED":    "راض جدا",
     "SATISFIED":         "راض",
     "UNSATISFIED":       "غير راض",
-    "POLL_THANKS" : "شكرا لمشاركتك في الاستطلاع",
-    "YOUR_WELCOME" : "على الرحب والسعة",
+    "POLL_THANKS" :      "شكرا لمشاركتك في الاستطلاع",
+    "YOUR_WELCOME" :     "على الرحب والسعة",
     "POLL_CHARTS":       "مخططات الإستطلاع",
-    "ANNUAL_STATISTICS": "لإحصاءات السنوية"
+    "ANNUAL_STATISTICS": "لإحصاءات السنوية",
+    "YES":               "نعم",
+    "NO":                "لا",
+    "POLL_HISTORY":      "الإحصائيات التاريخية"
 }

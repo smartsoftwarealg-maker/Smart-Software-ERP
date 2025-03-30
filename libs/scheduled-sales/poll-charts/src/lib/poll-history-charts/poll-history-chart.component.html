@@ -1,0 +1,14 @@
+<div class="container__div">
+    @for (hs of HSatisArr; track hs.question; let i = $index) {
+        <mat-card class="chart__div">
+            <ss-question-line-chart [index]="i" type="satisfaction" [data]="hs"
+                                    class="chart"></ss-question-line-chart>
+        </mat-card>
+    }
+    @for (hs of HBoolArr; track hs.question; let i = $index) {
+        <mat-card class="chart__div">
+            <ss-question-line-chart [index]="i+HSatisArr.length" type="boolean" [data]="hs"
+                                    class="chart"></ss-question-line-chart>
+        </mat-card>
+    }
+</div>

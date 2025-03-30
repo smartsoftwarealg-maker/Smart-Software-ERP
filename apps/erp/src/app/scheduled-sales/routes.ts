@@ -28,7 +28,7 @@ import {
     SALES_INVOICE_VALIDATION_URL,
     SS_POLL_QUESTION_URL,
     SS_SALES_POLL_URL,
-    SS_POLL_CHARTS_URL,
+    SS_POLL_CHARTS_URL, SS_POLL_HISTORY_CHARTS_URL
 } from '../common';
 import {
     ProjectListComponent,
@@ -94,6 +94,7 @@ import { SalesCompensationListComponent } from '@ss/scheduled-sales/compensation
 import { SalesCompensationDetailComponent } from '@ss/scheduled-sales/compensations';
 import { InvoiceValidationComponent } from '@ss/scheduled-sales/sales-validation';
 import { PollChartComponent } from '@ss/scheduleds-sales/poll-charts';
+import { PollHistoryChartComponent } from '@ss/scheduleds-sales/poll-charts';
 
 export const scheduledSalesRoutes: Routes = [
     {
@@ -418,7 +419,6 @@ export const scheduledSalesRoutes: Routes = [
             },
         ],
     },
-
     {
         path: SS_POLL_QUESTION_URL,
         children: [
@@ -438,6 +438,11 @@ export const scheduledSalesRoutes: Routes = [
     {
         path: SS_POLL_CHARTS_URL,
         component: PollChartComponent,
+        canDeactivate: [CanDeactivateService],
+    },
+    {
+        path: SS_POLL_HISTORY_CHARTS_URL,
+        component: PollHistoryChartComponent,
         canDeactivate: [CanDeactivateService],
     },
 
