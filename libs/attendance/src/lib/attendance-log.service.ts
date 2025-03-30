@@ -41,4 +41,10 @@ export class AttendanceLogService extends BaseEntityService<ATTReport> {
                 .pipe(map(res => res.body)) :
             of([]);
     }
+
+
+    upload(log: number, data: FormData): Observable<any> {
+        const url = this.urlMap.get(log);
+        return this.httpSrv.upload(url, data);
+    }
 }

@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
-import {Account, AccountService} from '@ss/accounting/api-accounts';
+import { Account, AccountService, AccountStringAutocompleteModel } from '@ss/accounting/api-accounts';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
 import { UntypedFormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -21,6 +21,9 @@ import { MaterialModule } from '@ss/common/api-common';
     imports: [MaterialModule, MatCard, MatCardContent, NgIf, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, MatError]
 })
 export class AssetAccountsDetailComponent extends BaseEntityDetailComponent<Account> {
+    #accountSrv   = inject(AccountService);
+
+    accountLookup     = new AccountStringAutocompleteModel(this.#accountSrv)
 
     constructor(
         public accountService: AccountService,
@@ -57,7 +60,7 @@ export class AssetAccountsDetailComponent extends BaseEntityDetailComponent<Acco
             journalId: [a.journalId],
             ccRequired: [a.ccRequired],
             depreciationAccount: [a.depreciationAccount],
-            endowment_account: [a.endowmentAccount],
+            endowmentAccount: [a.endowmentAccount],
             depreciationRate: [a.depreciationRate],
             usefulLife: [a.usefulLife]
         });
