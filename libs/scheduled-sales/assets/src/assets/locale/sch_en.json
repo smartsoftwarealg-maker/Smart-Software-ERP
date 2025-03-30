@@ -51,5 +51,8 @@
     "POLL_THANKS":       "Thank you for participating in the poll",
     "YOUR_WELCOME":      "You're welcome",
     "POLL_CHARTS":       "Poll charts",
-    "ANNUAL_STATISTICS": "Annual statistics"
+    "ANNUAL_STATISTICS": "Annual statistics",
+    "YES":               "Yes",
+    "NO":                "No",
+    "POLL_HISTORY":      "History poll charts"
 }

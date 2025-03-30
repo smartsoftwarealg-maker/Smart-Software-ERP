@@ -51,5 +51,8 @@
     "POLL_THANKS":        "Merci d'avoir participé au sondage",
     "YOUR_WELCOME":       "Vous êtes les bienvenus",
     "POLL_CHARTS":        "GRAPHIQUES DE SONDAGE",
-    "ANNUAL_STATISTICS":  "Statistiques annuelles"
+    "ANNUAL_STATISTICS":  "Statistiques annuelles",
+    "YES":                "Oui",
+    "NO":                 "Non",
+    "POLL_HISTORY":       "SONDAGE HISTORIQUE"
 }

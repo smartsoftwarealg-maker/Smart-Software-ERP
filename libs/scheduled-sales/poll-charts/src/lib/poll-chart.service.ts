@@ -1,22 +1,22 @@
 import { inject, Injectable } from '@angular/core';
 import { HttpService } from '@ss/common/api-common';
 import { HttpParams } from '@angular/common/http';
-import { HistoricStatistics, QuestionsStatistic, Statistics } from './poll-charts-api';
+import { CURRENT_URL, HISTORIC_URL, QuestionsStatistic, Statistics, STATISTICS_URL } from './poll-charts-api';
 
 @Injectable({ providedIn: 'root' })
 
 export class PollChartService {
     private http = inject(HttpService);
 
-    statistics(period: number) {
-        return this.http.get<Statistics[]>('/ssales/poll-statistics', new HttpParams().set('period', 202401));
+    statistics() {
+        return this.http.get<Statistics[]>(STATISTICS_URL, new HttpParams());
     }
 
-    questionStatistics(period: number) {
-        return this.http.get<QuestionsStatistic[]>('/ssales/current-statistics', new HttpParams().set('period', 202401));
+    questionStatistics() {
+        return this.http.get<QuestionsStatistic[]>(CURRENT_URL, new HttpParams());
     }
 
-    historicStatistics(period: number) {
-        return this.http.get<HistoricStatistics[]>('/ssales/historic-statistics', new HttpParams().set('period', 202401));
+    historicStatistics() {
+        return this.http.get<QuestionsStatistic[]>(HISTORIC_URL, new HttpParams());
     }
 }

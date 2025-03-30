@@ -15,13 +15,16 @@
 .chart {
     height: 100%;
     font-size: 5px;
+    width: 100% !important;
 }
 
 mat-card {
+    justify-content: center;
     padding: 8px;
     border-radius: 1.4em;
+    max-width: fit-content;
+    min-width: 300px;
+    max-height: fit-content;
+    min-height: 350px;
 }
 
-canvas {
-    font-size: 3em;
-}
