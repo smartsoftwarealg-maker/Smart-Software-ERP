@@ -1,11 +1,11 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
 import {AttendanceLogService} from '../attendance-log.service';
-import {ShellService} from '@ss/common/ui-shell';
+import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { FormBuilder, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AttendanceMachine, ATTReport, TYPES } from '../attendance-api';
 import {ActivatedRoute} from '@angular/router';
 import { DatePipe, NgStyle } from '@angular/common';
-import { LanguageService, MaterialModule } from '@ss/common/api-common';
+import { dateTimeToStr, LanguageService, MaterialModule } from '@ss/common/api-common';
 import localeFr from '@angular/common/locales/fr';
 import localeAr from '@angular/common/locales/ar';
 import { registerLocaleData } from '@angular/common';
@@ -13,11 +13,11 @@ import { TranslateDirective } from '@ss/common/ui-lang';
 import { DatePickerComponent } from '@ss/common/ui-datepicker';
 import {  MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from '@angular/material/table';
 import { TranslatePipe } from '@ss/common/ui-lang';
-import { Lookup } from '@ss/common/api-lookup';
 import { AttendanceMachineService } from '../attendance-machine.service';
-import { sign } from 'chart.js/helpers';
-import { MatSelectChange } from '@angular/material/select';
 import { MatSelectionListChange } from '@angular/material/list';
+import { MatRadioChange } from '@angular/material/radio';
+import { finalize, Subscription } from 'rxjs';
+import { HttpEventType } from '@angular/common/http';
 
 @Component({
     selector: 'ss-attendance-log',
@@ -35,17 +35,20 @@ import { MatSelectionListChange } from '@angular/material/list';
         MatHeaderRow,
         MatRowDef,
         MatRow,
-        TranslatePipe,
-    ],
+        TranslatePipe
+    ]
 })
 export class AttendanceLogComponent implements OnInit {
+    private snackBarSrv = inject(SnackBarService);
     private attMachineSrv = inject(AttendanceMachineService);
     private langSrv       = inject(LanguageService);
-    private attendanceLog = inject(AttendanceLogService);
+    private attendanceLog= inject(AttendanceLogService);
     private shellSrv      = inject(ShellService);
-    private fb            = inject(FormBuilder);
-    private route         = inject(ActivatedRoute);
-    private datePipe      = new DatePipe(this.langSrv.lang);
+    private fb             = inject(FormBuilder);
+    private route       = inject(ActivatedRoute);
+    private datePipe        = new DatePipe(this.langSrv.lang);
+    private uploadSub: Subscription|null  = null;
+
 
     private FIXED_HEADERS    = [
         this.langSrv.translate('COMMON_ID'),
@@ -56,6 +59,9 @@ export class AttendanceLogComponent implements OnInit {
     private FIXED_COLS = ['id', 'firstName', 'lastName', 'post'];
     private ipList = signal<string[]>([]);
 
+    uploadProgress = 0;
+    file: File|null = null;
+    fileName: string|null = null;
     attendanceMachines: AttendanceMachine[] = [];
     tableWidth            = 390;
     types                 = TYPES
@@ -73,8 +79,13 @@ export class AttendanceLogComponent implements OnInit {
     columns = this.FIXED_COLS;
     varHeaders: string[] = [];
     displayedCols = this.headers;
+
+    readonly DATABASE = 1;
+    readonly MACHINES = 2;
+    readonly TEXT = 3;
+
     processing = signal(false);
-    fromDatabase = signal(true);
+    inputSource = signal(this.DATABASE);
 
     ngOnInit() {
         registerLocaleData(localeFr);
@@ -86,44 +97,57 @@ export class AttendanceLogComponent implements OnInit {
             .subscribe(res => this.attendanceMachines = res.body);
     }
 
-    refresh() {
+    refresh(e: FileList|null) {
+        this.onChange(e);
+        if (this.inputSource() === this.TEXT) {
+            this.upload();
+        } else {
+            this.doRefresh();
+        }
+    }
+
+    doRefresh() {
         this.processing.set(true);
         const value = this.form.value;
-        const ipList = this.fromDatabase()? null : this.ipList().join(',');
-        this.attendanceLog
-            .getReport(value.type, value.id, value.from, value.to, ipList)
-            .subscribe({
-                next: res => {
-                this.data = res;
-                if (res) {
-                    this.varHeaders = this.getVariableHeaders(new Date(value.from), new Date(value.to));
-                    this.tableWidth = (this.data.length || 0) == 0 ? 390 : (this.data[0].attendance?.length ?? 50) * 110 + 390;
-                    this.displayedCols = this.FIXED_COLS.concat(this.varHeaders.map((_, i) => `e${i}`));
-                    this.columns = this.displayedCols;
-                    this.data
-                        .forEach(e => {
-                            if (e.colors) {
-                                e.hexColors = e.colors.map((c, i) => {
-                                    if (e.weekends && e.weekends[i]) {
-                                        return 'pink';
-                                    }
-                                    if (c > 0) {
-                                        const hex = '0000' + c.toString(16);
-                                        return '#' + hex.substring(hex.length - 6);
-                                    } else {
-                                        return 'inherit';
-                                    }
-                                });
-                            } else {
-                                e.hexColors = this.columns.map(() => 'inherit');
-                            }
-                        });
-                }
-                this.processing.set(false);
-            }, error: err => {
+        const ipList = this.inputSource()? null : this.ipList().join(',');
+        const source = this.attendanceLog.getReport(value.type, value.id, value.from, value.to, ipList);
+        source.subscribe({
+                next: res => this.processData(res),
+                error: err => {
                     this.processing.set(false);
                     throw err;
                 }});
+    }
+
+    private processData(res: ATTReport[]) {
+        const value = this.form.value;
+        this.data = res;
+        if (res) {
+            this.varHeaders = this.getVariableHeaders(new Date(value.from), new Date(value.to));
+            this.tableWidth = (this.data.length || 0) == 0 ? 390 : (this.data[0].attendance?.length ?? 50) * 110 + 390;
+            this.displayedCols = this.FIXED_COLS.concat(this.varHeaders.map((_, i) => `e${i}`));
+            this.columns = this.displayedCols;
+            this.data
+                .forEach(e => {
+                    if (e.colors) {
+                        e.hexColors = e.colors.map((c, i) => {
+                            if (e.weekends && e.weekends[i]) {
+                                return 'pink';
+                            }
+                            if (c > 0) {
+                                const hex = '0000' + c.toString(16);
+                                return '#' + hex.substring(hex.length - 6);
+                            } else {
+                                return 'inherit';
+                            }
+                        });
+                    } else {
+                        e.hexColors = this.columns.map(() => 'inherit');
+                    }
+                });
+        }
+        this.processing.set(false);
+
     }
 
     private getVariableHeaders(from: Date, to: Date): string[] {
@@ -142,12 +166,58 @@ export class AttendanceLogComponent implements OnInit {
         this.selected = item;
     }
 
-    toggleSource() {
-        this.fromDatabase.update(v => !v);
+    toggleSource(event: MatRadioChange) {
+        this.inputSource.update(v => event.value);
     }
 
     onSelection(event: MatSelectionListChange) {
         const ip = event.options[0].value as string;
         this.ipList.update(v => event.options[0].selected? [ip, ...v] : v.filter(i => i !== ip));
     }
+
+    onChange(e: FileList|null) {
+        this.file = e[0] as File;
+        this.fileName = this.file?.name;
+    }
+
+    private upload() {
+        if (this.file) {
+            const formData = new FormData();
+            const formValue = this.form.value;
+            formData.append("from", dateTimeToStr(formValue.from));
+            formData.append("to", dateTimeToStr(formValue.to));
+            formData.append("file", this.file);
+
+            this.processing.set(true);
+            const value = this.form.value;
+
+            this.uploadSub = this.attendanceLog
+                .upload(value.type, formData)
+                .pipe(finalize(() => {
+                    this.reset();
+                    this.processing.set(false);
+                }))
+                .subscribe({
+                    next: (res: any) => {
+                        if (res.type == HttpEventType.UploadProgress) {
+                            this.uploadProgress = Math.round(100 * (res.loaded / res.total));
+                        } else if (res.type == HttpEventType.Response) {
+                            this.processing.set(false);
+                            this.processData(res);
+                        }
+                    },
+                });
+        }
+    }
+
+    cancelUpload() {
+        this.uploadSub.unsubscribe();
+        this.reset();
+    }
+
+    reset() {
+        this.uploadProgress = null;
+        this.uploadSub = null;
+    }
+
 }

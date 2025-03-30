@@ -32,13 +32,32 @@
                     <ss-date-picker formControlName="to"></ss-date-picker>
                 </mat-form-field>
 
-                <mat-radio-group class="default-100" (change)="toggleSource()">
-                    <mat-radio-button [value]="1" [checked]="fromDatabase()" translate>ATT_DATABASE</mat-radio-button>
+                <mat-radio-group class="default-100" (change)="toggleSource($event)">
+                    <mat-radio-button [value]="1" [checked]="inputSource()" translate>ATT_DATABASE</mat-radio-button>
                     <mat-radio-button [value]="2" translate>ATT_MACHINES</mat-radio-button>
+                    <mat-radio-button [value]="3" translate>ATT_TEXT</mat-radio-button>
                 </mat-radio-group>
 
                 <div class="btn__div default-100">
-                    <button mat-raised-button color="primary" type="button" (click)="refresh()"
+                    <input type="file"
+                           class="file-input"
+                           accept=".txt, application/msexcel"
+                           (change)="onChange(fileUpload.files)"
+                           #fileUpload
+                           style="display: none;">
+                    @if (inputSource() === TEXT) {
+                        <div class="file__upload">
+
+                            <span translate>{{ fileName || "COMMON_NO_FILE_SELECTED" }} </span>
+
+                            <button mat-mini-fab color="primary"
+                                    class="upload-btn"
+                                    (click)="fileUpload.click()">
+                                <i class="fas fa-paperclip"></i>
+                            </button>
+                        </div>
+                    }
+                    <button mat-raised-button color="primary" type="button" (click)="refresh(fileUpload.files)"
                             [disabled]="processing()">
                         {{ 'COMMON_REFRESH' | translate }}
                     </button>
@@ -46,7 +65,7 @@
 
             </form>
             <div class="ip__list">
-                <mat-selection-list [disabled]="fromDatabase()" (selectionChange)="onSelection($event)">
+                <mat-selection-list [disabled]="inputSource() !== MACHINES" (selectionChange)="onSelection($event)">
                     @for (m of attendanceMachines; track m.id) {
                         <mat-list-option [value]="m.ipAddress">{{ m.description }}</mat-list-option>
                     }
