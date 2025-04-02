@@ -37,6 +37,7 @@ import { CompensationService } from '../services/compensation.service';
         MatTooltip],
     templateUrl: './sales-compensation-list.component.html',
     styleUrl: './sales-compensation-list.component.scss',
+    standalone: true
 })
 export class SalesCompensationListComponent extends BaseChildEntityListComponent<Compensation> {
     override displayedColumns = ['description', 'creationTime', 'amount'];

@@ -1,0 +1,39 @@
+.size {
+    width: 90%;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 4px;
+}
+.radio__div {
+    display: flex;
+    justify-content: center;
+}
+.div__table {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    overflow: auto;
+    height: calc(40% - 64px);
+}
+
+.main-table {
+    min-width: 800px;
+    width: 100%;
+}
+.mat-column-debit,
+.mat-column-credit {
+    flex: 1 1 100px;
+    justify-content: flex-end;
+}
+
+.mat-column-description {
+    flex: 2 1 200px;
+}
+
+.mat-column-matchKey {
+    flex: 1 1 100px;
+}
+
+.mat-column-matchBtn {
+    flex: 1 1 50px;
+}

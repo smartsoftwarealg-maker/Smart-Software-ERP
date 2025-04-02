@@ -15,7 +15,7 @@ import {
     ABS_ACC_PERIOD_SELECTION_URL,
     ABS_ACC_PROJECT_URL,
     ABS_ACC_REPORTS_URL,
-    ABS_ACC_TRANSAC_ACCOUNT_URL,
+    ABS_ACC_TRANSAC_ACCOUNT_URL, ABS_ACC_TRANSACTION_MATCHING_URL,
     ABS_ACC_TRANSACTIONS_URL,
     ABS_BALANCE_QUERIES_URL, ABS_CONSOLIDATION_CENTERS_URL,
     ABS_DEPRECIATION_GENERATION_URL,
@@ -143,6 +143,12 @@ export const accountingNavTree: SideNavNode = {
             icon: 'fa-solid fa-table-list',
             route: ABS_ACC_F13_URL,
             accessRights: 'F13'
+        },
+        {
+            name: 'ACC_TRANSACTION_MATCHING',
+            icon: 'fa-solid fa-people-pants',
+            route: ABS_ACC_TRANSACTION_MATCHING_URL,
+            accessRights: 'MBalance'
         },
         {
             name: 'COMMON_REPORTS',

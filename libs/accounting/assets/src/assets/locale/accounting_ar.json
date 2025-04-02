@@ -79,5 +79,10 @@
     "EXEMPTION":                "الخصومات",
     "TAX_RATE":                 "معدل الضريبة",
     "SALES_INJECTION":          "توليد البيع",
-    "CONSOLIDATION_CENTERS":    "مراكز التجميع"
+    "CONSOLIDATION_CENTERS":    "مراكز التجميع",
+    "PACK":                     "ضغط أرقام القطع",
+    "TRANSACTION_MATCHING":     "ربط المعاملات",
+    "MATCH_KEY":                "مفتاح الربط",
+    "MATCHED":                  "مربوط",
+    "UNMATCHED":               "غير مربوط"
 }

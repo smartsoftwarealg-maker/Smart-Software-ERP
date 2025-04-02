@@ -435,7 +435,7 @@ export class ShellService {
      * @param subFn a function that subscribes to an observable, this observable sends search terms
      * @param focusField
      */
-    public enableSearch(inputLabel: string, subFn: (a: Observable<any>) => any, focusField = false): void {
+    public  enableSearch(inputLabel: string, subFn: (a: Observable<any>) => any, focusField = false): void {
         this.searchInputLabel = inputLabel;
         if (this.hasSearch) {
             // alert(

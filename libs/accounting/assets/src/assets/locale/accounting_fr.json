@@ -79,6 +79,11 @@
     "TAX_RATE":                 "Taux de taxe",
     "SALES_INJECTION":          "Injection vente",
     "CONSOLIDATION_CENTERS":    "Centres de consolidation",
-    "CUSTOMER_CODE_REQUIRED":   "Code client requis"
+    "CUSTOMER_CODE_REQUIRED":   "Code client requis",
+    "PACK":                     "Compacter le numéro de pièce",
+    "TRANSACTION_MATCHING":     "Literage",
+    "MATCH_KEY":                "Clé correspondante",
+    "MATCHED":                  "Correspondant",
+    "UNMATCHED":                "Non correspondant"
 }
 

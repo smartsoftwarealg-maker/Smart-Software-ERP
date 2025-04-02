@@ -1,0 +1,119 @@
+<div class="size radio__div">
+    <mat-radio-group (change)="toggleMode()">
+        <mat-radio-button [value]="1" [checked]="mode() === UNMATCHED_MODE" translate>ACC_UNMATCHED
+        </mat-radio-button>
+        <mat-radio-button [value]="2" translate>ACC_MATCHED</mat-radio-button>
+    </mat-radio-group>
+</div>
+<div class="div__table size">
+    <mat-table mat-table [dataSource]="debits" class="main-table" matSort (matSortChange)="sortDebit($event)">
+
+        <ng-container matColumnDef="customerCode">
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_CUSTOMER_CODE</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{ e.customerCode }}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="debit">
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_DEBIT</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{ (e.balance > 0 ? e.balance : 0) | number: '1.2-2' }}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="credit">
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_CREDIT</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{ (e.balance < 0 ? -e.balance : 0) | number: '1.2-2' }}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="description">
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>ADMINISTRATION_DESCRIPTION</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{ e.description }}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="matchKey">
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>ACC_MATCH_KEY</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{ e.matchKey }}
+            </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+        <mat-row class="selectable"
+                 [class.selected]="row.id === selectedDebit()?.id && row.description === selectedDebit()?.description"
+                 (click)="selectDebit(row)"
+                 *matRowDef="let row; columns: displayedColumns;">
+        </mat-row>
+    </mat-table>
+</div>
+<ss-pagination class="size b-b-background" [paginationModel]="debitPaginator"></ss-pagination>
+
+<div class="div__table size">
+    <mat-table mat-table [dataSource]="credits" class="main-table" matSort (matSortChange)="sortCredit($event)">
+
+        <ng-container matColumnDef="customerCode">
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_CUSTOMER_CODE</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{ e.customerCode }}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="debit">
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_DEBIT</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{ (e.balance > 0 ? e.balance : 0) | number: '1.2-2' }}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="credit">
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_CREDIT</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{ (e.balance > 0 ? 0 : -e.balance) | number: '1.2-2' }}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="description">
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>ADMINISTRATION_DESCRIPTION</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{ e.description }}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="matchKey">
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>ACC_MATCH_KEY</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{ e.matchKey }}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="matchBtn">
+            <mat-header-cell *matHeaderCellDef>
+                @if (mode() === UNMATCHED_MODE) {
+                    <i class="fa-solid fa-link"></i>
+                } @else {
+                    <i class="fa-solid fa-scissors"></i>
+                }
+            </mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                @if (e.customerCode === this.selectedDebit()?.customerCode) {
+                    <mat-checkbox [class.mat-checkbox-disabled]="!validSelection()"
+                                  (click)="join(e)">
+                    </mat-checkbox>
+                } @else {
+                    <span></span>
+                }
+            </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="creditColumns; sticky: true"></mat-header-row>
+        <mat-row class="selectable" [class.selected]="row.id === selectedCredit()?.id" (click)="selectCredit(row)"
+                 *matRowDef="let row; columns: creditColumns;">
+        </mat-row>
+    </mat-table>
+</div>
+<ss-pagination class="size b-b-background" [paginationModel]="creditPaginator"></ss-pagination>
