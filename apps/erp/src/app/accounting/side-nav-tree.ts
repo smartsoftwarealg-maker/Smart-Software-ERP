@@ -146,7 +146,7 @@ export const accountingNavTree: SideNavNode = {
         },
         {
             name: 'ACC_TRANSACTION_MATCHING',
-            icon: 'fa-solid fa-people-pants',
+            icon: 'fa-solid fa-link',
             route: ABS_ACC_TRANSACTION_MATCHING_URL,
             accessRights: 'MBalance'
         },
