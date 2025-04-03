@@ -388,6 +388,7 @@
             "@ss/logistics/ui-document-archive": [
                 "libs/logistics/ui-document-archive/src/index.ts"
             ],
+            "@ss/logistics/ui-mrp": ["libs/logistics/ui-mrp/src/index.ts"],
             "@ss/logistics/ui-options": [
                 "libs/logistics/ui-options/src/index.ts"
             ],

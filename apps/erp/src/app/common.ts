@@ -14,6 +14,7 @@ import {
 import {AgentAssetsListComponent} from '@ss/assets-component';
 import { DocumentSourcesComponent } from 'logistics/ui-document-sources';
 import { UiTransactionlineQuantitiesComponent } from '@ss/logistics/quantities';
+import { UiMrpComponent } from '@ss/logistics/ui-mrp';
 
 // common
 export const LOOKUPS_URL = 'lookups';
@@ -1003,5 +1004,9 @@ export const docInfoRoutes: Routes = [
     {
         path: 'quantities',
         component: UiTransactionlineQuantitiesComponent
-    }
+    },
+    {
+        path:'mrp',
+        component: UiMrpComponent
+    },
 ];

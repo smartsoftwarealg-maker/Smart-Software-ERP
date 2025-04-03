@@ -1,0 +1,28 @@
+:host {
+    display: block;
+    margin: auto;
+    position: relative;
+    max-width: 1624px;
+    width: 100%;
+}
+
+.content-div {
+    width: 100%;
+    max-width: 1624px;
+    min-height: 320px;
+}
+
+.mat-column-reference{
+    justify-content: center;
+}
+.mat-column-description{
+    justify-content: left;
+}
+.mat-column-toOrder{
+    justify-content: flex-end;
+}
+.mat-column-qty,
+.mat-column-purchaseOrder,
+.mat-column-inventory {
+    justify-content: flex-end;
+}
