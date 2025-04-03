@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { MRP, MRP_URL } from '../../../../../production/mrp/src/lib/api/mrp-api';
 import { HttpService } from '@ss/common/api-common';
 import { ShellService } from '@ss/common/ui-shell';
-import { Observable } from 'rxjs';
+import { Observable, of, switchMap } from 'rxjs';
 import {
     MatCell,
     MatCellDef,
@@ -15,6 +15,7 @@ import {
 } from '@angular/material/table';
 import { TranslateDirective } from '@ss/common/ui-lang';
 import { ActivatedRoute } from '@angular/router';
+import { HttpParams } from '@angular/common/http';
 
 @Component({
     selector: 'ss-ui-mrp',
@@ -24,8 +25,6 @@ import { ActivatedRoute } from '@angular/router';
     standalone: true
 })
 export class UiMrpComponent implements OnInit {
-    @Input() prodId?: number;
-    @Input() prodDetail?: number;
     public data: MRP[] = [];
     displayedColumns: string[] = [
         'reference',
@@ -39,25 +38,29 @@ export class UiMrpComponent implements OnInit {
     constructor(private http: HttpService, private shellSrv: ShellService, private route:ActivatedRoute) {
     }
 
-    getData(): Observable<MRP[]> {
-        return this.http.get<MRP[]>(MRP_URL);
+    getData(id:number |null, lineId?:number): Observable<MRP[]> {
+        let p = new HttpParams() ;
+        if (id){p = p.set('id', id);}
+        if (lineId){p = p.set('lineId', lineId);}
+        return this.http.get<MRP[]>(MRP_URL, p);
     }
 
     ngOnInit(): void {
         this.data = [];
         this.shellSrv.setLoading(true);
-        this.route.queryParams.subscribe(param => {
-            const prodId = +param['prodId'];
-            const prodDetail = +param['prodDetail'];
+        this.route.queryParams.pipe(
+            switchMap(param => {
+                const prodId = +param['prodId'];
+                const prodDetail = +param['prodDetail'];
 
-            if (prodId) {
-               param.id=this.prodId;
-            }else if (prodDetail){
-                param.id=this.prodDetail
-            }
-        });
-
-        this.getData().subscribe({
+                if (prodId) {
+                    return this.getData(prodId);
+                } else if (prodDetail) {
+                    return this.getData(null, prodDetail);
+                }
+                return of([]);
+            })
+        ).subscribe({
             next: (data) => {
                 this.data = data;
                 this.shellSrv.setLoading(false);
