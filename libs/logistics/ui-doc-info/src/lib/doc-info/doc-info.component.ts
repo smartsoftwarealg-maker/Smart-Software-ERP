@@ -1,14 +1,14 @@
 import { Component, inject, Input } from '@angular/core';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
-import {DOCUMENT_ARCHIVES} from '@ss/common/app-archive';
+import { DOCUMENT_ARCHIVES } from '@ss/common/app-archive';
 import { CommonModule } from '@angular/common';
 import { MaterialModule } from '@ss/common/api-common';
 
 
 import { ReactiveFormsModule } from '@angular/forms';
 
-import { UiStockInfoComponent } from '@ss/logistics/ui-stock-info';
-import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
+
+import { TranslateDirective } from '@ss/common/ui-lang';
 
 interface Entry {
     name: string,
@@ -37,8 +37,8 @@ interface GroupEntry {
 })
 
 export class DocInfoComponent {
-    private router = inject( Router);
-    private route = inject(ActivatedRoute)
+    private router = inject(Router);
+    private route = inject(ActivatedRoute);
 
     private params_: any;
     private AGENT_ASSETS = 'agent_assets';
@@ -72,8 +72,14 @@ export class DocInfoComponent {
                     description: 'COMMON_ARCHIVE',
                     url: 'archive',
                     paramsProvided: (p: string[]) => p.includes('id') && p.includes('appId')
+                },
+                {
+                    name: 'mrp',
+                    description: 'PROD_MRP_REPORT',
+                    url: 'mrp',
+                    paramsProvided: (p: string[]) => {return p.includes('prodId');}
                 }
-            ],
+            ]
         },
         {
             group: 'agent',
@@ -135,6 +141,12 @@ export class DocInfoComponent {
                     url: 'quantities',
                     paramsProvided: (p: string[]) => p.includes('detailId')
                 },
+                {
+                    name: 'mrp',
+                    description: 'PROD_MRP_REPORT',
+                    url: 'mrp',
+                    paramsProvided: (p: string[]) => p.includes('prodDetail')
+                }
             ]
         },
     ];
@@ -142,7 +154,7 @@ export class DocInfoComponent {
     @Input() displayedGroups: string[] = [];
 
     @Input() set params(params: any) {
-        this.params_ = {...params, appId: DOCUMENT_ARCHIVES, editable: true};
+        this.params_ = { ...params, appId: DOCUMENT_ARCHIVES, editable: true };
         this.navigate();
     }
 
@@ -179,7 +191,7 @@ export class DocInfoComponent {
     navigate(): void {
         if (this.selectedEntry != null) {
             delete this.params_['compensated'];
-            this.params_.compensated = this.selectedEntry.name === 'debts_2'? 'false' : 'true';
+            this.params_.compensated = this.selectedEntry.name === 'debts_2' ? 'false' : 'true';
             this.router.navigate([this.selectedEntry.url],
                 {
                     relativeTo: this.route,
