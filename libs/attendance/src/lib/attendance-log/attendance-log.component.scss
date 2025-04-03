@@ -1,10 +1,15 @@
 mat-card {
-    width: 80%;
-    max-width: 800px;
+    width: 90%;
+    max-width: 1200px;
     margin: 8px auto;
     padding: 16px;
     border-radius: 1.4em;
     flex: 1 1 70%;
+}
+.button__div {
+    display: flex;
+    gap: 1em;
+    padding: 4px 0;
 }
 .input__div {
     width: 100%;
@@ -83,4 +88,11 @@ mat-table {
 
 .file__upload span {
     flex: 2 1 80%;
+}
+
+@media (width <= 900px) {
+    .button__div {
+        display: block;
+    }
+
 }

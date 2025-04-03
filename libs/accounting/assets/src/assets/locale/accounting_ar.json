@@ -84,5 +84,6 @@
     "TRANSACTION_MATCHING":     "ربط المعاملات",
     "MATCH_KEY":                "مفتاح الربط",
     "MATCHED":                  "مربوط",
-    "UNMATCHED":               "غير مربوط"
+    "UNMATCHED":               "غير مربوط",
+    "JOIN_TRANSACTION":        "اربط الصفقتين"
 }

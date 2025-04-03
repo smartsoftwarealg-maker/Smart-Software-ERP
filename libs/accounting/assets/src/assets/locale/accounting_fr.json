@@ -84,6 +84,8 @@
     "TRANSACTION_MATCHING":     "Literage",
     "MATCH_KEY":                "Clé correspondante",
     "MATCHED":                  "Correspondant",
-    "UNMATCHED":                "Non correspondant"
+    "UNMATCHED":                "Non correspondant",
+    "JOIN_TRANSACTIONS":        "Joindre les transactions",
+    "FREE_TRANSACTION":         "Transaction libre"
 }
 

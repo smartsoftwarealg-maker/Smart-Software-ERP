@@ -32,12 +32,19 @@
                     <ss-date-picker formControlName="to"></ss-date-picker>
                 </mat-form-field>
 
-                <mat-radio-group class="default-100" (change)="toggleSource($event)">
-                    <mat-radio-button [value]="1" [checked]="inputSource()" translate>ATT_DATABASE</mat-radio-button>
-                    <mat-radio-button [value]="2" translate>ATT_MACHINES</mat-radio-button>
-                    <mat-radio-button [value]="3" translate>ATT_TEXT</mat-radio-button>
-                </mat-radio-group>
+                <div class="button__div">
+                    <mat-radio-group (change)="toggleSource($event)">
+                        <mat-radio-button [value]="1" [checked]="inputSource() === DATABASE" translate>ATT_DATABASE</mat-radio-button>
+                        <mat-radio-button [value]="2" translate>ATT_MACHINES</mat-radio-button>
+                        <mat-radio-button [value]="3" translate>ATT_LOG_FILE</mat-radio-button>
+                    </mat-radio-group>
 
+                    @if (inputSource() !== DATABASE) {
+                        <mat-checkbox (click)="toggleCanSaveToDB()" [checked]="canSaveToDB()" translate>
+                            ATT_SAVE_TO_DB
+                        </mat-checkbox>
+                    }
+                </div>
                 <div class="btn__div default-100">
                     <input type="file"
                            class="file-input"
@@ -61,6 +68,15 @@
                             [disabled]="processing()">
                         {{ 'COMMON_REFRESH' | translate }}
                     </button>
+                    @if (inputSource() !== DATABASE) {
+                        <button mat-raised-button
+                                color="primary"
+                                type="button"
+                                (click)="saveToDB()"
+                                [disabled]="processing() || !canSaveToDB()">
+                            {{ 'COMMON_SAVE' | translate }}
+                        </button>
+                    }
                 </div>
 
             </form>

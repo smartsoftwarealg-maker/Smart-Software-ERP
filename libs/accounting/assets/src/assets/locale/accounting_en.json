@@ -84,5 +84,7 @@
     "TRANSACTION_MATCHING":     "Transaction matching",
     "MATCH_KEY":                "Match key",
     "MATCHED":                  "Matched",
-    "UNMATCHED":                "Unmatched"
+    "UNMATCHED":                "Unmatched",
+    "JOIN_TRANSACTIONS":        "Join transactions",
+    "FREE_TRANSACTIONS":        "Free transactions"
 }

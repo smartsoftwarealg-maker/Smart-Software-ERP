@@ -16,7 +16,7 @@ import { TranslatePipe } from '@ss/common/ui-lang';
 import { AttendanceMachineService } from '../attendance-machine.service';
 import { MatSelectionListChange } from '@angular/material/list';
 import { MatRadioChange } from '@angular/material/radio';
-import { finalize, Subscription } from 'rxjs';
+import { finalize, map, Subscription } from 'rxjs';
 import { HttpEventType } from '@angular/common/http';
 
 @Component({
@@ -69,7 +69,7 @@ export class AttendanceLogComponent implements OnInit {
     data: ATTReport[]     = [];
     form = this.fb.group({
         id:     [0],
-        from:   [new Date(), Validators.required],
+        from:   [new Date(new Date().getTime() - (31 * 24 * 60 * 60 * 1000)), Validators.required],
         to:     [new Date(), Validators.required],
         type:   [1,          Validators.required],
         source: [1, Validators.required]
@@ -86,6 +86,7 @@ export class AttendanceLogComponent implements OnInit {
 
     processing = signal(false);
     inputSource = signal(this.DATABASE);
+    canSaveToDB = signal(false);
 
     ngOnInit() {
         registerLocaleData(localeFr);
@@ -103,6 +104,42 @@ export class AttendanceLogComponent implements OnInit {
             this.upload();
         } else {
             this.doRefresh();
+        }
+    }
+    saveToDB() {
+        console.log('____________________saving to DB');
+    }
+
+    toggleCanSaveToDB() {
+        this.canSaveToDB.update(v => !v);
+    }
+    private upload() {
+        if (this.file) {
+            const formData = new FormData();
+            const formValue = this.form.value;
+            formData.append("id", formValue.id.toString());
+            formData.append("from", dateTimeToStr(formValue.from));
+            formData.append("to", dateTimeToStr(formValue.to));
+            formData.append("file", this.file);
+
+            this.processing.set(true);
+            const value = this.form.value;
+
+            this.uploadSub = this.attendanceLog
+                .upload(value.type, formData)
+                .pipe(finalize(() => this.reset()),
+                      map(res => res.body))
+                .subscribe({
+                    next: (res: any) => {
+                        if (res) {
+                            this.processData(res);
+                        }
+                    },
+                    error: err => {
+                        this.processing.set(false);
+                        throw err;
+                    }
+                });
         }
     }
 
@@ -147,7 +184,6 @@ export class AttendanceLogComponent implements OnInit {
                 });
         }
         this.processing.set(false);
-
     }
 
     private getVariableHeaders(from: Date, to: Date): string[] {
@@ -167,7 +203,7 @@ export class AttendanceLogComponent implements OnInit {
     }
 
     toggleSource(event: MatRadioChange) {
-        this.inputSource.update(v => event.value);
+        this.inputSource.set( event.value);
     }
 
     onSelection(event: MatSelectionListChange) {
@@ -180,35 +216,6 @@ export class AttendanceLogComponent implements OnInit {
         this.fileName = this.file?.name;
     }
 
-    private upload() {
-        if (this.file) {
-            const formData = new FormData();
-            const formValue = this.form.value;
-            formData.append("from", dateTimeToStr(formValue.from));
-            formData.append("to", dateTimeToStr(formValue.to));
-            formData.append("file", this.file);
-
-            this.processing.set(true);
-            const value = this.form.value;
-
-            this.uploadSub = this.attendanceLog
-                .upload(value.type, formData)
-                .pipe(finalize(() => {
-                    this.reset();
-                    this.processing.set(false);
-                }))
-                .subscribe({
-                    next: (res: any) => {
-                        if (res.type == HttpEventType.UploadProgress) {
-                            this.uploadProgress = Math.round(100 * (res.loaded / res.total));
-                        } else if (res.type == HttpEventType.Response) {
-                            this.processing.set(false);
-                            this.processData(res);
-                        }
-                    },
-                });
-        }
-    }
 
     cancelUpload() {
         this.uploadSub.unsubscribe();
@@ -218,6 +225,7 @@ export class AttendanceLogComponent implements OnInit {
     reset() {
         this.uploadProgress = null;
         this.uploadSub = null;
+        this.processing.set(false);
     }
 
 }

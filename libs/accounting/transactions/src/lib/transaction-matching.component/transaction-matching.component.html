@@ -94,9 +94,9 @@
         <ng-container matColumnDef="matchBtn">
             <mat-header-cell *matHeaderCellDef>
                 @if (mode() === UNMATCHED_MODE) {
-                    <i class="fa-solid fa-link"></i>
+                    <i class="fa-solid fa-link" [matTooltip]="'ACC_JOIN_TRANSACTIONS' | translate"></i>
                 } @else {
-                    <i class="fa-solid fa-scissors"></i>
+                    <i class="fa-solid fa-scissors" [matTooltip]="'ACC_FREE_TRANSACTIONS' | translate"></i>
                 }
             </mat-header-cell>
             <mat-cell *matCellDef="let e">

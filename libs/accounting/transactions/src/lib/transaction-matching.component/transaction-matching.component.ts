@@ -1,7 +1,7 @@
 import { Component, computed, inject, Inject, OnInit, signal } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule, PaginationModel } from '@ss/common/api-common';
-import { TranslateDirective } from '@ss/common/ui-lang';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 import { KeepOnToolbar, ShellService, SnackBarService, ToolbarButton } from '@ss/common/ui-shell';
 import { ActivatedRoute } from '@angular/router';
 import { TransactionMatchingService } from './api/transaction-matching.service';
@@ -21,7 +21,8 @@ import { DecimalPipe } from '@angular/common';
         FormsModule,
         ReactiveFormsModule,
         PaginationComponent,
-        DecimalPipe
+        DecimalPipe,
+        TranslatePipe
     ]
 })
 export class TransactionMatchingComponent implements OnInit {
