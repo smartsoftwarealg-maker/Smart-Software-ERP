@@ -206,5 +206,7 @@
     "IS_PROMOTION":          "Promotion?",
     "FINAL_MEMO":            "Note Corrigé par le directeur de la structure dans le cas ou la différence des premiers notateurs dépasse les 05 points",
     "NEW_ID":                "Nouveau ID",
-    "ID_UPDATE":             "Mise à jour ID"
+    "ID_UPDATE":             "Mise à jour ID",
+    "FUNDS":                 "Fonds",
+    "FUNDS_DETAIL":          "Détail des fonds"
 }
