@@ -15,7 +15,7 @@ export class DocImportService {
         const params = new HttpParams()
             .set('document', document)
             .set('number', numb)
-            .set('agent', agent)
+            .set('agent', agent||0)
             .set('page', `${page}-${pageSize}`);
         return this.httpService.getData('/imports', page, pageSize, null, null, params);
     }
