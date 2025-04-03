@@ -145,10 +145,7 @@ export class DocInfoComponent {
                     name: 'mrp',
                     description: 'PROD_MRP_REPORT',
                     url: 'mrp',
-                    paramsProvided: (p: string[]) => {
-                        console.log(p);
-                        return p.includes('prodDetail');
-                    }
+                    paramsProvided: (p: string[]) => p.includes('prodDetail')
                 }
             ]
         },
