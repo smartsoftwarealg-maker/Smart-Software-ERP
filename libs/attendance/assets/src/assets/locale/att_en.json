@@ -25,5 +25,8 @@
     "FIELD":            "Field",
     "LETTER":           "Letter",
     "MANUAL_SIGNATURE": "Manual signature",
-    "MANUAL_SIGNATURES": "Manual signatures"
+    "MANUAL_SIGNATURES": "Manual signatures",
+    "LOG_FILE":              "Log file",
+    "SAVE_TO_DB":            "Save to DB"
+
 }
