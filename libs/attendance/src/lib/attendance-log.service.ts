@@ -47,4 +47,18 @@ export class AttendanceLogService extends BaseEntityService<ATTReport> {
         const url = this.urlMap.get(log);
         return this.httpSrv.upload(url, data);
     }
+
+    saveFromMachines(id: number, from: Date, to: Date, ipList: string|null): Observable<ATTReport[]> {
+        const params = new HttpParams()
+            .set('id', id)
+            .set('from', this.langSrv.formatDate(from))
+            .set('to', this.langSrv.formatDate(to));
+        const params2 = ipList? params.set('ip', ipList) : params;
+        return this.httpSrv.post('/attendance/save-ip', params2);
+    }
+
+    saveFromText(data: FormData): Observable<{  count: number }> {
+        return this.httpSrv.upload('/attendance/save-log', data);
+    }
+
 }

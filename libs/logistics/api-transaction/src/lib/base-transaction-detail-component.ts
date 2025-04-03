@@ -44,11 +44,11 @@ export abstract class BaseTransactionDetailComponent extends BaseEntityDetailCom
     private consumerSrv = inject(ConsumerService);
     private branchSrv = inject(BranchService);
     private _isManager = false;
-    private transaction: Transaction = null;
     private docImportService: DocImportService = inject(DocImportService);
     private supplierSrv = inject(SupplierService);
     private customerSrv = inject(CustomerService);
 
+    protected transaction: Transaction = null;
     protected currencySrv = inject(CurrencyService);
     protected purchaseProjectSrv = inject(PurchaseContractService);
     protected salesProjectSrv = inject(SalesContractService);

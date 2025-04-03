@@ -7,7 +7,7 @@ import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {  of, switchMap } from 'rxjs';
 import { LoginService, MaterialModule } from '@ss/common/api-common';
 import {
-    BaseTransactionDetailComponent, BaseTransactionLinesListComponent, DOC_SUPPLIER_QUOTATION,
+    BaseTransactionDetailComponent, BaseTransactionLinesListComponent, DOC_PRODUCTION_ORDER, DOC_SUPPLIER_QUOTATION,
     Transaction
 } from '@ss/logistics/api-transaction';
 import { MatDialog} from '@angular/material/dialog';
@@ -29,18 +29,17 @@ import { ProductionLinesService } from '../production-services/production-lines.
     templateUrl: './production-detail.component.html',
     styleUrls: ['../../../../../common/assets/src/assets/transac-detail.scss'],
     standalone: true,
-    imports: [MaterialModule, MatCard, MatCardContent, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, DatePickerComponent, UiAutoCompleteComponent, NgIf, MatError, MatTabGroup, MatTab, MatTabLabel, CdkTextareaAutosize, RouterOutlet]
+    imports: [
+        MaterialModule,
+        DatePickerComponent,
+        UiAutoCompleteComponent,
+        NgIf,
+        MatError,
+        TranslateDirective,
+        CdkTextareaAutosize,
+        RouterOutlet]
 })
 export class ProductionDetailComponent extends BaseTransactionDetailComponent {
-
-    private importContractBtn: ToolbarButton = {
-        disabled: false,
-        icon: 'fa-solid fa-file-arrow-up',
-        keepOnToolbar: KeepOnToolbar.DYNAMIC,
-        label: 'LOGISTICS_IMPORT_CONTRACT',
-        visible: true,
-        click: () => this.importContract(),
-    };
 
     constructor(public orderService: ProductionService,
                 public override detailSrv: ProductionLinesService,
@@ -54,7 +53,6 @@ export class ProductionDetailComponent extends BaseTransactionDetailComponent {
                 protected override loginSrv: LoginService,
                 protected override dialog: MatDialog) {
         super(orderService, detailSrv, shellSrv, snackBarSrv, route, router, formBuilder, confirmationSrv, loginSrv, dialog, 'PROD_PRODUCTION');
-        this.purchaseProjectLookup.onObjectSelected = e => this.onProject(e);
     }
 
     override setupForm(b: Transaction): FormGroup {
@@ -67,6 +65,7 @@ export class ProductionDetailComponent extends BaseTransactionDetailComponent {
             b.date = new Date();
         }
 
+        this.transaction = b;
         this.detailSrv.setParentId(b.id || 0);
         this.purchaseProjectSrv.setParentId(b.agent || 0);
         //this._isManager = this.loginSrv.appCtx.manager;
@@ -100,27 +99,12 @@ export class ProductionDetailComponent extends BaseTransactionDetailComponent {
     override ngOnInit() {
         super.ngOnInit();
         this.currencySrv.load().subscribe();
-        this.shellSrv.addButton(this.importContractBtn);
     }
 
-    private importContract() {
-        if (!this.importContractBtn.disabled && this.form.controls['project'].value) {
-            this.orderService
-                .consumeContract(this.id)
-                .pipe(switchMap(() =>
-                    this.outlet?.component instanceof BaseTransactionLinesListComponent?
-                        this.outlet?.component.loadDetailLines() : of(0)))
-                .subscribe(() => {
-                    this.executionRef++;
-                    this.shellSrv.setLoading(false);
-                    this.snackBarSrv.showSuccessMessage();
-                });
-        }
-    }
 
     protected importedDocuments(): Lookup[] {
         return [
-            { id: DOC_SUPPLIER_QUOTATION, description: 'PROD_PRODUCTIONS_QUOTATION'}
+            { id: DOC_PRODUCTION_ORDER, description: 'PROD_PRODUCTION_ORDER'}
         ];
     }
 
@@ -133,15 +117,6 @@ export class ProductionDetailComponent extends BaseTransactionDetailComponent {
     }
 
     protected showImportButton(): boolean {
-        return false;
-    }
-
-    override finishLoading(e: Transaction) {
-        super.finishLoading(e);
-        this.importContractBtn.disabled = !e.project;
-    }
-
-    private onProject(p: Project) {
-        this.importContractBtn.disabled = !p?.id;
+        return true;
     }
 }

@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import {
     BaseTransactionLinesDetailComponent, DOC_PRODUCTION
 } from '@ss/logistics/api-transaction';
@@ -12,6 +12,10 @@ import { MatInput } from '@angular/material/input';
 import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { CdkTextareaAutosize } from '@angular/cdk/text-field';
 import { ProductionLinesService } from '../production-services/production-lines.service';
+import { ArticleAutoCompleteModel, ArticleService } from '@ss/master-data/api-article';
+import {
+    ManufacturedArticleService
+} from '../../../../../master-data/api-article/src/lib/manufactured-article.service';
 
 @Component({
     selector: 'ss-production-order-lines-detail',
@@ -35,6 +39,9 @@ import { ProductionLinesService } from '../production-services/production-lines.
     ],
 })
 export class ProductionLinesDetailComponent extends BaseTransactionLinesDetailComponent implements OnInit, OnDestroy  {
+    #articleSrv = inject(ManufacturedArticleService);
+
+    override articleLookup: ArticleAutoCompleteModel = new ArticleAutoCompleteModel(this.#articleSrv);
 
     constructor(protected detailSrv: ProductionLinesService) {
         super(detailSrv, DOC_PRODUCTION);

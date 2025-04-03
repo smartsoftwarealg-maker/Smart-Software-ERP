@@ -3,6 +3,7 @@ import {ImageModel} from '@ss/common/ui-image-input';
 export const USERS_URL = '/users';
 export const STORES_URL = '/stores';
 export const ARTICLES_URL = '/articles';
+export const MAN_PRODUCT_URL = '/man-products';
 export const SERVICE_ARTICLES_URL = '/articles';
 export const APP_URL = '/apps';
 export const AVAILABLE_ARTICLES_URL = '/articles/available';

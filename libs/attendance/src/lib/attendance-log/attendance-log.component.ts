@@ -69,7 +69,7 @@ export class AttendanceLogComponent implements OnInit {
     data: ATTReport[]     = [];
     form = this.fb.group({
         id:     [0],
-        from:   [new Date(new Date().getTime() - (31 * 24 * 60 * 60 * 1000)), Validators.required],
+        from:   [new Date(new Date().getTime() - (30 * 24 * 60 * 60 * 1000)), Validators.required],
         to:     [new Date(), Validators.required],
         type:   [1,          Validators.required],
         source: [1, Validators.required]
@@ -107,12 +107,37 @@ export class AttendanceLogComponent implements OnInit {
         }
     }
     saveToDB() {
-        console.log('____________________saving to DB');
+        if (this.inputSource() === this.TEXT) {
+            const formData = new FormData();
+            const formValue = this.form.value;
+            formData.append("id", formValue.id.toString());
+            formData.append("from", dateTimeToStr(formValue.from));
+            formData.append("to", dateTimeToStr(formValue.to));
+            formData.append("file", this.file);
+            this.attendanceLog
+                .saveFromText(formData)
+                .subscribe(res => {
+                    if (res) {
+                        this.snackBarSrv.showSuccessMessage();
+                    }
+                })
+        } else if (this.inputSource() == this.MACHINES) {
+            const value = this.form.value;
+            const ipList = this.inputSource()? null : this.ipList().join(',');
+            this.attendanceLog
+                .saveFromMachines(value.id, value.from, value.to, ipList)
+                .subscribe(res => {
+                    if (res) {
+                        this.snackBarSrv.showSuccessMessage();
+                    }
+                })
+        }
     }
 
     toggleCanSaveToDB() {
         this.canSaveToDB.update(v => !v);
     }
+
     private upload() {
         if (this.file) {
             const formData = new FormData();

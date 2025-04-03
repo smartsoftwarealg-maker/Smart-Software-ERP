@@ -12,7 +12,7 @@ import { Directive, inject, OnInit } from '@angular/core';
 import {OptionService} from '@ss/logistics/ui-options';
 import {
     DOC_CONSUMPTION,
-    DOC_CORRECTION_OUT, DOC_DELIVERY, DOC_INVOICE, DOC_PRODUCTION_ORDER,
+    DOC_CORRECTION_OUT, DOC_DELIVERY, DOC_INVOICE, DOC_PRODUCTION, DOC_PRODUCTION_ORDER,
     DOC_RECEPTION,
     DOC_SEPARATOR_200,
     DOC_SEPARATOR_800, Transaction
@@ -210,7 +210,7 @@ export abstract class BaseTransactionLinesDetailComponent extends AbstractEntity
             sourceDoc:    [b.sourceDoc],
             store:        [b.store],
             qtyOrdered:   [{ value: b.qtyOrdered || 0, disabled: this.document > DOC_SEPARATOR_200 && this.document < DOC_SEPARATOR_800 }, Validators.required],
-            qtySatisfied: [{ value: b.qtySatisfied ||0, disabled: this.document < DOC_SEPARATOR_200 || this.document > DOC_SEPARATOR_800}, Validators.required],
+            qtySatisfied: [{ value: b.qtySatisfied ||0, disabled: this.document < DOC_SEPARATOR_200 || this.document > DOC_SEPARATOR_800 || this.document === DOC_PRODUCTION}, Validators.required],
             qtyInvoiced:  [{ value: b.qtyInvoiced ||0, disabled: this.document != DOC_RECEPTION} , Validators.required],
             qtyReturned:  [{ value: b.qtyReturned ||0, disabled: true} , Validators.required],
             price:        [b.price || 0, Validators.required],
