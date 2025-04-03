@@ -17,15 +17,32 @@
             </mat-form-field>
 
 
-            <mat-form-field id="depreciationAccountr" class="default-50 sm-100">
+            <mat-form-field class="default-50 sm-100">
                 <mat-label translate>ACC_DEPRECIATION_ACCOUNT</mat-label>
-                <input matInput formControlName="depreciationAccount" type="text">
+                <ss-auto-complete matInput
+                                  [model]="depreciationAccountLookup"
+                                  formControlName="depreciationAccount">
+                </ss-auto-complete>
             </mat-form-field>
 
-            <mat-form-field id="endowmentAccount" class="default-50 sm-100">
+<!--            <mat-form-field id="depreciationAccount" class="default-50 sm-100">-->
+<!--                <mat-label translate>ACC_DEPRECIATION_ACCOUNT</mat-label>-->
+<!--                <input matInput formControlName="depreciationAccount" type="text">-->
+<!--            </mat-form-field>-->
+
+<!--            <mat-form-field id="endowmentAccount" class="default-50 sm-100">-->
+<!--                <mat-label translate>ACC_ENDOWMENT_ACCOUNT</mat-label>-->
+<!--                <input matInput formControlName="endowmentAccount" type="text">-->
+<!--            </mat-form-field>-->
+
+            <mat-form-field class="default-50 sm-100">
                 <mat-label translate>ACC_ENDOWMENT_ACCOUNT</mat-label>
-                <input matInput formControlName="endowmentAccount" type="text">
+                <ss-auto-complete matInput
+                                  [model]="endowmentAccountLookup"
+                                  formControlName="endowmentAccount">
+                </ss-auto-complete>
             </mat-form-field>
+
 
             <mat-form-field class="default-50 sm-100">
                 <mat-label translate>ACC_DEPRECIATION_RATE</mat-label>

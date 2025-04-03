@@ -8,7 +8,7 @@ import {
     AccTransactionService,
     Journal, JournalSummary
 } from '@ss/accounting/accounting-api';
-import {ShellService, SnackBarService} from '@ss/common/ui-shell';
+import { KeepOnToolbar, ShellService, SnackBarService, ToolbarButton } from '@ss/common/ui-shell';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import {  ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
 import { LoginService, MaterialModule, PaginatorPersistenceService } from "@ss/common/api-common";
@@ -48,6 +48,15 @@ import { callback } from 'chart.js/helpers';
     ]
 })
 export class TransactionListComponent extends BaseEntityListComponent<ACCTransaction> implements OnDestroy, OnInit {
+    public packButton: ToolbarButton = {
+        icon: 'fa-solid fa-cubes',
+        label: 'ACC_PACK',
+        disabled: false,
+        visible: true,
+        keepOnToolbar: KeepOnToolbar.ALWAYS,
+        click: () => this.pack()
+    };
+
     private fileSrv = inject(AccFileService);
     private journalSrv =  inject(AccJournalsService);
     private detailSrv =  inject(AccTransactionLineService);
@@ -104,6 +113,7 @@ export class TransactionListComponent extends BaseEntityListComponent<ACCTransac
     override ngOnInit() {
         this.setDefaultButtons(true);
         super.ngOnInit();
+        this.shellSrv.addButton(this.packButton);
 
         this.journalSrv
             .getUserJournals(this.journalFilter.value || '')
@@ -257,5 +267,16 @@ export class TransactionListComponent extends BaseEntityListComponent<ACCTransac
         if (this.isRoot()) {
             super.sort(event);
         }
+    }
+
+    private pack() {
+        this.entitySrv
+            .pack(this.selectedJournal)
+            .subscribe(res => {
+                if (res.count) {
+                    this.snackBarSrv.showSuccessMessage();
+                    this.refreshTransactions();
+                }
+            })
     }
 }

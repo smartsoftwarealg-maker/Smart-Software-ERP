@@ -1,6 +1,11 @@
 import { Component, inject, OnInit } from '@angular/core';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
-import { Account, AccountService, AccountStringAutocompleteModel } from '@ss/accounting/api-accounts';
+import {
+    Account,
+    AccountService,
+    AccountStringAutocompleteModel,
+    EndowmentAccountService
+} from '@ss/accounting/api-accounts';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
 import { UntypedFormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -12,18 +17,22 @@ import { MatFormField, MatLabel, MatError } from '@angular/material/form-field';
 import { TranslateDirective } from '@ss/common/ui-lang';
 import { MatInput } from '@angular/material/input';
 import { MaterialModule } from '@ss/common/api-common';
+import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
+import { DepreciationAccountService } from '@ss/accounting/api-accounts';
 
 @Component({
     selector: 'ss-asset-accounts-detail',
     templateUrl: './asset-accounts-detail.component.html',
     styleUrls: ['./asset-accounts-detail.component.scss'],
     standalone: true,
-    imports: [MaterialModule, MatCard, MatCardContent, NgIf, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, MatError]
+    imports: [MaterialModule, MatCard, MatCardContent, NgIf, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, MatError, UiAutoCompleteComponent]
 })
 export class AssetAccountsDetailComponent extends BaseEntityDetailComponent<Account> {
-    #accountSrv   = inject(AccountService);
+    #depreciationSrv = inject(DepreciationAccountService);
+    #endowmentSrv = inject(EndowmentAccountService);
 
-    accountLookup     = new AccountStringAutocompleteModel(this.#accountSrv)
+    depreciationAccountLookup = new DefaultAutoCompleteModel(this.#depreciationSrv, 'accountNo');
+    endowmentAccountLookup = new DefaultAutoCompleteModel(this.#endowmentSrv, 'accountNo');
 
     constructor(
         public accountService: AccountService,
@@ -39,7 +48,7 @@ export class AssetAccountsDetailComponent extends BaseEntityDetailComponent<Acco
               route,
               formBuilder,
               confirmationSrv,
-              'LOGISTICS_EDIT_ACCOUNT');
+              'ACC_ASSET_ACCOUNTS');
     }
 
     public override setupForm(a: Account) {
@@ -50,7 +59,7 @@ export class AssetAccountsDetailComponent extends BaseEntityDetailComponent<Acco
             description: [a.description],
             creationDate: [a.creationDate],
             accType: [a.accType],
-            analyzed: [!!a.analyzed],
+            analyzed: [a.analyzed],
             descriptionAr: [a.descriptionAr],
             balanceConstraint: [a.balanceConstraint],
             summaryLevel: [a.summaryLevel],

@@ -10,7 +10,7 @@ import {
     ACC_PERIOD_SELECTOR_URL,
     ACC_POLICIES_URL,
     ACC_PROJECTS_URL,
-    ACC_REOPEN_URL, ACC_SALES_INJECTION_URL,
+    ACC_REOPEN_URL, ACC_SALES_INJECTION_URL, ACC_TRANSACTION_MATCHING_URL,
     ACC_TRANSACTIONS_URL,
     ASSET_ACCOUNT_URL,
     CASHFLOW_ACCOUNTS_URL,
@@ -37,7 +37,7 @@ import {
     AccountingGenerationComponent,
     AccountingReopenComponent,
     CanCloseOpener,
-    BalanceQueriesComponent, SalesExcelInjectionComponent
+    BalanceQueriesComponent, SalesExcelInjectionComponent, TransactionMatchingComponent
 } from '@ss/accounting/transactions';
 import {
     AssetAccountsListComponent,
@@ -74,6 +74,11 @@ export const accRoutes: Routes = [
     {
         path: ACC_GENERATION_URL,
         component: AccountingGenerationComponent,
+        canActivate: [loginGuard, accountingGuard]
+    },
+    {
+        path: ACC_TRANSACTION_MATCHING_URL,
+        component: TransactionMatchingComponent,
         canActivate: [loginGuard, accountingGuard]
     },
     {

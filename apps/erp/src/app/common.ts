@@ -483,6 +483,7 @@ export const ACC_F82_URL  = 'f-82';
 export const ACC_F12_URL  = 'f-12';
 export const ACC_F13_URL  = 'f-13';
 export const ACC_CONSOLIDATION_CENTERS_URL = 'consolidation-centers';
+export const ACC_TRANSACTION_MATCHING_URL = 'transaction-matching';
 
 // park
 export const PARK_DRIVER_URL = 'drivers';
@@ -613,6 +614,7 @@ export const ABS_ACC_F13_URL = '/' + [MAIN_PAGE_URL, ACCOUNTING_APP_URL, ACC_F13
 export const ABS_ACC_DASHBOARD_URL = '/' + [MAIN_PAGE_URL, ACCOUNTING_APP_URL, DASHBOARD_URL].join('/');
 export const ABS_SALES_GENERATION_URL = '/' + [MAIN_PAGE_URL, ACCOUNTING_APP_URL, ACC_SALES_INJECTION_URL].join('/');
 export const ABS_CONSOLIDATION_CENTERS_URL = '/' + [MAIN_PAGE_URL, ACCOUNTING_APP_URL, ACC_CONSOLIDATION_CENTERS_URL].join('/');
+export const ABS_ACC_TRANSACTION_MATCHING_URL = '/' + [MAIN_PAGE_URL, ACCOUNTING_APP_URL, ACC_TRANSACTION_MATCHING_URL].join('/');
 
 //Budget
 export const ABS_BUDGET_BUDGET_URL = '/' + [MAIN_PAGE_URL, BUDGET_APP_URL, BUDGET_BUDGET_URL].join('/');

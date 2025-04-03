@@ -79,5 +79,12 @@
     "EXEMPTION":                "Exemption",
     "TAX_RATE":                 "Tax rate",
     "SALES_INJECTION":          "Sales injection",
-    "CONSOLIDATION_CENTERS":    "Consolidation centers"
+    "CONSOLIDATION_CENTERS":    "Consolidation centers",
+    "PACK":                     "Compact the piece numbers",
+    "TRANSACTION_MATCHING":     "Transaction matching",
+    "MATCH_KEY":                "Match key",
+    "MATCHED":                  "Matched",
+    "UNMATCHED":                "Unmatched",
+    "JOIN_TRANSACTIONS":        "Join transactions",
+    "FREE_TRANSACTIONS":        "Free transactions"
 }

@@ -36,4 +36,8 @@ export class AccTransactionService extends BaseEntityService<ACCTransaction> {
     select(transaction: ACCTransaction) {
         this.selectedTransaction.set(transaction);
     }
+
+    pack(journalId: number): Observable<{count: number}> {
+        return this.httpSrv.post('/accounting/pack/' + journalId, null);
+    }
 }
