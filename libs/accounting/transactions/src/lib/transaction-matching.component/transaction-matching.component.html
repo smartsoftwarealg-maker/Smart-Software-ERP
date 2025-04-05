@@ -57,7 +57,7 @@
     <mat-table mat-table [dataSource]="credits" class="main-table" matSort (matSortChange)="sortCredit($event)">
 
         <ng-container matColumnDef="customerCode">
-            <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_CUSTOMER_CODE</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>LOGISTICS_CUSTOMER_CODE</mat-header-cell>
             <mat-cell *matCellDef="let e">
                 {{ e.customerCode }}
             </mat-cell>
