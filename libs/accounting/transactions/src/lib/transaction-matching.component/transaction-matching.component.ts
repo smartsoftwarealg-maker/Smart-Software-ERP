@@ -31,29 +31,29 @@ export class TransactionMatchingComponent implements OnInit {
     #shellSrv = inject(ShellService);
     #matchingSrv = inject(TransactionMatchingService);
     #searchText: string = '';
-    #debitSort: Sort|null = null;
-    #creditSort: Sort|null = null;
+    #debitSort: Sort | null = null;
+    #creditSort: Sort | null = null;
     #refreshButton: ToolbarButton = {
         icon: 'fas fa-sync-alt',
         label: 'COMMON_REFRESH',
         disabled: false,
         visible: true,
         keepOnToolbar: KeepOnToolbar.DYNAMIC,
-        click: () => this.refresh(this.#searchText||'')
+        click: () => this.refresh(this.#searchText || '')
     };
 
     UNMATCHED_MODE = 1;
     MATCHED_MODE = 2;
-    displayedColumns = ['customerCode', 'description', 'matchKey',  'debit', 'credit'];
-    creditColumns = ['customerCode', 'description', 'matchKey',  'debit', 'credit', 'matchBtn'];
+    displayedColumns = ['customerCode', 'description', 'matchKey', 'debit', 'credit'];
+    creditColumns = ['customerCode', 'description', 'matchKey', 'debit', 'credit', 'matchBtn'];
     debits: MBalanace[] = [];
     credits: MBalanace[] = [];
-    debitPaginator = PaginationModel.newInstance({ pageSize: 5, page: 1, elementCount: 0});
-    creditPaginator = PaginationModel.newInstance({ pageSize: 5, page: 1, elementCount: 0});
+    debitPaginator = PaginationModel.newInstance({ pageSize: 5, page: 1, elementCount: 0 });
+    creditPaginator = PaginationModel.newInstance({ pageSize: 5, page: 1, elementCount: 0 });
 
     mode = signal(this.UNMATCHED_MODE);
-    selectedDebit=  signal<MBalanace|null>(null);
-    selectedCredit = signal<MBalanace|null>(null);
+    selectedDebit = signal<MBalanace | null>(null);
+    selectedCredit = signal<MBalanace | null>(null);
     validSelection = computed(() =>
         this.selectedDebit() !== null &&
         this.selectedCredit() !== null &&
@@ -76,29 +76,30 @@ export class TransactionMatchingComponent implements OnInit {
     }
 
     private refreshCredit() {
-        const col = this.#creditSort?.active? this.#creditSort.active : null;
-        const direction = this.#creditSort?.direction === 'asc'? '' : '-';
-        const orderBy = col? `${direction}${col}` : null;
+        const col = this.#creditSort?.active ? this.#creditSort.active : null;
+        const direction = this.#creditSort?.direction === 'asc' ? '' : '-';
+        const orderBy = col ? `${direction}${col}` : null;
         const obs = this.mode() === this.MATCHED_MODE ?
             this.#matchingSrv.creditorMatches(this.creditPaginator.page - 1, this.creditPaginator.pageSize, this.selectedDebit()?.customerCode, null, orderBy) :
             this.#matchingSrv.credits(this.creditPaginator.page - 1, this.creditPaginator.pageSize, this.selectedDebit()?.customerCode, null, orderBy);
         obs.subscribe(res => {
-                this.credits = res.body;
-                this.creditPaginator.elementCount = res.itemCount;
-            });
+            this.credits = res.body;
+            this.creditPaginator.elementCount = res.itemCount;
+        });
     }
+
     private refreshDebit() {
-        const col = this.#debitSort?.active? this.#debitSort.active : null;
-        const direction = this.#debitSort?.direction === 'asc'? '' : '-';
-        const orderBy = col? `${direction}${col}` : null;
+        const col = this.#debitSort?.active ? this.#debitSort.active : null;
+        const direction = this.#debitSort?.direction === 'asc' ? '' : '-';
+        const orderBy = col ? `${direction}${col}` : null;
         const obs = this.mode() === this.MATCHED_MODE ?
             this.#matchingSrv.debtorMatches(this.debitPaginator.page - 1, this.debitPaginator.pageSize, this.#searchText, orderBy) :
             this.#matchingSrv.debits(this.debitPaginator.page - 1, this.debitPaginator.pageSize, this.#searchText, orderBy);
 
         obs.subscribe(res => {
-                this.debits = res.body;
-                this.debitPaginator.elementCount = res.itemCount;
-            });
+            this.debits = res.body;
+            this.debitPaginator.elementCount = res.itemCount;
+        });
     }
 
     sortDebit(event: Sort) {
@@ -115,18 +116,22 @@ export class TransactionMatchingComponent implements OnInit {
         this.selectedDebit.set(debit);
         this.refreshCredit();
     }
+
     selectCredit(credit: MBalanace) {
         this.selectedCredit.set(credit);
     }
 
     join(e: MBalanace) {
         if (e.customerCode === this.selectedDebit()?.customerCode) {
+            const data: Match = {
+                fileId: e.fileId,
+                srcId: this.selectedDebit()?.id,
+                srcLine: this.selectedDebit()?.lineNumber,
+                withId: e.id,
+                customer: e.customerCode,
+                withLine: e.lineNumber
+            };
             if (this.mode() === this.UNMATCHED_MODE) {
-                const data: Match = {
-                    fileId: e.fileId,
-                    srcId: e.id,
-                    withId: this.selectedDebit()?.id
-                }
                 this.#matchingSrv
                     .join(data)
                     .subscribe(res => {
@@ -138,7 +143,7 @@ export class TransactionMatchingComponent implements OnInit {
                     });
             } else {
                 this.#matchingSrv
-                    .free(e.id)
+                    .free(data)
                     .subscribe(res => {
                         if (res.count > 0) {
                             this.#snackBarSrv.showSuccessMessage();
@@ -156,7 +161,7 @@ export class TransactionMatchingComponent implements OnInit {
         this.creditPaginator.elementCount = 0;
     }
 
-    toggleMode(){
+    toggleMode() {
         this.mode.set(this.mode() === this.UNMATCHED_MODE ? this.MATCHED_MODE : this.UNMATCHED_MODE);
         this.refreshDebit();
         this.clearCredit();

@@ -34,7 +34,7 @@ export class TransactionMatchingService extends BaseEntityService<MBalanace> {
     join(match: Match): Observable<{ count: number}> {
         return this.httpSrv.post(`/accounting/matching/join`, match);
     }
-    free(id: number): Observable<{ count: number}> {
-        return this.httpSrv.post(`/accounting/matching/free/${id}`, id);
+    free(match: Match): Observable<{ count: number}> {
+        return this.httpSrv.post(`/accounting/matching/free`, match);
     }
 }

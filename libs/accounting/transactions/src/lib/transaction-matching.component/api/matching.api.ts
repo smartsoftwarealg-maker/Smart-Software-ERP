@@ -8,10 +8,14 @@ export interface MBalanace {
     description: string;
     matchKey?: string;
     balance: number;
+    lineNumber: number;
 }
 
 export interface Match {
     fileId: number;
     srcId: number;
     withId: number;
+    customer: string;
+    srcLine: number;
+    withLine: number;
 }

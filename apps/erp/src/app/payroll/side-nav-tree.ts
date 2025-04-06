@@ -33,6 +33,12 @@ export const payrollNavTree: SideNavNode = {
     icon: 'fas fa-coins',
     children: [
         {
+            name: 'PAYROLL_FUNDS',
+            icon: 'fa-solid fa-dollar-sign',
+            route: ABS_PAYROLL_FUNDS_URL,
+            accessRights: 'Fund'
+        },
+        {
             name: 'PAYROLL_SALARY_GRID',
             icon: 'far fa-game-board',
             route: ABS_SALARY_GRID_URL,
@@ -201,12 +207,6 @@ export const payrollNavTree: SideNavNode = {
             icon: 'fas fa-tools',
             route: ABS_PAYROLL_OPTIONS_URL,
             accessRights: 'POption'
-        },
-        {
-            name: 'PAYROLL_FUNDS',
-            icon: 'fa-solid fa-dollar-sign',
-            route: ABS_PAYROLL_FUNDS_URL,
-            accessRights: 'Fund'
         },
     ],
     accessRights: 'PAYROLL'

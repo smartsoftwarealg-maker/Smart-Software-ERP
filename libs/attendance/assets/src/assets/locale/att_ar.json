@@ -24,5 +24,6 @@
     "MANUAL_SIGNATURE": "التوقيع اليدوي",
     "MANUAL_SIGNATURES": "التوقيعات اليدوية",
     "LOG_FILE":              "ملف السجل",
-    "SAVE_TO_DB":            "حفظ في القاعدة "
+    "SAVE_TO_DB":            "حفظ في القاعدة ",
+    "GENERATE_ABSENCES":     "توليد الغياب"
 }
