@@ -4,7 +4,13 @@ import {
     LIST_URL,
     CanDeactivateService,
 } from '@ss/common/api-common';
-import { docInfoRoutes, PRODUCTION_ORDER_URL, PRODUCTIONS_URL,PRODUCTION_MRP_URL } from '../common';
+import {
+    docInfoRoutes,
+    PRODUCTION_ORDER_URL,
+    PRODUCTIONS_URL,
+    PRODUCTION_MRP_URL,
+    PRODUCTION_BOM_URL
+} from '../common';
 import {
     ProductionOrderDetailComponent,
     ProductionOrderLinesDetailComponent,
@@ -20,11 +26,16 @@ import {
 } from '@ss/production/production';
 import { loginGuard } from '../erp-guards';
 import { MrpComponent } from '@ss/production/mrp';
+import { BomComponent } from '@ss/master-data/ui-article';
 
 export const prodRoutes: Routes = [
     {
         path:PRODUCTION_MRP_URL,
         component: MrpComponent,
+    },
+    {
+        path:PRODUCTION_BOM_URL,
+        component:BomComponent,
     },
     {
         path: PRODUCTION_ORDER_URL,
