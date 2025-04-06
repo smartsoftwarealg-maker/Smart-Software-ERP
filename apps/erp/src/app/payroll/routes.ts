@@ -14,7 +14,7 @@ import {
     PAY_ELEMENTS_ENTRY_URL,
     PAY_ELEMENTSINFO_URL,
     PAY_FIXED_ELEMENTS_URL,
-    PAY_FORMULAS_URL,
+    PAY_FORMULAS_URL, PAY_FUNDS_URL,
     PAY_GRID_UPDATE_URL,
     PAY_INPUT_FILTERS,
     PAY_LOANS_URL,
@@ -117,6 +117,7 @@ import {
     SalaryRankDetailComponent
 } from '@ss/payroll/salary-grid';
 import { PayrollOptionsComponent } from 'payroll/payroll-options';
+import { FundsListComponent, FundsDetailComponent } from '@ss/payroll/funds';
 
 export const mainRoutes: Routes = [
     {
@@ -725,6 +726,23 @@ export const mainRoutes: Routes = [
         component: ReportPrivilegesComponent,
         data: {reportBase: 'payroll'},
         canActivate: [loginGuard]
+    },
+    {
+        path: PAY_FUNDS_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: FundsListComponent,
+                canActivate: [loginGuard]
+            },
+            {
+                path: ':id',
+                component: FundsDetailComponent,
+                canActivate: [loginGuard],
+                canDeactivate: [CanDeactivateService]
+            },
+            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
+        ]
     },
     { path: '', redirectTo: ABS_INDEX_URL, pathMatch: 'full' },
     { path: '**', redirectTo: ABS_INDEX_URL }

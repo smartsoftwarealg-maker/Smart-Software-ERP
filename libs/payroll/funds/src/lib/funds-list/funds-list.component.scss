@@ -1,0 +1,28 @@
+.pagination-container,
+.container_div {
+    width: 100%;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.container_div {
+    height: calc(100% - 70px);
+    overflow-x: auto;
+}
+
+mat-table {
+    min-width: 700px;
+}
+
+mat-cell {
+    min-width: 100px;
+    justify-content: flex-end;
+}
+
+
+.mat-column-indexValue,
+.mat-column-baseSalary,
+.mat-column-category,
+.mat-column-sec {
+    flex: 1 1 150px;
+}
