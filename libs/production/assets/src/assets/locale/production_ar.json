@@ -10,6 +10,6 @@
     "QTY": "الكمية",
     "PURCHASE_ORDER": "طلب الشراء",
     "INVENTORY": "الجرد",
-    "TO_ORDER": "طلب"
-
+    "TO_ORDER": "طلب",
+    "BOM": "فاتورة المواد"
 }

@@ -504,6 +504,7 @@ export const PARK_DESTINATION_URL = 'park-destinations';
 export const PRODUCTION_ORDER_URL = 'productions-order';
 export const PRODUCTIONS_URL = 'productions';
 export const PRODUCTION_MRP_URL = 'mrp';
+export const PRODUCTION_BOM_URL = 'bom';
 
 // #############
 // # FULL URLS #
@@ -960,6 +961,7 @@ export const ABS_TAG_URL = '/' + [MAIN_PAGE_URL, WEBARCH_APP_URL, TAG_URL].join(
 export const ABS_PRODUCTION_ORDER_URL = '/' + [MAIN_PAGE_URL, PRODUCTION_URL, PRODUCTION_ORDER_URL].join('/');
 export const ABS_PRODUCTION_URL = '/' + [MAIN_PAGE_URL, PRODUCTION_URL, PRODUCTIONS_URL].join('/');
 export const ABS_PRODUCTION_MRP_URL = '/' + [MAIN_PAGE_URL, PRODUCTION_URL, PRODUCTION_MRP_URL].join('/');
+export const ABS_PRODUCTION_BOM_PRODUCTS = '/' + [MAIN_PAGE_URL, PRODUCTION_URL, BOM_URL].join('/');
 
 // ######################################
 // #            Other things            #

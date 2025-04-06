@@ -10,6 +10,6 @@
     "QTY": "Qty",
     "PURCHASE_ORDER": "Purchase Order",
     "INVENTORY": "Inventory",
-    "TO_ORDER": "Order"
-
+    "TO_ORDER": "Order",
+    "BOM": "Bill of material"
 }
