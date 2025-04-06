@@ -39,6 +39,12 @@ export const attendanceNavTree: SideNavNode = {
         //     accessRights: 'AbsenceMotive'
         // },
         {
+            name: 'ATT_ABSENCE_FIELDS',
+            icon: 'fas fa-house-leave',
+            route: ABS_ABSENCE_FIELDS_URL,
+            accessRights: 'ElementType'
+        },
+        {
             name: 'ATT_ABSENCE_TYPES',
             icon: 'fa-solid fa-person-circle-question',
             route: ABS_ABSENCE_TYPES_URL,
@@ -60,12 +66,6 @@ export const attendanceNavTree: SideNavNode = {
             name: 'ATT_ATTENDANCE_LOG',
             icon: 'fa-solid fa-user-gear',
             route: ABS_ATTENDANCE_LOG_URL,
-            accessRights: 'Attendance'
-        },
-        {
-            name: 'ATT_ABSENCE_FIELDS',
-            icon: 'fas fa-house-leave',
-            route: ABS_ABSENCE_FIELDS_URL,
             accessRights: 'Attendance'
         },
     ],
