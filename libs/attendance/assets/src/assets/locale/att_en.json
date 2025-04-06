@@ -27,6 +27,7 @@
     "MANUAL_SIGNATURE": "Manual signature",
     "MANUAL_SIGNATURES": "Manual signatures",
     "LOG_FILE":              "Log file",
-    "SAVE_TO_DB":            "Save to DB"
+    "SAVE_TO_DB":            "Save to DB",
+    "GENERATE_ABSENCES":     "Generate absences"
 
 }

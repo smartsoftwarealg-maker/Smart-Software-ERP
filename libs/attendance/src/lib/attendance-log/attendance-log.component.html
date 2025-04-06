@@ -34,16 +34,12 @@
 
                 <div class="button__div">
                     <mat-radio-group (change)="toggleSource($event)">
-                        <mat-radio-button [value]="1" [checked]="inputSource() === DATABASE" translate>ATT_DATABASE</mat-radio-button>
+                        <mat-radio-button [value]="1" [checked]="inputSource() === DATABASE" translate>ATT_DATABASE
+                        </mat-radio-button>
                         <mat-radio-button [value]="2" translate>ATT_MACHINES</mat-radio-button>
                         <mat-radio-button [value]="3" translate>ATT_LOG_FILE</mat-radio-button>
                     </mat-radio-group>
 
-                    @if (inputSource() !== DATABASE) {
-                        <mat-checkbox (click)="toggleCanSaveToDB()" [checked]="canSaveToDB()" translate>
-                            ATT_SAVE_TO_DB
-                        </mat-checkbox>
-                    }
                 </div>
                 <div class="btn__div default-100">
                     <input type="file"
@@ -64,6 +60,23 @@
                             </button>
                         </div>
                     }
+                </div>
+
+                <div class="btn__div default-100">
+                    @if (inputSource() !== DATABASE) {
+                        <mat-checkbox (click)="toggleCanSaveToDB()" [checked]="canSaveToDB()" translate>
+                            ATT_SAVE_TO_DB
+                        </mat-checkbox>
+                    } @else {
+                        <button mat-raised-button
+                                color="primary"
+                                type="button"
+                                (click)="generateAbsences()"
+                                [disabled]="processing()">
+                            {{ 'ATT_GENERATE_ABSENCES' | translate }}
+                        </button>
+                    }
+
                     <button mat-raised-button color="primary" type="button" (click)="refresh(fileUpload.files)"
                             [disabled]="processing()">
                         {{ 'COMMON_REFRESH' | translate }}
@@ -78,7 +91,6 @@
                         </button>
                     }
                 </div>
-
             </form>
             <div class="ip__list">
                 <mat-selection-list [disabled]="inputSource() !== MACHINES" (selectionChange)="onSelection($event)">

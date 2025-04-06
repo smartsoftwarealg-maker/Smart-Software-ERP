@@ -17,7 +17,6 @@ import { AttendanceMachineService } from '../attendance-machine.service';
 import { MatSelectionListChange } from '@angular/material/list';
 import { MatRadioChange } from '@angular/material/radio';
 import { finalize, map, Subscription } from 'rxjs';
-import { HttpEventType } from '@angular/common/http';
 
 @Component({
     selector: 'ss-attendance-log',
@@ -132,6 +131,17 @@ export class AttendanceLogComponent implements OnInit {
                     }
                 })
         }
+    }
+
+    generateAbsences() {
+        const value = this.form.value;
+        this.attendanceLog
+            .generateAbsences(value.from, value.to)
+            .subscribe(res => {
+                if (res) {
+                    this.snackBarSrv.showSuccessMessage();
+                }
+            });
     }
 
     toggleCanSaveToDB() {

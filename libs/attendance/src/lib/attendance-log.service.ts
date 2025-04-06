@@ -61,4 +61,8 @@ export class AttendanceLogService extends BaseEntityService<ATTReport> {
         return this.httpSrv.upload('/attendance/save-log', data);
     }
 
+    generateAbsences(from: Date, to: Date): Observable<{ count: number }> {
+        return this.httpSrv.post('/attendance/generate-absences', { from: this.langSrv.formatDate(from), to: this.langSrv.formatDate(to) });
+    }
+
 }
