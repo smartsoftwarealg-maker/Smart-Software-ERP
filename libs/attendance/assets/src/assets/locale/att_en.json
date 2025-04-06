@@ -26,8 +26,11 @@
     "LETTER":           "Letter",
     "MANUAL_SIGNATURE": "Manual signature",
     "MANUAL_SIGNATURES": "Manual signatures",
-    "LOG_FILE":              "Log file",
-    "SAVE_TO_DB":            "Save to DB",
-    "GENERATE_ABSENCES":     "Generate absences"
-
+    "LOG_FILE":         "Log file",
+    "SAVE_TO_DB":       "Save to DB",
+    "GENERATE_ABSENCES": "Generate absences",
+    "ABSENCE_FIELDS":   "Absence fields",
+    "ESCAPE_FIELD":     "Escape field",
+    "ABSENCE_FIELD":    "Absence field",
+    "LATENESS_FIELD":   "Lateness field"
 }

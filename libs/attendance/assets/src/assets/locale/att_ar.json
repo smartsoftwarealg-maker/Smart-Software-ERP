@@ -23,7 +23,11 @@
     "ABSENCE_TYPES":    "نوع الغياب",
     "MANUAL_SIGNATURE": "التوقيع اليدوي",
     "MANUAL_SIGNATURES": "التوقيعات اليدوية",
-    "LOG_FILE":              "ملف السجل",
-    "SAVE_TO_DB":            "حفظ في القاعدة ",
-    "GENERATE_ABSENCES":     "توليد الغياب"
+    "LOG_FILE":         "ملف السجل",
+    "SAVE_TO_DB":       "حفظ في القاعدة ",
+    "GENERATE_ABSENCES": "توليد الغياب",
+    "ABSENCE_FIELDS":   "حقول الغياب",
+    "ESCAPE_FIELD":     "حقل الهروب",
+    "ABSENCE_FIELD":    "حقل الغياب",
+    "LATENESS_FIELD":   "حقل التأخير"
 }
