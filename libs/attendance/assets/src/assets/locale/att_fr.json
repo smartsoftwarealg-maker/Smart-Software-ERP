@@ -23,7 +23,11 @@
     "ABSENCE_TYPES":    "Types absence",
     "MANUAL_SIGNATURE": "Signature manuelle",
     "MANUAL_SIGNATURES": "Signature manuelles",
-    "LOG_FILE":              "Fichier journal",
-    "SAVE_TO_DB":            "Sauvegarde dans la base",
-    "GENERATE_ABSENCES":     "Generer absences"
+    "LOG_FILE":         "Fichier journal",
+    "SAVE_TO_DB":       "Sauvegarde dans la base",
+    "GENERATE_ABSENCES": "Generer absences",
+    "ABSENCE_FIELDS":   "Champs d'absence",
+    "ESCAPE_FIELD":     "Champ d'évasion",
+    "ABSENCE_FIELD":    "Champ d'absence",
+    "LATENESS_FIELD":   "Champ de retard"
 }

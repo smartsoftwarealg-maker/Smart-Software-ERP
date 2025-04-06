@@ -11,6 +11,7 @@ export const ATTENDANCE_SHIFTS_URL = '/shifts';
 export const SHIFT_TIMING_URL = '/timings';
 export const ATT_ATTENDANCE = '/attendance/attendance';
 export const ABSENCE_MOTIVE_URL = '/lookups/absence_motives';
+export const ABSENCE_FIELDS_URL = '/attendance/absence-fields';
 
 export const TYPES: Lookup[] = [
     {id: 1, description: 'ATT_ATTENDANCE'},
@@ -106,4 +107,11 @@ export interface ATTSignature {
     firstName?: string;
     lastName?: string;
     typeDescription?: string;
+}
+
+export interface AbsenceFiled {
+    id:number;
+    escapeElement: string;
+    absenceElement: string,
+    latenessElement: string;
 }

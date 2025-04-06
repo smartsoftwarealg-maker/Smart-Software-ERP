@@ -6,11 +6,9 @@ import { DefaultReportService } from "@ss/common/ui-default-report-component";
 import { ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
 import { MaterialModule, PaginatorPersistenceService } from "@ss/common/api-common";
 import { CommonModule } from "@angular/common";
-import { PaginationComponent } from '@ss/common/ui-pagination';
 import { TranslateDirective } from '@ss/common/ui-lang';
 import { Fund } from '../fund.api';
 import { FundService } from '../funds.service';
-
 
 @Component({
     selector: "ss-payroll-funds-list",
@@ -20,8 +18,7 @@ import { FundService } from '../funds.service';
     imports: [
         CommonModule,
         MaterialModule,
-        TranslateDirective,
-        PaginationComponent
+        TranslateDirective
     ]
 })
 export class FundsListComponent extends BaseEntityListComponent<Fund> {

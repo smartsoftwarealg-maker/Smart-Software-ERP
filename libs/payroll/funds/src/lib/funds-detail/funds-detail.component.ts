@@ -1,7 +1,7 @@
 import { Component } from "@angular/core";
 import { BaseEntityDetailComponent } from "@ss/common/ui-base-entity";
 import { ShellService, SnackBarService } from "@ss/common/ui-shell";
-import { ActivatedRoute, RouterOutlet } from "@angular/router";
+import { ActivatedRoute } from "@angular/router";
 import { UntypedFormBuilder, UntypedFormGroup, Validators } from "@angular/forms";
 import { ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
 import { LookupsService } from "@ss/common/api-lookup";
