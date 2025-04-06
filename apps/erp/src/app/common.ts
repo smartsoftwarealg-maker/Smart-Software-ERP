@@ -147,7 +147,7 @@ export const STOCK_UNITS_URL = 'units';
 export const STOCK_REPORT_CATALOG_URL = 'report-catalog';
 export const STOCK_REPORTS_URL = 'stock-reports';
 export const STOCK_ARTICLE_URL = 'stock-articles';
-export const BOM_URL = 'BOM';
+export const BOM_URL = 'bom';
 export const ACC_RECORDS = 'accrecords';
 export const STOCK_PRICE_RECALCULATION_URL = 'price-recalculation';
 export const STOCK_ARTICLE_TYPE_URL = 'article-types';
@@ -502,7 +502,7 @@ export const PARK_DESTINATION_URL = 'park-destinations';
 export const PRODUCTION_ORDER_URL = 'productions-order';
 export const PRODUCTIONS_URL = 'productions';
 export const PRODUCTION_MRP_URL = 'mrp';
-export const PRODUCTION_BOM_URL = 'BOM';
+export const PRODUCTION_BOM_URL = 'bom';
 
 // #############
 // # FULL URLS #
