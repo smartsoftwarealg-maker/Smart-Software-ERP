@@ -11,7 +11,7 @@ import {
 } from '../common';
 
 
-import {detailGuard, loginGuard, timingGuard} from '../erp-guards';
+import { loginGuard, payrollGuard } from '../erp-guards';
 import {
     AbsenceMotiveDetailComponent,
     AbsenceMotiveListComponent,
@@ -32,7 +32,7 @@ export const attendanceRoutes: Routes = [
     {
         path: ATTENDANCE_LOG_URL,
         component: AttendanceLogComponent,
-        canActivate: [loginGuard]
+        canActivate: [loginGuard, payrollGuard]
     },
     {
         path: ATTENDANCE_MACHINES_URL,

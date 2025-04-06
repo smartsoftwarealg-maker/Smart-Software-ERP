@@ -19,8 +19,7 @@ import { FundService } from '../funds.service';
     imports: [
         CommonModule,
         MaterialModule,
-        TranslateDirective,
-        RouterOutlet
+        TranslateDirective
     ]
 })
 export class FundsDetailComponent extends BaseEntityDetailComponent<Fund> {
