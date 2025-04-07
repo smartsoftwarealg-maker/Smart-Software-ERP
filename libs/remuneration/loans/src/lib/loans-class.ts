@@ -24,5 +24,6 @@ export interface Loan {
     memo?: string;
     firstName?: string;
     lastName?: string;
-    description?: string
+    description?: string,
+    paidAmount: number;
 }

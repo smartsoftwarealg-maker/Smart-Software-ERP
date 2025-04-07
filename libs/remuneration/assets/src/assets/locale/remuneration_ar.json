@@ -82,5 +82,6 @@
     "IEP_FORMULA":       "صيغة منحة الخبرة المهنية",
     "LEAVE_CALCULATOR": "محاسبة العطلة",
     "EARNED": "مكتسب",
-    "TO_TAKE": "المأخوذ"
+    "TO_TAKE": "المأخوذ",
+    "RETURNED_AMOUNT": "المبلغ المرجع"
 }

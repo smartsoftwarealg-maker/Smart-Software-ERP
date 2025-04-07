@@ -91,6 +91,13 @@ export class EmployeeCareerDetailComponent extends BaseChildEntityDetailComponen
     constructor(
         public employeeCareerSrv: EmployeeCareerService) {
         super(employeeCareerSrv, 'Career');
+        this.postLookup.onObjectSelected = e => this.onPost(e);
+    }
+
+    private onPost(p: Post) {
+        if (p?.grid) {
+            this.form.controls['salary_grid'].setValue(p?.grid);
+        }
     }
 
     setupForm(a: Career): UntypedFormGroup {

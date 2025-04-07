@@ -85,5 +85,6 @@
     "IEP_FORMULA":       "Formule IEP",
     "LEAVE_CALCULATOR":  "Calculatrice de conges",
     "EARNED":            "Gagné",
-    "TO_TAKE":           "A prendre"
+    "TO_TAKE":           "A prendre",
+    "RETURNED_AMOUNT":   "Montant retourné"
 }

@@ -46,7 +46,9 @@ export class LoansListComponent extends BaseEntityListComponent<Loan> {
         'amount',
         'taken_amount',
         'number',
-        'monthConsumed'
+        'monthConsumed',
+        "memo",
+        "paidAmount"
     ];
 
     constructor(
