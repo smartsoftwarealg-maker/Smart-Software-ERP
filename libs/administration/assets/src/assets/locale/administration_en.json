@@ -83,5 +83,9 @@
     "WORKFLOW_CHART": "Chart",
     "SIGNATURE": "Signature",
     "SIGNER": "Signer",
-    "HEADQUARTER": "Headquarter"
+    "HEADQUARTER": "Headquarter",
+    "PASSWORD_ENCODING": "Password encoding",
+    "HASH": "Code",
+    "ENCODE": "Encode",
+    "DECODE": "Decode"
 }

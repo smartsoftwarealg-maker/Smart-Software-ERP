@@ -1,0 +1,19 @@
+<mat-card>
+    <mat-card-content>
+        <form>
+            <mat-form-field id="password" class="default-100">
+                <mat-label translate>COMMON_PASSWORD</mat-label>
+                <input matInput [formControl]="password" type="text" autofocus >
+            </mat-form-field>
+
+            <mat-form-field id="code" class="default-100">
+                <mat-label translate>ADMINISTRATION_HASH</mat-label>
+                <input matInput [formControl]="code" type="text" [disabled]="true" >
+            </mat-form-field>
+        </form>
+        <div class="default-100 btn_div">
+            <button mat-raised-button (click)="encode()" [disabled]="!password.valid" translate>ADMINISTRATION_ENCODE</button>
+            <button mat-raised-button (click)="decode()" [disabled]="!password.valid" translate>ADMINISTRATION_DECODE</button>
+        </div>
+    </mat-card-content>
+</mat-card>

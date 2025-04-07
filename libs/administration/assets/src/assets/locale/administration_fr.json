@@ -83,5 +83,9 @@
     "WORKFLOW_CHART": "Graphique",
     "SIGNATURE": "Signature",
     "SIGNER": "Signataire",
-    "HEADQUARTER": "Siege"
+    "HEADQUARTER": "Siege",
+    "PASSWORD_ENCODING": "Codage du mot de passe",
+    "HASH": "Code",
+    "ENCODE": "Encoder",
+    "DECODE": "Décoder"
 }

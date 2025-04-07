@@ -1,0 +1,18 @@
+mat-card {
+    width: 80%;
+    max-width: 500px;
+    margin: 16px auto;
+}
+mat-card {
+    border-radius: 1.4em;
+}
+.btn_div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+button {
+    margin: auto;
+    width: fit-content;
+}
