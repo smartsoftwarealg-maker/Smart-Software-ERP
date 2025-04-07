@@ -83,5 +83,9 @@
     "WORKFLOW_CHART":          "المخطط",
     "SIGNATURE":               "التوقيع",
     "SIGNER":                  "الموقع",
-    "HEADQUARTER": "مقر"
+    "HEADQUARTER": "مقر",
+    "PASSWORD_ENCODING": "تشفير كلمة المرور",
+    "HASH": "الرمزٍ",
+    "ENCODE": "شفر",
+    "DECODE": "فك التشفير"
 }

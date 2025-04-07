@@ -121,6 +121,9 @@
             "@ss/administration/db-updater": [
                 "libs/administration/db-updater/src/index.ts"
             ],
+            "@ss/administration/pass-encoding": [
+                "libs/administration/pass-encoding/src/index.ts"
+            ],
             "@ss/administration/reports-rights": [
                 "libs/administration/reports-rights/src/index.ts"
             ],
