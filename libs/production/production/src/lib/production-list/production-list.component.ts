@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {ShellService, SnackBarService} from '@ss/common/ui-shell';
+import { KeepOnToolbar, ShellService, SnackBarService, ToolbarButton } from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {PaginatorPersistenceService} from '@ss/common/api-common';
@@ -15,7 +15,7 @@ import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
 import { ProductionService } from '../production-services/production.service';
 
 @Component({
-    selector: 'ss-production-order',
+    selector: 'ss-production-list',
     templateUrl: './production-list.component.html',
     styleUrls: ['../../../../../common/assets/src/assets/transac-list.scss'],
     standalone: true,
@@ -41,6 +41,22 @@ import { ProductionService } from '../production-services/production.service';
     ],
 })
 export class ProductionListComponent extends BaseEntityListComponent<Transaction> {
+    private doubleCheckBtn: ToolbarButton = {
+        disabled: false,
+        icon: 'fa-solid fa-check-double',
+        keepOnToolbar: KeepOnToolbar.DYNAMIC,
+        label: 'PROD_PRODUCE_ALL',
+        visible: true,
+
+    };
+
+    private doubleCancelBtn: ToolbarButton = {
+        disabled: false,
+        icon: 'fa-solid fa-xmark-large',
+        keepOnToolbar: KeepOnToolbar.DYNAMIC,
+        label: 'PROD_CANCEL_ALL',
+        visible: true,
+    };
     displayedColumns = [
         'number',
         'date',
@@ -60,5 +76,11 @@ export class ProductionListComponent extends BaseEntityListComponent<Transaction
         public override defReportSrv: DefaultReportService,
         public override pagPersistSrv: PaginatorPersistenceService) {
         super(inventorySrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv, 'PROD_PRODUCTIONS');
+    }
+
+    override ngOnInit() {
+        super.ngOnInit();
+        this.shellSrv.addButton(this.doubleCheckBtn)
+        this.shellSrv.addButton(this.doubleCancelBtn)
     }
 }

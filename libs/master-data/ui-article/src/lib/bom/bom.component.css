@@ -68,7 +68,6 @@ mat-tree {
     max-width: 1200px;
     margin: 4px auto;
     overflow-x: auto;
-    height: calc(100% - 440px);
 }
 
 .header {
