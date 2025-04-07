@@ -147,7 +147,7 @@ export const administrationNavTree: SideNavNode = {
         },
 
         {
-            name: 'ADMINISTRATION_PASS_ENCODING',
+            name: 'ADMINISTRATION_PASSWORD_ENCODING',
             icon: 'fa-solid fa-lock-hashtag',
             route: ABS_ADMINISTRATION_PASS_ENCODING_URL,
             accessRights: 'passEncoding'
