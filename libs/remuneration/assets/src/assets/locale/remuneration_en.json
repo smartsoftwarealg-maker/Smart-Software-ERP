@@ -84,5 +84,6 @@
     "IEP_FORMULA":       "Formula of Professional experience allowance",
     "LEAVE_CALCULATOR":  "Leave calculator",
     "EARNED":             "Earned",
-    "TO_TAKE":            "To take"
+    "TO_TAKE":            "To take",
+    "RETURNED_AMOUNT":    "Returned amount"
 }

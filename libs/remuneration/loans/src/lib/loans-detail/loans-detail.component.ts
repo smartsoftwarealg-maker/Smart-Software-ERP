@@ -42,13 +42,13 @@ export class LoansDetailComponent extends BaseEntityDetailComponent<Loan> {
     loanLookup = new DefaultAutoCompleteModel(this.loanSrv);
 
     constructor(
-        private detailSrv: LoansService,
+        public override entitySrv: LoansService,
         public override shellSrv: ShellService,
         public override snackBarSrv: SnackBarService,
         public override route: ActivatedRoute,
         public override formBuilder: UntypedFormBuilder,
         public override confirmationSrv: ConfirmationDialogService) {
-        super(detailSrv,
+        super(entitySrv,
             shellSrv,
             snackBarSrv,
             route,
@@ -59,16 +59,18 @@ export class LoansDetailComponent extends BaseEntityDetailComponent<Loan> {
 
     setupForm(e: Loan): UntypedFormGroup {
         return this.formBuilder.group({
-            id: [e.id || 0],
-            employee: [e.employee || 0],
-            centerId: [e.centerId || this.loginSrv.appCtx.center],
-            loan: [e.loan, Validators.required],
-            payMonth: [e.payMonth, Validators.required],
+            id:            [e.id || 0],
+            employee:      [e.employee || 0],
+            centerId:      [e.centerId || this.loginSrv.appCtx.center],
+            loan:          [e.loan, Validators.required],
+            payMonth:      [e.payMonth, Validators.required],
             monthConsumed: [e.monthConsumed || 0],
-            amount: [e.amount, Validators.required],
-            taken_amount: [e.taken_amount || 0],
-            number: [e.number, Validators.required],
-            date: [e.date || new Date(), Validators.required]
+            amount:        [e.amount, Validators.required],
+            taken_amount:  [{ value: e.taken_amount, disabled: true }],
+            paidAmount:    [e.paidAmount || 0, Validators.max(e.amount - e.taken_amount)],
+            memo:          [e.memo],
+            number:        [e.number, Validators.required],
+            date:          [e.date || new Date(), Validators.required]
         });
     }
 
