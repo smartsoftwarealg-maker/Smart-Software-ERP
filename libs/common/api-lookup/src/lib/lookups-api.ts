@@ -105,6 +105,7 @@ export class Diploma {
     description: string;
     descriptionAr?: string;
 }
+
 export interface PostElement {
     id: number;
     parentId: number;
