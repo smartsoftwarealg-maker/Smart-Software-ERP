@@ -84,7 +84,7 @@
     "SIGNATURE": "Signature",
     "SIGNER": "Signer",
     "HEADQUARTER": "Headquarter",
-    "PASSWORD_ENCODING": "Password encoding",
+    "PASSWORD_ENCODING": "Cryptage du mot de passe",
     "HASH": "Code",
     "ENCODE": "Encode",
     "DECODE": "Decode"
