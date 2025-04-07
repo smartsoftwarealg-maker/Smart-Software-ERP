@@ -105,6 +105,13 @@ export class Diploma {
     description: string;
     descriptionAr?: string;
 }
+export interface PostElement {
+    id: number;
+    parentId: number;
+    element: string,
+    description: string;
+    amount: number;
+}
 
 export class Post {
     id: number;
