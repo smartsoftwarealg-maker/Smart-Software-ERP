@@ -25,7 +25,7 @@ import { ProductionService } from '../production-services/production.service';
 import { ProductionLinesService } from '../production-services/production-lines.service';
 
 @Component({
-    selector: 'ss-product-order-detail',
+    selector: 'ss-product-detail',
     templateUrl: './production-detail.component.html',
     styleUrls: ['../../../../../common/assets/src/assets/transac-detail.scss'],
     standalone: true,

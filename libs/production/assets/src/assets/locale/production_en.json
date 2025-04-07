@@ -4,12 +4,17 @@
     "PRODUCTION_ORDERS":     "Production orders",
     "PRODUCTION_ORDER":      "Production order",
     "PRODUCTION_MRP":        "Production MRP",
-    "MRP_REPORT":  "MRP Report",
-    "REFERENCE": "Reference",
-    "DESCRIPTION": "Description",
-    "QTY": "Qty",
-    "PURCHASE_ORDER": "Purchase Order",
-    "INVENTORY": "Inventory",
-    "TO_ORDER": "Order",
-    "BOM": "Bill of material"
+    "MRP_REPORT":            "MRP Report",
+    "REFERENCE":             "Reference",
+    "DESCRIPTION":           "Description",
+    "QTY":                   "Qty",
+    "PURCHASE_ORDER":        "Purchase Order",
+    "INVENTORY":             "Inventory",
+    "TO_ORDER":              "Order",
+    "BOM":                   "Bill of material",
+    "PRODUCE":               "Produce",
+    "CANCEL":                "Cancel",
+    "PRODUCE_ALL":           "Produce All",
+    "CANCEL_ALL":            "Cancel All"
+
 }

@@ -83,6 +83,22 @@
                 </mat-cell>
             </ng-container>
 
+            <ng-container matColumnDef="action">
+                <mat-header-cell *matHeaderCellDef></mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    @if (e.qtySatisfied == 0) {
+                        <button mat-icon-button color="primary">
+                            <span class="fa-solid fa-check"></span>
+                        </button>
+                    }
+                    @else if (e.qtySatisfied > 0) {
+                        <button mat-icon-button color="warn">
+                            <span class="fa-solid fa-x"></span>
+                        </button>
+                    }
+                </mat-cell>
+            </ng-container>
+
             <ng-container matColumnDef="controls">
                 <mat-header-cell *matHeaderCellDef></mat-header-cell>
                 <mat-cell *matCellDef="let e">

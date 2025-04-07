@@ -1,10 +1,10 @@
 import { Component, OnInit} from '@angular/core';
-import { ShellService, SnackBarService} from '@ss/common/ui-shell';
+import { KeepOnToolbar, ShellService, SnackBarService, ToolbarButton } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router} from '@angular/router';
 import { ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import { ArticleService} from '@ss/master-data/api-article';
 import { LotsService} from '@ss/common/api-lookup';
-import { BaseTransactionLinesListComponent} from '@ss/logistics/api-transaction';
+import { BaseTransactionLinesListComponent, TransactionLine } from '@ss/logistics/api-transaction';
 import { NgIf, DecimalPipe } from '@angular/common';
 import { MatFormField, MatLabel } from '@angular/material/form-field';
 import { TranslateDirective } from '@ss/common/ui-lang';
@@ -26,7 +26,7 @@ import { TranslatePipe } from '@ss/common/ui-lang';
 import { ProductionLinesService } from '../production-services/production-lines.service';
 
 @Component({
-    selector: 'ss-production-order-lines-list',
+    selector: 'ss-production-lines-list',
     templateUrl: './production-lines-list.component.html',
     styleUrls: ['../../../../../common/assets/src/assets/transac-lines-list.scss'],
     standalone: true,
@@ -58,6 +58,8 @@ import { ProductionLinesService } from '../production-services/production-lines.
     ]
 })
 export class ProductionLinesListComponent extends  BaseTransactionLinesListComponent implements OnInit {
+
+
     displayedColumns = [
         'position',
         'reference',
@@ -65,7 +67,8 @@ export class ProductionLinesListComponent extends  BaseTransactionLinesListCompo
         'qtyOrdered',
         'qtySatisfied',
         'price',
-        'total'
+        'total',
+        'action'
     ];
 
     constructor(
@@ -79,4 +82,12 @@ export class ProductionLinesListComponent extends  BaseTransactionLinesListCompo
         public override confirmationSrv: ConfirmationDialogService) {
         super(detailSrv, shellSrv, snackBarSrv, route, router, articleSrv, storeNamesSrv, confirmationSrv);
     }
+    override ngOnInit() {
+        super.ngOnInit();
+    }
+    override select(row: TransactionLine) {
+        super.select(row);
+    }
+
 }
+

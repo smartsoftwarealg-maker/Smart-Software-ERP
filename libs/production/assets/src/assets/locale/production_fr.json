@@ -11,5 +11,8 @@
     "PURCHASE_ORDER":        "Bon de commande",
     "INVENTORY":             "Inventaire",
     "TO_ORDER":              "Demande",
-    "BOM":                   "Nomenclature"
+    "BOM":                   "Nomenclature",
+    "PRODUCE":               "Produire",
+    "CANCEL":                "Annuler",
+    "PRODUCE_ALL":           "Produire Tout"
 }

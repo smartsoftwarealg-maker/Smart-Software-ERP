@@ -12,13 +12,15 @@ import { MatInput } from '@angular/material/input';
 import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { CdkTextareaAutosize } from '@angular/cdk/text-field';
 import { ProductionLinesService } from '../production-services/production-lines.service';
-import { ArticleAutoCompleteModel, ArticleService } from '@ss/master-data/api-article';
+import { ArticleAutoCompleteModel } from '@ss/master-data/api-article';
 import {
     ManufacturedArticleService
 } from '../../../../../master-data/api-article/src/lib/manufactured-article.service';
 
+
+
 @Component({
-    selector: 'ss-production-order-lines-detail',
+    selector: 'ss-production-lines-detail',
     styleUrls: ['../../../../../common/assets/src/assets/transac-lines-detail.scss'],
     templateUrl: './production-lines-detail.component.html',
     standalone: true,
@@ -46,4 +48,7 @@ export class ProductionLinesDetailComponent extends BaseTransactionLinesDetailCo
     constructor(protected detailSrv: ProductionLinesService) {
         super(detailSrv, DOC_PRODUCTION);
     }
+
+
+
 }

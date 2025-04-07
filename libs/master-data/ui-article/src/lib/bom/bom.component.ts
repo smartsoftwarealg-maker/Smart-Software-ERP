@@ -83,19 +83,19 @@ export class BomComponent implements OnInit {
         this.refresh(null);
     }
 
-    getLevel(node: BOMTree): number {
-        return this._getLevel(this.dataSource.data, node);
-    }
+    // getLevel(node: BOMTree): number {
+    //     return this._getLevel(this.dataSource.data, node);
+    // }
 
-    private _getLevel(tree: BOMTree[], node: BOMTree): number {
-        const path = tree.find(branch => {
-            return this.treeControl
-                .getDescendants(branch)
-                .some(n => n.bom.id === node.bom.id);
-        });
-
-        return path ? this._getLevel(path.children, node) + 1 : 0;
-    }
+    // private _getLevel(tree: BOMTree[], node: BOMTree): number {
+    //     const path = tree.find(branch => {
+    //         return this.treeControl
+    //             .getDescendants(branch)
+    //             .some(n => n.bom.id === node.bom.id);
+    //     });
+    //
+    //     return path ? this._getLevel(path.children, node) + 1 : 0;
+    // }
 
     refresh(filter?: string) {
         this.bomSrv
