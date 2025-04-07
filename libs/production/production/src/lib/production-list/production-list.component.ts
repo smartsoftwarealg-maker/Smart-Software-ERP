@@ -42,21 +42,23 @@ import { ProductionService } from '../production-services/production.service';
 })
 export class ProductionListComponent extends BaseEntityListComponent<Transaction> {
     private doubleCheckBtn: ToolbarButton = {
-        disabled: false,
+        disabled: true,
         icon: 'fa-solid fa-check-double',
         keepOnToolbar: KeepOnToolbar.DYNAMIC,
         label: 'PROD_PRODUCE_ALL',
         visible: true,
-
+        click: () => this.produceAll()
     };
 
     private doubleCancelBtn: ToolbarButton = {
-        disabled: false,
+        disabled: true,
         icon: 'fa-solid fa-xmark-large',
         keepOnToolbar: KeepOnToolbar.DYNAMIC,
         label: 'PROD_CANCEL_ALL',
         visible: true,
+        click: () => this.cancelAll()
     };
+
     displayedColumns = [
         'number',
         'date',
@@ -67,7 +69,7 @@ export class ProductionListComponent extends BaseEntityListComponent<Transaction
     ];
 
     constructor(
-        public inventorySrv: ProductionService,
+        public override entitySrv: ProductionService,
         public override shellSrv: ShellService,
         public override snackBarSrv: SnackBarService,
         public override route: ActivatedRoute,
@@ -75,12 +77,37 @@ export class ProductionListComponent extends BaseEntityListComponent<Transaction
         public override confirmationSrv: ConfirmationDialogService,
         public override defReportSrv: DefaultReportService,
         public override pagPersistSrv: PaginatorPersistenceService) {
-        super(inventorySrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv, 'PROD_PRODUCTIONS');
+        super(entitySrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv, 'PROD_PRODUCTIONS');
     }
 
     override ngOnInit() {
         super.ngOnInit();
         this.shellSrv.addButton(this.doubleCheckBtn)
         this.shellSrv.addButton(this.doubleCancelBtn)
+    }
+
+    private produceAll() {
+        this.entitySrv
+            .produceAll(this.selected)
+            .subscribe(res => {
+                if (res.count > 0) {
+                    this.snackBarSrv.showSuccessMessage();
+                }
+            });
+    }
+
+    private cancelAll() {
+        this.entitySrv
+            .cancelAll(this.selected)
+            .subscribe(res => {
+                if (res.count > 0) {
+                    this.snackBarSrv.showSuccessMessage();
+                }
+            });
+    }
+
+    override selectRow(row: Transaction) {
+        super.selectRow(row);
+        this.doubleCancelBtn.disabled = this.doubleCheckBtn.disabled = row?.id == null;
     }
 }
