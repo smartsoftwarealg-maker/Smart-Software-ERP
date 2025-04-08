@@ -1,0 +1,66 @@
+:host {
+    display: block;
+    margin: auto;
+    position: relative;
+    max-width: 700px;
+    width: 100%;
+    padding-top: 24px;
+}
+
+.content-div {
+    width: 100%;
+    max-width: 836px;
+    min-height: 320px;
+}
+
+.button_div {
+    display: flex;
+    gap: 1em;
+    justify-content: flex-end;
+}
+
+.value {
+    width: 260px;
+    display: block;
+    margin: auto;
+}
+
+// keep the material design specs
+.mat-row, .mat-header-row {
+    padding-right: 16px;
+    padding-left: 16px;
+}
+
+.mat-column-description {
+    flex: 1 1 auto;
+    padding-right: 8px !important;
+    padding-left: 8px !important;
+}
+
+.mat-column-amount {
+    flex: 0 0 100px;
+    padding-right: 8px !important;
+    padding-left: 8px !important;
+}
+
+.mat-column-controls {
+    flex: 0 1 55px;
+    padding-left: 0;
+}
+
+.add-button {
+    position: absolute;
+    z-index: 999;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.pagination-container {
+    ss-pagination {
+        left: 0;
+        right: 0;
+        position: sticky;
+        margin: auto;
+    }
+}

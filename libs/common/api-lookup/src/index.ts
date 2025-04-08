@@ -63,3 +63,4 @@ export * from './lib/destination.service';
 export * from './lib/career-motive.service';
 export * from './lib/cost-center-group.service';
 export * from './lib/delivery-time.service';
+export * from './lib/post-elements.service';

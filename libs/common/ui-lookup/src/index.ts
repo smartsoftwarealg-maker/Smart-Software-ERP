@@ -50,3 +50,5 @@ export * from './lib/components/destination.component';
 export * from './lib/components/career-motive.component';
 export * from './lib/components/cost-center-group.component';
 export * from './lib/components/article-type.component';
+export * from './lib/components/post-elements-list/post-elements-list.component';
+export * from './lib/components/post-elements-detail/post-elements-detail.component';

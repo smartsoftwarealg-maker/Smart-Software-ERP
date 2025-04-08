@@ -1,0 +1,35 @@
+<div class="size button_div size" *ngIf="form">
+    <button mat-mini-fab (click)="save()"
+            color="primary" *ngIf="isEditable">
+        <i class="fas fa-save"></i>
+    </button>
+    <button mat-mini-fab (click)="cancel()"
+            color="warn">
+        <i class="fas fa-redo"></i>
+    </button>
+</div>
+
+<mat-card class="size">
+    <mat-card-content>
+        @if(form !== null){
+        <form novalidate [formGroup]="form">
+            <mat-form-field class="default-100" autofocus>
+                <mat-label translate>COMMON_DESCRIPTION</mat-label>
+                <input matInput formControlName="description" />
+                @if(form.controls['description'].hasError('required')){
+                    <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+                }
+            </mat-form-field>
+        </form>
+        <form novalidate [formGroup]="form">
+            <mat-form-field class="default-100" autofocus>
+                <mat-label translate>COMMON_AMOUNT</mat-label>
+                <input matInput formControlName="amount" type="number" />
+                @if(form.controls['amount'].hasError('required')){
+                    <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+                }
+            </mat-form-field>
+        </form>
+        }
+    </mat-card-content>
+</mat-card>

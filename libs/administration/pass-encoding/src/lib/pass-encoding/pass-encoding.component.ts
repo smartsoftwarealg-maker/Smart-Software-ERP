@@ -33,7 +33,7 @@ export class PassEncodingComponent implements OnInit {
     private passEncodeSrv = inject(PassEncodingService);
     public snackBarSrv = inject(SnackBarService);
     password = new FormControl('', [Validators.required]);
-    code = new FormControl({value: '', disabled: true } );
+    code = new FormControl('');
 
     ngOnInit(): void {
         this.shellSrv.setGoBackPath('..', this.route);

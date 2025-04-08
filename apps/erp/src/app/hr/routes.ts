@@ -28,12 +28,12 @@ import {
     HR_ACTIVITY_URL,
     HR_PHYSICIAN_URL,
     HR_SPECIALTY_URL,
-    HR_CAREER_MOTIVE_URL, HR_ID_UPDATE_URL
+    HR_CAREER_MOTIVE_URL, HR_ID_UPDATE_URL, docInfoRoutes
 } from '../common';
 import {
     ABS_INDEX_URL,
     CanDeactivateService,
-    LIST_URL
+    LIST_URL, RedirectToParentComponent
 } from '@ss/common/api-common';
 import { Routes } from '@angular/router';
 import {
@@ -153,6 +153,14 @@ import {
 import {
     SpecialtyDetailComponent
 } from '@ss/payroll/work-stoppage';
+import {
+    ProductionOrderDetailComponent, ProductionOrderLinesDetailComponent,
+    ProductionOrderLinesListComponent,
+    ProductionOrderListComponent
+} from '@ss/production/production-order';
+import {
+    PostElementsDetailComponent, PostElementsListComponent
+} from '@ss/common/ui-lookup';
 
 export const hrRoutes: Routes = [
     {
@@ -709,15 +717,33 @@ export const hrRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: PostListComponent,
-                canActivate: [loginGuard]
+                canActivate: [loginGuard],
+                children: docInfoRoutes,
             },
             {
                 path: ':id',
                 component: PostDetailComponent,
                 canActivate: [loginGuard],
-                canDeactivate: [CanDeactivateService]
+                canDeactivate: [CanDeactivateService],
+                children: [
+                    { path: '', pathMatch: 'full', redirectTo: 'elements-list' },
+                    {
+                        path: 'elements-list',
+                        component: PostElementsListComponent
+                    },
+                    {
+                        path: 'elements-detail',
+                        children: [
+                            { path: '', component: RedirectToParentComponent },
+                            {
+                                path: ':id',
+                                component: PostElementsDetailComponent,
+                            },
+                        ],
+                    }
+                ],
             },
-            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
+            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' },
         ]
     },
     {
