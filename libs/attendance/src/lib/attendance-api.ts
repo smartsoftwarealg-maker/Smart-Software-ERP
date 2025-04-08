@@ -89,6 +89,13 @@ export interface WorkShift {
     period: number;
 }
 
+export interface SSignature {
+    id: number;
+    from: Date;
+    attendanceType: number;
+    dayCount: number;
+}
+
 export interface Holiday {
     id: number;
     date: Date;
