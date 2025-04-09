@@ -29,5 +29,7 @@
     "ABSENCE_FIELDS":   "Champs d'absence",
     "ESCAPE_FIELD":     "Champ d'évasion",
     "ABSENCE_FIELD":    "Champ d'absence",
-    "LATENESS_FIELD":   "Champ de retard"
+    "LATENESS_FIELD":   "Champ de retard",
+    "SERIAL_ATTENDANCE": "Présence en série",
+    "DAY_COUNT":        "Nombre de jours"
 }
