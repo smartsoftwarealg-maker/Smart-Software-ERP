@@ -12,6 +12,7 @@ export const SHIFT_TIMING_URL = '/timings';
 export const ATT_ATTENDANCE = '/attendance/attendance';
 export const ABSENCE_MOTIVE_URL = '/lookups/absence_motives';
 export const ABSENCE_FIELDS_URL = '/attendance/absence-fields';
+export const SERIAL_ATTENDANCE_URL = '/attendance/sign';
 
 export const TYPES: Lookup[] = [
     {id: 1, description: 'ATT_ATTENDANCE'},
