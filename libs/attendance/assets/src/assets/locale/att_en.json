@@ -32,5 +32,7 @@
     "ABSENCE_FIELDS":   "Absence fields",
     "ESCAPE_FIELD":     "Escape field",
     "ABSENCE_FIELD":    "Absence field",
-    "LATENESS_FIELD":   "Lateness field"
+    "LATENESS_FIELD":   "Lateness field",
+    "SERIAL_ATTENDANCE": "Serial attendance",
+    "DAY_COUNT":        "Number of days"
 }

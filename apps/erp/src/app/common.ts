@@ -347,6 +347,7 @@ export const MANUAL_ATTENDANCE_URL   = 'manual-attendance';
 export const HOLIDAY_URL             = 'holidays';
 export const ABSENCE_TYPE_URL        = 'absence-types';
 export const ABSENCE_FIELDS_URL      = 'absence-fields';
+export const SERIAL_ATTENDANCE_URL   = 'serial-attendance';
 
 
 // Missions
@@ -363,6 +364,7 @@ export const ABS_ATTENDANCE_ABSENCE_MOTIVE_URL = '/' + [MAIN_PAGE_URL, ATTENDANC
 export const ABS_MANUAL_SIGNATURE_URL = '/' + [MAIN_PAGE_URL, ATTENDANCE_APP_URL, MANUAL_ATTENDANCE_URL].join('/');
 export const ABS_ABSENCE_TYPES_URL = '/' + [MAIN_PAGE_URL, ATTENDANCE_APP_URL, ABSENCE_TYPE_URL].join('/');
 export const ABS_ABSENCE_FIELDS_URL = '/' + [MAIN_PAGE_URL, ATTENDANCE_APP_URL, ABSENCE_FIELDS_URL].join('/');
+export const ABS_SERIAL_ATTENDANCE_URL = '/' + [MAIN_PAGE_URL, ATTENDANCE_APP_URL, SERIAL_ATTENDANCE_URL].join('/');
 
 //Dashboard
 export const DASHBOARD_QUERY_URL = 'queries';

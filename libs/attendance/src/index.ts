@@ -21,3 +21,4 @@ export * from './lib/absence-motive.service';
 export * from './lib/absence-types-list/absence-types-list.component';
 export * from './lib/absence-types-detail/absence-types-detail.component';
 export * from './lib/absence-fields/absence-fields.component';
+export * from './lib/serial-attendance/serial-attendance.component';

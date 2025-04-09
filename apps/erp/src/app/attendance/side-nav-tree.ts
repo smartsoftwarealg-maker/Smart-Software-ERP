@@ -6,7 +6,7 @@ import {
     ABS_ATTENDANCE_HOLIDAY_URL,
     ABS_ATTENDANCE_LOG_URL,
     ABS_ATTENDANCE_MACHINES_URL,
-    ABS_ATTENDANCE_WORKSHIFTS_URL, ABS_MANUAL_SIGNATURE_URL,
+    ABS_ATTENDANCE_WORKSHIFTS_URL, ABS_MANUAL_SIGNATURE_URL, ABS_SERIAL_ATTENDANCE_URL,
     ABS_SHIFT_ASSIGNMENTS_URL
 } from '../common';
 
@@ -67,6 +67,12 @@ export const attendanceNavTree: SideNavNode = {
             icon: 'fa-solid fa-user-gear',
             route: ABS_ATTENDANCE_LOG_URL,
             accessRights: 'Attendance'
+        },
+        {
+            name: 'ATT_SERIAL_ATTENDANCE',
+            icon: 'fa-solid fa-calendar-circle-user',
+            route: ABS_SERIAL_ATTENDANCE_URL,
+            accessRights: 'ATTSignature'
         },
     ],
     accessRights: 'ATTENDANCE_APP'

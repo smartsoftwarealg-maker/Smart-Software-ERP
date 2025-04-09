@@ -29,5 +29,7 @@
     "ABSENCE_FIELDS":   "حقول الغياب",
     "ESCAPE_FIELD":     "حقل الهروب",
     "ABSENCE_FIELD":    "حقل الغياب",
-    "LATENESS_FIELD":   "حقل التأخير"
+    "LATENESS_FIELD":   "حقل التأخير",
+    "SERIAL_ATTENDANCE": "الغياب المتسلسل",
+    "DAY_COUNT":        "عدد الأيام"
 }
