@@ -208,5 +208,6 @@
     "NEW_ID":                "New ID",
     "ID_UPDATE":             "ID update",
     "FUNDS":                 "Funds",
-    "FUNDS_DETAIL":          "Funds detail"
+    "FUNDS_DETAIL":          "Funds detail",
+    "TAKEN_AMOUNT":          "Taken amount"
 }

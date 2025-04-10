@@ -90,6 +90,20 @@ export class EmployeeCareerDetailComponent extends BaseChildEntityDetailComponen
     categories: Category[] = [];
     salaryGrid: Lookup[] = [];
 
+    readonly MONTHS: Lookup[] = [
+        { id: 1, description: 'JANUARY' },
+        { id: 2, description: 'FEBRUARY' },
+        { id: 3, description: 'MARCH' },
+        { id: 4, description: 'APRIL' },
+        { id: 5, description: 'MAY' },
+        { id: 6, description: 'JUNE' },
+        { id: 7, description: 'JULY' },
+        { id: 8, description: 'AUGUST' },
+        { id: 9, description: 'SEPTEMBER' },
+        { id: 10, description: 'OCTOBER' },
+        { id: 11, description: 'NOVEMBER' },
+        { id: 12, description: 'DECEMBER' }
+    ]
     constructor(
         public employeeCareerSrv: EmployeeCareerService) {
         super(employeeCareerSrv, 'Career');
@@ -131,11 +145,12 @@ export class EmployeeCareerDetailComponent extends BaseChildEntityDetailComponen
                     }
                 })
         }
+        console.log((a.paymonth % 100)||1);
         return this.form = this.formBuilder.group({
             id:            [a.id],
             parentId:      [a.parentId || this.employeeCareerSrv.getParentId()],
             paymonthY:     [Math.floor(a.paymonth / 100), Validators.required],
-            paymonthM:     [a.paymonth % 100, Validators.required],
+            paymonthM:     [(a.paymonth % 100)||1, Validators.required],
             post:          [a.post, Validators.required],
             division:      [a.division],
             department:    [a.department],

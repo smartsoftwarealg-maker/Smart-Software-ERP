@@ -42,12 +42,30 @@
             </mat-cell>
         </ng-container>
 
+        <ng-container matColumnDef="decision" style="justify-content: center; text-align: center">
+            <mat-header-cell *matHeaderCellDef translate style="justify-content: center">
+                COMMON_DECISION_NO
+            </mat-header-cell>
+            <mat-cell *matCellDef="let e" style="justify-content: center">
+                {{ e.decision}}
+            </mat-cell>
+        </ng-container>
+
         <ng-container matColumnDef="from_date" style="justify-content: center; text-align: center">
             <mat-header-cell *matHeaderCellDef translate style="justify-content: center">
                 PAYROLL_FROM
             </mat-header-cell>
             <mat-cell *matCellDef="let e" style="justify-content: center">
-                {{e.from_date}}
+                {{e.from_date | date:'dd/MM/yyyy'}}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="decision_date" style="justify-content: center; text-align: center">
+            <mat-header-cell *matHeaderCellDef translate style="justify-content: center">
+                COMMON_DECISION_DATE
+            </mat-header-cell>
+            <mat-cell *matCellDef="let e" style="justify-content: center">
+                {{e.decision_date | date:'dd/MM/yyyy'}}
             </mat-cell>
         </ng-container>
 
@@ -56,7 +74,7 @@
                 PAYROLL_TO
             </mat-header-cell>
             <mat-cell *matCellDef="let e" style="justify-content: center">
-                {{e.to_date}}
+                {{e.to_date | date:'dd/MM/yyyy'}}
             </mat-cell>
         </ng-container>
 

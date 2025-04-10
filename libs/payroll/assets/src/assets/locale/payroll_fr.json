@@ -56,7 +56,7 @@
     "DEPARTMENT": "Département",
     "SERVICE": "Service",
     "PAYMONTH": "Mois",
-    "POST": "Poste",
+    "POST": "Poste occupé",
     "EMPLOYEE_CAREER_OVERVIEW": "Aperçu de carrière",
     "EMPLOYEE_CAREER_DETAIL": "Modifier la carrière de l'employé",
     "MONTH": "Mois",
@@ -122,7 +122,7 @@
     "LANGUAGE_WRITE_LEVEL": "Niveau d'écriture",
     "OLD_CAREERS": "Carrière Antérieure",
     "EMPLOYEE_SUMMARY": "Statistiques",
-    "WORKSHOP":         "Site",
+    "WORKSHOP":         "Site/Antenne",
     "APPLICATION_DATE":   "Date application",
     "APPLICATION_PERIOD": "Periode application",
     "DECISION_MOTIVES":   "Motifs decisions",
@@ -208,5 +208,6 @@
     "NEW_ID":                "Nouveau ID",
     "ID_UPDATE":             "Mise à jour ID",
     "FUNDS":                 "Fonds",
-    "FUNDS_DETAIL":          "Détail des fonds"
+    "FUNDS_DETAIL":          "Détail des fonds",
+    "TAKEN_AMOUNT":          "Montant pris"
 }

@@ -356,7 +356,8 @@ export class EmployeeDetailComponent extends BaseEntityDetailComponent<Employee>
     }
 
     cancelElements() {
-        this.loadFixedElements().subscribe();
+        this.loadFixedElements()
+            .subscribe(() => this.saveButton.disabled = false);
     }
 
     saveElements() {
@@ -372,8 +373,12 @@ export class EmployeeDetailComponent extends BaseEntityDetailComponent<Employee>
         this.infoSrv
             .save(line)
             .subscribe({
-                next: () => this.snackBarSrv.showSuccessMessage(),
+                next: () => {
+                    this.snackBarSrv.showSuccessMessage()
+                    this.saveButton.disabled = false;
+                },
                 error: err => {
+                    this.saveButton.disabled = false;
                     this.snackBarSrv.showFailureMessage();
                     throw err;
                 }
@@ -426,6 +431,7 @@ export class EmployeeDetailComponent extends BaseEntityDetailComponent<Employee>
     }
 
     editFixedElements() {
+        this.saveButton.disabled = true;
         this.fixedElementEditInProgress = true;
         this.elementsForm.enable();
     }
