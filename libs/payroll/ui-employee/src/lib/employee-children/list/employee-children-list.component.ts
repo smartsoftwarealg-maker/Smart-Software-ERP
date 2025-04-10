@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { EmployeeChildrenService, Child } from '@ss/payroll/api-employee';
 import { BaseChildEntityListComponent } from '@ss/common/ui-base-entity';
 import { NgIf, AsyncPipe } from '@angular/common';
@@ -9,6 +9,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
 import { PaginationComponent } from '@ss/common/ui-pagination';
 import { TranslatePipe } from '@ss/common/ui-lang';
 import { MaterialModule } from '@ss/common/api-common';
+import { ActivePersonnelService } from '../../active-personnel.service';
 
 @Component({
     selector: 'ss-employee-children',
@@ -24,6 +25,8 @@ export class EmployeeChildrenListComponent extends BaseChildEntityListComponent<
         'birthPlace',
         'sex'
     ];
+
+    activePersonnelSrv = inject(ActivePersonnelService);
 
     constructor(public entitySrv: EmployeeChildrenService) {
         super(entitySrv, 'Child');

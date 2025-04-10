@@ -8,13 +8,13 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatTableModule } from '@angular/material/table';
 
 import { MaterialModule } from "@ss/common/api-common";
-import { TranslatePipe } from '@ss/common/ui-lang';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 import { PaginationComponent } from '@ss/common/ui-pagination';
 
 @Component({
     selector: 'ss-driver-vehicles-list',
     standalone: true,
-    imports: [CommonModule, MatButtonModule, MatTableModule, MaterialModule, TranslatePipe, PaginationComponent],
+    imports: [CommonModule, MatButtonModule, MatTableModule, MaterialModule, TranslatePipe, PaginationComponent, TranslateDirective],
     templateUrl: './driver-vehicles-list.component.html',
     styleUrls: ['./driver-vehicles-list.component.css']
 })

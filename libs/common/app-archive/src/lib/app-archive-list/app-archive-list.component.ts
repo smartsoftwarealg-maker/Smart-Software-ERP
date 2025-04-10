@@ -13,6 +13,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { DatePickerComponent } from '@ss/common/ui-datepicker';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
+import { ActivePersonnelService } from '@ss/payroll/ui-employee';
 
 @Component({
     selector: 'ss-app-archive-list',
@@ -32,6 +33,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 export class AppArchiveListComponent implements OnInit {
     private _id = 0;
     private shellSrv = inject(ShellService);
+    public activePersonnelSrv = inject(ActivePersonnelService);
 
     imgSrc: string | null = null;
     selectedId = 0;

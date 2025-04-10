@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import {Career, EmployeeCareerService} from '@ss/payroll/api-employee';
 import { BaseChildEntityListComponent } from '@ss/common/ui-base-entity';
 import { MatMiniFabButton } from '@angular/material/button';
@@ -8,6 +8,7 @@ import { MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, Ma
 import { TranslateDirective } from '@ss/common/ui-lang';
 import { PaginationComponent } from '@ss/common/ui-pagination';
 import { TranslatePipe } from '@ss/common/ui-lang';
+import { ActivePersonnelService } from '../../active-personnel.service';
 
 @Component({
     selector: 'ss-employee-career',
@@ -34,6 +35,8 @@ export class EmployeeCareerListComponent extends BaseChildEntityListComponent<Ca
         'trial_period',
         'wrkDescription',
     ];
+
+    activePersonnelSrv = inject(ActivePersonnelService);
 
     constructor(public entitySrv: EmployeeCareerService) {
         super(entitySrv, 'Career');

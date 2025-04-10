@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, inject, Input } from '@angular/core';
 import { BaseChildEntityListComponent } from '@ss/common/ui-base-entity';
 import { EmployeeWivesService, Wife } from '@ss/payroll/api-employee';
 import { MatMiniFabButton } from '@angular/material/button';
@@ -8,6 +8,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
 import { PaginationComponent } from '@ss/common/ui-pagination';
 import { AsyncPipe } from '@angular/common';
 import { TranslatePipe } from '@ss/common/ui-lang';
+import { ActivePersonnelService } from '../../active-personnel.service';
 
 @Component({
     selector: 'ss-employee-wives',
@@ -27,6 +28,8 @@ export class EmployeeWivesListComponent extends BaseChildEntityListComponent<Wif
         'father',
         'mother'
     ];
+
+    activePersonnelSrv = inject(ActivePersonnelService);
 
     constructor(public entitySrv: EmployeeWivesService) {
         super(entitySrv, 'Wife');

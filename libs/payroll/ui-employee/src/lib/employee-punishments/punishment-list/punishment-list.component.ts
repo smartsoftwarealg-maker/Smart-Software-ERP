@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import { Component, inject } from '@angular/core';
 import {Punishment} from '../punishment-api';
 import {PunishmentService} from '../punishment.service';
 import { BaseChildEntityListComponent } from '@ss/common/ui-base-entity';
@@ -9,6 +9,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
 import { PaginationComponent } from '@ss/common/ui-pagination';
 import { AsyncPipe, DatePipe } from '@angular/common';
 import { TranslatePipe } from '@ss/common/ui-lang';
+import { ActivePersonnelService } from '../../active-personnel.service';
 
 @Component({
     selector: 'ss-punishment-list',
@@ -26,6 +27,8 @@ export class PunishmentListComponent extends BaseChildEntityListComponent<Punish
         'faultName',
         'memo',
     ];
+
+    activePersonnelSrv = inject(ActivePersonnelService);
 
     constructor(public entitySrv: PunishmentService) {
         super(entitySrv, 'Punishment');

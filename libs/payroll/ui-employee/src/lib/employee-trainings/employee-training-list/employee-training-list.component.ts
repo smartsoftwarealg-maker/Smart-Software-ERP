@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import { Component, inject, Input } from '@angular/core';
 import {EmployeeTrainingService} from '../employee-training.service';
 import {Training} from '../employee-training';
 import { BaseChildEntityListComponent } from '@ss/common/ui-base-entity';
@@ -9,6 +9,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
 import { PaginationComponent } from '@ss/common/ui-pagination';
 import { AsyncPipe, DecimalPipe, DatePipe } from '@angular/common';
 import { TranslatePipe } from '@ss/common/ui-lang';
+import { ActivePersonnelService } from '../../active-personnel.service';
 
 @Component({
     selector: 'ss-employee-training-list',
@@ -36,6 +37,8 @@ export class EmployeeTrainingListComponent extends BaseChildEntityListComponent<
         'extra_expenses',
         'judicialName'
     ];
+
+    activePersonnelSrv = inject(ActivePersonnelService);
 
     constructor(public entitySrv: EmployeeTrainingService) {
         super(entitySrv, 'Training');

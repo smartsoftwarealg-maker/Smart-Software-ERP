@@ -9,12 +9,12 @@ import { MatTableModule } from '@angular/material/table';
 
 import { MaterialModule } from "@ss/common/api-common";
 import { PaginationComponent } from '@ss/common/ui-pagination';
-import { TranslatePipe } from '@ss/common/ui-lang';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-driver-license-list',
     standalone: true,
-    imports: [CommonModule, MatButtonModule, MatTableModule, MaterialModule, PaginationComponent, TranslatePipe],
+    imports: [CommonModule, MatButtonModule, MatTableModule, MaterialModule, PaginationComponent, TranslatePipe, TranslateDirective],
     templateUrl: './driver-license-list.component.html',
     styleUrls: ['./driver-license-list.component.css']
 })
