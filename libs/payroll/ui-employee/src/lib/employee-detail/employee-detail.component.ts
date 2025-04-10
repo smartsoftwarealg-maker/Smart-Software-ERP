@@ -36,7 +36,7 @@ import {
     EmployeeDecisionService,
     EmployeeLanguagesService,
     EmployeeOldCareerService,
-    EmployeeWivesService,
+    EmployeeWivesService, FIXED_ELEMENTS_URL,
     LANGUAGES_ROUTE_URL,
     OLD_CAREER_ROUTE_URL,
     PUNISHMENT_ROUTE_URL,
@@ -117,7 +117,7 @@ export class EmployeeDetailComponent extends BaseEntityDetailComponent<Employee>
     private citySrv = inject(CityService);
     private nationalitySrv = inject(NationalityService);
     private archiveSrv = inject(AppArchiveService);
-    private PANELS = [
+    private HR_PANELS = [
         ACTIVATION_ROUTE_URL, //0
         CONTRACTS_ROUTE_URL,  //1
         CAREER_ROUTE_URL,     //2
@@ -129,8 +129,11 @@ export class EmployeeDetailComponent extends BaseEntityDetailComponent<Employee>
         LANGUAGES_ROUTE_URL,  //8
         OLD_CAREER_ROUTE_URL, //9
         DECISION_ROUTE_URL,   //10
-        ARCHIVE_ROUTE_URL     //11
+        ARCHIVE_ROUTE_URL,     //11
     ];
+    private PAYROLL_PANELS = [
+        ACTIVATION_ROUTE_URL, //0
+    ]
 
     readonly ACTIVATION_ROUTE = 0;
     readonly CONTRACTS_ROUTE = 1;
@@ -142,8 +145,9 @@ export class EmployeeDetailComponent extends BaseEntityDetailComponent<Employee>
     readonly PUNISHMENT_ROUTE = 7;
     readonly LANGUAGES_ROUTE = 8;
     readonly OLD_CAREER_ROUTE = 9;
-    readonly DECISION_ROUT = 10;
-    readonly ARCHIVE_ROUT = 11;
+    readonly DECISION_ROUTE = 10;
+    readonly ARCHIVE_ROUTE = 11;
+    readonly FIXED_ELEMENTS_ROUTE = 112;
 
     activePanel: number = -1;
     noEdit = true;
@@ -416,9 +420,12 @@ export class EmployeeDetailComponent extends BaseEntityDetailComponent<Employee>
 
     showPanel(panel: number) {
         this.activePanel = panel;
-        const dest = this.PANELS[panel];
-        if (this.router.url.indexOf(dest) < 0) {
-            this.router.navigate([dest], {relativeTo: this.route}).then();
+        const panels = this.hrMode? this.HR_PANELS: this.PAYROLL_PANELS;
+        if (panel < panels.length) {
+            const dest = panels[panel];
+            if (this.router.url.indexOf(dest) < 0) {
+                this.router.navigate([dest], { relativeTo: this.route }).then();
+            }
         }
     }
 

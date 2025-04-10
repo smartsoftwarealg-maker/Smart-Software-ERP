@@ -97,7 +97,7 @@ import {
     CAREER_ROUTE_URL,
     CHILDREN_ROUTE_URL,
     CONTRACTS_ROUTE_URL, DECISION_ROUTE_URL,
-    DIPLOMA_ROUTE_URL,
+    DIPLOMA_ROUTE_URL, FIXED_ELEMENTS_URL,
     LANGUAGES_ROUTE_URL, OLD_CAREER_ROUTE_URL,
     PUNISHMENT_ROUTE_URL,
     TRAINING_ROUTE_URL,
@@ -515,6 +515,12 @@ export const mainRoutes: Routes = [
                                 children: [
                                     { path: '', component: EmployeeDecisionListComponent, pathMatch: 'full' },
                                     { path: ':id', component: EmployeeDecisionDetailComponent, canDeactivate: [CanDeactivateService] }
+                                ]
+                            },
+                            {
+                                path: FIXED_ELEMENTS_URL,
+                                children: [
+                                    { path: ':id', component: FixedElementsDetailComponent, canDeactivate: [CanDeactivateService] }
                                 ]
                             }
                         ]

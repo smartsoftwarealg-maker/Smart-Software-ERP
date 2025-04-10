@@ -282,10 +282,10 @@
                 <router-outlet *ngIf="activePanel === OLD_CAREER_ROUTE"></router-outlet>
             </mat-tab>
             <mat-tab label="{{'COMMON_DECISIONS'|translate}}" [disabled]="!noEdit">
-                <router-outlet *ngIf="activePanel === DECISION_ROUT"></router-outlet>
+                <router-outlet *ngIf="activePanel === DECISION_ROUTE"></router-outlet>
             </mat-tab>
             <mat-tab label="{{'COMMON_ARCHIVE'|translate}}" [disabled]="!noEdit">
-                <router-outlet *ngIf="activePanel === ARCHIVE_ROUT"></router-outlet>
+                <router-outlet *ngIf="activePanel === ARCHIVE_ROUTE"></router-outlet>
             </mat-tab>
         } @else {
             <mat-tab label="{{'PAYROLL_FIXED_ELEMENTS'|translate}}">
