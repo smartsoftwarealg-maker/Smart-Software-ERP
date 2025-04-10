@@ -12,6 +12,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
 import { MatInput } from '@angular/material/input';
 import { DatePickerComponent } from '@ss/common/ui-datepicker';
 import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
+import { ActivePersonnelService } from '../../active-personnel.service';
 
 @Component({
     selector: 'ss-emp-decision-detail',
@@ -24,13 +25,17 @@ export class EmployeeDecisionDetailComponent extends BaseChildEntityDetailCompon
     private formBuilder = inject(FormBuilder);
     private motiveSrv = inject(DecisionMotiveService);
     decisionLookup = new DefaultAutoCompleteModel(this.motiveSrv);
-
+    private activePersonnelSrv = inject(ActivePersonnelService);
     // entity: Decision;
 
     constructor(public employeeDecisionSrv: EmployeeDecisionService) {
         super(employeeDecisionSrv, 'Decision');
     }
 
+    override ngOnInit() {
+        super.ngOnInit();
+        this.isEditable = this.activePersonnelSrv.val;
+    }
     override setupForm(a: Decision): UntypedFormGroup {
         // this.entity = a;
         return this.form = this.formBuilder.group({

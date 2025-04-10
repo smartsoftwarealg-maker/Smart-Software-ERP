@@ -15,6 +15,7 @@ import { MatInput } from '@angular/material/input';
 import { DatePickerComponent } from '@ss/common/ui-datepicker';
 import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { MaterialModule } from '@ss/common/api-common';
+import { ActivePersonnelService } from '../../active-personnel.service';
 
 @Component({
     selector: 'ss-employee-training-dist',
@@ -31,11 +32,16 @@ export class EmployeeTrainingDetailComponent extends BaseChildEntityDetailCompon
     motiveAutoCompleteModel = new DefaultAutoCompleteModel(this.motiveSrv);
     diplomaAutoCompleteModel = new DefaultAutoCompleteModel(this.diplomaSrv);
     judicialFrameAutoCompleteModel = new DefaultAutoCompleteModel(this.judicialSrv);
+    private activePersonnelSrv = inject(ActivePersonnelService);
 
     constructor(public trainingSrv: EmployeeTrainingService) {
         super(trainingSrv, 'Training');
     }
 
+    override ngOnInit() {
+        super.ngOnInit();
+        this.isEditable = this.activePersonnelSrv.val;
+    }
 
     override setupForm(a: Training): UntypedFormGroup {
         return this.form = this.formBuilder.group({
