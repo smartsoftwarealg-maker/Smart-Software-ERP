@@ -367,5 +367,7 @@
     "SAVE_PARAMS":        "Save parameters",
     "BACK":               "Back",
     "SUBMIT":             "Submit",
-    "ANOMALIES":         "Anomalies"
+    "ANOMALIES":         "Anomalies",
+    "DECISION_NO":        "Decision no",
+    "DECISION_DATE":      "Decision date"
 }

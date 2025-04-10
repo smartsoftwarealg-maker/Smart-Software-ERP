@@ -19,7 +19,7 @@
         "The order of the rules matters"
     ],
     "version": "3.1",
-    "defaultUrl": "http://localhost:8080",
+    "defaultUrl": "http://127.0.0.1:8080",
     "urlRules": [
         {
             "frontend": "?",

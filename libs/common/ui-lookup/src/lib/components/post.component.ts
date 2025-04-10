@@ -30,11 +30,9 @@ import { Observable } from 'rxjs';
                 [dataSource]="data"
                 class="main-table"
                 matSort
-                (matSortChange)="sort($event)"
-            >
+                (matSortChange)="sort($event)">
                 <ng-container matColumnDef="description">
-                    <mat-header-cell *matHeaderCellDef mat-sort-header translate
-                        >COMMON_DESCRIPTION</mat-header-cell
+                    <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_DESCRIPTION</mat-header-cell
                     >
                     <mat-cell *matCellDef="let e">
                         {{ e.description }}
@@ -97,7 +95,7 @@ import { Observable } from 'rxjs';
         MatRowDef,
         MatRow,
         PaginationComponent,
-        RouterOutlet,
+
     ],
 })
 export class PostListComponent extends BaseEntityListComponent<Post> {

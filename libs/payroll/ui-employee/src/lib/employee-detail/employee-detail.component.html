@@ -135,12 +135,13 @@
                     <mat-tab label="{{'ADMINISTRATION_CONTACT'|translate}}">
                         <mat-form-field id="address1" class="default-50 sm-100">
                             <mat-label translate>COMMON_ADDRESS</mat-label>
-                            <input matInput formControlName="address1" type="text" maxlength="128" pattern="^[a-zA-Z0-9' ]*$">
+                            <input matInput formControlName="address1" type="text" maxlength="128"
+                                   pattern="^[a-zA-Z0-9' ]*$">
 
                             @if (form.controls['address1'].hasError('maxlength')) {
-                                <mat-error [translate]="{ maxLen: 128 }"> COMMON_FIELD_MAX_LENGTH </mat-error>
+                                <mat-error [translate]="{ maxLen: 128 }"> COMMON_FIELD_MAX_LENGTH</mat-error>
                             } @else if (form.controls['address1'].invalid) {
-                                <mat-error translate> BL_INVALID_DATA </mat-error>
+                                <mat-error translate> BL_INVALID_DATA</mat-error>
                             }
                         </mat-form-field>
                         <mat-form-field id="email" class="default-50 sm-100">
@@ -219,7 +220,8 @@
 
                         <mat-form-field class="default-50 sm-100">
                             <mat-label translate>PAYROLL_NATIONALITY</mat-label>
-                            <ss-auto-complete [model]="nationalityModel" formControlName="nationality"></ss-auto-complete>
+                            <ss-auto-complete [model]="nationalityModel"
+                                              formControlName="nationality"></ss-auto-complete>
                             <mat-error *ngIf="form.controls['nationality'].hasError('required')" translate>
                                 COMMON_FIELD_REQUIRED
                             </mat-error>
@@ -286,51 +288,53 @@
                 <router-outlet *ngIf="activePanel === ARCHIVE_ROUT"></router-outlet>
             </mat-tab>
         } @else {
-            <mat-tab label="{{'PAYROLL_FIXED_ELEMENTS'|translate}}" >
+            <mat-tab label="{{'PAYROLL_FIXED_ELEMENTS'|translate}}">
                 @if (activePersonnelSrv.val && isEditable) {
                     <div class="ctrl-div">
-                    @if (fixedElementEditInProgress) {
-                        <mat-form-field appearance="fill">
-                            <mat-label translate>PAYROLL_GENERATE_FROM</mat-label>
-                            <mat-select #mode>
-                                <mat-option *ngFor="let g of generationModes" [value]="g.id">
-                                    <span translate>  {{ g.description }} </span>
-                                </mat-option>
-                            </mat-select>
-                        </mat-form-field>
+                        @if (fixedElementEditInProgress) {
+                            <mat-form-field appearance="fill">
+                                <mat-label translate>PAYROLL_GENERATE_FROM</mat-label>
+                                <mat-select #mode>
+                                    @for (g of generationModes; track g.id) {
+                                        <mat-option [value]="g.id">
+                                            <span translate>  {{ g.description }} </span>
+                                        </mat-option>
+                                    }
+                                </mat-select>
+                            </mat-form-field>
 
-                        <button mat-raised-button
-                                color="primary"
-                                type="button"
-                                (click)="generateFrom(mode.value)"
-                                [disabled]="!mode.value">
-                            <i class="fa-solid fa-wind-turbine"></i>
-                            {{ 'COMMON_GENERATE' | translate }}
-                        </button>
-                        <button mat-raised-button color="primary" type="button" (click)="saveElements()">
-                            <i class="fa-solid fa-floppy-disk"></i>
-                            {{ 'COMMON_SAVE' | translate }}
-                        </button>
-                        <button mat-raised-button color="primary" type="button" (click)="cancelElements()">
-                            <i class="fa-solid fa-rotate-left icon"></i>
-                            {{ 'COMMON_CANCEL' | translate }}
-                        </button>
-                    } @else {
-                        <button mat-raised-button color="primary" type="button" (click)="editFixedElements()">
-                            <i class="fas fa-pen"></i>
-                            {{ 'COMMON_EDIT' | translate }}
-                        </button>
-                    }
-                </div>
+                            <button mat-raised-button
+                                    color="primary"
+                                    type="button"
+                                    (click)="generateFrom(mode.value)"
+                                    [disabled]="!mode.value">
+                                <i class="fa-solid fa-wind-turbine"></i>
+                                {{ 'COMMON_GENERATE' | translate }}
+                            </button>
+                            <button mat-raised-button color="primary" type="button" (click)="saveElements()">
+                                <i class="fa-solid fa-floppy-disk"></i>
+                                {{ 'COMMON_SAVE' | translate }}
+                            </button>
+                            <button mat-raised-button color="primary" type="button" (click)="cancelElements()">
+                                <i class="fa-solid fa-rotate-left icon"></i>
+                                {{ 'COMMON_CANCEL' | translate }}
+                            </button>
+                        } @else {
+                            <button mat-raised-button color="primary" type="button" (click)="editFixedElements()">
+                                <i class="fas fa-pen"></i>
+                                {{ 'COMMON_EDIT' | translate }}
+                            </button>
+                        }
+                    </div>
                 }
                 @if (elementsForm !== null) {
                     <form [formGroup]="elementsForm">
                         <div formGroupName="elements" class="elements">
                             @for (g of elementsFormArray.controls; track g; let i = $index) {
-                            <mat-form-field>
-                                <mat-label> {{ elementDescriptions()[i] }}</mat-label>
-                                <input matInput formControlName="{{ i }}" type="number">
-                            </mat-form-field>
+                                <mat-form-field>
+                                    <mat-label> {{ elementDescriptions()[i] }}</mat-label>
+                                    <input matInput formControlName="{{ i }}" type="number">
+                                </mat-form-field>
                             }
                         </div>
                     </form>
