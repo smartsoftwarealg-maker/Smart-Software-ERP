@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { EmployeeContractService, Contract } from '@ss/payroll/api-employee';
 import { PaginationModel } from '@ss/common/api-common';
 import { BaseChildEntityListComponent } from '@ss/common/ui-base-entity';
@@ -10,6 +10,7 @@ import { MatCheckbox } from '@angular/material/checkbox';
 import { PaginationComponent } from '@ss/common/ui-pagination';
 import { AsyncPipe, DecimalPipe, DatePipe } from '@angular/common';
 import { TranslatePipe } from '@ss/common/ui-lang';
+import { ActivePersonnelService } from '../../active-personnel.service';
 
 @Component({
     selector: 'ss-employee-contracts',
@@ -44,6 +45,7 @@ export class EmployeeContractListComponent extends BaseChildEntityListComponent<
 
     public readonly pagination = PaginationModel.newInstance();
     public data: Contract[] = [];
+    activePersonnelSrv = inject(ActivePersonnelService);
 
     constructor(public entitySrv: EmployeeContractService) {
         super(entitySrv, 'Contract');

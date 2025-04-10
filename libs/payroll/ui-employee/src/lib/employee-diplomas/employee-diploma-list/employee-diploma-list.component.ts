@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import { Component, inject, Input } from '@angular/core';
 import {PersonDiploma} from '../employee-diploma-api';
 import {EmployeeDiplomaService} from '../employee-diploma.service';
 import { BaseChildEntityListComponent } from '@ss/common/ui-base-entity';
@@ -9,6 +9,7 @@ import { MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, Ma
 import { TranslateDirective } from '@ss/common/ui-lang';
 import { PaginationComponent } from '@ss/common/ui-pagination';
 import { TranslatePipe } from '@ss/common/ui-lang';
+import { ActivePersonnelService } from '../../active-personnel.service';
 
 @Component({
     selector: 'ss-employee-diploma-list',
@@ -30,6 +31,8 @@ export class EmployeeDiplomaListComponent extends BaseChildEntityListComponent<P
         'to_date',
         'levelName'
     ];
+
+    activePersonnelSrv = inject(ActivePersonnelService);
 
     constructor(public entitySrv: EmployeeDiplomaService) {
         super(entitySrv, 'PersonDiploma');

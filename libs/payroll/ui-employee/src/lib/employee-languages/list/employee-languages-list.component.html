@@ -1,18 +1,22 @@
 <div class="buttons" *ngIf="isEditable">
-    <button mat-mini-fab color="primary" (click)="showDetail(0)" [matTooltip]="'COMMON_ADD' | translate">
-        <span class="fas fa-plus"></span>
-    </button>
+    @if (activePersonnelSrv.val) {
+        <button mat-mini-fab color="primary" (click)="showDetail(0)" [matTooltip]="'COMMON_ADD' | translate">
+            <span class="fas fa-plus"></span>
+        </button>
+    }
     <button mat-mini-fab (click)="edit()"
             [disabled]="!selectedId"
             [matTooltip]="'COMMON_EDIT' | translate"
             color="accent">
         <span class="fas fa-pen"></span>
     </button>
-    <button mat-mini-fab (click)="deleteSelected()" [matTooltip]="'COMMON_DELETE' | translate"
-            [disabled]="!selectedId"
-            color="warn">
-        <span class="fas fa-trash-alt"></span>
-    </button>
+    @if (activePersonnelSrv.val) {
+        <button mat-mini-fab (click)="deleteSelected()" [matTooltip]="'COMMON_DELETE' | translate"
+                [disabled]="!selectedId"
+                color="warn">
+            <span class="fas fa-trash-alt"></span>
+        </button>
+    }
 </div>
 
 <div class="table-container">
@@ -23,7 +27,7 @@
                 PAYROLL_LANGUAGE
             </mat-header-cell>
             <mat-cell *matCellDef="let e">
-                {{e.languageDescription}}
+                {{ e.languageDescription }}
             </mat-cell>
         </ng-container>
 
@@ -47,7 +51,7 @@
 
         <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
         <mat-row class="selectable" [class.selected]="row.id == selectedId" (click)="select(row.id)"
-            *matRowDef="let row; columns: displayedColumns;"></mat-row>
+                 *matRowDef="let row; columns: displayedColumns;"></mat-row>
     </mat-table>
 
 </div>

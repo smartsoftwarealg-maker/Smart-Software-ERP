@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { EmployeeOldCareerService, OldCareer } from '@ss/payroll/api-employee';
 import { BaseChildEntityListComponent } from '@ss/common/ui-base-entity';
 import { NgIf, AsyncPipe, DatePipe } from '@angular/common';
@@ -9,6 +9,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
 import { PaginationComponent } from '@ss/common/ui-pagination';
 import { TranslatePipe } from '@ss/common/ui-lang';
 import { MaterialModule } from '@ss/common/api-common';
+import { ActivePersonnelService } from '../../active-personnel.service';
 
 @Component({
     selector: 'ss-employee-old-career-list',
@@ -30,6 +31,7 @@ export class EmployeeOldCareerListComponent extends BaseChildEntityListComponent
         'to_date',
     ];
 
+    activePersonnelSrv = inject(ActivePersonnelService);
 
     constructor(public entitySrv: EmployeeOldCareerService) {
         super(entitySrv, 'OldCareer');

@@ -40,6 +40,7 @@ import { DriverService } from '../services/driver.service';
 import { DriverLicenseMainComponent } from '../driver-license-main/driver-license-main.component';
 import { DriverLicenseService } from '../services/driver-license.service';
 import { DriverVehicleService } from '../services/driver-vehicle.service';
+import { TranslateDirective } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-driver-detail',
@@ -64,7 +65,8 @@ import { DriverVehicleService } from '../services/driver-vehicle.service';
         DriverLicenseMainComponent,
         AppArchiveMainComponent,
         ImageInputComponent,
-        UiAutoCompleteComponent
+        UiAutoCompleteComponent,
+        TranslateDirective,
     ],
     templateUrl: './driver-detail.component.html',
     styleUrls: ['./driver-detail.component.css']
