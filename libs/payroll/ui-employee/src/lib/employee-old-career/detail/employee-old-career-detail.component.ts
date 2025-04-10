@@ -10,6 +10,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
 import { MatInput } from '@angular/material/input';
 import { DatePickerComponent } from '@ss/common/ui-datepicker';
 import { MaterialModule } from '@ss/common/api-common';
+import { ActivePersonnelService } from '../../active-personnel.service';
 
 @Component({
     selector: 'ss-emp-old-career-detail',
@@ -20,12 +21,17 @@ import { MaterialModule } from '@ss/common/api-common';
 })
 export class EmployeeOldCareerDetailComponent extends BaseChildEntityDetailComponent<OldCareer>  {
     private formBuilder = inject(UntypedFormBuilder);
+    private activePersonnelSrv = inject(ActivePersonnelService);
 
     constructor(
         public employeeOldCareerSrv: EmployeeOldCareerService) {
         super(employeeOldCareerSrv, 'OldCareer');
     }
 
+    override ngOnInit() {
+        super.ngOnInit();
+        this.isEditable = this.activePersonnelSrv.val;
+    }
 
     override setupForm(a: OldCareer): UntypedFormGroup {
         return this.form = this.formBuilder.group({

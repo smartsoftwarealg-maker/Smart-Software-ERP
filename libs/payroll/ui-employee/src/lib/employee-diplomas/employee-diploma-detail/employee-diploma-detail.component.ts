@@ -16,6 +16,7 @@ import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { DatePickerComponent } from '@ss/common/ui-datepicker';
 import { MatInput } from '@angular/material/input';
 import { MaterialModule } from '@ss/common/api-common';
+import { ActivePersonnelService } from '../../active-personnel.service';
 
 @Component({
     selector: 'ss-employee-diploma-detail',
@@ -30,6 +31,7 @@ export class EmployeeDiplomaDetailComponent extends BaseChildEntityDetailCompone
     private subjectSrv =  inject(SubjectService);
     private supplierSrv =  inject(SupplierService);
     private educationLevelSrv =  inject(EducationLevelService);
+    private activePersonnelSrv = inject(ActivePersonnelService);
 
     educationLevelAutoCompleteModel = new DefaultAutoCompleteModel(this.educationLevelSrv);
     diplomaAutoCompleteModel = new DefaultAutoCompleteModel(this.diplomaSrv);
@@ -41,6 +43,10 @@ export class EmployeeDiplomaDetailComponent extends BaseChildEntityDetailCompone
         super(employeeDiplomaSrv, 'PersonDiploma');
     }
 
+    override ngOnInit() {
+        super.ngOnInit();
+        this.isEditable = this.activePersonnelSrv.val;
+    }
 
     override setupForm(a: PersonDiploma): UntypedFormGroup {
         // this.entity = a;

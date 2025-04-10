@@ -11,6 +11,7 @@ import { MatInput } from '@angular/material/input';
 import { MatRadioGroup, MatRadioButton } from '@angular/material/radio';
 import { DatePickerComponent } from '@ss/common/ui-datepicker';
 import { MaterialModule } from '@ss/common/api-common';
+import { ActivePersonnelService } from '../../active-personnel.service';
 
 @Component({
     selector: 'ss-emp-child-detail',
@@ -21,13 +22,16 @@ import { MaterialModule } from '@ss/common/api-common';
 })
 export class EmployeeChildDetailComponent extends BaseChildEntityDetailComponent<Child> {
     private formBuilder = inject(FormBuilder);
-
-    // entity: Child = null;
+    private activePersonnelSrv = inject(ActivePersonnelService);
 
     constructor(public employeeChildrenSrv: EmployeeChildrenService) {
         super(employeeChildrenSrv, 'Child');
     }
 
+    override ngOnInit() {
+        super.ngOnInit();
+        this.isEditable = this.activePersonnelSrv.val;
+    }
     override setupForm(a: Child): UntypedFormGroup {
         // this.entity = a;
         return this.form = this.formBuilder.group({

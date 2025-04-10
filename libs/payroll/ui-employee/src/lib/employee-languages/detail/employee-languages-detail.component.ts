@@ -11,6 +11,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
 import { MatSelect } from '@angular/material/select';
 import { MatOption } from '@angular/material/core';
 import { MaterialModule } from '@ss/common/api-common';
+import { ActivePersonnelService } from '../../active-personnel.service';
 
 @Component({
     selector: 'ss-emp-languages-detail',
@@ -21,6 +22,7 @@ import { MaterialModule } from '@ss/common/api-common';
 })
 export class EmployeeLanguagesDetailComponent extends BaseChildEntityDetailComponent<PersonLanguage> {
     private formBuilder = inject(FormBuilder);
+    private activePersonnelSrv = inject(ActivePersonnelService);
 
     languages: Language[] = [];
     languageLevels: Language[] = [];
@@ -31,6 +33,10 @@ export class EmployeeLanguagesDetailComponent extends BaseChildEntityDetailCompo
         super(employeeLanguagesSrv, 'PAYROLL_LANGUAGES');
     }
 
+    override ngOnInit() {
+        super.ngOnInit();
+        this.isEditable = this.activePersonnelSrv.val;
+    }
 
     override setupForm(a: PersonLanguage): UntypedFormGroup {
         return this.form = this.formBuilder.group({

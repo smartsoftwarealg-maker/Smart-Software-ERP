@@ -24,6 +24,7 @@ import { MatInput } from '@angular/material/input';
 import { DatePickerComponent } from '@ss/common/ui-datepicker';
 import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { MaterialModule } from '@ss/common/api-common';
+import { ActivePersonnelService } from '../../active-personnel.service';
 
 
 @Component({
@@ -41,6 +42,7 @@ export class EmployeeContractsDetailComponent extends BaseChildEntityDetailCompo
     private departmentSrv = inject(DepartmentService);
     private divisionSrv = inject(DivisionService);
     private serviceSrv = inject(ServiceService);
+    private activePersonnelSrv = inject(ActivePersonnelService);
 
     postLookup = new DefaultAutoCompleteModel(this.postSrv);
     motiveLookup = new DefaultAutoCompleteModel(this.motiveSrv);
@@ -62,6 +64,10 @@ export class EmployeeContractsDetailComponent extends BaseChildEntityDetailCompo
         super(employeeContractSrv, 'Contract');
     }
 
+    override ngOnInit() {
+        super.ngOnInit();
+        this.isEditable = this.activePersonnelSrv.val;
+    }
 
     setupForm(a: Contract): UntypedFormGroup {
         // this.entity = a;

@@ -32,6 +32,7 @@ import { MatSelect } from '@angular/material/select';
 import { MatOption } from '@angular/material/core';
 import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { MaterialModule } from '@ss/common/api-common';
+import { ActivePersonnelService } from '../../active-personnel.service';
 
 @Component({
     selector: 'ss-emp-career-detail',
@@ -69,6 +70,7 @@ export class EmployeeCareerDetailComponent extends BaseChildEntityDetailComponen
     private lookupsSrv = inject(LookupsService);
     private employeeSrv = inject(EmployeeService);
     private postSrv =  inject(ActivePostService);
+    private activePersonnelSrv = inject(ActivePersonnelService);
 
     postLookup = new DefaultAutoCompleteModel(this.postSrv);
     workshopLookup = new DefaultAutoCompleteModel(this.workshopSrv);
@@ -92,6 +94,11 @@ export class EmployeeCareerDetailComponent extends BaseChildEntityDetailComponen
         public employeeCareerSrv: EmployeeCareerService) {
         super(employeeCareerSrv, 'Career');
         this.postLookup.onObjectSelected = e => this.onPost(e);
+    }
+
+    override ngOnInit() {
+        super.ngOnInit();
+        this.isEditable = this.activePersonnelSrv.val;
     }
 
     private onPost(p: Post) {

@@ -10,6 +10,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
 import { MatInput } from '@angular/material/input';
 import { DatePickerComponent } from '@ss/common/ui-datepicker';
 import { MaterialModule } from '@ss/common/api-common';
+import { ActivePersonnelService } from '../../active-personnel.service';
 
 
 @Component({
@@ -21,6 +22,7 @@ import { MaterialModule } from '@ss/common/api-common';
 })
 export class EmployeeWifeDetailComponent extends BaseChildEntityDetailComponent<Wife> {
     private formBuilder = inject(FormBuilder);
+    private activePersonnelSrv = inject(ActivePersonnelService);
 
     // posts: Post[] = [];
     // departments: Department[] = [];
@@ -34,6 +36,10 @@ export class EmployeeWifeDetailComponent extends BaseChildEntityDetailComponent<
         super(employeeWivesSrv, 'Wife');
     }
 
+    override ngOnInit() {
+        super.ngOnInit();
+        this.isEditable = this.activePersonnelSrv.val;
+    }
 
     override setupForm(a: Wife): UntypedFormGroup {
         return this.form = this.formBuilder.group({

@@ -17,6 +17,7 @@ import { MatInput } from '@angular/material/input';
 import { DatePickerComponent } from '@ss/common/ui-datepicker';
 import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { MaterialModule } from '@ss/common/api-common';
+import { ActivePersonnelService } from '../../active-personnel.service';
 
 @Component({
     selector: 'ss-punishment-detail',
@@ -29,6 +30,7 @@ export class PunishmentDetailComponent extends BaseChildEntityDetailComponent<Pu
     private formBuilder = inject(FormBuilder);
     private faultSrv =  inject(ProfessionalFaultService);
     private punishTypeSrv =  inject(PunishmentTypeService);
+    private activePersonnelSrv = inject(ActivePersonnelService);
 
     faultAutoCompleteModel = new DefaultAutoCompleteModel(this.faultSrv);
     punishmentTypeAutoCompleteModel = new DefaultAutoCompleteModel(this.punishTypeSrv);
@@ -37,6 +39,10 @@ export class PunishmentDetailComponent extends BaseChildEntityDetailComponent<Pu
         super(detailSrv, 'Punishment');
     }
 
+    override ngOnInit() {
+        super.ngOnInit();
+        this.isEditable = this.activePersonnelSrv.val;
+    }
     override setupForm(a: Punishment): UntypedFormGroup {
         return this.form = this.formBuilder.group({
             id:             [a.id],

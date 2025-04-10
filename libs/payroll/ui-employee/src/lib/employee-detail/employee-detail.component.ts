@@ -62,6 +62,7 @@ import { MatOption } from '@angular/material/core';
 import { MatCheckbox } from '@angular/material/checkbox';
 import { MatButton } from '@angular/material/button';
 import { TranslatePipe } from '@ss/common/ui-lang';
+import { ActivePersonnelService } from '../active-personnel.service';
 
 @Component({
     selector: 'ss-employee-detail',
@@ -153,7 +154,6 @@ export class EmployeeDetailComponent extends BaseEntityDetailComponent<Employee>
 
     fixedElementEditInProgress = false;
     hrMode = false;
-    activePersonnel = false;
     imageModel: ImageModel;
     nationalityModel = new DefaultAutoCompleteModel(this.nationalitySrv);
     cityLookup = new CityLookup(this.citySrv);
@@ -177,7 +177,8 @@ export class EmployeeDetailComponent extends BaseEntityDetailComponent<Employee>
         public override confirmationSrv: ConfirmationDialogService,
         public employeeSrv: EmployeeService,
         public httpSrv: HttpService,
-        public infoSrv: FixedElementsEntryService) {
+        public infoSrv: FixedElementsEntryService,
+        public activePersonnelSrv: ActivePersonnelService) {
         super(employeeSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'PAYROLL_EDIT_EMPLOYEE');
         this.imageModel = new ImageModel(this.httpSrv);
     }
@@ -212,7 +213,7 @@ export class EmployeeDetailComponent extends BaseEntityDetailComponent<Employee>
     public override preload(): Observable<MaritalStatus[]> {
         this.route.data.subscribe(data => {
             this.hrMode = !!data['hrMode'];
-            this.activePersonnel = !!data['active'];
+            this.activePersonnelSrv.set(!!data['active']);
         });
         return this.lookupsSrv
             .getMaritalStatuses()
