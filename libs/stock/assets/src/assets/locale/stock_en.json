@@ -67,5 +67,6 @@
     "REPLACE_REFERENCE":        "Replace reference",
    "FINAL_PRODUCTS":           "Final products",
     "SUBCLASS":                "Subclass",
-    "PURCHASE_UNIT":           "Purchase unit"
+    "PURCHASE_UNIT":           "Purchase unit",
+    "VAT2":                    "TVA2"
 }

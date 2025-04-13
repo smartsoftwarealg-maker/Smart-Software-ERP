@@ -66,5 +66,6 @@
     "REPLACE_REFERENCE":        "Remplacer la référence",
     "FINAL_PRODUCTS":           "Produits finaux",
     "SUBCLASS":                 "Sous-Classe",
-    "PURCHASE_UNIT":            "Unité d'achat"
+    "PURCHASE_UNIT":            "Unité d'achat",
+    "VAT2":                     "TVA2"
 }
