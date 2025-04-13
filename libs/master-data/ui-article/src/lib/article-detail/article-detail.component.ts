@@ -101,6 +101,7 @@ export class ArticleDetailComponent extends BaseEntityDetailComponent<Article> i
             appId:        [a.appId || this.articleSrv.getParentId()],
             notForSale:   [a.notForSale || false, Validators.required],
             vat:          [a.vat],
+            vat2:         [a.vat2],
             blocked:      [a.blocked],
             articleType:  [a.articleType],
             subClass:     [a.subClass]

@@ -38,8 +38,8 @@
     "CARD": "البطاقة",
     "STOCK": "المخزون",
     "SEARCH": "بحث",
-    "STOCK_VAT": "الضريبة",
-    "STOCK_MARK": "الصنف",
+    "VAT": "الضريبة",
+    "MARK": "الصنف",
     "TOTALS": "المجاميع",
     "STORE_ASSIGNMENT": "توزيع المخازن",
     "CLASS": "فئة",
@@ -66,5 +66,6 @@
     "REPLACE_REFERENCE":        "استبدال المرجع",
     "FINAL_PRODUCTS":           "المنتجات النهائية",
     "SUBCLASS":                "الفئة الفرعية",
-    "PURCHASE_UNIT":           "وحدة الشراء"
+    "PURCHASE_UNIT":           "وحدة الشراء",
+    "VAT2":                   "الضريبة2"
 }
