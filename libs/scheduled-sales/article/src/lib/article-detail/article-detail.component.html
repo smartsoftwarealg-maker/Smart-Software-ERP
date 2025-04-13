@@ -45,7 +45,7 @@
                     <mat-label translate>LOGISTICS_VAT</mat-label>
                     <mat-select formControlName="vat" required>
                         <mat-option *ngFor="let v of vats" [value]="v.id">
-                            {{v.value == null ? '0.00' : v.value.toFixed(2)}}
+                            {{ v.value == null ? '0.00' : v.value.toFixed(2) }}
                         </mat-option>
                     </mat-select>
                 </mat-form-field>
@@ -62,17 +62,15 @@
                     <input matInput formControlName="accountNo" type="number">
                 </mat-form-field>
 
-                <mat-form-field floatLabel="always" class="default-50 sm-100">
+                <mat-form-field [colorPicker]="color"
+                                (colorPickerChange)="select($event)"
+                                [cpOKButton]="true"
+                                [cpOKButtonText]="''+('COMMON_SELECT' | translate)"
+                                [cpCancelButtonText]="''+('COMMON_CANCEL' | translate)"
+                                [cpCancelButton]="true"
+                                floatLabel="always" class="default-50 sm-100">
                     <mat-label translate>COMMON_COLOR</mat-label>
-                    <input matInput
-                           [colorPicker]="color"
-                           (colorPickerChange)="select($event)"
-                           [style.background]="color"
-                           [cpOKButton]="true"
-                           [cpOKButtonText]="'COMMON_SELECT' | translate"
-                           [cpCancelButtonText]="'COMMON_CANCEL' | translate"
-                           [cpCancelButton]="true"
-                           readonly/>
+                    <input matInput [style.background]="color" readonly />
                 </mat-form-field>
 
                 <mat-form-field class="default-50 sm-100">
@@ -84,15 +82,15 @@
                     </ss-auto-complete>
                 </mat-form-field>
 
-<!--                <mat-form-field class="default-50 sm-100">-->
-<!--                    <mat-label translate>LOGISTICS_APPID</mat-label>-->
-<!--                    <mat-select formControlName="appId">-->
-<!--                        <mat-option [value]="null"> </mat-option>-->
-<!--                        <mat-option [value]="1"> {{'LOGISTICS_CEMENT'|translate}} </mat-option>-->
-<!--                        <mat-option [value]="2"> {{'LOGISTICS_FOOD'|translate}} </mat-option>-->
-<!--                        <mat-option [value]="3"> {{'FOOD'|translate}} </mat-option>-->
-<!--                    </mat-select>-->
-<!--                </mat-form-field>-->
+                <!--                <mat-form-field class="default-50 sm-100">-->
+                <!--                    <mat-label translate>LOGISTICS_APPID</mat-label>-->
+                <!--                    <mat-select formControlName="appId">-->
+                <!--                        <mat-option [value]="null"> </mat-option>-->
+                <!--                        <mat-option [value]="1"> {{'LOGISTICS_CEMENT'|translate}} </mat-option>-->
+                <!--                        <mat-option [value]="2"> {{'LOGISTICS_FOOD'|translate}} </mat-option>-->
+                <!--                        <mat-option [value]="3"> {{'FOOD'|translate}} </mat-option>-->
+                <!--                    </mat-select>-->
+                <!--                </mat-form-field>-->
 
                 <div class="default-50 sm-100">
                     <mat-checkbox formControlName="blocked" translate>ADMINISTRATION_BLOCKED</mat-checkbox>
