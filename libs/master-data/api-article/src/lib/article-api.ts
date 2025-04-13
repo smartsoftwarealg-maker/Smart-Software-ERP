@@ -43,6 +43,7 @@ export interface Article {
     mark: number;
     klass: number;
     vat: number;
+    vat2: number;
     articleType: number;
     accountno: string;
     price1: number;
