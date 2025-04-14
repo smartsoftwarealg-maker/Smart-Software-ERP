@@ -110,7 +110,8 @@ export class ArticleDetailComponent
 
     public override setupForm(a: Article) {
         // this.imageModel.setImageUrl(this.articleSrv.getPhotoUrl(a.id), false);
-        this.color = '#' + (a?.rgb || 0).toString(16);
+        const color = (a?.rgb || 0).toString(16);
+        this.color = '#' + '0'.repeat(6-color.length) + color; // hex color must contain exactly 6 digits
         this.aid = a.id;
         const form = this.formBuilder.group({
             description2: [a.description2, Validators.required],

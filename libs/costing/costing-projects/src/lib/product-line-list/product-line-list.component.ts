@@ -8,7 +8,7 @@ import { MaterialModule } from '@ss/common/api-common';
 
 
 import { CProductLineService } from '../services/product-line.service';
-import { TranslatePipe } from '@ss/common/ui-lang';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 import { PaginationComponent } from '@ss/common/ui-pagination';
 
 @Component({
@@ -19,7 +19,8 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
         RouterModule,
         MaterialModule,
         TranslatePipe,
-        PaginationComponent
+        PaginationComponent,
+        TranslateDirective
     ],
     templateUrl: './product-line-list.component.html',
     styleUrls: ['./product-line-list.component.css'],

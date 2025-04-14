@@ -12,11 +12,12 @@ import { MatCard, MatCardContent } from '@angular/material/card';
 import { MatError, MatFormField, MatLabel } from '@angular/material/form-field';
 import { MatInput } from '@angular/material/input';
 import { MutualRejectionsService } from '../../../../social-api/src/lib/services/mutual-rejections.service';
+import { TranslateDirective } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-mutual-rejections-detail',
     standalone: true,
-    imports: [CommonModule,  MatCard, MatCardContent, MatError, MatFormField, MatInput, MatLabel, ReactiveFormsModule],
+    imports: [CommonModule,  MatCard, MatCardContent, MatError, MatFormField, MatInput, MatLabel, ReactiveFormsModule, TranslateDirective],
     templateUrl: './social-activities-detail.component.html',
     styleUrl: './social-activities-detail.component.scss',
 })

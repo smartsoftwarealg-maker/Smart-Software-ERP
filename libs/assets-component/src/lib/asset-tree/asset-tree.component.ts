@@ -14,13 +14,13 @@ import { FormControl } from '@angular/forms';
 import { ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
 import { switchMap, tap } from "rxjs/operators";
 import { of } from "rxjs";
-import { TranslatePipe } from '@ss/common/ui-lang';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 import { PaginationComponent } from '@ss/common/ui-pagination';
 
 @Component({
     selector: "ss-asset-tree",
     standalone: true,
-    imports: [CommonModule, MaterialModule, MatTreeModule, TranslatePipe, PaginationComponent],
+    imports: [CommonModule, MaterialModule, MatTreeModule, TranslatePipe, PaginationComponent, TranslateDirective],
     templateUrl: "./asset-tree.component.html",
     styleUrls: ["./asset-tree.component.css"]
 })
