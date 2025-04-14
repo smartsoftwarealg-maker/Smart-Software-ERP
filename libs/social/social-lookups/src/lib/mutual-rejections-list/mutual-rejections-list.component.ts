@@ -20,11 +20,12 @@ import {
 
 import { MutualRejectionsService } from '../../../../social-api/src/lib/services/mutual-rejections.service';
 import { PaginationComponent } from '@ss/common/ui-pagination';
+import { TranslateDirective } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-rejections-list',
     standalone: true,
-    imports: [CommonModule, MatCell, MatCellDef, MatColumnDef, MatHeaderCell, MatHeaderRow, MatHeaderRowDef, MatRow, MatRowDef, MatTable, MatHeaderCellDef, PaginationComponent],
+    imports: [CommonModule, MatCell, MatCellDef, MatColumnDef, MatHeaderCell, MatHeaderRow, MatHeaderRowDef, MatRow, MatRowDef, MatTable, MatHeaderCellDef, PaginationComponent, TranslateDirective],
     templateUrl: './mutual-rejections-list.component.html',
     styleUrl: './mutual-rejections-list.component.scss',
 })

@@ -5,7 +5,7 @@ import { CPool } from '@ss/costing/costing-utils';
 import { CostingPoolService } from '../services/costing-pool.service';
 import { RouterModule } from '@angular/router';
 import { MaterialModule } from '@ss/common/api-common';
-import { TranslatePipe } from '@ss/common/ui-lang';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 import { PaginationComponent } from '@ss/common/ui-pagination';
 
 
@@ -17,7 +17,8 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
         RouterModule,
         MaterialModule,
         TranslatePipe,
-        PaginationComponent
+        PaginationComponent,
+        TranslateDirective
     ],
     templateUrl: './costing-pool-list.component.html',
     styleUrl: './costing-pool-list.component.css',

@@ -27,8 +27,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         TranslateDirective,
         TranslatePipe,
         CostingReportsComponent,
-        PaginationComponent,
-        TranslatePipe
+        PaginationComponent
     ],
     animations: [slideToRight]
 })

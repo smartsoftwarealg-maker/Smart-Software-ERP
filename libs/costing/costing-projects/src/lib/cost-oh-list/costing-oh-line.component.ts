@@ -8,7 +8,7 @@ import { MaterialModule } from '@ss/common/api-common';
 
 
 import { CostingOhService } from '@ss/costing/costing-projects';
-import { TranslatePipe } from '@ss/common/ui-lang';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 import { PaginationComponent } from '@ss/common/ui-pagination';
 
 @Component({
@@ -19,7 +19,8 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
         RouterModule,
         MaterialModule,
         TranslatePipe,
-        PaginationComponent
+        PaginationComponent,
+        TranslateDirective
     ],
     templateUrl: './costing-oh-line.component.html',
     styleUrl: './costing-oh-line.component.scss',
