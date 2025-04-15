@@ -23,7 +23,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         RouterModule,
         MaterialModule,
         TranslateDirective,
-       
+
 
 
     ],
@@ -50,7 +50,9 @@ export class VatDetailComponent extends BaseEntityDetailComponent<Vat> {
                     Validators.min(0),
                     Validators.max(100)
                 ]
-            )]
+            )],
+            description: [e.description],
+            descriptionAr: [e.descriptionAr]
         });
     }
 
