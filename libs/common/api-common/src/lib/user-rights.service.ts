@@ -24,7 +24,7 @@ export class UserRightsService {
         return this.loginSrv.isLoggedIn?
             this.httpSrv
                 .get<DocRight[]>('/rights')
-                .pipe(tap((res: DocRight[]) =>  res.forEach(e => this.rightsMap.set(e.document, { read: e.read, write: e.write, edit: e.edit, delete: e.delete})))):
+                .pipe(tap((res: DocRight[]) =>  res.forEach(e => this.rightsMap.set(e.document, { read: e.read, write: e.write, edit: e.edit, delete: e.delete })))):
             of([]);
     }
 
