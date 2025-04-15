@@ -367,7 +367,8 @@
     "BANK_RIB":           "RIB bancaire",
     "SAVE_PARAMS":        "Enregistrer les paramètres",
     "SUBMIT":             "Soumettre",
-    "ANOMALIES":         "Anomalies",
-    "DECISION_NO":      "N° Décision ",
-    "DECISION_DATE":     "Date de la décision"
+    "ANOMALIES":          "Anomalies",
+    "DECISION_NO":        "N° Décision ",
+    "DECISION_DATE":      "Date de la décision",
+    "PERIOD":             "Période"
 }

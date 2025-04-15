@@ -1,6 +1,6 @@
 <div class="container">
     <mat-form-field floatLabel="always" class="default-50">
-        <mat-label translate>ACC_PERIOD</mat-label>
+        <mat-label translate>COMMON_PERIOD</mat-label>
         <mat-select [formControl]="accPeriod" required>
             <mat-option *ngFor="let p of periods; let i = index" [value]="i + 1">
                 {{ p | translate }}
@@ -15,7 +15,7 @@
                 <mat-table mat-table [dataSource]="data" class="content-div">
 
                     <ng-container matColumnDef="month">
-                        <mat-header-cell *matHeaderCellDef translate>ACC_PERIOD</mat-header-cell>
+                        <mat-header-cell *matHeaderCellDef translate>COMMON_PERIOD</mat-header-cell>
                         <mat-cell *matCellDef="let e" [class.error]="true">
                             {{ e.month | translate }}
                         </mat-cell>
