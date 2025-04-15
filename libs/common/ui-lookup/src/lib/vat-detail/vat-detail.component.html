@@ -1,7 +1,17 @@
 @if (form !== null) {
     <mat-card>
         <form novalidate [formGroup]="form">
-            <mat-form-field class="value">
+            <mat-form-field class="default-100">
+                <mat-label translate>COMMON_DESCRIPTION</mat-label>
+                <input matInput formControlName="description" type="text" required autofocus>
+            </mat-form-field>
+
+            <mat-form-field class="default-100">
+                <mat-label translate>ADMINISTRATION_DESCRIPTION_AR</mat-label>
+                <input matInput formControlName="descriptionAr" type="text">
+            </mat-form-field>
+
+            <mat-form-field class="value default-50">
                 <mat-label translate>STOCK_PERCENTAGE</mat-label>
                 <input matInput style="text-align: right" formControlName="value" type="number" max="100" min="0"
                        autofocus>

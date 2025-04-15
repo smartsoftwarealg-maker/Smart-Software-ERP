@@ -12,6 +12,7 @@ import { CommonModule } from '@angular/common';
 
 import { PaginationComponent } from '@ss/common/ui-pagination';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
+import { MatSort } from '@angular/material/sort';
 
 
 @Component({
@@ -24,16 +25,14 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         RouterModule,
         MaterialModule,
         TranslateDirective,
-       
-
-        PaginationComponent
-
+        PaginationComponent,
+        MatSort
     ],
     styleUrls: ['./vat-list.component.scss']
 })
 export class VatListComponent extends BaseEntityListComponent<Vat> {
 
-    displayedColumns = ['value'];
+    displayedColumns = ['description', 'descriptionAr','value'];
 
     constructor(
         public vatSrv: VatService,

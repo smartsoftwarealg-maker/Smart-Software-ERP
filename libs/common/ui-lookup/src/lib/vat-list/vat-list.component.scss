@@ -2,7 +2,7 @@
 :host {
     display: block;
     margin: 1em auto;
-    width: 320px;
+    max-width: 700px;
 }
 
 .table__div {
@@ -16,8 +16,13 @@
     padding-left: 16px;
 }
 
+.mat-column-description,
+.mat-column-descriptionAr {
+    flex: 2 1 250px;
+}
+
 .mat-column-value {
-    flex: 1 1 268px;
+    flex: 0 1 100px;
     padding-right: 8px !important;
     padding-left: 8px !important;
 }
