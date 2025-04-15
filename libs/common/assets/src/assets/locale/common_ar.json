@@ -366,5 +366,6 @@
     "SUBMIT":             "قدم",
     "ANOMALIES":         "شذوذ",
     "DECISION_NO":        "رقم القرار",
-    "DECISION_DATE":      "تاريخ القرار"
+    "DECISION_DATE":      "تاريخ القرار",
+    "PERIOD":             "فترة"
 }

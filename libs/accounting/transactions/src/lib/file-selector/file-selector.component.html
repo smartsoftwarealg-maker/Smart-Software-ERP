@@ -5,7 +5,7 @@
 
     <div class="btn-div">
         <mat-form-field floatLabel="always" >
-            <mat-label translate>ACC_PERIOD</mat-label>
+            <mat-label translate>COMMON_PERIOD</mat-label>
             <mat-select [formControl]="accPeriod" required>
                 <mat-option *ngFor="let p of periods; let i = index" [value]="i + 1">
                     {{ p | translate}}

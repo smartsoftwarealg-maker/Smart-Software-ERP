@@ -369,5 +369,6 @@
     "SUBMIT":             "Submit",
     "ANOMALIES":         "Anomalies",
     "DECISION_NO":        "Decision no",
-    "DECISION_DATE":      "Decision date"
+    "DECISION_DATE":      "Decision date",
+    "PERIOD":                   "Period"
 }
