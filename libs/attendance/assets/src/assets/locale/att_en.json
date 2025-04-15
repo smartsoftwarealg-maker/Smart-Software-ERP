@@ -8,7 +8,6 @@
     "PORT":             "Port",
     "START_DATE":       "Start date",
     "GRACE_TIME":       "Grace time",
-    "PERIOD":           "Period",
     "SHIFT":            "Shift",
     "ATTENDANCE":       "Attendance",
     "PRESENCE":         "Presence",

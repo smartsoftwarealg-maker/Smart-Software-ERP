@@ -8,7 +8,6 @@
     "PORT":             "Port",
     "START_DATE":       "Date de début",
     "GRACE_TIME":       "Temps de grâce",
-    "PERIOD":           "Période",
     "SHIFT":            "Shift",
     "ATTENDANCE":       "Pointage",
     "PRESENCE":         "Présence",
