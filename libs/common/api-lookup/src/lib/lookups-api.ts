@@ -78,6 +78,8 @@ export interface Wilaya {
 }
 
 export interface Vat {
+    description?: string;
+    descriptionAr?: string;
     id: number;
     value: number;
 }

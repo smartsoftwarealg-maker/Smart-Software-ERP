@@ -72,6 +72,7 @@ export interface Career {
     motive?: number;
     // qualification        ?: number;
     responsible?: number;
+    motiveDescription?: string;
 }
 
 export interface Contract {

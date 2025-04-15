@@ -23,6 +23,7 @@ export class EmployeeCareerListComponent extends BaseChildEntityListComponent<Ca
         'paymonth',
         'decision',
         'decision_date',
+        'motiveDescription',
         'postDescription',
         'gridCategory',
         'salary_rank',
