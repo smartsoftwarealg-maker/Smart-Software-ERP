@@ -15,7 +15,6 @@
     "EXPENSE":         "Expense",
     "PIECENO":         "Piece No.",
     "CHECKS":          "Checks",
-    "PERIOD":          "Period",
     "BANK_EXPENSES":   "Bank expenses",
     "MATCHING":        "Matching checks",
     "NOT_MATCHING":    "Non matching checks",

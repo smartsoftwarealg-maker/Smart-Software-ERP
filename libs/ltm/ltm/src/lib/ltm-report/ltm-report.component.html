@@ -14,7 +14,7 @@
             </mat-form-field>
 
             <mat-form-field class="default-100 sm-50">
-                <mat-label translate>LTM_PERIOD</mat-label>
+                <mat-label translate>COMMON_PERIOD</mat-label>
                 <mat-select required [formControl]="period">
                     @for (m of periods; track m.id) {
                         <mat-option [value]="m.id" translate>{{ m.description }}</mat-option>
