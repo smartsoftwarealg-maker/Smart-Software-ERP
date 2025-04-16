@@ -14,15 +14,19 @@ export class ProductionService extends BaseEntityService<Transaction> {
         super(httpSrv, PRODUCTION_URL);
     }
 
-    // consumeContract(id: number): Observable<any> {
-    //     return this.httpSrv.post(`/contracts/${id}/get-articles`);
-    // }
-
     produceAll(id: number): Observable<{ count: number }> {
         return this.httpSrv.post(`/production/mrp/produce-all/${id}`);
     }
 
     cancelAll(id: number): Observable<{ count: number }> {
         return this.httpSrv.post(`/production/mrp/cancel-all/${id}`);
+    }
+
+    produce(id: number): Observable<{ count: number }> {
+        return this.httpSrv.post(`/production/mrp/produce/${id}`);
+    }
+
+    cancel(id: number): Observable<{ count: number }> {
+        return this.httpSrv.post(`/production/mrp/cancel/${id}`);
     }
 }

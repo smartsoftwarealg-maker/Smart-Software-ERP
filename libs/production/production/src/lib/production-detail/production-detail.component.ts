@@ -1,25 +1,16 @@
 import { Component } from '@angular/core';
-import {KeepOnToolbar, ShellService, SnackBarService, ToolbarButton} from '@ss/common/ui-shell';
+import { ShellService, SnackBarService} from '@ss/common/ui-shell';
 import { ActivatedRoute, Router, RouterOutlet } from '@angular/router';
-import { FormGroup, UntypedFormBuilder, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormGroup, UntypedFormBuilder, Validators } from '@angular/forms';
 import { Lookup, LookupsService} from '@ss/common/api-lookup';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import {  of, switchMap } from 'rxjs';
 import { LoginService, MaterialModule } from '@ss/common/api-common';
-import {
-    BaseTransactionDetailComponent, BaseTransactionLinesListComponent, DOC_PRODUCTION_ORDER, DOC_SUPPLIER_QUOTATION,
-    Transaction
-} from '@ss/logistics/api-transaction';
+import { BaseTransactionDetailComponent, DOC_PRODUCTION_ORDER, Transaction } from '@ss/logistics/api-transaction';
 import { MatDialog} from '@angular/material/dialog';
-import { Project } from '@ss/logistics/contracts';
-import { MatCard, MatCardContent } from '@angular/material/card';
-import { MatFormField, MatLabel, MatError } from '@angular/material/form-field';
+import { MatError } from '@angular/material/form-field';
 import { TranslateDirective } from '@ss/common/ui-lang';
-import { MatInput } from '@angular/material/input';
 import { DatePickerComponent } from '@ss/common/ui-datepicker';
 import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
-import { NgIf } from '@angular/common';
-import { MatTabGroup, MatTab, MatTabLabel } from '@angular/material/tabs';
 import { CdkTextareaAutosize } from '@angular/cdk/text-field';
 import { ProductionService } from '../production-services/production.service';
 import { ProductionLinesService } from '../production-services/production-lines.service';
@@ -27,13 +18,12 @@ import { ProductionLinesService } from '../production-services/production-lines.
 @Component({
     selector: 'ss-product-detail',
     templateUrl: './production-detail.component.html',
-    styleUrls: ['../../../../../common/assets/src/assets/transac-detail.scss'],
+    styleUrl: './production-detail.component.scss',
     standalone: true,
     imports: [
         MaterialModule,
         DatePickerComponent,
         UiAutoCompleteComponent,
-        NgIf,
         MatError,
         TranslateDirective,
         CdkTextareaAutosize,
