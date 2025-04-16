@@ -1,22 +1,40 @@
-:host {
-    display: block;
-    margin: auto;
-    max-width: 100%;
-    width: 600px;
-    min-width: 320px;
+.main-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0;
+    gap: 20px;
 }
 
 mat-card {
-    margin-top: 24px;
-
-    mat-card-content {
-        margin-top: 24px;
-    }
+    width: 90%;
+    max-width: 900px;
+    margin: 5px auto;
+    border-radius: 1.4em;
+    flex: 0 0 auto;
+}
+.doc-info {
+    width: 100%;
+    max-width: 1400px;
+    flex: 0 1 auto;
+    align-self: stretch;
+    margin: 0 auto;
 }
 
-.value {
-    width: 260px;
-    display: block;
+
+.info {
+    font-size: .75em;
+    font-weight: bolder;
+}
+
+.button_div {
+    width: 90%;
     margin: auto;
+    max-width: 900px;
+    display: flex;
+    gap: 2em;
+    justify-content: flex-end;
 }
-
