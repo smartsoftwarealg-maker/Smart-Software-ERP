@@ -280,6 +280,7 @@ export class EmployeeDetailComponent extends BaseEntityDetailComponent<Employee>
             cmmsPerson:    [p.cmmsPerson || false, Validators.required],
             blood_group:   [p.blood_group],
             mutualno:      [p.mutualno],
+            customCode:    [p.customCode, Validators.maxLength(12)],
             userId:        [p.userId]
         });
     }

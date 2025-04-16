@@ -46,6 +46,14 @@
                                 </mat-error>
                             </mat-form-field>
 
+                            <mat-radio-group formControlName="sex" class="default-25 sm-50">
+                                <mat-radio-button [value]="1" translate style="margin: 8px;"
+                                                  [checked]="form.controls['sex'].value === 1">PAYROLL_MALE
+                                </mat-radio-button>
+                                <mat-radio-button [value]="2" translate style="margin: 8px;">PAYROLL_FEMALE
+                                </mat-radio-button>
+                            </mat-radio-group>
+
                             <mat-form-field class="default-25 sm-50">
                                 <mat-label translate>PAYROLL_BIRTH_DATE</mat-label>
                                 <ss-date-picker [required]=true formControlName="birthDate"></ss-date-picker>
@@ -70,14 +78,6 @@
                                 <mat-label translate>COMMON_CITY</mat-label>
                                 <ss-auto-complete [model]="cityLookup" formControlName="birthCity"></ss-auto-complete>
                             </mat-form-field>
-
-                            <mat-radio-group formControlName="sex" class="default-25 sm-50">
-                                <mat-radio-button [value]="1" translate style="margin: 8px;"
-                                                  [checked]="form.controls['sex'].value === 1">PAYROLL_MALE
-                                </mat-radio-button>
-                                <mat-radio-button [value]="2" translate style="margin: 8px;">PAYROLL_FEMALE
-                                </mat-radio-button>
-                            </mat-radio-group>
 
                             <mat-form-field id="father" class="default-50 sm-100">
                                 <mat-label translate>PAYROLL_FATHER</mat-label>
@@ -111,6 +111,11 @@
                                         {{ v.description }}
                                     </mat-option>
                                 </mat-select>
+                            </mat-form-field>
+
+                            <mat-form-field id="customCode" class="default-25 sm-50">
+                                <mat-label translate>ADMINISTRATION_CODE</mat-label>
+                                <input matInput formControlName="customCode" type="text" maxlength="12">
                             </mat-form-field>
 
                             <mat-form-field id="ss_Number" class="default-25 sm-50">
