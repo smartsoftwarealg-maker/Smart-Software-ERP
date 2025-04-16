@@ -1,5 +1,4 @@
 import {Injectable} from '@angular/core';
-import {BaseEntityExtendedService} from '@ss/common/api-base-entity';
 import {HttpService, Password} from '@ss/common/api-common';
 import {Agent, AGENT_URL} from './agent-api';
 import {Observable, of} from 'rxjs';
