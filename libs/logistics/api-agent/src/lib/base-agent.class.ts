@@ -17,7 +17,7 @@ export class BaseAgentClass extends BaseEntityExtendedService<Agent> {
         return this.#_activeOnly;
     }
 
-    getList(page: number, pageSize: number, filter?: string, sortBy?: string, extraPrams?: HttpParams): Observable<{
+    override getList(page: number, pageSize: number, filter?: string, sortBy?: string, extraPrams?: HttpParams): Observable<{
         itemCount: number;
         body: Agent[]
     }> {
