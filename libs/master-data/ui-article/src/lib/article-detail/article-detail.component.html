@@ -31,7 +31,7 @@
                             <mat-option [value]="null"></mat-option>
                             @for (v of vats; track v) {
                                 <mat-option  [value]="v.id">
-                                    {{v.value == null ? '0.00' : v.value.toFixed(2)}}
+                                    {{v.description}}
                                 </mat-option>
                             }
                         </mat-select>
@@ -43,7 +43,7 @@
                             <mat-option [value]="null"></mat-option>
                             @for (v of vats; track v) {
                                 <mat-option  [value]="v.id">
-                                    {{v.value == null ? '0.00' : v.value.toFixed(2)}}
+                                    {{v.description}}
                                 </mat-option>
                             }
                         </mat-select>

@@ -191,8 +191,8 @@ export abstract class BaseTransactionDetailComponent extends BaseEntityDetailCom
         if (!this.importBtn.disabled) {
             const agentId = this.form.controls['agent'].value;
             const dialogRef = this.dialog.open(DocImportComponent, {
-                width: '720px',
-                height: '55%',
+                width: '80%',
+                height: '80%',
                 data: { documentList: this.importedDocuments(), agentId: agentId },
                 disableClose: true
             });
