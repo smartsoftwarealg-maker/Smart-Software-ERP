@@ -201,7 +201,6 @@
     "ABSENCE":               "غياب",
     "EVOLUTION_REPORT":      "الخصوم",
     "CAREER_CRITERIA":       "معايير",
-    "GRDE":                  "درجة",
     "DEDUCTION_FORMULA":     "المعادلة",
     "PROMOTION_MOTIVE":      "دوافع الترقية",
     "IS_PROMOTION":          "ترقية",
@@ -210,5 +209,9 @@
     "ID_UPDATE":             "تحديث المعرف",
     "FUNDS":                 "أموال",
     "FUNDS_DETAIL":           "تفاصيل الأموال",
-    "TAKEN_AMOUNT":          "القيمة المستلمة"
+    "TAKEN_AMOUNT":          "القيمة المستلمة",
+    "PAID_LEAVE":            "الإجازة المدفوعة",
+    "BASE_LEAVE1":           "القاعدة 1",
+    "BASE_LEAVE2":           "القاعدة 2",
+    "BASE_LEAVE3":           "القاعدة 3"
 }

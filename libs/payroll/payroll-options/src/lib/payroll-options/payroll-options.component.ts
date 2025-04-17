@@ -15,6 +15,7 @@ import { POption } from '@ss/payroll-common';
 import { Observable, of } from 'rxjs';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { TranslateDirective } from '@ss/common/ui-lang';
+import { ElementsInfoService } from '@ss/remuneration/elementsinfo';
 
 @Component({
     selector: 'ss-payroll-options',
@@ -40,9 +41,13 @@ export class PayrollOptionsComponent extends BaseEntityDetailComponent<POption> 
 
     private loginSrv = inject(LoginService);
     private roleSrv = inject(RoleService);
+    private elementSrv = inject(ElementsInfoService);
 
     roleLookup0 = new DefaultAutoCompleteModel(this.roleSrv);
     roleLookup1 = new DefaultAutoCompleteModel(this.roleSrv);
+    baseLookup0 = new DefaultAutoCompleteModel(this.elementSrv);
+    baseLookup1 = new DefaultAutoCompleteModel(this.elementSrv);
+    baseLookup2 = new DefaultAutoCompleteModel(this.elementSrv);
 
     constructor(
         public override entitySrv: PayrollOptionsService,
@@ -63,7 +68,10 @@ export class PayrollOptionsComponent extends BaseEntityDetailComponent<POption> 
             vacationRate: [e.vacationRate||0],
             personalRole: [e.personalRole],
             payrollRole:  [e.payrollRole],
-            iepRate:      [e.iepRate]
+            iepRate:      [e.iepRate],
+            leaveBase1:   [e.leaveBase1],
+            leaveBase2:   [e.leaveBase2],
+            leaveBase3:   [e.leaveBase3]
         });
     }
 
