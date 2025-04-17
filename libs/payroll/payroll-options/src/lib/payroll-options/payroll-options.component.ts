@@ -14,11 +14,25 @@ import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { POption } from '@ss/payroll-common';
 import { Observable, of } from 'rxjs';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
+import { TranslateDirective } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-payroll-options',
     standalone: true,
-    imports: [CommonModule, MatCard, MatCardContent, MatError, MatFormField, MatInput, MatLabel, MaterialModule, ReactiveFormsModule, UiAutoCompleteComponent, UiAutoCompleteComponent],
+    imports: [
+        CommonModule,
+        MatCard,
+        MatCardContent,
+        MatError,
+        MatFormField,
+        MatInput,
+        MatLabel,
+        MaterialModule,
+        ReactiveFormsModule,
+        UiAutoCompleteComponent,
+        UiAutoCompleteComponent,
+        TranslateDirective
+    ],
     templateUrl: './payroll-options.component.html',
     styleUrl: './payroll-options.component.scss'
 })
