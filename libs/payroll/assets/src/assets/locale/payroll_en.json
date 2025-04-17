@@ -200,7 +200,6 @@
     "ABSENCE":               "Absence",
     "EVOLUTION_REPORT":      "Evolution report",
     "CAREER_CRITERIA":       "Criteria",
-    "GRADE":                 "Grade",
     "DEDUCTION_FORMULA":     "Formula",
     "PROMOTION_MOTIVE":      "Promotion motive",
     "IS_PROMOTION":          "Promotion?",
@@ -209,5 +208,9 @@
     "ID_UPDATE":             "ID update",
     "FUNDS":                 "Funds",
     "FUNDS_DETAIL":          "Funds detail",
-    "TAKEN_AMOUNT":          "Taken amount"
+    "TAKEN_AMOUNT":          "Taken amount",
+    "PAID_LEAVE":            "Paid leave",
+    "BASE_LEAVE1":           "Base 1",
+    "BASE_LEAVE2":           "Base 2",
+    "BASE_LEAVE3":           "Base 3"
 }
