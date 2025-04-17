@@ -7,9 +7,6 @@
                     <textarea matInput formControlName="iepRate" type="text" rows="3"></textarea>
                 </mat-form-field>
 
-                <div id="manager" class="default-50 sm-100">
-                    <mat-checkbox formControlName="codifyId" translate>REMUN_CODIFY_ID</mat-checkbox>
-                </div>
                 <mat-form-field id="code" class="default-50">
                     <mat-label translate>REMUN_MAX_SALARY</mat-label>
                     <input matInput formControlName="maxSalary" type="number" autofocus>
@@ -42,6 +39,9 @@
                     </ss-auto-complete>
                 </mat-form-field>
 
+                <div class="default-50 sm-100">
+                    <mat-checkbox formControlName="codifyId" translate>REMUN_CODIFY_ID</mat-checkbox>
+                </div>
             </form>
         }
     </mat-card-content>
