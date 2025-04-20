@@ -14,4 +14,7 @@ export interface POption {
     idPrefix: number;
     personalRole?: number;
     payrollRole?: number;
+    leaveBase1?: number;
+    leaveBase2?: number;
+    leaveBase3?: number;
 }

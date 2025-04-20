@@ -69,6 +69,9 @@ export class PayrollOptionsComponent extends BaseEntityDetailComponent<POption> 
             personalRole: [e.personalRole],
             payrollRole:  [e.payrollRole],
             iepRate:      [e.iepRate],
+            leaveBase1:   [e.leaveBase1],
+            leaveBase2:   [e.leaveBase2],
+            leaveBase3:   [e.leaveBase3]
         });
     }
 
