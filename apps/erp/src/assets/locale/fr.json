@@ -124,5 +124,7 @@
     "SOCIAL_APP":      "œuvres social",
     "SOCIAL":          "œuvres social",
     "AAVIEWER":        "APPArchive",
-    "PROJECT":         "Projet/Contrat"
+    "PROJECT":         "Projet/Contrat",
+    "HR_TABLES": "Tables RH",
+    "ACCOUNTING_APP": "Comptabilité"
 }

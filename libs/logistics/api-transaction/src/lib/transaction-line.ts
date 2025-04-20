@@ -10,6 +10,7 @@ export interface TransactionLine {
     qtyReturned: number;
     price: number;
     vat: number;
+    vat2: number;
     observation: string;
     footerMemo: string;
     position: number;

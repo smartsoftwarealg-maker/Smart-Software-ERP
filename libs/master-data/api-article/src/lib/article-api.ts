@@ -54,6 +54,7 @@ export interface Article {
     subClass?: number;
     imageModel?: ImageModel;
     vatValue?: number;
+    vatValue2?: number;
     notForSale: boolean;
     blocked: boolean;
     routingId?: number;

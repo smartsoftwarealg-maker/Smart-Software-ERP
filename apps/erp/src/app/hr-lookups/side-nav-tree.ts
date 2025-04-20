@@ -110,53 +110,63 @@ export const hrLookupNavTree: SideNavNode = {
         {
             name: 'PAYROLL_JUDICIAL_FRAMES',
             icon: 'fa-regular fa-gavel',
-            route: ABS_HR_JUDICIAL_FRAMES_URL
+            route: ABS_HR_JUDICIAL_FRAMES_URL,
+            accessRights: 'JudicialFrame'
         },
         {
             name: 'PAYROLL_PAYROLL_MOTIVES',
             icon: 'fa-solid fa-goal-net',
-            route: ABS_HR_MOTIVES_URL
+            route: ABS_HR_MOTIVES_URL,
+            accessRights: 'Motive'
         },
         {
             name: 'PAYROLL_DECISION_MOTIVES',
             icon: 'fa-solid fa-bullseye-pointer',
-            route: ABS_HR_DECISION_MOTIVES_URL
+            route: ABS_HR_DECISION_MOTIVES_URL,
+            accessRights: 'DecisionMotive'
         },
         {
             name: 'PAYROLL_CONTRACT_MOTIVES',
             icon: 'fa-solid fa-bullseye',
-            route: ABS_HR_CONTRACT_MOTIVES_URL
+            route: ABS_HR_CONTRACT_MOTIVES_URL,
+            accessRights: 'ContractMotive'
         },
         {
             name: 'COMMON_NATIONALITIES',
             icon: 'fas fa-flag',
-            route: ABS_HR_NATIONALITIES_URL
+            route: ABS_HR_NATIONALITIES_URL,
+            accessRights: 'Nationality'
         },
         {
             name: 'PAYROLL_PUNISHMENT_TYPE',
             icon: 'fas fa-file-certificate',
-            route: ABS_PUNISHMENT_TYPE_URL
+            route: ABS_PUNISHMENT_TYPE_URL,
+            accessRights: 'PunishmentType'
         },
         {
             name: 'PAYROLL_PUNISHMENTS',
             icon: 'fas fa-graduation-cap',
-            route: ABS_PROFESSIONAL_FAULTS_URL
+            route: ABS_PROFESSIONAL_FAULTS_URL,
+            accessRights: 'ProfFault'
         },
         {
             name: 'PAYROLL_ACTIVITIES',
             icon: 'fa-solid fa-cake-candles',
-            route: ABS_ACTIVITIES_URL
+            route: ABS_ACTIVITIES_URL,
+            accessRights: 'Activity'
         },
         {
             name: 'PAYROLL_PHYSICIANS',
             icon: 'fa-solid fa-user-doctor-hair',
-            route: ABS_PHYSICIANS_URL
+            route: ABS_PHYSICIANS_URL,
+            accessRights: 'Physician'
         },
         {
             name: 'PAYROLL_PHYSICIAN_SPECIALTIES',
             icon: 'fa-solid fa-microscope',
-            route: ABS_PHYSICIAN_SPECIALTIES_URL
+            route: ABS_PHYSICIAN_SPECIALTIES_URL,
+            accessRights: 'PhysicianSpecialty'
         },
     ],
-    accessRights: 'PAYROLL'
+    accessRights: 'HR_TABLES'
 };

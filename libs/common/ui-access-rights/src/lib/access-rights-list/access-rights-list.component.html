@@ -1,3 +1,7 @@
+
+@if (processing()) {
+    <mat-progress-bar mode="indeterminate" class=".size__div"></mat-progress-bar>
+}
 <div class="main-container">
     <div class="apps">
         <mat-form-field appearance="fill">
@@ -10,7 +14,7 @@
         </mat-form-field>
     </div>
     <div class="list-container" *ngIf="menuItems !== null">
-        <mat-list>
+        <mat-list [disabled]="processing()">
             <mat-list-item
                 *ngFor="let item of menuItems"
                 [ngClass]="{'b-warn': selectedItem === item }"

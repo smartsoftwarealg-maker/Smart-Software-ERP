@@ -150,8 +150,10 @@ export abstract class BaseTransactionLinesDetailComponent extends AbstractEntity
     }
 
     onArticle(a: Article) {
+        console.log(a);
         this.selectedReference = a?.reference;
         this.form.controls['vat'].setValue(a?.vatValue || 0);
+        this.form.controls['vat2'].setValue(a?.vatValue2);
         if (a.notForSale) {
             this.form.controls['store'].disable({onlySelf: true});
             this.form.controls['store'].setValue(null);
@@ -215,6 +217,7 @@ export abstract class BaseTransactionLinesDetailComponent extends AbstractEntity
             qtyReturned:  [{ value: b.qtyReturned ||0, disabled: true} , Validators.required],
             price:        [b.price || 0, Validators.required],
             vat:          [b.vat || 0, Validators.required],
+            vat2:         [b.vat2],
             observation:  [b.observation],
             footerMemo:   [b.footerMemo],
             position:     [{ value: b.position || 0, disabled: false }],
