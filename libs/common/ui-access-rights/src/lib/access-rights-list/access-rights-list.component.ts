@@ -1,7 +1,7 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import {
     AccessRight,
-    LoginService,
+    LoginService, MaterialModule,
     PaginatorPersistenceService,
     Role
 } from '@ss/common/api-common';
@@ -25,20 +25,52 @@ import { MatList, MatListItem } from '@angular/material/list';
 import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { MatSlideToggle } from '@angular/material/slide-toggle';
 import { MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from '@angular/material/table';
-import { MatCheckbox } from '@angular/material/checkbox';
 import { PaginationComponent } from '@ss/common/ui-pagination';
 import { TranslatePipe } from '@ss/common/ui-lang';
+import { MatCheckbox } from '@angular/material/checkbox';
 
 @Component({
     selector: 'ss-access-rights',
     templateUrl: './access-rights-list.component.html',
     styleUrls: ['./access-rights-list.component.scss'],
     standalone: true,
-    imports: [MatFormField, MatLabel, TranslateDirective, MatSelect, NgFor, MatOption, NgIf, MatList, MatListItem, NgClass, FormsModule, ReactiveFormsModule, UiAutoCompleteComponent, MatSlideToggle, MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatCheckbox, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, PaginationComponent, TranslatePipe]
+    imports: [
+        MaterialModule,
+        MatCheckbox,
+        MatFormField,
+        MatLabel,
+        TranslateDirective,
+        MatSelect,
+        NgFor,
+        MatOption,
+        NgIf,
+        MatList,
+        MatListItem,
+        NgClass,
+        FormsModule,
+        ReactiveFormsModule,
+        UiAutoCompleteComponent,
+        MatSlideToggle,
+        MatTable,
+        MatColumnDef,
+        MatHeaderCellDef,
+        MatHeaderCell,
+        MatCellDef,
+        MatCell,
+        MatHeaderRowDef,
+        MatHeaderRow,
+        MatRowDef,
+        MatRow,
+        PaginationComponent,
+        TranslatePipe,
+        MatCheckbox
+    ]
 })
 export class AccessRightsListComponent extends BaseEntityListComponent<AccessRight> {
     private roleSrv = inject(RoleService);
     public agentAutoCompleteModel = new DefaultAutoCompleteModel(this.roleSrv);
+
+    processing = signal(false);
 
     apps: string[] = [];
     sortedApps: string[] = [];
@@ -113,6 +145,9 @@ export class AccessRightsListComponent extends BaseEntityListComponent<AccessRig
                         (this.form.controls['canEdit'].value  === true? 1 : 0) * 4 +
                         (this.form.controls['canDelete'].value  === true? 1 : 0) * 8,
             };
+            this.processing.set(true);
+            this.editButton.disabled = true;
+            this.form.disable();
             this.rightsSrv
                 .saveRights(r, this.selectedItem)
                 .subscribe(res => {
@@ -124,6 +159,9 @@ export class AccessRightsListComponent extends BaseEntityListComponent<AccessRig
                         this.refresh();
                     }
                     this.snackBarSrv.showSuccessMessage();
+                    this.processing.set(false);
+                    this.editButton.disabled = false;
+                    this.form.enable();
                 });
         } else {
             this.snackBarSrv.showMessage('COMMON_NO_ITEM_SELECTED');
@@ -190,6 +228,4 @@ export class AccessRightsListComponent extends BaseEntityListComponent<AccessRig
             .getEntities(this.application)
             .subscribe(res => this.menuItems = res);
     }
-
-
 }

@@ -58,7 +58,6 @@ import { map } from 'rxjs/operators';
         MatTable,
         MatHeaderCellDef,
         MatProgressSpinner,
-        TranslatePipe,
         TranslateDirective
     ]
 })
@@ -70,9 +69,6 @@ export class LeavePlanningCalculatorComponent {
     readonly #THIS_YEAR = new Date().getFullYear();
     form = this.#fb.group({
         year:  [this.#THIS_YEAR - 1],
-        base1: [''],
-        base2: [''],
-        base3: [''],
     })
     processing = signal(false);
     period  = new FormControl<number>(  this.#THIS_YEAR);
@@ -121,7 +117,7 @@ export class LeavePlanningCalculatorComponent {
         this.processing.set(true);
         this.form.disable();
         this.#calcSrv
-            .history(0, value.year, value.base1, value.base2, value.base3)
+            .history(0, value.year)
             .subscribe(res => {
                 this.history.set(res);
                 this.processing.set(false);

@@ -130,7 +130,7 @@
     "WRITE": "Create",
     "TRACEABILITY": "Traceability",
     "EXCHANGE": "Currency exchange",
-    "HRMASTER": "HR Master",
+    "HRMASTER": "HR",
     "COMMON": "Common utilities",
     "LOGISTICS": "Logistics",
     "STOCK": "Inventory",
@@ -370,5 +370,7 @@
     "ANOMALIES":         "Anomalies",
     "DECISION_NO":        "Decision no",
     "DECISION_DATE":      "Decision date",
-    "PERIOD":             "Period"
+    "PERIOD":             "Period",
+    "HR_TABLES": "HR tables",
+    "PRODUCTION": "Production"
 }

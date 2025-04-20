@@ -11,40 +11,6 @@
             </mat-select>
         </mat-form-field>
 
-        <mat-form-field>
-            <mat-label>{{'REMUN_BASE'|translate }} 1</mat-label>
-            <mat-select formControlName="base1">
-                @for (f of base1(); track f.variable) {
-                    <mat-option [value]="f.variable">
-                        {{ f.variable + ' - ' + f.description }}
-                    </mat-option>
-                }
-            </mat-select>
-        </mat-form-field>
-
-        <mat-form-field>
-            <mat-label>{{'REMUN_BASE'|translate }} 1</mat-label>
-            <mat-select formControlName="base2">
-                @for (f of base2(); track f.variable) {
-                    <mat-option [value]="f.variable">
-                        {{ f.variable + ' - ' + f.description }}
-                    </mat-option>
-                }
-            </mat-select>
-        </mat-form-field>
-
-        <mat-form-field>
-            <mat-label>{{'REMUN_BASE'|translate }} 1</mat-label>
-            <mat-select formControlName="base3">
-                @for (f of base3(); track f.variable) {
-                    <mat-option [value]="f.variable">
-                        {{ f.variable + ' - ' + f.description }}
-                    </mat-option>
-                }
-            </mat-select>
-        </mat-form-field>
-
-
         <button mat-mini-fab
                 class="default-25 small-50"
                 type="submit"

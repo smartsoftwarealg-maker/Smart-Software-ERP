@@ -61,7 +61,7 @@ export class FormulaDetailComponent extends BaseEntityDetailComponent<Formula> {
             formula: [e.formula, Validators.required],
             accountno: [e.accountno],
             followup_fld: [e.followup_fld],
-            val_sign: [e.val_sign || 3]
+            val_sign: [e.val_sign || 1]
         });
     }
 

@@ -50,8 +50,5 @@ export interface VHistory {
 
 export interface VUpdate {
     year: number;
-    base1: string;
-    base2: string;
-    base3: string;
     list: VTake[];
 }

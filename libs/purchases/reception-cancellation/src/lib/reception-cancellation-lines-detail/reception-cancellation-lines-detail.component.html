@@ -71,12 +71,18 @@
                 </mat-form-field>
 
                 <mat-form-field id="vat" class="default-50 sm-100">
-                    <mat-label translate>STOCK_VAT</mat-label>
-                    <input matInput formControlName="vat" type="number" step=".01" required>
-                    <mat-error
-                        *ngIf="form.controls['vat'].hasError('required')" translate>COMMON_FIELD_REQUIRED
-                    </mat-error>
+                    <mat-label translate>LOGISTICS_VAT</mat-label>
+                    <input matInput formControlName="vat" type="number" step="1">
+                    @if (form.controls['vat'].hasError('required')) {
+                        <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+                    }
                 </mat-form-field>
+
+                <mat-form-field id="vat2" class="default-50 sm-100">
+                    <mat-label><span translate>LOGISTICS_VAT</span>2</mat-label>
+                    <input matInput formControlName="vat2" type="number" step="1">
+                </mat-form-field>
+
 
 
                 <mat-form-field id="header" class="default-50 sm-100">
