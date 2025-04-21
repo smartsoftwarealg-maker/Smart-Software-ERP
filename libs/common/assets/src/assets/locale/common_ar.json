@@ -369,5 +369,7 @@
     "DECISION_DATE":      "تاريخ القرار",
     "PERIOD":             "فترة",
     "HR_TABLES":         "جداول الموارد البشرية",
-    "PRODUCTION":         "الإنتاج"
+    "PRODUCTION":         "الإنتاج",
+    "UNSELECT_ALL":       "الغاء اختيار الكل"
+}
 
