@@ -77,7 +77,8 @@ mat-form-field {
 }
 
 mat-table {
-    min-width: calc(100% - 4px);
+    width: 100%;
+    min-width: 1200px;
 }
 
 .pay__slip {
