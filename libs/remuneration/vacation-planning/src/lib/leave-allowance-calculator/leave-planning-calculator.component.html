@@ -14,7 +14,7 @@
         <button mat-mini-fab
                 class="default-25 small-50"
                 type="submit"
-                matTooltip="'COMMON_REFRESH'|translate"
+                matTooltip="{{'COMMON_REFRESH'|translate}}"
                 color="primary">
             <i class="fa-solid fa-arrows-rotate"></i>
         </button>
@@ -22,7 +22,7 @@
                 class="default-25 small-50"
                 type="button"
                 color="primary"
-                matTooltip="'COMMON_SELECT_ALL'|translate"
+                matTooltip="{{'COMMON_SELECT_ALL'|translate}}"
                 (click)="selectAll()">
             <i class="fa-solid fa-check-double"></i>
         </button>
@@ -30,9 +30,17 @@
                 class="default-25 small-50"
                 type="button"
                 color="primary"
-                matTooltip="'COMMON_UNSELECT_ALL'|translate"
+                matTooltip="{{'COMMON_UNSELECT_ALL'|translate}}"
                 (click)="unselectAll()">
             <i class="fa-solid fa-circle-xmark"></i>
+        </button>
+        <button mat-mini-fab
+                class="default-25 small-50"
+                type="button"
+                color="primary"
+                matTooltip="{{'COMMON_SAVE'|translate}}"
+                (click)="save()">
+            <i class="fas fa-save"></i>
         </button>
     </form>
 </mat-card>
@@ -42,110 +50,113 @@
         <mat-spinner></mat-spinner>
     </div>
 } @else {
-    <div class="table__container">
-        <mat-table mat-table [dataSource]="history()" class="main-table">
+    <form [formGroup]="daysForm">
+        <div formArrayName="list" class="table__container">
+            <mat-table mat-table [dataSource]="history()" class="main-table">
 
-            <ng-container matColumnDef="employee">
-                <mat-header-cell *matHeaderCellDef translate>PAYROLL_ID</mat-header-cell>
-                <mat-cell *matCellDef="let e">
-                    {{ e.employee }}
-                </mat-cell>
-            </ng-container>
+                <ng-container matColumnDef="employee">
+                    <mat-header-cell *matHeaderCellDef translate>PAYROLL_ID</mat-header-cell>
+                    <mat-cell *matCellDef="let e">
+                        {{ e.employee }}
+                    </mat-cell>
+                </ng-container>
 
-            <ng-container matColumnDef="name">
-                <mat-header-cell *matHeaderCellDef translate>COMMON_DESCRIPTION</mat-header-cell>
-                <mat-cell *matCellDef="let e">
-                    {{ e.name }}
-                </mat-cell>
-            </ng-container>
+                <ng-container matColumnDef="name">
+                    <mat-header-cell *matHeaderCellDef translate>COMMON_DESCRIPTION</mat-header-cell>
+                    <mat-cell *matCellDef="let e">
+                        {{ e.name }}
+                    </mat-cell>
+                </ng-container>
 
-            <ng-container matColumnDef="post">
-                <mat-header-cell *matHeaderCellDef translate>PAYROLL_POST</mat-header-cell>
-                <mat-cell *matCellDef="let e">
-                    {{ e.post }}
-                </mat-cell>
-            </ng-container>
+                <ng-container matColumnDef="post">
+                    <mat-header-cell *matHeaderCellDef translate>PAYROLL_POST</mat-header-cell>
+                    <mat-cell *matCellDef="let e">
+                        {{ e.post }}
+                    </mat-cell>
+                </ng-container>
 
-            <ng-container matColumnDef="earned">
-                <mat-header-cell *matHeaderCellDef ><span translate>REMUN_BASE</span> 1</mat-header-cell>
-                <mat-cell *matCellDef="let e">
-                    {{ e.earned | number: '1.2-2' }}
-                </mat-cell>
-            </ng-container>
+                <ng-container matColumnDef="earned">
+                    <mat-header-cell *matHeaderCellDef><span translate>REMUN_BASE</span> 1</mat-header-cell>
+                    <mat-cell *matCellDef="let e">
+                        {{ e.earned | number: '1.2-2' }}
+                    </mat-cell>
+                </ng-container>
 
-            <ng-container matColumnDef="earned2">
-                <mat-header-cell *matHeaderCellDef ><span translate>REMUN_BASE</span> 2</mat-header-cell>
-                2
-                <mat-cell *matCellDef="let e">
-                    {{ e.earned2 | number: '1.2-2' }}
-                </mat-cell>
-            </ng-container>
+                <ng-container matColumnDef="earned2">
+                    <mat-header-cell *matHeaderCellDef><span translate>REMUN_BASE</span> 2</mat-header-cell>
+                    2
+                    <mat-cell *matCellDef="let e">
+                        {{ e.earned2 | number: '1.2-2' }}
+                    </mat-cell>
+                </ng-container>
 
-            <ng-container matColumnDef="earned3">
-                <mat-header-cell *matHeaderCellDef ><span translate>REMUN_BASE</span> 3</mat-header-cell>
-                3
-                <mat-cell *matCellDef="let e">
-                    {{ e.earned3 | number: '1.2-2' }}
-                </mat-cell>
-            </ng-container>
+                <ng-container matColumnDef="earned3">
+                    <mat-header-cell *matHeaderCellDef><span translate>REMUN_BASE</span> 3</mat-header-cell>
+                    3
+                    <mat-cell *matCellDef="let e">
+                        {{ e.earned3 | number: '1.2-2' }}
+                    </mat-cell>
+                </ng-container>
 
-            <ng-container matColumnDef="taken">
-                <mat-header-cell *matHeaderCellDef ><span translate>REMUN_EARNED</span> 1</mat-header-cell>
-                <mat-cell *matCellDef="let e">
-                    {{ e.taken | number: '1.2-2' }}
-                </mat-cell>
-            </ng-container>
+                <ng-container matColumnDef="taken">
+                    <mat-header-cell *matHeaderCellDef><span translate>REMUN_EARNED</span> 1</mat-header-cell>
+                    <mat-cell *matCellDef="let e">
+                        {{ e.taken | number: '1.2-2' }}
+                    </mat-cell>
+                </ng-container>
 
-            <ng-container matColumnDef="taken2">
-                <mat-header-cell *matHeaderCellDef ><span translate>REMUN_EARNED</span> 2</mat-header-cell>
-                2
-                <mat-cell *matCellDef="let e">
-                    {{ e.taken2 | number: '1.2-2' }}
-                </mat-cell>
-            </ng-container>
+                <ng-container matColumnDef="taken2">
+                    <mat-header-cell *matHeaderCellDef><span translate>REMUN_EARNED</span> 2</mat-header-cell>
+                    2
+                    <mat-cell *matCellDef="let e">
+                        {{ e.taken2 | number: '1.2-2' }}
+                    </mat-cell>
+                </ng-container>
 
-            <ng-container matColumnDef="taken3">
-                <mat-header-cell *matHeaderCellDef><span translate>REMUN_EARNED</span> 3</mat-header-cell>
-                3
-                <mat-cell *matCellDef="let e">
-                    {{ e.taken3 | number: '1.2-2' }}
-                </mat-cell>
-            </ng-container>
+                <ng-container matColumnDef="taken3">
+                    <mat-header-cell *matHeaderCellDef><span translate>REMUN_EARNED</span> 3</mat-header-cell>
+                    3
+                    <mat-cell *matCellDef="let e">
+                        {{ e.taken3 | number: '1.2-2' }}
+                    </mat-cell>
+                </ng-container>
 
-            <ng-container matColumnDef="rest">
-                <mat-header-cell *matHeaderCellDef translate>REMUN_REST</mat-header-cell>
-                <mat-cell *matCellDef="let e">
-                    {{ e.rest | number: '1.0-2' }}
-                </mat-cell>
-            </ng-container>
+                <ng-container matColumnDef="rest">
+                    <mat-header-cell *matHeaderCellDef translate>REMUN_REST</mat-header-cell>
+                    <mat-cell *matCellDef="let e">
+                        {{ e.rest | number: '1.0-2' }}
+                    </mat-cell>
+                </ng-container>
 
-            <ng-container matColumnDef="days">
-                <mat-header-cell *matHeaderCellDef translate>COMMON_DAYS</mat-header-cell>
-                <mat-cell *matCellDef="let e">
-                    {{ e.days| number: '1.0-2' }}
-                </mat-cell>
-            </ng-container>
+                <ng-container matColumnDef="days">
+                    <mat-header-cell *matHeaderCellDef translate>COMMON_DAYS</mat-header-cell>
+                    <mat-cell *matCellDef="let e">
+                        {{ e.days | number: '1.0-2' }}
+                    </mat-cell>
+                </ng-container>
 
+                <ng-container matColumnDef="toTake">
+                    <mat-header-cell *matHeaderCellDef translate>REMUN_TO_TAKE</mat-header-cell>
+                    <mat-cell *matCellDef="let i = index" [formGroupName]="i">
+                        <mat-form-field>
+                            <input matInput type="number" formControlName="days" >
+                        </mat-form-field>
+                    </mat-cell>
+                </ng-container>
 
-            <ng-container matColumnDef="toTake">
-                <mat-header-cell *matHeaderCellDef translate>REMUN_TO_TAKE</mat-header-cell>
-                <mat-cell *matCellDef="let e">
-                    {{ e.toTake | number: '1.0-2' }}
-                </mat-cell>
-            </ng-container>
+                <ng-container matColumnDef="selection">
+                    <mat-header-cell *matHeaderCellDef translate>&nbsp;</mat-header-cell>
+                    <mat-cell *matCellDef="let e">
+                        <mat-checkbox [checked]="selection().has(e.employee)"></mat-checkbox>
+                    </mat-cell>
+                </ng-container>
 
-            <ng-container matColumnDef="selection">
-                <mat-header-cell *matHeaderCellDef translate>&nbsp;</mat-header-cell>
-                <mat-cell *matCellDef="let e">
-                    <mat-checkbox [checked]="selection().has(e.employee)"></mat-checkbox>
-                </mat-cell>
-            </ng-container>
-
-            <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
-            <mat-row class="selectable" [class.selected]="row.id == selectedId" (click)="select(row)"
-                     *matRowDef="let row; columns: displayedColumns;"></mat-row>
-        </mat-table>
-    </div>
+                <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+                <mat-row class="selectable" [class.selected]="row.id == selectedId" (click)="select(row)"
+                         *matRowDef="let row; columns: displayedColumns;"></mat-row>
+            </mat-table>
+        </div>
+    </form>
 }
 
 

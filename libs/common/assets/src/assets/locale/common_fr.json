@@ -371,6 +371,7 @@
     "DECISION_NO":        "N° Décision ",
     "DECISION_DATE":      "Date de la décision",
     "PERIOD":             "Période",
-    "HR_TABLES":        "Tables RH",
-    "PRODUCTION":          "Production"
+    "HR_TABLES":          "Tables RH",
+    "PRODUCTION":         "Production",
+    "UNSELECT_ALL":       "UNSELECT TOUS"
 }
