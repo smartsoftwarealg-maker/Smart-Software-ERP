@@ -1,8 +1,11 @@
-import { Component, inject, OnInit, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import {
     FormsModule,
     FormControl,
-    ReactiveFormsModule, FormBuilder
+    ReactiveFormsModule,
+    FormBuilder,
+    FormArray,
+    FormGroup,
 } from '@angular/forms';
 import { MatCard } from '@angular/material/card';
 import { DecimalPipe } from '@angular/common';
@@ -10,7 +13,6 @@ import { MatFormField, MatLabel } from '@angular/material/form-field';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 import { MatOption } from '@angular/material/autocomplete';
 import { MatSelect } from '@angular/material/select';
-import { toSignal } from '@angular/core/rxjs-interop';
 import { LeavePlanningCalculatorService } from '../leave-allowance-calculator.service';
 import { MatMiniFabButton } from '@angular/material/button';
 import {
@@ -23,12 +25,12 @@ import {
     MatHeaderRowDef,
     MatRow,
     MatRowDef,
-    MatTable
+    MatTable,
 } from '@angular/material/table';
-import { VHistory } from '../vacation-planning-api';
+import { VHistory, VTake } from '../vacation-planning-api';
 import { MatProgressSpinner } from '@angular/material/progress-spinner';
 import { MaterialModule } from '@ss/common/api-common';
-import { map } from 'rxjs/operators';
+import { SnackBarService } from '@ss/common/ui-shell';
 
 @Component({
     selector: 'ss-leave-planning-calculator',
@@ -58,20 +60,26 @@ import { map } from 'rxjs/operators';
         MatTable,
         MatHeaderCellDef,
         MatProgressSpinner,
-        TranslateDirective
-    ]
+        TranslateDirective,
+        TranslatePipe,
+    ],
 })
 export class LeavePlanningCalculatorComponent {
     #calcSrv = inject(LeavePlanningCalculatorService);
-    #fb = inject(FormBuilder)
-
+    #fb = inject(FormBuilder);
+    snackBarSrv = inject(SnackBarService);
     selection = signal<Set<number>>(new Set());
     readonly #THIS_YEAR = new Date().getFullYear();
     form = this.#fb.group({
-        year:  [this.#THIS_YEAR - 1],
-    })
+        year: [this.#THIS_YEAR - 1],
+    });
+
+    daysForm = this.#fb.group({
+        list: this.#fb.array<FormGroup<{ employee: FormControl<number>; days: FormControl<number>; }>>([]),
+    });
+
     processing = signal(false);
-    period  = new FormControl<number>(  this.#THIS_YEAR);
+    period = new FormControl<number>(this.#THIS_YEAR);
 
     periods: number[] = [
         this.#THIS_YEAR - 10,
@@ -88,9 +96,9 @@ export class LeavePlanningCalculatorComponent {
         this.#THIS_YEAR + 1,
     ];
 
-    base1 = toSignal(this.#calcSrv.formulas());
-    base2 = toSignal(this.#calcSrv.formulas().pipe(map(res => res.filter(v => v.variable?.startsWith('a')))));
-    base3 = toSignal(this.#calcSrv.formulas().pipe(map(res => res.filter(v => v.variable?.startsWith('b')))));
+    // base1 = toSignal(this.#calcSrv.formulas());
+    // base2 = toSignal(this.#calcSrv.formulas().pipe(map(res => res.filter(v => v.variable?.startsWith('a')))));
+    // base3 = toSignal(this.#calcSrv.formulas().pipe(map(res => res.filter(v => v.variable?.startsWith('b')))));
     history = signal<VHistory[]>([]);
 
     selectedId = 0;
@@ -108,36 +116,62 @@ export class LeavePlanningCalculatorComponent {
         'rest',
         'days',
         'toTake',
-        'selection'
+        'selection',
     ];
 
+    get daysFA() {
+        return this.daysForm.get('list') as FormArray;
+    }
 
     onSubmit() {
         const value = this.form.value;
         this.processing.set(true);
         this.form.disable();
-        this.#calcSrv
-            .history(0, value.year)
-            .subscribe(res => {
-                this.history.set(res);
-                this.processing.set(false);
-                this.form.enable();
-            });
+        this.#calcSrv.history(0, value.year).subscribe((res) => {
+            this.daysForm.controls.list = this.#fb.array<FormGroup<{ employee: FormControl<number>; days: FormControl<number>; }>> (
+                res.map((v) => {
+                    return this.#fb.group({
+                        employee: new FormControl(v.employee),
+                        days: new FormControl(v.toTake),
+                    });
+                }),
+            );
+            console.log(this.daysForm.controls.list);
+            this.history.set(res);
+            this.processing.set(false);
+            this.form.enable();
+        });
     }
 
     select(h: VHistory) {
-        this.selectedId = h?.employee||0;
-        this.selection.update(c => {
-            c.has(this.selectedId) ? c.delete(this.selectedId) : c.add(this.selectedId);
+        this.selectedId = h?.employee || 0;
+        this.selection.update((c) => {
+            c.has(this.selectedId)
+                ? c.delete(this.selectedId)
+                : c.add(this.selectedId);
             return new Set([...c]);
-        })
+        });
     }
 
     selectAll() {
-        this.selection.set(new Set([...this.history().map(h => h.employee)]));
+        this.selection.set(new Set([...this.history().map((h) => h.employee)]));
     }
 
     unselectAll() {
         this.selection.set(new Set());
+    }
+
+    save() {
+         const list = this.daysFA.getRawValue()
+           .filter((v) => this.selection().has(v.employee)) as VTake[]
+         this.#calcSrv.update({ year: +this.form.controls.year.getRawValue(), list : list }).subscribe({
+             next: () => {
+                 this.snackBarSrv.showSuccessMessage();
+             },
+             error: (err) => {
+                 this.snackBarSrv.showFailureMessage();
+                 throw err
+             },
+         });
     }
 }

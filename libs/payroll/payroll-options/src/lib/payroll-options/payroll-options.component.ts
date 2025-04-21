@@ -16,6 +16,7 @@ import { Observable, of } from 'rxjs';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { TranslateDirective } from '@ss/common/ui-lang';
 import { ElementsInfoService } from '@ss/remuneration/elementsinfo';
+import { PayrollFormulasService } from '@ss/remuneration/payroll-formulas';
 
 @Component({
     selector: 'ss-payroll-options',
@@ -41,7 +42,7 @@ export class PayrollOptionsComponent extends BaseEntityDetailComponent<POption> 
 
     private loginSrv = inject(LoginService);
     private roleSrv = inject(RoleService);
-    private elementSrv = inject(ElementsInfoService);
+    private elementSrv = inject(PayrollFormulasService);
 
     roleLookup0 = new DefaultAutoCompleteModel(this.roleSrv);
     roleLookup1 = new DefaultAutoCompleteModel(this.roleSrv);
