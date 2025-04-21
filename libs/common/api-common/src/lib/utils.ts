@@ -387,7 +387,7 @@ export function getApplicationId(router: Router) {
         ['accounting', APP_ACCOUNTING],
         ['dashboard', APP_DASHBOARD],
         ['stock', APP_STOCK],
-        ['HR', APP_HR],
+        ['hr', APP_HR],
         ['payroll', APP_PAYROLL],
         ['sales', APP_SALES],
         ['assets-app', APP_ASSET],
