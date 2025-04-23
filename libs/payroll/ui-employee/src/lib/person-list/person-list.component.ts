@@ -10,7 +10,18 @@ import { ImageModel } from '@ss/common/ui-image-input';
 import { HttpService, LanguageService, PaginatorPersistenceService } from '@ss/common/api-common';
 import { DefaultReportService } from '@ss/common/ui-default-report-component';
 import { PersonSummary as IPersonSummary } from '@ss/employee-services/employee-services';
-import { MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRow, MatRowDef, MatRow } from '@angular/material/table';
+import {
+    MatTable,
+    MatColumnDef,
+    MatHeaderCellDef,
+    MatHeaderCell,
+    MatCellDef,
+    MatCell,
+    MatHeaderRow,
+    MatRowDef,
+    MatRow,
+    MatHeaderRowDef
+} from '@angular/material/table';
 import { MatSort, MatSortHeader } from '@angular/material/sort';
 import { TranslateDirective } from '@ss/common/ui-lang';
 import { ImageInputComponent } from '@ss/common/ui-image-input';
@@ -32,9 +43,28 @@ interface PersonSummary extends IPersonSummary {
     styleUrls: ['./person-list.component.scss'],
     templateUrl: './person-list.component.html',
     standalone: true,
-    imports: [MatTable, MatSort, MatColumnDef, MatHeaderCellDef, MatHeaderCell, TranslateDirective, MatCellDef, MatCell, ImageInputComponent, MatSortHeader, MatHeaderRow, MatRowDef, MatRow, PaginationComponent]
+    imports: [
+        MatTable,
+        MatSort,
+        MatColumnDef,
+        MatHeaderCellDef,
+        MatHeaderCell,
+        TranslateDirective,
+        MatCellDef,
+        MatCell,
+        ImageInputComponent,
+        MatSortHeader,
+        MatHeaderRow,
+        MatRowDef,
+        MatRow,
+        PaginationComponent,
+        MatHeaderRowDef,
+    ],
 })
-export class PersonListComponent extends BaseEntityListComponent<IPersonSummary> implements OnInit {
+export class PersonListComponent
+    extends BaseEntityListComponent<IPersonSummary>
+    implements OnInit
+{
     activePersonnel = true;
     public displayedColumns = [
         'photo',
@@ -50,11 +80,11 @@ export class PersonListComponent extends BaseEntityListComponent<IPersonSummary>
         'profCategory',
         'contractType',
         'categSection',
-        'rank'
+        'rank',
     ];
 
-    maritalStatus: { [id: number]: string; };
-    nationalities: { [id: number]: string; };
+    maritalStatus: { [id: number]: string };
+    nationalities: { [id: number]: string };
 
     constructor(
         public personListSrv: PersonListService,
@@ -67,8 +97,19 @@ export class PersonListComponent extends BaseEntityListComponent<IPersonSummary>
         public override confirmationSrv: ConfirmationDialogService,
         public override defReportSrv: DefaultReportService,
         public httpSrv: HttpService,
-        public override pagPersistSrv: PaginatorPersistenceService) {
-        super(personListSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv, 'PAYROLL_EMPLOYEE_SUMMARY');
+        public override pagPersistSrv: PaginatorPersistenceService,
+    ) {
+        super(
+            personListSrv,
+            shellSrv,
+            snackBarSrv,
+            route,
+            router,
+            confirmationSrv,
+            defReportSrv,
+            pagPersistSrv,
+            'PAYROLL_EMPLOYEE_SUMMARY',
+        );
         this.pagination.pageSize = 15;
         this.deleteButton.visible = false;
         this.editButton.visible = false;
@@ -92,17 +133,27 @@ export class PersonListComponent extends BaseEntityListComponent<IPersonSummary>
     //     return map;
     // }
 
-    public override processLoadedData(data: PersonSummary[]): Observable<PersonSummary[]> {
-        return of(data.map(p => {
-            // note: formatting the date here means it will not change when the language
-            // is changed until the page is refreshed
-            p.birthDate = this.langSrv.formatDate(p.birthDate);
-            p.hireDate = this.langSrv.formatDate(p.hireDate);
-            p.fullName = this.langSrv.formatFullName(p.firstName, p.lastName);
-            p.imageModel = new ImageModel(this.httpSrv);
-            p.imageModel.readOnly = true;
-            p.imageModel.setImageUrl(this.personListSrv.getPhotoUrl(p.id), false);
-            return p;
-        }));
+    public override processLoadedData(
+        data: PersonSummary[],
+    ): Observable<PersonSummary[]> {
+        return of(
+            data.map((p) => {
+                // note: formatting the date here means it will not change when the language
+                // is changed until the page is refreshed
+                p.birthDate = this.langSrv.formatDate(p.birthDate);
+                p.hireDate = this.langSrv.formatDate(p.hireDate);
+                p.fullName = this.langSrv.formatFullName(
+                    p.firstName,
+                    p.lastName,
+                );
+                p.imageModel = new ImageModel(this.httpSrv);
+                p.imageModel.readOnly = true;
+                p.imageModel.setImageUrl(
+                    this.personListSrv.getPhotoUrl(p.id),
+                    false,
+                );
+                return p;
+            }),
+        );
     }
 }
