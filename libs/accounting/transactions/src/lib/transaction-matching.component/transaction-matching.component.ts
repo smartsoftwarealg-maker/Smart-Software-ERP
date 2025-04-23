@@ -44,7 +44,7 @@ export class TransactionMatchingComponent implements OnInit {
 
     UNMATCHED_MODE = 1;
     MATCHED_MODE = 2;
-    displayedColumns = ['customerCode', 'description', 'matchKey', 'debit', 'credit'];
+    displayedColumns = ['customerCode', 'customerName', 'accountNo', 'description', 'reference', 'matchKey', 'debit', 'credit'];
     creditColumns = ['customerCode', 'description', 'matchKey', 'debit', 'credit', 'matchBtn'];
     debits: MBalanace[] = [];
     credits: MBalanace[] = [];

@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, signal } from '@angular/core';
+import { Component, computed, effect, inject, OnInit, signal } from '@angular/core';
 import {
     ACCTransactionLine,
     AccTransactionLineService,
@@ -42,6 +42,14 @@ export class BalanceQueriesComponent implements OnInit {
     selectedAccount: string | null = null;
     selectedGL = signal<GL|null>(null);
     selectedDetail = signal<ACCTransactionLine|null>(null);
+    selectedGLIDs = signal<number[]>([]);
+    selectionTotal = computed(() => {
+        const selection = this.selectedGLIDs();
+        console.log(this.glData.filter(d => selection.indexOf(d.oId) >= 0))
+        return this.glData
+            .filter(d => selection.indexOf(d.oId) >= 0)
+            .reduce((a, d) => ({debit: a.debit + d.debit, credit: a.credit + d.credit}), {debit: 0.0, credit: 0});
+    });
 
     form: UntypedFormGroup = null;
     balanceCols = [
@@ -68,7 +76,8 @@ export class BalanceQueriesComponent implements OnInit {
         'customer',
         'denomination',
         'debit',
-        'credit'
+        'credit',
+        'selection'
     ];
 
     detailCols = [
@@ -92,7 +101,7 @@ export class BalanceQueriesComponent implements OnInit {
         this.balancePaginator.onChange = () => this.refreshBalance();
         this.glPaginator.onChange = () => this.refreshGL();
         this.detailPaginator.onChange = () => this.refreshDetail();
-        this.detailPaginator.pageSize = this.glPaginator.pageSize = this.balancePaginator.pageSize = 10;
+        this.detailPaginator.pageSize = this.glPaginator.pageSize = this.balancePaginator.pageSize = 5;
     }
 
     ngOnInit(): void {
@@ -174,6 +183,18 @@ export class BalanceQueriesComponent implements OnInit {
         // console.log(event);
         this.detailSrv.sortColumn = event;
         this.refreshDetail();
+    }
+
+    selectGLLine(id?: number) {
+        this.selectedGLIDs.update(list => {
+            if (list.indexOf(id) >= 0) {
+                list = list.filter(i => i !== id);
+            } else {
+                list.push(id);
+            }
+            return [...list];
+        })
+
     }
 
     protected readonly math = Math;

@@ -246,6 +246,7 @@ export interface GL {
     denomination?: string;
     debit: number;
     credit: number;
+    oId: number;
 }
 
 export interface Balance {

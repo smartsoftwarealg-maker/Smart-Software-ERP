@@ -5,7 +5,7 @@ import { KeepOnToolbar, ShellService, SnackBarService, ToolbarButton } from '@ss
 import { ActivatedRoute, Router } from '@angular/router';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { DefaultReportService } from '@ss/common/ui-default-report-component';
-import { MaterialModule, PaginatorPersistenceService } from '@ss/common/api-common';
+import { MaterialModule, PaginationModel, PaginatorPersistenceService } from '@ss/common/api-common';
 import { LoansService } from '../loans.service';
 import { LoansConsumptionService } from '../loans-consumption.service';
 import { CommonModule } from '@angular/common';
@@ -40,6 +40,8 @@ export class LoansListComponent extends BaseEntityListComponent<Loan> {
     }
 
     consumptionList: Consumption[] = [];
+    detailPagination = PaginationModel.newInstance({page: 1, pageSize: 5, elementCount: 0});
+
     consumptionColumns = [
         'paymonth',
         'consumption',
@@ -79,15 +81,14 @@ export class LoansListComponent extends BaseEntityListComponent<Loan> {
             defReportSrv,
             pagPersistSrv,
             'PAYROLL_LOANS');
-        this.pagination.pageSize = 15;
+        this.pagination.pageSize = 10;
+        this.detailPagination.onChange = () => this.refreshDetail();
     }
 
     override selectRow(row: Loan) {
         super.selectRow(row);
         this.consumptionSrv.setParentId(this.selected);
-        this.consumptionSrv
-            .getList(0, 50)
-            .subscribe(res => this.consumptionList = res.body);
+        this.refreshDetail();
     }
 
     private toggleActivity() {
@@ -100,5 +101,14 @@ export class LoansListComponent extends BaseEntityListComponent<Loan> {
     override ngOnInit() {
         super.ngOnInit();
         this.shellSrv.addButton(this.#activeOnlyBtn);
+    }
+
+    private refreshDetail() {
+        this.consumptionSrv
+            .getList(this.detailPagination.page -1 , this.detailPagination.pageSize)
+            .subscribe(res => {
+                this.consumptionList = res.body;
+                this.detailPagination.elementCount = res.itemCount;
+            });
     }
 }
