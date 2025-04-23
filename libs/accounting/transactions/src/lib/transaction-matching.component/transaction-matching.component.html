@@ -15,6 +15,27 @@
             </mat-cell>
         </ng-container>
 
+        <ng-container matColumnDef="accountNo">
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_ACCOUNTNO</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{ e.accountNo }}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="reference">
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_REFERENCE</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{ e.reference }}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="customerName">
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>LOGISTICS_CUSTOMER</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{ e.customerName }}
+            </mat-cell>
+        </ng-container>
+
         <ng-container matColumnDef="debit">
             <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_DEBIT</mat-header-cell>
             <mat-cell *matCellDef="let e">

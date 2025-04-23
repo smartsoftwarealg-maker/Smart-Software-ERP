@@ -2,7 +2,7 @@
     <mat-card class="size">
         <mat-card-content>
             <form [formGroup]="form">
-                <mat-form-field >
+                <mat-form-field>
                     <mat-label translate>COMMON_ACCOUNTNO</mat-label>
                     <input matInput formControlName="accountNo" type="text" autofocus maxlength="20">
                 </mat-form-field>
@@ -45,7 +45,8 @@
             <span translate>COMMON_BALANCE</span>
         </ng-template>
         <div class="table__div">
-            <mat-table mat-table [dataSource]="balanceData" class="main-table" matSort (matSortChange)="sortBalance($event)">
+            <mat-table mat-table [dataSource]="balanceData" class="main-table" matSort
+                       (matSortChange)="sortBalance($event)">
 
                 <ng-container matColumnDef="accountNo">
                     <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_ACCOUNTNO</mat-header-cell>
@@ -55,7 +56,8 @@
                 </ng-container>
 
                 <ng-container matColumnDef="description">
-                    <mat-header-cell *matHeaderCellDef mat-sort-header translate>ADMINISTRATION_DESCRIPTION</mat-header-cell>
+                    <mat-header-cell *matHeaderCellDef mat-sort-header translate>ADMINISTRATION_DESCRIPTION
+                    </mat-header-cell>
                     <mat-cell *matCellDef="let e">
                         {{ e.description }}
                     </mat-cell>
@@ -69,7 +71,8 @@
                 </ng-container>
 
                 <ng-container matColumnDef="denomination">
-                    <mat-header-cell *matHeaderCellDef mat-sort-header translate>LOGISTICS_DENOMINATION</mat-header-cell>
+                    <mat-header-cell *matHeaderCellDef mat-sort-header translate>LOGISTICS_DENOMINATION
+                    </mat-header-cell>
                     <mat-cell *matCellDef="let e">
                         {{ e.denomination }}
                     </mat-cell>
@@ -147,6 +150,19 @@
             <span translate>ACC_GL</span>
         </ng-template>
 
+        <table class="size">
+            <tr>
+                <td translate><span class="label" translate>ACC_DEBIT</span>:</td>
+                <td class="value">{{ selectionTotal()?.debit|number: '1.2-2' }}</td>
+                <td><span class="label" translate>ACC_CREDIT</span>:</td>
+                <td class="value">{{ selectionTotal()?.credit|number: '1.2-2' }}</td>
+                <td class="space"></td>
+                <td><span class="label" translate>ACC_DEBIT</span>:</td>
+                <td class="value">{{ (selectionTotal()?.debit - selectionTotal()?.credit > 0 ? selectionTotal()?.debit - selectionTotal().credit : 0)|number: '1.2-2' }}</td>
+                <td><span class="label" translate>ACC_CREDIT</span>:</td>
+                <td class="value">{{ (selectionTotal()?.debit - selectionTotal()?.credit < 0 ? selectionTotal()?.credit - selectionTotal().debit : 0)|number: '1.2-2' }}</td>
+            </tr>
+        </table>
         <div class="table__div">
             <mat-table mat-table [dataSource]="glData" class="main-table" matSort (matSortChange)="sortGL($event)">
 
@@ -157,10 +173,19 @@
                     </mat-cell>
                 </ng-container>
 
+
                 <ng-container matColumnDef="description">
-                    <mat-header-cell *matHeaderCellDef mat-sort-header translate>ADMINISTRATION_DESCRIPTION</mat-header-cell>
+                    <mat-header-cell *matHeaderCellDef mat-sort-header translate>ADMINISTRATION_DESCRIPTION
+                    </mat-header-cell>
                     <mat-cell *matCellDef="let e">
                         {{ e.description }}
+                    </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="selection">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header translate></mat-header-cell>
+                    <mat-cell *matCellDef="let e">
+                        <mat-checkbox (click)="selectGLLine(e.oId)"></mat-checkbox>
                     </mat-cell>
                 </ng-container>
 
@@ -200,7 +225,8 @@
                 </ng-container>
 
                 <ng-container matColumnDef="denomination">
-                    <mat-header-cell *matHeaderCellDef mat-sort-header translate>LOGISTICS_DENOMINATION</mat-header-cell>
+                    <mat-header-cell *matHeaderCellDef mat-sort-header translate>LOGISTICS_DENOMINATION
+                    </mat-header-cell>
                     <mat-cell *matCellDef="let e">
                         {{ e.denomination }}
                     </mat-cell>
@@ -236,7 +262,8 @@
         </ng-template>
 
         <div class="table__div">
-            <mat-table mat-table [dataSource]="detailData" class="main-table" matSort (matSortChange)="sortDetail($event)">
+            <mat-table mat-table [dataSource]="detailData" class="main-table" matSort
+                       (matSortChange)="sortDetail($event)">
 
                 <ng-container matColumnDef="pieceNo">
                     <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_NO_</mat-header-cell>
@@ -295,14 +322,16 @@
                 </ng-container>
 
                 <ng-container matColumnDef="description">
-                    <mat-header-cell *matHeaderCellDef mat-sort-header translate>ADMINISTRATION_DESCRIPTION</mat-header-cell>
+                    <mat-header-cell *matHeaderCellDef mat-sort-header translate>ADMINISTRATION_DESCRIPTION
+                    </mat-header-cell>
                     <mat-cell *matCellDef="let e">
                         {{ e.description }}
                     </mat-cell>
                 </ng-container>
 
                 <mat-header-row *matHeaderRowDef="detailCols; sticky: true"></mat-header-row>
-                <mat-row class="selectable" [class.selected]="row.id == selectedDetail()?.id" (click)="selectDetail(row)"
+                <mat-row class="selectable" [class.selected]="row.id == selectedDetail()?.id"
+                         (click)="selectDetail(row)"
                          *matRowDef="let row; columns: detailCols;"></mat-row>
 
             </mat-table>

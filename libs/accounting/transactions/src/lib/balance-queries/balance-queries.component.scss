@@ -26,7 +26,7 @@ form {
 .mat-column-credit {
     flex: 1 1 110px;
     border-left: white solid 1px;
-    padding-right: 4px;
+    padding: 4px 0;
     justify-content: flex-end;
 }
 
@@ -34,7 +34,7 @@ form {
 .mat-column-lineNumber {
     flex: 1 1 110px;
     border-left: white solid 1px;
-    padding-right: 4px;
+    padding: 4px 0;
     justify-content: center;
 }
 
@@ -47,12 +47,16 @@ form {
 .mat-column-checkNo,
 .mat-column-reference,
 .mat-column-accountNo,
+.mat-column-selection,
 .mat-column-customer {
     flex: 1 1 80px;
     border-left: white solid 1px;
-    padding-left: 4px;
+    padding: 4px 0;
 }
 
+.mat-column-selection {
+    justify-content: center;
+}
 .mat-column-description,
 .mat-column-denomination {
     flex: 2 1 150px;
@@ -64,4 +68,18 @@ form {
     width: 100%;
     min-width: 1200px;
     min-height: 33em;
+}
+
+tr {
+    font-size: 0.8em;
+    font-weight: bolder;
+}
+
+.label {
+    width: 7em;
+}
+
+.value,
+.space {
+    width: 10em;
 }

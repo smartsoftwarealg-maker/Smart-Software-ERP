@@ -111,7 +111,7 @@ export class ReportViewComponent extends BaseEntityListComponent<ReportParam> im
         super(reportService, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv, 'COMMON_REPORTS');
         const os = this.deviceService.getDeviceInfo().os.toLowerCase();
         this.isAndroid = os === 'android' || os === 'ios';
-        this.isResponsible.set(this.loginSrv.appCtx.responsible);
+        this.isResponsible.set(this.loginSrv.appCtx.responsible||this.loginSrv.appCtx.manager);
     }
 
     override ngOnInit(): void {
