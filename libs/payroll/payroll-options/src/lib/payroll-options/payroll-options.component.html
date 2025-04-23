@@ -10,7 +10,7 @@
                 <mat-form-field id="code" class="default-50">
                     <mat-label translate>REMUN_MAX_SALARY</mat-label>
                     <input matInput formControlName="maxSalary" type="number" autofocus>
-                    @if (form.controls['maxSalary'].invalid) {
+                    @if (form?.controls['maxSalary'].invalid) {
                         <mat-error translate>COMMON_FIELD_MAX_LENGTH</mat-error>
                     }
                 </mat-form-field>
@@ -18,9 +18,19 @@
                 <mat-form-field class="default-50">
                     <mat-label translate>REMUN_VACATION_DAYS</mat-label>
                     <input matInput formControlName="vacationRate" type="number" autofocus>
-                    @if (form.controls['vacationRate'].invalid) {
+                    @if (form?.controls['vacationRate'].invalid) {
                         <mat-error translate>COMMON_FIELD_MAX_LENGTH</mat-error>
                     }
+                </mat-form-field>
+
+                <mat-form-field id="idPrefix" class="default-50">
+                    <mat-label translate>PAYROLL_ID_PREFIX</mat-label>
+                    <input matInput formControlName="idPrefix" type="number" autofocus>
+                </mat-form-field>
+
+                <mat-form-field id="idSize" class="default-50">
+                    <mat-label translate>PAYROLL_ID_SIZE</mat-label>
+                    <input matInput formControlName="idSize" type="number" autofocus>
                 </mat-form-field>
 
                 <mat-form-field class="default-50 sm-100">

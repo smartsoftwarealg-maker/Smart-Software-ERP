@@ -15,7 +15,6 @@ import { POption } from '@ss/payroll-common';
 import { Observable, of } from 'rxjs';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { TranslateDirective } from '@ss/common/ui-lang';
-import { ElementsInfoService } from '@ss/remuneration/elementsinfo';
 import { PayrollFormulasService } from '@ss/remuneration/payroll-formulas';
 
 @Component({
@@ -72,7 +71,9 @@ export class PayrollOptionsComponent extends BaseEntityDetailComponent<POption> 
             iepRate:      [e.iepRate],
             leaveBase1:   [e.leaveBase1],
             leaveBase2:   [e.leaveBase2],
-            leaveBase3:   [e.leaveBase3]
+            leaveBase3:   [e.leaveBase3],
+            idPrefix:     [e.idPrefix],
+            idSize:       [e.idSize],
         });
     }
 
