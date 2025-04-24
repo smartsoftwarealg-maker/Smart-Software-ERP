@@ -63,5 +63,6 @@
     "DUPLICATE_TEST":                "Duplicate test",
     "LONG_INPUT_FILTER":             "Very long text. Please, reduce the length of the text to be less than 1600 characters.",
     "USED_FORMULA":                  "Used formula cannot be deleted.",
-    "INVALID_DATE":                  "Invalid date."
+    "INVALID_DATE":                  "Invalid date.",
+    "WRONG_FORMULA":                 "Incorrect formula"
 }
