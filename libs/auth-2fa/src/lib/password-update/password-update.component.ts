@@ -12,7 +12,7 @@ import { MatInputModule } from "@angular/material/input";
 import { MatButtonModule } from "@angular/material/button";
 import { MatProgressBarModule } from "@angular/material/progress-bar";
 import { MatCardModule } from "@angular/material/card";
-import { TranslatePipe } from '@ss/common/ui-lang';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-password-update',
@@ -27,7 +27,7 @@ import { TranslatePipe } from '@ss/common/ui-lang';
         ReactiveFormsModule,
         MatButtonModule,
         MatProgressBarModule,
-        MatCardModule, TranslatePipe]
+        MatCardModule, TranslatePipe, TranslateDirective]
 })
 export class PasswordUpdateComponent {
     private router = inject(Router);
@@ -51,7 +51,7 @@ export class PasswordUpdateComponent {
                     of(null)))
                 .subscribe(res => {
                     if (res) {
-                        this.snackBarSrv.showMessage('COMMON_SUCCESS', false, false);
+                        this.snackBarSrv.showMessage('COMMON_SUCCESS' , false, false);
                         this.router.navigate(['/']).then();
                     } else {
                         this.snackBarSrv.showFailureMessage();
