@@ -3,7 +3,7 @@ import { Observable, of } from 'rxjs';
 import { Router } from '@angular/router';
 import { catchError, map, switchMap, tap } from 'rxjs/operators';
 import { AppContext, Credentials, ESender, LoginInfo, UserInfo } from './models';
-import { CENTER_SELECT_URL, INDEX_PAGE_URL, LOGIN_URL } from './constants';
+import { CENTER_SELECT_URL, INDEX_PAGE_URL, LOGIN_URL, UPDATE_PASSWORD_URL } from './constants';
 import { HttpService } from './http.service';
 import { MainPageService } from './main-page.service';
 import { CompanySelectorService } from './company-selector.service';
@@ -242,8 +242,9 @@ export class LoginService {
           (info: LoginInfo) => {
               this.#httpSrv.updateAuthToken(info.jwt);
               this.appCtx = info.ctx;
-              const url = this.appCtx?.center ? INDEX_PAGE_URL : CENTER_SELECT_URL;
-              this.#router.navigate(['/' + CENTER_SELECT_URL]);
+              //const url = this.appCtx?.center ? INDEX_PAGE_URL : CENTER_SELECT_URL;
+              //this.#router.navigate(['/' + CENTER_SELECT_URL]);
+              this.resetCode(info.ctx.agentId);
               if (onFinish != null) {
                   onFinish();
               }
@@ -310,6 +311,13 @@ export class LoginService {
 
     setVerified(): Observable<any> {
         return this.#httpSrv.post('/verified');
+    }
+
+    private resetCode(agent: number) {
+        this.#httpSrv.get<{code:string}>(`/agents/${agent}/reset-code`).subscribe((res) => {
+            const url = res.code != "" ? UPDATE_PASSWORD_URL : CENTER_SELECT_URL
+            this.#router.navigate(['/' + url]);
+        });
     }
 
 }
