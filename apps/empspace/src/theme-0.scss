@@ -1,0 +1,5 @@
+@use '@angular/material/prebuilt-themes/rose-red.css';
+
+@use 'styles' as mainStyles;
+
+@include mainStyles.themes-patches();
