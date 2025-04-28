@@ -86,5 +86,7 @@
     "LEAVE_CALCULATOR":  "Calculatrice de conges",
     "EARNED":            "Gagné",
     "TO_TAKE":           "A prendre",
-    "RETURNED_AMOUNT":   "Montant retourné"
+    "RETURNED_AMOUNT":   "Montant retourné",
+    "IRG": "IRG",
+    "IRG_CALCULATOR":     "Calculateur IRG"
 }

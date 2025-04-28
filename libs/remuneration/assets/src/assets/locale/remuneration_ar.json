@@ -83,5 +83,7 @@
     "LEAVE_CALCULATOR": "محاسبة العطلة",
     "EARNED": "مكتسب",
     "TO_TAKE": "المأخوذ",
-    "RETURNED_AMOUNT": "المبلغ المرجع"
+    "RETURNED_AMOUNT": "المبلغ المرجع",
+    "IRG": "ضريبة الدخل",
+    "IRG_CALCULATOR": "حاسبة الضريبة"
 }

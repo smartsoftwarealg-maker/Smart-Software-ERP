@@ -4,7 +4,6 @@ import {Loan, LOAN_PAYROLL_LOANS_URLS} from './loans-class';
 import {HttpService} from '@ss/common/api-common';
 import { HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Agent } from '@ss/logistics/api-agent';
 
 @Injectable({
   providedIn: 'root'

@@ -16,7 +16,7 @@ import {
     PAY_FIXED_ELEMENTS_URL,
     PAY_FORMULAS_URL, PAY_FUNDS_URL,
     PAY_GRID_UPDATE_URL,
-    PAY_INPUT_FILTERS,
+    PAY_INPUT_FILTERS, PAY_IRG_CALC,
     PAY_LOANS_URL,
     PAY_MONTH_CANCELER,
     PAY_MONTH_CLOSER,
@@ -118,6 +118,7 @@ import {
 } from '@ss/payroll/salary-grid';
 import { PayrollOptionsComponent } from 'payroll/payroll-options';
 import { FundsListComponent, FundsDetailComponent } from '@ss/payroll/funds';
+import { IrgComponent } from '@ss/payroll/irg';
 
 export const mainRoutes: Routes = [
     {
@@ -726,6 +727,11 @@ export const mainRoutes: Routes = [
                 ]
             },
         ]
+    },
+    {
+        path: PAY_IRG_CALC,
+        component: IrgComponent,
+        canActivate: [loginGuard, payrollGuard]
     },
     {
         path: ADMINISTRATION_REPORT_PRIVILEGE_URL,
