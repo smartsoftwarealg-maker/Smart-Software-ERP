@@ -8,6 +8,7 @@ import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui
 import { Agent, CustomerService } from '@ss/logistics/api-agent';
 import { TranslateDirective } from '@ss/common/ui-lang';
 
+
 @Component({
     selector: 'ss-password-reset',
     standalone: true,
@@ -34,6 +35,7 @@ export class PasswordResetComponent implements OnInit {
     form = this.#fb.group ({
         id:           [0],
         agentId:      [null],
+        resetCode:    [],
         password:     [this.#password],
         confirmation: [this.#password]
     });

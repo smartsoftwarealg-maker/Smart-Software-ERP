@@ -58,6 +58,7 @@
     "FULLNAME": "Nom complet",
     "UPDATE_PASSWORD": "Mettre à jour le mot de passe",
     "PASSWORD": "Mot de passe",
+    "RESET_CODE": "Code De Réinitialisation",
     "ROLES": "Roles",
     "ROLE": "Role",
     "RESPONSIBLE": "Responsable",

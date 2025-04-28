@@ -58,6 +58,7 @@
     "FULLNAME": "الاسم الكامل",
     "UPDATE_PASSWORD": "تغيير كلمة السر",
     "PASSWORD": "كلمة السر",
+    "RESET_CODE": "رمز إعادة الضبط",
     "ROLES": "الوظائف",
     "ROLE": "الوظيفة",
     "RESPONSIBLE": "مسؤول",
