@@ -444,6 +444,7 @@
                 "libs/payroll/api-employee/src/index.ts"
             ],
             "@ss/payroll/funds": ["libs/payroll/funds/src/index.ts"],
+            "@ss/payroll/irg": ["libs/payroll/irg/src/index.ts"],
             "@ss/payroll/salary-grid": [
                 "libs/payroll/salary-grid/src/index.ts"
             ],

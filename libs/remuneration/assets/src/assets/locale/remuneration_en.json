@@ -85,5 +85,7 @@
     "LEAVE_CALCULATOR":  "Leave calculator",
     "EARNED":             "Earned",
     "TO_TAKE":            "To take",
-    "RETURNED_AMOUNT":    "Returned amount"
+    "RETURNED_AMOUNT":    "Returned amount",
+    "IRG": "IRG",
+    "IRG_CALCULATOR":     "IRG calculator"
 }

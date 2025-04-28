@@ -47,6 +47,7 @@ export class MonthSelectorComponent implements OnInit {
 
     ngOnInit(): void {
         this.shellSrv.setLoading(true);
+        this.shellSrv.setTitle('REMUN_MONTH_SELECTION')
         zip(this.selectorSrv.minMonth(),
             this.selectorSrv.maxMonth(),
             this.selectorSrv.ctx(),
