@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, DestroyRef, inject, signal } from '@angular/core';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {Dashboard} from '../dashboard';
 import {DashboardService} from '../services/dashboard.service';
@@ -27,6 +27,8 @@ import { DatePickerComponent } from '@ss/common/ui-datepicker';
 
 import { PaginationComponent } from '@ss/common/ui-pagination';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { AccessRightsService } from '@ss/common/api-access-rights';
 
 @Component({
     selector: 'ss-dashboard-list',
@@ -39,15 +41,16 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         TranslateDirective,
         TranslatePipe,
         ReactiveFormsModule,
-       
-
         PaginationComponent,
         TranslatePipe
     ]
 
 })
 export class DashboardListComponent extends BaseEntityListComponent<Dashboard> {
-    applications = APPLICATIONS;
+    #destroyRef = inject(DestroyRef);
+    #accessRightsSrv = inject(AccessRightsService);
+
+    applications = signal(APPLICATIONS);
     applicationCtrl = new FormControl();
     displayedColumns = [
         'description',
@@ -79,14 +82,19 @@ export class DashboardListComponent extends BaseEntityListComponent<Dashboard> {
 
     override ngOnInit() {
         super.ngOnInit();
-        this.subscriptions.push(
-            this.applicationCtrl
-                .valueChanges
-                .pipe(debounceTime(300),
-                    distinctUntilChanged()
-                ).subscribe(id => {
-                    this.dashboardSrv.setParentId(id);
-                    this.refresh();
-                }));
+        this.applicationCtrl
+            .valueChanges
+            .pipe(
+                debounceTime(300),
+                distinctUntilChanged(),
+                takeUntilDestroyed(this.#destroyRef)
+            ).subscribe(id => {
+            this.dashboardSrv.setParentId(id);
+            this.refresh();
+        });
+
+        this.#accessRightsSrv
+            .getApps()
+            .subscribe(res => this.applications.update(apps => apps.filter(kv => res.apps.indexOf(kv.description) > -1)));
     }
 }
