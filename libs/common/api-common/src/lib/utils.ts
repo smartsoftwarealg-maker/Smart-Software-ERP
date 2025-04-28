@@ -11,7 +11,7 @@ import {
     APP_HR, APP_LTM,
     APP_PAYROLL,
     APP_PURCHASE,
-    APP_SALES,
+    APP_SALES, APP_SCHEDULED_SALES,
     APP_STOCK,
     APP_TREASURY
 } from './constants';
@@ -394,6 +394,8 @@ export function getApplicationId(router: Router) {
         ['treasury', APP_TREASURY],
         ['purchases', APP_PURCHASE],
         ['ltm', APP_LTM],
+        ['scheduled-sales', APP_SCHEDULED_SALES],
+
     ]);
     return MAP.get(app) || 1;
 }

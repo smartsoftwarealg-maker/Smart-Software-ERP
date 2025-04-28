@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, DestroyRef, inject, signal } from '@angular/core';
 import {DashboardService} from '../services/dashboard.service';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {Dashboard} from '../dashboard';
@@ -28,6 +28,7 @@ import { DatePickerComponent } from '@ss/common/ui-datepicker';
 import { PaginationComponent } from '@ss/common/ui-pagination';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 import { Sort } from '@angular/material/sort';
+import { AccessRightsService } from '@ss/common/api-access-rights';
 
 @Component({
     selector: 'ss-dashboard',
@@ -46,12 +47,14 @@ import { Sort } from '@angular/material/sort';
     ]
 })
 export class DashboardComponent extends BaseEntityListComponent<Dashboard> {
+    #destroyRef = inject(DestroyRef);
+    #accessRightsSrv = inject(AccessRightsService);
     private agentSrv = inject(AgentService);
     private langSrv = inject(LanguageService);
     private chartComponent: Chart | null = null;
 
 
-    applications = APPLICATIONS;
+    applications = signal(APPLICATIONS);
     showApplications = signal(false);
     headers: string[] = ['test'];
     dashboardData: any[][] = [['test']];
@@ -104,6 +107,9 @@ export class DashboardComponent extends BaseEntityListComponent<Dashboard> {
             }));
 
         // this.shellSrv.addButton(this.jsonButton);
+        this.#accessRightsSrv
+            .getApps()
+            .subscribe(res => this.applications.update(apps => apps.filter(kv => res.apps.indexOf(kv.description) > -1)));
     }
 
     override select(id: number) {
