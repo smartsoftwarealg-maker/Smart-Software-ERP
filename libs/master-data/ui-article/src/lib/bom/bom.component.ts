@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, ViewChild } from '@angular/core';
+import { Component, inject, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { KeepOnToolbar, ShellService, SnackBarService, ToolbarButton } from '@ss/common/ui-shell';
 import { ActivatedRoute } from '@angular/router';
@@ -9,7 +9,6 @@ import { MatTree, MatTreeNestedDataSource } from '@angular/material/tree';
 import { MatButtonModule } from '@angular/material/button';
 
 import { LanguageService, MaterialModule } from '@ss/common/api-common';
-import { DatePickerComponent } from '@ss/common/ui-datepicker';
 
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { BomDialogComponent } from '../bom-dialog/bom-dialog.component';
@@ -29,7 +28,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     templateUrl: './bom.component.html',
     styleUrl: './bom.component.css',
 })
-export class BomComponent implements OnInit {
+export class BomComponent implements OnInit, OnDestroy {
     private dialog = inject(MatDialog);
     private langSrv = inject(LanguageService);
     private EMPTY_BOM: BOM = {id: 0, qty: 0, childRef: '',  childDescription: this.langSrv.translate('LOGISTICS_BOM'), childId: 0};
@@ -72,7 +71,7 @@ export class BomComponent implements OnInit {
 
     treeControl = new NestedTreeControl<BOMTree>(node => node.children);
     dataSource = new MatTreeNestedDataSource<BOMTree>();
-
+    @Input() filter : string | null
 
     hasChild = (_: number, node: BOMTree) => !!node.children && node.children.length > 0;
 
@@ -80,7 +79,8 @@ export class BomComponent implements OnInit {
         this.shellSrv.setGoBackPath('..', this.route);
         this.shellSrv.setButtons([this.addButton, this.editButton, this.deleteButton]);
         this.shellSrv.setTitle('LOGISTICS_BOM');
-        this.refresh(null);
+        this.enableSearch();
+        this.refresh(this.filter);
     }
 
     // getLevel(node: BOMTree): number {
@@ -184,6 +184,14 @@ export class BomComponent implements OnInit {
                     this.snackBarSrv.showFailureMessage();
                 }
             });
+    }
+
+    public enableSearch(): void {
+        this.shellSrv.enableSearch('COMMON_SEARCH', o => o.subscribe((f: string) => this.refresh(f)));
+    }
+
+    public ngOnDestroy() {
+        this.shellSrv.reset();
     }
 
 }
