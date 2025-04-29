@@ -281,7 +281,8 @@ export class BaseEntityListComponent<T extends { id: number, email?: string }> i
             .viewReport(this.reportForm, this.selected)
             .subscribe(res => {
                 const fileURL = URL.createObjectURL(new Blob([res], {type: 'application/pdf'}));
-                window.open(fileURL, '_blank');
+                const w = window.open(fileURL, '_blank');
+                setTimeout(() => w.document.title = `${this.formReport}_${this.selected}.pdf`, 200);
             });
     }
 
