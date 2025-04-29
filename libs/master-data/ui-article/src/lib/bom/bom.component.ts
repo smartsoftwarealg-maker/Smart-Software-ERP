@@ -1,4 +1,4 @@
-import { Component, inject, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Component, inject, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { KeepOnToolbar, ShellService, SnackBarService, ToolbarButton } from '@ss/common/ui-shell';
 import { ActivatedRoute } from '@angular/router';
@@ -71,7 +71,6 @@ export class BomComponent implements OnInit, OnDestroy {
 
     treeControl = new NestedTreeControl<BOMTree>(node => node.children);
     dataSource = new MatTreeNestedDataSource<BOMTree>();
-    @Input() filter : string | null
 
     hasChild = (_: number, node: BOMTree) => !!node.children && node.children.length > 0;
 
@@ -80,7 +79,7 @@ export class BomComponent implements OnInit, OnDestroy {
         this.shellSrv.setButtons([this.addButton, this.editButton, this.deleteButton]);
         this.shellSrv.setTitle('LOGISTICS_BOM');
         this.enableSearch();
-        this.refresh(this.filter);
+        this.refresh(null);
     }
 
     // getLevel(node: BOMTree): number {
