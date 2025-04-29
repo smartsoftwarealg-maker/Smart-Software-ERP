@@ -467,6 +467,9 @@
             "@ss/production/production": [
                 "libs/production/production/src/index.ts"
             ],
+            "@ss/production/production-article": [
+                "libs/production/production-article/src/index.ts"
+            ],
             "@ss/production/production-order": [
                 "libs/production/production-order/src/index.ts"
             ],

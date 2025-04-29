@@ -1,0 +1,72 @@
+.table-container {
+    overflow-x: auto;
+    min-height: 40%;
+}
+
+.main-container,
+.doc-info,
+.pagination-container {
+    width: 90%;
+    max-width: 1400px;
+    margin: 4PX auto;
+}
+
+.content-div {
+    min-width: 800px;
+    width: 100%;
+}
+// keep the material design specs
+.mat-row, .mat-header-row {
+    padding-right: 16px;
+    padding-left: 16px;
+}
+
+.mat-column-reference {
+    flex: 0 1 120px;
+    padding-right: 8px !important;
+    padding-left: 8px !important;
+}
+
+.mat-column-image {
+    flex: 0 1 80px;
+    padding-right: 8px !important;
+    padding-left: 8px !important;
+    max-width: 80px;
+}
+
+.mat-column-unitDescription,
+.mat-column-markDescription,
+.mat-column-classDescription,
+.mat-column-subClassDescription {
+    flex: 1 1 120px;
+}
+
+.mat-column-description2 {
+    flex: 1 0 350px;
+    padding-right: 8px !important;
+    padding-left: 8px !important;
+}
+
+.mat-column-price1,
+.mat-column-awp {
+    flex: 0 0 90px;
+    padding-right: 8px !important;
+}
+
+.mat-column-unit {
+    flex: 0 0 90px;
+    padding-right: 8px !important;
+    justify-content: center;
+}
+
+.mat-column-vat {
+    flex: 0 0 50px;
+    padding-left: 8px !important;
+}
+
+.mat-column-mark,
+.mat-column-class {
+    flex: 0 0 100px;
+    padding-left: 8px !important;
+}
+

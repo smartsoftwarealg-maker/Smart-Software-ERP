@@ -3,7 +3,7 @@ import {
     ABS_PRODUCTION_BOM_PRODUCTS,
     ABS_PRODUCTION_MRP_URL,
     ABS_PRODUCTION_ORDER_URL,
-    ABS_PRODUCTION_URL
+    ABS_PRODUCTION_URL, ABS_PRODUCTION_ARTICLE_URL
 } from '../common';
 
 export const productionNavTree: SideNavNode = {
@@ -34,6 +34,12 @@ export const productionNavTree: SideNavNode = {
             icon: 'fa-brands fa-product-hunt',
             route: ABS_PRODUCTION_URL,
             accessRights: 'POrder'
-        }
+        },
+        {
+            name: 'STOCK_ARTICLES',
+            icon: 'fas fa-box',
+            route: ABS_PRODUCTION_ARTICLE_URL,
+            accessRights: 'ArticleType'
+        },
     ]
 };

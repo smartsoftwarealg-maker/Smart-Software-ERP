@@ -9,7 +9,8 @@ import {
     PRODUCTION_ORDER_URL,
     PRODUCTIONS_URL,
     PRODUCTION_MRP_URL,
-    PRODUCTION_BOM_URL
+    PRODUCTION_BOM_URL,
+    PRODUCTION_ARTICLE_URL
 } from '../common';
 import {
     ProductionOrderDetailComponent,
@@ -27,6 +28,10 @@ import {
 import { loginGuard } from '../erp-guards';
 import { MrpComponent } from '@ss/production/mrp';
 import { BomComponent } from '@ss/master-data/ui-article';
+import { ProductionArticleDetailComponent, ProductionArticleListComponent } from '@ss/production/production-article';
+import { CmmsChecklistLineDetailComponent, CmmsChecklistLineListComponent } from '@ss/cmms/cmms-checklists';
+import { AppArchiveDetailComponent, AppArchiveListComponent, CMMS_ROUTING_ARCHIVES } from '@ss/common/app-archive';
+import { CMMSRoutingArchiveComponent } from '@ss/cmms/lookups';
 
 export const prodRoutes: Routes = [
     {
@@ -107,6 +112,25 @@ export const prodRoutes: Routes = [
                     },
                     ...docInfoRoutes,
                 ],
+            },
+            { path: '', redirectTo: LIST_URL, pathMatch: 'full' },
+            { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' },
+        ],
+    },
+    {
+        path: PRODUCTION_ARTICLE_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: ProductionArticleListComponent,
+                canActivate: [loginGuard],
+                children: docInfoRoutes,
+            },
+            {
+                path: ':id',
+                component: ProductionArticleDetailComponent,
+                canActivate: [loginGuard],
+                canDeactivate: [CanDeactivateService],
             },
             { path: '', redirectTo: LIST_URL, pathMatch: 'full' },
             { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' },
