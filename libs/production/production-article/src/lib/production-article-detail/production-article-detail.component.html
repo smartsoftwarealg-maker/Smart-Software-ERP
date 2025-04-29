@@ -135,7 +135,7 @@
         </mat-tab>
         <mat-tab label="{{ 'PROD_BOM' | translate }}">
             @if (form != null) {
-                <ss-bom [filter]="form?.controls['reference'].value"></ss-bom>
+                <ss-child-bom></ss-child-bom>
             }
         </mat-tab>
     </mat-tab-group>

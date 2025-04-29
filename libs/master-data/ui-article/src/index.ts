@@ -5,3 +5,4 @@ export * from './lib/bom/bom.component';
 export * from './lib/final-product-detail/final-product-detail.component';
 export * from './lib/final-product-list/final-product-list.component';
 export * from './lib/child-bom/child-bom.component';
+export * from './lib/bom.service';

@@ -12,6 +12,12 @@ export const productionNavTree: SideNavNode = {
     accessRights: 'PRODUCTION_APP',
     children: [
         {
+            name: 'STOCK_ARTICLES',
+            icon: 'fas fa-box',
+            route: ABS_PRODUCTION_ARTICLE_URL,
+            accessRights: 'ArticleType'
+        },
+        {
             name: 'PROD_BOM',
             icon: 'fa-solid fa-list-tree',
             route: ABS_PRODUCTION_BOM_PRODUCTS,
@@ -34,12 +40,6 @@ export const productionNavTree: SideNavNode = {
             icon: 'fa-brands fa-product-hunt',
             route: ABS_PRODUCTION_URL,
             accessRights: 'POrder'
-        },
-        {
-            name: 'STOCK_ARTICLES',
-            icon: 'fas fa-box',
-            route: ABS_PRODUCTION_ARTICLE_URL,
-            accessRights: 'ArticleType'
         },
     ]
 };

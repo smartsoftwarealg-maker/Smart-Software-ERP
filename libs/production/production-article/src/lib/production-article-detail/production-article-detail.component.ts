@@ -22,10 +22,11 @@ import { HttpService, MaterialModule } from '@ss/common/api-common';
 import { CommonModule } from '@angular/common';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 import { ArticleStoreComponent } from '@ss/stock/article-store';
-import { BomComponent } from '@ss/master-data/ui-article';
+import { ChildBomComponent } from '@ss/master-data/ui-article';
+import { BomService } from '@ss/master-data/ui-article';
 
 @Component({
-    selector: 'ss-productionarticle-detail',
+    selector: 'ss-production-article-detail',
     styleUrls: ['./production-article-detail.component.scss'],
     templateUrl: './production-article-detail.component.html',
     standalone: true,
@@ -38,7 +39,7 @@ import { BomComponent } from '@ss/master-data/ui-article';
         UiAutoCompleteComponent,
         ArticleStoreComponent,
         TranslatePipe,
-        BomComponent,
+        ChildBomComponent,
     ],
 })
 export class ProductionArticleDetailComponent
@@ -51,6 +52,7 @@ export class ProductionArticleDetailComponent
     private unitSrv = inject(UnitService);
     private vatSrv = inject(VatService);
     private typeSrv = inject(ArticleTypeService);
+    private bomSrv = inject(BomService);
 
     imageModel: ImageModel;
     aid = 0;
@@ -101,6 +103,7 @@ export class ProductionArticleDetailComponent
         // Make sure to update the template if you edit the configuration here
         this.imageModel.setImageUrl(this.articleSrv.getPhotoUrl(a.id), false);
         this.aid = a.id;
+        this.bomSrv.setParentId(a.id)
         return this.formBuilder.group({
             description2: [a.description2, Validators.required],
             id: [a.id],
@@ -126,5 +129,4 @@ export class ProductionArticleDetailComponent
         this.imageModel.setBackendUrl(this.articleSrv.getPhotoUrl(id));
         return this.imageModel.submit('file');
     }
-
 }
