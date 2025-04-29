@@ -1,10 +1,7 @@
 import { Component, Inject, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MaterialModule } from '@ss/common/api-common';
-
 import { MatButtonModule } from '@angular/material/button';
-import { DatePickerComponent } from '@ss/common/ui-datepicker';
-
 import { ArticleService, BOM } from '@ss/master-data/api-article';
 import { FormBuilder, Validators } from '@angular/forms';
 import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
@@ -35,7 +32,7 @@ export class BomDialogComponent {
         parentId:         [0],
         childId:          [0, Validators.required],
         qty:              [0, [Validators.required, Validators.min(1)]],
-        price:            [0, [Validators.required, Validators.min(1)]],
+        price:            [0],
         childRef:         [null],
         childDescription: [null]
     });
