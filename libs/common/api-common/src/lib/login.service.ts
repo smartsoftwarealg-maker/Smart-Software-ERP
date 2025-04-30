@@ -244,7 +244,10 @@ export class LoginService {
               this.appCtx = info.ctx;
               //const url = this.appCtx?.center ? INDEX_PAGE_URL : CENTER_SELECT_URL;
               //this.#router.navigate(['/' + CENTER_SELECT_URL]);
-              this.resetCode(info.ctx.agentId);
+              this.resetCode(info.ctx.agentId).subscribe((res) => {
+                  const url = res.code != "" ? UPDATE_PASSWORD_URL : CENTER_SELECT_URL
+                  this.#router.navigate(['/' + url]);
+              });
               if (onFinish != null) {
                   onFinish();
               }
@@ -313,11 +316,9 @@ export class LoginService {
         return this.#httpSrv.post('/verified');
     }
 
-    private resetCode(agent: number) {
-        this.#httpSrv.get<{code:string}>(`/agents/${agent}/reset-code`).subscribe((res) => {
-            const url = res.code != "" ? UPDATE_PASSWORD_URL : CENTER_SELECT_URL
-            this.#router.navigate(['/' + url]);
-        });
+    public resetCode(agent: number) {
+        return this.#httpSrv.get<{code:string}>(`/agents/${agent}/reset-code`);
     }
+
 
 }
