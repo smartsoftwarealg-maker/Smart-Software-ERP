@@ -1,5 +1,5 @@
-import { Component, computed, inject, Inject, OnInit, signal } from '@angular/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { Component, computed, DestroyRef, inject, Inject, OnInit, signal } from '@angular/core';
+import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule, PaginationModel } from '@ss/common/api-common';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 import { KeepOnToolbar, ShellService, SnackBarService, ToolbarButton } from '@ss/common/ui-shell';
@@ -9,6 +9,9 @@ import { Match, MBalanace } from './api/matching.api';
 import { PaginationComponent } from '@ss/common/ui-pagination';
 import { Sort } from '@angular/material/sort';
 import { DecimalPipe } from '@angular/common';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { debounceTime } from 'rxjs';
+import { distinctUntilChanged } from 'rxjs/operators';
 
 @Component({
     selector: 'ss-doc-import',
@@ -26,6 +29,7 @@ import { DecimalPipe } from '@angular/common';
     ]
 })
 export class TransactionMatchingComponent implements OnInit {
+    #destroyRef = inject(DestroyRef);
     #snackBarSrv = inject(SnackBarService);
     #route = inject(ActivatedRoute);
     #shellSrv = inject(ShellService);
@@ -42,10 +46,13 @@ export class TransactionMatchingComponent implements OnInit {
         click: () => this.refresh(this.#searchText || '')
     };
 
+    accountNo = new FormControl<string|null>(null);
+    // creditAccount = new FormControl<string|null>(null);
+
     UNMATCHED_MODE = 1;
     MATCHED_MODE = 2;
-    displayedColumns = ['customerCode', 'customerName', 'accountNo', 'description', 'reference', 'matchKey', 'debit', 'credit'];
-    creditColumns = ['customerCode', 'description', 'matchKey', 'debit', 'credit', 'matchBtn'];
+    displayedColumns = ['customerCode', 'customerName', 'accountNo', 'description',  'matchKey', 'debit', 'credit'];
+    creditColumns = ['customerCode',  'description', 'matchKey', 'debit', 'credit', 'matchBtn'];
     debits: MBalanace[] = [];
     credits: MBalanace[] = [];
     debitPaginator = PaginationModel.newInstance({ pageSize: 5, page: 1, elementCount: 0 });
@@ -67,6 +74,13 @@ export class TransactionMatchingComponent implements OnInit {
         this.#shellSrv.updateShell();
         this.debitPaginator.onChange = () => this.refreshDebit();
         this.creditPaginator.onChange = () => this.refreshCredit();
+        this.accountNo
+            .valueChanges
+            .pipe(
+                debounceTime(300),
+                distinctUntilChanged(),
+                takeUntilDestroyed(this.#destroyRef)
+            ).subscribe((value) => this.refresh(this.#searchText));
     }
 
     private refresh(str: string) {
@@ -81,7 +95,7 @@ export class TransactionMatchingComponent implements OnInit {
         const orderBy = col ? `${direction}${col}` : null;
         const obs = this.mode() === this.MATCHED_MODE ?
             this.#matchingSrv.creditorMatches(this.creditPaginator.page - 1, this.creditPaginator.pageSize, this.selectedDebit()?.customerCode, null, orderBy) :
-            this.#matchingSrv.credits(this.creditPaginator.page - 1, this.creditPaginator.pageSize, this.selectedDebit()?.customerCode, null, orderBy);
+            this.#matchingSrv.credits(this.creditPaginator.page - 1, this.creditPaginator.pageSize, this.accountNo.value, this.selectedDebit()?.customerCode, null, orderBy);
         obs.subscribe(res => {
             this.credits = res.body;
             this.creditPaginator.elementCount = res.itemCount;
@@ -94,7 +108,7 @@ export class TransactionMatchingComponent implements OnInit {
         const orderBy = col ? `${direction}${col}` : null;
         const obs = this.mode() === this.MATCHED_MODE ?
             this.#matchingSrv.debtorMatches(this.debitPaginator.page - 1, this.debitPaginator.pageSize, this.#searchText, orderBy) :
-            this.#matchingSrv.debits(this.debitPaginator.page - 1, this.debitPaginator.pageSize, this.#searchText, orderBy);
+            this.#matchingSrv.debits(this.debitPaginator.page - 1, this.debitPaginator.pageSize, this.accountNo.value, this.#searchText, orderBy);
 
         obs.subscribe(res => {
             this.debits = res.body;

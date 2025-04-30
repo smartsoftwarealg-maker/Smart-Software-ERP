@@ -1,19 +1,22 @@
 .size {
     width: 90%;
-    max-width: 1400px;
+    max-width: 1700px;
     margin: 0 auto;
     padding: 4px;
 }
 .radio__div {
     display: flex;
     justify-content: center;
+    align-items: center;
+    gap: 1em;
 }
 .div__table {
     display: flex;
     flex-direction: column;
     gap: 5px;
     overflow: auto;
-    height: calc(40% - 64px);
+    height: calc(40% - 100px);
+    min-height: 250px;
 }
 
 .main-table {
@@ -27,21 +30,22 @@
     justify-content: flex-end;
 }
 
-.mat-column-description,
+.mat-column-description {
+    flex: 2 1 300px;
+}
 .mat-column-customerName {
-    flex: 2 1 200px;
+    flex: 1 1 180px;
 }
 
 .mat-column-accountNo,
 .mat-column-reference,
 .mat-column-customerCode,
 .mat-column-matchKey {
-    flex: 1 1 100px;
-    justify-content: center;
+    flex: 1 1 80px;
 }
 
 .mat-column-matchBtn {
-    flex: 1 1 50px;
+    flex: 0 1 50px;
 }
 
 mat-table {

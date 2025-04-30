@@ -39,7 +39,7 @@ export class AppComponent implements OnInit {
 
     ngOnInit() {
         this.#loginSrv.customerLogin = LoginType.CUSTOMER;
-        this.#shellSrv.setApplicationTitle('Customer Space 2.0');
+        this.#shellSrv.setApplicationTitle('Customer Space 2.1');
         this.#httpSrv
             .init()
             .pipe(
