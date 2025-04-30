@@ -23,6 +23,7 @@ import { CustomErrorHandler } from '@ss/common/ui-error-handler';
 import { LoginComponent } from '@ss/common/ui-login';
 import { CenterSelectComponent } from '@ss/common/ui-center-select';
 import { Auth2FAConfirmationComponent, PasswordUpdateComponent } from '@ss/auth-2fa';
+import { restCodeGuard } from '../customer-guards';
 
 const routes: Routes = [
     {
@@ -44,7 +45,7 @@ const routes: Routes = [
     },
     { path: LOGIN_URL, component: LoginComponent },
     { path: CENTER_SELECT_URL, component: CenterSelectComponent },
-    { path: UPDATE_PASSWORD_URL, component: PasswordUpdateComponent },
+    { path: UPDATE_PASSWORD_URL, component: PasswordUpdateComponent, canDeactivate:[restCodeGuard] },
     { path: AUTH_2FA_URL, component: Auth2FAConfirmationComponent },
     { path: '', redirectTo: LOGIN_URL, pathMatch: 'full' },
     { path: '**', redirectTo: LOGIN_URL, pathMatch: 'full' }
