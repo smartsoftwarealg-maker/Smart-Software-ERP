@@ -1,0 +1,20 @@
+.container {
+    width: 98%;
+    height: 100%;
+    max-width: 300px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.mat-column-period {
+    flex: 1 0 150px;
+    border-left: white thin solid;
+}
+
+.mat-column-closed {
+    flex: 1 1 100px;
+    border-left: white thin solid;
+    justify-content: center;
+}

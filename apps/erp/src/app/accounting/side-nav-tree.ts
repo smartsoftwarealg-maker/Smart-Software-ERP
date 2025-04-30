@@ -2,7 +2,7 @@ import {SideNavNode} from '@ss/common/api-common';
 import {
     ABS_ACC_ACCOUNT_URL,
     ABS_ACC_ASSET_ACCOUNT_URL,
-    ABS_ACC_CASHFLOW_ACCOUNT_URL,
+    ABS_ACC_CASHFLOW_ACCOUNT_URL, ABS_ACC_CLOSED_PERIODS_URL,
     ABS_ACC_DASHBOARD_URL,
     ABS_ACC_F12_URL,
     ABS_ACC_F13_URL,
@@ -52,6 +52,12 @@ export const accountingNavTree: SideNavNode = {
             name: 'ACC_PERIOD_SELECTION',
             icon: 'fa-solid fa-folder-open',
             route: ABS_ACC_PERIOD_SELECTION_URL,
+            accessRights: 'ACCFile'
+        },
+        {
+            name: 'ACC_CLOSED_PERIODS',
+            icon: 'fa-solid fa-ballot-check',
+            route: ABS_ACC_CLOSED_PERIODS_URL,
             accessRights: 'ACCFile'
         },
         {
