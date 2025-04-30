@@ -1,0 +1,25 @@
+@if (data){
+    <div class="container">
+        <mat-table mat-table [dataSource]="data" class="main-table">
+
+            <ng-container matColumnDef="period">
+                <mat-header-cell *matHeaderCellDef translate>COMMON_PERIOD</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{ langSrv.getMonth(e.period) }}
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="closed">
+                <mat-header-cell *matHeaderCellDef translate>ACC_CLOSED</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    <mat-checkbox [class.mat-checkbox-disabled]="false"
+                                  [checked]="e.closed" (change)="closePeriod($event.checked)"></mat-checkbox>
+                </mat-cell>
+            </ng-container>
+
+            <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+            <mat-row class="selectable" (mousedown)="selectRow(row)"
+                     *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        </mat-table>
+    </div>
+}

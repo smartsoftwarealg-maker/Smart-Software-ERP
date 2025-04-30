@@ -85,6 +85,8 @@
     "MATCHED":                  "Correspondant",
     "UNMATCHED":                "Non correspondant",
     "JOIN_TRANSACTIONS":        "Joindre les transactions",
-    "FREE_TRANSACTION":         "Transaction libre"
+    "FREE_TRANSACTION":         "Transaction libre",
+    "CLOSED_PERIODS":           "Périodes de fermeture",
+    "CLOSED":                   "Fermée"
 }
 
