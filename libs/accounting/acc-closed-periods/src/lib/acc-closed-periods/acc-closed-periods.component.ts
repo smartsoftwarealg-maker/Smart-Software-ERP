@@ -42,7 +42,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     standalone: true,
 })
 export class AccClosedPeriodsComponent {
-    public route: ActivatedRoute;
+    private route = inject(ActivatedRoute);
     public httpSrv = inject(HttpService);
     public shellSrv = inject(ShellService);
     public snackBarSrv = inject(SnackBarService);
@@ -56,7 +56,7 @@ export class AccClosedPeriodsComponent {
 
     ngOnInit() {
         this.shellSrv.setTitle('ACC_CLOSED_PERIODS');
-        this.shellSrv.setGoBackPath('../..', this.route);
+        this.shellSrv.setGoBackPath('..', this.route);
         this.closedPeriodSrv.list().subscribe({
             next: (res) => {
                 this.data = res;

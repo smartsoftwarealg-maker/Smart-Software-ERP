@@ -13,11 +13,13 @@ export class TransactionMatchingService extends BaseEntityService<MBalanace> {
         super(httpSrv, '/accounting/matching');
     }
 
-    debits(pae: number, size: number, filter?: string, sort?: string): Observable<{itemCount: number, body: MBalanace[]}> {
-        return this.httpSrv.getData(`/accounting/matching/debits`, pae, size, filter, sort);
+    debits(pae: number, size: number, accountNo?: string, filter?: string, sort?: string): Observable<{itemCount: number, body: MBalanace[]}> {
+        const params = accountNo? new HttpParams().set('accountNo', accountNo) : null;
+        return this.httpSrv.getData(`/accounting/matching/debits`, pae, size, filter, sort, params);
     }
 
-    debtorMatches(pae: number, size: number, filter?: string, sort?: string): Observable<{itemCount: number, body: MBalanace[]}> {
+    debtorMatches(pae: number, size: number, accountNo?: string, filter?: string, sort?: string): Observable<{itemCount: number, body: MBalanace[]}> {
+        // const params = accountNo? new HttpParams().set('accountNo', accountNo) : null;
         return this.httpSrv.getData(`/accounting/matching/debit-matches`, pae, size, filter, sort);
     }
 
@@ -26,9 +28,10 @@ export class TransactionMatchingService extends BaseEntityService<MBalanace> {
         return this.httpSrv.getData(`/accounting/matching/credit-matches`, pae, size, filter, sort, params);
     }
 
-    credits(pae: number, size: number, customer?: string, filter?: string, sort?: string): Observable<{itemCount: number, body: MBalanace[]}> {
+    credits(pae: number, size: number, account?: string, customer?: string, filter?: string, sort?: string): Observable<{itemCount: number, body: MBalanace[]}> {
         const params = customer? new HttpParams().set('customer', customer) : null;
-        return this.httpSrv.getData(`/accounting/matching/credits`, pae, size, filter, sort, params);
+        const params2 = account? (params||new HttpParams()).set('account', account) : params;
+        return this.httpSrv.getData(`/accounting/matching/credits`, pae, size, filter, sort, params2);
     }
 
     join(match: Match): Observable<{ count: number}> {

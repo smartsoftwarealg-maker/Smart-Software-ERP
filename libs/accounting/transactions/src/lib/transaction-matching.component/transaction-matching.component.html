@@ -1,9 +1,15 @@
 <div class="size radio__div">
+    <mat-form-field appearance="fill">
+        <mat-label translate>LOGISTICS_ACCOUNT_NO</mat-label>
+        <input matInput type="text" [formControl]="accountNo">
+    </mat-form-field>
+
     <mat-radio-group (change)="toggleMode()">
         <mat-radio-button [value]="1" [checked]="mode() === UNMATCHED_MODE" translate>ACC_UNMATCHED
         </mat-radio-button>
         <mat-radio-button [value]="2" translate>ACC_MATCHED</mat-radio-button>
     </mat-radio-group>
+
 </div>
 <div class="div__table size">
     <mat-table mat-table [dataSource]="debits" class="main-table" matSort (matSortChange)="sortDebit($event)">
@@ -66,7 +72,7 @@
 
         <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
         <mat-row class="selectable"
-                 [class.selected]="row.id === selectedDebit()?.id && row.description === selectedDebit()?.description"
+                 [class.selected]="row.id === selectedDebit()?.id && row.lineNumber === selectedDebit()?.lineNumber"
                  (click)="selectDebit(row)"
                  *matRowDef="let row; columns: displayedColumns;">
         </mat-row>
@@ -81,6 +87,13 @@
             <mat-header-cell *matHeaderCellDef mat-sort-header translate>LOGISTICS_CUSTOMER_CODE</mat-header-cell>
             <mat-cell *matCellDef="let e">
                 {{ e.customerCode }}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="accountNo">
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_ACCOUNTNO</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{ e.accountNo }}
             </mat-cell>
         </ng-container>
 
@@ -132,7 +145,7 @@
         </ng-container>
 
         <mat-header-row *matHeaderRowDef="creditColumns; sticky: true"></mat-header-row>
-        <mat-row class="selectable" [class.selected]="row.id === selectedCredit()?.id" (click)="selectCredit(row)"
+        <mat-row class="selectable" [class.selected]="row.id === selectedCredit()?.id && row.lineNumber === selectedDebit()?.lineNumber" (click)="selectCredit(row)"
                  *matRowDef="let row; columns: creditColumns;">
         </mat-row>
     </mat-table>
