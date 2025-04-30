@@ -85,5 +85,7 @@
     "MATCHED":                  "Matched",
     "UNMATCHED":                "Unmatched",
     "JOIN_TRANSACTIONS":        "Join transactions",
-    "FREE_TRANSACTIONS":        "Free transactions"
+    "FREE_TRANSACTIONS":        "Free transactions",
+    "CLOSED_PERIODS":           "Closed periods",
+    "CLOSED":                   "Closed"
 }

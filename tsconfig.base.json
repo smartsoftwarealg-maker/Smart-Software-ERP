@@ -76,6 +76,9 @@
             "@social/social-works-list": [
                 "libs/social/social-works-list/src/index.ts"
             ],
+            "@ss/accounting/acc-closed-periods": [
+                "libs/accounting/acc-closed-periods/src/index.ts"
+            ],
             "@ss/accounting/acc-policies": [
                 "libs/accounting/acc-policies/src/index.ts"
             ],

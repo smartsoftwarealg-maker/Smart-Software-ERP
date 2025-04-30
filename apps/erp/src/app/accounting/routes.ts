@@ -17,7 +17,7 @@ import {
     COMMON_ACCOUNT_URL,
     COMMON_REPORTS_URL, DASHBOARD_URL,
     GENERATION_ACCOUNT_URL,
-    TRANSAC_ACCOUNT_URL
+    TRANSAC_ACCOUNT_URL, ACC_CLOSED_PERIODS_URL
 } from '../common';
 import {ABS_INDEX_URL, CanDeactivateService, LIST_URL} from '@ss/common/api-common';
 import {AccPoliciesComponent} from '@ss/accounting/acc-policies';
@@ -64,6 +64,7 @@ import {
 } from '@ss/accounting/balance-tables';
 import { DashboardComponent } from '@ss/dashboard';
 import { ConsolidationCentersDetailComponent, ConsolidationCentersListComponent } from '@ss/accounting/consolidation';
+import { AccClosedPeriodsComponent } from '@ss/accounting/acc-closed-periods';
 
 export const accRoutes: Routes = [
     {
@@ -409,6 +410,11 @@ export const accRoutes: Routes = [
             {path: '', redirectTo: LIST_URL, pathMatch: 'full'},
             {path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full'}
         ]
+    },
+    {
+        path: ACC_CLOSED_PERIODS_URL,
+        component: AccClosedPeriodsComponent,
+        canActivate: [loginGuard]
     },
 
     {path: '', redirectTo: ABS_INDEX_URL, pathMatch: 'full'},

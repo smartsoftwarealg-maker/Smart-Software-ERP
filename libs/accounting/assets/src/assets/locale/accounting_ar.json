@@ -84,5 +84,8 @@
     "MATCH_KEY":                "مفتاح الربط",
     "MATCHED":                  "مربوط",
     "UNMATCHED":               "غير مربوط",
-    "JOIN_TRANSACTION":        "اربط الصفقتين"
+    "JOIN_TRANSACTION":        "اربط الصفقتين",
+    "CLOSED_PERIODS":           "الفترات المغلقة",
+    "CLOSED":                   "إغلاق"
+
 }

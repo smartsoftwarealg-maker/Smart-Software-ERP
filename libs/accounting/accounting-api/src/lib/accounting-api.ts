@@ -263,3 +263,10 @@ export interface Balance {
     debit:       number;
     credit:      number;
 }
+
+export interface ClosedPeriod {
+    id:   number;
+    fileId: string;
+    period:   number;
+    closed: boolean;
+}
