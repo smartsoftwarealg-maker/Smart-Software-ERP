@@ -414,7 +414,7 @@ export const accRoutes: Routes = [
     {
         path: ACC_CLOSED_PERIODS_URL,
         component: AccClosedPeriodsComponent,
-        canActivate: [loginGuard]
+        canActivate: [loginGuard, accountingGuard]
     },
 
     {path: '', redirectTo: ABS_INDEX_URL, pathMatch: 'full'},

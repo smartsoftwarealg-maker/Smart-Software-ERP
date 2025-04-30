@@ -1,20 +1,21 @@
 .container {
     width: 98%;
-    height: 100%;
-    max-width: 300px;
-    margin: 0 auto;
+    height: calc(100% - 2em);
+    max-width: 400px;
+    margin: 1em auto;
     display: flex;
     flex-direction: column;
 }
 
 
 .mat-column-period {
-    flex: 1 0 150px;
+    flex: 1 2 170px;
     border-left: white thin solid;
 }
 
 .mat-column-closed {
     flex: 1 1 100px;
     border-left: white thin solid;
+    border-right: white thin solid;
     justify-content: center;
 }
