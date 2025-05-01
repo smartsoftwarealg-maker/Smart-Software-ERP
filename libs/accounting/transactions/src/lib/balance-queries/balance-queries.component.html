@@ -161,6 +161,15 @@
                 <td class="value">{{ (selectionTotal()?.debit - selectionTotal()?.credit > 0 ? selectionTotal()?.debit - selectionTotal().credit : 0)|number: '1.2-2' }}</td>
                 <td><span class="label" translate>ACC_CREDIT</span>:</td>
                 <td class="value">{{ (selectionTotal()?.debit - selectionTotal()?.credit < 0 ? selectionTotal()?.credit - selectionTotal().debit : 0)|number: '1.2-2' }}</td>
+                <td class="excel__btn">
+                    <button mat-raised-button
+                            color="primary"
+                            type="button"
+                            (click)="generateExcel()">
+                        <i class="fa-solid fa-file-excel"></i>
+                        {{ 'COMMON_EXCEL_EXPORT' | translate }}
+                    </button>
+                </td>
             </tr>
         </table>
         <div class="table__div">

@@ -29,6 +29,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
 export class BankListComponent extends BaseEntityListComponent<Bank> {
 
     displayedColumns = [
+        'id',
         'description',
         'code'
     ];

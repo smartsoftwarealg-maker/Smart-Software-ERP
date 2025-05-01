@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import {switchMap} from 'rxjs/operators';
 import {ArchiveService} from '../archive.service';
@@ -22,14 +22,15 @@ import { ReactiveFormsModule } from '@angular/forms';
     ]
 })
 export class ArchiveViewerComponent implements OnInit {
+    private router  = inject(Router);
+    private route  = inject(ActivatedRoute);
+    private service  = inject(ArchiveService);
+    private shellSrv  = inject(ShellService);
+    private langSrv  = inject(LanguageService);
     imgSrc: string = null;
     title = 'WAR_ARCHIVE';
 
-    constructor(private router: Router,
-              private route: ActivatedRoute,
-              private service: ArchiveService,
-              private shellSrv: ShellService,
-              private langSrv: LanguageService) {
+    constructor() {
         this.route
             .params
             .pipe(switchMap(params =>
@@ -48,7 +49,7 @@ export class ArchiveViewerComponent implements OnInit {
 
 
     close() {
-        this.router.navigate(['../arch'], { relativeTo: this.route });
+        this.router.navigate(['../arch'], { relativeTo: this.route }).then();
     }
 
     ngOnInit() {

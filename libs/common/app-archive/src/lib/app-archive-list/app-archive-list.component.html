@@ -1,32 +1,30 @@
 <div class="container">
-    <div class="content_div" >
-        <div class="tool_bar " >
-<!--            <mat-label translate>COMMON_ARCHIVE</mat-label>-->
-            <div class="buttons" *ngIf="isEditable">
-                @if (activePersonnelSrv.val){
-                    <button mat-mini-fab
-                        color="primary"
-                        (click)="showDetail('0')"
-                        type="button">
-                        <span class="fas fa-plus"></span>
-                    </button>
-                }
-                <button mat-mini-fab (click)="edit()"
-                        [disabled]="!selectedId"
-                        [matTooltip]="'COMMON_EDIT' | translate"
-                        type="button"
-                        color="accent">
-                    <span class="fas fa-pen"></span>
-                </button>
-                @if (activePersonnelSrv.val){
-                    <button mat-mini-fab (click)="deleteSelected()" [matTooltip]="'COMMON_DELETE' | translate"
+    <div class="content_div">
+        <div class="tool_bar ">
+            <!--            <mat-label translate>COMMON_ARCHIVE</mat-label>-->
+            @if (isEditable) {
+                <div class="buttons">
+                        <button mat-mini-fab
+                                color="primary"
+                                (click)="showDetail('0')"
+                                type="button">
+                            <span class="fas fa-plus"></span>
+                        </button>
+                    <button mat-mini-fab (click)="edit()"
                             [disabled]="!selectedId"
+                            [matTooltip]="'COMMON_EDIT' | translate"
                             type="button"
-                            color="warn">
-                        <span class="fas fa-trash-alt"></span>
+                            color="accent">
+                        <span class="fas fa-pen"></span>
                     </button>
-                }
-            </div>
+                        <button mat-mini-fab (click)="deleteSelected()" [matTooltip]="'COMMON_DELETE' | translate"
+                                [disabled]="!selectedId"
+                                type="button"
+                                color="warn">
+                            <span class="fas fa-trash-alt"></span>
+                        </button>
+                </div>
+            }
         </div>
 
         <div class="list_div">
@@ -35,14 +33,14 @@
                 <ng-container matColumnDef="filename">
                     <mat-header-cell *matHeaderCellDef translate>ADMINISTRATION_FILENAME</mat-header-cell>
                     <mat-cell *matCellDef="let e">
-                        {{e.filename}}
+                        {{ e.filename }}
                     </mat-cell>
                 </ng-container>
 
                 <ng-container matColumnDef="docDescription">
                     <mat-header-cell *matHeaderCellDef translate>ADMINISTRATION_DESCRIPTION</mat-header-cell>
                     <mat-cell *matCellDef="let e">
-                        {{e.docDescription}}
+                        {{ e.docDescription }}
                     </mat-cell>
                 </ng-container>
 
@@ -59,6 +57,6 @@
              [alt]="'image'"
              class="clickable"
              (dblclick)="onClick($event)"
-             [matTooltip]="'COMMON_DOUBLE_CLICK_OPEN' | translate"/>
+             [matTooltip]="'COMMON_DOUBLE_CLICK_OPEN' | translate" />
     </div>
 </div>

@@ -34,14 +34,15 @@ export class AppArchiveDetailComponent implements OnInit {
     private withQueryParams = false;
     private fb = inject(FormBuilder);
     private documentSrv =  inject(AppArchiveDocumentService);
+    private service = inject( AppArchiveService);
+    private router = inject( Router);
+    private route = inject( ActivatedRoute);
+    private snackBarSrv = inject( SnackBarService);
+
     documentAutoCompleteModel     = new DefaultAutoCompleteModel(this.documentSrv);
     uploadUtil: ImageUploaderUtil = new ImageUploaderUtil();
     form: UntypedFormGroup        = null;
 
-    constructor(private service: AppArchiveService,
-                private router: Router,
-                private route: ActivatedRoute,
-                private snackBarSrv: SnackBarService) {}
 
     ngOnInit(): void {
         this.route

@@ -1,4 +1,4 @@
-import { Component, computed, effect, inject, OnInit, signal } from '@angular/core';
+import { Component, computed, DestroyRef, effect, inject, OnInit, signal } from '@angular/core';
 import {
     ACCTransactionLine,
     AccTransactionLineService,
@@ -13,8 +13,9 @@ import { ShellService } from '@ss/common/ui-shell';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { PaginationComponent } from '@ss/common/ui-pagination';
-import { TranslateDirective } from '@ss/common/ui-lang';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 import { Sort } from '@angular/material/sort';
+import { generate } from 'rxjs';
 
 
 
@@ -29,12 +30,18 @@ import { Sort } from '@angular/material/sort';
         MaterialModule,
         TranslateDirective,
         ReactiveFormsModule,
-        PaginationComponent
+        PaginationComponent,
+        TranslatePipe
     ]
 })
 export class BalanceQueriesComponent implements OnInit {
+    private destroyRef = inject(DestroyRef);
     private detailSrv = inject(AccTransactionLineService);
     private fb = inject(FormBuilder);
+    private querySrv  = inject(BalanceQueryService,);
+    private shellSrv  = inject(ShellService,);
+    private route  = inject(ActivatedRoute);
+
     public balancePaginator = PaginationModel.newInstance();
     public glPaginator      = PaginationModel.newInstance();
     public detailPaginator  = PaginationModel.newInstance();
@@ -95,9 +102,7 @@ export class BalanceQueriesComponent implements OnInit {
     glData: GL[] = [];
     detailData: ACCTransactionLine[] = [];
 
-    constructor(private querySrv: BalanceQueryService,
-                private shellSrv: ShellService,
-                private route: ActivatedRoute) {
+    constructor() {
         this.balancePaginator.onChange = () => this.refreshBalance();
         this.glPaginator.onChange = () => this.refreshGL();
         this.detailPaginator.onChange = () => this.refreshDetail();
@@ -113,6 +118,7 @@ export class BalanceQueriesComponent implements OnInit {
             consolidated: [false, Validators.required]
         });
         this.shellSrv.setGoBackPath('..', this.route);
+
     }
 
     refresh() {
@@ -198,4 +204,19 @@ export class BalanceQueriesComponent implements OnInit {
     }
 
     protected readonly math = Math;
+    protected readonly generate = generate;
+
+    protected generateExcel() {
+        this.querySrv
+            .exportToExcel(this.getParams())
+            .subscribe(blob => {
+                if (blob && blob.size > 100) {
+                    const link = document.createElement('a');
+                    link.href = window.URL.createObjectURL(blob);
+                    link.download = this.querySrv.constructor.name + '.xlsx';
+                    link.click();
+                    setTimeout(() => window.URL.revokeObjectURL(link.href), 5000);
+                }
+        });
+   }
 }
