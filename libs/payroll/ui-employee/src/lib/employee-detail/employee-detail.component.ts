@@ -1,6 +1,15 @@
 import { Component, inject, signal } from '@angular/core';
 import {EmployeeService} from '@ss/employee-services/employee-services';
-import { AbstractControl, UntypedFormArray, UntypedFormBuilder, UntypedFormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {
+    AbstractControl,
+    UntypedFormArray,
+    UntypedFormBuilder,
+    UntypedFormGroup,
+    Validators,
+    FormsModule,
+    ReactiveFormsModule,
+    ValidatorFn
+} from '@angular/forms';
 import { ActivatedRoute, Router, RouterEvent, RouterOutlet } from '@angular/router';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ImageModel} from '@ss/common/ui-image-input';
@@ -135,6 +144,14 @@ export class EmployeeDetailComponent extends BaseEntityDetailComponent<Employee>
         ACTIVATION_ROUTE_URL, //0
     ]
 
+    readonly MIN_DATE = new Date(new Date().getTime() - 16 * 366 * 24 * 60 * 60 * 1000);
+    readonly dateValidator: ValidatorFn = (control: AbstractControl): { [key: string]: any } | null => {
+        const date = new Date(control.value);
+        if (date == null || date.getTime() > this.MIN_DATE.getTime()) {
+            return { 'invalidDate': { value: control.value } };
+        }
+        return null;
+    }
     readonly ACTIVATION_ROUTE = 0;
     readonly CONTRACTS_ROUTE = 1;
     readonly CAREER_ROUTE = 2;
@@ -257,7 +274,7 @@ export class EmployeeDetailComponent extends BaseEntityDetailComponent<Employee>
             firstName:     [p.firstName, Validators.compose([Validators.required, Validators.maxLength(64)])],
             lastName:      [p.lastName, Validators.compose([Validators.required, Validators.maxLength(64)])],
             sex:           [p.sex||1, Validators.required],
-            birthDate:     [p.birthDate, Validators.required],
+            birthDate:     [p.birthDate, [Validators.required, this.dateValidator]],
             birthPlace:    [p.birthPlace, Validators.compose([Validators.required, Validators.maxLength(64)])],
             father:        [p.father, Validators.maxLength(64)],
             mother:        [p.mother, Validators.maxLength(64)],
