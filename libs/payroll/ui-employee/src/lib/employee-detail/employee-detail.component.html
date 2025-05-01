@@ -56,10 +56,13 @@
 
                             <mat-form-field class="default-25 sm-50">
                                 <mat-label translate>PAYROLL_BIRTH_DATE</mat-label>
-                                <ss-date-picker [required]=true formControlName="birthDate"></ss-date-picker>
-                                <mat-error *ngIf="form.controls['birthDate'].hasError('required')" translate>
-                                    COMMON_FIELD_REQUIRED
-                                </mat-error>
+                                <ss-date-picker [required]=true formControlName="birthDate" [maxDate]="MIN_DATE"></ss-date-picker>
+                                @if (form.controls['birthDate'].hasError('required')) {
+                                    <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+                                }
+                                @if (form.controls['birthDate'].hasError('invalidDate')) {
+                                    <mat-error translate>BL_INVALID_qDATE</mat-error>
+                                }
                             </mat-form-field>
 
                             <mat-form-field id="birthPlace" class="default-25 sm-50">

@@ -28,12 +28,12 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         CommonModule,
         MaterialModule,
         TranslateDirective,
-       
+
         ReactiveFormsModule,
         RouterModule,
-       
 
-       
+
+
         PaginationComponent
     ]
 })
@@ -186,18 +186,19 @@ export class ArchiveListComponent extends BaseEntityListComponent<ArchiveDocumen
     private viewDocument(doc: ArchiveDocument) {
         const docType = doc.metadata['docType'];
         if (docType.indexOf('jp') >= 0 || docType.indexOf('png') >= 0) {
-            this.router.navigate(['viewer', {id: doc._id}], {relativeTo: this.route});
+            this.router.navigate(['viewer', {id: doc._id}], {relativeTo: this.route}).then();
         } else {
-            this.service.getImage(doc._id).subscribe(blob => {
-                if (blob) {
-                    // saveAs(this.getBlob(blob, doc), this.getFileName(doc));
-                    const link = document.createElement('a');
-                    link.href = window.URL.createObjectURL(this.getBlob(blob, doc));
-                    link.download = this.getFileName(doc);
-                    link.click();
-                    setTimeout(() => window.URL.revokeObjectURL(link.href), 5000);
-                }
-            });
+            this.service
+                .getImage(doc._id)
+                .subscribe(blob => {
+                    if (blob) {
+                        const link = document.createElement('a');
+                        link.href = window.URL.createObjectURL(this.getBlob(blob, doc));
+                        link.download = this.getFileName(doc);
+                        link.click();
+                        setTimeout(() => window.URL.revokeObjectURL(link.href), 5000);
+                    }
+                });
         }
     }
 

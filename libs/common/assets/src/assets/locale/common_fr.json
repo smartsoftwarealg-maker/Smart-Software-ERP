@@ -373,5 +373,6 @@
     "PERIOD":             "Période",
     "HR_TABLES":          "Tables RH",
     "PRODUCTION":         "Production",
-    "UNSELECT_ALL":       "UNSELECT TOUS"
+    "UNSELECT_ALL":       "UNSELECT TOUS",
+    "UPDATED_BY":         "Etabli par"
 }

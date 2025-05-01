@@ -1,7 +1,7 @@
 <div class="container">
     <div class="img__container">
-        <div *ngFor="let arch of data"
-             class="img__item selectable"
+        @for (arch of data; track arch.id) {
+        <div class="img__item selectable"
              (click)="selectRow(arch)">
 
             <mat-toolbar color="primary" class="img__title">  {{ arch.metadata['description'] }} </mat-toolbar>
@@ -10,6 +10,7 @@
             </div>
             <div class="upload_date"><span translate>COMMON_DATE</span>: {{ arch.uploadDate | date: 'dd-mm-yyyy' }}</div>
         </div>
+        }
     </div>
     <div class="pagination-container b-b-background">
         <ss-pagination [paginationModel]="pagination"></ss-pagination>

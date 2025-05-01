@@ -70,6 +70,22 @@
                         </mat-cell>
                     </ng-container>
 
+                    <ng-container matColumnDef="userName">
+                        <mat-header-cell *matHeaderCellDef mat-sort-header [disabled]="!isRoot()" translate>COMMON_UPDATED_BY</mat-header-cell>
+                        <mat-cell *matCellDef="let e" [class.f-warn]="math.abs(e.debit - e.credit) > 0.01">
+                            {{ e.userName }}
+                        </mat-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="updateTime">
+                        <mat-header-cell *matHeaderCellDef mat-sort-header [disabled]="!isRoot()" translate>COMMON_TIME</mat-header-cell>
+                        <mat-cell *matCellDef="let e" [class.f-warn]="math.abs(e.debit - e.credit) > 0.01">
+                            {{ e.updateTime | date: 'dd/MM/yyyy HH:mm' }}
+                        </mat-cell>
+                    </ng-container>
+
+
+
                     <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
 
                     <ng-container matColumnDef="isBudget">

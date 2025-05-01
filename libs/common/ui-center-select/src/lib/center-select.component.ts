@@ -141,6 +141,7 @@ export class CenterSelectComponent implements OnInit {
                         // this.endLoading(); // don't show shit, because we are leaving anyway
                         const dest = !this.loginSrv.appCtx? PROFILE_PAGE_URL : INDEX_PAGE_URL;
                         this.shellSrv.setCompanyName(this.centerList.filter(c => c.id === this.selectedCenter)[0]?.description);
+                        this.loginSrv.appCtx.accPeriod = this.loginSrv.appCtx.accFile = 0;
                         this.router.navigate(['/' + dest]).then(() => {});
                     }, error: err => {
                         this.endLoading();

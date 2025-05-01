@@ -126,6 +126,7 @@ export class TransactionListComponent extends BaseEntityListComponent<ACCTransac
                 if (policy.showBudget) {
                     this.displayedColumns.push('isBudget');
                 }
+                this.displayedColumns.push('userName', 'updateTime');
             });
 
         this.subscriptions

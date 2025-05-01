@@ -36,11 +36,11 @@ export class AppArchiveListComponent implements OnInit {
     public activePersonnelSrv = inject(ActivePersonnelService);
 
     imgSrc: string | null = null;
+    selectedArchive: AppArchive | null = null;
     selectedId = 0;
     filename: string = null;
     data: AppArchive[] = [];
     paginator = PaginationModel.newInstance();
-    pdfSrc: string = null;
     displayedColumns = ['docDescription', 'filename'];
     isEditable = true;
 
@@ -149,6 +149,7 @@ export class AppArchiveListComponent implements OnInit {
     }
 
     select(a: AppArchive) {
+        this.selectedArchive = a;
         if (a) {
             this.selectedId = a.id || 0;
             if (a.filename?.indexOf('.pdf') > 1) {
@@ -173,7 +174,8 @@ export class AppArchiveListComponent implements OnInit {
             .image(this.selectedId)
             .subscribe(res => {
                 const pdfSrc = window.URL.createObjectURL(res);
-                window.open(pdfSrc);
+                const w = window.open(pdfSrc);
+                setTimeout(() => w.document.title = this.selectedArchive?.filename||'' + this.selectedId, 200);
                 window.URL.revokeObjectURL(pdfSrc);
             });
     }

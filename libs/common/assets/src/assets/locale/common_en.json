@@ -373,5 +373,6 @@
     "PERIOD":             "Period",
     "HR_TABLES":          "HR tables",
     "PRODUCTION":         "Production",
-    "UNSELECT_ALL":       "Unselect all"
+    "UNSELECT_ALL":       "Unselect all",
+    "UPDATED_BY":          "Updated by"
 }

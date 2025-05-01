@@ -62,7 +62,8 @@ export class JournalDetailComponent extends BaseEntityDetailComponent<Journal> {
         public override confirmationSrv: ConfirmationDialogService,
         public lookupsSrv: LookupsService) {
         super(entitySrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'COMMON_JOURNALS');
-        this.centerSrv.setParentId(this.loginSrv.appCtx.company);
+        this.centerSrv.setParentId(0);
+        // this.centerSrv.setParentId(this.loginSrv.appCtx.company);
     }
 
     public override setupForm(e: Journal): UntypedFormGroup {

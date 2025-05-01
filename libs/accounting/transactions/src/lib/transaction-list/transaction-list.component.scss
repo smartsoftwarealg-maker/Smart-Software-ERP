@@ -60,6 +60,8 @@
 
 .container_div {
     flex: 1 1 auto;
+    max-height: 19em;
+    min-width: 300px;
     overflow-x: auto;
 }
 
@@ -68,6 +70,13 @@
 }
 
 .mat-column-pieceNo {
+    flex: 1 1 80px;
+    border-left: white solid thin;
+    justify-content: center;
+}
+
+.mat-column-userName,
+.mat-column-updateTime {
     flex: 1 1 90px;
     border-left: white solid thin;
     justify-content: center;
@@ -79,7 +88,6 @@
     border-left: white solid thin;
 }
 
-.mat-column-pieceDate,
 .mat-column-isBudget {
     flex: 1 1 90px;
     border-left: white solid thin;
