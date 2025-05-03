@@ -36,8 +36,7 @@
                        [ngStyle]="{ 'width.px': mainTableWidth }">
 
                 <ng-container matColumnDef="photo">
-                    <mat-header-cell *matHeaderCellDef style="justify-content: center" translate>PAYROLL_PHOTO
-                    </mat-header-cell>
+                    <mat-header-cell *matHeaderCellDef style="justify-content: center" translate>PAYROLL_PHOTO</mat-header-cell>
                     <mat-cell *matCellDef="let e">
                         <div class="person-photo">
                             <ss-image-input width="60px" height="76px"
@@ -77,8 +76,8 @@
                 </ng-container>
 
                 <ng-container *ngFor="let c of infoSrv.dataCols; let i = index"
-                              matColumnDef="{{ infoSrv.dataCols[i].field }}">
-                    <mat-header-cell *matHeaderCellDef>{{ infoSrv.dataCols[i].description }}</mat-header-cell>
+                              matColumnDef="{{ c.field }}">
+                    <mat-header-cell *matHeaderCellDef>{{ c.description }}</mat-header-cell>
                     <mat-cell *matCellDef="let e" class="number-cell">
                         {{ e.elements[i] | number: '1.2-2' }}
                     </mat-cell>
