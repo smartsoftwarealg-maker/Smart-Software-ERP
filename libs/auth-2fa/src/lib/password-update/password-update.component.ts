@@ -38,9 +38,11 @@ export class PasswordUpdateComponent implements OnInit {
     private agentSrv = inject(AgentService);
     private fb = inject(FormBuilder);
 
+    public minLength = 4
+
     form = this.fb.group({
-        password: ['', Validators.required],
-        confirmation: ['', Validators.required],
+        password: ['', Validators.minLength(this.minLength)],
+        confirmation: ['', Validators.minLength(this.minLength)],
     });
 
     ngOnInit() {
@@ -54,33 +56,33 @@ export class PasswordUpdateComponent implements OnInit {
 
         if (value.password === value.confirmation) {
             this.agentSrv
-                .updatePassword({
-                    id: 0,
-                    agentId: this.loginSrv.appCtx.agentId,
-                    password: value.password,
-                })
-                .pipe(
-                    switchMap((res) =>
-                        res['count']
-                            ? this.loginSrv.refresh({
-                                  username: this.loginSrv.appCtx.userName,
-                                  password: value.password,
-                              })
-                            : of(null),
-                    ),
-                )
-                .subscribe((res) => {
-                    if (res) {
-                        this.snackBarSrv.showMessage(
-                            'COMMON_SUCCESS',
-                            false,
-                            false,
-                        );
-                        this.router.navigate(['/' + CENTER_SELECT_URL]).then();
-                    } else {
-                        this.snackBarSrv.showFailureMessage();
-                    }
-                });
+              .updatePassword({
+                  id: 0,
+                  agentId: this.loginSrv.appCtx.agentId,
+                  password: value.password,
+              })
+              .pipe(
+                switchMap((res) =>
+                  res['count']
+                    ? this.loginSrv.refresh({
+                        username: this.loginSrv.appCtx.userName,
+                        password: value.password,
+                    })
+                    : of(null),
+                ),
+              )
+              .subscribe((res) => {
+                  if (res) {
+                      this.snackBarSrv.showMessage(
+                        'COMMON_SUCCESS',
+                        false,
+                        false,
+                      );
+                      this.router.navigate(['/' + CENTER_SELECT_URL]).then();
+                  } else {
+                      this.snackBarSrv.showFailureMessage();
+                  }
+              });
         }
     }
 }
