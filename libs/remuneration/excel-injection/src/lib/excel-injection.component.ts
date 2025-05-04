@@ -41,6 +41,7 @@ export class ExcelInjectionComponent implements OnInit {
     }
 
     ngOnInit(): void {
+        this.shellSrv.setTitle('REMUN_EXCEL_INJECTION');
         this.monthSelectorSrv
             .isUpdatableMonth()
             .subscribe(upd => this.updatable = upd);
