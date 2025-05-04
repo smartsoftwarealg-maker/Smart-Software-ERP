@@ -41,6 +41,7 @@ export class PasswordUpdateComponent implements OnInit {
     public minLength = 4
 
     form = this.fb.group({
+        resetCode: ['', Validators.required],
         password: ['', Validators.minLength(this.minLength)],
         confirmation: ['', Validators.minLength(this.minLength)],
     });
@@ -49,6 +50,22 @@ export class PasswordUpdateComponent implements OnInit {
         if (!this.loginSrv?.appCtx?.agentId) {
             this.router.navigate(['/' + LOGIN_URL]); // when the page refresh appCtx is gone
         }
+    }
+
+    submit(): void {
+        this.loginSrv?.resetCode(this.loginSrv?.appCtx?.agentId).subscribe({
+            next: res => {
+                if (res.code == this.form.controls.resetCode.getRawValue()) {
+                    this.updatePassword()
+                }else {
+                    this.snackBarSrv.showFailureMessage('ADMINISTRATION_RESET_CODE_NOT_CORRECT');
+                }
+            },
+            error: err => {
+                this.snackBarSrv.showFailureMessage();
+                throw err;
+            }
+        })
     }
 
     updatePassword() {

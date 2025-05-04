@@ -88,5 +88,6 @@
     "PASSWORD_ENCODING": "Password encryption",
     "HASH": "Code",
     "ENCODE": "Encrypt",
-    "DECODE": "Decode"
+    "DECODE": "Decode",
+    "RESET_CODE_NOT_CORRECT": "Reset code not correct"
 }

@@ -88,5 +88,6 @@
     "PASSWORD_ENCODING": "Cryptage du mot de passe",
     "HASH": "Code",
     "ENCODE": "Crypter",
-    "DECODE": "Décoder"
+    "DECODE": "Décoder",
+    "RESET_CODE_NOT_CORRECT": "Le code de réinitialisation n'est pas correct"
 }
