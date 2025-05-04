@@ -15,7 +15,7 @@ export class ElementsEntryService extends BaseEntityService<ELine> {
     readonly FIXED_MODE = 2;
     readonly INFO_MODE = 3;
     inputFilter: InputFilter[] = [];
-    selectedInput = 5;
+    selectedInput = -1;
     selectionMode = 1;
     elements: ElementsInfo[] = [];
     dataCols: ElementsInfo[] = [];
@@ -57,7 +57,6 @@ export class ElementsEntryService extends BaseEntityService<ELine> {
         this.dataCols = this.elements
             .filter(e => selection.indexOf(e.field) >= 0 && e.fixed == isFixed && !infoMode)
             .sort((a, b) => a.description?.localeCompare(b.description) || -1) || [];
-        console.log('dataCols', this.dataCols);
         return this.dataCols;
     }
 

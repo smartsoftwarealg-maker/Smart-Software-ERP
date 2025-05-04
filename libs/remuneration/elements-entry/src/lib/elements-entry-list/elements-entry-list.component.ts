@@ -20,6 +20,7 @@ import { CommonModule } from "@angular/common";
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 import { PaginationComponent } from '@ss/common/ui-pagination';
 import { LeavePlanningCalculatorComponent } from '@ss/remuneration/vacation-planning';
+import { callback } from 'chart.js/helpers';
 
 @Component({
     selector: 'ss-elements-entry-list',
@@ -54,8 +55,8 @@ export class ElementsEntryListComponent extends BaseEntityListComponent<ELine> i
     commonElementsLookup = new DefaultAutoCompleteModel(this.commonFieldSrv, 'field');
     form: UntypedFormGroup = null;
     selectedTabIndex = signal(0);
-    mainTableWidth = 900;
-    slipTableWidth = 500;
+    mainTableWidth = 600;
+    slipTableWidth = 600;
 
     slipColumns      = ['description', 'base', 'rate', 'gain', 'deduction'];
     displayedColumns = ['photo', 'id', 'firstName', 'lastName', 'post'];
@@ -91,7 +92,7 @@ export class ElementsEntryListComponent extends BaseEntityListComponent<ELine> i
     override processLoadedData(data: ELine[]): Observable<ELine[]> {
         this.infoSrv.loadDataCols();
         const colList = this.infoSrv.colsList();
-        this.mainTableWidth = 900 + 120 * colList.length;
+        this.mainTableWidth = 600 + 150 * colList.length;
         this.displayedColumns = this.FIXED_COLS.concat(colList);
 
         const res = data.map(e => {
@@ -125,6 +126,12 @@ export class ElementsEntryListComponent extends BaseEntityListComponent<ELine> i
         this.refresh();
     }
 
+    refresh(callback?: () => void) {
+        if (this.infoSrv.selectedInput >= 0) {
+            super.refresh(callback);
+        }
+    }
+
     override select(id: number) {
         super.select(id);
         this.infoSrv.getSlip(id).subscribe(res => {
@@ -142,7 +149,7 @@ export class ElementsEntryListComponent extends BaseEntityListComponent<ELine> i
                     this.journalData = res.data;
                     this.headers = res.headers;
                     this.journalColumns = this.FIXED_JOURNAL_HEADERS.concat(res.headers);
-                    this.slipTableWidth = 600 + 120 * res.headers.length;
+                    this.slipTableWidth = 570 + 150 * res.headers.length;
                     this.shellSrv.setLoading(false);
                 });
         }

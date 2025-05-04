@@ -33,7 +33,7 @@ export class LtmAnomalyDetailComponent extends BaseEntityDetailComponent<LTMAnom
         public override route: ActivatedRoute,
         public override formBuilder: UntypedFormBuilder,
         public override confirmationSrv: ConfirmationDialogService) {
-        super(entitySrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'LTM_ANOMALIES');
+        super(entitySrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'COMMON_ANOMALIES');
     }
 
     public override setupForm(b: LTMAnomaly) {
