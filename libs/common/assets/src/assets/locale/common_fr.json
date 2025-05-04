@@ -374,5 +374,6 @@
     "HR_TABLES":          "Tables RH",
     "PRODUCTION":         "Production",
     "UNSELECT_ALL":       "UNSELECT TOUS",
-    "UPDATED_BY":         "Etabli par"
+    "UPDATED_BY":         "Etabli par",
+    "MISS_MATCH":         "Manque de correspondance"
 }

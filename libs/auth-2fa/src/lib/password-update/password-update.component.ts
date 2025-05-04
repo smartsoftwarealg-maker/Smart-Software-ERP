@@ -38,9 +38,12 @@ export class PasswordUpdateComponent implements OnInit {
     private agentSrv = inject(AgentService);
     private fb = inject(FormBuilder);
 
+    public minLength = 4
+
     form = this.fb.group({
-        password: ['', Validators.required],
-        confirmation: ['', Validators.required],
+        resetCode: ['', Validators.required],
+        password: ['', Validators.minLength(this.minLength)],
+        confirmation: ['', Validators.minLength(this.minLength)],
     });
 
     ngOnInit() {
@@ -49,38 +52,54 @@ export class PasswordUpdateComponent implements OnInit {
         }
     }
 
+    submit(): void {
+        this.loginSrv?.resetCode(this.loginSrv?.appCtx?.agentId).subscribe({
+            next: res => {
+                if (res.code == this.form.controls.resetCode.getRawValue()) {
+                    this.updatePassword()
+                }else {
+                    this.snackBarSrv.showFailureMessage('ADMINISTRATION_RESET_CODE_NOT_CORRECT');
+                }
+            },
+            error: err => {
+                this.snackBarSrv.showFailureMessage();
+                throw err;
+            }
+        })
+    }
+
     updatePassword() {
         const value = this.form.value;
 
         if (value.password === value.confirmation) {
             this.agentSrv
-                .updatePassword({
-                    id: 0,
-                    agentId: this.loginSrv.appCtx.agentId,
-                    password: value.password,
-                })
-                .pipe(
-                    switchMap((res) =>
-                        res['count']
-                            ? this.loginSrv.refresh({
-                                  username: this.loginSrv.appCtx.userName,
-                                  password: value.password,
-                              })
-                            : of(null),
-                    ),
-                )
-                .subscribe((res) => {
-                    if (res) {
-                        this.snackBarSrv.showMessage(
-                            'COMMON_SUCCESS',
-                            false,
-                            false,
-                        );
-                        this.router.navigate(['/' + CENTER_SELECT_URL]).then();
-                    } else {
-                        this.snackBarSrv.showFailureMessage();
-                    }
-                });
+              .updatePassword({
+                  id: 0,
+                  agentId: this.loginSrv.appCtx.agentId,
+                  password: value.password,
+              })
+              .pipe(
+                switchMap((res) =>
+                  res['count']
+                    ? this.loginSrv.refresh({
+                        username: this.loginSrv.appCtx.userName,
+                        password: value.password,
+                    })
+                    : of(null),
+                ),
+              )
+              .subscribe((res) => {
+                  if (res) {
+                      this.snackBarSrv.showMessage(
+                        'COMMON_SUCCESS',
+                        false,
+                        false,
+                      );
+                      this.router.navigate(['/' + CENTER_SELECT_URL]).then();
+                  } else {
+                      this.snackBarSrv.showFailureMessage();
+                  }
+              });
         }
     }
 }
