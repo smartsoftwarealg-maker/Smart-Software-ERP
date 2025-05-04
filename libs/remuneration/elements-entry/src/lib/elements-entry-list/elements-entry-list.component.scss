@@ -1,6 +1,6 @@
 .size_div {
     width: 96%;
-    max-width: 1400px;
+    max-width: 1600px;
     margin: 4px auto;
 }
 
@@ -20,10 +20,18 @@
 
 .journal__table {
     overflow-x: auto;
+
+    mat-row:last-child {
+        font-weight: bolder;
+        font-size: .9em;
+    }
+
 }
 
 .header_div {
     width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
     display: flex;
     gap: 8px;
     align-items: center;
@@ -65,7 +73,8 @@ mat-form-field {
 }
 
 .mat-column-photo {
-    flex: 1 1 80px;
+    flex: 0 0 80px;
+    border-left: gray solid 1px;
 }
 
 .the_tabs {
@@ -120,30 +129,29 @@ mat-table {
 }
 
 
-    //mat-header-cell {
-//    justify-content: center;
-//    min-width: 150px;
-//}
-
 
 .number-cell {
-    justify-content: flex-end;
-    padding: 0 5px;
+    justify-content: center;
+    flex: 1 1 140px;
+    padding-left: 2px;
+    border-left: gray solid 1px;
 }
 
 .mat-column-id {
-    flex: 1 1 70px;
-    max-width: 70px;
+    flex: 0 0 90px;
+    justify-content: center;
+    border-left: gray solid 1px;
 }
 
 .mat-column-lastName,
 .mat-column-firstName {
-    flex: 2 1 100px;
+    flex: 0 0  140px;
+    border-left: gray solid 1px;
 }
 
 .mat-column-post {
-    flex: 3 1 300px;
-    font-size: small;
+    flex:  0 0  200px;
+    border-left: gray solid 1px;
 }
 
 .collective {
@@ -191,10 +199,6 @@ mat-card {
     padding: .5em 0;
 }
 
-mat-row:last-child {
-    font-weight: bolder;
-    font-size: 1.1em;
-}
 
 
 .mat-column-description {
@@ -206,4 +210,9 @@ mat-row:last-child {
 .mat-column-gain,
 .mat-column-deduction {
     flex: 1 1 100px;
+}
+
+.mat-mdc-header-cell {
+    font-size: 0.8em;
+    border-left: gray solid 1px;
 }

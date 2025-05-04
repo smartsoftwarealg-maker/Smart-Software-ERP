@@ -15,7 +15,7 @@ export class ElementsEntryService extends BaseEntityService<ELine> {
     readonly FIXED_MODE = 2;
     readonly INFO_MODE = 3;
     inputFilter: InputFilter[] = [];
-    selectedInput = 5;
+    selectedInput = -1;
     selectionMode = 1;
     elements: ElementsInfo[] = [];
     dataCols: ElementsInfo[] = [];

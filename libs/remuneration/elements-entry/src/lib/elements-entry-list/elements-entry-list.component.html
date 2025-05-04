@@ -36,11 +36,12 @@
                        [ngStyle]="{ 'width.px': mainTableWidth }">
 
                 <ng-container matColumnDef="photo">
-                    <mat-header-cell *matHeaderCellDef style="justify-content: center" translate>PAYROLL_PHOTO
+                    <mat-header-cell *matHeaderCellDef style="justify-content: center; min-width: 50px" translate>
+                        PAYROLL_PHOTO
                     </mat-header-cell>
                     <mat-cell *matCellDef="let e">
                         <div class="person-photo">
-                            <ss-image-input width="60px" height="76px"
+                            <ss-image-input width="40px" height="50px"
                                             [imageModel]="e.imageModel"
                                             style="display: inline-block;">
                             </ss-image-input>
@@ -76,14 +77,14 @@
                     </mat-cell>
                 </ng-container>
 
-                <ng-container *ngFor="let c of infoSrv.dataCols; let i = index"
-                              matColumnDef="{{ infoSrv.dataCols[i].field }}">
-                    <mat-header-cell *matHeaderCellDef>{{ infoSrv.dataCols[i].description }}</mat-header-cell>
-                    <mat-cell *matCellDef="let e" class="number-cell">
-                        {{ e.elements[i] | number: '1.2-2' }}
-                    </mat-cell>
-                </ng-container>
-
+                @for (c of infoSrv.dataCols; track c.id; let i = $index) {
+                    <ng-container   matColumnDef="{{ c.field }}">
+                        <mat-header-cell *matHeaderCellDef>{{ c.description }}</mat-header-cell>
+                        <mat-cell *matCellDef="let e" class="number-cell">
+                            {{ e.elements[i] | number: '1.2-2' }}
+                        </mat-cell>
+                    </ng-container>
+                }
                 <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
                 <mat-row class="selectable" [class.selected]="row.id === selected" (click)="selectRow(row)"
                          *matRowDef="let row; columns: displayedColumns;"></mat-row>
@@ -154,7 +155,7 @@
 
                     <ng-container matColumnDef="deduction" class="slip__amount">
                         <mat-header-cell *matHeaderCellDef translate>REMUN_DEDUCTION</mat-header-cell>
-                        <mat-cell *matCellDef="let e" class="number-cell">
+                        <mat-cell *matCellDef="let e" class="number-cell" [class.total-cell]="e.id === 0">
                             {{ (e.value > 0.0 ? 0.0 : -e.value) | number: '1.2-2' }}
                         </mat-cell>
                     </ng-container>
@@ -229,12 +230,14 @@
                     </mat-cell>
                 </ng-container>
 
-                <ng-container *ngFor="let h of headers; let i = index;" matColumnDef="{{ h }}">
-                    <mat-header-cell *matHeaderCellDef translate>{{ h }}</mat-header-cell>
-                    <mat-cell *matCellDef="let e" class="number-cell" [class.total-cell]="e.id === 0">
-                        {{ e.data[i] | number: '1.2-2' }}
-                    </mat-cell>
-                </ng-container>
+                @for (h of headers; track h; let i = $index) {
+                    <ng-container matColumnDef="{{ h }}">
+                        <mat-header-cell *matHeaderCellDef translate>{{ h }}</mat-header-cell>
+                        <mat-cell *matCellDef="let e" class="number-cell">
+                            {{ e.data[i] | number: '1.2-2' }}
+                        </mat-cell>
+                    </ng-container>
+                }
 
                 <mat-header-row *matHeaderRowDef="journalColumns; sticky: true"></mat-header-row>
                 <mat-row [class.selectable]="row.id !== 0"
