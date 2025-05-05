@@ -51,7 +51,7 @@ export const DOC_ASSET_RECEPTION = 531;
 export const DOC_HOLIDAY_REQUEST = 3000;
 export const DOC_CONSUMPTION = 260;
 export const DOC_AUTO_DELIVERY = 268;
-export const DOC_STORE_TRANSFER_OUT = 269;
+export const DOC_INTER_STORE_TRANSFER = 269;
 export const DOC_IMPORT_RECEPTION = 514;
 export const DOC_ASSET_APPOINTMENT = 1010;
 export const DOC_ACCOUNTING_OPR = 4096;
@@ -132,6 +132,38 @@ export const VALUE_TYPES: Lookup[] = [
     { id: 2, description: 'COMMON_RATE' },
 ];
 
+export interface  InterStoreTransfer {
+    id: number;
+    center: number;
+    document: number;
+    number: number;
+    date: Date;
+    locked: boolean;
+    userId?: number;
+    header?: string;
+    footer?: string;
+    reference?: string;
+    dirty: boolean;
+    docStatus?: number;
+    creationTime: Date;
+    validated: boolean;
+}
+
+export interface InterStoreTransferLine {
+    id: number;
+    parentId: number;
+    rightId: number;
+    sourceRef: string;
+    sourceDescription: string;
+    sourceStore?:number;
+    qty: number;
+    destinationRef: string;
+    destinationDescription: string;
+    destinationStore?:number;
+}
+
 export const COSTS_URL = '/costs';
 export const TRANSACTIONS_URL = '/transactions';
 export const IMPORT_PURCHASE_URL = '/ireception';
+export const INTER_STORE_TRANSFER_URL = '/store-transfers';
+export const DETAIL_URL = '/detail';
