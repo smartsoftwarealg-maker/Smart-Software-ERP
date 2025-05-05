@@ -216,7 +216,11 @@ export class ReportViewComponent extends BaseEntityListComponent<ReportParam> im
                         this.writeThenOpenFile(res).then();
                     } else {
                         const w = window.open(URL.createObjectURL(res), '_blank');
-                        setTimeout(() => w.document.title = `${this.selectedReport.name.replace('.jasper', '')}.pdf`, 300);
+                        setTimeout(() => {
+                            if (w) {
+                                w.document.title = `${this.selectedReport.name.replace('.jasper', '')}.pdf`;
+                            }
+                        }, 300);
                         // this.pdfSrc = URL.createObjectURL(res);
                     }
                 } else {
