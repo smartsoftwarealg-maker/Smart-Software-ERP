@@ -214,13 +214,11 @@ export class ReportViewComponent extends BaseEntityListComponent<ReportParam> im
                     if (this.isAndroid) {
                         this.writeThenOpenFile(res).then();
                     } else {
-                        const w = window.open(URL.createObjectURL(res), '_blank');
-                        w.onload = () => setTimeout(() => {
-                            if (w) {
-                                w.document.title = `${this.selectedReport.name.replace('.jasper', '')}.pdf`;
-                            }
-                        }, 300);
-                        // this.pdfSrc = URL.createObjectURL(res);
+                        const wind = window.open(URL.createObjectURL(res), '_blank');
+                        wind.onload = (ev) => setTimeout(() => {
+                            (ev.currentTarget as Window).document.title = `${this.selectedReport.name.replace('.jasper', '')}.pdf`;
+                            // wind.document.title = `${this.selectedReport.name.replace('.jasper', '')}.pdf`;
+                        }, 300)
                     }
                 } else {
                     // this.htmlSrc = this.sanitizer.bypassSecurityTrustHtml(res);
@@ -231,7 +229,7 @@ export class ReportViewComponent extends BaseEntityListComponent<ReportParam> im
                                   <body>
                                     ${res}
                                   </body>
-                                </html>`
+                                </html>`;
                     window.open('_blank').document.write(report);
                 }
                 this.generating = false;
@@ -246,6 +244,7 @@ export class ReportViewComponent extends BaseEntityListComponent<ReportParam> im
                 return loop;
             }
         });
+
     }
 
     getMimeType(): string {
