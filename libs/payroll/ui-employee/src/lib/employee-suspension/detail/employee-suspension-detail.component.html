@@ -1,0 +1,59 @@
+@if (form) {
+    <div class="button_div size">
+        @if (isEditable) {
+            <button mat-mini-fab (click)="save()"
+                    color="accent">
+                <i class="fas fa-save"></i>
+            </button>
+        }
+        <button mat-mini-fab (click)="cancel()"
+                color="warn">
+            <i class="fas fa-redo"></i>
+        </button>
+    </div>
+
+    <mat-card class="form-container">
+        <mat-card-content>
+            <form novalidate [formGroup]="form" style="min-height: 100%; display: unset">
+
+                <mat-form-field floatLabel="always" class="default-50 sm-100">
+                    <mat-label translate>COMMON_REFERENCE</mat-label>
+                    <input matInput formControlName="reference">
+                </mat-form-field>
+
+                <mat-form-field floatLabel="always" class="default-50 sm-100">
+                    <mat-label translate>PAYROLL_REFERENCE_DATE</mat-label>
+                    <ss-date-picker formControlName="refDate"></ss-date-picker>
+                </mat-form-field>
+
+                <mat-form-field floatLabel="always" class="default-50 sm-100">
+                    <mat-label translate>PAYROLL_SUSPENSION_TYPE</mat-label>
+                    <input matInput type="number" formControlName="suspType">
+                </mat-form-field>
+
+                <mat-form-field floatLabel="always" class="default-50 sm-100">
+                    <mat-label translate>COMMON_MOTIVE</mat-label>
+                    <mat-select formControlName="motive">
+                        <mat-option [value]="null"></mat-option>
+                        @for (v of suspensionReasons | async; track v.id) {
+                            <mat-option [value]="v.id">
+                                {{ v.description }}
+                            </mat-option>
+                        }
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-form-field floatLabel="always" class="default-50 sm-100">
+                    <mat-label translate>PAYROLL_FROM</mat-label>
+                    <ss-date-picker formControlName="fromDate"></ss-date-picker>
+                </mat-form-field>
+
+                <mat-form-field floatLabel="always" class="default-50 sm-100">
+                    <mat-label translate>PAYROLL_TO</mat-label>
+                    <ss-date-picker formControlName="toDate"></ss-date-picker>
+                </mat-form-field>
+
+            </form>
+        </mat-card-content>
+    </mat-card>
+}

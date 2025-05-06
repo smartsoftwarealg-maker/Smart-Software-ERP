@@ -1,0 +1,44 @@
+$table_width: 1000px;
+
+:host {
+    display: inline-block;
+    width: 100%;
+    overflow: auto;
+}
+
+.table-container {
+    width: 100%;
+    display: block;
+    margin: auto;
+    max-width: $table_width;
+}
+
+.mat-column-reference, .mat-column-motive {
+    flex: 1 1 144px;
+    padding-right: 8px;
+    padding-left: 8px;
+}
+
+.mat-column-from_date, .mat-column-to_date, .mat-column-ref_date {
+    flex: 0 0 80px;
+    justify-content: center;
+    padding-right: 8px;
+    padding-left: 8px;
+}
+
+.pagination-container {
+    ss-pagination {
+        left: 0;
+        right: 0;
+        position: sticky;
+        margin: auto;
+    }
+}
+
+.buttons {
+    margin: 8px auto;
+    width: 150px;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+}

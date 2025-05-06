@@ -215,5 +215,14 @@
     "BASE_LEAVE2":           "القاعدة 2",
     "BASE_LEAVE3":           "القاعدة 3",
     "ID_PREFIX":             "بادئة الهوية",
-    "ID_SIZE":               "حجم الهوية"
+    "ID_SIZE":               "حجم الهوية",
+    "SUSPENSION":            "التعليق",
+    "REINTEGRATION":         "إعادة الإدماج",
+    "SUSPENSION_TYPE":       "نوع التعليق",
+    "QUESTIONING":           "الاستجواب",
+    "INVITATION":            "دعوة",
+    "ISSUE_DATE":            "تاريخ الإصدار",
+    "INVITATION_DATE":       "تاريخ الدعوة",
+    "INVITATION_HOUR":       "ساعة الدعوة",
+    "RECLASSIFICATION":      "إعادة التصنيف"
 }

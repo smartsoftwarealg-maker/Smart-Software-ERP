@@ -372,6 +372,8 @@
     "PRODUCTION":         "الإنتاج",
     "UNSELECT_ALL":       "الغاء اختيار الكل",
     "UPDATED_BY":         "تحديث من قبل",
-    "MISS_MATCH":         "خطأ عدم التطابق"
+    "MISS_MATCH":         "خطأ عدم التطابق",
+    "QUESTION":           "السؤال",
+    "ANSWER":             "الجواب"
 }
 

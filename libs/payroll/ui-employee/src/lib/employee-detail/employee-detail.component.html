@@ -56,7 +56,8 @@
 
                             <mat-form-field class="default-25 sm-50">
                                 <mat-label translate>PAYROLL_BIRTH_DATE</mat-label>
-                                <ss-date-picker [required]=true formControlName="birthDate" [maxDate]="MIN_DATE"></ss-date-picker>
+                                <ss-date-picker [required]=true formControlName="birthDate"
+                                                [maxDate]="MIN_DATE"></ss-date-picker>
                                 @if (form.controls['birthDate'].hasError('required')) {
                                     <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
                                 }
@@ -257,6 +258,11 @@
             }
         </mat-tab>
         @if (hrMode) {
+            <mat-tab label="{{'PAYROLL_REINTEGRATION'|translate}}" [disabled]="!noEdit">
+                @if (activePanel === REINTEGRATION_ROUTE) {
+                    <router-outlet></router-outlet>
+                }
+            </mat-tab>
             <mat-tab label="{{'COMMON_CONTRACTS'|translate}}" [disabled]="!noEdit">
                 @if (activePanel === CONTRACTS_ROUTE) {
                     <router-outlet></router-outlet>
@@ -267,33 +273,70 @@
                     <router-outlet></router-outlet>
                 }
             </mat-tab>
-
-            <mat-tab label="{{'PAYROLL_WIVES'|translate}}" [disabled]="!noEdit">
-                <router-outlet *ngIf="activePanel === WIVES_ROUTE"></router-outlet>
-            </mat-tab>
-            <mat-tab label="{{'PAYROLL_CHILDREN'|translate}}" [disabled]="!noEdit">
-                <router-outlet *ngIf="activePanel === CHILDREN_ROUTE"></router-outlet>
-            </mat-tab>
-            <mat-tab label="{{'PAYROLL_DIPLOMAS'|translate}}" [disabled]="!noEdit">
-                <router-outlet *ngIf="activePanel === DIPLOMA_ROUTE"></router-outlet>
-            </mat-tab>
-            <mat-tab label="{{'PAYROLL_TRAININGS'|translate}}" [disabled]="!noEdit">
-                <router-outlet *ngIf="activePanel === TRAINING_ROUTE"></router-outlet>
-            </mat-tab>
-            <mat-tab label="{{'PAYROLL_PUNISHMENTS'|translate}}" [disabled]="!noEdit">
-                <router-outlet *ngIf="activePanel === PUNISHMENT_ROUTE"></router-outlet>
-            </mat-tab>
-            <mat-tab label="{{'PAYROLL_LANGUAGES'|translate}}" [disabled]="!noEdit">
-                <router-outlet *ngIf="activePanel === LANGUAGES_ROUTE"></router-outlet>
-            </mat-tab>
             <mat-tab label="{{'PAYROLL_OLD_CAREERS'|translate}}" [disabled]="!noEdit">
-                <router-outlet *ngIf="activePanel === OLD_CAREER_ROUTE"></router-outlet>
+                @if (activePanel === OLD_CAREER_ROUTE) {
+                    <router-outlet></router-outlet>
+                }
+            </mat-tab>
+            <mat-tab label="{{'PAYROLL_RECLASSIFICATION'|translate}}" [disabled]="!noEdit">
+                @if (activePanel === RECLASSIFICATION_ROUTE) {
+                    <router-outlet></router-outlet>
+                }
             </mat-tab>
             <mat-tab label="{{'COMMON_DECISIONS'|translate}}" [disabled]="!noEdit">
-                <router-outlet *ngIf="activePanel === DECISION_ROUTE"></router-outlet>
+                @if (activePanel === DECISION_ROUTE) {
+                    <router-outlet></router-outlet>
+                }
+            </mat-tab>
+            <mat-tab label="{{'PAYROLL_SUSPENSION'|translate}}" [disabled]="!noEdit">
+                @if (activePanel === SUSPENSION_ROUTE) {
+                    <router-outlet></router-outlet>
+                }
+            </mat-tab>
+            <mat-tab label="{{'PAYROLL_WIVES'|translate}}" [disabled]="!noEdit">
+                @if (activePanel === WIVES_ROUTE) {
+                    <router-outlet></router-outlet>
+                }
+            </mat-tab>
+            <mat-tab label="{{'PAYROLL_CHILDREN'|translate}}" [disabled]="!noEdit">
+                @if (activePanel === CHILDREN_ROUTE) {
+                    <router-outlet></router-outlet>
+                }
+            </mat-tab>
+            <mat-tab label="{{'PAYROLL_DIPLOMAS'|translate}}" [disabled]="!noEdit">
+                @if (activePanel === DIPLOMA_ROUTE) {
+                    <router-outlet></router-outlet>
+                }
+            </mat-tab>
+            <mat-tab label="{{'PAYROLL_TRAININGS'|translate}}" [disabled]="!noEdit">
+                @if (activePanel === TRAINING_ROUTE) {
+                    <router-outlet></router-outlet>
+                }
+            </mat-tab>
+            <mat-tab label="{{'PAYROLL_LANGUAGES'|translate}}" [disabled]="!noEdit">
+                @if (activePanel === LANGUAGES_ROUTE) {
+                    <router-outlet></router-outlet>
+                }
+            </mat-tab>
+            <mat-tab label="{{'PAYROLL_QUESTIONING'|translate}}" [disabled]="!noEdit">
+                @if (activePanel === QUESTIONING_ROUTE) {
+                    <router-outlet></router-outlet>
+                }
+            </mat-tab>
+            <mat-tab label="{{'PAYROLL_INVITATION'|translate}}" [disabled]="!noEdit">
+                @if (activePanel === INVITATION_ROUTE) {
+                    <router-outlet></router-outlet>
+                }
+            </mat-tab>
+            <mat-tab label="{{'PAYROLL_PUNISHMENTS'|translate}}" [disabled]="!noEdit">
+                @if (activePanel === PUNISHMENT_ROUTE) {
+                    <router-outlet></router-outlet>
+                }
             </mat-tab>
             <mat-tab label="{{'COMMON_ARCHIVE'|translate}}" [disabled]="!noEdit">
-                <router-outlet *ngIf="activePanel === ARCHIVE_ROUTE"></router-outlet>
+                @if (activePanel === ARCHIVE_ROUTE) {
+                    <router-outlet></router-outlet>
+                }
             </mat-tab>
         } @else {
             <mat-tab label="{{'PAYROLL_FIXED_ELEMENTS'|translate}}">
@@ -350,5 +393,4 @@
             </mat-tab>
         }
     </mat-tab-group>
-
 }

@@ -214,5 +214,15 @@
     "BASE_LEAVE2":           "Base 2",
     "BASE_LEAVE3":           "Base 3",
     "ID_PREFIX":             "Id prefix",
-    "ID_SIZE":               "Id size"
+    "ID_SIZE":               "Id size",
+    "REFERENCE_DATE":        "Reference date",
+    "SUSPENSION":            "Suspension",
+    "REINTEGRATION":         "Reintegration",
+    "SUSPENSION_TYPE":       "Suspension type",
+    "QUESTIONING":           "Questioning",
+    "INVITATION":            "Invitation",
+    "ISSUE_DATE":            "Issue date",
+    "INVITATION_DATE":       "Invitation date",
+    "INVITATION_HOUR":       "Invitation hour",
+    "RECLASSIFICATION":      "Reclassification"
 }

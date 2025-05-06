@@ -214,5 +214,14 @@
     "BASE_LEAVE2":           "Base 2",
     "BASE_LEAVE3":           "Base 3",
     "ID_PREFIX":             "Préfixe d'identification",
-    "ID_SIZE":               "Taille de l'identifiant"
+    "ID_SIZE":               "Taille de l'identifiant",
+    "SUSPENSION":            "Suspension",
+    "REINTEGRATION":         "Réintégration",
+    "SUSPENSION_TYPE":       "Type de suspension",
+    "QUESTIONING":           "Interrogatoire",
+    "INVITATION":            "Invitation",
+    "ISSUE_DATE":            "Date d'émission",
+    "INVITATION_DATE":       "Date d'invitation",
+    "INVITATION_HOUR":       "Heure d'invitation",
+    "RECLASSIFICATION":      "Reclassification"
 }

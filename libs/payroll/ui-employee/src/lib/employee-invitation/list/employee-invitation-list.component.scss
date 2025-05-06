@@ -1,0 +1,47 @@
+$table_width: 1000px;
+
+.table-container {
+    width: 100%;
+    display: block;
+    margin: auto;
+    max-width: $table_width;
+    overflow: auto;
+    min-height: 350px;
+}
+
+.mat-column-invitationHour {
+    flex: 1 1 70px;
+    justify-content: center;
+    padding-right: 8px;
+    padding-left: 8px;
+}
+
+.mat-column-subject, .mat-column-reference {
+    flex: 1 1 144px;
+    padding-right: 8px;
+    padding-left: 8px;
+}
+
+.mat-column-invitationDate, .mat-column-issueDate {
+    flex: 1 1 124px;
+    justify-content: center;
+    padding-right: 8px;
+    padding-left: 8px;
+}
+
+.pagination-container {
+    ss-pagination {
+        left: 0;
+        right: 0;
+        position: sticky;
+        margin: auto;
+    }
+}
+
+.buttons {
+    margin: 8px auto;
+    width: 150px;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+}

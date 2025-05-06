@@ -20,3 +20,8 @@ export * from './lib/payment-info.service';
 export * from './lib/fund.service';
 export * from './lib/decision-motive.service';
 export * from './lib/contract-motive.service';
+export * from './lib/employee-invitation.service';
+export * from './lib/employee-questioning.service';
+export * from './lib/employee-reclassification.service';
+export * from './lib/employee-reintegration.service';
+export * from './lib/employee-suspension.service';

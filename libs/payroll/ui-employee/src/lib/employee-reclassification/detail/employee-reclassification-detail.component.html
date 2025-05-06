@@ -1,0 +1,66 @@
+@if (form) {
+    <div class="button_div size">
+        @if (isEditable) {
+            <button mat-mini-fab (click)="save()"
+                    color="accent">
+                <i class="fas fa-save"></i>
+            </button>
+        }
+        <button mat-mini-fab (click)="cancel()"
+                color="warn">
+            <i class="fas fa-redo"></i>
+        </button>
+    </div>
+
+    <mat-card class="form-container">
+        <mat-card-content>
+            <form novalidate [formGroup]="form" style="min-height: 100%; display: unset">
+
+                <mat-form-field floatLabel="always" class="default-50 sm-100">
+                    <mat-label translate>PAYROLL_DEPARTMENT</mat-label>
+                    <ss-auto-complete matInput
+                                      formControlName="department"
+                                      [model]="departmentLookup">
+                    </ss-auto-complete>
+                </mat-form-field>
+
+                <mat-form-field floatLabel="always" class="default-50 sm-100">
+                    <mat-label translate>PAYROLL_POST</mat-label>
+                    <ss-auto-complete matInput
+                                      formControlName="post"
+                                      [model]="postLookup">
+                    </ss-auto-complete>
+                </mat-form-field>
+
+                <mat-form-field floatLabel="always" class="default-50 sm-100">
+                    <mat-label translate>PAYROLL_SERVICE</mat-label>
+                    <ss-auto-complete matInput
+                                      formControlName="service"
+                                      [model]="serviceLookup">
+                    </ss-auto-complete>
+                </mat-form-field>
+
+                <mat-form-field floatLabel="always" class="default-50 sm-100">
+                    <mat-label translate>COMMON_DECISION_DATE</mat-label>
+                    <ss-date-picker formControlName="decisionDate"></ss-date-picker>
+                </mat-form-field>
+
+                <mat-form-field floatLabel="always" class="default-50 sm-100">
+                    <mat-label translate>COMMON_REFERENCE</mat-label>
+                    <input matInput formControlName="reference">
+                </mat-form-field>
+
+                <mat-form-field floatLabel="always" class="default-50 sm-100">
+                    <mat-label translate>PAYROLL_REFERENCE_DATE</mat-label>
+                    <ss-date-picker formControlName="refDate"></ss-date-picker>
+                </mat-form-field>
+
+                <mat-form-field floatLabel="always" class="default-50 sm-100">
+                    <mat-label translate>COMMON_MOTIVE</mat-label>
+                    <input matInput formControlName="motive">
+                </mat-form-field>
+
+            </form>
+        </mat-card-content>
+    </mat-card>
+}
