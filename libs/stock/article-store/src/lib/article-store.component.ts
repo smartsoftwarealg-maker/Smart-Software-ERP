@@ -5,7 +5,7 @@ import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {Article} from '@ss/master-data/api-article';
 import { MaterialModule, PaginationModel } from '@ss/common/api-common';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
-import {LotsService, Store} from '@ss/common/api-lookup';
+import {LotsService, Lot} from '@ss/common/api-lookup';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ArticleStore, ArticleStoresService } from '@ss/stock/api-article-store';
 import { MatCard } from '@angular/material/card';
@@ -45,7 +45,7 @@ export class ArticleStoreComponent implements OnInit {
 
     article_!: Article;
 
-    storeAutoCompleteModel: DefaultAutoCompleteModel<Store> = new DefaultAutoCompleteModel<Store>(this.lotsService);
+    storeAutoCompleteModel: DefaultAutoCompleteModel<Lot> = new DefaultAutoCompleteModel<Lot>(this.lotsService);
     storeForm: FormGroup<StoreForm> = new FormGroup({
         id: new FormControl(0, {nonNullable: true}),
         storeId: new FormControl(0),

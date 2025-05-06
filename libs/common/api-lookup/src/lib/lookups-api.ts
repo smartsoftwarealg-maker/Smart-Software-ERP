@@ -178,14 +178,30 @@ export interface Subclass {
     descriptionAr?: string;
 }
 
-export interface Store {
+export interface Lot {
     id: number;
-    center: number;
-    storeId?: number;
-    description: string;
-    descriptionAr?: string;
+    storeId: number;
+    description: string,
+    descriptionAr?: string,
+    supplier?: number;
+    lotNumber?: number;
+    supplierLot?: string;
+    creationDate?: Date;
     expires: boolean;
+    expirationDate?: Date;
+    lotState?: string;
+    team?: string;
+    center?: number;
+    supplierDescription?: string;
 }
+
+// export interface Lot {
+//     id: number;
+//     center: number;
+//     storeId?: number;
+//     description: string;
+//     expires: boolean;
+// }
 
 export interface Unit {
     id: number;

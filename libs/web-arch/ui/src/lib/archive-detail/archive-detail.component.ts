@@ -168,7 +168,6 @@ export class ArchiveDetailComponent implements OnInit {
                 //     if (event && event.type === HttpEventType.UploadProgress) {
                 //         // This is an upload progress event. Compute and show the % done:
                 //         // this.loadingRate = Math.round(100 * event.loaded / event.total);
-                //         // console.log(`File is ${this.loadingRate}% uploaded.`);
                 //     }
                 // }
             });

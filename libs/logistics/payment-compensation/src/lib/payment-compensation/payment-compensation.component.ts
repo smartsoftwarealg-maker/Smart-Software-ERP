@@ -234,7 +234,6 @@ export class PaymentCompensationComponent implements OnInit {
         const id = +event.dataTransfer.getData("text");
         this.selectedPayment = this.treeControl.dataNodes.find(n => n.id === id);
         this.cancelPayments();
-        // console.log('drop payment: ', id);
     }
 
     onOver(event: DragEvent) {

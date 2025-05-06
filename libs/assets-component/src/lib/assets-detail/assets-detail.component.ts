@@ -312,7 +312,6 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> impl
 
     private setClassListener(form: UntypedFormGroup) {
         if (this.isAQS) {
-            console.log('aqs---------------------', this.isAQS)
             const subs = form
                 .controls['assetClass']
                 .valueChanges

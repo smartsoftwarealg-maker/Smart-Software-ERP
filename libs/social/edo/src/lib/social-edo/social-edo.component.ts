@@ -134,7 +134,6 @@ export class SocialEdoComponent implements OnInit {
     }
 
     private buildForm(bank: number) {
-        console.log(bank);
         this.form = this.formBuilder.group({
             description: ['',                              Validators.required],
             formula:     ['c990',                          Validators.required],

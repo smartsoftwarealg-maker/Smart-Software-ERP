@@ -136,7 +136,6 @@ export class CashFlowListComponent extends BaseEntityListComponent<AnnexCode> {
     }
 
     refreshPendingAccounts(event: Sort) {
-        console.log('refresh pending')
         this.shellSrv.setLoading(true)
         const order = event.active? (event.direction === 'desc' ? '-' : '') + event.active : null;
         this.cashFlowSrv

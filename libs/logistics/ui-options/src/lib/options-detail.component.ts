@@ -6,7 +6,7 @@ import { ReactiveFormsModule, UntypedFormBuilder, Validators } from "@angular/fo
 import { BaseEntityDetailComponent } from "@ss/common/ui-base-entity";
 import {
     LookupsService,
-    Store,
+    Lot,
     LotsService,
     Currency,
     CurrencyService
@@ -53,7 +53,7 @@ export class OptionsDetailComponent extends BaseEntityDetailComponent<Option> im
     ];
 
     currencies: Currency[] = [];
-    storeAutoCompleteModel: DefaultAutoCompleteModel<Store> = new DefaultAutoCompleteModel<Store>(this.storeNameSrv);
+    storeAutoCompleteModel: DefaultAutoCompleteModel<Lot> = new DefaultAutoCompleteModel<Lot>(this.storeNameSrv);
     customerLookup = new DefaultAutoCompleteModel(this.customerSrv, 'id', 'denomination');
 
     constructor(

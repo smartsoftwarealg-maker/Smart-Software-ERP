@@ -4,7 +4,7 @@ import {UntypedFormBuilder, Validators} from '@angular/forms';
 import {HttpEventType} from '@angular/common/http';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {  DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
-import {LotsService, Store} from '@ss/common/api-lookup';
+import {LotsService, Lot} from '@ss/common/api-lookup';
 import {AssetInventoryService} from '../services/asset-inventory.service';
 import { CommonModule } from '@angular/common';
 import { MaterialModule } from '@ss/common/api-common';
@@ -30,7 +30,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         TranslateDirective,
         TranslatePipe,
 
-       
+
         RouterModule,
 
 
@@ -41,7 +41,7 @@ export class InventoryImportComponent {
     private injectSrv = inject(AssetInventoryService);
     private storeNameSrv = inject(LotsService);
     private fb =  inject(UntypedFormBuilder);
-    storeAutoCompleteModel: DefaultAutoCompleteModel<Store> = new DefaultAutoCompleteModel<Store>(this.storeNameSrv);
+    storeAutoCompleteModel: DefaultAutoCompleteModel<Lot> = new DefaultAutoCompleteModel<Lot>(this.storeNameSrv);
     columns = [' ', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L',
         'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
 

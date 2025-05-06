@@ -5,7 +5,7 @@ import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
 import { UntypedFormBuilder, UntypedFormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import { LookupsService, LotsService, PayModeService, Store } from "@ss/common/api-lookup";
+import { LookupsService, LotsService, PayModeService, Lot } from "@ss/common/api-lookup";
 import {PaymentOrderService} from '../payment-order.service';
 import { IsParamService, LoginService, MaterialModule } from '@ss/common/api-common';
 import { Agent, AgentService, ConsumerService } from "@ss/logistics/api-agent";
@@ -39,7 +39,7 @@ export class PaymentOrderDetailComponent extends BaseEntityDetailComponent<Payme
     isBADR = false;
     supplierLookup = new DefaultAutoCompleteModel<Agent>(this.supplierSrv, 'id', 'denomination');
     consumerLookup = new DefaultAutoCompleteModel<Agent>(this.consumerSrv, 'id', 'denomination');
-    storeLookup = new DefaultAutoCompleteModel<Store>(this.storeSrv);
+    storeLookup = new DefaultAutoCompleteModel<Lot>(this.storeSrv);
     payModeLookup = new DefaultAutoCompleteModel(this.payModeSrv);
     bankLookup = new DefaultAutoCompleteModel(this.bankSrv);
 

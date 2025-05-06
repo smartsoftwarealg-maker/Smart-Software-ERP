@@ -37,17 +37,8 @@
     @if (isReady()) {
         <form (ngSubmit)="generateReport()" [formGroup]="form">
             <div class="size__div">
-                @for (d of data; track d.id) {
+                @for (d of data; track d.name) {
                     <div>
-
-                        <!--                <mat-form-field *ngIf="d.valueList != null">-->
-                        <!--                    <mat-label translate>{{ d.description }}</mat-label>-->
-                        <!--                    <mat-select formControlName="{{ d.name }}">-->
-                        <!--                        <mat-option *ngFor="let s of d.valueList" [value]="s['id']">-->
-                        <!--                            {{ s['description'] }}-->
-                        <!--                        </mat-option>-->
-                        <!--                    </mat-select>-->
-                        <!--                </mat-form-field>-->
                         @if (d.lookupTable) {
                             <mat-form-field>
                                 <mat-label translate>{{ d.description }}</mat-label>

@@ -1,5 +1,5 @@
 import { Component, inject, OnInit } from '@angular/core';
-import {Currency, CurrencyService, LookupsService, LotsService, Store} from '@ss/common/api-lookup';
+import {Currency, CurrencyService, LookupsService, LotsService, Lot} from '@ss/common/api-lookup';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import { LoginService, MaterialModule } from '@ss/common/api-common';
 import {ERR, Option, OptionService} from '@ss/logistics/ui-options';
@@ -78,7 +78,7 @@ export class PriceRecalculationComponent extends BaseEntityDetailComponent<Optio
     ];
 
     currencies: Currency[] = [];
-    storeAutoCompleteModel: DefaultAutoCompleteModel<Store> = new DefaultAutoCompleteModel<Store>(this.storeNameSrv);
+    storeAutoCompleteModel: DefaultAutoCompleteModel<Lot> = new DefaultAutoCompleteModel<Lot>(this.storeNameSrv);
 
     constructor(
         private loginSrv: LoginService,

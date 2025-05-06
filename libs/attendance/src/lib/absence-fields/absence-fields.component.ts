@@ -87,7 +87,6 @@ export class AbsenceFieldsComponent implements OnInit {
 
     public save() {
         this.shellSrv.setLoading(true);
-        console.log(this.form.getRawValue());
         const obs = this.httpSrv.put(
             ABSENCE_FIELDS_URL,
             this.form.getRawValue(),

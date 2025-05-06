@@ -6,7 +6,7 @@ import {Card, CardService} from '@ss/logistics/api-card';
 import {ArticleService} from '@ss/master-data/api-article';
 import { MaterialModule, PaginationModel } from '@ss/common/api-common';
 import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
-import {Store} from '@ss/common/api-lookup';
+import {Lot} from '@ss/common/api-lookup';
 import { ReactiveFormsModule, UntypedFormControl, UntypedFormGroup } from '@angular/forms';
 import {ArticleLotsService} from '@ss/stock/api-article-store';
 import {LanguageService} from '@ss/common/api-common';
@@ -38,7 +38,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 export class CardComponent implements OnInit {
     private storeSrv =  inject(ArticleLotsService);
 
-    storeAutoCompleteModel: DefaultAutoCompleteModel<Store> = new DefaultAutoCompleteModel<Store>(this.storeSrv);
+    storeAutoCompleteModel: DefaultAutoCompleteModel<Lot> = new DefaultAutoCompleteModel<Lot>(this.storeSrv);
 
     storeForm: UntypedFormGroup = new UntypedFormGroup({
         store: new UntypedFormControl()

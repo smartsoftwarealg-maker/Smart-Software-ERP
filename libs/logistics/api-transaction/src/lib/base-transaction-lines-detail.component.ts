@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import {UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {Article, ArticleAutoCompleteModel, ArticleService, LotAutoCompleteModel, QtyPrice} from '@ss/master-data/api-article';
-import { LotsService, Store } from '@ss/common/api-lookup';
+import { LotsService, Lot } from '@ss/common/api-lookup';
 import { Observable, of, switchMap } from 'rxjs';
 import {tap} from 'rxjs/operators';
 import {LoginService} from '@ss/common/api-common';
@@ -142,7 +142,7 @@ export abstract class BaseTransactionLinesDetailComponent extends AbstractEntity
 
         this.subscriptions.push(subs2);
         this.shellSrv.setLoading(false);
-        this.onStore({ id: e.store, center: this.loginSrv.appCtx.center, description: '', expires: false });
+        this.onStore({ id: e.store, center: this.loginSrv.appCtx.center, description: '', expires: false, storeId: e.store });
     }
 
     readForm(): TransactionLine {
@@ -150,7 +150,6 @@ export abstract class BaseTransactionLinesDetailComponent extends AbstractEntity
     }
 
     onArticle(a: Article) {
-        console.log(a);
         this.selectedReference = a?.reference;
         this.form.controls['vat'].setValue(a?.vatValue || 0);
         this.form.controls['vat2'].setValue(a?.vatValue2);
@@ -183,7 +182,7 @@ export abstract class BaseTransactionLinesDetailComponent extends AbstractEntity
         }
     }
 
-    onStore(s: Store) {
+    onStore(s: Lot) {
         this.articleSrv
             .getPPrice(this.form.controls['reference'].value, s?.id || 0, this.parentId, this.id)
             .subscribe({

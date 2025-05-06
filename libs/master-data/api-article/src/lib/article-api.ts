@@ -83,7 +83,7 @@ export interface StockInfo {
     awp: number;
 }
 
-export interface Location{
+export interface Location {
     id: number;
     storeId: number;
     referenceId: number;

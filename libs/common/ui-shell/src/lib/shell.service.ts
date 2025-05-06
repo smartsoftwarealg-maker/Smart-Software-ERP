@@ -514,7 +514,6 @@ export class ShellService {
 
     public setLabels(labels: ToolbarLabel[]): void {
         this.labels = [this._companyName, ...labels];
-        //console.log(labels);
         this.updateShell();
     }
 

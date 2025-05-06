@@ -5,7 +5,7 @@ import { HttpEventType } from '@angular/common/http';
 import { InventoryImportService } from '../inventory-import.service';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
-import { LotsService, Store } from '@ss/common/api-lookup';
+import { LotsService, Lot } from '@ss/common/api-lookup';
 import { TranslateDirective } from '@ss/common/ui-lang';
 import { NgIf, NgFor } from '@angular/common';
 import { MatMiniFabButton, MatButton } from '@angular/material/button';
@@ -29,7 +29,7 @@ export class InventoryImportComponent {
     private injectSrv = inject(InventoryImportService);
     private storeNameSrv = inject(LotsService);
 
-    storeAutoCompleteModel: DefaultAutoCompleteModel<Store> = new DefaultAutoCompleteModel<Store>(this.storeNameSrv);
+    storeAutoCompleteModel: DefaultAutoCompleteModel<Lot> = new DefaultAutoCompleteModel<Lot>(this.storeNameSrv);
     columns = [' ', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T',
         'U', 'V', 'W', 'X', 'Y', 'Z', 'AA', 'AB', 'AC', 'AD', 'AE', 'AF', 'AG', 'AH', 'AI', 'AJ', 'AK', 'AL',
         'AM', 'AN', 'AO', 'AP', 'AQ', 'AR', 'AS', 'AT', 'AU', 'AV', 'AW', 'AX', 'AY', 'AZ'

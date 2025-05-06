@@ -7,7 +7,7 @@ import {KeepOnToolbar, ShellService, SnackBarService, ToolbarButton} from '@ss/c
 import { ActivatedRoute, RouterModule } from "@angular/router";
 import { FormControl, FormGroup, ReactiveFormsModule } from "@angular/forms";
 import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
-import {LotsService, Store} from '@ss/common/api-lookup';
+import {LotsService, Lot} from '@ss/common/api-lookup';
 import {  ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
 import {of, switchMap} from 'rxjs';
 import { CommonModule } from "@angular/common";
@@ -53,7 +53,7 @@ export class UserStoresComponent implements OnInit, OnDestroy {
         }
     };
 
-    storeAutoCompleteModel: DefaultAutoCompleteModel<Store> = new DefaultAutoCompleteModel<Store>(this.lotsService);
+    storeAutoCompleteModel: DefaultAutoCompleteModel<Lot> = new DefaultAutoCompleteModel<Lot>(this.lotsService);
     userPagination = PaginationModel.newInstance();
     storePagination = PaginationModel.newInstance();
     users: User[] = [];

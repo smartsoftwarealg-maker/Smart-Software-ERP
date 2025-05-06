@@ -48,12 +48,10 @@ export class MrpComponent implements OnInit {
         this.shellSrv.setLoading(true);
         this.getData().subscribe({
             next: (data) => {
-                console.log(this.data);
                 this.data = data;
                 this.shellSrv.setLoading(false);
             },
             error: err => {
-                console.log(this.data);
                 this.shellSrv.setLoading(false);
                 throw err;
             }
