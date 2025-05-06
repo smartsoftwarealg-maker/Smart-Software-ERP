@@ -136,7 +136,6 @@ export class LeavePlanningCalculatorComponent {
                     });
                 }),
             );
-            console.log(this.daysForm.controls.list);
             this.history.set(res);
             this.processing.set(false);
             this.form.enable();

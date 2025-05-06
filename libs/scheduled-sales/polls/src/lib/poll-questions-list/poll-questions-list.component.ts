@@ -85,6 +85,5 @@ export class PollQuestionsListComponent extends BaseEntityListComponent<PollQues
     override selectRow(row: PollQuestion) {
         super.selectRow(row);
         this.editButton.disabled = row.isUsed;
-        console.log(row.isUsed);
     }
 }

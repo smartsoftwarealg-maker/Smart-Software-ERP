@@ -120,7 +120,6 @@ export class CustomerPollComponent {
         }
 
         if (this.data[id].answerType === this.SATISFACTION) {
-            console.log('id = '+id + ' and '+this.data[id].satisfactionAnswer)
             return this.data[id].satisfactionAnswer > 0;
         }
 

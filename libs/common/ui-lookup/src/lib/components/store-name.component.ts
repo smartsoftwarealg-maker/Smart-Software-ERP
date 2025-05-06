@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Store, LotsService } from '@ss/common/api-lookup';
+import { Lot, LotsService } from '@ss/common/api-lookup';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router } from '@angular/router';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
@@ -25,7 +25,7 @@ import { MatInput } from '@angular/material/input';
     standalone: true,
     imports: [MatTable, MatSort, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatSortHeader, TranslateDirective, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, PaginationComponent]
 })
-export class StoreNameListComponent extends BaseEntityListComponent<Store> {
+export class StoreNameListComponent extends BaseEntityListComponent<Lot> {
 
     displayedColumns = ['description', 'descriptionAr'];
 
@@ -51,7 +51,7 @@ export class StoreNameListComponent extends BaseEntityListComponent<Store> {
     standalone: true,
     imports: [MaterialModule, MatCard, NgIf, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput]
 })
-export class StoreNameDetailComponent extends BaseEntityDetailComponent<Store> {
+export class StoreNameDetailComponent extends BaseEntityDetailComponent<Lot> {
     private mainStore = 0;
 
     constructor(
@@ -72,7 +72,7 @@ export class StoreNameDetailComponent extends BaseEntityDetailComponent<Store> {
             .pipe(tap(res => this.mainStore = res.mainStore));
     }
 
-    public override setupForm(e: Store): UntypedFormGroup {
+    public override setupForm(e: Lot): UntypedFormGroup {
         return this.formBuilder.group({
             id:            [e.id],
             description:   [e.description, Validators.required],
@@ -83,7 +83,7 @@ export class StoreNameDetailComponent extends BaseEntityDetailComponent<Store> {
         });
     }
 
-    override readForm(): Store {
+    override readForm(): Lot {
         return this.form.getRawValue();
     }
 }

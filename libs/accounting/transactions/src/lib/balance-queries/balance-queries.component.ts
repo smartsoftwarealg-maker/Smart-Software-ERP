@@ -52,7 +52,6 @@ export class BalanceQueriesComponent implements OnInit {
     selectedGLIDs = signal<number[]>([]);
     selectionTotal = computed(() => {
         const selection = this.selectedGLIDs();
-        console.log(this.glData.filter(d => selection.indexOf(d.oId) >= 0))
         return this.glData
             .filter(d => selection.indexOf(d.oId) >= 0)
             .reduce((a, d) => ({debit: a.debit + d.debit, credit: a.credit + d.credit}), {debit: 0.0, credit: 0});
@@ -181,12 +180,10 @@ export class BalanceQueriesComponent implements OnInit {
         this.refreshBalance();
     }
     sortGL(event: Sort) {
-        // console.log(event);
         this.querySrv.sortColumn = event;
         this.refresh();
     }
     sortDetail(event: Sort) {
-        // console.log(event);
         this.detailSrv.sortColumn = event;
         this.refreshDetail();
     }

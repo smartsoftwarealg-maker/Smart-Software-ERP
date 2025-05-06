@@ -58,7 +58,6 @@ export class RequestImportComponent implements OnInit {
     }
 
     sort(event: Sort) {
-        // console.log(event);
         this.entitySrv.sortColumn = event;
         this.refresh();
     }
