@@ -375,5 +375,7 @@
     "PRODUCTION":         "Production",
     "UNSELECT_ALL":       "UNSELECT TOUS",
     "UPDATED_BY":         "Etabli par",
-    "MISS_MATCH":         "Manque de correspondance"
+    "MISS_MATCH":         "Manque de correspondance",
+    "QUESTION":           "Question",
+    "ANSWER":             "Répondre"
 }

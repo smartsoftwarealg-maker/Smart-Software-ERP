@@ -1,0 +1,99 @@
+<div class="buttons">
+    @if ((rights?.write || false) && activePersonnelSrv.val) {
+        <button mat-mini-fab color="primary"
+                (click)="showDetail(0)"
+                [matTooltip]="'COMMON_ADD' | translate">
+            <span class="fas fa-plus"></span>
+        </button>
+    }
+    <button mat-mini-fab (click)="edit()"
+            [disabled]="!selectedId"
+            color="accent"
+            [matTooltip]="'COMMON_EDIT' | translate">
+        <span class="fas fa-pen"></span>
+    </button>
+    @if (rights?.delete && activePersonnelSrv.val) {
+        <button mat-mini-fab (click)="deleteSelected()"
+                [disabled]="!selectedId || !rights?.delete"
+                [matTooltip]="'COMMON_DELETE' | translate"
+                color="warn">
+            <span class="fas fa-trash-alt"></span>
+        </button>
+    }
+</div>
+
+<div class="table-container">
+    <mat-table mat-table [dataSource]="data$ | async " class="main-table">
+        <ng-container matColumnDef="reference">
+            <mat-header-cell *matHeaderCellDef translate style="justify-content: center">
+                COMMON_REFERENCE
+            </mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{ e.reference }}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="refDate">
+            <mat-header-cell *matHeaderCellDef translate style="justify-content: center">
+               COMMON_DATE
+            </mat-header-cell>
+            <mat-cell *matCellDef="let e" style="justify-content: center">
+                {{ e.refDate | date: 'dd/MM/yyyy' }}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="department">
+            <mat-header-cell *matHeaderCellDef translate style="justify-content: center">
+                PAYROLL_DEPARTMENT
+            </mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{ e.deptDescription }}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="post">
+            <mat-header-cell *matHeaderCellDef translate style="justify-content: center">
+                PAYROLL_POST
+            </mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{ e.postDescription }}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="service">
+            <mat-header-cell *matHeaderCellDef translate style="justify-content: center">
+                PAYROLL_SERVICE
+            </mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{ e.serviceDescription }}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="decisionDate">
+            <mat-header-cell *matHeaderCellDef translate style="justify-content: center">
+                COMMON_DECISION_DATE
+            </mat-header-cell>
+            <mat-cell *matCellDef="let e" style="justify-content: center">
+                {{ e.decisionDate | date: 'dd/MM/yyyy' }}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="motive">
+            <mat-header-cell *matHeaderCellDef translate style="justify-content: center">
+                COMMON_MOTIVE
+            </mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{ e.motive }}
+            </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+        <mat-row class="selectable" [class.selected]="row.id == selectedId" (click)="select(row.id)"
+                 *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+
+</div>
+
+<div class="pagination-container b-b-background">
+    <ss-pagination [paginationModel]="paginator"></ss-pagination>
+</div>

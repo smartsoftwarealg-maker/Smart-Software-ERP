@@ -1,0 +1,82 @@
+<div class="buttons">
+    @if ((rights?.write || false) && activePersonnelSrv.val) {
+        <button mat-mini-fab color="primary"
+                (click)="showDetail(0)"
+                [matTooltip]="'COMMON_ADD' | translate">
+            <span class="fas fa-plus"></span>
+        </button>
+    }
+    <button mat-mini-fab (click)="edit()"
+            [disabled]="!selectedId"
+            color="accent"
+            [matTooltip]="'COMMON_EDIT' | translate">
+        <span class="fas fa-pen"></span>
+    </button>
+    @if (rights?.delete && activePersonnelSrv.val) {
+        <button mat-mini-fab (click)="deleteSelected()"
+                [disabled]="!selectedId || !rights?.delete"
+                [matTooltip]="'COMMON_DELETE' | translate"
+                color="warn">
+            <span class="fas fa-trash-alt"></span>
+        </button>
+    }
+</div>
+
+<div class="table-container">
+    <mat-table mat-table [dataSource]="data$ | async " class="main-table">
+
+        <ng-container matColumnDef="reference">
+            <mat-header-cell *matHeaderCellDef translate style="justify-content: center">
+                COMMON_REFERENCE
+            </mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{ e.reference }}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="issueDate">
+            <mat-header-cell *matHeaderCellDef translate style="justify-content: center">
+                PAYROLL_ISSUE_DATE
+            </mat-header-cell>
+            <mat-cell *matCellDef="let e" style="justify-content: center">
+                {{ e.issueDate }}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="invitationDate">
+            <mat-header-cell *matHeaderCellDef translate style="justify-content: center">
+                PAYROLL_INVITATION_DATE
+            </mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{ e.invitationDate | date: 'dd/MM/yyyy' }}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="invitationHour">
+            <mat-header-cell *matHeaderCellDef translate style="justify-content: center">
+                PAYROLL_INVITATION_HOUR
+            </mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{ e.invitationHour }}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="subject">
+            <mat-header-cell *matHeaderCellDef translate style="justify-content: center">
+                COMMON_SUBJECT
+            </mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{ e.subject }}
+            </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+        <mat-row class="selectable" [class.selected]="row.id == selectedId" (click)="select(row.id)"
+                 *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+
+</div>
+
+<div class="pagination-container b-b-background">
+    <ss-pagination [paginationModel]="paginator"></ss-pagination>
+</div>

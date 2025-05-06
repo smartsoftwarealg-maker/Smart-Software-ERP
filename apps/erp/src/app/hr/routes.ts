@@ -92,7 +92,17 @@ import {
     PersonListComponent,
     PunishmentListComponent,
     EmployeeTrainingListComponent,
-    EmployeeDiplomaListComponent, IdUpdateComponent
+    EmployeeDiplomaListComponent,
+    IdUpdateComponent,
+    EmployeeSuspensionListComponent,
+    EmployeeSuspensionDetailComponent,
+    EmployeeQuestioningListComponent,
+    EmployeeQuestioningDetailComponent,
+    EmployeeInvitationListComponent,
+    EmployeeInvitationDetailComponent,
+    EmployeeReclassificationListComponent,
+    EmployeeReclassificationDetailComponent,
+    EmployeeReintegrationListComponent, EmployeeReintegrationDetailComponent
 } from '@ss/payroll/ui-employee';
 import {
     ACTIVATION_ROUTE_URL,
@@ -105,7 +115,12 @@ import {
     CHILDREN_ROUTE_URL,
     LANGUAGES_ROUTE_URL,
     OLD_CAREER_ROUTE_URL,
-    DECISION_ROUTE_URL
+    DECISION_ROUTE_URL,
+    SUSPENSION_ROUTE_URL,
+    QUESTIONING_ROUTE_URL,
+    INVITATION_ROUTE_URL,
+    RECLASSIFICATION_ROUTE_URL,
+    REINTEGRATION_ROUTE_URL
 } from '@ss/payroll/api-employee';
 import { ReportViewComponent } from '@ss/common/ui-report-param';
 import {DashboardComponent} from '@ss/dashboard';
@@ -153,11 +168,6 @@ import {
 import {
     SpecialtyDetailComponent
 } from '@ss/payroll/work-stoppage';
-import {
-    ProductionOrderDetailComponent, ProductionOrderLinesDetailComponent,
-    ProductionOrderLinesListComponent,
-    ProductionOrderListComponent
-} from '@ss/production/production-order';
 import {
     PostElementsDetailComponent, PostElementsListComponent
 } from '@ss/common/ui-lookup';
@@ -386,6 +396,41 @@ export const hrRoutes: Routes = [
                                 children: [
                                     { path: '', component: EmployeeDecisionListComponent, pathMatch: 'full' },
                                     { path: ':id', component: EmployeeDecisionDetailComponent, canDeactivate: [CanDeactivateService] }
+                                ]
+                            },
+                            {
+                                path: SUSPENSION_ROUTE_URL,
+                                children: [
+                                    { path: '', component: EmployeeSuspensionListComponent, pathMatch: 'full' },
+                                    { path: ':id', component: EmployeeSuspensionDetailComponent, canDeactivate: [CanDeactivateService] }
+                                ]
+                            },
+                            {
+                                path: QUESTIONING_ROUTE_URL,
+                                children: [
+                                    { path: '', component: EmployeeQuestioningListComponent, pathMatch: 'full' },
+                                    { path: ':id', component: EmployeeQuestioningDetailComponent, canDeactivate: [CanDeactivateService] }
+                                ]
+                            },
+                            {
+                                path: INVITATION_ROUTE_URL,
+                                children: [
+                                    { path: '', component: EmployeeInvitationListComponent, pathMatch: 'full' },
+                                    { path: ':id', component: EmployeeInvitationDetailComponent, canDeactivate: [CanDeactivateService] }
+                                ]
+                            },
+                            {
+                                path: RECLASSIFICATION_ROUTE_URL,
+                                children: [
+                                    { path: '', component: EmployeeReclassificationListComponent, pathMatch: 'full' },
+                                    { path: ':id', component: EmployeeReclassificationDetailComponent, canDeactivate: [CanDeactivateService] }
+                                ]
+                            },
+                            {
+                                path: REINTEGRATION_ROUTE_URL,
+                                children: [
+                                    { path: '', component: EmployeeReintegrationListComponent, pathMatch: 'full' },
+                                    { path: ':id', component: EmployeeReintegrationDetailComponent, canDeactivate: [CanDeactivateService] }
                                 ]
                             }
                         ]

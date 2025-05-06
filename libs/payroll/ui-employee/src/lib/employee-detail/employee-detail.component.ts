@@ -32,7 +32,8 @@ import {ELine, FixedElementsEntryService} from '@ss/remuneration/elements-entry'
 import {Employee} from '@ss/employee-services/employee-services';
 import {AppArchiveService, EMPLOYEE_ARCHIVES} from '@ss/common/app-archive';
 import {
-    ACTIVATION_ROUTE_URL, ARCHIVE_ROUTE_URL,
+    ACTIVATION_ROUTE_URL,
+    ARCHIVE_ROUTE_URL,
     CAREER_ROUTE_URL,
     CHILDREN_ROUTE_URL,
     CONTRACTS_ROUTE_URL,
@@ -43,12 +44,23 @@ import {
     EmployeeChildrenService,
     EmployeeContractService,
     EmployeeDecisionService,
+    EmployeeInvitationService,
     EmployeeLanguagesService,
     EmployeeOldCareerService,
-    EmployeeWivesService, FIXED_ELEMENTS_URL,
+    EmployeeQuestioningService,
+    EmployeeReclassificationService,
+    EmployeeReintegrationService,
+    EmployeeSuspensionService,
+    EmployeeWivesService,
+    FIXED_ELEMENTS_URL,
+    INVITATION_ROUTE_URL,
     LANGUAGES_ROUTE_URL,
     OLD_CAREER_ROUTE_URL,
     PUNISHMENT_ROUTE_URL,
+    QUESTIONING_ROUTE_URL,
+    RECLASSIFICATION_ROUTE_URL,
+    REINTEGRATION_ROUTE_URL,
+    SUSPENSION_ROUTE_URL,
     TRAINING_ROUTE_URL,
     WIVES_ROUTE_URL
 } from '@ss/payroll/api-employee';
@@ -121,24 +133,34 @@ export class EmployeeDetailComponent extends BaseEntityDetailComponent<Employee>
     private contractSrv = inject(EmployeeContractService);
     private oldCareerSrv = inject(EmployeeOldCareerService);
     private careerSrv = inject(EmployeeCareerService);
+    private suspensionSrv = inject(EmployeeSuspensionService);
+    private questioningSrv = inject(EmployeeQuestioningService);
+    private invitationSrv = inject(EmployeeInvitationService);
+    private reclassificationSrv = inject(EmployeeReclassificationService);
+    private reintegrationSrv = inject(EmployeeReintegrationService);
     private activationSrv = inject(EmployeeActivationService);
     private bloodGroupSrv = inject(BloodGroupService);
     private citySrv = inject(CityService);
     private nationalitySrv = inject(NationalityService);
     private archiveSrv = inject(AppArchiveService);
     private HR_PANELS = [
-        ACTIVATION_ROUTE_URL, //0
-        CONTRACTS_ROUTE_URL,  //1
-        CAREER_ROUTE_URL,     //2
-        WIVES_ROUTE_URL,      //3
-        CHILDREN_ROUTE_URL,   //4
-        DIPLOMA_ROUTE_URL,    //5
-        TRAINING_ROUTE_URL,   //6
-        PUNISHMENT_ROUTE_URL, //7
-        LANGUAGES_ROUTE_URL,  //8
-        OLD_CAREER_ROUTE_URL, //9
-        DECISION_ROUTE_URL,   //10
-        ARCHIVE_ROUTE_URL,     //11
+        ACTIVATION_ROUTE_URL,       //0
+        REINTEGRATION_ROUTE_URL,    //1
+        CONTRACTS_ROUTE_URL,        //2
+        CAREER_ROUTE_URL,           //3
+        OLD_CAREER_ROUTE_URL,       //4
+        RECLASSIFICATION_ROUTE_URL, //5
+        DECISION_ROUTE_URL,         //6
+        SUSPENSION_ROUTE_URL,       //7
+        WIVES_ROUTE_URL,            //8
+        CHILDREN_ROUTE_URL,         //9
+        DIPLOMA_ROUTE_URL,          //10
+        TRAINING_ROUTE_URL,         //11
+        LANGUAGES_ROUTE_URL,        //12
+        QUESTIONING_ROUTE_URL,      //13
+        INVITATION_ROUTE_URL,       //14
+        PUNISHMENT_ROUTE_URL,       //15
+        ARCHIVE_ROUTE_URL,          //16
     ];
     private PAYROLL_PANELS = [
         ACTIVATION_ROUTE_URL, //0
@@ -153,17 +175,22 @@ export class EmployeeDetailComponent extends BaseEntityDetailComponent<Employee>
         return null;
     }
     readonly ACTIVATION_ROUTE = 0;
-    readonly CONTRACTS_ROUTE = 1;
-    readonly CAREER_ROUTE = 2;
-    readonly WIVES_ROUTE = 3;
-    readonly CHILDREN_ROUTE = 4;
-    readonly DIPLOMA_ROUTE = 5;
-    readonly TRAINING_ROUTE = 6;
-    readonly PUNISHMENT_ROUTE = 7;
-    readonly LANGUAGES_ROUTE = 8;
-    readonly OLD_CAREER_ROUTE = 9;
-    readonly DECISION_ROUTE = 10;
-    readonly ARCHIVE_ROUTE = 11;
+    readonly REINTEGRATION_ROUTE = 1;
+    readonly CONTRACTS_ROUTE = 2;
+    readonly CAREER_ROUTE = 3;
+    readonly OLD_CAREER_ROUTE = 4;
+    readonly RECLASSIFICATION_ROUTE = 5;
+    readonly DECISION_ROUTE = 6;
+    readonly SUSPENSION_ROUTE = 7;
+    readonly WIVES_ROUTE = 8;
+    readonly CHILDREN_ROUTE = 9;
+    readonly DIPLOMA_ROUTE = 10;
+    readonly TRAINING_ROUTE = 11;
+    readonly LANGUAGES_ROUTE = 12;
+    readonly QUESTIONING_ROUTE = 13;
+    readonly INVITATION_ROUTE = 14;
+    readonly PUNISHMENT_ROUTE = 15;
+    readonly ARCHIVE_ROUTE = 16;
     readonly FIXED_ELEMENTS_ROUTE = 112;
 
     activePanel: number = -1;
@@ -229,6 +256,11 @@ export class EmployeeDetailComponent extends BaseEntityDetailComponent<Employee>
         this.oldCareerSrv.setParentId(id || 0);
         this.careerSrv.setParentId(id || 0);
         this.activationSrv.setParentId(id || 0);
+        this.suspensionSrv.setParentId(id || 0);
+        this.questioningSrv.setParentId(id || 0);
+        this.invitationSrv.setParentId(id || 0);
+        this.reclassificationSrv.setParentId(id || 0);
+        this.reintegrationSrv.setParentId(id || 0);
     }
 
     public override preload(): Observable<MaritalStatus[]> {

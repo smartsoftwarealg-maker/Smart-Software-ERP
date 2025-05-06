@@ -35,6 +35,16 @@ export * from './lib/employee-contracts/list/employee-contracts-list.component';
 export * from './lib/employee-contracts/detail/employee-contracts-detail.component';
 export * from './lib/id-update/id-update.component';
 export * from './lib/active-personnel.service';
+export * from './lib/employee-suspension/list/employee-suspension-list.component';
+export * from './lib/employee-suspension/detail/employee-suspension-detail.component';
+export * from './lib/employee-questioning/list/employee-questioning-list.component';
+export * from './lib/employee-questioning/detail/employee-questioning-detail.component';
+export * from './lib/employee-invitation/list/employee-invitation-list.component';
+export * from './lib/employee-invitation/detail/employee-invitation-detail.component';
+export * from './lib/employee-reclassification/list/employee-reclassification-list.component';
+export * from './lib/employee-reclassification/detail/employee-reclassification-detail.component';
+export * from './lib/employee-reintegration/list/employee-reintegration-list.component';
+export * from './lib/employee-reintegration/detail/employee-reintegration-detail.component';
 
 
 

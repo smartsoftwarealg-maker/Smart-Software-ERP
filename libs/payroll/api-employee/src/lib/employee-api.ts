@@ -1,5 +1,3 @@
-
-
 export const ACTIVATION_PARENT_URL = '/persons';
 export const ACTIVATION_CHILD_URL = '/activations';
 
@@ -24,6 +22,20 @@ export const OLD_CAREER_CHILD_URL = '/oldcareers';
 export const DECISION_PARENT_URL = '/persons';
 export const DECISION_CHILD_URL = '/decisions';
 
+export const SUSPENSION_PARENT_URL = '/persons';
+export const SUSPENSION_CHILD_URL = '/suspensions';
+
+export const QUESTIONING_PARENT_URL = '/persons';
+export const QUESTIONING_CHILD_URL = '/questionings';
+
+export const INVITATION_PARENT_URL = '/persons';
+export const INVITATION_CHILD_URL = '/invitations';
+
+export const RECLASSIFICATION_PARENT_URL = '/persons';
+export const RECLASSIFICATION_CHILD_URL = '/reclassifications';
+
+export const REINTEGRATION_PARENT_URL = '/persons';
+export const REINTEGRATION_CHILD_URL = '/reintegrations';
 
 export interface EmployeeActivation {
     id: number;
@@ -165,7 +177,6 @@ export interface Decision {
     motiveName?: string;
 }
 
-
 export interface PaymentInfo {
     id: number;
     employee: number;
@@ -177,17 +188,85 @@ export interface PaymentInfo {
     paymode?: number;
 }
 
-export interface HolidayRequest{
+export interface HolidayRequest {
     id: number;
     centerId: number;
     personId: number;
     hType: number;
     from?: Date;
     to?: Date;
-    creationTime: Date,
+    creationTime: Date;
     firstName?: string;
     lastName?: string;
     typeDescription?: string;
     docStatus?: number;
     statusDescription?: string;
+}
+
+export interface Suspension {
+    id: number;
+    centerId: number;
+    parentId: number;
+    suspType?: number;
+    refDate?: Date;
+    reference?: string;
+    fromDate?: Date;
+    toDate?: Date;
+    motive?: number;
+    motiveDescription?: string;
+}
+
+export interface Questioning {
+    id: number;
+    centerId: number;
+    parentId: number;
+    reference?: string;
+    refDate?: Date;
+    motive?: number;
+    question?: Date;
+    answer?: Date;
+    motiveDescription: string;
+}
+
+export interface Invitation {
+    id: number;
+    parentId: number;
+    centerId: number;
+    issueDate: Date;
+    reference?: string;
+    invitationDate?: Date;
+    invitationHour?: number;
+    subject?: string;
+}
+
+export interface Reclassification {
+    id: number;
+    centerId: number;
+    parentId: number;
+    refDate: Date;
+    reference: string;
+    decisionDate?: Date;
+    motive?: string;
+    post?: number;
+    department?: number;
+    service?: number;
+    postDescription?: string;
+    deptDescription?: string;
+    serviceDescription?: string;
+}
+
+export interface Reintegration {
+    id: number;
+    centerId: number;
+    parentId: number;
+    refDate: Date;
+    reference: string;
+    motive?: string;
+    fromDate: Date;
+    post?: number;
+    department?: number;
+    service?: number;
+    postDescription?: string;
+    deptDescription?: string;
+    serviceDescription?: string;
 }
