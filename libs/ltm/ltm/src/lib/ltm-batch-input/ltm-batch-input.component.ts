@@ -51,6 +51,11 @@ type VarianceControl = {
     description: string;
     formula: string;
 }
+type ColorRange = {
+    id: number;
+    color: string;
+    range: number[];
+}
 
 @Component({
     selector: 'ss-ltm-batch-input',
@@ -109,6 +114,20 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
     protected readonly DEPOSIT_TEST = DEPOSIT_TEST;
 
     readonly scheduleSrv = inject(LtmTestScheduleService);
+    readonly COLOR_RANGE: ColorRange[] = [
+        { id: 0, color: '#FF0000', range: [84, 99999] },
+        { id: 1, color: '#ff6600', range: [68, 83] },
+        { id: 2, color: '#ff9900', range: [51, 67] },
+        { id: 3, color: '#ffff99', range: [36, 50] },
+        { id: 4, color: '#ccffcc', range: [21, 35] },
+        { id: 5, color: '#8bf47a', range: [-20, 20] },
+        { id: 7, color: '#ccffcc', range: [-35, -21 ] },
+        { id: 8, color: '#ffff99', range: [-50, -36 ] },
+        { id: 9, color: '#ff9900', range: [-67, -51 ] },
+        { id: 10, color: '#ff6600', range: [-83, -68 ] },
+        { id: 11, color: '#FF0000', range: [-99999, -84] },
+    ]
+
     @ViewChild(RouterOutlet) outlet: RouterOutlet | null = null;
 
     public saveButton: ToolbarButton = {
@@ -133,6 +152,7 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
     labels: string[] = [];
     limits: number[][] = [];
     totalsLabels: string[] = [];
+    totalsOptValues: number[] = [];
     totalsLimits: number[][] = [];
     variables: string[] = [];
     varianceControls: VarianceControl[] = [];
@@ -367,6 +387,7 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
                     .forEach(t => {
                         this.totalsLabels.push(t.testDescription);
                         this.totalsLimits.push([t.minValue, t.maxValue || 999]);
+                        this.totalsOptValues.push(t.optValue||0);
                         this.formulas.push(t.formula);
                         if (t.varianceControl) {
                             this.varianceControls.push({variable: t.variable, description: t.testDescription, formula: t.formula});
@@ -376,7 +397,6 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
                         }, {updateOn: 'change'});
                         this.totals.push(testForm);
                     });
-
                 this.formulas = this.formulas.map(f => this.replaceFormulas(f));
             });
     }

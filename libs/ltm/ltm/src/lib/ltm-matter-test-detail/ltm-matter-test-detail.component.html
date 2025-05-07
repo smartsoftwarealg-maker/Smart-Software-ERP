@@ -19,58 +19,62 @@
         @if (form !== null) {
             <form [formGroup]="form">
 
-            <mat-form-field class="default-100">
-                <mat-label translate>LTM_TEST</mat-label>
-                <ss-auto-complete matInput
-                                  formControlName="testId"
-                                  [model]="testLookup">
-                </ss-auto-complete>
-            </mat-form-field>
+                <mat-form-field class="default-100">
+                    <mat-label translate>LTM_TEST</mat-label>
+                    <ss-auto-complete matInput
+                                      formControlName="testId"
+                                      [model]="testLookup">
+                    </ss-auto-complete>
+                </mat-form-field>
 
-            <mat-form-field class="default-50 sm-100">
-                <mat-label translate>LTM_PERIODICITY</mat-label>
-                <ss-auto-complete matInput
-                                  [model]="periodicityLookup"
-                                  formControlName="periodicity"
-                                  required
-                                  autofocus></ss-auto-complete>
-                <mat-error *ngIf="form.controls['periodicity'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
-            </mat-form-field>
-            <mat-form-field class="default-50 sm-100">
-                <mat-label translate>COMMON_POSITION</mat-label>
-                <input matInput formControlName="orderNo" type="number" required step="1">
-            </mat-form-field>
-
-            <fieldset>
-                <legend translate>LTM_INPUT</legend>
-                <mat-form-field class="default-50">
-                    <mat-label translate>LTM_MIN_VALUE</mat-label>
-                    <input matInput formControlName="minValue" type="number" required>
+                <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>LTM_PERIODICITY</mat-label>
+                    <ss-auto-complete matInput
+                                      [model]="periodicityLookup"
+                                      formControlName="periodicity"
+                                      required
+                                      autofocus></ss-auto-complete>
+                    <mat-error *ngIf="form.controls['periodicity'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
+                </mat-form-field>
+                <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>COMMON_POSITION</mat-label>
+                    <input matInput formControlName="orderNo" type="number" required step="1">
                 </mat-form-field>
 
                 <mat-form-field class="default-50">
-                    <mat-label translate>LTM_MAX_VALUE</mat-label>
-                    <input matInput formControlName="maxValue" type="number" required>
-                </mat-form-field>
-            </fieldset>
-
-            <fieldset>
-                <legend translate>LTM_NORM</legend>
-                <mat-form-field class="default-50">
-                    <mat-label translate>LTM_MIN_VALUE</mat-label>
-                    <input matInput formControlName="normMin" type="number" >
+                    <mat-label translate>LTM_OPT_VALUE</mat-label>
+                    <input matInput formControlName="optValue" type="number" required>
                 </mat-form-field>
 
-                <mat-form-field class="default-50">
-                    <mat-label translate>LTM_MAX_VALUE</mat-label>
-                    <input matInput formControlName="normMax" type="number" >
-                </mat-form-field>
-            </fieldset>
+                <fieldset>
+                    <legend translate>LTM_INPUT</legend>
+                    <mat-form-field class="default-50">
+                        <mat-label translate>LTM_MIN_VALUE</mat-label>
+                        <input matInput formControlName="minValue" type="number" required>
+                    </mat-form-field>
+
+                    <mat-form-field class="default-50">
+                        <mat-label translate>LTM_MAX_VALUE</mat-label>
+                        <input matInput formControlName="maxValue" type="number" required>
+                    </mat-form-field>
+                </fieldset>
+
+                <fieldset>
+                    <legend translate>LTM_NORM</legend>
+                    <mat-form-field class="default-50">
+                        <mat-label translate>LTM_MIN_VALUE</mat-label>
+                        <input matInput formControlName="normMin" type="number">
+                    </mat-form-field>
+
+                    <mat-form-field class="default-50">
+                        <mat-label translate>LTM_MAX_VALUE</mat-label>
+                        <input matInput formControlName="normMax" type="number">
+                    </mat-form-field>
+                </fieldset>
 
 
-
-<!--            <pre>{{form?.value | json }}</pre>-->
-        </form>
+                <!--            <pre>{{form?.value | json }}</pre>-->
+            </form>
         }
     </mat-card-content>
 </mat-card>

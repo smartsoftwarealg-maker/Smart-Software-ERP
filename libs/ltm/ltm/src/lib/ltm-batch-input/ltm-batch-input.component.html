@@ -86,7 +86,7 @@
         </mat-card-content>
     </mat-card>
     <div class="content__div">
-        <mat-card >
+        <mat-card>
             <div formArrayName="tests" class="group_div test__div">
                 @for (f of tests.controls; track f; let i = $index) {
                     <div [formGroupName]="i">
@@ -137,3 +137,23 @@
     </mat-card>
 }
 
+<table class="content__div" >
+
+    <tr class="content__div f-background">
+        @for (f of totalsLabels; track f; let i = $index) {
+            <th class="b-primary"> {{ f }}</th>
+        }
+    </tr>
+    @for (c of COLOR_RANGE; track c.id) {
+        <tr class="content__div f-background">
+            @for (f of totals.controls; track f; let i = $index) {
+                @let deviation = totalsOptValues[i] > 0 ? 100.0 * (f.controls['value'].value - totalsOptValues[i]) / totalsOptValues[i] : 100.0;
+                <td [style.background-color]="c.color">
+                    @if (deviation >= c.range[0] && deviation <= c.range[1]) {
+                        <i class="fa-solid fa-circle-dot dot"></i>
+                    }
+                </td>
+            }
+        </tr>
+    }
+</table>
