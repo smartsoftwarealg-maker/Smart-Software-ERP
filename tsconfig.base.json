@@ -466,6 +466,7 @@
             "@ss/payroll/work-stoppage": [
                 "libs/payroll/work-stoppage/src/index.ts"
             ],
+            "@ss/production/lot": ["libs/production/lot/src/index.ts"],
             "@ss/production/mrp": ["libs/production/mrp/src/index.ts"],
             "@ss/production/production": [
                 "libs/production/production/src/index.ts"
