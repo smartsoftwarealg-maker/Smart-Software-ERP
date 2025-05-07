@@ -19,7 +19,8 @@ mat-form-field {
 .formula_card .input_div {
     width: 150px;
 }
-form, mat-card {
+
+.content__div, form, mat-card {
     width: 90%;
     max-width: 1600px;
     margin: 8px auto;
@@ -166,4 +167,20 @@ mat-error {
 
 mat-card-header {
     border-radius: 1em;
+}
+
+tr, th {
+    height: 1.4em;
+    border: none;
+}
+
+td {
+    color: black;
+    text-align: center;
+    border: none;
+}
+
+table {
+    border-collapse: collapse;
+    border: none;
 }
