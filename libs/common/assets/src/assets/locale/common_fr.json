@@ -377,5 +377,7 @@
     "UPDATED_BY":         "Etabli par",
     "MISS_MATCH":         "Manque de correspondance",
     "QUESTION":           "Question",
-    "ANSWER":             "Répondre"
+    "ANSWER":             "Répondre",
+    "TEAM":               "Équipe",
+    "STATE":              "État"
 }

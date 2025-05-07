@@ -377,5 +377,7 @@
     "UPDATED_BY":         "Updated by",
     "MISS_MATCH":         "Miss match",
     "QUESTION":           "Question",
-    "ANSWER":             "Answer"
+    "ANSWER":             "Answer",
+    "TEAM":               "Team",
+    "STATE":              "State"
 }

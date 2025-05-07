@@ -67,5 +67,11 @@
     "FINAL_PRODUCTS":           "المنتجات النهائية",
     "SUBCLASS":                "الفئة الفرعية",
     "PURCHASE_UNIT":           "وحدة الشراء",
-    "VAT2":                   "الضريبة2"
+    "VAT2":                   "الضريبة2",
+    "LOT_MANAGEMENT":          "إدارة البضاعة",
+    "EDIT_LOT":                "تحرير البضاعة",
+    "CREATION_DATE":           "تاريخ الإنشاء",
+    "EXPIRATION_DATE":         "تاريخ انتهاء الصلاحية",
+    "EXPIRES":                 "تنتهي صلاحيتها",
+    "LOT_NUMBER":              "عدد البضائع"
 }
