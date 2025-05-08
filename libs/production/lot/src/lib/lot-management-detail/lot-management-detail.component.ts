@@ -11,13 +11,13 @@ import {
 } from '@ss/common/ui-auto-complete';
 import { HttpService, MaterialModule } from '@ss/common/api-common';
 import { CommonModule } from '@angular/common';
-import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
+import { TranslateDirective } from '@ss/common/ui-lang';
 import { DatePickerComponent } from '@ss/common/ui-datepicker';
 import { LotAutoCompleteModel } from '@ss/master-data/api-article';
 import { Agent, SupplierService } from '@ss/logistics/api-agent';
 
 @Component({
-    selector: 'ss-lot-management-detail',
+    selector: 'ss-production-lot-management-detail',
     styleUrls: ['./lot-management-detail.component.scss'],
     templateUrl: './lot-management-detail.component.html',
     standalone: true,
@@ -27,7 +27,6 @@ import { Agent, SupplierService } from '@ss/logistics/api-agent';
         RouterModule,
         TranslateDirective,
         UiAutoCompleteComponent,
-        TranslatePipe,
         DatePickerComponent,
     ],
 })

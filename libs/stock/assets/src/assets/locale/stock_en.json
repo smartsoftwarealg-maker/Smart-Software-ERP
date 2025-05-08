@@ -74,5 +74,9 @@
     "CREATION_DATE":           "Creation date",
     "EXPIRATION_DATE":         "expiration date",
     "EXPIRES":                 "Expires",
-    "LOT_NUMBER":              "Lot number"
+    "LOT_NUMBER":              "Lot number",
+    "LOT_ANALYSIS":            "Lot analysis",
+    "ANALYSE_LOT":             "Analyse lot",
+    "ANALYSIS_DATE":           "Analysis date",
+    "ANALYZED":                "Analyzed"
 }

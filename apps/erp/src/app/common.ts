@@ -512,6 +512,7 @@ export const PRODUCTION_MRP_URL = 'mrp';
 export const PRODUCTION_BOM_URL = 'bom';
 export const PRODUCTION_ARTICLE_URL = 'production-article';
 export const PRODUCTION_LOT_MANAGEMENT_URL = 'lot-management';
+export const PRODUCTION_LOT_ANALYSIS_URL = 'lot-analysis';
 
 // #############
 // # FULL URLS #
@@ -974,6 +975,7 @@ export const ABS_PRODUCTION_MRP_URL = '/' + [MAIN_PAGE_URL, PRODUCTION_URL, PROD
 export const ABS_PRODUCTION_BOM_PRODUCTS = '/' + [MAIN_PAGE_URL, PRODUCTION_URL, BOM_URL].join('/');
 export const ABS_PRODUCTION_ARTICLE_URL = '/' + [MAIN_PAGE_URL, PRODUCTION_URL, PRODUCTION_ARTICLE_URL].join('/');
 export const ABS_PRODUCTION_LOT_MANAGEMENT_URL = '/' + [MAIN_PAGE_URL, PRODUCTION_URL, PRODUCTION_LOT_MANAGEMENT_URL].join('/');
+export const ABS_PRODUCTION_LOT_ANALYSIS_URL = '/' + [MAIN_PAGE_URL, PRODUCTION_URL, PRODUCTION_LOT_ANALYSIS_URL].join('/');
 
 // ######################################
 // #            Other things            #
