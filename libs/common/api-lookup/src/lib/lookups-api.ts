@@ -193,6 +193,9 @@ export interface Lot {
     team?: string;
     center?: number;
     supplierDescription?: string;
+    memo?: string;
+    analyzed?:boolean;
+    analysisDate?: Date;
 }
 
 // export interface Lot {

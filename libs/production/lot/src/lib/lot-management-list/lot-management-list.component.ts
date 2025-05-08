@@ -4,7 +4,7 @@ import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { MaterialModule, PaginatorPersistenceService } from '@ss/common/api-common';
 import { CommonModule } from '@angular/common';
 import { PaginationComponent } from '@ss/common/ui-pagination';
-import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
+import { TranslateDirective } from '@ss/common/ui-lang';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { DefaultReportService } from '@ss/common/ui-default-report-component';
@@ -26,13 +26,10 @@ import { Lot, LotsService } from '@ss/common/api-lookup';
 export class LotManagementListComponent extends BaseEntityListComponent<Lot> implements OnInit {
     displayedColumns = [
         'description',
-        //'descriptionAr',
         'supplier',
         'creationDate',
         'expirationDate',
         'expires',
-        //'lotState',
-        //'team',
     ];
 
     constructor(

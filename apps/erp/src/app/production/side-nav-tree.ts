@@ -3,7 +3,7 @@ import {
     ABS_PRODUCTION_BOM_PRODUCTS,
     ABS_PRODUCTION_MRP_URL,
     ABS_PRODUCTION_ORDER_URL,
-    ABS_PRODUCTION_URL, ABS_PRODUCTION_ARTICLE_URL, ABS_PRODUCTION_LOT_MANAGEMENT_URL
+    ABS_PRODUCTION_URL, ABS_PRODUCTION_ARTICLE_URL, ABS_PRODUCTION_LOT_MANAGEMENT_URL, ABS_PRODUCTION_LOT_ANALYSIS_URL
 } from '../common';
 
 export const productionNavTree: SideNavNode = {
@@ -22,6 +22,12 @@ export const productionNavTree: SideNavNode = {
             icon: 'fa-solid fa-truck-ramp-box',
             route: ABS_PRODUCTION_LOT_MANAGEMENT_URL,
             accessRights: 'LotManagement'
+        },
+        {
+            name: 'STOCK_LOT_ANALYSIS',
+            icon: 'fa-solid fa-magnifying-glass-chart',
+            route: ABS_PRODUCTION_LOT_ANALYSIS_URL,
+            accessRights: 'LotAnalysis'
         },
         {
             name: 'PROD_BOM',
