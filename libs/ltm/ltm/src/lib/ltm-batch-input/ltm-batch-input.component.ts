@@ -387,7 +387,7 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
                     .forEach(t => {
                         this.totalsLabels.push(t.testDescription);
                         this.totalsLimits.push([t.minValue, t.maxValue || 999]);
-                        this.totalsOptValues.push(t.optValue||0);
+                        this.totalsOptValues.push(t.optValue|| (t.normMin + t.normMax)/2);
                         this.formulas.push(t.formula);
                         if (t.varianceControl) {
                             this.varianceControls.push({variable: t.variable, description: t.testDescription, formula: t.formula});

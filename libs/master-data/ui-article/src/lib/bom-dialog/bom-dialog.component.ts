@@ -2,7 +2,7 @@ import { Component, Inject, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MaterialModule } from '@ss/common/api-common';
 import { MatButtonModule } from '@angular/material/button';
-import { ArticleService, BOM } from '@ss/master-data/api-article';
+import { ArticleIdAutoCompleteModel, ArticleService, BOM } from '@ss/master-data/api-article';
 import { FormBuilder, Validators } from '@angular/forms';
 import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
@@ -26,7 +26,7 @@ export class BomDialogComponent {
     private articleSrv = inject(ArticleService);
     private fb = inject(FormBuilder);
 
-    articleLookup = new DefaultAutoCompleteModel(this.articleSrv, 'id', 'description2');
+    articleLookup = new ArticleIdAutoCompleteModel(this.articleSrv);
     form = this.fb.group( {
         id:               [0],
         parentId:         [0],

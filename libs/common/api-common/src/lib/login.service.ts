@@ -246,19 +246,18 @@ export class LoginService {
               //this.#router.navigate(['/' + CENTER_SELECT_URL]);
               this.resetCode(info.ctx.agentId).subscribe((res) => {
                   const url = res.code != "" ? UPDATE_PASSWORD_URL : CENTER_SELECT_URL
-                  this.#router.navigate(['/' + url]);
+                  this.#router.navigate(['/' + url]).then();
               });
               if (onFinish != null) {
                   onFinish();
               }
           },
-                error:
-          err => {
+                error: () => {
               this.wrongData = true;
               if (onFinish != null) {
                   onFinish();
               }
-              throw err;
+              // throw err;
           },
                 complete: () => {
                     if (onFinish != null) {

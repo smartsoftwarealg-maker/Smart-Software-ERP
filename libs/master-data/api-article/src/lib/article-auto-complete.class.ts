@@ -16,7 +16,7 @@ export class ArticleAutoCompleteModel extends DefaultAutoCompleteModel<Article> 
         this.evenEmitter.emit(art);
     };
 
-    override toString = (x: any) => x ? `${x[this.idField]} ${x[this.descriptionField]}`.substring(0, 50) : null;
+    override toString = (x: Article) => x ? `${x.reference} ${x.description2}`.substring(0, 50) : null;
 }
 
 export class LotAutoCompleteModel extends DefaultAutoCompleteModel<Lot> {
@@ -31,3 +31,16 @@ export class LotAutoCompleteModel extends DefaultAutoCompleteModel<Lot> {
     };
 }
 
+export class ArticleIdAutoCompleteModel extends DefaultAutoCompleteModel<Article> {
+    readonly evenEmitter = new EventEmitter<number | string>();
+
+    constructor(public articleSrv: BaseEntityExtendedService<Article>) {
+        super(articleSrv, 'id', 'description2');
+    }
+
+    override onValueChanged = (art: string | number) => {
+        this.evenEmitter.emit(art);
+    };
+
+    override toString = (x: Article) => x ? `${x.reference} ${x.description2}`.substring(0, 50) : null;
+}
