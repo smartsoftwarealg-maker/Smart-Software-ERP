@@ -1,0 +1,97 @@
+<mat-card class="size_div">
+    <div class="header_div">
+        <mat-form-field style="max-width: 200px" class="default-100">
+            <mat-label><span translate>COMMON_REFERENCE</span></mat-label>
+            <ss-auto-complete matInput
+                              [formControl]="refFC"
+                              [model]="articleLookup">
+            </ss-auto-complete>
+
+        </mat-form-field>
+        <button mat-mini-fab
+                class="default-25 small-50"
+                type="submit"
+                matTooltip="{{'COMMON_SEARCH'|translate}}"
+                color="primary"
+                (click)="refresh()">
+            <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+    </div>
+</mat-card>
+
+<div class="table-container main-container ">
+    <mat-table mat-table [dataSource]="data" class="main-table">
+
+        <ng-container matColumnDef="description">
+            <mat-header-cell *matHeaderCellDef translate>COMMON_DESCRIPTION</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{ e.description }}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="descriptionAr">
+            <mat-header-cell *matHeaderCellDef translate>COMMON_DESCRIPTION_AR</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{ e.descriptionAr }}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="supplier">
+            <mat-header-cell *matHeaderCellDef translate>LOGISTICS_SUPPLIER</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{ e.supplierDescription }}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="creationDate">
+            <mat-header-cell *matHeaderCellDef translate>STOCK_CREATION_DATE</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{ e.creationDate | date: 'dd/MM/yyyy' }}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="expirationDate">
+            <mat-header-cell *matHeaderCellDef translate>STOCK_EXPIRATION_DATE</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{ e.expirationDate | date: 'dd/MM/yyyy' }}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="lotState">
+            <mat-header-cell *matHeaderCellDef translate>COMMON_STATE</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{ e.lotState }}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="lotNumber">
+            <mat-header-cell *matHeaderCellDef translate>STOCK_LOT_NUMBER</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{ e.lotNumber }}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="team">
+            <mat-header-cell *matHeaderCellDef translate>COMMON_TEAM</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{ e.team }}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="expires">
+            <mat-header-cell *matHeaderCellDef translate>STOCK_EXPIRES</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                <mat-checkbox [checked]="e.expires" disabled="true"></mat-checkbox>
+            </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+        <mat-row class="selectable" [class.selected]="row.id == selected" (click)="selectRow(row)"
+                 *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+</div>
+
+<div class="pagination-container b-b-background">
+    <ss-pagination [paginationModel]="pagination"></ss-pagination>
+</div>
+

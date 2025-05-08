@@ -73,5 +73,9 @@
     "CREATION_DATE":           "تاريخ الإنشاء",
     "EXPIRATION_DATE":         "تاريخ انتهاء الصلاحية",
     "EXPIRES":                 "تنتهي صلاحيتها",
-    "LOT_NUMBER":              "عدد البضائع"
+    "LOT_NUMBER":              "عدد البضائع",
+    "LOT_ANALYSIS":            "تحليل البضائع",
+    "ANALYSE_LOT":             "تحليل البضاعة",
+    "ANALYSIS_DATE":           "تاريخ التحليل",
+    "ANALYZED":                "تم تحليله"
 }
