@@ -76,7 +76,7 @@ export class ReportViewComponent extends BaseEntityListComponent<ReportParam> im
 
     pdfSrc: string|null = null;
     htmlSrc: SafeHtml = null;
-    generating = false;
+    generating = signal(false);
     // leftPaneHidden = false;
     isAndroid = false;
     form: UntypedFormGroup = null;
@@ -185,11 +185,15 @@ export class ReportViewComponent extends BaseEntityListComponent<ReportParam> im
             if (this.isAndroid) {
                 this.writeThenOpenFile(res).then();
             } else {
-                const wind = window.open(URL.createObjectURL(res), '_blank');
-                wind.onload = (ev) => setTimeout(() => {
-                    (ev.currentTarget as Window).document.title = `${this.selectedReport.name.replace('.jasper', '')}.pdf`;
-                    // wind.document.title = `${this.selectedReport.name.replace('.jasper', '')}.pdf`;
-                }, 300)
+                var link = document.createElement("a");
+                link.href = URL.createObjectURL(res);
+                link.download = `${this.selectedReport.name.replace('.jasper', '')}.pdf`;
+                link.click();
+                // const wind = window.open(URL.createObjectURL(res), '_blank');
+                // wind.onload = (ev) => setTimeout(() => {
+                //     (ev.currentTarget as Window).document.title = `${this.selectedReport.name.replace('.jasper', '')}.pdf`;
+                //     // wind.document.title = `${this.selectedReport.name.replace('.jasper', '')}.pdf`;
+                // }, 300)
             }
         } else {
             const report = `<html lang="en">
@@ -202,20 +206,18 @@ export class ReportViewComponent extends BaseEntityListComponent<ReportParam> im
                                 </html>`;
             window.open('_blank').document.write(report);
         }
-        this.generating = false;
+        this.generating.set(false);
     }
 
-    private error(): Observable<any> {
-        return this.httpSrv
-            .get(`/reports/view?uuid=${this.uuid}`)
-            .pipe(delay(3000),
-                switchMap(res => res['processing'] ? this.error() : of(res)));
+    private error(err: any): Observable<any> {
+        this.generating.set(false);
+        throw err;
     }
 
     generateReport() {
         this.releasePdf();
         this.htmlSrc = null;
-        this.generating = true;
+        this.generating.set(true);
         this.uuid = uuidv6();
         const data: ReportViewData = {
             app: this.app + this.selectedReport.parent,
@@ -242,7 +244,10 @@ export class ReportViewComponent extends BaseEntityListComponent<ReportParam> im
             }
         })).subscribe({
             next: res => this.doReportGeneration(res, data),
-            error: err => this.error()
+            error: err => {
+                this.generating.set(false);
+                throw err;
+            }
             // {
             //     this.generating = false;
             //     if (err.error) {
@@ -339,7 +344,7 @@ export class ReportViewComponent extends BaseEntityListComponent<ReportParam> im
 
     saveParams() {
         this.htmlSrc = null;
-        this.generating = true;
+        this.generating.set(true);
         const data: ReportViewData = {
             app: this.app + this.selectedReport.parent,
             rType: this.form.value.reportType,
@@ -356,11 +361,14 @@ export class ReportViewComponent extends BaseEntityListComponent<ReportParam> im
                 if (res['count']) {
                     this.snackBarSrv.showSuccessMessage();
                 }
-                this.generating = false;
+                this.generating.set(false);
             },
             error: err => {
-                this.generating = false;
-                throw err;
+                if (err.status === 500) {
+                    this.generating.set(false);
+                    throw err;
+                }
+                this.error(null);
             }
         });
         this.showParameterSaveButton.set(false);
