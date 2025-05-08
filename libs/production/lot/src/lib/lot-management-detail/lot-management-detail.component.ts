@@ -27,7 +27,6 @@ import { Agent, SupplierService } from '@ss/logistics/api-agent';
         RouterModule,
         TranslateDirective,
         UiAutoCompleteComponent,
-        TranslatePipe,
         DatePickerComponent,
     ],
 })

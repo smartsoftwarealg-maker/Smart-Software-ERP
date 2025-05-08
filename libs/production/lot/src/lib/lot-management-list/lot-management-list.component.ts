@@ -19,7 +19,6 @@ import { Lot, LotsService } from '@ss/common/api-lookup';
         CommonModule,
         MaterialModule,
         TranslateDirective,
-        TranslatePipe,
         RouterModule,
         PaginationComponent,
     ],
