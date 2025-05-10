@@ -25,7 +25,7 @@ import {
     PaginatorPersistenceService
 } from '@ss/common/api-common';
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
-import { delay, Observable, of } from 'rxjs';
+import { delay, Observable, of, retry, tap, throwError, timeout, timer } from 'rxjs';
 import { HttpParams } from '@angular/common/http';
 import { FormControl, FormGroup, UntypedFormGroup } from '@angular/forms';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
@@ -187,8 +187,8 @@ export class ReportViewComponent extends BaseEntityListComponent<ReportParam> im
             } else {
                 const wind = window.open(URL.createObjectURL(res), '_blank');
                 wind.onload = (ev) => setTimeout(() => {
-                    (ev.currentTarget as Window).document.title = `${this.selectedReport.name.replace('.jasper', '')}.pdf`;
-                    // wind.document.title = `${this.selectedReport.name.replace('.jasper', '')}.pdf`;
+                    const w = ev.currentTarget as Window;
+                    w.document.title = `${this.selectedReport.name.replace('.jasper', '')}.pdf`;
                 }, 300)
             }
         } else {
@@ -203,13 +203,6 @@ export class ReportViewComponent extends BaseEntityListComponent<ReportParam> im
             window.open('_blank').document.write(report);
         }
         this.generating = false;
-    }
-
-    private error(): Observable<any> {
-        return this.httpSrv
-            .get(`/reports/view?uuid=${this.uuid}`)
-            .pipe(delay(3000),
-                switchMap(res => res['processing'] ? this.error() : of(res)));
     }
 
     generateReport() {
@@ -233,16 +226,27 @@ export class ReportViewComponent extends BaseEntityListComponent<ReportParam> im
         const obs = (this.form.value.reportType === 'HTML') ?
             this.reportService.viewHTML(data) : this.reportService.viewPDF(data);
 
-        obs.pipe(map(res => {
-            if (this.form.value.reportType === 'HTML') {
-                return res;
-            } else {
-                const obj: Blob = <Blob>res;
-                return new Blob([obj], { type: this.getMimeType() });
-            }
-        })).subscribe({
+        obs.pipe(
+            retry({ delay: (error, retryCount) => {
+                  if (error.status === 500 || retryCount > 20) {
+                      throw error;
+                  }
+                  return timer(10_000);
+                }}),
+
+            map(res => {
+                if (this.form.value.reportType === 'HTML') {
+                    return res;
+                } else {
+                    const obj: Blob = <Blob>res;
+                    return new Blob([obj], { type: this.getMimeType() });
+                }
+            })).subscribe({
             next: res => this.doReportGeneration(res, data),
-            error: err => this.error()
+            error: err => {
+                this.generating = false;
+                throw err;
+            }
             // {
             //     this.generating = false;
             //     if (err.error) {
