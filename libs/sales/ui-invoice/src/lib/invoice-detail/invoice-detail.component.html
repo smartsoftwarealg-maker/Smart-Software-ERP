@@ -85,7 +85,35 @@
 
                     <div class="default-50 sm-100"></div>
                     <mat-tab-group>
-                        <mat-tab>
+                        @if (showCurrency()) {
+                            <mat-tab>
+                                <ng-template mat-tab-label>
+                                    <span translate>LOGISTICS_CURRENCY</span>
+                                </ng-template>
+
+                                <mat-form-field class="default-50 sm-100">
+                                    <mat-label translate>LOGISTICS_CURRENCY</mat-label>
+                                    <ss-auto-complete matInput
+                                                      [required]="true"
+                                                      [model]="currencyCompleteModel"
+                                                      formControlName="currency">
+                                    </ss-auto-complete>
+                                    @if (form.controls['currency'].hasError('required')) {
+                                        <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+                                    }
+                                    <mat-error
+                                        *ngIf="form.controls['currency'].hasError('validOption')" translate>
+                                        COMMON_NO_MATCH
+                                    </mat-error>
+                                </mat-form-field>
+
+                                <mat-form-field id="currencyRate" class="default-50 sm-100">
+                                    <mat-label translate>LOGISTICS_EXCHANGE_RATE</mat-label>
+                                    <input type="number" matInput formControlName="currencyRate">
+                                </mat-form-field>
+                            </mat-tab>
+                        } @else {
+                          <mat-tab>
                             <ng-template mat-tab-label>
                                 <span translate>LOGISTICS_DISCOUNT</span>
                             </ng-template>
@@ -102,7 +130,7 @@
                                 <input matInput formControlName="fixedDiscountVAT" type="number">
                             </mat-form-field>
                         </mat-tab>
-                        <mat-tab>
+                            <mat-tab>
                             <ng-template mat-tab-label>
                                 <span translate>LOGISTICS_GUARANTEE</span>
                             </ng-template>
@@ -115,6 +143,7 @@
                                 <input matInput formControlName="ftGuarantee" type="number">
                             </mat-form-field>
                         </mat-tab>
+                       }
                         <mat-tab>
                             <ng-template mat-tab-label>
                                 <span translate>COMMON_MEMO</span>
@@ -129,54 +158,57 @@
                                 <textarea matInput formControlName="footer" cdkTextareaAutosize="true"></textarea>
                             </mat-form-field>
                         </mat-tab>
-                        <mat-tab>
-                            <ng-template mat-tab-label>
-                                <span translate>LOGISTICS_DISPATCH</span>
-                            </ng-template>
+                        @if (!showCurrency()) {
+                            <mat-tab>
+                                <ng-template mat-tab-label>
+                                    <span translate>LOGISTICS_DISPATCH</span>
+                                </ng-template>
 
-                            <mat-form-field class="default-50 sm-100">
-                                <mat-label translate>LOGISTICS_TRANSPORTER</mat-label>
-                                <ss-auto-complete matInput
-                                                  [model]="transporterAutoCompleteModel"
-                                                  formControlName="transporter">
-                                </ss-auto-complete>
-                            </mat-form-field>
-                            <mat-form-field class="default-50 sm-100">
-                                <mat-label translate>LOGISTICS_DRIVER</mat-label>
-                                <input matInput formControlName="driver" type="text">
-                            </mat-form-field>
+                                <mat-form-field class="default-50 sm-100">
+                                    <mat-label translate>LOGISTICS_TRANSPORTER</mat-label>
+                                    <ss-auto-complete matInput
+                                                      [model]="transporterAutoCompleteModel"
+                                                      formControlName="transporter">
+                                    </ss-auto-complete>
+                                </mat-form-field>
+                                <mat-form-field class="default-50 sm-100">
+                                    <mat-label translate>LOGISTICS_DRIVER</mat-label>
+                                    <input matInput formControlName="driver" type="text">
+                                </mat-form-field>
 
-                            <mat-form-field class="default-50 sm-100">
-                                <mat-label translate>LOGISTICS_DRIVER_LICENSE</mat-label>
-                                <input matInput formControlName="license" type="text">
-                            </mat-form-field>
+                                <mat-form-field class="default-50 sm-100">
+                                    <mat-label translate>LOGISTICS_DRIVER_LICENSE</mat-label>
+                                    <input matInput formControlName="license" type="text">
+                                </mat-form-field>
 
-                            <mat-form-field class="default-50 sm-100">
-                                <mat-label translate>COMMON_DATE</mat-label>
-                                <ss-date-picker formControlName="licenseDate"></ss-date-picker>
-                            </mat-form-field>
+                                <mat-form-field class="default-50 sm-100">
+                                    <mat-label translate>COMMON_DATE</mat-label>
+                                    <ss-date-picker formControlName="licenseDate"></ss-date-picker>
+                                </mat-form-field>
 
-                            <mat-form-field class="default-50 sm-100">
-                                <mat-label translate>LOGISTICS_LICENSE_ISSUER</mat-label>
-                                <input matInput formControlName="licenseIssuer" type="text">
-                            </mat-form-field>
+                                <mat-form-field class="default-50 sm-100">
+                                    <mat-label translate>LOGISTICS_LICENSE_ISSUER</mat-label>
+                                    <input matInput formControlName="licenseIssuer" type="text">
+                                </mat-form-field>
 
-                            <mat-form-field class="default-50 sm-100">
-                                <mat-label translate>LOGISTICS_PLATE_NUMBER</mat-label>
-                                <input matInput formControlName="plateNumber" type="text">
-                            </mat-form-field>
+                                <mat-form-field class="default-50 sm-100">
+                                    <mat-label translate>LOGISTICS_PLATE_NUMBER</mat-label>
+                                    <input matInput formControlName="plateNumber" type="text">
+                                </mat-form-field>
 
-                            <mat-form-field class="default-50 sm-100">
-                                <mat-label translate>LOGISTICS_PLATE_NUMBER2</mat-label>
-                                <input matInput formControlName="plateNumber2" type="text">
-                            </mat-form-field>
+                                <mat-form-field class="default-50 sm-100">
+                                    <mat-label translate>LOGISTICS_PLATE_NUMBER2</mat-label>
+                                    <input matInput formControlName="plateNumber2" type="text">
+                                </mat-form-field>
 
-                            <mat-form-field class="default-50 sm-100">
-                                <mat-label translate>LOGISTICS_DESTINATION</mat-label>
-                                <textarea matInput formControlName="footer" cdkTextareaAutosize="true"></textarea>
-                            </mat-form-field>
-                        </mat-tab>
+                                <mat-form-field class="default-50 sm-100">
+                                    <mat-label translate>LOGISTICS_DESTINATION</mat-label>
+                                    <textarea matInput formControlName="footer" cdkTextareaAutosize="true"></textarea>
+                                </mat-form-field>
+                            </mat-tab>
+                        }
                     </mat-tab-group>
+
                 </form>
             }
         </mat-card-content>

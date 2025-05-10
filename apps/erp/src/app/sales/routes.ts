@@ -143,6 +143,39 @@ export const mainRoutes: Routes = [
         ]
     },
     {
+        path: 'export-invoice',
+        children: [
+            {
+                path: LIST_URL,
+                component: InvoiceListComponent,
+                canActivate: [loginGuard],
+                data: { showCurrency: true },
+                children: docInfoRoutes
+            },
+            {
+                path: ':id',
+                component: InvoiceDetailComponent,
+                data: { showCurrency: true },
+                canActivate: [loginGuard],
+                canDeactivate: [CanDeactivateService],
+                children: [
+                    { path: '', pathMatch: 'full', redirectTo: 'lines-list' },
+                    { path: 'lines-list',
+                        component: InvoiceLinesListComponent,
+                        children: docInfoRoutes
+                    },
+                    {
+                        path: 'lines-detail',
+                        children: [
+                            { path: ':id', component: InvoiceLinesDetailComponent, canDeactivate: [CanDeactivateService] },
+                        ]
+                    },
+                    ...docInfoRoutes
+                ]
+            },
+        ]
+    },
+    {
         path: 'delivery',
         children: [
             {

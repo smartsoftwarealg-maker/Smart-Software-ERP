@@ -24,5 +24,6 @@
     "COUNT":        "عدد الأصناف",
     "DUPLICATION":  "نسخ",
     "COMPLEMENT_INVOICE": "تكملة الفاتورة",
-    "COMPLEMENT_CANCEL": "تكملة الإلغاء"
+    "COMPLEMENT_CANCEL": "تكملة الإلغاء",
+    "EXPORT_INVOICE":       "فاتورة تصدير"
 }

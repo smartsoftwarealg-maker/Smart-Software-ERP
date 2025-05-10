@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import { Component, inject, input } from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
@@ -12,16 +12,22 @@ import { MatSort, MatSortHeader } from '@angular/material/sort';
 import { TranslateDirective } from '@ss/common/ui-lang';
 import { PaginationComponent } from '@ss/common/ui-pagination';
 import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
-import { DatePipe } from '@angular/common';
+import { DatePipe, DecimalPipe } from '@angular/common';
+import { CurrencyService, Lookup } from '@ss/common/api-lookup';
 
 @Component({
     selector: 'ss-INVOICE-list',
     styleUrls: ['../../../../../common/assets/src/assets/transac-list.scss'],
     templateUrl: './invoice-list.component.html',
     standalone: true,
-    imports: [MatTable, MatSort, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatSortHeader, TranslateDirective, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, PaginationComponent, DocInfoComponent, DatePipe]
+    imports: [MatTable, MatSort, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatSortHeader, TranslateDirective, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, PaginationComponent, DocInfoComponent, DatePipe, DecimalPipe]
 })
 export class InvoiceListComponent extends BaseEntityListComponent<Transaction> {
+    #currencySrv = inject(CurrencyService);
+    currencyMap: Map<number, string> = new Map<number, string>();
+
+    showCurrency = input(false);
+
     displayedColumns = [
         'number',
         'date',
@@ -43,5 +49,21 @@ export class InvoiceListComponent extends BaseEntityListComponent<Transaction> {
         public override defReportSrv: DefaultReportService,
         public override pagPersistSrv: PaginatorPersistenceService) {
         super(invoiceSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv, 'SALES_INVOICE');
+    }
+
+    ngOnInit() {
+        super.ngOnInit();
+        if (this.showCurrency()) {
+            this.#currencySrv
+                .getList(0, 50)
+                .subscribe((currencies) => {
+                currencies.body.forEach(c => this.currencyMap.set(c.id, c.description))
+                const chunk1 = this.displayedColumns.slice(0, 5);
+                const chunk2 = this.displayedColumns.slice(5);
+                chunk1.push('currency');
+                chunk1.push('currencyRate');
+                this.displayedColumns = chunk1.concat(chunk2);
+            });
+        }
     }
 }

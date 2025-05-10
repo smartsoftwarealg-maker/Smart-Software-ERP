@@ -24,5 +24,6 @@
     "COUNT":        "Nombre d'éléments",
     "DUPLICATION":  "Duplication",
     "COMPLEMENT_INVOICE": "Complément facture",
-    "COMPLEMENT_CANCEL": "Annulation Complément"
+    "COMPLEMENT_CANCEL": "Annulation Complément",
+    "EXPORT_INVOICE":       "Facture d'exportation"
 }
