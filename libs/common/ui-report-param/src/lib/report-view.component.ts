@@ -228,7 +228,7 @@ export class ReportViewComponent extends BaseEntityListComponent<ReportParam> im
 
         obs.pipe(
             retry({ delay: (error, retryCount) => {
-                  if (error.status === 500 || retryCount > 20) {
+                  if (error.status === 500 || retryCount > 15) {
                       throw error;
                   }
                   return timer(10_000);
