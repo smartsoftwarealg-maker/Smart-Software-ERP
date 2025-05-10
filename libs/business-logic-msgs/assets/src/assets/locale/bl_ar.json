@@ -64,5 +64,6 @@
     "LONG_INPUT_FILTER":            "النص طويل جداً. لا تزد على 1600 حرف.",
     "USED_FORMULA":                 "هذا العنصر مستعمل و لا يمكن حذفه",
     "INVALID_DATE":                 "تاريخ غير صالح",
-    "WRONG_FORMULA":                "صيغة خاطئة"
+    "WRONG_FORMULA":                "صيغة خاطئة",
+    "CIRCULAR_BOM":                 "قائمة المواد الدائرية"
 }
