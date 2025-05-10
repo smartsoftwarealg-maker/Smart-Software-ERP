@@ -1,16 +1,16 @@
 import { FocusMonitor } from '@angular/cdk/a11y';
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
 import {
-    Component,
+    Component, computed,
     DoCheck,
     ElementRef,
     HostBinding,
-    inject,
+    inject, input,
     Input,
     OnDestroy,
     OnInit,
     Optional,
-    Self
+    Self, signal
 } from '@angular/core';
 import { ControlValueAccessor, UntypedFormControl, NgControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatAutocompleteSelectedEvent, MatAutocompleteTrigger, MatAutocomplete } from '@angular/material/autocomplete';
@@ -38,8 +38,8 @@ import { TranslatePipe } from '@ss/common/ui-lang';
 })
 export class UiAutoCompleteComponent implements ControlValueAccessor, MatFormFieldControl<Id>, DoCheck, OnInit, OnDestroy {
     private snackBarSrv = inject(SnackBarService);
-    notFound = false;
-    allowAdd = false;
+    notFound = signal(false);
+    canAdd = input(false);
 
     constructor(
         @Optional() @Self() public ngControl: NgControl,
@@ -61,10 +61,10 @@ export class UiAutoCompleteComponent implements ControlValueAccessor, MatFormFie
         return this.selected;
     }
 
-    @Input()
-    set canAdd(b: boolean) {
-        this.allowAdd = b;
-    }
+    // @Input()
+    // set canAdd(b: boolean) {
+    //     this.allowAdd.set(b);
+    // }
 
     @Input()
     set value(selected: Id) {
@@ -81,7 +81,9 @@ export class UiAutoCompleteComponent implements ControlValueAccessor, MatFormFie
         return this.pPlaceholder;
     }
 
-    get focused() { return this.isFocused; }
+    get focused() {
+        return this.isFocused;
+    }
 
     get empty(): boolean {
         return !this.autoControl.value;
@@ -96,12 +98,14 @@ export class UiAutoCompleteComponent implements ControlValueAccessor, MatFormFie
     }
 
     @Input()
-    set required(b: boolean|string) {
+    set required(b: boolean | string) {
         this.isRequired = b === true || b === 'true';
         this.stateChanges.next();
     }
 
-    get disabled(): boolean { return this.isDisabled; }
+    get disabled(): boolean {
+        return this.isDisabled;
+    }
 
     @Input()
     set disabled(value: boolean) {
@@ -129,11 +133,16 @@ export class UiAutoCompleteComponent implements ControlValueAccessor, MatFormFie
     isFocused = false;
     isDisabled: boolean;
     selected: Id;
-    loading = false;
+    loading = signal(false);
+    isInputInvalid = computed(() => !this.loading() && !!this.autoControl.value && this.selected == null);
+    addAction = signal<() => any|null>(null);
+
     counter = 0; // identifies the query, used to order queries and discard delayed result if they expire
-    //
+
+    //Covert to signal
     @Input()
-        model: AutoCompleteModel<any>;
+    model: AutoCompleteModel<any>;
+
     lastFilterValue: string;
 
     @Input('aria-describedby') userAriaDescribedBy: string;
@@ -213,28 +222,29 @@ export class UiAutoCompleteComponent implements ControlValueAccessor, MatFormFie
 
     loadValue(value: Id, runnable: () => void) {
         if (this.model) {
-            this.loading = true;
+            this.loading.set(true);
             this.model
                 .getById(value)
-                .subscribe(e => {
-                    this.model.cache = e;
-                    this.model.options = [e];
-                    this.selected = value;
-                    // this.autoControl.setValue(e);
-                    this.setAutoControlValue(e);
-                    runnable();
-                    this.loading = false;
-                }, e => {
-                    this.loading = false;
-                    throw e;
+                .subscribe({
+                    next: e => {
+                        this.model.cache = e;
+                        this.model.options = [e];
+                        this.selected = value;
+                        // this.autoControl.setValue(e);
+                        this.setAutoControlValue(e);
+                        runnable();
+                        this.loading.set(false);
+                    }, error: e => {
+                        this.loading.set(false);
+                        throw e;
+                    }
                 });
         } else {
             throw new Error('Auto complete model is null');
         }
     }
 
-    setDescribedByIds(ids: string[]) {
-    }
+    setDescribedByIds(ids: string[]) { }
 
     onContainerClick(event: MouseEvent) {
         if ((event.target as Element).tagName.toLowerCase() != 'input') {
@@ -297,11 +307,11 @@ export class UiAutoCompleteComponent implements ControlValueAccessor, MatFormFie
                 // if (this.loading) {
                 //    throw new Error('Was loading already');
                 //}
-                this.loading = true;
+                this.loading.set(true);
                 return txt == null ? of([]) : this.model.filter(txt).pipe(
                     tap(options => {
-                        const curText  = this.autoControl.value.toString();
-                        this.notFound = curText.length > 3 && options.length === 0;
+                        const curText = this.autoControl.value.toString();
+                        this.notFound.set(curText.length > 3 && options.length === 0);
                         if (id == this.counter) {
                             this.model.options = options;
                             if (options.length === 1) {
@@ -316,10 +326,10 @@ export class UiAutoCompleteComponent implements ControlValueAccessor, MatFormFie
             })
         ).subscribe(
             {
-                next: () => this.loading = false,
+                next: () => this.loading.set(false),
                 error: err => {
                     this.model.options = [];
-                    this.loading = false;
+                    this.loading.set(false);
                     throw err;
                 }
             }
@@ -350,9 +360,9 @@ export class UiAutoCompleteComponent implements ControlValueAccessor, MatFormFie
         this.callModelSelectEvent(obj);
     }
 
-    isInputInvalid(): boolean {
-        return !this.loading && !!this.autoControl.value && this.selected == null;
-    }
+    // isInputInvalid(): boolean {
+    //     return !this.loading() && !!this.autoControl.value && this.selected == null;
+    // }
 
     clearInput(): void {
         this.setValue(null, true);
@@ -360,7 +370,7 @@ export class UiAutoCompleteComponent implements ControlValueAccessor, MatFormFie
     }
 
     hasNoMatch(): boolean {
-        return !this.loading && this.model.options && this.model.options.length == 0;
+        return !this.loading() && this.model.options && this.model.options.length == 0;
     }
 
     addCurrentText() {
