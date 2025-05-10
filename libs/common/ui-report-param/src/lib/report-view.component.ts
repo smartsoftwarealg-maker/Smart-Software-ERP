@@ -25,7 +25,7 @@ import {
     PaginatorPersistenceService
 } from '@ss/common/api-common';
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
-import { delay, Observable, of } from 'rxjs';
+import { delay, Observable, of, retry, tap, throwError, timeout, timer } from 'rxjs';
 import { HttpParams } from '@angular/common/http';
 import { FormControl, FormGroup, UntypedFormGroup } from '@angular/forms';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
@@ -185,15 +185,11 @@ export class ReportViewComponent extends BaseEntityListComponent<ReportParam> im
             if (this.isAndroid) {
                 this.writeThenOpenFile(res).then();
             } else {
-                var link = document.createElement("a");
-                link.href = URL.createObjectURL(res);
-                link.download = `${this.selectedReport.name.replace('.jasper', '')}.pdf`;
-                link.click();
-                // const wind = window.open(URL.createObjectURL(res), '_blank');
-                // wind.onload = (ev) => setTimeout(() => {
-                //     (ev.currentTarget as Window).document.title = `${this.selectedReport.name.replace('.jasper', '')}.pdf`;
-                //     // wind.document.title = `${this.selectedReport.name.replace('.jasper', '')}.pdf`;
-                // }, 300)
+                const wind = window.open(URL.createObjectURL(res), '_blank');
+                wind.onload = (ev) => setTimeout(() => {
+                    const w = ev.currentTarget as Window;
+                    w.document.title = `${this.selectedReport.name.replace('.jasper', '')}.pdf`;
+                }, 300)
             }
         } else {
             const report = `<html lang="en">
@@ -207,11 +203,6 @@ export class ReportViewComponent extends BaseEntityListComponent<ReportParam> im
             window.open('_blank').document.write(report);
         }
         this.generating.set(false);
-    }
-
-    private error(err: any): Observable<any> {
-        this.generating.set(false);
-        throw err;
     }
 
     generateReport() {
@@ -235,14 +226,22 @@ export class ReportViewComponent extends BaseEntityListComponent<ReportParam> im
         const obs = (this.form.value.reportType === 'HTML') ?
             this.reportService.viewHTML(data) : this.reportService.viewPDF(data);
 
-        obs.pipe(map(res => {
-            if (this.form.value.reportType === 'HTML') {
-                return res;
-            } else {
-                const obj: Blob = <Blob>res;
-                return new Blob([obj], { type: this.getMimeType() });
-            }
-        })).subscribe({
+        obs.pipe(
+            retry({ delay: (error, retryCount) => {
+                  if (error.status === 500 || retryCount > 20) {
+                      throw error;
+                  }
+                  return timer(10_000);
+                }}),
+
+            map(res => {
+                if (this.form.value.reportType === 'HTML') {
+                    return res;
+                } else {
+                    const obj: Blob = <Blob>res;
+                    return new Blob([obj], { type: this.getMimeType() });
+                }
+            })).subscribe({
             next: res => this.doReportGeneration(res, data),
             error: err => {
                 this.generating.set(false);
@@ -364,11 +363,8 @@ export class ReportViewComponent extends BaseEntityListComponent<ReportParam> im
                 this.generating.set(false);
             },
             error: err => {
-                if (err.status === 500) {
                     this.generating.set(false);
                     throw err;
-                }
-                this.error(null);
             }
         });
         this.showParameterSaveButton.set(false);
