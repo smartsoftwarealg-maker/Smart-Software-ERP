@@ -1,6 +1,6 @@
 .size_div {
     width: 96%;
-    max-width: 1600px;
+    max-width: 1200px;
     margin: 4px auto;
 }
 
@@ -14,14 +14,20 @@
     flex-wrap: wrap;
 }
 
+.search-input {
+    width: 400px;
+}
+
 .table-container {
     overflow-x: auto;
     min-height: 40%;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .pagination-container {
     width: 90%;
-    max-width: 1400px;
+    max-width: 1200px;
     margin: 4PX auto;
 }
 

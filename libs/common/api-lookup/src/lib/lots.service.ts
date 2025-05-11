@@ -12,10 +12,32 @@ export class LotsService extends BaseEntityExtendedService<Lot> {
         super(httpSrv, LOTS_URL);
     }
 
-    getLots(reference: string, pageModel: PaginationModel, filter?: string, sortBy?: string,) {
+    getLots(
+        reference: string,
+        pageModel: PaginationModel,
+        filter?: string,
+        sortBy?: string,
+    ) {
         const page = pageModel.page;
         const pageSize = pageModel.pageSize;
         const prams = new HttpParams().append('find', reference);
-        return this.httpSrv.getData<Lot>('/articles/lots', page, pageSize, filter, sortBy, prams,);
+        return this.httpSrv.getData<Lot>(
+            '/articles/lots',
+            page,
+            pageSize,
+            filter,
+            sortBy,
+            prams,
+        );
+    }
+
+    protected reference: string = null;
+
+    get getReference() {
+        return this.reference;
+    }
+
+    setReference(reference: string) {
+        this.reference = reference;
     }
 }
