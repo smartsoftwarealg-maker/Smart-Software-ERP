@@ -4,7 +4,13 @@ import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LookupsService } from '@ss/common/api-lookup';
-import { HttpService, LanguageService, LoginService, PaginatorPersistenceService } from '@ss/common/api-common';
+import {
+    HttpService,
+    LanguageService,
+    LoginService,
+    MaterialModule,
+    PaginatorPersistenceService
+} from '@ss/common/api-common';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { DefaultReportService } from '@ss/common/ui-default-report-component';
 import { Payment, SSPaymentService } from '@ss/scheduled-sales/api-scheduled-sales';
@@ -22,12 +28,18 @@ import { MatSort, MatSortHeader } from '@angular/material/sort';
 import { MatCheckbox } from '@angular/material/checkbox';
 import { PaginationComponent } from '@ss/common/ui-pagination';
 import { TranslateDirective } from '@ss/common/ui-lang';
+import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatFormField, MatInput, MatLabel } from '@angular/material/input';
+import { DatePickerComponent } from '@ss/common/ui-datepicker';
+import { callback } from 'chart.js/helpers';
+import { Observable } from 'rxjs';
 
 @Component({
     selector: 'ss-payments-list',
     standalone: true,
     imports: [
         CommonModule,
+        MaterialModule,
         MatCell,
         MatColumnDef,
         MatHeaderCell,
@@ -42,13 +54,24 @@ import { TranslateDirective } from '@ss/common/ui-lang';
         MatHeaderCellDef,
         MatRowDef,
         MatHeaderRowDef,
-        TranslateDirective
+        TranslateDirective,
+        FormsModule,
+        MatFormField,
+        MatLabel,
+        ReactiveFormsModule,
+        DatePickerComponent,
+        MatFormField
     ],
     templateUrl: './payments-list.component.html',
     styleUrl: './payments-list.component.css',
 })
 export class PaymentsListComponent extends BaseEntityListComponent<Payment> {
     private loginSrv = inject(LoginService);
+    private NOW = new Date();
+
+    from = new FormControl<Date>(new Date(this.NOW.getTime() - 10 * 365 * 24 * 60 * 60 * 1000));
+    to = new FormControl<Date>(this.NOW);
+
     public displayedColumns = [
         'date',
         'payMethodDescription',
@@ -79,5 +102,9 @@ export class PaymentsListComponent extends BaseEntityListComponent<Payment> {
     override ngOnInit() {
          this.editButton.visible = this.addButton.visible = this.deleteButton.visible = !this.loginSrv.appCtx.agentId;
          super.ngOnInit();
+    }
+
+    override getPage(): Observable<Payment[]> {
+        return this.entitySrv.getPeriodicPage(this.pagination, this.from.value, this.to.value, this.filter, this.sortBy);
     }
 }
