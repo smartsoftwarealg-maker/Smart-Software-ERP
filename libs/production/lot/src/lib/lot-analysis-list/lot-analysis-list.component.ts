@@ -5,15 +5,21 @@ import {
     ToolbarButton,
 } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router } from '@angular/router';
-import { MaterialModule, PaginationModel, PaginatorPersistenceService } from '@ss/common/api-common';
+import {
+    MaterialModule,
+    PaginationModel,
+    PaginatorPersistenceService,
+} from '@ss/common/api-common';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
+import { TranslateDirective } from '@ss/common/ui-lang';
 import { PaginationComponent } from '@ss/common/ui-pagination';
 import { Lot, LotsService } from '@ss/common/api-lookup';
-import { ArticleAutoCompleteModel, ArticleService } from '@ss/master-data/api-article';
+import {
+    ArticleAutoCompleteModel,
+    ArticleService,
+} from '@ss/master-data/api-article';
 import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
-
 
 @Component({
     selector: 'ss-production-lot-analysis-list',
@@ -24,7 +30,6 @@ import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
         CommonModule,
         MaterialModule,
         TranslateDirective,
-        TranslatePipe,
         ReactiveFormsModule,
         PaginationComponent,
         UiAutoCompleteComponent,
@@ -39,12 +44,14 @@ export class LotAnalysisListComponent implements OnInit, OnDestroy {
     private articleSrv = inject(ArticleService);
 
     articleLookup = new ArticleAutoCompleteModel(this.articleSrv);
+    public refFC = new FormControl('');
+    private ref = ''; // this added to make the search happen only when select
+    private clickEdit = false;
     public filter: string;
     public sortBy: string;
     public selected = 0;
-    public selectedRow : Lot;
+    public selectedRow: Lot;
     public data: Lot[];
-    public refFC = new FormControl('');
     public readonly pagination = PaginationModel.newInstance();
 
     public refreshButton: ToolbarButton = {
@@ -68,11 +75,13 @@ export class LotAnalysisListComponent implements OnInit, OnDestroy {
 
     ngOnInit() {
         this.shellSrv.setTitle('STOCK_LOT_ANALYSIS');
-        this.shellSrv.setGoBackPath('../..', this.route);
+        this.shellSrv.setGoBackPath('..', this.route);
         this.enableSearch();
+        this.refFC.setValue(this.lotsSrv.getReference);
+        this.ref = this.lotsSrv.getReference;
         this.shellSrv.setButtons([this.refreshButton, this.editButton]);
         this.pagination.onChange = () => this.refresh();
-        this.shellSrv.searchFormControl.setValue(this.filter);
+        this.shellSrv.searchFormControl.setValue(null);
     }
 
     displayedColumns = [
@@ -85,9 +94,22 @@ export class LotAnalysisListComponent implements OnInit, OnDestroy {
 
     public edit() {
         if (this.selected) {
+            this.lotsSrv.setReference(this.ref);
+            this.clickEdit = true;
             this.router
-                .navigate([this.selected], { relativeTo: this.route })
+                .navigate([this.selected], {
+                    relativeTo: this.route,
+                    replaceUrl: true,
+                })
                 .then();
+        }
+    }
+
+    search(): void {
+        if (this.refFC.getRawValue()) {
+            this.ref = this.refFC.getRawValue();
+            this.refFC.setValue(null);
+            this.refresh();
         }
     }
 
@@ -96,7 +118,7 @@ export class LotAnalysisListComponent implements OnInit, OnDestroy {
         this.shellSrv.setLoading(true);
         this.selected = 0;
         this.lotsSrv
-          .getLots(this.refFC.getRawValue(), this.pagination, this.filter, this.sortBy)
+            .getLots(this.ref, this.pagination, this.filter, this.sortBy)
             .subscribe({
                 next: (data) => {
                     this.data = data.body;
@@ -145,5 +167,8 @@ export class LotAnalysisListComponent implements OnInit, OnDestroy {
     public ngOnDestroy() {
         this.shellSrv.reset();
         this.pagPersistSrv.set('', this.pagination, this.filter);
+        if (!this.clickEdit) {
+            this.lotsSrv.setReference(null);
+        }
     }
 }
