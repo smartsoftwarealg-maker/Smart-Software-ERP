@@ -1,11 +1,8 @@
 import { Component, inject } from '@angular/core';
 import { BaseChildEntityDetailComponent } from '@ss/common/ui-base-entity';
-import {Punishment} from '../punishment-api';
+import { Punishment, PUNISHMENTS_NATURE } from '../punishment-api';
 import { FormBuilder, UntypedFormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import {
-    ProfessionalFaultService,
-    PunishmentTypeService
-} from '@ss/payroll/api-employee';
+import { ProfessionalFaultService, PunishmentTypeService } from '@ss/payroll/api-employee';
 import {PunishmentService} from '../punishment.service';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import { NgIf } from '@angular/common';
@@ -18,6 +15,7 @@ import { DatePickerComponent } from '@ss/common/ui-datepicker';
 import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { MaterialModule } from '@ss/common/api-common';
 import { ActivePersonnelService } from '../../active-personnel.service';
+import { Lookup } from '@ss/common/api-lookup';
 
 @Component({
     selector: 'ss-punishment-detail',
@@ -35,6 +33,21 @@ export class PunishmentDetailComponent extends BaseChildEntityDetailComponent<Pu
     faultAutoCompleteModel = new DefaultAutoCompleteModel(this.faultSrv);
     punishmentTypeAutoCompleteModel = new DefaultAutoCompleteModel(this.punishTypeSrv);
 
+    protected readonly NATURE = PUNISHMENTS_NATURE;
+    readonly MONTHS: Lookup[] = [
+        { id: 1, description: 'JANUARY' },
+        { id: 2, description: 'FEBRUARY' },
+        { id: 3, description: 'MARCH' },
+        { id: 4, description: 'APRIL' },
+        { id: 5, description: 'MAY' },
+        { id: 6, description: 'JUNE' },
+        { id: 7, description: 'JULY' },
+        { id: 8, description: 'AUGUST' },
+        { id: 9, description: 'SEPTEMBER' },
+        { id: 10, description: 'OCTOBER' },
+        { id: 11, description: 'NOVEMBER' },
+        { id: 12, description: 'DECEMBER' }
+    ]
     constructor(protected detailSrv: PunishmentService) {
         super(detailSrv, 'Punishment');
     }
@@ -56,6 +69,18 @@ export class PunishmentDetailComponent extends BaseChildEntityDetailComponent<Pu
             sanction:       [a.sanction, Validators.required],
             memo:           [a.memo],
             dayCount:       [a.dayCount],
+            nature:         [a.nature],
+            paymonthY:     [Math.floor(a.paymonth / 100), Validators.required],
+            paymonthM:     [(a.paymonth % 100)||1, Validators.required],
         });
+    }
+
+    public override readForm(): Punishment {
+        const formVal = this.form.value;
+        const val: Punishment = formVal;
+        val.paymonth = (+formVal.paymonthY) * 100 + (+formVal.paymonthM);
+        delete formVal.paymonthY;
+        delete formVal.paymonthM;
+        return val;
     }
 }

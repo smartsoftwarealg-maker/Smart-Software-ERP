@@ -223,5 +223,10 @@
     "ISSUE_DATE":            "Date d'émission",
     "INVITATION_DATE":       "Date d'invitation",
     "INVITATION_HOUR":       "Heure d'invitation",
-    "RECLASSIFICATION":      "Reclassification"
+    "RECLASSIFICATION":      "Reclassification",
+    "NATURE":                "Nature",
+    "WARNING":               "Avertissement",
+    "BLAME":                 "Blâmer",
+    "APPLICATION_YEAR":      "Année d'application",
+    "APPLICATION_MONTH":     "Mois de candidature"
 }
