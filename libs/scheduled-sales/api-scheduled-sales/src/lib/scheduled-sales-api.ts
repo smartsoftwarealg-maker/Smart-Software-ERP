@@ -9,7 +9,7 @@ export const SS_MODE_URL        = '/ssales/modes';
 export const SS_TRUCK_URL       = '/ssales/trucks';
 export const SS_CONTRACT_URL    = '/ssales/supplier-contracts';
 export const SS_SCHEDULE_AGENTS = '/ssales/agents';
-export const SS_PAYMENTS = '/ssales/payments';
+export const SS_PAYMENTS = '/ssales/periodic-payments';
 export const SS_DIRECT_PAYMENTS = '/ssales/direct-payments';
 export const SS_AGENTS = '/ssales/agents';
 
