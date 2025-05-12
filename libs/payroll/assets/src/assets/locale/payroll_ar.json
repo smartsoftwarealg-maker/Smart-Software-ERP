@@ -224,5 +224,10 @@
     "ISSUE_DATE":            "تاريخ الإصدار",
     "INVITATION_DATE":       "تاريخ الدعوة",
     "INVITATION_HOUR":       "ساعة الدعوة",
-    "RECLASSIFICATION":      "إعادة التصنيف"
+    "RECLASSIFICATION":      "إعادة التصنيف",
+    "NATURE":                "طيبعة العقوبة",
+    "WARNING":               "تحذير",
+    "BLAME":                 "توبيخ",
+    "APPLICATION_YEAR":      "سنة التطبيق",
+    "APPLICATION_MONTH":     "شهر التطبيق"
 }

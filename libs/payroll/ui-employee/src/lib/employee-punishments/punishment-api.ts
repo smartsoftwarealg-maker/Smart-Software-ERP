@@ -1,4 +1,10 @@
+import { Lookup } from '@ss/common/api-lookup';
+
 export const PUNISHMENTS_URL = '/punishments';
+export const PUNISHMENTS_NATURE: Lookup[] = [
+    { id: 1, description: 'PAYROLL_WARNING' },
+    { id: 2, description: 'PAYROLL_BLAME' },
+];
 
 export interface Punishment {
     id: number;
@@ -14,4 +20,6 @@ export interface Punishment {
     dayCount?: number;
     typeName?: string;
     faultName?: string;
+    nature?: number;
+    paymonth: number;
 }

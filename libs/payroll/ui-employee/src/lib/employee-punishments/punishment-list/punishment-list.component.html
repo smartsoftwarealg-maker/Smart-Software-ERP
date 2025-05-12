@@ -72,6 +72,14 @@
             </mat-cell>
         </ng-container>
 
+        <ng-container matColumnDef="nature">
+            <mat-header-cell *matHeaderCellDef translate>
+                PAYROLL_NATURE
+            </mat-header-cell>
+            <mat-cell *matCellDef="let e" translate>
+                {{ nature(e.nature) }}
+            </mat-cell>
+        </ng-container>
 
         <ng-container matColumnDef="memo">
             <mat-header-cell *matHeaderCellDef translate>

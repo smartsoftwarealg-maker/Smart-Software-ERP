@@ -25,17 +25,19 @@ mat-table {
     margin: 0 auto;
     max-width: 1200px;
 }
+
 .mat-column-typeName,
-.mat-column-faultName {
-    flex: 2 1 120px;
+.mat-column-faultName, {
+    flex: 2 1 150px;
 }
 
 .mat-column-sanction,
-.mat-column-memo {
-    flex: 2 1 220px;
+.mat-column-memo, {
+    flex: 2 1 120px;
 }
 
 .mat-column-date,
-.mat-column-number {
-    flex: 1 1 90px;
+.mat-column-number,
+.mat-column-nature {
+    flex: 1 1 80px;
 }
