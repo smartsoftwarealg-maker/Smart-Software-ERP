@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { Lot, LotsService } from '@ss/common/api-lookup';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -25,9 +25,11 @@ import { MatInput } from '@angular/material/input';
     standalone: true,
     imports: [MatTable, MatSort, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatSortHeader, TranslateDirective, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, PaginationComponent]
 })
-export class StoreNameListComponent extends BaseEntityListComponent<Lot> {
+export class StoreNameListComponent extends BaseEntityListComponent<Lot> implements OnInit {
+    #optionSrv = inject(OptionService);
+    #loginSrv = inject(LoginService);
 
-    displayedColumns = ['description', 'descriptionAr'];
+    displayedColumns = ['description'];
 
     constructor(
         public storeNameSrv: LotsService,
@@ -40,8 +42,18 @@ export class StoreNameListComponent extends BaseEntityListComponent<Lot> {
         public override pagPersistSrv: PaginatorPersistenceService) {
         super(storeNameSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv, 'COMMON_STORE_NAMES');
     }
-}
 
+    ngOnInit() {
+        super.ngOnInit();
+        this.#optionSrv
+            .get(this.#loginSrv.appCtx.center)
+            .subscribe(res => {
+                if (res?.usesLots) {
+                    this.displayedColumns.push('lotNumber');
+                }
+            });
+    }
+}
 
 
 @Component({
@@ -49,7 +61,17 @@ export class StoreNameListComponent extends BaseEntityListComponent<Lot> {
     templateUrl: '../base-templates/detail-template.html',
     styleUrls: ['../base-templates/detail-template.scss'],
     standalone: true,
-    imports: [MaterialModule, MatCard, NgIf, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput]
+    imports: [
+        MaterialModule,
+        MatCard,
+        NgIf,
+        FormsModule,
+        ReactiveFormsModule,
+        MatFormField,
+        MatLabel,
+        TranslateDirective,
+        MatInput
+    ]
 })
 export class StoreNameDetailComponent extends BaseEntityDetailComponent<Lot> {
     private mainStore = 0;

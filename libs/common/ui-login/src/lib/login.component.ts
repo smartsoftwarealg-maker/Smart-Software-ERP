@@ -81,11 +81,8 @@ export class LoginComponent implements OnInit {
         if (this.#time) {
             clearTimeout(this.#time);
         }
-
         if (this.#companySelectorSrv.multiCompany) {
-            this.#companySelectorSrv.spaceCompany = localStorage.getItem(
-                this.#DEFAULT_COMPANY,
-            );
+            this.#companySelectorSrv.spaceCompany = localStorage.getItem(this.#DEFAULT_COMPANY);
             if (!this.deviceSrv.isDesktop()) {
                 const checkName = async () => {
                     const { value } = await Preferences.get({
@@ -102,8 +99,8 @@ export class LoginComponent implements OnInit {
                     this.#companySelectorSrv.spaceCompany,
                 );
             }
-            this.cSpace.set(this.#companySelectorSrv.spaceCompany);
         }
+        this.cSpace.set(this.#companySelectorSrv.spaceCompany);
     }
 
     public onSubmit() {

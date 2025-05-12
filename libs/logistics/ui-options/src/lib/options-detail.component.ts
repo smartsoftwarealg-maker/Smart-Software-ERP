@@ -45,6 +45,7 @@ interface EvalPrice {
     templateUrl: "./options-detail.component.html"
 })
 export class OptionsDetailComponent extends BaseEntityDetailComponent<Option> implements OnInit {
+    private loginSrv = inject(LoginService);
     private customerSrv = inject(CustomerService);
     private storeNameSrv = inject(LotsService);
     evalPriceOptions: EvalPrice[] = [
@@ -57,7 +58,6 @@ export class OptionsDetailComponent extends BaseEntityDetailComponent<Option> im
     customerLookup = new DefaultAutoCompleteModel(this.customerSrv, 'id', 'denomination');
 
     constructor(
-        private loginSrv: LoginService,
         public optionSrv: OptionService,
         public override shellSrv: ShellService,
         public override snackBarSrv: SnackBarService,
@@ -72,14 +72,15 @@ export class OptionsDetailComponent extends BaseEntityDetailComponent<Option> im
     public override setupForm(a: Option) {
         return this.formBuilder.group({
             id: [this.loginSrv.appCtx.center],
-            eval_price: [a.eval_price || 1, Validators.required],
+            eval_price: [a.evalPrice || 1, Validators.required],
             mainStore: [a.mainStore],
             generate_GL: [a.generate_GL],
-            inventory_date: [a.inventory_date, Validators.required],
+            inventoryDate: [a.inventoryDate, Validators.required],
             defaultCurrency: [a.defaultCurrency, Validators.required],
             checkPrices: [a.checkPrices || false, Validators.required],
             passingClient: [a.passingClient],
-            returnInvoiceMerge: [a.returnInvoiceMerge, Validators.required]
+            returnInvoiceMerge: [a.returnInvoiceMerge, Validators.required],
+            usesLots: [a.usesLots || false, Validators.required],
         });
     }
 

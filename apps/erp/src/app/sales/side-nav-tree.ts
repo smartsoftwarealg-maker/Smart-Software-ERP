@@ -4,7 +4,7 @@ import {
     ABS_SALES_AGENT_URL,
     ABS_SALES_DASHBOARD_URL,
     ABS_SALES_DELIVERY_CANCEL_URL,
-    ABS_SALES_DELIVERY_URL,
+    ABS_SALES_DELIVERY_URL, ABS_SALES_EXPORT_INVOICE_URL,
     ABS_SALES_INVOICE_CANCEL_URL,
     ABS_SALES_INVOICE_URL,
     ABS_SALES_ORDER_URL,
@@ -47,6 +47,12 @@ export const salesNavTree: SideNavNode = {
             icon: 'fas fa-file-invoice',
             route: ABS_SALES_INVOICE_URL,
             accessRights: 'Invoice'
+        },
+        {
+            name: 'SALES_EXPORT_INVOICE',
+            icon: 'fa-solid fa-dollar-sign',
+            route: ABS_SALES_EXPORT_INVOICE_URL,
+            accessRights: 'EInvoice'
         },
         {
             name: 'SALES_DELIVERY_CANCELLATION',

@@ -38,3 +38,18 @@ mat-card {
     gap: 2em;
     justify-content: flex-end;
 }
+
+.lot__div {
+    display: flex;
+    gap: .5em;
+    //flex-wrap: nowrap;
+    //border: #00C853 solid 1px;
+    //align-content: center;
+    //mat-form-field {
+    //    flex-grow: 1;
+    //}
+    //button {
+    //    flex-grow: 0;
+    //    margin-left: 1em;
+    //}
+}

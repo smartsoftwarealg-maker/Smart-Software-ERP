@@ -76,7 +76,7 @@ export class ReportViewComponent extends BaseEntityListComponent<ReportParam> im
 
     pdfSrc: string|null = null;
     htmlSrc: SafeHtml = null;
-    generating = false;
+    generating = signal(false);
     // leftPaneHidden = false;
     isAndroid = false;
     form: UntypedFormGroup = null;
@@ -202,13 +202,13 @@ export class ReportViewComponent extends BaseEntityListComponent<ReportParam> im
                                 </html>`;
             window.open('_blank').document.write(report);
         }
-        this.generating = false;
+        this.generating.set(false);
     }
 
     generateReport() {
         this.releasePdf();
         this.htmlSrc = null;
-        this.generating = true;
+        this.generating.set(true);
         this.uuid = uuidv6();
         const data: ReportViewData = {
             app: this.app + this.selectedReport.parent,
@@ -228,7 +228,7 @@ export class ReportViewComponent extends BaseEntityListComponent<ReportParam> im
 
         obs.pipe(
             retry({ delay: (error, retryCount) => {
-                  if (error.status === 500 || retryCount > 20) {
+                  if (error.status === 500 || retryCount > 15) {
                       throw error;
                   }
                   return timer(10_000);
@@ -244,7 +244,7 @@ export class ReportViewComponent extends BaseEntityListComponent<ReportParam> im
             })).subscribe({
             next: res => this.doReportGeneration(res, data),
             error: err => {
-                this.generating = false;
+                this.generating.set(false);
                 throw err;
             }
             // {
@@ -343,7 +343,7 @@ export class ReportViewComponent extends BaseEntityListComponent<ReportParam> im
 
     saveParams() {
         this.htmlSrc = null;
-        this.generating = true;
+        this.generating.set(true);
         const data: ReportViewData = {
             app: this.app + this.selectedReport.parent,
             rType: this.form.value.reportType,
@@ -360,11 +360,11 @@ export class ReportViewComponent extends BaseEntityListComponent<ReportParam> im
                 if (res['count']) {
                     this.snackBarSrv.showSuccessMessage();
                 }
-                this.generating = false;
+                this.generating.set(false);
             },
             error: err => {
-                this.generating = false;
-                throw err;
+                    this.generating.set(false);
+                    throw err;
             }
         });
         this.showParameterSaveButton.set(false);

@@ -2,10 +2,10 @@ export const environment = {
     production: true,
     company: 'ECDE',
     homePage: 'https://ecde.gica.dz',
-    multiCompany: true
+    multiCompany: false
 };
 // export const homePage: string|null = 'https://www.ecde.dz/';
- export const homePage: string|null = 'https://schs.dz';
+ export const homePage: string|null = 'https://ecde.gica.dz';
 
 export const langAssets = [
     ['assets/locale/', ''],

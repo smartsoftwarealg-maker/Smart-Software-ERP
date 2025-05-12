@@ -75,3 +75,13 @@ mat-header-cell {
     flex: 1 1 120px;
     border-left: gray solid 1px;
 }
+
+.mat-column-currency {
+    flex: 1 1 100px;
+    border-left: gray solid 1px;
+}
+.mat-column-currencyRate {
+    flex: 1 1 80px;
+    border-left: gray solid 1px;
+    justify-content: end;
+}

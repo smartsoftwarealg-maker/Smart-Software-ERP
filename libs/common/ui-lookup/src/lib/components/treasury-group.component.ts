@@ -18,7 +18,7 @@ import { MatFormField, MatLabel } from '@angular/material/form-field';
 import { MatInput } from '@angular/material/input';
 
 @Component({
-    selector: 'ss-Lookup-list',
+    selector: 'ss-treasury-group-list',
     templateUrl: '../base-templates/list-template.html',
     styleUrls: ['../base-templates/list-template.scss'],
     standalone: true,
@@ -43,7 +43,7 @@ export class TreasuryGroupListComponent extends BaseEntityListComponent<Lookup> 
 }
 
 @Component({
-    selector: 'ss-Lookup-detail',
+    selector: 'ss-treasury-group-detail',
     templateUrl: '../base-templates/detail-template.html',
     styleUrls: ['../base-templates/detail-template.scss'],
     standalone: true,

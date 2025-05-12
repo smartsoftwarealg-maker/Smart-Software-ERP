@@ -64,5 +64,6 @@
     "LONG_INPUT_FILTER":                  "Trop de texte. Veuillez reduire la longueur du texte à moins de 1600 caractères.",
     "USED_FORMULA":                       "Cette formule est déjà utilisée.",
     "INVALID_DATE":                       "Date invalide.",
-    "WRONG_FORMULA":                      "Formule incorrecte"
+    "WRONG_FORMULA":                      "Formule incorrecte",
+    "CIRCULAR_BOM":                       "La nomenclature est circulaire"
 }
