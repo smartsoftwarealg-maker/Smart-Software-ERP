@@ -1,21 +1,14 @@
 <mat-card class="size_div">
     <div class="header_div">
-        <mat-form-field style="max-width: 200px" class="default-100">
+        <mat-form-field class="default-100 search-input">
             <mat-label><span translate>COMMON_REFERENCE</span></mat-label>
             <ss-auto-complete matInput
                               [formControl]="refFC"
-                              [model]="articleLookup">
+                              [model]="articleLookup"
+                              (selectionchange)="search()"
+            >
             </ss-auto-complete>
-
         </mat-form-field>
-        <button mat-mini-fab
-                class="default-25 small-50"
-                type="submit"
-                matTooltip="{{'COMMON_SEARCH'|translate}}"
-                color="primary"
-                (click)="refresh()">
-            <i class="fa-solid fa-magnifying-glass"></i>
-        </button>
     </div>
 </mat-card>
 
