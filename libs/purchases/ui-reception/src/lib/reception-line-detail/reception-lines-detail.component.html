@@ -13,26 +13,14 @@
 @if (form !== null) {
     <mat-card>
         <mat-card-content>
-            <form  [formGroup]="form">
+            <form [formGroup]="form">
 
-                <mat-form-field id="position" class="default-50 sm-100">
+                <mat-form-field id="position" class="default-25 sm-50">
                     <mat-label translate>COMMON_POSITION</mat-label>
                     <input matInput formControlName="position" type="number">
                 </mat-form-field>
+                <div class="default-25 sm-hide"></div>
 
-
-                <mat-form-field class="default-50 sm-100">
-                    <mat-label translate>STOCK_STORE</mat-label>
-                    <ss-auto-complete matInput
-                                      [model]="storeLookup"
-                                      formControlName="store"></ss-auto-complete>
-                    <mat-error
-                        *ngIf="form.controls['store'].hasError('required')" translate>COMMON_FIELD_REQUIRED
-                    </mat-error>
-                    <mat-error
-                        *ngIf="form.controls['store'].hasError('validOption')" translate>COMMON_NO_MATCH
-                    </mat-error>
-                </mat-form-field>
 
                 <mat-form-field class="default-50 sm-100">
                     <mat-label translate>STOCK_ARTICLE</mat-label>
@@ -47,6 +35,28 @@
                         *ngIf="form.controls['reference'].hasError('validOption')" translate>COMMON_NO_MATCH
                     </mat-error>
                 </mat-form-field>
+
+                <div class="default-50 sm-100">
+                    <mat-form-field style="width: calc(100% - 50px); margin-right: .5em">
+                        <mat-label translate>STOCK_STORE</mat-label>
+                        <ss-auto-complete matInput
+                                          [model]="storeLookup"
+                                          formControlName="store">
+                        </ss-auto-complete>
+                        <mat-error
+                            *ngIf="form.controls['store'].hasError('required')" translate>COMMON_FIELD_REQUIRED
+                        </mat-error>
+                        <mat-error
+                            *ngIf="form.controls['store'].hasError('validOption')" translate>COMMON_NO_MATCH
+                        </mat-error>
+                    </mat-form-field>
+                    <button mat-mini-fab
+                            (click)="showLotInputDialog()"
+                            color="accent"
+                            [matTooltip]="'COMMON_ADD' | translate">
+                        <i class="fas fa-add icon"></i>
+                    </button>
+                </div>
 
                 <mat-form-field id="qtyOrdered" class="default-50 sm-100">
                     <mat-label translate>LOGISTICS_QTY_ORDERED</mat-label>
@@ -78,7 +88,7 @@
                     </mat-error>
                 </mat-form-field>
 
-                <mat-form-field id="vat" class="default-50 sm-100">
+                <mat-form-field id="vat" class="default-25 sm-100">
                     <mat-label translate>LOGISTICS_VAT</mat-label>
                     <input matInput formControlName="vat" type="number" step="1">
                     @if (form.controls['vat'].hasError('required')) {
@@ -86,13 +96,13 @@
                     }
                 </mat-form-field>
 
-                <mat-form-field id="vat2" class="default-50 sm-100">
+                <mat-form-field id="vat2" class="default-25 sm-100">
                     <mat-label><span translate>LOGISTICS_VAT</span>2</mat-label>
                     <input matInput formControlName="vat2" type="number" step="1">
                 </mat-form-field>
 
 
-                <mat-form-field class="default-50 sm-100">
+                <mat-form-field class="default-25 sm-100">
                     <mat-label translate>LOGISTICS_DISCOUNT</mat-label>
                     <input matInput formControlName="charge" type="number" step="1">
                 </mat-form-field>

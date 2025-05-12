@@ -8,7 +8,7 @@ import { Observable, of, switchMap } from 'rxjs';
 import {tap} from 'rxjs/operators';
 import {LoginService} from '@ss/common/api-common';
 import {TransactionLine} from './transaction-line';
-import { Directive, inject, OnInit } from '@angular/core';
+import { Directive, inject, OnInit, signal } from '@angular/core';
 import {OptionService} from '@ss/logistics/ui-options';
 import {
     DOC_CONSUMPTION,
@@ -27,18 +27,21 @@ import { DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
 export abstract class BaseTransactionLinesDetailComponent extends AbstractEntityComponent<TransactionLine> implements OnInit {
     #costCenterSrv = inject(CostCenterService);
     private locationSrv = inject(ArticleLocationService);
-    private loginSrv  =  inject(LoginService);
-    private optionSrv =  inject(OptionService);
     private formBuilder = inject(UntypedFormBuilder);
     private articleSrv = inject(ArticleService);
-    private lotSrv = inject(LotsService);
     private route = inject(ActivatedRoute);
     private router = inject(Router);
+
+    protected lotSrv = inject(LotsService);
+    protected optionSrv =  inject(OptionService);
+    protected loginSrv  =  inject(LoginService);
 
     public confirmationSrv = inject(ConfirmationDialogService);
     public snackBarSrv = inject(SnackBarService);
     public shellSrv = inject(ShellService);
     public showStock = true;
+
+    usesLots = signal(false);
 
     selectedRow: TransactionLine = null;
     agentId = 0;
@@ -71,7 +74,10 @@ export abstract class BaseTransactionLinesDetailComponent extends AbstractEntity
                     this.entitySrv.setParentId(this.parentId);
                 }),
                 switchMap(() => this.optionSrv.get(this.loginSrv.appCtx.center)),
-                tap(res => this.mainStore = res.mainStore),
+                tap(res => {
+                    this.mainStore = res.mainStore;
+                    this.usesLots.set(res.usesLots && this.document == DOC_RECEPTION);
+                }),
                 switchMap(() => this.entitySrv.getTransaction(this.parentId)),
                 tap(transac => this.agentId = transac.agent),
             );

@@ -1,0 +1,79 @@
+<mat-card class="size_container">
+    <mat-card-content>
+        <div class="form_container">
+            @if (form) {
+                <form [formGroup]="form">
+                    <mat-form-field floatLabel="always" class="default-50">
+                        <mat-label translate>STOCK_STORE</mat-label>
+                        <ss-auto-complete matInput
+                                          [model]="storeLookup"
+                                          formControlName="storeId">
+                        </ss-auto-complete>
+                        @if (form.controls['storeId'].hasError('required')) {
+                            <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+                        }
+                        @if (form.controls['storeId'].hasError('validOption')) {
+                            <mat-error translate>COMMON_NO_MATCH</mat-error>
+                        }
+                    </mat-form-field>
+
+                    <mat-form-field class="default-50 sm-100">
+                        <mat-label translate>LOGISTICS_SUPPLIER</mat-label>
+                        <ss-auto-complete matInput
+                                          [model]="supplierLookup"
+                                          formControlName="supplier">
+                        </ss-auto-complete>
+                    </mat-form-field>
+
+                    <mat-form-field class="default-50 sm-100">
+                        <mat-label translate>COMMON_DESCRIPTION</mat-label>
+                        <input matInput formControlName="description" type="text" required>
+                    </mat-form-field>
+
+<!--                    <mat-form-field class="default-50 sm-100">-->
+<!--                        <mat-label translate>COMMON_DESCRIPTION_AR</mat-label>-->
+<!--                        <input matInput formControlName="descriptionAr" type="text">-->
+<!--                    </mat-form-field>-->
+
+                    <mat-form-field class="default-50 sm-100">
+                        <mat-label translate>COMMON_STATE</mat-label>
+                        <input matInput formControlName="lotState" type="text" maxlength="1">
+                    </mat-form-field>
+
+                    <mat-form-field floatLabel="always" class="default-50 sm-100">
+                        <mat-label translate>STOCK_LOT_NUMBER</mat-label>
+                        <input matInput formControlName="lotNumber" type="number">
+                    </mat-form-field>
+
+                    <mat-form-field floatLabel="always" class="default-50 sm-100">
+                        <mat-label translate>STOCK_CREATION_DATE</mat-label>
+                        <ss-date-picker formControlName="creationDate"></ss-date-picker>
+                    </mat-form-field>
+
+                    <mat-form-field floatLabel="always" class="default-50 sm-100">
+                        <mat-label translate>STOCK_EXPIRATION_DATE</mat-label>
+                        <ss-date-picker formControlName="expirationDate"></ss-date-picker>
+                    </mat-form-field>
+
+                    <mat-form-field floatLabel="always" class="default-50 sm-100">
+                        <mat-label translate>COMMON_TEAM</mat-label>
+                        <input matInput formControlName="team" type="number">
+                    </mat-form-field>
+
+                    <mat-checkbox class="default-50 sm-100" formControlName="expires" translate>STOCK_EXPIRES
+                    </mat-checkbox>
+                </form>
+            }
+        </div>
+    </mat-card-content>
+    <mat-card-actions>
+        <button mat-button color="warn" (click)="cancel()">
+            <i class="fa-solid fa-rotate-left"></i>
+            <span class="button__text" translate>COMMON_CANCEL</span>
+        </button>
+        <button mat-button color="primary" (click)="save()" [disabled]="form.invalid">
+            <i class="fa-solid fa-floppy-disk"></i>
+            <span class="button__text" translate>COMMON_SAVE</span>
+        </button>
+    </mat-card-actions>
+</mat-card>

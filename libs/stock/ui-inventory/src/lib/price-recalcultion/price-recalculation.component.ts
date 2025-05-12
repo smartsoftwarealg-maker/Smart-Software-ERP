@@ -96,7 +96,7 @@ export class PriceRecalculationComponent extends BaseEntityDetailComponent<Optio
     public override setupForm(a: Option) {
         return this.formBuilder.group({
             id: [this.loginSrv.appCtx.center],
-            eval_price: [{value: a.eval_price || 1, disabled: true }],
+            eval_price: [{value: a.evalPrice || 1, disabled: true }],
             mainStore: [a.mainStore],
             generate_GL: [a.generate_GL],
             inventory_date: [new Date(), Validators.required],

@@ -3,7 +3,7 @@ import {PaginationModel} from '@ss/common/api-common';
 import {SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {LanguageService} from '@ss/common/api-common';
-import {StockInfoService} from '../../stock-info.service';
+import {StockInfoService} from './services/stock-info.service';
 import {StockInfo} from './stock-info';
 import {
     MatTable,

@@ -4,7 +4,7 @@ import {Observable} from 'rxjs';
 import {ARTICLES_URL} from '@ss/master-data/api-article';
 import {HttpParams} from '@angular/common/http';
 import {map} from 'rxjs/operators';
-import {STOCK_INFO_URL, StockInfo} from './src/lib/stock-info';
+import {STOCK_INFO_URL, StockInfo} from '../stock-info';
 import {BaseEntityService} from '@ss/common/api-base-entity';
 import {HttpService} from '@ss/common/api-common';
 

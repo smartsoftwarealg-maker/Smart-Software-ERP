@@ -21,13 +21,13 @@ export class Option {
     autoSelectStore: boolean;
     checkPrices: boolean;
     checkOrderedQty: boolean;
-    inventory_date: Date;
-    inventory_year: number;
-    disallow_non_stocked_order: boolean;
+    inventoryDate: Date;
+    inventoryYear: number;
+    disallowNonStockedOrder: boolean;
     lock_printed_documents: boolean;
     uses_units: boolean;
     arbitrary_uninvoicing: boolean;
-    uses_lots: boolean;
+    usesLots: boolean;
     art_accno_required: boolean;
     two_step_reception: boolean;
     check_chron_order: boolean;
@@ -36,7 +36,7 @@ export class Option {
     generate_GL: boolean;
     block_new_lots: boolean;
     severe: boolean;
-    eval_price: number;
+    evalPrice: number;
     allow_dupl_ref: boolean;
     service_invoice_only: boolean;
     require_invoice_cost_center: boolean;

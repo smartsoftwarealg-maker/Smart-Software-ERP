@@ -25,3 +25,9 @@ input {
     position: absolute;
     right: 24px;
 }
+.auto__div {
+    display: flex;
+    flex-wrap: nowrap;
+    align-content: center;
+    gap: .5em;
+}

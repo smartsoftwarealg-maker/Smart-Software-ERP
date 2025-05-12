@@ -1,0 +1,20 @@
+:root {
+    --mat-dialog-container-max-width: 1000px;
+}
+
+.size_container {
+    width: 100%;
+    max-width: 1000px!important;
+}
+
+mat-card-actions {
+    display: flex;
+    justify-content: space-between;
+}
+
+.button__text {
+    padding-left: .7em;
+}
+i {
+    font-size: 1.5em;
+}

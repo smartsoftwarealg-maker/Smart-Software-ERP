@@ -25,6 +25,7 @@ import { MatInput } from '@angular/material/input';
 import { MatOption } from '@angular/material/core';
 import { TranslateDirective } from '@ss/common/ui-lang';
 import { TranslatePipe } from '@ss/common/ui-lang';
+import { MatMiniFabButton } from '@angular/material/button';
 
 @Component({
     selector: 'ss-auto-complete',
@@ -34,7 +35,17 @@ import { TranslatePipe } from '@ss/common/ui-lang';
         { provide: MatFormFieldControl, useExisting: UiAutoCompleteComponent }
     ],
     standalone: true,
-    imports: [NgIf, MatInput, FormsModule, MatAutocompleteTrigger, ReactiveFormsModule, MatAutocomplete, NgFor, MatOption, TranslateDirective, TranslatePipe]
+    imports: [
+        NgIf,
+        MatInput,
+        FormsModule,
+        MatAutocompleteTrigger,
+        ReactiveFormsModule,
+        MatAutocomplete,
+        NgFor, MatOption,
+        TranslateDirective,
+        TranslatePipe
+    ]
 })
 export class UiAutoCompleteComponent implements ControlValueAccessor, MatFormFieldControl<Id>, DoCheck, OnInit, OnDestroy {
     private snackBarSrv = inject(SnackBarService);
@@ -135,7 +146,6 @@ export class UiAutoCompleteComponent implements ControlValueAccessor, MatFormFie
     selected: Id;
     loading = signal(false);
     isInputInvalid = computed(() => !this.loading() && !!this.autoControl.value && this.selected == null);
-    addAction = signal<() => any|null>(null);
 
     counter = 0; // identifies the query, used to order queries and discard delayed result if they expire
 

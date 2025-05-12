@@ -5,7 +5,7 @@
 
 export const environment = {
     production: false,
-    company: 'SCHS',
+    company: 'ECDE',
     homePage: 'http://www.schs.dz',
     multiCompany: false
 };

@@ -30,10 +30,8 @@ import { Agent, SupplierService } from '@ss/logistics/api-agent';
         DatePickerComponent,
     ],
 })
-export class LotManagementDetailComponent
-    extends BaseEntityDetailComponent<Lot>
-    implements OnInit
-{
+export class LotManagementDetailComponent extends BaseEntityDetailComponent<Lot>
+    implements OnInit {
     private lotSrv = inject(LotsService);
     private supplierSrv = inject(SupplierService);
 
@@ -80,4 +78,5 @@ export class LotManagementDetailComponent
             center: [l.center || 0],
         });
     }
+
 }
