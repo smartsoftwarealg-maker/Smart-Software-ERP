@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import {Punishment} from '../punishment-api';
+import { Punishment, PUNISHMENTS_NATURE } from '../punishment-api';
 import {PunishmentService} from '../punishment.service';
 import { BaseChildEntityListComponent } from '@ss/common/ui-base-entity';
 import { MatMiniFabButton } from '@angular/material/button';
@@ -25,12 +25,17 @@ export class PunishmentListComponent extends BaseChildEntityListComponent<Punish
         'sanction',
         'typeName',
         'faultName',
+        'nature',
         'memo',
     ];
-
+    private readonly Nature = PUNISHMENTS_NATURE;
     activePersonnelSrv = inject(ActivePersonnelService);
 
     constructor(public entitySrv: PunishmentService) {
         super(entitySrv, 'Punishment');
+    }
+
+    nature(id: number) {
+        return this.Nature.find(x => x.id === id )?.description;
     }
 }
