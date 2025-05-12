@@ -69,7 +69,7 @@ export class PaymentsListComponent extends BaseEntityListComponent<Payment> {
     private loginSrv = inject(LoginService);
     private NOW = new Date();
 
-    from = new FormControl<Date>(new Date(this.NOW.getTime() - 10 * 365 * 24 * 60 * 60 * 1000));
+    from = new FormControl<Date>(new Date(this.NOW.getTime() - 365 * 24 * 60 * 60 * 1000));
     to = new FormControl<Date>(this.NOW);
 
     public displayedColumns = [

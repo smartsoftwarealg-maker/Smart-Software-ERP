@@ -47,6 +47,7 @@ export class CustomerBalanceComponent implements OnInit {
     private fb = inject(FormBuilder)
     private langSrv = inject(LanguageService);
     private numberPipe: DecimalPipe = new DecimalPipe(this.langSrv.defaultLanguage);
+    NOW = new Date();
     scheduleForm = this.fb.group({
         missed:   [''],
         invoiced: [''],
