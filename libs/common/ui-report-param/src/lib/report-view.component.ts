@@ -174,7 +174,7 @@ export class ReportViewComponent extends BaseEntityListComponent<ReportParam> im
         return valueList?.map(x => x.description).join(' ');
     }
 
-    private doReportGeneration(res: any, data: ReportViewData) {
+    private doReportGeneration(res: any, data: ReportViewData): Window|null {
         if (this.form.value.reportType === 'EXCEL') {
             const link = document.createElement('a');
             link.href = window.URL.createObjectURL(res);
@@ -185,11 +185,7 @@ export class ReportViewComponent extends BaseEntityListComponent<ReportParam> im
             if (this.isAndroid) {
                 this.writeThenOpenFile(res).then();
             } else {
-                const wind = window.open(URL.createObjectURL(res), '_blank');
-                wind.onload = (ev) => setTimeout(() => {
-                    const w = ev.currentTarget as Window;
-                    w.document.title = `${this.selectedReport.name.replace('.jasper', '')}.pdf`;
-                }, 300)
+                return window.open(URL.createObjectURL(res), '_blank');
             }
         } else {
             const report = `<html lang="en">
@@ -202,7 +198,7 @@ export class ReportViewComponent extends BaseEntityListComponent<ReportParam> im
                                 </html>`;
             window.open('_blank').document.write(report);
         }
-        this.generating.set(false);
+        return null;
     }
 
     generateReport() {
@@ -241,21 +237,24 @@ export class ReportViewComponent extends BaseEntityListComponent<ReportParam> im
                     const obj: Blob = <Blob>res;
                     return new Blob([obj], { type: this.getMimeType() });
                 }
-            })).subscribe({
-            next: res => this.doReportGeneration(res, data),
+            }),
+            switchMap(res => {
+                const w = this.doReportGeneration(res, data);
+                return of(w).pipe(delay(300));
+            }),
+        ).subscribe({
+            next: win => {
+                this.generating.set(false);
+                if (win) {
+                    try {
+                        win.document.title = `${this.selectedReport.name.replace('.jasper', '')}.pdf`;
+                    } catch (e) {}
+                }
+            },
             error: err => {
                 this.generating.set(false);
                 throw err;
             }
-            // {
-            //     this.generating = false;
-            //     if (err.error) {
-            //         const json = String.fromCharCode.apply(null, new Uint8Array(err.error));
-            //         err.error = JSON.parse(json);
-            //         throw err;
-            //     }
-            //     return loop;
-            // }
         });
 
     }
