@@ -15,7 +15,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
 @Component({
     selector: 'ss-gica-criteria-detail',
     standalone: true,
-    imports: [CommonModule,  MaterialModule, MatOption, MatSelect, TranslateDirective],
+    imports: [CommonModule,  MaterialModule, TranslateDirective],
     templateUrl: './criteria-detail.component.html',
     styleUrl: './criteria-detail.component.css'
 })
