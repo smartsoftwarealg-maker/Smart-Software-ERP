@@ -35,8 +35,6 @@ export class CriteriaDetailComponent extends BaseEntityDetailComponent<Criterion
             parentId:    [{ value: b.parentId || this.entitySrv.getParentId(), disabled: true }, Validators.required],
             description: [b.description, Validators.required],
             grade:       [b.grade || 4, [Validators.required, Validators.min(1)]],
-            sign:        [b.sign || 1, Validators.required],
-            cType:       [b.cType]
         });
     }
 }

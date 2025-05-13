@@ -67,7 +67,6 @@ export class CriteriaListComponent extends BaseEntityListComponent<Criterion> {
     displayedColumns = [
         'description',
         'grade',
-        'sign'
     ];
 
     constructor(
