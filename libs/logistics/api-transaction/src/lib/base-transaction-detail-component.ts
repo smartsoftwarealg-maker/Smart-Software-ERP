@@ -9,7 +9,7 @@ import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { filter, Observable, of, switchMap } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
 import { BaseEntityService } from '@ss/common/api-base-entity';
-import { Transaction } from './transaction';
+import { InterStoreTransferLine, Transaction } from './transaction';
 import { WorkflowDialogComponent } from '@ss/workflow';
 import { LoginService, User } from '@ss/common/api-common';
 import { MatDialog } from '@angular/material/dialog';
@@ -49,6 +49,7 @@ export abstract class BaseTransactionDetailComponent extends BaseEntityDetailCom
     private customerSrv = inject(CustomerService);
 
     protected transaction: Transaction = null;
+    protected interStoreTransferLine: InterStoreTransferLine = null;
     protected currencySrv = inject(CurrencyService);
     protected purchaseProjectSrv = inject(PurchaseContractService);
     protected salesProjectSrv = inject(SalesContractService);
@@ -230,7 +231,6 @@ export abstract class BaseTransactionDetailComponent extends BaseEntityDetailCom
             b.id = 0;
             b.number = 0;
             b.userID = this.loginSrv.appCtx.id;
-            b.dealer = b.userID;
             b.date = new Date();
         }
 

@@ -15,5 +15,7 @@
     "PRODUCE":               "انتاج",
     "CANCEL":                "الغاء",
     "PRODUCE_ALL":           "إنتاج الكل",
-    "CANCEL_ALL":           "الغاء الكل"
+    "CANCEL_ALL":            "الغاء الكل" ,
+    "INTER_STORE_TRANSFER":  "نقل بين المتاجر",
+    "INTER_STORE_TRANSFER_DETAIL":  "تفاصيل النقل بين المتاجر"
 }

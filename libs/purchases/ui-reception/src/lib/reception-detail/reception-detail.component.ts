@@ -28,7 +28,7 @@ import { Observable, of, switchMap } from 'rxjs';
 
 
 @Component({
-    selector: 'ss-reception-detail',
+    selector: 'ss-inter-store-transfer-detail',
     templateUrl: './reception-detail.component.html',
     styleUrls: ['../../../../../common/assets/src/assets/transac-detail.scss'],
     standalone: true,

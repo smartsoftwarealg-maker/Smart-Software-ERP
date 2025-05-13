@@ -1,0 +1,72 @@
+<mat-card>
+    <mat-card-content>
+        @if (form !== null) {
+            <form novalidate [formGroup]="form">
+                <mat-form-field id="number" class="default-50 sm-100">
+                    <mat-label translate>COMMON_NUMBER</mat-label>
+                    <input matInput formControlName="number" type="number" readonly>
+                </mat-form-field>
+
+                <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>COMMON_DATE</mat-label>
+                    <ss-date-picker formControlName="date"></ss-date-picker>
+                </mat-form-field>
+
+
+                <mat-form-field id="reference" class="default-50 sm-100">
+                    <mat-label translate>COMMON_REFERENCE</mat-label>
+                    <input matInput formControlName="reference" type="text">
+                </mat-form-field>
+
+                <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>COMMON_SOURCE_STORE</mat-label>
+                    <ss-auto-complete matInput
+                                      [required]="true"
+                                      [model]="storeLookup"
+                                      formControlName="sourceStore">
+                    </ss-auto-complete>
+                    <mat-error *ngIf="form.controls['sourceStore']?.hasError('required')" translate>COMMON_FIELD_REQUIRED</mat-error>
+                </mat-form-field>
+
+                <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>COMMON_SOURCE_ARTICLE</mat-label>
+                    <ss-auto-complete matInput
+                                      [required]="true"
+                                      [model]="articleLookup"
+                                      formControlName="sourceDescription">
+                    </ss-auto-complete>
+                    <mat-error *ngIf="form.controls['sourceDescription']?.hasError('required')" translate>COMMON_FIELD_REQUIRED</mat-error>
+                </mat-form-field>
+
+                <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>COMMON_DESTINATION_STORE</mat-label>
+                    <ss-auto-complete matInput
+                                      [required]="true"
+                                      [model]="storeLookup2"
+                                      formControlName="destinationStore">
+                    </ss-auto-complete>
+                    <mat-error *ngIf="form.controls['destinationStore']?.hasError('required')" translate>COMMON_FIELD_REQUIRED</mat-error>
+                </mat-form-field>
+
+                <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>COMMON_DESTINATION_ARTICLE</mat-label>
+                    <ss-auto-complete matInput
+                                      [required]="true"
+                                      [model]="articleLookup2"
+                                      formControlName="sourceDescription">
+                    </ss-auto-complete>
+                    <mat-error *ngIf="form.controls['sourceDescription']?.hasError('required')" translate>COMMON_FIELD_REQUIRED</mat-error>
+                </mat-form-field>
+
+                <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>COMMON_QUANTITY</mat-label>
+                    <input matInput type="number" formControlName="qty">
+                    <mat-error *ngIf="form.controls['qty']?.hasError('required')" translate>COMMON_FIELD_REQUIRED</mat-error>
+                </mat-form-field>
+            </form>
+        }
+    </mat-card-content>
+</mat-card>
+
+    <router-outlet></router-outlet>
+
