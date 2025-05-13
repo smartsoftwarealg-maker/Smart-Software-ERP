@@ -21,7 +21,7 @@ import { MatTabGroup, MatTab, MatTabLabel } from '@angular/material/tabs';
 import { CdkTextareaAutosize } from '@angular/cdk/text-field';
 
 @Component({
-    selector: 'ss-transfer-reception-detail',
+    selector: 'ss-transfer-inter-store-transfer-detail',
     templateUrl: './transfer-reception-detail.component.html',
     styleUrls: ['../../../../../common/assets/src/assets/transac-detail.scss'],
     standalone: true,

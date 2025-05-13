@@ -20,7 +20,7 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
 import { TranslateDirective } from '@ss/common/ui-lang';
 
 @Component({
-    selector: 'ss-reception-list',
+    selector: 'ss-inter-store-transfer-list',
     styleUrls: ['../../../../../common/assets/src/assets/transac-list.scss'],
     templateUrl: './reception-list.component.html',
     standalone: true,
@@ -28,7 +28,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
         CommonModule,
         MaterialModule,
         ReactiveFormsModule,
-       
+
 
         TranslateDirective,
         DocInfoComponent,

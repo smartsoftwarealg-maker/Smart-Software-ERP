@@ -3,7 +3,11 @@ import {
     ABS_PRODUCTION_BOM_PRODUCTS,
     ABS_PRODUCTION_MRP_URL,
     ABS_PRODUCTION_ORDER_URL,
-    ABS_PRODUCTION_URL, ABS_PRODUCTION_ARTICLE_URL, ABS_PRODUCTION_LOT_MANAGEMENT_URL, ABS_PRODUCTION_LOT_ANALYSIS_URL
+    ABS_PRODUCTION_URL,
+    ABS_PRODUCTION_ARTICLE_URL,
+    ABS_PRODUCTION_LOT_MANAGEMENT_URL,
+    ABS_PRODUCTION_LOT_ANALYSIS_URL,
+    ABS_PRODUCTION_INTER_STORE_TRANSFER_URL
 } from '../common';
 
 export const productionNavTree: SideNavNode = {
@@ -53,5 +57,11 @@ export const productionNavTree: SideNavNode = {
             route: ABS_PRODUCTION_URL,
             accessRights: 'POrder'
         },
+        {
+            name: 'PROD_INTER_STORE_TRANSFER',
+            icon: 'fa-regular fa-store',
+            route: ABS_PRODUCTION_INTER_STORE_TRANSFER_URL,
+            accessRights: 'PInterStore'
+        }
     ]
 };

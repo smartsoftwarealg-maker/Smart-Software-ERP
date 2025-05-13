@@ -15,7 +15,7 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
 import { DatePipe } from '@angular/common';
 
 @Component({
-    selector: 'ss-furniture-reception-list',
+    selector: 'ss-furniture-inter-store-transfer-list',
     templateUrl: './furniture-reception-list.component.html',
     styleUrls: ['./furniture-reception-list.component.scss'],
     standalone: true,

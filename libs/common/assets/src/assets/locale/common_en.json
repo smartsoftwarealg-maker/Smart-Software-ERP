@@ -379,5 +379,10 @@
     "QUESTION":           "Question",
     "ANSWER":             "Answer",
     "TEAM":               "Team",
-    "STATE":              "State"
+    "STATE":              "State",
+    "SOURCE_STORE":       "Source Store",
+    "SOURCE_ARTICLE":     "Source Article",
+    "DESTINATION_STORE":  "Destination Store",
+    "DESTINATION_ARTICLE":"Destination Article",
+    "QUANTITY":"Quantity"
 }

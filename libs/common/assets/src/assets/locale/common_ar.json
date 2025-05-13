@@ -376,6 +376,11 @@
     "QUESTION":           "السؤال",
     "ANSWER":             "الجواب",
     "TEAM":               "الفريق",
-    "STATE":              "الحالة"
+    "STATE":              "الحالة",
+    "SOURCE_STORE":       " مصدرالمخزن ",
+    "SOURCE_ARTICLE":     "مصدرالمنتج ",
+    "DESTINATION_ARTICLE":"وجهة المنتج",
+    "DESTINATION_STORE":  "وجهة المخزن",
+    "QUANTITY":           "الكمية"
 }
 

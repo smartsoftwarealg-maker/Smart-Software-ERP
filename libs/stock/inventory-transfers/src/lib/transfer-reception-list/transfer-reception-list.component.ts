@@ -15,7 +15,7 @@ import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
 import { DatePipe } from '@angular/common';
 
 @Component({
-    selector: 'ss-transfer-reception-list',
+    selector: 'ss-transfer-inter-store-transfer-list',
     templateUrl: './transfer-reception-list.component.html',
     styleUrls: ['../../../../../common/assets/src/assets/transac-list.scss'],
     standalone: true,
