@@ -89,8 +89,6 @@ export interface Criterion {
     parentId: number;
     description: string;
     grade: number;
-    sign: number;
-    cType?: number;
 }
 
 export interface AbsenceWeight {
