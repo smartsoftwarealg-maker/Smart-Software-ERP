@@ -23,7 +23,7 @@ import { CdkTextareaAutosize } from '@angular/cdk/text-field';
 import { Observable } from 'rxjs';
 
 @Component({
-    selector: 'ss-import-reception-detail',
+    selector: 'ss-import-inter-store-transfer-detail',
     templateUrl: './import-reception-detail.component.html',
     styleUrls: ['../../../../../common/assets/src/assets/transac-detail.scss',
         './import-reception-detail.component.scss'],

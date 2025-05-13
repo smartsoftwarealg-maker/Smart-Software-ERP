@@ -10,7 +10,10 @@ import {
     PRODUCTIONS_URL,
     PRODUCTION_MRP_URL,
     PRODUCTION_BOM_URL,
-    PRODUCTION_ARTICLE_URL, PRODUCTION_LOT_MANAGEMENT_URL, PRODUCTION_LOT_ANALYSIS_URL
+    PRODUCTION_ARTICLE_URL,
+    PRODUCTION_LOT_MANAGEMENT_URL,
+    PRODUCTION_LOT_ANALYSIS_URL,
+    PRODUCTION_INTER_STORE_TRANSFER_URL
 } from '../common';
 import {
     ProductionOrderDetailComponent,
@@ -35,11 +38,46 @@ import {
     LotManagementDetailComponent,
     LotManagementListComponent
 } from '@ss/production/lot';
+import {
+    InterStoreTransferListComponent
+} from '@ss/production/production-reception';
+import {
+    InterStoreTransferDetailComponent
+} from '@ss/production/production-reception';
+import { LocalExtraCostDetailComponent, LocalExtraCostListComponent } from '@ss/purchases/extra-costs';
 
 export const prodRoutes: Routes = [
     {
         path:PRODUCTION_MRP_URL,
         component: MrpComponent,
+    },
+    {
+        path: PRODUCTION_INTER_STORE_TRANSFER_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: InterStoreTransferListComponent,
+                canActivate: [loginGuard],
+                children: docInfoRoutes
+            },
+            {
+                path: ':id',
+                component: InterStoreTransferDetailComponent,
+                canActivate: [loginGuard],
+                canDeactivate: [CanDeactivateService],
+                children: [
+                    { path: '', pathMatch: 'full', redirectTo: 'lines-list' },
+                    {
+                        path: 'extra-costs',
+                        children: [
+                            { path: '', component: LocalExtraCostListComponent, pathMatch: 'full' },
+                            { path: ':id', component: LocalExtraCostDetailComponent }
+                        ],
+                    },
+                    ...docInfoRoutes
+                ]
+            },
+        ]
     },
     {
         path:PRODUCTION_BOM_URL,

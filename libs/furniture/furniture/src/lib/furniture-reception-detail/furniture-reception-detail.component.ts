@@ -19,7 +19,7 @@ import { DatePickerComponent } from '@ss/common/ui-datepicker';
 import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 
 @Component({
-    selector: 'ss-furniture-reception-detail',
+    selector: 'ss-furniture-inter-store-transfer-detail',
     templateUrl: './furniture-reception-detail.component.html',
     styleUrls: ['./furniture-reception-detail.component.scss'],
     standalone: true,

@@ -14,5 +14,7 @@
     "BOM":                   "Nomenclature",
     "PRODUCE":               "Produire",
     "CANCEL":                "Annuler",
-    "PRODUCE_ALL":           "Produire Tout"
+    "PRODUCE_ALL":           "Produire Tout",
+    "INTER_STORE_TRANSFER":  "Transfert Entre Magasins",
+    "INTER_STORE_TRANSFER_DETAIL":  "Details DU Transfert Inter-Magasins"
 }
