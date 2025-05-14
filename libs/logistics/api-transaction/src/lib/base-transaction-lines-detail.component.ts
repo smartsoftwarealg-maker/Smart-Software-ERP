@@ -19,14 +19,14 @@ import {
 } from './transaction';
 import { AbstractEntityComponent } from '@ss/common/ui-base-entity';
 import { TransactionLinesClass } from './transaction-lines.class';
-import { ArticleLocationService } from '@ss/master-data/api-article';
+import { StockInfoService } from '@ss/master-data/api-article';
 import { CostCenterService } from '@ss/logistics/api-cost-center';
 import { DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
 
 @Directive()
 export abstract class BaseTransactionLinesDetailComponent extends AbstractEntityComponent<TransactionLine> implements OnInit {
     #costCenterSrv = inject(CostCenterService);
-    private locationSrv = inject(ArticleLocationService);
+    private locationSrv = inject(StockInfoService);
     private formBuilder = inject(UntypedFormBuilder);
     private articleSrv = inject(ArticleService);
     private route = inject(ActivatedRoute);
