@@ -33,7 +33,7 @@ export class AppComponent implements OnInit {
 
     ngOnInit() {
         this.themeSrv.load();
-        this.shellSrv.setApplicationTitle('Smart ERP 1.99.10');
+        this.shellSrv.setApplicationTitle('Smart ERP 1.99.11');
         this.httpSrv
             .init()
             .pipe(
