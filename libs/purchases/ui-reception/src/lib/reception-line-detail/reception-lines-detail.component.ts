@@ -4,13 +4,10 @@ import {
 } from '@ss/logistics/api-transaction';
 import { CommonModule } from '@angular/common';
 import { MaterialModule } from '@ss/common/api-common';
-import { FormGroup, ReactiveFormsModule, UntypedFormGroup } from '@angular/forms';
-import { DatePickerComponent } from '@ss/common/ui-datepicker';
-
+import { ReactiveFormsModule, UntypedFormGroup } from '@angular/forms';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 import { ReceptionLinesService } from '../reception-lines.service';
 import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
-import { DocImportComponent } from '@ss/logistics/ui-doc-import';
 import { MatDialog } from '@angular/material/dialog';
 import { LotInputDialogComponent } from '@ss/production/lot-input-dialog';
 import { of, switchMap } from 'rxjs';
@@ -51,7 +48,7 @@ export class ReceptionLinesDetailComponent extends BaseTransactionLinesDetailCom
     showLotInputDialog() {
             const dialogRef = this.dialog.open(LotInputDialogComponent, {
                 width: '1000px!important',
-                height: '470px',
+                height: '400px',
                 maxWidth: '1000px',
                 disableClose: true
             });

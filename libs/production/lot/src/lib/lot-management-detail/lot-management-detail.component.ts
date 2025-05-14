@@ -13,8 +13,8 @@ import { HttpService, MaterialModule } from '@ss/common/api-common';
 import { CommonModule } from '@angular/common';
 import { TranslateDirective } from '@ss/common/ui-lang';
 import { DatePickerComponent } from '@ss/common/ui-datepicker';
-import { LotAutoCompleteModel } from '@ss/master-data/api-article';
 import { Agent, SupplierService } from '@ss/logistics/api-agent';
+import { StoresService } from '@ss/stock/api-article-store';
 
 @Component({
     selector: 'ss-production-lot-management-detail',
@@ -32,12 +32,12 @@ import { Agent, SupplierService } from '@ss/logistics/api-agent';
 })
 export class LotManagementDetailComponent extends BaseEntityDetailComponent<Lot>
     implements OnInit {
-    private lotSrv = inject(LotsService);
+    private storesSrv = inject(StoresService);
     private supplierSrv = inject(SupplierService);
 
     //supplierLookup = new DefaultAutoCompleteModel(this.supplierSrv);
     supplierLookup = new DefaultAutoCompleteModel<Agent>(this.supplierSrv, 'id', 'denomination');
-    storeLookup: LotAutoCompleteModel = new LotAutoCompleteModel(this.lotSrv);
+    storeLookup = new DefaultAutoCompleteModel(this.storesSrv);
 
     constructor(
         public articleSrv: LotsService,
@@ -48,8 +48,7 @@ export class LotManagementDetailComponent extends BaseEntityDetailComponent<Lot>
         public override confirmationSrv: ConfirmationDialogService,
         public lookupsSrv: LookupsService,
         public httpSrv: HttpService,
-        public router: Router,
-    ) {
+        public router: Router) {
         super(
             articleSrv,
             shellSrv,
@@ -67,16 +66,23 @@ export class LotManagementDetailComponent extends BaseEntityDetailComponent<Lot>
             id: [l.id],
             storeId: [l.storeId, Validators.required],
             supplier: [l.supplier],
-            description: [l.description, Validators.required],
+            description: [l.description],
             descriptionAr: [l.descriptionAr],
             lotState: [l.lotState],
             lotNumber: [l.lotNumber || 0],
             creationDate: [l.creationDate],
-            expires: [l.expires, Validators.required],
+            expires: [l.expires||false, Validators.required],
             expirationDate: [l.expirationDate],
             team: [l.team || 0],
             center: [l.center || 0],
         });
     }
 
+
+    override readForm(): Lot {
+        const lot = this.form.getRawValue();
+        lot.expires = lot.expirationDate !== null;
+        lot.description = lot.lotNumber + '';
+        return lot;
+    }
 }
