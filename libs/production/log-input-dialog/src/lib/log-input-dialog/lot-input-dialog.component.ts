@@ -14,6 +14,7 @@ import { MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { SnackBarService } from '@ss/common/ui-shell';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
+import { StoresService } from '@ss/stock/api-article-store';
 
 @Component({
     selector: 'ss-log-input-dialog',
@@ -28,10 +29,10 @@ export class LotInputDialogComponent {
     #loginSrv = inject(LoginService);
     #fb = inject(FormBuilder);
     #supplierSrv = inject(SupplierService);
-    #lotSrv = inject(LotsService);
+    #lotSrv = inject(StoresService);
 
     supplierLookup = new DefaultAutoCompleteModel<Agent>(this.#supplierSrv, 'id', 'denomination');
-    storeLookup: LotAutoCompleteModel = new LotAutoCompleteModel(this.#lotSrv);
+    storeLookup = new DefaultAutoCompleteModel(this.#lotSrv);
 
     constructor(private dialogRef:  MatDialogRef<LotInputDialogComponent>) {
     }
@@ -40,7 +41,7 @@ export class LotInputDialogComponent {
         id: [0],
         storeId: [0, Validators.required],
         supplier: [0],
-        description: ['', Validators.required],
+        description: [''],
         descriptionAr: [''],
         lotState: ['', Validators.maxLength(1)],
         lotNumber: [0, Validators.required],
@@ -53,7 +54,9 @@ export class LotInputDialogComponent {
 
     save() {
         const rawValue = this.form.getRawValue();
-        this.dialogRef.close(this.form.getRawValue());
+        rawValue.description = rawValue.lotNumber + '';
+        rawValue.expires = rawValue.expirationDate !== null;
+        this.dialogRef.close(rawValue);
         // this.#lotSrv.save(rawValue)
         //     .subscribe({
         //         next: res => {

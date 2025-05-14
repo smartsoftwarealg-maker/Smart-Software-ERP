@@ -6,6 +6,11 @@ export interface ArticleLot {
     description: string;
 }
 
+export interface Stores {
+    id: number;
+    centerId: number;
+    description: string;
+}
 export interface ArticleStore {
     id: number;
     storeId: number;
