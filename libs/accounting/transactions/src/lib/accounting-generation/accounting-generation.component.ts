@@ -33,12 +33,9 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
         RouterModule,
         MaterialModule,
         TranslateDirective,
-
         ReactiveFormsModule,
         PaginationComponent,
         UiAutoCompleteComponent
-
-
     ]
 })
 export class AccountingGenerationComponent implements OnInit, OnDestroy {
