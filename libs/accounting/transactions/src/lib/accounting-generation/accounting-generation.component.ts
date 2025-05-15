@@ -95,6 +95,7 @@ export class AccountingGenerationComponent implements OnInit, OnDestroy {
 
     ngOnInit(): void {
         this.shellSrv.setGoBackPath('..', this.route);
+        this.shellSrv.setTitle('ACC_GENERATION');
         this.loginSrv
             .loadContext()
             .subscribe(res => {
@@ -119,12 +120,17 @@ export class AccountingGenerationComponent implements OnInit, OnDestroy {
         const generationPayload = { journal: this.form?.controls['journal'].value,
             genType: this.documentMap.get(key)?.description
         };
+        this.shellSrv.setLoading(true);
         this.generationSrv
             .generate(generationPayload)
-            .subscribe(res => {
+            .subscribe({next: res => {
+                this.shellSrv.setLoading(false);
                 this.showDocuments();
                 this.snackBarSrv.showSuccessMessage();
-            });
+            }, error: err => {
+                    this.shellSrv.setLoading(false);
+                    throw err;
+            }});
     }
 
     private showTransactions(key: number) {
