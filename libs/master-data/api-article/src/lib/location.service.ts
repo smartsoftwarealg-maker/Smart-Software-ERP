@@ -12,6 +12,6 @@ import { HttpParams } from '@angular/common/http';
 export class LocationService extends BaseEntityExtendedService<Location> {
 
     constructor(protected override httpSrv: HttpService) {
-        super(httpSrv, '/articles/stores');
+        super(httpSrv, '/store-locations');
     }
 }

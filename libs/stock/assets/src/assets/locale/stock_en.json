@@ -78,5 +78,7 @@
     "LOT_ANALYSIS":            "Lot analysis",
     "ANALYSE_LOT":             "Analyse lot",
     "ANALYSIS_DATE":           "Analysis date",
-    "ANALYZED":                "Analyzed"
+    "ANALYZED":                "Analyzed",
+    "UNLOCKING_LOTS":          "Unlocking lots",
+    "BLOCKED":                 "Blocked"
 }

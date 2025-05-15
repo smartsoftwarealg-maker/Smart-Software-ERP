@@ -7,7 +7,7 @@ import {
     ABS_PRODUCTION_ARTICLE_URL,
     ABS_PRODUCTION_LOT_MANAGEMENT_URL,
     ABS_PRODUCTION_LOT_ANALYSIS_URL,
-    ABS_PRODUCTION_INTER_STORE_TRANSFER_URL
+    ABS_PRODUCTION_INTER_STORE_TRANSFER_URL, ABS_PRODUCTION_UNLOCKING_LOTS_URL
 } from '../common';
 
 export const productionNavTree: SideNavNode = {
@@ -32,6 +32,12 @@ export const productionNavTree: SideNavNode = {
             icon: 'fa-solid fa-magnifying-glass-chart',
             route: ABS_PRODUCTION_LOT_ANALYSIS_URL,
             accessRights: 'LotAnalysis'
+        },
+        {
+            name: 'STOCK_UNLOCKING_LOTS',
+            icon: 'fa-solid fa-unlock',
+            route: ABS_PRODUCTION_UNLOCKING_LOTS_URL,
+            accessRights: 'UnlockLots'
         },
         {
             name: 'PROD_BOM',

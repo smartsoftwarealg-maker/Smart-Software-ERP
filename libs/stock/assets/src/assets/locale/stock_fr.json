@@ -77,5 +77,7 @@
     "LOT_ANALYSIS":            "Analyse des lots",
     "ANALYSE_LOT":             "Analyser le lot",
     "ANALYSIS_DATE":           "Date d'analyse",
-    "ANALYZED":                "Analysée"
+    "ANALYZED":                "Analysée",
+    "UNLOCKING_LOTS":          "Débloquer des lots",
+    "BLOCKED":                 "Bloquée"
 }
