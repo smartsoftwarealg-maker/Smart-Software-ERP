@@ -79,5 +79,6 @@
     "ANALYSIS_DATE":           "Date d'analyse",
     "ANALYZED":                "Analysée",
     "UNLOCKING_LOTS":          "Débloquer des lots",
-    "BLOCKED":                 "Bloquée"
+    "BLOCKED":                 "Bloquée",
+    "MODEL":                   "Model"
 }

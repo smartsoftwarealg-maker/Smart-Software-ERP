@@ -67,6 +67,7 @@ export interface Article {
     routingValue?: number;
     bomValue?: number;
     laborHours?: number;
+    typeDescription?: string;
 }
 
 export interface StockInfo {

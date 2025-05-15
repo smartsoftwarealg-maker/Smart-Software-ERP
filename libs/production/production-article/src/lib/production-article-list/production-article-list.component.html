@@ -71,6 +71,13 @@
             </mat-cell>
         </ng-container>
 
+        <ng-container matColumnDef="articleType">
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>STOCK_MODEL</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.typeDescription}}
+            </mat-cell>
+        </ng-container>
+
         <ng-container matColumnDef="classDescription">
             <mat-header-cell *matHeaderCellDef mat-sort-header translate>STOCK_CLASS</mat-header-cell>
             <mat-cell *matCellDef="let e">

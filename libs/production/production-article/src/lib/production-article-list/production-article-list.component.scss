@@ -34,6 +34,7 @@
     max-width: 80px;
 }
 
+.mat-column-articleType,
 .mat-column-unitDescription,
 .mat-column-markDescription,
 .mat-column-classDescription,
@@ -70,3 +71,7 @@
     padding-left: 8px !important;
 }
 
+mat-table {
+    width: 100%;
+    min-width: 1200px;
+}

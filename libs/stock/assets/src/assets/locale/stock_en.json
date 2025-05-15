@@ -80,5 +80,6 @@
     "ANALYSIS_DATE":           "Analysis date",
     "ANALYZED":                "Analyzed",
     "UNLOCKING_LOTS":          "Unlocking lots",
-    "BLOCKED":                 "Blocked"
+    "BLOCKED":                 "Blocked",
+    "MODEL":                   "Model"
 }
