@@ -80,5 +80,6 @@
     "ANALYZED":                "Analysée",
     "UNLOCKING_LOTS":          "Débloquer des lots",
     "BLOCKED":                 "Bloquée",
-    "MODEL":                   "Model"
+    "MODEL":                   "Model",
+    "MODELS":                  "Models"
 }

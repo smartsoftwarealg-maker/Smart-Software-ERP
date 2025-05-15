@@ -24,7 +24,7 @@ import { MatSort, MatSortHeader } from '@angular/material/sort';
 
 import { FormControl } from '@angular/forms';
 import { MatFormField } from '@angular/material/form-field';
-import { CommonUiLookupModule } from '@ss/common/ui-lookup';
+
 import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { CriterionService } from '../services/criterion.service';
 import { Category, CategoryService } from '@ss/common/api-lookup';
@@ -51,7 +51,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
         TranslateDirective,
         MatHeaderCellDef,
         MatFormField,
-        CommonUiLookupModule,
+
         PaginationComponent,
         UiAutoCompleteComponent
     ],

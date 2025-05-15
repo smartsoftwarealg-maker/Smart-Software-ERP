@@ -14,7 +14,7 @@ import {
     PRODUCTION_LOT_MANAGEMENT_URL,
     PRODUCTION_LOT_ANALYSIS_URL,
     PRODUCTION_INTER_STORE_TRANSFER_URL,
-    PRODUCTION_UNLOCKING_LOTS_URL,
+    PRODUCTION_UNLOCKING_LOTS_URL, PRODUCTION_ARTICLE_TYPES_URL
 } from '../common';
 import {
     ProductionOrderDetailComponent,
@@ -33,8 +33,9 @@ import { loginGuard } from '../erp-guards';
 import { MrpComponent } from '@ss/production/mrp';
 import { BomComponent } from '@ss/master-data/ui-article';
 import {
+    ArticleTypeDetailComponent,
     ProductionArticleDetailComponent,
-    ProductionArticleListComponent,
+    ProductionArticleListComponent
 } from '@ss/production/production-article';
 import {
     LotAnalysisDetailComponent,
@@ -51,6 +52,9 @@ import {
     LocalExtraCostDetailComponent,
     LocalExtraCostListComponent,
 } from '@ss/purchases/extra-costs';
+import {
+    ArticleTypeListComponent
+} from '@ss/production/production-article';
 
 export const prodRoutes: Routes = [
     {
@@ -221,6 +225,25 @@ export const prodRoutes: Routes = [
             {
                 path: ':id',
                 component: LotAnalysisDetailComponent,
+                canActivate: [loginGuard],
+                canDeactivate: [CanDeactivateService],
+            },
+            { path: '', redirectTo: LIST_URL, pathMatch: 'full' },
+            { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' },
+        ],
+    },
+
+    {
+        path: PRODUCTION_ARTICLE_TYPES_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: ArticleTypeListComponent,
+                canActivate: [loginGuard],
+            },
+            {
+                path: ':id',
+                component: ArticleTypeDetailComponent,
                 canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService],
             },

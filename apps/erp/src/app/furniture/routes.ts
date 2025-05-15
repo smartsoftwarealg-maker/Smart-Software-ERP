@@ -26,11 +26,8 @@ import {
     FurnitureSalesListComponent,
     FurnitureSalesDetailComponent
 } from '@ss/furniture/furniture';
-import {
-    ArticleTypeDetailComponent,
-    ArticleTypeListComponent
-} from '@ss/common/ui-lookup';
 import { ReportViewComponent } from '@ss/common/ui-report-param';
+import { ArticleTypeDetailComponent, ArticleTypeListComponent } from '@ss/production/production-article';
 
 export const furnitureRoutes: Routes = [
     {

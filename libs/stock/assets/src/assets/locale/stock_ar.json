@@ -80,5 +80,6 @@
     "ANALYZED":                "تم تحليله",
     "UNLOCKING_LOTS":          "تحرير البضاعة",
     "BLOCKED":                 "مقفل",
-    "MODEL":                   "صنف"
+    "MODEL":                   "صنف",
+    "MODELS":                  "الأصناف"
 }

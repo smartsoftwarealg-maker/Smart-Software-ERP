@@ -26,8 +26,6 @@ import { FaultService } from '../services/fault.service';
 import { FormControl } from '@angular/forms';
 import { EmployeeService, IEmployee, PersonAutocompleteClass } from '@ss/employee-services/employee-services';
 import { MatFormField } from '@angular/material/form-field';
-import { CommonUiLookupModule } from '@ss/common/ui-lookup';
-
 import { PaginationComponent } from '@ss/common/ui-pagination';
 import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 
@@ -49,10 +47,10 @@ import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
         MatSort,
         MatSortHeader,
         MatTable,
-
         MatHeaderCellDef,
         MatFormField,
-        CommonUiLookupModule, PaginationComponent, UiAutoCompleteComponent],
+
+        PaginationComponent, UiAutoCompleteComponent],
     templateUrl: './fault-list.component.html',
     styleUrl: './fault-list.component.css',
 })

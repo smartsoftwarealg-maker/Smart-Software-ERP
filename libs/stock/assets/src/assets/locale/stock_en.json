@@ -81,5 +81,6 @@
     "ANALYZED":                "Analyzed",
     "UNLOCKING_LOTS":          "Unlocking lots",
     "BLOCKED":                 "Blocked",
-    "MODEL":                   "Model"
+    "MODEL":                   "Model",
+    "MODELS":                  "Models"
 }

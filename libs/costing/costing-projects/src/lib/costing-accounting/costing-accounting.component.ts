@@ -10,7 +10,7 @@ import { catchError, tap } from 'rxjs';
 import { CostingAccountingService } from '../services/costing-accounting.service';
 import { CostingProjectService } from '../services/costing-project.service';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-import { CommonUiLookupModule } from '@ss/common/ui-lookup';
+
 import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { ShellService } from '@ss/common/ui-shell';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
@@ -24,7 +24,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         MaterialModule,
         TranslateDirective,
         TranslatePipe,
-        CommonUiLookupModule,
+
         UiAutoCompleteComponent,
         ReactiveFormsModule
     ],

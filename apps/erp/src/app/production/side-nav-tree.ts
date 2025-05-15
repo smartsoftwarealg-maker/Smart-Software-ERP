@@ -7,7 +7,7 @@ import {
     ABS_PRODUCTION_ARTICLE_URL,
     ABS_PRODUCTION_LOT_MANAGEMENT_URL,
     ABS_PRODUCTION_LOT_ANALYSIS_URL,
-    ABS_PRODUCTION_INTER_STORE_TRANSFER_URL, ABS_PRODUCTION_UNLOCKING_LOTS_URL
+    ABS_PRODUCTION_INTER_STORE_TRANSFER_URL, ABS_PRODUCTION_UNLOCKING_LOTS_URL, ABS_PRODUCTION_ARTICLE_TYPES_URL
 } from '../common';
 
 export const productionNavTree: SideNavNode = {
@@ -16,10 +16,16 @@ export const productionNavTree: SideNavNode = {
     accessRights: 'PRODUCTION_APP',
     children: [
         {
+            name: 'STOCK_MODELS',
+            icon: 'fa-solid fa-cars',
+            route: ABS_PRODUCTION_ARTICLE_TYPES_URL,
+            accessRights: 'ArticleType'
+        },
+        {
             name: 'STOCK_ARTICLES',
             icon: 'fas fa-box',
             route: ABS_PRODUCTION_ARTICLE_URL,
-            accessRights: 'ArticleType'
+            accessRights: 'Article'
         },
         {
             name: 'STOCK_LOT_MANAGEMENT',

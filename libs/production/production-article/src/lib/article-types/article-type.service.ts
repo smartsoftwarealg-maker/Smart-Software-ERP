@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpService } from '@ss/common/api-common';
-import {ARTICLE_TYPE_URL} from './lookups-api';
 import {BaseEntityService} from '@ss/common/api-base-entity';
-import {Lookup} from './lookup.class';
+import { Lookup } from '@ss/logistics/ui-doc-import';
+
+export const ARTICLE_TYPE_URL = '/lookups/article_types';
 
 @Injectable({
     providedIn: 'root'
