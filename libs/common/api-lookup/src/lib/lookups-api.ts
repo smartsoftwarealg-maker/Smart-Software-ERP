@@ -184,7 +184,7 @@ export interface Lot {
     description: string,
     descriptionAr?: string,
     supplier?: number;
-    lotNumber?: number;
+    lotNumber?: string;
     supplierLot?: string;
     creationDate?: Date;
     expires: boolean;

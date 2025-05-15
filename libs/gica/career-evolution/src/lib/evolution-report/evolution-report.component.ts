@@ -74,6 +74,7 @@ export class EvolutionReportComponent implements OnInit {
         'lastName',
         'grade',
         'deduction',
+        'oldRate',
         'rate',
         'hireDate'
     ];
