@@ -77,5 +77,7 @@
     "LOT_ANALYSIS":            "تحليل البضائع",
     "ANALYSE_LOT":             "تحليل البضاعة",
     "ANALYSIS_DATE":           "تاريخ التحليل",
-    "ANALYZED":                "تم تحليله"
+    "ANALYZED":                "تم تحليله",
+    "UNLOCKING_LOTS":          "تحرير البضاعة",
+    "BLOCKED":                 "مقفل"
 }
