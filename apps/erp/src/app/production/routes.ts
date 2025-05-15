@@ -13,7 +13,8 @@ import {
     PRODUCTION_ARTICLE_URL,
     PRODUCTION_LOT_MANAGEMENT_URL,
     PRODUCTION_LOT_ANALYSIS_URL,
-    PRODUCTION_INTER_STORE_TRANSFER_URL
+    PRODUCTION_INTER_STORE_TRANSFER_URL,
+    PRODUCTION_UNLOCKING_LOTS_URL,
 } from '../common';
 import {
     ProductionOrderDetailComponent,
@@ -31,24 +32,29 @@ import {
 import { loginGuard } from '../erp-guards';
 import { MrpComponent } from '@ss/production/mrp';
 import { BomComponent } from '@ss/master-data/ui-article';
-import { ProductionArticleDetailComponent, ProductionArticleListComponent } from '@ss/production/production-article';
+import {
+    ProductionArticleDetailComponent,
+    ProductionArticleListComponent,
+} from '@ss/production/production-article';
 import {
     LotAnalysisDetailComponent,
     LotAnalysisListComponent,
     LotManagementDetailComponent,
-    LotManagementListComponent
+    LotManagementListComponent,
+    UnlockingLotsComponent,
 } from '@ss/production/lot';
 import {
-    InterStoreTransferListComponent
+    InterStoreTransferListComponent,
+    InterStoreTransferDetailComponent,
 } from '@ss/production/production-reception';
 import {
-    InterStoreTransferDetailComponent
-} from '@ss/production/production-reception';
-import { LocalExtraCostDetailComponent, LocalExtraCostListComponent } from '@ss/purchases/extra-costs';
+    LocalExtraCostDetailComponent,
+    LocalExtraCostListComponent,
+} from '@ss/purchases/extra-costs';
 
 export const prodRoutes: Routes = [
     {
-        path:PRODUCTION_MRP_URL,
+        path: PRODUCTION_MRP_URL,
         component: MrpComponent,
     },
     {
@@ -58,7 +64,7 @@ export const prodRoutes: Routes = [
                 path: LIST_URL,
                 component: InterStoreTransferListComponent,
                 canActivate: [loginGuard],
-                children: docInfoRoutes
+                children: docInfoRoutes,
             },
             {
                 path: ':id',
@@ -70,18 +76,25 @@ export const prodRoutes: Routes = [
                     {
                         path: 'extra-costs',
                         children: [
-                            { path: '', component: LocalExtraCostListComponent, pathMatch: 'full' },
-                            { path: ':id', component: LocalExtraCostDetailComponent }
+                            {
+                                path: '',
+                                component: LocalExtraCostListComponent,
+                                pathMatch: 'full',
+                            },
+                            {
+                                path: ':id',
+                                component: LocalExtraCostDetailComponent,
+                            },
                         ],
                     },
-                    ...docInfoRoutes
-                ]
+                    ...docInfoRoutes,
+                ],
             },
-        ]
+        ],
     },
     {
-        path:PRODUCTION_BOM_URL,
-        component:BomComponent,
+        path: PRODUCTION_BOM_URL,
+        component: BomComponent,
     },
     {
         path: PRODUCTION_ORDER_URL,
@@ -214,6 +227,11 @@ export const prodRoutes: Routes = [
             { path: '', redirectTo: LIST_URL, pathMatch: 'full' },
             { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' },
         ],
+    },
+    {
+        path: PRODUCTION_UNLOCKING_LOTS_URL,
+        component: UnlockingLotsComponent,
+        canActivate: [loginGuard],
     },
     { path: '', redirectTo: ABS_INDEX_URL, pathMatch: 'full' },
     { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' },
