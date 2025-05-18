@@ -9,7 +9,7 @@ import { BaseEntityService } from '@ss/common/api-base-entity';
 export class InterStoreTransferLinesService extends BaseEntityService<InterStoreTransferLine>{
 
     constructor(protected override httpSrv: HttpService) {
-        super(httpSrv,'detail' ,'/store-transfers' );
+        super(httpSrv,'/detail' ,'/store-transfers' );
         this.setParentId(0);
     }
 }
