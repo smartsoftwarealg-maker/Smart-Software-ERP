@@ -83,5 +83,7 @@
     "MODEL":                   "Model",
     "MODELS":                  "Models",
     "DOSAGE_UNITS":            "Unités de dosage",
-    "DOSAGE_UNIT":             "Unité de dosage"
+    "DOSAGE_UNIT":             "Unité de dosage",
+    "PACKAGING_UNITS":         "Unités d'emballage",
+    "PACKAGING_UNIT":          "Unité d'emballage"
 }

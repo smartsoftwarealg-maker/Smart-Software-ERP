@@ -83,6 +83,8 @@
     "BLOCKED":                 "Blocked",
     "MODEL":                   "Model",
     "MODELS":                  "Models",
-    "DOSAGE_UNITS":           "Dosage units",
-    "DOSAGE_UNIT":            "Dosage unit"
+    "DOSAGE_UNITS":            "Dosage units",
+    "DOSAGE_UNIT":             "Dosage unit",
+    "PACKAGING_UNITS":         "Packaging units",
+    "PACKAGING_UNIT":          "Packaging unit"
 }

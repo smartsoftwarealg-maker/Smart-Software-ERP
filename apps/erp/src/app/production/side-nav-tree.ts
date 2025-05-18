@@ -10,7 +10,7 @@ import {
     ABS_PRODUCTION_INTER_STORE_TRANSFER_URL,
     ABS_PRODUCTION_UNLOCKING_LOTS_URL,
     ABS_PRODUCTION_ARTICLE_TYPES_URL,
-    ABS_PRODUCTION_DOSAGE_UNITS_URL
+    ABS_PRODUCTION_DOSAGE_UNITS_URL, ABS_PRODUCTION_PACKAGING_UNITS_URL
 } from '../common';
 
 export const productionNavTree: SideNavNode = {
@@ -29,6 +29,12 @@ export const productionNavTree: SideNavNode = {
             icon: 'fa-solid fa-eye-dropper-half',
             route: ABS_PRODUCTION_DOSAGE_UNITS_URL,
             accessRights: 'DosageUnit'
+        },
+        {
+            name: 'STOCK_PACKAGING_UNITS',
+            icon: 'fa-solid fa-box-open-full',
+            route: ABS_PRODUCTION_PACKAGING_UNITS_URL,
+            accessRights: 'PackagingUnit'
         },
         {
             name: 'STOCK_ARTICLES',
