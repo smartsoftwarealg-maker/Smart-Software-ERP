@@ -7,7 +7,7 @@ import { Lookup } from '@ss/logistics/ui-doc-import';
 @Injectable({
     providedIn: 'root'
 })
-export class DosageUnitService extends BaseEntityService<Lookup> {
+export class PackagingUnitService extends BaseEntityService<Lookup> {
 
     constructor(protected override httpSrv: HttpService) {
         super(httpSrv, '/lookups/packaging_units');

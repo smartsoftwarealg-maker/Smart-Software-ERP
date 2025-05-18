@@ -10,12 +10,12 @@ import { MatSort, MatSortHeader } from '@angular/material/sort';
 import { TranslateDirective } from '@ss/common/ui-lang';
 import { PaginationComponent } from '@ss/common/ui-pagination';
 import { Lookup } from '@ss/common/api-lookup';
-import { DosageUnitService } from '../../services/dosage-unit.service';
+import { PackagingUnitService } from '../../services/packaging-unit.service';
 
 @Component({
-    selector: 'ss-dosage-units-list',
-    templateUrl: 'dosage-units-list.html',
-    styleUrls: ['dosage-units-list.scss'],
+    selector: 'ss-packaging-units-list',
+    templateUrl: 'packaging-units-list.html',
+    styleUrls: ['packaging-units-list.scss'],
     standalone: true,
     imports: [MatTable,
         MatSort,
@@ -38,7 +38,7 @@ export class PackagingUnitsListComponent extends BaseEntityListComponent<Lookup>
     displayedColumns = ['description'];
 
     constructor(
-        public markSrv: DosageUnitService,
+        public markSrv: PackagingUnitService,
         public override shellSrv: ShellService,
         public override snackBarSrv: SnackBarService,
         public override route: ActivatedRoute,
@@ -46,6 +46,6 @@ export class PackagingUnitsListComponent extends BaseEntityListComponent<Lookup>
         public override defReportSrv: DefaultReportService,
         public override router: Router,
         public override pagPersistSrv: PaginatorPersistenceService) {
-        super(markSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv, 'STOCK_DOSAGE_UNITS');
+        super(markSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv, 'STOCK_PACKAGING_UNITS');
     }
 }
