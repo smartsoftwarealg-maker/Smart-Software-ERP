@@ -4,7 +4,7 @@ import { MaterialModule } from '@ss/common/api-common';
 import { MatButtonModule } from '@angular/material/button';
 import { ArticleIdAutoCompleteModel, ArticleService, BOM } from '@ss/master-data/api-article';
 import { FormBuilder, Validators } from '@angular/forms';
-import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
+import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
@@ -31,7 +31,7 @@ export class BomDialogComponent {
         id:               [0],
         parentId:         [0],
         childId:          [0, Validators.required],
-        qty:              [0, [Validators.required, Validators.min(1)]],
+        qty:              [0, [Validators.required, Validators.min(0.0001)]],
         price:            [0],
         childRef:         [null],
         childDescription: [null]

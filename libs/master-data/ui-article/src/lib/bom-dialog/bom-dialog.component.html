@@ -9,7 +9,9 @@
                                   required="true"
                                   autofocus>
                 </ss-auto-complete>
-                <mat-error *ngIf="form.controls['childId'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
+                @if (form.controls['childId'].invalid) {
+                    <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+                }
             </mat-form-field>
 
             <mat-form-field class="default-50 sm-100" autofocus>
@@ -41,6 +43,5 @@
                 </button>
             </div>
         </div>
-
     </mat-card-footer>
 </mat-card>
