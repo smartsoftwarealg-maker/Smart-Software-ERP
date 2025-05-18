@@ -31,7 +31,7 @@ export class BomDialogComponent {
         id:               [0],
         parentId:         [0],
         childId:          [0, Validators.required],
-        qty:              [0, [Validators.required, Validators.min(0.0001)]],
+        qty:              [0, [Validators.required, Validators.min(0.00001)]],
         price:            [0],
         childRef:         [null],
         childDescription: [null]
