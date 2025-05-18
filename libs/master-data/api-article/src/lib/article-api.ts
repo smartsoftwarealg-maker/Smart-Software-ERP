@@ -69,6 +69,8 @@ export interface Article {
     bomValue?: number;
     laborHours?: number;
     typeDescription?: string;
+    packagingDescription:string;
+    packaging?:number;
 }
 
 export interface StockInfo {
