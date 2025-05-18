@@ -109,6 +109,14 @@
                         </ss-auto-complete>
                     </mat-form-field>
 
+                    <mat-form-field class="default-25 sm-50">
+                        <mat-label translate>STOCK_PACKAGING_UNIT</mat-label>
+                        <ss-auto-complete matInput
+                                          [model]="packagingUnitLookup"
+                                          formControlName="packaging">
+                        </ss-auto-complete>
+                    </mat-form-field>
+
                     <mat-form-field floatLabel="always" class="default-25 sm-50">
                         <mat-label translate>STOCK_MIN_QTY</mat-label>
                         <input matInput formControlName="minQty" type="number">

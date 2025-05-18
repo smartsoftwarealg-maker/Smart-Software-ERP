@@ -35,8 +35,8 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 })
 export class ProductionArticleListComponent extends BaseEntityListComponent<Article> implements OnInit {
     private typeSrv = inject(ArticleTypeService);
-    private STOCK_COLS = ['image', 'reference', 'description2', 'markDescription', 'classDescription', 'subClassDescription', 'articleType', 'unitDescription'];
-    private SALES_COLS = ['image', 'reference', 'description2', 'markDescription', 'classDescription', 'subClassDescription', 'articleType', 'unitDescription'];
+    private STOCK_COLS = ['image', 'reference', 'description2', 'classDescription', 'subClassDescription', 'articleType','packagingDescription', 'unitDescription'];
+    private SALES_COLS = ['image', 'reference', 'description2', 'classDescription', 'subClassDescription', 'articleType','packagingDescription', 'unitDescription'];
 
     typeMap = new Map<number, string>();
     filterCtrl = new FormControl<number>(this.entitySrv.getParentId());

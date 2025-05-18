@@ -64,19 +64,6 @@
             </mat-cell>
         </ng-container>
 
-        <ng-container matColumnDef="markDescription">
-            <mat-header-cell *matHeaderCellDef mat-sort-header translate>STOCK_MARK</mat-header-cell>
-            <mat-cell *matCellDef="let e">
-                {{e.markDescription}}
-            </mat-cell>
-        </ng-container>
-
-        <ng-container matColumnDef="articleType">
-            <mat-header-cell *matHeaderCellDef mat-sort-header translate>STOCK_MODEL</mat-header-cell>
-            <mat-cell *matCellDef="let e">
-                {{e.typeDescription}}
-            </mat-cell>
-        </ng-container>
 
         <ng-container matColumnDef="classDescription">
             <mat-header-cell *matHeaderCellDef mat-sort-header translate>STOCK_CLASS</mat-header-cell>
@@ -89,6 +76,20 @@
             <mat-header-cell *matHeaderCellDef mat-sort-header translate>STOCK_SUBCLASS</mat-header-cell>
             <mat-cell *matCellDef="let e">
                 {{e.subClassDescription}}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="articleType">
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>STOCK_MODEL</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.typeDescription}}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="packagingDescription">
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>STOCK_PACKAGING_UNIT</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.packagingDescription}}
             </mat-cell>
         </ng-container>
 
