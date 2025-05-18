@@ -86,14 +86,14 @@
                         </ss-auto-complete>
                     </mat-form-field>
 
-                    <mat-form-field class="default-50 sm-100">
+                    <mat-form-field class="default-25 sm-50">
                         <mat-label translate>STOCK_UNIT</mat-label>
                         <ss-auto-complete matInput
                                           [model]="unitLookup"
                                           formControlName="salesUnit">
                         </ss-auto-complete>
                     </mat-form-field>
-                    <mat-form-field class="default-50 sm-100">
+                    <mat-form-field class="default-25 sm-50">
                         <mat-label translate>STOCK_PURCHASE_UNIT</mat-label>
                         <ss-auto-complete matInput
                                           [model]="purchaseUnitLookup"
@@ -101,21 +101,29 @@
                         </ss-auto-complete>
                     </mat-form-field>
 
-                    <mat-form-field floatLabel="always" class="default-50">
+                    <mat-form-field class="default-25 sm-50">
+                        <mat-label translate>STOCK_DOSAGE_UNIT</mat-label>
+                        <ss-auto-complete matInput
+                                          [model]="dosageUnitLookup"
+                                          formControlName="dosageUnit">
+                        </ss-auto-complete>
+                    </mat-form-field>
+
+                    <mat-form-field floatLabel="always" class="default-25 sm-50">
                         <mat-label translate>STOCK_MIN_QTY</mat-label>
                         <input matInput formControlName="minQty" type="number">
                     </mat-form-field>
 
-                    <mat-form-field floatLabel="always" class="default-50">
+                    <mat-form-field floatLabel="always" class="default-25 sm-50">
                         <mat-label translate>STOCK_MAX_QTY</mat-label>
                         <input matInput formControlName="maxQty" type="number">
                     </mat-form-field>
 
-                    <div class="default-50 sm-100">
+                    <div class="default-25 sm-50">
                         <mat-checkbox formControlName="notForSale" translate>STOCK_NON_STOCKED</mat-checkbox>
                     </div>
 
-                    <div class="default-50 sm-100">
+                    <div class="default-25 sm-50">
                         <mat-checkbox formControlName="blocked" translate>ADMINISTRATION_BLOCKED</mat-checkbox>
                     </div>
 

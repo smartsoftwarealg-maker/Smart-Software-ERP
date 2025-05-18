@@ -79,5 +79,9 @@
     "ANALYSIS_DATE":           "تاريخ التحليل",
     "ANALYZED":                "تم تحليله",
     "UNLOCKING_LOTS":          "تحرير البضاعة",
-    "BLOCKED":                 "مقفل"
+    "BLOCKED":                 "مقفل",
+    "MODEL":                   "صنف",
+    "MODELS":                  "الأصناف",
+    "DOSAGE_UNITS":          "وحدات الجرعة",
+    "DOSAGE_UNIT":           "وحدة الجرعة"
 }

@@ -1,15 +1,15 @@
 import { Injectable } from '@angular/core';
 import { HttpService } from '@ss/common/api-common';
-import {ARTICLE_TYPE_URL} from './lookups-api';
 import {BaseEntityService} from '@ss/common/api-base-entity';
-import {Lookup} from './lookup.class';
+import { Lookup } from '@ss/logistics/ui-doc-import';
+
 
 @Injectable({
     providedIn: 'root'
 })
-export class ArticleTypeService extends BaseEntityService<Lookup> {
+export class DosageUnitService extends BaseEntityService<Lookup> {
 
     constructor(protected override httpSrv: HttpService) {
-        super(httpSrv, ARTICLE_TYPE_URL);
+        super(httpSrv, '/lookups/dosage_units');
     }
 }

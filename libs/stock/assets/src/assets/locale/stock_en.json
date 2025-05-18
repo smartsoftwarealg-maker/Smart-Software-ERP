@@ -80,5 +80,9 @@
     "ANALYSIS_DATE":           "Analysis date",
     "ANALYZED":                "Analyzed",
     "UNLOCKING_LOTS":          "Unlocking lots",
-    "BLOCKED":                 "Blocked"
+    "BLOCKED":                 "Blocked",
+    "MODEL":                   "Model",
+    "MODELS":                  "Models",
+    "DOSAGE_UNITS":           "Dosage units",
+    "DOSAGE_UNIT":            "Dosage unit"
 }

@@ -1,10 +1,10 @@
-import {Component, OnInit,} from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { ArticleService, Article } from '@ss/master-data/api-article';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {Observable, of} from 'rxjs';
-import {LookupsService} from '@ss/common/api-lookup';
+import { ArticleTypeService, LookupsService } from '@ss/common/api-lookup';
 import {  ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import { ImageInputComponent, ImageModel } from '@ss/common/ui-image-input';
@@ -34,9 +34,12 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     ]
 })
 export class ProductionArticleListComponent extends BaseEntityListComponent<Article> implements OnInit {
+    private typeSrv = inject(ArticleTypeService);
+    private STOCK_COLS = ['image', 'reference', 'description2', 'markDescription', 'classDescription', 'subClassDescription', 'articleType', 'unitDescription'];
+    private SALES_COLS = ['image', 'reference', 'description2', 'markDescription', 'classDescription', 'subClassDescription', 'articleType', 'unitDescription'];
+
+    typeMap = new Map<number, string>();
     filterCtrl = new FormControl<number>(this.entitySrv.getParentId());
-    private STOCK_COLS = ['image', 'reference', 'description2', 'markDescription', 'classDescription', 'subClassDescription', 'unitDescription'];
-    private SALES_COLS = ['image', 'reference', 'description2', 'markDescription', 'classDescription', 'subClassDescription', 'unitDescription'];
     displayedColumns = this.STOCK_COLS;
 
     constructor(
@@ -58,6 +61,7 @@ export class ProductionArticleListComponent extends BaseEntityListComponent<Arti
             p.imageModel = new ImageModel(this.httpSrv);
             p.imageModel.readOnly = true;
             p.imageModel.setImageUrl(this.articleSrv.getPhotoUrl(p.id), false);
+            p.typeDescription = this.typeMap.get(p.articleType||0);
         });
         return of(data);
     }
@@ -69,6 +73,14 @@ export class ProductionArticleListComponent extends BaseEntityListComponent<Arti
             .subscribe(res => {
                 this.displayedColumns = res.get('price') === 'price1'? this.SALES_COLS : this.STOCK_COLS;
             });
+
+        this.typeSrv
+            .getList(0, 500)
+            .subscribe(res => {
+                this.typeMap.clear();
+                res.body.forEach(t => this.typeMap.set(t.id, t.description));
+            });
+
         this.subscriptions.push(
             this.filterCtrl
                 .valueChanges

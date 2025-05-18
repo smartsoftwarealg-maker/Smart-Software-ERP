@@ -24,6 +24,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 import { ArticleStoreComponent } from '@ss/stock/article-store';
 import { ChildBomComponent } from '@ss/master-data/ui-article';
 import { BomService } from '@ss/master-data/ui-article';
+import { DosageUnitService } from '../services/dosage-unit.service';
 
 @Component({
     selector: 'ss-production-article-detail',
@@ -44,15 +45,14 @@ import { BomService } from '@ss/master-data/ui-article';
 })
 export class ProductionArticleDetailComponent
     extends BaseEntityDetailComponent<Article>
-    implements OnInit
-{
+    implements OnInit {
     private subClassSrv = inject(SubclassService);
     private classSrv = inject(ClassService);
     private markSrv = inject(MarkService);
     private unitSrv = inject(UnitService);
-    private vatSrv = inject(VatService);
     private typeSrv = inject(ArticleTypeService);
     private bomSrv = inject(BomService);
+    private dosageUnitSrv = inject(DosageUnitService);
 
     imageModel: ImageModel;
     aid = 0;
@@ -63,6 +63,7 @@ export class ProductionArticleDetailComponent
     purchaseUnitLookup = new DefaultAutoCompleteModel(this.unitSrv);
     markLookup = new DefaultAutoCompleteModel(this.markSrv);
     typeLookup = new DefaultAutoCompleteModel(this.typeSrv);
+    dosageUnitLookup = new DefaultAutoCompleteModel(this.dosageUnitSrv);
 
     vats: Vat[];
     selectedRow: Article;
@@ -122,6 +123,7 @@ export class ProductionArticleDetailComponent
             blocked: [a.blocked],
             articleType: [a.articleType],
             subClass: [a.subClass],
+            dosageUnit: [a.dosageUnit],
         });
     }
 

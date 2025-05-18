@@ -24,7 +24,21 @@ import { MatInput } from '@angular/material/input';
     templateUrl: '../base-templates/list-template.html',
     styleUrls: ['../base-templates/list-template.scss'],
     standalone: true,
-    imports: [MatTable, MatSort, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatSortHeader, TranslateDirective, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, PaginationComponent]
+    imports: [MatTable,
+        MatSort,
+        MatColumnDef,
+        MatHeaderCellDef,
+        MatHeaderCell,
+        MatSortHeader,
+        TranslateDirective,
+        MatCellDef,
+        MatCell,
+        MatHeaderRowDef,
+        MatHeaderRow,
+        MatRowDef,
+        MatRow,
+        PaginationComponent
+    ]
 })
 export class VehicleTypeListComponent extends BaseEntityListComponent<Lookup> {
 

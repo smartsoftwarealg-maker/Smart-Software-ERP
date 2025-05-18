@@ -20,8 +20,8 @@
             <mat-cell *matCellDef="let e">
                 <div class="person-photo">
                     <ss-image-input
-                        width="60px"
-                        height="76px"
+                        width="45px"
+                        height="50px"
                         [imageModel]="e.imageModel"
                         style="display: inline-block;">
                     </ss-image-input>
@@ -68,6 +68,13 @@
             <mat-header-cell *matHeaderCellDef mat-sort-header translate>STOCK_MARK</mat-header-cell>
             <mat-cell *matCellDef="let e">
                 {{e.markDescription}}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="articleType">
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>STOCK_MODEL</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.typeDescription}}
             </mat-cell>
         </ng-container>
 

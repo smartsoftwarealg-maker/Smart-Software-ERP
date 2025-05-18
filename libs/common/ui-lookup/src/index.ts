@@ -1,4 +1,3 @@
-export * from './lib/common-ui-lookup.module';
 export * from './lib/vat-detail/vat-detail.component';
 export * from './lib/vat-list/vat-list.component';
 export * from './lib/components/wilaya.component';
@@ -49,6 +48,5 @@ export * from './lib/components/insurance-agency.component';
 export * from './lib/components/destination.component';
 export * from './lib/components/career-motive.component';
 export * from './lib/components/cost-center-group.component';
-export * from './lib/components/article-type.component';
 export * from './lib/components/post-elements-list/post-elements-list.component';
 export * from './lib/components/post-elements-detail/post-elements-detail.component';

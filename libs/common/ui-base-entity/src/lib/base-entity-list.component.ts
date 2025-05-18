@@ -282,7 +282,11 @@ export class BaseEntityListComponent<T extends { id: number, email?: string }> i
             .subscribe(res => {
                 const fileURL = URL.createObjectURL(new Blob([res], {type: 'application/pdf'}));
                 const w = window.open(fileURL, '_blank');
-                setTimeout(() => w.document.title = `${this.formReport}_${this.selected}.pdf`, 200);
+                setTimeout(() => {
+                    try {
+                        w.document.title = `${this.formReport}_${this.selected}.pdf`
+                    } catch (e: any) {}
+                }, 200);
             });
     }
 

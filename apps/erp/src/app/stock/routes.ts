@@ -104,10 +104,7 @@ import {
 } from '@logistics/parts-reservation';
 import { UserStoresComponent } from '@ss/master-data/ui-store';
 import { ArticleDetailComponent, ArticleListComponent, ReferenceCorrectionComponent } from '@ss/master-data/ui-article';
-import {
-    ArticleTypeDetailComponent,
-    ArticleTypeListComponent
-} from '@ss/common/ui-lookup';
+import { ArticleTypeDetailComponent, ArticleTypeListComponent } from '@ss/production/production-article';
 
 export const mainRoutes: Routes = [
     {
