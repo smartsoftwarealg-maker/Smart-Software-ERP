@@ -69,7 +69,7 @@ export class LotManagementDetailComponent extends BaseEntityDetailComponent<Lot>
             description: [l.description],
             descriptionAr: [l.descriptionAr],
             lotState: [l.lotState],
-            lotNumber: [l.lotNumber || 0],
+            lotNumber: [l.lotNumber || '1', Validators.maxLength(14)],
             creationDate: [l.creationDate],
             expires: [l.expires||false, Validators.required],
             expirationDate: [l.expirationDate],

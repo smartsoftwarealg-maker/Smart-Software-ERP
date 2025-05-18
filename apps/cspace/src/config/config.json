@@ -23,7 +23,7 @@
     "urlRules": [
         {
             "frontend": "?",
-            "backend": "http://localhost:8080"
+            "backend": "https://clientecde.gica.dz"
         }
     ],
     "useBrowserLanguage": true,
