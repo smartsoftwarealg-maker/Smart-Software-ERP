@@ -1,5 +1,15 @@
+mat-card {
+    width: 98%;
+    max-width: 500px;
+    margin: 5px auto;
+    border-radius: 1.4em;
+    padding: 8px;
+}
+
 mat-card,
-mat-tab-group {
-    width: 80%;
-    max-width: 800px;
+.detail__div {
+    width: fit-content;
+    margin: 16px auto;
+    padding: 16px;
+    border-radius: 1.4em;
 }

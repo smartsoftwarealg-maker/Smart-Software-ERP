@@ -14,7 +14,7 @@ import {
     PRODUCTION_LOT_MANAGEMENT_URL,
     PRODUCTION_LOT_ANALYSIS_URL,
     PRODUCTION_INTER_STORE_TRANSFER_URL,
-    PRODUCTION_UNLOCKING_LOTS_URL, PRODUCTION_ARTICLE_TYPES_URL, PRODUCTION_DOSAGE_UNITS_URL
+    PRODUCTION_UNLOCKING_LOTS_URL,
 } from '../common';
 import {
     ProductionOrderDetailComponent,
@@ -33,9 +33,8 @@ import { loginGuard } from '../erp-guards';
 import { MrpComponent } from '@ss/production/mrp';
 import { BomComponent } from '@ss/master-data/ui-article';
 import {
-    ArticleTypeDetailComponent, DosageUnitsDetailComponent, DosageUnitsListComponent,
     ProductionArticleDetailComponent,
-    ProductionArticleListComponent
+    ProductionArticleListComponent,
 } from '@ss/production/production-article';
 import {
     LotAnalysisDetailComponent,
@@ -47,14 +46,9 @@ import {
 import {
     InterStoreTransferListComponent,
     InterStoreTransferDetailComponent,
+    InterStoreTransferLinesListComponent,
+    InterStoreTransferLinesDetailComponent,
 } from '@ss/production/production-reception';
-import {
-    LocalExtraCostDetailComponent,
-    LocalExtraCostListComponent,
-} from '@ss/purchases/extra-costs';
-import {
-    ArticleTypeListComponent
-} from '@ss/production/production-article';
 
 export const prodRoutes: Routes = [
     {
@@ -68,7 +62,6 @@ export const prodRoutes: Routes = [
                 path: LIST_URL,
                 component: InterStoreTransferListComponent,
                 canActivate: [loginGuard],
-                children: docInfoRoutes,
             },
             {
                 path: ':id',
@@ -76,24 +69,26 @@ export const prodRoutes: Routes = [
                 canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService],
                 children: [
-                    { path: '', pathMatch: 'full', redirectTo: 'lines-list' },
+                    { path: '', redirectTo: 'detail', pathMatch: 'full' },
                     {
-                        path: 'extra-costs',
+                        path: 'detail',
                         children: [
                             {
                                 path: '',
-                                component: LocalExtraCostListComponent,
+                                component: InterStoreTransferLinesListComponent,
                                 pathMatch: 'full',
                             },
                             {
                                 path: ':id',
-                                component: LocalExtraCostDetailComponent,
+                                component:
+                                    InterStoreTransferLinesDetailComponent,
                             },
                         ],
                     },
-                    ...docInfoRoutes,
                 ],
             },
+            { path: '', redirectTo: LIST_URL, pathMatch: 'full' },
+            { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' },
         ],
     },
     {
@@ -225,43 +220,6 @@ export const prodRoutes: Routes = [
             {
                 path: ':id',
                 component: LotAnalysisDetailComponent,
-                canActivate: [loginGuard],
-                canDeactivate: [CanDeactivateService],
-            },
-            { path: '', redirectTo: LIST_URL, pathMatch: 'full' },
-            { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' },
-        ],
-    },
-
-    {
-        path: PRODUCTION_ARTICLE_TYPES_URL,
-        children: [
-            {
-                path: LIST_URL,
-                component: ArticleTypeListComponent,
-                canActivate: [loginGuard],
-            },
-            {
-                path: ':id',
-                component: ArticleTypeDetailComponent,
-                canActivate: [loginGuard],
-                canDeactivate: [CanDeactivateService],
-            },
-            { path: '', redirectTo: LIST_URL, pathMatch: 'full' },
-            { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' },
-        ],
-    },
-    {
-        path: PRODUCTION_DOSAGE_UNITS_URL,
-        children: [
-            {
-                path: LIST_URL,
-                component: DosageUnitsListComponent,
-                canActivate: [loginGuard],
-            },
-            {
-                path: ':id',
-                component: DosageUnitsDetailComponent,
                 canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService],
             },

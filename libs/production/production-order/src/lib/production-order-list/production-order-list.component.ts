@@ -11,7 +11,7 @@ import { MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, Ma
 import { MatSort, MatSortHeader } from '@angular/material/sort';
 import { TranslateDirective } from '@ss/common/ui-lang';
 import { PaginationComponent } from '@ss/common/ui-pagination';
-import { NgIf, DatePipe } from '@angular/common';
+import { DatePipe } from '@angular/common';
 import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
 
 @Component({
@@ -34,7 +34,6 @@ import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
         MatRowDef,
         MatRow,
         PaginationComponent,
-        NgIf,
         DocInfoComponent,
         DatePipe,
         TranslateDirective
