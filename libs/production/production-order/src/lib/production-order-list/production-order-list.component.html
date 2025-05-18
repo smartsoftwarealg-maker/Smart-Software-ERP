@@ -2,11 +2,10 @@
     <div class="table-container">
         <mat-table mat-table [dataSource]="data" class="main-table" matSort (matSortChange)="sort($event)">
 
-
             <ng-container matColumnDef="number">
                 <mat-header-cell *matHeaderCellDef mat-sort-header translate>STOCK_NUMBER</mat-header-cell>
                 <mat-cell *matCellDef="let e">
-                    {{e.number}}
+                    {{ e.number }}
                 </mat-cell>
             </ng-container>
 
@@ -56,12 +55,11 @@
     <div class="pagination-container b-b-background">
         <ss-pagination [paginationModel]="pagination"></ss-pagination>
     </div>
-
-    <div class="doc-info">
-        <ss-doc-info
-            *ngIf="selected"
-            [displayedGroups]="['document','agent']"
-            [params]="{
+    @if (selected) {
+        <div class="doc-info">
+            <ss-doc-info
+                [displayedGroups]="['document','agent']"
+                [params]="{
             documentId: selectedRow?.id,
             documentURL:'/reception',
             agentId : selectedRow.agent,
@@ -69,6 +67,7 @@
             prodId: selectedRow.id,
             appId: 5
         }">
-        </ss-doc-info>
-    </div>
+            </ss-doc-info>
+        </div>
+    }
 </div>

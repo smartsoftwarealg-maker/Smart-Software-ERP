@@ -1,0 +1,72 @@
+<div class="main-container">
+    <div class="add-button">
+        @if (isEditable) {
+            <button
+                mat-mini-fab
+                color="primary"
+                (click)="showDetail(0)"
+                [matTooltip]="'COMMON_ADD' | translate">
+                <span class="fas fa-plus"></span>
+            </button>
+        }
+        <button
+            mat-mini-fab
+            (click)="edit()"
+            [matTooltip]="'COMMON_EDIT' | translate"
+            [disabled]="!selectedId"
+            color="accent">
+            <span class="fas fa-pen"></span>
+        </button>
+        @if (isEditable) {
+            <button mat-mini-fab (click)="deleteSelected()"
+                    [matTooltip]="'COMMON_DELETE' | translate"
+                    [disabled]="!selectedId"
+                    color="warn">
+                <span class="fas fa-trash-alt"></span>
+            </button>
+        }
+    </div>
+
+    <div class="container_div">
+        <mat-table mat-table [dataSource]="data$" class="main-table">
+            <ng-container matColumnDef="sourceStore">
+                <mat-header-cell *matHeaderCellDef translate>COMMON_SOURCE_STORE</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{ e.sourceStore }}
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="sourceDescription">
+                <mat-header-cell *matHeaderCellDef translate>COMMON_SOURCE_ARTICLE</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{ e.sourceDescription }}
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="qty">
+                <mat-header-cell *matHeaderCellDef translate>COMMON_QUANTITY</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{ e.qty }}
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="destinationStore">
+                <mat-header-cell *matHeaderCellDef translate>COMMON_DESTINATION_STORE</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{ e.destinationStore }}
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="destinationDescription">
+                <mat-header-cell *matHeaderCellDef translate>COMMON_DESTINATION_ARTICLE</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{ e.destinationDescription }}
+                </mat-cell>
+            </ng-container>
+
+            <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+            <mat-row class="selectable" [class.selected]="row.id === selectedId" (click)="select(row.id)"
+                     *matRowDef="let row; columns: displayedColumns"></mat-row>
+        </mat-table>
+    </div>
+</div>

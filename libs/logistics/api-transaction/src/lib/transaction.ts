@@ -154,11 +154,11 @@ export interface InterStoreTransferLine {
     parentId: number;
     rightId: number;
     sourceRef: string;
-    sourceDescription: string;
+    sourceDescription?: string;
     sourceStore?:number;
     qty: number;
     destinationRef: string;
-    destinationDescription: string;
+    destinationDescription?: string;
     destinationStore?:number;
 }
 

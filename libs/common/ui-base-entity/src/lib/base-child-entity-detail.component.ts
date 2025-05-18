@@ -3,7 +3,7 @@ import { BaseEntityService } from "@ss/common/api-base-entity";
 import { ShellService, SnackBarService } from "@ss/common/ui-shell";
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
-import { FormBuilder, UntypedFormGroup, Validators } from "@angular/forms";
+import { UntypedFormGroup } from "@angular/forms";
 import { Observable, of, switchMap, tap } from 'rxjs';
 import { LoginService, Right } from "@ss/common/api-common";
 

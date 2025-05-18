@@ -14,7 +14,7 @@ import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { CdkTextareaAutosize } from '@angular/cdk/text-field';
 import {
     ManufacturedArticleService
-} from '../../../../../master-data/api-article/src/lib/manufactured-article.service';
+} from '@ss/master-data/api-article';
 import { ArticleAutoCompleteModel } from '@ss/master-data/api-article';
 
 @Component({

@@ -46,11 +46,9 @@ import {
 import {
     InterStoreTransferListComponent,
     InterStoreTransferDetailComponent,
+    InterStoreTransferLinesListComponent,
+    InterStoreTransferLinesDetailComponent,
 } from '@ss/production/production-reception';
-import {
-    LocalExtraCostDetailComponent,
-    LocalExtraCostListComponent,
-} from '@ss/purchases/extra-costs';
 
 export const prodRoutes: Routes = [
     {
@@ -64,7 +62,6 @@ export const prodRoutes: Routes = [
                 path: LIST_URL,
                 component: InterStoreTransferListComponent,
                 canActivate: [loginGuard],
-                children: docInfoRoutes,
             },
             {
                 path: ':id',
@@ -72,24 +69,26 @@ export const prodRoutes: Routes = [
                 canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService],
                 children: [
-                    { path: '', pathMatch: 'full', redirectTo: 'lines-list' },
+                    { path: '', redirectTo: 'detail', pathMatch: 'full' },
                     {
-                        path: 'extra-costs',
+                        path: 'detail',
                         children: [
                             {
                                 path: '',
-                                component: LocalExtraCostListComponent,
+                                component: InterStoreTransferLinesListComponent,
                                 pathMatch: 'full',
                             },
                             {
                                 path: ':id',
-                                component: LocalExtraCostDetailComponent,
+                                component:
+                                    InterStoreTransferLinesDetailComponent,
                             },
                         ],
                     },
-                    ...docInfoRoutes,
                 ],
             },
+            { path: '', redirectTo: LIST_URL, pathMatch: 'full' },
+            { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' },
         ],
     },
     {
