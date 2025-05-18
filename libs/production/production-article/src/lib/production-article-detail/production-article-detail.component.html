@@ -10,10 +10,11 @@
                 <form [formGroup]="form">
                     <div style="height: 16px"></div>
 
-                    <mat-form-field floatLabel="always" class="default-50">
+                    <mat-form-field floatLabel="always" class="default-25">
                         <mat-label translate>COMMON_REFERENCE</mat-label>
                         <input matInput formControlName="reference" type="text" required>
                     </mat-form-field>
+                    <div class="default-25 sm-hide"></div>
                     <mat-form-field floatLabel="always" class="default-50 sm-100">
                         <mat-label translate>LOGISTICS_DESCRIPTION</mat-label>
                         <input matInput formControlName="description2" type="text" required>
@@ -23,9 +24,8 @@
                         <mat-label translate>LOGISTICS_PRICE</mat-label>
                         <input matInput formControlName="price1" type="number">
                     </mat-form-field>
-                    <div class="default-25 sm-hide"></div>
 
-                    <mat-form-field floatLabel="always" class="default-25 sm-100">
+                    <mat-form-field floatLabel="always" class="default-25 sm-50">
                         <mat-label translate>STOCK_VAT</mat-label>
                         <mat-select formControlName="vat">
                             <mat-option [value]="null"></mat-option>
@@ -37,7 +37,7 @@
                         </mat-select>
                     </mat-form-field>
 
-                    <mat-form-field floatLabel="always" class="default-25 sm-100">
+                    <mat-form-field floatLabel="always" class="default-25 sm-50">
                         <mat-label translate>STOCK_VAT2</mat-label>
                         <mat-select formControlName="vat2">
                             <mat-option [value]="null"></mat-option>
@@ -49,7 +49,7 @@
                         </mat-select>
                     </mat-form-field>
 
-                    <mat-form-field class="default-50 sm-100">
+                    <mat-form-field class="default-25 sm-50">
                         <mat-label translate>STOCK_CLASS</mat-label>
                         <ss-auto-complete matInput
                                           [required]="true"
@@ -61,7 +61,7 @@
                         </mat-error>
                     </mat-form-field>
 
-                    <mat-form-field class="default-50 sm-100">
+                    <mat-form-field class="default-25 sm-50">
                         <mat-label translate>STOCK_SUBCLASS</mat-label>
                         <ss-auto-complete matInput
                                           [model]="subClassLookup"
@@ -70,7 +70,7 @@
                     </mat-form-field>
 
 
-                    <mat-form-field class="default-50 sm-100">
+                    <mat-form-field class="default-25 sm-50">
                         <mat-label translate>STOCK_MARK</mat-label>
                         <ss-auto-complete matInput
                                           [model]="markLookup"
@@ -78,7 +78,7 @@
                         </ss-auto-complete>
                     </mat-form-field>
 
-                    <mat-form-field class="default-50 sm-100">
+                    <mat-form-field class="default-25 sm-50">
                         <mat-label translate>COMMON_TYPE</mat-label>
                         <ss-auto-complete matInput
                                           [model]="typeLookup"
@@ -106,6 +106,14 @@
                         <ss-auto-complete matInput
                                           [model]="dosageUnitLookup"
                                           formControlName="dosageUnit">
+                        </ss-auto-complete>
+                    </mat-form-field>
+
+                    <mat-form-field class="default-25 sm-50">
+                        <mat-label translate>STOCK_PACKAGING_UNIT</mat-label>
+                        <ss-auto-complete matInput
+                                          [model]="packagingUnitLookup"
+                                          formControlName="packaging">
                         </ss-auto-complete>
                     </mat-form-field>
 

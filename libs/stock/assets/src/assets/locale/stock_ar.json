@@ -82,8 +82,11 @@
     "BLOCKED":                 "مقفل",
     "MODEL":                   "صنف",
     "MODELS":                  "الأصناف",
+
     "DOSAGE_UNITS":            "وحدات الجرعة",
     "DOSAGE_UNIT":             "وحدة الجرعة",
     "PACKAGING_UNITS":         "وحدات التغليف",
-    "PACKAGING_UNIT":          "وحدة التغليف"
+    "PACKAGING_UNIT":          "وحدة التغليف",
+    "PACKAGING":             "التعبئة والتغليف"
+
 }

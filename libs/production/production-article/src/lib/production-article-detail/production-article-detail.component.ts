@@ -25,6 +25,7 @@ import { ArticleStoreComponent } from '@ss/stock/article-store';
 import { ChildBomComponent } from '@ss/master-data/ui-article';
 import { BomService } from '@ss/master-data/ui-article';
 import { DosageUnitService } from '../services/dosage-unit.service';
+import { PackagingUnitService } from '../services/packaging-unit.service';
 
 @Component({
     selector: 'ss-production-article-detail',
@@ -53,6 +54,7 @@ export class ProductionArticleDetailComponent
     private typeSrv = inject(ArticleTypeService);
     private bomSrv = inject(BomService);
     private dosageUnitSrv = inject(DosageUnitService);
+    private packagingUnitSrv=inject(PackagingUnitService);
 
     imageModel: ImageModel;
     aid = 0;
@@ -64,6 +66,8 @@ export class ProductionArticleDetailComponent
     markLookup = new DefaultAutoCompleteModel(this.markSrv);
     typeLookup = new DefaultAutoCompleteModel(this.typeSrv);
     dosageUnitLookup = new DefaultAutoCompleteModel(this.dosageUnitSrv);
+    packagingUnitLookup = new DefaultAutoCompleteModel(this.packagingUnitSrv);
+
 
     vats: Vat[];
     selectedRow: Article;
@@ -124,6 +128,7 @@ export class ProductionArticleDetailComponent
             articleType: [a.articleType],
             subClass: [a.subClass],
             dosageUnit: [a.dosageUnit],
+            packaging:[a.packaging]
         });
     }
 

@@ -86,5 +86,6 @@
     "DOSAGE_UNITS":            "Dosage units",
     "DOSAGE_UNIT":             "Dosage unit",
     "PACKAGING_UNITS":         "Packaging units",
-    "PACKAGING_UNIT":          "Packaging unit"
+    "PACKAGING_UNIT":          "Packaging unit",
+    "PACKAGING":               "Packaging"
 }
