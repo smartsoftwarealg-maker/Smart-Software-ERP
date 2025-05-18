@@ -81,5 +81,7 @@
     "UNLOCKING_LOTS":          "Débloquer des lots",
     "BLOCKED":                 "Bloquée",
     "MODEL":                   "Model",
-    "MODELS":                  "Models"
+    "MODELS":                  "Models",
+    "DOSAGE_UNITS":            "Unités de dosage",
+    "DOSAGE_UNIT":             "Unité de dosage"
 }

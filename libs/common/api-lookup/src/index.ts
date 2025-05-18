@@ -49,7 +49,7 @@ export * from './lib/award-procedure.service';
 export * from './lib/sector.service';
 export * from './lib/treasury-group.service';
 export * from './lib/os.service';
-export * from '../../../production/production-article/src/lib/article-types/article-type.service';
+export * from '../../../production/production-article/src/lib/services/article-type.service';
 export * from './lib/project-type.service';
 export * from './lib/award-procedure.service';
 export * from './lib/app-archive-document.service';

@@ -58,6 +58,7 @@ export interface Article {
     notForSale: boolean;
     blocked: boolean;
     routingId?: number;
+    dosageUnit?: number;
     classDescription?: string;
     markDescription?: string;
     subclassDescription?: string;

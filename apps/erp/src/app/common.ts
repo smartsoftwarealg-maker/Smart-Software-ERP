@@ -516,7 +516,8 @@ export const PRODUCTION_LOT_MANAGEMENT_URL = 'lot-management';
 export const PRODUCTION_LOT_ANALYSIS_URL = 'lot-analysis';
 export const PRODUCTION_INTER_STORE_TRANSFER_URL = 'production-inter-store-transfer';
 export const PRODUCTION_UNLOCKING_LOTS_URL = 'unlocking-lots';
-export const PRODUCTION_ARTICLE_TYPES_URL = 'lookups/article_types';
+export const PRODUCTION_ARTICLE_TYPES_URL = 'article_types';
+export const PRODUCTION_DOSAGE_UNITS_URL = 'article_types';
 
 
 // #############
@@ -985,6 +986,7 @@ export const ABS_PRODUCTION_LOT_ANALYSIS_URL = '/' + [MAIN_PAGE_URL, PRODUCTION_
 export const ABS_PRODUCTION_INTER_STORE_TRANSFER_URL = '/' + [MAIN_PAGE_URL, PRODUCTION_URL, PRODUCTION_INTER_STORE_TRANSFER_URL].join('/');
 export const ABS_PRODUCTION_UNLOCKING_LOTS_URL = '/' + [MAIN_PAGE_URL, PRODUCTION_URL, PRODUCTION_UNLOCKING_LOTS_URL].join('/');
 export const ABS_PRODUCTION_ARTICLE_TYPES_URL = '/' + [MAIN_PAGE_URL, PRODUCTION_URL, PRODUCTION_ARTICLE_TYPES_URL].join('/');
+export const ABS_PRODUCTION_DOSAGE_UNITS_URL = '/' + [MAIN_PAGE_URL, PRODUCTION_URL, PRODUCTION_DOSAGE_UNITS_URL].join('/');
 
 // ######################################
 // #            Other things            #

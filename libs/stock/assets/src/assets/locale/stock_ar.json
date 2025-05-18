@@ -81,5 +81,7 @@
     "UNLOCKING_LOTS":          "تحرير البضاعة",
     "BLOCKED":                 "مقفل",
     "MODEL":                   "صنف",
-    "MODELS":                  "الأصناف"
+    "MODELS":                  "الأصناف",
+    "DOSAGE_UNITS":          "وحدات الجرعة",
+    "DOSAGE_UNIT":           "وحدة الجرعة"
 }
