@@ -109,6 +109,7 @@ export class WorkOrderDetailComponent extends CMMSWorkDetail {
             const dialogRef = this.dialog.open(RequestImportComponent, {
                 width: '800px',
                 height: '55%',
+                maxWidth: '850px',
                 data: { agentId: agentId }
             });
 

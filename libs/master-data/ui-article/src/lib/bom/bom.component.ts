@@ -1,10 +1,9 @@
-import { Component, inject, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { ChangeDetectorRef, Component, inject, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { KeepOnToolbar, ShellService, SnackBarService, ToolbarButton } from '@ss/common/ui-shell';
 import { ActivatedRoute } from '@angular/router';
 import { BomService } from '../bom.service';
 import { BOM, BOMTree } from '@ss/master-data/api-article';
-import { NestedTreeControl } from '@angular/cdk/tree';
 import { MatTree, MatTreeNestedDataSource } from '@angular/material/tree';
 import { MatButtonModule } from '@angular/material/button';
 
@@ -35,6 +34,7 @@ export class BomComponent implements OnInit, OnDestroy {
     private confirmationSrv =  inject(ConfirmationDialogService);
     private entitySrv = inject(BomService);
     private snackBarSrv = inject(SnackBarService);
+
     @ViewChild('tree', { static: false }) tree: MatTree<BOMTree>;
 
     private deleteButton: ToolbarButton = {
@@ -69,10 +69,11 @@ export class BomComponent implements OnInit, OnDestroy {
     selectedBOM: BOMTree | null = null;
     rootBOM: BOMTree| null = null;
 
-    treeControl = new NestedTreeControl<BOMTree>(node => node.children);
-    dataSource = new MatTreeNestedDataSource<BOMTree>();
-
+    childrenAccessor = (node: BOMTree) => node.children??[];
     hasChild = (_: number, node: BOMTree) => !!node.children && node.children.length > 0;
+
+    // treeControl = new NestedTreeControl<BOMTree>(node => node.children);
+    dataSource = new MatTreeNestedDataSource<BOMTree>();
 
     ngOnInit(): void {
         this.shellSrv.setGoBackPath('..', this.route);
@@ -82,28 +83,12 @@ export class BomComponent implements OnInit, OnDestroy {
         this.refresh(null);
     }
 
-    // getLevel(node: BOMTree): number {
-    //     return this._getLevel(this.dataSource.data, node);
-    // }
-
-    // private _getLevel(tree: BOMTree[], node: BOMTree): number {
-    //     const path = tree.find(branch => {
-    //         return this.treeControl
-    //             .getDescendants(branch)
-    //             .some(n => n.bom.id === node.bom.id);
-    //     });
-    //
-    //     return path ? this._getLevel(path.children, node) + 1 : 0;
-    // }
-
     refresh(filter?: string) {
         this.bomSrv
             .tree(filter)
             .subscribe(res => {
                 // this.dataSource.data = res;
                 this.dataSource.data = [{ bom: this.EMPTY_BOM, children: res || []}];
-                this.treeControl.dataNodes = this.dataSource.data;
-                this.treeControl.expandAll();
             });
     }
 
@@ -123,40 +108,45 @@ export class BomComponent implements OnInit, OnDestroy {
         this.rootBOM = this.getSelectedParent(this.dataSource.data, this.selectedBOM);
     }
 
+    //A function which will remove a given node from BOMTree[] recursively
+    private removeNode(source: BOMTree[], child: BOMTree): BOMTree[] {
+        return source
+            .filter(b => b.bom.id !== child.bom.id)
+            .map(e => {
+                return {bom: e.bom, children: this.removeNode(e.children, child)} as BOMTree;
+            });
+    }
+    private contains(source: BOMTree[], child: BOMTree): boolean {
+        return source.find(b => b.bom.id === child.bom.id || this.contains(b.children, child)) !== undefined;
+    }
+
     private deleteSelected() {
         if (this.selectedBOM && this.selectedBOM.bom.id > 0) {
+           const parent = this.getSelectedParent(this.dataSource.data, this.selectedBOM);
             this.confirmationSrv.confirmDelete()
                 .pipe(switchMap(yes => yes ? this.entitySrv.remove(this.selectedBOM.bom.id) : of({ count: 0 })))
                 .subscribe(res => {
                     if (res.count > 0) {
                         this.snackBarSrv.showSuccessMessage();
-                        this.refresh();
+                        parent.children = parent.children.filter(e => e.bom.id !== this.selectedBOM.bom.id);
+                        this.tree.collapse(parent);
+                        this.tree.expand(parent);
+                        if (this.contains(this.dataSource.data, this.selectedBOM)) {
+                            this.refresh(null);
+                        }
                     }
                 });
         }
     }
 
+    //Create track by function to avoid re-rendering the tree
+    trackByFn(index: number, item: BOMTree): number {
+        return item.bom.id;
+    }
+
     private showEditDialog() {
         const bom = this.selectedBOM?.bom;
         this.edit({ id: bom?.id || 0, childId: bom?.childId, parentId: bom.parentId || null, qty: bom.qty, price: bom?.price});
-        // const dialogRef = this.dialog.open(BomDialogComponent, {
-        //     width: '600px',
-        //     height: '250px',
-        //     disableClose: true,
-        //     data: { id: bom?.id || 0, childId: bom?.childId, parentId: bom.parentId || null, qty: bom.qty, price: bom?.price}
-        // });
-        //
-        // dialogRef.afterClosed()
-        //     .pipe(switchMap(bom => bom? this.entitySrv.save(bom).pipe(map(id => {bom.id = id; return bom;})) : of(null)))
-        //     .subscribe((bom: BOM) => {
-        //         if (bom) {
-        //             this.snackBarSrv.showSuccessMessage();
-        //             this.selectedBOM.children.push({bom: bom, children: []});
-        //             this.refresh();
-        //         } else {
-        //             this.snackBarSrv.showFailureMessage();
-        //         }
-        //     });
     }
 
     private showAddDialog() {
@@ -168,6 +158,7 @@ export class BomComponent implements OnInit, OnDestroy {
         const dialogRef = this.dialog.open(BomDialogComponent, {
             width: '600px',
             height: '250px',
+            maxWidth: '650px',
             disableClose: true,
             data: bom
         });
@@ -178,7 +169,9 @@ export class BomComponent implements OnInit, OnDestroy {
                 if (bom) {
                     this.snackBarSrv.showSuccessMessage();
                     this.selectedBOM.children.push({bom: bom, children: []});
-                    this.refresh();
+                    this.select(this.selectedBOM);
+                    this.tree.collapse(this.selectedBOM);
+                    this.tree.expand(this.selectedBOM);
                 } else {
                     this.snackBarSrv.showFailureMessage();
                 }

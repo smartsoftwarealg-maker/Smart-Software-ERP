@@ -54,6 +54,7 @@ export class WorkOrderArticleListComponent extends BaseChildEntityListComponent<
         const dialogRef = this.dialog.open(WorkOrderArticleReservationComponent, {
             width: '60em',
             height: '600px',
+            maxWidth: '62em',
             data: { data: this.data$, id: this.detailSrv.getParentId() }
         });
         dialogRef.afterClosed().subscribe(result => {
