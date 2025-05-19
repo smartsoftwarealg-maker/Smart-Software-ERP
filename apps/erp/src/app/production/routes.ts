@@ -17,7 +17,7 @@ import {
     PRODUCTION_UNLOCKING_LOTS_URL,
     PRODUCTION_ARTICLE_TYPES_URL,
     PRODUCTION_DOSAGE_UNITS_URL,
-    PRODUCTION_PACKAGING_UNITS_URL
+    PRODUCTION_PACKAGING_UNITS_URL, COMMON_REPORTS_URL
 } from '../common';
 import {
     ProductionOrderDetailComponent,
@@ -39,9 +39,11 @@ import {
     ArticleTypeDetailComponent,
     ArticleTypeListComponent,
     DosageUnitsDetailComponent,
-    DosageUnitsListComponent, PackagingUnitsDetailComponent, PackagingUnitsListComponent,
+    DosageUnitsListComponent,
+    PackagingUnitsDetailComponent,
+    PackagingUnitsListComponent,
     ProductionArticleDetailComponent,
-    ProductionArticleListComponent
+    ProductionArticleListComponent,
 } from '@ss/production/production-article';
 import {
     LotAnalysisDetailComponent,
@@ -56,6 +58,7 @@ import {
     InterStoreTransferLinesListComponent,
     InterStoreTransferLinesDetailComponent,
 } from '@ss/production/production-reception';
+import { ReportViewComponent } from '@ss/common/ui-report-param';
 
 export const prodRoutes: Routes = [
     {
@@ -290,6 +293,12 @@ export const prodRoutes: Routes = [
             { path: '', redirectTo: LIST_URL, pathMatch: 'full' },
             { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' },
         ],
+    },
+    {
+        path: COMMON_REPORTS_URL,
+        component: ReportViewComponent,
+        canActivate: [loginGuard],
+        data: { reportBase: 'manuf' },
     },
     {
         path: PRODUCTION_UNLOCKING_LOTS_URL,
