@@ -108,6 +108,7 @@ export class ChildBomComponent implements OnInit {
         const dialogRef = this.dialog.open(BomDialogComponent, {
             width: '600px',
             height: '250px',
+            maxWidth: '650px',
             disableClose: true,
             data: bom
         });

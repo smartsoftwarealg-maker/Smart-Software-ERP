@@ -1,64 +1,55 @@
-<mat-tree [dataSource]="dataSource" [treeControl]="treeControl" class="example-tree" #tree>
-    <!-- This is the tree node template for leaf nodes -->
-    <!-- There is inline padding applied to this node using styles.
-      This padding value depends on the mat-icon-button width. -->
-    <mat-tree-node *matTreeNodeDef="let node"
-                   matTreeNodeToggle
-                   class="selectable"
-                   [class.selected]="node?.bom.id === selectedBOM?.bom.id"
-                   (click)="select(node)">
-        <button mat-icon-button matTreeNodeToggle
-                [attr.aria-label]="'Toggle ' + node.name">
-            <i class="fa-solid fa-arrow-turn-down-right"></i>
-        </button>
-        <div class="info_div">
-            <td class="reference">{{ node.bom.childRef }}</td>
-            <div class="detail_div">
-                <span class="description">{{ node.bom.childDescription }}</span>
-                <span class="qty"> {{ node.bom.qty | number: '1.2-6' }}</span>
-                <span class="price"> {{ node.bom.price | number: '1.2-6' }}</span>
-            </div>
-        </div>
-
-    </mat-tree-node>
-    <!-- This is the tree node template for expandable nodes -->
-    <mat-nested-tree-node *matTreeNodeDef="let node; when: hasChild">
-        <div class="mat-tree-node selectable"
-             [class.selected]="node?.bom.id === selectedBOM?.bom.id"
-             (click)="select(node)">
+    <mat-tree [dataSource]="dataSource" [childrenAccessor]="childrenAccessor"  #tree >
+        <mat-tree-node *matTreeNodeDef="let node"
+                       matTreeNodePadding
+                       class="selectable"
+                       [class.selected]="node?.bom.id === selectedBOM?.bom.id"
+                       (click)="select(node)">
             <button mat-icon-button matTreeNodeToggle
                     [attr.aria-label]="'Toggle ' + node.name">
-                @if (treeControl.isExpanded(node)) {
-                    <i class="fa-solid fa-minus bold"></i>
-                } @else {
-                    <i class="fa-solid fa-plus bold"></i>
-                }
+                <i class="fa-solid fa-arrow-turn-down-right"></i>
             </button>
-            @if (node.bom.id === 0) {
-                <div class="info_div  header">
-                    <span class="reference" translate> COMMON_REFERENCE</span>
-                    <div class="detail_div">
-                        <span class="description" translate> COMMON_DESCRIPTION</span>
-                        <span class="qty" translate> LOGISTICS_QTY</span>
-                        <span class="price" translate> LOGISTICS_PRICE</span>
-                    </div>
+            <div class="info_div">
+                <td class="reference">{{ node.bom.childRef }}</td>
+                <div class="detail_div">
+                    <span class="description">{{ node.bom.childDescription }}</span>
+                    <span class="qty"> {{ node.bom.qty | number: '1.2-6' }}</span>
+                    <span class="price"> {{ node.bom.price | number: '1.2-6' }}</span>
                 </div>
-            } @else {
-                <div class="info_div">
-                    <td class="reference"> {{ node.bom.childRef }}</td>
-                    <div class="detail_div">
-                        <span class="description">{{ node.bom.childDescription }}</span>
-                        <span class="qty"> {{ node.bom.qty | number: '1.2-6' }}</span>
-                        <span class="price"> {{ node.bom.price | number: '1.2-6' }}</span>
+            </div>
+
+        </mat-tree-node>
+        <!-- This is the tree node template for expandable nodes -->
+        <mat-tree-node *matTreeNodeDef="let node; when: hasChild" matTreeNodePadding matTreeNodeToggle>
+            <div class="mat-tree-node selectable"
+                 [class.selected]="node?.bom.id === selectedBOM?.bom.id"
+                 (click)="select(node)">
+                <button mat-icon-button matTreeNodeToggle
+                        [attr.aria-label]="'Toggle ' + node.name">
+                    @if (tree.isExpanded(node)) {
+                        <i class="fa-solid fa-minus bold"></i>
+                    } @else {
+                        <i class="fa-solid fa-plus bold"></i>
+                    }
+                </button>
+                @if (node.bom.id === 0) {
+                    <div class="info_div  header">
+                        <span class="reference" translate> COMMON_REFERENCE</span>
+                        <div class="detail_div">
+                            <span class="description" translate> COMMON_DESCRIPTION</span>
+                            <span class="qty" translate> LOGISTICS_QTY</span>
+                            <span class="price" translate> LOGISTICS_PRICE</span>
+                        </div>
                     </div>
-                </div>
-            }
-        </div>
-        <!-- There is inline padding applied to this div using styles.
-            This padding value depends on the mat-icon-button width.  -->
-        <div [class.example-tree-invisible]="!treeControl.isExpanded(node)"
-             role="group">
-            <ng-container matTreeNodeOutlet></ng-container>
-        </div>
-    </mat-nested-tree-node>
-</mat-tree>
+                } @else {
+                    <div class="info_div">
+                        <td class="reference"> {{ node.bom.childRef }}</td>
+                        <div class="detail_div">
+                            <span class="description">{{ node.bom.childDescription }}</span>
+                            <span class="qty"> {{ node.bom.qty | number: '1.2-6' }}</span>
+                            <span class="price"> {{ node.bom.price | number: '1.2-6' }}</span>
+                        </div>
+                    </div>
+                }
+            </div>
+        </mat-tree-node>
+    </mat-tree>

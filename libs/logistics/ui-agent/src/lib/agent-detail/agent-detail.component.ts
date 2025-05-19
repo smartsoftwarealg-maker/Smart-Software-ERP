@@ -354,6 +354,7 @@ export class AgentDetailComponent extends BaseEntityDetailComponent<Agent> imple
             const dialogRef = this.dialog.open(AgentImportComponent, {
                 width: '720px',
                 height: '690px',
+                maxWidth: '750px',
                 disableClose: true,
                 data: {
                     transactId: id
