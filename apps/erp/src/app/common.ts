@@ -989,7 +989,7 @@ export const ABS_PRODUCTION_UNLOCKING_LOTS_URL = '/' + [MAIN_PAGE_URL, PRODUCTIO
 export const ABS_PRODUCTION_ARTICLE_TYPES_URL = '/' + [MAIN_PAGE_URL, PRODUCTION_URL, PRODUCTION_ARTICLE_TYPES_URL].join('/');
 export const ABS_PRODUCTION_DOSAGE_UNITS_URL = '/' + [MAIN_PAGE_URL, PRODUCTION_URL, PRODUCTION_DOSAGE_UNITS_URL].join('/');
 export const ABS_PRODUCTION_PACKAGING_UNITS_URL = '/' + [MAIN_PAGE_URL, PRODUCTION_URL, PRODUCTION_PACKAGING_UNITS_URL].join('/');
-
+export const ABS_PRODUCTION_REPORTS_URL = '/' + [MAIN_PAGE_URL, PRODUCTION_URL, COMMON_REPORTS_URL].join('/');
 // ######################################
 // #            Other things            #
 // ######################################

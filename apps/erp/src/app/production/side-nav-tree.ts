@@ -1,4 +1,4 @@
-import {SideNavNode} from '@ss/common/api-common';
+import { SideNavNode } from '@ss/common/api-common';
 import {
     ABS_PRODUCTION_BOM_PRODUCTS,
     ABS_PRODUCTION_MRP_URL,
@@ -10,7 +10,9 @@ import {
     ABS_PRODUCTION_INTER_STORE_TRANSFER_URL,
     ABS_PRODUCTION_UNLOCKING_LOTS_URL,
     ABS_PRODUCTION_ARTICLE_TYPES_URL,
-    ABS_PRODUCTION_DOSAGE_UNITS_URL, ABS_PRODUCTION_PACKAGING_UNITS_URL
+    ABS_PRODUCTION_DOSAGE_UNITS_URL,
+    ABS_PRODUCTION_PACKAGING_UNITS_URL,
+    ABS_PRODUCTION_REPORTS_URL,
 } from '../common';
 
 export const productionNavTree: SideNavNode = {
@@ -22,73 +24,79 @@ export const productionNavTree: SideNavNode = {
             name: 'STOCK_MODELS',
             icon: 'fa-solid fa-cars',
             route: ABS_PRODUCTION_ARTICLE_TYPES_URL,
-            accessRights: 'ArticleType'
+            accessRights: 'ArticleType',
         },
         {
             name: 'STOCK_DOSAGE_UNITS',
             icon: 'fa-solid fa-eye-dropper-half',
             route: ABS_PRODUCTION_DOSAGE_UNITS_URL,
-            accessRights: 'DosageUnit'
+            accessRights: 'DosageUnit',
         },
         {
             name: 'STOCK_PACKAGING_UNITS',
             icon: 'fa-solid fa-box-open-full',
             route: ABS_PRODUCTION_PACKAGING_UNITS_URL,
-            accessRights: 'PackagingUnit'
+            accessRights: 'PackagingUnit',
         },
         {
             name: 'STOCK_ARTICLES',
             icon: 'fas fa-box',
             route: ABS_PRODUCTION_ARTICLE_URL,
-            accessRights: 'Article'
+            accessRights: 'Article',
         },
         {
             name: 'STOCK_LOT_MANAGEMENT',
             icon: 'fa-solid fa-truck-ramp-box',
             route: ABS_PRODUCTION_LOT_MANAGEMENT_URL,
-            accessRights: 'LotManagement'
+            accessRights: 'LotManagement',
         },
         {
             name: 'STOCK_LOT_ANALYSIS',
             icon: 'fa-solid fa-magnifying-glass-chart',
             route: ABS_PRODUCTION_LOT_ANALYSIS_URL,
-            accessRights: 'LotAnalysis'
+            accessRights: 'LotAnalysis',
         },
         {
             name: 'STOCK_UNLOCKING_LOTS',
             icon: 'fa-solid fa-unlock',
             route: ABS_PRODUCTION_UNLOCKING_LOTS_URL,
-            accessRights: 'UnlockLots'
+            accessRights: 'UnlockLots',
         },
         {
             name: 'PROD_BOM',
             icon: 'fa-solid fa-list-tree',
             route: ABS_PRODUCTION_BOM_PRODUCTS,
-            accessRights: 'BOM'
+            accessRights: 'BOM',
         },
         {
             name: 'PROD_PRODUCTION_ORDER',
             icon: 'fa-solid fa-industry',
             route: ABS_PRODUCTION_ORDER_URL,
-            accessRights: 'POrder'
+            accessRights: 'POrder',
         },
         {
             name: 'PROD_PRODUCTION_MRP',
             icon: 'fa-solid fa-industry-windows',
             route: ABS_PRODUCTION_MRP_URL,
-            accessRights: 'PMrp'
+            accessRights: 'PMrp',
         },
         {
             name: 'PROD_PRODUCTIONS',
             icon: 'fa-brands fa-product-hunt',
             route: ABS_PRODUCTION_URL,
-            accessRights: 'POrder'
+            accessRights: 'POrder',
         },
         {
             name: 'PROD_INTER_STORE_TRANSFER',
             icon: 'fa-regular fa-store',
             route: ABS_PRODUCTION_INTER_STORE_TRANSFER_URL,
-            accessRights: 'PInterStore'
-        }
-    ]
+            accessRights: 'PInterStore',
+        },
+        {
+            name: 'COMMON_REPORTS',
+            icon: 'fa-solid fa-file-chart-column',
+            route: ABS_PRODUCTION_REPORTS_URL,
+            accessRights: 'Report',
+        },
+    ],
 };
