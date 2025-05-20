@@ -1,6 +1,13 @@
-import { Component, inject, OnInit, signal } from '@angular/core';
+import { Component, computed, inject, OnInit, signal } from '@angular/core';
 import { FormBuilder, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { ABS_INDEX_URL, CompanySelectorService, HttpService, LoginService, LoginType } from '@ss/common/api-common';
+import {
+    ABS_INDEX_URL,
+    CompanySelectorService,
+    HttpService,
+    LoginService,
+    LoginType,
+    MaterialModule
+} from '@ss/common/api-common';
 import {DeviceDetectorService} from 'ngx-device-detector';
 import {Router} from '@angular/router';
 import { ShellService } from '@ss/common/ui-shell';
@@ -9,6 +16,7 @@ import { LanguageSelectComponent } from '@ss/common/ui-lang';
 import { LoadingSpinnerComponent } from '@ss/common/ui-loading-spinner';
 import { Preferences } from '@capacitor/preferences';
 import { BackendSelectComponent } from '@ss/common/ui-backend-select';
+import { MatIconButton } from '@angular/material/button';
 
 type User = {
     username: string, password: string
@@ -20,14 +28,15 @@ type User = {
     standalone: true,
     imports: [
         FormsModule,
+        MaterialModule,
         ReactiveFormsModule,
         TranslateDirective,
         LanguageSelectComponent,
         TranslatePipe,
         LoadingSpinnerComponent,
         BackendSelectComponent,
-        BackendSelectComponent,
-    ],
+        MatIconButton,
+    ]
 })
 export class LoginComponent implements OnInit {
     #DEFAULT_COMPANY = 'DEFAULT_COMPANY';
@@ -46,6 +55,7 @@ export class LoginComponent implements OnInit {
     public license: string = null;
     readonly isPhone: boolean;
     readonly cSpace = signal(this.#companySelectorSrv.spaceCompany);
+    readonly missingBackend = computed(() => this.#companySelectorSrv.missingBackend());
 
     form = this.#formBuilder.group({
         user: ['', [Validators.required, Validators.min(3)]],
@@ -54,7 +64,6 @@ export class LoginComponent implements OnInit {
         keep: [true],
     });
     loading = signal(false);
-    multiCompany = signal(this.#companySelectorSrv.multiCompany);
 
     constructor() {
         const os = this.deviceSrv.getDeviceInfo().os.toLocaleLowerCase();
@@ -158,6 +167,11 @@ export class LoginComponent implements OnInit {
     };
 
     onSelectedCompany(company: string) {
-        this.cSpace.set(company);
+        this.#companySelectorSrv.select(company);
+    }
+
+    clearStorage() {
+        localStorage.removeItem(this.#DEFAULT_COMPANY);
+        this.#companySelectorSrv.spaceCompany = null;
     }
 }

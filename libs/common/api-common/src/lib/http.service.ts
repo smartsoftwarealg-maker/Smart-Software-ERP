@@ -37,11 +37,15 @@ export class HttpService {
         return localStorage.setItem(AUTH_TOKEN, token);
     }
 
-    public init(): Observable<boolean> {
+    public init(company?: string): Observable<boolean> {
         if (this.baseUrl) {
             return of(false);
         }
         // return this.httpClient.get('./config/config.json')
+        if (company) {
+            this.selectCompany(company);
+            return of(true);
+        }
         return this.appConfigSrv.getConfig()
             .pipe(
                 // removed share(), as it was a resource leak.
@@ -336,6 +340,9 @@ export class HttpService {
             this.baseUrl = 'https://client2.sg.dz';
         } else if (company === 'SCH_SCAKE') {
             this.baseUrl = 'https://client2.scake.dz';
+        } else {
+            // this.baseUrl = 'https://demo.smartsoftware-dz.com';
+            this.baseUrl = 'https://demo.smartsoftware-dz.com:4430';
         }
     }
 }

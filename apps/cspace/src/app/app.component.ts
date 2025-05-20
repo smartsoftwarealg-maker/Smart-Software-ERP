@@ -30,18 +30,18 @@ export class AppComponent implements OnInit {
     langSrv =  inject(LanguageService);
     loaded = signal(false);
 
-    constructor() {
-        this.#companySelectorSrv.multiCompany = environment.multiCompany;
-        this.#companySelectorSrv.spaceCompany = environment.company;
-        this.#companySelectorSrv.homePage = environment.homePage;
-        this.#loginSrv.customerLogin = LoginType.BOTH;
-    }
-
     ngOnInit() {
+        const multiCompany = environment['multiCompany'];
+        const company = environment['company'];
+        const homePage = environment['homePage'];
+        this.#companySelectorSrv.multiCompany = multiCompany;
+        this.#companySelectorSrv.spaceCompany = company;
+        this.#companySelectorSrv.homePage     = homePage;
+        this.#loginSrv.customerLogin = LoginType.BOTH;
         this.#loginSrv.customerLogin = LoginType.CUSTOMER;
-        this.#shellSrv.setApplicationTitle('Customer Space 2.3');
+        this.#shellSrv.setApplicationTitle('Customer Space 2.4');
         this.#httpSrv
-            .init()
+            .init(company)
             .pipe(
                 switchMap(() => this.langSrv.init()),
                 switchMap(() => this.langSrv.addSources(langAssets)),

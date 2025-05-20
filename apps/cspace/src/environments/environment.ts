@@ -5,9 +5,9 @@
 
 export const environment = {
     production: false,
-    company: 'ECDE',
-    homePage: 'http://www.schs.dz',
-    multiCompany: false
+    company: 'SMART',
+    homePage: 'https://smartsoftware-dz.com',
+    multiCompany: true
 };
 export const langAssets = [
     ['assets/locale/', ''],

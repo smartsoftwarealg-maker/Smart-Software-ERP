@@ -11,7 +11,7 @@ import { DeviceDetectorService } from 'ngx-device-detector';
     templateUrl: './language-select.component.html',
     styleUrls: ['./language-select.component.scss'],
     standalone: true,
-    imports: [MatIconButton, MatMenuTrigger, MatMenu, MatMenuItem, MaterialModule, ReactiveFormsModule]
+    imports: [MatIconButton, MatMenuTrigger, MatMenu, MatMenuItem, MaterialModule, ReactiveFormsModule, TranslatePipe]
 })
 export class LanguageSelectComponent {
     langSrv = inject(LanguageService);

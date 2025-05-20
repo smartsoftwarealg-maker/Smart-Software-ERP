@@ -1,5 +1,7 @@
 @if (loading()) {
     <ss-loading-spinner></ss-loading-spinner>
+} @else if (missingBackend()) {
+    <ss-backend-select (onSelectedCompany)="onSelectedCompany($event)"/>
 } @else {
     <div class="container">
         <div class="screen">
@@ -26,12 +28,8 @@
                                formControlName="pass">
                     </div>
 
-                    <!--                    <div class="remember-me">-->
-                    <!--                        <input type="checkbox" id="checkbox1" formControlName="keep">-->
-                    <!--                        <label for="checkbox1" translate>COMMON_KEEP_ME_SIGNED</label>-->
-                    <!--                    </div>-->
 
-                    <button class="button login-submit" (click)="onSubmit()" [disabled]="multiCompany() && !cSpace()">
+                    <button class="button login-submit" (click)="onSubmit()">
                         <span class="button-text" translate>COMMON_LOGIN</span>
                         <i class="button-icon fas fa-chevron-right"></i>
                     </button>
@@ -55,9 +53,11 @@
                 <div class="social-login">
                     <div class="social-icons">
                         <ss-language-select style="margin: 4px"></ss-language-select>
-                        @if (multiCompany()) {
-                            <ss-backend-select style="margin: 4px" (onSelectedCompany)="onSelectedCompany($event)"></ss-backend-select>
-                        }
+                        <button mat-icon-button
+                                [matTooltip]="'COMMON_SELECT_COMPANY'|translate"
+                               (click)="clearStorage()">
+                            <i class="fa-solid fa-buildings"></i>
+                        </button>
                     </div>
                 </div>
             </div>

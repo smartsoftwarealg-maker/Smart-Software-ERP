@@ -1,4 +1,4 @@
-import {Injectable} from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, Router, RouterStateSnapshot } from '@angular/router';
 import { Observable } from 'rxjs';
 import { LoginService } from './login.service';
@@ -12,11 +12,10 @@ import { UserRightsService } from './user-rights.service';
     providedIn: 'root'
 })
 export class CanActivateService {
-    constructor(public router: Router,
-        protected httpSrv: HttpService,
-        private loginSrv: LoginService,
-        private rightsSrv: UserRightsService) {
-    }
+    private router = inject(Router);
+    private httpSrv = inject(HttpService);
+    private loginSrv = inject(LoginService);
+    private rightsSrv = inject( UserRightsService);
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot):
         Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {

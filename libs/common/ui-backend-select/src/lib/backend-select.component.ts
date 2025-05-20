@@ -1,4 +1,4 @@
-import { Component, inject, input, output, ViewChild } from '@angular/core';
+import { Component, inject, input, output, signal, ViewChild } from '@angular/core';
 import { MatMenuTrigger, MatMenu, MatMenuItem } from '@angular/material/menu';
 import { CompanySelectorService, LanguageService, MaterialModule } from '@ss/common/api-common';
 import { MatIconButton } from '@angular/material/button';
@@ -10,36 +10,23 @@ import { TranslatePipe } from '@ss/common/ui-lang';
     selector: 'ss-backend-select',
     templateUrl: './backend-select.component.html',
     styleUrl: './backend-select.component.scss',
-    imports: [MatIconButton, MatMenuTrigger, MatMenu, MatMenuItem, MaterialModule, ReactiveFormsModule, TranslatePipe]
+    imports: [MaterialModule, ReactiveFormsModule, TranslatePipe]
 })
 export class BackendSelectComponent {
-    #DEFAULT_COMPANY = 'DEFAULT_COMPANY';
-    deviceSrv = inject(DeviceDetectorService);
     companySelectorSrv = inject(CompanySelectorService);
-    langSrv = inject(LanguageService);
-    @ViewChild('trigger', { static: false }) trigger: MatMenuTrigger;
+
+
+    selectedCompany = signal<string|null>(null);
 
     onSelectedCompany = output<string>();
-    public click(): void {
-        this.trigger.toggleMenu();
+
+    selectCompany(c: string) {
+        this.selectedCompany.set(c);
     }
 
-    public selectCompany(company: string) {
-        this.onSelectedCompany.emit(company);
-        this.companySelectorSrv.select(company);
-        if (this.deviceSrv.isDesktop()) {
-            localStorage.setItem(this.#DEFAULT_COMPANY, company);
-        } else {
-            // async setObject() {
-            //     await Preferences.set({
-            //         key: 'user',
-            //         value: JSON.stringify({
-            //             id: 1,
-            //             name: 'Max'
-            //         })
-            //     });
-            // }
-        }
+    select() {
+        console.log(this.selectedCompany());
+        this.onSelectedCompany.emit(this.selectedCompany());
     }
 
 }

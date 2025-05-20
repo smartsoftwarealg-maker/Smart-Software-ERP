@@ -43,7 +43,7 @@ const routes: Routes = [
             { path: '**', redirectTo: INDEX_PAGE_URL, pathMatch: 'full' }
         ]
     },
-    { path: LOGIN_URL, component: LoginComponent },
+    { path: LOGIN_URL, component: LoginComponent},
     { path: CENTER_SELECT_URL, component: CenterSelectComponent },
     { path: UPDATE_PASSWORD_URL, component: PasswordUpdateComponent, canDeactivate:[restCodeGuard] },
     { path: AUTH_2FA_URL, component: Auth2FAConfirmationComponent },
