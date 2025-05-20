@@ -54,5 +54,6 @@
     "ANNUAL_STATISTICS": "Annual statistics",
     "YES":               "Yes",
     "NO":                "No",
-    "POLL_HISTORY":      "History poll charts"
+    "POLL_HISTORY":      "History poll charts",
+    "TEST":              "Test"
 }

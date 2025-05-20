@@ -1,5 +1,8 @@
 <div class="language-select-container">
-    <button mat-icon-button type="button" [matMenuTriggerFor]="menu" #trigger="matMenuTrigger">
+    <button mat-icon-button type="button"
+            [matMenuTriggerFor]="menu"
+            [matTooltip]="'COMMON_LANGUAGE_SETTINGS' | translate"
+            #trigger="matMenuTrigger">
         <i class="fas fa-globe"></i>
     </button>
     <mat-menu [xPosition]="langSrv.rtl ? 'before' : 'after'" yPosition="below" overlapTrigger="false" #menu="matMenu">

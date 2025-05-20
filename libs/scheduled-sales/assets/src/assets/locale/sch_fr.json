@@ -54,5 +54,6 @@
     "ANNUAL_STATISTICS":  "Statistiques annuelles",
     "YES":                "Oui",
     "NO":                 "Non",
-    "POLL_HISTORY":       "Sondage historique"
+    "POLL_HISTORY":       "Sondage historique",
+    "TEST":               "Test"
 }

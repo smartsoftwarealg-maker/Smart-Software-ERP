@@ -1,18 +1,22 @@
-<div class="backend-select-container">
-    <button mat-icon-button type="button" [matMenuTriggerFor]="menu" #trigger="matMenuTrigger">
-        <i class="fas fa-home"></i>
-    </button>
-    <mat-menu [xPosition]="langSrv.rtl ? 'before' : 'after'" yPosition="below" overlapTrigger="false" #menu="matMenu">
+<mat-card class="backend-select-container">
+    <mat-toolbar color="primary" class="toolbar">
+        {{'COMMON_SELECT_COMPANY'|translate}}
+    </mat-toolbar>
+    <mat-list>
         @for (c of companySelectorSrv.companyList; track c) {
-            <div mat-menu-item
-                 style="text-align: center; width: 140px"
-                 (click)="selectCompany(c)"
-                 translate>
+            <mat-list-item [class.selected]="c === selectedCompany()"
+                           (click)="selectCompany(c)">
                 @if (c === companySelectorSrv.spaceCompany) {
                     <i class="fa-solid fa-check"></i>
                 }
                 {{ c|translate }}
-            </div>
+            </mat-list-item>
         }
-    </mat-menu>
-</div>
+    </mat-list>
+    <div class="btn__div">
+        <button mat-raised-button type="button" (click)="select()" translate>
+            <i class="fas fa-check"></i>
+            {{'COMMON_SELECT_COMPANY'|translate}}
+        </button>
+    </div>
+</mat-card>

@@ -12,6 +12,7 @@ export const SS_HOME_PAGE_URL     = 'home';
 export const SS_CUSTOMER_HISTORY_URL     = 'customer-history';
 export const SS_PAYMENT_URL     = 'customer-payments';
 export const SS_CUSTOMER_POLL_URL     = 'customer-poll';
+export const BACKEND_SELECT_URL     = 'backend-select';
 
 // apps
 export const ADMINISTRATION_APP_URL = 'administration';
