@@ -29,7 +29,6 @@ export class LotManagementListComponent extends BaseEntityListComponent<Lot> imp
         'supplier',
         'creationDate',
         'expirationDate',
-        'expires',
     ];
 
     constructor(

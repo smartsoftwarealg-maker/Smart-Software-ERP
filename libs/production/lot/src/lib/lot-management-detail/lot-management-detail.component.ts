@@ -30,13 +30,19 @@ import { StoresService } from '@ss/stock/api-article-store';
         DatePickerComponent,
     ],
 })
-export class LotManagementDetailComponent extends BaseEntityDetailComponent<Lot>
-    implements OnInit {
+export class LotManagementDetailComponent
+    extends BaseEntityDetailComponent<Lot>
+    implements OnInit
+{
     private storesSrv = inject(StoresService);
     private supplierSrv = inject(SupplierService);
 
     //supplierLookup = new DefaultAutoCompleteModel(this.supplierSrv);
-    supplierLookup = new DefaultAutoCompleteModel<Agent>(this.supplierSrv, 'id', 'denomination');
+    supplierLookup = new DefaultAutoCompleteModel<Agent>(
+        this.supplierSrv,
+        'id',
+        'denomination',
+    );
     storeLookup = new DefaultAutoCompleteModel(this.storesSrv);
 
     constructor(
@@ -48,7 +54,8 @@ export class LotManagementDetailComponent extends BaseEntityDetailComponent<Lot>
         public override confirmationSrv: ConfirmationDialogService,
         public lookupsSrv: LookupsService,
         public httpSrv: HttpService,
-        public router: Router) {
+        public router: Router,
+    ) {
         super(
             articleSrv,
             shellSrv,
@@ -71,13 +78,12 @@ export class LotManagementDetailComponent extends BaseEntityDetailComponent<Lot>
             lotState: [l.lotState],
             lotNumber: [l.lotNumber || '1', Validators.maxLength(14)],
             creationDate: [l.creationDate],
-            expires: [l.expires||false, Validators.required],
+            expires: [l.expires || false, Validators.required],
             expirationDate: [l.expirationDate],
             team: [l.team || 0],
             center: [l.center || 0],
         });
     }
-
 
     override readForm(): Lot {
         const lot = this.form.getRawValue();

@@ -127,8 +127,9 @@ export class ProductionLinesListComponent extends BaseTransactionLinesListCompon
                 this.snackBarSrv.showSuccessMessage();
                 this.refresh()
             },
-              error:()=>{
+              error:(err)=>{
                 this.snackBarSrv.showFailureMessage();
+                throw err;
             }
         });
     }
@@ -139,8 +140,9 @@ export class ProductionLinesListComponent extends BaseTransactionLinesListCompon
                 this.snackBarSrv.showSuccessMessage();
                 this.refresh()
             },
-            error:()=>{
+            error:(err)=>{
                 this.snackBarSrv.showFailureMessage();
+                throw err
             }
         });
     }
