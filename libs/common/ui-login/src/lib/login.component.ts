@@ -48,6 +48,7 @@ export class LoginComponent implements OnInit {
     #router = inject(Router);
     readonly #USER_DATA = 'USER_DATA';
     protected deviceSrv = inject(DeviceDetectorService);
+    protected multiCompany = signal(this.#companySelectorSrv.multiCompany);
 
     protected loginSrv = inject(LoginService);
     public user: User = { username: '', password: '' };
