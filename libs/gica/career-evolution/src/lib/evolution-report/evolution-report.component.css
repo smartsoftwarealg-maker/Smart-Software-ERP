@@ -38,6 +38,7 @@ mat-card, .input_div, .size {
     justify-content: center;
 }
 
+.mat-column-oldRate,
 .mat-column-deduction,
 .mat-column-rate {
     flex: 1 1 100px;
@@ -48,6 +49,12 @@ mat-card, .input_div, .size {
 .mat-column-lastName {
     flex: 2 1 120px;
 }
+
+.mat-column-hireDate {
+    flex: 2 1 100px;
+    justify-content: center;
+}
+
 mat-table {
     min-width: 700px;
 }

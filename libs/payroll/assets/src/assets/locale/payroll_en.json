@@ -229,5 +229,6 @@
     "WARNING":               "Warning",
     "BLAME":                 "Blame",
     "APPLICATION_YEAR":      "Application year",
-    "APPLICATION_MONTH":     "Application month"
+    "APPLICATION_MONTH":     "Application month",
+    "OLD_RATE":             "Old rate"
 }

@@ -228,5 +228,6 @@
     "WARNING":               "Avertissement",
     "BLAME":                 "Blâmer",
     "APPLICATION_YEAR":      "Année d'application",
-    "APPLICATION_MONTH":     "Mois de candidature"
+    "APPLICATION_MONTH":     "Mois de candidature",
+    "OLD_RATE":             "Ancien taux"
 }
