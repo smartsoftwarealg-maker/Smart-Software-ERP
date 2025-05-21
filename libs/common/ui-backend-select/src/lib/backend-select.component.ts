@@ -1,15 +1,13 @@
-import { Component, inject, input, output, signal, ViewChild } from '@angular/core';
-import { MatMenuTrigger, MatMenu, MatMenuItem } from '@angular/material/menu';
-import { CompanySelectorService, LanguageService, MaterialModule } from '@ss/common/api-common';
-import { MatIconButton } from '@angular/material/button';
+import { Component, inject, output, signal } from '@angular/core';
+import { CompanySelectorService, MaterialModule } from '@ss/common/api-common';
 import { ReactiveFormsModule } from '@angular/forms';
-import { DeviceDetectorService } from 'ngx-device-detector';
 import { TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-backend-select',
     templateUrl: './backend-select.component.html',
     styleUrl: './backend-select.component.scss',
+    standalone: true,
     imports: [MaterialModule, ReactiveFormsModule, TranslatePipe]
 })
 export class BackendSelectComponent {
