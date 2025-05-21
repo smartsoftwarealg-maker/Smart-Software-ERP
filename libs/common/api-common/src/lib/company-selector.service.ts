@@ -1,7 +1,5 @@
 import { inject, Injectable, signal } from '@angular/core';
 import { HttpService } from '@ss/common/api-common';
-import { Router } from '@angular/router';
-import { sign } from 'chart.js/helpers';
 
 @Injectable({ providedIn: 'root' })
 export class CompanySelectorService {
