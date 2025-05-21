@@ -169,6 +169,7 @@ export class LoginComponent implements OnInit {
 
     onSelectedCompany(company: string) {
         this.#companySelectorSrv.select(company);
+        this.cSpace.set(company);
     }
 
     clearStorage() {

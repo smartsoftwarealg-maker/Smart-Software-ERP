@@ -4,6 +4,11 @@
     margin: 4px auto 0;
 }
 
+.date__div {
+    width: 80%;
+    max-width: 900px;
+    margin: 1em auto 0;
+}
 .div_table {
     height: calc(100% - 70px - 64px);
     overflow-x: auto;
