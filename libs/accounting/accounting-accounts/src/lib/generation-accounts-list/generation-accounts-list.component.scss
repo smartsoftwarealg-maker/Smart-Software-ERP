@@ -1,7 +1,7 @@
 .content_div {
     width: 96%;
     max-width: 1200px;
-    margin: 4px auto;
+    margin: .5em auto;
 }
 
 .table_div {
@@ -9,12 +9,17 @@
     height: calc(100% - 116px);
 }
 
-.mat-column-description,
+.mat-column-description {
+    flex: 2 1 150px;
+    border-left: ghostwhite solid 1px;
+    padding-left: 6px;
+}
 .mat-column-purchase,
 .mat-column-supplier,
 .mat-column-stock,
 .mat-column-consumption,
 .mat-column-sales {
+    flex: 1 1 120px;
     border-left: ghostwhite solid 1px;
     padding-left: 6px;
 }
