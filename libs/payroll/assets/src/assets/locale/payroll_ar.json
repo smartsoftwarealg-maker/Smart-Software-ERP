@@ -229,5 +229,6 @@
     "WARNING":               "تحذير",
     "BLAME":                 "توبيخ",
     "APPLICATION_YEAR":      "سنة التطبيق",
-    "APPLICATION_MONTH":     "شهر التطبيق"
+    "APPLICATION_MONTH":     "شهر التطبيق",
+    "OLD_RANGE":             "المدى القديم"
 }

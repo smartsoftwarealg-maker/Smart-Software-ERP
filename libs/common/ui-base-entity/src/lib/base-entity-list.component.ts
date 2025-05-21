@@ -35,7 +35,7 @@ export class BaseEntityListComponent<T extends { id: number, email?: string }> i
         label: 'COMMON_REFRESH',
         disabled: false,
         visible: true,
-        keepOnToolbar: KeepOnToolbar.DYNAMIC,
+        keepOnToolbar: KeepOnToolbar.ALWAYS,
         click: () => {
             this.refresh();
         }

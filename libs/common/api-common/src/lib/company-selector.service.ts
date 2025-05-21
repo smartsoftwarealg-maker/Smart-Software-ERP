@@ -31,7 +31,7 @@ export class CompanySelectorService {
 
     select(company: string) {
         localStorage.setItem(this.#DEFAULT_COMPANY, company);
-        this.#company = company;
+         this.#company = company;
         this.#homePage = this.#homePageMap.get(company);
         this.spaceCompany = company;
         this.#httpSrv.selectCompany(company);

@@ -23,7 +23,7 @@
     "urlRules": [
         {
             "frontend": "?",
-            "backend": "https://clientecde.gica.dz"
+            "backend": "demo.smartsoftware-dz.com:4430"
         }
     ],
     "useBrowserLanguage": true,

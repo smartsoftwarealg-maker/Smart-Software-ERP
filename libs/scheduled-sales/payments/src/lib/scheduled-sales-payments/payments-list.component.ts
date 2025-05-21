@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, DestroyRef, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
@@ -32,7 +32,9 @@ import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormField, MatInput, MatLabel } from '@angular/material/input';
 import { DatePickerComponent } from '@ss/common/ui-datepicker';
 import { callback } from 'chart.js/helpers';
-import { Observable } from 'rxjs';
+import { Observable, takeUntil } from 'rxjs';
+import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
     selector: 'ss-payments-list',
@@ -66,6 +68,7 @@ import { Observable } from 'rxjs';
     styleUrl: './payments-list.component.css',
 })
 export class PaymentsListComponent extends BaseEntityListComponent<Payment> {
+    private destroyRef = inject(DestroyRef);
     private loginSrv = inject(LoginService);
     private NOW = new Date();
 
@@ -102,6 +105,21 @@ export class PaymentsListComponent extends BaseEntityListComponent<Payment> {
     override ngOnInit() {
          this.editButton.visible = this.addButton.visible = this.deleteButton.visible = !this.loginSrv.appCtx.agentId;
          super.ngOnInit();
+         this.refresh();
+         this.from
+             .valueChanges
+             .pipe(
+                 debounceTime(300),
+                 distinctUntilChanged(),
+                 takeUntilDestroyed(this.destroyRef))
+             .subscribe(value => this.refresh());
+         this.to
+             .valueChanges
+             .pipe(
+                 debounceTime(300),
+                 distinctUntilChanged(),
+                 takeUntilDestroyed(this.destroyRef))
+             .subscribe(value => this.refresh());
     }
 
     override getPage(): Observable<Payment[]> {
