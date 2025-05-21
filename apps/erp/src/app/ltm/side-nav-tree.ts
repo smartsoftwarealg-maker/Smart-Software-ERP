@@ -154,7 +154,7 @@ export const ltmNavTree: SideNavNode = {
 
         {
             name: 'LTM_MIXTURES',
-            icon: 'fa-duotone fa-blender',
+            icon: 'fa-solid fa-blender',
             route: ABS_LTM_MIXTURES_URL,
             accessRights: 'LTMMixture'
         },
