@@ -38,7 +38,7 @@ export class LtmReportComponent implements OnInit, OnDestroy {
     private _periods = ['hourly', 'daily', 'weekly', 'monthly'];
     private menuBtn: ToolbarButton = {
         disabled: false,
-        icon: 'fa-duotone fa-bars',
+        icon: 'fa-solid fa-bars',
         keepOnToolbar: KeepOnToolbar.DYNAMIC,
         label: 'LTM_SHOW_MENU',
         visible: true,
@@ -65,7 +65,7 @@ export class LtmReportComponent implements OnInit, OnDestroy {
 
     private lightBtn: ToolbarButton = {
         disabled: false,
-        icon: 'fa-duotone fa-moon',
+        icon: 'fa-solid fa-moon',
         keepOnToolbar: KeepOnToolbar.DYNAMIC,
         label: 'LTM_BG_COLOR',
         visible: true,
@@ -287,7 +287,7 @@ export class LtmReportComponent implements OnInit, OnDestroy {
 
     toggleMode() {
         this.light = !this.light;
-        this.lightBtn.icon = this.light? 'fa-duotone fa-moon' : 'fa-light fa-moon';
+        this.lightBtn.icon = this.light? 'fa-solid fa-moon' : 'fa-light fa-moon';
     }
 
     export() {

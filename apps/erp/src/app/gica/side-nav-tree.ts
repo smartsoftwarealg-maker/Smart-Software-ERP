@@ -17,7 +17,7 @@ export const gicaNavTree: SideNavNode = {
     children: [
         {
             name: 'PAYROLL_CAREER_CONSTANTS',
-            icon: 'fa-duotone fa-function',
+            icon: 'fa-solid fa-function',
             route: ABS_GICA_CONSTANTS_URL,
             accessRights: 'GCConstant'
         },

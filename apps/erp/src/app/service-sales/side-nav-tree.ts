@@ -34,7 +34,7 @@ export const ssalesNavTree: SideNavNode = {
         },
         {
             name: 'COMMON_SERVICES',
-            icon: 'fa-duotone fa-handshake-simple',
+            icon: 'fa-solid fa-handshake-simple',
             route: ABS_SALES_SERVICE_URL,
             accessRights: 'SService'
         },

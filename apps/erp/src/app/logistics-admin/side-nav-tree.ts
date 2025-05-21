@@ -43,7 +43,7 @@ export const logisticsAdminNavTree: SideNavNode = {
         },
         {
             name: 'LOGISTICS_SUPPLIER',
-            icon: 'fa-duotone fa-ship',
+            icon: 'fa-solid fa-ship',
             route: ABS_LOGISTICS_SUPPLIER_URL,
             accessRights: 'Supplier'
         },
@@ -97,7 +97,7 @@ export const logisticsAdminNavTree: SideNavNode = {
         },
         {
             name: 'COMMON_UNITS',
-            icon: 'fa-duotone fa-weight-hanging',
+            icon: 'fa-solid fa-weight-hanging',
             route: ABS_LOGISTICS_UNITS,
             accessRights: 'Unit'
         },

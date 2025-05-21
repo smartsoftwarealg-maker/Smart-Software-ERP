@@ -45,7 +45,7 @@ export const costingNavTree: SideNavNode = {
         },
         {
             name: 'COMMON_CC_GROUPS',
-            icon: 'fa-duotone fa-layer-group',
+            icon: 'fa-solid fa-layer-group',
             route: ABS_COSTING_COST_CENTER_GROUP_URL,
             accessRights: 'CCenterGroup'
         },
