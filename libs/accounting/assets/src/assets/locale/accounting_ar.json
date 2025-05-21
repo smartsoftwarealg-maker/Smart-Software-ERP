@@ -86,6 +86,10 @@
     "UNMATCHED":               "غير مربوط",
     "JOIN_TRANSACTION":        "اربط الصفقتين",
     "CLOSED_PERIODS":           "الفترات المغلقة",
-    "CLOSED":                   "إغلاق"
+    "CLOSED":                   "إغلاق",
+    "PURCHASE_ACCOUNT": "حساب الشراء",
+    "SALE_ACCOUNT": "حساب البيع",
+    "STOCK_ACCOUNT": "حساب المخزون",
+    "CONSUMPTION_ACCOUNT": "حساب الاستهلاك"
 
 }

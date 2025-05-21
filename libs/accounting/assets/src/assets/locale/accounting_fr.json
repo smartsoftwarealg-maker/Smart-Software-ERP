@@ -87,6 +87,10 @@
     "JOIN_TRANSACTIONS":        "Joindre les transactions",
     "FREE_TRANSACTION":         "Transaction libre",
     "CLOSED_PERIODS":           "Périodes de fermeture",
-    "CLOSED":                   "Fermée"
+    "CLOSED":                   "Fermée",
+    "PURCHASE_ACCOUNT":         "Compte d'achat",
+    "SALES_ACCOUNT":            "Compte de vente",
+    "STOCK_ACCOUNT":            "Compte de stock",
+    "CONSUMPTION_ACCOUNT":      "Compte de consommation"
 }
 

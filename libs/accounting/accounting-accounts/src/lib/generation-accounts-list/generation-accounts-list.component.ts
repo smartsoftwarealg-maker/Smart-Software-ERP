@@ -23,10 +23,10 @@ export class GenerationAccountsListComponent extends BaseEntityListComponent<Gen
     displayedColumns = [
         'description',
         'purchase',
-        'supplier',
+        'sales',
         'stock',
         'consumption',
-        'sales'
+        'supplier',
     ];
 
 
