@@ -49,7 +49,7 @@ import {
     COSTING_APP_URL,
     GICA_APP_URL,
     SOCIAL_APP_URL,
-    PRODUCTION_URL
+    PRODUCTION_APP_URL
 } from '../app/common';
 import {Routes} from '@angular/router';
 import {hrLookupNavTree} from '../app/hr-lookups/side-nav-tree';
@@ -273,7 +273,7 @@ export const appRoutes: Routes =  [
         loadChildren: () => import('../app/social/social.module').then(m => m.SocialModule)
     },
     {
-        path: PRODUCTION_URL,
+        path: PRODUCTION_APP_URL,
         loadChildren: () => import('../app/production/production.module').then(m => m.ProductionModule)
     },
     { path: '', redirectTo: INDEX_PAGE_URL, pathMatch: 'full' },

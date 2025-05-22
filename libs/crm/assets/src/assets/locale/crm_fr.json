@@ -1,2 +1,10 @@
 {
+    "SALUTATIONS":          "Salutations",
+    "SALUTATION":           "Salutation",
+    "JOBS":                 "Emplois",
+    "JOB":                  "Emploi",
+    "CONTACT_METHODS":      "Méthodes de contact",
+    "CONTACT_METHOD":       "Méthode de contact",
+    "PAYMENT_TERMS":        "Conditions de paiement",
+    "PAYMENT_TERM":         "Condition de paiement"
 }
