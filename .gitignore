@@ -52,3 +52,4 @@ NX/
 /android/.idea/
 apps/cspace/android/.idea/
 package-lock.json
+android/.kotlin
