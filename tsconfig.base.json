@@ -279,6 +279,14 @@
                 "libs/costing/costing-utils/src/index.ts"
             ],
             "@ss/crm/assets": ["libs/crm/assets/src/index.ts"],
+            "@ss/crm/contact-methods": [
+                "libs/crm/contact-methods/src/index.ts"
+            ],
+            "@ss/crm/departments": ["libs/crm/departments/src/index.ts"],
+            "@ss/crm/jobs": ["libs/crm/jobs/src/index.ts"],
+            "@ss/crm/payment-terms": ["libs/crm/payment-terms/src/index.ts"],
+            "@ss/crm/salutations": ["libs/crm/salutations/src/index.ts"],
+            "@ss/crm/status": ["libs/crm/status/src/index.ts"],
             "@ss/custom-attributes": ["libs/custom-attributes/src/index.ts"],
             "@ss/dashboard": ["libs/dashboard/src/index.ts"],
             "@ss/employee-services/employee-services": [

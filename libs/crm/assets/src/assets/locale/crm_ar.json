@@ -1,2 +1,10 @@
 {
+    "SALUTATIONS":          "التحيات",
+    "SALUTATION":           "التحية",
+    "JOBS":                 "الأعمال",
+    "JOB":                  "العمل",
+    "CONTACT_METHODS":      "طرق الاتصال",
+    "CONTACT_METHOD":       "طريقة الاتصال",
+    "PAYMENT_TERMS":        "شروط الدفع",
+    "PAYMENT_TERM":         "شرط الدفع"
 }
