@@ -30,7 +30,7 @@ export const crmNavTree: SideNavNode = {
             accessRights: 'CRMDepartment',
         },
         {
-            name: 'CRM_CONTRACT_METHOD',
+            name: 'CRM_CONTACT_METHOD',
             icon: 'fa-solid fa-file-signature',
             route: ABS_CRM_CONTACT_METHODS_URL,
             accessRights: 'ContractMethod',
