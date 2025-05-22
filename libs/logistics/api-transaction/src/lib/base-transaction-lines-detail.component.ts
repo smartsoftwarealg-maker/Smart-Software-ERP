@@ -22,9 +22,12 @@ import { TransactionLinesClass } from './transaction-lines.class';
 import { StockInfoService } from '@ss/master-data/api-article';
 import { CostCenterService } from '@ss/logistics/api-cost-center';
 import { DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
+import { LotInputDialogComponent } from '@ss/production/lot-input-dialog';
+import { MatDialog } from '@angular/material/dialog';
 
 @Directive()
 export abstract class BaseTransactionLinesDetailComponent extends AbstractEntityComponent<TransactionLine> implements OnInit {
+    private dialog = inject(MatDialog);
     #costCenterSrv = inject(CostCenterService);
     private locationSrv = inject(StockInfoService);
     private formBuilder = inject(UntypedFormBuilder);
@@ -293,6 +296,23 @@ export abstract class BaseTransactionLinesDetailComponent extends AbstractEntity
 
     protected goBack() {
         this.router.navigate(['../../lines-list'], {relativeTo: this.route}).then();
+    }
+
+    showLotInputDialog() {
+        const dialogRef = this.dialog.open(LotInputDialogComponent, {
+            width: '1000px!important',
+            height: '400px',
+            maxWidth: '1000px',
+            disableClose: true
+        });
+        dialogRef
+            .afterClosed()
+            .pipe(switchMap(res => res? this.lotSrv.save(res as Lot): of(0)))
+            .subscribe((result: number) => {
+                if (result > 0) {
+                    this.snackBarSrv.showSuccessMessage();
+                }
+            });
     }
 }
 
