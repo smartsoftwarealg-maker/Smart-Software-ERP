@@ -44,7 +44,7 @@ export class LotInputDialogComponent {
         description: [''],
         descriptionAr: [''],
         lotState: ['', Validators.maxLength(1)],
-        lotNumber: [0, Validators.required],
+        lotNumber: ['', Validators.required],
         creationDate: [new Date(), Validators.required],
         expires: [false, Validators.required],
         expirationDate: [null],

@@ -43,12 +43,9 @@
                                           [model]="storeLookup"
                                           formControlName="store">
                         </ss-auto-complete>
-                        <mat-error
-                            *ngIf="form.controls['store'].hasError('required')" translate>COMMON_FIELD_REQUIRED
-                        </mat-error>
-                        <mat-error
-                            *ngIf="form.controls['store'].hasError('validOption')" translate>COMMON_NO_MATCH
-                        </mat-error>
+                        @if (form.controls['store'].hasError('required')) {
+                        <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+                        }
                     </mat-form-field>
                     <button mat-mini-fab
                             (click)="showLotInputDialog()"

@@ -9,7 +9,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { DatePickerComponent } from '@ss/common/ui-datepicker';
 
 import { InventoryLinesService } from "@ss/stock/api-inventory-lines";
-import { TranslateDirective } from '@ss/common/ui-lang';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 
 @Component({
@@ -23,7 +23,8 @@ import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
         TranslateDirective,
         RouterModule,
         ReactiveFormsModule,
-        UiAutoCompleteComponent
+        UiAutoCompleteComponent,
+        TranslatePipe
 
 
     ]

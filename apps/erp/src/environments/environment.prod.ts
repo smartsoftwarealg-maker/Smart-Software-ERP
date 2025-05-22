@@ -7,7 +7,6 @@ import {salesNavTree} from '../app/sales/side-nav-tree';
 import {financeNavTree} from '../app/finance/side-nav-tree';
 import {hrNavTree} from '../app/hr/side-nav-tree';
 import {payrollNavTree} from '../app/payroll/side-nav-tree';
-import {webArchNavTree} from '../app/web-arch/side-nav-tree';
 import {accountingNavTree} from '../app/accounting/side-nav-tree';
 import {assetsNavTree} from '../app/assets-app/side-nav-tree';
 import {treasuryNavTree} from '../app/treasury/side-nav-tree';
@@ -47,7 +46,7 @@ import {
     CMMS_APP_URL,
     CRM_APP_URL,
     PARK_APP_URL,
-    SERVICE_SALES, COSTING_APP_URL, GICA_APP_URL, SOCIAL_APP_URL, PRODUCTION_URL
+    SERVICE_SALES, COSTING_APP_URL, GICA_APP_URL, SOCIAL_APP_URL,
 } from '../app/common';
 import {hrLookupNavTree} from '../app/hr-lookups/side-nav-tree';
 import {foodNavTree} from '../app/food/side-nav-tree';
@@ -65,6 +64,7 @@ import { costingNavTree } from '../app/costing/side-nav-tree';
 import { gicaNavTree } from '../app/gica/side-nav-tree';
 import { socialNavTree } from '../app/social/side-nav-tree';
 import { productionNavTree } from '../app/production/side-nav-tree';
+import { PRODUCTION_URL } from '../../../../libs/production/production/src/lib/production-services/production-api';
 
 export const environment = {
     production: true,

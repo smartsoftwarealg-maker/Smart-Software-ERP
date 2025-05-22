@@ -9,9 +9,6 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 import { ReceptionLinesService } from '../reception-lines.service';
 import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { MatDialog } from '@angular/material/dialog';
-import { LotInputDialogComponent } from '@ss/production/lot-input-dialog';
-import { of, switchMap } from 'rxjs';
-import { Lot } from '@ss/common/api-lookup';
 
 @Component({
     selector: 'ss-reception-lines-detail',
@@ -28,8 +25,7 @@ import { Lot } from '@ss/common/api-lookup';
     ]
 })
 export class ReceptionLinesDetailComponent extends BaseTransactionLinesDetailComponent implements OnInit, OnDestroy {
-    constructor(public receptionLinesSrv: ReceptionLinesService,
-        private dialog :MatDialog) {
+    constructor(public receptionLinesSrv: ReceptionLinesService) {
         super(receptionLinesSrv,  DOC_RECEPTION);
     }
 
@@ -45,20 +41,4 @@ export class ReceptionLinesDetailComponent extends BaseTransactionLinesDetailCom
         return fg;
     }
 
-    showLotInputDialog() {
-            const dialogRef = this.dialog.open(LotInputDialogComponent, {
-                width: '1000px!important',
-                height: '400px',
-                maxWidth: '1000px',
-                disableClose: true
-            });
-        dialogRef
-            .afterClosed()
-            .pipe(switchMap(res => res? this.lotSrv.save(res as Lot): of(0)))
-            .subscribe((result: number) => {
-                if (result > 0) {
-                    this.snackBarSrv.showSuccessMessage();
-                }
-            });
-    }
 }
