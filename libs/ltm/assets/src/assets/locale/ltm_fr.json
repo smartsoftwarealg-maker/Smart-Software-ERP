@@ -84,5 +84,9 @@
     "DISTRIBUTION_MODE":  "Mode de distribution",
     "QUALITY_CHIEF":      "Réalisé par",
     "NON_CONFORMITY":     "Non-conformité",
-    "QUALITY_CERTIFICATE": "Certificat de qualité"
+    "QUALITY_CERTIFICATE": "Certificat de qualité",
+    "SIMULATED":           "Simulé",
+    "IDEAL":            "Idéal",
+    "LIMIT":           "Limite",
+    "ACCEPTABLE":       "Acceptable"
 }

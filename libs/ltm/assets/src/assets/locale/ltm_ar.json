@@ -85,5 +85,8 @@
     "DISTRIBUTION_MODE":     "وضع التوزيع",
     "QUALITY_CHIEF":         "رئيس فرع الجودة",
     "NON_CONFORMITY": "عدم موافقة",
-    "QUALITY_CERTIFICATE":   "شهادة الجودة"
+    "QUALITY_CERTIFICATE":   "شهادة الجودة",
+    "SIMULATED": "محاكى",
+    "IDEAL": "مثالي",
+    "LIMIT": "حد"
 }

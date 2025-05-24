@@ -26,7 +26,17 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     ],
 })
 export class LtmTestListComponent extends BaseEntityListComponent<LTMTest> {
-    displayedColumns = ['variable', 'description', 'descriptionAr', 'chemicalFormula', 'formula', 'showGraph', 'showKPI', 'varianceControl'];
+    displayedColumns = [
+        'variable',
+        'description',
+        'descriptionAr',
+        'chemicalFormula',
+        'formula',
+        'showGraph',
+        'showKPI',
+        'varianceControl',
+        'isSimulated'
+    ];
 
     constructor(
         public override entitySrv: LtmTestService,

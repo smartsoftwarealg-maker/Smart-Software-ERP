@@ -162,7 +162,7 @@ export class LtmReportComponent implements OnInit, OnDestroy {
         this.chartList = this.charts
             .map(c => {
                 const ctx = <ChartItem>document.getElementById(c);
-                const test = data.filter(t => t.description === c);
+                const test = data.filter(t => t.description === c && t.value != null && t.value > 0.0);
                 if (test.length > 0) {
                     const data = this.distributionMode() ? this.distributionChartData(test) : this.chartData(test);
                     return new Chart(ctx, data);

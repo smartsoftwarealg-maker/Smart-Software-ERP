@@ -282,6 +282,7 @@
             "@ss/crm/contact-methods": [
                 "libs/crm/contact-methods/src/index.ts"
             ],
+            "@ss/crm/contacts": ["libs/crm/contacts/src/index.ts"],
             "@ss/crm/departments": ["libs/crm/departments/src/index.ts"],
             "@ss/crm/jobs": ["libs/crm/jobs/src/index.ts"],
             "@ss/crm/payment-terms": ["libs/crm/payment-terms/src/index.ts"],

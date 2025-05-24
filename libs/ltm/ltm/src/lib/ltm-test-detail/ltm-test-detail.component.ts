@@ -16,7 +16,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
 @Component({
     selector: 'ss-ltm-test-detail',
     templateUrl: './ltm-test-detail.component.html',
-    styleUrls: ['../ltm-periodicities-detail/ltm-periodicities-detail.component.scss'],
+    styleUrls: ['./ltm-test-detail.component.scss'],
     standalone: true,
     imports: [
         CommonModule,
@@ -55,6 +55,7 @@ export class LtmTestDetailComponent extends BaseEntityDetailComponent<LTMTest> {
             formula:           [b.formula],
             showGraph:         [b.showGraph],
             showKPI:           [b.showKPI],
+            isSimulated:       [b.isSimulated],
             showInCertificate: [b.showInCertificate || false],
             unit:              [b.unit],
             min:               [b.min],

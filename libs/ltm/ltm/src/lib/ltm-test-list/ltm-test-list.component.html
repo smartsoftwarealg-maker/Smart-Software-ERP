@@ -70,6 +70,15 @@
             </mat-cell>
         </ng-container>
 
+        <ng-container matColumnDef="isSimulated">
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>LTM_SIMULATED</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                <mat-checkbox [class.mat-checkbox-disabled]="false" disabled="true"
+                              [checked]="e.isSimulated">
+                </mat-checkbox>
+            </mat-cell>
+        </ng-container>
+
         <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
         <mat-row class="selectable" [class.selected]="row.id == selected" (click)="select(row.id)"
                  *matRowDef="let row; columns: displayedColumns;"></mat-row>

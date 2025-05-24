@@ -50,6 +50,7 @@ export class LtmMatterTestDetailComponent implements OnInit {
         periodicity:     [0,    Validators.required],
         orderNo:         [0,    Validators.required],
         centerId:        [this.loginSrv.appCtx.center],
+        isSimulated:     [false],
         varianceControl: [false]
     });
 
@@ -78,6 +79,7 @@ export class LtmMatterTestDetailComponent implements OnInit {
                 this.form.controls.normMin.setValue(matter.normMin);
                 this.form.controls.normMax.setValue(matter.normMax);
                 this.form.controls.centerId.setValue(matter.centerId || this.loginSrv.appCtx.center);
+                this.form.controls.isSimulated.setValue(matter.isSimulated);
             });
     }
 
