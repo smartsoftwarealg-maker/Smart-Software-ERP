@@ -128,6 +128,7 @@ export interface LTMTest {
     showGraph: boolean;
     showInCertificate: boolean;
     varianceControl: boolean;
+    isSimulated: boolean;
     showKPI: boolean;
     testType?: number;
     unit?: number;
@@ -152,6 +153,7 @@ export interface LTMMatterTest {
     formula?: string;
     orderNo: number;
     varianceControl: boolean;
+    isSimulated: boolean;
 }
 
 
