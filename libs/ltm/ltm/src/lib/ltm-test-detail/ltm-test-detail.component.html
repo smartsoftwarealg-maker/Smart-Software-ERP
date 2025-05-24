@@ -3,13 +3,14 @@
         <mat-form-field class="default-50 sm-100">
             <mat-label translate>COMMON_VARIABLE</mat-label>
             <input matInput formControlName="variable" type="text" minlength="3" maxlength="4" required>
-            <mat-error *ngIf="form.controls['variable']?.hasError('minlength')" [translate]="{minLen: 3}">
-                COMMON_FIELD_MIN_LENGTH
-            </mat-error>
-            <mat-error *ngIf="form.controls['variable']?.hasError('maxlength')" [translate]="{maxLen: 4}">
-                COMMON_FIELD_MAX_LENGTH
-            </mat-error>
+            @if (form.controls['variable']?.hasError('minlength')) {
+                <mat-error [translate]="{minLen: 3}">COMMON_FIELD_MIN_LENGTH </mat-error>
+            }
+            @if (form.controls['variable']?.hasError('maxlength')) {
+                <mat-error [translate]="{maxLen: 4}">COMMON_FIELD_MAX_LENGTH</mat-error>
+            }
         </mat-form-field>
+
 
         <mat-form-field class="default-100">
             <mat-label translate>COMMON_DESCRIPTION</mat-label>
@@ -74,6 +75,10 @@
 
         <div class="default-50 sm-100">
             <mat-checkbox formControlName="varianceControl" translate>LTM_VARIANCE_CONTROL</mat-checkbox>
+        </div>
+
+        <div class="default-50 sm-100">
+            <mat-checkbox formControlName="isSimulated" translate>LTM_SIMULATED</mat-checkbox>
         </div>
 
     </form>

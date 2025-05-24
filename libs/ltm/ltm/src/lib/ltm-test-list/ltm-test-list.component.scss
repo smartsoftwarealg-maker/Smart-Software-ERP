@@ -1,6 +1,6 @@
 .content_div {
     width: 90%;
-    max-width: 1000px;
+    max-width: 1400px;
     margin: 0 auto;
 }
 
@@ -18,7 +18,7 @@
 }
 
 .mat-column-chemicalFormula  {
-    flex: 1 1 150px;
+    flex: 2 1 200px;
     border-left: gray solid 1px;
     padding-left: 4px;
 }
@@ -29,6 +29,11 @@
 .mat-column-varianceControl,
 .mat-column-showGraph {
     flex: 1 1 70px;
+    justify-content: center;
+    border-left: gray solid 1px;
+}
+.mat-column-isSimulated {
+    flex: 1 1 100px;
     justify-content: center;
     border-left: gray solid 1px;
 }

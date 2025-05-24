@@ -55,6 +55,7 @@ type ColorRange = {
     id: number;
     color: string;
     range: number[];
+    description?: string;
 }
 
 @Component({
@@ -115,17 +116,17 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
 
     readonly scheduleSrv = inject(LtmTestScheduleService);
     readonly COLOR_RANGE: ColorRange[] = [
-        { id: 0, color: '#FF0000', range: [84, 99999] },
-        { id: 1, color: '#ff6600', range: [68, 83] },
-        { id: 2, color: '#ff9900', range: [51, 67] },
-        { id: 3, color: '#ffff99', range: [36, 50] },
-        { id: 4, color: '#ccffcc', range: [21, 35] },
-        { id: 5, color: '#8bf47a', range: [-20, 20] },
-        { id: 7, color: '#ccffcc', range: [-35, -21 ] },
-        { id: 8, color: '#ffff99', range: [-50, -36 ] },
-        { id: 9, color: '#ff9900', range: [-67, -51 ] },
-        { id: 10, color: '#ff6600', range: [-83, -68 ] },
-        { id: 11, color: '#FF0000', range: [-99999, -84] },
+        { id: 0, color: '#FF0000', range: [84, 99999],    description: '' },
+        { id: 1, color: '#ff6600', range: [68, 83],       description: '' },
+        { id: 2, color: '#ff9900', range: [51, 67],       description: '' },
+        { id: 3, color: '#ffff99', range: [36, 50],       description: 'LTM_LIMIT' },
+        { id: 4, color: '#ccffcc', range: [21, 35],       description: 'LTM_ACCEPTABLE' },
+        { id: 5, color: '#8bf47a', range: [-20, 20],      description: 'LTM_IDEAL' },
+        { id: 7, color: '#ccffcc', range: [-35, -21 ],    description: 'LTM_ACCEPTABLE' },
+        { id: 8, color: '#ffff99', range: [-50, -36 ],    description: 'LTM_LIMIT' },
+        { id: 9, color: '#ff9900', range: [-67, -51 ],    description: '' },
+        { id: 10, color: '#ff6600', range: [-83, -68 ],   description: '' },
+        { id: 11, color: '#FF0000', range: [-99999, -84], description: '' },
     ]
 
     @ViewChild(RouterOutlet) outlet: RouterOutlet | null = null;
@@ -152,7 +153,8 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
     labels: string[] = [];
     limits: number[][] = [];
     totalsLabels: string[] = [];
-    totalsOptValues: number[] = [];
+    simulatedTotalsLabes: string[] = [];
+    totalsOptimalValues: number[] = [];
     totalsLimits: number[][] = [];
     variables: string[] = [];
     varianceControls: VarianceControl[] = [];
@@ -188,6 +190,7 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
     );
 
     totalsForm = this.formBuilder.group({ totals: this.formBuilder.array([]) });
+    simulationForm = this.formBuilder.group({ totals: this.formBuilder.array([]) });
     testingMode = input(CHEMICAL_TEST);
     id = input(0);
     editInProgress = signal(false);
@@ -342,8 +345,12 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
     get totals(): FormArray {
         return this.totalsForm.controls['totals'] as FormArray;
     }
+    get simulatedTotals(): FormArray {
+        return this.simulationForm.controls['totals'] as FormArray;
+    }
 
     private showData(batch: LTMBatch) {
+        this.simulatedTotals.clear();
          this.matterTestSrv
              .getList(0, 900, null, 'id')
              .subscribe(res => {
@@ -378,7 +385,7 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
                         this.tests.push(testForm);
                     });
                 this.missingVariables = this.missingVariables.filter(v => this.variables.indexOf(v) < 0);
-
+                const simulatedTests: FormGroup[] = [];
                 res.body
                     .filter(t => (this.periodCtrl.value < 1 || this.periodCtrl.value === t.periodicity) &&
                                                (this.#selectedTest === 0 || this.#selectedTest === t.testId) &&
@@ -387,7 +394,6 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
                     .forEach(t => {
                         this.totalsLabels.push(t.testDescription);
                         this.totalsLimits.push([t.minValue, t.maxValue || 999]);
-                        this.totalsOptValues.push(t.optValue|| (t.normMin + t.normMax)/2);
                         this.formulas.push(t.formula);
                         if (t.varianceControl) {
                             this.varianceControls.push({variable: t.variable, description: t.testDescription, formula: t.formula});
@@ -396,6 +402,11 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
                             value: [{ value: 0, disabled: true }, [Validators.min(t.minValue), Validators.max(t.maxValue || 999)]],
                         }, {updateOn: 'change'});
                         this.totals.push(testForm);
+                        if (t.isSimulated) {
+                            this.simulatedTotals.push(testForm);
+                            this.simulatedTotalsLabes.push(t.testDescription);
+                            this.totalsOptimalValues.push(t.optValue|| (t.normMin + t.normMax)/2);
+                        }
                     });
                 this.formulas = this.formulas.map(f => this.replaceFormulas(f));
             });
