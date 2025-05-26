@@ -58,7 +58,7 @@ export const payrollNavTree: SideNavNode = {
         },
         {
             name: 'PAYROLL_EMPLOYEES_LIST',
-            icon: 'fad fa-users',
+            icon: 'fas fa-users',
             route: ABS_PAYROLL_EMPLOYEES_URL,
             accessRights: 'Person'
         },
