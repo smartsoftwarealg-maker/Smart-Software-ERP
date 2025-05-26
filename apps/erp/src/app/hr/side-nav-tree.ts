@@ -86,7 +86,7 @@ export const hrNavTree: SideNavNode = {
         },
         {
             name: 'PAYROLL_EMPLOYEES_LIST',
-            icon: 'fad fa-users',
+            icon: 'fas fa-users',
             route: ABS_HR_EMPLOYEES_URL,
             accessRights: 'Person'
         },
