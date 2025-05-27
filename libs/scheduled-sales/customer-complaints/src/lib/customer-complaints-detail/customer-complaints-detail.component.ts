@@ -73,6 +73,7 @@ export class CustomerComplaintsDetailComponent extends BaseEntityDetailComponent
             complaintType: [{ value: b.complaintType, disabled: this.loginSrv.appCtx.id > 0 }],
             complaint:     [{ value: b.complaint, disabled: this.loginSrv.appCtx.id > 0 }, Validators.required],
             answer:        [{ value: b.answer, disabled: this.loginSrv.appCtx.id < 1 }],
+            agentDescription:       [{ value:b.agentDescription, disabled: true }]
         });
     }
 
