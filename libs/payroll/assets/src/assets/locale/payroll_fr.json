@@ -187,7 +187,6 @@
     "PASSING_GRADE":         "Note de passage",
     "DAILY_GRADE":           "Note quotidienne",
     "MAX_RATE":              "Taux maximum",
-    "RATE_ELEMENT":          "Rubrique",
     "AGE":                   "Ancienneté",
     "CONFIRM_APPLY":         "Voulez-vous confirmer la mise à jour des données de carrière ?",
     "GICA_GRADING":          "Notation",
@@ -229,5 +228,6 @@
     "BLAME":                 "Blâmer",
     "APPLICATION_YEAR":      "Année d'application",
     "APPLICATION_MONTH":     "Mois de candidature",
-    "OLD_RATE":             "Ancien taux"
+    "OLD_RATE":             "Ancien taux",
+    "CAREER_EVOLUTION_RUBRIC": "Rubrique d'évolution de carrière"
 }

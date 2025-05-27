@@ -9,7 +9,7 @@ import { MatMiniFabButton } from '@angular/material/button';
 import { MatCard, MatCardContent } from '@angular/material/card';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormField, MatLabel, MatError } from '@angular/material/form-field';
-import { TranslateDirective } from '@ss/common/ui-lang';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 import { MatInput } from '@angular/material/input';
 import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { CdkTextareaAutosize } from '@angular/cdk/text-field';
@@ -34,7 +34,8 @@ import { CdkTextareaAutosize } from '@angular/cdk/text-field';
         UiAutoCompleteComponent,
         MatError,
         CdkTextareaAutosize,
-    ],
+        TranslatePipe
+    ]
 })
 export class ImportReceptionLinesDetailComponent extends BaseTransactionLinesDetailComponent implements OnInit, OnDestroy {
     constructor(protected receptionLinesSrv: TransactionLinesService) {

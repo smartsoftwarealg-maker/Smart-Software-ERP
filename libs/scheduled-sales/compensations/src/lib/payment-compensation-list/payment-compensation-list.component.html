@@ -15,6 +15,7 @@
             </mat-cell>
         </ng-container>
 
+
         <ng-container matColumnDef="chkNumber">
             <mat-header-cell *matHeaderCellDef mat-sort-header translate>LOGISTICS_CHECK_NUMBER</mat-header-cell>
             <mat-cell *matCellDef="let e">
@@ -39,8 +40,15 @@
             </mat-cell>
         </ng-container>
 
-        <ng-container matColumnDef="amount">
+        <ng-container matColumnDef="payment">
             <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_AMOUNT</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{ e.amount | number: '1.2-4' }}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="amount">
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_BALANCE</mat-header-cell>
             <mat-cell *matCellDef="let e">
                 {{ e.amount - e.compensation | number: '1.2-2' }}
             </mat-cell>

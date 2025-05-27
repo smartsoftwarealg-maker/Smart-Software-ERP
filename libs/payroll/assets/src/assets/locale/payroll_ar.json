@@ -188,7 +188,6 @@
     "PASSING_GRADE":         "درجة النجاح",
     "DAILY_GRADE":           "الدرجة اليومية",
     "MAX_RATE":              "النسبة القصوى",
-    "RATE_ELEMENT":          "العنصر",
     "AGE":                   "اﻷقدمية",
     "CONFIRM_APPLY":         "هل سيتم تأكيد تحديث البيانات المهنية؟",
     "GICA_GRADING":          "التقييم",
@@ -230,5 +229,6 @@
     "BLAME":                 "توبيخ",
     "APPLICATION_YEAR":      "سنة التطبيق",
     "APPLICATION_MONTH":     "شهر التطبيق",
-    "OLD_RANGE":             "المدى القديم"
+    "OLD_RANGE":             "المدى القديم",
+    "CAREER_EVOLUTION_RUBRIC": "عنصر تطور المسيرة المهنية"
 }

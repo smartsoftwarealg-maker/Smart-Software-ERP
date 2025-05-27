@@ -53,6 +53,24 @@
             </mat-cell>
         </ng-container>
 
+        <ng-container matColumnDef="from">
+            <mat-header-cell *matHeaderCellDef translate style="justify-content: center">
+                COMMON_FROM
+            </mat-header-cell>
+            <mat-cell *matCellDef="let e" style="justify-content: center">
+                {{ e.from | date: 'dd/MM/yyyy' }}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="to">
+            <mat-header-cell *matHeaderCellDef translate style="justify-content: center">
+                COMMON_TO
+            </mat-header-cell>
+            <mat-cell *matCellDef="let e" style="justify-content: center">
+                {{ e.to | date: 'dd/MM/yyyy' }}
+            </mat-cell>
+        </ng-container>
+
 
         <ng-container matColumnDef="typeName">
             <mat-header-cell *matHeaderCellDef translate>
