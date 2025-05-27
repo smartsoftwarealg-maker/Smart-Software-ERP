@@ -24,6 +24,7 @@ import { DebtService } from '../services/debt.service';
 import { HttpParams } from '@angular/common/http';
 import { MatRadioButton, MatRadioChange, MatRadioGroup } from '@angular/material/radio';
 import { SsDirectPaymentService } from '@ss/scheduled-sales/api-scheduled-sales';
+import { callback } from 'chart.js/helpers';
 
 enum SelectionMode {
     Debt = 1,
@@ -59,7 +60,7 @@ export class PaymentCompensationListComponent extends BaseEntityListComponent<Pa
     #debtsSrv = inject(DebtService);
     #selectionMode = signal<SelectionMode>(SelectionMode.Debt);
 
-    displayedColumns = ['customerCode', 'agentDescription', 'amount', 'date', 'chkNumber', 'bankDescription', 'document'];
+    displayedColumns = ['customerCode', 'agentDescription', 'payment', 'amount', 'date', 'chkNumber', 'bankDescription', 'document'];
     childColumns = ['date', 'invoiceNumber', 'customerCode', 'customerName', 'ftt', 'payment', 'paid'];
     childPaginator = PaginationModel.newInstance({ page: 1, pageSize: 5, elementCount: 0 });
     childData: Debt[] = [];
@@ -142,5 +143,10 @@ export class PaymentCompensationListComponent extends BaseEntityListComponent<Pa
 
     protected override canShowProcessingStatus(): boolean {
         return false;
+    }
+
+    override refresh(callback?: () => void) {
+        super.refresh(callback);
+        this.selectRow(null);
     }
 }

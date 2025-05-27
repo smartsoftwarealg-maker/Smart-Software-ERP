@@ -23,6 +23,8 @@ export class PunishmentListComponent extends BaseChildEntityListComponent<Punish
         'number',
         'date',
         'sanction',
+        'from',
+        'to',
         'typeName',
         'faultName',
         'nature',

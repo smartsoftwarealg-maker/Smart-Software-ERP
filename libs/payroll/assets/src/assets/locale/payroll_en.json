@@ -187,7 +187,6 @@
     "PASSING_GRADE":         "Passing grade",
     "DAILY_GRADE":           "Daily grade",
     "MAX_RATE":              "Maximum rate",
-    "RATE_ELEMENT":          "Element",
     "AGE":                   "Seniority",
     "CONFIRM_APPLY":         "Will you confirm of the update of the career data?",
     "GICA_GRADING":          "Grading",
@@ -230,5 +229,6 @@
     "BLAME":                 "Blame",
     "APPLICATION_YEAR":      "Application year",
     "APPLICATION_MONTH":     "Application month",
-    "OLD_RATE":             "Old rate"
+    "OLD_RATE":              "Old rate",
+    "CAREER_EVOLUTION_RUBRIC": "Career evolution rubric"
 }

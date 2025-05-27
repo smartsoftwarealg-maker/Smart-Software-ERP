@@ -38,6 +38,7 @@ mat-card, .input_div, .size {
     justify-content: center;
 }
 
+.mat-column-grade,
 .mat-column-oldRate,
 .mat-column-deduction,
 .mat-column-rate {

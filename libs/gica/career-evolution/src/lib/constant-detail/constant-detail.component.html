@@ -9,7 +9,7 @@
                 <!--                    <mat-error *ngIf="form.controls['yearlyGrade'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>-->
                 <!--                </mat-form-field>-->
 
-                <mat-form-field id="code" class="default-50 sm-100">
+                <mat-form-field id="code" class="default-100 sm-100">
                     <mat-label translate>PAYROLL_PASSING_GRADE</mat-label>
                     <input matInput formControlName="passingGrade" type="number">
                     @if (form.controls['passingGrade']) {
@@ -23,20 +23,20 @@
                 <!--                    <mat-error *ngIf="form.controls['maxRate'].invalid" translate>COMMON_FIELD_MAX_LENGTH</mat-error>-->
                 <!--                </mat-form-field>-->
 
-                <mat-form-field id="rate" class="default-50 sm-100">
-                    <mat-label translate>PAYROLL_RATE_ELEMENT</mat-label>
+                <mat-form-field id="rate" class="default-100 sm-100">
+                    <mat-label translate>PAYROLL_CAREER_EVOLUTION_RUBRIC</mat-label>
                     <input matInput formControlName="rate" type="text">
                     @if (form.controls['rate'].invalid) {
                         <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
                     }
                 </mat-form-field>
-                <mat-form-field id="formula" class="default-50 sm-100">
-                    <mat-label translate>PAYROLL_DEDUCTION_FORMULA</mat-label>
-                    <input matInput formControlName="formula" type="text">
-                    @if (form.controls['formula'].invalid) {
-                        <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
-                    }
-                </mat-form-field>
+<!--                <mat-form-field id="formula" class="default-50 sm-100">-->
+<!--                    <mat-label translate>PAYROLL_DEDUCTION_FORMULA</mat-label>-->
+<!--                    <input matInput formControlName="formula" type="text">-->
+<!--                    @if (form.controls['formula'].invalid) {-->
+<!--                        <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>-->
+<!--                    }-->
+<!--                </mat-form-field>-->
 
 <!--                <mat-form-field id="script" class="default-100">-->
 <!--                    <mat-label translate>COMMON_SCRIPT</mat-label>-->
