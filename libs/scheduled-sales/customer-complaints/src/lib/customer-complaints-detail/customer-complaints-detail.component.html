@@ -4,6 +4,11 @@
             <form novalidate [formGroup]="form">
 
                 <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>LOGISTICS_CUSTOMER</mat-label>
+                    <input matInput formControlName="agentDescription">
+                </mat-form-field>
+
+                <mat-form-field class="default-50 sm-100">
                     <mat-label translate>COMMON_TYPE</mat-label>
                     <ss-auto-complete matInput
                                       formControlName="complaintId"
