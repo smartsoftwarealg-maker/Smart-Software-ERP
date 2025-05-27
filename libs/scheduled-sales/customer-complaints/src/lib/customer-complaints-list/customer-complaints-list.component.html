@@ -11,21 +11,28 @@
         <ng-container matColumnDef="complaintDescription">
             <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_DESCRIPTION</mat-header-cell>
             <mat-cell *matCellDef="let e">
-                {{e.complaintDescription}}
+                {{ e.complaintDescription }}
             </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="complaint">
             <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_COMPLAINT</mat-header-cell>
             <mat-cell *matCellDef="let e">
-                {{e.complaint?.substring(0, 70)}}
+                {{ e.complaint?.substring(0, 70) }}
             </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="answer">
             <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_RESPONSE</mat-header-cell>
             <mat-cell *matCellDef="let e">
-                {{e.answer?.substring(0, 70)}}
+                {{ e.answer?.substring(0, 70) }}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="agentDescription">
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>LOGISTICS_CUSTOMER</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{ e.agentDescription }}
             </mat-cell>
         </ng-container>
 
