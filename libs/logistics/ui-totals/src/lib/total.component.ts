@@ -69,6 +69,13 @@ export class TotalComponent implements OnInit {
 
     loadTotal() {
         this.totalSrv.getPage(this.pagination)
-            .subscribe((list: Total[]) => this.data = list.map(e => ({ description: this.langSrv.translate(e.description), value: e.value }) ));
+            .subscribe((list: Total[]) => {
+                this.data = list.map(e => ({ description: this.langSrv.translate(e.description), value: e.value }));
+                if (list.length > 1 && list[1].description?.startsWith('LOGISTICS_DISCOUNT')) {
+                    const tmp =  ((+this.data[1].value / (+this.data[0].value)) * 100).toFixed(2);
+                    this.data[1].description = this.data[1].description + ' ' + tmp + '%';
+                    console.log(this.data[1].description);
+                }
+            });
     }
 }
