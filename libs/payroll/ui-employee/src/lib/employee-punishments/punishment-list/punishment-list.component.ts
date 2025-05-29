@@ -26,7 +26,6 @@ export class PunishmentListComponent extends BaseChildEntityListComponent<Punish
         'to',
         'typeName',
         'faultName',
-        'nature',
         'memo',
     ];
     private readonly Nature = PUNISHMENTS_NATURE;
