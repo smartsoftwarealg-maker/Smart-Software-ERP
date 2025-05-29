@@ -77,7 +77,7 @@ export class ExtraCostListComponent implements OnInit {
                 this.data = next;
                 this.data.forEach(d => {
                     d.costName = COST_TYPES.find(t => t.id === d.costType)?.description;
-                    d.valueName = VALUE_TYPES.find(t => t.id === d.costType)?.description;
+                    d.valueName = VALUE_TYPES.find(t => t.id === d.valueType)?.description;
                 });
             });
     }
