@@ -44,15 +44,6 @@
             </mat-cell>
         </ng-container>
 
-        <ng-container matColumnDef="sanction">
-            <mat-header-cell *matHeaderCellDef translate style="justify-content: center">
-                PAYROLL_PUNISHMENT
-            </mat-header-cell>
-            <mat-cell *matCellDef="let e" style="justify-content: center">
-                {{ e.sanction }}
-            </mat-cell>
-        </ng-container>
-
         <ng-container matColumnDef="from">
             <mat-header-cell *matHeaderCellDef translate style="justify-content: center">
                 COMMON_FROM
@@ -86,15 +77,6 @@
             </mat-header-cell>
             <mat-cell *matCellDef="let e">
                 {{ e.faultName }}
-            </mat-cell>
-        </ng-container>
-
-        <ng-container matColumnDef="nature">
-            <mat-header-cell *matHeaderCellDef translate>
-                PAYROLL_NATURE
-            </mat-header-cell>
-            <mat-cell *matCellDef="let e" translate>
-                {{ nature(e.nature) }}
             </mat-cell>
         </ng-container>
 
