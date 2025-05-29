@@ -72,8 +72,8 @@ export class PunishmentDetailComponent extends BaseChildEntityDetailComponent<Pu
             nature:         [a.nature],
             from:           [a.from],
             to:             [a.to],
-            paymonthY:      [Math.floor(a.paymonth / 100), Validators.required],
-            paymonthM:      [(a.paymonth % 100)||1, Validators.required],
+            paymonthY:      [Math.floor(a.paymonth / 100)],
+            paymonthM:      [(a.paymonth % 100)||1],
         });
     }
 
