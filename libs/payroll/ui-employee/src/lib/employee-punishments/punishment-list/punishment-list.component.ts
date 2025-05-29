@@ -22,7 +22,6 @@ export class PunishmentListComponent extends BaseChildEntityListComponent<Punish
     public displayedColumns = [
         'number',
         'date',
-        'sanction',
         'from',
         'to',
         'typeName',
