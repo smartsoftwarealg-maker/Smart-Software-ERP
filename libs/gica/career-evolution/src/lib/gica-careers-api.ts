@@ -82,6 +82,9 @@ export interface Grade {
     grade2: number;
     finalGrade: number;
     maxGrade: number;
+    appreciation1?: string;
+    appreciation2?: string;
+    appreciation3?: string;
 }
 
 export interface Criterion {

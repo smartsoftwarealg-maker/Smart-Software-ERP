@@ -61,7 +61,7 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
         TranslateDirective
     ],
     templateUrl: './gradings.component.html',
-    styleUrl: './gradings.component.css'
+    styleUrl: 'gradings.component.scss'
 })
 export class GradingsComponent implements OnInit {
 
@@ -113,6 +113,9 @@ export class GradingsComponent implements OnInit {
 
     form = this.fb.group({
         index:  [0, [Validators.required, Validators.min(1), Validators.max(3)] ] ,
+        appreciation1: [null],
+        appreciation2: [null],
+        appreciation3: [null],
         grades: this.fb.array([])
     });
     labels = [''];
@@ -202,18 +205,20 @@ export class GradingsComponent implements OnInit {
             .subscribe(res => {
                 this.executionIndex = this.gradeCtrl.value;
                 res.forEach(g => {
+                    this.form.controls.appreciation1.setValue(g.appreciation1);
+                    this.form.controls.appreciation2.setValue(g.appreciation2);
                     const idx = this.executionIndex;
                     const temp = this.fb.group({
-                        id:          [g.id],
-                        centerId:    [g.centerId || this.loginSrv.appCtx.center],
-                        year:        [this.yearCtrl.value, [Validators.min(this.currYear - 5), Validators.max(this.currYear)]],
-                        employeeId:  [e?.id||0],
-                        criterion:   [g.criterion],
-                        description: [g.description],
-                        grade1 :     [{ value: g.grade1, disabled: !this.gradingSrv.gradingMode || this.gradeCtrl.value !== 1}  ],
-                        grade2:      [{ value: idx >= 2? g.grade2: 0, disabled: !this.gradingSrv.gradingMode || this.gradeCtrl.value !== 2}],
-                        finalGrade:  [{ value: idx >= 3? g.finalGrade : 0, disabled: this.gradeCtrl.value !== 3 || this.gradeDifference() <= 5}],
-                        userId:      [this.loginSrv.appCtx.id]
+                        id:            [g.id],
+                        centerId:      [g.centerId || this.loginSrv.appCtx.center],
+                        year:          [this.yearCtrl.value, [Validators.min(this.currYear - 5), Validators.max(this.currYear)]],
+                        employeeId:    [e?.id||0],
+                        criterion:     [g.criterion],
+                        description:   [g.description],
+                        grade1 :       [{ value: g.grade1, disabled: !this.gradingSrv.gradingMode || this.gradeCtrl.value !== 1}  ],
+                        grade2:        [{ value: idx >= 2? g.grade2: 0, disabled: !this.gradingSrv.gradingMode || this.gradeCtrl.value !== 2}],
+                        finalGrade:    [{ value: idx >= 3? g.finalGrade : 0, disabled: this.gradeCtrl.value !== 3 || this.gradeDifference() <= 5}],
+                        userId:        [this.loginSrv.appCtx.id],
                     });
                     this.grades.push(temp);
                     this.maxima.push(g.maxGrade||4);
@@ -228,10 +233,11 @@ export class GradingsComponent implements OnInit {
 
     private save() {
         const value = this.form.getRawValue();
+
         this.processing.set(true);
         this.saveButton.disabled = true;
         this.gradingSrv
-            .update(this.gradeCtrl.value, <Grade[]>value.grades)
+            .update(this.gradeCtrl.value, <Grade[]>value.grades, value.appreciation1, value.appreciation2, value.appreciation3)
             .subscribe(res => {
                 if (res.length > 0) {
                     this.snackBarSrv.showSuccessMessage();

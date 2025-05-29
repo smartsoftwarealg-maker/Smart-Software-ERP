@@ -229,5 +229,6 @@
     "APPLICATION_YEAR":      "Année d'application",
     "APPLICATION_MONTH":     "Mois de candidature",
     "OLD_RATE":             "Ancien taux",
-    "CAREER_EVOLUTION_RUBRIC": "Rubrique d'évolution de carrière"
+    "CAREER_EVOLUTION_RUBRIC": "Rubrique d'évolution de carrière",
+    "APPRECIATION": "Appréciation"
 }

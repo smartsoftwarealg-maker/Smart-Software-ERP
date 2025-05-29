@@ -230,5 +230,6 @@
     "APPLICATION_YEAR":      "سنة التطبيق",
     "APPLICATION_MONTH":     "شهر التطبيق",
     "OLD_RANGE":             "المدى القديم",
-    "CAREER_EVOLUTION_RUBRIC": "عنصر تطور المسيرة المهنية"
+    "CAREER_EVOLUTION_RUBRIC": "عنصر تطور المسيرة المهنية",
+    "APPRECIATION":           "تقدير"
 }

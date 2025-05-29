@@ -20,7 +20,12 @@ export class GradeService {
         return this.httpSrv.get('/gica-careers/gradings', params);
     }
 
-    update(index: number, grades: Grade[]): Observable<number[]> {
+    update(index: number, grades: Grade[], appreciation1?: string, appreciation2?: string, appreciation3?: string): Observable<number[]> {
+        grades.forEach(g => {
+            g.appreciation1 = appreciation1;
+            g.appreciation2 = appreciation2;
+            g.appreciation3 = appreciation3;
+        });
         const data = { index: index, grades: grades };
         return this.httpSrv.put('/gica-careers/gradings', data);
     }
