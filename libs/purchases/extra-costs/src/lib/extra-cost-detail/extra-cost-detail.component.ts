@@ -116,7 +116,8 @@ export class ExtraCostDetailComponent extends AbstractEntityComponent<ExtraCost>
             foreignCurrency: new FormControl<boolean>(e.foreignCurrency),
             costType: new FormControl<number>(e.costType),
             valueType: new FormControl<number>(e.valueType),
-            exchangeRate: new FormControl<number>(e.exchangeRate)
+            exchangeRate: new FormControl<number>(e.exchangeRate),
+            stamp: new FormControl<number|null>(e.stamp),
         });
     }
 

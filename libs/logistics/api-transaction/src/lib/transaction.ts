@@ -116,6 +116,7 @@ export interface ExtraCost {
     supplierName?: string;
     costName?: string;
     valueName?: string;
+    stamp?: number;
 }
 
 export const COST_TYPES: Lookup[] = [
