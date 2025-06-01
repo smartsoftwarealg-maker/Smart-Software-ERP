@@ -25,7 +25,6 @@ import { MatInput } from '@angular/material/input';
 import { MatOption } from '@angular/material/core';
 import { TranslateDirective } from '@ss/common/ui-lang';
 import { TranslatePipe } from '@ss/common/ui-lang';
-import { MatMiniFabButton } from '@angular/material/button';
 
 @Component({
     selector: 'ss-auto-complete',
@@ -42,14 +41,16 @@ import { MatMiniFabButton } from '@angular/material/button';
         MatAutocompleteTrigger,
         ReactiveFormsModule,
         MatAutocomplete,
-        NgFor, MatOption,
+        MatOption,
         TranslateDirective,
         TranslatePipe
     ]
 })
 export class UiAutoCompleteComponent implements ControlValueAccessor, MatFormFieldControl<Id>, DoCheck, OnInit, OnDestroy {
+    #_inactive = false;
     private snackBarSrv = inject(SnackBarService);
     notFound = signal(false);
+    allowAdd = signal(false);
     canAdd = input(false);
 
     constructor(
@@ -118,9 +119,8 @@ export class UiAutoCompleteComponent implements ControlValueAccessor, MatFormFie
         return this.isDisabled;
     }
 
-    @Input()
     set disabled(value: boolean) {
-        this.isDisabled = coerceBooleanProperty(value);
+        this.isDisabled = coerceBooleanProperty(value) || this.#_inactive;
         if (this.isDisabled) {
             this.autoControl.disable();
         } else {
@@ -129,6 +129,10 @@ export class UiAutoCompleteComponent implements ControlValueAccessor, MatFormFie
         this.stateChanges.next();
     }
 
+    @Input()
+    set inactive(b: boolean) {
+        this.#_inactive = b;
+    }
     static nextId = 0;
 
     readonly stateChanges = new Subject<void>();

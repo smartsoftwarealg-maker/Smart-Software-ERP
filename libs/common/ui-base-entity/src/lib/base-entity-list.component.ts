@@ -53,7 +53,7 @@ export class BaseEntityListComponent<T extends { id: number, email?: string }> i
         label: 'COMMON_EDIT_SELECTED',
         disabled: true,
         visible: true,
-        keepOnToolbar: KeepOnToolbar.ALWAYS,
+        keepOnToolbar: KeepOnToolbar.DYNAMIC,
         click: () => this.edit()
     };
     public deleteButton: ToolbarButton = {

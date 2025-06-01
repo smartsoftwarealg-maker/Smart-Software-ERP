@@ -19,7 +19,7 @@ import { MatCard } from '@angular/material/card';
 import { NgIf } from '@angular/common';
 import { MatFormField, MatLabel } from '@angular/material/form-field';
 import { MatInput } from '@angular/material/input';
-import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
+import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 
 @Component({
     selector: 'ss-class-list',
@@ -68,7 +68,7 @@ export class ClassListComponent extends BaseEntityListComponent<Class> {
 })
 export class ClassDetailComponent extends BaseEntityDetailComponent<Class> {
     private accountSrv =  inject(GenerationAccountService);
-    accountLookupModel = new GenerationAccountAutocompleteModel(this.accountSrv) ;
+    accountLookupModel = new DefaultAutoCompleteModel(this.accountSrv) ;
 
     constructor(
         public classSrv: ClassService,
@@ -76,17 +76,16 @@ export class ClassDetailComponent extends BaseEntityDetailComponent<Class> {
         public override snackBarSrv: SnackBarService,
         public override route: ActivatedRoute,
         public override confirmationSrv: ConfirmationDialogService,
-        public override formBuilder: UntypedFormBuilder,
-    ) {
+        public override formBuilder: UntypedFormBuilder) {
         super(classSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'COMMON_EDIT_CLASS');
     }
 
     public override setupForm(e: Class): UntypedFormGroup {
         return this.formBuilder.group({
-            id: e.id,
-            description: [e.description, Validators.required],
+            id:            [e.id],
+            description:   [e.description, Validators.required],
             descriptionAr: [e.descriptionAr],
-            accountId: [e.accountId]
+            accountId:     [e.accountId]
         });
     }
 }

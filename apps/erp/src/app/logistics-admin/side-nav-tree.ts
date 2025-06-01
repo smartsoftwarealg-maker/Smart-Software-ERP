@@ -73,7 +73,7 @@ export const logisticsAdminNavTree: SideNavNode = {
         },
         {
             name: 'COMMON_ACTIVITIES',
-            icon: 'fab fa-app-store-ios',
+            icon: 'fas fa-app-store-ios',
             route: ABS_LOGISTICS_ACTIVITY,
             accessRights: 'Activity'
         },

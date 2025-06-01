@@ -18,6 +18,23 @@ body {
     overflow: hidden;
     //font-size: small;
     font-family:  Arial, Helvetica, sans-serif;
+    --admob-bottom-padding: 0px;
+}
+
+/* Default SnackBar style (no ad) */
+.snackbar-no-ad {
+    margin-bottom: 0;
+}
+
+/* SnackBar style when AdMob is visible */
+.snackbar-with-ad {
+    position: relative;
+    bottom: 64px;
+    margin: 0 auto!important;
+}
+
+.has-admob-banner {
+    padding-bottom: var(--admob-bottom-padding);
 }
 
 // Use these classes to style your components

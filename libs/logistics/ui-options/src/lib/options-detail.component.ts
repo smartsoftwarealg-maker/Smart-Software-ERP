@@ -72,7 +72,7 @@ export class OptionsDetailComponent extends BaseEntityDetailComponent<Option> im
     public override setupForm(a: Option) {
         return this.formBuilder.group({
             id: [this.loginSrv.appCtx.center],
-            eval_price: [a.evalPrice || 1, Validators.required],
+            evalPrice: [a.evalPrice || 1, Validators.required],
             mainStore: [a.mainStore],
             generate_GL: [a.generate_GL],
             inventoryDate: [a.inventoryDate, Validators.required],

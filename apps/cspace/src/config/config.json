@@ -23,7 +23,7 @@
     "urlRules": [
         {
             "frontend": "?",
-            "backend": "demo.smartsoftware-dz.com:4430"
+            "backend": "?:8080"
         }
     ],
     "useBrowserLanguage": true,

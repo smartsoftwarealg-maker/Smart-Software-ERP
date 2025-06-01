@@ -341,8 +341,8 @@ export class HttpService {
         } else if (company === 'SCH_SCAKE') {
             this.baseUrl = 'https://client2.scake.dz';
         } else {
-            // this.baseUrl = 'https://demo.smartsoftware-dz.com';
             this.baseUrl = 'https://demo.smartsoftware-dz.com:4430';
+            // this.baseUrl = 'http://localhost:8080'; // default to local development
         }
     }
 }

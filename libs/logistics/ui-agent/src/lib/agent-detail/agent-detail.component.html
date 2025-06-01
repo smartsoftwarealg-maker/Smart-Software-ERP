@@ -51,17 +51,17 @@
                 </mat-form-field>
 
                 @if (!isSales) {
-                     <mat-form-field id="currency" class="default-50 sm-100">
-                    <mat-label translate>LOGISTICS_CURRENCY</mat-label>
-                    <ss-auto-complete matInput
-                                      formControlName="currency"
-                                      [canAdd]="true"
-                                      [model]="currencyLookup">
-                    </ss-auto-complete>
-                    <mat-error
-                        *ngIf="form.controls['currency'].invalid" translate>COMMON_FIELD_REQUIRED
-                    </mat-error>
-                </mat-form-field>
+                    <mat-form-field id="currency" class="default-50 sm-100">
+                        <mat-label translate>LOGISTICS_CURRENCY</mat-label>
+                        <ss-auto-complete matInput
+                                          formControlName="currency"
+                                          [canAdd]="true"
+                                          [model]="currencyLookup">
+                        </ss-auto-complete>
+                        <mat-error
+                            *ngIf="form.controls['currency'].invalid" translate>COMMON_FIELD_REQUIRED
+                        </mat-error>
+                    </mat-form-field>
                 }
 
                 <mat-form-field id="price" class="default-50 sm-100">
@@ -386,24 +386,26 @@
                         </mat-list-option>
                     </mat-selection-list>
                 </div>
-                <div class="center_ctrl">
-                    <button mat-mini-fab color="accent"
-                            (click)="addCenter()">
-                        <i class="fas fa-plus-circle"></i>
-                    </button>
+                @if (isEditable) {
+                    <div class="center_ctrl">
+                        <button mat-mini-fab color="accent"
+                                (click)="addCenter()">
+                            <i class="fas fa-plus-circle"></i>
+                        </button>
 
-                    <mat-form-field>
-                        <mat-label translate>ADMINISTRATION_CENTER</mat-label>
-                        <ss-auto-complete matInput
-                                          #roleAC
-                                          [formControl]="centerCtrl"
-                                          [model]="centerLookup">
-                        </ss-auto-complete>
-                    </mat-form-field>
-                    <button mat-mini-fab color="warn" [disabled]="selectedCenter < 1" (click)="deleteCenter()"><i
-                        class="fas fa-trash-alt"></i>
-                    </button>
-                </div>
+                        <mat-form-field>
+                            <mat-label translate>ADMINISTRATION_CENTER</mat-label>
+                            <ss-auto-complete matInput
+                                              #roleAC
+                                              [formControl]="centerCtrl"
+                                              [model]="centerLookup">
+                            </ss-auto-complete>
+                        </mat-form-field>
+                        <button mat-mini-fab color="warn" [disabled]="selectedCenter < 1" (click)="deleteCenter()"><i
+                            class="fas fa-trash-alt"></i>
+                        </button>
+                    </div>
+                }
             </mat-expansion-panel>
 
             <mat-expansion-panel #archivePanel
@@ -422,17 +424,18 @@
             </mat-expansion-panel>
 
             @if (!isSales) {
-                <mat-expansion-panel #attributes expanded="false" [class]="getPanelHeaderClass('attributes', attributes)">
-                <mat-expansion-panel-header>
-                    <mat-panel-title translate>
-                        ADMINISTRATION_ATTRIBUTES
-                    </mat-panel-title>
-                </mat-expansion-panel-header>
+                <mat-expansion-panel #attributes expanded="false"
+                                     [class]="getPanelHeaderClass('attributes', attributes)">
+                    <mat-expansion-panel-header>
+                        <mat-panel-title translate>
+                            ADMINISTRATION_ATTRIBUTES
+                        </mat-panel-title>
+                    </mat-expansion-panel-header>
 
-                <ss-child-attributes [childAttribute]="'/agents'" [attributeId]="id" [parentId]="4"
-                                     [editable]="isEditable">
-                </ss-child-attributes>
-            </mat-expansion-panel>
+                    <ss-child-attributes [childAttribute]="'/agents'" [attributeId]="id" [parentId]="4"
+                                         [editable]="isEditable">
+                    </ss-child-attributes>
+                </mat-expansion-panel>
             }
         </mat-accordion>
     </form>
