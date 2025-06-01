@@ -11,11 +11,12 @@ import { MatTableModule } from '@angular/material/table';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { ReportNode, ReportTreeService } from '@ss/common/api-reports';
 import { map, Observable, switchMap, zip } from 'rxjs';
+import { TranslateDirective } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'lib-common-report-privileges',
     standalone: true,
-    imports: [CommonModule,  MatSortModule, MatTableModule,  MatCheckboxModule],
+    imports: [CommonModule,  MatSortModule, MatTableModule,  MatCheckboxModule, TranslateDirective],
     templateUrl: './report-privileges.component.html',
     styleUrls: ['./report-privileges.component.css'],
 })

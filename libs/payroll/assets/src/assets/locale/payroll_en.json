@@ -231,5 +231,6 @@
     "APPLICATION_MONTH":     "Application month",
     "OLD_RATE":              "Old rate",
     "CAREER_EVOLUTION_RUBRIC": "Career evolution rubric",
-    "APPRECIATION": "Appreciation"
+    "APPRECIATION":          "Appreciation",
+    "HR_CRITERIA":           "Hr criteria"
 }

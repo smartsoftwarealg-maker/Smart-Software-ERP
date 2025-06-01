@@ -5,7 +5,7 @@ import {
     ABS_HR_BLOOD_GROUP_URL,
     ABS_HR_CAREER_MOTIVE_URL,
     ABS_HR_CATEGORIES_URL,
-    ABS_HR_CONTRACT_MOTIVES_URL,
+    ABS_HR_CONTRACT_MOTIVES_URL, ABS_HR_CRITERIA_URL,
     ABS_HR_DECISION_MOTIVES_URL,
     ABS_HR_DEPARTMENTS_URL,
     ABS_HR_DIPLOMAS_URL,
@@ -166,6 +166,12 @@ export const hrLookupNavTree: SideNavNode = {
             icon: 'fa-solid fa-microscope',
             route: ABS_PHYSICIAN_SPECIALTIES_URL,
             accessRights: 'PhysicianSpecialty'
+        },
+        {
+            name: 'PAYROLL_HR_CRITERIA',
+            icon: 'fa-solid fa-stars',
+            route: ABS_HR_CRITERIA_URL,
+            accessRights: 'Criterion'
         },
     ],
     accessRights: 'HR_TABLES'
