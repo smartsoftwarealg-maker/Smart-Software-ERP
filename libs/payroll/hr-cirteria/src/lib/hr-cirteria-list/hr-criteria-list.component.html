@@ -1,0 +1,35 @@
+<div class="size">
+    <mat-form-field class="default-100">
+        <mat-label translate>PAYROLL_CATEGORY</mat-label>
+        <ss-auto-complete matInput
+                          [model]="categoryLookup"
+                          [formControl]="employee">
+        </ss-auto-complete>
+    </mat-form-field>
+</div>
+<div class="div_table size">
+    <mat-table mat-table [dataSource]="data" class="main-table" matSort (matSortChange)="sort($event)">
+
+        <ng-container matColumnDef="description">
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_DESCRIPTION</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{ e.description }}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="grade">
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>PAYROLL_GRADE</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{ e.grade }}
+            </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+        <mat-row class="selectable" [class.selected]="row.id == selected" (click)="select(row.id)"
+                 *matRowDef="let row; columns: displayedColumns;">
+        </mat-row>
+    </mat-table>
+</div>
+<div class="size b-b-background">
+    <ss-pagination [paginationModel]="pagination"></ss-pagination>
+</div>

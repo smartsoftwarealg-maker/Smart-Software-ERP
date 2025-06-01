@@ -28,14 +28,14 @@ import {
     HR_ACTIVITY_URL,
     HR_PHYSICIAN_URL,
     HR_SPECIALTY_URL,
-    HR_CAREER_MOTIVE_URL, HR_ID_UPDATE_URL, docInfoRoutes
+    HR_CAREER_MOTIVE_URL, HR_ID_UPDATE_URL, docInfoRoutes, HR_CRITERIA_URL
 } from '../common';
 import {
     ABS_INDEX_URL,
     CanDeactivateService,
     LIST_URL, RedirectToParentComponent
 } from '@ss/common/api-common';
-import { Routes } from '@angular/router';
+import { CanActivateFn, Routes } from '@angular/router';
 import {
     BloodGroupDetailComponent,
     BloodGroupListComponent,
@@ -171,6 +171,11 @@ import {
 import {
     PostElementsDetailComponent, PostElementsListComponent
 } from '@ss/common/ui-lookup';
+import { HrCriteriaDetailComponent, HrCriteriaListComponent } from '@ss/payroll/hr-cirteria';
+import { inject } from '@angular/core';
+import { HrCriterionService } from '@ss/payroll/hr-cirteria';
+
+export const hrCriteriaGuard: CanActivateFn = () => inject(HrCriterionService).canActivate();
 
 export const hrRoutes: Routes = [
     {
@@ -909,6 +914,13 @@ export const hrRoutes: Routes = [
                 canDeactivate: [CanDeactivateService]
             },
             { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
+        ]
+    },
+    {
+        path: HR_CRITERIA_URL,
+        children: [
+            { path: LIST_URL, component: HrCriteriaListComponent, canActivate: [loginGuard]},
+            { path: ':id', component: HrCriteriaDetailComponent, canActivate: [loginGuard, hrCriteriaGuard] }
         ]
     },
     { path: '', redirectTo: ABS_INDEX_URL, pathMatch: 'full' },
