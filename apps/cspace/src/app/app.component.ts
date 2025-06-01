@@ -2,7 +2,7 @@ import { Component, inject, OnInit, signal } from '@angular/core';
 import { CompanySelectorService, HttpService, LoginService, LoginType } from '@ss/common/api-common';
 import { switchMap } from 'rxjs/operators';
 import {LanguageService} from '@ss/common/api-common';
-import { ShellService } from '@ss/common/ui-shell';
+import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import {cSpaceNavTree} from "./cspace/side-nav-tree";
 import { environment, langAssets } from '../environments/environment';
 import { DeviceDetectorService } from 'ngx-device-detector';
@@ -21,6 +21,7 @@ import { MessageComponent } from '@ss/common/ui-error-handler';
     ],
 })
 export class AppComponent implements OnInit {
+    #snackSrv = inject(SnackBarService);
     #companySelectorSrv = inject(CompanySelectorService);
     #deviceSrv = inject(DeviceDetectorService);
     #httpSrv =  inject(HttpService);
@@ -39,7 +40,7 @@ export class AppComponent implements OnInit {
         this.#companySelectorSrv.homePage     = homePage;
         this.#loginSrv.customerLogin = LoginType.BOTH;
         this.#loginSrv.customerLogin = LoginType.CUSTOMER;
-        this.#shellSrv.setApplicationTitle('Customer Space 2.5');
+        this.#shellSrv.setApplicationTitle('Customer Space 2.6');
         this.#httpSrv
             .init(company)
             .pipe(
@@ -55,6 +56,10 @@ export class AppComponent implements OnInit {
 
         if (this.#deviceSrv.isMobile()) {
             initialize().then(() => {});
+            // Update CSS variable when ad loads
+            document.body.classList.add('has-admob-banner');
+            document.body.style.setProperty('--admob-bottom-padding', '64px'); // Adjust based on your ad size
+            this.#snackSrv.hasAd = true;
         }
     }
 }

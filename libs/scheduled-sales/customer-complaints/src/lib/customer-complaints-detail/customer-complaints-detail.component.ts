@@ -23,6 +23,7 @@ import { MatOptionModule } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
 import { TranslateDirective } from '@ss/common/ui-lang';
 import { Lookup } from '@ss/common/api-lookup';
+import { Agent, AgentService } from '@ss/logistics/api-agent';
 
 @Component({
     selector: 'ss-customer-complaints-detail',
@@ -47,10 +48,12 @@ import { Lookup } from '@ss/common/api-lookup';
     styleUrl: './customer-complaints-detail.component.css',
 })
 export class CustomerComplaintsDetailComponent extends BaseEntityDetailComponent<CustomerComplaint> {
+    private agentSrv = inject(AgentService);
     private loginSrv = inject(LoginService);
     private complaintTypeSrv = inject(ComplaintTypeService);
-    complaintLookup = new DefaultAutoCompleteModel(this.complaintTypeSrv);
 
+    complaintLookup = new DefaultAutoCompleteModel(this.complaintTypeSrv);
+    public agentLookup = new DefaultAutoCompleteModel<Agent>(this.agentSrv, 'id', 'denomination');
     constructor(
         public override entitySrv: CustomerComplaintsService,
         public override shellSrv: ShellService,
@@ -67,7 +70,7 @@ export class CustomerComplaintsDetailComponent extends BaseEntityDetailComponent
         // Make sure to update the template if you edit the configuration here
         return this.formBuilder.group({
             id:            [b.id],
-            centerId:      [b.centerId || this.loginSrv.appCtx.center],
+            centerId:      [{ value: b.centerId || this.loginSrv.appCtx.center, disabled: true }],
             agentId:       [b.agentId || this.loginSrv.appCtx.agentId],
             complaintId:   [{ value: b.complaintId, disabled: this.loginSrv.appCtx.id > 0 }, Validators.required],
             complaintType: [{ value: b.complaintType, disabled: this.loginSrv.appCtx.id > 0 }],
@@ -85,7 +88,7 @@ export class CustomerComplaintsDetailComponent extends BaseEntityDetailComponent
 
     private updateTypeRequirement(e: Lookup) {
         const ctrl = this.form?.controls['complaintType'];
-        if (ctrl) {
+        if (ctrl && e) {
             if (e.id === 1) {
                 ctrl.clearValidators();
             } else {

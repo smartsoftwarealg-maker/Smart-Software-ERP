@@ -23,7 +23,6 @@
        padding-right: 16px;
        padding-left: 16px;
 }
-
 .mat-column-complaintDescription {
     flex: 1 1 150px ;
 }
@@ -34,7 +33,7 @@
 
 .mat-column-complaint,
 .mat-column-answer {
-    flex: 2 1 300px ;
+    flex: 2 1 200px ;
 }
 
 .mat-column-agentDescription {
@@ -53,6 +52,6 @@
 }
 
 mat-table {
-    min-width: 600px;
+    min-width: 700px;
     overflow-x: auto;
 }

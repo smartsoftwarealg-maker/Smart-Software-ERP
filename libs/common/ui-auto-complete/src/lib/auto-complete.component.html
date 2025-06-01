@@ -1,15 +1,22 @@
 <ng-container *ngIf="model">
     <div class="auto__div">
-        <input type="text" class="warn-when-invalid auto-complete-input" matInput [formControl]="autoControl"
-               [matAutocomplete]="auto" [required]="required">
-        <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn" (optionSelected)="optionSelected($event)"
+        <input type="text" class="warn-when-invalid auto-complete-input"
+               matInput
+               [formControl]="autoControl"
+               [matAutocomplete]="auto"
+               [required]="required">
+        <mat-autocomplete #auto="matAutocomplete"
+                          [displayWith]="displayFn"
+                          (optionSelected)="optionSelected($event)"
                           panelWidth="null">
-            <mat-option *ngFor="let option of model.options" [value]="option">
-                {{ model.toString(option) }}
-            </mat-option>
-            <mat-option *ngIf="hasNoMatch()" [disabled]="true">
-                <span translate>COMMON_NO_MATCH</span>
-            </mat-option>
+            @for (option of model.options; track option?.id|| option?.reference) {
+                <mat-option [value]="option">
+                    {{ model.toString(option) }}
+                </mat-option>
+            }
+            @if (hasNoMatch()) {
+                <mat-option> <span translate>COMMON_NO_MATCH</span></mat-option>
+            }
         </mat-autocomplete>
     </div>
     @if (loading()) {
@@ -17,7 +24,7 @@
     } @if (isInputInvalid()) {
     <i (click)="clearInput()" class="ss-suffix-button abs-end-0 f-warn far fa-times-octagon"
        title="{{'COMMON_CANCEL' | translate}}"></i>
-} @if (notFound() && allowAdd) {
+} @if (notFound() && allowAdd()) {
     <i (click)="addCurrentText()"
        class="ss-suffix-button fa-solid fa-folder-plus margin-30" title="{{'COMMON_ADD' | translate}}"></i>
 }
