@@ -89,5 +89,7 @@
     "HASH": "Code",
     "ENCODE": "Encrypt",
     "DECODE": "Decode",
-    "RESET_CODE_NOT_CORRECT": "Reset code not correct"
+    "RESET_CODE_NOT_CORRECT": "Reset code not correct",
+    "GLOBAL_VALIDATION": "Global validation",
+    "VALIDATE_ALL": "Validate all"
 }

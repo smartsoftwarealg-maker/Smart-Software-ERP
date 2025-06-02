@@ -1,0 +1,31 @@
+<mat-card>
+    <mat-card-content>
+        <form [formGroup]="form" >
+            <mat-form-field class="default-50">
+                <mat-label translate>COMMON_YEAR</mat-label>
+                <input matInput formControlName="year" type="number">
+            </mat-form-field>
+            <mat-form-field class="default-50">
+                <mat-label translate>COMMON_MONTH</mat-label>
+                <input matInput formControlName="month" type="number">
+            </mat-form-field>
+
+        </form>
+    </mat-card-content>
+    <mat-card-actions>
+        <div class="action__btn">
+            <button mat-raised-button color="primary"
+                    type="button"
+                    (click)="validateAll()">
+                <i class="fa-regular fa-check-double"></i>
+                {{ 'ADMINISTRATION_VALIDATE_ALL' | translate }}
+            </button>
+
+        </div>
+    </mat-card-actions>
+    @if (processing()) {
+    <mat-card-footer>
+        <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+    </mat-card-footer>
+    }
+</mat-card>

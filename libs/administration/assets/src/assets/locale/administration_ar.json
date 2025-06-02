@@ -89,5 +89,7 @@
     "HASH": "الرمزٍ",
     "ENCODE": "شفر",
     "DECODE": "فك التشفير",
-    "RESET_CODE_NOT_CORRECT": "رمز إعادة التعيين خطأ"
+    "RESET_CODE_NOT_CORRECT": "رمز إعادة التعيين خطأ",
+    "GLOBAL_VALIDATION": "التحقق الشامل",
+    "VALIDATE_ALL": "صادق على الكل"
 }
