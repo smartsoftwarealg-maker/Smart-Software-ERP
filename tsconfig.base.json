@@ -459,6 +459,7 @@
             "@ss/payroll/hr-cirteria": [
                 "libs/payroll/hr-cirteria/src/index.ts"
             ],
+            "@ss/payroll/hr-grade": ["libs/payroll/hr-grade/src/index.ts"],
             "@ss/payroll/irg": ["libs/payroll/irg/src/index.ts"],
             "@ss/payroll/salary-grid": [
                 "libs/payroll/salary-grid/src/index.ts"

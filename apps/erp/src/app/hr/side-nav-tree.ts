@@ -5,7 +5,10 @@ import {
     ABS_INACTIVE_HR_EMPLOYEES_URL,
     ABS_HR_DASHBOARD_URL,
     ABS_HR_HOLIDAY_REQUEST_URL,
-    ABS_HR_REPORT_RIGHT_URL, ABS_WORK_STOPPAGES_URL, ABS_EMPLOYEE_ID_UPDATE_URL
+    ABS_HR_REPORT_RIGHT_URL,
+    ABS_WORK_STOPPAGES_URL,
+    ABS_EMPLOYEE_ID_UPDATE_URL,
+    ABS_HR_GRADING_URL
 } from '../common';
 import {SideNavNode} from '@ss/common/api-common';
 
@@ -113,6 +116,12 @@ export const hrNavTree: SideNavNode = {
             icon: 'fa-solid fa-pen-to-square',
             route: ABS_EMPLOYEE_ID_UPDATE_URL,
             accessRights: 'IDUpdate'
+        },
+        {
+            name: 'PAYROLL_HR_GRADING',
+            icon: 'fa-solid fa-hundred-points',
+            route: ABS_HR_GRADING_URL,
+            accessRights: 'GGrade'
         },
         {
             name: 'COMMON_REPORT_RIGHTS',
