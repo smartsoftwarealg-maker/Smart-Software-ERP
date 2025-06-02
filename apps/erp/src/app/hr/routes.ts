@@ -28,7 +28,7 @@ import {
     HR_ACTIVITY_URL,
     HR_PHYSICIAN_URL,
     HR_SPECIALTY_URL,
-    HR_CAREER_MOTIVE_URL, HR_ID_UPDATE_URL, docInfoRoutes, HR_CRITERIA_URL
+    HR_CAREER_MOTIVE_URL, HR_ID_UPDATE_URL, docInfoRoutes, HR_CRITERIA_URL, HR_GRADING_URL
 } from '../common';
 import {
     ABS_INDEX_URL,
@@ -174,6 +174,7 @@ import {
 import { HrCriteriaDetailComponent, HrCriteriaListComponent } from '@ss/payroll/hr-cirteria';
 import { inject } from '@angular/core';
 import { HrCriterionService } from '@ss/payroll/hr-cirteria';
+import { HrGradingsComponent } from '@ss/payroll/hr-grade';
 
 export const hrCriteriaGuard: CanActivateFn = () => inject(HrCriterionService).canActivate();
 
@@ -922,6 +923,9 @@ export const hrRoutes: Routes = [
             { path: LIST_URL, component: HrCriteriaListComponent, canActivate: [loginGuard]},
             { path: ':id', component: HrCriteriaDetailComponent, canActivate: [loginGuard, hrCriteriaGuard] }
         ]
+    },
+    {
+        path: HR_GRADING_URL, component: HrGradingsComponent, canActivate: [loginGuard], data: { gradingMode: true }
     },
     { path: '', redirectTo: ABS_INDEX_URL, pathMatch: 'full' },
     { path: '**', redirectTo: ABS_INDEX_URL }

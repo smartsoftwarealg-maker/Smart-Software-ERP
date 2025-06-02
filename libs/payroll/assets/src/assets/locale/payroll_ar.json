@@ -231,5 +231,7 @@
     "APPLICATION_MONTH":     "شهر التطبيق",
     "OLD_RANGE":             "المدى القديم",
     "CAREER_EVOLUTION_RUBRIC": "عنصر تطور المسيرة المهنية",
-    "APPRECIATION":           "تقدير"
+    "APPRECIATION":           "تقدير",
+    "HR_CRITERIA":            "معايير الموارد البشرية",
+    "HR_GRADING":             "تصنيف الموارد البشرية"
 }
