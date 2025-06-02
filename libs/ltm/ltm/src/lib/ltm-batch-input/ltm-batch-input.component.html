@@ -136,7 +136,7 @@
         <router-outlet></router-outlet>
     </mat-card>
 }
-
+@if (simulatedTotals.controls.length > 0){
     <table class="content__div">
         <tr class="content__div f-background">
             <th class="b-primary" style="width: 6em;" translate>COMMON_LEGEND</th>
@@ -159,3 +159,4 @@
             </tr>
         }
     </table>
+}
