@@ -260,6 +260,7 @@ export const HR_PHYSICIAN_URL = 'physicians';
 export const HR_SPECIALTY_URL = 'specialties';
 export const HR_ID_UPDATE_URL = 'id-update';
 export const HR_CRITERIA_URL = 'hr-criteria';
+export const HR_GRADING_URL = 'hr-grading';
 
 // Payroll
 export const PAYROLL_INACTIVE_EMPLOYEES_URL = 'pay-inactive-employees';
@@ -752,6 +753,7 @@ export const ABS_HR_REPORT_RIGHT_URL    = '/' + [MAIN_PAGE_URL, HR_APP_URL, ADMI
 export const ABS_HR_CAREER_MOTIVE_URL    = '/' + [MAIN_PAGE_URL, HR_APP_URL, HR_CAREER_MOTIVE_URL].join('/');
 export const ABS_EMPLOYEE_ID_UPDATE_URL    = '/' + [MAIN_PAGE_URL, HR_APP_URL, HR_ID_UPDATE_URL].join('/');
 export const ABS_HR_CRITERIA_URL    = '/' + [MAIN_PAGE_URL, HR_APP_URL, HR_CRITERIA_URL].join('/');
+export const ABS_HR_GRADING_URL    = '/' + [MAIN_PAGE_URL, HR_APP_URL, HR_GRADING_URL].join('/');
 
 
 // payroll
