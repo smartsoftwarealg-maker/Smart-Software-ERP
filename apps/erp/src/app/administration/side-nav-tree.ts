@@ -17,7 +17,9 @@ import {
     ABS_ADMINISTRATION_DAIRAS_URL,
     ABS_ADMINISTRATION_DOCUMENT_URL,
     ABS_ADMINISTRATION_REPORT_RIGHTS_URL,
-    ABS_ADMINISTRATION_REPORT_PRIVILEGE_URL, ABS_ADMINISTRATION_PASS_ENCODING_URL
+    ABS_ADMINISTRATION_REPORT_PRIVILEGE_URL,
+    ABS_ADMINISTRATION_PASS_ENCODING_URL,
+    ABS_ADMINISTRATION_GLOBAL_VALIDATION_URL
 } from '../common';
 
 import {SideNavNode} from '@ss/common/api-common';
@@ -144,6 +146,13 @@ export const administrationNavTree: SideNavNode = {
             icon: 'fas fa-tape',
             route: ABS_ADMINISTRATION_TRACEABILITY_URL,
             accessRights: 'Logging'
+        },
+
+        {
+            name: 'ADMINISTRATION_GLOBAL_VALIDATION',
+            icon: 'fa-regular fa-check-double',
+            route: ABS_ADMINISTRATION_GLOBAL_VALIDATION_URL,
+            accessRights: 'Transaction'
         },
 
         {

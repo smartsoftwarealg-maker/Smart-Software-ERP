@@ -23,7 +23,10 @@ import {
     ADMIN_WORKFLOW_INBOX_URL,
     ADMIN_USER_RECEIVED_MESSAGES_URL,
     ADMIN_REPORT_RIGHTS_URL,
-    ADMINISTRATION_REPORT_PRIVILEGE_URL, ADMIN_WORKFLOW_CHART_URL, ADMINISTRATION_PASS_ENCODING_URL
+    ADMINISTRATION_REPORT_PRIVILEGE_URL,
+    ADMIN_WORKFLOW_CHART_URL,
+    ADMINISTRATION_PASS_ENCODING_URL,
+    ADMINISTRATION_GLOBAL_VALIDATION_URL
 } from '../common';
 import { ABS_INDEX_URL, LIST_URL, CanDeactivateService } from '@ss/common/api-common';
 import { Routes } from '@angular/router';
@@ -68,6 +71,7 @@ import {loginGuard} from '../erp-guards';
 import { ReportRightsComponent } from '@ss/administration/reports-rights';
 import { ReportPrivilegesComponent } from '@common/report-privileges';
 import { PassEncodingComponent } from '@ss/administration/pass-encoding';
+import { GlobalValidationComponent } from '@ss/administration/global-validation';
 
 export const mainRoutes: Routes = [
     //    // NOT USED
@@ -432,6 +436,11 @@ export const mainRoutes: Routes = [
     {
         path: ADMINISTRATION_PASS_ENCODING_URL,
         component: PassEncodingComponent,
+        canActivate: [loginGuard]
+    },
+    {
+        path: ADMINISTRATION_GLOBAL_VALIDATION_URL,
+        component: GlobalValidationComponent,
         canActivate: [loginGuard]
     },
     { path: '', redirectTo: ABS_INDEX_URL, pathMatch: 'full' },
