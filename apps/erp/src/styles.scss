@@ -18,6 +18,7 @@ body {
     overflow: hidden;
     //font-size: small;
     font-family:  Arial, Helvetica, sans-serif;
+    --admob-bottom-padding: 0px;
 }
 
 // Use these classes to style your components
@@ -546,4 +547,15 @@ mat-sidenav-content.mat-drawer-content.mat-sidenav-content {
 
 .pagination-container {
     flex-grow: 0;
+}
+
+/* SnackBar style when AdMob is visible */
+.snackbar-with-ad {
+    position: relative;
+    bottom: 64px;
+    margin: 0 auto!important;
+}
+
+.has-admob-banner {
+    padding-bottom: var(--admob-bottom-padding);
 }

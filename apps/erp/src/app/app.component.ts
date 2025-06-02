@@ -2,13 +2,15 @@ import { Component, inject, OnInit } from '@angular/core';
 import {HttpService, LoginService} from '@ss/common/api-common';
 import {switchMap} from 'rxjs/operators';
 import { LanguageService } from '@ss/common/api-common';
-import { ShellService } from '@ss/common/ui-shell';
+import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import {langAssets, navBar} from '../environments/environment';
 import { RouterOutlet } from '@angular/router';
 import { Dir } from '@angular/cdk/bidi';
 import { MatProgressSpinner } from '@angular/material/progress-spinner';
 import { MessageComponent } from '@ss/common/ui-error-handler';
 import { ThemeService } from '@ss/common/ui-theme';
+import { initialize } from '../../../cspace/src/app/admobile';
+import { DeviceDetectorService } from 'ngx-device-detector';
 
 @Component({
     selector: 'ss-root',
@@ -23,6 +25,8 @@ import { ThemeService } from '@ss/common/ui-theme';
     ],
 })
 export class AppComponent implements OnInit {
+    private snackSrv = inject(SnackBarService);
+    private deviceSrv = inject(DeviceDetectorService);
     private httpSrv = inject(HttpService);
     private shellSrv = inject(ShellService);
     private loginSrv = inject(LoginService);
@@ -46,6 +50,14 @@ export class AppComponent implements OnInit {
                 },
                 error: () => this.loginSrv.logout().then()
             });
+
+        if (this.deviceSrv.isMobile()) {
+            initialize().then(() => {});
+            // Update CSS variable when ad loads
+            document.body.classList.add('has-admob-banner');
+            document.body.style.setProperty('--admob-bottom-padding', '64px'); // Adjust based on your ad size
+            this.snackSrv.hasAd = true;
+        }
     }
 
 }
