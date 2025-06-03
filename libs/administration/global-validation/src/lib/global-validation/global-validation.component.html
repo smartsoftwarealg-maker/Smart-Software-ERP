@@ -15,6 +15,7 @@
     <mat-card-actions>
         <div class="action__btn">
             <button mat-raised-button color="primary"
+                    [disabled]="processing()"
                     type="button"
                     (click)="validateAll()">
                 <i class="fa-regular fa-check-double"></i>
