@@ -1,0 +1,443 @@
+<mat-card>
+    <form *ngIf="form" novalidate [formGroup]="form">
+        <mat-accordion>
+            <mat-expansion-panel #generalPanel expanded="true"
+                                 [class]="getPanelHeaderClass('general', generalPanel)">
+                <mat-expansion-panel-header>
+                    <mat-panel-title translate>
+                        LOGISTICS_GENERAL
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+
+
+                <mat-form-field id="denomination" class="default-50 sm-100">
+                    <mat-label translate>LOGISTICS_DENOMINATION</mat-label>
+                    <input matInput formControlName="denomination" type="text" required>
+
+                    <mat-error
+                        *ngIf="form.controls['denomination'].invalid" translate>COMMON_FIELD_REQUIRED
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field id="customerCode" class="default-50 sm-100">
+                    <mat-label translate>LOGISTICS_CUSTOMER_CODE</mat-label>
+                    <div class="customer__div">
+                        <input matInput formControlName="customerCode" type="text">
+                        @if (form.controls['id'].value > 0) {
+                            <button mat-mini-fab color="accent" matTooltip="{{'LOGISTICS_NEXT_CODE' | translate}}"
+                                    (click)="loadNextCode()">
+                                <i class="fas fa-question"></i>
+                            </button>
+                        }
+                    </div>
+
+                    @if (form.controls['customerCode'].hasError('required')) {
+                        <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+                    }
+                    @if (form.controls['customerCode'].hasError('maxlength')) {
+                        <mat-error [translate]="{maxLen: 14}">COMMON_FIELD_MAX_LENGTH</mat-error>
+                    }
+                </mat-form-field>
+
+                <mat-form-field id="agentType" class="default-50 sm-100">
+                    <mat-label translate>LOGISTICS_AGENT_TYPE</mat-label>
+                    <ss-auto-complete matInput
+                                      formControlName="agentType"
+                                      [model]="agentTypeLookup">
+                    </ss-auto-complete>
+                    <mat-error
+                        *ngIf="form.controls['agentType'].invalid" translate>COMMON_FIELD_REQUIRED
+                    </mat-error>
+                </mat-form-field>
+
+                @if (!isSales) {
+                    <mat-form-field id="currency" class="default-50 sm-100">
+                        <mat-label translate>LOGISTICS_CURRENCY</mat-label>
+                        <ss-auto-complete matInput
+                                          formControlName="currency"
+                                          [canAdd]="true"
+                                          [model]="currencyLookup">
+                        </ss-auto-complete>
+                        <mat-error
+                            *ngIf="form.controls['currency'].invalid" translate>COMMON_FIELD_REQUIRED
+                        </mat-error>
+                    </mat-form-field>
+                }
+
+                <mat-form-field id="price" class="default-50 sm-100">
+                    <mat-label translate>LOGISTICS_PRICE</mat-label>
+                    <ss-auto-complete matInput
+                                      formControlName="price"
+                                      [model]="priceLookup">
+                    </ss-auto-complete>
+                    <mat-error
+                        *ngIf="form.controls['price'].invalid" translate>COMMON_FIELD_REQUIRED
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field *ngIf="AQS" class="default-50 sm-100">
+                    <mat-label translate>LOGISTICS_ACTIVITY</mat-label>
+                    <ss-auto-complete matInput
+                                      formControlName="activity"
+                                      [canAdd]="true"
+                                      [model]="activityLookup">
+                    </ss-auto-complete>
+                </mat-form-field>
+
+                @if (!isSales) {
+                    <mat-form-field class="default-50 sm-100">
+                        <mat-label translate>LOGISTICS_COMPANY_TYPE</mat-label>
+                        <ss-auto-complete matInput
+                                          formControlName="companyType"
+                                          [model]="companyTypeLookup">
+                        </ss-auto-complete>
+                    </mat-form-field>
+                }
+                <mat-form-field *ngIf="AQS" class="default-50 sm-100">
+                    <mat-label translate>COMMON_DEPARTMENT</mat-label>
+                    <ss-auto-complete matInput
+                                      formControlName="department"
+                                      [model]="departmentLookup">
+                    </ss-auto-complete>
+                </mat-form-field>
+
+            </mat-expansion-panel>
+
+            <mat-expansion-panel #latinPanel [class]="getPanelHeaderClass('latin',latinPanel)">
+                <mat-expansion-panel-header>
+                    <mat-panel-title translate>
+                        LOGISTICS_INFO
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+
+
+                <div class="default-50 sm-100">
+                    <mat-checkbox formControlName="isInternal" translate>LOGISTICS_IS_INTERNAL</mat-checkbox>
+                </div>
+
+                <div class="default-50 sm-100">
+                    <mat-checkbox formControlName="subcontractor" translate>LOGISTICS_SUBCONTRACTOR</mat-checkbox>
+                </div>
+
+
+                <div class="default-50 sm-100">
+                    <mat-checkbox formControlName="recordBlocked" translate>LOGISTICS_RECORD_BLOCKED</mat-checkbox>
+                </div>
+
+                <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>LOGISTICS_BLOCKING_REASON</mat-label>
+                    <input matInput formControlName="blockingReason" type="text">
+                </mat-form-field>
+
+                <mat-form-field floatLabel="always" class="default-50 sm-100">
+                    <mat-label translate>LOGISTICS_CREATION_TIME</mat-label>
+                    <input matInput formControlName="creationTime" type="text">
+                </mat-form-field>
+
+            </mat-expansion-panel>
+
+            <mat-expansion-panel #fiscalPanel [class]="getPanelHeaderClass('fiscal',fiscalPanel)">
+                <mat-expansion-panel-header>
+                    <mat-panel-title translate>
+                        LOGISTICS_FISCAL
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>LOGISTICS_COMM_REGISTER</mat-label>
+                    <input matInput formControlName="commRegister" type="text">
+                </mat-form-field>
+
+                <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>LOGISTICS_FISCAL_ID</mat-label>
+                    <input matInput formControlName="fiscalID" type="text">
+                </mat-form-field>
+
+                <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>LOGISTICS_ARTICLE_NO</mat-label>
+                    <input matInput formControlName="articleNo" type="text">
+                </mat-form-field>
+
+                <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>LOGISTICS_NIS</mat-label>
+                    <input matInput formControlName="nis" type="text">
+                </mat-form-field>
+
+                <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>LOGISTICS_NIF</mat-label>
+                    <input matInput formControlName="nif" type="text">
+                </mat-form-field>
+
+                <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>LOGISTICS_TIN</mat-label>
+                    <input matInput formControlName="tin" type="text">
+                </mat-form-field>
+
+                <mat-form-field id="checkDueDays" class="default-50 sm-100">
+                    <mat-label translate>LOGISTICS_CHECK_DUE_DAYS</mat-label>
+                    <input matInput formControlName="checkDueDays" type="number" step="1">
+                    <mat-error
+                        *ngIf="form.controls['checkDueDays'].invalid" translate>COMMON_INTEGER_INVALID
+                    </mat-error>
+
+                </mat-form-field>
+
+                <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>COMMON_PAY_MODE</mat-label>
+                    <ss-auto-complete matInput
+                                      formControlName="payMode"
+                                      [model]="payModeLookup">
+                    </ss-auto-complete>
+                </mat-form-field>
+
+                <div class="default-50 sm-100">
+                    <mat-checkbox formControlName="taxPayable" translate>LOGISTICS_TAX_PAYABLE</mat-checkbox>
+                </div>
+
+
+                <div class="default-50 sm-100">
+                    <mat-checkbox formControlName="stampPayable" translate>LOGISTICS_STAMP_PAYABLE</mat-checkbox>
+                </div>
+
+
+                <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>LOGISTICS_CAPITAL</mat-label>
+                    <input matInput formControlName="capital" type="text">
+                </mat-form-field>
+
+                <mat-form-field *ngIf="AQS" class="default-50 sm-100">
+                    <mat-label translate>LOGISTICS_BANK</mat-label>
+                    <ss-auto-complete matInput
+                                      formControlName="bank"
+                                      [model]="bankLookup">
+                    </ss-auto-complete>
+                </mat-form-field>
+
+
+                <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>LOGISTICS_BANK_ACCOUNT</mat-label>
+                    <input matInput formControlName="bankAccount" type="text">
+                </mat-form-field>
+
+                <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>LOGISTICS_SWIFT</mat-label>
+                    <input matInput formControlName="swift" type="text">
+                </mat-form-field>
+
+                <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>LOGISTICS_DEBT_LIMIT</mat-label>
+                    <input matInput formControlName="debtLimit" type="number" step="0.01">
+                </mat-form-field>
+
+                <mat-form-field id="debtTerm" class="default-50 sm-100">
+                    <mat-label translate>LOGISTICS_DEBT_TERM</mat-label>
+                    <input matInput formControlName="debtTerm" type="number" step="0.01">
+                    <mat-error
+                        *ngIf="form.controls['debtTerm'].invalid" translate>COMMON_INTEGER_INVALID
+                    </mat-error>
+
+
+                </mat-form-field>
+
+
+            </mat-expansion-panel>
+
+            <mat-expansion-panel #contactPanel [class]="getPanelHeaderClass('contact',contactPanel)">
+                <mat-expansion-panel-header>
+                    <mat-panel-title translate>
+                        LOGISTICS_CONTACT
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+
+                <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>LOGISTICS_ADDRESS</mat-label>
+                    <input matInput formControlName="address" type="text">
+                </mat-form-field>
+
+                <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>LOGISTICS_ADDRESS2</mat-label>
+                    <input matInput formControlName="address2" type="text">
+                </mat-form-field>
+
+                <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>COMMON_CITY</mat-label>
+                    <ss-auto-complete matInput
+                                      formControlName="city"
+                                      [model]="cityLookup">
+                    </ss-auto-complete>
+                </mat-form-field>
+
+                <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>LOGISTICS_COUNTRY</mat-label>
+                    <ss-auto-complete matInput
+                                      formControlName="country"
+                                      [model]="countryLookup">
+                    </ss-auto-complete>
+                </mat-form-field>
+
+
+                <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>COMMON_POSTAL_CODE</mat-label>
+                    <input matInput formControlName="postalCode" type="text">
+                </mat-form-field>
+
+                <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>LOGISTICS_CONTACT</mat-label>
+                    <input matInput formControlName="contact" type="text">
+                </mat-form-field>
+
+                <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>LOGISTICS_PHONE</mat-label>
+                    <input matInput formControlName="phone" type="text">
+                </mat-form-field>
+
+                <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>COMMON_MOBILE</mat-label>
+                    <input matInput formControlName="mobile" type="text">
+                </mat-form-field>
+
+                <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>LOGISTICS_FAX</mat-label>
+                    <input matInput formControlName="fax" type="text">
+                </mat-form-field>
+
+                <mat-form-field id="email" class="default-50 sm-100">
+                    <mat-label translate>LOGISTICS_EMAIL</mat-label>
+                    <input matInput formControlName="email" type="email">
+                    <mat-error *ngIf="form.controls['email'].invalid" translate>COMMON_EMAIL_INVALID
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field id="website" class="default-50 sm-100">
+                    <mat-label translate>LOGISTICS_WEBSITE</mat-label>
+                    <input matInput formControlName="website" type="text">
+                    <mat-error
+                        *ngIf="form.controls['website'].invalid" translate>COMMON_URL_INVALID
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>LOGISTICS_INFO</mat-label>
+                    <input matInput formControlName="info" type="text">
+                </mat-form-field>
+
+            </mat-expansion-panel>
+
+            <mat-expansion-panel #arabicPanel [class]="getPanelHeaderClass('arabic',arabicPanel)">
+                <mat-expansion-panel-header>
+                    <mat-panel-title translate>
+                        LOGISTICS_ARABIC
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>LOGISTICS_DENOMINATION_AR</mat-label>
+                    <input matInput formControlName="denominationAr" type="text">
+                </mat-form-field>
+
+                <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>LOGISTICS_ADDRESS_AR</mat-label>
+                    <input matInput formControlName="addressAr" type="text">
+                </mat-form-field>
+
+                <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>LOGISTICS_ADDRESS2_AR</mat-label>
+                    <input matInput formControlName="address2Ar" type="text">
+                </mat-form-field>
+
+            </mat-expansion-panel>
+
+            <mat-expansion-panel #salesPanel
+                                 *ngIf="isSales"
+                                 [class]="getPanelHeaderClass('sales', salesPanel)">
+                <mat-expansion-panel-header>
+                    <mat-panel-title translate>
+                        COMMON_SCHEDULED_SALES
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+
+                <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>LOGISTICS_CATEGORY</mat-label>
+                    <ss-auto-complete matInput
+                                      formControlName="category"
+                                      [model]="categoryLookup">
+                    </ss-auto-complete>
+                </mat-form-field>
+
+                <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>LOGISTICS_APPROVAL</mat-label>
+                    <input matInput formControlName="approval" type="text">
+                </mat-form-field>
+
+
+            </mat-expansion-panel>
+
+            <mat-expansion-panel #centerPanel
+                                 [class]="getPanelHeaderClass('centers', centerPanel)">
+                <mat-expansion-panel-header>
+                    <mat-panel-title translate>
+                        ADMINISTRATION_CENTERS
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+
+                <div class="list-container">
+                    <mat-selection-list color="primary" multiple="false"
+                                        (selectionChange)="centerSelectionChanged($event)">
+                        <mat-list-option *ngFor="let c of agentCenters"
+                                         [value]="c.id"> {{ c.centerDescription }}
+                        </mat-list-option>
+                    </mat-selection-list>
+                </div>
+                @if (isEditable) {
+                    <div class="center_ctrl">
+                        <button mat-mini-fab color="accent"
+                                (click)="addCenter()">
+                            <i class="fas fa-plus-circle"></i>
+                        </button>
+
+                        <mat-form-field>
+                            <mat-label translate>ADMINISTRATION_CENTER</mat-label>
+                            <ss-auto-complete matInput
+                                              #roleAC
+                                              [formControl]="centerCtrl"
+                                              [model]="centerLookup">
+                            </ss-auto-complete>
+                        </mat-form-field>
+                        <button mat-mini-fab color="warn" [disabled]="selectedCenter < 1" (click)="deleteCenter()"><i
+                            class="fas fa-trash-alt"></i>
+                        </button>
+                    </div>
+                }
+            </mat-expansion-panel>
+
+            <mat-expansion-panel #archivePanel
+                                 [class]="getPanelHeaderClass('archive', archivePanel)">
+                <mat-expansion-panel-header>
+                    <mat-panel-title translate>
+                        COMMON_ARCHIVE
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                @if (id) {
+                    <ss-app-archive-main [id]="id"
+                                         [appId]="LOCAL_AGENT_ARCHIVES"
+                                         [editable]="isEditable">
+                    </ss-app-archive-main>
+                }
+            </mat-expansion-panel>
+
+            @if (!isSales) {
+                <mat-expansion-panel #attributes expanded="false"
+                                     [class]="getPanelHeaderClass('attributes', attributes)">
+                    <mat-expansion-panel-header>
+                        <mat-panel-title translate>
+                            ADMINISTRATION_ATTRIBUTES
+                        </mat-panel-title>
+                    </mat-expansion-panel-header>
+
+                    <ss-child-attributes [childAttribute]="'/agents'" [attributeId]="id" [parentId]="4"
+                                         [editable]="isEditable">
+                    </ss-child-attributes>
+                </mat-expansion-panel>
+            }
+        </mat-accordion>
+    </form>
+</mat-card>
+

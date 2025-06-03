@@ -12,6 +12,8 @@ import {
     CRM_PAYMENT_TERMS_URL,
     CRM_SALUTATIONS_URL,
     CRM_STATUS_URL,
+    docInfoRoutes,
+    CRM_CUSTOMER_URL,
 } from '../common';
 import {
     SalutationsDetailComponent,
@@ -31,6 +33,15 @@ import {
     PaymentTermsDetailComponent,
     PaymentTermsListComponent,
 } from '@ss/crm/payment-terms';
+import {
+    AppArchiveDetailComponent,
+    AppArchiveListComponent,
+} from '@ss/logistics/ui-agent';
+import { AGENT_ARCHIVES } from '@ss/common/app-archive';
+import {
+    CrmCustomerDetailComponent,
+    CrmCustomerListComponent,
+} from '@ss/crm/crm-customer';
 
 export const crmRoutes: Routes = [
     {
@@ -133,6 +144,53 @@ export const crmRoutes: Routes = [
                 canDeactivate: [CanDeactivateService],
             },
             { path: '**', redirectTo: LIST_URL, pathMatch: 'full' },
+        ],
+    },
+    {
+        path: CRM_CUSTOMER_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: CrmCustomerListComponent,
+                canActivate: [loginGuard],
+                data: { sales: true, customer: true },
+                children: docInfoRoutes,
+            },
+            {
+                path: ':id',
+                children: [
+                    {
+                        path: '',
+                        component: CrmCustomerDetailComponent,
+                        canActivate: [loginGuard],
+                        canDeactivate: [CanDeactivateService],
+                        data: { sales: true, customer: true },
+                        children: [
+                            {
+                                path: '',
+                                redirectTo: 'archive',
+                                pathMatch: 'full',
+                            },
+                            {
+                                path: 'archive',
+                                children: [
+                                    {
+                                        path: '',
+                                        component: AppArchiveListComponent,
+                                        pathMatch: 'full',
+                                        data: { appId: AGENT_ARCHIVES },
+                                    },
+                                    {
+                                        path: ':id',
+                                        component: AppArchiveDetailComponent,
+                                        data: { appId: AGENT_ARCHIVES },
+                                    },
+                                ],
+                            },
+                        ],
+                    },
+                ],
+            },
         ],
     },
     { path: '', redirectTo: ABS_INDEX_URL, pathMatch: 'full' },
