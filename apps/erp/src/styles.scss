@@ -551,9 +551,9 @@ mat-sidenav-content.mat-drawer-content.mat-sidenav-content {
 
 /* SnackBar style when AdMob is visible */
 .snackbar-with-ad {
-    position: relative;
+    position: absolute;
     bottom: 64px;
-    margin: 0 auto!important;
+    left: calc(50% - 170px);
 }
 
 .has-admob-banner {
