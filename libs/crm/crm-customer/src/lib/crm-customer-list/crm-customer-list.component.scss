@@ -1,0 +1,59 @@
+.full__height {
+    height: calc(100% - 72px);
+    overflow-x: auto;
+}
+.table_div {
+    height: 60%;
+    min-height: 60%;
+    overflow-x: auto;
+}
+.doc-info {
+    overflow: auto;
+}
+.size_98 {
+    width: 98%;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+mat-table {
+    width: 100%;
+    min-width: 1600px;
+}
+
+// keep the material design specs
+.mat-row, .mat-header-row {
+    padding-right: 16px;
+    padding-left: 16px;
+}
+
+.mat-column-customerCode {
+    flex: 1 1 120px;
+}
+
+.mat-column-denomination {
+    flex: 1 1 380px;
+}
+
+
+.mat-column-address {
+    flex: 1 1 250px;
+}
+
+.mat-column-activityDescription,
+.mat-column-agentType,
+.mat-column-departmentName,
+.mat-column-typeDescription {
+    flex: 1 1 250px;
+}
+
+
+.pagination-container {
+
+    ss-pagination {
+        left: 0;
+        right: 0;
+        position: sticky;
+        margin: auto;
+    }
+}

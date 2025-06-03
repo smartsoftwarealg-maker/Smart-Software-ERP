@@ -530,6 +530,7 @@ export const CRM_DEPARTMENTS_URL = 'departments';
 export const CRM_CONTACT_METHODS_URL = 'contact-methods';
 export const CRM_STATUS_URL = 'status';
 export const CRM_PAYMENT_TERMS_URL = 'payment-terms';
+export const CRM_CUSTOMER_URL = 'crm-customer';
 
 // #############
 // # FULL URLS #
@@ -1012,6 +1013,7 @@ export const ABS_CRM_DEPARTMENTS_URL = '/' + [MAIN_PAGE_URL, CRM_APP_URL, CRM_DE
 export const ABS_CRM_CONTACT_METHODS_URL = '/' + [MAIN_PAGE_URL, CRM_APP_URL, CRM_CONTACT_METHODS_URL].join('/');
 export const ABS_CRM_STATUS_URL = '/' + [MAIN_PAGE_URL, CRM_APP_URL, CRM_STATUS_URL].join('/');
 export const ABS_CRM_PAYMENT_TERMS_URL = '/' + [MAIN_PAGE_URL, CRM_APP_URL, CRM_PAYMENT_TERMS_URL].join('/');
+export const ABS_CRM_CUSTOMER_URL = '/' + [MAIN_PAGE_URL, CRM_APP_URL, CRM_CUSTOMER_URL].join('/');
 
 
 // ######################################
