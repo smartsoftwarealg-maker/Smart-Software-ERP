@@ -14,11 +14,12 @@ import {
 import { MatMiniFabButton } from '@angular/material/button';
 import { MatTooltip } from '@angular/material/tooltip';
 import { TranslatePipe } from '@ss/common/ui-lang';
+import { MatSort, MatSortHeader } from '@angular/material/sort';
 
 @Component({
     selector: 'ss-social-reimbursements-list',
     standalone: true,
-    imports: [CommonModule, MatCell, MatCellDef, MatColumnDef, MatHeaderCell, MatHeaderRow, MatHeaderRowDef, MatRow, MatRowDef, MatTable, MatHeaderCellDef, MatMiniFabButton, MatTooltip, TranslatePipe],
+    imports: [CommonModule, MatCell, MatCellDef, MatColumnDef, MatHeaderCell, MatHeaderRow, MatHeaderRowDef, MatRow, MatRowDef, MatTable, MatHeaderCellDef, MatMiniFabButton, MatTooltip, TranslatePipe, MatSort, MatSortHeader],
     templateUrl: './social-reimbursements-list.component.html',
     styleUrl: './social-reimbursements-list.component.scss',
 })
