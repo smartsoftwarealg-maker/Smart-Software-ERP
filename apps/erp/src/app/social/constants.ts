@@ -1,4 +1,5 @@
 import { MAIN_PAGE_URL } from '@ss/common/api-common';
+import { COMMON_REPORTS_URL } from '../common';
 
 
 export const SOCIAL_ACTIVITIES_URL = 'social-aids';
@@ -32,3 +33,4 @@ export const ABS_MUTUAL_REQUEST_URL = `/${MAIN_PAGE_URL}/social/${MUTUAL_REQUEST
 export const ABS_SOCIAL_MUTUAL_TYPES_URL = `/${MAIN_PAGE_URL}/social/${SOCIAL_MUTUAL_TYPE_URL}`;
 export const ABS_MUTUAL_AIDS_URL = `/${MAIN_PAGE_URL}/social/${SOCIAL_MUTUAL_AIDS_URL}`;
 export const ABS_MUTUAL_REJECTION_URL = `/${MAIN_PAGE_URL}/social/${MUTUAL_REJECTIONS_URL}`;
+export const ABS_SOCIAL_REPORTS_URL = `/${MAIN_PAGE_URL}/social/${COMMON_REPORTS_URL}`;

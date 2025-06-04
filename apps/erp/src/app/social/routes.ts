@@ -46,6 +46,8 @@ import {
     MutualRequestsLineDetailComponent
 } from '@ss/social/mutual-requests';
 import { MutualAidsDetailComponent, MutualAidsListComponent } from '@ss/social/mutual-aids';
+import { COMMON_REPORTS_URL } from '../common';
+import { ReportViewComponent } from '@ss/common/ui-report-param';
 
 export const socialRoutes: Routes = [
     {
@@ -189,6 +191,13 @@ export const socialRoutes: Routes = [
         component: SocialDashboardComponent,
         canDeactivate: [CanDeactivateService]
     },
+    {
+        path: COMMON_REPORTS_URL,
+        data: { reportBase: 'social' },
+        component: ReportViewComponent,
+        canActivate: [loginGuard]
+    },
+
     {
         path: SOCIAL_REIMBURSEMENT_URL,
         component: SocialReimbursementsComponent,
