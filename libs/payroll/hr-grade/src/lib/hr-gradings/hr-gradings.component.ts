@@ -1,9 +1,9 @@
 import {
     Component,
     DestroyRef,
-    inject,
+    inject, OnDestroy,
     OnInit,
-    signal,
+    signal
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
@@ -88,7 +88,7 @@ import { HrGrade } from '../hr-grading-api';
     templateUrl: './hr-gradings.component.html',
     styleUrl: 'hr-gradings.component.scss',
 })
-export class HrGradingsComponent implements OnInit {
+export class HrGradingsComponent implements OnInit, OnDestroy {
     private saveButton: ToolbarButton = {
         icon: 'fas fa-save',
         label: 'COMMON_SAVE',
@@ -224,6 +224,10 @@ export class HrGradingsComponent implements OnInit {
 
         this.paginator.onChange = () => this.refreshSubordinates();
         this.refreshSubordinates();
+    }
+
+    public ngOnDestroy() {
+        this.shellSrv.reset();
     }
 
     refreshSubordinates() {
