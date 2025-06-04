@@ -1,4 +1,4 @@
-import { Component, DestroyRef, inject, OnInit, signal } from '@angular/core';
+import { Component, DestroyRef, inject, OnDestroy, OnInit, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import {
@@ -63,7 +63,7 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
     templateUrl: './gradings.component.html',
     styleUrl: 'gradings.component.scss'
 })
-export class GradingsComponent implements OnInit {
+export class GradingsComponent implements OnInit, OnDestroy {
 
     private saveButton: ToolbarButton = {
         icon: 'fas fa-save',
@@ -176,6 +176,10 @@ export class GradingsComponent implements OnInit {
 
         this.paginator.onChange = () => this.refreshSubordinates();
         this.refreshSubordinates();
+    }
+
+    public ngOnDestroy() {
+        this.shellSrv.reset();
     }
 
     refreshSubordinates() {
