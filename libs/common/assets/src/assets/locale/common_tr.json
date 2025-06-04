@@ -244,5 +244,7 @@
     "GOTO_DETAIL":   "",
     "ADDRESS":             "Adres $ addr $",
     "ADDRESS_AR":          "Addressar",
-    "KEEP_ME_SIGNED":             ""
+    "KEEP_ME_SIGNED":             "",
+    "SUGGESTION":                  "Öneri",
+    "SUGGESTIONS":                 "Öneriler"
 }

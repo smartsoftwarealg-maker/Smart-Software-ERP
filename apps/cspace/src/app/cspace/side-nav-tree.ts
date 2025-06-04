@@ -1,7 +1,15 @@
 import {
     ABS_CSPACE_REPORTS_URL,
-    ABS_CUSTOMER_BALANCE_URL, ABS_CUSTOMER_COMPLAINTS_URL, ABS_CUSTOMER_HISTORY_URL,
-    ABS_CUSTOMER_PROFILE_URL, ABS_CUSTOMER_SCHEDULES_URL, ABS_PAYMENTS_URL, ABS_SALES_HOME_URL, ABS_SALES_QUOTAS_URL, ABS_CUSTOMER_POLL_URL
+    ABS_CUSTOMER_BALANCE_URL,
+    ABS_CUSTOMER_COMPLAINTS_URL,
+    ABS_CUSTOMER_HISTORY_URL,
+    ABS_CUSTOMER_PROFILE_URL,
+    ABS_CUSTOMER_SCHEDULES_URL,
+    ABS_PAYMENTS_URL,
+    ABS_SALES_HOME_URL,
+    ABS_SALES_QUOTAS_URL,
+    ABS_CUSTOMER_POLL_URL,
+    ABS_CUSTOMER_SUGGESTIONS_URL
 } from '../common';
 import {SideNavNode} from '@ss/common/api-common';
 
@@ -61,6 +69,13 @@ export const cSpaceNavTree: SideNavNode[] =
             icon: 'fa-solid fa-face-angry',
             route: ABS_CUSTOMER_COMPLAINTS_URL,
             accessRights: 'CustomerComplaint',
+            customerRights: {read: true, edit: true, delete: true, write: true}
+        },
+        {
+            name: 'COMMON_SUGGESTIONS',
+            icon: 'fa-solid fa-lightbulb-exclamation-on',
+            route: ABS_CUSTOMER_SUGGESTIONS_URL,
+            accessRights: 'CustomerSuggestion',
             customerRights: {read: true, edit: true, delete: true, write: true}
         },
         {
