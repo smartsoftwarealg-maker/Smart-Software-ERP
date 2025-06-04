@@ -1,0 +1,71 @@
+<mat-card>
+    <mat-card-content>
+        @if (form !== null) {
+            <form novalidate [formGroup]="form">
+
+                <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>LOGISTICS_CUSTOMER</mat-label>
+                    <ss-auto-complete matInput
+                                      formControlName="agentId"
+                                      [inactive]="true"
+                                      [model]="agentLookup">
+                    </ss-auto-complete>
+                </mat-form-field>
+
+                <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>COMMON_TYPE</mat-label>
+                    <ss-auto-complete matInput
+                                      formControlName="suggestionId"
+                                      [model]="suggestionLookup" type="number">
+                    </ss-auto-complete>
+                </mat-form-field>
+
+                @if (form.controls['suggestionId']?.value === 2) {
+                    <fieldset>
+                        <legend translate>COMMON_TYPE</legend>
+                        <mat-radio-group formControlName="suggestionType" [value]="0">
+                            <mat-radio-button value="1" translate
+                                              [checked]="form.controls['suggestionType'].value === 1">
+                                LOGISTICS_PACKAGING
+                            </mat-radio-button>
+                            <mat-radio-button value="2" translate
+                                              [checked]="form.controls['suggestionType'].value === 2">
+                                LOGISTICS_DELIVERY_TIME
+                            </mat-radio-button>
+                            <mat-radio-button value="3" translate
+                                              [checked]="form.controls['suggestionType'].value === 3">SCH_SCHEDULES
+                            </mat-radio-button>
+                            <mat-radio-button value="4" translate
+                                              [checked]="form.controls['suggestionType'].value === 4">
+                                LOGISTICS_INVOICING
+                            </mat-radio-button>
+                            <mat-radio-button value="5" translate
+                                              [checked]="form.controls['suggestionType'].value === 5">
+                                LOGISTICS_ORDER_VOLUME
+                            </mat-radio-button>
+                            <mat-radio-button value="6" translate
+                                              [checked]="form.controls['suggestionType'].value === 6">COMMON_OTHER
+                            </mat-radio-button>
+                        </mat-radio-group>
+                    </fieldset>
+                }
+                <mat-form-field id="suggestion" class="default-100">
+                    <mat-label translate>COMMON_SUGGESTION</mat-label>
+                    <textarea matInput formControlName="suggestion" cdkTextareaAutosize="true" rows="3"></textarea>
+                    @if (form.controls['suggestion'].invalid) {
+                        <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+                    }
+                </mat-form-field>
+
+                <mat-form-field id="answer" class="default-100">
+                    <mat-label translate>COMMON_RESPONSE</mat-label>
+                    <textarea matInput formControlName="answer" cdkTextareaAutosize="true" rows="3"></textarea>
+                    @if (form.controls['answer'].invalid) {
+                        <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+                    }
+                </mat-form-field>
+
+            </form>
+        }
+    </mat-card-content>
+</mat-card>

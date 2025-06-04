@@ -2,7 +2,6 @@ import {
     ABS_SCHEDULED_SALES_PROJECTS,
     ABS_SCHEDULED_SALES_ARTICLE,
     ABS_SCHEDULED_SALES_QUOTAS,
-    ABS_SCHEDULED_SALES_DISCOUNT_TYPES,
     ABS_SCHEDULED_SALES_SCHEDULES,
     ABS_SALES_MODES_URL,
     ABS_SCHEDULED_SALES_PARTNER_SCHEDULES,
@@ -13,7 +12,6 @@ import {
     ABS_SCHEDULED_SALES_CATEGORY,
     ABS_SCHEDULED_SALES_DASHBOARD_URL,
     ABS_CUSTOMER_COMPLAINTS_URL,
-    ABS_CMMS_REPORTS_URL,
     ABS_SCHEDULED_SALES_REPORTS_URL,
     ABS_SCHEDULED_SALES_PASSWORD_RESET_URL,
     ABS_SALES_COMPENSATIONS_URL,
@@ -22,7 +20,7 @@ import {
     ABS_SCHEDULED_SALES_POLL_URL,
     ABS_SCHEDULED_POLL_QUESTION_URL,
     ABS_SCHEDULED_POLL_CHARTS_URL,
-    ABS_SCHEDULED_POLL_HISTORY_CHARTS_URL
+    ABS_SCHEDULED_POLL_HISTORY_CHARTS_URL, ABS_CUSTOMER_SUGGESTIONS_URL
 } from '../common';
 import {SideNavNode} from '@ss/common/api-common';
 
@@ -150,6 +148,12 @@ export const scheduledSalesNavTree: SideNavNode = {
             icon: 'fa-solid fa-face-angry',
             route: ABS_CUSTOMER_COMPLAINTS_URL,
             accessRights: 'CustomerComplaint',
+        },
+        {
+            name: 'COMMON_SUGGESTIONS',
+            icon: 'fa-solid fa-lightbulb-exclamation-on',
+            route: ABS_CUSTOMER_SUGGESTIONS_URL,
+            accessRights: 'CustomerSuggestion',
         },
         {
             name: 'COMMON_DASHBOARD',

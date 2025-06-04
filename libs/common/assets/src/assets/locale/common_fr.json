@@ -384,6 +384,8 @@
     "SOURCE_ARTICLE":     "Source Article",
     "DESTINATION_STORE":  "Destination Store",
     "DESTINATION_ARTICLE":"Destination Article",
-    "QUANTITY":"Quantite",
-    "LEGEND": "Légende"
+    "QUANTITY":                    "Quantite",
+    "LEGEND":                      "Légende",
+    "SUGGESTION":                  "Suggestion",
+    "SUGGESTIONS":                 "Suggestions"
 }

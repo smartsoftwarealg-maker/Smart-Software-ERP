@@ -1,0 +1,57 @@
+.size {
+    width: 90%;
+    max-width: 1000px ;
+    margin: 4px auto 0;
+}
+
+.div_table {
+    height: calc(100% - 70px - 64px);
+    overflow: auto;
+}
+
+.main-table {
+    width: 100%;
+}
+
+.content-div {
+    width: 496px;
+    min-height: 320px;
+}
+
+.mat-row,
+.mat-header-row {
+       padding-right: 16px;
+       padding-left: 16px;
+}
+.mat-column-suggestionDescription {
+    flex: 1 1 150px ;
+}
+
+.mat-column-date {
+    flex: 1 1 110px ;
+}
+
+.mat-column-suggestion,
+.mat-column-answer {
+    flex: 2 1 200px ;
+}
+
+.mat-column-agentDescription {
+    flex: 1 1 200px ;
+}
+
+
+.pagination-container {
+
+    ss-pagination {
+        left: 0;
+        right: 0;
+        position: sticky;
+        margin: auto;
+    }
+}
+
+mat-table {
+    min-width: 700px;
+    overflow-x: auto;
+}
