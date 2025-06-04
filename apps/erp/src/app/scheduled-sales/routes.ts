@@ -404,7 +404,7 @@ export const scheduledSalesRoutes: Routes = [
 
     {
         path: COMMON_REPORTS_URL,
-        data: { reportBase: 'ssales' },
+        data: { reportBase: 'scheduled-sales' },
         component: ReportViewComponent,
         canActivate: [loginGuard],
     },
