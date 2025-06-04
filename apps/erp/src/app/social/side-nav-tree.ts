@@ -7,10 +7,10 @@ import {
     ABS_SOCIAL_EDO_HEADER_URL,
     ABS_SOCIAL_EDO_URL,
     ABS_SOCIAL_LOANS_URL,
-    ABS_SOCIAL_MEDICAL_AIDS_URL, ABS_SOCIAL_MUTUAL_TYPES_URL,
+    ABS_SOCIAL_MEDICAL_AIDS_URL, ABS_SOCIAL_MUTUAL_TYPES_URL, ABS_SOCIAL_REPORTS_URL,
     ABS_SOCIAL_WORKS_URL
 } from './constants';
-import { ABS_LOANS_URL } from '../common';
+import { ABS_LOANS_URL, ABS_SALES_REPORTS_URL } from '../common';
 
 export const socialNavTree: SideNavNode = {
     name: 'SOCIAL_APP',
@@ -97,6 +97,12 @@ export const socialNavTree: SideNavNode = {
             accessRights: 'EDO'
         },
 
+        {
+            name: 'COMMON_REPORTS',
+            icon: 'fa-solid fa-file-chart-column',
+            route: ABS_SOCIAL_REPORTS_URL,
+            accessRights: 'Report'
+        },
         {
             name: 'PAYROLL_LOANS',
             icon: 'fas fa-user-edit',

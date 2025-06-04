@@ -55,12 +55,12 @@
                     </button>
                 </div>
 
-                <mat-form-field id="qtyOrdered" class="default-50 sm-100">
+                <mat-form-field id="qtyOrdered" class="default-25 sm-50">
                     <mat-label translate>LOGISTICS_QTY_ORDERED</mat-label>
                     <input matInput formControlName="qtyOrdered" type="number" step=".01" [readonly]="true">
                 </mat-form-field>
 
-                <mat-form-field id="qtySatisfied" class="default-50 sm-100">
+                <mat-form-field id="qtySatisfied" class="default-25 sm-50">
                     <mat-label translate>LOGISTICS_QTY_SATISFIED</mat-label>
                     <input matInput formControlName="qtySatisfied" type="number" step=".01" required>
                     <mat-error *ngIf="form.controls['qtySatisfied'].hasError('required')" translate>
@@ -77,7 +77,7 @@
                 <!--                </mat-form-field>-->
 
 
-                <mat-form-field id="price" class="default-50 sm-100">
+                <mat-form-field id="price" class="default-25 sm-50">
                     <mat-label translate>LOGISTICS_PRICE</mat-label>
                     <input matInput formControlName="price" type="number" step=".01" required>
                     <mat-error
