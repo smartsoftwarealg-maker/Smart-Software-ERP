@@ -632,6 +632,9 @@
             "@ss/scheduled-sales/compensations": [
                 "libs/scheduled-sales/compensations/src/index.ts"
             ],
+            "@ss/scheduled-sales/customer-suggestions": [
+                "libs/scheduled-sales/customer-suggestions/src/index.ts"
+            ],
             "@ss/scheduled-sales/password-reset": [
                 "libs/scheduled-sales/password-reset/src/index.ts"
             ],

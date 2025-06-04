@@ -1,7 +1,7 @@
 import {
     COMMON_CUSTOMER_PROFILE_URL,
     CSPACE_REPORTS_URL, SS_COMPLAINTS_URL, SS_CUSTOMER_BALANCE_URL, SS_CUSTOMER_HISTORY_URL, SS_HOME_PAGE_URL,
-    SS_PARTNER_SCHEDULE_URL, SS_PAYMENT_URL, SS_QUOTA_URL, SS_CUSTOMER_POLL_URL, BACKEND_SELECT_URL
+    SS_PARTNER_SCHEDULE_URL, SS_PAYMENT_URL, SS_QUOTA_URL, SS_CUSTOMER_POLL_URL, BACKEND_SELECT_URL, SS_SUGGESTIONS_URL
 } from '../common';
 import {Routes} from '@angular/router';
 import { CustomerCanActivateService, CanDeactivateService, LIST_URL, LOGIN_URL } from '@ss/common/api-common';
@@ -19,6 +19,10 @@ import { ScheduledSalesMainPageComponent } from '@scheduled-sales/main-page';
 import { ScheduledSalesProductsPageComponent } from '@scheduled-sales/products-page';
 import { CustomerPollComponent } from '@ss/scheduleds-sales/polls';
 import { BackendSelectComponent } from '@ss/common/ui-backend-select';
+import {
+    CustomerSuggestionsDetailComponent,
+    CustomerSuggestionsListComponent
+} from '@ss/scheduled-sales/customer-suggestions';
 
 export const cSpaceRoutes: Routes = [
     {
@@ -120,6 +124,23 @@ export const cSpaceRoutes: Routes = [
     {
         path: BACKEND_SELECT_URL,
         component: BackendSelectComponent
+    },
+
+    {
+        path: SS_SUGGESTIONS_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: CustomerSuggestionsListComponent,
+                canActivate: [CustomerCanActivateService]
+            },
+            {
+                path: ':id',
+                component: CustomerSuggestionsDetailComponent,
+                canActivate: [CustomerCanActivateService],
+                canDeactivate: [CanDeactivateService],
+            },
+        ]
     },
 
     {path: '', redirectTo: LOGIN_URL, pathMatch: 'full'},

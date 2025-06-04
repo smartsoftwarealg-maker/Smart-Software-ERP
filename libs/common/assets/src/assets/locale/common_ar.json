@@ -382,6 +382,8 @@
     "DESTINATION_ARTICLE":"وجهة المنتج",
     "DESTINATION_STORE":  "وجهة المخزن",
     "QUANTITY":           "الكمية",
-    "LEGEND": "المفتاح"
+    "LEGEND":             "المفتاح",
+    "SUGGESTION":                  "إقتراح",
+    "SUGGESTIONS":                 "الإقتراحات"
 }
 

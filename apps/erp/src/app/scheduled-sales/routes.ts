@@ -28,7 +28,9 @@ import {
     SALES_INVOICE_VALIDATION_URL,
     SS_POLL_QUESTION_URL,
     SS_SALES_POLL_URL,
-    SS_POLL_CHARTS_URL, SS_POLL_HISTORY_CHARTS_URL
+    SS_POLL_CHARTS_URL,
+    SS_POLL_HISTORY_CHARTS_URL,
+    SS_SUGGESTIONS_URL
 } from '../common';
 import {
     ProjectListComponent,
@@ -95,6 +97,10 @@ import { SalesCompensationDetailComponent } from '@ss/scheduled-sales/compensati
 import { InvoiceValidationComponent } from '@ss/scheduled-sales/sales-validation';
 import { PollChartComponent } from '@ss/scheduleds-sales/poll-charts';
 import { PollHistoryChartComponent } from '@ss/scheduleds-sales/poll-charts';
+import {
+    CustomerSuggestionsDetailComponent,
+    CustomerSuggestionsListComponent
+} from '@ss/scheduled-sales/customer-suggestions';
 
 export const scheduledSalesRoutes: Routes = [
     {
@@ -444,6 +450,23 @@ export const scheduledSalesRoutes: Routes = [
         path: SS_POLL_HISTORY_CHARTS_URL,
         component: PollHistoryChartComponent,
         canDeactivate: [CanDeactivateService],
+    },
+
+    {
+        path: SS_SUGGESTIONS_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: CustomerSuggestionsListComponent,
+                canActivate: [CustomerCanActivateService],
+            },
+            {
+                path: ':id',
+                component: CustomerSuggestionsDetailComponent,
+                canActivate: [CustomerCanActivateService],
+                canDeactivate: [CanDeactivateService],
+            },
+        ],
     },
 
     { path: '', redirectTo: ABS_INDEX_URL, pathMatch: 'full' },
