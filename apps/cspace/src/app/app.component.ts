@@ -32,7 +32,7 @@ export class AppComponent implements OnInit {
     loaded = signal(false);
 
     ngOnInit() {
-        const multiCompany = environment['multiCompany'];
+        const multiCompany = environment['multiCompany'] === true;
         const company = environment['company'];
         const homePage = environment['homePage'];
         this.#companySelectorSrv.multiCompany = multiCompany;

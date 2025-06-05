@@ -17,6 +17,8 @@ import {INDEX_PAGE_URL} from '../../../../libs/common/api-common/src';
 
 export const environment = {
     production: true,
+    multiCompany: false,
+    company: 'COMMON_AQS',
 };
 
 export const navBar = [

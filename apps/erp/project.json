@@ -490,11 +490,11 @@
                         }
                     ]
                 },
-                "prodansege": {
+                "android": {
                     "fileReplacements": [
                         {
                             "replace": "apps/erp/src/environments/environment.ts",
-                            "with": "apps/erp/src/environments/environment.ansege.ts"
+                            "with": "apps/erp/src/environments/environment.android.ts"
                         }
                     ],
                     "optimization": true,
