@@ -1,5 +1,5 @@
 import { Component, inject, OnInit } from '@angular/core';
-import {HttpService, LoginService} from '@ss/common/api-common';
+import { CompanySelectorService, HttpService, LoginService } from '@ss/common/api-common';
 import {switchMap} from 'rxjs/operators';
 import { LanguageService } from '@ss/common/api-common';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
@@ -11,6 +11,7 @@ import { MessageComponent } from '@ss/common/ui-error-handler';
 import { ThemeService } from '@ss/common/ui-theme';
 import { initialize } from '../../../cspace/src/app/admobile';
 import { DeviceDetectorService } from 'ngx-device-detector';
+import { environment } from '../../../cspace/src/environments/environment';
 
 @Component({
     selector: 'ss-root',
@@ -25,6 +26,7 @@ import { DeviceDetectorService } from 'ngx-device-detector';
     ],
 })
 export class AppComponent implements OnInit {
+    #companySelectorSrv = inject(CompanySelectorService);
     private snackSrv = inject(SnackBarService);
     private deviceSrv = inject(DeviceDetectorService);
     private httpSrv = inject(HttpService);
@@ -37,7 +39,13 @@ export class AppComponent implements OnInit {
 
     ngOnInit() {
         this.themeSrv.load();
-        this.shellSrv.setApplicationTitle('Smart ERP 1.100.0');
+        const multiCompany = environment['multiCompany'] === true;
+        const company = environment['company'];
+        const homePage = environment['homePage'];
+        this.#companySelectorSrv.multiCompany = multiCompany;
+        this.#companySelectorSrv.spaceCompany = company;
+        this.#companySelectorSrv.homePage     = homePage;
+        this.shellSrv.setApplicationTitle('Smart ERP 1.100.2');
         this.httpSrv
             .init()
             .pipe(

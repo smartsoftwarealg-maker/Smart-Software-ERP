@@ -103,13 +103,14 @@
                                 </button>
                                 <mat-menu #menu>
                                     <ng-container *ngFor="let mt of b.menuItems">
-                                        <button *ngIf="mt.visible" mat-menu-item (click)="mt.click()"
+                                        @if (mt.visible) {
+                                        <button mat-menu-item (click)="mt.click()"
                                                 [disabled]="mt.disabled">
                                             [disabled]="mt.disabled">
                                             <i [class]="mt.icon"></i>
-
                                             {{ mt.label | translate }}
                                         </button>
+                                        }
                                     </ng-container>
                                 </mat-menu>
                             </ng-template>
@@ -176,9 +177,9 @@
     <mat-menu #menu="matMenu" style="overflow: hidden">
         <div class="nav-bar-settings-menu" (click)="$event.stopPropagation()">
             <ng-container *ngFor="let b of shellSrv.buttons">
-                <ng-container *ngIf="b.visible">
-                    <ng-template [ngIf]="b.menuItems">
-                        <div class="settings-item" mat-menu-item (click)="trigger.toggleMenu()"
+                @if (b.visible) {
+                    @if(b.menuItems){
+                        <div class="settings-item" mat-menu-item (click)="trigger.toggleMenu()" style="background-color: red"
                              [class.small-only]="b.keepOnToolbar != 2">
                             <div class="icon" (click)="$event.stopPropagation()" [matMenuTriggerFor]="menu"
                                  #trigger="matMenuTrigger">
@@ -195,46 +196,40 @@
                                 </button>
                             </ng-container>
                         </mat-menu>
-                    </ng-template>
-
-                    <ng-template [ngIf]="!b.menuItems">
+                    } @else{
                         <div type="button" mat-menu-item class="settings-item" [class.small-only]="b.keepOnToolbar != 2"
                              [class]="{'f-b-disabled-btn': b.disabled, 'disable-events': b.disabled}"
                              (click)="b.click(); menuTrigger.closeMenu();">
-                            <div class="icon">
-                                <i [class]="b.icon"></i>
-                                <span class="text" translate>{{ b.label }}</span>
-                            </div>
+                            <div class="icon"><i [class]="b.icon"></i></div>
+                            <span class="text" translate>{{ b.label }}</span>
                         </div>
-                    </ng-template>
-
-                </ng-container>
+                    }
+                }
             </ng-container>
 
-            <mat-divider *ngIf="shellSrv.buttons.length"></mat-divider>
+            @if (shellSrv.buttons.length) {
+                <mat-divider></mat-divider>
+            }
+
 
             <ng-container *ngFor="let b of shellSrv.appButtons">
 
-                <ng-template [ngIf]="b.menuItems">
+                @if (b.menuItems) {
                     <div class="settings-item" mat-menu-item (click)="trigger.toggleMenu()">
-                        <div class="icon" (click)="$event.stopPropagation()" [matMenuTriggerFor]="menu"
-                             #trigger="matMenuTrigger">
+                        <div class="icon" (click)="$event.stopPropagation()" [matMenuTriggerFor]="menu" #trigger="matMenuTrigger">
                             <i [class]="b.icon"></i>
                         </div>
                         <span class="text" translate>{{ b.label }}</span>
                     </div>
                     <mat-menu #menu>
                         <ng-container *ngFor="let mt of b.menuItems">
-                            <button *ngIf="mt.visible" mat-menu-item (click)="mt.click(); menuTrigger.closeMenu();"
-                                    [disabled]="mt.disabled">
+                            <button *ngIf="mt.visible" mat-menu-item (click)="mt.click(); menuTrigger.closeMenu();" [disabled]="mt.disabled">
                                 <i [class]="mt.icon"></i>
                                 {{ mt.label | translate }}
                             </button>
                         </ng-container>
                     </mat-menu>
-                </ng-template>
-
-                <ng-template [ngIf]="!b.menuItems">
+                } @else {
                     <div type="button" mat-menu-item *ngIf="b.visible" class="settings-item"
                          [class]="{'f-b-disabled-btn': b.disabled, 'disable-events': b.disabled}"
                          (click)="b.click(); menuTrigger.closeMenu();">
@@ -243,7 +238,7 @@
                         </div>
                         <span class="text" translate>{{ b.label }}</span>
                     </div>
-                </ng-template>
+                }
 
             </ng-container>
 
