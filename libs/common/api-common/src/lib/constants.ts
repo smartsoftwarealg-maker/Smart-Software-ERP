@@ -33,7 +33,7 @@ export const APPLICATIONS_URL = '/applications';
 
 export const APPLICATIONS: Lookup[] = [
     { id: APP_DASHBOARD,       description: 'DASHBOARD' },
-    { id: APP_ACCOUNTING,      description: 'ACCOUNTING'},
+    { id: APP_ACCOUNTING,      description: 'ACCOUNTING_APP'},
     { id: APP_PURCHASE,        description: 'PURCHASES' },
     { id: APP_STOCK,           description: 'STOCK'     },
     { id: APP_SALES,           description: 'SALES'     },
@@ -41,7 +41,7 @@ export const APPLICATIONS: Lookup[] = [
     { id: APP_HR,              description: 'HR'        },
     { id: APP_ASSET,           description: 'ASSETS'    },
     { id: APP_TREASURY,        description: 'TREASURY'  },
-    { id: APP_LTM,             description: 'LTM'  },
+    { id: APP_LTM,             description: 'LTM'       },
     { id: APP_SCHEDULED_SALES, description: 'SCHEDULED_SALES'  },
 ];
 
