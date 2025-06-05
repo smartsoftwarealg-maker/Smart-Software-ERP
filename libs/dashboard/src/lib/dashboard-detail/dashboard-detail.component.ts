@@ -94,7 +94,6 @@ export class DashboardDetailComponent extends BaseEntityDetailComponent<Dashboar
             appId:       [a.appId || this.dashboardSrv.getParentId(), Validators.required],
             query:       [a.query],
         });
-
     }
 
     addCenter() {
