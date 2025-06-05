@@ -11,7 +11,7 @@ import { MessageComponent } from '@ss/common/ui-error-handler';
 import { ThemeService } from '@ss/common/ui-theme';
 import { initialize } from '../../../cspace/src/app/admobile';
 import { DeviceDetectorService } from 'ngx-device-detector';
-import { environment } from '../../../cspace/src/environments/environment';
+import { environment } from '../environments/environment';
 
 @Component({
     selector: 'ss-root',
@@ -45,7 +45,7 @@ export class AppComponent implements OnInit {
         this.#companySelectorSrv.multiCompany = multiCompany;
         this.#companySelectorSrv.spaceCompany = company;
         this.#companySelectorSrv.homePage     = homePage;
-        this.shellSrv.setApplicationTitle('Smart ERP 1.100.2');
+        this.shellSrv.setApplicationTitle('Smart ERP 1.100.3');
         this.httpSrv
             .init()
             .pipe(
