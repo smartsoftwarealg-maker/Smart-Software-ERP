@@ -1,4 +1,4 @@
-import { Component, inject, Input, OnInit } from "@angular/core";
+import { Component, inject, input, Input, OnInit, signal } from '@angular/core';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import {  ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { ShellService, SnackBarService } from "@ss/common/ui-shell";
@@ -34,6 +34,7 @@ export class AppArchiveListComponent implements OnInit {
     private _id = 0;
     private shellSrv = inject(ShellService);
     public activePersonnelSrv = inject(ActivePersonnelService);
+    public showBackButton = signal(false);
 
     imgSrc: string | null = null;
     selectedArchive: AppArchive | null = null;
@@ -52,10 +53,15 @@ export class AppArchiveListComponent implements OnInit {
     }
 
     ngOnInit(): void {
+        this.route.data.subscribe(res => {
+            const showBackButton = res['showBackButton']||'false';
+            this.showBackButton.set(showBackButton.toLowerCase() === "true");
+        });
+
         this.route
             .queryParamMap
             .subscribe(param => {
-                const appId = +param.get("appId") || 0;
+                const appId = +param.get('appId') || 0;
                 if (appId > 0) {
                     this.entitySrv.appId = appId;
                     const id = +param.get("documentId") || 0;
@@ -91,6 +97,10 @@ export class AppArchiveListComponent implements OnInit {
 
     public edit() {
         this.showDetail(this.selectedId + '');
+    }
+
+    public goBack() {
+        this.router.navigate(['../../'], {relativeTo: this.route}).then();
     }
 
     @Input()

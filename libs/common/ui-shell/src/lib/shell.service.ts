@@ -1,4 +1,4 @@
-import { inject, Injectable } from '@angular/core';
+import { inject, Injectable, signal } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UntypedFormControl } from '@angular/forms';
 import { asyncScheduler, Observable, observeOn, Subscription } from 'rxjs';
@@ -67,6 +67,14 @@ export class ShellService {
     #badgeButtonSrv = inject(BadgeButtonService);
     private _application = '';
     private navTree: SideNavNode[] = [];
+    private rightsSrv = inject(UserRightsService);
+    private loginSrv = inject(LoginService);
+
+    private lastHash = -1;
+    private _companyName: ToolbarLabel = {
+        title: '',
+        icon: 'fa-solid fa-buildings'
+    };
 
     backgroundColors: string[] = [
         '#d88f64', '#806570', '#610B6E',
@@ -80,12 +88,6 @@ export class ShellService {
         '#0B615E', '#610B38', '#5E710B',
         '#61380B', '#610B0B', '#75a079'
     ];
-    private lastHash = -1;
-    private _companyName: ToolbarLabel = {
-        title: '',
-        icon: 'fa-solid fa-buildings'
-    };
-
     protected showToolbarFn: () => void = null;
     protected updatePending = false;
     protected updateShellFn: () => void = null;
@@ -96,8 +98,9 @@ export class ShellService {
     //
     protected goBackFn: () => void = null;
     protected searchControl: UntypedFormControl;
-    public focusSearchField: boolean;
     protected searchInputLabel: string;
+    public focusSearchField: boolean;
+    public visibleSearchField = signal(true);
     //
 
     buttons: ToolbarButton[] = [];
@@ -114,8 +117,6 @@ export class ShellService {
     public langSrv = inject(LanguageService);
     public router = inject(Router);
     public mainPageSrv = inject(MainPageService);
-    private rightsSrv = inject(UserRightsService);
-    private loginSrv = inject(LoginService);
 
     constructor() {}
 
@@ -605,5 +606,9 @@ export class ShellService {
 
     setGoBackEnabled(enable: boolean) {
         this.goBackEnabled = enable;
+    }
+
+    setVisibleSearch(visible: boolean) {
+        this.visibleSearchField.set(visible);
     }
 }

@@ -45,11 +45,10 @@
 .list_div {
     overflow-y: auto;
     flex: 1 1 55%;
-    min-height: 10em;
+    min-height: 7em;
+    width: 96%;
+    margin: .5em auto;
 }
-
-
-
 
 .value-div {
     overflow-y: auto;

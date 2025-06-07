@@ -12,9 +12,11 @@
                 </div>
 
                 <div class="side-nav-tree-container">
-                    <cdk-tree #tree [dataSource]="shellSrv.sideNavDataSource" [childrenAccessor]="childrenAccessor" class="side-nav-tree">
+                    <cdk-tree #tree [dataSource]="shellSrv.sideNavDataSource" [childrenAccessor]="childrenAccessor"
+                              class="side-nav-tree">
                         <!-- This is the tree node template for leaf nodes -->
-                        <cdk-tree-node *cdkTreeNodeDef="let node" cdkTreeNodePadding class="tree-node" (click)="navBar.toggle()">
+                        <cdk-tree-node *cdkTreeNodeDef="let node" cdkTreeNodePadding class="tree-node"
+                                       (click)="navBar.toggle()">
                             <li class="tree-node b-primary selectable-tree-item" [routerLink]="node.route"
                                 (click)="scrollTo($event)">
                                 <!-- use a disabled button to provide padding for tree leaf -->
@@ -83,13 +85,16 @@
                         <i class="far fa-search"></i>
                     </button>
 
-                    <div class="ss-form-field large-only" *ngIf="shellSrv.hasSearch">
-                        <mat-form-field floatLabel="always">
-                            <mat-label translate>{{ shellSrv.searchInputTitle }}</mat-label>
-                            <input [formControl]="shellSrv.searchFormControl" matInput type="text"
-                                   id="shellSearchField">
-                        </mat-form-field>
-                    </div>
+                    @if (shellSrv.hasSearch && shellSrv.visibleSearchField()) {
+                        <div class="ss-form-field large-only" >
+                            <mat-form-field floatLabel="always">
+                                <mat-label translate>{{ shellSrv.searchInputTitle }}</mat-label>
+                                <input [formControl]="shellSrv.searchFormControl"
+                                       matInput type="text"
+                                       id="shellSearchField">
+                            </mat-form-field>
+                        </div>
+                    }
 
                     <ng-container *ngFor="let b of shellSrv.buttons">
                         <ng-container *ngIf="b.keepOnToolbar != 2">
@@ -104,33 +109,33 @@
                                 <mat-menu #menu>
                                     <ng-container *ngFor="let mt of b.menuItems">
                                         @if (mt.visible) {
-                                        <button mat-menu-item (click)="mt.click()"
+                                            <button mat-menu-item (click)="mt.click()"
+                                                    [disabled]="mt.disabled">
                                                 [disabled]="mt.disabled">
-                                            [disabled]="mt.disabled">
-                                            <i [class]="mt.icon"></i>
-                                            {{ mt.label | translate }}
-                                        </button>
+                                                <i [class]="mt.icon"></i>
+                                                {{ mt.label | translate }}
+                                            </button>
                                         }
                                     </ng-container>
                                 </mat-menu>
                             </ng-template>
                             @if (!b.menuItems && b.visible) {
-                                    @if (b.visible) {
-                                        <button mat-icon-button matTooltip="{{b.label | translate}}"
-                                                (click)="b.click()"
-                                                [disabled]="b.disabled"
-                                                class="hidden-during-search"
-                                                [class.large-only]="b.disabled || (b.keepOnToolbar != 1)">
-                                            @if (b.badgeCount > 0) {
-                                                <i [class]="b.icon"
-                                                   matBadge="{{ b.badgeCount }}"
-                                                   matBadgeColor="warn">
-                                                </i>
-                                            } @else {
-                                                <i [class]="b.icon"></i>
-                                            }
-                                        </button>
-                                    }
+                                @if (b.visible) {
+                                    <button mat-icon-button matTooltip="{{b.label | translate}}"
+                                            (click)="b.click()"
+                                            [disabled]="b.disabled"
+                                            class="hidden-during-search"
+                                            [class.large-only]="b.disabled || (b.keepOnToolbar != 1)">
+                                        @if (b.badgeCount > 0) {
+                                            <i [class]="b.icon"
+                                               matBadge="{{ b.badgeCount }}"
+                                               matBadgeColor="warn">
+                                            </i>
+                                        } @else {
+                                            <i [class]="b.icon"></i>
+                                        }
+                                    </button>
+                                }
                             }
                         </ng-container>
                     </ng-container>
@@ -178,8 +183,9 @@
         <div class="nav-bar-settings-menu" (click)="$event.stopPropagation()">
             <ng-container *ngFor="let b of shellSrv.buttons">
                 @if (b.visible) {
-                    @if(b.menuItems){
-                        <div class="settings-item" mat-menu-item (click)="trigger.toggleMenu()" style="background-color: red"
+                    @if (b.menuItems) {
+                        <div class="settings-item" mat-menu-item (click)="trigger.toggleMenu()"
+                             style="background-color: red"
                              [class.small-only]="b.keepOnToolbar != 2">
                             <div class="icon" (click)="$event.stopPropagation()" [matMenuTriggerFor]="menu"
                                  #trigger="matMenuTrigger">
@@ -196,7 +202,7 @@
                                 </button>
                             </ng-container>
                         </mat-menu>
-                    } @else{
+                    } @else {
                         <div type="button" mat-menu-item class="settings-item" [class.small-only]="b.keepOnToolbar != 2"
                              [class]="{'f-b-disabled-btn': b.disabled, 'disable-events': b.disabled}"
                              (click)="b.click(); menuTrigger.closeMenu();">
@@ -216,14 +222,16 @@
 
                 @if (b.menuItems) {
                     <div class="settings-item" mat-menu-item (click)="trigger.toggleMenu()">
-                        <div class="icon" (click)="$event.stopPropagation()" [matMenuTriggerFor]="menu" #trigger="matMenuTrigger">
+                        <div class="icon" (click)="$event.stopPropagation()" [matMenuTriggerFor]="menu"
+                             #trigger="matMenuTrigger">
                             <i [class]="b.icon"></i>
                         </div>
                         <span class="text" translate>{{ b.label }}</span>
                     </div>
                     <mat-menu #menu>
                         <ng-container *ngFor="let mt of b.menuItems">
-                            <button *ngIf="mt.visible" mat-menu-item (click)="mt.click(); menuTrigger.closeMenu();" [disabled]="mt.disabled">
+                            <button *ngIf="mt.visible" mat-menu-item (click)="mt.click(); menuTrigger.closeMenu();"
+                                    [disabled]="mt.disabled">
                                 <i [class]="mt.icon"></i>
                                 {{ mt.label | translate }}
                             </button>

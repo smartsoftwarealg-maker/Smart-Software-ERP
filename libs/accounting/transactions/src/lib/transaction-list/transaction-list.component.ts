@@ -1,5 +1,5 @@
 import { Component, effect, inject, OnDestroy, OnInit, signal, ViewChild } from '@angular/core';
-import { ActivatedRoute, NavigationEnd, Router, RouterModule, RouterOutlet } from "@angular/router";
+import { ActivatedRoute, NavigationEnd, Router, RouterModule, RouterOutlet } from '@angular/router';
 import {
     AccFileService,
     AccJournalsService, AccPoliciesService,
@@ -9,25 +9,19 @@ import {
     Journal, JournalSummary
 } from '@ss/accounting/accounting-api';
 import { KeepOnToolbar, ShellService, SnackBarService, ToolbarButton } from '@ss/common/ui-shell';
-import {DefaultReportService} from '@ss/common/ui-default-report-component';
-import {  ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
-import { LoginService, MaterialModule, PaginatorPersistenceService } from "@ss/common/api-common";
-import {MatSelectionListChange} from '@angular/material/list';
-import {switchMap, tap} from 'rxjs';
-import {debounceTime, distinctUntilChanged, filter} from 'rxjs/operators';
-import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
-import { FormControl, ReactiveFormsModule } from "@angular/forms";
+import { DefaultReportService } from '@ss/common/ui-default-report-component';
+import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
+import { LoginService, MaterialModule, PaginatorPersistenceService } from '@ss/common/api-common';
+import { MatSelectionListChange } from '@angular/material/list';
+import { switchMap, tap } from 'rxjs';
+import { debounceTime, distinctUntilChanged, filter } from 'rxjs/operators';
+import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
+import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { MatRadioChange } from '@angular/material/radio';
-import { CommonModule } from "@angular/common";
-
-
-
-
-import { DatePickerComponent } from "@ss/common/ui-datepicker";
+import { CommonModule } from '@angular/common';
 import { AppArchiveMainComponent } from '@ss/common/app-archive';
 import { PaginationComponent } from '@ss/common/ui-pagination';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
-import { toSignal } from '@angular/core/rxjs-interop';
 import { Sort } from '@angular/material/sort';
 import { callback } from 'chart.js/helpers';
 
@@ -58,10 +52,10 @@ export class TransactionListComponent extends BaseEntityListComponent<ACCTransac
     };
 
     private fileSrv = inject(AccFileService);
-    private journalSrv =  inject(AccJournalsService);
-    private detailSrv =  inject(AccTransactionLineService);
-    private loginSrv =  inject(LoginService);
-    private accPolicySrv =  inject(AccPoliciesService);
+    private journalSrv = inject(AccJournalsService);
+    private detailSrv = inject(AccTransactionLineService);
+    private loginSrv = inject(LoginService);
+    private accPolicySrv = inject(AccPoliciesService);
     private updateEffect = effect(() => {
         if (this.detailSrv.updateCounter() > 0) {
             if (this.selectedRow) {
@@ -165,9 +159,11 @@ export class TransactionListComponent extends BaseEntityListComponent<ACCTransac
 
     private setDefaultButtons(isRoot: boolean) {
         this.isRoot.set(isRoot);
-        this.addButton.visible = isRoot && this.selectedJournal > 0 && Math.abs(this.journalSummary()?.debit - this.journalSummary()?.credit) < 0.01;
-        this.editButton.visible = isRoot;
-        this.deleteButton.visible = isRoot;
+        const isRootAndTransactionMode = isRoot && this.transactionMode;
+        this.addButton.visible = isRootAndTransactionMode && this.selectedJournal > 0 && Math.abs(this.journalSummary()?.debit - this.journalSummary()?.credit) < 0.01;
+        this.editButton.visible = isRootAndTransactionMode;
+        this.deleteButton.visible = isRootAndTransactionMode;
+        this.shellSrv.setVisibleSearch(isRootAndTransactionMode);
         if (isRoot) {
             this.journalFilter.enable();
         } else {
@@ -184,13 +180,14 @@ export class TransactionListComponent extends BaseEntityListComponent<ACCTransac
 
     private navigate() {
         if (this.selected) {
-            const commands = this.transactionMode? [this.selected] : [this.selected,  'archive'];
-            this.router.navigate(commands, {relativeTo: this.route})
+            const commands = this.transactionMode ? [this.selected] : [this.selected, 'archive'];
+            this.router.navigate(commands, { relativeTo: this.route })
                 .then(_ => {
                     this.detailSrv.setParentId(this.selected);
                 });
         }
     }
+
 
     override selectRow(row: ACCTransaction) {
         if (this.isRoot()) {
@@ -257,7 +254,12 @@ export class TransactionListComponent extends BaseEntityListComponent<ACCTransac
 
     onMode(e: MatRadioChange) {
         this.transactionMode = +e.value === 1;
-        this.navigate();
+        this.refreshButton.visible = this.transactionMode;
+        this.addButton.visible = this.transactionMode;
+        this.editButton.visible = this.transactionMode;
+        this.deleteButton.visible = this.transactionMode;
+        this.shellSrv.setVisibleSearch(this.transactionMode);
+        this.router.navigate(['/app/accounting/transactions']).then();
     }
 
     get isEditable() {
@@ -278,6 +280,12 @@ export class TransactionListComponent extends BaseEntityListComponent<ACCTransac
                     this.snackBarSrv.showSuccessMessage();
                     this.refreshTransactions();
                 }
-            })
+            });
+    }
+
+    override refresh(callback?: () => void) {
+        if (this.transactionMode) {
+            super.refresh(callback);
+        }
     }
 }

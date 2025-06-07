@@ -14,6 +14,7 @@ export class AppArchiveService extends BaseEntityExtendedService<AppArchive> {
     private _editable = false;
     private _id = 0;
 
+
     constructor(protected override httpSrv: HttpService) {
         super(httpSrv, APP_ARCHIVE_URL, APPLICATIONS_URL);
     }
