@@ -26,7 +26,7 @@
                     <td [class.f-accent]="math.abs(journalSummary().debit - journalSummary().credit) > 0.01"> {{ journalSummary().credit | number: '1.2-2'}} </td>
                 </tr>
             </table>
-            <mat-radio-group (change)="onMode($event)" [disabled]="!isRoot() && !isArchive()">
+            <mat-radio-group (change)="onMode($event)" [disabled]="!isRoot()">
                 <mat-radio-button value="1" translate [checked]="true">ACC_TRANSAC_DETAIL</mat-radio-button>
                 <mat-radio-button value="2" translate>COMMON_ARCHIVE</mat-radio-button>
             </mat-radio-group>
