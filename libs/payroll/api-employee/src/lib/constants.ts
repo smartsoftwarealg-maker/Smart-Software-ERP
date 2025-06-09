@@ -17,3 +17,4 @@ export const QUESTIONING_ROUTE_URL = 'questionings';
 export const INVITATION_ROUTE_URL = 'invitations';
 export const RECLASSIFICATION_ROUTE_URL = 'reclassifications';
 export const REINTEGRATION_ROUTE_URL = 'reintegrations';
+export const UNPAID_LEAVE_ROUTE_URL = 'unpaid-leave';

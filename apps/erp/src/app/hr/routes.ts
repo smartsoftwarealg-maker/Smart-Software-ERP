@@ -102,7 +102,10 @@ import {
     EmployeeInvitationDetailComponent,
     EmployeeReclassificationListComponent,
     EmployeeReclassificationDetailComponent,
-    EmployeeReintegrationListComponent, EmployeeReintegrationDetailComponent
+    EmployeeReintegrationListComponent,
+    EmployeeReintegrationDetailComponent,
+    EmployeeUnpaidLeaveListComponent,
+    EmployeeUnpaidLeaveDetailComponent
 } from '@ss/payroll/ui-employee';
 import {
     ACTIVATION_ROUTE_URL,
@@ -120,7 +123,7 @@ import {
     QUESTIONING_ROUTE_URL,
     INVITATION_ROUTE_URL,
     RECLASSIFICATION_ROUTE_URL,
-    REINTEGRATION_ROUTE_URL
+    REINTEGRATION_ROUTE_URL, UNPAID_LEAVE_ROUTE_URL
 } from '@ss/payroll/api-employee';
 import { ReportViewComponent } from '@ss/common/ui-report-param';
 import {DashboardComponent} from '@ss/dashboard';
@@ -438,7 +441,14 @@ export const hrRoutes: Routes = [
                                     { path: '', component: EmployeeReintegrationListComponent, pathMatch: 'full' },
                                     { path: ':id', component: EmployeeReintegrationDetailComponent, canDeactivate: [CanDeactivateService] }
                                 ]
-                            }
+                            },
+                            {
+                                path: UNPAID_LEAVE_ROUTE_URL,
+                                children: [
+                                    { path: '', component: EmployeeUnpaidLeaveListComponent, pathMatch: 'full' },
+                                    { path: ':id', component: EmployeeUnpaidLeaveDetailComponent, canDeactivate: [CanDeactivateService] }
+                                ]
+                            },
                         ]
                     },
                 ]

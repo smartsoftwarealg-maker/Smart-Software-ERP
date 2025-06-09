@@ -25,3 +25,4 @@ export * from './lib/employee-questioning.service';
 export * from './lib/employee-reclassification.service';
 export * from './lib/employee-reintegration.service';
 export * from './lib/employee-suspension.service';
+export * from './lib/employee-unpaid-leave.service';

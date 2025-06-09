@@ -37,6 +37,9 @@ export const RECLASSIFICATION_CHILD_URL = '/reclassifications';
 export const REINTEGRATION_PARENT_URL = '/persons';
 export const REINTEGRATION_CHILD_URL = '/reintegrations';
 
+export const UNPAID_LEAVE_PARENT_URL = '/persons';
+export const UNPAID_LEAVE_CHILD_URL = '/unpaidLeaves';
+
 export interface EmployeeActivation {
     id: number;
     centerId: number;
@@ -269,4 +272,16 @@ export interface Reintegration {
     postDescription?: string;
     deptDescription?: string;
     serviceDescription?: string;
+}
+
+export interface UnpaidLeave {
+    id: number;
+    centerId: number;
+    parentId: number;
+    refDate?: Date;
+    reference?: string;
+    fromDate?: Date;
+    toDate?: Date;
+    motive?: number;
+    motiveDescription?: string;
 }

@@ -232,5 +232,6 @@
     "CAREER_EVOLUTION_RUBRIC": "Rubrique d'évolution de carrière",
     "APPRECIATION":          "Appréciation",
     "HR_CRITERIA":           "CRITÈRES RH",
-    "HR_GRADING":            "NOTATION RH"
+    "HR_GRADING":            "NOTATION RH",
+    "UNPAID_LEAVE":          "congé sans solde"
 }

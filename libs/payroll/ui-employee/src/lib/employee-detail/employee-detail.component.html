@@ -293,6 +293,11 @@
                     <router-outlet></router-outlet>
                 }
             </mat-tab>
+            <mat-tab label="{{'PAYROLL_UNPAID_LEAVE'|translate}}" [disabled]="!noEdit">
+                @if (activePanel === UNPAID_LEAVE_ROUTE) {
+                    <router-outlet></router-outlet>
+                }
+            </mat-tab>
             <mat-tab label="{{'PAYROLL_WIVES'|translate}}" [disabled]="!noEdit">
                 @if (activePanel === WIVES_ROUTE) {
                     <router-outlet></router-outlet>

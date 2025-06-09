@@ -63,7 +63,6 @@ export class EmployeeSuspensionDetailComponent extends BaseChildEntityDetailComp
             id: [a.id],
             centerId: [a.centerId || this.loginSrv.appCtx.center],
             parentId: [a.parentId || this.employeeSuspensionSrv.getParentId()],
-            suspType: [a.suspType],
             refDate: [a.refDate],
             reference: [a.reference],
             fromDate: [a.fromDate],
