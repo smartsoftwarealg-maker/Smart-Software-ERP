@@ -50,7 +50,7 @@ import {
     EmployeeQuestioningService,
     EmployeeReclassificationService,
     EmployeeReintegrationService,
-    EmployeeSuspensionService,
+    EmployeeSuspensionService, EmployeeUnpaidLeavesService,
     EmployeeWivesService,
     FIXED_ELEMENTS_URL,
     INVITATION_ROUTE_URL,
@@ -61,7 +61,7 @@ import {
     RECLASSIFICATION_ROUTE_URL,
     REINTEGRATION_ROUTE_URL,
     SUSPENSION_ROUTE_URL,
-    TRAINING_ROUTE_URL,
+    TRAINING_ROUTE_URL, UNPAID_LEAVE_ROUTE_URL,
     WIVES_ROUTE_URL
 } from '@ss/payroll/api-employee';
 import {EmployeeDiplomaService} from '../employee-diplomas/employee-diploma.service';
@@ -138,29 +138,31 @@ export class EmployeeDetailComponent extends BaseEntityDetailComponent<Employee>
     private invitationSrv = inject(EmployeeInvitationService);
     private reclassificationSrv = inject(EmployeeReclassificationService);
     private reintegrationSrv = inject(EmployeeReintegrationService);
+    private unpaidLeaveSrv = inject(EmployeeUnpaidLeavesService);
     private activationSrv = inject(EmployeeActivationService);
     private bloodGroupSrv = inject(BloodGroupService);
     private citySrv = inject(CityService);
     private nationalitySrv = inject(NationalityService);
     private archiveSrv = inject(AppArchiveService);
     private HR_PANELS = [
-        ACTIVATION_ROUTE_URL,       //0
-        REINTEGRATION_ROUTE_URL,    //1
-        CONTRACTS_ROUTE_URL,        //2
-        CAREER_ROUTE_URL,           //3
-        OLD_CAREER_ROUTE_URL,       //4
-        RECLASSIFICATION_ROUTE_URL, //5
-        DECISION_ROUTE_URL,         //6
-        SUSPENSION_ROUTE_URL,       //7
-        WIVES_ROUTE_URL,            //8
-        CHILDREN_ROUTE_URL,         //9
-        DIPLOMA_ROUTE_URL,          //10
-        TRAINING_ROUTE_URL,         //11
-        LANGUAGES_ROUTE_URL,        //12
-        QUESTIONING_ROUTE_URL,      //13
-        INVITATION_ROUTE_URL,       //14
-        PUNISHMENT_ROUTE_URL,       //15
-        ARCHIVE_ROUTE_URL,          //16
+        ACTIVATION_ROUTE_URL,       //00
+        REINTEGRATION_ROUTE_URL,    //01
+        CONTRACTS_ROUTE_URL,        //02
+        CAREER_ROUTE_URL,           //03
+        OLD_CAREER_ROUTE_URL,       //04
+        RECLASSIFICATION_ROUTE_URL, //05
+        DECISION_ROUTE_URL,         //06
+        SUSPENSION_ROUTE_URL,       //07
+        UNPAID_LEAVE_ROUTE_URL,     //08
+        WIVES_ROUTE_URL,            //09
+        CHILDREN_ROUTE_URL,         //10
+        DIPLOMA_ROUTE_URL,          //11
+        TRAINING_ROUTE_URL,         //12
+        LANGUAGES_ROUTE_URL,        //13
+        QUESTIONING_ROUTE_URL,      //14
+        INVITATION_ROUTE_URL,       //15
+        PUNISHMENT_ROUTE_URL,       //16
+        ARCHIVE_ROUTE_URL,          //17
     ];
     private PAYROLL_PANELS = [
         ACTIVATION_ROUTE_URL, //0
@@ -182,15 +184,16 @@ export class EmployeeDetailComponent extends BaseEntityDetailComponent<Employee>
     readonly RECLASSIFICATION_ROUTE = 5;
     readonly DECISION_ROUTE = 6;
     readonly SUSPENSION_ROUTE = 7;
-    readonly WIVES_ROUTE = 8;
-    readonly CHILDREN_ROUTE = 9;
-    readonly DIPLOMA_ROUTE = 10;
-    readonly TRAINING_ROUTE = 11;
-    readonly LANGUAGES_ROUTE = 12;
-    readonly QUESTIONING_ROUTE = 13;
-    readonly INVITATION_ROUTE = 14;
-    readonly PUNISHMENT_ROUTE = 15;
-    readonly ARCHIVE_ROUTE = 16;
+    readonly UNPAID_LEAVE_ROUTE = 8;
+    readonly WIVES_ROUTE = 9;
+    readonly CHILDREN_ROUTE = 10;
+    readonly DIPLOMA_ROUTE = 11;
+    readonly TRAINING_ROUTE = 12;
+    readonly LANGUAGES_ROUTE = 13;
+    readonly QUESTIONING_ROUTE = 14;
+    readonly INVITATION_ROUTE = 15;
+    readonly PUNISHMENT_ROUTE = 16;
+    readonly ARCHIVE_ROUTE = 17;
     readonly FIXED_ELEMENTS_ROUTE = 112;
 
     activePanel: number = -1;
@@ -261,6 +264,7 @@ export class EmployeeDetailComponent extends BaseEntityDetailComponent<Employee>
         this.invitationSrv.setParentId(id || 0);
         this.reclassificationSrv.setParentId(id || 0);
         this.reintegrationSrv.setParentId(id || 0);
+        this.unpaidLeaveSrv.setParentId(id || 0);
     }
 
     public override preload(): Observable<MaritalStatus[]> {

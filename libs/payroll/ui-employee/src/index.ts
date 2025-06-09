@@ -45,6 +45,8 @@ export * from './lib/employee-reclassification/list/employee-reclassification-li
 export * from './lib/employee-reclassification/detail/employee-reclassification-detail.component';
 export * from './lib/employee-reintegration/list/employee-reintegration-list.component';
 export * from './lib/employee-reintegration/detail/employee-reintegration-detail.component';
+export * from './lib/employee-unpaid-leave/list/employee-unpaid-leave-list.component';
+export * from './lib/employee-unpaid-leave/detail/employee-unpaid-leave-detail.component';
 
 
 
