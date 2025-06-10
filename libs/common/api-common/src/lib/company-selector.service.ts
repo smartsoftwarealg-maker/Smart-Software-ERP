@@ -4,7 +4,6 @@ import { HttpService } from '@ss/common/api-common';
 @Injectable({ providedIn: 'root' })
 export class CompanySelectorService {
     #DEFAULT_COMPANY = 'DEFAULT_COMPANY';
-    #spaceCompany: string | null = null;
     #_multiCompany = false;
     #company: string | null = null;
     #homePage: string | null = null;
@@ -29,11 +28,11 @@ export class CompanySelectorService {
 
     select(company: string) {
         localStorage.setItem(this.#DEFAULT_COMPANY, company);
-         this.#company = company;
+        this.#company = company;
         this.#homePage = this.#homePageMap.get(company);
         this.spaceCompany = company;
         this.#httpSrv.selectCompany(company);
-        this.missingBackend.set(this.#_multiCompany && (this.#spaceCompany || null) === null);
+        this.missingBackend.set(this.#_multiCompany && !company);
         // this.#router.navigate(['/login']).then();
     }
 
@@ -54,17 +53,17 @@ export class CompanySelectorService {
     }
 
     set spaceCompany(company: string) {
-        this.#spaceCompany = company;
-        this.missingBackend.set(this.#_multiCompany && (this.#spaceCompany || null) === null);
+        this.#company = company;
+        this.missingBackend.set(this.#_multiCompany && !company);
     }
 
     get spaceCompany() {
-        return this.#spaceCompany;
+        return this.#company;
     }
 
     set multiCompany(multi: boolean) {
         this.#_multiCompany = multi;
-        this.missingBackend.set(this.#_multiCompany && (this.#spaceCompany || null) === null);
+        this.missingBackend.set(this.#_multiCompany && !this.#company);
     }
 
     get multiCompany() {
@@ -73,13 +72,7 @@ export class CompanySelectorService {
 
     clear() {
         this.#homePage = null;
-        this.#spaceCompany = null;
+        this.#company = null;
     }
-
-    // missingBackend(): boolean {
-    //     const defaultCompany = localStorage.getItem(this.#DEFAULT_COMPANY);
-    //     return this.#_multiCompany && (defaultCompany || null) === null;
-    // }
-
 }
 

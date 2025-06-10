@@ -43,16 +43,6 @@ export class StoreNameListComponent extends BaseEntityListComponent<Lot> impleme
         super(storeNameSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv, 'COMMON_STORE_NAMES');
     }
 
-    ngOnInit() {
-        super.ngOnInit();
-        this.#optionSrv
-            .get(this.#loginSrv.appCtx.center)
-            .subscribe(res => {
-                if (res?.usesLots) {
-                    this.displayedColumns.push('lotNumber');
-                }
-            });
-    }
 }
 
 

@@ -56,7 +56,7 @@ export class LoginComponent implements OnInit {
     public license: string = null;
     readonly isPhone: boolean;
     readonly cSpace = signal(this.#companySelectorSrv.spaceCompany);
-    readonly missingBackend = computed(() => this.#companySelectorSrv.missingBackend());
+    readonly missingBackend = computed(() => this.#companySelectorSrv.missingBackend() );
 
     form = this.#formBuilder.group({
         user: ['', [Validators.required, Validators.min(3)]],

@@ -9,9 +9,9 @@ import { Dir } from '@angular/cdk/bidi';
 import { MatProgressSpinner } from '@angular/material/progress-spinner';
 import { MessageComponent } from '@ss/common/ui-error-handler';
 import { ThemeService } from '@ss/common/ui-theme';
-import { initialize } from '../../../cspace/src/app/admobile';
 import { DeviceDetectorService } from 'ngx-device-detector';
 import { environment } from '../environments/environment';
+import { initialize } from './admobile';
 
 @Component({
     selector: 'ss-root',
@@ -45,7 +45,7 @@ export class AppComponent implements OnInit {
         this.#companySelectorSrv.multiCompany = multiCompany;
         this.#companySelectorSrv.spaceCompany = company;
         this.#companySelectorSrv.homePage     = homePage;
-        this.shellSrv.setApplicationTitle('Smart ERP 1.100.4');
+        this.shellSrv.setApplicationTitle('Smart ERP 1.100.6');
         this.httpSrv
             .init()
             .pipe(
