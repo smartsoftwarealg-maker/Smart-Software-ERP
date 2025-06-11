@@ -42,7 +42,6 @@ export class StoreNameListComponent extends BaseEntityListComponent<Lot> impleme
         public override pagPersistSrv: PaginatorPersistenceService) {
         super(storeNameSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv, 'COMMON_STORE_NAMES');
     }
-
 }
 
 
