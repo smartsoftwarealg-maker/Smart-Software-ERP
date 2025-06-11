@@ -86,5 +86,7 @@
     "DOSAGE_UNIT":             "Unité de dosage",
     "PACKAGING_UNITS":         "Unités d'emballage",
     "PACKAGING_UNIT":          "Unité d'emballage",
-    "PACKAGING":               "emballage"
+    "PACKAGING":               "emballage",
+    "USES_LOTS":               "Utilise lot",
+    "BLOCK_LOTS":              "Lots en bloc"
 }

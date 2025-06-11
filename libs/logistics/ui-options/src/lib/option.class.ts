@@ -34,7 +34,7 @@ export class Option {
     SalesPrice4Factor: number;
     SalesPrice5Factor: number;
     generate_GL: boolean;
-    block_new_lots: boolean;
+    blockNewLots: boolean;
     severe: boolean;
     evalPrice: number;
     allow_dupl_ref: boolean;
