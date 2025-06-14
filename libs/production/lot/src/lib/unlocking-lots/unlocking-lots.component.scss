@@ -1,8 +1,9 @@
 .table-container {
     overflow-x: auto;
-    min-height: 40%;
+    width: 90%;
     max-width: 1200px;
-    margin: auto;
+    height: calc(100% - 64px);
+    margin: 0 auto;
 }
 
 
@@ -22,10 +23,19 @@
     padding-left: 16px;
 }
 
-.mat-column-description, .mat-column-reference {
+.mat-column-description {
     flex: 1 1 140px;
     padding-right: 8px !important;
     padding-left: 8px !important;
+}
+.mat-column-blocked {
+    flex: 1 1 80px;
+    justify-content: center;
+}
+
+.mat-column-storeName,
+.mat-column-reference {
+    flex: 1 1 120px;
 }
 
 .mat-column-analysisDate {
