@@ -233,5 +233,6 @@
     "APPRECIATION":          "Appréciation",
     "HR_CRITERIA":           "CRITÈRES RH",
     "HR_GRADING":            "NOTATION RH",
-    "UNPAID_LEAVE":          "Disponibilité"
+    "UNPAID_LEAVE":          "Disponibilité",
+    "GRADER":                "Notateur"
 }

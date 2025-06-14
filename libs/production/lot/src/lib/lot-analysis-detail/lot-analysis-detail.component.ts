@@ -26,7 +26,6 @@ import { Location, LocationService } from '@ss/master-data/api-article';
         MaterialModule,
         RouterModule,
         TranslateDirective,
-        UiAutoCompleteComponent,
         DatePickerComponent,
     ],
 })
