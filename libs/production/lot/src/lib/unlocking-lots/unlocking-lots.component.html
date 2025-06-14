@@ -11,7 +11,14 @@
         <ng-container matColumnDef="description">
             <mat-header-cell *matHeaderCellDef translate>COMMON_DESCRIPTION</mat-header-cell>
             <mat-cell *matCellDef="let e">
-                {{ e.dlocation }}
+                {{ e.description }}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="storeName">
+            <mat-header-cell *matHeaderCellDef translate>STOCK_STOCK</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{ e.storeName }}
             </mat-cell>
         </ng-container>
 
