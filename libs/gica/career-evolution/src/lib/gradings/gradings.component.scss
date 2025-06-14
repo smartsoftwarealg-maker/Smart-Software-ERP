@@ -20,6 +20,13 @@ mat-card {
     justify-items: stretch;
     align-items: center;
     max-width: 100%;
+
+    mat-form-field {
+        flex-grow: 1;
+    }
+    checkbox {
+        flex-grow: 0;
+    }
 }
 
 
@@ -71,7 +78,7 @@ legend {
         display: flex;
         gap: 1em;
         flex-wrap: nowrap;
-        height: calc(100% - 120px);
+        height: calc(100% - 160px);
     }
 
 }

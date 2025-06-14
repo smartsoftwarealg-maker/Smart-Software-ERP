@@ -32,6 +32,7 @@ import { ImageInputComponent, ImageModel } from '@ss/common/ui-image-input';
 import { PaginationComponent } from '@ss/common/ui-pagination';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { DefaultReportService } from '@ss/common/ui-default-report-component';
 
 @Component({
     selector: 'ss-gica-gradings',
@@ -64,6 +65,24 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
     styleUrl: 'gradings.component.scss'
 })
 export class GradingsComponent implements OnInit, OnDestroy {
+    private defReportSrv = inject(DefaultReportService);
+    private defReportButton: ToolbarButton = {
+        icon: 'fas fa-folders',
+        label: 'COMMON_DEFAULT_REPORT',
+        disabled: false, // always false
+        visible: true,
+        keepOnToolbar: KeepOnToolbar.DYNAMIC,
+        click: () => this.selectReport()
+    };
+
+    private viewReportButton: ToolbarButton = {
+        icon: 'fas fa-print',
+        label: 'COMMON_VIEW_REPORT',
+        disabled: false,
+        visible: true,
+        keepOnToolbar: KeepOnToolbar.DYNAMIC,
+        click: () => this.viewReport()
+    };
 
     private saveButton: ToolbarButton = {
         icon: 'fas fa-save',
@@ -74,7 +93,7 @@ export class GradingsComponent implements OnInit, OnDestroy {
         click: () => this.save()
     };
 
-    public refreshButton: ToolbarButton = {
+    private refreshButton: ToolbarButton = {
         icon: 'fas fa-sync-alt',
         label: 'COMMON_REFRESH',
         disabled: false,
@@ -83,6 +102,7 @@ export class GradingsComponent implements OnInit, OnDestroy {
         click: () => this.refreshSubordinates()
 
     };
+    private reportForm: string|null = null;
 
     private httpSrv = inject(HttpService);
     private loginSrv = inject(LoginService);
@@ -112,11 +132,14 @@ export class GradingsComponent implements OnInit, OnDestroy {
     searchCtrl = new FormControl<string>('');
 
     form = this.fb.group({
-        index:  [0, [Validators.required, Validators.min(1), Validators.max(3)] ] ,
+        index:         [0, [Validators.required, Validators.min(1), Validators.max(3)] ] ,
         appreciation1: [null],
         appreciation2: [null],
         appreciation3: [null],
-        grades: this.fb.array([])
+        validated1:    [false],
+        validated2:    [false],
+        validated3:    [false],
+        grades:        this.fb.array([])
     });
     labels = [''];
     maxima = [0];
@@ -126,6 +149,10 @@ export class GradingsComponent implements OnInit, OnDestroy {
     selectedId = 0;
 
     ngOnInit(): void {
+        const node = this.shellSrv.getNavNodeByRouter();
+        this.reportForm = node && node.accessRights != undefined ? node.accessRights : null;
+        this.defReportButton.visible = this.reportForm != null;
+        this.viewReportButton.visible = this.reportForm != null;
         this.imageModel.readOnly = true;
         this.yearCtrl
             .valueChanges
@@ -137,7 +164,7 @@ export class GradingsComponent implements OnInit, OnDestroy {
         this.subordinateLookup.onObjectSelected = e => this.refresh(e);
         this.shellSrv.setTitle('PAYROLL_GICA_GRADING');
         this.shellSrv.setGoBackPath('../', this.route);
-        this.shellSrv.setButtons([this.refreshButton, this.saveButton, ]);
+        this.shellSrv.setButtons([this.refreshButton, this.saveButton, this.defReportButton, this.viewReportButton]);
 
         this.route.data.subscribe(data => {
             this.gradingSrv.gradingMode = !!data['gradingMode'];
@@ -152,6 +179,7 @@ export class GradingsComponent implements OnInit, OnDestroy {
                     debounceTime(300),
                     distinctUntilChanged())
                 .subscribe(res => {
+                    this.defReportButton.visible = this.viewReportButton.visible = res > 1;
                     if (res && res >= 1 && res <= 3) {
                         this.grades
                             .controls
@@ -211,6 +239,12 @@ export class GradingsComponent implements OnInit, OnDestroy {
                 res.forEach(g => {
                     this.form.controls.appreciation1.setValue(g.appreciation1);
                     this.form.controls.appreciation2.setValue(g.appreciation2);
+                    this.form.controls.appreciation3.setValue(g.appreciation3);
+
+                    this.form.controls.validated1.setValue(g.validated1);
+                    this.form.controls.validated2.setValue(g.validated2);
+                    this.form.controls.validated3.setValue(g.validated3);
+
                     const idx = this.executionIndex;
                     const temp = this.fb.group({
                         id:            [g.id],
@@ -219,9 +253,9 @@ export class GradingsComponent implements OnInit, OnDestroy {
                         employeeId:    [e?.id||0],
                         criterion:     [g.criterion],
                         description:   [g.description],
-                        grade1 :       [{ value: g.grade1, disabled: !this.gradingSrv.gradingMode || this.gradeCtrl.value !== 1}  ],
-                        grade2:        [{ value: idx >= 2? g.grade2: 0, disabled: !this.gradingSrv.gradingMode || this.gradeCtrl.value !== 2}],
-                        finalGrade:    [{ value: idx >= 3? g.finalGrade : 0, disabled: this.gradeCtrl.value !== 3 || this.gradeDifference() <= 5}],
+                        grade1 :       [{ value: g.grade1, disabled: !this.gradingSrv.gradingMode || this.gradeCtrl.value !== 1 || g.validated1 }  ],
+                        grade2:        [{ value: idx >= 2? g.grade2: 0, disabled: !this.gradingSrv.gradingMode || this.gradeCtrl.value !== 2 || g.validated2 || !g.validated1 }],
+                        finalGrade:    [{ value: idx >= 3? g.finalGrade : 0, disabled: this.gradeCtrl.value !== 3 || this.gradeDifference() <= 5 || !g.validated2}],
                         userId:        [this.loginSrv.appCtx.id],
                     });
                     this.grades.push(temp);
@@ -241,7 +275,7 @@ export class GradingsComponent implements OnInit, OnDestroy {
         this.processing.set(true);
         this.saveButton.disabled = true;
         this.gradingSrv
-            .update(this.gradeCtrl.value, <Grade[]>value.grades, value.appreciation1, value.appreciation2, value.appreciation3)
+            .update(this.gradeCtrl.value, <Grade[]>value.grades, value.validated1, value.validated2, value.validated3, value.appreciation1, value.appreciation2, value.appreciation3)
             .subscribe(res => {
                 if (res.length > 0) {
                     this.snackBarSrv.showSuccessMessage();
@@ -260,5 +294,31 @@ export class GradingsComponent implements OnInit, OnDestroy {
     sort(event: Sort) {
         this.subordinateSrv.sortColumn = event;
         this.refreshSubordinates();
+    }
+
+    private selectReport() {
+        this.defReportSrv
+            .open(this.shellSrv.getApp(), this.reportForm)
+            .subscribe(resp => {
+                if (resp.count > 0) {
+                    this.snackBarSrv.showSuccessMessage();
+                }
+            });
+    }
+
+    private viewReport() {
+        const formValue = this.form.getRawValue();
+        const grade = this.grades.controls[0].value as Grade;
+        this.defReportSrv
+            .viewReport(this.reportForm, grade.id)
+            .subscribe(res => {
+                const fileURL = URL.createObjectURL(new Blob([res], {type: 'application/pdf'}));
+                const w = window.open(fileURL, '_blank');
+                setTimeout(() => {
+                    try {
+                        w.document.title = `${this.reportForm}_${grade.id}.pdf`
+                    } catch (e: any) {}
+                }, 200);
+            });
     }
 }

@@ -17,7 +17,7 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
 import { Lot, LotsService } from '@ss/common/api-lookup';
 import {
     ArticleAutoCompleteModel,
-    ArticleService,
+    ArticleService, Location, LocationService
 } from '@ss/master-data/api-article';
 import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 
@@ -37,6 +37,7 @@ import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 })
 export class LotAnalysisListComponent implements OnInit, OnDestroy {
     private lotsSrv = inject(LotsService);
+    private locationSrv = inject(LocationService);
     private shellSrv = inject(ShellService);
     private route = inject(ActivatedRoute);
     private router = inject(Router);
@@ -51,7 +52,7 @@ export class LotAnalysisListComponent implements OnInit, OnDestroy {
     public sortBy: string;
     public selected = 0;
     public selectedRow: Lot;
-    public data: Lot[];
+    public data: Location[] = [];
     public readonly pagination = PaginationModel.newInstance();
 
     public refreshButton: ToolbarButton = {
@@ -80,16 +81,17 @@ export class LotAnalysisListComponent implements OnInit, OnDestroy {
         this.refFC.setValue(this.lotsSrv.getReference);
         this.ref = this.lotsSrv.getReference;
         this.shellSrv.setButtons([this.refreshButton, this.editButton]);
+        this.pagination.pageSize = 15;
         this.pagination.onChange = () => this.refresh();
         this.shellSrv.searchFormControl.setValue(null);
     }
 
     displayedColumns = [
+        'storeName',
+        'reference',
         'description',
-        'supplier',
-        'creationDate',
-        'expirationDate',
-        'expires',
+        'analysisDate',
+        'blockedLot',
     ];
 
     public edit() {
@@ -117,11 +119,12 @@ export class LotAnalysisListComponent implements OnInit, OnDestroy {
         this.data = [];
         this.shellSrv.setLoading(true);
         this.selected = 0;
-        this.lotsSrv
+        this.locationSrv
             .getLots(this.ref, this.pagination, this.filter, this.sortBy)
             .subscribe({
-                next: (data) => {
-                    this.data = data.body;
+                next: (res) => {
+                    this.data = res.body;
+                    this.pagination.elementCount = res.itemCount;
                     this.shellSrv.setLoading(false);
                 },
                 error: (err) => {

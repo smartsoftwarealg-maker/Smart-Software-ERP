@@ -65,3 +65,4 @@ export * from './lib/cost-center-group.service';
 export * from './lib/delivery-time.service';
 export * from './lib/post-elements.service';
 export * from './lib/lookups-api';
+export * from './lib/store.service';

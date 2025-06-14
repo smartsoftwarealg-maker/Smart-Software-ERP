@@ -234,5 +234,6 @@
     "APPRECIATION":           "تقدير",
     "HR_CRITERIA":            "معايير الموارد البشرية",
     "HR_GRADING":             "تصنيف الموارد البشرية",
-    "UNPAID_LEAVE":           "إجازة بدون أجر"
+    "UNPAID_LEAVE":           "إجازة بدون أجر",
+    "GRADER":               "مقيّم"
 }

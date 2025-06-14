@@ -234,5 +234,6 @@
     "APPRECIATION":          "Appreciation",
     "HR_CRITERIA":           "Hr criteria",
     "HR_GRADING":            "Hr grading",
-    "UNPAID_LEAVE":          "Unpaid leave"
+    "UNPAID_LEAVE":          "Unpaid leave",
+    "GRADER":                "Grader"
 }
