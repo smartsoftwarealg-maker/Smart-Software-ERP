@@ -26,7 +26,7 @@ import {
 import { GradeService } from '../services/grade.service';
 import { Grade } from '../gica-careers-api';
 import { HttpService, LoginService, MaterialModule, PaginationModel } from '@ss/common/api-common';
-import { map, Observable, of, Subscription, tap } from 'rxjs';
+import { filter, map, Observable, of, Subscription, tap } from 'rxjs';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { ImageInputComponent, ImageModel } from '@ss/common/ui-image-input';
 import { PaginationComponent } from '@ss/common/ui-pagination';
@@ -307,10 +307,10 @@ export class GradingsComponent implements OnInit, OnDestroy {
     }
 
     private viewReport() {
-        const formValue = this.form.getRawValue();
         const grade = this.grades.controls[0].value as Grade;
         this.defReportSrv
             .viewReport(this.reportForm, grade.id)
+            .pipe(filter(res => res.size > 0))
             .subscribe(res => {
                 const fileURL = URL.createObjectURL(new Blob([res], {type: 'application/pdf'}));
                 const w = window.open(fileURL, '_blank');
