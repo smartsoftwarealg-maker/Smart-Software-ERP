@@ -22,10 +22,10 @@
             </mat-cell>
         </ng-container>
 
-        <ng-container matColumnDef="descriptionAr">
-            <mat-header-cell *matHeaderCellDef translate>COMMON_DESCRIPTION_AR</mat-header-cell>
+        <ng-container matColumnDef="reference">
+            <mat-header-cell *matHeaderCellDef translate>COMMON_REFERENCE</mat-header-cell>
             <mat-cell *matCellDef="let e">
-                {{ e.descriptionAr }}
+                {{ e.reference }}
             </mat-cell>
         </ng-container>
 
@@ -36,10 +36,10 @@
             </mat-cell>
         </ng-container>
 
-        <ng-container matColumnDef="creationDate">
-            <mat-header-cell *matHeaderCellDef translate>STOCK_CREATION_DATE</mat-header-cell>
+        <ng-container matColumnDef="analysisDate">
+            <mat-header-cell *matHeaderCellDef translate>STOCK_ANALYSIS_DATE</mat-header-cell>
             <mat-cell *matCellDef="let e">
-                {{ e.creationDate | date: 'dd/MM/yyyy' }}
+                {{ e.analysisDate | date: 'dd/MM/yyyy' }}
             </mat-cell>
         </ng-container>
 
@@ -57,10 +57,20 @@
             </mat-cell>
         </ng-container>
 
-        <ng-container matColumnDef="lotNumber">
+        <ng-container matColumnDef="blockedLot">
+            <mat-header-cell *matHeaderCellDef translate>ADMINISTRATION_BLOCKED</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                <mat-checkbox [class.mat-checkbox-disabled]="false"
+                              disabled="true"
+                              [checked]="e.blockedLot">
+                </mat-checkbox>
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="storeName">
             <mat-header-cell *matHeaderCellDef translate>STOCK_LOT_NUMBER</mat-header-cell>
             <mat-cell *matCellDef="let e">
-                {{ e.lotNumber }}
+                {{ e.storeName }}
             </mat-cell>
         </ng-container>
 

@@ -116,7 +116,10 @@ export class GradingsComponent implements OnInit, OnDestroy {
         appreciation1: [null],
         appreciation2: [null],
         appreciation3: [null],
-        grades: this.fb.array([])
+        validated1:    [false],
+        validated2:    [false],
+        validated3:    [false],
+        grades:        this.fb.array([])
     });
     labels = [''];
     maxima = [0];
@@ -211,6 +214,12 @@ export class GradingsComponent implements OnInit, OnDestroy {
                 res.forEach(g => {
                     this.form.controls.appreciation1.setValue(g.appreciation1);
                     this.form.controls.appreciation2.setValue(g.appreciation2);
+                    this.form.controls.appreciation3.setValue(g.appreciation3);
+
+                    this.form.controls.validated1.setValue(g.validated1);
+                    this.form.controls.validated2.setValue(g.validated2);
+                    this.form.controls.validated3.setValue(g.validated3);
+
                     const idx = this.executionIndex;
                     const temp = this.fb.group({
                         id:            [g.id],
@@ -241,7 +250,7 @@ export class GradingsComponent implements OnInit, OnDestroy {
         this.processing.set(true);
         this.saveButton.disabled = true;
         this.gradingSrv
-            .update(this.gradeCtrl.value, <Grade[]>value.grades, value.appreciation1, value.appreciation2, value.appreciation3)
+            .update(this.gradeCtrl.value, <Grade[]>value.grades, value.validated1, value.validated2, value.validated3, value.appreciation1, value.appreciation2, value.appreciation3)
             .subscribe(res => {
                 if (res.length > 0) {
                     this.snackBarSrv.showSuccessMessage();

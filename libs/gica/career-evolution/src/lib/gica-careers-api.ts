@@ -85,6 +85,9 @@ export interface Grade {
     appreciation1?: string;
     appreciation2?: string;
     appreciation3?: string;
+    validated1: boolean;
+    validated2: boolean;
+    validated3: boolean;
 }
 
 export interface Criterion {

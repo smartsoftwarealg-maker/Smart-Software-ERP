@@ -16,8 +16,7 @@ export class LotsService extends BaseEntityExtendedService<Lot> {
         reference: string,
         pageModel: PaginationModel,
         filter?: string,
-        sortBy?: string,
-    ) {
+        sortBy?: string) {
         const page = pageModel.page;
         const pageSize = pageModel.pageSize;
         const prams = new HttpParams().append('find', reference);
