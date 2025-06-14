@@ -70,7 +70,7 @@ export class GradingsComponent implements OnInit, OnDestroy {
         icon: 'fas fa-folders',
         label: 'COMMON_DEFAULT_REPORT',
         disabled: false, // always false
-        visible: true,
+        visible: false,
         keepOnToolbar: KeepOnToolbar.DYNAMIC,
         click: () => this.selectReport()
     };
@@ -79,7 +79,7 @@ export class GradingsComponent implements OnInit, OnDestroy {
         icon: 'fas fa-print',
         label: 'COMMON_VIEW_REPORT',
         disabled: false,
-        visible: true,
+        visible: false,
         keepOnToolbar: KeepOnToolbar.DYNAMIC,
         click: () => this.viewReport()
     };
@@ -151,8 +151,8 @@ export class GradingsComponent implements OnInit, OnDestroy {
     ngOnInit(): void {
         const node = this.shellSrv.getNavNodeByRouter();
         this.reportForm = node && node.accessRights != undefined ? node.accessRights : null;
-        this.defReportButton.visible = this.reportForm != null;
-        this.viewReportButton.visible = this.reportForm != null;
+        const res = this.gradeCtrl.value;
+        this.defReportButton.visible = this.viewReportButton.visible = this.reportForm !== null && res > 1;
         this.imageModel.readOnly = true;
         this.yearCtrl
             .valueChanges
@@ -179,7 +179,7 @@ export class GradingsComponent implements OnInit, OnDestroy {
                     debounceTime(300),
                     distinctUntilChanged())
                 .subscribe(res => {
-                    this.defReportButton.visible = this.viewReportButton.visible = res > 1;
+                    this.defReportButton.visible = this.viewReportButton.visible = this.reportForm !== null && res > 1;
                     if (res && res >= 1 && res <= 3) {
                         this.grades
                             .controls
