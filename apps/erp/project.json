@@ -200,7 +200,7 @@
                             "with": "apps/erp/src/environments/environment.prod.ts"
                         }
                     ],
-                    "optimization": true,
+                    "optimization": false,
                     "outputHashing": "all",
                     "sourceMap": false,
                     "namedChunks": true,

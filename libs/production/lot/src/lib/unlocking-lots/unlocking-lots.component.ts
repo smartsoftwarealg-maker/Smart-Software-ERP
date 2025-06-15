@@ -30,7 +30,7 @@ export class UnlockingLotsComponent
     extends BaseEntityListComponent<Location>
     implements OnInit
 {
-    displayedColumns = ['reference', 'description', 'analysisDate', 'blocked'];
+    displayedColumns = ['storeName', 'reference', 'description', 'analysisDate', 'blocked'];
 
     override ngOnInit() {
         this.addButton.visible = false;

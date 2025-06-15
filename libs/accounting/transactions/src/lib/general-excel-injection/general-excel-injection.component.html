@@ -1,0 +1,165 @@
+<div class="container">
+    @if (!processing()) {
+        @if (!processing()) {
+            <mat-card>
+                <div class="file-upload">
+                    <input type="file"
+                           class="file-input"
+                           accept=".xlsx, application/msexcel"
+                           (change)="onChange(fileUpload.files)"
+                           #fileUpload>
+
+                    <div translate>{{ fileName || "COMMON_NO_FILE_SELECTED" }}</div>
+
+                    <button mat-mini-fab color="primary"
+                            class="upload-btn"
+                            (click)="fileUpload.click()">
+                        <i class="fas fa-paperclip"></i>
+                    </button>
+                </div>
+                <form [formGroup]="form">
+                    <mat-form-field class="default-50 sm-100 right-1em">
+                        <mat-label translate>COMMON_JOURNAL</mat-label>
+                        <mat-select formControlName="journal" required>
+                            @for (c of columns; track c) {
+                                <mat-option [value]="c">
+                                    {{ c }}
+                                </mat-option>
+                            }
+                        </mat-select>
+                    </mat-form-field>
+                    <mat-form-field class="default-50 sm-100">
+                        <mat-label translate>COMMON_DAY</mat-label>
+                        <mat-select formControlName="day" required>
+                            @for (c of columns; track c) {
+                                <mat-option [value]="c">
+                                    {{ c }}
+                                </mat-option>
+                            }
+                        </mat-select>
+                    </mat-form-field>
+                    <mat-form-field class="default-50 sm-100 right-1em">
+                        <mat-label translate>COMMON_MONTH</mat-label>
+                        <mat-select formControlName="period" required>
+                            @for (c of columns; track c) {
+                                <mat-option [value]="c">
+                                    {{ c }}
+                                </mat-option>
+                            }
+                        </mat-select>
+                    </mat-form-field>
+                    <mat-form-field class="default-50 sm-100">
+                        <mat-label translate>COMMON_NUMBER</mat-label>
+                        <mat-select formControlName="number" required>
+                            @for (c of columns; track c) {
+                                <mat-option [value]="c">
+                                    {{ c }}
+                                </mat-option>
+                            }
+                        </mat-select>
+                    </mat-form-field>
+                    <mat-form-field class="default-50 sm-100 right-1em">
+                        <mat-label translate>COMMON_ACCOUNTNO</mat-label>
+                        <mat-select formControlName="accountNo" required>
+                            @for (c of columns; track c) {
+                                <mat-option [value]="c">
+                                    {{ c }}
+                                </mat-option>
+                            }
+                        </mat-select>
+                    </mat-form-field>
+                    <mat-form-field class="default-50 sm-100">
+                        <mat-label translate>COMMON_DESCRIPTION</mat-label>
+                        <mat-select formControlName="description" required>
+                            @for (c of columns; track c) {
+                                <mat-option [value]="c">
+                                    {{ c }}
+                                </mat-option>
+                            }
+                        </mat-select>
+                    </mat-form-field>
+                    <mat-form-field class="default-50 sm-100 right-1em">
+                        <mat-label translate>COMMON_CUSTOMER_CODE</mat-label>
+                        <mat-select formControlName="customerCode">
+                            @for (c of columns; track c) {
+                                <mat-option [value]="c">
+                                    {{ c }}
+                                </mat-option>
+                            }
+                        </mat-select>
+                    </mat-form-field>
+                    <mat-form-field class="default-50 sm-100">
+                        <mat-label translate>ACC_DENOMINATION</mat-label>
+                        <mat-select formControlName="denomination">
+                            @for (c of columns; track c) {
+                                <mat-option [value]="c">
+                                    {{ c }}
+                                </mat-option>
+                            }
+                        </mat-select>
+                    </mat-form-field>
+                    <mat-form-field class="default-50 sm-100 right-1em">
+                        <mat-label translate>COMMON_REFERENCE</mat-label>
+                        <mat-select formControlName="reference">
+                            @for (c of columns; track c) {
+                                <mat-option [value]="c">
+                                    {{ c }}
+                                </mat-option>
+                            }
+                        </mat-select>
+                    </mat-form-field>
+                    <mat-form-field class="default-50 sm-100">
+                        <mat-label translate>COMMON_CHECKNO</mat-label>
+                        <mat-select formControlName="checkNo">
+                            @for (c of columns; track c) {
+                                <mat-option [value]="c">
+                                    {{ c }}
+                                </mat-option>
+                            }
+                        </mat-select>
+                    </mat-form-field>
+                    <mat-form-field class="default-50 sm-100 right-1em">
+                        <mat-label translate>ACC_DEBIT</mat-label>
+                        <mat-select formControlName="debit" required>
+                            @for (c of columns; track c) {
+                                <mat-option [value]="c">
+                                    {{ c }}
+                                </mat-option>
+                            }
+                        </mat-select>
+                    </mat-form-field>
+
+                    <mat-form-field class="default-50 sm-100">
+                        <mat-label translate>ACC_CREDIT</mat-label>
+                        <mat-select formControlName="credit" required>
+                            @for (c of columns; track c) {
+                                <mat-option [value]="c">
+                                    {{ c }}
+                                </mat-option>
+                            }
+                        </mat-select>
+                    </mat-form-field>
+
+                </form>
+
+
+                <div class="button__div">
+                    <button mat-raised-button color="primary"
+                            type="button"
+                            (click)="onFileSelected(fileUpload.files)"
+                            [disabled]="!fileName">
+                        <i class="fa-solid fa-upload  icon"></i>
+                        {{ 'COMMON_UPLOAD' | translate }}
+                    </button>
+                    <button mat-raised-button color="warn" type="button" (click)="cancel()">
+                        <i class="fa-solid fa-arrow-rotate-left icon"></i>
+                        {{ 'COMMON_CANCEL' | translate }}
+                    </button>
+                </div>
+            </mat-card>
+        }
+
+    } @if (processing()) {
+    <mat-progress-bar class="progress-bar" mode="indeterminate"></mat-progress-bar>
+}
+</div>

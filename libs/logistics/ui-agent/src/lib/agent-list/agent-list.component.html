@@ -3,7 +3,7 @@
         <mat-table mat-table [dataSource]="data" class="main-table" matSort (matSortChange)="sort($event)">
 
             <ng-container matColumnDef="customerCode">
-                <mat-header-cell *matHeaderCellDef mat-sort-header translate>LOGISTICS_CUSTOMER_CODE</mat-header-cell>
+                <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_CUSTOMER_CODE</mat-header-cell>
                 <mat-cell *matCellDef="let e">
                     {{ e.customerCode }}
                 </mat-cell>
@@ -55,7 +55,7 @@
         <mat-table mat-table [dataSource]="data" class="main-table" matSort (matSortChange)="sort($event)">
 
             <ng-container matColumnDef="customerCode">
-                <mat-header-cell *matHeaderCellDef mat-sort-header translate>LOGISTICS_CUSTOMER_CODE</mat-header-cell>
+                <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_CUSTOMER_CODE</mat-header-cell>
                 <mat-cell *matCellDef="let e">
                     {{ e.customerCode }}
                 </mat-cell>

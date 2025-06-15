@@ -17,7 +17,7 @@ import {
     COMMON_ACCOUNT_URL,
     COMMON_REPORTS_URL, DASHBOARD_URL,
     GENERATION_ACCOUNT_URL,
-    TRANSAC_ACCOUNT_URL, ACC_CLOSED_PERIODS_URL
+    TRANSAC_ACCOUNT_URL, ACC_CLOSED_PERIODS_URL, ACC_GENERAL_INJECTION_URL
 } from '../common';
 import {ABS_INDEX_URL, CanDeactivateService, LIST_URL} from '@ss/common/api-common';
 import {AccPoliciesComponent} from '@ss/accounting/acc-policies';
@@ -37,7 +37,7 @@ import {
     AccountingGenerationComponent,
     AccountingReopenComponent,
     CanCloseOpener,
-    BalanceQueriesComponent, SalesExcelInjectionComponent, TransactionMatchingComponent
+    BalanceQueriesComponent, SalesExcelInjectionComponent, TransactionMatchingComponent, GeneralExcelInjectionComponent
 } from '@ss/accounting/transactions';
 import {
     AssetAccountsListComponent,
@@ -90,6 +90,11 @@ export const accRoutes: Routes = [
     {
         path: ACC_SALES_INJECTION_URL,
         component: SalesExcelInjectionComponent,
+        canActivate: [loginGuard, accountingGuard]
+    },
+    {
+        path: ACC_GENERAL_INJECTION_URL,
+        component: GeneralExcelInjectionComponent,
         canActivate: [loginGuard, accountingGuard]
     },
     {
