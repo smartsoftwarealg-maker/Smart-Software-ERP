@@ -384,6 +384,7 @@
     "QUANTITY":           "الكمية",
     "LEGEND":             "المفتاح",
     "SUGGESTION":                  "إقتراح",
-    "SUGGESTIONS":                 "الإقتراحات"
+    "SUGGESTIONS":                 "الإقتراحات",
+    "CUSTOMER_CODE": "رمز العميل"
 }
 

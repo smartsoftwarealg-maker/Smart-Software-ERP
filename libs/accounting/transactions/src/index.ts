@@ -15,3 +15,4 @@ export * from './lib/accounting-reopen/can-close-opener';
 export * from './lib/balance-queries/balance-queries.component';
 export * from './lib/sales-excel-injection/sales-excel-injection.component'
 export * from './lib/transaction-matching.component/transaction-matching.component';
+export * from './lib/general-excel-injection/general-excel-injection.component';
