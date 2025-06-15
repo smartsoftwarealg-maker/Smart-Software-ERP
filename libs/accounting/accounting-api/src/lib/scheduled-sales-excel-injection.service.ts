@@ -12,5 +12,8 @@ export class ScheduledSalesExcelInjectionService  {
   upload(data: FormData): Observable<{ count: number }> {
       return this.#httpSrv.upload('/accounting/sales-injection', data);
   }
+  inject(data: FormData): Observable<{ count: number }> {
+      return this.#httpSrv.upload('/accounting/excel-injection', data);
+  }
 
  }

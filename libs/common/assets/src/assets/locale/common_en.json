@@ -387,5 +387,7 @@
     "QUANTITY":                    "Quantity",
     "LEGEND":                      "Legend",
     "SUGGESTION":                  "Suggestion",
-    "SUGGESTIONS":                 "Suggestions"
+    "SUGGESTIONS":                 "Suggestions",
+    "CUSTOMER_CODE": "Customer code",
+    "DAY":              "Day"
 }

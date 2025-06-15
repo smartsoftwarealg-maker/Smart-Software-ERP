@@ -18,7 +18,7 @@ import {
     ABS_ACC_TRANSAC_ACCOUNT_URL, ABS_ACC_TRANSACTION_MATCHING_URL,
     ABS_ACC_TRANSACTIONS_URL,
     ABS_BALANCE_QUERIES_URL, ABS_CONSOLIDATION_CENTERS_URL,
-    ABS_DEPRECIATION_GENERATION_URL,
+    ABS_DEPRECIATION_GENERATION_URL, ABS_GENERAL_GENERATION_URL,
     ABS_GENERATION_URL,
     ABS_POLICIES_URL,
     ABS_REOPEN_URL, ABS_SALES_GENERATION_URL
@@ -106,6 +106,12 @@ export const accountingNavTree: SideNavNode = {
             name: 'ACC_SALES_INJECTION',
             icon: 'fa-solid fa-file-excel',
             route: ABS_SALES_GENERATION_URL,
+            accessRights: 'ACCTransaction'
+        },
+        {
+            name: 'COMMON_EXCEL_INJECTION',
+            icon: 'fa-solid fa-file-xls',
+            route: ABS_GENERAL_GENERATION_URL,
             accessRights: 'ACCTransaction'
         },
         {

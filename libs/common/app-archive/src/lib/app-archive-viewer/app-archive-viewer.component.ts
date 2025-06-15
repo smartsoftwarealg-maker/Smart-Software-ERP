@@ -39,7 +39,7 @@ export class AppArchiveViewerComponent implements OnInit {
     private EMPLOYEE_COLS = ['COMMON_ID', 'COMMON_FIRST_NAME', 'COMMON_LAST_NAME', 'COMMON_DESCRIPTION'];
     private ASSET_COLS = ['COMMON_REFERENCE', 'ASSET_SERIAL_NUMBER', 'COMMON_DESCRIPTION', 'COMMON_DESCRIPTION'];
     private TRANSACTION_COLS = ['COMMON_NUMBER', 'COMMON_DATE', 'COMMON_AGENT', 'COMMON_DESCRIPTION'];
-    private PARTNER_COLS = ['LOGISTICS_DENOMINATION', 'LOGISTICS_CUSTOMER_CODE', 'COMMON_ADDRESS', 'COMMON_DESCRIPTION'];
+    private PARTNER_COLS = ['LOGISTICS_DENOMINATION', 'COMMON_CUSTOMER_CODE', 'COMMON_ADDRESS', 'COMMON_DESCRIPTION'];
     private shellSrv = inject(ShellService);
     private route = inject(ActivatedRoute);
     private fb = inject(FormBuilder);
