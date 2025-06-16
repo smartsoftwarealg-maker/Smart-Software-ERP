@@ -200,7 +200,7 @@
                             "with": "apps/erp/src/environments/environment.prod.ts"
                         }
                     ],
-                    "optimization": false,
+                    "optimization": true,
                     "outputHashing": "all",
                     "sourceMap": false,
                     "namedChunks": true,
@@ -578,7 +578,7 @@
                             "with": "apps/erp/src/environments/environment.ssales.ts"
                         }
                     ],
-                    "optimization": false,
+                    "optimization": true,
                     "outputHashing": "all",
                     "sourceMap": true,
                     "namedChunks": true,
@@ -605,7 +605,7 @@
                             "with": "apps/erp/src/environments/environment.asset.ts"
                         }
                     ],
-                    "optimization": false,
+                    "optimization": true,
                     "outputHashing": "all",
                     "sourceMap": true,
                     "namedChunks": true,
@@ -1040,7 +1040,7 @@
                             "with": "apps/erp/src/environments/environment.ssales.ts"
                         }
                     ],
-                    "optimization": false,
+                    "optimization": true,
                     "outputHashing": "all",
                     "sourceMap": true,
                     "namedChunks": true,
@@ -1067,7 +1067,7 @@
                             "with": "apps/erp/src/environments/environment.asset.ts"
                         }
                     ],
-                    "optimization": false,
+                    "optimization": true,
                     "outputHashing": "all",
                     "sourceMap": true,
                     "namedChunks": true,
@@ -1480,7 +1480,7 @@
                             "with": "apps/erp/src/environments/environment.ssales.ts"
                         }
                     ],
-                    "optimization": false,
+                    "optimization": true,
                     "outputHashing": "all",
                     "sourceMap": true,
                     "namedChunks": true,
@@ -1507,7 +1507,7 @@
                             "with": "apps/erp/src/environments/environment.asset.ts"
                         }
                     ],
-                    "optimization": false,
+                    "optimization": true,
                     "outputHashing": "all",
                     "sourceMap": true,
                     "namedChunks": true,
