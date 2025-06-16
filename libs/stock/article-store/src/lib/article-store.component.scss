@@ -13,56 +13,20 @@ mat-card {
 }
 
 
-.mat-column-document {
-    flex: 1 1 100px;
+.mat-column-storeName,
+.mat-column-lotNumber {
+    flex: 1 1 250px;
     padding-right: 8px !important;
     padding-left: 8px !important;
 }
 
 .mat-column-stock {
     flex: 1 1 100px;
+    justify-content: flex-end;
     padding-right: 8px !important;
     padding-left: 8px !important;
 }
 
-
-.mat-column-date {
-    flex: 1 1 100px;
-    padding-right: 8px !important;
-    padding-left: 8px !important;
-}
-
-
-.mat-column-qtyOut {
-    flex: 1 1 100px;
-    padding-right: 8px !important;
-    padding-left: 8px !important;
-}
-
-.mat-column-price {
-    flex: 1 1 100px;
-    padding-right: 8px !important;
-    padding-left: 8px !important;
-}
-
-.mat-column-number {
-    flex: 1 1 100px;
-    padding-right: 8px !important;
-    padding-left: 8px !important;
-}
-
-
-.mat-column-center {
-    flex: 1 1 100px;
-    padding-right: 8px !important;
-    padding-left: 8px !important;
-}
-
-.mat-column-value {
-    flex: 1 1 100px;
-    padding-right: 8px !important;
-    padding-left: 8px !important;
-}
 
 .pagination-container {
 

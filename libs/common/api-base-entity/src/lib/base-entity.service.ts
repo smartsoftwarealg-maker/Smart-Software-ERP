@@ -90,7 +90,6 @@ export class BaseEntityService<T> {
     }
 
     getParentId() {
-        debugger
         return this.parentId;
     }
 

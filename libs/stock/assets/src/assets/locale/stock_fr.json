@@ -88,5 +88,6 @@
     "PACKAGING_UNIT":          "Unité d'emballage",
     "PACKAGING":               "emballage",
     "USES_LOTS":               "Utilise lot",
-    "BLOCK_LOTS":              "Lots en bloc"
+    "BLOCK_LOTS":              "Lots en bloc",
+    "PRICE_LIST":              "Liste des prix"
 }

@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import {PaginationModel} from '@ss/common/api-common';
+import { Component, inject, OnInit } from '@angular/core';
+import { LoginService, PaginationModel } from '@ss/common/api-common';
 import {SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {LanguageService} from '@ss/common/api-common';
@@ -20,6 +20,7 @@ import {
 import { TranslateDirective } from '@ss/common/ui-lang';
 import { PaginationComponent } from '@ss/common/ui-pagination';
 import { DecimalPipe } from '@angular/common';
+import { OptionService } from '@ss/logistics/ui-options';
 
 @Component({
     selector: 'ss-stock-info',
@@ -29,12 +30,16 @@ import { DecimalPipe } from '@angular/common';
     imports: [MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, TranslateDirective, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, PaginationComponent, DecimalPipe]
 })
 export class UiStockInfoComponent implements OnInit {
-    public readonly pagination = PaginationModel.newInstance();
-    public data: StockInfo[] = [];
+    #loginSrv = inject(LoginService);
+    #optionsSrv = inject(OptionService);
+
+    readonly pagination = PaginationModel.newInstance();
+    data: StockInfo[] = [];
     articleReference: string;
 
     displayedColumns = [
         'store',
+        'lotNumber',
         'stock',
         'awp',
         'price1',
@@ -55,6 +60,9 @@ export class UiStockInfoComponent implements OnInit {
         });
 
         this.pagination.onChange = () => this.loadStockInfo();
+        this.#optionsSrv
+            .get(this.#loginSrv.appCtx.center)
+            .subscribe(res => this.displayedColumns = this.displayedColumns.filter(c => res.usesLots || c !== 'lotNumber'));
     }
 
     loadStockInfo() {

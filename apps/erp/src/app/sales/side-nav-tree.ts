@@ -1,6 +1,6 @@
 import {
     ABS_ADMINISTRATION_WORKFLOW_INBOX_URL,
-    ABS_FINANCE_CPAYMENTS,
+    ABS_FINANCE_CPAYMENTS, ABS_PRICE_LIST_URL,
     ABS_SALES_AGENT_URL,
     ABS_SALES_DASHBOARD_URL,
     ABS_SALES_DELIVERY_CANCEL_URL,
@@ -23,6 +23,12 @@ export const salesNavTree: SideNavNode = {
             icon: 'fas fa-user',
             route: ABS_SALES_AGENT_URL,
             accessRights: 'Agent'
+        },
+        {
+            name: 'STOCK_PRICE_LIST',
+            icon: 'fa-solid fa-money-check-dollar-pen',
+            route: ABS_PRICE_LIST_URL,
+            accessRights: 'Location'
         },
         {
             name: 'LOGISTICS_PROFORMA',

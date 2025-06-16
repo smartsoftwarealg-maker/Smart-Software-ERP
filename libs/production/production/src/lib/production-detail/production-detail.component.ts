@@ -63,7 +63,9 @@ export class ProductionDetailComponent extends BaseTransactionDetailComponent {
 
         this.isEditable = this.isEditable && !b.isValidated;
         this.saveButton.visible = this.saveButton.visible && !b.isValidated;
-         this.detailSrv.editable = this.isEditable;
+        this.detailSrv.editable = this.isEditable;
+        this.importBtn.disabled = b.id === 0;
+
         return this.formBuilder.group({
             id: [b.id],
             document: [b.document || 0],

@@ -24,11 +24,14 @@ import { CostCenterService } from '@ss/logistics/api-cost-center';
 import { DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
 import { LotInputDialogComponent } from '@ss/production/lot-input-dialog';
 import { MatDialog } from '@angular/material/dialog';
+import { Agent, AgentService } from '@ss/logistics/api-agent';
 
 @Directive()
 export abstract class BaseTransactionLinesDetailComponent extends AbstractEntityComponent<TransactionLine> implements OnInit {
-    private dialog = inject(MatDialog);
+    #dialog = inject(MatDialog);
     #costCenterSrv = inject(CostCenterService);
+    #agentSrv = inject(AgentService);
+    #priceIndex = 0;
     private locationSrv = inject(StockInfoService);
     private formBuilder = inject(UntypedFormBuilder);
     private articleSrv = inject(ArticleService);
@@ -66,7 +69,7 @@ export abstract class BaseTransactionLinesDetailComponent extends AbstractEntity
         this.storeLookup.onObjectSelected =  (s) => { this.onStore(s); this.setSalesPrice(); };
     }
 
-    preload(): Observable<Transaction> {
+    preload(): Observable<Agent> {
         return this.route
             .parent
             .parent
@@ -83,6 +86,8 @@ export abstract class BaseTransactionLinesDetailComponent extends AbstractEntity
                 }),
                 switchMap(() => this.entitySrv.getTransaction(this.parentId)),
                 tap(transac => this.agentId = transac.agent),
+                switchMap(() => this.agentId? this.#agentSrv.get(this.agentId) : of(null)),
+                tap(res => this.#priceIndex = res? Math.max(0, Math.min(4, (res.price||1) - 1)) : 0),
             );
     }
 
@@ -185,7 +190,9 @@ export abstract class BaseTransactionLinesDetailComponent extends AbstractEntity
                 .subscribe(res => {
                     const locations = res.body.filter(e => e.storeId === this.form.controls['store'].value);
                     if (locations.length > 0) {
-                        this.form.controls['price'].setValue(locations[0].price1);
+                        const reference= locations[0];
+                        const priceList = [reference.price1, reference.price2, reference.price3, reference.price4, reference.price5];
+                        this.form.controls['price'].setValue(priceList[this.#priceIndex]);
                     }
                 });
         }
@@ -219,7 +226,7 @@ export abstract class BaseTransactionLinesDetailComponent extends AbstractEntity
             reference:    [{ value: b.reference, disabled:  b.qtySatisfied > 0.0001 }],
             sourceDoc:    [b.sourceDoc],
             store:        [b.store],
-            qtyOrdered:   [{ value: b.qtyOrdered || 0, disabled: this.document > DOC_SEPARATOR_200 && this.document < DOC_SEPARATOR_800 && !(this.document === DOC_PRODUCTION && b.sourceDoc == undefined)}, Validators.required],
+            qtyOrdered:   [{ value: b.qtyOrdered || 0, disabled: this.document > DOC_SEPARATOR_200 && this.document < DOC_SEPARATOR_800 && !(this.document === DOC_PRODUCTION && (b.sourceDoc == undefined || b.qtySatisfied < 0.00001) )}, Validators.required],
             qtySatisfied: [{ value: b.qtySatisfied ||0, disabled: this.document < DOC_SEPARATOR_200 || this.document > DOC_SEPARATOR_800 || this.document === DOC_PRODUCTION}, Validators.required],
             qtyInvoiced:  [{ value: b.qtyInvoiced ||0, disabled: this.document != DOC_RECEPTION} , Validators.required],
             qtyReturned:  [{ value: b.qtyReturned ||0, disabled: true} , Validators.required],
@@ -299,7 +306,7 @@ export abstract class BaseTransactionLinesDetailComponent extends AbstractEntity
     }
 
     showLotInputDialog() {
-        const dialogRef = this.dialog.open(LotInputDialogComponent, {
+        const dialogRef = this.#dialog.open(LotInputDialogComponent, {
             width: '1000px!important',
             height: '400px',
             maxWidth: '1000px',
