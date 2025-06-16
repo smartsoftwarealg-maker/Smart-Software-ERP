@@ -79,7 +79,7 @@
                     "fileReplacements": [
                         {
                             "replace": "apps/exchange/src/environments/environment.ts",
-                            "with": "apps/exchange/src/environments/environment.prod.ts"
+                            "with": "apps/exchange/src/environments/environment.ts"
                         }
                     ],
                     "optimization": false,
