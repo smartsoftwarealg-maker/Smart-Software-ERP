@@ -183,6 +183,7 @@ export abstract class BaseTransactionLinesDetailComponent extends AbstractEntity
     }
 
     private setSalesPrice() {
+        console.log('setSalesPrice', this.document, this.form.controls['reference'].value, this.form.controls['store'].value);
         if (this.document === DOC_INVOICE || this.document === DOC_DELIVERY) {
             const reference = this.form.controls['reference'].value;
             this.locationSrv

@@ -186,6 +186,6 @@
     "CHECK_NUMBER":          "Numéro de cheque",
     "GUARANTEE":             "Garantie",
     "VF_GUARANTEE":          "Garantie avant taxes",
-    "FF_GUARANTEE":          "Garantie après taxes",
+    "FT_GUARANTEE":          "Garantie après taxes",
     "PROJECT_BLOCKED":       "Projet bloqué"
 }
