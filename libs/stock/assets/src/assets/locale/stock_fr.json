@@ -89,5 +89,6 @@
     "PACKAGING":               "emballage",
     "USES_LOTS":               "Utilise lot",
     "BLOCK_LOTS":              "Lots en bloc",
-    "PRICE_LIST":              "Liste des prix"
+    "PRICE_LIST":              "Liste des prix",
+    "RECALC_RECEPTIONS":       "Recalculer les réceptions"
 }
