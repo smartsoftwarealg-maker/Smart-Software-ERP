@@ -17,9 +17,10 @@ export class OptionService extends BaseEntityExtendedService<Option> {
         super(httpSrv, OPTION_URL);
     }
 
-    recalculatePrice(since: Date): Observable<ERR[]> {
+    recalculatePrice(since: Date, receptions?: string): Observable<ERR[]> {
         const date = isString(since)? since : dateToDmyStr(since);
-        return this.httpSrv.put(`/recalculate?date=${date}`);
+        const receptionParam = receptions ? `&receptions=${receptions}` : '';
+        return this.httpSrv.put(`/recalculate?date=${date}${receptionParam}`);
     }
 
     // recalculatePriceFetch(since: Date): Observable<ERR[]> {

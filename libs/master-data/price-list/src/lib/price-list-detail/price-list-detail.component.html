@@ -1,0 +1,39 @@
+@if (form !== null) {
+    <mat-card>
+        <mat-card-content>
+            <form [formGroup]="form">
+                <mat-form-field id="reference" class="default-50 sm-100">
+                    <mat-label translate>COMMON_REFERENCE</mat-label>
+                    <input matInput formControlName="reference" type="text" autofocus maxlength="4">
+                </mat-form-field>
+
+                <mat-form-field id="description" class="default-50 sm-100">
+                    <mat-label translate>COMMON_REFERENCE</mat-label>
+                    <input matInput formControlName="description" type="text" autofocus maxlength="4">
+                </mat-form-field>
+
+                <mat-form-field id="lotNumber" class="default-50 sm-100">
+                    <mat-label translate>STOCK_LOT_NUMBER</mat-label>
+                    <input matInput formControlName="lotNumber" type="text" required>
+                </mat-form-field>
+
+                <mat-form-field id="price1" class="default-50 sm-100">
+                    <mat-label ><span translate>STOCK_PRICE</span>1</mat-label>
+                    <input matInput formControlName="price1" type="number" required>
+                </mat-form-field>
+
+                <mat-form-field id="price2" class="default-50 sm-100">
+                    <mat-label ><span translate>STOCK_PRICE</span>2</mat-label>
+                    <input matInput formControlName="price2" type="number" required>
+                </mat-form-field>
+
+                <mat-form-field id="price3" class="default-50 sm-100">
+                    <mat-label ><span translate>STOCK_PRICE</span>3</mat-label>
+                    <input matInput formControlName="price3" type="number" required>
+                </mat-form-field>
+
+            </form>
+
+        </mat-card-content>
+    </mat-card>
+}

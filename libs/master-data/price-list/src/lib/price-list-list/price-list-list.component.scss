@@ -1,0 +1,51 @@
+.size {
+    width: 90%;
+    max-width: 1200px;
+    margin: 4px auto 0;
+}
+
+.div_table {
+    height: calc(100% - 70px);
+    overflow: auto;
+}
+
+.main-table {
+    width: 100%;
+}
+
+.content-div {
+    width: 600px;
+    min-height: 320px;
+}
+
+
+.mat-column-reference {
+    flex: 0 1 120px ;
+}
+.mat-column-storeName,
+.mat-column-lotNumber {
+    flex: 0 1 200px ;
+    padding-right: 8px !important;
+    padding-left: 8px !important;
+}
+
+.mat-column-description {
+    flex: 3 1 250px ;
+    padding-right: 8px !important;
+    padding-left: 8px !important;
+}
+
+.mat-column-name {
+    flex: 0 1 100px;
+    justify-content: flex-end;
+}
+
+.pagination-container {
+
+    ss-pagination {
+        left: 0;
+        right: 0;
+        position: sticky;
+        margin: auto;
+    }
+}

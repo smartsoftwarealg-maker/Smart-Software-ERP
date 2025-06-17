@@ -20,3 +20,18 @@
     flex-grow: 0;
 }
 
+
+.mat-column-lotNumber,
+.mat-column-store {
+    flex: 1 0 150px;
+    padding-right: 8px !important;
+}
+
+.mat-column-stock,
+.mat-column-awp,
+.mat-column-price1,
+.mat-column-price2,
+.mat-column-price3 {
+    flex: 1 0 150px;
+    justify-content: flex-end;
+}

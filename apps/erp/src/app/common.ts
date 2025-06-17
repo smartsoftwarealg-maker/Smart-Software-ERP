@@ -231,7 +231,8 @@ export const SERVICE_CLASSES_URL = 'service-classes';
 export const COMPLEMENT_INVOICE_URL = 'complement-invoice';
 export const SALES_CATEGORY_URL = 'sales-categories';
 export const SS_COMPLAINTS_URL     = 'sales-complaints';
-export const SS_SUGGESTIONS_URL     = 'sales-suggestions';
+export const SS_SUGGESTIONS_URL    = 'sales-suggestions';
+export const SALES_PRICE_LIST_URL  = 'sales-pricelist';
 
 // HR
 export const HR_CATEGORIES_URL = 'categories';
@@ -960,6 +961,7 @@ export const ABS_SALES_DASHBOARD_URL = '/' + [MAIN_PAGE_URL, SALES_APP_URL, DASH
 export const ABS_SALES_AGENT_URL = '/' + [MAIN_PAGE_URL, SALES_APP_URL, STOCK_AGENT_URL].join('/');
 export const ABS_SALES_SERVICE_URL = '/' + [MAIN_PAGE_URL, SALES_APP_URL, SALES_SERVICE_ARTICLE_URL].join('/');
 export const ABS_SALES_REPORT_PRIVILEGE_URL = '/' + [MAIN_PAGE_URL, SALES_APP_URL, ADMINISTRATION_REPORT_PRIVILEGE_URL].join('/');
+export const ABS_PRICE_LIST_URL = '/' + [MAIN_PAGE_URL, SALES_APP_URL, SALES_PRICE_LIST_URL].join('/');
 
 //services
 export const ABS_SERVICE_CLASSES_URL = '/' + [MAIN_PAGE_URL, SERVICE_APP_URL, SERVICE_CLASSES_URL].join('/');

@@ -3,7 +3,7 @@ import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {Article} from '@ss/master-data/api-article';
-import { MaterialModule, PaginationModel } from '@ss/common/api-common';
+import { LoginService, MaterialModule, PaginationModel } from '@ss/common/api-common';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {LotsService, Lot} from '@ss/common/api-lookup';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -18,6 +18,7 @@ import { MatTooltip } from '@angular/material/tooltip';
 import { MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from '@angular/material/table';
 import { PaginationComponent } from '@ss/common/ui-pagination';
 import { TranslatePipe } from '@ss/common/ui-lang';
+import { OptionService } from '@ss/logistics/ui-options';
 
 interface StoreForm {
     id: FormControl<number>;
@@ -41,11 +42,13 @@ interface StoreForm {
     imports: [MaterialModule, MatCard, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, UiAutoCompleteComponent, NgIf, MatError, MatMiniFabButton, MatTooltip, MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, PaginationComponent, TranslatePipe]
 })
 export class ArticleStoreComponent implements OnInit {
-    private lotsService = inject(LotsService);
+    #loginSrv = inject(LoginService);
+    #optionsSrv = inject(OptionService);
+    #lotsService = inject(LotsService);
 
     article_!: Article;
 
-    storeAutoCompleteModel: DefaultAutoCompleteModel<Lot> = new DefaultAutoCompleteModel<Lot>(this.lotsService);
+    storeAutoCompleteModel: DefaultAutoCompleteModel<Lot> = new DefaultAutoCompleteModel<Lot>(this.#lotsService);
     storeForm: FormGroup<StoreForm> = new FormGroup({
         id: new FormControl(0, {nonNullable: true}),
         storeId: new FormControl(0),
@@ -67,6 +70,7 @@ export class ArticleStoreComponent implements OnInit {
     selectedStore: ArticleStore = null;
     displayedColumns = [
         'storeName',
+        'lotNumber',
         'stock'
     ];
 
@@ -97,6 +101,9 @@ export class ArticleStoreComponent implements OnInit {
             blockedLot: false
         });
         this.loadArticleStore();
+        this.#optionsSrv
+            .get(this.#loginSrv.appCtx.center)
+            .subscribe(res => this.displayedColumns = this.displayedColumns.filter(c => res.usesLots || c !== 'lotNumber'));
     }
 
     @Input() set article(article: Article) {

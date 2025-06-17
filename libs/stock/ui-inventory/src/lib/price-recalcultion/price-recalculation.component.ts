@@ -34,15 +34,12 @@ interface EvalPrice {
         MaterialModule,
         MatCard,
         MatCardContent,
-        NgIf,
         FormsModule,
         ReactiveFormsModule,
         MatFormField,
         MatLabel,
         MatSelect,
-        NgFor,
         MatOption,
-        MatError,
         DatePickerComponent,
         MatButton,
         MatTable,
@@ -55,7 +52,7 @@ interface EvalPrice {
         TranslatePipe,
         TranslateDirective,
         MatHeaderCellDef,
-        MatCellDef
+        MatCellDef,
     ]
 })
 export class PriceRecalculationComponent extends BaseEntityDetailComponent<Option> implements OnInit {
@@ -95,12 +92,13 @@ export class PriceRecalculationComponent extends BaseEntityDetailComponent<Optio
 
     public override setupForm(a: Option) {
         return this.formBuilder.group({
-            id: [this.loginSrv.appCtx.center],
-            eval_price: [{value: a.evalPrice || 1, disabled: true }],
-            mainStore: [a.mainStore],
-            generate_GL: [a.generate_GL],
-            inventory_date: [new Date(), Validators.required],
-            defaultCurrency: [a.defaultCurrency, Validators.required]
+            id:               [this.loginSrv.appCtx.center],
+            eval_price:       [{value: a.evalPrice || 1, disabled: true }],
+            mainStore:        [a.mainStore],
+            generate_GL:      [a.generate_GL],
+            inventory_date:   [new Date(new Date().getFullYear(), 0, 1), Validators.required],
+            defaultCurrency:  [a.defaultCurrency, Validators.required],
+            recalcReceptions: [false]
         });
     }
 
@@ -122,7 +120,7 @@ export class PriceRecalculationComponent extends BaseEntityDetailComponent<Optio
         const value = this.form.value;
         this.processing = true;
         this.optionSrv
-            .recalculatePrice(value.inventory_date)
+            .recalculatePrice(value.inventory_date, value.recalcReceptions ? 'true' : 'false')
             .subscribe({
                 next: res => {
                     this.data = res;

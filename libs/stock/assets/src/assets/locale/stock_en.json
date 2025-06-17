@@ -68,7 +68,7 @@
    "FINAL_PRODUCTS":           "Final products",
     "SUBCLASS":                "Subclass",
     "PURCHASE_UNIT":           "Purchase unit",
-    "VAT2":                    "TVA2",
+    "VAT2":                    "Other tax",
     "LOT_MANAGEMENT":          "Lot management",
     "EDIT_LOT":                "Edit lot",
     "CREATION_DATE":           "Creation date",
@@ -89,5 +89,7 @@
     "PACKAGING_UNIT":          "Packaging unit",
     "PACKAGING":               "Packaging",
     "USES_LOTS":               "Uses lots",
-    "BLOCK_LOTS":              "Block lots"
+    "BLOCK_LOTS":              "Block lots",
+    "PRICE_LIST":              "Price list",
+    "RECALC_RECEPTIONS":       "Recalculate receptions"
 }

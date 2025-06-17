@@ -431,6 +431,9 @@
             "@ss/master-data/cmms-routing": [
                 "libs/master-data/cmms-routing/src/index.ts"
             ],
+            "@ss/master-data/price-list": [
+                "libs/master-data/price-list/src/index.ts"
+            ],
             "@ss/master-data/ui-article": [
                 "libs/master-data/ui-article/src/index.ts"
             ],

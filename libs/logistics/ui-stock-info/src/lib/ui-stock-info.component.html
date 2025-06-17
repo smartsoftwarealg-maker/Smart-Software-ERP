@@ -5,7 +5,14 @@
             <ng-container matColumnDef="store">
                 <mat-header-cell *matHeaderCellDef translate>STOCK_STORE</mat-header-cell>
                 <mat-cell *matCellDef="let e">
-                    {{e.store}}
+                    {{e.storeName}}
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="lotNumber">
+                <mat-header-cell *matHeaderCellDef translate>STOCK_LOT_NUMBER</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{e.lotNumber}}
                 </mat-cell>
             </ng-container>
 

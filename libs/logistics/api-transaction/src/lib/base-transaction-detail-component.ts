@@ -56,14 +56,6 @@ export abstract class BaseTransactionDetailComponent extends BaseEntityDetailCom
 
     @ViewChild(RouterOutlet) outlet: RouterOutlet | null = null;
 
-    private importBtn: ToolbarButton = {
-        disabled: false,
-        icon: 'fas fa-file-import',
-        keepOnToolbar: KeepOnToolbar.DYNAMIC,
-        label: 'LOGISTICS_IMPORT_DOCUMENT',
-        visible: true,
-        click: () => this.importDocument()
-    };
 
     private sendBtn: ToolbarButton = {
         disabled: false,
@@ -74,6 +66,14 @@ export abstract class BaseTransactionDetailComponent extends BaseEntityDetailCom
         click: () => this.sendMessage()
     };
 
+    protected importBtn: ToolbarButton = {
+        disabled: false,
+        icon: 'fas fa-file-import',
+        keepOnToolbar: KeepOnToolbar.DYNAMIC,
+        label: 'LOGISTICS_IMPORT_DOCUMENT',
+        visible: true,
+        click: () => this.importDocument()
+    };
     protected lookupsSrv = inject(LookupsService);
 
     public payModeAutoCompleteModel = new DefaultAutoCompleteModel<PayMethod>(this.payMethodSrv);
@@ -244,7 +244,7 @@ export abstract class BaseTransactionDetailComponent extends BaseEntityDetailCom
         this.isEditable = this.isEditable && !b.isValidated;
         this.saveButton.visible = this.saveButton.visible && !b.isValidated;
         this.importBtn.visible = b.id > 0 && !b.isValidated;
-        this.importBtn.disabled = this.requireAgentToImportDocument() && (b.agent === null || b.agent === undefined);
+        this.importBtn.disabled = (this.requireAgentToImportDocument() && (b.agent === null || b.agent === undefined))|| b.id === 0;
         this.detailSrv.editable = this.isEditable;
         this.transaction = b;
         return this.formBuilder.group({

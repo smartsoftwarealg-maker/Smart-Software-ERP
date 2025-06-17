@@ -7,7 +7,7 @@ import {
     COMMON_REPORTS_URL,
     DASHBOARD_URL,
     docInfoRoutes, LOGISTICS_AGENT_URL,
-    SALES_AD_URL, SALES_SERVICE_ARTICLE_URL
+    SALES_AD_URL, SALES_PRICE_LIST_URL, SALES_SERVICE_ARTICLE_URL
 } from '../common';
 import { OrderListComponent } from '@ss/sales/ui-sales-order';
 import { OrderDetailComponent } from '@ss/sales/ui-sales-order';
@@ -45,6 +45,7 @@ import {
 import { ServiceArticleDetailComponent, ServiceArticleListComponent } from '@ss/service-sales/service-articles';
 import { AGENT_ARCHIVES } from '@ss/common/app-archive';
 import { ReportPrivilegesComponent } from '@common/report-privileges';
+import { PriceListDetailComponent, PriceListListComponent } from '@ss/master-data/price-list';
 
 export const lookupRoutes: Routes = [];
 
@@ -331,6 +332,24 @@ export const mainRoutes: Routes = [
         data: { reportBase: 'sales' },
         component: ReportViewComponent,
         canActivate: [loginGuard]
+    },
+    {
+        path: SALES_PRICE_LIST_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: PriceListListComponent,
+                canActivate: [loginGuard],
+                // children: docInfoRoutes
+            },
+            {
+                path: ':id',
+                component: PriceListDetailComponent,
+                canActivate: [loginGuard],
+                canDeactivate: [CanDeactivateService],
+                // children: docInfoRoutes
+            },
+        ]
     },
     {
         path: SALES_SERVICE_ARTICLE_URL,

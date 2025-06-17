@@ -34,8 +34,7 @@ import { ManufacturedArticleService } from '@ss/master-data/api-article';
 })
 export class ProductionLinesDetailComponent
     extends BaseTransactionLinesDetailComponent
-    implements OnInit, OnDestroy
-{
+    implements OnInit, OnDestroy {
     #articleSrv = inject(ManufacturedArticleService);
 
     override articleLookup: ArticleAutoCompleteModel = new ArticleAutoCompleteModel(this.#articleSrv);
