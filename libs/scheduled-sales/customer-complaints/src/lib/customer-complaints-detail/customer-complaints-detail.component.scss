@@ -1,0 +1,32 @@
+mat-card {
+    width: 90%;
+    max-width: 1000px;
+    margin: 1em auto;
+    //padding: 1em;
+    border-radius: 1.4em;
+}
+
+fieldset {
+    margin: 0.5em;
+    border-radius: 1.4em;
+}
+
+.image {
+    flex: 1 1 200px;
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 8px;
+}
+
+.btn-div {
+    height: fit-content;
+    display: flex;
+    width: 250px;
+    //justify-content: space-between;
+}
+
+.btn {
+    margin: auto;
+}
