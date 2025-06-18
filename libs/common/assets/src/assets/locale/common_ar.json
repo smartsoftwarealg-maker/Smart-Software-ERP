@@ -383,8 +383,9 @@
     "DESTINATION_STORE":  "وجهة المخزن",
     "QUANTITY":           "الكمية",
     "LEGEND":             "المفتاح",
-    "SUGGESTION":                  "إقتراح",
-    "SUGGESTIONS":                 "الإقتراحات",
-    "CUSTOMER_CODE": "رمز العميل"
+    "SUGGESTION":         "إقتراح",
+    "SUGGESTIONS":        "الإقتراحات",
+    "CUSTOMER_CODE":      "رمز العميل",
+    "MAX_FILE_SIZE_65KB":  "أقصى حجم للملف 65كب"
 }
 

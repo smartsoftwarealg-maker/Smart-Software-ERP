@@ -384,10 +384,11 @@
     "SOURCE_ARTICLE":     "Source Article",
     "DESTINATION_STORE":  "Destination Store",
     "DESTINATION_ARTICLE":"Destination Article",
-    "QUANTITY":                    "Quantity",
-    "LEGEND":                      "Legend",
-    "SUGGESTION":                  "Suggestion",
-    "SUGGESTIONS":                 "Suggestions",
-    "CUSTOMER_CODE": "Customer code",
-    "DAY":              "Day"
+    "QUANTITY":           "Quantity",
+    "LEGEND":             "Legend",
+    "SUGGESTION":         "Suggestion",
+    "SUGGESTIONS":        "Suggestions",
+    "CUSTOMER_CODE":      "Customer code",
+    "DAY":                "Day",
+    "MAX_FILE_SIZE_65KB": "Max file size 65Kb"
 }
