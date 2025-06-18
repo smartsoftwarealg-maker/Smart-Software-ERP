@@ -9,6 +9,7 @@ export interface CustomerComplaint {
     complaintId?: string;
     complaintType?: number|string;
     complaint?: string;
+    image?: number[];
     answer?: string;
     agentDescription?: string;
     complaintDescription?: string;
