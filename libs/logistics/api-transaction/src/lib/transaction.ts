@@ -97,6 +97,7 @@ export interface Transaction {
     deliveryTime?: number;
     vfGuarantee?: number;
     ftGuarantee?: number;
+    advancement?: number
 }
 
 export interface ExtraCost {

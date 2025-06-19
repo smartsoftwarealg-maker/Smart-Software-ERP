@@ -113,37 +113,41 @@
                                 </mat-form-field>
                             </mat-tab>
                         } @else {
-                          <mat-tab>
-                            <ng-template mat-tab-label>
-                                <span translate>LOGISTICS_DISCOUNT</span>
-                            </ng-template>
-                            <mat-form-field id="discountDescription" class="default-50 sm-100">
-                                <mat-label translate>COMMON_DESCRIPTION</mat-label>
-                                <input matInput type="text" formControlName="discountDescription">
-                            </mat-form-field>
-                            <mat-form-field id="fixedDiscount" class="default-25 sm-50">
-                                <mat-label translate>LOGISTICS_DISCOUNT</mat-label>
-                                <input matInput formControlName="discount" type="number">
-                            </mat-form-field>
-                            <mat-form-field id="fixedDiscountVAT" class="default-25 sm-50">
-                                <mat-label translate>LOGISTICS_VAT</mat-label>
-                                <input matInput formControlName="fixedDiscountVAT" type="number">
-                            </mat-form-field>
-                        </mat-tab>
                             <mat-tab>
-                            <ng-template mat-tab-label>
-                                <span translate>LOGISTICS_GUARANTEE</span>
-                            </ng-template>
-                            <mat-form-field id="Logistics_VF" class="default-25 sm-50">
-                                <mat-label translate>LOGISTICS_VF_GUARANTEE</mat-label>
-                                <input matInput formControlName="vfGuarantee" type="number">
-                            </mat-form-field>
-                            <mat-form-field id="Logistics_FF" class="default-25 sm-50">
-                                <mat-label translate>LOGISTICS_FT_GUARANTEE</mat-label>
-                                <input matInput formControlName="ftGuarantee" type="number">
-                            </mat-form-field>
-                        </mat-tab>
-                       }
+                                <ng-template mat-tab-label>
+                                    <span translate>LOGISTICS_DISCOUNT</span>
+                                </ng-template>
+                                <mat-form-field id="discountDescription" class="default-50 sm-100">
+                                    <mat-label translate>COMMON_DESCRIPTION</mat-label>
+                                    <input matInput type="text" formControlName="discountDescription">
+                                </mat-form-field>
+                                <mat-form-field id="fixedDiscount" class="default-25 sm-50">
+                                    <mat-label translate>LOGISTICS_DISCOUNT</mat-label>
+                                    <input matInput formControlName="discount" type="number">
+                                </mat-form-field>
+                                <mat-form-field id="fixedDiscountVAT" class="default-25 sm-50">
+                                    <mat-label translate>LOGISTICS_VAT</mat-label>
+                                    <input matInput formControlName="fixedDiscountVAT" type="number">
+                                </mat-form-field>
+                            </mat-tab>
+                            <mat-tab>
+                                <ng-template mat-tab-label>
+                                    <span translate>LOGISTICS_GUARANTEE</span>
+                                </ng-template>
+                                <mat-form-field id="Logistics_VF" class="default-25 sm-50">
+                                    <mat-label translate>LOGISTICS_VF_GUARANTEE</mat-label>
+                                    <input matInput formControlName="vfGuarantee" type="number">
+                                </mat-form-field>
+                                <mat-form-field id="Logistics_FF" class="default-25 sm-50">
+                                    <mat-label translate>LOGISTICS_FT_GUARANTEE</mat-label>
+                                    <input matInput formControlName="ftGuarantee" type="number">
+                                </mat-form-field>
+                                <mat-form-field id="Advancement" class="default-25 sm-50">
+                                    <mat-label translate>MISSION_ADVANCEMENT</mat-label>
+                                    <input matInput formControlName="advancement" type="number">
+                                </mat-form-field>
+                            </mat-tab>
+                        }
                         <mat-tab>
                             <ng-template mat-tab-label>
                                 <span translate>COMMON_MEMO</span>

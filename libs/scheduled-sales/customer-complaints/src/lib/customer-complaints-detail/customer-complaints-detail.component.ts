@@ -25,7 +25,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatOptionModule } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
-import { TranslateDirective } from '@ss/common/ui-lang';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 import { Lookup } from '@ss/common/api-lookup';
 import { Agent, AgentService } from '@ss/logistics/api-agent';
 import { ImageInputComponent, ImageModel } from '@ss/common/ui-image-input';
@@ -49,9 +49,10 @@ import { ImageInputComponent, ImageModel } from '@ss/common/ui-image-input';
         UiAutoCompleteComponent,
         TranslateDirective,
         ImageInputComponent,
+        TranslatePipe,
     ],
     templateUrl: './customer-complaints-detail.component.html',
-    styleUrl: './customer-complaints-detail.component.css',
+    styleUrl: './customer-complaints-detail.component.scss',
 })
 export class CustomerComplaintsDetailComponent extends BaseEntityDetailComponent<CustomerComplaint> {
     private agentSrv = inject(AgentService);
@@ -124,20 +125,23 @@ export class CustomerComplaintsDetailComponent extends BaseEntityDetailComponent
             agentDescription: [{ value: b.agentDescription, disabled: true }],
         });
     }
-//this.langSrv.translate('COMMON_MAX_FILE_SIZE_1MB')
+
     override save() {
         if (this.imageModel.getBlob()) {
-            if(this.imageModel.getBlob().size > 65000){
-                this.snackBarSrv.showMessage('COMMON_MAX_FILE_SIZE_65KB')
+            if (this.imageModel.getBlob().size > 65000) {
+                this.snackBarSrv.showMessage('COMMON_MAX_FILE_SIZE_65KB');
                 return;
             }
-            this.imageModel.getBlob().arrayBuffer().then((buffer) => {
-                    this.img = Array.from(new Uint8Array(buffer)) ;
+            this.imageModel
+                .getBlob()
+                .arrayBuffer()
+                .then((buffer) => {
+                    this.img = Array.from(new Uint8Array(buffer));
                     super.save();
                 });
-        }else {
-            this.img = null
-            super.save()
+        } else {
+            this.img = null;
+            super.save();
         }
     }
 
@@ -158,5 +162,14 @@ export class CustomerComplaintsDetailComponent extends BaseEntityDetailComponent
             }
             ctrl.updateValueAndValidity();
         }
+    }
+
+    upload(){
+        document.getElementById('file-upload').click()
+    }
+
+    delete(){
+        this.imageModel.deleteImage()
+        this.imageModel.setImageBlob(null)
     }
 }

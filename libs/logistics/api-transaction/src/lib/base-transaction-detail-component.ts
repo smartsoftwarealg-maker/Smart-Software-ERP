@@ -279,7 +279,8 @@ export abstract class BaseTransactionDetailComponent extends BaseEntityDetailCom
             plateNumber2: [b.plateNumber2],
             deliveryTime: [b.deliveryTime],
             vfGuarantee: [b.vfGuarantee],
-            ftGuarantee: [b.ftGuarantee]
+            ftGuarantee: [b.ftGuarantee],
+            advancement: [b.advancement]
         });
     }
 
