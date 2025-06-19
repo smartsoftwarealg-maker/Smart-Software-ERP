@@ -1,0 +1,37 @@
+
+// keep the material design specs
+.mat-row, .mat-header-row {
+    padding-right: 16px;
+    padding-left: 16px;
+}
+
+.container_div {
+    width: 100%;
+    max-width: 1200px;
+    height: calc(100% - 70px);
+    min-height: 12em;
+    overflow-x: auto;
+    margin: 0 auto;
+}
+
+
+.mat-column-reference {
+    flex: 1 1 190px;
+    justify-content: flex-start;
+}
+.mat-column-description {
+    flex: 2 1 250px;
+    justify-content: flex-start;
+}
+.mat-column-qty,
+.mat-column-price,
+.mat-column-value {
+    flex: 1 1 150px;
+    justify-content: flex-end;
+}
+
+mat-table {
+    width: 100%;
+    min-height: 10em;
+    min-width: 1100px;
+}

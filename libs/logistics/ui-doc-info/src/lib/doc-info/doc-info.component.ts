@@ -146,6 +146,12 @@ export class DocInfoComponent {
                     description: 'PROD_MRP_REPORT',
                     url: 'mrp',
                     paramsProvided: (p: string[]) => p.includes('prodDetail')
+                },
+                {
+                    name: 'consumptions',
+                    description: 'STOCK_CONSUMPTION',
+                    url: 'consumptions',
+                    paramsProvided: (p: string[]) => p.includes('prodDetail')
                 }
             ]
         },
@@ -192,6 +198,7 @@ export class DocInfoComponent {
         if (this.selectedEntry != null) {
             delete this.params_['compensated'];
             this.params_.compensated = this.selectedEntry.name === 'debts_2' ? 'false' : 'true';
+            console.log(this.params_);
             this.router.navigate([this.selectedEntry.url],
                 {
                     relativeTo: this.route,

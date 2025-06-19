@@ -33,7 +33,7 @@ import {
     ProductionListComponent,
 } from '@ss/production/production';
 import { loginGuard } from '../erp-guards';
-import { MrpComponent } from '@ss/production/mrp';
+import { MrpComponent, ProductionConsumptionComponent } from '@ss/production/mrp';
 import { BomComponent } from '@ss/master-data/ui-article';
 import {
     ArticleTypeDetailComponent,
@@ -162,7 +162,8 @@ export const prodRoutes: Routes = [
                     {
                         path: 'lines-list',
                         component: ProductionLinesListComponent,
-                        children: docInfoRoutes,
+                        children: [...docInfoRoutes, { path: 'consumptions', component: ProductionConsumptionComponent}],
+
                     },
                     {
                         path: 'lines-detail',

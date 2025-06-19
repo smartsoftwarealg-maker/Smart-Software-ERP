@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, inject, Input, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MRP, MRP_URL } from '../../../../../production/mrp/src/lib/api/mrp-api';
 import { HttpService } from '@ss/common/api-common';
@@ -25,6 +25,10 @@ import { HttpParams } from '@angular/common/http';
     standalone: true
 })
 export class UiMrpComponent implements OnInit {
+    private http = inject(HttpService);
+    private shellSrv = inject(ShellService);
+    private route = inject(ActivatedRoute);
+
     public data: MRP[] = [];
     displayedColumns: string[] = [
         'reference',
@@ -35,8 +39,6 @@ export class UiMrpComponent implements OnInit {
         'toOrder'
     ];
 
-    constructor(private http: HttpService, private shellSrv: ShellService, private route:ActivatedRoute) {
-    }
 
     getData(id:number |null, lineId?:number): Observable<MRP[]> {
         let p = new HttpParams() ;
