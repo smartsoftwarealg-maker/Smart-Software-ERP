@@ -34,8 +34,7 @@ export class MrpComponent implements OnInit {
         'toOrder'
     ];
 
-    constructor(private http: HttpService, private shellSrv: ShellService) {
-    }
+    constructor(private http: HttpService, private shellSrv: ShellService) { }
 
     getData(): Observable<MRP[]> {
         return this.http.get<MRP[]>(MRP_URL);

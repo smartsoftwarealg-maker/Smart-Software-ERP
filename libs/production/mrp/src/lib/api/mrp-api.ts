@@ -8,3 +8,12 @@ export interface MRP {
     purchaseOrder: number;
     inventory: number;
 }
+
+export interface ProductionConsumption {
+    id: number;
+    reference: string;
+    description: string;
+    qty: number;
+    price: number;
+    value: number;
+}

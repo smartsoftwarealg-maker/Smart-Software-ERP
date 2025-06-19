@@ -15,6 +15,7 @@ import {AgentAssetsListComponent} from '@ss/assets-component';
 import { DocumentSourcesComponent } from 'logistics/ui-document-sources';
 import { UiTransactionlineQuantitiesComponent } from '@ss/logistics/quantities';
 import { UiMrpComponent } from '@ss/logistics/ui-mrp';
+import { ProductionConsumptionComponent } from '@ss/production/mrp';
 
 // common
 export const LOOKUPS_URL = 'lookups';
