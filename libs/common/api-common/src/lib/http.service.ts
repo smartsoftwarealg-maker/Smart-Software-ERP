@@ -181,7 +181,7 @@ export class HttpService {
                 {responseType: 'text', headers: HttpService.getHeaders()});
     }
 
-    public put(url: string, data?: any | null, timeout = 0): Observable<any> {
+    public put(url: string, data?: any | null): Observable<any> {
         if (this.baseUrl === undefined) {
             throw new Error('HTTP SERVICE NOT READY');
         }
@@ -341,8 +341,8 @@ export class HttpService {
         } else if (company === 'SCH_SCAKE') {
             this.baseUrl = 'https://client2.scake.dz';
         } else {
-            this.baseUrl = 'https://demo.smartsoftware-dz.com:4430';
-            // this.baseUrl = 'http://localhost:8080'; // default to local development
+            // this.baseUrl = 'https://demo.smartsoftware-dz.com:4430';
+            this.baseUrl = 'http://localhost:8080'; // default to local development
         }
     }
 }

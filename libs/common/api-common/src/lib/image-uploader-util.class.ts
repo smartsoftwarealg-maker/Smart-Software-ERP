@@ -16,6 +16,7 @@ export class ImageUploaderUtil {
             this.imgBuff = new Uint8Array(<ArrayBuffer>(ev.target.result));
 
             const name = this.selectedFile.name;
+
             const idx = name.lastIndexOf('.');
             const docType = idx > 0 ? name.substring(idx + 1) : null;
             if (docType) {

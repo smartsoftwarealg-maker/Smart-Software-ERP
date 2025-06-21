@@ -18,7 +18,7 @@ import {
 } from '@ss/common/ui-auto-complete';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { LoginService, MaterialModule } from '@ss/common/api-common';
+import { ImageUploaderUtil, LoginService, MaterialModule } from '@ss/common/api-common';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
@@ -29,6 +29,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 import { Lookup } from '@ss/common/api-lookup';
 import { Agent, AgentService } from '@ss/logistics/api-agent';
 import { ImageInputComponent, ImageModel } from '@ss/common/ui-image-input';
+import { concatMap, from } from 'rxjs';
 
 @Component({
     selector: 'ss-customer-complaints-detail',
@@ -48,7 +49,6 @@ import { ImageInputComponent, ImageModel } from '@ss/common/ui-image-input';
         ReactiveFormsModule,
         UiAutoCompleteComponent,
         TranslateDirective,
-        ImageInputComponent,
         TranslatePipe,
     ],
     templateUrl: './customer-complaints-detail.component.html',
@@ -58,8 +58,10 @@ export class CustomerComplaintsDetailComponent extends BaseEntityDetailComponent
     private agentSrv = inject(AgentService);
     private loginSrv = inject(LoginService);
     private complaintTypeSrv = inject(ComplaintTypeService);
-    private img: number[];
     public imageModel: ImageModel;
+    public fileName = '';
+    public uploadUtil: ImageUploaderUtil = new ImageUploaderUtil();
+
     complaintLookup = new DefaultAutoCompleteModel(this.complaintTypeSrv);
     public agentLookup = new DefaultAutoCompleteModel<Agent>(
         this.agentSrv,
@@ -95,6 +97,8 @@ export class CustomerComplaintsDetailComponent extends BaseEntityDetailComponent
             type: 'image',
         });
         this.imageModel.setImageBlob(img, false);
+        ImageUploaderUtil.toBase64(img, (s: string) => this.uploadUtil.imgSrc = s);
+
         return this.formBuilder.group({
             id: [b.id],
             centerId: [
@@ -126,29 +130,10 @@ export class CustomerComplaintsDetailComponent extends BaseEntityDetailComponent
         });
     }
 
-    override save() {
-        if (this.imageModel.getBlob()) {
-            if (this.imageModel.getBlob().size > 65000) {
-                this.snackBarSrv.showMessage('COMMON_MAX_FILE_SIZE_65KB');
-                return;
-            }
-            this.imageModel
-                .getBlob()
-                .arrayBuffer()
-                .then((buffer) => {
-                    this.img = Array.from(new Uint8Array(buffer));
-                    super.save();
-                });
-        } else {
-            this.img = null;
-            super.save();
-        }
-    }
-
     override readForm(): CustomerComplaint {
         const value = this.form.getRawValue();
         value.complaintType = +value.complaintType;
-        value.image = this.img;
+        value.image = null;
         return value;
     }
 
@@ -164,12 +149,45 @@ export class CustomerComplaintsDetailComponent extends BaseEntityDetailComponent
         }
     }
 
-    upload(){
-        document.getElementById('file-upload').click()
-    }
 
     delete(){
-        this.imageModel.deleteImage()
-        this.imageModel.setImageBlob(null)
+        this.entitySrv
+            .deleteImage(this.form.value.id)
+            .subscribe({
+                complete: () => {
+                    this.snackBarSrv.showSuccessMessage();
+                    this.uploadUtil.imgSrc = null;
+                }
+            });
     }
+
+    onChange(e: any) {
+        this.fileName = e[0]?.name;
+    }
+
+    onFileSelected(event: any) {
+        this.shellSrv.setLoading(true);
+        this.uploadUtil.onFileSelected(event);
+        const selectedFile = event.target.files[0];
+        const formData = new FormData();
+        const rawValue = this.form.getRawValue();
+        formData.append('filename', selectedFile);
+        formData.append('id', rawValue.id);
+        this.uploadUtil.loadingRate = 0;
+        formData.append('file', selectedFile);
+
+      this.entitySrv
+          .upload(this.form.value.id, formData)
+          .subscribe({
+            complete: () => {
+                this.shellSrv.setLoading(false);
+                this.snackBarSrv.showSuccessMessage();
+            },
+              error: (e) => {
+                  this.shellSrv.setLoading(false);
+                  throw e;
+              }
+        });
+    }
+
 }

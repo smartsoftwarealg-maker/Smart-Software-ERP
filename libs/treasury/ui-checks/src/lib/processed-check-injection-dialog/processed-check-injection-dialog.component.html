@@ -7,12 +7,13 @@
 
         <span translate>{{ fileName || "COMMON_NO_FILE_SELECTED" }} </span>
 
-        <button mat-mini-fab color="primary"
-                class="upload-btn"
-                (click)="fileUpload.click()"
-                *ngIf="!uploadProgress">
-            <i class="fas fa-paperclip"></i>
-        </button>
+        @if (!uploadProgress) {
+            <button mat-mini-fab color="primary"
+                    class="upload-btn"
+                    (click)="fileUpload.click()">
+                <i class="fas fa-paperclip"></i>
+            </button>
+        }
     </div>
 </fieldset>
 <!--<div class="progress">-->
@@ -50,7 +51,7 @@
         </mat-form-field>
 
 
-        <mat-form-field  class="default-50" required>
+        <mat-form-field class="default-50" required>
             <mat-label translate>COMMON_AMOUNT</mat-label>
             <mat-select formControlName="amount">
                 <mat-option *ngFor="let c of columns" [value]="c">{{ c }}</mat-option>
