@@ -35,6 +35,7 @@ export class LocalExtraCostDetailComponent extends BaseChildEntityDetailComponen
     private supplierSrv = inject(SupplierService);
     private serviceArticleSrv = inject(ServiceArticleService);
     private fb = inject(FormBuilder);
+    private parentId= 0;
 
     supplierLookup= new DefaultAutoCompleteModel<Agent>(this.supplierSrv, 'id', 'denomination');
     articleLookup = new ArticleAutoCompleteModel(this.serviceArticleSrv);
@@ -48,15 +49,20 @@ export class LocalExtraCostDetailComponent extends BaseChildEntityDetailComponen
     override setupForm(e: ExtraCost): UntypedFormGroup {
         this.id = e.id;
         return this.fb.group({
-            id:           new FormControl<number>(e?.id || 0),
-            parentId:     new FormControl<number>(e.parentId || 0),
-            reference:    new FormControl<string>(e.reference),
-            // description:  new FormControl<string>(e.description),
-            // transactDate: new FormControl<Date>(e.transactDate),
-            amount:       new FormControl<number>(e.amount),
-            vat:          new FormControl<number>(e.vat),
-            agent:        new FormControl<number>(e.agent || 0, Validators.required),
-            invoiceNo:    new FormControl<string>(e.invoiceNo),
+            id: new FormControl<number>(e?.id || 0),
+            parentId: new FormControl<number>(e.parentId || this.parentId),
+            reference: new FormControl<string>(e.reference),
+            description: new FormControl<string>(e.description),
+            transactDate: new FormControl<Date>(e.transactDate),
+            amount: new FormControl<number>(e.amount),
+            vat: new FormControl<number>(e.vat),
+            agent: new FormControl<number>(e.agent || 0, Validators.required),
+            invoiceNo: new FormControl<string>(e.invoiceNo),
+            foreignCurrency: new FormControl<boolean>(e.foreignCurrency),
+            costType: new FormControl<number>(e.costType),
+            valueType: new FormControl<number>(e.valueType),
+            exchangeRate: new FormControl<number>(e.exchangeRate),
+            stamp: new FormControl<number|null>(e.stamp),
         });
     }
 }

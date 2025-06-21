@@ -16,5 +16,6 @@
     "CANCEL":                "Annuler",
     "PRODUCE_ALL":           "Produire Tout",
     "INTER_STORE_TRANSFER":  "Transfert Entre Magasins",
-    "INTER_STORE_TRANSFER_DETAIL":  "Details DU Transfert Inter-Magasins"
+    "INTER_STORE_TRANSFER_DETAIL":  "Details DU Transfert Inter-Magasins",
+    "PRODUCT_TYPE":          "Type de Produit"
 }

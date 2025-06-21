@@ -17,6 +17,6 @@
     "PRODUCE_ALL":           "Produce All",
     "CANCEL_ALL":            "Cancel All",
     "INTER_STORE_TRANSFER":  "Inter Store Transfer",
-    "INTER_STORE_TRANSFER_DETAIL":  "Inter Store Transfer Detail"
-
+    "INTER_STORE_TRANSFER_DETAIL":  "Inter Store Transfer Detail",
+    "PRODUCT_TYPE":           "Product Type"
 }

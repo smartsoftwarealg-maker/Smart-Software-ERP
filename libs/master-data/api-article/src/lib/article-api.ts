@@ -71,6 +71,7 @@ export interface Article {
     typeDescription?: string;
     packagingDescription:string;
     packaging?:number;
+    productType?: number;
 }
 
 export interface StockInfo {

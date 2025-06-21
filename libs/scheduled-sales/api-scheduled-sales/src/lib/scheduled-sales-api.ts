@@ -79,6 +79,7 @@ export interface Article {
     typeDescription?: string;
     unitDescription?: string;
     vatValue?: number;
+    productType?: number;
 }
 
 export interface Qty {
