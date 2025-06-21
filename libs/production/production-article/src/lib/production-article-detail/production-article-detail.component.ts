@@ -26,6 +26,7 @@ import { ChildBomComponent } from '@ss/master-data/ui-article';
 import { BomService } from '@ss/master-data/ui-article';
 import { DosageUnitService } from '../services/dosage-unit.service';
 import { PackagingUnitService } from '../services/packaging-unit.service';
+import { ProductTypeService } from '../services/product-type.service';
 
 @Component({
     selector: 'ss-production-article-detail',
@@ -55,6 +56,7 @@ export class ProductionArticleDetailComponent
     private bomSrv = inject(BomService);
     private dosageUnitSrv = inject(DosageUnitService);
     private packagingUnitSrv=inject(PackagingUnitService);
+    private productTypeSrv = inject(ProductTypeService);
 
     imageModel: ImageModel;
     aid = 0;
@@ -67,6 +69,7 @@ export class ProductionArticleDetailComponent
     typeLookup = new DefaultAutoCompleteModel(this.typeSrv);
     dosageUnitLookup = new DefaultAutoCompleteModel(this.dosageUnitSrv);
     packagingUnitLookup = new DefaultAutoCompleteModel(this.packagingUnitSrv);
+    productTypeLookup = new DefaultAutoCompleteModel(this.productTypeSrv);
 
 
     vats: Vat[];
@@ -111,24 +114,25 @@ export class ProductionArticleDetailComponent
         this.bomSrv.setParentId(a.id)
         return this.formBuilder.group({
             description2: [a.description2, Validators.required],
-            id: [a.id],
-            mark: [a.mark],
-            maxQty: [a.maxQty],
-            minQty: [a.minQty],
-            klass: [a.klass],
-            salesUnit: [a.salesUnit],
+            id:           [a.id],
+            mark:         [a.mark],
+            maxQty:       [a.maxQty],
+            minQty:       [a.minQty],
+            klass:        [a.klass],
+            salesUnit:    [a.salesUnit],
             purchaseUnit: [a.purchaseUnit],
-            price1: [a.price1 || 0],
-            reference: [a.reference, Validators.required],
-            appId: [a.appId || this.articleSrv.getParentId()],
-            notForSale: [a.notForSale || false, Validators.required],
-            vat: [a.vat],
-            vat2: [a.vat2],
-            blocked: [a.blocked],
-            articleType: [a.articleType],
-            subClass: [a.subClass],
-            dosageUnit: [a.dosageUnit],
-            packaging:[a.packaging]
+            price1:       [a.price1 || 0],
+            reference:    [a.reference, Validators.required],
+            appId:        [a.appId || this.articleSrv.getParentId()],
+            notForSale:   [a.notForSale || false, Validators.required],
+            vat:          [a.vat],
+            vat2:         [a.vat2],
+            blocked:      [a.blocked],
+            articleType:  [a.articleType],
+            subClass:     [a.subClass],
+            dosageUnit:   [a.dosageUnit],
+            packaging:    [a.packaging],
+            productType:  [a.productType]
         });
     }
 

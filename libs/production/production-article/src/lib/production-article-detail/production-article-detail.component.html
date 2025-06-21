@@ -87,12 +87,21 @@
                     </mat-form-field>
 
                     <mat-form-field class="default-25 sm-50">
+                        <mat-label translate>PROD_PRODUCT_TYPE</mat-label>
+                        <ss-auto-complete matInput
+                                          [model]="productTypeLookup"
+                                          formControlName="productType">
+                        </ss-auto-complete>
+                    </mat-form-field>
+
+                    <mat-form-field class="default-25 sm-50">
                         <mat-label translate>STOCK_UNIT</mat-label>
                         <ss-auto-complete matInput
                                           [model]="unitLookup"
                                           formControlName="salesUnit">
                         </ss-auto-complete>
                     </mat-form-field>
+
                     <mat-form-field class="default-25 sm-50">
                         <mat-label translate>STOCK_PURCHASE_UNIT</mat-label>
                         <ss-auto-complete matInput
