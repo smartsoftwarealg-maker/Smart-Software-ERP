@@ -44,7 +44,7 @@ import { Observable, of, switchMap } from 'rxjs';
 })
 export class ReceptionDetailComponent extends BaseTransactionDetailComponent implements OnInit {
     private extraCostSrv = inject(ExtraCostService);
-    private URLs = ['./lines-list', './extra-costs'];
+    private URLs = ['./lines-list', './costs-list'];
     private costSrv = inject(ExtraCostService);
 
     private importContractBtn: ToolbarButton = {

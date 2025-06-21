@@ -390,5 +390,6 @@
     "SUGGESTIONS":        "Suggestions",
     "CUSTOMER_CODE":      "Customer code",
     "DAY":                "Day",
+    "ADVANCEMENT": "Advancement",
     "MAX_FILE_SIZE_65KB": "Max file size 65Kb"
 }

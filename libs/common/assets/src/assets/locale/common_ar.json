@@ -386,6 +386,7 @@
     "SUGGESTION":         "إقتراح",
     "SUGGESTIONS":        "الإقتراحات",
     "CUSTOMER_CODE":      "رمز العميل",
-    "MAX_FILE_SIZE_65KB":  "أقصى حجم للملف 65كب"
+    "MAX_FILE_SIZE_65KB":  "أقصى حجم للملف 65كب",
+    "ADVANCEMENT":  "مقدم"
 }
 
