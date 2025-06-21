@@ -164,11 +164,18 @@ export class BomComponent implements OnInit, OnDestroy {
         });
 
         dialogRef.afterClosed()
-            .pipe(switchMap(bom => bom? this.entitySrv.save(bom).pipe(map(id => {bom.id = id; return bom;})) : of(null)))
+            .pipe(switchMap(bom => bom? this.entitySrv.save(bom).pipe(map(id => {bom.id = bom.id||id; return bom;})) : of(null)))
             .subscribe((bom: BOM) => {
                 if (bom) {
                     this.snackBarSrv.showSuccessMessage();
-                    this.selectedBOM.children.push({bom: bom, children: []});
+                    console.log(bom);
+                    if (bom.id === this.selectedBOM?.bom.id) {
+                        this.selectedBOM.bom.qty = bom.qty;
+                        this.selectedBOM.bom.price = bom.price;
+                        this.selectedBOM.bom.childId = bom.childId;
+                    } else {
+                        this.selectedBOM.children.push({bom: bom, children: []});
+                    }
                     this.select(this.selectedBOM);
                     this.tree.collapse(this.selectedBOM);
                     this.tree.expand(this.selectedBOM);
