@@ -7,7 +7,7 @@ export const environment = {
     production: false,
     company: 'SMART',
     homePage: 'https://smartsoftware-dz.com',
-    multiCompany: true
+    multiCompany: false
 };
 export const langAssets = [
     ['assets/locale/', ''],

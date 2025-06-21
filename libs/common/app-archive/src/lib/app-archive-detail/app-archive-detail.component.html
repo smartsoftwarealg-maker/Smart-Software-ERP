@@ -18,13 +18,14 @@
         <input type="hidden" name="MAX_FILE_SIZE" value="104857600" />
 
         <div class="button__div">
-            <button mat-mini-fab
-                    (click)="onSave()"
-                    color="primary"
-                    type="button"
-                    *ngIf="uploadUtil.selectedFile && this.form.controls['documentId'].value > 0">
-                <i class="fas fa-save"></i>
-            </button>
+            @if (uploadUtil.selectedFile && this.form.controls['documentId'].value > 0) {
+                <button mat-mini-fab
+                        (click)="onSave()"
+                        color="primary"
+                        type="button">
+                    <i class="fas fa-save"></i>
+                </button>
+            }
             <button mat-mini-fab (click)="onCancel()" color="accent" type="button">
                 <i class="fas fa-undo"></i>
             </button>
@@ -34,9 +35,11 @@
             </button>
         </div>
     </div>
-    <div class="imj" *ngIf="form.value['appId']">
+    @if (form.value['appId']) {
+    <div class="imj">
         <img [src]="uploadUtil.imgSrc" [alt]="'image'" />
     </div>
-<!--    <pre>{{form?.getRawValue() | json }}</pre>-->
+    }
+    <!--    <pre>{{form?.getRawValue() | json }}</pre>-->
 </form>
 
