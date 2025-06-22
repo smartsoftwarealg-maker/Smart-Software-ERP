@@ -19,6 +19,7 @@ export const LOGIN_URL = 'login';
 export const HOME_URL = 'app/cspace/home';
 export const UPDATE_PASSWORD_URL = 'update-password';
 export const AUTH_2FA_URL = 'auth-2fa';
+export const BLOCKED_REASON_PAGE_URL = 'block-page';
 
 export const LIST_URL = '';
 
