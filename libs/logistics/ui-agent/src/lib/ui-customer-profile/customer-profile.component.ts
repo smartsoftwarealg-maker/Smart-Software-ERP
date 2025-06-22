@@ -45,8 +45,8 @@ export class CustomerProfileComponent implements OnInit {
                     code: [{ value: agent.customerCode, disabled: true}],
                     denomination: [{ value: agent.denomination, disabled: true}],
                     address: [{ value: agent.address || '', disabled: true}],
-                    phone: [{ value: agent.mobile || '', disabled: true}],
-                    email: [{ value: agent.email || '', disabled: true}],
+                    phone:   [{ value: agent.mobile || '', disabled: true}],
+                    email:   [{ value: agent.email || '', disabled: true}],
                 });
             });
     }
