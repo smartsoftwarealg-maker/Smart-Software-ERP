@@ -390,6 +390,9 @@
     "SUGGESTIONS":        "Suggestions",
     "CUSTOMER_CODE":      "Customer code",
     "DAY":                "Day",
-    "ADVANCEMENT": "Advancement",
-    "MAX_FILE_SIZE_65KB": "Max file size 65Kb"
+    "ADVANCEMENT":        "Advancement",
+    "MAX_FILE_SIZE_65KB": "Max file size 65Kb",
+    "YOU_ARE_BLOCKED":    "You are blocked",
+    "YOU_ARE_BLOCKED_DUE": "Dear customer, Your account has been temporarily blocked due to ",
+    "CONTACT_US":         "If you believe this is a mistake or if you have any questions, please do not hesitate to contact our support team."
 }

@@ -1,0 +1,27 @@
+.container {
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+}
+
+mat-card {
+    display: flex;
+    width: 500px;
+    margin: auto;
+    padding: 1em;
+    border-radius: 1.4em;
+}
+
+mat-card-title {
+    justify-content: center;
+    text-align: center;
+    color: red;
+    font-size: 2em;
+    -webkit-text-stroke: 3px #ff059b;
+}
+
+mat-card-content {
+    justify-content: center;
+    text-align: center;
+}

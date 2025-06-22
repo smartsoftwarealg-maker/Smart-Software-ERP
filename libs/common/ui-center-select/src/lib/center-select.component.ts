@@ -2,6 +2,7 @@ import { Component, inject, OnInit, ViewChild } from '@angular/core';
 import {CenterService} from './center.service';
 import {Router} from '@angular/router';
 import {
+    BLOCKED_REASON_PAGE_URL,
     Center,
     Company,
     INDEX_PAGE_URL, LoginService, MainPageService,
@@ -28,6 +29,7 @@ import { MatOption } from '@angular/material/core';
 import { MatInput } from '@angular/material/input';
 import { MatButton } from '@angular/material/button';
 import { TranslatePipe } from '@ss/common/ui-lang';
+import { AgentService } from '@ss/logistics/api-agent';
 
 @Component({
     selector: 'ss-company-center-login',
@@ -39,6 +41,7 @@ import { TranslatePipe } from '@ss/common/ui-lang';
 export class CenterSelectComponent implements OnInit {
     private ccListSrv = inject(CenterService);
     private mainPageSrv = inject(MainPageService);
+    private agentSrv = inject(AgentService);
 
     companyList: Company[] = [];
     centerList: Center[] = [];
@@ -143,7 +146,15 @@ export class CenterSelectComponent implements OnInit {
                         this.shellSrv.setCompanyName(this.centerList.filter(c => c.id === this.selectedCenter)[0]?.description);
                         this.loginSrv.appCtx.accPeriod = this.loginSrv.appCtx.accFile = 0;
                         this.shellSrv.setLabels([]);
-                        this.router.navigate(['/' + dest]).then(() => {});
+                        this.agentSrv.currentCustomer().subscribe({
+                            next:(cst)=>{
+                                const dest1 = cst.recordBlocked ? BLOCKED_REASON_PAGE_URL : dest
+                                this.router.navigate(['/' + dest1]).then(() => {});
+                            },
+                            error:()=>{
+                                this.router.navigate(['/' + dest]).then(() => {});
+                            }
+                        });
                     }, error: err => {
                         this.endLoading();
                         throw err;
