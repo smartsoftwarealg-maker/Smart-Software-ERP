@@ -66,38 +66,40 @@
                     } @else {
                         <h1>Missing image</h1>
                     }
-                    <div class="btn-div">
-                        <button mat-raised-button
-                                color="primary"
-                                type="button"
-                                (click)="fileUpload.click()"
-                                class="btn">
-                            {{ 'COMMON_UPLOAD' | translate }}
-                            <i class="fa-solid fa-check  icon"></i>
-                        </button>
-                        <button mat-raised-button
-                                color="secondly"
-                                type="button"
-                                (click)="delete()" class="btn">
-                            {{ 'COMMON_DELETE' | translate }}
-                            <i class="fa-solid fa-check  icon"></i>
-                        </button>
-                    </div>
-                    <div class="file-upload">
-                        <input type="file"
-                               class="file-input"
-                               accept="(.jpeg), application/jpeg"
-                               (change)="onFileSelected($event)"
-                               #fileUpload>
+                    @if (this.loginSrv.appCtx.agentId > 0) {
+                        <div class="btn-div">
+                            <button mat-raised-button
+                                    color="primary"
+                                    type="button"
+                                    (click)="fileUpload.click()"
+                                    class="btn">
+                                {{ 'COMMON_UPLOAD' | translate }}
+                                <i class="fa-solid fa-check  icon"></i>
+                            </button>
+                            <button mat-raised-button
+                                    color="secondly"
+                                    type="button"
+                                    (click)="delete()" class="btn">
+                                {{ 'COMMON_DELETE' | translate }}
+                                <i class="fa-solid fa-check  icon"></i>
+                            </button>
+                        </div>
+                        <div class="file-upload">
+                            <input type="file"
+                                   class="file-input"
+                                   accept="(.jpeg), application/jpeg"
+                                   (change)="onFileSelected($event)"
+                                   #fileUpload>
 
-                        <!--                    <div translate>{{ fileName || "COMMON_NO_FILE_SELECTED" }}</div>-->
+                            <!--                    <div translate>{{ fileName || "COMMON_NO_FILE_SELECTED" }}</div>-->
 
-                        <!--                    <button mat-mini-fab color="primary"-->
-                        <!--                            class="upload-btn"-->
-                        <!--                            (click)="fileUpload.click()">-->
-                        <!--                        <i class="fas fa-paperclip"></i>-->
-                        <!--                    </button>-->
-                    </div>
+                            <!--                    <button mat-mini-fab color="primary"-->
+                            <!--                            class="upload-btn"-->
+                            <!--                            (click)="fileUpload.click()">-->
+                            <!--                        <i class="fas fa-paperclip"></i>-->
+                            <!--                    </button>-->
+                        </div>
+                    }
 
                 </div>
             </mat-card-content>
