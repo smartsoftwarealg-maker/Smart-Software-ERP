@@ -119,6 +119,8 @@
                                    #input2
                                    formControlName="grade2"
                                    type="number"
+                                   min="0"
+                                   max="{{ maxima[i] }}"
                                    (click)="input2.select()">
                         </mat-form-field>
                         <mat-form-field class="max-30">
@@ -127,6 +129,8 @@
                                    formControlName="finalGrade"
                                    type="number"
                                    #input3
+                                   min="0"
+                                   max="{{ maxima[i] }}"
                                    (click)="input3.select()">
                         </mat-form-field>
                     </fieldset>
