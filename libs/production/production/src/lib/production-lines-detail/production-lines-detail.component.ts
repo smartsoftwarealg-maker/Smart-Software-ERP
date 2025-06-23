@@ -4,13 +4,14 @@ import { MatMiniFabButton } from '@angular/material/button';
 import { MatCard, MatCardContent } from '@angular/material/card';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormField, MatLabel, MatError } from '@angular/material/form-field';
-import { TranslateDirective } from '@ss/common/ui-lang';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 import { MatInput } from '@angular/material/input';
 import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { CdkTextareaAutosize } from '@angular/cdk/text-field';
 import { ProductionLinesService } from '../production-services/production-lines.service';
 import { ArticleAutoCompleteModel } from '@ss/master-data/api-article';
 import { ManufacturedArticleService } from '@ss/master-data/api-article';
+import { MatTooltip } from '@angular/material/tooltip';
 
 @Component({
     selector: 'ss-production-lines-detail',
@@ -30,7 +31,9 @@ import { ManufacturedArticleService } from '@ss/master-data/api-article';
         UiAutoCompleteComponent,
         MatError,
         CdkTextareaAutosize,
-    ],
+        TranslatePipe,
+        MatTooltip
+    ]
 })
 export class ProductionLinesDetailComponent
     extends BaseTransactionLinesDetailComponent

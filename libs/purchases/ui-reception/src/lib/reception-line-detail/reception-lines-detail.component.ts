@@ -8,7 +8,6 @@ import { ReactiveFormsModule, UntypedFormGroup } from '@angular/forms';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 import { ReceptionLinesService } from '../reception-lines.service';
 import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
-import { MatDialog } from '@angular/material/dialog';
 
 @Component({
     selector: 'ss-reception-lines-detail',

@@ -125,7 +125,7 @@ export const prodRoutes: Routes = [
                     {
                         path: 'lines-list',
                         component: ProductionOrderLinesListComponent,
-                        children: docInfoRoutes,
+                        children: [...docInfoRoutes, { path: 'consumptions', component: ProductionConsumptionComponent}],
                     },
                     {
                         path: 'lines-detail',
@@ -163,7 +163,6 @@ export const prodRoutes: Routes = [
                         path: 'lines-list',
                         component: ProductionLinesListComponent,
                         children: [...docInfoRoutes, { path: 'consumptions', component: ProductionConsumptionComponent}],
-
                     },
                     {
                         path: 'lines-detail',
