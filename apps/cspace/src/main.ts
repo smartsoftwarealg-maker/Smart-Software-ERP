@@ -22,9 +22,7 @@ import { LoginComponent } from '@ss/common/ui-login';
 import { CenterSelectComponent } from '@ss/common/ui-center-select';
 import { Auth2FAConfirmationComponent, PasswordUpdateComponent } from '@ss/auth-2fa';
 import { restCodeGuard } from '../customer-guards';
-import {
-    BlockedReasonComponent
-} from '../../../libs/common/ui-center-select/src/lib/blocked-reason/blocked-reason.component';
+import { BlockedReasonComponent } from '@ss/common/ui-center-select';
 
 const routes: Routes = [
     {

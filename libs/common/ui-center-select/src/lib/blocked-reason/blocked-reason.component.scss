@@ -7,7 +7,7 @@
 
 mat-card {
     display: flex;
-    width: 500px;
+    width: 550px;
     margin: auto;
     padding: 1em;
     border-radius: 1.4em;
@@ -19,9 +19,18 @@ mat-card-title {
     color: red;
     font-size: 2em;
     -webkit-text-stroke: 3px #ff059b;
+    min-height: 100px;
 }
 
 mat-card-content {
     justify-content: center;
     text-align: center;
+    min-height: fit-content;
+    padding-bottom: 50px;
+}
+
+mat-card-footer {
+    justify-content: center;
+    text-align: center;
+    min-height: 80px;
 }
