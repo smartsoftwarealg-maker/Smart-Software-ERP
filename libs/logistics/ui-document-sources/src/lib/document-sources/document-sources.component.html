@@ -36,6 +36,20 @@
             </mat-cell>
         </ng-container>
 
+        <ng-container matColumnDef="qtyInvoiced">
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>LOGISTICS_QTY_INVOICED</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.qtyInvoiced | number: '1.2-2'}}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="qtyReturned">
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>LOGISTICS_QTY_RETURNED</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.qtyReturned | number: '1.2-2'}}
+            </mat-cell>
+        </ng-container>
+
 
         <mat-header-row *matHeaderRowDef="displayedColumns(); sticky: true"></mat-header-row>
         <mat-row class="selectable" [class.selected]="row.id == selectedId()" (click)="select(row.id)"

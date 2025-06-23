@@ -29,7 +29,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     styleUrl: './document-sources.component.scss',
 })
 export class DocumentSourcesComponent implements OnInit {
-    displayedColumns = signal(['document', 'number', 'date', 'qtyOrdered', 'qtySatisfied']);
+    displayedColumns = signal(['document', 'number', 'date', 'qtyOrdered', 'qtySatisfied', 'qtyInvoiced', 'qtyReturned']);
     selectedId = signal(0);
     data$: Observable<Source[]> = of([]);
 

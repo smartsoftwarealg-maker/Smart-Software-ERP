@@ -41,24 +41,24 @@ import { ProductionService } from '../production-services/production.service';
     ],
 })
 export class ProductionListComponent extends BaseEntityListComponent<Transaction> {
-    private doubleCheckBtn: ToolbarButton = {
-        disabled: true,
-        icon: 'fa-solid fa-check-double',
-        keepOnToolbar: KeepOnToolbar.DYNAMIC,
-        label: 'PROD_PRODUCE_ALL',
-        visible: true,
-        click: () => this.produceAll()
-    };
-
-    private doubleCancelBtn: ToolbarButton = {
-        disabled: true,
-        icon: 'fa-solid fa-xmark-large',
-        keepOnToolbar: KeepOnToolbar.DYNAMIC,
-        label: 'PROD_CANCEL_ALL',
-        visible: true,
-        click: () => this.cancelAll()
-    };
-
+    // private doubleCheckBtn: ToolbarButton = {
+    //     disabled: true,
+    //     icon: 'fa-solid fa-check-double',
+    //     keepOnToolbar: KeepOnToolbar.DYNAMIC,
+    //     label: 'PROD_PRODUCE_ALL',
+    //     visible: true,
+    //     click: () => this.produceAll()
+    // };
+    //
+    // private doubleCancelBtn: ToolbarButton = {
+    //     disabled: true,
+    //     icon: 'fa-solid fa-xmark-large',
+    //     keepOnToolbar: KeepOnToolbar.DYNAMIC,
+    //     label: 'PROD_CANCEL_ALL',
+    //     visible: true,
+    //     click: () => this.cancelAll()
+    // };
+    //
     displayedColumns = [
         'number',
         'date',
@@ -80,34 +80,34 @@ export class ProductionListComponent extends BaseEntityListComponent<Transaction
         super(entitySrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv, 'PROD_PRODUCTIONS');
     }
 
-    override ngOnInit() {
-        super.ngOnInit();
-        this.shellSrv.addButton(this.doubleCheckBtn)
-        this.shellSrv.addButton(this.doubleCancelBtn)
-    }
+    // override ngOnInit() {
+    //     super.ngOnInit();
+    //     this.shellSrv.addButton(this.doubleCheckBtn)
+    //     this.shellSrv.addButton(this.doubleCancelBtn)
+    // }
 
-    private produceAll() {
-        this.entitySrv
-            .produceAll(this.selected)
-            .subscribe(res => {
-                if (res.count > 0) {
-                    this.snackBarSrv.showSuccessMessage();
-                }
-            });
-    }
+    // private produceAll() {
+    //     this.entitySrv
+    //         .produceAll(this.selected)
+    //         .subscribe(res => {
+    //             if (res.count > 0) {
+    //                 this.snackBarSrv.showSuccessMessage();
+    //             }
+    //         });
+    // }
+    //
+    // private cancelAll() {
+    //     this.entitySrv
+    //         .cancelAll(this.selected)
+    //         .subscribe(res => {
+    //             if (res.count > 0) {
+    //                 this.snackBarSrv.showSuccessMessage();
+    //             }
+    //         });
+    // }
 
-    private cancelAll() {
-        this.entitySrv
-            .cancelAll(this.selected)
-            .subscribe(res => {
-                if (res.count > 0) {
-                    this.snackBarSrv.showSuccessMessage();
-                }
-            });
-    }
-
-    override selectRow(row: Transaction) {
-        super.selectRow(row);
-        this.doubleCancelBtn.disabled = this.doubleCheckBtn.disabled = row?.id == null;
-    }
+    // override selectRow(row: Transaction) {
+    //     super.selectRow(row);
+    //     this.doubleCancelBtn.disabled = this.doubleCheckBtn.disabled = row?.id == null;
+    // }
 }
