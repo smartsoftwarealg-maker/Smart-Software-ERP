@@ -3,7 +3,7 @@ import { AgentService } from '@ss/logistics/api-agent';
 import { MatCard, MatCardContent, MatCardFooter, MatCardTitle } from '@angular/material/card';
 import { INDEX_PAGE_URL, LOGIN_URL, LoginService } from '@ss/common/api-common';
 import { Router } from '@angular/router';
-import { MatIconButton } from '@angular/material/button';
+import { MatIconButton, MatMiniFabButton } from '@angular/material/button';
 import { TranslateDirective } from '@ss/common/ui-lang';
 
 @Component({
@@ -17,7 +17,8 @@ import { TranslateDirective } from '@ss/common/ui-lang';
         MatCardContent,
         MatCardFooter,
         MatIconButton,
-        TranslateDirective
+        TranslateDirective,
+        MatMiniFabButton,
     ],
 })
 export class BlockedReasonComponent implements OnInit {

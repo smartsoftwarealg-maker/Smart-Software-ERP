@@ -34,3 +34,15 @@ mat-card-footer {
     text-align: center;
     min-height: 80px;
 }
+
+mat-card-footer button {
+    width: fit-content;
+    padding: 1em;
+    font-size: 1.2em;
+}
+
+.msg {
+    font-style: italic;
+    font-weight: bold;
+    color: orangered;
+}

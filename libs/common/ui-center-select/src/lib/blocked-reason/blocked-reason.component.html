@@ -5,11 +5,11 @@
         </mat-card-title>
         <mat-card-content>
             <h3 translate>COMMON_YOU_ARE_BLOCKED_DUE </h3>
-            <h3>"{{ blockReason }}"</h3>
+            <h3 class="msg">"{{ blockReason }}"</h3>
             <h3 translate>COMMON_CONTACT_US</h3>
         </mat-card-content>
         <mat-card-footer>
-            <button mat-icon-button (click)="goBack()" translate>COMMON_GOT_IT</button>
+            <button mat-mini-fab color="primary" (click)="goBack()" translate>COMMON_GOT_IT</button>
         </mat-card-footer>
     </mat-card>
 </div>
