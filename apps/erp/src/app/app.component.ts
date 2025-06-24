@@ -27,8 +27,8 @@ import { initialize } from './admobile';
 })
 export class AppComponent implements OnInit {
     #companySelectorSrv = inject(CompanySelectorService);
-    private snackSrv = inject(SnackBarService);
-    private deviceSrv = inject(DeviceDetectorService);
+    // private snackSrv = inject(SnackBarService);
+    // private deviceSrv = inject(DeviceDetectorService);
     private httpSrv = inject(HttpService);
     private shellSrv = inject(ShellService);
     private loginSrv = inject(LoginService);
@@ -45,7 +45,7 @@ export class AppComponent implements OnInit {
         this.#companySelectorSrv.multiCompany = multiCompany;
         this.#companySelectorSrv.spaceCompany = company;
         this.#companySelectorSrv.homePage     = homePage;
-        this.shellSrv.setApplicationTitle('Smart ERP 2.2.3');
+        this.shellSrv.setApplicationTitle('Smart ERP 2.2.4');
         this.httpSrv
             .init()
             .pipe(
@@ -59,13 +59,14 @@ export class AppComponent implements OnInit {
                 error: () => this.loginSrv.logout().then()
             });
 
-        if (this.deviceSrv.isMobile()) {
-            initialize().then(() => {});
-            // Update CSS variable when ad loads
-            document.body.classList.add('has-admob-banner');
-            document.body.style.setProperty('--admob-bottom-padding', '64px'); // Adjust based on your ad size
-            this.snackSrv.hasAd = true;
-        }
+        // console.log('Main app....................................')
+        // if (this.deviceSrv.isMobile()) {
+        //     initialize().then(() => {});
+        //     // Update CSS variable when ad loads
+        //     document.body.classList.add('has-admob-banner');
+        //     document.body.style.setProperty('--admob-bottom-padding', '64px'); // Adjust based on your ad size
+        //     this.snackSrv.hasAd = true;
+        // }
     }
 
 }

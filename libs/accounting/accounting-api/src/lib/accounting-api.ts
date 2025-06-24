@@ -61,6 +61,7 @@ export interface ACCPolicy {
     minAssetValue: 0;
     inventoryYear: 0;
     defProject?: number;
+    showReference2: boolean;
 }
 
 export interface Journal {
@@ -143,6 +144,7 @@ export interface ACCTransactionLine {
     customerId?: number;
     accountId?: number;
     customerName?: string;
+    reference2?: string;
 }
 
 export interface ACCFile {

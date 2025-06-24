@@ -90,6 +90,7 @@
     "PURCHASE_ACCOUNT": "حساب الشراء",
     "SALE_ACCOUNT": "حساب البيع",
     "STOCK_ACCOUNT": "حساب المخزون",
-    "CONSUMPTION_ACCOUNT": "حساب الاستهلاك"
+    "CONSUMPTION_ACCOUNT": "حساب الاستهلاك",
+    "SHOW_REFERENCE_2": "إظهار المرجع 2"
 
 }

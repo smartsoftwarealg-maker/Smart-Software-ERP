@@ -105,6 +105,7 @@ export class TransactionLinesDetailComponent implements OnInit {
     customerCodeRequited = computed(() => this.selectedAccount()?.customerCode ||false);
     referenceRequired = computed(() => this.selectedAccount()?.analyzed && this.accPolicy.analyzeAccounts);
     checkNoRequired = computed(() => this.selectedAccount()?.accountNo.startsWith('51') && this.accPolicy?.analyzeChecks);
+    showReference2 = computed(() => this.accPolicy?.showReference2);
 
     readonly isClosed = this.fileSrv.accFile.closed;
     saveDisabled = signal(true);
@@ -134,6 +135,7 @@ export class TransactionLinesDetailComponent implements OnInit {
             debit:        [{ value: e.balance > 0? e.balance : 0.0, disabled: e.balance < 0 }],
             credit:       [{ value: e.balance < 0? -e.balance : 0.0, disabled: e.balance > 0 } ],
             reference:    [e.reference],
+            reference2:    [e.reference2],
             checkNo:      [e.checkNo],
             description:  [e.description, Validators.required],
             customerId:   [e.customerId],
