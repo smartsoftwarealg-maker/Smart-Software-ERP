@@ -21,8 +21,8 @@ export async function initialize(): Promise<void> {
             adSize: BannerAdSize.BANNER,
             position: BannerAdPosition.BOTTOM_CENTER,
             margin: 0,
-         isTesting: false
-        // npa: true
+            // isTesting: true
+            // npa: true
         };
         await AdMob.showBanner(options);
     }
@@ -58,4 +58,5 @@ export async function initialize(): Promise<void> {
         consentInfo.status === AdmobConsentStatus.REQUIRED) {
         await AdMob.showConsentForm();
     }
+
 }

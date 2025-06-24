@@ -76,7 +76,8 @@ export class AccPoliciesComponent extends BaseEntityDetailComponent<ACCPolicy> {
             showProjects: [e.showProjects, Validators.required],
             manualCashFlow: [e.manualCashFlow, Validators.required],
             openPeriods: [{ value: e.openPeriods, disabled: e.modifyClosedPeriods }, [Validators.required, Validators.min(0), Validators.max(12)]],
-            minAssetValue: [e.minAssetValue || 0, Validators.required]
+            minAssetValue:  [e.minAssetValue || 0, Validators.required],
+            showReference2: [e.showReference2, Validators.required],
         });
     }
     public getPanelHeaderClass(section: string, panel: MatExpansionPanel): string {

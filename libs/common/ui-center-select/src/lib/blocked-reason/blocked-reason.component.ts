@@ -16,7 +16,6 @@ import { TranslateDirective } from '@ss/common/ui-lang';
         MatCardTitle,
         MatCardContent,
         MatCardFooter,
-        MatIconButton,
         TranslateDirective,
         MatMiniFabButton,
     ],

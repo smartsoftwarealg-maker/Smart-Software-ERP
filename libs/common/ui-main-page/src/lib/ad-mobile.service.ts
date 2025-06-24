@@ -11,8 +11,8 @@ export class AdMobileService {
 
     initialize() {
         if (!this.#initialized) {
-            this.#initialized = true;
             if (this.#deviceSrv.isMobile()) {
+                this.#initialized = true;
                 initialize().then(() => {});
                 document.body.classList.add('has-admob-banner');
                 document.body.style.setProperty('--admob-bottom-padding', '64px'); // Adjust based on your ad size

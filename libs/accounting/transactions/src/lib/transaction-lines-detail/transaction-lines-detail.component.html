@@ -9,13 +9,17 @@
                                       [model]="accountLookupModel"
                                       formControlName="accountId"
                                       autofocus></ss-auto-complete>
-                    <mat-error *ngIf="form.controls['accountId'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
+                    @if (form.controls['accountId'].invalid) {
+                        <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+                    }
                 </mat-form-field>
 
                 <mat-form-field class="default-100">
                     <mat-label translate>COMMON_DESCRIPTION</mat-label>
                     <input matInput formControlName="description" type="text">
-                    <mat-error *ngIf="form.controls['description'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
+                    @if (form.controls['description'].invalid) {
+                        <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+                    }
                 </mat-form-field>
 
                 @if (customerCodeRequited()) {
@@ -41,6 +45,13 @@
                         }
                     </mat-form-field>
                 }
+                @if (showReference2()) {
+                    <mat-form-field class="default-50">
+                        <mat-label> <span translate>COMMON_REFERENCE</span> 2</mat-label>
+                        <input matInput formControlName="reference2" type="text">
+                    </mat-form-field>
+                }
+
                 @if (checkNoRequired()) {
                     <mat-form-field class="default-50">
                         <mat-label translate>COMMON_CHECKNO</mat-label>
@@ -64,14 +75,18 @@
                 <mat-form-field class="default-50">
                     <mat-label translate>ACC_DEBIT</mat-label>
                     <input #debit matInput formControlName="debit" type="number" (change)="onDebitChange(debit.value)">
-                    <mat-error *ngIf="form.controls['debit'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
+                    @if (form.controls['debit'].invalid) {
+                        <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+                    }
                 </mat-form-field>
 
                 <mat-form-field class="default-50">
                     <mat-label translate>ACC_CREDIT</mat-label>
                     <input #credit matInput formControlName="credit" type="number"
                            (change)="onCreditChange(credit.value)">
-                    <mat-error *ngIf="form.controls['credit'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
+                    @if (form.controls['credit'].invalid) {
+                        <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+                    }
                 </mat-form-field>
 
                 @if (costCenterRequited()) {

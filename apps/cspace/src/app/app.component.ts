@@ -21,9 +21,9 @@ import { MessageComponent } from '@ss/common/ui-error-handler';
     ],
 })
 export class AppComponent implements OnInit {
-    #snackSrv = inject(SnackBarService);
+    // #snackSrv = inject(SnackBarService);
     #companySelectorSrv = inject(CompanySelectorService);
-    #deviceSrv = inject(DeviceDetectorService);
+    // #deviceSrv = inject(DeviceDetectorService);
     #httpSrv =  inject(HttpService);
     #shellSrv =  inject(ShellService);
     #loginSrv =  inject(LoginService);
@@ -40,7 +40,7 @@ export class AppComponent implements OnInit {
         this.#companySelectorSrv.homePage     = homePage;
         this.#loginSrv.customerLogin = LoginType.BOTH;
         this.#loginSrv.customerLogin = LoginType.CUSTOMER;
-        this.#shellSrv.setApplicationTitle('Customer Space 2.7');
+        this.#shellSrv.setApplicationTitle('Customer Space 2.8');
         this.#httpSrv
             .init(company)
             .pipe(
@@ -54,12 +54,12 @@ export class AppComponent implements OnInit {
             error: () => this.#loginSrv.logout().then()
         });
 
-        if (this.#deviceSrv.isMobile()) {
-            initialize().then(() => {});
-            // Update CSS variable when ad loads
-            document.body.classList.add('has-admob-banner');
-            document.body.style.setProperty('--admob-bottom-padding', '64px'); // Adjust based on your ad size
-            this.#snackSrv.hasAd = true;
-        }
+        // if (this.#deviceSrv.isMobile()) {
+        //     initialize().then(() => {});
+        //     // Update CSS variable when ad loads
+        //     document.body.classList.add('has-admob-banner');
+        //     document.body.style.setProperty('--admob-bottom-padding', '64px'); // Adjust based on your ad size
+        //     this.#snackSrv.hasAd = true;
+        // }
     }
 }
