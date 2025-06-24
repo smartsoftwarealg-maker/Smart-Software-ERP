@@ -164,7 +164,7 @@ export const crmRoutes: Routes = [
                         component: CrmCustomerDetailComponent,
                         canActivate: [loginGuard],
                         canDeactivate: [CanDeactivateService],
-                        data: { sales: true, customer: true },
+                        data: { customer: true },
                         children: [
                             {
                                 path: '',

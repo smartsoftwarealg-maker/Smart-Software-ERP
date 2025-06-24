@@ -42,7 +42,6 @@ import { TranslateDirective } from '@ss/common/ui-lang';
         TranslateDirective,
         ReactiveFormsModule,
         TranslateDirective,
-        DocInfoComponent,
         PaginationComponent,
     ],
 })

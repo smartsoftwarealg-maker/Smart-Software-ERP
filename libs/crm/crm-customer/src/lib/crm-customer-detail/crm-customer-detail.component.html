@@ -241,7 +241,7 @@
                 <mat-expansion-panel #contactPanel [class]="getPanelHeaderClass('contact',contactPanel)">
                     <mat-expansion-panel-header>
                         <mat-panel-title translate>
-                            LOGISTICS_CONTACT
+                            COMMON_ADDRESS
                         </mat-panel-title>
                     </mat-expansion-panel-header>
 
@@ -342,68 +342,6 @@
                     </mat-form-field>
 
                 </mat-expansion-panel>
-                @if (isSales) {
-                    <mat-expansion-panel #salesPanel
-                                         [class]="getPanelHeaderClass('sales', salesPanel)">
-                        <mat-expansion-panel-header>
-                            <mat-panel-title translate>
-                                COMMON_SCHEDULED_SALES
-                            </mat-panel-title>
-                        </mat-expansion-panel-header>
-
-                        <mat-form-field class="default-50 sm-100">
-                            <mat-label translate>LOGISTICS_CATEGORY</mat-label>
-                            <ss-auto-complete matInput
-                                              formControlName="category"
-                                              [model]="categoryLookup">
-                            </ss-auto-complete>
-                        </mat-form-field>
-
-                        <mat-form-field class="default-50 sm-100">
-                            <mat-label translate>LOGISTICS_APPROVAL</mat-label>
-                            <input matInput formControlName="approval" type="text">
-                        </mat-form-field>
-                    </mat-expansion-panel>
-                }
-                <mat-expansion-panel #centerPanel
-                                     [class]="getPanelHeaderClass('centers', centerPanel)">
-                    <mat-expansion-panel-header>
-                        <mat-panel-title translate>
-                            ADMINISTRATION_CENTERS
-                        </mat-panel-title>
-                    </mat-expansion-panel-header>
-
-                    <div class="list-container">
-                        <mat-selection-list color="primary" multiple="false"
-                                            (selectionChange)="centerSelectionChanged($event)">
-                            @for (c of agentCenters; track c.id){
-                            <mat-list-option [value]="c.id"> {{ c.centerDescription }}</mat-list-option>
-                            }
-                        </mat-selection-list>
-                    </div>
-                    @if (isEditable) {
-                        <div class="center_ctrl">
-                            <button mat-mini-fab color="accent"
-                                    (click)="addCenter()">
-                                <i class="fas fa-plus-circle"></i>
-                            </button>
-
-                            <mat-form-field>
-                                <mat-label translate>ADMINISTRATION_CENTER</mat-label>
-                                <ss-auto-complete matInput
-                                                  #roleAC
-                                                  [formControl]="centerCtrl"
-                                                  [model]="centerLookup">
-                                </ss-auto-complete>
-                            </mat-form-field>
-                            <button mat-mini-fab color="warn" [disabled]="selectedCenter < 1" (click)="deleteCenter()">
-                                <i
-                                    class="fas fa-trash-alt"></i>
-                            </button>
-                        </div>
-                    }
-                </mat-expansion-panel>
-
                 <mat-expansion-panel #archivePanel
                                      [class]="getPanelHeaderClass('archive', archivePanel)">
                     <mat-expansion-panel-header>
