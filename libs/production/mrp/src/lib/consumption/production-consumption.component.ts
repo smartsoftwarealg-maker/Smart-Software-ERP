@@ -46,8 +46,6 @@ export class ProductionConsumptionComponent implements OnInit {
 
 
     ngOnInit(): void {
-        this.#shellSrv.setGoBackPath('..', this.#route);
-        this.#shellSrv.setTitle('STOCK_CONSUMPTION');
         this.refresh();
     }
 

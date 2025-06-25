@@ -13,7 +13,7 @@ import {
     CRM_SALUTATIONS_URL,
     CRM_STATUS_URL,
     docInfoRoutes,
-    CRM_CUSTOMER_URL,
+    CRM_CUSTOMER_URL, CRM_LEADS_URL
 } from '../common';
 import {
     SalutationsDetailComponent,
@@ -42,6 +42,7 @@ import {
     CrmCustomerDetailComponent,
     CrmCustomerListComponent,
 } from '@ss/crm/crm-customer';
+import { CrmLeadsComponent, CrmLeadsDetailComponent } from '@ss/crm/leads';
 
 export const crmRoutes: Routes = [
     {
@@ -130,6 +131,23 @@ export const crmRoutes: Routes = [
         ],
     },
     {
+        path: CRM_LEADS_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: CrmLeadsComponent,
+                canActivate: [loginGuard],
+            },
+            {
+                path: ':id',
+                component: CrmLeadsDetailComponent,
+                canActivate: [loginGuard],
+                canDeactivate: [CanDeactivateService],
+            },
+            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' },
+        ],
+    },
+    {
         path: CRM_PAYMENT_TERMS_URL,
         children: [
             {
@@ -164,7 +182,7 @@ export const crmRoutes: Routes = [
                         component: CrmCustomerDetailComponent,
                         canActivate: [loginGuard],
                         canDeactivate: [CanDeactivateService],
-                        data: { sales: true, customer: true },
+                        data: { customer: true },
                         children: [
                             {
                                 path: '',

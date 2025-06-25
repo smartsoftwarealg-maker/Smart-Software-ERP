@@ -65,5 +65,6 @@
     "USED_FORMULA":                       "Cette formule est déjà utilisée.",
     "INVALID_DATE":                       "Date invalide.",
     "WRONG_FORMULA":                      "Formule incorrecte",
-    "CIRCULAR_BOM":                       "La nomenclature est circulaire"
+    "CIRCULAR_BOM":                       "La nomenclature est circulaire",
+    "MISSING_BOM":                        "Nomenclature manquante"
 }

@@ -42,7 +42,6 @@
     "ARABIC": "العربية",
     "FISCAL": "المالية",
     "STAMP": "الطابع الضريبي",
-    "CREATION_TIME": "تاريخ الإنشاء",
     "AGENT_PRICE": "أسعار العميل",
     "EDIT_AGENT_PRICE": "تعديل أسعار العميل",
     "DESCRIPTION_AR": "الوصف باللغة العربية",
@@ -185,5 +184,6 @@
     "GUARANTEE":            "ضمان",
     "VF_GUARANTEE":          "الضمان قبل الضريبة",
     "FT_GUARANTEE":          "الضمان بعد الضريبة",
-    "PROJECT_BLOCKED":       "المشروع محظور"
+    "PROJECT_BLOCKED":       "المشروع محظور",
+    "CREATION_TIME": "تاريخ الإنشاء"
 }

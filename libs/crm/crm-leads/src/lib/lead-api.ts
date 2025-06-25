@@ -1,0 +1,30 @@
+export interface CRMLead {
+    id: number;
+    firstName: string;
+    lastName: string;
+    email: string;
+    phone?: string;
+    company?: string;
+    jobTitle?: string;
+    addressLine1?: string;
+    addressLine2?: string;
+    city?: number;
+    state?: string;
+    postalCode?: string;
+    country?: string;
+    source: string;
+    status: string;
+    score: number;
+    priority: string;
+    estimatedValue?: number;
+    probability:  number;
+    expectedCloseDate?: Date;
+    campaignId?: number;
+    ownerId?: number;
+    teamId?: number;
+    createdAt: Date;
+    createdBy: number;
+    updatedAt: Date;
+    updatedBy?: number;
+    isDeleted: boolean;
+}

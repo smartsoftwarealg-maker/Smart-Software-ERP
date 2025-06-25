@@ -289,6 +289,7 @@
             "@ss/crm/crm-customer": ["libs/crm/crm-customer/src/index.ts"],
             "@ss/crm/departments": ["libs/crm/departments/src/index.ts"],
             "@ss/crm/jobs": ["libs/crm/jobs/src/index.ts"],
+            "@ss/crm/leads": ["libs/crm/crm-leads/src/index.ts"],
             "@ss/crm/payment-terms": ["libs/crm/payment-terms/src/index.ts"],
             "@ss/crm/salutations": ["libs/crm/salutations/src/index.ts"],
             "@ss/crm/status": ["libs/crm/status/src/index.ts"],

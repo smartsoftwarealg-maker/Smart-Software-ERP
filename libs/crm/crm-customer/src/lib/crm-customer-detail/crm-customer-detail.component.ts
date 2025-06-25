@@ -372,12 +372,8 @@ export class CrmCustomerDetailComponent
 
     override ngOnInit() {
         super.ngOnInit();
-        const target =
-            this.router.url.indexOf('agents') > 0
-                ? 'agents'
-                : this.router.url.indexOf('suppliers') > 0
-                  ? 'suppliers'
-                  : 'customers';
+        const target = 'crm-customer';
+
         const idx = this.router.url.indexOf(target);
         const url = this.router.url.substring(0, idx) + target;
         this.shellSrv.setGoBackPath(url, this.route);
@@ -390,38 +386,6 @@ export class CrmCustomerDetailComponent
         return super.loadEntity(id);
     }
 
-    centerSelectionChanged(ev: MatSelectionListChange) {
-        this.selectedCenter = ev.options[0].value;
-    }
-
-    deleteCenter() {
-        if (this.selectedCenter > 0) {
-            this.agentCenterSrv
-                .remove(this.selectedCenter)
-                .pipe(switchMap(() => this.agentCenterSrv.getList(0, 1000)))
-                .subscribe((res) => {
-                    this.selectedCenter = 0;
-                    this.agentCenters = res.body;
-                    this.snackBarSrv.showSuccessMessage();
-                });
-        }
-    }
-
-    addCenter() {
-        if (this.centerCtrl.value != null) {
-            this.agentCenterSrv
-                .save({
-                    id: 0,
-                    parentId: this.id,
-                    centerId: this.centerCtrl.value,
-                })
-                .pipe(switchMap(() => this.agentCenterSrv.getList(0, 1000)))
-                .subscribe((res) => {
-                    this.agentCenters = res.body;
-                    this.snackBarSrv.showSuccessMessage();
-                });
-        }
-    }
 
     private importAgents() {
         if (!this.invImportBtn.disabled) {
