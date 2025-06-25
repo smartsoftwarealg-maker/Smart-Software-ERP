@@ -89,7 +89,7 @@
     "PACKAGING_UNIT":          "Packaging unit",
     "PACKAGING":               "Packaging",
     "USES_LOTS":               "Uses lots",
-    "BLOCK_LOTS":              "Block lots",
+    "BLOCK_LOTS":              "Blocked newly created lots",
     "PRICE_LIST":              "Price list",
     "RECALC_RECEPTIONS":       "Recalculate receptions"
 }

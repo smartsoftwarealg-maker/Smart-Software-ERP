@@ -535,6 +535,7 @@ export const CRM_CONTACT_METHODS_URL = 'contact-methods';
 export const CRM_STATUS_URL = 'status';
 export const CRM_PAYMENT_TERMS_URL = 'payment-terms';
 export const CRM_CUSTOMER_URL = 'crm-customer';
+export const CRM_LEADS_URL = 'crm-leads';
 
 // #############
 // # FULL URLS #
@@ -1021,6 +1022,7 @@ export const ABS_CRM_CONTACT_METHODS_URL = '/' + [MAIN_PAGE_URL, CRM_APP_URL, CR
 export const ABS_CRM_STATUS_URL = '/' + [MAIN_PAGE_URL, CRM_APP_URL, CRM_STATUS_URL].join('/');
 export const ABS_CRM_PAYMENT_TERMS_URL = '/' + [MAIN_PAGE_URL, CRM_APP_URL, CRM_PAYMENT_TERMS_URL].join('/');
 export const ABS_CRM_CUSTOMER_URL = '/' + [MAIN_PAGE_URL, CRM_APP_URL, CRM_CUSTOMER_URL].join('/');
+export const ABS_CRM_LEADS_URL = '/' + [MAIN_PAGE_URL, CRM_APP_URL, CRM_LEADS_URL].join('/');
 
 
 // ######################################

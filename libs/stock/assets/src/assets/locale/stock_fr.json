@@ -88,7 +88,7 @@
     "PACKAGING_UNIT":          "Unité d'emballage",
     "PACKAGING":               "emballage",
     "USES_LOTS":               "Utilise lot",
-    "BLOCK_LOTS":              "Lots en bloc",
+    "BLOCK_LOTS":              "Lots nouvellement créés bloqués",
     "PRICE_LIST":              "Liste des prix",
     "RECALC_RECEPTIONS":       "Recalculer les réceptions"
 }

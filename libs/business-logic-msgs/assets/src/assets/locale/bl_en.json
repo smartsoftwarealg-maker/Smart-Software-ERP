@@ -65,5 +65,6 @@
     "USED_FORMULA":                  "Used formula cannot be deleted.",
     "INVALID_DATE":                  "Invalid date.",
     "WRONG_FORMULA":                 "Incorrect formula",
-    "CIRCULAR_BOM":                  "Circular BOM"
+    "CIRCULAR_BOM":                  "Circular BOM",
+    "MISSING_BOM":                   "Missing BOM for this part"
 }
