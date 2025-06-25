@@ -26,7 +26,7 @@ import {
     PAY_VACATION_PLANNING,
     PAY_XLS_INJECTION,
     PAYROLL_EMPLOYEES_URL,
-    PAYROLL_INACTIVE_EMPLOYEES_URL
+    PAYROLL_INACTIVE_EMPLOYEES_URL, PAYROLL_LOAN_INJECTION_URL
 } from '../common';
 import {
     ABS_INDEX_URL,
@@ -119,6 +119,7 @@ import {
 import { PayrollOptionsComponent } from 'payroll/payroll-options';
 import { FundsListComponent, FundsDetailComponent } from '@ss/payroll/funds';
 import { IrgComponent } from '@ss/payroll/irg';
+import {LoanInjectionComponent} from "@ss/payroll/loan-injection";
 
 export const mainRoutes: Routes = [
     {
@@ -755,6 +756,11 @@ export const mainRoutes: Routes = [
             },
             { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
         ]
+    },
+    {
+        path: PAYROLL_LOAN_INJECTION_URL,
+        component: LoanInjectionComponent,
+        canActivate: [loginGuard]
     },
     { path: '', redirectTo: ABS_INDEX_URL, pathMatch: 'full' },
     { path: '**', redirectTo: ABS_INDEX_URL }
