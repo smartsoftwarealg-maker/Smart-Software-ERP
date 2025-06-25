@@ -234,5 +234,6 @@
     "GRADER":                "Notateur",
     "HR_CRITERIA":           "Critères RH",
     "HR_GRADING":            "Notation RH",
-    "UNPAID_LEAVE":          "Disponibilité"
+    "UNPAID_LEAVE":          "Disponibilité",
+    "LOAN_INJECTION":        "Injection de prêts"
 }

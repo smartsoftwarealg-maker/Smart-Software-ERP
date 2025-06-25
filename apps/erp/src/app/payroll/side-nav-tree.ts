@@ -20,9 +20,14 @@ import {
     ABS_MONTH_CLOSER_URL,
     ABS_MONTH_SELECTOR_URL,
     ABS_PAYROLL_DASHBOARD_URL,
-    ABS_PAYROLL_EMPLOYEES_URL, ABS_PAYROLL_FUNDS_URL, ABS_PAYROLL_IRG_CALC_URL, ABS_PAYROLL_OPTIONS_URL,
+    ABS_PAYROLL_EMPLOYEES_URL,
+    ABS_PAYROLL_FUNDS_URL,
+    ABS_PAYROLL_IRG_CALC_URL,
+    ABS_PAYROLL_LOAN_INJECTION_URL,
+    ABS_PAYROLL_OPTIONS_URL,
     ABS_PAYROLL_REPORT_PRIVILEGE_URL,
-    ABS_PAYROLL_REPORT_RIGHT_URL, ABS_SALARY_GRID_UPDATE_URL,
+    ABS_PAYROLL_REPORT_RIGHT_URL,
+    ABS_SALARY_GRID_UPDATE_URL,
     ABS_SALARY_GRID_URL,
     ABS_SPECIAL_PAYROLL_URL,
     ABS_VACATION_PLANNING_URL
@@ -182,7 +187,12 @@ export const payrollNavTree: SideNavNode = {
             route: ABS_PAYROLL_DASHBOARD_URL,
             accessRights: 'Dashboard'
         },
-
+        {
+            name: 'PAYROLL_LOAN_INJECTION',
+            icon: 'fas fa-file-excel',
+            route: ABS_PAYROLL_LOAN_INJECTION_URL,
+            accessRights: 'Loan'
+        },
         {
             name: 'COMMON_REPORT_RIGHTS',
             icon: 'fa-regular fa-ban',

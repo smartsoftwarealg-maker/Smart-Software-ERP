@@ -1,0 +1,93 @@
+<div class="container">
+    @if (!processing()) {
+        <mat-card>
+            <div class="file-upload">
+                <input type="file"
+                       class="file-input"
+                       accept=".xlsx, application/msexcel"
+                       (change)="onChange(fileUpload.files)"
+                       #fileUpload>
+
+                <div translate>{{ fileName || "COMMON_NO_FILE_SELECTED" }}</div>
+
+                <button mat-mini-fab color="primary"
+                        class="upload-btn"
+                        (click)="fileUpload.click()">
+                    <i class="fas fa-paperclip"></i>
+                </button>
+            </div>
+            <form [formGroup]="form">
+
+                <mat-form-field class="default-100">
+                    <mat-label translate>REMUN_LOAN</mat-label>
+                    <ss-auto-complete [required]="true"
+                                      [model]="loanLookup"
+                                      formControlName="loan">
+                    </ss-auto-complete>
+                    @if (form.controls['loan'].hasError('required')) {
+                        <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+                    }
+                </mat-form-field>
+
+                <mat-form-field class="default-100">
+                    <mat-label translate>PAYROLL_EMPLOYEE</mat-label>
+                    <mat-select formControlName="employee" required>
+                        @for (c of columns; track c) {
+                            <mat-option [value]="c">
+                                {{ c }}
+                            </mat-option>
+                        }
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-form-field class="default-100">
+                    <mat-label translate>COMMON_AMOUNT</mat-label>
+                    <mat-select formControlName="amount" required>
+                        @for (c of columns; track c) {
+                            <mat-option [value]="c">
+                                {{ c }}
+                            </mat-option>
+                        }
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-form-field class="default-100">
+                    <mat-label translate>PAYROLL_MONTH_COUNT</mat-label>
+                    <mat-select formControlName="month_count" required>
+                        @for (c of columns; track c) {
+                            <mat-option [value]="c">
+                                {{ c }}
+                            </mat-option>
+                        }
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-form-field class="default-100">
+                    <mat-label translate>PAYROLL_STARTING_MONTH</mat-label>
+                    <mat-select formControlName="initial_month" required>
+                        @for (c of columns; track c) {
+                            <mat-option [value]="c">
+                                {{ c }}
+                            </mat-option>
+                        }
+                    </mat-select>
+                </mat-form-field>
+            </form>
+            <div class="button__div">
+                <button mat-raised-button color="primary"
+                        type="button"
+                        (click)="onFileSelected(fileUpload.files)">
+                    <i class="fa-solid fa-upload  icon"></i>
+                    {{ 'COMMON_UPLOAD' | translate }}
+                </button>
+                <button mat-raised-button color="warn" type="button" (click)="cancel()">
+                    <i class="fa-solid fa-arrow-rotate-left icon"></i>
+                    {{ 'COMMON_CANCEL' | translate }}
+                </button>
+            </div>
+        </mat-card>
+    }
+    @if (processing()) {
+        <mat-progress-bar class="progress-bar" mode="indeterminate"></mat-progress-bar>
+    }
+</div>

@@ -235,5 +235,6 @@
     "HR_CRITERIA":           "Hr criteria",
     "HR_GRADING":            "Hr grading",
     "UNPAID_LEAVE":          "Unpaid leave",
-    "GRADER":                "Grader"
+    "GRADER":                "Grader",
+    "LOAN_INJECTION":        "Loan injection"
 }
