@@ -15,16 +15,16 @@ import {
     DOC_CORRECTION_OUT, DOC_DELIVERY, DOC_INVOICE, DOC_PRODUCTION, DOC_PRODUCTION_ORDER,
     DOC_RECEPTION,
     DOC_SEPARATOR_200,
-    DOC_SEPARATOR_800, Transaction
+    DOC_SEPARATOR_800
 } from './transaction';
 import { AbstractEntityComponent } from '@ss/common/ui-base-entity';
 import { TransactionLinesClass } from './transaction-lines.class';
 import { StockInfoService } from '@ss/master-data/api-article';
 import { CostCenterService } from '@ss/logistics/api-cost-center';
 import { DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
-import { LotInputDialogComponent } from '@ss/production/lot-input-dialog';
 import { MatDialog } from '@angular/material/dialog';
 import { Agent, AgentService } from '@ss/logistics/api-agent';
+import { LotInputDialogComponent } from '@ss/production/lot-input-dialog';
 
 @Directive()
 export abstract class BaseTransactionLinesDetailComponent extends AbstractEntityComponent<TransactionLine> implements OnInit {

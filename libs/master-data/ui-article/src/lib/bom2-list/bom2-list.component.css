@@ -1,0 +1,21 @@
+.size {
+    width: 90%;
+    max-width: 1200px;
+    margin: 4px auto;
+}
+
+.div_table {
+    height: calc(100% - 70px);
+    overflow: auto;
+}
+
+.mat-column-description,
+.mat-column-childDescription {
+    flex: 1 1 180px;
+}
+
+.mat-column-version,
+.mat-column-from,
+.mat-column-to {
+    flex: 1 1 120px;
+}

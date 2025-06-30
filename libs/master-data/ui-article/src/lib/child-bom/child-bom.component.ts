@@ -31,7 +31,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 export class ChildBomComponent implements OnInit {
     private dialog = inject(MatDialog);
     private langSrv = inject(LanguageService);
-    private EMPTY_BOM: BOM = {id: 0, qty: 0, childRef: '',  childDescription: this.langSrv.translate('LOGISTICS_BOM'), childId: 0};
+    private EMPTY_BOM: BOM = {id: 0, qty: 0, childRef: '',  childDescription: this.langSrv.translate('LOGISTICS_BOM'), childId: 0, version: 1};
     private confirmationSrv =  inject(ConfirmationDialogService);
     private entitySrv = inject(BomService);
     private snackBarSrv = inject(SnackBarService);
@@ -96,12 +96,12 @@ export class ChildBomComponent implements OnInit {
 
     showEditDialog() {
         const bom = this.selectedBOM?.bom;
-        this.edit({ id: bom?.id || 0, childId: bom?.childId, parentId: bom.parentId || null, qty: bom.qty, price: bom?.price});
+        this.edit(bom);
     }
 
     public showAddDialog() {
         const bom = this.selectedBOM?.bom;
-        this.edit({ id: 0, childId: 0, parentId: bom?.childId || this.bomSrv.getParentId(), qty: 0, price: 0});
+        this.edit({ id: 0, childId: 0, parentId: bom?.childId || this.bomSrv.getParentId(), qty: 0, price: 0, version: 1});
     }
 
     public edit(bom: BOM) {

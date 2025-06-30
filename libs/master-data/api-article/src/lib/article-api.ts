@@ -25,6 +25,12 @@ export interface BOM {
     childId: number;
     qty: number;
     price?: number;
+    description?: string;
+    updateDate?: Date;
+    updateMemo?: string;
+    from?: Date;
+    to?: Date;
+    version: number;
     parentRef?: string;
     parentDescription?: string;
     childRef?: string;

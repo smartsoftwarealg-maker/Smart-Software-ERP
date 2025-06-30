@@ -14,9 +14,10 @@ export class BomService extends BaseEntityService<BOM> {
         super(httpSrv, BOM_URL);
     }
 
-    tree(filter?: string): Observable<BOMTree[]> {
-        const params = filter? new HttpParams().set('filter', filter): null;
-        return this.httpSrv.get<BOMTree[]>(BOM_TREE_URL, params);
+    tree(filter?: string, id?: number): Observable<BOMTree[]> {
+        const params = filter? new HttpParams().set('filter', filter) : null;
+        const params2 = id ? (params||new HttpParams()).set('id', id.toString()) : params;
+        return this.httpSrv.get<BOMTree[]>(BOM_TREE_URL, params2);
     }
 
     treeById(): Observable<BOMTree[]> {

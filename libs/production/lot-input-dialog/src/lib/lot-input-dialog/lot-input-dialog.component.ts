@@ -17,7 +17,7 @@ import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { StoresService } from '@ss/stock/api-article-store';
 
 @Component({
-    selector: 'ss-log-input-dialog',
+    selector: 'ss-lot-input-dialog',
     imports: [CommonModule,
         MaterialModule,
         MatCard, MatCardContent, ReactiveFormsModule, TranslateDirective, UiAutoCompleteComponent, DatePickerComponent],

@@ -1,8 +1,8 @@
 export default {
-    displayName: 'log-input-dialog',
+    displayName: 'lot-input-dialog',
     preset: '../../../jest.preset.js',
     setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
-    coverageDirectory: '../../../coverage/libs/production/log-input-dialog',
+    coverageDirectory: '../../../coverage/libs/production/lot-input-dialog',
     transform: {
         '^.+\\.(ts|mjs|js|html)$': [
             'jest-preset-angular',

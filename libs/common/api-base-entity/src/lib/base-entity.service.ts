@@ -49,7 +49,7 @@ export class BaseEntityService<T> {
 
     /**
      * id is a string for the moment but could be ported to int in the future.
-     * @param id
+     * @param iid
      */
     public get(iid: number | string): Observable<T> {
         const id = iid === undefined || iid === null ? 0 : iid;

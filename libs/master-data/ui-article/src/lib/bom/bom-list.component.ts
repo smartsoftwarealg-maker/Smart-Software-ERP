@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, inject, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Component, effect, inject, input, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { KeepOnToolbar, ShellService, SnackBarService, ToolbarButton } from '@ss/common/ui-shell';
 import { ActivatedRoute } from '@angular/router';
@@ -6,9 +6,7 @@ import { BomService } from '../bom.service';
 import { BOM, BOMTree } from '@ss/master-data/api-article';
 import { MatTree, MatTreeNestedDataSource } from '@angular/material/tree';
 import { MatButtonModule } from '@angular/material/button';
-
 import { LanguageService, MaterialModule } from '@ss/common/api-common';
-
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { BomDialogComponent } from '../bom-dialog/bom-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
@@ -16,7 +14,7 @@ import { map, of, switchMap } from 'rxjs';
 import { TranslateDirective } from '@ss/common/ui-lang';
 
 @Component({
-    selector: 'ss-bom',
+    selector: 'ss-bom-children',
     standalone: true,
     imports: [
         CommonModule,
@@ -24,13 +22,13 @@ import { TranslateDirective } from '@ss/common/ui-lang';
         MaterialModule,
         TranslateDirective
     ],
-    templateUrl: './bom.component.html',
-    styleUrl: './bom.component.css',
+    templateUrl: './bom-list.component.html',
+    styleUrl: './bom-list.component.css',
 })
-export class BomComponent implements OnInit, OnDestroy {
+export class BomListComponent implements OnDestroy {
     private dialog = inject(MatDialog);
     private langSrv = inject(LanguageService);
-    private EMPTY_BOM: BOM = {id: 0, qty: 0, childRef: '',  childDescription: this.langSrv.translate('LOGISTICS_BOM'), childId: 0};
+    private EMPTY_BOM: BOM = {id: 0, qty: 0, childRef: '',  childDescription: this.langSrv.translate('LOGISTICS_BOM'), childId: 0, version: 1};
     private confirmationSrv =  inject(ConfirmationDialogService);
     private entitySrv = inject(BomService);
     private snackBarSrv = inject(SnackBarService);
@@ -74,23 +72,20 @@ export class BomComponent implements OnInit, OnDestroy {
 
     // treeControl = new NestedTreeControl<BOMTree>(node => node.children);
     dataSource = new MatTreeNestedDataSource<BOMTree>();
+    bomId = input(0);
+    readonly idEffect = effect(() => this.refresh(null, this.bomId()));
 
-    ngOnInit(): void {
-        this.shellSrv.setGoBackPath('..', this.route);
-        this.shellSrv.setButtons([this.addButton, this.editButton, this.deleteButton]);
-        this.shellSrv.setTitle('LOGISTICS_BOM');
-        this.enableSearch();
-        this.refresh(null);
-    }
 
-    refresh(filter?: string) {
+
+    refresh(filter?: string, id?: number) {
         this.bomSrv
-            .tree(filter)
+            .tree(filter, id)
             .subscribe(res => {
                 // this.dataSource.data = res;
                 this.dataSource.data = [{ bom: this.EMPTY_BOM, children: res || []}];
             });
     }
+
 
     private getSelectedParent(source: BOMTree[], child: BOMTree): BOMTree {
         if (!child) {
@@ -146,12 +141,12 @@ export class BomComponent implements OnInit, OnDestroy {
 
     private showEditDialog() {
         const bom = this.selectedBOM?.bom;
-        this.edit({ id: bom?.id || 0, childId: bom?.childId, parentId: bom.parentId || null, qty: bom.qty, price: bom?.price});
+        this.edit(bom);
     }
 
     private showAddDialog() {
         const bom = this.selectedBOM?.bom;
-        this.edit({ id: 0, childId: 0, parentId: bom.childId || null, qty: 0, price: 0});
+        this.edit({ id: 0, childId: 0, parentId: bom.childId || null, qty: 0, price: 0, version: 1});
     }
 
     private edit(bom: BOM) {
@@ -168,7 +163,6 @@ export class BomComponent implements OnInit, OnDestroy {
             .subscribe((bom: BOM) => {
                 if (bom) {
                     this.snackBarSrv.showSuccessMessage();
-                    console.log(bom);
                     if (bom.id === this.selectedBOM?.bom.id) {
                         this.selectedBOM.bom.qty = bom.qty;
                         this.selectedBOM.bom.price = bom.price;

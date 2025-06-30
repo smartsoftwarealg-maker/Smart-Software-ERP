@@ -34,7 +34,7 @@ import {
 } from '@ss/production/production';
 import { loginGuard } from '../erp-guards';
 import { MrpComponent, ProductionConsumptionComponent } from '@ss/production/mrp';
-import { BomComponent } from '@ss/master-data/ui-article';
+import { Bom2DetailComponent, Bom2ListComponent, BomListComponent } from '@ss/master-data/ui-article';
 import {
     ArticleTypeDetailComponent,
     ArticleTypeListComponent,
@@ -103,8 +103,23 @@ export const prodRoutes: Routes = [
     },
     {
         path: PRODUCTION_BOM_URL,
-        component: BomComponent,
+        children: [
+            {
+                path: LIST_URL,
+                component: Bom2ListComponent,
+                canActivate: [loginGuard],
+            },
+            {
+                path: ':id',
+                component: Bom2DetailComponent,
+                canActivate: [loginGuard],
+                canDeactivate: [CanDeactivateService],
+            },
+            { path: '', redirectTo: LIST_URL, pathMatch: 'full' },
+            { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' },
+        ],
     },
+
     {
         path: PRODUCTION_ORDER_URL,
         children: [
