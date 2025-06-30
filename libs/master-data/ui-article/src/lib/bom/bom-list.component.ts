@@ -28,7 +28,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
 export class BomListComponent implements OnDestroy {
     private dialog = inject(MatDialog);
     private langSrv = inject(LanguageService);
-    private EMPTY_BOM: BOM = {id: 0, qty: 0, childRef: '',  childDescription: this.langSrv.translate('LOGISTICS_BOM'), childId: 0, version: 1};
+    private EMPTY_BOM: BOM = {id: 0, qty: 0, productRef: '',  productDescription: this.langSrv.translate('LOGISTICS_BOM'), productId: 0, version: 1};
     private confirmationSrv =  inject(ConfirmationDialogService);
     private entitySrv = inject(BomService);
     private snackBarSrv = inject(SnackBarService);
@@ -79,7 +79,7 @@ export class BomListComponent implements OnDestroy {
 
     refresh(filter?: string, id?: number) {
         this.bomSrv
-            .tree(filter, id)
+            .tree(null, id)
             .subscribe(res => {
                 // this.dataSource.data = res;
                 this.dataSource.data = [{ bom: this.EMPTY_BOM, children: res || []}];
@@ -146,7 +146,7 @@ export class BomListComponent implements OnDestroy {
 
     private showAddDialog() {
         const bom = this.selectedBOM?.bom;
-        this.edit({ id: 0, childId: 0, parentId: bom.childId || null, qty: 0, price: 0, version: 1});
+        this.edit({ id: 0, productId: 0, bomId: bom.productId || null, qty: 0, price: 0, version: 1});
     }
 
     private edit(bom: BOM) {
@@ -166,7 +166,7 @@ export class BomListComponent implements OnDestroy {
                     if (bom.id === this.selectedBOM?.bom.id) {
                         this.selectedBOM.bom.qty = bom.qty;
                         this.selectedBOM.bom.price = bom.price;
-                        this.selectedBOM.bom.childId = bom.childId;
+                        this.selectedBOM.bom.productId = bom.productId;
                     } else {
                         this.selectedBOM.children.push({bom: bom, children: []});
                     }

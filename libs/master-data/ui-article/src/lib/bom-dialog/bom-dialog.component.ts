@@ -43,9 +43,9 @@ export class BomDialogComponent {
         this.form.controls['id'].setValue(data.id || 0);
         this.form.controls['price'].setValue(data.price || 0);
         this.form.controls['qty'].setValue(data.qty || 0);
-        this.form.controls['parentId'].setValue(data.parentId);
-        this.form.controls['childId'].setValue(data.childId || 0);
-        if (!data.parentId) {
+        this.form.controls['parentId'].setValue(data.bomId);
+        this.form.controls['childId'].setValue(data.productId || 0);
+        if (!data.bomId) {
             this.form.controls['qty'].disable();
             this.form.controls['price'].disable();
         }

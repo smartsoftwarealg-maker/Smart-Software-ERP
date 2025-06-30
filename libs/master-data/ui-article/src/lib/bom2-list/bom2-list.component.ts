@@ -32,7 +32,7 @@ import { Bom2Service } from '../bom2.service';
     styleUrl: './bom2-list.component.css',
 })
 export class Bom2ListComponent extends BaseEntityListComponent<BOM> {
-    displayedColumns = ['childDescription', 'description', 'from', 'to', 'version'];
+    displayedColumns = ['productDescription', 'description', 'from', 'to', 'version'];
 
     constructor(
         public entitySrv: Bom2Service,

@@ -9,9 +9,9 @@
                 <i class="fa-solid fa-arrow-turn-down-right"></i>
             </button>
             <div class="info_div">
-                <td class="reference">{{ node.bom.childRef }}</td>
+                <td class="reference">{{ node.bom.productRef }}</td>
                 <div class="detail_div">
-                    <span class="description">{{ node.bom.childDescription }}</span>
+                    <span class="description">{{ node.bom.productDescription }}</span>
                     <span class="qty"> {{ node.bom.qty | number: '1.2-6' }}</span>
                     <span class="price"> {{ node.bom.price | number: '1.2-6' }}</span>
                 </div>
@@ -42,9 +42,9 @@
                     </div>
                 } @else {
                     <div class="info_div">
-                        <td class="reference"> {{ node.bom.childRef }}</td>
+                        <td class="reference"> {{ node.bom.productRef }}</td>
                         <div class="detail_div">
-                            <span class="description">{{ node.bom.childDescription }}</span>
+                            <span class="description">{{ node.bom.productDescription }}</span>
                             <span class="qty"> {{ node.bom.qty | number: '1.2-6' }}</span>
                             <span class="price"> {{ node.bom.price | number: '1.2-6' }}</span>
                         </div>

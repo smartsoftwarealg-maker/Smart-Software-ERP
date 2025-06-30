@@ -16,9 +16,9 @@
                     <ss-auto-complete matInput
                                       [required]="true"
                                       [model]="finalProductLookup"
-                                      formControlName="childId">
+                                      formControlName="productId">
                     </ss-auto-complete>
-                    @if (form.controls['childId'].hasError('required')) {
+                    @if (form.controls['productId'].hasError('required')) {
                         <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
                     }
                 </mat-form-field>

@@ -63,7 +63,7 @@ export class Bom2DetailComponent extends BaseEntityDetailComponent<BOM> {
     public setupForm(e: BOM): UntypedFormGroup {
         return this.#formBuilder.group({
             id:          [e.id],
-            childId:     [e.childId, Validators.required],
+            productId:   [e.productId, Validators.required],
             description: [e.description, Validators.required],
             from:        [e.from],
             to:          [e.to],

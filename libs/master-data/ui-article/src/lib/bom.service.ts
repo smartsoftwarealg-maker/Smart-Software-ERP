@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BOM, BOM_TREE_URL, BOM_URL, BOMTree } from '@ss/master-data/api-article';
+import { BOM, BOM_TREE_URL, BOM_URL, BOMTree, MANUFACTORING_BOMS_URL } from '@ss/master-data/api-article';
 import { BaseEntityService } from '@ss/common/api-base-entity';
 import { HttpService } from '@ss/common/api-common';
 import { Observable } from 'rxjs';
@@ -17,7 +17,7 @@ export class BomService extends BaseEntityService<BOM> {
     tree(filter?: string, id?: number): Observable<BOMTree[]> {
         const params = filter? new HttpParams().set('filter', filter) : null;
         const params2 = id ? (params||new HttpParams()).set('id', id.toString()) : params;
-        return this.httpSrv.get<BOMTree[]>(BOM_TREE_URL, params2);
+        return this.httpSrv.get<BOMTree[]>('/articles/tree', params2);
     }
 
     treeById(): Observable<BOMTree[]> {
