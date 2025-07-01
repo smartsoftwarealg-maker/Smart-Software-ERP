@@ -1,55 +1,84 @@
-    <mat-tree [dataSource]="dataSource" [childrenAccessor]="childrenAccessor"  #tree >
-        <mat-tree-node *matTreeNodeDef="let node"
-                       matTreeNodePadding
-                       class="selectable"
-                       [class.selected]="node?.bom.id === selectedBOM?.bom.id"
-                       (click)="select(node)">
-            <button mat-icon-button matTreeNodeToggle
-                    [attr.aria-label]="'Toggle ' + node.name">
-                <i class="fa-solid fa-arrow-turn-down-right"></i>
-            </button>
-            <div class="info_div">
-                <td class="reference">{{ node.bom.productRef }}</td>
-                <div class="detail_div">
-                    <span class="description">{{ node.bom.productDescription }}</span>
-                    <span class="qty"> {{ node.bom.qty | number: '1.2-6' }}</span>
-                    <span class="price"> {{ node.bom.price | number: '1.2-6' }}</span>
-                </div>
-            </div>
+<div class="button__div b-primary">
+<!--  <mat-form-field>-->
+<!--    <mat-label translate>COMMON_SEARCH</mat-label>-->
+<!--    <input matInput [formControl]="searchCtrl" type="text">-->
+<!--  </mat-form-field>-->
 
-        </mat-tree-node>
-        <!-- This is the tree node template for expandable nodes -->
-        <mat-tree-node *matTreeNodeDef="let node; when: hasChild" matTreeNodePadding matTreeNodeToggle>
-            <div class="mat-tree-node selectable"
+  <button mat-raised-button
+          type="button"
+          [disabled]="!this.selectedBOM?.bom?.id"
+          (click)="showAddDialog()">
+    <i class="fa-solid fa-add  icon"></i>
+    {{ 'COMMON_ADD' | translate }}
+  </button>
+  <button mat-raised-button
+          color="primary"
+          type="button"
+          [disabled]="!this.selectedBOM?.bom?.id || !this.selectedBOM?.bom?.bomId"
+          (click)="editSelected()">
+    <i class="fa-solid fa-pencil  icon"></i>
+    {{ 'COMMON_EDIT' | translate }}
+  </button>
+  <button mat-raised-button
+          color="warn"
+          type="button"
+          (click)="deleteSelected()"
+          [disabled]="!this.selectedBOM?.bom?.id">
+    <i class="fa-solid fa-minus icon"></i>
+    {{ 'COMMON_DELETE' | translate }}
+  </button>
+
+
+</div>
+<mat-tree [dataSource]="dataSource" [childrenAccessor]="childrenAccessor" #tree>
+  <mat-tree-node *matTreeNodeDef="let node"
+                 matTreeNodePadding
+                 class="selectable"
                  [class.selected]="node?.bom.id === selectedBOM?.bom.id"
                  (click)="select(node)">
-                <button mat-icon-button matTreeNodeToggle
-                        [attr.aria-label]="'Toggle ' + node.name">
-                    @if (tree.isExpanded(node)) {
-                        <i class="fa-solid fa-minus bold"></i>
-                    } @else {
-                        <i class="fa-solid fa-plus bold"></i>
-                    }
-                </button>
-                @if (node.bom.id === 0) {
-                    <div class="info_div  header">
-                        <span class="reference" translate> COMMON_REFERENCE</span>
-                        <div class="detail_div">
-                            <span class="description" translate> COMMON_DESCRIPTION</span>
-                            <span class="qty" translate> LOGISTICS_QTY</span>
-                            <span class="price" translate> LOGISTICS_PRICE</span>
-                        </div>
-                    </div>
-                } @else {
-                    <div class="info_div">
-                        <td class="reference"> {{ node.bom.productRef }}</td>
-                        <div class="detail_div">
-                            <span class="description">{{ node.bom.productDescription }}</span>
-                            <span class="qty"> {{ node.bom.qty | number: '1.2-6' }}</span>
-                            <span class="price"> {{ node.bom.price | number: '1.2-6' }}</span>
-                        </div>
-                    </div>
-                }
-            </div>
-        </mat-tree-node>
-    </mat-tree>
+    <button mat-icon-button matTreeNodeToggle
+            [attr.aria-label]="'Toggle ' + node.name">
+      <i class="fa-solid fa-arrow-turn-down-right"></i>
+    </button>
+    <div class="info_div">
+      <td class="reference">{{ node.bom.productRef }}</td>
+      <div class="detail_div">
+        <span class="description">{{ node.bom.productDescription }}</span>
+        <span class="qty"> {{ node.bom.qty | number: '1.2-6' }}</span>
+      </div>
+    </div>
+
+  </mat-tree-node>
+  <!-- This is the tree node template for expandable nodes -->
+  <mat-tree-node *matTreeNodeDef="let node; when: hasChild" matTreeNodePadding matTreeNodeToggle>
+    <div class="mat-tree-node selectable"
+         [class.selected]="node?.bom.id === selectedBOM?.bom.id"
+         (click)="select(node)">
+      <button mat-icon-button matTreeNodeToggle
+              [attr.aria-label]="'Toggle ' + node.name">
+        @if (tree.isExpanded(node)) {
+          <i class="fa-solid fa-minus bold"></i>
+        } @else {
+          <i class="fa-solid fa-plus bold"></i>
+        }
+      </button>
+      @if (node.bom.id === 0) {
+        <div class="info_div  header">
+          <span class="reference" translate> COMMON_REFERENCE</span>
+          <div class="detail_div">
+            <span class="description" translate> COMMON_DESCRIPTION</span>
+            <span class="qty" translate> LOGISTICS_QTY</span>
+          </div>
+        </div>
+      } @else {
+        <div class="info_div">
+          <td class="reference"> {{ node.bom.productRef }}</td>
+          <div class="detail_div">
+            <span class="description">{{ node.bom.productDescription }}</span>
+            <span class="qty"> {{ node.bom.qty | number: '1.2-6' }}</span>
+          </div>
+        </div>
+      }
+    </div>
+  </mat-tree-node>
+</mat-tree>

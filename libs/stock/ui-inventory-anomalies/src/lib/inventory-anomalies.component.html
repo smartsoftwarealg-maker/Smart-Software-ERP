@@ -26,21 +26,21 @@
         <ng-container matColumnDef="computedStock">
             <mat-header-cell *matHeaderCellDef translate>STOCK_COMPUTED_STOCK</mat-header-cell>
             <mat-cell *matCellDef="let e">
-                {{ e.computedStock | number: '1.2'}}
+                {{ e.computedStock | number: '1.2-4'}}
             </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="actualStock">
             <mat-header-cell *matHeaderCellDef translate>STOCK_ACTUAL_STOCK</mat-header-cell>
             <mat-cell *matCellDef="let e">
-                {{ e.actualStock | number: '1.2' }}
+                {{ e.actualStock | number: '1.2-4' }}
             </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="diff">
             <mat-header-cell *matHeaderCellDef translate>STOCK_DIFFERENCE</mat-header-cell>
             <mat-cell *matCellDef="let e">
-                {{ e.diff | number: '1.2' }}
+                {{ e.diff | number: '1.2-4' }}
             </mat-cell>
         </ng-container>
 

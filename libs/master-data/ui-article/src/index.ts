@@ -8,3 +8,4 @@ export * from './lib/child-bom/child-bom.component';
 export * from './lib/bom2-list/bom2-list.component';
 export * from './lib/bom2-detail/bom2-detail.component';
 export * from './lib/bom.service';
+export * from './lib/bom-lookup.class';

@@ -44,7 +44,7 @@ export class LotInputDialogComponent {
         description: [''],
         descriptionAr: [''],
         lotState: ['', Validators.maxLength(1)],
-        lotNumber: ['', Validators.required],
+        lotNumber: [1, Validators.required],
         creationDate: [new Date(), Validators.required],
         expires: [false, Validators.required],
         expirationDate: [null],
@@ -54,7 +54,6 @@ export class LotInputDialogComponent {
 
     save() {
         const rawValue = this.form.getRawValue();
-        rawValue.description = rawValue.lotNumber + '';
         rawValue.expires = rawValue.expirationDate !== null;
         this.dialogRef.close(rawValue);
         // this.#lotSrv.save(rawValue)

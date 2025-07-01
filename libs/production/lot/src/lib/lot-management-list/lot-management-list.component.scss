@@ -22,19 +22,24 @@
     padding-left: 16px;
 }
 
-.mat-column-description, .mat-column-descriptionAr {
+.mat-column-description,
+.mat-column-descriptionAr {
     flex: 1 1 140px;
     padding-right: 8px !important;
     padding-left: 8px !important;
 }
 
-.mat-column-supplier {
+.mat-column-supplier,
+.mat-column-lotNumber {
     flex: 1 1 100px;
     padding-right: 8px !important;
     padding-left: 8px !important;
 }
 
-.mat-column-expirationDate, .mat-column-expires, .mat-column-lotState, .mat-column-creationDate {
+.mat-column-expirationDate,
+.mat-column-expires,
+.mat-column-lotState,
+.mat-column-creationDate {
     flex: 1 1 80px;
     justify-content: center;
     padding-right: 8px !important;

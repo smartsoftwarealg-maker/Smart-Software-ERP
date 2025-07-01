@@ -116,7 +116,7 @@ export interface Location {
     blockedLot?: boolean;
     analysisDate?: Date;
     center?: number;
-    lotNumber?: string;
+    lotNumber?: number;
     description?: string;
     storeName?: string;
 }

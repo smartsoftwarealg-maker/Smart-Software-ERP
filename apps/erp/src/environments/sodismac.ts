@@ -25,7 +25,7 @@ import {
     SALES_APP_URL,
     STOCK_APP_URL,
     WEBARCH_APP_URL,
-    WORK_FLOW_APP_URL, ARCH_VIEWER_URL, MISSIONS_APP_URL, PAYROLL_APP_URL, HR_APP_URL
+    WORK_FLOW_APP_URL, ARCH_VIEWER_URL, MISSIONS_APP_URL, PAYROLL_APP_URL, HR_APP_URL, TREASURY_APP_URL
 } from '../app/common';
 import {Routes} from '@angular/router';
 import {workflowNavTree} from '../app/workflow/side-nav-tree';
@@ -37,6 +37,7 @@ import { hrNavTree } from '../app/hr/side-nav-tree';
 import { payrollNavTree } from '../app/payroll/side-nav-tree';
 import { attendanceNavTree } from '../app/attendance/side-nav-tree';
 import { missionsNavTree } from '../app/missions/side-nav-tree';
+import { treasuryNavTree } from '../app/treasury/side-nav-tree';
 
 export const environment = {
     production: false,
@@ -60,6 +61,7 @@ export const navBar = [
     assetsNavTree,
     workflowNavTree,
     dashboardNavTree,
+    treasuryNavTree,
     aaNavTree
 ];
 
@@ -104,6 +106,10 @@ export const appRoutes: Routes =  [
     {
         path: ACCOUNTING_APP_URL,
         loadChildren: () => import('../app/accounting/accounting.module').then(m => m.AccountingModule)
+    },
+    {
+        path: TREASURY_APP_URL,
+        loadChildren: () => import('../app/treasury/treasury.module').then(m => m.TreasuryModule)
     },
     {
         path: STOCK_APP_URL,
@@ -160,7 +166,7 @@ export const appRoutes: Routes =  [
 export const APPLICATION_LIST = [
     'ADMINISTRATION', 'DASHBOARD-APP', 'FINANCE', 'HRMASTER',
     'STOCK', 'LOGISTICS', 'LOGISTICS-ADMINISTRATION', 'ORGANIZATION', 'PAYMENTS',
-    'PURCHASES', 'SALES', 'WORKFLOW', 'PROJECTS'];
+    'PURCHASES', 'SALES', 'WORKFLOW', 'PROJECTS', 'TREASURY'];
 /*
  * For easier debugging in development mode, you can import the following file
  * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.

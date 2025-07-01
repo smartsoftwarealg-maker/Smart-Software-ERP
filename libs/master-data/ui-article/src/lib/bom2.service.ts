@@ -13,4 +13,8 @@ export class Bom2Service extends BaseEntityService<BOM> {
     constructor(protected override httpSrv: HttpService) {
         super(httpSrv, '/manufacturing/boms');
     }
+
+    duplicate(id: number): Observable<{count: number}> {
+        return this.httpSrv.put('/manufacturing/bom-duplication/' + id);
+    }
 }

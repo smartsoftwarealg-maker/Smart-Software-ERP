@@ -32,6 +32,15 @@ import { Bom2Service } from '../bom2.service';
     styleUrl: './bom2-list.component.css',
 })
 export class Bom2ListComponent extends BaseEntityListComponent<BOM> {
+    public duplicateButton: ToolbarButton = {
+        icon: 'fa-solid fa-layer-plus',
+        label: 'COMMON_DUPLICATE',
+        disabled: true,
+        visible: true,
+        keepOnToolbar: KeepOnToolbar.ALWAYS,
+        click: () => this.duplicate()
+    };
+
     displayedColumns = ['productDescription', 'description', 'from', 'to', 'version'];
 
     constructor(
@@ -47,4 +56,32 @@ export class Bom2ListComponent extends BaseEntityListComponent<BOM> {
         this.pagination.pageSize = 10;
     }
 
+    ngOnInit() {
+        super.ngOnInit();
+        this.shellSrv.addButton(this.duplicateButton);
+    }
+
+    private duplicate() {
+        this.confirmationSrv
+          .confirm('PROD_BOM_DUP', 'PROD_BOM_DUP_CONFIRM')
+          .pipe(switchMap(res => res ? this.entitySrv.duplicate(this.selected) : of(null)),
+            switchMap(res => {
+                if (res) {
+                    this.refresh();
+                    return of({id: 1})
+                } else {
+                    return of({id: 0});
+                }
+            }))
+          .subscribe(res => {
+              if (res && res.id) {
+                  this.snackBarSrv.showSuccessMessage();
+              }
+          });
+    }
+
+    select(id: number) {
+        super.select(id);
+        this.duplicateButton.disabled = !id;
+    }
 }

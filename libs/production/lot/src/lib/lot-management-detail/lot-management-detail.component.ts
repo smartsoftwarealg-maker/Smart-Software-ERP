@@ -70,18 +70,18 @@ export class LotManagementDetailComponent
     public override setupForm(l: Lot) {
         // Make sure to update the template if you edit the configuration here
         return this.formBuilder.group({
-            id: [l.id],
-            storeId: [l.storeId, Validators.required],
-            supplier: [l.supplier],
-            description: [l.description],
-            descriptionAr: [l.descriptionAr],
-            lotState: [l.lotState],
-            lotNumber: [l.lotNumber || '1', Validators.maxLength(14)],
-            creationDate: [l.creationDate],
-            expires: [l.expires || false, Validators.required],
+            id:             [l.id],
+            storeId:        [l.storeId, Validators.required],
+            supplier:       [l.supplier],
+            description:    [l.description],
+            descriptionAr:  [l.descriptionAr],
+            lotState:       [l.lotState],
+            lotNumber:      [l.lotNumber || 1, Validators.maxLength(14)],
+            creationDate:   [l.creationDate],
+            expires:        [l.expires || false, Validators.required],
             expirationDate: [l.expirationDate],
-            team: [l.team || 0],
-            center: [l.center || 0],
+            team:           [l.team || 0],
+            center:         [l.center || 0],
         });
     }
 

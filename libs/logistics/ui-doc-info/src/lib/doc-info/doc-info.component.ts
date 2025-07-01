@@ -197,7 +197,6 @@ export class DocInfoComponent {
     navigate(): void {
         if (this.selectedEntry != null) {
             delete this.params_['compensated'];
-            this.params_.compensated = this.selectedEntry.name === 'debts_2' ? 'false' : 'true';
             console.log(this.params_);
             this.router.navigate([this.selectedEntry.url],
                 {

@@ -33,6 +33,7 @@ import { TranslatePipe } from '@ss/common/ui-lang';
 import { ProductionLinesService } from '../production-services/production-lines.service';
 import { ProductionService } from '../production-services/production.service';
 import { AccTransactionLineService } from '@ss/accounting/accounting-api';
+import { of, switchMap } from 'rxjs';
 
 @Component({
     selector: 'ss-production-lines-list',
@@ -73,6 +74,7 @@ export class ProductionLinesListComponent extends BaseTransactionLinesListCompon
         'description',
         'qtyOrdered',
         'qtySatisfied',
+        'storeName',
         'price',
         'total',
         'action',
@@ -135,15 +137,18 @@ export class ProductionLinesListComponent extends BaseTransactionLinesListCompon
     }
 
     public cancel(id: number) {
-        this.productionSrv.cancel(id).subscribe({
-            next:()=>{
-                this.snackBarSrv.showSuccessMessage();
-                this.refresh()
-            },
-            error:(err)=>{
-                this.snackBarSrv.showFailureMessage();
-                throw err
-            }
-        });
+        this.confirmationSrv
+            .confirm('COMMON_CANCEL', 'PROD_CANCEL_PRODUCTION')
+            .pipe(switchMap(res => res ? this.productionSrv.cancel(id) : of(null)))
+            .subscribe({
+                next: () => {
+                    this.snackBarSrv.showSuccessMessage();
+                    this.refresh();
+                },
+                error: (err) => {
+                    this.snackBarSrv.showFailureMessage();
+                    throw err;
+                }
+            });
     }
 }

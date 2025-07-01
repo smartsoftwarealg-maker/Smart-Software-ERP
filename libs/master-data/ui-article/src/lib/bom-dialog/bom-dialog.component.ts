@@ -28,13 +28,13 @@ export class BomDialogComponent {
 
     articleLookup = new ArticleIdAutoCompleteModel(this.articleSrv);
     form = this.fb.group( {
-        id:               [0],
-        parentId:         [0],
-        childId:          [0, Validators.required],
-        qty:              [0, [Validators.required, Validators.min(0.000001)]],
-        price:            [0],
-        childRef:         [null],
-        childDescription: [null]
+        id:                 [0],
+        bomId:              [0],
+        productId:          [0, Validators.required],
+        qty:                [0, [Validators.required, Validators.min(0.000001)]],
+        price:              [0],
+        productRef:         [null],
+        productDescription: [null]
     });
 
     bom: BOM|null = null;
@@ -43,15 +43,15 @@ export class BomDialogComponent {
         this.form.controls['id'].setValue(data.id || 0);
         this.form.controls['price'].setValue(data.price || 0);
         this.form.controls['qty'].setValue(data.qty || 0);
-        this.form.controls['parentId'].setValue(data.bomId);
-        this.form.controls['childId'].setValue(data.productId || 0);
+        this.form.controls['bomId'].setValue(data.bomId);
+        this.form.controls['productId'].setValue(data.productId || 0);
         if (!data.bomId) {
             this.form.controls['qty'].disable();
             this.form.controls['price'].disable();
         }
         this.articleLookup.onObjectSelected = o => {
-            this.form.controls['childRef'].setValue(o.reference);
-            this.form.controls['childDescription'].setValue(o.description2 || o.reference);
+            this.form.controls['productRef'].setValue(o.reference);
+            this.form.controls['productDescription'].setValue(o.description2 || o.reference);
         };
     }
 
