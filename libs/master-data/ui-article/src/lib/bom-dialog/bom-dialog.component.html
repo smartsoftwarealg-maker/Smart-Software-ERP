@@ -5,11 +5,11 @@
                 <mat-label translate>COMMON_ARTICLE</mat-label>
                 <ss-auto-complete matInput
                                   [model]="articleLookup"
-                                  formControlName="childId"
+                                  formControlName="productId"
                                   required="true"
                                   autofocus>
                 </ss-auto-complete>
-                @if (form.controls['childId'].invalid) {
+                @if (form.controls['productId'].invalid) {
                     <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
                 }
             </mat-form-field>

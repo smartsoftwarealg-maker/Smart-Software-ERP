@@ -22,5 +22,6 @@ export interface TransactionLine {
     charge2: number;
     charge3: number;
     charge4: number;
+    bomId?: number;
     costCenter?: number;
 }

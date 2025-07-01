@@ -47,7 +47,7 @@ export class PriceListDetailComponent extends BaseEntityDetailComponent<Location
             referenceId:   [b.referenceId],
             reference:     [{ value: b.reference, disabled: true }],
             description:   [{ value: b.description, disabled: true }],
-            lotNumber:     [{ value: b.lotNumber, disabled: true }],
+            lotNumber:     [{ value: b.lotNumber||1, disabled: true }],
             storeName:     [{ value: b.storeName, disabled: true }],
             price1:        [b.price1||0, Validators.required],
             price2:        [b.price2||0, Validators.required],

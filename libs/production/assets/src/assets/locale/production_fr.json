@@ -17,5 +17,7 @@
     "PRODUCE_ALL":           "Produire Tout",
     "INTER_STORE_TRANSFER":  "Transfert Entre Magasins",
     "INTER_STORE_TRANSFER_DETAIL":  "Details DU Transfert Inter-Magasins",
-    "PRODUCT_TYPE":          "Type de Produit"
+    "PRODUCT_TYPE":          "Type de Produit",
+    "UPDATE_DATE":           "Date de mise à jour",
+    "CANCEL_PRODUCTION":     "Annuler la production"
 }

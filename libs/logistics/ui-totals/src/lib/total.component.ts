@@ -74,7 +74,6 @@ export class TotalComponent implements OnInit {
                 if (list.length > 1 && list[1].description?.startsWith('LOGISTICS_DISCOUNT')) {
                     const tmp =  ((+this.data[1].value / (+this.data[0].value)) * 100).toFixed(2);
                     this.data[1].description = this.data[1].description + ' ' + tmp + '%';
-                    console.log(this.data[1].description);
                 }
             });
     }

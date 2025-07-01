@@ -20,7 +20,6 @@ import { CdkTextareaAutosize } from '@angular/cdk/text-field';
     styleUrls: ['../../../../../common/assets/src/assets/transac-lines-detail.scss'],
     standalone: true,
     imports: [
-        NgIf,
         MatMiniFabButton,
         MatCard,
         MatCardContent,

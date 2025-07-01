@@ -32,7 +32,7 @@ import {
     ProductLineListComponent
 } from '@ss/costing/costing-projects';
 import {
-    BomComponent,
+    BomListComponent,
     ChildBomComponent,
     FinalProductDetailComponent,
     FinalProductListComponent
@@ -236,7 +236,7 @@ export const costingRoutes: Routes = [
 
     {
         path: BOM_URL,
-        component: BomComponent,
+        component: BomListComponent,
         canActivate: [loginGuard]
     },
 

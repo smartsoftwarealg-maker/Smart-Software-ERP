@@ -1,6 +1,6 @@
 export const environment = {
     production: true,
-    company: 'ECDE',
+    company: 'SCH_ECDE',
     homePage: 'https://ecde.gica.dz',
     multiCompany: false
 };

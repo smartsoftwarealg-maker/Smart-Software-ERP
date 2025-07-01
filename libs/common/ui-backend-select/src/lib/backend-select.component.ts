@@ -23,7 +23,6 @@ export class BackendSelectComponent {
     }
 
     select() {
-        console.log(this.selectedCompany());
         this.onSelectedCompany.emit(this.selectedCompany());
     }
 

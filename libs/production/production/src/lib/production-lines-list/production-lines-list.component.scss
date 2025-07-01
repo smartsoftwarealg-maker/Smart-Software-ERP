@@ -49,9 +49,9 @@ mat-table {
     min-width: 100px;
 }
 
-.mat-column-reference,
-.mat-column-store {
-    flex: 1 0 100px;
+.mat-column-storeName,
+.mat-column-reference {
+    flex: 1 1 100px;
     padding: 0 4px;
     border-left: ghostwhite solid 1px;
 }

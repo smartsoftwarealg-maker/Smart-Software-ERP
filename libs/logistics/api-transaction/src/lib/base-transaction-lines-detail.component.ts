@@ -15,16 +15,16 @@ import {
     DOC_CORRECTION_OUT, DOC_DELIVERY, DOC_INVOICE, DOC_PRODUCTION, DOC_PRODUCTION_ORDER,
     DOC_RECEPTION,
     DOC_SEPARATOR_200,
-    DOC_SEPARATOR_800, Transaction
+    DOC_SEPARATOR_800
 } from './transaction';
 import { AbstractEntityComponent } from '@ss/common/ui-base-entity';
 import { TransactionLinesClass } from './transaction-lines.class';
 import { StockInfoService } from '@ss/master-data/api-article';
 import { CostCenterService } from '@ss/logistics/api-cost-center';
 import { DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
-import { LotInputDialogComponent } from '@ss/production/lot-input-dialog';
 import { MatDialog } from '@angular/material/dialog';
 import { Agent, AgentService } from '@ss/logistics/api-agent';
+import { LotInputDialogComponent } from '@ss/production/lot-input-dialog';
 
 @Directive()
 export abstract class BaseTransactionLinesDetailComponent extends AbstractEntityComponent<TransactionLine> implements OnInit {
@@ -65,7 +65,7 @@ export abstract class BaseTransactionLinesDetailComponent extends AbstractEntity
         super(entitySrv);
         // this.articleLookup = new ArticleAutoCompleteModel(this.articleSrv);
         // this.storeLookup   = new LotAutoCompleteModel(this.lotSrv);
-        this.articleLookup.onObjectSelected = (a) => { this.onArticle(a); this.setSalesPrice(); };
+        this.articleLookup.onObjectSelected = (a) => this.onArticleLookup(a);
         this.storeLookup.onObjectSelected =  (s) => { this.onStore(s); this.setSalesPrice(); };
     }
 
@@ -163,6 +163,11 @@ export abstract class BaseTransactionLinesDetailComponent extends AbstractEntity
         return this.form.getRawValue();
     }
 
+    onArticleLookup(a: Article) {
+        this.onArticle(a);
+        this.setSalesPrice();
+    }
+
     onArticle(a: Article) {
         this.selectedReference = a?.reference;
         this.form.controls['vat'].setValue(a?.vatValue || 0);
@@ -183,7 +188,6 @@ export abstract class BaseTransactionLinesDetailComponent extends AbstractEntity
     }
 
     private setSalesPrice() {
-        console.log('setSalesPrice', this.document, this.form.controls['reference'].value, this.form.controls['store'].value);
         if (this.document === DOC_INVOICE || this.document === DOC_DELIVERY) {
             const reference = this.form.controls['reference'].value;
             this.locationSrv
@@ -224,7 +228,7 @@ export abstract class BaseTransactionLinesDetailComponent extends AbstractEntity
         return this.formBuilder.group({
             id:           [b.id],
             transacId:    [this.parentId],
-            reference:    [{ value: b.reference, disabled:  b.qtySatisfied > 0.0001 }],
+            reference:    [{ value: b.reference, disabled:  b.qtySatisfied > 0.0001 || (this.document === DOC_PRODUCTION && !!b.sourceDoc) }],
             sourceDoc:    [b.sourceDoc],
             store:        [b.store],
             qtyOrdered:   [{ value: b.qtyOrdered || 0, disabled: this.document > DOC_SEPARATOR_200 && this.document < DOC_SEPARATOR_800 && !(this.document === DOC_PRODUCTION && (b.sourceDoc == undefined || b.qtySatisfied < 0.00001) )}, Validators.required],
@@ -243,6 +247,7 @@ export abstract class BaseTransactionLinesDetailComponent extends AbstractEntity
             charge4:      [b.charge4 || 0],
             costCenter:   [b.costCenter],
             pprice:       [b.pprice],
+            bomId:        [{ value: b.bomId, disabled: (this.document == DOC_PRODUCTION || this.document == DOC_PRODUCTION_ORDER) && b.qtySatisfied > 0.00001 }],
         });
     }
     public get id() {
