@@ -6,5 +6,13 @@
     "CONTACT_METHODS":      "Méthodes de contact",
     "CONTACT_METHOD":       "Méthode de contact",
     "PAYMENT_TERMS":        "Conditions de paiement",
-    "PAYMENT_TERM":         "Condition de paiement"
+    "PAYMENT_TERM":         "Condition de paiement",
+    "LEADS":                "Conduite",
+    "NEW":                  "Nouveau",
+    "CONTACTED":            "Contacté",
+    "QUALIFIED":            "Qualifié",
+    "PROPOSAL_SENT":        "Proposition envoyée",
+    "NEGOTIATION":          "Négociation",
+    "CLOSED_WON":           "Closed won",
+    "CLOSED_LOST":          "Fermeture des locaux"
 }

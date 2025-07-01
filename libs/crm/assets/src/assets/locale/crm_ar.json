@@ -6,5 +6,13 @@
     "CONTACT_METHODS":      "طرق الاتصال",
     "CONTACT_METHOD":       "طريقة الاتصال",
     "PAYMENT_TERMS":        "شروط الدفع",
-    "PAYMENT_TERM":         "شرط الدفع"
+    "PAYMENT_TERM":         "شرط الدفع",
+    "LEADS":                "العملاء المحتملين",
+    "NEW":                  "جديد",
+    "CONTACTED":            "متصل",
+    "QUALIFIED":            "مؤهَل",
+    "PROPOSAL_SENT":        "مقترح مرسل",
+    "NEGOTIATION":          "التفاوض",
+    "CLOSED_WON":           "فوز مغلق",
+    "CLOSED_LOST":          "فقدان مغلق"
 }
