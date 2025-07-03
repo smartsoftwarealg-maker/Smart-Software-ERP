@@ -32,6 +32,7 @@
     "COMPENSATIONS":      "Compensations",
     "ADVANCE":            "Advance",
     "SHIPPING":           "Shipping",
+    "IS_BLOCKED":          "Is Blocked",
     "RECEIVER":           "Receiver",
     "SALES_POLLS":        "Sales polls",
     "SALES_POLL":         "Sales poll",
