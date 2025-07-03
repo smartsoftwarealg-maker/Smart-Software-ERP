@@ -54,6 +54,7 @@ export class PollQuestionsListComponent extends BaseEntityListComponent<PollQues
         'descriptionEn',
         'answerType',
         'showMemo',
+        'isBlocked'
     ];
 
     public AnswerTypes = AnswerTypes

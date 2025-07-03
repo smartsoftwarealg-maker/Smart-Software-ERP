@@ -40,6 +40,7 @@
     "ANSWER_TYPES":       "أنواع الإجابات",
     "ANSWER_TYPE":        "نوع الإجابة",
     "SHOW_MEMO":          "عرض المذكرة",
+    "IS_BLOCKED":          "محضور",
     "SATISFACTION":       "الرضا",
     "UNSPECIFIED":        "غير محدد",
     "BOOLEAN":            "نعم أو لا",

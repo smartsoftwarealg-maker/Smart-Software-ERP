@@ -38,6 +38,15 @@
             </mat-cell>
         </ng-container>
 
+        <ng-container matColumnDef="isBlocked">
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>SCH_IS_BLOCKED</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                <mat-checkbox [class.mat-checkbox-disabled]="false" disabled="true"
+                              [checked]="e.isBlocked">
+                </mat-checkbox>
+            </mat-cell>
+        </ng-container>
+
         <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
         <mat-row class="selectable" [class.selected]="row.id == selected" (click)="selectRow(row)"
                  *matRowDef="let row; columns: displayedColumns;">

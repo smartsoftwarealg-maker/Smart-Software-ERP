@@ -41,6 +41,7 @@
     "ANSWER_TYPES":       "Type de réponses",
     "ANSWER_TYPE":        "Type de réponse",
     "SHOW_MEMO":          "Afficher le mémo",
+    "IS_BLOCKED":          "bloquee",
     "SATISFACTION":       "Satisfaction",
     "UNSPECIFIED":        "Indéterminée",
     "BOOLEAN":            "Oui/Non",
