@@ -27,6 +27,7 @@
 
 
 .mat-column-showMemo,
+.mat-column-isBlocked,
 .mat-column-answerType {
     flex: 1 1 100px ;
 }
