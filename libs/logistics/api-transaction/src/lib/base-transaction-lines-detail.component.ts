@@ -230,7 +230,7 @@ export abstract class BaseTransactionLinesDetailComponent extends AbstractEntity
             transacId:    [this.parentId],
             reference:    [{ value: b.reference, disabled:  b.qtySatisfied > 0.0001 || (this.document === DOC_PRODUCTION && !!b.sourceDoc) }],
             sourceDoc:    [b.sourceDoc],
-            store:        [b.store],
+            store:        [{ value: b.store, disabled: b.qtySatisfied > 0.0}],
             qtyOrdered:   [{ value: b.qtyOrdered || 0, disabled: this.document > DOC_SEPARATOR_200 && this.document < DOC_SEPARATOR_800 && !(this.document === DOC_PRODUCTION && (b.sourceDoc == undefined || b.qtySatisfied < 0.00001) )}, Validators.required],
             qtySatisfied: [{ value: b.qtySatisfied ||0, disabled: this.document < DOC_SEPARATOR_200 || this.document > DOC_SEPARATOR_800 || this.document === DOC_PRODUCTION}, Validators.required],
             qtyInvoiced:  [{ value: b.qtyInvoiced ||0, disabled: this.document != DOC_RECEPTION} , Validators.required],

@@ -92,5 +92,6 @@
     "SALES_ACCOUNT":            "Sales account",
     "STOCK_ACCOUNT":            "Stock account",
     "CONSUMPTION_ACCOUNT":      "Consumption account",
-    "SHOW_REFERENCE_2":         "Show reference2"
+    "SHOW_REFERENCE_2":         "Show reference2",
+    "MANUAL_NUMBERING":         "Manual numbering"
 }

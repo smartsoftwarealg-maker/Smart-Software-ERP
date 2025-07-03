@@ -1,5 +1,5 @@
 {
-    "PRODUCTION":            "production",
+    "PRODUCTION":            "Production",
     "PRODUCTIONS":           "Productions",
     "PRODUCTION_ORDERS":     "Production",
     "PRODUCTION_ORDER":      "Ordre de production",
@@ -19,5 +19,6 @@
     "INTER_STORE_TRANSFER_DETAIL":  "Details DU Transfert Inter-Magasins",
     "PRODUCT_TYPE":          "Type de Produit",
     "UPDATE_DATE":           "Date de mise à jour",
-    "CANCEL_PRODUCTION":     "Annuler la production"
+    "CANCEL_PRODUCTION":     "Annuler la production",
+    "LOT_PRIORITY":          "Priorité du lot"
 }

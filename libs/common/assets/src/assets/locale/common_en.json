@@ -396,5 +396,6 @@
     "YOU_ARE_BLOCKED_DUE": "Dear customer, Your account has been temporarily blocked due to ",
     "CONTACT_US":         "If you believe this is a mistake or if you have any questions, please do not hesitate to contact our support team.",
     "GOT_IT":             "Got it",
-    "CREATION_TIME": "Creation time"
+    "CREATION_TIME": "Creation time",
+    "PRIORITY": "Priority"
 }

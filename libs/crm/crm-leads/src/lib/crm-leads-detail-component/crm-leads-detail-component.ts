@@ -20,7 +20,7 @@ import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
         TranslateDirective,
         TranslatePipe,
         DatePickerComponent,
-        UiAutoCompleteComponent,
+
     ],
     templateUrl: './crm-leads-detail-component.html',
     styleUrl: './crm-leads-detail-component.scss',

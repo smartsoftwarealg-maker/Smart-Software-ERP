@@ -20,5 +20,6 @@
     "INTER_STORE_TRANSFER_DETAIL":  "Inter Store Transfer Detail",
     "PRODUCT_TYPE":           "Product Type",
     "UPDATE_DATE":            "Update Date",
-    "CANCEL_PRODUCTION":      "Cancel Production"
+    "CANCEL_PRODUCTION":      "Cancel Production",
+    "LOT_PRIORITY":           "Lot priorities"
 }

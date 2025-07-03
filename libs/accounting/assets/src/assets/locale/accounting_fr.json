@@ -92,6 +92,7 @@
     "SALES_ACCOUNT":            "Compte de vente",
     "STOCK_ACCOUNT":            "Compte de stock",
     "CONSUMPTION_ACCOUNT":      "Compte de consommation",
-    "SHOW_REFERENCE_2":         "Afficher la référence 2"
+    "SHOW_REFERENCE_2":         "Afficher la référence 2",
+    "MANUAL_NUMBERING":         "Numérotation manuelle"
 }
 

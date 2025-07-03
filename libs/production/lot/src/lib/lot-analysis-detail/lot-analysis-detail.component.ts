@@ -80,6 +80,7 @@ export class LotAnalysisDetailComponent extends BaseEntityDetailComponent<Locati
             inventPMP:    [{ value: l.inventPMP, disabled: true }],
             inventStock:  [{ value: l.inventStock, disabled: true }],
             theoStock:    [{ value: l.theoStock, disabled: true }],
+            priority:     [{ value: l.priority, disabled: true }]
         });
     }
 }

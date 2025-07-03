@@ -20,5 +20,6 @@
     "INTER_STORE_TRANSFER_DETAIL":  "تفاصيل النقل بين المتاجر",
     "PRODUCT_TYPE":           "نوع المنتج",
     "UPDATE_DATE":           "تاريخ التحديث",
-    "CANCEL_PRODUCTION":      "الغاء الانتاج"
+    "CANCEL_PRODUCTION":      "الغاء الانتاج",
+    "LOT_PRIORITY": "أولويات الحصص"
 }
