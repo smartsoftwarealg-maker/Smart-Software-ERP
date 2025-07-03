@@ -12,7 +12,7 @@ import {
     ABS_PRODUCTION_ARTICLE_TYPES_URL,
     ABS_PRODUCTION_DOSAGE_UNITS_URL,
     ABS_PRODUCTION_PACKAGING_UNITS_URL,
-    ABS_PRODUCTION_REPORTS_URL,
+    ABS_PRODUCTION_REPORTS_URL, ABS_LOT_PRIORITY_URL
 } from '../common';
 
 export const productionNavTree: SideNavNode = {
@@ -45,10 +45,22 @@ export const productionNavTree: SideNavNode = {
             accessRights: 'Article',
         },
         {
+            name: 'PROD_BOM',
+            icon: 'fa-solid fa-list-tree',
+            route: ABS_PRODUCTION_BOM_PRODUCTS,
+            accessRights: 'BOM',
+        },
+        {
             name: 'STOCK_LOT_MANAGEMENT',
             icon: 'fa-solid fa-truck-ramp-box',
             route: ABS_PRODUCTION_LOT_MANAGEMENT_URL,
             accessRights: 'LotManagement',
+        },
+        {
+            name: 'STOCK_LOT_ANALYSIS',
+            icon: 'fa-solid fa-magnifying-glass-chart',
+            route: ABS_PRODUCTION_LOT_ANALYSIS_URL,
+            accessRights: 'LotAnalysis',
         },
         {
             name: 'STOCK_LOT_ANALYSIS',
@@ -63,10 +75,10 @@ export const productionNavTree: SideNavNode = {
             accessRights: 'UnlockLots',
         },
         {
-            name: 'PROD_BOM',
-            icon: 'fa-solid fa-list-tree',
-            route: ABS_PRODUCTION_BOM_PRODUCTS,
-            accessRights: 'BOM',
+            name: 'PROD_LOT_PRIORITY',
+            icon: 'fa-solid fa-arrow-up-wide-short',
+            route: ABS_LOT_PRIORITY_URL,
+            accessRights: 'LotPriority',
         },
         {
             name: 'PROD_PRODUCTION_ORDER',

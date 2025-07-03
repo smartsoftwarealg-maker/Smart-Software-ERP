@@ -1,0 +1,74 @@
+.size_div {
+    width: 96%;
+    max-width: 1200px;
+    margin: 4px auto;
+}
+
+.header_div {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.search-input {
+    width: 400px;
+}
+
+.table-container {
+    overflow-x: auto;
+    min-height: calc(100% - 200px);
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.pagination-container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 4PX auto;
+}
+
+.content-div {
+    min-width: 800px;
+    width: 100%;
+}
+// keep the material design specs
+.mat-row, .mat-header-row {
+    padding-right: 16px;
+    padding-left: 16px;
+}
+
+.mat-column-description,
+.mat-column-descriptionAr {
+    flex: 1 1 140px;
+    padding-right: 8px !important;
+    padding-left: 8px !important;
+}
+
+.mat-column-reference {
+    flex: 1 1 100px;
+    padding-right: 8px !important;
+    padding-left: 8px !important;
+}
+.mat-blockedLot {
+    flex: 0 1 50px;
+    justify-content: center;
+}
+
+.mat-column-analysisDate,
+.mat-column-priority,
+.mat-column-lotState,
+.mat-column-creationDate {
+    flex: 1 1 80px;
+    justify-content: center;
+    padding-right: 8px !important;
+    padding-left: 8px !important;
+}
+
+mat-table {
+    width: 100%;
+    min-width: 900px;
+}

@@ -64,7 +64,7 @@ export const accountingNavTree: SideNavNode = {
             name: 'COMMON_JOURNALS',
             icon: 'fas fa-books',
             route: ABS_ACC_JOURNALS_URL,
-            accessRights: 'ACCJournal'
+            accessRights: 'Journal'
         },
         {
             name: 'LOGISTICS_ACCOUNTS',

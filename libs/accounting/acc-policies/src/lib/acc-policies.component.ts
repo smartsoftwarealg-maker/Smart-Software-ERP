@@ -57,6 +57,7 @@ export class AccPoliciesComponent extends BaseEntityDetailComponent<ACCPolicy> {
             showFolio: [e.showFolio, Validators.required],
             analyzeAccounts: [e.analyzeAccounts, Validators.required],
             resetPieceNumbers: [e.resetPieceNumbers, Validators.required],
+            manualNumbering: [e.manualNumbering, Validators.required],
             showBudget: [e.showBudget, Validators.required],
             openingJournal: [e.openingJournal, Validators.required],
             bankAccount: [e.bankAccount],

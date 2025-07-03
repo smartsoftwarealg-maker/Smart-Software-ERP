@@ -110,7 +110,7 @@ export class ShellService {
     protected isLoading = false;
     protected isError = false;
     protected retryCallback: () => void;
-    public goBackEnabled = true;
+    protected goBackEnabled = true;
     // side nav data
     public navData: SideNavNode[] = [];
 

@@ -1,12 +1,19 @@
+.size {
+    width: 96%;
+    max-width: 1800px;
+    margin: 0 auto;
+}
+.progress__div {
+    margin-top: 2px;
+    height: .5em;
+}
 .container {
     display: flex;
     flex-wrap: nowrap;
     height: calc(100% - 16px);
-    width: 96%;
-    max-width: 1800px;
     gap: 1em;
-    margin: 8px auto;
 }
+
 .header {
     padding-top: 12px;
 }

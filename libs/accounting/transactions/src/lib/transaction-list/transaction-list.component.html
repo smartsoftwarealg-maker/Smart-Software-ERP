@@ -1,7 +1,12 @@
-<div class="container">
+<div class="size progress__div">
+    @if (processing()) {
+        <mat-progress-bar mode="indeterminate" class="size"></mat-progress-bar>
+    }
+</div>
+<div class="container size">
     <div class="left_div">
         <mat-card class="journals">
-            <div mat-subheader class="b-primary header" >
+            <div mat-subheader class="b-primary header">
                 <mat-form-field class="default-100">
                     <mat-label translate>COMMON_JOURNALS</mat-label>
                     <input matInput [formControl]="journalFilter" type="text">
@@ -10,80 +15,97 @@
             <div class="list_div">
                 <mat-selection-list [multiple]="false"
                                     (selectionChange)="journalSelected($event)"
-                                    [disabled]="!isRoot()">
+                                    [disabled]="!isRoot() || processing()">
                     @for (j of journalList; track j.id) {
-                    <mat-list-option value="{{ j.id }}">
-                        {{ j.description }}
-                    </mat-list-option>
+                        <mat-list-option value="{{ j.id }}">
+                            {{ j.description }}
+                        </mat-list-option>
                     }
                 </mat-selection-list>
             </div>
-            <table class="summary__table b-primary" >
+            <table class="summary__table b-primary">
                 <tr>
-                    <td  class="label" translate><span translate>COMMON_DEBIT</span>:</td>
-                    <td [class.f-accent]="math.abs(journalSummary().debit - journalSummary().credit) > 0.01"> {{ journalSummary().debit | number: '1.2-2'}} </td>
+                    <td class="label" translate><span translate>COMMON_DEBIT</span>:</td>
+                    <td [class.f-accent]="math.abs(journalSummary().debit - journalSummary().credit) > 0.01"> {{ journalSummary().debit | number: '1.2-2' }}</td>
                     <td class="label" translate><span translate>COMMON_CREDIT</span>:</td>
-                    <td [class.f-accent]="math.abs(journalSummary().debit - journalSummary().credit) > 0.01"> {{ journalSummary().credit | number: '1.2-2'}} </td>
+                    <td [class.f-accent]="math.abs(journalSummary().debit - journalSummary().credit) > 0.01"> {{ journalSummary().credit | number: '1.2-2' }}</td>
                 </tr>
             </table>
-            <mat-radio-group (change)="onMode($event)" [disabled]="!isRoot()">
+            <mat-radio-group (change)="onMode($event)" [disabled]="!isRoot() || processing()">
                 <mat-radio-button value="1" translate [checked]="true">ACC_TRANSAC_DETAIL</mat-radio-button>
                 <mat-radio-button value="2" translate>COMMON_ARCHIVE</mat-radio-button>
             </mat-radio-group>
         </mat-card>
         <div class="transactions">
             <div class="container_div">
-                <mat-table mat-table [dataSource]="data" class="main-table" matSort (matSortChange)="sort($event)" >
+                <mat-table mat-table [dataSource]="data" class="main-table" matSort (matSortChange)="sort($event)">
 
                     <ng-container matColumnDef="pieceNo">
-                        <mat-header-cell *matHeaderCellDef mat-sort-header [disabled]="!isRoot()" translate>COMMON_NO_</mat-header-cell>
+                        <mat-header-cell *matHeaderCellDef mat-sort-header [disabled]="!isRoot() || processing()"
+                                         translate>COMMON_NO_
+                        </mat-header-cell>
                         <mat-cell *matCellDef="let e" [class.f-warn]="math.abs(e.debit - e.credit) > 0.01">
                             {{ e.pieceNo }}
                         </mat-cell>
                     </ng-container>
 
                     <ng-container matColumnDef="projectName">
-                        <mat-header-cell *matHeaderCellDef mat-sort-header [disabled]="!isRoot()" translate>COMMON_PROJECT</mat-header-cell>
+                        <mat-header-cell *matHeaderCellDef mat-sort-header [disabled]="!isRoot() || processing()"
+                                         translate>
+                            COMMON_PROJECT
+                        </mat-header-cell>
                         <mat-cell *matCellDef="let e" [class.f-warn]="math.abs(e.debit - e.credit) > 0.01">
                             {{ e.projectName }}
                         </mat-cell>
                     </ng-container>
 
                     <ng-container matColumnDef="pieceDate">
-                        <mat-header-cell *matHeaderCellDef mat-sort-header [disabled]="!isRoot()" translate>COMMON_DATE</mat-header-cell>
+                        <mat-header-cell *matHeaderCellDef mat-sort-header [disabled]="!isRoot() || processing()"
+                                         translate>
+                            COMMON_DATE
+                        </mat-header-cell>
                         <mat-cell *matCellDef="let e" [class.f-warn]="math.abs(e.debit - e.credit) > 0.01">
                             {{ e.pieceDate | date: 'dd/MM/yyyy' }}
                         </mat-cell>
                     </ng-container>
 
                     <ng-container matColumnDef="debit">
-                        <mat-header-cell *matHeaderCellDef mat-sort-header [disabled]="!isRoot()" translate>ACC_DEBIT</mat-header-cell>
+                        <mat-header-cell *matHeaderCellDef mat-sort-header [disabled]="!isRoot() || processing()"
+                                         translate>ACC_DEBIT
+                        </mat-header-cell>
                         <mat-cell *matCellDef="let e" [class.f-warn]="math.abs(e.debit - e.credit) > 0.01">
                             {{ e.debit | number: '1.2-2' }}
                         </mat-cell>
                     </ng-container>
 
                     <ng-container matColumnDef="credit">
-                        <mat-header-cell *matHeaderCellDef mat-sort-header [disabled]="!isRoot()" translate>ACC_CREDIT</mat-header-cell>
+                        <mat-header-cell *matHeaderCellDef mat-sort-header [disabled]="!isRoot() || processing()"
+                                         translate>ACC_CREDIT
+                        </mat-header-cell>
                         <mat-cell *matCellDef="let e" [class.f-warn]="math.abs(e.debit - e.credit) > 0.01">
                             {{ e.credit | number: '1.2-2' }}
                         </mat-cell>
                     </ng-container>
 
                     <ng-container matColumnDef="userName">
-                        <mat-header-cell *matHeaderCellDef mat-sort-header [disabled]="!isRoot()" translate>COMMON_UPDATED_BY</mat-header-cell>
+                        <mat-header-cell *matHeaderCellDef mat-sort-header [disabled]="!isRoot() || processing()"
+                                         translate>
+                            COMMON_UPDATED_BY
+                        </mat-header-cell>
                         <mat-cell *matCellDef="let e" [class.f-warn]="math.abs(e.debit - e.credit) > 0.01">
                             {{ e.userName }}
                         </mat-cell>
                     </ng-container>
 
                     <ng-container matColumnDef="updateTime">
-                        <mat-header-cell *matHeaderCellDef mat-sort-header [disabled]="!isRoot()" translate>COMMON_TIME</mat-header-cell>
+                        <mat-header-cell *matHeaderCellDef mat-sort-header [disabled]="!isRoot() || processing()"
+                                         translate>
+                            COMMON_TIME
+                        </mat-header-cell>
                         <mat-cell *matCellDef="let e" [class.f-warn]="math.abs(e.debit - e.credit) > 0.01">
                             {{ e.updateTime | date: 'dd/MM/yyyy HH:mm' }}
                         </mat-cell>
                     </ng-container>
-
 
 
                     <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
@@ -105,9 +127,11 @@
 
                 </mat-table>
             </div>
-            <div class="pagination-container b-b-background">
-                <ss-pagination [paginationModel]="pagination" disabled="isRoot()"></ss-pagination>
-            </div>
+            @if (isRoot() && !processing()) {
+                <div class="pagination-container b-b-background">
+                    <ss-pagination [paginationModel]="pagination"></ss-pagination>
+                </div>
+            }
         </div>
     </div>
     @if (transactionMode) {

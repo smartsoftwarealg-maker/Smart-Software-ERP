@@ -73,6 +73,7 @@ export class TransactionListComponent extends BaseEntityListComponent<ACCTransac
 
     transactionMode = true;
     public math = Math;
+    processing = signal(false);
     isRoot = signal(true);
     isArchive = signal(false);
     journalSummary = signal<JournalSummary>({ id: 0, debit: 0, credit: 0 });
@@ -164,6 +165,7 @@ export class TransactionListComponent extends BaseEntityListComponent<ACCTransac
         this.editButton.visible = isRootAndTransactionMode;
         this.deleteButton.visible = isRootAndTransactionMode;
         this.shellSrv.setVisibleSearch(isRootAndTransactionMode);
+        this.shellSrv.setGoBackEnabled(isRootAndTransactionMode);
         if (isRoot) {
             this.journalFilter.enable();
         } else {
@@ -180,9 +182,11 @@ export class TransactionListComponent extends BaseEntityListComponent<ACCTransac
 
     private navigate() {
         if (this.selected) {
+            this.processing.set(true);
             const commands = this.transactionMode ? [this.selected] : [this.selected, 'archive'];
             this.router.navigate(commands, { relativeTo: this.route })
                 .then(_ => {
+                    this.processing.set(false);
                     this.detailSrv.setParentId(this.selected);
                 });
         }
@@ -209,30 +213,29 @@ export class TransactionListComponent extends BaseEntityListComponent<ACCTransac
     }
 
     public transactionSaved() {
+        this.processing.set(true);
         this.entitySrv
-            .findByJournal(this.entitySrv.getParentId(), this.pagination.page, this.pagination.pageSize)
+            .journalSummary()
+            .pipe(
+                tap(res => this.journalSummary.set(res)),
+                switchMap(() => this.entitySrv.findByJournal(this.entitySrv.getParentId(), this.pagination.page, this.pagination.pageSize))
+                )
             .subscribe(res => {
                 this.data = res.body;
                 this.pagination.elementCount = res.itemCount;
+                this.processing.set(false);
             });
-        this.entitySrv
-            .journalSummary()
-            .subscribe(res => this.journalSummary.set(res));
     }
 
     private refreshTransactions() {
+        this.processing.set(true);
         this.entitySrv
             .findByJournal(this.selectedJournal, this.pagination.page, this.pagination.pageSize)
             .subscribe(res => {
                 this.data = res.body;
                 this.pagination.elementCount = res.itemCount;
+                this.processing.set(false);
             });
-        // this.router
-        //     .navigate(['.'], { relativeTo: this.route })
-        //     .then(_ => {
-        //         this.shellSrv.setGoBackPath('..', this.route);
-        //         // this.showButtons();
-        //     });
     }
 
     journalSelected(event: MatSelectionListChange) {
@@ -240,10 +243,12 @@ export class TransactionListComponent extends BaseEntityListComponent<ACCTransac
         const journalId = event.options[0].value;
         this.entitySrv.setParentId(journalId);
         this.refreshTransactions();
+        this.processing.set(true);
         this.entitySrv
             .journalSummary()
             .subscribe(res => {
                 this.journalSummary.set(res);
+                this.processing.set(false);
                 this.addButton.visible = journalId > 0 && Math.abs(this.journalSummary()?.debit - this.journalSummary()?.credit) < 0.01;
             });
     }
@@ -259,6 +264,7 @@ export class TransactionListComponent extends BaseEntityListComponent<ACCTransac
         this.editButton.visible = this.transactionMode;
         this.deleteButton.visible = this.transactionMode;
         this.shellSrv.setVisibleSearch(this.transactionMode);
+        this.shellSrv.setGoBackEnabled(this.transactionMode);
         this.router.navigate(['/app/accounting/transactions']).then();
     }
 
@@ -284,8 +290,9 @@ export class TransactionListComponent extends BaseEntityListComponent<ACCTransac
     }
 
     override refresh(callback?: () => void) {
+        this.processing.set(true);
         if (this.transactionMode) {
-            super.refresh(callback);
+            super.refresh(() => this.processing.set(false));
         }
     }
 }
