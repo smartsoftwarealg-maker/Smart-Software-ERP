@@ -25,7 +25,7 @@ import {
     SALES_APP_URL,
     STOCK_APP_URL,
     WEBARCH_APP_URL,
-    WORK_FLOW_APP_URL, ARCH_VIEWER_URL, MISSIONS_APP_URL, PAYROLL_APP_URL, HR_APP_URL, TREASURY_APP_URL
+    WORK_FLOW_APP_URL, ARCH_VIEWER_URL, MISSIONS_APP_URL, PAYROLL_APP_URL, HR_APP_URL, TREASURY_APP_URL, ASSETS_APP_URL
 } from '../app/common';
 import {Routes} from '@angular/router';
 import {workflowNavTree} from '../app/workflow/side-nav-tree';
@@ -122,6 +122,10 @@ export const appRoutes: Routes =  [
     {
         path: ADMINISTRATION_APP_URL,
         loadChildren: () => import('../app/administration/administration.module').then(m => m.AdministrationModule)
+    },
+    {
+        path: ASSETS_APP_URL,
+        loadChildren: () => import('../app/assets-app/assets.module').then(m => m.AssetsModule)
     },
     {
         path: DASHBOARD_APP_URL,
