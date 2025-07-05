@@ -5,7 +5,7 @@
         <i class="fas fa-save"></i>
     </button>
     <button mat-mini-fab (click)="cancel()"
-            color="warn" >
+            color="warn">
         <i class="fas fa-redo"></i>
     </button>
 </div>
@@ -31,12 +31,14 @@
                         <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
                     }
                 </mat-form-field>
-                <button mat-mini-fab
-                        (click)="showLotInputDialog()"
-                        color="accent"
-                        [matTooltip]="'COMMON_ADD' | translate">
-                    <i class="fas fa-add icon"></i>
-                </button>
+                @if (form.controls['qtySatisfied'].value < 0.0001) {
+                    <button mat-mini-fab
+                            (click)="showLotInputDialog()"
+                            color="accent"
+                            [matTooltip]="'COMMON_ADD' | translate">
+                        <i class="fas fa-add icon"></i>
+                    </button>
+                }
             </div>
 
             <mat-form-field class="default-50 sm-100">
@@ -101,15 +103,15 @@
                 <input matInput formControlName="charge2" type="number" step="1" required>
             </mat-form-field>
 
-<!--            <mat-form-field class="default-50 sm-100">-->
-<!--                <mat-label translate>PURCHASES_CHARGE_3</mat-label>-->
-<!--                <input matInput formControlName="charge3" type="number" step="1" required>-->
-<!--            </mat-form-field>-->
+            <!--            <mat-form-field class="default-50 sm-100">-->
+            <!--                <mat-label translate>PURCHASES_CHARGE_3</mat-label>-->
+            <!--                <input matInput formControlName="charge3" type="number" step="1" required>-->
+            <!--            </mat-form-field>-->
 
-<!--            <mat-form-field class="default-50 sm-100">-->
-<!--                <mat-label translate>PURCHASES_CHARGE_4</mat-label>-->
-<!--                <input matInput formControlName="charge3" type="number" step="1" required>-->
-<!--            </mat-form-field>-->
+            <!--            <mat-form-field class="default-50 sm-100">-->
+            <!--                <mat-label translate>PURCHASES_CHARGE_4</mat-label>-->
+            <!--                <input matInput formControlName="charge3" type="number" step="1" required>-->
+            <!--            </mat-form-field>-->
 
             <mat-form-field id="header" class="default-50 sm-100">
                 <mat-label translate>STOCK_HEADER</mat-label>
