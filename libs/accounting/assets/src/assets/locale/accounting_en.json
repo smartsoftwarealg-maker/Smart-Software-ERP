@@ -93,5 +93,6 @@
     "STOCK_ACCOUNT":            "Stock account",
     "CONSUMPTION_ACCOUNT":      "Consumption account",
     "SHOW_REFERENCE_2":         "Show reference2",
-    "MANUAL_NUMBERING":         "Manual numbering"
+    "MANUAL_NUMBERING":         "Manual numbering",
+    "GENERATE_CONSOLIDATION_CENTERS": "Generate consolidation centers"
 }

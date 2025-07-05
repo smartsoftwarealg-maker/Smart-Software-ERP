@@ -13,4 +13,8 @@ export class ConsolidationCenterService extends BaseEntityService<ConsolidationC
     override update(a: ConsolidationCenter): Observable<number> {
         return a.newRecord? super.add(a) : super.update(a);
     }
+
+    generateAll(): Observable<{ count: number}> {
+        return this.httpSrv.put('/accounting/consolidation-centers/generate-all');
+    }
 }

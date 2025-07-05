@@ -67,6 +67,8 @@ import { productionNavTree } from '../app/production/side-nav-tree';
 
 export const environment = {
     production: true,
+    multiCompany: false,
+    company: null,
 };
 
 export const navBar = [

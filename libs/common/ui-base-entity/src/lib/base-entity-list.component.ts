@@ -225,10 +225,19 @@ export class BaseEntityListComponent<T extends { id: number, email?: string }> i
     public ngOnDestroy() {
         this.releaseResources();
         this.shellSrv.reset();
+        this.buttonReset();
         this.pagPersistSrv.set(this.title, this.pagination, this.filter);
         this.subscriptions.forEach(s => s.unsubscribe());
     }
 
+    private buttonReset() {
+        this.refreshButton.visible = true;
+        this.addButton.visible = true;
+        this.editButton.visible = true;
+        this.deleteButton.visible = true;
+        this.viewReportButton.visible = true;
+        this.refreshButton.visible = true;
+    }
     // eslint-disable-next-line @typescript-eslint/no-empty-function
     public releaseResources() {
     }
