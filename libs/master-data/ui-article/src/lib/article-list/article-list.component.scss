@@ -22,7 +22,7 @@
 }
 
 .mat-column-reference {
-    flex: 0 1 120px;
+    flex: 1 1 120px;
     padding-right: 8px !important;
     padding-left: 8px !important;
 }
@@ -42,7 +42,7 @@
 }
 
 .mat-column-description2 {
-    flex: 1 0 350px;
+    flex: 2 1 350px;
     padding-right: 8px !important;
     padding-left: 8px !important;
 }
@@ -69,4 +69,7 @@
     flex: 0 0 100px;
     padding-left: 8px !important;
 }
-
+mat-table {
+    width: 100%;
+    min-width: 1200px;
+}

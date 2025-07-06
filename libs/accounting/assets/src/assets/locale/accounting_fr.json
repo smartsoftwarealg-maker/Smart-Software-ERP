@@ -94,6 +94,7 @@
     "CONSUMPTION_ACCOUNT":      "Compte de consommation",
     "SHOW_REFERENCE_2":         "Afficher la référence 2",
     "MANUAL_NUMBERING":         "Numérotation manuelle",
-    "GENERATE_CONSOLIDATION_CENTERS": "Générer les centres de consolidation"
+    "ADD_ALL_CENTERS":          "Ajouter tous les centres"
+
 }
 

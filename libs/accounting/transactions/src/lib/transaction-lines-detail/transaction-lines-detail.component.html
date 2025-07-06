@@ -3,7 +3,7 @@
         @if (form !== null) {
             <form [formGroup]="form" novalidate>
 
-                <mat-form-field class="default-100">
+                <mat-form-field class="default-100" autofocus>
                     <mat-label translate>LOGISTICS_ACCOUNT_NO</mat-label>
                     <ss-auto-complete matInput
                                       [model]="accountLookupModel"
@@ -109,12 +109,19 @@
             </form>
         }
         <div class="ctrl default-100">
-            <button mat-flat-button color="primary" (click)="save()" [disabled]="saveDisabled()">
+            <button mat-flat-button
+                    color="primary"
+                    (click)="save()"
+                    [matTooltip]="('COMMON_CANCEL' | translate)  + ' (ALT+s)'"
+                    [disabled]="saveDisabled()">
                 <i class="fas fa-save"></i>
                 <span translate> COMMON_SAVE </span>
             </button>
             @if (!isClosed) {
-                <button mat-flat-button color="warn" translate (click)="cancel()">
+                <button mat-flat-button
+                        color="warn"
+                        [matTooltip]="('COMMON_CANCEL' | translate)  + ' (ALT+c)'"
+                        (click)="goBack()">
                     <i class="fas fa-redo"></i>
                     <span translate> COMMON_CANCEL </span>
                 </button>

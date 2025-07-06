@@ -9,7 +9,7 @@
             <button mat-mini-fab
                     color="primary"
                     (click)="showDetail(0)"
-                    [matTooltip]="'COMMON_ADD' | translate">
+                    [matTooltip]="('COMMON_ADD' | translate) + ' (ALT+n)'">
                 <span class="fas fa-plus"></span>
             </button>
         }
@@ -26,7 +26,7 @@
                 <button mat-mini-fab
                         (click)="showDetail(selected)"
                         [disabled]="!selected"
-                        [matTooltip]="'ACC_SHOW_DETAIL' | translate"
+                        [matTooltip]="('ACC_SHOW_DETAIL' | translate)  + ' (ALT+e)'"
                         color="accent">
                     <span class="fa-solid fa-memo-circle-info"></span>
                 </button>
@@ -34,7 +34,7 @@
                 <button mat-mini-fab
                         (click)="showDetail(selected)"
                         [disabled]="!selected"
-                        [matTooltip]="'COMMON_EDIT' | translate"
+                        [matTooltip]="('COMMON_EDIT' | translate)  + ' (ALT+e)'"
                         color="accent">
                     <span class="fas fa-pen"></span>
                 </button>
@@ -44,6 +44,7 @@
 @if (!isClosed()) {
     <button mat-mini-fab (click)="delete()"
             [disabled]="!selected"
+            [matTooltip]="('COMMON_DELETE' | translate)  + ' (ALT+d)'"
             color="warn">
         <span class="fas fa-trash-alt"></span>
     </button>

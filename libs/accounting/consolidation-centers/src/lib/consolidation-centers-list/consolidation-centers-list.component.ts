@@ -47,7 +47,7 @@ import { of, switchMap } from 'rxjs';
 export class ConsolidationCentersListComponent extends BaseEntityListComponent<ConsolidationCenter> {
     #generateAllButton: ToolbarButton = {
         icon: 'fa-solid fa-check-double',
-        label: 'COMMON_EDIT_SELECTED',
+        label: 'ACC_ADD_ALL_CENTERS',
         disabled: false,
         visible: true,
         keepOnToolbar: KeepOnToolbar.DYNAMIC,
@@ -85,7 +85,7 @@ export class ConsolidationCentersListComponent extends BaseEntityListComponent<C
 
     private generateAll() {
         this.confirmationSrv
-            .confirm('ACC_GENERATION', 'ACC_GENERATE_CONSOLIDATION_CENTERS')
+            .confirm('ACC_GENERATION', 'ACC_ADD_ALL_CENTERS')
             .pipe(switchMap(res => res? this.entitySrv.generateAll() : of({count: 0})))
             .subscribe(res => {
                 if (res?.count) {
