@@ -21,9 +21,8 @@ import { MatRadioChange } from '@angular/material/radio';
 import { CommonModule } from '@angular/common';
 import { AppArchiveMainComponent } from '@ss/common/app-archive';
 import { PaginationComponent } from '@ss/common/ui-pagination';
-import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
+import { TranslateDirective } from '@ss/common/ui-lang';
 import { Sort } from '@angular/material/sort';
-import { callback } from 'chart.js/helpers';
 
 
 @Component({

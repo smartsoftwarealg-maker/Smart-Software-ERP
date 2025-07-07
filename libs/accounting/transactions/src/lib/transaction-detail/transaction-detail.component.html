@@ -46,32 +46,34 @@
             <div class="summary__div">
                 <table class="summary__table">
                     <tr>
-                        <td  class="label" translate><span translate>COMMON_DEBIT</span>:</td>
-                        <td> <span [class.f-warn]="warning()">{{ debit()| number: '1.2-2'}}</span> </td>
+                        <td class="label" translate><span translate>COMMON_DEBIT</span>:</td>
+                        <td><span [class.f-warn]="warning()">{{ debit()| number: '1.2-2' }}</span></td>
                         <td class="label" translate><span translate>COMMON_CREDIT</span>:</td>
-                        <td [class.f-warn]="warning()"> {{ credit() | number: '1.2-2'}} </td>
+                        <td [class.f-warn]="warning()"> {{ credit() | number: '1.2-2' }}</td>
                     </tr>
                     <tr>
-                        <td  class="label" translate><span translate>COMMON_DEBIT</span>:</td>
-                        <td> <span [class.f-warn]="warning()">{{ debitBalance()| number: '1.2-2'}}</span> </td>
+                        <td class="label" translate><span translate>COMMON_DEBIT</span>:</td>
+                        <td><span [class.f-warn]="warning()">{{ debitBalance()| number: '1.2-2' }}</span></td>
                         <td class="label" translate><span translate>COMMON_CREDIT</span>:</td>
-                        <td [class.f-warn]="warning()"> {{ creditBalance() | number: '1.2-2'}} </td>
+                        <td [class.f-warn]="warning()"> {{ creditBalance() | number: '1.2-2' }}</td>
                     </tr>
                 </table>
             </div>
+
             <div class="button__div">
-                <button mat-flat-button
-                        color="primary"
-                        (click)="save()"
-                        translate [disabled]="!form?.valid || isClosed()"
-                        *ngIf="!isOnEdit()">
-                    <i class="fas fa-save"></i>
-                    {{ 'COMMON_SAVE' | translate }}
-                </button>
-                <button mat-flat-button color="accent" translate (click)="cancel()" *ngIf="!isOnEdit()">
-                    <i class="fas fa-redo"></i>
-                    {{ 'COMMON_CANCEL'|translate }}
-                </button>
+                @if (!isOnEdit()) {
+                    <button mat-flat-button
+                            color="primary"
+                            (click)="save()"
+                            translate [disabled]="!form?.valid || isClosed()">
+                        <i class="fas fa-save"></i>
+                        {{ 'COMMON_SAVE' | translate }}
+                    </button>
+                    <button mat-flat-button color="accent" translate (click)="cancel()">
+                        <i class="fas fa-redo"></i>
+                        {{ 'COMMON_CANCEL'|translate }}
+                    </button>
+                }
 
                 <!--            <button (click)="deleteSelected()" *ngIf="isEmpty && id > 0" translate>-->
                 <!--                <i class="fas fa-trash-can"></i>-->

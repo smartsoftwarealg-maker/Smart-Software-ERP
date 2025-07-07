@@ -3,7 +3,7 @@ import { CompanySelectorService, HttpService, LoginService, LoginType } from '@s
 import { switchMap } from 'rxjs/operators';
 import {LanguageService} from '@ss/common/api-common';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
-import {cSpaceNavTree} from "./cspace/side-nav-tree";
+import {cSpaceNavTree} from './cspace/side-nav-tree';
 import { environment, langAssets } from '../environments/environment';
 import { DeviceDetectorService } from 'ngx-device-detector';
 import { initialize } from './admobile';
@@ -40,19 +40,19 @@ export class AppComponent implements OnInit {
         this.#companySelectorSrv.homePage     = homePage;
         this.#loginSrv.customerLogin = LoginType.BOTH;
         this.#loginSrv.customerLogin = LoginType.CUSTOMER;
-        this.#shellSrv.setApplicationTitle('Customer Space 2.8');
+        this.#shellSrv.setApplicationTitle('Customer Space 2.10');
         this.#httpSrv
             .init(company)
             .pipe(
                 switchMap(() => this.langSrv.init()),
                 switchMap(() => this.langSrv.addSources(langAssets)),
             ).subscribe({
-            next: () => {
-                this.#shellSrv.setSideNavDataSource(cSpaceNavTree);
-                this.loaded.set(true);
-            },
-            error: () => this.#loginSrv.logout().then()
-        });
+                next: () => {
+                    this.#shellSrv.setSideNavDataSource(cSpaceNavTree);
+                    this.loaded.set(true);
+                },
+                error: () => this.#loginSrv.logout().then()
+            });
 
         // if (this.#deviceSrv.isMobile()) {
         //     initialize().then(() => {});

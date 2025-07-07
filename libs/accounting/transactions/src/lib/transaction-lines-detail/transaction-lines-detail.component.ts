@@ -1,4 +1,4 @@
-import { Component, computed, inject, OnInit, signal } from '@angular/core';
+import { Component, computed, HostListener, inject, OnInit, signal } from '@angular/core';
 import {
     AbstractControl, ReactiveFormsModule,
     UntypedFormBuilder,
@@ -6,7 +6,7 @@ import {
     ValidationErrors,
     ValidatorFn,
     Validators
-} from "@angular/forms";
+} from '@angular/forms';
 import {
     AccFileService,
     AccPoliciesService,
@@ -17,20 +17,20 @@ import {
     SCALE
 } from '@ss/accounting/accounting-api';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
-import { ActivatedRoute, Router, RouterModule } from "@angular/router";
-import {  ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
+import {  ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import {LookupsService} from '@ss/common/api-lookup';
-import { LoginService, MaterialModule } from "@ss/common/api-common";
-import { map, Observable, of } from "rxjs";
+import { LoginService, MaterialModule } from '@ss/common/api-common';
+import { map, Observable, of } from 'rxjs';
 import {switchMap, tap} from 'rxjs/operators';
 import {Account, AccountAutocompleteModel, AccountService} from '@ss/accounting/api-accounts';
 import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import {AgentService} from '@ss/logistics/api-agent';
 import {CostCenterService} from '@ss/logistics/api-cost-center';
-import { CommonModule } from "@angular/common";
+import { CommonModule } from '@angular/common';
 
 
-import { TranslateDirective } from '@ss/common/ui-lang';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 
 @Component({
@@ -44,7 +44,8 @@ import { TranslateDirective } from '@ss/common/ui-lang';
         MaterialModule,
         TranslateDirective,
         ReactiveFormsModule,
-        UiAutoCompleteComponent
+        UiAutoCompleteComponent,
+        TranslatePipe
     ]
 })
 export class TransactionLinesDetailComponent implements OnInit {
@@ -166,7 +167,7 @@ export class TransactionLinesDetailComponent implements OnInit {
                         id: 0,
                         description: res.description,
                         balance:     -(res.balance || 0)
-                    }
+                    };
                 }));
         }
         return this.entitySrv.get(id);
@@ -213,9 +214,30 @@ export class TransactionLinesDetailComponent implements OnInit {
             });
     }
 
+    @HostListener('document:keydown', ['$event'])
+    handleKeyboardEvent(event: KeyboardEvent) {
+        if (event.altKey && event.key === 's') {
+            this.save();
+            event.preventDefault();
+        } else if (event.altKey && event.key === 'c') {
+            this.cancel();
+            event.preventDefault();
+        }
+    }
+
     cancel() {
+        const obs = this.form.dirty ?
+            this.confirmationSrv.confirm('COMMON_CANCEL', 'COMMON_CANCEL') :
+            of(true);
+        obs.subscribe(res => {
+            if (res) {
+                this.goBack();
+            }
+        });
+    }
+
+    private goBack() {
         this.router.navigate(['..'], { relativeTo: this.route }).then();
-        // this.shellSrv.goBack();
     }
 
     save() {
@@ -224,13 +246,12 @@ export class TransactionLinesDetailComponent implements OnInit {
             return;
         }
 
-        const val = this.form.getRawValue();
-        const old = val.balance;
-        val.balance = val.debit || 0 - val.credit || 0;
         // if (old * val.balance < 0) {
         //     console.log(old, val.balance, val.debit, val.credit);
         // }
         if (this.entitySrv.getParentId() != null) {
+            const val = this.form.getRawValue();
+            val.balance = val.debit || 0 - val.credit || 0;
             val.id = this.id;
             const obs: Observable<any> = val.id === 0
                 ? this.entitySrv
@@ -246,7 +267,7 @@ export class TransactionLinesDetailComponent implements OnInit {
                     this.snackBarSrv.showSuccessMessage();
                     // this.shellSrv.goBack();
                     this.entitySrv.updateStatus();
-                    this.cancel();
+                    this.goBack();
                 },
                 error: err => {
                     this.snackBarSrv.showFailureMessage();
