@@ -10,10 +10,11 @@
                     <div class="cspace__div" translate>
                         <img src="./assets/img/gica.jpg" width="80px">
                         <div>
-                            <div class="cspace__title" >{{ 'SCH_CSPACE'|translate}} 1.13</div>
+                            <div class="cspace__title" >{{ 'SCH_CSPACE'|translate}} 2.10</div>
                             <div class="cspace__company" translate>{{ cSpace() }}</div>
                         </div>
                     </div>
+<!--                    <div>{{ loginSrv.baseURL }} </div>-->
                 }
 
                 <form class="login" [class]="cSpace() ? 'padding_20' : 'padding_120'" novalidate [formGroup]="form">
@@ -46,7 +47,7 @@
 
                         @if (loginSrv.wrongData) {
                             <div class="connection__error">
-                                <strong translate>COMMON_LOGIN_WRONG_USERNAME_PASSWORD</strong>
+                                <strong translate>COMMON_LOGIN_WRONG_USERNAME_PASSWORD</strong>, {{ this.loginSrv.errorCode}}
                             </div>
                         }
                     </div>

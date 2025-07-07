@@ -9,18 +9,18 @@ import { MainPageService } from './main-page.service';
 import { CompanySelectorService } from './company-selector.service';
 
 export enum LicenseErrorType {
-  UserLicense = 1000,
-  AgentLicense = 2000,
-  PersonLicense = 3000
+    UserLicense = 1000,
+    AgentLicense = 2000,
+    PersonLicense = 3000
 }
 
 const AUTH_TOKEN = 'auth_token';
 
 export enum LoginType {
-  USER = 1,
-  CUSTOMER,
-  BOTH,
-  PERSON
+    USER = 1,
+    CUSTOMER,
+    BOTH,
+    PERSON
 }
 
 
@@ -38,9 +38,11 @@ export class LoginService {
     private _customerLogin: LoginType = LoginType.USER;
     public appCtx: AppContext = null;
     public connectionError = false;
-    public errorMessage: string|null = null;
+    public errorMessage: string | null = null;
     public wrongData = false;
+    public errorCode = 0;
     public licenseErrorType: LicenseErrorType = null;
+    public baseURL: string = 'test';
 
 
     get isLoggedIn(): boolean {
@@ -60,37 +62,37 @@ export class LoginService {
     }
 
     // todo: fix auto login
-    public reLogin(): Observable<boolean> {
-        return this.#httpSrv
-            .init()
-            .pipe(switchMap(_ => this.#httpSrv.get<LoginInfo>('/relogin')),
-                tap((info: LoginInfo) => this.setContext(info)),
-                catchError(err => of(false)),
-                map(_ => {
-                    const failure: boolean = !this.appCtx || (this.appCtx.id == null && this.appCtx.agentId == null);
-                    if (failure) {
-                        this.#router.navigate(['/login']);
-                    }
-                    return !failure;
-                }));
-    }
+    // public reLogin(): Observable<boolean> {
+    //     return this.#httpSrv
+    //         .init()
+    //         .pipe(switchMap(_ => this.#httpSrv.get<LoginInfo>('/relogin')),
+    //             tap((info: LoginInfo) => this.setContext(info)),
+    //             catchError(err => of(false)),
+    //             map(_ => {
+    //                 const failure: boolean = !this.appCtx || (this.appCtx.id == null && this.appCtx.agentId == null);
+    //                 if (failure) {
+    //                     this.#router.navigate(['/login']);
+    //                 }
+    //                 return !failure;
+    //             }));
+    // }
 
-    public isUserLogin(): boolean {
-        return this.appCtx != null;
-    }
-
-    public isAgentLogin(): boolean {
-        return this.appCtx && this.appCtx.agentId !== null;
-    }
-
+    // public isUserLogin(): boolean {
+    //     return this.appCtx != null;
+    // }
+    //
+    // public isAgentLogin(): boolean {
+    //     return this.appCtx && this.appCtx.agentId !== null;
+    // }
+    //
 
     public reload(): Observable<AppContext> {
         this.#httpSrv.init();
         return (this.appCtx) ? of(this.appCtx) :
             this.#httpSrv.getAuthToken() ?
                 this.#httpSrv
-                    .get<LoginInfo>('/ctx')
-                    .pipe(
+                    .init()
+                    .pipe(switchMap(() => this.#httpSrv.get<LoginInfo>('/ctx')),
                         tap((info: LoginInfo) => this.setContext(info)),
                         map(() => this.appCtx),
                         catchError(err => {
@@ -111,7 +113,7 @@ export class LoginService {
     }
 
     public async logout(): Promise<any> {
-        const promise = this.#router && !this.#companySelectorSrv.homePage? this.#router.navigate(['/' + LOGIN_URL]).then() : Promise.resolve(true).then();
+        const promise = this.#router && !this.#companySelectorSrv.homePage ? this.#router.navigate(['/' + LOGIN_URL]).then() : Promise.resolve(true).then();
         const fulfilled = await promise;
         if (fulfilled) {
             this.errorMessage = null;
@@ -169,9 +171,8 @@ export class LoginService {
 
     public refresh(cr: Credentials): Observable<LoginInfo> {
         const url =
-      this.customerLogin === LoginType.CUSTOMER ? '/customers/login' :
-          this.customerLogin === LoginType.USER ? '/login' : '/persons/login';
-
+            this.customerLogin === LoginType.CUSTOMER ? '/customers/login' :
+                this.customerLogin === LoginType.USER ? '/login' : '/persons/login';
         return this.#httpSrv
             .doLogin(url, cr)
             .pipe(
@@ -195,39 +196,44 @@ export class LoginService {
                 catchError(err => {
                     this.connectionError = err.status === 0;
                     this.wrongData = !this.connectionError;
+                    this.errorCode = err.status;
                     throw err;
                 }));
     }
 
-    public userOrCustomerLogin(user: { username: string, password: string }, isAndroid: boolean, onFinish?: () => void) {
-        this.wrongData = false;
-        this.licenseErrorType = null;
-        this
-            .#httpSrv
-            .doLogin('/login', user)
-            .subscribe({
-                next: (info: LoginInfo) => {
-                    this.#httpSrv.updateAuthToken(info.jwt);
-                    this.appCtx = info.ctx;
-                    if (!this.licenseErrorType) {
-                        const url = this.appCtx.center ? INDEX_PAGE_URL : CENTER_SELECT_URL;
-                        this.#router.navigate(['/' + CENTER_SELECT_URL]);
-                    }
-                },
-                error: err => this.agentLogin('/customers/login', user, isAndroid, onFinish),
-                complete: () => {
-                    if (onFinish != null) {
-                        onFinish();
-                    }
-                }
-            });
-    }
+    // public userOrCustomerLogin(user: {
+    //     username: string,
+    //     password: string
+    // }, isAndroid: boolean, onFinish?: () => void) {
+    //     this.wrongData = false;
+    //     this.licenseErrorType = null;
+    //     this
+    //         .#httpSrv
+    //         .doLogin('/login', user)
+    //         .subscribe({
+    //             next: (info: LoginInfo) => {
+    //                 this.#httpSrv.updateAuthToken(info.jwt);
+    //                 this.appCtx = info.ctx;
+    //                 if (!this.licenseErrorType) {
+    //                     const url = this.appCtx.center ? INDEX_PAGE_URL : CENTER_SELECT_URL;
+    //                     this.#router.navigate(['/' + CENTER_SELECT_URL]);
+    //                 }
+    //             },
+    //             error: err => this.agentLogin('/customers/login', user, isAndroid, onFinish),
+    //             complete: () => {
+    //                 if (onFinish != null) {
+    //                     onFinish();
+    //                 }
+    //             }
+    //         });
+    // }
 
 
     public agentLogin(url: string, credential: {
-    username: string,
-    password: string
-  }, isAndroid: boolean, onFinish?: () => void) {
+        username: string,
+        password: string
+    }, isAndroid: boolean, onFinish?: () => void) {
+        this.baseURL = this.#httpSrv.baseUrl;
         this.licenseErrorType = null;
         this.wrongData = false;
         this.#httpSrv
@@ -239,33 +245,33 @@ export class LoginService {
                 })
             ).subscribe({
                 next:
-          (info: LoginInfo) => {
-              this.#httpSrv.updateAuthToken(info.jwt);
-              this.appCtx = info.ctx;
-              //const url = this.appCtx?.center ? INDEX_PAGE_URL : CENTER_SELECT_URL;
-              //this.#router.navigate(['/' + CENTER_SELECT_URL]);
-              this.resetCode(info.ctx.agentId).subscribe((res) => {
-                  const url = res.code != "" ? UPDATE_PASSWORD_URL : CENTER_SELECT_URL
-                  this.#router.navigate(['/' + url]).then();
-              });
-              if (onFinish != null) {
-                  onFinish();
-              }
-          },
+                    (info: LoginInfo) => {
+                        this.#httpSrv.updateAuthToken(info.jwt);
+                        this.appCtx = info.ctx;
+                        //const url = this.appCtx?.center ? INDEX_PAGE_URL : CENTER_SELECT_URL;
+                        //this.#router.navigate(['/' + CENTER_SELECT_URL]);
+                        this.resetCode(info.ctx.agentId).subscribe((res) => {
+                            const url = res.code != '' ? UPDATE_PASSWORD_URL : CENTER_SELECT_URL;
+                            this.#router.navigate(['/' + url]).then();
+                        });
+                        if (onFinish != null) {
+                            onFinish();
+                        }
+                    },
                 error: () => {
-              this.wrongData = true;
-              if (onFinish != null) {
-                  onFinish();
-              }
-              // throw err;
-          },
+                    this.wrongData = true;
+                    if (onFinish != null) {
+                        onFinish();
+                    }
+                    // throw err;
+                },
                 complete: () => {
                     if (onFinish != null) {
                         onFinish();
                     }
                 }
             }
-            );
+        );
     }
 
 
@@ -316,7 +322,7 @@ export class LoginService {
     }
 
     public resetCode(agent: number) {
-        return this.#httpSrv.get<{code:string}>(`/agents/${agent}/reset-code`);
+        return this.#httpSrv.get<{ code: string }>(`/agents/${agent}/reset-code`);
     }
 
 
