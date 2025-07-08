@@ -32,7 +32,17 @@
         <ng-container matColumnDef="blocked">
             <mat-header-cell *matHeaderCellDef translate>STOCK_BLOCKED</mat-header-cell>
             <mat-cell *matCellDef="let e">
-                <mat-checkbox [checked]="e.blockedLot" [disabled]="e.analysisDate == undefined" (mouseup)="block()"></mat-checkbox>
+                <mat-checkbox [checked]="e.blockedLot" [disabled]="e.analysisDate === null ||e.analysisDate === undefined || !e.isCompliant" (mouseup)="block()"></mat-checkbox>
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="isCompliant">
+            <mat-header-cell *matHeaderCellDef translate>STOCK_COMPLIANT</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                <mat-checkbox [class.mat-checkbox-disabled]="false"
+                              disabled="true"
+                              [checked]="e.isCompliant">
+                </mat-checkbox>
             </mat-cell>
         </ng-container>
 

@@ -91,5 +91,6 @@
     "BLOCK_LOTS":              "Lots nouvellement créés bloqués",
     "PRICE_LIST":              "Liste des prix",
     "RECALC_RECEPTIONS":       "Recalculer les réceptions",
-    "LOT": "Lot"
+    "LOT": "Lot",
+    "COMPLIANT": "Conforme"
 }

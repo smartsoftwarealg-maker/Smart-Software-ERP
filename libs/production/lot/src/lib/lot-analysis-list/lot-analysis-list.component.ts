@@ -92,6 +92,7 @@ export class LotAnalysisListComponent implements OnInit, OnDestroy {
         'description',
         'analysisDate',
         'blockedLot',
+        'isCompliant',
     ];
 
     public edit() {

@@ -30,7 +30,14 @@ export class UnlockingLotsComponent
     extends BaseEntityListComponent<Location>
     implements OnInit
 {
-    displayedColumns = ['lotNumber', 'reference', 'description', 'analysisDate', 'blocked'];
+    displayedColumns = [
+        'lotNumber',
+        'reference',
+        'description',
+        'analysisDate',
+        'isCompliant',
+        'blocked'
+    ];
 
     override ngOnInit() {
         this.addButton.visible = false;
@@ -81,5 +88,9 @@ export class UnlockingLotsComponent
                 },
             });
         }
+    }
+
+    protected override canShowProcessingStatus(): boolean {
+        return false;
     }
 }

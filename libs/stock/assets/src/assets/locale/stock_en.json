@@ -92,5 +92,6 @@
     "BLOCK_LOTS":              "Blocked newly created lots",
     "PRICE_LIST":              "Price list",
     "RECALC_RECEPTIONS":       "Recalculate receptions",
-    "LOT":                     "Lot"
+    "LOT":                     "Lot",
+    "COMPLIANT":               "Compliant"
 }

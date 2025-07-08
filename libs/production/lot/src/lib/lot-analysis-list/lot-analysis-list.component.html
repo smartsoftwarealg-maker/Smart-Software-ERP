@@ -67,6 +67,16 @@
             </mat-cell>
         </ng-container>
 
+        <ng-container matColumnDef="isCompliant">
+            <mat-header-cell *matHeaderCellDef translate>STOCK_COMPLIANT</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                <mat-checkbox [class.mat-checkbox-disabled]="false"
+                              disabled="true"
+                              [checked]="e.isCompliant">
+                </mat-checkbox>
+            </mat-cell>
+        </ng-container>
+
         <ng-container matColumnDef="storeName">
             <mat-header-cell *matHeaderCellDef translate>STOCK_LOT_NUMBER</mat-header-cell>
             <mat-cell *matCellDef="let e">

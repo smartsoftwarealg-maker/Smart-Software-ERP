@@ -28,7 +28,8 @@
     padding-right: 8px !important;
     padding-left: 8px !important;
 }
-.mat-column-blocked {
+.mat-column-blocked,
+.mat-column-isCompliant {
     flex: 1 1 80px;
     justify-content: center;
 }
