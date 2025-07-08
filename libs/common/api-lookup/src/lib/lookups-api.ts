@@ -192,7 +192,6 @@ export interface Lot {
     lotNumber?: number;
     supplierLot?: string;
     creationDate?: Date;
-    expires: boolean;
     expirationDate?: Date;
     lotState?: string;
     team?: string;

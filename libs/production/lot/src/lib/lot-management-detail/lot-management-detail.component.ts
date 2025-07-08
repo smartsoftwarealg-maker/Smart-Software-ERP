@@ -78,7 +78,6 @@ export class LotManagementDetailComponent
             lotState:       [l.lotState],
             lotNumber:      [l.lotNumber || 1, Validators.maxLength(14)],
             creationDate:   [l.creationDate],
-            expires:        [l.expires || false, Validators.required],
             expirationDate: [l.expirationDate],
             team:           [l.team || 0],
             center:         [l.center || 0],

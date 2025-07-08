@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Lot, LotsService } from '@ss/common/api-lookup';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -14,7 +14,6 @@ import { MatSort, MatSortHeader } from '@angular/material/sort';
 import { TranslateDirective } from '@ss/common/ui-lang';
 import { PaginationComponent } from '@ss/common/ui-pagination';
 import { MatCard } from '@angular/material/card';
-import { NgIf } from '@angular/common';
 import { MatFormField, MatLabel } from '@angular/material/form-field';
 import { MatInput } from '@angular/material/input';
 
@@ -26,9 +25,6 @@ import { MatInput } from '@angular/material/input';
     imports: [MatTable, MatSort, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatSortHeader, TranslateDirective, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, PaginationComponent]
 })
 export class StoreNameListComponent extends BaseEntityListComponent<Lot> implements OnInit {
-    #optionSrv = inject(OptionService);
-    #loginSrv = inject(LoginService);
-
     displayedColumns = ['description'];
 
     constructor(
@@ -53,7 +49,6 @@ export class StoreNameListComponent extends BaseEntityListComponent<Lot> impleme
     imports: [
         MaterialModule,
         MatCard,
-        NgIf,
         FormsModule,
         ReactiveFormsModule,
         MatFormField,
@@ -89,7 +84,6 @@ export class StoreNameDetailComponent extends BaseEntityDetailComponent<Lot> {
             description:   [e.description, Validators.required],
             descriptionAr: [e.descriptionAr],
             centerId:      [e.center || this.loginSrv.appCtx.center],
-            expires:       [e.expires|| false],
             storeId:       [e.storeId || 0]
         });
     }

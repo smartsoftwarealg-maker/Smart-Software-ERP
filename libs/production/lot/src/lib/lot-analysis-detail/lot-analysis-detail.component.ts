@@ -69,6 +69,7 @@ export class LotAnalysisDetailComponent extends BaseEntityDetailComponent<Locati
             lotNumber:    [{ value: l.lotNumber,  disabled: true } ],
             description:  [{ value: l.description,  disabled: true }],
             blockedLot:   [{ value: l.blockedLot,  disabled: true }],
+            isCompliant:  [{ value: l.isCompliant,  disabled: false }],
             analysisDate: [l.analysisDate, Validators.required],
             stock:        [{ value: l.stock, disabled: true }],
             pp:           [{ value: l.pp, disabled: true }],
@@ -80,7 +81,7 @@ export class LotAnalysisDetailComponent extends BaseEntityDetailComponent<Locati
             inventPMP:    [{ value: l.inventPMP, disabled: true }],
             inventStock:  [{ value: l.inventStock, disabled: true }],
             theoStock:    [{ value: l.theoStock, disabled: true }],
-            priority:     [{ value: l.priority, disabled: true }]
+            priority:     [{ value: l.priority, disabled: true }],
         });
     }
 }

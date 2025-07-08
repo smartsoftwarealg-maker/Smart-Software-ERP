@@ -63,12 +63,6 @@ export const productionNavTree: SideNavNode = {
             accessRights: 'LotAnalysis',
         },
         {
-            name: 'STOCK_LOT_ANALYSIS',
-            icon: 'fa-solid fa-magnifying-glass-chart',
-            route: ABS_PRODUCTION_LOT_ANALYSIS_URL,
-            accessRights: 'LotAnalysis',
-        },
-        {
             name: 'STOCK_UNLOCKING_LOTS',
             icon: 'fa-solid fa-unlock',
             route: ABS_PRODUCTION_UNLOCKING_LOTS_URL,
