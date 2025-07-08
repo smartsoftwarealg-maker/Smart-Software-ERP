@@ -22,6 +22,9 @@ export class AccountingGenerationService extends BaseEntityService<TDocument> {
     generate(info: GenerationInfo): Observable<any> {
         return this.httpSrv.post('/accounting/generations', info);
     }
+    cancel(info: GenerationInfo): Observable<{count: number}> {
+        return this.httpSrv.remove('/accounting/generations', info);
+    }
 
     getPayrollLines(): Observable<PAYRow[]> {
         return this.httpSrv.get<PAYRow[]>('/accounting/generations/payroll');
