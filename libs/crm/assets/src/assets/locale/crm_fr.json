@@ -14,5 +14,6 @@
     "PROPOSAL_SENT":        "Proposition envoyée",
     "NEGOTIATION":          "Négociation",
     "CLOSED_WON":           "Closed won",
-    "CLOSED_LOST":          "Fermeture des locaux"
+    "CLOSED_LOST":          "Fermeture des locaux",
+    "CONTACTS":             "Contacts"
 }

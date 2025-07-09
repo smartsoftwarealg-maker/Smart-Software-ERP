@@ -1,0 +1,50 @@
+.size {
+    width: 90%;
+    margin: 4PX auto;
+}
+
+.ctrl__div {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1em;
+}
+
+.div_table {
+    height: calc(100% - 128px);
+    overflow: auto;
+}
+
+.mat-column-lastName,
+.mat-column-firstName,
+.mat-column-primaryEmail,
+mat-column-addressLine1{
+    flex: 1 1 100px;
+    border-left: gray solid 1px;
+}
+
+
+
+.mat-companyName {
+    flex: 1 1 100px;
+    border-left: gray solid 1px;
+}
+
+.mat-column-btn {
+    flex: 0 0 90px;
+    justify-content: center;
+}
+
+mat-table {
+    width: 100%;
+    min-width: 1000px;
+}
+
+i {
+    margin-right: .5em;
+}
+
+.btn-actions {
+    display: flex;
+    gap: 2px;
+    align-items: center;
+}

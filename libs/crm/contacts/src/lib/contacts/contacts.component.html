@@ -1,1 +1,78 @@
-<p>Contacts works!</p>
+<div class="ctrl__div size">
+    <button matButton (click)="add()"><span><i class="fa-solid fa-plus"></i> {{ 'COMMON_ADD'|translate }}</span>
+    </button>
+    <button matButton (click)="search()"><span><i
+        class="fa-solid fa-magnifying-glass"></i> {{ 'COMMON_SEARCH'|translate }}</span></button>
+</div>
+<div class="div_table size">
+    @if (!loading) {
+        <mat-table mat-table [dataSource]="data" class="main-table" matSort (matSortChange)="sort($event)">
+
+            <ng-container matColumnDef="lastName">
+                <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_LAST_NAME</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{ e.lastName }}
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="firstName">
+                <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_FIRST_NAME</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{ e.firstName }}
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="primaryEmail">
+                <mat-header-cell *matHeaderCellDef mat-sort-header translate>ADMINISTRATION_EMAIL</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{ e.primaryEmail }}
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="addressLine1">
+                <mat-header-cell *matHeaderCellDef mat-sort-header translate>ADMINISTRATION_ADDRESS</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{ e.addressLine1 }}
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="companyName">
+                <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_COMPANY_NAME</mat-header-cell>
+                <mat-cell *matCellDef="let e" translate>
+                    {{ e.companyName }}
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="createdAt">
+                <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_CREATION_TIME</mat-header-cell>
+                <mat-cell *matCellDef="let e" translate>
+                    {{ e.createdAt | date: 'dd/MM/yyyy HH:mm:ss' }}
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="btn">
+                <mat-header-cell *matHeaderCellDef mat-sort-header></mat-header-cell>
+                <mat-cell *matCellDef="let e" translate>
+                    <div class="btn-actions">
+                        <button mat-icon-button (click)="edit(e)" matTooltip="{{'COMMON_EDIT'|translate }}">
+                            <i class="fa-solid fa-pen"></i>
+                        </button>
+                        <button mat-icon-button (click)="delete(e)" matTooltip="{{'COMMON_DELETE'|translate }}">
+                            <i class="fa-solid fa-trash"></i>
+                        </button>
+                    </div>
+                </mat-cell>
+            </ng-container>
+
+            <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+            <mat-row class="selectable" [class.selected]="row.id == selectedRow?.id" (click)="selectRow(row)"
+                     *matRowDef="let row; columns: displayedColumns;">
+            </mat-row>
+        </mat-table>
+    }
+</div>
+<div class="size b-b-background">
+    <ss-pagination [paginationModel]="pagination"></ss-pagination>
+</div>
+
+

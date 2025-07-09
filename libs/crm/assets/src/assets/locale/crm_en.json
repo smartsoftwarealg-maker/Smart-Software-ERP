@@ -14,5 +14,6 @@
     "PROPOSAL_SENT":        "Proposal sent",
     "NEGOTIATION":          "Negotiation",
     "CLOSED_WON":           "Closed won",
-    "CLOSED_LOST":          "Closed lost"
+    "CLOSED_LOST":          "Closed lost",
+    "CONTACTS":             "Contacts"
 }
