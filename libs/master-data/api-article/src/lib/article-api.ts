@@ -120,7 +120,6 @@ export interface Location {
     lotNumber?: number;
     description?: string;
     storeName?: string;
-    priority?: number;
 }
 
 export interface QtyPrice {
