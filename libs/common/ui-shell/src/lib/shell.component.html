@@ -19,10 +19,11 @@
                                        (click)="navBar.toggle()">
                             <li class="tree-node b-primary selectable-tree-item" [routerLink]="node.route"
                                 (click)="scrollTo($event)">
-                                <!-- use a disabled button to provide padding for tree leaf -->
                                 <button mat-icon-button disabled></button>
                                 <div class="nav-tree-icon" [style.background-color]="node.backgroundColor">
-                                    <i *ngIf="node.icon" [class]="node.icon"></i>
+                                    @if (node.icon) {
+                                        <i [class]="node.icon"></i>
+                                    }
                                 </div>
                                 <span class="margin-start-8 nav-tree-text" translate>{{ node.name }}</span>
                             </li>
@@ -67,26 +68,33 @@
                         <i *ngIf="!langSrv.rtl" class="fas fa-arrow-left"></i>
                     </button>
 
-                    <button *ngIf="shellSrv.hasGoBackFn"
+                    @if (shellSrv.hasGoBackFn) {
+                        <button
                             [matTooltip]="'COMMON_GO_BACK' | translate"
                             mat-icon-button
                             (click)="shellSrv.goBack()"
                             [disabled]="shellSrv.loading || !shellSrv.goBackEnabled"
                             class="hidden-during-search">
-                        <i *ngIf="langSrv.rtl" class="fas fa-arrow-right"></i>
-                        <i *ngIf="!langSrv.rtl" class="fas fa-arrow-left"></i>
-                    </button>
+                            @if (langSrv.rtl) {
+                                <i class="fas fa-arrow-right"></i>
+                            } @else {
+                                <i class="fas fa-arrow-left"></i>
+                            }
+                        </button>
+                    }
 
                     <div class="shell-title" translate>{{ shellSrv.shellTitle }}</div>
 
-                    <button mat-icon-button *ngIf="shellSrv.hasSearch" class="small-only smll-search-button"
-                            (click)="toolbar.classList.add('smll-search-mode')"
-                            matTooltip="{{shellSrv.searchInputTitle | translate}}">
-                        <i class="far fa-search"></i>
-                    </button>
+                    @if (shellSrv.hasSearch) {
+                        <button mat-icon-button class="small-only smll-search-button"
+                                (click)="toolbar.classList.add('smll-search-mode')"
+                                matTooltip="{{shellSrv.searchInputTitle | translate}}">
+                            <i class="far fa-search"></i>
+                        </button>
+                    }
 
                     @if (shellSrv.hasSearch && shellSrv.visibleSearchField()) {
-                        <div class="ss-form-field large-only" >
+                        <div class="ss-form-field large-only">
                             <mat-form-field floatLabel="always">
                                 <mat-label translate>{{ shellSrv.searchInputTitle }}</mat-label>
                                 <input [formControl]="shellSrv.searchFormControl"
@@ -96,9 +104,9 @@
                         </div>
                     }
 
-                    <ng-container *ngFor="let b of shellSrv.buttons">
-                        <ng-container *ngIf="b.keepOnToolbar != 2">
-                            <ng-template [ngIf]="b.menuItems">
+                    @for (b of shellSrv.buttons; track $index) {
+                        @if (b.keepOnToolbar != 2) {
+                            @if (b.menuItems) {
                                 <button mat-icon-button matTooltip="{{b.label | translate}}" *ngIf="b.visible"
                                         [matMenuTriggerFor]="menu"
                                         [disabled]="b.disabled"
@@ -107,38 +115,35 @@
                                     <i [class]="b.icon"></i>
                                 </button>
                                 <mat-menu #menu>
-                                    <ng-container *ngFor="let mt of b.menuItems">
+                                    @for (mt of b.menuItems; track $index) {
                                         @if (mt.visible) {
                                             <button mat-menu-item (click)="mt.click()"
                                                     [disabled]="mt.disabled">
-                                                [disabled]="mt.disabled">
                                                 <i [class]="mt.icon"></i>
                                                 {{ mt.label | translate }}
                                             </button>
                                         }
-                                    </ng-container>
+                                    }
                                 </mat-menu>
-                            </ng-template>
-                            @if (!b.menuItems && b.visible) {
-                                @if (b.visible) {
-                                    <button mat-icon-button matTooltip="{{b.label | translate}}"
-                                            (click)="b.click()"
-                                            [disabled]="b.disabled"
-                                            class="hidden-during-search"
-                                            [class.large-only]="b.disabled || (b.keepOnToolbar != 1)">
-                                        @if (b.badgeCount > 0) {
-                                            <i [class]="b.icon"
-                                               matBadge="{{ b.badgeCount }}"
-                                               matBadgeColor="warn">
-                                            </i>
-                                        } @else {
-                                            <i [class]="b.icon"></i>
-                                        }
-                                    </button>
-                                }
                             }
-                        </ng-container>
-                    </ng-container>
+                            @if (!b.menuItems && b.visible) {
+                                <button mat-icon-button matTooltip="{{b.label | translate}}"
+                                        (click)="b.click()"
+                                        [disabled]="b.disabled"
+                                        class="hidden-during-search"
+                                        [class.large-only]="b.disabled || (b.keepOnToolbar != 1)">
+                                    @if (b.badgeCount > 0) {
+                                        <i [class]="b.icon"
+                                           matBadge="{{ b.badgeCount }}"
+                                           matBadgeColor="warn">
+                                        </i>
+                                    } @else {
+                                        <i [class]="b.icon"></i>
+                                    }
+                                </button>
+                            }
+                        }
+                    }
 
                     <button mat-icon-button #menuTrigger="matMenuTrigger" [matMenuTriggerFor]="menu">
                         <i class="fas fa-caret-down"></i>
@@ -149,11 +154,19 @@
             </div>
             <div class="b-primary mat-elevation-z6 shell-toolbar-2">
                 <div class="toolbar-inner">
-                    <div *ngFor="let n of shellSrv.labels" class="shell-label margin-end-8 large-only">
-                        <div *ngIf="n.icon" class="label-icon"><i [class]="n.icon"></i></div>
-                        <div *ngIf="n.title" class="label-title margin-start-4">{{ n.title }}</div>
-                        <div *ngIf="n.text" class="label-text margin-start-4">{{ n.text }}</div>
-                    </div>
+                    @for (n of shellSrv.labels; track $index) {
+                        <div class="shell-label margin-end-8 large-only">
+                            @if (n.icon) {
+                                <div class="label-icon"><i [class]="n.icon"></i></div>
+                            }
+                            @if (n.title) {
+                                <div class="label-title margin-start-4">{{ n.title }}</div>
+                            }
+                            @if (n.text) {
+                                <div class="label-text margin-start-4">{{ n.text }}</div>
+                            }
+                        </div>
+                    }
 
                     <div class="toolbar-username margin-end-8">
                         <div class="user-icon">
@@ -163,25 +176,28 @@
                     </div>
                 </div>
             </div>
-            <!--app-nav-bar (menuToggle)="navBar.toggle()"></app-nav-bar-->
             <div class="b-b-app-bar static-container" [class.hidden]="shellSrv.loading || shellSrv.error"
                  #routerContainer>
                 <router-outlet></router-outlet>
                 <div class="b-b-app-bar static-container-bottom-padding"></div>
             </div>
-            <div *ngIf="shellSrv.loading" class="b-b-app-bar loading-spinner-container">
-                <mat-spinner></mat-spinner>
-            </div>
-            <div *ngIf="shellSrv.error" class="b-b-app-bar loading-spinner-container">
-                <i class="fas fa-exclamation-circle fa-10x f-warn x_large"></i>
-                <button mat-raised-button (click)="shellSrv.retry()" translate>RETRY</button>
-            </div>
+            @if (shellSrv.loading) {
+                <div class="b-b-app-bar loading-spinner-container">
+                    <mat-spinner></mat-spinner>
+                </div>
+            }
+            @if (shellSrv.error) {
+                <div class="b-b-app-bar loading-spinner-container">
+                    <i class="fas fa-exclamation-circle fa-10x f-warn x_large"></i>
+                    <button mat-raised-button (click)="shellSrv.retry()" translate>RETRY</button>
+                </div>
+            }
         </mat-sidenav-content>
     </mat-sidenav-container>
 
     <mat-menu #menu="matMenu" style="overflow: hidden">
         <div class="nav-bar-settings-menu" (click)="$event.stopPropagation()">
-            <ng-container *ngFor="let b of shellSrv.buttons">
+            @for (b of shellSrv.buttons; track $index) {
                 @if (b.visible) {
                     @if (b.menuItems) {
                         <div class="settings-item" mat-menu-item (click)="trigger.toggleMenu()"
@@ -194,13 +210,15 @@
                             <span class="text" translate>{{ b.label }}</span>
                         </div>
                         <mat-menu #menu>
-                            <ng-container *ngFor="let mt of b.menuItems">
-                                <button *ngIf="mt.visible" mat-menu-item (click)="mt.click(); menuTrigger.closeMenu();"
-                                        [disabled]="mt.disabled">
-                                    <i [class]="mt.icon"></i>
-                                    {{ mt.label | translate }}
-                                </button>
-                            </ng-container>
+                            @for (mt of b.menuItems; track $index) {
+                                @if (mt.visible) {
+                                    <button mat-menu-item (click)="mt.click(); menuTrigger.closeMenu();"
+                                            [disabled]="mt.disabled">
+                                        <i [class]="mt.icon"></i>
+                                        {{ mt.label | translate }}
+                                    </button>
+                                }
+                            }
                         </mat-menu>
                     } @else {
                         <div type="button" mat-menu-item class="settings-item" [class.small-only]="b.keepOnToolbar != 2"
@@ -211,15 +229,13 @@
                         </div>
                     }
                 }
-            </ng-container>
+            }
 
             @if (shellSrv.buttons.length) {
                 <mat-divider></mat-divider>
             }
 
-
-            <ng-container *ngFor="let b of shellSrv.appButtons">
-
+            @for (b of shellSrv.appButtons; track $index) {
                 @if (b.menuItems) {
                     <div class="settings-item" mat-menu-item (click)="trigger.toggleMenu()">
                         <div class="icon" (click)="$event.stopPropagation()" [matMenuTriggerFor]="menu"
@@ -229,28 +245,33 @@
                         <span class="text" translate>{{ b.label }}</span>
                     </div>
                     <mat-menu #menu>
-                        <ng-container *ngFor="let mt of b.menuItems">
-                            <button *ngIf="mt.visible" mat-menu-item (click)="mt.click(); menuTrigger.closeMenu();"
-                                    [disabled]="mt.disabled">
-                                <i [class]="mt.icon"></i>
-                                {{ mt.label | translate }}
-                            </button>
-                        </ng-container>
+                        @for (mt of b.menuItems; track $index) {
+                            @if (mt.visible) {
+                                <button mat-menu-item (click)="mt.click(); menuTrigger.closeMenu();"
+                                        [disabled]="mt.disabled">
+                                    <i [class]="mt.icon"></i>
+                                    {{ mt.label | translate }}
+                                </button>
+                            }
+                        }
                     </mat-menu>
                 } @else {
-                    <div type="button" mat-menu-item *ngIf="b.visible" class="settings-item"
-                         [class]="{'f-b-disabled-btn': b.disabled, 'disable-events': b.disabled}"
-                         (click)="b.click(); menuTrigger.closeMenu();">
-                        <div class="icon">
-                            <i [class]="b.icon"></i>
+                    @if (b.visible) {
+                        <div type="button" mat-menu-item class="settings-item"
+                             [class]="{'f-b-disabled-btn': b.disabled, 'disable-events': b.disabled}"
+                             (click)="b.click(); menuTrigger.closeMenu();">
+                            <div class="icon">
+                                <i [class]="b.icon"></i>
+                            </div>
+                            <span class="text" translate>{{ b.label }}</span>
                         </div>
-                        <span class="text" translate>{{ b.label }}</span>
-                    </div>
+                    }
                 }
+            }
 
-            </ng-container>
-
-            <mat-divider *ngIf="shellSrv.appButtons.length"></mat-divider>
+            @if (shellSrv.appButtons.length) {
+                <mat-divider></mat-divider>
+            }
 
             <div type="button" mat-menu-item class="settings-item" (click)="langBtn.click()">
                 <ss-language-select class="icon" (click)="$event.stopPropagation()" #langBtn></ss-language-select>

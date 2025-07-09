@@ -1,8 +1,8 @@
 import { Component, inject, OnDestroy, OnInit } from '@angular/core';
-import { ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup, Validators } from "@angular/forms";
-import { LoginService, MaterialModule, PaginationModel } from "@ss/common/api-common";
-import { ActivatedRoute, RouterModule } from "@angular/router";
-import {ShellService, SnackBarService} from '@ss/common/ui-shell';
+import { ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
+import { LoginService, MaterialModule, PaginationModel } from '@ss/common/api-common';
+import { ActivatedRoute, RouterModule } from '@angular/router';
+import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import {
     AccJournalsService,
     AccountingGenerationService, Check,
@@ -11,16 +11,16 @@ import {
     TDocument
 } from '@ss/accounting/accounting-api';
 import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
-import {Subscription} from 'rxjs';
-import {debounceTime, distinctUntilChanged} from 'rxjs/operators';
-import {HttpParams} from '@angular/common/http';
-import { CommonModule } from "@angular/common";
+import { of, Subscription, switchMap } from 'rxjs';
+import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
+import { HttpParams } from '@angular/common/http';
+import { CommonModule } from '@angular/common';
 
 
-import { DatePickerComponent } from "@ss/common/ui-datepicker";
+import { DatePickerComponent } from '@ss/common/ui-datepicker';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 import { PaginationComponent } from '@ss/common/ui-pagination';
-
+import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 
 
 @Component({
@@ -39,6 +39,7 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
     ]
 })
 export class AccountingGenerationComponent implements OnInit, OnDestroy {
+    private confirmationSrv = inject(ConfirmationDialogService);
     private loginSrv = inject(LoginService);
     private generationSrv = inject(AccountingGenerationService);
     private route = inject(ActivatedRoute);
@@ -48,27 +49,27 @@ export class AccountingGenerationComponent implements OnInit, OnDestroy {
     private fb = inject(UntypedFormBuilder);
 
     readonly PURCHASE = 1;
-    readonly SALES    = 4;
-    readonly PAYROLL  = 5;
-    readonly BANK     = 6;
-    readonly CASH     = 7;
+    readonly SALES = 4;
+    readonly PAYROLL = 5;
+    readonly BANK = 6;
+    readonly CASH = 7;
 
     private documentMap = new Map(
         [
-            [1, {code: 514, description: 'purchase',    stock: false}],
-            [2, {code: 514, description: 'inventory',   stock: true}],
-            [3, {code: 260, description: 'consumption', stock: true}],
-            [4, {code: 258, description: 'sales',       stock: false}],
-            [5, {code: 0,   description: 'payroll',     stock: false}],
-            [6, {code: 0,   description: 'bank',        stock: false}],
-            [7, {code: 0,   description: 'cash',        stock: false}],
+            [1, { code: 514, description: 'purchase', stock: false }],
+            [2, { code: 514, description: 'inventory', stock: true }],
+            [3, { code: 260, description: 'consumption', stock: true }],
+            [4, { code: 258, description: 'sales', stock: false }],
+            [5, { code: 0, description: 'payroll', stock: false }],
+            [6, { code: 0, description: 'bank', stock: false }],
+            [7, { code: 0, description: 'cash', stock: false }]
         ]);
     private subscriptions: Subscription[] = [];
 
     showingTransactions = true;
-    showingBank         = false;
-    showingCash         = false;
-    showingPayroll      = false;
+    showingBank = false;
+    showingCash = false;
+    showingPayroll = false;
 
     form: UntypedFormGroup | null = null;
     journalLookup = new DefaultAutoCompleteModel<Journal>(this.journalSrv);
@@ -100,10 +101,10 @@ export class AccountingGenerationComponent implements OnInit, OnDestroy {
             .loadContext()
             .subscribe(res => {
                 this.form = this.fb.group({
-                    year:    [{ value: this.loginSrv.appCtx.accYear, disabled: true }],
-                    period:  [{ value: this.loginSrv.appCtx.accPeriod, disabled: true} ],
+                    year: [{ value: this.loginSrv.appCtx.accYear, disabled: true }],
+                    period: [{ value: this.loginSrv.appCtx.accPeriod, disabled: true }],
                     journal: [null, Validators.required],
-                    genType: ['purchase', Validators.required],
+                    genType: ['purchase', Validators.required]
                 });
                 this.subscriptions.push(
                     this.form?.controls['genType']
@@ -117,20 +118,47 @@ export class AccountingGenerationComponent implements OnInit, OnDestroy {
 
     generate() {
         const key = +this.form?.controls['genType'].value;
-        const generationPayload = { journal: this.form?.controls['journal'].value,
+        const generationPayload = {
+            journal: this.form?.controls['journal'].value,
             genType: this.documentMap.get(key)?.description
         };
         this.shellSrv.setLoading(true);
         this.generationSrv
             .generate(generationPayload)
-            .subscribe({next: res => {
-                this.shellSrv.setLoading(false);
-                this.showDocuments();
-                this.snackBarSrv.showSuccessMessage();
-            }, error: err => {
+            .subscribe({
+                next: () => {
+                    this.shellSrv.setLoading(false);
+                    this.showDocuments();
+                    this.snackBarSrv.showSuccessMessage();
+                }, error: err => {
                     this.shellSrv.setLoading(false);
                     throw err;
-            }});
+                }
+            });
+    }
+
+    cancel() {
+        const key = +this.form?.controls['genType'].value;
+        const generationPayload = {
+            journal: 0,
+            genType: this.documentMap.get(key)?.description
+        };
+        this.shellSrv.setLoading(true);
+        this.confirmationSrv
+            .confirm('ACC_GENERATION_CANCEL', 'ACC_GENERATION_CANCEL', true, true)
+            .pipe(switchMap(res => res ? this.generationSrv.cancel(generationPayload) : of({ count: 0 }))
+            )
+            .subscribe({
+                next: () => {
+                    this.shellSrv.setLoading(false);
+                    this.showDocuments();
+                    this.snackBarSrv.showSuccessMessage();
+                }, error: err => {
+                    this.shellSrv.setLoading(false);
+                    throw err;
+                }
+            });
+
     }
 
     private showTransactions(key: number) {
@@ -159,7 +187,7 @@ export class AccountingGenerationComponent implements OnInit, OnDestroy {
             .getPayrollLines()
             .subscribe({
                 next: res => {
-                    this.processing  = false;
+                    this.processing = false;
                     this.payrollData = res;
                     this.shellSrv.setLoading(false);
                 }, error: err => {
@@ -176,8 +204,8 @@ export class AccountingGenerationComponent implements OnInit, OnDestroy {
             .subscribe({
                 next: res => {
                     this.processing = false;
-                    this.checkData  = res;
-                    const bankId = res.length > 0? res[0].journal || null: null;
+                    this.checkData = res;
+                    const bankId = res.length > 0 ? res[0].journal || null : null;
                     this.form?.controls['journal']?.setValue(bankId);
                     this.shellSrv.setLoading(false);
                 }, error: err => {
@@ -194,7 +222,7 @@ export class AccountingGenerationComponent implements OnInit, OnDestroy {
             .subscribe({
                 next: res => {
                     this.processing = false;
-                    this.cashData  = res;
+                    this.cashData = res;
                     this.shellSrv.setLoading(false);
                 }, error: err => {
                     this.processing = false;
@@ -208,9 +236,9 @@ export class AccountingGenerationComponent implements OnInit, OnDestroy {
         this.processing = true;
         this.shellSrv.setLoading(true);
         const key = +this.form?.controls['genType'].value;
-        this.showingBank         = key === this.BANK;
-        this.showingCash         = key === this.CASH;
-        this.showingPayroll      = key === this.PAYROLL;
+        this.showingBank = key === this.BANK;
+        this.showingCash = key === this.CASH;
+        this.showingPayroll = key === this.PAYROLL;
         this.showingTransactions = key >= this.PURCHASE && key <= this.SALES;
 
         switch (key) {

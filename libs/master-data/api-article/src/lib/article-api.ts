@@ -114,6 +114,7 @@ export interface Location {
     inventDate?: Date;
     fixDate?: Date;
     blockedLot?: boolean;
+    isCompliant: boolean;
     analysisDate?: Date;
     center?: number;
     lotNumber?: number;

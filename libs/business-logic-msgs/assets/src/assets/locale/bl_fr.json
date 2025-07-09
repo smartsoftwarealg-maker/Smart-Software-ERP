@@ -66,5 +66,7 @@
     "INVALID_DATE":                       "Date invalide.",
     "WRONG_FORMULA":                      "Formule incorrecte",
     "CIRCULAR_BOM":                       "La nomenclature est circulaire",
-    "MISSING_BOM":                        "Nomenclature manquante"
+    "MISSING_BOM":                        "Nomenclature manquante",
+    "EXPIRED_BOM":                        "Nomenclature expirée",
+    "CLOSED_PERIOD":                      "La periode est fermée. Aucune autre modification n'est autorisée"
 }

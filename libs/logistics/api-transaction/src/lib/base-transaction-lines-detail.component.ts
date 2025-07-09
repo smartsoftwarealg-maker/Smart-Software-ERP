@@ -156,7 +156,7 @@ export abstract class BaseTransactionLinesDetailComponent extends AbstractEntity
 
         this.subscriptions.push(subs2);
         this.shellSrv.setLoading(false);
-        this.onStore({ id: e.store, center: this.loginSrv.appCtx.center, description: '', expires: false, storeId: e.store });
+        this.onStore({ id: e.store, center: this.loginSrv.appCtx.center, description: '', storeId: e.store });
     }
 
     readForm(): TransactionLine {
@@ -324,6 +324,7 @@ export abstract class BaseTransactionLinesDetailComponent extends AbstractEntity
             .subscribe((result: number) => {
                 if (result > 0) {
                     this.snackBarSrv.showSuccessMessage();
+                    this.form.controls['store'].setValue(result);
                 }
             });
     }

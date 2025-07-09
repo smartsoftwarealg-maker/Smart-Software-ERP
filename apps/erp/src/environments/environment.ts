@@ -69,8 +69,8 @@ import { socialNavTree } from '../app/social/side-nav-tree';
 import { productionNavTree } from '../app/production/side-nav-tree';
 
 export const environment = {
-    production: true,
-    multiCompany: true,
+    production: false,
+    multiCompany: false,
     company: null,
 };
 

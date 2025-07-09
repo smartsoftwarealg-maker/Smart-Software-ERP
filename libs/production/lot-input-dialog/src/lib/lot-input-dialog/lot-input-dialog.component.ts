@@ -1,18 +1,13 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Agent, SupplierService } from '@ss/logistics/api-agent';
 import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
-import { LotAutoCompleteModel } from '@ss/master-data/api-article';
-import { LotsService } from '@ss/common/api-lookup';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { LoginService, MaterialModule } from '@ss/common/api-common';
 import { MatCard, MatCardContent } from '@angular/material/card';
-import { RouterOutlet } from '@angular/router';
 import { TranslateDirective } from '@ss/common/ui-lang';
 import { DatePickerComponent } from '@ss/common/ui-datepicker';
 import { MatDialogRef } from '@angular/material/dialog';
-import { MatSnackBar } from '@angular/material/snack-bar';
-import { SnackBarService } from '@ss/common/ui-shell';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { StoresService } from '@ss/stock/api-article-store';
 
@@ -30,12 +25,12 @@ export class LotInputDialogComponent {
     #fb = inject(FormBuilder);
     #supplierSrv = inject(SupplierService);
     #lotSrv = inject(StoresService);
+    #dialogRef =  inject(MatDialogRef<LotInputDialogComponent>);
 
     supplierLookup = new DefaultAutoCompleteModel<Agent>(this.#supplierSrv, 'id', 'denomination');
     storeLookup = new DefaultAutoCompleteModel(this.#lotSrv);
+    invalidForm = signal(false);
 
-    constructor(private dialogRef:  MatDialogRef<LotInputDialogComponent>) {
-    }
 
     form = this.#fb.group({
         id: [0],
@@ -46,7 +41,6 @@ export class LotInputDialogComponent {
         lotState: ['', Validators.maxLength(1)],
         lotNumber: [1, Validators.required],
         creationDate: [new Date(), Validators.required],
-        expires: [false, Validators.required],
         expirationDate: [null],
         team: [''],
         center: [this.#loginSrv.appCtx.center]
@@ -54,8 +48,7 @@ export class LotInputDialogComponent {
 
     save() {
         const rawValue = this.form.getRawValue();
-        rawValue.expires = rawValue.expirationDate !== null;
-        this.dialogRef.close(rawValue);
+        this.#dialogRef.close(rawValue);
         // this.#lotSrv.save(rawValue)
         //     .subscribe({
         //         next: res => {
@@ -72,7 +65,7 @@ export class LotInputDialogComponent {
             .confirmDontSave()
             .subscribe(res => {
                 if (res) {
-                    this.dialogRef.close(null);
+                    this.#dialogRef.close(null);
                 }
             });
     }

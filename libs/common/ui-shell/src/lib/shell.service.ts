@@ -1,9 +1,8 @@
 import { inject, Injectable, signal } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UntypedFormControl } from '@angular/forms';
-import { asyncScheduler, Observable, observeOn, Subscription } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
-import { MatTreeNestedDataSource } from '@angular/material/tree';
 import {
     DocRight,
     LanguageService,
@@ -110,7 +109,8 @@ export class ShellService {
     protected isLoading = false;
     protected isError = false;
     protected retryCallback: () => void;
-    protected goBackEnabled = true;
+
+    public goBackEnabled = true;
     // side nav data
     public navData: SideNavNode[] = [];
 
@@ -210,7 +210,7 @@ export class ShellService {
                     route: i.route,
                     backgroundColor: i.backgroundColor,
                     customerRights: i.customerRights
-                }
+                };
                 clone.children = this.filterSideNavByVisibility(i.children);
                 return clone;
             });
@@ -497,8 +497,8 @@ export class ShellService {
         this.updateShell();
     }
     public addBadgeButton(btn: BadgeButton) {
-       // btn.visible = false;
-       this.addButton(btn);
+        // btn.visible = false;
+        this.addButton(btn);
     }
 
     public removeButton(buttonLabel: string): void {

@@ -1,4 +1,4 @@
-import { Component, computed, inject, OnDestroy, OnInit, signal } from '@angular/core';
+import { Component, computed, HostListener, inject, OnDestroy, OnInit, signal } from '@angular/core';
 import {
     AccFileService,
     AccPoliciesService,
@@ -93,19 +93,31 @@ export class TransactionDetailComponent implements OnInit, OnDestroy {
                 this.isOnEdit.set(e.url.indexOf('/detail/') > 1);
             }));
     }
+    // @HostListener('document:keydown', ['$event'])
+    // handleKeyboardEvent(event: KeyboardEvent) {
+    //     if (!this.isOnEdit) {
+    //         if (event.altKey && event.key === 's') {
+    //             this.save();
+    //             event.preventDefault();
+    //         } else if (event.altKey && event.key === 'c') {
+    //             this.cancel();
+    //             event.preventDefault();
+    //         }
+    //     }
+    // }
 
     preload(): Observable<any> {
         this.journalId = this.entitySrv.getParentId();
         return this.loginSrv.loadContext()
-            .pipe(tap(_ => {
+            .pipe(tap(() => {
                 this.minDate = new Date(this.loginSrv.appCtx?.accYear, this.loginSrv.appCtx.accPeriod - 1, 1);
                 const nextMonth = new Date(this.loginSrv.appCtx.accYear, this.loginSrv.appCtx.accPeriod, 1);
                 this.maxDate = nextMonth;
                 this.maxDate.setDate(0);
             }),
-            switchMap(_ => this.accPolicySrv.get(this.loginSrv.appCtx.center)),
+            switchMap(() => this.accPolicySrv.get(this.loginSrv.appCtx.center)),
             tap(res => this.accPolicy = res),
-            switchMap(_ => this.entitySrv.getProjects()),
+            switchMap(() => this.entitySrv.getProjects()),
             tap(res => this.projects = res));
     }
 
