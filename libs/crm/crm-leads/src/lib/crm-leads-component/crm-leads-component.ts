@@ -2,7 +2,7 @@ import {Component, inject, OnDestroy, OnInit} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CRMLeadsService } from '../crm-lead.service';
 import { PaginationModel } from '@ss/common/api-common';
-import { CRMLead } from '../lead-api';
+import { Contact } from '../lead-api';
 import {
     MatCell,
     MatCellDef,
@@ -63,7 +63,7 @@ export class CrmLeadsComponent implements OnInit, OnDestroy {
         pageSize: 15,
         elementCount: 0,
     });
-    selectedRow: CRMLead | null = null;
+    selectedRow: Contact | null = null;
     displayedColumns = [
         'btn',
         'lastName',
@@ -73,7 +73,7 @@ export class CrmLeadsComponent implements OnInit, OnDestroy {
         'status',
         'createdAt',
     ];
-    data: CRMLead[] = [];
+    data: Contact[] = [];
     loading = false;
 
     constructor() {
@@ -90,7 +90,7 @@ export class CrmLeadsComponent implements OnInit, OnDestroy {
         this.refresh();
     }
 
-    selectRow(row: CRMLead): void {
+    selectRow(row: Contact): void {
         this.selectedRow = row;
     }
 
@@ -102,7 +102,7 @@ export class CrmLeadsComponent implements OnInit, OnDestroy {
         });
     }
 
-    edit(lead: CRMLead): void {
+    edit(lead: Contact): void {
         //    console.log('Edit lead:', lead);
         this.showDetail(lead.id);
     }

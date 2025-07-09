@@ -1,6 +1,6 @@
 import { SideNavNode } from '@ss/common/api-common';
 import {
-    ABS_CRM_CONTACT_METHODS_URL, ABS_CRM_CUSTOMER_URL,
+    ABS_CRM_CONTACT_METHODS_URL, ABS_CRM_CONTACTS_URL, ABS_CRM_CUSTOMER_URL,
     ABS_CRM_DEPARTMENTS_URL,
     ABS_CRM_JOBS_URL, ABS_CRM_LEADS_URL, ABS_CRM_PAYMENT_TERMS_URL,
     ABS_CRM_SALUTATIONS_URL,
@@ -59,6 +59,13 @@ export const crmNavTree: SideNavNode = {
             route: ABS_CRM_LEADS_URL,
             accessRights: 'CRMCustomer',
         },
+        {
+            name: 'CRM_CONTACTS',
+            icon: 'fa-solid fa-telescope',
+            route: ABS_CRM_CONTACTS_URL,
+            accessRights: 'CRMCustomer',
+        },
+
     ],
     accessRights: 'CRM',
 };

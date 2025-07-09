@@ -14,5 +14,6 @@
     "PROPOSAL_SENT":        "مقترح مرسل",
     "NEGOTIATION":          "التفاوض",
     "CLOSED_WON":           "فوز مغلق",
-    "CLOSED_LOST":          "فقدان مغلق"
+    "CLOSED_LOST":          "فقدان مغلق",
+    "CONTACTS":             "جهات الاتصال"
 }

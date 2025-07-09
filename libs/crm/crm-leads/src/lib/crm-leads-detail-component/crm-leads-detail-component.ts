@@ -8,7 +8,7 @@ import { FormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { Observable, of } from 'rxjs';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { DatePickerComponent } from '@ss/common/ui-datepicker';
-import { CRMLead } from '../lead-api';
+import { Contact } from '../lead-api';
 import { SnackBarService } from '@ss/common/ui-shell';
 import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 
@@ -73,7 +73,7 @@ export class CrmLeadsDetailComponent implements OnInit {
     }
 
     save() {
-        this.#entitySrv.save(this.form.getRawValue() as CRMLead).subscribe({
+        this.#entitySrv.save(this.form.getRawValue() as Contact).subscribe({
             next: () => {
                 this.form.markAsUntouched();
                 this.#router
@@ -98,7 +98,7 @@ export class CrmLeadsDetailComponent implements OnInit {
          return of(true);
      }
 
-    private setupForm(b: CRMLead) {
+    private setupForm(b: Contact) {
         if (b) {
             return this.formBuilder.group({
                 id: [b.id || 0, Validators.required],

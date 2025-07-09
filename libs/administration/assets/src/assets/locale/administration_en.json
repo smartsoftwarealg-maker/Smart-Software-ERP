@@ -91,5 +91,6 @@
     "DECODE": "Decode",
     "RESET_CODE_NOT_CORRECT": "Reset code not correct",
     "GLOBAL_VALIDATION": "Global validation",
-    "VALIDATE_ALL": "Validate all"
+    "VALIDATE_ALL": "Validate all",
+    "ADDRESS": "Address"
 }

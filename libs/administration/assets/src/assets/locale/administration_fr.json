@@ -91,5 +91,6 @@
     "DECODE": "Décoder",
     "RESET_CODE_NOT_CORRECT": "Le code de réinitialisation n'est pas correct",
     "GLOBAL_VALIDATION": "Validation globale",
-    "VALIDATE_ALL": "Tout valider"
+    "VALIDATE_ALL": "Tout valider",
+    "ADDRESS": "Adresse"
 }
