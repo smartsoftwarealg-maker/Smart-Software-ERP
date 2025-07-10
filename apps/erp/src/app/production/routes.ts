@@ -17,7 +17,7 @@ import {
     PRODUCTION_UNLOCKING_LOTS_URL,
     PRODUCTION_ARTICLE_TYPES_URL,
     PRODUCTION_DOSAGE_UNITS_URL,
-    PRODUCTION_PACKAGING_UNITS_URL, COMMON_REPORTS_URL, PRODUCTION_LOT_PRIORITY_URL
+    PRODUCTION_PACKAGING_UNITS_URL, COMMON_REPORTS_URL
 } from '../common';
 import {
     ProductionOrderDetailComponent,
@@ -49,8 +49,7 @@ import {
     LotAnalysisDetailComponent,
     LotAnalysisListComponent,
     LotManagementDetailComponent,
-    LotManagementListComponent, LotPriorityDetailComponent, LotPriorityListComponent,
-    UnlockingLotsComponent
+    LotManagementListComponent, UnlockingLotsComponent
 } from '@ss/production/lot';
 import {
     InterStoreTransferListComponent,
@@ -245,25 +244,6 @@ export const prodRoutes: Routes = [
             {
                 path: ':id',
                 component: LotAnalysisDetailComponent,
-                canActivate: [loginGuard],
-                canDeactivate: [CanDeactivateService],
-            },
-            { path: '', redirectTo: LIST_URL, pathMatch: 'full' },
-            { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' },
-        ],
-    },
-    {
-        path: PRODUCTION_LOT_PRIORITY_URL,
-        children: [
-            {
-                path: LIST_URL,
-                component: LotPriorityListComponent,
-                canActivate: [loginGuard],
-                children: docInfoRoutes,
-            },
-            {
-                path: ':id',
-                component: LotPriorityDetailComponent,
                 canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService],
             },

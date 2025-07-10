@@ -253,9 +253,9 @@ export class GradingsComponent implements OnInit, OnDestroy {
                         employeeId:    [e?.id||0],
                         criterion:     [g.criterion],
                         description:   [g.description],
-                        grade1 :       [{ value: g.grade1, disabled: !this.gradingSrv.gradingMode || this.gradeCtrl.value !== 1 || g.validated1 }  ],
-                        grade2:        [{ value: idx >= 2? g.grade2: 0, disabled: !this.gradingSrv.gradingMode || this.gradeCtrl.value !== 2 || g.validated2 || !g.validated1 }],
-                        finalGrade:    [{ value: idx >= 3? g.finalGrade : 0, disabled: this.gradeCtrl.value !== 3 || this.gradeDifference() <= 5 || !g.validated2}],
+                        grade1 :       [{ value: g.grade1||4, disabled: !this.gradingSrv.gradingMode || this.gradeCtrl.value !== 1 || g.validated1 }  ],
+                        grade2:        [{ value: idx >= 2? g.grade2||4: 0, disabled: !this.gradingSrv.gradingMode || this.gradeCtrl.value !== 2 || g.validated2 || !g.validated1 }],
+                        finalGrade:    [{ value: idx >= 3? g.finalGrade||4 : 0, disabled: this.gradeCtrl.value !== 3 || this.gradeDifference() <= 5 || !g.validated2}],
                         userId:        [this.loginSrv.appCtx.id],
                     });
                     this.grades.push(temp);

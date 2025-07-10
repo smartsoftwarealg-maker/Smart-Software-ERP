@@ -19,17 +19,33 @@ import { ContactService } from '../services/contact.service';
 import { MatTooltip } from '@angular/material/tooltip';
 import { Contact } from '../services/api';
 import {  ReactiveFormsModule } from '@angular/forms';
-import { MatFormField, MatInput, MatLabel } from '@angular/material/input';
-import { MatIcon } from '@angular/material/icon';
-import { MatOption } from '@angular/material/core';
-import { MatSelect } from '@angular/material/select';
-import { MatTab, MatTabGroup } from '@angular/material/tabs';
+import { MatFormField } from '@angular/material/input';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 
 
 @Component({
     selector: 'ss-contacts',
-    imports: [CommonModule, MatCell, MatCellDef, MatColumnDef, MatHeaderCell, MatButton, MatHeaderRow, MatHeaderRowDef, MatIconButton, MatRow, MatRowDef, MatSort, MatSortHeader, MatTable, MatTooltip, PaginationComponent, TranslateDirective, TranslatePipe, MatHeaderCellDef, ReactiveFormsModule, MatFormField, MatIcon, MatFormField, MatFormField, MatOption, MatLabel, MatInput, MatFormField, MatSelect, MatTabGroup, MatTab],
+    imports: [CommonModule,
+        MatCell,
+        MatCellDef,
+        MatColumnDef,
+        MatHeaderCell,
+        MatButton,
+        MatHeaderRow,
+        MatHeaderRowDef,
+        MatIconButton,
+        MatRow,
+        MatRowDef,
+        MatSort,
+        MatSortHeader,
+        MatTable,
+        MatTooltip,
+        PaginationComponent,
+        TranslateDirective,
+        TranslatePipe,
+        MatHeaderCellDef,
+        ReactiveFormsModule,
+    ],
     templateUrl: './contacts.component.html',
     styleUrl: './contacts.component.scss',
     standalone: true
@@ -55,7 +71,7 @@ export class ContactsComponent implements OnInit, OnDestroy {
         'addressLine1',
         'companyName',
         'createdAt'
-    ]
+    ];
     data: Contact[] = [];
     loading = false;
 

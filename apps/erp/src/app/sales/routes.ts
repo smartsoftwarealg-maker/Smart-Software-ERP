@@ -6,7 +6,7 @@ import {
     ADMINISTRATION_REPORT_PRIVILEGE_URL,
     COMMON_REPORTS_URL,
     DASHBOARD_URL,
-    docInfoRoutes, LOGISTICS_AGENT_URL,
+    docInfoRoutes, LOGISTICS_AGENT_URL, LOGISTICS_CUSTOMER_URL,
     SALES_AD_URL, SALES_PRICE_LIST_URL, SALES_SERVICE_ARTICLE_URL
 } from '../common';
 import { OrderListComponent } from '@ss/sales/ui-sales-order';
@@ -172,6 +172,40 @@ export const mainRoutes: Routes = [
                         ]
                     },
                     ...docInfoRoutes
+                ]
+            },
+        ]
+    },
+    {
+        path: LOGISTICS_CUSTOMER_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: AgentListComponent,
+                canActivate: [loginGuard],
+                data: {sales: true, customer: true },
+                children: docInfoRoutes
+            },
+            {
+                path: ':id',
+                children: [
+                    {
+                        path: '',
+                        component: AgentDetailComponent,
+                        canActivate: [loginGuard],
+                        canDeactivate: [CanDeactivateService],
+                        data: {sales: true, customer: true },
+                        children: [
+                            { path: '', redirectTo: 'archive', pathMatch: 'full'},
+                            {
+                                path: 'archive',
+                                children: [
+                                    {path: '', component: AppArchiveListComponent, pathMatch: 'full', data: { appId: AGENT_ARCHIVES } },
+                                    {path: ':id', component: AppArchiveDetailComponent, data: { appId: AGENT_ARCHIVES }},
+                                ]
+                            }
+                        ]
+                    }
                 ]
             },
         ]

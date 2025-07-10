@@ -16,6 +16,7 @@ import { DocumentSourcesComponent } from 'logistics/ui-document-sources';
 import { UiTransactionlineQuantitiesComponent } from '@ss/logistics/quantities';
 import { UiMrpComponent } from '@ss/logistics/ui-mrp';
 import { ProductionConsumptionComponent } from '@ss/production/mrp';
+import { CUSTOMER_URL } from '@ss/logistics/api-agent';
 
 // common
 export const LOOKUPS_URL = 'lookups';
@@ -967,6 +968,7 @@ export const ABS_SALES_AGENT_URL = '/' + [MAIN_PAGE_URL, SALES_APP_URL, STOCK_AG
 export const ABS_SALES_SERVICE_URL = '/' + [MAIN_PAGE_URL, SALES_APP_URL, SALES_SERVICE_ARTICLE_URL].join('/');
 export const ABS_SALES_REPORT_PRIVILEGE_URL = '/' + [MAIN_PAGE_URL, SALES_APP_URL, ADMINISTRATION_REPORT_PRIVILEGE_URL].join('/');
 export const ABS_PRICE_LIST_URL = '/' + [MAIN_PAGE_URL, SALES_APP_URL, SALES_PRICE_LIST_URL].join('/');
+export const ABS_SALES_CUSTOMER_URL = '/' + [MAIN_PAGE_URL, SALES_APP_URL, LOGISTICS_CUSTOMER_URL].join('/');
 
 //services
 export const ABS_SERVICE_CLASSES_URL = '/' + [MAIN_PAGE_URL, SERVICE_APP_URL, SERVICE_CLASSES_URL].join('/');

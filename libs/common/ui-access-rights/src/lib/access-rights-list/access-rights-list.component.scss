@@ -85,3 +85,18 @@
         background-color: rgba($color: #829dc5, $alpha: 0.25);
     }
 }
+
+.stop__div {
+    width: 90%;
+    height: 80%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+}
+
+i, .stop__div {
+    font-size: 3em;
+}

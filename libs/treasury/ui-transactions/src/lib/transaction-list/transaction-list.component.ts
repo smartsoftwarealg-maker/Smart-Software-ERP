@@ -64,7 +64,6 @@ import { AppArchiveMainComponent } from '@ss/common/app-archive';
     ]
 })
 export class TransactionListComponent extends BaseEntityListComponent<TTransaction> implements OnInit {
-    #archiveSrv = inject(AppArchiveService);
     #journalSrv = inject(UserJournalsService);
 
     private readonly CASH_COLS = [
