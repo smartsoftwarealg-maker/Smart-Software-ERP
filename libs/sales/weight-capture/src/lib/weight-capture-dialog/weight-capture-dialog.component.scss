@@ -1,0 +1,49 @@
+mat-card {
+    border-radius: 1.4em;
+    max-height: 100%;
+    max-width: 100%;
+    margin: auto 0;
+    padding: 1em;
+}
+
+.ctrl-div {
+    display: flex;
+    justify-content: space-between;
+    max-width: 100%;
+    margin: 0 auto;
+    padding-bottom: 1em;
+}
+
+.text {
+    font-size: 4em;
+}
+
+input {
+    font-weight: bold;
+    background: black;
+    color: #00FF00 !important;
+    padding-left: 10px;
+    width: 100%;
+    height: fit-content;
+}
+
+.date {
+    font-size: 3em;
+}
+
+mat-label {
+    font-size: 1.5em;
+}
+
+.table.full-width {
+    width: 100%;
+    table-layout: fixed;
+}
+
+.table th,
+.table td {
+    padding: 8px;
+    text-align: left;
+    vertical-align: top;
+    border: 1px solid #ccc; /* optional */
+}
