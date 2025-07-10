@@ -69,6 +69,7 @@ export interface AppContext {
     description?: string;
     verified: boolean;
     email?: string;
+    rightsCenter?: number;
 }
 
 export interface ESender {

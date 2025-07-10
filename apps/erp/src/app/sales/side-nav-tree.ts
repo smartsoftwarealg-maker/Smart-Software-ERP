@@ -1,7 +1,7 @@
 import {
     ABS_ADMINISTRATION_WORKFLOW_INBOX_URL,
-    ABS_FINANCE_CPAYMENTS, ABS_PRICE_LIST_URL,
-    ABS_SALES_AGENT_URL,
+    ABS_FINANCE_CPAYMENTS, ABS_LOGISTICS_CUSTOMER_URL, ABS_PRICE_LIST_URL,
+    ABS_SALES_AGENT_URL, ABS_SALES_CUSTOMER_URL,
     ABS_SALES_DASHBOARD_URL,
     ABS_SALES_DELIVERY_CANCEL_URL,
     ABS_SALES_DELIVERY_URL, ABS_SALES_EXPORT_INVOICE_URL,
@@ -23,6 +23,12 @@ export const salesNavTree: SideNavNode = {
             icon: 'fas fa-user',
             route: ABS_SALES_AGENT_URL,
             accessRights: 'Agent'
+        },
+        {
+            name: 'LOGISTICS_CUSTOMER',
+            icon: 'fa-solid fa-cart-shopping',
+            route: ABS_SALES_CUSTOMER_URL,
+            accessRights: 'Customer'
         },
         {
             name: 'STOCK_PRICE_LIST',

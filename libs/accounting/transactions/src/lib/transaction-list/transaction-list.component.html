@@ -36,15 +36,15 @@
                 <mat-radio-button value="2" translate>COMMON_ARCHIVE</mat-radio-button>
             </mat-radio-group>
         </mat-card>
-        <div class="transactions">
+        <div class="transactions" >
             <div class="container_div">
-                <mat-table mat-table [dataSource]="data" class="main-table" matSort (matSortChange)="sort($event)">
+                <mat-table mat-table [dataSource]="data" class="main-table" matSort (matSortChange)="sort($event)" [class.disabled]="!isRoot() || processing()">
 
-                    <ng-container matColumnDef="pieceNo">
+                    <ng-container matColumnDef="pieceNo" >
                         <mat-header-cell *matHeaderCellDef mat-sort-header [disabled]="!isRoot() || processing()"
                                          translate>COMMON_NO_
                         </mat-header-cell>
-                        <mat-cell *matCellDef="let e" [class.f-warn]="math.abs(e.debit - e.credit) > 0.01">
+                        <mat-cell *matCellDef="let e" [class.f-warn]="math.abs(e.debit - e.credit) > 0.01" >
                             {{ e.pieceNo }}
                         </mat-cell>
                     </ng-container>

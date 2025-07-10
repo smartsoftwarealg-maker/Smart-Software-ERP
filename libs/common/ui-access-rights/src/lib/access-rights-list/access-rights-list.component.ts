@@ -12,7 +12,7 @@ import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import {AccessRightsService} from '@ss/common/api-access-rights';
 import {LookupsService, RoleService} from '@ss/common/api-lookup';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
-import { FormControl, FormGroup, UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { FormControl, FormGroup, UntypedFormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {switchMap} from 'rxjs/operators';
 import {Observable} from 'rxjs';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
@@ -86,9 +86,10 @@ export class AccessRightsListComponent extends BaseEntityListComponent<AccessRig
         canDelete: new FormControl(false)
     });
     displayedColumns = ['roleId', 'read', 'write', 'edit', 'delete'];
+    hasCenterRights = signal(false);
 
     constructor(
-        private loginSrv: LoginService,
+        public loginSrv: LoginService,
         public rightsSrv: AccessRightsService,
         public override shellSrv: ShellService,
         public override snackBarSrv: SnackBarService,
@@ -110,6 +111,7 @@ export class AccessRightsListComponent extends BaseEntityListComponent<AccessRig
             pagPersistSrv,
             'COMMON_ACCESS_RIGHTS');
         this.pagination.pageSize = 15;
+        this.hasCenterRights.set((this.loginSrv.appCtx.rightsCenter||0) !== this.loginSrv.appCtx.center);
     }
 
     override ngOnInit() {

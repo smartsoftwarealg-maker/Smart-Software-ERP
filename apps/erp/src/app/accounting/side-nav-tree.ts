@@ -193,4 +193,4 @@ export const accountingNavTree: SideNavNode = {
             accessRights: 'Dashboard'
         },
     ]
-}
+};

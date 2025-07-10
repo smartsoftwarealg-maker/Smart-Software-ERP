@@ -68,5 +68,6 @@
     "CIRCULAR_BOM":                  "Circular BOM",
     "MISSING_BOM":                   "Missing BOM for this part",
     "EXPIRED_BOM":                   "This BOM has expired",
-    "CLOSED_PERIOD":                 "This period is closed. No further modification is allowed."
+    "CLOSED_PERIOD":                 "This period is closed. No further modification is allowed.",
+    "NOT_ALLOWED_HERE":               "This operation is not allowed here"
 }
