@@ -110,6 +110,7 @@ export class TransactionLinesDetailComponent implements OnInit {
 
     readonly isClosed = this.fileSrv.accFile.closed;
     saveDisabled = signal(true);
+    saving = signal(false);
 
     constructor(
         public entitySrv: AccTransactionLineService,
@@ -236,7 +237,7 @@ export class TransactionLinesDetailComponent implements OnInit {
         });
     }
 
-    private goBack() {
+    protected goBack() {
         this.router.navigate(['..'], { relativeTo: this.route }).then();
     }
 
@@ -250,6 +251,7 @@ export class TransactionLinesDetailComponent implements OnInit {
         //     console.log(old, val.balance, val.debit, val.credit);
         // }
         if (this.entitySrv.getParentId() != null) {
+            this.saving.set(true);
             const val = this.form.getRawValue();
             val.balance = val.debit || 0 - val.credit || 0;
             val.id = this.id;
@@ -270,6 +272,7 @@ export class TransactionLinesDetailComponent implements OnInit {
                     this.goBack();
                 },
                 error: err => {
+                    this.saving.set(false);
                     this.snackBarSrv.showFailureMessage();
                     throw err;
                 }

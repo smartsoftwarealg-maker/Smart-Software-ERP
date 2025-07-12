@@ -47,7 +47,7 @@
                 }
                 @if (showReference2()) {
                     <mat-form-field class="default-50">
-                        <mat-label> <span translate>COMMON_REFERENCE</span> 2</mat-label>
+                        <mat-label><span translate>COMMON_REFERENCE</span> 2</mat-label>
                         <input matInput formControlName="reference2" type="text">
                     </mat-form-field>
                 }
@@ -108,25 +108,27 @@
                 </mat-form-field>
             </form>
         }
-        <div class="ctrl default-100">
-            <button mat-flat-button
-                    color="primary"
-                    (click)="save()"
-                    [matTooltip]="('COMMON_CANCEL' | translate)  + ' (ALT+s)'"
-                    [disabled]="saveDisabled()">
-                <i class="fas fa-save"></i>
-                <span translate> COMMON_SAVE </span>
-            </button>
-            @if (!isClosed) {
+        @if (!saving()) {
+            <div class="ctrl default-100">
                 <button mat-flat-button
-                        color="warn"
-                        [matTooltip]="('COMMON_CANCEL' | translate)  + ' (ALT+c)'"
-                        (click)="goBack()">
-                    <i class="fas fa-redo"></i>
-                    <span translate> COMMON_CANCEL </span>
+                        color="primary"
+                        (click)="save()"
+                        [matTooltip]="('COMMON_CANCEL' | translate)  + ' (ALT+s)'"
+                        [disabled]="saveDisabled()">
+                    <i class="fas fa-save"></i>
+                    <span translate> COMMON_SAVE </span>
                 </button>
-            }
-        </div>
+                @if (!isClosed) {
+                    <button mat-flat-button
+                            color="warn"
+                            [matTooltip]="('COMMON_CANCEL' | translate)  + ' (ALT+c)'"
+                            (click)="goBack()">
+                        <i class="fas fa-redo"></i>
+                        <span translate> COMMON_CANCEL </span>
+                    </button>
+                }
+            </div>
+        }
         <!--        <div>valid: {{form?.valid}}</div>-->
         <!--        <pre>{{form?.value | json }}</pre>-->
     </mat-card-content>
