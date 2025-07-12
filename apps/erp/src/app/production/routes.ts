@@ -34,7 +34,7 @@ import {
 } from '@ss/production/production';
 import { loginGuard } from '../erp-guards';
 import { MrpComponent, ProductionConsumptionComponent } from '@ss/production/mrp';
-import { Bom2DetailComponent, Bom2ListComponent, BomListComponent } from '@ss/master-data/ui-article';
+import { Bom2DetailComponent, Bom2ListComponent } from '@ss/master-data/ui-article';
 import {
     ArticleTypeDetailComponent,
     ArticleTypeListComponent,

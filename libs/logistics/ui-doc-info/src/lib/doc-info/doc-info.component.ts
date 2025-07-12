@@ -125,7 +125,7 @@ export class DocInfoComponent {
                 },
                 {
                     name: 'stock',
-                    description: 'LOGISTICS_STOCK',
+                    description: 'STOCK_STOCK',
                     url: 'stock',
                     paramsProvided: (p: string[]) => p.includes('articleReference')
                 },
