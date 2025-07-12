@@ -25,5 +25,7 @@
     "DUPLICATION":  "Duplication",
     "COMPLEMENT_INVOICE": "Complément facture",
     "COMPLEMENT_CANCEL": "Annulation Complément",
-    "EXPORT_INVOICE":       "Facture d'exportation"
+    "EXPORT_INVOICE":       "Facture d'exportation",
+    "TARE_WEIGHT":      "Poids à vide",
+    "BRUT_WEIGHT":      "Poids brut"
 }
