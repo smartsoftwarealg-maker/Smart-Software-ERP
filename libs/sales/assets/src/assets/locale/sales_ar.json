@@ -25,5 +25,7 @@
     "DUPLICATION":  "نسخ",
     "COMPLEMENT_INVOICE": "تكملة الفاتورة",
     "COMPLEMENT_CANCEL": "تكملة الإلغاء",
-    "EXPORT_INVOICE":       "فاتورة تصدير"
+    "EXPORT_INVOICE":       "فاتورة تصدير",
+    "TARE_WEIGHT":      "الوزن الصافي",
+    "BRUT_WEIGHT":      "الوزن الخام"
 }

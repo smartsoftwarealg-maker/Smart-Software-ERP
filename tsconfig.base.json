@@ -630,6 +630,9 @@
             "@ss/sales/ui-transactionlines": [
                 "libs/sales/ui-transactionlines/src/index.ts"
             ],
+            "@ss/sales/weight-capture": [
+                "libs/sales/weight-capture/src/index.ts"
+            ],
             "@ss/scheduled-sales/api-scheduled-sales": [
                 "libs/scheduled-sales/api-scheduled-sales/src/index.ts"
             ],

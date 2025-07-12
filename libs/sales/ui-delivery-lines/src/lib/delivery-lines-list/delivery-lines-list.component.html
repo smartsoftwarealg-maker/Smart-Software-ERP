@@ -19,6 +19,8 @@
                     color="warn">
                 <span class="fas fa-trash-alt"></span>
             </button>
+            <ss-weight-capture-dialog-button-dialog
+                    [transactionId]="selectedId"></ss-weight-capture-dialog-button-dialog>
         }
     </div>
 
@@ -93,10 +95,11 @@
                     <button mat-icon-button (click)="edit()">
                         <span class="fas fa-pen"></span>
                     </button>
-                    <button mat-icon-button (click)="deleteSelected()"
-                            *ngIf="e.qtySatisfied < 0.001">
-                        <span class="fas fa-trash-alt"></span>
-                    </button>
+                    @if (e.qtySatisfied < 0.001) {
+                        <button mat-icon-button (click)="deleteSelected()">
+                            <span class="fas fa-trash-alt"></span>
+                        </button>
+                    }
                 </mat-cell>
             </ng-container>
 
@@ -111,9 +114,8 @@
     <div class="doc-info">
         @if (selectedId) {
             <ss-doc-info
-                *ngIf="selectedId"
-                [displayedGroups]="['article', 'document']"
-                [params]="{
+                    [displayedGroups]="['article', 'document']"
+                    [params]="{
                     documentId: selectedRow?.transacId,
                     detailId: selectedId,
                     documentURL:'/inventory',
