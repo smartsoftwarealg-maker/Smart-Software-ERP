@@ -73,16 +73,7 @@ export class WeightCaptureDialogComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit(): void {
-        this.weightCaptureSrv.getBalanceUrl().subscribe({
-            next: (res) => {
-                this.balanceTruckSrv.setBalanceUrl(res.url);
-                this.readTruckScale();
-            },
-            error: (err) => {
-                this.snackBarSrv.showFailureMessage();
-                throw err;
-            },
-        });
+        this.readTruckScale();
     }
 
     ngOnDestroy(): void {
