@@ -20,5 +20,8 @@
     "PRODUCT_TYPE":          "Type de Produit",
     "UPDATE_DATE":           "Date de mise à jour",
     "CANCEL_PRODUCTION":     "Annuler la production",
-    "LOT_PRIORITY":          "Priorité du lot"
+    "LOT_PRIORITY":          "Priorité du lot",
+    "RM":                     "MP",
+    "SF":                     "SF",
+    "FP":                     "PF"
 }

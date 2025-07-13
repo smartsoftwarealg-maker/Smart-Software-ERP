@@ -28,7 +28,7 @@ import {
 import { PaginationComponent } from '@ss/common/ui-pagination';
 import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
 import { TranslatePipe } from '@ss/common/ui-lang';
-import {WeightCaptureDialogButtonComponent} from "@ss/sales/weight-capture";
+import {WeightCaptureDialogButtonComponent} from '@ss/sales/weight-capture';
 
 
 @Component({

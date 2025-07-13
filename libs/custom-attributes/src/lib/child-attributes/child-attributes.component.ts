@@ -120,7 +120,7 @@ export class ChildAttributesComponent implements OnInit, OnDestroy {
                             this.childAttributes = this.childAttributes.filter(e => e.id !== id);
                         }
                     }
-                })
+                });
         }
     }
 
@@ -134,51 +134,51 @@ export class ChildAttributesComponent implements OnInit, OnDestroy {
 
     saveAttribute() {
         switch (this.attributeType) {
-            case this.attribSrv.TEXT:
-                this.selectedAttribute.stringVal  = this.selectedAttributeCtrl.value;
-                this.selectedAttribute.numericVal = null;
-                this.selectedAttribute.lookupVal  = null;
-                this.selectedAttribute.dateVal    = null;
-                break;
+        case this.attribSrv.TEXT:
+            this.selectedAttribute.stringVal  = this.selectedAttributeCtrl.value;
+            this.selectedAttribute.numericVal = null;
+            this.selectedAttribute.lookupVal  = null;
+            this.selectedAttribute.dateVal    = null;
+            break;
 
-            case this.attribSrv.DECIMAL:
-                this.selectedAttribute.numericVal = this.selectedAttributeCtrl.value;
-                this.selectedAttribute.stringVal  = null;
-                this.selectedAttribute.lookupVal  = null;
-                this.selectedAttribute.dateVal    = null;
-                break;
+        case this.attribSrv.DECIMAL:
+            this.selectedAttribute.numericVal = this.selectedAttributeCtrl.value;
+            this.selectedAttribute.stringVal  = null;
+            this.selectedAttribute.lookupVal  = null;
+            this.selectedAttribute.dateVal    = null;
+            break;
 
-            case this.attribSrv.LOOKUP:
-                this.selectedAttribute.lookupVal  = this.selectedAttributeCtrl.value;
-                this.selectedAttribute.stringVal  = null;
-                this.selectedAttribute.numericVal = null;
-                this.selectedAttribute.dateVal    = null;
-                break;
+        case this.attribSrv.LOOKUP:
+            this.selectedAttribute.lookupVal  = this.selectedAttributeCtrl.value;
+            this.selectedAttribute.stringVal  = null;
+            this.selectedAttribute.numericVal = null;
+            this.selectedAttribute.dateVal    = null;
+            break;
 
-            case this.attribSrv.DATE:
-                this.selectedAttribute.dateVal   = this.selectedAttributeCtrl.value;
-                this.selectedAttribute.lookupVal = null;
-                this.selectedAttribute.stringVal = null;
-                this.selectedAttribute.numericVal = null;
-                break;
+        case this.attribSrv.DATE:
+            this.selectedAttribute.dateVal   = this.selectedAttributeCtrl.value;
+            this.selectedAttribute.lookupVal = null;
+            this.selectedAttribute.stringVal = null;
+            this.selectedAttribute.numericVal = null;
+            break;
         }
 
         switch (this._parentId) {
-            case PARENT_ARTICLE:
-                this.selectedAttribute.articleId = this.childAttribSrv.getParentId();
-                break;
+        case PARENT_ARTICLE:
+            this.selectedAttribute.articleId = this.childAttribSrv.getParentId();
+            break;
 
-            case PARENT_ASSET:
-                this.selectedAttribute.assetId = this.childAttribSrv.getParentId();
-                break;
+        case PARENT_ASSET:
+            this.selectedAttribute.assetId = this.childAttribSrv.getParentId();
+            break;
 
-            case PARENT_AGENT:
-                this.selectedAttribute.agentId = this.childAttribSrv.getParentId();
-                break;
+        case PARENT_AGENT:
+            this.selectedAttribute.agentId = this.childAttribSrv.getParentId();
+            break;
 
-            case PARENT_TRANSAC:
-                this.selectedAttribute.transacId = this.childAttribSrv.getParentId();
-                break;
+        case PARENT_TRANSAC:
+            this.selectedAttribute.transacId = this.childAttribSrv.getParentId();
+            break;
         }
         if (!this.selectedAttribute.id) {
             this.selectedAttribute.attribCode = this.attributeCtrl.value?.id;

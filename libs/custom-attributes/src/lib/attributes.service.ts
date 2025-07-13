@@ -4,10 +4,11 @@ import {ATTRIB_MODULES_URL, ATTRIB_TEMPL_URL, AttribTempl, AttribVal} from './at
 import {HttpService} from '@ss/common/api-common';
 import {Lookup} from '@ss/common/api-lookup';
 import {HttpParams} from '@angular/common/http';
-import {Observable, tap} from 'rxjs';
+import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
+
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class AttributesService extends BaseEntityService<AttribTempl> {
     readonly TEXT    = 1;
@@ -36,15 +37,14 @@ export class AttributesService extends BaseEntityService<AttribTempl> {
 
     constructor(protected override httpSrv: HttpService) {
         super(httpSrv, ATTRIB_TEMPL_URL, ATTRIB_MODULES_URL);
-        this.setParentId(0);
     }
 
     getValueList(id: number,
-                 page: number,
-                 pageSize: number,
-                 filter?: string,
-                 sortBy?: string,
-                 extraPrams?: HttpParams): Observable<{ itemCount: number; body: AttribVal[] }> {
+        page: number,
+        pageSize: number,
+        filter?: string,
+        sortBy?: string,
+        extraPrams?: HttpParams): Observable<{ itemCount: number; body: AttribVal[] }> {
         return this.httpSrv.getData<AttribVal>(`/attributes/${id}/values`, page, pageSize, filter, sortBy, extraPrams);
     }
 
@@ -53,13 +53,14 @@ export class AttributesService extends BaseEntityService<AttribTempl> {
     }
 
     saveLookupValue(v: AttribVal): Observable<number> {
+        console.log(v);
         return v.id?
-         this.httpSrv
-            .put(`/attributes/${v.code}/values`, v)
-            .pipe(map((res: { count: number }) => res.count)):
-         this.httpSrv
-            .post(`/attributes/${v.code}/values`, v)
-            .pipe(map((res: { id: number }) => res.id));
+            this.httpSrv
+                .put(`/attributes/${v.code}/values`, v)
+                .pipe(map((res: { count: number }) => res.count)):
+            this.httpSrv
+                .post(`/attributes/${v.code}/values`, v)
+                .pipe(map((res: { id: number }) => res.id));
     }
 
     getChildAttributes(parentId: number): Observable<AttribTempl[]> {
@@ -68,8 +69,8 @@ export class AttributesService extends BaseEntityService<AttribTempl> {
             .pipe(map(res => res.body));
     }
 
-    attributeList(modeuleId: number, attribType: number): Observable<AttribTempl[]> {
-        this.setParentId(modeuleId);
+    attributeList(moduleId: number, attribType: number): Observable<AttribTempl[]> {
+        this.setParentId(moduleId);
         return this.getList(0, 50)
             .pipe(map(res => res.body.filter(e => e.attType === attribType)));
     }

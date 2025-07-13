@@ -1,66 +1,78 @@
 <div class="container">
-    <form *ngIf="form !== null" novalidate [formGroup]="form">
-        <mat-form-field floatLabel="always" class="default-50 small-100">
-            <mat-label translate>ADMINISTRATION_MODULE</mat-label>
-            <mat-select formControlName="moduleId" required>
-                <mat-option *ngFor="let t of entitySrv.modules" [value]="t.id">
-                    {{ t.description | translate }}
-                </mat-option>
-            </mat-select>
-        </mat-form-field>
+    @if (form !== null) {
+        <form novalidate [formGroup]="form">
+            <mat-form-field floatLabel="always" class="default-50 small-100">
+                <mat-label translate>ADMINISTRATION_MODULE</mat-label>
+                <mat-select formControlName="moduleId" required>
+                    @for (t of entitySrv.modules; track t.id) {
+                        <mat-option [value]="t.id">
+                            {{ t.description | translate }}
+                        </mat-option>
+                    }
+                </mat-select>
+            </mat-form-field>
 
-        <mat-form-field id="description" class="default-50 small-100">
-            <mat-label translate>ADMINISTRATION_DESCRIPTION</mat-label>
-            <input matInput formControlName="description" type="text" required>
-            <mat-error *ngIf="form.controls['description'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
-        </mat-form-field>
+            <mat-form-field id="description" class="default-50 small-100">
+                <mat-label translate>ADMINISTRATION_DESCRIPTION</mat-label>
+                <input matInput formControlName="description" type="text" required>
+                @if (form.controls['description'].invalid) {
+                    <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+                }
+            </mat-form-field>
 
-        <mat-form-field floatLabel="always" class="default-50 small-100">
-            <mat-label translate>COMMON_TYPE</mat-label>
-            <mat-select formControlName="attType" required>
-                <mat-option *ngFor="let t of entitySrv.attributeTypes" [value]="t.id">
-                    {{ t.description | translate }}
-                </mat-option>
-            </mat-select>
-        </mat-form-field>
-    </form>
-    <div class="value-div" *ngIf="isLookupType  || form?.controls['attType']?.value === entitySrv.LOOKUP">
-        <div mat-subheader class="b-primary" translate> {{ 'ADMINISTRATION_LOOKUP_VALUES' }}</div>
-    </div>
-    <div class="list-div" *ngIf="isLookupType  || form?.controls['attType']?.value === entitySrv.LOOKUP">
-        <mat-list>
-            <mat-list-item *ngFor="let a of lookupValues"
-                           (click)="selectValue(a)"
-                           class="selectable"
-                           [class.selected]="a.id === selectedValue?.id">
-                {{ a.description }}
-            </mat-list-item>
-        </mat-list>
-    </div>
-    <div class="ctrl-div" *ngIf="isLookupType || form?.controls['attType']?.value === entitySrv.LOOKUP">
-        <mat-form-field class="default-100">
-            <mat-label translate>ADMINISTRATION_LOOKUP_VALUES</mat-label>
-            <input matInput [formControl]="selectedItem" type="text">
-        </mat-form-field>
-        <div class="btn-div">
-            <button mat-mini-fab color="primary"
-                    matTooltip="{{'COMMON_ADD' | translate}}"
-                    (click)="addItem()">
-                <i class="fas fa-add"></i>
-            </button>
-            <button mat-mini-fab
-                    [disabled]="!selectedValue || !selectedValue.id"
-                    matTooltip="{{'COMMON_DELETE' | translate}}"
-                    (click)="deleteItem()">
-                <i class="fas fa-minus" (click)="deleteItem()"></i>
-            </button>
-            <button mat-mini-fab
-                    color="primary"
-                    [disabled]="!selectedValue || !selectedItem.value"
-                    matTooltip="{{'COMMON_SAVE' | translate}}"
-                    (click)="saveItem()">
-                <i class="fas fa-save">
-                </i></button>
+            <mat-form-field floatLabel="always" class="default-50 small-100">
+                <mat-label translate>COMMON_TYPE</mat-label>
+                <mat-select formControlName="attType" required>
+                    @for (t of entitySrv.attributeTypes; track t.id) {
+                        <mat-option [value]="t.id">
+                            {{ t.description | translate }}
+                        </mat-option>
+                    }
+                </mat-select>
+            </mat-form-field>
+        </form>
+    }
+    @if (isLookupType  || form?.controls['attType']?.value === entitySrv.LOOKUP && form?.controls['id'].value > 0) {
+        <mat-toolbar class="value-div" color="primary">
+            <div mat-subheader translate> {{ 'ADMINISTRATION_LOOKUP_VALUES' }}</div>
+        </mat-toolbar>
+        <div class="list-div">
+            <mat-list>
+                @for (a of lookupValues; track a.id) {
+                    <mat-list-item
+                        (click)="selectValue(a)"
+                        class="selectable"
+                        [class.selected]="a.id === selectedValue?.id">
+                        {{ a.description }}
+                    </mat-list-item>
+                }
+            </mat-list>
         </div>
-    </div>
+        <div class="ctrl-div">
+            <mat-form-field class="default-100">
+                <mat-label translate>ADMINISTRATION_LOOKUP_VALUES</mat-label>
+                <input matInput [formControl]="selectedItem" type="text">
+            </mat-form-field>
+            <div class="btn-div">
+                <button mat-mini-fab color="primary"
+                        matTooltip="{{'COMMON_ADD' | translate}}"
+                        (click)="addItem()">
+                    <i class="fas fa-add"></i>
+                </button>
+                <button mat-mini-fab
+                        [disabled]="!selectedValue || !selectedValue.id"
+                        matTooltip="{{'COMMON_DELETE' | translate}}"
+                        (click)="deleteItem()">
+                    <i class="fas fa-minus" (click)="deleteItem()"></i>
+                </button>
+                <button mat-mini-fab
+                        color="primary"
+                        [disabled]="!selectedValue || !selectedItem.value"
+                        matTooltip="{{'COMMON_SAVE' | translate}}"
+                        (click)="saveItem()">
+                    <i class="fas fa-save">
+                    </i></button>
+            </div>
+        </div>
+    }
 </div>

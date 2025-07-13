@@ -13,7 +13,7 @@ import {
     LOGISTICS_ARTICLES_URL,
     STOCK_ARTICLE_URL,
     PURCHASE_RECEPTION_CANCELLATION_URL,
-    IMPORT_PURCHASE_RECEPTION_URL, ADMIN_REPORT_RIGHTS_URL, PRICE_REQUEST_URL
+    IMPORT_PURCHASE_RECEPTION_URL, ADMIN_REPORT_RIGHTS_URL, PRICE_REQUEST_URL, LOGISTICS_SUPPLIER_URL
 } from '../common';
 import {
     PurchaseOrderDetailComponent,
@@ -65,6 +65,8 @@ import {
     PriceRequestDetailComponent, PriceRequestLinesDetailComponent,
     PriceRequestLinesListComponent
 } from '@ss/purchases/preiceRequest';
+import { AgentDetailComponent, AgentListComponent } from '@ss/logistics/ui-agent';
+import { AGENT_ARCHIVES, AppArchiveDetailComponent, AppArchiveListComponent } from '@ss/common/app-archive';
 
 export const routes: Routes = [
     {
@@ -318,6 +320,40 @@ export const routes: Routes = [
         path: ADMIN_REPORT_RIGHTS_URL,
         component: ReportRightsComponent,
         data: {reportBase: 'purchases'},
+    },
+    {
+        path: LOGISTICS_SUPPLIER_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: AgentListComponent,
+                canActivate: [loginGuard],
+                data: {sales: true, supplier: true },
+                children: docInfoRoutes
+            },
+            {
+                path: ':id',
+                children: [
+                    {
+                        path: '',
+                        component: AgentDetailComponent,
+                        canActivate: [loginGuard],
+                        canDeactivate: [CanDeactivateService],
+                        data: {sales: true, supplier: true },
+                        children: [
+                            { path: '', redirectTo: 'archive', pathMatch: 'full'},
+                            {
+                                path: 'archive',
+                                children: [
+                                    {path: '', component: AppArchiveListComponent, pathMatch: 'full', data: { appId: AGENT_ARCHIVES } },
+                                    {path: ':id', component: AppArchiveDetailComponent, data: { appId: AGENT_ARCHIVES }},
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+        ]
     },
     {
         path: STOCK_ARTICLE_URL,

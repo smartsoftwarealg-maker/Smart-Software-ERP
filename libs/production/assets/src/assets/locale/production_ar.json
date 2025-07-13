@@ -21,5 +21,8 @@
     "PRODUCT_TYPE":           "نوع المنتج",
     "UPDATE_DATE":           "تاريخ التحديث",
     "CANCEL_PRODUCTION":      "الغاء الانتاج",
-    "LOT_PRIORITY": "أولويات الحصص"
+    "LOT_PRIORITY": "أولويات الحصص",
+    "RM":                     "م.أ",
+    "SF":                     "ن.ن",
+    "FP":                     "م.ن"
 }
