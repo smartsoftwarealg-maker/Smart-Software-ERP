@@ -1,9 +1,13 @@
-import { Component, inject, Input } from '@angular/core';
+import { Component, inject, Input, OnInit, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialog } from '@angular/material/dialog';
 import { TruckStatus } from '../weight-capture-api';
-import { WeightCaptureDialogComponent } from '@ss/sales/weight-capture';
+import {
+    WeightCaptureDialogComponent,
+    WeightCaptureService,
+} from '@ss/sales/weight-capture';
+import { BalanceService } from '../balance.service';
 
 @Component({
     selector: 'ss-weight-capture-dialog-button-dialog',
@@ -12,10 +16,26 @@ import { WeightCaptureDialogComponent } from '@ss/sales/weight-capture';
     templateUrl: './weight-capture-dialog-button.component.html',
     styleUrl: './weight-capture-dialog-button.component.scss',
 })
-export class WeightCaptureDialogButtonComponent {
+export class WeightCaptureDialogButtonComponent implements OnInit {
     @Input() transactionId = 0;
 
     private dialog = inject(MatDialog);
+
+    private weightCaptureSrv = inject(WeightCaptureService);
+    private balanceTruckSrv = inject(BalanceService);
+    isUrlExist = signal(false);
+
+    ngOnInit() {
+        this.weightCaptureSrv.getBalanceUrl().subscribe({
+            next: (res) => {
+                if (res.url.length > 0) {
+                    this.balanceTruckSrv.setBalanceUrl(res.url);
+                    this.isUrlExist.set(true);
+                }
+            },
+            error: () => {},
+        });
+    }
 
     public openTareDialog() {
         const tare: TruckStatus = { id: this.transactionId, type: 'tare' };
