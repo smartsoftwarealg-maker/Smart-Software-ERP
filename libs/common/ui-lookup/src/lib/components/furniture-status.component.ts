@@ -8,7 +8,6 @@ import { UntypedFormBuilder, UntypedFormGroup, Validators, FormsModule, Reactive
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import { MaterialModule, PaginatorPersistenceService } from '@ss/common/api-common';
 import { MatCard } from '@angular/material/card';
-import { NgIf } from '@angular/common';
 import { MatFormField, MatLabel } from '@angular/material/form-field';
 import { TranslateDirective } from '@ss/common/ui-lang';
 import { MatInput } from '@angular/material/input';
@@ -47,18 +46,18 @@ export class FurnitureStatusListComponent extends BaseEntityListComponent<Lookup
     templateUrl: '../base-templates/detail-template.html',
     styleUrls: ['../base-templates/detail-template.scss'],
     standalone: true,
-    imports: [MaterialModule, MatCard, NgIf, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput]
+    imports: [MaterialModule, MatCard, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput]
 })
 export class FurnitureStatusDetailComponent extends BaseEntityDetailComponent<Lookup> {
 
     constructor(
-        public statusSrv: FurnitureStatusService,
+        public entitySrv: FurnitureStatusService,
         public override shellSrv: ShellService,
         public override snackBarSrv: SnackBarService,
         public override route: ActivatedRoute,
         public override confirmationSrv: ConfirmationDialogService,
         public override formBuilder: UntypedFormBuilder) {
-        super(statusSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'COMMON_STATUS');
+        super(entitySrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'COMMON_STATUS');
     }
 
     public override setupForm(e: Lookup): UntypedFormGroup {

@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
-import { FuelTypeService, Lookup, Wilaya } from '@ss/common/api-lookup';
+import { FuelTypeService, Lookup } from '@ss/common/api-lookup';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import { UntypedFormBuilder, UntypedFormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
@@ -12,7 +12,6 @@ import { MatSort, MatSortHeader } from '@angular/material/sort';
 import { TranslateDirective } from '@ss/common/ui-lang';
 import { PaginationComponent } from '@ss/common/ui-pagination';
 import { MatCard } from '@angular/material/card';
-import { NgIf } from '@angular/common';
 import { MatFormField, MatLabel } from '@angular/material/form-field';
 import { MatInput } from '@angular/material/input';
 
@@ -47,20 +46,20 @@ export class FuelTypeListComponent extends BaseEntityListComponent<Lookup> {
     templateUrl: '../base-templates/detail-template.html',
     styleUrls: ['../base-templates/detail-template.scss'],
     standalone: true,
-    imports: [MaterialModule, MatCard, NgIf, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput]
+    imports: [MaterialModule, MatCard, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput]
 })
 export class FuelTypeDetailComponent extends BaseEntityDetailComponent<Lookup> {
 
     constructor(
-        public wilayaSrv: FuelTypeService,
+        public override entitySrv: FuelTypeService,
         public override shellSrv: ShellService,
         public override snackBarSrv: SnackBarService,
         public override route: ActivatedRoute,
         public override confirmationSrv: ConfirmationDialogService,
         public override formBuilder: UntypedFormBuilder) {
-        super(wilayaSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'PARK_FUELS');
+        super(entitySrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'PARK_FUELS');
     }
-    public override setupForm(e: Wilaya): UntypedFormGroup {
+    public override setupForm(e: Lookup): UntypedFormGroup {
         return this.formBuilder.group({
             id: e.id,
             description: [e.description, Validators.required],

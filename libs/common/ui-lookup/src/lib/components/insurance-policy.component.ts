@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import { Lookup, Mark, MarkService } from '@ss/common/api-lookup';
+import { Lookup, Mark } from '@ss/common/api-lookup';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {BaseEntityDetailComponent, BaseEntityListComponent} from '@ss/common/ui-base-entity';
@@ -13,7 +13,6 @@ import { MatSort, MatSortHeader } from '@angular/material/sort';
 import { TranslateDirective } from '@ss/common/ui-lang';
 import { PaginationComponent } from '@ss/common/ui-pagination';
 import { MatCard } from '@angular/material/card';
-import { NgIf } from '@angular/common';
 import { MatFormField, MatLabel } from '@angular/material/form-field';
 import { MatInput } from '@angular/material/input';
 
@@ -29,7 +28,7 @@ export class InsurancePolicyListComponent extends BaseEntityListComponent<Lookup
     displayedColumns = ['description', 'descriptionAr'];
 
     constructor(
-        public markSrv: InsurancePolicyService,
+        public entitySrv: InsurancePolicyService,
         public override shellSrv: ShellService,
         public override snackBarSrv: SnackBarService,
         public override route: ActivatedRoute,
@@ -37,7 +36,7 @@ export class InsurancePolicyListComponent extends BaseEntityListComponent<Lookup
         public override defReportSrv: DefaultReportService,
         public override router: Router,
         public override pagPersistSrv: PaginatorPersistenceService) {
-        super(markSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv, 'PARK_POLICIES');
+        super(entitySrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv, 'PARK_POLICIES');
     }
 }
 
@@ -46,7 +45,7 @@ export class InsurancePolicyListComponent extends BaseEntityListComponent<Lookup
     templateUrl: '../base-templates/detail-template.html',
     styleUrls: ['../base-templates/detail-template.scss'],
     standalone: true,
-    imports: [MaterialModule, MatCard, NgIf, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput]
+    imports: [MaterialModule, MatCard, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput]
 })
 export class InsurancePolicyDetailComponent extends BaseEntityDetailComponent<Lookup> {
 

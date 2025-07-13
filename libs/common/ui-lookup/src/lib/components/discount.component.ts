@@ -8,7 +8,6 @@ import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import {BaseEntityDetailComponent, BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import { MaterialModule, PaginatorPersistenceService } from '@ss/common/api-common';
 import { MatCard } from '@angular/material/card';
-import { NgIf } from '@angular/common';
 import { MatFormField, MatLabel } from '@angular/material/form-field';
 import { TranslateDirective } from '@ss/common/ui-lang';
 import { MatInput } from '@angular/material/input';
@@ -49,18 +48,18 @@ export class DiscountListComponent extends BaseEntityListComponent<Lookup> {
     templateUrl: '../base-templates/detail-template.html',
     styleUrls: ['../base-templates/detail-template.scss'],
     standalone: true,
-    imports: [MaterialModule, MatCard, NgIf, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput]
+    imports: [MaterialModule, MatCard, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput]
 })
 export class DiscountDetailComponent extends BaseEntityDetailComponent<Lookup> {
 
     constructor(
-        public discountSrv: DiscountService,
+        public override entitySrv: DiscountService,
         public override shellSrv: ShellService,
         public override snackBarSrv: SnackBarService,
         public override route: ActivatedRoute,
         public override confirmationSrv: ConfirmationDialogService,
         public override formBuilder: UntypedFormBuilder) {
-        super(discountSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'COMMON_EDIT_ACTIVITY');
+        super(entitySrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'COMMON_EDIT_ACTIVITY');
     }
 
     public override setupForm(e: Activity): UntypedFormGroup {
