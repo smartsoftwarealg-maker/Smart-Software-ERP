@@ -44,29 +44,30 @@ export class AttributesListComponent extends BaseEntityListComponent<AttribTempl
         public override confirmationSrv: ConfirmationDialogService,
         public override pagPersistSrv: PaginatorPersistenceService) {
         super(entitySrv,
-              shellSrv,
-              snackBarSrv,
-              route,
-              router,
-              confirmationSrv,
-              defReportSrv,
-              pagPersistSrv,
+            shellSrv,
+            snackBarSrv,
+            route,
+            router,
+            confirmationSrv,
+            defReportSrv,
+            pagPersistSrv,
             'ADMINISTRATION_ATTRIBUTES');
         this.pagination.pageSize = 10;
+        entitySrv.setParentId(1);
     }
 
     override ngOnInit() {
         super.ngOnInit();
         this.subscription =
             this.moduleId
-            .valueChanges
-            .pipe(
-                debounceTime(300),
-                distinctUntilChanged()
-            ).subscribe(id => {
-                this.entitySrv.setParentId(id);
-                this.refresh();
-            });
+                .valueChanges
+                .pipe(
+                    debounceTime(300),
+                    distinctUntilChanged()
+                ).subscribe(id => {
+                    this.entitySrv.setParentId(id);
+                    this.refresh();
+                });
     }
 
     override ngOnDestroy() {

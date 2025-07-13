@@ -35,12 +35,19 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 })
 export class ProductionArticleListComponent extends BaseEntityListComponent<Article> implements OnInit {
     private typeSrv = inject(ArticleTypeService);
-    private STOCK_COLS = ['image', 'reference', 'description2', 'classDescription', 'subClassDescription', 'articleType','packagingDescription', 'unitDescription'];
-    private SALES_COLS = ['image', 'reference', 'description2', 'classDescription', 'subClassDescription', 'articleType','packagingDescription', 'unitDescription'];
+    private STOCK_COLS = ['image', 'reference', 'description2', 'classDescription', 'packagingDescription', 'unitDescription', 'productType'];
+
+    readonly PROD_TYPES  = [
+        '',
+        'PROD_RM',
+        'PROD_SF',
+        'PROD_FP'
+    ];
 
     typeMap = new Map<number, string>();
     filterCtrl = new FormControl<number>(this.entitySrv.getParentId());
     displayedColumns = this.STOCK_COLS;
+
 
     constructor(
         public articleSrv: ArticleService,
@@ -68,11 +75,6 @@ export class ProductionArticleListComponent extends BaseEntityListComponent<Arti
 
     override ngOnInit() {
         super.ngOnInit();
-        this.route
-            .paramMap
-            .subscribe(res => {
-                this.displayedColumns = res.get('price') === 'price1'? this.SALES_COLS : this.STOCK_COLS;
-            });
 
         this.typeSrv
             .getList(0, 500)

@@ -38,6 +38,7 @@ export class SalesCategoryListComponent extends BaseEntityListComponent<Category
         public override router: Router,
         public override pagPersistSrv: PaginatorPersistenceService) {
         super(listSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv,'COMMON_CATEGORIES');
+        this.pagination.pageSize = 15;
     }
 }
 
@@ -47,7 +48,7 @@ export class SalesCategoryListComponent extends BaseEntityListComponent<Category
     templateUrl: '../base-templates/detail-template.html',
     styleUrls: ['../base-templates/detail-template.scss'],
     standalone: true,
-    imports: [MaterialModule, MatCard, NgIf, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput]
+    imports: [MaterialModule, MatCard, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput]
 })
 export class SalesCategoryDetailComponent extends BaseEntityDetailComponent<Activity> {
 

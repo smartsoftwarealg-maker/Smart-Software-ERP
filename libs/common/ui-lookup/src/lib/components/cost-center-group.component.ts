@@ -10,7 +10,7 @@ import { MaterialModule, PaginatorPersistenceService } from '@ss/common/api-comm
 import { CommonModule } from '@angular/common';
 
 import { PaginationComponent } from '@ss/common/ui-pagination';
-import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
+import { TranslateDirective } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-cc-group-list',

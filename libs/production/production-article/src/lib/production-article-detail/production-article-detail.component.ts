@@ -1,6 +1,6 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
-import {Article, ArticleService} from '@ss/master-data/api-article';
+import { Article, ARTICLE_FINAL_PRODUCT, ARTICLE_SEMI_FINAL, ArticleService } from '@ss/master-data/api-article';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import {tap} from 'rxjs/operators';
 import {Observable} from 'rxjs';
@@ -11,8 +11,7 @@ import {
     LookupsService,
     MarkService, SubclassService,
     UnitService,
-    Vat,
-    VatService
+    Vat
 } from '@ss/common/api-lookup';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {  ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
@@ -27,6 +26,7 @@ import { BomService } from '@ss/master-data/ui-article';
 import { DosageUnitService } from '../services/dosage-unit.service';
 import { PackagingUnitService } from '../services/packaging-unit.service';
 import { ProductTypeService } from '../services/product-type.service';
+import { ChildAttributesComponent } from '@ss/custom-attributes';
 
 @Component({
     selector: 'ss-production-article-detail',
@@ -43,7 +43,8 @@ import { ProductTypeService } from '../services/product-type.service';
         ArticleStoreComponent,
         TranslatePipe,
         ChildBomComponent,
-    ],
+        ChildAttributesComponent
+    ]
 })
 export class ProductionArticleDetailComponent
     extends BaseEntityDetailComponent<Article>
@@ -74,9 +75,10 @@ export class ProductionArticleDetailComponent
 
     vats: Vat[];
     selectedRow: Article;
+    hasBoom = signal(false);
 
     constructor(
-        public articleSrv: ArticleService,
+        public entitySrv: ArticleService,
         public override shellSrv: ShellService,
         public override snackBarSrv: SnackBarService,
         public override route: ActivatedRoute,
@@ -87,7 +89,7 @@ export class ProductionArticleDetailComponent
         public router: Router,
     ) {
         super(
-            articleSrv,
+            entitySrv,
             shellSrv,
             snackBarSrv,
             route,
@@ -96,6 +98,7 @@ export class ProductionArticleDetailComponent
             'STOCK_EDIT_ARTICLE',
         );
         this.imageModel = new ImageModel(this.httpSrv);
+        this.productTypeLookup.onObjectSelected = t => this.hasBoom.set(t?.id === ARTICLE_SEMI_FINAL || t?.id === ARTICLE_FINAL_PRODUCT);
     }
 
     public override preload(): Observable<Vat[]> {
@@ -109,9 +112,10 @@ export class ProductionArticleDetailComponent
 
     public override setupForm(a: Article) {
         // Make sure to update the template if you edit the configuration here
-        this.imageModel.setImageUrl(this.articleSrv.getPhotoUrl(a.id), false);
+        this.imageModel.setImageUrl(this.entitySrv.getPhotoUrl(a.id), false);
         this.aid = a.id;
-        this.bomSrv.setParentId(a.id)
+        this.bomSrv.setParentId(a.id);
+        this.hasBoom.set(a?.productType === ARTICLE_SEMI_FINAL || a?.productType === ARTICLE_FINAL_PRODUCT);
         return this.formBuilder.group({
             description2: [a.description2, Validators.required],
             id:           [a.id],
@@ -123,7 +127,7 @@ export class ProductionArticleDetailComponent
             purchaseUnit: [a.purchaseUnit],
             price1:       [a.price1 || 0],
             reference:    [a.reference, Validators.required],
-            appId:        [a.appId || this.articleSrv.getParentId()],
+            appId:        [a.appId || this.entitySrv.getParentId()],
             notForSale:   [a.notForSale || false, Validators.required],
             vat:          [a.vat],
             vat2:         [a.vat2],
@@ -137,7 +141,7 @@ export class ProductionArticleDetailComponent
     }
 
     override uploadAttachments(id: number): Observable<any> {
-        this.imageModel.setBackendUrl(this.articleSrv.getPhotoUrl(id));
+        this.imageModel.setBackendUrl(this.entitySrv.getPhotoUrl(id));
         return this.imageModel.submit('file');
     }
 }

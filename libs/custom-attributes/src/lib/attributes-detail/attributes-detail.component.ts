@@ -1,7 +1,7 @@
-import { Component} from '@angular/core';
+import { Component, DestroyRef, inject } from '@angular/core';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
-import {ActivatedRoute} from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { UntypedFormBuilder, UntypedFormControl, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {LookupsService} from '@ss/common/api-lookup';
@@ -9,7 +9,6 @@ import {AttribTempl, AttribVal} from '../attributes';
 import {AttributesService} from '../attributes.service';
 import {PaginationModel} from '@ss/common/api-common';
 import {of, switchMap} from 'rxjs';
-import { NgIf, NgFor } from '@angular/common';
 import { MatFormField, MatLabel, MatError } from '@angular/material/form-field';
 import { TranslateDirective } from '@ss/common/ui-lang';
 import { MatSelect } from '@angular/material/select';
@@ -19,15 +18,37 @@ import { MatListSubheaderCssMatStyler, MatList, MatListItem } from '@angular/mat
 import { MatMiniFabButton } from '@angular/material/button';
 import { MatTooltip } from '@angular/material/tooltip';
 import { TranslatePipe } from '@ss/common/ui-lang';
+import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { MatToolbar } from '@angular/material/toolbar';
 
 @Component({
     selector: 'ss-attributes-detail',
     templateUrl: './attributes-detail.component.html',
     styleUrls: ['./attributes-detail.component.scss'],
     standalone: true,
-    imports: [NgIf, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatSelect, NgFor, MatOption, MatInput, MatError, MatListSubheaderCssMatStyler, MatList, MatListItem, MatMiniFabButton, MatTooltip, TranslatePipe]
+    imports: [
+        FormsModule,
+        ReactiveFormsModule,
+        MatFormField,
+        MatLabel,
+        TranslateDirective,
+        MatSelect,
+        MatOption,
+        MatInput,
+        MatError,
+        MatListSubheaderCssMatStyler,
+        MatList,
+        MatListItem,
+        MatMiniFabButton,
+        MatTooltip,
+        TranslatePipe,
+        MatToolbar
+    ]
 })
 export class AttributesDetailComponent extends BaseEntityDetailComponent<AttribTempl> {
+    private router  = inject(Router);
+    private destroyRef = inject(DestroyRef);
     private paginator = PaginationModel.newInstance({ page: 1, pageSize: 5, elementCount: 0});
     private parentId = 0;
     lookupValues: AttribVal[] = [];
@@ -49,14 +70,23 @@ export class AttributesDetailComponent extends BaseEntityDetailComponent<AttribT
 
     public override setupForm(b: AttribTempl) {
         const form = this.formBuilder.group({
-            id: [b.id],
-            attType: [{ value: b.attType, disabled: false}, Validators.required],
-            moduleId: [b.moduleId, Validators.required],
-            description: [b.description, Validators.required],
+            id:          [b.id],
+            attType:     [{ value: b.attType, disabled: false }, Validators.required],
+            moduleId:    [b.moduleId, Validators.required],
+            description: [b.description, Validators.required]
         });
         this.parentId = b.id;
         this.isLookupType = b.attType === this.entitySrv.LOOKUP;
         this.loadLookupValues();
+        form.controls['moduleId']
+            .valueChanges
+            .pipe(
+                debounceTime(300),
+                distinctUntilChanged(),
+                takeUntilDestroyed(this.destroyRef)
+            ).subscribe(id => {
+                this.entitySrv.setParentId(id);
+            });
         return form;
     }
 
@@ -112,12 +142,19 @@ export class AttributesDetailComponent extends BaseEntityDetailComponent<AttribT
                     this.selectedItem.setValue('');
                     this.snackBarSrv.showSuccessMessage();
                 }
-            })
+            });
     }
 
     override readForm(): AttribTempl {
         const value = super.readForm();
         value.attType = this.lookupValues.length > 0? this.entitySrv.LOOKUP : value.attType;
         return value;
+    }
+
+    override ngOnInit() {
+        super.ngOnInit();
+        if (!this.entitySrv.getParentId()) {
+            this.router.navigate(['..'], { relativeTo: this.route }).then();
+        }
     }
 }

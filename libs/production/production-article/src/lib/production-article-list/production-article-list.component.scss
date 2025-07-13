@@ -48,9 +48,11 @@
     padding-left: 8px !important;
 }
 
+.mat-column-productType,
 .mat-column-price1,
 .mat-column-awp {
     flex: 0 0 90px;
+    justify-content: center;
     padding-right: 8px !important;
 }
 

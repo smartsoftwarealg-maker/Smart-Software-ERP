@@ -78,13 +78,13 @@
                         </ss-auto-complete>
                     </mat-form-field>
 
-                    <mat-form-field class="default-25 sm-50">
-                        <mat-label translate>COMMON_TYPE</mat-label>
-                        <ss-auto-complete matInput
-                                          [model]="typeLookup"
-                                          formControlName="articleType">
-                        </ss-auto-complete>
-                    </mat-form-field>
+                    <!--                    <mat-form-field class="default-25 sm-50">-->
+                    <!--                        <mat-label translate>COMMON_TYPE</mat-label>-->
+                    <!--                        <ss-auto-complete matInput-->
+                    <!--                                          [model]="typeLookup"-->
+                    <!--                                          formControlName="articleType">-->
+                    <!--                        </ss-auto-complete>-->
+                    <!--                    </mat-form-field>-->
 
                     <mat-form-field class="default-25 sm-50">
                         <mat-label translate>PROD_PRODUCT_TYPE</mat-label>
@@ -93,7 +93,6 @@
                                           formControlName="productType">
                         </ss-auto-complete>
                     </mat-form-field>
-
                     <mat-form-field class="default-25 sm-50">
                         <mat-label translate>STOCK_UNIT</mat-label>
                         <ss-auto-complete matInput
@@ -154,14 +153,23 @@
 <div class="size_container">
     <mat-tab-group class="size">
         <mat-tab label="{{ 'STOCK_STORE' | translate }}">
-            <ss-article-store *ngIf="selectedRow && selectedRow.id !== 0"
-                              [article]="selectedRow">
-            </ss-article-store>
-        </mat-tab>
-        <mat-tab label="{{ 'PROD_BOM' | translate }}">
-            @if (form != null) {
-                <ss-child-bom></ss-child-bom>
+            @if (selectedRow && selectedRow.id !== 0) {
+                <ss-article-store [article]="selectedRow"></ss-article-store>
             }
         </mat-tab>
+        @if (hasBoom()) {
+            <mat-tab label="{{ 'PROD_BOM' | translate }}">
+                <ss-child-bom></ss-child-bom>
+            </mat-tab>
+        }
+        <mat-tab label="{{ 'ADMINISTRATION_ATTRIBUTES' | translate }}">
+            <div class="filler"></div>
+            <ss-child-attributes [childAttribute]="'/articles'"
+                                 [attributeId]="id"
+                                 [parentId]="1"
+                                 [editable]="isEditable">
+            </ss-child-attributes>
+        </mat-tab>
+
     </mat-tab-group>
 </div>

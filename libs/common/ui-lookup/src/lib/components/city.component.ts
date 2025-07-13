@@ -13,7 +13,6 @@ import { MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, Ma
 import { TranslateDirective } from '@ss/common/ui-lang';
 import { PaginationComponent } from '@ss/common/ui-pagination';
 import { MatCard } from '@angular/material/card';
-import { NgIf } from '@angular/common';
 import { MatFormField, MatLabel, MatError } from '@angular/material/form-field';
 import { MatInput } from '@angular/material/input';
 import { Dir } from '@angular/cdk/bidi';
@@ -51,7 +50,7 @@ export class CityListComponent extends BaseEntityListComponent<City> {
     templateUrl: '../city/city-detail.component.html',
     styleUrls: ['../base-templates/detail-template.scss'],
     standalone: true,
-    imports: [MaterialModule, MatCard, NgIf, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, MatError, Dir, UiAutoCompleteComponent]
+    imports: [MaterialModule, MatCard, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, MatError, Dir, UiAutoCompleteComponent]
 })
 export class CityDetailComponent extends BaseEntityDetailComponent<City> {
     private wilayaSrv  = inject(WilayaService);

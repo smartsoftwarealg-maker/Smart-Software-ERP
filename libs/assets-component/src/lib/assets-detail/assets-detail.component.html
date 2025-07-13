@@ -3,12 +3,16 @@
         <mat-form-field id="reference" class="default-25 sm-50">
             <mat-label translate>COMMON_REFERENCE</mat-label>
             <input matInput formControlName="reference" type="text" autofocus maxlength="32" required>
-            <mat-error *ngIf="form.controls['reference']?.hasError('maxlength')" [translate]="{maxLen: 32}">
-                COMMON_FIELD_MAX_LENGTH
-            </mat-error>
-            <mat-error *ngIf="form.controls['reference']?.hasError('minlength')" [translate]="{minLen: minLength}">
-                COMMON_FIELD_MIN_LENGTH
-            </mat-error>
+            @if (form.controls['reference']?.hasError('maxlength')) {
+                <mat-error [translate]="{maxLen: 32}">
+                    COMMON_FIELD_MAX_LENGTH
+                </mat-error>
+            }
+            @if (form.controls['reference']?.hasError('minlength')) {
+                <mat-error [translate]="{minLen: minLength}">
+                    COMMON_FIELD_MIN_LENGTH
+                </mat-error>
+            }
         </mat-form-field>
         <mat-form-field id="reference2" class="default-25 sm-50">
             <mat-label>
@@ -16,26 +20,26 @@
                 2
             </mat-label>
             <input matInput formControlName="reference2" type="text" maxlength="20">
-            <mat-error *ngIf="form.controls['reference2'].invalid" translate>COMMON_FIELD_MAX_LENGTH</mat-error>
+            @if (form.controls['reference2'].invalid) {
+                <mat-error translate>COMMON_FIELD_MAX_LENGTH</mat-error>
+            }
         </mat-form-field>
 
         <mat-form-field id="description" class="default-50 sm-100">
             <mat-label translate>ADMINISTRATION_DESCRIPTION</mat-label>
             <input matInput formControlName="description" type="text" required>
-            <mat-error *ngIf="form.controls['description'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
+            @if (form.controls['description'].invalid) {
+                <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+            }
         </mat-form-field>
 
         <mat-form-field id="serial_no" class="default-50 sm-100">
             <mat-label translate>ASSET_SERIAL_NUMBER</mat-label>
             <input matInput formControlName="serial_no" type="text" maxlength="50">
-            <mat-error *ngIf="form.controls['serial_no'].invalid" translate>COMMON_FIELD_MAX_LENGTH</mat-error>
+            @if (form.controls['serial_no'].invalid) {
+                <mat-error translate>COMMON_FIELD_MAX_LENGTH</mat-error>
+            }
         </mat-form-field>
-
-        <!--        <mat-form-field id="accountno" class="default-50 sm-100">-->
-        <!--            <mat-label translate>LOGISTICS_ACCOUNT_NO</mat-label>-->
-        <!--            <input matInput formControlName="accountno" type="text" required>-->
-        <!--            <mat-error *ngIf="form.controls['accountno'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>-->
-        <!--        </mat-form-field>-->
 
         <mat-form-field class="default-50 sm-100">
             <mat-label translate>LOGISTICS_ACCOUNT_NO</mat-label>
@@ -73,7 +77,7 @@
                 <input matInput formControlName="building" type="text" readonly>
             </mat-form-field>
 
-            <div class="default-50 sm-100" *ngIf="isAQS">
+            <div class="default-50 sm-100">
                 <mat-form-field>
                     <mat-label translate>ASSET_BENEFICIARY</mat-label>
                     <ss-auto-complete matInput
@@ -83,6 +87,7 @@
                 </mat-form-field>
             </div>
         }
+
         <mat-form-field class="default-50 sm-50">
             <mat-label translate>COMMON_COST_CENTER</mat-label>
             <ss-auto-complete matInput
@@ -113,7 +118,9 @@
             <ss-auto-complete matInput
                               [model]="statusAutoCompleteModel"
                               formControlName="status"></ss-auto-complete>
-            <mat-error *ngIf="form.controls['status'].invalid" translate>COMMON_STATUS</mat-error>
+            @if (form.controls['status'].invalid) {
+                <mat-error translate>COMMON_STATUS</mat-error>
+            }
         </mat-form-field>
 
         <mat-form-field id="comment" class="default-50 sm-100">
@@ -121,13 +128,14 @@
             <input matInput formControlName="comment" type="text">
         </mat-form-field>
 
-
-        <div class="default-50 sm-100 qr" *ngIf="!isAQS">
-            <mat-form-field class="count_div">
-                <mat-label translate>ASSET_ITEM_COUNT</mat-label>
-                <input matInput formControlName="itemCount" type="number">
-            </mat-form-field>
-        </div>
+        @if (!isAQS) {
+            <div class="default-50 sm-100 qr">
+                <mat-form-field class="count_div">
+                    <mat-label translate>ASSET_ITEM_COUNT</mat-label>
+                    <input matInput formControlName="itemCount" type="number">
+                </mat-form-field>
+            </div>
+        }
 
         <mat-tab-group (selectedIndexChange)="showPanel($event)" [dynamicHeight]="true">
             <mat-tab label="{{ 'ASSET_DEPRECIATION' | translate }}" >
@@ -145,21 +153,27 @@
                 <mat-form-field class="default-25 sm-50">
                     <mat-label translate>ASSET_ACQUISITION_VALUE</mat-label>
                     <input matInput formControlName="acquisitionValue" type="number" required>
-                    <mat-error *ngIf="form.controls['acquisitionValue'].invalid" translate>COMMON_FIELD_REQUIRED
-                    </mat-error>
+                    @if (form.controls['acquisitionValue'].invalid) {
+                        <mat-error translate>COMMON_FIELD_REQUIRED
+                        </mat-error>
+                    }
                 </mat-form-field>
 
                 <mat-form-field class="default-25 sm-50">
                     <mat-label translate>ASSET_HISTORIC_VALUE</mat-label>
                     <input matInput formControlName="historicValue" type="number">
-                    <mat-error *ngIf="form.controls['historicValue'].invalid" translate>COMMON_FIELD_REQUIRED
-                    </mat-error>
+                    @if (form.controls['historicValue'].invalid) {
+                        <mat-error translate>COMMON_FIELD_REQUIRED
+                        </mat-error>
+                    }
                 </mat-form-field>
 
                 <mat-form-field class="default-25 sm-50">
                     <mat-label translate>LOGISTICS_VAT</mat-label>
                     <input matInput formControlName="vat" type="number" required>
-                    <mat-error *ngIf="form.controls['vat'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
+                    @if (form.controls['vat'].invalid) {
+                        <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+                    }
                 </mat-form-field>
 
                 <mat-form-field class="default-25 sm-50">
@@ -171,12 +185,13 @@
                     </mat-select>
                 </mat-form-field>
 
-
                 <mat-form-field class="default-25 sm-50">
                     <mat-label translate>ACC_DEPRECIATION_RATE</mat-label>
                     <input matInput formControlName="depreciationRate" type="number" required>
-                    <mat-error *ngIf="form.controls['depreciationRate'].invalid" translate>COMMON_FIELD_REQUIRED
-                    </mat-error>
+                    @if (form.controls['depreciationRate'].invalid) {
+                        <mat-error translate>COMMON_FIELD_REQUIRED
+                        </mat-error>
+                    }
                 </mat-form-field>
 
                 <mat-form-field class="default-25 sm-50">
@@ -197,14 +212,15 @@
                 <mat-form-field class="default-25 sm-50">
                     <mat-label translate>ACC_USEFUL_LIFE</mat-label>
                     <input matInput formControlName="useful_life" type="number" required>
-                    <mat-error *ngIf="form.controls['useful_life'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
+                    @if (form.controls['useful_life'].invalid) {
+                        <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+                    }
                 </mat-form-field>
 
                 <mat-form-field class="default-25 sm-50">
                     <mat-label translate>ASSET_RESERVICE_DATE</mat-label>
                     <ss-date-picker formControlName="reserviceDate"></ss-date-picker>
                 </mat-form-field>
-
             </mat-tab>
             <mat-tab label="{{ 'COMMON_PURCHASE' | translate }}">
                 <div class="filler"></div>
@@ -254,7 +270,6 @@
                     <ss-date-picker formControlName="orderDate"></ss-date-picker>
                 </mat-form-field>
 
-
                 <mat-form-field class="default-25 sm-50">
                     <mat-label translate>ASSET_DELIVERY_NUMBER</mat-label>
                     <input matInput formControlName="deliveryNumber" type="text">
@@ -273,7 +288,6 @@
                     <ss-date-picker formControlName="invoiceDate"></ss-date-picker>
                 </mat-form-field>
 
-
                 <mat-form-field class="default-50 sm-100">
                     <mat-label translate>LOGISTICS_SUPPLIER</mat-label>
                     <input matInput formControlName="supplier" type="text">
@@ -283,7 +297,6 @@
                     <mat-label translate>ASSET_ORIGINAL_SUPPLIER</mat-label>
                     <input matInput formControlName="originalSupplier" type="text">
                 </mat-form-field>
-
             </mat-tab>
             <mat-tab label="{{ 'ASSET_EXIT' | translate }}">
                 <div class="filler"></div>
@@ -312,7 +325,6 @@
                     <mat-label translate>ASSET_SALES_PRICE</mat-label>
                     <input matInput formControlName="sales_price" type="number">
                 </mat-form-field>
-
             </mat-tab>
             @if (!isCMMS) {
                 <mat-tab label="{{ 'ASSET_DEPRECIATION' | translate }}">
@@ -320,41 +332,33 @@
                     <div class="depreciation-div">
                         <div class="accountant-div ">
                             <mat-table mat-table [dataSource]="accountantDepreciation" class="accountant-table">
-
-
                                 <ng-container matColumnDef="year">
                                     <mat-header-cell *matHeaderCellDef translate>COMMON_YEAR</mat-header-cell>
                                     <mat-cell *matCellDef="let e">
                                         {{ e.year }}
                                     </mat-cell>
                                 </ng-container>
-
                                 <ng-container matColumnDef="depreciation">
                                     <mat-header-cell *matHeaderCellDef translate>ASSET_DEPRECIATION</mat-header-cell>
                                     <mat-cell *matCellDef="let e">
                                         {{ e.depreciation | number: '1.2-2' }}
                                     </mat-cell>
                                 </ng-container>
-
                                 <ng-container matColumnDef="totalDepreciation">
                                     <mat-header-cell *matHeaderCellDef translate>COMMON_TOTAL</mat-header-cell>
                                     <mat-cell *matCellDef="let e">
                                         {{ e.totalDepreciation | number: '1.2-2' }}
                                     </mat-cell>
                                 </ng-container>
-
                                 <ng-container matColumnDef="remaining">
                                     <mat-header-cell *matHeaderCellDef translate>ASSET_NAC</mat-header-cell>
                                     <mat-cell *matCellDef="let e">
                                         {{ e.remaining | number: '1.2-2' }}
                                     </mat-cell>
                                 </ng-container>
-
-
                                 <mat-header-row *matHeaderRowDef="depreciationColumns; sticky: true"></mat-header-row>
                                 <mat-row *matRowDef="let row; columns: depreciationColumns;"></mat-row>
                             </mat-table>
-
                         </div>
                         <div class="fiscal-div">
                             <div class="filler"></div>
@@ -365,33 +369,27 @@
                                         {{ e.year }}
                                     </mat-cell>
                                 </ng-container>
-
                                 <ng-container matColumnDef="depreciation">
                                     <mat-header-cell *matHeaderCellDef translate>ASSET_DEPRECIATION</mat-header-cell>
                                     <mat-cell *matCellDef="let e">
                                         {{ e.depreciation | number: '1.2-2' }}
                                     </mat-cell>
                                 </ng-container>
-
                                 <ng-container matColumnDef="totalDepreciation">
                                     <mat-header-cell *matHeaderCellDef translate>COMMON_TOTAL</mat-header-cell>
                                     <mat-cell *matCellDef="let e">
                                         {{ e.totalDepreciation | number: '1.2-2' }}
                                     </mat-cell>
                                 </ng-container>
-
                                 <ng-container matColumnDef="remaining">
                                     <mat-header-cell *matHeaderCellDef translate>ASSET_NAC</mat-header-cell>
                                     <mat-cell *matCellDef="let e">
                                         {{ e.remaining | number: '1.2-2' }}
                                     </mat-cell>
                                 </ng-container>
-
-
                                 <mat-header-row *matHeaderRowDef="depreciationColumns; sticky: true"></mat-header-row>
                                 <mat-row *matRowDef="let row; columns: depreciationColumns;"></mat-row>
                             </mat-table>
-
                         </div>
                     </div>
                 </mat-tab>
@@ -425,7 +423,6 @@
                                          [editable]="isEditable">
                     </ss-child-attributes>
                 </mat-tab>
-
                 <mat-tab label="{{ 'ASSET_DEPRECIATION_RATES' | translate }}" >
                     @if (id && activePanel === DEPRECIATION_RATE_ROUT) {
                         <router-outlet></router-outlet>
@@ -438,8 +435,5 @@
                 }
             </mat-tab>
         </mat-tab-group>
-
-        <!--    <pre>{{form?.value | json}} {{ form?.valid}}</pre>-->
-
     </form>
 }

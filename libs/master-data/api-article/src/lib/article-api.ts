@@ -18,6 +18,10 @@ export const SERVICE = 30;
 export const RAW_MATERIAL = 40;
 export const FINAL_PRODUCT = 50;
 
+export const ARTICLE_RAW_MATERIAL = 1;
+export const ARTICLE_SEMI_FINAL = 2;
+export const ARTICLE_FINAL_PRODUCT = 3;
+
 
 
 export interface BOM {
