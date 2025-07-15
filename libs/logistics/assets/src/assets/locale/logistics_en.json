@@ -187,6 +187,8 @@
     "GUARANTEE":             "Guarantee",
     "VF_GUARANTEE":          "VAT free Guarantee",
     "FT_GUARANTEE":          "Full tax guarantee",
-    "PROJECT_BLOCKED":       "Project blocked"
+    "PROJECT_BLOCKED":       "Project blocked",
+    "AGENT_MERGE":           "Agent merge",
+    "MERGE":                 "Merge"
 
 }

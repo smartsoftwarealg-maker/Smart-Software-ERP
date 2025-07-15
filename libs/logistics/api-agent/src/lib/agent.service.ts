@@ -55,7 +55,11 @@ export class AgentService extends BaseAgentClass {
 
     getNextCode(prefix: string, agentType: number): Observable<{ code: string }> {
         const params = new HttpParams().set('prefix', prefix).set('agentType', agentType.toString());
-        return this.httpSrv.get<{ code: string }>(`/agents/next-code`, params);
+        return this.httpSrv.get<{ code: string }>('/agents/next-code', params);
+    }
+
+    merge(data: {oldId: number, newId: number}): Observable<{count: number}> {
+        return this.httpSrv.post('/agents/merge', data);
     }
 
 }

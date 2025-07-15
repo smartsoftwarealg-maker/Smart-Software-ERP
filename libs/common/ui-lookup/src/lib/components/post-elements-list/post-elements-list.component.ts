@@ -4,7 +4,6 @@ import {
     PostElementsService,
     PostService,
 } from '@ss/common/api-lookup';
-import { NgIf } from '@angular/common';
 import { MatMiniFabButton, MatIconButton } from '@angular/material/button';
 import { MatTooltip } from '@angular/material/tooltip';
 import {
@@ -33,7 +32,6 @@ import { PaginationModel } from '@ss/common/api-common';
         MatTooltip,
         TranslatePipe,
         MatMiniFabButton,
-        NgIf,
         MatTable,
         MatColumnDef,
         MatHeaderCell,

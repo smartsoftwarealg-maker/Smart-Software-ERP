@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject, signal, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { MatCard, MatCardContent } from '@angular/material/card';
@@ -18,7 +18,7 @@ import { of, switchMap, tap } from 'rxjs';
     styleUrl: './global-validation.component.scss',
     providers: [ValidationService]
 })
-export class GlobalValidationComponent {
+export class GlobalValidationComponent implements OnInit {
     #snackBarSrv = inject(SnackBarService);
     #confirmationSrv = inject(ConfirmationDialogService);
     #shellSrv = inject(ShellService);
@@ -30,11 +30,14 @@ export class GlobalValidationComponent {
     processing = signal(false);
 
     form = this.#fb.group( {
-        year:  [{ value: this.#today.getMonth() == 12? this.#today.getFullYear() - 1 : this.#today.getFullYear(), disabled: true }],
-        month: [{ value: this.#today.getMonth() == 12? 1 : this.#today.getMonth() - 1, disabled: true }],
+        year:  [{ value: 0, disabled: true }],
+        month: [{ value: 0, disabled: true }],
     });
 
     ngOnInit() {
+        this.#today.setMonth(this.#today.getMonth() - 1);
+        this.form.controls['year'].setValue(this.#today.getFullYear());
+        this.form.controls['month'].setValue(this.#today.getMonth() + 1);
         this.#shellSrv.setTitle('ADMINISTRATION_GLOBAL_VALIDATION');
         this.#shellSrv.setGoBackPath('..', this.#route);
     }

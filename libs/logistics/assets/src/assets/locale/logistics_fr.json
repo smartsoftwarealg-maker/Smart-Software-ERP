@@ -186,5 +186,7 @@
     "GUARANTEE":             "Garantie",
     "VF_GUARANTEE":          "Garantie avant taxes",
     "FT_GUARANTEE":          "Garantie après taxes",
-    "PROJECT_BLOCKED":       "Projet bloqué"
+    "PROJECT_BLOCKED":       "Projet bloqué",
+    "AGENT_MERGE":           "Fusion de tiers",
+    "MERGE":                 "Fusionner"
 }

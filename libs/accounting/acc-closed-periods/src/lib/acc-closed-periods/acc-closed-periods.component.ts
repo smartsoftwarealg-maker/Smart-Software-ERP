@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { HttpService, LanguageService } from '@ss/common/api-common';
@@ -41,7 +41,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     styleUrl: './acc-closed-periods.component.scss',
     standalone: true,
 })
-export class AccClosedPeriodsComponent {
+export class AccClosedPeriodsComponent implements OnInit {
     private route = inject(ActivatedRoute);
     public httpSrv = inject(HttpService);
     public shellSrv = inject(ShellService);

@@ -15,8 +15,6 @@ import {AgentAssetsListComponent} from '@ss/assets-component';
 import { DocumentSourcesComponent } from 'logistics/ui-document-sources';
 import { UiTransactionlineQuantitiesComponent } from '@ss/logistics/quantities';
 import { UiMrpComponent } from '@ss/logistics/ui-mrp';
-import { ProductionConsumptionComponent } from '@ss/production/mrp';
-import { CUSTOMER_URL } from '@ss/logistics/api-agent';
 
 // common
 export const LOOKUPS_URL = 'lookups';
@@ -203,6 +201,7 @@ export const LOGISTICS_CURRENCY_URL = 'currencies';
 export const FURNITURE_STATUS_URL = 'furniture-states';
 export const LOGISTICS_WORKFLOW_URL = 'workflow-messages';
 export const DELIVERY_TIME_URL = 'delivery-times';
+export const LOGISTICS_AGENT_MERGE_URL = 'agent-merge';
 
 
 // Contracts
@@ -688,6 +687,7 @@ export const ABS_LOGISTICS_CATEGORY = '/' + [MAIN_PAGE_URL, LOGISTICS_APP_URL, S
 export const ABS_LOGISTICS_UNITS = '/' + [MAIN_PAGE_URL, LOGISTICS_APP_URL, STOCK_UNITS_URL].join('/');
 export const ABS_LOGISTICS_ORDER_ANOMALIES = '/' + [MAIN_PAGE_URL, LOGISTICS_APP_URL, LOGISTICS_ORDER_ANOMALIES_URL].join('/');
 export const ABS_LOGISTICS_DELIVERY_TIMES = '/' + [MAIN_PAGE_URL, LOGISTICS_APP_URL, DELIVERY_TIME_URL].join('/');
+export const ABS_LOGISTICS_AGENT_MERGE = '/' + [MAIN_PAGE_URL, LOGISTICS_APP_URL, LOGISTICS_AGENT_MERGE_URL].join('/');
 
 // Contracts
 export const ABS_CONTRACTS_PROJECT_TYPE = '/' + [MAIN_PAGE_URL, CONTRACTS_APP_URL,  CONTRACTS_PROJECT_TYPE_URL].join('/');
