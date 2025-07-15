@@ -185,5 +185,7 @@
     "VF_GUARANTEE":          "الضمان قبل الضريبة",
     "FT_GUARANTEE":          "الضمان بعد الضريبة",
     "PROJECT_BLOCKED":       "المشروع محظور",
-    "CREATION_TIME": "تاريخ الإنشاء"
+    "CREATION_TIME": "تاريخ الإنشاء",
+    "AGENT_MERGE":           "الشركاء تجميع",
+    "MERGE":                 "تجميع"
 }

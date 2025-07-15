@@ -91,25 +91,25 @@ export class ImageModel {
 
     public submit(formName: string): Observable<boolean> {
         switch (this.operation) {
-            case Operation.remove:
-                if (this.imageUrl) {
-                    return this.httpSrv.remove(this.imageUrl)
-                        .pipe(
-                            map(() => true)
-                        );
-                }
-                break;
-            case Operation.upload:
-                if (this.imageUrl && this.blob && this.blob.size > 0) {
-                    return this.httpSrv.uploadBlob(this.imageUrl, formName, this.blob)
-                        .pipe(
-                            switchMap(() => {
-                                this.operation = Operation.none;
-                                return of(true);
-                            })
-                        );
-                }
-                break;
+        case Operation.remove:
+            if (this.imageUrl) {
+                return this.httpSrv.remove(this.imageUrl)
+                    .pipe(
+                        map(() => true)
+                    );
+            }
+            break;
+        case Operation.upload:
+            if (this.imageUrl && this.blob && this.blob.size > 0) {
+                return this.httpSrv.uploadBlob(this.imageUrl, formName, this.blob)
+                    .pipe(
+                        switchMap(() => {
+                            this.operation = Operation.none;
+                            return of(true);
+                        })
+                    );
+            }
+            break;
         }
         return of(false);
     }
