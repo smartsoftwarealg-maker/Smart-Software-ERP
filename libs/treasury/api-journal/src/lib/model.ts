@@ -13,7 +13,7 @@ export interface JournalUser {
 
 export interface Journal {
     id: number;
-    description: String,
+    description: string,
     jType: number;
     bankId?: number;
     bankAccount?: string;

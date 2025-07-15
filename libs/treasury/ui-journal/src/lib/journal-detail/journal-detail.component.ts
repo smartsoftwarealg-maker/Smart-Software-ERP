@@ -1,6 +1,6 @@
-import { Component, inject, OnInit } from "@angular/core";
+import { Component, inject, OnInit } from '@angular/core';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
-import { JournalService, Journal, JournalUserService } from "@ss/treasury/api-journal";
+import { JournalService, Journal, JournalUserService } from '@ss/treasury/api-journal';
 import { ActivatedRoute, Router, RouterOutlet } from '@angular/router';
 import { FormBuilder, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
@@ -9,12 +9,12 @@ import { HttpService, LoginService, MaterialModule } from '@ss/common/api-common
 import { Observable } from 'rxjs';
 import { LookupsService, Bank } from '@ss/common/api-lookup';
 import { tap } from 'rxjs/operators';
-import { MatCard } from "@angular/material/card";
-import { MatFormField, MatLabel, MatError } from "@angular/material/form-field";
+import { MatCard } from '@angular/material/card';
+import { MatFormField, MatLabel, MatError } from '@angular/material/form-field';
 import { TranslateDirective } from '@ss/common/ui-lang';
-import { MatInput } from "@angular/material/input";
-import { MatSelect } from "@angular/material/select";
-import { MatOption } from "@angular/material/core";
+import { MatInput } from '@angular/material/input';
+import { MatSelect } from '@angular/material/select';
+import { MatOption } from '@angular/material/core';
 import { TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
@@ -48,7 +48,7 @@ export class JournalDetailComponent extends BaseEntityDetailComponent<Journal> i
 
     public override preload(): Observable<any> {
         return this.lookupsSrv.getBanks()
-            .pipe(tap(x => { this.banks = x }));
+            .pipe(tap(x => { this.banks = x; }));
     }
 
     override loadEntity(id: number): Observable<Journal> {

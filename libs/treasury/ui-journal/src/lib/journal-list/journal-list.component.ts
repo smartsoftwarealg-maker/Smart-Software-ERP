@@ -6,7 +6,6 @@ import { LookupsService } from '@ss/common/api-lookup';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { DefaultReportService } from '@ss/common/ui-default-report-component';
 import { HttpService, PaginatorPersistenceService} from '@ss/common/api-common';
-//import { Observable, of } from 'rxjs';
 import { Journal, JournalService } from '@ss/treasury/api-journal';
 import { MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from '@angular/material/table';
 import { TranslateDirective } from '@ss/common/ui-lang';
@@ -46,11 +45,11 @@ export class JournalListComponent extends BaseEntityListComponent<Journal> imple
         this.pagination.pageSize = 15;
     }
 
-//    public processLoadedData(data: Journal[]): Observable<Journal[]> {
-//        data.forEach(c => {
-//            //c.date = removeTimeForDateStr(ymdToDmy(c.date));
-//        });
-//        return of(data);
-//    }
+    //    public processLoadedData(data: Journal[]): Observable<Journal[]> {
+    //        data.forEach(c => {
+    //            //c.date = removeTimeForDateStr(ymdToDmy(c.date));
+    //        });
+    //        return of(data);
+    //    }
 
 }
