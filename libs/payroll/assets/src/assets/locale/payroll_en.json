@@ -236,5 +236,6 @@
     "HR_GRADING":            "Hr grading",
     "UNPAID_LEAVE":          "Unpaid leave",
     "GRADER":                "Grader",
-    "LOAN_INJECTION":        "Loan injection"
+    "LOAN_INJECTION":        "Loan injection",
+    "LOCK_ACCOUNT_UNTIL":    "Lock the account number until"
 }
