@@ -1,63 +1,79 @@
 <mat-card>
     <mat-card-content>
-        <form *ngIf="form !== null" novalidate [formGroup]="form">
+        @if (form !== null) {
+            <form novalidate [formGroup]="form">
+                <mat-form-field id="defaultCurrency" class="default-50 sm-100">
+                    <mat-label translate>LOGISTICS_CURRENCY</mat-label>
+                    <mat-select formControlName="defaultCurrency" required>
+                        @for (f of currencies; track f.id) {
+                            <mat-option [value]="f.id">{{ f.description }}</mat-option>
+                        }
+                    </mat-select>
+                    @if (form.controls['defaultCurrency'].invalid) {
+                        <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+                    }
+                </mat-form-field>
 
-            <mat-form-field id="defaultCurrency" class="default-50 sm-100">
-                <mat-label translate>LOGISTICS_CURRENCY</mat-label>
-                <mat-select formControlName="defaultCurrency" required>
-                    <mat-option *ngFor="let f of currencies" [value]="f.id">{{f.description}}</mat-option>
-                </mat-select>
-                <mat-error *ngIf="form.controls['defaultCurrency'].invalid" translate>COMMON_FIELD_REQUIRED </mat-error>
-            </mat-form-field>
-
-            <mat-form-field id="evalPrice" class="default-50 sm-100">
-                <mat-label translate>LOGISTICS_evalPrice</mat-label>
-                <mat-select formControlName="evalPrice" required>
-                    <mat-option *ngFor="let f of evalPriceOptions" [value]="f.id" translate>{{f.name}}</mat-option>
-                </mat-select>
-                <mat-error *ngIf="form.controls['evalPrice'].invalid" translate>COMMON_FIELD_REQUIRED </mat-error>
-            </mat-form-field>
+                <mat-form-field id="evalPrice" class="default-50 sm-100">
+                    <mat-label translate>LOGISTICS_EVAL_PRICE</mat-label>
+                    <mat-select formControlName="evalPrice" required>
+                        @for (f of evalPriceOptions; track f.id) {
+                            <mat-option [value]="f.id" translate>{{ f.name }}</mat-option>
+                        }
+                    </mat-select>
+                    <mat-error *ngIf="form.controls['evalPrice'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
+                </mat-form-field>
 
 
-            <mat-form-field class="default-50 sm-100">
-                <mat-label translate>LOGISTICS_MAIN_STORE</mat-label>
-                <ss-auto-complete matInput
-                                  [required]="true"
-                                  [model]="storeAutoCompleteModel"
-                                  formControlName="mainStore">
-                </ss-auto-complete>
-            </mat-form-field>
+                <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>LOGISTICS_MAIN_STORE</mat-label>
+                    <ss-auto-complete matInput
+                                      [required]="true"
+                                      [model]="storeAutoCompleteModel"
+                                      formControlName="mainStore">
+                    </ss-auto-complete>
+                </mat-form-field>
 
-            <mat-form-field class="default-50 sm-100">
-                <mat-label translate>LOGISTICS_PASSING_CLIENT</mat-label>
-                <ss-auto-complete matInput
-                                  [required]="true"
-                                  [model]="customerLookup"
-                                  formControlName="passingClient">
-                </ss-auto-complete>
-            </mat-form-field>
+                <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>STOCK_PRODUCTION_STORE</mat-label>
+                    <ss-auto-complete [required]="true"
+                                      [model]="storeAutoCompleteModel2"
+                                      formControlName="prodStore">
+                    </ss-auto-complete>
+                </mat-form-field>
 
-            <mat-form-field class="default-50 sm-100">
-                <mat-label translate>LOGISTICS_INVENTORY_DATE</mat-label>
-                <ss-date-picker formControlName="inventoryDate"></ss-date-picker>
-            </mat-form-field>
+                <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>LOGISTICS_PASSING_CLIENT</mat-label>
+                    <ss-auto-complete matInput
+                                      [required]="true"
+                                      [model]="customerLookup"
+                                      formControlName="passingClient">
+                    </ss-auto-complete>
+                </mat-form-field>
 
-            <div class="default-50 sm-100" >
-                <mat-checkbox formControlName="usesLots" translate>STOCK_USES_LOTS</mat-checkbox>
-            </div>
+                <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>LOGISTICS_INVENTORY_DATE</mat-label>
+                    <ss-date-picker formControlName="inventoryDate"></ss-date-picker>
+                </mat-form-field>
 
-            <div class="default-50 sm-100" >
-                <mat-checkbox formControlName="checkPrices" translate>LOGISTICS_CHECK_PRICES</mat-checkbox>
-            </div>
+                <div class="default-50 sm-100">
+                    <mat-checkbox formControlName="usesLots" translate>STOCK_USES_LOTS</mat-checkbox>
+                </div>
 
-            <div class="default-50 sm-100" >
-                <mat-checkbox formControlName="returnInvoiceMerge" translate>LOGISTICS_MERGE_INVOICE_SERIES</mat-checkbox>
-            </div>
+                <div class="default-50 sm-100">
+                    <mat-checkbox formControlName="checkPrices" translate>LOGISTICS_CHECK_PRICES</mat-checkbox>
+                </div>
 
-            <div class="default-50 sm-100" >
-                <mat-checkbox formControlName="blockNewLots" translate>STOCK_BLOCK_LOTS</mat-checkbox>
-            </div>
+                <div class="default-50 sm-100">
+                    <mat-checkbox formControlName="returnInvoiceMerge" translate>LOGISTICS_MERGE_INVOICE_SERIES
+                    </mat-checkbox>
+                </div>
 
-        </form>
+                <div class="default-50 sm-100">
+                    <mat-checkbox formControlName="blockNewLots" translate>STOCK_BLOCK_LOTS</mat-checkbox>
+                </div>
+
+            </form>
+        }
     </mat-card-content>
 </mat-card>
