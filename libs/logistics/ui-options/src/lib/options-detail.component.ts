@@ -27,7 +27,7 @@ import { CommonModule } from '@angular/common';
 
 import { DatePickerComponent } from '@ss/common/ui-datepicker';
 import { CustomerService } from '@ss/logistics/api-agent';
-import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
+import { TranslateDirective } from '@ss/common/ui-lang';
 
 interface EvalPrice {
     id: any;
@@ -62,6 +62,8 @@ export class OptionsDetailComponent
 
     currencies: Currency[] = [];
     storeAutoCompleteModel: DefaultAutoCompleteModel<Lot> =
+        new DefaultAutoCompleteModel<Lot>(this.storeNameSrv);
+    storeAutoCompleteModel2: DefaultAutoCompleteModel<Lot> =
         new DefaultAutoCompleteModel<Lot>(this.storeNameSrv);
     customerLookup = new DefaultAutoCompleteModel(
         this.customerSrv,
@@ -103,6 +105,7 @@ export class OptionsDetailComponent
             returnInvoiceMerge: [a.returnInvoiceMerge, Validators.required],
             usesLots: [a.usesLots || false, Validators.required],
             blockNewLots: [a.blockNewLots || false, Validators.required],
+            prodStore: [a.prodStore],
         });
     }
 
