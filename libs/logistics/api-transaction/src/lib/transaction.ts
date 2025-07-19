@@ -149,6 +149,8 @@ export interface  InterStoreTransfer {
     docStatus?: number;
     creationTime: Date;
     validated: boolean;
+    storeId?: number;
+    storeDescription?: string;
 }
 
 export interface InterStoreTransferLine {

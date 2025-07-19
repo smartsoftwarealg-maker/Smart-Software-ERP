@@ -16,58 +16,47 @@
     <mat-card>
         <mat-card-content>
             <form novalidate [formGroup]="form">
-                <mat-form-field class="default-50 sm-100">
+                <mat-form-field class="default-100">
                     <mat-label translate>COMMON_SOURCE_STORE</mat-label>
                     <ss-auto-complete matInput
                                       [required]="true"
                                       [model]="storeLookup"
                                       formControlName="sourceStore">
                     </ss-auto-complete>
-                    @if (form.controls['sourceStore']?.hasError('required')) {
+                    @if (form.controls['sourceStore'].hasError('required')) {
                         <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
                     }
                 </mat-form-field>
 
-                <mat-form-field class="default-50 sm-100">
-                    <mat-label translate>COMMON_DESTINATION_STORE</mat-label>
-                    <ss-auto-complete matInput
-                                      [required]="true"
-                                      [model]="storeLookup2"
-                                      formControlName="destinationStore">
-                    </ss-auto-complete>
-                    @if (form.controls['destinationStore']?.hasError('required')) {
-                        <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
-                    }
-                </mat-form-field>
 
-                <mat-form-field class="default-50 sm-100">
+                <mat-form-field class="default-100">
                     <mat-label translate>COMMON_SOURCE_ARTICLE</mat-label>
                     <ss-auto-complete matInput
                                       [required]="true"
                                       [model]="articleLookup"
                                       formControlName="sourceRef">
                     </ss-auto-complete>
-                    @if (form.controls['sourceRef']?.hasError('required')) {
+                    @if (form.controls['sourceRef'].hasError('required')) {
                         <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
                     }
                 </mat-form-field>
 
-                <mat-form-field class="default-50 sm-100">
-                    <mat-label translate>COMMON_DESTINATION_ARTICLE</mat-label>
-                    <ss-auto-complete matInput
-                                      [required]="true"
-                                      [model]="articleLookup2"
-                                      formControlName="destinationRef">
-                    </ss-auto-complete>
-                    @if (form.controls['destinationRef']?.hasError('required')) {
-                        <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
-                    }
-                </mat-form-field>
+<!--                <mat-form-field class="default-100">-->
+<!--                    <mat-label translate>COMMON_DESTINATION_ARTICLE</mat-label>-->
+<!--                    <ss-auto-complete matInput-->
+<!--                                      [required]="true"-->
+<!--                                      [model]="articleLookup2"-->
+<!--                                      formControlName="destinationRef">-->
+<!--                    </ss-auto-complete>-->
+<!--                    @if (form.controls['destinationRef']?.hasError('required')) {-->
+<!--                        <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>-->
+<!--                    }-->
+<!--                </mat-form-field>-->
 
-                <mat-form-field class="default-50 sm-100">
+                <mat-form-field class="default-50">
                     <mat-label translate>COMMON_QUANTITY</mat-label>
                     <input matInput type="number" formControlName="qty">
-                    @if (form.controls['qty']?.hasError('required')) {
+                    @if (form.controls['qty'].hasError('required')) {
                         <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
                     }
                 </mat-form-field>

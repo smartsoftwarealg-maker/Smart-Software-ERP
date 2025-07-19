@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from "@angular/core";
+import { Component, inject, OnInit } from '@angular/core';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {Observable} from 'rxjs';
@@ -14,14 +14,14 @@ import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import { MaterialModule, PaginatorPersistenceService } from '@ss/common/api-common';
 import {Journal, UserJournalsService} from '@ss/treasury/api-journal';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
-import { MatDatepickerModule } from "@muaazh/angular-datepicker";
-import { MatHint, MatFormField, MatLabel } from "@angular/material/form-field";
+import { MatDatepickerModule } from '@muaazh/angular-datepicker';
+import { MatHint, MatFormField, MatLabel } from '@angular/material/form-field';
 import { TranslateDirective } from '@ss/common/ui-lang';
 import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
-import { MatIconButton } from "@angular/material/button";
-import { MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from "@angular/material/table";
+import { MatIconButton } from '@angular/material/button';
+import { MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from '@angular/material/table';
 import { PaginationComponent } from '@ss/common/ui-pagination';
-import { AsyncPipe, DecimalPipe } from "@angular/common";
+import { AsyncPipe, DecimalPipe } from '@angular/common';
 
 @Component({
     selector: 'ss-bank-expense-list',
@@ -58,14 +58,14 @@ export class BankExpenseListComponent extends BaseEntityListComponent<TTransacti
     private journalSrv = inject(UserJournalsService);
     private readonly CASH_COLS =
         [
-            "description",
-            "agentName",
-            "groupName",
-            "income",
-            "expenses",
-            "pieceno",
-            "groupName",
-            "memo"
+            'description',
+            'agentName',
+            'groupName',
+            'income',
+            'expenses',
+            'pieceno',
+            'groupName',
+            'memo'
         ];
 
     private readonly BANK_COLS = [

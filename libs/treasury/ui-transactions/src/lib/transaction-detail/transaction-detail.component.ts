@@ -5,7 +5,7 @@ import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import { ActivatedRoute, NavigationEnd, Router, RouterOutlet } from '@angular/router';
 import { UntypedFormBuilder, UntypedFormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import {TreasuryGroupService} from '@ss/common/api-lookup';
+import { TreasuryGroupService } from '@ss/common/api-lookup';
 import { LoginService, MaterialModule } from '@ss/common/api-common';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {AgentLookupModel, AgentService} from '@ss/logistics/api-agent';
@@ -84,7 +84,7 @@ export class TransactionDetailComponent extends BaseEntityDetailComponent<TTrans
             centerId:      [e.centerId || this.loginSrv.appCtx.center],
             journalId:     [e.journalId || this.entitySrv.journalId],
             journalDesc:   [{ value: this.entitySrv.journalDescription, disabled: true}],
-            transacDate:   [{ value: e.transacDate || this.entitySrv.date, disabled: true }],
+            transacDate:   [{ value: e.transacDate || this.entitySrv.date, disabled: false }],
             reference:     [{ value: e.reference, disabled: !this.entitySrv.isBank()}],
             reference2:    [{ value: e.reference2, disabled: !this.entitySrv.isBank()}],
             pieceno:       [e.pieceno, Validators.required],
