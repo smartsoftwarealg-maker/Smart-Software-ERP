@@ -418,5 +418,6 @@
     "MS": "Mlle",
     "MARKETING_OPT_IN" : "Accepte de recevoir du marketing",
     "LAST_UPDATE_TIME":   "Heure de la dernière mise à jour",
-    "DESTINATION":        "Destination"
+    "DESTINATION":        "Destination",
+    "ONE_BY_ONE":         "Un par un"
 }

@@ -414,6 +414,7 @@
     "GOT_IT":              "فهمت",
     "PRIORITY":            "الأولوية",
     "LAST_UPDATE_TIME":   "آخر وقت التحديث",
-    "DESTINATION":        "وجهة"
+    "DESTINATION":        "وجهة",
+    "ONE_BY_ONE":         "إضافة عنصر عنصر"
 }
 
