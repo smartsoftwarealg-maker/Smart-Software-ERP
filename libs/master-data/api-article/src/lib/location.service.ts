@@ -3,6 +3,7 @@ import { Location } from './article-api';
 import {BaseEntityExtendedService} from '@ss/common/api-base-entity';
 import { HttpService, PaginationModel } from '@ss/common/api-common';
 import { HttpParams } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 
 @Injectable({
@@ -21,7 +22,7 @@ export class LocationService extends BaseEntityExtendedService<Location> {
         store?: number,
         stock?: number,
         mark?: number,
-        sortBy?: string) {
+        sortBy?: string): Observable<{ itemCount: number; body: Location[] }> {
         const page = pageModel.page - 1;
         const pageSize = pageModel.pageSize;
         const map: {key: string, value: string|number}[] = [
@@ -29,6 +30,7 @@ export class LocationService extends BaseEntityExtendedService<Location> {
             { key: 'stock', value: stock },
             { key: 'mark', value: mark },
             { key: 'find', value: reference },
+
         ];
         const params = map.reduce((p, c) => {
             if (c.value !== undefined && c.value !== null) {
@@ -41,9 +43,8 @@ export class LocationService extends BaseEntityExtendedService<Location> {
             page,
             pageSize,
             filter,
-            sortBy,
+            this.sortColumn,
             params,
         );
     }
-
 }

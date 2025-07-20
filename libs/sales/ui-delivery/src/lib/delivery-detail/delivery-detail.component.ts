@@ -27,7 +27,7 @@ import { DeliveryLinesListComponent } from '@ss/sales/ui-delivery-lines';
     templateUrl: './delivery-detail.component.html',
     styleUrls: ['../../../../../common/assets/src/assets/transac-detail.scss'],
     standalone: true,
-    imports: [MaterialModule, MatCard, MatCardContent, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, NgIf, MatError, DatePickerComponent, UiAutoCompleteComponent, MatTabGroup, MatTab, MatTabLabel, CdkTextareaAutosize, RouterOutlet]
+    imports: [MaterialModule, MatCard, MatCardContent, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, MatError, DatePickerComponent, UiAutoCompleteComponent, MatTabGroup, MatTab, MatTabLabel, CdkTextareaAutosize, RouterOutlet]
 })
 export class DeliveryDetailComponent extends BaseTransactionDetailComponent implements OnInit {
     @ViewChild(DeliveryLinesListComponent) deliveryList: DeliveryLinesListComponent;

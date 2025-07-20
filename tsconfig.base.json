@@ -329,6 +329,9 @@
             "@ss/hr-missions/missions": [
                 "libs/hr-missions/missions/src/index.ts"
             ],
+            "@ss/ligistics/article-search": [
+                "libs/logictics/article-search/src/index.ts"
+            ],
             "@ss/logistics/agent-merge": [
                 "libs/logistics/agent-merge/src/index.ts"
             ],
