@@ -7,7 +7,7 @@ import { MatMiniFabButton } from '@angular/material/button';
 import { MatCard, MatCardContent } from '@angular/material/card';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormField, MatLabel, MatError, MatHint } from '@angular/material/form-field';
-import { TranslateDirective } from '@ss/common/ui-lang';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 import { MatInput } from '@angular/material/input';
 import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { CdkTextareaAutosize } from '@angular/cdk/text-field';
@@ -18,7 +18,7 @@ import { MaterialModule } from '@ss/common/api-common';
     styleUrls: ['../../../../../common/assets/src/assets/transac-lines-detail.scss'],
     templateUrl: './invoice-lines-detail.component.html',
     standalone: true,
-    imports: [MaterialModule, MatMiniFabButton, MatCard, MatCardContent, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, UiAutoCompleteComponent, MatError, MatHint, CdkTextareaAutosize]
+    imports: [MaterialModule, MatMiniFabButton, MatCard, MatCardContent, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, UiAutoCompleteComponent, MatError, MatHint, CdkTextareaAutosize, TranslatePipe]
 })
 export class InvoiceLinesDetailComponent extends BaseTransactionLinesDetailComponent implements OnInit, OnDestroy {
     constructor(

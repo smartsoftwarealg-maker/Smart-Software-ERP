@@ -2,12 +2,11 @@ import { Component, inject, OnInit } from '@angular/core';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { UntypedFormBuilder, Validators } from '@angular/forms';
-import { LookupsService, Lot, LotsService, StoreService } from '@ss/common/api-lookup';
+import { LookupsService, StoreService } from '@ss/common/api-lookup';
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import {
     DefaultAutoCompleteModel,
-    UiAutoCompleteComponent,
 } from '@ss/common/ui-auto-complete';
 import { HttpService, MaterialModule } from '@ss/common/api-common';
 import { CommonModule } from '@angular/common';

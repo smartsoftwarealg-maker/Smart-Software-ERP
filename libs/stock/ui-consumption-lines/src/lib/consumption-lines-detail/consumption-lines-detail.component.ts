@@ -4,11 +4,10 @@ import {
     BaseTransactionLinesDetailComponent, DOC_CONSUMPTION, TransactionLine
 } from '@ss/logistics/api-transaction';
 import { UntypedFormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { NgIf } from '@angular/common';
 import { MatMiniFabButton } from '@angular/material/button';
 import { MatCard, MatCardContent } from '@angular/material/card';
 import { MatFormField, MatLabel, MatError, MatHint } from '@angular/material/form-field';
-import { TranslateDirective } from '@ss/common/ui-lang';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 import { MatInput } from '@angular/material/input';
 import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { CdkTextareaAutosize } from '@angular/cdk/text-field';
@@ -33,7 +32,8 @@ import { CdkTextareaAutosize } from '@angular/cdk/text-field';
         MatError,
         MatHint,
         CdkTextareaAutosize,
-    ],
+        TranslatePipe
+    ]
 })
 export class ConsumptionLinesDetailComponent extends BaseTransactionLinesDetailComponent {
     constructor(

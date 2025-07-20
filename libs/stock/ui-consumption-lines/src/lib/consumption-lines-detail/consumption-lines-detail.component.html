@@ -22,26 +22,6 @@
                 </mat-form-field>
 
                 <mat-form-field class="default-50 sm-100">
-                    <mat-label translate>STOCK_ARTICLE</mat-label>
-                    <ss-auto-complete matInput
-                                      [required]="true"
-                                      [model]="articleLookup"
-                                      formControlName="reference">
-                    </ss-auto-complete>
-                    @if (form.controls['reference'].hasError('required')) {
-                        <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
-                    }
-                    @if (form.controls['reference'].hasError('validOption')) {
-                        <mat-error translate>COMMON_NO_MATCH</mat-error>
-                    }
-                    @if (showStock) {
-                        <mat-hint class="info f-warn">
-                            <span translate>STOCK_STOCK</span>: {{ articleStock }}
-                        </mat-hint>
-                    }
-                </mat-form-field>
-
-                <mat-form-field class="default-50 sm-100">
                     <mat-label translate>STOCK_STORE</mat-label>
                     <ss-auto-complete matInput
                                       [model]="storeLookup"
@@ -50,6 +30,37 @@
                         <mat-error translate>COMMON_NO_MATCH</mat-error>
                     }
                 </mat-form-field>
+
+                <div class="default-50 sm-100">
+                    <mat-form-field style="width: calc(100% - 50px); margin-right: .5em">
+                        <mat-label translate>COMMON_ARTICLE</mat-label>
+                        <ss-auto-complete matInput
+                                          [required]="true"
+                                          [model]="articleLookup"
+                                          formControlName="reference">
+                        </ss-auto-complete>
+
+                        @if (form.controls['reference'].hasError('required')) {
+                            <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+                        }
+                        @if (form.controls['reference'].hasError('validOption')) {
+                            <mat-error translate>COMMON_NO_MATCH</mat-error>
+                        }
+                        @if (showStock) {
+                            <mat-hint class="info f-warn"><span
+                                translate>STOCK_STOCK</span>: {{ articleStock }}
+                            </mat-hint>
+                        }
+                    </mat-form-field>
+                    @let message = ('COMMON_SEARCH' | translate) + " CTRL F";
+                    <button mat-mini-fab
+                            (click)="showSearchDialog()"
+                            color="accent"
+                            [disabled]="form.controls['qtySatisfied'].value > 0.001"
+                            [matTooltip]=message >
+                        <i class="fas fa-search icon"></i>
+                    </button>
+                </div>
 
                 <mat-form-field id="qtyOrdered" class="default-50 sm-100">
                     <mat-label translate>LOGISTICS_QTY_ORDERED</mat-label>

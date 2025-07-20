@@ -16,6 +16,7 @@ export interface TransactionLine {
     position: number;
     pprice: number;
     storeName?: string;
+    storeDescription?: string;
     refDescription?: string;
     document: number;
     charge: number;

@@ -1,0 +1,41 @@
+mat-card {
+    width: 100%;
+    min-width: 900px;
+    padding: 1em;
+    border-radius: 1.4em;
+}
+
+.button__div {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1em;
+}
+
+.table__div {
+    width: 100%;
+    height: 20em;
+    overflow: auto;
+}
+
+.mat-column-expirationDate,
+.mat-column-reference,
+.mat-column-storeName,
+.mat-column-lotNumber {
+    flex: 1 1 120px;
+}
+
+.mat-column-stock {
+    flex: 1 1 100px;
+}
+
+.mat-column-description,
+.mat-column-markDescription {
+    flex: 2 1 150px;
+}
+
+form {
+    margin: .5em auto;
+    width: 100%;
+}
+
+

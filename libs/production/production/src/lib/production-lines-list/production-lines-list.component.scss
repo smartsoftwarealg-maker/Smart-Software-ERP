@@ -49,9 +49,15 @@ mat-table {
     min-width: 100px;
 }
 
+.mat-column-storeDescription {
+    flex: 1 1 150px;
+    padding: 0 4px;
+    border-left: ghostwhite solid 1px;
+}
+
 .mat-column-storeName,
 .mat-column-reference {
-    flex: 1 1 100px;
+    flex: 1 1 120px;
     padding: 0 4px;
     border-left: ghostwhite solid 1px;
 }

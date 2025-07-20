@@ -2,13 +2,20 @@ import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import { ActivatedRoute, Router } from '@angular/router';
 import {UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import {Article, ArticleAutoCompleteModel, ArticleService, LotAutoCompleteModel, QtyPrice} from '@ss/master-data/api-article';
+import {
+    Article,
+    ArticleAutoCompleteModel,
+    ArticleService,
+    Location,
+    LotAutoCompleteModel,
+    QtyPrice
+} from '@ss/master-data/api-article';
 import { LotsService, Lot } from '@ss/common/api-lookup';
 import { Observable, of, switchMap } from 'rxjs';
 import {tap} from 'rxjs/operators';
 import {LoginService} from '@ss/common/api-common';
 import {TransactionLine} from './transaction-line';
-import { Directive, inject, OnInit, signal } from '@angular/core';
+import { Directive, HostListener, inject, OnInit, signal } from '@angular/core';
 import {OptionService} from '@ss/logistics/ui-options';
 import {
     DOC_CONSUMPTION,
@@ -25,6 +32,7 @@ import { DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
 import { MatDialog } from '@angular/material/dialog';
 import { Agent, AgentService } from '@ss/logistics/api-agent';
 import { LotInputDialogComponent } from '@ss/production/lot-input-dialog';
+import { ArticleSearchDlg } from '@ss/ligistics/article-search';
 
 @Directive()
 export abstract class BaseTransactionLinesDetailComponent extends AbstractEntityComponent<TransactionLine> implements OnInit {
@@ -82,7 +90,7 @@ export abstract class BaseTransactionLinesDetailComponent extends AbstractEntity
                 switchMap(() => this.optionSrv.get(this.loginSrv.appCtx.center)),
                 tap(res => {
                     this.mainStore = res.mainStore;
-                    this.usesLots.set(res.usesLots && this.document == DOC_RECEPTION);
+                    this.usesLots.set(res.usesLots);
                 }),
                 switchMap(() => this.entitySrv.getTransaction(this.parentId)),
                 tap(transac => this.agentId = transac.agent),
@@ -313,9 +321,9 @@ export abstract class BaseTransactionLinesDetailComponent extends AbstractEntity
 
     showLotInputDialog() {
         const dialogRef = this.#dialog.open(LotInputDialogComponent, {
-            width: '1000px!important',
-            height: '400px',
-            maxWidth: '1000px',
+            width: '1200px!important',
+            height: '420px',
+            maxWidth: '1200px',
             disableClose: true
         });
         dialogRef
@@ -328,5 +336,31 @@ export abstract class BaseTransactionLinesDetailComponent extends AbstractEntity
                 }
             });
     }
+
+    showSearchDialog() {
+        const dialogRef = this.#dialog.open(ArticleSearchDlg, {
+            width: '900px!important',
+            height: '620px',
+            maxWidth: '900px',
+            disableClose: true
+        });
+        dialogRef
+            .afterClosed()
+            .subscribe((location: Location|null) => {
+                if (location) {
+                    this.form.controls['reference'].setValue(location.reference);
+                    this.form.controls['store'].setValue(location.storeId);
+                }
+            });
+    }
+
+    @HostListener('document:keydown', ['$event'])
+    handleKeyboardEvent(event: KeyboardEvent) {
+        if (event.altKey && event.key === 'f') {
+            this.showSearchDialog();
+            event.preventDefault();
+        }
+    }
+
 }
 

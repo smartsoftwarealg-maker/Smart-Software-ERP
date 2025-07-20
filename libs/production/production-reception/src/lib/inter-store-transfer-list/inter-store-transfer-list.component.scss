@@ -7,7 +7,7 @@
 .table-container  {
     width: 100%;
     height: 45%;
-    max-width: 600px;
+    max-width: 800px;
     margin: 0 auto;
     flex: 1 0 60%;
     overflow-x: auto;
@@ -23,7 +23,8 @@ mat-table {
 }
 
 // keep the material design specs
-.mat-row, .mat-header-row {
+.mat-row,
+.mat-header-row {
     padding-right: 16px;
     padding-left: 16px;
 }
@@ -35,6 +36,7 @@ mat-table {
     padding-left: 8px !important;
 }
 
+.mat-column-storeDescription,
 .mat-column-reference {
     flex: 1 1 180px;
     padding-right: 8px !important;

@@ -53,9 +53,10 @@ mat-table {
 }
 
 .mat-column-reference,
+.mat-column-storeDescription,
 .mat-column-store,
 .mat-column-storeName {
-    flex: 1 0 100px;
+    flex: 1 0 110px;
     padding: 0 4px;
     border-left: ghostwhite solid 1px;
 }
