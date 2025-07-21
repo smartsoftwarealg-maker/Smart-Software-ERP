@@ -1,6 +1,6 @@
 import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import {
-    BaseTransactionLinesDetailComponent, DOC_RECEPTION, Transaction, TransactionLine
+    BaseTransactionLinesDetailComponent, DOC_RECEPTION, TransactionLine
 } from '@ss/logistics/api-transaction';
 import { CommonModule } from '@angular/common';
 import { MaterialModule } from '@ss/common/api-common';

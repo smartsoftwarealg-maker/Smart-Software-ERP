@@ -1,32 +1,81 @@
-<mat-card>
-    <mat-card-content>
-        <form [formGroup]="form">
-            <mat-form-field class="default-100">
-                <mat-label translate>COMMON_SOURCE</mat-label>
-                <ss-auto-complete matInput
-                                  [required]="true"
-                                  formControlName="oldId"
-                                  [model]="oldAgentLookup">
-                </ss-auto-complete>
-            </mat-form-field>
+<mat-tab-group>
+    <mat-tab>
+        <ng-template mat-tab-label>
+            <span translate>COMMON_ONE_BY_ONE</span>
+        </ng-template>
+        <mat-card class="one-by-one-card">
+            <mat-card-content>
+                <form [formGroup]="form">
+                    <mat-form-field class="default-100">
+                        <mat-label translate>COMMON_SOURCE</mat-label>
+                        <ss-auto-complete matInput
+                                          [required]="true"
+                                          formControlName="oldId"
+                                          [model]="oldAgentLookup">
+                        </ss-auto-complete>
+                    </mat-form-field>
 
-            <mat-form-field class="default-100">
-                <mat-label translate>COMMON_DESTINATION</mat-label>
-                <ss-auto-complete matInput
-                                  [required]="true"
-                                  formControlName="newId"
-                                  [model]="newAgentLookup">
-                </ss-auto-complete>
-            </mat-form-field>
-        </form>
-    </mat-card-content>
-    <mat-card-actions>
-        <button mat-raised-button color="primary"
-                [disabled]="!form.value.oldId || !form.value.newId || form.value.oldId ===form.value.newId"
-                type="button"
-                (click)="merge()">
-            <i class="fa-regular fa-check"></i>
-            {{ 'LOGISTICS_AGENT_MERGE' | translate }}
-        </button>
-    </mat-card-actions>
-</mat-card>
+                    <mat-form-field class="default-100">
+                        <mat-label translate>COMMON_DESTINATION</mat-label>
+                        <ss-auto-complete matInput
+                                          [required]="true"
+                                          formControlName="newId"
+                                          [model]="newAgentLookup">
+                        </ss-auto-complete>
+                    </mat-form-field>
+                </form>
+            </mat-card-content>
+            <mat-card-actions>
+                <button mat-raised-button color="primary"
+                        [disabled]="!form.value.oldId || !form.value.newId || form.value.oldId ===form.value.newId"
+                        type="button"
+                        (click)="merge()">
+                    <i class="fa-regular fa-check"></i>
+                    {{ 'LOGISTICS_AGENT_MERGE' | translate }}
+                </button>
+            </mat-card-actions>
+        </mat-card>
+    </mat-tab>
+    <mat-tab>
+        <ng-template mat-tab-label>
+            <span translate>COMMON_EXCEL_INJECTION</span>
+        </ng-template>
+
+        <mat-card class="excel-card">
+            <div class="ctrl-div">
+                <div class="file-upload">
+                    <input type="file" class="file-input"
+                           [accept]="requiredFileType"
+                           (change)="onChange(fileUpload.files)"
+                           #fileUpload>
+
+                    <span translate>{{ fileName || "COMMON_NO_FILE_SELECTED" }} </span>
+
+                    @if (!uploadProgress) {
+                        <button mat-mini-fab color="primary"
+                                class="upload-btn"
+                                (click)="fileUpload.click()">
+                            <i class="fas fa-paperclip"></i>
+                        </button>
+                    }
+                </div>
+                @if (!uploadProgress) {
+                    <div>
+                        <button mat-raised-button color="primary"
+                                type="button"
+                                (click)="onFileSelected(fileUpload.files)"
+                                [disabled]="!fileName">
+                            {{ 'COMMON_UPLOAD' | translate }}
+                            <i class="fa-solid fa-upload  icon"></i>
+                        </button>
+
+                        <button mat-raised-button color="warn" type="button" (click)="cancel()">
+                            {{ 'COMMON_CANCEL' | translate }}
+                            <i class="fa-solid fa-rotate-left icon"></i>
+                        </button>
+                    </div>
+                }
+            </div>
+        </mat-card>
+    </mat-tab>
+</mat-tab-group>

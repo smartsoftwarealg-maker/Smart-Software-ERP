@@ -16,9 +16,16 @@
         </ng-container>
 
         <ng-container matColumnDef="reference">
-            <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_REFERENCE</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_MEMO</mat-header-cell>
             <mat-cell *matCellDef="let e">
                 {{ e.reference }}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="storeDescription">
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>STOCK_STORE</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{ e.storeDescription }}
             </mat-cell>
         </ng-container>
 

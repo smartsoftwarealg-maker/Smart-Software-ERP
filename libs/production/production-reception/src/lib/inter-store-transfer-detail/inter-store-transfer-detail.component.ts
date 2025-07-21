@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, RouterOutlet } from '@angular/router';
 import {
@@ -15,6 +15,8 @@ import { DatePickerComponent } from '@ss/common/ui-datepicker';
 import { TranslateDirective } from '@ss/common/ui-lang';
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { InterStoreTransferService } from '../interStoreTransfer.service';
+import { StoreService } from '@ss/common/api-lookup';
+import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 
 @Component({
     selector: 'ss-production-inter-store-transfer-detail',
@@ -28,12 +30,16 @@ import { InterStoreTransferService } from '../interStoreTransfer.service';
         ReactiveFormsModule,
         DatePickerComponent,
         RouterOutlet,
-    ],
+        UiAutoCompleteComponent
+    ]
 })
 export class InterStoreTransferDetailComponent
     extends BaseEntityDetailComponent<InterStoreTransfer>
-    implements OnInit
-{
+    implements OnInit {
+    private storeSrv = inject(StoreService);
+
+    storeLookup = new DefaultAutoCompleteModel(this.storeSrv);
+
     constructor(
         public override entitySrv: InterStoreTransferService,
         public override shellSrv: ShellService,
@@ -57,10 +63,11 @@ export class InterStoreTransferDetailComponent
 
     override setupForm(e: InterStoreTransfer): UntypedFormGroup {
         return this.formBuilder.group({
-            id: [e.id],
-            number: [e.number],
+            id:        [e.id],
+            number:    [e.number],
             reference: [e.reference],
-            date: [e.date],
+            date:      [e.date],
+            storeId:   [e.storeId]
         });
     }
 }

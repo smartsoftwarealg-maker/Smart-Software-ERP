@@ -236,5 +236,6 @@
     "HR_GRADING":             "تصنيف الموارد البشرية",
     "UNPAID_LEAVE":           "إجازة بدون أجر",
     "GRADER":                 "مقيّم",
-    "LOAN_INJECTION":         "حقن القروض"
+    "LOAN_INJECTION":         "حقن القروض",
+    "LOCK_ACCOUNT_UNTIL":     "قفل رقم الحساب حتى"
 }

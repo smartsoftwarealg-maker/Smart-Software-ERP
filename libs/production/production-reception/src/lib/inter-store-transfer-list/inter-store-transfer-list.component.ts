@@ -27,7 +27,7 @@ import { InterStoreTransferService } from '../interStoreTransfer.service';
     ],
 })
 export class InterStoreTransferListComponent extends BaseEntityListComponent<InterStoreTransfer> {
-    displayedColumns = ['number', 'date', 'reference'];
+    displayedColumns = ['number', 'date', 'storeDescription', 'reference'];
 
     constructor(
         public override entitySrv: InterStoreTransferService,

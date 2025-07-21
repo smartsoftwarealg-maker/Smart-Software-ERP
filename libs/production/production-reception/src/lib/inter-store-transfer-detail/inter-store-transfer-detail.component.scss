@@ -1,15 +1,12 @@
 mat-card {
-    width: 98%;
-    max-width: 500px;
+    width: 96%;
+    max-width: 700px;
     margin: 5px auto;
     border-radius: 1.4em;
     padding: 8px;
 }
 
-mat-card,
 .detail__div {
-    width: fit-content;
-    margin: 16px auto;
-    padding: 16px;
-    border-radius: 1.4em;
+    overflow-x: auto;
+    min-height: 50%;
 }

@@ -1,0 +1,100 @@
+<form [formGroup]="form">
+    <mat-form-field class="default-50 sm-100">
+        <mat-label translate>STOCK_STORE</mat-label>
+        <ss-auto-complete matInput
+                          [model]="storeLookup"
+                          formControlName="store">
+        </ss-auto-complete>
+    </mat-form-field>
+
+    <mat-form-field class="default-50 sm-100">
+        <mat-label translate>COMMON_REFERENCE</mat-label>
+        <input matInput formControlName="reference" type="text" maxlength="20">
+    </mat-form-field>
+
+    <mat-form-field class="default-50 sm-100">
+        <mat-label translate>COMMON_STOCK</mat-label>
+        <input matInput formControlName="stock" type="number" min="0">
+    </mat-form-field>
+
+    <mat-form-field class="default-50 sm-100">
+        <mat-label translate>STOCK_MARK</mat-label>
+        <ss-auto-complete matInput
+                          [model]="markLookup"
+                          formControlName="mark">
+        </ss-auto-complete>
+    </mat-form-field>
+</form>
+<div class="table__div">
+    <mat-table mat-table [dataSource]="data()" class="main-table" matSort (matSortChange)="sort($event)">
+
+        <ng-container matColumnDef="description">
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_DESCRIPTION</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{ e.description }}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="markDescription">
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_MARK</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{ e.markDescription }}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="expirationDate">
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>STOCK_EXPIRATION_DATE</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{ e.expirationDate }}
+            </mat-cell>
+        </ng-container>
+
+
+        <ng-container matColumnDef="lotNumber">
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>STOCK_LOT</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{ e.lotNumber }}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="reference">
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_REFERENCE</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{ e.reference }}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="stock">
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_STOCK</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{ e.stock | number: '1.2-4' }}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="storeName">
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>STOCK_STORE</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{ e.storeName }}
+            </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+        <mat-row class="selectable" [class.selected]="row.id == location?.id" (click)="selectItem(row)"
+                 *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+</div>
+<div class="size b-b-background">
+    <ss-pagination [paginationModel]="pagination"></ss-pagination>
+</div>
+<div class="button__div">
+    <button mat-raised-button color="primary"
+            type="button"
+            (click)="select()">
+        <i class="fa-solid fa-circle-check icon"></i>
+        {{ 'COMMON_SELECT' | translate }}
+    </button>
+    <button mat-raised-button color="warn" type="button" (click)="cancel()">
+        <i class="fa-solid fa-cancel icon"></i>
+        {{ 'COMMON_CANCEL' | translate }}
+    </button>
+</div>

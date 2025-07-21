@@ -93,5 +93,6 @@
     "PRICE_LIST":              "Price list",
     "RECALC_RECEPTIONS":       "Recalculate receptions",
     "LOT":                     "Lot",
-    "COMPLIANT":               "Compliant"
+    "COMPLIANT":               "Compliant",
+    "PRODUCTION_STORE":        "Production store"
 }

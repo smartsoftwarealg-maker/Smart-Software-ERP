@@ -82,4 +82,5 @@ export interface Employee extends IEmployee {
     cmmsPerson: boolean;
     hourlyRate?: number;
     userId?: number;
+    accountLockDate?: Date;
 }

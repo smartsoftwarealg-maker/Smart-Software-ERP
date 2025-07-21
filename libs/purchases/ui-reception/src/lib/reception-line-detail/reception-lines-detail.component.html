@@ -1,9 +1,11 @@
 <div class="button_div">
 
-    <button mat-mini-fab (click)="save()"
-            color="accent" *ngIf="isEditable">
-        <i class="fas fa-save"></i>
-    </button>
+    @if (isEditable) {
+        <button mat-mini-fab (click)="save()"
+                color="accent">
+            <i class="fas fa-save"></i>
+        </button>
+    }
     <button mat-mini-fab (click)="cancel()"
             color="warn">
         <i class="fas fa-redo"></i>
@@ -28,12 +30,12 @@
                                       [required]="true"
                                       [model]="articleLookup"
                                       formControlName="reference"></ss-auto-complete>
-                    <mat-error
-                        *ngIf="form.controls['reference'].hasError('required')" translate>COMMON_FIELD_REQUIRED
-                    </mat-error>
-                    <mat-error
-                        *ngIf="form.controls['reference'].hasError('validOption')" translate>COMMON_NO_MATCH
-                    </mat-error>
+                    @if (form.controls['reference'].hasError('required')) {
+                        <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+                    }
+                    @if (form.controls['reference'].hasError('validOption')) {
+                        <mat-error translate>COMMON_NO_MATCH</mat-error>
+                    }
                 </mat-form-field>
 
                 <div class="default-50 sm-100">
@@ -65,9 +67,9 @@
                 <mat-form-field id="qtySatisfied" class="default-25 sm-50">
                     <mat-label translate>LOGISTICS_QTY_SATISFIED</mat-label>
                     <input matInput formControlName="qtySatisfied" type="number" step=".01" required>
-                    <mat-error *ngIf="form.controls['qtySatisfied'].hasError('required')" translate>
-                        COMMON_FIELD_REQUIRED
-                    </mat-error>
+                    @if (form.controls['qtySatisfied'].hasError('required')) {
+                        <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+                    }
                 </mat-form-field>
 
                 <!--                <mat-form-field id="qtyInvoiced" class="default-50 sm-100">-->
@@ -82,9 +84,9 @@
                 <mat-form-field id="price" class="default-25 sm-50">
                     <mat-label translate>LOGISTICS_PRICE</mat-label>
                     <input matInput formControlName="price" type="number" step=".01" required>
-                    <mat-error
-                        *ngIf="form.controls['price'].hasError('required')" translate>COMMON_FIELD_REQUIRED
-                    </mat-error>
+                    @if (form.controls['price'].hasError('required')) {
+                        <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+                    }
                 </mat-form-field>
 
                 <mat-form-field id="vat" class="default-25 sm-100">
@@ -131,13 +133,15 @@
 }
 
 <!--    <div class="doc-info">-->
-<!--        <ss-doc-info *ngIf="selectedReference"-->
-<!--                     [displayedGroups]="['document', 'agent', 'article']"-->
-<!--                     [params]="{-->
-<!--            articleReference: selectedReference,-->
-<!--            agentId: agentId,-->
-<!--            documentId: parentId,-->
-<!--            documentURL:'/inventory'-->
-<!--        }">-->
-<!--        </ss-doc-info>-->
-<!--    </div>-->
+<!--        @if (selectedReference) {-->
+<!--            <ss-doc-info-->
+<!--                [displayedGroups]="['document', 'agent', 'article']"-->
+<!--                [params]="{-->
+<!--                    articleReference: selectedReference,-->
+<!--                    agentId: agentId,-->
+<!--                    documentId: parentId,-->
+<!--                    documentURL:'/inventory'-->
+<!--                }">-->
+<!--            </ss-doc-info>-->
+<!--        }-->
+<!--    </div-->

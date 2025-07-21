@@ -74,6 +74,7 @@ export class ProductionLinesListComponent extends BaseTransactionLinesListCompon
         'description',
         'qtyOrdered',
         'qtySatisfied',
+        'storeDescription',
         'storeName',
         'price',
         'total',

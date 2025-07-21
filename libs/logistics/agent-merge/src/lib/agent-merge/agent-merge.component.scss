@@ -1,10 +1,43 @@
-mat-card {
+.one-by-one-card {
     width: 90%;
     max-width: 700px;
     margin: .5em auto;
     border-radius: 1.4em;
 }
+
+.excel-card {
+    width: 90%;
+    max-width: 1200px;
+    margin: .5em auto;
+    border-radius: 1.4em;
+}
+
 button {
     border-radius: 1.4em;
     margin-left: auto;
+    margin-right: 1em;
+}
+
+span {
+    min-width: fit-content;
+    padding: 0 1em;
+}
+
+.file-input {
+    display: none;
+}
+
+.file-upload {
+    flex-grow: 1;
+    max-width: 80%;
+}
+
+.ctrl-div {
+    width: 90%;
+    margin: 16px auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 5px 10px;
 }

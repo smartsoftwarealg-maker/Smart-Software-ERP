@@ -115,6 +115,7 @@ export interface Location {
     inventStock: number;
     theoStock: number;
     lastPurchaseDate?: Date;
+    expirationDate?: Date;
     inventDate?: Date;
     fixDate?: Date;
     blockedLot?: boolean;

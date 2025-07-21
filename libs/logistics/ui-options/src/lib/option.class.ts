@@ -45,6 +45,7 @@ export class Option {
     count_year: number;
     raw_store: number;
     returnInvoiceMerge: boolean;
+    prodStore: number;
 }
 
 export interface MiniLine {

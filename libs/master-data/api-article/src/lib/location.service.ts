@@ -1,10 +1,9 @@
 import {Injectable} from '@angular/core';
-import { Location, StockInfo } from "./article-api";
-import {Observable} from 'rxjs';
+import { Location } from './article-api';
 import {BaseEntityExtendedService} from '@ss/common/api-base-entity';
 import { HttpService, PaginationModel } from '@ss/common/api-common';
 import { HttpParams } from '@angular/common/http';
-import { Lot } from '@ss/common/api-lookup';
+import { Observable } from 'rxjs';
 
 
 @Injectable({
@@ -20,18 +19,32 @@ export class LocationService extends BaseEntityExtendedService<Location> {
         reference: string,
         pageModel: PaginationModel,
         filter?: string,
-        sortBy?: string) {
+        store?: number,
+        stock?: number,
+        mark?: number,
+        sortBy?: string): Observable<{ itemCount: number; body: Location[] }> {
         const page = pageModel.page - 1;
         const pageSize = pageModel.pageSize;
-        const prams = new HttpParams().append('find', reference);
+        const map: {key: string, value: string|number}[] = [
+            { key: 'store', value: store },
+            { key: 'stock', value: stock },
+            { key: 'mark', value: mark },
+            { key: 'find', value: reference },
+
+        ];
+        const params = map.reduce((p, c) => {
+            if (c.value !== undefined && c.value !== null) {
+                return p.set(c.key, c.value.toString());
+            }
+            return p;
+        }, new HttpParams());
         return this.httpSrv.getData<Location>(
             '/articles/stores',
             page,
             pageSize,
             filter,
-            sortBy,
-            prams,
+            this.sortColumn,
+            params,
         );
     }
-
 }

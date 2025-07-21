@@ -334,7 +334,8 @@ export class EmployeeDetailComponent extends BaseEntityDetailComponent<Employee>
             blood_group:   [p.blood_group],
             mutualno:      [p.mutualno],
             customCode:    [p.customCode, Validators.maxLength(12)],
-            userId:        [p.userId]
+            userId:        [p.userId],
+            accountLockDate:[p.accountLockDate]
         });
     }
 

@@ -6,8 +6,10 @@
                 <mat-form-field id="number" class="default-25 sm-100">
                     <mat-label translate>STOCK_NUMBER</mat-label>
                     <input matInput formControlName="number" type="number" required readonly>
-                    <mat-error *ngIf="form.controls['number']?.invalid" translate>COMMON_FIELD_REQUIRED
-                    </mat-error>
+                    @if (form.controls['number']?.invalid) {
+                        <mat-error translate>COMMON_FIELD_REQUIRED
+                        </mat-error>
+                    }
                 </mat-form-field>
 
                 <mat-form-field class="default-25 sm-100">
@@ -31,12 +33,14 @@
                                       [required]="true"
                                       [model]="customerLookup"
                                       formControlName="agent"></ss-auto-complete>
-                    <!--                <mat-error-->
-                    <!--                    *ngIf="form.controls['agent'].hasError('required')" translate>COMMON_FIELD_REQUIRED-->
-                    <!--                </mat-error>-->
-                    <!--                <mat-error-->
-                    <!--                    *ngIf="form.controls['agent'].hasError('validOption')" translate>COMMON_NO_MATCH-->
-                    <!--                </mat-error>-->
+                    <!--
+                    <mat-error
+                        *ngIf="form.controls['agent'].hasError('required')" translate>COMMON_FIELD_REQUIRED
+                    </mat-error>
+                    <mat-error
+                        *ngIf="form.controls['agent'].hasError('validOption')" translate>COMMON_NO_MATCH
+                    </mat-error>
+                    -->
                 </mat-form-field>
 
                 <mat-form-field class="default-50 sm-100">
@@ -45,13 +49,14 @@
                                       [required]="true"
                                       [model]="payModeAutoCompleteModel"
                                       formControlName="payMethod"></ss-auto-complete>
-                    <mat-error
-                        *ngIf="form.controls['payMethod'].hasError('required')" translate>COMMON_FIELD_REQUIRED
-                    </mat-error>
-                    <mat-error
-                        *ngIf="form.controls['payMethod'].hasError('validOption')" translate>COMMON_NO_MATCH
-                    </mat-error>
-
+                    @if (form.controls['payMethod'].hasError('required')) {
+                        <mat-error translate>COMMON_FIELD_REQUIRED
+                        </mat-error>
+                    }
+                    @if (form.controls['payMethod'].hasError('validOption')) {
+                        <mat-error translate>COMMON_NO_MATCH
+                        </mat-error>
+                    }
                 </mat-form-field>
 
                 <mat-form-field class="default-50 sm-100">
@@ -60,11 +65,10 @@
                                       [model]="salesProjectLookup"
                                       formControlName="project">
                     </ss-auto-complete>
-                    @if (form.controls['project']?.hasError('blocked')) {
+                    @if (form.controls['project'].hasError('blocked')) {
                         <mat-error translate>LOGISTICS_PROJECT_BLOCKED</mat-error>
                     }
                 </mat-form-field>
-
 
                 <mat-form-field class="default-50 sm-100">
                     <mat-label translate>STOCK_DEALER</mat-label>
@@ -72,15 +76,15 @@
                                       [required]="true"
                                       [model]="dealerAutoCompleteModel"
                                       formControlName="dealer"></ss-auto-complete>
-                    <mat-error
-                        *ngIf="form.controls['dealer'].hasError('required')" translate>COMMON_FIELD_REQUIRED
-                    </mat-error>
-                    <mat-error
-                        *ngIf="form.controls['dealer'].hasError('validOption')" translate>COMMON_NO_MATCH
-                    </mat-error>
-
+                    @if (form.controls['dealer'].hasError('required')) {
+                        <mat-error translate>COMMON_FIELD_REQUIRED
+                        </mat-error>
+                    }
+                    @if (form.controls['dealer'].hasError('validOption')) {
+                        <mat-error translate>COMMON_NO_MATCH
+                        </mat-error>
+                    }
                 </mat-form-field>
-
 
                 <div class="default-50 sm-100"></div>
                 <mat-tab-group>
@@ -184,4 +188,3 @@
 @if (formId) {
     <router-outlet></router-outlet>
 }
-

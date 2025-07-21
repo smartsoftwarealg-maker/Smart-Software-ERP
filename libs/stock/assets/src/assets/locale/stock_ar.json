@@ -86,11 +86,12 @@
     "DOSAGE_UNIT":             "وحدة الجرعة",
     "PACKAGING_UNITS":         "وحدات التغليف",
     "PACKAGING_UNIT":          "وحدة التغليف",
-    "PACKAGING":              "التعبئة والتغليف",
-    "USES_LOTS":              "استعمال الحمولة",
-    "BLOCK_LOTS":             "حظر الأحمال التي تم إنشاؤها حديثًا",
+    "PACKAGING":               "التعبئة والتغليف",
+    "USES_LOTS":               "استعمال الحمولة",
+    "BLOCK_LOTS":              "حظر الأحمال التي تم إنشاؤها حديثًا",
     "PRICE_LIST":              "قائمة الأسعار",
-    "RECALC_RECEPTIONS":      "اعادة حساب الاستقبالات",
-    "LOT": "البضاعة",
-    "COMPLIANT": "موافق"
+    "RECALC_RECEPTIONS":       "اعادة حساب الاستقبالات",
+    "LOT":                     "البضاعة",
+    "COMPLIANT":               "موافق",
+    "PRODUCTION_STORE":        "متجر الإنتاج"
 }

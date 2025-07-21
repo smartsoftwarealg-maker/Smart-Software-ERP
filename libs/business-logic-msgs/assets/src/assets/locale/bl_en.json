@@ -70,5 +70,6 @@
     "EXPIRED_BOM":                   "This BOM has expired",
     "CLOSED_PERIOD":                 "This period is closed. No further modification is allowed.",
     "NOT_ALLOWED_HERE":              "This operation is not allowed here",
-    "OBSOLETE_PROJECT":              "Project dates are incorrect or it is obsolete."
+    "OBSOLETE_PROJECT":              "Project dates are incorrect or it is obsolete.",
+    "LOCKED_ACCOUNT_NUMBER":         "The current account number is blocked until"
 }
