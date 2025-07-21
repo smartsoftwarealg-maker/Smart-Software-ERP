@@ -9,14 +9,12 @@
                 <span class="fas fa-plus"></span>
             </button>
         }
-        @if (isEditable) {
             <button mat-mini-fab (click)="edit()"
                     [matTooltip]="'COMMON_EDIT' | translate"
                     [disabled]="!selectedId"
                     color="accent">
                 <span class="fas fa-pen"></span>
             </button>
-        }
         @if (isEditable) {
             <button mat-mini-fab (click)="deleteSelected()" [matTooltip]="'COMMON_DELETE' | translate"
                     [disabled]="!selectedId"

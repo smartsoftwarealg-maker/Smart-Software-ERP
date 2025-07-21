@@ -5,7 +5,7 @@ import { ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import { ArticleService} from '@ss/master-data/api-article';
 import { LotsService} from '@ss/common/api-lookup';
 import { BaseTransactionLinesListComponent} from '@ss/logistics/api-transaction';
-import { NgIf, DecimalPipe } from '@angular/common';
+import { DecimalPipe } from '@angular/common';
 import { MatFormField, MatLabel } from '@angular/material/form-field';
 import { TranslateDirective } from '@ss/common/ui-lang';
 import { MatInput } from '@angular/material/input';
@@ -31,7 +31,6 @@ import { PriceRequestLinesService } from '../services/price-request-lines.servic
     styleUrls: ['../../../../../common/assets/src/assets/transac-lines-list.scss'],
     standalone: true,
     imports: [
-        NgIf,
         MatFormField,
         MatLabel,
         TranslateDirective,
