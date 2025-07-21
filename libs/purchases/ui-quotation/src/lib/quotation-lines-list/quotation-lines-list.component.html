@@ -1,4 +1,5 @@
-<div class="main-container" *ngIf="parentId">
+@if (parentId){
+<div class="main-container">
     <div class="add-button">
         <mat-form-field>
             <mat-label translate>COMMON_SEARCH</mat-label>
@@ -122,3 +123,4 @@
         </ss-doc-info>
     </div>
 </div>
+}
