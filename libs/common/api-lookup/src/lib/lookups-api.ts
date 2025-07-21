@@ -200,6 +200,7 @@ export interface Lot {
     memo?: string;
     analyzed?:boolean;
     analysisDate?: Date;
+    storeDescription?: string;
 }
 
 // export interface Lot {

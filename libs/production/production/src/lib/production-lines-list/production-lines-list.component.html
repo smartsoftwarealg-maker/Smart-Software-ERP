@@ -35,19 +35,6 @@
                     </mat-cell>
                 </ng-container>
 
-                <ng-container matColumnDef="storeDescription">
-                    <mat-header-cell *matHeaderCellDef translate>STOCK_STORE</mat-header-cell>
-                    <mat-cell *matCellDef="let e">
-                        {{ e.storeDescription }}
-                    </mat-cell>
-                </ng-container>
-
-                <ng-container matColumnDef="store">
-                    <mat-header-cell *matHeaderCellDef translate>STOCK_LOT</mat-header-cell>
-                    <mat-cell *matCellDef="let e">
-                        {{ e.storeName }}
-                    </mat-cell>
-                </ng-container>
 
                 <ng-container matColumnDef="reference">
                     <mat-header-cell *matHeaderCellDef translate>COMMON_REFERENCE</mat-header-cell>
@@ -60,6 +47,13 @@
                     <mat-header-cell *matHeaderCellDef translate>LOGISTICS_DESCRIPTION</mat-header-cell>
                     <mat-cell *matCellDef="let e">
                         {{ e.refDescription }}
+                    </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="storeDescription">
+                    <mat-header-cell *matHeaderCellDef translate>STOCK_STORE</mat-header-cell>
+                    <mat-cell *matCellDef="let e">
+                        {{ e.storeDescription }}
                     </mat-cell>
                 </ng-container>
 

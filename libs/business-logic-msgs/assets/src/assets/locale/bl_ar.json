@@ -71,5 +71,6 @@
     "CLOSED_PERIOD":                "هذه الفترة مغلقة. لا يمكن التعديل.",
     "NOT_ALLOWED_HERE":             "لا يمكن إنجاز العمل المطلوب من هنا",
     "OBSOLETE_PROJECT":             "تواريخ المشروع غير صحيحة أو أنها قديمة.",
-    "LOCKED_ACCOUNT_NUMBER":        "رقم الحساب الحالي محظور حتى"
+    "LOCKED_ACCOUNT_NUMBER":        "رقم الحساب الحالي محظور حتى",
+    "NO_QTY_SPECIFIED": "لم يتم تحديد الكمية"
 }

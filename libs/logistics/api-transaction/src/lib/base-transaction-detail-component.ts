@@ -345,5 +345,5 @@ class ProjectLookupModel extends DefaultAutoCompleteModel<Project> {
         super(srv);
     }
 
-    toString = (x: Project) => x ? `${x.contractNo} - ${x.description}` : null
+    toString = (x: Project) => x ? `${x.contractNo} - ${x.description}` : null;
 }

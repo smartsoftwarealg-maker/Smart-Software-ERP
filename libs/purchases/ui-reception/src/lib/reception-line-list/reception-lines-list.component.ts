@@ -29,9 +29,10 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
     ]
 })
 export class ReceptionLinesListComponent  extends BaseTransactionLinesListComponent implements OnInit {
-    displayedColumns = [
+    override displayedColumns = [
         'position',
-        'store',
+        'storeDescription',
+        'storeName',
         'reference',
         'description',
         'qtySatisfied',
