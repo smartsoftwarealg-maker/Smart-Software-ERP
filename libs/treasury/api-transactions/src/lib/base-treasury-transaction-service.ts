@@ -1,5 +1,5 @@
 import {BaseEntityExtendedService} from '@ss/common/api-base-entity';
-import {Summary, TTransaction} from '@ss/treasury/api-transactions';
+import { Summary, TImport, TTransaction } from '@ss/treasury/api-transactions';
 import {BANK_JOURNAL, Journal} from '@ss/treasury/api-journal';
 import {HttpService} from '@ss/common/api-common';
 import {Observable} from 'rxjs';
@@ -29,6 +29,10 @@ export class BaseTreasuryTransactionService extends BaseEntityExtendedService<TT
 
     get journalId() {
         return this._journal?.id;
+    }
+
+    get journal(): Journal | null {
+        return this._journal;
     }
 
     get journalDescription() {
@@ -65,4 +69,24 @@ export class BaseTreasuryTransactionService extends BaseEntityExtendedService<TT
     isBank() {
         return this._journal?.jType === BANK_JOURNAL;
     }
+
+    import(importData: TImport): Observable<any> {
+        if (!this.journal) {
+            throw new Error('No journal selected');
+        }
+
+        const jType = this.journal.jType;
+
+        let url = '';
+        if (jType === 1) {
+            url = '/treasury/import-cash';
+        } else if (jType === 2) {
+            url = '/treasury/import-checks';
+        } else {
+            throw new Error(`Unknown journal type: ${jType}`);
+        }
+
+        return this.httpSrv.post(url, importData);
+    }
+
 }

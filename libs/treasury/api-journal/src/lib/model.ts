@@ -20,3 +20,7 @@ export interface Journal {
     centerId?: number;
     typeName: string;
 }
+
+
+
+
