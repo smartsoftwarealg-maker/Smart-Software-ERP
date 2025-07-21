@@ -5,14 +5,17 @@ import {LotsService} from '@ss/common/api-lookup';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import { Observable, of, Subscription } from 'rxjs';
 import {debounceTime, distinctUntilChanged, switchMap, tap} from 'rxjs/operators';
-import {PaginationModel} from '@ss/common/api-common';
+import { LoginService, PaginationModel } from '@ss/common/api-common';
 import {TransactionLine} from './transaction-line';
 import {FormControl} from '@angular/forms';
-import {Directive, Input, OnDestroy, OnInit} from '@angular/core';
+import { Directive, inject, Input, OnDestroy, OnInit } from '@angular/core';
 import { TransactionLinesClass } from './transaction-lines.class';
+import { OptionService } from '@ss/logistics/ui-options';
 
 @Directive()
 export class BaseTransactionLinesListComponent implements OnInit, OnDestroy {
+    #optionSrv =  inject(OptionService);
+    #loginSrv = inject(LoginService);
     private _isEditable_ = true;
     protected subscription: Subscription = null;
     searchText = new FormControl<string>('');
@@ -20,6 +23,8 @@ export class BaseTransactionLinesListComponent implements OnInit, OnDestroy {
     data: TransactionLine[];
     selectedId: number;
     selectedRow: TransactionLine = null;
+
+    displayedColumns: string[] = [];
 
     private _updated = false;
     readonly pagination = PaginationModel.newInstance();
@@ -40,6 +45,10 @@ export class BaseTransactionLinesListComponent implements OnInit, OnDestroy {
         this.parentId = this.detailSrv.getParentId();
         this._isEditable_ = this.detailSrv.editable;
         this.loadDetailLines().subscribe(() => this.shellSrv.setLoading(false));
+
+        this.#optionSrv
+            .get(this.#loginSrv.appCtx.center)
+            .subscribe(res => this.displayedColumns = this.displayedColumns.filter(e => res.usesLots || (e !== 'lotNumber' && e !== 'expirationDate' && e !== 'storeName') ));
 
         this.subscription = this.searchText
             .valueChanges

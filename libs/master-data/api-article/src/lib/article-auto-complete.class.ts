@@ -29,6 +29,10 @@ export class LotAutoCompleteModel extends DefaultAutoCompleteModel<Lot> {
     override onValueChanged = (id: number | string) => {
         this.evenEmitter.emit(id);
     };
+
+    override toString = (x: Lot) => x?
+        (!x.storeDescription || x.description === x.storeDescription? x.description : `${x.storeDescription}, ${x.description}`) :
+        '';
 }
 
 export class ArticleIdAutoCompleteModel extends DefaultAutoCompleteModel<Article> {

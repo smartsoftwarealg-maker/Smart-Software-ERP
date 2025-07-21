@@ -10,7 +10,7 @@
             </ng-container>
 
             <ng-container matColumnDef="lotNumber">
-                <mat-header-cell *matHeaderCellDef translate>STOCK_LOT_NUMBER</mat-header-cell>
+                <mat-header-cell *matHeaderCellDef translate>{{ usesLots()? 'STOCK_LOT_NUMBER' : 'STOCK_STORE' }}</mat-header-cell>
                 <mat-cell *matCellDef="let e">
                     {{e.lotNumber}}
                 </mat-cell>

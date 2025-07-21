@@ -64,7 +64,7 @@ export class InterStoreTransferDetailComponent
     override setupForm(e: InterStoreTransfer): UntypedFormGroup {
         return this.formBuilder.group({
             id:        [e.id],
-            number:    [e.number],
+            number:    [{ value: e.number, disabled: true }],
             reference: [e.reference],
             date:      [e.date],
             storeId:   [e.storeId]

@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import { LoginService, PaginationModel } from '@ss/common/api-common';
 import {SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
@@ -36,6 +36,7 @@ export class UiStockInfoComponent implements OnInit {
     readonly pagination = PaginationModel.newInstance();
     data: StockInfo[] = [];
     articleReference: string;
+    usesLots = signal(false);
 
     displayedColumns = [
         'store',
@@ -47,7 +48,7 @@ export class UiStockInfoComponent implements OnInit {
         'price3',
     ];
 
-  constructor(public stockSrv: StockInfoService,
+    constructor(public stockSrv: StockInfoService,
               public snackBarSrv: SnackBarService,
               public route: ActivatedRoute,
               public router: Router,
@@ -62,14 +63,17 @@ export class UiStockInfoComponent implements OnInit {
         this.pagination.onChange = () => this.loadStockInfo();
         this.#optionsSrv
             .get(this.#loginSrv.appCtx.center)
-            .subscribe(res => this.displayedColumns = this.displayedColumns.filter(c => res.usesLots || c !== 'lotNumber'));
+            .subscribe(res => {
+                this.displayedColumns = this.displayedColumns.filter(c => res.usesLots || c !== 'store');
+                this.usesLots.set(res.usesLots);
+            });
     }
 
     loadStockInfo() {
-      this.stockSrv
-          .load(this.pagination, null, null, this.articleReference || '')
-          .subscribe((x: StockInfo[]) =>  {
-              this.data = x;
-          });
+        this.stockSrv
+            .load(this.pagination, null, null, this.articleReference || '')
+            .subscribe((x: StockInfo[]) =>  {
+                this.data = x;
+            });
     }
 }

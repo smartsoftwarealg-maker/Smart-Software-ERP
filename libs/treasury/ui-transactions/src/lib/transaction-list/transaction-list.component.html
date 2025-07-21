@@ -15,14 +15,16 @@
         </mat-form-field>
 
         <div class="summary_table_div">
-            <table *ngIf="summary$">
+            @if (summary$) {
+            <table>
                 <tr class="b-primary">
                     <th translate>COMMON_PERIOD</th>
                     <th translate>COMMON_BALANCE</th>
                     <th translate>COMMON_TOTAL</th>
                     <th></th>
                 </tr>
-                <tr *ngFor="let s of summary$ | async" class="selectable" (click)="openPeriod(s.period)" [class.selected]="selectedPeriod() === s.period">
+                @for (s of summary$|async; track s.period) {
+                <tr class="selectable" (click)="openPeriod(s.period)" [class.selected]="selectedPeriod() === s.period">
                     <td style="min-width: 8em">
                         {{ s.period.toString().substring(6) }}/
                         {{ s.period.toString().substring(4, 6) }}/
@@ -35,7 +37,9 @@
 <!--                            class="fa-solid fa-file-pen"></i></button>-->
 <!--                    </td>-->
                 </tr>
+                }
             </table>
+            }
         </div>
     </div>
 </div>

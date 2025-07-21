@@ -28,6 +28,7 @@ import { CommonModule } from '@angular/common';
 import { DatePickerComponent } from '@ss/common/ui-datepicker';
 import { CustomerService } from '@ss/logistics/api-agent';
 import { TranslateDirective } from '@ss/common/ui-lang';
+import { Stores, StoresService } from '@ss/stock/api-article-store';
 
 interface EvalPrice {
     id: any;
@@ -50,21 +51,19 @@ interface EvalPrice {
 })
 export class OptionsDetailComponent
     extends BaseEntityDetailComponent<Option>
-    implements OnInit
-{
+    implements OnInit {
     private loginSrv = inject(LoginService);
     private customerSrv = inject(CustomerService);
     private storeNameSrv = inject(LotsService);
+    private storeNameSrv2 = inject(StoresService);
     evalPriceOptions: EvalPrice[] = [
         { id: 1, name: 'LOGISTICS_FIFO' },
         { id: 3, name: 'LOGISTICS_AWP' },
     ];
 
     currencies: Currency[] = [];
-    storeAutoCompleteModel: DefaultAutoCompleteModel<Lot> =
-        new DefaultAutoCompleteModel<Lot>(this.storeNameSrv);
-    storeAutoCompleteModel2: DefaultAutoCompleteModel<Lot> =
-        new DefaultAutoCompleteModel<Lot>(this.storeNameSrv);
+    storeAutoCompleteModel =  new DefaultAutoCompleteModel<Lot>(this.storeNameSrv);
+    storeAutoCompleteModel2 =  new DefaultAutoCompleteModel<Stores>(this.storeNameSrv2);
     customerLookup = new DefaultAutoCompleteModel(
         this.customerSrv,
         'id',

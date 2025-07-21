@@ -11,13 +11,12 @@ import { Journal, UserJournalsService } from '@ss/treasury/api-journal';
 import { DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
 import { Observable } from 'rxjs';
 import { MatRadioChange } from '@angular/material/radio';
-import { DatePickerComponent } from '@ss/common/ui-datepicker';
 import { MatCard } from '@angular/material/card';
 import { MatDatepickerModule } from '@muaazh/angular-datepicker';
 import { MatHint, MatFormField, MatLabel } from '@angular/material/form-field';
 import { TranslateDirective } from '@ss/common/ui-lang';
 import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
-import { NgIf, NgFor, AsyncPipe, DecimalPipe } from '@angular/common';
+import { AsyncPipe, DecimalPipe } from '@angular/common';
 import {
     MatTable,
     MatColumnDef,
@@ -38,7 +37,6 @@ import { MatDialog } from '@angular/material/dialog';
     styleUrls: ['./transaction-list.component.scss'],
     standalone: true,
     imports: [
-        DatePickerComponent,
         MatCard,
         MatDatepickerModule,
         MatHint,
@@ -48,8 +46,6 @@ import { MatDialog } from '@angular/material/dialog';
         UiAutoCompleteComponent,
         FormsModule,
         ReactiveFormsModule,
-        NgIf,
-        NgFor,
         MatTable,
         MatColumnDef,
         MatHeaderCell,
@@ -212,7 +208,7 @@ export class TransactionListComponent extends BaseEntityListComponent<TTransacti
     override selectRow(row: TTransaction) {
         super.selectRow(row);
         this.selectedRow = row;
-       
+
     }
 
 

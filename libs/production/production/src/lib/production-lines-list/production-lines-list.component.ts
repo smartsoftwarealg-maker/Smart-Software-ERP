@@ -34,6 +34,7 @@ import { ProductionLinesService } from '../production-services/production-lines.
 import { ProductionService } from '../production-services/production.service';
 import { AccTransactionLineService } from '@ss/accounting/accounting-api';
 import { of, switchMap } from 'rxjs';
+import { MaterialModule } from '@ss/common/api-common';
 
 @Component({
     selector: 'ss-production-lines-list',
@@ -41,20 +42,11 @@ import { of, switchMap } from 'rxjs';
     styleUrl: './production-lines-list.component.scss',
     standalone: true,
     imports: [
+        MaterialModule,
         MatFormField,
         MatLabel,
         TranslateDirective,
         MatInput,
-        ReactiveFormsModule,
-        MatMiniFabButton,
-        MatTooltip,
-        MatTable,
-        MatColumnDef,
-        MatHeaderCell,
-        MatCell,
-        MatIconButton,
-        MatHeaderRow,
-        MatRow,
         PaginationComponent,
         DocInfoComponent,
         DecimalPipe,
@@ -68,7 +60,7 @@ import { of, switchMap } from 'rxjs';
 export class ProductionLinesListComponent extends BaseTransactionLinesListComponent implements OnInit {
     private productionSrv = inject(ProductionService);
 
-    displayedColumns = [
+    override displayedColumns = [
         'position',
         'reference',
         'description',
@@ -115,12 +107,12 @@ export class ProductionLinesListComponent extends BaseTransactionLinesListCompon
 
     private refresh() {
         this.detailSrv.getPage(this.pagination).subscribe({
-        next: data => {
-            this.data = data;
-        },
-        error: () => {
-            this.snackBarSrv.showFailureMessage('refresh failed');
-        }
+            next: data => {
+                this.data = data;
+            },
+            error: () => {
+                this.snackBarSrv.showFailureMessage('refresh failed');
+            }
         });
     }
 
@@ -128,9 +120,9 @@ export class ProductionLinesListComponent extends BaseTransactionLinesListCompon
         this.productionSrv.produce(id).subscribe({
             next:()=>{
                 this.snackBarSrv.showSuccessMessage();
-                this.refresh()
+                this.refresh();
             },
-              error:(err)=>{
+            error:(err)=>{
                 this.snackBarSrv.showFailureMessage();
                 throw err;
             }

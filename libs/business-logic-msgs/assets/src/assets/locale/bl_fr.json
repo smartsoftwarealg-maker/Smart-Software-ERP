@@ -71,5 +71,6 @@
     "CLOSED_PERIOD":                      "La periode est fermée. Aucune autre modification n'est autorisée",
     "NOT_ALLOWED_HERE":                   "Cette opération n'est pas autorisée ici",
     "OBSOLETE_PROJECT":                   "Les dates du projet sont incorrectes ou obsolètes.",
-    "LOCKED_ACCOUNT_NUMBER":              "Le numéro de compte courant est bloqué jusqu'à"
+    "LOCKED_ACCOUNT_NUMBER":              "Le numéro de compte courant est bloqué jusqu'à",
+    "NO_QTY_SPECIFIED": "Aucune quantité spécifiée pour la production."
 }

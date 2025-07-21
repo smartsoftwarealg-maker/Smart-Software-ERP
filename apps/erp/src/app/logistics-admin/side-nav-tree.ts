@@ -111,7 +111,7 @@ export const logisticsAdminNavTree: SideNavNode = {
             name: 'LOGISTICS_AGENT_MERGE',
             icon: 'fa-solid fa-merge',
             route: ABS_LOGISTICS_AGENT_MERGE,
-            accessRights: 'DeliveryTime'
+            accessRights: 'AgentMerge'
         },
         {
             name: 'LOGISTICS_ORDER_ANOMALIES',
