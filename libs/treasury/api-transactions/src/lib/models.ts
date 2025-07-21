@@ -35,4 +35,12 @@ export interface TTransactionLine {
     invoiceDate?: Date
 }
 
+export interface TImport{
+    journal: number;
+    date: Date;
+    from: Date;
+    to: Date;
+    consolidated: Boolean;
+}
+
 export interface Summary{journal: string, period: number, balance: number, rTotal: number}

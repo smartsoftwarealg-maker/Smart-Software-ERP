@@ -1,0 +1,50 @@
+<mat-card>
+    <form [formGroup]="form" novalidate>
+
+        <mat-form-field class="default-50">
+            <mat-label translate>Journal</mat-label>
+            <input matInput formControlName="journal" disabled>
+        </mat-form-field>
+
+        <mat-form-field class="default-50">
+            <mat-label translate>COMMON_DATE</mat-label>
+            <ss-date-picker formControlName="date"
+                            [type]="'date'"
+                            [required]=true>
+            </ss-date-picker>
+        </mat-form-field>
+
+        <mat-form-field class="default-50">
+            <mat-label translate>COMMON_FROM</mat-label>
+            <ss-date-picker formControlName="from"
+                            [type]="'date'"
+                            [required]=true>
+            </ss-date-picker>
+        </mat-form-field>
+
+        <mat-form-field class="default-50">
+            <mat-label translate>COMMON_TO</mat-label>
+            <ss-date-picker formControlName="to"
+                            [type]="'date'"
+                            [required]=true>
+            </ss-date-picker>
+        </mat-form-field>
+
+        <mat-checkbox formControlName="consolidated" class="default-50">
+            <span translate>Consolidated</span>
+        </mat-checkbox>
+
+    </form>
+</mat-card>
+
+<div class="ctrl-div">
+    <button mat-raised-button color="warn" (click)="cancel()">
+        {{ 'COMMON_CANCEL' | translate }}
+        <i class="fas fa-rotate-left icon"></i>
+    </button>
+
+    <button mat-raised-button color="primary" (click)="onImport()" [disabled]="!form.valid">
+        {{ 'COMMON_IMPORT' | translate }}
+        <i class="fas fa-file-import icon"></i>
+    </button>
+</div>
