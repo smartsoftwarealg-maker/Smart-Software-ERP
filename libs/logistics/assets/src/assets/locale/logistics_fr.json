@@ -188,5 +188,9 @@
     "FT_GUARANTEE":          "Garantie après taxes",
     "PROJECT_BLOCKED":       "Projet bloqué",
     "AGENT_MERGE":           "Fusion de tiers",
-    "MERGE":                 "Fusionner"
+    "MERGE":                 "Fusionner",
+    "CEMENT_PROJECTS":       "Projets de ciment",
+    "CEMENT_PROJECT":        "Projet de ciment",
+    "MASTER_WORK":           "Œuvre magistrale",
+    "ODS_DATE":              "Date des O.D.S"
 }

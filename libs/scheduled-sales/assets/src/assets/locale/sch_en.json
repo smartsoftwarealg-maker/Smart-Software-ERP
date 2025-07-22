@@ -56,5 +56,6 @@
     "YES":               "Yes",
     "NO":                "No",
     "POLL_HISTORY":      "History poll charts",
-    "TEST":              "Test"
+    "TEST":              "Test",
+    "DAILY_RATE":        "Daily rate"
 }

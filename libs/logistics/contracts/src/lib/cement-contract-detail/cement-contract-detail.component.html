@@ -1,0 +1,233 @@
+<mat-card>
+    <mat-card-content>
+        @if (form !== null) {
+            <form novalidate [formGroup]="form">
+                <mat-form-field id="contractNo" class="default-50 sm-100">
+                    <mat-label translate>COMMON_NUMBER</mat-label>
+                    <input matInput formControlName="contractNo" type="text" autofocus maxlength="15" required>
+                    @if (form.controls['contractNo'].invalid) {
+                        <mat-error [translate]="{maxLen: 15}">COMMON_FIELD_MAX_LENGTH</mat-error>
+                    }
+                </mat-form-field>
+
+                <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>COMMON_DATE</mat-label>
+                    <ss-date-picker formControlName="projDate"></ss-date-picker>
+                </mat-form-field>
+
+                <mat-form-field id="description" class="default-50 sm-100">
+                    <mat-label translate>ADMINISTRATION_DESCRIPTION</mat-label>
+                    <input matInput formControlName="description" type="text" required>
+                    @if (form.controls['description'].invalid) {
+                        <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+                    }
+                </mat-form-field>
+
+                <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>LOGISTICS_CUSTOMER</mat-label>
+                    <ss-auto-complete matInput
+                                      [model]="customerLookupModel"
+                                      formControlName="customer">
+                    </ss-auto-complete>
+                    @if (form.controls['customer'].invalid) {
+                        <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+                    }
+                </mat-form-field>
+
+                <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>COMMON_FROM</mat-label>
+                    <ss-date-picker formControlName="fromDate"></ss-date-picker>
+                </mat-form-field>
+
+                <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>COMMON_TO</mat-label>
+                    <ss-date-picker formControlName="toDate"></ss-date-picker>
+                </mat-form-field>
+
+                <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>COMMON_WILAYA</mat-label>
+                    <ss-auto-complete matInput
+                                      [model]="wilayaLookup"
+                                      formControlName="wilaya">
+                    </ss-auto-complete>
+                    @if (form.controls['wilaya'].invalid) {
+                        <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+                    }
+                </mat-form-field>
+
+                <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>COMMON_TYPE</mat-label>
+                    <ss-auto-complete matInput
+                                      [model]="typeLookup"
+                                      formControlName="projType">
+                    </ss-auto-complete>
+                    @if (form.controls['projType'].invalid) {
+                        <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+                    }
+                </mat-form-field>
+
+                <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>COMMON_MOTIVE</mat-label>
+                    <input matInput formControlName="projMotive" type="text" maxlength="70">
+                </mat-form-field>
+
+                <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>LOGISTICS_AWARD_PROCEDURE</mat-label>
+                    <ss-auto-complete matInput
+                                      [model]="awardLookup"
+                                      formControlName="awardProcedure">
+                    </ss-auto-complete>
+                </mat-form-field>
+
+
+                <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>LOGISTICS_ARTICLE_NO</mat-label>
+                    <input matInput formControlName="fiscalId" type="text" maxlength="70">
+                </mat-form-field>
+
+                <div id="manager" class="default-50 sm-100">
+                    <mat-checkbox formControlName="isBlocked" translate>ADMINISTRATION_BLOCKED</mat-checkbox>
+                </div>
+
+            </form>
+        }
+    </mat-card-content>
+</mat-card>
+
+@if (id) {
+    <mat-accordion>
+        <mat-expansion-panel #details
+                             expanded="false"
+                             [class]="getPanelHeaderClass('articles', details)"
+                             (opened)="panelOpened('')"
+                             class="width-div">
+            <mat-expansion-panel-header>
+                <mat-panel-title translate>
+                    LOGISTICS_CEMENT
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            @if (shownPanel === '') {
+                @if (form !== null) {
+                    <form novalidate [formGroup]="form">
+                        <mat-form-field class="default-50 sm-100">
+                            <mat-label translate>COMMON_QTY</mat-label>
+                            <input matInput formControlName="qty" type="number" autofocus required>
+                            @if (form.controls['qty'].invalid) {
+                                <mat-error [translate]="{maxLen: 15}">COMMON_FIELD_MAX_LENGTH</mat-error>
+                            }
+                        </mat-form-field>
+                        <mat-form-field class="default-50 sm-100">
+                            <mat-label translate>SCH_MONTHLY_RATE</mat-label>
+                            <input matInput formControlName="monthlyRate" type="number" autofocus required>
+                            @if (form.controls['monthlyRate'].invalid) {
+                                <mat-error [translate]="{maxLen: 15}">COMMON_FIELD_MAX_LENGTH</mat-error>
+                            }
+                        </mat-form-field>
+                        <mat-form-field class="default-50 sm-100">
+                            <mat-label translate>SCH_DAILY_RATE</mat-label>
+                            <input matInput formControlName="dailyRate" type="number" autofocus>
+                            @if (form.controls['dailyRate'].invalid) {
+                                <mat-error [translate]="{maxLen: 15}">COMMON_FIELD_MAX_LENGTH</mat-error>
+                            }
+                        </mat-form-field>
+                        <mat-form-field class="default-50 sm-100">
+                            <mat-label translate>SCH_SCHEDULED_QTY</mat-label>
+                            <input matInput formControlName="scheduledQty" type="number" autofocus required>
+                            @if (form.controls['scheduledQty'].invalid) {
+                                <mat-error [translate]="{maxLen: 15}">COMMON_FIELD_MAX_LENGTH</mat-error>
+                            }
+                        </mat-form-field>
+                        <mat-form-field class="default-50 sm-100">
+                            <mat-label translate>TRS_DUE_DAYS</mat-label>
+                            <input matInput formControlName="dueDays" type="number" autofocus required>
+                            @if (form.controls['dueDays'].invalid) {
+                                <mat-error [translate]="{maxLen: 15}">COMMON_FIELD_MAX_LENGTH</mat-error>
+                            }
+                        </mat-form-field>
+                        <mat-form-field class="default-50 sm-100">
+                            <mat-label translate>LOGISTICS_ACTIVITY</mat-label>
+                            <ss-auto-complete matInput autofocus
+                                              formControlName="activity"
+                                              [model]="activityLookup">
+                            </ss-auto-complete>
+                            @if (form.controls['activity'].invalid) {
+                                <mat-error [translate]="{maxLen: 15}">COMMON_FIELD_MAX_LENGTH</mat-error>
+                            }
+                        </mat-form-field>
+                        <mat-form-field class="default-50 sm-100">
+                            <mat-label translate>SCH_SECTOR</mat-label>
+                            <ss-auto-complete matInput autofocus
+                                              formControlName="sector"
+                                              [model]="sectorLookup">
+                            </ss-auto-complete>
+                            @if (form.controls['sector'].invalid) {
+                                <mat-error [translate]="{maxLen: 15}">COMMON_FIELD_MAX_LENGTH</mat-error>
+                            }
+                        </mat-form-field>
+                        <mat-form-field class="default-50 sm-100">
+                            <mat-label translate>LOGISTICS_MASTER_WORK</mat-label>
+                            <ss-auto-complete matInput autofocus
+                                              formControlName="masterWork"
+                                              [model]="workMasterLookup">
+                            </ss-auto-complete>
+                            @if (form.controls['masterWork'].invalid) {
+                                <mat-error [translate]="{maxLen: 15}">COMMON_FIELD_MAX_LENGTH</mat-error>
+                            }
+                        </mat-form-field>
+                        <mat-form-field class="default-50 sm-100">
+                            <mat-label translate>LOGISTICS_ODS</mat-label>
+                            <input matInput formControlName="ods" autofocus>
+                            @if (form.controls['ods'].invalid) {
+                                <mat-error [translate]="{maxLen: 15}">COMMON_FIELD_MAX_LENGTH</mat-error>
+                            }
+                        </mat-form-field>
+                        <mat-form-field class="default-50 sm-100">
+                            <mat-label translate>LOGISTICS_ODS_DATE</mat-label>
+                            <ss-date-picker formControlName="projDate"></ss-date-picker>
+                            @if (form.controls['odsDate'].invalid) {
+                                <mat-error [translate]="{maxLen: 15}">COMMON_FIELD_MAX_LENGTH</mat-error>
+                            }
+                        </mat-form-field>
+                        <mat-form-field class="default-50 sm-100">
+                            <mat-label translate>SCH_REPRESENTATIVE</mat-label>
+                            <input matInput formControlName="representative" autofocus>
+                            @if (form.controls['representative'].invalid) {
+                                <mat-error [translate]="{maxLen: 15}">COMMON_FIELD_MAX_LENGTH</mat-error>
+                            }
+                        </mat-form-field>
+                    </form>
+                }
+            }
+        </mat-expansion-panel>
+
+        <mat-expansion-panel #articles
+                             expanded="false"
+                             [class]="getPanelHeaderClass('articles', articles)"
+                             class="width-div"
+                             (opened)="panelOpened('articles')">
+            <mat-expansion-panel-header>
+                <mat-panel-title translate>
+                    STOCK_ARTICLES
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            @if (shownPanel === 'articles') {
+                <ss-contract-article-main></ss-contract-article-main>
+            }
+        </mat-expansion-panel>
+
+        <mat-expansion-panel #archivePanel
+                             [class]="getPanelHeaderClass('archives', archivePanel)"
+                             class="width-div"
+                             (opened)="panelOpened('archives')">
+            <mat-expansion-panel-header>
+                <mat-panel-title translate>
+                    COMMON_ARCHIVE
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            @if (shownPanel === 'archives') {
+                <ss-app-archive-main [id]="id" [appId]="6" [editable]="isEditable"></ss-app-archive-main>
+            }
+        </mat-expansion-panel>
+
+    </mat-accordion>
+}

@@ -1,0 +1,35 @@
+.agent-div {
+    width: min(96%, 1200px);
+    margin: 4px auto 0;
+}
+mat-form-field {
+    min-width: 350px;
+}
+.container_div {
+    width: min(96%, 1200px);
+    margin: 0 auto;
+    overflow-x: auto;
+    min-height: calc(100% - 150px);
+}
+
+.content-div {
+    width: 100%;
+    min-width: 1000px;
+}
+
+.mat-column-description,
+.mat-column-customerName {
+    flex: 2 1 250px;
+}
+
+.mat-column-contractNo,
+.mat-column-wilaya {
+    flex: 1 1 100px;
+}
+.mat-column-contractNo,
+.mat-column-projDate,
+.mat-column-toDate,
+.mat-column-fromDate {
+    flex: 1 1 90px;
+    justify-content: center;
+}

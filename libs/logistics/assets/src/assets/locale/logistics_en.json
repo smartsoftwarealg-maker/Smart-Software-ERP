@@ -189,6 +189,10 @@
     "FT_GUARANTEE":          "Full tax guarantee",
     "PROJECT_BLOCKED":       "Project blocked",
     "AGENT_MERGE":           "Agent merge",
-    "MERGE":                 "Merge"
+    "MERGE":                 "Merge",
+    "CEMENT_PROJECTS":       "Cement projects",
+    "CEMENT_PROJECT":        "Cement project",
+    "MASTER_WORK":           "Master work",
+    "ODS_DATE":              "O.D.S date"
 
 }
