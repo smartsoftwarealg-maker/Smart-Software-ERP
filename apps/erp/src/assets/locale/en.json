@@ -57,6 +57,7 @@
     "Child": "Child",
     "SProject":        "Project",
     "PProject":        "Contract",
+    "AgentMerge": "Agent merge",
 
 
     "RREQUEST": "Part request",

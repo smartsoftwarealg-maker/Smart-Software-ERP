@@ -6,7 +6,7 @@ import { ActivatedRoute, NavigationEnd, Router, RouterOutlet } from '@angular/ro
 import { UntypedFormBuilder, UntypedFormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import { TreasuryGroupService } from '@ss/common/api-lookup';
-import { LoginService, MaterialModule } from '@ss/common/api-common';
+import { dateToStr, LoginService, MaterialModule } from '@ss/common/api-common';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {AgentLookupModel, AgentService} from '@ss/logistics/api-agent';
 import {filter} from 'rxjs/operators';
@@ -132,6 +132,8 @@ export class TransactionDetailComponent extends BaseEntityDetailComponent<TTrans
 
     override readForm(): TTransaction {
         const value = this.form.getRawValue();
+        console.log(value.transacDate);
+        value.transacDate = dateToStr(value.transacDate ? value.transacDate : this.entitySrv.date);
         value.balance = (value.income ||0) - (value.expense || 0);
         value.journalId = this.entitySrv.journalId;
         if (!this.entitySrv.isBank()) {

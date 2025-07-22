@@ -191,16 +191,16 @@ export class BaseEntityListComponent<T extends { id: number, email?: string }> i
             .pipe(switchMap(() => this.getPage()))
             .subscribe({
                 next: data => {
-                            this.finishLoading(data);
-                            if (callback) {
-                                callback();
-                            }
-                        },
+                    this.finishLoading(data);
+                    if (callback) {
+                        callback();
+                    }
+                },
                 error: err => {
-                            this.data = []; // clear everything;
-                            this.shellSrv.setLoading(false); // stop the animation
-                            throw err;
-                        }
+                    this.data = []; // clear everything;
+                    this.shellSrv.setLoading(false); // stop the animation
+                    throw err;
+                }
             }
             );
     }
@@ -238,7 +238,7 @@ export class BaseEntityListComponent<T extends { id: number, email?: string }> i
         this.viewReportButton.visible = true;
         this.refreshButton.visible = true;
     }
-    // eslint-disable-next-line @typescript-eslint/no-empty-function
+
     public releaseResources() {
     }
 
@@ -293,7 +293,7 @@ export class BaseEntityListComponent<T extends { id: number, email?: string }> i
                 const w = window.open(fileURL, '_blank');
                 setTimeout(() => {
                     try {
-                        w.document.title = `${this.formReport}_${this.selected}.pdf`
+                        w.document.title = `${this.formReport}_${this.selected}.pdf`;
                     } catch (e: any) {}
                 }, 200);
             });
