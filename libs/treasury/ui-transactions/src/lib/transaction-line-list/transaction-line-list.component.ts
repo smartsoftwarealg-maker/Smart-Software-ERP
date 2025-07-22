@@ -23,7 +23,6 @@ import { TranslatePipe } from '@ss/common/ui-lang';
     styleUrls: ['./transaction-line-list.component.scss'],
     standalone: true,
     imports: [
-        NgIf,
         MatFormField,
         MatLabel,
         TranslateDirective,
@@ -120,7 +119,7 @@ export class TransactionLineListComponent implements OnInit, OnDestroy {
                                 .subscribe({
                                     next: () => {
                                         this.snackBarSrv.showSuccessMessage();
-                                        this.refresh();
+                                    this.refresh();
                                     },
                                     error: err => {
                                         this.snackBarSrv.showFailureMessage();

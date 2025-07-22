@@ -422,5 +422,6 @@
     "COMPANY_NAME": "Company Name",
     "LAST_UPDATE_TIME": "Last update time",
     "DESTINATION": "Destination",
-    "ONE_BY_ONE": "One by one"
+    "ONE_BY_ONE": "One by one",
+    "CRM": "CRM"
 }

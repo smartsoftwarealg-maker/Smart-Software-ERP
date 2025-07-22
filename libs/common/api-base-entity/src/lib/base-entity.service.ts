@@ -15,6 +15,7 @@ export class BaseEntityService<T> {
             .pipe(
                 map(data => {
                     pageModel.elementCount = data.itemCount;
+                    console.log('itemCount', data.itemCount);
                     return data.body;
                 })
             );

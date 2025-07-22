@@ -6,17 +6,17 @@ import {
     ACCTransaction, AccTransactionLineService,
     AccTransactionService
 } from '@ss/accounting/accounting-api';
-import { ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup, Validators } from "@angular/forms";
+import { ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import {SnackBarService} from '@ss/common/ui-shell';
-import { ActivatedRoute, Router, RouterEvent, RouterModule } from "@angular/router";
-import { ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
-import {Lookup, LookupsService} from '@ss/common/api-lookup';
-import { LoginService, MaterialModule } from "@ss/common/api-common";
+import { ActivatedRoute, Router, RouterEvent, RouterModule } from '@angular/router';
+import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
+import {Lookup} from '@ss/common/api-lookup';
+import { LoginService, MaterialModule } from '@ss/common/api-common';
 import { filter, Observable, of, Subscription } from 'rxjs';
 import {switchMap, tap} from 'rxjs/operators';
-import { DatePickerComponent, maxDate, minDate } from "@ss/common/ui-datepicker";
-import { ACC_TRANSACTION_ARCHIVES } from "@ss/common/app-archive";
-import { CommonModule } from "@angular/common";
+import { DatePickerComponent, maxDate, minDate } from '@ss/common/ui-datepicker';
+import { ACC_TRANSACTION_ARCHIVES } from '@ss/common/app-archive';
+import { CommonModule } from '@angular/common';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 
@@ -157,7 +157,7 @@ export class TransactionDetailComponent implements OnInit, OnDestroy {
                     if (id > 0) {
                         this.cancel();
                     } else {
-                        this.router.navigate([`/app/accounting/transactions/${res}/detail`]).then()
+                        this.router.navigate([`/app/accounting/transactions/${res}/detail`]).then();
                     }
                 }
             });
