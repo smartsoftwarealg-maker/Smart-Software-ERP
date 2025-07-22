@@ -57,5 +57,6 @@
     "YES":                "Oui",
     "NO":                 "Non",
     "POLL_HISTORY":       "Sondage historique",
-    "TEST":               "Test"
+    "TEST":               "Test",
+    "DAILY_RATE":         "Tarif journalier"
 }

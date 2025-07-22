@@ -187,5 +187,9 @@
     "PROJECT_BLOCKED":       "المشروع محظور",
     "CREATION_TIME": "تاريخ الإنشاء",
     "AGENT_MERGE":           "الشركاء تجميع",
-    "MERGE":                 "تجميع"
+    "MERGE":                 "تجميع",
+    "CEMENT_PROJECTS":       "مشاريع الأسمنت",
+    "CEMENT_PROJECT":        "مشروع الأسمنت",
+    "MASTER_WORK":           "العمل الرئيسي",
+    "ODS_DATE":              "تاريخ أمر الإنطلاق"
 }

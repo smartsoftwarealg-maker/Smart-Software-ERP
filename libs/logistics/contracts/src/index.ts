@@ -8,3 +8,5 @@ export * from './lib/contract-api.class';
 export * from './lib/purchase-contract-list/purchase-contract-list.component';
 export * from './lib/purchase-contract-detail/purchase-contract-detail.component';
 export * from  './lib/purchase-contract.service';
+export * from './lib/cement-contract-detail/cement-contract-detail.component';
+export * from './lib/cement-contract-list/cement-contract-list.component';

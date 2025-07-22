@@ -1,7 +1,7 @@
 
 import {SideNavNode} from '@ss/common/api-common';
 import {
-    ABS_CONTRACTS_AWARD_PROCEDURE, ABS_CONTRACTS_CONTRACT_URL,
+    ABS_CONTRACTS_AWARD_PROCEDURE, ABS_CONTRACTS_CEMENT_URL, ABS_CONTRACTS_CONTRACT_URL,
     ABS_CONTRACTS_PROJECT_MOTIVE,
     ABS_CONTRACTS_PROJECT_TYPE,
     ABS_CONTRACTS_PROJECT_URL
@@ -42,5 +42,12 @@ export const contractsNavTree: SideNavNode = {
             route: ABS_CONTRACTS_CONTRACT_URL,
             accessRights: 'PProject'
         },
+        {
+            name: 'LOGISTICS_CEMENT_PROJECTS',
+            icon: 'fa-solid fa-person-digging',
+            route: ABS_CONTRACTS_CEMENT_URL,
+            accessRights: 'SProject'
+        },
+
     ]
 };

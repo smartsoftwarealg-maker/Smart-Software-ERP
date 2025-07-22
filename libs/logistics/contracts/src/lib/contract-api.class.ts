@@ -43,6 +43,18 @@ export interface Project {
     wilayaName?: string;
     fiscalId?: string;
     isBlocked: boolean;
+    qty: number;
+    monthlyRate: number;
+    dailyRate?: number;
+    scheduledQty: number;
+    dueDays: number;
+    activity?: number;
+    sector?: number;
+    masterWork?: number;
+    ods?: string;
+    odsDate?: Date;
+    representative?: string;
+    extendedMode?: boolean;
 }
 
 export interface ProjectArticle {

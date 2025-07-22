@@ -3,7 +3,7 @@ import {
     CONTRACTS_PROJECT_TYPE_URL,
     CONTRACT_PROJECT_URL,
     CONTRACTS_PROJECT_MOTIVE_URL,
-    CONTRACTS_AWARD_PROCEDURE_URL, CONTRACTS_PURCHASE_CONTRACT_URL, SALES_COMPENSATION_URL
+    CONTRACTS_AWARD_PROCEDURE_URL, CONTRACTS_PURCHASE_CONTRACT_URL, SALES_COMPENSATION_URL, CONTRACT_CEMENT_URL
 } from '../common';
 import {CanDeactivateService, LIST_URL} from '@ss/common/api-common';
 import {
@@ -13,6 +13,8 @@ import {
     ProjectTypeListComponent
 } from '@ss/common/ui-lookup';
 import {
+    CementContractDetailComponent,
+    CementContractListComponent,
     ContractArticleDetailComponent,
     ContractArticleListComponent,
     PurchaseContractDetailComponent,
@@ -130,6 +132,39 @@ export const mainRoutes: Routes = [
             {
                 path: ':id',
                 component: PurchaseContractDetailComponent,
+                canActivate: [loginGuard],
+                canDeactivate: [CanDeactivateService],
+                children: [
+                    {
+                        path: 'articles',
+                        children: [
+                            {path: '', component: ContractArticleListComponent, pathMatch: 'full'},
+                            {path: ':id', component: ContractArticleDetailComponent }
+                        ]
+                    },
+                    {
+                        path: 'archives',
+                        children: [
+                            {path: '', component: AppArchiveListComponent, pathMatch: 'full', data: { appId: PART_ARCHIVES }},
+                            {path: ':id', component: AppArchiveDetailComponent, data: { appId: CONTRACT_ARCHIVES }}
+                        ]
+                    },
+                ]
+            },
+            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
+        ]
+    },
+    {
+        path: CONTRACT_CEMENT_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: CementContractListComponent,
+                canActivate: [loginGuard],
+            },
+            {
+                path: ':id',
+                component: CementContractDetailComponent,
                 canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService],
                 children: [
