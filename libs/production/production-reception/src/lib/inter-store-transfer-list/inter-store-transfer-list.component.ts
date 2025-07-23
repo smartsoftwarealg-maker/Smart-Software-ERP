@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
@@ -13,6 +13,7 @@ import { CommonModule } from '@angular/common';
 import { PaginationComponent } from '@ss/common/ui-pagination';
 import { TranslateDirective } from '@ss/common/ui-lang';
 import { InterStoreTransferService } from '../interStoreTransfer.service';
+import { InterStoreTransferLinesService } from '../interStoreTransfer-lines.service';
 
 @Component({
     selector: 'ss-production-inter-store-transfer-list',
@@ -27,6 +28,8 @@ import { InterStoreTransferService } from '../interStoreTransfer.service';
     ],
 })
 export class InterStoreTransferListComponent extends BaseEntityListComponent<InterStoreTransfer> {
+    #interStoreTransferLinesSrv = inject(InterStoreTransferLinesService);
+
     displayedColumns = ['number', 'date', 'storeDescription', 'reference'];
 
     constructor(
@@ -50,5 +53,10 @@ export class InterStoreTransferListComponent extends BaseEntityListComponent<Int
             pagPersistSrv,
             'PROD_INTER_STORE_TRANSFER',
         );
+    }
+
+    override selectRow(row: InterStoreTransfer) {
+        super.selectRow(row);
+        this.#interStoreTransferLinesSrv.setParentId(row?.id||0);
     }
 }

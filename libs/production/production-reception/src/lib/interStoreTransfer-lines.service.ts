@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpService} from '@ss/common/api-common';
-import { InterStoreTransfer, InterStoreTransferLine, TransactionLinesClass } from '@ss/logistics/api-transaction';
+import { InterStoreTransferLine } from '@ss/logistics/api-transaction';
 import { BaseEntityService } from '@ss/common/api-base-entity';
 
 @Injectable({
@@ -10,6 +10,10 @@ export class InterStoreTransferLinesService extends BaseEntityService<InterStore
 
     constructor(protected override httpSrv: HttpService) {
         super(httpSrv,'/detail' ,'/store-transfers' );
-        this.setParentId(0);
     }
+
+    override setParentId(id: number) {
+        super.setParentId(id);
+    }
+
 }

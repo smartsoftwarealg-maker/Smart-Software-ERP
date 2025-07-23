@@ -5,6 +5,7 @@ import { BaseChildEntityListComponent } from '@ss/common/ui-base-entity';
 import { CommonModule } from '@angular/common';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 import { InterStoreTransferLinesService } from '../interStoreTransfer-lines.service';
+import { PaginationComponent } from '@ss/common/ui-pagination';
 
 @Component({
     selector: 'ss-production-inter-store-transfer-lines-list',
@@ -16,11 +17,13 @@ import { InterStoreTransferLinesService } from '../interStoreTransfer-lines.serv
         MaterialModule,
         TranslateDirective,
         TranslatePipe,
-    ],
+        PaginationComponent
+    ]
 })
 export class InterStoreTransferLinesListComponent extends BaseChildEntityListComponent<InterStoreTransferLine> {
     override displayedColumns = [
-        'sourceStore',
+        'storeDescription',
+        'lotDescription',
         'sourceDescription',
         'qty',
     ];

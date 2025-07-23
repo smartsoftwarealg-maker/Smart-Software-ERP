@@ -164,6 +164,8 @@ export interface InterStoreTransferLine {
     destinationRef: string;
     destinationDescription?: string;
     destinationStore?:number;
+    storeDescription?: string;
+    lotDescription?: string;
 }
 
 export const COSTS_URL = '/costs';

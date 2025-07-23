@@ -93,5 +93,9 @@
     "RECALC_RECEPTIONS":       "Recalculer les réceptions",
     "LOT":                     "Lot",
     "COMPLIANT":               "Conforme",
-    "PRODUCTION_STORE":        "magasin de production"
+    "PRODUCTION_STORE":        "magasin de production",
+    "SOURCE_STORE":       "Source Store",
+    "SOURCE_ARTICLE":     "Source Article",
+    "DESTINATION_STORE":  "Destination Store",
+    "DESTINATION_ARTICLE":"Destination Article"
 }
