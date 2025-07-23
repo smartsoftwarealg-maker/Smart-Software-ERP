@@ -24,14 +24,20 @@
                 <input matInput [formControl]="toYear" type="number" required step="1">
             </mat-form-field>
         </fieldset>
-        <div id="manager">
+        <div class="options__div">
             <mat-checkbox [formControl]="compact" translate>COMMON_COMPACT</mat-checkbox>
+            <mat-checkbox [formControl]="consolidated" translate>REMUN_INCLUDE_SPECIAL_MONTHS</mat-checkbox>
         </div>
         <div class="btn__div">
             <mat-form-field class="default-50 sm-100">
                 <mat-label translate>COMMON_SEARCH</mat-label>
                 <input matInput [formControl]="formulaFilter" type="text">
             </mat-form-field>
+            <button type="button"
+                    mat-raised-button
+                    color="accent"
+                    (click)="clearSelection(formulas)"> {{ 'COMMON_CLEAR' | translate }}
+            </button>
             <button type="button"
                     mat-raised-button
                     color="primary"
@@ -56,13 +62,14 @@
             <ng-template mat-tab-label>
                 {{ 'COMMON_FORMULAS' | translate }}
             </ng-template>
-            <mat-selection-list #formulas>
+            <mat-selection-list #formulas (selectionChange)="formulaSelected($event)" >
                 @for (f of filteredFormulas(); track f.id) {
                     <mat-list-option [value]="f">
                         {{f.variable}} {{ f.description }}
                     </mat-list-option>
                 }
             </mat-selection-list>
+            <div class="selection__div b-primary"> {{ formulaSelection()}}</div>
         </mat-tab>
     </mat-tab-group>
 </div>
