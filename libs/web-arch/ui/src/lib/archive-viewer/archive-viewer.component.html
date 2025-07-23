@@ -1,5 +1,7 @@
 <div class="container">
     <div class="img__container">
-        <img *ngIf="imgSrc" [src]="imgSrc "  >
+        @if (imgSrc) {
+            <img [src]="imgSrc ">
+        }
     </div>
 </div>

@@ -56,7 +56,10 @@ mat-tab-group {
 .mat-column-v9 {
     flex: 1 1 100px;
 }
-
+.options__div {
+    display: flex;
+    gap: 0.5em;
+}
 
 .mat-column-id {
     flex: 1 1 80px;
@@ -72,6 +75,15 @@ mat-tab-group {
     flex: 1 1 100px;
 }
 
+.selection__div {
+    font-weight: bolder;
+    font-size: 0.8em;
+    height: 1.2em;
+    width: 90%;
+    margin: 8px auto;
+    padding: 0.2em;
+q}
+
 mat-header-cell.mat-mdc-header-cell.mdc-data-table__header-cell.cdk-header-cell {
     font-size: 0.7em;
 }
@@ -81,3 +93,4 @@ mat-header-cell.mat-mdc-header-cell.mdc-data-table__header-cell.cdk-header-cell 
         flex-direction: column;
     }
 }
+

@@ -45,12 +45,13 @@ export class ArchiveViewerService extends BaseEntityService<PAYArchive> {
     }
 
     refreshList(from: number,
-                to: number,
-                formulas: string,
-                columns: string,
-                compact: boolean,
-                offset: number,
-                limit: number): Observable<{ itemCount: number; body: PAYArchive[] }> {
+        to: number,
+        formulas: string,
+        columns: string,
+        compact: boolean,
+        consolidated: boolean,
+        offset: number,
+        limit: number): Observable<{ itemCount: number; body: PAYArchive[] }> {
         this._from     = from;
         this._to       = to;
         this._formulas = formulas;
@@ -61,6 +62,7 @@ export class ArchiveViewerService extends BaseEntityService<PAYArchive> {
             .set('formula', formulas)
             .set('compact', this._compact)
             .set('columns', this._columns)
+            .set('consolidated', consolidated + '')
             .set('to', to);
 
         return super.getList(offset, limit, null, null, params)
