@@ -1,4 +1,4 @@
-import { Component, inject, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import {
     BaseTransactionLinesDetailComponent, DOC_RECEPTION, TransactionLine
 } from '@ss/logistics/api-transaction';

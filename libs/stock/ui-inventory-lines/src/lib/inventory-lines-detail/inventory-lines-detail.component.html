@@ -30,7 +30,7 @@
                         <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
                     }
                 </mat-form-field>
-                @if (form.controls['qtySatisfied'].value < 0.0001) {
+                @if (form.controls['qtySatisfied'].value < 0.0001 && usesLots()) {
                     <button mat-mini-fab
                             (click)="showLotInputDialog()"
                             color="accent"

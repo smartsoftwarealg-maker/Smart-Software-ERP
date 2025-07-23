@@ -8,7 +8,7 @@ import {debounceTime, distinctUntilChanged, switchMap, tap} from 'rxjs/operators
 import { LoginService, PaginationModel } from '@ss/common/api-common';
 import {TransactionLine} from './transaction-line';
 import {FormControl} from '@angular/forms';
-import { Directive, inject, Input, OnDestroy, OnInit } from '@angular/core';
+import { Directive, inject, Input, OnDestroy, OnInit, signal } from '@angular/core';
 import { TransactionLinesClass } from './transaction-lines.class';
 import { OptionService } from '@ss/logistics/ui-options';
 
@@ -23,6 +23,7 @@ export class BaseTransactionLinesListComponent implements OnInit, OnDestroy {
     data: TransactionLine[];
     selectedId: number;
     selectedRow: TransactionLine = null;
+    usesLots = signal(false);
 
     displayedColumns: string[] = [];
 
@@ -44,11 +45,17 @@ export class BaseTransactionLinesListComponent implements OnInit, OnDestroy {
     ngOnInit() {
         this.parentId = this.detailSrv.getParentId();
         this._isEditable_ = this.detailSrv.editable;
-        this.loadDetailLines().subscribe(() => this.shellSrv.setLoading(false));
+        // this.loadDetailLines().subscribe(() => this.shellSrv.setLoading(false));
 
         this.#optionSrv
             .get(this.#loginSrv.appCtx.center)
-            .subscribe(res => this.displayedColumns = this.displayedColumns.filter(e => res.usesLots || (e !== 'lotNumber' && e !== 'expirationDate' && e !== 'storeName') ));
+            .pipe(
+                tap(res => {
+                    this.usesLots.set(res.usesLots);
+                    this.displayedColumns = this.displayedColumns.filter(e => res.usesLots || (e !== 'lotNumber' && e !== 'expirationDate' && e !== 'storeName') );
+                }),
+                switchMap(() => this.loadDetailLines()))
+            .subscribe(() => this.shellSrv.setLoading(false));
 
         this.subscription = this.searchText
             .valueChanges
