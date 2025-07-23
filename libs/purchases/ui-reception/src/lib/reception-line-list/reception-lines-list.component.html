@@ -31,19 +31,20 @@
             <ng-container matColumnDef="position">
                 <mat-header-cell *matHeaderCellDef translate>COMMON_POSITION</mat-header-cell>
                 <mat-cell *matCellDef="let e">
-                    {{e.position}}
+                    {{ e.position }}
                 </mat-cell>
             </ng-container>
 
             <ng-container matColumnDef="storeDescription">
-                <mat-header-cell *matHeaderCellDef translate>STOCK_STORE</mat-header-cell>
+                <mat-header-cell *matHeaderCellDef translate>{{ 'STOCK_STORE' }}</mat-header-cell>
                 <mat-cell *matCellDef="let e">
                     {{ e.storeDescription }}
                 </mat-cell>
             </ng-container>
 
             <ng-container matColumnDef="storeName">
-                <mat-header-cell *matHeaderCellDef translate>STOCK_STORE</mat-header-cell>
+                <mat-header-cell *matHeaderCellDef translate>{{usesLots()? 'STOCK_LOT' : 'STOCK_STORE'}}</mat-header-cell>
+
                 <mat-cell *matCellDef="let e">
                     {{ e.storeName }}
                 </mat-cell>
@@ -66,27 +67,27 @@
             <ng-container matColumnDef="qtySatisfied">
                 <mat-header-cell *matHeaderCellDef translate>LOGISTICS_QTY_SATISFIED</mat-header-cell>
                 <mat-cell *matCellDef="let e">
-                    {{ e.qtySatisfied | number : '1.2-3'}}
+                    {{ e.qtySatisfied | number : '1.2-3' }}
                 </mat-cell>
             </ng-container>
 
             <ng-container matColumnDef="price">
                 <mat-header-cell *matHeaderCellDef translate>LOGISTICS_PRICE</mat-header-cell>
                 <mat-cell *matCellDef="let e">
-                    {{ e.price | number : '1.2-2'}}
+                    {{ e.price | number : '1.2-2' }}
                 </mat-cell>
             </ng-container>
             <ng-container matColumnDef="total">
                 <mat-header-cell *matHeaderCellDef translate>COMMON_TOTAL</mat-header-cell>
                 <mat-cell *matCellDef="let e">
-                    {{ e.price * e.qtySatisfied | number : '1.2-3'}}
+                    {{ e.price * e.qtySatisfied | number : '1.2-3' }}
                 </mat-cell>
             </ng-container>
 
             <ng-container matColumnDef="vat">
                 <mat-header-cell *matHeaderCellDef translate>LOGISTICS_VAT</mat-header-cell>
                 <mat-cell *matCellDef="let e">
-                    {{ e.vat | number : '1.2-2'}}
+                    {{ e.vat | number : '1.2-2' }}
                 </mat-cell>
             </ng-container>
 

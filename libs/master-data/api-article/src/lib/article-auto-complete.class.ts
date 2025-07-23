@@ -20,6 +20,7 @@ export class ArticleAutoCompleteModel extends DefaultAutoCompleteModel<Article> 
 }
 
 export class LotAutoCompleteModel extends DefaultAutoCompleteModel<Lot> {
+    #showLot = false;
     readonly evenEmitter = new EventEmitter<number | string>();
 
     constructor(public storeNameSrv: LotsService) {
@@ -31,8 +32,11 @@ export class LotAutoCompleteModel extends DefaultAutoCompleteModel<Lot> {
     };
 
     override toString = (x: Lot) => x?
-        (!x.storeDescription || x.description === x.storeDescription? x.description : `${x.storeDescription}, ${x.description}`) :
+        (!x.storeDescription || x.description === x.storeDescription || !this.#showLot? x.description : `${x.storeDescription}, ${x.description}`) :
         '';
+    set showLot(value: boolean) {
+        this.#showLot = value;
+    }
 }
 
 export class ArticleIdAutoCompleteModel extends DefaultAutoCompleteModel<Article> {

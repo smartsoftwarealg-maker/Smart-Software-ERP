@@ -91,6 +91,7 @@ export abstract class BaseTransactionLinesDetailComponent extends AbstractEntity
                 tap(res => {
                     this.mainStore = res.mainStore;
                     this.usesLots.set(res.usesLots);
+                    this.storeLookup.showLot = res.usesLots;
                 }),
                 switchMap(() => this.entitySrv.getTransaction(this.parentId)),
                 tap(transac => this.agentId = transac.agent),
