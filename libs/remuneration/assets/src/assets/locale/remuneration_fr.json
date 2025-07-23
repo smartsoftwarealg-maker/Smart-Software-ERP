@@ -88,5 +88,6 @@
     "TO_TAKE":           "A prendre",
     "RETURNED_AMOUNT":   "Montant retourné",
     "IRG": "IRG",
-    "IRG_CALCULATOR":     "Calculateur IRG"
+    "IRG_CALCULATOR":     "Calculateur IRG",
+    "INCLUDE_SPECIAL_MONTHS": "Inclure les mois spéciaux"
 }

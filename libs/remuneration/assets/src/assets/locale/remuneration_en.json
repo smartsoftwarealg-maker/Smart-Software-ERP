@@ -86,6 +86,7 @@
     "EARNED":             "Earned",
     "TO_TAKE":            "To take",
     "RETURNED_AMOUNT":    "Returned amount",
-    "IRG": "IRG",
-    "IRG_CALCULATOR":     "IRG calculator"
+    "IRG":                "IRG",
+    "IRG_CALCULATOR":     "IRG calculator",
+    "INCLUDE_SPECIAL_MONTHS": "Include special months"
 }

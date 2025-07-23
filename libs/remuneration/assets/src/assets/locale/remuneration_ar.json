@@ -85,5 +85,6 @@
     "TO_TAKE": "المأخوذ",
     "RETURNED_AMOUNT": "المبلغ المرجع",
     "IRG": "ضريبة الدخل",
-    "IRG_CALCULATOR": "حاسبة الضريبة"
+    "IRG_CALCULATOR": "حاسبة الضريبة",
+    "INCLUDE_SPECIAL_MONTHS": "تضمين الأشهر الخاصة"
 }
