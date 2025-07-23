@@ -94,5 +94,9 @@
     "RECALC_RECEPTIONS":       "Recalculate receptions",
     "LOT":                     "Lot",
     "COMPLIANT":               "Compliant",
-    "PRODUCTION_STORE":        "Production store"
+    "PRODUCTION_STORE":        "Production store",
+    "SOURCE_STORE": "Source Store",
+    "SOURCE_ARTICLE": "Source Article",
+    "DESTINATION_STORE": "Destination Store",
+    "DESTINATION_ARTICLE": "Destination Article"
 }

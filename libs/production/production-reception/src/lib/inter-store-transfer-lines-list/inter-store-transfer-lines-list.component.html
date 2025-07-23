@@ -1,3 +1,4 @@
+
 <div class="main-container">
     <div class="add-button">
         @if (isEditable) {
@@ -29,15 +30,22 @@
 
     <div class="container_div">
         <mat-table mat-table [dataSource]="data$" class="main-table">
-            <ng-container matColumnDef="sourceStore">
-                <mat-header-cell *matHeaderCellDef translate>COMMON_SOURCE_STORE</mat-header-cell>
+            <ng-container matColumnDef="storeDescription">
+                <mat-header-cell *matHeaderCellDef translate>STOCK_STORE</mat-header-cell>
                 <mat-cell *matCellDef="let e">
-                    {{ e.sourceStore }}
+                    {{ e.storeDescription }}
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="lotDescription">
+                <mat-header-cell *matHeaderCellDef translate>STOCK_LOT</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{ e.lotDescription }}
                 </mat-cell>
             </ng-container>
 
             <ng-container matColumnDef="sourceDescription">
-                <mat-header-cell *matHeaderCellDef translate>COMMON_SOURCE_ARTICLE</mat-header-cell>
+                <mat-header-cell *matHeaderCellDef translate>COMMON_ARTICLE</mat-header-cell>
                 <mat-cell *matCellDef="let e">
                     {{ e.sourceDescription }}
                 </mat-cell>
@@ -69,4 +77,7 @@
                      *matRowDef="let row; columns: displayedColumns"></mat-row>
         </mat-table>
     </div>
+</div>
+<div class="pagination-container b-b-background">
+    <ss-pagination [paginationModel]="paginator"></ss-pagination>
 </div>

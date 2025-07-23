@@ -17,6 +17,8 @@ import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { InterStoreTransferService } from '../interStoreTransfer.service';
 import { StoreService } from '@ss/common/api-lookup';
 import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
+import { InterStoreTransferLinesService } from '../interStoreTransfer-lines.service';
+import { Observable } from 'rxjs';
 
 @Component({
     selector: 'ss-production-inter-store-transfer-detail',
@@ -36,9 +38,10 @@ import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui
 export class InterStoreTransferDetailComponent
     extends BaseEntityDetailComponent<InterStoreTransfer>
     implements OnInit {
-    private storeSrv = inject(StoreService);
+    #interStoreTransferLinesSrv = inject(InterStoreTransferLinesService);
+    #storeSrv = inject(StoreService);
 
-    storeLookup = new DefaultAutoCompleteModel(this.storeSrv);
+    storeLookup = new DefaultAutoCompleteModel(this.#storeSrv);
 
     constructor(
         public override entitySrv: InterStoreTransferService,
@@ -59,6 +62,11 @@ export class InterStoreTransferDetailComponent
             confirmationSrv,
             'PROD_INTER_STORE_TRANSFER_DETAIL',
         );
+    }
+
+    override loadEntity(id: number): Observable<InterStoreTransfer> {
+        this.#interStoreTransferLinesSrv.setParentId(id||0);
+        return super.loadEntity(id);
     }
 
     override setupForm(e: InterStoreTransfer): UntypedFormGroup {

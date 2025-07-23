@@ -155,7 +155,7 @@ export const payrollNavTree: SideNavNode = {
             name: 'REMUN_ARCHIVE_GENERATOR',
             icon: 'fas fa-cabinet-filing',
             route: ABS_ARCHIVE_GENERATOR_URL,
-            accessRights: 'Canceler'
+            accessRights: 'ARCHGenerator'
         },
         {
             name: 'REMUN_MONTH_CANCELLATION',
