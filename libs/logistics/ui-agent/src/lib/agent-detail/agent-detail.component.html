@@ -15,7 +15,7 @@
                     <input matInput formControlName="denomination" type="text" required>
 
                     <mat-error
-                        *ngIf="form.controls['denomination'].invalid" translate>COMMON_FIELD_REQUIRED
+                            *ngIf="form.controls['denomination'].invalid" translate>COMMON_FIELD_REQUIRED
                     </mat-error>
                 </mat-form-field>
 
@@ -46,7 +46,7 @@
                                       [model]="agentTypeLookup">
                     </ss-auto-complete>
                     <mat-error
-                        *ngIf="form.controls['agentType'].invalid" translate>COMMON_FIELD_REQUIRED
+                            *ngIf="form.controls['agentType'].invalid" translate>COMMON_FIELD_REQUIRED
                     </mat-error>
                 </mat-form-field>
 
@@ -59,7 +59,7 @@
                                           [model]="currencyLookup">
                         </ss-auto-complete>
                         <mat-error
-                            *ngIf="form.controls['currency'].invalid" translate>COMMON_FIELD_REQUIRED
+                                *ngIf="form.controls['currency'].invalid" translate>COMMON_FIELD_REQUIRED
                         </mat-error>
                     </mat-form-field>
                 }
@@ -71,7 +71,7 @@
                                       [model]="priceLookup">
                     </ss-auto-complete>
                     <mat-error
-                        *ngIf="form.controls['price'].invalid" translate>COMMON_FIELD_REQUIRED
+                            *ngIf="form.controls['price'].invalid" translate>COMMON_FIELD_REQUIRED
                     </mat-error>
                 </mat-form-field>
 
@@ -176,7 +176,7 @@
                     <mat-label translate>LOGISTICS_CHECK_DUE_DAYS</mat-label>
                     <input matInput formControlName="checkDueDays" type="number" step="1">
                     <mat-error
-                        *ngIf="form.controls['checkDueDays'].invalid" translate>COMMON_INTEGER_INVALID
+                            *ngIf="form.controls['checkDueDays'].invalid" translate>COMMON_INTEGER_INVALID
                     </mat-error>
 
                 </mat-form-field>
@@ -232,7 +232,7 @@
                     <mat-label translate>LOGISTICS_DEBT_TERM</mat-label>
                     <input matInput formControlName="debtTerm" type="number" step="0.01">
                     <mat-error
-                        *ngIf="form.controls['debtTerm'].invalid" translate>COMMON_INTEGER_INVALID
+                            *ngIf="form.controls['debtTerm'].invalid" translate>COMMON_INTEGER_INVALID
                     </mat-error>
 
 
@@ -311,7 +311,7 @@
                     <mat-label translate>LOGISTICS_WEBSITE</mat-label>
                     <input matInput formControlName="website" type="text">
                     <mat-error
-                        *ngIf="form.controls['website'].invalid" translate>COMMON_URL_INVALID
+                            *ngIf="form.controls['website'].invalid" translate>COMMON_URL_INVALID
                     </mat-error>
                 </mat-form-field>
 
@@ -345,30 +345,30 @@
 
             </mat-expansion-panel>
 
-            <mat-expansion-panel #salesPanel
-                                 *ngIf="isSales"
-                                 [class]="getPanelHeaderClass('sales', salesPanel)">
-                <mat-expansion-panel-header>
-                    <mat-panel-title translate>
-                        COMMON_SCHEDULED_SALES
-                    </mat-panel-title>
-                </mat-expansion-panel-header>
+            <!--            <mat-expansion-panel #salesPanel-->
+            <!--                                 *ngIf="isSales"-->
+            <!--                                 [class]="getPanelHeaderClass('sales', salesPanel)">-->
+            <!--                <mat-expansion-panel-header>-->
+            <!--                    <mat-panel-title translate>-->
+            <!--                        COMMON_SCHEDULED_SALES-->
+            <!--                    </mat-panel-title>-->
+            <!--                </mat-expansion-panel-header>-->
 
-                <mat-form-field class="default-50 sm-100">
-                    <mat-label translate>LOGISTICS_CATEGORY</mat-label>
-                    <ss-auto-complete matInput
-                                      formControlName="category"
-                                      [model]="categoryLookup">
-                    </ss-auto-complete>
-                </mat-form-field>
+            <!--                <mat-form-field class="default-50 sm-100">-->
+            <!--                    <mat-label translate>LOGISTICS_CATEGORY</mat-label>-->
+            <!--                    <ss-auto-complete matInput-->
+            <!--                                      formControlName="category"-->
+            <!--                                      [model]="categoryLookup">-->
+            <!--                    </ss-auto-complete>-->
+            <!--                </mat-form-field>-->
 
-                <mat-form-field class="default-50 sm-100">
-                    <mat-label translate>LOGISTICS_APPROVAL</mat-label>
-                    <input matInput formControlName="approval" type="text">
-                </mat-form-field>
+            <!--                <mat-form-field class="default-50 sm-100">-->
+            <!--                    <mat-label translate>LOGISTICS_APPROVAL</mat-label>-->
+            <!--                    <input matInput formControlName="approval" type="text">-->
+            <!--                </mat-form-field>-->
 
 
-            </mat-expansion-panel>
+            <!--            </mat-expansion-panel>-->
 
             <mat-expansion-panel #centerPanel
                                  [class]="getPanelHeaderClass('centers', centerPanel)">
@@ -402,20 +402,33 @@
                             </ss-auto-complete>
                         </mat-form-field>
                         <button mat-mini-fab color="warn" [disabled]="selectedCenter < 1" (click)="deleteCenter()"><i
-                            class="fas fa-trash-alt"></i>
+                                class="fas fa-trash-alt"></i>
                         </button>
                     </div>
                 }
             </mat-expansion-panel>
 
-            <mat-expansion-panel #archivePanel
+            @if (target == TRANSPORTER && id) {
+                <mat-expansion-panel #transportPanel (opened)="openPanel('transport')"
+                                     [class]="getPanelHeaderClass('transport', transportPanel)">
+                    <mat-expansion-panel-header>
+                        <mat-panel-title translate>
+                            LOGISTICS_TRANSPORT_CONVENTION
+                        </mat-panel-title>
+                    </mat-expansion-panel-header>
+                    @if (transportPanel.expanded){
+                    <router-outlet></router-outlet>}
+                </mat-expansion-panel>
+            }
+
+            <mat-expansion-panel #archivePanel (opened)="openPanel('archive')"
                                  [class]="getPanelHeaderClass('archive', archivePanel)">
                 <mat-expansion-panel-header>
                     <mat-panel-title translate>
                         COMMON_ARCHIVE
                     </mat-panel-title>
                 </mat-expansion-panel-header>
-                @if (id) {
+                @if (id && archivePanel.expanded) {
                     <ss-app-archive-main [id]="id"
                                          [appId]="LOCAL_AGENT_ARCHIVES"
                                          [editable]="isEditable">

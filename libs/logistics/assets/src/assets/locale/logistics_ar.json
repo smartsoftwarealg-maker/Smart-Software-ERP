@@ -191,5 +191,10 @@
     "CEMENT_PROJECTS":       "مشاريع الأسمنت",
     "CEMENT_PROJECT":        "مشروع الأسمنت",
     "MASTER_WORK":           "العمل الرئيسي",
-    "ODS_DATE":              "تاريخ أمر الإنطلاق"
+    "ODS_DATE":              "تاريخ أمر الإنطلاق",
+    "TRANSPORT_CONVENTION":  "اتفاقية النقل",
+    "CONVENTION_TYPE":       "نوع الاتفاقية",
+    "CONVENTION_DATE":       "تاريخ الاتفاقية",
+    "AMENDMENT":             "تعديل",
+    "INITIAL":               "أولي"
 }

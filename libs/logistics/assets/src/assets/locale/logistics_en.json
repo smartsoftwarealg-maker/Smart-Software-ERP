@@ -193,6 +193,11 @@
     "CEMENT_PROJECTS":       "Cement projects",
     "CEMENT_PROJECT":        "Cement project",
     "MASTER_WORK":           "Master work",
-    "ODS_DATE":              "O.D.S date"
+    "ODS_DATE":              "O.D.S date",
+    "TRANSPORT_CONVENTION":  "Transport convention",
+    "CONVENTION_TYPE":       "Convention type",
+    "CONVENTION_DATE":       "Convention date",
+    "AMENDMENT":             "Amendment",
+    "INITIAL":               "Initial"
 
 }
