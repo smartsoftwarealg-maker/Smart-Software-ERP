@@ -72,5 +72,6 @@
     "NOT_ALLOWED_HERE":              "This operation is not allowed here",
     "OBSOLETE_PROJECT":              "Project dates are incorrect or it is obsolete.",
     "LOCKED_ACCOUNT_NUMBER":         "The current account number is blocked until",
-    "NO_QTY_SPECIFIED":              "No quantity specified for this production."
+    "NO_QTY_SPECIFIED":              "No quantity specified for this production.",
+    "OBSOLETE_CONVENTION":           "There is no convention for this transporter. Please, create a new convention."
 }
