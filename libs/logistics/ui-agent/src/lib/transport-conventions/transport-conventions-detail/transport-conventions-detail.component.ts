@@ -46,9 +46,9 @@ export class TransportConventionsDetailComponent
             id: [e.id],
             parentId: [e.parentId || this.entitySrv.getParentId()],
             conventionType: [e.conventionType, Validators.required],
-            conventionDate: [e.conventionDate],
+            conventionDate: [e.conventionDate || new Date()],
             fromDate: [e.fromDate || new Date(), Validators.required],
-            toDate: [e.toDate, Validators.required],
+            toDate: [e.toDate || new Date(), Validators.required],
         });
     }
 
