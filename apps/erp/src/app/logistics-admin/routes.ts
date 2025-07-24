@@ -57,6 +57,12 @@ import {
     DeliveryTimeListComponent
 } from '@ss/common/ui-lookup';
 import { AgentMergeComponent } from '@ss/logistics/agent-merge';
+import {
+    TransportConventionsListComponent
+} from "../../../../../libs/logistics/ui-agent/src/lib/transport-conventions/transport-conventions-list/transport-conventions-list.component";
+import {
+    TransportConventionsDetailComponent
+} from "../../../../../libs/logistics/ui-agent/src/lib/transport-conventions/transport-conventions-detail/transport-conventions-detail.component";
 
 export const mainRoutes: Routes = [
     {
@@ -151,12 +157,19 @@ export const mainRoutes: Routes = [
                         canDeactivate: [CanDeactivateService],
                         data: {sales: true, transporter: true },
                         children: [
-                            { path: '', redirectTo: 'archive', pathMatch: 'full'},
+                            //{ path: '', redirectTo: 'transport', pathMatch: 'full'},
                             {
                                 path: 'archive',
                                 children: [
                                     {path: '', component: AppArchiveListComponent, pathMatch: 'full', data: { appId: AGENT_ARCHIVES } },
                                     {path: ':id', component: AppArchiveDetailComponent, data: { appId: AGENT_ARCHIVES }},
+                                ]
+                            },
+                            {
+                                path: 'transport',
+                                children: [
+                                    {path: '', component: TransportConventionsListComponent, pathMatch: 'full', data: { appId: AGENT_ARCHIVES } },
+                                    {path: ':id', component: TransportConventionsDetailComponent, data: { appId: AGENT_ARCHIVES }},
                                 ]
                             }
                         ]

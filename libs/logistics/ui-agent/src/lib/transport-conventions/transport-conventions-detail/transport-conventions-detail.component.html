@@ -1,0 +1,58 @@
+@if (form) {
+    <div class="size button_div size">
+        @if (isEditable) {
+            <button mat-mini-fab (click)="save()"
+                    color="primary">
+                <i class="fas fa-save"></i>
+            </button>
+        }
+        <button mat-mini-fab (click)="cancel()"
+                color="warn">
+            <i class="fas fa-redo"></i>
+        </button>
+    </div>
+}
+<mat-card>
+    <mat-card-content>
+        @if (form) {
+            <form novalidate [formGroup]="form">
+                <mat-form-field class="default-100">
+                    <mat-label translate>LOGISTICS_CONVENTION_TYPE</mat-label>
+                    <mat-select formControlName="conventionType" required="true">
+                        @for (t of CONVENTIONS_TYPES; track t; let i = $index) {
+                            <mat-option [value]="i+1" translate>{{ t }}</mat-option>
+                        }
+                    </mat-select>
+
+                    @if (form.controls['conventionType'].invalid) {
+                        <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+                    }
+                </mat-form-field>
+
+                <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>LOGISTICS_CONVENTION_DATE</mat-label>
+                    <ss-date-picker formControlName="conventionDate"></ss-date-picker>
+                    @if (form.controls['conventionDate'].invalid) {
+                        <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+                    }
+                </mat-form-field>
+
+                <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>COMMON_FROM</mat-label>
+                    <ss-date-picker formControlName="fromDate"></ss-date-picker>
+                    @if (form.controls['fromDate'].invalid) {
+                        <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+                    }
+                </mat-form-field>
+
+                <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>COMMON_TO</mat-label>
+                    <ss-date-picker formControlName="toDate"></ss-date-picker>
+                    @if (form.controls['toDate'].invalid) {
+                        <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+                    }
+                </mat-form-field>
+            </form>
+        }
+    </mat-card-content>
+</mat-card>
