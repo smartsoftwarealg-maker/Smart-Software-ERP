@@ -3,9 +3,6 @@ import {BaseEntityService} from '@ss/common/api-base-entity';
 import { HttpService, PaginationModel } from '@ss/common/api-common';
 import {
     ASSET_INVENTORY_URL,
-    ASSET_OFFICE_URL,
-    ASSET_YEARS_URL,
-    AssetInventory,
     AssetInventoryDoc, AssetInventoryFilter,
     InventoryAsset
 } from '../assets-api';
@@ -14,7 +11,7 @@ import { HttpParams } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 
 export class AssetListInventoryService extends BaseEntityService<InventoryAsset> {
@@ -36,7 +33,8 @@ export class AssetListInventoryService extends BaseEntityService<InventoryAsset>
         return param;
     }
 
-    override getPage(pageModel: PaginationModel, filter?: string, sortBy?: string, extraPrams?: HttpParams): Observable<InventoryAsset[]> {
+    private getParams(): HttpParams {
+        let extraPrams: HttpParams|null = null;
         if (this.#_document) {
             const values = new Map<string, number|string|null> ([
                 ['officeId',    this.#_document.officeId],
@@ -51,9 +49,12 @@ export class AssetListInventoryService extends BaseEntityService<InventoryAsset>
                 ['accountNo',   this.#_document.accountNo],
                 ['documentId', this.document?.documentId]
             ]);
-           extraPrams = this.setParams(extraPrams||new HttpParams(), values);
+            extraPrams = this.setParams(new HttpParams(), values);
         }
-        return super.getPage(pageModel, filter, sortBy, extraPrams);
+        return extraPrams;
+    }
+    override getPage(pageModel: PaginationModel, filter?: string, sortBy?: string): Observable<InventoryAsset[]> {
+        return super.getPage(pageModel, filter, sortBy, this.getParams());
     }
 
     set document(doc: AssetInventoryFilter) {
@@ -77,5 +78,9 @@ export class AssetListInventoryService extends BaseEntityService<InventoryAsset>
                 .put('/inventory-locations', a)
                 .pipe(map((res: { count: number }) => res['count'])) :
             super.update(a);
+    }
+
+    override excel(): Observable<Blob> {
+        return this.httpSrv.getBlob(this.getUrl() + '/excel', this.getParams());
     }
 }
