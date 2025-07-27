@@ -6,7 +6,7 @@ import {
 import {Routes} from '@angular/router';
 import { CustomerCanActivateService, CanDeactivateService, LIST_URL, LOGIN_URL } from '@ss/common/api-common';
 import {ReportViewComponent} from '@ss/common/ui-report-param';
-import {CustomerProfileComponent} from "@ss/logistics/ui-agent";
+import {CustomerProfileComponent} from '@ss/logistics/ui-agent';
 import {
     SalesQuotaDetailComponent,
     SalesQuotaListComponent, SalesScheduleDetailComponent, SalesScheduleListComponent

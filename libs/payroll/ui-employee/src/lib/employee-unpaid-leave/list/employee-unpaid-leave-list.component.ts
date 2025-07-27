@@ -60,6 +60,6 @@ export class EmployeeUnpaidLeaveListComponent extends BaseChildEntityListCompone
     activePersonnelSrv = inject(ActivePersonnelService);
 
     constructor(public entitySrv: EmployeeUnpaidLeavesService) {
-        super(entitySrv, 'UnpaidLeaves');
+        super(entitySrv, 'Suspension');
     }
 }

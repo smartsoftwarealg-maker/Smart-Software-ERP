@@ -1,11 +1,11 @@
 import { Component, inject } from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
-import { ActivatedRoute, Router, RouterModule } from "@angular/router";
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import {  ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { LoginService, MaterialModule, PaginatorPersistenceService } from '@ss/common/api-common';
-import { CommonModule } from "@angular/common";
+import { CommonModule } from '@angular/common';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-import { DatePickerComponent } from "@ss/common/ui-datepicker";
+import { DatePickerComponent } from '@ss/common/ui-datepicker';
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { SalesRecord } from '@ss/scheduled-sales/api-scheduled-sales';
 import { DefaultReportService } from '@ss/common/ui-default-report-component';
@@ -89,7 +89,7 @@ export class CustomerSalesHistoryComponent extends BaseEntityListComponent<Sales
             this.searchForm
                 .valueChanges
                 .pipe(debounceTime(300),
-                      distinctUntilChanged())
+                    distinctUntilChanged())
                 .subscribe(res => {
                     this.entitySrv.from = this.searchForm.controls.from.value;
                     this.entitySrv.to = this.searchForm.controls.to.value;
