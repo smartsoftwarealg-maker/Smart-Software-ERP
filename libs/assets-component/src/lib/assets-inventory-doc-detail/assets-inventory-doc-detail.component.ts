@@ -1,4 +1,4 @@
-import {Component, inject, Input, OnInit} from "@angular/core";
+import {Component, inject, OnInit} from '@angular/core';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import { AssetInventoryDoc, AssetReception, OfficeAutoComplete } from '../assets-api';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
@@ -7,12 +7,11 @@ import {UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
 import {  ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import {
     LookupsService,
-    Office,
     OfficeService
 } from '@ss/common/api-lookup';
 import { LoginService, MaterialModule } from '@ss/common/api-common';
 import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
-import {Agent, ConsumerService} from "@ss/logistics/api-agent";
+import {Agent, ConsumerService} from '@ss/logistics/api-agent';
 import {MatExpansionPanel} from '@angular/material/expansion';
 import { AccountService, AccountStringAutocompleteModel } from '@ss/accounting/api-accounts';
 import {map} from 'rxjs/operators';
@@ -59,7 +58,7 @@ export class AssetsInventoryDocDetailComponent extends BaseEntityDetailComponent
     private loginSrv = inject(LoginService);
 
     officeLookup      = new OfficeAutoComplete(this.officeSrv);
-    accountLookup     = new AccountStringAutocompleteModel(this.accountSrv)
+    accountLookup     = new AccountStringAutocompleteModel(this.accountSrv);
     locationLookup    = new DefaultAutoCompleteModel(this.locationSrv);
     buildingLookup    = new DefaultAutoCompleteModel(this.buildingSrv);
     classLookup       = new DefaultAutoCompleteModel(this.classSrv);
@@ -95,7 +94,7 @@ export class AssetsInventoryDocDetailComponent extends BaseEntityDetailComponent
             id:              [b.id],
             centerId:        [b.centerId || this.loginSrv.appCtx.center],
             inventoryYear:   [b.inventoryYear || 0],
-            creationDate:    [b.creationDate || today],
+            creationDate:    [{ value: b.creationDate || today, disabled: true }],
             description:     [b.description, Validators.required],
             userId:          [b.userId || this.loginSrv.appCtx.id],
             accountNo:       [b.accountNo],

@@ -12,7 +12,6 @@ import {  ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { LoginService, MaterialModule, PaginatorPersistenceService } from '@ss/common/api-common';
 import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { CommonModule } from '@angular/common';
-import { DatePickerComponent } from '@ss/common/ui-datepicker';
 
 import { DefaultReportService } from '@ss/common/ui-default-report-component';
 import { Office, OfficeService } from '@ss/common/api-lookup';
@@ -26,7 +25,8 @@ import { Agent, ConsumerService } from '@ss/logistics/api-agent';
 import { AssetReceptionService } from '../services/asset-reception.service';
 import { AssetOpenInventoryDocService } from '../services/asset-open-inventory-doc.service';
 import { PaginationComponent } from '@ss/common/ui-pagination';
-import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
+import { TranslateDirective } from '@ss/common/ui-lang';
+import { DatePickerComponent } from '@ss/common/ui-datepicker';
 
 @Component({
     selector: 'ss-asset-list-inventory',
@@ -37,12 +37,10 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         CommonModule,
         MaterialModule,
         TranslateDirective,
-
-
         RouterModule,
-
         PaginationComponent,
-        UiAutoCompleteComponent
+        UiAutoCompleteComponent,
+        DatePickerComponent
     ]
 })
 export class AssetQRInventoryListComponent extends BaseEntityListComponent<InventoryAsset> implements OnInit {
@@ -63,7 +61,8 @@ export class AssetQRInventoryListComponent extends BaseEntityListComponent<Inven
     officeLookup       = new DefaultAutoCompleteModel(this.officeSrv);
     inventoryDocLookup = new DefaultAutoCompleteModel(this.inventoryDocSrv);
 
-    inventoryDoc      = new FormControl<number>(0);
+    inventoryDoc   = new FormControl<number>(0);
+    inventoryDocDate = new FormControl<Date | null>(null);
     accountLookup     = new AccountStringAutocompleteModel(this.#accountSrv)
     locationLookup    = new DefaultAutoCompleteModel(this.#locationSrv);
     buildingLookup    = new DefaultAutoCompleteModel(this.#buildingSrv);
@@ -152,6 +151,7 @@ export class AssetQRInventoryListComponent extends BaseEntityListComponent<Inven
     }
 
     private onDocument(d: AssetInventoryDoc) {
+        this.inventoryDocDate.setValue(d?.creationDate);
         this.listSrv.lastDoc = d;
         this.#documentId = d?.id || 0;
         this.formGroup.controls.documentId.setValue(this.#documentId);

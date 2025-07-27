@@ -1,12 +1,18 @@
 <mat-card>
     <div class="container__div">
-        <mat-form-field class="default-50 sm-50">
-            <mat-label translate>ASSET_INVENTORY_DOCUMENT</mat-label>
-            <ss-auto-complete matInput
-                              [model]="inventoryDocLookup"
-                              [formControl]="inventoryDoc">
-            </ss-auto-complete>
-        </mat-form-field>
+        <div class="doc__div">
+            <mat-form-field class="default-50 sm-50">
+                <mat-label translate>ASSET_INVENTORY_DOCUMENT</mat-label>
+                <ss-auto-complete matInput
+                                  [model]="inventoryDocLookup"
+                                  [formControl]="inventoryDoc">
+                </ss-auto-complete>
+            </mat-form-field>
+            <mat-form-field class="default-50 sm-50">
+                <mat-label translate>COMMON_DATE</mat-label>
+                <ss-date-picker [formControl]="inventoryDocDate"></ss-date-picker>
+            </mat-form-field>
+        </div>
 
         <form [formGroup]="formGroup">
             <mat-form-field class="default-50 sm-100">
@@ -186,7 +192,7 @@
                               (click)="update(e)"
                               [disabled]="!isEditable() ||
                                           ((e.userId||0) > 0 && currentUser !== (e.userId||0) && !isResponsible) ||
-                                          ((e.inventoryId||0) > 0 && !isResponsible)" >
+                                          ((e.inventoryId||0) > 0 && !isResponsible)">
                 </mat-checkbox>
             </mat-cell>
         </ng-container>
