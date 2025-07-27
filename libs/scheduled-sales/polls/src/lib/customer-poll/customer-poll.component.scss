@@ -4,7 +4,7 @@
     margin: 0 auto;
     height: 100%;
     max-width: 900px;
-    overflow: hidden;
+    overflow: auto;
 }
 
 .mat-mdc-form-field {
@@ -106,4 +106,13 @@ mat-card-footer {
     display: none!important;
     visibility: hidden!important;
     max-height: 0;
+}
+
+@media (width <= 500px) {
+    .question {
+        font-size: .9em;
+        line-height: 1.5em;
+        padding: 2px;
+    }
+
 }

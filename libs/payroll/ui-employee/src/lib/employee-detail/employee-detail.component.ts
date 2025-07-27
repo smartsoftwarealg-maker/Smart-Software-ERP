@@ -23,11 +23,11 @@ import {
 } from '@ss/common/api-lookup';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {MatExpansionPanel} from '@angular/material/expansion';
-import { DefaultAutoCompleteModel, UserLookup } from "@ss/common/ui-auto-complete";
+import { DefaultAutoCompleteModel, UserLookup } from '@ss/common/ui-auto-complete';
 import { filter, Observable, of, switchMap } from 'rxjs';
 import {map, tap} from 'rxjs/operators';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
-import { HttpService, MaterialModule, UserService } from '@ss/common/api-common';
+import { HttpService, MaterialModule } from '@ss/common/api-common';
 import {ELine, FixedElementsEntryService} from '@ss/remuneration/elements-entry';
 import {Employee} from '@ss/employee-services/employee-services';
 import {AppArchiveService, EMPLOYEE_ARCHIVES} from '@ss/common/app-archive';
@@ -67,7 +67,7 @@ import {
 import {EmployeeDiplomaService} from '../employee-diplomas/employee-diploma.service';
 import {EmployeeTrainingService} from '../employee-trainings/employee-training.service';
 import {PunishmentService} from '../employee-punishments/punishment.service';
-import { UserListService } from "@ss/common/api-users";
+import { UserListService } from '@ss/common/api-users';
 import { MatCard, MatCardContent, MatCardFooter } from '@angular/material/card';
 import { ImageInputComponent } from '@ss/common/ui-image-input';
 import { TranslateDirective } from '@ss/common/ui-lang';
@@ -166,7 +166,7 @@ export class EmployeeDetailComponent extends BaseEntityDetailComponent<Employee>
     ];
     private PAYROLL_PANELS = [
         ACTIVATION_ROUTE_URL, //0
-    ]
+    ];
 
     readonly MIN_DATE = new Date(new Date().getTime() - 16 * 366 * 24 * 60 * 60 * 1000);
     readonly dateValidator: ValidatorFn = (control: AbstractControl): { [key: string]: any } | null => {
@@ -175,7 +175,7 @@ export class EmployeeDetailComponent extends BaseEntityDetailComponent<Employee>
             return { 'invalidDate': { value: control.value } };
         }
         return null;
-    }
+    };
     readonly ACTIVATION_ROUTE = 0;
     readonly REINTEGRATION_ROUTE = 1;
     readonly CONTRACTS_ROUTE = 2;
@@ -433,7 +433,7 @@ export class EmployeeDetailComponent extends BaseEntityDetailComponent<Employee>
             .save(line)
             .subscribe({
                 next: () => {
-                    this.snackBarSrv.showSuccessMessage()
+                    this.snackBarSrv.showSuccessMessage();
                     this.saveButton.disabled = false;
                 },
                 error: err => {

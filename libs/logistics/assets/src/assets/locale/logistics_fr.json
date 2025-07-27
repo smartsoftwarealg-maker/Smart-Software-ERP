@@ -193,9 +193,9 @@
     "CEMENT_PROJECT":        "Projet de ciment",
     "MASTER_WORK":           "Œuvre magistrale",
     "ODS_DATE":              "Date des O.D.S",
-    "TRANSPORT_CONVENTION":  "Convention relative aux transports",
+    "TRANSPORT_CONVENTION":  "Conventions de transport",
     "CONVENTION_TYPE":       "Type de convention",
     "CONVENTION_DATE":       "Date de la convention",
-    "AMENDMENT":             "Amendement",
+    "AMENDMENT":             "Avenant",
     "INITIAL":               "Initiale"
 }
