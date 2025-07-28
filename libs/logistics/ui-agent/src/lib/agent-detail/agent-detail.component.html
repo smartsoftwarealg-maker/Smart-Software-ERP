@@ -345,30 +345,36 @@
 
             </mat-expansion-panel>
 
-            <!--            <mat-expansion-panel #salesPanel-->
-            <!--                                 *ngIf="isSales"-->
-            <!--                                 [class]="getPanelHeaderClass('sales', salesPanel)">-->
-            <!--                <mat-expansion-panel-header>-->
-            <!--                    <mat-panel-title translate>-->
-            <!--                        COMMON_SCHEDULED_SALES-->
-            <!--                    </mat-panel-title>-->
-            <!--                </mat-expansion-panel-header>-->
+                        <mat-expansion-panel #salesPanel
+                                             *ngIf="isSales"
+                                             [class]="getPanelHeaderClass('sales', salesPanel)">
+                            <mat-expansion-panel-header>
+                                <mat-panel-title translate>
+                                    COMMON_DIVERSE
+                                </mat-panel-title>
+                            </mat-expansion-panel-header>
 
-            <!--                <mat-form-field class="default-50 sm-100">-->
-            <!--                    <mat-label translate>LOGISTICS_CATEGORY</mat-label>-->
-            <!--                    <ss-auto-complete matInput-->
-            <!--                                      formControlName="category"-->
-            <!--                                      [model]="categoryLookup">-->
-            <!--                    </ss-auto-complete>-->
-            <!--                </mat-form-field>-->
+                            <mat-form-field class="default-50 sm-100">
+                                <mat-label translate>LOGISTICS_CATEGORY</mat-label>
+                                <ss-auto-complete matInput
+                                                  formControlName="category"
+                                                  [model]="categoryLookup">
+                                </ss-auto-complete>
+                            </mat-form-field>
 
-            <!--                <mat-form-field class="default-50 sm-100">-->
-            <!--                    <mat-label translate>LOGISTICS_APPROVAL</mat-label>-->
-            <!--                    <input matInput formControlName="approval" type="text">-->
-            <!--                </mat-form-field>-->
+                            <mat-form-field class="default-50 sm-100">
+                                <mat-label translate>ACC_PURCHASE_ACCOUNT</mat-label>
+                                <ss-auto-complete matInput
+                                                  formControlName="purchaseAccount"
+                                                  [model]="accountLookup">
+                                </ss-auto-complete>
+                            </mat-form-field>
 
-
-            <!--            </mat-expansion-panel>-->
+<!--                            <mat-form-field class="default-50 sm-100">-->
+<!--                                <mat-label translate>LOGISTICS_APPROVAL</mat-label>-->
+<!--                                <input matInput formControlName="approval" type="text">-->
+<!--                            </mat-form-field>-->
+                        </mat-expansion-panel>
 
             <mat-expansion-panel #centerPanel
                                  [class]="getPanelHeaderClass('centers', centerPanel)">

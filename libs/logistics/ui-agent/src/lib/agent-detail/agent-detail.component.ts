@@ -5,7 +5,7 @@ import {
     SnackBarService,
     ToolbarButton,
 } from '@ss/common/ui-shell';
-import {ActivatedRoute, Router, RouterOutlet} from '@angular/router';
+import { ActivatedRoute, Router, RouterOutlet } from '@angular/router';
 import { switchMap, tap } from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
 import {
@@ -68,7 +68,11 @@ import { CommonModule } from '@angular/common';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 import { ChildAttributesComponent } from '@ss/custom-attributes';
 import { OptionService } from '@ss/logistics/ui-options';
-import {TransportConventionService} from "../transport-conventions/transport-convention.service";
+import { TransportConventionService } from '../transport-conventions/transport-convention.service';
+import {
+    AccountAutocompleteModel,
+    AccountService,
+} from '@ss/accounting/api-accounts';
 
 const PARTNER = 0;
 const SUPPLIER = 1;
@@ -116,6 +120,8 @@ export class AgentDetailComponent
     private citySrv = inject(CityService);
     private countrySrv = inject(CountryService);
     private transportConventionSrv = inject(TransportConventionService);
+    private accountSrv = inject(AccountService);
+    accountLookup = new AccountAutocompleteModel(this.accountSrv);
 
     public target = 0;
 
@@ -296,6 +302,7 @@ export class AgentDetailComponent
             tin: [a.tin],
             department: [a.department],
             creationTime: { value: a.creationTime, disabled: true },
+            purchaseAccount: [a.purchaseAccount],
         });
     }
 
@@ -486,7 +493,7 @@ export class AgentDetailComponent
     }
 
     openPanel(url: string) {
-        this.router.navigate([url],{relativeTo: this.route.parent});
+        this.router.navigate([url], { relativeTo: this.route.parent });
     }
 
     protected readonly TRANSPORTER = TRANSPORTER;
