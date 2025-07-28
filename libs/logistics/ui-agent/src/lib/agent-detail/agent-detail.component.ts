@@ -5,7 +5,7 @@ import {
     SnackBarService,
     ToolbarButton,
 } from '@ss/common/ui-shell';
-import {ActivatedRoute, Router, RouterOutlet} from '@angular/router';
+import { ActivatedRoute, Router, RouterOutlet } from '@angular/router';
 import { switchMap, tap } from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
 import {
@@ -68,7 +68,11 @@ import { CommonModule } from '@angular/common';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 import { ChildAttributesComponent } from '@ss/custom-attributes';
 import { OptionService } from '@ss/logistics/ui-options';
-import {TransportConventionService} from '../transport-conventions/transport-convention.service';
+import { TransportConventionService } from '../transport-conventions/transport-convention.service';
+import {
+    AccountAutocompleteModel,
+    AccountService,
+} from '@ss/accounting/api-accounts';
 
 const PARTNER = 0;
 const SUPPLIER = 1;
@@ -116,6 +120,8 @@ export class AgentDetailComponent
     private citySrv = inject(CityService);
     private countrySrv = inject(CountryService);
     private transportConventionSrv = inject(TransportConventionService);
+    private accountSrv = inject(AccountService);
+    accountLookup = new AccountAutocompleteModel(this.accountSrv);
 
     public target = 0;
 
@@ -194,27 +200,27 @@ export class AgentDetailComponent
                     isCustomer
                         ? CUSTOMER_URL
                         : isSupplier
-                            ? SUPPLIER_URL
-                            : isTransporter
-                                ? TRANSPORTER_URL
-                                : AGENT_URL,
+                          ? SUPPLIER_URL
+                          : isTransporter
+                            ? TRANSPORTER_URL
+                            : AGENT_URL,
                 );
                 this.shellSrv.setTitle(
                     isCustomer
                         ? 'LOGISTICS_CUSTOMER'
                         : isSupplier
-                            ? 'LOGISTICS_SUPPLIER'
-                            : isTransporter
-                                ? 'LOGISTICS_TRANSPORTER'
-                                : 'COMMON_AGENTS',
+                          ? 'LOGISTICS_SUPPLIER'
+                          : isTransporter
+                            ? 'LOGISTICS_TRANSPORTER'
+                            : 'COMMON_AGENTS',
                 );
                 this.agentTypeLookup = isSupplier
                     ? new SupplierLookup(this.agentTypeSrv)
                     : isCustomer
-                        ? new CustomerLookup(this.agentTypeSrv)
-                        : isTransporter
-                            ? new TransporterLookup(this.agentTypeSrv)
-                            : this.agentTypeLookup;
+                      ? new CustomerLookup(this.agentTypeSrv)
+                      : isTransporter
+                        ? new TransporterLookup(this.agentTypeSrv)
+                        : this.agentTypeLookup;
                 this.defaultAgentType = isSupplier ? 2 : isTransporter ? 5 : 0;
             }),
         );
@@ -296,6 +302,7 @@ export class AgentDetailComponent
             tin: [a.tin],
             department: [a.department],
             creationTime: { value: a.creationTime, disabled: true },
+            purchaseAccount: [a.purchaseAccount],
         });
     }
 
@@ -330,14 +337,14 @@ export class AgentDetailComponent
 
     public isSectionInvalid(section: string): boolean {
         switch (section) {
-        case 'general':
-            return this.isGeneralSectionInvalid();
-        case 'latin':
-            return this.isLatinSectionInvalid();
-        case 'fiscal':
-            return this.isFiscalSectionInvalid();
-        default:
-            return false;
+            case 'general':
+                return this.isGeneralSectionInvalid();
+            case 'latin':
+                return this.isLatinSectionInvalid();
+            case 'fiscal':
+                return this.isFiscalSectionInvalid();
+            default:
+                return false;
         }
     }
 
@@ -399,10 +406,10 @@ export class AgentDetailComponent
             this.router.url.indexOf('agents') > 0
                 ? PARTNER
                 : this.router.url.indexOf('suppliers') > 0
-                    ? SUPPLIER
-                    : this.router.url.indexOf('transporter') > 0
-                        ? TRANSPORTER
-                        : CUSTOMER;
+                  ? SUPPLIER
+                  : this.router.url.indexOf('transporter') > 0
+                    ? TRANSPORTER
+                    : CUSTOMER;
         // const target = this.router.url.indexOf('agents') > 0?
         //     'agents' :
         //     this.router.url.indexOf('suppliers') > 0? 'suppliers' : 'customers';
@@ -486,7 +493,7 @@ export class AgentDetailComponent
     }
 
     openPanel(url: string) {
-        this.router.navigate([url],{relativeTo: this.route.parent});
+        this.router.navigate([url], { relativeTo: this.route.parent });
     }
 
     protected readonly TRANSPORTER = TRANSPORTER;
