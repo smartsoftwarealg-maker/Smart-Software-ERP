@@ -2,7 +2,7 @@ import {SideNavNode} from '@ss/common/api-common';
 import {
     ABS_ACC_ACCOUNT_URL,
     ABS_ACC_ASSET_ACCOUNT_URL,
-    ABS_ACC_CASHFLOW_ACCOUNT_URL, ABS_ACC_CLOSED_PERIODS_URL,
+    ABS_ACC_CASHFLOW_ACCOUNT_URL, ABS_ACC_CATEGORY_ACCOUNTS_URL, ABS_ACC_CLOSED_PERIODS_URL,
     ABS_ACC_DASHBOARD_URL,
     ABS_ACC_F12_URL,
     ABS_ACC_F13_URL,
@@ -21,7 +21,7 @@ import {
     ABS_DEPRECIATION_GENERATION_URL, ABS_GENERAL_GENERATION_URL,
     ABS_GENERATION_URL,
     ABS_POLICIES_URL,
-    ABS_REOPEN_URL, ABS_SALES_GENERATION_URL
+    ABS_REOPEN_URL, ABS_SALES_GENERATION_URL, ACC_CATEGORY_ACCOUNTS_URL
 } from '../common';
 
 
@@ -88,6 +88,12 @@ export const accountingNavTree: SideNavNode = {
             name: 'ACC_GENERATION_ACCOUNTS',
             icon: 'fa-solid fa-wind-turbine',
             route: ABS_ACC_GENERATION_ACCOUNT_URL,
+            accessRights: 'Account'
+        },
+        {
+            name: 'ACC_CATEGORY_ACCOUNTS',
+            icon: 'fa-solid fa-list',
+            route: ABS_ACC_CATEGORY_ACCOUNTS_URL,
             accessRights: 'Account'
         },
         {

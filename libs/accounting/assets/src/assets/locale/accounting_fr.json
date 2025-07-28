@@ -94,7 +94,9 @@
     "CONSUMPTION_ACCOUNT":      "Compte de consommation",
     "SHOW_REFERENCE_2":         "Afficher la référence 2",
     "MANUAL_NUMBERING":         "Numérotation manuelle",
-    "ADD_ALL_CENTERS":          "Ajouter tous les centres"
-
+    "ADD_ALL_CENTERS":          "Ajouter tous les centres",
+    "CATEGORY_ACCOUNTS":        "Comptes de catégorie",
+    "CATEGORY_ACCOUNT":         "Compte de catégorie",
+    "DEFERRED_ACCOUNT":         "Compte différé"
 }
 
