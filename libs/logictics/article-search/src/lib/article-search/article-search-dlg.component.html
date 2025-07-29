@@ -1,11 +1,28 @@
 <form [formGroup]="form">
-    <mat-form-field class="default-50 sm-100">
-        <mat-label translate>STOCK_STORE</mat-label>
-        <ss-auto-complete matInput
-                          [model]="storeLookup"
-                          formControlName="store">
-        </ss-auto-complete>
-    </mat-form-field>
+    @if (usesLots()) {
+        <mat-form-field class="default-50 sm-100">
+            <mat-label translate>STOCK_STORE</mat-label>
+            <ss-auto-complete matInput
+                              [model]="storeLookup"
+                              formControlName="store">
+            </ss-auto-complete>
+        </mat-form-field>
+        <mat-form-field class="default-50 sm-100">
+            <mat-label translate>STOCK_LOT</mat-label>
+            <ss-auto-complete matInput
+                              [model]="lotLookup"
+                              formControlName="lot">
+            </ss-auto-complete>
+        </mat-form-field>
+    } @else {
+        <mat-form-field class="default-50 sm-100">
+            <mat-label translate>STOCK_STORE</mat-label>
+            <ss-auto-complete matInput
+                              [model]="lotLookup"
+                              formControlName="lot">
+            </ss-auto-complete>
+        </mat-form-field>
+   }
 
     <mat-form-field class="default-50 sm-100">
         <mat-label translate>COMMON_REFERENCE</mat-label>
@@ -51,7 +68,7 @@
 
 
         <ng-container matColumnDef="lotNumber">
-            <mat-header-cell *matHeaderCellDef mat-sort-header translate>STOCK_LOT</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>{{usesLots()? 'STOCK_LOT': 'STOCK_STORE' }}</mat-header-cell>
             <mat-cell *matCellDef="let e">
                 {{ e.lotNumber }}
             </mat-cell>

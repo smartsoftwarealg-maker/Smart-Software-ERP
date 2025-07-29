@@ -341,7 +341,7 @@ export abstract class BaseTransactionLinesDetailComponent extends AbstractEntity
     showSearchDialog() {
         const dialogRef = this.#dialog.open(ArticleSearchDlg, {
             width: '900px!important',
-            height: '620px',
+            height: '640px',
             maxWidth: '900px',
             disableClose: true
         });

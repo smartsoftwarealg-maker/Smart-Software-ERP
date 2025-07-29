@@ -8,7 +8,7 @@ import { LoginService, MaterialModule, PaginationModel } from '@ss/common/api-co
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
-import { MarkService, StoreService } from '@ss/common/api-lookup';
+import { LotsService, MarkService, StoreService } from '@ss/common/api-lookup';
 import { PaginationComponent } from '@ss/common/ui-pagination';
 import { Sort } from '@angular/material/sort';
 import { OptionService } from '@ss/logistics/ui-options';
@@ -22,6 +22,7 @@ import { OptionService } from '@ss/logistics/ui-options';
 export class ArticleSearchDlg implements OnInit {
     #markSrv = inject(MarkService);
     #storeSrv = inject(StoreService);
+    #lotSrv = inject(LotsService);
     #locationSrv = inject(LocationService);
     #destroyRef = inject(DestroyRef);
     #dialogRef = inject(MatDialogRef<ArticleSearchDlg>);
@@ -33,10 +34,13 @@ export class ArticleSearchDlg implements OnInit {
     location: Location|null = null;
     storeLookup = new DefaultAutoCompleteModel(this.#storeSrv);
     markLookup = new DefaultAutoCompleteModel(this.#markSrv);
+    lotLookup = new DefaultAutoCompleteModel(this.#lotSrv);
+    usesLots = signal(false);
 
     form = this.#fb.group({
         reference: [''],
         store:     [0],
+        lot:       [0],
         mark:      [0],
         stock:     [1],
     });
@@ -49,7 +53,10 @@ export class ArticleSearchDlg implements OnInit {
         this.pagination.onChange = () => this.refresh();
         this.#optionSrv
             .get(this.#loginSrv.appCtx.center)
-            .subscribe(res => this.displayedColumns = this.displayedColumns.filter(e => res.usesLots || (e !== 'lotNumber' && e !== 'expirationDate') ));
+            .subscribe(res => {
+                this.usesLots.set(res.usesLots||false);
+                this.displayedColumns = this.displayedColumns.filter(e => res.usesLots || (e !== 'storeName' && e !== 'expirationDate'));
+            });
         this.form
             .valueChanges
             .pipe(
@@ -74,7 +81,7 @@ export class ArticleSearchDlg implements OnInit {
     private refresh() {
         const value = this.form.getRawValue();
         this.#locationSrv
-            .getLots(value.reference, this.pagination, '', value.store, value.stock, value.mark)
+            .getLots(value.reference, this.pagination, '', value.store, value.lot, value.stock, value.mark)
             .subscribe(res => {
                 this.data.set(res.body);
                 this.pagination.elementCount = res.itemCount;
