@@ -137,6 +137,7 @@ export const VALUE_TYPES: Lookup[] = [
 export interface  InterStoreTransfer {
     id: number;
     center: number;
+    agent: number;
     document: number;
     number: number;
     date: Date;

@@ -97,5 +97,6 @@
     "SOURCE_STORE":       "Source Store",
     "SOURCE_ARTICLE":     "Source Article",
     "DESTINATION_STORE":  "Destination Store",
-    "DESTINATION_ARTICLE":"Destination Article"
+    "DESTINATION_ARTICLE":"Destination Article",
+    "SOURCE_REFERENCE": "Source Reference"
 }

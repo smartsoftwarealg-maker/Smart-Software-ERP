@@ -1,6 +1,6 @@
-
 <div class="main-container">
     <div class="add-button">
+
         @if (isEditable) {
             <button
                 mat-mini-fab
@@ -58,22 +58,23 @@
                 </mat-cell>
             </ng-container>
 
+            <ng-container matColumnDef="sourceRef">
+                <mat-header-cell *matHeaderCellDef translate>STOCK_SOURCE_REFERENCE</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{ e.sourceRef }}
+                </mat-cell>
+            </ng-container>
+
             <ng-container matColumnDef="destinationStore">
-                <mat-header-cell *matHeaderCellDef translate>COMMON_DESTINATION_STORE</mat-header-cell>
+                <mat-header-cell *matHeaderCellDef translate>STOCK_DESTINATION_STORE</mat-header-cell>
                 <mat-cell *matCellDef="let e">
                     {{ e.destinationStore }}
                 </mat-cell>
             </ng-container>
 
-            <ng-container matColumnDef="destinationDescription">
-                <mat-header-cell *matHeaderCellDef translate>COMMON_DESTINATION_ARTICLE</mat-header-cell>
-                <mat-cell *matCellDef="let e">
-                    {{ e.destinationDescription }}
-                </mat-cell>
-            </ng-container>
 
             <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
-            <mat-row class="selectable" [class.selected]="row.id === selectedId" (click)="select(row.id)"
+            <mat-row class="selectable" [class.selected]="row.id === selectedId" (click)="selectRow(row)"
                      *matRowDef="let row; columns: displayedColumns"></mat-row>
         </mat-table>
     </div>
@@ -81,3 +82,19 @@
 <div class="pagination-container b-b-background">
     <ss-pagination [paginationModel]="paginator"></ss-pagination>
 </div>
+
+@if (selectedRow?.id) {
+    <div class="doc-info">
+        <ss-doc-info
+            [displayedGroups]="['article', 'document']"
+            [params]="{
+                    documentId: selectedRow?.id,
+                    documentURL:'/inter-store-transfer',
+                    detailId: selectedRow?.id,
+                    articleReference: selectedRow?.sourceRef,
+                    articleStoreId: selectedRow?.sourceStore
+        }">
+        </ss-doc-info>
+    </div>
+}
+

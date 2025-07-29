@@ -65,7 +65,9 @@ export class InterStoreTransferLinesDetailComponent
             sourceStore: [e.sourceStore, Validators.required],
             qty: [e.qty, Validators.required],
             destinationRef: [e.destinationRef],
+            storeDescription:[e.storeDescription],
             destinationStore: [e.destinationStore],
+            lotDescription:[e.lotDescription],
         });
     }
 
