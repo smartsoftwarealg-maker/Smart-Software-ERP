@@ -97,6 +97,9 @@
             "@ss/accounting/balance-tables": [
                 "libs/accounting/balance-tables/src/index.ts"
             ],
+            "@ss/accounting/category-accounts": [
+                "libs/accounting/category-accounts/src/index.ts"
+            ],
             "@ss/accounting/consolidation": [
                 "libs/accounting/consolidation-centers/src/index.ts"
             ],

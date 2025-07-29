@@ -1,5 +1,6 @@
 <mat-card>
-    <form *ngIf="form" novalidate [formGroup]="form">
+    @if (form) {
+    <form novalidate [formGroup]="form">
         <mat-accordion>
             <mat-expansion-panel #generalPanel expanded="true"
                                  [class]="getPanelHeaderClass('general', generalPanel)">
@@ -14,9 +15,9 @@
                     <mat-label translate>LOGISTICS_DENOMINATION</mat-label>
                     <input matInput formControlName="denomination" type="text" required>
 
-                    <mat-error
-                            *ngIf="form.controls['denomination'].invalid" translate>COMMON_FIELD_REQUIRED
-                    </mat-error>
+                    @if (form.controls['denomination'].invalid) {
+                        <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+                    }
                 </mat-form-field>
 
                 <mat-form-field id="customerCode" class="default-50 sm-100">
@@ -45,9 +46,9 @@
                                       formControlName="agentType"
                                       [model]="agentTypeLookup">
                     </ss-auto-complete>
-                    <mat-error
-                            *ngIf="form.controls['agentType'].invalid" translate>COMMON_FIELD_REQUIRED
-                    </mat-error>
+                    @if (form.controls['agentType'].invalid) {
+                        <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+                    }
                 </mat-form-field>
 
                 @if (!isSales) {
@@ -58,9 +59,9 @@
                                           [canAdd]="true"
                                           [model]="currencyLookup">
                         </ss-auto-complete>
-                        <mat-error
-                                *ngIf="form.controls['currency'].invalid" translate>COMMON_FIELD_REQUIRED
-                        </mat-error>
+                        @if (form.controls['currency'].invalid) {
+                            <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+                        }
                     </mat-form-field>
                 }
 
@@ -70,12 +71,13 @@
                                       formControlName="price"
                                       [model]="priceLookup">
                     </ss-auto-complete>
-                    <mat-error
-                            *ngIf="form.controls['price'].invalid" translate>COMMON_FIELD_REQUIRED
-                    </mat-error>
+                    @if (form.controls['price'].invalid) {
+                        <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+                    }
                 </mat-form-field>
 
-                <mat-form-field *ngIf="AQS" class="default-50 sm-100">
+                @if (AQS) {
+                <mat-form-field class="default-50 sm-100">
                     <mat-label translate>LOGISTICS_ACTIVITY</mat-label>
                     <ss-auto-complete matInput
                                       formControlName="activity"
@@ -83,6 +85,7 @@
                                       [model]="activityLookup">
                     </ss-auto-complete>
                 </mat-form-field>
+                }
 
                 @if (!isSales) {
                     <mat-form-field class="default-50 sm-100">
@@ -93,13 +96,15 @@
                         </ss-auto-complete>
                     </mat-form-field>
                 }
-                <mat-form-field *ngIf="AQS" class="default-50 sm-100">
+                @if (AQS) {
+                <mat-form-field class="default-50 sm-100">
                     <mat-label translate>COMMON_DEPARTMENT</mat-label>
                     <ss-auto-complete matInput
                                       formControlName="department"
                                       [model]="departmentLookup">
                     </ss-auto-complete>
                 </mat-form-field>
+                }
 
             </mat-expansion-panel>
 
@@ -175,9 +180,9 @@
                 <mat-form-field id="checkDueDays" class="default-50 sm-100">
                     <mat-label translate>LOGISTICS_CHECK_DUE_DAYS</mat-label>
                     <input matInput formControlName="checkDueDays" type="number" step="1">
-                    <mat-error
-                            *ngIf="form.controls['checkDueDays'].invalid" translate>COMMON_INTEGER_INVALID
-                    </mat-error>
+                    @if (form.controls['checkDueDays'].invalid) {
+                        <mat-error translate>COMMON_INTEGER_INVALID</mat-error>
+                    }
 
                 </mat-form-field>
 
@@ -204,13 +209,15 @@
                     <input matInput formControlName="capital" type="text">
                 </mat-form-field>
 
-                <mat-form-field *ngIf="AQS" class="default-50 sm-100">
+                @if (AQS) {
+                <mat-form-field class="default-50 sm-100">
                     <mat-label translate>LOGISTICS_BANK</mat-label>
                     <ss-auto-complete matInput
                                       formControlName="bank"
                                       [model]="bankLookup">
                     </ss-auto-complete>
                 </mat-form-field>
+                }
 
 
                 <mat-form-field class="default-50 sm-100">
@@ -231,9 +238,9 @@
                 <mat-form-field id="debtTerm" class="default-50 sm-100">
                     <mat-label translate>LOGISTICS_DEBT_TERM</mat-label>
                     <input matInput formControlName="debtTerm" type="number" step="0.01">
-                    <mat-error
-                            *ngIf="form.controls['debtTerm'].invalid" translate>COMMON_INTEGER_INVALID
-                    </mat-error>
+                    @if (form.controls['debtTerm'].invalid) {
+                        <mat-error translate>COMMON_INTEGER_INVALID</mat-error>
+                    }
 
 
                 </mat-form-field>
@@ -303,16 +310,17 @@
                 <mat-form-field id="email" class="default-50 sm-100">
                     <mat-label translate>LOGISTICS_EMAIL</mat-label>
                     <input matInput formControlName="email" type="email">
-                    <mat-error *ngIf="form.controls['email'].invalid" translate>COMMON_EMAIL_INVALID
-                    </mat-error>
+                    @if (form.controls['email'].invalid) {
+                        <mat-error translate>COMMON_EMAIL_INVALID</mat-error>
+                    }
                 </mat-form-field>
 
                 <mat-form-field id="website" class="default-50 sm-100">
                     <mat-label translate>LOGISTICS_WEBSITE</mat-label>
                     <input matInput formControlName="website" type="text">
-                    <mat-error
-                            *ngIf="form.controls['website'].invalid" translate>COMMON_URL_INVALID
-                    </mat-error>
+                    @if (form.controls['website'].invalid) {
+                        <mat-error translate>COMMON_URL_INVALID</mat-error>
+                    }
                 </mat-form-field>
 
                 <mat-form-field class="default-50 sm-100">
@@ -345,31 +353,32 @@
 
             </mat-expansion-panel>
 
-            <!--            <mat-expansion-panel #salesPanel-->
-            <!--                                 *ngIf="isSales"-->
-            <!--                                 [class]="getPanelHeaderClass('sales', salesPanel)">-->
-            <!--                <mat-expansion-panel-header>-->
-            <!--                    <mat-panel-title translate>-->
-            <!--                        COMMON_SCHEDULED_SALES-->
-            <!--                    </mat-panel-title>-->
-            <!--                </mat-expansion-panel-header>-->
+            @if (isSales) {
+            <mat-expansion-panel #salesPanel
+                                 [class]="getPanelHeaderClass('sales', salesPanel)">
+                <mat-expansion-panel-header>
+                    <mat-panel-title translate>
+                        COMMON_DIVERSE
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
 
-            <!--                <mat-form-field class="default-50 sm-100">-->
-            <!--                    <mat-label translate>LOGISTICS_CATEGORY</mat-label>-->
-            <!--                    <ss-auto-complete matInput-->
-            <!--                                      formControlName="category"-->
-            <!--                                      [model]="categoryLookup">-->
-            <!--                    </ss-auto-complete>-->
-            <!--                </mat-form-field>-->
+                <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>LOGISTICS_CATEGORY</mat-label>
+                    <ss-auto-complete matInput
+                                      formControlName="category"
+                                      [model]="categoryLookup">
+                    </ss-auto-complete>
+                </mat-form-field>
 
-            <!--                <mat-form-field class="default-50 sm-100">-->
-            <!--                    <mat-label translate>LOGISTICS_APPROVAL</mat-label>-->
-            <!--                    <input matInput formControlName="approval" type="text">-->
-            <!--                </mat-form-field>-->
-
-
-            <!--            </mat-expansion-panel>-->
-
+                <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>ACC_PURCHASE_ACCOUNT</mat-label>
+                    <ss-auto-complete matInput
+                                      formControlName="purchaseAccount"
+                                      [model]="accountLookup">
+                    </ss-auto-complete>
+                </mat-form-field>
+            </mat-expansion-panel>
+            }
             <mat-expansion-panel #centerPanel
                                  [class]="getPanelHeaderClass('centers', centerPanel)">
                 <mat-expansion-panel-header>
@@ -387,24 +396,23 @@
                     </mat-selection-list>
                 </div>
                 @if (isEditable) {
-                    <div class="center_ctrl">
-                        <button mat-mini-fab color="accent"
-                                (click)="addCenter()">
-                            <i class="fas fa-plus-circle"></i>
-                        </button>
-
-                        <mat-form-field>
-                            <mat-label translate>ADMINISTRATION_CENTER</mat-label>
-                            <ss-auto-complete matInput
-                                              #roleAC
-                                              [formControl]="centerCtrl"
-                                              [model]="centerLookup">
-                            </ss-auto-complete>
-                        </mat-form-field>
-                        <button mat-mini-fab color="warn" [disabled]="selectedCenter < 1" (click)="deleteCenter()"><i
-                                class="fas fa-trash-alt"></i>
-                        </button>
-                    </div>
+                <div class="center_ctrl">
+                    <button mat-mini-fab color="accent"
+                            (click)="addCenter()">
+                        <i class="fas fa-plus-circle"></i>
+                    </button>
+                    <mat-form-field>
+                        <mat-label translate>ADMINISTRATION_CENTER</mat-label>
+                        <ss-auto-complete matInput
+                                          #roleAC
+                                          [formControl]="centerCtrl"
+                                          [model]="centerLookup">
+                        </ss-auto-complete>
+                    </mat-form-field>
+                    <button mat-mini-fab color="warn" [disabled]="selectedCenter < 1" (click)="deleteCenter()"><i
+                            class="fas fa-trash-alt"></i>
+                    </button>
+                </div>
                 }
             </mat-expansion-panel>
 
@@ -452,5 +460,5 @@
             }
         </mat-accordion>
     </form>
+    }
 </mat-card>
-

@@ -17,7 +17,7 @@ import {
     COMMON_ACCOUNT_URL,
     COMMON_REPORTS_URL, DASHBOARD_URL,
     GENERATION_ACCOUNT_URL,
-    TRANSAC_ACCOUNT_URL, ACC_CLOSED_PERIODS_URL, ACC_GENERAL_INJECTION_URL
+    TRANSAC_ACCOUNT_URL, ACC_CLOSED_PERIODS_URL, ACC_GENERAL_INJECTION_URL, ACC_CATEGORY_ACCOUNTS_URL
 } from '../common';
 import {ABS_INDEX_URL, CanDeactivateService, LIST_URL} from '@ss/common/api-common';
 import {AccPoliciesComponent} from '@ss/accounting/acc-policies';
@@ -65,6 +65,7 @@ import {
 import { DashboardComponent } from '@ss/dashboard';
 import { ConsolidationCentersDetailComponent, ConsolidationCentersListComponent } from '@ss/accounting/consolidation';
 import { AccClosedPeriodsComponent } from '@ss/accounting/acc-closed-periods';
+import {CategoryAccountsDetailComponent, CategoryAccountsListComponent} from "@ss/accounting/category-accounts";
 
 export const accRoutes: Routes = [
     {
@@ -420,6 +421,24 @@ export const accRoutes: Routes = [
         path: ACC_CLOSED_PERIODS_URL,
         component: AccClosedPeriodsComponent,
         canActivate: [loginGuard, accountingGuard]
+    },
+    {
+        path: ACC_CATEGORY_ACCOUNTS_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: CategoryAccountsListComponent,
+                canActivate: [loginGuard]
+            },
+            {
+                path: ':id',
+                component: CategoryAccountsDetailComponent,
+                canActivate: [loginGuard],
+                canDeactivate: [CanDeactivateService]
+            },
+            {path: '', redirectTo: LIST_URL, pathMatch: 'full'},
+            {path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full'}
+        ]
     },
 
     {path: '', redirectTo: ABS_INDEX_URL, pathMatch: 'full'},

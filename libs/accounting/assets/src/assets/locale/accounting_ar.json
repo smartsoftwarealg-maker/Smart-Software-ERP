@@ -87,11 +87,14 @@
     "JOIN_TRANSACTION":        "اربط الصفقتين",
     "CLOSED_PERIODS":           "الفترات المغلقة",
     "CLOSED":                   "إغلاق",
-    "PURCHASE_ACCOUNT": "حساب الشراء",
-    "SALE_ACCOUNT": "حساب البيع",
-    "STOCK_ACCOUNT": "حساب المخزون",
-    "CONSUMPTION_ACCOUNT": "حساب الاستهلاك",
-    "SHOW_REFERENCE_2": "إظهار المرجع 2",
-    "MANUAL_NUMBERING": "ترقيم يدوي",
-    "ADD_ALL_CENTERS": "إنشاء مراكز التجميع"
+    "PURCHASE_ACCOUNT":         "حساب الشراء",
+    "SALE_ACCOUNT":             "حساب البيع",
+    "STOCK_ACCOUNT":            "حساب المخزون",
+    "CONSUMPTION_ACCOUNT":      "حساب الاستهلاك",
+    "SHOW_REFERENCE_2":         "إظهار المرجع 2",
+    "MANUAL_NUMBERING":         "ترقيم يدوي",
+    "ADD_ALL_CENTERS":          "إنشاء مراكز التجميع",
+    "CATEGORY_ACCOUNTS":        "حسابات الفئات",
+    "CATEGORY_ACCOUNT":         "حساب الفئة",
+    "DEFERRED_ACCOUNT":         "الحساب المؤجل"
 }

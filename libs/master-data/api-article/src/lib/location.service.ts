@@ -20,6 +20,7 @@ export class LocationService extends BaseEntityExtendedService<Location> {
         pageModel: PaginationModel,
         filter?: string,
         store?: number,
+        lot?: number,
         stock?: number,
         mark?: number,
         sortBy?: string): Observable<{ itemCount: number; body: Location[] }> {
@@ -27,9 +28,11 @@ export class LocationService extends BaseEntityExtendedService<Location> {
         const pageSize = pageModel.pageSize;
         const map: {key: string, value: string|number}[] = [
             { key: 'store', value: store },
+            { key: 'lot', value: lot },
             { key: 'stock', value: stock },
             { key: 'mark', value: mark },
             { key: 'find', value: reference },
+            { key: 'sort', value: sortBy },
 
         ];
         const params = map.reduce((p, c) => {
