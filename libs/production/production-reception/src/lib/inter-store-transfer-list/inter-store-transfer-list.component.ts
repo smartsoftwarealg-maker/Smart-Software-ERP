@@ -14,6 +14,7 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
 import { TranslateDirective } from '@ss/common/ui-lang';
 import { InterStoreTransferService } from '../interStoreTransfer.service';
 import { InterStoreTransferLinesService } from '../interStoreTransfer-lines.service';
+import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
 
 @Component({
     selector: 'ss-production-inter-store-transfer-list',
@@ -25,7 +26,8 @@ import { InterStoreTransferLinesService } from '../interStoreTransfer-lines.serv
         MaterialModule,
         TranslateDirective,
         PaginationComponent,
-    ],
+        DocInfoComponent
+    ]
 })
 export class InterStoreTransferListComponent extends BaseEntityListComponent<InterStoreTransfer> {
     #interStoreTransferLinesSrv = inject(InterStoreTransferLinesService);

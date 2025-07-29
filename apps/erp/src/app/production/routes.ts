@@ -71,6 +71,7 @@ export const prodRoutes: Routes = [
                 path: LIST_URL,
                 component: InterStoreTransferListComponent,
                 canActivate: [loginGuard],
+                children: docInfoRoutes,
             },
             {
                 path: ':id',
@@ -78,28 +79,26 @@ export const prodRoutes: Routes = [
                 canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService],
                 children: [
-                    { path: '', redirectTo: 'detail', pathMatch: 'full' },
+                    { path: '', pathMatch: 'full', redirectTo: 'lines-list' },
                     {
-                        path: 'detail',
-                        children: [
-                            {
-                                path: '',
-                                component: InterStoreTransferLinesListComponent,
-                                pathMatch: 'full',
-                            },
-                            {
-                                path: ':id',
-                                component:
-                                    InterStoreTransferLinesDetailComponent,
-                            },
-                        ],
+                        path: 'lines-list',
+                        component: InterStoreTransferLinesListComponent,
+                        children: docInfoRoutes,
                     },
+                    {
+                        path: 'lines-detail',
+                        children: [
+                            { path: ':id', component: InterStoreTransferLinesDetailComponent, },
+                        ]
+                    },
+                    ...docInfoRoutes,
                 ],
             },
             { path: '', redirectTo: LIST_URL, pathMatch: 'full' },
             { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' },
         ],
     },
+
     {
         path: PRODUCTION_BOM_URL,
         children: [

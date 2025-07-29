@@ -6,6 +6,7 @@ import { CommonModule } from '@angular/common';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 import { InterStoreTransferLinesService } from '../interStoreTransfer-lines.service';
 import { PaginationComponent } from '@ss/common/ui-pagination';
+import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
 
 @Component({
     selector: 'ss-production-inter-store-transfer-lines-list',
@@ -17,7 +18,8 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
         MaterialModule,
         TranslateDirective,
         TranslatePipe,
-        PaginationComponent
+        PaginationComponent,
+        DocInfoComponent
     ]
 })
 export class InterStoreTransferLinesListComponent extends BaseChildEntityListComponent<InterStoreTransferLine> {
@@ -26,9 +28,19 @@ export class InterStoreTransferLinesListComponent extends BaseChildEntityListCom
         'lotDescription',
         'sourceDescription',
         'qty',
+        'sourceRef',
+        'destinationStore'
     ];
 
     constructor(protected override detailSrv: InterStoreTransferLinesService) {
         super(detailSrv, 'PROD_INTER_STORE_TRANSFER');
+    }
+
+    protected readonly console = console;
+
+    showDetail(id: number) {
+        this.router.navigate(
+            ['lines-detail', id || 0],
+            { relativeTo: this.route.parent}).then();
     }
 }
