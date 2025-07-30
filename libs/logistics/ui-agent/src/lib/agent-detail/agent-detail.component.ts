@@ -77,7 +77,7 @@ import {
 const PARTNER = 0;
 const SUPPLIER = 1;
 const CUSTOMER = 2;
-const TRANSPORTER = 2;
+const TRANSPORTER = 3;
 
 @Component({
     selector: 'ss-agent-detail',
