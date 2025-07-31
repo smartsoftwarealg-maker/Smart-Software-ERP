@@ -62,17 +62,17 @@ export class MissionPreparationDetailComponent extends BaseEntityDetailComponent
             employee: [b.employee, Validators.required],
             reference: [b.reference],
             destination: [b.destination, Validators.required],
-            thezone: [b.thezone, Validators.required],
+            thezone: [b.theZone, Validators.required],
             motive: [b.motive, Validators.required],
             duration: [b.duration, Validators.required],
-            transport_means: [b.transport_means, Validators.required],
+            transportMeans: [b.transportMeans, Validators.required],
             departure: [new Date(Date.parse(b.departure || new Date() + '') || 0)],
-            returnback: [new Date(Date.parse(b.returnback || new Date() + '') || 0)],
+            returnBack: [new Date(Date.parse(b.returnBack || new Date() + '') || 0)],
             advancement: [b.advancement || 0],
             trajectory: [b.trajectory, Validators.required],
             meals: [b.meals, Validators.required],
             nights: [b.nights, Validators.required],
-            mission_status: [b.mission_status || 1, Validators.required],
+            missionStatus: [b.missionStatus || 1, Validators.required],
         });
     }
 }
