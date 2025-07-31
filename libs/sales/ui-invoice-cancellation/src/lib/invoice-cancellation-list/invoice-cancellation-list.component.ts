@@ -26,7 +26,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
         TranslateDirective,
         ReactiveFormsModule,
         RouterModule,
-       
+
 
         DocInfoComponent,
         PaginationComponent
@@ -41,6 +41,7 @@ export class InvoiceCancellationListComponent extends BaseEntityListComponent<Tr
         'payMethod',
         'reference',
         'referenceDocDate',
+        'docStatus',
     ];
 
 
