@@ -9,7 +9,6 @@ import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { DeliveryCancellationService } from '@ss/sales/api-delivery-cancellation';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
-
 import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
 import { PaginationComponent } from '@ss/common/ui-pagination';
 import { TranslateDirective } from '@ss/common/ui-lang';
@@ -25,7 +24,6 @@ import { TranslateDirective } from '@ss/common/ui-lang';
         TranslateDirective,
         ReactiveFormsModule,
         RouterModule,
-
         DocInfoComponent,
         PaginationComponent
     ]
@@ -39,6 +37,7 @@ export class DeliveryCancellationListComponent extends BaseEntityListComponent<T
         'payMethod',
         'reference',
         'referenceDocDate',
+        'docStatus'
     ];
 
 
