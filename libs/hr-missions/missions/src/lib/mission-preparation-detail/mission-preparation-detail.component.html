@@ -58,8 +58,8 @@
         <ss-auto-complete matInput
                           [required]="true"
                           [model]="transportLookup"
-                          formControlName="transport_means"></ss-auto-complete>
-        <mat-error *ngIf="form.controls['transport_means'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
+                          formControlName="transportMeans"></ss-auto-complete>
+        <mat-error *ngIf="form.controls['transportMeans'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
     </mat-form-field>
 
     <mat-form-field class="default-50">
@@ -71,10 +71,10 @@
 
 
     <mat-form-field class="default-50">
-        <input matInput [matDatepicker]="returnback" name="departure" formControlName="returnback">
+        <input matInput [matDatepicker]="returnBack" name="departure" formControlName="returnBack">
         <mat-placeholder translate>MISSION_COMEBACK</mat-placeholder>
-        <mat-datepicker-toggle matSuffix [for]="returnback"></mat-datepicker-toggle>
-        <mat-datepicker #returnback type="datetime" [twelveHour]="false"></mat-datepicker>
+        <mat-datepicker-toggle matSuffix [for]="returnBack"></mat-datepicker-toggle>
+        <mat-datepicker #returnBack type="datetime" [twelveHour]="false"></mat-datepicker>
     </mat-form-field>
 
     <mat-form-field class="default-50">
@@ -93,7 +93,7 @@
 
     <mat-form-field floatLabel="always" class="default-50">
         <mat-label translate>COMMON_STATUS</mat-label>
-        <mat-select formControlName="mission_status" required>
+        <mat-select formControlName="missionStatus" required>
             <mat-option [value]="1" translate>MISSION_PREPARATION</mat-option>
             <mat-option [value]="2" translate>COMMON_VALIDATED</mat-option>
             <mat-option [value]="3" translate>COMMON_CANCELED</mat-option>
