@@ -49,13 +49,13 @@ export const salesNavTree: SideNavNode = {
             accessRights: 'SOrder'
         },
         {
-            name: 'SALES_DELIVERY',
+            name: 'COMMON_DELIVERY',
             icon: 'fas fa-file',
             route: ABS_SALES_DELIVERY_URL,
             accessRights: 'Delivery'
         },
         {
-            name: 'SALES_INVOICE',
+            name: 'COMMON_INVOICE',
             icon: 'fas fa-file-invoice',
             route: ABS_SALES_INVOICE_URL,
             accessRights: 'Invoice'

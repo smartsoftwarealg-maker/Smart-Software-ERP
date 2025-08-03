@@ -57,7 +57,7 @@ export class ServiceInvoiceDetailComponent extends BaseTransactionDetailComponen
         public override formBuilder: UntypedFormBuilder,
         public override confirmationSrv: ConfirmationDialogService,
         protected override dialog: MatDialog) {
-        super(entitySrv, detailSrv, shellSrv, snackBarSrv, route, router, formBuilder, confirmationSrv, loginSrv, dialog, 'SALES_INVOICE');
+        super(entitySrv, detailSrv, shellSrv, snackBarSrv, route, router, formBuilder, confirmationSrv, loginSrv, dialog, 'COMMON_INVOICE');
     }
 
 
@@ -77,7 +77,7 @@ export class ServiceInvoiceDetailComponent extends BaseTransactionDetailComponen
         return [
             {id: DOC_QUOTATION, description: 'LOGISTICS_PROFORMA'},
             {id: DOC_SALES_ORDER, description: 'SALES_ORDER'},
-            {id: DOC_DELIVERY, description: 'SALES_DELIVERY'}
+            {id: DOC_DELIVERY, description: 'COMMON_DELIVERY'}
         ];
     }
 }

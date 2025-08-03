@@ -75,6 +75,6 @@ export class ComplementInvoiceDetailComponent extends BaseTransactionDetailCompo
     }
 
     protected importedDocuments(): Lookup[] {
-        return [{ id: 258, description: 'SALES_INVOICE' }];
+        return [{ id: 258, description: 'COMMON_INVOICE' }];
     }
 }
