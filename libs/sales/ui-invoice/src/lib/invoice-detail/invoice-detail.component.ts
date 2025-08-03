@@ -66,7 +66,7 @@ export class InvoiceDetailComponent extends BaseTransactionDetailComponent imple
         return [
             {id: DOC_QUOTATION, description: 'LOGISTICS_PROFORMA'},
             {id: DOC_SALES_ORDER, description: 'SALES_ORDER'},
-            {id: DOC_DELIVERY, description: 'SALES_DELIVERY'}
+            {id: DOC_DELIVERY, description: 'COMMON_DELIVERY'}
         ];
     }
 }

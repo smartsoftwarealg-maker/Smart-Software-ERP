@@ -48,7 +48,7 @@ export class InvoiceListComponent extends BaseEntityListComponent<Transaction> {
         public override confirmationSrv: ConfirmationDialogService,
         public override defReportSrv: DefaultReportService,
         public override pagPersistSrv: PaginatorPersistenceService) {
-        super(invoiceSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv, 'SALES_INVOICE');
+        super(invoiceSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv, 'COMMON_INVOICE');
     }
 
     ngOnInit() {
