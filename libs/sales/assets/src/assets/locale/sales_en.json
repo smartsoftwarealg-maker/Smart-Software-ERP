@@ -1,10 +1,8 @@
 {
     "EDIT_DELIVERY": "Edit delivery",
     "SALES": "Sales",
-    "DELIVERY": "Delivery",
     "EDIT_DELIVERY_LINES": "Edit delivery lines",
     "ORDER": "Sales order",
-    "INVOICE": "Invoice",
     "EDIT_INVOICE": "Edit invoice",
     "EDIT_ORDER": "Edit order",
     "EDIT_INVOICE_LINES": "Edit invoice lines",

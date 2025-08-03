@@ -419,5 +419,7 @@
     "LAST_UPDATE_TIME": "Last update time",
     "DESTINATION": "Destination",
     "ONE_BY_ONE": "One by one",
-    "CRM": "CRM"
+    "CRM": "CRM",
+    "DELIVERY": "Delivery",
+    "INVOICE": "Invoice"
 }

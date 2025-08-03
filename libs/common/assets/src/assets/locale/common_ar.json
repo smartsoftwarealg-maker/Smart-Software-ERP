@@ -411,6 +411,8 @@
     "PRIORITY":            "الأولوية",
     "LAST_UPDATE_TIME":   "آخر وقت التحديث",
     "DESTINATION":        "وجهة",
-    "ONE_BY_ONE":         "إضافة عنصر عنصر"
+    "ONE_BY_ONE":         "إضافة عنصر عنصر",
+    "INVOICE":            "الفاتورة",
+    "DELIVERY":           "التسليم"
 }
 
