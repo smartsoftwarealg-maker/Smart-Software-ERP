@@ -404,15 +404,15 @@
     "CUSTOMER_CODE":      "رمز العميل",
     "MAX_FILE_SIZE_65KB":  "أقصى حجم للملف 65كب",
     "ADVANCEMENT":         "مقدم",
-    "YOU_ARE_BLOCKED":    "لقد تم حظرك",
+    "YOU_ARE_BLOCKED":     "لقد تم حظرك",
     "YOU_ARE_BLOCKED_DUE": "عزيزي العميل، لقد تم حظر حسابك مؤقتًا بسبب",
     "CONTACT_US":          "إذا كنت تعتقد أن هذا خطأ أو إذا كان لديك أي أسئلة، فلا تتردد في الاتصال بفريق الدعم الخاص بنا.",
     "GOT_IT":              "فهمت",
     "PRIORITY":            "الأولوية",
-    "LAST_UPDATE_TIME":   "آخر وقت التحديث",
-    "DESTINATION":        "وجهة",
-    "ONE_BY_ONE":         "إضافة عنصر عنصر",
-    "INVOICE":            "الفاتورة",
-    "DELIVERY":           "التسليم"
+    "LAST_UPDATE_TIME":    "آخر وقت التحديث",
+    "DESTINATION":         "وجهة",
+    "ONE_BY_ONE":          "إضافة عنصر عنصر",
+    "INVOICE":             "الفاتورة",
+    "DELIVERY":            "التسليم"
 }
 
