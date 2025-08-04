@@ -9,5 +9,6 @@
     "DD":                    "D.D",
     "AUTH_NO":               "Numéro d'autorisation.",
     "AUTH_DATE":             "Date d'autorisation",
-    "PRICE_REQUEST":         "Demande de prix"
+    "PRICE_REQUEST":         "Demande de prix",
+    "SOURCE_DOC":            "Document source"
 }

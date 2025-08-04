@@ -9,5 +9,6 @@
     "DD":                    "مكس 2",
     "AUTH_NO":               "رقم التفويض",
     "AUTH_DATE":             "تاريخ الترخيص",
-    "PRICE_REQUEST":         "المساومة"
+    "PRICE_REQUEST":         "المساومة",
+    "SOURCE_DOC":            "المصدر"
 }
