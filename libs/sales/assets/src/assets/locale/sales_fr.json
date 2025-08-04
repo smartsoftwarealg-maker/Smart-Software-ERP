@@ -1,10 +1,8 @@
 {
     "EDIT_DELIVERY": "Modification livraison",
     "SALES": "Vente",
-    "DELIVERY": "Livraison",
     "EDIT_DELIVERY_LINES": "Modifcation lines Livraison",
     "ORDER": "Bon de commande",
-    "INVOICE": "Facture",
     "EDIT_INVOICE": "Modification facture",
     "EDIT_ORDER": "Modification commande",
     "EDIT_INVOICE_LINES": "Modification detail facture",

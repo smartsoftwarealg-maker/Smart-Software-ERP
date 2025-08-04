@@ -52,7 +52,7 @@ export const APPLICATIONS: Lookup[] = [
     { 'id': 5, 'description': 'LOGISTICS_PURCHASE_ORDER', descriptionAr: 'AAPOrder' },
     { 'id': 52, 'description': 'COMMON_RECEPTION', descriptionAr: '' },
     { 'id': 53, 'description': 'SALES_ORDER', descriptionAr: 'AASOrder' },
-    { 'id': 54, 'description': 'SALES_INVOICE', descriptionAr: 'AAInvoice' },
+    { 'id': 54, 'description': 'COMMON_INVOICE', descriptionAr: 'AAInvoice' },
     // {'id': 6,  'description': 'COMMON_CONTRACT'},
     { 'id': 7, 'description': 'COMMON_ACCOUNTING', descriptionAr: 'AAAcounting' }
 ];

@@ -59,6 +59,6 @@ export class DeliveryCancellationDetailComponent extends BaseTransactionDetailCo
         return true;
     }
     protected importedDocuments(): Lookup[] {
-        return [{id: 257, description: 'SALES_DELIVERY'}];
+        return [{id: 257, description: 'COMMON_DELIVERY'}];
     }
 }

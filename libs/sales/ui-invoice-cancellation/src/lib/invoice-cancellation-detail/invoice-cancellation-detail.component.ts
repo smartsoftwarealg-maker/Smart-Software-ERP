@@ -63,6 +63,6 @@ export class InvoiceCancellationDetailComponent extends BaseTransactionDetailCom
     }
 
     protected importedDocuments(): Lookup[] {
-        return [{ id: 258, description: 'SALES_INVOICE' }];
+        return [{ id: 258, description: 'COMMON_INVOICE' }];
     }
 }
