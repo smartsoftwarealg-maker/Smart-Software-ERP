@@ -16,7 +16,7 @@ import {
 import {AssetsService} from '../services/assets.service';
 import { IsParamService, LoginService, MaterialModule } from '@ss/common/api-common';
 import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
-import {Agent, AgentService, ConsumerService, CustomerService, SupplierService} from "@ss/logistics/api-agent";
+import {Agent, AgentService, ConsumerService, CustomerService, SupplierService} from '@ss/logistics/api-agent';
 import {MatExpansionPanel} from '@angular/material/expansion';
 import {Account, AccountAutocompleteModel, AccountService} from '@ss/accounting/api-accounts';
 import {debounceTime, distinctUntilChanged, map, switchMap, tap} from 'rxjs/operators';
@@ -35,10 +35,10 @@ import {
     ASSET_ARCHIVES,
     ARCHIVE_ROUTE_URL, AppArchiveListComponent
 } from '@ss/common/app-archive';
-import {AssetCostsService} from "../services/asset-costs.service";
-import {AssetRevaluationService} from "../services/asset-revaluation.service";
-import {AssetBlockingService} from "../services/asset-blocking.service";
-import {DepreciationRateService} from "../services/depreciation-rate.service";
+import {AssetCostsService} from '../services/asset-costs.service';
+import {AssetRevaluationService} from '../services/asset-revaluation.service';
+import {AssetBlockingService} from '../services/asset-blocking.service';
+import {DepreciationRateService} from '../services/depreciation-rate.service';
 import { CommonModule } from '@angular/common';
 
 
@@ -113,7 +113,7 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> impl
     ];
 
     isAQS = false;
-    isCMMS: Boolean = false;
+    isCMMS: boolean = false;
 
     markAutoCompleteModel = new DefaultAutoCompleteModel(this.markSrv);
     classAutoCompleteModel = new DefaultAutoCompleteModel(this.classSrv);
@@ -142,10 +142,10 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> impl
 
     private PANELS = [
         ARCHIVE_ROUTE_URL,     // 0
-        "costs",               // 1
-        "revaluations",        // 2
-        "blockings",           // 3
-        "depreciation-rate",   // 4
+        'costs',               // 1
+        'revaluations',        // 2
+        'blockings',           // 3
+        'depreciation-rate',   // 4
         ARCHIVE_ROUTE_URL,     // 5
     ];
 
@@ -293,15 +293,15 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> impl
     override preload(): Observable<any> {
         return this.isParamSrv.is('ANSEJ')
             .pipe(tap(res => {
-                    this.isANSEJ = res;
-                    this.importBtn.visible = this.isANSEJ;
-                }),
-                switchMap(_ => this.isParamSrv.is("AQS")),
-                tap(res => this.isAQS = res),
-                switchMap(_ => this.endSrv.getList(0, 50)),
-                tap(res => this.assetEnds = res.body),
-                switchMap(() => this.route.data),
-                tap(map => this.isCMMS = map["isCMMS"] === "true"));
+                this.isANSEJ = res;
+                this.importBtn.visible = this.isANSEJ;
+            }),
+            switchMap(_ => this.isParamSrv.is('AQS')),
+            tap(res => this.isAQS = res),
+            switchMap(_ => this.endSrv.getList(0, 50)),
+            tap(res => this.assetEnds = res.body),
+            switchMap(() => this.route.data),
+            tap(map => this.isCMMS = map['isCMMS'] === 'true'));
     }
 
     override ngOnInit() {

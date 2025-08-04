@@ -39,7 +39,7 @@ export class AgentListComponent extends BaseEntityListComponent<Agent> {
         label: 'COMMON_SHOW_ALL',
         visible: true,
         click: () => this.toggleActivity(),
-    }
+    };
 
     private isParamSrv = inject(IsParamService);
 

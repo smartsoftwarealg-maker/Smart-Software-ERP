@@ -1,17 +1,16 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import { KeepOnToolbar, ShellService, SnackBarService, ToolbarButton } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router, RouterOutlet } from '@angular/router';
-import { FormGroup, ReactiveFormsModule, UntypedFormBuilder } from '@angular/forms';
+import { ReactiveFormsModule, UntypedFormBuilder } from '@angular/forms';
 import { Lookup } from '@ss/common/api-lookup';
 import {  ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import {
     BaseTransactionDetailComponent,
     BaseTransactionLinesListComponent,
-    Transaction,
-    TransactionLinesService
+    Transaction
 } from '@ss/logistics/api-transaction';
 import { ReceptionService } from '@ss/purchases/api-reception';
-import { LoginService, MaterialModule } from '@ss/common/api-common';
+import { IsParamService, LoginService, MaterialModule } from '@ss/common/api-common';
 import { MatDialog } from '@angular/material/dialog';
 import { CommonModule } from '@angular/common';
 
@@ -19,12 +18,11 @@ import { CommonModule } from '@angular/common';
 import { DatePickerComponent } from '@ss/common/ui-datepicker';
 
 
-import { UiStockInfoComponent } from '@ss/logistics/ui-stock-info';
 import { ReceptionLinesService } from '../reception-lines.service';
-import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
+import { TranslateDirective } from '@ss/common/ui-lang';
 import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { ExtraCostService } from '@ss/purchases/extra-costs';
-import { Observable, of, switchMap } from 'rxjs';
+import { Observable, of, switchMap, tap } from 'rxjs';
 
 
 @Component({
@@ -43,6 +41,7 @@ import { Observable, of, switchMap } from 'rxjs';
     ]
 })
 export class ReceptionDetailComponent extends BaseTransactionDetailComponent implements OnInit {
+    private isSrv = inject(IsParamService);
     private extraCostSrv = inject(ExtraCostService);
     private URLs = ['./lines-list', './costs-list'];
     private costSrv = inject(ExtraCostService);
@@ -55,6 +54,8 @@ export class ReceptionDetailComponent extends BaseTransactionDetailComponent imp
         visible: true,
         click: () => this.importContract(),
     };
+
+    showAccTab = signal(true);
 
     constructor(
         public override entitySrv: ReceptionService,
@@ -113,7 +114,6 @@ export class ReceptionDetailComponent extends BaseTransactionDetailComponent imp
         }
     }
 
-
     private importContract() {
         if (!this.importContractBtn.disabled && this.form.controls['project'].value) {
             this.entitySrv
@@ -128,8 +128,17 @@ export class ReceptionDetailComponent extends BaseTransactionDetailComponent imp
                 });
         }
     }
+
     loadEntity(id: number): Observable<Transaction> {
         this.extraCostSrv.setParentId(id||0);
         return super.loadEntity(id);
+    }
+
+    preload(): Observable<any> {
+        return this.isSrv
+            .is('SODISMAC')
+            .pipe(
+                tap(res => this.showAccTab.set(true)),
+                switchMap(() => super.preload()));
     }
 }

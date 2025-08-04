@@ -14,7 +14,7 @@ import { WorkflowDialogComponent } from '@ss/workflow';
 import { LoginService, User } from '@ss/common/api-common';
 import { MatDialog } from '@angular/material/dialog';
 import { DocImportComponent, DocImportService } from '@ss/logistics/ui-doc-import';
-import { Directive, inject, OnInit, signal, ViewChild } from '@angular/core';
+import { Directive, inject, OnInit, ViewChild } from '@angular/core';
 import { CCGroup, Currency, CurrencyService, Lookup, LookupsService, PayMethod } from '@ss/common/api-lookup';
 import {
     Agent,
@@ -31,10 +31,11 @@ import { TransactionLinesClass } from './transaction-lines.class';
 import { BaseTransactionLinesListComponent } from './base-transaction-lines-list.component';
 import { Project, PurchaseContractService, SalesContractService } from '@ss/logistics/contracts';
 import { OptionService } from '@ss/logistics/ui-options';
-import { sign } from 'chart.js/helpers';
+import { SupplierAccountService } from '../../../../accounting/api-accounts/src/lib/supplier-account.service';
 
 @Directive()
 export abstract class BaseTransactionDetailComponent extends BaseEntityDetailComponent<Transaction> implements OnInit {
+    private supplierAccountSrv = inject(SupplierAccountService);
     private CONSUMPTION_DOCUMENT = 260;
     private PURCHASE_REQUEST = 10;
     private optionSrv = inject(OptionService);
@@ -87,6 +88,7 @@ export abstract class BaseTransactionDetailComponent extends BaseEntityDetailCom
     public transporterAutoCompleteModel = new DefaultAutoCompleteModel<Agent>(this.supplierSrv, 'id', 'denomination');
     public consumerLookup = new DefaultAutoCompleteModel<Agent>(this.consumerSrv, 'id', 'denomination');
     public branchLookup = new DefaultAutoCompleteModel(this.branchSrv, 'id', 'denomination');
+    public supplierAccountLookup = new DefaultAutoCompleteModel(this.supplierAccountSrv);
     public executionRef = 0;
     public formId = 0;
     public groups: CCGroup[];
@@ -280,15 +282,17 @@ export abstract class BaseTransactionDetailComponent extends BaseEntityDetailCom
             deliveryTime: [b.deliveryTime],
             vfGuarantee: [b.vfGuarantee],
             ftGuarantee: [b.ftGuarantee],
-            advancement: [b.advancement]
+            advancement: [b.advancement],
+            receptionType: [b.receptionType],
+            supplierAccount: [b.supplierAccount]
         });
     }
 
     preload(): Observable<any> {
         return this.lookupsSrv.getCCGroups()
             .pipe(tap(x => this.groups = x),
-                  switchMap(() => this.optionSrv.get(this.loginSrv.appCtx.center)),
-                  tap(res => this.optionSrv.options = res));
+                switchMap(() => this.optionSrv.get(this.loginSrv.appCtx.center)),
+                tap(res => this.optionSrv.options = res));
         //
         // return this.optionSrv
         //     .get(this.loginSrv.appCtx.center)
