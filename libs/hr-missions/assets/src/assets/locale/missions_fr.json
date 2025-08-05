@@ -12,5 +12,10 @@
     "PREPARATION":  "Preparation",
     "DISTANCE":     "Distance",
     "TRAJECTORIES": "Trajectoires",
-    "TRANSPORT":    "Transport"
+    "TRANSPORT":    "Transport",
+    "MISSION_EXPENSES":  "Frais de mission",
+    "EXPENSES":          "dépenses",
+    "JOURNEYS":          "Voyages",
+    "ROUTE_COUNT":       "Nombre d'itinéraires",
+    "EXCL_MEAL":         "Hors repas"
 }

@@ -1,4 +1,4 @@
-export const MISSIONS_URL = '/payroll/missions';
+export const MISSIONS_URL = '/missions/missions';
 export const ZONE_URL = '/lookups/zones';
 export const TRANSPORT_URL = '/lookups/missions_transport';
 export const TRAJECTORY_URL = '/payroll/trajectories';

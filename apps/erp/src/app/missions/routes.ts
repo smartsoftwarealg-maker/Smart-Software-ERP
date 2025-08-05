@@ -1,9 +1,7 @@
 import { Routes } from '@angular/router';
-import {MISSION_PREPARATION_URL, MISSION_TRAJECTORIES} from '../common';
-
+import { MISSION_EXPENSES_URL, MISSION_PREPARATION_URL, MISSION_TRAJECTORIES} from '../common';
 import {
     ABS_INDEX_URL,
-    CanActivateService,
     CanDeactivateService,
     LIST_URL
 } from '@ss/common/api-common';
@@ -18,6 +16,11 @@ import {
     MissionPreparationListComponent
 } from '@ss/hr-missions/missions';
 import {loginGuard} from '../erp-guards';
+import {
+    MissionExpensesDetailComponent,
+    MissionExpensesLineDetailComponent, MissionExpensesLineListComponent,
+    MissionExpensesListComponent
+} from "@ss/hr-missions/mission-expenses";
 
 export const mainRoutes: Routes = [
     {
@@ -26,16 +29,16 @@ export const mainRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: MissionPreparationListComponent,
-                canActivate: [loginGuard]
+                canActivate: [loginGuard],
             },
             {
                 path: ':id',
                 component: MissionPreparationDetailComponent,
                 canActivate: [loginGuard],
-                canDeactivate: [CanDeactivateService]
+                canDeactivate: [CanDeactivateService],
             },
-            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
-        ]
+            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' },
+        ],
     },
     {
         path: MISSION_TRAJECTORIES,
@@ -43,18 +46,51 @@ export const mainRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: TrajectoryListComponent,
-                canActivate: [loginGuard]
+                canActivate: [loginGuard],
             },
             {
                 path: ':id',
                 component: TrajectoryDetailComponent,
                 canActivate: [loginGuard],
-                canDeactivate: [CanDeactivateService]
+                canDeactivate: [CanDeactivateService],
             },
-            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
-        ]
+            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' },
+        ],
+    },
+    {
+        path: MISSION_EXPENSES_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: MissionExpensesListComponent,
+                canActivate: [loginGuard],
+            },
+            {
+                path: ':id',
+                component: MissionExpensesDetailComponent,
+                canActivate: [loginGuard],
+                canDeactivate: [CanDeactivateService],
+                children: [
+                    { path: '', redirectTo: 'detail', pathMatch: 'full' },
+                    {
+                        path: 'detail',
+                        children: [
+                            {
+                                path: '',
+                                component: MissionExpensesLineListComponent,
+                                pathMatch: 'full',
+                            },
+                            {
+                                path: ':id',
+                                component: MissionExpensesLineDetailComponent,
+                            },
+                        ],
+                    },
+                ],
+            },
+            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' },
+        ],
     },
     { path: '', redirectTo: ABS_INDEX_URL, pathMatch: 'full' },
-    { path: '**', redirectTo: ABS_INDEX_URL }
-
+    { path: '**', redirectTo: ABS_INDEX_URL },
 ];

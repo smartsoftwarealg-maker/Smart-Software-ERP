@@ -1,0 +1,115 @@
+@if (form) {
+    <form novalidate [formGroup]="form">
+
+        <mat-form-field class="default-50">
+            <mat-label translate>COMMON_NUMBER</mat-label>
+            <input matInput formControlName="number" type="number">
+            @if (form.controls['number'].invalid) {
+                <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+            }
+        </mat-form-field>
+
+        <mat-form-field class="default-50">
+            <mat-label translate>PAYROLL_EMPLOYEE</mat-label>
+            <ss-auto-complete matInput
+                              [required]="true"
+                              [model]="employeeLookup"
+                              formControlName="employee"></ss-auto-complete>
+            @if (form.controls['employee'].invalid) {
+                <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+            }
+        </mat-form-field>
+
+        <mat-form-field class="default-50">
+            <mat-label translate>PAYROLL_REFERENCE</mat-label>
+            <input matInput formControlName="reference" type="text">
+            @if (form.controls['reference'].invalid) {
+                <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+            }
+        </mat-form-field>
+
+        <mat-form-field class="default-50">
+            <mat-label translate>MISSION_DESTINATION
+            </mat-label>
+            <input matInput formControlName="destination" type="text">
+            @if (form.controls['destination'].invalid) {
+                <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+            }
+        </mat-form-field>
+
+        <mat-form-field class="default-50">
+            <mat-label translate>COMMON_MOTIVE</mat-label>
+            <input matInput formControlName="motive" type="text">
+            @if (form.controls['motive'].invalid) {
+                <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+            }
+        </mat-form-field>
+
+        <mat-form-field class="default-50">
+            <mat-label translate>MISSION_DURATION</mat-label>
+            <input matInput formControlName="duration" type="text">
+            @if (form.controls['duration'].invalid) {
+                <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+            }
+        </mat-form-field>
+
+        <mat-form-field class="default-50">
+            <mat-label translate>MISSION_TRANSPORT</mat-label>
+            <ss-auto-complete matInput
+                              [required]="true"
+                              [model]="transportLookup"
+                              formControlName="transportMeans"></ss-auto-complete>
+            @if (form.controls['transportMeans'].invalid) {
+                <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+            }
+        </mat-form-field>
+
+        <mat-form-field class="default-50">
+            <mat-label translate>MISSION_DEPARTURE</mat-label>
+            <ss-date-picker formControlName="departure" type="datetime"></ss-date-picker>
+        </mat-form-field>
+
+        <mat-form-field class="default-50">
+            <mat-label translate>MISSION_COMEBACK</mat-label>
+            <ss-date-picker formControlName="returnBack" type="datetime"></ss-date-picker>
+        </mat-form-field>
+
+        <mat-form-field class="default-50">
+            <mat-label translate>COMMON_ADVANCEMENT</mat-label>
+            <input matInput formControlName="advancement" type="number">
+        </mat-form-field>
+
+        <mat-form-field class="default-50">
+            <mat-label translate>MISSION_TRAJECTORY</mat-label>
+            <ss-auto-complete matInput
+                              [required]="true"
+                              [model]=" trajectoryLookup"
+                              formControlName="trajectory"></ss-auto-complete>
+            @if (form.controls['trajectory'].invalid) {
+                <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+            }
+        </mat-form-field>
+
+        <mat-form-field floatLabel="always" class="default-50">
+            <mat-label translate>COMMON_STATUS</mat-label>
+            <mat-select formControlName="missionStatus" required>
+                <mat-option [value]="1" translate>MISSION_PREPARATION</mat-option>
+                <mat-option [value]="2" translate>COMMON_VALIDATED</mat-option>
+                <mat-option [value]="3" translate>COMMON_CANCELED</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <div class="default-50">
+            <mat-checkbox formControlName="meals" translate>MISSION_MEALS</mat-checkbox>
+        </div>
+
+        <div class="default-50">
+            <mat-checkbox formControlName="nights" translate>MISSION_NIGHTS</mat-checkbox>
+        </div>
+    </form>
+
+
+}
+@if (id && loaded()) {
+    <router-outlet></router-outlet>
+}
