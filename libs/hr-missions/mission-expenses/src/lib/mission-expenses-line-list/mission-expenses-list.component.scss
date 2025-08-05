@@ -1,0 +1,44 @@
+:host {
+    display: block;
+    margin: auto;
+    position: relative;
+    max-width: 600px;
+    width: 100%;
+    padding-top: 24px;
+}
+
+.ctrl-div {
+    display: flex;
+    //gap: 1em;
+    justify-content: flex-end;
+}
+
+// keep the material design specs
+.mat-row, .mat-header-row {
+    padding-right: 16px;
+    padding-left: 16px;
+}
+
+.mat-column-from, .mat-column-to {
+    flex: 1 1 auto;
+    padding-right: 8px !important;
+    padding-left: 8px !important;
+    justify-content: center;
+}
+
+.add-button {
+    position: absolute;
+    z-index: 999;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.pagination-container {
+    ss-pagination {
+        left: 0;
+        right: 0;
+        position: sticky;
+        margin: auto;
+    }
+}

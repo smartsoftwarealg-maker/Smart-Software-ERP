@@ -332,6 +332,9 @@
             "@ss/hr-missions/missions": [
                 "libs/hr-missions/missions/src/index.ts"
             ],
+            "@ss/hr-missions/mission-expenses": [
+                "libs/hr-missions/mission-expenses/src/index.ts"
+            ],
             "@ss/ligistics/article-search": [
                 "libs/logictics/article-search/src/index.ts"
             ],

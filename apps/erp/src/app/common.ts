@@ -346,6 +346,7 @@ export const SS_POLL_HISTORY_CHARTS_URL  = 'history-poll-charts';
 // Missions
 export const MISSION_PREPARATION_URL = 'missions';
 export const MISSION_TRAJECTORIES = 'trajectories';
+export const MISSION_EXPENSES_URL = 'journeys';
 
 // Attendance
 export const ATTENDANCE_MACHINES_URL = 'attendance-machines';
@@ -363,6 +364,7 @@ export const SERIAL_ATTENDANCE_URL   = 'serial-attendance';
 // Missions
 export const ABS_MISSION_PREPARATION_URL = '/' + [MAIN_PAGE_URL, MISSIONS_APP_URL, MISSION_PREPARATION_URL].join('/');
 export const ABS_MISSION_TRAJECTORY_URL  = '/' + [MAIN_PAGE_URL, MISSIONS_APP_URL, MISSION_TRAJECTORIES].join('/');
+export const ABS_MISSION_EXPENSES_URL  = '/' + [MAIN_PAGE_URL, MISSIONS_APP_URL, MISSION_EXPENSES_URL].join('/');
 
 // Attendance
 export const ABS_ATTENDANCE_WORKSHIFTS_URL = '/' + [MAIN_PAGE_URL, ATTENDANCE_APP_URL, WORK_SHIFTS_URL].join('/');

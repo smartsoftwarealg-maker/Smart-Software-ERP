@@ -1,0 +1,48 @@
+.form_container {
+    width: 100%;
+    height: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    overflow-x: auto;
+    display: flex;
+    flex-direction: column;
+}
+.main-table {
+    overflow-x: auto;
+}
+.content-div {
+    overflow-x: auto;
+    flex-grow: 2;
+}
+mat-table {
+    min-width: 1000px;
+}
+.pagination-container {
+    flex-grow: 0;
+}
+
+.mat-column-lastName,
+.mat-column-firstName
+{
+    flex: 1 0 100px;
+}
+
+.mat-column-destination,
+.mat-column-duration,
+.mat-column-zoneName
+{
+    flex: 1 0 120px;
+}
+
+
+.mat-column-departure,
+.mat-column-returnback
+{
+    flex: 1 0 140px;
+}
+
+.mat-column-number
+{
+    flex: 0 1 90px;
+}
+

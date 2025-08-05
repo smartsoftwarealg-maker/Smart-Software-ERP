@@ -1,0 +1,67 @@
+@if (isEditable) {
+    <div class="ctrl-div">
+        <button mat-mini-fab
+                type="button"
+                [matTooltip]="'COMMON_ADD' | translate"
+                color="primary" (click)="showDetail(0)">
+            <span class="fas fa-plus"></span>
+        </button>
+        <button mat-mini-fab
+                type="button"
+                (click)="edit()"
+                [disabled]="!selectedId"
+                color="accent">
+            <span class="fas fa-pen"></span>
+        </button>
+        <button mat-mini-fab
+                type="button"
+                (click)="deleteSelected()"
+                [disabled]="!selectedId"
+                color="warn">
+            <span class="fas fa-trash-alt"></span>
+        </button>
+    </div>
+}
+<mat-tab-group>
+    <mat-tab>
+        <ng-template mat-tab-label>
+            <span translate>MISSION_JOURNEYS</span>
+        </ng-template>
+        <div class="table-container">
+            <mat-table mat-table [dataSource]="data$|async" class="main-table">
+                <ng-container matColumnDef="from">
+                    <mat-header-cell *matHeaderCellDef translate>COMMON_FROM</mat-header-cell>
+                    <mat-cell *matCellDef="let e">
+                        {{e.fromDate | date: 'dd/MM/yyyy HH:mm' }}
+                    </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="to">
+                    <mat-header-cell *matHeaderCellDef translate>COMMON_TO</mat-header-cell>
+                    <mat-cell *matCellDef="let e">
+                        {{e.toDate | date: 'dd/MM/yyyy HH:mm' }}
+                    </mat-cell>
+                </ng-container>
+
+                <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+                <mat-row class="selectable" [class.selected]="row.id == selectedId" (click)="select(row.id)"
+                         *matRowDef="let row; columns: displayedColumns;"></mat-row>
+            </mat-table>
+        </div>
+    </mat-tab>
+    <mat-tab>
+        <ng-template mat-tab-label>
+            <span translate>COMMON_DETAIL</span>
+        </ng-template>
+    </mat-tab>
+    <mat-tab>
+        <ng-template mat-tab-label>
+            <span translate>COMMON_SUMMARY</span>
+        </ng-template>
+    </mat-tab>
+
+</mat-tab-group>
+
+<div class="pagination-container b-b-background">
+    <ss-pagination [paginationModel]="paginator"></ss-pagination>
+</div>

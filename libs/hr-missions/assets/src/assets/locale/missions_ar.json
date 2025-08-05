@@ -12,5 +12,10 @@
     "PREPARATION":  "تحضير",
     "DISTANCE":     "مسافه: بعد",
     "TRAJECTORIES": "المسارات",
-    "TRANSPORT":    "المواصلات"
+    "TRANSPORT":    "المواصلات",
+    "MISSION_EXPENSES":  "نفقات البعثة",
+    "EXPENSES":          "نفقات",
+    "JOURNEYS":          "الرحلات",
+    "ROUTE_COUNT":       "عدد المسارات",
+    "EXCL_MEAL":         "باستثناء الوجبة"
 }
