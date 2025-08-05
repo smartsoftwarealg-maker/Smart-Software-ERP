@@ -49,7 +49,7 @@ export class MissionExpensesDetailComponent extends BaseEntityDetailComponent<Mi
     transportLookup = new DefaultAutoCompleteModel(this.transportSrv);
     trajectoryLookup = new DefaultAutoCompleteModel(this.trajectorySrv);
     employeeLookup: PersonAutocompleteClass = new PersonAutocompleteClass(this.employeeSrv);
-    #detailSrv = inject(JourneyLineService);
+    journeyLineSrv = inject(JourneyLineService);
 
     constructor(
         public detailSrv: MissionsService,
@@ -72,7 +72,7 @@ export class MissionExpensesDetailComponent extends BaseEntityDetailComponent<Mi
     }
 
     public override setupForm(b: Mission): UntypedFormGroup {
-        this.#detailSrv.setParentId(b.id || 0);
+        this.journeyLineSrv.setParentId(b.id || 0);
         return this.formBuilder.group({
             id: [b.id],
             number: [b.number],
