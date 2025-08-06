@@ -50,13 +50,12 @@ export class MissionElementsDetailComponent extends BaseEntityDetailComponent<Mi
         this.pricingSrv.setParentId(b.id || 0);
         return this.formBuilder.group({
             id: [b.id],
-            description:     [b.description, Validators.required],
-            elemType:        [b.elemType, Validators.required],
-            fromHour:        [b.fromHour, Validators.required],
-            fromMin:         [b.fromMin, Validators.required],
-            toHour:          [b.toHour, Validators.required],
-            toMin:           [b.toMin, Validators.required],
-            typeDescription: [b.typeDescription, Validators.required],
+            description: [b.description, Validators.required],
+            elemType: [b.elemType],
+            fromHour: [b.fromHour, Validators.required],
+            fromMin: [b.fromMin, Validators.required],
+            toHour: [b.toHour, Validators.required],
+            toMin: [b.toMin, Validators.required],
         });
     }
 }
