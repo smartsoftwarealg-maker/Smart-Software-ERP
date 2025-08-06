@@ -13,3 +13,6 @@ export interface MGeneration {
     id: number;
     elemList: string;
 }
+
+export interface Summary { id: number; element: string; count: number; amount: number;}
+export interface Detail  { id: number; date: Date, element: string, amount: number; }
