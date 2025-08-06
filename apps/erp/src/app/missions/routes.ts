@@ -1,26 +1,38 @@
 import { Routes } from '@angular/router';
-import { MISSION_EXPENSES_URL, MISSION_PREPARATION_URL, MISSION_TRAJECTORIES} from '../common';
+import {
+    MISSION_ELEMENTS_URL,
+    MISSION_EXPENSES_URL,
+    MISSION_PREPARATION_URL,
+    MISSION_TRAJECTORIES,
+} from '../common';
 import {
     ABS_INDEX_URL,
     CanDeactivateService,
-    LIST_URL
+    LIST_URL,
 } from '@ss/common/api-common';
 
 import {
     TrajectoryDetailComponent,
-    TrajectoryListComponent
+    TrajectoryListComponent,
 } from '@ss/hr-missions/mission-trajectories';
 
 import {
     MissionPreparationDetailComponent,
-    MissionPreparationListComponent
+    MissionPreparationListComponent,
 } from '@ss/hr-missions/missions';
-import {loginGuard} from '../erp-guards';
+import { loginGuard } from '../erp-guards';
 import {
     MissionExpensesDetailComponent,
-    MissionExpensesLineDetailComponent, MissionExpensesLineListComponent,
-    MissionExpensesListComponent
-} from "@ss/hr-missions/mission-expenses";
+    MissionExpensesLineDetailComponent,
+    MissionExpensesLineListComponent,
+    MissionExpensesListComponent,
+} from '@ss/hr-missions/mission-expenses';
+import {
+    MissionElementsDetailComponent,
+    MissionElementsLinesDetailComponent,
+    MissionElementsLinesListComponent,
+    MissionElementsListComponent,
+} from '@ss/hr-missions/mission-elements';
 
 export const mainRoutes: Routes = [
     {
@@ -83,6 +95,40 @@ export const mainRoutes: Routes = [
                             {
                                 path: ':id',
                                 component: MissionExpensesLineDetailComponent,
+                            },
+                        ],
+                    },
+                ],
+            },
+            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' },
+        ],
+    },
+    {
+        path: MISSION_ELEMENTS_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: MissionElementsListComponent,
+                canActivate: [loginGuard],
+            },
+            {
+                path: ':id',
+                component: MissionElementsDetailComponent,
+                canActivate: [loginGuard],
+                canDeactivate: [CanDeactivateService],
+                children: [
+                    { path: '', redirectTo: 'detail', pathMatch: 'full' },
+                    {
+                        path: 'detail',
+                        children: [
+                            {
+                                path: '',
+                                component: MissionElementsLinesListComponent,
+                                pathMatch: 'full',
+                            },
+                            {
+                                path: ':id',
+                                component: MissionElementsLinesDetailComponent,
                             },
                         ],
                     },

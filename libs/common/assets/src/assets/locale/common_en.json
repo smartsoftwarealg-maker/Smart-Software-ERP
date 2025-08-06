@@ -422,5 +422,16 @@
     "CRM": "CRM",
     "DELIVERY": "Delivery",
     "INVOICE": "Invoice",
-    "GENERATION": "Generation"
+    "GENERATION": "Generation",
+    "FROM_HOUR":          "From hour",
+    "FROM_MIN":           "From minute",
+    "TO_HOUR":            "To hour",
+    "TO_MIN":             "To minute",
+    "ELEMENT_TYPE":       "Type",
+    "FUNCTION_OF":        "Function of",
+    "TYPE_DESCRIPTION":   "Type Description",
+    "ZONE":               "Zone",
+    "CATEGORY":           "Category",
+    "ZONE_DESCRIPTION":   "Zone Description",
+    "CATEGORY_DESCRIPTION":"Category Description"
 }

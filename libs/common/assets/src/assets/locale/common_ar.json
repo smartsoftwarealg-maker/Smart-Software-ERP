@@ -414,6 +414,17 @@
     "ONE_BY_ONE":          "إضافة عنصر عنصر",
     "INVOICE":             "الفاتورة",
     "DELIVERY":            "التسليم",
-    "GENERATION":          "توليد"
+    "GENERATION":          "توليد",
+    "FROM_HOUR":          "من الساعة",
+    "FROM_MIN":           "من الدقيقة",
+    "TO_HOUR":            "الى الساعة",
+    "TO_MIN":             "الى الدقيقة",
+    "ELEMENT_TYPE":       "نوع العنصر",
+    "FUNCTION_OF":        "يعتمد على",
+    "TYPE_DESCRIPTION":   "وصف النوع",
+    "ZONE":               "المنطقة",
+    "CATEGORY":           "فئة",
+    "ZONE_DESCRIPTION":   "وصف المنطقة",
+    "CATEGORY_DESCRIPTION": "وصف الفئة"
 }
 

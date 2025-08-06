@@ -17,5 +17,7 @@
     "EXPENSES":          "dépenses",
     "JOURNEYS":          "Voyages",
     "ROUTE_COUNT":       "Nombre d'itinéraires",
-    "EXCL_MEAL":         "Hors repas"
+    "EXCL_MEAL":         "Hors repas",
+    "MISSION_ELEMENT":   "Éléments de la mission",
+    "MISSION_ELEMENT_DETAIL": "Détail des éléments de la mission"
 }
