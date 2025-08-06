@@ -5,16 +5,14 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 import { BaseChildEntityDetailComponent} from '@ss/common/ui-base-entity';
 import { FormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { MissionElementPricing } from '../mission-elements-api.class';
-import { DatePickerComponent } from '@ss/common/ui-datepicker';
 import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { MissionsElementPricingService } from '../mission-elementPricing.service';
-import { ArticleAutoCompleteModel, ArticleService } from '@ss/master-data/api-article';
 import { ZoneService } from '../../../../missions/src/lib/transport.service';
 import { CategoryService } from '@ss/common/api-lookup';
 
 @Component({
     selector: 'ss-mission-elements-lines-detail',
-    imports: [CommonModule, MaterialModule, TranslateDirective, DatePickerComponent, TranslatePipe, UiAutoCompleteComponent],
+    imports: [CommonModule, MaterialModule, TranslateDirective, TranslatePipe, UiAutoCompleteComponent],
     templateUrl: './mission-elements-lines-detail.component.html',
     styleUrl: './mission-elements-lines-detail.component.scss',
     standalone: true

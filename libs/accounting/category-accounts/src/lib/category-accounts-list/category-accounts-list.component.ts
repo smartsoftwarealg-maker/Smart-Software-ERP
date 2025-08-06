@@ -4,7 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { DefaultReportService } from '@ss/common/ui-default-report-component';
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
-import { PaginatorPersistenceService } from '@ss/common/api-common';
+import {MaterialModule, PaginatorPersistenceService} from '@ss/common/api-common';
 import {
     MatTable,
     MatColumnDef,
@@ -29,19 +29,8 @@ import {CategoryAccountsService} from "../category-accounts.service";
     styleUrl: './category-accounts-list.component.scss',
     standalone: true,
     imports: [
-        MatTable,
-        MatSort,
-        MatColumnDef,
-        MatHeaderCellDef,
-        MatHeaderCell,
-        MatSortHeader,
+        MaterialModule,
         TranslateDirective,
-        MatCellDef,
-        MatCell,
-        MatHeaderRowDef,
-        MatHeaderRow,
-        MatRowDef,
-        MatRow,
         PaginationComponent,
     ],
 })

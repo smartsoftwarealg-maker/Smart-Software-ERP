@@ -1,21 +1,20 @@
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { LoginService, MaterialModule } from '@ss/common/api-common';
+import { MaterialModule } from '@ss/common/api-common';
 import { TranslateDirective } from '@ss/common/ui-lang';
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
-import { ActivatedRoute, RouterOutlet } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { UserListService } from '@ss/common/api-users';
 import { MissionElement } from '../mission-elements-api.class';
 import { MissionsElementService } from '../mission-element.service';
-import { DatePickerComponent } from '@ss/common/ui-datepicker';
 import { MissionsElementPricingService } from '../mission-elementPricing.service';
 
 @Component({
     selector: 'ss-mission-elements-list-detail',
-    imports: [CommonModule, MaterialModule, TranslateDirective, DatePickerComponent, RouterOutlet],
+    imports: [CommonModule, MaterialModule, TranslateDirective],
     templateUrl: './mission-elements-detail.component.html',
     styleUrl: './mission-elements-detail.component.scss',
     standalone: true
