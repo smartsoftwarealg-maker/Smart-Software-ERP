@@ -34,7 +34,7 @@ export const missionsNavTree: SideNavNode = {
         },
         {
             name: 'MISSION_MISSION_ELEMENT',
-            icon: 'fas fa-plane',
+            icon: 'fa-solid fa-memo-pad',
             route: ABS_MISSION_ELEMENTS_URL,
             accessRights: 'Mission'
         },
