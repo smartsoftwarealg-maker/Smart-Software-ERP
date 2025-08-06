@@ -1,24 +1,27 @@
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { LoginService, MaterialModule } from '@ss/common/api-common';
+import { MaterialModule } from '@ss/common/api-common';
 import { TranslateDirective } from '@ss/common/ui-lang';
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, RouterOutlet } from '@angular/router';
-import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
+import {
+    UntypedFormBuilder,
+    UntypedFormGroup,
+    Validators,
+} from '@angular/forms';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { UserListService } from '@ss/common/api-users';
 import { MissionElement } from '../mission-elements-api.class';
 import { MissionsElementService } from '../mission-element.service';
-import { DatePickerComponent } from '@ss/common/ui-datepicker';
 import { MissionsElementPricingService } from '../mission-elementPricing.service';
 
 @Component({
     selector: 'ss-mission-elements-list-detail',
-    imports: [CommonModule, MaterialModule, TranslateDirective, DatePickerComponent, RouterOutlet],
+    imports: [CommonModule, MaterialModule, TranslateDirective, RouterOutlet],
     templateUrl: './mission-elements-detail.component.html',
     styleUrl: './mission-elements-detail.component.scss',
-    standalone: true
+    standalone: true,
 })
 export class MissionElementsDetailComponent extends BaseEntityDetailComponent<MissionElement> {
     private pricingSrv = inject(MissionsElementPricingService);
@@ -30,8 +33,17 @@ export class MissionElementsDetailComponent extends BaseEntityDetailComponent<Mi
         public override route: ActivatedRoute,
         public override formBuilder: UntypedFormBuilder,
         public override confirmationSrv: ConfirmationDialogService,
-        public usersSrv: UserListService) {
-        super(detailSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'MISSION_MISSION_ELEMENT_DETAIL');
+        public usersSrv: UserListService,
+    ) {
+        super(
+            detailSrv,
+            shellSrv,
+            snackBarSrv,
+            route,
+            formBuilder,
+            confirmationSrv,
+            'MISSION_MISSION_ELEMENT_DETAIL',
+        );
     }
 
     public override setupForm(b: MissionElement): UntypedFormGroup {
@@ -39,15 +51,12 @@ export class MissionElementsDetailComponent extends BaseEntityDetailComponent<Mi
         return this.formBuilder.group({
             id: [b.id],
             description: [b.description, Validators.required],
-            elemType:[b.elemType , Validators.required],
+            elemType: [b.elemType, Validators.required],
             fromHour: [b.fromHour, Validators.required],
             fromMin: [b.fromMin, Validators.required],
             toHour: [b.toHour, Validators.required],
             toMin: [b.toMin, Validators.required],
-            typeDescription: [b.typeDescription, Validators.required]
+            typeDescription: [b.typeDescription, Validators.required],
         });
-
     }
-
 }
-
