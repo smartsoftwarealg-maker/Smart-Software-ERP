@@ -9,9 +9,9 @@ import { MissionJourney } from '../journey-api.class';
 import { JourneyLineService } from '../journey.service';
 import { DatePickerComponent } from '@ss/common/ui-datepicker';
 import { CommonModule } from '@angular/common';
-import {TranslateDirective, TranslatePipe} from '@ss/common/ui-lang';
-import {MaterialModule} from "@ss/common/api-common";
-import {PaginationComponent} from "@ss/common/ui-pagination";
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
+import { MaterialModule } from '@ss/common/api-common';
+
 @Component({
     selector: 'ss-missions-expenses-line-detail',
     templateUrl: './mission-expenses-line-detail.component.html',
@@ -20,7 +20,6 @@ import {PaginationComponent} from "@ss/common/ui-pagination";
     imports: [
         CommonModule,
         MaterialModule,
-        PaginationComponent,
         ReactiveFormsModule,
         DatePickerComponent,
         TranslateDirective,

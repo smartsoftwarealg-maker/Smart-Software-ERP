@@ -8,3 +8,8 @@ export interface MissionJourney {
     exclMeal: boolean;
     routeCount: number;
 }
+
+export interface MGeneration {
+    id: number;
+    elemList: string;
+}

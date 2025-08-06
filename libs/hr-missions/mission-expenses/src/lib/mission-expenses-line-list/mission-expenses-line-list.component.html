@@ -1,11 +1,13 @@
-@if (isEditable) {
+@if (tabIndex === 0) {
     <div class="ctrl-div">
-        <button mat-mini-fab
-                type="button"
-                [matTooltip]="'COMMON_ADD' | translate"
-                color="primary" (click)="showDetail(0)">
-            <span class="fas fa-plus"></span>
-        </button>
+        @if (isEditable) {
+            <button mat-mini-fab
+                    type="button"
+                    [matTooltip]="'COMMON_ADD' | translate"
+                    color="primary" (click)="showDetail(0)">
+                <span class="fas fa-plus"></span>
+            </button>
+        }
         <button mat-mini-fab
                 type="button"
                 (click)="edit()"
@@ -13,16 +15,18 @@
                 color="accent">
             <span class="fas fa-pen"></span>
         </button>
-        <button mat-mini-fab
-                type="button"
-                (click)="deleteSelected()"
-                [disabled]="!selectedId"
-                color="warn">
-            <span class="fas fa-trash-alt"></span>
-        </button>
+        @if (isEditable) {
+            <button mat-mini-fab
+                    type="button"
+                    (click)="deleteSelected()"
+                    [disabled]="!selectedId"
+                    color="warn">
+                <span class="fas fa-trash-alt"></span>
+            </button>
+        }
     </div>
 }
-<mat-tab-group>
+<mat-tab-group [(selectedIndex)]="tabIndex">
     <mat-tab>
         <ng-template mat-tab-label>
             <span translate>MISSION_JOURNEYS</span>
@@ -32,14 +36,14 @@
                 <ng-container matColumnDef="from">
                     <mat-header-cell *matHeaderCellDef translate>COMMON_FROM</mat-header-cell>
                     <mat-cell *matCellDef="let e">
-                        {{e.fromDate | date: 'dd/MM/yyyy HH:mm' }}
+                        {{ e.fromDate | date: 'dd/MM/yyyy HH:mm' }}
                     </mat-cell>
                 </ng-container>
 
                 <ng-container matColumnDef="to">
                     <mat-header-cell *matHeaderCellDef translate>COMMON_TO</mat-header-cell>
                     <mat-cell *matCellDef="let e">
-                        {{e.toDate | date: 'dd/MM/yyyy HH:mm' }}
+                        {{ e.toDate | date: 'dd/MM/yyyy HH:mm' }}
                     </mat-cell>
                 </ng-container>
 
@@ -48,6 +52,28 @@
                          *matRowDef="let row; columns: displayedColumns;"></mat-row>
             </mat-table>
         </div>
+    </mat-tab>
+    <mat-tab>
+        <ng-template mat-tab-label>
+            <span translate>COMMON_GENERATION</span>
+        </ng-template>
+        <div class=tab-content>
+            <ul>
+                @for (e of elementsTypes; track e.id) {
+                    <li>
+                        <mat-checkbox [checked]="selectedTypes.includes(e.id)"
+                                      (change)="addRemoveElement($event.checked, e.id)">
+                            {{ e.description }}
+                        </mat-checkbox>
+                    </li>
+                }
+            </ul>
+            <div class="ctrl-div-center">
+                <button mat-raised-button (click)="generateMissions()" translate>COMMON_GENERATE
+                </button>
+            </div>
+        </div>
+
     </mat-tab>
     <mat-tab>
         <ng-template mat-tab-label>
