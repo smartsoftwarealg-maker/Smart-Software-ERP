@@ -421,5 +421,6 @@
     "ONE_BY_ONE": "One by one",
     "CRM": "CRM",
     "DELIVERY": "Delivery",
-    "INVOICE": "Invoice"
+    "INVOICE": "Invoice",
+    "GENERATION": "Generation"
 }

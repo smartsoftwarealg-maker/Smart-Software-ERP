@@ -19,10 +19,8 @@ import { Component, inject } from '@angular/core';
 import { PersonAutocompleteClass } from '@ss/employee-services/employee-services';
 import { DatePickerComponent } from '@ss/common/ui-datepicker';
 import {CommonModule} from "@angular/common";
-import {PaginationComponent} from "@ss/common/ui-pagination";
 import {TranslateDirective} from "@ss/common/ui-lang";
 import {Mission, MissionsService, TrajectoryService, TransportService} from "@ss/hr-missions";
-import {ZoneService} from "../../../../missions/src/lib/transport.service";
 import {JourneyLineService} from "../journey.service";
 
 @Component({
@@ -33,7 +31,6 @@ import {JourneyLineService} from "../journey.service";
     imports: [
         CommonModule,
         MaterialModule,
-        PaginationComponent,
         ReactiveFormsModule,
         DatePickerComponent,
         TranslateDirective,

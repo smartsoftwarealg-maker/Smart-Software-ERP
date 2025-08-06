@@ -413,6 +413,7 @@
     "DESTINATION":         "وجهة",
     "ONE_BY_ONE":          "إضافة عنصر عنصر",
     "INVOICE":             "الفاتورة",
-    "DELIVERY":            "التسليم"
+    "DELIVERY":            "التسليم",
+    "GENERATION":          "توليد"
 }
 

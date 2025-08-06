@@ -14,17 +14,19 @@ import {
 } from '@angular/material/table';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 import { PaginationComponent } from '@ss/common/ui-pagination';
-import { MissionJourney } from '../journey-api.class';
+import { MGeneration, MissionJourney } from '../journey-api.class';
 import { JourneyLineService } from '../journey.service';
 import { AsyncPipe, DatePipe } from '@angular/common';
-import { MatMiniFabButton } from '@angular/material/button';
+import {MatButton, MatMiniFabButton} from '@angular/material/button';
 import { MatTooltip } from '@angular/material/tooltip';
 import { MatTab, MatTabGroup, MatTabLabel } from '@angular/material/tabs';
+import { MatCheckbox } from '@angular/material/checkbox';
+import { Lookup } from '@ss/common/api-lookup';
 
 @Component({
     selector: 'ss-missions-expenses-line-list',
-    templateUrl: './mission-expenses-list.component.html',
-    styleUrls: ['./mission-expenses-list.component.scss'],
+    templateUrl: './mission-expenses-line-list.component.html',
+    styleUrls: ['./mission-expenses-line-list.component.scss'],
     standalone: true,
     imports: [
         MatTable,
@@ -47,6 +49,8 @@ import { MatTab, MatTabGroup, MatTabLabel } from '@angular/material/tabs';
         MatTab,
         MatTabLabel,
         DatePipe,
+        MatCheckbox,
+        MatButton,
     ],
 })
 export class MissionExpensesLineListComponent extends BaseChildEntityListComponent<MissionJourney> {
@@ -56,5 +60,44 @@ export class MissionExpensesLineListComponent extends BaseChildEntityListCompone
         super(detailSrv, 'MISSION_EXPENSES');
     }
 
+    elementsTypes: Lookup[] = [];
+    selectedTypes: number[] = [];
+    tabIndex = 0; // first tab
 
+
+    override ngOnInit() {
+        super.ngOnInit();
+        this.detailSrv.getMissionElementTypes(0).subscribe({
+            next: (res) => {
+                this.elementsTypes = res;
+            },
+            error: (err) => {
+                throw err;
+            },
+        });
+    }
+
+    addRemoveElement(isExist: boolean, id: number) {
+        if (isExist) {
+            this.selectedTypes.push(id);
+        } else {
+            this.selectedTypes = this.selectedTypes.filter((n) => n !== id);
+        }
+    }
+
+    generateMissions() {
+        const MG: MGeneration = {
+            id: this.detailSrv.getParentId(),
+            elemList: this.selectedTypes.toString(),
+        };
+        this.detailSrv.generateMission(MG).subscribe({
+            next: () => {
+                this.snackBarSrv.showSuccessMessage();
+            },
+            error: (err) => {
+                this.snackBarSrv.showFailureMessage();
+                throw err;
+            },
+        });
+    }
 }

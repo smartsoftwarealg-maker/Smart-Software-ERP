@@ -2,9 +2,9 @@
     display: block;
     margin: auto;
     position: relative;
-    max-width: 600px;
+    max-width: 700px;
     width: 100%;
-    padding-top: 24px;
+    padding-top: 10px;
 }
 
 .ctrl-div {
@@ -34,6 +34,22 @@
     transform: translateX(-50%);
 }
 
+ul {
+    list-style: none;
+}
+
+.tab-content {
+    overflow: hidden;
+    height: fit-content;
+    padding-left: 2em;
+    padding-bottom: 2em;
+}
+
+.ctrl-div-center {
+    display: flex;
+    justify-content: center;
+}
+
 .pagination-container {
     ss-pagination {
         left: 0;
@@ -42,3 +58,5 @@
         margin: auto;
     }
 }
+
+

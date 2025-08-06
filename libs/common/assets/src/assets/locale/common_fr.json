@@ -418,5 +418,6 @@
     "ONE_BY_ONE":         "Un par un",
     "CRM": "CRM",
     "DELIVERY":           "Livraison",
-    "INVOICE":            "Facture"
+    "INVOICE":            "Facture",
+    "GENERATION":         "Génération"
 }

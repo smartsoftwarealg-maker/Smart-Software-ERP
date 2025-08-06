@@ -24,7 +24,6 @@ import { Component, inject } from '@angular/core';
 import { PersonAutocompleteClass } from '@ss/employee-services/employee-services';
 import { DatePickerComponent } from '@ss/common/ui-datepicker';
 import {CommonModule} from "@angular/common";
-import {PaginationComponent} from "@ss/common/ui-pagination";
 import {TranslateDirective} from "@ss/common/ui-lang";
 
 @Component({
@@ -35,7 +34,6 @@ import {TranslateDirective} from "@ss/common/ui-lang";
     imports: [
         CommonModule,
         MaterialModule,
-        PaginationComponent,
         ReactiveFormsModule,
         DatePickerComponent,
         TranslateDirective,
