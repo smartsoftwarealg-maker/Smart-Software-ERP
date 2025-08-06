@@ -1,6 +1,11 @@
 
 import {SideNavNode} from '@ss/common/api-common';
-import {ABS_MISSION_EXPENSES_URL, ABS_MISSION_PREPARATION_URL, ABS_MISSION_TRAJECTORY_URL} from '../common';
+import {
+    ABS_MISSION_ELEMENTS_URL,
+    ABS_MISSION_EXPENSES_URL,
+    ABS_MISSION_PREPARATION_URL,
+    ABS_MISSION_TRAJECTORY_URL
+} from '../common';
 
 export const missionsNavTree: SideNavNode = {
     name: 'MISSIONS',
@@ -26,6 +31,12 @@ export const missionsNavTree: SideNavNode = {
             route: ABS_MISSION_EXPENSES_URL,
             accessRights: 'Journey'
 
+        },
+        {
+            name: 'MISSION_MISSION_ELEMENT',
+            icon: 'fas fa-plane',
+            route: ABS_MISSION_ELEMENTS_URL,
+            accessRights: 'Mission'
         },
 
     ]

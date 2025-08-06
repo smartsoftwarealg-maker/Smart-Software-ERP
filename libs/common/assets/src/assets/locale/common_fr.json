@@ -416,8 +416,18 @@
     "LAST_UPDATE_TIME":   "Heure de la dernière mise à jour",
     "DESTINATION":        "Destination",
     "ONE_BY_ONE":         "Un par un",
-    "CRM": "CRM",
+    "CRM":                "CRM",
     "DELIVERY":           "Livraison",
     "INVOICE":            "Facture",
-    "GENERATION":         "Génération"
+    "GENERATION":         "Génération",
+    "FROM_HOUR":          "Heure de debut",
+    "FROM_MIN":           "Min de debut",
+    "TO_HOUR":            "Heure de fin",
+    "TO_MIN":             "Min de fin",
+    "FUNCTION_OF":        "Fonction de",
+    "TYPE_DESCRIPTION":   "Description Type",
+    "ZONE":               "Zone",
+    "CATEGORY":           "Categorie",
+    "ZONE_DESCRIPTION":   "Description de zone",
+    "CATEGORY_DESCRIPTION":"Description de categorie"
 }

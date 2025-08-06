@@ -17,5 +17,7 @@
     "EXPENSES":          "نفقات",
     "JOURNEYS":          "الرحلات",
     "ROUTE_COUNT":       "عدد المسارات",
-    "EXCL_MEAL":         "باستثناء الوجبة"
+    "EXCL_MEAL":         "باستثناء الوجبة",
+    "MISSION_ELEMENT":   "عناصر المهمة",
+    "MISSION_ELEMENT_DETAIL": "تفاصيل عنصر المهمة"
 }

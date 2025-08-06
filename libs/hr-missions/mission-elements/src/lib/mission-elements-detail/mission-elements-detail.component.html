@@ -1,0 +1,60 @@
+<mat-card>
+    <mat-card-content>
+        <form *ngIf="form !== null" novalidate [formGroup]="form">
+            <div class="range">
+                <mat-form-field class="default-50">
+                    <mat-label translate>COMMON_DESCRIPTION</mat-label>
+                    <input matInput formControlName="description" type="text">
+                    <mat-error *ngIf="form.controls['description'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
+                </mat-form-field>
+
+                <mat-form-field class="default-50">
+                    <mat-label translate>COMMON_TYPE_DESCRIPTION</mat-label>
+                    <input matInput formControlName="typeDescription" type="text">
+                    <mat-error *ngIf="form.controls['typeDescription'].invalid" translate>COMMON_FIELD_REQUIRED
+                    </mat-error>
+                </mat-form-field>
+
+            </div>
+
+            <div class="range">
+                <mat-form-field class="default-50">
+                    <mat-label translate>COMMON_FROM_HOUR</mat-label>
+                    <input matInput type="number" formControlName="fromHour" min="0" max="23">
+                    <mat-error *ngIf="form.controls['fromHour'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
+                </mat-form-field>
+
+                <mat-form-field class="default-50">
+                    <mat-label translate>COMMON_FROM_MIN</mat-label>
+                    <input matInput type="number" formControlName="fromMin" min="0" max="59">
+                    <mat-error *ngIf="form.controls['fromMin'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
+                </mat-form-field>
+            </div>
+
+            <div class="range">
+                <mat-form-field class="default-50">
+                    <mat-label translate>COMMON_TO_HOUR</mat-label>
+                    <input matInput type="number" formControlName="toHour" min="0" max="23">
+                    <mat-error *ngIf="form.controls['toHour'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
+                </mat-form-field>
+
+                <mat-form-field class="default-50">
+                    <mat-label translate>COMMON_TO_MIN</mat-label>
+                    <input matInput type="number" formControlName="toMin" min="0" max="59">
+                    <mat-error *ngIf="form.controls['toMin'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
+                </mat-form-field>
+            </div>
+            <mat-form-field class="default-50">
+                <mat-label translate>COMMON_ELEMENT_TYPE</mat-label>
+                <input matInput formControlName="elemType" type="number">
+                <mat-error *ngIf="form.controls['elemType'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
+            </mat-form-field>
+
+        </form>
+    </mat-card-content>
+</mat-card>
+@if (id) {
+    <div class="detail__div">
+        <router-outlet></router-outlet>
+    </div>
+}
