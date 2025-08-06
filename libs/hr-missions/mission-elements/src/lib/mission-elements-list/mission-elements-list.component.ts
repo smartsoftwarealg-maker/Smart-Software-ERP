@@ -4,9 +4,13 @@ import {
     MatCell,
     MatCellDef,
     MatColumnDef,
-    MatHeaderCell, MatHeaderCellDef,
+    MatHeaderCell,
+    MatHeaderCellDef,
     MatHeaderRow,
-    MatHeaderRowDef, MatRow, MatRowDef, MatTable
+    MatHeaderRowDef,
+    MatRow,
+    MatRowDef,
+    MatTable,
 } from '@angular/material/table';
 import { PaginationComponent } from '@ss/common/ui-pagination';
 import { TranslateDirective } from '@ss/common/ui-lang';
@@ -21,10 +25,24 @@ import { MissionsElementService } from '../mission-element.service';
 
 @Component({
     selector: 'ss-mission-elements-list',
-    imports: [CommonModule, MatCell, MatCellDef, MatColumnDef, MatHeaderCell, MatHeaderRow, MatHeaderRowDef, MatRow, MatRowDef, MatTable, PaginationComponent, TranslateDirective, MatHeaderCellDef],
+    imports: [
+        CommonModule,
+        MatCell,
+        MatCellDef,
+        MatColumnDef,
+        MatHeaderCell,
+        MatHeaderRow,
+        MatHeaderRowDef,
+        MatRow,
+        MatRowDef,
+        MatTable,
+        PaginationComponent,
+        TranslateDirective,
+        MatHeaderCellDef,
+    ],
     templateUrl: './mission-elements-list.component.html',
     styleUrl: './mission-elements-list.component.scss',
-    standalone: true
+    standalone: true,
 })
 export class MissionElementsListComponent extends BaseEntityListComponent<MissionElement> {
     displayedColumns = [
@@ -35,7 +53,7 @@ export class MissionElementsListComponent extends BaseEntityListComponent<Missio
         'toMin',
         'elemType',
         'functionOf',
-        'typeDescription'
+        'typeDescription',
     ];
 
     constructor(
@@ -46,8 +64,10 @@ export class MissionElementsListComponent extends BaseEntityListComponent<Missio
         public override confirmationSrv: ConfirmationDialogService,
         public override defReportSrv: DefaultReportService,
         public override router: Router,
-        public override pagPersistSrv: PaginatorPersistenceService) {
-        super(missionSrv,
+        public override pagPersistSrv: PaginatorPersistenceService,
+    ) {
+        super(
+            missionSrv,
             shellSrv,
             snackBarSrv,
             route,
@@ -55,6 +75,7 @@ export class MissionElementsListComponent extends BaseEntityListComponent<Missio
             confirmationSrv,
             defReportSrv,
             pagPersistSrv,
-            'MISSION_MISSION_ELEMENT');
+            'MISSION_MISSION_ELEMENT',
+        );
     }
 }
