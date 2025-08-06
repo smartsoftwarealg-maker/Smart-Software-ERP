@@ -1,10 +1,10 @@
 .main-container {
+    display: block;
+    margin: auto;
     position: relative;
-    padding-top: 24px;
-    min-height: 30%;
-    width: 90%;
-    max-width: 1000px;
-    margin: 24px auto 0;
+    max-width: 700px;
+    width: 100%;
+    padding-top: 10px;
 }
 
 mat-table {
@@ -14,17 +14,24 @@ mat-table {
 }
 
 .mat-column-zoneDescription,
-.mat-column-categoryDescription{
+.mat-column-categoryDescription {
     flex: 1 1 250px;
     padding-left: 4px;
     border-left: white solid 1px;
     min-width: 300px;
 }
 
+.ctrl-div {
+    display: flex;
+    justify-content: flex-end;
+    padding: 1px;
+}
+
 .mat-column-amount {
     flex: 1 1 120px;
     justify-content: flex-end;
 }
+
 .add-button {
     position: absolute;
     z-index: 999;
