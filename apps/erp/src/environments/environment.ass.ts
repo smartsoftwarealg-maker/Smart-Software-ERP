@@ -22,7 +22,7 @@ import {
     ACCOUNTING_APP_URL,
     TREASURY_APP_URL,
     SOCIAL_APP_URL,
-    ASSETS_APP_URL
+    ASSETS_APP_URL, ATTENDANCE_APP_URL
 } from '../app/common';
 import {logisticsAdminNavTree} from '../app/logistics-admin/side-nav-tree';
 import {workflowNavTree} from '../app/workflow/side-nav-tree';
@@ -37,6 +37,7 @@ import { payrollNavTree } from '../app/payroll/side-nav-tree';
 import { treasuryNavTree } from '../app/treasury/side-nav-tree';
 import { assetsNavTree } from '../app/assets-app/side-nav-tree';
 import { salesNavTree } from '../app/sales/side-nav-tree';
+import {attendanceNavTree} from "../app/attendance/side-nav-tree";
 
 export const environment = {
     production: true,
@@ -56,6 +57,7 @@ export const navBar = [
     hrLookupNavTree,
     hrNavTree,
     payrollNavTree,
+    attendanceNavTree,
     accountingNavTree,
     treasuryNavTree,
     dashboardNavTree,
@@ -78,6 +80,7 @@ export const langAssets = [
     ['assets/locale/webarch_',        'WAR_'],
     ['assets/locale/assets_',         'ASSET_'],
     ['assets/locale/treasury_',       'TRS_'],
+    ['assets/locale/att_',            'ATT_'],
 ];
 
 export const appRoutes: Routes =  [
@@ -93,6 +96,10 @@ export const appRoutes: Routes =  [
     {
         path: WORK_FLOW_APP_URL,
         loadChildren: () => import('../app/workflow/workflow.module').then(m => m.WorkflowModule)
+    },
+    {
+        path: ATTENDANCE_APP_URL,
+        loadChildren: () => import('../app/attendance/attendance.module').then(m => m.AttendanceModule)
     },
     {
         path: STOCK_APP_URL,
@@ -178,5 +185,6 @@ export const APPLICATION_LIST = [
     'PURCHASES',
     'TREASURY',
     'WORKFLOW',
-    'SOCIAL'
+    'SOCIAL',
+    'ATTENDANCE'
 ];

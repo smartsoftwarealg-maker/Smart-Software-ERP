@@ -13,7 +13,6 @@ import { MaterialModule } from '@ss/common/api-common';
 
 
 import { ReactiveFormsModule } from '@angular/forms';
-import { DatePickerComponent } from '@ss/common/ui-datepicker';
 
 
 import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
@@ -32,14 +31,13 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
         TranslatePipe,
         ReactiveFormsModule,
         RouterModule,
-
         DocInfoComponent,
         PaginationComponent
     ]
 })
 export class ComplementInvoiceLinesListComponent extends BaseTransactionLinesListComponent implements OnInit {
     abs = Math.abs;
-    displayedColumns = [
+    override displayedColumns = [
         'position',
         'store',
         'reference',
