@@ -429,5 +429,6 @@
     "ZONE":               "Zone",
     "CATEGORY":           "Categorie",
     "ZONE_DESCRIPTION":   "Description de zone",
-    "CATEGORY_DESCRIPTION":"Description de categorie"
+    "CATEGORY_DESCRIPTION":"Description de categorie",
+    "ELEMENT": "Element"
 }

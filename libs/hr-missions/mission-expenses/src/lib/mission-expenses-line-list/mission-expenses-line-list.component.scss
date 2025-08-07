@@ -59,4 +59,13 @@ ul {
     }
 }
 
-
+.mat-column-date,
+.mat-column-element,
+.mat-column-count{
+    flex: 1 1 120px;
+    justify-content: center;
+}
+.mat-column-amount {
+    flex: 1 1 80px;
+    justify-content: flex-end;
+}

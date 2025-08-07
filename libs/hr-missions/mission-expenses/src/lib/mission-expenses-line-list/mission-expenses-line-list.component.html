@@ -59,7 +59,7 @@
         </ng-template>
         <div class=tab-content>
             <ul>
-                @for (e of elementsTypes; track e.id) {
+                @for (e of elementsTypes;track e.id) {
                     <li>
                         <mat-checkbox [checked]="selectedTypes.includes(e.id)"
                                       (change)="addRemoveElement($event.checked, e.id)">
@@ -75,17 +75,80 @@
         </div>
 
     </mat-tab>
+    <!-- Detail Tab -->
     <mat-tab>
         <ng-template mat-tab-label>
             <span translate>COMMON_DETAIL</span>
         </ng-template>
+        <div class="table-container">
+            <mat-table mat-table [dataSource]="detailData" class="main-table">
+
+                <ng-container matColumnDef="element">
+                    <mat-header-cell *matHeaderCellDef translate>COMMON_ELEMENT</mat-header-cell>
+                    <mat-cell *matCellDef="let e">
+                        {{ e.element }}
+                    </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="count">
+                    <mat-header-cell *matHeaderCellDef translate>COMMON_COUNT</mat-header-cell>
+                    <mat-cell *matCellDef="let e">
+                        {{ e.count }}
+                    </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="amount">
+                    <mat-header-cell *matHeaderCellDef translate>COMMON_AMOUNT</mat-header-cell>
+                    <mat-cell *matCellDef="let e">
+                        {{ e.amount | number: '1.2-2' }}
+                    </mat-cell>
+                </ng-container>
+
+                <mat-header-row *matHeaderRowDef="detailDisplayedColumns; sticky: true"></mat-header-row>
+                <mat-row *matRowDef="let row; columns: detailDisplayedColumns;"></mat-row>
+            </mat-table>
+            <div class="pagination-container b-b-background">
+                <ss-pagination [paginationModel]="paginator"></ss-pagination>
+            </div>
+        </div>
     </mat-tab>
+
+    <!-- Summary Tab -->
     <mat-tab>
         <ng-template mat-tab-label>
             <span translate>COMMON_SUMMARY</span>
         </ng-template>
-    </mat-tab>
+        <div class="table-container">
+            <mat-table mat-table [dataSource]="summaryData" class="main-table">
+                <ng-container matColumnDef="element">
+                    <mat-header-cell *matHeaderCellDef translate>COMMON_ELEMENT</mat-header-cell>
+                    <mat-cell *matCellDef="let e">
+                        {{ e.element }}
+                    </mat-cell>
+                </ng-container>
 
+                <ng-container matColumnDef="date">
+                    <mat-header-cell *matHeaderCellDef translate>COMMON_DATE</mat-header-cell>
+                    <mat-cell *matCellDef="let e">
+                        {{ e.date  | date: 'dd/MM/yyyy' }}
+                    </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="amount">
+                    <mat-header-cell *matHeaderCellDef translate>COMMON_AMOUNT</mat-header-cell>
+                    <mat-cell *matCellDef="let e">
+                        {{ e.amount | number: '1.2-2' }}
+                    </mat-cell>
+                </ng-container>
+
+                <mat-header-row *matHeaderRowDef="summaryDisplayedColumns; sticky: true"></mat-header-row>
+                <mat-row *matRowDef="let row; columns: summaryDisplayedColumns;"></mat-row>
+            </mat-table>
+        </div>
+        <div class="pagination-container b-b-background">
+            <ss-pagination [paginationModel]="paginator"></ss-pagination>
+        </div>
+    </mat-tab>
 </mat-tab-group>
 
 <div class="pagination-container b-b-background">
