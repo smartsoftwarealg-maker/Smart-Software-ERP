@@ -45,8 +45,8 @@ export class MissionElementsLinesDetailComponent
             id: [b.id],
             element: [b.element || 0],
             parentId: [b.parentId || this.entitySrv.getParentId()],
-            zoneDescription: [b.zoneDescription, Validators.required],
-            categoryDescription: [b.categoryDescription, Validators.required],
+            theZone: [b.theZone, Validators.required],
+            category: [b.category, Validators.required],
             amount: [b.amount, Validators.required],
         });
     }

@@ -1,5 +1,5 @@
 <div class="main-container">
-    <div class="add-button">
+    <div class="ctrl-div">
         @if (isEditable) {
             <button mat-mini-fab color="primary" (click)="showDetail(0)" [matTooltip]="'COMMON_ADD' | translate">
                 <span class="fas fa-plus"></span>
@@ -22,7 +22,7 @@
 
     <div class="main-table">
         <mat-table mat-table [dataSource]="data$">
-            <ng-container matColumnDef="zoneDescription" >
+            <ng-container matColumnDef="zoneDescription">
                 <mat-header-cell *matHeaderCellDef translate>COMMON_ZONE_DESCRIPTION</mat-header-cell>
                 <mat-cell *matCellDef="let e">
                     {{ e.zoneDescription }}
@@ -49,7 +49,7 @@
         </mat-table>
     </div>
 
-    <div class="size b-b-background">
+    <div class="pagination-container b-b-background">
         <ss-pagination [paginationModel]="paginator"></ss-pagination>
     </div>
 
