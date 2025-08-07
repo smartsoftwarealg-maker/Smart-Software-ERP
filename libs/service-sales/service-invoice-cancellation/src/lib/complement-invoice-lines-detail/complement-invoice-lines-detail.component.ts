@@ -33,6 +33,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 })
 export class ComplementInvoiceLinesDetailComponent extends BaseTransactionLinesDetailComponent implements OnInit, OnDestroy {
     private serviceSrv = inject(ServiceArticleService);
+    private sign = 1;
 
     serviceLookup = new DefaultAutoCompleteModel(this.serviceSrv, 'reference', 'description2');
     constructor(public inventoryLinesService: TransactionLinesService) {
@@ -40,13 +41,14 @@ export class ComplementInvoiceLinesDetailComponent extends BaseTransactionLinesD
     }
 
     override setupForm(b: TransactionLine): UntypedFormGroup {
+        this.sign = b.id === 0||b.price < 0? -1 : 1;
         b.price = Math.abs(b.price);
         return super.setupForm(b);
     }
 
     override readForm(): TransactionLine {
         const value = super.readForm();
-        value.price = value.price > 0? -value.price : value.price;
+        value.price = value.price * this.sign;
         return value;
     }
 }
