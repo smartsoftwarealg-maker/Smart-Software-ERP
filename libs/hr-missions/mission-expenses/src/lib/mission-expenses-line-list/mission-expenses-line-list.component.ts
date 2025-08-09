@@ -14,9 +14,9 @@ import {
 } from '@angular/material/table';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 import { PaginationComponent } from '@ss/common/ui-pagination';
-import { MGeneration, MissionJourney } from '../journey-api.class';
+import { Detail, MGeneration, MissionJourney, Summary } from '../journey-api.class';
 import { JourneyLineService } from '../journey.service';
-import { AsyncPipe, DatePipe } from '@angular/common';
+import { AsyncPipe, DatePipe, DecimalPipe } from '@angular/common';
 import {MatButton, MatMiniFabButton} from '@angular/material/button';
 import { MatTooltip } from '@angular/material/tooltip';
 import { MatTab, MatTabGroup, MatTabLabel } from '@angular/material/tabs';
@@ -51,7 +51,8 @@ import { Lookup } from '@ss/common/api-lookup';
         DatePipe,
         MatCheckbox,
         MatButton,
-    ],
+        DecimalPipe
+    ]
 })
 export class MissionExpensesLineListComponent extends BaseChildEntityListComponent<MissionJourney> {
     override displayedColumns = ['from', 'to'];
@@ -63,6 +64,10 @@ export class MissionExpensesLineListComponent extends BaseChildEntityListCompone
     elementsTypes: Lookup[] = [];
     selectedTypes: number[] = [];
     tabIndex = 0; // first tab
+    detailData: Detail[] = [];
+    summaryData: Summary[] = [];
+    detailDisplayedColumns = [ 'element','count', 'amount'];
+    summaryDisplayedColumns = ['element', 'date', 'amount'];
 
 
     override ngOnInit() {
@@ -70,6 +75,22 @@ export class MissionExpensesLineListComponent extends BaseChildEntityListCompone
         this.detailSrv.getMissionElementTypes(0).subscribe({
             next: (res) => {
                 this.elementsTypes = res;
+            },
+            error: (err) => {
+                throw err;
+            },
+        });
+        this.detailSrv.getDetail().subscribe({
+            next: (res) => {
+                this.detailData = res;
+            },
+            error: (err) => {
+                throw err;
+            },
+        });
+        this.detailSrv.getSummary().subscribe({
+            next: (res) => {
+                this.summaryData = res;
             },
             error: (err) => {
                 throw err;

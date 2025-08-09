@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { BaseEntityService } from '@ss/common/api-base-entity';
 import { HttpService } from '@ss/common/api-common';
 import { MISSIONS_URL } from '@ss/hr-missions';
-import {JOURNEY_URL, MGeneration, MissionJourney} from './journey-api.class';
+import { Detail, JOURNEY_URL, MGeneration, MissionJourney, Summary } from './journey-api.class';
 import {Lookup} from "@ss/common/api-lookup";
 
 @Injectable({
@@ -19,5 +19,12 @@ export class JourneyLineService extends BaseEntityService<MissionJourney> {
 
     generateMission(MG: MGeneration){
         return this.httpSrv.post('/missions/generation', MG)
+    }
+    getDetail() {
+        return this.httpSrv.get<Detail[]>(`/missions/generation/${this.parentId}/detail`);
+    }
+
+    getSummary() {
+        return this.httpSrv.get<Summary[]>(`/missions/generation/${this.parentId}/summary`);
     }
 }
