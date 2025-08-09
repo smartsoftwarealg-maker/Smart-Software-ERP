@@ -58,6 +58,7 @@ export abstract class AbstractEntityComponent<T extends { id: number }> implemen
                     }
                 }),
                 switchMap(() => this.uploadAttachments(val.id)));
+
         obs.subscribe({
             next: () => {
                 this.shellSrv.setLoading(false);

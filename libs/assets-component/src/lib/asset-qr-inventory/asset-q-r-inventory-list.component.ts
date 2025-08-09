@@ -63,7 +63,7 @@ export class AssetQRInventoryListComponent extends BaseEntityListComponent<Inven
 
     inventoryDoc   = new FormControl<number>(0);
     inventoryDocDate = new FormControl<Date | null>(null);
-    accountLookup     = new AccountStringAutocompleteModel(this.#accountSrv)
+    accountLookup     = new AccountStringAutocompleteModel(this.#accountSrv);
     locationLookup    = new DefaultAutoCompleteModel(this.#locationSrv);
     buildingLookup    = new DefaultAutoCompleteModel(this.#buildingSrv);
     classLookup       = new DefaultAutoCompleteModel(this.#classSrv);
@@ -105,9 +105,10 @@ export class AssetQRInventoryListComponent extends BaseEntityListComponent<Inven
         'newOfficeDescription',
         'newBeneficiaryDescription',
         'comment',
-];
+    ];
 
-    constructor(public listSrv: AssetListInventoryService,
+    constructor(
+        public override entitySrv: AssetListInventoryService,
         public override shellSrv: ShellService,
         public override snackBarSrv: SnackBarService,
         public override route: ActivatedRoute,
@@ -115,7 +116,7 @@ export class AssetQRInventoryListComponent extends BaseEntityListComponent<Inven
         public override defReportSrv: DefaultReportService,
         public override confirmationSrv: ConfirmationDialogService,
         public override pagPersistSrv: PaginatorPersistenceService) {
-        super(listSrv,
+        super(entitySrv,
             shellSrv,
             snackBarSrv,
             route,
@@ -133,7 +134,7 @@ export class AssetQRInventoryListComponent extends BaseEntityListComponent<Inven
         this.receptionLookup.onObjectSelected = r => this.formGroup.controls.receptionNo.setValue(r?.id||0);
         this.accountLookup.onObjectSelected = a => this.formGroup.controls.accountNo.setValue(a?.accountNo||'');
         this.locationLookup.onObjectSelected = l => this.onLocation(l);
-        this.pagination.pageSize = 10;
+        this.pagination.pageSize = 5;
     }
 
     private onLocation(l: AssetLocation) {
@@ -152,13 +153,13 @@ export class AssetQRInventoryListComponent extends BaseEntityListComponent<Inven
 
     private onDocument(d: AssetInventoryDoc) {
         this.inventoryDocDate.setValue(d?.creationDate);
-        this.listSrv.lastDoc = d;
+        this.entitySrv.lastDoc = d;
         this.#documentId = d?.id || 0;
         this.formGroup.controls.documentId.setValue(this.#documentId);
         this.isEditable.set(!d?.closed);
         this.#buildingSrv.setParentId(d.locationId||0);
         this.officeSrv.setParentId(d.buildingId||0);
-        this.listSrv.document = {
+        this.entitySrv.document = {
             id:          d.id,
             officeId:    d.officeId,
             accountNo:   d.accountNo,
@@ -223,13 +224,13 @@ export class AssetQRInventoryListComponent extends BaseEntityListComponent<Inven
     override refresh(callback?: () => void) {
         const formValue = this.formGroup.getRawValue();
         formValue.id = this.#documentId;
-        this.listSrv.document = formValue;
+        this.entitySrv.document = formValue;
         super.refresh(callback);
     }
 
     update(e: InventoryAsset) {
         e.documentId = this.#documentId;
-        this.listSrv
+        this.entitySrv
             .update(e)
             .subscribe(res =>  {
                 e.inventoryId = e.inventoryId? null : res;
@@ -241,9 +242,9 @@ export class AssetQRInventoryListComponent extends BaseEntityListComponent<Inven
         this.addButton.visible    = false;
         this.deleteButton.visible = false;
         super.ngOnInit();
-        if (this.listSrv.lastDoc?.id) {
-            this.onDocument(this.listSrv.lastDoc);
-            this.inventoryDoc.setValue(this.listSrv.lastDoc?.id, {onlySelf: true, emitEvent: false});
+        if (this.entitySrv.lastDoc?.id) {
+            this.onDocument(this.entitySrv.lastDoc);
+            this.inventoryDoc.setValue(this.entitySrv.lastDoc?.id, {onlySelf: true, emitEvent: false});
         }
     }
 

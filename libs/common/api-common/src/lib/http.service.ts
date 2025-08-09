@@ -111,7 +111,7 @@ export class HttpService {
             ).pipe(map(res => res.body));
     }
 
-    public get<T>(url: string, httpParams?: HttpParams, timeout = 0): Observable<T> {
+    public get<T>(url: string, httpParams?: HttpParams): Observable<T> {
         if (this.baseUrl === undefined) {
             //    this.baseUrl = '';
             throw new Error('HTTP SERVICE NOT READY');
@@ -134,7 +134,7 @@ export class HttpService {
             ).pipe(map(ress => ress.body));
     }
 
-    public post(url: string, data?: any | null, timeout = 300_000): Observable<any> {
+    public post(url: string, data?: any | null): Observable<any> {
         if (this.baseUrl === undefined) {
             throw new Error('HTTP SERVICE NOT READY');
         }

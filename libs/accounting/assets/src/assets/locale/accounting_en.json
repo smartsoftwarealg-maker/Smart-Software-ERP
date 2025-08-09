@@ -97,5 +97,6 @@
     "ADD_ALL_CENTERS":          "Add all centers",
     "CATEGORY_ACCOUNTS":        "Category accounts",
     "CATEGORY_ACCOUNT":         "Category account",
-    "DEFERRED_ACCOUNT":         "Deferred account"
+    "DEFERRED_ACCOUNT":         "Deferred account",
+    "CASH_ACCOUNT":             "Cash account"
 }

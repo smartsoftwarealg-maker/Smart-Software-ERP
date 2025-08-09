@@ -41,7 +41,6 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         TranslatePipe,
         DatePickerComponent,
         RouterModule,
-
         UiAutoCompleteComponent
     ]
 })
@@ -109,6 +108,7 @@ export class AssetsInventoryDocDetailComponent extends BaseEntityDetailComponent
             closed:          [b.closed||false],
             acquisitionFrom: [b.acquisitionFrom],
             acquisitionTo:   [b.acquisitionTo],
+            generate:        [false]
         });
     }
 
@@ -120,13 +120,25 @@ export class AssetsInventoryDocDetailComponent extends BaseEntityDetailComponent
             return '';
     }
 
-
-    openReception() {
-        const id = this.form.get('receptionId').value || 0;
-        if (id > 0) {
-            this.router.navigate(['../../asset-receptions', id], {relativeTo: this.route}).then();
+    override save() {
+        super.save();
+        if (this.form?.value.generate) {
+            this.detailSrv
+                .generateLines(this.form.value.id)
+                .subscribe(res => {
+                    if (res.count > 0) {
+                        this.snackBarSrv.showSuccessMessage();
+                    }
+                });
         }
     }
+
+    // openReception() {
+    //     const id = this.form.get('receptionId').value || 0;
+    //     if (id > 0) {
+    //         this.router.navigate(['../../asset-receptions', id], {relativeTo: this.route}).then();
+    //     }
+    // }
 
     override readForm(): AssetInventoryDoc {
         return this.form.getRawValue();

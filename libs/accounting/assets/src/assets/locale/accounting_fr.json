@@ -97,6 +97,7 @@
     "ADD_ALL_CENTERS":          "Ajouter tous les centres",
     "CATEGORY_ACCOUNTS":        "Comptes de catégorie",
     "CATEGORY_ACCOUNT":         "Compte de catégorie",
-    "DEFERRED_ACCOUNT":         "Compte différé"
+    "DEFERRED_ACCOUNT":         "Compte vent a terme",
+    "CASH_ACCOUNT":             "Compte vent comptant"
 }
 
