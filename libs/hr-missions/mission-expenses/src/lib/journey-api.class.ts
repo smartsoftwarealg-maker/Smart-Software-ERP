@@ -14,5 +14,16 @@ export interface MGeneration {
     elemList: string;
 }
 
-export interface Summary { id: number; element: string; count: number; amount: number;}
-export interface Detail  { id: number; date: Date, element: string, amount: number; }
+export interface Summary {
+    id: number;
+    date: Date;
+    element: string;
+    amount: number;
+}
+
+export interface Detail {
+    id: number;
+    count: number;
+    element: string;
+    amount: number;
+}

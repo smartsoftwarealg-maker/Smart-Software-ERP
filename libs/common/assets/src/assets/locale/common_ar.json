@@ -425,6 +425,7 @@
     "ZONE":               "المنطقة",
     "CATEGORY":           "فئة",
     "ZONE_DESCRIPTION":   "وصف المنطقة",
-    "CATEGORY_DESCRIPTION": "وصف الفئة"
+    "CATEGORY_DESCRIPTION": "وصف الفئة",
+    "ELEMENT": "العنصر "
 }
 
