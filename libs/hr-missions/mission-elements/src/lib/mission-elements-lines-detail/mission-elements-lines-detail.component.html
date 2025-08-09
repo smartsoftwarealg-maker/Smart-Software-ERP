@@ -21,9 +21,9 @@
                     <ss-auto-complete matInput
                                       [required]="true"
                                       [model]="zoneLookup"
-                                      formControlName="zoneDescription">
+                                      formControlName="theZone">
                     </ss-auto-complete>
-                    @if (form.controls['zoneDescription'].hasError('required')) {
+                    @if (form.controls['theZone'].hasError('required')) {
                         <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
                     }
                 </mat-form-field>
@@ -33,9 +33,9 @@
                     <ss-auto-complete matInput
                                       [required]="true"
                                       [model]="categoryLookup"
-                                      formControlName="categoryDescription">
+                                      formControlName="category">
                     </ss-auto-complete>
-                    @if (form.controls['categoryDescription'].hasError('required')) {
+                    @if (form.controls['category'].hasError('required')) {
                         <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
                     }
                 </mat-form-field>

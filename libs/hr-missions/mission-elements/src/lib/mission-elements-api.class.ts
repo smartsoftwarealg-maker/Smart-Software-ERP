@@ -14,16 +14,16 @@ export interface MissionElement {
     toHour: number;
     toMin: number;
     elemType: number,
-    functionOf: string,
-    typeDescription: string
+    functionOf?: string,
+    typeDescription?: string
 }
 
 export interface MissionElementPricing {
     id: number,
     parentId: number,
     theZone: number,
-    zoneDescription:string,
-    categoryDescription:string,
+    zoneDescription?:string,
+    categoryDescription?:string,
     element: number,
     category: number,
     amount: number,
