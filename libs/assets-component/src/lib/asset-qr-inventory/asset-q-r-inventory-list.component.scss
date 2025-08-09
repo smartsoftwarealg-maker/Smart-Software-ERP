@@ -7,7 +7,7 @@ mat-card {
 
 mat-table {
    width: 100%;
-   min-width: 1400px;
+   min-width: 2000px;
 }
 
 .doc__div {
@@ -51,7 +51,7 @@ mat-card {
 .mat-column-newBeneficiaryDescription,
 .mat-column-newOfficeDescription,
 .mat-column-officeDescription {
-    flex: 1 1 140px;
+    flex: 1 1 150px;
     padding-left: 4px;
     padding-right: 2px;
 }
@@ -65,8 +65,9 @@ mat-card {
 .located {
     font-size: 1.5em;
 }
+
 .mat-column-description {
-    flex: 3 1 220px;
+    flex: 3 1 250px;
     padding-left: 4px;
 }
 

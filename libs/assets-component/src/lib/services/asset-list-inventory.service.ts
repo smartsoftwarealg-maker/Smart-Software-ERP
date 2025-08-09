@@ -81,6 +81,7 @@ export class AssetListInventoryService extends BaseEntityService<InventoryAsset>
     }
 
     override excel(): Observable<Blob> {
-        return this.httpSrv.getBlob(this.getUrl() + '/excel', this.getParams());
+        const params = this.getParams().set('page', '0-100000');
+        return this.httpSrv.getBlob(this.getUrl() + '/excel', params);
     }
 }
