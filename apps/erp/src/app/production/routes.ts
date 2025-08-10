@@ -79,9 +79,9 @@ export const prodRoutes: Routes = [
                 canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService],
                 children: [
-                    { path: '', pathMatch: 'full', redirectTo: 'lines-list' },
+                    { path: '', pathMatch: 'full', redirectTo: 'lines-detail' },
                     {
-                        path: 'lines-list',
+                        path: 'lines-detail',
                         component: InterStoreTransferLinesListComponent,
                         children: docInfoRoutes,
                     },

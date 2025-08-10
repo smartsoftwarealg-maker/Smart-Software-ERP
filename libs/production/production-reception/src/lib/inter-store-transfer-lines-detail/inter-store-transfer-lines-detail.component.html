@@ -16,18 +16,39 @@
     <mat-card>
         <mat-card-content>
             <form novalidate [formGroup]="form">
-                <mat-form-field class="default-100">
-                    <mat-label translate>STOCK_STORE</mat-label>
-                    <ss-auto-complete matInput
-                                      [required]="true"
-                                      [model]="storeLookup"
-                                      formControlName="sourceStore">
-                    </ss-auto-complete>
-                    @if (form.controls['sourceStore'].hasError('required')) {
-                        <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
-                    }
-                </mat-form-field>
+                <div class="default-100">
+                    <mat-form-field style="width: calc(100% - 50px); margin-right: .5em">
+                        <mat-label translate>STOCK_LOT</mat-label>
+                        <ss-auto-complete matInput
+                                          [required]="true"
+                                          [model]="lotLookup"
+                                          formControlName="sourceStore">
+                        </ss-auto-complete>
+                        @if (form.controls['sourceStore'].hasError('required')) {
+                            <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+                        }
+                        <mat-hint> {{ storeName()}}</mat-hint>
+                    </mat-form-field>
+                    @let message = ('COMMON_SEARCH' | translate) + " CTRL F";
+                    <button mat-mini-fab
+                            (click)="showSearchDialog()"
+                            color="accent"
+                            [matTooltip]=message>
+                        <i class="fas fa-search icon"></i>
+                    </button>
+                </div>
 
+
+                <div class="default-50">
+                    <mat-form-field style="width: calc(100% - 50px); margin-right: .5em">
+                        <mat-label translate>STOCK_SOURCE_REFERENCE</mat-label>
+                        <input matInput formControlName="sourceRef">
+                        @if (form.controls['sourceRef'].hasError('required')) {
+                            <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+                        }
+                        <mat-hint><span translate>STOCK_STOCK</span>: {{ stock() }}</mat-hint>
+                    </mat-form-field>
+                </div>
 
                 <mat-form-field class="default-50">
                     <mat-label translate>COMMON_QUANTITY</mat-label>
@@ -37,25 +58,16 @@
                     }
                 </mat-form-field>
 
-                <div class="default-50">
-                    <mat-form-field style="width: calc(100% - 50px); margin-right: .5em">
-                        <mat-label translate>STOCK_SOURCE_REFERENCE</mat-label>
-                        <input matInput formControlName="sourceRef">
-                        @if (form.controls['sourceRef'].hasError('required')) {
-                            <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
-                        }
-                    </mat-form-field>
-                </div>
 
-                <div class="default-50">
-                    <mat-form-field style="width: calc(100% - 50px); margin-right: .5em">
-                        <mat-label translate>STOCK_DESTINATION_STORE</mat-label>
-                        <input matInput formControlName="destinationStore">
-                        @if (form.controls['destinationStore'].hasError('required')) {
-                            <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
-                        }
-                    </mat-form-field>
-                </div>
+                <!--                <div class="default-50">-->
+                <!--                    <mat-form-field style="width: calc(100% - 50px); margin-right: .5em">-->
+                <!--                        <mat-label translate>STOCK_DESTINATION_STORE</mat-label>-->
+                <!--                        <input matInput formControlName="destinationStore">-->
+                <!--                        @if (form.controls['destinationStore'].hasError('required')) {-->
+                <!--                            <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>-->
+                <!--                        }-->
+                <!--                    </mat-form-field>-->
+                <!--                </div>-->
 
                 <!--                <mat-form-field class="default-100">-->
                 <!--                    <mat-label translate>COMMON_DESTINATION_ARTICLE</mat-label>-->

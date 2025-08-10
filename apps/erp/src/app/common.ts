@@ -510,6 +510,7 @@ export const ACC_CONSOLIDATION_CENTERS_URL = 'consolidation-centers';
 export const ACC_TRANSACTION_MATCHING_URL = 'transaction-matching';
 export const ACC_CLOSED_PERIODS_URL   = 'closed-periods';
 export const ACC_CATEGORY_ACCOUNTS_URL   = 'category-accounts';
+export const ACC_CLASS_ACCOUNTS_URL   = 'class-accounts';
 
 // park
 export const PARK_DRIVER_URL = 'drivers';
@@ -667,6 +668,7 @@ export const ABS_CONSOLIDATION_CENTERS_URL = '/' + [MAIN_PAGE_URL, ACCOUNTING_AP
 export const ABS_ACC_TRANSACTION_MATCHING_URL = '/' + [MAIN_PAGE_URL, ACCOUNTING_APP_URL, ACC_TRANSACTION_MATCHING_URL].join('/');
 export const ABS_ACC_CLOSED_PERIODS_URL = '/' + [MAIN_PAGE_URL, ACCOUNTING_APP_URL, ACC_CLOSED_PERIODS_URL].join('/');
 export const ABS_ACC_CATEGORY_ACCOUNTS_URL = '/' + [MAIN_PAGE_URL, ACCOUNTING_APP_URL, ACC_CATEGORY_ACCOUNTS_URL].join('/');
+export const ABS_ACC_CLASS_ACCOUNTS_URL = '/' + [MAIN_PAGE_URL, ACCOUNTING_APP_URL, ACC_CLASS_ACCOUNTS_URL].join('/');
 
 //Budget
 export const ABS_BUDGET_BUDGET_URL = '/' + [MAIN_PAGE_URL, BUDGET_APP_URL, BUDGET_BUDGET_URL].join('/');
