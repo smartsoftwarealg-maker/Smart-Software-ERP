@@ -22,17 +22,27 @@
                     }
                 </mat-form-field>
 
+                <div class="default-50 sm-100">
+                    <mat-form-field floatLabel="always" class="default-50">
+                        <mat-label translate>PAYROLL_YEAR</mat-label>
+                        <input matInput formControlName="payMonthY" type="number" style="text-align: end;" min="1900"
+                               max="2900" required>
+                    </mat-form-field>
+
+                    <mat-form-field floatLabel="always" class="default-50">
+                        <mat-label translate>PAYROLL_MONTH</mat-label>
+                        <input matInput formControlName="payMonthM" type="number" style="text-align: end;" min="1"
+                               max="12" required>
+                    </mat-form-field>
+                </div>
+
                 <mat-form-field class="default-50">
                     <mat-label translate>PAYROLL_REFERENCE</mat-label>
                     <input matInput formControlName="reference" type="text">
-                    @if (form.controls['reference'].invalid) {
-                        <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
-                    }
                 </mat-form-field>
 
                 <mat-form-field class="default-50">
-                    <mat-label translate>MISSION_DESTINATION
-                    </mat-label>
+                    <mat-label translate>MISSION_DESTINATION</mat-label>
                     <input matInput formControlName="destination" type="text">
                     @if (form.controls['destination'].invalid) {
                         <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
@@ -42,17 +52,11 @@
                 <mat-form-field class="default-50">
                     <mat-label translate>COMMON_MOTIVE</mat-label>
                     <input matInput formControlName="motive" type="text">
-                    @if (form.controls['motive'].invalid) {
-                        <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
-                    }
                 </mat-form-field>
 
                 <mat-form-field class="default-50">
                     <mat-label translate>MISSION_DURATION</mat-label>
                     <input matInput formControlName="duration" type="text">
-                    @if (form.controls['duration'].invalid) {
-                        <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
-                    }
                 </mat-form-field>
 
                 <mat-form-field class="default-50">
@@ -101,11 +105,11 @@
                     </mat-select>
                 </mat-form-field>
 
-                <div class="default-50">
+                <div class="default-25">
                     <mat-checkbox formControlName="meals" translate>MISSION_MEALS</mat-checkbox>
                 </div>
 
-                <div class="default-50">
+                <div class="default-25">
                     <mat-checkbox formControlName="nights" translate>MISSION_NIGHTS</mat-checkbox>
                 </div>
             </form>

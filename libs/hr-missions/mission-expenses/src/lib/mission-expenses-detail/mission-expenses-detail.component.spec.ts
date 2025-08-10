@@ -1,20 +1,19 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {MissionExpensesDetailComponent} from '@ss/hr-missions/mission-expenses';
 
-import { MissionPreparationDetailComponent } from './mission-expenses-detail.component';
-
-describe('MissionPreparationDetailComponent', () => {
-  let component: MissionPreparationDetailComponent;
-  let fixture: ComponentFixture<MissionPreparationDetailComponent>;
+describe('MissionExpensesDetailComponent', () => {
+  let component: MissionExpensesDetailComponent;
+  let fixture: ComponentFixture<MissionExpensesDetailComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ MissionPreparationDetailComponent ]
+      declarations: [ MissionExpensesDetailComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(MissionPreparationDetailComponent);
+    fixture = TestBed.createComponent(MissionExpensesDetailComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

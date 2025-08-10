@@ -22,6 +22,7 @@ import {CommonModule} from "@angular/common";
 import {TranslateDirective} from "@ss/common/ui-lang";
 import {Mission, MissionsService, TrajectoryService, TransportService} from "@ss/hr-missions";
 import {JourneyLineService} from "../journey.service";
+import {Career} from "@ss/payroll/api-employee";
 
 @Component({
     selector: 'ss-mission-preparation-detail',
@@ -72,14 +73,14 @@ export class MissionExpensesDetailComponent extends BaseEntityDetailComponent<Mi
         this.journeyLineSrv.setParentId(b.id || 0);
         return this.formBuilder.group({
             id: [b.id],
-            number: [b.number],
+            number: [b.number, Validators.required],
             center: [b.center || this.loginSrv.appCtx.center],
             employee: [b.employee, Validators.required],
             reference: [b.reference],
             destination: [b.destination, Validators.required],
-            thezone: [b.theZone, Validators.required],
-            motive: [b.motive, Validators.required],
-            duration: [b.duration, Validators.required],
+            theZone: [b.theZone],
+            motive: [b.motive],
+            duration: [b.duration],
             transportMeans: [b.transportMeans, Validators.required],
             departure: [
                 new Date(Date.parse(b.departure || new Date() + '') || 0),
@@ -89,9 +90,20 @@ export class MissionExpensesDetailComponent extends BaseEntityDetailComponent<Mi
             ],
             advancement: [b.advancement || 0],
             trajectory: [b.trajectory, Validators.required],
-            meals: [b.meals, Validators.required],
-            nights: [b.nights, Validators.required],
+            meals: [b.meals],
+            nights: [b.nights],
             missionStatus: [b.missionStatus || 1, Validators.required],
+            payMonthY:     [Math.floor(b.payMonth / 100)|| new Date().getFullYear(), Validators.required],
+            payMonthM:     [(b.payMonth % 100)|| new Date().getMonth() + 1, Validators.required],
         });
+    }
+
+    public override readForm(): Mission {
+        const formVal = this.form.value;
+        const val: Mission = formVal;
+        val.payMonth = (+formVal.paymonthY) * 100 + (+formVal.paymonthM);
+        delete formVal.payMonthY;
+        delete formVal.payMonthM;
+        return val;
     }
 }

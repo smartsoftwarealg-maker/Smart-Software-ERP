@@ -6,7 +6,6 @@ import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {of, switchMap, tap, zip} from 'rxjs';
 import {Special, SpecialPayrollService} from '@ss/remuneration/special-payroll-common';
 import {LanguageService} from '@ss/common/api-common';
-import { NgIf, NgFor } from '@angular/common';
 import { MatCard, MatCardContent } from '@angular/material/card';
 import { MatFormField, MatLabel } from '@angular/material/form-field';
 import { TranslateDirective } from '@ss/common/ui-lang';
@@ -22,7 +21,7 @@ import { TranslatePipe } from '@ss/common/ui-lang';
     templateUrl: './month-selector.component.html',
     styleUrls: ['./month-selector.component.scss'],
     standalone: true,
-    imports: [NgIf, MatCard, MatCardContent, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, MatSelect, NgFor, MatOption, MatButton, MatProgressBar, TranslatePipe]
+    imports: [ MatCard, MatCardContent, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, MatSelect, MatOption, MatButton, MatProgressBar, TranslatePipe]
 })
 export class MonthSelectorComponent implements OnInit {
     private selectorSrv  = inject(PayrollMonthService);

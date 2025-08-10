@@ -326,6 +326,9 @@
             ],
             "@ss/hr-missions": ["libs/hr-missions/missions/src/index.ts"],
             "@ss/hr-missions/assets": ["libs/hr-missions/assets/src/index.ts"],
+            "@ss/hr-missions/element-generation": [
+                "libs/hr-missions/element-generation/src/index.ts"
+            ],
             "@ss/hr-missions/mission-elements": [
                 "libs/hr-missions/mission-elements/src/index.ts"
             ],

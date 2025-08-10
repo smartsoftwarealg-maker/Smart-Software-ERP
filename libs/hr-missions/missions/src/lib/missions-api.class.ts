@@ -33,4 +33,5 @@ export interface Mission {
     zoneName?: string;
     transportName?: string;
     trajectoryName?: string;
+    payMonth?: number;
 }
