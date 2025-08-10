@@ -6,7 +6,6 @@ import {
 } from '@angular/forms';
 import { BaseChildEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { Component, inject } from '@angular/core';
-import { DatePickerComponent } from '@ss/common/ui-datepicker';
 import { CommonModule } from '@angular/common';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 import { MaterialModule } from '@ss/common/api-common';
@@ -28,7 +27,6 @@ import { SalesCategoryService } from '@ss/common/api-lookup';
         CommonModule,
         MaterialModule,
         ReactiveFormsModule,
-        DatePickerComponent,
         TranslateDirective,
         TranslatePipe,
         UiAutoCompleteComponent,
