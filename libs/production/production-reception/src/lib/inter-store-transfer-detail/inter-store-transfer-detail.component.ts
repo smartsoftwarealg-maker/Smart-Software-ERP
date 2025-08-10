@@ -1,10 +1,10 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
-import { ActivatedRoute, RouterOutlet } from '@angular/router';
+import {ActivatedRoute, Router, RouterOutlet} from '@angular/router';
 import {
     ReactiveFormsModule,
     UntypedFormBuilder,
-    UntypedFormGroup,
+    UntypedFormGroup, Validators,
 } from '@angular/forms';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { InterStoreTransfer } from '@ss/logistics/api-transaction';
@@ -40,6 +40,7 @@ export class InterStoreTransferDetailComponent
     implements OnInit {
     #interStoreTransferLinesSrv = inject(InterStoreTransferLinesService);
     #storeSrv = inject(StoreService);
+    #router = inject(Router);
 
     storeLookup = new DefaultAutoCompleteModel(this.#storeSrv);
 
@@ -73,9 +74,10 @@ export class InterStoreTransferDetailComponent
         return this.formBuilder.group({
             id:        [e.id],
             number:    [{ value: e.number, disabled: true }],
-            reference: [e.reference],
-            date:      [e.date],
-            storeId:   [e.storeId]
+            header:    [e.header],
+            date:      [e.date||new Date(), Validators.required],
+            storeId:   [e.storeId, Validators.required]
         });
     }
+
 }
