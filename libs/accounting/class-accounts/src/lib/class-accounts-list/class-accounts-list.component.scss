@@ -1,0 +1,33 @@
+.size {
+    width: 80%;
+    max-width: 900px;
+    margin: 4px auto 0;
+}
+
+.table_div {
+    height: calc(100% - 70px);
+}
+
+.mat-column-description {
+    flex: 1 1 250px;
+}
+
+.mat-column-accountno {
+    flex: 2 1 250px;
+}
+
+.pagination-container {
+    flex-grow: 0;
+
+    ss-pagination {
+        left: 0;
+        right: 0;
+        position: sticky;
+        margin: auto;
+        max-width: 900px;
+    }
+}
+
+mat-table {
+    width: 100%;
+}
