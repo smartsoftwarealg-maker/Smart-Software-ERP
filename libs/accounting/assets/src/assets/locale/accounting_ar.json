@@ -97,5 +97,6 @@
     "CATEGORY_ACCOUNTS":        "حسابات الفئات",
     "CATEGORY_ACCOUNT":         "حساب الفئة",
     "DEFERRED_ACCOUNT":         "الحساب المؤجل",
-    "CASH_ACCOUNT":             "الحساب النقدي"
+    "CASH_ACCOUNT":             "الحساب النقدي",
+    "CLASSES_ACCOUNTS":         "حسابات الفصول"
 }

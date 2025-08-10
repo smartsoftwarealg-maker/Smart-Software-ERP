@@ -1,8 +1,13 @@
 import {Routes} from '@angular/router';
 import {AccountDetailComponent, AccountListComponent} from '@ss/logistics/ui-account';
 import {
-    ACC_BALANCE_QUERIES_URL, ACC_CONSOLIDATION_CENTERS_URL,
-    ACC_DEPRECIATION_GEN_URL, ACC_F12_URL, ACC_F13_URL, ACC_F82_URL, ACC_F8_URL,
+    ACC_BALANCE_QUERIES_URL,
+    ACC_CONSOLIDATION_CENTERS_URL,
+    ACC_DEPRECIATION_GEN_URL,
+    ACC_F12_URL,
+    ACC_F13_URL,
+    ACC_F82_URL,
+    ACC_F8_URL,
     ACC_FILE_SELECTOR_URL,
     ACC_FILES_URL,
     ACC_GENERATION_URL,
@@ -10,14 +15,21 @@ import {
     ACC_PERIOD_SELECTOR_URL,
     ACC_POLICIES_URL,
     ACC_PROJECTS_URL,
-    ACC_REOPEN_URL, ACC_SALES_INJECTION_URL, ACC_TRANSACTION_MATCHING_URL,
+    ACC_REOPEN_URL,
+    ACC_SALES_INJECTION_URL,
+    ACC_TRANSACTION_MATCHING_URL,
     ACC_TRANSACTIONS_URL,
     ASSET_ACCOUNT_URL,
     CASHFLOW_ACCOUNTS_URL,
     COMMON_ACCOUNT_URL,
-    COMMON_REPORTS_URL, DASHBOARD_URL,
+    COMMON_REPORTS_URL,
+    DASHBOARD_URL,
     GENERATION_ACCOUNT_URL,
-    TRANSAC_ACCOUNT_URL, ACC_CLOSED_PERIODS_URL, ACC_GENERAL_INJECTION_URL, ACC_CATEGORY_ACCOUNTS_URL
+    TRANSAC_ACCOUNT_URL,
+    ACC_CLOSED_PERIODS_URL,
+    ACC_GENERAL_INJECTION_URL,
+    ACC_CATEGORY_ACCOUNTS_URL,
+    ACC_CLASS_ACCOUNTS_URL
 } from '../common';
 import {ABS_INDEX_URL, CanDeactivateService, LIST_URL} from '@ss/common/api-common';
 import {AccPoliciesComponent} from '@ss/accounting/acc-policies';
@@ -66,6 +78,11 @@ import { DashboardComponent } from '@ss/dashboard';
 import { ConsolidationCentersDetailComponent, ConsolidationCentersListComponent } from '@ss/accounting/consolidation';
 import { AccClosedPeriodsComponent } from '@ss/accounting/acc-closed-periods';
 import {CategoryAccountsDetailComponent, CategoryAccountsListComponent} from "@ss/accounting/category-accounts";
+import {
+    ClassAccountsDetailComponent, ClassAccountsLineDetailComponent,
+    ClassAccountsLineListComponent,
+    ClassAccountsListComponent
+} from "@ss/accounting/class-accounts";
 
 export const accRoutes: Routes = [
     {
@@ -440,7 +457,40 @@ export const accRoutes: Routes = [
             {path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full'}
         ]
     },
-
+    {
+        path: ACC_CLASS_ACCOUNTS_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: ClassAccountsListComponent,
+                canActivate: [loginGuard],
+            },
+            {
+                path: ':id',
+                component: ClassAccountsDetailComponent,
+                canActivate: [loginGuard],
+                canDeactivate: [CanDeactivateService],
+                children: [
+                    { path: '', redirectTo: 'detail', pathMatch: 'full' },
+                    {
+                        path: 'detail',
+                        children: [
+                            {
+                                path: '',
+                                component: ClassAccountsLineListComponent,
+                                pathMatch: 'full',
+                            },
+                            {
+                                path: ':id',
+                                component: ClassAccountsLineDetailComponent,
+                            },
+                        ],
+                    },
+                ],
+            },
+            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' },
+        ],
+    },
     {path: '', redirectTo: ABS_INDEX_URL, pathMatch: 'full'},
     {path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full'}
 ];

@@ -98,5 +98,6 @@
     "CATEGORY_ACCOUNTS":        "Category accounts",
     "CATEGORY_ACCOUNT":         "Category account",
     "DEFERRED_ACCOUNT":         "Deferred account",
-    "CASH_ACCOUNT":             "Cash account"
+    "CASH_ACCOUNT":             "Cash account",
+    "CLASSES_ACCOUNTS":         "Classes accounts"
 }
