@@ -19,5 +19,6 @@
     "ROUTE_COUNT":       "Route count",
     "EXCL_MEAL":         "Excl meal",
     "MISSION_ELEMENT":   "Mission Elements",
-    "MISSION_ELEMENT_DETAIL": "Mission element detail"
+    "MISSION_ELEMENT_DETAIL": "Mission element detail",
+    "ELEMENTS_GENERATOR":  "Elements generator"
 }

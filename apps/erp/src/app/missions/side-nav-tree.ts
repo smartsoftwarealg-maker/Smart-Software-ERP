@@ -1,6 +1,6 @@
-
 import {SideNavNode} from '@ss/common/api-common';
 import {
+    ABS_ELEMENT_GENERATION_URL,
     ABS_MISSION_ELEMENTS_URL,
     ABS_MISSION_EXPENSES_URL,
     ABS_MISSION_PREPARATION_URL,
@@ -36,6 +36,12 @@ export const missionsNavTree: SideNavNode = {
             name: 'MISSION_MISSION_ELEMENT',
             icon: 'fa-solid fa-memo-pad',
             route: ABS_MISSION_ELEMENTS_URL,
+            accessRights: 'Mission'
+        },
+        {
+            name: 'MISSION_ELEMENTS_GENERATOR',
+            icon: 'fa-solid fa-gear',
+            route: ABS_ELEMENT_GENERATION_URL,
             accessRights: 'Mission'
         },
 

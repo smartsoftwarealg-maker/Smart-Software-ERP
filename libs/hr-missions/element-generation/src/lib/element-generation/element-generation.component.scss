@@ -1,0 +1,41 @@
+.main-table {
+    max-width: 1000px;
+    margin: 8px auto;
+    border-radius: 1.4em;
+    padding: 16px;
+    height: 90%;
+}
+
+.mat-column-checkBox {
+    flex: 0 1 50px;
+    padding-right: 4px;
+    padding-left: 4px;
+}
+
+.mat-column-number {
+    flex: 0 0 100px;
+    padding-right: 4px;
+    padding-left: 4px;
+}
+
+.mat-column-route,
+.mat-column-period {
+    flex: 1 1 100px;
+    padding-right: 4px;
+    padding-left: 4px;
+}
+
+.mat-column-firstName,
+.mat-column-lastName {
+    flex: 1 1 150px;
+    padding-right: 4px;
+    padding-left: 4px;
+}
+
+.ctrl-div {
+    display: flex;
+    position: relative;
+    bottom: -65%;
+    justify-content: space-between;
+    margin: 100px 0 0 0;
+}

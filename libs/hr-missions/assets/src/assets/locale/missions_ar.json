@@ -19,5 +19,6 @@
     "ROUTE_COUNT":       "عدد المسارات",
     "EXCL_MEAL":         "باستثناء الوجبة",
     "MISSION_ELEMENT":   "عناصر المهمة",
-    "MISSION_ELEMENT_DETAIL": "تفاصيل عنصر المهمة"
+    "MISSION_ELEMENT_DETAIL": "تفاصيل عنصر المهمة",
+    "ELEMENTS_GENERATOR":     "مولد العناصر"
 }

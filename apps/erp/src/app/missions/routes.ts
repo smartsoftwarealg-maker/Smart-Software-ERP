@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
 import {
+    ELEMENT_GENERATION_URL,
     MISSION_ELEMENTS_URL,
     MISSION_EXPENSES_URL,
     MISSION_PREPARATION_URL,
@@ -20,7 +21,7 @@ import {
     MissionPreparationDetailComponent,
     MissionPreparationListComponent,
 } from '@ss/hr-missions/missions';
-import { loginGuard } from '../erp-guards';
+import {loginGuard, payrollGuard} from '../erp-guards';
 import {
     MissionExpensesDetailComponent,
     MissionExpensesLineDetailComponent,
@@ -33,6 +34,7 @@ import {
     MissionElementsLinesListComponent,
     MissionElementsListComponent,
 } from '@ss/hr-missions/mission-elements';
+import { ElementGenerationComponent} from "@ss/hr-missions/element-generation";
 
 export const mainRoutes: Routes = [
     {
@@ -75,7 +77,7 @@ export const mainRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: MissionExpensesListComponent,
-                canActivate: [loginGuard],
+                canActivate: [loginGuard, payrollGuard],
             },
             {
                 path: ':id',
@@ -136,6 +138,11 @@ export const mainRoutes: Routes = [
             },
             { path: '**', redirectTo: LIST_URL, pathMatch: 'full' },
         ],
+    },
+    {
+        path: ELEMENT_GENERATION_URL,
+        component: ElementGenerationComponent,
+        canActivate: [loginGuard, payrollGuard],
     },
     { path: '', redirectTo: ABS_INDEX_URL, pathMatch: 'full' },
     { path: '**', redirectTo: ABS_INDEX_URL },
