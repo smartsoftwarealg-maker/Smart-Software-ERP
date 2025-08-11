@@ -45,7 +45,7 @@
             </ng-container>
 
             <ng-container matColumnDef="sourceDescription">
-                <mat-header-cell *matHeaderCellDef translate>COMMON_ARTICLE</mat-header-cell>
+                <mat-header-cell *matHeaderCellDef translate>COMMON_DESCRIPTION</mat-header-cell>
                 <mat-cell *matCellDef="let e">
                     {{ e.sourceDescription }}
                 </mat-cell>
@@ -59,18 +59,18 @@
             </ng-container>
 
             <ng-container matColumnDef="sourceRef">
-                <mat-header-cell *matHeaderCellDef translate>STOCK_SOURCE_REFERENCE</mat-header-cell>
+                <mat-header-cell *matHeaderCellDef translate>COMMON_REFERENCE</mat-header-cell>
                 <mat-cell *matCellDef="let e">
                     {{ e.sourceRef }}
                 </mat-cell>
             </ng-container>
 
-            <ng-container matColumnDef="destinationStore">
-                <mat-header-cell *matHeaderCellDef translate>STOCK_DESTINATION_STORE</mat-header-cell>
-                <mat-cell *matCellDef="let e">
-                    {{ e.destinationStore }}
-                </mat-cell>
-            </ng-container>
+<!--            <ng-container matColumnDef="destinationStore">-->
+<!--                <mat-header-cell *matHeaderCellDef translate>STOCK_DESTINATION_STORE</mat-header-cell>-->
+<!--                <mat-cell *matCellDef="let e">-->
+<!--                    {{ e.destinationStore }}-->
+<!--                </mat-cell>-->
+<!--            </ng-container>-->
 
 
             <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>

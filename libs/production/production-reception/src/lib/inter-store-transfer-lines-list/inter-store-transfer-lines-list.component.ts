@@ -26,10 +26,9 @@ export class InterStoreTransferLinesListComponent extends BaseChildEntityListCom
     override displayedColumns = [
         'storeDescription',
         'lotDescription',
+        'sourceRef',
         'sourceDescription',
         'qty',
-        'sourceRef',
-        'destinationStore'
     ];
 
     constructor(protected override detailSrv: InterStoreTransferLinesService) {
@@ -38,7 +37,7 @@ export class InterStoreTransferLinesListComponent extends BaseChildEntityListCom
 
     protected readonly console = console;
 
-    showDetail(id: number) {
+    override showDetail(id: number) {
         this.router.navigate(
             ['lines-detail', id || 0],
             { relativeTo: this.route.parent}).then();

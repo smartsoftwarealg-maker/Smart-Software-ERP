@@ -49,7 +49,7 @@
                         @if (form.controls['sourceRef'].hasError('required')) {
                             <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
                         }
-                        <mat-hint><span translate>STOCK_STOCK</span>: {{ stock() }}</mat-hint>
+                        <mat-hint><span translate>STOCK_STOCK</span>: {{ stock() | number: '1.2-4'}}</mat-hint>
                     </mat-form-field>
                 </div>
 
