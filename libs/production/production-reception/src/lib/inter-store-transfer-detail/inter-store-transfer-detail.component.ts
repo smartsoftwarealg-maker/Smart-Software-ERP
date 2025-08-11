@@ -76,16 +76,8 @@ export class InterStoreTransferDetailComponent
             number:    [{ value: e.number, disabled: true }],
             header:    [e.header],
             date:      [e.date||new Date(), Validators.required],
-            storeId:   [e.storeId, Validators.required],
+            storeId:   [e.storeId, Validators.required]
         });
-    }
-
-    protected override goBack() {
-        if (this.form.controls['id'].value > 0) {
-            super.goBack();
-        } else {
-            this.#router.navigate(['..', this.queryId], { relativeTo: this.route }).then(() => this.saveButton.disabled = false);
-        }
     }
 
 }

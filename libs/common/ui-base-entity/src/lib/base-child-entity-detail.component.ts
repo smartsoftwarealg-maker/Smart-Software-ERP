@@ -1,11 +1,11 @@
-import { Directive, inject } from "@angular/core";
-import { BaseEntityService } from "@ss/common/api-base-entity";
-import { ShellService, SnackBarService } from "@ss/common/ui-shell";
+import { Directive, inject } from '@angular/core';
+import { BaseEntityService } from '@ss/common/api-base-entity';
+import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
-import { ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
-import { UntypedFormGroup } from "@angular/forms";
+import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
+import { UntypedFormGroup } from '@angular/forms';
 import { Observable, of, switchMap, tap } from 'rxjs';
-import { LoginService, Right } from "@ss/common/api-common";
+import { LoginService, Right } from '@ss/common/api-common';
 
 @Directive()
 export abstract class BaseChildEntityDetailComponent<T extends { id: number, parentId: number} > {
@@ -44,8 +44,8 @@ export abstract class BaseChildEntityDetailComponent<T extends { id: number, par
                     return this.id? this.entitySrv.get(this.id) : of(this.EMPTY_RECORD);
                 })
             ).subscribe(ent => {
-            this.form = this.setupForm(ent);
-        });
+                this.form = this.setupForm(ent);
+            });
         this.isEditable = this.shellSrv.getCurrentNodeRights()?.edit || false;
         const isManager = this.loginSrv?.appCtx?.manager || false;
         const rights = this.shellSrv.getEntityRights(this.entity);
@@ -72,19 +72,19 @@ export abstract class BaseChildEntityDetailComponent<T extends { id: number, par
                 }
                 this.shellSrv.setLoading(true);
             })).subscribe({
-            error: err => {
-                this.snackBarSrv.showFailureMessage();
-                this.shellSrv.setLoading(false);
-                this.form?.reset(val);
-                throw err;
-            },
-            next: () => {
-                this.shellSrv.setLoading(false);
-                this.router.navigate(['../'], { relativeTo: this.route }).then();
-                this.form.markAsUntouched();
-                this.snackBarSrv.showSuccessMessage();
-            }
-        });
+                error: err => {
+                    this.snackBarSrv.showFailureMessage();
+                    this.shellSrv.setLoading(false);
+                    this.form?.reset(val);
+                    throw err;
+                },
+                next: () => {
+                    this.shellSrv.setLoading(false);
+                    this.router.navigate(['../'], { relativeTo: this.route }).then();
+                    this.form.markAsUntouched();
+                    this.snackBarSrv.showSuccessMessage();
+                }
+            });
     }
 
     cancel() {

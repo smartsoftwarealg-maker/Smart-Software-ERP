@@ -5,7 +5,7 @@ import {
     UntypedFormGroup,
     Validators,
 } from '@angular/forms';
-import {LotsService, StoreService} from '@ss/common/api-lookup';
+import {LotsService} from '@ss/common/api-lookup';
 import { InterStoreTransferLine } from '@ss/logistics/api-transaction';
 import { MaterialModule } from '@ss/common/api-common';
 import { CommonModule } from '@angular/common';
@@ -56,14 +56,24 @@ export class InterStoreTransferLinesDetailComponent
 
     constructor(protected override entitySrv: InterStoreTransferLinesService) {
         super(entitySrv, 'PROD_INTER_STORE_TRANSFER_DETAIL');
+        this.articleLookup.onValueChanged = (e) => console.log(e);
     }
 
+
     override setupForm(e: InterStoreTransferLine): UntypedFormGroup {
+        this.storeName.set(e?.storeDescription||'');
+        if (e.id > 0) {
+            this.entitySrv
+                .getStock(e.sourceRef, e.sourceStore)
+                .subscribe( res => this.stock.set(res.stock));
+        }
+
+
         return this.#formBuilder.group({
             id:               [e.id],
             parentId:         [e.parentId],
             rightId:          [e.rightId || 0],
-            sourceRef:        [e.sourceRef, Validators.required],
+            sourceRef:        [{ value: e.sourceRef, disabled: e.qty > 0 }, Validators.required],
             sourceStore:      [e.sourceStore, Validators.required],
             qty:              [e.qty||0, Validators.required],
             destinationRef:   [e.destinationRef],
