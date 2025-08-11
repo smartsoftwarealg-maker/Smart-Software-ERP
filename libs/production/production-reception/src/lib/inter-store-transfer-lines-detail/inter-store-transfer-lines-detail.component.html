@@ -42,7 +42,10 @@
                 <div class="default-50">
                     <mat-form-field style="width: calc(100% - 50px); margin-right: .5em">
                         <mat-label translate>STOCK_SOURCE_REFERENCE</mat-label>
-                        <input matInput formControlName="sourceRef">
+                        <ss-auto-complete matInput
+                                          [model]="articleLookup"
+                                          formControlName="sourceRef">
+                        </ss-auto-complete>
                         @if (form.controls['sourceRef'].hasError('required')) {
                             <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
                         }
