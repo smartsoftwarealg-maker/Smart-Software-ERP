@@ -184,17 +184,6 @@
                                 <span translate>COMMON_ACCOUNTING</span>
                             </ng-template>
                             <div class="default-100"></div>
-                            <mat-form-field class="default-50 sm-100">
-                                <mat-label translate>LOGISTICS_ACCOUNT_NO</mat-label>
-                                <ss-auto-complete matInput
-                                                  [required]="true"
-                                                  [model]="supplierAccountLookup"
-                                                  formControlName="supplierAccount">
-                                </ss-auto-complete>
-                                @if (form.controls['supplierAccount'].hasError('required')) {
-                                    <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
-                                }
-                            </mat-form-field>
 
                             <mat-form-field floatLabel="always" class="default-25 sm-100">
                                 <mat-label translate>PURCHASES_SOURCE_DOC</mat-label>

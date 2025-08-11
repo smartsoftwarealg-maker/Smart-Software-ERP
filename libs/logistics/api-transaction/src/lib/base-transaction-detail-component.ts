@@ -31,11 +31,9 @@ import { TransactionLinesClass } from './transaction-lines.class';
 import { BaseTransactionLinesListComponent } from './base-transaction-lines-list.component';
 import { Project, PurchaseContractService, SalesContractService } from '@ss/logistics/contracts';
 import { OptionService } from '@ss/logistics/ui-options';
-import { SupplierAccountService } from '../../../../accounting/api-accounts/src/lib/supplier-account.service';
 
 @Directive()
 export abstract class BaseTransactionDetailComponent extends BaseEntityDetailComponent<Transaction> implements OnInit {
-    private supplierAccountSrv = inject(SupplierAccountService);
     private CONSUMPTION_DOCUMENT = 260;
     private PURCHASE_REQUEST = 10;
     private optionSrv = inject(OptionService);
@@ -50,7 +48,6 @@ export abstract class BaseTransactionDetailComponent extends BaseEntityDetailCom
     private customerSrv = inject(CustomerService);
 
     protected transaction: Transaction = null;
-    protected interStoreTransferLine: InterStoreTransferLine = null;
     protected currencySrv = inject(CurrencyService);
     protected purchaseProjectSrv = inject(PurchaseContractService);
     protected salesProjectSrv = inject(SalesContractService);
@@ -88,7 +85,6 @@ export abstract class BaseTransactionDetailComponent extends BaseEntityDetailCom
     public transporterAutoCompleteModel = new DefaultAutoCompleteModel<Agent>(this.supplierSrv, 'id', 'denomination');
     public consumerLookup = new DefaultAutoCompleteModel<Agent>(this.consumerSrv, 'id', 'denomination');
     public branchLookup = new DefaultAutoCompleteModel(this.branchSrv, 'id', 'denomination');
-    public supplierAccountLookup = new DefaultAutoCompleteModel(this.supplierAccountSrv);
     public executionRef = 0;
     public formId = 0;
     public groups: CCGroup[];
@@ -237,7 +233,6 @@ export abstract class BaseTransactionDetailComponent extends BaseEntityDetailCom
         }
 
         this.importBtn.disabled = !b?.id;
-
         this.detailSrv.setParentId(b.id || 0);
         this.purchaseProjectSrv.setParentId(b.agent || 0);
         this._isManager = this.loginSrv.appCtx.manager;
@@ -250,41 +245,40 @@ export abstract class BaseTransactionDetailComponent extends BaseEntityDetailCom
         this.detailSrv.editable = this.isEditable;
         this.transaction = b;
         return this.formBuilder.group({
-            id: [b.id],
-            document: [b.document || 0],
-            centerId: [0 || this.loginSrv.appCtx.center],
-            date: [b.date || new Date(), Validators.required],
-            number: [b.number || 0],
-            reference: [b.reference],
-            referenceDocDate: [b.referenceDocDate],
-            payMethod: [b.payMethod],
-            header: [b.header],
-            footer: [b.footer],
-            currency: [b.currency || this.optionSrv.options?.defaultCurrency],
-            currencyRate: [b.currencyRate || 1],
+            id:                  [b.id],
+            document:            [b.document || 0],
+            centerId:            [this.loginSrv.appCtx.center],
+            date:                [b.date || new Date(), Validators.required],
+            number:              [b.number || 0],
+            reference:           [b.reference],
+            referenceDocDate:    [b.referenceDocDate],
+            payMethod:           [b.payMethod],
+            header:              [b.header],
+            footer:              [b.footer],
+            currency:            [b.currency || this.optionSrv.options?.defaultCurrency],
+            currencyRate:        [b.currencyRate || 1],
             discountDescription: [b.discountDescription],
-            fixedDiscount: [b.fixedDiscount || 0.0],
-            discount: [b.discount || 0.0],
-            fixedDiscountVAT: [b.fixedDiscountVAT || 0.0],
-            dealer: [{ value: b.dealer || this.loginSrv.appCtx.id, disabled: !this._isManager }, Validators.required],
-            agent: [b.agent, this.requireAgent() ? Validators.required : null],
-            altAgent: [b.altAgent],
-            project: [b.project],
-            locked: [b.locked || false, Validators.required],
-            dirty: [!b.dirty || false, Validators.required],
-            driver: [b.driver],
-            transporter: [b.transporter],
-            license: [b.license],
-            licenseDate: [b.licenseDate],
-            licenseIssuer: [b.licenseIssuer],
-            plateNumber: [b.plateNumber],
-            plateNumber2: [b.plateNumber2],
-            deliveryTime: [b.deliveryTime],
-            vfGuarantee: [b.vfGuarantee],
-            ftGuarantee: [b.ftGuarantee],
-            advancement: [b.advancement],
-            receptionType: [b.receptionType||1],
-            supplierAccount: [b.supplierAccount]
+            fixedDiscount:       [b.fixedDiscount || 0.0],
+            discount:            [b.discount || 0.0],
+            fixedDiscountVAT:    [b.fixedDiscountVAT || 0.0],
+            dealer:              [{ value: b.dealer || this.loginSrv.appCtx.id, disabled: !this._isManager }, Validators.required],
+            agent:               [b.agent, this.requireAgent() ? Validators.required : null],
+            altAgent:            [b.altAgent],
+            project:             [b.project],
+            locked:              [b.locked || false, Validators.required],
+            dirty:               [b.dirty, Validators.required],
+            driver:              [b.driver],
+            transporter:         [b.transporter],
+            license:             [b.license],
+            licenseDate:         [b.licenseDate],
+            licenseIssuer:       [b.licenseIssuer],
+            plateNumber:         [b.plateNumber],
+            plateNumber2:        [b.plateNumber2],
+            deliveryTime:        [b.deliveryTime],
+            vfGuarantee:         [b.vfGuarantee],
+            ftGuarantee:         [b.ftGuarantee],
+            advancement:         [b.advancement],
+            receptionType:       [b.receptionType||1],
         });
     }
 
@@ -293,10 +287,6 @@ export abstract class BaseTransactionDetailComponent extends BaseEntityDetailCom
             .pipe(tap(x => this.groups = x),
                 switchMap(() => this.optionSrv.get(this.loginSrv.appCtx.center)),
                 tap(res => this.optionSrv.options = res));
-        //
-        // return this.optionSrv
-        //     .get(this.loginSrv.appCtx.center)
-        //     .pipe(tap(res => this.optionSrv.options = res));
     }
 
     get isManager() {
