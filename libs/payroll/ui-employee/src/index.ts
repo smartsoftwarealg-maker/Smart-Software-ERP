@@ -53,6 +53,8 @@ export * from './lib/languages/list/language-list.component';
 export * from './lib/languages/detail/language-levels-detail.component';
 export * from './lib/trn-subjects/list/trn-subjects-list.component';
 export * from './lib/trn-subjects/detail/trn-subjects-detail.component';
+export * from './lib/workshop/list/workshop-list.component';
+export * from './lib/workshop/detail/workshop-detail.component';
 
 
 

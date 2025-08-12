@@ -29,7 +29,7 @@ import {
     HR_PHYSICIAN_URL,
     HR_SPECIALTY_URL,
     HR_CAREER_MOTIVE_URL, HR_ID_UPDATE_URL, docInfoRoutes, HR_CRITERIA_URL, HR_GRADING_URL,
-    HR_LANGUAGE_LEVELS_URL, HR_LANGUAGES_URL, HR_TRN_SUBJECTS_URL
+    HR_LANGUAGE_LEVELS_URL, HR_LANGUAGES_URL, HR_TRN_SUBJECTS_URL, HR_WORKSHOP_URL
 } from '../common';
 import {
     ABS_INDEX_URL,
@@ -109,7 +109,11 @@ import {
     EmployeeUnpaidLeaveDetailComponent,
     LanguageLevelsListComponent,
     LanguageLevelsDetailComponent,
-    LanguageListComponent, LanguageDetailComponent, TrnSubjectsListComponent, TrnSubjectsDetailComponent
+    LanguageListComponent,
+    LanguageDetailComponent,
+    TrnSubjectsListComponent,
+    TrnSubjectsDetailComponent,
+    WorkshopListComponent, WorkshopDetailComponent
 } from '@ss/payroll/ui-employee';
 import {
     ACTIVATION_ROUTE_URL,
@@ -986,6 +990,23 @@ export const hrRoutes: Routes = [
             {
                 path: ':id',
                 component: TrnSubjectsDetailComponent,
+                canActivate: [loginGuard],
+                canDeactivate: [CanDeactivateService]
+            },
+            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
+        ]
+    },
+    {
+        path: HR_WORKSHOP_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: WorkshopListComponent,
+                canActivate: [loginGuard]
+            },
+            {
+                path: ':id',
+                component: WorkshopDetailComponent,
                 canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService]
             },
