@@ -266,6 +266,11 @@ export const HR_SPECIALTY_URL = 'specialties';
 export const HR_ID_UPDATE_URL = 'id-update';
 export const HR_CRITERIA_URL = 'hr-criteria';
 export const HR_GRADING_URL = 'hr-grading';
+export const HR_LANGUAGE_LEVELS_URL = 'language-levels';
+export const HR_LANGUAGES_URL = 'languages';
+export const HR_TRN_SUBJECTS_URL = 'training-subject';
+
+
 
 // Payroll
 export const PAYROLL_INACTIVE_EMPLOYEES_URL = 'pay-inactive-employees';
@@ -780,6 +785,9 @@ export const ABS_HR_CAREER_MOTIVE_URL    = '/' + [MAIN_PAGE_URL, HR_APP_URL, HR_
 export const ABS_EMPLOYEE_ID_UPDATE_URL    = '/' + [MAIN_PAGE_URL, HR_APP_URL, HR_ID_UPDATE_URL].join('/');
 export const ABS_HR_CRITERIA_URL    = '/' + [MAIN_PAGE_URL, HR_APP_URL, HR_CRITERIA_URL].join('/');
 export const ABS_HR_GRADING_URL    = '/' + [MAIN_PAGE_URL, HR_APP_URL, HR_GRADING_URL].join('/');
+export const ABS_HR_LANGUAGE_LEVELS_URL    = '/' + [MAIN_PAGE_URL, HR_APP_URL, HR_LANGUAGE_LEVELS_URL].join('/');
+export const ABS_HR_LANGUAGES_URL    = '/' + [MAIN_PAGE_URL, HR_APP_URL, HR_LANGUAGES_URL].join('/');
+export const ABS_HR_TRN_SUBJECTS_URL    = '/' + [MAIN_PAGE_URL, HR_APP_URL, HR_TRN_SUBJECTS_URL].join('/');
 
 
 // payroll
