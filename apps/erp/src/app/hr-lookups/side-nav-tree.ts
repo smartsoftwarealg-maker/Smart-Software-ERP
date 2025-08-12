@@ -18,7 +18,7 @@ import {
     ABS_HR_NATIONALITIES_URL,
     ABS_HR_POSTS_URL,
     ABS_HR_SERVICES_URL,
-    ABS_HR_SUSPENSION_REASON_URL, ABS_HR_TRN_SUBJECTS_URL,
+    ABS_HR_SUSPENSION_REASON_URL, ABS_HR_TRN_SUBJECTS_URL, ABS_HR_WORKSHOP_URL,
     ABS_PHYSICIAN_SPECIALTIES_URL,
     ABS_PHYSICIANS_URL,
     ABS_PROFESSIONAL_FAULTS_URL,
@@ -190,6 +190,12 @@ export const hrLookupNavTree: SideNavNode = {
             icon: 'fas fa-chalkboard-teacher',
             route: ABS_HR_TRN_SUBJECTS_URL,
             accessRights: 'TRNSubject'
+        },
+        {
+            name: 'PAYROLL_WORKSHOP',
+            icon: 'fas fa-tools',
+            route: ABS_HR_WORKSHOP_URL,
+            accessRights: 'Workshop'
         },
     ],
     accessRights: 'HR_TABLES'

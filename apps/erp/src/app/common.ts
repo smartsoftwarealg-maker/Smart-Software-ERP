@@ -269,6 +269,7 @@ export const HR_GRADING_URL = 'hr-grading';
 export const HR_LANGUAGE_LEVELS_URL = 'language-levels';
 export const HR_LANGUAGES_URL = 'languages';
 export const HR_TRN_SUBJECTS_URL = 'training-subject';
+export const HR_WORKSHOP_URL = 'workshop';
 
 
 
@@ -788,6 +789,7 @@ export const ABS_HR_GRADING_URL    = '/' + [MAIN_PAGE_URL, HR_APP_URL, HR_GRADIN
 export const ABS_HR_LANGUAGE_LEVELS_URL    = '/' + [MAIN_PAGE_URL, HR_APP_URL, HR_LANGUAGE_LEVELS_URL].join('/');
 export const ABS_HR_LANGUAGES_URL    = '/' + [MAIN_PAGE_URL, HR_APP_URL, HR_LANGUAGES_URL].join('/');
 export const ABS_HR_TRN_SUBJECTS_URL    = '/' + [MAIN_PAGE_URL, HR_APP_URL, HR_TRN_SUBJECTS_URL].join('/');
+export const ABS_HR_WORKSHOP_URL    = '/' + [MAIN_PAGE_URL, HR_APP_URL, HR_WORKSHOP_URL].join('/');
 
 
 // payroll

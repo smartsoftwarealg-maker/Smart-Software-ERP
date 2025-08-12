@@ -7,7 +7,6 @@ import {
     UntypedFormBuilder,
 } from '@angular/forms';
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
-import { MatMiniFabButton } from '@angular/material/button';
 import { MatCard, MatCardContent } from '@angular/material/card';
 import { MatFormField, MatLabel } from '@angular/material/form-field';
 import { TranslateDirective } from '@ss/common/ui-lang';
