@@ -47,6 +47,12 @@ export * from './lib/employee-reintegration/list/employee-reintegration-list.com
 export * from './lib/employee-reintegration/detail/employee-reintegration-detail.component';
 export * from './lib/employee-unpaid-leave/list/employee-unpaid-leave-list.component';
 export * from './lib/employee-unpaid-leave/detail/employee-unpaid-leave-detail.component';
+export * from './lib/language-levels/list/language-levels-list.component';
+export * from './lib/language-levels/detail/language-levels-detail.component';
+export * from './lib/languages/list/language-list.component';
+export * from './lib/languages/detail/language-levels-detail.component';
+export * from './lib/trn-subjects/list/trn-subjects-list.component';
+export * from './lib/trn-subjects/detail/trn-subjects-detail.component';
 
 
 

@@ -28,7 +28,8 @@ import {
     HR_ACTIVITY_URL,
     HR_PHYSICIAN_URL,
     HR_SPECIALTY_URL,
-    HR_CAREER_MOTIVE_URL, HR_ID_UPDATE_URL, docInfoRoutes, HR_CRITERIA_URL, HR_GRADING_URL
+    HR_CAREER_MOTIVE_URL, HR_ID_UPDATE_URL, docInfoRoutes, HR_CRITERIA_URL, HR_GRADING_URL,
+    HR_LANGUAGE_LEVELS_URL, HR_LANGUAGES_URL, HR_TRN_SUBJECTS_URL
 } from '../common';
 import {
     ABS_INDEX_URL,
@@ -105,7 +106,10 @@ import {
     EmployeeReintegrationListComponent,
     EmployeeReintegrationDetailComponent,
     EmployeeUnpaidLeaveListComponent,
-    EmployeeUnpaidLeaveDetailComponent
+    EmployeeUnpaidLeaveDetailComponent,
+    LanguageLevelsListComponent,
+    LanguageLevelsDetailComponent,
+    LanguageListComponent, LanguageDetailComponent, TrnSubjectsListComponent, TrnSubjectsDetailComponent
 } from '@ss/payroll/ui-employee';
 import {
     ACTIVATION_ROUTE_URL,
@@ -936,6 +940,57 @@ export const hrRoutes: Routes = [
     },
     {
         path: HR_GRADING_URL, component: HrGradingsComponent, canActivate: [loginGuard], data: { gradingMode: true }
+    },
+    {
+        path: HR_LANGUAGE_LEVELS_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: LanguageLevelsListComponent,
+                canActivate: [loginGuard]
+            },
+            {
+                path: ':id',
+                component: LanguageLevelsDetailComponent,
+                canActivate: [loginGuard],
+                canDeactivate: [CanDeactivateService]
+            },
+            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
+        ]
+    },
+    {
+        path: HR_LANGUAGES_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: LanguageListComponent,
+                canActivate: [loginGuard]
+            },
+            {
+                path: ':id',
+                component: LanguageDetailComponent,
+                canActivate: [loginGuard],
+                canDeactivate: [CanDeactivateService]
+            },
+            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
+        ]
+    },
+    {
+        path: HR_TRN_SUBJECTS_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: TrnSubjectsListComponent,
+                canActivate: [loginGuard]
+            },
+            {
+                path: ':id',
+                component: TrnSubjectsDetailComponent,
+                canActivate: [loginGuard],
+                canDeactivate: [CanDeactivateService]
+            },
+            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
+        ]
     },
     { path: '', redirectTo: ABS_INDEX_URL, pathMatch: 'full' },
     { path: '**', redirectTo: ABS_INDEX_URL }

@@ -237,5 +237,9 @@
     "UNPAID_LEAVE":           "إجازة بدون أجر",
     "GRADER":                 "مقيّم",
     "LOAN_INJECTION":         "حقن القروض",
-    "LOCK_ACCOUNT_UNTIL":     "قفل رقم الحساب حتى"
+    "LOCK_ACCOUNT_UNTIL":     "قفل رقم الحساب حتى",
+    "LANGUAGE_LEVELS":       "مستويات اللغة",
+    "EDIT_LANGUAGE_LEVELS":  "تعديل مستويات اللغة",
+    "TRN_SUBJECTS":          "مواضيع التدريب",
+    "EDIT_TRN_SUBJECTS":     "تحرير مواضيع التدريب"
 }

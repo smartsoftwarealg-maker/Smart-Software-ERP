@@ -12,13 +12,13 @@ import {
     ABS_HR_DIVISIONS_URL,
     ABS_HR_EDUCATION_LEVELS_URL,
     ABS_HR_EMPLOYMENT_TYPE_URL,
-    ABS_HR_JUDICIAL_FRAMES_URL,
+    ABS_HR_JUDICIAL_FRAMES_URL, ABS_HR_LANGUAGE_LEVELS_URL, ABS_HR_LANGUAGES_URL,
     ABS_HR_MARITAL_STATUS_URL,
     ABS_HR_MOTIVES_URL,
     ABS_HR_NATIONALITIES_URL,
     ABS_HR_POSTS_URL,
     ABS_HR_SERVICES_URL,
-    ABS_HR_SUSPENSION_REASON_URL,
+    ABS_HR_SUSPENSION_REASON_URL, ABS_HR_TRN_SUBJECTS_URL,
     ABS_PHYSICIAN_SPECIALTIES_URL,
     ABS_PHYSICIANS_URL,
     ABS_PROFESSIONAL_FAULTS_URL,
@@ -172,6 +172,24 @@ export const hrLookupNavTree: SideNavNode = {
             icon: 'fa-solid fa-stars',
             route: ABS_HR_CRITERIA_URL,
             accessRights: 'Criterion'
+        },
+        {
+            name: 'PAYROLL_LANGUAGE_LEVELS',
+            icon: 'fas fa-signal',
+            route: ABS_HR_LANGUAGE_LEVELS_URL,
+            accessRights: 'LanguageLevel'
+        },
+        {
+            name: 'PAYROLL_LANGUAGE',
+            icon: 'fas fa-language',
+            route: ABS_HR_LANGUAGES_URL,
+            accessRights: 'Language'
+        },
+        {
+            name: 'PAYROLL_TRN_SUBJECTS',
+            icon: 'fas fa-chalkboard-teacher',
+            route: ABS_HR_TRN_SUBJECTS_URL,
+            accessRights: 'TRNSubject'
         },
     ],
     accessRights: 'HR_TABLES'

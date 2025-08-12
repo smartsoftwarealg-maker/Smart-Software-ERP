@@ -236,5 +236,9 @@
     "HR_GRADING":            "Notation RH",
     "UNPAID_LEAVE":          "Disponibilité",
     "LOAN_INJECTION":        "Injection de prêts",
-    "LOCK_ACCOUNT_UNTIL":    "Verrouillez le numéro de compte jusqu'à"
+    "LOCK_ACCOUNT_UNTIL":    "Verrouillez le numéro de compte jusqu'à",
+    "LANGUAGE_LEVELS":       "Niveaux de langue",
+    "EDIT_LANGUAGE_LEVELS":  "Modifier les niveaux de langue",
+    "TRN_SUBJECTS":          "Sujets de formation",
+    "EDIT_TRN_SUBJECTS":     "Modifier les sujets de formation"
 }
