@@ -1,62 +1,62 @@
 <mat-card>
     <mat-card-content>
-        <form *ngIf="form !== null" novalidate [formGroup]="form">
-            <mat-form-field id="description" class="default-50 small-100">
-                <mat-label translate>ADMINISTRATION_DESCRIPTION</mat-label>
-                <input matInput formControlName="description" type="text">
-                <mat-error *ngIf="form.controls['description'].invalid" translate>COMMON_FIELD_
-                </mat-error>
-            </mat-form-field>
+        @if (form !== null) {
+            <form novalidate [formGroup]="form">
+                <mat-form-field id="description" class="default-50 small-100">
+                    <mat-label translate>ADMINISTRATION_DESCRIPTION</mat-label>
+                    <input matInput formControlName="description" type="text">
+                    @if (form.controls['description'].invalid) {
+                        <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+                    }
+                </mat-form-field>
 
 
-            <mat-form-field class="default-50 sm-100">
-                <mat-label translate>ACC_PURCHASE_ACCOUNT</mat-label>
-                <ss-auto-complete matInput
-                                  [model]="purchaseLookup"
-                                  formControlName="purchase">
-                </ss-auto-complete>
-                <mat-error *ngIf="form.controls['purchase'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
-            </mat-form-field>
+                <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>ACC_PURCHASE_ACCOUNT</mat-label>
+                    <ss-auto-complete matInput
+                                      [model]="purchaseLookup"
+                                      formControlName="purchase">
+                    </ss-auto-complete>
+                    @if (form.controls['purchase'].invalid) {
+                        <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+                    }
+                </mat-form-field>
 
-            <mat-form-field class="default-50 sm-100">
-                <mat-label translate>ACC_SALES_ACCOUNT</mat-label>
-                <ss-auto-complete matInput
-                                  [model]="salesLookup"
-                                  formControlName=sales>
-                </ss-auto-complete>
-                <mat-error *ngIf="form.controls['sales'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
-            </mat-form-field>
+                <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>ACC_SALES_ACCOUNT</mat-label>
+                    <ss-auto-complete matInput
+                                      [model]="salesLookup"
+                                      formControlName=sales>
+                    </ss-auto-complete>
+                </mat-form-field>
 
-            <mat-form-field class="default-50 sm-100">
-                <mat-label translate>ACC_STOCK_ACCOUNT</mat-label>
-                <ss-auto-complete matInput
-                                  [model]="stockLookup"
-                                  formControlName="stock">
-                </ss-auto-complete>
-                <mat-error *ngIf="form.controls['stock'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
-            </mat-form-field>
+                <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>ACC_STOCK_ACCOUNT</mat-label>
+                    <ss-auto-complete matInput
+                                      [model]="stockLookup"
+                                      formControlName="stock">
+                    </ss-auto-complete>
+                </mat-form-field>
 
 
-            <mat-form-field class="default-50 sm-100">
-                <mat-label translate>ACC_CONSUMPTION_ACCOUNT</mat-label>
-                <ss-auto-complete matInput
-                                  [model]="consumptionLookup"
-                                  formControlName="consumption">
-                </ss-auto-complete>
-                <mat-error *ngIf="form.controls['consumption'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
-            </mat-form-field>
+                <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>ACC_CONSUMPTION_ACCOUNT</mat-label>
+                    <ss-auto-complete matInput
+                                      [model]="consumptionLookup"
+                                      formControlName="consumption">
+                    </ss-auto-complete>
+                </mat-form-field>
 
-            <mat-form-field class="default-50 sm-100">
-                <mat-label translate>LOGISTICS_SUPPLIER</mat-label>
-                <ss-auto-complete matInput
-                                  [model]="supplierLookup"
-                                  formControlName="supplier">
-                </ss-auto-complete>
-            </mat-form-field>
+                <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>LOGISTICS_SUPPLIER</mat-label>
+                    <ss-auto-complete matInput
+                                      [model]="supplierLookup"
+                                      formControlName="supplier">
+                    </ss-auto-complete>
+                </mat-form-field>
 
-            <!--            <pre>{{form?.value | json }}</pre>-->
-
-        </form>
-
+                <!--            <pre>{{form?.value | json }}</pre>-->
+            </form>
+        }
     </mat-card-content>
 </mat-card>

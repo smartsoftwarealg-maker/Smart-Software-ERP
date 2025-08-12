@@ -54,13 +54,13 @@ export class GenerationAccountsDetailComponent extends BaseEntityDetailComponent
     public override setupForm(b: GenerationAccount) {
         // Make sure to update the template if you edit the configuration here
         return this.formBuilder.group({
-            id: [b.id],
-            account: [b.account],
-            stock: [b.stock],
+            id:          [b.id],
+            account:     [b.account],
+            stock:       [b.stock],
             consumption: [b.consumption],
-            purchase: [b.purchase],
-            supplier: [b.supplier],
-            sales: [b.sales],
+            purchase:    [b.purchase],
+            supplier:    [b.supplier],
+            sales:       [b.sales],
             description: [b.description, Validators.required],
         });
     }

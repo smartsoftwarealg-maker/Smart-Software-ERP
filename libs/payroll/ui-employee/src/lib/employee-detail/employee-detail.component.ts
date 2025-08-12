@@ -103,7 +103,6 @@ import { ActivePersonnelService } from '../active-personnel.service';
         MatFormField,
         MatLabel,
         MatInput,
-        NgIf,
         MatError,
         DatePickerComponent,
         UiAutoCompleteComponent,
@@ -111,7 +110,6 @@ import { ActivePersonnelService } from '../active-personnel.service';
         MatRadioButton,
         MatSelect,
         MatOption,
-        NgFor,
         MatCheckbox,
         RouterOutlet,
         MatButton,
@@ -478,7 +476,7 @@ export class EmployeeDetailComponent extends BaseEntityDetailComponent<Employee>
         const panels = this.hrMode? this.HR_PANELS: this.PAYROLL_PANELS;
         if (panel < panels.length) {
             const dest = panels[panel];
-            if (this.router.url.indexOf(dest) < 0) {
+            if (this.router.url.indexOf('/'+dest) < 0) {
                 this.router.navigate([dest], { relativeTo: this.route }).then();
             }
         }
