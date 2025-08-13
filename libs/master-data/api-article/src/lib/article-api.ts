@@ -49,7 +49,7 @@ export interface Article {
     id: number;
     reference: string;
     description2: string;
-    info: string;
+    info?: string;
     mark: number;
     klass: number;
     vat: number;
@@ -82,7 +82,6 @@ export interface Article {
     packagingDescription:string;
     packaging?:number;
     productType?: number;
-    info?: string;
 }
 
 export interface StockInfo {

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
-import {VacationPlanning, VacationPlanningDetail} from '../vacation-planning-api';
+import {VacationPlanningDetail} from '../vacation-planning-api';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
 import { UntypedFormBuilder, UntypedFormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -10,7 +10,6 @@ import {LookupsService} from '@ss/common/api-lookup';
 import {FixedElementsEntryService} from '@ss/remuneration/elements-entry';
 import {VacationPlanningDetailService} from '../vacation-planning-detail.service';
 import {Lookup} from '@ss/logistics/ui-doc-import';
-import {query} from '@angular/animations';
 import {Observable, zip} from 'rxjs';
 import {tap} from 'rxjs/operators';
 import { MatCard } from '@angular/material/card';
@@ -54,7 +53,7 @@ export class VacationPlanningDetailDetailComponent extends BaseEntityDetailCompo
             reference:   [e.reference],
             planning_id: [e.planning_id || this.planningSrv.getParentId()],
             vac_type:    [e.vac_type, Validators.required]
-        })
+        });
     }
 
     override preload(): Observable<any> {

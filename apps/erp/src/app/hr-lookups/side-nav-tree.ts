@@ -139,7 +139,7 @@ export const hrLookupNavTree: SideNavNode = {
         },
         {
             name: 'PAYROLL_PUNISHMENT_TYPE',
-            icon: 'fas fa-file-certificate',
+            icon: 'fa-solid fa-thumbs-down',
             route: ABS_PUNISHMENT_TYPE_URL,
             accessRights: 'PunishmentType'
         },
@@ -199,7 +199,7 @@ export const hrLookupNavTree: SideNavNode = {
         },
         {
             name: 'PAYROLL_VACATION_TYPES',
-            icon: 'fa-brands fa-elementor',
+            icon: 'fa-solid fa-list-tree',
             route: ABS_HR_VACATION_TYPE_URL,
             accessRights: 'VacationTypes'
         }
