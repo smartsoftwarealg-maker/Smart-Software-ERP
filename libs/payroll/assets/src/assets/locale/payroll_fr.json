@@ -242,6 +242,6 @@
     "EDIT_LANGUAGE_LEVELS":  "Modifier les niveaux de langue",
     "TRN_SUBJECTS":          "Sujets de formation",
     "EDIT_TRN_SUBJECTS":     "Modifier les sujets de formation",
-    "VACATION_TYPES": "Types De Vacances",
-    "EDIT_VACATION_TYPES":   "Modifier les types de vacances "
+    "VACATION_TYPES":        "Types de congés",
+    "EDIT_VACATION_TYPES":   "Modifier les types de congés "
 }
