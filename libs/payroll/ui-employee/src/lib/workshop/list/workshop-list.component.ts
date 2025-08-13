@@ -66,7 +66,7 @@ export class WorkshopListComponent extends BaseEntityListComponent<Lookup> {
             confirmationSrv,
             defReportSrv,
             pagPersistSrv,
-            'PAYROLL_WORKSHOP',
+            'PAYROLL_WORKSHOPS',
         );
     }
 }

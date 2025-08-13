@@ -252,15 +252,11 @@
                 "libs/common/ui-image-input/src/index.ts"
             ],
             "@ss/common/ui-lang": ["libs/common/ui-lang/src/index.ts"],
-            "@ss/common/ui-loading-spinner": [
-                "libs/common/ui-loading-spinner/src/index.ts"
-            ],
+            "@ss/common/ui-loading-spinner": ["libs/common/ui-loading-spinner/src/index.ts"],
             "@ss/common/ui-login": ["libs/common/ui-login/src/index.ts"],
             "@ss/common/ui-logout": ["libs/common/ui-logout/src/index.ts"],
             "@ss/common/ui-lookup": ["libs/common/ui-lookup/src/index.ts"],
-            "@ss/common/ui-main-page": [
-                "libs/common/ui-main-page/src/index.ts"
-            ],
+            "@ss/common/ui-main-page": ["libs/common/ui-main-page/src/index.ts"],
             "@ss/common/ui-pagination": [
                 "libs/common/ui-pagination/src/index.ts"
             ],

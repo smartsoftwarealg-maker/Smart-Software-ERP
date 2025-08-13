@@ -2,10 +2,8 @@ import { Component, input, OnInit } from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import { ActivatedRoute, Router, RouterOutlet } from '@angular/router';
 import { UntypedFormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { CCGroup, Lookup } from '@ss/common/api-lookup';
+import { Lookup } from '@ss/common/api-lookup';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import {Observable} from 'rxjs';
-import {tap} from 'rxjs/operators';
 import { LoginService, MaterialModule } from '@ss/common/api-common';
 import {MatDialog} from '@angular/material/dialog';
 import { InvoiceLinesService, InvoiceService } from '@ss/sales/api-invoice';
@@ -15,8 +13,6 @@ import {
     DOC_QUOTATION,
     DOC_SALES_ORDER
 } from '@ss/logistics/api-transaction';
-import { MatCard, MatCardContent } from '@angular/material/card';
-import { NgIf } from '@angular/common';
 import { MatFormField, MatLabel, MatError } from '@angular/material/form-field';
 import { TranslateDirective } from '@ss/common/ui-lang';
 import { MatInput } from '@angular/material/input';
@@ -30,7 +26,7 @@ import { CdkTextareaAutosize } from '@angular/cdk/text-field';
     templateUrl: './invoice-detail.component.html',
     styleUrls: ['../../../../../common/assets/src/assets/transac-detail.scss'],
     standalone: true,
-    imports: [MaterialModule, NgIf, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, MatError, DatePickerComponent, UiAutoCompleteComponent, MatTabGroup, MatTab, MatTabLabel, CdkTextareaAutosize, RouterOutlet]
+    imports: [MaterialModule, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, MatError, DatePickerComponent, UiAutoCompleteComponent, MatTabGroup, MatTab, MatTabLabel, CdkTextareaAutosize, RouterOutlet]
 })
 export class InvoiceDetailComponent extends BaseTransactionDetailComponent implements OnInit {
     showCurrency = input(false);

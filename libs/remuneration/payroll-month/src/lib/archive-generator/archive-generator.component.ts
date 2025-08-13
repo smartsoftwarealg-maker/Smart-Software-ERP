@@ -6,7 +6,6 @@ import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {LanguageService} from '@ss/common/api-common';
 import {ArchiveGeneratorService} from '../archive-generator.service';
-import { NgIf } from '@angular/common';
 import { MatCard, MatCardContent } from '@angular/material/card';
 import { MatFormField, MatLabel } from '@angular/material/form-field';
 import { TranslateDirective } from '@ss/common/ui-lang';
@@ -20,9 +19,11 @@ import { TranslatePipe } from '@ss/common/ui-lang';
     templateUrl: './archive-generator.component.html',
     styleUrls: ['./archive-generator.component.scss'],
     standalone: true,
-    imports: [NgIf, MatCard, MatCardContent, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, MatButton, MatProgressBar, TranslatePipe]
+    imports: [MatCard, MatCardContent, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, MatButton, MatProgressBar, TranslatePipe]
 })
 export class ArchiveGeneratorComponent implements OnInit {
+    private TITLE = 'REMUN_ARCHIVE_GENERATOR';
+
     form: UntypedFormGroup = null;
     processing = false;
 
@@ -40,6 +41,7 @@ export class ArchiveGeneratorComponent implements OnInit {
 
     ngOnInit(): void {
         this.shellSrv.setGoBackPath('..', this.route);
+        this.shellSrv.setTitle(this.langSrv.translate(this.TITLE));
         this.selectorSrv
             .maxMonth()
             .subscribe(res => {
@@ -47,12 +49,12 @@ export class ArchiveGeneratorComponent implements OnInit {
                     .group({
                         year: [+(res.month / 100).toFixed(0), Validators.required],
                         month: [+(res.month % 100).toFixed(0), Validators.required],
-                    })
-            })
+                    });
+            });
     }
 
     cancel() {
-        this.router.navigate(['../'], {relativeTo: this.activatedRoute});
+        this.router.navigate(['../'], {relativeTo: this.activatedRoute}).then();
     }
 
     generate() {

@@ -23,7 +23,7 @@ import { MaterialModule } from '@ss/common/api-common';
     templateUrl: './generation-accounts-detail.component.html',
     styleUrls: ['./generation-accounts-detail.component.scss'],
     standalone: true,
-    imports: [MaterialModule, MatCard, MatCardContent, NgIf, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, MatError, UiAutoCompleteComponent]
+    imports: [MaterialModule, MatCard, MatCardContent, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, MatError, UiAutoCompleteComponent]
 })
 export class GenerationAccountsDetailComponent extends BaseEntityDetailComponent<GenerationAccount> {
     private accountSrv = inject(AccountService);

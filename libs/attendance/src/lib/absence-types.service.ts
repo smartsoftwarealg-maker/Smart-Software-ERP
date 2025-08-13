@@ -4,7 +4,7 @@ import {HttpService} from '@ss/common/api-common';
 import {ABSENCE_TYPE_URL, AbsenceType} from './attendance-api';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class AbsenceTypesService extends BaseEntityService<AbsenceType> {
 
