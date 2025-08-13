@@ -82,7 +82,6 @@ export interface Article {
     packagingDescription:string;
     packaging?:number;
     productType?: number;
-    info?: string;
 }
 
 export interface StockInfo {
