@@ -175,12 +175,12 @@ export const hrLookupNavTree: SideNavNode = {
         },
         {
             name: 'PAYROLL_LANGUAGE_LEVELS',
-            icon: 'fas fa-signal',
+            icon: 'fa-solid fa-stairs',
             route: ABS_HR_LANGUAGE_LEVELS_URL,
             accessRights: 'LanguageLevel'
         },
         {
-            name: 'PAYROLL_LANGUAGE',
+            name: 'PAYROLL_LANGUAGES',
             icon: 'fas fa-language',
             route: ABS_HR_LANGUAGES_URL,
             accessRights: 'Language'
@@ -192,8 +192,8 @@ export const hrLookupNavTree: SideNavNode = {
             accessRights: 'TRNSubject'
         },
         {
-            name: 'PAYROLL_WORKSHOP',
-            icon: 'fas fa-tools',
+            name: 'PAYROLL_WORKSHOPS',
+            icon: 'fa-solid fa-location-dot',
             route: ABS_HR_WORKSHOP_URL,
             accessRights: 'Workshop'
         },

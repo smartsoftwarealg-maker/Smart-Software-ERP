@@ -4,20 +4,16 @@ import {logisticsAdminNavTree} from '../app/logistics-admin/side-nav-tree';
 import {purchasesNavTree} from '../app/purchases/side-nav-tree';
 import {stockNavTree} from '../app/stock/side-nav-tree';
 import {salesNavTree} from '../app/sales/side-nav-tree';
-import {financeNavTree} from '../app/finance/side-nav-tree';
 import {hrNavTree} from '../app/hr/side-nav-tree';
 import {payrollNavTree} from '../app/payroll/side-nav-tree';
-import {webArchNavTree} from '../app/web-arch/side-nav-tree';
 import {accountingNavTree} from '../app/accounting/side-nav-tree';
 import {assetsNavTree} from '../app/assets-app/side-nav-tree';
 import {treasuryNavTree} from '../app/treasury/side-nav-tree';
 import {dashboardNavTree} from '../app/dashboard/side-nav-tree';
-import {scheduledSalesNavTree} from '../app/scheduled-sales/side-nav-tree';
 import {missionsNavTree} from '../app/missions/side-nav-tree';
 import {contractsNavTree} from '../app/contracts/side-nav-tree';
 import {Routes} from '@angular/router';
 import {CanActivateService, INDEX_PAGE_URL} from '@ss/common/api-common';
-import {MainPageComponent} from '@ss/common/ui-main-page';
 import {
     ACCOUNTING_APP_URL,
     ADMINISTRATION_APP_URL,
@@ -30,39 +26,24 @@ import {
     PAYROLL_APP_URL,
     PURCHASES_APP_URL,
     SALES_APP_URL,
-    SCHEDULED_SALES_APP_URL,
     STOCK_APP_URL,
     TREASURY_APP_URL,
     WEBARCH_APP_URL,
     MISSIONS_APP_URL,
     CONTRACTS_APP_URL,
-    SHOPPING_CART_APP_URL,
-    FOOD_CART_APP_URL,
     WORK_FLOW_APP_URL,
-    BUDGET_APP_URL,
-    LTM_APP_URL,
-    FURNITURE_APP_URL,
     ATTENDANCE_APP_URL,
     ARCH_VIEWER_URL,
-    CMMS_APP_URL,
-    PARK_APP_URL,
-    SERVICE_SALES, COSTING_APP_URL, GICA_APP_URL, SOCIAL_APP_URL, PRODUCTION_APP_URL
+    PRODUCTION_APP_URL
 } from '../app/common';
 import {hrLookupNavTree} from '../app/hr-lookups/side-nav-tree';
-import {foodNavTree} from '../app/food/side-nav-tree';
 import {workflowNavTree} from '../app/workflow/side-nav-tree';
-import {budgetNavTree} from '../app/budget/side-nav-tree';
-import {ltmNavTree} from '../app/ltm/side-nav-tree';
-import {furnitureNavTree} from '../app/furniture/side-nav-tree';
-import {attendanceNavTree} from '../app/attendance/side-nav-tree';
 import { aaNavTree } from '../app/archive-viewer/side-nav-tree';
-import { parkNavTree } from '../app/park/side-nav-tree';
-import { cmmsNavTree } from '../app/cmms/side-nav-tree';
 import { ssalesNavTree } from '../app/service-sales/side-nav-tree';
-import { costingNavTree } from '../app/costing/side-nav-tree';
-import { gicaNavTree } from '../app/gica/side-nav-tree';
-import { socialNavTree } from '../app/social/side-nav-tree';
 import { productionNavTree } from '../app/production/side-nav-tree';
+import {attendanceNavTree} from '../app/attendance/side-nav-tree';
+import {MainPageComponent} from '@ss/common/ui-main-page';
+
 
 export const environment = {
     production: true,
@@ -80,6 +61,7 @@ export const navBar = [
     hrLookupNavTree,
     hrNavTree,
     payrollNavTree,
+    attendanceNavTree,
     missionsNavTree,
     accountingNavTree,
     assetsNavTree,
@@ -92,6 +74,7 @@ export const navBar = [
 
 export const langAssets = [
     ['assets/locale/', ''],
+    ['assets/locale/att_', 'ATT_'],
     ['assets/locale/administration_', 'ADMINISTRATION_'],
     ['assets/locale/sch_', 'SCH_'],
     ['assets/locale/stock_', 'STOCK_'],
@@ -136,6 +119,10 @@ export const appRoutes: Routes =  [
     {
         path: ACCOUNTING_APP_URL,
         loadChildren: () => import('../app/accounting/accounting.module').then(m => m.AccountingModule)
+    },
+    {
+        path: ATTENDANCE_APP_URL,
+        loadChildren: () => import('../app/attendance/attendance.module').then(m => m.AttendanceModule)
     },
     {
         path: TREASURY_APP_URL,
@@ -208,4 +195,4 @@ export const appRoutes: Routes =  [
 export const APPLICATION_LIST = [
     'ACCOUNTING', 'ADMINISTRATION', 'ASSETS', 'DASHBOARD-APP', 'FINANCE', 'HRMASTER',
     'STOCK', 'LOGISTICS', 'LOGISTICS-ADMINISTRATION', 'ORGANIZATION', 'PAYMENTS',
-    'PAYROLL', 'PURCHASES', 'SALES', 'TREASURY',     'WORKFLOW', ];
+    'PAYROLL', 'PURCHASES', 'SALES', 'TREASURY',     'WORKFLOW', 'ATTENDANCE'];

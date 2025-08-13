@@ -49,6 +49,7 @@ export interface Article {
     id: number;
     reference: string;
     description2: string;
+    info: string;
     mark: number;
     klass: number;
     vat: number;
