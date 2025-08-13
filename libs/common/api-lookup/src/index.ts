@@ -66,4 +66,5 @@ export * from './lib/delivery-time.service';
 export * from './lib/post-elements.service';
 export * from './lib/lookups-api';
 export * from './lib/store.service';
-export * from './lib/trn-subjects.service'
+export * from './lib/trn-subjects.service';
+export * from './lib/holiday-type.service';

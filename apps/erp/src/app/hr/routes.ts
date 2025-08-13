@@ -29,7 +29,7 @@ import {
     HR_PHYSICIAN_URL,
     HR_SPECIALTY_URL,
     HR_CAREER_MOTIVE_URL, HR_ID_UPDATE_URL, docInfoRoutes, HR_CRITERIA_URL, HR_GRADING_URL,
-    HR_LANGUAGE_LEVELS_URL, HR_LANGUAGES_URL, HR_TRN_SUBJECTS_URL, HR_WORKSHOP_URL
+    HR_LANGUAGE_LEVELS_URL, HR_LANGUAGES_URL, HR_TRN_SUBJECTS_URL, HR_WORKSHOP_URL, HR_VACATION_TYPES_URL
 } from '../common';
 import {
     ABS_INDEX_URL,
@@ -186,6 +186,12 @@ import { HrCriteriaDetailComponent, HrCriteriaListComponent } from '@ss/payroll/
 import { inject } from '@angular/core';
 import { HrCriterionService } from '@ss/payroll/hr-cirteria';
 import { HrGradingsComponent } from '@ss/payroll/hr-grade';
+import {
+    VacationTypesListComponent
+} from '../../../../../libs/payroll/ui-employee/src/lib/vacation-types/list/vacation-types-list.component';
+import {
+    VacationTypesDetailComponent
+} from '../../../../../libs/payroll/ui-employee/src/lib/vacation-types/detail/vacation-types-detail.component';
 
 export const hrCriteriaGuard: CanActivateFn = () => inject(HrCriterionService).canActivate();
 
@@ -1007,6 +1013,23 @@ export const hrRoutes: Routes = [
             {
                 path: ':id',
                 component: WorkshopDetailComponent,
+                canActivate: [loginGuard],
+                canDeactivate: [CanDeactivateService]
+            },
+            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
+        ]
+    },
+    {
+        path: HR_VACATION_TYPES_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: VacationTypesListComponent,
+                canActivate: [loginGuard]
+            },
+            {
+                path: ':id',
+                component: VacationTypesDetailComponent,
                 canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService]
             },

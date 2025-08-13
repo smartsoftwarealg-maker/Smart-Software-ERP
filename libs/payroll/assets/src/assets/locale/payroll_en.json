@@ -242,5 +242,7 @@
     "LANGUAGE_LEVELS":       "Language levels",
     "EDIT_LANGUAGE_LEVELS":  "Edit language levels",
     "TRN_SUBJECTS":          "Training subjects",
-    "EDIT_TRN_SUBJECTS":     "Edit training subjects"
+    "EDIT_TRN_SUBJECTS":     "Edit training subjects",
+    "VACATION_TYPES":        "Vacation Types",
+    "EDIT_VACATION_TYPES":   "Edit Vacation Types"
 }
