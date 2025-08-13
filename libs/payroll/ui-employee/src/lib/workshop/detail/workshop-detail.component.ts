@@ -50,7 +50,7 @@ export class WorkshopDetailComponent extends BaseEntityDetailComponent<Lookup> {
             route,
             formBuilder,
             confirmationSrv,
-            'PAYROLL_WORKSHOP',
+            'PAYROLL_WORKSHOPS',
         );
     }
 

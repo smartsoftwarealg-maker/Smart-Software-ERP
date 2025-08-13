@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy, inject } from '@angular/core';
 import { BadgeButton, KeepOnToolbar, ShellService } from '@ss/common/ui-shell';
 import { Router } from '@angular/router';
 import { LanguageService, MainPageService, SideNavNode } from '@ss/common/api-common';
-import { CommonModule } from "@angular/common";
+import { CommonModule } from '@angular/common';
 
 import { WorkflowInboxService } from '@ss/workflow';
 import { BadgeButtonService } from '@ss/common/ui-shell';
