@@ -23,7 +23,7 @@ import { DefaultReportService } from '@ss/common/ui-default-report-component';
 import { PaginatorPersistenceService } from '@ss/common/api-common';
 
 @Component({
-    selector: 'ss-trn-subjects-list',
+    selector: 'ss-workshop-list',
     templateUrl: './workshop-list.component.html',
     styleUrls: ['./workshop-list.component.scss'],
     standalone: true,

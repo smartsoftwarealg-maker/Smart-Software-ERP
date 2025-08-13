@@ -18,7 +18,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 
 @Component({
-    selector: 'ss-trn-subjects-detail',
+    selector: 'ss-workshop-detail',
     templateUrl: './workshop-detail.component.html',
     styleUrls: ['./workshop-detail.component.scss'],
     standalone: true,
