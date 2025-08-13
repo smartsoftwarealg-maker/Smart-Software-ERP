@@ -104,7 +104,8 @@ export class ArticleDetailComponent extends BaseEntityDetailComponent<Article> i
             vat2:         [a.vat2],
             blocked:      [a.blocked],
             articleType:  [a.articleType],
-            subClass:     [a.subClass]
+            subClass:     [a.subClass],
+            info:         [a.info],
         });
     }
 
