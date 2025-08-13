@@ -8,6 +8,6 @@ import {HttpService} from '@ss/common/api-common';
 })
 export class HolidayTypeService extends BaseEntityService<Lookup> {
     constructor(protected override httpSrv: HttpService) {
-        super(httpSrv, '/lookups/vacation_types');
+        super(httpSrv, '/lookups/vacation-types');
     }
 }

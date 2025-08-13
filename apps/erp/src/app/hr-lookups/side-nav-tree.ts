@@ -18,11 +18,11 @@ import {
     ABS_HR_NATIONALITIES_URL,
     ABS_HR_POSTS_URL,
     ABS_HR_SERVICES_URL,
-    ABS_HR_SUSPENSION_REASON_URL, ABS_HR_TRN_SUBJECTS_URL, ABS_HR_WORKSHOP_URL,
+    ABS_HR_SUSPENSION_REASON_URL, ABS_HR_TRN_SUBJECTS_URL, ABS_HR_VACATION_TYPE_URL, ABS_HR_WORKSHOP_URL,
     ABS_PHYSICIAN_SPECIALTIES_URL,
     ABS_PHYSICIANS_URL,
     ABS_PROFESSIONAL_FAULTS_URL,
-    ABS_PUNISHMENT_TYPE_URL
+    ABS_PUNISHMENT_TYPE_URL, HR_VACATION_TYPES_URL
 } from '../common';
 
 export const hrLookupNavTree: SideNavNode = {
@@ -197,6 +197,12 @@ export const hrLookupNavTree: SideNavNode = {
             route: ABS_HR_WORKSHOP_URL,
             accessRights: 'Workshop'
         },
+        {
+            name: 'PAYROLL_VACATION_TYPES',
+            icon: 'fa-brands fa-elementor',
+            route: ABS_HR_VACATION_TYPE_URL,
+            accessRights: 'VacationTypes'
+        }
     ],
     accessRights: 'HR_TABLES'
 };

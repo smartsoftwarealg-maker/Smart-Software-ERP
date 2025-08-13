@@ -241,5 +241,7 @@
     "LANGUAGE_LEVELS":       "مستويات اللغة",
     "EDIT_LANGUAGE_LEVELS":  "تعديل مستويات اللغة",
     "TRN_SUBJECTS":          "مواضيع التدريب",
-    "EDIT_TRN_SUBJECTS":     "تحرير مواضيع التدريب"
+    "EDIT_TRN_SUBJECTS":     "تحرير مواضيع التدريب",
+    "VACATION_TYPES":        "أنواع العطلات",
+    "EDIT_VACATION_TYPES":   "تعديل أنواع العطلات"
 }

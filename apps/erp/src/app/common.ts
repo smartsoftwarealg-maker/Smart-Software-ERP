@@ -270,6 +270,7 @@ export const HR_LANGUAGE_LEVELS_URL = 'language-levels';
 export const HR_LANGUAGES_URL = 'languages';
 export const HR_TRN_SUBJECTS_URL = 'training-subject';
 export const HR_WORKSHOP_URL = 'workshop';
+export const HR_VACATION_TYPES_URL = 'vacation-types';
 
 
 
@@ -790,6 +791,7 @@ export const ABS_HR_LANGUAGE_LEVELS_URL    = '/' + [MAIN_PAGE_URL, HR_APP_URL, H
 export const ABS_HR_LANGUAGES_URL    = '/' + [MAIN_PAGE_URL, HR_APP_URL, HR_LANGUAGES_URL].join('/');
 export const ABS_HR_TRN_SUBJECTS_URL    = '/' + [MAIN_PAGE_URL, HR_APP_URL, HR_TRN_SUBJECTS_URL].join('/');
 export const ABS_HR_WORKSHOP_URL    = '/' + [MAIN_PAGE_URL, HR_APP_URL, HR_WORKSHOP_URL].join('/');
+export const ABS_HR_VACATION_TYPE_URL    = '/' + [MAIN_PAGE_URL, HR_APP_URL, HR_VACATION_TYPES_URL].join('/');
 
 
 // payroll

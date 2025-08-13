@@ -59,7 +59,7 @@ export class VacationPlanningDetailDetailComponent extends BaseEntityDetailCompo
 
     override preload(): Observable<any> {
         return zip(this.route.parent.params,
-            this.lookupsSrv.getTable('/lookups/vacation_types', 'vacation_types'))
+            this.lookupsSrv.getTable('/lookups/vacation_types', 'vacation-types'))
             .pipe(tap(res => {
                 this.planningSrv.setParentId(+res[0]['id']);
                 this.vacationTypes = res[1];
