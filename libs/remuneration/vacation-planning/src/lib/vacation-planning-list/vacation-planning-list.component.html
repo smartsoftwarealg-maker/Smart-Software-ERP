@@ -2,9 +2,11 @@
     <mat-form-field class="default-25  small-50 year">
         <mat-label translate>PAYROLL_YEAR</mat-label>
         <mat-select (selectionChange)="onPeriod($event)" [value]="defYear" [formControl]="period">
-            <mat-option *ngFor="let p of periods" [value]="p">
-                {{ (p - 1) + ' - ' + p }}
-            </mat-option>
+            @for (p of periods; track p) {
+                <mat-option [value]="p">
+                    {{ (p - 1) + ' - ' + p }}
+                </mat-option>
+            }
         </mat-select>
     </mat-form-field>
 
@@ -27,28 +29,28 @@
         <ng-container matColumnDef="employee">
             <mat-header-cell *matHeaderCellDef translate>PAYROLL_ID</mat-header-cell>
             <mat-cell *matCellDef="let e">
-                {{e.employee}}
+                {{ e.employee }}
             </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="lastName">
             <mat-header-cell *matHeaderCellDef translate>COMMON_LAST_NAME</mat-header-cell>
             <mat-cell *matCellDef="let e">
-                {{e.lastName}}
+                {{ e.lastName }}
             </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="firstName">
             <mat-header-cell *matHeaderCellDef translate>COMMON_FIRST_NAME</mat-header-cell>
             <mat-cell *matCellDef="let e">
-                {{e.firstName}}
+                {{ e.firstName }}
             </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="acquired">
             <mat-header-cell *matHeaderCellDef translate>REMUN_ACQUIRED</mat-header-cell>
             <mat-cell *matCellDef="let e">
-                {{e.acquired | number: '1.2-2' }}
+                {{ e.acquired | number: '1.2-2' }}
             </mat-cell>
         </ng-container>
 
