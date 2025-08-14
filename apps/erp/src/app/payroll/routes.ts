@@ -53,7 +53,7 @@ import {InputFilterDetailComponent, InputFilterListComponent} from '@ss/remunera
 import {ExcelInjectionComponent} from '@ss/remuneration/excel-injection';
 import {
     VacationPlanningDetailComponent,
-    VacationPlanningDetailDetailComponent,
+    VacationPlanningDetailDetailComponent, VacationPlanningDetailListComponent,
     VacationPlanningListComponent
 } from '@ss/remuneration/vacation-planning';
 import {EdoComponent} from '@ss/remuneration/edo';
@@ -242,22 +242,29 @@ export const mainRoutes: Routes = [
             },
             {
                 path: ':id',
+                component: VacationPlanningDetailComponent,
+                canActivate: [loginGuard],
+                canDeactivate: [CanDeactivateService],
                 children: [
+                    { path: '', redirectTo: 'detail', pathMatch: 'full' },
                     {
                         path: 'detail',
                         children: [
-                            { path: ':id', component: VacationPlanningDetailDetailComponent, canActivate: [loginGuard], canDeactivate: [CanDeactivateService] }
-                        ]
+                            {
+                                path: '',
+                                component: VacationPlanningDetailListComponent,
+                                pathMatch: 'full',
+                            },
+                            {
+                                path: ':id',
+                                component: VacationPlanningDetailDetailComponent,
+                            },
+                        ],
                     },
-                    {
-                        path: '',
-                        component: VacationPlanningDetailComponent,
-                        canActivate: [loginGuard],
-                        canDeactivate: [CanDeactivateService]
-                    }
-                ]
-            }
-        ]
+                ],
+            },
+            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' },
+        ],
     },
     {
         path: PAY_FORMULAS_URL,

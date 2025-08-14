@@ -25,7 +25,7 @@ import { TranslatePipe } from '@ss/common/ui-lang';
     templateUrl: './vacation-planning-list.component.html',
     styleUrls: ['./vacation-planning-list.component.scss'],
     standalone: true,
-    imports: [MatFormField, MatLabel, TranslateDirective, MatSelect, FormsModule, ReactiveFormsModule, NgFor, MatOption, MatInput, MatButton, MatTooltip, MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, PaginationComponent, DecimalPipe, TranslatePipe]
+    imports: [MatFormField, MatLabel, TranslateDirective, MatSelect, FormsModule, ReactiveFormsModule, MatOption, MatInput, MatButton, MatTooltip, MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, PaginationComponent, DecimalPipe, TranslatePipe]
 })
 export class VacationPlanningListComponent extends BaseEntityListComponent<VacationPlanning> {
     private readonly THIS_YEAR = new Date().getFullYear();

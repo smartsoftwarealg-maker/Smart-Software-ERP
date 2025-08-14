@@ -14,6 +14,7 @@ export class VacationPlanning {
 
 export class VacationPlanningDetail {
     id: number;
+    parentId:number;
     fromDate?: Date;
     toDate?: Date;
     address?: string;
