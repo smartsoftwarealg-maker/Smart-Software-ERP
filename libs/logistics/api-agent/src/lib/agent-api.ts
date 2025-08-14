@@ -61,7 +61,6 @@ export interface Agent {
      */
     license?: string // FIXME:: remove this field
     typeDescription?: string;
-    purchaseAccount?:number;
 }
 
 export interface AgentCenter {
