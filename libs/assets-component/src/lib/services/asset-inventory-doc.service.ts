@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {BaseEntityService} from '@ss/common/api-base-entity';
 import { AssetInventoryDoc, INVENTORY_DOC_URL } from '../assets-api';
 import {HttpService} from '@ss/common/api-common';
-import {Observable} from "rxjs";
+import {Observable} from 'rxjs';
 
 @Injectable({
     providedIn: 'root'
@@ -15,5 +15,9 @@ export class AssetInventoryDocService extends BaseEntityService<AssetInventoryDo
 
     generateLines(documentId: number): Observable<{ count: number}> {
         return this.httpSrv.post(`/inventories/${documentId}/generate`);
+    }
+
+    workbook(id: number): Observable<Blob> {
+        return this.httpSrv.getBlob(`/inventories/workbook/${id}`);
     }
 }
