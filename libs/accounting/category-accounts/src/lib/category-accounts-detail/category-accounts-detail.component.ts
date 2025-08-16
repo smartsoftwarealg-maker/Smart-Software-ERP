@@ -17,7 +17,7 @@ import { MatFormField, MatLabel } from '@angular/material/form-field';
 import { MatInput } from '@angular/material/input';
 import {SalesCategory} from "../category-accounts.api";
 import {CategoryAccountsService} from "../category-accounts.service";
-import {AccountAutocompleteModel, AccountService} from "@ss/accounting/api-accounts";
+import {AccountAutocompleteModel, AccountService, AccountStringAutocompleteModel} from "@ss/accounting/api-accounts";
 import {DefaultAutoCompleteModel, UiAutoCompleteComponent} from "@ss/common/ui-auto-complete";
 
 @Component({
@@ -58,8 +58,8 @@ export class CategoryAccountsDetailComponent extends BaseEntityDetailComponent<S
     }
     private accountSrv = inject(AccountService);
     //accountLookup = new AccountAutocompleteModel(this.accountSrv);
-    accountLookup1 = new DefaultAutoCompleteModel(this.accountSrv, 'id', 'description');
-    accountLookup2 = new DefaultAutoCompleteModel(this.accountSrv, 'id', 'description');
+    accountLookup1 = new AccountStringAutocompleteModel(this.accountSrv);
+    accountLookup2 = new AccountStringAutocompleteModel(this.accountSrv);
 
     public override setupForm(e: SalesCategory): UntypedFormGroup {
         return this.formBuilder.group({

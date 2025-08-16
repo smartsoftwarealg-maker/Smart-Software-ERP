@@ -49,7 +49,7 @@ export class AssetsInventoryDocListComponent extends BaseEntityListComponent<Ass
     summaryData: CountSummary[] = [];
     summaryColumns = ['total', 'counted', 'missing', 'unidentified'];
 
-    constructor(public listSrv: AssetInventoryDocService,
+    constructor(public override entitySrv: AssetInventoryDocService,
                 public override shellSrv: ShellService,
                 public override snackBarSrv: SnackBarService,
                 public override route: ActivatedRoute,
@@ -57,7 +57,7 @@ export class AssetsInventoryDocListComponent extends BaseEntityListComponent<Ass
                 public override defReportSrv: DefaultReportService,
                 public override confirmationSrv: ConfirmationDialogService,
                 public override pagPersistSrv: PaginatorPersistenceService) {
-        super(listSrv,
+        super(entitySrv,
             shellSrv,
             snackBarSrv,
             route,
@@ -78,5 +78,19 @@ export class AssetsInventoryDocListComponent extends BaseEntityListComponent<Ass
         this.#summarySrv
             .get(row.id)
             .subscribe(data => this.summaryData = [data]);
+    }
+
+    override excel() {
+        this.entitySrv
+            .workbook(this.selected||0)
+            .subscribe(blob => {
+                if (blob && blob.size > 100) {
+                    const link = document.createElement('a');
+                    link.href = window.URL.createObjectURL(blob);
+                    link.download = this.entitySrv.constructor.name + '.xlsx';
+                    link.click();
+                    setTimeout(() => window.URL.revokeObjectURL(link.href), 5000);
+                }
+            });
     }
 }

@@ -302,7 +302,6 @@ export class AgentDetailComponent
             tin: [a.tin],
             department: [a.department],
             creationTime: { value: a.creationTime, disabled: true },
-            purchaseAccount: [a.purchaseAccount],
         });
     }
 
