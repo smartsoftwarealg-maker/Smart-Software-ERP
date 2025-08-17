@@ -25,7 +25,7 @@ import {
     ABS_STOCK_REPORT_RIGHT_URL,
     ABS_REFERENCE_CORRECTION_URL,
     ABS_STOCK_RESERVATION_URL,
-    ABS_STOCK_ARTICLE_TYPES_URL, ABS_STOCK_MARKS_URL, ABS_STOCK_SUBCLASSES_URL
+    ABS_STOCK_ARTICLE_TYPES_URL, ABS_STOCK_MARKS_URL, ABS_STOCK_SUBCLASSES_URL, ABS_INVENTORY_DOCUMENT_RECALCULATION_URL
 } from '../common';
 import {SideNavNode} from '@ss/common/api-common';
 
@@ -188,6 +188,12 @@ export const stockNavTree: SideNavNode = {
             name: 'STOCK_PRICE_RECALCULATION',
             icon: 'fa-solid fa-calculator',
             route: ABS_INVENTORY_PRICE_RECALCULATION_URL,
+            accessRights: 'PriceCalc'
+        },
+        {
+            name: 'STOCK_DOCUMENT_RECALCULATION',
+            icon: 'fa-solid fa-watch-calculator',
+            route: ABS_INVENTORY_DOCUMENT_RECALCULATION_URL,
             accessRights: 'PriceCalc'
         },
         {

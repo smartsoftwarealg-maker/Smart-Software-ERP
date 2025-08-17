@@ -25,7 +25,11 @@ import {
     STOCK_PRICE_RECALCULATION_URL,
     STOCK_CONSUMPTION_CANCELLATION_URL,
     STOCK_PARTS_REQUEST_URL,
-    ADMIN_REPORT_RIGHTS_URL, REFERENCE_CORRECTION_URL, STOCK_RESERVATIONS_URL, STOCK_ARTICLE_TYPE_URL
+    ADMIN_REPORT_RIGHTS_URL,
+    REFERENCE_CORRECTION_URL,
+    STOCK_RESERVATIONS_URL,
+    STOCK_ARTICLE_TYPE_URL,
+    STOCK_DOCUMENT_RECALCULATION_URL
 } from '../common';
 import {
     ABS_INDEX_URL,
@@ -71,7 +75,12 @@ import {
     ConsumptionLinesDetailComponent,
     ConsumptionLinesListComponent
 } from '@ss/stock/ui-consumption-lines';
-import {InventoryDetailComponent, InventoryListComponent, PriceRecalculationComponent} from '@ss/stock/ui-inventory';
+import {
+    DocumentRecalculationComponent,
+    InventoryDetailComponent,
+    InventoryListComponent,
+    PriceRecalculationComponent
+} from '@ss/stock/ui-inventory';
 import { InventoryLinesDetailComponent, InventoryLinesListComponent } from '@ss/stock/ui-inventory-lines';
 import { ReportViewComponent } from '@ss/common/ui-report-param';
 import {ArticleStoreAssignmentComponent} from '@ss/stock/ui-article-store-assignment';
@@ -702,6 +711,7 @@ export const mainRoutes: Routes = [
     },
 
     { path: STOCK_PRICE_RECALCULATION_URL, component: PriceRecalculationComponent, canActivate: [loginGuard]},
+    { path: STOCK_DOCUMENT_RECALCULATION_URL, component: DocumentRecalculationComponent, canActivate: [loginGuard]},
 
     { path: '', redirectTo: ABS_INDEX_URL, pathMatch: 'full' },
     { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' }

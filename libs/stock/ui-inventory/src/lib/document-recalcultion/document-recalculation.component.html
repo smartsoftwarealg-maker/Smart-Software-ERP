@@ -1,0 +1,76 @@
+<mat-card>
+    <mat-card-content>
+        @if (form !== null) {
+            <form [formGroup]="form">
+                <mat-form-field id="eval_price" class="default-100">
+                    <mat-label translate>LOGISTICS_EVAL_PRICE</mat-label>
+                    <mat-select formControlName="document" required>
+                        @for (f of evalDocumentOptions; track f.id) {
+                            <mat-option [value]="f.id" translate>{{ f.name }}</mat-option>
+                        }
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-form-field class="default-100">
+                    <mat-label translate>COMMON_FROM</mat-label>
+                    <ss-date-picker formControlName="inventory_date"></ss-date-picker>
+                </mat-form-field>
+
+                <div class="btn_div default-100">
+                    <button mat-raised-button
+                            color="primary"
+                            type="button"
+                            [disabled]="processing"
+                            (click)="recalculate()">
+                        {{ 'STOCK_RECALCULATE_PRICES' | translate }}
+                    </button>
+                </div>
+            </form>
+        }
+    </mat-card-content>
+</mat-card>
+@if (data.length > 0) {
+    <div class="div_table">
+        <mat-table mat-table [dataSource]="data" class="main-table">
+
+            <ng-container matColumnDef="document">
+                <mat-header-cell *matHeaderCellDef translate>LOGISTICS_DOCUMENT</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{ e.document }}
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="number">
+                <mat-header-cell *matHeaderCellDef translate>COMMON_NUMBER</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{ e.number }}
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="reference">
+                <mat-header-cell *matHeaderCellDef translate>COMMON_REFERENCE</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{ e.reference }}
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="date">
+                <mat-header-cell *matHeaderCellDef translate>COMMON_DATE</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{ e.date | date: "dd-MM-yyyy" }}
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="description">
+                <mat-header-cell *matHeaderCellDef translate>ADMINISTRATION_DESCRIPTION</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{ e.description }}
+                </mat-cell>
+            </ng-container>
+
+            <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+            <mat-row class="selectable" [class.selected]="row.reference == selected?.reference" (click)="select(row)"
+                     *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        </mat-table>
+    </div>
+}
