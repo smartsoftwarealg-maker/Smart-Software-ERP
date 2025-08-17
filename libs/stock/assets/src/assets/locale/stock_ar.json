@@ -56,7 +56,7 @@
     "RECEPTION_CANCELLATION": "إلغاء الاستقبال",
     "MIN_QTY":                "الحد الأدنى للكمية",
     "MAX_QTY":                "الكمية الأمنية",
-    "RECALCULATE_PRICES":     "أعد حساب الأسعار",
+    "RECALCULATE":     "أعد الحساب",
     "PRICE_RECALCULATION":    "حساب السعر",
     "CONSUMPTION_CANCELLATION": "إلغاء الاستهلاك",
     "PARTS_REQUEST":            "طلب قطع غيار",

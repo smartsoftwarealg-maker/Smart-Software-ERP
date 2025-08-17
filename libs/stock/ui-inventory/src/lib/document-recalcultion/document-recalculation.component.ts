@@ -1,43 +1,19 @@
-import { Component, inject, OnInit } from '@angular/core';
-import {
-    Currency,
-    CurrencyService,
-    LookupsService,
-    LotsService,
-    Lot,
-} from '@ss/common/api-lookup';
-import { DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
-import { LoginService, MaterialModule } from '@ss/common/api-common';
-import { ERR, Option, OptionService } from '@ss/logistics/ui-options';
+import {Component, inject, OnInit, signal} from '@angular/core';
+import { MaterialModule } from '@ss/common/api-common';
+import { OptionService } from '@ss/logistics/ui-options';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
-import { ActivatedRoute } from '@angular/router';
 import {
-    UntypedFormBuilder,
     Validators,
     FormsModule,
-    ReactiveFormsModule,
+    ReactiveFormsModule, FormBuilder, UntypedFormGroup,
 } from '@angular/forms';
-import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
-import { Observable } from 'rxjs';
-import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { MatCard, MatCardContent } from '@angular/material/card';
-import { DatePipe } from '@angular/common';
 import { MatFormField, MatLabel } from '@angular/material/form-field';
 import { TranslateDirective } from '@ss/common/ui-lang';
 import { MatSelect } from '@angular/material/select';
 import { MatOption } from '@angular/material/core';
 import { DatePickerComponent } from '@ss/common/ui-datepicker';
 import { MatButton } from '@angular/material/button';
-import {
-    MatTable,
-    MatColumnDef,
-    MatHeaderCellDef,
-    MatHeaderCell,
-    MatCellDef,
-    MatCell,
-    MatHeaderRow,
-    MatRow,
-} from '@angular/material/table';
 import { TranslatePipe } from '@ss/common/ui-lang';
 
 interface EvalDocument {
@@ -62,119 +38,54 @@ interface EvalDocument {
         MatOption,
         DatePickerComponent,
         MatButton,
-        MatTable,
-        MatColumnDef,
-        MatHeaderCell,
-        MatCell,
-        MatHeaderRow,
-        MatRow,
-        DatePipe,
         TranslatePipe,
         TranslateDirective,
-        MatHeaderCellDef,
-        MatCellDef,
     ],
 })
-export class DocumentRecalculationComponent
-    extends BaseEntityDetailComponent<Option>
-    implements OnInit
-{
-    private storeNameSrv = inject(LotsService);
+export class DocumentRecalculationComponent implements OnInit {
+    #optionSrv = inject(OptionService);
+    #shellSrv = inject(ShellService);
+    #formBuilder = inject(FormBuilder);
+    #snackBarSrv = inject(SnackBarService);
 
     evalDocumentOptions: EvalDocument[] = [
-        { id: 514, name: 'ASSET_RECEPTIONS' },
-        { id: 258, name: 'COMMON_SALES' },
+        { id: 514, name: 'PURCHASES' },
+        { id: 258, name: 'SALES' },
     ];
 
-    processing = false;
-    data: ERR[] = [];
-    selected: ERR = null;
-    displayedColumns = [
-        'document',
-        'number',
-        'date',
-        'reference',
-        'description',
-    ];
+    form: UntypedFormGroup | null = null;
 
-    currencies: Currency[] = [];
-    storeAutoCompleteModel: DefaultAutoCompleteModel<Lot> =
-        new DefaultAutoCompleteModel<Lot>(this.storeNameSrv);
+    processing = signal(false);
 
-    constructor(
-        private loginSrv: LoginService,
-        public optionSrv: OptionService,
-        public override shellSrv: ShellService,
-        public override snackBarSrv: SnackBarService,
-        public override route: ActivatedRoute,
-        public override formBuilder: UntypedFormBuilder,
-        public override confirmationSrv: ConfirmationDialogService,
-        public lookupsSrv: LookupsService,
-        private currencySrv: CurrencyService,
-    ) {
-        super(
-            optionSrv,
-            shellSrv,
-            snackBarSrv,
-            route,
-            formBuilder,
-            confirmationSrv,
-            'STOCK_DOCUMENT_RECALCULATION',
-        );
-    }
-
-    public override setupForm(a: Option) {
-        return this.formBuilder.group({
-            id: [this.loginSrv.appCtx.center],
-            eval_price: [{value: a.evalPrice || 1, disabled: true }],
-            document: [Validators.required],
-            mainStore: [a.mainStore],
-            generate_GL: [a.generate_GL],
-            inventory_date: [
-                new Date(new Date().getFullYear(), 0, 1),
-                Validators.required,
-            ],
-            defaultCurrency: [a.defaultCurrency, Validators.required],
+    ngOnInit() {
+        this.form = this.#formBuilder.group({
+            document:       [null, Validators.required],
+            inventory_date: [new Date(new Date().getFullYear(), 0, 1), Validators.required ],
         });
-    }
-
-    override loadEntity(id: number): Observable<Option> {
-        this.id = this.loginSrv.appCtx.center;
-        return super.loadEntity(this.id);
-    }
-
-    override ngOnInit() {
-        this.saveButton.visible = false;
-        super.ngOnInit();
-        this.currencySrv
-            .getList(0, 50)
-            .subscribe((res) => (this.currencies = res.body));
+        this.#shellSrv.setTitle('STOCK_DOCUMENT_RECALCULATION');
     }
 
     recalculate() {
-        this.shellSrv.setLoading(true);
+        this.#shellSrv.setLoading(true);
         const value = this.form.value;
-        this.processing = true;
-        this.optionSrv.recalculateDocument(value.inventory_date,value.document).subscribe({
-            next: (res) => {
-                this.data = res;
-                this.snackBarSrv.showSuccessMessage();
-                this.shellSrv.setLoading(false);
-                this.processing = false;
-            },
-            error: (err) => {
-                this.shellSrv.setLoading(false);
-                this.processing = false;
-                if (err.statusText?.length > 10) {
-                    throw err;
-                } else {
-                    this.snackBarSrv.showSuccessMessage();
-                }
-            },
-        });
-    }
-
-    select(item: ERR) {
-        this.selected = item;
+        if (value.document > 0) {
+            this.processing.set(true);
+            this.#optionSrv.recalculateDocument(value.inventory_date, value.document).subscribe({
+                next: () => {
+                    this.#snackBarSrv.showSuccessMessage();
+                    this.#shellSrv.setLoading(false);
+                    this.processing.set(false);
+                },
+                error: (err) => {
+                    this.#shellSrv.setLoading(false);
+                    this.processing.set(false);
+                    if (err.statusText?.length > 10) {
+                        throw err;
+                    } else {
+                        this.#snackBarSrv.showSuccessMessage();
+                    }
+                },
+            });
+        }
     }
 }
