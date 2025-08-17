@@ -94,9 +94,10 @@
     "LOT":                     "البضاعة",
     "COMPLIANT":               "موافق",
     "PRODUCTION_STORE":        "متجر الإنتاج",
-    "SOURCE_STORE":       " مصدرالمخزن ",
-    "SOURCE_ARTICLE":     "مصدرالمنتج ",
-    "DESTINATION_ARTICLE":"وجهة المنتج",
-    "DESTINATION_STORE":  "وجهة المخزن",
-    "SOURCE_REFERENCE": "مرجع الوجهة"
+    "SOURCE_STORE":            " مصدرالمخزن ",
+    "SOURCE_ARTICLE":          "مصدرالمنتج ",
+    "DESTINATION_ARTICLE":     "وجهة المنتج",
+    "DESTINATION_STORE":       "وجهة المخزن",
+    "SOURCE_REFERENCE":        "مرجع الوجهة",
+    "DOCUMENT_RECALCULATION":   "حساب المستند"
 }

@@ -153,7 +153,7 @@ export const BOM_URL = 'bom';
 export const ACC_RECORDS = 'accrecords';
 export const STOCK_PRICE_RECALCULATION_URL = 'price-recalculation';
 export const STOCK_ARTICLE_TYPE_URL = 'article-types';
-
+export const STOCK_DOCUMENT_RECALCULATION_URL = 'document-recalculation';
 
 // Budget
 export const BUDGET_BUDGET_URL   = 'budgets';
@@ -638,6 +638,7 @@ export const ABS_INVENTORY_PRICE_RECALCULATION_URL = '/' + [MAIN_PAGE_URL, STOCK
 export const ABS_STOCK_REPORT_RIGHT_URL = '/' + [MAIN_PAGE_URL, STOCK_APP_URL, ADMIN_REPORT_RIGHTS_URL].join('/');
 export const ABS_STOCK_ARTICLE_TYPES_URL = '/' + [MAIN_PAGE_URL, STOCK_APP_URL, STOCK_ARTICLE_TYPE_URL].join('/');
 export const ABS_STOCK_MARKS_URL = '/' + [MAIN_PAGE_URL, STOCK_APP_URL, COMMON_MARKS_URL].join('/');
+export const ABS_INVENTORY_DOCUMENT_RECALCULATION_URL = '/' + [MAIN_PAGE_URL, STOCK_APP_URL, STOCK_DOCUMENT_RECALCULATION_URL].join('/');
 
 // cspace
 export const ABS_CUSTOMER_PROFILE = '/' + [MAIN_PAGE_URL, SHOPPING_CART_APP_URL, COMMON_CUSTOMER_PROFILE_URL].join('/');

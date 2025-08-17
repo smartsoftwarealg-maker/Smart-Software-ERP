@@ -98,7 +98,6 @@ export class PriceRecalculationComponent extends BaseEntityDetailComponent<Optio
             generate_GL:      [a.generate_GL],
             inventory_date:   [new Date(new Date().getFullYear(), 0, 1), Validators.required],
             defaultCurrency:  [a.defaultCurrency, Validators.required],
-            recalcReceptions: [false]
         });
     }
 
@@ -120,7 +119,7 @@ export class PriceRecalculationComponent extends BaseEntityDetailComponent<Optio
         const value = this.form.value;
         this.processing = true;
         this.optionSrv
-            .recalculatePrice(value.inventory_date, value.recalcReceptions ? 'true' : 'false')
+            .recalculatePrice(value.inventory_date)
             .subscribe({
                 next: res => {
                     this.data = res;

@@ -95,9 +95,10 @@
     "LOT":                     "Lot",
     "COMPLIANT":               "Compliant",
     "PRODUCTION_STORE":        "Production store",
-    "SOURCE_STORE": "Source Store",
-    "SOURCE_ARTICLE": "Source Article",
-    "DESTINATION_STORE": "Destination Store",
-    "DESTINATION_ARTICLE": "Destination Article",
-    "SOURCE_REFERENCE": "Source Reference"
+    "SOURCE_STORE":            "Source Store",
+    "SOURCE_ARTICLE":          "Source Article",
+    "DESTINATION_STORE":       "Destination Store",
+    "DESTINATION_ARTICLE":     "Destination Article",
+    "SOURCE_REFERENCE":        "Source Reference",
+    "DOCUMENT_RECALCULATION":  "Document recalculation"
 }
