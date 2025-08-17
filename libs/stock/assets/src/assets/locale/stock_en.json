@@ -57,7 +57,7 @@
     "RECEPTION_CANCELLATION": "Reception cancellation",
     "MIN_QTY":                "Minimum qty",
     "MAX_QTY":                "Security qty",
-    "RECALCULATE_PRICES":     "Recalculate prices",
+    "RECALCULATE":     "Recalculate",
     "PRICE_RECALCULATION":    "Price recalculation",
     "CONSUMPTION_CANCELLATION": "Consumption cancellation",
     "PARTS_REQUEST":            "Parts request",

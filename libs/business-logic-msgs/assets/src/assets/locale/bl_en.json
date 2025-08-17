@@ -73,5 +73,6 @@
     "OBSOLETE_PROJECT":              "Project dates are incorrect or it is obsolete.",
     "LOCKED_ACCOUNT_NUMBER":         "The current account number is blocked until",
     "NO_QTY_SPECIFIED":              "No quantity specified for this production.",
-    "OBSOLETE_CONVENTION":           "There is no convention for this transporter. Please, create a new convention."
+    "OBSOLETE_CONVENTION":           "There is no convention for this transporter. Please, create a new convention.",
+    "ALREADY_RECORDED":              "This document is already recorded in the accounting system."
 }
