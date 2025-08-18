@@ -19,7 +19,7 @@ import { MatInput } from '@angular/material/input';
 import { MatCheckbox } from '@angular/material/checkbox';
 import { MatButton } from '@angular/material/button';
 import { MatTabGroup, MatTab, MatTabLabel } from '@angular/material/tabs';
-import { NgFor, NgStyle, DecimalPipe } from '@angular/common';
+import { NgStyle, DecimalPipe } from '@angular/common';
 import { MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from '@angular/material/table';
 import { PaginationComponent } from '@ss/common/ui-pagination';
 import { TranslatePipe } from '@ss/common/ui-lang';
@@ -42,7 +42,6 @@ import { TranslatePipe } from '@ss/common/ui-lang';
         MatTab,
         MatTabLabel,
         MatSelectionList,
-        NgFor,
         MatListOption,
         MatTable,
         NgStyle,
@@ -187,7 +186,7 @@ export class ArchiveViewerListComponent extends BaseEntityListComponent<PAYArchi
             return filter.length == 0 ||
                 f.variable.toLowerCase()?.includes(filter) ||
                 f.description?.toLowerCase().includes(filter);
-        }));
+        }).sort((a, b) => a.variable.localeCompare(b.variable)));
 
     displayedColumns = this.FIXED_INFO;
 
@@ -221,7 +220,7 @@ export class ArchiveViewerListComponent extends BaseEntityListComponent<PAYArchi
         this.shellSrv.disableSearch();
         zip(this.selectorSrv.minMonth(),
             this.selectorSrv.maxMonth(),
-            this.formulas.getList(0, 500))
+            this.formulas.getList(0, 500, null, 'variable'))
             .subscribe(res => {
                 this._minYear = +(res[0].month / 100).toFixed(0);
                 this._maxYear = +(res[1].month / 100).toFixed(0);
@@ -244,43 +243,37 @@ export class ArchiveViewerListComponent extends BaseEntityListComponent<PAYArchi
                 .subscribe(str => this.filterSignal.set(str)));
     }
 
-    // private refreshFormulas() {
-    //     this.formulas
-    //         .getList(0, 500, this.formulaFilter.value)
-    //         .subscribe(res => this._formulas.set(res.body
-    //             .filter(f => f.description !== null && f.description != undefined)
-    //             .sort((a, b) => a.description.localeCompare(b.description))));
-    // }
-
     clearSelection(list: MatSelectionList) {
         list.deselectAll();
         this.formulaSelection.set('');
     }
-    refreshList(personalSel: SelectionModel<MatListOption>, formulaSel: SelectionModel<MatListOption>) {
+
+    refreshList(personalSel: SelectionModel<MatListOption>) {
         const from = this.fromYear.value * 100 + this.fromMonth.value;
         const to = this.toYear.value * 100 + this.toMonth.value;
-        // this._formulaHeaders = [];
-        // this._formulaVariables = [];
+        this._formulaHeaders = [];
+        this._formulaVariables = [];
+
+        const selectedFormulas = this._formulas().filter(e => this.formulaSelection().indexOf(e.variable) >= 0);
+
         if (this.compact.value) {
             const periods = this.periodInterval();
-            const formulas = formulaSel.selected.map((e: any, i) => e.value?.description);
             periods.forEach(((p, ip) => {
-                formulas.forEach((f, fi) => {
+                selectedFormulas.forEach((f, fi) => {
                     this._formulaVariables.push('v' + (1 + this._formulaVariables.length));
-                    this._formulaHeaders.push(p + '-' + f);
+                    this._formulaHeaders.push(p + '-' + f.description);
                 });
-                // this.pagination.pageSize = this.compact.value? 20 : 5;
             }));
         } else {
-            this._formulaHeaders = formulaSel.selected.map((e: any, i) => e.value?.description);
-            this._formulaVariables = formulaSel.selected.map((e: any, i) => 'v' + (i + 1)).slice(0, 9);
+            this._formulaHeaders = selectedFormulas.map(e => e.description);
+            this._formulaVariables = selectedFormulas.map(e => e.variable);
         }
-        const formulas = formulaSel.selected.map((e: any) => e.value.variable).join(',');
+
         const personalInfo = this.FIXED_INFO.concat(personalSel.selected.map((e: any) => e.value)).join(',');
         this.entitySrv
             .refreshList(from,
                 to,
-                formulas,
+                this.formulaSelection(),
                 personalInfo,
                 this.compact.value,
                 this.consolidated.value,
@@ -292,7 +285,7 @@ export class ArchiveViewerListComponent extends BaseEntityListComponent<PAYArchi
                 this.displayedColumns = this.displayedColumns.concat(this._formulaVariables);
                 this.data = res.body;
             });
-        this.minTableWidth = 900 + 100 * (formulaSel.selected.length + this._formulaVariables.length + personalSel.selected.length);
+        this.minTableWidth = 900 + 100 * (2 * this._formulaVariables.length + personalSel.selected.length);
         // console.log(this.minTableWidth);
     }
 
@@ -312,7 +305,6 @@ export class ArchiveViewerListComponent extends BaseEntityListComponent<PAYArchi
     }
 
     formulaSelected(event: MatSelectionListChange) {
-        console.log('selection', event.options.map(e => e.value.variable));
         this.formulaSelection.update(old => (old? `${old},`: '') + event.options.map(e => e.value.variable).join(','));
     }
 }

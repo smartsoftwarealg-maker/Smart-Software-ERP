@@ -77,13 +77,16 @@ mat-tab-group {
 
 .selection__div {
     font-weight: bolder;
-    font-size: 0.8em;
-    height: 1.2em;
+    font-size: 0.9em;
+    height: 1.5em;
     width: 90%;
     margin: 8px auto;
     padding: 0.2em;
 }
 
+.formula__div {
+    min-height: 100%;
+}
 mat-header-cell.mat-mdc-header-cell.mdc-data-table__header-cell.cdk-header-cell {
     font-size: 0.7em;
 }

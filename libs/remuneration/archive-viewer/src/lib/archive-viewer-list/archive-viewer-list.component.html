@@ -41,7 +41,7 @@
             <button type="button"
                     mat-raised-button
                     color="primary"
-                    (click)="refreshList(info.selectedOptions, formulas.selectedOptions)"> {{ 'COMMON_REFRESH' | translate }}
+                    (click)="refreshList(info.selectedOptions)"> {{ 'COMMON_REFRESH' | translate }}
             </button>
         </div>
     </div>
@@ -52,9 +52,9 @@
             </ng-template>
             <mat-selection-list #info>
                 @for (f of infoSignal(); track f[0]) {
-                <mat-list-option [value]="f[0]">
-                    {{ f[1] }}
-                </mat-list-option>
+                    <mat-list-option [value]="f[0]">
+                        {{ f[1] }}
+                    </mat-list-option>
                 }
             </mat-selection-list>
         </mat-tab>
@@ -62,14 +62,16 @@
             <ng-template mat-tab-label>
                 {{ 'COMMON_FORMULAS' | translate }}
             </ng-template>
-            <mat-selection-list #formulas (selectionChange)="formulaSelected($event)" >
-                @for (f of filteredFormulas(); track f.id) {
-                    <mat-list-option [value]="f">
-                        {{f.variable}} {{ f.description }}
-                    </mat-list-option>
-                }
-            </mat-selection-list>
-            <div class="selection__div b-primary"> {{ formulaSelection()}}</div>
+            <div class="formula__div">
+                <mat-selection-list #formulas (selectionChange)="formulaSelected($event)">
+                    @for (f of filteredFormulas(); track f.id) {
+                        <mat-list-option [value]="f">
+                            {{ f.variable }} {{ f.description }}
+                        </mat-list-option>
+                    }
+                </mat-selection-list>
+                <div class="selection__div b-primary"> {{ formulaSelection() }}</div>
+            </div>
         </mat-tab>
     </mat-tab-group>
 </div>
@@ -97,12 +99,15 @@
             </mat-cell>
         </ng-container>
 
-        <ng-container *ngFor="let i of _info" matColumnDef="{{ i[0] }}">
-            <mat-header-cell *matHeaderCellDef translate>{{ i[1] }}</mat-header-cell>
-            <mat-cell *matCellDef="let e">
-                {{ e[i[0]] }}
-            </mat-cell>
-        </ng-container>
+        <!-- Replace *ngFor in ng-container for _info -->
+        @for (i of _info; track i[0]) {
+            <ng-container matColumnDef="{{ i[0] }}">
+                <mat-header-cell *matHeaderCellDef translate>{{ i[1] }}</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{ e[i[0]] }}
+                </mat-cell>
+            </ng-container>
+        }
 
         <!--ng-container matColumnDef="birthDate">
             <mat-header-cell *matHeaderCellDef translate>PAYROLL_BIRTH_DATE</mat-header-cell>
@@ -125,12 +130,15 @@
             </mat-cell>
         </ng-container-->
 
-        <ng-container *ngFor="let h of _formulaVariables, let i = index" matColumnDef="{{ h }}">
-            <mat-header-cell *matHeaderCellDef translate>{{ _formulaHeaders[i] }}</mat-header-cell>
-            <mat-cell *matCellDef="let e">
-                {{ e.values ? (e.values[i] | number: '1.2-2') : "" }}
-            </mat-cell>
-        </ng-container>
+        <!-- Replace *ngFor in ng-container for _formulaVariables -->
+        @for (h of _formulaVariables; let i = $index; track h) {
+            <ng-container matColumnDef="{{ h }}">
+                <mat-header-cell *matHeaderCellDef translate>{{ _formulaHeaders[i] }}</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{ e.values ? (e.values[i] | number: '1.2-2') : "" }}
+                </mat-cell>
+            </ng-container>
+        }
 
 
         <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
