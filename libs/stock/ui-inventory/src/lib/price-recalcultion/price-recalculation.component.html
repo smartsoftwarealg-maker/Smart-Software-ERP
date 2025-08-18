@@ -23,7 +23,7 @@
                     <button mat-raised-button
                             color="primary"
                             type="button"
-                            [disabled]="processing"
+                            [disabled]="processing && !form.valid"
                             (click)="recalculate()">
                         {{ 'STOCK_RECALCULATE' | translate }}
                     </button>
@@ -75,5 +75,8 @@
             <mat-row class="selectable" [class.selected]="row.reference == selected?.reference" (click)="select(row)"
                      *matRowDef="let row; columns: displayedColumns;"></mat-row>
         </mat-table>
+    </div>
+    <div class="size b-b-background">
+        <ss-pagination [paginationModel]="pagination"></ss-pagination>
     </div>
 }
