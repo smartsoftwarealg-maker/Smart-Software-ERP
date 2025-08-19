@@ -24,7 +24,7 @@ export class HttpService {
     constructor(public appConfigSrv: AppConfigService, public httpClient: HttpClient) {
     }
 
-     static getHeaders() {
+    static getHeaders() {
         return new HttpHeaders({})
             .set('Authorization', this.getAuthToken() || '');
     }
@@ -33,9 +33,9 @@ export class HttpService {
         return localStorage.getItem(AUTH_TOKEN);
     }
 
-    static setAuthToken(token: string) {
-        return localStorage.setItem(AUTH_TOKEN, token);
-    }
+    // static setAuthToken(token: string) {
+    //     return localStorage.setItem(AUTH_TOKEN, token);
+    // }
 
     public init(company?: string): Observable<boolean> {
         if (this.baseUrl) {

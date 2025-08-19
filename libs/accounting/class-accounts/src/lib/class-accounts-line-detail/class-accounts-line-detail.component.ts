@@ -15,7 +15,7 @@ import {
     DefaultAutoCompleteModel,
     UiAutoCompleteComponent,
 } from '@ss/common/ui-auto-complete';
-import { AccountService } from '@ss/accounting/api-accounts';
+import {AccountAutocompleteModel, AccountService} from '@ss/accounting/api-accounts';
 import { SalesCategoryService } from '@ss/common/api-lookup';
 
 @Component({
@@ -36,7 +36,7 @@ export class ClassAccountsLineDetailComponent extends BaseChildEntityDetailCompo
     private fb = inject(FormBuilder);
     private accountSrv = inject(AccountService);
     private categorySrv = inject(SalesCategoryService);
-    accountLookup = new DefaultAutoCompleteModel(this.accountSrv);
+    accountLookup = new AccountAutocompleteModel(this.accountSrv);
     categoryLookup = new DefaultAutoCompleteModel(this.categorySrv);
 
     constructor(protected override entitySrv: ClassAccountsLineService) {

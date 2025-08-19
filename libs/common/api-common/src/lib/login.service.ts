@@ -238,12 +238,7 @@ export class LoginService {
         this.wrongData = false;
         this.#httpSrv
             .doLogin(url, credential)
-            .pipe(
-                tap(info => {
-                    this.#httpSrv.updateAuthToken(info.jwt);
-                    this.appCtx = info.ctx;
-                })
-            ).subscribe({
+            .subscribe({
                 next:
                     (info: LoginInfo) => {
                         this.#httpSrv.updateAuthToken(info.jwt);

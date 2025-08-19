@@ -11,14 +11,20 @@
         </ng-template>
         <mat-step [optional]="false" [completed]="selectedCompany > 0">
             <ng-template matStepLabel>
-                <span *ngIf="!selectedCompany || selectedCompany < 1" style="user-select: none" translate>COMMON_SELECT_COMPANY</span>
-                <span *ngIf="selectedCompany > 0" style="user-select: none">{{selectedCompanyName}}</span>
+                @if (!selectedCompany || selectedCompany < 1) {
+                    <span style="user-select: none" translate>COMMON_SELECT_COMPANY</span>
+                }
+                @if (selectedCompany > 0) {
+                    <span style="user-select: none">{{selectedCompanyName}}</span>
+                }
             </ng-template>
             <mat-form-field style="width: 90%">
                 <mat-select (selectionChange)="selectCompany($event.value)" [value]="selectedCompany">
-                    <mat-option *ngFor="let company of companyList" [value]="company.id">
-                        {{ company.description }}
-                    </mat-option>
+                    @for (company of companyList; track company.id) {
+                        <mat-option [value]="company.id">
+                            {{ company.description }}
+                        </mat-option>
+                    }
                 </mat-select>
             </mat-form-field>
         </mat-step>
@@ -26,30 +32,36 @@
             <ng-template matStepLabel>
                 <span style="user-select: none" translate>COMMON_SELECT_CENTER</span>
             </ng-template>
-            <div *ngIf="!loadingCenters">
-                <mat-form-field style="width: 90%" *ngIf="centerList.length <= 5">
-                    <mat-select (selectionChange)="selectCenter($event.value)" [value]="selectedCenter">
-                        <mat-option *ngFor="let center of centerList" [value]="center.id">
-                            {{ center.description }}
-                        </mat-option>
-                    </mat-select>
-                </mat-form-field>
-
-                <mat-form-field style="width: 90%" *ngIf="centerList.length > 5">
-                    <mat-label translate>ADMINISTRATION_CENTER</mat-label>
-                    <input type="text"
-                           [placeholder]="'COMMON_TYPE_TO_SELECT'|translate"
-                           aria-label="Number"
-                           matInput
-                           [formControl]="centerControl"
-                           [matAutocomplete]="auto">
-                    <mat-autocomplete #auto="matAutocomplete" (optionSelected)="select($event)">
-                        <mat-option *ngFor="let center of filteredCenters | async" [value]="center.description">
-                            {{center.description}}
-                        </mat-option>
-                    </mat-autocomplete>
-                </mat-form-field>
-
+            @if (!loadingCenters) {
+                @if (centerList.length <= 5) {
+                    <mat-form-field style="width: 90%">
+                        <mat-select (selectionChange)="selectCenter($event.value)" [value]="selectedCenter">
+                            @for (center of centerList; track center.id) {
+                                <mat-option [value]="center.id">
+                                    {{ center.description }}
+                                </mat-option>
+                            }
+                        </mat-select>
+                    </mat-form-field>
+                }
+                @if (centerList.length > 5) {
+                    <mat-form-field style="width: 90%">
+                        <mat-label translate>ADMINISTRATION_CENTER</mat-label>
+                        <input type="text"
+                               [placeholder]="'COMMON_TYPE_TO_SELECT'|translate"
+                               aria-label="Number"
+                               matInput
+                               [formControl]="centerControl"
+                               [matAutocomplete]="auto">
+                        <mat-autocomplete #auto="matAutocomplete" (optionSelected)="select($event)">
+                            @for (center of filteredCenters | async; track center.id) {
+                                <mat-option [value]="center.description">
+                                    {{center.description}}
+                                </mat-option>
+                            }
+                        </mat-autocomplete>
+                    </mat-form-field>
+                }
                 <div style="height: 36px; margin-top: 8px">
                     <button mat-raised-button
                             color="primary"
@@ -59,7 +71,7 @@
                             translate>COMMON_SELECT
                     </button>
                 </div>
-            </div>
+            }
         </mat-step>
     </mat-vertical-stepper>
 </div>
