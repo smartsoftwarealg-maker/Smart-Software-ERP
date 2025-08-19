@@ -307,4 +307,8 @@ export class ArchiveViewerListComponent extends BaseEntityListComponent<PAYArchi
     formulaSelected(event: MatSelectionListChange) {
         this.formulaSelection.update(old => (old? `${old},`: '') + event.options.map(e => e.value.variable).join(','));
     }
+
+    protected override canShowProcessingStatus(): boolean {
+        return false;
+    }
 }

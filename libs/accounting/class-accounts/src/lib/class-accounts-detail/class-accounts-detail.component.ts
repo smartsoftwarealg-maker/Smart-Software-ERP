@@ -37,7 +37,6 @@ import { ClassAccountsLineService } from '../class-accounts.service';
         MatLabel,
         TranslateDirective,
         MatInput,
-        UiAutoCompleteComponent,
         RouterOutlet,
     ],
 })
@@ -78,13 +77,10 @@ export class ClassAccountsDetailComponent extends BaseEntityDetailComponent<Clas
     public override setupForm(e: Class): UntypedFormGroup {
         this.accountClassLineSrv.setParentId(e.id);
         return this.formBuilder.group({
-            id: [e.id],
-            description: [
-                { value: e.description, disabled: true },
-                Validators.required,
-            ],
+            id:            [e.id],
+            description:   [{ value: e.description, disabled: true }, Validators.required ],
             descriptionAr: [e.descriptionAr],
-            accountId: [{ value: e.accountId, disabled: true }],
+            accountno:     [{ value: e.accountno, disabled: true}]
         });
     }
 }

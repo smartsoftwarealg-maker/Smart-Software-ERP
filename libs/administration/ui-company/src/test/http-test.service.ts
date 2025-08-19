@@ -218,9 +218,9 @@ export class HttpTestService {
 
     // noinspection JSUnusedGlobalSymbols
     // noinspection JSMethodCanBeStatic
-    public updateAuthToken(token: string): void {
-        localStorage.setItem(AUTH_TOKEN, token);
-    }
+    // public updateAuthToken(token: string): void {
+    //     localStorage.setItem(AUTH_TOKEN, token);
+    // }
 
     // noinspection JSUnusedGlobalSymbols
     // noinspection JSMethodCanBeStatic

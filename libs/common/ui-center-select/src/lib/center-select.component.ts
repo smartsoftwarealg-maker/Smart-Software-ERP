@@ -36,7 +36,7 @@ import { AgentService } from '@ss/logistics/api-agent';
     templateUrl: './center-select.component.html',
     styleUrls: ['./center-select.component.scss'],
     standalone: true,
-    imports: [MatStepper, NgClass, MatStepperIcon, MatStep, MatStepLabel, NgIf, TranslateDirective, MatFormField, MatSelect, NgFor, MatOption, MatLabel, MatInput, FormsModule, MatAutocompleteTrigger, ReactiveFormsModule, MatAutocomplete, MatButton, AsyncPipe, TranslatePipe]
+    imports: [MatStepper, NgClass, MatStepperIcon, MatStep, MatStepLabel, TranslateDirective, MatFormField, MatSelect, MatOption, MatLabel, MatInput, FormsModule, MatAutocompleteTrigger, ReactiveFormsModule, MatAutocomplete, MatButton, AsyncPipe, TranslatePipe]
 })
 export class CenterSelectComponent implements OnInit {
     private ccListSrv = inject(CenterService);
@@ -138,7 +138,7 @@ export class CenterSelectComponent implements OnInit {
             this.loginSrv
                 .centerLogin(this.selectedCenter)
                 .pipe(switchMap(_ => this.rightsSrv.load()),
-                      tap(res => this.rightsSrv.loadMap(res))
+                    tap(res => this.rightsSrv.loadMap(res))
                 ).subscribe({
                     next: () => {
                         // this.endLoading(); // don't show shit, because we are leaving anyway
@@ -148,7 +148,7 @@ export class CenterSelectComponent implements OnInit {
                         this.shellSrv.setLabels([]);
                         this.agentSrv.currentCustomer().subscribe({
                             next:(cst)=>{
-                                const dest1 = cst.recordBlocked ? BLOCKED_REASON_PAGE_URL : dest
+                                const dest1 = cst.recordBlocked ? BLOCKED_REASON_PAGE_URL : dest;
                                 this.router.navigate(['/' + dest1]).then(() => {});
                             },
                             error:()=>{
