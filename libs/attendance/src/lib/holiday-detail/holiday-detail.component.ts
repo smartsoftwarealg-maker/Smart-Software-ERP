@@ -1,17 +1,23 @@
 import { Component } from '@angular/core';
-import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
-import {Holiday} from '../attendance-api';
-import {ShellService, SnackBarService} from '@ss/common/ui-shell';
-import {ActivatedRoute} from '@angular/router';
-import { UntypedFormBuilder, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import {HolidayService} from '../holiday.service';
+import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
+import { Holiday } from '../attendance-api';
+import { ShellService, SnackBarService } from '@ss/common/ui-shell';
+import { ActivatedRoute } from '@angular/router';
+import {
+    UntypedFormBuilder,
+    Validators,
+    FormsModule,
+    ReactiveFormsModule,
+} from '@angular/forms';
+import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
+import { HolidayService } from '../holiday.service';
 import { MatCard, MatCardContent } from '@angular/material/card';
-import { NgIf } from '@angular/common';
 import { MatFormField, MatLabel, MatError } from '@angular/material/form-field';
 import { TranslateDirective } from '@ss/common/ui-lang';
 import { MatInput } from '@angular/material/input';
 import { DatePickerComponent } from '@ss/common/ui-datepicker';
+import {CommonModule} from "@angular/common";
+import {MaterialModule} from "@ss/common/api-common";
 
 @Component({
     selector: 'ss-holiday-detail',
@@ -19,9 +25,9 @@ import { DatePickerComponent } from '@ss/common/ui-datepicker';
     styleUrls: ['./holiday-detail.component.scss'],
     standalone: true,
     imports: [
+        CommonModule,
         MatCard,
         MatCardContent,
-        NgIf,
         FormsModule,
         ReactiveFormsModule,
         MatFormField,
@@ -30,6 +36,7 @@ import { DatePickerComponent } from '@ss/common/ui-datepicker';
         MatInput,
         DatePickerComponent,
         MatError,
+        MaterialModule,
     ],
 })
 export class HolidayDetailComponent extends BaseEntityDetailComponent<Holiday> {
@@ -39,17 +46,24 @@ export class HolidayDetailComponent extends BaseEntityDetailComponent<Holiday> {
         public override snackBarSrv: SnackBarService,
         public override route: ActivatedRoute,
         public override formBuilder: UntypedFormBuilder,
-        public override confirmationSrv: ConfirmationDialogService) {
-        super(entitySrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'ATT_MACHINES');
+        public override confirmationSrv: ConfirmationDialogService,
+    ) {
+        super(
+            entitySrv,
+            shellSrv,
+            snackBarSrv,
+            route,
+            formBuilder,
+            confirmationSrv,
+            'ATT_MACHINES',
+        );
     }
-
 
     public override setupForm(b: Holiday) {
         return this.formBuilder.group({
-            id:          [b.id],
-            date:        [b.date, Validators.required],
+            id: [b.id],
+            date: [b.date, Validators.required],
             description: [b.description],
         });
     }
-
 }
