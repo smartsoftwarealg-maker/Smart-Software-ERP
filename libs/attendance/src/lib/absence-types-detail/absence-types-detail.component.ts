@@ -11,7 +11,6 @@ import {
 } from '@angular/forms';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { MatCard, MatCardContent } from '@angular/material/card';
-import { NgIf } from '@angular/common';
 import { MatError, MatFormField, MatLabel } from '@angular/material/form-field';
 import { TranslateDirective } from '@ss/common/ui-lang';
 import { MatInput } from '@angular/material/input';
@@ -19,7 +18,6 @@ import { AbsenceTypesService } from '../absence-types.service';
 import { HttpService } from '@ss/common/api-common';
 import { ElementInfoLookupModel } from '@ss/remuneration/element-types';
 import { ElementsInfoService } from '@ss/remuneration/elementsinfo';
-import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 
 @Component({
     selector: 'ss-absence-types-detail',
@@ -29,7 +27,6 @@ import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
     imports: [
         MatCard,
         MatCardContent,
-        NgIf,
         FormsModule,
         ReactiveFormsModule,
         MatFormField,
