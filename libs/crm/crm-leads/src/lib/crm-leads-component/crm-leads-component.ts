@@ -2,7 +2,7 @@ import {Component, inject, OnDestroy, OnInit} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CRMLeadsService } from '../crm-lead.service';
 import { PaginationModel } from '@ss/common/api-common';
-import { Contact } from '../lead-api';
+import { CRMLead } from '../lead-api';
 import {
     MatCell,
     MatCellDef,
@@ -21,8 +21,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 import { MatButton, MatIconButton } from '@angular/material/button';
 import { MatTooltip } from '@angular/material/tooltip';
 import { ActivatedRoute, Router } from '@angular/router';
-import {ShellService} from "@ss/common/ui-shell";
-import {DefaultAutoCompleteModel} from "@ss/common/ui-auto-complete";
+import {ShellService} from '@ss/common/ui-shell';
 
 @Component({
     selector: 'ss-crm-leads-component',
@@ -63,17 +62,23 @@ export class CrmLeadsComponent implements OnInit, OnDestroy {
         pageSize: 15,
         elementCount: 0,
     });
-    selectedRow: Contact | null = null;
+    selectedRow: CRMLead | null = null;
     displayedColumns = [
-        'btn',
-        'lastName',
-        'firstName',
+        'description',
+        'addressLine1',
         'email',
         'phone',
-        'status',
+        'company',
+        'jobTitle',
         'createdAt',
+        'source',
+        'ownerDescription',
+        'priority',
+        'estimatedValue',
+        'status',
+        'score',
     ];
-    data: Contact[] = [];
+    data: CRMLead[] = [];
     loading = false;
 
     constructor() {
@@ -82,6 +87,7 @@ export class CrmLeadsComponent implements OnInit, OnDestroy {
 
     ngOnInit(): void {
         this.#shellSrv.setGoBackPath('..', this.#route);
+        this.#shellSrv.setTitle('CRM_LEADS');
         this.refresh();
     }
 
@@ -90,7 +96,7 @@ export class CrmLeadsComponent implements OnInit, OnDestroy {
         this.refresh();
     }
 
-    selectRow(row: Contact): void {
+    selectRow(row: CRMLead): void {
         this.selectedRow = row;
     }
 
@@ -102,7 +108,7 @@ export class CrmLeadsComponent implements OnInit, OnDestroy {
         });
     }
 
-    edit(lead: Contact): void {
+    edit(lead: CRMLead): void {
         //    console.log('Edit lead:', lead);
         this.showDetail(lead.id);
     }
@@ -124,6 +130,6 @@ export class CrmLeadsComponent implements OnInit, OnDestroy {
     }
 
     ngOnDestroy() {
-        this.#shellSrv.reset()
+        this.#shellSrv.reset();
     }
 }

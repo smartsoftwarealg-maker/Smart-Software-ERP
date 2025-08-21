@@ -1,4 +1,4 @@
-import {Injectable} from '@angular/core';
+import {inject, Injectable} from '@angular/core';
 import {ConfirmationDialogComponent} from './confirmation-dialog.component';
 import {Observable} from 'rxjs';
 import {LanguageService} from '@ss/common/api-common';
@@ -9,9 +9,8 @@ import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
     providedIn: 'root'
 })
 export class ConfirmationDialogService {
-
-    constructor(private langSrv: LanguageService, private matDialog: MatDialog) {
-    }
+    private langSrv  = inject( LanguageService);
+    private matDialog  = inject( MatDialog);
 
     public confirmDelete(): Observable<boolean> {
         return this.confirm(null, 'COMMON_CONFIRM_DELETE_RECORD');
@@ -32,5 +31,4 @@ export class ConfirmationDialogService {
         };
         return this.matDialog.open(ConfirmationDialogComponent, config).afterClosed();
     }
-
 }

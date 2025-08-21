@@ -1,7 +1,7 @@
-export interface Contact {
+export interface CRMLead {
     id: number;
-    firstName: string;
-    lastName: string;
+    description: string;
+    detail: string;
     email: string;
     phone?: string;
     company?: string;
@@ -27,4 +27,6 @@ export interface Contact {
     updatedAt: Date;
     updatedBy?: number;
     isDeleted: boolean;
+    companyDescription?: string;
+    ownerDescription?: string;
 }

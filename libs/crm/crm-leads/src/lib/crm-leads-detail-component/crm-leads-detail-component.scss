@@ -1,8 +1,10 @@
+@use '@angular/material' as mat;
+
 .size {
     width: 90%;
-    max-width: 600px;
     margin: 4PX auto;
     padding-top: 1em;
+    border-radius: 1.4em;
 }
 
 .ctrl__div {
@@ -11,25 +13,6 @@
     gap: 1em;
 }
 
-.div_table {
-    height: calc(100% - 128px);
-    overflow: auto;
-}
-
-.mat-column-lastName,
-.mat-column-firstName,
-.mat-column-email,
-.mat-column-createdAt {
-    flex: 1 1 150px;
-    border-left: gray solid 1px;
-}
-
-
-.mat-column-status,
-.mat-column-phone {
-    flex: 1 1 100px;
-    border-left: gray solid 1px;
-}
 
 .mat-column-btn {
     flex: 0 0 45px;
@@ -42,4 +25,17 @@ mat-table {
 
 i {
     margin-right: .5em;
+}
+
+mat-card-content,
+mat-option,
+mat-form-field {
+    font-size: smaller;
+}
+
+:root {
+    @include mat.form-field-overrides((
+        container-height: 1em,
+        container-text-size: xx-small,
+    ));
 }

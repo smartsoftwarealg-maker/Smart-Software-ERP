@@ -119,7 +119,7 @@ import {
 import { PayrollOptionsComponent } from 'payroll/payroll-options';
 import { FundsListComponent, FundsDetailComponent } from '@ss/payroll/funds';
 import { IrgComponent } from '@ss/payroll/irg';
-import {LoanInjectionComponent} from "@ss/payroll/loan-injection";
+import {LoanInjectionComponent} from '@ss/payroll/loan-injection';
 
 export const mainRoutes: Routes = [
     {

@@ -32,3 +32,9 @@ mat-expansion-panel {
     gap: 2px;
     justify-content: center;
 }
+
+@media (width >= 700) {
+    mat-card {
+        font-size: 0.8em;
+    }
+}

@@ -15,5 +15,14 @@
     "NEGOTIATION":          "Negotiation",
     "CLOSED_WON":           "Closed won",
     "CLOSED_LOST":          "Closed lost",
-    "CONTACTS":             "Contacts"
+    "CONTACTS":             "Contacts",
+    "WEB":                  "Web",
+    "PRIORITY":             "Priority",
+    "ESTIMATED_VALUE":      "Estimated value",
+    "LOW":                 "Low",
+    "MEDIUM":              "Medium",
+    "HIGH":                "High",
+    "CRITICAL":            "Critical",
+    "SCORE":                "Score",
+    "OWNER":               "Owner"
 }
