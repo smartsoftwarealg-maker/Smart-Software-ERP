@@ -125,5 +125,6 @@
     "PROJECT":         "Project/Contract",
     "PRODUCTION":       "Production",
     "HR_TABLES": "HR tables",
-    "ACCOUNTING_APP": "Accounting"
+    "ACCOUNTING_APP": "Accounting",
+    "PROJECTS": "Projects"
 }
