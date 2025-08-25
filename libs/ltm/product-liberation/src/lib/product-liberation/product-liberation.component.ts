@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 
 @Component({
     selector: 'ss-product-liberation',
     standalone: true,
-    imports: [CommonModule],
+    imports: [],
     templateUrl: './product-liberation.component.html',
     styleUrl: './product-liberation.component.scss',
 })

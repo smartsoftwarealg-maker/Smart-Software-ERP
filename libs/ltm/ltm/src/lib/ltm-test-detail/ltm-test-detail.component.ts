@@ -9,7 +9,7 @@ import {LtmTestService} from '@ltm/ltm-api';
 import { LtmTestTypeService } from '@ltm/ltm-api';
 import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { Lookup, UnitService } from '@ss/common/api-lookup';
-import { CommonModule } from "@angular/common";
+
 import { MaterialModule } from "@ss/common/api-common";
 import { TranslateDirective } from '@ss/common/ui-lang';
 
@@ -19,12 +19,11 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     styleUrls: ['./ltm-test-detail.component.scss'],
     standalone: true,
     imports: [
-        CommonModule,
-        MaterialModule,
-        ReactiveFormsModule,
-        TranslateDirective,
-        UiAutoCompleteComponent
-    ]
+    MaterialModule,
+    ReactiveFormsModule,
+    TranslateDirective,
+    UiAutoCompleteComponent
+]
 })
 export class LtmTestDetailComponent extends BaseEntityDetailComponent<LTMTest> {
     private typeSrv = inject(LtmTestTypeService);

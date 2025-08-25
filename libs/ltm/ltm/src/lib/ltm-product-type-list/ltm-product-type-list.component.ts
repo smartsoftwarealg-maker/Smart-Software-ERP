@@ -4,7 +4,7 @@ import { ShellService, SnackBarService } from "@ss/common/ui-shell";
 import {ActivatedRoute, Router} from "@angular/router";
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import {  ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
-import { CommonModule } from "@angular/common";
+
 import { ReactiveFormsModule } from "@angular/forms";
 import { Lookup } from '@ss/common/api-lookup';
 import { LtmProductTypeService, LTMSiloService } from '@ltm/ltm-api';
@@ -18,12 +18,11 @@ import { MaterialModule, PaginatorPersistenceService } from '@ss/common/api-comm
     styleUrls: ['./ltm-product-type-list.component.scss'],
     standalone: true,
     imports: [
-        CommonModule,
-        MaterialModule,
-        PaginationComponent,
-        ReactiveFormsModule,
-        TranslateDirective,
-    ],
+    MaterialModule,
+    PaginationComponent,
+    ReactiveFormsModule,
+    TranslateDirective
+],
 })
 export class LtmProductTypeListComponent extends BaseEntityListComponent<Lookup> implements OnInit {
 

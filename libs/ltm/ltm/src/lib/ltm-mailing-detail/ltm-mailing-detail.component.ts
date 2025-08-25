@@ -4,7 +4,7 @@ import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import { ActivatedRoute, Router, RouterOutlet } from "@angular/router";
 import { ReactiveFormsModule, UntypedFormBuilder, Validators } from '@angular/forms';
 import {  ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
-import { CommonModule } from '@angular/common';
+
 import { MaterialModule } from '@ss/common/api-common';
 import { Lookup } from '@ss/common/api-lookup';
 import { LtmMailingDocumentService, LTMMailingList, LtmMailingService, LtmNormService } from '@ltm/ltm-api';
@@ -17,12 +17,11 @@ import { Observable } from 'rxjs';
     styleUrls: ['./ltm-mailing-detail.component.scss'],
     standalone: true,
     imports: [
-        CommonModule,
-        MaterialModule,
-        TranslateDirective,
-        ReactiveFormsModule,
-        RouterOutlet
-    ],
+    MaterialModule,
+    TranslateDirective,
+    ReactiveFormsModule,
+    RouterOutlet
+],
 })
 export class LtmMailingDetailComponent extends BaseEntityDetailComponent<LTMMailingList> implements OnInit {
     #documentSrv = inject(LtmMailingDocumentService);

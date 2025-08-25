@@ -5,7 +5,7 @@ import { ActivatedRoute, Router, RouterOutlet } from "@angular/router";
 import { DefaultReportService } from '@ss/common/ui-default-report-component';
 import {  ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
 import { MaterialModule, PaginatorPersistenceService } from "@ss/common/api-common";
-import { CommonModule } from "@angular/common";
+
 import { ReactiveFormsModule } from "@angular/forms";
 import { Lookup } from '@ss/common/api-lookup';
 import { LtmNormService } from '@ltm/ltm-api';
@@ -18,12 +18,11 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     styleUrls: ['./ltm-norm-list.component.scss'],
     standalone: true,
     imports: [
-        CommonModule,
-        MaterialModule,
-        TranslateDirective,
-        PaginationComponent,
-        ReactiveFormsModule,
-    ],
+    MaterialModule,
+    TranslateDirective,
+    PaginationComponent,
+    ReactiveFormsModule
+],
 })
 export class LtmNormListComponent extends BaseEntityListComponent<Lookup> implements OnInit {
 

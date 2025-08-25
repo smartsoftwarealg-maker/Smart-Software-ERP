@@ -5,7 +5,7 @@ import { ActivatedRoute, Router } from "@angular/router";
 import {  ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import { MaterialModule, PaginatorPersistenceService } from "@ss/common/api-common";
-import { CommonModule } from "@angular/common";
+
 import { ReactiveFormsModule } from "@angular/forms";
 import { Lookup } from '@ss/common/api-lookup';
 import { LtmBleacherService } from '@ltm/ltm-api';
@@ -18,12 +18,11 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     styleUrls: ['./ltm-bleacher-list.component.scss'],
     standalone: true,
     imports: [
-        CommonModule,
-        MaterialModule,
-        PaginationComponent,
-        ReactiveFormsModule,
-        TranslateDirective,
-    ],
+    MaterialModule,
+    PaginationComponent,
+    ReactiveFormsModule,
+    TranslateDirective
+],
 })
 export class LtmBleacherListComponent extends BaseEntityListComponent<Lookup> {
     displayedColumns = ['description'];

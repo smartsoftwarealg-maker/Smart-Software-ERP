@@ -4,7 +4,7 @@ import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute } from "@angular/router";
 import {  ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
 import { MaterialModule } from '@ss/common/api-common';
-import { CommonModule } from "@angular/common";
+
 import { ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import { DefaultAutoCompleteModel, UiAutoCompleteComponent, UserLookup } from '@ss/common/ui-auto-complete';
 import { LTMAbnormalTest } from '@ltm/ltm-api';
@@ -20,13 +20,12 @@ import { DatePickerComponent } from '@ss/common/ui-datepicker';
     styleUrls: ['./ltm-alerts-detail.component.scss'],
     standalone: true,
     imports: [
-        CommonModule,
-        MaterialModule,
-        TranslateDirective,
-        ReactiveFormsModule,
-        DatePickerComponent,
-        UiAutoCompleteComponent
-    ]
+    MaterialModule,
+    TranslateDirective,
+    ReactiveFormsModule,
+    DatePickerComponent,
+    UiAutoCompleteComponent
+]
 })
 export class LtmAlertsDetailComponent extends BaseEntityDetailComponent<LTMAbnormalTest> {
     // #actionSrv = inject(LtmCorrectionActionService);

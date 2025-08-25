@@ -1,19 +1,21 @@
 <fieldset>
-    <div class="file-upload">
-        <input type="file" class="file-input"
-               [accept]="requiredFileType"
-               (change)="onChange(fileUpload.files)"
-               #fileUpload>
+  <div class="file-upload">
+    <input type="file" class="file-input"
+      [accept]="requiredFileType"
+      (change)="onChange(fileUpload.files)"
+      #fileUpload>
 
-        <span translate>{{ fileName || "COMMON_NO_FILE_SELECTED" }} </span>
+    <span translate>{{ fileName || "COMMON_NO_FILE_SELECTED" }} </span>
 
-        <button mat-mini-fab color="primary"
-                class="upload-btn"
-                (click)="fileUpload.click()"
-                *ngIf="!uploadProgress">
-            <i class="fas fa-paperclip"></i>
-        </button>
-    </div>
+    @if (!uploadProgress) {
+      <button mat-mini-fab color="primary"
+        class="upload-btn"
+        (click)="fileUpload.click()"
+        >
+        <i class="fas fa-paperclip"></i>
+      </button>
+    }
+  </div>
 </fieldset>
 <!--<div class="progress">-->
 <!--    <i class="fas fa-upload"-->
@@ -23,67 +25,83 @@
 <!--    </i>-->
 <!--</div>-->
 
-<mat-progress-bar class="progress-bar" mode="indeterminate" *ngIf="processing"></mat-progress-bar>
+@if (processing) {
+  <mat-progress-bar class="progress-bar" mode="indeterminate"></mat-progress-bar>
+}
 <mat-card>
-    <!--    <mat-card-header>-->
-    <!--        <mat-radio-group aria-label="Select an option">-->
-    <!--            <mat-radio-button value="1" (change)="onFormat($event)" translate [checked]="true">LTM_STANDARD_FORMAT</mat-radio-button>-->
-    <!--            <mat-radio-button value="2" (change)="onFormat($event)" translate>LTM_UPDATE_FORMAT</mat-radio-button>-->
-    <!--        </mat-radio-group>-->
-    <!--    </mat-card-header>-->
+  <!--    <mat-card-header>-->
+  <!--        <mat-radio-group aria-label="Select an option">-->
+  <!--            <mat-radio-button value="1" (change)="onFormat($event)" translate [checked]="true">LTM_STANDARD_FORMAT</mat-radio-button>-->
+  <!--            <mat-radio-button value="2" (change)="onFormat($event)" translate>LTM_UPDATE_FORMAT</mat-radio-button>-->
+<!--        </mat-radio-group>-->
+<!--    </mat-card-header>-->
 
-    <mat-card-content>
-        <form novalidate [formGroup]="form">
-            <mat-form-field class="default-50">
-                <mat-label translate>COMMON_FROM</mat-label>
-                <ss-date-picker formControlName="from"></ss-date-picker>
-            </mat-form-field>
-            <mat-form-field class="default-50">
-                <mat-label translate>COMMON_TO</mat-label>
-                <ss-date-picker formControlName="to"></ss-date-picker>
-            </mat-form-field>
-        </form>
-    </mat-card-content>
+<mat-card-content>
+  <form novalidate [formGroup]="form">
+    <mat-form-field class="default-50">
+      <mat-label translate>COMMON_FROM</mat-label>
+      <ss-date-picker formControlName="from"></ss-date-picker>
+    </mat-form-field>
+    <mat-form-field class="default-50">
+      <mat-label translate>COMMON_TO</mat-label>
+      <ss-date-picker formControlName="to"></ss-date-picker>
+    </mat-form-field>
+  </form>
+</mat-card-content>
 </mat-card>
 <!--    <div><pre>{{form?.value | json }}</pre></div>-->
 
-<div class="result size" *ngIf="result">
+@if (result) {
+  <div class="result size">
     <div class="res__list">
-        <mat-toolbar translate color="primary">COMMON_SUCCESSES</mat-toolbar>
-        <ul>
-            <li *ngFor="let i of result.found"> {{ i }} </li>
-        </ul>
+      <mat-toolbar translate color="primary">COMMON_SUCCESSES</mat-toolbar>
+      <ul>
+        @for (i of result.found; track i) {
+          <li> {{ i }} </li>
+        }
+      </ul>
     </div>
     <div class="res__list">
-        <mat-toolbar color="accent" translate>COMMON_FAILURES</mat-toolbar>
-        <ul>
-            <li *ngFor="let i of result.missing"> {{ i }} </li>
-        </ul>
+      <mat-toolbar color="accent" translate>COMMON_FAILURES</mat-toolbar>
+      <ul>
+        @for (i of result.missing; track i) {
+          <li> {{ i }} </li>
+        }
+      </ul>
     </div>
-</div>
-<div class="ctrl_div ok__div"  *ngIf="result">
-        <button mat-raised-button
-                color="primary"
-                type="button"
-                (click)="cancel()">
-            {{ 'COMMON_OK' | translate }}
-            <i class="fa-solid fa-check  icon"></i>
-        </button>
-</div>
-<div class="ctrl_div upload_div" *ngIf="!result">
-    <div *ngIf="!uploadProgress">
+  </div>
+}
+@if (result) {
+  <div class="ctrl_div ok__div" >
+    <button mat-raised-button
+      color="primary"
+      type="button"
+      (click)="cancel()">
+      {{ 'COMMON_OK' | translate }}
+      <i class="fa-solid fa-check  icon"></i>
+    </button>
+  </div>
+}
+@if (!result) {
+  <div class="ctrl_div upload_div">
+    @if (!uploadProgress) {
+      <div>
         <button mat-raised-button color="primary"
-                type="button"
-                (click)="upload(fileUpload.files)"
-                [disabled]="!form.valid || fileName?.length < 4">
-            {{ 'COMMON_UPLOAD' | translate }}
-            <i class="fa-solid fa-upload  icon"></i>
+          type="button"
+          (click)="upload(fileUpload.files)"
+          [disabled]="!form.valid || fileName?.length < 4">
+          {{ 'COMMON_UPLOAD' | translate }}
+          <i class="fa-solid fa-upload  icon"></i>
         </button>
-    </div>
-    <div *ngIf="!uploadProgress">
+      </div>
+    }
+    @if (!uploadProgress) {
+      <div>
         <button mat-raised-button color="warn" type="button" (click)="cancel()">
-            {{ 'COMMON_CANCEL' | translate }}
-            <i class="fa-solid fa-rotate-left icon"></i>
+          {{ 'COMMON_CANCEL' | translate }}
+          <i class="fa-solid fa-rotate-left icon"></i>
         </button>
-    </div>
-</div>
+      </div>
+    }
+  </div>
+}

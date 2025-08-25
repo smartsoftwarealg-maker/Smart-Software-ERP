@@ -2,7 +2,7 @@ import { Component, Inject, inject, signal } from "@angular/core";
 import { LTMLineMatter, LTMMatter } from '@ltm/ltm-api';
 import { MaterialModule } from "@ss/common/api-common";
 import {LtmMatterService} from '@ltm/ltm-api';
-import { CommonModule } from "@angular/common";
+
 import { FormControl, ReactiveFormsModule } from "@angular/forms";
 import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material/dialog";
@@ -14,14 +14,12 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     styleUrls: ['./ltm-matter-duplicate.component.scss'],
     standalone: true,
     imports: [
-        CommonModule,
-        MaterialModule,
-        TranslateDirective,
-        ReactiveFormsModule,
-
-        TranslatePipe,
-        UiAutoCompleteComponent
-    ]
+    MaterialModule,
+    TranslateDirective,
+    ReactiveFormsModule,
+    TranslatePipe,
+    UiAutoCompleteComponent
+]
 })
 export class LtmMatterDuplicateComponent {
     private dialogRef = inject(MatDialogRef<LtmMatterDuplicateComponent>);

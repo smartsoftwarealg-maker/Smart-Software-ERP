@@ -4,7 +4,7 @@ import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import { ActivatedRoute, RouterOutlet } from '@angular/router';
 import { ReactiveFormsModule, UntypedFormBuilder, Validators } from '@angular/forms';
 import {  ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
-import { CommonModule } from '@angular/common';
+
 import { MaterialModule } from '@ss/common/api-common';
 import { LTMProduct } from '@ltm/ltm-api';
 import { LtmProductService } from '@ltm/ltm-api';
@@ -16,11 +16,10 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     styleUrls: ['./ltm-product-detail.component.scss'],
     standalone: true,
     imports: [
-        CommonModule,
-        MaterialModule,
-        ReactiveFormsModule,
-        TranslateDirective
-    ],
+    MaterialModule,
+    ReactiveFormsModule,
+    TranslateDirective
+],
 })
 export class LtmProductDetailComponent extends BaseEntityDetailComponent<LTMProduct> {
 

@@ -5,7 +5,7 @@ import {  ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
 import { ReactiveFormsModule, UntypedFormBuilder } from "@angular/forms";
 import { BaseLookupDetailClass } from "../lookup-detail-template/base-lookup-detail.class";
 import { LtmTestTypeService } from '@ltm/ltm-api';
-import { CommonModule } from "@angular/common";
+
 import { MaterialModule } from "@ss/common/api-common";
 import { TranslateDirective } from '@ss/common/ui-lang';
 
@@ -15,12 +15,11 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     styleUrls: ['../lookup-detail-template/base-lookup-detail.component.css'],
     standalone: true,
     imports: [
-        CommonModule,
-        MaterialModule,
-        ReactiveFormsModule,
-        RouterOutlet,
-        TranslateDirective
-    ],
+    MaterialModule,
+    ReactiveFormsModule,
+    RouterOutlet,
+    TranslateDirective
+],
 })
 export class LtmTestTypeDetailComponent extends BaseLookupDetailClass {
     constructor(

@@ -8,7 +8,7 @@ import {  ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { LoginService, MaterialModule } from '@ss/common/api-common';
 import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
-import { CommonModule } from "@angular/common";
+
 import { DatePickerComponent } from '@ss/common/ui-datepicker';
 import { HourPickerComponent } from '@ss/common/ui-hour-picker';
 import { LtmMatterTestService, LtmPickupPointService, LtmNormService } from '@ltm/ltm-api';
@@ -21,15 +21,12 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     styleUrls: ['./line-matter-detail.component.scss'],
     standalone: true,
     imports: [
-        CommonModule,
-        MaterialModule,
-        ReactiveFormsModule,
-        TranslateDirective,
-       
-        RouterOutlet,
-       
-        UiAutoCompleteComponent
-    ]
+    MaterialModule,
+    ReactiveFormsModule,
+    TranslateDirective,
+    RouterOutlet,
+    UiAutoCompleteComponent
+]
 })
 export class LineMatterDetailComponent extends BaseEntityDetailComponent<LTMLineMatter> {
     private testSrv =  inject(LtmMatterTestService);

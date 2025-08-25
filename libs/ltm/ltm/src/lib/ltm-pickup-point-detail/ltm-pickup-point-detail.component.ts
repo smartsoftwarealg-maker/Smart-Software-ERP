@@ -5,7 +5,7 @@ import { ActivatedRoute, RouterOutlet } from "@angular/router";
 import { ReactiveFormsModule, UntypedFormBuilder, Validators } from "@angular/forms";
 import {  ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
 import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
-import { CommonModule } from "@angular/common";
+
 import { MaterialModule } from "@ss/common/api-common";
 import { LtmPickupPointService } from '@ltm/ltm-api';
 import { LTMPickupPoint } from '@ltm/ltm-api';
@@ -18,12 +18,11 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     styleUrls: ['./ltm-pickup-point-detail.component.scss'],
     standalone: true,
     imports: [
-        CommonModule,
-        MaterialModule,
-        TranslateDirective,
-        ReactiveFormsModule,
-        UiAutoCompleteComponent
-    ]
+    MaterialModule,
+    TranslateDirective,
+    ReactiveFormsModule,
+    UiAutoCompleteComponent
+]
 })
 export class LtmPickupPointDetailComponent extends BaseEntityDetailComponent<LTMPickupPoint> {
     private equipmentSrv = inject(LtmEquipmentService);

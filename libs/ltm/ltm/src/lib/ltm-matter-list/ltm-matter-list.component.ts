@@ -7,7 +7,7 @@ import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import {  ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
 import { MaterialModule, PaginatorPersistenceService } from "@ss/common/api-common";
 import {LtmMatterService} from '@ltm/ltm-api';
-import { CommonModule } from "@angular/common";
+
 import { PaginationComponent } from '@ss/common/ui-pagination';
 import { ReactiveFormsModule } from "@angular/forms";
 
@@ -20,12 +20,11 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     styleUrls: ['./ltm-matter-list.component.scss'],
     standalone: true,
     imports: [
-        CommonModule,
-        MaterialModule,
-        PaginationComponent,
-        ReactiveFormsModule,
-        TranslateDirective
-    ],
+    MaterialModule,
+    PaginationComponent,
+    ReactiveFormsModule,
+    TranslateDirective
+],
 })
 export class LtmMatterListComponent  extends BaseEntityListComponent<LTMMatter> implements OnInit {
     // public duplicateButton: ToolbarButton = {

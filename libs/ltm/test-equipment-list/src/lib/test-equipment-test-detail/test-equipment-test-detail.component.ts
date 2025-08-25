@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { BaseChildEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { LtmEquipmentTestService } from '../services/ltm-equipment-test.service';
 import { MatTooltip } from '@angular/material/tooltip';
@@ -16,20 +16,19 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     selector: 'ss-test-equipment-test-detail',
     standalone: true,
     imports: [
-        CommonModule,
-        MatTooltip,
-        MatCard,
-        MatCardContent,
-        MatCardHeader,
-        MatFormField,
-        MatLabel,
-        MatMiniFabButton,
-        MaterialModule,
-        ReactiveFormsModule,
-        TranslatePipe,
-        TranslateDirective,
-        UiAutoCompleteComponent
-    ],
+    MatTooltip,
+    MatCard,
+    MatCardContent,
+    MatCardHeader,
+    MatFormField,
+    MatLabel,
+    MatMiniFabButton,
+    MaterialModule,
+    ReactiveFormsModule,
+    TranslatePipe,
+    TranslateDirective,
+    UiAutoCompleteComponent
+],
     templateUrl: './test-equipment-test-detail.component.html',
     styleUrl: './test-equipment-test-detail.component.scss'
 })

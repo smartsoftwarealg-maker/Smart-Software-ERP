@@ -7,7 +7,7 @@ import { MaterialModule, PaginatorPersistenceService } from "@ss/common/api-comm
 import {LtmLineMatterService} from '@ltm/ltm-api';
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { DefaultReportService } from '@ss/common/ui-default-report-component';
-import { CommonModule } from "@angular/common";
+
 import { ReactiveFormsModule } from "@angular/forms";
 
 import { DatePickerComponent } from "@ss/common/ui-datepicker";
@@ -22,12 +22,11 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     styleUrls: ['./line-matter-list.component.scss'],
     standalone: true,
     imports: [
-        CommonModule,
-        MaterialModule,
-        PaginationComponent,
-        ReactiveFormsModule,
-        TranslateDirective,
-    ],
+    MaterialModule,
+    PaginationComponent,
+    ReactiveFormsModule,
+    TranslateDirective
+],
 })
 export class LineMatterListComponent extends BaseEntityListComponent<LTMLineMatter> {
     private dialog = inject(MatDialog);

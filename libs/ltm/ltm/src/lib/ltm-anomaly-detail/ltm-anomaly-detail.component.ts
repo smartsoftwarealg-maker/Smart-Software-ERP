@@ -4,7 +4,7 @@ import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import { ActivatedRoute, RouterOutlet } from "@angular/router";
 import { ReactiveFormsModule, UntypedFormBuilder, Validators } from "@angular/forms";
 import {  ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
-import { CommonModule } from "@angular/common";
+
 import { LoginService, MaterialModule } from '@ss/common/api-common';
 import { LtmAnomalyService } from '@ltm/ltm-api';
 import { LTMAnomaly } from '@ltm/ltm-api';
@@ -16,11 +16,10 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     styleUrls: ['./ltm-anomaly-detail.component.scss'],
     standalone: true,
     imports: [
-        CommonModule,
-        MaterialModule,
-        ReactiveFormsModule,
-        TranslateDirective
-    ],
+    MaterialModule,
+    ReactiveFormsModule,
+    TranslateDirective
+],
 })
 export class LtmAnomalyDetailComponent extends BaseEntityDetailComponent<LTMAnomaly> {
     #loginSrv = inject(LoginService);

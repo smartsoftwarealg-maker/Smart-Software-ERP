@@ -7,7 +7,7 @@ import { MaterialModule, PaginatorPersistenceService } from "@ss/common/api-comm
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { DefaultReportService } from '@ss/common/ui-default-report-component';
 import { LtmMixtureService } from '@ltm/ltm-api';
-import { CommonModule } from '@angular/common';
+
 import { ReactiveFormsModule } from '@angular/forms';
 import { PaginationComponent } from '@ss/common/ui-pagination';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
@@ -18,12 +18,11 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     styleUrls: ['./ltm-mixture-list.component.scss'],
     standalone: true,
     imports: [
-        CommonModule,
-        MaterialModule,
-        TranslateDirective,
-        PaginationComponent,
-        ReactiveFormsModule
-    ],
+    MaterialModule,
+    TranslateDirective,
+    PaginationComponent,
+    ReactiveFormsModule
+],
 
 })
 export class LTMMixtureListComponent extends BaseEntityListComponent<LTMMixture> {

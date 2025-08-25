@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, RouterOutlet } from '@angular/router';
@@ -18,16 +18,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
 @Component({
     selector: 'ss-test-equipment-detail',
     standalone: true,
-    imports: [CommonModule,
-        MatCard,
-        MatFormField,
-        MatInput,
-        MatLabel,
-        MaterialModule,
-        ReactiveFormsModule,
-        RouterOutlet,
-        TranslateDirective
-    ],
+    imports: [MatCard, MatFormField, MatInput, MatLabel, MaterialModule, ReactiveFormsModule, RouterOutlet, TranslateDirective],
     templateUrl: './test-equipment-detail.component.html',
     styleUrl: './test-equipment-detail.component.scss'
 })

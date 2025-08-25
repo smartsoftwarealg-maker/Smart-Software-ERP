@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -25,22 +25,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
 @Component({
     selector: 'ss-test-equipment-list',
     standalone: true,
-    imports: [CommonModule,
-              PaginationComponent,
-              MatCell,
-              MatCellDef,
-              MatColumnDef,
-              MatHeaderCell,
-              MatHeaderRow,
-              MatHeaderRowDef,
-              MatRow,
-              MatRowDef,
-              MatSort,
-              MatSortHeader,
-              MatTable,
-              MatHeaderCellDef,
-              TranslateDirective
-    ],
+    imports: [PaginationComponent, MatCell, MatCellDef, MatColumnDef, MatHeaderCell, MatHeaderRow, MatHeaderRowDef, MatRow, MatRowDef, MatSort, MatSortHeader, MatTable, MatHeaderCellDef, TranslateDirective],
     templateUrl: './test-equipment-list.component.html',
     styleUrl: './test-equipment-list.component.scss',
 })

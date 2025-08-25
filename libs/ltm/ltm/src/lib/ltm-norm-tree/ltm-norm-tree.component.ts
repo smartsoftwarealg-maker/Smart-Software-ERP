@@ -55,6 +55,7 @@ export class LtmNormTreeComponent extends BaseEntityListComponent<NormTree> impl
     override ngOnInit() {
         this.deleteButton.visible = false;
         this.addButton.visible = false;
+        this.editButton.visible = false;
         super.ngOnInit();
     }
 

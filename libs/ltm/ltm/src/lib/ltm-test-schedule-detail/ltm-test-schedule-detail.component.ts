@@ -2,7 +2,7 @@ import { Component, inject } from '@angular/core';
 
 import { FormBuilder, ReactiveFormsModule, UntypedFormGroup } from "@angular/forms";
 import { LTMTestSchedule } from '@ltm/ltm-api';
-import { CommonModule } from "@angular/common";
+
 import { MaterialModule } from "@ss/common/api-common";
 import { DatePickerComponent } from "@ss/common/ui-datepicker";
 import { BaseChildEntityDetailComponent } from "@ss/common/ui-base-entity";
@@ -15,13 +15,12 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     styleUrls: ['../line-matter-detail/line-matter-detail.component.scss'],
     standalone: true,
     imports: [
-        CommonModule,
-        MaterialModule,
-        ReactiveFormsModule,
-        DatePickerComponent,
-        TranslateDirective,
-        TranslatePipe
-    ]
+    MaterialModule,
+    ReactiveFormsModule,
+    DatePickerComponent,
+    TranslateDirective,
+    TranslatePipe
+]
 })
 export class LtmTestScheduleDetailComponent extends BaseChildEntityDetailComponent<LTMTestSchedule> {
     private fb = inject(FormBuilder);

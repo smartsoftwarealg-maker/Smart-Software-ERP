@@ -1,43 +1,40 @@
 <mat-card>
-    <form *ngIf="form !== null" [formGroup]="form">
-        <mat-form-field class="default-50" autofocus>
-            <mat-label translate>COMMON_DATE</mat-label>
-            <ss-date-picker formControlName="date" required="true" [type]="'date'"></ss-date-picker>
-            @if (form.controls['date'].invalid) {
-                <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
-            }
-        </mat-form-field>
-
-        <mat-form-field class="default-50">
-            <mat-label translate>COMMON_FROM</mat-label>
-            <ss-date-picker formControlName="from" required="true" [type]="'date'"></ss-date-picker>
-            @if (form.controls['from'].invalid) {
-                <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
-            }
-        </mat-form-field>
-
-        <mat-form-field class="default-50">
-            <mat-label translate>COMMON_TO</mat-label>
-            <ss-date-picker formControlName="to" required="true" [type]="'date'"></ss-date-picker>
-            @if (form.controls['to'].invalid) {
-                <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
-            }
-        </mat-form-field>
-
-        <mat-form-field class="default-50">
-            <mat-label translate>ADMINISTRATION_SIGNER</mat-label>
-            <input matInput formControlName="signer" type="text" min="0" max="10" >
-        </mat-form-field>
-
-        <mat-form-field class="default-100">
-            <mat-label translate>COMMON_DESCRIPTION</mat-label>
-            <textarea cols="80" rows="5" matInput formControlName="description"></textarea>
-        </mat-form-field>
-
+  @if (form !== null) {
+    <form [formGroup]="form">
+      <mat-form-field class="default-50" autofocus>
+        <mat-label translate>COMMON_DATE</mat-label>
+        <ss-date-picker formControlName="date" required="true" [type]="'date'"></ss-date-picker>
+        @if (form.controls['date'].invalid) {
+          <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+        }
+      </mat-form-field>
+      <mat-form-field class="default-50">
+        <mat-label translate>COMMON_FROM</mat-label>
+        <ss-date-picker formControlName="from" required="true" [type]="'date'"></ss-date-picker>
+        @if (form.controls['from'].invalid) {
+          <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+        }
+      </mat-form-field>
+      <mat-form-field class="default-50">
+        <mat-label translate>COMMON_TO</mat-label>
+        <ss-date-picker formControlName="to" required="true" [type]="'date'"></ss-date-picker>
+        @if (form.controls['to'].invalid) {
+          <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+        }
+      </mat-form-field>
+      <mat-form-field class="default-50">
+        <mat-label translate>ADMINISTRATION_SIGNER</mat-label>
+        <input matInput formControlName="signer" type="text" min="0" max="10" >
+      </mat-form-field>
+      <mat-form-field class="default-100">
+        <mat-label translate>COMMON_DESCRIPTION</mat-label>
+        <textarea cols="80" rows="5" matInput formControlName="description"></textarea>
+      </mat-form-field>
     </form>
+  }
 </mat-card>
 @if (form !== null && id) {
-    <div class="detail__div">
-        <router-outlet></router-outlet>
-    </div>
+  <div class="detail__div">
+    <router-outlet></router-outlet>
+  </div>
 }

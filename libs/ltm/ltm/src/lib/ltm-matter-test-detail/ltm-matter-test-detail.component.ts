@@ -10,7 +10,7 @@ import {LTMMatterTest} from '@ltm/ltm-api';
 import {LtmTestService} from '@ltm/ltm-api';
 import {LtmMatterTestService} from '@ltm/ltm-api';
 import {LtmPeriodicityService} from '@ltm/ltm-api';
-import { CommonModule } from "@angular/common";
+
 import { LoginService, MaterialModule } from '@ss/common/api-common';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
@@ -20,13 +20,12 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     styleUrls: ['../line-matter-detail/line-matter-detail.component.scss'],
     standalone: true,
     imports: [
-        CommonModule,
-        MaterialModule,
-        TranslateDirective,
-        ReactiveFormsModule,
-        TranslatePipe,
-        UiAutoCompleteComponent
-    ]
+    MaterialModule,
+    TranslateDirective,
+    ReactiveFormsModule,
+    TranslatePipe,
+    UiAutoCompleteComponent
+]
 })
 export class LtmMatterTestDetailComponent implements OnInit {
     private loginSrv = inject(LoginService);

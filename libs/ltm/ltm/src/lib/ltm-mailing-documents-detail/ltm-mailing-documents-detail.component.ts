@@ -2,7 +2,7 @@ import { Component, inject } from '@angular/core';
 import { DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
 import { FormBuilder, ReactiveFormsModule, UntypedFormGroup, Validators } from '@angular/forms';
 import {LTMMailingDocument} from '@ltm/ltm-api';
-import { CommonModule } from "@angular/common";
+
 import { MaterialModule } from "@ss/common/api-common";
 import { BaseChildEntityDetailComponent } from "@ss/common/ui-base-entity";
 import { LtmMatterService } from '@ltm/ltm-api';
@@ -15,12 +15,11 @@ import { LtmMailingDocumentService } from '@ltm/ltm-api';
     styleUrls: ['../line-matter-detail/line-matter-detail.component.scss'],
     standalone: true,
     imports: [
-        CommonModule,
-        MaterialModule,
-        ReactiveFormsModule,
-        TranslateDirective,
-        TranslatePipe
-    ]
+    MaterialModule,
+    ReactiveFormsModule,
+    TranslateDirective,
+    TranslatePipe
+]
 })
 export class LtmMailingDocumentsDetailComponent extends BaseChildEntityDetailComponent<LTMMailingDocument> {
     private articleSrv = inject(LtmMatterService);

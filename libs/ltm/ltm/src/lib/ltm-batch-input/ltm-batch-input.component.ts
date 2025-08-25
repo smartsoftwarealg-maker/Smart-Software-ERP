@@ -28,7 +28,7 @@ import { filter, map, merge, Observable, Subscription } from 'rxjs';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { LtmTestService } from '@ltm/ltm-api';
 import { dateToYmdStr, LoginService, MaterialModule } from '@ss/common/api-common';
-import { CommonModule } from '@angular/common';
+
 import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { LTMSiloService } from '@ltm/ltm-api';
 import { LtmSupplierService } from '@ltm/ltm-api';
@@ -64,16 +64,15 @@ type ColorRange = {
     styleUrls: ['./ltm-batch-input.component.scss'],
     standalone: true,
     imports: [
-        CommonModule,
-        MaterialModule,
-        TranslateDirective,
-        TranslatePipe,
-        ReactiveFormsModule,
-        DatePickerComponent,
-        RouterOutlet,
-        TranslatePipe,
-        UiAutoCompleteComponent
-    ]
+    MaterialModule,
+    TranslateDirective,
+    TranslatePipe,
+    ReactiveFormsModule,
+    DatePickerComponent,
+    RouterOutlet,
+    TranslatePipe,
+    UiAutoCompleteComponent
+]
 })
 export class LtmBatchInputComponent implements OnInit, OnDestroy {
     #destroyRef = inject(DestroyRef);

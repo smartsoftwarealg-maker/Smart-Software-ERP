@@ -2,7 +2,7 @@ import { Component, inject } from '@angular/core';
 import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { FormBuilder, ReactiveFormsModule, UntypedFormGroup } from "@angular/forms";
 import { LTMMixtureDetail } from '@ltm/ltm-api';
-import { CommonModule } from "@angular/common";
+
 import { MaterialModule } from "@ss/common/api-common";
 import { BaseChildEntityDetailComponent } from "@ss/common/ui-base-entity";
 import { LtmMixtureDetailService } from '@ltm/ltm-api';
@@ -15,13 +15,12 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     styleUrls: ['../line-matter-detail/line-matter-detail.component.scss'],
     standalone: true,
     imports: [
-        CommonModule,
-        MaterialModule,
-        ReactiveFormsModule,
-        TranslateDirective,
-        TranslatePipe,
-        UiAutoCompleteComponent
-    ]
+    MaterialModule,
+    ReactiveFormsModule,
+    TranslateDirective,
+    TranslatePipe,
+    UiAutoCompleteComponent
+]
 })
 export class LtmMixtureDetailDetailComponent extends BaseChildEntityDetailComponent<LTMMixtureDetail> {
     private articleSrv = inject(LtmMatterService);

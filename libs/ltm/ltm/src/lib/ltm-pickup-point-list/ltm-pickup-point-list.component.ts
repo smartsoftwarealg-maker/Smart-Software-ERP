@@ -5,7 +5,7 @@ import { ActivatedRoute, Router, RouterOutlet } from "@angular/router";
 import {  ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import { MaterialModule, PaginatorPersistenceService } from "@ss/common/api-common";
-import { CommonModule } from "@angular/common";
+
 import { ReactiveFormsModule } from "@angular/forms";
 import { LtmPickupPointService } from '@ltm/ltm-api';
 import { LTMPickupPoint } from '@ltm/ltm-api';
@@ -18,13 +18,11 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     styleUrls: ['./ltm-pickup-point-list.component.scss'],
     standalone: true,
     imports: [
-        CommonModule,
-        MaterialModule,
-        PaginationComponent,
-        ReactiveFormsModule,
-
-        TranslateDirective,
-    ],
+    MaterialModule,
+    PaginationComponent,
+    ReactiveFormsModule,
+    TranslateDirective
+],
 })
 export class LtmPickupPointListComponent extends BaseEntityListComponent<LTMPickupPoint> {
     displayedColumns = ['description', 'equipmentDescription'];
