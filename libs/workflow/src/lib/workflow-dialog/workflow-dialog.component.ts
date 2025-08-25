@@ -2,7 +2,7 @@ import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {UserMessageService} from '../user-message.service';
 import { LoginService, MaterialModule } from '@ss/common/api-common';
-import { map, Observable, of, switchMap, tap } from "rxjs";
+import { map, Observable, of, switchMap, tap } from 'rxjs';
 import {MailBox, UserMessage} from '../workflow-api';
 import {MailBoxService} from '../mail-box.service';
 import {FormControl} from '@angular/forms';

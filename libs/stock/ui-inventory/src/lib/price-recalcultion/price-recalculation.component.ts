@@ -102,11 +102,8 @@ export class PriceRecalculationComponent implements OnInit {
     snackBarSrv = inject(SnackBarService);
     route = inject(ActivatedRoute);
     formBuilder = inject(UntypedFormBuilder);
-    //confirmationSrv = inject(ConfirmationDialogService);
     loginSrv = inject(LoginService);
     optionSrv = inject(OptionService);
-    //lookupsSrv = inject(LookupsService);
-    //currencySrv = inject(CurrencyService);
 
     pagination = PaginationModel.newInstance({
         page: 1,
@@ -145,10 +142,10 @@ export class PriceRecalculationComponent implements OnInit {
                 error: (err) => {
                     this.shellSrv.setLoading(false);
                     this.processing = false;
-                    if (err.statusText?.length > 10) {
-                        throw err;
-                    } else {
+                    if (err.status === 0 || err.status === 502) {
                         this.snackBarSrv.showSuccessMessage();
+                    } else {
+                        throw err;
                     }
                 },
             });

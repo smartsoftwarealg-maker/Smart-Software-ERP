@@ -25,7 +25,7 @@ export class OptionService extends BaseEntityExtendedService<Option> {
 
     recalculateDocument(since: Date, document: number): Observable<ERR[]> {
         const date = isString(since)? since : dateToDmyStr(since);
-        return this.httpSrv.put(`/recalculate?date=${date}&document=${document}`);
+        return this.httpSrv.put(`/recalculate-documents?date=${date}&document=${document}`);
     }
 
     // recalculatePriceFetch(since: Date): Observable<ERR[]> {
