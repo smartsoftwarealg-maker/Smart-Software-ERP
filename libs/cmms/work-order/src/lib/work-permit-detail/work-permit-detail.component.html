@@ -1,105 +1,106 @@
-<div class="size button_div size" *ngIf="form">
-    <button mat-mini-fab (click)="save()"
-            color="primary" *ngIf="isEditable">
+@if (form) {
+  <div class="size button_div size">
+    @if (isEditable) {
+      <button mat-mini-fab (click)="save()"
+        color="primary">
         <i class="fas fa-save"></i>
-    </button>
+      </button>
+    }
     <button mat-mini-fab (click)="cancel()"
-            color="warn">
-        <i class="fas fa-redo"></i>
+      color="warn">
+      <i class="fas fa-redo"></i>
     </button>
-</div>
+  </div>
+}
 <mat-card>
-    <form novalidate [formGroup]="form" *ngIf="form">
-
-        <mat-form-field class="default-50 sm-100">
-            <mat-label translate>COMMON_DATE</mat-label>
-            <ss-date-picker formControlName="date" required="true" [type]="'date'"></ss-date-picker>
-            <mat-error *ngIf="form.controls['date'].invalid" autofocus translate>COMMON_FIELD_REQUIRED</mat-error>
-        </mat-form-field>
-
-        <mat-form-field class="default-50 sm-100">
-            <mat-label translate>COMMON_NUMBER</mat-label>
-            <input matInput formControlName="number" type="number" >
-        </mat-form-field>
-
-        <mat-form-field class="default-100">
-            <mat-label translate>COMMON_DESCRIPTION</mat-label>
-            <input matInput formControlName="description" type="text" required maxlength="60">
-        </mat-form-field>
-
-        <mat-form-field class="default-50 sm-100">
-            <mat-label translate>COMMON_FROM</mat-label>
-            <ss-date-picker formControlName="startDate" required="true" [type]="'datetime'"></ss-date-picker>
-            <mat-error *ngIf="form.controls['startDate'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
-        </mat-form-field>
-
-        <mat-form-field class="default-50 sm-100">
-            <mat-label translate>COMMON_TO</mat-label>
-            <ss-date-picker formControlName="dueDate" [type]="'datetime'"></ss-date-picker>
-            <mat-error *ngIf="form.controls['dueDate'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
-        </mat-form-field>
-
-        <mat-form-field class="default-50 sm-100">
-            <mat-label translate>COMMON_TYPE</mat-label>
-            <ss-auto-complete matInput
-                              [model]="permitLookup"
-                              formControlName="permitType"
-                              required="true">
-            </ss-auto-complete>
-            <mat-error *ngIf="form.controls['permitType'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
-        </mat-form-field>
-
-        <mat-form-field class="default-50 sm-100">
-            <mat-label translate>CMMS_REQUESTER</mat-label>
-            <ss-auto-complete matInput
-                              [model]="personLookup"
-                              formControlName="requester"
-                              required="true">
-            </ss-auto-complete>
-            <mat-error *ngIf="form.controls['requester'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
-        </mat-form-field>
-
-        <mat-form-field class="default-50 sm-100">
-            <mat-label translate>CMMS_AUTHORIZER</mat-label>
-            <ss-auto-complete matInput
-                              [model]="personLookup"
-                              formControlName="authorizer"
-                              required="true">
-            </ss-auto-complete>
-        </mat-form-field>
-
-
-        <mat-form-field class="default-100">
-            <mat-label translate>CMMS_WORK_DETAIL</mat-label>
-            <textarea matInput formControlName="workDetail" rows="5" ></textarea>
-        </mat-form-field>
-
-        <mat-form-field class="default-100">
-            <mat-label translate>CMMS_PRECAUTIONS</mat-label>
-            <textarea matInput formControlName="safetyPrecautions" rows="5" ></textarea>
-        </mat-form-field>
-
-        <mat-form-field class="default-100">
-            <mat-label translate>CMMS_PRE_WORK</mat-label>
-            <textarea matInput formControlName="preWork" rows="5" ></textarea>
-        </mat-form-field>
-
-        <mat-form-field class="default-100">
-            <mat-label translate>CMMS_POST_WORK</mat-label>
-            <textarea matInput formControlName="postWork" rows="5" ></textarea>
-        </mat-form-field>
-
-        <mat-form-field class="default-50 sm-100">
-            <mat-label translate>CMMS_CLOSURE_DATE</mat-label>
-            <ss-date-picker formControlName="closureDate" [type]="'date'"></ss-date-picker>
-        </mat-form-field>
-
-        <mat-form-field class="default-50 sm-100">
-            <mat-label translate>CMMS_CLOSED_BY</mat-label>
-            <ss-auto-complete matInput
-                              [model]="personLookup"
-                              formControlName="closer">
-            </ss-auto-complete>
-        </mat-form-field>
+  @if (form) {
+    <form novalidate [formGroup]="form">
+      <mat-form-field class="default-50 sm-100">
+        <mat-label translate>COMMON_DATE</mat-label>
+        <ss-date-picker formControlName="date" required="true" [type]="'date'"></ss-date-picker>
+        @if (form.controls['date'].invalid) {
+          <mat-error autofocus translate>COMMON_FIELD_REQUIRED</mat-error>
+        }
+      </mat-form-field>
+      <mat-form-field class="default-50 sm-100">
+        <mat-label translate>COMMON_NUMBER</mat-label>
+        <input matInput formControlName="number" type="number" >
+      </mat-form-field>
+      <mat-form-field class="default-100">
+        <mat-label translate>COMMON_DESCRIPTION</mat-label>
+        <input matInput formControlName="description" type="text" required maxlength="60">
+      </mat-form-field>
+      <mat-form-field class="default-50 sm-100">
+        <mat-label translate>COMMON_FROM</mat-label>
+        <ss-date-picker formControlName="startDate" required="true" [type]="'datetime'"></ss-date-picker>
+        @if (form.controls['startDate'].invalid) {
+          <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+        }
+      </mat-form-field>
+      <mat-form-field class="default-50 sm-100">
+        <mat-label translate>COMMON_TO</mat-label>
+        <ss-date-picker formControlName="dueDate" [type]="'datetime'"></ss-date-picker>
+        @if (form.controls['dueDate'].invalid) {
+          <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+        }
+      </mat-form-field>
+      <mat-form-field class="default-50 sm-100">
+        <mat-label translate>COMMON_TYPE</mat-label>
+        <ss-auto-complete matInput
+          [model]="permitLookup"
+          formControlName="permitType"
+          required="true">
+        </ss-auto-complete>
+        @if (form.controls['permitType'].invalid) {
+          <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+        }
+      </mat-form-field>
+      <mat-form-field class="default-50 sm-100">
+        <mat-label translate>CMMS_REQUESTER</mat-label>
+        <ss-auto-complete matInput
+          [model]="personLookup"
+          formControlName="requester"
+          required="true">
+        </ss-auto-complete>
+        @if (form.controls['requester'].invalid) {
+          <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+        }
+      </mat-form-field>
+      <mat-form-field class="default-50 sm-100">
+        <mat-label translate>CMMS_AUTHORIZER</mat-label>
+        <ss-auto-complete matInput
+          [model]="personLookup"
+          formControlName="authorizer"
+          required="true">
+        </ss-auto-complete>
+      </mat-form-field>
+      <mat-form-field class="default-100">
+        <mat-label translate>CMMS_WORK_DETAIL</mat-label>
+        <textarea matInput formControlName="workDetail" rows="5" ></textarea>
+      </mat-form-field>
+      <mat-form-field class="default-100">
+        <mat-label translate>CMMS_PRECAUTIONS</mat-label>
+        <textarea matInput formControlName="safetyPrecautions" rows="5" ></textarea>
+      </mat-form-field>
+      <mat-form-field class="default-100">
+        <mat-label translate>CMMS_PRE_WORK</mat-label>
+        <textarea matInput formControlName="preWork" rows="5" ></textarea>
+      </mat-form-field>
+      <mat-form-field class="default-100">
+        <mat-label translate>CMMS_POST_WORK</mat-label>
+        <textarea matInput formControlName="postWork" rows="5" ></textarea>
+      </mat-form-field>
+      <mat-form-field class="default-50 sm-100">
+        <mat-label translate>CMMS_CLOSURE_DATE</mat-label>
+        <ss-date-picker formControlName="closureDate" [type]="'date'"></ss-date-picker>
+      </mat-form-field>
+      <mat-form-field class="default-50 sm-100">
+        <mat-label translate>CMMS_CLOSED_BY</mat-label>
+        <ss-auto-complete matInput
+          [model]="personLookup"
+          formControlName="closer">
+        </ss-auto-complete>
+      </mat-form-field>
     </form>
+  }
 </mat-card>

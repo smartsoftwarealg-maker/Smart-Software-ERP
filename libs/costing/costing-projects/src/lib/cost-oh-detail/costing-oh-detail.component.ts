@@ -1,33 +1,38 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { BaseChildEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { OH } from '@ss/costing/costing-utils';
 import { FormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
-import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
+import {
+    DefaultAutoCompleteModel,
+    UiAutoCompleteComponent,
+} from '@ss/common/ui-auto-complete';
 import { RouterModule } from '@angular/router';
 import { MaterialModule } from '@ss/common/api-common';
-
 
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { ProductLineKeysService } from '@ss/costing/costing-projects';
 import { CostingOhService } from '@ss/costing/costing-projects';
 import { CostingKeyService } from '@ss/costing/costing-keys';
+import { TranslateDirective } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-product-line-detail',
     standalone: true,
     imports: [
-        CommonModule,
         RouterModule,
         MaterialModule,
         MatAutocompleteModule,
-        UiAutoCompleteComponent
-
+        UiAutoCompleteComponent,
+        TranslateDirective,
     ],
     templateUrl: './costing-oh-detail.component.html',
-    styleUrls: ['./costing-oh-detail.component.scss']
+    styleUrls: ['./costing-oh-detail.component.scss'],
 })
-export class CostingOhDetailComponent extends BaseChildEntityDetailComponent<OH> implements OnInit {
+export class CostingOhDetailComponent
+    extends BaseChildEntityDetailComponent<OH>
+    implements OnInit
+{
     private keySrv = inject(CostingKeyService);
     private fb = inject(FormBuilder);
 
@@ -41,11 +46,11 @@ export class CostingOhDetailComponent extends BaseChildEntityDetailComponent<OH>
     override setupForm(e: OH): UntypedFormGroup {
         this.lineSrv.setParentId(e?.id || 0);
         return this.fb.group({
-            id:           [e.id],
-            parentId:     [e.parentId, Validators.required],
-            keyId:        [e.keyId],
-            description:  [e.description, Validators.required],
-            amount:       [e.amount || 0, Validators.min(1)],
+            id: [e.id],
+            parentId: [e.parentId, Validators.required],
+            keyId: [e.keyId],
+            description: [e.description, Validators.required],
+            amount: [e.amount || 0, Validators.min(1)],
         });
     }
 }

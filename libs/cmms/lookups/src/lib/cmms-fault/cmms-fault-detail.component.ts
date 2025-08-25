@@ -5,7 +5,7 @@ import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { ReactiveFormsModule, UntypedFormBuilder } from '@angular/forms';
 import { BaseLookupDetailClass } from '../detail-template/base-lookup-detail.class';
 import { CMMSFaultService } from '../services/cmms.fault.service';
-import { CommonModule } from '@angular/common';
+
 
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
@@ -23,17 +23,15 @@ import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
     styleUrls: ['../detail-template/cmms-fault-detail.component.css'],
     standalone: true,
     imports: [
-        CommonModule,
-        MatSortModule,
-        MatTableModule,
-
-        MatCardModule,
-        MatFormFieldModule,
-        MatInputModule,
-        MaterialModule,
-        ReactiveFormsModule,
-        RouterOutlet
-    ],
+    MatSortModule,
+    MatTableModule,
+    MatCardModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MaterialModule,
+    ReactiveFormsModule,
+    RouterOutlet
+],
 })
 export class CMMSFaultDetailComponent extends BaseLookupDetailClass {
     constructor(

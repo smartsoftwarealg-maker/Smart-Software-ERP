@@ -1,43 +1,50 @@
-<div class="size button_div size" *ngIf="form">
-    <button mat-mini-fab (click)="save()"
-            color="primary" *ngIf="isEditable">
+@if (form) {
+  <div class="size button_div size">
+    @if (isEditable) {
+      <button mat-mini-fab (click)="save()"
+        color="primary">
         <i class="fas fa-save"></i>
-    </button>
+      </button>
+    }
     <button mat-mini-fab (click)="cancel()"
-            color="warn">
-        <i class="fas fa-redo"></i>
+      color="warn">
+      <i class="fas fa-redo"></i>
     </button>
-</div>
+  </div>
+}
 <mat-card>
-    <form novalidate [formGroup]="form" *ngIf="form">
-
-        <mat-form-field class="default-50 sm-100">
-            <mat-label translate>PAYROLL_EMPLOYEE</mat-label>
-            <ss-auto-complete matInput
-                              [model]="personLookup"
-                              formControlName="personId"
-                              required="true"
-                              autofocus>
-            </ss-auto-complete>
-            <mat-error *ngIf="form.controls['personId'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
-        </mat-form-field>
-
-        <mat-form-field class="default-50 sm-100">
-            <mat-label translate>COMMON_DESCRIPTION</mat-label>
-            <input matInput formControlName="description" type="text" required maxlength="60">
-        </mat-form-field>
-
-        <mat-form-field class="default-50 sm-100">
-            <mat-label translate>COMMON_FROM</mat-label>
-            <ss-date-picker formControlName="from" required="true" [type]="'datetime'"></ss-date-picker>
-            <mat-error *ngIf="form.controls['from'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
-        </mat-form-field>
-
-        <mat-form-field class="default-50 sm-100">
-            <mat-label translate>COMMON_TO</mat-label>
-            <ss-date-picker formControlName="to" required="true" [type]="'datetime'"></ss-date-picker>
-            <mat-error *ngIf="form.controls['to'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
-        </mat-form-field>
-
+  @if (form) {
+    <form novalidate [formGroup]="form">
+      <mat-form-field class="default-50 sm-100">
+        <mat-label translate>PAYROLL_EMPLOYEE</mat-label>
+        <ss-auto-complete matInput
+          [model]="personLookup"
+          formControlName="personId"
+          required="true"
+          autofocus>
+        </ss-auto-complete>
+        @if (form.controls['personId'].invalid) {
+          <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+        }
+      </mat-form-field>
+      <mat-form-field class="default-50 sm-100">
+        <mat-label translate>COMMON_DESCRIPTION</mat-label>
+        <input matInput formControlName="description" type="text" required maxlength="60">
+      </mat-form-field>
+      <mat-form-field class="default-50 sm-100">
+        <mat-label translate>COMMON_FROM</mat-label>
+        <ss-date-picker formControlName="from" required="true" [type]="'datetime'"></ss-date-picker>
+        @if (form.controls['from'].invalid) {
+          <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+        }
+      </mat-form-field>
+      <mat-form-field class="default-50 sm-100">
+        <mat-label translate>COMMON_TO</mat-label>
+        <ss-date-picker formControlName="to" required="true" [type]="'datetime'"></ss-date-picker>
+        @if (form.controls['to'].invalid) {
+          <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+        }
+      </mat-form-field>
     </form>
+  }
 </mat-card>

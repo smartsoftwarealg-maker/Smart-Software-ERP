@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { BaseChildEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { CmmsPersonService, WorkPermit } from "@ss/cmms/cmms-api";
 import { CMMSWorkPermitService } from '../services/c-m-m-s-work-permit.service';
@@ -21,19 +21,17 @@ import { CMMSPermitTypeService } from "@ss/cmms/lookups";
     selector: 'ss-work-permit-detail',
     standalone: true,
     imports: [
-        CommonModule,
-        MatTableModule,
-
-        FormsModule,
-        MatFormFieldModule,
-        ReactiveFormsModule,
-        MatCardModule,
-        MatInputModule,
-        DatePickerComponent,
-        MatButtonModule,
-        MaterialModule,
-        UiAutoCompleteComponent
-    ],
+    MatTableModule,
+    FormsModule,
+    MatFormFieldModule,
+    ReactiveFormsModule,
+    MatCardModule,
+    MatInputModule,
+    DatePickerComponent,
+    MatButtonModule,
+    MaterialModule,
+    UiAutoCompleteComponent
+],
     templateUrl: './work-permit-detail.component.html',
     styleUrl: './work-permit-detail.component.css'
 })

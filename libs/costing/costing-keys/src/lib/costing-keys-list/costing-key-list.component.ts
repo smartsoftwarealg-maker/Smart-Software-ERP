@@ -6,7 +6,7 @@ import { DefaultReportService } from '@ss/common/ui-default-report-component';
 import {  ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { MaterialModule, PaginatorPersistenceService } from '@ss/common/api-common';
 import { CostingKeyService } from '../costing-key.service';
-import { CommonModule } from '@angular/common';
+
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { DatePickerComponent } from '@ss/common/ui-datepicker';
@@ -21,17 +21,12 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     styleUrls: ['./costing-key-list.component.scss'],
     standalone: true,
     imports: [
-        CommonModule,
-        RouterModule,
-        MaterialModule,
-        TranslateDirective,
-        ReactiveFormsModule,
-
-
-       
-        PaginationComponent
-
-    ],
+    RouterModule,
+    MaterialModule,
+    TranslateDirective,
+    ReactiveFormsModule,
+    PaginationComponent
+],
     animations: [slideToRight]
 })
 export class CostingKeyListComponent extends BaseEntityListComponent<CKey> implements OnInit {

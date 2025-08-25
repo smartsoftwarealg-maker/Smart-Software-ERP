@@ -5,7 +5,7 @@ import { ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup,
 import { ActivatedRoute, RouterModule } from "@angular/router";
 import { slideToRight } from "@ss/costing/costing-utils";
 import { CItem } from '@ss/costing/costing-utils';
-import { CommonModule } from "@angular/common";
+
 import { MaterialModule } from "@ss/common/api-common";
 
 import { DatePickerComponent } from "@ss/common/ui-datepicker";
@@ -23,15 +23,12 @@ import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
   styleUrls: ["./costing-item-detail.component.scss"],
   standalone: true,
     imports: [
-        CommonModule,
-        RouterModule,
-        MaterialModule,
-        TranslateDirective,
-        ReactiveFormsModule,
-        UiAutoCompleteComponent
-
-
-    ],
+    RouterModule,
+    MaterialModule,
+    TranslateDirective,
+    ReactiveFormsModule,
+    UiAutoCompleteComponent
+],
   animations: [slideToRight]
 })
 export class CostingItemDetailComponent extends BaseEntityDetailComponent<CItem> implements OnInit {

@@ -1,6 +1,6 @@
 import { Component, HostBinding, inject, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
-import { CommonModule } from '@angular/common';
+
 import { CostingProjectService } from '../services/costing-project.service';
 import { MaterialModule, PaginatorPersistenceService } from '@ss/common/api-common';
 import {  ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
@@ -21,14 +21,13 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     styleUrls: ['./costing-project-list.component.scss'],
     standalone: true,
     imports: [
-        CommonModule,
-        RouterModule,
-        MaterialModule,
-        TranslateDirective,
-        TranslatePipe,
-        CostingReportsComponent,
-        PaginationComponent
-    ],
+    RouterModule,
+    MaterialModule,
+    TranslateDirective,
+    TranslatePipe,
+    CostingReportsComponent,
+    PaginationComponent
+],
     animations: [slideToRight]
 })
 export class CostingProjectListComponent extends BaseEntityListComponent<CProject> implements OnInit {

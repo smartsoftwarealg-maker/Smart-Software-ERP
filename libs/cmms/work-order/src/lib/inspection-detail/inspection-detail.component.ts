@@ -1,14 +1,17 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { CMMSWorkDetail, IS_INSPECTION, Work } from "@ss/cmms/cmms-api";
+import { CMMSWorkDetail, IS_INSPECTION, Work } from '@ss/cmms/cmms-api';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
-import { ActivatedRoute, RouterOutlet } from '@angular/router';
-import { FormsModule, ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
+import {
+    FormsModule,
+    ReactiveFormsModule,
+    UntypedFormBuilder,
+    UntypedFormGroup,
+} from '@angular/forms';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { DOC_WORK_ORDER } from '@ss/logistics/api-transaction';
 import { Observable } from 'rxjs';
-import { CommonModule } from '@angular/common';
 import { MatTableModule } from '@angular/material/table';
-
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
@@ -18,9 +21,8 @@ import { MaterialModule } from '@ss/common/api-common';
 import { CMMSInspectionOrderService } from '../services/c-m-m-s-inspection-order.service';
 import { InspectionDetailListComponent } from '../inspection-detail-list/inspection-detail-list.component';
 import { CMMSInspectionService } from '../services/c-m-m-s-inspection.service';
-import { PaginationComponent } from '@ss/common/ui-pagination';
 import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
-import { TranslatePipe } from '@ss/common/ui-lang';
+import { TranslateDirective } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-inspection-detail',
@@ -28,7 +30,6 @@ import { TranslatePipe } from '@ss/common/ui-lang';
     styleUrls: ['./inspection-detail.component.css'],
     standalone: true,
     imports: [
-        CommonModule,
         MatTableModule,
         FormsModule,
         MatFormFieldModule,
@@ -40,9 +41,13 @@ import { TranslatePipe } from '@ss/common/ui-lang';
         MaterialModule,
         InspectionDetailListComponent,
         UiAutoCompleteComponent,
-    ]
+        TranslateDirective,
+    ],
 })
-export class InspectionDetailComponent extends CMMSWorkDetail implements OnInit {
+export class InspectionDetailComponent
+    extends CMMSWorkDetail
+    implements OnInit
+{
     private CONTROLS = ['actualStart', 'actualDue', 'memo', 'failsInspection'];
     private detailSrv = inject(CMMSInspectionService);
 
@@ -52,8 +57,10 @@ export class InspectionDetailComponent extends CMMSWorkDetail implements OnInit 
         public override snackBarSrv: SnackBarService,
         public override route: ActivatedRoute,
         public override formBuilder: UntypedFormBuilder,
-        public override confirmationSrv: ConfirmationDialogService) {
-        super(entitySrv,
+        public override confirmationSrv: ConfirmationDialogService,
+    ) {
+        super(
+            entitySrv,
             shellSrv,
             snackBarSrv,
             route,
@@ -61,7 +68,8 @@ export class InspectionDetailComponent extends CMMSWorkDetail implements OnInit 
             confirmationSrv,
             DOC_WORK_ORDER,
             'CMMS_INSPECTION',
-            IS_INSPECTION);
+            IS_INSPECTION,
+        );
     }
 
     override loadEntity(id: number): Observable<Work> {
@@ -73,7 +81,7 @@ export class InspectionDetailComponent extends CMMSWorkDetail implements OnInit 
         const form = super.setupForm(e);
         this.saveButton.visible = !e.id;
         form.disable();
-        this.CONTROLS.forEach(c => form.controls[c].enable());
+        this.CONTROLS.forEach((c) => form.controls[c].enable());
         return form;
     }
 }

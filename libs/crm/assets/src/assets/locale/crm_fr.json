@@ -18,11 +18,14 @@
     "CONTACTS":             "Contacts",
     "WEB":                  "Web",
     "PRIORITY":             "Priorité",
-    "ESTIMATED_VALUE":     "Valeur estimée",
-    "LOW":                 "Faible",
-    "MEDIUM":              "Moyen",
-    "HIGH":                "Haut",
-    "CRITICAL":            "Critique",
+    "ESTIMATED_VALUE":      "Valeur estimée",
+    "LOW":                  "Faible",
+    "MEDIUM":               "Moyen",
+    "HIGH":                 "Haut",
+    "CRITICAL":             "Critique",
     "SCORE":                "Score",
-    "OWNER":               "Propriétaire"
+    "OWNER":                "Propriétaire",
+    "CONTACT_DETAIL":       "Coordonnées",
+    "COMPANY_DETAIL":       "Détails de l'entreprise",
+    "PROGRESS":             "Progrès"
 }

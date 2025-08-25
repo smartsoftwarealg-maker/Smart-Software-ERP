@@ -1,5 +1,5 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { BaseChildEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { CProductLine } from '@ss/costing/costing-utils';
 import { FormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
@@ -23,17 +23,14 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     selector: 'ss-product-line-detail',
     standalone: true,
     imports: [
-        CommonModule,
-        RouterModule,
-        MaterialModule,
-        TranslateDirective,
-
-        MatAutocompleteModule,
-
-        ProductLineKeysComponent,
-        CProductLineCostComponent,
-        UiAutoCompleteComponent
-    ],
+    RouterModule,
+    MaterialModule,
+    TranslateDirective,
+    MatAutocompleteModule,
+    ProductLineKeysComponent,
+    CProductLineCostComponent,
+    UiAutoCompleteComponent
+],
     templateUrl: './product-line-detail.component.html',
     styleUrls: ['./product-line-detail.component.css']
 })

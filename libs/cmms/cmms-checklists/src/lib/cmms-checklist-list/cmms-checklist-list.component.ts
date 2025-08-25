@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSortModule } from '@angular/material/sort';
@@ -19,7 +19,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 @Component({
     selector: 'ss-cmms-checklist',
     standalone: true,
-    imports: [CommonModule, MatCheckboxModule, MatSortModule, MatTableModule, PaginationComponent, TranslatePipe, TranslateDirective],
+    imports: [MatCheckboxModule, MatSortModule, MatTableModule, PaginationComponent, TranslatePipe, TranslateDirective],
     templateUrl: './cmms-checklist-list.component.html',
     styleUrls: ['./cmms-checklist-list.component.css'],
 })

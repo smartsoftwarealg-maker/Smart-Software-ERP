@@ -7,7 +7,7 @@ import { DefaultReportService } from '@ss/common/ui-default-report-component';
 import { MaterialModule, PaginatorPersistenceService } from "@ss/common/api-common";
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { CMMSFaultService } from '../services/cmms.fault.service';
-import { CommonModule } from "@angular/common";
+
 import { MatSortModule } from "@angular/material/sort";
 import { MatTableModule } from "@angular/material/table";
 import { MatCardModule } from "@angular/material/card";
@@ -23,18 +23,17 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     styleUrls: ['../list-template/cmms-fault-list.component.css'],
     standalone: true,
     imports: [
-        CommonModule,
-        MatSortModule,
-        MatTableModule,
-        PaginationComponent,
-        MatCardModule,
-        MatFormFieldModule,
-        MatInputModule,
-        MaterialModule,
-        ReactiveFormsModule,
-        TranslatePipe,
-        TranslateDirective
-    ],
+    MatSortModule,
+    MatTableModule,
+    PaginationComponent,
+    MatCardModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MaterialModule,
+    ReactiveFormsModule,
+    TranslatePipe,
+    TranslateDirective
+],
 })
 export class CMMSFaultListComponent extends BaseEntityListComponent<Lookup> {
     displayedColumns = ['description', 'descriptionAr'];

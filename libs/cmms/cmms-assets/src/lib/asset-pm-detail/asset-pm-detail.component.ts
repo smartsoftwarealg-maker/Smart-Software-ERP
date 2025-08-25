@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { BaseChildEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { PM } from '@ss/cmms/cmms-api';
 import { AssetPmService } from '../services/asset-pm.service';
@@ -27,17 +27,16 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     selector: 'ss-asset-pm-detail',
     standalone: true,
     imports: [
-        CommonModule,
-        DatePickerComponent,
-        TranslateDirective,
-        MatCardModule,
-        MatFormFieldModule,
-        MatInputModule,
-        ReactiveFormsModule,
-        MatButtonModule,
-        MaterialModule,
-        UiAutoCompleteComponent
-    ],
+    DatePickerComponent,
+    TranslateDirective,
+    MatCardModule,
+    MatFormFieldModule,
+    MatInputModule,
+    ReactiveFormsModule,
+    MatButtonModule,
+    MaterialModule,
+    UiAutoCompleteComponent
+],
     templateUrl: './asset-pm-detail.component.html',
     styleUrls: ['./asset-pm-detail.component.css'],
 })

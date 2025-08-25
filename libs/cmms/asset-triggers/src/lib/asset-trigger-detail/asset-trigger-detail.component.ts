@@ -6,7 +6,7 @@ import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui
 import { FormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { CMMSAssetTriggerService } from '../cmms-asset-trigger.service';
 import { AssetsService } from '@ss/assets-component';
-import { CommonModule } from '@angular/common';
+
 
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
@@ -20,14 +20,13 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     styleUrls: ['./asset-trigger-detail.component.css'],
     standalone: true,
     imports: [
-        CommonModule,
-        MatSortModule,
-        MatTableModule,
-        TranslateDirective,
-        MaterialModule,
-        UiAutoCompleteComponent,
-        TranslateDirective
-    ],
+    MatSortModule,
+    MatTableModule,
+    TranslateDirective,
+    MaterialModule,
+    UiAutoCompleteComponent,
+    TranslateDirective
+],
 })
 export class AssetTriggerDetailComponent extends BaseChildEntityDetailComponent<AssetTrigger> {
     private assetSrv = inject(AssetsService);

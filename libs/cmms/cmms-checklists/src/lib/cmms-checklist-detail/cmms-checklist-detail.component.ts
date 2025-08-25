@@ -8,7 +8,7 @@ import { Lookup, LookupsService } from '@ss/common/api-lookup';
 import { filter, Observable } from 'rxjs';
 import { AppArchiveService, CMMS_ROUTING_ARCHIVES } from '@ss/common/app-archive';
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
-import { CommonModule } from '@angular/common';
+
 
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSortModule } from '@angular/material/sort';
@@ -21,15 +21,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 @Component({
     selector: 'ss-cmms-routing-detail',
     standalone: true,
-    imports: [CommonModule,
-
-        MatCheckboxModule,
-        MatSortModule,
-        MatTableModule,
-        MaterialModule,
-        RouterOutlet,
-        TranslateDirective, TranslatePipe
-    ],
+    imports: [MatCheckboxModule, MatSortModule, MatTableModule, MaterialModule, RouterOutlet, TranslateDirective, TranslatePipe],
     templateUrl: 'cmms-checklist-detail.component.html',
     styleUrls: ['cmms-checklist-detail.component.css']
 })

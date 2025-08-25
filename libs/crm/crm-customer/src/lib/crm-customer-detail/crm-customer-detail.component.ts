@@ -64,7 +64,7 @@ import { CenterService } from '@ss/administration/api-center';
 import { MatDialog } from '@angular/material/dialog';
 import { CrmCustomerImportComponent } from '../crm-customer-import/crm-customer-import.component';
 import { AgentPriceService } from '@ss/logistics/api-agent-price';
-import { CommonModule } from '@angular/common';
+
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 import { ChildAttributesComponent } from '@ss/custom-attributes';
 import { OptionService } from '@ss/logistics/ui-options';
@@ -75,15 +75,14 @@ import { OptionService } from '@ss/logistics/ui-options';
     templateUrl: './crm-customer-detail.component.html',
     standalone: true,
     imports: [
-        CommonModule,
-        MaterialModule,
-        TranslateDirective,
-        TranslatePipe,
-        ReactiveFormsModule,
-        AppArchiveMainComponent,
-        UiAutoCompleteComponent,
-        ChildAttributesComponent,
-    ],
+    MaterialModule,
+    TranslateDirective,
+    TranslatePipe,
+    ReactiveFormsModule,
+    AppArchiveMainComponent,
+    UiAutoCompleteComponent,
+    ChildAttributesComponent
+],
 })
 export class CrmCustomerDetailComponent
     extends BaseEntityDetailComponent<Agent>

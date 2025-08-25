@@ -1,5 +1,4 @@
 import { Component, inject, signal } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { BaseChildEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { CPool } from '@ss/costing/costing-utils';
 import { FormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
@@ -9,34 +8,25 @@ import { CostingKeyService } from '@ss/costing/costing-keys';
 import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { RouterModule } from '@angular/router';
 import { MaterialModule } from '@ss/common/api-common';
-
-
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { CostingPoolKeysService } from '../services/costing-pool-keys.service';
 import { CostingPoolKeysComponent } from '../costing-pool-keys/costing-pool-keys.component';
-import { CProductLineCostComponent } from '../product-line-costs/product-line-items.component';
-import { ProductLineKeysComponent } from '../product-line-keys/product-line-keys.component';
 import { CostingPoolCostComponent } from '../costing-pools-costs/costing-pool-costs.component';
 import { CostingPoolsCostsService } from '../services/costing-pools-costs.service';
-import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
+import { TranslateDirective } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-costing-pool-detail',
     standalone: true,
     imports: [
-        CommonModule,
-        RouterModule,
-        MaterialModule,
-        TranslateDirective,
-       
-        MatAutocompleteModule,
-
-        CostingPoolKeysComponent,
-       
-       
-        CostingPoolCostComponent,
-        UiAutoCompleteComponent
-    ],
+    RouterModule,
+    MaterialModule,
+    TranslateDirective,
+    MatAutocompleteModule,
+    CostingPoolKeysComponent,
+    CostingPoolCostComponent,
+    UiAutoCompleteComponent
+],
     templateUrl: './costing-pool-detail.component.html',
     styleUrl: './costing-pool-detail.component.css'
 })

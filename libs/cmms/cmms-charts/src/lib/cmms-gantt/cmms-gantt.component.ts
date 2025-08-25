@@ -1,5 +1,5 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { ChartService } from '../chart.service';
 import { ShellService } from '@ss/common/ui-shell';
 import { ActivatedRoute } from '@angular/router';
@@ -13,7 +13,7 @@ import { Chart, ChartConfiguration, ChartItem, registerables } from 'chart.js';
 @Component({
     selector: 'ss-cmms-gantt',
     standalone: true,
-    imports: [CommonModule, DatePickerComponent, MaterialModule],
+    imports: [DatePickerComponent, MaterialModule],
     templateUrl: './cmms-gantt.component.html',
     styleUrls: ['./cmms-gantt.component.css'],
 })

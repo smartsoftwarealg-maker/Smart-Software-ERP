@@ -11,7 +11,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 import { MatFormField, MatInput, MatLabel } from '@angular/material/input';
 import { MatOption, MatSelect } from '@angular/material/select';
 import { MatButton } from '@angular/material/button';
-import { NgForOf, NgIf } from '@angular/common';
+
 import { MatCheckbox } from '@angular/material/checkbox';
 import { MatTab, MatTabGroup } from '@angular/material/tabs';
 
@@ -21,21 +21,19 @@ import { MatTab, MatTabGroup } from '@angular/material/tabs';
     templateUrl: './contacts-detail.component.html',
     styleUrl: './contacts-detail.component.scss',
     imports: [
-        TranslatePipe,
-        MatFormField,
-        MatSelect,
-        ReactiveFormsModule,
-        MatLabel,
-        MatInput,
-        MatButton,
-        NgIf,
-        MatCheckbox,
-        MatOption,
-        MatTabGroup,
-        MatTab,
-        TranslateDirective,
-        NgForOf
-    ],
+    TranslatePipe,
+    MatFormField,
+    MatSelect,
+    ReactiveFormsModule,
+    MatLabel,
+    MatInput,
+    MatButton,
+    MatCheckbox,
+    MatOption,
+    MatTabGroup,
+    MatTab,
+    TranslateDirective
+],
     standalone: true
 
 })

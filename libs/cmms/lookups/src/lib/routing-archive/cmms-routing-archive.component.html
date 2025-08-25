@@ -1,7 +1,9 @@
 <div class="container">
+  @if (id) {
     <ss-app-archive-main [id]="id"
-                         [appId]="CMMS_ROUTING_ARCHIVES"
-                         [editable]="true"
-                         *ngIf="id">
+      [appId]="CMMS_ROUTING_ARCHIVES"
+      [editable]="true"
+      >
     </ss-app-archive-main>
+  }
 </div>

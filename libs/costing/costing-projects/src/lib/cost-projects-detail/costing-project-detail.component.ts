@@ -1,13 +1,15 @@
 import { Component, HostBinding, inject, OnInit, signal } from '@angular/core';
-import { ActivatedRoute, Router, RouterEvent, RouterModule } from '@angular/router';
-import { FormGroup, UntypedFormBuilder, Validators } from '@angular/forms';
 import {
-    CProject,
-    slideToRight
-} from '@ss/costing/costing-utils';
-import { CommonModule } from '@angular/common';
+    ActivatedRoute,
+    Router,
+    RouterEvent,
+    RouterModule,
+} from '@angular/router';
+import { FormGroup, UntypedFormBuilder, Validators } from '@angular/forms';
+import { CProject, slideToRight } from '@ss/costing/costing-utils';
+
 import { LoginService, MaterialModule } from '@ss/common/api-common';
-import {  ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
+import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
@@ -17,7 +19,7 @@ import { CostingPoolService } from '../services/costing-pool.service';
 import { CProductLineService } from '../services/product-line.service';
 import { CostingOhService } from '../services/costing-oh.service';
 import { CostingReportService } from '../services/costing-report.service';
-import { TranslatePipe } from '@ss/common/ui-lang';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-costing-project-detail',
@@ -25,14 +27,12 @@ import { TranslatePipe } from '@ss/common/ui-lang';
     styleUrls: ['./costing-project-detail.component.scss'],
     animations: [slideToRight],
     standalone: true,
-    imports: [
-        CommonModule,
-        RouterModule,
-        MaterialModule,
-        TranslatePipe
-    ]
+    imports: [RouterModule, MaterialModule, TranslatePipe, TranslateDirective],
 })
-export class CostingProjectDetailComponent extends BaseEntityDetailComponent<CProject> implements  OnInit {
+export class CostingProjectDetailComponent
+    extends BaseEntityDetailComponent<CProject>
+    implements OnInit
+{
     private reportSrv = inject(CostingReportService);
     private productSrv = inject(CProductLineService);
     private router = inject(Router);
@@ -56,17 +56,26 @@ export class CostingProjectDetailComponent extends BaseEntityDetailComponent<CPr
         public override snackBarSrv: SnackBarService,
         public override route: ActivatedRoute,
         public override formBuilder: UntypedFormBuilder,
-        public override confirmationSrv: ConfirmationDialogService) {
-        super(entitySrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'COMMON_PROJECTS');
+        public override confirmationSrv: ConfirmationDialogService,
+    ) {
+        super(
+            entitySrv,
+            shellSrv,
+            snackBarSrv,
+            route,
+            formBuilder,
+            confirmationSrv,
+            'COMMON_PROJECTS',
+        );
     }
 
     public override setupForm(e: CProject): FormGroup {
         this.showPanel(0);
         return this.formBuilder.group({
-            id:          [e.id],
+            id: [e.id],
             description: [e.description, Validators.required],
-            code:        [e.code, Validators.required],
-            centerId:    [e.centerId || this.loginSrv.appCtx.center]
+            code: [e.code, Validators.required],
+            centerId: [e.centerId || this.loginSrv.appCtx.center],
         });
     }
 
@@ -89,10 +98,12 @@ export class CostingProjectDetailComponent extends BaseEntityDetailComponent<CPr
 
     override ngOnInit() {
         super.ngOnInit();
-        this.router.events.pipe(filter((e: any): e is RouterEvent => e instanceof RouterEvent))
+        this.router.events
+            .pipe(
+                filter((e: any): e is RouterEvent => e instanceof RouterEvent),
+            )
             .subscribe((e: RouterEvent) => {
                 this.onEdit.set(e.url.split('/').length > 6);
             });
     }
-
 }

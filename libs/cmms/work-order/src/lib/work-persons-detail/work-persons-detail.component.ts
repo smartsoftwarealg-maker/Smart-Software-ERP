@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 
 import { MatTableModule } from '@angular/material/table';
 
@@ -23,19 +23,18 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     selector: 'ss-work-persons-detail',
     standalone: true,
     imports: [
-        CommonModule,
-        MatTableModule,
-        TranslateDirective,
-        FormsModule,
-        MatFormFieldModule,
-        ReactiveFormsModule,
-        MatCardModule,
-        MatInputModule,
-        DatePickerComponent,
-        MatButtonModule,
-        MaterialModule,
-        UiAutoCompleteComponent
-    ],
+    MatTableModule,
+    TranslateDirective,
+    FormsModule,
+    MatFormFieldModule,
+    ReactiveFormsModule,
+    MatCardModule,
+    MatInputModule,
+    DatePickerComponent,
+    MatButtonModule,
+    MaterialModule,
+    UiAutoCompleteComponent
+],
     templateUrl: './work-persons-detail.component.html',
     styleUrls: ['./work-persons-detail.component.css'],
 })

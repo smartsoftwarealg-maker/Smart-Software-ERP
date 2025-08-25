@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { Asset } from '../services/asset-api';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
@@ -16,12 +16,11 @@ import { TranslateDirective } from '@ss/common/ui-lang';
 
 @Component({
     imports: [
-        CommonModule,
-        MatSortModule,
-        MatTableModule,
-        PaginationComponent,
-        TranslateDirective
-    ],
+    MatSortModule,
+    MatTableModule,
+    PaginationComponent,
+    TranslateDirective
+],
     selector: 'ss-cmms-asset-list',
     standalone: true,
     styleUrls: ['./cmms-asset-list.component.css'],

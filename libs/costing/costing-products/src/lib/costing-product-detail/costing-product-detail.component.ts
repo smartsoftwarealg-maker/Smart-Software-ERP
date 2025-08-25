@@ -1,7 +1,7 @@
 import {Component, HostBinding} from '@angular/core';
 import { FormGroup, ReactiveFormsModule, UntypedFormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, RouterModule } from '@angular/router';
-import { CommonModule } from '@angular/common';
+
 import { MaterialModule } from '@ss/common/api-common';
 
 
@@ -19,14 +19,11 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     styleUrls: ['./costing-product-detail.component.scss'],
     standalone: true,
     imports: [
-        CommonModule,
-        RouterModule,
-        MaterialModule,
-        TranslateDirective,
-        ReactiveFormsModule,
-
-       
-    ],
+    RouterModule,
+    MaterialModule,
+    TranslateDirective,
+    ReactiveFormsModule
+],
     animations: [slideToRight]
 })
 export class CostingProductDetailComponent extends BaseEntityDetailComponent<CProduct> {

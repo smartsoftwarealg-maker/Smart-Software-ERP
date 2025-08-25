@@ -1,95 +1,98 @@
-<div class="size button_div size" *ngIf="form">
-    <button mat-mini-fab (click)="save()"
-            color="primary" *ngIf="isEditable">
+@if (form) {
+  <div class="size button_div size">
+    @if (isEditable) {
+      <button mat-mini-fab (click)="save()"
+        color="primary">
         <i class="fas fa-save"></i>
-    </button>
+      </button>
+    }
     <button mat-mini-fab (click)="cancel()"
-            color="warn">
-        <i class="fas fa-redo"></i>
+      color="warn">
+      <i class="fas fa-redo"></i>
     </button>
-</div>
-<mat-card *ngIf="form">
+  </div>
+}
+@if (form) {
+  <mat-card>
     <mat-card-content>
-        <form *ngIf="form" novalidate [formGroup]="form">
-
-            <mat-form-field class="default-50 sm-100">
-                <mat-label translate>ASSET</mat-label>
-                <ss-auto-complete matInput
-                                  [model]="assetLookup"
-                                  formControlName="parentId">
-                </ss-auto-complete>
-                <mat-error *ngIf="form.controls['parentId'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
-            </mat-form-field>
-
-            <mat-form-field class="default-50 sm-100">
-                <mat-label translate>COMMON_DESCRIPTION</mat-label>
-                <input matInput formControlName="description" type="text" required autofocus>
-                <mat-error *ngIf="form.controls['description'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
-            </mat-form-field>
-
-
-            <mat-form-field class="default-50 sm-100">
-                <mat-label translate>CMMS_PLAN</mat-label>
-                <ss-auto-complete matInput
-                                  [model]="planLookup"
-                                  formControlName="planId"
-                                  required="true">
-                </ss-auto-complete>
-                <mat-error *ngIf="form.controls['planId'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
-            </mat-form-field>
-
-            <mat-form-field class="default-50 sm-100">
-                <mat-label translate>CMMS_PRIORITY</mat-label>
-                <ss-auto-complete matInput
-                                  [model]="priorityLookup"
-                                  formControlName="priority"
-                                  required="true">
-                </ss-auto-complete>
-                <mat-error *ngIf="form.controls['priority'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
-            </mat-form-field>
-
-            <mat-form-field class="default-50 sm-100">
-                <mat-label translate>CMMS_ROUTING</mat-label>
-                <ss-auto-complete matInput
-                                  [model]="isChecklist? checklistLookup : routingLookup"
-                                  formControlName="routingId">
-                </ss-auto-complete>
-            </mat-form-field>
-
-            <mat-form-field class="default-50">
-                <mat-label translate>CMMS_FAULT</mat-label>
-                <ss-auto-complete matInput
-                                  [model]="faultLookup"
-                                  formControlName="fault">
-                </ss-auto-complete>
-            </mat-form-field>
-
-
-            <mat-form-field class="default-50 sm-100">
-                <mat-label translate>CMMS_LAST_RELEASED</mat-label>
-                <ss-date-picker formControlName="lastReleased"></ss-date-picker>
-            </mat-form-field>
-
-            <mat-form-field class="default-50 sm-100">
-                <mat-label translate>CMMS_NEXT_DUE</mat-label>
-                <ss-date-picker formControlName="nextDue"></ss-date-picker>
-            </mat-form-field>
-
-            <mat-form-field class="default-50 sm-100">
-                <mat-label translate>CMMS_DAYS_AHEAD</mat-label>
-                <input matInput formControlName="daysAhead" type="number" required >
-            </mat-form-field>
-
-<!--            <mat-form-field class="default-50 sm-100">-->
-<!--                <mat-label translate>ASSET_ORDER_NUMBER</mat-label>-->
-<!--                <input matInput formControlName="orderNumber" type="number" required >-->
-<!--            </mat-form-field>-->
-
-        </form>
-    </mat-card-content>
+      @if (form) {
+        <form novalidate [formGroup]="form">
+          <mat-form-field class="default-50 sm-100">
+            <mat-label translate>ASSET</mat-label>
+            <ss-auto-complete matInput
+              [model]="assetLookup"
+              formControlName="parentId">
+            </ss-auto-complete>
+            @if (form.controls['parentId'].invalid) {
+              <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+            }
+          </mat-form-field>
+          <mat-form-field class="default-50 sm-100">
+            <mat-label translate>COMMON_DESCRIPTION</mat-label>
+            <input matInput formControlName="description" type="text" required autofocus>
+            @if (form.controls['description'].invalid) {
+              <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+            }
+          </mat-form-field>
+          <mat-form-field class="default-50 sm-100">
+            <mat-label translate>CMMS_PLAN</mat-label>
+            <ss-auto-complete matInput
+              [model]="planLookup"
+              formControlName="planId"
+              required="true">
+            </ss-auto-complete>
+            @if (form.controls['planId'].invalid) {
+              <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+            }
+          </mat-form-field>
+          <mat-form-field class="default-50 sm-100">
+            <mat-label translate>CMMS_PRIORITY</mat-label>
+            <ss-auto-complete matInput
+              [model]="priorityLookup"
+              formControlName="priority"
+              required="true">
+            </ss-auto-complete>
+            @if (form.controls['priority'].invalid) {
+              <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+            }
+          </mat-form-field>
+          <mat-form-field class="default-50 sm-100">
+            <mat-label translate>CMMS_ROUTING</mat-label>
+            <ss-auto-complete matInput
+              [model]="isChecklist? checklistLookup : routingLookup"
+              formControlName="routingId">
+            </ss-auto-complete>
+          </mat-form-field>
+          <mat-form-field class="default-50">
+            <mat-label translate>CMMS_FAULT</mat-label>
+            <ss-auto-complete matInput
+              [model]="faultLookup"
+              formControlName="fault">
+            </ss-auto-complete>
+          </mat-form-field>
+          <mat-form-field class="default-50 sm-100">
+            <mat-label translate>CMMS_LAST_RELEASED</mat-label>
+            <ss-date-picker formControlName="lastReleased"></ss-date-picker>
+          </mat-form-field>
+          <mat-form-field class="default-50 sm-100">
+            <mat-label translate>CMMS_NEXT_DUE</mat-label>
+            <ss-date-picker formControlName="nextDue"></ss-date-picker>
+          </mat-form-field>
+          <mat-form-field class="default-50 sm-100">
+            <mat-label translate>CMMS_DAYS_AHEAD</mat-label>
+            <input matInput formControlName="daysAhead" type="number" required >
+          </mat-form-field>
+          <!--            <mat-form-field class="default-50 sm-100">-->
+          <!--                <mat-label translate>ASSET_ORDER_NUMBER</mat-label>-->
+          <!--                <input matInput formControlName="orderNumber" type="number" required >-->
+        <!--            </mat-form-field>-->
+      </form>
+    }
+  </mat-card-content>
 </mat-card>
+}
 @if (!form) {
-<div class="spinner_div">
+  <div class="spinner_div">
     <mat-spinner></mat-spinner>
-</div>
+  </div>
 }

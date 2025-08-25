@@ -12,7 +12,7 @@ import { CMMSFaultCauseService, CMMSFaultService, CMMSPriorityService } from '@s
 import { DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
 import { LoginService } from '@ss/common/api-common';
 import { CMMSRoutingService } from '@ss/master-data/cmms-routing';
-import { NgIf } from '@angular/common';
+
 import { MatCard, MatCardContent } from '@angular/material/card';
 import { MatFormField, MatLabel, MatError } from '@angular/material/form-field';
 import { TranslateDirective } from '@ss/common/ui-lang';
@@ -26,20 +26,19 @@ import { DatePickerComponent } from '@ss/common/ui-datepicker';
     styleUrls: ['./pm-detail.component.css'],
     standalone: true,
     imports: [
-        NgIf,
-        MatCard,
-        MatCardContent,
-        FormsModule,
-        ReactiveFormsModule,
-        MatFormField,
-        MatLabel,
-        TranslateDirective,
-        MatInput,
-        MatError,
-        UiAutoCompleteComponent,
-        DatePickerComponent,
-        TranslateDirective
-    ],
+    MatCard,
+    MatCardContent,
+    FormsModule,
+    ReactiveFormsModule,
+    MatFormField,
+    MatLabel,
+    TranslateDirective,
+    MatInput,
+    MatError,
+    UiAutoCompleteComponent,
+    DatePickerComponent,
+    TranslateDirective
+],
 })
 export class PMDetailComponent extends BaseEntityDetailComponent<PM> {
     private faultSrv = inject(CMMSFaultService);
