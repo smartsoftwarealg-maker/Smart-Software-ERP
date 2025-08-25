@@ -1,16 +1,18 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BaseChildEntityListComponent } from '@ss/common/ui-base-entity';
-
 import {
     MatCell,
+    MatCellDef,
     MatColumnDef,
     MatHeaderCell,
+    MatHeaderCellDef,
     MatHeaderRow,
+    MatHeaderRowDef,
     MatRow,
-    MatTable
+    MatRowDef,
+    MatTable,
 } from '@angular/material/table';
-
 import { LtmEquipmentTestService } from '../services/ltm-equipment-test.service';
 import { MatTooltip } from '@angular/material/tooltip';
 import { MatMiniFabButton } from '@angular/material/button';
@@ -33,14 +35,17 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         MatTooltip,
         MatMiniFabButton,
         TranslatePipe,
-        TranslateDirective
+        TranslateDirective,
+        MatRowDef,
+        MatHeaderRowDef,
+        MatCellDef,
+        MatHeaderCellDef,
     ],
     templateUrl: './test-equipment-test-list.component.html',
     styleUrl: './test-equipment-test-list.component.scss',
 })
 export class TestEquipmentTestListComponent extends BaseChildEntityListComponent<LTMTestEquipmentTest> {
     override displayedColumns = ['testDescription'];
-
 
     constructor(public entitySrv: LtmEquipmentTestService) {
         super(entitySrv, 'LTMTestEquipmentTest');

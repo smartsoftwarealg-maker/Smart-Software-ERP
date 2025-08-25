@@ -11,7 +11,7 @@ import {LtmMatterTestLookupService} from '@ltm/ltm-api';
 import { LoginService, MaterialModule } from "@ss/common/api-common";
 import { LtmLineMatterService } from '@ltm/ltm-api';
 import { LtmLineMatterLookup } from '@ltm/ltm-api';
-import { CommonModule } from "@angular/common";
+
 import { DatePickerComponent } from '@ss/common/ui-datepicker';
 import { TranslateDirective } from '@ss/common/ui-lang';
 
@@ -21,13 +21,12 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     styleUrls: ['./ltm-testing-detail.component.scss'],
     standalone: true,
     imports: [
-        CommonModule,
-        MaterialModule,
-        ReactiveFormsModule,
-        DatePickerComponent,
-        TranslateDirective,
-        UiAutoCompleteComponent
-    ]
+    MaterialModule,
+    ReactiveFormsModule,
+    DatePickerComponent,
+    TranslateDirective,
+    UiAutoCompleteComponent
+]
 })
 export class LtmTestingDetailComponent extends BaseEntityDetailComponent<LTMTesting> implements OnInit {
     private router  = inject(Router);

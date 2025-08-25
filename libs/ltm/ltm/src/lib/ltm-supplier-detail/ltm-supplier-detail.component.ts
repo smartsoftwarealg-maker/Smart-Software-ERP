@@ -5,7 +5,7 @@ import { ActivatedRoute, RouterOutlet } from "@angular/router";
 import { ReactiveFormsModule, UntypedFormBuilder, Validators } from "@angular/forms";
 import {  ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
 import { Lookup } from '@ss/common/api-lookup';
-import { CommonModule } from "@angular/common";
+
 import { MaterialModule } from "@ss/common/api-common";
 import { LtmSupplierService } from '@ltm/ltm-api';
 import { TranslateDirective } from '@ss/common/ui-lang';
@@ -16,11 +16,10 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     styleUrls: ['./ltm-supplier-detail.component.scss'],
     standalone: true,
     imports: [
-        CommonModule,
-        MaterialModule,
-        ReactiveFormsModule,
-        TranslateDirective
-    ],
+    MaterialModule,
+    ReactiveFormsModule,
+    TranslateDirective
+],
 })
 export class LtmSupplierDetailComponent extends BaseEntityDetailComponent<Lookup> {
 

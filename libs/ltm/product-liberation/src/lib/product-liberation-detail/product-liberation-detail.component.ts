@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router, RouterOutlet } from '@angular/router';
@@ -27,18 +27,16 @@ import { DatePickerComponent } from '@ss/common/ui-datepicker';
     selector: 'ss-product-liberation-detail',
     standalone: true,
     imports: [
-        CommonModule,
-        MatCard,
-        MatFormField,
-        MatInput,
-        MatLabel,
-        MaterialModule,
-        ReactiveFormsModule,
-        RouterOutlet,
-        TranslateDirective,
-        DatePickerComponent,
-
-    ],
+    MatCard,
+    MatFormField,
+    MatInput,
+    MatLabel,
+    MaterialModule,
+    ReactiveFormsModule,
+    RouterOutlet,
+    TranslateDirective,
+    DatePickerComponent
+],
     templateUrl: './product-liberation-detail.component.html',
     styleUrl: './product-liberation-detail.component.scss',
 })

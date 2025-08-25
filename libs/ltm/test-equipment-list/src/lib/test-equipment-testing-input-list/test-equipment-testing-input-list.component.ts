@@ -1,23 +1,21 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { BaseChildEntityListComponent, BaseEntityListComponent } from '@ss/common/ui-base-entity';
+import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 
 import {
     MatCell,
     MatCellDef,
     MatColumnDef,
-    MatHeaderCell, MatHeaderCellDef,
+    MatHeaderCell,
+    MatHeaderCellDef,
     MatHeaderRow,
-    MatHeaderRowDef, MatRow, MatRowDef, MatTable
+    MatHeaderRowDef,
+    MatRow,
+    MatRowDef,
+    MatTable,
 } from '@angular/material/table';
-import { MatSort, MatSortHeader } from '@angular/material/sort';
-
-import { LtmEquipmentTestService } from '../services/ltm-equipment-test.service';
-import { MatTooltip } from '@angular/material/tooltip';
-import { MatMiniFabButton } from '@angular/material/button';
-import { LTMEquipmentTesting, LTMTestEquipmentTest } from '@ltm/ltm-api';
+import { LTMEquipmentTesting } from '@ltm/ltm-api';
 import { LtmEquipmentTestingService } from '../services/ltm-equipment-testing.service';
-import { BudgetService } from '@ss/budget/budget';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DefaultReportService } from '@ss/common/ui-default-report-component';
@@ -42,7 +40,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
         MatRowDef,
         MatTable,
         MatHeaderCellDef,
-        TranslateDirective
+        TranslateDirective,
     ],
     templateUrl: './test-equipment-testing-input-list.component.html',
     styleUrl: './test-equipment-testing-input-list.component.scss',
@@ -58,8 +56,10 @@ export class TestEquipmentTestingInputListComponent extends BaseEntityListCompon
         public override router: Router,
         public override defReportSrv: DefaultReportService,
         public override confirmationSrv: ConfirmationDialogService,
-        public override pagPersistSrv: PaginatorPersistenceService) {
-        super(entitySrv,
+        public override pagPersistSrv: PaginatorPersistenceService,
+    ) {
+        super(
+            entitySrv,
             shellSrv,
             snackBarSrv,
             route,
@@ -67,8 +67,8 @@ export class TestEquipmentTestingInputListComponent extends BaseEntityListCompon
             confirmationSrv,
             defReportSrv,
             pagPersistSrv,
-            'LTM_TEST_EQUIPMENT_TESTING');
+            'LTM_TEST_EQUIPMENT_TESTING',
+        );
         this.pagination.pageSize = 15;
     }
-
 }

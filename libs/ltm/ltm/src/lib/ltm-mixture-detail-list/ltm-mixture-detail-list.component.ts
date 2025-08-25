@@ -6,7 +6,7 @@ import { CommonModule } from "@angular/common";
 import { BaseChildEntityListComponent } from "@ss/common/ui-base-entity";
 import { LtmMixtureDetailService } from '@ltm/ltm-api';
 import { PaginationComponent } from '@ss/common/ui-pagination';
-import { TranslatePipe } from '@ss/common/ui-lang';
+import {TranslateDirective, TranslatePipe} from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-ltm-mixture-detai-list',
@@ -18,7 +18,8 @@ import { TranslatePipe } from '@ss/common/ui-lang';
         MaterialModule,
         PaginationComponent,
         ReactiveFormsModule,
-        TranslatePipe
+        TranslatePipe,
+        TranslateDirective
     ]
 })
 export class LtmMixtureDetailListComponent extends BaseChildEntityListComponent<LTMMixtureDetail> {

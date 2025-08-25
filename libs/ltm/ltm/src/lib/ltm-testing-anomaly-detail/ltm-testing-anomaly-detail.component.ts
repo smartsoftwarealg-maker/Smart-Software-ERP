@@ -5,7 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ReactiveFormsModule, UntypedFormBuilder, Validators } from "@angular/forms";
 import {  ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
 import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
-import { CommonModule } from '@angular/common';
+
 import { dateTimeToYmdStr, LoginService, MaterialModule } from '@ss/common/api-common';
 import { DatePickerComponent } from "@ss/common/ui-datepicker";
 import { LtmAnomalyService } from '@ltm/ltm-api';
@@ -21,13 +21,12 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     styleUrls: ['./ltm-testing-anomaly-detail.component.scss'],
     standalone: true,
     imports: [
-        CommonModule,
-        MaterialModule,
-        ReactiveFormsModule,
-        TranslateDirective,
-        DatePickerComponent,
-        UiAutoCompleteComponent
-    ]
+    MaterialModule,
+    ReactiveFormsModule,
+    TranslateDirective,
+    DatePickerComponent,
+    UiAutoCompleteComponent
+]
 })
 export class LtmTestingAnomalyDetailComponent extends BaseEntityDetailComponent<LTMTestingAnomaly> {
     #pickupPointSrv = inject(LtmPickupPointService);

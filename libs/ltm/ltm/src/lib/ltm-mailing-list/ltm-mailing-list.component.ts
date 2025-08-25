@@ -5,7 +5,7 @@ import { ActivatedRoute, Router } from "@angular/router";
 import { DefaultReportService } from '@ss/common/ui-default-report-component';
 import {  ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
 import { MaterialModule, PaginatorPersistenceService } from "@ss/common/api-common";
-import { CommonModule } from "@angular/common";
+
 import { ReactiveFormsModule } from "@angular/forms";
 import { LtmMailingDocumentService, LTMMailingList } from '@ltm/ltm-api';
 import { PaginationComponent } from '@ss/common/ui-pagination';
@@ -18,12 +18,11 @@ import { LtmMailingService } from '@ltm/ltm-api';
     styleUrls: ['./ltm-mailing-list.component.scss'],
     standalone: true,
     imports: [
-        CommonModule,
-        MaterialModule,
-        TranslateDirective,
-        PaginationComponent,
-        ReactiveFormsModule,
-    ],
+    MaterialModule,
+    TranslateDirective,
+    PaginationComponent,
+    ReactiveFormsModule
+],
 })
 export class LtmMailingListComponent extends BaseEntityListComponent<LTMMailingList> implements OnInit {
     #mailingDocumentSrv = inject(LtmMailingDocumentService);

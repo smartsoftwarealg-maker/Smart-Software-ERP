@@ -6,7 +6,7 @@ import { ActivatedRoute, NavigationEnd, Router, RouterEvent, RouterOutlet } from
 import { ReactiveFormsModule, UntypedFormBuilder, Validators } from "@angular/forms";
 import { ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
 import { Observable} from 'rxjs';
-import { CommonModule } from "@angular/common";
+
 import { LoginService, MaterialModule } from "@ss/common/api-common";
 import { LtmMixtureService } from '@ltm/ltm-api';
 import { LtmMixtureDetailService } from '@ltm/ltm-api';
@@ -19,12 +19,11 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     styleUrls: ['./ltm-mixture-detail.component.scss'],
     standalone: true,
     imports: [
-        CommonModule,
-        MaterialModule,
-        ReactiveFormsModule,
-        RouterOutlet,
-        TranslateDirective
-    ],
+    MaterialModule,
+    ReactiveFormsModule,
+    RouterOutlet,
+    TranslateDirective
+],
 })
 export class LtmMixtureDetailComponent extends BaseEntityDetailComponent<LTMMixture> implements OnInit {
     private urls = ['m-matters', 'm-pickups'];

@@ -1,40 +1,40 @@
 <mat-card>
-    <form *ngIf="form !== null" novalidate [formGroup]="form">
-        <mat-form-field class="default-50">
-            <mat-label translate>COMMON_POSITION</mat-label>
-            <input matInput formControlName="orderNo" type="number" required autofocus>
-        </mat-form-field>
-
-        <mat-form-field class="default-100">
-            <mat-label translate>COMMON_DESCRIPTION</mat-label>
-            <input matInput formControlName="description" type="text" required>
-        </mat-form-field>
-
+  @if (form !== null) {
+    <form novalidate [formGroup]="form">
+      <mat-form-field class="default-50">
+        <mat-label translate>COMMON_POSITION</mat-label>
+        <input matInput formControlName="orderNo" type="number" required autofocus>
+      </mat-form-field>
+      <mat-form-field class="default-100">
+        <mat-label translate>COMMON_DESCRIPTION</mat-label>
+        <input matInput formControlName="description" type="text" required>
+      </mat-form-field>
     </form>
+  }
 </mat-card>
 
 @if (form !== null && id) {
-    <mat-tab-group class="detail__div" (selectedIndexChange)="onTab($event)" [dynamicHeight]="true">
-        <mat-tab class="content__div">
-            <ng-template mat-tab-label>
-                <span translate>LTM_MATTERS</span>
-            </ng-template>
-            @if (selectedIndex() == 0) {
-                <router-outlet></router-outlet>
-            }
-        </mat-tab>
+  <mat-tab-group class="detail__div" (selectedIndexChange)="onTab($event)" [dynamicHeight]="true">
+    <mat-tab class="content__div">
+      <ng-template mat-tab-label>
+        <span translate>LTM_MATTERS</span>
+      </ng-template>
+      @if (selectedIndex() == 0) {
+        <router-outlet></router-outlet>
+      }
+    </mat-tab>
 
-        <mat-tab class="content__div">
-            <ng-template mat-tab-label>
-                <span translate>LTM_PICKUP_POINTS</span>
-            </ng-template>
+    <mat-tab class="content__div">
+      <ng-template mat-tab-label>
+        <span translate>LTM_PICKUP_POINTS</span>
+      </ng-template>
 
-            @if (selectedIndex() == 1) {
-                <router-outlet></router-outlet>
-            }
+      @if (selectedIndex() == 1) {
+        <router-outlet></router-outlet>
+      }
 
-        </mat-tab>
-    </mat-tab-group>
+    </mat-tab>
+  </mat-tab-group>
 
 }
 

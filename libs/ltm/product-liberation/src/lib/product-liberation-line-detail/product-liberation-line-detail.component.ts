@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { BaseChildEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { MatTooltip } from '@angular/material/tooltip';
 import { FormBuilder, ReactiveFormsModule, UntypedFormGroup, Validators } from '@angular/forms';
@@ -23,20 +23,19 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     selector: 'ss-test-equipment-test-detail',
     standalone: true,
     imports: [
-        CommonModule,
-        MatTooltip,
-        MatCard,
-        MatCardContent,
-        MatCardHeader,
-        MatFormField,
-        MatLabel,
-        MatMiniFabButton,
-        MaterialModule,
-        ReactiveFormsModule,
-        TranslatePipe,
-        TranslateDirective,
-        UiAutoCompleteComponent
-    ],
+    MatTooltip,
+    MatCard,
+    MatCardContent,
+    MatCardHeader,
+    MatFormField,
+    MatLabel,
+    MatMiniFabButton,
+    MaterialModule,
+    ReactiveFormsModule,
+    TranslatePipe,
+    TranslateDirective,
+    UiAutoCompleteComponent
+],
     templateUrl: './product-liberation-line-detail.component.html',
     styleUrl: './product-liberation-line-detail.component.scss'
 })

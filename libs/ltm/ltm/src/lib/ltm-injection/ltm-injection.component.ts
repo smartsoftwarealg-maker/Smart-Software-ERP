@@ -7,7 +7,7 @@ import {HttpEventType} from '@angular/common/http';
 import {LtmInjectionService} from '@ltm/ltm-api';
 import { LanguageService, MaterialModule } from "@ss/common/api-common";
 import { INJResult } from '@ltm/ltm-api';
-import { CommonModule } from "@angular/common";
+
 import { DatePickerComponent } from "@ss/common/ui-datepicker";
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
@@ -17,13 +17,12 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     styleUrls: ['./ltm-injection.component.scss'],
     standalone: true,
     imports: [
-        CommonModule,
-        MaterialModule,
-        TranslateDirective,
-        TranslatePipe,
-        ReactiveFormsModule,
-        DatePickerComponent
-    ],
+    MaterialModule,
+    TranslateDirective,
+    TranslatePipe,
+    ReactiveFormsModule,
+    DatePickerComponent
+],
 })
 export class LtmInjectionComponent {
     // private matterSrv =  inject(LtmLineMatterService);

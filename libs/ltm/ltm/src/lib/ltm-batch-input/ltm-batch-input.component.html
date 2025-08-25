@@ -1,162 +1,164 @@
 <form [formGroup]="form">
-    <mat-card class="ctrl__div">
-        <mat-card-content>
-            <mat-form-field class="default-100">
-                <mat-label translate>COMMON_PERIOD</mat-label>
-                <ss-auto-complete matInput
-                                  [model]="periodLookup"
-                                  [formControl]="periodCtrl">
-                </ss-auto-complete>
-            </mat-form-field>
-            <mat-form-field class="default-100">
-                <mat-label translate>LTM_TEST</mat-label>
-                <ss-auto-complete matInput
-                                  [model]="matterTestLookup"
-                                  [formControl]="matterTestCtrl">
-                </ss-auto-complete>
-            </mat-form-field>
+  <mat-card class="ctrl__div">
+    <mat-card-content>
+      <mat-form-field class="default-100">
+        <mat-label translate>COMMON_PERIOD</mat-label>
+        <ss-auto-complete matInput
+          [model]="periodLookup"
+          [formControl]="periodCtrl">
+        </ss-auto-complete>
+      </mat-form-field>
+      <mat-form-field class="default-100">
+        <mat-label translate>LTM_TEST</mat-label>
+        <ss-auto-complete matInput
+          [model]="matterTestLookup"
+          [formControl]="matterTestCtrl">
+        </ss-auto-complete>
+      </mat-form-field>
 
-            <mat-form-field class="default-100">
-                <mat-label translate>COMMON_DATE</mat-label>
-                <ss-date-picker [required]=true
-                                formControlName="timeStamp"
-                                [type]="'date'">
-                </ss-date-picker>
-                <mat-error *ngIf="form.controls['timeStamp'].hasError('required')" translate>
-                    COMMON_FIELD_REQUIRED
-                </mat-error>
-            </mat-form-field>
+      <mat-form-field class="default-100">
+        <mat-label translate>COMMON_DATE</mat-label>
+        <ss-date-picker [required]=true
+          formControlName="timeStamp"
+          [type]="'date'">
+        </ss-date-picker>
+        @if (form.controls['timeStamp'].hasError('required')) {
+          <mat-error translate>
+            COMMON_FIELD_REQUIRED
+          </mat-error>
+        }
+      </mat-form-field>
 
-            @if (testingMode() !== PHYSICAL_TEST) {
-                <mat-form-field class="hour">
-                    <mat-label translate>COMMON_HOURS</mat-label>
-                    <input matInput formControlName="hour" type="number" min="0" max="23" class="hour_input">
-                </mat-form-field>
+      @if (testingMode() !== PHYSICAL_TEST) {
+        <mat-form-field class="hour">
+          <mat-label translate>COMMON_HOURS</mat-label>
+          <input matInput formControlName="hour" type="number" min="0" max="23" class="hour_input">
+        </mat-form-field>
+      }
+
+      <mat-form-field class="default-100">
+        <mat-label translate>LTM_MATTER</mat-label>
+        <ss-auto-complete matInput
+          [model]="matterLookup"
+          formControlName="parentId">
+        </ss-auto-complete>
+      </mat-form-field>
+
+      @if (testingMode() === PHYSICAL_TEST) {
+        <mat-form-field class="default-100">
+          <mat-label translate>LTM_SPOILAGE_HOUR</mat-label>
+          <input matInput formControlName="spoilageHour" type="number" min="0" max="23">
+        </mat-form-field>
+
+        <mat-form-field class="default-100">
+          <mat-label translate>LTM_BREAKAGE_HOUR</mat-label>
+          <input matInput formControlName="breakageHour" type="number" min="0" max="23">
+        </mat-form-field>
+
+        <mat-form-field class="default-100">
+          <mat-label translate>LTM_SAMPLE_NO</mat-label>
+          <input matInput formControlName="sampleNo" type="text" min="3">
+        </mat-form-field>
+
+      }
+
+      <mat-form-field class="default-100">
+        <mat-label translate>LTM_PICKUP_POINT</mat-label>
+        <ss-auto-complete matInput
+          [required]="true"
+          [model]="pickupLookup"
+          formControlName="pickupPoint"
+          required>
+        </ss-auto-complete>
+        @if (form.controls['pickupPoint'].hasError('duplicate')) {
+          <mat-error translate>BL_DUPLICATE_TEST</mat-error>
+        }
+      </mat-form-field>
+
+      @if (testingMode() !== DEPOSIT_TEST && testingMode() !== RAW_MATERIAL_TEST) {
+
+        <mat-form-field class="default-100">
+          <mat-label translate>LTM_SILO</mat-label>
+          <ss-auto-complete matInput
+            [model]="siloLookup"
+            formControlName="silo">
+          </ss-auto-complete>
+        </mat-form-field>
+      }
+    </mat-card-content>
+  </mat-card>
+  <div class="content__div">
+    <mat-card>
+      <div formArrayName="tests" class="group_div test__div">
+        @for (f of tests.controls; track f; let i = $index) {
+          <div [formGroupName]="i">
+            <mat-form-field class="input_div">
+              <mat-hint><span translate>LTM_RANGE</span>: {{ limits[i][0] }}- {{ limits[i][1] }}
+            </mat-hint>
+            <mat-label translate>{{ labels[i] }}</mat-label>
+            <input matInput
+              #input
+              formControlName="value"
+              type="number"
+              (click)="input.select()">
+            @if (tests.controls[i].errors || true) {
+              <mat-error translate>BL_INVALID_DATA</mat-error>
             }
-
-            <mat-form-field class="default-100">
-                <mat-label translate>LTM_MATTER</mat-label>
-                <ss-auto-complete matInput
-                                  [model]="matterLookup"
-                                  formControlName="parentId">
-                </ss-auto-complete>
-            </mat-form-field>
-
-            @if (testingMode() === PHYSICAL_TEST) {
-                <mat-form-field class="default-100">
-                    <mat-label translate>LTM_SPOILAGE_HOUR</mat-label>
-                    <input matInput formControlName="spoilageHour" type="number" min="0" max="23">
-                </mat-form-field>
-
-                <mat-form-field class="default-100">
-                    <mat-label translate>LTM_BREAKAGE_HOUR</mat-label>
-                    <input matInput formControlName="breakageHour" type="number" min="0" max="23">
-                </mat-form-field>
-
-                <mat-form-field class="default-100">
-                    <mat-label translate>LTM_SAMPLE_NO</mat-label>
-                    <input matInput formControlName="sampleNo" type="text" min="3">
-                </mat-form-field>
-
-            }
-
-            <mat-form-field class="default-100">
-                <mat-label translate>LTM_PICKUP_POINT</mat-label>
-                <ss-auto-complete matInput
-                                  [required]="true"
-                                  [model]="pickupLookup"
-                                  formControlName="pickupPoint"
-                                  required>
-                </ss-auto-complete>
-                @if (form.controls['pickupPoint'].hasError('duplicate')) {
-                    <mat-error translate>BL_DUPLICATE_TEST</mat-error>
-                }
-            </mat-form-field>
-
-            @if (testingMode() !== DEPOSIT_TEST && testingMode() !== RAW_MATERIAL_TEST) {
-
-                <mat-form-field class="default-100">
-                    <mat-label translate>LTM_SILO</mat-label>
-                    <ss-auto-complete matInput
-                                      [model]="siloLookup"
-                                      formControlName="silo">
-                    </ss-auto-complete>
-                </mat-form-field>
-            }
-        </mat-card-content>
-    </mat-card>
-    <div class="content__div">
-        <mat-card>
-            <div formArrayName="tests" class="group_div test__div">
-                @for (f of tests.controls; track f; let i = $index) {
-                    <div [formGroupName]="i">
-                        <mat-form-field class="input_div">
-                            <mat-hint><span translate>LTM_RANGE</span>: {{ limits[i][0] }}- {{ limits[i][1] }}
-                            </mat-hint>
-                            <mat-label translate>{{ labels[i] }}</mat-label>
-                            <input matInput
-                                   #input
-                                   formControlName="value"
-                                   type="number"
-                                   (click)="input.select()">
-                            @if (tests.controls[i].errors || true) {
-                                <mat-error translate>BL_INVALID_DATA</mat-error>
-                            }
-                        </mat-form-field>
-                    </div>
-                }
-            </div>
-        </mat-card>
-        <mat-card class="formula_card">
-            <mat-card-header class="b-primary"> {{ 'COMMON_FORMULAS'|translate }}</mat-card-header>
-            @if (totalsForm) {
-                <form [formGroup]="totalsForm">
-                    <div formArrayName="totals" class="group_div">
-                        @for (f of totals.controls; track f; let i = $index) {
-                            <div [formGroupName]="i">
-                                <mat-form-field class="input_div" [class.invalid]="f.errors">
-                                    <mat-hint><span translate>LTM_RANGE</span>: {{ totalsLimits[i][0] }}
-                                        - {{ totalsLimits[i][1] }}
-                                    </mat-hint>
-                                    <mat-label translate>{{ totalsLabels[i] }}</mat-label>
-                                    <input matInput formControlName="value" type="number" readonly>
-                                    <mat-error translate>BL_INVALID_DATA</mat-error>
-                                </mat-form-field>
-                            </div>
-                        }
-                    </div>
-                </form>
-            }
-        </mat-card>
+          </mat-form-field>
+        </div>
+      }
     </div>
+  </mat-card>
+  <mat-card class="formula_card">
+    <mat-card-header class="b-primary"> {{ 'COMMON_FORMULAS'|translate }}</mat-card-header>
+    @if (totalsForm) {
+      <form [formGroup]="totalsForm">
+        <div formArrayName="totals" class="group_div">
+          @for (f of totals.controls; track f; let i = $index) {
+            <div [formGroupName]="i">
+              <mat-form-field class="input_div" [class.invalid]="f.errors">
+                <mat-hint><span translate>LTM_RANGE</span>: {{ totalsLimits[i][0] }}
+                - {{ totalsLimits[i][1] }}
+              </mat-hint>
+              <mat-label translate>{{ totalsLabels[i] }}</mat-label>
+              <input matInput formControlName="value" type="number" readonly>
+              <mat-error translate>BL_INVALID_DATA</mat-error>
+            </mat-form-field>
+          </div>
+        }
+      </div>
+    </form>
+  }
+</mat-card>
+</div>
 </form>
 
 @if (testingMode() === PHYSICAL_TEST) {
-    <mat-card>
-        <router-outlet></router-outlet>
-    </mat-card>
+  <mat-card>
+    <router-outlet></router-outlet>
+  </mat-card>
 }
 @if (simulatedTotals.controls.length > 0){
-    <table class="content__div">
-        <tr class="content__div f-background">
-            <th class="b-primary" style="width: 6em;" translate>COMMON_LEGEND</th>
-            @for (f of simulatedTotalsLabes; track f; let i = $index) {
-                <th class="b-primary"> {{ f }}</th>
+  <table class="content__div">
+    <tr class="content__div f-background">
+      <th class="b-primary" style="width: 6em;" translate>COMMON_LEGEND</th>
+      @for (f of simulatedTotalsLabes; track f; let i = $index) {
+        <th class="b-primary"> {{ f }}</th>
+      }
+    </tr>
+    @for (c of COLOR_RANGE; track c.id) {
+      <tr class="content__div f-background">
+        <td class="b-primary" style="text-align: left"> {{c.description|translate}}</td>
+        @for (f of simulatedTotals.controls; track f; let i = $index) {
+          @let
+          deviation = totalsOptimalValues[i] > 0 ? 100.0 * (f.controls['value'].value - totalsOptimalValues[i]) / totalsOptimalValues[i] : 100.0;
+          <td [style.background-color]="c.color">
+            @if (deviation >= c.range[0] && deviation <= c.range[1]) {
+              <i class="fa-solid fa-circle-dot dot"></i>
             }
-        </tr>
-        @for (c of COLOR_RANGE; track c.id) {
-            <tr class="content__div f-background">
-                <td class="b-primary" style="text-align: left"> {{c.description|translate}}</td>
-                @for (f of simulatedTotals.controls; track f; let i = $index) {
-                    @let
-                    deviation = totalsOptimalValues[i] > 0 ? 100.0 * (f.controls['value'].value - totalsOptimalValues[i]) / totalsOptimalValues[i] : 100.0;
-                    <td [style.background-color]="c.color">
-                        @if (deviation >= c.range[0] && deviation <= c.range[1]) {
-                            <i class="fa-solid fa-circle-dot dot"></i>
-                        }
-                    </td>
-                }
-            </tr>
+          </td>
         }
-    </table>
+      </tr>
+    }
+  </table>
 }

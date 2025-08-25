@@ -6,7 +6,7 @@ import { ActivatedRoute, RouterOutlet } from "@angular/router";
 import {  ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
 import { ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup, Validators } from "@angular/forms";
 import {LtmPeriodicityService} from '@ltm/ltm-api';
-import { CommonModule } from "@angular/common";
+
 import { MaterialModule } from "@ss/common/api-common";
 import { TranslateDirective } from '@ss/common/ui-lang';
 
@@ -16,11 +16,10 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     styleUrls: ['./ltm-periodicities-detail.component.scss'],
     standalone: true,
     imports: [
-        CommonModule,
-        MaterialModule,
-        TranslateDirective,
-        ReactiveFormsModule,
-    ],
+    MaterialModule,
+    TranslateDirective,
+    ReactiveFormsModule
+],
 })
 export class LtmPeriodicitiesDetailComponent extends BaseEntityDetailComponent<Lookup> {
 

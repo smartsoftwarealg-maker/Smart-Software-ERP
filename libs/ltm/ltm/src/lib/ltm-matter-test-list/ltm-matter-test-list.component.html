@@ -1,88 +1,89 @@
-<div class="ctrl_div content_div" *ngIf="isEditable">
+@if (isEditable) {
+  <div class="ctrl_div content_div">
     <mat-form-field>
-        <mat-label translate>COMMON_SEARCH</mat-label>
-        <input matInput [formControl]="searchText" type="text">
+      <mat-label translate>COMMON_SEARCH</mat-label>
+      <input matInput [formControl]="searchText" type="text">
     </mat-form-field>
-
     <button mat-mini-fab
-            type="button"
-            color="primary" (click)="showDetail(0)">
-        <span class="fas fa-plus"></span>
+      type="button"
+      color="primary" (click)="showDetail(0)">
+      <span class="fas fa-plus"></span>
     </button>
     <button mat-mini-fab
-            type="button"
-            (click)="edit()"
-            [disabled]="!selected"
-            color="accent">
-        <span class="fas fa-pen"></span>
+      type="button"
+      (click)="edit()"
+      [disabled]="!selected"
+      color="accent">
+      <span class="fas fa-pen"></span>
     </button>
     <button mat-mini-fab
-            type="button"
-            (click)="deleteSelected()"
-            [disabled]="!selected"
-            color="warn">
-        <span class="fas fa-trash-alt"></span>
+      type="button"
+      (click)="deleteSelected()"
+      [disabled]="!selected"
+      color="warn">
+      <span class="fas fa-trash-alt"></span>
     </button>
-</div>
+  </div>
+}
 <div class="table_div content_div">
-    <mat-table mat-table matSort [dataSource]="data" class="main-table" (matSortChange)="sortData($event)">
+  <mat-table mat-table matSort [dataSource]="data" class="main-table" (matSortChange)="sortData($event)">
 
-        <ng-container matColumnDef="testDescription">
-            <mat-header-cell *matHeaderCellDef mat-sort-header translate>LTM_TEST</mat-header-cell>
-            <mat-cell *matCellDef="let e">
-                {{e.testDescription}}
-            </mat-cell>
-        </ng-container>
+    <ng-container matColumnDef="testDescription">
+      <mat-header-cell *matHeaderCellDef mat-sort-header translate>LTM_TEST</mat-header-cell>
+      <mat-cell *matCellDef="let e">
+        {{e.testDescription}}
+      </mat-cell>
+    </ng-container>
 
-        <ng-container matColumnDef="orderNo">
-            <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_POSITION</mat-header-cell>
-            <mat-cell *matCellDef="let e">
-                {{e.orderNo}}
-            </mat-cell>
-        </ng-container>
+    <ng-container matColumnDef="orderNo">
+      <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_POSITION</mat-header-cell>
+      <mat-cell *matCellDef="let e">
+        {{e.orderNo}}
+      </mat-cell>
+    </ng-container>
 
-        <ng-container matColumnDef="periodDescription">
-            <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_PERIOD</mat-header-cell>
-            <mat-cell *matCellDef="let e">
-                {{e.periodDescription}}
-            </mat-cell>
-        </ng-container>
+    <ng-container matColumnDef="periodDescription">
+      <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_PERIOD</mat-header-cell>
+      <mat-cell *matCellDef="let e">
+        {{e.periodDescription}}
+      </mat-cell>
+    </ng-container>
 
-        <ng-container matColumnDef="minValue">
-            <mat-header-cell *matHeaderCellDef mat-sort-header translate>LTM_MIN_VALUE</mat-header-cell>
-            <mat-cell *matCellDef="let e">
-                {{e.minValue | number: '1.2-2'}}
-            </mat-cell>
-        </ng-container>
+    <ng-container matColumnDef="minValue">
+      <mat-header-cell *matHeaderCellDef mat-sort-header translate>LTM_MIN_VALUE</mat-header-cell>
+      <mat-cell *matCellDef="let e">
+        {{e.minValue | number: '1.2-2'}}
+      </mat-cell>
+    </ng-container>
 
-        <ng-container matColumnDef="optValue">
-            <mat-header-cell *matHeaderCellDef mat-sort-header translate>LTM_OPT_VALUE</mat-header-cell>
-            <mat-cell *matCellDef="let e">
-                {{e.optValue | number: '1.2-2'}}
-            </mat-cell>
-        </ng-container>
+    <ng-container matColumnDef="optValue">
+      <mat-header-cell *matHeaderCellDef mat-sort-header translate>LTM_OPT_VALUE</mat-header-cell>
+      <mat-cell *matCellDef="let e">
+        {{e.optValue | number: '1.2-2'}}
+      </mat-cell>
+    </ng-container>
 
-        <ng-container matColumnDef="maxValue">
-            <mat-header-cell *matHeaderCellDef mat-sort-header translate>LTM_MAX_VALUE</mat-header-cell>
-            <mat-cell *matCellDef="let e">
-                {{e.maxValue | number: '1.2-2'}}
-            </mat-cell>
-        </ng-container>
+    <ng-container matColumnDef="maxValue">
+      <mat-header-cell *matHeaderCellDef mat-sort-header translate>LTM_MAX_VALUE</mat-header-cell>
+      <mat-cell *matCellDef="let e">
+        {{e.maxValue | number: '1.2-2'}}
+      </mat-cell>
+    </ng-container>
 
-        <ng-container matColumnDef="selection">
-            <mat-header-cell *matHeaderCellDef>
-                <mat-checkbox (change)="addAll($event)"></mat-checkbox>
-            </mat-header-cell>
-            <mat-cell *matCellDef="let e">
-                <mat-checkbox (change)="addId(e.id)" [checked]="isSelected(e.id)"></mat-checkbox>
-            </mat-cell>
-        </ng-container>
+    <ng-container matColumnDef="selection">
+      <mat-header-cell *matHeaderCellDef>
+        <mat-checkbox (change)="addAll($event)"></mat-checkbox>
+      </mat-header-cell>
+      <mat-cell *matCellDef="let e">
+        <mat-checkbox (change)="addId(e.id)" [checked]="isSelected(e.id)"></mat-checkbox>
+      </mat-cell>
+    </ng-container>
 
-        <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
-        <mat-row class="selectable" [class.selected]="row.id == selected?.id" (click)="select(row)"
-                 *matRowDef="let row; columns: displayedColumns;"></mat-row>
-    </mat-table>
+    <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+    <mat-row class="selectable" [class.selected]="row.id == selected?.id" (click)="select(row)"
+    *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
 </div>
 <div class="content_div b-b-background">
-    <ss-pagination [paginationModel]="pagination"></ss-pagination>
+  <ss-pagination [paginationModel]="pagination"></ss-pagination>
 </div>

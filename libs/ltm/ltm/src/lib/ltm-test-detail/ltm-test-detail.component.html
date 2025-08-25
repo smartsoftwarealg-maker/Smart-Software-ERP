@@ -1,85 +1,69 @@
 <mat-card>
-    <form *ngIf="form !== null" novalidate [formGroup]="form">
-        <mat-form-field class="default-50 sm-100">
-            <mat-label translate>COMMON_VARIABLE</mat-label>
-            <input matInput formControlName="variable" type="text" minlength="3" maxlength="4" required>
-            @if (form.controls['variable']?.hasError('minlength')) {
-                <mat-error [translate]="{minLen: 3}">COMMON_FIELD_MIN_LENGTH </mat-error>
-            }
-            @if (form.controls['variable']?.hasError('maxlength')) {
-                <mat-error [translate]="{maxLen: 4}">COMMON_FIELD_MAX_LENGTH</mat-error>
-            }
-        </mat-form-field>
-
-
-        <mat-form-field class="default-100">
-            <mat-label translate>COMMON_DESCRIPTION</mat-label>
-            <input matInput formControlName="description" type="text" required autofocus>
-        </mat-form-field>
-
-        <mat-form-field class="default-100">
-            <mat-label translate>COMMON_INFO</mat-label>
-            <input matInput formControlName="descriptionAr" type="text">
-        </mat-form-field>
-
-
-
-        <mat-form-field class="default-100">
-            <mat-label translate>COMMON_FORMULA</mat-label>
-            <textarea matInput formControlName="formula" rows="3"></textarea>
-        </mat-form-field>
-
-
-        <mat-form-field class="default-50 sm-100">
-            <mat-label translate>LTM_CHEMICAL_FORMULA</mat-label>
-            <input matInput formControlName="chemicalFormula">
-        </mat-form-field>
-
-        <mat-form-field class="default-50 sm-100">
-            <mat-label translate>LTM_TEST_TYPE</mat-label>
-            <ss-auto-complete matInput
-                              [model]="typeLookup"
-                              formControlName="testType">
-            </ss-auto-complete>
-        </mat-form-field>
-
-        <mat-form-field class="default-50 sm-100">
-            <mat-label translate>COMMON_UNIT</mat-label>
-            <ss-auto-complete matInput
-                              [model]="unitLookup"
-                              formControlName="unit">
-            </ss-auto-complete>
-        </mat-form-field>
-
-        <mat-form-field class="default-50 sm-100">
-            <mat-label translate>COMMON_MIN</mat-label>
-            <input matInput formControlName="min" type="number" >
-        </mat-form-field>
-
-        <mat-form-field class="default-50 sm-100">
-            <mat-label translate>COMMON_MAX</mat-label>
-            <input matInput formControlName="max" type="number" >
-        </mat-form-field>
-
-        <div id="manager" class="default-50 sm-100">
-            <mat-checkbox formControlName="showGraph" translate>LTM_SHOW_GRAPH</mat-checkbox>
-        </div>
-
-        <div class="default-50 sm-100">
-            <mat-checkbox formControlName="showInCertificate" translate>LTM_SHOW_CERTIFICATE</mat-checkbox>
-        </div>
-
-        <div class="default-50 sm-100">
-            <mat-checkbox formControlName="showKPI" translate>LTM_SHOW_KPI</mat-checkbox>
-        </div>
-
-        <div class="default-50 sm-100">
-            <mat-checkbox formControlName="varianceControl" translate>LTM_VARIANCE_CONTROL</mat-checkbox>
-        </div>
-
-        <div class="default-50 sm-100">
-            <mat-checkbox formControlName="isSimulated" translate>LTM_SIMULATED</mat-checkbox>
-        </div>
-
+  @if (form !== null) {
+    <form novalidate [formGroup]="form">
+      <mat-form-field class="default-50 sm-100">
+        <mat-label translate>COMMON_VARIABLE</mat-label>
+        <input matInput formControlName="variable" type="text" minlength="3" maxlength="4" required>
+        @if (form.controls['variable']?.hasError('minlength')) {
+          <mat-error [translate]="{minLen: 3}">COMMON_FIELD_MIN_LENGTH </mat-error>
+        }
+        @if (form.controls['variable']?.hasError('maxlength')) {
+          <mat-error [translate]="{maxLen: 4}">COMMON_FIELD_MAX_LENGTH</mat-error>
+        }
+      </mat-form-field>
+      <mat-form-field class="default-100">
+        <mat-label translate>COMMON_DESCRIPTION</mat-label>
+        <input matInput formControlName="description" type="text" required autofocus>
+      </mat-form-field>
+      <mat-form-field class="default-100">
+        <mat-label translate>COMMON_INFO</mat-label>
+        <input matInput formControlName="descriptionAr" type="text">
+      </mat-form-field>
+      <mat-form-field class="default-100">
+        <mat-label translate>COMMON_FORMULA</mat-label>
+        <textarea matInput formControlName="formula" rows="3"></textarea>
+      </mat-form-field>
+      <mat-form-field class="default-50 sm-100">
+        <mat-label translate>LTM_CHEMICAL_FORMULA</mat-label>
+        <input matInput formControlName="chemicalFormula">
+      </mat-form-field>
+      <mat-form-field class="default-50 sm-100">
+        <mat-label translate>LTM_TEST_TYPE</mat-label>
+        <ss-auto-complete matInput
+          [model]="typeLookup"
+          formControlName="testType">
+        </ss-auto-complete>
+      </mat-form-field>
+      <mat-form-field class="default-50 sm-100">
+        <mat-label translate>COMMON_UNIT</mat-label>
+        <ss-auto-complete matInput
+          [model]="unitLookup"
+          formControlName="unit">
+        </ss-auto-complete>
+      </mat-form-field>
+      <mat-form-field class="default-50 sm-100">
+        <mat-label translate>COMMON_MIN</mat-label>
+        <input matInput formControlName="min" type="number" >
+      </mat-form-field>
+      <mat-form-field class="default-50 sm-100">
+        <mat-label translate>COMMON_MAX</mat-label>
+        <input matInput formControlName="max" type="number" >
+      </mat-form-field>
+      <div id="manager" class="default-50 sm-100">
+        <mat-checkbox formControlName="showGraph" translate>LTM_SHOW_GRAPH</mat-checkbox>
+      </div>
+      <div class="default-50 sm-100">
+        <mat-checkbox formControlName="showInCertificate" translate>LTM_SHOW_CERTIFICATE</mat-checkbox>
+      </div>
+      <div class="default-50 sm-100">
+        <mat-checkbox formControlName="showKPI" translate>LTM_SHOW_KPI</mat-checkbox>
+      </div>
+      <div class="default-50 sm-100">
+        <mat-checkbox formControlName="varianceControl" translate>LTM_VARIANCE_CONTROL</mat-checkbox>
+      </div>
+      <div class="default-50 sm-100">
+        <mat-checkbox formControlName="isSimulated" translate>LTM_SIMULATED</mat-checkbox>
+      </div>
     </form>
+  }
 </mat-card>
