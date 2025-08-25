@@ -12,7 +12,6 @@ import { DefaultReportService } from '@ss/common/ui-default-report-component';
 import { Employee } from '@ss/employee-services/employee-services';
 import { MatTabGroup, MatTab, MatTabLabel } from '@angular/material/tabs';
 import { TranslateDirective } from '@ss/common/ui-lang';
-import { NgFor, NgIf } from '@angular/common';
 import { ImageInputComponent } from '@ss/common/ui-image-input';
 import { MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from '@angular/material/table';
 import { MatSort, MatSortHeader } from '@angular/material/sort';
@@ -24,7 +23,7 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
     styleUrls: ['./employee-list.component.scss'],
     templateUrl: './employee-list.component.html',
     standalone: true,
-    imports: [MatTabGroup, MatTab, MatTabLabel, TranslateDirective, NgFor, ImageInputComponent, NgIf, MatTable, MatSort, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatSortHeader, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, PaginationComponent]
+    imports: [MatTabGroup, MatTab, MatTabLabel, TranslateDirective, ImageInputComponent, MatTable, MatSort, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatSortHeader, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, PaginationComponent]
 })
 export class EmployeeListComponent extends BaseEntityListComponent<Employee> implements OnInit {
     activePersonnel = true;
@@ -51,10 +50,6 @@ export class EmployeeListComponent extends BaseEntityListComponent<Employee> imp
         public override pagPersistSrv: PaginatorPersistenceService) {
         super(employeeSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv, 'PAYROLL_EMPLOYEES_LIST');
         this.pagination.pageSize = 15;
-    }
-
-    trackByFn(index: number, item: Employee) {
-        return item.id;
     }
 
     selectAndEdit(id: number) {

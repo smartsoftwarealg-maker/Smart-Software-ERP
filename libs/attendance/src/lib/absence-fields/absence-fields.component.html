@@ -1,33 +1,35 @@
-<mat-card *ngIf="form">
-    <mat-card-content>
-        <form [formGroup]="form">
-            <mat-form-field class="default-80 sm-100">
-                <mat-label translate>ATT_ESCAPE_FIELD</mat-label>
-                <ss-auto-complete matInput
-                                  [model]="escapeElementLookup"
-                                  formControlName="escapeElement">
-                </ss-auto-complete>
-            </mat-form-field>
+@if (form) {
+    <mat-card>
+        <mat-card-content>
+            <form [formGroup]="form">
+                <mat-form-field class="default-80 sm-100">
+                    <mat-label translate>ATT_ESCAPE_FIELD</mat-label>
+                    <ss-auto-complete matInput
+                                      [model]="escapeElementLookup"
+                                      formControlName="escapeElement">
+                    </ss-auto-complete>
+                </mat-form-field>
 
-            <mat-form-field class="default-80 sm-100">
-                <mat-label translate>ATT_ABSENCE_FIELD</mat-label>
-                <ss-auto-complete matInput
-                                  [model]="absenceElementLookup"
-                                  formControlName="absenceElement">
-                </ss-auto-complete>
-            </mat-form-field>
+                <mat-form-field class="default-80 sm-100">
+                    <mat-label translate>ATT_ABSENCE_FIELD</mat-label>
+                    <ss-auto-complete matInput
+                                      [model]="absenceElementLookup"
+                                      formControlName="absenceElement">
+                    </ss-auto-complete>
+                </mat-form-field>
 
-            <mat-form-field class="default-80 sm-100">
-                <mat-label translate>ATT_LATENESS_FIELD</mat-label>
-                <ss-auto-complete matInput
-                                  [model]="latenessElementLookup"
-                                  formControlName="latenessElement">
-                </ss-auto-complete>
-            </mat-form-field>
-        </form>
-        <button mat-raised-button color="accent" type="button" (click)="save()" [disabled]="!form.valid" translate>
-            <i class="fa-solid fa-floppy-disk"></i>
-               COMMON_SAVE
-        </button>
-    </mat-card-content>
-</mat-card>
+                <mat-form-field class="default-80 sm-100">
+                    <mat-label translate>ATT_LATENESS_FIELD</mat-label>
+                    <ss-auto-complete matInput
+                                      [model]="latenessElementLookup"
+                                      formControlName="latenessElement">
+                    </ss-auto-complete>
+                </mat-form-field>
+            </form>
+            <button mat-raised-button color="accent" type="button" (click)="save()" [disabled]="!form.valid" translate>
+                <i class="fa-solid fa-floppy-disk"></i>
+                COMMON_SAVE
+            </button>
+        </mat-card-content>
+    </mat-card>
+}

@@ -8,9 +8,9 @@ import { FormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { Observable, of } from 'rxjs';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { DatePickerComponent } from '@ss/common/ui-datepicker';
-import { Contact } from '../lead-api';
-import { SnackBarService } from '@ss/common/ui-shell';
-import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
+import { CRMLead } from '../lead-api';
+import {ShellService, SnackBarService} from '@ss/common/ui-shell';
+import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from '@angular/material/form-field';
 
 @Component({
     selector: 'ss-crm-leads-component',
@@ -25,6 +25,9 @@ import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
     templateUrl: './crm-leads-detail-component.html',
     styleUrl: './crm-leads-detail-component.scss',
     standalone: true,
+    providers: [
+        {provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'outline'}}
+    ]
 })
 export class CrmLeadsDetailComponent implements OnInit {
     #entitySrv = inject(CRMLeadsService);
@@ -33,7 +36,10 @@ export class CrmLeadsDetailComponent implements OnInit {
     #confirmationSrv = inject(ConfirmationDialogService);
     #snackBarSrv = inject(SnackBarService);
     #loginSrv = inject(LoginService);
+    #shellSrv = inject(ShellService);
+
     formBuilder = inject(FormBuilder);
+
 
     public STATUS = [
         'NEW',
@@ -61,6 +67,7 @@ export class CrmLeadsDetailComponent implements OnInit {
 
     ngOnInit(): void {
         const id = +this.#route.snapshot.paramMap.get('id');
+        this.#shellSrv.setTitle('CRM_LEADS');
         this.#entitySrv.get(id).subscribe({
             next: (crmLead) => {
                 this.form = this.setupForm(crmLead);
@@ -73,7 +80,7 @@ export class CrmLeadsDetailComponent implements OnInit {
     }
 
     save() {
-        this.#entitySrv.save(this.form.getRawValue() as Contact).subscribe({
+        this.#entitySrv.save(this.form.getRawValue() as CRMLead).subscribe({
             next: () => {
                 this.form.markAsUntouched();
                 this.#router
@@ -91,36 +98,23 @@ export class CrmLeadsDetailComponent implements OnInit {
     //     this.#router.navigate(['../'], { relativeTo: this.#route }).then();
     // }
 
-     canDeactivate(): Observable<boolean> {
-         if (this.form.touched && this.form.dirty) {
-             return this.#confirmationSrv.confirmDontSave();
-         }
-         return of(true);
-     }
-
-    private setupForm(b: Contact) {
-        if (b) {
-            return this.formBuilder.group({
-                id: [b.id || 0, Validators.required],
-                firstName: [b.firstName, Validators.required],
-                lastName: [b.lastName, Validators.required],
-                email: [b.email, Validators.required],
-                phone: [b.phone, Validators.required],
-                status: [b.status, Validators.required],
-                createdAt: [b.createdAt, Validators.required],
-                createdBy: [b.createdBy, Validators.required],
-            });
-        } else {
-            return this.formBuilder.group({
-                id: [0, Validators.required],
-                firstName: ['', Validators.required],
-                lastName: ['', Validators.required],
-                email: ['', Validators.required],
-                phone: ['', Validators.required],
-                status: ['', Validators.required],
-                createdAt: [new Date(), Validators.required],
-                createdBy: [this.#loginSrv.appCtx.id || 0, Validators.required],
-            });
+    canDeactivate(): Observable<boolean> {
+        if (this.form.touched && this.form.dirty) {
+            return this.#confirmationSrv.confirmDontSave();
         }
+        return of(true);
+    }
+
+    private setupForm(b: CRMLead) {
+        return this.formBuilder.group({
+            id:          [b.id || 0, Validators.required],
+            description: [b.description, Validators.required],
+            detail:      [b.detail, Validators.required],
+            email:       [b.email, Validators.required],
+            phone:       [b.phone, Validators.required],
+            status:      [b.status, Validators.required],
+            createdAt:   [b.createdAt, Validators.required],
+            createdBy:   [b.createdBy, Validators.required],
+        });
     }
 }

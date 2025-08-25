@@ -15,5 +15,14 @@
     "NEGOTIATION":          "التفاوض",
     "CLOSED_WON":           "فوز مغلق",
     "CLOSED_LOST":          "فقدان مغلق",
-    "CONTACTS":             "جهات الاتصال"
+    "CONTACTS":             "جهات الاتصال",
+    "WEB":                  "الموقع الإلكتروني",
+    "PRIORITY":             "الأولوية",
+    "ESTIMATED_VALUE":      "القيمة المقدرة",
+    "LOW":                  "منخفض",
+    "MEDIUM":               "متوسط",
+    "HIGH":                 "مرتفع",
+    "CRITICAL":             "حرج",
+    "SCORE":                "الدرجة",
+    "OWNER":                "المالك"
 }

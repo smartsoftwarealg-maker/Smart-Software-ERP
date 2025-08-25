@@ -4,23 +4,28 @@
             <span translate>COMMON_CARDS</span>
         </ng-template>
         <div class="content">
-            <div *ngFor="let emp of data; trackBy: trackByFn;" class="employee-card selectable mat-elevation-z6"
-                 [class.selected]="emp.id == selected" (click)="selectAndEdit(emp.id)">
+            @for (emp of data; track emp.id) {
+                <div class="employee-card selectable mat-elevation-z6"
+                     [class.selected]="emp.id == selected" (click)="selectAndEdit(emp.id)">
 
-                <div class="person-photo">
-                    <ss-image-input width="120px" height="120px" [imageModel]="emp.imageModel"
-                                    style="display: inline-block;">
-                    </ss-image-input>
-                    <i *ngIf="emp.sex == 1" style="color: #00AAAA" class="abs-end-0 gender-icon fas fa-mars"></i>
-                    <i *ngIf="emp.sex == 2" style="color: #ff69b4" class="abs-end-0 gender-icon fas fa-venus"></i>
-                </div>
+                    <div class="person-photo">
+                        <ss-image-input width="120px" height="120px" [imageModel]="emp.imageModel"
+                                        style="display: inline-block;">
+                        </ss-image-input>
+                        @if (emp.sex == 1) {
+                            <i style="color: #00AAAA" class="abs-end-0 gender-icon fas fa-mars"></i>
+                        } @if (emp.sex == 2) {
+                        <i style="color: #ff69b4" class="abs-end-0 gender-icon fas fa-venus"></i>
+                    }
+                    </div>
 
-                <div class="employee-details">
-                    <div style="font-size: 1.5em; text-align: start; font-weight: bolder">{{emp.id}}</div>
-                    <div style="font-weight: bold;">{{emp.fullName}}</div>
-                    <div style="font-size: 0.7em">{{emp.post}}</div>
+                    <div class="employee-details">
+                        <div style="font-size: 1.5em; text-align: start; font-weight: bolder">{{ emp.id }}</div>
+                        <div style="font-weight: bold;">{{ emp.fullName }}</div>
+                        <div style="font-size: 0.7em">{{ emp.post }}</div>
+                    </div>
                 </div>
-            </div>
+            }
         </div>
     </mat-tab>
     <mat-tab>
@@ -33,35 +38,35 @@
                 <ng-container matColumnDef="id">
                     <mat-header-cell *matHeaderCellDef mat-sort-header translate>PAYROLL_ID</mat-header-cell>
                     <mat-cell *matCellDef="let e">
-                        {{e.id}}
+                        {{ e.id }}
                     </mat-cell>
                 </ng-container>
 
                 <ng-container matColumnDef="fullname">
                     <mat-header-cell *matHeaderCellDef mat-sort-header translate>PAYROLL_FULLNAME</mat-header-cell>
                     <mat-cell *matCellDef="let e">
-                        {{e.fullName}}
+                        {{ e.fullName }}
                     </mat-cell>
                 </ng-container>
 
                 <ng-container matColumnDef="post">
                     <mat-header-cell *matHeaderCellDef mat-sort-header translate>PAYROLL_POST</mat-header-cell>
                     <mat-cell *matCellDef="let e">
-                        {{e.post}}
+                        {{ e.post }}
                     </mat-cell>
                 </ng-container>
 
                 <ng-container matColumnDef="birth">
                     <mat-header-cell *matHeaderCellDef mat-sort-header translate>PAYROLL_BIRTHINFO</mat-header-cell>
                     <mat-cell *matCellDef="let e">
-                        {{e.birthDate}} / {{e.birthPlace}}
+                        {{ e.birthDate }} / {{ e.birthPlace }}
                     </mat-cell>
                 </ng-container>
 
                 <ng-container matColumnDef="address">
                     <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_ADDRESS</mat-header-cell>
                     <mat-cell *matCellDef="let e">
-                        {{e.address1}}
+                        {{ e.address1 }}
                     </mat-cell>
                 </ng-container>
 

@@ -17,7 +17,6 @@ import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute } from '@angular/router';
 import { ABSENCE_FIELDS_URL, AbsenceFiled } from '../attendance-api';
 import { AbsenceFieldsService } from '../absence-fields.service';
-import { NgIf } from '@angular/common';
 import { HttpService } from '@ss/common/api-common';
 import { MatButton } from '@angular/material/button';
 
@@ -34,7 +33,6 @@ import { MatButton } from '@angular/material/button';
         TranslateDirective,
         MatLabel,
         UiAutoCompleteComponent,
-        NgIf,
         MatButton,
     ],
 })
@@ -66,21 +64,23 @@ export class AbsenceFieldsComponent implements OnInit {
     ngOnInit(): void {
         this.shellSrv.setTitle('ATT_ABSENCE_FIELDS');
         this.shellSrv.setGoBackPath('../..', this.route);
-        this.absenceSrv.absenceFields().subscribe({
-            next: (data) => {
-                this.form = this.setupForm(data);
-            },
-            error: (err) => {
-                console.log(err);
-            },
-        });
+        this.absenceSrv
+            .absenceFields()
+            .subscribe({
+                next: (data) => {
+                    this.form = this.setupForm(data);
+                },
+                error: (err) => {
+                    console.log(err);
+                },
+            });
     }
 
     public setupForm(b: AbsenceFiled): UntypedFormGroup {
         return this.formBuilder.group({
-            id: [b.id],
-            escapeElement: [b.escapeElement, Validators.required],
-            absenceElement: [b.absenceElement, Validators.required],
+            id:              [b.id],
+            escapeElement:   [b.escapeElement, Validators.required],
+            absenceElement:  [b.absenceElement, Validators.required],
             latenessElement: [b.latenessElement, Validators.required],
         });
     }

@@ -58,18 +58,16 @@ export class CategoryAccountsDetailComponent extends BaseEntityDetailComponent<S
     }
     private accountSrv = inject(AccountService);
     //accountLookup = new AccountAutocompleteModel(this.accountSrv);
-    accountLookup1 = new AccountStringAutocompleteModel(this.accountSrv);
-    accountLookup2 = new AccountStringAutocompleteModel(this.accountSrv);
+    accountLookup1 = new AccountAutocompleteModel(this.accountSrv);
+    accountLookup2 = new AccountAutocompleteModel(this.accountSrv);
 
     public override setupForm(e: SalesCategory): UntypedFormGroup {
         return this.formBuilder.group({
             id: e.id,
-            description: [e.description, Validators.required],
-            descriptionAr: [e.descriptionAr],
-            cashAccount: [e.cashAccount],
+            description:     [e.description, Validators.required],
+            descriptionAr:   [e.descriptionAr],
+            cashAccount:     [e.cashAccount],
             deferredAccount: [e.deferredAccount],
-            cashDescription: [e.cashDescription],
-            deferredDescription: [e.deferredDescription],
         });
     }
 }

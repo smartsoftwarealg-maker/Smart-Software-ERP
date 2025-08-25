@@ -1,10 +1,13 @@
 
-:host {
+.main_table {
     display: block;
     margin: auto;
     position: relative;
-    max-width: 1624px;
+    max-width: 1400px;
     width: 100%;
+    overflow: auto;
+    height: 20em;
+    max-height: 20em;
 }
 
 .content-div {

@@ -64,7 +64,7 @@ export class PersonShiftDetailComponent extends BaseEntityDetailComponent<Person
         // Make sure to update the template if you edit the configuration here
         return this.formBuilder.group({
             id:               [b.id],
-            parentId:         [b.parentId || this.entitySrv.getParentId(), Validators.required],
+            parentId:         [b.parentId || 0],
             date:             [b.date,  Validators.required],
             shift:            [b.shift, Validators.required],
             shiftDescription: [b.shiftDescription],
@@ -73,7 +73,9 @@ export class PersonShiftDetailComponent extends BaseEntityDetailComponent<Person
     }
 
     override readForm(): PersonShift {
-        return this.form.getRawValue();
+        const value = this.form.getRawValue();
+        this.entitySrv.setParentId(value.parentId);
+        return value;
     }
 
     // override save() {
