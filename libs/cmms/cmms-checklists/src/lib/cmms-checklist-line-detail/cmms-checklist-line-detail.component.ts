@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -11,13 +11,7 @@ import { RoutingDetail } from '@ss/cmms/cmms-api';
 import { CMMSRoutingDetailService } from '@ss/master-data/cmms-routing';
 
 @Component({
-    imports: [CommonModule,
-
-        MatButtonModule,
-        MatCardModule,
-        MatFormFieldModule,
-        MatInputModule,
-        ReactiveFormsModule],
+    imports: [MatButtonModule, MatCardModule, MatFormFieldModule, MatInputModule, ReactiveFormsModule],
     selector: 'ss-cmms-checklist-line-detail',
     standalone: true,
     styleUrls: ['./cmms-checklist-line-detail.component.css'],

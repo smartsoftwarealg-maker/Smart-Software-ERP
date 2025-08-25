@@ -1,100 +1,96 @@
 <mat-card-content>
-    <form *ngIf="form !== null" novalidate [formGroup]="form" class="size">
-        <mat-card>
-            <mat-card-content>
-                <mat-form-field class="default-50 sm-100">
-                    <mat-label translate>ASSET</mat-label>
-                    <ss-auto-complete matInput
-                                      [model]="assetLookup"
-                                      formControlName="assetId"
-                                      required="true">
-                    </ss-auto-complete>
-                    <mat-error *ngIf="form.controls['assetId'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
-                </mat-form-field>
-
-                <mat-form-field class="default-50 sm-100">
-                    <mat-label translate>COMMON_DATE</mat-label>
-                    <ss-date-picker formControlName="date" [type]="'date'"></ss-date-picker>
-                </mat-form-field>
-
-                <mat-form-field class="default-50 sm-100">
-                    <mat-label translate>COMMON_DESCRIPTION</mat-label>
-                    <input matInput formControlName="description" type="text">
-                    <mat-error *ngIf="form.controls['description'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
-                </mat-form-field>
-
-
-<!--                <mat-form-field TODO class="default-50 sm-100">-->
-<!--                    <mat-label translate>COMMON_TYPE</mat-label>-->
-<!--                    <mat-select matNativeControl required formControlName="wrType">-->
-<!--                        <mat-option *ngFor="let t of cmmsTypes"-->
-<!--                                    [value]="t.id"> {{ t.description | translate }}-->
-<!--                        </mat-option>-->
-<!--                    </mat-select>-->
-<!--                </mat-form-field>-->
-
-                <mat-form-field class="default-50 sm-100">
-                    <mat-label translate>CMMS_PRIORITY</mat-label>
-                    <ss-auto-complete matInput
-                                      [model]="priorityLookup"
-                                      formControlName="priority"
-                                      required="true">
-                    </ss-auto-complete>
-                    <mat-error *ngIf="form.controls['priority'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
-                </mat-form-field>
-
-                <mat-form-field class="default-50 sm-100">
-                    <mat-label translate>CMMS_CHECKLIST</mat-label>
-                    <ss-auto-complete matInput
-                                      [model]="checklistLookup"
-                                      formControlName="routingId">
-                    </ss-auto-complete>
-                </mat-form-field>
-
-                @if (validated) {
-                    <mat-accordion>
-                        <mat-expansion-panel
-                            #executionPanel
-                            [class.b-primary-expansion-panel]="executionPanel.expanded">
-                            <mat-expansion-panel-header>
-                                <mat-panel-title translate>
-                                    CMMS_EXECUTION
-                                </mat-panel-title>
-                            </mat-expansion-panel-header>
-                            <span class="default-100"></span>
-
-                            <mat-form-field class="default-50 sm-100">
-                                <mat-label translate>CMMS_ACTUAL_START</mat-label>
-                                <ss-date-picker formControlName="actualStart" [type]="'datetime'"></ss-date-picker>
-                            </mat-form-field>
-
-                            <mat-form-field class="default-50 sm-100">
-                                <mat-label translate>CMMS_ACTUAL_DUE</mat-label>
-                                <ss-date-picker formControlName="actualDue" [type]="'datetime'"></ss-date-picker>
-                            </mat-form-field>
-
-                            <mat-radio-group aria-label="Select an option" formControlName="failsInspection"
-                                             class="default-50 sm-100">
-                                <mat-radio-button [value]="false" translate>CMMS_PASSES</mat-radio-button>
-                                <mat-radio-button [value]="true" translate>CMMS_FAILS</mat-radio-button>
-                            </mat-radio-group>
-
-                            <mat-form-field class="default-50 sm-100">
-                                <mat-label translate>PAYROLL_FULLNAME</mat-label>
-                                <input matInput formControlName="executorDescription" type="text">
-                            </mat-form-field>
-
-                            <mat-form-field id="memo" class="default-100">
-                                <mat-label translate>COMMON_MEMO</mat-label>
-                                <textarea matInput formControlName="memo" rows="5"></textarea>
-                            </mat-form-field>
-
-
-                        </mat-expansion-panel>
-                    </mat-accordion>
-                }
-            </mat-card-content>
-        </mat-card>
-    </form>
+  @if (form !== null) {
+    <form novalidate [formGroup]="form" class="size">
+      <mat-card>
+        <mat-card-content>
+          <mat-form-field class="default-50 sm-100">
+            <mat-label translate>ASSET</mat-label>
+            <ss-auto-complete matInput
+              [model]="assetLookup"
+              formControlName="assetId"
+              required="true">
+            </ss-auto-complete>
+            @if (form.controls['assetId'].invalid) {
+              <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+            }
+          </mat-form-field>
+          <mat-form-field class="default-50 sm-100">
+            <mat-label translate>COMMON_DATE</mat-label>
+            <ss-date-picker formControlName="date" [type]="'date'"></ss-date-picker>
+          </mat-form-field>
+          <mat-form-field class="default-50 sm-100">
+            <mat-label translate>COMMON_DESCRIPTION</mat-label>
+            <input matInput formControlName="description" type="text">
+            @if (form.controls['description'].invalid) {
+              <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+            }
+          </mat-form-field>
+          <!--                <mat-form-field TODO class="default-50 sm-100">-->
+          <!--                    <mat-label translate>COMMON_TYPE</mat-label>-->
+          <!--                    <mat-select matNativeControl required formControlName="wrType">-->
+          <!--                        <mat-option *ngFor="let t of cmmsTypes"-->
+          <!--                                    [value]="t.id"> {{ t.description | translate }}-->
+        <!--                        </mat-option>-->
+      <!--                    </mat-select>-->
+    <!--                </mat-form-field>-->
+    <mat-form-field class="default-50 sm-100">
+      <mat-label translate>CMMS_PRIORITY</mat-label>
+      <ss-auto-complete matInput
+        [model]="priorityLookup"
+        formControlName="priority"
+        required="true">
+      </ss-auto-complete>
+      @if (form.controls['priority'].invalid) {
+        <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+      }
+    </mat-form-field>
+    <mat-form-field class="default-50 sm-100">
+      <mat-label translate>CMMS_CHECKLIST</mat-label>
+      <ss-auto-complete matInput
+        [model]="checklistLookup"
+        formControlName="routingId">
+      </ss-auto-complete>
+    </mat-form-field>
+    @if (validated) {
+      <mat-accordion>
+        <mat-expansion-panel
+          #executionPanel
+          [class.b-primary-expansion-panel]="executionPanel.expanded">
+          <mat-expansion-panel-header>
+            <mat-panel-title translate>
+              CMMS_EXECUTION
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <span class="default-100"></span>
+          <mat-form-field class="default-50 sm-100">
+            <mat-label translate>CMMS_ACTUAL_START</mat-label>
+            <ss-date-picker formControlName="actualStart" [type]="'datetime'"></ss-date-picker>
+          </mat-form-field>
+          <mat-form-field class="default-50 sm-100">
+            <mat-label translate>CMMS_ACTUAL_DUE</mat-label>
+            <ss-date-picker formControlName="actualDue" [type]="'datetime'"></ss-date-picker>
+          </mat-form-field>
+          <mat-radio-group aria-label="Select an option" formControlName="failsInspection"
+            class="default-50 sm-100">
+            <mat-radio-button [value]="false" translate>CMMS_PASSES</mat-radio-button>
+            <mat-radio-button [value]="true" translate>CMMS_FAILS</mat-radio-button>
+          </mat-radio-group>
+          <mat-form-field class="default-50 sm-100">
+            <mat-label translate>PAYROLL_FULLNAME</mat-label>
+            <input matInput formControlName="executorDescription" type="text">
+          </mat-form-field>
+          <mat-form-field id="memo" class="default-100">
+            <mat-label translate>COMMON_MEMO</mat-label>
+            <textarea matInput formControlName="memo" rows="5"></textarea>
+          </mat-form-field>
+        </mat-expansion-panel>
+      </mat-accordion>
+    }
+  </mat-card-content>
+</mat-card>
+</form>
+}
 </mat-card-content>
-<ss-inspection-detail-list *ngIf="id > 0"></ss-inspection-detail-list>
+@if (id > 0) {
+  <ss-inspection-detail-list></ss-inspection-detail-list>
+}

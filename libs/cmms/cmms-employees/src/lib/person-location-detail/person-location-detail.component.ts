@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { BaseChildEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { PersonLocation } from '../employee-api';
 import { FormBuilder, FormsModule, ReactiveFormsModule, UntypedFormGroup, Validators } from '@angular/forms';
@@ -14,7 +14,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 @Component({
     selector: 'ss-person-location-detail',
     standalone: true,
-    imports: [CommonModule, FormsModule, MatButtonModule, MatCardModule, MatFormFieldModule, ReactiveFormsModule, UiAutoCompleteComponent],
+    imports: [FormsModule, MatButtonModule, MatCardModule, MatFormFieldModule, ReactiveFormsModule, UiAutoCompleteComponent],
     templateUrl: './person-location-detail.component.html',
     styleUrls: ['./person-location-detail.component.css'],
 })

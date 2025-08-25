@@ -7,7 +7,7 @@ import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { CMMSPrevWorkOrderService } from '../c-m-m-s-prev-work-order.service';
 import { DOC_WORK_REQUEST } from '@ss/logistics/api-transaction';
 import { MatCard, MatCardContent } from '@angular/material/card';
-import { NgIf, NgFor, AsyncPipe, DecimalPipe } from '@angular/common';
+import { AsyncPipe, DecimalPipe } from '@angular/common';
 import { MatFormField, MatLabel, MatError } from '@angular/material/form-field';
 import { TranslateDirective } from '@ss/common/ui-lang';
 import { MatInput } from '@angular/material/input';
@@ -24,35 +24,34 @@ import { TranslatePipe } from '@ss/common/ui-lang';
     styleUrls: ['./prev-work-order-detail.component.css'],
     standalone: true,
     imports: [
-        MatCard,
-        MatCardContent,
-        NgIf,
-        FormsModule,
-        ReactiveFormsModule,
-        MatFormField,
-        MatLabel,
-        TranslateDirective,
-        MatInput,
-        DatePickerComponent,
-        MatError,
-        UiAutoCompleteComponent,
-        MatTabGroup,
-        MatTab,
-        MatTable,
-        MatColumnDef,
-        MatHeaderCell,
-        MatCell,
-        MatHeaderRow,
-        MatRow,
-        PaginationComponent,
-        AsyncPipe,
-        DecimalPipe,
-        TranslatePipe,
-        MatHeaderCellDef,
-        MatHeaderRowDef,
-        MatRowDef,
-        MatCellDef
-    ]
+    MatCard,
+    MatCardContent,
+    FormsModule,
+    ReactiveFormsModule,
+    MatFormField,
+    MatLabel,
+    TranslateDirective,
+    MatInput,
+    DatePickerComponent,
+    MatError,
+    UiAutoCompleteComponent,
+    MatTabGroup,
+    MatTab,
+    MatTable,
+    MatColumnDef,
+    MatHeaderCell,
+    MatCell,
+    MatHeaderRow,
+    MatRow,
+    PaginationComponent,
+    AsyncPipe,
+    DecimalPipe,
+    TranslatePipe,
+    MatHeaderCellDef,
+    MatHeaderRowDef,
+    MatRowDef,
+    MatCellDef
+]
 })
 export class PrevWorkOrderDetailComponent extends CMMSWorkDetail {
     constructor(

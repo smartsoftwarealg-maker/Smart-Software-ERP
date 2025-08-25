@@ -24,5 +24,8 @@
     "HIGH":                 "مرتفع",
     "CRITICAL":             "حرج",
     "SCORE":                "الدرجة",
-    "OWNER":                "المالك"
+    "OWNER":                "المالك",
+    "CONTACT_DETAIL":       "تفاصيل الاتصال",
+    "COMPANY_DETAIL":       "تفاصيل الشركة",
+    "PROGRESS":             "تقدم"
 }

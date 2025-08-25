@@ -7,7 +7,7 @@ import { CMMSAssetReadingService } from '../cmms-asset-reading.service';
 import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { CMMSMeterService } from '@ss/cmms/lookups';
 import { AssetReading } from '@ss/cmms/cmms-api';
-import { CommonModule } from '@angular/common';
+
 
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
@@ -25,20 +25,16 @@ import { of, switchMap, tap } from 'rxjs';
     styleUrls: ['./asset-child-reading-detail.component.css'],
     standalone: true,
     imports: [
-        CommonModule,
-
-        MatSortModule,
-        MatTableModule,
-
-        MatCardModule,
-        MatFormFieldModule,
-        MatInputModule,
-        ReactiveFormsModule,
-        DatePickerComponent,
-
-        MatButtonModule,
-        UiAutoCompleteComponent
-    ]
+    MatSortModule,
+    MatTableModule,
+    MatCardModule,
+    MatFormFieldModule,
+    MatInputModule,
+    ReactiveFormsModule,
+    DatePickerComponent,
+    MatButtonModule,
+    UiAutoCompleteComponent
+]
 })
 export class AssetChildReadingDetailComponent extends BaseChildEntityDetailComponent<AssetReading> implements OnInit {
     private formBuilder = inject(FormBuilder);

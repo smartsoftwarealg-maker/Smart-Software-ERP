@@ -1,6 +1,6 @@
 import {Component, HostBinding, OnInit} from '@angular/core';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
-import { CommonModule } from '@angular/common';
+
 import { MaterialModule, PaginatorPersistenceService } from '@ss/common/api-common';
 
 
@@ -24,17 +24,12 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     styleUrls: ['./costing-product-list.component.scss'],
     standalone: true,
     imports: [
-        CommonModule,
-        RouterModule,
-        MaterialModule,
-        TranslateDirective,
-       
-        ReactiveFormsModule,
-
-       
-        PaginationComponent
-
-    ],
+    RouterModule,
+    MaterialModule,
+    TranslateDirective,
+    ReactiveFormsModule,
+    PaginationComponent
+],
     animations: [slideToRight]
 })
 export class CostingProductListComponent extends BaseEntityListComponent<CProduct> implements OnInit {

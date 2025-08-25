@@ -1,5 +1,5 @@
 import { Component, inject, OnInit } from "@angular/core";
-import { CommonModule } from '@angular/common';
+
 import { BaseChildEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { WorkArticle } from '@ss/cmms/cmms-api';
 import { FormBuilder, FormsModule, ReactiveFormsModule, UntypedFormGroup } from '@angular/forms';
@@ -22,21 +22,16 @@ import { of, switchMap, tap } from 'rxjs';
     selector: 'ss-work-order-article-detail',
     standalone: true,
     imports: [
-        CommonModule,
-
-        MatTableModule,
-
-
-        FormsModule,
-        MatFormFieldModule,
-        ReactiveFormsModule,
-        MatCardModule,
-        MatInputModule,
-       
-        MatButtonModule,
-        MaterialModule,
-        UiAutoCompleteComponent
-    ],
+    MatTableModule,
+    FormsModule,
+    MatFormFieldModule,
+    ReactiveFormsModule,
+    MatCardModule,
+    MatInputModule,
+    MatButtonModule,
+    MaterialModule,
+    UiAutoCompleteComponent
+],
     templateUrl: './asset-pm-article-detail.component.html',
     styleUrls: ['./asset-pm-article-detail.component.css'],
 })

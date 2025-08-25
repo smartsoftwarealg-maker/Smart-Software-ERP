@@ -1,16 +1,22 @@
 import { Component, inject } from '@angular/core';
-import { CMMSWorkDetail, INSPECTION, IS_INSPECTION, Work, WORK_TYPES } from "@ss/cmms/cmms-api";
+import {
+    CMMSWorkDetail,
+    INSPECTION,
+    IS_INSPECTION,
+    Work,
+    WORK_TYPES,
+} from '@ss/cmms/cmms-api';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router, RouterOutlet } from '@angular/router';
-import { FormsModule, ReactiveFormsModule, UntypedFormBuilder } from '@angular/forms';
+import {
+    FormsModule,
+    ReactiveFormsModule,
+    UntypedFormBuilder,
+} from '@angular/forms';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { DOC_WORK_ORDER } from '@ss/logistics/api-transaction';
 import { Observable } from 'rxjs';
-import { CommonModule } from '@angular/common';
-
 import { MatTableModule } from '@angular/material/table';
-
-
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
@@ -30,11 +36,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     styleUrls: ['./inspection-order-detail.component.css'],
     standalone: true,
     imports: [
-        CommonModule,
-
         MatTableModule,
-
-
         FormsModule,
         MatFormFieldModule,
         ReactiveFormsModule,
@@ -46,8 +48,8 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         RouterOutlet,
         UiAutoCompleteComponent,
         TranslatePipe,
-        TranslateDirective
-    ]
+        TranslateDirective,
+    ],
 })
 export class InspectionOrderDetailComponent extends CMMSWorkDetail {
     inspectionSrv = inject(CMMSInspectionService);
@@ -58,7 +60,7 @@ export class InspectionOrderDetailComponent extends CMMSWorkDetail {
     private URLS = ['inspections'];
     readonly INSPECTION_PANEL = 0;
 
-    cmmsTypes = WORK_TYPES.filter(e => e.id === INSPECTION);
+    cmmsTypes = WORK_TYPES.filter((e) => e.id === INSPECTION);
 
     activePanel = -1;
 
@@ -68,8 +70,10 @@ export class InspectionOrderDetailComponent extends CMMSWorkDetail {
         public override snackBarSrv: SnackBarService,
         public override route: ActivatedRoute,
         public override formBuilder: UntypedFormBuilder,
-        public override confirmationSrv: ConfirmationDialogService) {
-        super(entitySrv,
+        public override confirmationSrv: ConfirmationDialogService,
+    ) {
+        super(
+            entitySrv,
             shellSrv,
             snackBarSrv,
             route,
@@ -77,7 +81,8 @@ export class InspectionOrderDetailComponent extends CMMSWorkDetail {
             confirmationSrv,
             DOC_WORK_ORDER,
             'CMMS_INSPECTION_ORDERS',
-            IS_INSPECTION);
+            IS_INSPECTION,
+        );
     }
 
     override loadEntity(id: number): Observable<Work> {
@@ -87,7 +92,7 @@ export class InspectionOrderDetailComponent extends CMMSWorkDetail {
         return super.loadEntity(id);
     }
 
-    showPanel(index: 0|1) {
+    showPanel(index: 0 | 1) {
         this.activePanel = index;
         const url = this.URLS[index];
         if (this.router.url.indexOf(url) < 0) {

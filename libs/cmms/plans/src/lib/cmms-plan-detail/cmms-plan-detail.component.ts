@@ -7,7 +7,7 @@ import { FormGroup, UntypedFormBuilder, Validators, FormsModule, ReactiveFormsMo
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { CMMSPlanService } from '../cmms-plan.service';
 import { Lookup } from '@ss/common/api-lookup';
-import { NgIf, NgFor } from '@angular/common';
+
 import { MatCard, MatCardContent } from '@angular/material/card';
 import { MatFormField, MatLabel, MatError } from '@angular/material/form-field';
 import { TranslateDirective } from '@ss/common/ui-lang';
@@ -22,21 +22,19 @@ import { TranslatePipe } from '@ss/common/ui-lang';
     styleUrls: ['./cmms-plan-detail.component.css'],
     standalone: true,
     imports: [
-        NgIf,
-        MatCard,
-        MatCardContent,
-        FormsModule,
-        ReactiveFormsModule,
-        MatFormField,
-        MatLabel,
-        TranslateDirective,
-        MatInput,
-        MatError,
-        MatSelect,
-        NgFor,
-        MatOption,
-        TranslatePipe,
-    ],
+    MatCard,
+    MatCardContent,
+    FormsModule,
+    ReactiveFormsModule,
+    MatFormField,
+    MatLabel,
+    TranslateDirective,
+    MatInput,
+    MatError,
+    MatSelect,
+    MatOption,
+    TranslatePipe
+],
 })
 export class CMMSPlanDetailComponent extends BaseEntityDetailComponent<CMMSPlan> {
     readonly TYPES: Lookup[] = [

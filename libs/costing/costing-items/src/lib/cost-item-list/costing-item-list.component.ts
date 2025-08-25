@@ -8,7 +8,7 @@ import { ShellService, SnackBarService } from "@ss/common/ui-shell";
 import { DefaultReportService } from '@ss/common/ui-default-report-component';
 import {  ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { CostingItemService } from "../costing-item.service";
-import { CommonModule } from '@angular/common';
+
 
 
 import { ReactiveFormsModule } from '@angular/forms';
@@ -25,17 +25,12 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
   styleUrls: ["./costing-item-list.component.scss"],
   standalone: true,
     imports: [
-        CommonModule,
-        RouterModule,
-        MaterialModule,
-        TranslateDirective,
-       
-        ReactiveFormsModule,
-
-       
-        PaginationComponent
-
-    ],
+    RouterModule,
+    MaterialModule,
+    TranslateDirective,
+    ReactiveFormsModule,
+    PaginationComponent
+],
   animations: [slideToRight]
 })
 export class CostingItemListComponent extends BaseEntityListComponent<CItem> implements OnInit {

@@ -1,32 +1,34 @@
 <div class="list_div">
-    <mat-selection-list #articleList>
-        <mat-list-option #header (click)="header.selected? articleList.selectAll() : articleList.deselectAll()" class="b-primary" [value]="0">
-            <tr>
-                <th style="width: 12em;" translate> COMMON_REFERENCE</th>
-                <th style="width: 40em;" translate> COMMON_DESCRIPTION</th>
-                <th style="width: 8em;" translate> COMMON_QTY</th>
-            </tr>
-        </mat-list-option>
-        <mat-list-option *ngFor="let i of articles$ | async" [value]="i.id">
-            <tr>
-                <td style="width: 12em;">{{i.reference }} </td>
-                <td style="width: 40em;">{{i.description }} </td>
-                <td style="width: 8em;"> {{ i.qty }} </td>
-            </tr>
-        </mat-list-option>
-    </mat-selection-list>
+  <mat-selection-list #articleList>
+    <mat-list-option #header (click)="header.selected? articleList.selectAll() : articleList.deselectAll()" class="b-primary" [value]="0">
+      <tr>
+        <th style="width: 12em;" translate> COMMON_REFERENCE</th>
+        <th style="width: 40em;" translate> COMMON_DESCRIPTION</th>
+        <th style="width: 8em;" translate> COMMON_QTY</th>
+      </tr>
+    </mat-list-option>
+    @for (i of articles$ | async; track i) {
+      <mat-list-option [value]="i.id">
+        <tr>
+          <td style="width: 12em;">{{i.reference }} </td>
+          <td style="width: 40em;">{{i.description }} </td>
+          <td style="width: 8em;"> {{ i.qty }} </td>
+        </tr>
+      </mat-list-option>
+    }
+  </mat-selection-list>
 </div>
 @if (processing) {
-   <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+  <mat-progress-bar mode="indeterminate"></mat-progress-bar>
 } @else {
-    <div class="ctrl_div">
+  <div class="ctrl_div">
     <button mat-raised-button color="primary" (click)="close(articleList)" translate>
-    <i class="fas fa-check" ></i>
-    CMMS_RESERVE
+      <i class="fas fa-check" ></i>
+      CMMS_RESERVE
     </button>
     <button mat-raised-button (click)="cancel()" translate>
-    <i class="fas fa-redo" ></i>
-    COMMON_CANCEL
+      <i class="fas fa-redo" ></i>
+      COMMON_CANCEL
     </button>
-    </div>
+  </div>
 }

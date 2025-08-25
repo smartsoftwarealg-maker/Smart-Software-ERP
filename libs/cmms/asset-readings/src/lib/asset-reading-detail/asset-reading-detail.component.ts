@@ -8,7 +8,7 @@ import { CMMSAssetReadingService } from '../cmms-asset-reading.service';
 import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { CMMSMeterService } from '@ss/cmms/lookups';
 import { AssetReading } from '@ss/cmms/cmms-api';
-import { CommonModule } from '@angular/common';
+
 
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
@@ -26,18 +26,17 @@ import { MaterialModule } from '@ss/common/api-common';
     styleUrls: ['./asset-reading-detail.component.css'],
     standalone: true,
     imports: [
-        CommonModule,
-        MaterialModule,
-        TranslateDirective,
-        MatSortModule,
-        MatTableModule,
-        MatCardModule,
-        MatFormFieldModule,
-        MatInputModule,
-        ReactiveFormsModule,
-        DatePickerComponent,
-        UiAutoCompleteComponent
-    ],
+    MaterialModule,
+    TranslateDirective,
+    MatSortModule,
+    MatTableModule,
+    MatCardModule,
+    MatFormFieldModule,
+    MatInputModule,
+    ReactiveFormsModule,
+    DatePickerComponent,
+    UiAutoCompleteComponent
+],
 })
 export class AssetReadingDetailComponent extends BaseEntityDetailComponent<AssetReading> {
     protected meterSrv = inject(CMMSMeterService);

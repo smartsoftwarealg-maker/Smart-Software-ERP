@@ -1,41 +1,45 @@
 <mat-card>
-    <mat-card-content>
-        @defer (when form) {
-            <form novalidate [formGroup]="form">
-                <mat-form-field id="code" class="default-50">
-                    <mat-label translate>ADMINISTRATION_CODE</mat-label>
-                    <input matInput formControlName="code" type="text" required>
-                    <mat-error *ngIf="form.controls['code'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
-                </mat-form-field>
-
-                <mat-form-field id="description" class="default-100">
-                    <mat-label translate>ADMINISTRATION_DESCRIPTION</mat-label>
-                    <input matInput formControlName="description" type="text" required>
-                    <mat-error *ngIf="form.controls['description'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
-                </mat-form-field>
-            </form>
+  <mat-card-content>
+    @defer (when form) {
+    <form novalidate [formGroup]="form">
+      <mat-form-field id="code" class="default-50">
+        <mat-label translate>ADMINISTRATION_CODE</mat-label>
+        <input matInput formControlName="code" type="text" required>
+        @if (form.controls['code'].invalid) {
+          <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
         }
-    </mat-card-content>
+      </mat-form-field>
+
+      <mat-form-field id="description" class="default-100">
+        <mat-label translate>ADMINISTRATION_DESCRIPTION</mat-label>
+        <input matInput formControlName="description" type="text" required>
+        @if (form.controls['description'].invalid) {
+          <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+        }
+      </mat-form-field>
+    </form>
+  }
+</mat-card-content>
 </mat-card>
 <mat-tab-group (selectedIndexChange)="showPanel($event)">
-    <mat-tab label="{{ 'COST_PRODUCTS'|translate }}" [disabled]="onEdit()">
-        @if (id > 0 && activePanel === PRODUCTS_PANEL) {
-            <router-outlet></router-outlet>
-        }
-    </mat-tab>
-    <mat-tab label="{{ 'COST_POOLS'|translate }}" (click)="showPanel(POOLS_PANEL)" [disabled]="onEdit()">
-        @if (id > 0 && activePanel === POOLS_PANEL) {
-            <router-outlet></router-outlet>
-        }
-    </mat-tab>
-    <mat-tab label="{{ 'COST_OH'|translate }}" (click)="showPanel(COH_PANEL)" [disabled]="onEdit()">
-        @if (id > 0 && activePanel === COH_PANEL) {
-            <router-outlet></router-outlet>
-        }
-    </mat-tab>
-    <mat-tab label="{{ 'COMMON_REPORTS'|translate }}" (click)="showPanel(COH_REPORT)" [disabled]="onEdit()">
-        @if (id > 0 && activePanel === COH_REPORT) {
-            <router-outlet></router-outlet>
-        }
-    </mat-tab>
+  <mat-tab label="{{ 'COST_PRODUCTS'|translate }}" [disabled]="onEdit()">
+    @if (id > 0 && activePanel === PRODUCTS_PANEL) {
+      <router-outlet></router-outlet>
+    }
+  </mat-tab>
+  <mat-tab label="{{ 'COST_POOLS'|translate }}" (click)="showPanel(POOLS_PANEL)" [disabled]="onEdit()">
+    @if (id > 0 && activePanel === POOLS_PANEL) {
+      <router-outlet></router-outlet>
+    }
+  </mat-tab>
+  <mat-tab label="{{ 'COST_OH'|translate }}" (click)="showPanel(COH_PANEL)" [disabled]="onEdit()">
+    @if (id > 0 && activePanel === COH_PANEL) {
+      <router-outlet></router-outlet>
+    }
+  </mat-tab>
+  <mat-tab label="{{ 'COMMON_REPORTS'|translate }}" (click)="showPanel(COH_REPORT)" [disabled]="onEdit()">
+    @if (id > 0 && activePanel === COH_REPORT) {
+      <router-outlet></router-outlet>
+    }
+  </mat-tab>
 </mat-tab-group>

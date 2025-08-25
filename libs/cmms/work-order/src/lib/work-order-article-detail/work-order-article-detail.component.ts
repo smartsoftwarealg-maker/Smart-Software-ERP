@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { BaseChildEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { WorkArticle } from '@ss/cmms/cmms-api';
 import { CMMSWorkOrderArticleService } from '../services/c-m-m-s-work-order-article.service';
@@ -21,21 +21,17 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     selector: 'ss-work-order-article-detail',
     standalone: true,
     imports: [
-        CommonModule,
-
-        MatTableModule,
-
-
-        FormsModule,
-        MatFormFieldModule,
-        ReactiveFormsModule,
-        MatCardModule,
-        MatInputModule,
-        TranslateDirective,
-        MatButtonModule,
-        MaterialModule,
-        UiAutoCompleteComponent
-    ],
+    MatTableModule,
+    FormsModule,
+    MatFormFieldModule,
+    ReactiveFormsModule,
+    MatCardModule,
+    MatInputModule,
+    TranslateDirective,
+    MatButtonModule,
+    MaterialModule,
+    UiAutoCompleteComponent
+],
     templateUrl: './work-order-article-detail.component.html',
     styleUrls: ['./work-order-article-detail.component.css'],
 })

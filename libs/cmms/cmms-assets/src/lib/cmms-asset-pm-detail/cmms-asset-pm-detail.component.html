@@ -1,171 +1,165 @@
-<form *ngIf="form !== null" novalidate [formGroup]="form">
+@if (form !== null) {
+  <form novalidate [formGroup]="form">
     <mat-form-field id="reference" class="default-50 sm-100">
-        <mat-label translate>COMMON_REFERENCE</mat-label>
-        <input matInput formControlName="reference" type="text" autofocus maxlength="16" required>
-        <mat-error *ngIf="form.controls['reference']?.hasError('maxlength')" [translate]="{maxLen: 17}">
-            COMMON_FIELD_MAX_LENGTH
+      <mat-label translate>COMMON_REFERENCE</mat-label>
+      <input matInput formControlName="reference" type="text" autofocus maxlength="16" required>
+      @if (form.controls['reference']?.hasError('maxlength')) {
+        <mat-error [translate]="{maxLen: 17}">
+          COMMON_FIELD_MAX_LENGTH
         </mat-error>
-        <mat-error *ngIf="form.controls['reference']?.hasError('minlength')" [translate]="{minLen: minLength}">
-            COMMON_FIELD_MIN_LENGTH
+      }
+      @if (form.controls['reference']?.hasError('minlength')) {
+        <mat-error [translate]="{minLen: minLength}">
+          COMMON_FIELD_MIN_LENGTH
         </mat-error>
+      }
     </mat-form-field>
-
     <mat-form-field id="description" class="default-50 sm-100">
-        <mat-label translate>ADMINISTRATION_DESCRIPTION</mat-label>
-        <input matInput formControlName="description" type="text" required>
-        <mat-error *ngIf="form.controls['description'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
+      <mat-label translate>ADMINISTRATION_DESCRIPTION</mat-label>
+      <input matInput formControlName="description" type="text" required>
+      @if (form.controls['description'].invalid) {
+        <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+      }
     </mat-form-field>
-
     <mat-form-field id="serial_no" class="default-50 sm-100">
-        <mat-label translate>ASSET_SERIAL_NUMBER</mat-label>
-        <input matInput formControlName="serial_no" type="text" maxlength="50">
-        <mat-error *ngIf="form.controls['serial_no'].invalid" translate>COMMON_FIELD_MAX_LENGTH</mat-error>
+      <mat-label translate>ASSET_SERIAL_NUMBER</mat-label>
+      <input matInput formControlName="serial_no" type="text" maxlength="50">
+      @if (form.controls['serial_no'].invalid) {
+        <mat-error translate>COMMON_FIELD_MAX_LENGTH</mat-error>
+      }
     </mat-form-field>
-
-
     <mat-form-field class="default-50 sm-100">
-        <mat-label translate>LOGISTICS_ACCOUNT_NO</mat-label>
-        <ss-auto-complete matInput
-                          [model]="accountAutoCompleteModel"
-                          required
-                          formControlName="accountId">
-        </ss-auto-complete>
-        <mat-error *ngIf="form.controls['accountId'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
+      <mat-label translate>LOGISTICS_ACCOUNT_NO</mat-label>
+      <ss-auto-complete matInput
+        [model]="accountAutoCompleteModel"
+        required
+        formControlName="accountId">
+      </ss-auto-complete>
+      @if (form.controls['accountId'].invalid) {
+        <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+      }
     </mat-form-field>
-
     <div class="default-50 sm-100">
-        <mat-form-field >
-            <mat-label translate>ASSET_LOCATIONS</mat-label>
-            <ss-auto-complete matInput
-                              [model]="officeAutoCompleteModel"
-                              formControlName="office">
-            </ss-auto-complete>
-        </mat-form-field>
+      <mat-form-field >
+        <mat-label translate>ASSET_LOCATIONS</mat-label>
+        <ss-auto-complete matInput
+          [model]="officeAutoCompleteModel"
+          formControlName="office">
+        </ss-auto-complete>
+      </mat-form-field>
     </div>
-
-<!--    <mat-form-field class="default-50 sm-50">-->
-<!--        <mat-label translate>ASSET_SITE</mat-label>-->
-<!--        <input matInput formControlName="site" type="text" readonly>-->
+    <!--    <mat-form-field class="default-50 sm-50">-->
+    <!--        <mat-label translate>ASSET_SITE</mat-label>-->
+    <!--        <input matInput formControlName="site" type="text" readonly>-->
+  <!--    </mat-form-field>-->
+  <!--    <mat-form-field class="default-50 sm-50">-->
+  <!--        <mat-label translate>ASSET_BUILDINGS</mat-label>-->
+  <!--        <input matInput formControlName="building" type="text" readonly>-->
 <!--    </mat-form-field>-->
-
-<!--    <mat-form-field class="default-50 sm-50">-->
-<!--        <mat-label translate>ASSET_BUILDINGS</mat-label>-->
-<!--        <input matInput formControlName="building" type="text" readonly>-->
-<!--    </mat-form-field>-->
-
-
 <!--    <mat-form-field class="default-50 sm-50">-->
 <!--        <mat-label translate>COMMON_COST_CENTER</mat-label>-->
 <!--        <ss-auto-complete matInput-->
 <!--                          [model]="ccAutoCompleteModel"-->
 <!--                          formControlName="costCenter"></ss-auto-complete>-->
 <!--    </mat-form-field>-->
-
-    <mat-form-field class="default-50 sm-50">
-        <mat-label translate>COMMON_CLASS</mat-label>
-        <ss-auto-complete matInput
-                          [model]="classAutoCompleteModel"
-                          [required]="true"
-                          formControlName="assetClass">
-        </ss-auto-complete>
-    </mat-form-field>
-
-    <mat-form-field class="default-50 sm-50">
-        <mat-label translate>COMMON_STATUS</mat-label>
-        <ss-auto-complete matInput
-                          [model]="statusAutoCompleteModel"
-                          formControlName="status"></ss-auto-complete>
-        <mat-error *ngIf="form.controls['status'].invalid" translate>COMMON_STATUS</mat-error>
-    </mat-form-field>
-
-    <mat-form-field class="default-50 sm-50">
-        <mat-label translate>CMMS_FUNCTION</mat-label>
-        <ss-auto-complete matInput
-                          [model]="functionLookup"
-                          formControlName="function"></ss-auto-complete>
-        <mat-error *ngIf="form.controls['function'].invalid" translate>COMMON_FUNCTION</mat-error>
-    </mat-form-field>
-
+<mat-form-field class="default-50 sm-50">
+  <mat-label translate>COMMON_CLASS</mat-label>
+  <ss-auto-complete matInput
+    [model]="classAutoCompleteModel"
+    [required]="true"
+    formControlName="assetClass">
+  </ss-auto-complete>
+</mat-form-field>
+<mat-form-field class="default-50 sm-50">
+  <mat-label translate>COMMON_STATUS</mat-label>
+  <ss-auto-complete matInput
+    [model]="statusAutoCompleteModel"
+  formControlName="status"></ss-auto-complete>
+  @if (form.controls['status'].invalid) {
+    <mat-error translate>COMMON_STATUS</mat-error>
+  }
+</mat-form-field>
+<mat-form-field class="default-50 sm-50">
+  <mat-label translate>CMMS_FUNCTION</mat-label>
+  <ss-auto-complete matInput
+    [model]="functionLookup"
+  formControlName="function"></ss-auto-complete>
+  @if (form.controls['function'].invalid) {
+    <mat-error translate>COMMON_FUNCTION</mat-error>
+  }
+</mat-form-field>
 <!--    <mat-form-field id="comment" class="default-50 sm-100">-->
 <!--        <mat-label translate>COMMON_MEMO</mat-label>-->
 <!--        <input matInput formControlName="comment" type="text">-->
 <!--    </mat-form-field>-->
-
-
-    <mat-accordion>
-
-        <mat-expansion-panel #inspectionPanel
-                             expanded="false"
-                             (afterExpand)="showPanel(INSPECTION_PANEL)"
-                             [class.b-primary-expansion-panel]="inspectionPanel.expanded">
-            <mat-expansion-panel-header>
-                <mat-panel-title translate>
-                    CMMS_INSPECTION
-                </mat-panel-title>
-            </mat-expansion-panel-header>
-
-            <router-outlet *ngIf="id && activePanel === INSPECTION_PANEL"></router-outlet>
-
-        </mat-expansion-panel>
-
-        <mat-expansion-panel #pmPanel
-                             expanded="false"
-                             (afterExpand)="showPanel(PM_PANEL)"
-                             [class.b-primary-expansion-panel]="pmPanel.expanded">
-            <mat-expansion-panel-header>
-                <mat-panel-title translate>
-                    CMMS_PM
-                </mat-panel-title>
-            </mat-expansion-panel-header>
-
-            <router-outlet *ngIf="id && activePanel === PM_PANEL"></router-outlet>
-
-        </mat-expansion-panel>
-
-        <mat-expansion-panel #triggerPanel
-                             expanded="false"
-                             (afterExpand)="showPanel(TRIGGER_PANEL)"
-                             [class.b-primary-expansion-panel]="triggerPanel.expanded">
-            <mat-expansion-panel-header>
-                <mat-panel-title translate>
-                    CMMS_TRIGGERS
-                </mat-panel-title>
-            </mat-expansion-panel-header>
-
-            <router-outlet *ngIf="id && activePanel === TRIGGER_PANEL"></router-outlet>
-
-        </mat-expansion-panel>
-
-        <mat-expansion-panel #articlePanel
-                             expanded="false"
-                             (afterExpand)="showPanel(ARTICLE_PANEL)"
-                             [class.b-primary-expansion-panel]="articlePanel.expanded">
-            <mat-expansion-panel-header>
-                <mat-panel-title translate>
-                    STOCK_ARTICLES
-                </mat-panel-title>
-            </mat-expansion-panel-header>
-
-            <router-outlet *ngIf="id && activePanel === ARTICLE_PANEL"></router-outlet>
-
-        </mat-expansion-panel>
-
-        <mat-expansion-panel #archivePanel
-                             expanded="false"
-                             (afterExpand)="showPanel(ARCHIVE_PANEL)"
-                             [class.b-primary-expansion-panel]="archivePanel.expanded">
-            <mat-expansion-panel-header>
-                <mat-panel-title translate>
-                    COMMON_ARCHIVE
-                </mat-panel-title>
-            </mat-expansion-panel-header>
-
-            <router-outlet *ngIf="id && activePanel === ARCHIVE_PANEL"></router-outlet>
-
-        </mat-expansion-panel>
-
-    </mat-accordion>
-    <!--    <pre>{{form?.value | json}} {{ form?.valid}}</pre>-->
-
+<mat-accordion>
+  <mat-expansion-panel #inspectionPanel
+    expanded="false"
+    (afterExpand)="showPanel(INSPECTION_PANEL)"
+    [class.b-primary-expansion-panel]="inspectionPanel.expanded">
+    <mat-expansion-panel-header>
+      <mat-panel-title translate>
+        CMMS_INSPECTION
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    @if (id && activePanel === INSPECTION_PANEL) {
+      <router-outlet></router-outlet>
+    }
+  </mat-expansion-panel>
+  <mat-expansion-panel #pmPanel
+    expanded="false"
+    (afterExpand)="showPanel(PM_PANEL)"
+    [class.b-primary-expansion-panel]="pmPanel.expanded">
+    <mat-expansion-panel-header>
+      <mat-panel-title translate>
+        CMMS_PM
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    @if (id && activePanel === PM_PANEL) {
+      <router-outlet></router-outlet>
+    }
+  </mat-expansion-panel>
+  <mat-expansion-panel #triggerPanel
+    expanded="false"
+    (afterExpand)="showPanel(TRIGGER_PANEL)"
+    [class.b-primary-expansion-panel]="triggerPanel.expanded">
+    <mat-expansion-panel-header>
+      <mat-panel-title translate>
+        CMMS_TRIGGERS
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    @if (id && activePanel === TRIGGER_PANEL) {
+      <router-outlet></router-outlet>
+    }
+  </mat-expansion-panel>
+  <mat-expansion-panel #articlePanel
+    expanded="false"
+    (afterExpand)="showPanel(ARTICLE_PANEL)"
+    [class.b-primary-expansion-panel]="articlePanel.expanded">
+    <mat-expansion-panel-header>
+      <mat-panel-title translate>
+        STOCK_ARTICLES
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    @if (id && activePanel === ARTICLE_PANEL) {
+      <router-outlet></router-outlet>
+    }
+  </mat-expansion-panel>
+  <mat-expansion-panel #archivePanel
+    expanded="false"
+    (afterExpand)="showPanel(ARCHIVE_PANEL)"
+    [class.b-primary-expansion-panel]="archivePanel.expanded">
+    <mat-expansion-panel-header>
+      <mat-panel-title translate>
+        COMMON_ARCHIVE
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    @if (id && activePanel === ARCHIVE_PANEL) {
+      <router-outlet></router-outlet>
+    }
+  </mat-expansion-panel>
+</mat-accordion>
+<!--    <pre>{{form?.value | json}} {{ form?.valid}}</pre>-->
 </form>
+}
 

@@ -8,7 +8,7 @@ import { DOC_WORK_ORDER } from '@ss/logistics/api-transaction';
 import { CMMSServiceRequestService } from '../c-m-m-s-service-request.service';
 import { CMMSWorkOrderService } from '@ss/cmms/work-order';
 import { MatCard, MatCardContent } from '@angular/material/card';
-import { NgIf, NgFor } from '@angular/common';
+
 import { MatFormField, MatLabel, MatError } from '@angular/material/form-field';
 import { TranslateDirective } from '@ss/common/ui-lang';
 import { DatePickerComponent } from '@ss/common/ui-datepicker';
@@ -26,29 +26,27 @@ import { MaterialModule } from '@ss/common/api-common';
     styleUrls: ['./service-request-detail.component.css'],
     standalone: true,
     imports: [
-        MaterialModule,
-        MatCard,
-        MatCardContent,
-        NgIf,
-        FormsModule,
-        ReactiveFormsModule,
-        MatFormField,
-        MatLabel,
-        TranslateDirective,
-        DatePickerComponent,
-        MatInput,
-        UiAutoCompleteComponent,
-        MatError,
-        MatSelect,
-        NgFor,
-        MatOption,
-        MatAccordion,
-        MatExpansionPanel,
-        MatExpansionPanelHeader,
-        MatExpansionPanelTitle,
-        TranslatePipe,
-        TranslateDirective
-    ],
+    MaterialModule,
+    MatCard,
+    MatCardContent,
+    FormsModule,
+    ReactiveFormsModule,
+    MatFormField,
+    MatLabel,
+    TranslateDirective,
+    DatePickerComponent,
+    MatInput,
+    UiAutoCompleteComponent,
+    MatError,
+    MatSelect,
+    MatOption,
+    MatAccordion,
+    MatExpansionPanel,
+    MatExpansionPanelHeader,
+    MatExpansionPanelTitle,
+    TranslatePipe,
+    TranslateDirective
+],
 })
 export class ServiceRequestDetailComponent extends CMMSWorkDetail {
     private router = inject(Router);

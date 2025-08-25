@@ -25,7 +25,7 @@ import {
     MaterialModule,
     PaginatorPersistenceService,
 } from '@ss/common/api-common';
-import { CommonModule } from '@angular/common';
+
 import { ReactiveFormsModule } from '@angular/forms';
 import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
 import { PaginationComponent } from '@ss/common/ui-pagination';
@@ -37,13 +37,12 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     templateUrl: './crm-customer-list.component.html',
     standalone: true,
     imports: [
-        CommonModule,
-        MaterialModule,
-        TranslateDirective,
-        ReactiveFormsModule,
-        TranslateDirective,
-        PaginationComponent,
-    ],
+    MaterialModule,
+    TranslateDirective,
+    ReactiveFormsModule,
+    TranslateDirective,
+    PaginationComponent
+],
 })
 export class CrmCustomerListComponent extends BaseEntityListComponent<Agent> {
     #activeOnlyBtn: ToolbarButton = {

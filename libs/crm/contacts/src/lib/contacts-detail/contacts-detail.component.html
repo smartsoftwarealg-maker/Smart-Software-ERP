@@ -1,140 +1,136 @@
 <div class="ctrl__div size">
-    <button matButton (click)="list()">
-        @if (this.form?.touched && this.form.dirty) {
-            <span><i class="fa-solid fa-rotate-right"></i> {{ 'COMMON_CANCEL'|translate }}</span>
-        } @else {
-            <span><i class="fa-solid fa-list"></i> {{ 'COMMON_LIST'|translate }}</span>
-        }
-    </button>
-    <button matButton (click)="save()"><span><i
-        class="fa-solid fa-floppy-disk"></i> {{ 'COMMON_SAVE'|translate }}</span></button>
+  <button matButton (click)="list()">
+    @if (this.form?.touched && this.form.dirty) {
+      <span><i class="fa-solid fa-rotate-right"></i> {{ 'COMMON_CANCEL'|translate }}</span>
+    } @else {
+      <span><i class="fa-solid fa-list"></i> {{ 'COMMON_LIST'|translate }}</span>
+    }
+  </button>
+  <button matButton (click)="save()"><span><i
+  class="fa-solid fa-floppy-disk"></i> {{ 'COMMON_SAVE'|translate }}</span></button>
 </div>
 
-<form  *ngIf="form !== null" [formGroup]="form" class="grouped-form">
-
+@if (form !== null) {
+  <form  [formGroup]="form" class="grouped-form">
     <div class="form-group">
-        <label class="group-title" translate> COMMON_CONTACT_INFO</label>
-        <div class="form-row">
-            <mat-form-field class="default-50">
-                <mat-label translate>COMMON_SALUTATION</mat-label>
-                <mat-select formControlName="salutation">
-                    <mat-option value="" translate>COMMON_SELECT</mat-option>
-                    <mat-option value="Mr" translate>COMMON_MR</mat-option>
-                    <mat-option value="Ms" translate>COMMON_MS</mat-option>
+      <label class="group-title" translate> COMMON_CONTACT_INFO</label>
+      <div class="form-row">
+        <mat-form-field class="default-50">
+          <mat-label translate>COMMON_SALUTATION</mat-label>
+          <mat-select formControlName="salutation">
+            <mat-option value="" translate>COMMON_SELECT</mat-option>
+            <mat-option value="Mr" translate>COMMON_MR</mat-option>
+            <mat-option value="Ms" translate>COMMON_MS</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field class="default-50 sm-100">
+          <mat-label translate>COMMON_FIRST_NAME</mat-label>
+          <input matInput formControlName="firstName">
+        </mat-form-field>
+        <mat-form-field class="default-100">
+          <mat-label translate>COMMON_LAST_NAME</mat-label>
+          <input matInput formControlName="lastName">
+        </mat-form-field>
+      </div>
+      <mat-tab-group>
+        <mat-tab label="{{ 'COMMON_ADDRESS' | translate }}">
+          <div class="form-group">
+            <label class="group-title" translate>COMMON_ADDRESS</label>
+            <div class="form-row">
+              <mat-form-field class="default-50">
+                <mat-label translate>COMMON_ADDRESS_LINE_1</mat-label>
+                <input matInput formControlName="addressLine1" />
+              </mat-form-field>
+              <mat-form-field class="default-50">
+                <mat-label translate>COMMON_ADDRESS_LINE_2</mat-label>
+                <input matInput formControlName="addressLine2" />
+              </mat-form-field>
+            </div>
+            <div class="form-row">
+              <mat-form-field class="default-50">
+                <mat-label translate>COMMON_CITY</mat-label>
+                <input matInput formControlName="city" />
+              </mat-form-field>
+              <mat-form-field class="default-50">
+                <mat-label translate>COMMON_STATE</mat-label>
+                <mat-select formControlName="stateProvince">
+                  @for (num of states; track num) {
+                    <mat-option [value]="num">
+                      {{ num }}
+                    </mat-option>
+                  }
                 </mat-select>
-            </mat-form-field>
-            <mat-form-field class="default-50 sm-100">
-                <mat-label translate>COMMON_FIRST_NAME</mat-label>
-                <input matInput formControlName="firstName">
-            </mat-form-field>
-            <mat-form-field class="default-100">
-                <mat-label translate>COMMON_LAST_NAME</mat-label>
-                <input matInput formControlName="lastName">
-            </mat-form-field>
-        </div>
-        <mat-tab-group>
-            <mat-tab label="{{ 'COMMON_ADDRESS' | translate }}">
-                <div class="form-group">
-                    <label class="group-title" translate>COMMON_ADDRESS</label>
-                    <div class="form-row">
-                        <mat-form-field class="default-50">
-                            <mat-label translate>COMMON_ADDRESS_LINE_1</mat-label>
-                            <input matInput formControlName="addressLine1" />
-                        </mat-form-field>
-
-                        <mat-form-field class="default-50">
-                            <mat-label translate>COMMON_ADDRESS_LINE_2</mat-label>
-                            <input matInput formControlName="addressLine2" />
-                        </mat-form-field>
-                    </div>
-                    <div class="form-row">
-                        <mat-form-field class="default-50">
-                            <mat-label translate>COMMON_CITY</mat-label>
-                            <input matInput formControlName="city" />
-                        </mat-form-field>
-                        <mat-form-field class="default-50">
-                            <mat-label translate>COMMON_STATE</mat-label>
-                            <mat-select formControlName="stateProvince">
-                                <mat-option *ngFor="let num of states" [value]="num">
-                                    {{ num }}
-                                </mat-option>
-                            </mat-select>
-                        </mat-form-field>
-
-                        <mat-form-field class="default-50">
-                            <mat-label translate>COMMON_POSTAL_CODE</mat-label>
-                            <input matInput formControlName="postalCode" />
-                        </mat-form-field>
-                    </div>
-                    <div class="form-row">
-                        <mat-form-field class="default-100">
-                            <mat-label translate>COMMON_COUNTRY</mat-label>
-                            <input matInput formControlName="country" />
-                        </mat-form-field>
-                        <mat-form-field class="default-100">
-                            <mat-label translate>COMMON_ADDRESS_TYPE</mat-label>
-                            <mat-select formControlName="addressType">
-                                <mat-option value="HOME" translate>COMMON_HOME</mat-option>
-                                <mat-option value="WORK" translate>COMMON_WORK</mat-option>
-                            </mat-select>
-                        </mat-form-field>
-                    </div>
-                </div>
-            </mat-tab>
-
-            <!-- Company Tab -->
-            <mat-tab label="{{ 'COMMON_COMPANY' | translate }}">
-                <div class="form-group">
-                    <label class="group-title" translate>COMMON_COMPANY</label>
-                    <div class="form-row">
-                        <mat-form-field class="default-100">
-                            <mat-label translate>COMMON_COMPANY_NAME</mat-label>
-                            <input matInput formControlName="companyName" />
-                        </mat-form-field>
-
-                        <mat-form-field class="default-100">
-                            <mat-label translate>COMMON_DEPARTMENT</mat-label>
-                            <input matInput formControlName="department" />
-                        </mat-form-field>
-                        <mat-form-field class="default-100">
-                            <mat-label translate>COMMON_JOB_TITLE</mat-label>
-                            <input matInput formControlName="jobTitle" />
-                        </mat-form-field>
-                    </div>
-                    <div class="form-row">
-                        <mat-checkbox formControlName="isDecisionMaker" translate>COMMON_IS_DECISION_MAKER
-                        </mat-checkbox>
-                    </div>
-                </div>
-            </mat-tab>
-
-            <!-- Digital & Preferences Tab -->
-            <mat-tab label="{{ 'COMMON_DIGITAL_&_PREFERENCES' | translate }}">
-                <div class="form-group">
-                    <label class="group-title" translate>COMMON_DIGITAL_&_PREFERENCES</label>
-                    <div class="form-row">
-                        <mat-form-field class="default-100">
-                            <mat-label translate>COMMON_LINKEDIN_URL</mat-label>
-                            <input matInput formControlName="linkedInUrl" />
-                        </mat-form-field>
-
-                        <mat-form-field class="default-100">
-                            <mat-label translate>COMMON_TWITTER_URL</mat-label>
-                            <input matInput formControlName="twitterHandle" />
-                        </mat-form-field>
-                        <mat-form-field class="default-100">
-                            <mat-label translate>COMMON_FACEBOOK_URL</mat-label>
-                            <input matInput formControlName="facebookUrl" />
-                        </mat-form-field>
-                    </div>
-                    <div class="form-row">
-                        <mat-checkbox formControlName="doNotContact" translate>COMMON_DO_NOT_CONTACT</mat-checkbox>
-                        <mat-checkbox formControlName="marketingOptIn" translate>COMMON_MARKETING_OPT_IN</mat-checkbox>
-                    </div>
-                </div>
-            </mat-tab>
-        </mat-tab-group>
-
+              </mat-form-field>
+              <mat-form-field class="default-50">
+                <mat-label translate>COMMON_POSTAL_CODE</mat-label>
+                <input matInput formControlName="postalCode" />
+              </mat-form-field>
+            </div>
+            <div class="form-row">
+              <mat-form-field class="default-100">
+                <mat-label translate>COMMON_COUNTRY</mat-label>
+                <input matInput formControlName="country" />
+              </mat-form-field>
+              <mat-form-field class="default-100">
+                <mat-label translate>COMMON_ADDRESS_TYPE</mat-label>
+                <mat-select formControlName="addressType">
+                  <mat-option value="HOME" translate>COMMON_HOME</mat-option>
+                  <mat-option value="WORK" translate>COMMON_WORK</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+          </div>
+        </mat-tab>
+        <!-- Company Tab -->
+        <mat-tab label="{{ 'COMMON_COMPANY' | translate }}">
+          <div class="form-group">
+            <label class="group-title" translate>COMMON_COMPANY</label>
+            <div class="form-row">
+              <mat-form-field class="default-100">
+                <mat-label translate>COMMON_COMPANY_NAME</mat-label>
+                <input matInput formControlName="companyName" />
+              </mat-form-field>
+              <mat-form-field class="default-100">
+                <mat-label translate>COMMON_DEPARTMENT</mat-label>
+                <input matInput formControlName="department" />
+              </mat-form-field>
+              <mat-form-field class="default-100">
+                <mat-label translate>COMMON_JOB_TITLE</mat-label>
+                <input matInput formControlName="jobTitle" />
+              </mat-form-field>
+            </div>
+            <div class="form-row">
+              <mat-checkbox formControlName="isDecisionMaker" translate>COMMON_IS_DECISION_MAKER
+              </mat-checkbox>
+            </div>
+          </div>
+        </mat-tab>
+        <!-- Digital & Preferences Tab -->
+        <mat-tab label="{{ 'COMMON_DIGITAL_&_PREFERENCES' | translate }}">
+          <div class="form-group">
+            <label class="group-title" translate>COMMON_DIGITAL_&_PREFERENCES</label>
+            <div class="form-row">
+              <mat-form-field class="default-100">
+                <mat-label translate>COMMON_LINKEDIN_URL</mat-label>
+                <input matInput formControlName="linkedInUrl" />
+              </mat-form-field>
+              <mat-form-field class="default-100">
+                <mat-label translate>COMMON_TWITTER_URL</mat-label>
+                <input matInput formControlName="twitterHandle" />
+              </mat-form-field>
+              <mat-form-field class="default-100">
+                <mat-label translate>COMMON_FACEBOOK_URL</mat-label>
+                <input matInput formControlName="facebookUrl" />
+              </mat-form-field>
+            </div>
+            <div class="form-row">
+              <mat-checkbox formControlName="doNotContact" translate>COMMON_DO_NOT_CONTACT</mat-checkbox>
+              <mat-checkbox formControlName="marketingOptIn" translate>COMMON_MARKETING_OPT_IN</mat-checkbox>
+            </div>
+          </div>
+        </mat-tab>
+      </mat-tab-group>
     </div>
-</form>
+  </form>
+}
 
