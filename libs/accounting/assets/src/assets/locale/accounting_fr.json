@@ -99,6 +99,7 @@
     "CATEGORY_ACCOUNT":         "Compte de catégorie",
     "DEFERRED_ACCOUNT":         "Compte vent a terme",
     "CASH_ACCOUNT":             "Compte vent comptant",
-    "CLASSES_ACCOUNTS":         "Comptes de classes"
+    "CLASSES_ACCOUNTS":         "Comptes de classes",
+    "DELETE_ALL_CENTERS":       "Supprimer tous les centres"
 }
 

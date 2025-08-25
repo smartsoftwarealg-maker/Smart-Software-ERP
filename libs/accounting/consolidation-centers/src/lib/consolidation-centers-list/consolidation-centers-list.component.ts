@@ -54,6 +54,15 @@ export class ConsolidationCentersListComponent extends BaseEntityListComponent<C
         click: () => this.generateAll()
     };
 
+    #deleteAllButton: ToolbarButton = {
+        icon: 'fas fa-times-circle',
+        label: 'ACC_DELETE_ALL_CENTERS',
+        disabled: false,
+        visible: true,
+        keepOnToolbar: KeepOnToolbar.DYNAMIC,
+        click: () => this.deleteAll()
+    };
+
     displayedColumns = ['centerDescription', 'percentage', 'headquarter'];
 
 
@@ -81,12 +90,25 @@ export class ConsolidationCentersListComponent extends BaseEntityListComponent<C
     override ngOnInit() {
         super.ngOnInit();
         this.shellSrv.addButton(this.#generateAllButton);
+        this.shellSrv.addButton(this.#deleteAllButton);
     }
 
     private generateAll() {
         this.confirmationSrv
             .confirm('ACC_GENERATION', 'ACC_ADD_ALL_CENTERS')
             .pipe(switchMap(res => res? this.entitySrv.generateAll() : of({count: 0})))
+            .subscribe(res => {
+                if (res?.count) {
+                    this.snackBarSrv.showSuccessMessage();
+                    this.refresh();
+                }
+            });
+    }
+
+    private deleteAll() {
+        this.confirmationSrv
+            .confirm('ACC_GENERATION', 'ACC_DELETE_ALL_CENTERS')
+            .pipe(switchMap(res => res? this.entitySrv.deleteAll() : of({count: 0})))
             .subscribe(res => {
                 if (res?.count) {
                     this.snackBarSrv.showSuccessMessage();
