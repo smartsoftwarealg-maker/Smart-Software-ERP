@@ -97,12 +97,12 @@ export class DocInfoComponent {
                     url: 'agent-debts',
                     paramsProvided: (p: string[]) => p.includes('agentId')
                 },
-                {
-                    name: 'debts_2',
-                    description: 'LOGISTICS_RAW_AGENT_DEBTS',
-                    url: 'agent-debts',
-                    paramsProvided: (p: string[]) => p.includes('agentId')
-                },
+                // {
+                //     name: 'debts_2',
+                //     description: 'LOGISTICS_RAW_AGENT_DEBTS',
+                //     url: 'agent-debts',
+                //     paramsProvided: (p: string[]) => p.includes('agentId')
+                // },
             ],
         },
         {

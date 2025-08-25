@@ -1,7 +1,5 @@
-import {Component, Input, OnInit,} from '@angular/core';
-import {ShellService, SnackBarService} from '@ss/common/ui-shell';
-import {ActivatedRoute, Router} from '@angular/router';
-import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
+import {Component, inject, OnInit,} from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
 import {PaginationModel} from '@ss/common/api-common';
 import {AgentDebts, AgentDebtsService} from '@ss/logistics/api-agent-debts';
 import {HttpParams} from '@angular/common/http';
@@ -18,6 +16,9 @@ import { DecimalPipe } from '@angular/common';
     imports: [MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, TranslateDirective, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, PaginationComponent, DecimalPipe]
 })
 export class AgentDebtsComponent implements OnInit {
+    private route = inject( ActivatedRoute);
+    private agentDebtsSrv = inject(AgentDebtsService);
+
     public readonly pagination = PaginationModel.newInstance();
 
 
@@ -30,23 +31,22 @@ export class AgentDebtsComponent implements OnInit {
     ];
 
 
-    constructor(private shellSrv: ShellService,
-                private snackBarSrv: SnackBarService,
-                private route: ActivatedRoute,
-                private router: Router,
-                private agentDebtsSrv: AgentDebtsService) {
+    ngOnInit() {
+        this.pagination.onChange = () => this.refresh();
+        this.route.queryParams.subscribe(param => {
+            const agentId = +param['agentId']||0;
+            this.agentDebtsSrv.setParentId(agentId);
+            this.refresh();
+        });
     }
 
-    ngOnInit() {
-        this.route.queryParams.subscribe(param => {
-            const agentId = +param['agentId'];
-            const compensated = param['compensated'];
-            const params = new HttpParams().set('compensated', compensated);
-            if (agentId) {
-                this.agentDebtsSrv.setParentId(agentId);
-                this.agentDebtsSrv.getPage(this.pagination, null, null, params)
-                    .subscribe((x: AgentDebts[]) => this.data = x);
-            }
-        });
+    private refresh() {
+        const params = new HttpParams()
+            .set('compensated', true)
+            .set('offset', this.pagination.page - 1)
+            .set('limit', this.pagination.pageSize);
+        this.agentDebtsSrv
+            .getPage(this.pagination, null, null, params)
+            .subscribe((x: AgentDebts[]) => this.data = x);
     }
 }

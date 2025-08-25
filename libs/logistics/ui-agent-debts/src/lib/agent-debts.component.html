@@ -1,5 +1,5 @@
-<ng-container>
-    <mat-table mat-table [dataSource]="data" class="main-table">
+<div class="main_table">
+    <mat-table mat-table [dataSource]="data" >
 
 
         <ng-container matColumnDef="document">
@@ -29,8 +29,7 @@
         <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
     </mat-table>
 
-    <div class="pagination-container b-b-background">
-        <ss-pagination [paginationModel]="pagination"></ss-pagination>
-    </div>
-
-</ng-container>
+</div>
+<div class="pagination-container b-b-background">
+    <ss-pagination [paginationModel]="pagination"></ss-pagination>
+</div>
