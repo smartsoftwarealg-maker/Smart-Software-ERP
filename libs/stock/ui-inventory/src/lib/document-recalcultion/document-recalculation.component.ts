@@ -90,10 +90,10 @@ export class DocumentRecalculationComponent implements OnInit {
                         error: (err) => {
                             this.#shellSrv.setLoading(false);
                             this.processing.set(false);
-                            if (err.statusText?.length > 10) {
-                                throw err;
-                            } else {
+                            if (err.status === 0 || err.status === 502) {
                                 this.#snackBarSrv.showSuccessMessage();
+                            } else {
+                                throw err;
                             }
                         },
                     });
