@@ -36,7 +36,7 @@ export class FuelTypeListComponent extends BaseEntityListComponent<Lookup> {
         public override defReportSrv: DefaultReportService,
         public override router: Router,
         public override pagPersistSrv: PaginatorPersistenceService) {
-        super(wilayaSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv,'PARK_FUELS');
+        super(wilayaSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv,'PARK_FUEL_TYPES');
     }
 }
 
@@ -57,7 +57,7 @@ export class FuelTypeDetailComponent extends BaseEntityDetailComponent<Lookup> {
         public override route: ActivatedRoute,
         public override confirmationSrv: ConfirmationDialogService,
         public override formBuilder: UntypedFormBuilder) {
-        super(entitySrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'PARK_FUELS');
+        super(entitySrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'PARK_FUEL_TYPES');
     }
     public override setupForm(e: Lookup): UntypedFormGroup {
         return this.formBuilder.group({

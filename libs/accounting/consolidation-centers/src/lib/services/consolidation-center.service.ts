@@ -17,4 +17,8 @@ export class ConsolidationCenterService extends BaseEntityService<ConsolidationC
     generateAll(): Observable<{ count: number}> {
         return this.httpSrv.put('/accounting/consolidation-centers/generate-all');
     }
+
+    deleteAll(): Observable<{ count: number}> {
+        return this.httpSrv.remove('/accounting/consolidation-centers/delete-all');
+    }
 }
