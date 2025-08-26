@@ -12,7 +12,7 @@ import { Observable, switchMap } from 'rxjs';
 import { MatExpansionPanel } from '@angular/material/expansion';
 import { MatCheckboxChange } from '@angular/material/checkbox';
 import { tap } from 'rxjs/operators';
-import { CommonModule } from '@angular/common';
+
 
 
 import { DatePickerComponent } from '@ss/common/ui-datepicker';
@@ -27,15 +27,10 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     styleUrls: ['./asset-options.component.scss'],
     standalone: true,
     imports: [
-        CommonModule,
-        MaterialModule,
-        TranslateDirective,
-
-       
-        RouterModule,
-
-
-    ]
+    MaterialModule,
+    TranslateDirective,
+    RouterModule
+]
 
 })
 export class AssetOptionsComponent extends BaseEntityDetailComponent<ACCPolicy> {

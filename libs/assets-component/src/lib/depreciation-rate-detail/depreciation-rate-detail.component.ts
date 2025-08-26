@@ -10,7 +10,7 @@ import { LookupsService } from '@ss/common/api-lookup';
 import { Observable } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import { DepreciationRateService } from '../services/depreciation-rate.service';
-import { CommonModule } from '@angular/common';
+
 
 
 
@@ -27,16 +27,10 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     styleUrls: ['./depreciation-rate-detail.component.scss'],
     standalone: true,
     imports: [
-        CommonModule,
-        MaterialModule,
-        TranslateDirective,
-
-       
-        RouterModule,
-
-
-
-    ]
+    MaterialModule,
+    TranslateDirective,
+    RouterModule
+]
 
 })
 export class DepreciationRateDetailComponent extends BaseChildEntityDetailComponent<DepreciationRate> implements OnInit {

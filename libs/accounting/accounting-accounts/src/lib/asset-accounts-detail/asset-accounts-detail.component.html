@@ -1,60 +1,54 @@
 <mat-card>
-    <mat-card-content>
-        <form *ngIf="form !== null" novalidate [formGroup]="form">
-
-            <mat-form-field id="accountNo" class="default-50 sm-100">
-                <mat-label translate>LOGISTICS_ACCOUNT_NO</mat-label>
-                <input matInput formControlName="accountNo" type="text" required>
-                <mat-error *ngIf="form.controls['accountNo'].invalid" translate>COMMON_FIELD_REQUIRED
-                </mat-error>
-            </mat-form-field>
-
-            <mat-form-field id="description" class="default-50 sm-100">
-                <mat-label translate>LOGISTICS_DESCRIPTION</mat-label>
-                <input matInput formControlName="description" type="text" required>
-                <mat-error *ngIf="form.controls['description'].invalid" translate>COMMON_FIELD_REQUIRED
-                </mat-error>
-            </mat-form-field>
-
-
-            <mat-form-field class="default-50 sm-100">
-                <mat-label translate>ACC_DEPRECIATION_ACCOUNT</mat-label>
-                <ss-auto-complete matInput
-                                  [model]="depreciationAccountLookup"
-                                  formControlName="depreciationAccount">
-                </ss-auto-complete>
-            </mat-form-field>
-
-<!--            <mat-form-field id="depreciationAccount" class="default-50 sm-100">-->
-<!--                <mat-label translate>ACC_DEPRECIATION_ACCOUNT</mat-label>-->
-<!--                <input matInput formControlName="depreciationAccount" type="text">-->
-<!--            </mat-form-field>-->
-
-<!--            <mat-form-field id="endowmentAccount" class="default-50 sm-100">-->
-<!--                <mat-label translate>ACC_ENDOWMENT_ACCOUNT</mat-label>-->
-<!--                <input matInput formControlName="endowmentAccount" type="text">-->
-<!--            </mat-form-field>-->
-
-            <mat-form-field class="default-50 sm-100">
-                <mat-label translate>ACC_ENDOWMENT_ACCOUNT</mat-label>
-                <ss-auto-complete matInput
-                                  [model]="endowmentAccountLookup"
-                                  formControlName="endowmentAccount">
-                </ss-auto-complete>
-            </mat-form-field>
-
-
-            <mat-form-field class="default-50 sm-100">
-                <mat-label translate>ACC_DEPRECIATION_RATE</mat-label>
-                <input matInput formControlName="depreciationRate" type="number" min="1" max="100">
-            </mat-form-field>
-
-            <mat-form-field class="default-50 sm-100">
-                <mat-label translate>ACC_USEFUL_LIFE</mat-label>
-                <input matInput formControlName="usefulLife" type="number" max="99" min="1" step="1">
-            </mat-form-field>
-
-
-        </form>
-    </mat-card-content>
+  <mat-card-content>
+    @if (form !== null) {
+      <form novalidate [formGroup]="form">
+        <mat-form-field id="accountNo" class="default-50 sm-100">
+          <mat-label translate>LOGISTICS_ACCOUNT_NO</mat-label>
+          <input matInput formControlName="accountNo" type="text" required>
+          @if (form.controls['accountNo'].invalid) {
+            <mat-error translate>COMMON_FIELD_REQUIRED
+            </mat-error>
+          }
+        </mat-form-field>
+        <mat-form-field id="description" class="default-50 sm-100">
+          <mat-label translate>LOGISTICS_DESCRIPTION</mat-label>
+          <input matInput formControlName="description" type="text" required>
+          @if (form.controls['description'].invalid) {
+            <mat-error translate>COMMON_FIELD_REQUIRED
+            </mat-error>
+          }
+        </mat-form-field>
+        <mat-form-field class="default-50 sm-100">
+          <mat-label translate>ACC_DEPRECIATION_ACCOUNT</mat-label>
+          <ss-auto-complete matInput
+            [model]="depreciationAccountLookup"
+            formControlName="depreciationAccount">
+          </ss-auto-complete>
+        </mat-form-field>
+        <!--            <mat-form-field id="depreciationAccount" class="default-50 sm-100">-->
+        <!--                <mat-label translate>ACC_DEPRECIATION_ACCOUNT</mat-label>-->
+        <!--                <input matInput formControlName="depreciationAccount" type="text">-->
+      <!--            </mat-form-field>-->
+      <!--            <mat-form-field id="endowmentAccount" class="default-50 sm-100">-->
+      <!--                <mat-label translate>ACC_ENDOWMENT_ACCOUNT</mat-label>-->
+      <!--                <input matInput formControlName="endowmentAccount" type="text">-->
+    <!--            </mat-form-field>-->
+    <mat-form-field class="default-50 sm-100">
+      <mat-label translate>ACC_ENDOWMENT_ACCOUNT</mat-label>
+      <ss-auto-complete matInput
+        [model]="endowmentAccountLookup"
+        formControlName="endowmentAccount">
+      </ss-auto-complete>
+    </mat-form-field>
+    <mat-form-field class="default-50 sm-100">
+      <mat-label translate>ACC_DEPRECIATION_RATE</mat-label>
+      <input matInput formControlName="depreciationRate" type="number" min="1" max="100">
+    </mat-form-field>
+    <mat-form-field class="default-50 sm-100">
+      <mat-label translate>ACC_USEFUL_LIFE</mat-label>
+      <input matInput formControlName="usefulLife" type="number" max="99" min="1" step="1">
+    </mat-form-field>
+  </form>
+}
+</mat-card-content>
 </mat-card>

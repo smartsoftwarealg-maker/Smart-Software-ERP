@@ -9,7 +9,7 @@ import {AssetBuilding} from '../assets-api';
 import {AssetsBuildingService} from '../services/assets-building.service';
 import { CodeDescriptionAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import {AssetLocationService} from '../services/asset-location.service';
-import { CommonModule } from '@angular/common';
+
 import { MaterialModule } from '@ss/common/api-common';
 
 import { TranslateDirective } from '@ss/common/ui-lang';
@@ -20,13 +20,11 @@ import { TranslateDirective } from '@ss/common/ui-lang';
   styleUrls: ['./asset-building-detail.component.scss'],
   standalone: true,
     imports: [
-        CommonModule,
-        MaterialModule,
-        TranslateDirective,
-        RouterModule,
-
-        UiAutoCompleteComponent
-    ]})
+    MaterialModule,
+    TranslateDirective,
+    RouterModule,
+    UiAutoCompleteComponent
+]})
 export class AssetBuildingDetailComponent extends BaseEntityDetailComponent<AssetBuilding> {
     private router = inject(Router);
     private locationSrv = inject(AssetLocationService);

@@ -27,7 +27,7 @@ import {Account, AccountAutocompleteModel, AccountService} from '@ss/accounting/
 import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import {AgentService} from '@ss/logistics/api-agent';
 import {CostCenterService} from '@ss/logistics/api-cost-center';
-import { CommonModule } from '@angular/common';
+
 
 
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
@@ -39,14 +39,13 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     styleUrls: ['./transaction-lines-detail.component.scss'],
     standalone: true,
     imports: [
-        CommonModule,
-        RouterModule,
-        MaterialModule,
-        TranslateDirective,
-        ReactiveFormsModule,
-        UiAutoCompleteComponent,
-        TranslatePipe
-    ]
+    RouterModule,
+    MaterialModule,
+    TranslateDirective,
+    ReactiveFormsModule,
+    UiAutoCompleteComponent,
+    TranslatePipe
+]
 })
 export class TransactionLinesDetailComponent implements OnInit {
     private ccSrv = inject(CostCenterService);

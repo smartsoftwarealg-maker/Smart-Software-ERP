@@ -6,7 +6,7 @@ import {
 } from '@angular/forms';
 import { BaseChildEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { Component, inject } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 import { MaterialModule } from '@ss/common/api-common';
 import { ClassAccountsLineService } from '../class-accounts.service';
@@ -24,13 +24,12 @@ import { SalesCategoryService } from '@ss/common/api-lookup';
     styleUrls: ['./class-accounts-line-detail.component.scss'],
     standalone: true,
     imports: [
-        CommonModule,
-        MaterialModule,
-        ReactiveFormsModule,
-        TranslateDirective,
-        TranslatePipe,
-        UiAutoCompleteComponent,
-    ],
+    MaterialModule,
+    ReactiveFormsModule,
+    TranslateDirective,
+    TranslatePipe,
+    UiAutoCompleteComponent
+],
 })
 export class ClassAccountsLineDetailComponent extends BaseChildEntityDetailComponent<SodismacSupplierAccount> {
     private fb = inject(FormBuilder);

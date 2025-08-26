@@ -9,7 +9,7 @@ import { LookupsService, OfficeService } from '@ss/common/api-lookup';
 import { MaterialModule } from '@ss/common/api-common';
 import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { AssetClassService, AssetLocationService, AssetsBuildingService } from '@ss/assets-component';
-import { CommonModule } from '@angular/common';
+
 
 import { AssetUnidentifiedInventoryService } from '../services/asset-unidentified-inventory.service';
 import { AssetInventoryDocService } from '../services/asset-inventory-doc.service';
@@ -22,13 +22,11 @@ import { Agent, ConsumerService } from '@ss/logistics/api-agent';
     styleUrls: ['./asset-unidentified-inventory-detail.component.scss'],
     standalone: true,
     imports: [
-        CommonModule,
-        MaterialModule,
-        TranslateDirective,
-        RouterModule,
-
-        UiAutoCompleteComponent
-    ]
+    MaterialModule,
+    TranslateDirective,
+    RouterModule,
+    UiAutoCompleteComponent
+]
 })
 export class AssetUnidentifiedInventoryDetailComponent extends BaseEntityDetailComponent<UnidentifiedInventory> {
     #consumerSrv = inject(ConsumerService);

@@ -1,5 +1,5 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { MatCard, MatCardContent } from '@angular/material/card';
 import { MatFormField, MatLabel } from '@angular/material/form-field';
 import { MatInput } from '@angular/material/input';
@@ -13,16 +13,15 @@ import { TranslateDirective } from '@ss/common/ui-lang';
 @Component({
     selector: 'ss-pass-encoding',
     imports: [
-        CommonModule,
-        MatCard,
-        MatCardContent,
-        MatFormField,
-        MatInput,
-        MatLabel,
-        ReactiveFormsModule,
-        MatButton,
-        TranslateDirective
-    ],
+    MatCard,
+    MatCardContent,
+    MatFormField,
+    MatInput,
+    MatLabel,
+    ReactiveFormsModule,
+    MatButton,
+    TranslateDirective
+],
     templateUrl: './pass-encoding.component.html',
     styleUrl: './pass-encoding.component.scss',
     standalone: true,

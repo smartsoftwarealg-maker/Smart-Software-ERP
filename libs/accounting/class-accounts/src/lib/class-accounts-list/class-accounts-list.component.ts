@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { Class, ClassService } from '@ss/common/api-lookup';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
@@ -23,20 +23,19 @@ import {TranslateDirective} from "@ss/common/ui-lang";
 @Component({
     selector: 'ss-class-accounts',
     imports: [
-        CommonModule,
-        MatCell,
-        MatCellDef,
-        MatColumnDef,
-        MatHeaderCell,
-        MatHeaderRow,
-        MatTable,
-        MatHeaderCellDef,
-        MatRow,
-        PaginationComponent,
-        MatRowDef,
-        MatHeaderRowDef,
-        TranslateDirective,
-    ],
+    MatCell,
+    MatCellDef,
+    MatColumnDef,
+    MatHeaderCell,
+    MatHeaderRow,
+    MatTable,
+    MatHeaderCellDef,
+    MatRow,
+    PaginationComponent,
+    MatRowDef,
+    MatHeaderRowDef,
+    TranslateDirective
+],
     templateUrl: './class-accounts-list.component.html',
     styleUrl: './class-accounts-list.component.scss',
     standalone: true,

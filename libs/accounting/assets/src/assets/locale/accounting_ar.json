@@ -99,5 +99,6 @@
     "DEFERRED_ACCOUNT":         "الحساب المؤجل",
     "CASH_ACCOUNT":             "الحساب النقدي",
     "CLASSES_ACCOUNTS":         "حسابات الفصول",
-    "DELETE_ALL_CENTERS":       "حذف مراكز التجميع"
+    "DELETE_ALL_CENTERS":       "حذف مراكز التجميع",
+    "GENERATION_CANCEL":        "إلغاء الجيل"
 }

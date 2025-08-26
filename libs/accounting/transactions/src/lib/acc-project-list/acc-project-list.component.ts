@@ -7,7 +7,7 @@ import {  ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import { MaterialModule, PaginatorPersistenceService } from "@ss/common/api-common";
 import {AccProjectService} from '@ss/accounting/accounting-api';
-import { CommonModule } from "@angular/common";
+
 
 
 import { ReactiveFormsModule } from "@angular/forms";
@@ -24,19 +24,12 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
   styleUrls: ['./acc-project-list.component.scss'],
     standalone: true,
     imports: [
-        CommonModule,
-        RouterModule,
-        MaterialModule,
-        TranslateDirective,
-       
-        ReactiveFormsModule,
-
-
-       
-        PaginationComponent
-
-
-    ]
+    RouterModule,
+    MaterialModule,
+    TranslateDirective,
+    ReactiveFormsModule,
+    PaginationComponent
+]
 })
 export class AccProjectListComponent extends BaseEntityListComponent<Lookup> {
 

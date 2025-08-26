@@ -7,7 +7,7 @@ import { ActivatedRoute, RouterModule } from '@angular/router';
 import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import {  ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { AssetRevaluationTypeService } from '../services/asset-revaluation-type.service';
-import { CommonModule } from '@angular/common';
+
 import { MaterialModule } from '@ss/common/api-common';
 
 
@@ -25,17 +25,10 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     styleUrls: ['./asset-revaluation-type-detail.component.scss'],
     standalone: true,
     imports: [
-        CommonModule,
-        MaterialModule,
-        TranslateDirective,
-       
-
-       
-        RouterModule,
-
-
-
-    ]
+    MaterialModule,
+    TranslateDirective,
+    RouterModule
+]
 })
 export class AssetRevaluationTypeDetailComponent extends BaseEntityDetailComponent<Lookup> {
 

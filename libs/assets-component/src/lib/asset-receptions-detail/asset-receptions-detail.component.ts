@@ -14,7 +14,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { WorkflowDialogComponent } from '@ss/workflow';
 import { AppArchiveMainComponent, ASSET_RECEPTIONS_ARCHIVES } from '@ss/common/app-archive';
 import { ASSET_RECEPTION } from '@ss/workflow';
-import { CommonModule } from '@angular/common';
+
 
 
 
@@ -31,15 +31,13 @@ import { tap } from 'rxjs/operators';
     styleUrls: ['./asset-receptions-detail.component.scss'],
     standalone: true,
     imports: [
-        CommonModule,
-        MaterialModule,
-        TranslateDirective,
-        DatePickerComponent,
-        RouterModule,
-
-        AppArchiveMainComponent,
-        UiAutoCompleteComponent
-    ]
+    MaterialModule,
+    TranslateDirective,
+    DatePickerComponent,
+    RouterModule,
+    AppArchiveMainComponent,
+    UiAutoCompleteComponent
+]
 
 })
 export class AssetReceptionsDetailComponent extends BaseEntityDetailComponent<AssetReception> {

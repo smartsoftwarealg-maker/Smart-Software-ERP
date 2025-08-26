@@ -1,5 +1,5 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { ActivatedRoute } from '@angular/router';
 import { HttpService, LanguageService } from '@ss/common/api-common';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
@@ -23,20 +23,19 @@ import { TranslateDirective } from '@ss/common/ui-lang';
 @Component({
     selector: 'ss-acc-closed-periods',
     imports: [
-        CommonModule,
-        MatCell,
-        MatCellDef,
-        MatCheckbox,
-        MatColumnDef,
-        MatHeaderCell,
-        MatTable,
-        MatHeaderCellDef,
-        MatHeaderRow,
-        MatHeaderRowDef,
-        MatRow,
-        MatRowDef,
-        TranslateDirective
-    ],
+    MatCell,
+    MatCellDef,
+    MatCheckbox,
+    MatColumnDef,
+    MatHeaderCell,
+    MatTable,
+    MatHeaderCellDef,
+    MatHeaderRow,
+    MatHeaderRowDef,
+    MatRow,
+    MatRowDef,
+    TranslateDirective
+],
     templateUrl: './acc-closed-periods.component.html',
     styleUrl: './acc-closed-periods.component.scss',
     standalone: true,

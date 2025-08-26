@@ -16,7 +16,7 @@ import { debounceTime, switchMap, tap } from 'rxjs';
 import { UntypedFormControl, FormsModule, ReactiveFormsModule, FormControl } from '@angular/forms';
 import {CashFlowAccountListComponent} from '../cash-flow-account-list/cash-flow-account-list.component';
 import { MatList, MatListItem } from '@angular/material/list';
-import { NgFor, DecimalPipe } from '@angular/common';
+import { DecimalPipe } from '@angular/common';
 import { MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from '@angular/material/table';
 import { MatSort, Sort } from '@angular/material/sort';
 import { TranslateDirective } from '@ss/common/ui-lang';

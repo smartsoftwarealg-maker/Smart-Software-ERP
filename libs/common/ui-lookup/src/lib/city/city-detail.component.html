@@ -1,42 +1,37 @@
 <mat-card>
-    <form *ngIf="form !== null" novalidate [formGroup]="form">
-        <mat-form-field class="default-50 sm-100">
-            <mat-label translate>COMMON_DESCRIPTION</mat-label>
-            <input matInput formControlName="description" type="text" required autofocus>
-            <mat-error
-                *ngIf="form.controls['description'].hasError('required')" translate>COMMON_FIELD_REQUIRED
-            </mat-error>
-        </mat-form-field>
-
-        <mat-form-field class="default-50 sm-100" dir="rtl" lang="ar">
-            <mat-label translate>COMMON_DESCRIPTION_AR</mat-label>
-            <input matInput formControlName="descriptionAr" type="text">
-        </mat-form-field>
-
-        <mat-form-field class="default-50 sm-100">
-            <mat-label translate>COMMON_WILAYA</mat-label>
-            <ss-auto-complete matInput
-                              [required]="true"
-                              [model]="wilayLookupModel"
-                              formControlName="wilaya"></ss-auto-complete>
-            <mat-error
-                *ngIf="form.controls['wilaya'].hasError('required')" translate>COMMON_FIELD_REQUIRED
-            </mat-error>
-
-        </mat-form-field>
-
-        <mat-form-field class="default-50 sm-100">
-            <mat-label translate>COMMON_DAIRA</mat-label>
-            <ss-auto-complete matInput
-                              [required]="true"
-                              [model]="dairaLookupModel"
-                              formControlName="daira"></ss-auto-complete>
-            <mat-error
-                *ngIf="form.controls['daira'].hasError('required')" translate>COMMON_FIELD_REQUIRED
-            </mat-error>
-
-        </mat-form-field>
-
-
-    </form>
+    @if (form) {
+        <form novalidate [formGroup]="form">
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>COMMON_DESCRIPTION</mat-label>
+                <input matInput formControlName="description" type="text" required autofocus>
+                @if (form.controls['description'].hasError('required')) {
+                    <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+                }
+            </mat-form-field>
+            <mat-form-field class="default-50 sm-100" dir="rtl" lang="ar">
+                <mat-label translate>COMMON_DESCRIPTION_AR</mat-label>
+                <input matInput formControlName="descriptionAr" type="text">
+            </mat-form-field>
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>COMMON_WILAYA</mat-label>
+                <ss-auto-complete matInput
+                                  [required]="true"
+                                  [model]="wilayLookupModel"
+                                  formControlName="wilaya"></ss-auto-complete>
+                @if (form.controls['wilaya'].hasError('required')) {
+                    <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+                }
+            </mat-form-field>
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>COMMON_DAIRA</mat-label>
+                <ss-auto-complete matInput
+                                  [required]="true"
+                                  [model]="dairaLookupModel"
+                                  formControlName="daira"></ss-auto-complete>
+                @if (form.controls['daira'].hasError('required')) {
+                    <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+                }
+            </mat-form-field>
+        </form>
+    }
 </mat-card>

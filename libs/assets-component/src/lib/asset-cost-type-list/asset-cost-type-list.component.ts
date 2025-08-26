@@ -7,7 +7,7 @@ import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import { MaterialModule, PaginatorPersistenceService } from '@ss/common/api-common';
 import {Lookup} from '@ss/common/api-lookup';
 import {AssetCostTypeService} from '../services/asset-cost-type.service';
-import { CommonModule } from '@angular/common';
+
 
 
 
@@ -25,19 +25,11 @@ import { TranslateDirective } from '@ss/common/ui-lang';
   styleUrls: ['./asset-cost-type-list.component.scss'],
   standalone: true,
     imports: [
-        CommonModule,
-        MaterialModule,
-        TranslateDirective,
-
-
-
-       
-        RouterModule,
-
-
-
-        PaginationComponent
-    ]})
+    MaterialModule,
+    TranslateDirective,
+    RouterModule,
+    PaginationComponent
+]})
 export class AssetCostTypeListComponent extends BaseEntityListComponent<Lookup> {
     displayedColumns = [
         'description',

@@ -5,7 +5,7 @@ import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui
 import {UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
 import {AssetRevaluationService} from '../services/asset-revaluation.service';
 import {AssetRevaluationLookupService} from '../services/asset-revaluation-lookup.service';
-import { CommonModule } from '@angular/common';
+
 import { MaterialModule } from '@ss/common/api-common';
 
 
@@ -24,14 +24,11 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     styleUrls: ['./asset-revaluation-detail.component.scss'],
     standalone: true,
     imports: [
-        CommonModule,
-        MaterialModule,
-        TranslateDirective,
-        RouterModule,
-
-
-        UiAutoCompleteComponent
-    ]
+    MaterialModule,
+    TranslateDirective,
+    RouterModule,
+    UiAutoCompleteComponent
+]
 })
 export class AssetRevaluationDetailComponent extends BaseChildEntityDetailComponent<AssetRevaluation> implements OnInit {
     private revaluationLookupSrv = inject(AssetRevaluationLookupService);

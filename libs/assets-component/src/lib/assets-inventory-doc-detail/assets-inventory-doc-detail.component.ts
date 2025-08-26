@@ -19,7 +19,7 @@ import {AssetLocationService} from '@ss/assets-component';
 import {AssetClassService} from '@ss/assets-component';
 import {BaseEntityService} from '@ss/common/api-base-entity';
 import {AssetReceptionService} from '@ss/assets-component';
-import { CommonModule } from '@angular/common';
+
 
 
 
@@ -35,14 +35,13 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     styleUrls: ['./assets-inventory-doc-detail.component.scss'],
     standalone: true,
     imports: [
-        CommonModule,
-        MaterialModule,
-        TranslateDirective,
-        TranslatePipe,
-        DatePickerComponent,
-        RouterModule,
-        UiAutoCompleteComponent
-    ]
+    MaterialModule,
+    TranslateDirective,
+    TranslatePipe,
+    DatePickerComponent,
+    RouterModule,
+    UiAutoCompleteComponent
+]
 })
 export class AssetsInventoryDocDetailComponent extends BaseEntityDetailComponent<AssetInventoryDoc> implements OnInit {
     // Private

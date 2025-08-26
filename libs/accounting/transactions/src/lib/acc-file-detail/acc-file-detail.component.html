@@ -1,21 +1,25 @@
 <mat-card>
-    <mat-card-content>
-        <form *ngIf="form !== null" novalidate [formGroup]="form">
-            <mat-form-field id="fileYear" class="default-100">
-                <mat-label translate>COMMON_YEAR</mat-label>
-                <input matInput formControlName="fileYear" type="number"  step="1">
-                <mat-error *ngIf="form.controls['fileYear'].invalid" translate>COMMON_FIELD_MAX_LENGTH
-                </mat-error>
-            </mat-form-field>
+  <mat-card-content>
+    @if (form !== null) {
+      <form novalidate [formGroup]="form">
+        <mat-form-field id="fileYear" class="default-100">
+          <mat-label translate>COMMON_YEAR</mat-label>
+          <input matInput formControlName="fileYear" type="number"  step="1">
+          @if (form.controls['fileYear'].invalid) {
+            <mat-error translate>COMMON_FIELD_MAX_LENGTH
+            </mat-error>
+          }
+        </mat-form-field>
+        <mat-form-field id="description" class="default-100">
+          <mat-label translate>ADMINISTRATION_DESCRIPTION</mat-label>
+          <input matInput formControlName="description" type="text" required autofocus>
+          @if (form.controls['description'].invalid) {
+            <mat-error translate>COMMON_FIELD_REQUIRED
+            </mat-error>
+          }
+        </mat-form-field>
+      </form>
+    }
 
-            <mat-form-field id="description" class="default-100">
-                <mat-label translate>ADMINISTRATION_DESCRIPTION</mat-label>
-                <input matInput formControlName="description" type="text" required autofocus>
-                <mat-error *ngIf="form.controls['description'].invalid" translate>COMMON_FIELD_REQUIRED
-                </mat-error>
-            </mat-form-field>
-
-        </form>
-
-    </mat-card-content>
+  </mat-card-content>
 </mat-card>

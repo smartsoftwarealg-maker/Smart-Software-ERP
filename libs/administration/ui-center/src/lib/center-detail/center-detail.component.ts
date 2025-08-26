@@ -11,7 +11,7 @@ import { catchError, Observable, of } from 'rxjs';
 import { switchMap, tap } from 'rxjs/operators';
 import { UserListService } from '@ss/common/api-users';
 import { LoginService, MaterialModule } from '@ss/common/api-common';
-import { CommonModule } from '@angular/common';
+
 
 
 import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
@@ -24,12 +24,11 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     templateUrl: './center-detail.component.html',
     standalone: true,
     imports: [
-        CommonModule,
-        MaterialModule,
-        TranslateDirective,
-        ReactiveFormsModule,
-        UiAutoCompleteComponent
-    ]
+    MaterialModule,
+    TranslateDirective,
+    ReactiveFormsModule,
+    UiAutoCompleteComponent
+]
 })
 export class CenterDetailComponent extends BaseEntityDetailComponent<Center> {
     #citySrv = inject(CityService);

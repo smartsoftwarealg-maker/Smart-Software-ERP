@@ -2,7 +2,7 @@ import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {AssetsService} from '@ss/assets-component';
 import {UntypedFormControl, Validators} from '@angular/forms';
-import { CommonModule } from '@angular/common';
+
 import { MaterialModule } from '@ss/common/api-common';
 
 
@@ -22,15 +22,13 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     styleUrls: ['./duplicate-dialog.component.scss'],
     standalone: true,
     imports: [
-        CommonModule,
-        MaterialModule,
-        TranslateDirective,
-        TranslatePipe,
-        RouterModule,
-        TranslateDirective,
-
-        TranslatePipe
-    ]
+    MaterialModule,
+    TranslateDirective,
+    TranslatePipe,
+    RouterModule,
+    TranslateDirective,
+    TranslatePipe
+]
 
 })
 export class DuplicateDialogComponent {

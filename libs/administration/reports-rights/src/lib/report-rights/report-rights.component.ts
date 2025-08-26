@@ -1,5 +1,5 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { MaterialModule } from '@ss/common/api-common';
@@ -24,14 +24,12 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     selector: 'ss-report-rights',
     standalone: true,
     imports: [
-        CommonModule,
-        MaterialModule,
-        TranslatePipe,
-        RouterModule,
-       
-        UiAutoCompleteComponent,
-        TranslateDirective
-    ],
+    MaterialModule,
+    TranslatePipe,
+    RouterModule,
+    UiAutoCompleteComponent,
+    TranslateDirective
+],
     templateUrl: './report-rights.component.html',
     styleUrls: ['./report-rights.component.scss'],
 })

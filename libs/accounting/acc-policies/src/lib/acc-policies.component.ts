@@ -12,7 +12,7 @@ import { AccJournalsService, AccPoliciesService, AccProjectService, Journal } fr
 import {ACCPolicy} from '@ss/accounting/accounting-api';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import { MatCheckboxChange, MatCheckbox } from '@angular/material/checkbox';
-import { NgIf } from '@angular/common';
+
 import { TranslateDirective } from '@ss/common/ui-lang';
 import { MatFormField, MatLabel } from '@angular/material/form-field';
 import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
@@ -23,7 +23,7 @@ import { MatInput } from '@angular/material/input';
     templateUrl: './acc-policies.component.html',
     styleUrls: ['./acc-policies.component.scss'],
     standalone: true,
-    imports: [NgIf, FormsModule, ReactiveFormsModule, MatAccordion, MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelTitle, TranslateDirective, MatCheckbox, MatFormField, MatLabel, UiAutoCompleteComponent, MatInput]
+    imports: [FormsModule, ReactiveFormsModule, MatAccordion, MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelTitle, TranslateDirective, MatCheckbox, MatFormField, MatLabel, UiAutoCompleteComponent, MatInput]
 })
 export class AccPoliciesComponent extends BaseEntityDetailComponent<ACCPolicy> {
     journalLookup: DefaultAutoCompleteModel<Journal> = null;

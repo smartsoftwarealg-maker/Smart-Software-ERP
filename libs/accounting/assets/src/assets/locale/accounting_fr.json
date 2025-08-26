@@ -100,6 +100,7 @@
     "DEFERRED_ACCOUNT":         "Compte vent a terme",
     "CASH_ACCOUNT":             "Compte vent comptant",
     "CLASSES_ACCOUNTS":         "Comptes de classes",
-    "DELETE_ALL_CENTERS":       "Supprimer tous les centres"
+    "DELETE_ALL_CENTERS":       "Supprimer tous les centres",
+    "GENERATION_CANCEL":        "Génération annulée"
 }
 

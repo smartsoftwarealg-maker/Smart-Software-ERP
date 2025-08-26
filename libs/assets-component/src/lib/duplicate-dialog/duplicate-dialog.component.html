@@ -1,18 +1,20 @@
 <div class="container">
-    <mat-form-field class="default-100">
-        <mat-label translate>COMMON_COUNT</mat-label>
-        <input matInput [formControl]="count" type="number">
-    </mat-form-field>
+  <mat-form-field class="default-100">
+    <mat-label translate>COMMON_COUNT</mat-label>
+    <input matInput [formControl]="count" type="number">
+  </mat-form-field>
 
-    <div class="default-100 ctrl-div">
-        <button mat-raised-button color="primary" type="button" (click)="duplicate()">
-            {{ 'ASSET_DUPLICATE' | translate }}
-        </button>
+  <div class="default-100 ctrl-div">
+    <button mat-raised-button color="primary" type="button" (click)="duplicate()">
+      {{ 'ASSET_DUPLICATE' | translate }}
+    </button>
 
-        <button mat-raised-button color="accent" type="button" (click)="cancel()">
-            {{ 'COMMON_CANCEL' | translate }}
-        </button>
-    </div>
+    <button mat-raised-button color="accent" type="button" (click)="cancel()">
+      {{ 'COMMON_CANCEL' | translate }}
+    </button>
+  </div>
 
-    <mat-progress-bar mode="indeterminate" *ngIf="processing"></mat-progress-bar>
+  @if (processing) {
+    <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+  }
 </div>

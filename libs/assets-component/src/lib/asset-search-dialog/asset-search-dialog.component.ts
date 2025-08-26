@@ -5,7 +5,7 @@ import { AssetsService } from '../services/assets.service';
 import { UntypedFormControl } from '@angular/forms';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { MaterialModule, PaginationModel } from '@ss/common/api-common';
-import { CommonModule } from '@angular/common';
+
 import { DatePickerComponent } from '@ss/common/ui-datepicker';
 import { RouterModule } from '@angular/router';
 import { PaginationComponent } from '@ss/common/ui-pagination';
@@ -17,12 +17,11 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     styleUrls: ['./asset-search-dialog.component.scss'],
     standalone: true,
     imports: [
-        CommonModule,
-        MaterialModule,
-        TranslateDirective,
-        RouterModule,
-        PaginationComponent
-    ]
+    MaterialModule,
+    TranslateDirective,
+    RouterModule,
+    PaginationComponent
+]
 
 })
 export class AssetSearchDialogComponent implements OnInit {

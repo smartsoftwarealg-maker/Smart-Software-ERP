@@ -1,29 +1,33 @@
 <mat-card>
-    <mat-card-content>
-        <form *ngIf="form !== null" novalidate [formGroup]="form">
+  <mat-card-content>
+    @if (form !== null) {
+      <form novalidate [formGroup]="form">
+        <mat-form-field id="domain" class="value">
+          <mat-label translate>ADMINISTRATION_DOMAIN</mat-label>
+          <input matInput formControlName="domain" type="text" required>
+          @if (form.controls['domain'].invalid) {
+            <mat-error translate>COMMON_FIELD_REQUIRED
+            </mat-error>
+          }
+        </mat-form-field>
+        <mat-form-field id="property" class="value">
+          <mat-label translate>ADMINISTRATION_PROPERTY</mat-label>
+          <input matInput formControlName="property" type="text" required>
+          @if (form.controls['property'].invalid) {
+            <mat-error translate>COMMON_FIELD_REQUIRED
+            </mat-error>
+          }
+        </mat-form-field>
+        <mat-form-field id="property_value" class="value">
+          <mat-label translate>ADMINISTRATION_PROPERTY_VALUE</mat-label>
+          <input matInput formControlName="property_value" type="text" required>
+          @if (form.controls['property_value'].invalid) {
+            <mat-error translate>COMMON_FIELD_REQUIRED
+            </mat-error>
+          }
+        </mat-form-field>
+      </form>
+    }
 
-            <mat-form-field id="domain" class="value">
-                <mat-label translate>ADMINISTRATION_DOMAIN</mat-label>
-                <input matInput formControlName="domain" type="text" required>
-                <mat-error *ngIf="form.controls['domain'].invalid" translate>COMMON_FIELD_REQUIRED
-                </mat-error>
-            </mat-form-field>
-
-            <mat-form-field id="property" class="value">
-                <mat-label translate>ADMINISTRATION_PROPERTY</mat-label>
-                <input matInput formControlName="property" type="text" required>
-                <mat-error *ngIf="form.controls['property'].invalid" translate>COMMON_FIELD_REQUIRED
-                </mat-error>
-            </mat-form-field>
-
-            <mat-form-field id="property_value" class="value">
-                <mat-label translate>ADMINISTRATION_PROPERTY_VALUE</mat-label>
-                <input matInput formControlName="property_value" type="text" required>
-                <mat-error *ngIf="form.controls['property_value'].invalid" translate>COMMON_FIELD_REQUIRED
-                </mat-error>
-            </mat-form-field>
-
-        </form>
-
-    </mat-card-content>
+  </mat-card-content>
 </mat-card>
