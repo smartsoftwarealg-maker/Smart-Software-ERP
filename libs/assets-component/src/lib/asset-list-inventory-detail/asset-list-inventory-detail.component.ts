@@ -8,7 +8,7 @@ import {  ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { LookupsService, OfficeService } from '@ss/common/api-lookup';
 import { AssetLocationService } from '../services/asset-location.service';
 import { MaterialModule } from '@ss/common/api-common';
-import { CommonModule } from '@angular/common';
+
 import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 
 import { AssetListInventoryService } from '../services/asset-list-inventory.service';
@@ -22,13 +22,11 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     styleUrls: ['./asset-list-inventory-detail.component.scss'],
     standalone: true,
     imports: [
-        CommonModule,
-        MaterialModule,
-        TranslateDirective,
-        RouterModule,
-
-        UiAutoCompleteComponent
-    ]
+    MaterialModule,
+    TranslateDirective,
+    RouterModule,
+    UiAutoCompleteComponent
+]
 
 })
 export class AssetListInventoryDetailComponent extends BaseEntityDetailComponent<InventoryAsset> {

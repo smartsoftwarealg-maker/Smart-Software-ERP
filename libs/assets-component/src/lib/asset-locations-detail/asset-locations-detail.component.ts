@@ -10,7 +10,7 @@ import { LookupsService } from '@ss/common/api-lookup';
 import { AssetLocationService } from '../services/asset-location.service';
 import { LoginService, MaterialModule } from '@ss/common/api-common';
 import { Observable } from 'rxjs';
-import { CommonModule } from '@angular/common';
+
 
 
 
@@ -27,16 +27,10 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     styleUrls: ['./asset-locations-detail.component.scss'],
     standalone: true,
     imports: [
-        CommonModule,
-        MaterialModule,
-        TranslateDirective,
-
-       
-        RouterModule,
-
-
-
-    ]
+    MaterialModule,
+    TranslateDirective,
+    RouterModule
+]
 
 })
 export class AssetLocationsDetailComponent extends BaseEntityDetailComponent<AssetLocation> {

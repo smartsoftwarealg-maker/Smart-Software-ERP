@@ -3,7 +3,7 @@ import { finalize, Subscription } from 'rxjs';
 import { HttpEventType} from '@angular/common/http';
 import { ActivatedRoute, Router} from '@angular/router';
 import { ShellService, SnackBarService} from '@ss/common/ui-shell';
-import { NgIf } from '@angular/common';
+
 import { TranslateDirective } from '@ss/common/ui-lang';
 import { MatMiniFabButton, MatButton } from '@angular/material/button';
 import { MatProgressBar } from '@angular/material/progress-bar';

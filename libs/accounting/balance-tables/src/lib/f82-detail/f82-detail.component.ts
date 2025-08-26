@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { F8 } from '../services/balance-tables.api';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
@@ -11,11 +11,12 @@ import { MatError, MatFormField, MatLabel } from '@angular/material/form-field';
 import { MatInput } from '@angular/material/input';
 import { F82Service } from '../services/f82-service';
 import { AccFileService } from '@ss/accounting/accounting-api';
+import {TranslateDirective} from "@ss/common/ui-lang";
 
 @Component({
     selector: 'ss-f82-detail',
     standalone: true,
-    imports: [CommonModule,   MatCard, MatCardContent, MatError, MatFormField, MatInput, MatLabel, ReactiveFormsModule],
+    imports: [MatCard, MatCardContent, MatError, MatFormField, MatInput, MatLabel, ReactiveFormsModule, TranslateDirective],
     templateUrl: './f82-detail.component.html',
     styleUrl: './f82-detail.component.scss'
 })

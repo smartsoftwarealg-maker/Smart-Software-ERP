@@ -1,94 +1,91 @@
-<form *ngIf="form !== null" novalidate [formGroup]="form" class="width-sc">
+@if (form !== null) {
+  <form novalidate [formGroup]="form" class="width-sc">
     <mat-form-field class="number">
-        <mat-label translate>COMMON_FROM</mat-label>
-        <input matInput formControlName="from" type="number" required>
+      <mat-label translate>COMMON_FROM</mat-label>
+      <input matInput formControlName="from" type="number" required>
     </mat-form-field>
-
     <mat-form-field class="number">
-        <mat-label translate>COMMON_TO</mat-label>
-        <input matInput formControlName="to" type="number" required>
+      <mat-label translate>COMMON_TO</mat-label>
+      <input matInput formControlName="to" type="number" required>
     </mat-form-field>
-
     <div>
-        <mat-checkbox formControlName="byCC" translate>ACC_BY_COST_CENTER</mat-checkbox>
+      <mat-checkbox formControlName="byCC" translate>ACC_BY_COST_CENTER</mat-checkbox>
     </div>
-
     <mat-form-field>
-        <mat-placeholder translate>COMMON_TYPE</mat-placeholder>
-        <mat-select  formControlName="dType">
-            <mat-option value="1" translate>ASSET_ACCOUNTANT</mat-option>
-            <mat-option value="2" translate>LOGISTICS_FISCAL</mat-option>
-        </mat-select>
+      <mat-placeholder translate>COMMON_TYPE</mat-placeholder>
+      <mat-select  formControlName="dType">
+        <mat-option value="1" translate>ASSET_ACCOUNTANT</mat-option>
+        <mat-option value="2" translate>LOGISTICS_FISCAL</mat-option>
+      </mat-select>
     </mat-form-field>
-
     <button mat-raised-button
-            color="primary"
-            [disabled]="!form.valid || processing"
-            (click)="refresh()"
-            translate>COMMON_REFRESH
+      color="primary"
+      [disabled]="!form.valid || processing"
+      (click)="refresh()"
+      translate>COMMON_REFRESH
     </button>
-
     <mat-form-field>
-        <mat-label translate>COMMON_JOURNALS</mat-label>
-        <ss-auto-complete matInput
-                          [model]="journalLookup"
-                          formControlName="journal"></ss-auto-complete>
+      <mat-label translate>COMMON_JOURNALS</mat-label>
+      <ss-auto-complete matInput
+        [model]="journalLookup"
+      formControlName="journal"></ss-auto-complete>
     </mat-form-field>
-
     <mat-form-field>
-        <mat-label translate>COMMON_DATE</mat-label>
-        <ss-date-picker formControlName="date"></ss-date-picker>
+      <mat-label translate>COMMON_DATE</mat-label>
+      <ss-date-picker formControlName="date"></ss-date-picker>
     </mat-form-field>
-
     <button mat-raised-button
-            color="warn"
-            [disabled]="!form.valid || processing"
-            (click)="generate()"
-            translate>COMMON_GENERATE
+      color="warn"
+      [disabled]="!form.valid || processing"
+      (click)="generate()"
+      translate>COMMON_GENERATE
     </button>
-</form>
-<mat-progress-bar *ngIf="processing" mode="indeterminate" ></mat-progress-bar>
+  </form>
+}
+@if (processing) {
+  <mat-progress-bar mode="indeterminate" ></mat-progress-bar>
+}
 
 <div class="container_div width-sc">
-    <mat-table mat-table [dataSource]="data" class="content-div">
+  <mat-table mat-table [dataSource]="data" class="content-div">
 
-        <ng-container matColumnDef="acc">
-            <mat-header-cell *matHeaderCellDef translate>COMMON_ACCOUNTNO</mat-header-cell>
-            <mat-cell *matCellDef="let e">
-                {{e.acc}}
-            </mat-cell>
-        </ng-container>
+    <ng-container matColumnDef="acc">
+      <mat-header-cell *matHeaderCellDef translate>COMMON_ACCOUNTNO</mat-header-cell>
+      <mat-cell *matCellDef="let e">
+        {{e.acc}}
+      </mat-cell>
+    </ng-container>
 
-        <ng-container matColumnDef="description">
-            <mat-header-cell *matHeaderCellDef translate>ADMINISTRATION_DESCRIPTION</mat-header-cell>
-            <mat-cell *matCellDef="let e">
-                {{e.description}}
-            </mat-cell>
-        </ng-container>
+    <ng-container matColumnDef="description">
+      <mat-header-cell *matHeaderCellDef translate>ADMINISTRATION_DESCRIPTION</mat-header-cell>
+      <mat-cell *matCellDef="let e">
+        {{e.description}}
+      </mat-cell>
+    </ng-container>
 
-        <ng-container matColumnDef="cCenter">
-            <mat-header-cell *matHeaderCellDef translate>COMMON_COST_CENTER</mat-header-cell>
-            <mat-cell *matCellDef="let e">
-                {{e.cCenter}}
-            </mat-cell>
-        </ng-container>
+    <ng-container matColumnDef="cCenter">
+      <mat-header-cell *matHeaderCellDef translate>COMMON_COST_CENTER</mat-header-cell>
+      <mat-cell *matCellDef="let e">
+        {{e.cCenter}}
+      </mat-cell>
+    </ng-container>
 
-        <ng-container matColumnDef="debit">
-            <mat-header-cell *matHeaderCellDef translate>LOGISTICS_DEBIT</mat-header-cell>
-            <mat-cell *matCellDef="let e">
-                {{e.debit | number: '1.2-2'}}
-            </mat-cell>
-        </ng-container>
+    <ng-container matColumnDef="debit">
+      <mat-header-cell *matHeaderCellDef translate>LOGISTICS_DEBIT</mat-header-cell>
+      <mat-cell *matCellDef="let e">
+        {{e.debit | number: '1.2-2'}}
+      </mat-cell>
+    </ng-container>
 
-        <ng-container matColumnDef="credit">
-            <mat-header-cell *matHeaderCellDef translate>LOGISTICS_CREDIT</mat-header-cell>
-            <mat-cell *matCellDef="let e">
-                {{e.credit | number: '1.2-2'}}
-            </mat-cell>
-        </ng-container>
+    <ng-container matColumnDef="credit">
+      <mat-header-cell *matHeaderCellDef translate>LOGISTICS_CREDIT</mat-header-cell>
+      <mat-cell *matCellDef="let e">
+        {{e.credit | number: '1.2-2'}}
+      </mat-cell>
+    </ng-container>
 
-        <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
-        <mat-row class="selectable" [class.selected]="false"
-                 *matRowDef="let row; columns: displayedColumns;"></mat-row>
-    </mat-table>
+    <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+    <mat-row class="selectable" [class.selected]="false"
+    *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
 </div>

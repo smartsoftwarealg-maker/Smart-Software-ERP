@@ -100,5 +100,6 @@
     "DEFERRED_ACCOUNT":         "Deferred account",
     "CASH_ACCOUNT":             "Cash account",
     "CLASSES_ACCOUNTS":         "Classes accounts",
-    "DELETE_ALL_CENTERS":       "Delete all centers"
+    "DELETE_ALL_CENTERS":       "Delete all centers",
+    "GENERATION_CANCEL":        "Generation cancel"
 }

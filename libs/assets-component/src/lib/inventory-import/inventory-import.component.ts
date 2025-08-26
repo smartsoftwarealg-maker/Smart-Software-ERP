@@ -6,7 +6,7 @@ import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {  DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
 import {LotsService, Lot} from '@ss/common/api-lookup';
 import {AssetInventoryService} from '../services/asset-inventory.service';
-import { CommonModule } from '@angular/common';
+
 import { MaterialModule } from '@ss/common/api-common';
 
 
@@ -25,17 +25,11 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     styleUrls: ['./inventory-import.component.scss'],
     standalone: true,
     imports: [
-        CommonModule,
-        MaterialModule,
-        TranslateDirective,
-        TranslatePipe,
-
-
-        RouterModule,
-
-
-
-    ]
+    MaterialModule,
+    TranslateDirective,
+    TranslatePipe,
+    RouterModule
+]
 })
 export class InventoryImportComponent {
     private injectSrv = inject(AssetInventoryService);

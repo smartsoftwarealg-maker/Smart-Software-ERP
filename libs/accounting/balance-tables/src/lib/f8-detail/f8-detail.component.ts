@@ -1,22 +1,21 @@
-import { Component, inject, input } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { BaseEntityDetailComponent, BaseEntityListComponent } from '@ss/common/ui-base-entity';
+import { Component, inject } from '@angular/core';
+import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { F8 } from '../services/balance-tables.api';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { F8Service } from '../services/f8-service';
-
 import { ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { MatCard, MatCardContent } from '@angular/material/card';
 import { MatError, MatFormField, MatLabel } from '@angular/material/form-field';
 import { MatInput } from '@angular/material/input';
 import { AccFileService } from '@ss/accounting/accounting-api';
+import {TranslateDirective} from "@ss/common/ui-lang";
 
 @Component({
     selector: 'ss-f8-detail',
     standalone: true,
-    imports: [CommonModule,   MatCard, MatCardContent, MatError, MatFormField, MatInput, MatLabel, ReactiveFormsModule],
+    imports: [MatCard, MatCardContent, MatError, MatFormField, MatInput, MatLabel, ReactiveFormsModule, TranslateDirective],
     templateUrl: './f8-detail.component.html',
     styleUrl: './f8-detail.component.scss'
 })

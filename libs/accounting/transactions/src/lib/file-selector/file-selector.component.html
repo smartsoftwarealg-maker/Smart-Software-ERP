@@ -1,57 +1,59 @@
 <div class="container">
-    <div class="title-div">
-        <div translate class="f-warn">ACC_SELECT_ACC_FOLDER</div>
-    </div>
+  <div class="title-div">
+    <div translate class="f-warn">ACC_SELECT_ACC_FOLDER</div>
+  </div>
 
-    <div class="btn-div">
-        <mat-form-field floatLabel="always" >
-            <mat-label translate>COMMON_PERIOD</mat-label>
-            <mat-select [formControl]="accPeriod" required>
-                <mat-option *ngFor="let p of periods; let i = index" [value]="i + 1">
-                    {{ p | translate}}
-                </mat-option>
-            </mat-select>
-        </mat-form-field>
+  <div class="btn-div">
+    <mat-form-field floatLabel="always" >
+      <mat-label translate>COMMON_PERIOD</mat-label>
+      <mat-select [formControl]="accPeriod" required>
+        @for (p of periods; track p; let i = $index) {
+          <mat-option [value]="i + 1">
+            {{ p | translate}}
+          </mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
 
-        <button mat-raised-button
-                color="primary"
-                (click)="selectFolder()"
-                [disabled]="!selected"
-                translate>COMMON_SELECT
-        </button>
-    </div>
+    <button mat-raised-button
+      color="primary"
+      (click)="selectFolder()"
+      [disabled]="!selected"
+      translate>COMMON_SELECT
+    </button>
+  </div>
 
-    <div class="container_div">
-        <mat-table mat-table [dataSource]="data" class="main-table">
+  <div class="container_div">
+    <mat-table mat-table [dataSource]="data" class="main-table">
 
-            <ng-container matColumnDef="fileYear">
-                <mat-header-cell *matHeaderCellDef translate>COMMON_YEAR</mat-header-cell>
-                <mat-cell *matCellDef="let e">
-                    {{e.fileYear}}
-                </mat-cell>
-            </ng-container>
+      <ng-container matColumnDef="fileYear">
+        <mat-header-cell *matHeaderCellDef translate>COMMON_YEAR</mat-header-cell>
+        <mat-cell *matCellDef="let e">
+          {{e.fileYear}}
+        </mat-cell>
+      </ng-container>
 
-            <ng-container matColumnDef="description">
-                <mat-header-cell *matHeaderCellDef translate>ADMINISTRATION_DESCRIPTION</mat-header-cell>
-                <mat-cell *matCellDef="let e">
-                    {{e.description}}
-                </mat-cell>
-            </ng-container>
+      <ng-container matColumnDef="description">
+        <mat-header-cell *matHeaderCellDef translate>ADMINISTRATION_DESCRIPTION</mat-header-cell>
+        <mat-cell *matCellDef="let e">
+          {{e.description}}
+        </mat-cell>
+      </ng-container>
 
-            <ng-container matColumnDef="closed">
-                <mat-header-cell *matHeaderCellDef translate>COMMON_CLOSED</mat-header-cell>
-                <mat-cell *matCellDef="let e">
-                    <mat-checkbox [class.mat-checkbox-disabled]="false" disabled="true"
-                                  [checked]="e.closed"></mat-checkbox>
-                </mat-cell>
-            </ng-container>
+      <ng-container matColumnDef="closed">
+        <mat-header-cell *matHeaderCellDef translate>COMMON_CLOSED</mat-header-cell>
+        <mat-cell *matCellDef="let e">
+          <mat-checkbox [class.mat-checkbox-disabled]="false" disabled="true"
+          [checked]="e.closed"></mat-checkbox>
+        </mat-cell>
+      </ng-container>
 
-            <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
-            <mat-row class="selectable" [class.selected]="row.id == selected" (click)="selectRow(row)"
-                     *matRowDef="let row; columns: displayedColumns;"></mat-row>
-        </mat-table>
-    </div>
-    <div class="pagination-container b-b-background">
-        <ss-pagination [paginationModel]="pagination"></ss-pagination>
-    </div>
+      <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+      <mat-row class="selectable" [class.selected]="row.id == selected" (click)="selectRow(row)"
+      *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+  </div>
+  <div class="pagination-container b-b-background">
+    <ss-pagination [paginationModel]="pagination"></ss-pagination>
+  </div>
 </div>

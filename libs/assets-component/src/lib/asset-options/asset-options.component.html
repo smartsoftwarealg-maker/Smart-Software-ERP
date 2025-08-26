@@ -1,28 +1,26 @@
 <mat-card>
-    <form *ngIf="form !== null" novalidate [formGroup]="form">
-        <mat-form-field class="default-50 sm-100 spacersm-100 spacer">
-            <mat-label translate>ACC_ASSET_ACCOUNTS</mat-label>
-            <input matInput formControlName="investAccount" type="text">
-        </mat-form-field>
-
-        <mat-form-field class="default-50 sm-100 spacersm-100 spacer">
-            <mat-label translate>ACC_ENDOWMENT_ACCOUNTS</mat-label>
-            <input matInput formControlName="assetsAccount" type="text">
-        </mat-form-field>
-
-        <mat-form-field class="default-50 sm-100 spacersm-100 spacer">
-            <mat-label translate>ACC_DEPRECIATION_ACCOUNTS</mat-label>
-            <input matInput formControlName="depreciationAccount" type="text">
-        </mat-form-field>
-
-        <mat-form-field class="default-50 sm-100 spacersm-100 spacer">
-            <mat-label translate>ASSET_MIN_VALUE</mat-label>
-            <input matInput formControlName="minAssetValue" type="number" step="1">
-        </mat-form-field>
-
-        <mat-form-field class="default-50 sm-100 spacersm-100 spacer">
-            <mat-label translate>ASSET_INVENTORY_YEAR</mat-label>
-            <input matInput formControlName="inventoryYear" type="number" step="1">
-        </mat-form-field>
+  @if (form !== null) {
+    <form novalidate [formGroup]="form">
+      <mat-form-field class="default-50 sm-100 spacersm-100 spacer">
+        <mat-label translate>ACC_ASSET_ACCOUNTS</mat-label>
+        <input matInput formControlName="investAccount" type="text">
+      </mat-form-field>
+      <mat-form-field class="default-50 sm-100 spacersm-100 spacer">
+        <mat-label translate>ACC_ENDOWMENT_ACCOUNTS</mat-label>
+        <input matInput formControlName="assetsAccount" type="text">
+      </mat-form-field>
+      <mat-form-field class="default-50 sm-100 spacersm-100 spacer">
+        <mat-label translate>ACC_DEPRECIATION_ACCOUNTS</mat-label>
+        <input matInput formControlName="depreciationAccount" type="text">
+      </mat-form-field>
+      <mat-form-field class="default-50 sm-100 spacersm-100 spacer">
+        <mat-label translate>ASSET_MIN_VALUE</mat-label>
+        <input matInput formControlName="minAssetValue" type="number" step="1">
+      </mat-form-field>
+      <mat-form-field class="default-50 sm-100 spacersm-100 spacer">
+        <mat-label translate>ASSET_INVENTORY_YEAR</mat-label>
+        <input matInput formControlName="inventoryYear" type="number" step="1">
+      </mat-form-field>
     </form>
+  }
 </mat-card>

@@ -6,7 +6,7 @@ import { ReactiveFormsModule, UntypedFormBuilder, Validators } from '@angular/fo
 import {  ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import {Bank, BankService} from '@ss/administration/api-bank';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
-import { CommonModule } from '@angular/common';
+
 import { MaterialModule } from '@ss/common/api-common';
 import { TranslateDirective } from '@ss/common/ui-lang';
 
@@ -17,11 +17,10 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     selector: 'ss-bank-detail',
     standalone: true,
     imports: [
-        CommonModule,
-        MaterialModule,
-        TranslateDirective,
-        ReactiveFormsModule,
-    ],
+    MaterialModule,
+    TranslateDirective,
+    ReactiveFormsModule
+],
     styleUrls: ['./bank-detail.component.scss'],
     templateUrl: './bank-detail.component.html'
 })

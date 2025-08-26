@@ -7,7 +7,7 @@ import { ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup, Validators }
 import { MaterialModule } from '@ss/common/api-common';
 import {AssetBlockingService} from '../services/asset-blocking.service';
 import {AssetBlockingTypeService} from '../services/asset-blocking-type.service';
-import { CommonModule } from '@angular/common';
+
 
 
 import { DatePickerComponent } from '@ss/common/ui-datepicker';
@@ -22,14 +22,13 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     styleUrls: ['./asset-blocking-detail.component.scss'],
     standalone: true,
     imports: [
-        CommonModule,
-        ReactiveFormsModule,
-        MaterialModule,
-        TranslateDirective,
-        DatePickerComponent,
-        RouterModule,
-        UiAutoCompleteComponent
-    ]})
+    ReactiveFormsModule,
+    MaterialModule,
+    TranslateDirective,
+    DatePickerComponent,
+    RouterModule,
+    UiAutoCompleteComponent
+]})
 export class AssetBlockingDetailComponent extends BaseChildEntityDetailComponent<Blocking> implements OnInit {
     private typeLookupSrv = inject(AssetBlockingTypeService);
     typeLookup = new DefaultAutoCompleteModel(this.typeLookupSrv);

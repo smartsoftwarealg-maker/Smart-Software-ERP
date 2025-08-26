@@ -1,5 +1,5 @@
 import { Component, inject, signal, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { MatCard, MatCardContent } from '@angular/material/card';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
@@ -13,7 +13,7 @@ import { of, switchMap, tap } from 'rxjs';
 
 @Component({
     selector: 'ss-global-validation',
-    imports: [CommonModule, MaterialModule, MatCard, MatCardContent, ReactiveFormsModule, MatFormField, MatInput, MatLabel, TranslateDirective, MatFormField, TranslatePipe],
+    imports: [MaterialModule, MatCard, MatCardContent, ReactiveFormsModule, MatFormField, MatInput, MatLabel, TranslateDirective, MatFormField, TranslatePipe],
     templateUrl: './global-validation.component.html',
     styleUrl: './global-validation.component.scss',
     providers: [ValidationService]

@@ -7,7 +7,7 @@ import {Center, CenterService} from '@ss/administration/api-center';
 import {Observable, of} from 'rxjs';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import { LoginService, MaterialModule, PaginatorPersistenceService } from '@ss/common/api-common';
-import { CommonModule } from '@angular/common';
+
 
 
 import { ReactiveFormsModule } from '@angular/forms';
@@ -20,12 +20,11 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     templateUrl: './center-list.component.html',
     standalone: true,
     imports: [
-        CommonModule,
-        MaterialModule,
-        ReactiveFormsModule,
-        PaginationComponent,
-        TranslateDirective,
-    ]
+    MaterialModule,
+    ReactiveFormsModule,
+    PaginationComponent,
+    TranslateDirective
+]
 
 })
 export class CenterListComponent extends BaseEntityListComponent<Center> {

@@ -8,7 +8,7 @@ import {MatDialog} from '@angular/material/dialog';
 import {FormBuilder, Validators} from '@angular/forms';
 import {AssetsTransferService} from '../services/assets-transfer.service';
 import { IsParamService, MaterialModule, UserRightsService } from '@ss/common/api-common';
-import { CommonModule } from '@angular/common';
+
 
 
 
@@ -27,13 +27,11 @@ import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
     styleUrls: ['./assets-transfer.component.scss'],
     standalone: true,
     imports: [
-        CommonModule,
-        MaterialModule,
-        TranslateDirective,
-        RouterModule,
-
-        UiAutoCompleteComponent
-    ]
+    MaterialModule,
+    TranslateDirective,
+    RouterModule,
+    UiAutoCompleteComponent
+]
 })
 export class AssetsTransferComponent implements OnInit {
     private fb =  inject(FormBuilder);

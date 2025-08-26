@@ -6,7 +6,7 @@ import { ActivatedRoute, RouterModule } from '@angular/router';
 import {UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
 import {  ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import {AssetBlockingTypeService} from '../services/asset-blocking-type.service';
-import { CommonModule } from '@angular/common';
+
 import { MaterialModule } from '@ss/common/api-common';
 
 
@@ -24,16 +24,10 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
   styleUrls: ['./asset-blocking-type-detail.component.scss'],
   standalone: true,
     imports: [
-        CommonModule,
-        MaterialModule,
-        TranslateDirective,
-
-       
-        RouterModule,
-
-
-
-    ]})
+    MaterialModule,
+    TranslateDirective,
+    RouterModule
+]})
 export class AssetBlockingTypeDetailComponent extends BaseEntityDetailComponent<Lookup> {
 
     constructor(

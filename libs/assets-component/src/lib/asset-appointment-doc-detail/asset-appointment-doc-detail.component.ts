@@ -26,7 +26,7 @@ import {OfficeSearchComponent} from '../office-search/office-search.component';
 import {MatDialog} from '@angular/material/dialog';
 import {WorkflowDialogComponent} from '@ss/workflow';
 import { ASSET_APPOINTMENT } from '@ss/workflow';
-import { CommonModule } from '@angular/common';
+
 
 
 
@@ -42,15 +42,14 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
     styleUrls: ['./asset-appointment-doc-detail.component.scss'],
     standalone: true,
     imports: [
-        CommonModule,
-        MaterialModule,
-        TranslateDirective,
-        TranslatePipe,
-        DatePickerComponent,
-        RouterModule,
-        UiAutoCompleteComponent,
-        PaginationComponent
-    ]})
+    MaterialModule,
+    TranslateDirective,
+    TranslatePipe,
+    DatePickerComponent,
+    RouterModule,
+    UiAutoCompleteComponent,
+    PaginationComponent
+]})
 export class AssetAppointmentDocDetailComponent extends BaseEntityDetailComponent<ASSAppointmentHeader>{
     private officeSrv = inject(OfficeService);
     private attributeSrv = inject(AttributesService);

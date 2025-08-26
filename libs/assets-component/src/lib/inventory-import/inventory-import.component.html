@@ -1,86 +1,101 @@
 <fieldset>
-    <div class="file-upload">
-        <input type="file" class="file-input"
-               [accept]="requiredFileType"
-               (change)="onChange(fileUpload.files)"
-               #fileUpload>
+  <div class="file-upload">
+    <input type="file" class="file-input"
+      [accept]="requiredFileType"
+      (change)="onChange(fileUpload.files)"
+      #fileUpload>
 
-        <span translate>{{ fileName || "COMMON_NO_FILE_SELECTED" }} </span>
+    <span translate>{{ fileName || "COMMON_NO_FILE_SELECTED" }} </span>
 
-        <button mat-mini-fab color="primary"
-                class="upload-btn"
-                (click)="fileUpload.click()"
-                *ngIf="!uploadProgress">
-            <i class="fas fa-paperclip"></i>
-        </button>
-    </div>
+    @if (!uploadProgress) {
+      <button mat-mini-fab color="primary"
+        class="upload-btn"
+        (click)="fileUpload.click()"
+        >
+        <i class="fas fa-paperclip"></i>
+      </button>
+    }
+  </div>
 </fieldset>
 
 <div class="progress">
+  @if (processing) {
     <i class="fas fa-upload"
-       (click)="cancelUpload()"
-       *ngIf="processing"
-       translate> COMMON_CANCEL
+      (click)="cancelUpload()"
+      translate> COMMON_CANCEL
     </i>
+  }
 
 </div>
 
-<mat-progress-bar class="progress-bar" mode="indeterminate" *ngIf="processing"></mat-progress-bar>
+@if (processing) {
+  <mat-progress-bar class="progress-bar" mode="indeterminate"></mat-progress-bar>
+}
 <mat-card>
-    <form novalidate [formGroup]="form">
-        <mat-form-field class="default-50" required>
-            <mat-label translate>COMMON_REFERENCE</mat-label>
-            <mat-select formControlName="reference">
-                <mat-option *ngFor="let c of columns" [value]="c">{{ c }}</mat-option>
-            </mat-select>
-        </mat-form-field>
+  <form novalidate [formGroup]="form">
+    <mat-form-field class="default-50" required>
+      <mat-label translate>COMMON_REFERENCE</mat-label>
+      <mat-select formControlName="reference">
+        @for (c of columns; track c) {
+          <mat-option [value]="c">{{ c }}</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
 
 
-        <mat-form-field  class="default-50" required>
-            <mat-label translate>COMMON_DATE</mat-label>
-            <mat-select formControlName="date">
-                <mat-option *ngFor="let c of columns" [value]="c">{{ c }}</mat-option>
-            </mat-select>
-        </mat-form-field>
+    <mat-form-field  class="default-50" required>
+      <mat-label translate>COMMON_DATE</mat-label>
+      <mat-select formControlName="date">
+        @for (c of columns; track c) {
+          <mat-option [value]="c">{{ c }}</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
 
-        <mat-form-field  class="default-50" required>
-            <mat-label translate>COMMON_OFFICE</mat-label>
-            <mat-select formControlName="office">
-                <mat-option *ngFor="let c of columns" [value]="c">{{ c }}</mat-option>
-            </mat-select>
-        </mat-form-field>
+    <mat-form-field  class="default-50" required>
+      <mat-label translate>COMMON_OFFICE</mat-label>
+      <mat-select formControlName="office">
+        @for (c of columns; track c) {
+          <mat-option [value]="c">{{ c }}</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
 
-        <mat-form-field  class="default-50" required>
-            <mat-label translate>COMMON_STATUS</mat-label>
-            <mat-select formControlName="status">
-                <mat-option *ngFor="let c of columns" [value]="c">{{ c }}</mat-option>
-            </mat-select>
-        </mat-form-field>
+    <mat-form-field  class="default-50" required>
+      <mat-label translate>COMMON_STATUS</mat-label>
+      <mat-select formControlName="status">
+        @for (c of columns; track c) {
+          <mat-option [value]="c">{{ c }}</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
 
-        <mat-form-field class="default-50" required>
-            <mat-label><span translate>ADMINISTRATION_USERS</span></mat-label>
-            <mat-select formControlName="user">
-                <mat-option *ngFor="let c of columns" [value]="c">{{ c }}</mat-option>
-            </mat-select>
-        </mat-form-field>
+    <mat-form-field class="default-50" required>
+      <mat-label><span translate>ADMINISTRATION_USERS</span></mat-label>
+      <mat-select formControlName="user">
+        @for (c of columns; track c) {
+          <mat-option [value]="c">{{ c }}</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
 
-    </form>
+  </form>
 </mat-card>
 <!--    <div><pre>{{form?.value | json }}</pre></div>-->
 
 
 @if (!uploadProgress) {
-    <div class="ctrl-div">
-            <button mat-raised-button color="primary"
-                    type="button"
-                    (click)="onFileSelected(fileUpload.files)"
-                    [disabled]="!form.valid || fileName?.length < 4">
-                {{ 'COMMON_UPLOAD' | translate }}
-                <i class="fa-solid fa-upload  icon"></i>
-            </button>
-            <button mat-raised-button color="warn" type="button" (click)="cancel()">
-                {{ 'COMMON_CANCEL' | translate }}
-                <i class="fa-solid fa-rotate-left icon"></i>
-            </button>
-    </div>
+  <div class="ctrl-div">
+    <button mat-raised-button color="primary"
+      type="button"
+      (click)="onFileSelected(fileUpload.files)"
+      [disabled]="!form.valid || fileName?.length < 4">
+      {{ 'COMMON_UPLOAD' | translate }}
+      <i class="fa-solid fa-upload  icon"></i>
+    </button>
+    <button mat-raised-button color="warn" type="button" (click)="cancel()">
+      {{ 'COMMON_CANCEL' | translate }}
+      <i class="fa-solid fa-rotate-left icon"></i>
+    </button>
+  </div>
 }

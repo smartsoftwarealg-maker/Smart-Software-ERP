@@ -8,7 +8,7 @@ import {  ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
 import { LoginService, MaterialModule, PaginatorPersistenceService } from "@ss/common/api-common";
 import {switchMap, tap} from 'rxjs';
 import { ReactiveFormsModule, UntypedFormControl, Validators } from "@angular/forms";
-import { CommonModule } from "@angular/common";
+
 
 
 
@@ -24,14 +24,13 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
   styleUrls: ['./file-selector.component.scss'],
     standalone: true,
     imports: [
-        CommonModule,
-        RouterModule,
-        MaterialModule,
-        TranslateDirective,
-        TranslatePipe,
-        ReactiveFormsModule,
-        PaginationComponent
-    ]
+    RouterModule,
+    MaterialModule,
+    TranslateDirective,
+    TranslatePipe,
+    ReactiveFormsModule,
+    PaginationComponent
+]
 })
 export class FileSelectorComponent extends BaseEntityListComponent<ACCFile> implements OnInit {
     private MONTHS = ['JANUARY', 'FEBRUARY', 'MARCH', 'APRIL', 'MAY', 'JUNE', 'JULY', 'AUGUST', 'SEPTEMBER', 'OCTOBER', 'NOVEMBER', 'DECEMBER'];

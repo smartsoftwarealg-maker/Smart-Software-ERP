@@ -6,7 +6,7 @@ import {  ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import {Bank, BankService} from '@ss/administration/api-bank';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import { MaterialModule, PaginatorPersistenceService } from '@ss/common/api-common';
-import { CommonModule } from '@angular/common';
+
 
 
 import { ReactiveFormsModule } from '@angular/forms';
@@ -17,12 +17,11 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     selector: 'ss-bank-list',
     standalone: true,
     imports: [
-        CommonModule,
-        MaterialModule,
-        ReactiveFormsModule,
-        PaginationComponent,
-        TranslateDirective,
-    ],
+    MaterialModule,
+    ReactiveFormsModule,
+    PaginationComponent,
+    TranslateDirective
+],
     styleUrls: ['./bank-list.component.scss'],
     templateUrl: './bank-list.component.html'
 })

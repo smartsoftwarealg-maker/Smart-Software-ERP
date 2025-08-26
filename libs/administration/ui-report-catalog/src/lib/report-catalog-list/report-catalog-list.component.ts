@@ -10,7 +10,7 @@ import { ReactiveFormsModule, UntypedFormControl } from '@angular/forms';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import {HttpParams} from '@angular/common/http';
 import { MaterialModule, PaginatorPersistenceService } from '@ss/common/api-common';
-import { CommonModule } from '@angular/common';
+
 import { PaginationComponent } from '@ss/common/ui-pagination';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
@@ -22,14 +22,11 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     templateUrl: './report-catalog-list.component.html',
     standalone: true,
     imports: [
-        CommonModule,
-        MaterialModule,
-        TranslateDirective,
-       
-        ReactiveFormsModule,
-        PaginationComponent
-
-    ]
+    MaterialModule,
+    TranslateDirective,
+    ReactiveFormsModule,
+    PaginationComponent
+]
 })
 export class ReportCatalogListComponent extends BaseEntityListComponent<ReportsCatalog> implements OnInit {
 

@@ -8,7 +8,7 @@ import {  ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
 import {LookupsService} from '@ss/common/api-lookup';
 import {debounceTime, distinctUntilChanged} from 'rxjs/operators';
 import { LoginService, MaterialModule } from "@ss/common/api-common";
-import { CommonModule } from "@angular/common";
+
 
 
 
@@ -22,18 +22,11 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     styleUrls: ['./acc-file-detail.component.scss'],
     standalone: true,
     imports: [
-        CommonModule,
-        RouterModule,
-        MaterialModule,
-        TranslateDirective,
-       
-        ReactiveFormsModule,
-
-
-       
-
-
-    ],
+    RouterModule,
+    MaterialModule,
+    TranslateDirective,
+    ReactiveFormsModule
+],
 })
 export class AccFileDetailComponent extends BaseEntityDetailComponent<ACCFile> implements OnInit {
     private centerName = '';

@@ -7,7 +7,7 @@ import {UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
 import {  ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import {AssetCostTypeService} from '../services/asset-cost-type.service';
 import { MatCard, MatCardContent } from '@angular/material/card';
-import { CommonModule } from '@angular/common';
+
 import { MaterialModule } from '@ss/common/api-common';
 
 
@@ -25,12 +25,10 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     styleUrls: ['./asset-cost-type-detail.component.scss'],
     standalone: true,
     imports: [
-        CommonModule,
-        MaterialModule,
-        TranslateDirective,
-        RouterModule,
-
-    ]
+    MaterialModule,
+    TranslateDirective,
+    RouterModule
+]
 })
 export class AssetCostTypeDetailComponent extends BaseEntityDetailComponent<Lookup> {
 

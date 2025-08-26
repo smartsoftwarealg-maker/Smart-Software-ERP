@@ -12,7 +12,7 @@ import {Observable} from 'rxjs';
 import {switchMap} from 'rxjs/operators';
 import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import {AssetCostsTypeService} from '../services/asset-costs-type.service';
-import { CommonModule } from '@angular/common';
+
 
 
 
@@ -28,12 +28,11 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     styleUrls: ['./asset-costs-detail.component.scss'],
     standalone: true,
     imports: [
-        CommonModule,
-        MaterialModule,
-        TranslateDirective,
-        RouterModule,
-        UiAutoCompleteComponent
-    ]})
+    MaterialModule,
+    TranslateDirective,
+    RouterModule,
+    UiAutoCompleteComponent
+]})
 export class AssetCostsDetailComponent extends BaseChildEntityDetailComponent<AssetCost> implements OnInit {
     private costTypeLookupSrv =  inject(AssetCostsTypeService);
     private formBuilder = inject(UntypedFormBuilder);

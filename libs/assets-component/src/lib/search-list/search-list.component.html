@@ -1,210 +1,200 @@
 <div class="container">
-    <div class="form-div">
-        <form [formGroup]="form" *ngIf="form">
-            <mat-form-field class="default-25 sm-50">
-                <mat-label translate>COMMON_REFERENCE</mat-label>
-                <input matInput formControlName="reference" type="test" autofocus>
-            </mat-form-field>
-            <mat-form-field class="default-25 sm-50">
-                <mat-label ><span translate>COMMON_REFERENCE</span>2</mat-label>
-                <input matInput formControlName="reference2" type="text">
-            </mat-form-field>
-            <mat-form-field class="default-25 sm-50">
-                <mat-label ><span translate>COMMON_DESCRIPTION</span></mat-label>
-                <input matInput formControlName="description" type="text">
-            </mat-form-field>
-
-            <mat-form-field class="default-25 sm-50">
-                <mat-label translate>LOGISTICS_ACCOUNT_NO</mat-label>
-                <input matInput formControlName="accountNo" type="text">
-            </mat-form-field>
-
-
-            <mat-form-field id="serial_no" class="default-25 sm-50">
-                <mat-label translate>ASSET_SERIAL_NUMBER</mat-label>
-                <input matInput formControlName="serialNo" type="text" maxlength="20">
-                <mat-error *ngIf="form.controls['serialNo'].invalid" translate>COMMON_FIELD_MAX_LENGTH</mat-error>
-            </mat-form-field>
-
-            <mat-form-field class="default-25 sm-50">
-                <mat-label translate>LOGISTICS_SUPPLIER</mat-label>
-                <ss-auto-complete matInput
-                                  [model]="supplierLookup"
-                                  formControlName="supplier">
-                </ss-auto-complete>
-            </mat-form-field>
-
-            <mat-form-field class="default-25 sm-50">
-                <mat-label translate>ASSET_BENEFICIARY</mat-label>
-                <ss-auto-complete matInput
-                                  [model]="beneficiaryLookup"
-                                  formControlName="beneficiary">
-                </ss-auto-complete>
-            </mat-form-field>
-
-            <mat-form-field class="default-25 sm-50">
-                <mat-label> {{ 'ASSET_ACQUISITION_DATE' | translate }}, {{ 'COMMON_FROM' | translate }}</mat-label>
-                <ss-date-picker formControlName="acquisitionDate"></ss-date-picker>
-            </mat-form-field>
-
-            <mat-form-field class="default-25 sm-50">
-                <mat-label> {{ 'ASSET_ACQUISITION_DATE' | translate }}, {{ 'COMMON_TO' | translate }}</mat-label>
-                <ss-date-picker formControlName="acquisitionDateTo"></ss-date-picker>
-            </mat-form-field>
-
-            <mat-form-field class="default-25 sm-50">
-                <mat-label> {{ 'ASSET_SERVICE_DATE' | translate }}, {{ 'COMMON_FROM' | translate }}</mat-label>
-                <ss-date-picker formControlName="serviceDate"></ss-date-picker>
-            </mat-form-field>
-
-            <mat-form-field class="default-25 sm-50">
-                <mat-label> {{ 'ASSET_SERVICE_DATE' | translate }}, {{ 'COMMON_TO' | translate }}</mat-label>
-                <ss-date-picker formControlName="serviceDateTo"></ss-date-picker>
-            </mat-form-field>
-
-            <mat-form-field class="default-25 sm-50">
-                <mat-label translate>ASSET_ACQUISITION_VALUE</mat-label>
-                <input matInput formControlName="acquisitionValue" type="number" required>
-                <mat-error *ngIf="form.controls['acquisitionValue'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
-            </mat-form-field>
-
-            <div class="default-25 sm-50">
-                <mat-form-field style="width: calc(100% - 48px)">
-                    <mat-label translate>ASSET_LOCATIONS</mat-label>
-                    <ss-auto-complete matInput
-                                      [model]="officeAutoCompleteModel"
-                                      formControlName="location">
-                    </ss-auto-complete>
-                </mat-form-field>
-                <button mat-mini-fab (click)="openSearchDlg()" type="button">
-                    <i class="fa-solid fa-file-magnifying-glass"></i>
-                </button>
-            </div>
-
-            <mat-form-field class="default-25 sm-50">
-                <mat-label translate>ASSET_INVOICE_NUMBER</mat-label>
-                <input matInput formControlName="invoiceNumber" type="text">
-            </mat-form-field>
-
-            <mat-form-field class="default-25 sm-50">
-                <mat-label translate>ASSET_ORDER_NUMBER</mat-label>
-                <input matInput formControlName="orderNumb" type="text">
-            </mat-form-field>
-
-<!--            <mat-form-field class="default-25 sm-50">-->
-<!--                <mat-label translate>COMMON_STATUS</mat-label>-->
-<!--                <input matInput formControlName="status" type="text">-->
-<!--            </mat-form-field>-->
-
-            <div id="manager" class="default-25 sm-50" >
-                <mat-checkbox formControlName="consolidated" translate>COMMON_CONSOLIDATED</mat-checkbox>
-            </div>
-
-        </form>
-    </div>
-    <div class="container_div">
-        <mat-table mat-table [dataSource]="data" class="main-table" matSort (matSortChange)="sort($event)">
+  <div class="form-div">
+    @if (form) {
+      <form [formGroup]="form">
+        <mat-form-field class="default-25 sm-50">
+          <mat-label translate>COMMON_REFERENCE</mat-label>
+          <input matInput formControlName="reference" type="test" autofocus>
+        </mat-form-field>
+        <mat-form-field class="default-25 sm-50">
+          <mat-label ><span translate>COMMON_REFERENCE</span>2</mat-label>
+          <input matInput formControlName="reference2" type="text">
+        </mat-form-field>
+        <mat-form-field class="default-25 sm-50">
+          <mat-label ><span translate>COMMON_DESCRIPTION</span></mat-label>
+          <input matInput formControlName="description" type="text">
+        </mat-form-field>
+        <mat-form-field class="default-25 sm-50">
+          <mat-label translate>LOGISTICS_ACCOUNT_NO</mat-label>
+          <input matInput formControlName="accountNo" type="text">
+        </mat-form-field>
+        <mat-form-field id="serial_no" class="default-25 sm-50">
+          <mat-label translate>ASSET_SERIAL_NUMBER</mat-label>
+          <input matInput formControlName="serialNo" type="text" maxlength="20">
+          @if (form.controls['serialNo'].invalid) {
+            <mat-error translate>COMMON_FIELD_MAX_LENGTH</mat-error>
+          }
+        </mat-form-field>
+        <mat-form-field class="default-25 sm-50">
+          <mat-label translate>LOGISTICS_SUPPLIER</mat-label>
+          <ss-auto-complete matInput
+            [model]="supplierLookup"
+            formControlName="supplier">
+          </ss-auto-complete>
+        </mat-form-field>
+        <mat-form-field class="default-25 sm-50">
+          <mat-label translate>ASSET_BENEFICIARY</mat-label>
+          <ss-auto-complete matInput
+            [model]="beneficiaryLookup"
+            formControlName="beneficiary">
+          </ss-auto-complete>
+        </mat-form-field>
+        <mat-form-field class="default-25 sm-50">
+          <mat-label> {{ 'ASSET_ACQUISITION_DATE' | translate }}, {{ 'COMMON_FROM' | translate }}</mat-label>
+          <ss-date-picker formControlName="acquisitionDate"></ss-date-picker>
+        </mat-form-field>
+        <mat-form-field class="default-25 sm-50">
+          <mat-label> {{ 'ASSET_ACQUISITION_DATE' | translate }}, {{ 'COMMON_TO' | translate }}</mat-label>
+          <ss-date-picker formControlName="acquisitionDateTo"></ss-date-picker>
+        </mat-form-field>
+        <mat-form-field class="default-25 sm-50">
+          <mat-label> {{ 'ASSET_SERVICE_DATE' | translate }}, {{ 'COMMON_FROM' | translate }}</mat-label>
+          <ss-date-picker formControlName="serviceDate"></ss-date-picker>
+        </mat-form-field>
+        <mat-form-field class="default-25 sm-50">
+          <mat-label> {{ 'ASSET_SERVICE_DATE' | translate }}, {{ 'COMMON_TO' | translate }}</mat-label>
+          <ss-date-picker formControlName="serviceDateTo"></ss-date-picker>
+        </mat-form-field>
+        <mat-form-field class="default-25 sm-50">
+          <mat-label translate>ASSET_ACQUISITION_VALUE</mat-label>
+          <input matInput formControlName="acquisitionValue" type="number" required>
+          @if (form.controls['acquisitionValue'].invalid) {
+            <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+          }
+        </mat-form-field>
+        <div class="default-25 sm-50">
+          <mat-form-field style="width: calc(100% - 48px)">
+            <mat-label translate>ASSET_LOCATIONS</mat-label>
+            <ss-auto-complete matInput
+              [model]="officeAutoCompleteModel"
+              formControlName="location">
+            </ss-auto-complete>
+          </mat-form-field>
+          <button mat-mini-fab (click)="openSearchDlg()" type="button">
+            <i class="fa-solid fa-file-magnifying-glass"></i>
+          </button>
+        </div>
+        <mat-form-field class="default-25 sm-50">
+          <mat-label translate>ASSET_INVOICE_NUMBER</mat-label>
+          <input matInput formControlName="invoiceNumber" type="text">
+        </mat-form-field>
+        <mat-form-field class="default-25 sm-50">
+          <mat-label translate>ASSET_ORDER_NUMBER</mat-label>
+          <input matInput formControlName="orderNumb" type="text">
+        </mat-form-field>
+        <!--            <mat-form-field class="default-25 sm-50">-->
+        <!--                <mat-label translate>COMMON_STATUS</mat-label>-->
+        <!--                <input matInput formControlName="status" type="text">-->
+      <!--            </mat-form-field>-->
+      <div id="manager" class="default-25 sm-50" >
+        <mat-checkbox formControlName="consolidated" translate>COMMON_CONSOLIDATED</mat-checkbox>
+      </div>
+    </form>
+  }
+</div>
+<div class="container_div">
+  <mat-table mat-table [dataSource]="data" class="main-table" matSort (matSortChange)="sort($event)">
 
 
-            <ng-container matColumnDef="description">
-                <mat-header-cell *matHeaderCellDef translate>ADMINISTRATION_DESCRIPTION</mat-header-cell>
-                <mat-cell *matCellDef="let e" [ngClass]="{ sold: e.dateOut }" >
-                    {{e.description}}
-                </mat-cell>
-            </ng-container>
+    <ng-container matColumnDef="description">
+      <mat-header-cell *matHeaderCellDef translate>ADMINISTRATION_DESCRIPTION</mat-header-cell>
+      <mat-cell *matCellDef="let e" [ngClass]="{ sold: e.dateOut }" >
+        {{e.description}}
+      </mat-cell>
+    </ng-container>
 
 
-            <ng-container matColumnDef="reference">
-                <mat-header-cell *matHeaderCellDef translate>COMMON_REFERENCE</mat-header-cell>
-                <mat-cell *matCellDef="let e" [ngClass]="{ sold: e.dateOut }" >
-                    {{e.reference}}
-                </mat-cell>
-            </ng-container>
+    <ng-container matColumnDef="reference">
+      <mat-header-cell *matHeaderCellDef translate>COMMON_REFERENCE</mat-header-cell>
+      <mat-cell *matCellDef="let e" [ngClass]="{ sold: e.dateOut }" >
+        {{e.reference}}
+      </mat-cell>
+    </ng-container>
 
-            <ng-container matColumnDef="accountno">
-                <mat-header-cell *matHeaderCellDef translate>LOGISTICS_ACCOUNT_NO</mat-header-cell>
-                <mat-cell *matCellDef="let e" [ngClass]="{ sold: e.dateOut }" >
-                    {{e.accountno}}
-                </mat-cell>
-            </ng-container>
+    <ng-container matColumnDef="accountno">
+      <mat-header-cell *matHeaderCellDef translate>LOGISTICS_ACCOUNT_NO</mat-header-cell>
+      <mat-cell *matCellDef="let e" [ngClass]="{ sold: e.dateOut }" >
+        {{e.accountno}}
+      </mat-cell>
+    </ng-container>
 
-            <ng-container matColumnDef="serial_no">
-                <mat-header-cell *matHeaderCellDef translate>ASSET_SERIAL_NUMBER</mat-header-cell>
-                <mat-cell *matCellDef="let e" [ngClass]="{ sold: e.dateOut }" >
-                    {{e.serial_no}}
-                </mat-cell>
-            </ng-container>
+    <ng-container matColumnDef="serial_no">
+      <mat-header-cell *matHeaderCellDef translate>ASSET_SERIAL_NUMBER</mat-header-cell>
+      <mat-cell *matCellDef="let e" [ngClass]="{ sold: e.dateOut }" >
+        {{e.serial_no}}
+      </mat-cell>
+    </ng-container>
 
-            <ng-container matColumnDef="geolocation">
-                <mat-header-cell *matHeaderCellDef translate>ASSET_LOCATIONS</mat-header-cell>
-                <mat-cell *matCellDef="let e" [ngClass]="{ sold: e.dateOut }" >
-                    {{e.geolocation}}
-                </mat-cell>
-            </ng-container>
+    <ng-container matColumnDef="geolocation">
+      <mat-header-cell *matHeaderCellDef translate>ASSET_LOCATIONS</mat-header-cell>
+      <mat-cell *matCellDef="let e" [ngClass]="{ sold: e.dateOut }" >
+        {{e.geolocation}}
+      </mat-cell>
+    </ng-container>
 
-            <ng-container matColumnDef="beneficiary">
-                <mat-header-cell *matHeaderCellDef translate>ASSET_BENEFICIARY</mat-header-cell>
-                <mat-cell *matCellDef="let e" [ngClass]="{ sold: e.dateOut }" >
-                    {{e.beneficiary}}
-                </mat-cell>
-            </ng-container>
+    <ng-container matColumnDef="beneficiary">
+      <mat-header-cell *matHeaderCellDef translate>ASSET_BENEFICIARY</mat-header-cell>
+      <mat-cell *matCellDef="let e" [ngClass]="{ sold: e.dateOut }" >
+        {{e.beneficiary}}
+      </mat-cell>
+    </ng-container>
 
-            <ng-container matColumnDef="acquisitionDate">
-                <mat-header-cell *matHeaderCellDef translate>ASSET_ACQUISITION_DATE</mat-header-cell>
-                <mat-cell *matCellDef="let e" [ngClass]="{ sold: e.dateOut }" >
-                    {{e.acquisitionDate | date: 'dd/MM/yyyy'}}
-                </mat-cell>
-            </ng-container>
+    <ng-container matColumnDef="acquisitionDate">
+      <mat-header-cell *matHeaderCellDef translate>ASSET_ACQUISITION_DATE</mat-header-cell>
+      <mat-cell *matCellDef="let e" [ngClass]="{ sold: e.dateOut }" >
+        {{e.acquisitionDate | date: 'dd/MM/yyyy'}}
+      </mat-cell>
+    </ng-container>
 
-            <ng-container matColumnDef="serviceDate">
-                <mat-header-cell *matHeaderCellDef translate>ASSET_SERVICE_DATE</mat-header-cell>
-                <mat-cell *matCellDef="let e" [ngClass]="{ sold: e.dateOut }" >
-                    {{e.serviceDate | date: 'dd/MM/yyyy'}}
-                </mat-cell>
-            </ng-container>
+    <ng-container matColumnDef="serviceDate">
+      <mat-header-cell *matHeaderCellDef translate>ASSET_SERVICE_DATE</mat-header-cell>
+      <mat-cell *matCellDef="let e" [ngClass]="{ sold: e.dateOut }" >
+        {{e.serviceDate | date: 'dd/MM/yyyy'}}
+      </mat-cell>
+    </ng-container>
 
-            <ng-container matColumnDef="acquisitionValue">
-                <mat-header-cell *matHeaderCellDef translate>ASSET_ACQUISITION_VALUE</mat-header-cell>
-                <mat-cell *matCellDef="let e" [ngClass]="{ sold: e.dateOut }" >
-                    {{e.acquisitionValue | number: '1.2-2'}}
-                </mat-cell>
-            </ng-container>
+    <ng-container matColumnDef="acquisitionValue">
+      <mat-header-cell *matHeaderCellDef translate>ASSET_ACQUISITION_VALUE</mat-header-cell>
+      <mat-cell *matCellDef="let e" [ngClass]="{ sold: e.dateOut }" >
+        {{e.acquisitionValue | number: '1.2-2'}}
+      </mat-cell>
+    </ng-container>
 
-            <ng-container matColumnDef="residualValue">
-                <mat-header-cell *matHeaderCellDef translate>ASSET_RESIDUAL_VALUE</mat-header-cell>
-                <mat-cell *matCellDef="let e" [ngClass]="{ sold: e.dateOut }" >
-                    {{e.residualValue | number: '1.2-2'}}
-                </mat-cell>
-            </ng-container>
+    <ng-container matColumnDef="residualValue">
+      <mat-header-cell *matHeaderCellDef translate>ASSET_RESIDUAL_VALUE</mat-header-cell>
+      <mat-cell *matCellDef="let e" [ngClass]="{ sold: e.dateOut }" >
+        {{e.residualValue | number: '1.2-2'}}
+      </mat-cell>
+    </ng-container>
 
-            <ng-container matColumnDef="depreciationRate">
-                <mat-header-cell *matHeaderCellDef translate>ACC_DEPRECIATION_RATE</mat-header-cell>
-                <mat-cell *matCellDef="let e" [ngClass]="{ sold: e.dateOut }" >
-                    {{e.depreciationRate | number: '1.2-2'}}
-                </mat-cell>
-            </ng-container>
+    <ng-container matColumnDef="depreciationRate">
+      <mat-header-cell *matHeaderCellDef translate>ACC_DEPRECIATION_RATE</mat-header-cell>
+      <mat-cell *matCellDef="let e" [ngClass]="{ sold: e.dateOut }" >
+        {{e.depreciationRate | number: '1.2-2'}}
+      </mat-cell>
+    </ng-container>
 
-            <ng-container matColumnDef="useful_life">
-                <mat-header-cell *matHeaderCellDef translate>ACC_USEFUL_LIFE</mat-header-cell>
-                <mat-cell *matCellDef="let e" [ngClass]="{ sold: e.dateOut }" >
-                    {{e.useful_life | number: '1.2-2'}}
-                </mat-cell>
-            </ng-container>
+    <ng-container matColumnDef="useful_life">
+      <mat-header-cell *matHeaderCellDef translate>ACC_USEFUL_LIFE</mat-header-cell>
+      <mat-cell *matCellDef="let e" [ngClass]="{ sold: e.dateOut }" >
+        {{e.useful_life | number: '1.2-2'}}
+      </mat-cell>
+    </ng-container>
 
-            <ng-container matColumnDef="key">
-                <mat-header-cell *matHeaderCellDef></mat-header-cell>
-                <mat-cell *matCellDef="let e" [ngClass]="{ sold: e.dateOut }" >
-                    <i class="fa-solid fa-book-open" (click)="openAsset(e.id)"
-                       matTooltip="{{ 'COMMON_GOTO_DETAIL' | translate }}"></i>
-                </mat-cell>
-            </ng-container>
+    <ng-container matColumnDef="key">
+      <mat-header-cell *matHeaderCellDef></mat-header-cell>
+      <mat-cell *matCellDef="let e" [ngClass]="{ sold: e.dateOut }" >
+        <i class="fa-solid fa-book-open" (click)="openAsset(e.id)"
+        matTooltip="{{ 'COMMON_GOTO_DETAIL' | translate }}"></i>
+      </mat-cell>
+    </ng-container>
 
-            <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
-            <mat-row class="selectable" [class.selected]="row.id == selected" (click)="select(row.id)"
-                     *matRowDef="let row; columns: displayedColumns;"></mat-row>
-        </mat-table>
-    </div>
-    <div class="pagination-container b-b-background">
-        <ss-pagination [paginationModel]="pagination"></ss-pagination>
-    </div>
+    <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+    <mat-row class="selectable" [class.selected]="row.id == selected" (click)="select(row.id)"
+    *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+</div>
+<div class="pagination-container b-b-background">
+  <ss-pagination [paginationModel]="pagination"></ss-pagination>
+</div>
 </div>

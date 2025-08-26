@@ -6,7 +6,7 @@ import {HttpEventType} from '@angular/common/http';
 import {AssetsService} from '../services/assets.service';
 import {UntypedFormBuilder, Validators} from '@angular/forms';
 import { MaterialModule, UserRightsService } from '@ss/common/api-common';
-import { CommonModule } from '@angular/common';
+
 
 
 
@@ -24,17 +24,11 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     styleUrls: ['./asset-excel-injection.component.scss'],
     standalone: true,
     imports: [
-        CommonModule,
-        MaterialModule,
-        TranslateDirective,
-        TranslatePipe,
-
-       
-        RouterModule,
-
-
-
-    ]})
+    MaterialModule,
+    TranslateDirective,
+    TranslatePipe,
+    RouterModule
+]})
 export class AssetExcelInjectionComponent implements OnInit {
     private fb = inject(UntypedFormBuilder);
     columns = [' ', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T',

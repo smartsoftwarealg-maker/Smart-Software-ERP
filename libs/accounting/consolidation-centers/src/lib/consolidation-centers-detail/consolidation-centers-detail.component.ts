@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { ConsolidationCenterService } from '../services/consolidation-center.service';
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { ConsolidationCenter } from '../services/consolidation-api';
@@ -30,19 +30,19 @@ import { CenterService } from '@ss/administration/api-center';
 @Component({
     selector: 'ss-consolidation-centers-detail',
     imports: [
-        CommonModule,
-        MatCard,
-        MatCardContent,
-        MatCardHeader,
-        MatCheckbox,
-        MatError,
-        MatFormField,
-        MatInput,
-        MatLabel,
-        MaterialModule,
-        ReactiveFormsModule,
-        TranslateDirective,
-        UiAutoCompleteComponent],
+    MatCard,
+    MatCardContent,
+    MatCardHeader,
+    MatCheckbox,
+    MatError,
+    MatFormField,
+    MatInput,
+    MatLabel,
+    MaterialModule,
+    ReactiveFormsModule,
+    TranslateDirective,
+    UiAutoCompleteComponent
+],
     templateUrl: './consolidation-centers-detail.component.html',
     styleUrl: './consolidation-centers-detail.component.scss',
     providers: [ConsolidationCenterService]

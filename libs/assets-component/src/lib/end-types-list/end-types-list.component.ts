@@ -8,7 +8,7 @@ import {  ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { DefaultReportService } from '@ss/common/ui-default-report-component';
 import { MaterialModule, PaginatorPersistenceService } from '@ss/common/api-common';
 import { AssetEndTypeService } from '../services/asset-end-type.service';
-import { CommonModule } from '@angular/common';
+
 
 
 
@@ -25,16 +25,11 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     styleUrls: ['./end-types-list.component.scss'],
     standalone: true,
     imports: [
-        CommonModule,
-        MaterialModule,
-        TranslateDirective,
-
-       
-        RouterModule,
-
-
-        PaginationComponent
-    ]
+    MaterialModule,
+    TranslateDirective,
+    RouterModule,
+    PaginationComponent
+]
 
 })
 export class EndTypesListComponent extends BaseEntityListComponent<Lookup> {

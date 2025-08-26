@@ -7,7 +7,7 @@ import {LookupsService} from '@ss/common/api-lookup';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {Company, CompanyService} from '@ss/administration/api-company';
 import { MatExpansionPanel, MatAccordion, MatExpansionPanelHeader, MatExpansionPanelTitle } from '@angular/material/expansion';
-import { NgIf } from '@angular/common';
+
 import { TranslateDirective } from '@ss/common/ui-lang';
 import { MatFormField, MatLabel, MatError } from '@angular/material/form-field';
 import { MatInput } from '@angular/material/input';
@@ -19,7 +19,7 @@ import { MatCheckbox } from '@angular/material/checkbox';
     styleUrls: ['./company-detail.component.scss'],
     templateUrl: './company-detail.component.html',
     standalone: true,
-    imports: [NgIf, FormsModule, ReactiveFormsModule, MatAccordion, MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelTitle, TranslateDirective, MatFormField, MatLabel, MatInput, MatError, MatCheckbox]
+    imports: [FormsModule, ReactiveFormsModule, MatAccordion, MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelTitle, TranslateDirective, MatFormField, MatLabel, MatInput, MatError, MatCheckbox]
 })
 export class CompanyDetailComponent extends BaseEntityDetailComponent<Company> {
 

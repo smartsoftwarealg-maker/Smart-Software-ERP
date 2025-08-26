@@ -21,11 +21,12 @@ import { MatSort, MatSortHeader } from '@angular/material/sort';
 
 import { AccFileService } from '@ss/accounting/accounting-api';
 import { PaginationComponent } from '@ss/common/ui-pagination';
+import {TranslateDirective} from "@ss/common/ui-lang";
 
 @Component({
     selector: 'ss-f8-list',
     standalone: true,
-    imports: [CommonModule, MatCell, MatCellDef, MatColumnDef, MatHeaderCell, MatHeaderRow, MatHeaderRowDef, MatRow, MatRowDef, MatSort, MatSortHeader, MatTable, MatHeaderCellDef, PaginationComponent],
+    imports: [CommonModule, MatCell, MatCellDef, MatColumnDef, MatHeaderCell, MatHeaderRow, MatHeaderRowDef, MatRow, MatRowDef, MatSort, MatSortHeader, MatTable, MatHeaderCellDef, PaginationComponent, TranslateDirective],
     templateUrl: './f8-list.component.html',
     styleUrl: './f8-list.component.scss',
 })

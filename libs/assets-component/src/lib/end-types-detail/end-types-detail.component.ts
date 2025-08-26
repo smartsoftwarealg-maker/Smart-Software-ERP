@@ -6,7 +6,7 @@ import { ActivatedRoute, RouterModule } from '@angular/router';
 import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import {  ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { AssetEndTypeService } from '../services/asset-end-type.service';
-import { CommonModule } from '@angular/common';
+
 import { MaterialModule } from '@ss/common/api-common';
 
 
@@ -24,12 +24,10 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     styleUrls: ['./end-types-detail.component.scss'],
     standalone: true,
     imports: [
-        CommonModule,
-        MaterialModule,
-        TranslateDirective,
-        RouterModule,
-
-    ]
+    MaterialModule,
+    TranslateDirective,
+    RouterModule
+]
 })
 export class EndTypesDetailComponent extends BaseEntityDetailComponent<Lookup> {
 

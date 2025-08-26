@@ -7,7 +7,7 @@ import { UntypedFormBuilder, Validators } from "@angular/forms";
 import {  ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
 import { LookupsService } from "@ss/common/api-lookup";
 import { AssetClassService } from "../services/asset-class.service";
-import { CommonModule } from "@angular/common";
+
 import { MaterialModule } from "@ss/common/api-common";
 
 
@@ -21,15 +21,10 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     templateUrl: "./asset-class-detail.component.html",
     standalone: true,
     imports: [
-        CommonModule,
-        MaterialModule,
-        TranslateDirective,
-       
-
-       
-        RouterModule,
-
-    ],
+    MaterialModule,
+    TranslateDirective,
+    RouterModule
+],
 
     styleUrls: ["./asset-class-detail.component.scss"]
 })

@@ -1,88 +1,96 @@
 @if (form !== null) {
-    <mat-card>
-        <form [formGroup]="form">
+  <mat-card>
+    <form [formGroup]="form">
 
-            <mat-form-field class="default-50">
-                <mat-label translate>COMMON_NUMBER</mat-label>
-                <input matInput formControlName="pieceNo" type="number" autofocus>
-                @if (form.controls['pieceNo'].invalid) {
-                    <mat-error translate>COMMON_INVALID_DATA</mat-error>
-                }
-            </mat-form-field>
+      <mat-form-field class="default-50">
+        <mat-label translate>COMMON_NUMBER</mat-label>
+        <input matInput formControlName="pieceNo" type="number" autofocus>
+        @if (form.controls['pieceNo'].invalid) {
+          <mat-error translate>COMMON_INVALID_DATA</mat-error>
+        }
+      </mat-form-field>
 
-            <mat-form-field class="default-50">
-                <mat-label translate>COMMON_DATE</mat-label>
-                <ss-date-picker formControlName="pieceDate" [maxDate]="maxDate" [minDate]="minDate"></ss-date-picker>
-            </mat-form-field>
+      <mat-form-field class="default-50">
+        <mat-label translate>COMMON_DATE</mat-label>
+        <ss-date-picker formControlName="pieceDate" [maxDate]="maxDate" [minDate]="minDate"></ss-date-picker>
+      </mat-form-field>
 
-            <mat-form-field class="default-50" *ngIf="accPolicy?.showFolio">
-                <mat-label translate>ACC_FOLIO</mat-label>
-                <input matInput formControlName="folio" type="text" autofocus maxlength="4">
-                <mat-error *ngIf="form.controls['folio'].invalid" translate>COMMON_FIELD_MAX_LENGTH</mat-error>
-            </mat-form-field>
-
-
-            <div class="default-50 check_box" *ngIf="accPolicy?.showBudget">
-                <mat-checkbox formControlName="isBudget" translate>ACC_BUDGETABLE</mat-checkbox>
-            </div>
-            @if (accPolicy?.showProjects) {
-                <mat-form-field class="default-50">
-                    <mat-select formControlName="projectId" placeholder="{{'COMMON_PROJECT' | translate}}">
-                        @for (p of projects; track p.id) {
-                            <mat-option [value]="p.id">
-                                {{ p.description }}
-                            </mat-option>
-                        }
-                    </mat-select>
-                </mat-form-field>
-            }
+      @if (accPolicy?.showFolio) {
+        <mat-form-field class="default-50">
+          <mat-label translate>ACC_FOLIO</mat-label>
+          <input matInput formControlName="folio" type="text" autofocus maxlength="4">
+          @if (form.controls['folio'].invalid) {
+            <mat-error translate>COMMON_FIELD_MAX_LENGTH</mat-error>
+          }
+        </mat-form-field>
+      }
 
 
-            <!--            <pre> {{ form.getRawValue() | json }}</pre>-->
-
-        </form>
-
-        <div mat-subheader class="ctrl default-100">
-            <div class="summary__div">
-                <table class="summary__table">
-                    <tr>
-                        <td class="label" translate><span translate>COMMON_DEBIT</span>:</td>
-                        <td><span [class.f-warn]="warning()">{{ debit()| number: '1.2-2' }}</span></td>
-                        <td class="label" translate><span translate>COMMON_CREDIT</span>:</td>
-                        <td [class.f-warn]="warning()"> {{ credit() | number: '1.2-2' }}</td>
-                    </tr>
-                    <tr>
-                        <td class="label" translate><span translate>COMMON_DEBIT</span>:</td>
-                        <td><span [class.f-warn]="warning()">{{ debitBalance()| number: '1.2-2' }}</span></td>
-                        <td class="label" translate><span translate>COMMON_CREDIT</span>:</td>
-                        <td [class.f-warn]="warning()"> {{ creditBalance() | number: '1.2-2' }}</td>
-                    </tr>
-                </table>
-            </div>
-
-            <div class="button__div">
-                @if (!isOnEdit()) {
-                    <button mat-flat-button
-                            color="primary"
-                            (click)="save()"
-                            translate [disabled]="!form?.valid || isClosed()">
-                        <i class="fas fa-save"></i>
-                        {{ 'COMMON_SAVE' | translate }}
-                    </button>
-                    <button mat-flat-button color="accent" translate (click)="cancel()">
-                        <i class="fas fa-redo"></i>
-                        {{ 'COMMON_CANCEL'|translate }}
-                    </button>
-                }
-
-                <!--            <button (click)="deleteSelected()" *ngIf="isEmpty && id > 0" translate>-->
-                <!--                <i class="fas fa-trash-can"></i>-->
-                <!--                {{ 'COMMON_DELETE'|translate }}-->
-                <!--            </button>-->
-            </div>
+      @if (accPolicy?.showBudget) {
+        <div class="default-50 check_box">
+          <mat-checkbox formControlName="isBudget" translate>ACC_BUDGETABLE</mat-checkbox>
         </div>
-    </mat-card>
-    <div *ngIf="id" class="right_div">
-        <router-outlet></router-outlet>
+      }
+      @if (accPolicy?.showProjects) {
+        <mat-form-field class="default-50">
+          <mat-select formControlName="projectId" placeholder="{{'COMMON_PROJECT' | translate}}">
+            @for (p of projects; track p.id) {
+              <mat-option [value]="p.id">
+                {{ p.description }}
+              </mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+      }
+
+
+      <!--            <pre> {{ form.getRawValue() | json }}</pre>-->
+
+    </form>
+
+    <div mat-subheader class="ctrl default-100">
+      <div class="summary__div">
+        <table class="summary__table">
+          <tr>
+            <td class="label" translate><span translate>COMMON_DEBIT</span>:</td>
+            <td><span [class.f-warn]="warning()">{{ debit()| number: '1.2-2' }}</span></td>
+            <td class="label" translate><span translate>COMMON_CREDIT</span>:</td>
+            <td [class.f-warn]="warning()"> {{ credit() | number: '1.2-2' }}</td>
+          </tr>
+          <tr>
+            <td class="label" translate><span translate>COMMON_DEBIT</span>:</td>
+            <td><span [class.f-warn]="warning()">{{ debitBalance()| number: '1.2-2' }}</span></td>
+            <td class="label" translate><span translate>COMMON_CREDIT</span>:</td>
+            <td [class.f-warn]="warning()"> {{ creditBalance() | number: '1.2-2' }}</td>
+          </tr>
+        </table>
+      </div>
+
+      <div class="button__div">
+        @if (!isOnEdit()) {
+          <button mat-flat-button
+            color="primary"
+            (click)="save()"
+            translate [disabled]="!form?.valid || isClosed()">
+            <i class="fas fa-save"></i>
+            {{ 'COMMON_SAVE' | translate }}
+          </button>
+          <button mat-flat-button color="accent" translate (click)="cancel()">
+            <i class="fas fa-redo"></i>
+            {{ 'COMMON_CANCEL'|translate }}
+          </button>
+        }
+
+        <!--            <button (click)="deleteSelected()" *ngIf="isEmpty && id > 0" translate>-->
+        <!--                <i class="fas fa-trash-can"></i>-->
+        <!--                {{ 'COMMON_DELETE'|translate }}-->
+      <!--            </button>-->
     </div>
+  </div>
+</mat-card>
+@if (id) {
+  <div class="right_div">
+    <router-outlet></router-outlet>
+  </div>
+}
 }

@@ -1,5 +1,5 @@
 import { Component, inject, OnDestroy, OnInit } from "@angular/core";
-import { CommonModule } from "@angular/common";
+
 import { KeepOnToolbar, ShellService, SnackBarService, ToolbarButton } from "@ss/common/ui-shell";
 import { ActivatedRoute } from "@angular/router";
 import { AssetInventoryService } from "../services/asset-tree.service";
@@ -20,7 +20,7 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
 @Component({
     selector: "ss-asset-tree",
     standalone: true,
-    imports: [CommonModule, MaterialModule, MatTreeModule, TranslatePipe, PaginationComponent, TranslateDirective],
+    imports: [MaterialModule, MatTreeModule, TranslatePipe, PaginationComponent, TranslateDirective],
     templateUrl: "./asset-tree.component.html",
     styleUrls: ["./asset-tree.component.css"]
 })

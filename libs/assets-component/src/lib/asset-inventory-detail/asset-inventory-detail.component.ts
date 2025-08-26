@@ -14,7 +14,7 @@ import { tap } from 'rxjs/operators';
 import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { AssetLookupModel } from '../asset-lookup-model';
 import { AssetsService } from '../services/assets.service';
-import { CommonModule } from '@angular/common';
+
 
 
 
@@ -30,17 +30,12 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     styleUrls: ['./asset-inventory-detail.component.scss'],
     standalone: true,
     imports: [
-        CommonModule,
-        MaterialModule,
-        TranslateDirective,
-       
-
-        DatePickerComponent,
-        RouterModule,
-        UiAutoCompleteComponent
-
-
-    ]
+    MaterialModule,
+    TranslateDirective,
+    DatePickerComponent,
+    RouterModule,
+    UiAutoCompleteComponent
+]
 
 })
 export class AssetInventoryDetailComponent extends BaseEntityDetailComponent<AssetInventory> {

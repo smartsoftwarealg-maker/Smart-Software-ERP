@@ -10,7 +10,7 @@ import { AssetsBuildingService } from '../services/assets-building.service';
 import { AssetLocationService } from '../services/asset-location.service';
 import { FormControl } from '@angular/forms';
 import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
-import { CommonModule } from '@angular/common';
+
 
 import { PaginationComponent } from '@ss/common/ui-pagination';
 import { TranslateDirective } from '@ss/common/ui-lang';
@@ -21,13 +21,12 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     styleUrls: ['./asset-building-list.component.scss'],
     standalone: true,
     imports: [
-        CommonModule,
-        MaterialModule,
-        TranslateDirective,
-        RouterModule,
-        PaginationComponent,
-        UiAutoCompleteComponent
-    ]
+    MaterialModule,
+    TranslateDirective,
+    RouterModule,
+    PaginationComponent,
+    UiAutoCompleteComponent
+]
 
 })
 export class AssetBuildingListComponent extends BaseEntityListComponent<AssetBuilding> {

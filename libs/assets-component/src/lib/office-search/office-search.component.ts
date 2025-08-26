@@ -6,7 +6,7 @@ import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui
 import { FormControl } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
-import { CommonModule } from '@angular/common';
+
 import { MaterialModule } from '@ss/common/api-common';
 
 
@@ -25,15 +25,11 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     styleUrls: ['./office-search.component.scss'],
     standalone: true,
     imports: [
-        CommonModule,
-        MaterialModule,
-        TranslateDirective,
-       
-       
-        RouterModule,
-
-        UiAutoCompleteComponent
-    ]
+    MaterialModule,
+    TranslateDirective,
+    RouterModule,
+    UiAutoCompleteComponent
+]
 
 })
 export class OfficeSearchComponent implements OnDestroy, OnInit {

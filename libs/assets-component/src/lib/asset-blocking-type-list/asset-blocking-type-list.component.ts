@@ -7,7 +7,7 @@ import {  ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import { MaterialModule, PaginatorPersistenceService } from '@ss/common/api-common';
 import {AssetBlockingTypeService} from '../services/asset-blocking-type.service';
-import { CommonModule } from '@angular/common';
+
 
 
 
@@ -25,17 +25,11 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
   styleUrls: ['./asset-blocking-type-list.component.scss'],
   standalone: true,
     imports: [
-        CommonModule,
-        MaterialModule,
-        TranslateDirective,
-       
-
-       
-        RouterModule,
-
-
-        PaginationComponent
-    ]})
+    MaterialModule,
+    TranslateDirective,
+    RouterModule,
+    PaginationComponent
+]})
 export class AssetBlockingTypeListComponent extends BaseEntityListComponent<Lookup> {
     displayedColumns = [
         'description',
