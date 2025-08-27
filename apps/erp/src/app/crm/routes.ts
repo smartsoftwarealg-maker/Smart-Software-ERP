@@ -2,7 +2,7 @@ import { Routes } from '@angular/router';
 import {
     ABS_INDEX_URL,
     CanDeactivateService,
-    LIST_URL,
+    LIST_URL
 } from '@ss/common/api-common';
 import { loginGuard } from '../erp-guards';
 import {
@@ -13,34 +13,34 @@ import {
     CRM_SALUTATIONS_URL,
     CRM_STATUS_URL,
     docInfoRoutes,
-    CRM_CUSTOMER_URL, CRM_LEADS_URL, CRM_CONTACTS_URL, CRM_CAMPAIGN_URL
+    CRM_CUSTOMER_URL, CRM_LEADS_URL, CRM_CONTACTS_URL, CRM_CAMPAIGN_URL, CRM_MAILING_LIST_URL
 } from '../common';
 import {
     SalutationsDetailComponent,
-    SalutationsListComponent,
+    SalutationsListComponent
 } from '@ss/crm/salutations';
 import { JobsDetailComponent, JobsListComponent } from '@ss/crm/jobs';
 import {
     DepartmentsDetailComponent,
-    DepartmentsListComponent,
+    DepartmentsListComponent
 } from '@ss/crm/departments';
 import {
     ContactMethodsDetailComponent,
-    ContactMethodsListComponent,
+    ContactMethodsListComponent
 } from '@ss/crm/contact-methods';
 import { StatusDetailComponent, StatusListComponent } from '@ss/crm/status';
 import {
     PaymentTermsDetailComponent,
-    PaymentTermsListComponent,
+    PaymentTermsListComponent
 } from '@ss/crm/payment-terms';
 import {
     AppArchiveDetailComponent,
-    AppArchiveListComponent,
+    AppArchiveListComponent
 } from '@ss/logistics/ui-agent';
 import { AGENT_ARCHIVES } from '@ss/common/app-archive';
 import {
     CrmCustomerDetailComponent,
-    CrmCustomerListComponent,
+    CrmCustomerListComponent
 } from '@ss/crm/crm-customer';
 import { CrmLeadsComponent, CrmLeadsDetailComponent } from '@ss/crm/leads';
 import { ContactsComponent } from '@ss/crm/contacts';
@@ -48,6 +48,12 @@ import {
     ContactsDetailComponent
 } from '../../../../../libs/crm/contacts/src/lib/contacts-detail/contacts-detail.component';
 import {CampaignDetailComponent, CampaignListComponent} from "@ss/crm/campaign";
+import {
+    MailingListComponent,
+    MailingListDetailComponent,
+    MailingListLineComponent, MailingListLineDetailComponent
+} from '../../../../../libs/crm/mailingList/src';
+
 
 export const crmRoutes: Routes = [
     {
@@ -56,16 +62,16 @@ export const crmRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: SalutationsListComponent,
-                canActivate: [loginGuard],
+                canActivate: [loginGuard]
             },
             {
                 path: ':id',
                 component: SalutationsDetailComponent,
                 canActivate: [loginGuard],
-                canDeactivate: [CanDeactivateService],
+                canDeactivate: [CanDeactivateService]
             },
-            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' },
-        ],
+            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
+        ]
     },
     {
         path: CRM_JOBS_URL,
@@ -73,16 +79,16 @@ export const crmRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: JobsListComponent,
-                canActivate: [loginGuard],
+                canActivate: [loginGuard]
             },
             {
                 path: ':id',
                 component: JobsDetailComponent,
                 canActivate: [loginGuard],
-                canDeactivate: [CanDeactivateService],
+                canDeactivate: [CanDeactivateService]
             },
-            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' },
-        ],
+            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
+        ]
     },
     {
         path: CRM_DEPARTMENTS_URL,
@@ -90,16 +96,16 @@ export const crmRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: DepartmentsListComponent,
-                canActivate: [loginGuard],
+                canActivate: [loginGuard]
             },
             {
                 path: ':id',
                 component: DepartmentsDetailComponent,
                 canActivate: [loginGuard],
-                canDeactivate: [CanDeactivateService],
+                canDeactivate: [CanDeactivateService]
             },
-            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' },
-        ],
+            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
+        ]
     },
     {
         path: CRM_CONTACT_METHODS_URL,
@@ -107,16 +113,16 @@ export const crmRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: ContactMethodsListComponent,
-                canActivate: [loginGuard],
+                canActivate: [loginGuard]
             },
             {
                 path: ':id',
                 component: ContactMethodsDetailComponent,
                 canActivate: [loginGuard],
-                canDeactivate: [CanDeactivateService],
+                canDeactivate: [CanDeactivateService]
             },
-            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' },
-        ],
+            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
+        ]
     },
     {
         path: CRM_STATUS_URL,
@@ -124,16 +130,16 @@ export const crmRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: StatusListComponent,
-                canActivate: [loginGuard],
+                canActivate: [loginGuard]
             },
             {
                 path: ':id',
                 component: StatusDetailComponent,
                 canActivate: [loginGuard],
-                canDeactivate: [CanDeactivateService],
+                canDeactivate: [CanDeactivateService]
             },
-            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' },
-        ],
+            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
+        ]
     },
     {
         path: CRM_LEADS_URL,
@@ -141,16 +147,16 @@ export const crmRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: CrmLeadsComponent,
-                canActivate: [loginGuard],
+                canActivate: [loginGuard]
             },
             {
                 path: ':id',
                 component: CrmLeadsDetailComponent,
                 canActivate: [loginGuard],
-                canDeactivate: [CanDeactivateService],
+                canDeactivate: [CanDeactivateService]
             },
-            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' },
-        ],
+            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
+        ]
     },
     {
         path: CRM_CONTACTS_URL,
@@ -158,16 +164,16 @@ export const crmRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: ContactsComponent,
-                canActivate: [loginGuard],
+                canActivate: [loginGuard]
             },
             {
                 path: ':id',
                 component: ContactsDetailComponent,
                 canActivate: [loginGuard],
-                canDeactivate: [CanDeactivateService],
+                canDeactivate: [CanDeactivateService]
             },
-            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' },
-        ],
+            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
+        ]
     },
     {
         path: CRM_PAYMENT_TERMS_URL,
@@ -175,17 +181,45 @@ export const crmRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: PaymentTermsListComponent,
-                canActivate: [loginGuard],
+                canActivate: [loginGuard]
             },
             {
                 path: ':id',
                 component: PaymentTermsDetailComponent,
                 canActivate: [loginGuard],
-                canDeactivate: [CanDeactivateService],
+                canDeactivate: [CanDeactivateService]
             },
-            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' },
-        ],
+            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
+        ]
     },
+    {
+        path: CRM_MAILING_LIST_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: MailingListComponent,
+                canActivate: [loginGuard]
+            },
+            {
+                path: ':id',
+                component: MailingListDetailComponent,
+                canActivate: [loginGuard],
+                canDeactivate: [CanDeactivateService],
+                children: [
+                    { path: '', redirectTo: 'linelist', pathMatch: 'full' },
+                    {
+                        path: 'linelist',
+                        children: [
+                            { path: '', component: MailingListLineComponent },
+                            { path: ':id', component: MailingListLineDetailComponent }
+                        ]
+                    }
+                ]
+            },
+            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
+        ]
+    },
+
     {
         path: CRM_CUSTOMER_URL,
         children: [
@@ -194,7 +228,7 @@ export const crmRoutes: Routes = [
                 component: CrmCustomerListComponent,
                 canActivate: [loginGuard],
                 data: { sales: true, customer: true },
-                children: docInfoRoutes,
+                children: docInfoRoutes
             },
             {
                 path: ':id',
@@ -209,7 +243,7 @@ export const crmRoutes: Routes = [
                             {
                                 path: '',
                                 redirectTo: 'archive',
-                                pathMatch: 'full',
+                                pathMatch: 'full'
                             },
                             {
                                 path: 'archive',
@@ -218,20 +252,20 @@ export const crmRoutes: Routes = [
                                         path: '',
                                         component: AppArchiveListComponent,
                                         pathMatch: 'full',
-                                        data: { appId: AGENT_ARCHIVES },
+                                        data: { appId: AGENT_ARCHIVES }
                                     },
                                     {
                                         path: ':id',
                                         component: AppArchiveDetailComponent,
-                                        data: { appId: AGENT_ARCHIVES },
-                                    },
-                                ],
-                            },
-                        ],
-                    },
-                ],
-            },
-        ],
+                                        data: { appId: AGENT_ARCHIVES }
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
     },
     {
         path: CRM_CAMPAIGN_URL,
@@ -251,5 +285,5 @@ export const crmRoutes: Routes = [
         ],
     },
     { path: '', redirectTo: ABS_INDEX_URL, pathMatch: 'full' },
-    { path: '**', redirectTo: ABS_INDEX_URL },
+    { path: '**', redirectTo: ABS_INDEX_URL }
 ];

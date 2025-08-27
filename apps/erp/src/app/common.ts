@@ -556,6 +556,8 @@ export const CRM_CUSTOMER_URL = 'crm-customer';
 export const CRM_LEADS_URL = 'crm-leads';
 export const CRM_CONTACTS_URL = 'crm-contacts';
 export const CRM_CAMPAIGN_URL = 'crm-campaign';
+export const CRM_MAILING_LIST_URL = 'crm_mailing_lists';
+
 
 // #############
 // # FULL URLS #
@@ -1057,6 +1059,8 @@ export const ABS_CRM_CUSTOMER_URL = '/' + [MAIN_PAGE_URL, CRM_APP_URL, CRM_CUSTO
 export const ABS_CRM_LEADS_URL = '/' + [MAIN_PAGE_URL, CRM_APP_URL, CRM_LEADS_URL].join('/');
 export const ABS_CRM_CONTACTS_URL = '/' + [MAIN_PAGE_URL, CRM_APP_URL, CRM_CONTACTS_URL].join('/');
 export const ABS_CRM_CAMPAIGN_URL = '/' + [MAIN_PAGE_URL, CRM_APP_URL, CRM_CAMPAIGN_URL].join('/');
+export const ABS_CRM_MAILING_LIST_URL = '/' + [MAIN_PAGE_URL, CRM_APP_URL, CRM_MAILING_LIST_URL].join('/');
+
 
 
 
