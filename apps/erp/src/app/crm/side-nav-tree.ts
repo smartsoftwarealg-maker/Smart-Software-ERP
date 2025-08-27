@@ -3,7 +3,7 @@ import {
     ABS_CRM_CAMPAIGN_URL,
     ABS_CRM_CONTACT_METHODS_URL, ABS_CRM_CONTACTS_URL, ABS_CRM_CUSTOMER_URL,
     ABS_CRM_DEPARTMENTS_URL,
-    ABS_CRM_JOBS_URL, ABS_CRM_LEADS_URL, ABS_CRM_PAYMENT_TERMS_URL,
+    ABS_CRM_JOBS_URL, ABS_CRM_LEADS_URL, ABS_CRM_MAILING_LIST_URL, ABS_CRM_PAYMENT_TERMS_URL,
     ABS_CRM_SALUTATIONS_URL,
     ABS_CRM_STATUS_URL
 } from '../common';
@@ -47,6 +47,12 @@ export const crmNavTree: SideNavNode = {
             icon: 'fa-solid fa-money-check-dollar-pen',
             route: ABS_CRM_PAYMENT_TERMS_URL,
             accessRights: 'CRMPaymentTerm',
+        },
+        {
+            name: 'CRM_MAILING_LIST',
+            icon: 'fa-solid fa-inbox',
+            route: ABS_CRM_MAILING_LIST_URL,
+            accessRights: 'CRMMailingList',
         },
         {
             name: 'LOGISTICS_CUSTOMER',

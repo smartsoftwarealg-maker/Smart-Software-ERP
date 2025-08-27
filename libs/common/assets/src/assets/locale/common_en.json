@@ -378,6 +378,7 @@
     "ECDE": "Chlef Cement Plant",
     "COMPANY_SELECTOR": "Company selector",
     "MAILING_LIST": "Mailing list",
+    "MAILING_LIST_DETAIL": "Mailing list Detail",
     "ORDER_CONTRACT": "Order/contract",
     "ORDER_DATE": "Order date",
     "PAID": "Paid",
@@ -443,5 +444,8 @@
     "PAUSED":              "Paused",
     "COMPLETED":           "Completed",
     "SOCIAL_MEDIA":        "Social media",
-    "SMS":                 "SMS"
+    "SMS":                 "SMS",
+    "FULLNAME":            "Full Name",
+    "EMAIL":               "Email",
+    "IS_UNSUBSCRIBED":     "Is Unsubscribed"
 }

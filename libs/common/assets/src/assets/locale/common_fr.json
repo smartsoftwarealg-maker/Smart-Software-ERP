@@ -372,6 +372,7 @@
     "ECDE":               "CIMENTERIE DE CHLEF",
     "COMPANY_SELECTOR":   "Sélection de cimentrie",
     "MAILING_LIST":       "Liste d'envoi",
+    "MAILING_LIST_DETAIL":"detail de la liste d'envoi",
     "ORDER_CONTRACT":     "Contrat/commande",
     "ORDER_DATE":         "Date du commande",
     "PAID":               "Payé",
@@ -439,5 +440,8 @@
     "PAUSED":              "En pause",
     "COMPLETED":           "Terminé",
     "SOCIAL_MEDIA":        "Réseaux sociaux",
-    "SMS":                 "SMS"
+    "SMS":                 "SMS",
+    "FULLNAME":            "Nom complet",
+    "EMAIL":               "Email",
+    "IS_UNSUBSCRIBED":     "Est desabonne"
 }
