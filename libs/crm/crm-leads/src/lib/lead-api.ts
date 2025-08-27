@@ -5,6 +5,10 @@ export interface CRMLead {
     email: string;
     phone?: string;
     company?: string;
+    companySite?: string;
+    companyIndustry?: string;
+    annualRevenue?:number;
+    numberOfEmployees?:number;
     jobTitle?: string;
     addressLine1?: string;
     addressLine2?: string;
@@ -29,4 +33,5 @@ export interface CRMLead {
     isDeleted: boolean;
     companyDescription?: string;
     ownerDescription?: string;
+    campaignDescription?: string;
 }

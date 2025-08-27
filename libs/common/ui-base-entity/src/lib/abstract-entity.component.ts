@@ -81,7 +81,6 @@ export abstract class AbstractEntityComponent<T extends { id: number }> implemen
     }
 
     protected isValidForm() {
-        console.log(this.form);
         return this.form.valid;
     }
 
