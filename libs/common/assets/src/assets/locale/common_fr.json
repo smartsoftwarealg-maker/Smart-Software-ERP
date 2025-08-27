@@ -430,5 +430,14 @@
     "CATEGORY":           "Categorie",
     "ZONE_DESCRIPTION":   "Description de zone",
     "CATEGORY_DESCRIPTION":"Description de categorie",
-    "ELEMENT": "Element"
+    "ELEMENT":             "Element",
+    "END_DATE":            "Date de fin",
+    "CREATED_AT":          "Créé le",
+    "UPDATED_AT":          "Mis à jour le",
+    "EVENT":               "Événement",
+    "ACTIVE":              "Active",
+    "PAUSED":              "En pause",
+    "COMPLETED":           "Terminé",
+    "SOCIAL_MEDIA":        "Réseaux sociaux",
+    "SMS":                 "SMS"
 }

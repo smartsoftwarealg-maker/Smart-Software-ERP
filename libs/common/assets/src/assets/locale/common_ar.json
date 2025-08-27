@@ -425,7 +425,16 @@
     "ZONE":               "المنطقة",
     "CATEGORY":           "فئة",
     "ZONE_DESCRIPTION":   "وصف المنطقة",
-    "CATEGORY_DESCRIPTION": "وصف الفئة",
-    "ELEMENT": "العنصر "
+    "CATEGORY_DESCRIPTION":"وصف الفئة",
+    "ELEMENT":             "العنصر ",
+    "END_DATE":            "تاريخ الانتهاء",
+    "CREATED_AT":          "تاريخ الإنشاء",
+    "UPDATED_AT":          "تاريخ التحديث",
+    "EVENT":               "حدث",
+    "ACTIVE":              "نشط",
+    "PAUSED":              "متوقف مؤقتًا",
+    "COMPLETED":           "مكتمل",
+    "SOCIAL_MEDIA":        "وسائل التواصل الاجتماعي",
+    "SMS":                 "رسالة قصيرة"
 }
 
