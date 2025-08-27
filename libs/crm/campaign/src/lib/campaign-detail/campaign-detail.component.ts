@@ -74,7 +74,7 @@ export class CampaignDetailComponent extends BaseEntityDetailComponent<Campaign>
             status: [e.status, Validators.required],
             description: [e.description],
             audienceQuery: [e.audienceQuery],
-            audienceSize: [e.audienceSize, Validators.required],
+            audienceSize: [e.audienceSize],
             tag: [e.tag],
             startDate: [e.startDate, Validators.required],
             endDate: [e.endDate],
