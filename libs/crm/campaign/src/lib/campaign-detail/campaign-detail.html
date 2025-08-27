@@ -1,176 +1,175 @@
 <mat-card>
-    @if (form) {
-        <form novalidate [formGroup]="form">
-            <mat-form-field class="default-50">
-                <mat-label translate>PAYROLL_NAME</mat-label>
-                <input matInput formControlName="name" type="text" required autofocus>
-                @if (form.controls['name']?.invalid) {
-                    <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
-                }
-            </mat-form-field>
-
-            <mat-form-field class="default-50">
-                <mat-label translate>CRM_CTYPE</mat-label>
-                <mat-select formControlName="cType">
-<!--                    <mat-option value="" translate>COMMON_SELECT</mat-option>-->
-                    @for (t of CTYPES; track t.value) {
-                        <mat-option [value]="t.value" translate>{{ t.description }}</mat-option>
+    <mat-card-content>
+        @if (form) {
+            <form novalidate [formGroup]="form">
+                <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>PAYROLL_NAME</mat-label>
+                    <input matInput formControlName="name" type="text" required autofocus>
+                    @if (form.controls['name']?.invalid) {
+                        <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
                     }
-                </mat-select>
-                @if (form.controls['cType']?.invalid) {
-                    <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
-                }
-            </mat-form-field>
+                </mat-form-field>
 
-            <mat-form-field class="default-50">
-                <mat-label translate>COMMON_STATUS</mat-label>
-                <mat-select formControlName="status">
-<!--                    <mat-option value="" translate>COMMON_SELECT</mat-option>-->
-                    @for (s of STATUS; track s.value) {
-                        <mat-option [value]="s.value" translate>{{ s.description }}</mat-option>
+                <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>CRM_CTYPE</mat-label>
+                    <mat-select formControlName="cType">
+                        @for (t of CTYPES; track t.value) {
+                            <mat-option [value]="t.value" translate>{{ t.description }}</mat-option>
+                        }
+                    </mat-select>
+                    @if (form.controls['cType']?.invalid) {
+                        <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
                     }
-                </mat-select>
-                @if (form.controls['status']?.invalid) {
-                    <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
-                }
-            </mat-form-field>
+                </mat-form-field>
 
-            <mat-form-field class="default-50">
-                <mat-label translate>CRM_AUDIENCE_QUERY</mat-label>
-                <input matInput formControlName="audienceQuery" type="text" autofocus>
-            </mat-form-field>
-
-            <mat-form-field class="default-50">
-                <mat-label translate>CRM_AUDIENCE_SIZE</mat-label>
-                <input matInput formControlName="audienceSize" type="number" required autofocus>
-                @if (form.controls['audienceSize']?.invalid) {
-                    <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
-                }
-            </mat-form-field>
-
-            <mat-form-field class="default-50">
-                <mat-label translate>CRM_TAG</mat-label>
-                <input matInput formControlName="tag" type="text" autofocus>
-            </mat-form-field>
-
-            <mat-form-field class="default-50">
-                <mat-label translate>ATT_START_DATE</mat-label>
-                <ss-date-picker formControlName="startDate"
-                                [type]="'date'"
-                                [required]=true>
-                </ss-date-picker>
-                @if (form.controls['startDate']?.invalid) {
-                    <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
-                }
-            </mat-form-field>
-
-            <mat-form-field class="default-50">
-                <mat-label translate>COMMON_END_DATE</mat-label>
-                <ss-date-picker formControlName="endDate"
-                                [type]="'date'"
-                                [required]=false>
-                </ss-date-picker>
-            </mat-form-field>
-
-            <mat-form-field class="default-50">
-                <mat-label translate>CRM_BUDGET</mat-label>
-                <input matInput formControlName="budget" type="number" autofocus>
-            </mat-form-field>
-
-            <mat-form-field class="default-50">
-                <mat-label translate>CRM_ACTUAL_COST</mat-label>
-                <input matInput formControlName="actualCost" type="number" required autofocus>
-            </mat-form-field>
-
-            <mat-form-field class="default-50">
-                <mat-label translate>CRM_EXPECTED_REVENUE</mat-label>
-                <input matInput formControlName="expectedRevenue" type="number" autofocus>
-            </mat-form-field>
-
-            <mat-form-field class="default-50">
-                <mat-label translate>CRM_CHANNELS</mat-label>
-                <mat-select formControlName="channels">
-<!--                    <mat-option value="" translate>COMMON_SELECT</mat-option>-->
-                    @for (c of CHANNELS; track c.value) {
-                        <mat-option [value]="c.value" translate>{{ c.description }}</mat-option>
+                <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>COMMON_STATUS</mat-label>
+                    <mat-select formControlName="status">
+                        @for (s of STATUS; track s.value) {
+                            <mat-option [value]="s.value" translate>{{ s.description }}</mat-option>
+                        }
+                    </mat-select>
+                    @if (form.controls['status']?.invalid) {
+                        <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
                     }
-                </mat-select>
-                @if (form.controls['channels']?.invalid) {
-                    <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
-                }
-            </mat-form-field>
+                </mat-form-field>
 
-<!--            <mat-form-field class="default-50">-->
-<!--                <mat-label translate>CRM_EMAIL_TEMPLATE_ID</mat-label>-->
-<!--                <input matInput formControlName="emailTemplateId" type="number" autofocus>-->
-<!--            </mat-form-field>-->
+                <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>CRM_AUDIENCE_QUERY</mat-label>
+                    <input matInput formControlName="audienceQuery" type="text" autofocus>
+                </mat-form-field>
 
-<!--            <mat-form-field class="default-50">-->
-<!--                <mat-label translate>CRM_SMS_TEMPLATE_ID</mat-label>-->
-<!--                <input matInput formControlName="smsTemplateId" type="number" autofocus>-->
-<!--            </mat-form-field>-->
+                <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>CRM_AUDIENCE_SIZE</mat-label>
+                    <input matInput formControlName="audienceSize" type="number" required autofocus>
+                    @if (form.controls['audienceSize']?.invalid) {
+                        <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+                    }
+                </mat-form-field>
 
-            <mat-form-field class="default-50">
-                <mat-label translate>CRM_LANDING_PAGE_URL</mat-label>
-                <input matInput formControlName="landingPageUrl" type="string" autofocus>
-            </mat-form-field>
+                <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>CRM_TAG</mat-label>
+                    <input matInput formControlName="tag" type="text" autofocus>
+                </mat-form-field>
 
-<!--            <mat-form-field class="default-50">-->
-<!--                <mat-label translate>CRM_CALL_SCRIPT</mat-label>-->
-<!--                <input matInput formControlName="callScript" type="string" autofocus>-->
-<!--            </mat-form-field>-->
+                <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>ATT_START_DATE</mat-label>
+                    <ss-date-picker formControlName="startDate"
+                                    [type]="'date'"
+                                    [required]=true>
+                    </ss-date-picker>
+                    @if (form.controls['startDate']?.invalid) {
+                        <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+                    }
+                </mat-form-field>
 
-            <mat-form-field class="default-50">
-                <mat-label translate>CRM_OWNER</mat-label>
-                <ss-auto-complete matInput
-                                  [required]="true"
-                                  formControlName="ownerId"
-                                  [model]="userLookup"
-                                  required>
-                </ss-auto-complete>
-            </mat-form-field>
+                <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>COMMON_END_DATE</mat-label>
+                    <ss-date-picker formControlName="endDate"
+                                    [type]="'date'"
+                                    [required]=false>
+                    </ss-date-picker>
+                </mat-form-field>
 
-            <mat-form-field class="default-50">
-                <mat-label translate>COMMON_CREATED_AT</mat-label>
-                <ss-date-picker formControlName="createdAt"
-                                [type]="'date'"
-                                [required]=true required>
-                </ss-date-picker>
-                @if (form.controls['createdAt']?.invalid) {
-                    <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
-                }
-            </mat-form-field>
+                <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>CRM_BUDGET</mat-label>
+                    <input matInput formControlName="budget" type="number" autofocus>
+                </mat-form-field>
 
-            <mat-form-field class="default-50">
-                <mat-label translate>COMMON_CREATED_BY</mat-label>
-                <ss-auto-complete matInput
-                                  [required]="true"
-                                  formControlName="createdBy"
-                                  [model]="userLookup"
-                                  required>
-                </ss-auto-complete>
-            </mat-form-field>
+                <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>CRM_ACTUAL_COST</mat-label>
+                    <input matInput formControlName="actualCost" type="number" required autofocus>
+                </mat-form-field>
 
-            <mat-form-field class="default-50">
-                <mat-label translate>COMMON_UPDATED_AT</mat-label>
-                <ss-date-picker formControlName="updatedAt"
-                                [type]="'date'"
-                                [required]=false required>
-                </ss-date-picker>
-                @if (form.controls['updatedAt']?.invalid) {
-                    <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
-                }
-            </mat-form-field>
+                <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>CRM_EXPECTED_REVENUE</mat-label>
+                    <input matInput formControlName="expectedRevenue" type="number" autofocus>
+                </mat-form-field>
 
-            <mat-form-field class="default-50">
-                <mat-label translate>COMMON_UPDATED_BY</mat-label>
-                <ss-auto-complete matInput
-                                  [required]="true"
-                                  formControlName="updatedBy"
-                                  [model]="userLookup"
-                                  required>
-                </ss-auto-complete>
-            </mat-form-field>
-        </form>
-    }
+                <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>CRM_CHANNELS</mat-label>
+                    <mat-select formControlName="channels">
+                        @for (c of CHANNELS; track c.value) {
+                            <mat-option [value]="c.value" translate>{{ c.description }}</mat-option>
+                        }
+                    </mat-select>
+                    @if (form.controls['channels']?.invalid) {
+                        <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+                    }
+                </mat-form-field>
+
+                <!--            <mat-form-field class="default-50">-->
+                <!--                <mat-label translate>CRM_EMAIL_TEMPLATE_ID</mat-label>-->
+                <!--                <input matInput formControlName="emailTemplateId" type="number" autofocus>-->
+                <!--            </mat-form-field>-->
+
+                <!--            <mat-form-field class="default-50">-->
+                <!--                <mat-label translate>CRM_SMS_TEMPLATE_ID</mat-label>-->
+                <!--                <input matInput formControlName="smsTemplateId" type="number" autofocus>-->
+                <!--            </mat-form-field>-->
+
+                <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>CRM_LANDING_PAGE_URL</mat-label>
+                    <input matInput formControlName="landingPageUrl" type="string" autofocus>
+                </mat-form-field>
+
+                <!--            <mat-form-field class="default-50">-->
+                <!--                <mat-label translate>CRM_CALL_SCRIPT</mat-label>-->
+                <!--                <input matInput formControlName="callScript" type="string" autofocus>-->
+                <!--            </mat-form-field>-->
+
+                <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>CRM_OWNER</mat-label>
+                    <ss-auto-complete matInput
+                                      [required]="true"
+                                      formControlName="ownerId"
+                                      [model]="userLookup"
+                                      required>
+                    </ss-auto-complete>
+                </mat-form-field>
+
+                <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>COMMON_CREATED_AT</mat-label>
+                    <ss-date-picker formControlName="createdAt"
+                                    [type]="'date'"
+                                    [required]=true required>
+                    </ss-date-picker>
+                    @if (form.controls['createdAt']?.invalid) {
+                        <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+                    }
+                </mat-form-field>
+
+                <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>COMMON_CREATED_BY</mat-label>
+                    <ss-auto-complete matInput
+                                      [required]="true"
+                                      formControlName="createdBy"
+                                      [model]="userLookup"
+                                      required>
+                    </ss-auto-complete>
+                </mat-form-field>
+
+                <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>COMMON_UPDATED_AT</mat-label>
+                    <ss-date-picker formControlName="updatedAt"
+                                    [type]="'date'"
+                                    [required]=false required>
+                    </ss-date-picker>
+                    @if (form.controls['updatedAt']?.invalid) {
+                        <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+                    }
+                </mat-form-field>
+
+                <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>COMMON_UPDATED_BY</mat-label>
+                    <ss-auto-complete matInput
+                                      [required]="true"
+                                      formControlName="updatedBy"
+                                      [model]="userLookup"
+                                      required>
+                    </ss-auto-complete>
+                </mat-form-field>
+            </form>
+        }
+    </mat-card-content>
 </mat-card>
