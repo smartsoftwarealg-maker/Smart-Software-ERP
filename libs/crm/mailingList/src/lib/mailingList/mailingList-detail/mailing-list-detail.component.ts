@@ -20,7 +20,7 @@ import { MailingListService } from '../mailingList.service';
 import { MailingLineListService } from '../mailingLineList.service';
 
 @Component({
-    selector: 'ss-mailingList-detail',
+    selector: 'ss-mailing-list-detail',
     templateUrl: 'mailingList-detail.component.html',
     styleUrl: 'mailingList-detail.component.scss',
     standalone: true,

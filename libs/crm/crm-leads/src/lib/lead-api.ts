@@ -30,7 +30,8 @@ export interface CRMLead {
     createdBy: number;
     updatedAt: Date;
     updatedBy?: number;
-    isDeleted: boolean;
+    lastName?: string;
+    firstName?: string;
     companyDescription?: string;
     ownerDescription?: string;
     campaignDescription?: string;

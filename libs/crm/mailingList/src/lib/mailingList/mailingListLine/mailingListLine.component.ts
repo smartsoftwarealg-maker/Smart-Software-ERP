@@ -12,11 +12,9 @@ import {
     MatRowDef,
     MatRow,
 } from '@angular/material/table';
-import { MatSort, MatSortHeader } from '@angular/material/sort';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 import { PaginationComponent } from '@ss/common/ui-pagination';
 import { MailingListLine } from '../miling-list-api.class';
-import { DecimalPipe, NgIf } from '@angular/common';
 import { MatMiniFabButton } from '@angular/material/button';
 import { MatTooltip } from '@angular/material/tooltip';
 import { MailingLineListService } from '../mailingLineList.service';
@@ -29,11 +27,9 @@ import { MatCheckbox } from '@angular/material/checkbox';
     standalone: true,
     imports: [
         MatTable,
-        MatSort,
         MatColumnDef,
         MatHeaderCellDef,
         MatHeaderCell,
-        MatSortHeader,
         TranslateDirective,
         MatCellDef,
         MatCell,
@@ -42,11 +38,9 @@ import { MatCheckbox } from '@angular/material/checkbox';
         MatRowDef,
         MatRow,
         PaginationComponent,
-        DecimalPipe,
         MatMiniFabButton,
         TranslatePipe,
         MatTooltip,
-        NgIf,
         MatCheckbox
     ]
 })

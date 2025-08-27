@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
-import { ActivatedRoute, RouterOutlet } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { BaseChildEntityDetailComponent } from '@ss/common/ui-base-entity';
 import {
     UntypedFormGroup,
@@ -17,7 +17,7 @@ import { MailingLineListService } from '../mailingLineList.service';
 import { MailingListLine } from '../miling-list-api.class';
 
 @Component({
-    selector: 'ss-mailingListLine-detail',
+    selector: 'ss-mailing-line-detail',
     templateUrl: 'mailingListLine-detail.component.html',
     styleUrl: 'mailingListLine-detail.component.scss',
     standalone: true,
@@ -30,7 +30,6 @@ import { MailingListLine } from '../miling-list-api.class';
         MatLabel,
         TranslateDirective,
         MatInput,
-        RouterOutlet,
         TranslatePipe
     ]
 })
@@ -43,18 +42,18 @@ export class MailingListLineDetailComponent extends BaseChildEntityDetailCompone
         public override route: ActivatedRoute,
     ) {
         super(
-          entitySrv,
+            entitySrv,
             'COMMON_MAILING_LIST_DETAIL',
         );
     }
 
     public override setupForm(e: MailingListLine): UntypedFormGroup {
         return this.formBuilder.group({
-            id: e.id,
-            fullName: [e.fullName, Validators.required],
-            parentId: [e.parentId || this.entitySrv.getParentId()],
-            email: [e.email, Validators.required],
-            mobile: [e.mobile, Validators.required],
+            id:             [e.id],
+            fullName:       [e.fullName, Validators.required],
+            parentId:       [e.parentId || this.entitySrv.getParentId()],
+            email:          [e.email, Validators.required],
+            mobile:         [e.mobile, Validators.required],
             isUnsubscribed: [e.isUnsubscribed ?? false],
         });
     }

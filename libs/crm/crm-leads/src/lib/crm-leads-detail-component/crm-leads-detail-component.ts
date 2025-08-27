@@ -119,9 +119,9 @@ export class CrmLeadsDetailComponent implements OnInit {
         this.#entitySrv.save(this.form.getRawValue() as CRMLead).subscribe({
             next: () => {
                 this.form.markAsUntouched();
-                this.#router
-                    .navigate(['../'], { relativeTo: this.#route })
-                    .then();
+                // this.#router
+                //     .navigate(['../'], { relativeTo: this.#route })
+                //     .then();
                 this.#snackBarSrv.showSuccessMessage();
             },
             error: () => {
@@ -163,6 +163,8 @@ export class CrmLeadsDetailComponent implements OnInit {
             companyIndustry:   [b?.companyIndustry],
             annualRevenue:     [b?.annualRevenue, Validators.min(0)],
             numberOfEmployees: [b?.numberOfEmployees, Validators.min(0)],
+            lastName:          [b?.lastName],
+            firstName:         [b?.firstName],
             jobTitle:          [b?.jobTitle],
             addressLine1:      [b?.addressLine1],
             addressLine2:      [b?.addressLine2],

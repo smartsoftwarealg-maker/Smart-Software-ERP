@@ -3,8 +3,8 @@
         @if (this.form?.touched && this.form.dirty) {
             <span><i class="fa-solid fa-rotate-right"></i> {{ 'COMMON_CANCEL'|translate }}</span>
         } @else {
-        <span><i class="fa-solid fa-list"></i> {{ 'COMMON_LIST'|translate }}</span>
-    }
+            <span><i class="fa-solid fa-list"></i> {{ 'COMMON_LIST'|translate }}</span>
+        }
     </button>
     <button matButton (click)="save()"><span><i
         class="fa-solid fa-floppy-disk"></i> {{ 'COMMON_SAVE'|translate }}</span></button>
@@ -15,7 +15,7 @@
         <mat-card class="size">
             <mat-card-header>
                 <mat-toolbar>
-                    <h6 translate>COMMON_COMPANY</h6>
+                    <h6 translate>CRM_LEAD</h6>
                 </mat-toolbar>
 
             </mat-card-header>
@@ -123,25 +123,53 @@
 
         <mat-card class="size">
             <mat-card-header>
-                <h6 translate>CRM_COMPANY_DETAIL</h6>
+                <mat-toolbar>
+                    <h6 translate>CRM_COMPANY_DETAIL</h6>
+                </mat-toolbar>
             </mat-card-header>
-            <mat-card-content></mat-card-content>
+            <mat-card-content>
+                <div class="progress__div">
+                    <mat-form-field>
+                        <mat-label translate>COMMON_COMPANY</mat-label>
+                        <input matInput type="text" formControlName="company">
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-label translate>COMMON_WEB_SITE</mat-label>
+                        <input matInput type="text" formControlName="companySite">
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-label translate>CRM_INDUSTRY</mat-label>
+                        <input matInput type="text" formControlName="companyIndustry">
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-label translate>CRM_ANNUAL_REVENUE</mat-label>
+                        <input matInput type="number" formControlName="annualRevenue">
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-label translate>CRM_NUMB_OF_EMPLOYEES</mat-label>
+                        <input matInput type="number" formControlName="numberOfEmployees">
+                    </mat-form-field>
+                </div>
+            </mat-card-content>
         </mat-card>
 
         <mat-card class="size">
             <mat-card-header>
-                <h6 translate>CRM_CONTACT_DETAIL</h6>
+                <mat-toolbar>
+                    <h6 translate>CRM_CONTACT_DETAIL</h6>
+                </mat-toolbar>
             </mat-card-header>
             <mat-card-content>
-                <mat-form-field class="default-50">
-                    <mat-label translate>LOGISTICS_EMAIL</mat-label>
-                    <input matInput type="text" formControlName="email">
-                </mat-form-field>
-                <mat-form-field class="default-50">
-                    <mat-label translate>ADMINISTRATION_PHONE</mat-label>
-                    <input matInput type="text" formControlName="phone">
-                </mat-form-field>
-
+                <div class="progress__div">
+                    <mat-form-field class="default-50">
+                        <mat-label translate>LOGISTICS_EMAIL</mat-label>
+                        <input matInput type="text" formControlName="email">
+                    </mat-form-field>
+                    <mat-form-field class="default-50">
+                        <mat-label translate>ADMINISTRATION_PHONE</mat-label>
+                        <input matInput type="text" formControlName="phone">
+                    </mat-form-field>
+                </div>
             </mat-card-content>
         </mat-card>
     </form>
