@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import {Component, inject, signal} from '@angular/core';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute } from '@angular/router';
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
@@ -10,7 +10,7 @@ import {
     FormsModule,
     ReactiveFormsModule,
 } from '@angular/forms';
-import { MaterialModule } from '@ss/common/api-common';
+import {LoginService, MaterialModule} from '@ss/common/api-common';
 import { TranslateDirective } from '@ss/common/ui-lang';
 import { MatCard } from '@angular/material/card';
 import { MatFormField, MatLabel } from '@angular/material/form-field';
@@ -64,7 +64,9 @@ export class CampaignDetailComponent extends BaseEntityDetailComponent<Campaign>
     }
 
     private userSrv = inject(UserListService);
+    private loginSrv = inject(LoginService);
     userLookup = new UserLookup(this.userSrv);
+    isResponsible = signal(this.loginSrv.appCtx.responsible) ;
 
     public override setupForm(e: Campaign): UntypedFormGroup {
         return this.formBuilder.group({
@@ -86,7 +88,7 @@ export class CampaignDetailComponent extends BaseEntityDetailComponent<Campaign>
             smsTemplateId: [e.smsTemplateId],
             landingPageUrl: [e.landingPageUrl],
             callScript: [e.callScript],
-            ownerId: [{ value: e.ownerId || 1, disabled: true }],
+            ownerId: [{ value: e.ownerId || 1, disabled: !this.isResponsible() }],
             createdAt: [e.createdAt || new Date(), Validators.required],
             // createdAt: [{value:e.createdAt || new Date(), disabled:true}],
             createdBy: [{ value: e.createdBy || 1, disabled: true }],
