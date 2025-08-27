@@ -1,0 +1,47 @@
+.size {
+    width: 90%;
+    max-width: 1300px;
+    margin: 1em auto;
+
+}
+
+.container {
+    min-height: calc(100% - 120px);
+    overflow-y: auto;
+    margin-top: 4px;
+}
+
+.mat-column-name,
+{
+    flex: 1 1 100px;
+}
+
+.mat-column-description,
+.mat-column-audienceQuery {
+    flex: 1 1 150px;
+}
+
+.mat-column-audienceSize,
+.mat-column-budget {
+    flex: 1 1 70px;
+    justify-content: center;
+}
+
+.mat-column-cType,
+.mat-column-status,
+.mat-column-startDate,
+.mat-column-endDate,
+.mat-column-owner {
+    flex: 1 1 100px;
+    justify-content: center;
+}
+
+.pagination-container {
+
+    ss-pagination {
+        left: 0;
+        right: 0;
+        position: sticky;
+        margin: auto;
+    }
+}

@@ -13,7 +13,7 @@ import {
     CRM_SALUTATIONS_URL,
     CRM_STATUS_URL,
     docInfoRoutes,
-    CRM_CUSTOMER_URL, CRM_LEADS_URL, CRM_CONTACTS_URL
+    CRM_CUSTOMER_URL, CRM_LEADS_URL, CRM_CONTACTS_URL, CRM_CAMPAIGN_URL
 } from '../common';
 import {
     SalutationsDetailComponent,
@@ -47,6 +47,7 @@ import { ContactsComponent } from '@ss/crm/contacts';
 import {
     ContactsDetailComponent
 } from '../../../../../libs/crm/contacts/src/lib/contacts-detail/contacts-detail.component';
+import {CampaignDetailComponent, CampaignListComponent} from "@ss/crm/campaign";
 
 export const crmRoutes: Routes = [
     {
@@ -230,6 +231,23 @@ export const crmRoutes: Routes = [
                     },
                 ],
             },
+        ],
+    },
+    {
+        path: CRM_CAMPAIGN_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: CampaignListComponent,
+                canActivate: [loginGuard],
+            },
+            {
+                path: ':id',
+                component: CampaignDetailComponent,
+                canActivate: [loginGuard],
+                canDeactivate: [CanDeactivateService],
+            },
+            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' },
         ],
     },
     { path: '', redirectTo: ABS_INDEX_URL, pathMatch: 'full' },
