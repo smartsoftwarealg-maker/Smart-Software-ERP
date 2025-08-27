@@ -1,8 +1,8 @@
 import { Component, inject } from '@angular/core';
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
-import { ActivatedRoute } from "@angular/router";
-import {  ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
+import { ActivatedRoute } from '@angular/router';
+import {  ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { MaterialModule } from '@ss/common/api-common';
 
 import { ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
@@ -20,12 +20,12 @@ import { DatePickerComponent } from '@ss/common/ui-datepicker';
     styleUrls: ['./ltm-alerts-detail.component.scss'],
     standalone: true,
     imports: [
-    MaterialModule,
-    TranslateDirective,
-    ReactiveFormsModule,
-    DatePickerComponent,
-    UiAutoCompleteComponent
-]
+        MaterialModule,
+        TranslateDirective,
+        ReactiveFormsModule,
+        DatePickerComponent,
+        UiAutoCompleteComponent
+    ]
 })
 export class LtmAlertsDetailComponent extends BaseEntityDetailComponent<LTMAbnormalTest> {
     // #actionSrv = inject(LtmCorrectionActionService);
@@ -67,7 +67,7 @@ export class LtmAlertsDetailComponent extends BaseEntityDetailComponent<LTMAbnor
             actionDate:       [{ value: e.actionDate, disabled: false }],
             validationDate:   [{ value: e.validationDate, disabled: false }],
             reportDate:       [{ value: e.reportDate, disabled: false }],
-        })
+        });
     }
 
 }

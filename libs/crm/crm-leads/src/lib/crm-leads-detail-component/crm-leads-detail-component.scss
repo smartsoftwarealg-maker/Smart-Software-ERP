@@ -13,35 +13,107 @@
     gap: 1em;
 }
 
-
-.mat-column-btn {
-    flex: 0 0 45px;
+.detail__div {
+    display: grid;
+    gap: .5em;
+    justify-items: stretch;
+    justify-content: stretch;
+    grid-template-columns:  repeat(4, 1fr);
+    grid-template-areas: "descrip source opened   ecd"
+                         "detail  detail campaign optout";
 }
 
-mat-table {
+.progress__div {
+    display: flex;
+    flex-wrap: wrap;
+    justify-items: stretch;
+    gap: 1em;
     width: 100%;
-    min-width: 1000px;
 }
 
-i {
-    margin-right: .5em;
+.status {
+    grid-area: status;
+}
+
+.descrip {
+    grid-area: descrip;
+    justify-self: stretch;
+}
+.source {
+    grid-area: source;
+}
+.opened {
+    grid-area: opened;
+}
+.product {
+    grid-area: product;
+}
+.detail {
+    grid-area: detail;
+}
+.campaign {
+    grid-area: campaign;
+}
+.ecd {
+    grid-area: ecd;
+}
+.optout {
+    grid-area: optout;
+}
+
+mat-form-field {
+    flex-grow: 1;
 }
 
 mat-card-content,
-mat-option,
-mat-form-field {
-    font-size: smaller;
-}
-
-mat-card-content {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1em;
+mat-option {
+    font-size: x-small;
 }
 
 :root {
     @include mat.form-field-overrides((
-        container-height: 1em,
+        //container-height: 1em,
         container-text-size: xx-small,
+        outlined-label-text-populated-size: xx-small,
+        outlined-label-text-size: xx-small,
+        filled-label-text-size: xx-small,
     ));
+
+    @include mat.option-overrides((
+    label-text-size: x-small,
+    ))
 }
+
+mat-toolbar {
+    max-height: 40px;
+    margin-bottom: 0.5em;
+    font-weight: bolder;
+}
+
+@media (width <= 900px) {
+    .detail__div {
+        display: grid;
+        gap: .5em;
+        justify-items: stretch;
+        justify-content: stretch;
+        grid-template-columns:  repeat(3, 1fr);
+        grid-template-areas: "descrip source   opened"
+                             "detail  detail   detail"
+                             "ecd     campaign optout";
+    }
+}
+
+@media (width <= 500px) {
+    .detail__div {
+        display: grid;
+        gap: .5em;
+        justify-items: stretch;
+        justify-content: stretch;
+        grid-template-columns:  repeat(2, 1fr);
+        grid-template-areas: "descrip  source "
+                             "detail   detail "
+                             "opened   ecd"
+                             "campaign optout";
+    }
+}
+
