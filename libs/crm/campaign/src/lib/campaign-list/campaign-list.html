@@ -10,15 +10,15 @@
 
         <ng-container matColumnDef="cType">
             <mat-header-cell *matHeaderCellDef mat-sort-header translate>CRM_CTYPE</mat-header-cell>
-            <mat-cell *matCellDef="let e">
-                {{ e.cType }}
+            <mat-cell *matCellDef="let e" translate>
+                {{ getCType(e.cType) }}
             </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="status">
             <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_STATUS</mat-header-cell>
-            <mat-cell *matCellDef="let e">
-                {{ e.status }}
+            <mat-cell *matCellDef="let e" translate>
+                {{ getStatus(e.status) }}
             </mat-cell>
         </ng-container>
 
@@ -43,12 +43,12 @@
             </mat-cell>
         </ng-container>
 
-<!--        <ng-container matColumnDef="tag">-->
-<!--            <mat-header-cell *matHeaderCellDef mat-sort-header translate>WAR_TAG</mat-header-cell>-->
-<!--            <mat-cell *matCellDef="let e">-->
-<!--                {{ e.tag }}-->
-<!--            </mat-cell>-->
-<!--        </ng-container>-->
+        <!--        <ng-container matColumnDef="tag">-->
+        <!--            <mat-header-cell *matHeaderCellDef mat-sort-header translate>WAR_TAG</mat-header-cell>-->
+        <!--            <mat-cell *matCellDef="let e">-->
+        <!--                {{ e.tag }}-->
+        <!--            </mat-cell>-->
+        <!--        </ng-container>-->
 
         <ng-container matColumnDef="startDate">
             <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_START_DATE</mat-header-cell>

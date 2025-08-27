@@ -21,7 +21,7 @@ import { MatSort, MatSortHeader } from '@angular/material/sort';
 import { TranslateDirective } from '@ss/common/ui-lang';
 import { PaginationComponent } from '@ss/common/ui-pagination';
 import { CompaignService } from '../compaign.service';
-import { Campaign } from '../campaign.api';
+import {Campaign, STATUS, CTYPES} from '../campaign.api';
 import {DatePipe} from "@angular/common";
 
 @Component({
@@ -84,4 +84,16 @@ export class CampaignListComponent extends BaseEntityListComponent<Campaign> {
             'CRM_CAMPAIGNS',
         );
     }
+
+    getStatus(status: string){
+        return  this.STATUS.find(x => x.value == status).description;
+    }
+
+    getCType(type: string){
+        return this.CTYPES.find(x => x.value == type).description;
+    }
+
+    protected readonly CTYPES = CTYPES;
+    protected readonly STATUS = STATUS;
+    //protected readonly CHANNELS = CHANNELS;
 }
