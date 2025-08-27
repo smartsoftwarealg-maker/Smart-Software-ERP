@@ -1,7 +1,7 @@
 {
-    "name": "mailingList",
+    "name": "crm-mailing-list",
     "$schema": "../../../node_modules/nx/schemas/project-schema.json",
-    "sourceRoot": "libs/crm/mailingList/src",
+    "sourceRoot": "libs/crm/mailing-list/src",
     "prefix": "ss",
     "projectType": "library",
     "tags": [],
@@ -10,7 +10,7 @@
             "executor": "@nx/jest:jest",
             "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
             "options": {
-                "jestConfig": "libs/crm/mailingList/jest.config.ts"
+                "jestConfig": "libs/crm/mailing-list/jest.config.ts"
             }
         },
         "lint": {
