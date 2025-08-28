@@ -46,7 +46,7 @@
                     <mat-form-field class="source">
                         <mat-label translate>COMMON_SOURCE</mat-label>
                         <mat-select formControlName="source">
-                            @for (s of SOURCE; track s) {
+                            @for (s of SOURCE;track s) {
                                 <mat-option [value]="s" translate>CRM_{{ s }}</mat-option>
                             }
                         </mat-select>
@@ -80,7 +80,7 @@
                     <mat-form-field>
                         <mat-label translate>COMMON_STATE</mat-label>
                         <mat-select formControlName="state">
-                            @for (s of STATES; track s) {
+                            @for (s of STATES;track s) {
                                 <mat-option [value]="s" translate>CRM_{{ s }}</mat-option>
                             }
                         </mat-select>
@@ -89,7 +89,7 @@
                     <mat-form-field>
                         <mat-label translate>COMMON_STATUS</mat-label>
                         <mat-select formControlName="status">
-                            @for (s of STATUS; track s) {
+                            @for (s of STATUS;track s) {
                                 <mat-option [value]="s" translate>CRM_{{ s }}</mat-option>
                             }
                         </mat-select>
@@ -98,7 +98,7 @@
                     <mat-form-field>
                         <mat-label translate>COMMON_PRIORITY</mat-label>
                         <mat-select formControlName="priority">
-                            @for (s of PRIORITIES; track s) {
+                            @for (s of PRIORITIES;track s) {
                                 <mat-option [value]="s" translate>CRM_{{ s }}</mat-option>
                             }
                         </mat-select>
@@ -187,7 +187,10 @@
                     </mat-form-field>
                     <mat-form-field class="default-33">
                         <mat-label translate>COMMON_CITY</mat-label>
-                        <input matInput type="text" formControlName="city">
+                        <ss-auto-complete matInput
+                                          [model]="cityLookup"
+                                          formControlName="city">
+                        </ss-auto-complete>
                     </mat-form-field>
                     <mat-form-field class="default-33">
                         <mat-label translate>COMMON_POSTAL_CODE</mat-label>
