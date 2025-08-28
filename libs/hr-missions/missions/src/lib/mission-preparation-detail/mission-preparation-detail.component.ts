@@ -19,12 +19,12 @@ import {
 import { TransportService } from '../zone.service';
 import { ZoneService } from '../transport.service';
 import { TrajectoryService } from '../trajectory.service';
-import {LoginService, MaterialModule} from '@ss/common/api-common';
+import { LoginService, MaterialModule } from '@ss/common/api-common';
 import { Component, inject } from '@angular/core';
 import { PersonAutocompleteClass } from '@ss/employee-services/employee-services';
 import { DatePickerComponent } from '@ss/common/ui-datepicker';
-import {CommonModule} from "@angular/common";
-import {TranslateDirective} from "@ss/common/ui-lang";
+
+import { TranslateDirective } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-mission-preparation-detail',
@@ -32,7 +32,6 @@ import {TranslateDirective} from "@ss/common/ui-lang";
     styleUrls: ['./mission-preparation-detail.component.scss'],
     standalone: true,
     imports: [
-        CommonModule,
         MaterialModule,
         ReactiveFormsModule,
         DatePickerComponent,
@@ -81,7 +80,7 @@ export class MissionPreparationDetailComponent extends BaseEntityDetailComponent
             employee: [b.employee, Validators.required],
             reference: [b.reference],
             destination: [b.destination, Validators.required],
-            thezone: [b.theZone, Validators.required],
+            thezone: [b.theZone],
             motive: [b.motive, Validators.required],
             duration: [b.duration, Validators.required],
             transportMeans: [b.transportMeans, Validators.required],

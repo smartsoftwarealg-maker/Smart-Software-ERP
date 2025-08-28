@@ -6,7 +6,7 @@ import {DiplomaService} from '@ss/common/api-lookup';
 import {JudicialFrameService, MotiveService} from '@ss/payroll/api-employee';
 import {EmployeeTrainingService} from '../employee-training.service';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
-import { NgIf } from '@angular/common';
+
 import { MatMiniFabButton } from '@angular/material/button';
 import { MatCard } from '@angular/material/card';
 import { MatFormField, MatLabel, MatError } from '@angular/material/form-field';
@@ -22,7 +22,7 @@ import { ActivePersonnelService } from '../../active-personnel.service';
     templateUrl: './employee-training-detail.component.html',
     styleUrls: ['./employee-training-detail.component.scss'],
     standalone: true,
-    imports: [NgIf, MaterialModule, MatMiniFabButton, MatCard, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, DatePickerComponent, MatError, UiAutoCompleteComponent]
+    imports: [MaterialModule, MatMiniFabButton, MatCard, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, DatePickerComponent, MatError, UiAutoCompleteComponent]
 })
 export class EmployeeTrainingDetailComponent extends BaseChildEntityDetailComponent<Training> {
     private formBuilder = inject(FormBuilder);

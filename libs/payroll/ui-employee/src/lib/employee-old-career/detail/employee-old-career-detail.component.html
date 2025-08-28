@@ -1,42 +1,41 @@
 <mat-card >
-    <mat-card-title>
-        <div class="button_div size" *ngIf="form">
-            <button mat-mini-fab (click)="save()"
-                    color="accent" *ngIf="isEditable">
-                <i class="fas fa-save"></i>
-            </button>
-            <button mat-mini-fab (click)="cancel()"
-                    color="warn">
-                <i class="fas fa-redo"></i>
-            </button>
-        </div>
-    </mat-card-title>
-    <mat-card-content>
-        <form *ngIf="form" novalidate [formGroup]="form" style="min-height: 100%; display: unset">
-
-            <mat-form-field floatLabel="always" class="default-100">
-                <mat-label translate>PAYROLL_POST</mat-label>
-                <input matInput formControlName="post" type="text" required>
-            </mat-form-field>
-
-            <mat-form-field floatLabel="always" class="default-50 sm-100">
-                <mat-label translate>COMMON_RATE</mat-label>
-                <input matInput formControlName="rate" type="number">
-            </mat-form-field>
-
-            <div class="default-100 sm-hide"></div>
-
-            <mat-form-field class="default-50 sm-100">
-                <mat-label translate>PAYROLL_FROM</mat-label>
-                <ss-date-picker [required]=true formControlName="from_date"></ss-date-picker>
-            </mat-form-field>
-
-            <mat-form-field floatLabel="always" class="default-50 sm-100">
-                <mat-label translate>PAYROLL_TO</mat-label>
-                <ss-date-picker formControlName="to_date"></ss-date-picker>
-            </mat-form-field>
-
-
-        </form>
-    </mat-card-content>
+  <mat-card-title>
+    @if (form) {
+      <div class="button_div size">
+        @if (isEditable) {
+          <button mat-mini-fab (click)="save()"
+            color="accent">
+            <i class="fas fa-save"></i>
+          </button>
+        }
+        <button mat-mini-fab (click)="cancel()"
+          color="warn">
+          <i class="fas fa-redo"></i>
+        </button>
+      </div>
+    }
+  </mat-card-title>
+  <mat-card-content>
+    @if (form) {
+      <form novalidate [formGroup]="form" style="min-height: 100%; display: unset">
+        <mat-form-field floatLabel="always" class="default-100">
+          <mat-label translate>PAYROLL_POST</mat-label>
+          <input matInput formControlName="post" type="text" required>
+        </mat-form-field>
+        <mat-form-field floatLabel="always" class="default-50 sm-100">
+          <mat-label translate>COMMON_RATE</mat-label>
+          <input matInput formControlName="rate" type="number">
+        </mat-form-field>
+        <div class="default-100 sm-hide"></div>
+        <mat-form-field class="default-50 sm-100">
+          <mat-label translate>PAYROLL_FROM</mat-label>
+          <ss-date-picker [required]=true formControlName="from_date"></ss-date-picker>
+        </mat-form-field>
+        <mat-form-field floatLabel="always" class="default-50 sm-100">
+          <mat-label translate>PAYROLL_TO</mat-label>
+          <ss-date-picker formControlName="to_date"></ss-date-picker>
+        </mat-form-field>
+      </form>
+    }
+  </mat-card-content>
 </mat-card>

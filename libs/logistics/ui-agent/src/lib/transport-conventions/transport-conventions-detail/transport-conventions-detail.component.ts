@@ -6,7 +6,7 @@ import {
     UntypedFormGroup,
     Validators,
 } from '@angular/forms';
-import { CommonModule } from '@angular/common';
+
 import { of, switchMap } from 'rxjs';
 import { TransportConventionService } from '../transport-convention.service';
 import {
@@ -23,13 +23,12 @@ import {RouterModule} from "@angular/router";
     styleUrls: ['./transport-conventions-detail.component.scss'],
     standalone: true,
     imports: [
-        CommonModule,
-        ReactiveFormsModule,
-        MaterialModule,
-        TranslateDirective,
-        DatePickerComponent,
-        RouterModule,
-    ],
+    ReactiveFormsModule,
+    MaterialModule,
+    TranslateDirective,
+    DatePickerComponent,
+    RouterModule
+],
 })
 export class TransportConventionsDetailComponent
     extends BaseChildEntityDetailComponent<TransportConvention>

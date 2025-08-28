@@ -8,7 +8,7 @@ import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {BankService} from '@ss/administration/api-bank';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { MatCard, MatCardContent } from '@angular/material/card';
-import { NgIf, NgFor } from '@angular/common';
+
 import { MatFormField, MatLabel, MatError } from '@angular/material/form-field';
 import { TranslateDirective } from '@ss/common/ui-lang';
 import { MatSelect } from '@angular/material/select';
@@ -23,7 +23,7 @@ import { MaterialModule } from '@ss/common/api-common';
     templateUrl: './payment-info.component.html',
     styleUrls: ['./payment-info.component.scss'],
     standalone: true,
-    imports: [MaterialModule, MatCard, MatCardContent, NgIf, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatSelect, MatOption, NgFor, MatError, UiAutoCompleteComponent, MatInput, MatButton]
+    imports: [MaterialModule, MatCard, MatCardContent, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatSelect, MatOption, MatError, UiAutoCompleteComponent, MatInput, MatButton]
 })
 export class PaymentInfoComponent {
     private lookupsSrv =  inject(LookupsService);

@@ -1,5 +1,5 @@
 import { Component, inject, OnInit } from "@angular/core";
-import { CommonModule } from '@angular/common';
+
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { Accident } from '../api-work-stoppage';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
@@ -22,15 +22,12 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     selector: 'ss-work-stoppage-detail',
     standalone: true,
     imports: [
-        CommonModule,
-        MaterialModule,
-        TranslateDirective,
-
-        ReactiveFormsModule,
-
-        DatePickerComponent,
-        UiAutoCompleteComponent
-    ],
+    MaterialModule,
+    TranslateDirective,
+    ReactiveFormsModule,
+    DatePickerComponent,
+    UiAutoCompleteComponent
+],
     templateUrl: './work-stoppage-detail.component.html',
     styleUrls: ['./work-stoppage-detail.component.css']
 })

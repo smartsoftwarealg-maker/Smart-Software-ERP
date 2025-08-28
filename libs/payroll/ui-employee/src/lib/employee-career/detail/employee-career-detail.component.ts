@@ -21,7 +21,7 @@ import {GridService} from '@ss/payroll/salary-grid';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import { EmployeeService, PersonAutocompleteClass } from "@ss/employee-services/employee-services";
 import { CostCenterService } from '@ss/logistics/api-cost-center';
-import { NgIf, NgFor } from '@angular/common';
+
 import { MatMiniFabButton } from '@angular/material/button';
 import { MatCard, MatCardContent } from '@angular/material/card';
 import { MatFormField, MatLabel } from '@angular/material/form-field';
@@ -40,23 +40,21 @@ import { ActivePersonnelService } from '../../active-personnel.service';
     styleUrls: ['./employee-career-detail.component.scss'],
     standalone: true,
     imports: [
-        NgIf,
-        MaterialModule,
-        MatMiniFabButton,
-        MatCard,
-        MatCardContent,
-        FormsModule,
-        ReactiveFormsModule,
-        MatFormField,
-        MatLabel,
-        TranslateDirective,
-        MatInput,
-        DatePickerComponent,
-        MatSelect,
-        MatOption,
-        UiAutoCompleteComponent,
-        NgFor
-    ]
+    MaterialModule,
+    MatMiniFabButton,
+    MatCard,
+    MatCardContent,
+    FormsModule,
+    ReactiveFormsModule,
+    MatFormField,
+    MatLabel,
+    TranslateDirective,
+    MatInput,
+    DatePickerComponent,
+    MatSelect,
+    MatOption,
+    UiAutoCompleteComponent
+]
 })
 export class EmployeeCareerDetailComponent extends BaseChildEntityDetailComponent<Career> {
     private costCenterSrv = inject(CostCenterService);

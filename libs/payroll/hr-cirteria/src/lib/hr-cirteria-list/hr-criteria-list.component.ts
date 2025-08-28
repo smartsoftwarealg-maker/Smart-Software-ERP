@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -38,25 +38,24 @@ import { HrCriterionService } from '../hr-criterion.service';
     selector: 'ss-hr-criteria-list',
     standalone: true,
     imports: [
-        CommonModule,
-        MaterialModule,
-        MatCell,
-        MatCellDef,
-        MatColumnDef,
-        MatHeaderCell,
-        MatHeaderRow,
-        MatHeaderRowDef,
-        MatRow,
-        MatRowDef,
-        MatSort,
-        MatSortHeader,
-        MatTable,
-        TranslateDirective,
-        MatHeaderCellDef,
-        MatFormField,
-        PaginationComponent,
-        UiAutoCompleteComponent,
-    ],
+    MaterialModule,
+    MatCell,
+    MatCellDef,
+    MatColumnDef,
+    MatHeaderCell,
+    MatHeaderRow,
+    MatHeaderRowDef,
+    MatRow,
+    MatRowDef,
+    MatSort,
+    MatSortHeader,
+    MatTable,
+    TranslateDirective,
+    MatHeaderCellDef,
+    MatFormField,
+    PaginationComponent,
+    UiAutoCompleteComponent
+],
     templateUrl: './hr-criteria-list.component.html',
     styleUrl: './hr-criteria-list.component.scss',
 })

@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 
 @Component({
     selector: 'ss-loan-injection',
-    imports: [CommonModule],
+    imports: [],
     templateUrl: './loan-injection.html',
     styleUrl: './loan-injection.scss',
 })

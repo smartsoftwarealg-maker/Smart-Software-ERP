@@ -1,5 +1,5 @@
 import { Component, inject, Input, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { MRP, MRP_URL } from '../../../../../production/mrp/src/lib/api/mrp-api';
 import { HttpService } from '@ss/common/api-common';
 import { ShellService } from '@ss/common/ui-shell';
@@ -19,7 +19,7 @@ import { HttpParams } from '@angular/common/http';
 
 @Component({
     selector: 'ss-ui-mrp',
-    imports: [CommonModule, MatTable, MatHeaderCell, MatColumnDef, MatHeaderCellDef, MatCellDef, MatCell, MatHeaderRow, MatRow, MatHeaderRowDef, MatRowDef ,TranslateDirective],
+    imports: [MatTable, MatHeaderCell, MatColumnDef, MatHeaderCellDef, MatCellDef, MatCell, MatHeaderRow, MatRow, MatHeaderRowDef, MatRowDef, TranslateDirective],
     templateUrl: './ui-mrp.component.html',
     styleUrl: './ui-mrp.component.scss',
     standalone: true

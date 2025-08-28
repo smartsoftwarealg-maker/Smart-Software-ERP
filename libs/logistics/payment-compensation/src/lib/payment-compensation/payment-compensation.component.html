@@ -1,122 +1,125 @@
 <div class="form_container">
-    <mat-form-field class="date">
-        <mat-label translate>COMMON_DATE</mat-label>
-        <ss-date-picker [formControl]="date"></ss-date-picker>
-    </mat-form-field>
+  <mat-form-field class="date">
+    <mat-label translate>COMMON_DATE</mat-label>
+    <ss-date-picker [formControl]="date"></ss-date-picker>
+  </mat-form-field>
 
-    <mat-form-field class="customer">
-        <mat-label translate>{{ partner }}</mat-label>
-        <ss-auto-complete matInput
-                          [required]="true"
-                          [model]="agentAutoCompleteModel"
-                          [formControl]="agent">
-        </ss-auto-complete>
-    </mat-form-field>
+  <mat-form-field class="customer">
+    <mat-label translate>{{ partner }}</mat-label>
+    <ss-auto-complete matInput
+      [required]="true"
+      [model]="agentAutoCompleteModel"
+      [formControl]="agent">
+    </ss-auto-complete>
+  </mat-form-field>
 
-    <mat-card class="payments">
-        <div mat-subheader class="b-primary label" translate> {{ 'COMMON_PAYMENTS' }}</div>
+  <mat-card class="payments">
+    <div mat-subheader class="b-primary label" translate> {{ 'COMMON_PAYMENTS' }}</div>
 
-        <mat-tree [dataSource]="dataSource"
-                  [treeControl]="treeControl"
-                  id="payments">
-            <!-- This is the tree node template for leaf nodes -->
-            <mat-tree-node *matTreeNodeDef="let node"
-                           matTreeNodePadding
-                           class="selectable"
-                           (click)="selectPayment(node)"
-                           draggable="true"
-                           (drop)="onDebtDrop($event, node.id)"
-                           (dragover)="onOverChild($event, node.id)"
-                           (dragstart)="onStart($event, node?.id+ '')"
-                           [class.selected]="node.id === selectedPayment?.id">
-                <!-- use a disabled button to provide padding for tree leaf -->
-                <button mat-icon-button disabled></button>
-                <table>
-                    <tbody>
-                    <tr>
-                        <td class="td__description">{{ node.description }}</td>
-                        <td class="td__amount">{{ (node.amount > 0 ? node.amount : 0.0) | number: '1.2-2' }}</td>
-                        <td class="td__amount">{{ (node.amount > 0 ? 0.0 : -node.amount) | number: '1.2-2' }}</td>
-                    </tr>
-                    </tbody>
-                </table>
-            </mat-tree-node>
-            <!-- This is the tree node template for expandable nodes -->
-            <mat-tree-node *matTreeNodeDef="let node;when: hasChild"
-                           matTreeNodePadding
-                           class="selectable"
-                           draggable="true"
-                           (drop)="onDebtDrop($event, node.id)"
-                           (dragover)="onOver($event)"
-                           (dragstart)="onStart($event, node?.id+ '')"
-                           (click)="selectPayment(node)"
-                           [class.selected]="node.id === selectedPayment?.id">
-                <button mat-icon-button matTreeNodeToggle
-                        [attr.aria-label]="'Toggle ' + node.name">
-                    {{ treeControl.isExpanded(node) ? '-' : '+' }}
-                </button>
-                <table>
-                    <thead class="b-primary" *ngIf="firstNode(node)">
-                    <tr>
-                        <th class="th__description" translate>COMMON_DESCRIPTION</th>
-                        <th translate>COMMON_DEBIT</th>
-                        <th translate>COMMON_CREDIT</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td class="td__description">{{ node.description }}</td>
-                        <td class="td__amount">{{ (node.amount > 0 ? node.amount : -node.paidAmount) | number: '1.2-2' }}</td>
-                        <td class="td__amount">{{ (node.amount > 0 ? node.paidAmount : -node.amount) | number: '1.2-2' }}</td>
-                    </tr>
-                    </tbody>
-                </table>
-                <!--                    {{ node.description }}: {{ node.paidAmount | number: '1.2-2' }} / {{ node.amount | number: '1.2-2'}}-->
-            </mat-tree-node>
-        </mat-tree>
-
-        <div class="size b-b-background">
-            <ss-pagination [paginationModel]="pagination"></ss-pagination>
-        </div>
-
-    </mat-card>
-
-    <mat-card class="debts">
-        <div mat-subheader class="b-primary label" translate> {{ 'LOGISTICS_AGENT_DEBTS' }}</div>
-        <div class="list__div">
-            <mat-list role="list"
-                      draggable="true"
-                      (dragover)="onOver($event)"
-                      (drop)="onPaymentDrop($event)"
-                      id="debts">
-                <mat-list-item role="listitem"
-                               class="selectable"
-                               *ngFor="let d of debts"
-                               (click)="selectDebt(d)"
-                               (dragstart)="onStart($event, d?.id+ '')"
-                               draggable="true"
-                               [class.selected]="d?.id === selectedDebt?.id">
-                    <div class="debt__div">
-                        <span class="debt_description"> {{ d?.document }} </span>
-                        <span class="debt_amount"> {{ d?.balance | number: '1.2-2' }} </span>
-                    </div>
-                </mat-list-item>
-            </mat-list>
-        </div>
-    </mat-card>
-
-    <div class="cancel">
-        <button mat-raised-button
-                color="accent"
-                (click)="cancelPayments()"
-                [disabled]="!selectedPayment || selectedPayment?.level === 0"><span
-            translate>LOGISTICS_CANCEL_PAYMENT</span></button>
-    </div>
-    <div class="make">
-        <button mat-raised-button
-                color="primary"
-                (click)="makePayment()"
-                [disabled]="!selectedDebt || !selectedPayment || selectedPayment?.level !== 0"><span translate>LOGISTICS_MAKE_PAYMENT</span>
+    <mat-tree [dataSource]="dataSource"
+      [treeControl]="treeControl"
+      id="payments">
+      <!-- This is the tree node template for leaf nodes -->
+      <mat-tree-node *matTreeNodeDef="let node"
+        matTreeNodePadding
+        class="selectable"
+        (click)="selectPayment(node)"
+        draggable="true"
+        (drop)="onDebtDrop($event, node.id)"
+        (dragover)="onOverChild($event, node.id)"
+        (dragstart)="onStart($event, node?.id+ '')"
+        [class.selected]="node.id === selectedPayment?.id">
+        <!-- use a disabled button to provide padding for tree leaf -->
+        <button mat-icon-button disabled></button>
+        <table>
+          <tbody>
+            <tr>
+              <td class="td__description">{{ node.description }}</td>
+              <td class="td__amount">{{ (node.amount > 0 ? node.amount : 0.0) | number: '1.2-2' }}</td>
+              <td class="td__amount">{{ (node.amount > 0 ? 0.0 : -node.amount) | number: '1.2-2' }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </mat-tree-node>
+      <!-- This is the tree node template for expandable nodes -->
+      <mat-tree-node *matTreeNodeDef="let node;when: hasChild"
+        matTreeNodePadding
+        class="selectable"
+        draggable="true"
+        (drop)="onDebtDrop($event, node.id)"
+        (dragover)="onOver($event)"
+        (dragstart)="onStart($event, node?.id+ '')"
+        (click)="selectPayment(node)"
+        [class.selected]="node.id === selectedPayment?.id">
+        <button mat-icon-button matTreeNodeToggle
+          [attr.aria-label]="'Toggle ' + node.name">
+          {{ treeControl.isExpanded(node) ? '-' : '+' }}
         </button>
+        <table>
+          @if (firstNode(node)) {
+            <thead class="b-primary">
+              <tr>
+                <th class="th__description" translate>COMMON_DESCRIPTION</th>
+                <th translate>COMMON_DEBIT</th>
+                <th translate>COMMON_CREDIT</th>
+              </tr>
+            </thead>
+          }
+          <tbody>
+            <tr>
+              <td class="td__description">{{ node.description }}</td>
+              <td class="td__amount">{{ (node.amount > 0 ? node.amount : -node.paidAmount) | number: '1.2-2' }}</td>
+              <td class="td__amount">{{ (node.amount > 0 ? node.paidAmount : -node.amount) | number: '1.2-2' }}</td>
+            </tr>
+          </tbody>
+        </table>
+        <!--                    {{ node.description }}: {{ node.paidAmount | number: '1.2-2' }} / {{ node.amount | number: '1.2-2'}}-->
+      </mat-tree-node>
+    </mat-tree>
+
+    <div class="size b-b-background">
+      <ss-pagination [paginationModel]="pagination"></ss-pagination>
     </div>
+
+  </mat-card>
+
+  <mat-card class="debts">
+    <div mat-subheader class="b-primary label" translate> {{ 'LOGISTICS_AGENT_DEBTS' }}</div>
+    <div class="list__div">
+      <mat-list role="list"
+        draggable="true"
+        (dragover)="onOver($event)"
+        (drop)="onPaymentDrop($event)"
+        id="debts">
+        @for (d of debts; track d) {
+          <mat-list-item role="listitem"
+            class="selectable"
+            (click)="selectDebt(d)"
+            (dragstart)="onStart($event, d?.id+ '')"
+            draggable="true"
+            [class.selected]="d?.id === selectedDebt?.id">
+            <div class="debt__div">
+              <span class="debt_description"> {{ d?.document }} </span>
+              <span class="debt_amount"> {{ d?.balance | number: '1.2-2' }} </span>
+            </div>
+          </mat-list-item>
+        }
+      </mat-list>
+    </div>
+  </mat-card>
+
+  <div class="cancel">
+    <button mat-raised-button
+      color="accent"
+      (click)="cancelPayments()"
+      [disabled]="!selectedPayment || selectedPayment?.level === 0"><span
+    translate>LOGISTICS_CANCEL_PAYMENT</span></button>
+  </div>
+  <div class="make">
+    <button mat-raised-button
+      color="primary"
+      (click)="makePayment()"
+      [disabled]="!selectedDebt || !selectedPayment || selectedPayment?.level !== 0"><span translate>LOGISTICS_MAKE_PAYMENT</span>
+    </button>
+  </div>
 </div>

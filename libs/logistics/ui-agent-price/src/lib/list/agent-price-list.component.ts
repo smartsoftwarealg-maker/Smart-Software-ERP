@@ -6,7 +6,7 @@ import {  ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import {AgentPrice, AgentPriceService} from "@ss/logistics/api-agent-price";
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import { MaterialModule, PaginatorPersistenceService } from '@ss/common/api-common';
-import { CommonModule } from '@angular/common';
+
 
 
 import { ReactiveFormsModule } from '@angular/forms';
@@ -18,12 +18,10 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     templateUrl: './agent-price-list.component.html',
     standalone: true,
     imports: [
-        CommonModule,
-        MaterialModule,
-        TranslateDirective,
-        ReactiveFormsModule,
-
-    ],
+    MaterialModule,
+    TranslateDirective,
+    ReactiveFormsModule
+],
 })
 export class AgentPriceListComponent extends BaseEntityListComponent<AgentPrice> implements OnInit {
 

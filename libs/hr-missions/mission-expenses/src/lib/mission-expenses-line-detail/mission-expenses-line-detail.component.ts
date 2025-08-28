@@ -8,7 +8,7 @@ import { Component, inject } from '@angular/core';
 import { MissionJourney } from '../journey-api.class';
 import { JourneyLineService } from '../journey.service';
 import { DatePickerComponent } from '@ss/common/ui-datepicker';
-import { CommonModule } from '@angular/common';
+
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 import { MaterialModule } from '@ss/common/api-common';
 
@@ -18,13 +18,12 @@ import { MaterialModule } from '@ss/common/api-common';
     styleUrls: ['./mission-expenses-line-detail.component.scss'],
     standalone: true,
     imports: [
-        CommonModule,
-        MaterialModule,
-        ReactiveFormsModule,
-        DatePickerComponent,
-        TranslateDirective,
-        TranslatePipe,
-    ],
+    MaterialModule,
+    ReactiveFormsModule,
+    DatePickerComponent,
+    TranslateDirective,
+    TranslatePipe
+],
 })
 export class MissionExpensesLineDetailComponent extends BaseChildEntityDetailComponent<MissionJourney> {
     private fb = inject(FormBuilder);

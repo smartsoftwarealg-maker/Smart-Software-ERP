@@ -14,7 +14,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 import { DatePickerComponent } from '@ss/common/ui-datepicker';
 import { MatSelect } from '@angular/material/select';
 import { MatOption } from '@angular/material/core';
-import { NgFor, AsyncPipe } from '@angular/common';
+import { AsyncPipe } from '@angular/common';
 import { MatCheckbox } from '@angular/material/checkbox';
 import { MaterialModule } from '@ss/common/api-common';
 import { EmployeeService } from '@ss/employee-services/employee-services';

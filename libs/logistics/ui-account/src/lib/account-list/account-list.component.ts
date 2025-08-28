@@ -7,7 +7,7 @@ import {  ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import {Account, AccountService} from '@ss/accounting/api-accounts';
 import { MaterialModule, PaginatorPersistenceService } from '@ss/common/api-common';
-import { CommonModule } from '@angular/common';
+
 import { ReactiveFormsModule } from '@angular/forms';
 import { PaginationComponent } from '@ss/common/ui-pagination';
 import { TranslateDirective } from '@ss/common/ui-lang';
@@ -18,12 +18,11 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     templateUrl: './account-list.component.html',
     standalone: true,
     imports: [
-        CommonModule,
-        MaterialModule,
-        TranslateDirective,
-        ReactiveFormsModule,
-        PaginationComponent
-    ]
+    MaterialModule,
+    TranslateDirective,
+    ReactiveFormsModule,
+    PaginationComponent
+]
 })
 export class AccountListComponent extends BaseEntityListComponent<Account> {
     displayedColumns = [

@@ -6,7 +6,7 @@ import {filter, map, of, switchMap, tap} from 'rxjs';
 import {ArticleAutoCompleteModel, ArticleService} from '@ss/master-data/api-article';
 import {SnackBarService} from '@ss/common/ui-shell';
 import {  ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
-import { CommonModule } from "@angular/common";
+
 import { MaterialModule } from "@ss/common/api-common";
 
 
@@ -23,16 +23,12 @@ import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
     styleUrls: ['./contract-article-detail.component.scss'],
     standalone: true,
     imports: [
-        CommonModule,
-        MaterialModule,
-        TranslateDirective,
-
-        ReactiveFormsModule,
-
-
-        RouterModule,
-        UiAutoCompleteComponent
-    ]
+    MaterialModule,
+    TranslateDirective,
+    ReactiveFormsModule,
+    RouterModule,
+    UiAutoCompleteComponent
+]
 
 })
 export class ContractArticleDetailComponent implements OnInit {

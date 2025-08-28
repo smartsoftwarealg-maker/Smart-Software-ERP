@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { BaseTransactionLinesDetailComponent, DOC_RESERVATION } from '@ss/logistics/api-transaction';
 import { ReservationLinesService } from '../services/reservation-lines.service';
 
@@ -17,16 +17,15 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     selector: 'ss-parts-reservation-line-detail',
     standalone: true,
     imports: [
-        CommonModule,
-        MatButtonModule,
-        MatCardModule,
-        MatFormFieldModule,
-        MatInputModule,
-        ReactiveFormsModule,
-        TextFieldModule,
-        UiAutoCompleteComponent,
-        TranslateDirective
-    ],
+    MatButtonModule,
+    MatCardModule,
+    MatFormFieldModule,
+    MatInputModule,
+    ReactiveFormsModule,
+    TextFieldModule,
+    UiAutoCompleteComponent,
+    TranslateDirective
+],
     templateUrl: './parts-reservation-line-detail.component.html',
     styleUrl: '../../../../../common/assets/src/assets/transac-lines-detail.scss',
 })

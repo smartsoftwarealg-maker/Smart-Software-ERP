@@ -7,7 +7,7 @@ import { DefaultReportService } from '@ss/common/ui-default-report-component';
 import { MaterialModule, PaginatorPersistenceService } from '@ss/common/api-common';
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { PhysicianService } from '../services/physician.service';
-import { CommonModule } from '@angular/common';
+
 
 
 import { ReactiveFormsModule } from '@angular/forms';
@@ -21,13 +21,12 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     styleUrls: ['./list-template/cmms-fault-list.component.css'],
     standalone: true,
     imports: [
-        CommonModule,
-        MaterialModule,
-        TranslateDirective,
-        TranslatePipe,
-        ReactiveFormsModule,
-        PaginationComponent
-    ]
+    MaterialModule,
+    TranslateDirective,
+    TranslatePipe,
+    ReactiveFormsModule,
+    PaginationComponent
+]
 })
 export class PhysicianListComponent extends BaseEntityListComponent<Lookup> {
     displayedColumns = ['description', 'descriptionAr'];

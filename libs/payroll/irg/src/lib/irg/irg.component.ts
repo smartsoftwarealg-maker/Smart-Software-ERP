@@ -1,5 +1,5 @@
 import { Component, DestroyRef, inject, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { ShellService } from '@ss/common/ui-shell';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
@@ -14,7 +14,7 @@ import { HttpParams } from '@angular/common/http';
 
 @Component({
     selector: 'ss-irg',
-    imports: [CommonModule, MaterialModule, MatCard, ReactiveFormsModule, MatInput, MatLabel, TranslateDirective],
+    imports: [MaterialModule, MatCard, ReactiveFormsModule, MatInput, MatLabel, TranslateDirective],
     templateUrl: './irg.component.html',
     styleUrl: './irg.component.scss',
 })
