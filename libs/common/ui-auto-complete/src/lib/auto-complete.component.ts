@@ -20,7 +20,7 @@ import { of, Subject, Subscription } from 'rxjs';
 import { debounceTime, distinctUntilChanged, filter, switchMap, tap } from 'rxjs/operators';
 import { AutoCompleteModel, Id } from './auto-complete-model';
 import { SnackBarService } from '@ss/common/ui-shell';
-import { NgIf, NgFor } from '@angular/common';
+
 import { MatInput } from '@angular/material/input';
 import { MatOption } from '@angular/material/core';
 import { TranslateDirective } from '@ss/common/ui-lang';
@@ -35,16 +35,15 @@ import { TranslatePipe } from '@ss/common/ui-lang';
     ],
     standalone: true,
     imports: [
-        NgIf,
-        MatInput,
-        FormsModule,
-        MatAutocompleteTrigger,
-        ReactiveFormsModule,
-        MatAutocomplete,
-        MatOption,
-        TranslateDirective,
-        TranslatePipe
-    ]
+    MatInput,
+    FormsModule,
+    MatAutocompleteTrigger,
+    ReactiveFormsModule,
+    MatAutocomplete,
+    MatOption,
+    TranslateDirective,
+    TranslatePipe
+]
 })
 export class UiAutoCompleteComponent implements ControlValueAccessor, MatFormFieldControl<Id>, DoCheck, OnInit, OnDestroy {
     #_inactive = false;

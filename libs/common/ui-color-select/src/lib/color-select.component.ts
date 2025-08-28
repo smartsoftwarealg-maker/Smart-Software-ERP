@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 import { MatMenuTrigger, MatMenu } from '@angular/material/menu';
 import { LanguageService } from '@ss/common/api-common';
-import { NgIf, NgFor } from '@angular/common';
+
 import { MatIconButton } from '@angular/material/button';
 
 @Component({
@@ -10,7 +10,7 @@ import { MatIconButton } from '@angular/material/button';
     styleUrls: ['./color-select.component.scss'],
     exportAs: 'colorSelect',
     standalone: true,
-    imports: [NgIf, MatMenuTrigger, MatIconButton, MatMenu, NgFor]
+    imports: [MatMenuTrigger, MatIconButton, MatMenu]
 })
 export class ColorSelectComponent {
 

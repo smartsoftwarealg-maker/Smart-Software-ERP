@@ -12,7 +12,7 @@ import { tap, switchMap } from 'rxjs/operators';
 import { of } from 'rxjs';
 import { TranslateDirective } from '@ss/common/ui-lang';
 import { CdkScrollable } from '@angular/cdk/scrolling';
-import { NgIf, NgFor } from '@angular/common';
+
 import { MatFormField, MatLabel } from '@angular/material/form-field';
 import { MatSelect } from '@angular/material/select';
 import { MatOption } from '@angular/material/core';
@@ -33,7 +33,7 @@ class LookupService extends BaseEntityService<Lookup> {
         LookupService
     ],
     standalone: true,
-    imports: [TranslateDirective, CdkScrollable, MatDialogContent, NgIf, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, MatSelect, NgFor, MatOption, MatDialogActions, MatMiniFabButton]
+    imports: [TranslateDirective, CdkScrollable, MatDialogContent, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, MatSelect, MatOption, MatDialogActions, MatMiniFabButton]
 })
 export class OrganizationsDetailComponent {
 

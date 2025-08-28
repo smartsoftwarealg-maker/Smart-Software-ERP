@@ -6,7 +6,7 @@ import {  ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import { MaterialModule, PaginatorPersistenceService } from '@ss/common/api-common';
-import { CommonModule } from '@angular/common';
+
 
 
 
@@ -20,14 +20,13 @@ import { MatSort } from '@angular/material/sort';
     templateUrl: './vat-list.component.html',
     standalone: true,
     imports: [
-        CommonModule,
-        MaterialModule,
-        RouterModule,
-        MaterialModule,
-        TranslateDirective,
-        PaginationComponent,
-        MatSort
-    ],
+    MaterialModule,
+    RouterModule,
+    MaterialModule,
+    TranslateDirective,
+    PaginationComponent,
+    MatSort
+],
     styleUrls: ['./vat-list.component.scss']
 })
 export class VatListComponent extends BaseEntityListComponent<Vat> {

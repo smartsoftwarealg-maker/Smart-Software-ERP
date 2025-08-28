@@ -10,7 +10,7 @@ import { MaterialModule, PaginatorPersistenceService } from '@ss/common/api-comm
 import { GridService } from '@ss/payroll/salary-grid';
 import { DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
 import { MatCard } from '@angular/material/card';
-import { NgIf } from '@angular/common';
+
 import { MatFormField, MatLabel } from '@angular/material/form-field';
 import { TranslateDirective } from '@ss/common/ui-lang';
 import { MatInput } from '@angular/material/input';
@@ -129,66 +129,64 @@ export class PostListComponent extends BaseEntityListComponent<Post> {
 @Component({
     selector: 'ss-post-detail',
     template: `<mat-card>
-            <form *ngIf="form !== null" novalidate [formGroup]="form">
-                <mat-form-field class="default-100">
+              @if (form !== null) {
+                <form novalidate [formGroup]="form">
+                  <mat-form-field class="default-100">
                     <mat-label translate>COMMON_DESCRIPTION</mat-label>
                     <input
-                        matInput
-                        formControlName="description"
-                        type="text"
-                        required
-                        autofocus
-                    />
-                </mat-form-field>
-
-                <mat-form-field class="default-100">
+                      matInput
+                      formControlName="description"
+                      type="text"
+                      required
+                      autofocus
+                      />
+                  </mat-form-field>
+                  <mat-form-field class="default-100">
                     <mat-label translate
-                        >ADMINISTRATION_DESCRIPTION_AR</mat-label
-                    >
-                    <input
+                      >ADMINISTRATION_DESCRIPTION_AR</mat-label
+                      >
+                      <input
                         matInput
                         formControlName="descriptionAr"
                         type="text"
-                    />
-                </mat-form-field>
-
-                <mat-form-field class="default-50 sm-100">
-                    <mat-label translate>PAYROLL_SALARY_GRID</mat-label>
-                    <ss-auto-complete
+                        />
+                    </mat-form-field>
+                    <mat-form-field class="default-50 sm-100">
+                      <mat-label translate>PAYROLL_SALARY_GRID</mat-label>
+                      <ss-auto-complete
                         matInput
                         [model]="gridLookup"
                         formControlName="grid"
                         required="true"
-                    >
-                    </ss-auto-complete>
-                </mat-form-field>
-
-                <div class="default-50 sm-100">
-                    <mat-checkbox formControlName="blocked" translate
+                        >
+                      </ss-auto-complete>
+                    </mat-form-field>
+                    <div class="default-50 sm-100">
+                      <mat-checkbox formControlName="blocked" translate
                         >ADMINISTRATION_BLOCKED</mat-checkbox
-                    >
-                </div>
-            </form>
-        </mat-card>
-        @if (id) {
-            <router-outlet></router-outlet>
-        } `,
+                        >
+                      </div>
+                    </form>
+                  }
+                </mat-card>
+                @if (id) {
+                  <router-outlet></router-outlet>
+                }`,
     styleUrls: ['../base-templates/detail-template.scss'],
     standalone: true,
     imports: [
-        MaterialModule,
-        MatCard,
-        NgIf,
-        FormsModule,
-        ReactiveFormsModule,
-        MatFormField,
-        MatLabel,
-        TranslateDirective,
-        MatInput,
-        UiAutoCompleteComponent,
-        MatCheckbox,
-        RouterOutlet,
-    ],
+    MaterialModule,
+    MatCard,
+    FormsModule,
+    ReactiveFormsModule,
+    MatFormField,
+    MatLabel,
+    TranslateDirective,
+    MatInput,
+    UiAutoCompleteComponent,
+    MatCheckbox,
+    RouterOutlet
+],
 })
 export class PostDetailComponent extends BaseEntityDetailComponent<Post> {
     private gridService = inject(GridService);

@@ -12,7 +12,7 @@ import {
 import { ReceptionService } from '@ss/purchases/api-reception';
 import { IsParamService, LoginService, MaterialModule } from '@ss/common/api-common';
 import { MatDialog } from '@angular/material/dialog';
-import { CommonModule } from '@angular/common';
+
 
 
 import { DatePickerComponent } from '@ss/common/ui-datepicker';
@@ -31,14 +31,13 @@ import { Observable, of, switchMap, tap } from 'rxjs';
     styleUrls: ['../../../../../common/assets/src/assets/transac-detail.scss'],
     standalone: true,
     imports: [
-        CommonModule,
-        MaterialModule,
-        TranslateDirective,
-        ReactiveFormsModule,
-        DatePickerComponent,
-        RouterOutlet,
-        UiAutoCompleteComponent
-    ]
+    MaterialModule,
+    TranslateDirective,
+    ReactiveFormsModule,
+    DatePickerComponent,
+    RouterOutlet,
+    UiAutoCompleteComponent
+]
 })
 export class ReceptionDetailComponent extends BaseTransactionDetailComponent implements OnInit {
     private isSrv = inject(IsParamService);

@@ -4,7 +4,7 @@ import {
     DOC_RECEPTION_CANCELLATION,
     TransactionLinesService
 } from "@ss/logistics/api-transaction";
-import { NgIf } from '@angular/common';
+
 import { MatMiniFabButton } from '@angular/material/button';
 import { MatCard, MatCardContent } from '@angular/material/card';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -20,20 +20,19 @@ import { CdkTextareaAutosize } from '@angular/cdk/text-field';
     styleUrls: ['../../../../../common/assets/src/assets/transac-lines-detail.scss'],
     standalone: true,
     imports: [
-        NgIf,
-        MatMiniFabButton,
-        MatCard,
-        MatCardContent,
-        FormsModule,
-        ReactiveFormsModule,
-        MatFormField,
-        MatLabel,
-        TranslateDirective,
-        MatInput,
-        UiAutoCompleteComponent,
-        MatError,
-        CdkTextareaAutosize,
-    ],
+    MatMiniFabButton,
+    MatCard,
+    MatCardContent,
+    FormsModule,
+    ReactiveFormsModule,
+    MatFormField,
+    MatLabel,
+    TranslateDirective,
+    MatInput,
+    UiAutoCompleteComponent,
+    MatError,
+    CdkTextareaAutosize
+],
 })
 export class ReceptionCancellationLinesDetailComponent extends BaseTransactionLinesDetailComponent implements OnInit, OnDestroy {
     constructor(

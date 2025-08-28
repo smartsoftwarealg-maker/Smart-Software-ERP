@@ -22,7 +22,7 @@ import {
 } from '@ss/common/api-common';
 import {UserRightsService} from '@ss/common/api-common';
 import { Router, RouterModule } from '@angular/router';
-import { CommonModule } from '@angular/common';
+
 import { LogoutComponent } from '@ss/common/ui-logout';
 
 import { catchError, of, switchMap, tap } from 'rxjs';
@@ -36,15 +36,14 @@ import { ThemeSelectComponent } from '@ss/common/ui-theme';
     styleUrls: ['./shell.component.scss'],
     standalone: true,
     imports: [
-        CommonModule,
-        RouterModule,
-        MaterialModule,
-        LogoutComponent,
-        ThemeSelectComponent,
-        LanguageSelectComponent,
-        TranslatePipe,
-        TranslateDirective
-    ]
+    RouterModule,
+    MaterialModule,
+    LogoutComponent,
+    ThemeSelectComponent,
+    LanguageSelectComponent,
+    TranslatePipe,
+    TranslateDirective
+]
 })
 export class ShellComponent implements OnInit, OnDestroy, AfterViewInit, AfterViewChecked {
     #httpSrv = inject(HttpService);

@@ -7,7 +7,7 @@ import { AppArchiveService } from '../app-archive.service';
 import { ImageUploaderUtil, LoginService, MaterialModule, PaginationModel } from '@ss/common/api-common';
 import { Observable, of } from 'rxjs';
 import { AppArchive, AppArchiveObs, APPLICATIONS } from '../app-archive-api';
-import { CommonModule, DatePipe } from '@angular/common';
+import { DatePipe } from '@angular/common';
 
 
 
@@ -21,16 +21,13 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     styleUrls: ['./app-archive-viewer.component.scss'],
     standalone: true,
     imports: [
-        CommonModule,
-        RouterModule,
-        MaterialModule,
-        TranslateDirective,
-        TranslatePipe,
-        ReactiveFormsModule,
-
-
-        DatePickerComponent
-    ]
+    RouterModule,
+    MaterialModule,
+    TranslateDirective,
+    TranslatePipe,
+    ReactiveFormsModule,
+    DatePickerComponent
+]
 })
 export class AppArchiveViewerComponent implements OnInit {
     private loginSrv = inject(LoginService);

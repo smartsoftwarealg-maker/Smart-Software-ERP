@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { ExtraCostService } from '@ss/purchases/extra-costs';
 import { ExtraCost } from '@ss/logistics/api-transaction';
 import { MatSort, MatSortHeader } from '@angular/material/sort';
-import { NgIf, DecimalPipe, DatePipe, AsyncPipe } from '@angular/common';
+import { DecimalPipe, DatePipe, AsyncPipe } from '@angular/common';
 import { MatMiniFabButton } from '@angular/material/button';
 import { MatTooltip } from '@angular/material/tooltip';
 import { MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from '@angular/material/table';

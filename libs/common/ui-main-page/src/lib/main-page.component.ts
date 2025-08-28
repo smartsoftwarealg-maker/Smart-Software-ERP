@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy, inject } from '@angular/core';
 import { BadgeButton, KeepOnToolbar, ShellService } from '@ss/common/ui-shell';
 import { Router } from '@angular/router';
 import { LanguageService, MainPageService, SideNavNode } from '@ss/common/api-common';
-import { CommonModule } from '@angular/common';
+
 
 import { WorkflowInboxService } from '@ss/workflow';
 import { BadgeButtonService } from '@ss/common/ui-shell';
@@ -16,10 +16,9 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     styleUrls: ['./main-page.component.scss'],
     standalone: true,
     imports: [
-        CommonModule,
-        TranslateDirective,
-        TranslateDirective
-    ],
+    TranslateDirective,
+    TranslateDirective
+],
 })
 export class MainPageComponent implements OnInit, OnDestroy {
     #adMobileSrv = inject(AdMobileService);

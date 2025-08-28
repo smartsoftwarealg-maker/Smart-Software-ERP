@@ -1,57 +1,51 @@
-<mat-card *ngIf="form" class="main-container">
+@if (form) {
+  <mat-card class="main-container">
     <form  novalidate [formGroup]="form">
-        <mat-form-field class="default-50 sm-100">
-            <mat-label translate>COMMON_ID</mat-label>
-            <input matInput formControlName="id" type="text" autofocus>
-        </mat-form-field>
-
-        <mat-form-field class="default-50 sm-100">
-            <mat-label translate>COMMON_FIRST_NAME</mat-label>
-            <input matInput formControlName="firstName" type="text" >
-        </mat-form-field>
-
-        <mat-form-field class="default-50 sm-100">
-            <mat-label translate>COMMON_LAST_NAME</mat-label>
-            <input matInput formControlName="lastName" type="text" >
-        </mat-form-field>
-
-        <mat-form-field class="default-50 sm-100">
-            <mat-label translate>COMMON_ADDRESS</mat-label>
-            <input matInput formControlName="address" type="text" >
-        </mat-form-field>
-
-        <mat-form-field class="default-50 sm-100">
-            <mat-label translate>ADMINISTRATION_PHONE</mat-label>
-            <input matInput formControlName="phone" type="text" >
-        </mat-form-field>
-
-        <mat-form-field class="default-50 sm-100">
-            <mat-label translate>ADMINISTRATION_EMAIL</mat-label>
-            <input matInput formControlName="email" type="text" >
-        </mat-form-field>
+      <mat-form-field class="default-50 sm-100">
+        <mat-label translate>COMMON_ID</mat-label>
+        <input matInput formControlName="id" type="text" autofocus>
+      </mat-form-field>
+      <mat-form-field class="default-50 sm-100">
+        <mat-label translate>COMMON_FIRST_NAME</mat-label>
+        <input matInput formControlName="firstName" type="text" >
+      </mat-form-field>
+      <mat-form-field class="default-50 sm-100">
+        <mat-label translate>COMMON_LAST_NAME</mat-label>
+        <input matInput formControlName="lastName" type="text" >
+      </mat-form-field>
+      <mat-form-field class="default-50 sm-100">
+        <mat-label translate>COMMON_ADDRESS</mat-label>
+        <input matInput formControlName="address" type="text" >
+      </mat-form-field>
+      <mat-form-field class="default-50 sm-100">
+        <mat-label translate>ADMINISTRATION_PHONE</mat-label>
+        <input matInput formControlName="phone" type="text" >
+      </mat-form-field>
+      <mat-form-field class="default-50 sm-100">
+        <mat-label translate>ADMINISTRATION_EMAIL</mat-label>
+        <input matInput formControlName="email" type="text" >
+      </mat-form-field>
     </form>
     <mat-card>
-        <fieldset>
-            <legend><span translate>ADMINISTRATION_UPDATE_PASSWORD</span>:</legend>
-            <mat-form-field class="default-50 sm-100">
-                <mat-label translate>ADMINISTRATION_PASSWORD</mat-label>
-                <input matInput [formControl]="pwd1" type="password" maxlength="40">
-            </mat-form-field>
-
-            <div class="default-50 sm-100"></div>
-
-            <mat-form-field class="default-50 sm-100">
-                <mat-label translate>CONFIRMATION</mat-label>
-                <input matInput [formControl]="pwd2" type="password" maxlength="40">
-            </mat-form-field>
-
-            <div class="button-div">
-                <button mat-raised-button color="primary" translate
-                        [disabled]="pwd1.value != pwd2.value"
-                        (click)="updatePassword()">UPDATE
-                </button>
-            </div>
-        </fieldset>
+      <fieldset>
+        <legend><span translate>ADMINISTRATION_UPDATE_PASSWORD</span>:</legend>
+        <mat-form-field class="default-50 sm-100">
+          <mat-label translate>ADMINISTRATION_PASSWORD</mat-label>
+          <input matInput [formControl]="pwd1" type="password" maxlength="40">
+        </mat-form-field>
+        <div class="default-50 sm-100"></div>
+        <mat-form-field class="default-50 sm-100">
+          <mat-label translate>CONFIRMATION</mat-label>
+          <input matInput [formControl]="pwd2" type="password" maxlength="40">
+        </mat-form-field>
+        <div class="button-div">
+          <button mat-raised-button color="primary" translate
+            [disabled]="pwd1.value != pwd2.value"
+            (click)="updatePassword()">UPDATE
+          </button>
+        </div>
+      </fieldset>
     </mat-card>
-</mat-card>
+  </mat-card>
+}
 

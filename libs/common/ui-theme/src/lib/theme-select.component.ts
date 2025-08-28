@@ -3,7 +3,7 @@ import {LanguageService} from '@ss/common/api-common';
 import { MatMenu, MatMenuItem, MatMenuTrigger } from '@angular/material/menu';
 import { ThemeService } from './theme.service';
 import { MatIconButton } from '@angular/material/button';
-import { NgFor } from '@angular/common';
+
 
 @Component({
     selector: 'ss-theme-select',

@@ -5,7 +5,7 @@ import { LoginService } from '@ss/common/api-common';
 import { ActivatedRoute } from '@angular/router';
 import { EmployeeService } from '@ss/employee-services/employee-services';
 import { Employee } from '@ss/employee-services/employee-services';
-import { NgIf } from '@angular/common';
+
 import { MatCard } from '@angular/material/card';
 import { MatFormField, MatLabel } from '@angular/material/form-field';
 import { TranslateDirective } from '@ss/common/ui-lang';
@@ -18,16 +18,15 @@ import { MatButton } from '@angular/material/button';
     styleUrls: ['./employee-profile.component.scss'],
     standalone: true,
     imports: [
-        NgIf,
-        MatCard,
-        FormsModule,
-        ReactiveFormsModule,
-        MatFormField,
-        MatLabel,
-        TranslateDirective,
-        MatInput,
-        MatButton,
-    ],
+    MatCard,
+    FormsModule,
+    ReactiveFormsModule,
+    MatFormField,
+    MatLabel,
+    TranslateDirective,
+    MatInput,
+    MatButton
+],
 })
 export class EmployeeProfileComponent {
     private employee: Employee = null;

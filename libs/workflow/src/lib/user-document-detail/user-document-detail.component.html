@@ -1,25 +1,23 @@
 <mat-card class="container">
-    <mat-card-content>
-        <form *ngIf="form !== null" novalidate [formGroup]="form">
+  <mat-card-content>
+    @if (form !== null) {
+      <form novalidate [formGroup]="form">
+        <mat-form-field class="default-100" autofocus>
+          <mat-label translate>ADMINISTRATION_USERS</mat-label>
+          <ss-auto-complete matInput
+            formControlName="userId"
+            [model]="userLookup">
+          </ss-auto-complete>
+        </mat-form-field>
+        <mat-form-field class="default-100">
+          <mat-label translate>COMMON_DOCUMENT</mat-label>
+          <ss-auto-complete matInput
+            formControlName="documentId"
+            [model]="documentLookup">
+          </ss-auto-complete>
+        </mat-form-field>
+      </form>
+    }
 
-            <mat-form-field class="default-100" autofocus>
-                <mat-label translate>ADMINISTRATION_USERS</mat-label>
-                <ss-auto-complete matInput
-                                  formControlName="userId"
-                                  [model]="userLookup">
-                </ss-auto-complete>
-            </mat-form-field>
-
-            <mat-form-field class="default-100">
-                <mat-label translate>COMMON_DOCUMENT</mat-label>
-                <ss-auto-complete matInput
-                                  formControlName="documentId"
-                                  [model]="documentLookup">
-                </ss-auto-complete>
-            </mat-form-field>
-
-
-        </form>
-
-    </mat-card-content>
+  </mat-card-content>
 </mat-card>

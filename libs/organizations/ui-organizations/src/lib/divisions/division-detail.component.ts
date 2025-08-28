@@ -9,7 +9,7 @@ import { Division, DivisionService } from '@ss/common/api-lookup';
 import { EmployeeService } from '@ss/employee-services/employee-services';
 import { PersonAutocompleteClass } from '@ss/employee-services/employee-services';
 import { MatCard } from "@angular/material/card";
-import { NgIf } from "@angular/common";
+
 import { MatFormField, MatLabel, MatError } from "@angular/material/form-field";
 import { TranslateDirective } from '@ss/common/ui-lang';
 import { MatInput } from "@angular/material/input";
@@ -20,7 +20,7 @@ import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
     templateUrl: './division-detail.component.html',
     styleUrls: ['./division-detail.component.scss'],
     standalone: true,
-    imports: [MaterialModule, MatCard, NgIf, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, MatError, UiAutoCompleteComponent]
+    imports: [MaterialModule, MatCard, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, MatError, UiAutoCompleteComponent]
 })
 export class DivisionDetailComponent extends BaseEntityDetailComponent<Division> implements OnInit, OnDestroy {
     public saving: boolean = false;

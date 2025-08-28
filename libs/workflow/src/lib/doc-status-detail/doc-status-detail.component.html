@@ -1,26 +1,30 @@
 <mat-card class="container">
-    <mat-card-content>
-        <form *ngIf="form !== null" novalidate [formGroup]="form">
-            <mat-form-field class="default-100" >
-                <mat-label translate>COMMON_DESCRIPTION</mat-label>
-                <input matInput formControlName="description" type="text" autofocus required>
-                <mat-error *ngIf="form.controls['description'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
-            </mat-form-field>
+  <mat-card-content>
+    @if (form !== null) {
+      <form novalidate [formGroup]="form">
+        <mat-form-field class="default-100" >
+          <mat-label translate>COMMON_DESCRIPTION</mat-label>
+          <input matInput formControlName="description" type="text" autofocus required>
+          @if (form.controls['description'].invalid) {
+            <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+          }
+        </mat-form-field>
+        <mat-form-field class="default-100">
+          <mat-label translate>ADMINISTRATION_LEVEL</mat-label>
+          <input matInput formControlName="msgLevel" type="number" maxlength="100">
+          @if (form.controls['msgLevel'].invalid) {
+            <mat-error translate>COMMON_FIELD_MAX_LENGTH
+            </mat-error>
+          }
+        </mat-form-field>
+        <div class="default-100 sm-100">
+          <mat-checkbox formControlName="isFinal" translate>ADMINISTRATION_FINAL</mat-checkbox>
+        </div>
+        <div class="default-100 sm-100">
+          <mat-checkbox formControlName="isPostFinal" translate>ADMINISTRATION_POST_FINAL</mat-checkbox>?
+        </div>
+      </form>
+    }
 
-            <mat-form-field class="default-100">
-                <mat-label translate>ADMINISTRATION_LEVEL</mat-label>
-                <input matInput formControlName="msgLevel" type="number" maxlength="100">
-                <mat-error *ngIf="form.controls['msgLevel'].invalid" translate>COMMON_FIELD_MAX_LENGTH
-                </mat-error>
-            </mat-form-field>
-
-            <div class="default-100 sm-100">
-                <mat-checkbox formControlName="isFinal" translate>ADMINISTRATION_FINAL</mat-checkbox>
-            </div>
-            <div class="default-100 sm-100">
-                <mat-checkbox formControlName="isPostFinal" translate>ADMINISTRATION_POST_FINAL</mat-checkbox>?
-            </div>
-        </form>
-
-    </mat-card-content>
+  </mat-card-content>
 </mat-card>

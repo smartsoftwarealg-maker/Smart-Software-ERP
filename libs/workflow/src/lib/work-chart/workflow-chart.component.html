@@ -1,12 +1,14 @@
-<angular-org-chart *ngIf="root" [nodeTemplate]="nodeTemplate" [data]="root" #mainChart="orgChart">
+@if (root) {
+  <angular-org-chart [nodeTemplate]="nodeTemplate" [data]="root" #mainChart="orgChart">
     <button zoom-button mat-icon-button (click)="mainChart.toggleZoom()">
-        <i class="fas fa-compress"></i>
+      <i class="fas fa-compress"></i>
     </button>
-</angular-org-chart>
+  </angular-org-chart>
+}
 
 <!-- Node Template -->
 <ng-template #nodeTemplate let-node>
-    <div class="chart-node">
-        <div class="node-name"><span>{{node?.name}}</span></div>
-    </div>
+  <div class="chart-node">
+    <div class="node-name"><span>{{node?.name}}</span></div>
+  </div>
 </ng-template>

@@ -1,52 +1,61 @@
 
 <mat-card class="form-container">
-    <form *ngIf="form" novalidate [formGroup]="form" style="min-height: 100%; display: unset">
-<!--        <mat-form-field class="default-100">-->
-<!--            <mat-label translate>COMMON_LOCATION</mat-label>-->
-<!--            <ss-auto-complete matInput-->
-<!--                              [model]="locationLookup"-->
-<!--                              formControlName="location"></ss-auto-complete>-->
-<!--        </mat-form-field>-->
-
-        <mat-form-field class="default-100">
-            <mat-label translate>{{ isCMMS? 'CMMS_ZONES' : 'ASSET_BLOCK' }}</mat-label>
-            <ss-auto-complete matInput
-                              [model]="buildingLookup"
-                              formControlName="buildingId"></ss-auto-complete>
-        </mat-form-field>
-
-
-        <mat-form-field class="default-100">
-            <mat-label translate>COMMON_DESCRIPTION</mat-label>
-            <input matInput formControlName="description" type="text" minlength="3" maxlength="50" required
-                   autofocus>
-            <mat-error *ngIf="form.controls['description'].hasError('required')" translate>COMMON_FIELD_REQUIRED
-            </mat-error>
-            <mat-error *ngIf="form.controls['description'].hasError('maxlength')" [translate]="{ maxLen: 50 }">
-                COMMON_FIELD_MAX_LENGTH
-            </mat-error>
-            <mat-error *ngIf="form.controls['description'].hasError('minlength')" [translate]="{ minLen: 3 }">
-                COMMON_FIELD_MIN_LENGTH
-            </mat-error>
-        </mat-form-field>
-
-
-        <mat-form-field class="default-100" *ngIf="!isCMMS">
-            <mat-label translate>ASSET_FLOOR_NO</mat-label>
-            <input matInput formControlName="floorNo" type="number" max="20">
-        </mat-form-field>
-
-        <mat-form-field class="default-100">
-            <mat-label translate>ADMINISTRATION_CODE</mat-label>
-            <input matInput formControlName="code" type="text" minlength="3" maxlength="20" required>
-            <mat-error *ngIf="form.controls['code'].hasError('required')" translate>COMMON_FIELD_REQUIRED</mat-error>
-            <mat-error *ngIf="form.controls['code']?.hasError('maxlength')" [translate]="{ maxLen: 4 }">
-                COMMON_FIELD_MAX_LENGTH
-            </mat-error>
-            <mat-error *ngIf="form.controls['code']?.hasError('minlength')" [translate]="{ minLen: 3 }">
-                COMMON_FIELD_MIN_LENGTH
-            </mat-error>
-        </mat-form-field>
-
-    </form>
+  @if (form) {
+    <form novalidate [formGroup]="form" style="min-height: 100%; display: unset">
+      <!--        <mat-form-field class="default-100">-->
+      <!--            <mat-label translate>COMMON_LOCATION</mat-label>-->
+      <!--            <ss-auto-complete matInput-->
+      <!--                              [model]="locationLookup"-->
+    <!--                              formControlName="location"></ss-auto-complete>-->
+  <!--        </mat-form-field>-->
+  <mat-form-field class="default-100">
+    <mat-label translate>{{ isCMMS? 'CMMS_ZONES' : 'ASSET_BLOCK' }}</mat-label>
+    <ss-auto-complete matInput
+      [model]="buildingLookup"
+    formControlName="buildingId"></ss-auto-complete>
+  </mat-form-field>
+  <mat-form-field class="default-100">
+    <mat-label translate>COMMON_DESCRIPTION</mat-label>
+    <input matInput formControlName="description" type="text" minlength="3" maxlength="50" required
+      autofocus>
+      @if (form.controls['description'].hasError('required')) {
+        <mat-error translate>COMMON_FIELD_REQUIRED
+        </mat-error>
+      }
+      @if (form.controls['description'].hasError('maxlength')) {
+        <mat-error [translate]="{ maxLen: 50 }">
+          COMMON_FIELD_MAX_LENGTH
+        </mat-error>
+      }
+      @if (form.controls['description'].hasError('minlength')) {
+        <mat-error [translate]="{ minLen: 3 }">
+          COMMON_FIELD_MIN_LENGTH
+        </mat-error>
+      }
+    </mat-form-field>
+    @if (!isCMMS) {
+      <mat-form-field class="default-100">
+        <mat-label translate>ASSET_FLOOR_NO</mat-label>
+        <input matInput formControlName="floorNo" type="number" max="20">
+      </mat-form-field>
+    }
+    <mat-form-field class="default-100">
+      <mat-label translate>ADMINISTRATION_CODE</mat-label>
+      <input matInput formControlName="code" type="text" minlength="3" maxlength="20" required>
+      @if (form.controls['code'].hasError('required')) {
+        <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+      }
+      @if (form.controls['code']?.hasError('maxlength')) {
+        <mat-error [translate]="{ maxLen: 4 }">
+          COMMON_FIELD_MAX_LENGTH
+        </mat-error>
+      }
+      @if (form.controls['code']?.hasError('minlength')) {
+        <mat-error [translate]="{ minLen: 3 }">
+          COMMON_FIELD_MIN_LENGTH
+        </mat-error>
+      }
+    </mat-form-field>
+  </form>
+}
 </mat-card>

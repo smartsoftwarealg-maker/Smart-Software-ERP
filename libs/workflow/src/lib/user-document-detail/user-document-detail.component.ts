@@ -10,7 +10,7 @@ import {LookupsService} from '@ss/common/api-lookup';
 import {UserListService} from '@ss/common/api-users';
 import {UserDocumentService} from '../user-document.service';
 import {DefinitionLookupService} from '@ss/logistics/document-numbering';
-import { CommonModule } from '@angular/common';
+
 import { MaterialModule } from '@ss/common/api-common';
 
 
@@ -26,14 +26,11 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     styleUrls: ['./user-document-detail.component.scss'],
     standalone: true,
     imports: [
-        CommonModule,
-        MaterialModule,
-        TranslateDirective,
-
-
-        OrgChartModule,
-        UiAutoCompleteComponent
-    ]
+    MaterialModule,
+    TranslateDirective,
+    OrgChartModule,
+    UiAutoCompleteComponent
+]
 })
 export class UserDocumentDetailComponent extends BaseEntityDetailComponent<UserDocument> {
     private usersSrv =  inject(UserListService);

@@ -1,83 +1,93 @@
 <div class="button_div">
 
+  @if (isEditable) {
     <button mat-mini-fab (click)="save()"
-            color="accent" *ngIf="isEditable">
-        <i class="fas fa-save"></i>
+      color="accent">
+      <i class="fas fa-save"></i>
     </button>
+  }
+  @if (isEditable) {
     <button mat-mini-fab (click)="cancel()"
-            color="warn" *ngIf="isEditable">
-        <i class="fas fa-redo"></i>
+      color="warn">
+      <i class="fas fa-redo"></i>
     </button>
+  }
 </div>
 
 @if (form) {
-    <mat-card>
-        <form [formGroup]="form">
+  <mat-card>
+    <form [formGroup]="form">
 
-            <mat-form-field class="default-25 sm-50">
-                <mat-label translate>COMMON_ARTICLE</mat-label>
-                <ss-auto-complete matInput
-                                  [model]="articleLookup"
-                                  formControlName="reference"
-                                  required="true"
-                                  autofocus>
-                </ss-auto-complete>
-                <mat-error *ngIf="form.controls['reference'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
-            </mat-form-field>
+      <mat-form-field class="default-25 sm-50">
+        <mat-label translate>COMMON_ARTICLE</mat-label>
+        <ss-auto-complete matInput
+          [model]="articleLookup"
+          formControlName="reference"
+          required="true"
+          autofocus>
+        </ss-auto-complete>
+        @if (form.controls['reference'].invalid) {
+          <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+        }
+      </mat-form-field>
 
-            <mat-form-field class="default-75 sm-100">
-                <mat-label translate>COMMON_DESCRIPTION</mat-label>
-                <input matInput formControlName="description" type="text" required >
-            </mat-form-field>
+      <mat-form-field class="default-75 sm-100">
+        <mat-label translate>COMMON_DESCRIPTION</mat-label>
+        <input matInput formControlName="description" type="text" required >
+      </mat-form-field>
 
-            <mat-form-field class="default-100">
-                <mat-label translate>LOGISTICS_SUPPLIER</mat-label>
-                <ss-auto-complete matInput
-                                  [model]="supplierLookup"
-                                  required
-                                  formControlName="agent">
-                </ss-auto-complete>
-            </mat-form-field>
+      <mat-form-field class="default-100">
+        <mat-label translate>LOGISTICS_SUPPLIER</mat-label>
+        <ss-auto-complete matInput
+          [model]="supplierLookup"
+          required
+          formControlName="agent">
+        </ss-auto-complete>
+      </mat-form-field>
 
-            <mat-form-field class="default-25 sm-50">
-                <mat-label translate>COMMON_AMOUNT</mat-label>
-                <input matInput formControlName="amount" type="number" required>
-            </mat-form-field>
+      <mat-form-field class="default-25 sm-50">
+        <mat-label translate>COMMON_AMOUNT</mat-label>
+        <input matInput formControlName="amount" type="number" required>
+      </mat-form-field>
 
-            <mat-form-field class="default-25 sm-50">
-                <mat-label translate>COMMON_VAT</mat-label>
-                <input matInput formControlName="vat" type="number" required>
-            </mat-form-field>
+      <mat-form-field class="default-25 sm-50">
+        <mat-label translate>COMMON_VAT</mat-label>
+        <input matInput formControlName="vat" type="number" required>
+      </mat-form-field>
 
-            <mat-form-field class="default-25 sm-50">
-                <mat-label translate>LOGISTICS_STAMP</mat-label>
-                <input matInput formControlName="stamp" type="number">
-            </mat-form-field>
+      <mat-form-field class="default-25 sm-50">
+        <mat-label translate>LOGISTICS_STAMP</mat-label>
+        <input matInput formControlName="stamp" type="number">
+      </mat-form-field>
 
-            <div id="manager" class="default-25 sm-50">
-                <mat-checkbox formControlName="foreignCurrency" translate>LOGISTICS_FOREIGN_CURRENCY</mat-checkbox>
-            </div>
+      <div id="manager" class="default-25 sm-50">
+        <mat-checkbox formControlName="foreignCurrency" translate>LOGISTICS_FOREIGN_CURRENCY</mat-checkbox>
+      </div>
 
-            <mat-form-field class="default-25 sm-50">
-                <mat-label translate>COMMON_INVOICE_NUMBER</mat-label>
-                <input matInput formControlName="invoiceNo" type="text" required>
-            </mat-form-field>
+      <mat-form-field class="default-25 sm-50">
+        <mat-label translate>COMMON_INVOICE_NUMBER</mat-label>
+        <input matInput formControlName="invoiceNo" type="text" required>
+      </mat-form-field>
 
-            <mat-form-field class="default-25 sm-50">
-                <mat-label translate>COMMON_TYPE</mat-label>
-                <mat-select formControlName="costType">
-                    <mat-option *ngFor="let c of costTypes" [value]="c.id">{{ c.description | translate }}</mat-option>
-                </mat-select>
-            </mat-form-field>
+      <mat-form-field class="default-25 sm-50">
+        <mat-label translate>COMMON_TYPE</mat-label>
+        <mat-select formControlName="costType">
+          @for (c of costTypes; track c) {
+            <mat-option [value]="c.id">{{ c.description | translate }}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
 
-            <mat-form-field class="default-25 sm-50">
-                <mat-label translate>COMMON_TYPE</mat-label>
-                <mat-select formControlName="valueType">
-                    <mat-option *ngFor="let c of valueTypes" [value]="c.id">{{ c.description  | translate }}
-                    </mat-option>
-                </mat-select>
-            </mat-form-field>
-            <!--        <pre> {{ form.value | json }}</pre>-->
-        </form>
-    </mat-card>
+      <mat-form-field class="default-25 sm-50">
+        <mat-label translate>COMMON_TYPE</mat-label>
+        <mat-select formControlName="valueType">
+          @for (c of valueTypes; track c) {
+            <mat-option [value]="c.id">{{ c.description  | translate }}
+            </mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+      <!--        <pre> {{ form.value | json }}</pre>-->
+    </form>
+  </mat-card>
 }

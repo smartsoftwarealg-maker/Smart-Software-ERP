@@ -11,7 +11,7 @@ import { MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, Ma
 import { MatSort, MatSortHeader } from '@angular/material/sort';
 import { TranslateDirective } from '@ss/common/ui-lang';
 import { PaginationComponent } from '@ss/common/ui-pagination';
-import { NgIf, DatePipe } from '@angular/common';
+import { DatePipe } from '@angular/common';
 import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
 
 @Component({
@@ -20,24 +20,23 @@ import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
     styleUrls: ['../../../../../common/assets/src/assets/transac-list.scss'],
     standalone: true,
     imports: [
-        MatTable,
-        MatSort,
-        MatColumnDef,
-        MatHeaderCellDef,
-        MatHeaderCell,
-        MatSortHeader,
-        TranslateDirective,
-        MatCellDef,
-        MatCell,
-        MatHeaderRowDef,
-        MatHeaderRow,
-        MatRowDef,
-        MatRow,
-        PaginationComponent,
-        NgIf,
-        DocInfoComponent,
-        DatePipe,
-    ],
+    MatTable,
+    MatSort,
+    MatColumnDef,
+    MatHeaderCellDef,
+    MatHeaderCell,
+    MatSortHeader,
+    TranslateDirective,
+    MatCellDef,
+    MatCell,
+    MatHeaderRowDef,
+    MatHeaderRow,
+    MatRowDef,
+    MatRow,
+    PaginationComponent,
+    DocInfoComponent,
+    DatePipe
+],
 })
 export class ReceptionCancellationListComponent extends BaseEntityListComponent<Transaction> {
 

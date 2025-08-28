@@ -1,20 +1,23 @@
 <div style="height: 16px"></div>
 
 <div class="form-container">
-    <form *ngIf="form" novalidate [formGroup]="form" style="min-height: 100%; display: unset">
-        <mat-form-field class="default-100">
-            <mat-label translate>COMMON_DESCRIPTION</mat-label>
-            <input matInput formControlName="description" type="text" minlength="3" maxlength="64" required
-                autofocus>
-            <mat-error *ngIf="form.controls['description'].hasError('required')" translate>COMMON_FIELD_REQUIRED
+  @if (form) {
+    <form novalidate [formGroup]="form" style="min-height: 100%; display: unset">
+      <mat-form-field class="default-100">
+        <mat-label translate>COMMON_DESCRIPTION</mat-label>
+        <input matInput formControlName="description" type="text" minlength="3" maxlength="64" required
+          autofocus>
+          @if (form.controls['description'].hasError('required')) {
+            <mat-error translate>COMMON_FIELD_REQUIRED
             </mat-error>
+          }
         </mat-form-field>
-
         <mat-form-field class="default-100">
-            <mat-label translate>ADMINISTRATION_RESPONSIBLE</mat-label>
-            <ss-auto-complete matInput
-                [model]="personAutoCompleteModel"
-                formControlName="responsible"></ss-auto-complete>
+          <mat-label translate>ADMINISTRATION_RESPONSIBLE</mat-label>
+          <ss-auto-complete matInput
+            [model]="personAutoCompleteModel"
+          formControlName="responsible"></ss-auto-complete>
         </mat-form-field>
-    </form>
-</div>
+      </form>
+    }
+  </div>

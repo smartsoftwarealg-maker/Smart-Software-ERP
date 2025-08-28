@@ -7,7 +7,7 @@ import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import { MaterialModule, PaginatorPersistenceService } from '@ss/common/api-common';
 import {DocStatusService} from '../doc-status.service';
-import { CommonModule } from '@angular/common';
+
 
 
 
@@ -24,15 +24,11 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     styleUrls: ['./doc-status-list.component.scss'],
     standalone: true,
     imports: [
-        CommonModule,
-        MaterialModule,
-        TranslateDirective,
-       
-
-
-        OrgChartModule,
-        PaginationComponent
-    ]
+    MaterialModule,
+    TranslateDirective,
+    OrgChartModule,
+    PaginationComponent
+]
 })
 export class DocStatusListComponent extends BaseEntityListComponent<DocStatus> {
     displayedColumns = [

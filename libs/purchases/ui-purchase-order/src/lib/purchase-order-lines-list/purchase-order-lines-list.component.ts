@@ -6,7 +6,7 @@ import { ArticleService} from '@ss/master-data/api-article';
 import { LotsService} from '@ss/common/api-lookup';
 import { BaseTransactionLinesListComponent} from '@ss/logistics/api-transaction';
 import { PurchaseOrderLinesService } from '../purchase-order-lines.service';
-import { NgIf, DecimalPipe } from '@angular/common';
+import { DecimalPipe } from '@angular/common';
 import { MatFormField, MatLabel } from '@angular/material/form-field';
 import { TranslateDirective } from '@ss/common/ui-lang';
 import { MatInput } from '@angular/material/input';
@@ -31,31 +31,30 @@ import { TranslatePipe } from '@ss/common/ui-lang';
     styleUrls: ['../../../../../common/assets/src/assets/transac-lines-list.scss'],
     standalone: true,
     imports: [
-        NgIf,
-        MatFormField,
-        MatLabel,
-        TranslateDirective,
-        MatInput,
-        FormsModule,
-        ReactiveFormsModule,
-        MatMiniFabButton,
-        MatTooltip,
-        MatTable,
-        MatColumnDef,
-        MatHeaderCell,
-        MatCell,
-        MatIconButton,
-        MatHeaderRow,
-        MatRow,
-        PaginationComponent,
-        DocInfoComponent,
-        DecimalPipe,
-        TranslatePipe,
-        MatHeaderCellDef,
-        MatCellDef,
-        MatHeaderRowDef,
-        MatRowDef
-    ]
+    MatFormField,
+    MatLabel,
+    TranslateDirective,
+    MatInput,
+    FormsModule,
+    ReactiveFormsModule,
+    MatMiniFabButton,
+    MatTooltip,
+    MatTable,
+    MatColumnDef,
+    MatHeaderCell,
+    MatCell,
+    MatIconButton,
+    MatHeaderRow,
+    MatRow,
+    PaginationComponent,
+    DocInfoComponent,
+    DecimalPipe,
+    TranslatePipe,
+    MatHeaderCellDef,
+    MatCellDef,
+    MatHeaderRowDef,
+    MatRowDef
+]
 })
 export class PurchaseOrderLinesListComponent extends  BaseTransactionLinesListComponent implements OnInit {
     displayedColumns = [

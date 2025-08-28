@@ -8,7 +8,7 @@ import { concatMap, from, of, switchMap, tap, zip } from 'rxjs';
 import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import {AppArchiveDocumentService} from '@ss/common/api-lookup';
 import {AppArchive} from '../app-archive-api';
-import { CommonModule } from '@angular/common';
+
 
 
 
@@ -21,14 +21,13 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     styleUrls: ['./app-archive-detail.component.scss'],
     standalone: true,
     imports: [
-        CommonModule,
-        RouterModule,
-        MaterialModule,
-        TranslateDirective,
-        ReactiveFormsModule,
-        TranslateDirective,
-        UiAutoCompleteComponent
-    ]
+    RouterModule,
+    MaterialModule,
+    TranslateDirective,
+    ReactiveFormsModule,
+    TranslateDirective,
+    UiAutoCompleteComponent
+]
 })
 export class AppArchiveDetailComponent implements OnInit {
     private withQueryParams = false;

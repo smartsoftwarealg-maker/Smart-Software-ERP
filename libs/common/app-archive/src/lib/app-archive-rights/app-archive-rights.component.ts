@@ -9,7 +9,7 @@ import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui
 import { AccessRight, MaterialModule, Role } from '@ss/common/api-common';
 import { AccessRightsService } from '@ss/common/api-access-rights';
 import { switchMap, tap } from 'rxjs';
-import { CommonModule } from '@angular/common';
+
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
@@ -18,14 +18,13 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     styleUrls: ['./app-archive-rights.component.scss'],
     standalone: true,
     imports: [
-        CommonModule,
-        RouterModule,
-        MaterialModule,
-        TranslateDirective,
-        TranslatePipe,
-        ReactiveFormsModule,
-        UiAutoCompleteComponent
-    ]})
+    RouterModule,
+    MaterialModule,
+    TranslateDirective,
+    TranslatePipe,
+    ReactiveFormsModule,
+    UiAutoCompleteComponent
+]})
 export class AppArchiveRightsComponent implements OnInit {
     private accessRightSrv = inject(AccessRightsService);
     private archiveSrv = inject(AppArchiveService);
