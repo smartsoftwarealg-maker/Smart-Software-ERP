@@ -13,6 +13,7 @@ import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import {CRMCampaignService} from '../crm-comaign.service';
 import {DefaultAutoCompleteModel, UiAutoCompleteComponent} from '@ss/common/ui-auto-complete';
 import {UserListService} from '@ss/common/api-users';
+import { CityService } from '@ss/common/api-lookup';
 
 @Component({
     selector: 'ss-crm-leads-component',
@@ -36,6 +37,7 @@ import {UserListService} from '@ss/common/api-users';
 export class CrmLeadsDetailComponent implements OnInit {
     #userSrv  = inject(UserListService);
     #campaignSrv = inject(CRMCampaignService);
+    #citySrv =inject(CityService)
     #entitySrv = inject(CRMLeadsService);
     #router = inject(Router);
     #route = inject(ActivatedRoute);
@@ -45,6 +47,7 @@ export class CrmLeadsDetailComponent implements OnInit {
 
     campaignLookup = new DefaultAutoCompleteModel(this.#campaignSrv);
     userLookup = new DefaultAutoCompleteModel(this.#userSrv);
+    cityLookup = new DefaultAutoCompleteModel(this.#citySrv);
 
     formBuilder = inject(FormBuilder);
 
