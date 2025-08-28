@@ -1,5 +1,5 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { ShellService } from '@ss/common/ui-shell';
 import { ActivatedRoute } from '@angular/router';
 import { Dashboard, SocialDashboardService, TreasuryBalance } from '@social/social-api';
@@ -10,7 +10,7 @@ import { LanguageService } from '@ss/common/api-common';
 @Component({
     selector: 'ss-social-social-dashboard',
     standalone: true,
-    imports: [CommonModule, MatCard],
+    imports: [MatCard],
     templateUrl: './social-dashboard.component.html',
     styleUrl: './social-dashboard.component.scss'
 })

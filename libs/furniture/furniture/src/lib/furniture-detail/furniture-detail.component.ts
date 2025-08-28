@@ -16,7 +16,7 @@ import {OSService} from '@ss/common/api-lookup';
 import {Observable} from 'rxjs';
 import {tap} from 'rxjs/operators';
 import { MatCard } from '@angular/material/card';
-import { NgIf } from '@angular/common';
+
 import { MatFormField, MatLabel, MatError } from '@angular/material/form-field';
 import { TranslateDirective } from '@ss/common/ui-lang';
 import { MatInput } from '@angular/material/input';
@@ -31,20 +31,19 @@ import { AppArchiveMainComponent } from '@ss/common/app-archive';
     styleUrls: ['./furniture-detail.component.scss'],
     standalone: true,
     imports: [
-        MatCard,
-        NgIf,
-        FormsModule,
-        ReactiveFormsModule,
-        MatFormField,
-        MatLabel,
-        TranslateDirective,
-        MatInput,
-        MatError,
-        UiAutoCompleteComponent,
-        DatePickerComponent,
-        MatCheckbox,
-        AppArchiveMainComponent,
-    ],
+    MatCard,
+    FormsModule,
+    ReactiveFormsModule,
+    MatFormField,
+    MatLabel,
+    TranslateDirective,
+    MatInput,
+    MatError,
+    UiAutoCompleteComponent,
+    DatePickerComponent,
+    MatCheckbox,
+    AppArchiveMainComponent
+],
 })
 export class FurnitureDetailComponent extends BaseEntityDetailComponent<Furniture> {
     private loginSrv  = inject(LoginService);

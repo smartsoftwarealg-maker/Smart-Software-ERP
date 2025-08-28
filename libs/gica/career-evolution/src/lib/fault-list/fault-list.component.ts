@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { Fault } from '../gica-careers-api';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
@@ -32,25 +32,7 @@ import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 @Component({
     selector: 'ss-gica-fault-list',
     standalone: true,
-    imports: [CommonModule,
-
-        MaterialModule,
-
-        MatCell,
-        MatCellDef,
-        MatColumnDef,
-        MatHeaderCell,
-        MatHeaderRow,
-        MatHeaderRowDef,
-        MatRow,
-        MatRowDef,
-        MatSort,
-        MatSortHeader,
-        MatTable,
-        MatHeaderCellDef,
-        MatFormField,
-
-        PaginationComponent, UiAutoCompleteComponent],
+    imports: [MaterialModule, MatCell, MatCellDef, MatColumnDef, MatHeaderCell, MatHeaderRow, MatHeaderRowDef, MatRow, MatRowDef, MatSort, MatSortHeader, MatTable, MatHeaderCellDef, MatFormField, PaginationComponent, UiAutoCompleteComponent],
     templateUrl: './fault-list.component.html',
     styleUrl: './fault-list.component.css',
 })

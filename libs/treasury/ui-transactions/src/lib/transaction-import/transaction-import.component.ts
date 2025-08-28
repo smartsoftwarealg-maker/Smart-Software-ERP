@@ -1,5 +1,5 @@
 import { Component, inject, Inject } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { ReactiveFormsModule, UntypedFormBuilder, Validators } from '@angular/forms';
 import { MatFormField, MatLabel } from '@angular/material/form-field';
@@ -14,20 +14,19 @@ import { TImport } from '@ss/treasury/api-transactions';
 @Component({
     selector: 'ss-treasury-import',
     imports: [
-        CommonModule,
-        ReactiveFormsModule,
-        MatFormField,
-        MatLabel,
-        MatLabel,
-        MatFormField,
-        MatInput,
-        MatButton,
-        TranslatePipe,
-        MatCheckbox,
-        MatCard,
-        DatePickerComponent,
-        TranslateDirective
-    ],
+    ReactiveFormsModule,
+    MatFormField,
+    MatLabel,
+    MatLabel,
+    MatFormField,
+    MatInput,
+    MatButton,
+    TranslatePipe,
+    MatCheckbox,
+    MatCard,
+    DatePickerComponent,
+    TranslateDirective
+],
     templateUrl: './transaction-import.component.html',
     styleUrl: './transaction-import.component.scss',
     standalone: true

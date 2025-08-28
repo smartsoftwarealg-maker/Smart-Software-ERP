@@ -1,118 +1,106 @@
 <mat-card>
-    <form *ngIf="form !== null" novalidate [formGroup]="form">
-        <mat-form-field class="default-25 sm-50">
-            <mat-label translate>COMMON_REFERENCE</mat-label>
-            <input matInput formControlName="reference" type="text" required>
-            <mat-error *ngIf="form.controls['reference'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
-        </mat-form-field>
-
-        <mat-form-field  class="default-25 sm-50">
-            <mat-label translate>ASSET_SERIAL_NUMBER</mat-label>
-            <input matInput formControlName="serialNo" type="text" >
-        </mat-form-field>
-
-        <mat-form-field class="default-100">
-            <mat-label translate>COMMON_DESCRIPTION</mat-label>
-            <input matInput formControlName="description" type="text" required>
-            <mat-error *ngIf="form.controls['description'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
-        </mat-form-field>
-
-
-
+  @if (form !== null) {
+    <form novalidate [formGroup]="form">
+      <mat-form-field class="default-25 sm-50">
+        <mat-label translate>COMMON_REFERENCE</mat-label>
+        <input matInput formControlName="reference" type="text" required>
+        @if (form.controls['reference'].invalid) {
+          <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+        }
+      </mat-form-field>
+      <mat-form-field  class="default-25 sm-50">
+        <mat-label translate>ASSET_SERIAL_NUMBER</mat-label>
+        <input matInput formControlName="serialNo" type="text" >
+      </mat-form-field>
+      <mat-form-field class="default-100">
+        <mat-label translate>COMMON_DESCRIPTION</mat-label>
+        <input matInput formControlName="description" type="text" required>
+        @if (form.controls['description'].invalid) {
+          <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+        }
+      </mat-form-field>
+      <mat-form-field class="default-50 sm-100">
+        <mat-label translate>LOGISTICS_ACCOUNT_NO</mat-label>
+        <ss-auto-complete matInput
+          [model]="accountLookup"
+          formControlName="accountNo">
+        </ss-auto-complete>
+      </mat-form-field>
+      <mat-form-field class="default-50 sm-100">
+        <mat-label translate>LOGISTICS_SUPPLIER</mat-label>
+        <ss-auto-complete matInput
+          [model]="supplierLookup"
+          formControlName="supplier">
+        </ss-auto-complete>
+      </mat-form-field>
+      <mat-form-field  class="default-25 sm-50">
+        <mat-label translate>LOGISTICS_INVOICE_NUMBER</mat-label>
+        <input matInput formControlName="invoiceNo" type="text" >
+      </mat-form-field>
+      <mat-form-field class="default-25 sm-50">
+        <mat-label translate>ASSET_ACQUISITION_DATE</mat-label>
+        <ss-date-picker formControlName="acquisitionDate"></ss-date-picker>
+      </mat-form-field>
+      <mat-form-field  class="default-25 sm-50">
+        <mat-label translate>ASSET_ACQUISITION_VALUE</mat-label>
+        <input matInput formControlName="invoiceNo" type="number" >
+      </mat-form-field>
+      <mat-form-field class="default-50 sm-100">
+        <mat-label translate>ASSET_RECEIVER</mat-label>
+        <ss-auto-complete matInput
+          [model]="officeLookup"
+          formControlName="receiver">
+        </ss-auto-complete>
+      </mat-form-field>
+      <mat-form-field class="default-50 sm-100">
+        <mat-label translate>COMMON_MARK</mat-label>
+        <ss-auto-complete matInput
+          [model]="markLookup"
+          formControlName="mark">
+        </ss-auto-complete>
+      </mat-form-field>
+      <mat-form-field class="default-50 sm-100">
+        <mat-label translate>COMMON_TYPE</mat-label>
+        <ss-auto-complete matInput
+          [model]="typeLookup"
+          formControlName="furnitureType">
+        </ss-auto-complete>
+      </mat-form-field>
+      <mat-form-field class="default-50 sm-100">
+        <mat-label translate>COMMON_STATUS</mat-label>
+        <ss-auto-complete matInput
+          [model]="statusLookup"
+          formControlName="status">
+        </ss-auto-complete>
+      </mat-form-field>
+      @if (isCACO) {
         <mat-form-field class="default-50 sm-100">
-            <mat-label translate>LOGISTICS_ACCOUNT_NO</mat-label>
-            <ss-auto-complete matInput
-                              [model]="accountLookup"
-                              formControlName="accountNo">
-            </ss-auto-complete>
+          <mat-label translate>ASSET_OS</mat-label>
+          <ss-auto-complete matInput
+            [model]="osLookup"
+            formControlName="os">
+          </ss-auto-complete>
         </mat-form-field>
-
-        <mat-form-field class="default-50 sm-100">
-            <mat-label translate>LOGISTICS_SUPPLIER</mat-label>
-            <ss-auto-complete matInput
-                              [model]="supplierLookup"
-                              formControlName="supplier">
-            </ss-auto-complete>
-        </mat-form-field>
-
-
-        <mat-form-field  class="default-25 sm-50">
-            <mat-label translate>LOGISTICS_INVOICE_NUMBER</mat-label>
-            <input matInput formControlName="invoiceNo" type="text" >
-        </mat-form-field>
-
-        <mat-form-field class="default-25 sm-50">
-            <mat-label translate>ASSET_ACQUISITION_DATE</mat-label>
-            <ss-date-picker formControlName="acquisitionDate"></ss-date-picker>
-        </mat-form-field>
-
-        <mat-form-field  class="default-25 sm-50">
-            <mat-label translate>ASSET_ACQUISITION_VALUE</mat-label>
-            <input matInput formControlName="invoiceNo" type="number" >
-        </mat-form-field>
-
-        <mat-form-field class="default-50 sm-100">
-            <mat-label translate>ASSET_RECEIVER</mat-label>
-            <ss-auto-complete matInput
-                              [model]="officeLookup"
-                              formControlName="receiver">
-            </ss-auto-complete>
-        </mat-form-field>
-
-
-        <mat-form-field class="default-50 sm-100">
-            <mat-label translate>COMMON_MARK</mat-label>
-            <ss-auto-complete matInput
-                              [model]="markLookup"
-                              formControlName="mark">
-            </ss-auto-complete>
-        </mat-form-field>
-
-        <mat-form-field class="default-50 sm-100">
-            <mat-label translate>COMMON_TYPE</mat-label>
-            <ss-auto-complete matInput
-                              [model]="typeLookup"
-                              formControlName="furnitureType">
-            </ss-auto-complete>
-        </mat-form-field>
-
-
-        <mat-form-field class="default-50 sm-100">
-            <mat-label translate>COMMON_STATUS</mat-label>
-            <ss-auto-complete matInput
-                              [model]="statusLookup"
-                              formControlName="status">
-            </ss-auto-complete>
-        </mat-form-field>
-
-
-        <mat-form-field class="default-50 sm-100" *ngIf="isCACO">
-            <mat-label translate>ASSET_OS</mat-label>
-            <ss-auto-complete matInput
-                              [model]="osLookup"
-                              formControlName="os">
-            </ss-auto-complete>
-        </mat-form-field>
-
-        <div class="default-50"  *ngIf="isCACO">
-            <mat-checkbox formControlName="isMultifunctional" translate>ASSET_MULTIFUNCTIONAL</mat-checkbox>
+      }
+      @if (isCACO) {
+        <div class="default-50" >
+          <mat-checkbox formControlName="isMultifunctional" translate>ASSET_MULTIFUNCTIONAL</mat-checkbox>
         </div>
-
-
-        <mat-form-field class="default-25 sm-50">
-            <mat-label translate>ASSET_DATE_OUT</mat-label>
-            <ss-date-picker formControlName="dateOut"></ss-date-picker>
-        </mat-form-field>
-
-        <mat-form-field  class="default-100">
-            <mat-label translate>COMMON_MEMO</mat-label>
-            <input matInput formControlName="memo" type="text" >
-        </mat-form-field>
-
-
+      }
+      <mat-form-field class="default-25 sm-50">
+        <mat-label translate>ASSET_DATE_OUT</mat-label>
+        <ss-date-picker formControlName="dateOut"></ss-date-picker>
+      </mat-form-field>
+      <mat-form-field  class="default-100">
+        <mat-label translate>COMMON_MEMO</mat-label>
+        <input matInput formControlName="memo" type="text" >
+      </mat-form-field>
     </form>
+  }
 </mat-card>
 <!--<div mat-subheader class="title b-primary" translate> {{ 'COMMON_ARCHIVE' }} </div> {{id}}-->
-<div class="content" *ngIf="id > 0 && form !== null">
+@if (id > 0 && form !== null) {
+  <div class="content">
     <ss-app-archive-main [id]="id" [appId]="2" [editable]="isEditable"></ss-app-archive-main>
-</div>
+  </div>
+}

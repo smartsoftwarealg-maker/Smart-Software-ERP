@@ -9,17 +9,30 @@ import { MatTableModule } from '@angular/material/table';
 
 import { MaterialModule } from '@ss/common/api-common';
 import { PaginationComponent } from '@ss/common/ui-pagination';
-import { TranslatePipe } from '@ss/common/ui-lang';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-vehicle-oil-change-list',
     standalone: true,
-    imports: [CommonModule, MatButtonModule, MatTableModule, MaterialModule, PaginationComponent, TranslatePipe],
+    imports: [
+        CommonModule,
+        MatButtonModule,
+        MatTableModule,
+        MaterialModule,
+        PaginationComponent,
+        TranslatePipe,
+        TranslateDirective,
+    ],
     templateUrl: './vehicle-oil-change-list.component.html',
-    styleUrls: ['./vehicle-oil-change-list.component.css']
+    styleUrls: ['./vehicle-oil-change-list.component.css'],
 })
 export class VehicleOilChangeListComponent extends BaseChildEntityListComponent<OilChange> {
-    override displayedColumns = ['date', 'odometer', 'nextDate', 'nextOdometer'];
+    override displayedColumns = [
+        'date',
+        'odometer',
+        'nextDate',
+        'nextOdometer',
+    ];
 
     constructor(protected override detailSrv: VehicleOilChangeService) {
         super(detailSrv, 'OilChange');

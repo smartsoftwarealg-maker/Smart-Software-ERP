@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { Motive } from '../gica-careers-api';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
@@ -25,7 +25,7 @@ import { MatInput } from '@angular/material/input';
 @Component({
     selector: 'ss-gica-motive-detail',
     standalone: true,
-    imports: [CommonModule,   MatCard, MatCardContent, MatError, MatFormField, MatInput, MatLabel, ReactiveFormsModule],
+    imports: [MatCard, MatCardContent, MatError, MatFormField, MatInput, MatLabel, ReactiveFormsModule],
     templateUrl: './fault-motive-detail.component.html',
     styleUrl: './fault-motive-detail.component.css'
 })

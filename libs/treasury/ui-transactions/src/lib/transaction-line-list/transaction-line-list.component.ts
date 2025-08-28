@@ -7,7 +7,7 @@ import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {SnackBarService} from '@ss/common/ui-shell';
 import {Subscription} from 'rxjs';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import { NgIf, DecimalPipe, DatePipe } from '@angular/common';
+import { DecimalPipe, DatePipe } from '@angular/common';
 import { MatFormField, MatLabel } from '@angular/material/form-field';
 import { TranslateDirective } from '@ss/common/ui-lang';
 import { MatInput } from '@angular/material/input';

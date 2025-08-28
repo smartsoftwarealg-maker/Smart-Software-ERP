@@ -20,7 +20,7 @@ import {
 } from '@ss/common/api-common';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import {debounceTime, distinctUntilChanged} from 'rxjs/operators';
-import { CommonModule } from '@angular/common';
+
 
 
 import { DatePickerComponent } from '@ss/common/ui-datepicker';
@@ -36,14 +36,13 @@ import { AccessRightsService } from '@ss/common/api-access-rights';
     styleUrls: ['./dashboard-list.component.scss'],
     standalone: true,
     imports: [
-        CommonModule,
-        MaterialModule,
-        TranslateDirective,
-        TranslatePipe,
-        ReactiveFormsModule,
-        PaginationComponent,
-        TranslatePipe
-    ]
+    MaterialModule,
+    TranslateDirective,
+    TranslatePipe,
+    ReactiveFormsModule,
+    PaginationComponent,
+    TranslatePipe
+]
 
 })
 export class DashboardListComponent extends BaseEntityListComponent<Dashboard> {

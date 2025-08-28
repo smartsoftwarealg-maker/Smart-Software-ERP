@@ -8,7 +8,7 @@ import { HttpEventType } from '@angular/common/http';
 import { ProcessedCheckService } from '@ss/treasury/api-checks';
 import { BankService } from '@ss/administration/api-bank';
 import { TranslateDirective } from '@ss/common/ui-lang';
-import { NgIf, NgFor } from '@angular/common';
+
 import { MatMiniFabButton, MatButton } from '@angular/material/button';
 import { MatProgressBar } from '@angular/material/progress-bar';
 import { MatCard } from '@angular/material/card';
@@ -23,7 +23,7 @@ import { TranslatePipe } from '@ss/common/ui-lang';
     templateUrl: './processed-check-injection-dialog.component.html',
     styleUrls: ['./processed-check-injection-dialog.component.scss'],
     standalone: true,
-    imports: [TranslateDirective, NgIf, MatMiniFabButton, MatProgressBar, MatCard, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, UiAutoCompleteComponent, MatSelect, NgFor, MatOption, MatButton, TranslatePipe]
+    imports: [TranslateDirective, MatMiniFabButton, MatProgressBar, MatCard, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, UiAutoCompleteComponent, MatSelect, MatOption, MatButton, TranslatePipe]
 })
 export class ProcessedCheckInjectionDialogComponent {
     private bankSrv = inject(BankService);

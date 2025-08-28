@@ -11,7 +11,7 @@ import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {AgentLookupModel, AgentService} from '@ss/logistics/api-agent';
 import {filter} from 'rxjs/operators';
 import { MatCard, MatCardContent } from '@angular/material/card';
-import { NgIf } from '@angular/common';
+
 import { MatFormField, MatLabel, MatError } from '@angular/material/form-field';
 import { TranslateDirective } from '@ss/common/ui-lang';
 import { MatInput } from '@angular/material/input';
@@ -25,22 +25,21 @@ import { MatCheckbox } from '@angular/material/checkbox';
     styleUrls: ['./transaction-detail.component.scss'],
     standalone: true,
     imports: [
-        MatCard,
-        MaterialModule,
-        MatCardContent,
-        NgIf,
-        FormsModule,
-        ReactiveFormsModule,
-        MatFormField,
-        MatLabel,
-        TranslateDirective,
-        MatInput,
-        DatePickerComponent,
-        MatError,
-        UiAutoCompleteComponent,
-        MatCheckbox,
-        RouterOutlet,
-    ],
+    MatCard,
+    MaterialModule,
+    MatCardContent,
+    FormsModule,
+    ReactiveFormsModule,
+    MatFormField,
+    MatLabel,
+    TranslateDirective,
+    MatInput,
+    DatePickerComponent,
+    MatError,
+    UiAutoCompleteComponent,
+    MatCheckbox,
+    RouterOutlet
+],
 })
 export class TransactionDetailComponent extends BaseEntityDetailComponent<TTransaction> {
     private agentSrv = inject(AgentService);

@@ -9,20 +9,33 @@ import { MatTableModule } from '@angular/material/table';
 
 import { MaterialModule } from '@ss/common/api-common';
 import { PaginationComponent } from '@ss/common/ui-pagination';
-import { TranslatePipe } from '@ss/common/ui-lang';
+import {TranslateDirective, TranslatePipe} from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-vehicle-maintenance-list',
     standalone: true,
-    imports: [CommonModule, MatButtonModule, MatTableModule, MaterialModule, PaginationComponent, TranslatePipe],
+    imports: [
+        CommonModule,
+        MatButtonModule,
+        MatTableModule,
+        MaterialModule,
+        PaginationComponent,
+        TranslatePipe,
+        TranslateDirective,
+
+    ],
     templateUrl: './vehicle-maintenance-list.component.html',
-    styleUrls: ['./vehicle-maintenance-list.component.css']
+    styleUrls: ['./vehicle-maintenance-list.component.css'],
 })
 export class VehicleMaintenanceListComponent extends BaseChildEntityListComponent<VehicleMaintenance> {
-    override displayedColumns = ['date', 'description', 'supplierName', 'invoiceNo'];
+    override displayedColumns = [
+        'date',
+        'description',
+        'supplierName',
+        'invoiceNo',
+    ];
 
     constructor(protected override detailSrv: VehicleMaintenanceService) {
         super(detailSrv, 'VehicleMaintenance');
     }
-
 }

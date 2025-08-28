@@ -1,25 +1,30 @@
 <mat-card>
-    <mat-card-content>
-        <form *ngIf="form !== null" novalidate [formGroup]="form">
+  <mat-card-content>
+    @if (form !== null) {
+      <form novalidate [formGroup]="form">
+        <mat-form-field id="from" class="default-50 sm-100">
+          <mat-label translate>COMMON_FROM</mat-label>
+          <input matInput formControlName="from" type="number" autofocus required min="0" max="100">
+          @if (form.controls['from'].invalid) {
+            <mat-error translate >COMMON_FIELD_REQUIRED</mat-error>
+          }
+        </mat-form-field>
+        <mat-form-field id="to" class="default-50 sm-100">
+          <mat-label translate>COMMON_TO</mat-label>
+          <input matInput formControlName="to" type="number" autofocus required min="0" max="100">
+          @if (form.controls['to'].invalid) {
+            <mat-error translate >COMMON_FIELD_REQUIRED</mat-error>
+          }
+        </mat-form-field>
+        <mat-form-field id="rate" class="default-100">
+          <mat-label translate>COMMON_RATE</mat-label>
+          <input matInput formControlName="rate" type="number" autofocus required min="0" max="10">
+          @if (form.controls['rate'].invalid) {
+            <mat-error translate >COMMON_FIELD_REQUIRED</mat-error>
+          }
+        </mat-form-field>
+      </form>
+    }
 
-            <mat-form-field id="from" class="default-50 sm-100">
-                <mat-label translate>COMMON_FROM</mat-label>
-                <input matInput formControlName="from" type="number" autofocus required min="0" max="100">
-                <mat-error *ngIf="form.controls['from'].invalid" translate >COMMON_FIELD_REQUIRED</mat-error>
-            </mat-form-field>
-
-            <mat-form-field id="to" class="default-50 sm-100">
-                <mat-label translate>COMMON_TO</mat-label>
-                <input matInput formControlName="to" type="number" autofocus required min="0" max="100">
-                <mat-error *ngIf="form.controls['to'].invalid" translate >COMMON_FIELD_REQUIRED</mat-error>
-            </mat-form-field>
-
-            <mat-form-field id="rate" class="default-100">
-                <mat-label translate>COMMON_RATE</mat-label>
-                <input matInput formControlName="rate" type="number" autofocus required min="0" max="10">
-                <mat-error *ngIf="form.controls['rate'].invalid" translate >COMMON_FIELD_REQUIRED</mat-error>
-            </mat-form-field>
-        </form>
-
-    </mat-card-content>
+  </mat-card-content>
 </mat-card>

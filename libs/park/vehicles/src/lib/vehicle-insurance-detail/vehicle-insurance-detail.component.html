@@ -1,55 +1,59 @@
-<div class="button_div size" *ngIf="form">
-    <button mat-mini-fab (click)="save()"
-            color="accent" *ngIf="isEditable">
+@if (form) {
+  <div class="button_div size">
+    @if (isEditable) {
+      <button mat-mini-fab (click)="save()"
+        color="accent">
         <i class="fas fa-save"></i>
-    </button>
+      </button>
+    }
     <button mat-mini-fab (click)="cancel()"
-            color="warn" >
-        <i class="fas fa-redo"></i>
+      color="warn" >
+      <i class="fas fa-redo"></i>
     </button>
-</div>
+  </div>
+}
 
 <mat-card class="size">
-    <mat-card-content>
-        <form *ngIf="form !== null" novalidate [formGroup]="form">
+  <mat-card-content>
+    @if (form !== null) {
+      <form novalidate [formGroup]="form">
+        <mat-form-field class="default-50 sm-100" autofocus>
+          <mat-label translate>COMMON_DATE</mat-label>
+          <ss-date-picker formControlName="date"></ss-date-picker>
+        </mat-form-field>
+        <mat-form-field class="default-50 sm-100" autofocus>
+          <mat-label translate>PARK_NEXT_DATE</mat-label>
+          <ss-date-picker formControlName="nextDate"></ss-date-picker>
+        </mat-form-field>
+        <mat-form-field class="default-50 sm-100" >
+          <mat-label translate>PARK_AGENCY</mat-label>
+          <ss-auto-complete matInput
+            [model]="agencyLookup"
+            formControlName="agency"
+            required="true">
+          </ss-auto-complete>
+          @if (form.controls['agency'].invalid) {
+            <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+          }
+        </mat-form-field>
+        <mat-form-field class="default-50 sm-100" >
+          <mat-label translate>PARK_POLICY</mat-label>
+          <ss-auto-complete matInput
+            [model]="policyLookup"
+            formControlName="policy"
+            required="true">
+          </ss-auto-complete>
+          @if (form.controls['policy'].invalid) {
+            <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+          }
+        </mat-form-field>
+        <mat-form-field class="default-50 sm-100">
+          <mat-label translate>COMMON_AMOUNT</mat-label>
+          <input matInput formControlName="amount" type="number" required>
+        </mat-form-field>
+      </form>
+    }
 
-            <mat-form-field class="default-50 sm-100" autofocus>
-                <mat-label translate>COMMON_DATE</mat-label>
-                <ss-date-picker formControlName="date"></ss-date-picker>
-            </mat-form-field>
-
-            <mat-form-field class="default-50 sm-100" autofocus>
-                <mat-label translate>PARK_NEXT_DATE</mat-label>
-                <ss-date-picker formControlName="nextDate"></ss-date-picker>
-            </mat-form-field>
-
-            <mat-form-field class="default-50 sm-100" >
-                <mat-label translate>PARK_AGENCY</mat-label>
-                <ss-auto-complete matInput
-                                  [model]="agencyLookup"
-                                  formControlName="agency"
-                                  required="true">
-                </ss-auto-complete>
-                <mat-error *ngIf="form.controls['agency'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
-            </mat-form-field>
-
-            <mat-form-field class="default-50 sm-100" >
-                <mat-label translate>PARK_POLICY</mat-label>
-                <ss-auto-complete matInput
-                                  [model]="policyLookup"
-                                  formControlName="policy"
-                                  required="true">
-                </ss-auto-complete>
-                <mat-error *ngIf="form.controls['policy'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
-            </mat-form-field>
-
-            <mat-form-field class="default-50 sm-100">
-                <mat-label translate>COMMON_AMOUNT</mat-label>
-                <input matInput formControlName="amount" type="number" required>
-            </mat-form-field>
-
-        </form>
-
-    </mat-card-content>
+  </mat-card-content>
 </mat-card>
 

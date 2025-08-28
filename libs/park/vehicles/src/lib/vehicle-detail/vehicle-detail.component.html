@@ -1,146 +1,164 @@
 <mat-card class="size">
-    <mat-card-content>
-        <form *ngIf="form" novalidate [formGroup]="form" class="size">
+  <mat-card-content>
+    @if (form) {
+      <form novalidate [formGroup]="form" class="size">
+        <mat-form-field class="default-50">
+          <mat-label translate>COMMON_DATE</mat-label>
+          <ss-date-picker formControlName="acquisitionDate"></ss-date-picker>
+        </mat-form-field>
+        <mat-form-field class="default-50 sm-100">
+          <mat-label translate>COMMON_DESCRIPTION</mat-label>
+          <input matInput formControlName="description" type="text" maxlength="70">
+          @if (form.controls['description'].hasError('maxlength')) {
+            <mat-error [translate]="{maxLen: 70}">
+              COMMON_FIELD_MAX_LENGTH
+            </mat-error>
+          }
+        </mat-form-field>
+        <mat-form-field class="default-50 sm-100">
+          <mat-label translate>LOGISTICS_PLATE_NUMBER</mat-label>
+          <input matInput formControlName="plateNumber" type="text" maxlength="15">
+          @if (form.controls['plateNumber'].hasError('maxlength')) {
+            <mat-error [translate]="{maxLen: 15}">
+              COMMON_FIELD_MAX_LENGTH
+            </mat-error>
+          }
+        </mat-form-field>
+        <mat-form-field class="default-50 sm-100">
+          <mat-label translate>PARK_ODOMETER</mat-label>
+          <input matInput formControlName="odoMeter" type="number" min="0">
+        </mat-form-field>
+        <mat-form-field class="default-50 sm-100">
+          <mat-label translate>COMMON_TYPE</mat-label>
+          <ss-auto-complete matInput
+            [model]="typeLookup"
+            formControlName="vType"
+            required="true">
+          </ss-auto-complete>
+          @if (form.controls['vType'].invalid) {
+            <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+          }
+        </mat-form-field>
+      </form>
+    }
 
-            <mat-form-field class="default-50">
-                <mat-label translate>COMMON_DATE</mat-label>
-                <ss-date-picker formControlName="acquisitionDate"></ss-date-picker>
-            </mat-form-field>
-
-            <mat-form-field class="default-50 sm-100">
-                <mat-label translate>COMMON_DESCRIPTION</mat-label>
-                <input matInput formControlName="description" type="text" maxlength="70">
-                <mat-error *ngIf="form.controls['description'].hasError('maxlength')" [translate]="{maxLen: 70}">
-                    COMMON_FIELD_MAX_LENGTH
-                </mat-error>
-            </mat-form-field>
-
-            <mat-form-field class="default-50 sm-100">
-                <mat-label translate>LOGISTICS_PLATE_NUMBER</mat-label>
-                <input matInput formControlName="plateNumber" type="text" maxlength="15">
-                <mat-error *ngIf="form.controls['plateNumber'].hasError('maxlength')" [translate]="{maxLen: 15}">
-                    COMMON_FIELD_MAX_LENGTH
-                </mat-error>
-            </mat-form-field>
-
-            <mat-form-field class="default-50 sm-100">
-                <mat-label translate>PARK_ODOMETER</mat-label>
-                <input matInput formControlName="odoMeter" type="number" min="0">
-            </mat-form-field>
-
-            <mat-form-field class="default-50 sm-100">
-                <mat-label translate>COMMON_TYPE</mat-label>
-                <ss-auto-complete matInput
-                                  [model]="typeLookup"
-                                  formControlName="vType"
-                                  required="true">
-                </ss-auto-complete>
-                <mat-error *ngIf="form.controls['vType'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
-            </mat-form-field>
-
-        </form>
-
-    </mat-card-content>
+  </mat-card-content>
 </mat-card>
 
 <mat-accordion >
 
-    <mat-expansion-panel #archivePanel
-                         (afterExpand)="showArchive()"
-                         [class.b-primary-expansion-panel]="archivePanel.expanded"
-                         class="size">
-        <mat-expansion-panel-header>
-            <mat-panel-title translate>
-                COMMON_ARCHIVE
-            </mat-panel-title>
-        </mat-expansion-panel-header>
-        <ss-app-archive-main [id]="id" [appId]="9" *ngIf="id && detailPanel === ARCHIVE_PANEL"
-                             [editable]="isEditable"></ss-app-archive-main>
-    </mat-expansion-panel>
+  <mat-expansion-panel #archivePanel
+    (afterExpand)="showArchive()"
+    [class.b-primary-expansion-panel]="archivePanel.expanded"
+    class="size">
+    <mat-expansion-panel-header>
+      <mat-panel-title translate>
+        COMMON_ARCHIVE
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    @if (id && detailPanel === ARCHIVE_PANEL) {
+      <ss-app-archive-main [id]="id" [appId]="9"
+      [editable]="isEditable"></ss-app-archive-main>
+    }
+  </mat-expansion-panel>
 
-    <mat-expansion-panel #maintPanel
-                         (afterExpand)="showMaintenance()"
-                         [class.b-primary-expansion-panel]="maintPanel.expanded"
-                         class="size">
-        <mat-expansion-panel-header>
-            <mat-panel-title translate>
-                COMMON_MAINTENANCE
-            </mat-panel-title>
-        </mat-expansion-panel-header>
-        <router-outlet *ngIf="id && detailPanel === MAINTENANCE_PANEL"></router-outlet>
-    </mat-expansion-panel>
+  <mat-expansion-panel #maintPanel
+    (afterExpand)="showMaintenance()"
+    [class.b-primary-expansion-panel]="maintPanel.expanded"
+    class="size">
+    <mat-expansion-panel-header>
+      <mat-panel-title translate>
+        COMMON_MAINTENANCE
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    @if (id && detailPanel === MAINTENANCE_PANEL) {
+      <router-outlet></router-outlet>
+    }
+  </mat-expansion-panel>
 
-    <mat-expansion-panel #fuelPanel
-                         (afterExpand)="showFuel()"
-                         [class.b-primary-expansion-panel]="fuelPanel.expanded"
-                         class="size">
-        <mat-expansion-panel-header>
-            <mat-panel-title translate>
-                PARK_FUEL_CONSUMPTION
-            </mat-panel-title>
-        </mat-expansion-panel-header>
-        <router-outlet *ngIf="id && detailPanel === FUEL_PANEL"></router-outlet>
-    </mat-expansion-panel>
+  <mat-expansion-panel #fuelPanel
+    (afterExpand)="showFuel()"
+    [class.b-primary-expansion-panel]="fuelPanel.expanded"
+    class="size">
+    <mat-expansion-panel-header>
+      <mat-panel-title translate>
+        PARK_FUEL_CONSUMPTION
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    @if (id && detailPanel === FUEL_PANEL) {
+      <router-outlet></router-outlet>
+    }
+  </mat-expansion-panel>
 
-    <mat-expansion-panel #oilPanel
-                         (afterExpand)="showOil()"
-                         [class.b-primary-expansion-panel]="oilPanel.expanded"
-                         class="size">
-        <mat-expansion-panel-header>
-            <mat-panel-title translate>
-                PARK_OIL_CHANGE
-            </mat-panel-title>
-        </mat-expansion-panel-header>
-        <router-outlet *ngIf="id && detailPanel === OIL_PANEL"></router-outlet>
-    </mat-expansion-panel>
+  <mat-expansion-panel #oilPanel
+    (afterExpand)="showOil()"
+    [class.b-primary-expansion-panel]="oilPanel.expanded"
+    class="size">
+    <mat-expansion-panel-header>
+      <mat-panel-title translate>
+        PARK_OIL_CHANGE
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    @if (id && detailPanel === OIL_PANEL) {
+      <router-outlet></router-outlet>
+    }
+  </mat-expansion-panel>
 
-    <mat-expansion-panel #insurancePanel
-                         (afterExpand)="showInsurance()"
-                         [class.b-primary-expansion-panel]="insurancePanel.expanded"
-                         class="size">
-        <mat-expansion-panel-header>
-            <mat-panel-title translate>
-                PARK_INSURANCE
-            </mat-panel-title>
-        </mat-expansion-panel-header>
-        <router-outlet *ngIf="id && detailPanel === INSURANCE_PANEL"></router-outlet>
-    </mat-expansion-panel>
+  <mat-expansion-panel #insurancePanel
+    (afterExpand)="showInsurance()"
+    [class.b-primary-expansion-panel]="insurancePanel.expanded"
+    class="size">
+    <mat-expansion-panel-header>
+      <mat-panel-title translate>
+        PARK_INSURANCE
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    @if (id && detailPanel === INSURANCE_PANEL) {
+      <router-outlet></router-outlet>
+    }
+  </mat-expansion-panel>
 
-    <mat-expansion-panel #insurancePanel
-                         (afterExpand)="showDamages()"
-                         [class.b-primary-expansion-panel]="insurancePanel.expanded"
-                         class="size">
-        <mat-expansion-panel-header>
-            <mat-panel-title translate>
-                PARK_DAMAGES
-            </mat-panel-title>
-        </mat-expansion-panel-header>
-        <router-outlet *ngIf="id && detailPanel === DAMAGE_PANEL"></router-outlet>
-    </mat-expansion-panel>
+  <mat-expansion-panel #insurancePanel
+    (afterExpand)="showDamages()"
+    [class.b-primary-expansion-panel]="insurancePanel.expanded"
+    class="size">
+    <mat-expansion-panel-header>
+      <mat-panel-title translate>
+        PARK_DAMAGES
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    @if (id && detailPanel === DAMAGE_PANEL) {
+      <router-outlet></router-outlet>
+    }
+  </mat-expansion-panel>
 
-    <mat-expansion-panel #driverPanel
-                         (afterExpand)="showDrivers()"
-                         [class.b-primary-expansion-panel]="driverPanel.expanded"
-                         class="size">
-        <mat-expansion-panel-header>
-            <mat-panel-title translate>
-                PARK_DRIVERS
-            </mat-panel-title>
-        </mat-expansion-panel-header>
-        <router-outlet *ngIf="id && detailPanel === DRIVER_PANEL"></router-outlet>
-    </mat-expansion-panel>
+  <mat-expansion-panel #driverPanel
+    (afterExpand)="showDrivers()"
+    [class.b-primary-expansion-panel]="driverPanel.expanded"
+    class="size">
+    <mat-expansion-panel-header>
+      <mat-panel-title translate>
+        PARK_DRIVERS
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    @if (id && detailPanel === DRIVER_PANEL) {
+      <router-outlet></router-outlet>
+    }
+  </mat-expansion-panel>
 
-    <mat-expansion-panel #missionPanel
-                         (afterExpand)="showMissions()"
-                         [class.b-primary-expansion-panel]="missionPanel.expanded"
-                         class="size">
-        <mat-expansion-panel-header>
-            <mat-panel-title translate>
-                PARK_MISSIONS
-            </mat-panel-title>
-        </mat-expansion-panel-header>
-        <router-outlet *ngIf="id && detailPanel === MISSIONS_PANEL"></router-outlet>
-    </mat-expansion-panel>
+  <mat-expansion-panel #missionPanel
+    (afterExpand)="showMissions()"
+    [class.b-primary-expansion-panel]="missionPanel.expanded"
+    class="size">
+    <mat-expansion-panel-header>
+      <mat-panel-title translate>
+        PARK_MISSIONS
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    @if (id && detailPanel === MISSIONS_PANEL) {
+      <router-outlet></router-outlet>
+    }
+  </mat-expansion-panel>
 
 </mat-accordion>
 
