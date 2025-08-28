@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { Lookup, LookupsService } from '@ss/common/api-lookup';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
@@ -17,7 +17,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
 @Component({
     selector: 'ss-mutual-rejections-detail',
     standalone: true,
-    imports: [CommonModule,  MatCard, MatCardContent, MatError, MatFormField, MatInput, MatLabel, ReactiveFormsModule, TranslateDirective],
+    imports: [MatCard, MatCardContent, MatError, MatFormField, MatInput, MatLabel, ReactiveFormsModule, TranslateDirective],
     templateUrl: './social-activities-detail.component.html',
     styleUrl: './social-activities-detail.component.scss',
 })

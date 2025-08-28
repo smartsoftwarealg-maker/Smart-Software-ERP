@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { BaseChildEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { DriverLicense } from '../driver-api';
 import { DriverLicenseService } from '../services/driver-license.service';
@@ -18,14 +18,12 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     selector: 'ss-driver-license-detail',
     standalone: true,
     imports: [
-        CommonModule,
-        MaterialModule,
-        TranslateDirective,
-        DatePickerComponent,
-        RouterModule,
-
-        DatePickerComponent
-    ],
+    MaterialModule,
+    TranslateDirective,
+    DatePickerComponent,
+    RouterModule,
+    DatePickerComponent
+],
     templateUrl: './driver-license-detail.component.html',
     styleUrls: ['./driver-license-detail.component.css']
 })

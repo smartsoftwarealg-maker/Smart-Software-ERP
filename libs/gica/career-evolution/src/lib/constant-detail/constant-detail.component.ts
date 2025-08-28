@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { Constant } from '../gica-careers-api';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
@@ -31,17 +31,16 @@ import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui
     selector: 'ss-gica-constant-detail',
     standalone: true,
     imports: [
-        CommonModule,
-        MaterialModule,
-        MatCard,
-        MatCardContent,
-        MatError,
-        MatFormField,
-        MatInput,
-        MatLabel,
-        ReactiveFormsModule,
-        TranslateDirective
-    ],
+    MaterialModule,
+    MatCard,
+    MatCardContent,
+    MatError,
+    MatFormField,
+    MatInput,
+    MatLabel,
+    ReactiveFormsModule,
+    TranslateDirective
+],
     templateUrl: './constant-detail.component.html',
     styleUrl: './constant-detail.component.css'
 })

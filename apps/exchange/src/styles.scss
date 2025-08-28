@@ -1,9 +1,13 @@
-// todo: make this file shared
+@use '@angular/material' as mat;
+@use '@muaazh/angular-datepicker/_theming.css';
 
-/* You can add global styles to this file, and also import other style files */
-@import '@angular/material/theming';
+html {
+    --mat-toolbar-container-background-color: var(--mat-sys-primary-container);
+    --mat-toolbar-container-text-color: var(--mat-sys-on-primary-container);
+}
 
 body {
+    box-sizing: border-box;
     position: absolute;
     top: 0;
     right: 0;
@@ -12,155 +16,105 @@ body {
     padding: 0;
     margin: 0;
     overflow: hidden;
+    //font-size: small;
+    font-family:  Arial, Helvetica, sans-serif;
+    --admob-bottom-padding: 0px;
 }
 
-$ss-white: (
-        50: #ffffff,
-        100: #FDFDFD,
-        200: #FBFBFB,
-        300: #F9F9F9,
-        400: #F7F7F7,
-        500: #F5F5F5,
-        600: #F3F3F3,
-        700: #F1F1F1,
-        800: #F0F0F0,
-        900: #EFEFEF,
-        A100: #EEEEEE,
-        A200: #DDDDDD,
-        A400: #CCCCCC,
-        A700: #BBBBBB,
-        contrast: (
-            50: $dark-primary-text,
-            100: $dark-primary-text,
-            200: $dark-primary-text,
-            300: $dark-primary-text,
-            400: $dark-primary-text,
-            500: $dark-primary-text,
-            600: $dark-primary-text,
-            700: $dark-primary-text,
-            800: $dark-primary-text,
-            900: $dark-primary-text,
-            A100: $dark-primary-text,
-            A200: $dark-primary-text,
-            A400: $dark-primary-text,
-            A700: $dark-primary-text,
-        )
-);
+/* Default SnackBar style (no ad) */
+.snackbar-no-ad {
+    margin-bottom: 0;
+}
 
-$ss-black: (
-        50: #000000,
-        100: #101010,
-        200: #151515,
-        300: #202020,
-        400: #252525,
-        500: #303030,
-        600: #303030,
-        700: #353535,
-        800: #404040,
-        900: #454545,
-        A100: #505050,
-        A200: #555555,
-        A400: #606060,
-        A700: #656565,
-        contrast: (
-            50: $light-primary-text,
-            100: $light-primary-text,
-            200: $light-primary-text,
-            300: $light-primary-text,
-            400: $light-primary-text,
-            500: $light-primary-text,
-            600: $light-primary-text,
-            700: $light-primary-text,
-            800: $light-primary-text,
-            900: $light-primary-text,
-            A100: $light-primary-text,
-            A200: $light-primary-text,
-            A400: $light-primary-text,
-            A700: $light-primary-text,
-        )
-);
+/* SnackBar style when AdMob is visible */
+.snackbar-with-ad {
+    position: absolute;
+    bottom: 64px;
+    left: calc(50% - 170px);
+}
 
-$ss-green: (
-    50: #B2FFBB,
-    100: #A5FFB0,
-    200: #99FFA4,
-    300: #8CFF97,
-    400: #7FFF8A,
-    500: #72FF7E,
-    600: #66FF72,
-    700: #59FF64,
-    800: #4CFF55,
-    900: #3FFF49,
-    A100: #71E277,
-    A200: #64E06B,
-    A400: #58DD5F,
-    A700: #4CDB53,
-    contrast: (
-        50: $dark-primary-text,
-        100: $dark-primary-text,
-        200: $dark-primary-text,
-        300: $dark-primary-text,
-        400: $dark-primary-text,
-        500: $dark-primary-text,
-        600: $dark-primary-text,
-        700: $dark-primary-text,
-        800: $dark-primary-text,
-        900: $dark-primary-text,
-        A100: $dark-primary-text,
-        A200: $dark-primary-text,
-        A400: $dark-primary-text,
-        A700: $dark-primary-text,
-    )
-);
-
-// Include the common styles for Angular Material. We include this here so that you only
-// have to load a single css file for Angular Material in your app.
-// Be sure that you only ever include this mixin once!
-@include mat-core();
+.has-admob-banner {
+    padding-bottom: var(--admob-bottom-padding);
+}
 
 // Use these classes to style your components
 
-@mixin theme-classes($theme) {
+@mixin themes-patches() {
 
-    $primary: map-get($theme, primary);
-    $accent: map-get($theme, accent);
-    $warn: map-get($theme, warn);
-    $background: map-get($theme, background);
-    $foreground: map-get($theme, foreground);
+    .cdk-overlay-pane {
+        @include mat.elevation(6, var(--mat-sys-secondary-fixed-dim), 0.1);
+    }
+
+    body {
+        background-color: var(--mat-sys-surface-bright);
+    }
 
     // icons
     .mat-form-field.ng-invalid.ng-touched {
         .warn-when-invalid {
-            color: map-get($warn, text);;
+            color: var(--mat-sys-error);
         }
     }
 
     // custom styles
-    .mat-header-row {
-        background-color: map-get($primary, 300);
+    .mat-mdc-header-cell,
+    .mdc-data-table__header-cell.cdk-header-cell,
+    .mat-mdc-header-row.mdc-data-table__header-row {
+        background-color: var(--mat-sys-primary-container);
+        color: var(--mat-sys-on-primary-container);
+        font-weight: bolder;
+        font-size: 0.95em;
     }
-    .mat-header-cell {
-        color: mat-contrast($primary, 100);
+
+    .mat-mdc-header-cell,
+    .mdc-data-table__header-cell.cdk-header-cell {
+        justify-self: center;
+        justify-content: center;
+        font-weight: bolder;
+        font-size: 0.95em;
+    }
+
+    i {
+        font-size: medium;
+    }
+
+    .mat-badge-content {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: .65em !important;
+    }
+
+    .number {
+        text-align: end;
+        font-weight: bold;
+    }
+
+    mat-custom-header .mat-custom-controls  .mat-custom-date-year-monthday {
+        font-size: 0.7em;
         font-weight: bolder;
     }
 
-    // defaults
-    color: map-get($foreground, base);
-    background-color: map-get($background, background);
+    mat-custom-header.type-date .mat-custom-controls .mat-custom-date-year {
+        font-size: 2em;
+        font-weight: bolder;
+    }
+
+    button.mat-custom-time-minute {
+        font-size: 0.9em;
+    }
 
     // background
 
-    .f-b-status-bar { color: map-get($background, status-bar); }
-    .b-b-status-bar { background-color: map-get($background, status-bar); }
+    .b-b-app-bar {
+        background-color: var(--mat-sys-surface);
+        color: var(--mat-sys-on-surface);
+    }
 
-    .f-b-app-bar { color: map-get($background, app-bar); }
-    .b-b-app-bar { background-color: map-get($background, app-bar); }
-
-    .f-b-background { color: map-get($background, background); }
-    .b-b-background { background-color: map-get($background, background); }
-
-    .f-b-hover { color: map-get($background, hover); }
-    .b-b-hover { background-color: map-get($background, hover); }
+    .b-b-background {
+        background-color: var(--mat-sys-background);
+        color: var(--mat-sys-on-background);
+    }
 
     .selectable {
         cursor: pointer;
@@ -169,183 +123,58 @@ $ss-green: (
         }
     }
 
-    .f-b-card { color: map-get($background, card); }
-    .b-b-card { background-color: map-get($background, card); }
-
-    .f-b-dialog { color: map-get($background, dialog); }
-    .b-b-dialog { background-color: map-get($background, dialog); }
-
-    .f-b-disabled-btn { color: map-get($background, disabled-button); }
-    .b-b-disabled-btn { background-color: map-get($background, disabled-button); }
-
-    .f-b-raised-btn { color: map-get($background, raised-button); }
-    .b-b-raised-btn { background-color: map-get($background, raised-button); }
-
-    .f-b-focused-btn { color: map-get($background, focused-button); }
-    .b-b-focused-btn { background-color: map-get($background, focused-button); }
-
-    .f-b-selected-btn { color: map-get($background, selected-button); }
-    .b-b-selected-btn { background-color: map-get($background, selected-button); }
     .selected {
-        // background-color: map-get($background, selected-button);
         background-color: rgba($color: #5555FF, $alpha: 0.3) !important;
+        font-size: 1.05em;
+        font-weight: bold;
     }
 
-    .f-b-selected-disabled-btn { color: map-get($background, selected-disabled-button); }
-    .b-b-selected-disabled-btn { background-color: map-get($background, selected-disabled-button); }
-
-    .f-b-disabled-btn-tgl { color: map-get($background, disabled-button-toggle); }
-    .b-b-disabled-btn-tgl { background-color: map-get($background, disabled-button-toggle); }
-
-    .f-b-unselected-chip { color: map-get($background, unselected-chip); }
-    .b-b-unselected-chip { background-color: map-get($background, unselected-chip); }
-
-    .f-b-disabled-list-opt { color: map-get($background, disabled-list-option); }
-    .b-b-disabled-list-opt { background-color: map-get($background, disabled-list-option); }
-
-    .f-b-tooltip { color: map-get($background, tooltip); }
-    .b-b-tooltip { background-color: map-get($background, tooltip); }
 
     // foreground
 
-    .f-f-base { color: map-get($foreground, base); }
-    .b-f-base { background-color: map-get($foreground, base); }
+    .f-primary { color: var(--mat-sys-primary); }
 
-    .f-f-divider { color: map-get($foreground, divider); }
-    .b-f-divider { background-color: map-get($foreground, divider); }
+    .f-primary-contrast { color: var(--mat-sys-inverse-primary); }
 
-    .f-f-disabled { color: map-get($foreground, disabled); }
-    .b-f-disabled { background-color: map-get($foreground, disabled); }
+    .f-warn { color: var(--mat-sys-error); }
 
-    .f-f-disabled-btn { color: map-get($foreground, disabled-button); }
-    .b-f-disabled-btn { background-color: map-get($foreground, disabled-button); }
-
-    .f-f-text { color: map-get($foreground, disabled-text); }
-    .b-f-text { background-color: map-get($foreground, disabled-text); }
-
-    .f-f-elevation { color: map-get($foreground, elevation); }
-    .b-f-elevation { background-color: map-get($foreground, elevation); }
-
-    .f-f-hint-text { color: map-get($foreground, hint-text); }
-    .b-f-hint-text { background-color: map-get($foreground, hint-text); }
-
-    .f-f-secondary-text { color: map-get($foreground, secondary-text); }
-    .b-f-secondary-text { background-color: map-get($foreground, secondary-text); }
-
-    .f-f-icon { color: map-get($foreground, icon); }
-    .b-f-icon { background-color: map-get($foreground, icon); }
-
-    .f-f-text { color: map-get($foreground, text); }
-    .b-f-text { background-color: map-get($foreground, text); }
-
-    .f-f-slider-min { color: map-get($foreground, slider-min); }
-    .b-f-slider-min { background-color: map-get($foreground, slider-min); }
-
-    .f-f-slider-off { color: map-get($foreground, slider-off); }
-    .b-f-slider-off { background-color: map-get($foreground, slider-off); }
-
-    .f-f-slider-off-active { color: map-get($foreground, slider-off-active); }
-    .b-f-slider-off-active { background-color: map-get($foreground, slider-off-active); }
-
-    // primary
-
-    .f-primary { color: map-get($primary, default); }
-    .f-primary-lighter { color: map-get($primary, lighter); }
-    .f-primary-darker { color: map-get($primary, darker); }
-    .f-primary-contrast { color: map-get($primary, default-contrast); }
-    .f-primary-lighter-contrast { color: map-get($primary, lighter-contrast); }
-    .f-primary-darker-contrast { color: map-get($primary, darker-contrast); }
-    .f-primary-text { color: map-get($primary, text); }
-
-    // warn
-
-    .f-warn { color: map-get($warn, default); }
-    .f-warn-lighter { color: map-get($warn, lighter); }
-    .f-warn-darker { color: map-get($warn, darker); }
-    .f-warn-contrast { color: map-get($warn, default-contrast); }
-    .f-warn-lighter-contrast { color: map-get($warn, lighter-contrast); }
-    .f-warn-darker-contrast { color: map-get($warn, darker-contrast); }
-    .f-warn-text { color: map-get($warn, text); }
-
-    // accent
-
-    .f-accent { color: map-get($accent, default); }
-    .f-accent-lighter { color: map-get($accent, lighter); }
-    .f-accent-darker { color: map-get($accent, darker); }
-    .f-accent-contrast { color: map-get($accent, default-contrast); }
-    .f-accent-lighter-contrast { color: map-get($accent, lighter-contrast); }
-    .f-accent-darker-contrast { color: map-get($accent, darker-contrast); }
-    .f-accent-text { color: map-get($accent, text); }
-
-}
-
-$theme-1-primary: mat-palette($mat-blue);
-$theme-1-accent:  mat-palette($mat-pink, A200, A100, A400);
-$theme-1-warn:    mat-palette($mat-red);
-
-.theme-1-bg-p {
-    background-color: map-get($theme-1-primary, default);
-}
-
-.theme-1-bg-a {
-    background-color: map-get($theme-1-accent, default);
-}
-
-.theme-1-bg-w {
-    background-color: map-get($theme-1-warn, default);
-}
-
-.theme-1-bg {
-    background-color: #EEEEEE;
-}
-
-.theme-1 {
-
-    $theme: mat-light-theme($theme-1-primary, $theme-1-accent, $theme-1-warn);
-
-    @include angular-material-theme($theme);
-    @include theme-classes($theme);
+    .f-accent { color: var(--mat-sys-outline); }
 
     .b-primary {
-        $reverse-theme-p: mat-dark-theme(mat-palette($ss-white), $theme-1-accent, $theme-1-warn);
-        $reverse-color-p: map-get($reverse-theme-p, primary);
-
-        @include angular-material-color($reverse-theme-p);
-
-        background-color: map-get($theme-1-primary, default) !important;
-        color: map-get($reverse-color-p, default) !important;
+        background-color: var(--mat-sys-primary);
+        color: var(--mat-sys-on-primary);
 
         // override mat-tree background to fix a bug
         .mat-tree {
-            background-color: map-get($theme-1-primary, default);
+            background-color: var(--mat-sys-primary-container);
+            color: var(--mat-sys-on-primary-container);
+        }
+
+        .mat-drawer-inner-container {
+            background-color: var(--mat-sys-primary);
+            color: var(--mat-sys-on-primary);
+        }
+
+        i, div, span {
+            color: var(--mat-sys-on-primary);
         }
     }
+
+    .b-accent {
+        background-color: var(--mat-sys-outline);
+        color: var(--mat-sys-on-background);
+    }
+
+    .b-warn {
+        background-color: var(--mat-sys-error-container);
+        color: var(--mat-sys-on-error-container);
+    }
+
     .b-primary-expansion-panel mat-expansion-panel-header{
         @extend .b-primary;
         &:hover,&:focus{
             @extend .b-primary;
         }
-
-    }
-
-    .b-accent {
-        $reverse-theme-a: mat-dark-theme($theme-1-primary, mat-palette($ss-white), $theme-1-warn);
-        $reverse-color-a: map-get($reverse-theme-a, accent);
-
-        @include angular-material-color($reverse-theme-a);
-
-        background-color: map-get($theme-1-accent, default)!important;
-        color: map-get($reverse-color-a, default) !important;
-    }
-
-    .b-warn {
-        $reverse-theme-w: mat-dark-theme($theme-1-primary, $theme-1-accent, mat-palette($ss-white));
-        $reverse-color-w: map-get($reverse-theme-w, warn);
-
-        @include angular-material-color($reverse-theme-w);
-
-        background-color: map-get($theme-1-warn, default) !important;
-        color: map-get($reverse-color-w, default) !important;
     }
 
     .b-warn-expansion-panel mat-expansion-panel-header{
@@ -354,243 +183,40 @@ $theme-1-warn:    mat-palette($mat-red);
             @extend .b-warn;
         }
     }
+
+    @include mat.all-component-densities(0);
 }
 
-$theme-2-primary: mat-palette($mat-indigo);
-$theme-2-accent:  mat-palette($mat-orange, 900, 800, A700);
-$theme-2-warn:    mat-palette($mat-red);
-
-.theme-2-bg-p {
-    background-color: map-get($theme-2-primary, default);
+.mat-mdc-header-cell,
+.mdc-data-table__header-cell.cdk-header-cell {
+    justify-self: center;
+    justify-content: center;
+    font-weight: bolder;
+    font-size: 0.95em;
 }
 
-.theme-2-bg-a {
-    background-color: map-get($theme-2-accent, default);
+i {
+    font-size: small;
 }
 
-.theme-2-bg-w {
-    background-color: map-get($theme-2-warn, default);
+.number {
+    text-align: end;
+    font-weight: bold;
 }
 
-.theme-2-bg {
-    background-color: #EEEEEE;
+mat-custom-header .mat-custom-controls  .mat-custom-date-year-monthday {
+    font-size: 0.7em;
+    font-weight: bolder;
 }
 
-.theme-2 {
-
-    $theme: mat-light-theme($theme-2-primary, $theme-2-accent, $theme-2-warn);
-
-    @include angular-material-theme($theme);
-    @include theme-classes($theme);
-
-    .b-primary {
-        $reverse-theme-p: mat-dark-theme(mat-palette($ss-white), $theme-2-accent, $theme-2-warn);
-        $reverse-color-p: map-get($reverse-theme-p, primary);
-
-        @include angular-material-color($reverse-theme-p);
-
-        background-color: map-get($theme-2-primary, default);
-        color: map-get($reverse-color-p, default);
-
-        // override mat-tree background to fix a bug
-        .mat-tree {
-            background-color: map-get($theme-2-primary, default);
-        }
-    }
-    .b-primary-expansion-panel mat-expansion-panel-header{
-        @extend .b-primary;
-        &:hover,&:focus{
-            @extend .b-primary;
-        }
-
-    }
-
-
-    .b-accent {
-        $reverse-theme-a: mat-dark-theme($theme-2-primary, mat-palette($ss-white), $theme-2-warn);
-        $reverse-color-a: map-get($reverse-theme-a, accent);
-
-        @include angular-material-color($reverse-theme-a);
-
-        background-color: map-get($theme-2-accent, default);
-        color: map-get($reverse-color-a, default);
-    }
-
-    .b-warn {
-        $reverse-theme-w: mat-dark-theme($theme-2-primary, $theme-2-accent, mat-palette($ss-white));
-        $reverse-color-w: map-get($reverse-theme-w, warn);
-
-        @include angular-material-color($reverse-theme-w);
-
-        background-color: map-get($theme-2-warn, default);
-        color: map-get($reverse-color-w, default);
-    }
-    .b-warn-expansion-panel mat-expansion-panel-header{
-        @extend .b-warn;
-        &:hover,&:focus{
-            @extend .b-warn;
-        }
-    }
-
+mat-custom-header.type-date .mat-custom-controls .mat-custom-date-year {
+    font-size: 2em;
+    font-weight: bolder;
 }
 
-
-$theme-3-primary: mat-palette($ss-green);
-$theme-3-accent:  mat-palette($mat-lime, 100, 200, 300);
-$theme-3-warn:    mat-palette($mat-red);
-
-.theme-3-bg-p {
-    background-color: map-get($theme-3-primary, default);
+button.mat-custom-time-minute {
+    font-size: 0.9em;
 }
-
-.theme-3-bg-a {
-    background-color: map-get($theme-3-accent, default);
-}
-
-.theme-3-bg-w {
-    background-color: map-get($theme-3-warn, default);
-}
-
-.theme-3-bg {
-    background-color: #303030;
-}
-
-.theme-3 {
-
-    $theme: mat-dark-theme($theme-3-primary, $theme-3-accent, $theme-3-warn);
-
-    @include angular-material-theme($theme);
-    @include theme-classes($theme);
-
-    .b-primary {
-        $reverse-theme-p: mat-light-theme(mat-palette($ss-black), $theme-3-accent, $theme-3-warn);
-        $reverse-color-p: map-get($reverse-theme-p, primary);
-
-        @include angular-material-color($reverse-theme-p);
-
-        background-color: map-get($theme-3-primary, default);
-        color: map-get($reverse-color-p, default);
-
-        // override mat-tree background to fix a bug
-        .mat-tree {
-            background-color: map-get($theme-3-primary, default);
-        }
-    }
-    .b-primary-expansion-panel mat-expansion-panel-header{
-        @extend .b-primary;
-        &:hover,&:focus{
-            @extend .b-primary;
-        }
-
-    }
-
-
-    .b-accent {
-        $reverse-theme-a: mat-light-theme($theme-3-primary, mat-palette($ss-black), $theme-3-warn);
-        $reverse-color-a: map-get($reverse-theme-a, accent);
-
-        @include angular-material-color($reverse-theme-a);
-
-        background-color: map-get($theme-3-accent, default);
-        color: map-get($reverse-color-a, default);
-    }
-
-    .b-warn {
-        $reverse-theme-w: mat-light-theme($theme-3-primary, $theme-3-accent, mat-palette($ss-black));
-        $reverse-color-w: map-get($reverse-theme-w, warn);
-
-        @include angular-material-color($reverse-theme-w);
-
-        background-color: map-get($theme-3-warn, default);
-        color: map-get($reverse-color-w, default);
-    }
-    .b-warn-expansion-panel mat-expansion-panel-header{
-        @extend .b-warn;
-        &:hover,&:focus{
-            @extend .b-warn;
-        }
-    }
-
-}
-
-$theme-4-primary: mat-palette($mat-yellow);
-$theme-4-accent:  mat-palette($mat-orange);
-$theme-4-warn:    mat-palette($mat-red);
-
-.theme-4-bg-p {
-    background-color: map-get($theme-4-primary, default);
-}
-
-.theme-4-bg-a {
-    background-color: map-get($theme-4-accent, default);
-}
-
-.theme-4-bg-w {
-    background-color: map-get($theme-4-warn, default);
-}
-
-.theme-4-bg {
-    background-color: #303030;
-}
-
-.theme-4 {
-
-    $theme: mat-dark-theme($theme-4-primary, $theme-4-accent, $theme-4-warn);
-
-    @include angular-material-theme($theme);
-    @include theme-classes($theme);
-
-    .b-primary {
-        $reverse-theme-p: mat-light-theme(mat-palette($ss-black), $theme-4-accent, $theme-4-warn);
-        $reverse-color-p: map-get($reverse-theme-p, primary);
-
-        @include angular-material-color($reverse-theme-p);
-
-        background-color: map-get($theme-4-primary, default);
-        color: map-get($reverse-color-p, default);
-
-        // override mat-tree background to fix a bug
-        .mat-tree {
-            background-color: map-get($theme-4-primary, default);
-        }
-    }
-    .b-primary-expansion-panel mat-expansion-panel-header{
-        @extend .b-primary;
-        &:hover,&:focus{
-            @extend .b-primary;
-        }
-
-    }
-
-
-    .b-accent {
-        $reverse-theme-a: mat-light-theme($theme-4-primary, mat-palette($ss-black), $theme-4-warn);
-        $reverse-color-a: map-get($reverse-theme-a, accent);
-
-        @include angular-material-color($reverse-theme-a);
-
-        background-color: map-get($theme-4-accent, default);
-        color: map-get($reverse-color-a, default);
-    }
-
-    .b-warn {
-        $reverse-theme-w: mat-light-theme($theme-4-primary, $theme-4-accent, mat-palette($ss-black));
-        $reverse-color-w: map-get($reverse-theme-w, warn);
-
-        @include angular-material-color($reverse-theme-w);
-
-        background-color: map-get($theme-4-warn, default);
-        color: map-get($reverse-color-w, default);
-    }
-    .b-warn-expansion-panel mat-expansion-panel-header{
-        @extend .b-warn;
-        &:hover,&:focus{
-            @extend .b-warn;
-        }
-    }
-
-}
-
 
 //
 
@@ -607,11 +233,18 @@ $theme-4-warn:    mat-palette($mat-red);
     width: 17.6%;
 }
 
+.default-80 {
+    display: inline-block;
+    margin: 0 8px;
+    max-width: calc(80% - 30px);
+    width: calc(80% - 30px);
+}
+
 .default-25 {
     display: inline-block;
-    margin: 0 1%;
-    max-width: 22.5%;
-    width: 22.5%;
+    margin: 0 8px;
+    max-width: calc(25% - 16px);
+    width: calc(25% - 16px);
 }
 
 .default-33 {
@@ -623,16 +256,16 @@ $theme-4-warn:    mat-palette($mat-red);
 
 .default-50 {
     display: inline-block;
-    margin: 0 1%;
-    max-width: 48%;
-    width: 48%;
+    margin: 0 8px;
+    max-width: calc(50% - 16px);
+    width: calc(50% - 16px);
 }
 
 .default-100 {
     display: inline-block;
-    margin: 0 1%;
-    max-width: 98%;
-    width: 98%;
+    margin: 0 8px;
+    max-width: calc(100% - 16px);
+    width: calc(100% - 16px);;
 }
 
 
@@ -812,4 +445,115 @@ $theme-4-warn:    mat-palette($mat-red);
         max-width: 98% !important;
         width: 98% !important;
     }
+
+}
+
+.amount {
+    input {
+        text-align: end;
+    }
+}
+
+button {
+    display: inline-flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+}
+
+.mdc-list-item__primary-text {
+    display: flex !important;
+}
+
+mat-sidenav-content.mat-drawer-content.mat-sidenav-content {
+    width: 100%;
+    overflow-x: clip;
+}
+
+
+
+// Calendar fix
+
+.mat-calendar-previous-button {
+    border: none !important;
+    background: none !important;
+}
+.mat-calendar-previous-button:before{
+    font-family: "Font Awesome 6 Pro";
+    font-style: normal;
+    font-variant: normal;
+    line-height: 1;
+    text-rendering: auto;
+    content:"\f053" !important;
+}
+.mat-calendar-previous-button:after {
+    border: none !important;
+}
+
+.mat-calendar-next-button {
+    border: none !important;
+    background: none !important;
+}
+.mat-calendar-next-button:before{
+    font-family: "Font Awesome 6 Pro";
+    font-style: normal;
+    font-variant: normal;
+    line-height: 1;
+    text-rendering: auto;
+    content:"\f054" !important;
+}
+.mat-calendar-next-button:after {
+    border: none !important;
+}
+
+.container__700 {
+    width: 80%;
+    max-width: 700px;
+    margin: 4px auto 0;
+}
+
+.container__1200 {
+    width: 94%;
+    max-width: 1200px;
+    margin: 4px auto 0;
+}
+
+.mat__card__500 {
+    width: 98%;
+    max-width: 500px;
+    margin: 1em auto;
+    padding: 1em;
+    border-radius: 1.4em !important;
+}
+
+.mat__card__700 {
+    width: 98%;
+    max-width: 700px;
+    margin: 1em auto;
+    padding: 1em;
+    border-radius: 1.4em !important;
+}
+
+.mat__card__900 {
+    width: 98%;
+    max-width: 900px;
+    margin: 1em auto;
+    padding: 1em;
+    border-radius: 1.4em !important;
+}
+
+.table_div {
+    height: calc(100% - 120px);
+    overflow-x: auto;
+}
+
+.content-div {
+    height: 100%;
+    width: 100%;
+    flex-grow: 1;
+    flex-shrink: 1;
+    overflow-x: auto;
+}
+
+.pagination-container {
+    flex-grow: 0;
 }

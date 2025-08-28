@@ -17,7 +17,7 @@ import { MatCard, MatCardHeader, MatCardContent } from '@angular/material/card';
 import { MatMiniFabButton } from '@angular/material/button';
 import { MatTooltip } from '@angular/material/tooltip';
 import { TranslateDirective } from '@ss/common/ui-lang';
-import { NgIf } from '@angular/common';
+
 import { MatFormField, MatLabel } from '@angular/material/form-field';
 import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { MatInput } from '@angular/material/input';
@@ -29,22 +29,21 @@ import { TranslatePipe } from '@ss/common/ui-lang';
     styleUrls: ['./furniture-reception-line-detail.component.scss'],
     standalone: true,
     imports: [
-        MatCard,
-        MatCardHeader,
-        MatMiniFabButton,
-        MatTooltip,
-        TranslateDirective,
-        MatCardContent,
-        NgIf,
-        FormsModule,
-        ReactiveFormsModule,
-        MatFormField,
-        MatLabel,
-        UiAutoCompleteComponent,
-        MatInput,
-        RouterOutlet,
-        TranslatePipe,
-    ],
+    MatCard,
+    MatCardHeader,
+    MatMiniFabButton,
+    MatTooltip,
+    TranslateDirective,
+    MatCardContent,
+    FormsModule,
+    ReactiveFormsModule,
+    MatFormField,
+    MatLabel,
+    UiAutoCompleteComponent,
+    MatInput,
+    RouterOutlet,
+    TranslatePipe
+],
 })
 export class FurnitureReceptionLineDetailComponent implements OnInit {
     private entitySrv  = inject(FurnitureReceptionService);

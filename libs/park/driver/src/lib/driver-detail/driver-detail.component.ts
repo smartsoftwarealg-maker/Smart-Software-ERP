@@ -6,17 +6,25 @@ import {
     City,
     CityService,
     LookupsService,
-    MaritalStatus
+    MaritalStatus,
 } from '@ss/common/api-lookup';
-import { AppArchiveMainComponent, AppArchiveService, EMPLOYEE_ARCHIVES } from '@ss/common/app-archive';
+import {
+    AppArchiveMainComponent,
+    AppArchiveService,
+    EMPLOYEE_ARCHIVES,
+} from '@ss/common/app-archive';
 import { ImageInputComponent, ImageModel } from '@ss/common/ui-image-input';
-import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
+import {
+    DefaultAutoCompleteModel,
+    UiAutoCompleteComponent,
+} from '@ss/common/ui-auto-complete';
 import {
     AbstractControl,
-    FormsModule, ReactiveFormsModule,
+    FormsModule,
+    ReactiveFormsModule,
     UntypedFormBuilder,
     UntypedFormGroup,
-    Validators
+    Validators,
 } from '@angular/forms';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -25,7 +33,10 @@ import { HttpService } from '@ss/common/api-common';
 import { FixedElementsEntryService } from '@ss/remuneration/elements-entry';
 import { Observable, switchMap } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
-import { MatExpansionModule, MatExpansionPanel } from '@angular/material/expansion';
+import {
+    MatExpansionModule,
+    MatExpansionPanel,
+} from '@angular/material/expansion';
 import { DatePickerComponent } from '@ss/common/ui-datepicker';
 
 import { MatButtonModule } from '@angular/material/button';
@@ -47,11 +58,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     standalone: true,
     imports: [
         CommonModule,
-
-
         DatePickerComponent,
-
-
         FormsModule,
         MatButtonModule,
         MatCheckboxModule,
@@ -69,7 +76,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
         TranslateDirective,
     ],
     templateUrl: './driver-detail.component.html',
-    styleUrls: ['./driver-detail.component.css']
+    styleUrls: ['./driver-detail.component.css'],
 })
 export class DriverDetailComponent extends BaseEntityDetailComponent<Driver> {
     private bloodGroupSrv = inject(BloodGroupService);
@@ -92,7 +99,9 @@ export class DriverDetailComponent extends BaseEntityDetailComponent<Driver> {
     imageModel: ImageModel;
     public maritalStatuses: MaritalStatus[];
     public elementsForm: UntypedFormGroup = null;
-    bloodGroups$ = this.bloodGroupSrv.getList(0, 50).pipe(map(res => res.body));
+    bloodGroups$ = this.bloodGroupSrv
+        .getList(0, 50)
+        .pipe(map((res) => res.body));
 
     constructor(
         public override shellSrv: ShellService,
@@ -102,8 +111,17 @@ export class DriverDetailComponent extends BaseEntityDetailComponent<Driver> {
         public override confirmationSrv: ConfirmationDialogService,
         public driverSrv: DriverService,
         public httpSrv: HttpService,
-        public infoSrv: FixedElementsEntryService) {
-        super(driverSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'PAYROLL_EDIT_EMPLOYEE');
+        public infoSrv: FixedElementsEntryService,
+    ) {
+        super(
+            driverSrv,
+            shellSrv,
+            snackBarSrv,
+            route,
+            formBuilder,
+            confirmationSrv,
+            'PAYROLL_EDIT_EMPLOYEE',
+        );
         this.imageModel = new ImageModel(this.httpSrv);
         this.driverLicenseSrv.setParentId(0);
         this.driverVehiclesSrv.setParentId(0);
@@ -113,9 +131,7 @@ export class DriverDetailComponent extends BaseEntityDetailComponent<Driver> {
     public override preload(): Observable<any> {
         return this.lookupsSrv
             .getMaritalStatuses()
-            .pipe(
-                tap((x: MaritalStatus[]) => this.maritalStatuses = x),
-            );
+            .pipe(tap((x: MaritalStatus[]) => (this.maritalStatuses = x)));
     }
 
     override loadEntity(id: number): Observable<Driver> {
@@ -125,15 +141,17 @@ export class DriverDetailComponent extends BaseEntityDetailComponent<Driver> {
     }
 
     public override setupForm(p: Driver) {
-        this.infoSrv.load()
+        this.infoSrv
+            .load()
             .pipe(switchMap(() => this.infoSrv.get(p.id)))
-            .subscribe(res => {
-                const elements = res.elements.length === 0 ?
-                    this.infoSrv.loadDataCols().map(() => 0.0) :
-                    res.elements;
+            .subscribe((res) => {
+                const elements =
+                    res.elements.length === 0
+                        ? this.infoSrv.loadDataCols().map(() => 0.0)
+                        : res.elements;
 
                 this.elementsForm = this.formBuilder.group({
-                    elements: this.formBuilder.array(elements)
+                    elements: this.formBuilder.array(elements),
                 });
             });
 
@@ -144,31 +162,49 @@ export class DriverDetailComponent extends BaseEntityDetailComponent<Driver> {
 
         return this.formBuilder.group({
             // birth info
-            id:            [p.id],
-            firstName:     [p.firstName, Validators.compose([Validators.required, Validators.maxLength(64)])],
-            lastName:      [p.lastName, Validators.compose([Validators.required, Validators.maxLength(64)])],
-            sex:           [p.sex, Validators.required],
-            birthDate:     [p.birthDate, Validators.required],
-            birthPlace:    [p.birthPlace, Validators.compose([Validators.required, Validators.maxLength(64)])],
-            father:        [p.father, Validators.maxLength(64)],
-            mother:        [p.mother, Validators.maxLength(64)],
-            nationality:   [p.nationality],
+            id: [p.id],
+            firstName: [
+                p.firstName,
+                Validators.compose([
+                    Validators.required,
+                    Validators.maxLength(64),
+                ]),
+            ],
+            lastName: [
+                p.lastName,
+                Validators.compose([
+                    Validators.required,
+                    Validators.maxLength(64),
+                ]),
+            ],
+            sex: [p.sex, Validators.required],
+            birthDate: [p.birthDate, Validators.required],
+            birthPlace: [
+                p.birthPlace,
+                Validators.compose([
+                    Validators.required,
+                    Validators.maxLength(64),
+                ]),
+            ],
+            father: [p.father, Validators.maxLength(64)],
+            mother: [p.mother, Validators.maxLength(64)],
+            nationality: [p.nationality],
             // social inf  o
-            address1:      [p.address1, Validators.maxLength(128)],
-            email:         [p.email, Validators.maxLength(64)],
-            phone:         [p.phone, Validators.maxLength(32)],
-            mobile:        [p.mobile, Validators.maxLength(32)],
-            ss_Number:     [p.ss_Number],
+            address1: [p.address1, Validators.maxLength(128)],
+            email: [p.email, Validators.maxLength(64)],
+            phone: [p.phone, Validators.maxLength(32)],
+            mobile: [p.mobile, Validators.maxLength(32)],
+            ss_Number: [p.ss_Number],
             maritalStatus: [p.maritalStatus],
             // arabic info
-            firstNameAr:   [p.firstNameAr, Validators.maxLength(64)],
-            lastNameAr:    [p.lastNameAr, Validators.maxLength(64)],
-            birthPlaceAr:  [p.birthPlaceAr, Validators.maxLength(64)],
-            fatherAr:      [p.fatherAr, Validators.maxLength(64)],
-            motherAr:      [p.motherAr, Validators.maxLength(64)],
-            birthCity:     [p.birthCity],
-            is_driver:     [true],
-            blood_group:   [p.blood_group]
+            firstNameAr: [p.firstNameAr, Validators.maxLength(64)],
+            lastNameAr: [p.lastNameAr, Validators.maxLength(64)],
+            birthPlaceAr: [p.birthPlaceAr, Validators.maxLength(64)],
+            fatherAr: [p.fatherAr, Validators.maxLength(64)],
+            motherAr: [p.motherAr, Validators.maxLength(64)],
+            birthCity: [p.birthCity],
+            is_driver: [true],
+            blood_group: [p.blood_group],
         });
     }
 
@@ -177,31 +213,37 @@ export class DriverDetailComponent extends BaseEntityDetailComponent<Driver> {
     }
 
     public isBirthInfoValid(): boolean {
-        return this.isControlValid(this.form.controls['firstName']) &&
+        return (
+            this.isControlValid(this.form.controls['firstName']) &&
             this.isControlValid(this.form.controls['lastName']) &&
             this.isControlValid(this.form.controls['sex']) &&
             this.isControlValid(this.form.controls['birthDate']) &&
             this.isControlValid(this.form.controls['birthPlace']) &&
             this.isControlValid(this.form.controls['father']) &&
             this.isControlValid(this.form.controls['mother']) &&
-            this.isControlValid(this.form.controls['nationality']);
+            this.isControlValid(this.form.controls['nationality'])
+        );
     }
 
     public issocialInfoPanelValid(): boolean {
-        return this.isControlValid(this.form.controls['address1']) &&
+        return (
+            this.isControlValid(this.form.controls['address1']) &&
             this.isControlValid(this.form.controls['email']) &&
             this.isControlValid(this.form.controls['phone']) &&
             this.isControlValid(this.form.controls['mobile']) &&
             this.isControlValid(this.form.controls['ss_Number']) &&
-            this.isControlValid(this.form.controls['maritalStatus']);
+            this.isControlValid(this.form.controls['maritalStatus'])
+        );
     }
 
     public isArabicInfoPanelValid(): boolean {
-        return this.isControlValid(this.form.controls['firstNameAr']) &&
+        return (
+            this.isControlValid(this.form.controls['firstNameAr']) &&
             this.isControlValid(this.form.controls['lastNameAr']) &&
             this.isControlValid(this.form.controls['birthPlaceAr']) &&
             this.isControlValid(this.form.controls['fatherAr']) &&
-            this.isControlValid(this.form.controls['motherAr']);
+            this.isControlValid(this.form.controls['motherAr'])
+        );
     }
 
     public isFixedElementsPanelValid(): boolean {
@@ -211,30 +253,31 @@ export class DriverDetailComponent extends BaseEntityDetailComponent<Driver> {
 
     public isSectionValid(section: string): boolean {
         switch (section) {
-        case 'birthinfo':
-            return this.isBirthInfoValid();
-        case 'socialInfo':
-            return this.issocialInfoPanelValid();
-        case 'arabicInfo':
-            return this.isArabicInfoPanelValid();
-        case 'fixedElemnts':
-            return this.isFixedElementsPanelValid();
-        default:
-            return true;
+            case 'birthinfo':
+                return this.isBirthInfoValid();
+            case 'socialInfo':
+                return this.issocialInfoPanelValid();
+            case 'arabicInfo':
+                return this.isArabicInfoPanelValid();
+            case 'fixedElemnts':
+                return this.isFixedElementsPanelValid();
+            default:
+                return true;
         }
     }
 
-    public getPanelHeaderClass(section: string, panel: MatExpansionPanel): string {
+    public getPanelHeaderClass(
+        section: string,
+        panel: MatExpansionPanel,
+    ): string {
         // if invalid return warning class
         if (!this.isSectionValid(section)) {
             return 'b-warn-expansion-panel';
         }
 
         // if expanded return primary background class
-        if (panel.expanded)
-            return 'b-primary-expansion-panel';
-        else
-            return '';
+        if (panel.expanded) return 'b-primary-expansion-panel';
+        else return '';
     }
 
     public override readForm(): Driver {
@@ -246,11 +289,10 @@ export class DriverDetailComponent extends BaseEntityDetailComponent<Driver> {
         return this.imageModel.submit('file');
     }
 
-
     showArchive() {
         this.detailPanel = this.ARCHIVE_PANEL;
         const ARCHIVE = 'archive';
-        if (this.router.url.indexOf(ARCHIVE) <0) {
+        if (this.router.url.indexOf(ARCHIVE) < 0) {
             this.router.navigate([ARCHIVE], { relativeTo: this.route }).then();
         }
     }
@@ -258,7 +300,7 @@ export class DriverDetailComponent extends BaseEntityDetailComponent<Driver> {
     showLicense() {
         this.detailPanel = this.LICENSE_PANEL;
         const LICENSES = 'licenses';
-        if (this.router.url.indexOf(LICENSES) <0) {
+        if (this.router.url.indexOf(LICENSES) < 0) {
             this.router.navigate([LICENSES], { relativeTo: this.route }).then();
         }
     }
@@ -266,7 +308,7 @@ export class DriverDetailComponent extends BaseEntityDetailComponent<Driver> {
     showVehicles() {
         this.detailPanel = this.VEHICLE_PANEL;
         const VEHICLES = 'vehicles';
-        if (this.router.url.indexOf(VEHICLES) <0) {
+        if (this.router.url.indexOf(VEHICLES) < 0) {
             this.router.navigate([VEHICLES], { relativeTo: this.route }).then();
         }
     }
@@ -277,7 +319,10 @@ class CityLookup extends DefaultAutoCompleteModel<City> {
         super(citySrv);
     }
 
-    override toString = (x: any) => x ? x[this.descriptionField]?.substring(0, 50) +
-        (x.dairaDescription? '/' + x.dairaDescription: '') +
-        (x.wilayaDescription? '/' + x.wilayaDescription: ''): null;
+    override toString = (x: any) =>
+        x
+            ? x[this.descriptionField]?.substring(0, 50) +
+              (x.dairaDescription ? '/' + x.dairaDescription : '') +
+              (x.wilayaDescription ? '/' + x.wilayaDescription : '')
+            : null;
 }

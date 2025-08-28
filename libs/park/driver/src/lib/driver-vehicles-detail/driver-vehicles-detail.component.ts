@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { BaseChildEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { DriverVehicle } from '../driver-api';
 import { FormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
@@ -16,15 +16,13 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     selector: 'ss-driver-vehicles-detail',
     standalone: true,
     imports: [
-        CommonModule,
-        MaterialModule,
-        TranslateDirective,
-        DatePickerComponent,
-        RouterModule,
-
-        DatePickerComponent,
-        UiAutoCompleteComponent
-    ],
+    MaterialModule,
+    TranslateDirective,
+    DatePickerComponent,
+    RouterModule,
+    DatePickerComponent,
+    UiAutoCompleteComponent
+],
     templateUrl: './driver-vehicles-detail.component.html',
     styleUrls: ['./driver-vehicles-detail.component.css']
 })

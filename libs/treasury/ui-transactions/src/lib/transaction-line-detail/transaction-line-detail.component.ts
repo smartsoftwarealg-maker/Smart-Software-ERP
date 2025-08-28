@@ -7,7 +7,7 @@ import {switchMap} from 'rxjs/operators';
 import {of} from 'rxjs';
 import { MatMiniFabButton } from "@angular/material/button";
 import { MatCard, MatCardContent } from "@angular/material/card";
-import { NgIf } from "@angular/common";
+
 import { MatFormField, MatLabel, MatError } from "@angular/material/form-field";
 import { TranslateDirective } from '@ss/common/ui-lang';
 import { MatInput } from "@angular/material/input";
@@ -20,20 +20,19 @@ import { MaterialModule } from '@ss/common/api-common';
     styleUrls: ['./transaction-line-detail.component.scss'],
     standalone: true,
     imports: [
-        MatMiniFabButton,
-        MaterialModule,
-        MatCard,
-        MatCardContent,
-        NgIf,
-        FormsModule,
-        ReactiveFormsModule,
-        MatFormField,
-        MatLabel,
-        TranslateDirective,
-        MatInput,
-        MatError,
-        DatePickerComponent,
-    ],
+    MatMiniFabButton,
+    MaterialModule,
+    MatCard,
+    MatCardContent,
+    FormsModule,
+    ReactiveFormsModule,
+    MatFormField,
+    MatLabel,
+    TranslateDirective,
+    MatInput,
+    MatError,
+    DatePickerComponent
+],
 })
 export class TransactionLineDetailComponent implements OnInit {
     private fb = inject(FormBuilder);

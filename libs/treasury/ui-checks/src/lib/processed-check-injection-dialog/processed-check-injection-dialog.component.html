@@ -1,20 +1,20 @@
 <fieldset>
-    <div class="file-upload">
-        <input type="file" class="file-input"
-               [accept]="requiredFileType"
-               (change)="onChange(fileUpload.files)"
-               #fileUpload>
+  <div class="file-upload">
+    <input type="file" class="file-input"
+      [accept]="requiredFileType"
+      (change)="onChange(fileUpload.files)"
+      #fileUpload>
 
-        <span translate>{{ fileName || "COMMON_NO_FILE_SELECTED" }} </span>
+    <span translate>{{ fileName || "COMMON_NO_FILE_SELECTED" }} </span>
 
-        @if (!uploadProgress) {
-            <button mat-mini-fab color="primary"
-                    class="upload-btn"
-                    (click)="fileUpload.click()">
-                <i class="fas fa-paperclip"></i>
-            </button>
-        }
-    </div>
+    @if (!uploadProgress) {
+      <button mat-mini-fab color="primary"
+        class="upload-btn"
+        (click)="fileUpload.click()">
+        <i class="fas fa-paperclip"></i>
+      </button>
+    }
+  </div>
 </fieldset>
 <!--<div class="progress">-->
 <!--    <i class="fas fa-upload"-->
@@ -24,59 +24,71 @@
 <!--    </i>-->
 <!--</div>-->
 
-<mat-progress-bar class="progress-bar" mode="indeterminate" *ngIf="processing"></mat-progress-bar>
+@if (processing) {
+  <mat-progress-bar class="progress-bar" mode="indeterminate"></mat-progress-bar>
+}
 <mat-card>
-    <form novalidate [formGroup]="form">
-        <mat-form-field class="default-50 sm-100" required>
-            <mat-label translate>COMMON_BANK</mat-label>
-            <ss-auto-complete matInput
-                              [required]="true"
-                              [model]="bankLookup"
-                              formControlName="bankId"></ss-auto-complete>
-        </mat-form-field>
+  <form novalidate [formGroup]="form">
+    <mat-form-field class="default-50 sm-100" required>
+      <mat-label translate>COMMON_BANK</mat-label>
+      <ss-auto-complete matInput
+        [required]="true"
+        [model]="bankLookup"
+      formControlName="bankId"></ss-auto-complete>
+    </mat-form-field>
 
 
-        <mat-form-field class="default-50" required>
-            <mat-label translate>COMMON_NUMBER</mat-label>
-            <mat-select formControlName="number">
-                <mat-option *ngFor="let c of columns" [value]="c">{{ c }}</mat-option>
-            </mat-select>
-        </mat-form-field>
+    <mat-form-field class="default-50" required>
+      <mat-label translate>COMMON_NUMBER</mat-label>
+      <mat-select formControlName="number">
+        @for (c of columns; track c) {
+          <mat-option [value]="c">{{ c }}</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
 
-        <mat-form-field class="default-50" required>
-            <mat-label><span translate>COMMON_DATE</span></mat-label>
-            <mat-select formControlName="date">
-                <mat-option *ngFor="let c of columns" [value]="c">{{ c }}</mat-option>
-            </mat-select>
-        </mat-form-field>
+    <mat-form-field class="default-50" required>
+      <mat-label><span translate>COMMON_DATE</span></mat-label>
+      <mat-select formControlName="date">
+        @for (c of columns; track c) {
+          <mat-option [value]="c">{{ c }}</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
 
 
-        <mat-form-field class="default-50" required>
-            <mat-label translate>COMMON_AMOUNT</mat-label>
-            <mat-select formControlName="amount">
-                <mat-option *ngFor="let c of columns" [value]="c">{{ c }}</mat-option>
-            </mat-select>
-        </mat-form-field>
+    <mat-form-field class="default-50" required>
+      <mat-label translate>COMMON_AMOUNT</mat-label>
+      <mat-select formControlName="amount">
+        @for (c of columns; track c) {
+          <mat-option [value]="c">{{ c }}</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
 
-    </form>
+  </form>
 </mat-card>
 <!--    <div><pre>{{form?.value | json }}</pre></div>-->
 
 
 <div class="ctrl-div">
-    <div *ngIf="!uploadProgress">
-        <button mat-raised-button color="primary"
-                type="button"
-                (click)="onFileSelected(fileUpload.files)"
-                [disabled]="!form.valid || fileName?.length < 4">
-            {{ 'COMMON_UPLOAD' | translate }}
-            <i class="fa-solid fa-upload  icon"></i>
-        </button>
+  @if (!uploadProgress) {
+    <div>
+      <button mat-raised-button color="primary"
+        type="button"
+        (click)="onFileSelected(fileUpload.files)"
+        [disabled]="!form.valid || fileName?.length < 4">
+        {{ 'COMMON_UPLOAD' | translate }}
+        <i class="fa-solid fa-upload  icon"></i>
+      </button>
     </div>
-    <div *ngIf="!uploadProgress">
-        <button mat-raised-button color="warn" type="button" (click)="cancel()">
-            {{ 'COMMON_CANCEL' | translate }}
-            <i class="fa-solid fa-rotate-left icon"></i>
-        </button>
+  }
+  @if (!uploadProgress) {
+    <div>
+      <button mat-raised-button color="warn" type="button" (click)="cancel()">
+        {{ 'COMMON_CANCEL' | translate }}
+        <i class="fa-solid fa-rotate-left icon"></i>
+      </button>
     </div>
+  }
 </div>

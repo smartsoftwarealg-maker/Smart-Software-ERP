@@ -7,16 +7,24 @@ import { MatTableModule } from '@angular/material/table';
 
 import { VehicleMissionService } from '../services/vehicle-mission.service';
 import { VehicleMission } from '../vehicle-api';
-import { MaterialModule } from "@ss/common/api-common";
+import { MaterialModule } from '@ss/common/api-common';
 import { PaginationComponent } from '@ss/common/ui-pagination';
-import { TranslatePipe } from '@ss/common/ui-lang';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-mission-vehicles-list',
     standalone: true,
-    imports: [CommonModule, MatButtonModule, MatTableModule, MaterialModule, PaginationComponent, TranslatePipe],
+    imports: [
+        CommonModule,
+        MatButtonModule,
+        MatTableModule,
+        MaterialModule,
+        PaginationComponent,
+        TranslatePipe,
+        TranslateDirective,
+    ],
     templateUrl: './vehicle-mission-list.component.html',
-    styleUrls: ['./vehicle-mission-list.component.css']
+    styleUrls: ['./vehicle-mission-list.component.css'],
 })
 export class VehicleMissionListComponent extends BaseChildEntityListComponent<VehicleMission> {
     override displayedColumns = [
@@ -25,11 +33,10 @@ export class VehicleMissionListComponent extends BaseChildEntityListComponent<Ve
         'lastName',
         'missionTime',
         'returnTime',
-        'destinationDescription'
+        'destinationDescription',
     ];
 
     constructor(protected override detailSrv: VehicleMissionService) {
         super(detailSrv, 'VehicleMission');
     }
 }
-

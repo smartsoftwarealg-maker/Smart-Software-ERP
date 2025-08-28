@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { EDOHeader } from '@social/social-api';
 import { LoginService, MaterialModule } from '@ss/common/api-common';
@@ -19,19 +19,18 @@ import { TranslateDirective } from '@ss/common/ui-lang';
 
 @Component({
     imports: [
-        CommonModule,
-        MaterialModule,
-        DatePickerComponent,
-        MatCard,
-        MatCardContent,
-        MatFormField,
-        MatInput,
-        MatLabel,
-        ReactiveFormsModule,
-        PendingEdoComponent,
-        SocialEdoLinesComponent,
-        TranslateDirective
-    ],
+    MaterialModule,
+    DatePickerComponent,
+    MatCard,
+    MatCardContent,
+    MatFormField,
+    MatInput,
+    MatLabel,
+    ReactiveFormsModule,
+    PendingEdoComponent,
+    SocialEdoLinesComponent,
+    TranslateDirective
+],
     selector: 'ss-edo-header-detail',
     standalone: true,
     styleUrl: './social-edo-header-detail.component.scss',

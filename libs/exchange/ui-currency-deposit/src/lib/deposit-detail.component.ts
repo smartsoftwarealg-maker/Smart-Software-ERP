@@ -10,7 +10,7 @@ import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {AgentLookupModel, AgentService} from '@ss/logistics/api-agent';
 import { LoginService, MaterialModule } from '@ss/common/api-common';
 import { MatCard, MatCardContent } from '@angular/material/card';
-import { NgIf } from '@angular/common';
+
 import { MatFormField, MatLabel, MatError } from '@angular/material/form-field';
 import { TranslateDirective } from '@ss/common/ui-lang';
 import { DatePickerComponent } from '@ss/common/ui-datepicker';
@@ -24,7 +24,7 @@ import { ExcDocInfoComponent } from '@ss/exchange/ui-info';
     styleUrls: ['./deposit-detail.component.scss'],
     templateUrl: './deposit-detail.component.html',
     standalone: true,
-    imports: [MaterialModule, MatCard, MatCardContent, NgIf, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, DatePickerComponent, UiAutoCompleteComponent, MatInput, MatError, MatCheckbox, ExcDocInfoComponent]
+    imports: [MaterialModule, MatCard, MatCardContent, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, DatePickerComponent, UiAutoCompleteComponent, MatInput, MatError, MatCheckbox, ExcDocInfoComponent]
 })
 export class DepositDetailComponent extends BaseEntityDetailComponent<Deposit> {
     private agentService =  inject(AgentService);

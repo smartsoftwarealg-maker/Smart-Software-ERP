@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
 import {
     MEDICAL_AIDS_TYPE, MedicalAid,
@@ -28,7 +28,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
 @Component({
     selector: 'ss-medical-aids-detail',
     standalone: true,
-    imports: [CommonModule, MaterialModule, TranslateDirective, DatePickerComponent, MatCard, MatCardContent, MatError, MatFormField, MatInput, MatLabel, ReactiveFormsModule, AidHistoryComponent, UiAutoCompleteComponent],
+    imports: [MaterialModule, TranslateDirective, DatePickerComponent, MatCard, MatCardContent, MatError, MatFormField, MatInput, MatLabel, ReactiveFormsModule, AidHistoryComponent, UiAutoCompleteComponent],
     templateUrl: './medical-aids-detail.component.html',
     styleUrl: './medical-aids-detail.component.scss',
 })

@@ -1,258 +1,273 @@
-<form *ngIf="form" novalidate [formGroup]="form" class="size">
-
+@if (form) {
+  <form novalidate [formGroup]="form" class="size">
     <div class="birthinfo-card">
-
-        <div>
-            <ss-image-input width="160px" height="200px" [imageModel]="imageModel" style="display: inline-block;">
-            </ss-image-input>
-            <div class="default-100" style="text-align: center;">
-                <strong><span translate>PAYROLL_PID</span>: {{ id }}</strong>
-            </div>
+      <div>
+        <ss-image-input width="160px" height="200px" [imageModel]="imageModel" style="display: inline-block;">
+        </ss-image-input>
+        <div class="default-100" style="text-align: center;">
+          <strong><span translate>PAYROLL_PID</span>: {{ id }}</strong>
         </div>
-
-        <div class="birthinfo-fields">
-
-            <div class="default-100" style="height: 16px;"></div>
-
-            <mat-form-field id="firstName" class="default-50 sm-100">
-                <mat-label translate>COMMON_FIRST_NAME</mat-label>
-                <input matInput formControlName="firstName" type="text" maxlength="64" required>
-                <mat-error *ngIf="form.controls['firstName'].hasError('required')" translate>COMMON_FIELD_REQUIRED
-                </mat-error>
-                <mat-error *ngIf="form.controls['firstName'].hasError('maxlength')" [translate]="{maxLen: 64}">
-                    COMMON_FIELD_MAX_LENGTH
-                </mat-error>
-            </mat-form-field>
-
-            <mat-form-field id="lastName" class="default-50 sm-100">
-                <mat-label translate>COMMON_LAST_NAME</mat-label>
-                <input matInput formControlName="lastName" type="text" maxlength="64" required>
-                <mat-error *ngIf="form.controls['lastName'].hasError('required')" translate>COMMON_FIELD_REQUIRED
-                </mat-error>
-                <mat-error *ngIf="form.controls['lastName'].hasError('maxlength')" [translate]="{maxLen: 64}">
-                    COMMON_FIELD_MAX_LENGTH
-                </mat-error>
-            </mat-form-field>
-
-            <mat-form-field class="default-50 sm-100">
-                <mat-label translate>PAYROLL_BIRTH_DATE</mat-label>
-                <ss-date-picker [required]=true formControlName="birthDate"></ss-date-picker>
-                <mat-error *ngIf="form.controls['birthDate'].hasError('required')" translate>
-                    COMMON_FIELD_REQUIRED
-                </mat-error>
-            </mat-form-field>
-
-            <mat-form-field id="birthPlace" class="default-50 sm-100">
-                <mat-label translate>PAYROLL_BIRTH_PLACE</mat-label>
-                <input matInput formControlName="birthPlace" type="text" maxlength="64" required>
-                <mat-error *ngIf="form.controls['birthPlace'].hasError('required')" translate>COMMON_FIELD_REQUIRED
-                </mat-error>
-                <mat-error *ngIf="form.controls['birthPlace'].hasError('maxlength')" [translate]="{maxLen: 64}">
-                    COMMON_FIELD_MAX_LENGTH
-                </mat-error>
-            </mat-form-field>
-
-            <mat-form-field class="default-50 sm-100">
-                <mat-label translate>COMMON_CITY</mat-label>
-                <ss-auto-complete [model]="cityLookup"  formControlName="birthCity"></ss-auto-complete>
-            </mat-form-field>
-
-            <mat-radio-group formControlName="sex" class="default-50 sm-100">
-                <mat-radio-button [value]=1 translate style="margin: 8px;" [checked]="form.controls['sex'].value === 1">PAYROLL_MALE</mat-radio-button>
-                <mat-radio-button [value]=2 translate style="margin: 8px;">PAYROLL_FEMALE</mat-radio-button>
-            </mat-radio-group>
-
-<!--            <mat-form-field class="default-50 sm-100">-->
-<!--                <mat-label translate>PAYROLL_NATIONALITY</mat-label>-->
-<!--                <ss-auto-complete [model]="nationalityModel"  formControlName="nationality">-->
-<!--                </ss-auto-complete>-->
-<!--                <mat-error *ngIf="form.controls['nationality'].hasError('required')" translate>-->
-<!--                    COMMON_FIELD_REQUIRED-->
-<!--                </mat-error>-->
-<!--            </mat-form-field>-->
-
-            <mat-form-field id="father" class="default-50 sm-100">
-                <mat-label translate>PAYROLL_FATHER</mat-label>
-                <input matInput formControlName="father" type="text" maxlength="64">
-                <mat-error *ngIf="form.controls['father'].hasError('required')" translate>COMMON_FIELD_REQUIRED
-                </mat-error>
-                <mat-error *ngIf="form.controls['father'].hasError('maxlength')" [translate]="{maxLen: 64}">
-                    COMMON_FIELD_MAX_LENGTH
-                </mat-error>
-            </mat-form-field>
-
-            <mat-form-field id="mother" class="default-50 sm-100">
-                <mat-label translate>PAYROLL_MOTHER</mat-label>
-                <input matInput formControlName="mother" type="text" maxlength="64">
-                <mat-error *ngIf="form.controls['mother'].hasError('required')" translate>
-                    COMMON_FIELD_REQUIRED
-                </mat-error>
-                <mat-error *ngIf="form.controls['mother'].hasError('maxlength')" [translate]="{maxLen: 64}">
-                    COMMON_FIELD_MAX_LENGTH
-                </mat-error>
-            </mat-form-field>
-
-            <mat-form-field floatLabel="always" class="default-25 sm-100">
-                <mat-label translate>COMMON_MARITAL_STATUS</mat-label>
-                <mat-select formControlName="maritalStatus">
-                    <mat-option [value]="null"></mat-option>
-                    <mat-option *ngFor="let v of maritalStatuses" [value]="v.id">
-                        {{v.description}}
-                    </mat-option>
-                </mat-select>
-            </mat-form-field>
-
-            <mat-form-field floatLabel="always" class="default-25 sm-100">
-                <mat-label translate>COMMON_BLOOD_GROUPS</mat-label>
-                <mat-select formControlName="blood_group">
-                    <mat-option *ngFor="let v of bloodGroups$ | async" [value]="v.id">
-                        {{v.description}}
-                    </mat-option>
-                </mat-select>
-            </mat-form-field>
-
-            <mat-form-field id="ss_Number" class="default-50 sm-100">
-                <mat-label translate>PAYROLL_SS_NUMBER</mat-label>
-                <input matInput formControlName="ss_Number" type="text" maxlength="32">
-                <mat-error *ngIf="form.controls['ss_Number'].hasError('maxlength')" [translate]="{maxLen: 32}">
-                    COMMON_FIELD_MAX_LENGTH
-                </mat-error>
-            </mat-form-field>
-
-<!--            <mat-checkbox formControlName="is_driver" translate>PAYROLL_IS_DRIVER</mat-checkbox>-->
-        </div>
-    </div>
-
-
-    <mat-accordion>
-        <mat-expansion-panel #socialInfoPanel [class]="getPanelHeaderClass('socialInfo', socialInfoPanel)">
-            <mat-expansion-panel-header>
-                <mat-panel-title translate>
-                    ADMINISTRATION_CONTACT
-                </mat-panel-title>
-            </mat-expansion-panel-header>
-
-            <div class="default-100" style="height: 16px;"></div>
-
-            <mat-form-field id="address1" class="default-50 sm-100">
-                <mat-label translate>COMMON_ADDRESS</mat-label>
-                <input matInput formControlName="address1" type="text" maxlength="128">
-                <mat-error *ngIf="form.controls['address1'].hasError('maxlength')" [translate]="{maxLen: 128}">
-                    COMMON_FIELD_MAX_LENGTH
-                </mat-error>
-            </mat-form-field>
-
-            <mat-form-field id="email" class="default-50 sm-100">
-                <mat-label translate>PAYROLL_EMAIL</mat-label>
-                <input matInput formControlName="email" type="email" maxlength="64">
-                <mat-error *ngIf="form.controls['email'].hasError('maxlength')" [translate]="{maxLen: 64}">
-                    COMMON_FIELD_MAX_LENGTH
-                </mat-error>
-            </mat-form-field>
-
-            <mat-form-field id="phone" class="default-50 sm-100">
-                <mat-label translate>PAYROLL_PHONE</mat-label>
-                <input matInput formControlName="phone" type="text" maxlength="32">
-                <mat-error *ngIf="form.controls['phone'].hasError('maxlength')" [translate]="{maxLen: 32}">
-                    COMMON_FIELD_MAX_LENGTH
-                </mat-error>
-            </mat-form-field>
-
-            <mat-form-field id="mobile" class="default-50 sm-100">
-                <mat-label translate>COMMON_MOBILE</mat-label>
-                <input matInput formControlName="mobile" type="text" maxlength="32">
-                <mat-error *ngIf="form.controls['mobile'].hasError('maxlength')" [translate]="{maxLen: 32}">
-                    COMMON_FIELD_MAX_LENGTH
-                </mat-error>
-            </mat-form-field>
-
-        </mat-expansion-panel>
-
-        <mat-expansion-panel #arabicInfoPanel [class]="getPanelHeaderClass('arabicInfo', arabicInfoPanel)">
-            <mat-expansion-panel-header>
-                <mat-panel-title translate>
-                    PAYROLL_ARABIC_INFO
-                </mat-panel-title>
-            </mat-expansion-panel-header>
-
-            <div class="default-100" style="height: 16px;"></div>
-
-            <mat-form-field class="default-50 sm-100">
-                <mat-label translate>COMMON_FIRST_NAME_AR</mat-label>
-                <input matInput formControlName="firstNameAr" type="text" maxlength="64">
-                <mat-error *ngIf="form.controls['firstNameAr'].hasError('maxlength')" [translate]="{maxLen: 64}">
-                    COMMON_FIELD_MAX_LENGTH
-                </mat-error>
-            </mat-form-field>
-
-            <mat-form-field class="default-50 sm-100">
-                <mat-label translate>COMMON_LAST_NAME_AR</mat-label>
-                <input matInput formControlName="lastNameAr" type="text" maxlength="64">
-                <mat-error *ngIf="form.controls['lastNameAr'].hasError('maxlength')" [translate]="{maxLen: 64}">
-                    COMMON_FIELD_MAX_LENGTH
-                </mat-error>
-            </mat-form-field>
-
-            <mat-form-field class="default-50 sm-100">
-                <mat-label translate>PAYROLL_BIRTH_PLACE_AR</mat-label>
-                <input matInput formControlName="birthPlaceAr" type="text" maxlength="64">
-                <mat-error *ngIf="form.controls['birthPlaceAr'].hasError('maxlength')" [translate]="{maxLen: 64}">
-                    COMMON_FIELD_MAX_LENGTH
-                </mat-error>
-            </mat-form-field>
-
-            <mat-form-field class="default-50 sm-100">
-                <mat-label translate>PAYROLL_FATHER_AR</mat-label>
-                <input matInput formControlName="father" type="text" maxlength="64">
-                <mat-error *ngIf="form.controls['father'].hasError('maxlength')" [translate]="{maxLen: 64}">
-                    COMMON_FIELD_MAX_LENGTH
-                </mat-error>
-            </mat-form-field>
-
-            <mat-form-field class="default-50 sm-100">
-                <mat-label translate>PAYROLL_MOTHER_AR</mat-label>
-                <input matInput formControlName="mother" type="text" maxlength="64">
-                <mat-error *ngIf="form.controls['mother'].hasError('maxlength')" [translate]="{maxLen: 64}">
-                    COMMON_FIELD_MAX_LENGTH
-                </mat-error>
-            </mat-form-field>
-
-
-        </mat-expansion-panel>
-
-        <mat-expansion-panel #archivePanel
-                             (afterExpand)="showArchive()"
-                             [class]="getPanelHeaderClass('archive', archivePanel)">
-            <mat-expansion-panel-header>
-                <mat-panel-title translate>
-                    COMMON_ARCHIVE
-                </mat-panel-title>
-            </mat-expansion-panel-header>
-            <ss-app-archive-main [id]="id" [appId]="4" *ngIf="id && detailPanel === ARCHIVE_PANEL" [editable]="isEditable"></ss-app-archive-main>
-        </mat-expansion-panel>
-
-        <mat-expansion-panel #licensePanel
-                             (afterExpand)="showLicense()"
-                             [class]="getPanelHeaderClass('licenses', licensePanel)">
-            <mat-expansion-panel-header>
-                <mat-panel-title translate>
-                    LOGISTICS_DRIVER_LICENSE
-                </mat-panel-title>
-            </mat-expansion-panel-header>
-            <ss-driver-license-main [id]="id" *ngIf="detailPanel === LICENSE_PANEL"></ss-driver-license-main>
-        </mat-expansion-panel>
-
-        <mat-expansion-panel #vehiclePanel
-                             (afterExpand)="showVehicles()"
-                             [class]="getPanelHeaderClass('vehicles', vehiclePanel)">
-            <mat-expansion-panel-header>
-                <mat-panel-title translate>
-                    PARK_DRIVER_VEHICLES
-                </mat-panel-title>
-            </mat-expansion-panel-header>
-            <ss-driver-license-main [id]="id" *ngIf="detailPanel === VEHICLE_PANEL"></ss-driver-license-main>
-        </mat-expansion-panel>
-
-    </mat-accordion>
-
+      </div>
+      <div class="birthinfo-fields">
+        <div class="default-100" style="height: 16px;"></div>
+        <mat-form-field id="firstName" class="default-50 sm-100">
+          <mat-label translate>COMMON_FIRST_NAME</mat-label>
+          <input matInput formControlName="firstName" type="text" maxlength="64" required>
+          @if (form.controls['firstName'].hasError('required')) {
+            <mat-error translate>COMMON_FIELD_REQUIRED
+            </mat-error>
+          }
+          @if (form.controls['firstName'].hasError('maxlength')) {
+            <mat-error [translate]="{maxLen: 64}">
+              COMMON_FIELD_MAX_LENGTH
+            </mat-error>
+          }
+        </mat-form-field>
+        <mat-form-field id="lastName" class="default-50 sm-100">
+          <mat-label translate>COMMON_LAST_NAME</mat-label>
+          <input matInput formControlName="lastName" type="text" maxlength="64" required>
+          @if (form.controls['lastName'].hasError('required')) {
+            <mat-error translate>COMMON_FIELD_REQUIRED
+            </mat-error>
+          }
+          @if (form.controls['lastName'].hasError('maxlength')) {
+            <mat-error [translate]="{maxLen: 64}">
+              COMMON_FIELD_MAX_LENGTH
+            </mat-error>
+          }
+        </mat-form-field>
+        <mat-form-field class="default-50 sm-100">
+          <mat-label translate>PAYROLL_BIRTH_DATE</mat-label>
+          <ss-date-picker [required]=true formControlName="birthDate"></ss-date-picker>
+          @if (form.controls['birthDate'].hasError('required')) {
+            <mat-error translate>
+              COMMON_FIELD_REQUIRED
+            </mat-error>
+          }
+        </mat-form-field>
+        <mat-form-field id="birthPlace" class="default-50 sm-100">
+          <mat-label translate>PAYROLL_BIRTH_PLACE</mat-label>
+          <input matInput formControlName="birthPlace" type="text" maxlength="64" required>
+          @if (form.controls['birthPlace'].hasError('required')) {
+            <mat-error translate>COMMON_FIELD_REQUIRED
+            </mat-error>
+          }
+          @if (form.controls['birthPlace'].hasError('maxlength')) {
+            <mat-error [translate]="{maxLen: 64}">
+              COMMON_FIELD_MAX_LENGTH
+            </mat-error>
+          }
+        </mat-form-field>
+        <mat-form-field class="default-50 sm-100">
+          <mat-label translate>COMMON_CITY</mat-label>
+          <ss-auto-complete [model]="cityLookup"  formControlName="birthCity"></ss-auto-complete>
+        </mat-form-field>
+        <mat-radio-group formControlName="sex" class="default-50 sm-100">
+          <mat-radio-button [value]=1 translate style="margin: 8px;" [checked]="form.controls['sex'].value === 1">PAYROLL_MALE</mat-radio-button>
+          <mat-radio-button [value]=2 translate style="margin: 8px;">PAYROLL_FEMALE</mat-radio-button>
+        </mat-radio-group>
+        <!--            <mat-form-field class="default-50 sm-100">-->
+        <!--                <mat-label translate>PAYROLL_NATIONALITY</mat-label>-->
+        <!--                <ss-auto-complete [model]="nationalityModel"  formControlName="nationality">-->
+      <!--                </ss-auto-complete>-->
+      <!--                <mat-error *ngIf="form.controls['nationality'].hasError('required')" translate>-->
+      <!--                    COMMON_FIELD_REQUIRED-->
+    <!--                </mat-error>-->
+  <!--            </mat-form-field>-->
+  <mat-form-field id="father" class="default-50 sm-100">
+    <mat-label translate>PAYROLL_FATHER</mat-label>
+    <input matInput formControlName="father" type="text" maxlength="64">
+    @if (form.controls['father'].hasError('required')) {
+      <mat-error translate>COMMON_FIELD_REQUIRED
+      </mat-error>
+    }
+    @if (form.controls['father'].hasError('maxlength')) {
+      <mat-error [translate]="{maxLen: 64}">
+        COMMON_FIELD_MAX_LENGTH
+      </mat-error>
+    }
+  </mat-form-field>
+  <mat-form-field id="mother" class="default-50 sm-100">
+    <mat-label translate>PAYROLL_MOTHER</mat-label>
+    <input matInput formControlName="mother" type="text" maxlength="64">
+    @if (form.controls['mother'].hasError('required')) {
+      <mat-error translate>
+        COMMON_FIELD_REQUIRED
+      </mat-error>
+    }
+    @if (form.controls['mother'].hasError('maxlength')) {
+      <mat-error [translate]="{maxLen: 64}">
+        COMMON_FIELD_MAX_LENGTH
+      </mat-error>
+    }
+  </mat-form-field>
+  <mat-form-field floatLabel="always" class="default-25 sm-100">
+    <mat-label translate>COMMON_MARITAL_STATUS</mat-label>
+    <mat-select formControlName="maritalStatus">
+      <mat-option [value]="null"></mat-option>
+      @for (v of maritalStatuses; track v) {
+        <mat-option [value]="v.id">
+          {{v.description}}
+        </mat-option>
+      }
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field floatLabel="always" class="default-25 sm-100">
+    <mat-label translate>COMMON_BLOOD_GROUPS</mat-label>
+    <mat-select formControlName="blood_group">
+      @for (v of bloodGroups$ | async; track v) {
+        <mat-option [value]="v.id">
+          {{v.description}}
+        </mat-option>
+      }
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field id="ss_Number" class="default-50 sm-100">
+    <mat-label translate>PAYROLL_SS_NUMBER</mat-label>
+    <input matInput formControlName="ss_Number" type="text" maxlength="32">
+    @if (form.controls['ss_Number'].hasError('maxlength')) {
+      <mat-error [translate]="{maxLen: 32}">
+        COMMON_FIELD_MAX_LENGTH
+      </mat-error>
+    }
+  </mat-form-field>
+  <!--            <mat-checkbox formControlName="is_driver" translate>PAYROLL_IS_DRIVER</mat-checkbox>-->
+</div>
+</div>
+<mat-accordion>
+  <mat-expansion-panel #socialInfoPanel [class]="getPanelHeaderClass('socialInfo', socialInfoPanel)">
+    <mat-expansion-panel-header>
+      <mat-panel-title translate>
+        ADMINISTRATION_CONTACT
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <div class="default-100" style="height: 16px;"></div>
+    <mat-form-field id="address1" class="default-50 sm-100">
+      <mat-label translate>COMMON_ADDRESS</mat-label>
+      <input matInput formControlName="address1" type="text" maxlength="128">
+      @if (form.controls['address1'].hasError('maxlength')) {
+        <mat-error [translate]="{maxLen: 128}">
+          COMMON_FIELD_MAX_LENGTH
+        </mat-error>
+      }
+    </mat-form-field>
+    <mat-form-field id="email" class="default-50 sm-100">
+      <mat-label translate>PAYROLL_EMAIL</mat-label>
+      <input matInput formControlName="email" type="email" maxlength="64">
+      @if (form.controls['email'].hasError('maxlength')) {
+        <mat-error [translate]="{maxLen: 64}">
+          COMMON_FIELD_MAX_LENGTH
+        </mat-error>
+      }
+    </mat-form-field>
+    <mat-form-field id="phone" class="default-50 sm-100">
+      <mat-label translate>PAYROLL_PHONE</mat-label>
+      <input matInput formControlName="phone" type="text" maxlength="32">
+      @if (form.controls['phone'].hasError('maxlength')) {
+        <mat-error [translate]="{maxLen: 32}">
+          COMMON_FIELD_MAX_LENGTH
+        </mat-error>
+      }
+    </mat-form-field>
+    <mat-form-field id="mobile" class="default-50 sm-100">
+      <mat-label translate>COMMON_MOBILE</mat-label>
+      <input matInput formControlName="mobile" type="text" maxlength="32">
+      @if (form.controls['mobile'].hasError('maxlength')) {
+        <mat-error [translate]="{maxLen: 32}">
+          COMMON_FIELD_MAX_LENGTH
+        </mat-error>
+      }
+    </mat-form-field>
+  </mat-expansion-panel>
+  <mat-expansion-panel #arabicInfoPanel [class]="getPanelHeaderClass('arabicInfo', arabicInfoPanel)">
+    <mat-expansion-panel-header>
+      <mat-panel-title translate>
+        PAYROLL_ARABIC_INFO
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <div class="default-100" style="height: 16px;"></div>
+    <mat-form-field class="default-50 sm-100">
+      <mat-label translate>COMMON_FIRST_NAME_AR</mat-label>
+      <input matInput formControlName="firstNameAr" type="text" maxlength="64">
+      @if (form.controls['firstNameAr'].hasError('maxlength')) {
+        <mat-error [translate]="{maxLen: 64}">
+          COMMON_FIELD_MAX_LENGTH
+        </mat-error>
+      }
+    </mat-form-field>
+    <mat-form-field class="default-50 sm-100">
+      <mat-label translate>COMMON_LAST_NAME_AR</mat-label>
+      <input matInput formControlName="lastNameAr" type="text" maxlength="64">
+      @if (form.controls['lastNameAr'].hasError('maxlength')) {
+        <mat-error [translate]="{maxLen: 64}">
+          COMMON_FIELD_MAX_LENGTH
+        </mat-error>
+      }
+    </mat-form-field>
+    <mat-form-field class="default-50 sm-100">
+      <mat-label translate>PAYROLL_BIRTH_PLACE_AR</mat-label>
+      <input matInput formControlName="birthPlaceAr" type="text" maxlength="64">
+      @if (form.controls['birthPlaceAr'].hasError('maxlength')) {
+        <mat-error [translate]="{maxLen: 64}">
+          COMMON_FIELD_MAX_LENGTH
+        </mat-error>
+      }
+    </mat-form-field>
+    <mat-form-field class="default-50 sm-100">
+      <mat-label translate>PAYROLL_FATHER_AR</mat-label>
+      <input matInput formControlName="father" type="text" maxlength="64">
+      @if (form.controls['father'].hasError('maxlength')) {
+        <mat-error [translate]="{maxLen: 64}">
+          COMMON_FIELD_MAX_LENGTH
+        </mat-error>
+      }
+    </mat-form-field>
+    <mat-form-field class="default-50 sm-100">
+      <mat-label translate>PAYROLL_MOTHER_AR</mat-label>
+      <input matInput formControlName="mother" type="text" maxlength="64">
+      @if (form.controls['mother'].hasError('maxlength')) {
+        <mat-error [translate]="{maxLen: 64}">
+          COMMON_FIELD_MAX_LENGTH
+        </mat-error>
+      }
+    </mat-form-field>
+  </mat-expansion-panel>
+  <mat-expansion-panel #archivePanel
+    (afterExpand)="showArchive()"
+    [class]="getPanelHeaderClass('archive', archivePanel)">
+    <mat-expansion-panel-header>
+      <mat-panel-title translate>
+        COMMON_ARCHIVE
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    @if (id && detailPanel === ARCHIVE_PANEL) {
+      <ss-app-archive-main [id]="id" [appId]="4" [editable]="isEditable"></ss-app-archive-main>
+    }
+  </mat-expansion-panel>
+  <mat-expansion-panel #licensePanel
+    (afterExpand)="showLicense()"
+    [class]="getPanelHeaderClass('licenses', licensePanel)">
+    <mat-expansion-panel-header>
+      <mat-panel-title translate>
+        LOGISTICS_DRIVER_LICENSE
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    @if (detailPanel === LICENSE_PANEL) {
+      <ss-driver-license-main [id]="id"></ss-driver-license-main>
+    }
+  </mat-expansion-panel>
+  <mat-expansion-panel #vehiclePanel
+    (afterExpand)="showVehicles()"
+    [class]="getPanelHeaderClass('vehicles', vehiclePanel)">
+    <mat-expansion-panel-header>
+      <mat-panel-title translate>
+        PARK_DRIVER_VEHICLES
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    @if (detailPanel === VEHICLE_PANEL) {
+      <ss-driver-license-main [id]="id"></ss-driver-license-main>
+    }
+  </mat-expansion-panel>
+</mat-accordion>
 </form>
+}

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { Lookup, LookupsService } from '@ss/common/api-lookup';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
@@ -22,7 +22,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
 @Component({
     selector: 'ss-mutual-type-detail',
     standalone: true,
-    imports: [CommonModule, TranslateDirective, MaterialModule, MatCard, MatCardContent, MatError, MatFormField, MatInput, MatLabel, ReactiveFormsModule],
+    imports: [TranslateDirective, MaterialModule, MatCard, MatCardContent, MatError, MatFormField, MatInput, MatLabel, ReactiveFormsModule],
     templateUrl: './mutual-type-detail.component.html',
     styleUrl: './mutual-type-detail.component.scss',
 })

@@ -9,7 +9,7 @@ import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {BankService} from '@ss/administration/api-bank';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import { MatCard } from "@angular/material/card";
-import { NgIf } from "@angular/common";
+
 import { MatFormField, MatLabel, MatError } from "@angular/material/form-field";
 import { TranslateDirective } from '@ss/common/ui-lang';
 import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
@@ -22,19 +22,18 @@ import { DatePickerComponent } from '@ss/common/ui-datepicker';
     styleUrls: ['./processed-check-detail.component.scss'],
     standalone: true,
     imports: [
-        MaterialModule,
-        MatCard,
-        NgIf,
-        FormsModule,
-        ReactiveFormsModule,
-        MatFormField,
-        MatLabel,
-        TranslateDirective,
-        UiAutoCompleteComponent,
-        MatInput,
-        MatError,
-        DatePickerComponent,
-    ],
+    MaterialModule,
+    MatCard,
+    FormsModule,
+    ReactiveFormsModule,
+    MatFormField,
+    MatLabel,
+    TranslateDirective,
+    UiAutoCompleteComponent,
+    MatInput,
+    MatError,
+    DatePickerComponent
+],
 })
 export class ProcessedCheckDetailComponent extends BaseEntityDetailComponent<ProcessedCheck> implements OnInit {
     private loginSrv  = inject(LoginService);
