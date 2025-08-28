@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { Motive } from '../gica-careers-api';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
@@ -24,7 +24,7 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
 @Component({
     selector: 'ss-gica-motive-list',
     standalone: true,
-    imports: [CommonModule, MatCell, MatCellDef, MatColumnDef, MatHeaderCell, MatHeaderRow, MatHeaderRowDef, MatRow, MatRowDef, MatSort, MatSortHeader, MatTable, MatHeaderCellDef, PaginationComponent],
+    imports: [MatCell, MatCellDef, MatColumnDef, MatHeaderCell, MatHeaderRow, MatHeaderRowDef, MatRow, MatRowDef, MatSort, MatSortHeader, MatTable, MatHeaderCellDef, PaginationComponent],
     templateUrl: './fault-motive-list.component.html',
     styleUrl: './fault-motive-list.component.css',
 })

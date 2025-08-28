@@ -11,7 +11,7 @@ import {LoginService} from '@ss/common/api-common';
 import {filter} from 'rxjs';
 import {FurnitureSalesService} from '../furniture-sales.service';
 import { MatCard, MatCardContent } from '@angular/material/card';
-import { NgIf } from '@angular/common';
+
 import { MatFormField, MatLabel, MatError } from '@angular/material/form-field';
 import { TranslateDirective } from '@ss/common/ui-lang';
 import { MatInput } from '@angular/material/input';
@@ -24,20 +24,19 @@ import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
     styleUrls: ['./furniture-sales-detail.component.scss'],
     standalone: true,
     imports: [
-        MatCard,
-        MatCardContent,
-        NgIf,
-        FormsModule,
-        ReactiveFormsModule,
-        MatFormField,
-        MatLabel,
-        TranslateDirective,
-        MatInput,
-        MatError,
-        DatePickerComponent,
-        UiAutoCompleteComponent,
-        RouterOutlet,
-    ],
+    MatCard,
+    MatCardContent,
+    FormsModule,
+    ReactiveFormsModule,
+    MatFormField,
+    MatLabel,
+    TranslateDirective,
+    MatInput,
+    MatError,
+    DatePickerComponent,
+    UiAutoCompleteComponent,
+    RouterOutlet
+],
 })
 export class FurnitureSalesDetailComponent extends BaseEntityDetailComponent<FurnitureTransaction> implements OnInit {
     private router  = inject(Router);

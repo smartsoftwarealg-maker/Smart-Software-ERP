@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
 import {
     MUTUAL_AIDS_TYPE,
@@ -27,7 +27,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
 @Component({
     selector: 'ss-mutual-aids-detail',
     standalone: true,
-    imports: [CommonModule, TranslateDirective, MaterialModule, DatePickerComponent, MatCard, MatCardContent, MatError, MatFormField, MatLabel, ReactiveFormsModule, MatInput, UiAutoCompleteComponent],
+    imports: [TranslateDirective, MaterialModule, DatePickerComponent, MatCard, MatCardContent, MatError, MatFormField, MatLabel, ReactiveFormsModule, MatInput, UiAutoCompleteComponent],
     templateUrl: './mutual-aids-detail.component.html',
     styleUrl: './mutual-aids-detail.component.scss'
 })

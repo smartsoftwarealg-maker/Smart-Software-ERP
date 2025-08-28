@@ -1,5 +1,5 @@
 import { Component, inject, input, OnInit, ViewChild } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { MatListOption, MatListSubheaderCssMatStyler, MatSelectionList } from '@angular/material/list';
 import { FormsModule, ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { ShellService } from '@ss/common/ui-shell';
@@ -26,18 +26,17 @@ import { MaterialModule } from '@ss/common/api-common';
     selector: 'ss-social-edo',
     standalone: true,
     imports: [
-        CommonModule,
-        MaterialModule,
-        FormsModule,
-        ReactiveFormsModule,
-        MatFormFieldModule,
-        MatInputModule,
-        MatDatepickerModule,
-        DatePickerComponent,
-        UiAutoCompleteComponent,
-        TranslatePipe,
-        TranslateDirective,
-    ],
+    MaterialModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatDatepickerModule,
+    DatePickerComponent,
+    UiAutoCompleteComponent,
+    TranslatePipe,
+    TranslateDirective
+],
     templateUrl: './social-edo.component.html',
     styleUrl: './social-edo.component.scss'
 })

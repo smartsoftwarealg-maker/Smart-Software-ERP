@@ -1,27 +1,13 @@
 import { Component, DestroyRef, inject } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { BaseEntityDetailComponent, BaseEntityListComponent } from '@ss/common/ui-base-entity';
+import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { MutualRequest, MutualRequestLineService, MutualRequestService } from '@social/social-api';
-import { BankService } from '@ss/administration/api-bank';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, NavigationEnd, Router, RouterEvent, RouterOutlet } from '@angular/router';
-import { DefaultReportService } from '@ss/common/ui-default-report-component';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
-import { LoginService, MaterialModule, PaginatorPersistenceService } from '@ss/common/api-common';
-
-import {
-    MatCell,
-    MatCellDef,
-    MatColumnDef,
-    MatHeaderCell, MatHeaderCellDef,
-    MatHeaderRow,
-    MatHeaderRowDef, MatRow, MatRowDef, MatTable
-} from '@angular/material/table';
-import { MatSort, MatSortHeader } from '@angular/material/sort';
-
+import { LoginService, MaterialModule } from '@ss/common/api-common';
 import { ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { MatCard, MatCardContent } from '@angular/material/card';
-import { MatError, MatFormField, MatLabel } from '@angular/material/form-field';
+import { MatFormField, MatLabel } from '@angular/material/form-field';
 import { MatInput } from '@angular/material/input';
 import { DatePickerComponent } from '@ss/common/ui-datepicker';
 import { TranslateDirective } from '@ss/common/ui-lang';
@@ -32,19 +18,18 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
     selector: 'ss-mutual-requests',
     standalone: true,
     imports: [
-        CommonModule,
-        MaterialModule,
-        TranslateDirective,
-        MatCard,
-        MatCardContent,
-        MatFormField,
-        MatInput,
-        MatLabel,
-        MaterialModule,
-        ReactiveFormsModule,
-        DatePickerComponent,
-        RouterOutlet
-    ],
+    MaterialModule,
+    TranslateDirective,
+    MatCard,
+    MatCardContent,
+    MatFormField,
+    MatInput,
+    MatLabel,
+    MaterialModule,
+    ReactiveFormsModule,
+    DatePickerComponent,
+    RouterOutlet
+],
     templateUrl: './mutual-requests-detail.component.html',
     styleUrl: './mutual-requests-detail.component.scss'
 })

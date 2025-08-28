@@ -1,17 +1,30 @@
 import { Component, inject } from '@angular/core';
-import {ShellService, SnackBarService} from '@ss/common/ui-shell';
-import {ActivatedRoute} from '@angular/router';
-import { UntypedFormBuilder, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
-import {Currency, CurrencyService, LookupsService} from '@ss/common/api-lookup';
-import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import {CurrencyDepositService, DepositType, DepositTypeService, Deposit} from '@ss/exchange/api-currency-deposit';
-import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
-import {AgentLookupModel, AgentService} from '@ss/logistics/api-agent';
-import {LoginService} from '@ss/common/api-common';
-import {concatMap} from 'rxjs/operators';
+import { ShellService, SnackBarService } from '@ss/common/ui-shell';
+import { ActivatedRoute } from '@angular/router';
+import {
+    UntypedFormBuilder,
+    Validators,
+    FormsModule,
+    ReactiveFormsModule,
+} from '@angular/forms';
+import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
+import {
+    Currency,
+    CurrencyService,
+    LookupsService,
+} from '@ss/common/api-lookup';
+import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
+import {
+    CurrencyDepositService,
+    DepositType,
+    DepositTypeService,
+    Deposit,
+} from '@ss/exchange/api-currency-deposit';
+import { DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
+import { AgentLookupModel, AgentService } from '@ss/logistics/api-agent';
+import { LoginService, MaterialModule } from '@ss/common/api-common';
+import { concatMap } from 'rxjs/operators';
 import { MatCard, MatCardContent } from '@angular/material/card';
-import { NgIf } from '@angular/common';
 import { MatFormField, MatLabel, MatError } from '@angular/material/form-field';
 import { TranslateDirective } from '@ss/common/ui-lang';
 import { DatePickerComponent } from '@ss/common/ui-datepicker';
@@ -24,16 +37,37 @@ import { ExcDocInfoComponent } from '@ss/exchange/ui-info';
     styleUrls: ['./cash-commission-detail.component.scss'],
     templateUrl: './cash-commission-detail.component.html',
     standalone: true,
-    imports: [MaterialModule, MatCard, MatCardContent, NgIf, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, DatePickerComponent, UiAutoCompleteComponent, MatError, MatInput, ExcDocInfoComponent]
+    imports: [
+        MaterialModule,
+        MatCard,
+        MatCardContent,
+        FormsModule,
+        ReactiveFormsModule,
+        MatFormField,
+        MatLabel,
+        TranslateDirective,
+        DatePickerComponent,
+        UiAutoCompleteComponent,
+        MatError,
+        MatInput,
+        ExcDocInfoComponent,
+    ],
 })
 export class CashCommissionDetailComponent extends BaseEntityDetailComponent<Deposit> {
     private currencySrv = inject(CurrencyService);
-    private agentService =  inject(AgentService);
-    private typeSrv =  inject(DepositTypeService);
+    private agentService = inject(AgentService);
+    private typeSrv = inject(DepositTypeService);
     public agentAutoCompleteModel = new AgentLookupModel(this.agentService);
-    public typeAutoCompleteModel = new DefaultAutoCompleteModel<DepositType>(this.typeSrv);
-    public currencyAutoCompleteModel = new DefaultAutoCompleteModel<Currency>(this.currencySrv);
-    public soldAutoCompleteModel = new DefaultAutoCompleteModel<Currency>(this.currencySrv);
+    public typeAutoCompleteModel = new DefaultAutoCompleteModel<DepositType>(
+        this.typeSrv,
+    );
+    x;
+    public currencyAutoCompleteModel = new DefaultAutoCompleteModel<Currency>(
+        this.currencySrv,
+    );
+    public soldAutoCompleteModel = new DefaultAutoCompleteModel<Currency>(
+        this.currencySrv,
+    );
     public customerId = 0;
 
     constructor(
@@ -44,12 +78,22 @@ export class CashCommissionDetailComponent extends BaseEntityDetailComponent<Dep
         public override route: ActivatedRoute,
         public override formBuilder: UntypedFormBuilder,
         public override confirmationSrv: ConfirmationDialogService,
-        public lookupsSrv: LookupsService) {
-        super(exchangeService, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'EXCHANGE_COMMISSIONS');
-        this.typeAutoCompleteModel.onValueChanged = value => this.onTypeChange();
-        this.typeAutoCompleteModel.filterLoadedData = x => x.filter(e => e.id === 1);
+        public lookupsSrv: LookupsService,
+    ) {
+        super(
+            exchangeService,
+            shellSrv,
+            snackBarSrv,
+            route,
+            formBuilder,
+            confirmationSrv,
+            'EXCHANGE_COMMISSIONS',
+        );
+        this.typeAutoCompleteModel.onValueChanged = (value) =>
+            this.onTypeChange();
+        this.typeAutoCompleteModel.filterLoadedData = (x) =>
+            x.filter((e) => e.id === 1);
     }
-
 
     public override setupForm(b: Deposit) {
         const debit = b.amount > 0 ? b.amount : 0;
@@ -58,7 +102,7 @@ export class CashCommissionDetailComponent extends BaseEntityDetailComponent<Dep
         if (b.depositType) {
             this.typeAutoCompleteModel
                 .getById(b.depositType)
-                .subscribe(res => {
+                .subscribe((res) => {
                     this.typeAutoCompleteModel.cache = res;
                     this.onTypeChange();
                 });
@@ -71,12 +115,36 @@ export class CashCommissionDetailComponent extends BaseEntityDetailComponent<Dep
             description: [b.description],
             currencyId: [b.currencyId],
             amount: [b.amount],
-            commission: [{ value: b.commission, disabled: false }, Validators.compose([Validators.required, Validators.min(1.0)])],
-            soldCurrencyId: [{ value: b.soldCurrencyId, disabled: b.amount < 0.0}],
-            exchangeRate: [{ value: b.exchangeRate || 1, disabled: b.amount < 0.0 }],
-            soldAmount: [{ value: b.amount > 0.0? ((b.exchangeRate || 1) * b.amount).toFixed(5) : 0.0, disabled: true }],
-            debit: [{ value: debit, disabled: b.amount < 0.000001}, Validators.required],
-            credit: [{ value: credit, disabled: b.amount > 0.000001}, Validators.required]
+            commission: [
+                {
+                    value: b.commission,
+                    disabled: false,
+                },
+                Validators.compose([Validators.required, Validators.min(1.0)]),
+            ],
+            soldCurrencyId: [
+                { value: b.soldCurrencyId, disabled: b.amount < 0.0 },
+            ],
+            exchangeRate: [
+                { value: b.exchangeRate || 1, disabled: b.amount < 0.0 },
+            ],
+            soldAmount: [
+                {
+                    value:
+                        b.amount > 0.0
+                            ? ((b.exchangeRate || 1) * b.amount).toFixed(5)
+                            : 0.0,
+                    disabled: true,
+                },
+            ],
+            debit: [
+                { value: debit, disabled: b.amount < 0.000001 },
+                Validators.required,
+            ],
+            credit: [
+                { value: credit, disabled: b.amount > 0.000001 },
+                Validators.required,
+            ],
         });
     }
 
@@ -113,21 +181,30 @@ export class CashCommissionDetailComponent extends BaseEntityDetailComponent<Dep
         return value;
     }
 
-
     private onTypeChange() {
         const dType = this.typeAutoCompleteModel.cache;
         if (dType && !dType.commissioned) {
-            this.form.controls['commission'].enable({ onlySelf: true, emitEvent: false });
+            this.form.controls['commission'].enable({
+                onlySelf: true,
+                emitEvent: false,
+            });
         } else {
-            this.form.controls['commission'].disable({ onlySelf: true, emitEvent: false });
-            this.form.controls['commission'].setValue(0.0, { onlySelf: true, emitEvent: false });
+            this.form.controls['commission'].disable({
+                onlySelf: true,
+                emitEvent: false,
+            });
+            this.form.controls['commission'].setValue(0.0, {
+                onlySelf: true,
+                emitEvent: false,
+            });
         }
     }
 
     ngOnInit() {
         super.ngOnInit();
-        this.currencySrv.load()
-            .pipe(concatMap(_ => this.loginSrv.reload())).subscribe();
-
+        this.currencySrv
+            .load()
+            .pipe(concatMap((_) => this.loginSrv.reload()))
+            .subscribe();
     }
 }

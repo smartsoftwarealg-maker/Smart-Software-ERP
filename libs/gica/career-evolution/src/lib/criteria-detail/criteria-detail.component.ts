@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { Criterion } from '../gica-careers-api';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
@@ -15,7 +15,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
 @Component({
     selector: 'ss-gica-criteria-detail',
     standalone: true,
-    imports: [CommonModule,  MaterialModule, TranslateDirective],
+    imports: [MaterialModule, TranslateDirective],
     templateUrl: './criteria-detail.component.html',
     styleUrl: './criteria-detail.component.css'
 })

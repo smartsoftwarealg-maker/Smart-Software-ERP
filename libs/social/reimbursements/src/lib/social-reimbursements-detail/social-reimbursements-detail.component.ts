@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { BaseChildEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { REIMBURSEMENT, Reimbursement, ReimbursementService } from '@social/social-api';
 import { FormBuilder, ReactiveFormsModule, UntypedFormGroup, Validators } from '@angular/forms';
@@ -16,17 +16,7 @@ import { convertToParamMap, ParamMap } from '@angular/router';
 @Component({
     selector: 'ss-social-reimbursements-detail',
     standalone: true,
-    imports: [CommonModule,
-        MatCard,
-
-        DatePickerComponent,
-
-        MatError,
-        MatFormField,
-        MatInput,
-        MatLabel,
-        MaterialModule,
-        ReactiveFormsModule],
+    imports: [MatCard, DatePickerComponent, MatError, MatFormField, MatInput, MatLabel, MaterialModule, ReactiveFormsModule],
     templateUrl: './social-reimbursements-detail.component.html',
     styleUrl: './social-reimbursements-detail.component.scss'
 })

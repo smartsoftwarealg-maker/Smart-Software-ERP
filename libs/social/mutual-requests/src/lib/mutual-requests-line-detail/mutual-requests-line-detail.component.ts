@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import {
     BaseChildEntityDetailComponent,
 } from '@ss/common/ui-base-entity';
@@ -24,18 +24,17 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     selector: 'ss-mutual-requests-line-detail',
     standalone: true,
     imports: [
-        CommonModule,
-        MaterialModule,
-        TranslateDirective,
-        MatCard,
-        MatCardContent,
-        MatFormField,
-        MatInput,
-        MatLabel,
-        MaterialModule,
-        ReactiveFormsModule,
-        UiAutoCompleteComponent
-    ],
+    MaterialModule,
+    TranslateDirective,
+    MatCard,
+    MatCardContent,
+    MatFormField,
+    MatInput,
+    MatLabel,
+    MaterialModule,
+    ReactiveFormsModule,
+    UiAutoCompleteComponent
+],
     templateUrl: './mutual-requests-line-detail.component.html',
     styleUrl: './mutual-requests-line-detail.component.scss'
 })

@@ -1,97 +1,92 @@
 <mat-card>
-    <mat-card-content>
-        <form *ngIf="form !== null" novalidate [formGroup]="form">
-
-            <mat-form-field id="excDate" class="default-50 sm-100">
-                <mat-label translate>COMMON_DATE</mat-label>
-                <ss-date-picker formControlName="excDate"></ss-date-picker>
+  <mat-card-content>
+    @if (form !== null) {
+      <form novalidate [formGroup]="form">
+        <mat-form-field id="excDate" class="default-50 sm-100">
+          <mat-label translate>COMMON_DATE</mat-label>
+          <ss-date-picker formControlName="excDate"></ss-date-picker>
+        </mat-form-field>
+        <mat-form-field class="default-50 sm-100">
+          <mat-label translate>LOGISTICS_CUSTOMER</mat-label>
+          <ss-auto-complete matInput
+            [required]="true"
+            [model]="agentAutoCompleteModel"
+          formControlName="customerId"></ss-auto-complete>
+        </mat-form-field>
+        <mat-form-field class="default-50 sm-100">
+          <mat-label translate>COMMON_TYPE</mat-label>
+          <ss-auto-complete matInput
+            [required]="true"
+            [model]="typeAutoCompleteModel"
+          formControlName="depositType"></ss-auto-complete>
+        </mat-form-field>
+        <mat-form-field id="description" class="default-50 sm-100">
+          <mat-label translate>COMMON_DESCRIPTION</mat-label>
+          <input matInput formControlName="description" type="text" required>
+          @if (form.controls.excDate.invalid) {
+            <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+          }
+        </mat-form-field>
+        <mat-form-field class="default-50 sm-100">
+          <mat-label translate>LOGISTICS_CURRENCY</mat-label>
+          <ss-auto-complete matInput
+            [required]="true"
+            [model]="currencyAutoCompleteModel"
+          formControlName="currencyId"></ss-auto-complete>
+        </mat-form-field>
+        <mat-form-field id="commission" class="default-50 sm-100">
+          <mat-label translate>EXCHANGE_COMMISSION</mat-label>
+          <input matInput formControlName="commission"
+            type="number"
+            step="0.01">
+            @if (form.controls.debit.invalid) {
+              <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+            }
+          </mat-form-field>
+          <mat-form-field id="credit" class="default-50 sm-100">
+            <mat-label translate>EXCHANGE_DEPOSIT</mat-label>
+            <input matInput formControlName="credit"
+              type="number"
+              step="1"
+              (change)="onCreditChange($event)"
+              required #credit>
+              @if (form.controls.debit.invalid) {
+                <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+              }
             </mat-form-field>
-
-
-            <mat-form-field class="default-50 sm-100">
-                <mat-label translate>LOGISTICS_CUSTOMER</mat-label>
-                <ss-auto-complete matInput
-                                  [required]="true"
-                                  [model]="agentAutoCompleteModel"
-                                  formControlName="customerId"></ss-auto-complete>
-            </mat-form-field>
-
-
-            <mat-form-field class="default-50 sm-100">
-                <mat-label translate>COMMON_TYPE</mat-label>
-                <ss-auto-complete matInput
-                                  [required]="true"
-                                  [model]="typeAutoCompleteModel"
-                                  formControlName="depositType"></ss-auto-complete>
-            </mat-form-field>
-
-            <mat-form-field id="description" class="default-50 sm-100">
-                <mat-label translate>COMMON_DESCRIPTION</mat-label>
-                <input matInput formControlName="description" type="text" required>
-                <mat-error *ngIf="form.controls.excDate.invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
-            </mat-form-field>
-
-            <mat-form-field class="default-50 sm-100">
-                <mat-label translate>LOGISTICS_CURRENCY</mat-label>
-                <ss-auto-complete matInput
-                                  [required]="true"
-                                  [model]="currencyAutoCompleteModel"
-                                  formControlName="currencyId"></ss-auto-complete>
-            </mat-form-field>
-
-            <mat-form-field id="commission" class="default-50 sm-100">
-                <mat-label translate>EXCHANGE_COMMISSION</mat-label>
-                <input matInput formControlName="commission"
-                       type="number"
-                       step="0.01">
-                <mat-error *ngIf="form.controls.debit.invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
-            </mat-form-field>
-
-            <mat-form-field id="credit" class="default-50 sm-100">
-                <mat-label translate>EXCHANGE_DEPOSIT</mat-label>
-                <input matInput formControlName="credit"
-                       type="number"
-                       step="1"
-                       (change)="onCreditChange($event)"
-                       required #credit>
-                <mat-error *ngIf="form.controls.debit.invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
-            </mat-form-field>
-
             <mat-form-field id="debit" class="default-50 sm-100">
-                <mat-label translate>EXCHANGE_WITHDRAWAL</mat-label>
-                <input matInput formControlName="debit"
-                       type="number"
-                       step="1" required
-                       (change)="onDebitChange($event)"
-                       #debit>
-                <mat-error *ngIf="form.controls.debit.invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
-            </mat-form-field>
-
-            <mat-form-field class="default-50 sm-100">
+              <mat-label translate>EXCHANGE_WITHDRAWAL</mat-label>
+              <input matInput formControlName="debit"
+                type="number"
+                step="1" required
+                (change)="onDebitChange($event)"
+                #debit>
+                @if (form.controls.debit.invalid) {
+                  <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+                }
+              </mat-form-field>
+              <mat-form-field class="default-50 sm-100">
                 <mat-label translate>EXCHANGE_WITHDRAWN_CURRENCY</mat-label>
                 <ss-auto-complete matInput
-                                  [model]="soldAutoCompleteModel"
-                                  formControlName="soldCurrencyId">
+                  [model]="soldAutoCompleteModel"
+                  formControlName="soldCurrencyId">
                 </ss-auto-complete>
-            </mat-form-field>
-
-            <mat-form-field id="exchangeRate" class="default-50 sm-100">
+              </mat-form-field>
+              <mat-form-field id="exchangeRate" class="default-50 sm-100">
                 <mat-label translate>LOGISTICS_EXCHANGE_RATE</mat-label>
                 <input type="number" matInput formControlName="exchangeRate"
-                       step="0.00001"
-                       (change)="onRateChange()">
-            </mat-form-field>
-
-            <mat-form-field class="default-50 sm-100">
-                <mat-label translate>EXCHANGE_SOLD_AMOUNT</mat-label>
-                <input type="number" matInput formControlName="soldAmount" step="0.00001" >
-            </mat-form-field>
-
-            <div id="monthValidated" class="default-50 sm-100">
-                <mat-checkbox formControlName="withdrawn" translate>EXCHANGE_WITHDRAWN</mat-checkbox>
-            </div>
-
-        </form>
-    </mat-card-content>
-</mat-card>
-<ss-exc-doc-info [selectedId]="customerId" ></ss-exc-doc-info>
+                  step="0.00001"
+                  (change)="onRateChange()">
+                </mat-form-field>
+                <mat-form-field class="default-50 sm-100">
+                  <mat-label translate>EXCHANGE_SOLD_AMOUNT</mat-label>
+                  <input type="number" matInput formControlName="soldAmount" step="0.00001" >
+                </mat-form-field>
+                <div id="monthValidated" class="default-50 sm-100">
+                  <mat-checkbox formControlName="withdrawn" translate>EXCHANGE_WITHDRAWN</mat-checkbox>
+                </div>
+              </form>
+            }
+          </mat-card-content>
+        </mat-card>
+        <ss-exc-doc-info [selectedId]="customerId" ></ss-exc-doc-info>

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { Motive, Scale } from '../gica-careers-api';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
@@ -29,17 +29,16 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     selector: 'ss-gica-scale-detail',
     standalone: true,
     imports: [
-        CommonModule,
-        MaterialModule,
-        MatCard,
-        MatCardContent,
-        MatError,
-        MatFormField,
-        MatInput,
-        MatLabel,
-        ReactiveFormsModule,
-        TranslateDirective
-    ],
+    MaterialModule,
+    MatCard,
+    MatCardContent,
+    MatError,
+    MatFormField,
+    MatInput,
+    MatLabel,
+    ReactiveFormsModule,
+    TranslateDirective
+],
     templateUrl: './scale-detail.component.html',
     styleUrl: './scale-detail.component.css'
 })

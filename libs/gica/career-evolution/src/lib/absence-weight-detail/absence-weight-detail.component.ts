@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { AbsenceWeight } from '../gica-careers-api';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
@@ -34,17 +34,16 @@ import { MatRadioButton } from '@angular/material/radio';
     selector: 'ss-gica-scale-detail',
     standalone: true,
     imports: [
-        CommonModule,
-        MaterialModule,
-        MatCard,
-        MatCardContent,
-        MatFormField,
-        MatInput,
-        MatLabel,
-        ReactiveFormsModule,
-        TranslateDirective,
-        UiAutoCompleteComponent
-    ],
+    MaterialModule,
+    MatCard,
+    MatCardContent,
+    MatFormField,
+    MatInput,
+    MatLabel,
+    ReactiveFormsModule,
+    TranslateDirective,
+    UiAutoCompleteComponent
+],
     templateUrl: './absence-weight-detail.component.html',
     styleUrl: './absence-weight-detail.component.css'
 })
