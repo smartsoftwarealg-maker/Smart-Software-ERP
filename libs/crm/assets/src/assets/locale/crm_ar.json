@@ -48,5 +48,18 @@
     "REENGAGEMENT":         "إعادة تفاعل",
     "DRAFT":                "مسودة",
     "SCHEDULED":            "مجدول",
-    "TAG":                  "تصنيف"
+    "TAG":                  "تصنيف",
+    "OPENED_AT":            "تاريخ الفتح",
+    "EXP_CLOSE_DATE":       "تاريخ الإغلاق المتوقع",
+    "INDUSTRY":             "الصناعة",
+    "ANNUAL_REVENUE":       "الإيرادات السنوية",
+    "NUMB_OF_EMPLOYEES":    "عدد الموظفين",
+    "LEAD":                 "فرصة عمل",
+    "UNQUALIFIED":          "غير مؤهل",
+    "IN_PROGRESS":          "قيد المعالجة",
+    "REFERRAL":             "إحالة",
+    "EVENT":                "حدث",
+    "SOCIAL":               "اجتماعي",
+    "PARTNER":              "شريك"
+
 }

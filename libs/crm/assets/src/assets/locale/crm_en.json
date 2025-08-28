@@ -48,5 +48,18 @@
     "REENGAGEMENT":         "Reengagement",
     "DRAFT":                "Draft",
     "SCHEDULED":            "Scheduled",
-    "TAG":                  "Tag"
+    "TAG":                  "Tag",
+    "OPENED_AT":            "Opened At",
+    "EXP_CLOSE_DATE":       "Expected Close Date",
+    "INDUSTRY":             "Industry",
+    "ANNUAL_REVENUE":       "Annual Revenue",
+    "NUMB_OF_EMPLOYEES":    "Number of Employees",
+    "LEAD":                 "Lead",
+    "UNQUALIFIED":          "Unqualified",
+    "IN_PROGRESS":          "In Progress",
+    "REFERRAL":             "Referral",
+    "EVENT":                "Event",
+    "SOCIAL":               "Social",
+    "PARTNER":              "Partner"
+
 }

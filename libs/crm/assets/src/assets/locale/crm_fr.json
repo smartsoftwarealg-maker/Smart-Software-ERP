@@ -48,5 +48,18 @@
     "REENGAGEMENT":         "Réengagement",
     "DRAFT":                "Brouillon",
     "SCHEDULED":            "Planifié",
-    "TAG":                  "Étiquette"
+    "TAG":                  "Étiquette",
+    "OPENED_AT":            "Date d'ouverture",
+    "EXP_CLOSE_DATE":       "Date de clôture prévue",
+    "INDUSTRY":             "Industrie",
+    "ANNUAL_REVENUE":       "Revenu annuel",
+    "NUMB_OF_EMPLOYEES":    "Nombre d'employés",
+    "LEAD":                 "Prospect",
+    "UNQUALIFIED":          "Non qualifié",
+    "IN_PROGRESS":          "En cours",
+    "REFERRAL":             "Parrainage",
+    "EVENT":                "Événement",
+    "SOCIAL":               "Social",
+    "PARTNER":              "Partenaire"
+
 }

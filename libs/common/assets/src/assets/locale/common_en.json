@@ -447,5 +447,8 @@
     "SMS":                 "SMS",
     "FULLNAME":            "Full Name",
     "EMAIL":               "Email",
-    "IS_UNSUBSCRIBED":     "Is Unsubscribed"
+    "IS_UNSUBSCRIBED":     "Is Unsubscribed",
+    "WEB_SITE":            "Website",
+    "ADDRESS_LINE1":        "Address Line 1",
+    "ADDRESS_LINE2":        "Address Line 2"
 }
