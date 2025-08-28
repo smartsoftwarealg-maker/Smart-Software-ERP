@@ -12,7 +12,7 @@ import {CartService} from '../cart.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import { HeaderPageComponent } from '../header-page/header-page.component';
 import { MatList, MatListItem } from '@angular/material/list';
-import { NgFor, NgIf, AsyncPipe, DecimalPipe } from '@angular/common';
+import { AsyncPipe, DecimalPipe } from '@angular/common';
 import { MatButton, MatIconButton } from '@angular/material/button';
 import { TranslateDirective } from '@ss/common/ui-lang';
 import { MatCard } from '@angular/material/card';
@@ -26,20 +26,18 @@ import { TranslatePipe } from '@ss/common/ui-lang';
     styleUrls: ['./main-page.component.scss'],
     standalone: true,
     imports: [
-        HeaderPageComponent,
-        MatList,
-        NgFor,
-        MatListItem,
-        NgIf,
-        MatButton,
-        TranslateDirective,
-        MatCard,
-        ImageInputComponent,
-        MatIconButton,
-        AsyncPipe,
-        DecimalPipe,
-        TranslatePipe,
-    ],
+    HeaderPageComponent,
+    MatList,
+    MatListItem,
+    MatButton,
+    TranslateDirective,
+    MatCard,
+    ImageInputComponent,
+    MatIconButton,
+    AsyncPipe,
+    DecimalPipe,
+    TranslatePipe
+],
 })
 export class MainPageComponent implements OnInit, OnDestroy {
     private jobId: any = null;

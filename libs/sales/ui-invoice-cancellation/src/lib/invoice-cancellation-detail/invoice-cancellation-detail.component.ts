@@ -8,7 +8,7 @@ import { LoginService, MaterialModule } from '@ss/common/api-common';
 import {MatDialog} from '@angular/material/dialog';
 import {InvoiceCancellationService} from '@ss/sales/api-invoice-cancellation';
 import { BaseTransactionDetailComponent, TransactionLinesService } from '@ss/logistics/api-transaction';
-import { CommonModule } from '@angular/common';
+
 import { DatePickerComponent } from '@ss/common/ui-datepicker';
 
 
@@ -21,16 +21,13 @@ import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
     templateUrl: './invoice-cancellation-detail.component.html',
     standalone: true,
     imports: [
-        CommonModule,
-        MaterialModule,
-        TranslateDirective,
-        ReactiveFormsModule,
-        RouterModule,
-        DatePickerComponent,
-        UiAutoCompleteComponent
-
-
-    ]
+    MaterialModule,
+    TranslateDirective,
+    ReactiveFormsModule,
+    RouterModule,
+    DatePickerComponent,
+    UiAutoCompleteComponent
+]
 })
 export class InvoiceCancellationDetailComponent extends BaseTransactionDetailComponent implements OnInit {
     constructor(

@@ -8,7 +8,7 @@ import { LoginService, MaterialModule } from '@ss/common/api-common';
 import { BaseTransactionDetailComponent } from "@ss/logistics/api-transaction";
 import {SalesProformaService} from '../sales-proforma.service';
 import {MatDialog} from '@angular/material/dialog';
-import { CommonModule } from '@angular/common';
+
 import { DatePickerComponent } from '@ss/common/ui-datepicker';
 
 import { SalesProformaLinesService } from '../sales-proforma-lines.service';
@@ -21,14 +21,13 @@ import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
     styleUrls: ['../../../../../common/assets/src/assets/transac-detail.scss'],
     standalone: true,
     imports: [
-        CommonModule,
-        MaterialModule,
-        TranslateDirective,
-        ReactiveFormsModule,
-        RouterModule,
-        DatePickerComponent,
-        UiAutoCompleteComponent
-    ],
+    MaterialModule,
+    TranslateDirective,
+    ReactiveFormsModule,
+    RouterModule,
+    DatePickerComponent,
+    UiAutoCompleteComponent
+],
 })
 export class ProformaDetailComponent extends BaseTransactionDetailComponent {
     constructor(public proformaSrv: SalesProformaService,

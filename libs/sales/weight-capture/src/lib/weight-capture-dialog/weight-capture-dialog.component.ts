@@ -1,5 +1,5 @@
 import { Component, Inject, inject, OnDestroy, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { MaterialModule } from '@ss/common/api-common';
 import { MatButtonModule } from '@angular/material/button';
 import { FormBuilder, FormControl } from '@angular/forms';
@@ -17,11 +17,10 @@ const BRUT = 1;
     selector: 'ss-weight-capture-dialog',
     standalone: true,
     imports: [
-        CommonModule,
-        MatButtonModule,
-        TranslateDirective,
-        MaterialModule,
-    ],
+    MatButtonModule,
+    TranslateDirective,
+    MaterialModule
+],
     templateUrl: './weight-capture-dialog.component.html',
     styleUrl: './weight-capture-dialog.component.scss',
 })

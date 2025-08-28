@@ -5,7 +5,7 @@ import {CheckoutService} from '../checkout.service';
 import { FormBuilder, UntypedFormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {Router} from '@angular/router';
 import { TranslateDirective } from '@ss/common/ui-lang';
-import { NgIf } from "@angular/common";
+
 import { MatFormField, MatLabel } from "@angular/material/form-field";
 import { MatInput } from "@angular/material/input";
 import { MatButton } from "@angular/material/button";
@@ -16,16 +16,15 @@ import { MatButton } from "@angular/material/button";
     styleUrls: ['./checkout.component.scss'],
     standalone: true,
     imports: [
-        TranslateDirective,
-        NgIf,
-        FormsModule,
-        ReactiveFormsModule,
-        MatFormField,
-        MatLabel,
-        MatInput,
-        MatDialogActions,
-        MatButton,
-    ],
+    TranslateDirective,
+    FormsModule,
+    ReactiveFormsModule,
+    MatFormField,
+    MatLabel,
+    MatInput,
+    MatDialogActions,
+    MatButton
+],
 })
 export class CheckoutComponent implements OnInit {
     private fb = inject(FormBuilder);

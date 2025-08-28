@@ -14,7 +14,7 @@ import {
 } from '@ss/logistics/api-transaction';
 import {MatDialog} from '@angular/material/dialog';
 import {OrderLinesListComponent} from '@ss/sales/ui-order-lines';
-import { JsonPipe, NgIf } from '@angular/common';
+import { JsonPipe } from '@angular/common';
 import { TranslateDirective } from '@ss/common/ui-lang';
 import { DatePickerComponent } from '@ss/common/ui-datepicker';
 import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
@@ -22,16 +22,15 @@ import { CdkTextareaAutosize } from '@angular/cdk/text-field';
 
 @Component({
     imports: [
-        MaterialModule,
-        NgIf,
-        FormsModule,
-        ReactiveFormsModule,
-        TranslateDirective,
-        DatePickerComponent,
-        UiAutoCompleteComponent,
-        CdkTextareaAutosize,
-        RouterOutlet,
-       ],
+    MaterialModule,
+    FormsModule,
+    ReactiveFormsModule,
+    TranslateDirective,
+    DatePickerComponent,
+    UiAutoCompleteComponent,
+    CdkTextareaAutosize,
+    RouterOutlet
+],
     selector: 'ss-ui-order-detail',
     standalone: true,
     styleUrls: ['../../../../../common/assets/src/assets/transac-detail.scss'],

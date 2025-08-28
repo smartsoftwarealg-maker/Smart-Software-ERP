@@ -6,7 +6,7 @@ import {Confirmation, Product} from '../ecommerce-api';
 import {SnackBarService} from '@ss/common/ui-shell';
 import { HeaderPageComponent } from '../header-page/header-page.component';
 import { MatCard } from '@angular/material/card';
-import { NgIf, NgFor, DecimalPipe } from '@angular/common';
+import { DecimalPipe } from '@angular/common';
 import { MatFormField, MatLabel } from '@angular/material/form-field';
 import { TranslateDirective } from '@ss/common/ui-lang';
 import { MatInput } from '@angular/material/input';
@@ -24,23 +24,21 @@ import { TranslatePipe } from '@ss/common/ui-lang';
         '../shopping-cart/shopping-cart.component.scss'],
     standalone: true,
     imports: [
-        HeaderPageComponent,
-        MatCard,
-        NgIf,
-        FormsModule,
-        ReactiveFormsModule,
-        MatFormField,
-        MatLabel,
-        TranslateDirective,
-        MatInput,
-        CdkTextareaAutosize,
-        MatButton,
-        MatProgressSpinner,
-        NgFor,
-        ImageInputComponent,
-        DecimalPipe,
-        TranslatePipe,
-    ],
+    HeaderPageComponent,
+    MatCard,
+    FormsModule,
+    ReactiveFormsModule,
+    MatFormField,
+    MatLabel,
+    TranslateDirective,
+    MatInput,
+    CdkTextareaAutosize,
+    MatButton,
+    MatProgressSpinner,
+    ImageInputComponent,
+    DecimalPipe,
+    TranslatePipe
+],
 })
 export class SalesConfirmationComponent implements OnInit {
     private router     = inject(Router);
