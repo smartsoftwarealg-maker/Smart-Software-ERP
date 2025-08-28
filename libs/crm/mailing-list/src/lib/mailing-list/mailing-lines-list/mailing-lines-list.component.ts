@@ -17,13 +17,13 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
 import { MailingListLine } from '../miling-list-api.class';
 import { MatMiniFabButton } from '@angular/material/button';
 import { MatTooltip } from '@angular/material/tooltip';
-import { MailingLineListService } from '../mailingLineList.service';
 import { MatCheckbox } from '@angular/material/checkbox';
+import { MailingLineListService } from '../mailing-line-list.service';
 
 @Component({
-    selector: 'ss-mailing-list-line',
-    templateUrl: 'mailingListLine.component.html',
-    styleUrls: ['mailingListLine.component.scss'],
+    selector: 'ss-mailing-lines-list',
+    templateUrl: 'mailing-lines-list.component.html',
+    styleUrls: ['mailing-lines-list.component.scss'],
     standalone: true,
     imports: [
         MatTable,
@@ -44,7 +44,7 @@ import { MatCheckbox } from '@angular/material/checkbox';
         MatCheckbox
     ]
 })
-export class MailingListLineComponent extends BaseChildEntityListComponent<MailingListLine> {
+export class MailingLinesListComponent extends BaseChildEntityListComponent<MailingListLine> {
 
     override displayedColumns = [
         'fullName',

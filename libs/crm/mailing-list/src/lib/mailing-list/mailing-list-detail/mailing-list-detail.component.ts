@@ -16,13 +16,14 @@ import { MatCard } from '@angular/material/card';
 import { MatFormField, MatLabel } from '@angular/material/form-field';
 import { MatInput } from '@angular/material/input';
 import { Lookup } from '@ss/common/api-lookup';
-import { MailingListService } from '../mailingList.service';
-import { MailingLineListService } from '../mailingLineList.service';
+import { MailingListService } from '../mailing-list.service';
+import { MailingLineListService } from '../mailing-line-list.service';
+
 
 @Component({
     selector: 'ss-mailing-list-detail',
-    templateUrl: 'mailingList-detail.component.html',
-    styleUrl: 'mailingList-detail.component.scss',
+    templateUrl: 'mailing-list-detail.component.html',
+    styleUrl: 'mailing-list-detail.component.scss',
     standalone: true,
     imports: [
         MaterialModule,

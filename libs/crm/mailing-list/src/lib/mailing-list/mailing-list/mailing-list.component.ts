@@ -21,12 +21,12 @@ import { MatSort, MatSortHeader } from '@angular/material/sort';
 import { TranslateDirective } from '@ss/common/ui-lang';
 import { PaginationComponent } from '@ss/common/ui-pagination';
 import { Lookup } from '@ss/common/api-lookup';
-import { MailingListService } from '../mailingList.service';
+import { MailingListService } from '../mailing-list.service';
 
 @Component({
     selector: 'ss-mailing-list',
-    templateUrl: 'mailingList.component.html',
-    styleUrls: ['mailingList.component.scss'],
+    templateUrl: 'mailing-list.component.html',
+    styleUrls: ['mailing-list.component.scss'],
     standalone: true,
     imports: [
         MatTable,

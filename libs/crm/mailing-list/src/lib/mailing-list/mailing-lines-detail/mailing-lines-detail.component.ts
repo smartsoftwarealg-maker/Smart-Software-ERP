@@ -13,13 +13,14 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 import { MatCard } from '@angular/material/card';
 import { MatFormField, MatLabel } from '@angular/material/form-field';
 import { MatInput } from '@angular/material/input';
-import { MailingLineListService } from '../mailingLineList.service';
+
 import { MailingListLine } from '../miling-list-api.class';
+import { MailingLineListService } from '../mailing-line-list.service';
 
 @Component({
-    selector: 'ss-mailing-line-detail',
-    templateUrl: 'mailingListLine-detail.component.html',
-    styleUrl: 'mailingListLine-detail.component.scss',
+    selector: 'ss-mailing-lines-detail',
+    templateUrl: 'mailing-lines-detail.component.html',
+    styleUrl: 'mailing-lines-detail.component.scss',
     standalone: true,
     imports: [
         MaterialModule,
@@ -33,7 +34,7 @@ import { MailingListLine } from '../miling-list-api.class';
         TranslatePipe
     ]
 })
-export class MailingListLineDetailComponent extends BaseChildEntityDetailComponent<MailingListLine> {
+export class MailingLinesDetailComponent extends BaseChildEntityDetailComponent<MailingListLine> {
     private formBuilder = inject(FormBuilder);
     constructor(
         public override entitySrv: MailingLineListService,
