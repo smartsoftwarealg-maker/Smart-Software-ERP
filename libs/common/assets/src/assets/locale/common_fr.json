@@ -443,5 +443,8 @@
     "SMS":                 "SMS",
     "FULLNAME":            "Nom complet",
     "EMAIL":               "Email",
-    "IS_UNSUBSCRIBED":     "Est desabonne"
+    "IS_UNSUBSCRIBED":     "Est desabonne",
+    "WEB_SITE":            "Site web",
+    "ADDRESS_LINE1":        "Adresse 1",
+    "ADDRESS_LINE2":        "Adresse 2"
 }
