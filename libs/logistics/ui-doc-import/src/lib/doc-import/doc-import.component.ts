@@ -10,7 +10,7 @@ import { PaginationModel } from '@ss/common/api-common';
 import { MatFormField, MatLabel } from "@angular/material/form-field";
 import { TranslateDirective } from '@ss/common/ui-lang';
 import { MatSelect } from "@angular/material/select";
-import { NgFor, DatePipe } from "@angular/common";
+import { DatePipe } from "@angular/common";
 import { MatOption } from "@angular/material/core";
 import { MatInput } from "@angular/material/input";
 import { MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from "@angular/material/table";
@@ -23,7 +23,7 @@ import { TranslatePipe } from '@ss/common/ui-lang';
     templateUrl: './doc-import.component.html',
     styleUrls: ['./doc-import.component.scss'],
     standalone: true,
-    imports: [MatFormField, MatLabel, TranslateDirective, MatSelect, FormsModule, ReactiveFormsModule, NgFor, MatOption, MatInput, MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, MatButton, PaginationComponent, DatePipe, TranslatePipe]
+    imports: [MatFormField, MatLabel, TranslateDirective, MatSelect, FormsModule, ReactiveFormsModule, MatOption, MatInput, MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, MatButton, PaginationComponent, DatePipe, TranslatePipe]
 })
 export class DocImportComponent implements OnInit {
     private dialogRef = inject(MatDialogRef<DocImportComponent>);

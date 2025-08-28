@@ -7,7 +7,7 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
 import { LotsService, Lot } from '@ss/common/api-lookup';
 import { TranslateDirective } from '@ss/common/ui-lang';
-import { NgIf, NgFor } from '@angular/common';
+
 import { MatMiniFabButton, MatButton } from '@angular/material/button';
 import { MatProgressBar } from '@angular/material/progress-bar';
 import { MatCard } from '@angular/material/card';
@@ -22,7 +22,7 @@ import { TranslatePipe } from '@ss/common/ui-lang';
     templateUrl: './inventory-import.component.html',
     styleUrls: ['./inventory-import.component.scss'],
     standalone: true,
-    imports: [TranslateDirective, NgIf, MatMiniFabButton, MatProgressBar, MatCard, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, UiAutoCompleteComponent, MatSelect, NgFor, MatOption, MatButton, TranslatePipe]
+    imports: [TranslateDirective, MatMiniFabButton, MatProgressBar, MatCard, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, UiAutoCompleteComponent, MatSelect, MatOption, MatButton, TranslatePipe]
 })
 export class InventoryImportComponent {
     private fb = inject(UntypedFormBuilder);

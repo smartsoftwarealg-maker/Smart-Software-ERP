@@ -4,7 +4,7 @@ import {Agent, AgentService} from '@ss/logistics/api-agent';
 import { ReactiveFormsModule, UntypedFormBuilder, UntypedFormControl, UntypedFormGroup } from '@angular/forms';
 import { LoginService, MaterialModule } from '@ss/common/api-common';
 import {ActivatedRoute} from '@angular/router';
-import { CommonModule } from '@angular/common';
+
 import { TranslateDirective } from '@ss/common/ui-lang';
 
 @Component({
@@ -13,11 +13,10 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     styleUrls: ['./customer-profile.component.scss'],
     standalone: true,
     imports: [
-        CommonModule,
-        MaterialModule,
-        TranslateDirective,
-        ReactiveFormsModule,
-    ],
+    MaterialModule,
+    TranslateDirective,
+    ReactiveFormsModule
+],
 
 })
 export class CustomerProfileComponent implements OnInit {

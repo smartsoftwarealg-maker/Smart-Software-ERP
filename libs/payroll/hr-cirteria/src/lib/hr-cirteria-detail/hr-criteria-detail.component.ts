@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute } from '@angular/router';
@@ -17,7 +17,7 @@ import { HrCriterionService } from '../hr-criterion.service';
 @Component({
     selector: 'ss-hr-criteria-detail',
     standalone: true,
-    imports: [CommonModule, MaterialModule, TranslateDirective],
+    imports: [MaterialModule, TranslateDirective],
     templateUrl: './hr-criteria-detail.component.html',
     styleUrl: './hr-criteria-detail.component.scss',
 })

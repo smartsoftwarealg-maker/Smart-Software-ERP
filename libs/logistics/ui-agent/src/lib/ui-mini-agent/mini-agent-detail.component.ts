@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {AgentDetailComponent} from '../agent-detail/agent-detail.component';
-import { CommonModule } from '@angular/common';
+
 import { MaterialModule } from '@ss/common/api-common';
 import { ReactiveFormsModule } from '@angular/forms';
 
@@ -15,12 +15,11 @@ import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
     templateUrl: './mini-agent-detail.component.html',
     standalone: true,
     imports: [
-        CommonModule,
-        MaterialModule,
-        TranslateDirective,
-        ReactiveFormsModule,
-        UiAutoCompleteComponent
-    ]
+    MaterialModule,
+    TranslateDirective,
+    ReactiveFormsModule,
+    UiAutoCompleteComponent
+]
 })
 export class MiniAgentDetailComponent extends AgentDetailComponent {
 }

@@ -9,7 +9,7 @@ import {  ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import { IsParamService, MaterialModule, PaginatorPersistenceService } from '@ss/common/api-common';
-import { CommonModule } from '@angular/common';
+
 import { ReactiveFormsModule } from '@angular/forms';
 import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
 import { PaginationComponent } from '@ss/common/ui-pagination';
@@ -22,14 +22,13 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     templateUrl: './agent-list.component.html',
     standalone: true,
     imports: [
-        CommonModule,
-        MaterialModule,
-        TranslateDirective,
-        ReactiveFormsModule,
-        TranslateDirective,
-        DocInfoComponent,
-        PaginationComponent
-    ]
+    MaterialModule,
+    TranslateDirective,
+    ReactiveFormsModule,
+    TranslateDirective,
+    DocInfoComponent,
+    PaginationComponent
+]
 })
 export class AgentListComponent extends BaseEntityListComponent<Agent> {
     #activeOnlyBtn: ToolbarButton = {

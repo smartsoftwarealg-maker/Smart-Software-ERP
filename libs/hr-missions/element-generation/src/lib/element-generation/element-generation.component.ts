@@ -1,5 +1,5 @@
 import {Component, inject, OnInit, signal} from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import {
     MatCell,
     MatCellDef,
@@ -24,21 +24,20 @@ import {LoginService} from "@ss/common/api-common";
 @Component({
     selector: 'ss-element-generation',
     imports: [
-        CommonModule,
-        MatCell,
-        MatCellDef,
-        MatColumnDef,
-        MatHeaderCell,
-        MatHeaderRow,
-        MatTable,
-        MatHeaderCellDef,
-        MatRow,
-        MatHeaderRowDef,
-        MatRowDef,
-        MatCheckbox,
-        TranslateDirective,
-        MatButton,
-    ],
+    MatCell,
+    MatCellDef,
+    MatColumnDef,
+    MatHeaderCell,
+    MatHeaderRow,
+    MatTable,
+    MatHeaderCellDef,
+    MatRow,
+    MatHeaderRowDef,
+    MatRowDef,
+    MatCheckbox,
+    TranslateDirective,
+    MatButton
+],
     templateUrl: './element-generation.component.html',
     styleUrl: './element-generation.component.scss',
     standalone: true,

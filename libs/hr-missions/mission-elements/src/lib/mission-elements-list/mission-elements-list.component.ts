@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import {
     MatCell,
     MatCellDef,
@@ -26,20 +26,19 @@ import { MissionsElementService } from '../mission-element.service';
 @Component({
     selector: 'ss-mission-elements-list',
     imports: [
-        CommonModule,
-        MatCell,
-        MatCellDef,
-        MatColumnDef,
-        MatHeaderCell,
-        MatHeaderRow,
-        MatHeaderRowDef,
-        MatRow,
-        MatRowDef,
-        MatTable,
-        PaginationComponent,
-        TranslateDirective,
-        MatHeaderCellDef,
-    ],
+    MatCell,
+    MatCellDef,
+    MatColumnDef,
+    MatHeaderCell,
+    MatHeaderRow,
+    MatHeaderRowDef,
+    MatRow,
+    MatRowDef,
+    MatTable,
+    PaginationComponent,
+    TranslateDirective,
+    MatHeaderCellDef
+],
     templateUrl: './mission-elements-list.component.html',
     styleUrl: './mission-elements-list.component.scss',
     standalone: true,

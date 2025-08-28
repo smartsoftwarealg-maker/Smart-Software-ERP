@@ -1,7 +1,7 @@
 import { Component, inject, Input } from '@angular/core';
 import { EmployeeLanguagesService, PersonLanguage } from '@ss/payroll/api-employee';
 import { BaseChildEntityListComponent } from '@ss/common/ui-base-entity';
-import { NgIf, AsyncPipe } from '@angular/common';
+import { AsyncPipe } from '@angular/common';
 import { MatMiniFabButton } from '@angular/material/button';
 import { MatTooltip } from '@angular/material/tooltip';
 import { MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from '@angular/material/table';
@@ -16,7 +16,7 @@ import { ActivePersonnelService } from '../../active-personnel.service';
     templateUrl: './employee-languages-list.component.html',
     styleUrls: ['./employee-languages-list.component.scss'],
     standalone: true,
-    imports: [NgIf, MaterialModule, MatMiniFabButton, MatTooltip, MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, TranslateDirective, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, PaginationComponent, AsyncPipe, TranslatePipe]
+    imports: [MaterialModule, MatMiniFabButton, MatTooltip, MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, TranslateDirective, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, PaginationComponent, AsyncPipe, TranslatePipe]
 })
 export class EmployeeLanguagesListComponent extends BaseChildEntityListComponent<PersonLanguage>{
     @Input() editable = true;

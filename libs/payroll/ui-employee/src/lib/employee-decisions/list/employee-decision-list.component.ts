@@ -3,7 +3,7 @@ import { EmployeeDecisionService, Decision } from '@ss/payroll/api-employee';
 import { BaseChildEntityListComponent } from '@ss/common/ui-base-entity';
 import { MatMiniFabButton } from '@angular/material/button';
 import { MatTooltip } from '@angular/material/tooltip';
-import { NgIf, AsyncPipe } from '@angular/common';
+import { AsyncPipe } from '@angular/common';
 import { MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from '@angular/material/table';
 import { TranslateDirective } from '@ss/common/ui-lang';
 import { PaginationComponent } from '@ss/common/ui-pagination';
@@ -15,19 +15,7 @@ import { ActivePersonnelService } from '../../active-personnel.service';
     templateUrl: './employee-decision-list.component.html',
     styleUrls: ['./employee-decision-list.component.scss'],
     standalone: true,
-    imports: [MatMiniFabButton,
-        MatTooltip,
-        NgIf,
-        MatTable,
-        MatColumnDef,
-        MatHeaderCell,
-        TranslateDirective,
-        MatCell,
-        MatHeaderRow,
-        MatRow,
-        PaginationComponent,
-        AsyncPipe,
-        TranslatePipe, MatRowDef, MatHeaderCellDef, MatCellDef, MatHeaderRowDef]
+    imports: [MatMiniFabButton, MatTooltip, MatTable, MatColumnDef, MatHeaderCell, TranslateDirective, MatCell, MatHeaderRow, MatRow, PaginationComponent, AsyncPipe, TranslatePipe, MatRowDef, MatHeaderCellDef, MatCellDef, MatHeaderRowDef]
 })
 export class EmployeeDecisionListComponent extends BaseChildEntityListComponent<Decision> {
     @Input() editable = true;

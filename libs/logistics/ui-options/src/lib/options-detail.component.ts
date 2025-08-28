@@ -23,7 +23,7 @@ import {
 import { Option } from './option.class';
 import { OptionService } from './option.service';
 import { LoginService, MaterialModule } from '@ss/common/api-common';
-import { CommonModule } from '@angular/common';
+
 
 import { DatePickerComponent } from '@ss/common/ui-datepicker';
 import { CustomerService } from '@ss/logistics/api-agent';
@@ -39,13 +39,12 @@ interface EvalPrice {
     selector: 'ss-account-detail',
     standalone: true,
     imports: [
-        CommonModule,
-        MaterialModule,
-        TranslateDirective,
-        ReactiveFormsModule,
-        DatePickerComponent,
-        UiAutoCompleteComponent,
-    ],
+    MaterialModule,
+    TranslateDirective,
+    ReactiveFormsModule,
+    DatePickerComponent,
+    UiAutoCompleteComponent
+],
     styleUrls: ['./options-detail.component.scss'],
     templateUrl: './options-detail.component.html',
 })

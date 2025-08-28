@@ -5,7 +5,7 @@ import { FormBuilder, UntypedFormGroup, Validators, FormsModule, ReactiveFormsMo
 import { ProfessionalFaultService, PunishmentTypeService } from '@ss/payroll/api-employee';
 import {PunishmentService} from '../punishment.service';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
-import { NgIf } from '@angular/common';
+
 import { MatMiniFabButton } from '@angular/material/button';
 import { MatCard } from '@angular/material/card';
 import { MatFormField, MatLabel, MatError } from '@angular/material/form-field';
@@ -22,7 +22,7 @@ import { Lookup } from '@ss/common/api-lookup';
     templateUrl: './punishment-detail.component.html',
     styleUrls: ['./punishment-detail.component.scss'],
     standalone: true,
-    imports: [NgIf, MaterialModule, MatMiniFabButton, MatCard, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, MatError, DatePickerComponent, UiAutoCompleteComponent]
+    imports: [MaterialModule, MatMiniFabButton, MatCard, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, MatError, DatePickerComponent, UiAutoCompleteComponent]
 })
 export class PunishmentDetailComponent extends BaseChildEntityDetailComponent<Punishment> {
     private formBuilder = inject(FormBuilder);

@@ -8,7 +8,7 @@ import {  ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import {CostCenter, CostCenterService} from '@ss/logistics/api-cost-center';
 import {Observable} from 'rxjs';
 import {tap} from 'rxjs/operators';
-import { CommonModule } from '@angular/common';
+
 import { MaterialModule } from '@ss/common/api-common';
 import { TranslateDirective } from '@ss/common/ui-lang';
 
@@ -21,11 +21,10 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     templateUrl: './cost-center-detail.component.html',
     standalone: true,
     imports: [
-        CommonModule,
-        MaterialModule,
-        TranslateDirective,
-        ReactiveFormsModule,
-    ],
+    MaterialModule,
+    TranslateDirective,
+    ReactiveFormsModule
+],
 })
 export class CostCenterDetailComponent extends BaseEntityDetailComponent<CostCenter> {
 

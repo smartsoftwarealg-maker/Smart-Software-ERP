@@ -1,33 +1,38 @@
 <mat-card>
-    <mat-card-content>
-        <form *ngIf="form !== null" novalidate [formGroup]="form">
-
-            <mat-form-field id="code" class="default-100">
-                <mat-label translate>LOGISTICS_CODE</mat-label>
-                <input matInput formControlName="code" type="text" required>
-                <mat-error *ngIf="form.controls['code'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
-            </mat-form-field>
-
-
-            <mat-form-field id="description" class="default-100">
-                <mat-label translate>LOGISTICS_DESCRIPTION</mat-label>
-                <input matInput formControlName="description" type="text" required>
-                <mat-error *ngIf="form.controls['description']?.invalid" translate>COMMON_FIELD_REQUIRED
-                </mat-error>
-            </mat-form-field>
-
-            <mat-form-field class="default-100">
-                <mat-label translate>LOGISTICS_GROUP</mat-label>
-                <mat-select formControlName="groupId" >
-                    <mat-option [value]="null"></mat-option>
-                    <mat-option *ngFor="let v of groups" [value]="v.id">
-                        {{v ? v.description : ''}}
-                    </mat-option>
-                </mat-select>
-                <mat-error *ngIf="form.controls['groupId'].invalid" translate>COMMON_FIELD_REQUIRED
-                </mat-error>
-            </mat-form-field>
-
-        </form>
-    </mat-card-content>
+  <mat-card-content>
+    @if (form !== null) {
+      <form novalidate [formGroup]="form">
+        <mat-form-field id="code" class="default-100">
+          <mat-label translate>LOGISTICS_CODE</mat-label>
+          <input matInput formControlName="code" type="text" required>
+          @if (form.controls['code'].invalid) {
+            <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+          }
+        </mat-form-field>
+        <mat-form-field id="description" class="default-100">
+          <mat-label translate>LOGISTICS_DESCRIPTION</mat-label>
+          <input matInput formControlName="description" type="text" required>
+          @if (form.controls['description']?.invalid) {
+            <mat-error translate>COMMON_FIELD_REQUIRED
+            </mat-error>
+          }
+        </mat-form-field>
+        <mat-form-field class="default-100">
+          <mat-label translate>LOGISTICS_GROUP</mat-label>
+          <mat-select formControlName="groupId" >
+            <mat-option [value]="null"></mat-option>
+            @for (v of groups; track v) {
+              <mat-option [value]="v.id">
+                {{v ? v.description : ''}}
+              </mat-option>
+            }
+          </mat-select>
+          @if (form.controls['groupId'].invalid) {
+            <mat-error translate>COMMON_FIELD_REQUIRED
+            </mat-error>
+          }
+        </mat-form-field>
+      </form>
+    }
+  </mat-card-content>
 </mat-card>

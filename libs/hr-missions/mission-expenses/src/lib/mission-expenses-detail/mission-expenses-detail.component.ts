@@ -18,7 +18,7 @@ import {LoginService, MaterialModule} from '@ss/common/api-common';
 import { Component, inject } from '@angular/core';
 import { PersonAutocompleteClass } from '@ss/employee-services/employee-services';
 import { DatePickerComponent } from '@ss/common/ui-datepicker';
-import {CommonModule} from "@angular/common";
+
 import {TranslateDirective} from "@ss/common/ui-lang";
 import {Mission, MissionsService, TrajectoryService, TransportService} from "@ss/hr-missions";
 import {JourneyLineService} from "../journey.service";
@@ -30,14 +30,13 @@ import {Career} from "@ss/payroll/api-employee";
     styleUrls: ['./mission-expenses-detail.component.scss'],
     standalone: true,
     imports: [
-        CommonModule,
-        MaterialModule,
-        ReactiveFormsModule,
-        DatePickerComponent,
-        TranslateDirective,
-        UiAutoCompleteComponent,
-        RouterOutlet,
-    ],
+    MaterialModule,
+    ReactiveFormsModule,
+    DatePickerComponent,
+    TranslateDirective,
+    UiAutoCompleteComponent,
+    RouterOutlet
+],
 })
 export class MissionExpensesDetailComponent extends BaseEntityDetailComponent<Mission> {
     private employeeSrv = inject(EmployeeService);

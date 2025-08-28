@@ -5,7 +5,7 @@ import { ActivatedRoute } from "@angular/router";
 import { UntypedFormBuilder, UntypedFormGroup, Validators } from "@angular/forms";
 import { ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
 import { LookupsService } from "@ss/common/api-lookup";
-import { CommonModule } from "@angular/common";
+
 import { MaterialModule } from "@ss/common/api-common";
 import { TranslateDirective } from '@ss/common/ui-lang';
 import { Fund } from '../fund.api';
@@ -17,10 +17,9 @@ import { FundService } from '../funds.service';
     styleUrls: ["./funds-detail.component.scss"],
     standalone: true,
     imports: [
-        CommonModule,
-        MaterialModule,
-        TranslateDirective
-    ]
+    MaterialModule,
+    TranslateDirective
+]
 })
 export class FundsDetailComponent extends BaseEntityDetailComponent<Fund> {
 

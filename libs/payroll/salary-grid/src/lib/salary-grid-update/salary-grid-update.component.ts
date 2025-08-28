@@ -1,7 +1,7 @@
 import { Component, inject, OnInit, signal } from "@angular/core";
 import { ActivatedRoute, RouterOutlet } from "@angular/router";
 import { FormBuilder, UntypedFormBuilder, UntypedFormGroup, Validators } from "@angular/forms";
-import { CommonModule } from "@angular/common";
+
 import { LoginService, MaterialModule } from "@ss/common/api-common";
 
 
@@ -19,12 +19,10 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     styleUrls: ["./salary-grid-update.component.scss"],
     standalone: true,
     imports: [
-        CommonModule,
-        MaterialModule,
-        TranslateDirective,
-        TranslatePipe,
-
-    ]
+    MaterialModule,
+    TranslateDirective,
+    TranslatePipe
+]
 })
 export class SalaryGridUpdateComponent implements OnInit {
     private route = inject(ActivatedRoute);

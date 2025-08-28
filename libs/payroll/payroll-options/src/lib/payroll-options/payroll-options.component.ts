@@ -1,5 +1,5 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import { LoginService, MaterialModule } from '@ss/common/api-common';
 import { PayrollOptionsService } from './payroll-options.service';
@@ -21,19 +21,18 @@ import { PayrollFormulasService } from '@ss/remuneration/payroll-formulas';
     selector: 'ss-payroll-options',
     standalone: true,
     imports: [
-        CommonModule,
-        MatCard,
-        MatCardContent,
-        MatError,
-        MatFormField,
-        MatInput,
-        MatLabel,
-        MaterialModule,
-        ReactiveFormsModule,
-        UiAutoCompleteComponent,
-        UiAutoCompleteComponent,
-        TranslateDirective
-    ],
+    MatCard,
+    MatCardContent,
+    MatError,
+    MatFormField,
+    MatInput,
+    MatLabel,
+    MaterialModule,
+    ReactiveFormsModule,
+    UiAutoCompleteComponent,
+    UiAutoCompleteComponent,
+    TranslateDirective
+],
     templateUrl: './payroll-options.component.html',
     styleUrl: './payroll-options.component.scss'
 })

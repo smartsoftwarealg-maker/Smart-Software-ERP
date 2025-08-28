@@ -1,71 +1,72 @@
-<div class="buttons" *ngIf="isEditable">
-
+@if (isEditable) {
+  <div class="buttons">
     @if (activePersonnelSrv.val) {
-        <button mat-mini-fab color="primary" (click)="showDetail(0)" [matTooltip]="'COMMON_ADD' | translate">
-            <span class="fas fa-plus"></span>
-        </button>
+      <button mat-mini-fab color="primary" (click)="showDetail(0)" [matTooltip]="'COMMON_ADD' | translate">
+        <span class="fas fa-plus"></span>
+      </button>
     }
     <button mat-mini-fab (click)="edit()"
-            [matTooltip]="'COMMON_EDIT' | translate"
-            [disabled]="!selectedId"
-            color="accent">
-        <span class="fas fa-pen"></span>
+      [matTooltip]="'COMMON_EDIT' | translate"
+      [disabled]="!selectedId"
+      color="accent">
+      <span class="fas fa-pen"></span>
     </button>
     @if (activePersonnelSrv.val) {
-        <button mat-mini-fab (click)="deleteSelected()" [matTooltip]="'COMMON_DELETE' | translate"
-                [disabled]="!selectedId"
-                color="warn">
-            <span class="fas fa-trash-alt"></span>
-        </button>
+      <button mat-mini-fab (click)="deleteSelected()" [matTooltip]="'COMMON_DELETE' | translate"
+        [disabled]="!selectedId"
+        color="warn">
+        <span class="fas fa-trash-alt"></span>
+      </button>
     }
-</div>
+  </div>
+}
 
 <div class="table-container">
-    <mat-table mat-table [dataSource]="data$ | async" class="main-table">
+  <mat-table mat-table [dataSource]="data$ | async" class="main-table">
 
-        <ng-container matColumnDef="birthDate">
-            <mat-header-cell *matHeaderCellDef translate style="justify-content: center">
-                PAYROLL_BIRTH_DATE
-            </mat-header-cell>
-            <mat-cell *matCellDef="let e" style="justify-content: center">
-                {{ e.birthDate }}
-            </mat-cell>
-        </ng-container>
+    <ng-container matColumnDef="birthDate">
+      <mat-header-cell *matHeaderCellDef translate style="justify-content: center">
+        PAYROLL_BIRTH_DATE
+      </mat-header-cell>
+      <mat-cell *matCellDef="let e" style="justify-content: center">
+        {{ e.birthDate }}
+      </mat-cell>
+    </ng-container>
 
-        <ng-container matColumnDef="name">
-            <mat-header-cell *matHeaderCellDef translate style="justify-content: center">
-                PAYROLL_NAME
-            </mat-header-cell>
-            <mat-cell *matCellDef="let e">
-                {{ e.name }}
-            </mat-cell>
-        </ng-container>
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef translate style="justify-content: center">
+        PAYROLL_NAME
+      </mat-header-cell>
+      <mat-cell *matCellDef="let e">
+        {{ e.name }}
+      </mat-cell>
+    </ng-container>
 
-        <ng-container matColumnDef="sex">
-            <mat-header-cell *matHeaderCellDef translate style="justify-content: center">
-                PAYROLL_SEX
-            </mat-header-cell>
-            <mat-cell *matCellDef="let e">
-                {{ (e.sex == 1 ? 'PAYROLL_MALE' : 'PAYROLL_FEMALE') | translate }}
-            </mat-cell>
-        </ng-container>
+    <ng-container matColumnDef="sex">
+      <mat-header-cell *matHeaderCellDef translate style="justify-content: center">
+        PAYROLL_SEX
+      </mat-header-cell>
+      <mat-cell *matCellDef="let e">
+        {{ (e.sex == 1 ? 'PAYROLL_MALE' : 'PAYROLL_FEMALE') | translate }}
+      </mat-cell>
+    </ng-container>
 
-        <ng-container matColumnDef="birthPlace">
-            <mat-header-cell *matHeaderCellDef translate style="justify-content: center">
-                PAYROLL_BIRTH_PLACE
-            </mat-header-cell>
-            <mat-cell *matCellDef="let e">
-                {{ e.birthPlace }}
-            </mat-cell>
-        </ng-container>
+    <ng-container matColumnDef="birthPlace">
+      <mat-header-cell *matHeaderCellDef translate style="justify-content: center">
+        PAYROLL_BIRTH_PLACE
+      </mat-header-cell>
+      <mat-cell *matCellDef="let e">
+        {{ e.birthPlace }}
+      </mat-cell>
+    </ng-container>
 
-        <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
-        <mat-row class="selectable" [class.selected]="row.id == selectedId" (click)="select(row.id)"
-                 *matRowDef="let row; columns: displayedColumns;"></mat-row>
-    </mat-table>
+    <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+    <mat-row class="selectable" [class.selected]="row.id == selectedId" (click)="select(row.id)"
+    *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
 
 </div>
 
 <div class="pagination-container b-b-background">
-    <ss-pagination [paginationModel]="paginator"></ss-pagination>
+  <ss-pagination [paginationModel]="paginator"></ss-pagination>
 </div>

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, RouterModule } from "@angular/router";
-import { CommonModule } from "@angular/common";
+
 import { MaterialModule } from "@ss/common/api-common";
 
 
@@ -17,13 +17,10 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     styleUrls: ['./contract-article-main.component.scss'],
     standalone: true,
     imports: [
-        CommonModule,
-        MaterialModule,
-        ReactiveFormsModule,
-       
-
-        RouterModule,
-    ],
+    MaterialModule,
+    ReactiveFormsModule,
+    RouterModule
+],
 })
 export class ContractArticleMainComponent implements OnInit {
     constructor(private route: ActivatedRoute, private router: Router) {}
