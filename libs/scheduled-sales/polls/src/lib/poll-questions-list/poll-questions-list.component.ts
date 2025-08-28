@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -25,23 +25,22 @@ import { AnswerTypes } from '@ss/scheduleds-sales/polls';
     selector: 'sch-sales-poll-list',
     standalone: true,
     imports: [
-        CommonModule,
-        MatCell,
-        MatColumnDef,
-        MatHeaderCell,
-        MatHeaderRow,
-        MatRow,
-        MatSort,
-        MatSortHeader,
-        MatTable,
-        PaginationComponent,
-        MatHeaderCellDef,
-        MatCellDef,
-        MatHeaderRowDef,
-        MatRowDef,
-        TranslateDirective,
-        MatCheckbox,
-    ],
+    MatCell,
+    MatColumnDef,
+    MatHeaderCell,
+    MatHeaderRow,
+    MatRow,
+    MatSort,
+    MatSortHeader,
+    MatTable,
+    PaginationComponent,
+    MatHeaderCellDef,
+    MatCellDef,
+    MatHeaderRowDef,
+    MatRowDef,
+    TranslateDirective,
+    MatCheckbox
+],
     templateUrl: './poll-questions-list.component.html',
     styleUrl: './poll-questions-list.component.css',
 })

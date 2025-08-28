@@ -1,5 +1,5 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { ShellService } from '@ss/common/ui-shell';
 import { ActivatedRoute } from '@angular/router';
 import { Chart, registerables } from 'chart.js';
@@ -14,10 +14,9 @@ import { SATISFACTION, YES_NO} from '../common';
     selector: 'ss-history-poll-charts',
     standalone: true,
     imports: [
-        CommonModule,
-        MatCard,
-        LineChartComponent,
-    ],
+    MatCard,
+    LineChartComponent
+],
     templateUrl: './poll-history-chart.component.html',
     styleUrl: './poll-history-chart.component.scss',
 })

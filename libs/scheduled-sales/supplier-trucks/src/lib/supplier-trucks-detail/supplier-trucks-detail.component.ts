@@ -9,7 +9,7 @@ import {SupplierTruck, SupplierTruckService} from '@ss/scheduled-sales/api-sched
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {SupplierService} from '@ss/logistics/api-agent';
 import { MatCard, MatCardContent } from '@angular/material/card';
-import { NgIf } from '@angular/common';
+
 import { MatFormField, MatLabel, MatError } from '@angular/material/form-field';
 import { TranslateDirective } from '@ss/common/ui-lang';
 import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
@@ -21,18 +21,17 @@ import { MatInput } from '@angular/material/input';
     styleUrls: ['./supplier-trucks-detail.component.scss'],
     standalone: true,
     imports: [
-        MatCard,
-        MatCardContent,
-        NgIf,
-        FormsModule,
-        ReactiveFormsModule,
-        MatFormField,
-        MatLabel,
-        TranslateDirective,
-        UiAutoCompleteComponent,
-        MatError,
-        MatInput,
-    ],
+    MatCard,
+    MatCardContent,
+    FormsModule,
+    ReactiveFormsModule,
+    MatFormField,
+    MatLabel,
+    TranslateDirective,
+    UiAutoCompleteComponent,
+    MatError,
+    MatInput
+],
 })
 export class SupplierTrucksDetailComponent extends BaseEntityDetailComponent<SupplierTruck> {
     private supplierSrv = inject(SupplierService);

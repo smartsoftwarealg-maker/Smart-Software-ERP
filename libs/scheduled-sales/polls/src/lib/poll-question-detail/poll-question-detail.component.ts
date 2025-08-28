@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute } from '@angular/router';
@@ -24,20 +24,19 @@ import { AnswerTypes } from '@ss/scheduleds-sales/polls'
     selector: 'sch-poll-question-detail',
     standalone: true,
     imports: [
-        CommonModule,
-        MaterialModule,
-        MatButtonModule,
-        MatCheckboxModule,
-        MatExpansionModule,
-        MatFormFieldModule,
-        MatInputModule,
-        MatOptionModule,
-        MatRadioModule,
-        MatSelectModule,
-        MaterialModule,
-        ReactiveFormsModule,
-        TranslateDirective,
-    ],
+    MaterialModule,
+    MatButtonModule,
+    MatCheckboxModule,
+    MatExpansionModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatOptionModule,
+    MatRadioModule,
+    MatSelectModule,
+    MaterialModule,
+    ReactiveFormsModule,
+    TranslateDirective
+],
     templateUrl: './poll-question-detail.component.html',
     styleUrl: './poll-question-detail.component.css',
 })

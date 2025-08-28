@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { MatCard, MatCardContent, MatCardFooter, MatCardHeader, MatCardTitle } from '@angular/material/card';
 import { MatButton } from '@angular/material/button';
@@ -15,7 +15,7 @@ type Product =  {
 @Component({
     selector: 'ss-scheduled-sales-products-page',
     standalone: true,
-    imports: [CommonModule, MatCard, MatCardHeader, MatCardTitle, MatCardContent,   MatCardFooter],
+    imports: [MatCard, MatCardHeader, MatCardTitle, MatCardContent, MatCardFooter],
     templateUrl: './scheduled-sales-products-page.component.html',
     styleUrl: './scheduled-sales-products-page.component.scss',
 })

@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute } from '@angular/router';
@@ -34,22 +34,21 @@ import { ImageModel } from '@ss/common/ui-image-input';
     selector: 'ss-customer-complaints-detail',
     standalone: true,
     imports: [
-        CommonModule,
-        MaterialModule,
-        MatButtonModule,
-        MatCheckboxModule,
-        MatExpansionModule,
-        MatFormFieldModule,
-        MatInputModule,
-        MatOptionModule,
-        MatRadioModule,
-        MatSelectModule,
-        MaterialModule,
-        ReactiveFormsModule,
-        UiAutoCompleteComponent,
-        TranslateDirective,
-        TranslatePipe,
-    ],
+    MaterialModule,
+    MatButtonModule,
+    MatCheckboxModule,
+    MatExpansionModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatOptionModule,
+    MatRadioModule,
+    MatSelectModule,
+    MaterialModule,
+    ReactiveFormsModule,
+    UiAutoCompleteComponent,
+    TranslateDirective,
+    TranslatePipe
+],
     templateUrl: './customer-complaints-detail.component.html',
     styleUrl: './customer-complaints-detail.component.scss',
 })
