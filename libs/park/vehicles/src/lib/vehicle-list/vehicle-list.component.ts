@@ -16,18 +16,18 @@ import { DefaultReportService } from '@ss/common/ui-default-report-component';
 import { Vehicle } from '../vehicle-api';
 import { VehicleService } from '../services/vehicle.service';
 import { PaginationComponent } from '@ss/common/ui-pagination';
+import {TranslateDirective} from "@ss/common/ui-lang";
 
 @Component({
     selector: 'ss-vehicle-list',
     standalone: true,
     imports: [
         CommonModule,
-
-
         MatSortModule,
         MatTableModule,
         MatTabsModule,
-        PaginationComponent
+        PaginationComponent,
+        TranslateDirective
     ],
     templateUrl: './vehicle-list.component.html',
     styleUrls: ['./vehicle-list.component.css']

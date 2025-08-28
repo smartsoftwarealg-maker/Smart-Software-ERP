@@ -12,7 +12,7 @@ import {TreasuryGroupService} from '@ss/common/api-lookup';
 import {MatRadioChange} from '@angular/material/radio';
 import {Observable, of} from 'rxjs';
 import { MatCard, MatCardContent } from "@angular/material/card";
-import { NgIf } from "@angular/common";
+
 import { MatFormField, MatLabel, MatError } from "@angular/material/form-field";
 import { TranslateDirective } from '@ss/common/ui-lang';
 import { MatInput } from "@angular/material/input";
@@ -25,19 +25,18 @@ import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
     styleUrls: ['./../transaction-detail/transaction-detail.component.scss'],
     standalone: true,
     imports: [
-        MatCard,
-        MatCardContent,
-        NgIf,
-        FormsModule,
-        ReactiveFormsModule,
-        MatFormField,
-        MatLabel,
-        TranslateDirective,
-        MatInput,
-        DatePickerComponent,
-        MatError,
-        UiAutoCompleteComponent,
-    ],
+    MatCard,
+    MatCardContent,
+    FormsModule,
+    ReactiveFormsModule,
+    MatFormField,
+    MatLabel,
+    TranslateDirective,
+    MatInput,
+    DatePickerComponent,
+    MatError,
+    UiAutoCompleteComponent
+],
 })
 export class BankExpenseDetailComponent extends BaseEntityDetailComponent<TTransaction> {
     private agentSrv =  inject(AgentService);
