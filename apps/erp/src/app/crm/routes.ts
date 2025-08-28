@@ -51,8 +51,8 @@ import {CampaignDetailComponent, CampaignListComponent} from "@ss/crm/campaign";
 import {
     MailingListComponent,
     MailingListDetailComponent,
-    MailingListLineComponent, MailingListLineDetailComponent
-} from '../../../../../libs/crm/mailingList/src';
+    MailingLinesListComponent, MailingLinesDetailComponent
+} from '@ss/crm/mailing-list';
 
 
 export const crmRoutes: Routes = [
@@ -210,8 +210,8 @@ export const crmRoutes: Routes = [
                     {
                         path: 'linelist',
                         children: [
-                            { path: '', component: MailingListLineComponent },
-                            { path: ':id', component: MailingListLineDetailComponent }
+                            { path: '', component: MailingLinesListComponent },
+                            { path: ':id', component: MailingLinesDetailComponent }
                         ]
                     }
                 ]

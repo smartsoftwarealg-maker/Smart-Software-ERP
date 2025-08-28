@@ -300,6 +300,7 @@
             "@ss/crm/payment-terms": ["libs/crm/payment-terms/src/index.ts"],
             "@ss/crm/salutations": ["libs/crm/salutations/src/index.ts"],
             "@ss/crm/status": ["libs/crm/status/src/index.ts"],
+            "@ss/crm/mailing-list": ["libs/crm/mailing-list/src/index.ts"],
             "@ss/custom-attributes": ["libs/custom-attributes/src/index.ts"],
             "@ss/dashboard": ["libs/dashboard/src/index.ts"],
             "@ss/employee-services/employee-services": [
