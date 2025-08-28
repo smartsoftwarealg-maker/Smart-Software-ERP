@@ -7,7 +7,7 @@ import { MatCard } from "@angular/material/card";
 import { MatFormField, MatLabel, MatError } from "@angular/material/form-field";
 import { TranslateDirective } from '@ss/common/ui-lang';
 import { MatInput } from "@angular/material/input";
-import { NgIf } from "@angular/common";
+
 import { MatButton } from "@angular/material/button";
 import { TranslatePipe } from '@ss/common/ui-lang';
 
@@ -17,18 +17,17 @@ import { TranslatePipe } from '@ss/common/ui-lang';
     styleUrls: ['./budget-planning-add-dlg.component.scss'],
     standalone: true,
     imports: [
-        MatCard,
-        FormsModule,
-        ReactiveFormsModule,
-        MatFormField,
-        MatLabel,
-        TranslateDirective,
-        MatInput,
-        NgIf,
-        MatError,
-        MatButton,
-        TranslatePipe,
-    ],
+    MatCard,
+    FormsModule,
+    ReactiveFormsModule,
+    MatFormField,
+    MatLabel,
+    TranslateDirective,
+    MatInput,
+    MatError,
+    MatButton,
+    TranslatePipe
+],
 })
 export class BudgetPlanningAddDlgComponent {
     private budgetSrv = inject(BudgetService);

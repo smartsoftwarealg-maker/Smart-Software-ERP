@@ -11,7 +11,7 @@ import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {Observable} from 'rxjs';
 import {switchMap, tap} from 'rxjs/operators';
 import { MatCard, MatCardContent } from "@angular/material/card";
-import { NgIf } from "@angular/common";
+
 import { MatFormField, MatLabel, MatError } from "@angular/material/form-field";
 import { TranslateDirective } from '@ss/common/ui-lang';
 import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
@@ -23,18 +23,17 @@ import { MatInput } from "@angular/material/input";
     styleUrls: ['./budget-detail.component.scss'],
     standalone: true,
     imports: [
-        MatCard,
-        MatCardContent,
-        NgIf,
-        FormsModule,
-        ReactiveFormsModule,
-        MatFormField,
-        MatLabel,
-        TranslateDirective,
-        UiAutoCompleteComponent,
-        MatError,
-        MatInput,
-    ],
+    MatCard,
+    MatCardContent,
+    FormsModule,
+    ReactiveFormsModule,
+    MatFormField,
+    MatLabel,
+    TranslateDirective,
+    UiAutoCompleteComponent,
+    MatError,
+    MatInput
+],
 })
 export class BudgetDetailComponent extends BaseEntityDetailComponent<Budget> {
     private fileSrv = inject(AccFileService);

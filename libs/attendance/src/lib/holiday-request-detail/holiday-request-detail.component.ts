@@ -12,7 +12,7 @@ import {HolidayTypeService} from '../holiday-type.service';
 import { HOLIDAY_REQUEST, WorkflowDialogComponent } from '@ss/workflow';
 import { MatDialog } from '@angular/material/dialog';
 import { MatCard, MatCardContent } from '@angular/material/card';
-import { NgIf } from '@angular/common';
+
 import { MatFormField, MatLabel, MatError } from '@angular/material/form-field';
 import { TranslateDirective } from '@ss/common/ui-lang';
 import { MatInput } from '@angular/material/input';
@@ -25,19 +25,18 @@ import { DatePickerComponent } from '@ss/common/ui-datepicker';
     styleUrls: ['./holiday-request-detail.component.scss'],
     standalone: true,
     imports: [
-        MatCard,
-        MatCardContent,
-        NgIf,
-        FormsModule,
-        ReactiveFormsModule,
-        MatFormField,
-        MatLabel,
-        TranslateDirective,
-        MatInput,
-        UiAutoCompleteComponent,
-        MatError,
-        DatePickerComponent,
-    ],
+    MatCard,
+    MatCardContent,
+    FormsModule,
+    ReactiveFormsModule,
+    MatFormField,
+    MatLabel,
+    TranslateDirective,
+    MatInput,
+    UiAutoCompleteComponent,
+    MatError,
+    DatePickerComponent
+],
 })
 export class HolidayRequestDetailComponent extends BaseEntityDetailComponent<HolidayRequest>{
     protected dialog = inject(MatDialog);

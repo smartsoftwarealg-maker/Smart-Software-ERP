@@ -7,7 +7,7 @@ import { UntypedFormBuilder, Validators, FormsModule, ReactiveFormsModule } from
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {AttendanceMachineService} from '../attendance-machine.service';
 import { MatCard, MatCardContent } from '@angular/material/card';
-import { NgIf } from '@angular/common';
+
 import { MatFormField, MatLabel, MatError } from '@angular/material/form-field';
 import { TranslateDirective } from '@ss/common/ui-lang';
 import { MatInput } from '@angular/material/input';
@@ -19,17 +19,16 @@ import { LoginService } from '@ss/common/api-common';
     styleUrls: ['./attendance-machine-detail.component.scss'],
     standalone: true,
     imports: [
-        MatCard,
-        MatCardContent,
-        NgIf,
-        FormsModule,
-        ReactiveFormsModule,
-        MatFormField,
-        MatLabel,
-        TranslateDirective,
-        MatInput,
-        MatError,
-    ],
+    MatCard,
+    MatCardContent,
+    FormsModule,
+    ReactiveFormsModule,
+    MatFormField,
+    MatLabel,
+    TranslateDirective,
+    MatInput,
+    MatError
+],
 })
 export class AttendanceMachineDetailComponent extends BaseEntityDetailComponent<AttendanceMachine> {
     #loginSrv = inject(LoginService);

@@ -9,7 +9,7 @@ import {WorkshiftService} from '../workshift.service';
 import {ShiftTimingService} from '../shift-timing.service';
 import { filter, Observable } from 'rxjs';
 import { MatCard, MatCardContent } from '@angular/material/card';
-import { NgIf } from '@angular/common';
+
 import { MatFormField, MatLabel, MatError } from '@angular/material/form-field';
 import { TranslateDirective } from '@ss/common/ui-lang';
 import { MatInput } from '@angular/material/input';
@@ -22,20 +22,19 @@ import { MaterialModule } from '@ss/common/api-common';
     styleUrls: ['./work-shift-detail.component.scss'],
     standalone: true,
     imports: [
-        MaterialModule,
-        MatCard,
-        MatCardContent,
-        NgIf,
-        FormsModule,
-        ReactiveFormsModule,
-        MatFormField,
-        MatLabel,
-        TranslateDirective,
-        MatInput,
-        MatError,
-        DatePickerComponent,
-        RouterOutlet,
-    ],
+    MaterialModule,
+    MatCard,
+    MatCardContent,
+    FormsModule,
+    ReactiveFormsModule,
+    MatFormField,
+    MatLabel,
+    TranslateDirective,
+    MatInput,
+    MatError,
+    DatePickerComponent,
+    RouterOutlet
+],
 })
 export class WorkShiftDetailComponent extends BaseEntityDetailComponent<WorkShift> {
     #childSrv = inject(ShiftTimingService);
