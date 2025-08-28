@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {BudgetTransfer, PlanningInfo} from '../budget-movement-api';
-import { DecimalPipe, NgIf } from '@angular/common';
+import { DecimalPipe } from '@angular/common';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {Agent, SupplierService} from '@ss/logistics/api-agent';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
@@ -25,20 +25,19 @@ import { DatePickerComponent } from '@ss/common/ui-datepicker';
     styleUrls: ['./budget-transfer-detail.component.scss'],
     standalone: true,
     imports: [
-        MatCard,
-        MaterialModule,
-        MatCardContent,
-        NgIf,
-        FormsModule,
-        ReactiveFormsModule,
-        MatFormField,
-        MatLabel,
-        TranslateDirective,
-        MatInput,
-        MatError,
-        DatePickerComponent,
-        RouterOutlet,
-    ],
+    MatCard,
+    MaterialModule,
+    MatCardContent,
+    FormsModule,
+    ReactiveFormsModule,
+    MatFormField,
+    MatLabel,
+    TranslateDirective,
+    MatInput,
+    MatError,
+    DatePickerComponent,
+    RouterOutlet
+],
 })
 export class BudgetTransferDetailComponent extends BaseEntityDetailComponent<BudgetTransfer> {
     private activatedRoute = inject(ActivatedRoute);

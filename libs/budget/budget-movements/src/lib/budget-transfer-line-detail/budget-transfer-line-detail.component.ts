@@ -12,7 +12,7 @@ import { MatSelectChange, MatSelect } from '@angular/material/select';
 import {BudgetPlanningService} from '@ss/budget/budget-planning';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {BudgetTransferDetailService} from '../budget-transfer-detail.service';
-import { NgIf, NgFor, AsyncPipe } from '@angular/common';
+import { AsyncPipe } from '@angular/common';
 import { MatCard, MatCardHeader, MatCardContent } from '@angular/material/card';
 import { MatMiniFabButton } from '@angular/material/button';
 import { MatTooltip } from '@angular/material/tooltip';
@@ -29,26 +29,24 @@ import { TranslatePipe } from '@ss/common/ui-lang';
     styleUrls: ['./budget-transfer-line-detail.component.scss'],
     standalone: true,
     imports: [
-        NgIf,
-        MatCard,
-        MatCardHeader,
-        MatMiniFabButton,
-        MatTooltip,
-        TranslateDirective,
-        MatCardContent,
-        FormsModule,
-        ReactiveFormsModule,
-        MatFormField,
-        MatLabel,
-        MatSelect,
-        NgFor,
-        MatOption,
-        UiAutoCompleteComponent,
-        MatInput,
-        MatError,
-        AsyncPipe,
-        TranslatePipe,
-    ],
+    MatCard,
+    MatCardHeader,
+    MatMiniFabButton,
+    MatTooltip,
+    TranslateDirective,
+    MatCardContent,
+    FormsModule,
+    ReactiveFormsModule,
+    MatFormField,
+    MatLabel,
+    MatSelect,
+    MatOption,
+    UiAutoCompleteComponent,
+    MatInput,
+    MatError,
+    AsyncPipe,
+    TranslatePipe
+],
 })
 export class BudgetTransferLineDetailComponent implements OnInit {
     private entitySrv = inject(BudgetTransferService);

@@ -1,60 +1,62 @@
 <div class="container_div">
-    <div class="list_div">
-        <mat-list>
-            <mat-list-item *ngFor="let p of plannings"
-                           [class.selected]="p.id === selectedPlanningId"
-                           (click)="onPlanning(p)"
-                           class="selectable">
-                {{ p.description }}
-            </mat-list-item>
-        </mat-list>
+  <div class="list_div">
+    <mat-list>
+      @for (p of plannings; track p) {
+        <mat-list-item
+          [class.selected]="p.id === selectedPlanningId"
+          (click)="onPlanning(p)"
+          class="selectable">
+          {{ p.description }}
+        </mat-list-item>
+      }
+    </mat-list>
+  </div>
+  <div class="content_div">
+    <div class="table_div">
+      <mat-table mat-table [dataSource]="data" class="main-table">
+
+        <ng-container matColumnDef="decision">
+          <mat-header-cell *matHeaderCellDef translate>COMMON_DECISION</mat-header-cell>
+          <mat-cell *matCellDef="let e">
+            {{e.decision}}
+          </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="description">
+          <mat-header-cell *matHeaderCellDef translate>ADMINISTRATION_DESCRIPTION</mat-header-cell>
+          <mat-cell *matCellDef="let e">
+            {{e.description}}
+          </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="orderNo">
+          <mat-header-cell *matHeaderCellDef translate>LOGISTICS_ORDER_NO</mat-header-cell>
+          <mat-cell *matCellDef="let e">
+            {{e.orderNo}}
+          </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="supplierName">
+          <mat-header-cell *matHeaderCellDef translate>LOGISTICS_SUPPLIER</mat-header-cell>
+          <mat-cell *matCellDef="let e">
+            {{e.supplierName}}
+          </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="amount">
+          <mat-header-cell *matHeaderCellDef translate>COMMON_AMOUNT</mat-header-cell>
+          <mat-cell *matCellDef="let e">
+            {{ e.amount | number: '1.2-2' }}
+          </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+        <mat-row class="selectable" [class.selected]="row.id == selected" (click)="select(row.id)"
+        *matRowDef="let row; columns: displayedColumns;"></mat-row>
+      </mat-table>
     </div>
-    <div class="content_div">
-        <div class="table_div">
-            <mat-table mat-table [dataSource]="data" class="main-table">
-
-                <ng-container matColumnDef="decision">
-                    <mat-header-cell *matHeaderCellDef translate>COMMON_DECISION</mat-header-cell>
-                    <mat-cell *matCellDef="let e">
-                        {{e.decision}}
-                    </mat-cell>
-                </ng-container>
-
-                <ng-container matColumnDef="description">
-                    <mat-header-cell *matHeaderCellDef translate>ADMINISTRATION_DESCRIPTION</mat-header-cell>
-                    <mat-cell *matCellDef="let e">
-                        {{e.description}}
-                    </mat-cell>
-                </ng-container>
-
-                <ng-container matColumnDef="orderNo">
-                    <mat-header-cell *matHeaderCellDef translate>LOGISTICS_ORDER_NO</mat-header-cell>
-                    <mat-cell *matCellDef="let e">
-                        {{e.orderNo}}
-                    </mat-cell>
-                </ng-container>
-
-                <ng-container matColumnDef="supplierName">
-                    <mat-header-cell *matHeaderCellDef translate>LOGISTICS_SUPPLIER</mat-header-cell>
-                    <mat-cell *matCellDef="let e">
-                        {{e.supplierName}}
-                    </mat-cell>
-                </ng-container>
-
-                <ng-container matColumnDef="amount">
-                    <mat-header-cell *matHeaderCellDef translate>COMMON_AMOUNT</mat-header-cell>
-                    <mat-cell *matCellDef="let e">
-                        {{ e.amount | number: '1.2-2' }}
-                    </mat-cell>
-                </ng-container>
-
-                <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
-                <mat-row class="selectable" [class.selected]="row.id == selected" (click)="select(row.id)"
-                         *matRowDef="let row; columns: displayedColumns;"></mat-row>
-            </mat-table>
-        </div>
-        <div class="pagination-container b-b-background">
-            <ss-pagination [paginationModel]="pagination"></ss-pagination>
-        </div>
+    <div class="pagination-container b-b-background">
+      <ss-pagination [paginationModel]="pagination"></ss-pagination>
     </div>
+  </div>
 </div>

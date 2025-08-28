@@ -20,7 +20,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
 import { MatIconButton, MatButton } from "@angular/material/button";
 import { MatIcon } from "@angular/material/icon";
 import { MatList, MatListItem } from "@angular/material/list";
-import { NgFor } from "@angular/common";
+
 import { MatTooltip } from "@angular/material/tooltip";
 import { MatCard } from "@angular/material/card";
 import { MatFormField, MatLabel } from "@angular/material/form-field";
@@ -33,31 +33,30 @@ import { TranslatePipe } from '@ss/common/ui-lang';
     styleUrls: ['./budget-groups.component.scss'],
     standalone: true,
     imports: [
-        MatRadioGroup,
-        MatRadioButton,
-        TranslateDirective,
-        MatTree,
-        MatTreeNodeDef,
-        MatTreeNode,
-        MatTreeNodePadding,
-        MatNestedTreeNode,
-        MatIconButton,
-        MatTreeNodeToggle,
-        MatIcon,
-        MatTreeNodeOutlet,
-        MatList,
-        NgFor,
-        MatListItem,
-        MatTooltip,
-        MatCard,
-        MatFormField,
-        MatLabel,
-        MatInput,
-        FormsModule,
-        ReactiveFormsModule,
-        MatButton,
-        TranslatePipe,
-    ],
+    MatRadioGroup,
+    MatRadioButton,
+    TranslateDirective,
+    MatTree,
+    MatTreeNodeDef,
+    MatTreeNode,
+    MatTreeNodePadding,
+    MatNestedTreeNode,
+    MatIconButton,
+    MatTreeNodeToggle,
+    MatIcon,
+    MatTreeNodeOutlet,
+    MatList,
+    MatListItem,
+    MatTooltip,
+    MatCard,
+    MatFormField,
+    MatLabel,
+    MatInput,
+    FormsModule,
+    ReactiveFormsModule,
+    MatButton,
+    TranslatePipe
+],
 })
 export class BudgetGroupsComponent implements OnInit, OnDestroy {
     private entitySrv  = inject(BudgetGroupsService);

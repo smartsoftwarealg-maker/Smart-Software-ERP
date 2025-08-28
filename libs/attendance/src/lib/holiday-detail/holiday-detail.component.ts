@@ -16,7 +16,7 @@ import { MatFormField, MatLabel, MatError } from '@angular/material/form-field';
 import { TranslateDirective } from '@ss/common/ui-lang';
 import { MatInput } from '@angular/material/input';
 import { DatePickerComponent } from '@ss/common/ui-datepicker';
-import {CommonModule} from "@angular/common";
+
 import {MaterialModule} from "@ss/common/api-common";
 
 @Component({
@@ -25,19 +25,18 @@ import {MaterialModule} from "@ss/common/api-common";
     styleUrls: ['./holiday-detail.component.scss'],
     standalone: true,
     imports: [
-        CommonModule,
-        MatCard,
-        MatCardContent,
-        FormsModule,
-        ReactiveFormsModule,
-        MatFormField,
-        MatLabel,
-        TranslateDirective,
-        MatInput,
-        DatePickerComponent,
-        MatError,
-        MaterialModule,
-    ],
+    MatCard,
+    MatCardContent,
+    FormsModule,
+    ReactiveFormsModule,
+    MatFormField,
+    MatLabel,
+    TranslateDirective,
+    MatInput,
+    DatePickerComponent,
+    MatError,
+    MaterialModule
+],
 })
 export class HolidayDetailComponent extends BaseEntityDetailComponent<Holiday> {
     constructor(

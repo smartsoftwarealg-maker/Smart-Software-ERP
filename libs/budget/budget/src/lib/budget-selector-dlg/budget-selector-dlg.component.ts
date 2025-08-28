@@ -6,7 +6,7 @@ import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { MatCard, MatCardTitle } from '@angular/material/card';
 import { TranslateDirective } from '@ss/common/ui-lang';
 import { MatList, MatListItem } from '@angular/material/list';
-import { NgFor } from '@angular/common';
+
 import { MatButton } from '@angular/material/button';
 import { TranslatePipe } from '@ss/common/ui-lang';
 import { AccFileService } from '@ss/accounting/accounting-api';

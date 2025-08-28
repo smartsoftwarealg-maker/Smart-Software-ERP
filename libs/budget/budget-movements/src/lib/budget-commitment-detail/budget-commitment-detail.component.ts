@@ -8,7 +8,7 @@ import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {BudgetCommitmentService} from '../budget-commitment.service';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {Agent, SupplierService} from '@ss/logistics/api-agent';
-import { DecimalPipe, NgIf } from '@angular/common';
+import { DecimalPipe } from '@angular/common';
 import { LanguageService, MaterialModule } from '@ss/common/api-common';
 import { MatCard, MatCardContent } from "@angular/material/card";
 import { MatFormField, MatLabel, MatError } from "@angular/material/form-field";
@@ -23,20 +23,19 @@ import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
     styleUrls: ['./budget-commitment-detail.component.scss'],
     standalone: true,
     imports: [
-        MatCard,
-        MaterialModule,
-        MatCardContent,
-        NgIf,
-        FormsModule,
-        ReactiveFormsModule,
-        MatFormField,
-        MatLabel,
-        TranslateDirective,
-        MatInput,
-        MatError,
-        DatePickerComponent,
-        UiAutoCompleteComponent,
-    ],
+    MatCard,
+    MaterialModule,
+    MatCardContent,
+    FormsModule,
+    ReactiveFormsModule,
+    MatFormField,
+    MatLabel,
+    TranslateDirective,
+    MatInput,
+    MatError,
+    DatePickerComponent,
+    UiAutoCompleteComponent
+],
 })
 export class BudgetCommitmentDetailComponent extends BaseEntityDetailComponent<BudgetCommitment> {
     private activatedRoute = inject(ActivatedRoute);

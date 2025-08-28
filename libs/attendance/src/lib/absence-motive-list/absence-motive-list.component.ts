@@ -11,7 +11,7 @@ import { AbsenceMotiveService } from '../absence-motive.service';
 import { MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from '@angular/material/table';
 import { TranslateDirective } from '@ss/common/ui-lang';
 import { PaginationComponent } from '@ss/common/ui-pagination';
-import { NgIf } from '@angular/common';
+
 import { MatFormField, MatLabel } from '@angular/material/form-field';
 import { MatInput } from '@angular/material/input';
 
@@ -57,17 +57,18 @@ export class AbsenceMotiveListComponent extends BaseEntityListComponent<Lookup> 
 @Component({
     selector: 'ss-class-detail',
     template: `
-        <form *ngIf="form !== null" novalidate [formGroup]="form">
-        <mat-form-field class="value">
-            <mat-label translate>COMMON_DESCRIPTION</mat-label>
-            <input matInput formControlName="description" type="text" required autofocus>
-        </mat-form-field>
-
-        <mat-form-field class="value">
-            <mat-label translate>COMMON_DESCRIPTION_AR</mat-label>
-            <input matInput formControlName="descriptionAr" type="text">
-        </mat-form-field>
-      </form>`,
+        @if (form !== null) {
+          <form novalidate [formGroup]="form">
+            <mat-form-field class="value">
+              <mat-label translate>COMMON_DESCRIPTION</mat-label>
+              <input matInput formControlName="description" type="text" required autofocus>
+            </mat-form-field>
+            <mat-form-field class="value">
+              <mat-label translate>COMMON_DESCRIPTION_AR</mat-label>
+              <input matInput formControlName="descriptionAr" type="text">
+            </mat-form-field>
+          </form>
+        }`,
     styles: [`
         .value {
             width: 300px;
@@ -83,7 +84,7 @@ export class AbsenceMotiveListComponent extends BaseEntityListComponent<Lookup> 
             flex-flow: column;
         }`],
     standalone: true,
-    imports: [NgIf, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput]
+    imports: [FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput]
 })
 export class AbsenceMotiveDetailComponent extends BaseEntityDetailComponent<Lookup> {
     constructor(
