@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { Scale } from '../gica-careers-api';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
@@ -30,22 +30,21 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     selector: 'ss-gica-scale-list',
     standalone: true,
     imports: [
-        CommonModule,
-        MatCell,
-        MatColumnDef,
-        MatHeaderCell,
-        MatHeaderRow,
-        MatRow,
-        MatSort,
-        MatSortHeader,
-        MatTable,
-        PaginationComponent,
-        TranslateDirective,
-        MatHeaderCellDef,
-        MatHeaderRowDef,
-        MatRowDef,
-        MatCellDef
-    ],
+    MatCell,
+    MatColumnDef,
+    MatHeaderCell,
+    MatHeaderRow,
+    MatRow,
+    MatSort,
+    MatSortHeader,
+    MatTable,
+    PaginationComponent,
+    TranslateDirective,
+    MatHeaderCellDef,
+    MatHeaderRowDef,
+    MatRowDef,
+    MatCellDef
+],
     templateUrl: './scale-list.component.html',
     styleUrl: './scale-list.component.css',
 })

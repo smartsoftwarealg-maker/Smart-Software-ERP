@@ -1,117 +1,133 @@
 @if (form) {
-    <div class="button_div size">
-        @if (isEditable) {
-            <button mat-mini-fab (click)="save()"
-                    color="accent" *ngIf="isEditable">
-                <i class="fas fa-save"></i>
-            </button>
-        }
-
-        <button mat-mini-fab (click)="cancel()"
-                color="warn">
-            <i class="fas fa-redo"></i>
+  <div class="button_div size">
+    @if (isEditable) {
+      @if (isEditable) {
+        <button mat-mini-fab (click)="save()"
+          color="accent">
+          <i class="fas fa-save"></i>
         </button>
+      }
+    }
+
+    <button mat-mini-fab (click)="cancel()"
+      color="warn">
+      <i class="fas fa-redo"></i>
+    </button>
+  </div>
+
+  <mat-card>
+    <form novalidate [formGroup]="form">
+
+      <!--    <mat-form-field floatLabel="always" class="default-50 sm-100">-->
+      <!--        <mat-label translate>PAYROLL_REFERENCE</mat-label>-->
+      <!--        <input matInput [maxLength]="12" formControlName="number" type="text">-->
+    <!--    </mat-form-field>-->
+
+    <mat-form-field floatLabel="always" class="default-50 sm-100">
+      <mat-label translate>COMMON_NUMBER</mat-label>
+      <input matInput [maxLength]="10" formControlName="number" type="text" required>
+      @if (form.controls['fault'].invalid) {
+        <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field class="default-50 sm-100">
+      <mat-label translate>COMMON_DATE</mat-label>
+      <ss-date-picker [required]=true formControlName="date"></ss-date-picker>
+      @if (form.controls['date']?.hasError('required')) {
+        <mat-error translate>
+          COMMON_FIELD_REQUIRED
+        </mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field class="default-50 sm-100">
+      <mat-label translate>PAYROLL_PUNISHMENT_TYPE</mat-label>
+      <ss-auto-complete matInput
+        [required]="true"
+        [model]="punishmentTypeAutoCompleteModel"
+      formControlName="punishmentType"></ss-auto-complete>
+      @if (form.controls['punishmentType'].invalid) {
+        <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field floatLabel="always" class="default-50 sm-100">
+      <mat-label translate>PAYROLL_FAULT</mat-label>
+      <input matInput [maxLength]="100" formControlName="fault" type="text" required>
+      @if (form.controls['fault'].invalid) {
+        <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+      }
+    </mat-form-field>
+
+
+    <mat-form-field class="default-50 sm-100">
+      <mat-label translate>PAYROLL_FAULT_TYPE</mat-label>
+      <ss-auto-complete matInput
+        [required]="true"
+        [model]="faultAutoCompleteModel"
+      formControlName="faultType"></ss-auto-complete>
+      @if (form.controls['faultType'].invalid) {
+        <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+      }
+    </mat-form-field>
+
+
+    <mat-form-field floatLabel="always" class="default-50 sm-100">
+      <mat-label translate>PAYROLL_PUNISHMENT</mat-label>
+      <input matInput [maxLength]="100" formControlName="sanction" type="text" >
+      @if (form.controls['sanction'].invalid) {
+        <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field class="default-50 sm-100">
+      <mat-label translate>COMMON_FROM</mat-label>
+      <ss-date-picker formControlName="from"></ss-date-picker>
+    </mat-form-field>
+
+    <mat-form-field class="default-50 sm-100">
+      <mat-label translate>COMMON_TO</mat-label>
+      <ss-date-picker formControlName="to"></ss-date-picker>
+    </mat-form-field>
+
+    <mat-form-field floatLabel="always" class="default-50 sm-100">
+      <mat-label translate>PAYROLL_DAY_COUNT</mat-label>
+      <input matInput [maxLength]="100" formControlName="dayCount" type="number" min="0" max="360">
+    </mat-form-field>
+
+    <mat-form-field floatLabel="always" class="default-50 sm-100">
+      <mat-label translate>COMMON_MEMO</mat-label>
+      <input matInput [maxLength]="100" formControlName="memo" type="text">
+      @if (form.controls['memo'].invalid) {
+        <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+      }
+    </mat-form-field>
+
+    <div class="default-50 sm-100">
+      <mat-form-field floatLabel="always" class="default-50">
+        <mat-label translate>PAYROLL_APPLICATION_MONTH</mat-label>
+        <mat-select formControlName="paymonthM">
+          @for (m of MONTHS; track m.id) {
+            <mat-option [value]="m.id" translate>{{ m.description }}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field floatLabel="always" class="default-50">
+        <mat-label translate>PAYROLL_APPLICATION_YEAR</mat-label>
+        <input matInput formControlName="paymonthY" type="number" style="text-align: end;" min="1900"
+          max="2900">
+      </mat-form-field>
     </div>
-
-    <mat-card>
-        <form novalidate [formGroup]="form">
-
-            <!--    <mat-form-field floatLabel="always" class="default-50 sm-100">-->
-            <!--        <mat-label translate>PAYROLL_REFERENCE</mat-label>-->
-            <!--        <input matInput [maxLength]="12" formControlName="number" type="text">-->
-            <!--    </mat-form-field>-->
-
-            <mat-form-field floatLabel="always" class="default-50 sm-100">
-                <mat-label translate>COMMON_NUMBER</mat-label>
-                <input matInput [maxLength]="10" formControlName="number" type="text" required>
-                <mat-error *ngIf="form.controls['fault'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
-            </mat-form-field>
-
-            <mat-form-field class="default-50 sm-100">
-                <mat-label translate>COMMON_DATE</mat-label>
-                <ss-date-picker [required]=true formControlName="date"></ss-date-picker>
-                <mat-error *ngIf="form.controls['date']?.hasError('required')" translate>
-                    COMMON_FIELD_REQUIRED
-                </mat-error>
-            </mat-form-field>
-
-            <mat-form-field class="default-50 sm-100">
-                <mat-label translate>PAYROLL_PUNISHMENT_TYPE</mat-label>
-                <ss-auto-complete matInput
-                                  [required]="true"
-                                  [model]="punishmentTypeAutoCompleteModel"
-                                  formControlName="punishmentType"></ss-auto-complete>
-                <mat-error *ngIf="form.controls['punishmentType'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
-            </mat-form-field>
-
-            <mat-form-field floatLabel="always" class="default-50 sm-100">
-                <mat-label translate>PAYROLL_FAULT</mat-label>
-                <input matInput [maxLength]="100" formControlName="fault" type="text" required>
-                <mat-error *ngIf="form.controls['fault'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
-            </mat-form-field>
-
-
-            <mat-form-field class="default-50 sm-100">
-                <mat-label translate>PAYROLL_FAULT_TYPE</mat-label>
-                <ss-auto-complete matInput
-                                  [required]="true"
-                                  [model]="faultAutoCompleteModel"
-                                  formControlName="faultType"></ss-auto-complete>
-                <mat-error *ngIf="form.controls['faultType'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
-            </mat-form-field>
-
-
-            <mat-form-field floatLabel="always" class="default-50 sm-100">
-                <mat-label translate>PAYROLL_PUNISHMENT</mat-label>
-                <input matInput [maxLength]="100" formControlName="sanction" type="text" >
-                <mat-error *ngIf="form.controls['sanction'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
-            </mat-form-field>
-
-            <mat-form-field class="default-50 sm-100">
-                <mat-label translate>COMMON_FROM</mat-label>
-                <ss-date-picker formControlName="from"></ss-date-picker>
-            </mat-form-field>
-
-            <mat-form-field class="default-50 sm-100">
-                <mat-label translate>COMMON_TO</mat-label>
-                <ss-date-picker formControlName="to"></ss-date-picker>
-            </mat-form-field>
-
-            <mat-form-field floatLabel="always" class="default-50 sm-100">
-                <mat-label translate>PAYROLL_DAY_COUNT</mat-label>
-                <input matInput [maxLength]="100" formControlName="dayCount" type="number" min="0" max="360">
-            </mat-form-field>
-
-            <mat-form-field floatLabel="always" class="default-50 sm-100">
-                <mat-label translate>COMMON_MEMO</mat-label>
-                <input matInput [maxLength]="100" formControlName="memo" type="text">
-                <mat-error *ngIf="form.controls['memo'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
-            </mat-form-field>
-
-            <div class="default-50 sm-100">
-                <mat-form-field floatLabel="always" class="default-50">
-                    <mat-label translate>PAYROLL_APPLICATION_MONTH</mat-label>
-                    <mat-select formControlName="paymonthM">
-                        @for (m of MONTHS; track m.id) {
-                            <mat-option [value]="m.id" translate>{{ m.description }}</mat-option>
-                        }
-                    </mat-select>
-                </mat-form-field>
-
-                <mat-form-field floatLabel="always" class="default-50">
-                    <mat-label translate>PAYROLL_APPLICATION_YEAR</mat-label>
-                    <input matInput formControlName="paymonthY" type="number" style="text-align: end;" min="1900"
-                           max="2900">
-                </mat-form-field>
-            </div>
-            <mat-form-field floatLabel="always" class="default-50">
-                <mat-label translate>PAYROLL_NATURE</mat-label>
-                <mat-select formControlName="nature">
-                    @for (n of NATURE; track n.id) {
-                        <mat-option [value]="n.id" translate>{{ n.description }}</mat-option>
-                    }
-                </mat-select>
-            </mat-form-field>
-        </form>
-    </mat-card>
+    <mat-form-field floatLabel="always" class="default-50">
+      <mat-label translate>PAYROLL_NATURE</mat-label>
+      <mat-select formControlName="nature">
+        @for (n of NATURE; track n.id) {
+          <mat-option [value]="n.id" translate>{{ n.description }}</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+  </form>
+</mat-card>
 }

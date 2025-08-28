@@ -1,84 +1,87 @@
 <mat-card>
-    <mat-card-content>
-        <form *ngIf="form !== null" novalidate [formGroup]="form">
-            <mat-form-field class="default-50 sm-100">
-                <mat-label translate>COMMON_DATE</mat-label>
-                <ss-date-picker formControlName="date"></ss-date-picker>
-            </mat-form-field>
-
-
-            <mat-form-field class="default-50 sm-100">
-                <mat-label translate>LOGISTICS_CUSTOMER</mat-label>
-                <ss-auto-complete matInput
-                                  [required]="true"
-                                  [model]="agentAutoCompleteModel"
-                                  formControlName="agent">
-                </ss-auto-complete>
-            </mat-form-field>
-
-            <mat-form-field class="default-50">
-                <mat-label translate>COMMON_DEBIT</mat-label>
-                <input matInput
-                       formControlName="debit"
-                       (change)="onDebitChange($event)"
-                       type="number" required>
-                <mat-error *ngIf="form.controls['debit']?.invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
-            </mat-form-field>
-
-            <mat-form-field class="default-50">
-                <mat-label translate>COMMON_CREDIT</mat-label>
-                <input matInput
-                       formControlName="credit"
-                       (change)="onCreditChange($event)"
-                       type="number"
-                       step="0.01" required>
-                <mat-error *ngIf="form.controls['credit']?.invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
-            </mat-form-field>
-
-            <mat-form-field class="default-50 sm-100">
-                <mat-label translate>COMMON_DESCRIPTION</mat-label>
-                <input matInput formControlName="description" type="text" required>
-                <mat-error *ngIf="form.controls['description']?.invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
-            </mat-form-field>
-
-            <mat-form-field class="default-50">
-                <mat-label translate>LOGISTICS_CHECK_DUE_DAYS</mat-label>
-                <input matInput formControlName="dueDays" type="number" step="1" required>
-                <mat-error *ngIf="form.controls['dueDays']?.invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
-            </mat-form-field>
-
-            <mat-form-field id="number" class="default-50">
-                <mat-label translate>COMMON_NUMBER</mat-label>
-                <input matInput formControlName="number" type="text">
-                <mat-error *ngIf="form.controls['number']?.invalid" translate>COMMON_FIELD_REQUIRED
-                </mat-error>
-            </mat-form-field>
-
-            <mat-form-field class="default-50">
-                <mat-label translate>LOGISTICS_MODE</mat-label>
-                <ss-auto-complete matInput
-                                  [required]="true"
-                                  [model]="modeAutoCompleteModel"
-                                  formControlName="mode">
-                </ss-auto-complete>
-            </mat-form-field>
-
-            <mat-form-field class="default-50">
-                <mat-label translate>COMMON_BANK</mat-label>
-                <ss-auto-complete matInput
-                                  [required]="false"
-                                  [model]="bankAutoCompleteModel"
-                                  formControlName="bankId">
-                </ss-auto-complete>
-            </mat-form-field>
-
-            <mat-form-field class="default-50 sm-100">
-                <mat-label translate>LOGISTICS_AGENCY</mat-label>
-                <input matInput formControlName="bank" type="text">
-                <mat-error *ngIf="form.controls['bank'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
-            </mat-form-field>
-
-        </form>
-    </mat-card-content>
+  <mat-card-content>
+    @if (form !== null) {
+      <form novalidate [formGroup]="form">
+        <mat-form-field class="default-50 sm-100">
+          <mat-label translate>COMMON_DATE</mat-label>
+          <ss-date-picker formControlName="date"></ss-date-picker>
+        </mat-form-field>
+        <mat-form-field class="default-50 sm-100">
+          <mat-label translate>LOGISTICS_CUSTOMER</mat-label>
+          <ss-auto-complete matInput
+            [required]="true"
+            [model]="agentAutoCompleteModel"
+            formControlName="agent">
+          </ss-auto-complete>
+        </mat-form-field>
+        <mat-form-field class="default-50">
+          <mat-label translate>COMMON_DEBIT</mat-label>
+          <input matInput
+            formControlName="debit"
+            (change)="onDebitChange($event)"
+            type="number" required>
+          @if (form.controls['debit']?.invalid) {
+            <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+          }
+        </mat-form-field>
+        <mat-form-field class="default-50">
+          <mat-label translate>COMMON_CREDIT</mat-label>
+          <input matInput
+            formControlName="credit"
+            (change)="onCreditChange($event)"
+            type="number"
+            step="0.01" required>
+          @if (form.controls['credit']?.invalid) {
+            <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+          }
+        </mat-form-field>
+        <mat-form-field class="default-50 sm-100">
+          <mat-label translate>COMMON_DESCRIPTION</mat-label>
+          <input matInput formControlName="description" type="text" required>
+          @if (form.controls['description']?.invalid) {
+            <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+          }
+        </mat-form-field>
+        <mat-form-field class="default-50">
+          <mat-label translate>LOGISTICS_CHECK_DUE_DAYS</mat-label>
+          <input matInput formControlName="dueDays" type="number" step="1" required>
+          @if (form.controls['dueDays']?.invalid) {
+            <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+          }
+        </mat-form-field>
+        <mat-form-field id="number" class="default-50">
+          <mat-label translate>COMMON_NUMBER</mat-label>
+          <input matInput formControlName="number" type="text">
+          @if (form.controls['number']?.invalid) {
+            <mat-error translate>COMMON_FIELD_REQUIRED
+            </mat-error>
+          }
+        </mat-form-field>
+        <mat-form-field class="default-50">
+          <mat-label translate>LOGISTICS_MODE</mat-label>
+          <ss-auto-complete matInput
+            [required]="true"
+            [model]="modeAutoCompleteModel"
+            formControlName="mode">
+          </ss-auto-complete>
+        </mat-form-field>
+        <mat-form-field class="default-50">
+          <mat-label translate>COMMON_BANK</mat-label>
+          <ss-auto-complete matInput
+            [required]="false"
+            [model]="bankAutoCompleteModel"
+            formControlName="bankId">
+          </ss-auto-complete>
+        </mat-form-field>
+        <mat-form-field class="default-50 sm-100">
+          <mat-label translate>LOGISTICS_AGENCY</mat-label>
+          <input matInput formControlName="bank" type="text">
+          @if (form.controls['bank'].invalid) {
+            <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+          }
+        </mat-form-field>
+      </form>
+    }
+  </mat-card-content>
 </mat-card>
 

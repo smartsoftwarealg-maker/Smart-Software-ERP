@@ -1,57 +1,57 @@
 <mat-card>
-    <mat-card-content>
-        <form *ngIf="form !== null" novalidate [formGroup]="form">
-
-            <mat-form-field floatLabel="always" class="default-50 sm-100">
-                <mat-label translate>COMMON_MARITAL_STATUS</mat-label>
-                <mat-select formControlName="maritalStatus">
-                    <mat-option [value]="null"></mat-option>
-                    <mat-option *ngFor="let v of maritalStatus" [value]="v.id">
-                        {{v.description}}
-                    </mat-option>
-                </mat-select>
-                <mat-error *ngIf="form.controls['maritalStatus'].invalid" translate>
-                    COMMON_FIELD_MAX_LENGTH
-                </mat-error>
-            </mat-form-field>
-
-            <mat-form-field class="default-50 sm-100">
-                <mat-label translate>REMUN_FUND</mat-label>
-                <ss-auto-complete matInput
-                                  [required]="true"
-                                  [model]="fund1Lookup"
-                                  formControlName="fund1"></ss-auto-complete>
-            </mat-form-field>
-
-            <mat-form-field class="default-50 sm-100">
-                <mat-label translate>REMUN_CACO_FUND</mat-label>
-                <ss-auto-complete matInput
-                                  [required]="true"
-                                  [model]="fund2Lookup"
-                                  formControlName="fund2"></ss-auto-complete>
-            </mat-form-field>
-
-            <mat-form-field class="default-50 sm-100">
-                <mat-label translate>COMMON_BANK</mat-label>
-                <ss-auto-complete matInput
-                                  [required]="true"
-                                  [model]="bankLookup"
-                                  formControlName="bank"></ss-auto-complete>
-            </mat-form-field>
-
-            <mat-form-field class="default-50 sm-100">
-                <mat-label translate>COMMON_ACCOUNTNO</mat-label>
-                <input matInput formControlName="accountno" type="text">
-            </mat-form-field>
-
-            @if (isEditable) {
-                <button mat-raised-button type="button"
-                        color="primary"
-                        (click)="save()" translate>
-                    COMMON_SAVE
-                </button>
+  <mat-card-content>
+    @if (form !== null) {
+      <form novalidate [formGroup]="form">
+        <mat-form-field floatLabel="always" class="default-50 sm-100">
+          <mat-label translate>COMMON_MARITAL_STATUS</mat-label>
+          <mat-select formControlName="maritalStatus">
+            <mat-option [value]="null"></mat-option>
+            @for (v of maritalStatus; track v) {
+              <mat-option [value]="v.id">
+                {{v.description}}
+              </mat-option>
             }
-        </form>
+          </mat-select>
+          @if (form.controls['maritalStatus'].invalid) {
+            <mat-error translate>
+              COMMON_FIELD_MAX_LENGTH
+            </mat-error>
+          }
+        </mat-form-field>
+        <mat-form-field class="default-50 sm-100">
+          <mat-label translate>REMUN_FUND</mat-label>
+          <ss-auto-complete matInput
+            [required]="true"
+            [model]="fund1Lookup"
+          formControlName="fund1"></ss-auto-complete>
+        </mat-form-field>
+        <mat-form-field class="default-50 sm-100">
+          <mat-label translate>REMUN_CACO_FUND</mat-label>
+          <ss-auto-complete matInput
+            [required]="true"
+            [model]="fund2Lookup"
+          formControlName="fund2"></ss-auto-complete>
+        </mat-form-field>
+        <mat-form-field class="default-50 sm-100">
+          <mat-label translate>COMMON_BANK</mat-label>
+          <ss-auto-complete matInput
+            [required]="true"
+            [model]="bankLookup"
+          formControlName="bank"></ss-auto-complete>
+        </mat-form-field>
+        <mat-form-field class="default-50 sm-100">
+          <mat-label translate>COMMON_ACCOUNTNO</mat-label>
+          <input matInput formControlName="accountno" type="text">
+        </mat-form-field>
+        @if (isEditable) {
+          <button mat-raised-button type="button"
+            color="primary"
+            (click)="save()" translate>
+            COMMON_SAVE
+          </button>
+        }
+      </form>
+    }
 
-    </mat-card-content>
+  </mat-card-content>
 </mat-card>

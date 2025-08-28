@@ -14,7 +14,7 @@ import { LoginService, MaterialModule } from "@ss/common/api-common";
 import {MatExpansionPanel} from '@angular/material/expansion';
 import {ContractArticleService} from '../contract-article.service';
 import {Article, ArticleService} from '@ss/master-data/api-article';
-import { CommonModule } from "@angular/common";
+
 
 
 import { AppArchiveMainComponent, CONTRACT_ARCHIVES } from '@ss/common/app-archive';
@@ -28,18 +28,15 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     styleUrls: ['./sales-contract-detail.component.scss'],
     standalone: true,
     imports: [
-        CommonModule,
-        MaterialModule,
-        TranslateDirective,
-
-        ReactiveFormsModule,
-        DatePickerComponent,
-
-        RouterModule,
-        ContractArticleMainComponent,
-        AppArchiveMainComponent,
-        UiAutoCompleteComponent
-    ]
+    MaterialModule,
+    TranslateDirective,
+    ReactiveFormsModule,
+    DatePickerComponent,
+    RouterModule,
+    ContractArticleMainComponent,
+    AppArchiveMainComponent,
+    UiAutoCompleteComponent
+]
 })
 export class SalesContractDetailComponent extends BaseEntityDetailComponent<Project> {
     private wilayaSrv = inject(WilayaService);

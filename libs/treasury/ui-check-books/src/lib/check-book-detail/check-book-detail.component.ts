@@ -10,7 +10,7 @@ import { Observable } from 'rxjs';
 import { LookupsService, Bank } from '@ss/common/api-lookup';
 import { tap } from 'rxjs/operators';
 import { MatCard } from '@angular/material/card';
-import { NgIf, NgFor } from '@angular/common';
+
 import { MatFormField, MatLabel } from '@angular/material/form-field';
 import { TranslateDirective } from '@ss/common/ui-lang';
 import { MatSelect } from '@angular/material/select';
@@ -22,7 +22,7 @@ import { MatInput } from '@angular/material/input';
     styleUrls: ['./check-book-detail.component.scss'],
     templateUrl: './check-book-detail.component.html',
     standalone: true,
-    imports: [MaterialModule, MatCard, NgIf, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatSelect, NgFor, MatOption, MatInput]
+    imports: [MaterialModule, MatCard, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatSelect, MatOption, MatInput]
 })
 export class CheckBookDetailComponent extends BaseEntityDetailComponent<CheckBook> implements OnInit {
 

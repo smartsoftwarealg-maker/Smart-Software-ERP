@@ -14,7 +14,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
 import { DatePickerComponent } from '@ss/common/ui-datepicker';
 import { MatSelect } from '@angular/material/select';
 import { MatOption } from '@angular/material/core';
-import { NgFor, AsyncPipe } from '@angular/common';
+import { AsyncPipe } from '@angular/common';
 import { MatCheckbox } from '@angular/material/checkbox';
 import { MaterialModule } from '@ss/common/api-common';
 
@@ -23,7 +23,7 @@ import { MaterialModule } from '@ss/common/api-common';
     templateUrl: './employee-activation-detail.component.html',
     styleUrls: ['./employee-activation-detail.component.scss'],
     standalone: true,
-    imports: [MatMiniFabButton, MaterialModule, MatCard, MatCardContent, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, DatePickerComponent, MatSelect, MatOption, NgFor, MatCheckbox, AsyncPipe]
+    imports: [MatMiniFabButton, MaterialModule, MatCard, MatCardContent, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, DatePickerComponent, MatSelect, MatOption, MatCheckbox, AsyncPipe]
 })
 export class EmployeeActivationDetailComponent extends BaseChildEntityDetailComponent<EmployeeActivation> {
     private suspensionReasonSrv = inject(SuspensionReasonService);

@@ -3,7 +3,7 @@ import { UntypedFormGroup, UntypedFormBuilder, Validators, FormsModule, Reactive
 import { BaseChildEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { EmployeeOldCareerService, OldCareer } from '@ss/payroll/api-employee';
 import { MatCard, MatCardTitle, MatCardContent } from '@angular/material/card';
-import { NgIf } from '@angular/common';
+
 import { MatMiniFabButton } from '@angular/material/button';
 import { MatFormField, MatLabel } from '@angular/material/form-field';
 import { TranslateDirective } from '@ss/common/ui-lang';
@@ -17,7 +17,7 @@ import { ActivePersonnelService } from '../../active-personnel.service';
     templateUrl: './employee-old-career-detail.component.html',
     styleUrls: ['./employee-old-career-detail.component.scss'],
     standalone: true,
-    imports: [MaterialModule, MatCard, MatCardTitle, NgIf, MatMiniFabButton, MatCardContent, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, DatePickerComponent]
+    imports: [MaterialModule, MatCard, MatCardTitle, MatMiniFabButton, MatCardContent, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, DatePickerComponent]
 })
 export class EmployeeOldCareerDetailComponent extends BaseChildEntityDetailComponent<OldCareer>  {
     private formBuilder = inject(UntypedFormBuilder);

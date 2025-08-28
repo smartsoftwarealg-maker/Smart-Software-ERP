@@ -8,7 +8,7 @@ import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { HttpService, LoginService, MaterialModule } from '@ss/common/api-common';
 import { AgentLookupModel, AgentService } from '@ss/logistics/api-agent';
 import { MatCard } from '@angular/material/card';
-import { NgIf } from '@angular/common';
+
 import { MatFormField, MatLabel, MatError } from '@angular/material/form-field';
 import { TranslateDirective } from '@ss/common/ui-lang';
 import { MatInput } from '@angular/material/input';
@@ -21,20 +21,7 @@ import { MatCheckbox } from '@angular/material/checkbox';
     styleUrls: ['./check-detail.component.scss'],
     templateUrl: './check-detail.component.html',
     standalone: true,
-    imports: [MaterialModule,
-        MaterialModule,
-        MatCard,
-        NgIf,
-        FormsModule,
-        ReactiveFormsModule,
-        MatFormField,
-        MatLabel,
-        TranslateDirective,
-        MatInput,
-        UiAutoCompleteComponent,
-        MatError,
-        DatePickerComponent,
-        MatCheckbox]
+    imports: [MaterialModule, MaterialModule, MatCard, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, UiAutoCompleteComponent, MatError, DatePickerComponent, MatCheckbox]
 })
 export class CheckDetailComponent extends BaseEntityDetailComponent<Check> implements OnInit {
 

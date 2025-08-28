@@ -27,7 +27,6 @@ import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
         CommonModule,
         MaterialModule,
         TranslateDirective,
-
         ReactiveFormsModule,
         RouterModule,
         DatePickerComponent,

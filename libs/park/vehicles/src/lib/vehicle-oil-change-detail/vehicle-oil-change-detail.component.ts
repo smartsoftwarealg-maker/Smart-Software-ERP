@@ -1,5 +1,4 @@
 import { Component, inject } from '@angular/core';
-import { CommonModule } from '@angular/common';
 
 import { DatePickerComponent } from '@ss/common/ui-datepicker';
 
@@ -8,29 +7,34 @@ import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MaterialModule } from '@ss/common/api-common';
-import { FormBuilder, ReactiveFormsModule, UntypedFormGroup, Validators } from '@angular/forms';
+import {
+    FormBuilder,
+    ReactiveFormsModule,
+    UntypedFormGroup,
+    Validators,
+} from '@angular/forms';
 import { BaseChildEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { OilChange } from '../vehicle-api';
 import { VehicleOilChangeService } from '../services/vehicle-oil-change.service';
+import { TranslateDirective } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-vehicle-oil-change-detail',
     standalone: true,
     imports: [
-        CommonModule,
-
         DatePickerComponent,
-
         MatButtonModule,
         MatCardModule,
         MatFormFieldModule,
         MatInputModule,
         MaterialModule,
-        ReactiveFormsModule],
+        ReactiveFormsModule,
+        TranslateDirective,
+    ],
     templateUrl: './vehicle-oil-change-detail.component.html',
-    styleUrls: ['./vehicle-oil-change-detail.component.css']
+    styleUrls: ['./vehicle-oil-change-detail.component.css'],
 })
-export class VehicleOilChangeDetailComponent extends BaseChildEntityDetailComponent<OilChange>{
+export class VehicleOilChangeDetailComponent extends BaseChildEntityDetailComponent<OilChange> {
     private fb = inject(FormBuilder);
 
     constructor(protected override entitySrv: VehicleOilChangeService) {
@@ -39,13 +43,12 @@ export class VehicleOilChangeDetailComponent extends BaseChildEntityDetailCompon
 
     setupForm(e: OilChange): UntypedFormGroup {
         return this.fb.group({
-            id:           [e.id],
-            parentId:     [e.parentId],
-            date:         [e.date, Validators.required],
-            nextDate:     [e.nextDate, Validators.required],
-            odometer:     [e.odometer],
-            nextOdometer: [e.nextOdometer]
+            id: [e.id],
+            parentId: [e.parentId],
+            date: [e.date, Validators.required],
+            nextDate: [e.nextDate, Validators.required],
+            odometer: [e.odometer],
+            nextOdometer: [e.nextOdometer],
         });
     }
-
 }

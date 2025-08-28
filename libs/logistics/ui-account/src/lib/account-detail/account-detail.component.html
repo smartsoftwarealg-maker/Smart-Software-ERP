@@ -1,66 +1,61 @@
 <mat-card>
-    <mat-card-content>
-        <form *ngIf="form !== null" novalidate [formGroup]="form">
-
-            <mat-form-field id="accountNo" class="default-50 sm-100">
-                <mat-label translate>LOGISTICS_ACCOUNT_NO</mat-label>
-                <input matInput formControlName="accountNo" type="text" required>
-                <mat-error *ngIf="form.controls['accountNo'].invalid" translate>COMMON_FIELD_REQUIRED
-                </mat-error>
-            </mat-form-field>
-
-            <mat-form-field id="description" class="default-50 sm-100">
-                <mat-label translate>LOGISTICS_DESCRIPTION</mat-label>
-                <input matInput formControlName="description" type="text" required>
-                <mat-error *ngIf="form.controls['description'].invalid" translate>COMMON_FIELD_REQUIRED
-                </mat-error>
-            </mat-form-field>
-
-            <mat-form-field id="descriptionِAr" class="default-50 sm-100">
-                <mat-label translate>LOGISTICS_DESCRIPTION_AR</mat-label>
-                <input matInput formControlName="descriptionAr" type="text">
-            </mat-form-field>
-
-            <mat-form-field id="balanceConstraint" class="default-50 sm-100">
-                <mat-label translate>LOGISTICS_BALANCE_CONSTRAINT</mat-label>
-                <input matInput formControlName="balanceConstraint" type="number">
-            </mat-form-field>
-
-
-            <mat-form-field class="default-50 sm-100">
-                <mat-label translate>LOGISTICS_ACC_TYPE</mat-label>
-                <mat-select formControlName="accType">
-                    <mat-option [value]="null"></mat-option>
-                    <mat-option *ngFor="let v of accountTypes" [value]="v.id">
-                        {{v ? v.description : ''}}
-                    </mat-option>
-                </mat-select>
-            </mat-form-field>
-
-            <div class="default-50 sm-100">
-                <mat-checkbox formControlName="analyzed" translate>LOGISTICS_ANALYZED</mat-checkbox>
-            </div>
-
-            <div class="default-50 sm-100">
-                <mat-checkbox formControlName="summaryLevel" translate>LOGISTICS_SUMMARY_LEVEL</mat-checkbox>
-            </div>
-
-            <div class="default-50 sm-100">
-                <mat-checkbox formControlName="customerCode" translate>COMMON_CUSTOMER_CODE</mat-checkbox>
-            </div>
-
-            <div class="default-50 sm-100">
-                <mat-checkbox formControlName="budgetAccount" translate>LOGISTICS_BUDGET_ACCOUNT</mat-checkbox>
-            </div>
-
-            <div class="default-50 sm-100">
-                <mat-checkbox formControlName="treasuryAccount" translate>LOGISTICS_TREASURY_ACCOUNT</mat-checkbox>
-            </div>
-
-            <div class="default-50 sm-100">
-                <mat-checkbox formControlName="ccRequired" translate>ACC_CC_REQUIRED</mat-checkbox>
-            </div>
-
-        </form>
-    </mat-card-content>
+  <mat-card-content>
+    @if (form !== null) {
+      <form novalidate [formGroup]="form">
+        <mat-form-field id="accountNo" class="default-50 sm-100">
+          <mat-label translate>LOGISTICS_ACCOUNT_NO</mat-label>
+          <input matInput formControlName="accountNo" type="text" required>
+          @if (form.controls['accountNo'].invalid) {
+            <mat-error translate>COMMON_FIELD_REQUIRED
+            </mat-error>
+          }
+        </mat-form-field>
+        <mat-form-field id="description" class="default-50 sm-100">
+          <mat-label translate>LOGISTICS_DESCRIPTION</mat-label>
+          <input matInput formControlName="description" type="text" required>
+          @if (form.controls['description'].invalid) {
+            <mat-error translate>COMMON_FIELD_REQUIRED
+            </mat-error>
+          }
+        </mat-form-field>
+        <mat-form-field id="descriptionِAr" class="default-50 sm-100">
+          <mat-label translate>LOGISTICS_DESCRIPTION_AR</mat-label>
+          <input matInput formControlName="descriptionAr" type="text">
+        </mat-form-field>
+        <mat-form-field id="balanceConstraint" class="default-50 sm-100">
+          <mat-label translate>LOGISTICS_BALANCE_CONSTRAINT</mat-label>
+          <input matInput formControlName="balanceConstraint" type="number">
+        </mat-form-field>
+        <mat-form-field class="default-50 sm-100">
+          <mat-label translate>LOGISTICS_ACC_TYPE</mat-label>
+          <mat-select formControlName="accType">
+            <mat-option [value]="null"></mat-option>
+            @for (v of accountTypes; track v) {
+              <mat-option [value]="v.id">
+                {{v ? v.description : ''}}
+              </mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+        <div class="default-50 sm-100">
+          <mat-checkbox formControlName="analyzed" translate>LOGISTICS_ANALYZED</mat-checkbox>
+        </div>
+        <div class="default-50 sm-100">
+          <mat-checkbox formControlName="summaryLevel" translate>LOGISTICS_SUMMARY_LEVEL</mat-checkbox>
+        </div>
+        <div class="default-50 sm-100">
+          <mat-checkbox formControlName="customerCode" translate>COMMON_CUSTOMER_CODE</mat-checkbox>
+        </div>
+        <div class="default-50 sm-100">
+          <mat-checkbox formControlName="budgetAccount" translate>LOGISTICS_BUDGET_ACCOUNT</mat-checkbox>
+        </div>
+        <div class="default-50 sm-100">
+          <mat-checkbox formControlName="treasuryAccount" translate>LOGISTICS_TREASURY_ACCOUNT</mat-checkbox>
+        </div>
+        <div class="default-50 sm-100">
+          <mat-checkbox formControlName="ccRequired" translate>ACC_CC_REQUIRED</mat-checkbox>
+        </div>
+      </form>
+    }
+  </mat-card-content>
 </mat-card>

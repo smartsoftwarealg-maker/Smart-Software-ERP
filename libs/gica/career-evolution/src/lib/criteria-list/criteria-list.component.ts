@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { Criterion } from '../gica-careers-api';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
@@ -35,26 +35,24 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     selector: 'ss-gica-criteria-list',
     standalone: true,
     imports: [
-        CommonModule,
-        MaterialModule,
-        MatCell,
-        MatCellDef,
-        MatColumnDef,
-        MatHeaderCell,
-        MatHeaderRow,
-        MatHeaderRowDef,
-        MatRow,
-        MatRowDef,
-        MatSort,
-        MatSortHeader,
-        MatTable,
-        TranslateDirective,
-        MatHeaderCellDef,
-        MatFormField,
-
-        PaginationComponent,
-        UiAutoCompleteComponent
-    ],
+    MaterialModule,
+    MatCell,
+    MatCellDef,
+    MatColumnDef,
+    MatHeaderCell,
+    MatHeaderRow,
+    MatHeaderRowDef,
+    MatRow,
+    MatRowDef,
+    MatSort,
+    MatSortHeader,
+    MatTable,
+    TranslateDirective,
+    MatHeaderCellDef,
+    MatFormField,
+    PaginationComponent,
+    UiAutoCompleteComponent
+],
     templateUrl: './criteria-list.component.html',
     styleUrl: './criteria-list.component.css',
 })

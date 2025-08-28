@@ -10,7 +10,7 @@ import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {DefinitionLookupService} from '../definition-lookup.service';
 import { LoginService, MaterialModule } from '@ss/common/api-common';
 import { MatCard, MatCardContent } from '@angular/material/card';
-import { NgIf } from '@angular/common';
+
 import { MatFormField, MatLabel, MatError } from '@angular/material/form-field';
 import { TranslateDirective } from '@ss/common/ui-lang';
 import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
@@ -21,7 +21,7 @@ import { MatInput } from '@angular/material/input';
     templateUrl: './document-numbering-detail.component.html',
     styleUrls: ['./document-numbering-detail.component.scss'],
     standalone: true,
-    imports: [MaterialModule, MatCard, MatCardContent, NgIf, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, UiAutoCompleteComponent, MatInput, MatError]
+    imports: [MaterialModule, MatCard, MatCardContent, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, UiAutoCompleteComponent, MatInput, MatError]
 })
 export class DocumentNumberingDetailComponent extends BaseEntityDetailComponent<LDocument> implements OnInit {
     private definitionSrv = inject(DefinitionLookupService);

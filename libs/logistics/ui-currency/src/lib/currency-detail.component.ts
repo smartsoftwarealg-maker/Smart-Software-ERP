@@ -6,7 +6,7 @@ import {CCGroup, Currency, CurrencyService, LookupsService} from '@ss/common/api
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import { MatCard, MatCardContent } from '@angular/material/card';
-import { NgIf } from '@angular/common';
+
 import { MatFormField, MatLabel, MatError } from '@angular/material/form-field';
 import { TranslateDirective } from '@ss/common/ui-lang';
 import { MatInput } from '@angular/material/input';
@@ -17,7 +17,7 @@ import { MatInput } from '@angular/material/input';
     styleUrls: ['./currency-detail.component.scss'],
     templateUrl: './currency-detail.component.html',
     standalone: true,
-    imports: [MaterialModule, MatCard, MatCardContent, NgIf, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, MatError]
+    imports: [MaterialModule, MatCard, MatCardContent, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, MatError]
 })
 export class CurrencyDetailComponent extends BaseEntityDetailComponent<Currency> {
 

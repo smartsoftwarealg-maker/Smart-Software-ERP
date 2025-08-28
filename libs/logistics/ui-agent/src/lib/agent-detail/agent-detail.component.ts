@@ -64,7 +64,7 @@ import { CenterService } from '@ss/administration/api-center';
 import { MatDialog } from '@angular/material/dialog';
 import { AgentImportComponent } from '../agent-import/agent-import.component';
 import { AgentPriceService } from '@ss/logistics/api-agent-price';
-import { CommonModule } from '@angular/common';
+
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 import { ChildAttributesComponent } from '@ss/custom-attributes';
 import { OptionService } from '@ss/logistics/ui-options';
@@ -85,16 +85,15 @@ const TRANSPORTER = 3;
     templateUrl: './agent-detail.component.html',
     standalone: true,
     imports: [
-        CommonModule,
-        MaterialModule,
-        TranslateDirective,
-        TranslatePipe,
-        ReactiveFormsModule,
-        AppArchiveMainComponent,
-        UiAutoCompleteComponent,
-        ChildAttributesComponent,
-        RouterOutlet,
-    ],
+    MaterialModule,
+    TranslateDirective,
+    TranslatePipe,
+    ReactiveFormsModule,
+    AppArchiveMainComponent,
+    UiAutoCompleteComponent,
+    ChildAttributesComponent,
+    RouterOutlet
+],
 })
 export class AgentDetailComponent
     extends BaseEntityDetailComponent<Agent>

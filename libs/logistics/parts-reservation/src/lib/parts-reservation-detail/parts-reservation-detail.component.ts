@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { BaseTransactionDetailComponent } from '@ss/logistics/api-transaction';
 import { CCGroup, Lookup } from '@ss/common/api-lookup';
 import { ConsumptionLinesService } from '@ss/stock/api-consumption-lines';
@@ -27,19 +27,18 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     selector: 'ss-parts-reservation-detail',
     standalone: true,
     imports: [
-        CommonModule,
-        MaterialModule,
-        DatePickerComponent,
-        MatCardModule,
-        MatFormFieldModule,
-        MatInputModule,
-        ReactiveFormsModule,
-        RouterOutlet,
-        TextFieldModule,
-        UiAutoCompleteComponent,
-        DatePickerComponent,
-        TranslateDirective
-    ],
+    MaterialModule,
+    DatePickerComponent,
+    MatCardModule,
+    MatFormFieldModule,
+    MatInputModule,
+    ReactiveFormsModule,
+    RouterOutlet,
+    TextFieldModule,
+    UiAutoCompleteComponent,
+    DatePickerComponent,
+    TranslateDirective
+],
     templateUrl: './parts-reservation-detail.component.html',
     styleUrls: ['../../../../../common/assets/src/assets/transac-detail.scss']
 })

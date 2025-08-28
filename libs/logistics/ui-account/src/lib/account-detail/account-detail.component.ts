@@ -7,7 +7,7 @@ import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {LookupsService} from '@ss/common/api-lookup';
 import {  ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import {Account, ACCOUNT_TYPES, AccountService} from '@ss/accounting/api-accounts';
-import { CommonModule } from '@angular/common';
+
 import { MaterialModule } from '@ss/common/api-common';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
@@ -20,13 +20,10 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     templateUrl: './account-detail.component.html',
     standalone: true,
     imports: [
-        CommonModule,
-        MaterialModule,
-        TranslateDirective,
-       
-        ReactiveFormsModule,
-
-    ],
+    MaterialModule,
+    TranslateDirective,
+    ReactiveFormsModule
+],
 })
 export class AccountDetailComponent extends BaseEntityDetailComponent<Account> {
 

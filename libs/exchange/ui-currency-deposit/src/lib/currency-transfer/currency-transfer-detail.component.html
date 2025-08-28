@@ -1,80 +1,74 @@
 <mat-card>
-    <mat-card-content>
-        <form *ngIf="form !== null" novalidate [formGroup]="form">
-
-            <mat-form-field id="excDate" class="default-50 sm-100">
-                <mat-label translate>COMMON_DATE</mat-label>
-                <ss-date-picker formControlName="excDate"></ss-date-picker>
+  <mat-card-content>
+    @if (form !== null) {
+      <form novalidate [formGroup]="form">
+        <mat-form-field id="excDate" class="default-50 sm-100">
+          <mat-label translate>COMMON_DATE</mat-label>
+          <ss-date-picker formControlName="excDate"></ss-date-picker>
+        </mat-form-field>
+        <mat-form-field class="default-50 sm-100">
+          <mat-label translate>LOGISTICS_CUSTOMER</mat-label>
+          <ss-auto-complete matInput
+            [required]="true"
+            [model]="agentAutoCompleteModel"
+          formControlName="customerId"></ss-auto-complete>
+        </mat-form-field>
+        <mat-form-field class="default-50 sm-100">
+          <mat-label translate>COMMON_TYPE</mat-label>
+          <ss-auto-complete matInput
+            [required]="true"
+            [model]="typeAutoCompleteModel"
+          formControlName="depositType"></ss-auto-complete>
+        </mat-form-field>
+        <mat-form-field id="description" class="default-50 sm-100">
+          <mat-label translate>COMMON_DESCRIPTION</mat-label>
+          <input matInput formControlName="description" type="text" required>
+          @if (form.controls.excDate.invalid) {
+            <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+          }
+        </mat-form-field>
+        <mat-form-field class="default-50 sm-100">
+          <mat-label >
+            <span translate>COMMON_FROM </span>
+            <span translate>LOGISTICS_CURRENCY</span>
+          </mat-label>
+          <ss-auto-complete matInput
+            [required]="true"
+            [model]="currencyAutoCompleteModel"
+          formControlName="currencyId"></ss-auto-complete>
+        </mat-form-field>
+        <mat-form-field class="default-50 sm-100">
+          <mat-label >
+            <span translate>COMMON_TO </span>
+            <span translate>LOGISTICS_CURRENCY</span>
+          </mat-label>
+          <ss-auto-complete matInput
+            [model]="soldAutoCompleteModel"
+          formControlName="soldCurrencyId"></ss-auto-complete>
+        </mat-form-field>
+        <mat-form-field id="amount" class="default-50 sm-100">
+          <mat-label translate>EXCHANGE_AMOUNT</mat-label>
+          <input matInput formControlName="amount"
+            type="number"
+            (ngModelChange)="onAmountChange($event)"
+            step="1" required>
+            @if (form.controls.amount.invalid) {
+              <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+            }
+          </mat-form-field>
+          <mat-form-field id="exchangeRate" class="default-50 sm-100">
+            <mat-label translate>LOGISTICS_EXCHANGE_RATE</mat-label>
+            <input type="number" matInput formControlName="exchangeRate"
+              step="0.00001"
+              (change)="onRateChange()">
             </mat-form-field>
-
-
             <mat-form-field class="default-50 sm-100">
-                <mat-label translate>LOGISTICS_CUSTOMER</mat-label>
-                <ss-auto-complete matInput
-                                  [required]="true"
-                                  [model]="agentAutoCompleteModel"
-                                  formControlName="customerId"></ss-auto-complete>
+              <mat-label translate>EXCHANGE_DEST_AMOUNT</mat-label>
+              <input type="number" matInput formControlName="soldAmount" step="0.00001" >
             </mat-form-field>
-
-
-            <mat-form-field class="default-50 sm-100">
-                <mat-label translate>COMMON_TYPE</mat-label>
-                <ss-auto-complete matInput
-                                  [required]="true"
-                                  [model]="typeAutoCompleteModel"
-                                  formControlName="depositType"></ss-auto-complete>
-            </mat-form-field>
-
-            <mat-form-field id="description" class="default-50 sm-100">
-                <mat-label translate>COMMON_DESCRIPTION</mat-label>
-                <input matInput formControlName="description" type="text" required>
-                <mat-error *ngIf="form.controls.excDate.invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
-            </mat-form-field>
-
-            <mat-form-field class="default-50 sm-100">
-                <mat-label >
-                    <span translate>COMMON_FROM </span>
-                    <span translate>LOGISTICS_CURRENCY</span>
-                </mat-label>
-                <ss-auto-complete matInput
-                                  [required]="true"
-                                  [model]="currencyAutoCompleteModel"
-                                  formControlName="currencyId"></ss-auto-complete>
-            </mat-form-field>
-
-            <mat-form-field class="default-50 sm-100">
-                <mat-label >
-                    <span translate>COMMON_TO </span>
-                    <span translate>LOGISTICS_CURRENCY</span>
-                </mat-label>
-                <ss-auto-complete matInput
-                                  [model]="soldAutoCompleteModel"
-                                  formControlName="soldCurrencyId"></ss-auto-complete>
-            </mat-form-field>
-
-            <mat-form-field id="amount" class="default-50 sm-100">
-                <mat-label translate>EXCHANGE_AMOUNT</mat-label>
-                <input matInput formControlName="amount"
-                       type="number"
-                       (ngModelChange)="onAmountChange($event)"
-                       step="1" required>
-                <mat-error *ngIf="form.controls.amount.invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
-            </mat-form-field>
-
-            <mat-form-field id="exchangeRate" class="default-50 sm-100">
-                <mat-label translate>LOGISTICS_EXCHANGE_RATE</mat-label>
-                <input type="number" matInput formControlName="exchangeRate"
-                       step="0.00001"
-                       (change)="onRateChange()">
-            </mat-form-field>
-
-            <mat-form-field class="default-50 sm-100">
-                <mat-label translate>EXCHANGE_DEST_AMOUNT</mat-label>
-                <input type="number" matInput formControlName="soldAmount" step="0.00001" >
-            </mat-form-field>
-
-        </form>
-<!--        <pre>{{form.value | json}}</pre>-->
-    </mat-card-content>
-</mat-card>
-<ss-exc-doc-info [selectedId]="customerId" ></ss-exc-doc-info>
+          </form>
+        }
+        <!--        <pre>{{form.value | json}}</pre>-->
+      </mat-card-content>
+    </mat-card>
+    <ss-exc-doc-info [selectedId]="customerId" ></ss-exc-doc-info>

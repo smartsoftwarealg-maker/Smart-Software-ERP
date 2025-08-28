@@ -25,7 +25,7 @@ import { ProjectTypeService } from '@ss/common/api-lookup';
 import { LoginService, MaterialModule } from '@ss/common/api-common';
 import { MatExpansionPanel } from '@angular/material/expansion';
 import { Article } from '@ss/master-data/api-article';
-import { CommonModule } from '@angular/common';
+
 
 import { AppArchiveMainComponent } from '@ss/common/app-archive';
 import { DatePickerComponent } from '@ss/common/ui-datepicker';
@@ -38,16 +38,15 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     styleUrls: ['./cement-contract-detail.component.scss'],
     standalone: true,
     imports: [
-        CommonModule,
-        MaterialModule,
-        TranslateDirective,
-        ReactiveFormsModule,
-        DatePickerComponent,
-        RouterModule,
-        ContractArticleMainComponent,
-        AppArchiveMainComponent,
-        UiAutoCompleteComponent,
-    ],
+    MaterialModule,
+    TranslateDirective,
+    ReactiveFormsModule,
+    DatePickerComponent,
+    RouterModule,
+    ContractArticleMainComponent,
+    AppArchiveMainComponent,
+    UiAutoCompleteComponent
+],
 })
 export class CementContractDetailComponent extends BaseEntityDetailComponent<Project> {
     private wilayaSrv = inject(WilayaService);

@@ -2,7 +2,7 @@ import { Component, inject } from "@angular/core";
 import { BaseChildEntityDetailComponent } from "@ss/common/ui-base-entity";
 import { GridRank } from "../grid-api";
 import { MaterialModule } from "@ss/common/api-common";
-import { CommonModule } from "@angular/common";
+
 
 
 import { GridRankService } from '../grid-rank.service';
@@ -15,10 +15,9 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     styleUrls: ['./salary-rank-detail.component.scss'],
     standalone: true,
     imports: [
-        CommonModule,
-        MaterialModule,
-        TranslateDirective
-    ]
+    MaterialModule,
+    TranslateDirective
+]
 })
 
 export class SalaryRankDetailComponent extends BaseChildEntityDetailComponent<GridRank> {

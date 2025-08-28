@@ -1,85 +1,97 @@
-<div class="btn-div" *ngIf="editable">
+@if (editable) {
+  <div class="btn-div">
     <button mat-mini-fab color="primary"
-            matTooltip="{{'COMMON_ADD' | translate}}"
-            (click)="addAttribute()">
-        <i class="fas fa-add"></i>
+      matTooltip="{{'COMMON_ADD' | translate}}"
+      (click)="addAttribute()">
+      <i class="fas fa-add"></i>
     </button>
     <button mat-mini-fab
-            [disabled]="!selectedAttribute || !selectedAttribute.id"
-            matTooltip="{{'COMMON_DELETE' | translate}}"
-            (click)="deleteAttribute()">
-        <i class="fas fa-minus"></i>
+      [disabled]="!selectedAttribute || !selectedAttribute.id"
+      matTooltip="{{'COMMON_DELETE' | translate}}"
+      (click)="deleteAttribute()">
+      <i class="fas fa-minus"></i>
     </button>
     <button mat-mini-fab
-            color="primary"
-            [disabled]="!selectedAttribute || !selectedAttributeCtrl.value"
-            matTooltip="{{'COMMON_SAVE' | translate}}"
-            (click)="saveAttribute()">
-        <i class="fas fa-save"> </i>
+      color="primary"
+      [disabled]="!selectedAttribute || !selectedAttributeCtrl.value"
+      matTooltip="{{'COMMON_SAVE' | translate}}"
+      (click)="saveAttribute()">
+      <i class="fas fa-save"> </i>
     </button>
-</div>
+  </div>
+}
 
 <div class="container_div">
-    <mat-table mat-table [dataSource]="childAttributes" class="content-div">
-        <ng-container matColumnDef="attribName">
-            <mat-header-cell *matHeaderCellDef translate>ADMINISTRATION_ATTRIBUTES</mat-header-cell>
-            <mat-cell *matCellDef="let e">
-                {{e.attribName}}
-            </mat-cell>
-        </ng-container>
+  <mat-table mat-table [dataSource]="childAttributes" class="content-div">
+    <ng-container matColumnDef="attribName">
+      <mat-header-cell *matHeaderCellDef translate>ADMINISTRATION_ATTRIBUTES</mat-header-cell>
+      <mat-cell *matCellDef="let e">
+        {{e.attribName}}
+      </mat-cell>
+    </ng-container>
 
-        <ng-container matColumnDef="value">
-            <mat-header-cell *matHeaderCellDef translate>COMMON_VALUE</mat-header-cell>
-            <mat-cell *matCellDef="let e">
-                {{e.value}}
-            </mat-cell>
-            <
-        </ng-container>
+    <ng-container matColumnDef="value">
+      <mat-header-cell *matHeaderCellDef translate>COMMON_VALUE</mat-header-cell>
+      <mat-cell *matCellDef="let e">
+        {{e.value}}
+      </mat-cell>
+      <
+    </ng-container>
 
-        <mat-header-row *matHeaderRowDef="attributeColumns; sticky: true"></mat-header-row>
-        <mat-row class="selectable" [class.selected]="row.id === selectedAttribute?.id" (click)="selectAttribute(row)"
-                 *matRowDef="let row; columns: attributeColumns;"></mat-row>
-    </mat-table>
+    <mat-header-row *matHeaderRowDef="attributeColumns; sticky: true"></mat-header-row>
+    <mat-row class="selectable" [class.selected]="row.id === selectedAttribute?.id" (click)="selectAttribute(row)"
+    *matRowDef="let row; columns: attributeColumns;"></mat-row>
+  </mat-table>
 </div>
 
 <div class="input-div">
-    <mat-form-field class="default-50" *ngIf="selectedAttribute && !selectedAttribute.id">
-        <mat-label translate>ADMINISTRATION_ATTRIBUTES</mat-label>
-        <mat-select [formControl]="attributeCtrl">
-            <mat-option *ngFor="let a of $childAttributes" [value]="a">{{ a.description }}</mat-option>
-        </mat-select>
+  @if (selectedAttribute && !selectedAttribute.id) {
+    <mat-form-field class="default-50">
+      <mat-label translate>ADMINISTRATION_ATTRIBUTES</mat-label>
+      <mat-select [formControl]="attributeCtrl">
+        @for (a of $childAttributes; track a) {
+          <mat-option [value]="a">{{ a.description }}</mat-option>
+        }
+      </mat-select>
     </mat-form-field>
-    <div [ngSwitch]="attributeType" class="default-50">
-        <div *ngSwitchCase="1">
-            <mat-form-field class="default-50">
-                <mat-label translate>ADMINISTRATION_LOOKUP_VALUES</mat-label>
-                <input matInput [formControl]="selectedAttributeCtrl" type="text">
-            </mat-form-field>
+  }
+  <div class="default-50">
+    @switch (attributeType) {
+      @case (1) {
+        <div>
+          <mat-form-field class="default-50">
+            <mat-label translate>ADMINISTRATION_LOOKUP_VALUES</mat-label>
+            <input matInput [formControl]="selectedAttributeCtrl" type="text">
+          </mat-form-field>
         </div>
-
-        <div *ngSwitchCase="2">
-            <mat-form-field class="default-50">
-                <mat-label translate>COMMON_VALUE</mat-label>
-                <input matInput [formControl]="selectedAttributeCtrl" type="number" step="1">
-            </mat-form-field>
+      }
+      @case (2) {
+        <div>
+          <mat-form-field class="default-50">
+            <mat-label translate>COMMON_VALUE</mat-label>
+            <input matInput [formControl]="selectedAttributeCtrl" type="number" step="1">
+          </mat-form-field>
         </div>
-
-        <div *ngSwitchCase="3">
-            <mat-form-field class="default-50">
-                <mat-label translate>COMMON_VALUE</mat-label>
-                <ss-auto-complete matInput
-                                  [model]="attributeLookup"
-                                  [formControl]="selectedAttributeCtrl"></ss-auto-complete>
-            </mat-form-field>
+      }
+      @case (3) {
+        <div>
+          <mat-form-field class="default-50">
+            <mat-label translate>COMMON_VALUE</mat-label>
+            <ss-auto-complete matInput
+              [model]="attributeLookup"
+            [formControl]="selectedAttributeCtrl"></ss-auto-complete>
+          </mat-form-field>
         </div>
-
-        <div *ngSwitchCase="4">
-            <mat-form-field class="default-50 date__picker">
-                <mat-label translate>COMMON_DATE</mat-label>
-                <ss-date-picker [formControl]="selectedAttributeCtrl"></ss-date-picker>
-            </mat-form-field>
+      }
+      @case (4) {
+        <div>
+          <mat-form-field class="default-50 date__picker">
+            <mat-label translate>COMMON_DATE</mat-label>
+            <ss-date-picker [formControl]="selectedAttributeCtrl"></ss-date-picker>
+          </mat-form-field>
         </div>
-
-    </div>
+      }
+    }
+  </div>
 </div>
 

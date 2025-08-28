@@ -1,5 +1,5 @@
 import { Component, inject, input, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
@@ -18,14 +18,13 @@ import { HttpEventType } from '@angular/common/http';
 @Component({
     selector: 'ss-agent-merge',
     imports: [
-        CommonModule,
-        ReactiveFormsModule,
-        MaterialModule,
-        TranslateDirective,
-        UiAutoCompleteComponent,
-        MatFormField,
-        TranslatePipe,
-    ],
+    ReactiveFormsModule,
+    MaterialModule,
+    TranslateDirective,
+    UiAutoCompleteComponent,
+    MatFormField,
+    TranslatePipe
+],
     templateUrl: './agent-merge.component.html',
     styleUrl: './agent-merge.component.scss',
     standalone: true,

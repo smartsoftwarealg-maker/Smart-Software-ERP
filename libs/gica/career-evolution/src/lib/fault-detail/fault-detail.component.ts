@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { Fault } from '../gica-careers-api';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
@@ -29,7 +29,7 @@ import { DatePickerComponent } from '@ss/common/ui-datepicker';
 @Component({
     selector: 'ss-gica-fault-detail',
     standalone: true,
-    imports: [CommonModule, MatCard, MatCardContent, MatError, MatFormField, MatInput, MatLabel, ReactiveFormsModule, DatePickerComponent, UiAutoCompleteComponent],
+    imports: [MatCard, MatCardContent, MatError, MatFormField, MatInput, MatLabel, ReactiveFormsModule, DatePickerComponent, UiAutoCompleteComponent],
     templateUrl: './fault-detail.component.html',
     styleUrl: './fault-detail.component.css'
 })

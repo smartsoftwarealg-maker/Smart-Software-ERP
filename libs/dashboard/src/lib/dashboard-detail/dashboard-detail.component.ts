@@ -17,7 +17,7 @@ import {
     getApplicationId, LoginService, MaterialModule
 } from '@ss/common/api-common';
 import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
-import { CommonModule } from '@angular/common';
+
 
 
 import { DatePickerComponent } from '@ss/common/ui-datepicker';
@@ -34,14 +34,12 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     styleUrls: ['./dashboard-detail.component.scss'],
     standalone: true,
     imports: [
-        CommonModule,
-        MaterialModule,
-        TranslateDirective,
-        TranslatePipe,
-        ReactiveFormsModule,
-
-        UiAutoCompleteComponent
-    ],
+    MaterialModule,
+    TranslateDirective,
+    TranslatePipe,
+    ReactiveFormsModule,
+    UiAutoCompleteComponent
+],
 })
 export class DashboardDetailComponent extends BaseEntityDetailComponent<Dashboard> implements OnInit {
     private centerSrv = inject(CenterService);

@@ -1,7 +1,7 @@
 import { Component, inject, Input } from '@angular/core';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { DOCUMENT_ARCHIVES } from '@ss/common/app-archive';
-import { CommonModule } from '@angular/common';
+
 import { MaterialModule } from '@ss/common/api-common';
 
 
@@ -28,12 +28,11 @@ interface GroupEntry {
     styleUrls: ['./doc-info.component.scss'],
     standalone: true,
     imports: [
-        CommonModule,
-        MaterialModule,
-        TranslateDirective,
-        RouterModule,
-        ReactiveFormsModule
-    ],
+    MaterialModule,
+    TranslateDirective,
+    RouterModule,
+    ReactiveFormsModule
+],
 })
 
 export class DocInfoComponent {

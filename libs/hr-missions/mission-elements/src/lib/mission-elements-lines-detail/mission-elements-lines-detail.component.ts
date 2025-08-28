@@ -1,5 +1,5 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { MaterialModule } from '@ss/common/api-common';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 import { BaseChildEntityDetailComponent } from '@ss/common/ui-base-entity';
@@ -16,12 +16,11 @@ import { CategoryService } from '@ss/common/api-lookup';
 @Component({
     selector: 'ss-mission-elements-lines-detail',
     imports: [
-        CommonModule,
-        MaterialModule,
-        TranslateDirective,
-        TranslatePipe,
-        UiAutoCompleteComponent,
-    ],
+    MaterialModule,
+    TranslateDirective,
+    TranslatePipe,
+    UiAutoCompleteComponent
+],
     templateUrl: './mission-elements-lines-detail.component.html',
     styleUrl: './mission-elements-lines-detail.component.scss',
     standalone: true,

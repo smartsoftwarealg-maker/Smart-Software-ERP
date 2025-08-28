@@ -9,7 +9,7 @@ import {AttributesService} from '../attributes.service';
 import {ChildAttributesService} from '../child-attributes.service';
 import {AttributeLookupService} from '../attribute-lookup.service';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import { DatePipe, NgIf, NgFor, NgSwitch, NgSwitchCase } from '@angular/common';
+import { DatePipe } from '@angular/common';
 import { LanguageService, MaterialModule } from '@ss/common/api-common';
 import { MatMiniFabButton } from '@angular/material/button';
 import { MatTooltip } from '@angular/material/tooltip';
@@ -28,7 +28,7 @@ import { TranslatePipe } from '@ss/common/ui-lang';
     templateUrl: './child-attributes.component.html',
     styleUrls: ['./child-attributes.component.scss'],
     standalone: true,
-    imports: [NgIf, MaterialModule, MatMiniFabButton, MatTooltip, MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, TranslateDirective, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, MatFormField, MatLabel, MatSelect, FormsModule, ReactiveFormsModule, NgFor, MatOption, NgSwitch, NgSwitchCase, MatInput, UiAutoCompleteComponent, DatePickerComponent, TranslatePipe]
+    imports: [MaterialModule, MatMiniFabButton, MatTooltip, MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, TranslateDirective, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, MatFormField, MatLabel, MatSelect, FormsModule, ReactiveFormsModule, MatOption, MatInput, UiAutoCompleteComponent, DatePickerComponent, TranslatePipe]
 })
 export class ChildAttributesComponent implements OnInit, OnDestroy {
     private attribSrv  = inject(AttributesService);

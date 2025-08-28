@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { MaterialModule } from '@ss/common/api-common';
 import { DatePickerComponent } from '@ss/common/ui-datepicker';
 import { RouterModule } from '@angular/router';
@@ -18,14 +18,13 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     selector: 'ss-vehicle-mission-detail',
     standalone: true,
     imports: [
-        CommonModule,
-        MaterialModule,
-        TranslateDirective,
-        DatePickerComponent,
-        RouterModule,
-        DatePickerComponent,
-        UiAutoCompleteComponent
-    ],
+    MaterialModule,
+    TranslateDirective,
+    DatePickerComponent,
+    RouterModule,
+    DatePickerComponent,
+    UiAutoCompleteComponent
+],
     templateUrl: './vehicle-mission-detail.component.html',
     styleUrls: ['./vehicle-mission-detail.component.css']
 })

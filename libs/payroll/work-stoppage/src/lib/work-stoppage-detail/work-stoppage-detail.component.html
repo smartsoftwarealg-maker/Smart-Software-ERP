@@ -1,79 +1,73 @@
 <mat-card>
-    <mat-card-content>
-        <form *ngIf="form !== null" novalidate [formGroup]="form">
-            <mat-form-field class="default-50 sm-100">
-                <mat-label translate>PAYROLL_EMPLOYEE</mat-label>
-                <ss-auto-complete matInput
-                                  [model]="employeeLookup"
-                                  formControlName="employee"
-                                  [required]="true"
-                                  autofocus>
-                </ss-auto-complete>
-            </mat-form-field>
+  <mat-card-content>
+    @if (form !== null) {
+      <form novalidate [formGroup]="form">
+        <mat-form-field class="default-50 sm-100">
+          <mat-label translate>PAYROLL_EMPLOYEE</mat-label>
+          <ss-auto-complete matInput
+            [model]="employeeLookup"
+            formControlName="employee"
+            [required]="true"
+            autofocus>
+          </ss-auto-complete>
+        </mat-form-field>
+        <mat-form-field class="default-50 sm-100">
+          <mat-label translate>COMMON_DATE</mat-label>
+          <ss-date-picker formControlName="date" required></ss-date-picker>
+          @if (form.controls['date'].invalid) {
+            <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+          }
+        </mat-form-field>
+        <mat-form-field class="default-50 sm-100">
+          <mat-label translate>PAYROLL_DURATION</mat-label>
+          <input matInput formControlName="duration" type="number" required>
+          @if (form.controls['duration'].invalid) {
+            <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+          }
+        </mat-form-field>
+        <mat-form-field class="default-50 sm-100">
+          <mat-label translate>PAYROLL_PICK_DATE</mat-label>
+          <ss-date-picker formControlName="pickDate"></ss-date-picker>
+        </mat-form-field>
+        <mat-form-field class="default-50 sm-100">
+          <mat-label translate>PAYROLL_DATE_BACK</mat-label>
+          <ss-date-picker formControlName="dateBack" required></ss-date-picker>
+        </mat-form-field>
+        <mat-form-field class="default-50 sm-100">
+          <mat-label translate>COMMON_MOTIVE</mat-label>
+          <ss-auto-complete matInput
+            [model]="motiveLookup"
+            formControlName="motive">
+          </ss-auto-complete>
+        </mat-form-field>
+        <mat-form-field class="default-50 sm-100">
+          <mat-label translate>PAYROLL_SALARY</mat-label>
+          <input matInput formControlName="duration" type="number">
+        </mat-form-field>
+        <mat-form-field class="default-50 sm-100">
+          <mat-label translate>PAYROLL_CERT_NUMBER</mat-label>
+          <input matInput formControlName="certificationNumber" type="text">
+        </mat-form-field>
+        <mat-form-field class="default-50 sm-100">
+          <mat-label translate>PAYROLL_CERT_REFERENCE</mat-label>
+          <input matInput formControlName="certificationRef" type="text">
+        </mat-form-field>
+        <mat-form-field class="default-50 sm-100">
+          <mat-label translate>PAYROLL_PHYSICIAN</mat-label>
+          <ss-auto-complete matInput
+            [model]="physicianLookup"
+            formControlName="physician">
+          </ss-auto-complete>
+        </mat-form-field>
+        <mat-form-field class="default-50 sm-100">
+          <mat-label translate>PAYROLL_PHYSICIAN_SPECIALTY</mat-label>
+          <ss-auto-complete matInput
+            [model]="specialtyLookup"
+            formControlName="specialty">
+          </ss-auto-complete>
+        </mat-form-field>
+      </form>
+    }
 
-            <mat-form-field class="default-50 sm-100">
-                <mat-label translate>COMMON_DATE</mat-label>
-                <ss-date-picker formControlName="date" required></ss-date-picker>
-                <mat-error *ngIf="form.controls['date'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
-            </mat-form-field>
-
-            <mat-form-field class="default-50 sm-100">
-                <mat-label translate>PAYROLL_DURATION</mat-label>
-                <input matInput formControlName="duration" type="number" required>
-                <mat-error *ngIf="form.controls['duration'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
-            </mat-form-field>
-
-            <mat-form-field class="default-50 sm-100">
-                <mat-label translate>PAYROLL_PICK_DATE</mat-label>
-                <ss-date-picker formControlName="pickDate"></ss-date-picker>
-            </mat-form-field>
-
-            <mat-form-field class="default-50 sm-100">
-                <mat-label translate>PAYROLL_DATE_BACK</mat-label>
-                <ss-date-picker formControlName="dateBack" required></ss-date-picker>
-            </mat-form-field>
-
-            <mat-form-field class="default-50 sm-100">
-                <mat-label translate>COMMON_MOTIVE</mat-label>
-                <ss-auto-complete matInput
-                                  [model]="motiveLookup"
-                                  formControlName="motive">
-                </ss-auto-complete>
-            </mat-form-field>
-
-            <mat-form-field class="default-50 sm-100">
-                <mat-label translate>PAYROLL_SALARY</mat-label>
-                <input matInput formControlName="duration" type="number">
-            </mat-form-field>
-
-            <mat-form-field class="default-50 sm-100">
-                <mat-label translate>PAYROLL_CERT_NUMBER</mat-label>
-                <input matInput formControlName="certificationNumber" type="text">
-            </mat-form-field>
-
-            <mat-form-field class="default-50 sm-100">
-                <mat-label translate>PAYROLL_CERT_REFERENCE</mat-label>
-                <input matInput formControlName="certificationRef" type="text">
-            </mat-form-field>
-
-            <mat-form-field class="default-50 sm-100">
-                <mat-label translate>PAYROLL_PHYSICIAN</mat-label>
-                <ss-auto-complete matInput
-                                  [model]="physicianLookup"
-                                  formControlName="physician">
-                </ss-auto-complete>
-            </mat-form-field>
-
-            <mat-form-field class="default-50 sm-100">
-                <mat-label translate>PAYROLL_PHYSICIAN_SPECIALTY</mat-label>
-                <ss-auto-complete matInput
-                                  [model]="specialtyLookup"
-                                  formControlName="specialty">
-                </ss-auto-complete>
-            </mat-form-field>
-
-
-        </form>
-
-    </mat-card-content>
+  </mat-card-content>
 </mat-card>

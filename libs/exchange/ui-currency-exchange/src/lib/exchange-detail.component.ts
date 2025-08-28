@@ -11,7 +11,7 @@ import {Agent, AgentService} from '@ss/logistics/api-agent';
 import {LoginService} from '@ss/common/api-common';
 import {CurrencyExchangeService, Exchange} from '@ss/exchange/api-currency-exchange';
 import { MatCard, MatCardContent } from "@angular/material/card";
-import { NgIf } from "@angular/common";
+
 import { MatFormField, MatLabel, MatError } from "@angular/material/form-field";
 import { TranslateDirective } from "../../../../common/ui-lang/src/lib/translate.directive";
 import { DatePickerComponent } from "../../../../common/ui-datepicker/src/lib/date-picker.component";
@@ -23,7 +23,7 @@ import { MatInput } from "@angular/material/input";
     styleUrls: ['./exchange-detail.component.scss'],
     templateUrl: './exchange-detail.component.html',
     standalone: true,
-    imports: [MaterialModule, MatCard, MatCardContent, NgIf, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, DatePickerComponent, UiAutoCompleteComponent, MatInput, MatError]
+    imports: [MaterialModule, MatCard, MatCardContent, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, DatePickerComponent, UiAutoCompleteComponent, MatInput, MatError]
 })
 export class ExchangeDetailComponent extends BaseEntityDetailComponent<Exchange> implements OnInit {
     private agentService =  inject(AgentService);

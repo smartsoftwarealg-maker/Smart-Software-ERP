@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { MaterialModule } from '@ss/common/api-common';
 import { TranslateDirective } from '@ss/common/ui-lang';
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
@@ -18,7 +18,7 @@ import { MissionsElementPricingService } from '../mission-elementPricing.service
 
 @Component({
     selector: 'ss-mission-elements-list-detail',
-    imports: [CommonModule, MaterialModule, TranslateDirective, RouterOutlet],
+    imports: [MaterialModule, TranslateDirective, RouterOutlet],
     templateUrl: './mission-elements-detail.component.html',
     styleUrl: './mission-elements-detail.component.scss',
     standalone: true,
