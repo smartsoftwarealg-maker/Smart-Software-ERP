@@ -6,7 +6,7 @@ import { ImageUploaderUtil, MaterialModule, PaginationModel } from '@ss/common/a
 import {AppArchiveService} from '../app-archive.service';
 import {AppArchive} from '../app-archive-api';
 import { tap } from "rxjs";
-import { CommonModule } from '@angular/common';
+
 
 
 import { ReactiveFormsModule } from '@angular/forms';
@@ -20,14 +20,13 @@ import { ActivePersonnelService } from '@ss/payroll/ui-employee';
     styleUrls: ['./app-archive-list.component.scss'],
     standalone: true,
     imports: [
-        CommonModule,
-        RouterModule,
-        MaterialModule,
-        TranslateDirective,
-        ReactiveFormsModule,
-        TranslateDirective,
-        TranslatePipe
-    ]
+    RouterModule,
+    MaterialModule,
+    TranslateDirective,
+    ReactiveFormsModule,
+    TranslateDirective,
+    TranslatePipe
+]
 })
 export class AppArchiveListComponent implements OnInit {
     private _id = 0;

@@ -5,7 +5,7 @@ import {FormControl} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 import {AvailableArticle} from '@ss/master-data/api-article';
 import { HeaderPageComponent } from '../header-page/header-page.component';
-import { NgFor, DecimalPipe } from '@angular/common';
+import { DecimalPipe } from '@angular/common';
 import { MatCard } from '@angular/material/card';
 import { ImageInputComponent } from '@ss/common/ui-image-input';
 import { MatIconButton, MatButton } from '@angular/material/button';
@@ -18,16 +18,15 @@ import { TranslatePipe } from '@ss/common/ui-lang';
     styleUrls: ['./shopping-cart.component.scss', '../main-page/main-page.component.scss'],
     standalone: true,
     imports: [
-        HeaderPageComponent,
-        NgFor,
-        MatCard,
-        ImageInputComponent,
-        MatIconButton,
-        TranslateDirective,
-        MatButton,
-        DecimalPipe,
-        TranslatePipe,
-    ],
+    HeaderPageComponent,
+    MatCard,
+    ImageInputComponent,
+    MatIconButton,
+    TranslateDirective,
+    MatButton,
+    DecimalPipe,
+    TranslatePipe
+],
 })
 export class ShoppingCartComponent implements OnInit {
     private router     = inject(Router);

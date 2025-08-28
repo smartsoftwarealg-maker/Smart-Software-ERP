@@ -1,16 +1,18 @@
 <mat-card class="list-div">
-    <mat-list role="list">
-        <mat-list-item *ngFor="let m of userMessages$ | async"
-                       (click)="selectId(m.messageId)"
-                       [class.selected]="m.messageId === selectedId"> {{ m.messageDescription }}</mat-list-item>
-    </mat-list>
+  <mat-list role="list">
+    @for (m of userMessages$ | async; track m) {
+      <mat-list-item
+        (click)="selectId(m.messageId)"
+      [class.selected]="m.messageId === selectedId"> {{ m.messageDescription }}</mat-list-item>
+    }
+  </mat-list>
 </mat-card>
 @if (responsible) {
-    <div class="downgrade">
-        <mat-checkbox [formControl]="canceled" translate>COMMON_DOWNGRADE</mat-checkbox>
-    </div>
+  <div class="downgrade">
+    <mat-checkbox [formControl]="canceled" translate>COMMON_DOWNGRADE</mat-checkbox>
+  </div>
 }
 <div class="ctrl-div">
-    <button mat-raised-button color="primary" (click)="send()" translate [disabled]="!selectedId">COMMON_SEND</button>
-    <button mat-raised-button (click)="cancel()" translate>COMMON_CANCEL</button>
+  <button mat-raised-button color="primary" (click)="send()" translate [disabled]="!selectedId">COMMON_SEND</button>
+  <button mat-raised-button (click)="cancel()" translate>COMMON_CANCEL</button>
 </div>

@@ -35,7 +35,7 @@ import { DeviceDetectorService } from 'ngx-device-detector';
 import { DefaultReportService } from '@ss/common/ui-default-report-component';
 import { Directory, Filesystem } from '@capacitor/filesystem';
 import { FileOpener } from '@capacitor-community/file-opener';
-import { CommonModule } from '@angular/common';
+
 
 
 import { DatePickerComponent } from '@ss/common/ui-datepicker';
@@ -50,13 +50,12 @@ import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
     templateUrl: './report-view.component.html',
     standalone: true,
     imports: [
-        CommonModule,
-        MaterialModule,
-        TranslateDirective,
-        RouterModule,
-        DatePickerComponent,
-        UiAutoCompleteComponent
-    ],
+    MaterialModule,
+    TranslateDirective,
+    RouterModule,
+    DatePickerComponent,
+    UiAutoCompleteComponent
+],
 })
 export class ReportViewComponent extends BaseEntityListComponent<ReportParam> implements OnInit, OnDestroy {
     private deviceService = inject( DeviceDetectorService);

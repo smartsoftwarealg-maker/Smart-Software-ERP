@@ -1,28 +1,33 @@
 <div class="conf-dlg-title b-warn" translate>
-    {{title}}
+  {{title}}
 </div>
 <mat-dialog-content style="display: block">
 
-    <div *ngIf="!loading" style="width: 100%">
-        <form *ngIf="form !== null" novalidate [formGroup]="form">
-
-            <mat-form-field floatLabel="always" class="default-100">
-                <mat-label translate>{{title}}</mat-label>
-                <mat-select formControlName="lookup" required>
-                    <mat-option *ngFor="let p of lookups; let i = index" [value]="p.id">
-                        {{p.description}}
-                    </mat-option>
-                </mat-select>
-            </mat-form-field>
+  @if (!loading) {
+    <div style="width: 100%">
+      @if (form !== null) {
+        <form novalidate [formGroup]="form">
+          <mat-form-field floatLabel="always" class="default-100">
+            <mat-label translate>{{title}}</mat-label>
+            <mat-select formControlName="lookup" required>
+              @for (p of lookups; track p; let i = $index) {
+                <mat-option [value]="p.id">
+                  {{p.description}}
+                </mat-option>
+              }
+            </mat-select>
+          </mat-form-field>
         </form>
+      }
     </div>
+  }
 
 </mat-dialog-content>
 <mat-dialog-actions style="display: block">
-    <button type="button" class="margin-end-8 float-end" mat-mini-fab (click)="save()" color="primary" translate>
-        <i class="fas fa-save"></i>
-    </button>
-    <button type="button" class="margin-end-8 float-end" mat-mini-fab (click)="close(false)" color="warn" translate>
-        <i class="fas fa-times"></i>
-    </button>
+  <button type="button" class="margin-end-8 float-end" mat-mini-fab (click)="save()" color="primary" translate>
+    <i class="fas fa-save"></i>
+  </button>
+  <button type="button" class="margin-end-8 float-end" mat-mini-fab (click)="close(false)" color="warn" translate>
+    <i class="fas fa-times"></i>
+  </button>
 </mat-dialog-actions>

@@ -2,7 +2,7 @@ import {Component, inject, OnDestroy, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {CartService} from '../cart.service';
 import { HeaderPageComponent } from '../header-page/header-page.component';
-import { NgIf, NgFor, DecimalPipe } from '@angular/common';
+import { DecimalPipe } from '@angular/common';
 import { TranslateDirective } from '@ss/common/ui-lang';
 import { MatButton } from '@angular/material/button';
 import { MatCard } from '@angular/material/card';
@@ -20,16 +20,14 @@ import { TranslatePipe } from '@ss/common/ui-lang';
     ],
     standalone: true,
     imports: [
-        HeaderPageComponent,
-        NgIf,
-        TranslateDirective,
-        MatButton,
-        NgFor,
-        MatCard,
-        ImageInputComponent,
-        DecimalPipe,
-        TranslatePipe,
-    ],
+    HeaderPageComponent,
+    TranslateDirective,
+    MatButton,
+    MatCard,
+    ImageInputComponent,
+    DecimalPipe,
+    TranslatePipe
+],
 })
 export class SalesAcknowledgementComponent implements OnInit, OnDestroy {
     private router     = inject(Router);

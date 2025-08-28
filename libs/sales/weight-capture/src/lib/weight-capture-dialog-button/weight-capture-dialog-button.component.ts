@@ -1,5 +1,5 @@
 import { Component, inject, Input, OnInit, signal } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialog } from '@angular/material/dialog';
 import { TruckStatus } from '../weight-capture-api';
@@ -12,7 +12,7 @@ import { BalanceService } from '../balance.service';
 @Component({
     selector: 'ss-weight-capture-dialog-button-dialog',
     standalone: true,
-    imports: [CommonModule, MatButtonModule],
+    imports: [MatButtonModule],
     templateUrl: './weight-capture-dialog-button.component.html',
     styleUrl: './weight-capture-dialog-button.component.scss',
 })

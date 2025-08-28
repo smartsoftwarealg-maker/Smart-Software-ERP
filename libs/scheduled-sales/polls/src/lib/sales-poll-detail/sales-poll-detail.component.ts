@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, RouterOutlet } from '@angular/router';
@@ -43,21 +43,20 @@ import { SalesPoll } from '@ss/scheduled-sales/api-scheduled-sales';
     selector: 'sch-sales-polls-detail',
     standalone: true,
     imports: [
-        CommonModule,
-        MaterialModule,
-        MatButtonModule,
-        MatCheckboxModule,
-        MatExpansionModule,
-        MatFormFieldModule,
-        MatInputModule,
-        MatOptionModule,
-        MatRadioModule,
-        MatSelectModule,
-        MaterialModule,
-        ReactiveFormsModule,
-        TranslateDirective,
-        DatePickerComponent,
-    ],
+    MaterialModule,
+    MatButtonModule,
+    MatCheckboxModule,
+    MatExpansionModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatOptionModule,
+    MatRadioModule,
+    MatSelectModule,
+    MaterialModule,
+    ReactiveFormsModule,
+    TranslateDirective,
+    DatePickerComponent
+],
     templateUrl: './sales-poll-detail.component.html',
     styleUrl: './sales-poll-detail.component.css',
 })

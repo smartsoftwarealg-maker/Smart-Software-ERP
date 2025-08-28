@@ -2,7 +2,7 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {
     BaseTransactionLinesDetailComponent, DOC_PRICE_INQUIRY, DOC_PURCHASE_ORDER
 } from '@ss/logistics/api-transaction';
-import { NgIf } from '@angular/common';
+
 import { MatMiniFabButton } from '@angular/material/button';
 import { MatCard, MatCardContent } from '@angular/material/card';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -19,20 +19,19 @@ import { PriceRequestLinesService } from '../services/price-request-lines.servic
     templateUrl: './price-request-lines-detail.component.html',
     standalone: true,
     imports: [
-        NgIf,
-        MatMiniFabButton,
-        MatCard,
-        MatCardContent,
-        FormsModule,
-        ReactiveFormsModule,
-        MatFormField,
-        MatLabel,
-        TranslateDirective,
-        MatInput,
-        UiAutoCompleteComponent,
-        MatError,
-        CdkTextareaAutosize,
-    ],
+    MatMiniFabButton,
+    MatCard,
+    MatCardContent,
+    FormsModule,
+    ReactiveFormsModule,
+    MatFormField,
+    MatLabel,
+    TranslateDirective,
+    MatInput,
+    UiAutoCompleteComponent,
+    MatError,
+    CdkTextareaAutosize
+],
 })
 export class PriceRequestLinesDetailComponent extends BaseTransactionLinesDetailComponent implements OnInit, OnDestroy  {
 

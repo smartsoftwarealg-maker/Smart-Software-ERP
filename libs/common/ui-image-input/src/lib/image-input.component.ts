@@ -2,7 +2,7 @@ import { AfterContentInit, Component, ElementRef, Input, OnDestroy, OnInit, Rend
 import { ImageModel } from './image-model';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { LanguageService, MaterialModule } from '@ss/common/api-common';
-import { CommonModule } from '@angular/common';
+
 import { TranslateDirective } from '@ss/common/ui-lang';
 
 
@@ -11,7 +11,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     templateUrl: 'image-input.component.html',
     styleUrls: ['image-input.component.scss'],
     standalone: true,
-    imports: [CommonModule, MaterialModule, TranslateDirective]
+    imports: [MaterialModule, TranslateDirective]
 })
 export class ImageInputComponent implements OnInit, OnDestroy, AfterContentInit {
 

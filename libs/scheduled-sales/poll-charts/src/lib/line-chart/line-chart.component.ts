@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, inject, Input, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { Chart, ChartConfiguration, ChartItem, registerables } from 'chart.js';
 import { LanguageService } from '@ss/common/api-common';
 import { AnswersHistoricCount } from '@ss/scheduleds-sales/poll-charts';
@@ -8,7 +8,7 @@ import { SATISFACTION, YES_NO, COLORS } from '../common';
 @Component({
     selector: 'ss-question-line-chart',
     standalone: true,
-    imports: [CommonModule],
+    imports: [],
     templateUrl: './line-chart.component.html',
     styleUrl: './line-chart.component.scss',
 })

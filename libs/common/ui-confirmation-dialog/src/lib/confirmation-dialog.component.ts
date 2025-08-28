@@ -1,7 +1,7 @@
 import {Component, Inject} from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef, MatDialogContent, MatDialogActions } from '@angular/material/dialog';
 import { TranslateDirective } from '@ss/common/ui-lang';
-import { NgIf } from '@angular/common';
+
 import { MatButton } from '@angular/material/button';
 
 @Component({
@@ -9,7 +9,7 @@ import { MatButton } from '@angular/material/button';
     templateUrl: './confirmation-dialog.component.html',
     styleUrls: ['./confirmation-dialog.component.scss'],
     standalone: true,
-    imports: [TranslateDirective, MatDialogContent, NgIf, MatDialogActions, MatButton]
+    imports: [TranslateDirective, MatDialogContent, MatDialogActions, MatButton]
 })
 export class ConfirmationDialogComponent {
 

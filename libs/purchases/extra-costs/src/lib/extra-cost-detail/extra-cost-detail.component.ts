@@ -10,7 +10,7 @@ import { ArticleAutoCompleteModel, ServiceArticleService } from '@ss/master-data
 import { AbstractEntityComponent } from '@ss/common/ui-base-entity';
 import { Agent, SupplierService } from '@ss/logistics/api-agent';
 import { DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
-import { NgIf, NgFor } from '@angular/common';
+
 import { MatMiniFabButton } from '@angular/material/button';
 import { MatCard } from '@angular/material/card';
 import { MatFormField, MatLabel, MatError } from '@angular/material/form-field';
@@ -28,23 +28,21 @@ import { TranslatePipe } from '@ss/common/ui-lang';
     styleUrls: ['./extra-cost-detail.component.scss'],
     standalone: true,
     imports: [
-        NgIf,
-        MatMiniFabButton,
-        MatCard,
-        FormsModule,
-        ReactiveFormsModule,
-        MatFormField,
-        MatLabel,
-        TranslateDirective,
-        UiAutoCompleteComponent,
-        MatError,
-        MatInput,
-        MatCheckbox,
-        MatSelect,
-        NgFor,
-        MatOption,
-        TranslatePipe,
-    ],
+    MatMiniFabButton,
+    MatCard,
+    FormsModule,
+    ReactiveFormsModule,
+    MatFormField,
+    MatLabel,
+    TranslateDirective,
+    UiAutoCompleteComponent,
+    MatError,
+    MatInput,
+    MatCheckbox,
+    MatSelect,
+    MatOption,
+    TranslatePipe
+],
 })
 export class ExtraCostDetailComponent extends AbstractEntityComponent<ExtraCost> implements OnInit {
     private supplierSrv = inject(SupplierService);

@@ -10,7 +10,7 @@ import { MaterialModule, PaginatorPersistenceService } from '@ss/common/api-comm
 import {UserListService} from '@ss/common/api-users';
 import {UserDocumentService} from '../user-document.service';
 import { UiAutoCompleteComponent, UserLookup } from '@ss/common/ui-auto-complete';
-import { CommonModule } from '@angular/common';
+
 
 
 
@@ -26,13 +26,12 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     styleUrls: ['./user-document-list.component.scss'],
     standalone: true,
     imports: [
-        CommonModule,
-        MaterialModule,
-        TranslateDirective,
-        OrgChartModule,
-        PaginationComponent,
-        UiAutoCompleteComponent
-    ]
+    MaterialModule,
+    TranslateDirective,
+    OrgChartModule,
+    PaginationComponent,
+    UiAutoCompleteComponent
+]
 })
 export class UserDocumentListComponent extends BaseEntityListComponent<UserDocument> {
     private usersSrv =  inject(UserListService);

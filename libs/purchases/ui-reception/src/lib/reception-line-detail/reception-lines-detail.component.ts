@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import {
     BaseTransactionLinesDetailComponent, DOC_RECEPTION, TransactionLine
 } from '@ss/logistics/api-transaction';
-import { CommonModule } from '@angular/common';
+
 import { MaterialModule } from '@ss/common/api-common';
 import { ReactiveFormsModule, UntypedFormGroup } from '@angular/forms';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
@@ -15,13 +15,12 @@ import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
     templateUrl: './reception-lines-detail.component.html',
     standalone: true,
     imports: [
-        CommonModule,
-        MaterialModule,
-        TranslateDirective,
-        ReactiveFormsModule,
-        UiAutoCompleteComponent,
-        TranslatePipe
-    ]
+    MaterialModule,
+    TranslateDirective,
+    ReactiveFormsModule,
+    UiAutoCompleteComponent,
+    TranslatePipe
+]
 })
 export class ReceptionLinesDetailComponent extends BaseTransactionLinesDetailComponent implements OnInit, OnDestroy {
     constructor(public receptionLinesSrv: ReceptionLinesService) {

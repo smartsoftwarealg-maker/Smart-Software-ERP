@@ -19,7 +19,7 @@ import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import { MatFormField, MatLabel } from '@angular/material/form-field';
 import { TranslateDirective } from '@ss/common/ui-lang';
 import { MatSelect } from '@angular/material/select';
-import { NgFor, NgIf, NgClass } from '@angular/common';
+import { NgClass } from '@angular/common';
 import { MatOption } from '@angular/material/core';
 import { MatList, MatListItem } from '@angular/material/list';
 import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
@@ -35,36 +35,34 @@ import { MatCheckbox } from '@angular/material/checkbox';
     styleUrls: ['./access-rights-list.component.scss'],
     standalone: true,
     imports: [
-        MaterialModule,
-        MatCheckbox,
-        MatFormField,
-        MatLabel,
-        TranslateDirective,
-        MatSelect,
-        NgFor,
-        MatOption,
-        NgIf,
-        MatList,
-        MatListItem,
-        NgClass,
-        FormsModule,
-        ReactiveFormsModule,
-        UiAutoCompleteComponent,
-        MatSlideToggle,
-        MatTable,
-        MatColumnDef,
-        MatHeaderCellDef,
-        MatHeaderCell,
-        MatCellDef,
-        MatCell,
-        MatHeaderRowDef,
-        MatHeaderRow,
-        MatRowDef,
-        MatRow,
-        PaginationComponent,
-        TranslatePipe,
-        MatCheckbox
-    ]
+    MaterialModule,
+    MatCheckbox,
+    MatFormField,
+    MatLabel,
+    TranslateDirective,
+    MatSelect,
+    MatOption,
+    MatList,
+    MatListItem,
+    NgClass,
+    FormsModule,
+    ReactiveFormsModule,
+    UiAutoCompleteComponent,
+    MatSlideToggle,
+    MatTable,
+    MatColumnDef,
+    MatHeaderCellDef,
+    MatHeaderCell,
+    MatCellDef,
+    MatCell,
+    MatHeaderRowDef,
+    MatHeaderRow,
+    MatRowDef,
+    MatRow,
+    PaginationComponent,
+    TranslatePipe,
+    MatCheckbox
+]
 })
 export class AccessRightsListComponent extends BaseEntityListComponent<AccessRight> {
     private roleSrv = inject(RoleService);

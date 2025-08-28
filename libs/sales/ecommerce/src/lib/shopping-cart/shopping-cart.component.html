@@ -1,51 +1,52 @@
 <ss-header-page [showSearch]="false" (showCart)="goShopping()"></ss-header-page>
 
 <div class="cart_main_div">
-    <div class="item_div">
-        <mat-card *ngFor="let a of cartSrv.cart">
-            <div class="img-div">
-                <ss-image-input width="100%" height="100%"
-                                [imageModel]="a.imageModel">
-                </ss-image-input>
-            </div>
-            <div class="description"> {{ a.articleDescription }} </div>
-            <div class="info_div">
-                <div class="price_qty">
-                    <div class="btn_div">
-                        <button mat-icon-button (click)="removeFromCart(a)" class="b-warn">
-                            <i class="fa-regular fa-cart-minus"></i>
-                        </button>
-
-                        <span>
-                            <span> {{ 'COMMON_QTY' | translate }}: </span>
-                            <span class="number">{{ a.qty }} </span>
-                        </span>
-                        <button mat-icon-button (click)="addToCart(a)" class="b-primary">
-                            <i class="fa-regular fa-cart-plus"></i>
-                        </button>
-                    </div>
-                    <div>
-                        <span> {{ 'LOGISTICS_PRICE' | translate }}: </span> <span
-                        class="number">{{ a.price | number: '1.2-2'}} </span>
-                    </div>
-                </div>
-            </div>
-        </mat-card>
-    </div>
-    <mat-card>
-        <fieldset>
-            <legend translate>COMMON_TOTAL</legend>
-            <div>
-                <span translate>SALES_COUNT</span>:
-                <span class="bolder">{{ cartSrv.cartCount }}</span>
+  <div class="item_div">
+    @for (a of cartSrv.cart; track a) {
+      <mat-card>
+        <div class="img-div">
+          <ss-image-input width="100%" height="100%"
+            [imageModel]="a.imageModel">
+          </ss-image-input>
+        </div>
+        <div class="description"> {{ a.articleDescription }} </div>
+        <div class="info_div">
+          <div class="price_qty">
+            <div class="btn_div">
+              <button mat-icon-button (click)="removeFromCart(a)" class="b-warn">
+                <i class="fa-regular fa-cart-minus"></i>
+              </button>
+              <span>
+                <span> {{ 'COMMON_QTY' | translate }}: </span>
+                <span class="number">{{ a.qty }} </span>
+              </span>
+              <button mat-icon-button (click)="addToCart(a)" class="b-primary">
+                <i class="fa-regular fa-cart-plus"></i>
+              </button>
             </div>
             <div>
-                <span translate>COMMON_TOTAL</span>:
-                <span class="bolder">{{ cartSrv.cartAmount | number: '1.2-2'}}</span>
-                <span translate>COMMON_AD</span>
-            </div>
-
-            <button mat-raised-button type="button" color="accent" translate (click)="confirm()">COMMON_CONFIRM</button>
-        </fieldset>
+              <span> {{ 'LOGISTICS_PRICE' | translate }}: </span> <span
+            class="number">{{ a.price | number: '1.2-2'}} </span>
+          </div>
+        </div>
+      </div>
     </mat-card>
+  }
+</div>
+<mat-card>
+  <fieldset>
+    <legend translate>COMMON_TOTAL</legend>
+    <div>
+      <span translate>SALES_COUNT</span>:
+      <span class="bolder">{{ cartSrv.cartCount }}</span>
+    </div>
+    <div>
+      <span translate>COMMON_TOTAL</span>:
+      <span class="bolder">{{ cartSrv.cartAmount | number: '1.2-2'}}</span>
+      <span translate>COMMON_AD</span>
+    </div>
+
+    <button mat-raised-button type="button" color="accent" translate (click)="confirm()">COMMON_CONFIRM</button>
+  </fieldset>
+</mat-card>
 </div>

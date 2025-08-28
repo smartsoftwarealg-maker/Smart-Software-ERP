@@ -31,7 +31,7 @@ import {
     Article,
     SSArticleService,
 } from '@ss/scheduled-sales/api-scheduled-sales';
-import { CommonModule } from '@angular/common';
+
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 import { ColorPickerDirective } from 'ngx-color-picker';
 
@@ -41,15 +41,14 @@ import { ColorPickerDirective } from 'ngx-color-picker';
     styleUrls: ['./article-detail.component.scss'],
     standalone: true,
     imports: [
-        CommonModule,
-        MaterialModule,
-        TranslateDirective,
-        TranslatePipe,
-        ReactiveFormsModule,
-        RouterModule,
-        UiAutoCompleteComponent,
-        ColorPickerDirective,
-    ],
+    MaterialModule,
+    TranslateDirective,
+    TranslatePipe,
+    ReactiveFormsModule,
+    RouterModule,
+    UiAutoCompleteComponent,
+    ColorPickerDirective
+],
 })
 export class ArticleDetailComponent
     extends BaseEntityDetailComponent<Article>

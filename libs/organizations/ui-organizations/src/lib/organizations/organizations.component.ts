@@ -14,7 +14,7 @@ import { DivisionService, DepartmentService, ServiceService, OfficeService, Divi
 import { switchMap, tap } from 'rxjs/operators';
 import { Level } from './common';
 import { Employee } from '@ss/employee-services/employee-services';
-import { NgIf } from '@angular/common';
+
 import { MatIconButton } from '@angular/material/button';
 import { ImageInputComponent } from '@ss/common/ui-image-input';
 
@@ -33,7 +33,7 @@ interface OrgTreeNode extends TreeNode {
     styleUrls: ['./organizations.component.scss'],
     templateUrl: 'organizations.component.html',
     standalone: true,
-    imports: [NgIf, OrgChartModule, MatIconButton, ImageInputComponent]
+    imports: [OrgChartModule, MatIconButton, ImageInputComponent]
 })
 export class OrganizationsComponent implements OnInit {
 

@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute } from '@angular/router';
@@ -33,21 +33,20 @@ import { Agent, AgentService } from '@ss/logistics/api-agent';
     selector: 'ss-customer-suggestions-detail',
     standalone: true,
     imports: [
-        CommonModule,
-        MaterialModule,
-        MatButtonModule,
-        MatCheckboxModule,
-        MatExpansionModule,
-        MatFormFieldModule,
-        MatInputModule,
-        MatOptionModule,
-        MatRadioModule,
-        MatSelectModule,
-        MaterialModule,
-        ReactiveFormsModule,
-        UiAutoCompleteComponent,
-        TranslateDirective,
-    ],
+    MaterialModule,
+    MatButtonModule,
+    MatCheckboxModule,
+    MatExpansionModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatOptionModule,
+    MatRadioModule,
+    MatSelectModule,
+    MaterialModule,
+    ReactiveFormsModule,
+    UiAutoCompleteComponent,
+    TranslateDirective
+],
     templateUrl: './customer-suggestions-detail.component.html',
     styleUrl: './customer-suggestions-detail.component.scss',
 })

@@ -1,29 +1,32 @@
-<mat-card *ngIf="review" class="container">
+@if (review) {
+  <mat-card class="container">
     <h3>{{ 'COMMON_DETAIL' | translate }}:</h3>
     <div class="line-div"><span class="label" translate>COMMON_PRODUCT</span>: {{ review?.description }}</div>
     <div class="line-div"><span class="label" translate>LOGISTICS_SUBTOTAL</span>: {{ review?.subtotal }}</div>
     <div class="line-div"><span class="label" translate>LOGISTICS_SHIPPING</span>: {{ review?.shipping }}</div>
     <div class="line-div"><span class="label" translate>LOGISTICS_VAT</span>: {{ review?.tax }}</div>
     <div class="line-div"><span class="label" translate>LOGISTICS_TOTAL</span>: {{ review?.total }}</div>
-
     <h3>{{ 'LOGISTICS_PAYER' | translate }}:</h3>
     <div class="line-div"><span class="label" translate>COMMON_FIRST_NAME</span>: {{ review?.firstName }}</div>
     <div class="line-div"><span class="label" translate>COMMON_LAST_NAME</span>: {{ review?.lastName }}</div>
-
-    <h3 *ngIf="review?.billingAddress">{{ 'LOGISTICS_SHIPPING' | translate }}:</h3>
-    <div class="line-div" *ngIf="review?.billingAddress"><span class="label"
-                                                               translate>COMMON_ADDRESS</span>: {{ review?.billingAddress }}
+    @if (review?.billingAddress) {
+      <h3>{{ 'LOGISTICS_SHIPPING' | translate }}:</h3>
+    }
+    @if (review?.billingAddress) {
+      <div class="line-div"><span class="label"
+      translate>COMMON_ADDRESS</span>: {{ review?.billingAddress }}
     </div>
-
-    <mat-card-actions>
-        <div class="button-div">
-            <button mat-raised-button (click)="payNow()" translate color="primary">
-                <i class="fa-brands fa-paypal"></i>
-                LOGISTICS_MAKE_PAYMENT
-            </button>
-        </div>
-    </mat-card-actions>
+  }
+  <mat-card-actions>
+    <div class="button-div">
+      <button mat-raised-button (click)="payNow()" translate color="primary">
+        <i class="fa-brands fa-paypal"></i>
+        LOGISTICS_MAKE_PAYMENT
+      </button>
+    </div>
+  </mat-card-actions>
 </mat-card>
+}
 
 <!--<mat-card *ngIf="payment">-->
 <!--    <h3>{{ 'COMMON_PAYMENT_SUMMARY' | translate }}:</h3>-->

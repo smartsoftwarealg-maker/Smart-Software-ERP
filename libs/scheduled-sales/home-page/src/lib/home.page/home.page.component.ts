@@ -1,5 +1,5 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import {
     MatCard,
     MatCardContent,
@@ -18,11 +18,7 @@ import { TranslatePipe } from '@ss/common/ui-lang';
 @Component({
     selector: 'ss-home.page',
     standalone: true,
-    imports: [CommonModule,
-        RouterOutlet,
-        RouterLink,
-        RouterLinkActive,
-        ScheduledSalesHeaderComponent, TranslatePipe],
+    imports: [RouterOutlet, RouterLink, RouterLinkActive, ScheduledSalesHeaderComponent, TranslatePipe],
     templateUrl: './home.page.component.html',
     styleUrl: './home.page.component.css',
 })

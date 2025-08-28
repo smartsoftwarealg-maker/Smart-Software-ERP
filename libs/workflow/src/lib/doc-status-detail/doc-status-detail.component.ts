@@ -7,7 +7,7 @@ import {LookupsService} from '@ss/common/api-lookup';
 import {DocStatusService} from '../doc-status.service';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {DocStatus} from '../workflow-api';
-import { CommonModule } from '@angular/common';
+
 import { MaterialModule } from '@ss/common/api-common';
 
 
@@ -24,14 +24,10 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     styleUrls: ['./doc-status-detail.component.scss'],
     standalone: true,
     imports: [
-        CommonModule,
-        MaterialModule,
-        TranslateDirective,
-       
-
-
-        OrgChartModule,
-    ],
+    MaterialModule,
+    TranslateDirective,
+    OrgChartModule
+],
 })
 export class DocStatusDetailComponent extends BaseEntityDetailComponent<DocStatus> {
     constructor(

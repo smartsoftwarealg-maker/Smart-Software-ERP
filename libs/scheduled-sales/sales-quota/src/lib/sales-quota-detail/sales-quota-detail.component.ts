@@ -9,7 +9,7 @@ import {DiscountService, LookupsService} from '@ss/common/api-lookup';
 import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import {Agent, CustomerService} from '@ss/logistics/api-agent';
 import { LoginService, MaterialModule } from "@ss/common/api-common";
-import { CommonModule } from "@angular/common";
+
 
 
 import { DatePickerComponent } from "@ss/common/ui-datepicker";
@@ -21,15 +21,12 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     styleUrls: ['./sales-quota-detail.component.scss'],
     standalone: true,
     imports: [
-        CommonModule,
-        MaterialModule,
-        TranslateDirective,
-
-        ReactiveFormsModule,
-        DatePickerComponent,
-        UiAutoCompleteComponent
-
-    ]
+    MaterialModule,
+    TranslateDirective,
+    ReactiveFormsModule,
+    DatePickerComponent,
+    UiAutoCompleteComponent
+]
 })
 export class SalesQuotaDetailComponent extends BaseEntityDetailComponent<Quota> {
     private customerSrv = inject(CustomerService);

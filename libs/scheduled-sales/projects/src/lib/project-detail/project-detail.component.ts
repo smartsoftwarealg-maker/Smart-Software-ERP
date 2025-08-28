@@ -11,7 +11,7 @@ import { LoginService, MaterialModule } from '@ss/common/api-common';
 import {Agent, CustomerService} from '@ss/logistics/api-agent';
 import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import {WorkMasterService, SectorService} from '@ss/common/api-lookup';
-import { CommonModule } from '@angular/common';
+
 import { DatePickerComponent } from '@ss/common/ui-datepicker';
 import { TranslateDirective } from '@ss/common/ui-lang';
 
@@ -21,13 +21,12 @@ import { TranslateDirective } from '@ss/common/ui-lang';
   styleUrls: ['./project-detail.component.scss'],
     standalone: true,
     imports: [
-        CommonModule,
-        MaterialModule,
-        TranslateDirective,
-        ReactiveFormsModule,
-        DatePickerComponent,
-        UiAutoCompleteComponent
-    ],
+    MaterialModule,
+    TranslateDirective,
+    ReactiveFormsModule,
+    DatePickerComponent,
+    UiAutoCompleteComponent
+],
 })
 export class ProjectDetailComponent extends BaseEntityDetailComponent<SSProject> {
     private customerSrv  = inject( CustomerService);

@@ -1,5 +1,5 @@
 import {Component, EventEmitter, inject, Input, OnDestroy, OnInit, Output} from '@angular/core';
-import { CommonModule, NgIf } from '@angular/common';
+
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {CartService} from '../cart.service';
 import {Subscription} from 'rxjs';
@@ -21,23 +21,22 @@ import { TranslatePipe } from '@ss/common/ui-lang';
     styleUrls: ['./header-page.component.scss'],
     standalone: true,
     imports: [
-        NgIf,
-        MatFormField,
-        MatLabel,
-        TranslateDirective,
-        MatInput,
-        FormsModule,
-        ReactiveFormsModule,
-        MatIconButton,
-        MatTooltip,
-        MatBadge,
-        MatMenuTrigger,
-        MatMenu,
-        MatMenuItem,
-        LanguageSelectComponent,
-        ThemeSelectComponent,
-        TranslatePipe,
-    ],
+    MatFormField,
+    MatLabel,
+    TranslateDirective,
+    MatInput,
+    FormsModule,
+    ReactiveFormsModule,
+    MatIconButton,
+    MatTooltip,
+    MatBadge,
+    MatMenuTrigger,
+    MatMenu,
+    MatMenuItem,
+    LanguageSelectComponent,
+    ThemeSelectComponent,
+    TranslatePipe
+],
 })
 export class HeaderPageComponent implements OnInit, OnDestroy {
     @Output() refresh   = new EventEmitter<string>();

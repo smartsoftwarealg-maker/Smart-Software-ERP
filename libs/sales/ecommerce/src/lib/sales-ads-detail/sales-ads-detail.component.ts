@@ -8,7 +8,7 @@ import { UntypedFormBuilder, UntypedFormGroup, Validators, FormsModule, Reactive
 import {SalesAdsService} from '../sales-ads.service';
 import {ImageUploaderUtil} from '@ss/common/api-common';
 import {concatMap, from} from 'rxjs';
-import { NgIf } from '@angular/common';
+
 import { MatFormField, MatLabel } from '@angular/material/form-field';
 import { TranslateDirective } from '@ss/common/ui-lang';
 import { MatInput } from '@angular/material/input';
@@ -20,15 +20,14 @@ import { MatMiniFabButton } from '@angular/material/button';
     styleUrls: ['./sales-ads-detail.component.scss'],
     standalone: true,
     imports: [
-        NgIf,
-        FormsModule,
-        ReactiveFormsModule,
-        MatFormField,
-        MatLabel,
-        TranslateDirective,
-        MatInput,
-        MatMiniFabButton,
-    ],
+    FormsModule,
+    ReactiveFormsModule,
+    MatFormField,
+    MatLabel,
+    TranslateDirective,
+    MatInput,
+    MatMiniFabButton
+],
 })
 export class SalesAdsDetailComponent extends BaseEntityDetailComponent<ADImage> {
     uploadUtil: ImageUploaderUtil = new ImageUploaderUtil();

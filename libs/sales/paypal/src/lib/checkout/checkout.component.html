@@ -1,49 +1,44 @@
 <h3 translate>LOGISTICS_CHECKOUT</h3>
-<form *ngIf="form !== null" novalidate [formGroup]="form" class="container">
+@if (form !== null) {
+  <form novalidate [formGroup]="form" class="container">
     <mat-form-field class="default-100">
-        <mat-label translate>COMMON_PRODUCT</mat-label>
-        <input matInput formControlName="productName" type="text">
+      <mat-label translate>COMMON_PRODUCT</mat-label>
+      <input matInput formControlName="productName" type="text">
     </mat-form-field>
-
     <mat-form-field class="default-50">
-        <mat-label translate>LOGISTICS_SUBTOTAL</mat-label>
-        <input matInput formControlName="subtotal" type="text">
+      <mat-label translate>LOGISTICS_SUBTOTAL</mat-label>
+      <input matInput formControlName="subtotal" type="text">
     </mat-form-field>
-
     <mat-form-field class="default-50">
-        <mat-label translate>LOGISTICS_VAT</mat-label>
-        <input matInput formControlName="tax" type="text">
+      <mat-label translate>LOGISTICS_VAT</mat-label>
+      <input matInput formControlName="tax" type="text">
     </mat-form-field>
-
     <mat-form-field class="default-50">
-        <mat-label translate>LOGISTICS_SHIPPING</mat-label>
-        <input matInput formControlName="shipping" type="text">
+      <mat-label translate>LOGISTICS_SHIPPING</mat-label>
+      <input matInput formControlName="shipping" type="text">
     </mat-form-field>
-
     <mat-form-field class="default-50">
-        <mat-label translate>LOGISTICS_TOTAL</mat-label>
-        <input matInput formControlName="total" type="text" required>
+      <mat-label translate>LOGISTICS_TOTAL</mat-label>
+      <input matInput formControlName="total" type="text" required>
     </mat-form-field>
-
     <div formGroupName = "customer">
-        <mat-form-field class="default-50">
-            <mat-label translate>COMMON_FIRST_NAME</mat-label>
-            <input matInput formControlName="firstName" type="text" required autofocus>
-        </mat-form-field>
-        <mat-form-field class="default-50">
-            <mat-label translate>COMMON_LAST_NAME</mat-label>
-            <input matInput formControlName="lastName" type="text" required>
-        </mat-form-field>
-
-        <mat-form-field class="default-100">
-            <mat-label translate>LOGISTICS_ADDRESS</mat-label>
-            <input matInput formControlName="address" type="text" required>
-        </mat-form-field>
-
+      <mat-form-field class="default-50">
+        <mat-label translate>COMMON_FIRST_NAME</mat-label>
+        <input matInput formControlName="firstName" type="text" required autofocus>
+      </mat-form-field>
+      <mat-form-field class="default-50">
+        <mat-label translate>COMMON_LAST_NAME</mat-label>
+        <input matInput formControlName="lastName" type="text" required>
+      </mat-form-field>
+      <mat-form-field class="default-100">
+        <mat-label translate>LOGISTICS_ADDRESS</mat-label>
+        <input matInput formControlName="address" type="text" required>
+      </mat-form-field>
     </div>
-</form>
+  </form>
+}
 
 <div mat-dialog-actions>
-    <button mat-raised-button (click)="onClose()" translate color="primary" [disabled]="!form || form.invalid">LOGISTICS_CHECKOUT</button>
-    <button mat-raised-button (click)="onCancel()" translate color="accent">COMMON_CANCEL</button>
+  <button mat-raised-button (click)="onClose()" translate color="primary" [disabled]="!form || form.invalid">LOGISTICS_CHECKOUT</button>
+  <button mat-raised-button (click)="onCancel()" translate color="accent">COMMON_CANCEL</button>
 </div>

@@ -1,123 +1,125 @@
 <mat-card>
-    <mat-card-content>
-        @if (form !== null) {
-            <form  [formGroup]="form">
+  <mat-card-content>
+    @if (form !== null) {
+      <form  [formGroup]="form">
 
-                <mat-form-field class="default-50 sm-100">
-                    <mat-label translate>LOGISTICS_CUSTOMER</mat-label>
-                    <ss-auto-complete matInput
-                                      [required]="true"
-                                      [model]="customerLookup"
-                                      formControlName="parentId">
-                    </ss-auto-complete>
-                    @if (form.controls['parentId'].hasError('required')) {
-                        <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
-                    }
-                    @if (form.controls['parentId'].hasError('validOption')) {
-                        <mat-error translate>COMMON_NO_MATCH</mat-error>
-                    }
-                </mat-form-field>
+        <mat-form-field class="default-50 sm-100">
+          <mat-label translate>LOGISTICS_CUSTOMER</mat-label>
+          <ss-auto-complete matInput
+            [required]="true"
+            [model]="customerLookup"
+            formControlName="parentId">
+          </ss-auto-complete>
+          @if (form.controls['parentId'].hasError('required')) {
+            <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+          }
+          @if (form.controls['parentId'].hasError('validOption')) {
+            <mat-error translate>COMMON_NO_MATCH</mat-error>
+          }
+        </mat-form-field>
 
 
-                <mat-form-field class="default-100">
-                    <mat-label translate>ADMINISTRATION_DESCRIPTION</mat-label>
-                    <input matInput formControlName="description" type="text" required autofocus>
-                    <mat-error *ngIf="form.controls['description'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
-                </mat-form-field>
+        <mat-form-field class="default-100">
+          <mat-label translate>ADMINISTRATION_DESCRIPTION</mat-label>
+          <input matInput formControlName="description" type="text" required autofocus>
+          @if (form.controls['description'].invalid) {
+            <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+          }
+        </mat-form-field>
 
-                <mat-form-field class="default-50 sm-100">
-                    <mat-label translate>ADMINISTRATION_CODE</mat-label>
-                    <input matInput formControlName="project_code" type="text">
-                </mat-form-field>
+        <mat-form-field class="default-50 sm-100">
+          <mat-label translate>ADMINISTRATION_CODE</mat-label>
+          <input matInput formControlName="project_code" type="text">
+        </mat-form-field>
 
-                <mat-form-field class="default-50 sm-100">
-                    <mat-label translate>COMMON_FROM</mat-label>
-                    <ss-date-picker formControlName="start_date"></ss-date-picker>
-                </mat-form-field>
+        <mat-form-field class="default-50 sm-100">
+          <mat-label translate>COMMON_FROM</mat-label>
+          <ss-date-picker formControlName="start_date"></ss-date-picker>
+        </mat-form-field>
 
-                <mat-form-field class="default-50 sm-100">
-                    <mat-label translate>COMMON_TO</mat-label>
-                    <ss-date-picker formControlName="finish_date"></ss-date-picker>
-                </mat-form-field>
+        <mat-form-field class="default-50 sm-100">
+          <mat-label translate>COMMON_TO</mat-label>
+          <ss-date-picker formControlName="finish_date"></ss-date-picker>
+        </mat-form-field>
 
-                <mat-form-field class="default-50 sm-100">
-                    <mat-label translate>SCH_REQUESTED_QTY</mat-label>
-                    <input matInput formControlName="requested_qty" type="number" step="1">
-                </mat-form-field>
+        <mat-form-field class="default-50 sm-100">
+          <mat-label translate>SCH_REQUESTED_QTY</mat-label>
+          <input matInput formControlName="requested_qty" type="number" step="1">
+        </mat-form-field>
 
-                <mat-form-field class="default-50 sm-100">
-                    <mat-label translate>COMMON_QTY</mat-label>
-                    <input matInput formControlName="qty" type="number" step="1">
-                </mat-form-field>
+        <mat-form-field class="default-50 sm-100">
+          <mat-label translate>COMMON_QTY</mat-label>
+          <input matInput formControlName="qty" type="number" step="1">
+        </mat-form-field>
 
-                <mat-form-field class="default-50 sm-100">
-                    <mat-label translate>SCH_MONTHLY_RATE</mat-label>
-                    <input matInput formControlName="monthly_rate" type="number" step="1">
-                </mat-form-field>
+        <mat-form-field class="default-50 sm-100">
+          <mat-label translate>SCH_MONTHLY_RATE</mat-label>
+          <input matInput formControlName="monthly_rate" type="number" step="1">
+        </mat-form-field>
 
-                <mat-form-field class="default-50 sm-100">
-                    <mat-label translate>ADMINISTRATION_ACTIVITY</mat-label>
-                    <ss-auto-complete matInput
-                                      [required]="true"
-                                      [model]="activityLookup"
-                                      formControlName="activity">
-                    </ss-auto-complete>
-                </mat-form-field>
+        <mat-form-field class="default-50 sm-100">
+          <mat-label translate>ADMINISTRATION_ACTIVITY</mat-label>
+          <ss-auto-complete matInput
+            [required]="true"
+            [model]="activityLookup"
+            formControlName="activity">
+          </ss-auto-complete>
+        </mat-form-field>
 
-                <mat-form-field class="default-50 sm-100">
-                    <mat-label translate>SCH_SECTOR</mat-label>
-                    <ss-auto-complete matInput
-                                      [required]="true"
-                                      [model]="sectorLookup"
-                                      formControlName="sector">
-                    </ss-auto-complete>
-                </mat-form-field>
+        <mat-form-field class="default-50 sm-100">
+          <mat-label translate>SCH_SECTOR</mat-label>
+          <ss-auto-complete matInput
+            [required]="true"
+            [model]="sectorLookup"
+            formControlName="sector">
+          </ss-auto-complete>
+        </mat-form-field>
 
-                <mat-form-field class="default-50 sm-100">
-                    <mat-label translate>COMMON_WILAYA</mat-label>
-                    <ss-auto-complete matInput
-                                      [required]="true"
-                                      [model]="wilayaLookup"
-                                      formControlName="wilaya">
-                    </ss-auto-complete>
-                </mat-form-field>
+        <mat-form-field class="default-50 sm-100">
+          <mat-label translate>COMMON_WILAYA</mat-label>
+          <ss-auto-complete matInput
+            [required]="true"
+            [model]="wilayaLookup"
+            formControlName="wilaya">
+          </ss-auto-complete>
+        </mat-form-field>
 
-                <mat-form-field class="default-50 sm-100">
-                    <mat-label translate>SCH_WORK_MASTER</mat-label>
-                    <ss-auto-complete matInput
-                                      [required]="true"
-                                      [model]="workMasterLookup"
-                                      formControlName="master_work">
-                    </ss-auto-complete>
-                </mat-form-field>
+        <mat-form-field class="default-50 sm-100">
+          <mat-label translate>SCH_WORK_MASTER</mat-label>
+          <ss-auto-complete matInput
+            [required]="true"
+            [model]="workMasterLookup"
+            formControlName="master_work">
+          </ss-auto-complete>
+        </mat-form-field>
 
-                <mat-form-field class="default-50 sm-100">
-                    <mat-label translate>LOGISTICS_CONTRACT_NUMBER</mat-label>
-                    <input matInput formControlName="contract_number" type="text">
-                </mat-form-field>
+        <mat-form-field class="default-50 sm-100">
+          <mat-label translate>LOGISTICS_CONTRACT_NUMBER</mat-label>
+          <input matInput formControlName="contract_number" type="text">
+        </mat-form-field>
 
-                <mat-form-field class="default-50 sm-100">
-                    <mat-label translate>LOGISTICS_CONTRACT_DATE</mat-label>
-                    <ss-date-picker formControlName="contract_date"></ss-date-picker>
-                </mat-form-field>
+        <mat-form-field class="default-50 sm-100">
+          <mat-label translate>LOGISTICS_CONTRACT_DATE</mat-label>
+          <ss-date-picker formControlName="contract_date"></ss-date-picker>
+        </mat-form-field>
 
-                <mat-form-field class="default-50 sm-100">
-                    <mat-label translate>LOGISTICS_ODS</mat-label>
-                    <input matInput formControlName="ods" type="text">
-                </mat-form-field>
+        <mat-form-field class="default-50 sm-100">
+          <mat-label translate>LOGISTICS_ODS</mat-label>
+          <input matInput formControlName="ods" type="text">
+        </mat-form-field>
 
-                <mat-form-field class="default-50 sm-100">
-                    <mat-label translate>SCH_REPRESENTATIVE</mat-label>
-                    <input matInput formControlName="representative" type="text">
-                </mat-form-field>
+        <mat-form-field class="default-50 sm-100">
+          <mat-label translate>SCH_REPRESENTATIVE</mat-label>
+          <input matInput formControlName="representative" type="text">
+        </mat-form-field>
 
-                <mat-form-field class="default-50 sm-100">
-                    <mat-label translate>COMMON_STATUS</mat-label>
-                    <input matInput formControlName="represent_status" type="text">
-                </mat-form-field>
+        <mat-form-field class="default-50 sm-100">
+          <mat-label translate>COMMON_STATUS</mat-label>
+          <input matInput formControlName="represent_status" type="text">
+        </mat-form-field>
 
-            </form>
-        }
+      </form>
+    }
 
-    </mat-card-content>
+  </mat-card-content>
 </mat-card>

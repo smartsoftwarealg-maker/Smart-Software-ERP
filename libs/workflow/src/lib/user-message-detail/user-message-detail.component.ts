@@ -10,7 +10,7 @@ import {LookupsService} from '@ss/common/api-lookup';
 import {UserMessageService} from '../user-message.service';
 import { DefaultAutoCompleteModel, UiAutoCompleteComponent, UserLookup } from '@ss/common/ui-auto-complete';
 import {UserListService} from '@ss/common/api-users';
-import { CommonModule } from '@angular/common';
+
 import { MaterialModule } from '@ss/common/api-common';
 
 
@@ -26,14 +26,11 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     styleUrls: ['./user-message-detail.component.scss'],
     standalone: true,
     imports: [
-        CommonModule,
-        MaterialModule,
-        TranslateDirective,
-
-
-        OrgChartModule,
-        UiAutoCompleteComponent
-    ]
+    MaterialModule,
+    TranslateDirective,
+    OrgChartModule,
+    UiAutoCompleteComponent
+]
 })
 export class UserMessageDetailComponent extends BaseEntityDetailComponent<UserMessage> {
     private messageSrv =  inject(DocStatusService);

@@ -8,7 +8,7 @@ import { LoginService, MaterialModule } from '@ss/common/api-common';
 import { BaseTransactionDetailComponent, DOC_PURCHASE_REQUEST, OfferLinesService } from "@ss/logistics/api-transaction";
 import {PurchaseQuotationService} from '../purchase-quotation.service';
 import {MatDialog} from '@angular/material/dialog';
-import { CommonModule } from '@angular/common';
+
 
 
 import { DatePickerComponent } from '@ss/common/ui-datepicker';
@@ -24,14 +24,13 @@ import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
     styleUrls: ['../../../../../common/assets/src/assets/transac-detail.scss'],
     standalone: true,
     imports: [
-        CommonModule,
-        MaterialModule,
-        TranslateDirective,
-        ReactiveFormsModule,
-        RouterModule,
-        DatePickerComponent,
-        UiAutoCompleteComponent
-    ]
+    MaterialModule,
+    TranslateDirective,
+    ReactiveFormsModule,
+    RouterModule,
+    DatePickerComponent,
+    UiAutoCompleteComponent
+]
 })
 export class QuotationDetailComponent extends BaseTransactionDetailComponent {
 

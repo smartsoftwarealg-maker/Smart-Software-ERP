@@ -5,7 +5,7 @@ import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import {UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
 import {  ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
-import { CommonModule } from '@angular/common';
+
 import { MaterialModule } from '@ss/common/api-common';
 
 
@@ -18,15 +18,11 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     templateUrl: './vat-detail.component.html',
     standalone: true,
     imports: [
-        CommonModule,
-        MaterialModule,
-        RouterModule,
-        MaterialModule,
-        TranslateDirective,
-
-
-
-    ],
+    MaterialModule,
+    RouterModule,
+    MaterialModule,
+    TranslateDirective
+],
     styleUrls: ['./vat-detail.component.scss']
 })
 export class VatDetailComponent extends BaseEntityDetailComponent<Vat> {

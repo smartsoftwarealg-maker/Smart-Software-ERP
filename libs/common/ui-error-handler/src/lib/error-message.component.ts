@@ -1,6 +1,6 @@
 import {Component, ChangeDetectorRef} from '@angular/core';
 import { CustomErrorHandlerService } from '@ss/common/ui-error-handler';
-import { NgIf } from '@angular/common';
+
 import { TranslateDirective } from '@ss/common/ui-lang';
 import { MatMiniFabButton } from '@angular/material/button';
 
@@ -9,7 +9,7 @@ import { MatMiniFabButton } from '@angular/material/button';
     templateUrl: './error-message.component.html',
     styleUrls: ['./error-message.component.scss'],
     standalone: true,
-    imports: [NgIf, TranslateDirective, MatMiniFabButton]
+    imports: [TranslateDirective, MatMiniFabButton]
 })
 export class MessageComponent {
 

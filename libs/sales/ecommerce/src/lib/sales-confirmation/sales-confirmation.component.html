@@ -1,64 +1,64 @@
 <ss-header-page [showSearch]="false" (showCart)="goShopping()"></ss-header-page>
 <mat-card class="confirmation">
-    <form [formGroup]="form" *ngIf="!confirming">
-
-        <mat-form-field class="default-50">
-            <mat-label translate>COMMON_FIRST_NAME</mat-label>
-            <input matInput formControlName="firstName" type="text" required>
-        </mat-form-field>
-
-        <mat-form-field class="default-50">
-            <mat-label translate>COMMON_LAST_NAME</mat-label>
-            <input matInput formControlName="lastName" type="text" required>
-        </mat-form-field>
-
-        <mat-form-field class="default-50">
-            <mat-label translate>COMMON_MOBILE</mat-label>
-            <input matInput formControlName="mobile" type="text" required>
-        </mat-form-field>
-
-        <mat-form-field class="default-100">
-            <mat-label translate>LOGISTICS_ADDRESS</mat-label>
-            <textarea matInput formControlName="address" cdkTextareaAutosize="true" rows="5" cols="50"
-                      required></textarea>
-        </mat-form-field>
-
-        <mat-form-field class="default-50">
-            <mat-label translate>COMMON_AMOUNT</mat-label>
-            <input matInput formControlName="amount" type="text" class="amount" required>
-        </mat-form-field>
-
-        <button mat-raised-button
-                class="float-end margin-end-16"
-                style="margin-top: 6px; margin-bottom: 6px;"
-                color="primary"
-                (click)="confirm()"
-                [disabled]="confirming || !form.valid || cartSrv.cartAmount < 1"
-                translate>COMMON_CONFIRM
-        </button>
+  @if (!confirming) {
+    <form [formGroup]="form">
+      <mat-form-field class="default-50">
+        <mat-label translate>COMMON_FIRST_NAME</mat-label>
+        <input matInput formControlName="firstName" type="text" required>
+      </mat-form-field>
+      <mat-form-field class="default-50">
+        <mat-label translate>COMMON_LAST_NAME</mat-label>
+        <input matInput formControlName="lastName" type="text" required>
+      </mat-form-field>
+      <mat-form-field class="default-50">
+        <mat-label translate>COMMON_MOBILE</mat-label>
+        <input matInput formControlName="mobile" type="text" required>
+      </mat-form-field>
+      <mat-form-field class="default-100">
+        <mat-label translate>LOGISTICS_ADDRESS</mat-label>
+        <textarea matInput formControlName="address" cdkTextareaAutosize="true" rows="5" cols="50"
+        required></textarea>
+      </mat-form-field>
+      <mat-form-field class="default-50">
+        <mat-label translate>COMMON_AMOUNT</mat-label>
+        <input matInput formControlName="amount" type="text" class="amount" required>
+      </mat-form-field>
+      <button mat-raised-button
+        class="float-end margin-end-16"
+        style="margin-top: 6px; margin-bottom: 6px;"
+        color="primary"
+        (click)="confirm()"
+        [disabled]="confirming || !form.valid || cartSrv.cartAmount < 1"
+        translate>COMMON_CONFIRM
+      </button>
     </form>
+  }
 </mat-card>
 
-<mat-progress-spinner *ngIf="confirming"></mat-progress-spinner>
+@if (confirming) {
+  <mat-progress-spinner></mat-progress-spinner>
+}
 
 <div class="item_div">
-    <mat-card *ngFor="let a of cartSrv.cart">
-        <div class="img-div">
-            <ss-image-input width="100%" height="100%"
-                            [imageModel]="a.imageModel">
-            </ss-image-input>
+  @for (a of cartSrv.cart; track a) {
+    <mat-card>
+      <div class="img-div">
+        <ss-image-input width="100%" height="100%"
+          [imageModel]="a.imageModel">
+        </ss-image-input>
+      </div>
+      <div class="description"> {{ a.articleDescription }} </div>
+      <div class="info_div">
+        <div class="price_qty">
+          <div>
+            <span> {{ 'COMMON_QTY' | translate }}: </span> <span class="number">{{ a.qty }} </span>
+          </div>
+          <div>
+            <span> {{ 'LOGISTICS_PRICE' | translate }}: </span> <span
+          class="number">{{ a.price | number: '1.2-2'}} </span>
         </div>
-        <div class="description"> {{ a.articleDescription }} </div>
-        <div class="info_div">
-            <div class="price_qty">
-                <div>
-                    <span> {{ 'COMMON_QTY' | translate }}: </span> <span class="number">{{ a.qty }} </span>
-                </div>
-                <div>
-                    <span> {{ 'LOGISTICS_PRICE' | translate }}: </span> <span
-                    class="number">{{ a.price | number: '1.2-2'}} </span>
-                </div>
-            </div>
-        </div>
-    </mat-card>
+      </div>
+    </div>
+  </mat-card>
+}
 </div>

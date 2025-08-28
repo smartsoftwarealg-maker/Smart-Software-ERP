@@ -9,7 +9,7 @@ import { DepartmentService, Department } from '@ss/common/api-lookup';
 import { EmployeeService } from '@ss/employee-services/employee-services';
 import { Observable } from "rxjs";
 import { PersonAutocompleteClass } from "@ss/employee-services/employee-services";
-import { NgIf } from '@angular/common';
+
 import { MatFormField, MatLabel, MatError } from '@angular/material/form-field';
 import { TranslateDirective } from '@ss/common/ui-lang';
 import { MatInput } from '@angular/material/input';
@@ -20,7 +20,7 @@ import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
     templateUrl: './department-detail.component.html',
     styleUrls: ['./department-detail.component.scss'],
     standalone: true,
-    imports: [NgIf, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, MatError, UiAutoCompleteComponent]
+    imports: [FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, MatError, UiAutoCompleteComponent]
 })
 export class DepartmentDetailComponent extends BaseEntityDetailComponent<Department> implements OnInit, OnDestroy {
     public saving = false;

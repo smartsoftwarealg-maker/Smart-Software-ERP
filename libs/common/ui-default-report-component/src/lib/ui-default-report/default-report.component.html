@@ -1,21 +1,25 @@
-<mat-card *ngIf="reportList">
+@if (reportList) {
+  <mat-card>
     <mat-card-content>
-        <div class="main-container" >
-            <div class="ctrl-container">
-                <mat-form-field floatLabel="always" class="default-100 sm-100">
-                    <mat-label translate>COMMON_FILENAME</mat-label>
-                    <input type="text" matInput [formControl]="filename" [matAutocomplete]="auto">
-                    <mat-autocomplete #auto="matAutocomplete">
-                        <mat-option *ngFor="let option of reportList" [value]="option">{{option}}</mat-option>
-                    </mat-autocomplete>
-                </mat-form-field>
-            </div>
-            <div class="btn-container">
-                <button mat-raised-button color="accent" (click)="onClose()"><span translate>COMMON_CANCEL</span>
-                </button>
-                <button mat-raised-button color="primary" (click)="onUpdate()"><span translate>COMMON_SELECT</span>
-                </button>
-            </div>
+      <div class="main-container" >
+        <div class="ctrl-container">
+          <mat-form-field floatLabel="always" class="default-100 sm-100">
+            <mat-label translate>COMMON_FILENAME</mat-label>
+            <input type="text" matInput [formControl]="filename" [matAutocomplete]="auto">
+            <mat-autocomplete #auto="matAutocomplete">
+              @for (option of reportList; track option) {
+                <mat-option [value]="option">{{option}}</mat-option>
+              }
+            </mat-autocomplete>
+          </mat-form-field>
         </div>
-    </mat-card-content>
+        <div class="btn-container">
+          <button mat-raised-button color="accent" (click)="onClose()"><span translate>COMMON_CANCEL</span>
+        </button>
+        <button mat-raised-button color="primary" (click)="onUpdate()"><span translate>COMMON_SELECT</span>
+      </button>
+    </div>
+  </div>
+</mat-card-content>
 </mat-card>
+}

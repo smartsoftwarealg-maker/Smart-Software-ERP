@@ -1,61 +1,63 @@
 <div class="main-container">
-    <fieldset class="cart">
-        <div>
-            <span translate>COMMON_TOTAL</span>:
-            <span class="bolder">{{ cartTotal | number: '1.2-2'}}</span>
-            <span translate>COMMON_AD</span>
-        </div>
-        <div class="cart_filler">
-            <span *ngIf="lastItem"> {{ lastItem.description }}</span>
-        </div>
-
-        <button mat-raised-button color="primary" translate routerLink="../cartdetail">
-            <i class="fas fa-shopping-cart"></i>
-        </button>
-    </fieldset>
-    <div class="data">
-        <mat-card class="card" *ngFor="let a of data">
-
-            <mat-card-content>
-
-                <div class="img-div">
-                    <ss-image-input mat-card-medium-image
-                                    class="img-div"
-                                    width="100%"
-                                    height="100%"
-                                    [imageModel]="a.imageModel">
-                    </ss-image-input>
-                </div>
-                <ul class="info">
-                    <li>
-                        {{ a.description2 }}
-                    </li>
-                    <li class="description">
-                        <span class="badge" translate>COMMON_MARK</span> {{ a.markDescription }}
-                    </li>
-                    <li class="description">
-                        <span class="badge" translate>LOGISTICS_PRICE</span>
-                        <span class="bolder"> {{ a.price1 | number: '1.2-2'}}</span>
-                        <span class="bolder" translate>COMMON_AD</span>
-                    </li>
-                </ul>
-            </mat-card-content>
-            <mat-card-actions>
-                <div>
-                    <span class="filler"></span>
-                    <input #qtyInput type="number" class="qty bolder b-primary" value="1">
-                    <button mat-raised-button
-                            disabled="{{ cartTotal > 1000000.0 }}"
-                            color="primary"
-                            (click)="addToCart(a, +qtyInput.value)">
-                        <i class="fas fa-cart-plus"></i> &nbsp;
-                            <span class="bolder add-btn" translate>LOGISTICS_ADD_TO_CART</span>
-                    </button>
-                </div>
-            </mat-card-actions>
-        </mat-card>
+  <fieldset class="cart">
+    <div>
+      <span translate>COMMON_TOTAL</span>:
+      <span class="bolder">{{ cartTotal | number: '1.2-2'}}</span>
+      <span translate>COMMON_AD</span>
     </div>
-    <div class="pagination-container b-b-background">
-        <ss-pagination [paginationModel]="pagination"></ss-pagination>
+    <div class="cart_filler">
+      @if (lastItem) {
+        <span> {{ lastItem.description }}</span>
+      }
     </div>
+
+    <button mat-raised-button color="primary" translate routerLink="../cartdetail">
+      <i class="fas fa-shopping-cart"></i>
+    </button>
+  </fieldset>
+  <div class="data">
+    @for (a of data; track a) {
+      <mat-card class="card">
+        <mat-card-content>
+          <div class="img-div">
+            <ss-image-input mat-card-medium-image
+              class="img-div"
+              width="100%"
+              height="100%"
+              [imageModel]="a.imageModel">
+            </ss-image-input>
+          </div>
+          <ul class="info">
+            <li>
+              {{ a.description2 }}
+            </li>
+            <li class="description">
+              <span class="badge" translate>COMMON_MARK</span> {{ a.markDescription }}
+            </li>
+            <li class="description">
+              <span class="badge" translate>LOGISTICS_PRICE</span>
+              <span class="bolder"> {{ a.price1 | number: '1.2-2'}}</span>
+              <span class="bolder" translate>COMMON_AD</span>
+            </li>
+          </ul>
+        </mat-card-content>
+        <mat-card-actions>
+          <div>
+            <span class="filler"></span>
+            <input #qtyInput type="number" class="qty bolder b-primary" value="1">
+            <button mat-raised-button
+              disabled="{{ cartTotal > 1000000.0 }}"
+              color="primary"
+              (click)="addToCart(a, +qtyInput.value)">
+              <i class="fas fa-cart-plus"></i> &nbsp;
+              <span class="bolder add-btn" translate>LOGISTICS_ADD_TO_CART</span>
+            </button>
+          </div>
+        </mat-card-actions>
+      </mat-card>
+    }
+  </div>
+  <div class="pagination-container b-b-background">
+    <ss-pagination [paginationModel]="pagination"></ss-pagination>
+  </div>
 </div>

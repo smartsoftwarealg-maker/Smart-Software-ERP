@@ -1,5 +1,5 @@
 import { Component, inject, signal } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute } from '@angular/router';
 import { HttpService, MaterialModule } from '@ss/common/api-common';
@@ -14,14 +14,13 @@ import { CustomerPollService } from '../customer-poll.service';
     selector: 'sch-customer-pools-list',
     standalone: true,
     imports: [
-        CommonModule,
-        TranslateDirective,
-        MatStep,
-        MatStepper,
-        MatStepLabel,
-        MatButton,
-        MaterialModule,
-    ],
+    TranslateDirective,
+    MatStep,
+    MatStepper,
+    MatStepLabel,
+    MatButton,
+    MaterialModule
+],
     templateUrl: './customer-poll.component.html',
     styleUrl: './customer-poll.component.scss',
 })

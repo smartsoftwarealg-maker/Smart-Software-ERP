@@ -5,7 +5,7 @@ import {SnackBarService} from '@ss/common/ui-shell';
 import { UntypedFormControl, UntypedFormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {ActivatedRoute} from '@angular/router';
 import {ReportCatalog, ReportListService} from '@ss/common/api-reports';
-import { NgIf, NgFor } from '@angular/common';
+
 import { MatCard, MatCardContent } from '@angular/material/card';
 import { MatFormField, MatLabel } from '@angular/material/form-field';
 import { TranslateDirective } from '@ss/common/ui-lang';
@@ -19,7 +19,7 @@ import { MatButton } from '@angular/material/button';
     templateUrl: './default-report.component.html',
     styleUrls: ['./default-report.component.scss'],
     standalone: true,
-    imports: [NgIf, MatCard, MatCardContent, MatFormField, MatLabel, TranslateDirective, MatInput, FormsModule, MatAutocompleteTrigger, ReactiveFormsModule, MatAutocomplete, NgFor, MatOption, MatButton]
+    imports: [MatCard, MatCardContent, MatFormField, MatLabel, TranslateDirective, MatInput, FormsModule, MatAutocompleteTrigger, ReactiveFormsModule, MatAutocomplete, MatOption, MatButton]
 })
 export class DefaultReportComponent implements OnInit {
     public form: UntypedFormGroup = null;

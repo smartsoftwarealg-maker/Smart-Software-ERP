@@ -4,7 +4,7 @@ import { HttpService, MaterialModule } from '@ss/common/api-common';
 import {ShellService} from "@ss/common/ui-shell";
 import {ActivatedRoute} from "@angular/router";
 import {CHART_TREE, CMMS_WORK_ORDER, WorkflowChartTree} from '../workflow-api'
-import { CommonModule } from '@angular/common';
+
 
 
 interface WorkflowTreeNode extends TreeNode {
@@ -20,10 +20,9 @@ interface WorkflowTreeNode extends TreeNode {
     styleUrls: ['./workflow-chart.component.scss'],
     standalone: true,
     imports: [
-        CommonModule,
-        MaterialModule,
-        OrgChartModule,
-    ],
+    MaterialModule,
+    OrgChartModule
+],
 })
 export class WorkflowChartComponent implements OnInit {
     private httpSrv = inject( HttpService);

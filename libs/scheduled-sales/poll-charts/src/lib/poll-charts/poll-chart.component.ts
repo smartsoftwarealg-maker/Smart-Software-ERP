@@ -1,5 +1,5 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { ShellService } from '@ss/common/ui-shell';
 import { ActivatedRoute } from '@angular/router';
 import { Chart, ChartConfiguration, ChartItem, registerables } from 'chart.js';
@@ -13,7 +13,7 @@ import { SATISFACTION, YES_NO, COLORS } from '../common';
 @Component({
     selector: 'ss-poll-charts',
     standalone: true,
-    imports: [CommonModule, MatCard, PieChartComponent],
+    imports: [MatCard, PieChartComponent],
     templateUrl: './poll-chart.component.html',
     styleUrl: './poll-chart.component.scss',
 })
