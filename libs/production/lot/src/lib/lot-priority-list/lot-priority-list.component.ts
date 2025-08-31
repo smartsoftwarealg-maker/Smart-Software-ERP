@@ -122,7 +122,16 @@ export class LotPriorityListComponent implements OnInit, OnDestroy {
         this.shellSrv.setLoading(true);
         this.selected = 0;
         this.locationSrv
-            .getLots(this.ref, this.pagination, this.filter,null, null, null, null, this.sortBy)
+            .getLots(
+                this.ref,
+                this.pagination,
+                this.filter,
+                null,
+                null,
+                null,
+                null,
+                this.sortBy,
+            )
             .subscribe({
                 next: (res) => {
                     this.data = res.body;
