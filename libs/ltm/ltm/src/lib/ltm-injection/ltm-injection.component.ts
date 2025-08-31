@@ -1,14 +1,14 @@
-import { Component, inject, Input } from '@angular/core';
-import {  DefaultAutoCompleteModel } from "@ss/common/ui-auto-complete";
+import {Component, inject, input, Input} from '@angular/core';
+import {  DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
 import {finalize, Subscription} from 'rxjs';
-import { ReactiveFormsModule, UntypedFormBuilder, Validators } from "@angular/forms";
+import { ReactiveFormsModule, UntypedFormBuilder, Validators } from '@angular/forms';
 import {MatDialogRef} from '@angular/material/dialog';
 import {HttpEventType} from '@angular/common/http';
 import {LtmInjectionService} from '@ltm/ltm-api';
-import { LanguageService, MaterialModule } from "@ss/common/api-common";
+import { LanguageService, MaterialModule } from '@ss/common/api-common';
 import { INJResult } from '@ltm/ltm-api';
 
-import { DatePickerComponent } from "@ss/common/ui-datepicker";
+import { DatePickerComponent } from '@ss/common/ui-datepicker';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
@@ -17,12 +17,12 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     styleUrls: ['./ltm-injection.component.scss'],
     standalone: true,
     imports: [
-    MaterialModule,
-    TranslateDirective,
-    TranslatePipe,
-    ReactiveFormsModule,
-    DatePickerComponent
-],
+        MaterialModule,
+        TranslateDirective,
+        TranslatePipe,
+        ReactiveFormsModule,
+        DatePickerComponent
+    ],
 })
 export class LtmInjectionComponent {
     // private matterSrv =  inject(LtmLineMatterService);
