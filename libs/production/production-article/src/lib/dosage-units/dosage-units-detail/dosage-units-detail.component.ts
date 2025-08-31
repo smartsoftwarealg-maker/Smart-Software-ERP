@@ -7,7 +7,7 @@ import { UntypedFormBuilder, UntypedFormGroup, Validators, FormsModule, Reactive
 import { MaterialModule } from '@ss/common/api-common';
 import { TranslateDirective } from '@ss/common/ui-lang';
 import { MatCard } from '@angular/material/card';
-import { NgIf } from '@angular/common';
+
 import { MatFormField, MatLabel } from '@angular/material/form-field';
 import { MatInput } from '@angular/material/input';
 import { Lookup } from '@ss/common/api-lookup';
@@ -18,7 +18,7 @@ import { DosageUnitService } from '../../services/dosage-unit.service';
     templateUrl: 'article-types-detail.html',
     styleUrls: ['article-types-detail.scss'],
     standalone: true,
-    imports: [MaterialModule, MatCard, NgIf, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput]
+    imports: [MaterialModule, MatCard, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput]
 })
 export class DosageUnitsDetailComponent extends BaseEntityDetailComponent<Lookup> {
 

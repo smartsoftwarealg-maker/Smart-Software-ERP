@@ -1,122 +1,124 @@
-<div class="main-container" *ngIf="false">
+@if (false) {
+  <div class="main-container">
     <mat-form-field class="default-50">
-        <mat-label translate>LOGISTICS_APPID</mat-label>
-        <mat-select [formControl]="filterCtrl">
-            <mat-option [value]="0"></mat-option>
-            <mat-option [value]="1"> {{ 'LOGISTICS_CEMENT'|translate }}</mat-option>
-            <mat-option [value]="2"> {{ 'LOGISTICS_PARTS'|translate }}</mat-option>
-            <mat-option [value]="3"> {{ 'FOOD'|translate }}</mat-option>
-            <mat-option [value]="4"> {{ 'LOGISTICS_FURNITURE'|translate }}</mat-option>
-        </mat-select>
+      <mat-label translate>LOGISTICS_APPID</mat-label>
+      <mat-select [formControl]="filterCtrl">
+        <mat-option [value]="0"></mat-option>
+        <mat-option [value]="1"> {{ 'LOGISTICS_CEMENT'|translate }}</mat-option>
+        <mat-option [value]="2"> {{ 'LOGISTICS_PARTS'|translate }}</mat-option>
+        <mat-option [value]="3"> {{ 'FOOD'|translate }}</mat-option>
+        <mat-option [value]="4"> {{ 'LOGISTICS_FURNITURE'|translate }}</mat-option>
+      </mat-select>
     </mat-form-field>
-</div>
+  </div>
+}
 
 <div class="table-container main-container ">
-    <mat-table mat-table [dataSource]="data" class="main-table" matSort (matSortChange)="sort($event)">
+  <mat-table mat-table [dataSource]="data" class="main-table" matSort (matSortChange)="sort($event)">
 
-        <ng-container matColumnDef="image">
-            <mat-header-cell *matHeaderCellDef style="justify-content: center" translate>LOGISTICS_IMAGE
-            </mat-header-cell>
-            <mat-cell *matCellDef="let e">
-                <div class="person-photo">
-                    <ss-image-input
-                        width="60px"
-                        height="76px"
-                        [imageModel]="e.imageModel"
-                        style="display: inline-block;">
-                    </ss-image-input>
-                </div>
-            </mat-cell>
-        </ng-container>
+    <ng-container matColumnDef="image">
+      <mat-header-cell *matHeaderCellDef style="justify-content: center" translate>LOGISTICS_IMAGE
+      </mat-header-cell>
+      <mat-cell *matCellDef="let e">
+        <div class="person-photo">
+          <ss-image-input
+            width="60px"
+            height="76px"
+            [imageModel]="e.imageModel"
+            style="display: inline-block;">
+          </ss-image-input>
+        </div>
+      </mat-cell>
+    </ng-container>
 
-        <ng-container matColumnDef="reference">
-            <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_REFERENCE</mat-header-cell>
-            <mat-cell *matCellDef="let e">
-                {{ e.reference }}
-            </mat-cell>
-        </ng-container>
+    <ng-container matColumnDef="reference">
+      <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_REFERENCE</mat-header-cell>
+      <mat-cell *matCellDef="let e">
+        {{ e.reference }}
+      </mat-cell>
+    </ng-container>
 
-        <ng-container matColumnDef="description2">
-            <mat-header-cell *matHeaderCellDef mat-sort-header translate>LOGISTICS_DESCRIPTION</mat-header-cell>
-            <mat-cell *matCellDef="let e">
-                {{ e.description2 }}
-            </mat-cell>
-        </ng-container>
+    <ng-container matColumnDef="description2">
+      <mat-header-cell *matHeaderCellDef mat-sort-header translate>LOGISTICS_DESCRIPTION</mat-header-cell>
+      <mat-cell *matCellDef="let e">
+        {{ e.description2 }}
+      </mat-cell>
+    </ng-container>
 
-        <ng-container matColumnDef="price1">
-            <mat-header-cell *matHeaderCellDef mat-sort-header translate>LOGISTICS_PRICE</mat-header-cell>
-            <mat-cell *matCellDef="let e" style="justify-content: flex-end; direction: ltr;">
-                {{ e.price1 | number: '1.2-2' }}
-            </mat-cell>
-        </ng-container>
+    <ng-container matColumnDef="price1">
+      <mat-header-cell *matHeaderCellDef mat-sort-header translate>LOGISTICS_PRICE</mat-header-cell>
+      <mat-cell *matCellDef="let e" style="justify-content: flex-end; direction: ltr;">
+        {{ e.price1 | number: '1.2-2' }}
+      </mat-cell>
+    </ng-container>
 
-        <ng-container matColumnDef="awp">
-            <mat-header-cell *matHeaderCellDef mat-sort-header translate>LOGISTICS_AWP</mat-header-cell>
-            <mat-cell *matCellDef="let e" style="justify-content: flex-end; direction: ltr;">
-                {{ e.awp | number: '1.2-2' }}
-            </mat-cell>
-        </ng-container>
+    <ng-container matColumnDef="awp">
+      <mat-header-cell *matHeaderCellDef mat-sort-header translate>LOGISTICS_AWP</mat-header-cell>
+      <mat-cell *matCellDef="let e" style="justify-content: flex-end; direction: ltr;">
+        {{ e.awp | number: '1.2-2' }}
+      </mat-cell>
+    </ng-container>
 
-        <ng-container matColumnDef="routingValue">
-            <mat-header-cell *matHeaderCellDef mat-sort-header translate>CMMS_LABOR_COST</mat-header-cell>
-            <mat-cell *matCellDef="let e" style="justify-content: flex-end; direction: ltr;">
-                {{ e.routingValue | number: '1.2-2' }}
-            </mat-cell>
-        </ng-container>
+    <ng-container matColumnDef="routingValue">
+      <mat-header-cell *matHeaderCellDef mat-sort-header translate>CMMS_LABOR_COST</mat-header-cell>
+      <mat-cell *matCellDef="let e" style="justify-content: flex-end; direction: ltr;">
+        {{ e.routingValue | number: '1.2-2' }}
+      </mat-cell>
+    </ng-container>
 
-        <ng-container matColumnDef="bomValue">
-            <mat-header-cell *matHeaderCellDef mat-sort-header translate>COST_DIRECT_MATERIAL</mat-header-cell>
-            <mat-cell *matCellDef="let e" style="justify-content: flex-end; direction: ltr;">
-                {{ e.bomValue | number: '1.2-2' }}
-            </mat-cell>
-        </ng-container>
+    <ng-container matColumnDef="bomValue">
+      <mat-header-cell *matHeaderCellDef mat-sort-header translate>COST_DIRECT_MATERIAL</mat-header-cell>
+      <mat-cell *matCellDef="let e" style="justify-content: flex-end; direction: ltr;">
+        {{ e.bomValue | number: '1.2-2' }}
+      </mat-cell>
+    </ng-container>
 
-        <ng-container matColumnDef="vat">
-            <mat-header-cell *matHeaderCellDef mat-sort-header translate>STOCK_VAT</mat-header-cell>
-            <mat-cell *matCellDef="let e" style="justify-content: flex-end; direction: ltr;">
-                {{ e.vatValue | number: '1.2-2' }}
-            </mat-cell>
-        </ng-container>
+    <ng-container matColumnDef="vat">
+      <mat-header-cell *matHeaderCellDef mat-sort-header translate>STOCK_VAT</mat-header-cell>
+      <mat-cell *matCellDef="let e" style="justify-content: flex-end; direction: ltr;">
+        {{ e.vatValue | number: '1.2-2' }}
+      </mat-cell>
+    </ng-container>
 
-        <ng-container matColumnDef="markDescription">
-            <mat-header-cell *matHeaderCellDef mat-sort-header translate>STOCK_MARK</mat-header-cell>
-            <mat-cell *matCellDef="let e">
-                {{ e.markDescription }}
-            </mat-cell>
-        </ng-container>
+    <ng-container matColumnDef="markDescription">
+      <mat-header-cell *matHeaderCellDef mat-sort-header translate>STOCK_MARK</mat-header-cell>
+      <mat-cell *matCellDef="let e">
+        {{ e.markDescription }}
+      </mat-cell>
+    </ng-container>
 
-        <ng-container matColumnDef="laborHours">
-            <mat-header-cell *matHeaderCellDef mat-sort-header translate>CMMS_LABOR_HOURS</mat-header-cell>
-            <mat-cell *matCellDef="let e">
-                {{ e.laborHours | number: '1.2-2' }}
-            </mat-cell>
-        </ng-container>
+    <ng-container matColumnDef="laborHours">
+      <mat-header-cell *matHeaderCellDef mat-sort-header translate>CMMS_LABOR_HOURS</mat-header-cell>
+      <mat-cell *matCellDef="let e">
+        {{ e.laborHours | number: '1.2-2' }}
+      </mat-cell>
+    </ng-container>
 
-        <ng-container matColumnDef="unitDescription">
-            <mat-header-cell *matHeaderCellDef mat-sort-header translate>STOCK_UNIT</mat-header-cell>
-            <mat-cell *matCellDef="let e">
-                {{ e.unitDescription }}
-            </mat-cell>
-        </ng-container>
+    <ng-container matColumnDef="unitDescription">
+      <mat-header-cell *matHeaderCellDef mat-sort-header translate>STOCK_UNIT</mat-header-cell>
+      <mat-cell *matCellDef="let e">
+        {{ e.unitDescription }}
+      </mat-cell>
+    </ng-container>
 
-        <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
-        <mat-row class="selectable" [class.selected]="row.id == selected" (click)="selectRow(row)"
-                 *matRowDef="let row; columns: displayedColumns;"></mat-row>
-    </mat-table>
+    <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+    <mat-row class="selectable" [class.selected]="row.id == selected" (click)="selectRow(row)"
+    *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
 </div>
 
 <div class="pagination-container b-b-background">
-    <ss-pagination [paginationModel]="pagination"></ss-pagination>
+  <ss-pagination [paginationModel]="pagination"></ss-pagination>
 </div>
 
 <div class="doc-info">
-    @if (selected) {
-        <ss-doc-info
-            [displayedGroups]="['article']"
+  @if (selected) {
+    <ss-doc-info
+      [displayedGroups]="['article']"
             [params]="{ articleId: selectedRow?.id,
                     articleUseStoreSearch : true,
                     articleReference: selectedRow?.reference
                   }">
-        </ss-doc-info>
-    }
+    </ss-doc-info>
+  }
 </div>

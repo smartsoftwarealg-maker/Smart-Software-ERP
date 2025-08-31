@@ -1,53 +1,54 @@
 <div class="container">
-    <div class="ctrl-div" *ngIf="!processing">
-        <div class="file-upload">
-            <input type="file"
-                   class="file-input"
-                   accept=".xlsx, application/msexcel"
-                   (change)="onChange(fileUpload.files)"
-                   #fileUpload>
-
-            <span translate>{{ fileName || "COMMON_NO_FILE_SELECTED" }} </span>
-
-            <button mat-mini-fab color="primary"
-                    class="upload-btn"
-                    (click)="fileUpload.click()"
-                    *ngIf="!uploadProgress && updatable">
-                <i class="fas fa-paperclip"></i>
-            </button>
-        </div>
-
-
-        <div class="consolidated" >
-            <mat-checkbox #consolidated translate>COMMON_CONSOLIDATED</mat-checkbox>
-        </div>
-
-        <button mat-raised-button color="primary"
-                type="button"
-                (click)="onFileSelected(fileUpload.files, consolidated.checked)"
-                [disabled]="!fileName">
-            <i class="fa-solid fa-upload  icon"></i>
-            {{ 'COMMON_UPLOAD' | translate }}
-        </button>
-        <button mat-raised-button color="warn" type="button" (click)="cancel()">
-            <i class="fa-solid fa-arrow-rotate-left icon"></i>
-            {{ 'COMMON_CANCEL' | translate }}
-        </button>
+  @if (!processing) {
+    <div class="ctrl-div">
+      <div class="file-upload">
+        <input type="file"
+          class="file-input"
+          accept=".xlsx, application/msexcel"
+          (change)="onChange(fileUpload.files)"
+          #fileUpload>
+        <span translate>{{ fileName || "COMMON_NO_FILE_SELECTED" }} </span>
+        @if (!uploadProgress && updatable) {
+          <button mat-mini-fab color="primary"
+            class="upload-btn"
+            (click)="fileUpload.click()"
+            >
+            <i class="fas fa-paperclip"></i>
+          </button>
+        }
+      </div>
+      <div class="consolidated" >
+        <mat-checkbox #consolidated translate>COMMON_CONSOLIDATED</mat-checkbox>
+      </div>
+      <button mat-raised-button color="primary"
+        type="button"
+        (click)="onFileSelected(fileUpload.files, consolidated.checked)"
+        [disabled]="!fileName">
+        <i class="fa-solid fa-upload  icon"></i>
+        {{ 'COMMON_UPLOAD' | translate }}
+      </button>
+      <button mat-raised-button color="warn" type="button" (click)="cancel()">
+        <i class="fa-solid fa-arrow-rotate-left icon"></i>
+        {{ 'COMMON_CANCEL' | translate }}
+      </button>
     </div>
+  }
 
-    <mat-progress-bar class="progress-bar" mode="indeterminate" *ngIf="processing"></mat-progress-bar>
+  @if (processing) {
+    <mat-progress-bar class="progress-bar" mode="indeterminate"></mat-progress-bar>
+  }
 
-<!--    <div class="progress">-->
+  <!--    <div class="progress">-->
 
 
-<!--        <i class="fas fa-upload"-->
-<!--           (click)="cancelUpload()"-->
-<!--           *ngIf="uploadProgress"-->
-<!--           translate> COMMON_CANCEL-->
+  <!--        <i class="fas fa-upload"-->
+  <!--           (click)="cancelUpload()"-->
+  <!--           *ngIf="uploadProgress"-->
+  <!--           translate> COMMON_CANCEL-->
 <!--        </i>-->
 
 <!--    </div>-->
 
 
-    <textarea cols="30" rows="10" class="text-area" readonly [value]="queryList"></textarea>
+<textarea cols="30" rows="10" class="text-area" readonly [value]="queryList"></textarea>
 </div>

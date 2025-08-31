@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { LanguageService, MaterialModule } from '@ss/common/api-common';
-import { CommonModule } from '@angular/common';
+
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
@@ -12,12 +12,11 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     styleUrls: ['./confirmation-dialog.component.css'],
     standalone: true,
     imports: [
-        CommonModule,
-        MaterialModule,
-        TranslateDirective,
-        ReactiveFormsModule,
-        RouterModule
-    ]
+    MaterialModule,
+    TranslateDirective,
+    ReactiveFormsModule,
+    RouterModule
+]
 
 })
 

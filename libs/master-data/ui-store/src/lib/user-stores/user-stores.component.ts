@@ -10,7 +10,7 @@ import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui
 import {LotsService, Lot} from '@ss/common/api-lookup';
 import {  ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
 import {of, switchMap} from 'rxjs';
-import { CommonModule } from "@angular/common";
+
 
 
 
@@ -25,17 +25,14 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     styleUrls: ['./user-stores.component.scss'],
     standalone: true,
     imports: [
-        CommonModule,
-        MaterialModule,
-        TranslateDirective,
-        TranslatePipe,
-        RouterModule,
-        ReactiveFormsModule,
-
-
-        PaginationComponent,
-        UiAutoCompleteComponent
-    ]})
+    MaterialModule,
+    TranslateDirective,
+    TranslatePipe,
+    RouterModule,
+    ReactiveFormsModule,
+    PaginationComponent,
+    UiAutoCompleteComponent
+]})
 export class UserStoresComponent implements OnInit, OnDestroy {
     private loginSrv =  inject(LoginService);
     private lotsService =  inject(LotsService);

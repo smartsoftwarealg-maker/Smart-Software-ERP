@@ -3,7 +3,7 @@ import {
     BaseTransactionLinesDetailComponent, DOC_PRODUCTION_ORDER, TransactionLine
 } from '@ss/logistics/api-transaction';
 import { ProductionOrderLinesService } from '../production-order-services/production-order-lines.service';
-import { NgIf } from '@angular/common';
+
 import { MatMiniFabButton } from '@angular/material/button';
 import { MatCard, MatCardContent } from '@angular/material/card';
 import { FormsModule, ReactiveFormsModule, UntypedFormGroup } from '@angular/forms';

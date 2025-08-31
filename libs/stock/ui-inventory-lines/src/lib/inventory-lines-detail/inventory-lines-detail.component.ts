@@ -2,7 +2,7 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {
     BaseTransactionLinesDetailComponent, DOC_INVENTORY
 } from '@ss/logistics/api-transaction';
-import { CommonModule } from '@angular/common';
+
 import { MaterialModule } from '@ss/common/api-common';
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -18,16 +18,13 @@ import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
     styleUrls: ['../../../../../common/assets/src/assets/transac-lines-detail.scss'],
     standalone: true,
     imports: [
-        CommonModule,
-        MaterialModule,
-        TranslateDirective,
-        RouterModule,
-        ReactiveFormsModule,
-        UiAutoCompleteComponent,
-        TranslatePipe
-
-
-    ]
+    MaterialModule,
+    TranslateDirective,
+    RouterModule,
+    ReactiveFormsModule,
+    UiAutoCompleteComponent,
+    TranslatePipe
+]
 })
 export class InventoryLinesDetailComponent extends BaseTransactionLinesDetailComponent implements OnInit, OnDestroy {
     constructor(public inventoryLinesSrv: InventoryLinesService) {

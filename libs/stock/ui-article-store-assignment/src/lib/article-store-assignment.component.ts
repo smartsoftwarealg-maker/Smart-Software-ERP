@@ -13,7 +13,7 @@ import {PaginatorPersistenceService} from '@ss/common/api-common';
 import { MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from '@angular/material/table';
 import { TranslateDirective } from '@ss/common/ui-lang';
 import { PaginationComponent } from '@ss/common/ui-pagination';
-import { NgIf } from '@angular/common';
+
 import { ArticleStoreComponent } from '../../../article-store/src/lib/article-store.component';
 
 @Component({
@@ -21,7 +21,7 @@ import { ArticleStoreComponent } from '../../../article-store/src/lib/article-st
     styleUrls: ['./article-store-assignment.component.scss'],
     templateUrl: './article-store-assignment.component.html',
     standalone: true,
-    imports: [MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, TranslateDirective, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, PaginationComponent, NgIf, ArticleStoreComponent]
+    imports: [MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, TranslateDirective, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, PaginationComponent, ArticleStoreComponent]
 })
 export class ArticleStoreAssignmentComponent extends BaseEntityListComponent<Article> implements OnInit {
 

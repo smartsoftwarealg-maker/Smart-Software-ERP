@@ -1,37 +1,44 @@
-<div class="button_div size" *ngIf="form">
-    <button mat-mini-fab (click)="save()"
-            color="accent" *ngIf="isEditable">
+@if (form) {
+  <div class="button_div size">
+    @if (isEditable) {
+      <button mat-mini-fab (click)="save()"
+        color="accent">
         <i class="fas fa-save"></i>
-    </button>
+      </button>
+    }
     <button mat-mini-fab (click)="cancel()"
-            color="warn" >
-        <i class="fas fa-redo"></i>
+      color="warn" >
+      <i class="fas fa-redo"></i>
     </button>
-</div>
+  </div>
+}
 
 <mat-card class="size">
-    <mat-card-content>
-        <form *ngIf="form !== null" novalidate [formGroup]="form">
+  <mat-card-content>
+    @if (form !== null) {
+      <form novalidate [formGroup]="form">
+        <mat-form-field class="default-100" autofocus>
+          <mat-label translate>COMMON_ARTICLE</mat-label>
+          <ss-auto-complete matInput
+            [model]="articleLookup"
+            formControlName="partId"
+            required="true"
+            autofocus>
+          </ss-auto-complete>
+          @if (form.controls['partId'].invalid) {
+            <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+          }
+        </mat-form-field>
+        <mat-form-field id="code" class="default-50">
+          <mat-label translate>COMMON_QTY</mat-label>
+          <input matInput formControlName="qty" type="number">
+          @if (form.controls['qty'].invalid) {
+            <mat-error translate>COMMON_FIELD_MAX_LENGTH
+            </mat-error>
+          }
+        </mat-form-field>
+      </form>
+    }
 
-            <mat-form-field class="default-100" autofocus>
-                <mat-label translate>COMMON_ARTICLE</mat-label>
-                <ss-auto-complete matInput
-                                  [model]="articleLookup"
-                                  formControlName="partId"
-                                  required="true"
-                                  autofocus>
-                </ss-auto-complete>
-                <mat-error *ngIf="form.controls['partId'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
-            </mat-form-field>
-
-            <mat-form-field id="code" class="default-50">
-                <mat-label translate>COMMON_QTY</mat-label>
-                <input matInput formControlName="qty" type="number">
-                <mat-error *ngIf="form.controls['qty'].invalid" translate>COMMON_FIELD_MAX_LENGTH
-                </mat-error>
-            </mat-form-field>
-
-        </form>
-
-    </mat-card-content>
+  </mat-card-content>
 </mat-card>

@@ -1,69 +1,81 @@
 @defer (when form) {
-    <mat-card>
-        <mat-card-content>
-            <form [formGroup]="form">
+<mat-card>
+  <mat-card-content>
+    <form [formGroup]="form">
 
-                <mat-form-field class="default-50 sm-100">
-                    <mat-label translate>PAYROLL_EMPLOYEE</mat-label>
-                    <ss-auto-complete matInput
-                                      [required]="true"
-                                      [model]="employeeAutoCompleteModel"
-                                      formControlName="employee">
-                    </ss-auto-complete>
-                    <mat-error
-                        *ngIf="form.controls['employee'].hasError('required')" translate>COMMON_FIELD_REQUIRED
-                    </mat-error>
-                </mat-form-field>
+      <mat-form-field class="default-50 sm-100">
+        <mat-label translate>PAYROLL_EMPLOYEE</mat-label>
+        <ss-auto-complete matInput
+          [required]="true"
+          [model]="employeeAutoCompleteModel"
+          formControlName="employee">
+        </ss-auto-complete>
+        @if (form.controls['employee'].hasError('required')) {
+          <mat-error
+            translate>COMMON_FIELD_REQUIRED
+          </mat-error>
+        }
+      </mat-form-field>
 
-                <mat-form-field class="default-50 sm-100">
-                    <mat-label translate>REMUN_LOAN</mat-label>
-                    <ss-auto-complete matInput
-                                      [required]="true"
-                                      [model]="loanLookup"
-                                      formControlName="loan">
-                    </ss-auto-complete>
-                    <mat-error
-                        *ngIf="form.controls['loan'].hasError('required')" translate>COMMON_FIELD_REQUIRED
-                    </mat-error>
-                </mat-form-field>
+      <mat-form-field class="default-50 sm-100">
+        <mat-label translate>REMUN_LOAN</mat-label>
+        <ss-auto-complete matInput
+          [required]="true"
+          [model]="loanLookup"
+          formControlName="loan">
+        </ss-auto-complete>
+        @if (form.controls['loan'].hasError('required')) {
+          <mat-error
+            translate>COMMON_FIELD_REQUIRED
+          </mat-error>
+        }
+      </mat-form-field>
 
 
-                <mat-form-field class="default-50">
-                    <mat-label translate>PAYROLL_STARTING_MONTH</mat-label>
-                    <ss-paymonth-editor formControlName="payMonth" required></ss-paymonth-editor>
-                    <mat-error *ngIf="form.controls['payMonth'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
-                </mat-form-field>
+      <mat-form-field class="default-50">
+        <mat-label translate>PAYROLL_STARTING_MONTH</mat-label>
+        <ss-paymonth-editor formControlName="payMonth" required></ss-paymonth-editor>
+        @if (form.controls['payMonth'].invalid) {
+          <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+        }
+      </mat-form-field>
 
-                <mat-form-field class="default-50">
-                    <mat-label translate>PAYROLL_MONTH_COUNT</mat-label>
-                    <input matInput formControlName="number" type="number" required step="1">
-                    <mat-error *ngIf="form.controls['number'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
-                </mat-form-field>
+      <mat-form-field class="default-50">
+        <mat-label translate>PAYROLL_MONTH_COUNT</mat-label>
+        <input matInput formControlName="number" type="number" required step="1">
+        @if (form.controls['number'].invalid) {
+          <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+        }
+      </mat-form-field>
 
-                <mat-form-field class="default-50">
-                    <mat-label translate>COMMON_AMOUNT</mat-label>
-                    <input matInput formControlName="amount" type="number" >
-                    <mat-error *ngIf="form.controls['amount'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
-                </mat-form-field>
+      <mat-form-field class="default-50">
+        <mat-label translate>COMMON_AMOUNT</mat-label>
+        <input matInput formControlName="amount" type="number" >
+        @if (form.controls['amount'].invalid) {
+          <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+        }
+      </mat-form-field>
 
-                <mat-form-field class="default-50">
-                    <mat-label translate>PAYROLL_TAKEN_AMOUNT</mat-label>
-                    <input matInput formControlName="taken_amount" type="number" >
-                </mat-form-field>
+      <mat-form-field class="default-50">
+        <mat-label translate>PAYROLL_TAKEN_AMOUNT</mat-label>
+        <input matInput formControlName="taken_amount" type="number" >
+      </mat-form-field>
 
-                <mat-form-field class="default-50 sm-100">
-                    <mat-label translate>REMUN_RETURNED_AMOUNT</mat-label>
-                    <input matInput formControlName="paidAmount" type="number" required step="1">
-                    <mat-error *ngIf="form.controls['paidAmount'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
-                </mat-form-field>
+      <mat-form-field class="default-50 sm-100">
+        <mat-label translate>REMUN_RETURNED_AMOUNT</mat-label>
+        <input matInput formControlName="paidAmount" type="number" required step="1">
+        @if (form.controls['paidAmount'].invalid) {
+          <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+        }
+      </mat-form-field>
 
-                <mat-form-field class="default-50">
-                    <mat-label translate>COMMON_MEMO</mat-label>
-                    <input matInput formControlName="memo" type="text" >
-                </mat-form-field>
-                <!--           <pre>{{form.value | json}}</pre>-->
-            </form>
+      <mat-form-field class="default-50">
+        <mat-label translate>COMMON_MEMO</mat-label>
+        <input matInput formControlName="memo" type="text" >
+      </mat-form-field>
+      <!--           <pre>{{form.value | json}}</pre>-->
+    </form>
 
-        </mat-card-content>
-    </mat-card>
+  </mat-card-content>
+</mat-card>
 }

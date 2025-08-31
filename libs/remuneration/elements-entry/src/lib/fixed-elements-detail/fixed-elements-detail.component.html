@@ -1,27 +1,29 @@
 @defer (when form) {
-    <div class="size_div employee_div">
-        <div class="person-photo">
-            <ss-image-input width="120px" height="120px" [imageModel]="employee.imageModel"
-                            style="display: inline-block;">
-            </ss-image-input>
-        </div>
+<div class="size_div employee_div">
+  <div class="person-photo">
+    <ss-image-input width="120px" height="120px" [imageModel]="employee.imageModel"
+      style="display: inline-block;">
+    </ss-image-input>
+  </div>
 
-        <div class="employee-details">
-            <div style="font-size: 1.5em; text-align: start; font-weight: bolder">{{ employee?.id }}</div>
-            <div style="font-weight: bold;">{{ employee?.fullName }}</div>
-            <div style="font-size: 0.7em">{{ employee?.post }}</div>
-        </div>
-    </div>
+  <div class="employee-details">
+    <div style="font-size: 1.5em; text-align: start; font-weight: bolder">{{ employee?.id }}</div>
+    <div style="font-weight: bold;">{{ employee?.fullName }}</div>
+    <div style="font-size: 0.7em">{{ employee?.post }}</div>
+  </div>
+</div>
 }
 <mat-card class="size_div">
-    @defer (when form) {
-        <form [formGroup]="form">
-            <div formGroupName="elements" class="elements">
-                <mat-form-field *ngFor="let g of elementsForm.controls; let i = index">
-                    <mat-label translate> {{ infoSrv.loadDataCols()[i]?.description }}</mat-label>
-                    <input matInput formControlName="{{ i }}" type="number">
-                </mat-form-field>
-            </div>
-        </form>
-    }
+  @defer (when form) {
+  <form [formGroup]="form">
+    <div formGroupName="elements" class="elements">
+      @for (g of elementsForm.controls; track g; let i = $index) {
+        <mat-form-field>
+          <mat-label translate> {{ infoSrv.loadDataCols()[i]?.description }}</mat-label>
+          <input matInput formControlName="{{ i }}" type="number">
+        </mat-form-field>
+      }
+    </div>
+  </form>
+}
 </mat-card>

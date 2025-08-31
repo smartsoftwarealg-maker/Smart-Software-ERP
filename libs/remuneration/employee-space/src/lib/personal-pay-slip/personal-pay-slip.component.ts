@@ -8,7 +8,7 @@ import { LanguageService, LoginService } from '@ss/common/api-common';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { ActivatedRoute } from '@angular/router';
-import { NgIf, NgFor, DecimalPipe } from "@angular/common";
+import { DecimalPipe } from "@angular/common";
 import { MatCard, MatCardContent } from "@angular/material/card";
 import { MatFormField, MatLabel } from "@angular/material/form-field";
 import { TranslateDirective } from '@ss/common/ui-lang';
@@ -26,33 +26,31 @@ import { TranslatePipe } from '@ss/common/ui-lang';
     styleUrls: ['./personal-pay-slip.component.scss'],
     standalone: true,
     imports: [
-        NgIf,
-        MatCard,
-        MatCardContent,
-        FormsModule,
-        ReactiveFormsModule,
-        MatFormField,
-        MatLabel,
-        TranslateDirective,
-        MatInput,
-        MatSelect,
-        NgFor,
-        MatOption,
-        MatButton,
-        MatProgressBar,
-        MatTable,
-        MatColumnDef,
-        MatHeaderCellDef,
-        MatHeaderCell,
-        MatCellDef,
-        MatCell,
-        MatHeaderRowDef,
-        MatHeaderRow,
-        MatRowDef,
-        MatRow,
-        DecimalPipe,
-        TranslatePipe,
-    ],
+    MatCard,
+    MatCardContent,
+    FormsModule,
+    ReactiveFormsModule,
+    MatFormField,
+    MatLabel,
+    TranslateDirective,
+    MatInput,
+    MatSelect,
+    MatOption,
+    MatButton,
+    MatProgressBar,
+    MatTable,
+    MatColumnDef,
+    MatHeaderCellDef,
+    MatHeaderCell,
+    MatCellDef,
+    MatCell,
+    MatHeaderRowDef,
+    MatHeaderRow,
+    MatRowDef,
+    MatRow,
+    DecimalPipe,
+    TranslatePipe
+],
 })
 export class PersonalPaySlipComponent implements OnInit, OnDestroy {
     private subscription: Subscription[] = [];

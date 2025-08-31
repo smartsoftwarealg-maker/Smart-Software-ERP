@@ -1,5 +1,5 @@
 import { Component, inject, OnDestroy, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import {
     BaseTransactionLinesDetailComponent, DOC_INVOICE
 } from '@ss/logistics/api-transaction';
@@ -20,17 +20,16 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     selector: 'ss-service-invoice-line-detail',
     standalone: true,
     imports: [
-        CommonModule,
-        MatButtonModule,
-        MatCardModule,
-        MatFormFieldModule,
-        MatInputModule,
-        MaterialModule,
-        ReactiveFormsModule,
-        TextFieldModule,
-        TranslateDirective,
-        UiAutoCompleteComponent
-    ],
+    MatButtonModule,
+    MatCardModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MaterialModule,
+    ReactiveFormsModule,
+    TextFieldModule,
+    TranslateDirective,
+    UiAutoCompleteComponent
+],
     templateUrl: './service-invoice-line-detail.component.html',
     styleUrls: ['./service-invoice-line-detail.component.css']
 })

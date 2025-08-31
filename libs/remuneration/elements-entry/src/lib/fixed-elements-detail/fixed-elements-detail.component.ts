@@ -11,7 +11,7 @@ import { HttpService, MaterialModule } from "@ss/common/api-common";
 import { Observable } from 'rxjs';
 import { FixedElementsEntryService } from '../services/fixed-elements-entry.service';
 import { EmployeeService } from "@ss/employee-services/employee-services";
-import { CommonModule } from "@angular/common";
+
 
 
 import { DatePickerComponent } from "@ss/common/ui-datepicker";
@@ -32,13 +32,11 @@ type Employee = {
     styleUrls: ['./fixed-elements-detail.component.scss'],
     standalone: true,
     imports: [
-        CommonModule,
-        MaterialModule,
-        TranslateDirective,
-        ReactiveFormsModule,
-
-        ImageInputComponent
-    ],
+    MaterialModule,
+    TranslateDirective,
+    ReactiveFormsModule,
+    ImageInputComponent
+],
 })
 export class FixedElementsDetailComponent extends BaseEntityDetailComponent<ELine> {
     imageModel: ImageModel;

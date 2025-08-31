@@ -6,7 +6,7 @@ import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import { catchError, delay, map, mergeMap, Observable, of, repeat, retry, switchMap, tap, throwError } from "rxjs";
 import {SnackBarService} from '@ss/common/ui-shell';
 import { LanguageService, LoginService } from "@ss/common/api-common";
-import { NgIf } from '@angular/common';
+
 import { MatCard, MatCardContent } from '@angular/material/card';
 import { MatFormField, MatLabel } from '@angular/material/form-field';
 import { TranslateDirective } from '@ss/common/ui-lang';
@@ -21,7 +21,7 @@ import { TranslatePipe } from '@ss/common/ui-lang';
     templateUrl: './month-closer.component.html',
     styleUrls: ['./month-closer.component.scss'],
     standalone: true,
-    imports: [NgIf, MatCard, MatCardContent, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, MatButton, MatProgressBar, MatProgressSpinner, TranslatePipe]
+    imports: [MatCard, MatCardContent, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, MatButton, MatProgressBar, MatProgressSpinner, TranslatePipe]
 })
 export class MonthCloserComponent implements OnInit {
     form: UntypedFormGroup = null;

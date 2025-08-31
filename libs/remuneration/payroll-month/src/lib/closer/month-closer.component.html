@@ -1,40 +1,44 @@
-<mat-card *ngIf="form">
+@if (form) {
+  <mat-card>
     <mat-card-content>
-        <form  novalidate [formGroup]="form">
-            <mat-form-field class="default-50 sm-100" >
-                <mat-label translate>PAYROLL_MONTH</mat-label>
-                <input matInput formControlName="month" type="number"  required autofocus readonly>
-            </mat-form-field>
-            <mat-form-field class="default-50 sm-100" >
-                <mat-label translate>PAYROLL_YEAR</mat-label>
-                <input matInput formControlName="year" type="number"  required readonly>
-            </mat-form-field>
-
-            <span class="default-100 sm-100"></span>
-
-            <div *ngIf="!processing" class="default-50 sm-100" >
-                <button mat-raised-button color="primary" type="button" (click)="close()">
-                    <i class="fa-solid fa-lock-keyhole"></i>
-                    {{ 'REMUN_CLOSE' | translate }}
-                </button>
-            </div>
-
-            <div  *ngIf="!processing" class="default-50 sm-100">
-                <button  mat-raised-button type="button" (click)="cancel()" color="accent">
-                    <i class="fa-solid fa-arrow-rotate-left"></i>
-                    {{ 'COMMON_CANCEL' | translate }}
-                </button>
-            </div>
-
-        </form>
-
+      <form  novalidate [formGroup]="form">
+        <mat-form-field class="default-50 sm-100" >
+          <mat-label translate>PAYROLL_MONTH</mat-label>
+          <input matInput formControlName="month" type="number"  required autofocus readonly>
+        </mat-form-field>
+        <mat-form-field class="default-50 sm-100" >
+          <mat-label translate>PAYROLL_YEAR</mat-label>
+          <input matInput formControlName="year" type="number"  required readonly>
+        </mat-form-field>
         <span class="default-100 sm-100"></span>
-
-        <mat-progress-bar mode="indeterminate" *ngIf="processing"></mat-progress-bar>
+        @if (!processing) {
+          <div class="default-50 sm-100" >
+            <button mat-raised-button color="primary" type="button" (click)="close()">
+              <i class="fa-solid fa-lock-keyhole"></i>
+              {{ 'REMUN_CLOSE' | translate }}
+            </button>
+          </div>
+        }
+        @if (!processing) {
+          <div  class="default-50 sm-100">
+            <button  mat-raised-button type="button" (click)="cancel()" color="accent">
+              <i class="fa-solid fa-arrow-rotate-left"></i>
+              {{ 'COMMON_CANCEL' | translate }}
+            </button>
+          </div>
+        }
+      </form>
+      <span class="default-100 sm-100"></span>
+      @if (processing) {
+        <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+      }
     </mat-card-content>
-</mat-card>
+  </mat-card>
+}
 
-<div *ngIf="!form" class="spinner">
+@if (!form) {
+  <div class="spinner">
     <mat-spinner></mat-spinner>
-</div>
+  </div>
+}
 

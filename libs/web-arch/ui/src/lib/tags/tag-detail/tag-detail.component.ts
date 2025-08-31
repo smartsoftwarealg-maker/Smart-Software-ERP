@@ -6,7 +6,7 @@ import { Tag } from '../tag';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import {  ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { TagService } from '../tag-list/tag.service';
-import { CommonModule } from '@angular/common';
+
 import { MaterialModule } from '@ss/common/api-common';
 import { TranslateDirective } from '@ss/common/ui-lang';
 import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
@@ -17,12 +17,11 @@ import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
     styleUrls: ['./tag-detail.component.css'],
     standalone: true,
     imports: [
-        CommonModule,
-        MaterialModule,
-        TranslateDirective,
-        ReactiveFormsModule,
-        RouterModule
-    ]
+    MaterialModule,
+    TranslateDirective,
+    ReactiveFormsModule,
+    RouterModule
+]
 })
 export class TagDetailComponent extends BaseEntityDetailComponent<Tag> {
 

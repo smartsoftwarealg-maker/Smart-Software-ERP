@@ -1,5 +1,5 @@
 import { Component, inject, signal } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { Agent, SupplierService } from '@ss/logistics/api-agent';
 import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
@@ -13,9 +13,7 @@ import { StoresService } from '@ss/stock/api-article-store';
 
 @Component({
     selector: 'ss-lot-input-dialog',
-    imports: [CommonModule,
-        MaterialModule,
-        MatCard, MatCardContent, ReactiveFormsModule, TranslateDirective, UiAutoCompleteComponent, DatePickerComponent],
+    imports: [MaterialModule, MatCard, MatCardContent, ReactiveFormsModule, TranslateDirective, UiAutoCompleteComponent, DatePickerComponent],
     templateUrl: './lot-input-dialog.component.html',
     styleUrl: './lot-input-dialog.component.scss'
 })

@@ -3,7 +3,7 @@ import { FormBuilder, ReactiveFormsModule, UntypedFormGroup, Validators } from '
 import { CMMSRoutingDetailService } from '@ss/master-data/cmms-routing';
 import { RoutingDetail } from '@ss/cmms/cmms-api';
 import { BaseChildEntityDetailComponent } from '@ss/common/ui-base-entity';
-import { CommonModule } from '@angular/common';
+
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { MatCardModule } from '@angular/material/card';
@@ -19,16 +19,15 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     styleUrls: ['./cmms-routing-line-detail.component.css'],
     standalone: true,
     imports: [
-        CommonModule,
-        MatSortModule,
-        MatTableModule,
-        MatCardModule,
-        MatFormFieldModule,
-        MatInputModule,
-        MaterialModule,
-        ReactiveFormsModule,
-        TranslateDirective
-    ],
+    MatSortModule,
+    MatTableModule,
+    MatCardModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MaterialModule,
+    ReactiveFormsModule,
+    TranslateDirective
+],
 })
 export class CMMSRoutingLineDetailComponent extends BaseChildEntityDetailComponent<RoutingDetail> {
     private fb = inject(FormBuilder);

@@ -1,25 +1,25 @@
-    <div class="table-container container">
-        <mat-table mat-table [dataSource]="data" class="main-table">
+<div class="table-container container">
+  <mat-table mat-table [dataSource]="data" class="main-table">
 
-            <ng-container matColumnDef="reference">
-                <mat-header-cell *matHeaderCellDef translate>COMMON_REFERENCE</mat-header-cell>
-                <mat-cell *matCellDef="let e">
-                    {{e.reference}}
-                </mat-cell>
-            </ng-container>
+    <ng-container matColumnDef="reference">
+      <mat-header-cell *matHeaderCellDef translate>COMMON_REFERENCE</mat-header-cell>
+      <mat-cell *matCellDef="let e">
+        {{e.reference}}
+      </mat-cell>
+    </ng-container>
 
-            <ng-container matColumnDef="description2">
-                <mat-header-cell *matHeaderCellDef translate>LOGISTICS_DESCRIPTION</mat-header-cell>
-                <mat-cell *matCellDef="let e">
-                    {{e.description2}}
-                </mat-cell>
-            </ng-container>
+    <ng-container matColumnDef="description2">
+      <mat-header-cell *matHeaderCellDef translate>LOGISTICS_DESCRIPTION</mat-header-cell>
+      <mat-cell *matCellDef="let e">
+        {{e.description2}}
+      </mat-cell>
+    </ng-container>
 
-<!--            <ng-container matColumnDef="price">-->
-<!--                <mat-header-cell *matHeaderCellDef translate>LOGISTICS_PRICE</mat-header-cell>-->
-<!--                <mat-cell *matCellDef="let e" style="justify-content: flex-end; direction: ltr;">-->
-<!--                    {{(e.price == null ? '' : e.price.toFixed(2.0))}}-->
-<!--                </mat-cell>-->
+    <!--            <ng-container matColumnDef="price">-->
+    <!--                <mat-header-cell *matHeaderCellDef translate>LOGISTICS_PRICE</mat-header-cell>-->
+    <!--                <mat-cell *matCellDef="let e" style="justify-content: flex-end; direction: ltr;">-->
+    <!--                    {{(e.price == null ? '' : e.price.toFixed(2.0))}}-->
+  <!--                </mat-cell>-->
 <!--            </ng-container>-->
 
 <!--            <ng-container matColumnDef="vat">-->
@@ -29,19 +29,21 @@
 <!--                </mat-cell>-->
 <!--            </ng-container>-->
 
-            <ng-container matColumnDef="mark">
-                <mat-header-cell *matHeaderCellDef translate>STOCK_MARK</mat-header-cell>
-                <mat-cell *matCellDef="let e">
-                    {{marks[e.mark]}}
-                </mat-cell>
-            </ng-container>
+<ng-container matColumnDef="mark">
+  <mat-header-cell *matHeaderCellDef translate>STOCK_MARK</mat-header-cell>
+  <mat-cell *matCellDef="let e">
+    {{marks[e.mark]}}
+  </mat-cell>
+</ng-container>
 
-            <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
-            <mat-row class="selectable" [class.selected]="row.id == selected" (click)="selectRow(row)"
-                     *matRowDef="let row; columns: displayedColumns;"></mat-row>
-        </mat-table>
-    </div>
-    <div class="container b-b-background">
-        <ss-pagination [paginationModel]="pagination"></ss-pagination>
-    </div>
-    <ss-article-store class="container" *ngIf="selectedRow && selectedRow.id !== 0" [article]="selectedRow"></ss-article-store>
+<mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+<mat-row class="selectable" [class.selected]="row.id == selected" (click)="selectRow(row)"
+*matRowDef="let row; columns: displayedColumns;"></mat-row>
+</mat-table>
+</div>
+<div class="container b-b-background">
+  <ss-pagination [paginationModel]="pagination"></ss-pagination>
+</div>
+@if (selectedRow && selectedRow.id !== 0) {
+  <ss-article-store class="container" [article]="selectedRow"></ss-article-store>
+}

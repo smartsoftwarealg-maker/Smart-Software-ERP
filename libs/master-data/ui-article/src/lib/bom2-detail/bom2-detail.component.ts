@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute } from '@angular/router';
 import { BomService } from '../bom.service';
@@ -22,14 +22,13 @@ import { BomListComponent } from '../bom/bom-list.component';
     selector: 'ss-bom-detail',
     standalone: true,
     imports: [
-        CommonModule,
-        MatButtonModule,
-        MaterialModule,
-        TranslateDirective,
-        UiAutoCompleteComponent,
-        DatePickerComponent,
-        BomListComponent
-    ],
+    MatButtonModule,
+    MaterialModule,
+    TranslateDirective,
+    UiAutoCompleteComponent,
+    DatePickerComponent,
+    BomListComponent
+],
     templateUrl: './bom2-detail.component.html',
     styleUrl: './bom2-detail.component.css'
 })

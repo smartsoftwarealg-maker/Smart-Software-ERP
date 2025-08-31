@@ -1,19 +1,30 @@
-import {Component, OnInit} from '@angular/core';
-import {BaseTransactionLinesListComponent} from '@ss/logistics/api-transaction';
-import {ShellService, SnackBarService} from '@ss/common/ui-shell';
-import {ActivatedRoute, Router} from '@angular/router';
-import {ArticleService} from '@ss/master-data/api-article';
-import {LotsService} from '@ss/common/api-lookup';
-import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import {PurchaseRequestLinesService} from '../purchase-request-lines.service';
-import { NgIf, DecimalPipe } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
+import { BaseTransactionLinesListComponent } from '@ss/logistics/api-transaction';
+import { ShellService, SnackBarService } from '@ss/common/ui-shell';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ArticleService } from '@ss/master-data/api-article';
+import { LotsService } from '@ss/common/api-lookup';
+import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
+import { PurchaseRequestLinesService } from '../purchase-request-lines.service';
+import { DecimalPipe } from '@angular/common';
 import { MatFormField, MatLabel } from '@angular/material/form-field';
 import { TranslateDirective } from '@ss/common/ui-lang';
 import { MatInput } from '@angular/material/input';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatMiniFabButton, MatIconButton } from '@angular/material/button';
 import { MatTooltip } from '@angular/material/tooltip';
-import { MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from '@angular/material/table';
+import {
+    MatTable,
+    MatColumnDef,
+    MatHeaderCellDef,
+    MatHeaderCell,
+    MatCellDef,
+    MatCell,
+    MatHeaderRowDef,
+    MatHeaderRow,
+    MatRowDef,
+    MatRow,
+} from '@angular/material/table';
 import { PaginationComponent } from '@ss/common/ui-pagination';
 import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
 import { TranslatePipe } from '@ss/common/ui-lang';
@@ -21,10 +32,11 @@ import { TranslatePipe } from '@ss/common/ui-lang';
 @Component({
     selector: 'ss-purchase-request-lines-list',
     templateUrl: './purchase-request-lines-list.component.html',
-    styleUrls: ['../../../../../common/assets/src/assets/transac-lines-list.scss'],
+    styleUrls: [
+        '../../../../../common/assets/src/assets/transac-lines-list.scss',
+    ],
     standalone: true,
     imports: [
-        NgIf,
         MatFormField,
         MatLabel,
         TranslateDirective,
@@ -50,14 +62,17 @@ import { TranslatePipe } from '@ss/common/ui-lang';
         TranslatePipe,
     ],
 })
-export class PurchaseRequestLinesListComponent extends  BaseTransactionLinesListComponent implements OnInit {
-    displayedColumns = [
+export class PurchaseRequestLinesListComponent
+    extends BaseTransactionLinesListComponent
+    implements OnInit
+{
+    override displayedColumns = [
         'position',
         'reference',
         'description',
         'qtyOrdered',
         'qtySatisfied',
-        'total'
+        'total',
     ];
 
     constructor(
@@ -68,7 +83,17 @@ export class PurchaseRequestLinesListComponent extends  BaseTransactionLinesList
         public override router: Router,
         public override articleSrv: ArticleService,
         public override storeNamesSrv: LotsService,
-        public override confirmationSrv: ConfirmationDialogService) {
-        super(detailSrv, shellSrv, snackBarSrv, route, router, articleSrv, storeNamesSrv, confirmationSrv);
+        public override confirmationSrv: ConfirmationDialogService,
+    ) {
+        super(
+            detailSrv,
+            shellSrv,
+            snackBarSrv,
+            route,
+            router,
+            articleSrv,
+            storeNamesSrv,
+            confirmationSrv,
+        );
     }
 }

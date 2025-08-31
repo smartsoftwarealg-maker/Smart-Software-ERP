@@ -21,7 +21,7 @@ import {ActivatedRoute} from '@angular/router';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import { MatExpansionPanel, MatAccordion, MatExpansionPanelHeader, MatExpansionPanelTitle } from '@angular/material/expansion';
 import {Patient, PatientService} from '@ss/patients/api-patient';
-import { NgIf, NgFor } from '@angular/common';
+
 import { TranslateDirective } from '@ss/common/ui-lang';
 import { MatFormField, MatLabel, MatError } from '@angular/material/form-field';
 import { MatInput } from '@angular/material/input';
@@ -36,7 +36,7 @@ import { MatOption } from '@angular/material/core';
     templateUrl: './patients-detail.component.html',
     styleUrls: ['./patients-detail.component.scss'],
     standalone: true,
-    imports: [NgIf, FormsModule, ReactiveFormsModule, MatAccordion, MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelTitle, TranslateDirective, MatFormField, MatLabel, MatInput, MatError, DatePickerComponent, MatRadioGroup, MatRadioButton, Dir, MatSelect, MatOption, NgFor]
+    imports: [FormsModule, ReactiveFormsModule, MatAccordion, MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelTitle, TranslateDirective, MatFormField, MatLabel, MatInput, MatError, DatePickerComponent, MatRadioGroup, MatRadioButton, Dir, MatSelect, MatOption]
 })
 export class PatientsDetailComponent extends  BaseEntityDetailComponent<Patient> {
     pwd1 = new UntypedFormControl();

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { BaseTransactionDetailComponent } from '@ss/logistics/api-transaction';
 import { CCGroup, Lookup } from '@ss/common/api-lookup';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
@@ -25,7 +25,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
 @Component({
     selector: 'ss-parts-request-detail',
     standalone: true,
-    imports: [CommonModule, MaterialModule, DatePickerComponent, FormsModule, MatCardModule, MatFormFieldModule, MatInputModule, ReactiveFormsModule, RouterOutlet, TextFieldModule, UiAutoCompleteComponent, TranslateDirective],
+    imports: [MaterialModule, DatePickerComponent, FormsModule, MatCardModule, MatFormFieldModule, MatInputModule, ReactiveFormsModule, RouterOutlet, TextFieldModule, UiAutoCompleteComponent, TranslateDirective],
     templateUrl: './parts-request-detail.component.html',
     styleUrls: ['../../../../../common/assets/src/assets/transac-detail.scss']
 })

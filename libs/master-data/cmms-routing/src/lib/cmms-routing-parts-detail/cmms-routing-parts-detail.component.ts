@@ -5,7 +5,7 @@ import { FormBuilder, ReactiveFormsModule, UntypedFormGroup, Validators } from '
 import { CMMSRoutingPartService } from '@ss/cmms/lookups';
 import { ArticleService } from 'libs/master-data/api-article/src';
 import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from 'libs/common/ui-auto-complete/src';
-import { CommonModule } from '@angular/common';
+
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { MatCardModule } from '@angular/material/card';
@@ -21,17 +21,16 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     styleUrls: ['./cmms-routing-parts-detail.component.css'],
     standalone: true,
     imports: [
-        CommonModule,
-        MatSortModule,
-        MatTableModule,
-        MatCardModule,
-        MatFormFieldModule,
-        MatInputModule,
-        MaterialModule,
-        ReactiveFormsModule,
-        UiAutoCompleteComponent,
-        TranslateDirective
-    ],
+    MatSortModule,
+    MatTableModule,
+    MatCardModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MaterialModule,
+    ReactiveFormsModule,
+    UiAutoCompleteComponent,
+    TranslateDirective
+],
 })
 export class CMMSRoutingPartsDetailComponent extends BaseChildEntityDetailComponent<RoutingPart> {
     private articleSrv = inject(ArticleService);

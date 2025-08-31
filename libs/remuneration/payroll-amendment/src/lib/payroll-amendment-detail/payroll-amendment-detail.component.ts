@@ -11,7 +11,7 @@ import { HttpService, LoginService, MaterialModule } from '@ss/common/api-common
 import { ElementInfoLookupModel } from '@ss/remuneration/element-types';
 import { PayrollUtil } from '@ss/payroll-common';
 import { EmployeeService, PersonAutocompleteClass } from '@ss/employee-services/employee-services';
-import { CommonModule } from '@angular/common';
+
 
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
@@ -24,12 +24,11 @@ import { Lookup } from '@ss/common/api-lookup';
     styleUrls: ['./payroll-amendment-detail.component.scss'],
     standalone: true,
     imports: [
-        CommonModule,
-        MaterialModule,
-        TranslateDirective,
-        UiAutoCompleteComponent,
-        PaymonthEditorComponent
-    ]
+    MaterialModule,
+    TranslateDirective,
+    UiAutoCompleteComponent,
+    PaymonthEditorComponent
+]
 
 })
 export class PayrollAmendmentDetailComponent extends BaseEntityDetailComponent<Amendment> {

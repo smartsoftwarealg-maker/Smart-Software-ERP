@@ -1,4 +1,6 @@
-<div [dir]="langSrv.dir" *ngIf="loaded" class="app-root-container">
+@if (loaded){
+<div [dir]="langSrv.dir" class="app-root-container">
     <router-outlet></router-outlet>
 </div>
+}
 <ss-error-message></ss-error-message>

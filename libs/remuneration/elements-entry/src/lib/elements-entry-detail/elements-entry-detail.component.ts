@@ -17,7 +17,7 @@ import {MatSelectChange} from '@angular/material/select';
 import { ImageInputComponent, ImageModel } from '@ss/common/ui-image-input';
 import { HttpService, MaterialModule } from "@ss/common/api-common";
 import { EmployeeService } from '@ss/employee-services/employee-services';
-import { CommonModule } from "@angular/common";
+
 
 
 import { DatePickerComponent } from "@ss/common/ui-datepicker";
@@ -41,13 +41,12 @@ type Employee = {
     styleUrls: ['./elements-entry-detail.component.scss', '../common-css.scss'],
     standalone: true,
     imports: [
-        CommonModule,
-        MaterialModule,
-        TranslateDirective,
-        ReactiveFormsModule,
-        ImageInputComponent,
-        UiAutoCompleteComponent
-    ]
+    MaterialModule,
+    TranslateDirective,
+    ReactiveFormsModule,
+    ImageInputComponent,
+    UiAutoCompleteComponent
+]
 })
 export class ElementsEntryDetailComponent extends BaseEntityDetailComponent<ELine> implements OnInit {
     #fundSrv = inject(FundService);
