@@ -1,6 +1,6 @@
 import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
-import { LoginService, MaterialModule, PaginationModel } from '@ss/common/api-common';
+import {LanguageService, LoginService, MaterialModule, PaginationModel} from '@ss/common/api-common';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import {
@@ -17,8 +17,7 @@ import { HttpParams } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 
 
-import { DatePickerComponent } from '@ss/common/ui-datepicker';
-import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
+import { TranslateDirective } from '@ss/common/ui-lang';
 import { PaginationComponent } from '@ss/common/ui-pagination';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 
@@ -47,6 +46,7 @@ export class AccountingGenerationComponent implements OnInit, OnDestroy {
     private snackBarSrv = inject(SnackBarService);
     private journalSrv = inject(AccJournalsService);
     private fb = inject(UntypedFormBuilder);
+    private langSrv = inject(LanguageService);
 
     readonly PURCHASE = 1;
     readonly SALES = 4;
@@ -99,7 +99,7 @@ export class AccountingGenerationComponent implements OnInit, OnDestroy {
         this.shellSrv.setTitle('ACC_GENERATION');
         this.loginSrv
             .loadContext()
-            .subscribe(res => {
+            .subscribe(() => {
                 this.form = this.fb.group({
                     year: [{ value: this.loginSrv.appCtx.accYear, disabled: true }],
                     period: [{ value: this.loginSrv.appCtx.accPeriod, disabled: true }],
@@ -189,6 +189,16 @@ export class AccountingGenerationComponent implements OnInit, OnDestroy {
                 next: res => {
                     this.processing = false;
                     this.payrollData = res;
+                    this.payrollData.forEach(e => {
+                        e.debit = Math.max(e.amount, 0) || 0;
+                        e.credit = Math.max(-e.amount, 0) || 0;
+                    });
+                    // add total line
+                    const total = this.langSrv.translate('COMMON_TOTAL');
+                    const debit = res.map(e => Math.max(e.amount, 0)).reduce((a, b) => a + b);
+                    const credit = res.map(e => Math.max(-e.amount, 0)).reduce((a, b) => a + b);
+                    this.payrollData.push({ account: total, amount: 0, debit: debit, credit: credit });
+
                     this.shellSrv.setLoading(false);
                 }, error: err => {
                     this.processing = false;

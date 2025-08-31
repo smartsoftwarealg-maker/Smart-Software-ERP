@@ -218,7 +218,9 @@ export interface PAYRow {
     employee?: string;
     cCenter?: string;
     fundCC?: string;
-    amount: number
+    amount: number;
+    debit?: number;
+    credit?: number
 }
 
 export interface Check {

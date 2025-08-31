@@ -19,51 +19,52 @@
 
 .mat-column-document {
     flex: 1 1 150px;
-    padding-right: 8px !important;
-    padding-left: 8px !important;
+    padding-right: 4px !important;
+    padding-left: 4px !important;
 }
 
 .mat-column-storeName,
 .mat-column-store {
     flex: 1 1 150px;
-    padding-right: 8px !important;
-    padding-left: 8px !important;
+    padding-right: 4px !important;
+    padding-left: 4px !important;
 }
 
 .mat-column-date {
     flex: 1 1 150px;
-    padding-right: 8px !important;
-    padding-left: 8px !important;
+    padding-right: 4px !important;
+    padding-left: 4px !important;
 }
 
-.mat-column-qty {
+.mat-column-qtyIn,
+.mat-column-qtyOut {
     flex: 1 1 150px;
-    padding-right: 8px !important;
-    padding-left: 8px !important;
+    padding-right: 4px !important;
+    padding-left: 4px !important;
 }
 
 .mat-column-price {
     flex: 1 1 150px;
-    padding-right: 8px !important;
-    padding-left: 8px !important;
+    padding-right: 4px !important;
+    padding-left: 4px !important;
 }
 
 .mat-column-pPrice {
     flex: 1 1 150px;
-    padding-right: 8px !important;
-    padding-left: 8px !important;
+    padding-right: 4px !important;
+    padding-left: 4px !important;
 }
 
 .mat-column-number {
     flex: 1 1 150px;
-    padding-right: 8px !important;
-    padding-left: 8px !important;
+    padding-right: 4px !important;
+    padding-left: 4px !important;
 }
 
 .mat-column-customer {
     flex: 1 1 150px;
-    padding-right: 8px !important;
-    padding-left: 8px !important;
+    padding-right: 4px !important;
+    padding-left: 4px !important;
 }
 
 
@@ -77,3 +78,6 @@
     }
 }
 
+mat-table {
+    min-width: fit-content;
+}

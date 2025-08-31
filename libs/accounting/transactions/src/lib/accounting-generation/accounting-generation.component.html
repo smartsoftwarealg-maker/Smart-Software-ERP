@@ -112,19 +112,19 @@
             <ng-container matColumnDef="debit">
                 <mat-header-cell *matHeaderCellDef translate>COMMON_DEBIT</mat-header-cell>
                 <mat-cell *matCellDef="let e">
-                    {{ (e.amount > 0 ? e.amount : 0) | number: '1.2-2' }}
+                    {{ e.debit | number: '1.2-2' }}
                 </mat-cell>
             </ng-container>
 
             <ng-container matColumnDef="credit">
                 <mat-header-cell *matHeaderCellDef translate>COMMON_CREDIT</mat-header-cell>
                 <mat-cell *matCellDef="let e">
-                    {{ (e.amount > 0 ? 0 : -e.amount) | number: '1.2-2' }}
+                    {{ e.credit | number: '1.2-2' }}
                 </mat-cell>
             </ng-container>
 
             <ng-container matColumnDef="cCenter">
-                <mat-header-cell *matHeaderCellDef translate>COMMON_ACCOUNTNO</mat-header-cell>
+                <mat-header-cell *matHeaderCellDef translate>COMMON_COST_CENTER</mat-header-cell>
                 <mat-cell *matCellDef="let e">
                     {{ e.cCenter }}
                 </mat-cell>
