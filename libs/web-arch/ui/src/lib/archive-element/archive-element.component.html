@@ -1,14 +1,14 @@
 <div class="container">
     <div (click)="onSelect()" style="padding-bottom: 5px" class="im">
-        <img class="thumb-nail" [src]="(imgSrc ? imgSrc : defImage) | async">
+        <img class="thumb-nail" [src]="(imgSrc() ? imgSrc() : defImage) | async">
     </div>
     <div class="des theme-background-primary"> {{ description }}</div>
     <div class="info theme-background-accent">
         <span class="ls" translate>SIZE</span>
         <div class="sv">: {{ docSize() }}</div>
         <div translate class="ld">EDIT_TIME</div>
-        <div class="dv">: {{ editDate | date: 'dd-MM-yyyy' }}</div>
+        <div class="dv">: {{ editDate() | date: 'dd-MM-yyyy' }}</div>
         <div translate class="lc">CHECK_SUM</div>
-        <div class="cv">: {{ checkSum?.substring(0, 20) }}</div>
+        <div class="cv">: {{ checkSum()?.substring(0, 20) }}</div>
     </div>
 </div>

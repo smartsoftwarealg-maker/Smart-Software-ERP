@@ -1,4 +1,4 @@
-import { Component, inject, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, inject, OnInit, ViewChild } from '@angular/core';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {Asset, AssetReception, Depreciation, OfficeAutoComplete} from '../assets-api';
 import {KeepOnToolbar, ShellService, SnackBarService, ToolbarButton} from '@ss/common/ui-shell';
@@ -40,14 +40,9 @@ import {AssetRevaluationService} from '../services/asset-revaluation.service';
 import {AssetBlockingService} from '../services/asset-blocking.service';
 import {DepreciationRateService} from '../services/depreciation-rate.service';
 import { CommonModule } from '@angular/common';
-
-
 import { DatePickerComponent } from '@ss/common/ui-datepicker';
-
-
 import { AssetAppointmentListComponent } from '../asset-appointment-list/asset-appointment-list.component';
 import { AssetCostsListComponent } from '../asset-costs-list/asset-costs-list.component';
-import { ImageInputComponent } from '@ss/common/ui-image-input';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 import { ChildAttributesComponent } from '@ss/custom-attributes';
 
