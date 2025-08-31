@@ -10,7 +10,7 @@ import { ElementTypesService } from "../services/element-types.service";
 import { ElementInfoLookupModel } from "../element-info-lookup-model";
 import { HttpService, MaterialModule } from "@ss/common/api-common";
 import { ElementType } from "@ss/payroll-common";
-import { CommonModule } from "@angular/common";
+
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 
@@ -20,12 +20,11 @@ import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
     styleUrls: ["./element-types-detail.component.scss"],
     standalone: true,
     imports: [
-        CommonModule,
-        MaterialModule,
-        TranslateDirective,
-        ReactiveFormsModule,
-        UiAutoCompleteComponent
-    ]
+    MaterialModule,
+    TranslateDirective,
+    ReactiveFormsModule,
+    UiAutoCompleteComponent
+]
 
 })
 export class ElementTypesDetailComponent extends BaseEntityDetailComponent<ElementType> {

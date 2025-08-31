@@ -1,141 +1,154 @@
 <mat-card>
 
-    <mat-tab-group>
-        <mat-tab>
-            <ng-template mat-tab-label>
-                <span translate>REMUN_INDIVIDUAL</span>
-            </ng-template>
-            <mat-card>
-                @if (form !== null) {
-                    <mat-card-content>
-                        <form [formGroup]="form">
+  <mat-tab-group>
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <span translate>REMUN_INDIVIDUAL</span>
+      </ng-template>
+      <mat-card>
+        @if (form !== null) {
+          <mat-card-content>
+            <form [formGroup]="form">
 
-                            <mat-form-field class="default-50 sm-100">
-                                <mat-label translate>PAYROLL_EMPLOYEE</mat-label>
-                                <ss-auto-complete matInput
-                                                  [required]="true"
-                                                  [model]="employeeLookup"
-                                                  formControlName="employee">
-                                </ss-auto-complete>
-                                <mat-error
-                                    *ngIf="form.controls['employee'].hasError('required')" translate>
-                                    COMMON_FIELD_REQUIRED
-                                </mat-error>
-                            </mat-form-field>
-
-                            <mat-form-field class="default-50 sm-100">
-                                <mat-label translate>REMUN_FIELD</mat-label>
-                                <ss-auto-complete matInput
-                                                  [required]="true"
-                                                  [model]="elementLookup"
-                                                  formControlName="elementId">
-                                </ss-auto-complete>
-                                <mat-error
-                                    *ngIf="form.controls['elementId'].hasError('required')" translate>
-                                    COMMON_FIELD_REQUIRED
-                                </mat-error>
-                            </mat-form-field>
-
-
-                            <mat-form-field class="default-50 sm-100">
-                                <mat-label translate>PAYROLL_FROM</mat-label>
-                                <!--                        <input matInput formControlName="applicationMonth" type="number"  required>-->
-                                <ss-paymonth-editor formControlName="applicationMonth"
-                                                    [required]="true"></ss-paymonth-editor>
-                                <mat-error *ngIf="form.controls['applicationMonth'].invalid" translate>
-                                    COMMON_FIELD_REQUIRED
-                                </mat-error>
-                            </mat-form-field>
-
-                            <mat-form-field class="default-50 sm-100" *ngIf="!form.controls['id'].value">
-                                <mat-label translate>PAYROLL_TO</mat-label>
-                                <!--                        <input matInput formControlName="to" type="number"  required>-->
-                                <ss-paymonth-editor formControlName="to" required="true"></ss-paymonth-editor>
-                                <mat-error *ngIf="form.controls['to'].invalid" translate>COMMON_FIELD_REQUIRED
-                                </mat-error>
-                            </mat-form-field>
-
-                            <mat-form-field class="default-50 sm-100">
-                                <mat-label translate>COMMON_VALUE</mat-label>
-                                <input matInput formControlName="new_value" type="number" required>
-                                <mat-error *ngIf="form.controls['new_value'].invalid" translate>COMMON_FIELD_REQUIRED
-                                </mat-error>
-                            </mat-form-field>
-
-                            <div class="default-50 sm-100">
-                                <!--                            <mat-checkbox formControlName="percentage" translate>REMUN_PERCENTAGE</mat-checkbox>-->
-                                <mat-radio-group formControlName="percentage" class="default-50 sm-100">
-                                    <mat-radio-button [value]=1 translate style="margin: 8px;"
-                                                      [checked]="form.controls['percentage'].value === 0">COMMON_AMOUNT
-                                    </mat-radio-button>
-                                    <mat-radio-button [value]=1 translate style="margin: 8px;"
-                                                      [checked]="form.controls['percentage'].value === 1">
-                                        REMUN_PERCENTAGE
-                                    </mat-radio-button>
-                                </mat-radio-group>
-
-                            </div>
-
-
-                        </form>
-                    </mat-card-content>
+              <mat-form-field class="default-50 sm-100">
+                <mat-label translate>PAYROLL_EMPLOYEE</mat-label>
+                <ss-auto-complete matInput
+                  [required]="true"
+                  [model]="employeeLookup"
+                  formControlName="employee">
+                </ss-auto-complete>
+                @if (form.controls['employee'].hasError('required')) {
+                  <mat-error
+                    translate>
+                    COMMON_FIELD_REQUIRED
+                  </mat-error>
                 }
-            </mat-card>
-        </mat-tab>
-        <mat-tab *ngIf="form !== null && !form.controls['id'].value">
-            <ng-template mat-tab-label>
-                <span translate>REMUN_COLLECTIVE</span>
-            </ng-template>
-            <mat-card>
-                <mat-card-content>
-                    <form novalidate [formGroup]="form">
+              </mat-form-field>
 
-                        <mat-form-field class="default-50 sm-100">
-                            <mat-label translate>REMUN_FIELD</mat-label>
-                            <ss-auto-complete matInput
-                                              [required]="true"
-                                              [model]="elementLookup"
-                                              formControlName="elementId">
-                            </ss-auto-complete>
-                            <mat-error
-                                *ngIf="form.controls['elementId'].hasError('required')" translate>COMMON_FIELD_REQUIRED
-                            </mat-error>
-                        </mat-form-field>
+              <mat-form-field class="default-50 sm-100">
+                <mat-label translate>REMUN_FIELD</mat-label>
+                <ss-auto-complete matInput
+                  [required]="true"
+                  [model]="elementLookup"
+                  formControlName="elementId">
+                </ss-auto-complete>
+                @if (form.controls['elementId'].hasError('required')) {
+                  <mat-error
+                    translate>
+                    COMMON_FIELD_REQUIRED
+                  </mat-error>
+                }
+              </mat-form-field>
 
-                        <span class="default-50 sm-100"> </span>
 
-                        <mat-form-field class="default-50 sm-100">
-                            <mat-label translate>PAYROLL_FROM</mat-label>
-                            <ss-paymonth-editor formControlName="applicationMonth"
-                                                required="true"></ss-paymonth-editor>
-                            <mat-error *ngIf="form.controls['applicationMonth'].invalid" translate>
-                                COMMON_FIELD_REQUIRED
-                            </mat-error>
-                        </mat-form-field>
+              <mat-form-field class="default-50 sm-100">
+                <mat-label translate>PAYROLL_FROM</mat-label>
+                <!--                        <input matInput formControlName="applicationMonth" type="number"  required>-->
+                <ss-paymonth-editor formControlName="applicationMonth"
+                [required]="true"></ss-paymonth-editor>
+                @if (form.controls['applicationMonth'].invalid) {
+                  <mat-error translate>
+                    COMMON_FIELD_REQUIRED
+                  </mat-error>
+                }
+              </mat-form-field>
 
-                        <mat-form-field class="default-50 sm-100">
-                            <mat-label translate>PAYROLL_TO</mat-label>
-                            <ss-paymonth-editor formControlName="to" [required]=true></ss-paymonth-editor>
-                            <mat-error *ngIf="form.controls['to'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
-                        </mat-form-field>
+              @if (!form.controls['id'].value) {
+                <mat-form-field class="default-50 sm-100">
+                  <mat-label translate>PAYROLL_TO</mat-label>
+                  <!--                        <input matInput formControlName="to" type="number"  required>-->
+                  <ss-paymonth-editor formControlName="to" required="true"></ss-paymonth-editor>
+                  @if (form.controls['to'].invalid) {
+                    <mat-error translate>COMMON_FIELD_REQUIRED
+                    </mat-error>
+                  }
+                </mat-form-field>
+              }
 
-                        <mat-form-field class="default-50 sm-100">
-                            <mat-label translate>COMMON_VALUE</mat-label>
-                            <input matInput formControlName="new_value" type="number" required>
-                            <mat-error *ngIf="form.controls['new_value'].invalid" translate>COMMON_FIELD_REQUIRED
-                            </mat-error>
-                        </mat-form-field>
+              <mat-form-field class="default-50 sm-100">
+                <mat-label translate>COMMON_VALUE</mat-label>
+                <input matInput formControlName="new_value" type="number" required>
+                @if (form.controls['new_value'].invalid) {
+                  <mat-error translate>COMMON_FIELD_REQUIRED
+                  </mat-error>
+                }
+              </mat-form-field>
 
-                        <div class="default-50 sm-100">
-                            <mat-checkbox formControlName="percentage" translate>REMUN_PERCENTAGE</mat-checkbox>
-                        </div>
+              <div class="default-50 sm-100">
+                <!--                            <mat-checkbox formControlName="percentage" translate>REMUN_PERCENTAGE</mat-checkbox>-->
+                <mat-radio-group formControlName="percentage" class="default-50 sm-100">
+                  <mat-radio-button [value]=1 translate style="margin: 8px;"
+                    [checked]="form.controls['percentage'].value === 0">COMMON_AMOUNT
+                  </mat-radio-button>
+                  <mat-radio-button [value]=1 translate style="margin: 8px;"
+                    [checked]="form.controls['percentage'].value === 1">
+                    REMUN_PERCENTAGE
+                  </mat-radio-button>
+                </mat-radio-group>
 
-                    </form>
+              </div>
 
-                </mat-card-content>
-            </mat-card>
 
-        </mat-tab>
-    </mat-tab-group>
+            </form>
+          </mat-card-content>
+        }
+      </mat-card>
+    </mat-tab>
+    @if (form !== null && !form.controls['id'].value) {
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <span translate>REMUN_COLLECTIVE</span>
+        </ng-template>
+        <mat-card>
+          <mat-card-content>
+            <form novalidate [formGroup]="form">
+              <mat-form-field class="default-50 sm-100">
+                <mat-label translate>REMUN_FIELD</mat-label>
+                <ss-auto-complete matInput
+                  [required]="true"
+                  [model]="elementLookup"
+                  formControlName="elementId">
+                </ss-auto-complete>
+                @if (form.controls['elementId'].hasError('required')) {
+                  <mat-error
+                    translate>COMMON_FIELD_REQUIRED
+                  </mat-error>
+                }
+              </mat-form-field>
+              <span class="default-50 sm-100"> </span>
+              <mat-form-field class="default-50 sm-100">
+                <mat-label translate>PAYROLL_FROM</mat-label>
+                <ss-paymonth-editor formControlName="applicationMonth"
+                required="true"></ss-paymonth-editor>
+                @if (form.controls['applicationMonth'].invalid) {
+                  <mat-error translate>
+                    COMMON_FIELD_REQUIRED
+                  </mat-error>
+                }
+              </mat-form-field>
+              <mat-form-field class="default-50 sm-100">
+                <mat-label translate>PAYROLL_TO</mat-label>
+                <ss-paymonth-editor formControlName="to" [required]=true></ss-paymonth-editor>
+                @if (form.controls['to'].invalid) {
+                  <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+                }
+              </mat-form-field>
+              <mat-form-field class="default-50 sm-100">
+                <mat-label translate>COMMON_VALUE</mat-label>
+                <input matInput formControlName="new_value" type="number" required>
+                @if (form.controls['new_value'].invalid) {
+                  <mat-error translate>COMMON_FIELD_REQUIRED
+                  </mat-error>
+                }
+              </mat-form-field>
+              <div class="default-50 sm-100">
+                <mat-checkbox formControlName="percentage" translate>REMUN_PERCENTAGE</mat-checkbox>
+              </div>
+            </form>
+          </mat-card-content>
+        </mat-card>
+      </mat-tab>
+    }
+  </mat-tab-group>
 
 </mat-card>

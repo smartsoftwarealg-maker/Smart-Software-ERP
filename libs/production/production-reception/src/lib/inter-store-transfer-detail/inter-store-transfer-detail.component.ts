@@ -10,7 +10,7 @@ import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { InterStoreTransfer } from '@ss/logistics/api-transaction';
 import { LoginService, MaterialModule } from '@ss/common/api-common';
 import { MatDialog } from '@angular/material/dialog';
-import { CommonModule } from '@angular/common';
+
 import { DatePickerComponent } from '@ss/common/ui-datepicker';
 import { TranslateDirective } from '@ss/common/ui-lang';
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
@@ -26,14 +26,13 @@ import { Observable } from 'rxjs';
     styleUrl: './inter-store-transfer-detail.component.scss',
     standalone: true,
     imports: [
-        CommonModule,
-        MaterialModule,
-        TranslateDirective,
-        ReactiveFormsModule,
-        DatePickerComponent,
-        RouterOutlet,
-        UiAutoCompleteComponent
-    ]
+    MaterialModule,
+    TranslateDirective,
+    ReactiveFormsModule,
+    DatePickerComponent,
+    RouterOutlet,
+    UiAutoCompleteComponent
+]
 })
 export class InterStoreTransferDetailComponent
     extends BaseEntityDetailComponent<InterStoreTransfer>

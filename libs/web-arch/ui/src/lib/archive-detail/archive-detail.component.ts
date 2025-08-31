@@ -12,7 +12,7 @@ import { ShellService } from '@ss/common/ui-shell';
 import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { Tag } from '../tags/tag';
 import { MatSelectionList } from '@angular/material/list';
-import { CommonModule } from '@angular/common';
+
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
@@ -21,13 +21,12 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     styleUrls: ['./archive-detail.component.css'],
     standalone: true,
     imports: [
-        CommonModule,
-        MaterialModule,
-        TranslateDirective,
-        ReactiveFormsModule,
-        RouterModule,
-        UiAutoCompleteComponent
-    ]
+    MaterialModule,
+    TranslateDirective,
+    ReactiveFormsModule,
+    RouterModule,
+    UiAutoCompleteComponent
+]
 })
 export class ArchiveDetailComponent implements OnInit {
     private service = inject( ArchiveService);

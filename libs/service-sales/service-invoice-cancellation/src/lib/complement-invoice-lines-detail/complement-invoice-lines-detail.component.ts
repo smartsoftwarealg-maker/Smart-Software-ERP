@@ -3,7 +3,7 @@ import {
     BaseTransactionLinesDetailComponent, DOC_INVOICE_CANCELLATION, TransactionLine,
     TransactionLinesService
 } from '@ss/logistics/api-transaction';
-import { CommonModule } from '@angular/common';
+
 import { MaterialModule } from '@ss/common/api-common';
 
 
@@ -22,14 +22,12 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     styleUrls: ['../../../../../common/assets/src/assets/transac-lines-detail.scss'],
     standalone: true,
     imports: [
-        CommonModule,
-        MaterialModule,
-        TranslateDirective,
-        ReactiveFormsModule,
-        RouterModule,
-        UiAutoCompleteComponent
-
-    ]
+    MaterialModule,
+    TranslateDirective,
+    ReactiveFormsModule,
+    RouterModule,
+    UiAutoCompleteComponent
+]
 })
 export class ComplementInvoiceLinesDetailComponent extends BaseTransactionLinesDetailComponent implements OnInit, OnDestroy {
     private serviceSrv = inject(ServiceArticleService);

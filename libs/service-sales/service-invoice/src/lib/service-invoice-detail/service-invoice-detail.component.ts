@@ -15,7 +15,7 @@ import {
     DOC_QUOTATION,
     DOC_SALES_ORDER
 } from '@ss/logistics/api-transaction';
-import { CommonModule } from '@angular/common';
+
 import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
 import { MatButtonModule } from '@angular/material/button';
@@ -30,18 +30,17 @@ import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
     selector: 'ss-invoice-detail',
     standalone: true,
     imports: [
-        CommonModule,
-        MatTableModule,
-        MatSortModule,
-        MatButtonModule,
-        MatFormFieldModule,
-        MatInputModule,
-        MaterialModule,
-        TranslateDirective,
-        DatePickerComponent,
-        RouterOutlet,
-        UiAutoCompleteComponent
-    ],
+    MatTableModule,
+    MatSortModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MaterialModule,
+    TranslateDirective,
+    DatePickerComponent,
+    RouterOutlet,
+    UiAutoCompleteComponent
+],
     templateUrl: './service-invoice-detail.component.html',
     styleUrls: ['../../../../../common/assets/src/assets/transac-detail.scss']
 })

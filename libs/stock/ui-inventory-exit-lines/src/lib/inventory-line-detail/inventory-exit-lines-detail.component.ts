@@ -3,7 +3,7 @@ import {
     BaseTransactionLinesDetailComponent, DOC_CORRECTION_OUT,
     TransactionLinesService
 } from '@ss/logistics/api-transaction';
-import { NgIf } from '@angular/common';
+
 import { MatMiniFabButton } from '@angular/material/button';
 import { MatCard, MatCardContent } from '@angular/material/card';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -20,21 +20,20 @@ import { InventoryExitLinesService } from '@ss/stock/api-inventory-exit-lines';
     styleUrls: ['../../../../../common/assets/src/assets/transac-lines-detail.scss'],
     standalone: true,
     imports: [
-        NgIf,
-        MatMiniFabButton,
-        MatCard,
-        MatCardContent,
-        FormsModule,
-        ReactiveFormsModule,
-        MatFormField,
-        MatLabel,
-        TranslateDirective,
-        MatInput,
-        UiAutoCompleteComponent,
-        MatError,
-        MatHint,
-        CdkTextareaAutosize,
-    ],
+    MatMiniFabButton,
+    MatCard,
+    MatCardContent,
+    FormsModule,
+    ReactiveFormsModule,
+    MatFormField,
+    MatLabel,
+    TranslateDirective,
+    MatInput,
+    UiAutoCompleteComponent,
+    MatError,
+    MatHint,
+    CdkTextareaAutosize
+],
 })
 export class InventoryExitLinesDetailComponent extends BaseTransactionLinesDetailComponent implements OnInit, OnDestroy {
     constructor(

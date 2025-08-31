@@ -1,5 +1,5 @@
 import { Component, inject, OnDestroy, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import {
     BaseTransactionLinesDetailComponent,
     DOC_QUOTATION,
@@ -20,7 +20,7 @@ import { Service, ServiceArticleService } from '@ss/service-sales/service-articl
 @Component({
     selector: 'ss-service-proforma-line-detail',
     standalone: true,
-    imports: [CommonModule, MatButtonModule, MatCardModule, MatFormFieldModule, MatInputModule, MaterialModule, ReactiveFormsModule, TextFieldModule, UiAutoCompleteComponent],
+    imports: [MatButtonModule, MatCardModule, MatFormFieldModule, MatInputModule, MaterialModule, ReactiveFormsModule, TextFieldModule, UiAutoCompleteComponent],
     templateUrl: './service-proforma-line-detail.component.html',
     styleUrls: ['./service-proforma-line-detail.component.css']
 })

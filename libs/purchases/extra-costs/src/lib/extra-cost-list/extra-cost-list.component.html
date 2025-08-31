@@ -1,23 +1,24 @@
 <div class="button_div">
-<!--    <mat-form-field>-->
-<!--        <mat-label translate>COMMON_SEARCH</mat-label>-->
-<!--        <input matInput [formControl]="searchText" type="text">-->
-<!--    </mat-form-field>-->
-
-    <button mat-mini-fab color="primary" (click)="showDetail(0)" [matTooltip]="'COMMON_ADD' | translate"*ngIf="isEditable">
-        <span class="fas fa-plus"></span>
-    </button>
-    <button mat-mini-fab (click)="edit()"
-            [matTooltip]="'COMMON_EDIT' | translate"
-            [disabled]="!selected"
-            color="accent" *ngIf="isEditable">
-        <span class="fas fa-pen"></span>
-    </button>
-    <button mat-mini-fab (click)="deleteSelected()" [matTooltip]="'COMMON_DELETE' | translate"
-            [disabled]="!selected"
-            color="warn" *ngIf="isEditable">
-        <span class="fas fa-trash-alt"></span>
-    </button>
+    <!--    <mat-form-field>-->
+    <!--        <mat-label translate>COMMON_SEARCH</mat-label>-->
+    <!--        <input matInput [formControl]="searchText" type="text">-->
+    <!--    </mat-form-field>-->
+    @if (isEditable) {
+        <button mat-mini-fab color="primary" (click)="showDetail(0)" [matTooltip]="'COMMON_ADD' | translate">
+            <span class="fas fa-plus"></span>
+        </button>
+        <button mat-mini-fab (click)="edit()"
+                [matTooltip]="'COMMON_EDIT' | translate"
+                [disabled]="!selected"
+                color="accent">
+            <span class="fas fa-pen"></span>
+        </button>
+        <button mat-mini-fab (click)="deleteSelected()" [matTooltip]="'COMMON_DELETE' | translate"
+                [disabled]="!selected"
+                color="warn">
+            <span class="fas fa-trash-alt"></span>
+        </button>
+    }
 </div>
 
 <div class="container">
@@ -26,21 +27,21 @@
         <ng-container matColumnDef=reference>
             <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_REFERENCE</mat-header-cell>
             <mat-cell *matCellDef="let e">
-                {{e.reference}}
+                {{ e.reference }}
             </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="description">
             <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_DESCRIPTION</mat-header-cell>
             <mat-cell *matCellDef="let e">
-                {{e.description}}
+                {{ e.description }}
             </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="transactDate">
             <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_DATE</mat-header-cell>
             <mat-cell *matCellDef="let e">
-                {{e.transactDate | date: 'dd/MM/yyyy' }}
+                {{ e.transactDate | date: 'dd/MM/yyyy' }}
             </mat-cell>
         </ng-container>
 
@@ -61,24 +62,23 @@
         <ng-container matColumnDef="supplierName">
             <mat-header-cell *matHeaderCellDef mat-sort-header translate>LOGISTICS_SUPPLIER</mat-header-cell>
             <mat-cell *matCellDef="let e">
-                {{e.supplierName}}
+                {{ e.supplierName }}
             </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="costName">
             <mat-header-cell *matHeaderCellDef mat-sort-header translate>LOGISTICS_COST_TYPE</mat-header-cell>
             <mat-cell *matCellDef="let e">
-                {{e.costName | translate }}
+                {{ e.costName | translate }}
             </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="valueName">
             <mat-header-cell *matHeaderCellDef mat-sort-header translate>LOGISTICS_VALUE_TYPE</mat-header-cell>
             <mat-cell *matCellDef="let e">
-                {{e.valueName | translate }}
+                {{ e.valueName | translate }}
             </mat-cell>
         </ng-container>
-
 
 
         <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>

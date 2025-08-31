@@ -10,7 +10,7 @@ import {LookupsService} from '@ss/common/api-lookup';
 import {InputFiltersService} from './input-filters.service';
 import {SelectionModel} from '@angular/cdk/collections';
 import { debounceTime, distinctUntilChanged, tap } from "rxjs/operators";
-import { NgIf, NgFor } from '@angular/common';
+
 import { MatFormField, MatLabel, MatError } from '@angular/material/form-field';
 import { TranslateDirective } from '@ss/common/ui-lang';
 import { MatInput } from '@angular/material/input';
@@ -24,7 +24,7 @@ import { TranslatePipe } from '@ss/common/ui-lang';
     templateUrl: './input-filter-detail.component.html',
     styleUrls: ['./input-filter-detail.component.scss'],
     standalone: true,
-    imports: [NgIf, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, MatError, MatToolbar, MatListSubheaderCssMatStyler, MatSelectionList, NgFor, MatListOption, MatMiniFabButton, TranslatePipe]
+    imports: [FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, MatError, MatToolbar, MatListSubheaderCssMatStyler, MatSelectionList, MatListOption, MatMiniFabButton, TranslatePipe]
 })
 export class InputFilterDetailComponent extends BaseEntityDetailComponent<InputFilter> {
     filter = new FormControl<string|null>('');

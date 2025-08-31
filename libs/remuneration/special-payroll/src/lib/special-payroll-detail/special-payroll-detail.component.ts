@@ -16,7 +16,7 @@ import { MatCard } from '@angular/material/card';
 import { MatFormField, MatLabel, MatError } from '@angular/material/form-field';
 import { TranslateDirective } from '@ss/common/ui-lang';
 import { MatInput } from '@angular/material/input';
-import { NgIf } from '@angular/common';
+
 import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { MatMiniFabButton } from '@angular/material/button';
 import { MatTooltip } from '@angular/material/tooltip';
@@ -31,7 +31,7 @@ import { TranslatePipe } from '@ss/common/ui-lang';
     templateUrl: './special-payroll-detail.component.html',
     styleUrls: ['./special-payroll-detail.component.scss'],
     standalone: true,
-    imports: [MaterialModule, MatCard, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, NgIf, MatError, UiAutoCompleteComponent, MatMiniFabButton, MatTooltip, MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, ImageInputComponent, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, PaginationComponent, MatProgressSpinner, TranslatePipe]
+    imports: [MaterialModule, MatCard, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, MatError, UiAutoCompleteComponent, MatMiniFabButton, MatTooltip, MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, ImageInputComponent, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, PaginationComponent, MatProgressSpinner, TranslatePipe]
 })
 export class SpecialPayrollDetailComponent extends BaseEntityDetailComponent<Special> implements OnInit, OnDestroy {
     private router = inject(Router);

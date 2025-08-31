@@ -1,5 +1,5 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { MaterialModule } from '@ss/common/api-common';
 import {  ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { ActivatedRoute, RouterModule } from '@angular/router';
@@ -15,14 +15,13 @@ import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
     selector: 'ss-reference-correction',
     standalone: true,
     imports: [
-        CommonModule,
-        MaterialModule,
-        TranslateDirective,
-        TranslatePipe,
-        RouterModule,
-        TranslatePipe,
-        UiAutoCompleteComponent
-    ],
+    MaterialModule,
+    TranslateDirective,
+    TranslatePipe,
+    RouterModule,
+    TranslatePipe,
+    UiAutoCompleteComponent
+],
     templateUrl: './reference-correction.component.html',
     styleUrls: ['./reference-correction.component.css'],
 })

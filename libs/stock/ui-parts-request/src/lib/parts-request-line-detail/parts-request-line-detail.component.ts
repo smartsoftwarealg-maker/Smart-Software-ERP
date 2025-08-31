@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import {
     BaseTransactionLinesDetailComponent,
     DOC_PART_REQUEST
@@ -18,7 +18,7 @@ import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 @Component({
     selector: 'ss-parts-request-line-detail',
     standalone: true,
-    imports: [CommonModule, FormsModule, MatButtonModule, MatCardModule, MatFormFieldModule, MatInputModule, ReactiveFormsModule, TextFieldModule, UiAutoCompleteComponent],
+    imports: [FormsModule, MatButtonModule, MatCardModule, MatFormFieldModule, MatInputModule, ReactiveFormsModule, TextFieldModule, UiAutoCompleteComponent],
     templateUrl: './parts-request-line-detail.component.html',
     styleUrls: ['../../../../../common/assets/src/assets/transac-lines-detail.scss'],
 })

@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import {HttpService, LanguageService, LoginService} from '@ss/common/api-common';
 import {catchError, switchMap, tap} from 'rxjs/operators';
 import {langAssets} from '../environments/environment';
-import { NgIf } from '@angular/common';
+
 import { RouterOutlet } from '@angular/router';
 import { MessageComponent } from '@ss/common/ui-error-handler';
 
@@ -12,7 +12,6 @@ import { MessageComponent } from '@ss/common/ui-error-handler';
     styleUrls: ['./app.component.scss'],
     standalone: true,
     imports: [
-        NgIf,
         RouterOutlet,
         MessageComponent,
     ],

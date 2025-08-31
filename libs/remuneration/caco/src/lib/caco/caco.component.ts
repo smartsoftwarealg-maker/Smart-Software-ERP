@@ -7,7 +7,7 @@ import {Fund, LookupsService} from '@ss/common/api-lookup';
 import {ElementsInfoService} from '@ss/remuneration/elementsinfo';
 import {Formula, PayrollFormulasService} from '@ss/remuneration/payroll-formulas';
 import {CacoService} from '../caco.service';
-import { NgIf, NgFor } from '@angular/common';
+
 import { MatFormField, MatLabel, MatError } from '@angular/material/form-field';
 import { TranslateDirective } from '@ss/common/ui-lang';
 import { MatInput } from '@angular/material/input';
@@ -26,7 +26,7 @@ interface Lookup {
     templateUrl: './caco.component.html',
     styleUrls: ['./caco.component.scss'],
     standalone: true,
-    imports: [NgIf, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, MatError, MatSelect, NgFor, MatOption, MatButton, TranslatePipe]
+    imports: [FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, MatError, MatSelect, MatOption, MatButton, TranslatePipe]
 })
 export class CacoComponent implements OnInit {
     form: UntypedFormGroup = null;

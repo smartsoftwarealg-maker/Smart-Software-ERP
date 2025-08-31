@@ -1,5 +1,5 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { HttpService } from '@ss/common/api-common';
 import {
     MatCell,
@@ -17,7 +17,7 @@ import { ActivatedRoute } from '@angular/router';
 
 @Component({
     selector: 'ss-mrp',
-    imports: [CommonModule, MatTable, MatHeaderCell, MatColumnDef, MatCell, MatHeaderCellDef, MatCellDef, MatHeaderRow, MatHeaderRowDef, MatRow, MatRowDef, TranslateDirective],
+    imports: [MatTable, MatHeaderCell, MatColumnDef, MatCell, MatHeaderCellDef, MatCellDef, MatHeaderRow, MatHeaderRowDef, MatRow, MatRowDef, TranslateDirective],
     templateUrl: './mrp.component.html',
     styleUrl: './mrp.component.scss',
     standalone: true

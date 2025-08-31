@@ -5,7 +5,7 @@ import { AgentService } from '@ss/logistics/api-agent';
 import { FormBuilder, FormsModule, ReactiveFormsModule, Validators } from "@angular/forms";
 import { Router } from '@angular/router';
 import { of, switchMap } from 'rxjs';
-import { CommonModule } from "@angular/common";
+
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from "@angular/material/input";
 import { MatButtonModule } from "@angular/material/button";
@@ -19,17 +19,16 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     styleUrls: ['./password-update.component.scss'],
     standalone: true,
     imports: [
-        CommonModule,
-        FormsModule,
-        MatFormFieldModule,
-        MatInputModule,
-        ReactiveFormsModule,
-        MatButtonModule,
-        MatProgressBarModule,
-        MatCardModule,
-        TranslatePipe,
-        TranslateDirective,
-    ],
+    FormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    ReactiveFormsModule,
+    MatButtonModule,
+    MatProgressBarModule,
+    MatCardModule,
+    TranslatePipe,
+    TranslateDirective
+],
 })
 export class PasswordUpdateComponent implements OnInit {
     private router = inject(Router);

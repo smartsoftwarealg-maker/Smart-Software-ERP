@@ -10,7 +10,7 @@ import {
     UiAutoCompleteComponent,
 } from '@ss/common/ui-auto-complete';
 import { HttpService, MaterialModule } from '@ss/common/api-common';
-import { CommonModule } from '@angular/common';
+
 import { TranslateDirective } from '@ss/common/ui-lang';
 import { DatePickerComponent } from '@ss/common/ui-datepicker';
 import { Agent, SupplierService } from '@ss/logistics/api-agent';
@@ -22,13 +22,12 @@ import { StoresService } from '@ss/stock/api-article-store';
     templateUrl: './lot-management-detail.component.html',
     standalone: true,
     imports: [
-        CommonModule,
-        MaterialModule,
-        RouterModule,
-        TranslateDirective,
-        UiAutoCompleteComponent,
-        DatePickerComponent,
-    ],
+    MaterialModule,
+    RouterModule,
+    TranslateDirective,
+    UiAutoCompleteComponent,
+    DatePickerComponent
+],
 })
 export class LotManagementDetailComponent
     extends BaseEntityDetailComponent<Lot>

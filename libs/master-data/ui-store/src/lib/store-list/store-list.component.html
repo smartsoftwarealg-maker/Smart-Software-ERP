@@ -1,66 +1,68 @@
 <div class="main-container">
-    <div class="table-container">
-        <mat-table mat-table [dataSource]="data" class="main-table">
+  <div class="table-container">
+    <mat-table mat-table [dataSource]="data" class="main-table">
 
-            <ng-container matColumnDef="reference">
-                <mat-header-cell *matHeaderCellDef translate>COMMON_REFERENCE</mat-header-cell>
-                <mat-cell *matCellDef="let e">
-                    {{e.reference}}
-                </mat-cell>
-            </ng-container>
+      <ng-container matColumnDef="reference">
+        <mat-header-cell *matHeaderCellDef translate>COMMON_REFERENCE</mat-header-cell>
+        <mat-cell *matCellDef="let e">
+          {{e.reference}}
+        </mat-cell>
+      </ng-container>
 
-            <ng-container matColumnDef="description2">
-                <mat-header-cell *matHeaderCellDef translate>LOGISTICS_DESCRIPTION</mat-header-cell>
-                <mat-cell *matCellDef="let e">
-                    {{e.description2}}
-                </mat-cell>
-            </ng-container>
+      <ng-container matColumnDef="description2">
+        <mat-header-cell *matHeaderCellDef translate>LOGISTICS_DESCRIPTION</mat-header-cell>
+        <mat-cell *matCellDef="let e">
+          {{e.description2}}
+        </mat-cell>
+      </ng-container>
 
-            <ng-container matColumnDef="price">
-                <mat-header-cell *matHeaderCellDef translate>LOGISTICS_PRICE</mat-header-cell>
-                <mat-cell *matCellDef="let e" style="justify-content: flex-end; direction: ltr;">
-                    {{(e.price == null ? '' : e.price.toFixed(2.0))}}
-                </mat-cell>
-            </ng-container>
+      <ng-container matColumnDef="price">
+        <mat-header-cell *matHeaderCellDef translate>LOGISTICS_PRICE</mat-header-cell>
+        <mat-cell *matCellDef="let e" style="justify-content: flex-end; direction: ltr;">
+          {{(e.price == null ? '' : e.price.toFixed(2.0))}}
+        </mat-cell>
+      </ng-container>
 
-            <ng-container matColumnDef="vat">
-                <mat-header-cell *matHeaderCellDef translate>STOCK_VAT</mat-header-cell>
-                <mat-cell *matCellDef="let e" style="justify-content: flex-end; direction: ltr;">
-                    {{vats[e.vat] == null ? '' : vats[e.vat].toFixed(2)}}
-                </mat-cell>
-            </ng-container>
+      <ng-container matColumnDef="vat">
+        <mat-header-cell *matHeaderCellDef translate>STOCK_VAT</mat-header-cell>
+        <mat-cell *matCellDef="let e" style="justify-content: flex-end; direction: ltr;">
+          {{vats[e.vat] == null ? '' : vats[e.vat].toFixed(2)}}
+        </mat-cell>
+      </ng-container>
 
-            <ng-container matColumnDef="mark">
-                <mat-header-cell *matHeaderCellDef translate>STOCK_MARK</mat-header-cell>
-                <mat-cell *matCellDef="let e">
-                    {{marks[e.mark]}}
-                </mat-cell>
-            </ng-container>
+      <ng-container matColumnDef="mark">
+        <mat-header-cell *matHeaderCellDef translate>STOCK_MARK</mat-header-cell>
+        <mat-cell *matCellDef="let e">
+          {{marks[e.mark]}}
+        </mat-cell>
+      </ng-container>
 
-            <ng-container matColumnDef="accountno">
-                <mat-header-cell *matHeaderCellDef translate>COMMON_ACCOUNTNO</mat-header-cell>
-                <mat-cell *matCellDef="let e">
-                    {{e.accountno}}
-                </mat-cell>
-            </ng-container>
+      <ng-container matColumnDef="accountno">
+        <mat-header-cell *matHeaderCellDef translate>COMMON_ACCOUNTNO</mat-header-cell>
+        <mat-cell *matCellDef="let e">
+          {{e.accountno}}
+        </mat-cell>
+      </ng-container>
 
-            <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
-            <mat-row class="selectable" [class.selected]="row.id == selected" (click)="selectRow(row)"
-                     *matRowDef="let row; columns: displayedColumns;"></mat-row>
-        </mat-table>
-    </div>
-    <div class="pagination-container b-b-background">
-        <ss-pagination [paginationModel]="pagination"></ss-pagination>
-    </div>
+      <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+      <mat-row class="selectable" [class.selected]="row.id == selected" (click)="selectRow(row)"
+      *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+  </div>
+  <div class="pagination-container b-b-background">
+    <ss-pagination [paginationModel]="pagination"></ss-pagination>
+  </div>
 
-    <div class="doc-info">
-        <ss-doc-info
-            *ngIf="selected" [displayedGroups]="['article']"
+  <div class="doc-info">
+    @if (selected) {
+      <ss-doc-info
+        [displayedGroups]="['article']"
             [params]="{
                          articleId: selectedRow?.id,
                          articleUseStoreSearch : true,
                          articleReference: selectedRow?.reference
                      }">
-        </ss-doc-info>
-    </div>
+      </ss-doc-info>
+    }
+  </div>
 </div>

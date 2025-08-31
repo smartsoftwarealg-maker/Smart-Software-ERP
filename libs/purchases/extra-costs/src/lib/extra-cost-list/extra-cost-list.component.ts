@@ -2,14 +2,29 @@ import { Component, inject, OnInit } from '@angular/core';
 import { ExtraCostService } from '../services/extra-cost.service';
 import { PaginationModel } from '@ss/common/api-common';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
-import { COST_TYPES, ExtraCost, VALUE_TYPES } from '@ss/logistics/api-transaction';
+import {
+    COST_TYPES,
+    ExtraCost,
+    VALUE_TYPES,
+} from '@ss/logistics/api-transaction';
 import { Sort, MatSort, MatSortHeader } from '@angular/material/sort';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
-import { NgIf, DecimalPipe, DatePipe } from '@angular/common';
+import { DecimalPipe, DatePipe } from '@angular/common';
 import { MatMiniFabButton } from '@angular/material/button';
 import { MatTooltip } from '@angular/material/tooltip';
-import { MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from '@angular/material/table';
+import {
+    MatTable,
+    MatColumnDef,
+    MatHeaderCellDef,
+    MatHeaderCell,
+    MatCellDef,
+    MatCell,
+    MatHeaderRowDef,
+    MatHeaderRow,
+    MatRowDef,
+    MatRow,
+} from '@angular/material/table';
 import { TranslateDirective } from '@ss/common/ui-lang';
 import { PaginationComponent } from '@ss/common/ui-pagination';
 import { TranslatePipe } from '@ss/common/ui-lang';
@@ -20,7 +35,6 @@ import { TranslatePipe } from '@ss/common/ui-lang';
     styleUrls: ['./extra-cost-list.component.scss'],
     standalone: true,
     imports: [
-        NgIf,
         MatMiniFabButton,
         MatTooltip,
         MatTable,
@@ -62,7 +76,7 @@ export class ExtraCostListComponent implements OnInit {
         'vat',
         'supplierName',
         'costName',
-        'valueName'
+        'valueName',
     ];
 
     constructor() {
@@ -73,11 +87,15 @@ export class ExtraCostListComponent implements OnInit {
     refresh() {
         this.entitySrv
             .getPage(this.paginator, this.shellSrv.getSearchText())
-            .subscribe(next => {
+            .subscribe((next) => {
                 this.data = next;
-                this.data.forEach(d => {
-                    d.costName = COST_TYPES.find(t => t.id === d.costType)?.description;
-                    d.valueName = VALUE_TYPES.find(t => t.id === d.valueType)?.description;
+                this.data.forEach((d) => {
+                    d.costName = COST_TYPES.find(
+                        (t) => t.id === d.costType,
+                    )?.description;
+                    d.valueName = VALUE_TYPES.find(
+                        (t) => t.id === d.valueType,
+                    )?.description;
                 });
             });
     }
@@ -100,31 +118,30 @@ export class ExtraCostListComponent implements OnInit {
     }
 
     deleteSelected() {
-        this.confirmationSrv.confirmDelete()
-            .subscribe(b => {
-                if (b && this.selected > 0) {
-                    const a = this.data.filter(x => x.id === this.selected)[0];
-                    if (a && a.id) {
-                        this.shellSrv.setLoading(true);
-                        this.entitySrv
-                            .remove(a.id)
-                            .subscribe({
-                                next: _ => {
-                                    this.shellSrv.setLoading(false);
-                                    this.snackBarSrv.showSuccessMessage();
-                                },
-                                error: err => {
-                                    this.snackBarSrv.showFailureMessage();
-                                    this.shellSrv.setLoading(false);
-                                    throw err;
-                                }
-                            });
-                    }
+        this.confirmationSrv.confirmDelete().subscribe((b) => {
+            if (b && this.selected > 0) {
+                const a = this.data.filter((x) => x.id === this.selected)[0];
+                if (a && a.id) {
+                    this.shellSrv.setLoading(true);
+                    this.entitySrv.remove(a.id).subscribe({
+                        next: (_) => {
+                            this.shellSrv.setLoading(false);
+                            this.snackBarSrv.showSuccessMessage();
+                        },
+                        error: (err) => {
+                            this.snackBarSrv.showFailureMessage();
+                            this.shellSrv.setLoading(false);
+                            throw err;
+                        },
+                    });
                 }
-            });
+            }
+        });
     }
 
     showDetail(id: number) {
-        this.router.navigate(['../costs-detail', id], { relativeTo: this.route }).then();
+        this.router
+            .navigate(['../costs-detail', id], { relativeTo: this.route })
+            .then();
     }
 }

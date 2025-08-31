@@ -8,7 +8,7 @@ import {  ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import {LookupsService} from '@ss/common/api-lookup';
 import { MaterialModule, PaginatorPersistenceService } from '@ss/common/api-common';
-import { CommonModule } from '@angular/common';
+
 
 
 import { ReactiveFormsModule } from '@angular/forms';
@@ -22,14 +22,11 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
   styleUrls: ['./tag-list.component.css'],
     standalone: true,
     imports: [
-        CommonModule,
-        MaterialModule,
-        ReactiveFormsModule,
-        RouterModule,
-       
-
-        PaginationComponent
-    ]
+    MaterialModule,
+    ReactiveFormsModule,
+    RouterModule,
+    PaginationComponent
+]
 })
 
 export class TagListComponent extends BaseEntityListComponent<Tag>  {

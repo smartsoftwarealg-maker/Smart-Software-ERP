@@ -8,7 +8,7 @@ import { LoginService, MaterialModule } from '@ss/common/api-common';
 import {MatDialog} from '@angular/material/dialog';
 import {InvoiceCancellationService} from '@ss/sales/api-invoice-cancellation';
 import { BaseTransactionDetailComponent, TransactionLinesService } from '@ss/logistics/api-transaction';
-import { CommonModule } from '@angular/common';
+
 
 
 import { DatePickerComponent } from '@ss/common/ui-datepicker';
@@ -24,15 +24,14 @@ import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
     templateUrl: './complement-invoice-detail.component.html',
     standalone: true,
     imports: [
-        CommonModule,
-        MaterialModule,
-        TranslateDirective,
-        ReactiveFormsModule,
-        RouterModule,
-        DatePickerComponent,
-        TranslateDirective,
-        UiAutoCompleteComponent
-    ]
+    MaterialModule,
+    TranslateDirective,
+    ReactiveFormsModule,
+    RouterModule,
+    DatePickerComponent,
+    TranslateDirective,
+    UiAutoCompleteComponent
+]
 })
 export class ComplementInvoiceDetailComponent extends BaseTransactionDetailComponent implements OnInit {
     constructor(

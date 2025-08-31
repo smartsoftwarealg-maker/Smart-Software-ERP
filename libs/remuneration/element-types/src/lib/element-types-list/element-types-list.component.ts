@@ -7,7 +7,7 @@ import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import { MaterialModule, PaginatorPersistenceService } from "@ss/common/api-common";
 import {ElementTypesService} from '../services/element-types.service';
 import {ElementType} from '@ss/payroll-common';
-import { CommonModule } from "@angular/common";
+
 
 
 import { ReactiveFormsModule } from "@angular/forms";
@@ -22,15 +22,11 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     styleUrls: ['./element-types-list.component.scss'],
     standalone: true,
     imports: [
-        CommonModule,
-        MaterialModule,
-        TranslateDirective,
-       
-        ReactiveFormsModule,
-       
-
-        PaginationComponent
-    ]
+    MaterialModule,
+    TranslateDirective,
+    ReactiveFormsModule,
+    PaginationComponent
+]
 })
 export class ElementTypesListComponent extends BaseEntityListComponent<ElementType>  {
     displayedColumns = [

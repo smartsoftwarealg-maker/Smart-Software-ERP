@@ -11,7 +11,7 @@ import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui
 import { ElementTypesService } from '@ss/remuneration/element-types';
 import { EmployeeService, PersonAutocompleteClass } from '@ss/employee-services/employee-services';
 import {  LoanTypeService } from '@ss/payroll-common';
-import { CommonModule } from '@angular/common';
+
 import { TranslateDirective } from '@ss/common/ui-lang';
 import { PaymonthEditorComponent } from '@ss/remuneration/paymonth-editor';
 
@@ -26,12 +26,11 @@ type Period = {
     styleUrls: ['./loans-detail.component.scss'],
     standalone: true,
     imports: [
-        CommonModule,
-        MaterialModule,
-        UiAutoCompleteComponent,
-        TranslateDirective,
-        PaymonthEditorComponent
-    ]
+    MaterialModule,
+    UiAutoCompleteComponent,
+    TranslateDirective,
+    PaymonthEditorComponent
+]
 })
 export class LoansDetailComponent extends BaseEntityDetailComponent<Loan> {
     private employeeSrv = inject(EmployeeService);

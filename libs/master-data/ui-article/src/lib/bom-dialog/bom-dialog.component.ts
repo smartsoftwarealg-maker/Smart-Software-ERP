@@ -1,5 +1,5 @@
 import { Component, Inject, inject } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { MaterialModule } from '@ss/common/api-common';
 import { MatButtonModule } from '@angular/material/button';
 import { ArticleIdAutoCompleteModel, ArticleService, BOM } from '@ss/master-data/api-article';
@@ -12,13 +12,12 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     selector: 'ss-bom-dialog',
     standalone: true,
     imports: [
-        CommonModule,
-        MatButtonModule,
-        TranslateDirective,
-        MaterialModule,
-        TranslatePipe,
-        UiAutoCompleteComponent
-    ],
+    MatButtonModule,
+    TranslateDirective,
+    MaterialModule,
+    TranslatePipe,
+    UiAutoCompleteComponent
+],
     templateUrl: './bom-dialog.component.html',
     styleUrl: './bom-dialog.component.css',
 })

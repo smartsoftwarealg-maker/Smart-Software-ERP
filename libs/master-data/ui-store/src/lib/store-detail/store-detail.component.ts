@@ -8,7 +8,7 @@ import { FormBuilder, ReactiveFormsModule, Validators } from "@angular/forms";
 import {LookupsService, Mark, Vat} from '@ss/common/api-lookup';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {  ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
-import { CommonModule } from "@angular/common";
+
 import { MaterialModule } from "@ss/common/api-common";
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 import { ArticleStoreComponent } from '@ss/stock/article-store';
@@ -19,13 +19,12 @@ import { ArticleStoreComponent } from '@ss/stock/article-store';
     templateUrl: './store-detail.component.html',
     standalone: true,
     imports: [
-        CommonModule,
-        MaterialModule,
-        TranslateDirective,
-        RouterModule,
-        ReactiveFormsModule,
-        ArticleStoreComponent
-    ]
+    MaterialModule,
+    TranslateDirective,
+    RouterModule,
+    ReactiveFormsModule,
+    ArticleStoreComponent
+]
 })
 export class StoreDetailComponent extends BaseEntityDetailComponent<Article> implements OnInit {
 

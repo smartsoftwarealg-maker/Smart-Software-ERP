@@ -19,7 +19,7 @@ import {  ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { ImageInputComponent, ImageModel } from '@ss/common/ui-image-input';
 import { HttpService, MaterialModule } from '@ss/common/api-common';
-import { CommonModule } from '@angular/common';
+
 import { TranslateDirective } from '@ss/common/ui-lang';
 import { ArticleStoreComponent } from '@ss/stock/article-store';
 
@@ -29,14 +29,13 @@ import { ArticleStoreComponent } from '@ss/stock/article-store';
     templateUrl: './article-detail.component.html',
     standalone: true,
     imports: [
-        CommonModule,
-        MaterialModule,
-        RouterModule,
-        TranslateDirective,
-        ImageInputComponent,
-        UiAutoCompleteComponent,
-        ArticleStoreComponent
-    ]
+    MaterialModule,
+    RouterModule,
+    TranslateDirective,
+    ImageInputComponent,
+    UiAutoCompleteComponent,
+    ArticleStoreComponent
+]
 })
 export class ArticleDetailComponent extends BaseEntityDetailComponent<Article> implements OnInit {
     private subClassSrv =  inject(SubclassService);

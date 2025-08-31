@@ -5,7 +5,7 @@ import {ArchiveService} from '../archive.service';
 import {of} from 'rxjs';
 import {ShellService} from '@ss/common/ui-shell';
 import { LanguageService, MaterialModule } from '@ss/common/api-common';
-import { CommonModule } from '@angular/common';
+
 import { ReactiveFormsModule } from '@angular/forms';
 
 
@@ -15,11 +15,10 @@ import { ReactiveFormsModule } from '@angular/forms';
     styleUrls: ['./archive-viewer.component.css'],
     standalone: true,
     imports: [
-        CommonModule,
-        MaterialModule,
-        ReactiveFormsModule,
-        RouterModule
-    ]
+    MaterialModule,
+    ReactiveFormsModule,
+    RouterModule
+]
 })
 export class ArchiveViewerComponent implements OnInit {
     private router  = inject(Router);

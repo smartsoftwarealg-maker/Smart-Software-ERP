@@ -11,7 +11,7 @@ import {  ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { ImageInputComponent, ImageModel } from '@ss/common/ui-image-input';
 import { HttpService, MaterialModule } from '@ss/common/api-common';
-import { CommonModule } from '@angular/common';
+
 
 
 
@@ -29,14 +29,13 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     templateUrl: './final-product-detail.component.html',
     standalone: true,
     imports: [
-        CommonModule,
-        MaterialModule,
-        TranslateDirective,
-        ImageInputComponent,
-        RouterModule,
-        MatCardModule,
-        UiAutoCompleteComponent
-    ]
+    MaterialModule,
+    TranslateDirective,
+    ImageInputComponent,
+    RouterModule,
+    MatCardModule,
+    UiAutoCompleteComponent
+]
 })
 export class FinalProductDetailComponent extends BaseEntityDetailComponent<Article> implements OnInit {
     private routingSrv = inject(CMMSRoutingService);

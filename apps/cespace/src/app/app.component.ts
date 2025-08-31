@@ -5,24 +5,27 @@ import { ShellService } from '@ss/common/ui-shell';
 import { exchangeNavTree } from './exchange/side-nav-tree';
 import {DeviceDetectorService} from "ngx-device-detector";
 import {AdmobClass} from '@ss/common/api-admob';
+import {RouterOutlet} from "@angular/router";
+import {MessageComponent} from "@ss/common/ui-error-handler";
 
 @Component({
     selector: 'ss-root',
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss'],
     standalone: true,
+    imports: [RouterOutlet, MessageComponent],
 })
 export class AppComponent implements OnInit {
-
     loaded = false;
 
-    constructor(private httpSrv: HttpService,
-                private shellSrv: ShellService,
-                private deviceSrv: DeviceDetectorService,
-                public langSrv: LanguageService) {
+    constructor(
+        private httpSrv: HttpService,
+        private shellSrv: ShellService,
+        private deviceSrv: DeviceDetectorService,
+        public langSrv: LanguageService,
+    ) {
         if (this.deviceSrv.isMobile()) {
-            AdmobClass
-                .initialize()
+            AdmobClass.initialize()
                 .then(AdmobClass.banner)
                 .then(() => {});
         }
@@ -30,7 +33,8 @@ export class AppComponent implements OnInit {
 
     ngOnInit() {
         this.shellSrv.setApplicationTitle('Currency Exchange, Ver. 0.0.2 Beta');
-        this.httpSrv.init()
+        this.httpSrv
+            .init()
             .pipe(switchMap(() => this.langSrv.init()))
             .subscribe(() => {
                 this.shellSrv.setSideNavDataSource(exchangeNavTree);

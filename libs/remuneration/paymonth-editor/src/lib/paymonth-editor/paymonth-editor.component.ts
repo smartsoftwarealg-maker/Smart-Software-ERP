@@ -3,7 +3,7 @@ import { ControlValueAccessor, UntypedFormBuilder, UntypedFormGroup, NgControl, 
 import {MatFormFieldControl} from '@angular/material/form-field';
 import {Subject, Subscription} from 'rxjs';
 import {coerceBooleanProperty} from '@angular/cdk/coercion';
-import { NgIf } from "@angular/common";
+
 import { MatInput } from "@angular/material/input";
 
 @Component({
@@ -12,7 +12,7 @@ import { MatInput } from "@angular/material/input";
     providers: [{ provide: MatFormFieldControl, useExisting: PaymonthEditorComponent }],
     styleUrls: ['./paymonth-editor.component.scss'],
     standalone: true,
-    imports: [NgIf, FormsModule, ReactiveFormsModule, MatInput]
+    imports: [FormsModule, ReactiveFormsModule, MatInput]
 })
 export class PaymonthEditorComponent implements MatFormFieldControl<number>, OnDestroy, ControlValueAccessor {
     static nextId = 0;

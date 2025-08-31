@@ -9,7 +9,7 @@ import {
     DefaultAutoCompleteModel,
 } from '@ss/common/ui-auto-complete';
 import { HttpService, MaterialModule } from '@ss/common/api-common';
-import { CommonModule } from '@angular/common';
+
 import { TranslateDirective } from '@ss/common/ui-lang';
 import { DatePickerComponent } from '@ss/common/ui-datepicker';
 import { Agent, SupplierService } from '@ss/logistics/api-agent';
@@ -21,12 +21,11 @@ import { Location, LocationService } from '@ss/master-data/api-article';
     templateUrl: './lot-analysis-detail.component.html',
     standalone: true,
     imports: [
-        CommonModule,
-        MaterialModule,
-        RouterModule,
-        TranslateDirective,
-        DatePickerComponent,
-    ],
+    MaterialModule,
+    RouterModule,
+    TranslateDirective,
+    DatePickerComponent
+],
 })
 export class LotAnalysisDetailComponent extends BaseEntityDetailComponent<Location>
     implements OnInit {

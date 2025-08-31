@@ -18,7 +18,7 @@ import {  ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { ImageInputComponent, ImageModel } from '@ss/common/ui-image-input';
 import { HttpService, MaterialModule } from '@ss/common/api-common';
-import { CommonModule } from '@angular/common';
+
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 import { ArticleStoreComponent } from '@ss/stock/article-store';
 import { ChildBomComponent } from '@ss/master-data/ui-article';
@@ -34,17 +34,16 @@ import { ChildAttributesComponent } from '@ss/custom-attributes';
     templateUrl: './production-article-detail.component.html',
     standalone: true,
     imports: [
-        CommonModule,
-        MaterialModule,
-        RouterModule,
-        TranslateDirective,
-        ImageInputComponent,
-        UiAutoCompleteComponent,
-        ArticleStoreComponent,
-        TranslatePipe,
-        ChildBomComponent,
-        ChildAttributesComponent
-    ]
+    MaterialModule,
+    RouterModule,
+    TranslateDirective,
+    ImageInputComponent,
+    UiAutoCompleteComponent,
+    ArticleStoreComponent,
+    TranslatePipe,
+    ChildBomComponent,
+    ChildAttributesComponent
+]
 })
 export class ProductionArticleDetailComponent
     extends BaseEntityDetailComponent<Article>

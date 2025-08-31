@@ -6,7 +6,7 @@ import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {SnackBarService} from '@ss/common/ui-shell';
 import {LanguageService} from '@ss/common/api-common';
 import { catchError, delay, Observable, of, switchMap, tap } from "rxjs";
-import { NgIf } from '@angular/common';
+
 import { MatCard, MatCardContent } from '@angular/material/card';
 import { MatFormField, MatLabel } from '@angular/material/form-field';
 import { TranslateDirective } from '@ss/common/ui-lang';
@@ -21,7 +21,7 @@ import { TranslatePipe } from '@ss/common/ui-lang';
     templateUrl: './month-canceler.component.html',
     styleUrls: ['./month-canceler.component.scss'],
     standalone: true,
-    imports: [NgIf, MatCard, MatCardContent, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, MatButton, MatProgressBar, MatProgressSpinner, TranslatePipe]
+    imports: [MatCard, MatCardContent, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, MatButton, MatProgressBar, MatProgressSpinner, TranslatePipe]
 })
 export class MonthCancelerComponent implements OnInit {
     form: UntypedFormGroup = null;

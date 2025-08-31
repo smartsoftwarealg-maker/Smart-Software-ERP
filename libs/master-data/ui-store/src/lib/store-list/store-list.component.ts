@@ -9,7 +9,7 @@ import {LookupsService, Vat} from '@ss/common/api-lookup';
 import {  ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import { MaterialModule, PaginatorPersistenceService } from "@ss/common/api-common";
-import { CommonModule } from "@angular/common";
+
 import { ReactiveFormsModule } from "@angular/forms";
 import { DatePickerComponent } from "@ss/common/ui-datepicker";
 
@@ -24,14 +24,13 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     templateUrl: './store-list.component.html',
     standalone: true,
     imports: [
-        CommonModule,
-        MaterialModule,
-        TranslateDirective,
-        RouterModule,
-        ReactiveFormsModule,
-        PaginationComponent,
-        DocInfoComponent
-    ]
+    MaterialModule,
+    TranslateDirective,
+    RouterModule,
+    ReactiveFormsModule,
+    PaginationComponent,
+    DocInfoComponent
+]
 })
 export class StoreListComponent extends BaseEntityListComponent<Article> {
 

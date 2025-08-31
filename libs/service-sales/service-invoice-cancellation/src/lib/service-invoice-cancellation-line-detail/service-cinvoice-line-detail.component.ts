@@ -1,5 +1,5 @@
 import { Component, inject, OnDestroy, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import {
     BaseTransactionLinesDetailComponent, DOC_INVOICE_CANCELLATION, TransactionLinesService
 } from '@ss/logistics/api-transaction';
@@ -18,16 +18,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
 @Component({
     selector: 'ss-service-cinvoice-line-detail',
     standalone: true,
-    imports: [CommonModule,
-        MatButtonModule,
-        MatCardModule,
-        MatFormFieldModule,
-        MatInputModule,
-        MaterialModule,
-        ReactiveFormsModule,
-        TextFieldModule,
-        UiAutoCompleteComponent,
-        TranslateDirective],
+    imports: [MatButtonModule, MatCardModule, MatFormFieldModule, MatInputModule, MaterialModule, ReactiveFormsModule, TextFieldModule, UiAutoCompleteComponent, TranslateDirective],
     templateUrl: './service-cinvoice-line-detail.component.html',
     styleUrls: ['./service-cinvoice-line-detail.component.css']
 })

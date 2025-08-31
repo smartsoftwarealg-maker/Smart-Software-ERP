@@ -11,7 +11,7 @@ import { MatCard, MatCardContent } from '@angular/material/card';
 import { MatFormField, MatLabel, MatError } from '@angular/material/form-field';
 import { TranslateDirective } from '@ss/common/ui-lang';
 import { MatInput } from '@angular/material/input';
-import { NgIf } from '@angular/common';
+
 import { MatCheckbox } from '@angular/material/checkbox';
 import { MaterialModule } from '@ss/common/api-common';
 
@@ -20,7 +20,7 @@ import { MaterialModule } from '@ss/common/api-common';
     templateUrl: './elements-info-detail.component.html',
     styleUrls: ['./elements-info-detail.component.scss'],
     standalone: true,
-    imports: [MaterialModule, MatCard, MatCardContent, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, NgIf, MatError, MatCheckbox]
+    imports: [MaterialModule, MatCard, MatCardContent, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, MatError, MatCheckbox]
 })
 export class ElementsInfoDetailComponent extends BaseEntityDetailComponent<ElementsInfo> {
 

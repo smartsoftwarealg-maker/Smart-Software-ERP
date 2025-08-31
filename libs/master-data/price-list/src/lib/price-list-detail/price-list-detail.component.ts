@@ -6,7 +6,7 @@ import { ReactiveFormsModule, UntypedFormBuilder, Validators } from '@angular/fo
 import {  ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import {Bank, BankService} from '@ss/administration/api-bank';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
-import { CommonModule } from '@angular/common';
+
 import { MaterialModule } from '@ss/common/api-common';
 import { TranslateDirective } from '@ss/common/ui-lang';
 import { Location, LocationService } from '@ss/master-data/api-article';
@@ -18,11 +18,10 @@ import { Location, LocationService } from '@ss/master-data/api-article';
     selector: 'ss-price-list-detail',
     standalone: true,
     imports: [
-        CommonModule,
-        MaterialModule,
-        TranslateDirective,
-        ReactiveFormsModule,
-    ],
+    MaterialModule,
+    TranslateDirective,
+    ReactiveFormsModule
+],
     styleUrls: ['./price-list-detail.component.scss'],
     templateUrl: './price-list-detail.component.html'
 })
