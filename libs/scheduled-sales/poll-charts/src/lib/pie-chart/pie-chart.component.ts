@@ -1,10 +1,8 @@
-import { AfterViewInit, Component, inject, Input, OnInit } from '@angular/core';
-
+import { AfterViewInit, Component, inject, input, OnInit } from '@angular/core';
 import { Chart, ChartConfiguration, ChartItem, registerables } from 'chart.js';
 import { LanguageService } from '@ss/common/api-common';
 import { AnswersCount } from '@ss/scheduleds-sales/poll-charts';
 import { SATISFACTION, YES_NO, COLORS } from '../common';
-
 
 @Component({
     selector: 'ss-question-pie-chart',
@@ -13,31 +11,47 @@ import { SATISFACTION, YES_NO, COLORS } from '../common';
     templateUrl: './pie-chart.component.html',
     styleUrl: './pie-chart.component.scss',
 })
-export class PieChartComponent implements OnInit , AfterViewInit {
+export class PieChartComponent implements OnInit, AfterViewInit {
     private COLORS = COLORS;
     private langSrv = inject(LanguageService);
 
     private yesNo = YES_NO;
     private satis = SATISFACTION;
 
-    @Input() type: 'satisfaction' | 'boolean';
-    @Input() data: AnswersCount;
-    @Input() index: number;
+    type = input<'satisfaction' | 'boolean'>();
+    data = input<AnswersCount>(null);
+    index = input<number>(0);
 
     ngOnInit(): void {
         Chart.register(...registerables);
-
     }
 
-    ngAfterViewInit(){
-        if (this.type === 'satisfaction') {
-            this.buildSatisfactionChart('question'+this.index,this.data.question, this.data.verySatisfied, this.data.satisfied, this.data.unSatisfied)
+    ngAfterViewInit() {
+        if (this.type() === 'satisfaction') {
+            this.buildSatisfactionChart(
+                'question' + this.index,
+                this.data().question,
+                this.data().verySatisfied,
+                this.data().satisfied,
+                this.data().unSatisfied,
+            );
         } else {
-            this.buildBoolChart('question'+this.index,this.data.question, this.data.yes, this.data.no)
+            this.buildBoolChart(
+                'question' + this.index,
+                this.data().question,
+                this.data().yes,
+                this.data().no,
+            );
         }
     }
 
-    private buildSatisfactionChart(id: string, question: string, verySatisfy: number, satisfy: number, unSatisfy: number) {
+    private buildSatisfactionChart(
+        id: string,
+        question: string,
+        verySatisfy: number,
+        satisfy: number,
+        unSatisfy: number,
+    ) {
         let ctx = <ChartItem>document.getElementById(id);
         const data = {
             labels: [
@@ -71,7 +85,7 @@ export class PieChartComponent implements OnInit , AfterViewInit {
                         text: question,
                         font: {
                             weight: 'bold',
-                            style:'initial',
+                            style: 'initial',
                             size: 20,
                         },
                         fullSize: true,
@@ -83,7 +97,12 @@ export class PieChartComponent implements OnInit , AfterViewInit {
         new Chart(ctx, chartConfig);
     }
 
-    private buildBoolChart(id: string, question: string, yes: number, no: number,) {
+    private buildBoolChart(
+        id: string,
+        question: string,
+        yes: number,
+        no: number,
+    ) {
         const ctx = <ChartItem>document.getElementById(id);
         const data = {
             labels: [
@@ -112,7 +131,7 @@ export class PieChartComponent implements OnInit , AfterViewInit {
                         text: question,
                         font: {
                             weight: 'bold',
-                            style:'initial',
+                            style: 'initial',
                             size: 15,
                         },
                         fullSize: true,
@@ -120,7 +139,7 @@ export class PieChartComponent implements OnInit , AfterViewInit {
                     },
                 },
             },
-        }
+        };
         new Chart(ctx, chartConfig);
     }
 }
