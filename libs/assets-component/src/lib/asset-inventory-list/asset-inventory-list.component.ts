@@ -15,14 +15,8 @@ import { InventoryImportComponent } from '../inventory-import/inventory-import.c
 import { CommonModule } from '@angular/common';
 
 
-
-
-import { DatePickerComponent } from '@ss/common/ui-datepicker';
-
-
-
 import { PaginationComponent } from '@ss/common/ui-pagination';
-import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
+import { TranslateDirective } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-asset-inventory-list',
@@ -33,13 +27,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         CommonModule,
         MaterialModule,
         TranslateDirective,
-       
-
-       
         RouterModule,
-
-
-
         PaginationComponent
     ]
 
