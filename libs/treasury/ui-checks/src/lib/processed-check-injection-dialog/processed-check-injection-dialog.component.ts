@@ -1,4 +1,4 @@
-import { Component, inject, Input } from '@angular/core';
+import {Component, inject, input} from '@angular/core';
 import { DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
 import { LotsService } from '@ss/common/api-lookup';
 import { finalize, Subscription } from 'rxjs';
@@ -8,7 +8,6 @@ import { HttpEventType } from '@angular/common/http';
 import { ProcessedCheckService } from '@ss/treasury/api-checks';
 import { BankService } from '@ss/administration/api-bank';
 import { TranslateDirective } from '@ss/common/ui-lang';
-
 import { MatMiniFabButton, MatButton } from '@angular/material/button';
 import { MatProgressBar } from '@angular/material/progress-bar';
 import { MatCard } from '@angular/material/card';
@@ -36,8 +35,7 @@ export class ProcessedCheckInjectionDialogComponent {
         'AM', 'AN', 'AO', 'AP', 'AQ', 'AR', 'AS', 'AT', 'AU', 'AV', 'AW', 'AX', 'AY', 'AZ'
     ];
 
-    @Input()
-        requiredFileType = '.xlsx';
+    requiredFileType = input('.xlsx');
     isEditable = false;
 
     fileName = '';

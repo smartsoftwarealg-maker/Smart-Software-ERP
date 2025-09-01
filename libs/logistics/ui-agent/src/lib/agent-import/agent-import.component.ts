@@ -1,19 +1,12 @@
-import { Component, Inject, inject, Input } from '@angular/core';
+import {Component, Inject, inject, input} from '@angular/core';
 import { ReactiveFormsModule, UntypedFormBuilder, Validators } from '@angular/forms';
 import { LotsService, Lot } from '@ss/common/api-lookup';
-import {  DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
+import { DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
 import { finalize, Subscription } from 'rxjs';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { HttpEventType } from '@angular/common/http';
 import { AgentImportService } from '../agent-import.service';
-
 import { MaterialModule } from '@ss/common/api-common';
-
-
-
-
-
-import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
@@ -40,8 +33,7 @@ export class AgentImportComponent {
         'AM', 'AN', 'AO', 'AP', 'AQ', 'AR', 'AS', 'AT', 'AU', 'AV', 'AW', 'AX', 'AY', 'AZ'
     ];
 
-    @Input()
-        requiredFileType = '.xlsx';
+    requiredFileType = input('.xlsx');
     isEditable = false;
 
     fileName = '';
@@ -77,7 +69,7 @@ export class AgentImportComponent {
             const formData = new FormData();
             formData.append('file', file);
             Object.entries(this.form.value)
-                .filter(([k, v]) => v != null && v != '' && v != ' ')
+                .filter(([_, v]) => v != null && v != '' && v != ' ')
                 .forEach(([k, v]) => formData.append(k, v.toString()));
             this.processing = true;
             this.uploadSub = this.injectSrv
