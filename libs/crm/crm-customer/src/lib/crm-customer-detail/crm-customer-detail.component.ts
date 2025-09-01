@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import {Component, inject, OnInit, signal} from '@angular/core';
 import {
     KeepOnToolbar,
     ShellService,
@@ -6,11 +6,10 @@ import {
     ToolbarButton,
 } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router } from '@angular/router';
-import { switchMap, tap } from 'rxjs/operators';
+import { tap } from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
 import {
     AbstractControl,
-    FormControl,
     ReactiveFormsModule,
     UntypedFormBuilder,
     UntypedFormControl,
@@ -32,13 +31,11 @@ import {
 } from '@ss/common/api-lookup';
 import {
     Agent,
-    AGENT_URL,
     AgentCenter,
     AgentCenterService,
     AgentService,
     CUSTOMER_URL,
-    SUPPLIER_URL,
-    TRANSPORTER_URL,
+
 } from '@ss/logistics/api-agent';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { MatExpansionPanel } from '@angular/material/expansion';
@@ -59,7 +56,6 @@ import {
     AppArchiveMainComponent,
     AppArchiveService,
 } from '@ss/common/app-archive';
-import { MatSelectionListChange } from '@angular/material/list';
 import { CenterService } from '@ss/administration/api-center';
 import { MatDialog } from '@angular/material/dialog';
 import { CrmCustomerImportComponent } from '../crm-customer-import/crm-customer-import.component';
@@ -69,25 +65,32 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 import { ChildAttributesComponent } from '@ss/custom-attributes';
 import { OptionService } from '@ss/logistics/ui-options';
 
+enum Panels {
+    INFO = 0,
+    ADDRESS = 1,
+    ARCHIVE = 2,
+    ATTRIB = 3,
+    CONTACT = 4,
+}
+
 @Component({
     selector: 'ss-crm-customer-detail',
     styleUrls: ['./crm-customer-detail.component.scss'],
     templateUrl: './crm-customer-detail.component.html',
     standalone: true,
     imports: [
-    MaterialModule,
-    TranslateDirective,
-    TranslatePipe,
-    ReactiveFormsModule,
-    AppArchiveMainComponent,
-    UiAutoCompleteComponent,
-    ChildAttributesComponent
-],
+        MaterialModule,
+        TranslateDirective,
+        TranslatePipe,
+        ReactiveFormsModule,
+        AppArchiveMainComponent,
+        UiAutoCompleteComponent,
+        ChildAttributesComponent
+    ],
 })
 export class CrmCustomerDetailComponent
     extends BaseEntityDetailComponent<Agent>
-    implements OnInit
-{
+    implements OnInit {
     private optionSrv = inject(OptionService);
     private defaultAgentType = 0;
     private dialog = inject(MatDialog);
@@ -119,7 +122,6 @@ export class CrmCustomerDetailComponent
 
     archiveSrv = inject(AppArchiveService);
     public LOCAL_AGENT_ARCHIVES = AGENT_ARCHIVES;
-    AQS = false;
 
     departmentLookup = new DefaultAutoCompleteModel(this.departmentSrv);
     activityLookup = new DefaultAutoCompleteModel(this.activitySrv);
@@ -140,8 +142,8 @@ export class CrmCustomerDetailComponent
     selectedCenter = 0;
     agentCenters: AgentCenter[] = [];
 
-    centerLookup = new DefaultAutoCompleteModel<Lookup>(this.centerSrv);
-    centerCtrl = new FormControl<number>(0);
+    selectedDiv = signal<Panels>(Panels.ADDRESS);
+
 
     constructor(
         public agentSrv: AgentService,
@@ -166,47 +168,14 @@ export class CrmCustomerDetailComponent
     }
 
     public override preload(): Observable<any> {
-        return this.isParamSrv.is('AQS').pipe(
-            tap((res) => (this.AQS = res)),
-            switchMap(() =>
-                this.isSales
-                    ? of(null)
-                    : this.optionSrv.get(this.loginSrv.appCtx.center),
-            ),
-            tap((res) => (this.optionSrv.options = res)),
-            switchMap(() => this.route.data),
-            tap((res) => {
-                const isSupplier = res['supplier'];
-                const isCustomer = res['customer'];
-                const isTransporter = res['transporter'];
-                this.entitySrv.setURL(
-                    isCustomer
-                        ? CUSTOMER_URL
-                        : isSupplier
-                          ? SUPPLIER_URL
-                          : isTransporter
-                            ? TRANSPORTER_URL
-                            : AGENT_URL,
-                );
-                this.shellSrv.setTitle(
-                    isCustomer
-                        ? 'LOGISTICS_CUSTOMER'
-                        : isSupplier
-                          ? 'LOGISTICS_SUPPLIER'
-                          : isTransporter
-                            ? 'LOGISTICS_TRANSPORTER'
-                            : 'COMMON_AGENTS',
-                );
-                this.agentTypeLookup = isSupplier
-                    ? new SupplierLookup(this.agentTypeSrv)
-                    : isCustomer
-                      ? new CustomerLookup(this.agentTypeSrv)
-                      : isTransporter
-                        ? new TransporterLookup(this.agentTypeSrv)
-                        : this.agentTypeLookup;
-                this.defaultAgentType = isSupplier ? 2 : isTransporter ? 5 : 0;
-            }),
-        );
+        this.shellSrv.setTitle('LOGISTICS_CUSTOMER');
+        this.agentTypeLookup = new CustomerLookup(this.agentTypeSrv);
+        this.defaultAgentType = 0;
+        this.entitySrv.setURL(CUSTOMER_URL);
+        return this.optionSrv
+            .get(this.loginSrv.appCtx.center)
+            .pipe(tap(res => (this.optionSrv.options = res)));
+
     }
 
     override finishLoading(e: Agent) {
@@ -319,14 +288,14 @@ export class CrmCustomerDetailComponent
 
     public isSectionInvalid(section: string): boolean {
         switch (section) {
-            case 'general':
-                return this.isGeneralSectionInvalid();
-            case 'latin':
-                return this.isLatinSectionInvalid();
-            case 'fiscal':
-                return this.isFiscalSectionInvalid();
-            default:
-                return false;
+        case 'general':
+            return this.isGeneralSectionInvalid();
+        case 'latin':
+            return this.isLatinSectionInvalid();
+        case 'fiscal':
+            return this.isFiscalSectionInvalid();
+        default:
+            return false;
         }
     }
 
@@ -418,6 +387,10 @@ export class CrmCustomerDetailComponent
                 this.form.controls['customerCode'].setValue(res.code);
             });
     }
+
+    select(idx: Panels) {
+        this.selectedDiv.set(idx);
+    }
 }
 
 class CustomerLookup extends DefaultAutoCompleteModel<Lookup> {
@@ -430,24 +403,3 @@ class CustomerLookup extends DefaultAutoCompleteModel<Lookup> {
         id === null || id === undefined ? of(null) : this.entitySrv.get(id);
 }
 
-class TransporterLookup extends DefaultAutoCompleteModel<Lookup> {
-    constructor(public srv: AgentTypeService) {
-        super(srv);
-    }
-
-    override filterLoadedData = (x: Lookup[]) =>
-        x.filter((e) => e && e.id == 5);
-    override getById = (id: Id) =>
-        id === null || id === undefined ? of(null) : this.entitySrv.get(id);
-}
-
-class SupplierLookup extends DefaultAutoCompleteModel<Lookup> {
-    constructor(public srv: AgentTypeService) {
-        super(srv);
-    }
-
-    override filterLoadedData = (x: Lookup[]) =>
-        x.filter((e) => e?.id == 1 || e?.id == 2);
-    override getById = (id: Id) =>
-        id === null || id === undefined ? of(null) : this.entitySrv.get(id);
-}

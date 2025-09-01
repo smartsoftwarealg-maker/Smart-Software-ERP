@@ -25,7 +25,7 @@ export const salesNavTree: SideNavNode = {
             accessRights: 'Agent'
         },
         {
-            name: 'LOGISTICS_CUSTOMER',
+            name: 'LOGISTICS_CUSTOMERS',
             icon: 'fa-solid fa-cart-shopping',
             route: ABS_SALES_CUSTOMER_URL,
             accessRights: 'Customer'

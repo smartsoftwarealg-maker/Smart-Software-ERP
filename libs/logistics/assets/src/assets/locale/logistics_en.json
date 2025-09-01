@@ -67,6 +67,7 @@
     "DOCUMENT": "Document",
     "TOTAL": "Total",
     "CUSTOMER": "Customer",
+    "CUSTOMERS": "Customers",
     "PPRICE": "Stock Price",
     "STORE": "Store",
     "IMPORT_DOCUMENT": "Import a document",
