@@ -26,12 +26,16 @@ mat-expansion-panel {
     align-items: center;
 }
 
-.customer__div {
-    display: flex;
-    flex-wrap: nowrap;
-    gap: 2px;
-    justify-content: center;
+
+.customer__code {
+    mat-form-field {
+        width: calc(100% - 56px);
+    }
+    button {
+        margin-left: 8px;
+    }
 }
+
 
 @media (width >= 700) {
     mat-card {

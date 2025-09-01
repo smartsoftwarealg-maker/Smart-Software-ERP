@@ -69,6 +69,7 @@
     "DOCUMENT": "Document",
     "TOTAL": "Total",
     "CUSTOMER": "Client",
+    "CUSTOMERS": "Clients",
     "IMPORT_DOCUMENT": "Importer un document",
     "CIRCULATION": "Mouvement",
     "CARD": "Fiche de stock",

@@ -77,15 +77,13 @@
         <input matInput formControlName="building" type="text" readonly>
       </mat-form-field>
 
-      <div class="default-50 sm-100">
-        <mat-form-field>
+        <mat-form-field class="default-50 sm-100">
           <mat-label translate>ASSET_BENEFICIARY</mat-label>
           <ss-auto-complete matInput
             [model]="beneficiaryLookup"
             formControlName="beneficiaryId">
           </ss-auto-complete>
         </mat-form-field>
-      </div>
     }
 
     <mat-form-field class="default-50 sm-50">

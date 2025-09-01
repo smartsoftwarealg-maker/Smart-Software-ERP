@@ -85,15 +85,15 @@ const TRANSPORTER = 3;
     templateUrl: './agent-detail.component.html',
     standalone: true,
     imports: [
-    MaterialModule,
-    TranslateDirective,
-    TranslatePipe,
-    ReactiveFormsModule,
-    AppArchiveMainComponent,
-    UiAutoCompleteComponent,
-    ChildAttributesComponent,
-    RouterOutlet
-],
+        MaterialModule,
+        TranslateDirective,
+        TranslatePipe,
+        ReactiveFormsModule,
+        AppArchiveMainComponent,
+        UiAutoCompleteComponent,
+        ChildAttributesComponent,
+        RouterOutlet
+    ],
 })
 export class AgentDetailComponent
     extends BaseEntityDetailComponent<Agent>
@@ -199,27 +199,27 @@ export class AgentDetailComponent
                     isCustomer
                         ? CUSTOMER_URL
                         : isSupplier
-                          ? SUPPLIER_URL
-                          : isTransporter
-                            ? TRANSPORTER_URL
-                            : AGENT_URL,
+                            ? SUPPLIER_URL
+                            : isTransporter
+                                ? TRANSPORTER_URL
+                                : AGENT_URL,
                 );
                 this.shellSrv.setTitle(
                     isCustomer
                         ? 'LOGISTICS_CUSTOMER'
                         : isSupplier
-                          ? 'LOGISTICS_SUPPLIER'
-                          : isTransporter
-                            ? 'LOGISTICS_TRANSPORTER'
-                            : 'COMMON_AGENTS',
+                            ? 'LOGISTICS_SUPPLIER'
+                            : isTransporter
+                                ? 'LOGISTICS_TRANSPORTER'
+                                : 'COMMON_AGENTS',
                 );
                 this.agentTypeLookup = isSupplier
                     ? new SupplierLookup(this.agentTypeSrv)
                     : isCustomer
-                      ? new CustomerLookup(this.agentTypeSrv)
-                      : isTransporter
-                        ? new TransporterLookup(this.agentTypeSrv)
-                        : this.agentTypeLookup;
+                        ? new CustomerLookup(this.agentTypeSrv)
+                        : isTransporter
+                            ? new TransporterLookup(this.agentTypeSrv)
+                            : this.agentTypeLookup;
                 this.defaultAgentType = isSupplier ? 2 : isTransporter ? 5 : 0;
             }),
         );
@@ -335,14 +335,14 @@ export class AgentDetailComponent
 
     public isSectionInvalid(section: string): boolean {
         switch (section) {
-            case 'general':
-                return this.isGeneralSectionInvalid();
-            case 'latin':
-                return this.isLatinSectionInvalid();
-            case 'fiscal':
-                return this.isFiscalSectionInvalid();
-            default:
-                return false;
+        case 'general':
+            return this.isGeneralSectionInvalid();
+        case 'latin':
+            return this.isLatinSectionInvalid();
+        case 'fiscal':
+            return this.isFiscalSectionInvalid();
+        default:
+            return false;
         }
     }
 
@@ -404,10 +404,10 @@ export class AgentDetailComponent
             this.router.url.indexOf('agents') > 0
                 ? PARTNER
                 : this.router.url.indexOf('suppliers') > 0
-                  ? SUPPLIER
-                  : this.router.url.indexOf('transporter') > 0
-                    ? TRANSPORTER
-                    : CUSTOMER;
+                    ? SUPPLIER
+                    : this.router.url.indexOf('transporter') > 0
+                        ? TRANSPORTER
+                        : CUSTOMER;
         // const target = this.router.url.indexOf('agents') > 0?
         //     'agents' :
         //     this.router.url.indexOf('suppliers') > 0? 'suppliers' : 'customers';
