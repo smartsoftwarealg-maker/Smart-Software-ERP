@@ -1,4 +1,4 @@
-import { Component, inject, Input, OnInit, signal } from '@angular/core';
+import { Component, inject, input, OnInit, signal } from '@angular/core';
 
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialog } from '@angular/material/dialog';
@@ -17,20 +17,21 @@ import { BalanceService } from '../balance.service';
     styleUrl: './weight-capture-dialog-button.component.scss',
 })
 export class WeightCaptureDialogButtonComponent implements OnInit {
-    @Input() transactionId = 0;
+
+    transactionId = input(0);
 
     private dialog = inject(MatDialog);
 
     private weightCaptureSrv = inject(WeightCaptureService);
     private balanceTruckSrv = inject(BalanceService);
-    isUrlExist = signal(false);
+    urlExists = signal(false);
 
     ngOnInit() {
         this.weightCaptureSrv.getBalanceUrl().subscribe({
             next: (res) => {
                 if (res.url.length > 0) {
                     this.balanceTruckSrv.setBalanceUrl(res.url);
-                    this.isUrlExist.set(true);
+                    this.urlExists.set(true);
                 }
             },
             error: () => {},
@@ -38,7 +39,7 @@ export class WeightCaptureDialogButtonComponent implements OnInit {
     }
 
     public openTareDialog() {
-        const tare: TruckStatus = { id: this.transactionId, type: 'tare' };
+        const tare: TruckStatus = { id: this.transactionId(), type: 'tare' };
         this.dialog.open(WeightCaptureDialogComponent, {
             minWidth: 'fit-content',
             minHeight: 'fit-content',
@@ -48,7 +49,7 @@ export class WeightCaptureDialogButtonComponent implements OnInit {
     }
 
     public openBrutDialog() {
-        const brut: TruckStatus = { id: this.transactionId, type: 'brut' };
+        const brut: TruckStatus = { id: this.transactionId(), type: 'brut' };
         this.dialog.open(WeightCaptureDialogComponent, {
             minWidth: 'fit-content',
             height: 'fit-content',

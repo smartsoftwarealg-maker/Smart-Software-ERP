@@ -1,9 +1,16 @@
-import {Component, EventEmitter, inject, Input, OnDestroy, OnInit, Output} from '@angular/core';
-
+import {
+    Component,
+    EventEmitter,
+    inject,
+    input,
+    OnDestroy,
+    OnInit,
+    Output,
+} from '@angular/core';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import {CartService} from '../cart.service';
-import {Subscription} from 'rxjs';
-import {debounceTime, distinctUntilChanged} from 'rxjs/operators';
+import { CartService } from '../cart.service';
+import { Subscription } from 'rxjs';
+import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { MatFormField, MatLabel } from '@angular/material/form-field';
 import { TranslateDirective } from '@ss/common/ui-lang';
 import { MatInput } from '@angular/material/input';
@@ -21,48 +28,46 @@ import { TranslatePipe } from '@ss/common/ui-lang';
     styleUrls: ['./header-page.component.scss'],
     standalone: true,
     imports: [
-    MatFormField,
-    MatLabel,
-    TranslateDirective,
-    MatInput,
-    FormsModule,
-    ReactiveFormsModule,
-    MatIconButton,
-    MatTooltip,
-    MatBadge,
-    MatMenuTrigger,
-    MatMenu,
-    MatMenuItem,
-    LanguageSelectComponent,
-    ThemeSelectComponent,
-    TranslatePipe
-],
+        MatFormField,
+        MatLabel,
+        TranslateDirective,
+        MatInput,
+        FormsModule,
+        ReactiveFormsModule,
+        MatIconButton,
+        MatTooltip,
+        MatBadge,
+        MatMenuTrigger,
+        MatMenu,
+        MatMenuItem,
+        LanguageSelectComponent,
+        ThemeSelectComponent,
+        TranslatePipe,
+    ],
 })
 export class HeaderPageComponent implements OnInit, OnDestroy {
-    @Output() refresh   = new EventEmitter<string>();
-    @Output() showCart  = new EventEmitter<string>();
-    @Input() showSearch = true;
+    @Output() refresh = new EventEmitter<string>();
+    @Output() showCart = new EventEmitter<string>();
+    showSearch = input(true);
     private subscriptions: Subscription[] = [];
 
     cartSrv = inject(CartService);
 
     searchControl = new FormControl('');
     logo = './asset/img/logo.png';
+
     constructor() {}
 
     ngOnInit(): void {
         this.subscriptions.push(
-            this.searchControl
-                .valueChanges
-                .pipe(
-                    debounceTime(300),
-                    distinctUntilChanged()
-                )
-                .subscribe(_ => this.refreshEvent()));
+            this.searchControl.valueChanges
+                .pipe(debounceTime(300), distinctUntilChanged())
+                .subscribe((_) => this.refreshEvent()),
+        );
     }
 
     ngOnDestroy() {
-        this.subscriptions.forEach(s => s.unsubscribe());
+        this.subscriptions.forEach((s) => s.unsubscribe());
     }
 
     refreshEvent() {
