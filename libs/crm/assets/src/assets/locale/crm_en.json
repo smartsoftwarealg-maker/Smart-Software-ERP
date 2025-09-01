@@ -60,6 +60,8 @@
     "REFERRAL":             "Referral",
     "EVENT":                "Event",
     "SOCIAL":               "Social",
-    "PARTNER":              "Partner"
+    "PARTNER":              "Partner",
+    "TEAMS":                "Teams",
+    "TEAMS_DETAIL":         "Teams Detail"
 
 }

@@ -13,7 +13,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
 import { LtmMailingService } from '@ltm/ltm-api';
 
 @Component({
-    selector: 'ss-ltm-mailing-list',
+    selector: 'ss-ltm-crm-teams-list',
     templateUrl: './ltm-mailing-list.component.html',
     styleUrls: ['./ltm-mailing-list.component.scss'],
     standalone: true,

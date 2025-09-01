@@ -13,7 +13,7 @@ import {
     CRM_SALUTATIONS_URL,
     CRM_STATUS_URL,
     docInfoRoutes,
-    CRM_CUSTOMER_URL, CRM_LEADS_URL, CRM_CONTACTS_URL, CRM_CAMPAIGN_URL, CRM_MAILING_LIST_URL
+    CRM_CUSTOMER_URL, CRM_LEADS_URL, CRM_CONTACTS_URL, CRM_CAMPAIGN_URL, CRM_MAILING_LIST_URL, CRM_TEAMS_URL
 } from '../common';
 import {
     SalutationsDetailComponent,
@@ -53,6 +53,11 @@ import {
     MailingListDetailComponent,
     MailingLinesListComponent, MailingLinesDetailComponent
 } from '@ss/crm/mailing-list';
+import {
+    CrmTeamsDetailComponent, CrmTeamsLinesDetailComponent,
+    CrmTeamsLinesListComponent,
+    CrmTeamsListComponent
+} from '@ss/crm/crm-teams';
 
 
 export const crmRoutes: Routes = [
@@ -283,6 +288,33 @@ export const crmRoutes: Routes = [
             },
             { path: '**', redirectTo: LIST_URL, pathMatch: 'full' },
         ],
+    },
+    {
+        path: CRM_TEAMS_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: CrmTeamsListComponent,
+                canActivate: [loginGuard]
+            },
+            {
+                path: ':id',
+                component: CrmTeamsDetailComponent,
+                canActivate: [loginGuard],
+                canDeactivate: [CanDeactivateService],
+                children: [
+                    { path: '', redirectTo: 'linelist', pathMatch: 'full' },
+                    {
+                        path: 'linelist',
+                        children: [
+                            { path: '', component: CrmTeamsLinesListComponent },
+                            { path: ':id', component: CrmTeamsLinesDetailComponent }
+                        ]
+                    }
+                ]
+            },
+            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
+        ]
     },
     { path: '', redirectTo: ABS_INDEX_URL, pathMatch: 'full' },
     { path: '**', redirectTo: ABS_INDEX_URL }

@@ -448,5 +448,6 @@
     "ADDRESS_LINE1":        "Adresse 1",
     "ADDRESS_LINE2":        "Adresse 2",
     "IN":                   "Entree",
-    "OUT":                  "Sortie"
+    "OUT":                  "Sortie",
+    "USER_DESCRIPTION":     "description de utilisateur"
 }

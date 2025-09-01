@@ -97,20 +97,20 @@
 
                     <mat-form-field>
                         <mat-label translate>COMMON_PRIORITY</mat-label>
-                        <mat-select formControlName="priority">
+                        <mat-form-field>
+                            <mat-label translate>CRM_OWNER</mat-label>
+                            <ss-auto-complete matInput
+                                              [model]="userLookup"
+                                              formControlName="ownerId">
+                            </ss-auto-complete>
+                        </mat-form-field>     <mat-select formControlName="priority">
                             @for (s of PRIORITIES;track s) {
                                 <mat-option [value]="s" translate>CRM_{{ s }}</mat-option>
                             }
                         </mat-select>
                     </mat-form-field>
 
-                    <mat-form-field>
-                        <mat-label translate>CRM_OWNER</mat-label>
-                        <ss-auto-complete matInput
-                                          [model]="userLookup"
-                                          formControlName="ownerId">
-                        </ss-auto-complete>
-                    </mat-form-field>
+
 
                     <mat-form-field>
                         <mat-label translate>CRM_SCORE</mat-label>
