@@ -5,7 +5,7 @@ import {
     ABS_CRM_DEPARTMENTS_URL,
     ABS_CRM_JOBS_URL, ABS_CRM_LEADS_URL, ABS_CRM_MAILING_LIST_URL, ABS_CRM_PAYMENT_TERMS_URL,
     ABS_CRM_SALUTATIONS_URL,
-    ABS_CRM_STATUS_URL
+    ABS_CRM_STATUS_URL, ABS_CRM_TEAMS_URL
 } from '../common';
 
 export const crmNavTree: SideNavNode = {
@@ -77,6 +77,12 @@ export const crmNavTree: SideNavNode = {
             icon: 'fa-solid fa-telescope',
             route: ABS_CRM_CONTACTS_URL,
             accessRights: 'CRMCustomer',
+        },
+        {
+            name: 'CRM_TEAMS',
+            icon: 'fas fa-people-group',
+            route: ABS_CRM_TEAMS_URL,
+            accessRights: 'CRMTeams',
         },
 
     ],

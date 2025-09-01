@@ -60,6 +60,7 @@
     "REFERRAL":             "Parrainage",
     "EVENT":                "Événement",
     "SOCIAL":               "Social",
-    "PARTNER":              "Partenaire"
-
+    "PARTNER":              "Partenaire",
+    "TEAMS":                "Equipes",
+    "TEAMS_DETAIL":         "Detail Equipes"
 }
