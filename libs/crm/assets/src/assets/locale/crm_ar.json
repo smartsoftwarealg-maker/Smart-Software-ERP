@@ -60,6 +60,8 @@
     "REFERRAL":             "إحالة",
     "EVENT":                "حدث",
     "SOCIAL":               "اجتماعي",
-    "PARTNER":              "شريك"
+    "PARTNER":              "شريك",
+    "TEAMS":                "فرق",
+    "TEAMS_DETAIL":         "تفاصيل فرق إدارة علاقات العملاء"
 
 }

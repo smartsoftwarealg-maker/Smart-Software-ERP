@@ -21,7 +21,7 @@ import { MatCheckbox } from '@angular/material/checkbox';
 import { MailingLineListService } from '../mailing-line-list.service';
 
 @Component({
-    selector: 'ss-mailing-lines-list',
+    selector: 'ss-crm-teams-list-lines-list',
     templateUrl: 'mailing-lines-list.component.html',
     styleUrls: ['mailing-lines-list.component.scss'],
     standalone: true,

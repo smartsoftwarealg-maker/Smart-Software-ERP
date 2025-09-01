@@ -452,5 +452,6 @@
     "ADDRESS_LINE1":        "Address Line 1",
     "ADDRESS_LINE2":        "Address Line 2",
     "IN":                   "In",
-    "OUT":                  "Out"
+    "OUT":                  "Out",
+    "USER_DESCRIPTION":     "User Description"
 }
