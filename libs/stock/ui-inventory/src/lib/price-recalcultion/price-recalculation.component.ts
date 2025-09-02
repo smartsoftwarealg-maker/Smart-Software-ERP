@@ -38,7 +38,7 @@ import { TranslatePipe } from '@ss/common/ui-lang';
 import { PaginationComponent } from '@ss/common/ui-pagination';
 
 interface EvalPrice {
-    id: any;
+    id: number;
     name: string;
 }
 
@@ -114,17 +114,16 @@ export class PriceRecalculationComponent implements OnInit {
     ngOnInit() {
         this.shellSrv.setGoBackPath('..', this.route);
         this.shellSrv.setTitle('STOCK_PRICE_RECALCULATION');
-        this.form = this.formBuilder.group({
-            id: [this.loginSrv.appCtx.center],
-            eval_price: [{ value: 1, disabled: true }],
-            inventory_date: [
-                new Date(new Date().getFullYear(), 0, 1),
-                Validators.required,
-            ],
-        });
-        // this.currencySrv
-        //     .getList(0, 50)
-        //     .subscribe((res) => (this.currencies = res.body));
+        this.optionSrv
+            .get(this.loginSrv.appCtx.center)
+            .subscribe(res => {
+                this.form = this.formBuilder.group({
+                    id: [this.loginSrv.appCtx.center],
+                    eval_price:     [{ value: res?.evalPrice||2, disabled: true }],
+                    inventory_date: [ new Date(new Date().getFullYear(), 0, 1), Validators.required],
+                });
+
+            });
     }
 
     recalculate() {

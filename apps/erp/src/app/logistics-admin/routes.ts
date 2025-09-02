@@ -59,10 +59,10 @@ import {
 import { AgentMergeComponent } from '@ss/logistics/agent-merge';
 import {
     TransportConventionsListComponent
-} from "../../../../../libs/logistics/ui-agent/src/lib/transport-conventions/transport-conventions-list/transport-conventions-list.component";
+} from '@ss/logistics/ui-agent';
 import {
     TransportConventionsDetailComponent
-} from "../../../../../libs/logistics/ui-agent/src/lib/transport-conventions/transport-conventions-detail/transport-conventions-detail.component";
+} from '@ss/logistics/ui-agent';
 
 export const mainRoutes: Routes = [
     {

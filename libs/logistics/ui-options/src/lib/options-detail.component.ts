@@ -31,7 +31,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
 import { Stores, StoresService } from '@ss/stock/api-article-store';
 
 interface EvalPrice {
-    id: any;
+    id: number;
     name: string;
 }
 
@@ -39,12 +39,12 @@ interface EvalPrice {
     selector: 'ss-account-detail',
     standalone: true,
     imports: [
-    MaterialModule,
-    TranslateDirective,
-    ReactiveFormsModule,
-    DatePickerComponent,
-    UiAutoCompleteComponent
-],
+        MaterialModule,
+        TranslateDirective,
+        ReactiveFormsModule,
+        DatePickerComponent,
+        UiAutoCompleteComponent
+    ],
     styleUrls: ['./options-detail.component.scss'],
     templateUrl: './options-detail.component.html',
 })
@@ -92,18 +92,18 @@ export class OptionsDetailComponent
 
     public override setupForm(a: Option) {
         return this.formBuilder.group({
-            id: [this.loginSrv.appCtx.center],
-            evalPrice: [a.evalPrice || 1, Validators.required],
-            mainStore: [a.mainStore],
-            generate_GL: [a.generate_GL],
-            inventoryDate: [a.inventoryDate, Validators.required],
-            defaultCurrency: [a.defaultCurrency, Validators.required],
-            checkPrices: [a.checkPrices || false, Validators.required],
-            passingClient: [a.passingClient],
+            id:                 [this.loginSrv.appCtx.center],
+            evalPrice:          [a.evalPrice || 1, Validators.required],
+            mainStore:          [a.mainStore],
+            generate_GL:        [a.generate_GL],
+            inventoryDate:      [a.inventoryDate, Validators.required],
+            defaultCurrency:    [a.defaultCurrency, Validators.required],
+            checkPrices:        [a.checkPrices || false, Validators.required],
+            passingClient:      [a.passingClient],
             returnInvoiceMerge: [a.returnInvoiceMerge, Validators.required],
-            usesLots: [a.usesLots || false, Validators.required],
-            blockNewLots: [a.blockNewLots || false, Validators.required],
-            prodStore: [a.prodStore],
+            usesLots:           [a.usesLots || false, Validators.required],
+            blockNewLots:       [a.blockNewLots || false, Validators.required],
+            prodStore:          [a.prodStore],
         });
     }
 

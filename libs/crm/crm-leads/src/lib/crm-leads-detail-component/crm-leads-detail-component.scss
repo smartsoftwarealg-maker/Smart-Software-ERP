@@ -1,9 +1,13 @@
 @use '@angular/material' as mat;
 
-.size {
+.content__div,
+form {
     width: 90%;
-    margin: 4PX auto;
-    padding-top: 1em;
+    max-width: 1400px;
+    margin: 8px auto;
+}
+
+mat-card {
     border-radius: 1.4em;
 }
 
@@ -23,12 +27,14 @@
                          "detail  detail campaign optout";
 }
 
-.progress__div {
+.content__div {
     display: flex;
     flex-wrap: wrap;
     justify-items: stretch;
     gap: 1em;
     width: 100%;
+    overflow: auto;
+    padding-top: .5em;
 }
 
 .status {
@@ -65,37 +71,8 @@ mat-form-field {
     flex-grow: 1;
 }
 
-mat-card-content,
-mat-option {
-    font-size: x-small;
-}
-
-//.default-50 {
-//    display: inline-block;
-//    margin: 0 8px;
-//    max-width: calc(50% - 25px);
-//    width: calc(50% - 25px);
-//}
-
-.default-33 {
-    display: inline-block;
-    margin: 0;
-    max-width: 32.8%;
-    width: 32.8%;
-}
-
-:root {
-    @include mat.form-field-overrides((
-        //container-height: 1em,
-        container-text-size: xx-small,
-        outlined-label-text-populated-size: xx-small,
-        outlined-label-text-size: xx-small,
-        filled-label-text-size: xx-small,
-    ));
-
-    @include mat.option-overrides((
-    label-text-size: x-small,
-    ))
+.company__detail {
+    flex: 2 1 25em;
 }
 
 mat-toolbar {
@@ -103,6 +80,7 @@ mat-toolbar {
     margin-bottom: 0.5em;
     font-weight: bolder;
 }
+
 
 @media (width <= 900px) {
     .detail__div {
@@ -114,20 +92,6 @@ mat-toolbar {
         grid-template-areas: "descrip source   opened"
                              "detail  detail   detail"
                              "ecd     campaign optout";
-    }
-}
-
-@media (width <= 500px) {
-    .detail__div {
-        display: grid;
-        gap: .5em;
-        justify-items: stretch;
-        justify-content: stretch;
-        grid-template-columns:  repeat(2, 1fr);
-        grid-template-areas: "descrip  source "
-                             "detail   detail "
-                             "opened   ecd"
-                             "campaign optout";
     }
 }
 

@@ -62,5 +62,6 @@
     "SOCIAL":               "Social",
     "PARTNER":              "Partenaire",
     "TEAMS":                "Equipes",
-    "TEAMS_DETAIL":         "Detail Equipes"
+    "TEAMS_DETAIL":         "Detail Equipes",
+    "ACTIVITIES":           "Activités"
 }

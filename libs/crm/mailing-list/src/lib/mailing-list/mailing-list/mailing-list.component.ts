@@ -24,7 +24,7 @@ import { Lookup } from '@ss/common/api-lookup';
 import { MailingListService } from '../mailing-list.service';
 
 @Component({
-    selector: 'ss-crm-teams-list',
+    selector: 'ss-crm-mailing-list',
     templateUrl: 'mailing-list.component.html',
     styleUrls: ['mailing-list.component.scss'],
     standalone: true,

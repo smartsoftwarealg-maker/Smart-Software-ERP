@@ -23,7 +23,7 @@ import { MailingLineListService } from '../mailing-line-list.service';
 @Component({
     selector: 'ss-crm-teams-list-detail',
     templateUrl: 'mailing-list-detail.component.html',
-    styleUrl: 'crm-teams-list-detail.component.scss',
+    styleUrl: 'mailing-list-detail.component.scss',
     standalone: true,
     imports: [
         MaterialModule,
@@ -48,7 +48,7 @@ export class MailingListDetailComponent extends BaseEntityDetailComponent<Lookup
         public override formBuilder: UntypedFormBuilder,
     ) {
         super(
-          entitySrv,
+            entitySrv,
             shellSrv,
             snackBarSrv,
             route,
