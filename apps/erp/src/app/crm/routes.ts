@@ -15,7 +15,6 @@ import {
     docInfoRoutes,
     CRM_CUSTOMER_URL,
     CRM_LEADS_URL,
-    CRM_CONTACTS_URL,
     CRM_CAMPAIGN_URL,
     CRM_MAILING_LIST_URL,
     CRM_TEAMS_URL,
@@ -50,8 +49,6 @@ import {
     CrmContactsLineListComponent,
 } from '@ss/crm/crm-customer';
 import { CrmLeadsComponent, CrmLeadsDetailComponent } from '@ss/crm/leads';
-import { ContactsComponent } from '@ss/crm/contacts';
-import { ContactsDetailComponent } from '../../../../../libs/crm/contacts/src/lib/contacts-detail/contacts-detail.component';
 import {
     CampaignDetailComponent,
     CampaignListComponent,
@@ -166,23 +163,6 @@ export const crmRoutes: Routes = [
             {
                 path: ':id',
                 component: CrmLeadsDetailComponent,
-                canActivate: [loginGuard],
-                canDeactivate: [CanDeactivateService],
-            },
-            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' },
-        ],
-    },
-    {
-        path: CRM_CONTACTS_URL,
-        children: [
-            {
-                path: LIST_URL,
-                component: ContactsComponent,
-                canActivate: [loginGuard],
-            },
-            {
-                path: ':id',
-                component: ContactsDetailComponent,
                 canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService],
             },
