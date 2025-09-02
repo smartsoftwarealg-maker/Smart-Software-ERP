@@ -1,4 +1,4 @@
-import { Component, inject, Input } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { EmployeeLanguagesService, PersonLanguage } from '@ss/payroll/api-employee';
 import { BaseChildEntityListComponent } from '@ss/common/ui-base-entity';
 import { AsyncPipe } from '@angular/common';
@@ -19,7 +19,7 @@ import { ActivePersonnelService } from '../../active-personnel.service';
     imports: [MaterialModule, MatMiniFabButton, MatTooltip, MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, TranslateDirective, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, PaginationComponent, AsyncPipe, TranslatePipe]
 })
 export class EmployeeLanguagesListComponent extends BaseChildEntityListComponent<PersonLanguage>{
-    @Input() editable = true;
+    // @Input() editable = true;
 
     public displayedColumns = [
         'languageId',

@@ -1,4 +1,4 @@
-import { Component, inject, Input } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { EmployeeDecisionService, Decision } from '@ss/payroll/api-employee';
 import { BaseChildEntityListComponent } from '@ss/common/ui-base-entity';
 import { MatMiniFabButton } from '@angular/material/button';
@@ -18,7 +18,7 @@ import { ActivePersonnelService } from '../../active-personnel.service';
     imports: [MatMiniFabButton, MatTooltip, MatTable, MatColumnDef, MatHeaderCell, TranslateDirective, MatCell, MatHeaderRow, MatRow, PaginationComponent, AsyncPipe, TranslatePipe, MatRowDef, MatHeaderCellDef, MatCellDef, MatHeaderRowDef]
 })
 export class EmployeeDecisionListComponent extends BaseChildEntityListComponent<Decision> {
-    @Input() editable = true;
+    // @Input() editable = true;
 
     public displayedColumns = [
         'dec_reference',

@@ -1,4 +1,4 @@
-import { Component, inject, Input } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import {EmployeeTrainingService} from '../employee-training.service';
 import {Training} from '../employee-training';
 import { BaseChildEntityListComponent } from '@ss/common/ui-base-entity';
@@ -19,7 +19,7 @@ import { ActivePersonnelService } from '../../active-personnel.service';
     imports: [MatMiniFabButton, MatTooltip, MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, TranslateDirective, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, PaginationComponent, AsyncPipe, DecimalPipe, DatePipe, TranslatePipe]
 })
 export class EmployeeTrainingListComponent extends BaseChildEntityListComponent<Training> {
-    @Input() editable = true;
+    // @Input() editable = true;
 
     public displayedColumns = [
         'reference',

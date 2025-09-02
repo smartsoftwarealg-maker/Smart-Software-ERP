@@ -1,12 +1,11 @@
-import { Component, Inject, inject, Input } from '@angular/core';
+import {Component, Inject, inject, input} from '@angular/core';
 import { ReactiveFormsModule, UntypedFormBuilder, Validators } from '@angular/forms';
 import { LotsService, Lot } from '@ss/common/api-lookup';
-import {  DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
+import { DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
 import { finalize, Subscription } from 'rxjs';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { HttpEventType } from '@angular/common/http';
 import { CustomerImportService } from '../customer-import.service';
-
 import { MaterialModule } from '@ss/common/api-common';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
@@ -34,8 +33,7 @@ export class CrmCustomerImportComponent {
         'AM', 'AN', 'AO', 'AP', 'AQ', 'AR', 'AS', 'AT', 'AU', 'AV', 'AW', 'AX', 'AY', 'AZ'
     ];
 
-    @Input()
-        requiredFileType = '.xlsx';
+    requiredFileType = input('.xlsx');
     isEditable = false;
 
     fileName = '';

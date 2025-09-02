@@ -1,4 +1,4 @@
-import { Component, inject, Input, OnInit } from "@angular/core";
+import {Component, inject, input, OnInit} from "@angular/core";
 import {finalize, Subscription} from 'rxjs';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
@@ -6,16 +6,6 @@ import {HttpEventType} from '@angular/common/http';
 import {AssetsService} from '../services/assets.service';
 import {UntypedFormBuilder, Validators} from '@angular/forms';
 import { MaterialModule, UserRightsService } from '@ss/common/api-common';
-
-
-
-
-
-
-import { DatePickerComponent } from '@ss/common/ui-datepicker';
-
-
-
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
@@ -36,8 +26,7 @@ export class AssetExcelInjectionComponent implements OnInit {
         'AM', 'AN', 'AO', 'AP', 'AQ', 'AR', 'AS', 'AT', 'AU', 'AV', 'AW', 'AX', 'AY', 'AZ'
     ];
 
-    @Input()
-        requiredFileType = '.xlsx';
+    requiredFileType = input('.xlsx');
     isEditable = false;
 
     fileName = '';
