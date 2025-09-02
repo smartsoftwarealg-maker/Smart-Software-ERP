@@ -449,5 +449,14 @@
     "ADDRESS_LINE2":        "Adresse 2",
     "IN":                   "Entree",
     "OUT":                  "Sortie",
-    "USER_DESCRIPTION":     "description de utilisateur"
+    "USER_DESCRIPTION":     "description de utilisateur",
+    "MIDDLE_NAME":          "Deuxième prénom",
+    "PRIMARY_EMAIL":        "Email principal",
+    "SECONDARY_EMAIL":      "Email secondaire",
+    "PRIMARY_PHONE":        "Téléphone principal",
+    "SECONDARY_PHONE":      "Téléphone secondaire",
+    "PRIMARY_PHONE_TYPE":   "Type de téléphone principal",
+    "SECONDARY_PHONE_TYPE": "Type de téléphone secondaire",
+    "FAX":                  "Fax"
+
 }

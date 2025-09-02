@@ -21,7 +21,7 @@ import { MailingLineListService } from '../mailing-line-list.service';
 
 
 @Component({
-    selector: 'ss-crm-teams-list-detail',
+    selector: 'ss-mailing-list-detail',
     templateUrl: 'mailing-list-detail.component.html',
     styleUrl: 'mailing-list-detail.component.scss',
     standalone: true,
