@@ -1,4 +1,4 @@
-import {Component, Inject, inject, input} from '@angular/core';
+import {Component, inject, input} from '@angular/core';
 import { ReactiveFormsModule, UntypedFormBuilder, Validators } from '@angular/forms';
 import { LotsService, Lot } from '@ss/common/api-lookup';
 import { DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
@@ -15,14 +15,15 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     styleUrls: ['./crm-customer-import.component.scss'],
     standalone: true,
     imports: [
-    MaterialModule,
-    TranslateDirective,
-    TranslatePipe,
-    ReactiveFormsModule
-],
+        MaterialModule,
+        TranslateDirective,
+        TranslatePipe,
+        ReactiveFormsModule
+    ],
 
 })
 export class CrmCustomerImportComponent {
+    private dialogRef = inject(MatDialogRef<CrmCustomerImportComponent>);
     private fb = inject(UntypedFormBuilder);
     private injectSrv = inject(CustomerImportService);
     private storeNameSrv = inject(LotsService);
@@ -57,9 +58,6 @@ export class CrmCustomerImportComponent {
         swift:       ['M']
     });
 
-    constructor(private dialogRef: MatDialogRef<CrmCustomerImportComponent>,
-        @Inject(MAT_DIALOG_DATA) private data: { transactId: number }) {
-    }
 
 
     onFileSelected(files: any) {

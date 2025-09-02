@@ -357,15 +357,11 @@ export class CrmCustomerDetailComponent
 
     private importAgents() {
         if (!this.invImportBtn.disabled) {
-            const id = this.form.controls['id']?.value;
             const dialogRef = this.dialog.open(CrmCustomerImportComponent, {
                 width: '720px',
-                height: '690px',
+                height: '750px',
                 maxWidth: '750px',
                 disableClose: true,
-                data: {
-                    transactId: id,
-                },
             });
 
             dialogRef.afterClosed().subscribe((result) => {

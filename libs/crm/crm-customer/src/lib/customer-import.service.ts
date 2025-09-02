@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {inject, Injectable} from '@angular/core';
 import { HttpService } from '@ss/common/api-common';
 import { Observable } from 'rxjs';
 
@@ -6,9 +6,11 @@ import { Observable } from 'rxjs';
     providedIn: 'root',
 })
 export class CustomerImportService {
-    constructor(private httpSrv: HttpService) {}
+    private httpSrv = inject(HttpService);
 
-    upload(data: FormData): Observable<any> {
+    // constructor(private httpSrv: HttpService) {}
+
+    upload(data: FormData): Observable<{ count: number} > {
         return this.httpSrv.upload('/agents/injection', data);
     }
 }
