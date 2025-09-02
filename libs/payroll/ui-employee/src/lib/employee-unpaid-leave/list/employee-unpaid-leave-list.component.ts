@@ -1,6 +1,9 @@
-import { Component, inject, Input } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { BaseChildEntityListComponent } from '@ss/common/ui-base-entity';
-import { EmployeeUnpaidLeavesService, UnpaidLeave } from '@ss/payroll/api-employee';
+import {
+    EmployeeUnpaidLeavesService,
+    UnpaidLeave,
+} from '@ss/payroll/api-employee';
 import { MatMiniFabButton } from '@angular/material/button';
 import { MatTooltip } from '@angular/material/tooltip';
 import {
@@ -47,7 +50,7 @@ import { ActivePersonnelService } from '@ss/payroll/ui-employee';
     ],
 })
 export class EmployeeUnpaidLeaveListComponent extends BaseChildEntityListComponent<UnpaidLeave> {
-    @Input() editable = true;
+    //@Input() editable = true;
 
     public displayedColumns = [
         'reference',

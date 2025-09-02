@@ -1,4 +1,4 @@
-import { Component, inject, Input } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { BaseChildEntityListComponent } from '@ss/common/ui-base-entity';
 import {
     Reclassification,
@@ -50,7 +50,7 @@ import { ActivePersonnelService } from '../../active-personnel.service';
     ],
 })
 export class EmployeeReclassificationListComponent extends BaseChildEntityListComponent<Reclassification> {
-    @Input() editable = true;
+    // @Input() editable = true;
 
     public displayedColumns = [
         'reference',

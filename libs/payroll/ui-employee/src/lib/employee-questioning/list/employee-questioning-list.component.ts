@@ -1,4 +1,4 @@
-import { Component, inject, Input } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { BaseChildEntityListComponent } from '@ss/common/ui-base-entity';
 import {
     Questioning,
@@ -50,7 +50,7 @@ import { ActivePersonnelService } from '../../active-personnel.service';
     ],
 })
 export class EmployeeQuestioningListComponent extends BaseChildEntityListComponent<Questioning> {
-    @Input() editable = true;
+    // @Input() editable = true;
 
     public displayedColumns = [
         'reference',
