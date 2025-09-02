@@ -9,11 +9,9 @@ import { MatFormField, MatInput, MatLabel } from '@angular/material/input';
 import { MatOption, MatSelect } from '@angular/material/select';
 import { MatButton } from '@angular/material/button';
 import { MatCheckbox } from '@angular/material/checkbox';
-import { MatTab, MatTabGroup } from '@angular/material/tabs';
 import { BaseChildEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { Contact } from '../api';
 import { CrmContactLineService } from '../crm-contact-line-detail.service';
-import { MatToolbar } from '@angular/material/toolbar';
 
 @Component({
     selector: 'ss-crm-contact-line-detail',
@@ -28,10 +26,7 @@ import { MatToolbar } from '@angular/material/toolbar';
         MatInput,
         MatCheckbox,
         MatOption,
-        MatTabGroup,
-        MatTab,
         TranslateDirective,
-        MatToolbar,
         MatButton,
     ],
     standalone: true,
