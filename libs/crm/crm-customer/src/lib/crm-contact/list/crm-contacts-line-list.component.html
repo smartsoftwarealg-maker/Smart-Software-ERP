@@ -47,17 +47,17 @@
             </mat-cell>
         </ng-container>
 
-        <ng-container matColumnDef="addressLine1">
-            <mat-header-cell *matHeaderCellDef translate>ADMINISTRATION_ADDRESS</mat-header-cell>
+        <ng-container matColumnDef="preferredContactMethod">
+            <mat-header-cell *matHeaderCellDef translate>CRM_PREFERRED_CONTACT_METHOD</mat-header-cell>
             <mat-cell *matCellDef="let e">
-                {{ e.addressLine1 }}
+                {{ e.preferredContactMethod }}
             </mat-cell>
         </ng-container>
 
-        <ng-container matColumnDef="companyName">
-            <mat-header-cell *matHeaderCellDef translate>COMMON_COMPANY_NAME</mat-header-cell>
+        <ng-container matColumnDef="preferredLanguage">
+            <mat-header-cell *matHeaderCellDef translate>CRM_PREFERRED_LANGUAGE</mat-header-cell>
             <mat-cell *matCellDef="let e" translate>
-                {{ e.companyName }}
+                {{ e.preferredLanguage }}
             </mat-cell>
         </ng-container>
 

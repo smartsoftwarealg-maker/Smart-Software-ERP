@@ -40,14 +40,17 @@ mat-tab-group {
             //}
             .small {
                 flex: 1;
+                min-width: 150px;
             }
 
             .medium {
                 flex: 1.4;
+                min-width: 200px;
             }
 
             .large {
                 flex: 2.5;
+                min-width: 270px;
             }
         }
     }

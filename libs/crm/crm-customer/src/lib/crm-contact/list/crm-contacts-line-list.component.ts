@@ -48,8 +48,8 @@ export class CrmContactsLineListComponent extends BaseChildEntityListComponent<C
         'firstName',
         'primaryEmail',
         'primaryPhone',
-        'addressLine1',
-        'companyName',
+        'preferredContactMethod',
+        'preferredLanguage',
     ];
 
     constructor(protected override detailSrv: CrmContactLineService) {

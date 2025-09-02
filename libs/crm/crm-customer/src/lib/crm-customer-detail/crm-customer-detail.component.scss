@@ -4,6 +4,7 @@
     justify-content: flex-end;
     button {
         font-size: .9em;
+        word-spacing: 0.5rem;
     }
 }
 form {
@@ -83,6 +84,8 @@ mat-toolbar {
     max-height: 1.6em;
     font-size: .9em;
     font-weight: bolder;
+    word-spacing: 0.5rem;
+
 }
 
 @media (max-width: 550px) {

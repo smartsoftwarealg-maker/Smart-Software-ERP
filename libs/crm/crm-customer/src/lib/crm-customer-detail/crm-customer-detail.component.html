@@ -1,14 +1,17 @@
 @if (form) {
     <form novalidate [formGroup]="form">
         <div class="selector__div">
-            <button matButton (click)="select(1)" [class.selected__btn]="selectedDiv() === 1" translate>COMMON_ADDRESS
+            <button matButton (click)="select(1)" [class.selected__btn]="selectedDiv() === 1" translate>
+                <i class="fa-solid fa-location-dot"></i> COMMON_ADDRESS
             </button>
             <button matButton (click)="select(4)" [class.selected__btn]="selectedDiv() === 4" translate>
-                LOGISTICS_CONTACT
+                <i class="fa-solid fa-phone"></i> LOGISTICS_CONTACT
             </button>
-            <button matButton (click)="select(2)" [class.selected__btn]="selectedDiv() === 2" translate>COMMON_ARCHIVE
+            <button matButton (click)="select(2)" [class.selected__btn]="selectedDiv() === 2" translate>
+                <i class="fa-solid fa-archive"></i> COMMON_ARCHIVE
             </button>
-            <button matButton (click)="select(0)" [class.selected__btn]="selectedDiv() === 0" translate>LOGISTICS_INFO
+            <button matButton (click)="select(0)" [class.selected__btn]="selectedDiv() === 0" translate>
+                <i class="fa-solid fa-circle-info"></i> LOGISTICS_INFO
             </button>
         </div>
         <div class="general__div">
@@ -89,7 +92,7 @@
             </div>
         </div>
         @if (selectedDiv() == 0) {
-            <mat-toolbar><span translate>LOGISTICS_INFO</span></mat-toolbar>
+            <mat-toolbar><span translate><i class="fa-solid fa-circle-info"></i> LOGISTICS_INFO </span></mat-toolbar>
             <div class="form__div">
                 <div class="default-50 sm-100">
                     <mat-checkbox formControlName="recordBlocked" translate>LOGISTICS_RECORD_BLOCKED</mat-checkbox>
@@ -107,7 +110,7 @@
             </div>
         }
         @if (selectedDiv() === 1) {
-            <mat-toolbar><span translate>COMMON_ADDRESS</span></mat-toolbar>
+            <mat-toolbar><span translate><i class="fa-solid fa-location-dot"></i> COMMON_ADDRESS</span></mat-toolbar>
             <div class="form__div">
 
                 <mat-form-field class="default-50 sm-100">
@@ -185,7 +188,7 @@
             </div>
         }
         @if (selectedDiv() == 2) {
-            <mat-toolbar><span translate>COMMON_ARCHIVE</span></mat-toolbar>
+            <mat-toolbar><span translate> <i class="fa-solid fa-archive"></i> COMMON_ARCHIVE</span></mat-toolbar>
             <div class="form__div">
                 @if (id) {
                     <div class="form__div">
@@ -206,7 +209,7 @@
             </div>
         }
         @if (selectedDiv() == 4) {
-            <mat-toolbar><span translate>LOGISTICS_CONTACT</span></mat-toolbar>
+            <mat-toolbar><span translate><i class="fa-solid fa-phone"></i> LOGISTICS_CONTACT </span></mat-toolbar>
             <div class="form__div">
                 @if (id) {
                     <router-outlet></router-outlet>
