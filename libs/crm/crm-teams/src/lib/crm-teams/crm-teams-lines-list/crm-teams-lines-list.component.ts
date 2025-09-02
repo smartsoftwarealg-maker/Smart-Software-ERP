@@ -17,7 +17,6 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
 import { CRMTeamMember } from '../crm-teams-api.class';
 import { MatMiniFabButton } from '@angular/material/button';
 import { MatTooltip } from '@angular/material/tooltip';
-import { MatCheckbox } from '@angular/material/checkbox';
 import { TeamsLineService } from '../teams-line.service';
 
 @Component({
@@ -40,8 +39,7 @@ import { TeamsLineService } from '../teams-line.service';
         PaginationComponent,
         MatMiniFabButton,
         TranslatePipe,
-        MatTooltip,
-        MatCheckbox
+        MatTooltip
     ]
 })
 export class CrmTeamsLinesListComponent extends BaseChildEntityListComponent<CRMTeamMember> {

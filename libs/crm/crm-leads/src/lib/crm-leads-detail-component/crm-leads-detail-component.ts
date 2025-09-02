@@ -1,5 +1,5 @@
-import { Component, inject, OnInit } from '@angular/core';
-import {MaterialModule} from '@ss/common/api-common';
+import {Component, computed, inject, OnInit, signal} from '@angular/core';
+import {LoginService, MaterialModule} from '@ss/common/api-common';
 import { CRMLeadsService } from '../crm-lead.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
@@ -14,6 +14,15 @@ import {CRMCampaignService} from '../crm-comaign.service';
 import {DefaultAutoCompleteModel, UiAutoCompleteComponent} from '@ss/common/ui-auto-complete';
 import {UserListService} from '@ss/common/api-users';
 import { CityService } from '@ss/common/api-lookup';
+import {sign} from 'chart.js/helpers';
+
+enum Panels {
+    GENERAL = 0,
+    DETAIL = 1,
+    CONTACT = 2,
+    PROGRESS = 3,
+    ACTIVITY = 4,
+}
 
 @Component({
     selector: 'ss-crm-leads-component',
@@ -35,21 +44,25 @@ import { CityService } from '@ss/common/api-lookup';
     ],
 })
 export class CrmLeadsDetailComponent implements OnInit {
+    #loginSrv = inject(LoginService);
     #userSrv  = inject(UserListService);
     #campaignSrv = inject(CRMCampaignService);
-    #citySrv =inject(CityService)
+    #citySrv =inject(CityService);
     #entitySrv = inject(CRMLeadsService);
     #router = inject(Router);
     #route = inject(ActivatedRoute);
     #confirmationSrv = inject(ConfirmationDialogService);
     #snackBarSrv = inject(SnackBarService);
     #shellSrv = inject(ShellService);
+    #NOW = new Date();
 
     campaignLookup = new DefaultAutoCompleteModel(this.#campaignSrv);
     userLookup = new DefaultAutoCompleteModel(this.#userSrv);
     cityLookup = new DefaultAutoCompleteModel(this.#citySrv);
 
+
     formBuilder = inject(FormBuilder);
+
 
     public STATES = [
         'NEW',
@@ -75,7 +88,7 @@ export class CrmLeadsDetailComponent implements OnInit {
     ];
 
     public SOURCE = [
-        'NEW',
+        'WEB',
         'REFERRAL',
         'EVENT',
         'CAMPAIGN',
@@ -89,6 +102,16 @@ export class CrmLeadsDetailComponent implements OnInit {
         'HIGH',
         'CRITICAL',
     ];
+
+    selectedPanel = signal<Panels>(Panels.DETAIL);
+
+    // Add these computed signals to your CrmLeadsDetailComponent class
+
+    isGeneral = computed(() => this.selectedPanel() === Panels.GENERAL);
+    isDetail = computed(() => this.selectedPanel() === Panels.DETAIL);
+    isContact = computed(() => this.selectedPanel() === Panels.CONTACT);
+    isProgress = computed(() => this.selectedPanel() === Panels.PROGRESS);
+    isActivity = computed(() => this.selectedPanel() === Panels.ACTIVITY);
 
     public form: UntypedFormGroup | null = null;
 
@@ -150,17 +173,18 @@ export class CrmLeadsDetailComponent implements OnInit {
             description:       [b?.description, Validators.required],
             detail:            [b?.detail, Validators.required],
             email:             [b?.email],
-            phone:             [b?.phone, Validators.required],
+            phone:             [b?.phone],
             state:             [b?.state],
-            status:            [b?.status, Validators.required],
-            source:            [b?.source],
-            createdAt:         [b?.createdAt, Validators.required],
-            createdBy:         [b?.createdBy, Validators.required],
+            status:            [b?.status||'NEW'],
+            source:            [b?.source||'WEB'],
+            createdAt:         [b?.createdAt||this.#NOW, Validators.required],
+            createdBy:         [b?.createdBy||this.#loginSrv.appCtx.id, Validators.required],
+            updatedAt:         [b?.updatedAt||this.#NOW],
             expectedCloseDate: [b?.expectedCloseDate],
             campaignId:        [b?.campaignId],
             ownerId:           [b?.ownerId],
-            priority:          [b?.priority],
-            score:             [b?.score, [Validators.min(0), Validators.max(10)]],
+            priority:          [b?.priority||'LOW'],
+            score:             [b?.score||0, [Validators.min(0), Validators.max(10)]],
             company:           [b?.company],
             companySite:       [b?.companySite],
             companyIndustry:   [b?.companyIndustry],
@@ -173,6 +197,14 @@ export class CrmLeadsDetailComponent implements OnInit {
             addressLine2:      [b?.addressLine2],
             city:              [b?.city],
             postalCode:        [b?.postalCode],
+            probability:       [b?.probability||0],
+            isDeleted:         [false]
         });
     }
+
+    select(idx: number) {
+        this.selectedPanel.set(idx);
+    }
+
+    protected readonly Panels = Panels;
 }

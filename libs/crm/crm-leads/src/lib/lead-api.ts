@@ -2,7 +2,7 @@ export interface CRMLead {
     id: number;
     description: string;
     detail: string;
-    email: string;
+    email?: string;
     phone?: string;
     company?: string;
     companySite?: string;
