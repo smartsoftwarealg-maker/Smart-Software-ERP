@@ -13,12 +13,11 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 import { MatCard } from '@angular/material/card';
 import { MatFormField, MatLabel } from '@angular/material/form-field';
 import { MatInput } from '@angular/material/input';
-
 import { MailingListLine } from '../miling-list-api.class';
 import { MailingLineListService } from '../mailing-line-list.service';
 
 @Component({
-    selector: 'ss-crm-teams-list-lines-detail',
+    selector: 'ss-mailing-lines-detail.component',
     templateUrl: 'mailing-lines-detail.component.html',
     styleUrl: 'mailing-lines-detail.component.scss',
     standalone: true,

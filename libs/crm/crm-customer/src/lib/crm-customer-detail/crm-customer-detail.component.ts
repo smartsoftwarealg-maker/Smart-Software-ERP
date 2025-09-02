@@ -1,11 +1,11 @@
-import {Component, inject, OnInit, signal} from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import {
     KeepOnToolbar,
     ShellService,
     SnackBarService,
     ToolbarButton,
 } from '@ss/common/ui-shell';
-import { ActivatedRoute, Router } from '@angular/router';
+import {ActivatedRoute, Router, RouterOutlet} from '@angular/router';
 import { tap } from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
 import {
@@ -35,7 +35,6 @@ import {
     AgentCenterService,
     AgentService,
     CUSTOMER_URL,
-
 } from '@ss/logistics/api-agent';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { MatExpansionPanel } from '@angular/material/expansion';
@@ -64,6 +63,7 @@ import { AgentPriceService } from '@ss/logistics/api-agent-price';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 import { ChildAttributesComponent } from '@ss/custom-attributes';
 import { OptionService } from '@ss/logistics/ui-options';
+import {CrmContactLineService} from "../crm-contact/crm-contact-line-detail.service";
 
 enum Panels {
     INFO = 0,
@@ -85,12 +85,14 @@ enum Panels {
         ReactiveFormsModule,
         AppArchiveMainComponent,
         UiAutoCompleteComponent,
-        ChildAttributesComponent
+        ChildAttributesComponent,
+        RouterOutlet,
     ],
 })
 export class CrmCustomerDetailComponent
     extends BaseEntityDetailComponent<Agent>
-    implements OnInit {
+    implements OnInit
+{
     private optionSrv = inject(OptionService);
     private defaultAgentType = 0;
     private dialog = inject(MatDialog);
@@ -110,6 +112,7 @@ export class CrmCustomerDetailComponent
     private companyTypeSrv = inject(CompanyTypeService);
     private citySrv = inject(CityService);
     private countrySrv = inject(CountryService);
+    public crmContactSrv = inject(CrmContactLineService);
 
     private invImportBtn: ToolbarButton = {
         disabled: false,
@@ -144,7 +147,6 @@ export class CrmCustomerDetailComponent
 
     selectedDiv = signal<Panels>(Panels.ADDRESS);
 
-
     constructor(
         public agentSrv: AgentService,
         public override shellSrv: ShellService,
@@ -174,8 +176,7 @@ export class CrmCustomerDetailComponent
         this.entitySrv.setURL(CUSTOMER_URL);
         return this.optionSrv
             .get(this.loginSrv.appCtx.center)
-            .pipe(tap(res => (this.optionSrv.options = res)));
-
+            .pipe(tap((res) => (this.optionSrv.options = res)));
     }
 
     override finishLoading(e: Agent) {
@@ -194,7 +195,7 @@ export class CrmCustomerDetailComponent
         const urlRegExp = new RegExp(
             /[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)?/gi,
         );
-
+        this.crmContactSrv.setParentId(a?.id || 0);
         this.agentCenterSrv.setParentId(a?.id || 0);
         this.agentCenterSrv
             .getList(0, 1000)
@@ -288,14 +289,14 @@ export class CrmCustomerDetailComponent
 
     public isSectionInvalid(section: string): boolean {
         switch (section) {
-        case 'general':
-            return this.isGeneralSectionInvalid();
-        case 'latin':
-            return this.isLatinSectionInvalid();
-        case 'fiscal':
-            return this.isFiscalSectionInvalid();
-        default:
-            return false;
+            case 'general':
+                return this.isGeneralSectionInvalid();
+            case 'latin':
+                return this.isLatinSectionInvalid();
+            case 'fiscal':
+                return this.isFiscalSectionInvalid();
+            default:
+                return false;
         }
     }
 
@@ -354,7 +355,6 @@ export class CrmCustomerDetailComponent
         return super.loadEntity(id);
     }
 
-
     private importAgents() {
         if (!this.invImportBtn.disabled) {
             const id = this.form.controls['id']?.value;
@@ -390,6 +390,16 @@ export class CrmCustomerDetailComponent
 
     select(idx: Panels) {
         this.selectedDiv.set(idx);
+        if (idx == Panels.ARCHIVE) {
+            this.router
+                .navigate(['archive'], { relativeTo: this.route.parent })
+                .then();
+        }
+        if (idx == Panels.CONTACT) {
+            this.router
+                .navigate(['contact'], { relativeTo: this.route.parent })
+                .then();
+        }
     }
 }
 
@@ -402,4 +412,3 @@ class CustomerLookup extends DefaultAutoCompleteModel<Lookup> {
     override getById = (id: Id) =>
         id === null || id === undefined ? of(null) : this.entitySrv.get(id);
 }
-

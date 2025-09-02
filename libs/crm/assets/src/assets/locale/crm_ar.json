@@ -63,5 +63,8 @@
     "PARTNER":              "شريك",
     "TEAMS":                "فرق",
     "TEAMS_DETAIL":         "تفاصيل فرق إدارة علاقات العملاء",
-    "ACTIVITIES":           "الأنشطة"
+    "ACTIVITIES":           "الأنشطة",
+    "PREFERRED_CONTACT_METHOD": "طريقة الاتصال المفضلة",
+    "PREFERRED_LANGUAGE":       "اللغة المفضلة"
+
 }

@@ -63,5 +63,8 @@
     "PARTNER":              "Partenaire",
     "TEAMS":                "Equipes",
     "TEAMS_DETAIL":         "Detail Equipes",
-    "ACTIVITIES":           "Activités"
+    "ACTIVITIES":           "Activités",
+    "PREFERRED_CONTACT_METHOD": "Méthode de contact préférée",
+    "PREFERRED_LANGUAGE":       "Langue préférée"
+
 }

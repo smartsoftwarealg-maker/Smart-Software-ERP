@@ -1,0 +1,63 @@
+.size {
+    width: 95%;
+    max-width: 1400px;
+    margin: 4PX auto;
+}
+
+.ctrl__div {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1em;
+}
+
+mat-table {
+    width: 100%;
+    min-width: 1000px;
+}
+
+.mat-column-lastName,
+.mat-column-firstName {
+    flex: 1 1 80px;
+    border-left: gray solid 1px;
+}
+
+.mat-column-addressLine1 {
+    flex: 1 1 150px;
+    justify-content: center;
+    border-left: gray solid 1px;
+}
+
+.mat-column-primaryEmail {
+    flex: 1 1 120px;
+    justify-content: center;
+    border-left: gray solid 1px;
+}
+
+.mat-column-primaryPhone{
+    flex: 1 1 80px;
+    justify-content: center;
+    border-left: gray solid 1px;
+}
+
+.mat-column-companyName {
+    flex: 1 1 120px;
+    border-left: gray solid 1px;
+    border-right: gray solid 1px;
+}
+
+
+// keep the material design specs
+.mat-row, .mat-header-row {
+    padding-right: 16px;
+    padding-left: 16px;
+}
+
+
+.pagination-container {
+    ss-pagination {
+        left: 0;
+        right: 0;
+        position: sticky;
+        margin: auto;
+    }
+}

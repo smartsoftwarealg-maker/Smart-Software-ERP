@@ -1,10 +1,15 @@
 @if (form) {
     <form novalidate [formGroup]="form">
         <div class="selector__div">
-            <button matButton (click)="select(1)" [class.selected__btn]="selectedDiv() === 1" translate>COMMON_ADDRESS</button>
-            <button matButton (click)="select(4)" [class.selected__btn]="selectedDiv() === 4" translate>LOGISTICS_CONTACT</button>
-            <button matButton (click)="select(2)" [class.selected__btn]="selectedDiv() === 2" translate>COMMON_ARCHIVE</button>
-            <button matButton (click)="select(0)" [class.selected__btn]="selectedDiv() === 0" translate>LOGISTICS_INFO</button>
+            <button matButton (click)="select(1)" [class.selected__btn]="selectedDiv() === 1" translate>COMMON_ADDRESS
+            </button>
+            <button matButton (click)="select(4)" [class.selected__btn]="selectedDiv() === 4" translate>
+                LOGISTICS_CONTACT
+            </button>
+            <button matButton (click)="select(2)" [class.selected__btn]="selectedDiv() === 2" translate>COMMON_ARCHIVE
+            </button>
+            <button matButton (click)="select(0)" [class.selected__btn]="selectedDiv() === 0" translate>LOGISTICS_INFO
+            </button>
         </div>
         <div class="general__div">
             <mat-toolbar><span translate>LOGISTICS_GENERAL</span></mat-toolbar>
@@ -195,7 +200,6 @@
         @if (selectedDiv() == 3) {
             <mat-toolbar><span translate>ADMINISTRATION_ATTRIBUTES</span></mat-toolbar>
             <div class="form__div">
-
                 <ss-child-attributes [childAttribute]="'/agents'" [attributeId]="id" [parentId]="4"
                                      [editable]="isEditable">
                 </ss-child-attributes>
@@ -204,7 +208,9 @@
         @if (selectedDiv() == 4) {
             <mat-toolbar><span translate>LOGISTICS_CONTACT</span></mat-toolbar>
             <div class="form__div">
-                <h1>TODO: Contacts</h1>
+                @if (id) {
+                    <router-outlet></router-outlet>
+                }
             </div>
         }
     </form>

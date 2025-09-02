@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { BaseChildEntityListComponent} from '@ss/common/ui-base-entity';
+import { BaseChildEntityListComponent } from '@ss/common/ui-base-entity';
 import {
     MatTable,
     MatColumnDef,
@@ -39,18 +39,14 @@ import { TeamsLineService } from '../teams-line.service';
         PaginationComponent,
         MatMiniFabButton,
         TranslatePipe,
-        MatTooltip
-    ]
+        MatTooltip,
+    ],
 })
 export class CrmTeamsLinesListComponent extends BaseChildEntityListComponent<CRMTeamMember> {
-
-    override displayedColumns = [
-        'userDescription'
-    ];
+    override displayedColumns = ['userDescription'];
 
     constructor(protected override detailSrv: TeamsLineService) {
         super(detailSrv, 'CRM_TEAMS');
         this.paginator.pageSize = 10;
     }
 }
-

@@ -453,5 +453,13 @@
     "ADDRESS_LINE2":        "Address Line 2",
     "IN":                   "In",
     "OUT":                  "Out",
-    "USER_DESCRIPTION":     "User Description"
+    "USER_DESCRIPTION":     "User Description",
+    "MIDDLE_NAME":          "Middle name",
+    "PRIMARY_EMAIL":        "Primary email",
+    "SECONDARY_EMAIL":      "Secondary email",
+    "PRIMARY_PHONE":        "Primary phone",
+    "SECONDARY_PHONE":      "Secondary phone",
+    "PRIMARY_PHONE_TYPE":   "Primary phone type",
+    "SECONDARY_PHONE_TYPE": "Secondary phone type",
+    "FAX":                  "Fax"
 }

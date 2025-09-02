@@ -12,7 +12,6 @@ import { MaterialModule } from '@ss/common/api-common';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 import { MatCard } from '@angular/material/card';
 import { MatFormField, MatLabel } from '@angular/material/form-field';
-
 import { CRMTeamMember } from '../crm-teams-api.class';
 import { TeamsLineService } from '../teams-line.service';
 import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
