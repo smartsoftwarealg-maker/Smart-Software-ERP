@@ -17,7 +17,7 @@ import {
     CRM_LEADS_URL,
     CRM_CAMPAIGN_URL,
     CRM_MAILING_LIST_URL,
-    CRM_TEAMS_URL,
+    CRM_TEAMS_URL, CRM_OPPORTUNITY_URL,
 } from '../common';
 import {
     SalutationsDetailComponent,
@@ -65,6 +65,7 @@ import {
     CrmTeamsLinesListComponent,
     CrmTeamsListComponent,
 } from '@ss/crm/crm-teams';
+import {CrmOpportunityDetailComponent, CrmOpportunityListComponent} from "@ss/crm/opportunity";
 
 export const crmRoutes: Routes = [
     {
@@ -322,6 +323,23 @@ export const crmRoutes: Routes = [
                         ],
                     },
                 ],
+            },
+            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' },
+        ],
+    },
+    {
+        path: CRM_OPPORTUNITY_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: CrmOpportunityListComponent,
+                canActivate: [loginGuard],
+            },
+            {
+                path: ':id',
+                component: CrmOpportunityDetailComponent,
+                canActivate: [loginGuard],
+                canDeactivate: [CanDeactivateService],
             },
             { path: '**', redirectTo: LIST_URL, pathMatch: 'full' },
         ],
