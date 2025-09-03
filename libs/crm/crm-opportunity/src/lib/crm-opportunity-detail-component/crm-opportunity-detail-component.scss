@@ -1,0 +1,97 @@
+@use '@angular/material' as mat;
+
+.content__div,
+form {
+    width: 90%;
+    max-width: 1400px;
+    margin: 8px auto;
+}
+
+mat-card {
+    border-radius: 1.4em;
+}
+
+.ctrl__div {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1em;
+}
+
+.detail__div {
+    display: grid;
+    gap: .5em;
+    justify-items: stretch;
+    justify-content: stretch;
+    grid-template-columns:  repeat(4, 1fr);
+    grid-template-areas: "descrip source opened   ecd"
+                         "detail  detail campaign optout";
+}
+
+.content__div {
+    display: flex;
+    flex-wrap: wrap;
+    justify-items: stretch;
+    gap: 1em;
+    width: 100%;
+    overflow: auto;
+    padding-top: .5em;
+}
+
+.status {
+    grid-area: status;
+}
+
+.descrip {
+    grid-area: descrip;
+    justify-self: stretch;
+}
+.source {
+    grid-area: source;
+}
+.opened {
+    grid-area: opened;
+}
+.product {
+    grid-area: product;
+}
+.detail {
+    grid-area: detail;
+}
+.campaign {
+    grid-area: campaign;
+}
+.ecd {
+    grid-area: ecd;
+}
+.optout {
+    grid-area: optout;
+}
+
+mat-form-field {
+    flex-grow: 1;
+}
+
+.company__detail {
+    flex: 2 1 25em;
+}
+
+mat-toolbar {
+    max-height: 40px;
+    margin-bottom: 0.5em;
+    font-weight: bolder;
+}
+
+
+@media (width <= 900px) {
+    .detail__div {
+        display: grid;
+        gap: .5em;
+        justify-items: stretch;
+        justify-content: stretch;
+        grid-template-columns:  repeat(3, 1fr);
+        grid-template-areas: "descrip source   opened"
+                             "detail  detail   detail"
+                             "ecd     campaign optout";
+    }
+}
+

@@ -15,27 +15,42 @@
                         <mat-option [value]="s" translate>CRM_{{ s.toUpperCase() }}</mat-option>
                     }
                 </mat-select>
+                @if (form.controls['salutation'].invalid) {
+                    <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+                }
             </mat-form-field>
             <mat-form-field class="large">
                 <mat-label translate>COMMON_FIRST_NAME</mat-label>
-                <input matInput formControlName="firstName">
+                <input matInput type="text" formControlName="firstName">
+                @if (form.controls['firstName'].invalid) {
+                    <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+                }
             </mat-form-field>
             <mat-form-field class="small">
                 <mat-label translate>COMMON_MIDDLE_NAME</mat-label>
-                <input matInput formControlName="middleName">
+                <input matInput type="text" formControlName="middleName">
             </mat-form-field>
             <mat-form-field class="large">
                 <mat-label translate>COMMON_LAST_NAME</mat-label>
-                <input matInput formControlName="lastName">
+                <input matInput type="text" formControlName="lastName">
+                @if (form.controls['lastName'].invalid) {
+                    <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+                }
             </mat-form-field>
 
             <mat-form-field class="large">
                 <mat-label translate>COMMON_PRIMARY_EMAIL</mat-label>
-                <input matInput formControlName="primaryEmail">
+                <input matInput type="text" formControlName="primaryEmail">
+                @if (form.controls['primaryEmail'].invalid) {
+                    <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+                }
             </mat-form-field>
             <mat-form-field class="small">
                 <mat-label translate>COMMON_PRIMARY_PHONE</mat-label>
-                <input matInput formControlName="primaryPhone">
+                <input matInput type="text" formControlName="primaryPhone">
+                @if (form.controls['primaryPhone'].invalid) {
+                    <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+                }
             </mat-form-field>
             <mat-form-field class="medium">
                 <mat-label translate>COMMON_PRIMARY_PHONE_TYPE</mat-label>
@@ -44,15 +59,18 @@
                         <mat-option value="t" translate>COMMON_{{ t }}</mat-option>
                     }
                 </mat-select>
+                @if (form.controls['primaryPhoneType'].invalid) {
+                    <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+                }
             </mat-form-field>
 
             <mat-form-field class="large">
                 <mat-label translate>COMMON_SECONDARY_EMAIL</mat-label>
-                <input matInput formControlName="secondaryEmail">
+                <input matInput type="text" formControlName="secondaryEmail">
             </mat-form-field>
             <mat-form-field class="small">
                 <mat-label translate>COMMON_SECONDARY_PHONE</mat-label>
-                <input matInput formControlName="secondaryPhone">
+                <input matInput type="text" formControlName="secondaryPhone">
             </mat-form-field>
             <mat-form-field class="medium">
                 <mat-label translate>COMMON_SECONDARY_PHONE_TYPE</mat-label>
@@ -65,17 +83,17 @@
 
             <mat-form-field class="very-large">
                 <mat-label translate>COMMON_FACEBOOK_URL</mat-label>
-                <input matInput formControlName="facebookUrl"/>
+                <input matInput type="text" formControlName="facebookUrl"/>
             </mat-form-field>
 
             <mat-form-field class="very-large">
                 <mat-label translate>COMMON_TWITTER_URL</mat-label>
-                <input matInput formControlName="twitterHandle"/>
+                <input matInput type="text" formControlName="twitterHandle"/>
             </mat-form-field>
 
             <mat-form-field class="very-large">
                 <mat-label translate>COMMON_LINKEDIN_URL</mat-label>
-                <input matInput formControlName="linkedInUrl"/>
+                <input matInput type="text" formControlName="linkedInUrl"/>
             </mat-form-field>
 
             <mat-form-field class="medium">

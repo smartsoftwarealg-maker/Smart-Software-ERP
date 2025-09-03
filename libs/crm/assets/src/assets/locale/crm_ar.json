@@ -73,7 +73,15 @@
     "DR":                   "دكتور",
     "PROF":                 "أستاذ",
     "SIR":                  "النبيل",
-    "MADAM":                "السيدة"
+    "MADAM":                "السيدة",
+    "OPPORTUNITIES":        "الفرص",
+    "OPPORTUNITY":          "فرصة",
+    "PRIMARY_CONTACT":      "جهة الاتصال الأساسية",
+    "CLOSE_DATE":           "تاريخ الإغلاق",
+    "BUDGET_ALLOCATED":     "الميزانية المخصصة",
+    "DISCOUNT_AMOUNT":      "مبلغ الخصم",
+    "DISCOUNT_PERCENTAGE":  "نسبة الخصم",
+    "DISCOUNT_STAGE":       "مرحلة الخصم"
 
 
 }

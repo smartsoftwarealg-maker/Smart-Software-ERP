@@ -1,0 +1,215 @@
+<div class="ctrl__div size">
+    <button matButton (click)="list()">
+        @if (this.form?.touched && this.form.dirty) {
+            <span><i class="fa-solid fa-rotate-right"></i> {{ 'COMMON_CANCEL'|translate }}</span>
+        } @else {
+            <span><i class="fa-solid fa-rotate-left"></i> {{ 'COMMON_LIST'|translate }}</span>
+        }
+    </button>
+    <button matButton (click)="select(Panels.DETAIL)"><i
+            class="fa-solid fa-list-ol"></i> {{ 'COMMON_DETAIL'|translate }}
+    </button>
+    <button matButton (click)="select(Panels.ACTIVITY)"><i
+            class="fa-solid fa-list-check"></i> {{ 'CRM_ACTIVITIES'|translate }}
+    </button>
+    <button matButton (click)="select(Panels.PROGRESS)"><i
+            class="fa-solid fa-arrow-progress"></i> {{ 'CRM_PROGRESS'|translate }}
+    </button>
+
+
+    <button matButton (click)="save()"><span><i
+            class="fa-solid fa-floppy-disk"></i> {{ 'COMMON_SAVE'|translate }}</span></button>
+</div>
+@if (form) {
+    <form [formGroup]="form">
+        <mat-card>
+            <mat-card-header>
+                <mat-toolbar>
+                    <h6 translate>CRM_LEAD</h6>
+                </mat-toolbar>
+
+            </mat-card-header>
+            <mat-card-content>
+                <div class="detail__div">
+                    <mat-form-field >
+                        <mat-label translate>COMMON_NAME</mat-label>
+                        <input matInput type="text" formControlName="name">
+                    </mat-form-field>
+
+                    <mat-form-field>
+                        <mat-label translate>CRM_PRIMARY_CONTACT</mat-label>
+                        <input matInput type="text" formControlName="primaryContactId">
+                    </mat-form-field>
+
+                    <mat-form-field>
+                        <mat-label translate>CRM_OWNER</mat-label>
+                        <ss-auto-complete matInput
+                                          [required]="true"
+                                          [model]="agentLookup1"
+                                          formControlName="ownerId"></ss-auto-complete>
+                        @if (form.controls['ownerId'].invalid) {
+                            <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+                        }
+                    </mat-form-field>
+
+                    <mat-form-field>
+                        <mat-label translate>CRM_PARTNER</mat-label>
+                        <ss-auto-complete matInput
+                                          [required]="true"
+                                          [model]="agentLookup2"
+                                          formControlName="partnerId"></ss-auto-complete>
+                        @if (form.controls['partnerId'].invalid) {
+                            <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+                        }
+                    </mat-form-field>
+
+                    <mat-form-field >
+                        <mat-label translate>COMMON_DESCRIPTION</mat-label>
+                        <input matInput type="text" formControlName="description">
+                    </mat-form-field>
+
+                    <mat-form-field>
+                        <mat-label translate>CRM_EXPECTED_REVENUE</mat-label>
+                        <input matInput type="number" formControlName="expectedRevenue">
+                    </mat-form-field>
+
+                    <mat-form-field >
+                        <mat-label translate>CRM_BUDGET_ALLOCATED</mat-label>
+                        <input matInput type="number" formControlName="budgetAllocated">
+                    </mat-form-field>
+
+                    <mat-form-field >
+                        <mat-label translate>CRM_DISCOUNT_AMOUNT</mat-label>
+                        <input matInput type="number" formControlName="discountAmount">
+                    </mat-form-field>
+
+
+                    <mat-form-field >
+                        <mat-label translate>CRM_DISCOUNT_PERCENTAGE</mat-label>
+                        <input matInput type="number" formControlName="discountAmount">
+                    </mat-form-field>
+<br>
+                    <mat-form-field>
+                        <mat-label translate>CRM_DISCOUNT_STAGE</mat-label>
+                        <input matInput type="number" formControlName="stage">
+                    </mat-form-field>
+
+                    <mat-form-field class="opened">
+                        <mat-label translate>CRM_CLOSE_DATE</mat-label>
+                        <ss-date-picker formControlName="closeDate"
+                                        [type]="'date'"> <!--[required]=true-->
+                        </ss-date-picker>
+                    </mat-form-field>
+
+                    <mat-form-field class="ecd">
+                        <mat-label translate>CRM_EXP_CLOSE_DATE</mat-label>
+                        <ss-date-picker formControlName="actualCloseDate"
+                                        [type]="'date'">
+                        </ss-date-picker>
+                    </mat-form-field>
+
+                    <mat-form-field class="campaign">
+                        <mat-label translate>CRM_CAMPAIGN</mat-label>
+                        <ss-auto-complete matInput
+                                          [model]="campaignLookup"
+                                          formControlName="campaignId">
+                        </ss-auto-complete>
+                    </mat-form-field>
+                </div>
+
+            </mat-card-content>
+        </mat-card>
+
+                @if (isProgress()) {
+                    <div class="panel__div">
+                        <mat-toolbar>
+                            <span translate>CRM_PROGRESS</span>
+                        </mat-toolbar>
+                        <div class="content__div">
+        <!--                    <mat-form-field>-->
+        <!--                        <mat-label translate>CRM_OWNER</mat-label>-->
+        <!--                        <ss-auto-complete matInput-->
+        <!--                                          [model]="userLookup"-->
+        <!--                                          formControlName="ownerId">-->
+        <!--                        </ss-auto-complete>-->
+        <!--                    </mat-form-field>-->
+
+        <!--                    <mat-form-field>-->
+        <!--                        <mat-label translate>COMMON_STATE</mat-label>-->
+        <!--                        <mat-select formControlName="state">-->
+        <!--                            @for (s of STATES; track s) {-->
+        <!--                                <mat-option [value]="s" translate>CRM_{{ s }}</mat-option>-->
+        <!--                            }-->
+        <!--                        </mat-select>-->
+        <!--                    </mat-form-field>-->
+
+        <!--                    <mat-form-field>-->
+        <!--                        <mat-label translate>COMMON_STATUS</mat-label>-->
+        <!--                        <mat-select formControlName="status">-->
+        <!--                            @for (s of STATUS; track s) {-->
+        <!--                                <mat-option [value]="s" translate>CRM_{{ s }}</mat-option>-->
+        <!--                            }-->
+        <!--                        </mat-select>-->
+        <!--                    </mat-form-field>-->
+
+        <!--                    <mat-form-field>-->
+        <!--                        <mat-label translate>COMMON_PRIORITY</mat-label>-->
+        <!--                        <mat-select formControlName="priority">-->
+        <!--                            @for (s of PRIORITIES; track s) {-->
+        <!--                                <mat-option [value]="s" translate>CRM_{{ s }}</mat-option>-->
+        <!--                            }-->
+        <!--                        </mat-select>-->
+        <!--                    </mat-form-field>-->
+
+
+        <!--                    <mat-form-field>-->
+        <!--                        <mat-label translate>CRM_SCORE</mat-label>-->
+        <!--                        <input matInput type="number" formControlName="score" min="0" max="10">-->
+        <!--                    </mat-form-field>-->
+
+                        </div>
+                    </div>
+                }
+
+                @if (isDetail()) {
+                    <div class="panel__div">
+                        <mat-toolbar>
+                            <span translate>CRM_COMPANY_DETAIL</span>
+                        </mat-toolbar>
+                        <div class="content__div">
+        <!--                    <mat-form-field class="company__detail">-->
+        <!--                        <mat-label translate>CRM_COMPANY_DETAIL</mat-label>-->
+        <!--                        <input matInput type="text" formControlName="company">-->
+        <!--                    </mat-form-field>-->
+        <!--                    <mat-form-field>-->
+        <!--                        <mat-label translate>COMMON_WEB_SITE</mat-label>-->
+        <!--                        <input matInput type="text" formControlName="companySite">-->
+        <!--                    </mat-form-field>-->
+        <!--                    <mat-form-field>-->
+        <!--                        <mat-label translate>CRM_INDUSTRY</mat-label>-->
+        <!--                        <input matInput type="text" formControlName="companyIndustry">-->
+        <!--                    </mat-form-field>-->
+        <!--                    <mat-form-field>-->
+        <!--                        <mat-label translate>CRM_ANNUAL_REVENUE</mat-label>-->
+        <!--                        <input matInput type="number" formControlName="annualRevenue">-->
+        <!--                    </mat-form-field>-->
+        <!--                    <mat-form-field>-->
+        <!--                        <mat-label translate>CRM_NUMB_OF_EMPLOYEES</mat-label>-->
+        <!--                        <input matInput type="number" formControlName="numberOfEmployees">-->
+        <!--                    </mat-form-field>-->
+                        </div>
+                    </div>
+                }
+
+
+                @if (isActivity()) {
+                    <div class="panel__div">
+                        <mat-toolbar>
+                            <span translate>CRM_ACTIVITIES</span>
+                        </mat-toolbar>
+                        <div class="content__div">
+                        </div>
+                    </div>
+                }
+    </form>
+}

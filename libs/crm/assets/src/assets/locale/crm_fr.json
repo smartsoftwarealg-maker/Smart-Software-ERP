@@ -73,7 +73,15 @@
     "DR":                    "Dr",
     "PROF":                  "Prof",
     "SIR":                   "Sir",
-    "MADAM":                 "Madame"
+    "MADAM":                 "Madame",
+    "OPPORTUNITIES":         "Opportunités",
+    "OPPORTUNITY":           "Opportunité",
+    "PRIMARY_CONTACT":       "Contact principal",
+    "CLOSE_DATE":            "Date de clôture",
+    "BUDGET_ALLOCATED":      "Budget alloué",
+    "DISCOUNT_AMOUNT":       "Montant de la remise",
+    "DISCOUNT_PERCENTAGE":   "Pourcentage de remise",
+    "DISCOUNT_STAGE":        "Étape de remise"
 
 
 }
