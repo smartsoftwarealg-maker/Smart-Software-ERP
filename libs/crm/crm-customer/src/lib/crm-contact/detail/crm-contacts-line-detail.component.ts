@@ -41,9 +41,18 @@ export class CrmContactsLineDetailComponent
         super(detailSrv, 'CRMContactDetail');
     }
 
-    states: number[] = Array.from({ length: 58 }, (_, i) => i + 1);
-    protected phoneTypes = ['MOBILE','WORK','HOME','FAX']
+    protected salutations = [
+        'Mr',
+        'Mrs',
+        'Miss',
+        'Ms',
+        'Dr',
+        'Prof',
+        'Sir',
+        'Madam',
+    ];
 
+    protected phoneTypes = ['MOBILE', 'WORK', 'HOME', 'FAX'];
 
     override setupForm(b: Contact) {
         if (b) {
@@ -56,7 +65,7 @@ export class CrmContactsLineDetailComponent
                 lastName: [b.lastName, Validators.required],
                 primaryEmail: [b.primaryEmail, Validators.required],
                 primaryEmailVerified: [b.primaryEmailVerified],
-                secondaryEmail: [b.secondaryEmail,Validators.email],
+                secondaryEmail: [b.secondaryEmail, Validators.email],
                 primaryPhone: [b.primaryPhone, Validators.required],
                 primaryPhoneType: [b.primaryPhoneType, Validators.required],
                 secondaryPhone: [b.secondaryPhone],

@@ -1,6 +1,9 @@
 @if (form) {
     <form novalidate [formGroup]="form">
         <div class="selector__div">
+            <button matButton (click)="list()">
+                <span><i class="fa-solid fa-rotate-left"></i> {{ 'COMMON_LIST'|translate }}</span>
+            </button>
             <button matButton (click)="select(1)" [class.selected__btn]="selectedDiv() === 1" translate>
                 <i class="fa-solid fa-location-dot"></i> COMMON_ADDRESS
             </button>

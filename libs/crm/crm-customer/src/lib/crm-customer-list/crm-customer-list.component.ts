@@ -27,9 +27,10 @@ import {
 } from '@ss/common/api-common';
 
 import { ReactiveFormsModule } from '@angular/forms';
-import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
 import { PaginationComponent } from '@ss/common/ui-pagination';
 import { TranslateDirective } from '@ss/common/ui-lang';
+import {CrmCustomerImportComponent} from "../crm-customer-import/crm-customer-import.component";
+import {MatDialog} from "@angular/material/dialog";
 
 @Component({
     selector: 'ss-crm-customer-list',
@@ -54,7 +55,17 @@ export class CrmCustomerListComponent extends BaseEntityListComponent<Agent> {
         click: () => this.toggleActivity(),
     };
 
+    private invImportBtn: ToolbarButton = {
+        disabled: false,
+        icon: 'fas fa-file-import',
+        keepOnToolbar: KeepOnToolbar.DYNAMIC,
+        label: 'LOGISTICS_IMPORT_DOCUMENT',
+        visible: true,
+        click: () => this.importAgents(),
+    };
+
     private isParamSrv = inject(IsParamService);
+    private dialog = inject(MatDialog);
 
     private isAQS = false;
     private DEF_COLUMNS = [
@@ -109,6 +120,7 @@ export class CrmCustomerListComponent extends BaseEntityListComponent<Agent> {
         super.ngOnInit();
         this.agentService.activeOnly = true;
         this.shellSrv.addButton(this.#activeOnlyBtn);
+        this.shellSrv.addButton(this.invImportBtn);
     }
 
     override preload(): Observable<any> {
@@ -156,5 +168,25 @@ export class CrmCustomerListComponent extends BaseEntityListComponent<Agent> {
             ? 'fa-solid fa-toggle-on'
             : 'fa-solid fa-toggle-off';
         this.refresh();
+    }
+
+    private importAgents() {
+        if (!this.invImportBtn.disabled) {
+            const dialogRef = this.dialog.open(CrmCustomerImportComponent, {
+                width: '720px',
+                height: '750px',
+                maxWidth: '750px',
+                disableClose: true,
+            });
+
+            dialogRef.afterClosed().subscribe((result) => {
+                if (result && result['count']) {
+                    this.snackBarSrv.showMessage('COMMON_SUCCESS');
+                } else {
+                    this.snackBarSrv.showFailureMessage();
+                }
+                this.shellSrv.setLoading(false);
+            });
+        }
     }
 }
