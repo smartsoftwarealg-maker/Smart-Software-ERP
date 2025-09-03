@@ -65,6 +65,15 @@
     "TEAMS_DETAIL":         "تفاصيل فرق إدارة علاقات العملاء",
     "ACTIVITIES":           "الأنشطة",
     "PREFERRED_CONTACT_METHOD": "طريقة الاتصال المفضلة",
-    "PREFERRED_LANGUAGE":       "اللغة المفضلة"
+    "PREFERRED_LANGUAGE":   "اللغة المفضلة",
+    "MR":                   "السيد",
+    "MRS":                  "السيدة",
+    "MISS":                 "الآنسة",
+    "MS":                   "آنسة",
+    "DR":                   "دكتور",
+    "PROF":                 "أستاذ",
+    "SIR":                  "النبيل",
+    "MADAM":                "السيدة"
+
 
 }

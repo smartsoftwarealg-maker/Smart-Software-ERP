@@ -65,6 +65,15 @@
     "TEAMS_DETAIL":         "Detail Equipes",
     "ACTIVITIES":           "Activités",
     "PREFERRED_CONTACT_METHOD": "Méthode de contact préférée",
-    "PREFERRED_LANGUAGE":       "Langue préférée"
+    "PREFERRED_LANGUAGE":    "Langue préférée",
+    "MR":                    "M.",
+    "MRS":                   "Mme",
+    "MISS":                  "Mlle",
+    "MS":                    "Mlle",
+    "DR":                    "Dr",
+    "PROF":                  "Prof",
+    "SIR":                   "Sir",
+    "MADAM":                 "Madame"
+
 
 }

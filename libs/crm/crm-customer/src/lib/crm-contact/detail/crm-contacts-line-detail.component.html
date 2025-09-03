@@ -8,102 +8,95 @@
 @if (form !== null) {
     <form [formGroup]="form" class="grouped-form">
         <div class="form-group">
-            <div class="form-row">
-                <mat-form-field class="tiny">
-                    <mat-label translate>COMMON_SALUTATION</mat-label>
-                    <mat-select formControlName="salutation">
-                        @for (s of salutations; track s) {
-                            <mat-option [value]="s" translate>{{ s }}</mat-option>
-                        }
-                    </mat-select>
-                </mat-form-field>
-                <mat-form-field class="large">
-                    <mat-label translate>COMMON_FIRST_NAME</mat-label>
-                    <input matInput formControlName="firstName">
-                </mat-form-field>
-                <mat-form-field class="small">
-                    <mat-label translate>COMMON_MIDDLE_NAME</mat-label>
-                    <input matInput formControlName="middleName">
-                </mat-form-field>
-                <mat-form-field class="large">
-                    <mat-label translate>COMMON_LAST_NAME</mat-label>
-                    <input matInput formControlName="lastName">
-                </mat-form-field>
-            </div>
-            <div class="form-row">
-                <mat-form-field class="large">
-                    <mat-label translate>COMMON_PRIMARY_EMAIL</mat-label>
-                    <input matInput formControlName="primaryEmail">
-                </mat-form-field>
-                <mat-form-field class="small">
-                    <mat-label translate>COMMON_PRIMARY_PHONE</mat-label>
-                    <input matInput formControlName="primaryPhone">
-                </mat-form-field>
-                <mat-form-field class="medium">
-                    <mat-label translate>COMMON_PRIMARY_PHONE_TYPE</mat-label>
-                    <mat-select formControlName="primaryPhoneType">
-                        @for (t of phoneTypes; track t) {
-                            <mat-option value="t" translate>COMMON_{{ t }}</mat-option>
-                        }
-                    </mat-select>
-                </mat-form-field>
-            </div>
-            <div class="form-row">
-                <mat-form-field class="large">
-                    <mat-label translate>COMMON_SECONDARY_EMAIL</mat-label>
-                    <input matInput formControlName="secondaryEmail">
-                </mat-form-field>
-                <mat-form-field class="small">
-                    <mat-label translate>COMMON_SECONDARY_PHONE</mat-label>
-                    <input matInput formControlName="secondaryPhone">
-                </mat-form-field>
-                <mat-form-field class="medium">
-                    <mat-label translate>COMMON_SECONDARY_PHONE_TYPE</mat-label>
-                    <mat-select formControlName="secondaryPhoneType">
-                        @for (t of phoneTypes; track t) {
-                            <mat-option value="t" translate>COMMON_{{ t }}</mat-option>
-                        }
-                    </mat-select>
-                </mat-form-field>
-            </div>
-            <div class="form-row">
-                <mat-form-field class="very-large">
-                    <mat-label translate>COMMON_FACEBOOK_URL</mat-label>
-                    <input matInput formControlName="facebookUrl"/>
-                </mat-form-field>
+            <mat-form-field class="tiny">
+                <mat-label translate>COMMON_SALUTATION</mat-label>
+                <mat-select formControlName="salutation">
+                    @for (s of salutations; track s) {
+                        <mat-option [value]="s" translate>CRM_{{ s.toUpperCase() }}</mat-option>
+                    }
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field class="large">
+                <mat-label translate>COMMON_FIRST_NAME</mat-label>
+                <input matInput formControlName="firstName">
+            </mat-form-field>
+            <mat-form-field class="small">
+                <mat-label translate>COMMON_MIDDLE_NAME</mat-label>
+                <input matInput formControlName="middleName">
+            </mat-form-field>
+            <mat-form-field class="large">
+                <mat-label translate>COMMON_LAST_NAME</mat-label>
+                <input matInput formControlName="lastName">
+            </mat-form-field>
 
-                <mat-form-field class="very-large">
-                    <mat-label translate>COMMON_TWITTER_URL</mat-label>
-                    <input matInput formControlName="twitterHandle"/>
-                </mat-form-field>
+            <mat-form-field class="large">
+                <mat-label translate>COMMON_PRIMARY_EMAIL</mat-label>
+                <input matInput formControlName="primaryEmail">
+            </mat-form-field>
+            <mat-form-field class="small">
+                <mat-label translate>COMMON_PRIMARY_PHONE</mat-label>
+                <input matInput formControlName="primaryPhone">
+            </mat-form-field>
+            <mat-form-field class="medium">
+                <mat-label translate>COMMON_PRIMARY_PHONE_TYPE</mat-label>
+                <mat-select formControlName="primaryPhoneType">
+                    @for (t of phoneTypes; track t) {
+                        <mat-option value="t" translate>COMMON_{{ t }}</mat-option>
+                    }
+                </mat-select>
+            </mat-form-field>
 
-                <mat-form-field class="very-large">
-                    <mat-label translate>COMMON_LINKEDIN_URL</mat-label>
-                    <input matInput formControlName="linkedInUrl"/>
-                </mat-form-field>
-            </div>
-            <div class="form-row">
-                <mat-form-field class="medium">
-                    <mat-label translate>CRM_PREFERRED_CONTACT_METHOD</mat-label>
-                    <mat-select formControlName="preferredContactMethod">
-                        <mat-option value="EMAIL" translate>ADMINISTRATION_EMAIL</mat-option>
-                        <mat-option value="PHONE" translate>ADMINISTRATION_PHONE</mat-option>
-                        <mat-option value="SMS" translate>COMMON_SMS</mat-option>
-                    </mat-select>
-                </mat-form-field>
-                <mat-form-field class="medium">
-                    <mat-label translate>CRM_PREFERRED_LANGUAGE</mat-label>
-                    <mat-select formControlName="preferredLanguage">
-                        <mat-option value="en" translate>English</mat-option>
-                        <mat-option value="ar" translate>العربية</mat-option>
-                        <mat-option value="fr" translate>Français</mat-option>
-                    </mat-select>
-                </mat-form-field>
-                <mat-checkbox formControlName="doNotContact" translate>COMMON_DO_NOT_CONTACT</mat-checkbox>
-                <mat-checkbox formControlName="marketingOptIn" translate>COMMON_MARKETING_OPT_IN</mat-checkbox>
-                <mat-checkbox formControlName="isDecisionMaker" translate>COMMON_MARKETING_OPT_IN</mat-checkbox>
-            </div>
+            <mat-form-field class="large">
+                <mat-label translate>COMMON_SECONDARY_EMAIL</mat-label>
+                <input matInput formControlName="secondaryEmail">
+            </mat-form-field>
+            <mat-form-field class="small">
+                <mat-label translate>COMMON_SECONDARY_PHONE</mat-label>
+                <input matInput formControlName="secondaryPhone">
+            </mat-form-field>
+            <mat-form-field class="medium">
+                <mat-label translate>COMMON_SECONDARY_PHONE_TYPE</mat-label>
+                <mat-select formControlName="secondaryPhoneType">
+                    @for (t of phoneTypes; track t) {
+                        <mat-option value="t" translate>COMMON_{{ t }}</mat-option>
+                    }
+                </mat-select>
+            </mat-form-field>
 
+            <mat-form-field class="very-large">
+                <mat-label translate>COMMON_FACEBOOK_URL</mat-label>
+                <input matInput formControlName="facebookUrl"/>
+            </mat-form-field>
+
+            <mat-form-field class="very-large">
+                <mat-label translate>COMMON_TWITTER_URL</mat-label>
+                <input matInput formControlName="twitterHandle"/>
+            </mat-form-field>
+
+            <mat-form-field class="very-large">
+                <mat-label translate>COMMON_LINKEDIN_URL</mat-label>
+                <input matInput formControlName="linkedInUrl"/>
+            </mat-form-field>
+
+            <mat-form-field class="medium">
+                <mat-label translate>CRM_PREFERRED_CONTACT_METHOD</mat-label>
+                <mat-select formControlName="preferredContactMethod">
+                    <mat-option value="EMAIL" translate>ADMINISTRATION_EMAIL</mat-option>
+                    <mat-option value="PHONE" translate>ADMINISTRATION_PHONE</mat-option>
+                    <mat-option value="SMS" translate>COMMON_SMS</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field class="medium">
+                <mat-label translate>CRM_PREFERRED_LANGUAGE</mat-label>
+                <mat-select formControlName="preferredLanguage">
+                    <mat-option value="en" translate>English</mat-option>
+                    <mat-option value="ar" translate>العربية</mat-option>
+                    <mat-option value="fr" translate>Français</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-checkbox formControlName="doNotContact" translate>COMMON_DO_NOT_CONTACT</mat-checkbox>
+            <mat-checkbox formControlName="marketingOptIn" translate>COMMON_MARKETING_OPT_IN</mat-checkbox>
+            <mat-checkbox formControlName="isDecisionMaker" translate>COMMON_MARKETING_OPT_IN</mat-checkbox>
         </div>
     </form>
 }

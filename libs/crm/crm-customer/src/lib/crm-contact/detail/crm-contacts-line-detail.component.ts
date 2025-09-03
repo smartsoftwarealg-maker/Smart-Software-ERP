@@ -46,10 +46,8 @@ export class CrmContactsLineDetailComponent
         'Mrs',
         'Miss',
         'Ms',
-        'Mx',
         'Dr',
         'Prof',
-        'Rev',
         'Sir',
         'Madam',
     ];

@@ -1,11 +1,9 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
 import {
-    KeepOnToolbar,
     ShellService,
     SnackBarService,
-    ToolbarButton,
 } from '@ss/common/ui-shell';
-import {ActivatedRoute, Router, RouterOutlet} from '@angular/router';
+import { ActivatedRoute, Router, RouterOutlet } from '@angular/router';
 import { tap } from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
 import {
@@ -36,11 +34,10 @@ import {
     AgentService,
     CUSTOMER_URL,
 } from '@ss/logistics/api-agent';
-import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
+ import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { MatExpansionPanel } from '@angular/material/expansion';
 import {
     FormValidators,
-    IsParamService,
     LoginService,
     MaterialModule,
 } from '@ss/common/api-common';
@@ -56,14 +53,12 @@ import {
     AppArchiveService,
 } from '@ss/common/app-archive';
 import { CenterService } from '@ss/administration/api-center';
-import { MatDialog } from '@angular/material/dialog';
-import { CrmCustomerImportComponent } from '../crm-customer-import/crm-customer-import.component';
 import { AgentPriceService } from '@ss/logistics/api-agent-price';
 
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 import { ChildAttributesComponent } from '@ss/custom-attributes';
 import { OptionService } from '@ss/logistics/ui-options';
-import {CrmContactLineService} from "../crm-contact/crm-contact-line-detail.service";
+import { CrmContactLineService } from '../crm-contact/crm-contact-line-detail.service';
 
 enum Panels {
     INFO = 0,
@@ -95,9 +90,8 @@ export class CrmCustomerDetailComponent
 {
     private optionSrv = inject(OptionService);
     private defaultAgentType = 0;
-    private dialog = inject(MatDialog);
     private router = inject(Router);
-    private isParamSrv = inject(IsParamService);
+    //  private isParamSrv = inject(IsParamService);
     private bankSrv = inject(BankService);
     private loginSrv = inject(LoginService);
     private departmentSrv = inject(DepartmentService);
@@ -114,14 +108,7 @@ export class CrmCustomerDetailComponent
     private countrySrv = inject(CountryService);
     public crmContactSrv = inject(CrmContactLineService);
 
-    private invImportBtn: ToolbarButton = {
-        disabled: false,
-        icon: 'fas fa-file-import',
-        keepOnToolbar: KeepOnToolbar.DYNAMIC,
-        label: 'LOGISTICS_IMPORT_DOCUMENT',
-        visible: true,
-        click: () => this.importAgents(),
-    };
+
 
     archiveSrv = inject(AppArchiveService);
     public LOCAL_AGENT_ARCHIVES = AGENT_ARCHIVES;
@@ -142,7 +129,7 @@ export class CrmCustomerDetailComponent
     pwd1 = new UntypedFormControl();
     pwd2 = new UntypedFormControl();
 
-    selectedCenter = 0;
+    //selectedCenter = 0;
     agentCenters: AgentCenter[] = [];
 
     selectedDiv = signal<Panels>(Panels.ADDRESS);
@@ -346,7 +333,6 @@ export class CrmCustomerDetailComponent
         const idx = this.router.url.indexOf(target);
         const url = this.router.url.substring(0, idx) + target;
         this.shellSrv.setGoBackPath(url, this.route);
-        this.shellSrv.addButton(this.invImportBtn);
     }
 
     override loadEntity(id: number): Observable<Agent> {
@@ -355,25 +341,7 @@ export class CrmCustomerDetailComponent
         return super.loadEntity(id);
     }
 
-    private importAgents() {
-        if (!this.invImportBtn.disabled) {
-            const dialogRef = this.dialog.open(CrmCustomerImportComponent, {
-                width: '720px',
-                height: '750px',
-                maxWidth: '750px',
-                disableClose: true,
-            });
 
-            dialogRef.afterClosed().subscribe((result) => {
-                if (result && result['count']) {
-                    this.snackBarSrv.showMessage('COMMON_SUCCESS');
-                } else {
-                    this.snackBarSrv.showFailureMessage();
-                }
-                this.shellSrv.setLoading(false);
-            });
-        }
-    }
 
     loadNextCode() {
         const formValue = this.form.getRawValue();
@@ -396,6 +364,10 @@ export class CrmCustomerDetailComponent
                 .navigate(['contact'], { relativeTo: this.route.parent })
                 .then();
         }
+    }
+
+    list() {
+        this.router.navigate(['..'], { relativeTo: this.route }).then();
     }
 }
 
