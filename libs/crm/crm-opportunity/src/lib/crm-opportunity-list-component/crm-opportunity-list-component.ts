@@ -64,19 +64,14 @@ export class CrmOpportunityListComponent implements OnInit, OnDestroy {
     });
     selectedRow: CRMOpportunity | null = null;
     displayedColumns = [
+        'name',
+        'owner',
+        'partner',
+        'campaign',
+        'primaryContact',
         'description',
-        'addressLine1',
-        'email',
-        'phone',
-        'company',
-        'jobTitle',
-        'createdAt',
-        'source',
-        'ownerDescription',
-        'priority',
-        'estimatedValue',
-        'status',
-        'score',
+        'amount',
+        'closeDate',
     ];
     data: CRMOpportunity[] = [];
     loading = false;
