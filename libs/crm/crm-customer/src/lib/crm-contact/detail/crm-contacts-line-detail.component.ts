@@ -11,7 +11,7 @@ import { MatButton } from '@angular/material/button';
 import { MatCheckbox } from '@angular/material/checkbox';
 import { BaseChildEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { Contact } from '../api';
-import { CrmContactLineService } from '../crm-contact-line-detail.service';
+import { CrmContactService } from '../crm-contact.service';
 
 @Component({
     selector: 'ss-crm-contact-line-detail',
@@ -38,7 +38,7 @@ export class CrmContactsLineDetailComponent
 {
     private formBuilder = inject(UntypedFormBuilder);
 
-    constructor(protected detailSrv: CrmContactLineService) {
+    constructor(protected detailSrv: CrmContactService) {
         super(detailSrv, 'CRMContactDetail');
     }
 

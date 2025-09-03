@@ -1,4 +1,4 @@
-import {Component, inject} from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
     MatCell,
@@ -17,9 +17,8 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 import { MatTooltip } from '@angular/material/tooltip';
 import { Contact } from '../api';
 import { BaseChildEntityListComponent } from '@ss/common/ui-base-entity';
-import { CrmContactLineService } from '../crm-contact-line-detail.service';
-import {Language} from "@ss/common/api-lookup";
-import {LanguageService} from "@ss/common/api-common";
+import { CrmContactService } from '../crm-contact.service';
+import { LanguageService } from '@ss/common/api-common';
 
 @Component({
     selector: 'ss-crm-contact-line-list',
@@ -54,19 +53,31 @@ export class CrmContactsLineListComponent extends BaseChildEntityListComponent<C
         'preferredLanguage',
     ];
 
-    private langSrv = inject(LanguageService)
+    private langSrv = inject(LanguageService);
 
-    constructor(protected override detailSrv: CrmContactLineService) {
+    constructor(protected override detailSrv: CrmContactService) {
         super(detailSrv, 'CrmContactLine');
     }
 
-    getLanguage(code:string){
-        if(this.langSrv.lang == 'en'){
-            return code == 'en' ? 'English' : code == 'fr' ? 'French' : 'Arabic'
+    getLanguage(code: string) {
+        if (this.langSrv.lang == 'en') {
+            return code == 'en'
+                ? 'English'
+                : code == 'fr'
+                  ? 'French'
+                  : 'Arabic';
         }
-        if(this.langSrv.lang == 'fr'){
-            return code == 'en' ? 'Anglaise' : code == 'fr' ? 'Français' : 'arabe'
+        if (this.langSrv.lang == 'fr') {
+            return code == 'en'
+                ? 'Anglaise'
+                : code == 'fr'
+                  ? 'Français'
+                  : 'arabe';
         }
-           return code == 'en' ? 'الإنجليزية' : code == 'fr' ? 'الفرنسية' : 'العربية'
+        return code == 'en'
+            ? 'الإنجليزية'
+            : code == 'fr'
+              ? 'الفرنسية'
+              : 'العربية';
     }
 }

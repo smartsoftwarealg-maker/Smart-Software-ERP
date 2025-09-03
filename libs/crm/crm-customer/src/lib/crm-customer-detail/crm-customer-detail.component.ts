@@ -58,7 +58,7 @@ import { AgentPriceService } from '@ss/logistics/api-agent-price';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 import { ChildAttributesComponent } from '@ss/custom-attributes';
 import { OptionService } from '@ss/logistics/ui-options';
-import { CrmContactLineService } from '../crm-contact/crm-contact-line-detail.service';
+import { CrmContactService } from '../crm-contact/crm-contact.service';
 
 enum Panels {
     INFO = 0,
@@ -106,7 +106,7 @@ export class CrmCustomerDetailComponent
     private companyTypeSrv = inject(CompanyTypeService);
     private citySrv = inject(CityService);
     private countrySrv = inject(CountryService);
-    public crmContactSrv = inject(CrmContactLineService);
+    public crmContactSrv = inject(CrmContactService);
 
 
 

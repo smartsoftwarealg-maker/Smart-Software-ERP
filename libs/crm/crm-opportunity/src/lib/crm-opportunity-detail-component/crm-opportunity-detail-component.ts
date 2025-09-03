@@ -18,6 +18,7 @@ import {
 import { UserListService } from '@ss/common/api-users';
 import { CityService } from '@ss/common/api-lookup';
 import { AgentService } from '@ss/logistics/api-agent';
+import {ContactMethodsService} from "../../../../contact-methods/src/lib/contact-methods/contact-methods.service";
 
 enum Panels {
     GENERAL = 0,
@@ -56,48 +57,15 @@ export class CrmOpportunityDetailComponent implements OnInit {
     #snackBarSrv = inject(SnackBarService);
     #shellSrv = inject(ShellService);
     #agentSrv = inject(AgentService);
+    #contactSrv = inject(ContactMethodsService);
 
     campaignLookup = new DefaultAutoCompleteModel(this.#campaignSrv);
     userLookup = new DefaultAutoCompleteModel(this.#userSrv);
     cityLookup = new DefaultAutoCompleteModel(this.#citySrv);
-    agentLookup1 = new DefaultAutoCompleteModel(this.#agentSrv);
-    agentLookup2 = new DefaultAutoCompleteModel(this.#agentSrv);
+    agentLookup = new DefaultAutoCompleteModel(this.#agentSrv);
+    contactLookup = new DefaultAutoCompleteModel(this.#contactSrv);
 
     formBuilder = inject(FormBuilder);
-
-    public STATES = [
-        'NEW',
-        'CONTACTED',
-        'QUALIFIED',
-        'PROPOSAL_SENT',
-        'IN_PROGRESS',
-        'PROPOSAL_SENT',
-        'NEGOTIATION',
-        'CLOSED_WON',
-        'CLOSED_LOST',
-        'UNQUALIFIED',
-    ];
-
-    public STATUS = [
-        'WEB',
-        'CONTACTED',
-        'QUALIFIED',
-        'PROPOSAL_SENT',
-        'NEGOTIATION',
-        'CLOSED_WON',
-        'CLOSED_LOST',
-    ];
-
-    public SOURCE = [
-        'WEB',
-        'REFERRAL',
-        'EVENT',
-        'CAMPAIGN',
-        'SOCIAL',
-        'PARTNER',
-    ];
-
-    public PRIORITIES = ['LOW', 'MEDIUM', 'HIGH', 'CRITICAL'];
 
     selectedPanel = signal<Panels>(Panels.DETAIL);
 
@@ -148,10 +116,11 @@ export class CrmOpportunityDetailComponent implements OnInit {
     private setupForm(b: CRMOpportunity) {
         return this.formBuilder.group({
             id: [b?.id || 0, Validators.required],
-            partnerId: [b?.partnerId || 0],
             name: [b?.name, Validators.required],
+            ownerId: [b?.ownerId , Validators.required],
+            partnerId: [b?.partnerId || 0],
             primaryContactId: [b?.primaryContactId, Validators.required],
-            description: [b?.description, Validators.required],
+            description: [b?.description],
             amount: [b?.amount],
             currency: [b?.currency],
             expectedRevenue: [b?.expectedRevenue],
@@ -170,7 +139,6 @@ export class CrmOpportunityDetailComponent implements OnInit {
             createdBy: [b?.createdBy],
             lastModifiedBy: [b?.lastModifiedBy],
             stage: [b?.stage],
-            ownerId: [b?.ownerId],
             probability: [b?.probability || 0],
         });
     }

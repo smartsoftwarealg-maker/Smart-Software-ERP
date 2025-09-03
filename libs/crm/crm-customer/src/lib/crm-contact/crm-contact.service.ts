@@ -6,7 +6,7 @@ import { HttpService } from '@ss/common/api-common';
 @Injectable({
     providedIn: 'root',
 })
-export class CrmContactLineService extends BaseEntityService<Contact> {
+export class CrmContactService extends BaseEntityService<Contact> {
     constructor(protected override httpSrv: HttpService) {
         super(httpSrv, CRM_CONTACT_URL, CRM_ACCOUNT_URL);
     }
