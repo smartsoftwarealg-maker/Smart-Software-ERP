@@ -96,12 +96,12 @@ export class DocInfoComponent {
                     url: 'agent-debts',
                     paramsProvided: (p: string[]) => p.includes('agentId')
                 },
-                // {
-                //     name: 'debts_2',
-                //     description: 'LOGISTICS_RAW_AGENT_DEBTS',
-                //     url: 'agent-debts',
-                //     paramsProvided: (p: string[]) => p.includes('agentId')
-                // },
+                {
+                    name: 'debts_2',
+                    description: 'LOGISTICS_RAW_AGENT_DEBTS',
+                    url: 'agent-debts',
+                    paramsProvided: (p: string[]) => p.includes('agentId')
+                },
             ],
         },
         {
@@ -179,6 +179,7 @@ export class DocInfoComponent {
     }
 
 
+
     getDisplayedEntries(): GroupEntry[] {
         return this.entries_
             .filter(x => this.displayedGroups.includes(x.group))
@@ -196,11 +197,12 @@ export class DocInfoComponent {
     navigate(): void {
         if (this.selectedEntry != null) {
             delete this.params_['compensated'];
+            const params = {compensated: this.selectedEntry.name === 'debts', ...this.params_};
             this.router.navigate([this.selectedEntry.url],
                 {
                     relativeTo: this.route,
                     queryParamsHandling: 'merge',
-                    queryParams: this.params_
+                    queryParams: params
                 }).then();
         }
     }
