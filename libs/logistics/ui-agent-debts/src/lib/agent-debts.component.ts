@@ -16,6 +16,7 @@ import { DecimalPipe } from '@angular/common';
     imports: [MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, TranslateDirective, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, PaginationComponent, DecimalPipe]
 })
 export class AgentDebtsComponent implements OnInit {
+    private compensated = false;
     private route = inject( ActivatedRoute);
     private agentDebtsSrv = inject(AgentDebtsService);
 
@@ -35,6 +36,7 @@ export class AgentDebtsComponent implements OnInit {
         this.pagination.onChange = () => this.refresh();
         this.route.queryParams.subscribe(param => {
             const agentId = +param['agentId']||0;
+            this.compensated = param['compensated'] === 'true';
             this.agentDebtsSrv.setParentId(agentId);
             this.refresh();
         });
@@ -42,7 +44,7 @@ export class AgentDebtsComponent implements OnInit {
 
     private refresh() {
         const params = new HttpParams()
-            .set('compensated', true)
+            .set('compensated', this.compensated)
             .set('offset', this.pagination.page - 1)
             .set('limit', this.pagination.pageSize);
         this.agentDebtsSrv

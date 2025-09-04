@@ -74,27 +74,23 @@ export class MissionPreparationDetailComponent extends BaseEntityDetailComponent
 
     public override setupForm(b: Mission): UntypedFormGroup {
         return this.formBuilder.group({
-            id: [b.id],
-            number: [b.number],
-            center: [b.center || this.loginSrv.appCtx.center],
-            employee: [b.employee, Validators.required],
-            reference: [b.reference],
-            destination: [b.destination, Validators.required],
-            thezone: [b.theZone],
-            motive: [b.motive, Validators.required],
-            duration: [b.duration, Validators.required],
+            id:             [b.id],
+            number:         [b.number],
+            center:         [b.center || this.loginSrv.appCtx.center],
+            employee:       [b.employee, Validators.required],
+            reference:      [b.reference],
+            destination:    [b.destination, Validators.required],
+            thezone:        [b.theZone],
+            motive:         [b.motive, Validators.required],
+            duration:       [b.duration, Validators.required],
             transportMeans: [b.transportMeans, Validators.required],
-            departure: [
-                new Date(Date.parse(b.departure || new Date() + '') || 0),
-            ],
-            returnBack: [
-                new Date(Date.parse(b.returnBack || new Date() + '') || 0),
-            ],
-            advancement: [b.advancement || 0],
-            trajectory: [b.trajectory, Validators.required],
-            meals: [b.meals, Validators.required],
-            nights: [b.nights, Validators.required],
-            missionStatus: [b.missionStatus || 1, Validators.required],
+            departure:      [new Date(Date.parse(b.departure || new Date() + '') || 0),  ],
+            returnBack:     [new Date(Date.parse(b.returnBack || new Date() + '') || 0), ],
+            advancement:    [b.advancement || 0],
+            trajectory:     [b.trajectory, Validators.required],
+            meals:          [b.meals===true],
+            nights:         [b.nights===true],
+            missionStatus:  [b.missionStatus || 1, Validators.required],
         });
     }
 }
