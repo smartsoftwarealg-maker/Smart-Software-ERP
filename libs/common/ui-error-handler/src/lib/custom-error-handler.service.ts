@@ -38,6 +38,23 @@ export class CustomErrorHandlerService {
                 ? err.message
                 : this.langSrv.translate('COMMON_CONNECTION_FAILED', { backend: this.serverFromUrl(err.url)});
         }
+        if (err.error) {
+            if (err.error['exception']) {
+                this.message = err.error['exception'];
+            } else if (typeof err.error === 'object') {
+                const decoder = new TextDecoder('utf-8');
+                const str = decoder.decode(err.error);
+                const exception = JSON.parse(str);
+                if (exception?.exception) {
+                    this.message = exception['exception'];
+                } else {
+                    if (str.length > 10) {
+                        this.message = str
+                            .replace(`"exception":`, '');
+                    }
+                }
+            }
+        }
 
         this.statusText = err.error? err.error['params'] || '' : '';
 
