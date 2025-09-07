@@ -1,6 +1,31 @@
 mat-card {
-    max-width: 800px;
-    margin: 8px auto;
     border-radius: 1.4em;
-    padding: 16px;
+    padding: 1em;
+}
+mat-card,
+.content,
+.send__div {
+    width: 96%;
+    max-width: 1000px;
+    margin: 8px auto;
+}
+
+.send__div {
+    display: flex;
+    justify-content: flex-end;
+}
+.content {
+    min-height: 25em;
+}
+.NgxEditor,
+.NgxEditor__Content {
+    height: 20em !important;
+    min-height: 20em!important;
+    border: red solid 1px;
+}
+
+.editor {
+    height: 20em;
+    max-height: 20em;
+    overflow: auto;
 }
