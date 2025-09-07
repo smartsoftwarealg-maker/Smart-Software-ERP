@@ -179,3 +179,24 @@
         }
     </mat-card-content>
 </mat-card>
+
+<div class="content">
+    <mat-form-field class="default-50 sm-100">
+        <mat-label translate>CRM_MAILING_LIST</mat-label>
+        <ss-auto-complete matInput
+                          [model]="mailingListLookup"
+                          [formControl]="mailingList">
+        </ss-auto-complete>
+    </mat-form-field>
+    <form [formGroup]="htmlForm">
+        <div class="editor">
+            <ngx-editor-menu [editor]="editor" [toolbar]="toolbar" class="f-primary">
+            </ngx-editor-menu>
+            <ngx-editor [editor]="editor" formControlName="editorContent">
+            </ngx-editor>
+        </div>
+    </form>
+</div>
+<div class="send__div">
+    <button mat-button color="primary" (click)="send()" translate>COMMON_SEND</button>
+</div>
