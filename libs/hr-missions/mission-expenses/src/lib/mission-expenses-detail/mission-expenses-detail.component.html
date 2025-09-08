@@ -36,7 +36,19 @@
                     </mat-form-field>
                 </div>
 
-                <mat-form-field class="default-50">
+
+                <mat-form-field class="default-25 sm-50">
+                    <mat-label translate>COMMON_ZONE</mat-label>
+                    <ss-auto-complete matInput
+                                      [required]="true"
+                                      [model]="zoneLookup"
+                                      formControlName="theZone"></ss-auto-complete>
+                    @if (form.controls['theZone'].invalid) {
+                        <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+                    }
+                </mat-form-field>
+
+                <mat-form-field class="default-25 sm-50">
                     <mat-label translate>PAYROLL_REFERENCE</mat-label>
                     <input matInput formControlName="reference" type="text">
                 </mat-form-field>

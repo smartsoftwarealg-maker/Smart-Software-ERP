@@ -22,6 +22,7 @@ import { MatTooltip } from '@angular/material/tooltip';
 import { MatTab, MatTabGroup, MatTabLabel } from '@angular/material/tabs';
 import { MatCheckbox } from '@angular/material/checkbox';
 import { Lookup } from '@ss/common/api-lookup';
+import {zip} from "rxjs";
 
 @Component({
     selector: 'ss-missions-expenses-line-list',
@@ -72,30 +73,51 @@ export class MissionExpensesLineListComponent extends BaseChildEntityListCompone
 
     override ngOnInit() {
         super.ngOnInit();
-        this.detailSrv.getMissionElementTypes(0).subscribe({
-            next: (res) => {
-                this.elementsTypes = res;
-            },
-            error: (err) => {
-                throw err;
-            },
-        });
-        this.detailSrv.getDetail().subscribe({
-            next: (res) => {
-                this.detailData = res;
-            },
-            error: (err) => {
-                throw err;
-            },
-        });
-        this.detailSrv.getSummary().subscribe({
-            next: (res) => {
-                this.summaryData = res;
-            },
-            error: (err) => {
-                throw err;
-            },
-        });
+        this.load();
+        // this.detailSrv
+        //     .getMissionElementTypes(0)
+        //     .subscribe({
+        //     next: (res) => {
+        //         this.elementsTypes = res;
+        //     },
+        //     error: (err) => {
+        //         throw err;
+        //     },
+        // });
+        // this.detailSrv
+        //     .getDetail()
+        //     .subscribe({
+        //     next: (res) => {
+        //         this.detailData = res;
+        //     },
+        //     error: (err) => {
+        //         throw err;
+        //     },
+        // });
+        // this.detailSrv.getSummary().subscribe({
+        //     next: (res) => {
+        //         this.summaryData = res;
+        //     },
+        //     error: (err) => {
+        //         throw err;
+        //     },
+        // });
+    }
+
+    private load() {
+        zip(this.detailSrv.getMissionElementTypes(0),
+            this.detailSrv.getDetail(),
+            this.detailSrv.getSummary())
+            .subscribe({
+                next: ([types, detail, summary]) => {
+                    this.elementsTypes = types;
+                    this.detailData = detail;
+                    this.summaryData = summary;
+                },
+                error: (err) => {
+                    throw err;
+                },
+            });
     }
 
     addRemoveElement(isExist: boolean, id: number) {
@@ -114,6 +136,7 @@ export class MissionExpensesLineListComponent extends BaseChildEntityListCompone
         this.detailSrv.generateMission(MG).subscribe({
             next: () => {
                 this.snackBarSrv.showSuccessMessage();
+                this.load();
             },
             error: (err) => {
                 this.snackBarSrv.showFailureMessage();

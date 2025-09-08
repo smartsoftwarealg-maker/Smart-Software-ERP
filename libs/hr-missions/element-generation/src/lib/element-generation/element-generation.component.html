@@ -4,7 +4,7 @@
 
             <ng-container matColumnDef="checkBox">
                 <mat-header-cell *matHeaderCellDef></mat-header-cell>
-                <mat-cell *matCellDef="let e">a
+                <mat-cell *matCellDef="let e">
                     <mat-checkbox [checked]="selected.includes(e.number)"
                                   (change)="selectId($event.checked, e.number)">
                     </mat-checkbox>
