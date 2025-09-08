@@ -19,6 +19,12 @@ export const missionsNavTree: SideNavNode = {
             accessRights: 'Trajectory'
         },
         {
+            name: 'MISSION_MISSION_ELEMENT',
+            icon: 'fa-solid fa-memo-pad',
+            route: ABS_MISSION_ELEMENTS_URL,
+            accessRights: 'Mission'
+        },
+        {
             name: 'MISSION_MISSION_PREPARATION',
             icon: 'fas fa-plane',
             route: ABS_MISSION_PREPARATION_URL,
@@ -31,12 +37,6 @@ export const missionsNavTree: SideNavNode = {
             route: ABS_MISSION_EXPENSES_URL,
             accessRights: 'Journey'
 
-        },
-        {
-            name: 'MISSION_MISSION_ELEMENT',
-            icon: 'fa-solid fa-memo-pad',
-            route: ABS_MISSION_ELEMENTS_URL,
-            accessRights: 'Mission'
         },
         {
             name: 'MISSION_ELEMENTS_GENERATOR',
