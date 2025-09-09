@@ -92,5 +92,6 @@
     "RESET_CODE_NOT_CORRECT": "Reset code not correct",
     "GLOBAL_VALIDATION": "Global validation",
     "VALIDATE_ALL": "Validate all",
-    "ADDRESS": "Address"
+    "ADDRESS": "Address",
+    "BLOCKING_YEAR": "Block year"
 }

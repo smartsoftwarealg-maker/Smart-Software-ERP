@@ -10,19 +10,21 @@ import { MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, Ma
 import { MatSort } from '@angular/material/sort';
 import { TranslateDirective } from '@ss/common/ui-lang';
 import { PaginationComponent } from '@ss/common/ui-pagination';
+import {MatCheckbox} from "@angular/material/checkbox";
 
 @Component({
     selector: 'ss-journal-list',
     templateUrl: './journal-list.component.html',
     styleUrls: ['./journal-list.component.scss'],
     standalone: true,
-    imports: [MatTable, MatSort, MatColumnDef, MatHeaderCellDef, MatHeaderCell, TranslateDirective, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, PaginationComponent]
+    imports: [MatTable, MatSort, MatColumnDef, MatHeaderCellDef, MatHeaderCell, TranslateDirective, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, PaginationComponent, MatCheckbox]
 })
 export class JournalListComponent extends BaseEntityListComponent<Journal> {
     displayedColumns = [
         'description',
         'abbreviation',
         'defaultLabel',
+        'blocked',
         'centerName',
         'typeName',
         'bankName'

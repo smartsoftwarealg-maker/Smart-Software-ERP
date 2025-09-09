@@ -78,6 +78,8 @@ export class JournalDetailComponent extends BaseEntityDetailComponent<Journal> {
             jType:        [e.jType],
             bankId:       [e.bankId],
             center:       [e.center],
+            blocked:      [e.blocked],
+            blockYear:    [e.blockYear],
         });
     }
 

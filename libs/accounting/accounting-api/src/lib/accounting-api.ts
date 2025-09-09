@@ -71,6 +71,8 @@ export interface Journal {
     defaultLabel?: string;
     jType?: number;
     center?: number;
+    blocked?: boolean;
+    blockYear?: number;
     centerName?: string;
     typeName?: string;
     bankId?: number;
