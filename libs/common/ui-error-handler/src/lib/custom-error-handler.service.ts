@@ -41,9 +41,9 @@ export class CustomErrorHandlerService {
         if (err.error) {
             if (err.error['exception']) {
                 this.message = err.error['exception'];
-            } else if (typeof err.error === 'object') {
+            } else if (typeof err.error === 'object' && err.error instanceof ArrayBuffer) {
                 const decoder = new TextDecoder('utf-8');
-                const str = decoder.decode(err.error);
+                const str = decoder.decode(err.error.toString());
                 const exception = JSON.parse(str);
                 if (exception?.exception) {
                     this.message = exception['exception'];

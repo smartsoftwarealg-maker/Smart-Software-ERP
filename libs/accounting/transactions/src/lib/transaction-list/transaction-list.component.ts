@@ -2,7 +2,7 @@ import { Component, effect, inject, OnDestroy, OnInit, signal, ViewChild } from 
 import { ActivatedRoute, NavigationEnd, Router, RouterModule, RouterOutlet } from '@angular/router';
 import {
     AccFileService,
-    AccJournalsService, AccPoliciesService,
+    AccJournalsService, AccPoliciesService, ACCPolicy,
     ACCTransaction,
     AccTransactionLineService,
     AccTransactionService,
@@ -111,9 +111,10 @@ export class TransactionListComponent extends BaseEntityListComponent<ACCTransac
 
         this.journalSrv
             .getUserJournals(this.journalFilter.value || '')
-            .pipe(tap(res => this.journalList = res.body),
-                switchMap(_ => this.accPolicySrv.get(this.loginSrv.appCtx.center)))
-            .subscribe(policy => {
+            .pipe(
+                tap(res => this.journalList = res.body.filter(j => !j.blocked || j.blockYear < this.loginSrv.appCtx.accYear)),
+                switchMap(_ => this.accPolicySrv.get(this.loginSrv.appCtx.center))
+            ).subscribe(policy => {
                 if (policy.showProjects) {
                     this.displayedColumns.push('projectName');
                 }
@@ -144,7 +145,7 @@ export class TransactionListComponent extends BaseEntityListComponent<ACCTransac
                 .pipe(debounceTime(300),
                     distinctUntilChanged(),
                     switchMap(str => this.journalSrv.getUserJournals(str)))
-                .subscribe(res => this.journalList = res.body));
+                .subscribe(res => this.journalList = res.body.filter(j => !j.blocked || j.blockYear < this.loginSrv.appCtx.accYear)));
 
         this.shellSrv.setGoBackFn(() => {
             const idx = this.router.url.lastIndexOf('/detail/');

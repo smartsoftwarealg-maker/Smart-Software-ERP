@@ -12,7 +12,7 @@ import {
 } from '@ss/accounting/accounting-api';
 import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { of, Subscription, switchMap } from 'rxjs';
-import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
+import {debounceTime, distinctUntilChanged, map} from 'rxjs/operators';
 import { HttpParams } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 
@@ -72,7 +72,7 @@ export class AccountingGenerationComponent implements OnInit, OnDestroy {
     showingPayroll = false;
 
     form: UntypedFormGroup | null = null;
-    journalLookup = new DefaultAutoCompleteModel<Journal>(this.journalSrv);
+    journalLookup = new ActiveJournalLookup(this.journalSrv, this.loginSrv);
     processing = false;
     data: TDocument[] = [];
     payrollData: PAYRow[] = [];
@@ -268,4 +268,12 @@ export class AccountingGenerationComponent implements OnInit, OnDestroy {
             this.showTransactions(key);
         }
     }
+}
+
+class ActiveJournalLookup extends DefaultAutoCompleteModel<Journal> {
+    constructor(public srv: AccJournalsService, public loginSrv: LoginService) {
+        super(srv);
+    }
+
+    override filterLoadedData =  (x: Journal[]) => x.filter(j => !j.blocked || j.blockYear < this.loginSrv.appCtx.accYear);
 }
