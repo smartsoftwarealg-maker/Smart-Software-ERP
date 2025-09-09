@@ -1,13 +1,14 @@
 import { Component, computed, inject, OnInit, signal } from '@angular/core';
 import { LoginService, MaterialModule } from '@ss/common/api-common';
 import { CRMOpportunityService } from '../crm-opportunity.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import {ActivatedRoute, Router, RouterOutlet} from '@angular/router';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 import { FormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { Observable, of } from 'rxjs';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { DatePickerComponent } from '@ss/common/ui-datepicker';
 import {
+    ACTIVITY_TYPE,
     CRMContactLookup,
     CRMOpportunity,
     CRMOpportunityProgress,
@@ -29,6 +30,7 @@ import { CrmContactService } from '@ss/crm/crm-customer';
 import { CompanyService } from '@ss/administration/api-company';
 import { CrmTeamsService } from '@ss/crm/crm-teams';
 import { CRMLeadsService } from '@ss/crm/leads';
+import {CrmOpportunityActiveService} from "../crm-opportunity-activities/crm-opportunity-active.service";
 
 enum Panels {
     GENERAL = 0,
@@ -46,6 +48,7 @@ enum Panels {
         TranslatePipe,
         DatePickerComponent,
         UiAutoCompleteComponent,
+        RouterOutlet,
     ],
     templateUrl: './crm-opportunity-detail-component.html',
     styleUrl: './crm-opportunity-detail-component.scss',
@@ -73,6 +76,7 @@ export class CrmOpportunityDetailComponent implements OnInit {
     #teamSrv = inject(CrmTeamsService);
     #leadSrv = inject(CRMLeadsService);
     #loginSrv = inject(LoginService);
+    #opportunityActiveSrv = inject(CrmOpportunityActiveService);
 
     campaignLookup = new DefaultAutoCompleteModel(this.#campaignSrv);
     userLookup = new DefaultAutoCompleteModel(this.#userSrv);
@@ -114,7 +118,7 @@ export class CrmOpportunityDetailComponent implements OnInit {
     }
 
     save() {
-        let opportunity : CRMOpportunity = this.form?.getRawValue();
+        let opportunity: CRMOpportunity = this.form?.getRawValue();
         delete opportunity.status;
         delete opportunity.stage;
         delete opportunity.probability;
@@ -145,6 +149,7 @@ export class CrmOpportunityDetailComponent implements OnInit {
     }
 
     private setupForm(b: CRMOpportunity) {
+        this.#opportunityActiveSrv.setParentId(b?.id);
         this.id = b?.id;
         this.#contactSrv.setParentId(b?.id || 0);
         return this.formBuilder.group({
@@ -190,7 +195,7 @@ export class CrmOpportunityDetailComponent implements OnInit {
     }
 
     saveStatus() {
-        this.saveProgress()
+        this.saveProgress();
     }
 
     saveProgress() {
@@ -220,10 +225,9 @@ export class CrmOpportunityDetailComponent implements OnInit {
         });
     }
 
-
-
     protected readonly Panels = Panels;
     protected readonly STAGE = STAGE;
     protected readonly STATUS = STATUS;
     protected readonly PRIORITY = PRIORITY;
+    protected readonly ACTIVITY_TYPE = ACTIVITY_TYPE;
 }

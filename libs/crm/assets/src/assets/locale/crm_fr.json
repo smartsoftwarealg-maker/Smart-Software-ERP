@@ -92,7 +92,16 @@
     "CERTAINTY":             "Certitude",
     "ASSIGNED_TO":           "Attribué à",
     "CLOSING_MEMO":          "Note de clôture",
-    "CLOSED":                "Fermé"
+    "CLOSED":                "Fermé",
+    "TRACKING":              "Suivi",
+    "ACTIVITY_TYPE":         "Type d'activité",
+    "DUE_DATE":              "Date d'échéance",
+    "COMPLETION_DATE":       "Date d'achèvement",
+    "FEEDBACK":              "Retour d'information",
+    "EMAIL":                 "Email",
+    "CALL":                  "Appel",
+    "MEETING":               "Réunion"
+
 
 
 

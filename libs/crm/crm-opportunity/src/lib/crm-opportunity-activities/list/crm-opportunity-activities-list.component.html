@@ -1,0 +1,78 @@
+<div class="size ctrl__div">
+    <button mat-mini-fab color="primary" (click)="showDetail(0)" [matTooltip]="'COMMON_ADD' | translate">
+        <span class="fas fa-plus"></span>
+    </button>
+    <button mat-mini-fab (click)="edit()"
+            [disabled]="!selectedId"
+            [matTooltip]="'COMMON_EDIT' | translate"
+            color="accent">
+        <span class="fas fa-pen"></span>
+    </button>
+    <button mat-mini-fab (click)="deleteSelected()" [matTooltip]="'COMMON_DELETE' | translate"
+            [disabled]="!selectedId"
+            color="warn">
+        <span class="fas fa-trash-alt"></span>
+    </button>
+</div>
+
+
+<div class="table_div size">
+    <mat-table mat-table [dataSource]="data$ | async" class="main-table">
+
+        <ng-container matColumnDef="activityType">
+            <mat-header-cell *matHeaderCellDef translate>CRM_ACTIVITY_TYPE</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{ e.activityType }}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="subject">
+            <mat-header-cell *matHeaderCellDef translate>COMMON_SUBJECT</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{ e.subject }}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="detail">
+            <mat-header-cell *matHeaderCellDef translate>COMMON_DETAIL</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{ e.detail }}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="priority">
+            <mat-header-cell *matHeaderCellDef translate>CRM_PRIORITY</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{ e.priority }}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="status">
+            <mat-header-cell *matHeaderCellDef translate>COMMON_STATUS</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{ e.status }}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="ownerDescription">
+            <mat-header-cell *matHeaderCellDef translate>CRM_OWNER</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{ e.ownerDescription }}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="opportunityDescription">
+            <mat-header-cell *matHeaderCellDef translate>CRM_OPPORTUNITY</mat-header-cell>
+            <mat-cell *matCellDef="let e" translate>
+                {{ e.opportunityDescription }}
+            </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+        <mat-row class="selectable" [class.selected]="row.id == selectedRow?.id" (click)="selectRow(row)"
+                 *matRowDef="let row; columns: displayedColumns;">
+        </mat-row>
+    </mat-table>
+</div>
+
+

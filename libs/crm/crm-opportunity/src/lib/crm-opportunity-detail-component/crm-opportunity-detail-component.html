@@ -16,7 +16,7 @@
             class="fa-solid fa-list-check"></i> {{ 'CRM_ACTIVITIES'|translate }}
     </button>
     <button matButton (click)="select(Panels.PROGRESS)"><i
-            class="fa-solid fa-arrow-progress"></i> {{ 'CRM_PROGRESS'|translate }}
+            class="fa-solid fa-arrow-progress"></i> {{ 'CRM_TRACKING'|translate }}
     </button>
 
     <button matButton (click)="save()"><span><i
@@ -283,10 +283,10 @@
                         </ss-date-picker>
                     </mat-form-field>
 
-<!--                    <mat-form-field>-->
-<!--                        <mat-label translate>CRM_COMPETITORS</mat-label>-->
-<!--                        <input matInput type="text" formControlName="competitors">-->
-<!--                    </mat-form-field>-->
+                    <!--                    <mat-form-field>-->
+                    <!--                        <mat-label translate>CRM_COMPETITORS</mat-label>-->
+                    <!--                        <input matInput type="text" formControlName="competitors">-->
+                    <!--                    </mat-form-field>-->
 
                     <mat-form-field>
                         <mat-label translate>CRM_COMPETITIVE_THREAT_LEVEL</mat-label>
@@ -303,8 +303,10 @@
                 <mat-toolbar>
                     <span translate>CRM_ACTIVITIES</span>
                 </mat-toolbar>
-                <div class="content__div">
-
+                <div class="activities">
+                    @if (id) {
+                        <router-outlet></router-outlet>
+                    }
                 </div>
             </div>
         }

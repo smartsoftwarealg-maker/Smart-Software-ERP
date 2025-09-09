@@ -92,7 +92,16 @@
     "CERTAINTY":            "اليقين",
     "ASSIGNED_TO":          "مُسند إلى",
     "CLOSING_MEMO":         "مذكرة الإغلاق",
-    "CLOSED":               "مغلق"
+    "CLOSED":               "مغلق",
+    "TRACKING":             "المتابعة",
+    "ACTIVITY_TYPE":        "نوع النشاط",
+    "DUE_DATE":             "تاريخ الاستحقاق",
+    "COMPLETION_DATE":      "تاريخ الإنجاز",
+    "FEEDBACK":             "التغذية الراجعة",
+    "EMAIL":                "البريد الإلكتروني",
+    "CALL":                 "مكالمة",
+    "MEETING":              "اجتماع"
+
 
 
 
