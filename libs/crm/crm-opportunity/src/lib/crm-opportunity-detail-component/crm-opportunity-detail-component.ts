@@ -1,5 +1,5 @@
 import { Component, computed, inject, OnInit, signal } from '@angular/core';
-import { MaterialModule } from '@ss/common/api-common';
+import { LoginService, MaterialModule } from '@ss/common/api-common';
 import { CRMOpportunityService } from '../crm-opportunity.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
@@ -7,7 +7,14 @@ import { FormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { Observable, of } from 'rxjs';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { DatePickerComponent } from '@ss/common/ui-datepicker';
-import { CRMOpportunity } from '../crm-opportunity-api';
+import {
+    CRMContactLookup,
+    CRMOpportunity,
+    CRMOpportunityProgress,
+    PRIORITY,
+    STAGE,
+    STATUS,
+} from '../crm-opportunity-api';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import { CRMCampaignService } from '../crm-comaign.service';
@@ -18,12 +25,17 @@ import {
 import { UserListService } from '@ss/common/api-users';
 import { CityService } from '@ss/common/api-lookup';
 import { AgentService } from '@ss/logistics/api-agent';
+import { CrmContactService } from '@ss/crm/crm-customer';
+import { CompanyService } from '@ss/administration/api-company';
+import { CrmTeamsService } from '@ss/crm/crm-teams';
+import { CRMLeadsService } from '@ss/crm/leads';
 
 enum Panels {
     GENERAL = 0,
     DETAIL = 1,
-    ACTIVITY = 2,
-    PROGRESS = 3,
+    STATUS = 2,
+    ACTIVITY = 3,
+    PROGRESS = 4,
 }
 
 @Component({
@@ -56,55 +68,32 @@ export class CrmOpportunityDetailComponent implements OnInit {
     #snackBarSrv = inject(SnackBarService);
     #shellSrv = inject(ShellService);
     #agentSrv = inject(AgentService);
+    #contactSrv = inject(CrmContactService);
+    #companySrv = inject(CompanyService);
+    #teamSrv = inject(CrmTeamsService);
+    #leadSrv = inject(CRMLeadsService);
+    #loginSrv = inject(LoginService);
 
     campaignLookup = new DefaultAutoCompleteModel(this.#campaignSrv);
     userLookup = new DefaultAutoCompleteModel(this.#userSrv);
+    teamLookup = new DefaultAutoCompleteModel(this.#teamSrv);
     cityLookup = new DefaultAutoCompleteModel(this.#citySrv);
-    agentLookup1 = new DefaultAutoCompleteModel(this.#agentSrv);
-    agentLookup2 = new DefaultAutoCompleteModel(this.#agentSrv);
+    agentLookup = new DefaultAutoCompleteModel(this.#agentSrv);
+    contactLookup = new CRMContactLookup(this.#contactSrv);
+    companyLookup = new DefaultAutoCompleteModel(this.#companySrv);
+    leadLookup = new DefaultAutoCompleteModel(this.#leadSrv);
+
+    public id = 0;
 
     formBuilder = inject(FormBuilder);
-
-    public STATES = [
-        'NEW',
-        'CONTACTED',
-        'QUALIFIED',
-        'PROPOSAL_SENT',
-        'IN_PROGRESS',
-        'PROPOSAL_SENT',
-        'NEGOTIATION',
-        'CLOSED_WON',
-        'CLOSED_LOST',
-        'UNQUALIFIED',
-    ];
-
-    public STATUS = [
-        'WEB',
-        'CONTACTED',
-        'QUALIFIED',
-        'PROPOSAL_SENT',
-        'NEGOTIATION',
-        'CLOSED_WON',
-        'CLOSED_LOST',
-    ];
-
-    public SOURCE = [
-        'WEB',
-        'REFERRAL',
-        'EVENT',
-        'CAMPAIGN',
-        'SOCIAL',
-        'PARTNER',
-    ];
-
-    public PRIORITIES = ['LOW', 'MEDIUM', 'HIGH', 'CRITICAL'];
 
     selectedPanel = signal<Panels>(Panels.DETAIL);
 
     // Add these computed signals to your CrmLeadsDetailComponent class
 
-    isGeneral = computed(() => this.selectedPanel() === Panels.GENERAL);
+    // isGeneral = computed(() => this.selectedPanel() === Panels.GENERAL);
     isDetail = computed(() => this.selectedPanel() === Panels.DETAIL);
+    isStatus = computed(() => this.selectedPanel() === Panels.STATUS);
     isProgress = computed(() => this.selectedPanel() === Panels.PROGRESS);
     isActivity = computed(() => this.selectedPanel() === Panels.ACTIVITY);
 
@@ -125,6 +114,16 @@ export class CrmOpportunityDetailComponent implements OnInit {
     }
 
     save() {
+        let opportunity : CRMOpportunity = this.form?.getRawValue();
+        delete opportunity.status;
+        delete opportunity.stage;
+        delete opportunity.probability;
+        delete opportunity.priority;
+        delete opportunity.ownerId;
+        delete opportunity.teamId;
+        delete opportunity.createdDate;
+        delete opportunity.createdBy;
+        delete opportunity.memo;
         this.#entitySrv
             .save(this.form.getRawValue() as CRMOpportunity)
             .subscribe({
@@ -146,32 +145,43 @@ export class CrmOpportunityDetailComponent implements OnInit {
     }
 
     private setupForm(b: CRMOpportunity) {
+        this.id = b?.id;
+        this.#contactSrv.setParentId(b?.id || 0);
         return this.formBuilder.group({
             id: [b?.id || 0, Validators.required],
-            partnerId: [b?.partnerId || 0],
             name: [b?.name, Validators.required],
-            primaryContactId: [b?.primaryContactId, Validators.required],
-            description: [b?.description, Validators.required],
-            amount: [b?.amount],
-            currency: [b?.currency],
+            ownerId: [b?.ownerId || this.#loginSrv.appCtx.id],
+            companyId: [b?.companyId || this.#loginSrv.appCtx.company],
+            contactEmail: [b?.contactEmail || ''],
+            contactPhone: [b?.contactPhone || ''],
+            teamId: [b?.teamId],
+            partnerId: [b?.partnerId],
+            primaryContactId: [b?.primaryContactId],
+            amount: [b?.amount, Validators.required],
+            currency: [b?.currency || 0, Validators.required],
             expectedRevenue: [b?.expectedRevenue],
             budgetAllocated: [b?.budgetAllocated],
-            discountAmount: [b?.discountAmount],
-            discountPercentage: [b?.discountPercentage],
-            closeDate: [b?.closeDate],
+            discountAmount: [b?.discountAmount || 0],
+            discountPercentage: [b?.discountPercentage || 0],
+            stage: [b?.stage || 'PROPOSAL_SENT', Validators.required],
+            status: [b?.status || 'OPEN', Validators.required],
+            priority: [b?.priority || 'MEDIUM', Validators.required],
+            probability: [b?.probability],
+            closeDate: [b?.closeDate || new Date(), Validators.required],
             actualCloseDate: [b?.actualCloseDate],
             lastStageChangeDate: [b?.lastStageChangeDate],
             createdDate: [b?.createdDate || new Date()],
             lastModifiedDate: [b?.lastModifiedDate || new Date()],
             campaignId: [b?.campaignId],
             leadSource: [b?.leadSource],
+            //competitors: [b?.competitors],
             competitiveThreatLevel: [b?.competitiveThreatLevel],
+            description: [b?.description],
             tags: [b?.tags],
-            createdBy: [b?.createdBy],
-            lastModifiedBy: [b?.lastModifiedBy],
-            stage: [b?.stage],
-            ownerId: [b?.ownerId],
-            probability: [b?.probability || 0],
+            memo: [b?.memo],
+            createdBy: [b?.createdBy || this.#loginSrv.appCtx.id],
+            lastModifiedBy: [b?.lastModifiedBy || this.#loginSrv.appCtx.id],
+            closedBy: [{ value: b?.closedBy, disabled: true }],
         });
     }
 
@@ -179,5 +189,41 @@ export class CrmOpportunityDetailComponent implements OnInit {
         this.selectedPanel.set(idx);
     }
 
+    saveStatus() {
+        this.saveProgress()
+    }
+
+    saveProgress() {
+        const form: CRMOpportunity = this.form?.getRawValue();
+        const val: CRMOpportunityProgress = {
+            id: form.id,
+            status: form.status,
+            stage: form.stage,
+            probability: form.probability,
+            priority: form.priority,
+            ownerId: form.ownerId,
+            teamId: form.teamId,
+            createdAt: form.createdDate,
+            amount: form.amount,
+            closedBy: form.closedBy,
+            createdBy: form.createdBy,
+            memo: form.memo,
+        };
+        this.#entitySrv.saveProgress(val).subscribe({
+            next: () => {
+                this.#snackBarSrv.showSuccessMessage();
+            },
+            error: (e) => {
+                this.#snackBarSrv.showFailureMessage();
+                throw e;
+            },
+        });
+    }
+
+
+
     protected readonly Panels = Panels;
+    protected readonly STAGE = STAGE;
+    protected readonly STATUS = STATUS;
+    protected readonly PRIORITY = PRIORITY;
 }

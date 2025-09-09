@@ -1,7 +1,7 @@
 export const CRM_CONTACT_URL = '/contacts';
 export const CRM_ACCOUNT_URL = '/crm/accounts';
 
-export interface Contact {
+export interface CRMContact {
     id: number;
 
     // Name Components
@@ -61,3 +61,5 @@ export interface Contact {
     sourceSystem?: string; // "SALESFORCE", "MANUAL", etc.
     isDeleted: boolean;
 }
+
+

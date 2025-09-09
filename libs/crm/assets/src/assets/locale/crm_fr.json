@@ -81,7 +81,19 @@
     "BUDGET_ALLOCATED":      "Budget alloué",
     "DISCOUNT_AMOUNT":       "Montant de la remise",
     "DISCOUNT_PERCENTAGE":   "Pourcentage de remise",
-    "DISCOUNT_STAGE":        "Étape de remise"
+    "DISCOUNT_STAGE":        "Étape de remise",
+    "COMPETITORS":             "Concurrents",
+    "COMPETITIVE_THREAT_LEVEL":"Niveau de menace concurrentielle",
+    "STAGE":                 "Étape",
+    "CANCELLED":             "Annulé",
+    "OPEN":                  "Ouvert",
+    "ON_HOLD":               "En attente",
+    "FORECAST":              "Prévision",
+    "CERTAINTY":             "Certitude",
+    "ASSIGNED_TO":           "Attribué à",
+    "CLOSING_MEMO":          "Note de clôture",
+    "CLOSED":                "Fermé"
+
 
 
 }

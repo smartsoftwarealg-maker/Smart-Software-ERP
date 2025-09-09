@@ -81,6 +81,17 @@
     "BUDGET_ALLOCATED":    "Budget allocated",
     "DISCOUNT_AMOUNT":     "Discount amount",
     "DISCOUNT_PERCENTAGE": "Discount percentage",
-    "DISCOUNT_STAGE":      "Discount stage"
+    "DISCOUNT_STAGE":      "Discount stage",
+    "COMPETITORS":         "Competitors",
+    "COMPETITIVE_THREAT_LEVEL":"Competitive threat level",
+    "STAGE":               "Stage",
+    "CANCELLED":           "Cancelled",
+    "OPEN":                "Open",
+    "ON_HOLD":             "On hold",
+    "FORECAST":            "Forecast",
+    "CERTAINTY":           "Certainty",
+    "ASSIGNED_TO":         "Assigned to",
+    "CLOSING_MEMO":        "Closing memo",
+    "CLOSED":              "Closed"
 
 }
