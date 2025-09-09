@@ -15,8 +15,12 @@
     <button matButton (click)="select(Panels.PROGRESS)"><i
         class="fa-solid fa-arrow-progress"></i> {{ 'CRM_PROGRESS'|translate }}
     </button>
-    <button matButton (click)="select(Panels.ACTIVITY)"><i class="fa-solid fa-list-check"></i> {{ 'CRM_ACTIVITIES'|translate }}
+    <button matButton
+            (click)="select(Panels.ACTIVITY)"
+            [disabled]="leadId === 0">
+        <i class="fa-solid fa-list-check"></i> {{ 'CRM_ACTIVITIES' | translate }}
     </button>
+
 
     <button matButton (click)="save()"><span><i
         class="fa-solid fa-floppy-disk"></i> {{ 'COMMON_SAVE'|translate }}</span></button>
@@ -55,7 +59,7 @@
                     <mat-form-field class="source">
                         <mat-label translate>COMMON_SOURCE</mat-label>
                         <mat-select formControlName="source">
-                            @for (s of SOURCE; track s) {
+                            @for (s of SOURCE;track s) {
                                 <mat-option [value]="s" translate>CRM_{{ s }}</mat-option>
                             }
                         </mat-select>
@@ -126,7 +130,7 @@
                     <mat-form-field>
                         <mat-label translate>COMMON_STATE</mat-label>
                         <mat-select formControlName="state">
-                            @for (s of STATES; track s) {
+                            @for (s of STATES;track s) {
                                 <mat-option [value]="s" translate>CRM_{{ s }}</mat-option>
                             }
                         </mat-select>
@@ -135,7 +139,7 @@
                     <mat-form-field>
                         <mat-label translate>COMMON_STATUS</mat-label>
                         <mat-select formControlName="status">
-                            @for (s of STATUS; track s) {
+                            @for (s of STATUS;track s) {
                                 <mat-option [value]="s" translate>CRM_{{ s }}</mat-option>
                             }
                         </mat-select>
@@ -144,7 +148,7 @@
                     <mat-form-field>
                         <mat-label translate>COMMON_PRIORITY</mat-label>
                         <mat-select formControlName="priority">
-                            @for (s of PRIORITIES; track s) {
+                            @for (s of PRIORITIES;track s) {
                                 <mat-option [value]="s" translate>CRM_{{ s }}</mat-option>
                             }
                         </mat-select>
@@ -240,8 +244,25 @@
                     <span translate>CRM_ACTIVITIES</span>
                 </mat-toolbar>
                 <div class="content__div">
+                    @if (leadId > 0) {
+                        <ss-crm-leads-activity-list
+                            [parentId]="leadId"
+                            (onEdit)="onEditActivity($event)">
+                        </ss-crm-leads-activity-list>
+                    }
                 </div>
             </div>
+        } @else if (isActivityDetail()) {
+            <div class="content__div">
+                <ss-crm-leads-activity-lines-detail
+                    *ngIf="isActivityDetail()"
+                    [activityId]="activityId"
+                    [parentId]="leadId"
+                    (closed)="select(Panels.ACTIVITY)">
+                </ss-crm-leads-activity-lines-detail>
+            </div>
+
         }
+
     </form>
 }

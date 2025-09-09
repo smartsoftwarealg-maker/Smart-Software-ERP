@@ -109,7 +109,6 @@ export class CrmLeadsComponent implements OnInit, OnDestroy {
     }
 
     edit(lead: CRMLead): void {
-        //    console.log('Edit lead:', lead);
         this.showDetail(lead.id);
     }
 

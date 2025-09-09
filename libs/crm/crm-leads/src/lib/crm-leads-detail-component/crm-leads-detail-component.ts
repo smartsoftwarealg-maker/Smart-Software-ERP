@@ -1,5 +1,5 @@
-import {Component, computed, inject, OnInit, signal} from '@angular/core';
-import {LoginService, MaterialModule} from '@ss/common/api-common';
+import { Component, computed, inject, Input, OnInit, signal } from '@angular/core';
+import { LoginService, MaterialModule } from '@ss/common/api-common';
 import { CRMLeadsService } from '../crm-lead.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
@@ -10,10 +10,16 @@ import { DatePickerComponent } from '@ss/common/ui-datepicker';
 import { CRMLead } from '../lead-api';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
-import {CRMCampaignService} from '../crm-comaign.service';
-import {DefaultAutoCompleteModel, UiAutoCompleteComponent} from '@ss/common/ui-auto-complete';
-import {UserListService} from '@ss/common/api-users';
+import { CRMCampaignService } from '../crm-comaign.service';
+import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
+import { UserListService } from '@ss/common/api-users';
 import { CityService } from '@ss/common/api-lookup';
+import { CrmLeadsActivityListComponent } from '../crm-leads-activity-list/crm-leads-activity-list.component';
+import {
+    CrmLeadsActivityLinesDetailComponent
+} from '../crm-leads-activity-lines-detail/crm-leads-activity-lines-detail.component';
+import { CrmLeadActivityService } from '../crm-lead-activity.service';
+import { NgIf } from '@angular/common';
 
 enum Panels {
     GENERAL = 0,
@@ -21,6 +27,7 @@ enum Panels {
     CONTACT = 2,
     PROGRESS = 3,
     ACTIVITY = 4,
+    ACTIVITY_LINE_DETAIL = 5,
 }
 
 @Component({
@@ -31,6 +38,9 @@ enum Panels {
         TranslatePipe,
         DatePickerComponent,
         UiAutoCompleteComponent,
+        CrmLeadsActivityListComponent,
+        CrmLeadsActivityLinesDetailComponent,
+        NgIf
     ],
     templateUrl: './crm-leads-detail-component.html',
     styleUrl: './crm-leads-detail-component.scss',
@@ -38,16 +48,17 @@ enum Panels {
     providers: [
         {
             provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
-            useValue: { appearance: 'outline' },
-        },
-    ],
+            useValue: { appearance: 'outline' }
+        }
+    ]
 })
 export class CrmLeadsDetailComponent implements OnInit {
     #loginSrv = inject(LoginService);
-    #userSrv  = inject(UserListService);
+    #userSrv = inject(UserListService);
     #campaignSrv = inject(CRMCampaignService);
-    #citySrv =inject(CityService);
+    #citySrv = inject(CityService);
     #entitySrv = inject(CRMLeadsService);
+    #activitySrv = inject(CrmLeadActivityService);
     #router = inject(Router);
     #route = inject(ActivatedRoute);
     #confirmationSrv = inject(ConfirmationDialogService);
@@ -73,7 +84,7 @@ export class CrmLeadsDetailComponent implements OnInit {
         'NEGOTIATION',
         'CLOSED_WON',
         'CLOSED_LOST',
-        'UNQUALIFIED',
+        'UNQUALIFIED'
     ];
 
     public STATUS = [
@@ -83,7 +94,7 @@ export class CrmLeadsDetailComponent implements OnInit {
         'PROPOSAL_SENT',
         'NEGOTIATION',
         'CLOSED_WON',
-        'CLOSED_LOST',
+        'CLOSED_LOST'
     ];
 
     public SOURCE = [
@@ -92,14 +103,14 @@ export class CrmLeadsDetailComponent implements OnInit {
         'EVENT',
         'CAMPAIGN',
         'SOCIAL',
-        'PARTNER',
+        'PARTNER'
     ];
 
     public PRIORITIES = [
         'LOW',
         'MEDIUM',
         'HIGH',
-        'CRITICAL',
+        'CRITICAL'
     ];
 
     selectedPanel = signal<Panels>(Panels.DETAIL);
@@ -111,6 +122,8 @@ export class CrmLeadsDetailComponent implements OnInit {
     isContact = computed(() => this.selectedPanel() === Panels.CONTACT);
     isProgress = computed(() => this.selectedPanel() === Panels.PROGRESS);
     isActivity = computed(() => this.selectedPanel() === Panels.ACTIVITY);
+    isActivityDetail = computed(() => this.selectedPanel() === Panels.ACTIVITY_LINE_DETAIL);
+
 
     public form: UntypedFormGroup | null = null;
 
@@ -129,11 +142,15 @@ export class CrmLeadsDetailComponent implements OnInit {
     ngOnInit(): void {
         const id = +this.#route.snapshot.paramMap.get('id');
         this.#shellSrv.setTitle('CRM_LEADS');
-        this.#entitySrv.get(id).subscribe({
-            next: (crmLead) => {
-                this.form = this.setupForm(crmLead);
-            },
-        });
+        if (id > 0) {
+            this.#entitySrv.get(id).subscribe({
+                next: (crmLead) => {
+                    this.form = this.setupForm(crmLead);
+                }
+            });
+        } else {
+            this.form = this.setupForm({ id: 0 } as CRMLead);
+        }
     }
 
     list() {
@@ -151,9 +168,10 @@ export class CrmLeadsDetailComponent implements OnInit {
             },
             error: () => {
                 this.#snackBarSrv.showFailureMessage();
-            },
+            }
         });
     }
+
 
     // cancel() {
     //     this.#router.navigate(['../'], { relativeTo: this.#route }).then();
@@ -167,43 +185,56 @@ export class CrmLeadsDetailComponent implements OnInit {
     }
 
     private setupForm(b: CRMLead) {
+        this.#activitySrv.setParentId(b.id);
+        this.leadId = b.id;
         return this.formBuilder.group({
-            id:                [b?.id || 0, Validators.required],
-            description:       [b?.description, Validators.required],
-            detail:            [b?.detail, Validators.required],
-            email:             [b?.email],
-            phone:             [b?.phone],
-            state:             [b?.state],
-            status:            [b?.status||'NEW'],
-            source:            [b?.source||'WEB'],
-            createdAt:         [b?.createdAt||this.#NOW, Validators.required],
-            createdBy:         [b?.createdBy||this.#loginSrv.appCtx.id, Validators.required],
-            updatedAt:         [b?.updatedAt||this.#NOW],
+            id: [b?.id || 0, Validators.required],
+            description: [b?.description, Validators.required],
+            detail: [b?.detail, Validators.required],
+            email: [b?.email],
+            phone: [b?.phone],
+            state: [b?.state],
+            status: [b?.status || 'NEW'],
+            source: [b?.source || 'WEB'],
+            createdAt: [b?.createdAt || this.#NOW, Validators.required],
+            createdBy: [b?.createdBy || this.#loginSrv.appCtx.id, Validators.required],
+            updatedAt: [b?.updatedAt || this.#NOW],
             expectedCloseDate: [b?.expectedCloseDate],
-            campaignId:        [b?.campaignId],
-            ownerId:           [b?.ownerId],
-            priority:          [b?.priority||'LOW'],
-            score:             [b?.score||0, [Validators.min(0), Validators.max(10)]],
-            company:           [b?.company],
-            companySite:       [b?.companySite],
-            companyIndustry:   [b?.companyIndustry],
-            annualRevenue:     [b?.annualRevenue, Validators.min(0)],
+            campaignId: [b?.campaignId],
+            ownerId: [b?.ownerId],
+            priority: [b?.priority || 'LOW'],
+            score: [b?.score || 0, [Validators.min(0), Validators.max(10)]],
+            company: [b?.company],
+            companySite: [b?.companySite],
+            companyIndustry: [b?.companyIndustry],
+            annualRevenue: [b?.annualRevenue, Validators.min(0)],
             numberOfEmployees: [b?.numberOfEmployees, Validators.min(0)],
-            lastName:          [b?.lastName],
-            firstName:         [b?.firstName],
-            jobTitle:          [b?.jobTitle],
-            addressLine1:      [b?.addressLine1],
-            addressLine2:      [b?.addressLine2],
-            city:              [b?.city],
-            postalCode:        [b?.postalCode],
-            probability:       [b?.probability||0],
-            isDeleted:         [false]
+            lastName: [b?.lastName],
+            firstName: [b?.firstName],
+            jobTitle: [b?.jobTitle],
+            addressLine1: [b?.addressLine1],
+            addressLine2: [b?.addressLine2],
+            city: [b?.city],
+            postalCode: [b?.postalCode],
+            probability: [b?.probability || 0],
+            isDeleted: [false]
         });
     }
+
 
     select(idx: number) {
         this.selectedPanel.set(idx);
     }
 
+    @Input() isEditable = false;
     protected readonly Panels = Panels;
+
+    leadId: number;
+    @Input() activityId: number | null = null;
+
+    onEditActivity(id: number) {
+        this.activityId = id;
+        this.select(Panels.ACTIVITY_LINE_DETAIL);
+    }
+
 }
