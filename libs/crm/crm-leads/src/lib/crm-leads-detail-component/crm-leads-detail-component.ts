@@ -14,7 +14,6 @@ import {CRMCampaignService} from '../crm-comaign.service';
 import {DefaultAutoCompleteModel, UiAutoCompleteComponent} from '@ss/common/ui-auto-complete';
 import {UserListService} from '@ss/common/api-users';
 import { CityService } from '@ss/common/api-lookup';
-import {sign} from 'chart.js/helpers';
 
 enum Panels {
     GENERAL = 0,

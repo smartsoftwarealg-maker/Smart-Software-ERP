@@ -17,7 +17,8 @@ import {
     CRM_LEADS_URL,
     CRM_CAMPAIGN_URL,
     CRM_MAILING_LIST_URL,
-    CRM_TEAMS_URL, CRM_OPPORTUNITY_URL,
+    CRM_TEAMS_URL,
+    CRM_OPPORTUNITY_URL,
 } from '../common';
 import {
     SalutationsDetailComponent,
@@ -43,10 +44,10 @@ import {
 } from '@ss/logistics/ui-agent';
 import { AGENT_ARCHIVES } from '@ss/common/app-archive';
 import {
-    CrmContactsLineDetailComponent,
+    CrmContactsDetailComponent,
     CrmCustomerDetailComponent,
     CrmCustomerListComponent,
-    CrmContactsLineListComponent,
+    CrmContactsListComponent,
 } from '@ss/crm/crm-customer';
 import { CrmLeadsComponent, CrmLeadsDetailComponent } from '@ss/crm/leads';
 import {
@@ -65,7 +66,10 @@ import {
     CrmTeamsLinesListComponent,
     CrmTeamsListComponent,
 } from '@ss/crm/crm-teams';
-import {CrmOpportunityDetailComponent, CrmOpportunityListComponent} from "@ss/crm/opportunity";
+import {
+    CrmOpportunityDetailComponent,
+    CrmOpportunityListComponent,
+} from '@ss/crm/opportunity';
 
 export const crmRoutes: Routes = [
     {
@@ -259,13 +263,12 @@ export const crmRoutes: Routes = [
                                 children: [
                                     {
                                         path: '',
-                                        component: CrmContactsLineListComponent,
+                                        component: CrmContactsListComponent,
                                         pathMatch: 'full',
                                     },
                                     {
                                         path: ':id',
-                                        component:
-                                            CrmContactsLineDetailComponent,
+                                        component: CrmContactsDetailComponent,
                                     },
                                 ],
                             },

@@ -15,13 +15,13 @@ import {
 import { MatMiniFabButton } from '@angular/material/button';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 import { MatTooltip } from '@angular/material/tooltip';
-import { Contact } from '../api';
+import { CRMContact } from '../api';
 import { BaseChildEntityListComponent } from '@ss/common/ui-base-entity';
 import { CrmContactService } from '../crm-contact.service';
 import { LanguageService } from '@ss/common/api-common';
 
 @Component({
-    selector: 'ss-crm-contact-line-list',
+    selector: 'ss-crm-contact-list',
     imports: [
         CommonModule,
         MatTooltip,
@@ -39,11 +39,11 @@ import { LanguageService } from '@ss/common/api-common';
         MatRowDef,
         MatHeaderRowDef,
     ],
-    templateUrl: './crm-contacts-line-list.component.html',
-    styleUrl: './crm-contacts-line-list.component.scss',
+    templateUrl: './crm-contacts-list.component.html',
+    styleUrl: './crm-contacts-list.component.scss',
     standalone: true,
 })
-export class CrmContactsLineListComponent extends BaseChildEntityListComponent<Contact> {
+export class CrmContactsListComponent extends BaseChildEntityListComponent<CRMContact> {
     override displayedColumns = [
         'lastName',
         'firstName',

@@ -30,10 +30,10 @@ mat-card {
 .content__div {
     display: flex;
     flex-wrap: wrap;
-    justify-items: stretch;
+    align-items: flex-start;
     gap: 1em;
     width: 100%;
-    overflow: auto;
+    overflow: hidden;
     padding-top: .5em;
 }
 
@@ -81,6 +81,14 @@ mat-toolbar {
     font-weight: bolder;
 }
 
+.memo {
+    flex: 3 0 auto;
+}
+
+.default {
+    flex: 1 0 auto;
+    max-width: 250px;
+}
 
 @media (width <= 900px) {
     .detail__div {

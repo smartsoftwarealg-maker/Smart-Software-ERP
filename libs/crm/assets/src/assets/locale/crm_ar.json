@@ -81,7 +81,19 @@
     "BUDGET_ALLOCATED":     "الميزانية المخصصة",
     "DISCOUNT_AMOUNT":      "مبلغ الخصم",
     "DISCOUNT_PERCENTAGE":  "نسبة الخصم",
-    "DISCOUNT_STAGE":       "مرحلة الخصم"
+    "DISCOUNT_STAGE":       "مرحلة الخصم",
+    "COMPETITORS":          "المنافسون",
+    "COMPETITIVE_THREAT_LEVEL":"مستوى التهديد التنافسي",
+    "STAGE":                "المرحلة",
+    "CANCELLED":            "ملغى",
+    "OPEN":                 "مفتوح",
+    "ON_HOLD":              "معلق",
+    "FORECAST":             "توقع",
+    "CERTAINTY":            "اليقين",
+    "ASSIGNED_TO":          "مُسند إلى",
+    "CLOSING_MEMO":         "مذكرة الإغلاق",
+    "CLOSED":               "مغلق"
+
 
 
 }

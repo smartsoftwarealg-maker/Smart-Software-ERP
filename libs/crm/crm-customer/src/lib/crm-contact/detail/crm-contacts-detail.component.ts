@@ -10,13 +10,13 @@ import { MatOption, MatSelect } from '@angular/material/select';
 import { MatButton } from '@angular/material/button';
 import { MatCheckbox } from '@angular/material/checkbox';
 import { BaseChildEntityDetailComponent } from '@ss/common/ui-base-entity';
-import { Contact } from '../api';
+import { CRMContact } from '../api';
 import { CrmContactService } from '../crm-contact.service';
 
 @Component({
     selector: 'ss-crm-contact-line-detail',
-    templateUrl: './crm-contacts-line-detail.component.html',
-    styleUrl: './crm-contacts-line-detail.component.scss',
+    templateUrl: './crm-contacts-detail.component.html',
+    styleUrl: './crm-contacts-detail.component.scss',
     imports: [
         TranslatePipe,
         MatFormField,
@@ -32,8 +32,8 @@ import { CrmContactService } from '../crm-contact.service';
     ],
     standalone: true,
 })
-export class CrmContactsLineDetailComponent
-    extends BaseChildEntityDetailComponent<Contact>
+export class CrmContactsDetailComponent
+    extends BaseChildEntityDetailComponent<CRMContact>
     implements OnInit
 {
     private formBuilder = inject(UntypedFormBuilder);
@@ -55,7 +55,7 @@ export class CrmContactsLineDetailComponent
 
     protected phoneTypes = ['MOBILE', 'WORK', 'HOME', 'FAX'];
 
-    override setupForm(b: Contact) {
+    override setupForm(b: CRMContact) {
             return this.formBuilder.group({
                 id: [b?.id || 0],
                 parentId: [b?.parentId || this.detailSrv.getParentId],
