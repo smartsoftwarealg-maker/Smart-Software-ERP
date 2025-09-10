@@ -22,6 +22,16 @@ export const STATUS = [
     'CANCELLED', // Actively negotiating terms
 ];
 
+export const ACTIVITY_TYPE = ['CALL', 'EMAIL', 'MEETING'];
+
+export const COMPETITION_TREAT_LEVEL = [
+    'NONE',
+    'LOW',
+    'MEDIUM',
+    'HIGH',
+    'CRITICAL',
+];
+
 export interface CRMOpportunity {
     id: number;
     name: string;
@@ -68,18 +78,18 @@ export interface CRMOpportunity {
 }
 
 export interface CRMOpportunityProgress {
-    "id": number;
-    "status": string;
-    "stage": string;
-    "probability": number;
-    "priority": string;
-    "ownerId": number;
-    "teamId": number;
-    "createdAt": Date;
-    "amount": number;
-    "closedBy": number;
-    "createdBy": number;
-    "memo": string;
+    id: number;
+    status: string;
+    stage: string;
+    probability: number;
+    priority: string;
+    ownerId: number;
+    teamId: number;
+    createdAt: Date;
+    amount: number;
+    closedBy: number;
+    createdBy: number;
+    memo: string;
 }
 
 export class CRMContactLookup extends DefaultAutoCompleteModel<CRMContact> {

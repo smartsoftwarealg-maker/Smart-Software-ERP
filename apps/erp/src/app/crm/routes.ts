@@ -70,6 +70,12 @@ import {
     CrmOpportunityDetailComponent,
     CrmOpportunityListComponent,
 } from '@ss/crm/opportunity';
+import {
+    CrmOpportunityActivitiesListComponent
+} from "../../../../../libs/crm/crm-opportunity/src/lib/crm-opportunity-activities/list/crm-opportunity-activities-list.component";
+import {
+    CrmOpportunityActivitiesDetailComponent
+} from "../../../../../libs/crm/crm-opportunity/src/lib/crm-opportunity-activities/detail/crm-opportunity-activities-detail.component";
 
 export const crmRoutes: Routes = [
     {
@@ -343,6 +349,19 @@ export const crmRoutes: Routes = [
                 component: CrmOpportunityDetailComponent,
                 canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService],
+                children: [
+                    { path: '', redirectTo: 'active', pathMatch: 'full' },
+                    {
+                        path: 'active',
+                        children: [
+                            { path: '', component: CrmOpportunityActivitiesListComponent },
+                            {
+                                path: ':id',
+                                component: CrmOpportunityActivitiesDetailComponent,
+                            },
+                        ],
+                    },
+                ],
             },
             { path: '**', redirectTo: LIST_URL, pathMatch: 'full' },
         ],

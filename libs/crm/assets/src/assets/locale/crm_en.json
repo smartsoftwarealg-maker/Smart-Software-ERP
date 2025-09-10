@@ -92,6 +92,15 @@
     "CERTAINTY":           "Certainty",
     "ASSIGNED_TO":         "Assigned to",
     "CLOSING_MEMO":        "Closing memo",
-    "CLOSED":              "Closed"
+    "CLOSED":              "Closed",
+    "TRACKING":            "Tracking",
+    "ACTIVITY_TYPE":       "Activity type",
+    "DUE_DATE":            "Due date",
+    "COMPLETION_DATE":     "Completion date",
+    "FEEDBACK":            "Feedback",
+    "EMAIL":               "Email",
+    "CALL":                "Call",
+    "MEETING":             "Meeting"
+
 
 }
