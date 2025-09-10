@@ -1,0 +1,81 @@
+<div class="ctrl_div default-100">
+    <button mat-mini-fab color="primary"
+            [matTooltip]="'COMMON_SAVE' | translate"
+            (click)="save()"
+            [disabled]="!form?.valid">
+        <i class="fas fa-save"></i>
+    </button>
+    <button mat-mini-fab
+            color="warn"
+            [matTooltip]="'COMMON_CANCEL' | translate"
+            (click)="cancel()"
+            translate>
+        <i class="fas fa-redo"></i>
+    </button>
+</div>
+
+<mat-card>
+    @if (form) {
+        <form novalidate [formGroup]="form">
+
+            <mat-form-field class="default-33">
+                <mat-label translate>CRM_SUBJECT</mat-label>
+                <input matInput formControlName="subject">
+            </mat-form-field>
+
+            <mat-form-field class="default-33">
+                <mat-label translate>CRM_ACTIVITY_TYPE</mat-label>
+                <input matInput formControlName="activityType">
+            </mat-form-field>
+
+            <mat-form-field class="default-33">
+                <mat-label translate>CRM_PRIORITY</mat-label>
+                <input matInput formControlName="priority">
+            </mat-form-field>
+
+            <mat-form-field class="default-33">
+                <mat-label translate>COMMON_STATUS</mat-label>
+                <input matInput formControlName="status">
+            </mat-form-field>
+
+            <mat-form-field class="default-33">
+                <mat-label translate>CRM_DUE_DATE</mat-label>
+                <ss-date-picker formControlName="dueDate"
+                                [type]="'date'"
+                                [required]=true>
+                </ss-date-picker>
+            </mat-form-field>
+
+            <mat-form-field class="default-33">
+                <mat-label translate>CRM_COMPLETION_DATE</mat-label>
+                <ss-date-picker formControlName="completionDate"
+                                [type]="'date'"
+                                [required]=true>
+                </ss-date-picker>
+            </mat-form-field>
+            <mat-form-field class="default-33">
+                <mat-label translate>COMMON_CREATED_BY</mat-label>
+                <ss-auto-complete matInput
+                                  [required]="true"
+                                  formControlName="createdBy"
+                                  [model]="usersLookup"
+                                  required>
+                </ss-auto-complete>
+            </mat-form-field>
+
+            <mat-form-field class="default-33">
+                <mat-label translate>CRM_LEAD</mat-label>
+                <input matInput formControlName="leadDescription">
+            </mat-form-field>
+
+            <mat-form-field class="default-33">
+                <mat-label translate>CRM_OWNER</mat-label>
+                <ss-auto-complete matInput
+                                  [model]="usersLookup"
+                                  formControlName="ownerId">
+                </ss-auto-complete>
+            </mat-form-field>
+
+        </form>
+    }
+</mat-card>

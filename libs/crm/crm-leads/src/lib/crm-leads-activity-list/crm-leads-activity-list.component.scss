@@ -1,0 +1,77 @@
+
+.main-container {
+    display: block;
+    margin: auto;
+    position: relative;
+    max-width: 1400px;
+    width: 100%;
+}
+
+main-table {
+    width: 100%;
+    min-height: 400px;
+    display: grid;
+}
+
+
+.mat-column-subject {
+    flex: 1 1 20%;
+    min-width: 180px;
+}
+
+.mat-column-activityType {
+    flex: 1 1 15%;
+    min-width: 140px;
+}
+
+.mat-column-priority,
+.mat-column-status {
+    flex: 1 1 10%;
+    min-width: 120px;
+}
+
+.mat-column-dueDate,
+.mat-column-completionDate {
+    flex: 1 1 12%;
+    min-width: 120px;
+}
+
+.mat-column-ownerDescription,
+.mat-column-leadDescription {
+    flex: 1 1 15%;
+    min-width: 220px;
+}
+
+
+
+.mat-header-cell, .mat-cell {
+    padding: 4px 8px;
+    border-left: 1px solid white; }
+
+
+mat-header-cell {
+    text-align: center;
+    font-weight: bolder;
+    font-size: 0.70em;
+    justify-content: center !important;
+    font-family: Arial, serif;
+}
+
+
+.mat-column-status .mat-cell,
+.mat-column-priority .mat-cell {
+    justify-content: center;
+    text-align: center;
+}
+
+
+.ctrl-div {
+    display: flex;
+    justify-content: flex-end;
+    padding: 1px;
+    gap: 8px;
+}
+
+.pagination-container {
+    flex: 0 1 1%;
+}

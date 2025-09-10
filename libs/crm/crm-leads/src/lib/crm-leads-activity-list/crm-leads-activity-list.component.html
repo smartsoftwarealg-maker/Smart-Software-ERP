@@ -1,0 +1,97 @@
+<div class="main-container">
+    <div class="ctrl-div">
+            <button mat-mini-fab color="primary" (click)="add()" [matTooltip]="'COMMON_ADD' | translate">
+                <span class="fas fa-plus"></span>
+            </button>
+
+            <button mat-mini-fab (click)="deleteSelected()" [matTooltip]="'COMMON_DELETE' | translate"
+                    [disabled]="!selectedId"
+                    color="warn">
+                <span class="fas fa-trash-alt"></span>
+            </button>
+
+            <button mat-mini-fab (click)="edit()"
+                    [matTooltip]="'COMMON_EDIT' | translate"
+                    [disabled]="!selectedId"
+                    color="accent">
+                <span class="fas fa-pen"></span>
+            </button>
+    </div>
+
+    <div class="main-table">
+        <mat-table mat-table [dataSource]="data$">
+
+            <ng-container matColumnDef="subject">
+                <mat-header-cell *matHeaderCellDef translate>CRM_SUBJECT</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    <a (click)="showDetail(e.id)">{{ e.subject }}</a>
+                </mat-cell>
+            </ng-container>
+
+
+            <ng-container matColumnDef="activityType">
+                <mat-header-cell *matHeaderCellDef translate>CRM_ACTIVITY_TYPE</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{ e.activityType }}
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="priority">
+                <mat-header-cell *matHeaderCellDef translate>CRM_PRIORITY</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{  e.priority | translate }}
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="status">
+                <mat-header-cell *matHeaderCellDef translate>COMMON_STATUS</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{ e.status | translate }}
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="dueDate">
+                <mat-header-cell *matHeaderCellDef translate>CRM_DUE_DATE</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{ e.dueDate | date: 'dd/MM/yyyy' }}
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="completionDate">
+                <mat-header-cell *matHeaderCellDef translate>CRM_COMPLETION_DATE</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{ e.completionDate | date: 'dd/MM/yyyy' }}
+                </mat-cell>
+            </ng-container>
+
+
+            <ng-container matColumnDef="ownerDescription">
+                <mat-header-cell *matHeaderCellDef translate>CRM_OWNER</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{ e.ownerDescription }}
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="leadDescription">
+                <mat-header-cell *matHeaderCellDef translate>CRM_LEAD</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{ e.leadDescription }}
+                </mat-cell>
+
+            </ng-container>
+
+
+
+
+            <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+            <mat-row class="selectable" [class.selected]="row.id === selectedId"
+                     (click)="select(row.id)"
+                     *matRowDef="let row; columns: displayedColumns;">
+            </mat-row>
+        </mat-table>
+    </div>
+
+    <div class="pagination-container b-b-background">
+        <ss-pagination [paginationModel]="paginator"></ss-pagination>
+    </div>
+</div>
