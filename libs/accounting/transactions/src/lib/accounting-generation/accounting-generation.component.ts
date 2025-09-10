@@ -188,18 +188,19 @@ export class AccountingGenerationComponent implements OnInit, OnDestroy {
             .subscribe({
                 next: res => {
                     this.processing = false;
+                    this.shellSrv.setLoading(false);
                     this.payrollData = res;
                     this.payrollData.forEach(e => {
                         e.debit = Math.max(e.amount, 0) || 0;
                         e.credit = Math.max(-e.amount, 0) || 0;
                     });
                     // add total line
-                    const total = this.langSrv.translate('COMMON_TOTAL');
-                    const debit = res.map(e => Math.max(e.amount, 0)).reduce((a, b) => a + b);
-                    const credit = res.map(e => Math.max(-e.amount, 0)).reduce((a, b) => a + b);
-                    this.payrollData.push({ account: total, amount: 0, debit: debit, credit: credit });
-
-                    this.shellSrv.setLoading(false);
+                    if (res.length > 0) {
+                        const total = this.langSrv.translate('COMMON_TOTAL');
+                        const debit = res.map(e => Math.max(e.amount, 0)).reduce((a, b) => a + b);
+                        const credit = res.map(e => Math.max(-e.amount, 0)).reduce((a, b) => a + b);
+                        this.payrollData.push({account: total, amount: 0, debit: debit, credit: credit});
+                    }
                 }, error: err => {
                     this.processing = false;
                     this.shellSrv.setLoading(false);

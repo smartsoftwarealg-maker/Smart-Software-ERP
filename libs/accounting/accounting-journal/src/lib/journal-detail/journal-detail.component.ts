@@ -79,7 +79,7 @@ export class JournalDetailComponent extends BaseEntityDetailComponent<Journal> {
             bankId:       [e.bankId],
             center:       [e.center],
             blocked:      [e.blocked],
-            blockYear:    [e.blockYear],
+            blockYear:    [e.blockYear||0, [Validators.min(0), Validators.max(3000)]],
         });
     }
 
