@@ -1,7 +1,6 @@
 import { Component, EventEmitter, inject, Input, OnInit, Output } from '@angular/core';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router } from '@angular/router';
-import { BaseChildEntityDetailComponent } from '@ss/common/ui-base-entity';
 import {
     UntypedFormGroup,
     Validators,
@@ -17,8 +16,7 @@ import { UserListService } from '@ss/common/api-users';
 import { CRMLeadActivity } from '../lead-activity-api';
 import { CrmLeadActivityService } from '../crm-lead-activity.service';
 import { DatePickerComponent } from '@ss/common/ui-datepicker';
-import { MatButton } from '@angular/material/button';
-import { of, tap } from 'rxjs';
+import { of } from 'rxjs';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 
 
@@ -37,8 +35,7 @@ import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
         TranslateDirective,
         TranslatePipe,
         UiAutoCompleteComponent,
-        DatePickerComponent,
-        MatButton
+        DatePickerComponent
     ]
 })
 export class CrmLeadsActivityLinesDetailComponent implements OnInit {
