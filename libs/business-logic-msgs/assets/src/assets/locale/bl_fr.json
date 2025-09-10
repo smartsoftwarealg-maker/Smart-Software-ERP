@@ -74,5 +74,6 @@
     "LOCKED_ACCOUNT_NUMBER":              "Le numéro de compte courant est bloqué jusqu'à",
     "NO_QTY_SPECIFIED":                   "Aucune quantité spécifiée pour la production.",
     "OBSOLETE_CONVENTION":                "Il n'existe aucune convention pour ce transporteur. Veuillez créer une nouvelle convention.",
-    "ALREADY_RECORDED":                   "Ce document est déjà enregistré en comptabilité."
+    "ALREADY_RECORDED":                   "Ce document est déjà enregistré en comptabilité.",
+    "PROJECT_QTY_EXCEEDED":               "La quantité de ce projet a été dépassée."
 }
