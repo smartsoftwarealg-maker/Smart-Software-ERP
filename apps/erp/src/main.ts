@@ -12,6 +12,7 @@ import { provideHttpClient, withFetch, withInterceptorsFromDi } from '@angular/c
 import { LoginComponent } from '@ss/common/ui-login';
 import { CenterSelectComponent } from '@ss/common/ui-center-select';
 import { CustomErrorHandler } from '@ss/common/ui-error-handler';
+import {provideAnimationsAsync} from "@angular/platform-browser/animations/async";
 
 const routes: Routes = [
     {
@@ -35,6 +36,7 @@ if (environment.production) {
 bootstrapApplication(AppComponent, {
     providers: [
         importProvidersFrom(BrowserModule, MatProgressSpinnerModule),
+        provideAnimationsAsync(),
         provideHttpClient(withInterceptorsFromDi(), withFetch()),
         provideRouter(routes, withComponentInputBinding()), //, withDebugTracing()
         { provide: ErrorHandler, useClass: CustomErrorHandler }
