@@ -1,0 +1,65 @@
+.size {
+    width: 90%;
+    max-width: 1100px;
+    margin: 0 auto;
+    //padding-top: 1em;
+}
+
+mat-tab-group {
+    min-height: calc(100% - 64px);
+}
+
+.ctrl__div {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1em;
+}
+
+.grouped-form {
+    margin: 0 auto;
+    max-width: 1100px;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 0 2rem 2rem 2rem;
+
+    .form-group {
+        border-radius: 8px;
+        padding: 0 1rem;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1.5rem;
+        margin-bottom: 1rem;
+
+        .tiny {
+            flex: 0 0 120px;
+        }
+
+
+        .small {
+            flex: 1 0 150px;
+            max-width: 180px;
+        }
+
+        .medium {
+            flex: 1.4 0 180px;
+            max-width: 210px;
+        }
+
+        .large {
+            flex: 2.5 0 270px;
+            max-width: 350px;
+        }
+
+        .very-large {
+            flex: 3 0 48%;
+            max-width: 450px;
+            min-width: 270px;
+        }
+
+    }
+
+
+}

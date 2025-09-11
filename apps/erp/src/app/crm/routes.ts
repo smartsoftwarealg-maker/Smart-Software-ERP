@@ -68,14 +68,14 @@ import {
 } from '@ss/crm/crm-teams';
 import {
     CrmOpportunityDetailComponent,
-    CrmOpportunityListComponent,
+    CrmOpportunityListComponent, CrmOpportunityTrackingListComponent,
 } from '@ss/crm/opportunity';
 import {
     CrmOpportunityActivitiesListComponent
-} from "../../../../../libs/crm/crm-opportunity/src/lib/crm-opportunity-activities/list/crm-opportunity-activities-list.component";
+} from "@ss/crm/opportunity";
 import {
     CrmOpportunityActivitiesDetailComponent
-} from "../../../../../libs/crm/crm-opportunity/src/lib/crm-opportunity-activities/detail/crm-opportunity-activities-detail.component";
+} from "@ss/crm/opportunity";
 
 export const crmRoutes: Routes = [
     {
@@ -352,13 +352,27 @@ export const crmRoutes: Routes = [
                 children: [
                     { path: '', redirectTo: 'active', pathMatch: 'full' },
                     {
-                        path: 'active',
+                        path: 'activities',
                         children: [
                             { path: '', component: CrmOpportunityActivitiesListComponent },
                             {
                                 path: ':id',
                                 component: CrmOpportunityActivitiesDetailComponent,
                             },
+                        ],
+                    },
+                    {
+                        path: 'tracking',
+                        children: [
+                            {
+                                path: '',
+                                component: CrmOpportunityTrackingListComponent,
+                                pathMatch: 'full',
+                            },
+                            // {
+                            //     path: ':id',
+                            //     component: CrmContactsDetailComponent,
+                            // },
                         ],
                     },
                 ],

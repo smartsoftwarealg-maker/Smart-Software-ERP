@@ -12,10 +12,10 @@
     <button matButton (click)="select(Panels.STATUS)"><i
             class="fa-solid fa-circle text-success"></i> {{ 'COMMON_STATUS'|translate }}
     </button>
-    <button matButton (click)="select(Panels.ACTIVITY)"><i
+    <button matButton (click)="select(Panels.ACTIVITY)" [disabled]="!id"><i
             class="fa-solid fa-list-check"></i> {{ 'CRM_ACTIVITIES'|translate }}
     </button>
-    <button matButton (click)="select(Panels.PROGRESS)"><i
+    <button matButton (click)="select(Panels.TRACKING)" [disabled]="!id"><i
             class="fa-solid fa-arrow-progress"></i> {{ 'CRM_TRACKING'|translate }}
     </button>
 
@@ -167,92 +167,13 @@
             </div>
         }
 
-        @if (isProgress()) {
+        @if (isTracking()) {
             <div class="panel__div">
                 <mat-toolbar>
-                    <span translate>CRM_PROGRESS</span>
+                    <span translate>CRM_TRACKING</span>
                 </mat-toolbar>
-                <div class="content__div">
-                    <mat-form-field class="default">
-                        <mat-label translate>COMMON_STATUS</mat-label>
-                        <mat-select formControlName="status">
-                            @for (s of STATUS; track s) {
-                                <mat-option [value]="s" translate>CRM_{{ s }}</mat-option>
-                            }
-                        </mat-select>
-                        @if (form.controls['status'].invalid) {
-                            <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
-                        }
-                    </mat-form-field>
-
-                    <mat-form-field class="default">
-                        <mat-label translate>CRM_STAGE</mat-label>
-                        <mat-select formControlName="stage">
-                            @for (s of STATUS; track s) {
-                                <mat-option [value]="s" translate>CRM_{{ s }}</mat-option>
-                            }
-                        </mat-select>
-                        @if (form.controls['stage'].invalid) {
-                            <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
-                        }
-                    </mat-form-field>
-
-                    <mat-form-field class="default">
-                        <mat-label translate>CRM_PRIORITY</mat-label>
-                        <mat-select formControlName="priority">
-                            @for (p of PRIORITY; track p) {
-                                <mat-option [value]="p" translate>CRM_{{ p }}</mat-option>
-                            }
-                        </mat-select>
-                        @if (form.controls['priority'].invalid) {
-                            <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
-                        }
-                    </mat-form-field>
-
-                    <mat-form-field class="default">
-                        <mat-label translate>CRM_PROBABILITY</mat-label>
-                        <input matInput type="number" formControlName="probability" required>
-                        @if (form.controls['amount'].invalid) {
-                            <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
-                        }
-                    </mat-form-field>
-
-                    <mat-form-field class="default">
-                        <mat-label translate>CRM_OWNER</mat-label>
-                        <ss-auto-complete matInput
-                                          [required]="false"
-                                          formControlName="ownerId"
-                                          [model]="userLookup">
-                        </ss-auto-complete>
-                    </mat-form-field>
-
-                    <mat-form-field class="default">
-                        <mat-label translate>COMMON_TEAM</mat-label>
-                        <ss-auto-complete matInput
-                                          [required]="false"
-                                          formControlName="ownerId"
-                                          [model]="teamLookup">
-                        </ss-auto-complete>
-                    </mat-form-field>
-
-                    <mat-form-field class="default">
-                        <mat-label translate>COMMON_AMOUNT</mat-label>
-                        <input matInput type="text" formControlName="amount" required>
-                        @if (form.controls['amount'].invalid) {
-                            <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
-                        }
-                    </mat-form-field>
-
-                    <mat-form-field class="memo">
-                        <mat-label translate>COMMON_MEMO</mat-label>
-                        <textarea rows="3" matInput formControlName="memo"></textarea>
-                    </mat-form-field>
-
-                    <div style="display: flex; width: 100%; justify-content: flex-end">
-                        <button matButton (click)="saveProgress()">
-                            <i class="fa-solid fa-circle-check"></i> {{ 'CRM_PROGRESS'|translate }}
-                        </button>
-                    </div>
+                <div class="full-with">
+                    <router-outlet></router-outlet>
                 </div>
             </div>
         }
@@ -303,7 +224,7 @@
                 <mat-toolbar>
                     <span translate>CRM_ACTIVITIES</span>
                 </mat-toolbar>
-                <div class="activities">
+                <div class="full-with">
                     @if (id) {
                         <router-outlet></router-outlet>
                     }
