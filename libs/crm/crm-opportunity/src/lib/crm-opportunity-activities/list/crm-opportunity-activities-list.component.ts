@@ -19,6 +19,7 @@ import { BaseChildEntityListComponent } from '@ss/common/ui-base-entity';
 import { CrmOpportunityActiveService } from '../crm-opportunity-active.service';
 import { LanguageService } from '@ss/common/api-common';
 import {CRMOpportunityActivity} from "../api";
+import {PaginationComponent} from "@ss/common/ui-pagination";
 
 @Component({
     selector: 'ss-crm-opportunity-activity-list',
@@ -38,6 +39,7 @@ import {CRMOpportunityActivity} from "../api";
         MatRow,
         MatRowDef,
         MatHeaderRowDef,
+        PaginationComponent,
     ],
     templateUrl: './crm-opportunity-activities-list.component.html',
     styleUrl: './crm-opportunity-activities-list.component.scss',
@@ -54,9 +56,7 @@ export class CrmOpportunityActivitiesListComponent extends BaseChildEntityListCo
         'opportunityDescription',
     ];
 
-
     constructor(protected override detailSrv: CrmOpportunityActiveService) {
         super(detailSrv, 'CrmOpportunityActiveListLine');
     }
-
 }
