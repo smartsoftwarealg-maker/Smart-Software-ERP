@@ -43,6 +43,13 @@
             </mat-cell>
         </ng-container>
 
+        <ng-container matColumnDef="'memo'">
+            <mat-header-cell *matHeaderCellDef translate>COMMON_MEMO</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{ e.memo }}
+            </mat-cell>
+        </ng-container>
+
         <ng-container matColumnDef="teamDescription">
             <mat-header-cell *matHeaderCellDef translate>COMMON_TEAM</mat-header-cell>
             <mat-cell *matCellDef="let e" translate>

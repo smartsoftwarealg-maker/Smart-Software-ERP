@@ -50,6 +50,7 @@ export class CrmOpportunityTrackingListComponent extends BaseChildEntityListComp
         'priority',
         'amount',
         'closedBy',
+        'memo',
         'teamDescription',
     ];
 
