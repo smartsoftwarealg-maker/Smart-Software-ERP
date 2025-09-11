@@ -369,10 +369,6 @@ export const crmRoutes: Routes = [
                                 component: CrmOpportunityTrackingListComponent,
                                 pathMatch: 'full',
                             },
-                            // {
-                            //     path: ':id',
-                            //     component: CrmContactsDetailComponent,
-                            // },
                         ],
                     },
                 ],
