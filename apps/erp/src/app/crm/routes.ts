@@ -18,7 +18,7 @@ import {
     CRM_CAMPAIGN_URL,
     CRM_MAILING_LIST_URL,
     CRM_TEAMS_URL,
-    CRM_OPPORTUNITY_URL,
+    CRM_OPPORTUNITY_URL, CRM_EMAIL_TEMPLATE_URL,
 } from '../common';
 import {
     SalutationsDetailComponent,
@@ -68,14 +68,15 @@ import {
 } from '@ss/crm/crm-teams';
 import {
     CrmOpportunityDetailComponent,
-    CrmOpportunityListComponent, CrmOpportunityTrackingListComponent,
+    CrmOpportunityListComponent,
+    CrmOpportunityTrackingListComponent,
 } from '@ss/crm/opportunity';
+import { CrmOpportunityActivitiesListComponent } from '@ss/crm/opportunity';
+import { CrmOpportunityActivitiesDetailComponent } from '@ss/crm/opportunity';
 import {
-    CrmOpportunityActivitiesListComponent
-} from "@ss/crm/opportunity";
-import {
-    CrmOpportunityActivitiesDetailComponent
-} from "@ss/crm/opportunity";
+    CrmEmailTemplatesDetailComponent,
+    CrmEmailTemplatesListComponent,
+} from '@ss/crm/email-templates';
 
 export const crmRoutes: Routes = [
     {
@@ -354,10 +355,15 @@ export const crmRoutes: Routes = [
                     {
                         path: 'activities',
                         children: [
-                            { path: '', component: CrmOpportunityActivitiesListComponent },
+                            {
+                                path: '',
+                                component:
+                                    CrmOpportunityActivitiesListComponent,
+                            },
                             {
                                 path: ':id',
-                                component: CrmOpportunityActivitiesDetailComponent,
+                                component:
+                                    CrmOpportunityActivitiesDetailComponent,
                             },
                         ],
                     },
@@ -372,6 +378,23 @@ export const crmRoutes: Routes = [
                         ],
                     },
                 ],
+            },
+            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' },
+        ],
+    },
+    {
+        path: CRM_EMAIL_TEMPLATE_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: CrmEmailTemplatesListComponent,
+                canActivate: [loginGuard],
+            },
+            {
+                path: ':id',
+                component: CrmEmailTemplatesDetailComponent,
+                canActivate: [loginGuard],
+                canDeactivate: [CanDeactivateService],
             },
             { path: '**', redirectTo: LIST_URL, pathMatch: 'full' },
         ],

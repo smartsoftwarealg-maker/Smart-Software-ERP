@@ -2,7 +2,7 @@ import { SideNavNode } from '@ss/common/api-common';
 import {
     ABS_CRM_CAMPAIGN_URL,
     ABS_CRM_CONTACT_METHODS_URL, ABS_CRM_CUSTOMER_URL,
-    ABS_CRM_DEPARTMENTS_URL,
+    ABS_CRM_DEPARTMENTS_URL, ABS_CRM_EMAIL_TEMPLATE_URL,
     ABS_CRM_JOBS_URL, ABS_CRM_LEADS_URL, ABS_CRM_MAILING_LIST_URL, ABS_CRM_OPPORTUNITY_URL, ABS_CRM_PAYMENT_TERMS_URL,
     ABS_CRM_SALUTATIONS_URL,
     ABS_CRM_STATUS_URL, ABS_CRM_TEAMS_URL
@@ -83,6 +83,12 @@ export const crmNavTree: SideNavNode = {
             icon: 'fas fa-people-group',
             route: ABS_CRM_TEAMS_URL,
             accessRights: 'CRMTeams',
+        },
+        {
+            name: 'CRM_EMAIL_TEMPLATES',
+            icon: 'fas fa-envelope',
+            route: ABS_CRM_EMAIL_TEMPLATE_URL,
+            accessRights: 'CRMEmail',
         },
 
     ],

@@ -100,5 +100,11 @@
     "FEEDBACK":            "Feedback",
     "EMAIL":               "Email",
     "CALL":                "Call",
-    "MEETING":             "Meeting"
+    "MEETING":             "Meeting",
+    "EMAIL_TEMPLATES":     "Email templates",
+    "EMAIL_TEMPLATE":      "Email template",
+    "THUMBNAIL":           "Thumbnail",
+    "HTML_CONTENT":        "Html content",
+    "TEXT_CONTENT":        "text content",
+    "MERGE_FIELDS":        "Merge fields"
 }

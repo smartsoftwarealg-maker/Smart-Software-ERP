@@ -296,6 +296,9 @@
             "@ss/crm/crm-customer": ["libs/crm/crm-customer/src/index.ts"],
             "@ss/crm/crm-teams": ["libs/crm/crm-teams/src/index.ts"],
             "@ss/crm/departments": ["libs/crm/departments/src/index.ts"],
+            "@ss/crm/email-templates": [
+                "libs/crm/email-templates/src/index.ts"
+            ],
             "@ss/crm/jobs": ["libs/crm/jobs/src/index.ts"],
             "@ss/crm/leads": ["libs/crm/crm-leads/src/index.ts"],
             "@ss/crm/mailing-list": ["libs/crm/mailing-list/src/index.ts"],
