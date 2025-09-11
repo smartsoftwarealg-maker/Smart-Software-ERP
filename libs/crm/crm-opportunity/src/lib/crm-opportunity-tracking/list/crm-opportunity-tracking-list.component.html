@@ -1,0 +1,67 @@
+<div class="table_div size">
+    <mat-table mat-table [dataSource]="data$ | async" class="main-table">
+
+        <ng-container matColumnDef="ownerDescription">
+            <mat-header-cell *matHeaderCellDef translate>CRM_OWNER</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{ e.ownerDescription }}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="status">
+            <mat-header-cell *matHeaderCellDef translate>COMMON_STATUS</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{ e.status }}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="stage">
+            <mat-header-cell *matHeaderCellDef translate>CRM_STAGE</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{ e.stage }}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="priority">
+            <mat-header-cell *matHeaderCellDef translate>CRM_PRIORITY</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{ e.priority }}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="amount">
+            <mat-header-cell *matHeaderCellDef translate>COMMON_AMOUNT</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{ e.amount }}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="closedBy">
+            <mat-header-cell *matHeaderCellDef translate>CMMS_CLOSED_BY</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{ e.closedBy }}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="memo">
+            <mat-header-cell *matHeaderCellDef translate>COMMON_MEMO</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{ e.memo }}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="teamDescription">
+            <mat-header-cell *matHeaderCellDef translate>COMMON_TEAM</mat-header-cell>
+            <mat-cell *matCellDef="let e" translate>
+                {{ e.teamDescription }}
+            </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+        <mat-row class="selectable" [class.selected]="row.id == selectedRow?.id" (click)="selectRow(row)"
+                 *matRowDef="let row; columns: displayedColumns;">
+        </mat-row>
+    </mat-table>
+</div>
+
+

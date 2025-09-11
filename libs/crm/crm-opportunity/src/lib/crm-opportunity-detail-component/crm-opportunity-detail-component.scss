@@ -1,13 +1,13 @@
 @use '@angular/material' as mat;
 
 .content__div,
-form {
+form, .size {
     width: 90%;
     max-width: 1400px;
     margin: 8px auto;
 }
 
-.activities {
+.full-with {
     width: 100%;
     max-width: 1400px;
 }

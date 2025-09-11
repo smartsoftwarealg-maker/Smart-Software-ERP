@@ -1,14 +1,13 @@
 import { Component, computed, inject, OnInit, signal } from '@angular/core';
 import { LoginService, MaterialModule } from '@ss/common/api-common';
 import { CRMOpportunityService } from '../crm-opportunity.service';
-import {ActivatedRoute, Router, RouterOutlet} from '@angular/router';
+import { ActivatedRoute, Router, RouterOutlet } from '@angular/router';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 import { FormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { Observable, of } from 'rxjs';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { DatePickerComponent } from '@ss/common/ui-datepicker';
 import {
-    ACTIVITY_TYPE,
     CRMContactLookup,
     CRMOpportunity,
     CRMOpportunityProgress,
@@ -30,14 +29,15 @@ import { CrmContactService } from '@ss/crm/crm-customer';
 import { CompanyService } from '@ss/administration/api-company';
 import { CrmTeamsService } from '@ss/crm/crm-teams';
 import { CRMLeadsService } from '@ss/crm/leads';
-import {CrmOpportunityActiveService} from "../crm-opportunity-activities/crm-opportunity-active.service";
+import { CrmOpportunityActiveService } from '../crm-opportunity-activities/crm-opportunity-active.service';
+import {CrmOpportunityTrackingService} from "../crm-opportunity-tracking/crm-opportunity-tracking.service";
 
 enum Panels {
     GENERAL = 0,
     DETAIL = 1,
     STATUS = 2,
     ACTIVITY = 3,
-    PROGRESS = 4,
+    TRACKING = 4,
 }
 
 @Component({
@@ -77,6 +77,7 @@ export class CrmOpportunityDetailComponent implements OnInit {
     #leadSrv = inject(CRMLeadsService);
     #loginSrv = inject(LoginService);
     #opportunityActiveSrv = inject(CrmOpportunityActiveService);
+    #trackingSrv = inject(CrmOpportunityTrackingService);
 
     campaignLookup = new DefaultAutoCompleteModel(this.#campaignSrv);
     userLookup = new DefaultAutoCompleteModel(this.#userSrv);
@@ -98,7 +99,7 @@ export class CrmOpportunityDetailComponent implements OnInit {
     // isGeneral = computed(() => this.selectedPanel() === Panels.GENERAL);
     isDetail = computed(() => this.selectedPanel() === Panels.DETAIL);
     isStatus = computed(() => this.selectedPanel() === Panels.STATUS);
-    isProgress = computed(() => this.selectedPanel() === Panels.PROGRESS);
+    isTracking = computed(() => this.selectedPanel() === Panels.TRACKING);
     isActivity = computed(() => this.selectedPanel() === Panels.ACTIVITY);
 
     public form: UntypedFormGroup | null = null;
@@ -150,6 +151,7 @@ export class CrmOpportunityDetailComponent implements OnInit {
 
     private setupForm(b: CRMOpportunity) {
         this.#opportunityActiveSrv.setParentId(b?.id);
+        this.#trackingSrv.setParentId(b?.id);
         this.id = b?.id;
         this.#contactSrv.setParentId(b?.id || 0);
         return this.formBuilder.group({
@@ -192,6 +194,16 @@ export class CrmOpportunityDetailComponent implements OnInit {
 
     select(idx: number) {
         this.selectedPanel.set(idx);
+        if (idx == Panels.ACTIVITY) {
+            this.#router
+                .navigate(['activities'], { relativeTo: this.#route})
+                .then();
+        }
+        if (idx == Panels.TRACKING) {
+            this.#router
+                .navigate(['tracking'], { relativeTo: this.#route })
+                .then();
+        }
     }
 
     saveStatus() {
@@ -229,5 +241,4 @@ export class CrmOpportunityDetailComponent implements OnInit {
     protected readonly STAGE = STAGE;
     protected readonly STATUS = STATUS;
     protected readonly PRIORITY = PRIORITY;
-    protected readonly ACTIVITY_TYPE = ACTIVITY_TYPE;
 }
