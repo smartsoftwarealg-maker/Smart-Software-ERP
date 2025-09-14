@@ -16,8 +16,7 @@ import {
 import { MatSort, MatSortHeader, Sort } from '@angular/material/sort';
 import { PaginationComponent } from '@ss/common/ui-pagination';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
-import { MatButton, MatIconButton } from '@angular/material/button';
-import { MatTooltip } from '@angular/material/tooltip';
+import { MatButton } from '@angular/material/button';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ShellService } from '@ss/common/ui-shell';
 import { CRMEmailTemplatesService } from '../crm-email-templates.service';
