@@ -118,6 +118,7 @@ export class AssetAppointmentDocDetailComponent extends BaseEntityDetailComponen
             .subscribe(res => {
                 this.detailData = res.body;
                 this.pagination.elementCount = res.itemCount;
+                this.updateLocationStatus();
             });
 
         const form = this.formBuilder.group({
@@ -139,6 +140,14 @@ export class AssetAppointmentDocDetailComponent extends BaseEntityDetailComponen
         return form;
     }
 
+    private updateLocationStatus() {
+        const site = this.form.controls['officeId'];
+        if (this.pagination.elementCount > 0) {
+            site.disable({ onlySelf: true });
+        } else {
+            site.enable({ onlySelf: true });
+        }
+    }
     override readForm(): ASSAppointmentHeader {
         const value = super.readForm();
         value.serialNumber = value.serialNumber || 1;
@@ -163,12 +172,11 @@ export class AssetAppointmentDocDetailComponent extends BaseEntityDetailComponen
                         if (typeof res !== 'boolean') {
                             this.detailData = res.body;
                             this.pagination.elementCount = res.itemCount;
+                            this.updateLocationStatus();
                         }
                     }))
                 .subscribe(res => {
-                    if (typeof res !== 'boolean') {
-                        this.snackBarSrv.showSuccessMessage();
-                    }
+                    this.snackBarSrv.showSuccessMessage();
                 });
         }
     }
@@ -185,6 +193,7 @@ export class AssetAppointmentDocDetailComponent extends BaseEntityDetailComponen
                     this.inputControl.setValue(null, {onlySelf: true});
                     this.inputControl.reset();
                     this.selectedId = 0;
+                    this.updateLocationStatus();
                     this.snackBarSrv.showSuccessMessage();
                 });
         }

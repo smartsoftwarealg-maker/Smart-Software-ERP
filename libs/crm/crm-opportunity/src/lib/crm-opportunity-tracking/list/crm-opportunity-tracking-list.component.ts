@@ -23,10 +23,7 @@ import { CRMOpportunityProgressLogger } from '../api';
     selector: 'ss-crm-opportunity-tracking-list',
     imports: [
         CommonModule,
-        MatTooltip,
         TranslateDirective,
-        TranslatePipe,
-        MatMiniFabButton,
         MatTable,
         MatHeaderCell,
         MatCell,

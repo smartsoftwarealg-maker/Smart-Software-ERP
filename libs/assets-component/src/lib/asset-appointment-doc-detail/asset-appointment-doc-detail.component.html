@@ -58,7 +58,7 @@
             formControlName="officeId">
           </ss-auto-complete>
         </mat-form-field>
-        <button mat-mini-fab (click)="openSearchDlg()" type="button">
+        <button mat-mini-fab (click)="openSearchDlg()" type="button" [disabled]="form.controls['officeId'].disabled">
           <i class="fa-solid fa-file-magnifying-glass"></i>
         </button>
       </div>
@@ -91,7 +91,6 @@
   }
 </mat-card-content>
 </mat-card>
-
 @if (id > 0) {
   <div class="item table_div">
     <mat-table mat-table [dataSource]="detailData" class="main-table">

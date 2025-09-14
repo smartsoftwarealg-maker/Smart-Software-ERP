@@ -18,6 +18,7 @@ import { DatePickerComponent } from '@ss/common/ui-datepicker';
 import { MatButton } from '@angular/material/button';
 import { TranslatePipe } from '@ss/common/ui-lang';
 import {ActivatedRoute} from "@angular/router";
+import {switchMap, takeWhile, tap, timer} from "rxjs";
 
 interface EvalDocument {
     id: number;
@@ -52,6 +53,9 @@ export class DocumentRecalculationComponent implements OnInit {
     #snackBarSrv = inject(SnackBarService);
     #route = inject(ActivatedRoute);
 
+    private readonly POLL_INTERVAL_MS = 5000; // Poll every 3 seconds
+    private readonly MAX_POLL_TIME_MS = 5 * 60 * 1000; // Max 5 minutes
+
     evalDocumentOptions: EvalDocument[] = [
         { id: 514, name: 'PURCHASES' },
         { id: 258, name: 'SALES' },
@@ -79,10 +83,45 @@ export class DocumentRecalculationComponent implements OnInit {
             const value = this.form.value;
             if (value.document > 0) {
                 this.processing.set(true);
+
+                this.#optionSrv.recalculateDocument2(value.inventory_date, value.document)
+                    .pipe(
+                    switchMap((jobId) => {
+                        // Start polling
+                        return timer(0, this.POLL_INTERVAL_MS).pipe(
+                            switchMap(() => this.#optionSrv.getStatus(jobId).pipe(tap(res => console.log('**************status', res.status)))),
+                            takeWhile((statusRes, index) => statusRes.status === 102 && index < 100,
+                                true // Include the last emission (when Completed/Failed)
+                            ),
+                        );
+                    }),
+                    ).subscribe({
+                    next: res => {
+                        if (res.status === 200) {
+                            this.#shellSrv.setLoading(false);
+                            this.processing.set(false);
+                            this.#snackBarSrv.showSuccessMessage();
+                        }
+                        console.log('---------------status', res.status);
+                    }, error: err => {
+                        this.#shellSrv.setLoading(false);
+                        this.processing.set(false);
+                        this.#snackBarSrv.showFailureMessage();
+                    }
+                });
+            }
+        }
+    }
+    recalculate_save() {
+        if (this.form.valid) {
+            this.#shellSrv.setLoading(true);
+            const value = this.form.value;
+            if (value.document > 0) {
+                this.processing.set(true);
                 this.#optionSrv
                     .recalculateDocument(value.inventory_date, value.document)
                     .subscribe({
-                        next: () => {
+                        next: res => {
                             this.#snackBarSrv.showSuccessMessage();
                             this.#shellSrv.setLoading(false);
                             this.processing.set(false);
