@@ -100,3 +100,4 @@ export class AssetsInventoryDocListComponent extends BaseEntityListComponent<Ass
         super.refresh(callback);
     }
 }
+//TODO ADD SEARCH BOX
