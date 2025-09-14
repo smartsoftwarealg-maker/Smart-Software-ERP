@@ -42,8 +42,6 @@ import { EmailTemplate } from '../crm-email-templates.api';
         TranslateDirective,
         MatSort,
         MatHeaderCellDef,
-        MatIconButton,
-        MatTooltip,
         TranslatePipe,
         MatButton,
     ],

@@ -142,10 +142,13 @@ export class AssetAppointmentDocDetailComponent extends BaseEntityDetailComponen
 
     private updateLocationStatus() {
         const site = this.form.controls['officeId'];
+        const beneficiary = this.form.controls['beneficiaryId'];
         if (this.pagination.elementCount > 0) {
             site.disable({ onlySelf: true });
+            beneficiary.disable({ onlySelf: true });
         } else {
             site.enable({ onlySelf: true });
+            beneficiary.enable({ onlySelf: true });
         }
     }
     override readForm(): ASSAppointmentHeader {

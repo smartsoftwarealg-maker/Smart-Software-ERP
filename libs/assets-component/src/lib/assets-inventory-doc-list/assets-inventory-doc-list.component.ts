@@ -17,6 +17,7 @@ import {
 import { AssetCountSummaryService } from '../services/asset-count-summary.service';
 import { PaginationComponent } from '@ss/common/ui-pagination';
 import { TranslateDirective } from '@ss/common/ui-lang';
+import {callback} from "chart.js/helpers";
 
 @Component({
     selector: 'ss-assets-inventory-doc-list',
@@ -92,5 +93,10 @@ export class AssetsInventoryDocListComponent extends BaseEntityListComponent<Ass
                     setTimeout(() => window.URL.revokeObjectURL(link.href), 5000);
                 }
             });
+    }
+
+    override refresh(callback?: () => void) {
+        super.refresh(callback);
+        this.selectRow(null);
     }
 }
