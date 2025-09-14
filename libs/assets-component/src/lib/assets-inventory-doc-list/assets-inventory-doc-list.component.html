@@ -90,28 +90,28 @@
                     <ng-container matColumnDef="total">
                         <mat-header-cell *matHeaderCellDef  translate>COMMON_TOTAL</mat-header-cell>
                         <mat-cell *matCellDef="let e">
-                            {{ e.total }}
+                            {{ e?.total }}
                         </mat-cell>
                     </ng-container>
 
                     <ng-container matColumnDef="counted">
                         <mat-header-cell *matHeaderCellDef  translate>ASSET_RECORDED_ARTICLES</mat-header-cell>
                         <mat-cell *matCellDef="let e">
-                            {{ e.counted }}
+                            {{ e?.counted }}
                         </mat-cell>
                     </ng-container>
 
                     <ng-container matColumnDef="missing">
                         <mat-header-cell *matHeaderCellDef  translate>ASSET_MISSING_ARTICLES</mat-header-cell>
                         <mat-cell *matCellDef="let e">
-                            {{ e.missing }}
+                            {{ e?.missing }}
                         </mat-cell>
                     </ng-container>
 
                     <ng-container matColumnDef="unidentified">
                         <mat-header-cell *matHeaderCellDef  translate>ASSET_UNIDENTIFIED_INVENTORY</mat-header-cell>
                         <mat-cell *matCellDef="let e">
-                            {{ e.unidentified }}
+                            {{ e?.unidentified }}
                         </mat-cell>
                     </ng-container>
 

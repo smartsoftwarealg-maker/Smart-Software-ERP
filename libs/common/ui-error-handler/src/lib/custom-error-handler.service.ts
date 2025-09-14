@@ -59,7 +59,7 @@ export class CustomErrorHandlerService {
         this.statusText = err.error? err.error['params'] || '' : '';
 
         this.errorSet = true;
-
+        console.log(this.message);
         if (this.onUpdate) {
             this.onUpdate();
         }

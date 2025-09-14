@@ -17,6 +17,7 @@ import {
 import { AssetCountSummaryService } from '../services/asset-count-summary.service';
 import { PaginationComponent } from '@ss/common/ui-pagination';
 import { TranslateDirective } from '@ss/common/ui-lang';
+import {callback} from "chart.js/helpers";
 
 @Component({
     selector: 'ss-assets-inventory-doc-list',
@@ -76,8 +77,8 @@ export class AssetsInventoryDocListComponent extends BaseEntityListComponent<Ass
     override selectRow(row: AssetInventoryDoc) {
         super.selectRow(row);
         this.#summarySrv
-            .get(row.id)
-            .subscribe(data => this.summaryData = [data]);
+            .get(row?.id||0)
+            .subscribe(data => this.summaryData = data? [data] : []);
     }
 
     override excel() {
@@ -92,5 +93,10 @@ export class AssetsInventoryDocListComponent extends BaseEntityListComponent<Ass
                     setTimeout(() => window.URL.revokeObjectURL(link.href), 5000);
                 }
             });
+    }
+
+    override refresh(callback?: () => void) {
+        this.selectRow(null);
+        super.refresh(callback);
     }
 }
