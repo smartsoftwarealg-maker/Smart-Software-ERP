@@ -6,7 +6,7 @@ import { FormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { Observable, of } from 'rxjs';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { DatePickerComponent } from '@ss/common/ui-datepicker';
-import { EmailTemplate } from '../crm-email-templates.api';
+import {CATEGORY, EmailTemplate} from '../crm-email-templates.api';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import {
@@ -16,7 +16,7 @@ import {
 } from '@ss/common/ui-auto-complete';
 import { UserListService } from '@ss/common/api-users';
 import { CRMEmailTemplatesService } from '../crm-email-templates.service';
-import { STATUS } from '@ss/crm/campaign';
+import { STATUS } from '../crm-email-templates.api';
 import { CrmTeamsService } from '@ss/crm/crm-teams';
 
 @Component({
@@ -80,10 +80,8 @@ export class CrmEmailTemplatesDetailComponent implements OnInit {
             .subscribe({
                 next: () => {
                     this.form.markAsUntouched();
-                    // this.#router
-                    //     .navigate(['../'], { relativeTo: this.#route })
-                    //     .then();
                     this.#snackBarSrv.showSuccessMessage();
+                    this.list()
                 },
                 error: () => {
                     this.#snackBarSrv.showFailureMessage();
@@ -120,4 +118,5 @@ export class CrmEmailTemplatesDetailComponent implements OnInit {
     }
 
     protected readonly STATUS = STATUS;
+    protected readonly CATEGORY = CATEGORY;
 }
